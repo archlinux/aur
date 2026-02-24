@@ -1,0 +1,16 @@
+pkgbase = gnome-shell-rounded-blur-blur-my-shell-extension
+	pkgdesc = blur-my-shell extension variant for gnome-shell-rounded-blur
+	pkgver = 70
+	pkgrel = 1
+	url = https://github.com/aunetx/blur-my-shell
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = gnome-shell
+	depends = gnome-shell-extensions
+	source = git+https://github.com/aunetx/blur-my-shell.git#tag=v70
+	source = Add_corner_radius_to_NativeDynamicBlurEffect.patch
+	sha256sums = f41f55c7e01ec748caa553e541fbe615ccc0cabc023b69f2dd754e112b0626f7
+	sha256sums = 55b02e19758f8243a1e4c2807fddeb79df28fc6ecab1cc60c7202f89165f57b7
+
+pkgname = gnome-shell-rounded-blur-blur-my-shell-extension

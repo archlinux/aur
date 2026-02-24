@@ -1,0 +1,539 @@
+Subject: [PATCH] Add `corner_radius` to NativeDynamicBlurEffect
+---
+Index: resources/ui/panel.ui
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/ui/panel.ui b/resources/ui/panel.ui
+--- a/resources/ui/panel.ui	(revision 2296e819c4238c4a8f061c4441292b56f00e4f00)
++++ b/resources/ui/panel.ui	(date 1771855048785)
+@@ -107,7 +107,28 @@
+             </child>
+           </object>
+         </child>
++        
++        <child>
++          <object class="AdwActionRow">
++            <property name="title" translatable="yes">Corner radius</property>
++            <property name="subtitle" translatable="yes">Radius for the corner rounding effect</property>
++            <property name="activatable-widget">corner_radius_scale</property>
++            <property name="sensitive" bind-source="blur" bind-property="state" bind-flags="sync-create" />
+ 
++            <child>
++              <object class="GtkScale" id="corner_radius_scale">
++                <property name="valign">center</property>
++                <property name="hexpand">true</property>
++                <property name="width-request">200px</property>
++                <property name="draw-value">true</property>
++                <property name="value-pos">right</property>
++                <property name="digits">0</property>
++                <property name="adjustment">corner_radius</property>
++              </object>
++            </child>
++          </object>
++        </child>
++
+         <child>
+           <object class="AdwActionRow">
+             <property name="title" translatable="yes">Force light text</property>
+@@ -237,4 +258,10 @@
+     <property name="upper">1.0</property>
+     <property name="step-increment">0.01</property>
+   </object>
+-</interface>
+\ No newline at end of file
++    
++  <object class="GtkAdjustment" id="corner_radius">
++    <property name="lower">0</property>
++    <property name="upper">50</property>
++    <property name="step-increment">1</property>
++  </object>
++</interface>
+Index: resources/ui/dash.ui
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/ui/dash.ui b/resources/ui/dash.ui
+--- a/resources/ui/dash.ui	(revision 2296e819c4238c4a8f061c4441292b56f00e4f00)
++++ b/resources/ui/dash.ui	(date 1771855048758)
+@@ -107,7 +107,28 @@
+             </child>
+           </object>
+         </child>
++        
++        <child>
++          <object class="AdwActionRow">
++            <property name="title" translatable="yes">Corner radius</property>
++            <property name="subtitle" translatable="yes">Radius for the corner rounding effect</property>
++            <property name="activatable-widget">corner_radius_scale</property>
++            <property name="sensitive" bind-source="blur" bind-property="state" bind-flags="sync-create" />
+ 
++            <child>
++              <object class="GtkScale" id="corner_radius_scale">
++                <property name="valign">center</property>
++                <property name="hexpand">true</property>
++                <property name="width-request">200px</property>
++                <property name="draw-value">true</property>
++                <property name="value-pos">right</property>
++                <property name="digits">0</property>
++                <property name="adjustment">corner_radius</property>
++              </object>
++            </child>
++          </object>
++        </child>
++
+         <child>
+           <object class="AdwExpanderRow" id="override_background">
+             <property name="title" translatable="yes">Override background</property>
+@@ -161,6 +182,12 @@
+     <property name="upper">1.0</property>
+     <property name="step-increment">0.01</property>
+   </object>
++  
++  <object class="GtkAdjustment" id="corner_radius">
++    <property name="lower">0</property>
++    <property name="upper">50</property>
++    <property name="step-increment">1</property>
++  </object>
+ 
+   <object class="GtkStringList" id="style_dash_to_dock_model">
+     <items>
+@@ -169,4 +196,4 @@
+       <item translatable="yes">Dark</item>
+     </items>
+   </object>
+-</interface>
+\ No newline at end of file
++</interface>
+Index: src/effects/native_dynamic_gaussian_blur.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/effects/native_dynamic_gaussian_blur.js b/src/effects/native_dynamic_gaussian_blur.js
+--- a/src/effects/native_dynamic_gaussian_blur.js	(revision 2296e819c4238c4a8f061c4441292b56f00e4f00)
++++ b/src/effects/native_dynamic_gaussian_blur.js	(date 1771855422607)
+@@ -5,7 +5,7 @@
+ const Shell = await utils.import_in_shell_only('gi://Shell');
+ 
+ const DEFAULT_PARAMS = {
+-    unscaled_radius: 30, brightness: 0.6
++    unscaled_radius: 30, brightness: 0.6, corner_radius: 14
+ };
+ 
+ 
+@@ -15,8 +15,8 @@
+         GTypeName: "NativeDynamicBlurEffect"
+     }, class NativeDynamicBlurEffect extends Shell.BlurEffect {
+         constructor(params) {
+-            const { unscaled_radius, brightness, ...parent_params } = params;
+-            super({ ...parent_params, mode: Shell.BlurMode.BACKGROUND });
++            const { unscaled_radius, brightness, corner_radius, ...parent_params } = params;
++            super({ ...parent_params, mode: Shell.BlurMode.BACKGROUND, ...{ 'corner_radius': corner_radius } });
+ 
+             this._theme_context = St.ThemeContext.get_for_stage(global.stage);
+             this._theme_context.connectObject(
+@@ -40,4 +40,12 @@
+             this._unscaled_radius = value;
+             this.radius = value * this._theme_context.scale_factor;
+         }
+-    });
+\ No newline at end of file
++
++        get corner_radius() {
++            return this.get_property?.('corner_radius');
++        }
++
++        set corner_radius(value) {
++            this.set_property?.('corner_radius', value);
++        }
++    });
+Index: resources/ui/applications.ui
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/resources/ui/applications.ui b/resources/ui/applications.ui
+--- a/resources/ui/applications.ui	(revision 2296e819c4238c4a8f061c4441292b56f00e4f00)
++++ b/resources/ui/applications.ui	(date 1771855048727)
+@@ -57,7 +57,28 @@
+             </child>
+           </object>
+         </child>
++        
++        <child>
++          <object class="AdwActionRow">
++            <property name="title" translatable="yes">Corner radius</property>
++            <property name="subtitle" translatable="yes">Radius for the corner rounding effect</property>
++            <property name="activatable-widget">corner_radius_scale</property>
++            <property name="sensitive" bind-source="blur" bind-property="state" bind-flags="sync-create" />
+ 
++            <child>
++              <object class="GtkScale" id="corner_radius_scale">
++                <property name="valign">center</property>
++                <property name="hexpand">true</property>
++                <property name="width-request">200px</property>
++                <property name="draw-value">true</property>
++                <property name="value-pos">right</property>
++                <property name="digits">0</property>
++                <property name="adjustment">corner_radius</property>
++              </object>
++            </child>
++          </object>
++        </child>
++
+         <child>
+           <object class="AdwActionRow">
+             <property name="title" translatable="yes">Opacity</property>
+@@ -214,10 +235,16 @@
+     <property name="upper">1.0</property>
+     <property name="step-increment">0.01</property>
+   </object>
++      
++  <object class="GtkAdjustment" id="corner_radius">
++    <property name="lower">0</property>
++    <property name="upper">50</property>
++    <property name="step-increment">1</property>
++  </object>
+ 
+   <object class="GtkAdjustment" id="opacity">
+     <property name="lower">25</property>
+     <property name="upper">255</property>
+     <property name="step-increment">1</property>
+   </object>
+-</interface>
+\ No newline at end of file
++</interface>
+Index: src/preferences/panel.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/preferences/panel.js b/src/preferences/panel.js
+--- a/src/preferences/panel.js	(revision 2296e819c4238c4a8f061c4441292b56f00e4f00)
++++ b/src/preferences/panel.js	(date 1771855054559)
+@@ -16,6 +16,7 @@
+         'sigma',
+         'brightness_row',
+         'brightness',
++        'corner_radius',
+         'unblur_in_overview',
+         'force_light_text',
+         'override_background',
+@@ -57,6 +58,10 @@
+         this.preferences.panel.settings.bind(
+             'brightness', this._brightness, 'value',
+             Gio.SettingsBindFlags.DEFAULT
++        );
++        this.preferences.panel.settings.bind(
++            'corner-radius', this._corner_radius, 'value',
++            Gio.SettingsBindFlags.DEFAULT
+         );
+         this.preferences.panel.settings.bind(
+             'unblur-in-overview', this._unblur_in_overview, 'active',
+@@ -99,4 +104,4 @@
+         this._sigma_row.set_visible(!is_static_blur);
+         this._brightness_row.set_visible(!is_static_blur);
+     }
+-});
+\ No newline at end of file
++});
+Index: schemas/org.gnome.shell.extensions.blur-my-shell.gschema.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/schemas/org.gnome.shell.extensions.blur-my-shell.gschema.xml b/schemas/org.gnome.shell.extensions.blur-my-shell.gschema.xml
+--- a/schemas/org.gnome.shell.extensions.blur-my-shell.gschema.xml	(revision 2296e819c4238c4a8f061c4441292b56f00e4f00)
++++ b/schemas/org.gnome.shell.extensions.blur-my-shell.gschema.xml	(date 1771856021189)
+@@ -226,6 +226,11 @@
+             <default>0.6</default>
+             <summary>Brightness to use for the blur effect</summary>
+         </key>
++        <!-- CORNER RADIUS -->
++        <key type="i" name="corner-radius">
++            <default>14</default>
++            <summary>Radius for the corner rounding effect</summary>
++        </key>
+         <!-- COLOR -->
+         <key type="(dddd)" name="color">
+             <default>(0.,0.,0.,0.)</default>
+@@ -338,7 +343,7 @@
+         </key>
+         <!-- CORNER RADIUS -->
+         <key type="i" name="corner-radius">
+-            <default>12</default>
++            <default>18</default>
+             <summary>Radius for the corner rounding effect</summary>
+         </key>
+     </schema>
+@@ -365,6 +370,11 @@
+         <key type="d" name="brightness">
+             <default>1.</default>
+             <summary>Brightness to use for the blur effect</summary>
++        </key>
++        <!-- CORNER RADIUS -->
++        <key type="i" name="corner-radius">
++            <default>14</default>
++            <summary>Radius for the corner rounding effect</summary>
+         </key>
+         <!-- COLOR -->
+         <key type="(dddd)" name="color">
+@@ -582,4 +592,4 @@
+             <summary>Boolean, whether to blur the original panel (if option selected) with Dash to Panel</summary>
+         </key>
+     </schema>
+-</schemalist>
+\ No newline at end of file
++</schemalist>
+Index: src/components/applications.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/applications.js b/src/components/applications.js
+--- a/src/components/applications.js	(revision 2296e819c4238c4a8f061c4441292b56f00e4f00)
++++ b/src/components/applications.js	(date 1771855475502)
+@@ -229,6 +229,7 @@
+ 
+         meta_window.blur_actor = blur_actor;
+         meta_window.bg_manager = bg_manager;
++        meta_window.blur_pipeline = pipeline;
+ 
+         // if hacks are selected, force to repaint the window
+         if (this.settings.HACKS_LEVEL === 1) {
+@@ -250,10 +251,27 @@
+         // set the window actor's opacity
+         this.set_window_opacity(window_actor, this.settings.applications.OPACITY);
+ 
++        // update corner radius based on window state
++        this.update_corner_radius(meta_window);
++
+         // now set up the signals, for the window actor only: they are disconnected
+         // in `remove_blur`, whereas the signals for the meta window are disconnected
+         // only when the whole component is disabled
+ 
++        // listen for window state changes (maximized/fullscreen)
++        this.connections.connect(
++            meta_window, 'notify::maximized-horizontally',
++            _ => this.update_corner_radius(meta_window)
++        );
++        this.connections.connect(
++            meta_window, 'notify::maximized-vertically',
++            _ => this.update_corner_radius(meta_window)
++        );
++        this.connections.connect(
++            meta_window, 'notify::fullscreen',
++            _ => this.update_corner_radius(meta_window)
++        );
++
+         // update the window opacity when it changes, else we don't control it fully
+         this.connections.connect(
+             window_actor, 'notify::opacity',
+@@ -338,6 +356,21 @@
+         );
+     }
+ 
++    /// Update the corner radius based on window state (0 for maximized/fullscreen).
++    update_corner_radius(meta_window) {
++        if (!meta_window.blur_pipeline?.effect)
++            return;
++
++        const is_maximized = meta_window.maximized_horizontally && meta_window.maximized_vertically;
++        const is_fullscreen = meta_window.fullscreen;
++
++        if (is_maximized || is_fullscreen) {
++            meta_window.blur_pipeline.effect.corner_radius = 0;
++        } else {
++            meta_window.blur_pipeline.effect.corner_radius = this.settings.applications.CORNER_RADIUS;
++        }
++    }
++
+     /// Set the opacity of the window actor that sits on top of the blur effect.
+     set_window_opacity(window_actor, opacity) {
+         window_actor?.get_children().forEach(child => {
+@@ -408,6 +441,7 @@
+                 // whether we are blurred or not
+                 delete meta_window.blur_actor;
+                 delete meta_window.bg_manager;
++                delete meta_window.blur_pipeline;
+ 
+                 // disconnect the signals of the window actor
+                 this.paint_signals.disconnect_all_for_actor(blur_actor);
+Index: src/preferences/applications.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/preferences/applications.js b/src/preferences/applications.js
+--- a/src/preferences/applications.js	(revision 2296e819c4238c4a8f061c4441292b56f00e4f00)
++++ b/src/preferences/applications.js	(date 1771855054503)
+@@ -32,6 +32,7 @@
+         'blur',
+         'sigma',
+         'brightness',
++        'corner_radius',
+         'opacity',
+         'dynamic_opacity',
+         'blur_on_overview',
+@@ -76,6 +77,10 @@
+             'brightness', this._brightness, 'value',
+             Gio.SettingsBindFlags.DEFAULT
+         );
++        this.preferences.applications.settings.bind(
++            'corner-radius', this._corner_radius, 'value',
++            Gio.SettingsBindFlags.DEFAULT
++        );
+ 
+         // connect 'enable all' button to whitelist/blacklist visibility
+         this._enable_all.bind_property(
+@@ -183,4 +188,4 @@
+         this._blacklist.remove(widget);
+         this.update_blacklist_titles();
+     }
+-});
+\ No newline at end of file
++});
+Index: src/conveniences/keys.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/conveniences/keys.js b/src/conveniences/keys.js
+--- a/src/conveniences/keys.js	(revision 2296e819c4238c4a8f061c4441292b56f00e4f00)
++++ b/src/conveniences/keys.js	(date 1771855048876)
+@@ -31,6 +31,7 @@
+             { type: Type.S, name: "pipeline" },
+             { type: Type.I, name: "sigma" },
+             { type: Type.D, name: "brightness" },
++            { type: Type.I, name: "corner-radius" },
+             { type: Type.B, name: "unblur-in-overview" },
+             { type: Type.B, name: "force-light-text" },
+             { type: Type.B, name: "override-background" },
+@@ -45,6 +46,7 @@
+             { type: Type.S, name: "pipeline" },
+             { type: Type.I, name: "sigma" },
+             { type: Type.D, name: "brightness" },
++            { type: Type.I, name: "corner-radius" },
+             { type: Type.B, name: "unblur-in-overview" },
+             { type: Type.B, name: "override-background" },
+             { type: Type.I, name: "style-dash-to-dock" },
+@@ -55,6 +57,7 @@
+             { type: Type.B, name: "blur" },
+             { type: Type.I, name: "sigma" },
+             { type: Type.D, name: "brightness" },
++            { type: Type.I, name: "corner-radius" },
+             { type: Type.I, name: "opacity" },
+             { type: Type.B, name: "dynamic-opacity" },
+             { type: Type.B, name: "blur-on-overview" },
+@@ -185,4 +188,4 @@
+             { type: Type.D, name: "noise-lightness" },
+         ]
+     },
+-];
+\ No newline at end of file
++];
+Index: src/conveniences/dummy_pipeline.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/conveniences/dummy_pipeline.js b/src/conveniences/dummy_pipeline.js
+--- a/src/conveniences/dummy_pipeline.js	(revision 2296e819c4238c4a8f061c4441292b56f00e4f00)
++++ b/src/conveniences/dummy_pipeline.js	(date 1771855048847)
+@@ -43,6 +43,7 @@
+         this.build_effect({
+             unscaled_radius: 2 * this.settings.SIGMA,
+             brightness: this.settings.BRIGHTNESS,
++            corner_radius: this.settings.CORNER_RADIUS,
+         });
+ 
+         this.actor_destroy_id = this.actor.connect(
+@@ -75,6 +76,9 @@
+         this._brightness_changed_id = this.settings.settings.connect(
+             'changed::brightness', () => this.effect.brightness = this.settings.BRIGHTNESS
+         );
++        this._corner_radius_changed_id = this.settings.settings.connect(
++            'changed::corner-radius', () => this.effect.corner_radius = this.settings.CORNER_RADIUS
++        );
+     }
+ 
+     repaint_effect() {
+@@ -92,8 +96,11 @@
+             this.settings.settings.disconnect(this._sigma_changed_id);
+         if (this._brightness_changed_id)
+             this.settings.settings.disconnect(this._brightness_changed_id);
++        if (this._corner_radius_changed_id)
++            this.settings.settings.disconnect(this._corner_radius_changed_id);
+         delete this._sigma_changed_id;
+         delete this._brightness_changed_id;
++        delete this._corner_radius_changed_id;
+     }
+ 
+     /// Do nothing for this dummy pipeline.
+@@ -109,4 +116,4 @@
+     _warn(str) {
+         console.warn(`[Blur my Shell > dummy pip]    ${str}`);
+     }
+-};
+\ No newline at end of file
++};
+Index: src/preferences/dash.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/preferences/dash.js b/src/preferences/dash.js
+--- a/src/preferences/dash.js	(revision 2296e819c4238c4a8f061c4441292b56f00e4f00)
++++ b/src/preferences/dash.js	(date 1771855054531)
+@@ -16,6 +16,7 @@
+         'sigma',
+         'brightness_row',
+         'brightness',
++        'corner_radius',
+         'override_background',
+         'style_dash_to_dock',
+         'unblur_in_overview'
+@@ -53,6 +54,10 @@
+         this.preferences.dash_to_dock.settings.bind(
+             'brightness', this._brightness, 'value',
+             Gio.SettingsBindFlags.DEFAULT
++        );
++        this.preferences.dash_to_dock.settings.bind(
++            'corner-radius', this._corner_radius, 'value',
++            Gio.SettingsBindFlags.DEFAULT
+         );
+         this.preferences.dash_to_dock.settings.bind(
+             'override-background',
+@@ -78,4 +83,4 @@
+         this._sigma_row.set_visible(!is_static_blur);
+         this._brightness_row.set_visible(!is_static_blur);
+     }
+-});
+\ No newline at end of file
++});
+Index: src/conveniences/settings_updater.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/conveniences/settings_updater.js b/src/conveniences/settings_updater.js
+--- a/src/conveniences/settings_updater.js	(revision 2296e819c4238c4a8f061c4441292b56f00e4f00)
++++ b/src/conveniences/settings_updater.js	(date 1771855048896)
+@@ -29,6 +29,7 @@
+                 if (!deprecated_component.CUSTOMIZE) {
+                     new_component.SIGMA = deprecated_preferences.SIGMA;
+                     new_component.BRIGHTNESS = deprecated_preferences.BRIGHTNESS;
++                    new_component.CORNER_RADIUS = deprecated_preferences.CORNER_RADIUS;
+                 }
+             });
+ 
+@@ -37,4 +38,4 @@
+     }
+ 
+     preferences.settings.set_int('settings-version', CURRENT_SETTINGS_VERSION);
+-}
+\ No newline at end of file
++}
