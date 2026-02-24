@@ -1,5 +1,4 @@
 pkgname=linux-rvkernel-bore-clang
-pkgbase=linux-rvkernel-bore-clang
 pkgver=6.19.3
 pkgrel=1
 pkgdesc="RvKernel Linux is a custom Linux kernel, a fork of CachyOS kernel"
