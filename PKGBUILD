@@ -1,7 +1,7 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=ctx
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-environment context switcher for cloud, Kubernetes, VPN, and SSH tunnels'
 arch=('x86_64')
 url='https://github.com/vlebo/ctx'
@@ -47,6 +47,7 @@ package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 build/ctx "${pkgdir}/usr/bin/ctx"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   # Shell completions
   install -Dm644 build/ctx.bash "${pkgdir}/usr/share/bash-completion/completions/ctx"
