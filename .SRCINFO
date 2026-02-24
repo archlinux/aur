@@ -12,7 +12,6 @@ pkgbase = wshawk
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = pyinstaller
 	depends = python
 	depends = python-aiohttp
 	depends = python-websockets

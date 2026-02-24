@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/noobforanonymous/wshawk"
 license=('ISC')
 depends=('python' 'python-aiohttp' 'python-websockets' 'python-socketio' 'python-fastapi' 'python-cryptography' 'python-dnspython' 'python-whois' 'python-yaml' 'uvicorn' 'nodejs' 'electron')
-makedepends=('git' 'npm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'pyinstaller')
+makedepends=('git' 'npm' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 provides=('wshawk-desktop')
 conflicts=('wshawk-git' 'wshawk-bin')
 source=("git+https://github.com/noobforanonymous/wshawk.git#tag=v$pkgver")
@@ -18,20 +18,18 @@ sha256sums=('SKIP')
 build() {
   cd "$_pkgname"
 
-  # 1. Build the Python bridge binary using PyInstaller
-  # This matches the local build process used in GitHub Actions
-  echo "[*] Compiling Python Bridge Sidecar..."
-  python -m pip install . --user
-  pyinstaller wshawk-bridge.spec --noconfirm
+  # 1. Build the Python package wheel
+  echo "[*] Building Python wheel..."
+  python -m build --wheel --no-isolation
 
-  # 2. Build the Desktop App Frontend
+  # 2. Build the Python bridge binary using PyInstaller
+  echo "[*] Compiling Python Bridge Sidecar..."
+  PYTHONPATH=. pyinstaller wshawk-bridge.spec --noconfirm
+
+  # 3. Build the Desktop App Frontend
   cd desktop
   echo "[*] Installing Node dependencies..."
   npm install
-  
-  # Note: For Arch Linux, we typically prefer running against system electron
-  # rather than bundling it inside an AppImage/binary.
-  # We prepare the assets here.
 }
 
 package() {
