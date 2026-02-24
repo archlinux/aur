@@ -1,11 +1,13 @@
 pkgname=linux-rvkernel-bore-nvidia-open-clang
 pkgver=6.19.3
 pkgrel=1
-pkgdesc="NVIDIA open modules of 590.48.01 driver for the linux-rvkernel-bore-clang kernel"
+nv_ver=590.48.01
+pkgdesc="nvidia open modules of ${_nv_ver} driver for the linux-rvkernel-bore-clang kernel"
 arch=('x86_64')
 url="https://github.com/Rve27/RvKernel-Linux"
-license=('GPL-2.0-only')
-depends=('pahole' 'linux-rvkernel-bore-clang' 'linux-rvkernel-bore-headers-clang')
+license=('MIT AND GPL-2.0-only')
+depends=('libglvnd' 'nvidia-utils=${_nv_ver}' 'linux-rvkernel-bore-clang' 'linux-rvkernel-bore-headers-clang')
+provides=('NVIDIA-MODULE')
 source=(
   "https://github.com/Rve27/RvKernel-Linux/releases/download/${pkgver}/linux-rvkernel-bore-lto-nvidia-open-${pkgver}-${pkgrel}-${arch[0]}.pkg.tar.zst"
 )
