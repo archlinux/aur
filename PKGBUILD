@@ -1,7 +1,7 @@
 # Maintainer: Raimo Geisel <raimog92@gmail.com>
 
 pkgname=lazyllama
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A lightweight TUI client for Ollama with markdown support and smart scrolling"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 provides=('lazyllama')
 conflicts=('lazyllama-bin')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('a240f2f96dab8a57d778d2cd7bac880980a4ae3ad00c8aa3013d10d261a708b2')
+sha256sums=('4cf481021a79f5653648c8b796e9ef8a7d919b06afa009b78dba282f23cb94ca')
 
 prepare() {
     cd "$pkgname-$pkgver"
