@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 
-_upstreamver='5.0.1'
+_upstreamver='5.0.2'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='line-profiler'
@@ -18,7 +18,7 @@ depends=('glibc' 'gcc-libs' 'python' 'ipython' 'python-rich')
 optdepends=()
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('3e56c5eee51aa8b82a09d8a35ab19f4100ee45d70eb676c2c58deedcc06c34b1')
+sha256sums=('8d8a990c84c64bcde45af22af502d17bc0ae107be405ce41bba92af5c39c0000')
 
 
 build() {
