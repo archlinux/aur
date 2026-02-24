@@ -1,10 +1,10 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=scratchmark
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Organized markdown editor"
 arch=('x86_64')
-url="https://github.com/sevonj/scratchmark"
+url="https://scratchmark.org"
 license=('GPL-3.0-or-later')
 depends=(
   'gtk4'
@@ -15,8 +15,8 @@ makedepends=(
   'cargo'
   'meson'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c5a3fc52b94a3056685f904a8722ca7a5f7dabfe8a9b1859c05494004a104ab6')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sevonj/scratchmark/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('10726b17614afeff5cf1194032e376ef8f3c9ca54701084ca32d2c522dd36b2c')
 
 prepare() {
   cd "$pkgname-$pkgver"
