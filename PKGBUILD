@@ -9,7 +9,7 @@
 #     gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org
 
 pkgname=mullvad-browser-bin
-pkgver=15.0.6
+pkgver=15.0.7
 pkgrel=1
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
@@ -76,7 +76,7 @@ validpgpkeys=(
 )
 changelog='mullvad-browser.changelog'
 
-sha256sums=('ec5a8dbede94ca5d34b31892703038121053d9af01612b48c5fcc239a9d6c7b3'
+sha256sums=('523d87e8e355a67dc4b7330d97cc6a3807fa51e3ba14600ab721fd0ca87defa5'
             'SKIP'
             '9e1a8b33705972bd372be3af3bdf3039297e6d568e53dcf2e3da03f6f2f2aadd'
             '9bb24b8e210112b1222d028285c6d68ab599f8382b2b108ab69284948bb4ac70')

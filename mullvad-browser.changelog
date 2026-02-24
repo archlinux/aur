@@ -1,3 +1,10 @@
+Mullvad Browser 15.0.7 - February 24 2026
+ * All Platforms
+   * Updated Firefox to 140.8.0esr
+   * Updated NoScript to 13.5.14.1984
+   * Bug 509: Rebase Mullvad Browser onto 140.8.0esr [mullvad-browser]
+   * Bug 44681: Backport Security Fixes from Firefox 148 [tor-browser]
+
 Mullvad Browser 15.0.6 - February 17 2026
  * All Platforms
    * Updated Firefox to 140.7.1esr
