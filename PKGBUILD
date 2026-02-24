@@ -3,7 +3,7 @@
 
 _pkgname=onetalker
 pkgname=$_pkgname-git
-pkgver=2026.1.r5.g81c3ec6
+pkgver=2026.2.r13.g286433f
 pkgrel=1
 pkgdesc='An Augmentative and Alternative Communication (AAC) Aid'
 arch=(x86_64)
@@ -47,6 +47,13 @@ pkgver() {
   cd "${_pkgname}"
 
   git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+check() {
+  cd "${_pkgname}"
+
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --frozen --all-features
 }
 
 build() {
