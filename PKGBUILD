@@ -1,6 +1,6 @@
 # Maintainer: skint007 <archlinux.repose742@passmail.net>
 pkgname=clipboard-typer
-pkgver=0.2.0.2
+pkgver=0.2.0.3
 pkgrel=1
 pkgdesc="Type clipboard contents keystroke-by-keystroke into the active window"
 arch=('any')
@@ -33,17 +33,17 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-    cd "key-sender-$pkgver"
+    cd "$pkgname-$pkgver"
     python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "key-sender-$pkgver"
+    cd "$pkgname-$pkgver"
     PYTHONPATH="$PWD/src" python -m pytest
 }
 
 package() {
-    cd "key-sender-$pkgver"
+    cd "$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 clipboard-typer.service "$pkgdir/usr/lib/systemd/user/$pkgname.service"
