@@ -1,6 +1,6 @@
 pkgbase = accentd
 	pkgdesc = Press-and-hold accent character popup for Linux (macOS-style)
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/gildo/accentd
 	install = accentd.install
@@ -10,7 +10,7 @@ pkgbase = accentd
 	makedepends = pkgconf
 	depends = gtk4
 	depends = gtk4-layer-shell
-	source = accentd-0.1.1.tar.gz::https://github.com/gildo/accentd/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 993dd8b2d2cb475174d1d9b6d1ba9aee4ec434a37a89642eb85fee39af9ce191
+	source = accentd-0.2.0.tar.gz::https://github.com/gildo/accentd/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 427de00b86cb72724ada963d3f6fed7b9eb824394741028ff017adc41fec3ab7
 
 pkgname = accentd
