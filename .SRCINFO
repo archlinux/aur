@@ -1,6 +1,6 @@
 pkgbase = atomic-upgrade
 	pkgdesc = Atomic system upgrades for Arch Linux (Btrfs + UKI + Secure Boot)
-	pkgver = 0.0.12
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://gitlab.com/fkzys/atomic-upgrade
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = atomic-upgrade
 	optdepends = cryptsetup: LUKS support
 	optdepends = lvm2: LVM support
 	backup = etc/atomic.conf
-	source = atomic-upgrade-0.0.12.tar.gz::https://gitlab.com/fkzys/atomic-upgrade/-/archive/v0.0.12/atomic-upgrade-v0.0.12.tar.gz
-	sha256sums = d97dd32841c17a60333e2a90956d164586bb4783b0a7049f52b25451f8a8a16c
+	source = atomic-upgrade-0.0.13.tar.gz::https://gitlab.com/fkzys/atomic-upgrade/-/archive/v0.0.13/atomic-upgrade-v0.0.13.tar.gz
+	sha256sums = f8b17aa9b83275ec2733cc051eff3c2bb2a7ec8b2bfdcf4fe1855a69ee86d94c
 
 pkgname = atomic-upgrade
