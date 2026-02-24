@@ -1,0 +1,14 @@
+pkgbase = p14s-wifi-reset-git
+	pkgdesc = Wi-Fi adapter reset script for Thinkpad T14/P14s Gen4
+	pkgver = 0.0.1
+	pkgrel = 2
+	url = https://github.com/Lawstorant/p14s-wifi-reset
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = bash
+	provides = p14s-wifi-reset
+	source = git+https://github.com/Lawstorant/p14s-wifi-reset
+	sha256sums = SKIP
+
+pkgname = p14s-wifi-reset-git
