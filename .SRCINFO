@@ -1,6 +1,6 @@
 pkgbase = slopecraft
 	pkgdesc = Map Pixel Art Generator for Minecraft
-	pkgver = 5.3.2
+	pkgver = 5.3.3
 	pkgrel = 0
 	url = https://github.com/SlopeCraft/SlopeCraft
 	arch = armv7h
@@ -22,7 +22,6 @@ pkgbase = slopecraft
 	makedepends = cli11
 	depends = gcc-libs
 	depends = glibc
-	depends = fmt
 	depends = libpng
 	depends = libzip
 	depends = zlib
@@ -35,7 +34,7 @@ pkgbase = slopecraft
 	optdepends = intel-compute-runtime: Intel GPU boosting,
 	optdepends = rocm-opencl-runtime: AMD GPU boosting,
 	optdepends = opencl-clover-mesa: GPU boosting with mesa
-	source = https://github.com/SlopeCraft/SlopeCraft/archive/refs/tags/v5.3.2.tar.gz
-	b2sums = 5d46bb45b37deb629f6219988c633c392113b982bbfc2ed3aecff8a1f841e7540020048ffaaa74f7a0e9bfca4853848247ec6587ef4c60be47b98c02c53c1be0
+	source = https://github.com/SlopeCraft/SlopeCraft/archive/refs/tags/v5.3.3.tar.gz
+	b2sums = 7f2307a4fd03f1b08a4a123b72cd53ea68edb6897e1cce455ec55a30dd15030be5e4af077719684f900f43a000912998b305947f2a4f3e57c95edcbc2891db9d
 
 pkgname = slopecraft
