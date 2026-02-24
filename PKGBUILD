@@ -1,66 +1,89 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
-# Contributor: Matthias Lamers <aussieevil@hotmail.com>
+# Maintainer: Matthias Lamers <aussieevil@hotmail.com>
+# Contributor: Michał Wojdyła <micwoj9292@gmail.com>
 pkgname=ohrrpgce
-pkgver=wip.r13561
-pkgrel=2
+pkgver=lexiphanic.r14251
+pkgrel=3
 pkgdesc="A role playing game creation engine"
-arch=(i686 x86_64)
-license=(GPL)
+arch=('i686' 'x86_64')
+license=('GPL')
 url="http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page"
 depends=('sdl2_mixer' 'openeuphoria' 'libxpm' 'libxrandr' 'ncurses' 'xterm' 'libxinerama')
 makedepends=('subversion' 'freebasic' 'scons')
-optdepends=('timidity-freepats: midi music support')
-source=(svn+https://rpg.hamsterrepublic.com/source/wip#revision=r13561)
+provides=('ohrrpgce')
+conflicts=('ohrrpgce-svn')
+source=('ohrrpgce::svn+https://rpg.hamsterrepublic.com/source/rel/lexiphanic/')
+md5sums=('SKIP')
 
-pkgver(){
-	cd "${srcdir}/wip"
-	local ver="$(svnversion)"
-	printf "%s.r%s" "wip" "${ver//[[:alpha:]]}"
+pkgver() {
+  cd "$srcdir/ohrrpgce"
+  local ver="$(svn info --show-item revision)"
+  printf "lexiphanic.r%s" "$ver"
 }
 
 prepare() {
-	cd "${srcdir}/wip"
-	#sed 's|env python|env python2|' -i reloadbasic/reloadbasic.py
-	#sed 's|env python|env python2|' -i SConscript
-	#sed 's|gcc_flags = \[\]|gcc_flags = ["-Wno-format"]|' -i SConscript
-	sed 's/, HSPEAK\||//' -i SConscript
-	#chmod +x reloadbasic/reloadbasic.py
-  	#dos2unix -o *.rbas
-  	#PATH=$PATH:/usr/share/openeuphoria/bin/
-	#patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+  cd "$srcdir/ohrrpgce"
+  # Remove hspeak from SCons default targets to avoid compilation loops
+  sed 's/, HSPEAK\||//' -i SConscript
 }
 
 build() {
-	cd "${srcdir}"
-	mkdir -p release/usr/share/games/ohrrpgce
-	cd "${srcdir}/wip"
-	cat << EOF > hspeak
+  cd "$srcdir/ohrrpgce"
+
+  # The Ultimate Hammer:
+  # Create a gcc/g++ wrapper to forcefully inject flag
+  # This bypasses SCons and FBC entirely
+  # to avoid the GCC 15 late_combine ICE
+  # Otherwise the build segfaults on cachyos
+  mkdir -p gcc-wrap
+  cat << 'EOF' > gcc-wrap/gcc
 #!/bin/bash
-/usr/share/openeuphoria/bin/eui /usr/share/games/ohrrpgce/hspeak.exw $*
+exec /usr/bin/gcc -fno-late-combine-instructions "$@"
 EOF
-	cp hspeak.exw "${srcdir}/release/usr/share/games/ohrrpgce"
-	chmod a+x hspeak
-	#cd ..
-	if [ "$CARCH" = "x86_64" ]; then
-		scons arch=64 game custom unlump relump release=1 install destdir='../release'
-	else
-		scons game custom unlump relump release=1 install destdir='../release'
-	fi
-	cd vikings
-	"${srcdir}/release/usr/share/games/ohrrpgce/relump" vikings.rpgdir vikings.rpg
-	rm -rf vikings.rpgdir
-	cd ..
-	mkdir "${srcdir}/release/usr/share/games/ohrrpgce/vikings"
-	cp -r vikings/* "${srcdir}/release/usr/share/games/ohrrpgce/vikings"
-	#scons arch=64 game custom hspeak unlump relump debug=0
+  cat << 'EOF' > gcc-wrap/g++
+#!/bin/bash
+exec /usr/bin/g++ -fno-late-combine-instructions "$@"
+EOF
+  chmod +x gcc-wrap/gcc gcc-wrap/g++
+
+  # Put our fake compilers at the very front of the system PATH
+  export PATH="$PWD/gcc-wrap:$PATH"
+
+  # Create hspeak wrapper script
+  cat << EOF > hspeak
+#!/bin/bash
+/usr/share/openeuphoria/bin/eui /usr/share/games/ohrrpgce/hspeak.exw \$*
+EOF
+  chmod a+x hspeak
+
+  # Compile engine components
+  if [ "$CARCH" = "x86_64" ]; then
+    scons arch=64 game custom unlump relump
+  else
+    scons game custom unlump relump
+  fi
+
+  # Lump vikings game data
+  cd vikings
+  ../relump vikings.rpgdir vikings.rpg
+  cd ..
 }
 
 package() {
-	pwd
-	cp -r ./release/* "$pkgdir/"
-	#cd "$pkgname-$pkgver"
-	#make DESTDIR="$pkgdir/" install
-	#cd "${srcdir}/etheldreme"
-	#cp -prv "${srcdir}/etheldreme/vikings/*" "${pkgdir}"
+  cd "$srcdir/ohrrpgce"
+
+  # Install compiled binaries and data into the Arch package directory
+  if [ "$CARCH" = "x86_64" ]; then
+    scons arch=64 release=1 install destdir="$pkgdir"
+  else
+    scons release=1 install destdir="$pkgdir"
+  fi
+
+  # Manually place the wrapper and script where the system expects them
+  install -Dm755 hspeak "$pkgdir/usr/share/games/ohrrpgce/hspeak"
+  install -Dm644 hspeak.exw "$pkgdir/usr/share/games/ohrrpgce/hspeak.exw"
+
+  # Install the vikings builtin game
+  mkdir -p "$pkgdir/usr/share/games/ohrrpgce/vikings"
+  cp -r vikings/* "$pkgdir/usr/share/games/ohrrpgce/vikings/"
+  rm -rf "$pkgdir/usr/share/games/ohrrpgce/vikings/vikings.rpgdir"
 }
-md5sums=('SKIP')
