@@ -8,7 +8,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 _pkgname="rapidraw"
 pkgname="$_pkgname-git"
 pkgdesc="GPU-accelerated RAW image editor"
-pkgver=1.4.3.r0.g8720242
+pkgver=1.5.0.r0.gb417f4a
 pkgrel=1
 url="https://github.com/CyberTimon/RapidRAW"
 license=('AGPL-3.0-only')
@@ -19,10 +19,10 @@ depends=(
   'webkit2gtk-4.1'
 )
 makedepends=(
-  'git'
-  'npm'
   'cargo'
   'cargo-tauri'
+  'git'
+  'npm'
 )
 
 provides=("$_pkgname")
@@ -41,13 +41,6 @@ prepare() {
   # ensure version is set
   local _pkgver=$(pkgver)
   sed -E -e 's&("version": ").*(",?)&\1'"${_pkgver%%.r*}\\2&" -i src-tauri/tauri.conf.json
-
-  # compile faster
-  sed -E \
-    -e 's&^(codegen-units) = .*$&\1 = 16&' \
-    -e 's&^(lto) = .*$&&' \
-    -i src-tauri/Cargo.toml \
-    src-tauri/rawler/Cargo.toml
 }
 
 pkgver() (
@@ -57,6 +50,10 @@ pkgver() (
 )
 
 build() {
+  local _nproc=$(nproc)
+  export CARGO_PROFILE_RELEASE_LTO=false
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$((_nproc > 16 ? _nproc : 16))
+
   cd "$_pkgsrc"
   npm install
   cargo-tauri build --bundles deb
