@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=protoc-gen-js
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Protocol Buffers for JavaScript"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=(
   'npm'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('123fac2e86109b24e80ccd356aa914e268bf5863ad1354d224d6ceaed6f5c45b')
+sha256sums=('a08244115ed0535971ec894abf078da90ad2c0938700612f90dc550f218627ee')
 
 build() {
   cd "protobuf-javascript-$pkgver"
@@ -24,6 +24,6 @@ build() {
 
 package() {
   cd "protobuf-javascript-$pkgver"
-  install -Dm755 "bazel-bin/generator/$pkgname" -t "${pkgdir}/usr/bin/"
-  install -Dm644 LICENSE.md -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  install -Dm755 "bazel-bin/generator/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
