@@ -1,6 +1,6 @@
 # Maintainer: Zeus <zeus@example.com>
 pkgname=diskord
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A fast, intuitive, and universal TUI storage manager for Omarchy (Arch Linux + Hyprland)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('hyprland' 'xdg-terminal-exec' 'polkit')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e2d06df89e31ab386279e5a29f447c6a93e863f215b3cbf3646c53a9abcdae24')
+sha256sums=('bb654aa5ad1da6bb988e47b2041f97294fdbbe450f58ba579cabe3fb5d897dbb')
 
 build() {
   cd "$pkgname-$pkgver"
