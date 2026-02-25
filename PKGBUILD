@@ -33,6 +33,7 @@ sha256sums_armv6h=('10355e7cd4e9c355839d69a2df0e79630103bf1aef09d8ca9b0e6c55934f
 
 prepare() {
   # try to generate completions if the binary is runnable on current CPU
+  local shell
   for shell in bash fish zsh; do
     ./netbird completion $shell >completion.$shell 2>/dev/null || rm -f completion.$shell
   done
