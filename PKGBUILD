@@ -2,7 +2,7 @@
 
 _upstream_name='stompbox'
 pkgname="${_upstream_name}-jack-git"
-pkgver='0.1.13.r10.g5b11c1f'
+pkgver='0.2.0.r2.g2fcdf25'
 pkgrel=1
 pkgdesc='Guitar amplification and effects library (headless JACK client)'
 arch=('x86_64' 'aarch64')
