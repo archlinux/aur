@@ -3,8 +3,8 @@ pkgname=comty-desktop
 
 _electronversion=39
 
-pkgver="0.5.2"
-pkgrel=2
+pkgver="0.6.0"
+pkgrel=1
 pkgdesc="Official Comty Desktop application"
 arch=("x86_64")
 url="https://github.com/ragestudio/comty"
