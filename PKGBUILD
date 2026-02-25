@@ -2,7 +2,7 @@
 
 pkgname=ik-llama.cpp
 _pkgname=ik_llama.cpp
-pkgver=r4222.68bd30d9
+pkgver=r4228.68431b04
 pkgrel=1
 pkgdesc="llama.cpp fork with additional SOTA quants and improved performance (OpenBLAS Backend)"
 arch=(x86_64 armv7h aarch64)
