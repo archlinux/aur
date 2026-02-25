@@ -1,7 +1,7 @@
 # Maintainer: Schorsch <wsixcde+aur at gmail dot com>
 # Thanks to <mti at tillenius dot com> whose packages the ps7 packages were based on
 pkgname=picoscope7
-pkgver=7.2.10.7893
+pkgver=7.2.10.8486
 pkgrel=1
 pkgdesc="PicoScope 7 Test and Measurment Stable"
 arch=('x86_64')
@@ -28,7 +28,7 @@ options=(!strip)
 install=$pkgname.install
 changelog=
 source=("https://labs.picotech.com/picoscope7/debian/pool/main/p/picoscope/picoscope_${pkgver//_/-}_amd64.deb")
-md5sums=('20d4c7d850655446a047d90c6fb88038')
+md5sums=('335f5114e61922fc27dea300d626b0c4')
 
 package() {
   tar -xf data.tar.* -C "${pkgdir}"
