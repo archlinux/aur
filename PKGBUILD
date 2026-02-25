@@ -1,4 +1,4 @@
-# Maintainer: rizukirr <rizkirr.xyz@gmail.com>
+# Maintainer: Rizki Rakasiwi <rizkirr.xyz@gmail.com>
 pkgname=muslimtify
 pkgver=0.1.1
 pkgrel=1
