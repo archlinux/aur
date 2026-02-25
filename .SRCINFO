@@ -1,7 +1,7 @@
 pkgbase = cwc
 	pkgdesc = Extensible Wayland compositor with dynamic window management
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Cudiph/cwcwm
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -19,7 +19,7 @@ pkgbase = cwc
 	depends = libwlroots-0.19.so
 	depends = libxcb
 	depends = libxkbcommon
-	depends = luajit-lgi
+	depends = lua51-lgi
 	depends = luajit
 	depends = pango
 	depends = wayland
