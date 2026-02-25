@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=requestly-bin
 _pkgname=Requestly
-pkgver=26.2.6
+pkgver=26.2.20
 _electronversion=23
 pkgrel=1
 pkgdesc="Debug your network request across all platforms and browsers using a single app.(Prebuilt version.Use system-wide electron)"
@@ -24,7 +24,7 @@ source=(
     "index.html-${pkgver}::https://raw.githubusercontent.com/requestly/requestly-desktop-app/v${pkgver}/src/loadingScreen/index.html"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('28635b2d769dae5cd68163d1f6c3e79e92448a6122ccca0e71f19c02293c4792'
+sha256sums=('b1a0ba208acb5d5846c51fc8ea02832f19ec670f75357d69dded5b4265717ecc'
             '458836a4541233742fec5da1bf75b151cc0b1f879b0574f362ae793d055a233d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -49,9 +49,10 @@ prepare() {
     _get_electron_version
     sed -i "s/AppRun/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${srcdir}/squashfs-root/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/dist/main" -type f -exec sed -i "s/process.resourcesPath/\"\/usr\/lib\/${pkgname%-bin}\"/g" {} +
     install -Dm644 "${srcdir}/index.html-${pkgver}" "${srcdir}/app.asar.unpacked/dist/loadingScreen/index.html"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/squashfs-root/resources/app.asar"
     find "${srcdir}/squashfs-root" -type d -exec chmod 755 {} +
     rm -rf \
         "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/win-version-info/prebuilds" \
@@ -60,8 +61,15 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/"{app.asar.unpacked,static} "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/squashfs-root/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/squashfs-root/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/squashfs-root/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 32x32 64x64 128x128 256x256 512x512 1024x1024)
