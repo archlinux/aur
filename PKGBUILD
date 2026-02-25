@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openmarch-bin
 _pkgname=OpenMarch
-pkgver=0.0.21
+pkgver=0.0.22
 _electronversion=40
-pkgrel=2
+pkgrel=1
 pkgdesc="A free and open source drill-writing app built on web frameworks.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -21,8 +21,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-linux_arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}_${pkgver}-linux_x86_64.AppImage")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('123091426c095bb4f17a22407a41b434a6b9d5bc4df1d514bf80b4816b5b5925')
-sha256sums_x86_64=('cb25574a9fa675fabcf996b45b09db8c80b272ea4ff4a5da3dc52cc8c57cce70')
+sha256sums_aarch64=('6139bbec2380c246311d2cace1a035a8bc8f203a7fea17c3805144f760986fdc')
+sha256sums_x86_64=('be9b1810be50df69dfe6e6e3e168e568ab51c2018d96c2578fb91ad9369f4e02')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -48,11 +48,12 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/squashfs-root/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
     if find "${srcdir}/squashfs-root/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for subdir in "${srcdir}/squashfs-root/resources/"*; do
-            if [ -d "${subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+        for _subdir in "${srcdir}/squashfs-root/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
             fi
         done
     fi
