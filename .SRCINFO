@@ -9,7 +9,7 @@ pkgbase = rajio-sen
 	depends = python
 	depends = python-requests
 	depends = python-rich
-	depends = python-pick
+	depends = python-zenlog
 	source = rajio-sen-1.0.4.tar.gz::https://github.com/jullespio/rajio-sen/archive/refs/tags/v1.0.4.tar.gz
 	sha256sums = 7ea8b4179bd96065fbceea08ced01c03f07b1686c64d7c57de6bc1b929985b8a
 
