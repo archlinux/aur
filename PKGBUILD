@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fusionkit-git
 _pkgname=FusionKit
-pkgver=0.1.4.r0.g927a9b5
+pkgver=0.1.12.r3.g36dfb55
 _electronversion=33
 _nodeversion=22
 pkgrel=1
@@ -21,6 +21,7 @@ makedepends=(
     'curl'
     'gendesk'
     'icoutils'
+    'jq'
 )
 source=(
     "${pkgname//-/.}::git+${url}.git"
@@ -41,8 +42,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep -m 1 '"electron":' "${srcdir}/${pkgname%-git}.git/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname//-/.}"
@@ -96,7 +98,15 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+	find "${srcdir}/${pkgname//-/.}/release/linux-"*/"resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-git}" {} +
+    if find "${srcdir}/${pkgname//-/.}/release/linux-"*/"resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${pkgname//-/.}/release/linux-"*/"resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-git}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/${pkgname//-/.}/public/${pkgname%-git}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"

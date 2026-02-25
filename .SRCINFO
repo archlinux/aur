@@ -1,6 +1,6 @@
 pkgbase = fusionkit-git
 	pkgdesc = Desktop toolbox,integrated with subtitle processing(AI translation,format conversion),batch renaming of files,paid music decryption(to FLAC/MP3) and other practical functions.(Use system-wide electron)
-	pkgver = 0.1.4.r0.g927a9b5
+	pkgver = 0.1.12.r3.g36dfb55
 	pkgrel = 1
 	url = https://github.com/QiuYeDx/FusionKit
 	arch = any
@@ -11,8 +11,9 @@ pkgbase = fusionkit-git
 	makedepends = curl
 	makedepends = gendesk
 	makedepends = icoutils
+	makedepends = jq
 	depends = electron33
-	provides = fusionkit=0.1.4
+	provides = fusionkit=0.1.12
 	conflicts = fusionkit
 	source = fusionkit.git::git+https://github.com/QiuYeDx/FusionKit.git
 	source = fusionkit.sh
