@@ -2,7 +2,7 @@
 _pkgname=mosdns
 pkgname=${_pkgname}-bin
 pkgver=5.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="一个 DNS 转发器"
 arch=('x86_64')
 url="https://github.com/IrineSistiana/mosdns/"
