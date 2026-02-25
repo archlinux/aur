@@ -1,7 +1,7 @@
 pkgbase = devkitty
 	pkgdesc = Swiss army knife for developers.(Use system-wide electron)
 	pkgver = 4.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://devkitty.app/
 	arch = any
 	license = MIT

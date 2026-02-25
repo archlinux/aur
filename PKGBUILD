@@ -4,7 +4,7 @@ _pkgname=Devkitty
 pkgver=4.0.6
 _electronversion=40
 _nodeversion=25
-pkgrel=1
+pkgrel=2
 pkgdesc="Swiss army knife for developers.(Use system-wide electron)"
 arch=('any')
 url="https://devkitty.app/"
@@ -81,14 +81,14 @@ prepare() {
     fi
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    #NODE_ENV=development    pnpm install
+    NODE_ENV=development    pnpm install
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
-    #NODE_ENV=production     pnpm run build
-    #NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
+    NODE_ENV=production     pnpm run build
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
