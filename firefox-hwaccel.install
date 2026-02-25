@@ -1,0 +1,9 @@
+post_install() {
+    echo ">>> firefox-hwaccel: VA-API pref enabled for Firefox."
+    echo ">>> Run: vaapi-activate && restart Firefox"
+    echo ">>> Verify: vaapi-verify"
+}
+
+post_upgrade() {
+    post_install
+}

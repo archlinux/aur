@@ -1,0 +1,15 @@
+pkgbase = firefox-hwaccel
+	pkgdesc = Enable VA-API hardware video decode in Firefox and forks
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://wiki.archlinux.org/title/Firefox#Hardware_video_acceleration
+	install = firefox-hwaccel.install
+	arch = any
+	license = MIT
+	depends = vaapi-autoconfig
+	source = zzz-hwaccel.js
+	source = LICENSE
+	sha256sums = ed69ff4a1ba438557cb5e2be4303991737d017820edda3e4834f11cdf914febb
+	sha256sums = 2eb5cf5f51415ad4d11336f0771301ea309344d8b11b82a49d009290f71d3041
+
+pkgname = firefox-hwaccel
