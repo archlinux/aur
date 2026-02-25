@@ -1,6 +1,6 @@
 pkgbase = bsh
 	pkgdesc = High-performance, Git-aware, predictive terminal history middleware
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/karthikeyjoshi/bsh
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = bsh
 	depends = libgit2
 	depends = sqlitecpp
 	depends = python
-	source = bsh-0.2.8.tar.gz::https://github.com/karthikeyjoshi/bsh/archive/refs/tags/v0.2.8.tar.gz
-	sha256sums = 9110213492692db260420567910ee4869d9c01bb894a27be687247ca1dfc95d3
+	source = bsh-0.2.9.tar.gz::https://github.com/karthikeyjoshi/bsh/archive/refs/tags/v0.2.9.tar.gz
+	sha256sums = 562e3eeed98921a83840f15cc2c0b83d81c7936b07894043427a7d754659f043
 
 pkgname = bsh
