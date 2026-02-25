@@ -7,7 +7,7 @@ pkgname=(
 )
 pkgbase=mullvad-vpn-bin
 pkgver=2025.14
-pkgrel=3
+pkgrel=4
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
@@ -49,7 +49,7 @@ package_mullvad-vpn-bin() {
 
   # Remove useless changelog.gz & symlink actual changelog
   rm "$pkgdir/usr/share/doc/mullvad-vpn/changelog.gz"
-  ln -s "/opt/Mullvad VPN/resources/CHANGELOG.md" "$pkgdir/usr/share/doc/$pkgname/"
+  ln -s "/opt/Mullvad VPN/resources/CHANGELOG.md" "$pkgdir/usr/share/doc/mullvad-vpn/"
 
   # Remove mullvad-vpn-daemon files
   rm "$pkgdir/opt/Mullvad VPN"/resources/{ca.crt,mullvad-{problem-report,setup},relays.json}
