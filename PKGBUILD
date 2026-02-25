@@ -2,7 +2,7 @@
 # Contributor: aulonsal <seraur at aulonsal dot com>
 pkgname=dbgate-bin
 _pkgname=DbGate
-pkgver=7.0.6
+pkgver=7.1.0
 _electronversion=38
 pkgrel=1
 pkgdesc="Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others.(Prebuilt version.Use system-wide electron)"
@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/dbgate/dbgate/v${pkgver}/LICENSE"
 	"${pkgname%-bin}.sh"
 )
-sha256sums=('16fdef3482576545f9de712fed20725517a28da95736bf3749add329323eb50e'
+sha256sums=('6ca63c3cb88107fe33e067d689743d3c7e1593e00efadd206d135e691fbbf836'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -46,11 +46,12 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-	install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+	install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/opt/${_pkgname}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
     if find "${srcdir}/opt/${_pkgname}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for subdir in "${srcdir}/opt/${_pkgname}/resources"/*; do
-            if [ -d "${subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${subdir}"/* "${pkgdir}/usr/lib/${pkgname%-bin}"
+        for _subdir in "${srcdir}/opt/${_pkgname}/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
             fi
         done
     fi
