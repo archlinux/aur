@@ -1,0 +1,16 @@
+pkgbase = kmcp
+	pkgdesc = CLI tool and Kubernetes controller for building, testing and deploying MCP servers
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/kagent-dev/kmcp
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	provides = kmcp
+	conflicts = kmcp-bin
+	source = kmcp-0.2.6.tar.gz::https://github.com/kagent-dev/kmcp/archive/v0.2.6.tar.gz
+	sha256sums = SKIP
+
+pkgname = kmcp
