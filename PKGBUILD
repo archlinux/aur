@@ -2,7 +2,7 @@
 
 pkgname=rtt-rstudio-technician
 pkgver=5.5.191642
-pkgrel=1
+pkgrel=2
 # INFO:
 #   Intended for digital forensic labs, data recovery businesses, or individuals, it provides
 #   them with a first-class professional data recovery tool set that can solve most of
@@ -29,7 +29,7 @@ conflicts=('r-studio-technician-for-linux-bin')
 source=("${pkgname}-eula.html::https://www.r-studio.com/includes/eula/PopupEulaDRST.shtml?R-STUDIO%20Technician")
 source_x86_64=("RStudioTech5_x64-${pkgver}.rpm::https://www.r-studio.com/downloads/RStudioTech5_x64.rpm")
 source_i686=("RStudioTech5_i386-${pkgver}.rpm::https://www.r-studio.com/downloads/RStudioTech5_i386.rpm")
-sha512sums=('7d0c133488f9f3d908a6668102bd713bfd621644cc5bbb34b283e94f6074b964da89ad1ec5ae63f721fc08d46a8bd39eedaebe96745314b7cd409dbf28dc5c43')
+sha512sums=('c996b2f7828872092c7d2e3fe3237f3d33c63982fcd4e4bf3d3cfe478b62ac0559c5e233872ce3b5988fc9bcb91dbf21e1b45e009399540cea3320e9c6367cf5')
 sha512sums_x86_64=('113f54574243e5b3676d45ab890fc6b7e8a7359f1692d8b245c089a651c4928cc13e8bc8fc2d117acdd07885b59f20ed7af74eeae83325261d68f9bede8d5ea1')
 sha512sums_i686=('c1493aa2976e21f539c689be485bf125d70be7668a4f4338fdce848262b34f0b71dbc9adfcd39656d418e1012472c8ce981dcb761bb282e2d853be1185d43871')
 

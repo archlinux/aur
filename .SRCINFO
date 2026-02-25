@@ -1,7 +1,7 @@
 pkgbase = rtt-rstudio-technician
 	pkgdesc = R-Studio Technician is a powerful cost-effective undelete and data recovery software utility (non-free).
 	pkgver = 5.5.191642
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.r-studio.com/Data_Recovery_Technician.shtml
 	arch = x86_64
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = rtt-rstudio-technician
 	provides = r-studio-technician-for-linux-bin
 	conflicts = r-studio-technician-for-linux-bin
 	source = rtt-rstudio-technician-eula.html::https://www.r-studio.com/includes/eula/PopupEulaDRST.shtml?R-STUDIO%20Technician
-	sha512sums = 7d0c133488f9f3d908a6668102bd713bfd621644cc5bbb34b283e94f6074b964da89ad1ec5ae63f721fc08d46a8bd39eedaebe96745314b7cd409dbf28dc5c43
+	sha512sums = c996b2f7828872092c7d2e3fe3237f3d33c63982fcd4e4bf3d3cfe478b62ac0559c5e233872ce3b5988fc9bcb91dbf21e1b45e009399540cea3320e9c6367cf5
 	source_x86_64 = RStudioTech5_x64-5.5.191642.rpm::https://www.r-studio.com/downloads/RStudioTech5_x64.rpm
 	sha512sums_x86_64 = 113f54574243e5b3676d45ab890fc6b7e8a7359f1692d8b245c089a651c4928cc13e8bc8fc2d117acdd07885b59f20ed7af74eeae83325261d68f9bede8d5ea1
 	source_i686 = RStudioTech5_i386-5.5.191642.rpm::https://www.r-studio.com/downloads/RStudioTech5_i386.rpm
