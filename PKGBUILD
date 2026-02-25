@@ -2,8 +2,8 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=memex
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Claude Code & Codex CLI transcript search for both humans & agents"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nicosuave/memex"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8c81eecb5a82ec4aa56390d74321ba9c62a66b55b686f4d5854796aef989d9e0')
+sha256sums=('5803c897db53e23df2c5e483c96b81021893919bbd6e5a22490831b5c4719db2')
 options=('!lto')
 
 prepare() {
