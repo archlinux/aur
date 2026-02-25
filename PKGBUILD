@@ -1,4 +1,4 @@
-# Maintainer:  Scott-Nx <aur dot elevator257 at passmail dot net>
+# Maintainer:  nathawat <nathawat at noreply dot codeberg dot org>
 # Contributor: Mohamed tarek <Mokhamed_tarek@mail.ru>
 # Contributor: rotzelbart <tausendkubik@gmail.com>
 # Contributor: TechVio <68242352+techvio1@users.noreply.github.com>
