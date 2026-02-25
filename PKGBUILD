@@ -2,25 +2,18 @@
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 pkgname=pyprland-git
 pkgver=r1424.5293179
-pkgrel=8
+pkgrel=9
 
-pkgdesc="Enhance your Desktop with menus, easy monitor layout and other extensions (powerful hyprland scratchpads)"
+pkgdesc="A companion for your desktop UX (scratchpads, menus, monitor layout and more)"
 arch=(any)
-url="https://github.com/fdev31/pyprland"
+url="https://github.com/hyprland-community/pyprland"
 license=('MIT')
-groups=()
-depends=('python' 'python-aiofiles' 'python-aiohttp')
-makedepends=('git' 'python-build' 'python-installer' 'python-poetry' 'gcc')
-optdepends=('python-pillow: for wallpapers rounded borders'
-    'python-questionary: for pypr-quickstart to work')
+depends=('python' 'python-aiofiles' 'python-aiohttp' 'python-pillow')
+makedepends=('git' 'python-build' 'python-installer' 'python-hatchling' 'gcc')
+optdepends=('python-questionary: for pypr-quickstart to work')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
-install=
 source=(git+"https://github.com/fdev31/pyprland#branch=main")
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {
