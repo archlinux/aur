@@ -1,14 +1,14 @@
 pkgbase = apache-jena-fuseki
 	pkgdesc = SPARQL server built on the Jena Java framework for building Semantic Web and Linked Data applications
-	pkgver = 5.6.0
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://jena.apache.org/
 	arch = any
 	license = Apache
 	depends = java-runtime>=17
-	source = https://downloads.apache.org/jena/binaries/apache-jena-fuseki-5.6.0.tar.gz
+	source = https://downloads.apache.org/jena/binaries/apache-jena-fuseki-6.0.0.tar.gz
 	source = fuseki-server
-	sha512sums = 53dfe13cdd5f6387a0c62917e275fde2cd2e2f2052bfe7515384934f24915228b8512a2dd2b50b7060cc300c976254349d991fcea239484cae48e0a59d67cd54
+	sha512sums = 8b14dcefade409bb4efd94e05291ea46d50508bf175f6f163f328d1d80183559a4c5b75806802283802a2879405a132b9b311e2277f784a784fa66ce4a9d8722
 	sha512sums = SKIP
 
 pkgname = apache-jena-fuseki
