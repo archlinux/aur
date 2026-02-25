@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=netmount-bin
 _pkgname=NetMount
-pkgver=1.1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Unified management and mounting of cloud storage facilities.(Prebuilt version)统一管理和挂载云存储设施"
 arch=('x86_64')
@@ -20,7 +20,7 @@ options=(
     '!strip'
 )
 source=("${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1.${CARCH}.rpm")
-sha256sums=('3b8700724fcf9f21b0dd36b56c3569018957c776a90b80401bff8163433cc74f')
+sha256sums=('892ce9c92391b055a225a31d6f3edbe23a59e8cb360763654def442d5f39e3dc')
 prepare() {
     ln -sf "/usr/bin/rclone" "${srcdir}/usr/lib/${pkgname%-bin}/res/bin/rclone"
     ln -sf "/usr/bin/alist" "${srcdir}/usr/lib/${pkgname%-bin}/res/bin/alist/alist"
