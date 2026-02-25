@@ -1,0 +1,5 @@
+[lsu-bin]
+source = "github"
+github = "l5yth/lsu"
+use_latest_release = true
+prefix = "v"

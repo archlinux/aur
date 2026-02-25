@@ -1,0 +1,19 @@
+pkgbase = lsu-bin
+	pkgdesc = List systemd units
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/l5yth/lsu
+	arch = x86_64
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = lsu
+	conflicts = lsu
+	source = README-0.1.0.md::https://raw.githubusercontent.com/l5yth/lsu/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/l5yth/lsu/v0.1.0/LICENSE
+	sha256sums = 24dd1cc90d872d56e80f68e896e7e452f6e3b5dea698688d73234ea6f209cd07
+	sha256sums = 151eccbd6510c963ab990ab2989c8d3cebde6fb05a6e5a9b0090ba414092f7d8
+	source_x86_64 = lsu-x86_64-0.1.0::https://github.com/l5yth/lsu/releases/download/v0.1.0/lsu
+	sha256sums_x86_64 = 80b649b848879b09dd3d419564fe175c2e8f37823dc447f91c4ae39f0a31e765
+
+pkgname = lsu-bin
