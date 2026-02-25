@@ -16,11 +16,13 @@ source=(
     "git+https://github.com/DragonMinded/libdragon.git#branch=preview"
     "https://github.com/HailToDodongo/pyrite64/releases/download/v${pkgver}/pyrite64-${pkgver//./_}-linux.zip"
     "git+https://github.com/HailToDodongo/tiny3d.git"
+    "pyrite64.desktop"
 )
 sha512sums=('a548820c814d3ca10ad1f6c5b1a32c9006215cba5f8a21132392cbd831b0f7bc7e34b3c4d2f4568563e932e756fc418e457f682504e060101d89a2e9fcea4cae'
             'SKIP'
             '6acf1a40affc15cd0618f91ffce3ff0dfd492223ba0d5a9bfaa0f803590cbe95934d5c5c611bd4ba35ab448937b8ba8ccc715204422288f295ba2c4fd0159cd5'
-            'SKIP')
+            'SKIP'
+            '7fa6cf338fe0c7d18122239a5dda749a3b08a18e64b76d6e042b005a89f01656641639d0d0584f91554d2a8c6c0614294dc7d6c013652f37b9efb1c70e37ce47')
 options=('!strip')
 
 prepare() {
@@ -167,15 +169,5 @@ package() {
         install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 
-    install -d "${pkgdir}/usr/share/applications"
-    cat > "${pkgdir}/usr/share/applications/pyrite64.desktop" <<EOF
-[Desktop Entry]
-Name=Pyrite64
-Comment=N64 Game-Engine and Editor using libdragon & tiny3d
-Exec=/usr/bin/pyrite64
-Icon=/opt/pyrite64/data/icon.ico
-Terminal=false
-Type=Application
-Categories=Development;IDE;
-EOF
+    install -Dm644 "${srcdir}/pyrite64.desktop" "${pkgdir}/usr/share/applications/pyrite64.desktop"
 }

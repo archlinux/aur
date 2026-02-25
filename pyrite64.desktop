@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Pyrite64
+Comment=N64 Game-Engine and Editor using libdragon & tiny3d
+Exec=/usr/bin/pyrite64
+Icon=/opt/pyrite64/data/icon.ico
+Terminal=false
+Type=Application
+Categories=Development;IDE;
