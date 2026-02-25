@@ -7,7 +7,7 @@ pkgname=(
 )
 pkgbase=mullvad-vpn-bin
 pkgver=2025.14
-pkgrel=4
+pkgrel=5
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
@@ -45,15 +45,17 @@ package_mullvad-vpn-bin() {
 
   bsdtar -xvf data.tar.xz -C "$pkgdir/"
   chmod 4755 "$pkgdir/opt/Mullvad VPN/chrome-sandbox"
-  install -m755 "$srcdir/mullvad-vpn.sh" "$pkgdir/usr/bin/mullvad-vpn"
 
   # Remove useless changelog.gz & symlink actual changelog
   rm "$pkgdir/usr/share/doc/mullvad-vpn/changelog.gz"
   ln -s "/opt/Mullvad VPN/resources/CHANGELOG.md" "$pkgdir/usr/share/doc/mullvad-vpn/"
 
   # Remove mullvad-vpn-daemon files
+  rm -r "$pkgdir/usr/bin/"
   rm "$pkgdir/opt/Mullvad VPN"/resources/{ca.crt,mullvad-{problem-report,setup},relays.json}
   rm -r "$pkgdir"/usr/{lib,local,share/{bash-completion,fish}}/
+
+  install -Dm755 "$srcdir/mullvad-vpn.sh" "$pkgdir/usr/bin/mullvad-vpn"
 
   # The AppArmor profile allows Electron sandbox to work
   # This disables user namespace restrictions
