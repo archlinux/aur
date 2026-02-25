@@ -2,7 +2,7 @@
 
 _name=genai-prices
 pkgname=python-$_name
-pkgver=0.0.52
+pkgver=0.0.54
 pkgrel=1
 pkgdesc='Calculate prices for calling LLM inference APIs.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-httpx' 'python-pydantic')
 makedepends=('python-uv-build' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-anyio' 'python-devtools' 'python-dirty-equals' 'python-inline-snapshot' 'python-pytest' 'python-pytest-recording' 'python-ruamel-yaml')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f8d08742068886bb65d75848f7e2b68a53038f0412647c656cdc30f3efeb6f02')
+sha256sums=('7db9249e920cd4d308f0c2c824d808111e8720dd933c6900ddb2bb7178e4d17b')
 
 build() {
     cd "$srcdir"/$_name-$pkgver/packages/python
@@ -30,6 +30,7 @@ check() {
   cd "$srcdir"/$_name-$pkgver
   python -m venv --system-site-packages test-env
   cp -f prices/data.schema.json test-env/lib/python$python_version/data.schema.json
+  cp -f prices/data.json test-env/lib/python$python_version/data.json
   test-env/bin/python -m installer packages/python/dist/*.whl
   test-env/bin/python -m installer prices/dist/*.whl
   test-env/bin/python -m pytest "${pytest_options[@]}" tests
