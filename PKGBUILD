@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=neko-go
-pkgver=0.1.36
+pkgver=0.1.37
 pkgrel=1
 pkgdesc='Animated cursor-chasing cat (Go reimplementation)'
 url='https://github.com/crgimenes/neko'
@@ -13,7 +13,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
   neko-go.desktop
 )
-sha256sums=('80bb88b75f9897166b156884f66ba6ad86745350c685e77f6b960af2c2b4eb58'
+sha256sums=('bcd3574d6fa95ce0359c087bb3c98fde445ca72957d652a7ef738ea3ef671785'
             '4f5396f95cc692cb4d4ffc3f5d227d42925c1a858edde78dadd7814411f7e034')
 
 prepare() {
