@@ -1,7 +1,7 @@
 pkgbase = rajio-sen
 	pkgdesc = A minimalist vaporwave-inspired pirate radio scanner for the terminal
-	pkgver = 1.0.4
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/jullespio/rajio-sen
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = rajio-sen
 	depends = python-requests
 	depends = python-rich
 	depends = python-zenlog
-	source = rajio-sen-1.0.4.tar.gz::https://github.com/jullespio/rajio-sen/archive/refs/tags/v1.0.4.tar.gz
-	sha256sums = 7ea8b4179bd96065fbceea08ced01c03f07b1686c64d7c57de6bc1b929985b8a
+	source = rajio-sen-1.1.0.tar.gz::https://github.com/jullespio/rajio-sen/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = c01ca6a818efcc52e00961531907e545333b846e1a31a54d3251339526fb45bc
 
 pkgname = rajio-sen
