@@ -1,7 +1,7 @@
 # Maintainer: PrincParshia <princparshia@gmail.com>
 
 pkgname=adw-maia-gtk-theme
-pkgver=6.4
+pkgver=6.4.1
 pkgrel=1
 pkgdesc="Manjaro variation of Adw GTK theme"
 arch=(x86_64)
