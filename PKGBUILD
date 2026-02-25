@@ -1,4 +1,5 @@
 # Maintainer: Sergio Schneider <spsf64 at g m a i l . c o m>
+# Contributor: xiota
 # Contributor: Mike Krüger
 
 ## useful links
@@ -8,21 +9,24 @@
 pkgname=gnome-encfs-manager-bin
 _pkgname=gnome-encfs-manager
 pkgver=1.9
-pkgrel=4
+pkgrel=5
 pkgdesc="An easy to use manager and mounter for encfs stashes"
-url="https://moritzmolch.com/apps/gencfsm.html"
+url="https://launchpad.net/gencfsm"
 license=('GPL-2.0-or-later')
 arch=('x86_64')
 
 provides=('gnome-encfs-manager')
 conflicts=('gnome-encfs-manager')
 
-source=("https://download.opensuse.org/repositories/home:/moritzmolch:/gencfsm/Debian_10/amd64/gnome-encfs-manager_${pkgver}_amd64.deb")
-sha256sums=('2d7d1bcbed13175a869e64de0873ee8218663b470d21c21a1fc4f83d0f84af5d')
+#source=("https://download.opensuse.org/repositories/home:/moritzmolch:/gencfsm/Debian_10/amd64/gnome-encfs-manager_${pkgver}_amd64.deb")
+source=("gnome-encfs-manager_${pkgver}_amd64.deb::https://ppa.launchpadcontent.net/gencfsm/ppa/ubuntu/pool/main/g/gnome-encfs-manager/gnome-encfs-manager_1.9~ubuntu23.04.1_amd64.deb")
+
+
+sha256sums=('05ecbe8269feed0089421c2f15dfdb2e9e84ad58af957930a46e816e45535f59')
 
 prepare() {
   ar vx "gnome-encfs-manager_${pkgver}_amd64.deb"
-  tar -xf data.tar.xz
+  tar -xf data.tar.zst
 }
 package() {
   depends+=(
@@ -54,6 +58,6 @@ package() {
   install -d "$pkgdir/usr/share/icons/"
   mv "$srcdir/usr/share/icons"/* "$pkgdir/usr/share/icons/"
 
-  install -d "$pkgdir/usr/share/locale/"
-  mv "$srcdir/usr/share/locale"/* "$pkgdir/usr/share/locale/"
+#  install -d "$pkgdir/usr/share/locale/"
+#  mv "$srcdir/usr/share/locale"/* "$pkgdir/usr/share/locale/"
 }
