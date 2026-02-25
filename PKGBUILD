@@ -1,10 +1,10 @@
 # Maintainer: oceanthunder <admin@oceanthunder.dev>
 pkgname=ttf-vt323
-pkgver=1.000
+pkgver=1.001
 pkgrel=1
 pkgdesc="Monospaced typeface designed to look like the VT320 text terminal glyphs."
 arch=('any')
-url="https://github.com"
+url="https://github.com/phoikoi/VT323/"
 license=('OFL')
 depends=('fontconfig')
 provides=('ttf-font')
