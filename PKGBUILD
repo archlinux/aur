@@ -2,7 +2,7 @@
 
 pkgname=xnviewmp-system-libs
 _pkgname=xnviewmp
-pkgver=1.9.10
+pkgver=1.10.1
 srcrel=1 # Incremented when there is a new release for the same version number
 pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter (using system libraries)."
@@ -26,10 +26,10 @@ source=("XnViewMP-linux-x64_${pkgver}-rel${srcrel}.tgz::https://download.xnview.
         'XnView.desktop'
         'qt5_std_fun_forwarder.S'
         'qt5_std_fun_forwarder.lds')
-sha256sums=('9A1468E48E26BF5B584DD51942654D8B143EA036F8628CDEBBCFCB61EC62F023'
+sha256sums=('D03F1314B9CEBBA5968DAC0591B1C9134985ABF25BA67BBA3CFB04D52944C0BE'
             '87EC80C5049745DC3018FCDCF4DDDF0E877AE3B20706705F2A80715232AD2141'
             'F6B3A4AAA0A55B5F21D9B91AB6F3DA3D6EE077BA7FDD17E7C4AB1C69AD2A9E3A'
-            '3C3AC0549724E6F3BD46E0D7A4CAE4E4272455B163722ABF92A7ACE6772DB367'
+            'F9EE40F03A1783DD5844D2FCD4A8986A982800D8ADF75F7A787799F961D09A11'
             '3D6DA484CD55EAC8910D5CF87F9057E6EADEAC842A249DCBDA35E1C6F3FCDC0D')
 
 # There is a lot of useless files in the archive, only install those from that
