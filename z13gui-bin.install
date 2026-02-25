@@ -1,0 +1,11 @@
+post_install() {
+    udevadm control --reload-rules
+    udevadm trigger
+    systemctl --global enable z13ctl.socket z13ctl.service
+    systemctl --global enable z13gui.service
+}
+
+post_upgrade() {
+    udevadm control --reload-rules
+    udevadm trigger
+}
