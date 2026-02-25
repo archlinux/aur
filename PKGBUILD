@@ -1,4 +1,4 @@
-# Maintainer: bbj <benigno at duck dot com>
+# Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=pgschema-bin
 pkgver=1.7.2
 pkgrel=1
