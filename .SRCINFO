@@ -1,0 +1,23 @@
+pkgbase = ssmt4-linux
+	pkgdesc = SSMT4 - Super Simple Linux Game Tools 4th
+	pkgver = 0.0.6_beta
+	pkgrel = 1
+	url = https://github.com/xiaobai01111/SSMT4-Linux
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libsoup3
+	depends = xdg-utils
+	optdepends = xorg-xwayland: XWayland support
+	optdepends = wine: Windows game compatibility
+	optdepends = winetricks: Wine helper scripts
+	optdepends = libayatana-appindicator: tray icon support
+	provides = ssmt4
+	conflicts = ssmt4
+	conflicts = ssmt4-git
+	options = !debug
+	source = ssmt4-linux-0.0.6_beta-1-x86_64.pkg.tar.zst::https://github.com/xiaobai01111/SSMT4-Linux/releases/download/v0.0.6-beta/ssmt4-linux-0.0.6_beta-1-x86_64.pkg.tar.zst
+	sha256sums = SKIP
+
+pkgname = ssmt4-linux
