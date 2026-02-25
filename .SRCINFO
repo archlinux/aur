@@ -1,7 +1,7 @@
 pkgbase = kclock-rs-bin
 	pkgdesc = A high-performance cross-platform timer application built with Rust and Slint UI
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/qml-to-slint/kclock-rs
 	arch = x86_64
 	license = GPL-3.0-or-later
