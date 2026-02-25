@@ -1,0 +1,14 @@
+pkgbase = hacktyper
+	pkgdesc = A terminal-based typing simulator that mimics hacking scenes from movies.
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/HsiangNianian/hacktyper
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = hacktyper
+	conflicts = hacktyper
+	source = hacktyper-0.2.7.tar.gz::https://github.com/HsiangNianian/hacktyper/archive/refs/tags/v0.2.7.tar.gz
+	sha256sums = SKIP
+
+pkgname = hacktyper
