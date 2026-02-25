@@ -13,10 +13,10 @@ _ffsrcver=140.8.0
 _ffbuild=2
 _l10n_commit=c857bb7d5e043b8bd8658e1fafa54a4baa9d3f0e
 _moz_build_id=20260106170501
-_lwrelver=102
+_lwrelver=103
 pkgver="${_ffsrcver}.${_lwrelver}"
 pkgrel=1
-pkgdesc="Firefox fork (LibreWolf-base) with increased customizability and security"
+pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
   : "${_ffsrcurl:="https://archive.mozilla.org/pub/firefox/releases/${_ffsrcver}esr"}"
@@ -144,7 +144,7 @@ source=(
   "default192x192.png"
   "0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch"
 )
-sha256sums=('0b4ab0f1eee81d9cf3e1e29d904734f9b93fd97b4a36df7e8bb0ad2f668605a9'
+sha256sums=('b6ea76287b5c6799ef67cd83c61cf3169875f2ae6f6e504600460f05c75ae7b9'
             '57a7f339ef68273f6597d8074a841fa053f63a21d1f609ab0074a26c063282e6'
             'SKIP'
             'b006db2a8fc22f95d7ca3f90cd210b3504faf8f72d7bd9a48c1d4874a08d2516'
