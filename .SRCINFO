@@ -1,14 +1,14 @@
 pkgbase = spycheck
 	pkgdesc = SpyCheck aims to detect spyware and stalkerware using passive network traffic analysis.
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://spycheck.org
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = go
 	depends = libpcap
 	depends = networkmanager
-	source = spycheck-0.1.0.tar.gz::https://codeberg.org/spycheck/spycheck/archive/v0.1.0.tar.gz
-	sha256sums = 1dc9902b4872693550ee57858db4f4302d0c6941e0d19ff432883bc4fb91fbe0
+	source = spycheck-0.2.0.tar.gz::https://codeberg.org/spycheck/spycheck/archive/v0.2.0.tar.gz
+	sha256sums = 9b2496fbfc9af0c6195822acb6b4ac142a2a77613f54347b4b27efaa62be1065
 
 pkgname = spycheck

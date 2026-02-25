@@ -1,7 +1,7 @@
 # Maintainer: the SpyCheck team <mail at spycheck dot org>
 pkgname=spycheck
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='SpyCheck aims to detect spyware and stalkerware using passive network traffic analysis.'
 arch=('x86_64')
 url="https://spycheck.org"
@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 depends=('libpcap' 'networkmanager')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://codeberg.org/spycheck/spycheck/archive/v${pkgver}.tar.gz")
-sha256sums=('1dc9902b4872693550ee57858db4f4302d0c6941e0d19ff432883bc4fb91fbe0')
+sha256sums=('9b2496fbfc9af0c6195822acb6b4ac142a2a77613f54347b4b27efaa62be1065')
 
 prepare(){
   cd "$pkgname"
