@@ -1,7 +1,7 @@
 # Maintainer: Zack Fitch <zack@johnzfitch.com>
 pkgname=claude-cowork-linux
-pkgver=1.1.1200
-pkgrel=1
+pkgver=1.1.4010
+pkgrel=2
 pkgdesc="Anthropic Claude Desktop with Cowork (local agent) support for Linux"
 arch=('x86_64')
 url="https://github.com/johnzfitch/claude-cowork-linux"
@@ -9,11 +9,13 @@ license=('custom:proprietary')
 depends=(
     'electron'
     'nodejs'
+    'gnome-keyring'
 )
 makedepends=(
     'p7zip'
     'npm'
     'curl'
+    'python'
 )
 optdepends=(
     'xdg-utils: for opening URLs'
@@ -29,48 +31,52 @@ conflicts=(
 )
 options=('!strip')
 
-# Auto-fetch latest Windows installer via redirect URL
+_rnet_wheel="rnet-3.0.0rc14-cp311-abi3-manylinux_2_34_x86_64.whl"
+
 source=(
     "git+https://github.com/johnzfitch/claude-cowork-linux.git"
+    "https://github.com/johnzfitch/claude-cowork-linux/releases/download/v3.0.1/${_rnet_wheel}"
 )
 sha256sums=(
-    'SKIP'  # Git source
+    'SKIP'
+    'SKIP'
 )
+noextract=("${_rnet_wheel}")
 
-# Dynamically determine version from Anthropic's latest redirect
 pkgver() {
-    # Follow redirect to get latest version
-    local url
-    url=$(curl -sL \
-        -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
-        -H "Accept: text/html,application/xhtml+xml" \
-        "https://claude.ai/api/desktop/win32/x64/exe/latest/redirect" \
-        -w "%{url_effective}" -o /dev/null)
-    # Extract version from URL: .../1.1.1200/Claude-hash.exe
-    echo "$url" | grep -oP '\d+\.\d+\.\d+' | head -1
+    cd "${srcdir}"
+
+    # Use rnet to query the DMG API (bypasses Cloudflare)
+    local venv_dir="${srcdir}/_rnet_venv"
+    python -m venv "$venv_dir" 2>/dev/null
+    "$venv_dir/bin/pip" install --quiet "${srcdir}/${_rnet_wheel}" 2>/dev/null
+
+    local version
+    version=$("$venv_dir/bin/python" "${srcdir}/claude-cowork-linux/tools/fetch-dmg.py" 2>/dev/null \
+        | awk '{print $1}')
+    rm -rf "$venv_dir"
+
+    echo "${version:-1.1.4010}"
 }
 
 prepare() {
     cd "${srcdir}"
 
-    # Download latest Windows installer via redirect
-    echo "Fetching latest Claude Desktop installer..."
-    curl -L \
-        -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
-        -H "Accept: text/html,application/xhtml+xml" \
-        "https://claude.ai/api/desktop/win32/x64/exe/latest/redirect" \
-        -o "Claude-latest.exe"
-
-    # Extract Windows installer (contains nupkg)
-    7z x -y "Claude-latest.exe" -o"exe-extracted" >/dev/null 2>&1 || true
-
-    # Find and extract the nupkg (it's a zip file)
-    _nupkg=$(find exe-extracted -name "*.nupkg" | head -1)
-    if [[ -z "$_nupkg" ]]; then
-        echo "Error: nupkg not found in installer"
-        return 1
+    # Set up rnet venv for DMG URL fetch
+    local venv_dir="${srcdir}/_rnet_venv"
+    if [[ ! -d "$venv_dir" ]]; then
+        python -m venv "$venv_dir"
+        "$venv_dir/bin/pip" install --quiet "${srcdir}/${_rnet_wheel}"
     fi
-    7z x -y "$_nupkg" -o"nupkg-extracted" >/dev/null 2>&1
+
+    # Fetch latest DMG URL via rnet, download with curl
+    echo "Fetching latest Claude Desktop DMG URL..."
+    local dmg_url
+    dmg_url=$("$venv_dir/bin/python" "${srcdir}/claude-cowork-linux/tools/fetch-dmg.py" --url)
+    echo "Downloading DMG from CDN..."
+    curl -fSL --progress-bar -o "${srcdir}/Claude.dmg" "$dmg_url"
+
+    rm -rf "$venv_dir"
 
     # Install asar tool locally
     npm install --prefix "${srcdir}" @electron/asar >/dev/null 2>&1
@@ -79,55 +85,91 @@ prepare() {
 build() {
     cd "${srcdir}"
 
-    _asar="${srcdir}/node_modules/.bin/asar"
+    local _asar="${srcdir}/node_modules/.bin/asar"
+    local _repo="${srcdir}/claude-cowork-linux"
 
-    # Find app.asar in extracted nupkg
-    _app_asar=$(find nupkg-extracted -name "app.asar" | head -1)
-    if [[ -z "$_app_asar" ]]; then
-        echo "Error: app.asar not found"
+    # Extract DMG with 7z
+    echo "Extracting DMG..."
+    7z x -y "${srcdir}/Claude.dmg" -o"${srcdir}/dmg-extracted" >/dev/null 2>&1
+
+    # Find Claude.app and app.asar
+    local _claude_app
+    _claude_app=$(find "${srcdir}/dmg-extracted" -name "Claude.app" -type d | head -1)
+    if [[ -z "$_claude_app" ]]; then
+        echo "Error: Claude.app not found in DMG"
         return 1
     fi
 
-    # Extract app.asar (we run from extracted dir, not repacked asar)
-    "$_asar" extract "$_app_asar" linux-app-extracted
+    local _app_asar="${_claude_app}/Contents/Resources/app.asar"
+    if [[ ! -f "$_app_asar" ]]; then
+        echo "Error: app.asar not found at: $_app_asar"
+        return 1
+    fi
 
-    # Apply Linux stubs (replaces Windows/macOS native bindings)
-    mkdir -p "linux-app-extracted/node_modules/@ant/claude-swift/js"
-    cp -f "${srcdir}/claude-cowork-linux/stubs/@ant/claude-swift/js/index.js" \
-          "linux-app-extracted/node_modules/@ant/claude-swift/js/index.js"
-    cp -f "${srcdir}/claude-cowork-linux/stubs/@ant/claude-native/index.js" \
-          "linux-app-extracted/node_modules/@ant/claude-native/index.js"
+    # Extract app.asar
+    "$_asar" extract "$_app_asar" "${srcdir}/linux-app-extracted"
 
-    # Copy frame-fix wrapper files into extracted app
-    cp -f "${srcdir}/claude-cowork-linux/stubs/frame-fix/frame-fix-entry.js" \
-          "linux-app-extracted/frame-fix-entry.js"
-    cp -f "${srcdir}/claude-cowork-linux/stubs/frame-fix/frame-fix-wrapper.js" \
-          "linux-app-extracted/frame-fix-wrapper.js"
+    # Copy unpacked native modules if present
+    local _unpacked="${_claude_app}/Contents/Resources/app.asar.unpacked"
+    if [[ -d "$_unpacked" ]]; then
+        cp -r "$_unpacked"/* "${srcdir}/linux-app-extracted/" 2>/dev/null || true
+    fi
+
+    # Copy resources/ from DMG (i18n, icons, etc.) excluding the asar itself
+    local _resources_dir="${_claude_app}/Contents/Resources"
+    mkdir -p "${srcdir}/linux-app-extracted/resources"
+    for item in "$_resources_dir"/*; do
+        local name
+        name=$(basename "$item")
+        case "$name" in
+            app.asar|app.asar.unpacked) continue ;;
+        esac
+        cp -r "$item" "${srcdir}/linux-app-extracted/resources/$name" 2>/dev/null || true
+    done
+
+    # Bake stubs into node_modules
+    mkdir -p "${srcdir}/linux-app-extracted/node_modules/@ant/claude-swift/js"
+    mkdir -p "${srcdir}/linux-app-extracted/node_modules/@ant/claude-native"
+    cp -f "${_repo}/stubs/@ant/claude-swift/js/index.js" \
+          "${srcdir}/linux-app-extracted/node_modules/@ant/claude-swift/js/index.js"
+    cp -f "${_repo}/stubs/@ant/claude-native/index.js" \
+          "${srcdir}/linux-app-extracted/node_modules/@ant/claude-native/index.js"
+
+    # Copy frame-fix files
+    cp -f "${_repo}/stubs/frame-fix/frame-fix-entry.js" \
+          "${srcdir}/linux-app-extracted/frame-fix-entry.js"
+    cp -f "${_repo}/stubs/frame-fix/frame-fix-wrapper.js" \
+          "${srcdir}/linux-app-extracted/frame-fix-wrapper.js"
+
+    # Apply cowork patch
+    echo "Applying cowork patch..."
+    python "${_repo}/patches/enable-cowork.py" \
+        "${srcdir}/linux-app-extracted/.vite/build/index.js"
+
+    # Repack into app.asar
+    echo "Repacking app.asar..."
+    "$_asar" pack "${srcdir}/linux-app-extracted" "${srcdir}/app.asar"
 }
 
 package() {
     cd "${srcdir}"
 
-    # Install extracted app directory
-    install -dm755 "${pkgdir}/usr/lib/claude-cowork"
-    cp -r linux-app-extracted "${pkgdir}/usr/lib/claude-cowork/"
-
-    # Install linux-loader.js (critical wrapper for platform spoofing and fixes)
-    install -Dm644 "${srcdir}/claude-cowork-linux/linux-loader.js" \
-                   "${pkgdir}/usr/lib/claude-cowork/linux-loader.js"
+    # Install repacked app.asar
+    install -Dm644 "${srcdir}/app.asar" \
+                   "${pkgdir}/usr/lib/claude-cowork/app.asar"
 
     # Install launcher script
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/claude-cowork" <<'EOF'
 #!/bin/bash
 # Claude Cowork Linux launcher
 
-# Wayland support
 if [[ -n "$WAYLAND_DISPLAY" ]] || [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
     export ELECTRON_OZONE_PLATFORM_HINT=wayland
 fi
 
-cd /usr/lib/claude-cowork
-exec electron linux-loader.js --no-sandbox "$@"
+exec electron /usr/lib/claude-cowork/app.asar \
+    --no-sandbox --password-store=gnome-libsecret \
+    --enable-features=GlobalShortcutsPortal "$@"
 EOF
 
     # Install desktop entry
@@ -143,14 +185,19 @@ MimeType=x-scheme-handler/claude;
 StartupWMClass=Claude
 EOF
 
-    # Extract and install icon from Windows exe
-    if command -v wrestool &>/dev/null && command -v icotool &>/dev/null; then
-        wrestool -x -t 14 "Claude-latest.exe" -o icon.ico 2>/dev/null || true
-        if [[ -f icon.ico ]]; then
-            icotool -x icon.ico -o . 2>/dev/null || true
-            _icon=$(ls -S *.png 2>/dev/null | head -1)
+    # Extract icon from DMG's Claude.app if available
+    local _claude_app
+    _claude_app=$(find "${srcdir}/dmg-extracted" -name "Claude.app" -type d 2>/dev/null | head -1)
+    if [[ -n "$_claude_app" ]]; then
+        local _icns="${_claude_app}/Contents/Resources/AppIcon.icns"
+        # Try to convert .icns to png (icns2png from libicns)
+        if [[ -f "$_icns" ]] && command -v icns2png &>/dev/null; then
+            icns2png -x -s 256 "$_icns" -o "${srcdir}/" 2>/dev/null || true
+            local _icon
+            _icon=$(ls -S "${srcdir}/"*.png 2>/dev/null | head -1)
             if [[ -n "$_icon" ]]; then
-                install -Dm644 "$_icon" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/claude-cowork.png"
+                install -Dm644 "$_icon" \
+                    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/claude-cowork.png"
             fi
         fi
     fi
@@ -158,7 +205,7 @@ EOF
     # Install license notice
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" <<EOF
 Claude Desktop is proprietary software by Anthropic PBC.
-This package provides a Linux compatibility layer for the official Windows app.
+This package provides a Linux compatibility layer for the macOS app.
 See https://www.anthropic.com/legal/consumer-terms for terms of service.
 EOF
 }
