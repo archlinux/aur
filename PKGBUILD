@@ -3,7 +3,7 @@
 pkgname=xlibre-input-evdev-bin
 _pkgname=xlibre-xf86-input-evdev
 pkgver=2.11.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org evdev input driver (binary release)"
 arch=(x86_64)
 url=https://x11libre.net/repo/arch_based/x86_64
@@ -12,7 +12,7 @@ groups=('xlibre-drivers')
 options=(!strip)
 source=(https://x11libre.net/repo/arch_based/x86_64/xlibre-input-evdev-2.11.0.2-2-x86_64.pkg.tar.zst)
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
-depends=('xlibre-xserver-bin' 'mtdev' 'libevdev' 'glibc')
+depends=('xlibre-server' 'mtdev' 'libevdev' 'glibc')
 provides=('xf86-input-evdev' 'xlibre-input-evdev')
 conflicts=('xf86-input-evdev' 'xlibre-input-evdev')
 
