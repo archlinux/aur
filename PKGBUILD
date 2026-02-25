@@ -1,6 +1,6 @@
 # Maintainer: crockednloaded <https://github.com/crockednloaded>
 pkgname=heatsync-bin
-pkgver=1.0.66
+pkgver=1.0.67
 pkgrel=1
 pkgdesc="Real-time system monitor with per-component gauges, sparklines, and vendor-aware hardware labels"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "icon.png::https://raw.githubusercontent.com/crockednloaded/HeatSync/main/assets/icon.png"
 )
 sha256sums=(
-    '2720b4a4e870cfa9c3863248fe545d91ae7893a8ca36b20688309dec3807b23c'
+    '23fdb64d529e74d39cc6f1858f76f174bacc09d7973c0e4251967dc7fe0b188d'
     '6be6c05cda1330bb0a4cfa8428a769fa891e88a71e2b78288e67071df37fa449'
 )
 noextract=("HeatSync-${pkgver}.AppImage")
