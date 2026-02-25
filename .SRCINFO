@@ -1,6 +1,6 @@
 pkgbase = lutris-live-bin
 	pkgdesc = Open Gaming Platform (Live version)
-	pkgver = 0.5.20
+	pkgver = 0.5.22
 	pkgrel = 1
 	url = https://lutris.net
 	arch = any
@@ -59,7 +59,7 @@ pkgbase = lutris-live-bin
 	provides = lutris
 	conflicts = lutris
 	conflicts = lutris-git
-	source = lutris_0.5.20_all.deb::https://github.com/lutris/lutris/releases/download/v0.5.20/lutris_0.5.20_all.deb
+	source = lutris_0.5.22_all.deb::https://github.com/lutris/lutris/releases/download/v0.5.22/lutris_0.5.22_all.deb
 	sha256sums = SKIP
 
 pkgname = lutris-live-bin

@@ -1,7 +1,7 @@
 # Maintainer: Javad <ja7ad@live.com>
 
 pkgname=lutris-live-bin
-pkgver=0.5.20
+pkgver=0.5.22
 pkgrel=1
 pkgdesc="Open Gaming Platform (Live version)"
 arch=('any')
