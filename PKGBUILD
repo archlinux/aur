@@ -4,7 +4,7 @@
 # Contributor: Jaime Martínez Rincón <jaime@jamezrin.name>
 
 pkgname=notion-app-electron
-pkgver=7.4.0
+pkgver=7.6.1
 _bettersqlite3ver=12.6.2
 _bufferutilver=4.0.9
 _elecronver=140 # whenever update the bettersqlite, update this one by one to try the proper version.
@@ -34,7 +34,7 @@ source=(
 	notion.desktop
 	notion.png
 )
-sha256sums=('1dc2592491962e4ce92f933a3ccff5013142594f65811cd1faab6d9d3a6ada22'
+sha256sums=('56aa093a8b8a0815a525ad974d85b9120e1b586302aaa8c7183d7c761f124d14'
             '5be42e5403bbba23ef38315b1c4e3ff08c154ed3c64a9952a0ad344f30fc6dc8'
             '2139aae79c5a4fd4d07467bd9b7872ea109483aa43b3dfd6c8d3725ccba009be'
             '49e06007f51da9ae847954212504ff9746e35c13cc32ebbf072f5d03a0253303'
