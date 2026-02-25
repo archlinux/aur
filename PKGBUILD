@@ -11,7 +11,7 @@ depends=('fuse2' 'gtk3')
 options=('!strip')
 source=("${_pkgname}_${pkgver}_amd64.AppImage::https://download.helixnotes.com/releases/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage"
         "helixnotes.desktop")
-sha256sums=('6411d94be02512890ffe9badb520c5e7e088f006c80d183b0ecc2aa8929972ce'
+sha256sums=('a75e1258ae3d22b03706e2c382d796c72ea12b1829fb5457cd313a1df1a97ef7'
             '20dd14203d5bedca52933bd60065d013418bcba00cea6dfcec78b292b82900ba')
 noextract=("${_pkgname}_${pkgver}_amd64.AppImage")
 
