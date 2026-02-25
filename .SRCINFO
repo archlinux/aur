@@ -1,6 +1,6 @@
 pkgbase = sidebar-tui-bin
 	pkgdesc = TUI for managing terminal sessions in a sidebar
-	pkgver = 0.1.12
+	pkgver = 0.1.13
 	pkgrel = 1
 	url = https://github.com/ftl-tools/sidebar_tui
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = sidebar-tui-bin
 	provides = sidebar-tui
 	provides = sb
 	conflicts = sidebar-tui
-	source_x86_64 = sb-v0.1.12-x86_64-unknown-linux-musl.tar.gz::https://github.com/ftl-tools/sidebar_tui/releases/download/v0.1.12/sb-v0.1.12-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = c715da68a6097d198c633c7ac4db97cda3e3995fb36584ff0ca7f2c886592956
-	source_aarch64 = sb-v0.1.12-aarch64-unknown-linux-musl.tar.gz::https://github.com/ftl-tools/sidebar_tui/releases/download/v0.1.12/sb-v0.1.12-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 9a169e72dfa1f28b86b5d140bcc7c61027bf8bc4afe1b6a3ce8e4277160e51cc
+	source_x86_64 = sb-v0.1.13-x86_64-unknown-linux-musl.tar.gz::https://github.com/ftl-tools/sidebar_tui/releases/download/v0.1.13/sb-v0.1.13-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 9edba77f38be44abb3860c482a7a118b90469dee9ee7de45b8f7ee60768d076d
+	source_aarch64 = sb-v0.1.13-aarch64-unknown-linux-musl.tar.gz::https://github.com/ftl-tools/sidebar_tui/releases/download/v0.1.13/sb-v0.1.13-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 13a6f2bfd6890509b671885e86e5f32f1319b9459bdd584249b33949f60df0da
 
 pkgname = sidebar-tui-bin
