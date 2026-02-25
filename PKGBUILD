@@ -19,7 +19,7 @@ source=(
     "icon.png::https://raw.githubusercontent.com/crockednloaded/HeatSync/main/assets/icon.png"
 )
 sha256sums=(
-    '8b51d60d08adce0db5a34be97b9f47d63854e1d623097f490761779695878768'
+    'd5d0a58051c377e5873161250b948b1059e51e9996d380b7e20868ffe3abfca6'
     '6be6c05cda1330bb0a4cfa8428a769fa891e88a71e2b78288e67071df37fa449'
 )
 noextract=("HeatSync-${pkgver}.AppImage")
