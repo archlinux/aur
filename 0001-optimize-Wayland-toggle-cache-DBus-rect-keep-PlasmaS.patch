@@ -1,0 +1,102 @@
+From 8e465a6207b5dfd2a4e0937c5399edf61f5ef21b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Benigno=20Batista=20J=C3=BAnior?=
+ <benigno@opus-software.com.br>
+Date: Wed, 25 Feb 2026 15:21:02 -0300
+Subject: [PATCH 1/3] optimize Wayland toggle: cache DBus rect, keep
+ PlasmaShellSurface alive
+
+Cache the availableScreenRect DBus result and only refresh on screen
+changes instead of calling PlasmaShell StrutManager on every F12 press.
+
+Stop destroying and recreating PlasmaShellSurface on every hide/show
+cycle to reduce latency and prevent flicker.
+---
+ app/mainwindow.cpp | 44 ++++++++++++++++++++++++--------------------
+ app/mainwindow.h   |  2 ++
+ 2 files changed, 26 insertions(+), 20 deletions(-)
+
+diff --git a/app/mainwindow.cpp b/app/mainwindow.cpp
+index 2f281bd..c9cf37e 100644
+--- a/app/mainwindow.cpp
++++ b/app/mainwindow.cpp
+@@ -123,6 +123,11 @@ MainWindow::MainWindow(QWidget *parent)
+     if (KWindowSystem::isPlatformX11()) {
+         connect(KX11Extras::self(), &KX11Extras::workAreaChanged, this, &MainWindow::applyWindowGeometry);
+     }
++    if (m_isWayland) {
++        connect(qApp, &QGuiApplication::screenAdded, this, [this]() { m_availableScreenRectValid = false; });
++        connect(qApp, &QGuiApplication::screenRemoved, this, [this]() { m_availableScreenRectValid = false; });
++        connect(qApp, &QGuiApplication::primaryScreenChanged, this, [this]() { m_availableScreenRectValid = false; });
++    }
+     connect(qApp, &QGuiApplication::screenAdded, this, &MainWindow::updateScreenMenu);
+     connect(qApp, &QGuiApplication::screenRemoved, this, &MainWindow::updateScreenMenu);
+ 
+@@ -1189,20 +1194,25 @@ bool MainWindow::focusNextPrevChild(bool)
+ void MainWindow::toggleWindowState()
+ {
+     if (m_isWayland) {
+-        auto message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.plasmashell"),
+-                                                      QStringLiteral("/StrutManager"),
+-                                                      QStringLiteral("org.kde.PlasmaShell.StrutManager"),
+-                                                      QStringLiteral("availableScreenRect"));
+-        message.setArguments({QGuiApplication::screens().at(getScreen())->name()});
+-        QDBusPendingCall call = QDBusConnection::sessionBus().asyncCall(message);
+-        QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(call, this);
+-
+-        QObject::connect(watcher, &QDBusPendingCallWatcher::finished, this, [=, this]() {
+-            QDBusPendingReply<QRect> reply = *watcher;
+-            m_availableScreenRect = reply.isValid() ? reply.value() : QRect();
+-            setWindowGeometry(Settings::width(), Settings::height(), Settings::position());
+-            watcher->deleteLater();
+-        });
++        int currentScreen = getScreen();
++        if (!m_availableScreenRectValid || m_cachedScreenIndex != currentScreen) {
++            m_cachedScreenIndex = currentScreen;
++            auto message = QDBusMessage::createMethodCall(QStringLiteral("org.kde.plasmashell"),
++                                                          QStringLiteral("/StrutManager"),
++                                                          QStringLiteral("org.kde.PlasmaShell.StrutManager"),
++                                                          QStringLiteral("availableScreenRect"));
++            message.setArguments({QGuiApplication::screens().at(currentScreen)->name()});
++            QDBusPendingCall call = QDBusConnection::sessionBus().asyncCall(message);
++            QDBusPendingCallWatcher *watcher = new QDBusPendingCallWatcher(call, this);
++
++            QObject::connect(watcher, &QDBusPendingCallWatcher::finished, this, [=, this]() {
++                QDBusPendingReply<QRect> reply = *watcher;
++                m_availableScreenRect = reply.isValid() ? reply.value() : QRect();
++                m_availableScreenRectValid = true;
++                setWindowGeometry(Settings::width(), Settings::height(), Settings::position());
++                watcher->deleteLater();
++            });
++        }
+ 
+         _toggleWindowState();
+     } else {
+@@ -1468,12 +1478,6 @@ void MainWindow::sharedAfterHideWindow()
+ {
+     if (Settings::pollMouse())
+         toggleMousePoll(true);
+-
+-#if HAVE_KWAYLAND
+-    delete m_plasmaShellSurface;
+-    m_plasmaShellSurface = nullptr;
+-#endif
+-
+     Q_EMIT windowClosed();
+ }
+ 
+diff --git a/app/mainwindow.h b/app/mainwindow.h
+index 1f49c97..5714d39 100644
+--- a/app/mainwindow.h
++++ b/app/mainwindow.h
+@@ -215,6 +215,8 @@ private:
+ #if HAVE_KWAYLAND
+     void initWayland();
+     void initWaylandSurface();
++    bool m_availableScreenRectValid = false;
++    int m_cachedScreenIndex = -1;
+     KWayland::Client::PlasmaShell *m_plasmaShell = nullptr;
+     KWayland::Client::PlasmaShellSurface *m_plasmaShellSurface = nullptr;
+ #endif
+-- 
+2.53.0
+

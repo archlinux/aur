@@ -1,0 +1,54 @@
+From ed66e4c7b637a173f5aa5ee3d01af4e5173c834e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Benigno=20Batista=20J=C3=BAnior?=
+ <benigno@opus-software.com.br>
+Date: Wed, 25 Feb 2026 15:21:55 -0300
+Subject: [PATCH 3/3] use update() instead of repaint() for async coalesced
+ redraws
+
+repaint() forces immediate synchronous repaint. update() schedules
+an async repaint that coalesces multiple calls into one.
+---
+ app/mainwindow.cpp | 2 +-
+ app/tabbar.cpp     | 6 ++++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/app/mainwindow.cpp b/app/mainwindow.cpp
+index 7a9874a..3ea181e 100644
+--- a/app/mainwindow.cpp
++++ b/app/mainwindow.cpp
+@@ -924,7 +924,7 @@ void MainWindow::applySettings()
+         updateTrayTooltip();
+     }
+ 
+-    repaint(); // used to repaint skin borders if Settings::hideSkinBorders has been changed
++    update(); // repaint skin borders if Settings::hideSkinBorders has been changed
+ 
+     setKeepOpen(Settings::keepOpen());
+ 
+diff --git a/app/tabbar.cpp b/app/tabbar.cpp
+index 90d194e..965a569 100644
+--- a/app/tabbar.cpp
++++ b/app/tabbar.cpp
+@@ -829,7 +829,8 @@ void TabBar::moveTabLeft(int sessionId)
+ 
+     m_tabs.swapItemsAt(index, index - 1);
+ 
+-    repaint();
++
++    update();
+ 
+     updateMoveActions(index - 1);
+ }
+@@ -846,7 +847,8 @@ void TabBar::moveTabRight(int sessionId)
+ 
+     m_tabs.swapItemsAt(index, index + 1);
+ 
+-    repaint();
++
++    update();
+ 
+     updateMoveActions(index + 1);
+ }
+-- 
+2.53.0
+
