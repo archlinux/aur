@@ -1,14 +1,15 @@
 # Maintainer: Lazerbeak12345 <lazerbeak12345 at users dot noreply dot github dot com>
 # Contributor: Kian Kasad <kian at kasad.com>
 pkgname=execline-man-pages-git
-pkgver=v2.9.6.1.1.r0.0c6377e
+pkgver=v2.9.8.1.3.r0.5ca7ba1
 pkgrel=1
 pkgdesc='Manual pages for the execline suite of software'
 arch=('any')
-url='https://git.sr.ht/~flexibeast/execline-man-pages'
+url='https://git.sr.ht/~humm/execline-man-pages'
 license=('ISC')
 groups=()
 depends=()
+optdepends=('execline: package documented by these man pages')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -17,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {

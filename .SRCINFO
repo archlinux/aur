@@ -1,14 +1,15 @@
 pkgbase = execline-man-pages-git
 	pkgdesc = Manual pages for the execline suite of software
-	pkgver = v2.9.6.1.1.r0.0c6377e
+	pkgver = v2.9.8.1.3.r0.5ca7ba1
 	pkgrel = 1
-	url = https://git.sr.ht/~flexibeast/execline-man-pages
+	url = https://git.sr.ht/~humm/execline-man-pages
 	arch = any
 	license = ISC
 	makedepends = git
+	optdepends = execline: package documented by these man pages
 	provides = execline-man-pages
 	conflicts = execline-man-pages
-	source = git+https://git.sr.ht/~flexibeast/execline-man-pages
+	source = git+https://git.sr.ht/~humm/execline-man-pages
 	sha256sums = SKIP
 
 pkgname = execline-man-pages-git
