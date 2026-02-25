@@ -1,0 +1,25 @@
+post_install() {
+    cat << 'MSG'
+>>> vaapi-autoconfig: GPU auto-detection installed.
+>>>
+>>> Activate now (no re-login needed):
+>>>   vaapi-activate
+>>>
+>>> Verify setup:
+>>>   vaapi-verify
+>>>
+>>> Future logins auto-detect via systemd environment generator.
+>>>
+>>> NOTE: MOZ_DISABLE_RDD_SANDBOX=1 is set to allow GPU access from
+>>> sandboxed media decoder processes. This is required for VA-API in
+>>> Firefox/Chromium but reduces sandbox isolation for video decoding.
+MSG
+}
+
+post_upgrade() {
+    echo ">>> vaapi-autoconfig upgraded. Run: vaapi-activate"
+}
+
+post_remove() {
+    echo ">>> vaapi-autoconfig removed. Re-login to clear env vars."
+}

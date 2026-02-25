@@ -1,0 +1,23 @@
+#!/bin/bash
+# Inject VA-API env vars into current session without re-login
+vars=$(/usr/lib/vaapi-autoconfig/detect-vaapi 2>/dev/null)
+if [ -z "$vars" ]; then
+    echo "No supported VA-API driver detected."
+    echo "Install one of: intel-media-driver, libva-mesa-driver, libva-nvidia-driver"
+    exit 1
+fi
+eval export $vars
+dbus-update-activation-environment --systemd $(echo "$vars" | cut -d= -f1 | tr '\n' ' ') 2>/dev/null
+echo "Activated:"
+echo "$vars" | sed 's/^/  /'
+
+# Verify
+if command -v vainfo &>/dev/null; then
+    if vainfo &>/dev/null; then
+        profiles=$(vainfo 2>&1 | grep -c "VAEntrypointVLD")
+        echo "Verified: VA-API working ($profiles decode profiles)"
+    else
+        echo "WARNING: vainfo failed. Driver may not work correctly."
+    fi
+fi
+echo "Restart your browser to apply."

@@ -1,0 +1,38 @@
+#!/bin/bash
+# Auto-detect VA-API driver based on GPU hardware and installed drivers
+# Output: KEY=VALUE pairs for environment generators and eval
+# Priority: Intel > AMD > NVIDIA (hybrid laptops use iGPU by default)
+
+has_gpu() {
+    for d in /sys/bus/pci/devices/*/vendor; do
+        [ "$(cat "$d" 2>/dev/null)" = "$1" ] && \
+        [ "$(cat "${d%vendor}class" 2>/dev/null | cut -c1-4)" = "0x03" ] && return 0
+    done
+    return 1
+}
+
+driver=""
+
+# Intel iGPU (most common on laptops)
+if has_gpu "0x8086"; then
+    [ -f /usr/lib/dri/iHD_drv_video.so ] && driver=iHD
+    [ -z "$driver" ] && [ -f /usr/lib/dri/i965_drv_video.so ] && driver=i965
+fi
+
+# AMD (fallthrough if Intel has no driver)
+if [ -z "$driver" ] && has_gpu "0x1002"; then
+    [ -f /usr/lib/dri/radeonsi_drv_video.so ] && driver=radeonsi
+fi
+
+# NVIDIA (last resort, least reliable VA-API)
+if [ -z "$driver" ] && has_gpu "0x10de"; then
+    if [ -f /usr/lib/dri/nvidia_drv_video.so ]; then
+        driver=nvidia
+        echo "NVD_BACKEND=direct"
+    fi
+fi
+
+[ -z "$driver" ] && exit 0
+
+echo "LIBVA_DRIVER_NAME=$driver"
+echo "MOZ_DISABLE_RDD_SANDBOX=1"

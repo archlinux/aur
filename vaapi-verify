@@ -1,0 +1,44 @@
+#!/bin/bash
+# Verify VA-API is working
+echo "=== Environment ==="
+for v in LIBVA_DRIVER_NAME MOZ_DISABLE_RDD_SANDBOX NVD_BACKEND; do
+    val=$(systemctl --user show-environment 2>/dev/null | grep "^$v=" | cut -d= -f2-)
+    [ -n "$val" ] && echo "  $v=$val" || echo "  $v=(not set)"
+done
+
+echo ""
+echo "=== VA-API driver ==="
+if command -v vainfo &>/dev/null; then
+    driver=$(vainfo 2>&1 | grep "Driver version:" | head -1)
+    if [ -n "$driver" ]; then
+        echo "  $driver"
+        profiles=$(vainfo 2>&1 | grep -c "VAEntrypointVLD")
+        echo "  $profiles decode profiles available"
+    else
+        echo "  FAILED: $(vainfo 2>&1 | head -1)"
+    fi
+else
+    echo "  vainfo not found (install libva-utils to verify)"
+fi
+
+echo ""
+echo "=== Firefox ==="
+pref_found=false
+for dir in /usr/lib/*/browser/defaults/preferences/; do
+    if [ -f "${dir}zzz-hwaccel.js" ]; then
+        browser=$(echo "$dir" | cut -d/ -f4)
+        echo "  $browser: pref installed"
+        pref_found=true
+    fi
+done
+$pref_found || echo "  No firefox-hwaccel pref found (install firefox-hwaccel)"
+
+if pgrep -f firefox &>/dev/null; then
+    pid=$(pgrep -f '/firefox' -o)
+    libva=$(tr '\0' '\n' < /proc/$pid/environ 2>/dev/null | grep LIBVA_DRIVER_NAME)
+    if [ -n "$libva" ]; then
+        echo "  Running Firefox has: $libva"
+    else
+        echo "  Running Firefox: NO VA-API env vars (restart Firefox)"
+    fi
+fi
