@@ -1,6 +1,6 @@
 pkgbase = codemap-bin
 	pkgdesc = A project brain for your AI. Give LLMs instant architectural context without burning tokens
-	pkgver = 4.0.1
+	pkgver = 4.0.2
 	pkgrel = 1
 	url = https://github.com/JordanCoin/codemap
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = codemap-bin
 	conflicts = codemap
 	options = !debug
 	options = !strip
-	source_x86_64 = codemap-bin-4.0.1-x86_64.tar.gz::https://github.com/JordanCoin/codemap/releases/download/v4.0.1/codemap_4.0.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = fbb5f98c7230097c1eae461fafa1abb479b8728c3b1b74ffe600c200ad96ef50
-	source_aarch64 = codemap-bin-4.0.1-aarch64.tar.gz::https://github.com/JordanCoin/codemap/releases/download/v4.0.1/codemap_4.0.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 838a8b852e18c17cee9b007769a771c281bedd83c5eba0e883ef5403cbd19631
+	source_x86_64 = codemap-bin-4.0.2-x86_64.tar.gz::https://github.com/JordanCoin/codemap/releases/download/v4.0.2/codemap_4.0.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 083fe85b33f93d3cf2fe4926ef818b881f150642ff1a53598d1dcdacc969c5ff
+	source_aarch64 = codemap-bin-4.0.2-aarch64.tar.gz::https://github.com/JordanCoin/codemap/releases/download/v4.0.2/codemap_4.0.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 70c2da84e325dc67b26ef83ef8cee65738afea8d2e41b9cab4f7ec44e05293ac
 
 pkgname = codemap-bin
