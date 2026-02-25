@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=postybirb-plus-bin
-pkgver=3.1.67
+pkgver=3.1.69
 _electronversion=19
 pkgrel=1
 pkgdesc="An application that helps artists post art and other multimedia to multiple websites more quickly.(Prebuilt version.Use system-wide electron)"
@@ -20,7 +20,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/mvdicarlo/postybirb-plus/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f78896c5f819bedcd4ad64f08ee408b3b5ac2291fb641cb9df8e3555177136ac'
+sha256sums=('0aa99cc442c115f5a567e3c58ff15af9946224b0ae371c3e534d4f9337f0ee80'
             'a0b91aa0ffc9564128c6599eac1fc0ba93b8fe477dff6258ef315f0019b5726d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -47,7 +47,15 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/"*.* -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/squashfs-root/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/squashfs-root/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/squashfs-root/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"*.* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
