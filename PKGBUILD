@@ -25,11 +25,11 @@ package() {
   install -Dm755 kclock-rs "$pkgdir/usr/bin/kclock-rs"
 
   # Install desktop file
-  install -Dm644 kclock-rs.desktop "$pkgdir/usr/share/applications/kclock-rs.desktop"
+  install -Dm644 "$srcdir/kclock-rs.desktop" "$pkgdir/usr/share/applications/kclock-rs.desktop"
 
   # Install icon
-  install -Dm644 logo.svg "$pkgdir/usr/share/pixmaps/kclock-rs.svg"
+  install -Dm644 "$srcdir/logo.svg" "$pkgdir/usr/share/pixmaps/kclock-rs.svg"
 
   # Install license
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
