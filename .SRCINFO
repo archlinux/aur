@@ -1,6 +1,6 @@
 pkgbase = avda-bin
 	pkgdesc = A desktop app for viewing one-time passwords generated from Aegis Authenticator backups.(Written in GO,prebuilt version)
-	pkgver = 1.13.1
+	pkgver = 1.13.2
 	pkgrel = 1
 	url = https://github.com/Sammy-T/avda
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = avda-bin
 	depends = gtk3
 	provides = avda
 	conflicts = avda
-	source = avda-1.13.1.zip::https://github.com/Sammy-T/avda/releases/download/v1.13.1/avda_linux.zip
-	source = avda-1.13.1.png::https://raw.githubusercontent.com/Sammy-T/avda/v1.13.1/build/appicon.png
-	sha256sums = c3072377d54927c012709ce567a4cecb61e1840859e75c0a13542fa80a3d5f1b
+	source = avda-1.13.2.zip::https://github.com/Sammy-T/avda/releases/download/v1.13.2/avda_linux.zip
+	source = avda-1.13.2.png::https://raw.githubusercontent.com/Sammy-T/avda/v1.13.2/build/appicon.png
+	sha256sums = f3e061cc567d653e99efbfe09d01c8ce8bec533c539765fb97d0cac24d3047d9
 	sha256sums = e83f71b586a1e3aaff6e91877a290433c49c40ff4dea526fd35ea1bc887b452b
 
 pkgname = avda-bin
