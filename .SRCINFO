@@ -1,0 +1,18 @@
+pkgbase = lifeos-deb2arch
+	pkgdesc = Convert Debian .deb packages to native Arch Linux .pkg.tar.zst format
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://lifeos.com.tr
+	install = lifeos-deb2arch.install
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = python-pyqt6
+	depends = binutils
+	depends = tar
+	depends = zstd
+	depends = fakeroot
+	source = lifeos-deb2arch-1.0.0.tar.gz::https://lifeos.com.tr/download/app-downloads/1772013643995-lifeos-deb2arch-1.0.0.tar.gz
+	sha256sums = 70ea590a9e88f2e28774e49703f5575a72cd3e450823f0be749882db4547140a
+
+pkgname = lifeos-deb2arch
