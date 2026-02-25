@@ -9,7 +9,7 @@ _channel=beta
 _rel=1
 pkgver=${_pkgver}.${_channel}${_rel}  # beta
 #pkgver=${_pkgver}.${_channel}  # stable
-pkgrel=2
+pkgrel=3
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
@@ -57,7 +57,7 @@ package_mullvad-vpn-beta-bin() {
 
   # Remove useless changelog.gz & symlink actual changelog
   rm "$pkgdir/usr/share/doc/mullvad-vpn/changelog.gz"
-  ln -s "/opt/Mullvad VPN/resources/CHANGELOG.md" "$pkgdir/usr/share/doc/$pkgname/"
+  ln -s "/opt/Mullvad VPN/resources/CHANGELOG.md" "$pkgdir/usr/share/doc/mullvad-vpn/"
 
   # Remove mullvad-vpn-daemon files
   rm "$pkgdir/opt/Mullvad VPN"/resources/{ca.crt,mullvad-{problem-report,setup},relays.json}
