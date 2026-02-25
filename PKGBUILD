@@ -1,6 +1,6 @@
 # Maintainer: tirith contributors
 pkgname=tirith
-pkgver=0.1.9
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Terminal security - catches homograph attacks, pipe-to-shell, ANSI injection'
 arch=('x86_64' 'aarch64')
@@ -8,9 +8,10 @@ url='https://github.com/sheeki03/tirith'
 license=('AGPL-3.0-only')
 depends=('gcc-libs')
 makedepends=('cargo' 'base-devel')
+options=(!lto)
 install=tirith.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('0b1d2e5095e5e97e92a2a51162fce38294f1b7f494fb799a58d92e57df0d8515')
+sha256sums=('1d96cf0aa7825ddf17d9e75aa3b17772ac859aa6b7e120050e397c71cf74e3c6')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -22,6 +23,8 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # Force gcc linker — ring (crypto dep) can fail with lld on some setups
+  export RUSTFLAGS="-C linker=gcc"
   cargo build --release -p tirith
 }
 
@@ -36,6 +39,7 @@ package() {
   install -Dm644 "shell/lib/bash-hook.bash" "$pkgdir/usr/share/tirith/shell/lib/bash-hook.bash"
   install -Dm644 "shell/lib/fish-hook.fish" "$pkgdir/usr/share/tirith/shell/lib/fish-hook.fish"
   install -Dm644 "shell/lib/powershell-hook.ps1" "$pkgdir/usr/share/tirith/shell/lib/powershell-hook.ps1"
+  install -Dm644 "shell/lib/nushell-hook.nu" "$pkgdir/usr/share/tirith/shell/lib/nushell-hook.nu"
 
   # Completions
   install -Dm644 <(target/release/tirith completions bash) "$pkgdir/usr/share/bash-completion/completions/tirith"
