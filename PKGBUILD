@@ -20,6 +20,7 @@ depends=(
   'libdrm'
   'mesa'
   'google-breakpad'
+	'vulkan-headers'
 	'polkit'
 )
 makedepends=(
