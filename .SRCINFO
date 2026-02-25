@@ -1,0 +1,16 @@
+pkgbase = dockmate-bin
+	pkgdesc = Docker and Podman TUI manager for terminal productivity
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/shubh-io/DockMate
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = dockmate
+	conflicts = dockmate
+	source_x86_64 = dockmate-bin-0.1.0-x86_64::https://github.com/shubh-io/DockMate/releases/download/v0.1.0/dockmate-linux-amd64
+	sha256sums_x86_64 = fe8b8e14c7550e48d844f0ae5fcbf4c92f560e3396aa7396341fbd894919edd6
+	source_aarch64 = dockmate-bin-0.1.0-aarch64::https://github.com/shubh-io/DockMate/releases/download/v0.1.0/dockmate-linux-arm64
+	sha256sums_aarch64 = b1275c1f0c1d9ba58eb345ce95b27bf0e0f78925212cff34de3eed33a75d51cb
+
+pkgname = dockmate-bin
