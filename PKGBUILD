@@ -2,7 +2,7 @@
 pkgname=vdr-softhddevice-drm-gles
 pkgver=r1128.897b4ff
 pkgrel=1
-_vdrapi=9
+_vdrapi=11
 pkgdesc="VDR output plugin for software HD based on DRM interface"
 arch=('aarch64')
 license=('AGPL3')
