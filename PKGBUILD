@@ -1,7 +1,7 @@
 # Maintainer: Zack Fitch <zack@johnzfitch.com>
 pkgname=claude-cowork-linux
 pkgver=1.1.4010
-pkgrel=2
+pkgrel=3
 pkgdesc="Anthropic Claude Desktop with Cowork (local agent) support for Linux"
 arch=('x86_64')
 url="https://github.com/johnzfitch/claude-cowork-linux"
@@ -90,7 +90,13 @@ build() {
 
     # Extract DMG with 7z
     echo "Extracting DMG..."
-    7z x -y "${srcdir}/Claude.dmg" -o"${srcdir}/dmg-extracted" >/dev/null 2>&1
+    local seven_z_exit=0
+    7z x -y "${srcdir}/Claude.dmg" -o"${srcdir}/dmg-extracted" >/dev/null 2>&1 || seven_z_exit=$?
+    # 7z exit 1 = warning (e.g. "Dangerous link path" for /Applications symlink)
+    if [[ $seven_z_exit -gt 1 ]]; then
+        echo "Error: Failed to extract DMG (7z exit code: $seven_z_exit)"
+        return 1
+    fi
 
     # Find Claude.app and app.asar
     local _claude_app
