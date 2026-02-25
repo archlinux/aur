@@ -1,0 +1,21 @@
+pkgbase = keifu-bin
+	pkgdesc = A TUI tool to visualize Git commit graphs with branch genealogy.
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/trasta298/keifu
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	provides = keifu
+	conflicts = keifu
+	source = LICENSE-v0.2.3::https://raw.githubusercontent.com/trasta298/keifu/v0.2.3/LICENSE
+	source = README.md-v0.2.3::https://raw.githubusercontent.com/trasta298/keifu/v0.2.3/README.md
+	sha256sums = fff55e233457a73b20e6b2e9b37f9ecc18a4addc63ad8785e7d8fd97f0acdae7
+	sha256sums = e838903186895c136b60bdd78b74dbc440a84d170e78b9eb2e6cf820b558dce1
+	source_x86_64 = keifu-v0.2.3-x86_64.tar.gz::https://github.com/trasta298/keifu/releases/download/v0.2.3/keifu-v0.2.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = c6df0239734c140bb791c77c75bab034d37c0dd1438d3c772073f4097345a5d9
+	source_aarch64 = keifu-v0.2.3-aarch64.tar.gz::https://github.com/trasta298/keifu/releases/download/v0.2.3/keifu-v0.2.3-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ebb9400332141cd23b2c5357d90417da6b16002240eb9023224e4cfe02f9078e
+
+pkgname = keifu-bin
