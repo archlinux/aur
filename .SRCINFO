@@ -1,6 +1,6 @@
 pkgbase = babyshark
 	pkgdesc = Flows-first PCAP TUI with case files and gorgeous UX
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/vignesh07/babyshark
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = babyshark
 	optdepends = wireshark-cli: live packet capture via tshark
 	provides = babyshark
 	conflicts = babyshark-bin
-	source = babyshark-0.2.0.tar.gz::https://github.com/vignesh07/babyshark/archive/v0.2.0.tar.gz
+	source = babyshark-0.2.1.tar.gz::https://github.com/vignesh07/babyshark/archive/v0.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = babyshark

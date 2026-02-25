@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=babyshark
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Flows-first PCAP TUI with case files and gorgeous UX'
 arch=('x86_64' 'aarch64')
