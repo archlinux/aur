@@ -1,0 +1,19 @@
+pkgbase = j2lint
+	pkgdesc = Jinja2 linter.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/aristanetworks/j2lint
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-cov
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-jinja
+	depends = python-rich
+	source = j2lint-v1.2.0.tar.gz::https://github.com/aristanetworks/j2lint/archive/refs/tags/v1.2.0.tar.gz
+	sha512sums = e707057ad2487460cd607cf825f2369131df1004f88fd3299cd0494b98a3270587fb11a5a6e0627f3b1cb069ed69522c65b76cf1bf42c73460165f204f6fb8eb
+
+pkgname = j2lint
