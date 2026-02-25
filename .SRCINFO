@@ -1,7 +1,7 @@
-pkgbase = nodejs-playball
+pkgbase = playball
 	pkgdesc = Watch MLB games from the comfort of your terminal
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/paaatrick/playball
 	arch = any
 	license = MIT
@@ -11,4 +11,4 @@ pkgbase = nodejs-playball
 	source = https://registry.npmjs.org/playball/-/playball-3.3.0.tgz
 	sha1sums = 8bde04c7e9e76cd9cb21417d2cae193afdf7aac3
 
-pkgname = nodejs-playball
+pkgname = playball

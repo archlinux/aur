@@ -1,9 +1,9 @@
 # Maintainer: Brandon Mittman <brandonmittman@gmail.com>
 _npmname=playball
 _npmver=3.3.0
-pkgname=nodejs-playball # All lowercase
+pkgname=playball
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Watch MLB games from the comfort of your terminal"
 arch=(any)
 url="https://github.com/paaatrick/playball"
