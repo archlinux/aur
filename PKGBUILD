@@ -2,7 +2,7 @@
 pkgbase=plasma-workspace-povd
 _pkgname=(plasma-workspace plasma-x11-session)
 pkgname=(plasma-workspace-povd plasma-x11-session-povd)
-pkgver=6.6.0
+pkgver=6.6.1
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE Plasma Workspace (patched for per-output virtual desktops)'
@@ -72,7 +72,7 @@ depends=(accountsservice
          libice
          libkexiv2
          libksysguard
-         'libplasma>=6.5.90'
+         'libplasma<6.6.80'
          libqalculate
          libsm
          libx11
@@ -116,7 +116,7 @@ makedepends=(baloo
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
         povd.patch)
-sha256sums=('098e1fddb30600855248bea36e012c0f5ff12d1ba3381a1ce42005e4d2304d6e'
+sha256sums=('c8c344bd3c842731cfd5df1c717db6e451329dd32b983717d7ff9abdff3434ed'
             'SKIP'
             '8c842237282f4f36a70e15b040ac95e405646ac0b34930f6187d3d1a9fad033f')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
