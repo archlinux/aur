@@ -1,3 +1,5 @@
+# Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
+
 pkgname=multi-gitter
 pkgver=0.61.0
 pkgdesc='Update multiple repositories in with one command'
