@@ -1,6 +1,6 @@
 pkgbase = vlsm-interfacing-git
 	pkgdesc = Viral Load Sample Management - Machine Interfacing.(Use system-wide electron)
-	pkgver = 3.2.0.r1.ga588b84
+	pkgver = 3.2.4.r0.g6490b52
 	pkgrel = 1
 	url = https://github.com/deforay/vlsm-interfacing
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = vlsm-interfacing-git
 	makedepends = curl
 	makedepends = jq
 	depends = electron29
-	provides = vlsm-interfacing=3.2.0
+	provides = vlsm-interfacing=3.2.4
 	conflicts = vlsm-interfacing
 	source = vlsm-interfacing.git::git+https://github.com/deforay/vlsm-interfacing.git
 	source = vlsm-interfacing.sh
