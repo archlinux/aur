@@ -1,7 +1,7 @@
 pkgbase = xbyak-git
 	pkgdesc = C++ header-only JIT assembler library for x86/x86-64
 	pkgver = 7.33.3.r0.g3fe4856
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/herumi/xbyak
 	arch = any
 	license = BSD-3-Clause
