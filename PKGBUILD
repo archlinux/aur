@@ -3,7 +3,7 @@
 # Disclaimer: While this PKGBUILD is tested on multiple devices, it is fully vibe-coded.
 
 pkgname=chrony-git
-pkgver=4.8.r28.ge313f5a
+pkgver=4.8.r30.ga6e7c9e
 pkgrel=1
 pkgdesc="Lightweight NTP client and server (git version)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ backup=(
     'etc/chrony.conf'
 )
 source=(
-    "chrony::git+https://gitlab.com/chrony/chrony.git"
+    "chrony::git+https://gitlab.com/chrony/chrony.git#branch=master"
     "chrony.conf"
 )
 sha256sums=(
@@ -38,6 +38,13 @@ sha256sums=(
 pkgver() {
     cd chrony
     git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd chrony
+    git fetch --all --tags || true
+    branch=$(git remote show origin | awk '/HEAD branch/ {print $NF}')
+    git reset --hard "origin/$branch"
 }
 
 build() {
