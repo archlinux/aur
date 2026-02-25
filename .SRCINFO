@@ -1,12 +1,12 @@
 pkgbase = dlu
 	pkgdesc = Program for quickly looking up words in scanned dictionaries
-	pkgver = 1.0.1
+	pkgver = 1.1
 	pkgrel = 1
-	url = https://github.com/maandree/dlu
+	url = https://codeberg.org/maandree/dlu
 	arch = any
 	license = custom:ISC
 	depends = python3
-	source = https://github.com/maandree/dlu/archive/1.0.1.tar.gz
-	sha256sums = 5db79718b3eb67fae61eb5686c0aa4752be952bca7ba77a065e2c4cf7bbd72fb
+	source = dlu-1.1.tar.gz::https://codeberg.org/maandree/dlu/archive/1.1.tar.gz
+	sha256sums = dacdab0b1a0ec0186da9b337bdeb13defc6453cc85ebb3c2cae9e37f82434c1c
 
 pkgname = dlu
