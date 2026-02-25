@@ -3,7 +3,7 @@
 
 pkgname=aliview
 _pkgname=AliView
-pkgver=1.30
+pkgver=1.31
 pkgrel=1
 pkgdesc="Software for aligning viewing and editing dna/aminoacid sequences https://doi.org/10.1093/bioinformatics/btu531"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('java-runtime')
 makedepends=('maven' 'java-environment')
 source=("$pkgname.tar.gz::https://github.com/AliView/AliView/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3ed6af471a2e5c77355c1a0d06a31e44478a84ee93cb15b7295861549b5332f7')
+sha256sums=('69df8d068b95a7b822269a1c4f28d308295eab23f81992f09d78fb6d34fa2d05')
 
 build(){
   cd $srcdir/$_pkgname-$pkgver
