@@ -1,8 +1,8 @@
 # Maintainer: Matteo Giordano <mail at matteogiordano dot me>
 pkgname=zmx
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
-pkgdesc="Session persistence for terminal processes "
+pkgdesc="Session persistence for terminal processes"
 arch=('x86_64')
 url="https://zmx.sh/"
 license=('MIT')
@@ -10,7 +10,7 @@ makedepends=('zig')
 conflicts=('zmx-git')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/neurosnap/${pkgname}/archive/refs/tags/v${pkgver}.zip")
-sha512sums=('c3078eb3956b425269c7ff7129703baa776012797c8caeb92534c0e95820b30f6b28c3d5b51e351a44556f953efe3a515ebf92d7ce673e3d846319e6501d88b3')
+sha512sums=('2529ab0e30488387ca17fe5a8b25911570a302ad6c75c2bd99164774e241844a8eff4b55a083b6dc13e9496d3c2581ec1304a781ebb703ffd659938b42449430')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
