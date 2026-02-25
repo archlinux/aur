@@ -1,0 +1,18 @@
+pkgbase = bridle-bin
+	pkgdesc = Unified configuration manager for AI coding assistants
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://github.com/neiii/bridle
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = xz
+	provides = bridle
+	conflicts = bridle
+	source_x86_64 = https://github.com/neiii/bridle/releases/download/v0.2.9/bridle-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 93e767b0d93f6f31b7ec3c4d3ae5ab68c64275c8d43e554478c7057e3ec6007e
+	source_aarch64 = https://github.com/neiii/bridle/releases/download/v0.2.9/bridle-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 0d6014477c585c232f7cc11893749bd855159c368a6571bf67f2b0940a4e98f3
+
+pkgname = bridle-bin
