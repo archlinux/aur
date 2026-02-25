@@ -4,7 +4,7 @@
 
 pkgname=mingw-w64-frei0r-plugins
 _pkgname=frei0r-plugins
-pkgver=2.5.2
+pkgver=2.5.4
 pkgrel=1
 pkgdesc='Collection of video effect plugins (mingw-w64)'
 arch=(any)
@@ -28,7 +28,7 @@ optdepends=(
   'mingw-w64-opencv: facebl0r and facedetect plugins'
 )
 source=("git+https://github.com/dyne/frei0r#tag=v$pkgver")
-b2sums=(82a06b4885cfb29c2e9274c32e83b157bfa714e998c9036dd4a3cc6697653ed5106a3886a85a619ac179508644e098fd3951578677cecfd6e01061b21e63d171)
+b2sums=(08b99d438f97547f0f15d036d3fee2cf967fda7de95d7b72e77c9289b4ea782786fa41cfdc0b58f1902300434cedcef4c22b3f5072784be8e7100bdd2b8425f4)
 validpgpkeys=(6113D89CA825C5CEDD02C87273B35DA54ACB7D10) # Denis Roio (Jaromil)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
