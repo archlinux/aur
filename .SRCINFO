@@ -1,0 +1,16 @@
+pkgbase = schemahero-bin
+	pkgdesc = Declarative database schema management as code (CNCF)
+	pkgver = 0.23.3
+	pkgrel = 1
+	url = https://github.com/schemahero/schemahero
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = schemahero
+	conflicts = schemahero
+	source_x86_64 = schemahero-0.23.3-amd64.tar.gz::https://github.com/schemahero/schemahero/releases/download/v0.23.3/schemahero_linux_amd64.tar.gz
+	sha256sums_x86_64 = 89aae60757ffdb39292a8dce0daca33af06016cfa7f4e76863dbf39fae699ae5
+	source_aarch64 = schemahero-0.23.3-arm64.tar.gz::https://github.com/schemahero/schemahero/releases/download/v0.23.3/schemahero_linux_arm64.tar.gz
+	sha256sums_aarch64 = 442b63f3eb3e10b1674b69787df8290df096d50df7bd5a55fd6deb7ad62acec2
+
+pkgname = schemahero-bin
