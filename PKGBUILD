@@ -19,7 +19,7 @@ sha256sums=('9837305ba118f291016937d77efb6a06b29f7154704b154ace28a5ca6cc418ba'
   '07e538516e7f484ae13c2edba3c11944c437902a27af81c222cffb3fc896967d')
 
 package() {
-  cd "$srcdir/kclock-rs-$pkgver"
+  cd "$srcdir/kclock-rs-bin-$pkgver"
 
   # Install binary
   install -Dm755 kclock-rs "$pkgdir/usr/bin/kclock-rs"
