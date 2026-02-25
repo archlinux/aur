@@ -4,8 +4,8 @@
 # Helper: paulequilibrio
 pkgname=gdevelop-bin
 _pkgname=GDevelop
-pkgver=5.6.257
-_electronversion=18
+pkgver=5.6.258
+_electronversion=32
 pkgrel=1
 pkgdesc="A full-featured, no-code, open-source game development software.(Prebuilt version.Use system-wide electron)"
 arch=(
@@ -32,8 +32,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-5-${pkgver}.AppImage")
 sha256sums=('0620d885ddbc88e952f99090d767de08671b6a81e5c10900ef5b949531460b92'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('21f89b33d512ff1585ff273079c7a61c1d9d5de5b0cf44529544c087d0c4fa9b')
-sha256sums_x86_64=('844943f15502d7b43fd6c332f804a2761a18f6cbc63677037fb2147ca9057d95')
+sha256sums_aarch64=('513dacbdb570339ad32a5ae5957a6e07e066be876388c0c9a21316d6383d0cd9')
+sha256sums_x86_64=('f5aa595f0545f0c57464aeff16ca107fedf49538383f8d9a4eda9e7410a74a5b')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -44,7 +44,7 @@ prepare() {
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/app.asar/g
         s/@cfgdirname@/${_appname}/g
-        s/@options@//g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-bin}.sh"
     if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
         chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
@@ -56,20 +56,27 @@ prepare() {
     _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${srcdir}/squashfs-root/resources/app.asar"
     sed -i -e "
         s/if (isDev)/if (!isDev)/g
         s/isDev,/\/\/isDev,/g
         s/devTools,/\/\/devTools,/g
     " "${srcdir}/app.asar.unpacked/main.js"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/squashfs-root/resources/app.asar"
     rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/steamworks.js/dist/"{osx,win64}
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} \;
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/"{app.asar.unpacked,GDJS,preview_node_modules} "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/swiftshader/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/swiftshader"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/squashfs-root/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/squashfs-root/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/squashfs-root/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
