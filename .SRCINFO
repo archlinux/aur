@@ -1,6 +1,6 @@
 pkgbase = mixtapes-git
 	pkgdesc = A modern, Linux-first YouTube Music player (formerly Muse)
-	pkgver = r45.7111357
+	pkgver = r46.4652c62
 	pkgrel = 1
 	url = https://github.com/m-obeid/Muse
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = mixtapes-git
 	depends = yt-dlp-ejs
 	depends = python-requests
 	depends = python-ytmusicapi
-	depends = python-mpris_server
+	depends = python-mprisify
 	provides = mixtapes
 	conflicts = mixtapes
 	source = mixtapes-git::git+https://github.com/m-obeid/Muse.git
