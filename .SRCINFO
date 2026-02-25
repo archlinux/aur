@@ -1,7 +1,7 @@
 pkgbase = rajio-sen
 	pkgdesc = A minimalist vaporwave-inspired pirate radio scanner for the terminal
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jullespio/rajio-sen
 	arch = any
 	license = MIT

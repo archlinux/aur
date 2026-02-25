@@ -2,7 +2,7 @@
 
 pkgname=rajio-sen
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimalist vaporwave-inspired pirate radio scanner for the terminal"
 arch=('any')
 url="https://github.com/jullespio/rajio-sen" 
