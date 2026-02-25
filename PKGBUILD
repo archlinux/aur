@@ -7,7 +7,7 @@
 
 pkgname=freefilesync
 pkgver=14.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Folder comparison and synchronization software"
 arch=(x86_64)
 url="https://freefilesync.org"
@@ -32,6 +32,7 @@ prepare() {
     sed -i 's|wxUSE_EXCEPTIONS|0|' FreeFileSync/Source/{application.cpp,RealTimeSync/application.cpp}
     sed -i '/animalImg/s|^|//|' FreeFileSync/Source/ui/small_dlgs.cpp
     sed -i 's|const override|const|' FreeFileSync/Source/ui/small_dlgs.cpp
+    sed -i 's|::g_free|g_free|' FreeFileSync/Source/{base/icon_loader.cpp,afs/ftp.cpp} zen/zstring.cpp
 }
 
 build() {
