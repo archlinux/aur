@@ -1,6 +1,6 @@
 
 pkgname=yasos-git
-pkgver=20260224
+pkgver=20260225
 pkgrel=1
 pkgdesc="Compiler for the Yasos programming language (git version)"
 arch=('x86_64')
