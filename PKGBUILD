@@ -2,7 +2,7 @@
 _base=scipy-stubs
 pkgname=python-${_base}
 pkgdesc="Type annotations for SciPy"
-pkgver=1.17.0.2
+pkgver=1.17.1.0
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/scipy/${_base}"
@@ -11,7 +11,7 @@ depends=(python-optype python-numpy)
 makedepends=(python-build python-installer python-uv-build)
 optdepends=('python-scipy: for SciPy support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('067a3affc4672263ffb8f74e6f4b5e9d6a643b0f315826802408cabbfb4d77edd6f1883d4fc8576c99af42dec6653d35c0b019bc8f77718887367db7528c97c4')
+sha512sums=('b5d0c844e665205944b752f0c62157ed887ee7bdb81b97215eb5061063da46544627aedd1a1913009eefb42875a6e13ab4b9ee630bac0398b5c509069e52fadb')
 
 build() {
   cd ${_base}-${pkgver}
