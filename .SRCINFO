@@ -1,12 +1,12 @@
 pkgbase = apache-jena
 	pkgdesc = Java framework for building Semantic Web and Linked Data applications
-	pkgver = 5.6.0
+	pkgver = 6.0.0
 	pkgrel = 1
 	url = https://jena.apache.org/
 	arch = any
 	license = Apache
 	depends = java-runtime>=17
-	source = https://downloads.apache.org/jena/binaries/apache-jena-5.6.0.tar.gz
-	sha512sums = 220ff50c3b6803c2cdade5479f8812700b281f4153fd73cdb83277b30f3d2c9e8a4a49d09717cfa7dde4fe5c7132a2aaaeeef3fbc474a6773b3d9deb5d63cbaa
+	source = https://downloads.apache.org/jena/binaries/apache-jena-6.0.0.tar.gz
+	sha512sums = c66b413f0c97e465c8a5a71f2718116134c65efa71205e136a42ad0ee6d39deece0dcbcc99801d806e4b60af5fe886c72eb53c77bc464fe9d2d0f1ba2d3ec1fe
 
 pkgname = apache-jena
