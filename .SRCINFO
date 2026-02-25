@@ -1,0 +1,13 @@
+pkgbase = libquanta
+	pkgdesc = Colour quantisation library
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://codeberg.org/maandree/libquanta
+	arch = i686
+	arch = x86_64
+	license = custom:ISC
+	depends = libj2
+	source = libquanta-1.0.tar.gz::https://codeberg.org/maandree/libquanta/archive/1.0.tar.gz
+	sha256sums = 655d06ec84d9e095fc655d44e6d0439017f02a872f0f0ed9d4bad5604e69df29
+
+pkgname = libquanta
