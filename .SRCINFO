@@ -1,0 +1,17 @@
+pkgbase = treekei-bin
+	pkgdesc = A file tree with line counts
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/zihao-liu-qs/treekei
+	arch = x86_64
+	license = MIT
+	provides = treekei
+	conflicts = treekei
+	source = README-0.2.3.md::https://raw.githubusercontent.com/zihao-liu-qs/treekei/v0.2.3/README.md
+	source = LICENSE-0.2.3::https://raw.githubusercontent.com/zihao-liu-qs/treekei/v0.2.3/LICENSE
+	sha256sums = 8efea2ae58678497e5cad9aa8d02bf53c5864da1ff99d28458c1dc9a0ddaf037
+	sha256sums = 28260cf04b56c1359ae421c6222f2bfb1d67475d37e586c66e37b373b252d2ae
+	source_x86_64 = treekei-x86_64-0.2.3.tgz::https://github.com/zihao-liu-qs/treekei/releases/download/v0.2.3/treekei_linux_amd64.tar.gz
+	sha256sums_x86_64 = d8dcae7a65589ce9a08654b390735648eb3f3fe39b458530bcd78b1b1dd8ed8a
+
+pkgname = treekei-bin

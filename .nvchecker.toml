@@ -1,0 +1,5 @@
+[treekei-bin]
+source = "github"
+github = "zihao-liu-qs/treekei"
+use_latest_release = true
+prefix = "v"
