@@ -1,6 +1,6 @@
 pkgbase = stompbox-remote-bin
 	pkgdesc = Guitar amplification and effects (remote UI)
-	pkgver = 0.1.15
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/mikeoliphant/StompboxUI
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = stompbox-remote-bin
 	conflicts = stompbox-remote
 	options = !strip
 	source = StompboxRemote.desktop
-	sha256sums = 92df3628ce69f113421cb8e4cc9f4473da0b3de40f6841cb5937812126ebc7db
-	source_x86_64 = https://github.com/mikeoliphant/StompboxUI/releases/download/v0.1.15/StompboxRemoteLinux-x64.zip
-	sha256sums_x86_64 = 5e31db98d40d40b2125270f132f4114b2aa50e3bdd28f87e2423abc77e368b7f
-	source_aarch64 = https://github.com/mikeoliphant/StompboxUI/releases/download/v0.1.15/StompboxRemoteLinux-Arm64.zip
-	sha256sums_aarch64 = edbab6a1b1ad21437f9ec93fb3cd11ff6e176caa05e16efa38b849e6d2ee20ce
+	b2sums = c950eb879479400d3e53a97e80d926dcee4c91d2a2b70d882ee46ad5afd8053e81cae090c63eb0c54d46eda368e0494287076129b03b4853d6771d943bbe575d
+	source_x86_64 = StompboxRemoteLinux-x64-v0.2.0.zip::https://github.com/mikeoliphant/StompboxUI/releases/download/v0.2.0/StompboxRemoteLinux-x64.zip
+	b2sums_x86_64 = 90151d939d0127d11ad01424fcc3dc5bbb4ce835fde5ce8c06b67223a077e7765ea2239bc69f08299438be1dc1694197bf2260fe46bd2b332948d35bce43c53c
+	source_aarch64 = StompboxRemoteLinux-Arm64-v0.2.0.zip::https://github.com/mikeoliphant/StompboxUI/releases/download/v0.2.0/StompboxRemoteLinux-Arm64.zip
+	b2sums_aarch64 = fe84c48086047f0550239aaa06c8a39d33f14151080a56be54d93036127d8f8e2e134f1ed0b2ae3a1119c58d47daabe3ebf75765f228856fde89bded42912a8b
 
 pkgname = stompbox-remote-bin
