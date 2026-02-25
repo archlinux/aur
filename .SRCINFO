@@ -8,6 +8,6 @@ pkgbase = passkeyd
 	depends = tpm2-tss
 	options = !debug
 	source = https://github.com/bjn7/passkeyd/releases/download/v1.0.0/passkeyd-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 0eb50118cc6f014293e6869f6709580dbad609ac5b15683432368bb3677eda1f
+	sha256sums = 4f6d5832dd896e9452ecac73dd6467f8aea0a6656b759e1bc612f1fac245b9f3
 
 pkgname = passkeyd
