@@ -1,0 +1,19 @@
+pkgbase = python-pytest-import-check
+	pkgdesc = pytest plugin to check whether Python modules can be imported
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/projg2/pytest-import-check
+	arch = any
+	license = GPL-2.0-or-later
+	checkdepends = python-pytest
+	checkdepends = python-setuptools
+	checkdepends = meson
+	makedepends = python-flit-core
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/p/pytest_import_check/pytest_import_check-0.0.4.tar.gz
+	md5sums = 3261bb2f565c5b30a039df9044eca4f1
+
+pkgname = python-pytest-import-check
+	depends = python>=3.9
+	depends = python-pytest>=8.1
