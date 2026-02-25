@@ -1,0 +1,15 @@
+pkgbase = lockenv
+	pkgdesc = Simple, password-based encrypted vault for .env and infrastructure secrets
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/illarion/lockenv
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	provides = lockenv
+	conflicts = lockenv-bin
+	source = lockenv-0.1.8.tar.gz::https://github.com/illarion/lockenv/archive/v0.1.8.tar.gz
+	sha256sums = 9d14eff0b5f2310e95a145e069aafa50e530a24f9beb7eb40dc8e5d4694d3ab5
+
+pkgname = lockenv
