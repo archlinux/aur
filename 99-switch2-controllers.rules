@@ -1,0 +1,11 @@
+# Nintendo Switch 2 Joy-Con (Right)
+KERNEL=="hidraw*", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2066", MODE="0660", TAG+="uaccess"
+
+# Nintendo Switch 2 Joy-Con (Left)
+KERNEL=="hidraw*", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2067", MODE="0660", TAG+="uaccess"
+
+# Nintendo Switch 2 Pro Controller
+KERNEL=="hidraw*", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2069", MODE="0660", TAG+="uaccess"
+
+# Nintendo Switch 2 GameCube Controller
+KERNEL=="hidraw*", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="2073", MODE="0660", TAG+="uaccess"
