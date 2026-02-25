@@ -1,6 +1,6 @@
-# Maintainer: backmeupplz <backmeupplz@gmail.com>
+# Maintainer: Nikita Kolmogorov <ubuntu@borodutch.com>
 pkgname=drumkit
-pkgver=0.1.0
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='Low-latency TUI MIDI drum sampler for electronic drum kits'
 arch=('x86_64')
@@ -9,30 +9,23 @@ license=('MIT')
 depends=('alsa-lib')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/backmeupplz/drumkit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5ab66216aa6b0fece82bd221951a59fa336ba4e334640827a9a9511c8388915d')
+sha256sums=('fedf0ff8c32b6c2378569b17362b330cf5662ecb3e56494d06d54cc915ad5296')
 
 prepare() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --release
-}
-
-check() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo test
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$pkgname-$pkgver"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
