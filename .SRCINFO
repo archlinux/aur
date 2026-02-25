@@ -1,0 +1,25 @@
+pkgbase = iverilog-libvvp-git
+	pkgdesc = Icarus Verilog simulation and synthesis tool - With VVP library support
+	pkgver = 12.0.r777.g15d6e83
+	pkgrel = 1
+	url = http://iverilog.icarus.com/
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = autoconf
+	makedepends = gperf
+	makedepends = make
+	makedepends = gcc
+	makedepends = bison
+	makedepends = flex
+	depends = gcc-libs
+	depends = bzip2
+	depends = bash
+	depends = zlib
+	depends = readline
+	provides = iverilog
+	source = git+https://github.com/steveicarus/iverilog
+	b2sums = SKIP
+
+pkgname = iverilog-libvvp-git
