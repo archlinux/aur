@@ -1,5 +1,5 @@
 pkgname=animeshelf
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Local-first anime ranking and tier-list management app.'
 arch=('x86_64')
