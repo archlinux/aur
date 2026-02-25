@@ -1,0 +1,5 @@
+[trolley-bin]
+source = "github"
+github = "weedonandscott/trolley"
+use_latest_release = true
+prefix = "v"
