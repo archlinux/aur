@@ -55,7 +55,7 @@ EOF
 [Desktop Entry]
 Name=HyprSettings
 Comment=A GUI configurator for Hyprland
-Exec=hyprsettings
+Exec=/usr/bin/hyprsettings
 Icon=hyprsettings
 Terminal=false
 Type=Application
