@@ -3,7 +3,7 @@
 # Maintainer: l5yth <aur@l5y.tech>
 
 pkgname=lsu-git
-pkgver=0.1.0.r5.g7c29020
+pkgver=0.1.1.r0.gcabd0cc
 pkgrel=1
 pkgdesc="Terminal UI for systemd services and latest journal lines"
 arch=('x86_64')
