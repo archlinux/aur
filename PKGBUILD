@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=rilua
-pkgver=0.1.19
+pkgver=0.1.20
 pkgrel=1
 pkgdesc='A zero-dependency Rust port of Lua 5.1.1'
 arch=(x86_64 i686)
@@ -12,7 +12,7 @@ depends=(gcc-libs libgcc_s.so
 makedepends=(cargo)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('8df9c1a76a76fdfd3275772483bf5a16bd33c8eae80ca9542717ec3997d9477b')
+sha256sums=('2b5b40932fa81cc071d05f9c06663d97a5f9888f48851e1b18d058574e046093')
 
 prepare() {
 	cd "$_archive"
