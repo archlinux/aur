@@ -1,6 +1,6 @@
 # Maintainer: LifeOfATitan <abdoul@designsunreal.com>
 pkgname=orbit-wifi
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A WiFi/Bluetooth manager for Wayland with glassmorphism UI"
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "orbit.service")
-sha256sums=('bac57df2aaeb184b9d65b9bebf5ce7bf942724e90196a953d3098b29d740dcce'
+sha256sums=('b5260ad2dfe2c2748feb3c46e459f1c8007ac10ea2c5969d45924f27d50840e1'
             'c48aacf0c8020cb7a2d8a4796d2c0b3826eea91a28aa325ec1a61acb99b8216a')
 
 prepare() {
