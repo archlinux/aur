@@ -1,0 +1,22 @@
+pkgbase = sddm-theme-noctalia-git
+	pkgdesc = a theme designed to complement the Noctalia Shell experience.
+	pkgver = r24.05d3761
+	pkgrel = 1
+	url = https://github.com/mda-dev/noctalia-sddm-theme
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = sddm
+	makedepends = qt5-declarative
+	makedepends = qt5-quickcontrols2
+	makedepends = qt5-graphicaleffects
+	depends = mpvpaper
+	depends = hyprland
+	depends = glibc
+	depends = cjson
+	provides = sddm-theme-noctalia
+	conflicts = sddm-theme-noctalia
+	source = git+https://github.com/mda-dev/noctalia-sddm-theme.git
+	sha256sums = SKIP
+
+pkgname = sddm-theme-noctalia-git
