@@ -1,0 +1,16 @@
+pkgbase = micasa-bin
+	pkgdesc = Modal TUI for tracking home projects, maintenance schedules and vendor quotes
+	pkgver = 1.49.2
+	pkgrel = 1
+	url = https://github.com/cpcloud/micasa
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = micasa
+	conflicts = micasa
+	source_x86_64 = micasa-bin-1.49.2-x86_64.tar.gz::https://github.com/cpcloud/micasa/releases/download/v1.49.2/micasa_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8ffdc2a9832154e8650a10e880cc4f16e7aa7cb37b9538442144c0c7f1f21302
+	source_aarch64 = micasa-bin-1.49.2-aarch64.tar.gz::https://github.com/cpcloud/micasa/releases/download/v1.49.2/micasa_linux_arm64.tar.gz
+	sha256sums_aarch64 = ad46056468cffa5288343f45b41813ec32fc71c97f53f0a2513d2cc999193f3d
+
+pkgname = micasa-bin
