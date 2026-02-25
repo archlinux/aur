@@ -2,14 +2,14 @@
 
 pkgname=monocol
 pkgdesc="Simple tool to generate monochromatic colorscheme for wpg"
-url="https://git.sr.ht/~primalmotion/monocol"
+url="https://codeberg.org/primalmotion/monocol"
 pkgver=v1.0.0
 pkgrel=1
 license=(GPL3)
 arch=(any)
 makedepends=(go)
-source=("https://git.sr.ht/~primalmotion/monocol/archive/${pkgver}.tar.gz")
-sha256sums=('471b83e45874840f6bb951dba24abf25603c32795033c1380fe26cacc872978d')
+source=("https://codeberg.org/primalmotion/monocol/archive/${pkgver}.tar.gz")
+sha256sums=('889a700c3d0122f4a00c3ff4d881bd1e2eaf64b40e5512636ea5f6f0dacc71f3')
 provides=("monocol")
 
 build() {
