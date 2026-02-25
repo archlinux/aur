@@ -1,12 +1,12 @@
 # Maintainer: Zenn <mine.minefis@gmail.com>
 pkgname=wl_shimeji-git
 pkgver=0.0.2.r95.g11f5269
-pkgrel=1
+pkgrel=2
 pkgdesc="Shimeji reimplementation for Wayland in C"
 arch=('x86_64')
 url="https://github.com/CluelessCatBurger/wl_shimeji"
 license=('GPL-2.0')
-depends=('python>=3.10' 'python-pillow' 'wayland-compositor')
+depends=('python>=3.10' 'python-pillow')
 makedepends=('git' 'libarchive' 'wayland' 'wayland-protocols' 'uthash')
 source=("$pkgname::git+https://github.com/CluelessCatBurger/wl_shimeji.git"
         "jsonh::git+https://github.com/sheredom/json.h"
