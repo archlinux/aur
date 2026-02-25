@@ -1,0 +1,16 @@
+pkgbase = smtk-obs-git
+	pkgdesc = A lightweight OBS Browser Source overlay for showmethekey using Bun and WebSockets
+	pkgver = r3.2e93fd5
+	pkgrel = 1
+	url = https://github.com/denizkose/smtk-obs
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = showmethekey
+	depends = bun
+	provides = smtk-obs
+	conflicts = smtk-obs
+	source = smtk-obs::git+https://github.com/denizkose/smtk-obs.git
+	sha256sums = SKIP
+
+pkgname = smtk-obs-git
