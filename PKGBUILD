@@ -10,6 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 provides=('rtk')
 conflicts=('rtk-bin')
+options=(!lto)
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('cf8048e4c40f712e553b41078de52de4436902cfae92bea7d47f097ce24c1b5e')
 

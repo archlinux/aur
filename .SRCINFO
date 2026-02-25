@@ -10,6 +10,7 @@ pkgbase = rtk
 	depends = gcc-libs
 	provides = rtk
 	conflicts = rtk-bin
+	options = !lto
 	source = https://github.com/rtk-ai/rtk/archive/v0.22.2.tar.gz
 	sha256sums = cf8048e4c40f712e553b41078de52de4436902cfae92bea7d47f097ce24c1b5e
 
