@@ -2,7 +2,7 @@
 
 pkgname=monocol-git
 pkgdesc="Simple tool to generate monochromatic colorscheme for wpg"
-url="https://git.sr.ht/~primalmotion/monocol"
+url="https://codeberg.org/primalmotion/monocol"
 pkgver=v1.0.0.r0.g9998d59
 pkgrel=1
 license=(GPL3)

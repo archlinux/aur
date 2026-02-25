@@ -2,13 +2,13 @@ pkgbase = monocol-git
 	pkgdesc = Simple tool to generate monochromatic colorscheme for wpg
 	pkgver = v1.0.0.r0.g9998d59
 	pkgrel = 1
-	url = https://git.sr.ht/~primalmotion/monocol
+	url = https://codeberg.org/primalmotion/monocol
 	arch = any
 	license = GPL3
 	makedepends = go
 	provides = monocol
 	conflicts = monocol
-	source = monocol-git::git+https://git.sr.ht/~primalmotion/monocol
+	source = monocol-git::git+https://codeberg.org/primalmotion/monocol
 	sha1sums = SKIP
 
 pkgname = monocol-git
