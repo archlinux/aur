@@ -1,0 +1,17 @@
+pkgbase = mermaid-rs-bin
+	pkgdesc = Fast native Rust Mermaid diagram renderer. No browser required.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/1jehuang/mermaid-rs-renderer
+	arch = x86_64
+	license = MIT
+	provides = mermaid-rs
+	conflicts = mermaid-rs
+	source = mmdr-v0.2.0.tar.gz::https://github.com/1jehuang/mermaid-rs-renderer/releases/download/v0.2.0/mmdr-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE-v0.2.0::https://raw.githubusercontent.com/1jehuang/mermaid-rs-renderer/v0.2.0/LICENSE
+	source = README.md-v0.2.0::https://raw.githubusercontent.com/1jehuang/mermaid-rs-renderer/v0.2.0/README.md
+	sha256sums = a4bdd20f95150a8953463ea6d0dd5b77df0a25d37150781ebf342e252347d2a5
+	sha256sums = 57ed7943c34463678a150769d4a4f6c95d2a190fe2c1977f74bc883492c94b86
+	sha256sums = ccbd14bca88cd82d7a1f6804f77d1c175f2ebc6562adb25e339d47d9effa5bb9
+
+pkgname = mermaid-rs-bin
