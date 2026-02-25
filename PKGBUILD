@@ -4,7 +4,7 @@
 # Maintainer: javalsai <javalsai@proton.me>
 
 pkgname=lidm
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 depends=('pam' 'lidm-service')
 makedepends=()
@@ -13,7 +13,7 @@ arch=('any')
 url="https://github.com/javalsai/lidm"
 license=('GPL-3.0-only')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/javalsai/lidm/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6ba34caa17e684936f807dfcd70bf7c114d48dd96ed29e5b633ae40ba670d83e')
+sha256sums=('08bb013df15987b5a685c5925a41b2c9a8531e4af3c9a097c0dbb1fa8a6d8a79')
 
 build() {
     make -C "$srcdir/lidm-$pkgver"
