@@ -1,7 +1,7 @@
 pkgbase = iroh-relay-git
 	pkgdesc = p2p QUIC connections dialed by public key
 	pkgver = 0.96.1.r16.gb11e707cc8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/n0-computer/iroh
 	arch = x86_64
 	arch = aarch64
