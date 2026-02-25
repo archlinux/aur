@@ -1,0 +1,15 @@
+pkgbase = systemd-lsp-bin
+	pkgdesc = Language server for systemd unit files with embedded documentation
+	pkgver = 2026.01.17
+	pkgrel = 1
+	url = https://github.com/JFryy/systemd-lsp
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = systemd-lsp
+	conflicts = systemd-lsp
+	source = systemd-lsp-bin-2026.01.17::https://github.com/JFryy/systemd-lsp/releases/download/v2026.01.17/systemd-lsp-x86_64-unknown-linux-gnu
+	sha256sums = 8f49dc48f0c2a83abf4ca5f73e7676d625488cecb9c50d5b2620ed53d4ae0cb2
+
+pkgname = systemd-lsp-bin
