@@ -5,7 +5,7 @@
 pkgname=ect
 _pkgname=efficient-compression-tool
 pkgver=0.9.5
-pkgrel=3
+pkgrel=4
 pkgdesc='File compressor, supports postcompression of PNG, JPEG, GZIP and ZIP files'
 url="https://github.com/fhanau/$_pkgname"
 arch=('x86_64')
@@ -14,13 +14,18 @@ depends=('gcc-libs')
 makedepends=('nasm' 'git' 'cmake')
 source=("git+$url.git#tag=v$pkgver"
 	'git+https://github.com/glennrp/libpng.git#commit=f135775ad4e5d4408d2e12ffcc71bb36e6b48551'
-	'git+https://github.com/fhanau/mozjpeg.git#commit=182457e3e26e1e078d5dbd09137cf04865be2e49')
+	'git+https://github.com/fhanau/mozjpeg.git#commit=182457e3e26e1e078d5dbd09137cf04865be2e49'
+	'https://github.com/user-attachments/files/21812326/ect-gcc-15-O3-fix.patch')
 sha512sums=('a1d0ad86aa8e6d720575daf7e833c3b787ac51595774b99b6fd4a8ece616150c2e2c174aa97a2bc0b89e16d6cd93ec0c0d657430c1a41bf08b121368af0a4abc'
             '13e286cf091b284d15888a959a8be5a90977bed92d861fd72d465199bd6112641b47d74a525d4100868d528a25921958e9ab579643b705befe48e5756ffa301f'
-            '1bdd9efa8d9c49a16cf5f2135ed29dc120bc1b31eec7130802d22b3d09bf10fe337f734b39b38e422bbe6e1719aca6744d49e2b435c2cb94cbf401d89086947a')
+            '1bdd9efa8d9c49a16cf5f2135ed29dc120bc1b31eec7130802d22b3d09bf10fe337f734b39b38e422bbe6e1719aca6744d49e2b435c2cb94cbf401d89086947a'
+            '6384aa4a0102229b9499ae3608d600080cc2f9b953ddde947a866b27308b16be374c8ae47bd7b91d3f10805485c2e05f97fc4e758a2b212c02596d7a6dde44f6')
 
 prepare() {
 	cd "$_pkgname"
+
+	patch -Np1 < '../ect-gcc-15-O3-fix.patch'
+
 	git submodule init
 	git config submodule.src/libpng.url "$srcdir"/libpng
 	git config submodule.src/mozjpeg.url "$srcdir"/mozjpeg
