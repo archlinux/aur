@@ -1,7 +1,7 @@
 # Maintainer: zlicdt <xkicdt1@gmail.com>
 
 pkgname=rchan
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A bot that checks for PKGBUILD updates in custom Arch Linux package repositories"
 arch=('x86_64')
