@@ -1,7 +1,7 @@
 pkgbase = material-kwin-decoration-git
 	pkgdesc = Material-ish window decoration for KWin, with LIM (Locally Integrated Menu) support
 	pkgver = r215.38718de
-	pkgrel = 3.5
+	pkgrel = 4
 	url = https://github.com/guiodic/material-decoration
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -17,6 +17,7 @@ pkgbase = material-kwin-decoration-git
 	depends = plasma-x11-session
 	optdepends = appmenu-gtk-module: gtk app support
 	optdepends = kwin-minimize2tray-git: Minimize to tray on Close long press
+	optdepends = kwin-effects-better-blur-dx: strongly recommended on Wayland if you set Titlebar Opacity < 100%
 	provides = material-kwin-decoration
 	conflicts = material-kwin-decoration
 	source = material-kwin-decoration::git+https://github.com/guiodic/material-decoration.git
