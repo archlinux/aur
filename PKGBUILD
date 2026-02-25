@@ -12,7 +12,7 @@ optdepends=()
 provides=('klit')
 conflicts=('klit')
 options=('!strip')
-source=("klit-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-13/klit-8.0.0-2026-02-23-linux-x64.zip")
+source=("klit-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-15/klit-8.0.0-2026-02-25-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
