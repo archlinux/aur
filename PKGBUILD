@@ -2,7 +2,7 @@
 
 pkgname=verifpal-bin
 _pkgname=verifpal
-pkgver=0.40.1
+pkgver=0.40.2
 pkgrel=1
 pkgdesc="Cryptographic protocol analysis for real-world protocols."
 arch=('x86_64')
@@ -13,8 +13,8 @@ conflicts=('verifpal')
 source=("https://github.com/symbolicsoft/verifpal/releases/download/v${pkgver}/verifpal_${pkgver}_linux_amd64.zip"
         "$pkgname-$pkgver-manual.pdf::https://static.verifpal.com/manual.pdf"
         "$pkgname-$pkgver-manual-license.txt::https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode.txt")
-sha256sums=('615f57e3b4be8274d158179f7b3e215b81023cd842f709f281a084249dfbb2ef'
-            'd007c21e1b31d177db322e7aa966686a70489775ea1961cc17ef569a96a1a6aa'
+sha256sums=('ad393281c392bccdb03b38caab051a517bb155cb17f171b2ee37a9db00ea250a'
+            'eafd2109aeed0acd98c9ccc49c69ecaac56e3b28731c2ec7f2e4156749ab4ca9'
             '38762e3777f4ec00a6f769062a7c3f704fb78ce08303ecff88558da4c49cf9ea')
 
 package() {
