@@ -3,11 +3,11 @@
 
 pkgname=krathalans-endlessh-git
 _pkgname=endlessh
-pkgver=r121.f063a48
-pkgrel=2
+pkgver=r129.fadc38b
+pkgrel=1
 pkgdesc="A tarpit to lock up SSH clients. Krathalan's fork"
 arch=('x86_64' 'i686' 'aarch64')
-url="https://github.com/krathalan/endlessh"
+url="https://codeberg.org/krathalan/endlessh"
 license=('Unlicense')
 
 # Sources
