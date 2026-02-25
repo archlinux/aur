@@ -1,0 +1,19 @@
+pkgbase = scuisei-git
+	pkgdesc = Blazing fast successor for SCXvid-standalone
+	pkgver = 0.1.1.r0.gc6ec674
+	pkgrel = 1
+	url = https://github.com/yuv420p10le/scuisei-rs
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = clang
+	makedepends = pkgconf
+	depends = ffmpeg
+	depends = glibc
+	provides = scuisei-rs
+	conflicts = scuisei-rs
+	source = scuisei-rs::git+https://github.com/yuv420p10le/scuisei-rs.git
+	sha256sums = SKIP
+
+pkgname = scuisei-git

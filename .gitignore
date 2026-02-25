@@ -1,0 +1,11 @@
+# Built package archives
+*.pkg.tar.*
+*.src.tar.*
+*.sig
+
+# makepkg working directories/artifacts
+pkg/
+src/
+
+# VCS source checkout created by this PKGBUILD
+/scuisei-rs/
