@@ -2,7 +2,7 @@
 # Contributor: Xuanwo
 pkgname=folo-bin
 _pkgname=Folo
-pkgver=1.3.0
+pkgver=1.3.1
 _electronversion=38
 pkgrel=1
 pkgdesc="Organizes content into one timeline, keeping you updated on what matters, noise-free. Share lists, explore collections, and enjoy distraction-free browsing.(Prebuilt version.Use system-wide electron)"
@@ -19,7 +19,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/desktop%2Fv${pkgver}/${_pkgname}-${pkgver}-linux-x64.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('aada60972cf062ef6951395df3ed23d1189856f04b1c85a54678045b1af760d4'
+sha256sums=('5473546c9de603e34105957a9e137d69a8bd47b9666136a85e4eaef8ab1fb357'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -48,11 +48,12 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/squashfs-root/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
     if find "${srcdir}/squashfs-root/resources" -mindepth 1 -maxdepth 1 -type d | read; then
-        for subdir in "${srcdir}/squashfs-root/resources"/*; do
-            if [ -d "${subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${subdir}"/* "${pkgdir}/usr/lib/${pkgname%-bin}"
+        for _subdir in "${srcdir}/squashfs-root/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
             fi
         done
     fi
