@@ -1,13 +1,13 @@
 # MAINTAINER: haagch <christoph.haag@collabora.com>
 
 pkgname=basalt-monado-git
-pkgver=r505.0ced9e5
+pkgver=r525.864d267
 pkgrel=1
 pkgdesc="Visual-Inertial Mapping with Non-Linear Factor Recovery"
 arch=('i686' 'x86_64')
 url="https://gitlab.freedesktop.org/mateosss/basalt"
-license=('BSD')
-depends=('eigen' 'glew' 'libpng' 'lz4' 'bzip2' 'boost' 'gtest' 'opencv' 'libpng' 'lz4' 'bzip2' 'libuvc' 'fmt' 'python')
+license=('BSD-3-Clause')
+depends=('eigen' 'glew' 'libpng' 'lz4' 'bzip2' 'boost' 'gtest' 'opencv' 'libpng' 'lz4' 'bzip2' 'libuvc' 'fmt' 'python' "libsm" "libice")
 optdepends=('librealsense: Intel realsense support')
 makedepends=('cmake' 'ninja' 'git')
 _pkgname="basalt"
