@@ -1,6 +1,6 @@
 # Maintainer: Stan <iamjacke@gmail.com>
 pkgname=dora-bin
-pkgver=0.6.2
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Beautiful TUI for media downloading (yt-dlp + ffmpeg)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('yt-dlp' 'ffmpeg')
 provides=('dora')
 conflicts=('dora')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Jacke/doradura/releases/download/tui-v${pkgver}/dora-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('a19410774d6c71d82c658c42334330e86981196bdd9244fad8b21356242ca24c')
+sha256sums=('73e86fc2e2bb21c1a5b06961fe2dc6b53023ca7dd3a114ead303bfb92536282b')
 
 package() {
     # Archive extracts to dora-${pkgver}-x86_64-unknown-linux-gnu/
