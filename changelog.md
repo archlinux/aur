@@ -1,3 +1,11 @@
+## 0.0.418 - 2026-02-25
+
+🎉 Copilot CLI is now [generally available](https://github.blog/changelog/2026-02-25-github-copilot-cli-is-now-generally-available) 🎉
+
+- Agent protected from accidentally killing itself
+- Remove --disable-parallel-tools-execution flag and parallel_tool_execution config option
+- Plugin agents specified as file paths in plugin.json load correctly
+
 ## 0.0.417 - 2026-02-25
 
 - Add /research command for deep research with exportable reports
