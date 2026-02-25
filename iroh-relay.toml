@@ -6,12 +6,24 @@
 metrics_bind_addr = "127.0.0.1:9090"
 
 # [tls]
+# https_bind_addr = "[::]:443"
+# cert_dir = "/var/lib/iroh-relay"
+#
+# ## LetsEncrypt: automatic ACME certificate provisioning
 # cert_mode = "LetsEncrypt"
 # hostname = "relay.example.com"
 # contact = "admin@example.com"
-# https_bind_addr = "[::]:443"
-# cert_dir = "/var/lib/iroh-relay"
 # prod_tls = true
+#
+# ## Manual: read certificate and key from files
+# cert_mode = "Manual"
+# manual_cert_path = "/var/lib/iroh-relay/default.crt"
+# manual_key_path = "/var/lib/iroh-relay/default.key"
+#
+# ## Reloading: like Manual, but watches files and reloads on change
+# cert_mode = "Reloading"
+# manual_cert_path = "/var/lib/iroh-relay/default.crt"
+# manual_key_path = "/var/lib/iroh-relay/default.key"
 
 # [limits]
 # accept_conn_limit = 100.0
