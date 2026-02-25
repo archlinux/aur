@@ -1,6 +1,6 @@
 pkgname=blockdeletee-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Voice-controlled Minecraft block deletion via RCON + Vosk (TUI/Qt) - prebuilt binary"
 arch=('x86_64')
 url="https://github.com/amethyst-bin/BlockDeletee"
