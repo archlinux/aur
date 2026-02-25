@@ -89,7 +89,7 @@ prepare() {
     _ensure_local_nvm
     git -c submodule."assets".update=checkout submodule update --init assets
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    pnpm install
+    NODE_ENV=development    pnpm install --package-import-method=hardlink
     NODE_ENV=development    pnpm add -D @electron-forge/plugin-local-electron --force
 }
 build() {
