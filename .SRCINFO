@@ -1,6 +1,6 @@
 pkgbase = llvm-mingw-w64-toolchain-ucrt-bin
 	pkgdesc = LLVM/Clang/LLD based mingw-w64 toolchain (UCRT) targeting i686, x86-64, armv7, and aarch64
-	pkgver = 20251216
+	pkgver = 20260224
 	pkgrel = 1
 	url = https://github.com/mstorsjo/llvm-mingw
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = llvm-mingw-w64-toolchain-ucrt-bin
 	depends = zlib
 	depends = zstd
 	provides = llvm-mingw-w64-toolchain
-	source_x86_64 = https://github.com/mstorsjo/llvm-mingw/releases/download/20251216/llvm-mingw-20251216-ucrt-ubuntu-22.04-x86_64.tar.xz
-	sha256sums_x86_64 = db561734a05eb4a0695d5e901aadd6c1cda74bba4c9e102b677f81c6fd59849a
-	source_aarch64 = https://github.com/mstorsjo/llvm-mingw/releases/download/20251216/llvm-mingw-20251216-ucrt-ubuntu-22.04-aarch64.tar.xz
-	sha256sums_aarch64 = 2950bc65bdd289a2138f48ffb4b200c06c6dc71d8c105452ebd9fa7d567497ec
+	source_x86_64 = https://github.com/mstorsjo/llvm-mingw/releases/download/20260224/llvm-mingw-20260224-ucrt-ubuntu-22.04-x86_64.tar.xz
+	sha256sums_x86_64 = b89daa0c8eb79e7c8e887fd2ab2b89f99e82c3f1dedab0d2efaa1563a43ad534
+	source_aarch64 = https://github.com/mstorsjo/llvm-mingw/releases/download/20260224/llvm-mingw-20260224-ucrt-ubuntu-22.04-aarch64.tar.xz
+	sha256sums_aarch64 = 244d1b7d6f5c83edc09464389712fc686ed758276fcc44be9c3999ca5ef21424
 
 pkgname = llvm-mingw-w64-toolchain-ucrt-bin
