@@ -1,0 +1,5 @@
+[cheshmak-bin]
+source = "github"
+github = "mrkatebzadeh/cheshmak"
+use_latest_release = true
+prefix = "v"
