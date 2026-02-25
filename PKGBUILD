@@ -8,16 +8,16 @@ pkgrel=1
 pkgdesc="Python Real-time SDK for LiveKit."
 arch=('x86_64' 'aarch64')
 _repo='https://github.com/livekit/python-sdks'
-url='https://github.com/livekit/python-sdks/tree/main/livekit-rtc'
+url="$_repo/tree/main/livekit-rtc"
 license=('Apache-2.0')
 depends=('python' 'python-protobuf' 'python-aiofiles' 'python-numpy' 'glibc' 'gcc-libs')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-requests' 'unzip')
 checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-matplotlib' 'python-pydantic' 'python-livekit-api')
 source=("$_repo/archive/refs/tags/rtc-v$pkgver.tar.gz"
-        "https://github.com/livekit/python-sdks/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures/test_audio.wav"
-        "https://github.com/livekit/python-sdks/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures//test_echo_capture.wav"
-        "https://github.com/livekit/python-sdks/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures//test_echo_render.wav"
-        "https://github.com/livekit/python-sdks/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures//test_processed.wav")
+        "$_repo/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures/test_audio.wav"
+        "$_repo/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures//test_echo_capture.wav"
+        "$_repo/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures//test_echo_render.wav"
+        "$_repo/raw/refs/tags/rtc-v$pkgver/tests/rtc/fixtures//test_processed.wav")
 source_x86_64=("https://github.com/livekit/rust-sdks/releases/download/rust-sdks/livekit-ffi@$_livekit_ffi_ver/ffi-linux-x86_64.zip")
 source_aarch64=("https://github.com/livekit/rust-sdks/releases/download/rust-sdks/livekit-ffi@$_livekit_ffi_ver/ffi-linux-arm64.zip")
 sha256sums=('a0f6acbc3324bde33dc6a4eebf31c03209da2adaac12ae30b4e8c22c2cdb35bd'
