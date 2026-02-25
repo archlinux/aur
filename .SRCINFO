@@ -1,0 +1,17 @@
+pkgbase = pgschema-bin
+	pkgdesc = Declarative schema migration CLI for Postgres (Terraform-style)
+	pkgver = 1.7.2
+	pkgrel = 1
+	url = https://github.com/pgplex/pgschema
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = pgschema
+	conflicts = pgschema
+	source_x86_64 = pgschema-bin-1.7.2-x86_64::https://github.com/pgplex/pgschema/releases/download/v1.7.2/pgschema-1.7.2-linux-amd64
+	sha256sums_x86_64 = c2e57acf1e511f721f8edbb9f2e6ecd7cf1f87fa35a64b4ecee8a2d7604dca40
+	source_aarch64 = pgschema-bin-1.7.2-aarch64::https://github.com/pgplex/pgschema/releases/download/v1.7.2/pgschema-1.7.2-linux-arm64
+	sha256sums_aarch64 = 296b370374b106eefabbcbaff310d78638cdf65bdf3ecf92b77151cfe00282ad
+
+pkgname = pgschema-bin
