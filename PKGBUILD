@@ -3,16 +3,16 @@
 
 pkgname=cider
 pkgver=1.6.3.20250909032549
-pkgrel=1
+pkgrel=2
 pkgdesc='An abandoned Apple Music player using a fork of Cider v1 from taoky/Cider'
 arch=('x86_64')
 url='https://github.com/taoky/Cider'
 license=('AGPL-3')
 depends=(
-	'alsa-lib'
-	'gtk3'
-	'libxcrypt-compat'
-	'nss'
+  'alsa-lib'
+  'gtk3'
+  'libxcrypt-compat'
+  'nss'
 )
 makedepends=('git' 'nodejs' 'pnpm')
 optdepends=('libnotify: Playback notifications')
@@ -24,29 +24,29 @@ install=cider.install
 prepare() {
   cd Cider
 
-	# Use TOKEN environment variable
-	echo 'localStorage.setItem("lastToken", process.env.TOKEN);' >> ./src/preload/cider-preload.js
+  # Use TOKEN environment variable
+  echo 'localStorage.setItem("lastToken", process.env.TOKEN);' >> ./src/preload/cider-preload.js
   sed -i "/var prompt = \`Cider is not responding/c\\var prompt = \`Your Apple Music TOKEN is expired or invalid. Edit /usr/share/applications/sh.cider.Cider.desktop and modify the TOKEN value in the Exec line then restart Cider. (Current value of TOKEN=\${lastToken}).\`;" ./src/renderer/main/events.js
 
-	# Temporary fix for missing thumbnail
-	# See https://github.com/taoky/Cider/pull/13
-	sed -i 's|forceDirectives: {},|forceDirectives: { lcdArtworkSize: { value: 256 } },|' ./src/renderer/main/vueapp.js
+  # Temporary fix for missing thumbnail
+  # See https://github.com/taoky/Cider/pull/13
+  sed -i 's|forceDirectives: {},|forceDirectives: { lcdArtworkSize: { value: 256 } },|' ./src/renderer/main/vueapp.js
 
-	pnpm install
+  pnpm install
 }
 
 build() {
-	cd Cider
+  cd Cider
   pnpm run build
-	pnpm exec electron-builder --linux deb --publish=never
+  pnpm exec electron-builder --linux deb --publish=never
 }
 
 package() {
-	bsdtar -xf "$srcdir"/Cider/dist/cider*_amd64.deb --include='data.tar*' -O | bsdtar -xf - -C "$pkgdir"
+  bsdtar -xf "$srcdir"/Cider/dist/cider*_amd64.deb --include='data.tar*' -O | bsdtar -xf - -C "$pkgdir"
 
-	install -d "$pkgdir/usr/bin/"
-	ln -sf "$pkgdir/opt/Cider/sh.cider.Cider" "$pkgdir/usr/bin/cider"
+  install -d "$pkgdir/usr/bin/"
+  ln -sf "$pkgdir/opt/Cider/sh.cider.Cider" "$pkgdir/usr/bin/cider"
 
-	# Add TOKEN environment variable to .desktop file
+  # Add TOKEN environment variable to .desktop file
   sed -i 's|Exec=|Exec=env TOKEN=none CIDER_PORT=9000 |' "$pkgdir/usr/share/applications/sh.cider.Cider.desktop"
 }
