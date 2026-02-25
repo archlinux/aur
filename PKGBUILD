@@ -8,8 +8,8 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="joshuto"
 pkgname="$_pkgname-git"
-pkgver=0.9.8.r80.g985a335
-pkgrel=1
+pkgver=0.9.9.r13.gea9950b
+pkgrel=2
 pkgdesc="ranger-like terminal file manager written in Rust"
 url="https://github.com/kamiyaa/joshuto"
 license=('LGPL-3.0-only')
@@ -17,7 +17,7 @@ arch=('x86_64')
 
 depends=(
   'glibc'
-  'gcc-libs'
+  'libgcc'
 )
 makedepends=(
   "git"
@@ -53,10 +53,12 @@ prepare() {
 }
 
 build() {
+  export RUSTFLAGS="-C opt-level=2 -C codegen-units=16 -C lto=off"
+
   cd "$_pkgsrc"
   cargo build --frozen --release --all-features
 }
 
 package() {
-  install -Dm755 "$_pkgsrc/target/release/$_pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm755 "$_pkgsrc/$CARGO_TARGET_DIR/release/$_pkgname" -t "$pkgdir/usr/bin/"
 }
