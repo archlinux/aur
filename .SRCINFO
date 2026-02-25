@@ -4,7 +4,7 @@
 
 pkgbase = tobby-bin
 	pkgdesc = The Terminal Obby — a modern IRC client for the terminal (pre-built binary)
-	pkgver = 0.1.20
+	pkgver = 0.1.23
 	pkgrel = 1
 	url = https://github.com/ObsidianIRC/tobby
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = tobby-bin
 	provides = tobby
 	conflicts = tobby
 	options = !strip
-	source = LICENSE::https://raw.githubusercontent.com/ObsidianIRC/tobby/v0.1.20/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/ObsidianIRC/tobby/v0.1.23/LICENSE
 	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
-	source_x86_64 = tobby-0.1.20-x86_64::https://github.com/ObsidianIRC/tobby/releases/download/v0.1.20/tobby-x86_64-linux
-	sha256sums_x86_64 = b4be035a73160d0bf3d4e6d7ae035ab4ce501686a62b44db83c60ed3003ddaac
-	source_aarch64 = tobby-0.1.20-aarch64::https://github.com/ObsidianIRC/tobby/releases/download/v0.1.20/tobby-aarch64-linux
-	sha256sums_aarch64 = 374c376561ed963950016e64b73823865e9b6d4875a9c09889019172d593c677
+	source_x86_64 = tobby-0.1.23-x86_64::https://github.com/ObsidianIRC/tobby/releases/download/v0.1.23/tobby-x86_64-linux
+	sha256sums_x86_64 = 000530970dc9d640c98d27912e0cdcae843d8a2bdae142958d77822d9713665d
+	source_aarch64 = tobby-0.1.23-aarch64::https://github.com/ObsidianIRC/tobby/releases/download/v0.1.23/tobby-aarch64-linux
+	sha256sums_aarch64 = 53334d5aff315c6d46b9903b1f847ba12c3164c91135d7389a0c4648381143de
 
 pkgname = tobby-bin
