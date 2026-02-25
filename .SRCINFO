@@ -1,0 +1,16 @@
+pkgbase = sinkzone-bin
+	pkgdesc = DNS blocking tool for productivity, focus and child safety
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/berbyte/sinkzone
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sinkzone
+	conflicts = sinkzone
+	source_x86_64 = sinkzone-bin-0.1.0-x86_64::https://github.com/berbyte/sinkzone/releases/download/v0.1.0/sinkzone-linux-amd64
+	sha256sums_x86_64 = b568b0201c45c8e8d27b4d161f4fa6f4ae668010ba2beadbbbdd603e27f43320
+	source_aarch64 = sinkzone-bin-0.1.0-aarch64::https://github.com/berbyte/sinkzone/releases/download/v0.1.0/sinkzone-linux-arm64
+	sha256sums_aarch64 = ef65f7f785d99d5ffecf5f586293effe29d389bac75d454a97b0fbd07bd4a650
+
+pkgname = sinkzone-bin
