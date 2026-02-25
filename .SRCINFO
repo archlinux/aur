@@ -1,0 +1,15 @@
+pkgbase = sabiql
+	pkgdesc = A fast, driver-less TUI to browse, query, and edit PostgreSQL databases
+	pkgver = 1.5.2
+	pkgrel = 1
+	url = https://github.com/riii111/sabiql
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = postgresql-libs
+	optdepends = graphviz: for ER diagrams
+	options = !lto
+	source = https://github.com/riii111/sabiql/archive/refs/tags/v1.5.2.tar.gz
+	sha512sums = 7ae1c26c965b04180bc1dd4901915c52cc9b54215fb66934572ffc181c4f1b9f50fa1236c01b752a4d2e2d02b4ab6b3ce14cab1f8fe2f150cc24a14c17661859
+
+pkgname = sabiql
