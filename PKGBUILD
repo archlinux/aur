@@ -1,7 +1,7 @@
 # Maintainer: Karthikey <karthikey.cse@gmail.com>
 
 pkgname=bsh
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="High-performance, Git-aware, predictive terminal history middleware"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libgit2' 'sqlitecpp' 'python')
 makedepends=('cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/karthikeyjoshi/bsh/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9110213492692db260420567910ee4869d9c01bb894a27be687247ca1dfc95d3')
+sha256sums=('562e3eeed98921a83840f15cc2c0b83d81c7936b07894043427a7d754659f043')
 
 build() {
     cd "$pkgname-$pkgver"
