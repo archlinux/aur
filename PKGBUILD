@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=deadbolt-bin
 _pkgname=Deadbolt
-pkgver=2.1.0
+pkgver=2.1.1
 _electronversion=31
 pkgrel=1
 pkgdesc="Dead-simple file encryption for any OS.(Prebuilt version.Use system-wide electron)"
@@ -24,7 +24,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/alichtman/deadbolt/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('761f64ba277c5ba16bb05aa9fb4a73e958d7cb0eb11c9aba72c721c2a5332010'
+sha256sums=('ccd8b744ca20f2a02dd53cc502ff2a3ff9eb300513951b010764a58dcd0665aa'
             'b6f8e4a32cbd0221c7a41052b9e4b06e1a2216741b41d1951b9163445907cb3b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -49,13 +49,15 @@ prepare() {
     _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     asar e "${srcdir}/squashfs-root/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${srcdir}/squashfs-root/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/dist" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/squashfs-root/resources/app.asar"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/squashfs-root/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
     if find "${srcdir}/squashfs-root/resources" -mindepth 1 -maxdepth 1 -type d | read; then
         for _subdir in "${srcdir}/squashfs-root/resources/"*; do
             if [ -d "${_subdir}" ]; then
