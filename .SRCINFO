@@ -1,0 +1,16 @@
+pkgbase = xfce4-night-mode-bin
+	pkgdesc = XFCE4 Night Mode — Automatic theme switching based on sunrise/sunset
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/brooqs/xfce4-night-mode
+	license = MIT
+	conflicts = xfce4-night-mode
+	provides = xfce4-night-mode
+	arch = aarch64
+	source_aarch64 = https://github.com/brooqs/xfce4-night-mode/releases/download/v1.1.0/xfce4-night-mode_1.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = c18ada979831d28201c592575201079bd78d53a9b194ef48d976956f9c1f81ca
+	arch = x86_64
+	source_x86_64 = https://github.com/brooqs/xfce4-night-mode/releases/download/v1.1.0/xfce4-night-mode_1.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0da499f6d26bb1c73e5ec1e35a56afa3bd4a2ac367e0c137e22879b5e51ed5c3
+	
+pkgname = xfce4-night-mode-bin
