@@ -1,11 +1,11 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 
 pkgname=openxcom-extended
-pkgver=8.5.2
+pkgver=8.5.5
 epoch=1
 # Repo doesn't use tags, so set which commit this version corresponds to in
 # https://github.com/MeridianOXC/OpenXcom/commits/oxce-plus/src/version.h
-_commit=de09546d5ed55c4bb14a73daacf382bd3a7f8378
+_commit=9a10ae28b844d92d621817b302b0eb1655175653
 pkgrel=1
 pkgdesc="An extended version of the open-source reimplementation of X-COM (OXCE)"
 arch=('i686' 'x86_64')
@@ -21,8 +21,8 @@ provides=('openxcom' 'openxcom-git')
 conflicts=('openxcom')
 install="${pkgname}.install"
 source=(${pkgname}::git+"https://github.com/MeridianOXC/OpenXcom.git#commit=${_commit}")
-md5sums=('c8c59f62946c176901b3b633d42aee06')
-sha1sums=('285135be4b83d51dcf8ed956cc703fcffe5759e6')
+md5sums=('b7e3ca4b5656cbf63693076933f40599')
+sha1sums=('96863f64cd0d3eddbbc135a856fbc0deea72c02e')
 
 build() {
   cmake -B build -S ${pkgname} -DCMAKE_INSTALL_PREFIX="/usr" -DTARGET_PLATFORM="linux" \
