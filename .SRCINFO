@@ -1,0 +1,18 @@
+pkgbase = parqeye
+	pkgdesc = Peek inside Parquet files right from your terminal
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/kaushiksrini/parqeye
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	provides = parqeye
+	conflicts = parqeye-bin
+	options = !lto
+	source = parqeye-0.0.2.tar.gz::https://github.com/kaushiksrini/parqeye/archive/v0.0.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = parqeye
