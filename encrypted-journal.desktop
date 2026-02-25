@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Encrypted Journal
+Comment=Encrypted desktop journal
+Exec=encrypted-journal
+Icon=encrypted-journal
+Terminal=false
+Categories=Utility;Office;
+StartupNotify=true
