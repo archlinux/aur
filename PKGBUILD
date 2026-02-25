@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=babyshark-bin
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Flows-first PCAP TUI with case files and gorgeous UX'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('babyshark')
 conflicts=('babyshark')
 optdepends=('wireshark-cli: live packet capture via tshark')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/babyshark-v${pkgver}-linux-x64.tar.gz")
-sha256sums=('5cf7425ff352f4588152ec0144585ddef7fe619ba7f3c5a59ca54e995dd02597')
+sha256sums=('1b2ec407880e4b236306d70a6c197c6f961dd2def964e44c5fc97dcd0e6e1530')
 
 package() {
     install -Dm755 babyshark "${pkgdir}/usr/bin/babyshark"
