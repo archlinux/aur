@@ -10,6 +10,7 @@ metrics_bind_addr = "127.0.0.1:9090"
 # hostname = "relay.example.com"
 # contact = "admin@example.com"
 # https_bind_addr = "[::]:443"
+# cert_dir = "/var/lib/iroh-relay"
 # prod_tls = true
 
 # [limits]
