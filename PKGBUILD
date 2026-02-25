@@ -1,4 +1,5 @@
 # Maintainer: juresu
+
 pkgname=rajio-sen
 pkgver=1.0.4
 pkgrel=1
