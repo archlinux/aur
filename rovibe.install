@@ -1,11 +1,28 @@
 post_install() {
-  mkdir -p /opt/agents/bin
+  mkdir -p /opt/rovibe
+  mkdir -p /etc/apparmor.d/rovibe
   groupadd -f agents
+  echo ""
+  echo "rovibe: run the following to complete setup:"
+  echo "  sudo bash /usr/local/lib/rovibe/install.sh"
+  echo "This configures claude traversal and generates AppArmor profiles."
 }
 
 post_upgrade() {
-  mkdir -p /opt/agents/bin
+  mkdir -p /opt/rovibe
+  mkdir -p /etc/apparmor.d/rovibe
   groupadd -f agents
+  # Note: profiles generated here may not include the claude binary path
+  # (SUDO_USER unavailable in pacman context). Claude is added on next
+  # rovibe launch which regenerates the profile.
+  source /usr/local/lib/rovibe/apparmor 2>/dev/null || true
+  if apparmor_available 2>/dev/null; then
+    for agent_dir in /opt/rovibe/*/; do
+      [[ -d "$agent_dir/bin" ]] || continue
+      agent=$(basename "$agent_dir")
+      apparmor_generate_profile "$agent" 2>/dev/null || true
+    done
+  fi
 }
 
 pre_remove() {
@@ -13,6 +30,6 @@ pre_remove() {
   members=$(getent group agents 2>/dev/null | cut -d: -f4)
   if [[ -n "$members" ]]; then
     echo "WARNING: agents group still has members: $members"
-    echo "Remove agent users before uninstalling (rovibe delete agent <user>)."
+    echo "Remove agent users before uninstalling (rovibe delete <username>)."
   fi
 }
