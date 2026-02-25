@@ -5,7 +5,7 @@ _pkgname=grove
 pkgname=${_pkgname}-bin
 pkgdesc="A fast, intuitive Git worktree management CLI that makes Git worktrees as simple as switching branches"
 
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,9 +23,9 @@ conflicts=("${_pkgname}")
 source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
-sha256sums=('f6a14145e6b97f85a4df6c9980f53cc3d0b313fd999c2b5561e41ca193dc51cc')
-sha256sums_x86_64=('18d422d5d33315a9f7748972702692467d046ff8d54727ad320804e1807db1d3')
-sha256sums_aarch64=('2802493293b0aac1904c594d5d6e6eb75e13733f0da3cc7c1395572d20937f1a')
+sha256sums=('e166cbd76a4198ecacdaeaafbd9fca1dfe5e2e0f152debf7fd2afb20fb16cd9d')
+sha256sums_x86_64=('2ec62ab3db92fedc064125974196b0e44520b5496f2f682674a4ee157a7e740a')
+sha256sums_aarch64=('580c46a3587ca088dcab427550d169800872032b393547abaf5c402327caf7e5')
 
 
 package() {
