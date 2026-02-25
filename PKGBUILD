@@ -9,7 +9,7 @@ license=('MIT')
 depends=('alsa-lib')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/backmeupplz/drumkit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6d5ddde81f347307cb49db56c3269606f3fc5b151ceaaf4aebcb9b3fb494d167')
+sha256sums=('0333d5790fb0ff0b74d972bf0a03278292187246c072595567be529d48ad3fb2')
 
 prepare() {
   cd "$pkgname-$pkgver"
