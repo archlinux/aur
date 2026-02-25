@@ -2,7 +2,7 @@ pkgbase = remindme-git
 	pkgdesc = Simple tool to add remind(1) task using natural language processing
 	pkgver = v1.2.0.r0.g7cfef70
 	pkgrel = 1
-	url = https://git.sr.ht/~primalmotion/remindme
+	url = https://codeberg.org/primalmotion/remindme
 	arch = any
 	license = GPL3
 	makedepends = go
@@ -10,7 +10,7 @@ pkgbase = remindme-git
 	depends = remind
 	provides = remindme
 	conflicts = remindme
-	source = remindme-git::git+https://git.sr.ht/~primalmotion/remindme
+	source = remindme-git::git+https://codeberg.org/primalmotion/remindme.git
 	sha1sums = SKIP
 
 pkgname = remindme-git
