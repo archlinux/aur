@@ -141,24 +141,13 @@ build() {
     echo "Installed version of node ["$(node --version)"] matches required version ["$nvmrc_version"], continuing."
 
     # -------------------------------------------------------------------------
-    # Rust via rustup (isolated to srcdir, similar to NVM)
+    # Rust via rustup
     # -------------------------------------------------------------------------
-    # Setting RUSTUP_HOME and CARGO_HOME under srcdir keeps this build's Rust
-    # toolchain entirely separate from the user's ~/.rustup and ~/.cargo.
     export RUSTUP_HOME="${srcdir}/.rustup"
     export CARGO_HOME="${srcdir}/.cargo"
     export PATH="${CARGO_HOME}/bin:${PATH}"
     rustup default stable
 
-    # -------------------------------------------------------------------------
-    # Compiler flags
-    # -------------------------------------------------------------------------
-    # GCC 15 with -O3 -march=native (common in Arch/CachyOS makepkg.conf) can
-    # trigger internal compiler errors (ICEs) in RTL passes when building native
-    # Node.js addons (e.g. kerberos_unix.cc). node-gyp respects CXXFLAGS, so
-    # capping at -O2 here prevents those crashes without affecting the
-    # TypeScript/JS compilation (which doesn't use CXXFLAGS).
-    export CXXFLAGS="${CXXFLAGS/-O3/-O2}"
 
     # -------------------------------------------------------------------------
     # Build
