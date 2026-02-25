@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+git diff --quiet PKGBUILD && echo "NOTE: apparently no changes in the 'PKGBUILD' => have the 'version' updated first"
+source PKGBUILD
+wget --quiet ${url}/archive/refs/tags/${pkgver}.tar.gz -O ${pkgname}-${pkgver}.tar.gz
+wget --quiet ${url}/releases/download/${pkgver}/${pkgname/-bin}.AppImage -O ${pkgname}-${pkgver}.AppImage
+sha512sum_targz=$(sha512sum ${pkgname}-${pkgver}.tar.gz | cut -d\  -f1)
+rm ${pkgname}-${pkgver}.tar.gz
+sha512sum_AppImage=$(sha512sum ${pkgname}-${pkgver}.AppImage | cut -d\  -f1)
+rm ${pkgname}-${pkgver}.AppImage
+sed -i "s/'[a-zA-Z0-9]*' '[a-zA-Z0-9]*'/'${sha512sum_targz}' '${sha512sum_AppImage}'/" PKGBUILD
+makepkg --printsrcinfo > .SRCINFO
