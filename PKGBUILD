@@ -1,7 +1,9 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
+# Contributor: Fredrik Magnusson <fredrikmagnusson3@gmail.com>
+# Contributor: Pang LAN <wopanglan@gmail.com>
 
 pkgname=opencommit
-pkgver=3.2.12
+pkgver=3.2.14
 pkgrel=1
 pkgdesc='Auto-generate meaningful commits in a second. Killing lame commits with AI'
 arch=(any)
@@ -10,7 +12,7 @@ license=(MIT)
 depends=(nodejs)
 makedepends=(jq npm)
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('3c58f5466b6a99e272859d0d7dda9b6581896853eab73276d350a757253a75dcf467a93c3e76a854778ca916e23147d38e3a4b72bf1a2bb59879e6cf74c6c7b2')
+b2sums=('03592e4e09bc0827b8599ccec1fb8eaf0ed34fc84bc91a6a33c4d60c2e753c23f4001bae85da2717ae5070d3d37f37d4febef398e2bcbde2e71f49d015eb07aa')
 
 prepare() {
     cd $pkgname-$pkgver
