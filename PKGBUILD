@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mustang-git
 _pkgname=Mustang
-pkgver=0.9.11.r1.g2032e04
+pkgver=0.9.17.r8.g89f2b3d
 _electronversion=32
-_nodeversion=20
+_nodeversion=24
 pkgrel=1
 pkgdesc="New full-featured desktop email, chat and video conference client.(Use system-wide electron)"
 arch=('any')
@@ -43,7 +43,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/e2/package.json" | tr -d '^')
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/desktop/package.json" | tr -d '^')
     _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
@@ -82,10 +82,10 @@ prepare() {
             echo 'fetchRetries 3'
             echo 'fetchRetryTimeout 10000'
         } >> .yarnrc
-        #find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
+        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
         echo '[url "https://github.moeyy.xyz/https://github.com/"]' >> "${srcdir}/${pkgname//-/.}/app/.gitconfig"
         echo '    insteadof = https://github.com/' >> "${srcdir}/${pkgname//-/.}/app/.gitconfig"
-        echo app lib backend e2 | xargs -n 1 cp .yarnrc
+        echo app lib desktop desktop/backend runner | xargs -n 1 cp .yarnrc
     fi
     _ensure_local_nvm
     cd "${srcdir}/${pkgname//-/.}/app/build"
@@ -94,25 +94,34 @@ prepare() {
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     cd "${srcdir}/${pkgname//-/.}/lib"
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    cd "${srcdir}/${pkgname//-/.}/backend"
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    cd "${srcdir}/${pkgname//-/.}/e2"
+    cd "${srcdir}/${pkgname//-/.}/desktop"
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    cd "${srcdir}/${pkgname//-/.}/desktop/backend"
     NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
     NODE_ENV=development    yarn add -D semver
 }
 build() {
-    cd "${srcdir}/${pkgname//-/.}/e2"
+    cd "${srcdir}/${pkgname//-/.}/desktop"
     _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_OPTIONS="--max-old-space-size=4096" NODE_ENV=production     yarn run build
     NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.yml
+    find "${srcdir}/${pkgname//-/.}/desktop/dist/linux-"*"/resources/app.asar.unpacked" -type d \
+        \( -name "darwin-*" -o -name "win32-*" \) -exec rm -rf {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/e2/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/e2/build/icon.png" -t "${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/resources"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/e2/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    find "${srcdir}/${pkgname//-/.}/desktop/dist/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/${pkgname//-/.}/desktop/dist/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${pkgname//-/.}/desktop/dist/linux-"*"/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
+    install -Dm644 "${srcdir}/${pkgname//-/.}/desktop/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
