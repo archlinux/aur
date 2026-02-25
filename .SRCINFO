@@ -1,0 +1,23 @@
+pkgbase = pluto-photos-bin
+	pkgdesc = Desktop photo library manager with face detection, smart albums, map view, and cloud import
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://plutophotos.com
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	optdepends = libappindicator-gtk3: tray icon support
+	provides = pluto-photos
+	conflicts = pluto-photos
+	options = !strip
+	options = !debug
+	source = pluto-photos-1.2.6.AppImage::https://plutophotos.com/downloads/pluto-photos-1.2.6.AppImage
+	source = pluto-photos.desktop
+	noextract = pluto-photos-1.2.6.AppImage
+	sha256sums = 19d511bd2cb41cd65eb0117c1206c72bbb40383961b88d66430573dba833c075
+	sha256sums = 9591bc02d39d193998dbfd1350a8a052efd70abb0bf16b7e97f05427a66a19e1
+
+pkgname = pluto-photos-bin
