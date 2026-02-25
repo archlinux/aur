@@ -1,0 +1,16 @@
+pkgbase = python-typelets
+	pkgdesc = Typelets for Python
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://pypi.org/project/typelets/
+	arch = any
+	license = custom:MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-typing_extensions
+	source = https://files.pythonhosted.org/packages/source/t/typelets/typelets-1.1.tar.gz
+	sha256sums = 5fd0a01016402a2f87892ac855241ee2769b7595c7e955acce040c86f71bfb38
+
+pkgname = python-typelets
