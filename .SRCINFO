@@ -11,6 +11,6 @@ pkgbase = rajio-sen
 	depends = python-rich
 	depends = python-pick
 	source = rajio-sen-1.0.4.tar.gz::https://github.com/jullespio/rajio-sen/archive/refs/tags/v1.0.4.tar.gz
-	sha256sums = 254061c851af970e66d042351f861ea957d082b80f990f4c39a9706e69de81cd
+	sha256sums = 7ea8b4179bd96065fbceea08ced01c03f07b1686c64d7c57de6bc1b929985b8a
 
 pkgname = rajio-sen
