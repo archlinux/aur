@@ -1,0 +1,15 @@
+pkgbase = lsu-git
+	pkgdesc = Terminal UI for systemd services and latest journal lines
+	pkgver = 0.1.0.r5.g7c29020
+	pkgrel = 1
+	url = https://github.com/l5yth/lsu
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	depends = systemd
+	options = !debug
+	source = git+https://github.com/l5yth/lsu.git
+	sha256sums = SKIP
+
+pkgname = lsu-git
