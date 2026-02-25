@@ -1,4 +1,4 @@
-# Maintainer: bbj <benigno at duck dot com>
+# Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 # Contributor: Fukumakoto Kure <kure dot fukukmakoto dot at gmail dot com>
 pkgname=jira-cli-bin
 pkgdesc='Feature-rich interactive Jira command line.'
