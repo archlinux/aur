@@ -1,3 +1,11 @@
+## 0.0.417 - 2026-02-25
+
+- Add /research command for deep research with exportable reports
+- MCP servers no longer intermittently fail to load when opening a new session
+- Plugin agents and skills are available immediately after install without restarting
+- Plugin skills and commands load from custom paths declared in plugin.json
+- Alt+backspace correctly registers as backspace instead of delete
+
 ## 0.0.416 - 2026-02-24
 
 - Expand `--help` content with descriptions, examples, and sorted flags
