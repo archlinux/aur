@@ -1,0 +1,22 @@
+pkgbase = pipette-desktop-bin
+	pkgdesc = Pipette — Vial-compatible keyboard configurator (AppImage)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/darakuneko/pipette-desktop
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = mesa
+	depends = libappindicator-gtk3
+	provides = pipette-desktop
+	conflicts = pipette-desktop
+	conflicts = pipette-desktop-git
+	options = !strip
+	source = pipette-desktop-bin-0.3.0.AppImage::https://github.com/darakuneko/pipette-desktop/releases/download/v0.3.0/Pipette-linux-x86_64.AppImage
+	sha256sums = c3b407e6de83729709f964e20bd83ecbec06291297482855fd4ef33e424d291d
+
+pkgname = pipette-desktop-bin
