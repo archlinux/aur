@@ -1,12 +1,31 @@
 # Iroh relay server configuration
 # See https://github.com/n0-computer/iroh for documentation
 
+# enable_relay = true
 # http_bind_addr = "[::]:80"
-
+# enable_quic_addr_discovery = false
+# enable_metrics = true
 metrics_bind_addr = "127.0.0.1:9090"
+# key_cache_capacity = 1024
+
+# ## Access control for relaying connections
+# ## "everyone" (default), or use allowlist/denylist/http
+# access = "everyone"
+#
+# ## Allowlist: only allow specific endpoints
+# access.allowlist = ["endpoint_id_hex"]
+#
+# ## Denylist: allow everyone except specific endpoints
+# access.denylist = ["endpoint_id_hex"]
+#
+# ## HTTP: webhook-based access control
+# [access.http]
+# url = "https://example.com/relay-access"
+# bearer_token = "secret"
 
 # [tls]
 # https_bind_addr = "[::]:443"
+# quic_bind_addr = "[::]:7842"
 # cert_dir = "/var/lib/iroh-relay"
 #
 # ## LetsEncrypt: automatic ACME certificate provisioning
