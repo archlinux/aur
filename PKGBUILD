@@ -2,8 +2,8 @@
 
 _pkgname=camper
 pkgname="$_pkgname-git"
-pkgver=r10.g702e619
-pkgrel=2
+pkgver=r21.g4fab5bd
+pkgrel=1
 pkgdesc="A minimalistic Bandcamp music player client for Linux, built with Rust, GTK4/libadwaita, and GStreamer."
 arch=('x86_64' 'aarch64')
 url="https://github.com/knoopx/camper"
@@ -16,12 +16,8 @@ conflicts=(
     "${_pkgname}-git"
     "${_pkgname}-bin"
 )
-source=(
-  "git+$url.git"
-  "https://patch-diff.githubusercontent.com/raw/knoopx/camper/pull/2.patch"
-)
-sha256sums=('SKIP'
-            'cec51c22c3c19739a1044229e1bc17b966189b5632003d967e90f888e94c424f')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_pkgname" || exit
@@ -30,7 +26,6 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/$_pkgname" || exit
-    patch -Np1 < "$srcdir/2.patch" || true
     export CARGO_HOME="$srcdir/CARGO_HOME"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
@@ -54,6 +49,6 @@ package() {
     cd "$srcdir/$_pkgname" || exit
 
     install -Dm755 "./target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-    install -Dm644 "./res/camper.desktop" "$pkgdir/usr/share/applications/camper.desktop"
-    install -Dm644 "./res/camper.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/camper.png"
+    install -Dm644 "./res/net.knoopx.camper.desktop" "$pkgdir/usr/share/applications/net.knoopx.camper.desktop"
+    install -Dm644 "./res/net.knoopx.camper.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/net.knoopx.camper.svg"
 }
