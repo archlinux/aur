@@ -3,12 +3,13 @@ pkgbase = muslimtify
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/rizukirr/muslimtify
+	install = muslimtify.install
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = pkgconf
 	depends = libnotify
-	depends = libcurl
+	depends = curl
 	source = muslimtify-0.1.1.tar.gz::https://github.com/rizukirr/muslimtify/archive/v0.1.1.tar.gz
 	sha256sums = SKIP
 
