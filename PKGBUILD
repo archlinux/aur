@@ -1,6 +1,6 @@
 # Maintainer: vcup <me@vcup.moe>
 pkgname=shoko-server-bin
-pkgver=5.3.0
+pkgver=5.3.1
 pkgrel=1
 pkgdesc='An anime cataloging program designed to automate the cataloging of your anime collection regardless of the size and number of files in your collection.'
 arch=('x86_64')
@@ -23,19 +23,19 @@ source=(
   'shoko-server.service'
   'LICENSE'
 )
-sha512sums=('898aa7ee014ca95cf2f961031d1be35959a8b1e0d51dc3f201456a9237701f794fb5958bc6050b171b14db4746c1b02235edfc87ef5ed38cf0c8bf49c93f7707'
+sha512sums=('530a9012f4a5a8a6f533f88aea36a987a41138bc5fabd4834d6e3cd31836f54720c9991ae01d76ea212094d302a6748d67eea21ee58fe9b51be9302b50e1e6c5'
             'e9089dafa54773a0d63e76071b16f774cbeff6d9defe9763f3283471d801fb36fa209c9eb507a504712f0b82751191c5bcde4cffa3cb32a4f52a673ab6856ef6'
             'c323e1561eea9fba6e6248cfb07fb0e4c4621ffa8f17e1f0b856405cd1505b04c56b395afffeda651475c259d94cc1f88a77f97573b293154d90ef2eaf0ef0b2')
 
 prepare() {
-  mv "${srcdir}/net8.0/linux-x64/webui/index.html" "${srcdir}/net8.0/linux-x64/webui/index.html.emptytips"
+  mv "${srcdir}/publish/webui/index.html" "${srcdir}/publish/webui/index.html.emptytips"
 }
 
 package() {
   _path_name='shoko'
   _working_dir=${pkgdir}/var/lib/${_path_name}/.shoko/Shoko.CLI
   install -d "${pkgdir}/etc/${_path_name}" "${pkgdir}/var/"{log,lib}"/${_path_name}" "${pkgdir}/usr/"{bin,lib}
-  cp -r "${srcdir}/net8.0/linux-x64/" "${pkgdir}/usr/lib/${_path_name}"
+  cp -r "${srcdir}/publish/" "${pkgdir}/usr/lib/${_path_name}"
   chmod +x "${pkgdir}/usr/lib/${_path_name}/Shoko.CLI"
   ln -s "/usr/lib/${_path_name}/Shoko.CLI" "${pkgdir}/usr/bin/shoko-server"
   # ln -s "/opt/avdump3/AVDump3CL.dll" "${_working_dir}/AVDump/AVDump3CL.dll"
