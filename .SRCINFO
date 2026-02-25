@@ -1,17 +1,17 @@
 pkgbase = omnissa-horizon-client
 	pkgdesc = Omnissa Horizon Client - connect to Omnissa Horizon virtual desktop
-	pkgver = 2512
-	pkgrel = 5
+	pkgver = 2512.1
+	pkgrel = 1
 	url = https://customerconnect.omnissa.com/downloads/info/slug/virtual_desktop_and_apps/omnissa_horizon_clients/8
 	arch = x86_64
 	license = custom
 	makedepends = resvg
 	makedepends = oxipng
 	options = !debug
-	source = omnissa-horizon-client-2512-8.17.0-20187591429.tar.gz::https://download3.omnissa.com/software/CART26FQ4_LIN_2512_TARBALL/Omnissa-Horizon-Client-Linux-2512-8.17.0-20187591429.tar.gz
+	source = omnissa-horizon-client-2512-8.17.1-22261155021.tar.gz::https://download3.omnissa.com/software/CART26FQ4_LIN_2512.1_TARBALL/Omnissa-Horizon-Client-Linux-2512-8.17.1-22261155021.tar.gz
 	source = horizon-icon.svg
 	source = horizon-usb.service
-	sha256sums = 758bcfdd6fed722ab06b3b95bb889bf6007df09509ca473377bb0f0948a1fc4c
+	sha256sums = aaaa62d70271c86452e19ac0b78ddaedc70240dfd71e146d30669e56247403f7
 	sha256sums = ef412bcc6d3e3d45e161861a8fb2abebc1403e7e2d84c52a16552d9091efd5b0
 	sha256sums = 2e9ecddd7cd4d5f65c794065898d3b6ac8e6dd97d05114f7f3775da82263c6d2
 
