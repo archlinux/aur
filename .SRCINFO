@@ -1,12 +1,16 @@
 pkgbase = geant4-lend
 	pkgdesc = Low Energy Nuclear Data (LEND) for Geant4
-	pkgver = 1.3
-	pkgrel = 3
+	pkgver = 2.0
+	pkgrel = 1
 	url = http://geant4.cern.ch/
 	arch = x86_64
 	optdepends = geant4
 	options = !emptydirs
-	source = ftp://gdo-nuclear.ucllnl.org/LEND_GND1.3/LEND_GND1.3_ENDF.BVII.1.tar.gz
-	sha256sums = 2b239f592b24cdf862b0505b762cf98e418e999223d9dcebcb4c613026a5ee0c
+	source = https://cern.ch/geant4-data/datasets/LEND_GNDS2.0_ENDF.BVII.1.tar.gz
+	source = https://cern.ch/geant4-data/datasets/LEND_GNDS2.0_ENDF.BVIII.0.tar.gz
+	source = https://cern.ch/geant4-data/datasets/LEND_GNDS2.0_ENDF.BVIII.1.tar.gz
+	md5sums = 95ac8c938262e8193f3f7a4194269877
+	md5sums = fea4243f0c36cd6b3aa0cebcb4ea6bfc
+	md5sums = df83080160425b2504a2cb9751b4556f
 
 pkgname = geant4-lend
