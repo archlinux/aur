@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=stoat-desktop-bin
 _pkgname=Stoat
-pkgver=1.2.0
+pkgver=1.3.0
 _electronversion=38
-pkgrel=2
+pkgrel=1
 pkgdesc="Stoat for Desktop.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -32,8 +32,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x64-${pkgver}.zip")
 sha256sums=('SKIP'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('8619fee1ec83a6969887814349139acedd5a8359410c4330a7eb40473711cb73')
-sha256sums_x86_64=('067a2dcf73c3d1669f329e46c30716573028b38822ed31c0e487eed8a020fb5f')
+sha256sums_aarch64=('c1b3743cb6af56562b5d5e6a675e1e38549308fa8b18f3726e26e06922a7366b')
+sha256sums_x86_64=('9f875f007589d93bf594abc60c650803da1a18ad48a4b23766b5f9cb7efdfd34')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/${_pkgname}-"*/"${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -56,11 +56,12 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/${_pkgname}-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    if find "${srcdir}/${_pkgname}-"* -mindepth 1 -maxdepth 1 -type d | read; then
-        for subdir in "${srcdir}/opt/${_pkgname}/${_pkgname}-"*/*; do
-            if [ -d "${subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${subdir}"/* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/${_pkgname}-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/${_pkgname}-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${_pkgname}-"*"/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
             fi
         done
     fi
