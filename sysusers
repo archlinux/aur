@@ -1,0 +1,5 @@
+# see man sysusers.d(5)
+#Type Name      ID               GECOS            Home directory     Shell
+u!    landscape -                "landscape user" /var/lib/landscape
+g     landscape -                -
+m     landscape landscape

@@ -1,0 +1,24 @@
+[Unit]
+Description=Landscape Router with eBPF
+Documentation=https://landscape.whileaway.dev
+
+[Service]
+User=root
+Group=landscape
+PermissionsStartOnly=true
+#ExecStartPre=-/usr/bin/mkdir -p /sys/fs/bpf/landscape
+#ExecStartPre=/usr/bin/chown landscape:landscape /sys/fs/bpf/landscape
+
+Environment=LANDSCAPE_CONF_PATH=/var/lib/landscape
+Environment=LANDSCAPE_LOG_PATH=/var/lib/landscape/logs
+Environment=LANDSCAPE_WEB_ROOT=/usr/lib/landscape/static
+Environment=DATABASE_URL=sqlite:///var/lib/landscape/landscape_db.sqlite
+ExecStart=/usr/bin/landscape-webserver
+WorkingDirectory=/var/lib/landscape
+AmbientCapabilities=CAP_BPF CAP_PERFMON CAP_NET_ADMIN
+CapabilityBoundingSet=CAP_BPF CAP_PERFMON CAP_NET_ADMIN
+LimitMEMLOCK=infinity
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

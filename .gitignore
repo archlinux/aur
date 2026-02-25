@@ -1,0 +1,6 @@
+static-*.zip
+landscape-webserver-*
+redirect_pkg_handler-*
+src/
+pkg/
+*.pkg.tar.zst
