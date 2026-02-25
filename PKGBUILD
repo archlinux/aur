@@ -8,6 +8,7 @@ url="https://github.com/rizukirr/muslimtify"
 license=('MIT')
 depends=('libnotify' 'curl')
 makedepends=('cmake' 'pkgconf')
+install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')  # replace with actual sha256
 

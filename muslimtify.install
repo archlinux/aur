@@ -1,0 +1,14 @@
+post_install() {
+    echo "==> Run the following to enable the prayer time daemon:"
+    echo "      muslimtify daemon install"
+}
+
+post_upgrade() {
+    echo "==> Daemon updated. Restart it with:"
+    echo "      muslimtify daemon uninstall && muslimtify daemon install"
+}
+
+post_remove() {
+    echo "==> Remove the daemon with:"
+    echo "      muslimtify daemon uninstall"
+}
