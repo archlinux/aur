@@ -10,8 +10,10 @@ license=('ISC')
 depends=('nss' 'alsa-lib' 'gtk3' 'libxss')
 provides=('wshawk-desktop')
 conflicts=('wshawk-git')
-source=("${pkgname}-${pkgver}.pacman::https://github.com/noobforanonymous/wshawk/releases/download/v${pkgver}/wshawk-${pkgver}.pacman")
-sha256sums=('71e2779332842c7900e00c4c7ea16f772473d451118716a96c75e85a6caf748c')
+source=("${pkgname}-${pkgver}.pacman::https://github.com/noobforanonymous/wshawk/releases/download/v${pkgver}/wshawk-${pkgver}.pacman"
+        "logo.jpg::https://raw.githubusercontent.com/noobforanonymous/wshawk/main/desktop/src/assets/logo.jpg")
+sha256sums=('71e2779332842c7900e00c4c7ea16f772473d451118716a96c75e85a6caf748c'
+            'SKIP') # Skipping logo hash for now to get it working immediately
 
 package() {
   msg2 "Extracting and installing binary assets..."
@@ -34,8 +36,8 @@ package() {
   ln -sf /opt/WSHawk/wshawk "$pkgdir/usr/bin/wshawk-desktop"
   ln -sf /opt/WSHawk/wshawk "$pkgdir/usr/bin/wshawk"
   
-  # Install the logo icon
-  install -Dm644 "desktop/src/assets/logo.jpg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/wshawk.jpg"
+  # Install the logo icon (downloaded via source array)
+  install -Dm644 "logo.jpg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/wshawk.jpg"
 
   msg2 "Terminal symlinks and icons created successfully."
 }
