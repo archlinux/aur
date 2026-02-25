@@ -1,0 +1,5 @@
+[scc-bin]
+source = "github"
+github = "boyter/scc"
+use_latest_release = true
+prefix = "v"

@@ -1,6 +1,5 @@
-pkg/
-src/
-LICENSE
-scc*.tar.gz
-scc*.zip
-scc*.zst
+*
+!.nvchecker.toml
+!.gitignore
+!PKGBUILD
+!.SRCINFO
