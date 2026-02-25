@@ -6,7 +6,7 @@ arch=('x86_64')
 url='https://github.com/xiaobai01111/SSMT4-Linux'
 license=('GPL-3.0-or-later')
 provides=('ssmt4')
-conflicts=('ssmt4' 'ssmt4-git')
+conflicts=('ssmt4' 'ssmt4-bin' 'ssmt4-git')
 depends=('gtk3' 'webkit2gtk-4.1' 'libsoup3' 'xdg-utils')
 optdepends=(
   'xorg-xwayland: XWayland support'
