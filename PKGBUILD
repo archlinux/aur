@@ -1,4 +1,4 @@
-# Maintainer: bbj <benigno at duck dot com>
+# Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=systemd-lsp-bin
 pkgver=2026.01.17
 pkgrel=1
