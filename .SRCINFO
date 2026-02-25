@@ -1,6 +1,6 @@
 pkgbase = btsspsw-bin
 	pkgdesc = Bluetooth Secure Simple Pairing (SSP) Switcher
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/VHSgunzo/btsspsw
 	install = btsspsw.install
@@ -11,7 +11,7 @@ pkgbase = btsspsw-bin
 	provides = btsspsw
 	conflicts = btsspsw
 	conflicts = btsspsw-git
-	source = btsspsw-bin-1.1.tar.gz::https://github.com/VHSgunzo/btsspsw/archive/refs/tags/v1.1.tar.gz
+	source = btsspsw-bin-1.2.tar.gz::https://github.com/VHSgunzo/btsspsw/archive/refs/tags/v1.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = btsspsw-bin
