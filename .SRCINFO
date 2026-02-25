@@ -1,0 +1,15 @@
+pkgbase = linux-rvkernel-bore-zfs-clang
+	pkgdesc = zfs module for the linux-rvkernel-bore-clang kernel
+	pkgver = 6.19.3
+	pkgrel = 1
+	url = https://github.com/Rve27/RvKernel-Linux
+	arch = x86_64
+	license = CDDL
+	depends = pahole
+	depends = linux-rvkernel-bore-clang
+	provides = ZFS-MODULE
+	noextract = linux-rvkernel-bore-lto-zfs-6.19.3-1-x86_64.pkg.tar.zst
+	source = https://github.com/Rve27/RvKernel-Linux/releases/download/6.19.3/linux-rvkernel-bore-lto-zfs-6.19.3-1-x86_64.pkg.tar.zst
+	sha256sums = 7342a4c4dc4559ed75f565e2e3a855faa1f803a30841d8ab1d9d931011c9b71f
+
+pkgname = linux-rvkernel-bore-zfs-clang
