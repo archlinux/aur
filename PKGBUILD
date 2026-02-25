@@ -2,7 +2,7 @@
 pkgname=donutbrowser-bin
 _pkgname=Donut
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful browser orchestrator that puts you in control of your browsing experience. 🍩(Prebuilt version)"
 arch=(
     'aarch64'
@@ -24,6 +24,8 @@ sha256sums_aarch64=('7e61c321d3e6acb96c6045356a1f85ddcd9086fd82732a5deb5b58a5462
 sha256sums_x86_64=('88370447ef0c8125adf3f90a0a180967d077e99246387ad009c8a3d6a06e6433')
 package() {
     install -Dm755 "${srcdir}/usr/bin/"* -t "${pkgdir}/usr/bin"
+    install -Dm755 -d "${pkgdir}/usr/lib"
+    ln -sf "/usr/lib/libxdo.so" "${pkgdir}/usr/lib/libxdo.so.3"
     _icon_sizes=(32x32 128x128 256x256@2 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
