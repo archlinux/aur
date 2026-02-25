@@ -1,7 +1,7 @@
 # Maintainer: Andy Kelk <andy@andykelk.net>
 pkgname=yolobox
-pkgver=0.7.3
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Sandboxing tool for AI coding agents using containers"
 arch=('x86_64' 'aarch64')
 url="https://github.com/finbarr/yolobox"
