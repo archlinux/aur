@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=actual-bin
 _pkgname=Actual
-pkgver=26.2.0
+pkgver=26.2.1
 _electronversion=39
 pkgrel=1
 pkgdesc="A local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.(Prebuilt version.Use system-wide electron)"
@@ -25,8 +25,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64.AppImage")
 sha256sums=('71e4b3053e4622e1f5fc5d8aa5336350de32ead39247924c596d659b89b47b6f'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('07fe5c1424a03f858eb36680ca0bd7a5d3944e6b7091cd117218ab421b3aefdc')
-sha256sums_x86_64=('2daf434afae8278ba11a8495881626df0546bdbeecfafb95bef0b8c860925b1b')
+sha256sums_aarch64=('d60d4f4f7658c160db94f771624cbbaa7287c106b73f03c71ff9c4396acbe00b')
+sha256sums_x86_64=('41a2051159934722a17522d45f6942f805e068b0960939051273ceda7cf10c91')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -48,11 +48,28 @@ prepare() {
     "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
+    rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/bcrypt/prebuilds/"{darwin-*,win32-*,linux-arm}
+    case "${CARCH}" in
+        aarch64)
+            rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/bcrypt/prebuilds/linux-x64"
+            ;;
+        x86_64)
+            rm -rf "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/bcrypt/prebuilds/linux-arm64"
+            ;;
+    esac
+    find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/usr/lib/"* -t "${pkgdir}/usr/lib/${pkgname%-bin}/lib"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/squashfs-root/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/squashfs-root/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/squashfs-root/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
