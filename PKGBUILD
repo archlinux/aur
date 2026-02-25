@@ -1,4 +1,4 @@
-# Maintainer: Avi Tretiak <avi@babi.uy>.
+# Maintainer: Avi Tretiak <avi (at) babi (dot) uy>.
 # lightly edited copy of PKGBUILD from vscodium, originally created by Semirose.
 
 pkgname=vscodium-translucent
@@ -51,7 +51,7 @@ source=(
 sha256sums=(
     '3a5bc109974fcf408855c13965f6d6be0997655c5b359de0bfd19a678c00844e'
     'ef5759114cb0bada639bf89b778679bc7cf4d829151dc5fbf95eb33df4addcd6'
-    '6eef345b65bf2679c928c763529540435ab9c6e1836917319810a7a2d484ae1b'
+    '121f2db8a65cfc74c10d3e7c3135b62b66297cf27f8f7f00c3ad29d412e968b7'
     'SKIP'
     'SKIP'
     'SKIP'
