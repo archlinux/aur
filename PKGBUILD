@@ -3,7 +3,7 @@
 pkgname=cronet-go
 pkgver=0.0.1_143.0.7499.109_1
 _ver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc='Go bindings for naiveproxy.'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'loongarch64')
 url='https://github.com/SagerNet/cronet-go'
@@ -13,11 +13,12 @@ provides=("libcronet.so")
 source=("${pkgname}::git+https://github.com/SagerNet/cronet-go.git#tag=v$_ver")
 sha256sums=('6b17788e13f4a8444881a13754fdff4dc100f098491d3537d096c876c92d808c')
 makedepends=('go>=1.25' 'git' 'python' 'python-requests' 'dpkg' 'unzip' 'ninja')
+options=(!debug)
 
 prepare() {
     cd "${pkgname}"
 
-    git submodule update --init --recursive
+    git submodule update --init --depth 1
 
     export GOPATH="${srcdir}"
     go mod download -modcacherw

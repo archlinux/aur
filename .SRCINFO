@@ -1,7 +1,7 @@
 pkgbase = cronet-go
 	pkgdesc = Go bindings for naiveproxy.
 	pkgver = 0.0.1_143.0.7499.109_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SagerNet/cronet-go
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = cronet-go
 	depends = libgcc
 	depends = glibc
 	provides = libcronet.so
+	options = !debug
 	source = cronet-go::git+https://github.com/SagerNet/cronet-go.git#tag=v0.0.1-143.0.7499.109-1
 	sha256sums = 6b17788e13f4a8444881a13754fdff4dc100f098491d3537d096c876c92d808c
 
