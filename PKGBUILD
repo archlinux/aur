@@ -2,7 +2,7 @@
 pkgname=hid-switch2-dkms
 pkgver=1.0
 pkgrel=1
-pkgdesc="HID driver for Nintendo Switch 2 controllers (DKMS)"
+pkgdesc="HID driver for Nintendo Switch 2 controllers (DKMS) 6.19"
 arch=('x86_64')
 url="https://marc.info/?l=linux-input&m=176793335900691&q=mbox"
 license=('GPL-2.0-or-later')
