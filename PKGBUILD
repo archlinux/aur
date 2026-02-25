@@ -16,7 +16,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/yasos"
-  git log -1 --format=%cd --date=format:%Y%m%d
+  printf "%s.r%s.g%s" \
+    "$(git log -1 --format=%cd --date=format:%Y%m%d)" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 build() {
