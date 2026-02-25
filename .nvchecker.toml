@@ -1,0 +1,6 @@
+[cider]
+source = "github"
+github = "taoky/Cider"
+use_latest_release = true
+from_pattern = '(\d+)'
+to_pattern = '1.6.3.\1'

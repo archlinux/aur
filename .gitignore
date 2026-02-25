@@ -1,5 +1,7 @@
-cider/
+Cider/
 pkg/
 src/
 *.pkg.tar.zst
 *.tar.gz
+clean.sh
+.shellcheckrc
