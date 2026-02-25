@@ -1,8 +1,8 @@
 # Maintainer: Milan Šťastný <milan@statnej.ch>
 
 pkgname=eam-git
-pkgver=3.8.4.r8.ga8cc879
-pkgrel=2
+pkgver=3.9.2.r0.gb5859cc
+pkgrel=1
 pkgdesc='Epic Asset Manager used to manage assets from Epic Games Store'
 url='https://github.com/AchetaGames/Epic-Asset-Manager'
 license=(MIT)
