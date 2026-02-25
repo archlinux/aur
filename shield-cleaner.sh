@@ -348,7 +348,7 @@ echo ""
 #═══════════════════════════════════════════════════════════════════════════════
 
 # Pacman cache cleanup
-if [[ "$CLEAN_PACMAN" == true ]] || { [[ "$INTERACTIVE" == true ]] && ask "Clean pacman package cache?"; }; then
+if [[ "$CLEAN_PACMAN" == true ]] || { [[ "$INTERACTIVE" == true ]] && ask "Clean pacman package cache?(If you are on arch!)"; }; then
     log_operation "Pacman Cache Cleanup"
     before=$(get_size "/var/cache/pacman/pkg/")
     log_info "Cleaning pacman cache..."
@@ -368,7 +368,7 @@ print_divider
 
 # Yay cache cleanup
 if command -v yay >/dev/null 2>&1; then
-    if [[ "$CLEAN_YAY" == true ]] || { [[ "$INTERACTIVE" == true ]] && ask "Clean yay AUR cache?"; }; then
+    if [[ "$CLEAN_YAY" == true ]] || { [[ "$INTERACTIVE" == true ]] && ask "Clean yay AUR cache? (If you are on arch!)"; }; then
         log_operation "Yay AUR Cache Cleanup"
         before=$(get_size "/var/cache/pacman/pkg/")
         before=$((before + $(get_size "$HOME/.cache/yay")))

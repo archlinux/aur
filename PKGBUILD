@@ -10,7 +10,7 @@ depends=('bash' 'pacman' 'util-linux' 'coreutils')
 optdepends=('yay: for AUR cache cleaning')
 source=("shield-cleaner.sh"
         "LICENSE")
-sha256sums=('4296012d2269ca1e9d3a4ed4175ee66b6a044322692a752b177b19c85b25e9b5'
+sha256sums=('79062f6ba34a346b13a0686819c77e249b221898f442af68b0a28cba955c9936'
             '19c602dd2a18e02590e4f99cb0917abd819fe2c360bea72fd237a59ae25d5596')
 
 package() {

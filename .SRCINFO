@@ -1,6 +1,6 @@
 pkgbase = shield-cleaner
 	pkgdesc = SHIELD Interactive System Cleaner - Advanced maintenance tool for Arch Linux
-	pkgver = 1.0.0
+	pkgver = 1.0.3
 	pkgrel = 2
 	url = https://github.com/reyanshrajmishra/shield-cleaner
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = shield-cleaner
 	optdepends = yay: for AUR cache cleaning
 	source = shield-cleaner.sh
 	source = LICENSE
-	sha256sums = e4493b5cea91afef2813a03e9a7ce9a7dcea0c2cbf689e4132fa6f02c9d35cf5
+	sha256sums = 79062f6ba34a346b13a0686819c77e249b221898f442af68b0a28cba955c9936
 	sha256sums = 19c602dd2a18e02590e4f99cb0917abd819fe2c360bea72fd237a59ae25d5596
 
 pkgname = shield-cleaner
