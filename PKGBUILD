@@ -1,4 +1,4 @@
-# Maintainer: bbj <benigno at duck dot com>
+# Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 
 pkgname=keifu-bin
 pkgver=0.2.3
