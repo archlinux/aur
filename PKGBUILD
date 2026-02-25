@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird-git
-pkgver=r75467.3a5a6b741df
+pkgver=r75513.245eb7d91d7
 pkgrel=1
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -58,6 +58,10 @@ fi
 pkgver() {
   cd ladybird
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  sed -e '/march=/d' -i ladybird/Meta/CMake/common_compile_options.cmake
 }
 
 build() {
