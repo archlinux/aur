@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/noobforanonymous/wshawk"
 license=('ISC')
 depends=('nss' 'alsa-lib' 'gtk3' 'libxss')
+options=(!strip !debug)
 provides=('wshawk-desktop')
 conflicts=('wshawk-git')
 source=("${pkgname}-${pkgver}.pacman::https://github.com/noobforanonymous/wshawk/releases/download/v${pkgver}/wshawk-${pkgver}.pacman"
