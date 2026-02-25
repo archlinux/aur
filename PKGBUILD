@@ -1,4 +1,4 @@
-# Maintainer: bbj <benigno at duck dot com>
+# Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=kmcp-bin
 pkgver=0.2.6
 pkgrel=1
