@@ -2,7 +2,7 @@
 # Maintainer: Gaurav Gosain <itsgauravgosain@gmail.com>
 
 pkgname='scraped-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A fast, parallelized CLI tool that scrapes web pages and converts them to markdown'
 url='https://github.com/Gaurav-Gosain/scraped'
@@ -12,16 +12,16 @@ provides=('scraped')
 conflicts=('scraped')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Gaurav-Gosain/scraped/releases/download/v${pkgver}/scraped_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('678166201ff8db9f6c137589186d1241f9cc9846197bbdce69be4488b9bea3d4')
+sha256sums_aarch64=('35fb1072f7a84f9f6feef1e9ac3f48eb3bf83cabe2ce91000e9e3b574cf1bcc2')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Gaurav-Gosain/scraped/releases/download/v${pkgver}/scraped_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('ba7a6f6852054896b761e2042eebc3f0e3d58f49d66fdd39a6942ff96a22bc10')
+sha256sums_armv7h=('dda8ff91566a6c381c80a25b006b0834046df6a790226c635661756669ea8ca4')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Gaurav-Gosain/scraped/releases/download/v${pkgver}/scraped_${pkgver}_Linux_i386.tar.gz")
-sha256sums_i686=('3fb57d8b191682ca218995e306d6bbe70e6ccdfdc3c441202171aa0c4685c46d')
+sha256sums_i686=('3964b70b931f6b118d45ba44b06d34cb04f24cc60f46a6ba4a07ecf74d81109c')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Gaurav-Gosain/scraped/releases/download/v${pkgver}/scraped_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('da76dabae9c6cc9cf62a78cc447c9b31ee89bb2b1033cb53d6d4c20b762da61a')
+sha256sums_x86_64=('d88c95afefa95af603c5e84b65c403419cd69e868a800b098d90a37140daa933')
 
 package() {
   # bin
