@@ -17,7 +17,7 @@ options=('!strip')
 source=(
   "${pkgname}-${pkgver}.deb::${url}/v${pkgver}/Taskeract_${pkgver}_amd64.deb"
 )
-sha256sums=('936cea730442266afe740a36facb3913cabb63e44b407bce6f936a8c0b77cddf')
+sha256sums=('bd0391bf9669064457af36d492e309bdcc1df3b7f1952bd244c017753ba03311')
 
 prepare() {
   cd "${srcdir}"
