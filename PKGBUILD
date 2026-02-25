@@ -1,5 +1,5 @@
 pkgname=censawayapp-bin
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Censaway VPN Client"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('webkit2gtk' 'gtk3' 'libayatana-appindicator') 
 provides=('censaway')
 source=("${pkgname}-${pkgver}::https://github.com/Censaway/CensawayApp/releases/download/v${pkgver}/Censaway_v${pkgver}_linux_amd64")
-sha256sums=('e5ef079e2115ee657b1b322ea141299339a23a8abfcf9809991c31ac564c99f4')
+sha256sums=('5539e646e7761465285cb81f59192dee3586e274733c508b9d5c5b89caf3efc0')
 options=('!strip' '!debug')
 
 package() {
