@@ -17,7 +17,7 @@ pkgbase = ssmt4-linux
 	conflicts = ssmt4
 	conflicts = ssmt4-git
 	options = !debug
-	source = ssmt4-linux-0.0.6_beta-1-x86_64.pkg.tar.zst::https://github.com/xiaobai01111/SSMT4-Linux/releases/download/v0.0.6-beta/ssmt4-linux-0.0.6_beta-1-x86_64.pkg.tar.zst
+	source = ssmt4-linux-0.0.6_beta-1-x86_64.pkg.tar.zst::https://github.com/xiaobai01111/SSMT4-Linux/releases/download/0.0.6-beta/ssmt4-linux-0.0.6_beta-1-x86_64.pkg.tar.zst
 	sha256sums = 2a82860eb924a463f560f5e201dc407604ea9ce29eaa82c966240992dad59686
 
 pkgname = ssmt4-linux
