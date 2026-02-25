@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gpu-t
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="A lightweight GPU-Z clone for Linux"
 arch=('x86_64')
 url="https://github.com/lseurttyuu/GPU-T"
@@ -22,8 +22,8 @@ optdepends=(
 )
 source=("GPU-T-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('ad5bd49e7847a5fd0d18b5df5a1a7d0f96358833446e1abb5a063420bba285b8'
-            '4a10339d53eb1d827526a894da24a3cc39433070172338c7031023bb0aba41f8')
+sha256sums=('14f8ffe1b93e0ebdd5359ff6839609a415a21a6c2ff9773d720fba8d3b2cead7'
+            '5a8cdec32ca4fbff3fa2a2529aa2965917e573ef03c3c73028d7094050046f45')
 
 build() {
   cd "GPU-T-$pkgver"
@@ -51,5 +51,5 @@ package() {
   install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 
   install -d "$pkgdir/usr/bin"
-  ln -s "/usr/lib/$pkgname/GPU-T" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/usr/lib/$pkgname/GPU-T" "$pkgdir/usr/bin/"
 }

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=GPU-T
 Exec=GPU-T
-Icon=gpu_t
+Icon=gpu-t
 Type=Application
 Categories=System;Monitor;
 Comment=Graphics card information and monitoring utility
