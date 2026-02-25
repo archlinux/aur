@@ -2,7 +2,7 @@
 pkgname=dbgate-git
 _pkgname=DbGate
 _debname="org.${pkgname%-git}.${_pkgname}"
-pkgver=6.7.0.r2.g1e06f65
+pkgver=7.1.0.r0.g18896bf
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -19,6 +19,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
+    'python'
 )
 makedepends=(
     'npm'
@@ -116,8 +117,15 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/app/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/app/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+	find "${srcdir}/${pkgname//-/.}/app/dist/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-git}" {} +
+    if find "${srcdir}/${pkgname//-/.}/app/dist/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${pkgname//-/.}/app/dist/linux-"*"/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-git}"
+            fi
+        done
+    fi
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname//-/.}/app/icons/${_icons}.png" \
