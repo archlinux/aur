@@ -2,18 +2,18 @@
 # Contributor: nangidev: <>
 _pkgname=Epic-Asset-Manager
 pkgname=epic-asset-manager
-pkgver=3.8.6
-pkgrel=2
+pkgver=3.9.2
+pkgrel=1
 pkgdesc="A frontend to Assets purchased on Epic Games Store"
 arch=('x86_64')
 url="https://github.com/AchetaGames/Epic-Asset-Manager"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'gtk4' 'gdk-pixbuf2' 'graphene' 'openssl' 'pango' 'bzip2' 'cairo' 'glib2' 'libadwaita' 'hicolor-icon-theme' 'dconf')
+depends=('glibc' 'libgcc' 'gtk4' 'graphene' 'openssl' 'glib2' 'libadwaita' 'hicolor-icon-theme' 'dconf')
 makedepends=('cargo' 'meson')
 provides=(eam)
 conflicts=(eam)
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4c0ea9a9c7b4c82ac13514887dc608132816fb1eeb5b1e4c1619ea20412e2fc5')
+sha256sums=('44083a39a1225bc54c2755a87647aa310370f6c5428088a528c7ea676c3a9b63')
 
 prepare() {
 	cd "$srcdir"
