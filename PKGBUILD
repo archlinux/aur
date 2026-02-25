@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=paqet
-pkgver=1.0.0_alpha.18
+pkgver=1.0.0_alpha.19
 pkgrel=1
 pkgdesc="Ferries Packets Across Forbidden Boundaries"
 arch=("any")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("libpcap")
 makedepends=("git" "go")
 source=("git+${url}.git#tag=v${pkgver//_/-}")
-sha256sums=('317346a57ceabf1bc25fba14bf5f8588af5ddae1bf36003899f5a94ea716640e')
+sha256sums=('a460192449ff1abf6cd39f56d0a7c64df0072d85c522e0417ac902a6391ae066')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
