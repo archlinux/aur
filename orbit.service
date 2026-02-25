@@ -3,7 +3,7 @@ Description=Orbit WiFi/Bluetooth Manager Daemon
 After=network.target
 
 [Service]
-ExecStart=%h/Documents/projects/orbit/target/release/orbit daemon
+ExecStart=/usr/bin/orbit daemon
 Restart=always
 RestartSec=3
 
