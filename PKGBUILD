@@ -12,8 +12,8 @@ sha256sums=('c9f94dc548339f516d93ffaa40e305c926cddc4cc0a548e1c13b0ad7a6fecd8d')
 arch=('x86_64' 'i686')
 depends=('ca-certificates')
 makedepends=('cargo' 'cmake' 'openssl>=1.0')
-optdepends=('xclip: clipboard support'
-            'bash-completion: support auto completion for bash')
+optdepends=('xclip: clipboard support')
+options=(!lto)
 
 prepare() {
     cd "$pkgname-v$pkgver"

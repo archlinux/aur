@@ -11,7 +11,7 @@ pkgbase = ffsend
 	makedepends = openssl>=1.0
 	depends = ca-certificates
 	optdepends = xclip: clipboard support
-	optdepends = bash-completion: support auto completion for bash
+	options = !lto
 	source = https://gitlab.com/timvisee/ffsend/-/archive/v0.2.77/ffsend-v0.2.77.tar.gz
 	sha256sums = c9f94dc548339f516d93ffaa40e305c926cddc4cc0a548e1c13b0ad7a6fecd8d
 
