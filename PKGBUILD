@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio-git
 _pkgname="Cherry Studio"
-pkgver=1.7.9.r2.gb4aeced
+pkgver=1.7.19.r20.gd8e2861
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -21,7 +21,7 @@ makedepends=(
     'nvm'
     'git'
     'curl'
-    'yarn'
+    'pnpm'
     'gcc'
     'jq'
 )
@@ -67,35 +67,49 @@ prepare() {
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
-    touch "${srcdir}/.electron-gyp/.yarnrc"
+    {
+        echo -e '\n'
+        #echo 'build_from_source=true'
+        echo 'link-workspace-packages=true'
+        echo 'fetch-retry-maxtimeout=10000'
+        echo "cache-dir=${srcdir}/.pnpm_cache"
+        echo "store-dir=${srcdir}/.pnpm_store"
+        echo "virtual-store-dir=${srcdir}/.pnpm_store"
+        echo "shamefully-hoist=true"
+        echo "virtual-store-dir-max-length=80"
+        echo "node-linker=hoisted"
+        echo "network-concurrency=32"
+    } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo 'npmRegistryServer: "https://registry.npmmirror.com"'
-            echo "cacheFolder: "${srcdir}"/.yarn/cache"
-            echo "globalFolder: "${srcdir}"/.yarn/global"
-        } >> .yarnrc.yml
-        export npm_config_electron_mirror=https://registry.npmmirror.com/-/binary/electron/
-        export npm_config_electron_builder_binaries_mirror=https://registry.npmmirror.com/-/binary/electron-builder-binaries/
+        echo 'registry=https://registry.npmmirror.com'
+        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
+        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
+        } >> .npmrc
+        echo packages/ai-sdk-provider packages/aiCore packages/extension-table-plus | xargs -n 1 cp .npmrc
     fi
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    _yarnver=`grep "yarn@" package.json | awk '{print $2}' | sed "s/\"//g;s/yarn@//g;s/,//g"`
-    corepack enable yarn
-    echo y | yarn version "${_yarnver}"
-    NODE_ENV=development    yarn install
+    NODE_ENV=development    pnpm install
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
     _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     yarn dotenv electron-vite build
-    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config electron-builder.yml
+    NODE_OPTIONS="--max-old-space-size=8192" NODE_ENV=production pnpm -c exec "dotenv npm run build"
+    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.yml"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+	find "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
