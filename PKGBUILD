@@ -20,7 +20,7 @@ _upstream_ver="${pkgver//_/-}"
 source=(
   "ssmt4-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/xiaobai01111/SSMT4-Linux/releases/download/v${_upstream_ver}/ssmt4-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
 )
-sha256sums=('SKIP')
+sha256sums=('2a82860eb924a463f560f5e201dc407604ea9ce29eaa82c966240992dad59686')
 
 package() {
   bsdtar -xpf "${srcdir}/ssmt4-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}"
