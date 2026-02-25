@@ -1,7 +1,7 @@
 
 pkgbase=voicevox-bin
 pkgname=($pkgbase ${pkgbase/bin/appimage})
-pkgver=0.25.0
+pkgver=0.25.1
 pkgrel=1
 pkgdesc='A text-to-speech software'
 arch=('x86_64')
@@ -12,11 +12,10 @@ provides=(voicevox)
 conflicts=(voicevox)
 options=(!strip !debug)
 source=(${url}/releases/download/${pkgver}/VOICEVOX-CPU-X64.AppImage.7z.00{1,2})
-sha256sums=('00394ed1925b17912cbeb5967b97c258b42235ff4c0ba8a17bbadabe5821807f'
-            '0794b55b7df93c898e9942420ee2c69f6e756c7ffc926b6074ac2eca56061918')
+sha256sums=('4eec1aed071bb1a44e6c196d50ba5b051e14890d16fe24e7e73670d4ed344ad7'
+            'ee4d3f49dfc2346e75e28e4e966c664a3c181d8622f372656adaa2825d262d6a')
 if [ -c /dev/nvidia0 ]; then
 source=(${url}/releases/download/${pkgver}/VOICEVOX.AppImage.7z.00{1..3}) # makepkg does not extract separated 7z by bsdtar
-sha256sums=('SKIP' 'SKIP' 'SKIP') #todo: support updpkgsums?
 fi
 prepare(){
   7z -y x VOICEVOX*.AppImage.7z.001
