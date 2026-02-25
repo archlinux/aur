@@ -1,5 +1,5 @@
 pkgname=git-commit-helper
-pkgver=0.9.2.r3.1bfaea9
+pkgver=0.9.2.r4.3c0ebad
 pkgrel=1
 pkgdesc="一个帮助规范 git commit message 的工具"
 arch=('x86_64')
@@ -9,30 +9,30 @@ depends=('git')
 makedepends=('rust' 'cargo')
 
 # 直接使用当前目录作为源
-source=("$pkgname-$pkgver.tar.gz::https://github.com/zccrs/git-commit-helper/archive/1bfaea956d1320f12293ac70fcb9570d456aedab.tar.gz")
-sha256sums=('1032bedfb2a56cd09d6b9c02a9e1ce359f00884e1b33e283125716605450aec5')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/zccrs/git-commit-helper/archive/3c0ebadb6b27dce61c044bf8fc95d523bce944d8.tar.gz")
+sha256sums=('2cd71623c28e3bebc9f62151f98c6a78e0753b320363913b1eb9a745853580f2')
 
 
 prepare() {
-    cd "$srcdir/$pkgname-1bfaea956d1320f12293ac70fcb9570d456aedab"
+    cd "$srcdir/$pkgname-3c0ebadb6b27dce61c044bf8fc95d523bce944d8"
     export CARGO_HOME="$srcdir/cargo-home"
     cargo fetch --locked || true
 }
 
 build() {
-    cd "$srcdir/$pkgname-1bfaea956d1320f12293ac70fcb9570d456aedab"
+    cd "$srcdir/$pkgname-3c0ebadb6b27dce61c044bf8fc95d523bce944d8"
     export CARGO_HOME="$srcdir/cargo-home"
     RUSTUP_TOOLCHAIN=stable cargo build --release
 }
 
 check() {
-    cd "$srcdir/$pkgname-1bfaea956d1320f12293ac70fcb9570d456aedab"
+    cd "$srcdir/$pkgname-3c0ebadb6b27dce61c044bf8fc95d523bce944d8"
     export CARGO_HOME="$srcdir/cargo-home"
     RUSTUP_TOOLCHAIN=stable cargo test --release || true
 }
 
 package() {
-    cd "$srcdir/$pkgname-1bfaea956d1320f12293ac70fcb9570d456aedab"
+    cd "$srcdir/$pkgname-3c0ebadb6b27dce61c044bf8fc95d523bce944d8"
 
     # 创建必要的目录
     mkdir -p "$pkgdir/usr/bin"
