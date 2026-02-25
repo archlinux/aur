@@ -1,7 +1,7 @@
 # Maintainer: Jan-Niklas Tomski <jan-niklas at tomski dot me>
 _pkgname='wootility'
 pkgname="${_pkgname}5-beta"
-pkgver='5.3.0_beta.4'
+pkgver='5.3.0_beta.5'
 _appimage="${_pkgname^}-${pkgver//_/-}.AppImage"
 pkgrel=1
 pkgdesc="Utility for configuring Wooting keyboards (AppImage beta release)"
@@ -16,20 +16,20 @@ options=(!strip)
 source=("${_appimage}::https://api.wooting.io/public/wootility/download?os=linux&version=${pkgver//_/-}"
         '70-wooting.rules')
 noextract=("${_appimage}")
-b2sums=('14135ec06c142df4c1f4e50d28133e767af8bb15825aa836a2bb6aadcc9cca71f79257274325e60e81c63dad92b2c3a61137220fb2e8b3a5c59bc13bd2d6b118'
+b2sums=('65319f3d0c45bd8838afb7e2907d0264e458b88210b9382441fc9c81570c72c8d8cda85db3a84194920e25cc857710d35236084eaf2e473f5f3b3ed7a5f6c208'
         '80b4a516f8aafb6eada36cdde59295f2358b22e6cc28b1a21b0b5f22a59bcfabc63bba956d23544faca5fd76a1c4b4c1ff98ada41e7c9ad015d48c7c436dbac1')
 
 prepare() {
     # Copying AppImage in case $SRCDEST is mounted with noexec
     cp "${_appimage}" "${_appimage}.copy"
     chmod +x "${_appimage}.copy"
-    "./${_appimage}.copy" --appimage-extract "${_pkgname^}.desktop"
+    "./${_appimage}.copy" --appimage-extract "${_pkgname}.desktop"
     "./${_appimage}.copy" --appimage-extract usr/share/icons
     rm "${_appimage}.copy"
 }
 
 build() {
-    sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" "squashfs-root/${_pkgname^}.desktop"
+    sed -i -E "s|Exec=AppRun|Exec=${_pkgname}|" "squashfs-root/${_pkgname}.desktop"
 
     # Fix permissions; .AppImage permissions are 700 for all directories
     chmod -R a-x+rX "${srcdir}/squashfs-root/usr"
@@ -41,7 +41,7 @@ package() {
     ln -s "../../opt/${_pkgname}/${_appimage}" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Install desktop entry and icon
-    install -Dpm644 "squashfs-root/${_pkgname^}.desktop" "${pkgdir}/usr/share/applications/${_pkgname^}.desktop"
+    install -Dpm644 "squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -d "${pkgdir}/usr/share/"
     cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
 
