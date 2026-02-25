@@ -2,14 +2,14 @@
 
 pkgname=netboard-git
 pkgdesc="A multiplatform network clipboard sharing service"
-url="https://github.com/primalmotion/netboard"
+url="https://codeberg.org/primalmotion/netboard"
 pkgver=0.0.1
 pkgrel=1
 license=(GPL3)
 arch=(x86_64 arm64)
 depends=(wl-clipboard)
 makedepends=(go)
-source=("${pkgname}::git+https://github.com/primalmotion/netboard"
+source=("${pkgname}::git+https://github.com/primalmotion/netboard.git"
 netboard.service)
 sha256sums=('SKIP'
             'fe470319810d17f929d983d1f8de2a474bcb9897e1cd1e68a33039c0d50d03e3')
