@@ -2,7 +2,7 @@
 # Maintainer: javalsai <javalsai@proton.me>
 
 pkgname=lidm-bin
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 depends=('libpam.so' 'lidm-service')
 pkgdesc="A fully colorful customizable TUI display manager made in C. (release binary)"
@@ -24,11 +24,11 @@ source_riscv64=("lidm-${pkgver}-riscv64::$url/releases/download/v$pkgver/lidm-ri
 sha256sums=('9f5c68524498b05b686918d6bf60c18bee4ffbf66be2a4b979b863ad83731729'
             '7f2fb91f55088be1a9b1c93ecf5d6c1e437f369b56df2eacc9d10b00c93c39f8'
             '27b88e994f111c8aed95ea6a8fbf04c3ddcf67b8e3d054ad31a136a9c9e16c08')
-sha256sums_x86_64=('12b061e2782547bc80f85b8010d12dc93c523c985c6bb94bbe5708770958115c')
-sha256sums_i686=('502a6c62397945f9f6d8126b1a397a6704da962ded140316af5ce303240c8857')
-sha256sums_aarch64=('e1e968cd6159d8d4845f81ea24825cfc39b0a3c49b1cc9c31d0fb143939da77a')
-sha256sums_armv7h=('06593b59addb012107da208e5909fff07973204ae7605190e48857e2c9779a14')
-sha256sums_riscv64=('8e07b5f4a39c7321cbb14c37ba773129190f3152b9ab0a21024ac87a3f02ce89')
+sha256sums_x86_64=('84d7d3243a58151a954e70ff944eab84b65ccafefa52ce6300be27a9153abc36')
+sha256sums_i686=('4ec4ebde1e3b419fd43ae5e3e461e11d64a773b6123505c4d0ec729ab75a28cf')
+sha256sums_aarch64=('f251203921b7616049b364ef78b3697b289f1211396aaf1e8c00e127d0b34fb9')
+sha256sums_armv7h=('7c94314c296330c7183a9af07db61c91f1bce2553d20687b726ece27043e7866')
+sha256sums_riscv64=('8ef24b8c8748128d7c80c7bccdd495497d17e46b646c7d1ae7e859864ce36d4c')
 
 package() {
     cd "$srcdir"
