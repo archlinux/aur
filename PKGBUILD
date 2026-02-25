@@ -1,10 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
-pkgname=mullvad-vpn-beta-bin
-_pkgver=2025.14
-_channel=stable
+pkgname=(
+  'mullvad-vpn-beta-bin'
+  'mullvad-vpn-daemon-beta-bin'
+)
+pkgbase=mullvad-vpn-beta-bin
+_pkgver=2026.1
+_channel=beta
 _rel=1
-#pkgver=${_pkgver}.${_channel}${_rel}  # beta
-pkgver=${_pkgver}.${_channel}  # stable
+pkgver=${_pkgver}.${_channel}${_rel}  # beta
+#pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64' 'aarch64')
@@ -18,38 +22,78 @@ depends=(
   'libnotify'
   'nss'
 )
-optdepends=('libappindicator-gtk3: tray icon')
-provides=('mullvad-vpn')
-conflicts=('mullvad-vpn')
-install='mullvad-vpn.install'
 source=('mullvad-vpn.sh')
 source_x86_64=(
-#  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_amd64.deb"{,.asc}  # beta
-  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_amd64.deb"{,.asc}  # stable
+  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_amd64.deb"{,.asc}  # beta
+#  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_amd64.deb"{,.asc}  # stable
 )
 source_aarch64=(
-#  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_arm64.deb"{,.asc}  # beta
-  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_arm64.deb"{,.asc}  # stable
+  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}-beta${_rel}/MullvadVPN-${_pkgver}-beta${_rel}_arm64.deb"{,.asc}  # beta
+#  "https://github.com/mullvad/mullvadvpn-app/releases/download/${_pkgver}/MullvadVPN-${_pkgver}_arm64.deb"{,.asc}  # stable
 )
 sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
-sha256sums_x86_64=('247b981e2e2e047ccca296b8e62a70b1dc7fdcec7f17137795884100240e0a41'
+sha256sums_x86_64=('d421b671ce0397744b73dc2446d2595455fcc7861e97e08c11e860dcfc62e309'
                    'SKIP')
-sha256sums_aarch64=('9a20a1d71eac09c01b83d897ed227361cc49f0321054d76b83a6f7f61b7c813c'
+sha256sums_aarch64=('d08db37001c854ab89ef3a80965e5837695dc2c84a25419952eb538c053ecdb9'
                     'SKIP')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
 
-package() {
+prepare() {
+  mkdir -p "MullvadVPN-$pkgver"
+  bsdtar -xvf data.tar.xz -C "MullvadVPN-$pkgver"
+}
+
+package_mullvad-vpn-beta-bin() {
+  pkgdesc+=" (desktop application)"
+  depends+=('mullvad-vpn-daemon-beta-bin')
+  optdepends=('libappindicator: tray icon')
+  provides=('mullvad-vpn')
+  conflicts=('mullvad-vpn')
+  install='mullvad-vpn.install'
+
   bsdtar -xvf data.tar.xz -C "$pkgdir/"
   chmod 4755 "$pkgdir/opt/Mullvad VPN/chrome-sandbox"
-
-  # Link to the GUI binary
   install -m755 "$srcdir/mullvad-vpn.sh" "$pkgdir/usr/bin/mullvad-vpn"
 
-  # Symlink apparmor profile to allow Electron sandbox to work
-  install -d "$pkgdir/etc/apparmor.d"
-  ln -s /opt/Mullvad\ VPN/resources/apparmor_mullvad "$pkgdir/etc/apparmor.d/mullvad"
+  # Remove useless changelog.gz & symlink actual changelog
+  rm "$pkgdir/usr/share/doc/$pkgname/changelog.gz"
+  ln -s "/opt/Mullvad VPN/resources/CHANGELOG.md" "$pkgdir/usr/share/doc/$pkgname/"
 
-  # Move ZSH completions to correct directory
-  mv "$pkgdir/usr/local/share/zsh" "$pkgdir/usr/share/"
-  rm -rf "$pkgdir/usr/local"
+  # Remove mullvad-vpn-daemon files
+  rm "$pkgdir/opt/Mullvad VPN"/resources/{ca.crt,mullvad-{problem-report,setup},relays.json}
+  rm -r "$pkgdir"/usr/{lib,local,share/{bash-completion,fish}}/
+
+  # The AppArmor profile allows Electron sandbox to work
+  # This disables user namespace restrictions
+  install -d "$pkgdir/etc/apparmor.d"
+  ln -s "/opt/Mullvad VPN/resources/apparmor_mullvad" "$pkgdir/etc/apparmor.d/mullvad"
+}
+
+package_mullvad-vpn-daemon-beta-bin() {
+  pkgdesc+=" (daemon and CLI)"
+  depends=(
+    'dbus'
+    'iputils'
+    'libnftnl'
+  )
+  provides=('mullvad-vpn-daemon')
+  conflicts=('mullvad-vpn-daemon')
+  install='mullvad-vpn-daemon.install'
+
+  cd "MullvadVPN-$pkgver"
+  install -Dm755 usr/bin/{mullvad,mullvad{-daemon,-exclude}} -t \
+    "$pkgdir/usr/bin/"
+  install -Dm755 "opt/Mullvad VPN"/resources/mullvad{-problem-report,-setup} -t \
+    "$pkgdir/opt/Mullvad VPN/resources/"
+  ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" "$pkgdir/usr/bin/"
+  install -Dm644 "opt/Mullvad VPN"/resources/ca.crt -t "$pkgdir/opt/Mullvad VPN/resources/"
+  install -Dm644 "opt/Mullvad VPN"/resources/relays.json -t "$pkgdir/opt/Mullvad VPN/resources/"
+  install -Dm644 usr/lib/systemd/system/mullvad{-daemon,-early-boot-blocking}.service -t \
+    "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 usr/share/bash-completion/completions/mullvad -t \
+    "$pkgdir/usr/share/bash-completion/completions/"
+  install -Dm644 usr/share/fish/vendor_completions.d/mullvad.fish -t \
+    "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm644 usr/local/share/zsh/site-functions/_mullvad -t \
+    "$pkgdir/usr/share/zsh/site-functions/"
 }

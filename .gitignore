@@ -8,4 +8,5 @@
 !.nvchecker.toml
 !LICENSE
 !mullvad-vpn.install
+!mullvad-vpn-daemon.install
 !mullvad-vpn.sh
