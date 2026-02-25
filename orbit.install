@@ -10,6 +10,7 @@ post_install() {
     echo "  orbit           - Launch GUI"
     echo "  orbit daemon    - Run as background daemon"
     echo "  orbit toggle    - Toggle daemon visibility"
+    echo "  orbit reload-config     - Reload config without restarting"
     echo "  orbit list      - List WiFi networks (CLI)"
     echo ""
     echo "Theme customization (~/.config/orbit/theme.toml):"

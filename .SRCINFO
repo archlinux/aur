@@ -1,6 +1,6 @@
 pkgbase = orbit-wifi
 	pkgdesc = A WiFi/Bluetooth manager for Wayland with glassmorphism UI
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/LifeOfATitan/orbit
 	install = orbit.install
@@ -13,7 +13,7 @@ pkgbase = orbit-wifi
 	depends = networkmanager
 	depends = bluez
 	options = !debug
-	source = orbit-wifi-2.1.0.tar.gz::https://github.com/LifeOfATitan/orbit/archive/v2.1.0.tar.gz
+	source = orbit-wifi-2.2.0.tar.gz::https://github.com/LifeOfATitan/orbit/archive/v2.2.0.tar.gz
 	source = orbit.service
 	sha256sums = bd591942d45010eb6812eabcc26d38a6859aae4a49c0abfd39fafc83432f7953
 	sha256sums = c48aacf0c8020cb7a2d8a4796d2c0b3826eea91a28aa325ec1a61acb99b8216a
