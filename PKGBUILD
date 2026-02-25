@@ -2,8 +2,8 @@
 
 _base=pdf2docx
 pkgname=python-${_base}
-pkgver=0.5.9
-pkgrel=2
+pkgver=0.5.10
+pkgrel=1
 pkgdesc="A Python library for converting pdf to docx"
 arch=('any')
 url="https://github.com/artifexsoftware/${_base}"
@@ -12,7 +12,7 @@ depends=('python')
 depends=('python' 'python-pymupdf' 'python-docx' 'python-fonttools' 'python-numpy' 'python-opencv' 'python-fire')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz"::${url}/archive/refs/tags/v${pkgver}.tar.gz)
-b2sums=('9789b4c6b3c8b002188c50682f43a7c306c7e1e2b29307c051076e07cb3cf445e3e2373bd52d1d60a1deed93ff8b90306c03e4178c1934a0cbcbb7a6a33587ad')
+b2sums=('0c78ca007a59a49296f58474afdda5ed5c606798cc43f36e40236ef0b2c71f73252e2cfe86f787b52091b8048b4825ed6fdbc22730c9381aa516037e67f13e6d')
 
 prepare() {
   cd "${_base}-${pkgver}"
