@@ -1,14 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: David Birks <david at tellus dot space>
 # Contributor: Jeff Henson <jeff at henson dot io>
-pkgname=mullvad-vpn-beta
-_pkgver=2025.14
-_channel=stable
+pkgname=(
+  'mullvad-vpn-beta'
+  'mullvad-vpn-daemon-beta'
+)
+pkgbase=mullvad-vpn-beta
+_pkgver=2026.1
+_channel=beta
 _rel=1
-#pkgver=${_pkgver}.${_channel}${_rel}  # beta
-pkgver=${_pkgver}.${_channel}  # stable
+pkgver=${_pkgver}.${_channel}${_rel}  # beta
+#pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
-_nodeversion=22
+_nodeversion=24
 pkgdesc="The Mullvad VPN client app for desktop (beta channel)"
 arch=('x86_64')
 url="https://www.mullvad.net"
@@ -28,22 +32,18 @@ makedepends=(
   'libxcrypt-compat'
   'nvm'
   'protobuf'
-#  'typescript'  ## build fails with current version
+  'typescript'
 )
-optdepends=('libappindicator-gtk3: tray icon')
-provides=("${pkgname%-beta}")
-conflicts=("${pkgname%-beta}")
-install="${pkgname%-beta}.install"
 source=(
-#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
-  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
+  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}-${_channel}${_rel}?signed"  # beta
+#  "git+https://github.com/mullvad/mullvadvpn-app.git#tag=${_pkgver}?signed"  # stable
   "git+https://github.com/mullvad/mullvadvpn-app-binaries.git"
   "git+https://github.com/mullvad/wireguard-go.git"
   'no-rpm.diff'
   'no-publish.diff'
-  "${pkgname%-beta}.sh"
+  "${pkgbase%-beta}.sh"
 )
-sha256sums=('9eb5664e449224e17430bd17c8a9539583432ea0252d25c34c7d790b9325a513'
+sha256sums=('fdf8023772e445aa311e8f34f52189cadb33bf740b377098fd6caefa12b4a745'
             'SKIP'
             'SKIP'
             '5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499'
@@ -74,10 +74,10 @@ prepare() {
   git -c protocol.file.allow=always submodule update
 
   # Disable building rpm
-  patch --strip=1 desktop/packages/${pkgname%-beta}/tasks/distribution.js < ../no-rpm.diff
+  patch --strip=1 desktop/packages/${pkgbase%-beta}/tasks/distribution.js < ../no-rpm.diff
 
   # Disable publishing for CIs
-  patch --strip=1 desktop/packages/${pkgname%-beta}/tasks/distribution.js < ../no-publish.diff
+  patch --strip=1 desktop/packages/${pkgbase%-beta}/tasks/distribution.js < ../no-publish.diff
 
   # Create wireguard-go build directory
   mkdir -p "build/lib/$CARCH-unknown-linux-gnu"
@@ -88,13 +88,12 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc --print host-tuple)"
 
-  pushd "desktop/packages/${pkgname%-beta}"
+  pushd "desktop/packages/${pkgbase%-beta}"
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
   nvm install "${_nodeversion}"
 
   echo "Installing JavaScript dependencies..."
-  npm install --install-strategy=shallow typescript@5.6.3
   npm ci --no-audit --no-fund
   popd
 }
@@ -131,7 +130,6 @@ build() {
     -p mullvad-cli --bin mullvad
     -p mullvad-setup --bin mullvad-setup
     -p mullvad-problem-report --bin mullvad-problem-report
-    -p talpid-openvpn-plugin --lib
     -p mullvad-exclude --bin mullvad-exclude
   )
   cargo build "${CARGO_ARGS[@]}" "${cargo_crates_to_build[@]}"
@@ -151,7 +149,6 @@ build() {
     mullvad-daemon
     mullvad
     mullvad-problem-report
-    libtalpid_openvpn_plugin.so
     mullvad-setup
     mullvad-exclude
   )
@@ -159,8 +156,7 @@ build() {
     cp "target/release/${binary}" "dist-assets/${binary}"
   done
 
-  # Build Electron GUI
-  pushd "desktop/packages/${pkgname%-beta}"
+  pushd "desktop/packages/${pkgbase%-beta}"
   echo "Packing Mullvad VPN ${PRODUCT_VERSION} artifact(s)..."
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
@@ -168,35 +164,25 @@ build() {
   popd
 }
 
-package() {
-  cd mullvadvpn-app
+package_mullvad-vpn-beta() {
+  pkgdesc+=" (desktop application)"
+  optdepends=('libappindicator: tray icon')
+  depends+=('mullvad-vpn-daemon-beta')
+  provides=("${pkgname%-beta}")
+  conflicts=("${pkgname%-beta}")
+  install="${pkgname%-beta}.install"
 
-  # Install main files
+  cd mullvadvpn-app
   install -d "$pkgdir/opt/Mullvad VPN"
   cp -r dist/linux-unpacked/* "$pkgdir/opt/Mullvad VPN/"
-
   chmod 4755 "$pkgdir/opt/Mullvad VPN/chrome-sandbox"
+  install -Dm755 "$srcdir/${pkgname%-beta}.sh" "$pkgdir/usr/bin/${pkgname%-beta}"
 
-  # Install services
-  install -Dm644 dist-assets/linux/mullvad{-daemon,-early-boot-blocking}.service -t \
-    "$pkgdir/usr/lib/systemd/system/"
+  install -d "$pkgdir/usr/share/doc/$pkgname"
+  ln -s "/opt/Mullvad VPN/resources/CHANGELOG.md" "$pkgdir/usr/share/doc/$pkgname/"
 
-  # Install binaries
-  install -Dm755 dist-assets/{mullvad,mullvad{-daemon,-exclude}} -t "$pkgdir/usr/bin/"
-
-  # Link to the problem report binary
-  ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" "$pkgdir/usr/bin/"
-
-  # Link to the GUI binary
-  install -m755 "$srcdir/${pkgname%-beta}.sh" "$pkgdir/usr/bin/${pkgname%-beta}"
-
-  # Install completions
-  install -Dm644 build/shell-completions/mullvad.bash \
-    "$pkgdir/usr/share/bash-completion/completions/mullvad"
-  install -Dm644 build/shell-completions/_mullvad -t \
-    "$pkgdir/usr/share/zsh/site-functions/"
-  install -Dm644 build/shell-completions/mullvad.fish -t \
-    "$pkgdir/usr/share/fish/vendor_completions.d/"
+  # Remove mullvad-vpn-daemon files
+  rm "$pkgdir/opt/Mullvad VPN"/resources/{ca.crt,mullvad-{problem-report,setup},relays.json}
 
   # Install desktop file & icons from deb
   cd dist
@@ -210,7 +196,36 @@ package() {
     install -Dm644 "${icons_dir}/${pkgname%-beta}.png" -t "$pkgdir/${icons_dir}/"
   done
 
-  # Symlink apparmor profile to allow Electron sandbox to work
+  # The AppArmor profile allows Electron sandbox to work
+  # This disables user namespace restrictions
   install -d "$pkgdir/etc/apparmor.d"
-  ln -s /opt/Mullvad\ VPN/resources/apparmor_mullvad "$pkgdir/etc/apparmor.d/mullvad"
+  ln -s "/opt/Mullvad VPN/resources/apparmor_mullvad" "$pkgdir/etc/apparmor.d/mullvad"
+}
+
+package_mullvad-vpn-daemon-beta() {
+  pkgdesc+=" (daemon and CLI)"
+  depends=(
+    'dbus'
+    'iputils'
+    'libnftnl'
+  )
+  provides=("${pkgname%-beta}")
+  conflicts=("${pkgname%-beta}")
+  install="${pkgname%-beta}.install"
+
+  cd mullvadvpn-app
+  install -Dm755 dist-assets/{mullvad,mullvad{-daemon,-exclude}} -t "$pkgdir/usr/bin/"
+  install -Dm755 target/release/mullvad{-problem-report,-setup} -t \
+    "$pkgdir/opt/Mullvad VPN/resources/"
+  ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" "$pkgdir/usr/bin/"
+  install -Dm644 dist-assets/ca.crt -t "$pkgdir/opt/Mullvad VPN/resources/"
+  install -m644 build/relays.json -t "$pkgdir/opt/Mullvad VPN/resources/"
+  install -Dm644 dist-assets/linux/mullvad{-daemon,-early-boot-blocking}.service -t \
+    "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 build/shell-completions/mullvad.bash \
+    "$pkgdir/usr/share/bash-completion/completions/mullvad"
+  install -Dm644 build/shell-completions/_mullvad -t \
+    "$pkgdir/usr/share/zsh/site-functions/"
+  install -Dm644 build/shell-completions/mullvad.fish -t \
+    "$pkgdir/usr/share/fish/vendor_completions.d/"
 }
