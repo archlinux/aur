@@ -12,9 +12,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    'asar'
-)
 source=(
     "${pkgname%-bin}-${pkgver}.pacman::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}.pacman"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/nbebaw/boostchanger/v${pkgver}/LICENSE"
