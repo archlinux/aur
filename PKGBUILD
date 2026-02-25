@@ -1,7 +1,7 @@
 # Maintainer: qmltoslint
 pkgname=kclock-rs-bin
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-performance cross-platform timer application built with Rust and Slint UI"
 arch=('x86_64')
 url="https://codeberg.org/qml-to-slint/kclock-rs"
