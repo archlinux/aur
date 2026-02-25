@@ -1,7 +1,8 @@
 pkgbase = arm-linux-gnueabihf-glibc
 	pkgdesc = GNU C Library
-	pkgver = 2.42+r3+gbc13db739377
+	pkgver = 2.42
 	pkgrel = 1
+	epoch = 1
 	url = https://www.gnu.org/software/libc/
 	arch = any
 	license = GPL-2.0-only
@@ -9,7 +10,7 @@ pkgbase = arm-linux-gnueabihf-glibc
 	makedepends = arm-linux-gnueabihf-gcc-stage2>=15.2.0
 	makedepends = python
 	depends = arm-linux-gnueabihf-linux-api-headers>=6.15
-	provides = arm-linux-gnueabihf-glibc-headers=2.42+r3+gbc13db739377
+	provides = arm-linux-gnueabihf-glibc-headers=2.42
 	provides = arm-linux-gnueabihf-eglibc
 	conflicts = arm-linux-gnueabihf-glibc-headers
 	conflicts = arm-linux-gnueabihf-eglibc
@@ -19,13 +20,13 @@ pkgbase = arm-linux-gnueabihf-glibc
 	options = !debug
 	options = lto
 	options = staticlibs
-	source = git+https://sourceware.org/git/glibc.git#commit=bc13db73937730401d592b33092db6df806d193e
+	source = git+https://sourceware.org/git/glibc.git#commit=d2097651cc57834dbfcaa102ddfacae0d86cfb66
 	source = sdt.h
 	source = sdt-config.h
 	source = xldd
 	validpgpkeys = 7273542B39962DF7B299931416792B4EA25340F8
 	validpgpkeys = BC7C7372637EC10C57D7AA6579C43DFBF1CF2187
-	sha256sums = 810cc48e09712524aa087c7122baaed15ace55ea9c52f918fa095e49734d8cd4
+	sha256sums = 90813c18d544d5ddfcd0d2f24458eb18d746e24c9e4a27f00ca8cc93e0f56c7b
 	sha256sums = 1ecf90005ff5a65374c7266acb164fa265aff92328593bdca2352acf5dab240d
 	sha256sums = cdc234959c6fdb43f000d3bb7d1080b0103f4080f5e67bcfe8ae1aaf477812f0
 	sha256sums = 96aaa6baacd84f8cd517e5b31d575b766a7af5a3be6fad3c8707da796e8f8ca7
