@@ -1,13 +1,13 @@
 pkgbase = drumkit
 	pkgdesc = Low-latency TUI MIDI drum sampler for electronic drum kits
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/backmeupplz/drumkit
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = alsa-lib
-	source = drumkit-0.1.8.tar.gz::https://github.com/backmeupplz/drumkit/archive/refs/tags/v0.1.8.tar.gz
-	sha256sums = b5c3bbde76cc73473a1379e3be511dee00bb34e2e53affddffd8946c31fb3ef2
+	source = drumkit-0.1.9.tar.gz::https://github.com/backmeupplz/drumkit/archive/refs/tags/v0.1.9.tar.gz
+	sha256sums = 6d5ddde81f347307cb49db56c3269606f3fc5b151ceaaf4aebcb9b3fb494d167
 
 pkgname = drumkit

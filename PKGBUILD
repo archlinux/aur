@@ -1,6 +1,6 @@
 # Maintainer: Nikita Kolmogorov <ubuntu@borodutch.com>
 pkgname=drumkit
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='Low-latency TUI MIDI drum sampler for electronic drum kits'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('alsa-lib')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/backmeupplz/drumkit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b5c3bbde76cc73473a1379e3be511dee00bb34e2e53affddffd8946c31fb3ef2')
+sha256sums=('6d5ddde81f347307cb49db56c3269606f3fc5b151ceaaf4aebcb9b3fb494d167')
 
 prepare() {
   cd "$pkgname-$pkgver"
