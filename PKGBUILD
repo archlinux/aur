@@ -2,7 +2,7 @@
 
 _name=google_cloud_pubsub
 pkgname=python-google-cloud-pubsub
-pkgver=2.33.0
+pkgver=2.35.0
 pkgrel=1
 pkgdesc="Google Cloud PubSub python SDK"
 url=https://github.com/googleapis/google-cloud-python
@@ -13,7 +13,7 @@ depends=(python python-google-api-core python-proto-plus python-protobuf
 makedepends=(python-setuptools python-wheel python-installer python-build)
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('83bc50c54f669efb924ad21385bc7092fa11f7576eabef3d0b4d7aa8efa90aa6')
+sha256sums=('2c0d1d7ccda52fa12fb73f34b7eb9899381e2fd931c7d47b10f724cdfac06f95')
 
 build() {
   cd "$_name-$pkgver"

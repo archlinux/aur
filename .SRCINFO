@@ -1,6 +1,6 @@
 pkgbase = python-google-cloud-pubsub
 	pkgdesc = Google Cloud PubSub python SDK
-	pkgver = 2.33.0
+	pkgver = 2.35.0
 	pkgrel = 1
 	url = https://github.com/googleapis/google-cloud-python
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-google-cloud-pubsub
 	depends = python-google-auth
 	depends = python-grpcio
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/g/google_cloud_pubsub/google_cloud_pubsub-2.33.0.tar.gz
-	sha256sums = 83bc50c54f669efb924ad21385bc7092fa11f7576eabef3d0b4d7aa8efa90aa6
+	source = https://files.pythonhosted.org/packages/source/g/google_cloud_pubsub/google_cloud_pubsub-2.35.0.tar.gz
+	sha256sums = 2c0d1d7ccda52fa12fb73f34b7eb9899381e2fd931c7d47b10f724cdfac06f95
 
 pkgname = python-google-cloud-pubsub
