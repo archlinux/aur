@@ -1,9 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Matthew McGinn <mamcgi at gmail dot com>
 # Contributor: alicewww <almw at protonmail dot com>
-pkgname=mullvad-vpn-bin
+pkgname=(
+  'mullvad-vpn-bin'
+  'mullvad-vpn-daemon-bin'
+)
+pkgbase=mullvad-vpn-bin
 pkgver=2025.14
-pkgrel=1
+pkgrel=2
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
@@ -16,10 +20,6 @@ depends=(
   'libnotify'
   'nss'
 )
-optdepends=('libappindicator-gtk3: tray icon')
-provides=('mullvad-vpn')
-conflicts=('mullvad-vpn')
-install='mullvad-vpn.install'
 source=('mullvad-vpn.sh')
 source_x86_64=("https://github.com/mullvad/mullvadvpn-app/releases/download/$pkgver/MullvadVPN-${pkgver}_amd64.deb"{,.asc})
 source_aarch64=("https://github.com/mullvad/mullvadvpn-app/releases/download/$pkgver/MullvadVPN-${pkgver}_arm64.deb"{,.asc})
@@ -30,18 +30,62 @@ sha256sums_aarch64=('9a20a1d71eac09c01b83d897ed227361cc49f0321054d76b83a6f7f61b7
                     'SKIP')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
 
-package() {
+prepare() {
+  mkdir -p "MullvadVPN-$pkgver"
+  bsdtar -xvf data.tar.xz -C "MullvadVPN-$pkgver"
+}
+
+package_mullvad-vpn-bin() {
+  pkgdesc+=" (desktop application)"
+  depends+=('mullvad-vpn-daemon-bin')
+  optdepends=('libappindicator: tray icon')
+  provides=('mullvad-vpn')
+  conflicts=('mullvad-vpn')
+  install='mullvad-vpn.install'
+
   bsdtar -xvf data.tar.xz -C "$pkgdir/"
   chmod 4755 "$pkgdir/opt/Mullvad VPN/chrome-sandbox"
-
-  # Link to the GUI binary
   install -m755 "$srcdir/mullvad-vpn.sh" "$pkgdir/usr/bin/mullvad-vpn"
 
-  # Symlink apparmor profile to allow Electron sandbox to work
-  install -d "$pkgdir/etc/apparmor.d"
-  ln -s /opt/Mullvad\ VPN/resources/apparmor_mullvad "$pkgdir/etc/apparmor.d/mullvad"
+  # Remove useless changelog.gz & symlink actual changelog
+  rm "$pkgdir/usr/share/doc/$pkgname/changelog.gz"
+  ln -s "/opt/Mullvad VPN/resources/CHANGELOG.md" "$pkgdir/usr/share/doc/$pkgname/"
 
-  # Move ZSH completions to correct directory
-  mv "$pkgdir/usr/local/share/zsh" "$pkgdir/usr/share/"
-  rm -rf "$pkgdir/usr/local"
+  # Remove mullvad-vpn-daemon files
+  rm "$pkgdir/opt/Mullvad VPN"/resources/{ca.crt,mullvad-{problem-report,setup},relays.json}
+  rm -r "$pkgdir"/usr/{lib,local,share/{bash-completion,fish}}/
+
+  # The AppArmor profile allows Electron sandbox to work
+  # This disables user namespace restrictions
+  install -d "$pkgdir/etc/apparmor.d"
+  ln -s "/opt/Mullvad VPN/resources/apparmor_mullvad" "$pkgdir/etc/apparmor.d/mullvad"
+}
+
+package_mullvad-vpn-daemon-bin() {
+  pkgdesc+=" (daemon and CLI)"
+  depends=(
+    'dbus'
+    'iputils'
+    'libnftnl'
+  )
+  provides=('mullvad-vpn-daemon')
+  conflicts=('mullvad-vpn-daemon')
+  install='mullvad-vpn-daemon.install'
+
+  cd "MullvadVPN-$pkgver"
+  install -Dm755 usr/bin/{mullvad,mullvad{-daemon,-exclude}} -t \
+    "$pkgdir/usr/bin/"
+  install -Dm755 "opt/Mullvad VPN"/resources/mullvad{-problem-report,-setup} -t \
+    "$pkgdir/opt/Mullvad VPN/resources/"
+  ln -s "/opt/Mullvad VPN/resources/mullvad-problem-report" "$pkgdir/usr/bin/"
+  install -Dm644 "opt/Mullvad VPN"/resources/ca.crt -t "$pkgdir/opt/Mullvad VPN/resources/"
+  install -Dm644 "opt/Mullvad VPN"/resources/relays.json -t "$pkgdir/opt/Mullvad VPN/resources/"
+  install -Dm644 usr/lib/systemd/system/mullvad{-daemon,-early-boot-blocking}.service -t \
+    "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 usr/share/bash-completion/completions/mullvad -t \
+    "$pkgdir/usr/share/bash-completion/completions/"
+  install -Dm644 usr/share/fish/vendor_completions.d/mullvad.fish -t \
+    "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm644 usr/local/share/zsh/site-functions/_mullvad -t \
+    "$pkgdir/usr/share/zsh/site-functions/"
 }
