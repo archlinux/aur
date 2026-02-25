@@ -3,7 +3,7 @@
 _name=pyhmmer
 pkgname=python-${_name}
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cython bindings and Python interface to HMMER3"
 url="https://github.com/althonos/pyhmmer"
 arch=('i686' 'pentium4' 'x86_64' 'armv7h' 'aarch64')
@@ -19,9 +19,8 @@ build() {
 }
 
 check() {
-    local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp312-abi3-linux_${machine}.whl"
 
     rm -rf "${srcdir}/env"
     python -m venv --symlinks --system-site-packages "${srcdir}/env"
@@ -33,9 +32,8 @@ check() {
 }
 
 package() {
-    local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+    whl="${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp312-abi3-linux_${machine}.whl"
 
     python -m installer --prefix="${pkgdir}/usr" "$whl"
     install -Dm644  ${srcdir}/${_name}-${pkgver}/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
