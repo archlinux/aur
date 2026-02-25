@@ -5,7 +5,7 @@ pkgname=${_target}-glibc
 epoch=1
 pkgver=2.42
 _commit=d2097651cc57834dbfcaa102ddfacae0d86cfb66
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU C Library"
 arch=('any')
 url="https://www.gnu.org/software/libc/"
@@ -102,7 +102,4 @@ package() {
   # libraries too. Useful for gdb's catch command.
   install -Dm644 "${srcdir}"/sdt.h "${pkgdir}"/usr/"${_target}"/include/sys/sdt.h
   install -Dm644 "${srcdir}"/sdt-config.h "${pkgdir}"/usr/"${_target}"/include/sys/sdt-config.h
-
-  # strip it manually to prevent makepkg complaining about srcdir references
-  find "${pkgdir}"/ -type f -exec /usr/bin/"${_target}"-strip --strip-unneeded {} \; 2>/dev/null || true
 }
