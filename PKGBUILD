@@ -20,7 +20,7 @@ makedepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "orbit.service")
-sha256sums=('bd591942d45010eb6812eabcc26d38a6859aae4a49c0abfd39fafc83432f7953'
+sha256sums=('d832a4f4428620ab12042efb423f460c8b15bde1bfd0ae1a6138e6c7c05cb692'
             'c48aacf0c8020cb7a2d8a4796d2c0b3826eea91a28aa325ec1a61acb99b8216a')
 
 prepare() {
