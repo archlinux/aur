@@ -1,0 +1,18 @@
+pkgbase = loghew-bin
+	pkgdesc = A TUI to read and observe .log files
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/nehadyounis/loghew
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = loghew
+	conflicts = loghew
+	source_x86_64 = loghew-x86_64-0.1.1.txz::https://github.com/nehadyounis/loghew/releases/download/v0.1.1/loghew-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 77d52a5a7bde872e197d8a3dcc9bcd711d2744a94e320fbca19db51c3bf2fbf1
+	source_aarch64 = loghew-aarch64-0.1.1.txz::https://github.com/nehadyounis/loghew/releases/download/v0.1.1/loghew-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 91741c25d2a8866ce29ead157ec56e6fe4772042425c7d441ea99982b2ad6e0d
+
+pkgname = loghew-bin

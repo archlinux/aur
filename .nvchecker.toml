@@ -1,0 +1,5 @@
+[loghew-bin]
+source = "github"
+github = "nehadyounis/loghew"
+use_latest_release = true
+prefix = "v"
