@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folo-git
 _pkgname=Folo
-pkgver=1.2.6.r6.g420c6e9
+pkgver=1.3.1.r11.g3d81244
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -23,13 +23,14 @@ makedepends=(
     'git'
     'pnpm'
     'python-setuptools'
+    'jq'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013')
+            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -43,7 +44,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/apps/desktop/package.json" | tr -d '^')
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/package.json" | tr -d '^')
     _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
@@ -111,7 +112,15 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/apps/desktop/out/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+	find "${srcdir}/${pkgname//-/.}/apps/desktop/out/${_pkgname}-linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-git}" {} +
+    if find "${srcdir}/${pkgname//-/.}/apps/desktop/out/${_pkgname}-linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${pkgname//-/.}/apps/desktop/out/${_pkgname}-linux-"*"/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-git}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/${pkgname//-/.}/apps/desktop/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
