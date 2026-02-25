@@ -1,0 +1,20 @@
+pkgbase = esp-config
+	pkgdesc = Configure projects using esp-hal and related packages
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/esp-rs/esp-hal/tree/main/esp-config
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cargo
+	depends = libgcc
+	depends = glibc
+	options = !lto
+	source = esp-config-0.6.1.tar.gz::https://static.crates.io/crates/esp-config/esp-config-0.6.1.crate
+	source = LICENSE-MIT
+	source = LICENSE-APACHE
+	sha256sums = 102871054f8dd98202177b9890cb4b71d0c6fe1f1413b7a379a8e0841fc2473c
+	sha256sums = 7b2165c6740592038d887d51d56d122b0b563337a7756b424f19eecc7a936ef1
+	sha256sums = 2bf4fe1a37e545c3b4f7bfaa2326c99f153af32ef8d112fbaa4bff7fb2a575bd
+
+pkgname = esp-config
