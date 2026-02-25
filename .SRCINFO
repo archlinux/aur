@@ -1,0 +1,15 @@
+pkgbase = s6-rc-man-pages-git
+	pkgdesc = Manual pages for the s6-rc service manager
+	pkgver = v0.6.0.0.1.r0.a1a850a
+	pkgrel = 1
+	url = https://git.sr.ht/~humm/s6-rc-man-pages
+	arch = any
+	license = ISC
+	makedepends = git
+	optdepends = s6-rc: package documented by these man pages
+	provides = s6-rc-man-pages
+	conflicts = s6-rc-man-pages
+	source = git+https://git.sr.ht/~humm/s6-rc-man-pages
+	sha256sums = SKIP
+
+pkgname = s6-rc-man-pages-git
