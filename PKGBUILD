@@ -1,7 +1,7 @@
-# Maintainer: Matthias Mailänder <matthias@mailaender.name>
+# Maintainer: Siavosh Kasravi <siavosh.kasravi[at-sign]gmail.com>
 
 pkgname=alpaka-git
-pkgver=r507.200bda9
+pkgver=r518.e72322e
 pkgrel=1
 pkgdesc='Kirigami client for Ollama'
 provides=('alpaka')
@@ -21,7 +21,7 @@ depends=(gcc-libs
          kcrash
          ollama
 )
-makedepends=(qt6-base qt6-tools doxygen ninja git extra-cmake-modules)
+makedepends=(qt6-tools doxygen ninja git extra-cmake-modules)
 groups=(kde-applications
         kde-utilities)
 source=(git+https://invent.kde.org/utilities/alpaka.git)
@@ -37,10 +37,11 @@ pkgver() {
 
 build() {
   cd alpaka
-  cmake --preset release -DBUILD_TESTING=OFF
+  cmake --preset release --install-prefix /usr
   cmake --build --preset release --parallel
 }
 
 package() {
-  DESTDIR="$pkgdir" cmake --install alpaka/build-release
+  cd alpaka
+  DESTDIR="$pkgdir" cmake --install build-release 
 }
