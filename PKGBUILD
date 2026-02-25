@@ -3,7 +3,7 @@
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=runescape-launcher
-pkgver=2.2.11
+pkgver=2.2.12
 pkgrel=1
 pkgdesc="RuneScape Game Client (NXT)"
 arch=(x86_64)
@@ -12,7 +12,7 @@ url="https://www.runescape.com/"
 depends=(
     cairo       # libcairo2
         #libcairo.so=2
-    gcc-libs    # libgcc1
+    libgcc      # libgcc1
     gdk-pixbuf2 # libgdk-pixbuf2.0-0
         #libgdk_pixbuf-2.0.so=0
     glib2       # libglib2.0-0
