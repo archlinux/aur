@@ -1,8 +1,8 @@
 # Maintainer: Andrew Relative <kezin636 at gmail dot com>
 
 pkgname=aegnux
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 pkgdesc="A convenient way to install Adobe After Effects on Linux using Wine."
 arch=('x86_64')
 url="https://github.com/relativemodder/aegnux"
