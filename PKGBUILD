@@ -1,6 +1,6 @@
 # Maintainer: qmltoslint
 pkgname=kclock-rs-bin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A high-performance cross-platform timer application built with Rust and Slint UI"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/kclock-rs-x86_
   "kclock-rs.desktop"
   "logo.svg"
   "LICENSE.md")
-sha256sums=('e00d6819eabb2267dcd82c5fad8488cfa44b96c615cb57fe5d283227de5920af'
+sha256sums=('9837305ba118f291016937d77efb6a06b29f7154704b154ace28a5ca6cc418ba'
   'f444a862b990c9f8f12c6e96189f53ec4e822a266ee52ce38ce5fdeb6f247e45'
   'dc74db5ade14026b250ed77ef314c7a9c399524987f60f30648bcb62a72f4ea1'
   '07e538516e7f484ae13c2edba3c11944c437902a27af81c222cffb3fc896967d')
