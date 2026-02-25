@@ -1,6 +1,6 @@
 # Maintainer: qrafty-ai <contact@qrafty.ai>
 pkgname=opencode-kanban
-pkgver=0.4.7
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="Terminal kanban board for managing OpenCode tmux sessions and Git worktrees"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('tmux' 'sqlite')
 makedepends=('rust' 'cargo' 'cmake' 'nasm' 'perl' 'sqlite')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/qrafty-ai/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7be997cd618a19ee859f9df7770ee339cb3fbe1a564cd5d228bd85b88baff697')
+sha256sums=('eff8a52a7a8033403f6a7f057733683e76fd0e9bb426a503ddd47c6e6c1d4fc3')
 
 prepare() {
     cd "$pkgname-$pkgver"
