@@ -1,7 +1,7 @@
 # Maintainer: schlndh <schlindenbuch.h@seznam.cz>
 _pkgname=plasma-desktop
 pkgname=$_pkgname-povd
-pkgver=6.6.0
+pkgver=6.6.1
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='KDE Plasma Desktop (patched for per-output virtual desktops)'
@@ -55,7 +55,7 @@ depends=(attica
          libxi
          libxkbcommon
          libxkbfile
-         'libplasma>=6.5.90'
+         'libplasma<6.6.80'
          plasma-activities
          plasma-activities-stats
          plasma-workspace-povd
@@ -99,7 +99,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
         povd.patch)
-sha256sums=('d91e4dd276ea1ad743e31ace859a36ec4dfb431495c81eb1a8eb32a49c73f342'
+sha256sums=('90f74fcfad764edbd4325b05d542563dde2abbc3fd17f6d16fe9fbc9a6390765'
             'SKIP'
             'ff724b7d4ef0c33ad5cb0fff2422fdfa112dcb7dffe336bace567bdfea0ea925')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
