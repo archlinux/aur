@@ -1,0 +1,15 @@
+pkgbase = notation
+	pkgdesc = CLI tool to sign and verify OCI artifacts (CNCF Notary Project)
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = https://github.com/notaryproject/notation
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	provides = notation
+	conflicts = notation-bin
+	source = https://github.com/notaryproject/notation/archive/v1.3.2.tar.gz
+	sha256sums = f7239ca8155329b57f80e5fb01bf189441b3ade572ad9d6fc4582c1475b8e840
+
+pkgname = notation
