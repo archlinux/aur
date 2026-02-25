@@ -34,5 +34,8 @@ package() {
   ln -sf /opt/WSHawk/wshawk "$pkgdir/usr/bin/wshawk-desktop"
   ln -sf /opt/WSHawk/wshawk "$pkgdir/usr/bin/wshawk"
   
-  msg2 "Terminal symlinks created successfully."
+  # Install the logo icon
+  install -Dm644 "desktop/src/assets/logo.jpg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/wshawk.jpg"
+
+  msg2 "Terminal symlinks and icons created successfully."
 }
