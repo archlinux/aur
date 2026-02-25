@@ -1,7 +1,7 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
 # Unstable build from GitHub releases: https://github.com/openlyst/builds/releases
 pkgname=opentorrent-unstable
-pkgver=2.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="qBittorrent client (unstable build from GitHub)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=()
 provides=('opentorrent')
 conflicts=('opentorrent')
 options=('!strip')
-source=("opentorrent-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-4/opentorrent-2.0.0-2026-02-22-linux-x64.zip")
+source=("opentorrent-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-15/opentorrent-3.0.0-2026-02-25-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
