@@ -1,4 +1,4 @@
-# Maintainer: Scott-Nx <158021536 plus Scott-Nx at users dot noreply dot github dot com>
+# Maintainer: nathawat <nathawat at noreply dot codeberg dot org>
 
 pkgname=quantumlauncher-bin
 pkgver=0.5.0
