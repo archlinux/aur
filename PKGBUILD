@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-hip
 _pkgname="${pkgname%-hip}"
-pkgver=b8147
+pkgver=b8148
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (with AMD ROCm optimizations)"
 arch=(x86_64 armv7h aarch64)
@@ -18,7 +18,6 @@ depends=(
   openmp
   python
   rocblas
-  rocwmma
 )
 makedepends=(
   cmake
@@ -42,7 +41,7 @@ source=(
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
-sha256sums=('e246e7674f3ccd581262d1961728b8b9135eff6d75f28cdb212f2d29546f1717'
+sha256sums=('9406b70042220031521a760d227746324211d4709dc0e658f5a1442d356eee68'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
@@ -75,7 +74,7 @@ build() {
     -DGGML_RPC=ON
     -DGGML_HIP=ON
     -DGGML_HIP_GRAPHS=ON
-    -DGGML_HIP_ROCWMMA_FATTN=ON
+    # -DGGML_HIP_ROCWMMA_FATTN=ON # 对线性注意力优化
     -DHIP_PLATFORM=amd # 手动指定 AMD 平台, 防止因 rocm-nightly 禁用自动检测而报错
     -DGGML_CUDA_FA_ALL_QUANTS=ON
     -DLLAMA_BUILD_NUMBER="${pkgver#b}" # 修正版本号
