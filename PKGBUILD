@@ -3,7 +3,7 @@
 _appname=codium
 _pkgname="vs${_appname}"
 pkgname="${_pkgname}-electron-bin"
-pkgver=1.109.31074
+pkgver=1.109.51242
 _electronversion=39
 pkgrel=1
 pkgdesc="VS Code without MS branding/telemetry/licensing.(Prebuilt and System-wide Electron edition)"
@@ -52,9 +52,9 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/downloa
 sha256sums=('ed289092386002771285e3423f66f49af65ff918e1b667b517d977fa4fe1f057'
             '7222e3026ab0eda7d60698a036354a2bae4d0878b1d75fc893c91e30b60804bf'
             'c418b7c5c17b3771f53541b46ed1eff461de5871e2c7c177546e2577d480594f')
-sha256sums_aarch64=('69d88d2bc888765e0a35aa74b5783471733eaa66413b8489676cd45296558294')
-sha256sums_armv7h=('0ab5d1a3a1b85a156a938bed701768b2dcd3dd734ce11e9c7c09bb8a29e4c46f')
-sha256sums_x86_64=('f56d3b2eae8358733bbdce6a3297fd73d136097ba946798376c20faf43e6b8cb')
+sha256sums_aarch64=('42c028847cad5b3d3b70647adc44db930c715f283f01fc724902f4d5b9c2d28a')
+sha256sums_armv7h=('d7ebf7bc0731cb104adfcdb284affbea4f4fca358d31863529e7d3cb63351719')
+sha256sums_x86_64=('5204ac33a5fe796d2d6d60937c3adbea96f08032f87492f2b4d9150fafdac906')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/share/${_appname}/${_appname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -75,11 +75,26 @@ prepare() {
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
     " "${srcdir}/usr/share/applications/"{"${_appname}-url-handler.desktop","${_appname}.desktop"}
     ln -sf "/usr/bin/rg" "${srcdir}/usr/share/${_appname}/resources/app/node_modules/@vscode/ripgrep/bin/rg"
+    case "${CARCH}" in
+        aarch64)
+            find "${srcdir}/usr/share/${_appname}/resources/app/node_modules" -type d -name "x64" -exec rm -rf {} +
+            ;;
+        x86_64)
+            find "${srcdir}/usr/share/${_appname}/resources/app/node_modules" -type d -name "arm64" -exec rm -rf {} +
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${_appname}/resources/app/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    find "${srcdir}/usr/share/${_appname}/resources/app" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/usr/share/${_appname}/resources/app" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/usr/share/${_appname}/resources/app/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/usr/share/appdata/${_appname}.appdata.xml" "${pkgdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}-url-handler.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}-url-handler.desktop"
     install -Dm644 "${srcdir}/usr/share/applications/${_appname}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
