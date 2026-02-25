@@ -1,0 +1,17 @@
+pkgbase = claude-squad
+	pkgdesc = Manage multiple AI terminal agents like Claude Code, Aider, Codex, OpenCode and Amp
+	pkgver = 1.0.14
+	pkgrel = 1
+	url = https://github.com/smtg-ai/claude-squad
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = go
+	depends = tmux
+	depends = git
+	provides = claude-squad
+	conflicts = claude-squad-bin
+	source = claude-squad-1.0.14.tar.gz::https://github.com/smtg-ai/claude-squad/archive/v1.0.14.tar.gz
+	sha256sums = 19951f70917aef7fda3810b47e3e2dc3110fb04027ff5dbbe3f3c502999b9610
+
+pkgname = claude-squad
