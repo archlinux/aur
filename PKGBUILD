@@ -1,7 +1,7 @@
 # Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=hister
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
 url="https://github.com/asciimoo/hister"
@@ -12,7 +12,7 @@ install=hister.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "hister.service")
-sha256sums=('674414d15795d5f74d6a01451dc36eed78c812c69a973d443bbae50914c14944'
+sha256sums=('e734e8ae924bdfa6b67bc055fd4dc70c6a43241a283eb337b6c707f6c2287d39'
             'c1f3851a79baf1eab7d5d40ee9aaffa53fef4a2938e5a293c542f73134e645da')
 
 # Optional: GitHub repo for automatic version checking
