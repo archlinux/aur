@@ -1,18 +1,18 @@
 pkgbase = sqlui-native-bin
 	pkgdesc = A simple UI client for most SQL Engines,supports most dialects of RMBDs and has limited supports for Cassandra,MongoDB,Redis,CockroachDB,Azure CosmosDB and Azure Storage Tab.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.62.22
-	pkgrel = 7
+	pkgver = 1.64.4
+	pkgrel = 1
 	url = https://synle.github.io/sqlui-native/
 	arch = x86_64
 	license = MIT
-	depends = electron20
-	provides = sqlui-native=1.62.22
+	depends = electron28
+	provides = sqlui-native=1.64.4
 	conflicts = sqlui-native
-	source = sqlui-native-1.62.22.pacman::https://github.com/synle/sqlui-native/releases/download/1.62.22/sqlui-native-1.62.22.pacman
-	source = LICENSE-1.62.22.md::https://raw.githubusercontent.com/synle/sqlui-native/1.62.22/LICENSE.md
+	source = sqlui-native-1.64.4.pacman::https://github.com/synle/sqlui-native/releases/download/1.64.4/sqlui-native-1.64.4.pacman
+	source = LICENSE-1.64.4.md::https://raw.githubusercontent.com/synle/sqlui-native/1.64.4/LICENSE.md
 	source = sqlui-native.sh
-	sha256sums = 0975f884cd6b7340eed9e091db73fd93fbbf4a166f65843225fe672cc3f022de
+	sha256sums = c3ade9edf401a9207cde828e86d26c026b3dd985da22fcff61c6e8ed37b365c0
 	sha256sums = a73494126f54d27c6155eecb8504842414b50317f84986eb1439fee7bb326099
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = sqlui-native-bin
