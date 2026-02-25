@@ -1,7 +1,7 @@
 pkgbase = ecss-elph-bin
 	pkgdesc = An application to extend the functionality of an ECSS-10 enabled telephone set and use it as a software SIP client
-	pkgver = 2.14.0.156
-	pkgrel = 6
+	pkgver = 2.14.1.11
+	pkgrel = 1
 	url = https://docs.eltex-co.ru/display/doc/Elph+Desktop
 	arch = x86_64
 	license = custom
@@ -17,7 +17,7 @@ pkgbase = ecss-elph-bin
 	depends = libappindicator-gtk3
 	provides = ecss-elph
 	conflicts = ecss-elph
-	source = https://archive.eltex.org/ssw/jammy/elph/pool/main/e/ecss-elph/ecss-elph_2.14.0.156_amd64.deb
-	sha256sums = 211078226deb5ea796ce5d081627a9ef13c1b8ca5656b218d87ca76b3dd8135c
+	source = https://archive.eltex.org/ssw/jammy/elph/pool/main/e/ecss-elph/ecss-elph_2.14.1.11_amd64.deb
+	sha256sums = 9fba40dd83d16478370f1fefbf4df2363f4afabf3d3291531eac9f01afeb32b8
 
 pkgname = ecss-elph-bin

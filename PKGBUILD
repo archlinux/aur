@@ -2,8 +2,8 @@
 
 pkgname=ecss-elph-bin
 _pkgname=ecss-elph
-pkgver=2.14.0.156
-pkgrel=6
+pkgver=2.14.1.11
+pkgrel=1
 pkgdesc="An application to extend the functionality of an ECSS-10 enabled telephone set and use it as a software SIP client"
 arch=("x86_64")
 url="https://docs.eltex-co.ru/display/doc/Elph+Desktop"
@@ -12,7 +12,7 @@ depends=("gtk3" "libnotify" "nss" "libxss" "libxtst" "xdg-utils" "at-spi2-core" 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://archive.eltex.org/ssw/jammy/elph/pool/main/e/${_pkgname}/${_pkgname}_${pkgver}_amd64.deb")
-sha256sums=('211078226deb5ea796ce5d081627a9ef13c1b8ca5656b218d87ca76b3dd8135c')
+sha256sums=('9fba40dd83d16478370f1fefbf4df2363f4afabf3d3291531eac9f01afeb32b8')
 
 prepare() {
   tar -xvf data.tar.zst
@@ -23,15 +23,15 @@ prepare() {
 package() {
   mv -v "usr/share/doc/${_pkgname}/README.Debian" "usr/share/doc/${_pkgname}/README"
 
-  mkdir -vp "$pkgdir/usr/lib/ecss/${_pkgname}"
-  cp -vr --no-preserve=ownership --preserve=mode "usr/lib/ecss/${_pkgname}" "$pkgdir/usr/lib/ecss/"
+  mkdir -vp "${pkgdir}/usr/lib/ecss/${_pkgname}"
+  cp -vr --no-preserve=ownership --preserve=mode "usr/lib/ecss/${_pkgname}" "${pkgdir}/usr/lib/ecss/"
 
-  mkdir -vp "$pkgdir/usr/share/applications"
-  cp -vr --no-preserve=ownership --preserve=mode "usr/share/applications" "$pkgdir/usr/share/"
+  mkdir -vp "${pkgdir}/usr/share/applications"
+  cp -vr --no-preserve=ownership --preserve=mode "usr/share/applications" "${pkgdir}/usr/share/"
 
-  mkdir -vp "$pkgdir/usr/share/doc/${_pkgname}"
-  cp -vr --no-preserve=ownership --preserve=mode "usr/share/doc/${_pkgname}" "$pkgdir/usr/share/doc/"
+  mkdir -vp "${pkgdir}/usr/share/doc/${_pkgname}"
+  cp -vr --no-preserve=ownership --preserve=mode "usr/share/doc/${_pkgname}" "${pkgdir}/usr/share/doc/"
 
-  mkdir -vp "$pkgdir/usr/share/icons"
-  cp -vr --no-preserve=ownership --preserve=mode "usr/share/icons" "$pkgdir/usr/share/"
+  mkdir -vp "${pkgdir}/usr/share/icons"
+  cp -vr --no-preserve=ownership --preserve=mode "usr/share/icons" "${pkgdir}/usr/share/"
 }
