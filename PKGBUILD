@@ -1,4 +1,4 @@
-# Maintainer: bbj <benigno at duck dot com>
+# Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 # Contributor: Tim Visee <tim@visee.me>
 # Contributor: Ariel AxionL <i at axionl dot me>
 
