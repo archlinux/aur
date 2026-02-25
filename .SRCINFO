@@ -24,6 +24,7 @@ pkgbase = quickshell-git
 	depends = libdrm
 	depends = mesa
 	depends = google-breakpad
+	depends = vulkan-headers
 	depends = polkit
 	provides = quickshell
 	conflicts = quickshell
