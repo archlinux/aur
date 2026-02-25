@@ -1,7 +1,7 @@
 # Maintainer: schlndh <schlindenbuch.h@seznam.cz>
 _pkgname=kwin
 pkgname=$_pkgname-povd
-pkgver=6.6.0
+pkgver=6.6.1
 _dirver=$(echo $pkgver | cut -d. -f1-3)
 pkgrel=1
 pkgdesc='An easy to use, but flexible, Wayland compositor (patched for per-output virtual desktops)'
@@ -12,7 +12,8 @@ depends=(aurorae
          breeze
          gcc-libs
          glibc
-         'plasma-activities>=6.5.90'
+         iio-sensor-proxy
+         'plasma-activities<6.6.80'
          kauth
          kcmutils
          kcolorscheme
@@ -61,7 +62,6 @@ depends=(aurorae
          qt6-5compat
          qt6-base
          qt6-declarative
-         qt6-sensors
          qt6-svg
          qt6-tools
          systemd-libs
@@ -81,7 +81,7 @@ provides=($_pkgname)
 conflicts=($_pkgname)
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
         povd.patch)
-sha256sums=('35134fcfb64d01904cdcd25aea8e90c68c37973a088971e4d678acfdc5020914'
+sha256sums=('cc3c2a825df1a6fe40a5294dc1a5fb0b9d61e4255c89356fdd69b6cb334670eb'
             'SKIP'
             'a5303c9d7d764aa8bf0dc7d60e48c6f924a8e6249e920b590ce8c5337a61cede')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
