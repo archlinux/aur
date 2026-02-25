@@ -1,0 +1,16 @@
+pkgbase = gnome-rounded-blur
+	pkgdesc = GNOME Shell BlurEffect with rounded corners
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/aunetx/blur-my-shell
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = git
+	makedepends = meson
+	makedepends = mutter
+	makedepends = glib2-devel
+	makedepends = gobject-introspection
+	source = git+https://github.com/kancko/gnome-rounded-blur.git#tag=v1.0.0
+	sha256sums = 04631f8cc805f07f86b5f9b892d9105fae992dd54f8515f98981dd51adff84bf
+
+pkgname = gnome-rounded-blur
