@@ -1,0 +1,21 @@
+pkgbase = karukan
+	pkgdesc = Japanese Input Method System for Linux, Neural Kana-Kanji Conversion Engine + fcitx5 IME
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/togatoga/karukan
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = rust
+	makedepends = libxkbcommon
+	depends = fcitx5
+	depends = openssl
+	optdepends = fcitx5-configtool: GUI configuration tool
+	provides = karukan-im
+	conflicts = karukan-im
+	source = https://github.com/togatoga/karukan/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = b7421b3f3eff24954ad89112078bdcde94a38cf522fc134ec6e2c1352add42b7
+
+pkgname = karukan
