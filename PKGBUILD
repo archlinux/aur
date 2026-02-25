@@ -1,7 +1,7 @@
 # Maintainer: Nika Tsutskiridze
 
 pkgname=alarm-notify
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Simple timer notifications with sound and custom messages"
 arch=('any')
