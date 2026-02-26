@@ -27,7 +27,7 @@ source=("${_pkgname}.desktop"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}")
-sha256sums=('11060d5e8b9089335d33cb0a7fadcddf61770efa03413ce6e7c0689a1f3f274d'
+sha256sums=('c11bcc47bd001ee68144fc97d1a6812d7b62d4d01798e2f6e787a6f8e98bba8d'
             '7f951272ea9e210bff0ad22095ef3761f5973a98a0e08a54744100da427df891'
             'e0ffb3015e7d65f44d53d4900da4e5347b58bf103250c202c45938e48a3d5a40'
             '7517f84253241eb992f31ea2fb3cfe12a1dad6acfd5a0884f98506f5dfc9f75b')
