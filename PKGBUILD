@@ -2,7 +2,7 @@
 # Maintainer: coolapso <coolapso@coolapso.tech>
 
 pkgname='autobs-bin'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Because the most important part of your day shouldn't be explaining to Jira what you did in Git'
 url='https://github.com/coolapso/autobs'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('AutoBS')
 conflicts=('AutoBS')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/AutoBS/releases/download/v0.2.0/AutoBS_0.2.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('5a0acbf1da8aaf367f8189eadd8c637e11e0a19a795eb633db4d0b4d01871b75')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/coolapso/AutoBS/releases/download/v0.2.1/AutoBS_0.2.1_linux_arm64.tar.gz")
+sha256sums_aarch64=('5531344d8e342cc530a4bd1772374e8059b4b4fcdccd4de304f444212c2cc52e')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/coolapso/AutoBS/releases/download/v0.2.0/AutoBS_0.2.0_linux_386.tar.gz")
-sha256sums_i686=('3fc29115fa54cd2dedce12adc733ad00406607f74fbb700a9f9e4c54f4fbd9e8')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/coolapso/AutoBS/releases/download/v0.2.1/AutoBS_0.2.1_linux_386.tar.gz")
+sha256sums_i686=('97b78b7224ab59a6c5cd45b9318de7af380cdfb19963d9a4b2d47979bfaa6310')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/AutoBS/releases/download/v0.2.0/AutoBS_0.2.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('7f77c72a4931265da3c110af0316a7b149f718f08972612b192b9e586e42277c')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/coolapso/AutoBS/releases/download/v0.2.1/AutoBS_0.2.1_linux_amd64.tar.gz")
+sha256sums_x86_64=('266cca9ef8febcbf7d94a15f4024c3984124d7fcc919dbff274662a8d590ba5f')
 
 package() {
   install -Dm755 "./autobs" "${pkgdir}/usr/bin/autobs"
