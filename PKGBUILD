@@ -10,6 +10,7 @@ license=('MIT')
 depends=('glibc')
 provides=('dnose')
 conflicts=('dnose')
+options=('!strip')
 source=("dnose-${pkgver}::https://github.com/tassiovirginio/dnose/releases/download/v${pkgver}/dnose_linux_amd64"
         "LICENSE::https://raw.githubusercontent.com/tassiovirginio/dnose/main/LICENSE")
 sha256sums=('febc6e1e1718ca7e0af6cc63eb5c9df028ef32f3963ecc92747d08f394593a97'
