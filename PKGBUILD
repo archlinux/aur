@@ -1,6 +1,6 @@
 pkgname=hyprcord-bin
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprcord - a custom Discord client"
 arch=('x86_64')
 url="https://github.com/Bebbesi/HyprCord"
@@ -23,9 +23,18 @@ package() {
   install -dm755 "${pkgdir}/opt/hyprcord"
   cp -r squashfs-root/* "${pkgdir}/opt/hyprcord"
 
-  # Symlink binary
+  # Fix Chrome sandbox permissions (Crucial for extracted Electron apps)
+  if [ -f "${pkgdir}/opt/hyprcord/chrome-sandbox" ]; then
+    chmod 4755 "${pkgdir}/opt/hyprcord/chrome-sandbox"
+  fi
+
+  # Create a wrapper script instead of symlinking AppRun
   install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/hyprcord/AppRun" "${pkgdir}/usr/bin/hyprcord"
+  cat <<EOF > "${pkgdir}/usr/bin/hyprcord"
+#!/bin/sh
+exec /opt/hyprcord/hyprcord --ozone-platform-hint=auto "\$@"
+EOF
+  chmod +x "${pkgdir}/usr/bin/hyprcord"
 
   # Install icon if present
   if [ -f squashfs-root/usr/share/icons/hicolor/256x256/apps/hyprcord.png ]; then
