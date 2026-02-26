@@ -1,7 +1,7 @@
 pkgbase = fmt9
 	pkgdesc = Open-source formatting library for C++
 	pkgver = 9.1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://fmt.dev/
 	arch = aarch64
 	arch = armv7h
@@ -12,10 +12,14 @@ pkgbase = fmt9
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	depends = gcc-libs
+	makedepends = libgcc
+	makedepends = libstdc++
 	depends = glibc
 	provides = libfmt.so
 	source = fmt::git+https://github.com/fmtlib/fmt.git#tag=9.1.0
 	b2sums = 5a26a3545833033833302b1ad2a6fb2c0b53c5fe95114faa254affabf226dadb1cb319f05f1ceb1cdb100706045fbc11e3c162f95df517173af424b4e2c03965
 
 pkgname = fmt9
+	depends = glibc
+	depends = libgcc_s.so
+	depends = libstdc++.so

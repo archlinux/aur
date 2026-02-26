@@ -2,13 +2,13 @@
 _pkgname=fmt
 pkgname=${_pkgname}9
 pkgver=9.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Open-source formatting library for C++"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://fmt.dev/"
 license=('MIT')
-depends=('gcc-libs' 'glibc')
-makedepends=('cmake' 'git')
+depends=('glibc')
+makedepends=('cmake' 'git' 'libgcc' 'libstdc++')
 provides=('libfmt.so')
 source=("$_pkgname::git+https://github.com/fmtlib/fmt.git#tag=$pkgver")
 b2sums=('5a26a3545833033833302b1ad2a6fb2c0b53c5fe95114faa254affabf226dadb1cb319f05f1ceb1cdb100706045fbc11e3c162f95df517173af424b4e2c03965')
@@ -22,25 +22,28 @@ prepare() {
 }
 
 build() {
-	cmake -S $_pkgname -B build \
-		-DBUILD_SHARED_LIBS=ON \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_CXX_FLAGS_RELEASE="-DNDEBUG" \
-		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DFMT_CMAKE_DIR=lib/cmake/$pkgname \
-		-DFMT_DOC=OFF \
-		-DFMT_INC_DIR=include/$pkgname \
-		-DFMT_PKGCONFIG_DIR=lib/$pkgname/pkgconfig \
-		-DFMT_TEST="$CHECKFUNC" \
+	local options=(
+		-D BUILD_SHARED_LIBS=ON
+		-D CMAKE_BUILD_TYPE=Release
+		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
+		-D CMAKE_INSTALL_PREFIX=/usr
+		-D FMT_CMAKE_DIR="lib/cmake/$pkgname"
+		-D FMT_DOC=OFF
+		-D FMT_INC_DIR="include/$pkgname"
+		-D FMT_PKGCONFIG_DIR="lib/$pkgname/pkgconfig"
+		-D FMT_TEST="$CHECKFUNC"
 		-Wno-dev
+	)
+	cmake "${options[@]}" -B build -S $_pkgname
 	cmake --build build
 }
 
 check() {
-	ctest --test-dir build
+	ctest --output-on-failure --test-dir build
 }
 
 package() {
+	depends+=('libgcc_s.so' 'libstdc++.so')
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENSE.rst
