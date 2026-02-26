@@ -34,14 +34,13 @@ ver_changed=0
 # --- check license change ---
 tmp_license="$(mktemp)"
 trap 'rm -f "$tmp_license"' EXIT
-
 curl -fsSL "$LICENSE_URL" -o "$tmp_license"
 
 license_changed=0
 if [[ -f "$LICENSE_FILE" ]]; then
-  if ! cmp -s "$LICENSE_FILE" "$tmp_license"; then
-    license_changed=1
-  fi
+  old_sha="$(sha256sum "$LICENSE_FILE" | awk '{print $1}')"
+  new_sha="$(sha256sum "$tmp_license" | awk '{print $1}')"
+  [[ "$old_sha" != "$new_sha" ]] && license_changed=1
 else
   license_changed=1
 fi
@@ -65,10 +64,7 @@ fi
 # --- update license ---
 if [[ "$license_changed" -eq 1 ]]; then
   mv "$tmp_license" "$LICENSE_FILE"
-  new_sha="$(sha256sum "$LICENSE_FILE" | awk '{print $1}')"
-
-  sed -i -E "s/^sha256sums\+\=.*/sha256sums+=('$new_sha')/" "$PKGBUILD"
-
+  sed -i "s/^sha256sums=.*/sha256sums=('$new_sha')/" "$PKGBUILD"
   if [[ "$ver_changed" -eq 0 ]]; then
     new_rel=$((cur_rel + 1))
     sed -i -E "s/^pkgrel=.*/pkgrel=$new_rel/" "$PKGBUILD"
