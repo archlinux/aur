@@ -1,6 +1,6 @@
 pkgname=nsnotifyd
-pkgver=2.3
-pkgrel=2
+pkgver=2.4
+pkgrel=1
 pkgdesc="DNS NOTIFY message handler"
 arch=(i686 x86_64)
 url="https://dotat.at/prog/nsnotifyd/"
@@ -9,7 +9,7 @@ optdepends=("nsdiff: for the 'nsnotify2update' handler")
 provides=(metazone=$pkgver)
 source=("https://dotat.at/prog/nsnotifyd/nsnotifyd-${pkgver}.tar.gz"
         "https://ftp.isc.org/isc/libbind/cur/libbind-6.0.tar.gz")
-sha256sums=('8f9a61f5e5564cbed3a30ad4755539f2e0d4e22421efad1b7acf98259c52ae7e'
+sha256sums=('1fae7c39fe6255fd0260b9ed1702f5e799c34423b611bb6f8284b28872cd47e6'
             'b98b6aa6e7c403f5a6522ffb68325785a87ea8b13377ada8ba87953a3e8cb29d')
 
 prepare() {
