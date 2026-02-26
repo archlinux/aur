@@ -4,9 +4,9 @@
 #https://comate-ide.bj.bcebos.com/updates/stable/linux/x64/latest.json
 pkgname=comate-bin
 _pkgname=Comate
-pkgver=0.12.5
-_version=ed004144521f3b00c7912662ced3bffdb791a1ea-239881187
-_electronversion=37
+pkgver=0.13.1
+_version=9e0656fd6bfc10039eb9aadb94e41070f8603a9a-241439519
+_electronversion=39
 pkgrel=1
 pkgdesc="Code as you like, one step ahead, and understand your intelligent code assistant better.(Prebuilt version)"
 arch=(
@@ -22,6 +22,8 @@ depends=(
     'python-fonttools'
     'perl'
     'libxkbfile'
+    'libsecret'
+    'webkit2gtk-4.1'
 )
 optdepends=(
     'bash'
@@ -39,12 +41,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::https://comate-ide.cdn.bcebos.com/download/stable/${_version}/${_pkgname}-linux-x64.tar.gz")
-sha256sums=('3f63ea8d25b0b46bbec1c26fa382ba4ef1f91df03d1b25adff005597fedef6b9'
+sha256sums=('60888303ea720fa3757c0f113bfeae34d41397d6a99d94d5e22ce84113de3e7c'
             '14807b90c15a2757d9713664db6a69aa4fab3568e53d84f27de2ab7c8ae85446'
             '0c8fee636da036e57fcde0385bdc698126c4b179de663ad315e8299d483abc9d'
             '787bf0078b80c66fa5b8191991700afd6e32e9f285cdb32f69791b8894c86fd5'
             'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
-sha256sums_x86_64=('c8fcd8e6cf506fa46bccdd523de7bba8d2065f3d5be3ace61c9f31878bc15ed3')
+sha256sums_x86_64=('56eb5ee7c8130828be4e44a21f595809cbcaaf0b0b4d02a5c3527216ba53e780')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/${_pkgname}-linux-x64/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -63,7 +65,13 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${_pkgname}-linux-x64/resources/app/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+    if find "${srcdir}/${_pkgname}-linux-x64/resources/app" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${_pkgname}-linux-x64/resources/app/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/${_pkgname}-linux-x64/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}"*.desktop -t "${pkgdir}/usr/share/applications"
     if [ -x "/usr/bin/bash" ];then
