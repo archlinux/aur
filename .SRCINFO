@@ -1,0 +1,18 @@
+pkgbase = theophany-bin
+	pkgdesc = A modern, high-performance game library manager and launcher built with Rust and QML
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/oldlamps/Theophany
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = hicolor-icon-theme
+	provides = theophany
+	conflicts = theophany
+	source = theophany::https://github.com/oldlamps/Theophany/releases/download/v0.1.1/theophany_0.1.1_linux_x64
+	source = theophany.png::https://github.com/oldlamps/Theophany/raw/refs/heads/main/assets/tray_icon.png
+	source = theophany.desktop
+	sha256sums = 7046c46b901aa88442e485d5a4d79208250d7657b875a6aa2ec65a09c7afe033
+	sha256sums = fd14eb407f45dace71b084e3f7ab523822075058326b1840f366e4da2ca2915e
+	sha256sums = a494376c3c89672deda9aaa37dc484afddfa4433631a10fb0dfa8dcbd22d06a2
+
+pkgname = theophany-bin
