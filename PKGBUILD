@@ -14,12 +14,12 @@ conflicts=($_name)
 arch=('x86_64')
 url='https://github.com/plugdata-team/plugdata'
 license=('GPL3')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/plugdata-team/plugdata/releases/download/v${pkgver}/plugdata-Debian-x64.tar.xz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/plugdata-team/plugdata/releases/download/v${pkgver/_/-}/plugdata-Debian-x64.tar.xz"
     "${_name}.desktop"
     "${_name}.png")
-sha256sums=('ba0d07a0216dfa49ccc175e26a25474805174d7e9a998e0c3fc2910cad549776'
-            '22cdffc139b070f9c1ada241068eef8d88c5b25fc16c4a2cd67582660c98e922'
-            '6e583e7cf952a3b5a587ff85567406c9f3cb0d3516494368b89bc7af6871f869')
+sha256sums=('717a3cf5ec889173309bfcd487520749ea38b8d6cd32bdf04c9e6e311a270bd1'
+    '22cdffc139b070f9c1ada241068eef8d88c5b25fc16c4a2cd67582660c98e922'
+    '6e583e7cf952a3b5a587ff85567406c9f3cb0d3516494368b89bc7af6871f869')
 
 package() {
     # Desktop entry & pixmaps
