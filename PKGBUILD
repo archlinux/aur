@@ -1,20 +1,22 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
-pkgdesc='Dynamic, bytecode-compiled programming language and a dialect of Python (development version)'
 pkgname='kuroko-git'
-pkgver=1.4.0.r152.g05d30e8
-pkgrel=2
+pkgdesc='Dynamic, bytecode-compiled programming language and a dialect of Python (development version)'
+pkgver=1.5.0rc2.r7.g8d48f0a
+pkgrel=1
 url='https://github.com/kuroko-lang/kuroko'
 arch=('aarch64' 'x86_64')
-conflicts=('kuroko')
-depends=('glibc')
 license=('MIT')  # SPDX-License-Identifier: MIT
 makedepends=('git')
+depends=('glibc')
 provides=('kuroko' 'libkuroko')
-sha256sums=('SKIP')
+conflicts=("${provides[@]}")
 source=("git+$url.git")
+sha256sums=('SKIP')
+options=('!makeflags')
 
 _pkgname="${pkgname/-git/}"
 
@@ -39,10 +41,14 @@ package () {
 
   make prefix=/usr DESTDIR="$pkgdir" install
 
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     README.md SECURITY.md
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     LICENSE
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" && ln -srf "$pkgname" "$_pkgname"
+  done
 }
 
 # eof
