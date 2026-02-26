@@ -1,18 +1,15 @@
 pkgbase = mcmodm
 	pkgdesc = Minecraft Mod Manager written in C++
-	pkgver = 1.3.sc
+	pkgver = 1.4
 	pkgrel = 1
 	url = https://github.com/MidnightPavlaka635920/Minecraft-ModM
 	arch = x86_64
 	license = GPLv3
 	makedepends = make
 	makedepends = gcc
-	makedepends = curl
-	makedepends = nlohmann-json
 	depends = curl
 	depends = nlohmann-json
-	depends = gcc
-	source = git+https://github.com/MidnightPavlaka635920/Minecraft-ModM.git
+	source = git+https://github.com/MidnightPavlaka635920/Minecraft-ModM.git#tag=v1.4
 	sha256sums = SKIP
 
 pkgname = mcmodm
