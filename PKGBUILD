@@ -1,5 +1,5 @@
-# Maintainer: luoq721@qq.com
-pkgname=rofi-rwifi
+# Maintainer: Your Name <your@email.com>
+pkgname=rofi-wifi
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A rofi-based Wi-Fi manager written in Rust"
@@ -17,8 +17,8 @@ optdepends=(
   'qrencode: Wi-Fi 二维码分享'
 )
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('SKIP') # 发布时替换为真实校验值：b2sum rofi-rwifi-0.1.0.tar.gz
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-alpha.tar.gz")
+b2sums=('SKIP') # 发布时替换为真实校验值：b2sum rofi-wifi-0.1.0.tar.gz
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -48,7 +48,7 @@ package() {
 
   # 默认配置文件
   install -Dm644 "config.toml.example" \
-    "$pkgdir/usr/share/$pkgname/config.toml.example"
+    "$pkgdir/usr/share/$pkgname/config.toml"
 
   # systemd 用户服务（守护进程，开机自启后台扫描）
   install -Dm644 /dev/stdin \
