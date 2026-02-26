@@ -1,7 +1,5 @@
 post_install() {
-    udevadm control --reload-rules
-    udevadm trigger
-    systemctl enable --now z13ctl-perms.service
+    z13ctl setup
     systemctl --global enable z13ctl.socket z13ctl.service
 }
 

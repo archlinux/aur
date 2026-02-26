@@ -1,7 +1,7 @@
 # Maintainer: Jeff Hagadorn <noreply@github.com>
 pkgname=z13ctl-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI and daemon for ASUS ROG Flow Z13 hardware control'
 arch=('x86_64')
 url='https://github.com/dahui/z13ctl'
@@ -19,5 +19,4 @@ package() {
     install -Dm644 "contrib/systemd/user/z13ctl.socket"            "${pkgdir}/usr/lib/systemd/user/z13ctl.socket"
     install -Dm644 "contrib/systemd/user/z13ctl.service"           "${pkgdir}/usr/lib/systemd/user/z13ctl.service"
     install -Dm644 "contrib/systemd/system/z13ctl-perms.service"   "${pkgdir}/usr/lib/systemd/system/z13ctl-perms.service"
-    install -Dm644 "contrib/udev/99-z13ctl.rules"                  "${pkgdir}/usr/lib/udev/rules.d/99-z13ctl.rules"
 }
