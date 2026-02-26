@@ -1,0 +1,4 @@
+[pdfalto]
+source = "git"
+git = "https://github.com/kermitt2/pdfalto.git"
+prefix = "v"
