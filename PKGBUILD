@@ -7,7 +7,7 @@ pkgname=dingtalk-bin
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 # https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Update/other/amd64/linux_dingtalk_update_package_gray.json
-pkgver=8.1.0.6011301
+pkgver=8.1.0.6021101
 pkgrel=1
 pkgdesc="钉钉"
 arch=("x86_64" 'aarch64')
@@ -37,8 +37,8 @@ sha512sums=('2b87849b0db3717f00809b2583511cc5cc5e7a9e0b123b54b11d7f7c0ad00008da7
             'c8570ec4cd978e26ac622a83db053a0555324752f5000dc5b3cd680d782138e8ef856f09ec9b7850e04e1faa1e39de94dabeb16fbfbe0fd44af43247b30e8b2f'
             'b2493e7bddc2d701204899bcd82930f97779eec23485870c64665c525b9faca382a3c0e9e9c1bd18f8fa8157ea408943e542de56dc3410388e78f30732511f5c'
             '5f05f90704526fbd16371f6f9deaa171a3cac25a103b21daba72a3028ab7cdf9b566a3ac7842c6ce88d30cc29fe0c8b989c77aa36daab73793a827a1a0d6c775')
-sha512sums_x86_64=('9d46988d7f26beb71d7d9c4f721068cf8c59a492da661ce1f7312e0871ded107091c5fefc0dc3dc7b5926bd1131e322b4cdec90f23d94b71380272d89df2f35d')
-sha512sums_aarch64=('e9a3bf04edae24d9dc26c86a7dc6b1c6b0fda7420eb3425f80abe5fd6dec14fa0c57ca7b025743df3edd0626fb60d10eb6a39b0286ff67bf9635bf28289f76a5')
+sha512sums_x86_64=('88c5c993f090814ccdf67b3991c2a9e4d3d19fa1315b960b4bf17ff48ecbb2a34b13db960de4e0fd38f629271e61de781fb687443539eebfcc4ab2a0dc56b234')
+sha512sums_aarch64=('38e59b9e015a4e8ac0b9758fd99cb2d8e52ee32e3db5d97aa62250b90b463ba12684bdccf598b09ba29643359408f26d74113e4d7505de4eeef2a3de7675d9ac')
 
 prepare() {
     tar -Jxf data.tar.xz -C "${srcdir}"
@@ -70,6 +70,8 @@ package() {
     rm -rf "${pkgdir}/opt/${_pkgname}/release/libgtk-x11-2.0.so."*
 
     rm -rf "${pkgdir}/opt/${_pkgname}/release"/{libm.so.6,Resources/{i18n/tool/*.exe,qss/mac,web_content/NativeWebContent_*.zip},libstdc*}
+
+    rm -rf "${pkgdir}/opt/${_pkgname}/release"/{libharfbuzz*,libgbm*}
 
     # remove unused lib
     rm -rf "${pkgdir}/opt/${_pkgname}/release"/{libcurl.so.4,libz*,libGL*}
