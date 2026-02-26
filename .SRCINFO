@@ -1,6 +1,6 @@
 pkgbase = agent-browser
 	pkgdesc = Headless browser automation CLI for AI agents
-	pkgver = 0.14.0
+	pkgver = 0.15.0
 	pkgrel = 1
 	url = https://github.com/vercel-labs/agent-browser
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = agent-browser
 	makedepends = npm
 	makedepends = jq
 	depends = nodejs
-	noextract = agent-browser-0.14.0.tgz
-	source = https://registry.npmjs.org/agent-browser/-/agent-browser-0.14.0.tgz
-	sha256sums = 6fbb0f5982c3ac041a2d7a2180bad89cd7dc1c66bd88bc15e1b7cdc07ad39c6d
+	noextract = agent-browser-0.15.0.tgz
+	source = https://registry.npmjs.org/agent-browser/-/agent-browser-0.15.0.tgz
+	sha256sums = e1b99d5a3257a832fda6818c0277880229a204f00780b5e3fe04efdda4d3eba4
 
 pkgname = agent-browser
