@@ -2,24 +2,21 @@
 pkgname=python-pymatreader
 _name=${pkgname#python-}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python reader for MATLAB .mat files"
 arch=('any')
 url="https://pymatreader.readthedocs.io/en/latest/"
-license=('BSD')
-groups=()
-depends=('python' 'python-numpy' 'python-scipy' 'python-h5py' 'python-xmltodict')
+license=('BSD-2-Clause')
+depends=(
+    'python'
+    'python-numpy'
+    'python-scipy'
+    'python-h5py'
+    'python-xmltodict'
+)
 makedepends=('python-build' 'python-installer' 'python-hatchling' 'python-hatch-regex-commit')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz)
-noextract=()
-sha1sums=('2c1a936657434d837e91f756cf62edc9cc9e5ade')
+sha256sums=('d9fee72a8436557273a9ad669de3ed5582782467e2289a131396f575862638ff')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
