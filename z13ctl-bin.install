@@ -6,4 +6,5 @@ post_install() {
 post_upgrade() {
     udevadm control --reload-rules
     udevadm trigger
+    systemctl --global daemon-reload
 }
