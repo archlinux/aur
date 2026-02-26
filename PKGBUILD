@@ -1,14 +1,13 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.8.133.r21.g51fc60c
+pkgver=0.8.134.r0.gfc9980d
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
 url="https://xemu.app/"
 license=('GPL-2.0-only')
 depends=(
-	'gcc-libs'
 	'glibc'
 	'glslang'
 	'hicolor-icon-theme'
@@ -21,9 +20,11 @@ makedepends=(
 	'glib2'
 	'glu'
 	'libepoxy'
+	'libgcc'
 	'libpcap'
 	'libsamplerate'
 	'libslirp'
+	'libstdc++'
 	'libusb'
 	'meson'
 	'nlohmann-json'
@@ -75,10 +76,12 @@ package() {
 	depends+=(
 		'libcurl.so'
 		'libepoxy.so'
+		'libgcc_s.so'
 		'libglib-2.0.so'
 		'libpcap.so'
 		'libsamplerate.so'
 		'libslirp.so'
+		'libstdc++.so'
 		'libtomlplusplus.so'
 		'libusb-1.0.so'
 		'libxxhash.so'
