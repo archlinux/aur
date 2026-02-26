@@ -1,14 +1,14 @@
 pkgbase = ralph-tui
 	pkgdesc = AI Agent Loop Orchestrator - terminal UI for automating task completion with AI coding agents
-	pkgver = 0.10.0
-	pkgrel = 2
+	pkgver = 0.11.0
+	pkgrel = 1
 	url = https://github.com/subsy/ralph-tui
 	arch = any
 	license = MIT
 	depends = bun
 	optdepends = beads-git: AI memory and context management for enhanced agent workflows
-	noextract = ralph-tui-0.10.0.tgz
-	source = https://registry.npmjs.org/ralph-tui/-/ralph-tui-0.10.0.tgz
-	sha256sums = 17eb923d699688955ead2d4c23772a86a1808c9cc3fc57aa5168857de7917188
+	noextract = ralph-tui-0.11.0.tgz
+	source = https://registry.npmjs.org/ralph-tui/-/ralph-tui-0.11.0.tgz
+	sha256sums = 10ee489811099ba111a149077c954e5a879d1144303f1deaa0ed8e8e8b1f0839
 
 pkgname = ralph-tui
