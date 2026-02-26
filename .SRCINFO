@@ -1,6 +1,6 @@
 pkgbase = antigravity-deb
 	pkgdesc = An agentic development platform from Google, evolving the IDE into the agent-first era.
-	pkgver = 1.18.4
+	pkgver = 1.19.4
 	pkgrel = 1
 	url = https://antigravity.google/
 	arch = aarch64
@@ -15,9 +15,9 @@ pkgbase = antigravity-deb
 	options = !debug
 	source = antigravity-deb.sh
 	sha256sums = d3f365e6796836980a1439fb78be5cbfe1e11767fbd98fe695d3a953426d038b
-	source_aarch64 = Antigravity-1.18.4-aarch64.deb::https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian/antigravity_1.18.4-1771638096_arm64_f096532b9c0bc65a62dc53ed2bb5ff66.deb
-	sha256sums_aarch64 = 648ca0e131c4684398419f4bc8d9d28863a78ab9e2b8f43705437aeb98b0a550
-	source_x86_64 = Antigravity-1.18.4-x86_64.deb::https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian/antigravity_1.18.4-1771638098_amd64_72f97454beb720380cfbdd654ab03301.deb
-	sha256sums_x86_64 = e0d380717480b45247e8cb40a37c314bc42d0e71c34de7810ae45bbede4db140
+	source_aarch64 = Antigravity-1.19.4-aarch64.deb::https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian/antigravity_1.19.4-1772005682_arm64_ca9e0f3a796486916ccbad3f7456bb7c.deb
+	sha256sums_aarch64 = db662052b943cf91a347a08f2f62198f4c0dccc228baa0c6d326bb0c4df10bce
+	source_x86_64 = Antigravity-1.19.4-x86_64.deb::https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian/antigravity_1.19.4-1772005678_amd64_93efa9b6642627b1b0009b5681c6513a.deb
+	sha256sums_x86_64 = c9eb7d8f88588ebbb783af02b112a70a2ec26155938746d09f77fd9f7f20fcca
 
 pkgname = antigravity-deb
