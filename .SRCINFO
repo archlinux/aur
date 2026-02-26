@@ -1,0 +1,20 @@
+pkgbase = qt-web-extractor
+	pkgdesc = Qt WebEngine based web content extractor with HTTP server
+	pkgver = r5.20260226.d2aa0ed
+	pkgrel = 1
+	url = https://github.com/wszqkzqk/qt-web-extractor
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = pyside6
+	depends = qt6-webengine
+	backup = etc/qt-web-extractor.conf
+	source = qt-web-extractor::git+https://github.com/wszqkzqk/qt-web-extractor.git
+	sha256sums = SKIP
+
+pkgname = qt-web-extractor
