@@ -1,15 +1,15 @@
 # Maintainer: Benjamim Gois <benjamimgois@gmail.com>
 pkgname=omnicom
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
-pkgdesc="Modern graphical interface for network device management with Serial, SSH, Telnet, IP Scanner and SNMP support"
+pkgdesc="Modern graphical interface for network device management with Serial, SSH, Telnet, IP Scanner, SNMP and Traceroute support"
 arch=('any')
 url="https://github.com/benjamimgois/omnicom"
 license=('MIT')
 depends=('python' 'python-pyqt6' 'python-pyte' 'python-paramiko' 'python-pysnmp' 'python-standard-telnetlib' 'qt6-serialport' 'picocom' 'sudo')
 makedepends=('imagemagick')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/benjamimgois/omnicom/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('bbad562ed0731888a807926f3d14b0a3205e36ca26d1eeba14777624aa67f5b0')
+sha256sums=('4bbf67936d7e6090340705620dbf0ee7b88139cc52b3ae3ef19741d5e74e3aeb')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"

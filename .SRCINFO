@@ -1,6 +1,6 @@
 pkgbase = omnicom
-	pkgdesc = Modern graphical interface for network device management with Serial, SSH, Telnet, IP Scanner and SNMP support
-	pkgver = 1.4
+	pkgdesc = Modern graphical interface for network device management with Serial, SSH, Telnet, IP Scanner, SNMP and Traceroute support
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/benjamimgois/omnicom
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = omnicom
 	depends = qt6-serialport
 	depends = picocom
 	depends = sudo
-	source = omnicom-1.4.tar.gz::https://github.com/benjamimgois/omnicom/archive/refs/tags/1.4.tar.gz
-	sha256sums = bbad562ed0731888a807926f3d14b0a3205e36ca26d1eeba14777624aa67f5b0
+	source = omnicom-1.5.tar.gz::https://github.com/benjamimgois/omnicom/archive/refs/tags/1.5.tar.gz
+	sha256sums = 4bbf67936d7e6090340705620dbf0ee7b88139cc52b3ae3ef19741d5e74e3aeb
 
 pkgname = omnicom
