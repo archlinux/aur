@@ -8,7 +8,6 @@ pkgbase = godotpcktool
 	makedepends = cmake
 	makedepends = cxxopts
 	makedepends = nlohmann-json
-	makedepends = git
 	depends = glibc
 	source = godotpcktool-2.2.tar.gz::https://github.com/hhyyrylainen/GodotPckTool/archive/refs/tags/v2.2.tar.gz
 	sha256sums = bfbc6bb9e810707bd3db0bfa95b29fa02cae40e297e319287f14e3b04961bb7c

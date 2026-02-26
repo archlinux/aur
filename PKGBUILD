@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/hhyyrylainen/GodotPckTool"
 license=('MIT')
 depends=('glibc')
-makedepends=('cmake' 'cxxopts' 'nlohmann-json' 'git')
+makedepends=('cmake' 'cxxopts' 'nlohmann-json')
 # source unsigned.  git commits are signed, but I can't find the public key for the tagged commits
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('bfbc6bb9e810707bd3db0bfa95b29fa02cae40e297e319287f14e3b04961bb7c')
