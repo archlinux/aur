@@ -1,6 +1,6 @@
 pkgname=aurora-gui-git
 pkgver=0.0.0.r0.g0000000
-pkgrel=4
+pkgrel=5
 pkgdesc="Wayland-first GTK4 GUI for Arch Linux package management (pacman + AUR via yay/paru)"
 arch=("x86_64")
 url="https://github.com/ahmoodio/aurora"
@@ -54,10 +54,15 @@ build() {
   # Force GNU bfd (ring + lld is broken on Arch)
   export RUSTFLAGS="${RUSTFLAGS:-} -C linker=gcc -C link-arg=-fuse-ld=bfd"
 
-  # Workaround: ensure ring_core static lib is linked (Cargo isn't passing it)
-  export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-Wl,-Bstatic -C link-arg=-lring_core_0_17_14_ -C link-arg=-Wl,-Bdynamic"
-
+  # First build normally
   cargo build --release --locked
+
+  # Then relink the binaries, explicitly adding ring_core static lib
+  cargo rustc --release --locked --bin aurora \
+    -- -C link-arg=-Wl,-Bstatic -C link-arg=-lring_core_0_17_14_ -C link-arg=-Wl,-Bdynamic
+
+  cargo rustc --release --locked --bin aurora-helper \
+    -- -C link-arg=-Wl,-Bstatic -C link-arg=-lring_core_0_17_14_ -C link-arg=-Wl,-Bdynamic
 }
 
 package() {
