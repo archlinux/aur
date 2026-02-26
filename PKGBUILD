@@ -1,10 +1,10 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: luoq721@qq.com
 pkgname=rofi-wifi
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A rofi-based Wi-Fi manager written in Rust"
 arch=('x86_64' 'aarch64')
-url="https://github.com/eoc-ic/rofi-rwifi"
+url="https://github.com/eon-ic/rofi-rwifi"
 license=('MIT')
 depends=(
   'rofi'
