@@ -8,7 +8,6 @@ url='https://github.com/f-koehler/KTailctl'
 pkgdesc='GUI to monitor and manage Tailscale'
 license=(GPL-3.0-only)
 depends=(
-  gcc-libs
   glibc
   hicolor-icon-theme
   kconfig
@@ -20,6 +19,8 @@ depends=(
   kirigami-addons
   knotifications
   kwindowsystem
+  libgcc
+  libstdc++
   qqc2-desktop-style
   qt6-base
   qt6-declarative
