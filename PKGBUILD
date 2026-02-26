@@ -11,7 +11,7 @@ arch=(x86_64 aarch64)
 license=(Apache-2.0)
 provides=(noseyparker)
 conflicts=(noseyparker)
-depends=(glibc gcc-libs)
+depends=(glibc libgcc libstdc++)
 
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::$url/releases/download/v$pkgver/noseyparker-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::$url/releases/download/v$pkgver/noseyparker-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
