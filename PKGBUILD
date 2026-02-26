@@ -7,7 +7,7 @@ pkgdesc='Rust implementation of Magic Wormhole, with new features and enhancemen
 url='https://github.com/magic-wormhole/magic-wormhole.rs'
 arch=(x86_64)
 license=(EUPL-1.2)
-depends=(glibc gcc-libs)
+depends=(glibc libgcc)
 provides=(magic-wormhole wormhole-rs)
 conflicts=(wormhole-rs)
 
