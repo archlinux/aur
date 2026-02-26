@@ -2,7 +2,7 @@
 
 pkgname=xrock
 pkgver=1.1.2
-pkgrel=4
+pkgrel=7
 epoch=
 pkgdesc="The low level tools for rockchip SOC with maskrom and loader mode support."
 arch=($CARCH)
@@ -12,7 +12,10 @@ groups=()
 depends=(
     'glibc'
     'libusb')
-makedepends=("gcc")
+makedepends=(
+    git
+    gcc
+)
 checkdepends=()
 optdepends=()
 provides=()
@@ -22,18 +25,22 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('ac276eac24fdb77021f777b800ec96875f86d82715e291363d451f7146a2aff0')
+sha256sums=('31d49fe7dfbb8748a52c93869e63d02247b4f3a8a02a56a4a690c835bba22bda')
 #validpgpkeys=()
 
+prepare() {
+	git -C "${srcdir}/${pkgname}" clean -dfx
+}
+
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     make
 }
 
 package() {
-    install -Dm0755 "${srcdir}/${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/99-xrock.rules" "${pkgdir}/etc/udev/rules.d/99-xrock.rules"
-    install -Dm0644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm0755 "${srcdir}/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm0644 "${srcdir}/${pkgname}/99-xrock.rules" "${pkgdir}/etc/udev/rules.d/99-xrock.rules"
+    install -Dm0644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
