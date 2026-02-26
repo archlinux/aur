@@ -1,7 +1,7 @@
 # Maintainer: Rodrigo Santiago <rodrigosantsilva@gmail.com>
 pkgname=omarchy-ai-usage-git
 _pkgname=omarchy-ai-usage
-pkgver=1.0.0.r0.g78707a8
+pkgver=fdb29ca
 pkgrel=1
 pkgdesc="AI usage monitoring for Omarchy (Claude, Codex, Gemini, Antigravity) in Waybar"
 arch=('any')
@@ -13,6 +13,9 @@ optdepends=(
     'claude-code: Claude CLI for usage monitoring'
     'gemini-cli: Gemini CLI for usage monitoring'
     'codex: OpenAI Codex CLI for usage monitoring'
+    'libnotify: Desktop notifications for high usage alerts'
+    'wl-clipboard: Clipboard export (Wayland)'
+    'xclip: Clipboard export (X11)'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")

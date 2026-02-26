@@ -1,6 +1,6 @@
 pkgbase = omarchy-ai-usage-git
 	pkgdesc = AI usage monitoring for Omarchy (Claude, Codex, Gemini, Antigravity) in Waybar
-	pkgver = 1.0.0.r0.g78707a8
+	pkgver = fdb29ca
 	pkgrel = 1
 	url = https://github.com/rodrigo-sntg/omarchy-ai-usage
 	install = omarchy-ai-usage.install
@@ -15,6 +15,9 @@ pkgbase = omarchy-ai-usage-git
 	optdepends = claude-code: Claude CLI for usage monitoring
 	optdepends = gemini-cli: Gemini CLI for usage monitoring
 	optdepends = codex: OpenAI Codex CLI for usage monitoring
+	optdepends = libnotify: Desktop notifications for high usage alerts
+	optdepends = wl-clipboard: Clipboard export (Wayland)
+	optdepends = xclip: Clipboard export (X11)
 	provides = omarchy-ai-usage
 	conflicts = omarchy-ai-usage
 	source = omarchy-ai-usage::git+https://github.com/rodrigo-sntg/omarchy-ai-usage.git
