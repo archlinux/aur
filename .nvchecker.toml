@@ -1,3 +1,4 @@
 [tomcat8]
 source = "git"
 git = "https://github.com/apache/tomcat.git"
+include_regex = "^8.+"
