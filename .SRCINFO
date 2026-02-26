@@ -12,11 +12,7 @@ pkgbase = inno
 	depends = dbus
 	depends = glibc
 	depends = ttf-jetbrains-mono-nerd
-	backup = etc/xdg/inno/inno.toml
-	backup = etc/xdg/inno/events/bluetooth.toml
-	backup = etc/xdg/inno/events/laptop_battery.toml
-	backup = etc/xdg/inno/events/headset_battery.toml
 	source = inno-0.4.0.tar.gz::https://github.com/SykikXO/inno/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = c85307817beda2333d5279fe7f4397c7de5d58884eb9715abedc0825cf64058c
+	sha256sums = 58a14adb95f46731935a62a2575a8c31d5fbd152c0165122414e6b7f3cd946cd
 
 pkgname = inno
