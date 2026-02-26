@@ -4,12 +4,12 @@
 # Contributor: BlackCatDevel0per
 pkgname=solana
 epoch=1
-pkgver=3.1.8
+pkgver=3.1.9
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
 _splTokenCliVersion=5.5.0
 pkgrel=1
 pkgdesc="A fast, secure, and censorship resistant blockchain."
-url="https://www.solana.com"
+url="https://github.com/anza-xyz/agave"
 arch=(x86_64)
 license=(Apache-2.0)
 depends=(bash bzip2 cargo gcc-libs glibc systemd-libs)
@@ -20,7 +20,7 @@ source=(git+https://github.com/anza-xyz/agave.git#tag=v$pkgver
         $pkgname.sysusers
         $pkgname.tmpfiles
         $pkgname-sbf_sdk-path.patch)
-sha256sums=('6d1e3ce03eb68d13db0a2409c2edfef51352870ac5699ba1a1e8c05c8f8b297b'
+sha256sums=('743f7ef6f9abdb51aeb01936b58cf9608a72479a01cca087465feeae1f657eff'
             'a9a0f6e495f68a77e61ce44a39bed42608bd3afd6aa5ddf09e124b50e17d41a6'
             'bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0'
             'a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b'
@@ -46,12 +46,21 @@ _MAIN_BINS=(
   agave-install-init
 )
 
-# DCOU/tainted binaries
-_DCOU_BINS=(
+# Root-workspace DCOU/tainted binaries
+_ROOT_DCOU_BINS=(
   agave-store-histogram
   solana-accounts-cluster-bench
   solana-transaction-dos
   solana-vortexor
+)
+
+# Devbins https://github.com/anza-xyz/agave/blob/v$pkgver/dev-bins/Cargo.toml
+_DEVBINS=(
+  agave-ledger-tool
+  agave-store-tool
+  solana-banking-bench
+  solana-bench-tps
+  solana-dos
 )
 
 # Tainted packages to exclude from main workspace build
@@ -72,6 +81,9 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cd "$srcdir/agave"
   patch -Np1 -i ../$pkgname-sbf_sdk-path.patch
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+
+  cd "$srcdir/agave/dev-bins"
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
   cd "$srcdir/token-2022"
@@ -99,12 +111,19 @@ build() {
   done
   cargo build --frozen --release --workspace "${main_binargs[@]}" "${excludeArgs[@]}"
 
-  # DCOU/tainted build: targeted without workspace
-  local dcou_binargs=()
-  for bin in "${_DCOU_BINS[@]}"; do
-    dcou_binargs+=(--bin "$bin")
+  # Root-workspace DCOU bins
+  local root_dcou_binargs=()
+  for bin in "${_ROOT_DCOU_BINS[@]}"; do
+    root_dcou_binargs+=(--bin "$bin")
   done
-  cargo build --frozen --release "${dcou_binargs[@]}"
+  cargo build --frozen --release "${root_dcou_binargs[@]}"
+
+  # Build devbins
+  local dev_binargs=()
+  for bin in "${_DEVBINS[@]}"; do
+    dev_binargs+=(--bin "$bin")
+  done
+  cargo build --frozen --release --manifest-path dev-bins/Cargo.toml --features=dev-context-only-utils "${dev_binargs[@]}"
 
   # Additional build tools
   cargo build --frozen --release --manifest-path syscalls/gen-syscall-list/Cargo.toml
@@ -120,7 +139,7 @@ build() {
 
 package() {
   cd "$srcdir/agave"
-  for bin in "${_MAIN_BINS[@]}" "${_DCOU_BINS[@]}"; do
+  for bin in "${_MAIN_BINS[@]}" "${_ROOT_DCOU_BINS[@]}" "${_DEVBINS[@]}"; do
     install -Dm755 "target/release/$bin" -t "$pkgdir/usr/bin"
   done
 
@@ -140,9 +159,14 @@ package() {
     install -Dm755 "$dep" -t "$pkgdir/usr/lib/$pkgname/deps"
   done
 
+  # Install spl-token
   cd "$srcdir/token-2022"
   install -Dm755 "target/release/spl-token" -t "$pkgdir/usr/bin"
+
+  # Install systemd integration
   install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
   install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+
+  # Strip binaries
   find "$pkgdir/usr/bin" -type f -executable -exec strip --strip-unneeded {} + || true
 }
