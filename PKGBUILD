@@ -8,7 +8,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ErenayDev/checkpoint-ts/archive/v$pkgver.tar.gz")
-sha256sums=('realhashplshere')
+sha256sums=('35809ee87614c01f2f47cc6cb7ee6c014da89fd45d310502838f76a804f116ba')
 
 prepare() {
   cd "checkpoint-ts-$pkgver"
