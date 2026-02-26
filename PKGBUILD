@@ -1,6 +1,6 @@
 # Maintainer: ushineko <https://github.com/ushineko>
 pkgname=clockwork-orange-git
-pkgver=2.7.13.r140.ge962240
+pkgver=2.8.5
 pkgrel=1
 pkgdesc="Advanced wallpaper manager and downloader with plugin support (Wallhaven, Google Images) for KDE Plasma 6"
 arch=('any')
