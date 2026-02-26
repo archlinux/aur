@@ -4,26 +4,27 @@
 
 pkgname='minisatip-git'
 pkgdesc='SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards (experimental)'
-pkgver=1.2.1.r0.g5a740db
-pkgrel=2
+pkgver=2.0.75.r0.g3dc3623
+pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://minisatip.org'
-license=('GPL2')
+license=('GPL-2.0-or-later')
 provides=('minisatip')
 conflicts=('minisatip')
-makedepends=('git')
+makedepends=('cmake' 'git')
 depends=('libdvbcsa')
 optdepends=('oscam: channels descrambling')
 backup=('etc/conf.d/minisatip')
 install='minisatip.install'
 source=('git+https://github.com/catalinii/minisatip.git'
-        'minisatip.service'
-        'minisatip.sysuser'
-        'minisatip.conf')
+        'minisatip.sysuser')
 sha256sums=('SKIP'
-            'f049eff56a7ddfb7f59728084a7b8119a405a74e554979f7f07b6e2e890dfb75'
-            'f6b2b61c99c94e693cee6cdd77360ab5a6299dde76dbe4b5fa36ad0dc098b383'
-            '92969280f6c5fc376b69d18d2f72784ee640e5ee1219230faf89dc7da00666fc')
+            '7f4e7fde7ded632f88b30b7cd0481c78309f8191b40369ae323cbb7240fdc199')
+
+prepare() {
+	cd ${srcdir}/minisatip
+	sed -e 's,etc/minisatip.conf,etc/conf.d/minisatip,' -i debian/service
+}
 
 pkgver() {
 	cd ${srcdir}/minisatip
@@ -32,24 +33,17 @@ pkgver() {
 
 build() {
 	cd ${srcdir}/minisatip
-	./configure
-	sed -e 's/FLAGS?/FLAGS/g' -i */Makefile
-	make EXTRA_CFLAGS="${CFLAGS}"
+	cmake -B build \
+		-D CMAKE_BUILD_TYPE=Release \
+		-D CMAKE_INSTALL_PREFIX=/usr
+	cmake --build build
 }
-
-#check() {
-#	cd ${srcdir}/minisatip
-#	sed -e 's/test_ddci.c //' -e '/DDCI_TEST/d' -i tests/Makefile
-#	make -C ${srcdir}/minisatip/tests EXTRA_CFLAGS="${CFLAGS}"
-#}
 
 package() {
 	cd ${srcdir}/minisatip
-	install -Dm644 ${srcdir}/minisatip.service ${pkgdir}/usr/lib/systemd/system/minisatip.service
-	install -Dm644 ${srcdir}/minisatip.sysuser ${pkgdir}/usr/lib/sysusers.d/minisatip.conf
-	install -Dm644 ${srcdir}/minisatip.conf ${pkgdir}/etc/conf.d/minisatip
-	install -Dm755 minisatip ${pkgdir}/usr/bin/minisatip
-	mkdir -p ${pkgdir}/var/lib/minisatip
-	cp -ar html ${pkgdir}/var/lib/minisatip
-	chown -fR 188:188 ${pkgdir}/var/lib/minisatip
+	DESTDIR="${pkgdir}" cmake --install build
+	install -D -m 644 debian/minisatip.conf ${pkgdir}/etc/conf.d/minisatip
+	install -D -m 644 debian/service ${pkgdir}/usr/lib/systemd/system/minisatip.service
+	install -D -m 644 ${srcdir}/minisatip.sysuser ${pkgdir}/usr/lib/sysusers.d/minisatip.conf
+	install -D -m 644 -t ${pkgdir}/usr/share/minisatip/html html/*
 }
