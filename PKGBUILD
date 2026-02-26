@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=mago
-pkgver=1.11.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc="An extremely fast PHP linter, formatter, and static analyzer, written in Rust."
 url="https://mago.carthage.software/"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cargo' 'openssl')
 source=("git+https://github.com/carthage-software/mago.git#tag=${pkgver}")
-b2sums=('1e7e1ceb155639444031ae518d85ce17c766c59becd6c23d462dac73171d9143528239a246ee9afb5d1d80755dd6fa6437612a36345530563493b920c8f9996a')
+b2sums=('0034e05e2e1163458fc04cb5717c307660a626a6f8e6952df0f4f36650e3632a2177a4113eadb1d593ef4867b254daf3f3fbd6ff7780c826beadf9777c3ad526')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
