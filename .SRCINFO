@@ -1,17 +1,17 @@
 pkgbase = helixnotes-appimage-bin
 	pkgdesc = Local markdown note-taking app built with Rust, Tauri, and SvelteKit
-	pkgver = 1.1.8
+	pkgver = 1.1.9
 	pkgrel = 1
 	url = https://helixnotes.com
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = fuse2
 	depends = gtk3
-	noextract = HelixNotes_1.1.8_amd64.AppImage
+	noextract = HelixNotes_1.1.9_amd64.AppImage
 	options = !strip
-	source = HelixNotes_1.1.8_amd64.AppImage::https://download.helixnotes.com/releases/v1.1.8/HelixNotes_1.1.8_amd64.AppImage
+	source = HelixNotes_1.1.9_amd64.AppImage::https://download.helixnotes.com/releases/v1.1.9/HelixNotes_1.1.9_amd64.AppImage
 	source = helixnotes.desktop
-	sha256sums = 336e58efb58589db06b224be950dd0f554c851714a97a1ff6b67a2bf541051ec
+	sha256sums = 12d9d98510e8aaddaa5c5be489c0eafbe0c3bd0233519fcf2ece6e375489a614
 	sha256sums = 20dd14203d5bedca52933bd60065d013418bcba00cea6dfcec78b292b82900ba
 
 pkgname = helixnotes-appimage-bin
