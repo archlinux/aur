@@ -13,7 +13,7 @@ provides=(inko)
 conflicts=(inko-git)
 options=(strip !docs !libtool !staticlibs)
 source=("https://releases.inko-lang.org/${pkgver}.tar.gz")
-sha256sums=('af39f9e9fd662523359a36011a74d24c727a8c44daaeb5b073ed4fb30ef69390')
+sha256sums=('2261118c98d520f61624257c6fc2b0c65782d7de2b5cd6f17245f071b1d25015')
 options=(!lto)
 
 build() {
