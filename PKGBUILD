@@ -1,36 +1,19 @@
 # Maintainer: Keithsel <keithsel@disroot.org>
 pkgname=nmtui-go
-pkgver=0.2.5
+pkgver=0.2.6_beta.2
 pkgrel=1
 pkgdesc="A TUI for managing NetworkManager Wi-Fi connections on Linux"
 arch=('x86_64')
 url="https://github.com/doeixd/nmtui-go"
 license=('MIT')
 depends=('networkmanager')
-makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/doeixd/nmtui-go/archive/v$pkgver.tar.gz")
-sha256sums=('d4d366d221e9d6073e8c47fc1799e0ff1a0441217c69287ed14d2869a92f89d8')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  export GOPATH="${srcdir}"
-  go mod download -modcacherw
-  mkdir -p build/
-}
-
-build() {
-  cd "$pkgname-$pkgver"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build/nmtui-go ./cmd
-}
+makedepends=()
+source=("$pkgname-$pkgver.tar.gz::https://github.com/doeixd/nmtui-go/releases/download/v0.2.6-beta.2/nmtui-go_0.2.6-beta.2_linux_amd64.tar.gz")
+sha256sums=('183d622238314e7f519d3e7e66a7782c7b3987afe5fc4a48033c17bd1404d3c3')
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm755 build/nmtui-go "$pkgdir/usr/bin/nmtui-go"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm755 "$srcdir/nmtui-go" "$pkgdir/usr/bin/nmtui-go"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
