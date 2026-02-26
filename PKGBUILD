@@ -24,7 +24,8 @@ depends=(
   ffmpeg4.4
   fontconfig
   freetype2
-  gcc-libs
+  libgcc
+  libstdc++
   gdk-pixbuf2
   glib2
   glibc
