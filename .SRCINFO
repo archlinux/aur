@@ -1,6 +1,6 @@
 pkgbase = kdedimmer
 	pkgdesc = Click-through screen dimmer overlay for KDE Plasma Wayland
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Ekats/kdedimmer
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = kdedimmer
 	depends = qt6-wayland
 	depends = layer-shell-qt
 	depends = wayland
-	source = kdedimmer-1.0.1.tar.gz::https://github.com/Ekats/kdedimmer/archive/v1.0.1.tar.gz
-	sha256sums = 90aab76373c0ca4c95056938603cc9791823a4ecb5c15287c68812c383039a14
+	depends = kstatusnotifieritem
+	source = kdedimmer-1.1.0.tar.gz::https://github.com/Ekats/kdedimmer/archive/v1.1.0.tar.gz
+	sha256sums = 163e4f0a1d5353c042cc81642af558d7f2e7ebb26b3d0506ba45d9133e3f49aa
 
 pkgname = kdedimmer
