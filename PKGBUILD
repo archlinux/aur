@@ -3,8 +3,8 @@
 
 _pkgname=valhalla
 pkgname=$_pkgname
-pkgver=3.5.1
-pkgrel=2
+pkgver=3.6.3
+pkgrel=1
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64')
 url="https://github.com/valhalla/valhalla"
@@ -20,8 +20,8 @@ prepare() {
   cd "$_pkgname-$pkgver"
   git submodule update --init --recursive
 
-  # Fix missing cstdint include in cxxopts
-  patch -Np1 -i ../fix-cxxopts-cstdint.patch
+  # Fix missing cstdint include in cxxopts (conditional application)
+  patch -Np1 --forward -i ../fix-cxxopts-cstdint.patch || true
 
   cmake -S. -Bbuild \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
@@ -30,6 +30,7 @@ prepare() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DPREFER_EXTERNAL_DEPS=ON \
     -DENABLE_DATA_TOOLS=On \
     -DENABLE_PYTHON_BINDINGS=On \
     -DENABLE_SERVICES=On \
@@ -38,8 +39,8 @@ prepare() {
     -DENABLE_SINGLE_FILES_WERROR=Off \
     -DENABLE_WERROR=Off \
     -DBUILD_SHARED_LIBS=On \
-    -DENABLE_BENCHMARKS=OFF \
-    -DENABLE_TESTS=OFF
+    -DENABLE_TESTS=OFF \
+    -DCMAKE_DISABLE_FIND_PACKAGE_nanobind=TRUE
 
 }
 
