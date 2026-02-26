@@ -4,7 +4,7 @@
 _pkver=(6.00 3044)
 pkgname=aimp
 pkgver=${_pkver[0]}.${_pkver[1]}
-pkgrel=1
+pkgrel=2
 url="https://www.aimp.ru"
 pkgdesc="Powerful free audio player, converter and tag editor (v6 Alpha, Unstable)"
 arch=('x86_64')
@@ -12,6 +12,7 @@ conflicts=('aimp')
 provides=('aimp')
 license=('custom')
 depends=('hicolor-icon-theme' 'gtk3' 'gdk-pixbuf2' 'cairo' 'pango' 'sqlite' 'libvorbis' 'harfbuzz')
+optdepends=('libappindicator: extend app-menu support')
 source=(
    "https://imister.kz/linux/aimp-nightly-x86_64.pkg.tar.zst"
 )

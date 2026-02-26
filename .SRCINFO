@@ -1,7 +1,7 @@
 pkgbase = aimp
 	pkgdesc = Powerful free audio player, converter and tag editor (v6 Alpha, Unstable)
 	pkgver = 6.00.3044
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.aimp.ru
 	arch = x86_64
 	license = custom
@@ -13,6 +13,7 @@ pkgbase = aimp
 	depends = sqlite
 	depends = libvorbis
 	depends = harfbuzz
+	optdepends = libappindicator: extend app-menu support
 	provides = aimp
 	conflicts = aimp
 	source = https://imister.kz/linux/aimp-nightly-x86_64.pkg.tar.zst
