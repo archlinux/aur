@@ -4,7 +4,7 @@
 pkgname=autenticacao-gov-pt
 _pkgname=autenticacao.gov
 pkgver=3.14.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Portuguese Citizen Card Application (Portugal eID) source code based version"
 arch=('i686' 'x86_64')
 url="http://www.cartaodecidadao.pt/"
@@ -25,7 +25,7 @@ depends=('qt5-base'
          'openjpeg2'
          'openpace-git'
          'cjson')
-makedepends=('swig' 'qconf' 'git')
+makedepends=('swig' 'qconf' 'git' 'jdk-openjdk')
 optdepends=('plugin-autenticacao-gov-pt: Necessário para autenticações online'
             'autenticacao-gov-pt-pki: PKI que confirma a validade dos certificados dos CC'
             'ecce-gov-pt-certificates: Certificados da ECCE quem assina dos certificados contidos em cartaodecidadao-pki')

@@ -1,7 +1,7 @@
 pkgbase = autenticacao-gov-pt
 	pkgdesc = Portuguese Citizen Card Application (Portugal eID) source code based version
 	pkgver = 3.14.0
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.cartaodecidadao.pt/
 	install = autenticacao-gov-pt.install
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = autenticacao-gov-pt
 	makedepends = swig
 	makedepends = qconf
 	makedepends = git
+	makedepends = jdk-openjdk
 	depends = qt5-base
 	depends = qt5-tools
 	depends = qt5-quickcontrols
