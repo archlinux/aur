@@ -28,8 +28,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"https://raw.githubusercontent.com/aminvakil/DPYProxy/refs/heads/initial_pyproject/pyproject.toml"
 	"https://raw.githubusercontent.com/aminvakil/DPYProxy/refs/heads/initial_pyproject/dpyproxy/__init__.py")
 sha256sums=('ff92cc1efd2b354da4a21207abbe42733153c008d06d63e06a26c19fc914a6d0'
-            '2dcc9e6aa3b9422079a4dbc13533eb311fdf62e6c7492bfab6d71bbde9677fef'
-            'e176952620651548ef3687c02018fea2c75f9cd863f5835b69a42feaf7582c05')
+            '954b699932e0e42b62a2ab48459b1be33c3e8b3286956f2ba2f6d690948eebd1'
+            'd4f9373c216046562cba97729845209728921797e2f74b13b1f777488522c406')
 
 prepare() {
         cd ${_pkgname}-${pkgver}
