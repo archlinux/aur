@@ -1,6 +1,6 @@
 pkgbase = hardbore
 	pkgdesc = High-performance file manager for Linux
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/FrogSnot/HardBore
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = hardbore
 	depends = librsvg
 	depends = sqlite
 	depends = dbus
-	source = hardbore-1.2.2.tar.gz::https://github.com/FrogSnot/HardBore/archive/v1.2.2.tar.gz
-	sha256sums = 8d57c4199707ec6334b617aeff308c27d0c4851afb5ea036e95214dd75cadef2
+	source = hardbore-1.2.3.tar.gz::https://github.com/FrogSnot/HardBore/archive/v1.2.3.tar.gz
+	sha256sums = f844f424e931f53b88391b62ec8db415587b37ee44c95c159b12b1e5211dd03a
 
 pkgname = hardbore
