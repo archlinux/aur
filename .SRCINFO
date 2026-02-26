@@ -1,0 +1,20 @@
+pkgbase = rofi-rwifi-bin
+	pkgdesc = A rofi-based Wi-Fi manager written in Rust (prebuilt binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/eon-ic/rofi-rwifi
+	arch = x86_64
+	license = MIT
+	depends = rofi
+	depends = networkmanager
+	depends = gcc-libs
+	depends = glibc
+	optdepends = libnotify: 桌面通知支持
+	optdepends = qrencode: Wi-Fi 二维码分享
+	provides = rofi-rwifi=0.1.0
+	conflicts = rofi-rwifi
+	options = !debug
+	source = rofi-rwifi-bin-0.1.0.tar.gz::https://github.com/eon-ic/rofi-rwifi/releases/download/v0.1.0/rofi-rwifi-0.1.0-x86_64.tar.gz
+	b2sums = SKIP
+
+pkgname = rofi-rwifi-bin
