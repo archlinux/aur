@@ -1,0 +1,50 @@
+post_install() {
+    cat <<EOF
+
+  ═══════════════════════════════════════════════
+  󰧑  omarchy-ai-usage installed!
+
+  Run the setup to configure Waybar:
+
+    omarchy-ai-usage-setup
+
+  This will copy scripts, add the waybar module,
+  and create the default config.
+  ═══════════════════════════════════════════════
+
+EOF
+}
+
+post_upgrade() {
+    cat <<EOF
+
+  ═══════════════════════════════════════════════
+  󰧑  omarchy-ai-usage upgraded to $1
+
+  Run to update scripts:
+
+    omarchy-ai-usage-setup
+
+  Your config at ~/.config/ai-usage/ is preserved.
+  ═══════════════════════════════════════════════
+
+EOF
+}
+
+post_remove() {
+    cat <<EOF
+
+  ═══════════════════════════════════════════════
+  󰧑  omarchy-ai-usage removed
+
+  To clean up waybar config and scripts, run:
+
+    omarchy-ai-usage-remove
+
+  Or manually remove:
+    ~/.config/waybar/scripts/ai-usage*.sh
+    ~/.config/ai-usage/
+  ═══════════════════════════════════════════════
+
+EOF
+}

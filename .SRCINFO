@@ -1,0 +1,22 @@
+pkgbase = omarchy-ai-usage-git
+	pkgdesc = AI usage monitoring for Omarchy — track Claude and Codex rate limits in Waybar
+	pkgver = r1.fdd6dd7
+	pkgrel = 1
+	url = https://github.com/rodrigo-sntg/omarchy-ai-usage
+	install = omarchy-ai-usage.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = jq
+	depends = curl
+	depends = gum
+	depends = waybar
+	depends = python
+	optdepends = claude-code: Claude CLI for usage monitoring
+	optdepends = codex: OpenAI Codex CLI for usage monitoring
+	provides = omarchy-ai-usage
+	conflicts = omarchy-ai-usage
+	source = omarchy-ai-usage-git::git+https://github.com/rodrigo-sntg/omarchy-ai-usage.git
+	sha256sums = SKIP
+
+pkgname = omarchy-ai-usage-git
