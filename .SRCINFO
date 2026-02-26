@@ -1,0 +1,16 @@
+pkgbase = hid-winwing2-dkms-git
+	pkgdesc = Linux kernel driver for Winwing WINCTRL Orion2 Throttles
+	pkgver = r33.ed72f10
+	pkgrel = 3
+	url = https://github.com/igorinov/linux-winwing
+	arch = any
+	license = GPL2
+	depends = dkms
+	source = hid-winwing2::git+https://github.com/igorinov/linux-winwing.git
+	source = dkms.conf
+	source = Makefile
+	sha256sums = SKIP
+	sha256sums = 986f4b410d97660d623d0a4f2001c533d1163c133537d5af4a689b4c6bc47185
+	sha256sums = a0d5de62ea5dd31a1377b4538fa5775982cc209a113737b95f5ca425ad5f2b85
+
+pkgname = hid-winwing2-dkms-git
