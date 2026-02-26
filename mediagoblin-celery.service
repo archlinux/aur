@@ -1,0 +1,18 @@
+[Unit]
+Description=MediaGoblin Celery worker
+After=network.target
+
+[Service]
+Type=simple
+User=mediagoblin
+Group=mediagoblin
+WorkingDirectory=/usr/share/webapps/mediagoblin
+Environment=MEDIAGOBLIN_CONFIG=/usr/share/webapps/mediagoblin/mediagoblin_local.ini
+Environment=CELERY_CONFIG_MODULE=mediagoblin.init.celery.from_celery
+ExecStart=/usr/share/webapps/mediagoblin/bin/celery worker \
+            --loglevel=INFO
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

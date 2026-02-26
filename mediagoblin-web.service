@@ -1,0 +1,17 @@
+[Unit]
+Description=MediaGoblin web server
+After=network.target
+
+[Service]
+Type=simple
+User=mediagoblin
+Group=mediagoblin
+WorkingDirectory=/usr/share/webapps/mediagoblin
+ExecStart=/usr/share/webapps/mediagoblin/bin/paster serve \
+            /usr/share/webapps/mediagoblin/paste_local.ini \
+            --server-name=main
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
