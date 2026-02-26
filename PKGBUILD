@@ -1,30 +1,25 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 pkgname=plasma6-applets-thermal-monitor
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="A KDE Plasmoid for displaying system temperatures."
-arch=(any)
-url="https://invent.kde.org/olib/thermalmonitor"
+arch=('any')
+url='https://invent.kde.org/olib/thermalmonitor'
 license=("MIT")
 depends=('plasma-workspace' 'ksystemstats' 'libksysguard' 'kitemmodels' 'kdeclarative' 'kquickcharts')
-makedepends=('cmake>=3.16' 'extra-cmake-modules')
-provides=("${pkgname}")
-source=("${pkgname}.tar.gz::${url}/-/archive/v${pkgver}/thermalmonitor-v${pkgver}.tar.gz")
-sha256sums=('b609d718e1cf066bff17a629e20494bb7a6d8f9179f05b44b67a55bf0ccc1497')
-_srcdir="thermalmonitor-v${pkgver}"
+makedepends=('cmake' 'extra-cmake-modules')
+source=("$url/-/archive/v$pkgver/thermalmonitor-v$pkgver.tar.gz")
+sha256sums=('6442c696c204a0b218c847acf19951a9970528dd575904df736a559d566463d4')
 
 build() {
-  cd ${_srcdir}
-  cmake -B build \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DQT_DEFAULT_MAJOR_VERSION=6
-  # this does nothing for now
+  cd thermalmonitor-v$pkgver
+  cmake -S . -B build
   cmake --build build
 }
 
 package() {
-  cd ${_srcdir}
-  DESTDIR="${pkgdir}" cmake --install build
-  install -Dm644 -t ${pkgdir}/usr/share/licenses/${pkgname}/ LICENSE.txt
+  cd thermalmonitor-v$pkgver
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 -t $pkgdir/usr/share/licenses/$pkgname LICENSE.txt
 }
