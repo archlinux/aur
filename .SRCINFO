@@ -1,7 +1,7 @@
 pkgbase = z13ctl-bin
 	pkgdesc = CLI and daemon for ASUS ROG Flow Z13 hardware control
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/dahui/z13ctl
 	install = z13ctl-bin.install
 	arch = x86_64

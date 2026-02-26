@@ -1,7 +1,7 @@
 # Maintainer: Jeff Hagadorn <noreply@github.com>
 pkgname=z13ctl-bin
 pkgver=1.0.0
-pkgrel=3
+pkgrel=1
 pkgdesc='CLI and daemon for ASUS ROG Flow Z13 hardware control'
 arch=('x86_64')
 url='https://github.com/dahui/z13ctl'
