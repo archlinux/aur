@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=kdedimmer
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Click-through screen dimmer overlay for KDE Plasma Wayland"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('qt6-base' 'qt6-wayland' 'layer-shell-qt' 'wayland')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a33dce81d8f831208c9b03a1c2e4a86801e17bc8491c68f7502520c21308a907')
+sha256sums=('90aab76373c0ca4c95056938603cc9791823a4ecb5c15287c68812c383039a14')
 
 build() {
     cd "$pkgname-$pkgver"
