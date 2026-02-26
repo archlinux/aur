@@ -1,6 +1,6 @@
 pkgbase = frank-sherlock-bin
 	pkgdesc = Local-only, AI-powered image cataloging and search system
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/akitaonrails/FrankSherlock
 	arch = x86_64
@@ -9,12 +9,13 @@ pkgbase = frank-sherlock-bin
 	depends = hicolor-icon-theme
 	depends = fuse2
 	optdepends = ollama: required for AI image classification
+	optdepends = ffmpeg: required for video thumbnail extraction and metadata
 	provides = frank-sherlock
 	conflicts = frank-sherlock
-	noextract = frank-sherlock-bin-0.5.0.AppImage
+	noextract = frank-sherlock-bin-0.6.0.AppImage
 	options = !strip
 	options = !debug
-	source = frank-sherlock-bin-0.5.0.AppImage::https://github.com/akitaonrails/FrankSherlock/releases/download/v0.5.0/frank_sherlock_0.5.0_amd64.AppImage
-	sha256sums = 319089191e2f3f20c23ba3a147cc6e12bedbbad8b08dbf18a0cee8d3295757e0
+	source = frank-sherlock-bin-0.6.0.AppImage::https://github.com/akitaonrails/FrankSherlock/releases/download/v0.6.0/frank_sherlock_0.6.0_amd64.AppImage
+	sha256sums = 1a88e23b4f4bd9cf853c56a528c708f5cd03a8e5f2b6e5489bb651ab07df8b90
 
 pkgname = frank-sherlock-bin

@@ -1,18 +1,19 @@
 # Maintainer: AkitaOnRails <fabio.akita@gmail.com>
 pkgname=frank-sherlock-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Local-only, AI-powered image cataloging and search system"
 arch=('x86_64')
 url="https://github.com/akitaonrails/FrankSherlock"
 license=('GPL-3.0-only')
 depends=('webkit2gtk-4.1' 'hicolor-icon-theme' 'fuse2')
-optdepends=('ollama: required for AI image classification')
+optdepends=('ollama: required for AI image classification'
+  'ffmpeg: required for video thumbnail extraction and metadata')
 provides=('frank-sherlock')
 conflicts=('frank-sherlock')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/frank_sherlock_${pkgver}_amd64.AppImage")
-sha256sums=('319089191e2f3f20c23ba3a147cc6e12bedbbad8b08dbf18a0cee8d3295757e0')
+sha256sums=('1a88e23b4f4bd9cf853c56a528c708f5cd03a8e5f2b6e5489bb651ab07df8b90')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
 prepare() {
