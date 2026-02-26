@@ -1,30 +1,32 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: oysstu <oysstu a gmail.com>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Sven Schneider <archlinux.sandmann@googlemail.com>
 
 pkgname=orocos-kdl
-pkgver=1.5.1
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="The Kinematics and Dynamics Library is a framework for modelling and computation of kinematic chains"
-arch=('i686' 'x86_64')
-url="https://www.orocos.org/kdl"
-license=('GPL')
-depends=(eigen)
-makedepends=(cmake)
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/orocos/orocos_kinematics_dynamics/archive/v${pkgver}.tar.gz")
-sha256sums=('5acb90acd82b10971717aca6c17874390762ecdaa3a8e4db04984ea1d4a2af9b')
+url="https://www.orocos.org/kdl.html"
+arch=('any')
+license=('LGPL-2.1-only')
+depends=('eigen')
+makedepends=('cmake')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/orocos/orocos_kinematics_dynamics/archive/${pkgver}.tar.gz")
+sha256sums=('3895eed1b51a6803c79e7ac4acd6a2243d621b887ac26a1a6b82a86a1131c3b6')
 
 _dir=orocos_kinematics_dynamics
 _pkgname=orocos_kdl
 
 build() {
-  cd "${srcdir}/${_dir}-${pkgver}/${_pkgname}"
+  cmake -B build -S "${srcdir}/${_dir}-${pkgver}/${_pkgname}" \
+    -DCMAKE_BUILD_TYPE='None' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DENABLE_TESTS:BOOL=OFF \
+    -DENABLE_EXAMPLES:BOOL=OFF
 
-  cmake -DCMAKE_INSTALL_PREFIX=/usr .
-  make
+  cmake --build build
 }
 
 package() {
-  cd "${srcdir}/${_dir}-${pkgver}/${_pkgname}"
-  make DESTDIR="${pkgdir}" install
-  find ${pkgdir}/usr -maxdepth 1 -type f -exec rm {} \;
+  DESTDIR="$pkgdir" cmake --install build
 }
