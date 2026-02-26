@@ -26,6 +26,8 @@ conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
+_themes=($(for flavor in $(whiskers --list-flavors -o plain); do for accent in $(whiskers --list-accents -o plain); do echo "catppuccin-$flavor-$accent"; done; done))
+
 backup=($(printf 'usr/share/sddm/themes/%s/theme.conf ' "${_themes[@]}"))
 
 pkgver() {
@@ -43,7 +45,7 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   cd themes
-  for dir in */; do
+  for dir in "${_themes[@]}"; do
     [ -e "$dir/theme.conf" ] || continue
     find ./$dir -type f -exec install -Dm644 {} "$pkgdir/usr/share/sddm/themes/{}" \;
   done
