@@ -5,21 +5,31 @@
 # Contributor: d'Ronin <daronin@2600.com>
 # Contributor: Hexchain Tong <richard0053@gmail.com>
 # Contributor: Jack Lloyd <jack@randombit.net>
+# Contributor: 2-4601 <AUR@othermemory.org>
 
-pkgname=botan2
+pkgname=botan2.19
 pkgver=2.19.5
-pkgrel=2
-pkgdesc='Crypto library written in C++ (legacy version)'
+pkgrel=1
+pkgdesc='Crypto library written in C++ (legacy version 2.19)'
 arch=(x86_64)
 url='https://botan.randombit.net/'
 license=(BSD)
 depends=(xz sqlite)
-makedepends=(python boost)
+makedepends=(python python-sphinx python-setuptools boost)
 optdepends=('python: for using botan2.py')
-source=(https://botan.randombit.net/releases/Botan-${pkgver}.tar.xz{,.asc})
+conflicts=('botan2')
+source=(https://botan.randombit.net/releases/Botan-${pkgver}.tar.xz{,.asc}
+        boost-fixes.patch)
 sha256sums=('dfeea0e0a6f26d6724c4af01da9a7b88487adb2d81ba7c72fcaf52db522c9ad4'
-            'SKIP')
+            'SKIP'
+            '4d6e04836b934671b893b7df207159b7a945191f25c134a8ab95ff43bd6ae536')
 validpgpkeys=('621DAF6411E1851C4CF9A2E16211EBF1EFBADFBC') # Botan Distribution Key
+
+prepare() {
+  cd "Botan-${pkgver}"
+
+  patch -p0 -i ../boost-fixes.patch
+}
 
 build() {
   cd Botan-$pkgver
