@@ -7,6 +7,7 @@ url="https://github.com/sipeed/NanoKVM-USB/"
 license=('GPL-3.0-only')
 depends=('nodejs-http-server')
 makedepends=('git' 'npm')
+optdepends=('chromium: or other browser that supports web-camera and serial port')
 source=("git+https://github.com/sipeed/NanoKVM-USB.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
