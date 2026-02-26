@@ -1,0 +1,25 @@
+pkgbase = primespecpcr
+	pkgdesc = Species-Specific Primer Design Toolkit.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Adv20202/PrimeSpecPCR
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = mafft
+	depends = python
+	depends = python-construct
+	depends = python-biopython
+	depends = primer3-py
+	depends = python-pandas
+	depends = python-numpy
+	depends = python-tqdm
+	depends = python-validators
+	depends = python-requests
+	source = git+https://github.com/Adv20202/PrimeSpecPCR.git
+	md5sums = SKIP
+
+pkgname = primespecpcr
