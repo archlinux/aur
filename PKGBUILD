@@ -2,9 +2,8 @@
 
 pkgbase=libstring-util
 pkgname=libstring-util
-_tagname=1.2.9
 pkgver=1.3.0
-pkgrel=1
+pkgrel=3
 pkgdesc="C++ lib of useful string manipulation functions"
 arch=($CARCH)
 url="https://gitlab.com/links_and_nodes/libstring_util"
@@ -23,9 +22,13 @@ makedepends=(
 )
 checkdepends=()
 optdepends=()
-source=("${pkgname}::git+${url}.git#tag=${_tagname}")
-sha256sums=('1b784bf5fdc378d5c8a421a5bc55c26801d4b323dcf65ad47a00dd5104fe6354')
+source=("${pkgname}::git+${url}.git#tag=${pkgver}")
+sha256sums=('a51e352a723306c116b20aa168638c329fc2e7de79bc5a294cec465fba873199')
 options=()
+
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
 
 build() {
     cd "${srcdir}/${pkgname}/"
