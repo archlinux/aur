@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ReSpringClipsNeko/rchan/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('539a0c81a6eb09fbba68c799d0bfaba0e767fff803612a278cba71f390a7bbe0')
+sha256sums=('a741ef2ea40df009b09451b496ee8663e2897e3f0b7a43b6380cc11c82e586a8')
 
 build() {
     cd "$pkgname-$pkgver"
