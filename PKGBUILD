@@ -1,6 +1,6 @@
 pkgname=aurora-gui-git
 pkgver=0.0.0.r0.g0000000
-pkgrel=5
+pkgrel=6
 pkgdesc="Wayland-first GTK4 GUI for Arch Linux package management (pacman + AUR via yay/paru)"
 arch=("x86_64")
 url="https://github.com/ahmoodio/aurora"
@@ -54,15 +54,23 @@ build() {
   # Force GNU bfd (ring + lld is broken on Arch)
   export RUSTFLAGS="${RUSTFLAGS:-} -C linker=gcc -C link-arg=-fuse-ld=bfd"
 
-  # First build normally
-  cargo build --release --locked
+  # Build deps without linking binaries
+  cargo check --release --locked
 
-  # Then relink the binaries, explicitly adding ring_core static lib
-  cargo rustc --release --locked --bin aurora \
-    -- -C link-arg=-Wl,-Bstatic -C link-arg=-lring_core_0_17_14_ -C link-arg=-Wl,-Bdynamic
+  # Find ring_core static lib produced by ring build script
+  local ring_core_a
+  ring_core_a=$(find "$CARGO_TARGET_DIR/release/build" -path '*/out/libring_core_0_17_14_.a' | head -n 1)
+  if [[ -z "$ring_core_a" ]]; then
+    echo "error: ring_core static library not found"
+    return 1
+  fi
 
-  cargo rustc --release --locked --bin aurora-helper \
-    -- -C link-arg=-Wl,-Bstatic -C link-arg=-lring_core_0_17_14_ -C link-arg=-Wl,-Bdynamic
+  # Relink binaries, explicitly adding ring_core
+  cargo rustc --release --locked --bin aurora -- \
+    -C link-arg="$ring_core_a"
+
+  cargo rustc --release --locked --bin aurora-helper -- \
+    -C link-arg="$ring_core_a"
 }
 
 package() {
