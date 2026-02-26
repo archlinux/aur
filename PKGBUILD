@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=zen-c
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc='Write like a high-level language, run like C.'
 url='https://github.com/z-libs/Zen-C'
@@ -13,7 +13,7 @@ makedepends=(gcc make)
 provides=(zc)
 conflicts=('zen-c-git' 'zen-c-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f64f60861cbfbc78827ca5a45e5f0d32da4f4c294e203da42c8de459b5796829')
+sha256sums=('2e9ef13f8fdc523a1d9c6f79f1be5db969257ad18e2b19b0ba70aaa1c23deb8a')
 
 build() {
     cd "Zen-C-${pkgver}"
