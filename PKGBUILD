@@ -10,6 +10,8 @@ provides=('theophany')
 conflicts=('theophany')
 depends=('hicolor-icon-theme') # Ensures the icon system is ready
 
+optdepends=('yt-dlp: for downloading game trailers and media')
+
 source=("theophany::${url}/releases/download/v${pkgver}/theophany_0.1.1_linux_x64"
         "theophany.png::https://github.com/oldlamps/Theophany/raw/refs/heads/main/assets/tray_icon.png"
         "theophany.desktop")

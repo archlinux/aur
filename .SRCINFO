@@ -6,6 +6,7 @@ pkgbase = theophany-bin
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = hicolor-icon-theme
+	optdepends = yt-dlp: for downloading game trailers and media
 	provides = theophany
 	conflicts = theophany
 	source = theophany::https://github.com/oldlamps/Theophany/releases/download/v0.1.1/theophany_0.1.1_linux_x64
