@@ -5,7 +5,7 @@ _pkgname=sley
 pkgname=${_pkgname}-bin
 pkgdesc="CLI for semantic versioning using a simple .version file. Language-agnostic with plugins for git tagging, changelog generation, versioning policies and more..."
 
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('5e9efd78574786be38a5515d4ad7357ebf61e96029df405266572da5168322e0')
-sha256sums_aarch64=('ecfc1ae5e3786ab945fa8831f0e942973db86da68f12bec8c2059cd6252a7796')
+sha256sums_x86_64=('4e9e3d465e2dad07a1ae0cf33761d44544fbca1b0b983e5cb4c20ea82cd6f8db')
+sha256sums_aarch64=('f3395d4d8caa02101ce12557f95ffa520bbfb92949f713911283aaf209b8763f')
 
 
 package() {
