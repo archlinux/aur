@@ -1,15 +1,18 @@
 pkgbase = veloview
-	pkgdesc = Real-time visualization and processing of live captured 3D LiDAR data from Velodyne’s HDL sensors
-	pkgver = 4.1.3
+	pkgdesc = Real-time visualization and processing of live captured 3D LiDAR data from Velodyne's HDL sensors
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://www.paraview.org/veloview
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = gendesk
+	depends = libglvnd
+	depends = libxcb
+	depends = libxkbcommon
+	depends = dbus
 	source = veloview.svg
-	source = VeloView-4.1.3-Linux-64bit.tar.gz::https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=v5.4&type=app&downloadFile=VeloView-4.1.3-Linux-64bit.tar.gz
+	source = VeloView-5.1.0-Linux-64bit.tar.gz::https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=v5.9&type=app&os=Linux&downloadFile=VeloView-5.1.0-Ubuntu18.04-x86_64.tar.gz
 	sha256sums = 1178d1aad246985bf56da1228298ee8a99d8e487309d3ddc39a9d071fb52a6ad
-	sha256sums = 66237a2f6f5060cfd4c885243d859f56df6f60ef0b51962060f84dc8b470b600
+	sha256sums = a398705060fafcebbb9f37c99b1c3c09922e6469697dae4f04a3c927c1ca8b32
 
 pkgname = veloview
-

@@ -1,34 +1,31 @@
-# Maintainer: Kitware <kitware@kitware.com>
-# Contributor: Dmitry Golgovsky <d.westcoast@aol.com>
+# Maintainer: Dmitry Golgowski <d.westcoast@aol.com>
 
 pkgname=veloview
-pkgver=4.1.3
+pkgver=5.1.0
 pkgrel=1
-pkgdesc="Real-time visualization and processing of live captured 3D LiDAR data from Velodyne’s HDL sensors"
+pkgdesc="Real-time visualization and processing of live captured 3D LiDAR data from Velodyne's HDL sensors"
 arch=(x86_64)
-license=(BSD)
+license=(BSD-3-Clause)
 url="https://www.paraview.org/veloview"
+depends=('libglvnd' 'libxcb' 'libxkbcommon' 'dbus')
 makedepends=(gendesk)
+_archive="VeloView-${pkgver}-Ubuntu18.04-x86_64"
 source=("veloview.svg"
-        "VeloView-$pkgver-Linux-64bit.tar.gz::https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=v5.4&type=app&downloadFile=VeloView-$pkgver-Linux-64bit.tar.gz")
+        "VeloView-${pkgver}-Linux-64bit.tar.gz::https://www.paraview.org/paraview-downloads/download.php?submit=Download&version=v5.9&type=app&os=Linux&downloadFile=${_archive}.tar.gz")
 sha256sums=('1178d1aad246985bf56da1228298ee8a99d8e487309d3ddc39a9d071fb52a6ad'
-            '66237a2f6f5060cfd4c885243d859f56df6f60ef0b51962060f84dc8b470b600')
+            'a398705060fafcebbb9f37c99b1c3c09922e6469697dae4f04a3c927c1ca8b32')
 
 prepare() {
-  gendesk --pkgname=VeloView --pkgdesc="$pkgdesc" --categories=Network PKGBUILD
+  gendesk --pkgname=VeloView --pkgdesc="$pkgdesc" --exec=/opt/veloview/bin/VeloView --categories="Science;DataVisualization" PKGBUILD
 }
 
 package() {
-  install -d "$pkgdir"/usr/local/bin
-  cp -a --no-preserve=ownership "$srcdir"/VeloView-$pkgver-Linux-64bit/bin "$pkgdir"/usr/local/
+  install -dm755 "$pkgdir"/opt/veloview
+  cp -a --no-preserve=ownership "$srcdir"/${_archive}/{bin,lib,plugins,share} "$pkgdir"/opt/veloview/
 
-  install -d "$pkgdir"/usr/local/lib
-  cp -a --no-preserve=ownership "$srcdir"/VeloView-$pkgver-Linux-64bit/lib "$pkgdir"/usr/local/
-
-  install -d "$pkgdir"/usr/local/share
-  cp -a --no-preserve=ownership "$srcdir"/VeloView-$pkgver-Linux-64bit/share "$pkgdir"/usr/local/
+  install -dm755 "$pkgdir"/usr/bin
+  ln -s /opt/veloview/bin/VeloView "$pkgdir"/usr/bin/veloview
 
   install -Dm644 "$srcdir"/VeloView.desktop -t "$pkgdir"/usr/share/applications
   install -Dm644 "$srcdir"/$pkgname.svg "$pkgdir"/usr/share/pixmaps/VeloView.svg
 }
-
