@@ -1,0 +1,6 @@
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!heaper.desktop
+!heaper.sh

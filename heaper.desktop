@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Heaper
+Comment=Your files deserve their story
+Exec=/usr/bin/heaper
+Icon=heaper
+Type=Application
+Categories=Utility;FileTools;
