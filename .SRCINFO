@@ -1,7 +1,7 @@
-pkgbase = xjtutoolbox
+pkgbase = xjtu-toolbox-git
 	pkgdesc = 仙交百宝箱：西安交通大学一站式校园服务工具（包含课表、成绩、评教、自动抢课助手等）
-	pkgver = v1.2.3
-	pkgrel = 1
+	pkgver = 1.2.3
+	pkgrel = 2
 	url = https://github.com/yan-xiaoo/XJTUToolBox
 	arch = any
 	license = GPL3
@@ -16,9 +16,9 @@ pkgbase = xjtutoolbox
 	depends = python-pillow
 	depends = python-keyring
 	depends = python-numpy
-	provides = xjtutoolbox
-	conflicts = xjtutoolbox
+	provides = xjtu-toolbox
+	conflicts = xjtu-toolbox
 	source = git+https://github.com/yan-xiaoo/XJTUToolBox.git
 	sha256sums = SKIP
 
-pkgname = xjtutoolbox
+pkgname = xjtu-toolbox-git
