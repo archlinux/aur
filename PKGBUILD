@@ -2,7 +2,7 @@
 pkgbase=xjtutoolbox
 pkgname=xjtutoolbox-git
 pkgver=1.2.3
-pkgrel=23
+pkgrel=24
 pkgdesc="仙交百宝箱：西安交通大学一站式校园服务工具（混合依赖模式：Official + AUR + Venv）"
 arch=('any')
 url="https://github.com/yan-xiaoo/XJTUToolBox"
