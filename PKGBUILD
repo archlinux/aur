@@ -2,20 +2,20 @@
 # Contributor: nightuser <nightuser.android@gmail.com>
 
 pkgname="stm32cubeide"
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Integrated Development Environment for STM32"
 arch=("x86_64")
 makedepends=('imagemagick')
 depends=('glibc' 'libusb' 'ncurses5-compat-libs' 'webkit2gtk' 'stlink-server')
-optdepends=('jlink-software-and-documentation' 'stlink' 'arm-none-eabi-gdb')
+optdepends=('jlink-software-and-documentation' 'stlink' 'arm-none-eabi-gdb' 'stm32cubemx')
 conflicts=()
 url="https://www.st.com/en/development-tools/stm32cubeide.html"
 license=('custom:SLA0048')
 options=(!strip)
 
-_pkgver_ext=2.0.0_26820_20251114_1348
-_pkg_file_name=st-stm32cubeide_2.0.0_26820_20251114_1348_amd64.sh.zip
+_pkgver_ext=2.1.0_27993_20260219_1630
+_pkg_file_name=st-stm32cubeide_2.1.0_27993_20260219_1630_amd64.sh.zip
 _pkg_license_name="${pkgname}_SLA0048.pdf"
 _pkg_additional_terms="${pkgname}_v${pkgver}_additional_license_terms.html"
 
@@ -45,7 +45,7 @@ source=("local://${_pkg_file_name}"
 	"stm32cubeide"
 	"stm32cubeide_wayland"
 	)
-sha256sums=('a6431af2cbc5df31c161ddf1ba9824079c3b2dff399c7f7c1f7a3d647343b7e4'
+sha256sums=('98b9499dd3ce0aa1ee2e76daca1d1f13d8e934e78768533b8982ac63035678cc'
 	'0f3f69f7c980a701bf814e94595f5acb51a5d91be76b74e5b632220cfb0e7bb3'
 	'SKIP'
 	'SKIP'
