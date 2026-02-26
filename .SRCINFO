@@ -1,6 +1,6 @@
 pkgbase = squawk-cli
 	pkgdesc = Linter for PostgreSQL, focused on migrations
-	pkgver = 2.41.0
+	pkgver = 2.42.0
 	pkgrel = 1
 	url = https://squawkhq.com/
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = squawk-cli
 	depends = libgcc_s.so
 	depends = libssl.so
 	options = !lto
-	source = https://github.com/sbdchd/squawk/archive/refs/tags/v2.41.0.tar.gz
+	source = https://github.com/sbdchd/squawk/archive/refs/tags/v2.42.0.tar.gz
 	source = use-system-openssl.patch
-	sha256sums = 413a05e4bb595e278bc6f9344c94dea6f47c5beaa5859abd8ddc6de662335d1a
+	sha256sums = c28374da3c72fc6737c605615e4a5af205eb9ab256750f3d5a5f74974c5fd567
 	sha256sums = 19ea25b3dc922dee9bc675a6b684ee24bc2b9d869f467f50888d710a00f0fa4a
 
 pkgname = squawk-cli
