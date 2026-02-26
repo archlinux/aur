@@ -2,7 +2,7 @@
 # Contributor: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 pkgname=rust-docs
 epoch=1
-pkgver=1.93.0
+pkgver=1.93.1
 pkgrel=1
 pkgdesc="Rust documentations."
 arch=('x86_64' 'i686' 'aarch64')
@@ -12,11 +12,11 @@ options=('docs' '!strip' '!debug')
 source_x86_64=("https://static.rust-lang.org/dist/rust-docs-${pkgver}-x86_64-unknown-linux-gnu.tar.gz"{,.asc})
 source_i686=("https://static.rust-lang.org/dist/rust-docs-${pkgver}-i686-unknown-linux-gnu.tar.gz"{,.asc})
 source_aarch64=("https://static.rust-lang.org/dist/rust-docs-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"{,.asc})
-b2sums_x86_64=('8f9c87b26d3f53eb731b122a9afa1da537b714fd603d7aaeffd8b2e901e8f1ea38752c7e0a99cc210697ad9938c5f3a34dfcf850c57e1758b9c337449a646973'
+b2sums_x86_64=('e842ca6ab3efddc2d1e2c7b68a11caba6e83b2deb29a46fdb36a080780db5d392fc995420e7bb4527d0093a3f018c3e27268aca858486c5d73eaa9c3d3168f17'
                'SKIP')
-b2sums_i686=('818afa109be6ba4156544e9d3c59c0cb6fdcc862e0b9858769caaf34d5c63e367059dce0ef439b9ea6f0621ce254e92a9f6a7d33f5975826f20a3dc3c3d462da'
+b2sums_i686=('c21d3f2245c4b465cbcb0d209bd8183174557056732a3952451a30ca17a682ee7d72037208c92b7fd5c74e418a189b69451aaac4ad92a8311fcbe5e27e71c642'
              'SKIP')
-b2sums_aarch64=('e0f877a64d085c2b623843921822ed59b471ca1f9bfd493c0e3457b0735bf8446be8aa65250d4887cc6dfebbc5ca552c610847a2f8ef6557643954faf8b757bd'
+b2sums_aarch64=('ec05b49ff1a042fa6ea50cac4601cec887d6c8e0ea0f995d34adea3d0020514e5c3302eb96c7712397a65c3219738bab9c49b3cf2e70b027f79f8aac84908791'
                 'SKIP')
 validpgpkeys=(
   108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE  # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
