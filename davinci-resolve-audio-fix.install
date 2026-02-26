@@ -1,0 +1,98 @@
+post_install() {
+    PACKAGE="davinci-resolve-audio-fix"
+    SHARE_DIR="/usr/share/${PACKAGE}"
+    SERVICE_NAME="dr-audio-watch"
+
+    REAL_USER="${SUDO_USER:-}"
+    if [[ -z "$REAL_USER" || "$REAL_USER" == "root" ]]; then
+        _print_manual_setup
+        return
+    fi
+
+    REAL_HOME=$(getent passwd "$REAL_USER" | cut -d: -f6)
+    CONFIG_DIR="${REAL_HOME}/.config/resolve-audio-fix"
+    SYSTEMD_DIR="${REAL_HOME}/.config/systemd/user"
+    NAUTILUS_DIR="${REAL_HOME}/.local/share/nautilus/scripts"
+    RESOLVE_DIR="${REAL_HOME}/.local/share/DaVinciResolve/Fusion/Scripts/Utility"
+
+    su -s /bin/bash "$REAL_USER" <<EOF
+mkdir -p "$CONFIG_DIR" "$SYSTEMD_DIR" "$NAUTILUS_DIR"
+
+if [[ ! -f "${CONFIG_DIR}/dr-watch.conf" ]]; then
+    cp "${SHARE_DIR}/config/dr-watch.conf.example" "${CONFIG_DIR}/dr-watch.conf"
+fi
+
+sed 's|%h/.local/bin/dr-watch.sh|/usr/bin/dr-watch|g' \
+    "${SHARE_DIR}/systemd/dr-audio-watch.service" \
+    > "${SYSTEMD_DIR}/dr-audio-watch.service"
+
+cp "${SHARE_DIR}/nautilus/DR Audio Fix" "${NAUTILUS_DIR}/DR Audio Fix"
+chmod +x "${NAUTILUS_DIR}/DR Audio Fix"
+EOF
+
+    if [[ -f "/opt/resolve/bin/resolve" ]]; then
+        su -s /bin/bash "$REAL_USER" <<EOF
+mkdir -p "$RESOLVE_DIR"
+cp "${SHARE_DIR}/resolve_script/dr_audio_fix.py" "${RESOLVE_DIR}/"
+EOF
+    fi
+
+    USER_ID=$(id -u "$REAL_USER")
+    if [[ -d "/run/user/${USER_ID}" ]]; then
+        su -s /bin/bash "$REAL_USER" <<EOF || true
+export XDG_RUNTIME_DIR=/run/user/${USER_ID}
+systemctl --user daemon-reload
+systemctl --user enable --now ${SERVICE_NAME}
+EOF
+    fi
+
+    echo ""
+    echo "  davinci-resolve-audio-fix installed."
+    echo "  Edit config: ${CONFIG_DIR}/dr-watch.conf"
+    echo "  Then restart: systemctl --user restart dr-audio-watch"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    REAL_USER="${SUDO_USER:-}"
+    [[ -z "$REAL_USER" || "$REAL_USER" == "root" ]] && return
+
+    REAL_HOME=$(getent passwd "$REAL_USER" | cut -d: -f6)
+    USER_ID=$(id -u "$REAL_USER")
+
+    if [[ -d "/run/user/${USER_ID}" ]]; then
+        su -s /bin/bash "$REAL_USER" <<EOF || true
+export XDG_RUNTIME_DIR=/run/user/${USER_ID}
+systemctl --user disable --now dr-audio-watch 2>/dev/null || true
+rm -f "${REAL_HOME}/.config/systemd/user/dr-audio-watch.service"
+systemctl --user daemon-reload || true
+EOF
+    fi
+
+    rm -f "${REAL_HOME}/.local/share/nautilus/scripts/DR Audio Fix"
+    rm -f "${REAL_HOME}/.local/share/DaVinciResolve/Fusion/Scripts/Utility/dr_audio_fix.py"
+
+    echo ""
+    echo "  Config kept at: ${REAL_HOME}/.config/resolve-audio-fix/"
+    echo "  To fully remove: rm -rf ${REAL_HOME}/.config/resolve-audio-fix/"
+    echo ""
+}
+
+_print_manual_setup() {
+    echo ""
+    echo "  Run as your regular user to complete setup:"
+    echo ""
+    echo "    mkdir -p ~/.config/resolve-audio-fix ~/.config/systemd/user"
+    echo "    cp /usr/share/davinci-resolve-audio-fix/config/dr-watch.conf.example \\"
+    echo "       ~/.config/resolve-audio-fix/dr-watch.conf"
+    echo "    sed 's|%h/.local/bin/dr-watch.sh|/usr/bin/dr-watch|g' \\"
+    echo "       /usr/share/davinci-resolve-audio-fix/systemd/dr-audio-watch.service \\"
+    echo "       > ~/.config/systemd/user/dr-audio-watch.service"
+    echo "    systemctl --user daemon-reload"
+    echo "    systemctl --user enable --now dr-audio-watch"
+    echo ""
+}

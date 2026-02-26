@@ -1,0 +1,17 @@
+pkgbase = davinci-resolve-audio-fix
+	pkgdesc = Fix AAC audio in DaVinci Resolve on Linux — auto-watcher, Nautilus integration, DR script
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/owlivion-tech/davinci-resolve-audio-fix
+	arch = any
+	license = MIT
+	depends = ffmpeg
+	depends = inotify-tools
+	optdepends = libnotify: desktop notifications
+	optdepends = python-tk: DaVinci Resolve GUI script
+	optdepends = nautilus: right-click integration
+	install = davinci-resolve-audio-fix.install
+	source = davinci-resolve-audio-fix-1.0.0.tar.gz::https://github.com/owlivion-tech/davinci-resolve-audio-fix/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = de6ff30f58ddf89569878314f2e22fb30a25f77e290c571471ead0e0453441b7
+
+pkgname = davinci-resolve-audio-fix
