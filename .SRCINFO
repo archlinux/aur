@@ -1,6 +1,6 @@
 pkgbase = r8125-dkms
 	pkgdesc = Kernel module for RTL8125
-	pkgver = 9.016.01
+	pkgver = 9.017.01
 	pkgrel = 1
 	url = https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software
 	arch = any
@@ -9,9 +9,9 @@ pkgbase = r8125-dkms
 	optdepends = linux-headers: Build the module for Arch kernel
 	optdepends = linux-lts-headers: Build the module for LTS Arch kernel
 	conflicts = r8125
-	source = https://github.com/aravance/r8125/archive/refs/tags/9.016.01.tar.gz
+	source = https://github.com/aravance/r8125/archive/refs/tags/9.017.01.tar.gz
 	source = dkms.conf
-	sha256sums = 7536212fc5ba0b62ff19662bddeda52ed8eac5bac1d6f18cc192f6191fedc6f0
+	sha256sums = d796e34b111aac67527f1e16e6319961d08b67f798ea5b55863212ee268d2429
 	sha256sums = ad4c67e0c74661d19b74872f98254184d4b04e32e4c57b338a84fbcefa4c721f
 
 pkgname = r8125-dkms
