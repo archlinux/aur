@@ -14,7 +14,7 @@ pkgbase = shpool
 	checkdepends = procps-ng
 	makedepends = cargo
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
 	source = shpool-0.9.4.tar.gz::https://github.com/shell-pool/shpool/archive/v0.9.4.tar.gz
 	sha512sums = 8b5d3e3fc3976393e101aa71a3348f8e82ecae34d1ea4caf92c8e27f3fe2c84a1df21e02bdbbb029aaa3eb1f02c34580bf2732e3eba8b50b6a829b7d0718a631
 
