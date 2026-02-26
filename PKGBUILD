@@ -1,7 +1,7 @@
 # Maintainer: Tássio Virgínio <tassiovirginio@gmail.com>
 
 pkgname=dnose-bin
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Dart Test Smell Detector"
 arch=('x86_64')
