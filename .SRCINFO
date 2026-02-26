@@ -1,6 +1,6 @@
 pkgbase = ormolu-static-git
 	pkgdesc = A formatter for Haskell source code
-	pkgver = 0.8.0.0.r0.g4369d7c
+	pkgver = 0.8.0.2.r6.g2164be7
 	pkgrel = 1
 	url = https://github.com/tweag/ormolu
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = ormolu-static-git
 	makedepends = stack
 	makedepends = yq
 	depends = gmp
-	provides = ormolu=0.8.0.0
+	provides = ormolu=0.8.0.2
 	conflicts = ormolu
 	source = ormolu-static-git::git+https://github.com/tweag/ormolu.git
 	sha256sums = SKIP

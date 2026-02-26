@@ -4,7 +4,7 @@
 
 pkgname=ormolu-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.8.0.0.r0.g4369d7c
+pkgver=0.8.0.2.r6.g2164be7
 pkgrel=1
 pkgdesc='A formatter for Haskell source code'
 arch=('i686' 'x86_64')
@@ -44,20 +44,7 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  stack config set resolver lts-23.1 # ghc-9.8.4
-
-  # Note -- need to bump filepath for ghc-lib-parser
-  # and touching a boot package means we need to touch all the others
-  _bumpVer directory 1.3.9.0
-  _bumpVer filepath  1.5.4.0
-  _bumpVer process   1.6.25.0
-  _bumpVer unix      2.8.6.0
-
-  yq -i --yaml-output \
-      '(.flags |
-        (.unix, .directory, ."file-io") |
-        ."os-string")
-        = true' stack.yaml
+  stack config set resolver lts-24.32 # ghc-9.10.3
 
   # enable tests
   yq -i --yaml-output \
