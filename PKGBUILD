@@ -3,14 +3,14 @@
 
 pkgname=rudesktop
 pkgver=2.9.1069
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 pkgdesc="Ru-Desktop client for home use"
 url="https://rudesktop.ru/downloads/"
 license=('Commercial')
 install=${pkgname}.install
 depends=(sudo ca-certificates python lshw smartmontools pyalpm cron gtk3 libxcb alsa-lib libxfixes libsystemd python-evdev python-six python-pynput python-xlib libpulse)
-sha256sums=('e2af024ec34f31ec566a309a84050cc9ed550e65e3aeb07a8f0021dba2386393')
+sha256sums=('413dc48ae38076ce40ae1ac4f6f62e13e0f173bb656587041a093c10d17e8020')
 options=(!debug)
 source=("https://storage.rudesktop.ru/download/rudesktop-2.9.1069-x86_64.pkg.tar.zst")
 

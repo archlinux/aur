@@ -1,7 +1,7 @@
 pkgbase = rudesktop
 	pkgdesc = Ru-Desktop client for home use
 	pkgver = 2.9.1069
-	pkgrel = 4
+	pkgrel = 5
 	url = https://rudesktop.ru/downloads/
 	install = rudesktop.install
 	arch = x86_64
@@ -25,6 +25,6 @@ pkgbase = rudesktop
 	depends = libpulse
 	options = !debug
 	source = https://storage.rudesktop.ru/download/rudesktop-2.9.1069-x86_64.pkg.tar.zst
-	sha256sums = e2af024ec34f31ec566a309a84050cc9ed550e65e3aeb07a8f0021dba2386393
+	sha256sums = 413dc48ae38076ce40ae1ac4f6f62e13e0f173bb656587041a093c10d17e8020
 
 pkgname = rudesktop
