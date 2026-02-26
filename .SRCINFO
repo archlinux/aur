@@ -1,0 +1,19 @@
+pkgbase = leoclip
+	pkgdesc = A minimalist, multimedia clipboard manager for i3wm built with Python & SQLite.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/leonardopolicarpo/leoclip
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = xclip
+	depends = rofi
+	depends = scrot
+	source = leoclip-0.2.0.tar.gz::https://github.com/leonardopolicarpo/leoclip/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = e380687d0d676a66ad236d80fd2667f32eafd2ef176ff72dd2b76c528f6784a2
+
+pkgname = leoclip
