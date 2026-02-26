@@ -1,12 +1,14 @@
 pkgbase = fcitx5-lotus-bin
 	pkgdesc = Vietnamese input method for fcitx5
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/LotusInputMethod/fcitx5-lotus
 	install = fcitx5-lotus.install
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = fcitx5
+	depends = fcitx5-qt
+	depends = qt6-base
 	depends = libinput
 	depends = hicolor-icon-theme
 	depends = glibc
@@ -15,7 +17,7 @@ pkgbase = fcitx5-lotus-bin
 	depends = systemd-libs
 	provides = fcitx5-lotus
 	conflicts = fcitx5-lotus
-	source = https://github.com/LotusInputMethod/fcitx5-lotus/releases/download/v1.1.0/fcitx5-lotus-v1.1.0-x86_64-archlinux.zip
-	sha256sums = 9176ac1950a0858e8d2979f89b28cd45fe9c7e18cfe79df81586f911b1eaeb2c
+	source = https://github.com/LotusInputMethod/fcitx5-lotus/releases/download/v1.2.0/fcitx5-lotus-v1.2.0-x86_64-archlinux.tar.zst
+	sha256sums = 05085499ef9faee835652623f406d8c04841276bfe5ba5ce39bed1a34555c613
 
 pkgname = fcitx5-lotus-bin
