@@ -1,6 +1,6 @@
 pkgbase = olivetin-bin
 	pkgdesc = Safe and simple access to predefined shell commands from a web interface
-	pkgver = 3000.10.0
+	pkgver = 3000.10.1
 	pkgrel = 1
 	url = https://www.olivetin.app/
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = olivetin-bin
 	source = olivetin@.service
 	b2sums = 402097ad54be50688a22223b96f32a6630ec5479bcf4f99dbaf98d1b212cac4316c4adcf8dd7aeb9216d28dd815b5b80820023a4ca710ebe60f7603795931489
 	b2sums = 90c4f129b8a481612a7b4c051b48930bce6259df1a1f02c7fcadcabe4eb3031feaa7bc620fd543ed66d2453464c7f5c383e58d7146019a01c98c333ccf382f25
-	source_x86_64 = olivetin-bin-3000.10.0-x86_64.tar.gz::https://github.com/OliveTin/OliveTin/releases/download/3000.10.0/OliveTin-linux-amd64.tar.gz
-	b2sums_x86_64 = faa5260d4e3e20f47677d3698a517486cc3ac6ee30b0b50cdd56cf28b18f4fbb944ad1c485afb5b7ac2bbd5287f60e56bb6298b3294ec2c58ed719dd330e6be9
-	source_aarch64 = olivetin-bin-3000.10.0-aarch64.tar.gz::https://github.com/OliveTin/OliveTin/releases/download/3000.10.0/OliveTin-linux-arm64.tar.gz
-	b2sums_aarch64 = 89ab968fce7d83e5e44f3385b8241aaa8b1397148d7a0dfdd889e44634a727b9fa5867b3a04dc699d4e1d524c7841d23aebab5ecf15226ae33b91c44f68bb51f
-	source_armv7h = olivetin-bin-3000.10.0-armv7h.tar.gz::https://github.com/OliveTin/OliveTin/releases/download/3000.10.0/OliveTin-linux-arm7.tar.gz
-	b2sums_armv7h = 0e921fd2ca7f95912bb79ef7ad62489d781f1b912bc3153847aea6a4c7e7fca7504b6a831e07f76ef6ecfcb426a44b59e2f546740ea4e445930187c6507be5ef
+	source_x86_64 = olivetin-bin-3000.10.1-x86_64.tar.gz::https://github.com/OliveTin/OliveTin/releases/download/3000.10.1/OliveTin-linux-amd64.tar.gz
+	b2sums_x86_64 = 90fd28b09a65cf1f83e9d9317ce3cc6e96b02abab36c3a9a10a12ca867d5b6527c74868932185f8c79740fd899e269b78a7bac7c743362130adb828e6007ae44
+	source_aarch64 = olivetin-bin-3000.10.1-aarch64.tar.gz::https://github.com/OliveTin/OliveTin/releases/download/3000.10.1/OliveTin-linux-arm64.tar.gz
+	b2sums_aarch64 = 7eb7475e72e25151909130009f086728b5502dd80fb13412144e3a5e214fc28783f36cbb1909ac263062dd9ed4f757bbd7f35e4f367cc86b9d50895c4d988e6c
+	source_armv7h = olivetin-bin-3000.10.1-armv7h.tar.gz::https://github.com/OliveTin/OliveTin/releases/download/3000.10.1/OliveTin-linux-arm7.tar.gz
+	b2sums_armv7h = b664ec526c495f0e9b782170abd9ffcf5bb40946344b8734494cbe2bc237692905491f683543da014b573034952fdb3c127359ce1ef0ac90981fee88a550c3fa
 
 pkgname = olivetin-bin
