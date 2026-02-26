@@ -10,7 +10,7 @@ _system_flutter=false # build_system part seems missing in aur/flutter
 _flutter_version=3.35.2
 
 pkgname=spotube
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="Open source music client! Available for both desktop & mobile!"
 arch=("x86_64" "aarch64")
@@ -26,10 +26,10 @@ optdepends=("avahi: required if using remote controlling"
             "yt-dlp: Alternative YouTube engine support")
 options=("!lto") # undefined symbol: Dart_NewPersistentHandle_DL
 source=("$pkgname-$pkgver.tar.gz::https://github.com/KRTirtho/spotube/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('23d94fbf89d3483ea483bb199f3204c4cbc0fe0008455f2f195f7f01acd14752'
+sha256sums=('dfb10e6f8fd193730b3f2c49fd5fd0e9068d3951c3528176bfb6a83d59e350a6'
             'f0131080b47bfaa1fcc698e7e8f5814fa741b835eb8b3bbc70fde9a9380828b4')
 
-_release_date=2025-11-14
+_release_date=2026-02-24
 
 if $_system_flutter
 then
