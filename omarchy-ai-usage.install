@@ -103,11 +103,15 @@ with open('$tmp', 'w') as f:
 CSS
     fi
 
-    # Fix ownership
-    chown -R "$user:$user" "$dst"/ai-usage*.sh "$home/.config/ai-usage" 2>/dev/null
+    # Fix ownership on ALL modified files
+    chown "$user:$user" "$cfg" "${cfg}.bak."* 2>/dev/null
+    chown "$user:$user" "$css" "${css}.bak."* 2>/dev/null
+    chown "$user:$user" "$dst"/ai-usage*.sh 2>/dev/null
+    chown -R "$user:$user" "$home/.config/ai-usage" 2>/dev/null
 
-    # Restart waybar
-    pkill -RTMIN+9 waybar 2>/dev/null || true
+    # Restart waybar as the user
+    su "$user" -c 'pkill -RTMIN+9 waybar' 2>/dev/null
+    su "$user" -c 'omarchy-restart-waybar' 2>/dev/null || true
 
     echo "  󰧑  Waybar configured for $user"
 }
@@ -175,8 +179,12 @@ with open('$tmp', 'w') as f:
     # Remove cache
     rm -f /tmp/ai-usage-cache-*.json
 
-    # Restart waybar
-    pkill -RTMIN+9 waybar 2>/dev/null || true
+    # Fix ownership on modified files
+    chown "$user:$user" "$cfg" "${cfg}.bak."* 2>/dev/null
+    chown "$user:$user" "$css" "${css}.bak."* 2>/dev/null
+
+    # Restart waybar as the user
+    su "$user" -c 'omarchy-restart-waybar' 2>/dev/null || true
 
     echo "  󰧑  Waybar config cleaned for $user"
 }
