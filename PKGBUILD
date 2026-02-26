@@ -6,7 +6,7 @@ _pkgauthor=Mjoyufull
 _pkgname=Setrixtui
 
 pkgname=${_pkgname,,}
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Tetris Sand game in Ratatui"
 
@@ -19,7 +19,7 @@ provides=("${_execname}")
 makedepends=('rust')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a21b771f1690ffd0415cd903c93d6909a185344190e3ee246dfb2cf8a4d21484')
+sha256sums=('722e70fb1264ebe2185c0838a1a6b68051362441f27ee580e6682cbaec47dd2a')
 
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}/ || exit 1
