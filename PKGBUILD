@@ -1,6 +1,6 @@
 pkgname=hyprcord-bin
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Hyprcord - a custom Discord client"
 arch=('x86_64')
 url="https://github.com/Bebbesi/HyprCord"
@@ -28,11 +28,11 @@ package() {
     chmod 4755 "${pkgdir}/opt/hyprcord/chrome-sandbox"
   fi
 
-  # Create a wrapper script instead of symlinking AppRun
+  # Create a wrapper script pointing to the capitalized binary
   install -d "${pkgdir}/usr/bin"
   cat <<EOF > "${pkgdir}/usr/bin/hyprcord"
 #!/bin/sh
-exec /opt/hyprcord/hyprcord --ozone-platform-hint=auto "\$@"
+exec /opt/hyprcord/Hyprcord --ozone-platform-hint=auto "\$@"
 EOF
   chmod +x "${pkgdir}/usr/bin/hyprcord"
 
