@@ -18,9 +18,8 @@ pkgbase = simple-mirror-git
 	optdepends = qt6-translations: localized Qt built-in dialogs and standard UI strings
 	provides = simple-mirror
 	conflicts = simple-mirror
+	options = !debug
 	source = git+https://github.com/moltenib/simple-mirror.git
-	source = simple-mirror.desktop
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = simple-mirror-git

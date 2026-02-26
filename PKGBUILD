@@ -8,6 +8,7 @@ pkgdesc='An rsync wrapper, built on C++ and Qt.'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/moltenib/simple-mirror'
 license=('GPL-3.0-only')
+options=('!debug')
 
 depends=(
   'qt6-base'
@@ -28,14 +29,8 @@ optdepends=(
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=(
-  "git+${url}.git"
-  "${_pkgname}.desktop"
-)
-sha256sums=(
-  'SKIP'
-  'SKIP'
-)
+source=("git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -59,7 +54,7 @@ package() {
 exec /usr/lib/simple-mirror/simple-mirror "$@"
 EOF
 
-  install -Dm644 "${srcdir}/${_pkgname}.desktop" \
+  install -Dm644 "resources/${_pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   install -Dm644 "resources/icons/icon.png" \
