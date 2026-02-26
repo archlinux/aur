@@ -1,6 +1,6 @@
 pkgname=cohesivemail
 pkgver=0.0.73
-pkgrel=1
+pkgrel=2
 pkgdesc="CohesiveMail desktop client"
 arch=("x86_64")
 url="https://dl.actuallyreliable.com/apps"
@@ -38,7 +38,12 @@ sha256sums=(
 
 package() {
   install -d "$pkgdir/opt/cohesivemail"
-  cp -a "$srcdir"/* "$pkgdir/opt/cohesivemail/"
+  local src_root=("$srcdir"/cohesivemail*)
+  if [[ -d "${src_root[0]}" ]]; then
+    cp -a "${src_root[0]}/." "$pkgdir/opt/cohesivemail/"
+  else
+    cp -a "$srcdir"/* "$pkgdir/opt/cohesivemail/"
+  fi
   chmod +x "$pkgdir/opt/cohesivemail/cohesivemail"
 
   install -d "$pkgdir/usr/bin"

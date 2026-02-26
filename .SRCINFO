@@ -1,7 +1,7 @@
 pkgbase = cohesivemail
 	pkgdesc = CohesiveMail desktop client
 	pkgver = 0.0.73
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dl.actuallyreliable.com/apps
 	arch = x86_64
 	license = custom
