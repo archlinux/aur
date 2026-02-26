@@ -2,7 +2,7 @@
 
 pkgname=bootc-git
 _pkgname=bootc
-pkgver=1.12.1.r61.g0a75768
+pkgver=1.13.0.r14.g99820c1
 pkgrel=1
 pkgdesc="Boot and upgrade via container images"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "$_pkgname"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 pkgver() {
