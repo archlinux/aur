@@ -1,5 +1,5 @@
 pkgbase = mx-service-manager
-	pkgdesc = Service management tool for MX Linux
+	pkgdesc = GUI service management tool
 	pkgver = 26.02arch
 	pkgrel = 1
 	url = https://github.com/mx-linux/mx-service-manager
