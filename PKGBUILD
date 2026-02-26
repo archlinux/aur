@@ -1,5 +1,5 @@
 pkgname=anitrack-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="CLI/TUI companion for ani-cli with watch-progress tracking (prebuilt binary)"
 arch=("x86_64")
@@ -9,7 +9,7 @@ depends=("ani-cli" "glibc" "gcc-libs")
 provides=("anitrack")
 conflicts=("anitrack")
 source=("anitrack-linux-x86_64.tar.gz::https://github.com/MiguelRegueiro/anitrack-cli/releases/download/v${pkgver}/anitrack-linux-x86_64.tar.gz")
-sha256sums=("6d46a110a6e1674bcbaf096d233987b8f7efd4946419b62aca204a4f21eb5bc0")
+sha256sums=("a3b4102ce4388c6eab29595097b5322b0e2c2a749ee178cd62b7829be3635580")
 
 package() {
   install -Dm755 "$srcdir/anitrack" "$pkgdir/usr/bin/anitrack"
