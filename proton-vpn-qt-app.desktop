@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Proton VPN Qt App
+GenericName=VPN Client
+Comment=Qt GUI frontend for Proton VPN CLI
+Exec=proton-vpn-qt-app
+Icon=proton-vpn-qt-app
+Terminal=false
+Type=Application
+Categories=Network;Internet;
+Keywords=VPN;Proton;Network;Security;
+StartupNotify=true
