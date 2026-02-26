@@ -1,0 +1,16 @@
+pkgbase = librewolf-extension-plasma-integration-bin
+	pkgdesc = Plasma Integration extension for LibreWolf
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://addons.mozilla.org/en-US/firefox/addon/plasma-integration
+	arch = any
+	groups = librewolf-addons
+	license = GPL-3.0-only
+	depends = librewolf
+	provides = librewolf-extension-plasma-integration
+	conflicts = librewolf-extension-plasma-integration
+	noextract = plasma-browser-integration@kde.org.xpi-2.1
+	source = plasma-browser-integration@kde.org.xpi-2.1::https://addons.mozilla.org/firefox/downloads/file/4614817/plasma_integration-2.1.xpi
+	sha256sums = 35bfa3766e097160e74f525bde54d97bbba90d725daa425b9de6fef6ec5e9d44
+
+pkgname = librewolf-extension-plasma-integration-bin
