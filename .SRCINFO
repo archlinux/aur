@@ -1,0 +1,21 @@
+pkgbase = apx-bin
+	pkgdesc = Vanilla OS package manager based on Distrobox
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/Vanilla-OS/apx
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = go
+	depends = distrobox
+	depends = glibc
+	depends = flatpak
+	provides = apx
+	source_x86_64 = apx-bin-3.0.1-x86_64.tar.gz::https://github.com/Vanilla-OS/apx/releases/download/v3.0.1/apx-amd64.tar.gz
+	source_x86_64 = apx-bin-configs.tar.gz::https://github.com/Vanilla-OS/vanilla-apx-configs/archive/37a7ce46c5387f70e99cb618532da90de31653f4.zip
+	source_x86_64 = https://raw.githubusercontent.com/Vanilla-OS/apx/refs/heads/main/config/apx.json
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+
+pkgname = apx-bin
