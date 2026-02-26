@@ -1,0 +1,24 @@
+_reload_systemd_and_enable() {
+  systemd-sysusers /usr/lib/sysusers.d/mangochill.conf
+  udevadm control --reload
+  udevadm trigger --subsystem-match=input
+  systemctl daemon-reload
+  systemctl enable --now mangochill-server.service
+}
+
+post_install() {
+  _reload_systemd_and_enable
+}
+
+post_upgrade() {
+  _reload_systemd_and_enable
+}
+
+pre_remove() {
+  systemctl disable --now mangochill-server.service
+}
+
+post_remove() {
+  udevadm control --reload
+  systemctl daemon-reload
+}
