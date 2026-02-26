@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('libsodium' 'libseccomp' 'libcap')
 makedepends=('clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/basicallygit/nacrypt/archive/$pkgver.tar.gz")
-sha256sums=("2d615821230640743a87cdfdf2fc22db2e7902a028d8baddfa289546bf6ba398")
+sha256sums=("5f305e16b39347b400d0753acccffda1911939a99bb1917cb3d9a0fdd1396017")
 
 prepare() {
 	cd "$pkgname-$pkgver"
