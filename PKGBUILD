@@ -6,6 +6,7 @@ arch=('x86_64')
 url="https://github.com/Bebbesi/HyprCord"
 license=('MIT')
 depends=('gtk3' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core')
+makedepends=('desktop-file-utils')
 provides=('hyprcord')
 conflicts=('hyprcord')
 
@@ -18,13 +19,13 @@ prepare() {
 }
 
 package() {
-  # Install extracted AppImage
+  # Install app to /opt
   install -dm755 "${pkgdir}/opt/hyprcord"
   cp -r squashfs-root/* "${pkgdir}/opt/hyprcord"
 
-  # Symlink launcher
-  install -Dm755 "${pkgdir}/opt/hyprcord/AppRun" \
-    "${pkgdir}/usr/bin/hyprcord"
+  # Symlink binary
+  install -d "${pkgdir}/usr/bin"
+  ln -s "/opt/hyprcord/AppRun" "${pkgdir}/usr/bin/hyprcord"
 
   # Install icon if present
   if [ -f squashfs-root/usr/share/icons/hicolor/256x256/apps/hyprcord.png ]; then
@@ -32,7 +33,7 @@ package() {
       "${pkgdir}/usr/share/icons/hicolor/256x256/apps/hyprcord.png"
   fi
 
-  # Create desktop entry manually (always works)
+  # Desktop file
   install -Dm644 /dev/stdin \
     "${pkgdir}/usr/share/applications/hyprcord.desktop" <<EOF
 [Desktop Entry]
@@ -44,4 +45,12 @@ Terminal=false
 Type=Application
 Categories=Network;Chat;
 EOF
+
+  desktop-file-validate "${pkgdir}/usr/share/applications/hyprcord.desktop"
+
+  # Install license if available
+  if [ -f squashfs-root/LICENSE ]; then
+    install -Dm644 squashfs-root/LICENSE \
+      "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  fi
 }
