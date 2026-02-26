@@ -1,6 +1,6 @@
 pkgname=hyprcord-bin
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Hyprcord - a custom Discord client"
 arch=('x86_64')
 url="https://github.com/Bebbesi/HyprCord"
