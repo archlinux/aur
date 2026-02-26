@@ -1,0 +1,20 @@
+pkgbase = proton-vpn-qt-app
+	pkgdesc = Qt6 GUI frontend for Proton VPN CLI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/wheat32/proton-vpn-qt-app
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-svg
+	depends = protonvpn-cli
+	depends = iproute2
+	optdepends = networkmanager: display active server name
+	optdepends = curl: display public IP address
+	source = git+https://github.com/wheat32/proton-vpn-qt-app.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = proton-vpn-qt-app
