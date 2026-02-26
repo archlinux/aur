@@ -1,0 +1,21 @@
+pkgbase = dotmatrix-git
+	pkgdesc = Dotfile management and versioning tool with TUI and GUI
+	pkgver = 0.4.1.r5.g52e34c1
+	pkgrel = 1
+	url = https://github.com/Woofson/dotmatrix
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libgl
+	depends = oniguruma
+	depends = zstd
+	provides = dotmatrix
+	conflicts = dotmatrix
+	source = git+https://github.com/Woofson/dotmatrix.git
+	sha256sums = SKIP
+
+pkgname = dotmatrix-git
