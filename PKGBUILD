@@ -1,6 +1,6 @@
 pkgname=lightningview
 pkgver=2.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightning-fast cross-platform image viewer written in Rust, supporting many raw camera formats."
 arch=('x86_64')
 url="https://github.com/dividebysandwich/LightningView"
@@ -26,7 +26,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cd "LightningView-$pkgver"
-    cargo build --release --frozen
+    cargo build --release #--frozen
 }
 
 package() {
