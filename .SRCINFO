@@ -1,0 +1,18 @@
+pkgbase = python-h5io
+	pkgdesc = Python package for saving standard objects to forward-compatible HDF5 files
+	pkgver = 0.2.5
+	pkgrel = 1
+	url = https://github.com/h5io/h5io/tree/main
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python
+	depends = python-numpy
+	depends = python-h5py
+	source = https://files.pythonhosted.org/packages/source/h/h5io/h5io-0.2.5.tar.gz
+	sha1sums = 539669f8bbdb9a5341afc731fcb0b0a5ee1e6cff
+
+pkgname = python-h5io
