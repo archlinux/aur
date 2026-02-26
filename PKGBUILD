@@ -22,4 +22,5 @@ build() {
 package() {
     install -Dm 0755 "$srcdir/$pkgname/csdr-cwskimmer" "$pkgdir/usr/bin/csdr-cwskimmer"
     install -Dm 0755 "$srcdir/$pkgname/csdr-rttyskimmer" "$pkgdir/usr/bin/csdr-rttyskimmer"
+    install -Dm 0644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
