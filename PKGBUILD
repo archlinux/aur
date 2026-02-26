@@ -2,15 +2,15 @@
 # Contributor: katt <magunasu.b97@gmail.com>
 _pkgname=librw
 pkgname=$_pkgname-git
-pkgver=r569.169a45a
-pkgrel=2
+pkgver=r572.1499b96
+pkgrel=1
 pkgdesc="A re-implementation of the RenderWare Graphics engine"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/aap/librw"
 license=('MIT')
-depends=('gcc-libs' 'glfw>=3.3.7' 'glibc')
-makedepends=('cmake' 'git')
-provides=("$_pkgname=${pkgver#r}" 'librw.so')
+depends=('glfw>=3.3.7' 'glibc')
+makedepends=('cmake' 'git' 'libstdc++')
+provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname" 'rankwidth')
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
@@ -37,6 +37,7 @@ build() {
 }
 
 package() {
+	depends+=('libstdc++.so')
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_pkgname/LICENSE
