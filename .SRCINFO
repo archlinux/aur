@@ -1,0 +1,14 @@
+pkgbase = nanokvm-usb
+	pkgdesc = allows you to perform maintenance tasks without the need for a keyboard, mouse, or monitor
+	pkgver = 1.1.4
+	pkgrel = 1
+	url = https://github.com/sipeed/NanoKVM-USB/
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = npm
+	depends = nodejs-http-server
+	source = git+https://github.com/sipeed/NanoKVM-USB.git#tag=v1.1.4
+	sha256sums = SKIP
+
+pkgname = nanokvm-usb

@@ -1,0 +1,4 @@
+[nanokvm-usb]
+source = "git"
+git = "https://github.com/sipeed/NanoKVM-USB.git"
+prefix = "v"
