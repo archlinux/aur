@@ -1,5 +1,5 @@
 pkgname=mic-indicator
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="PipeWire microphone tray indicator."
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('cmake')
 provides=('mic-indicator')
 conflicts=('mic-indicator-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('e06617ddef5ca229302b076ea2220c403c5c7361645be38cc1cdf1f5cc95e010')
+sha256sums=('fa12f1856e3d6d930289e34a7c37b3d538e8196763bfebce05de1359106ed791')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
