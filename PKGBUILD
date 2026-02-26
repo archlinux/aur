@@ -3,7 +3,7 @@
 
 _pkgname=scikit-hep-testdata
 pkgname="python-${_pkgname}"
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc='A common package to provide example files (e.g. ROOT) for testing and developing packages against'
 arch=(any)
@@ -26,7 +26,7 @@ depends=(
   python-requests
 )
 source=("$_pkgname::git+$url#tag=v$pkgver")
-b2sums=('dd8ed76c7c8f6d189a6a0374cbf0573df8f55a8f10334689ceaacaa2f4c1d37404e1bf04a9fc91e147d855456fa95f481541e2ae0a13b4fdafca8523e0f9b91d')
+b2sums=('d5234f213de39ebcd73e7376aa0c9892c2a875fe4a4b89e01d47dacd54ff4bb2303ec6d90cbb7a3e3e20128a9e27c60630eb9e4233064b67b28e3a9aea749a6d')
 
 build() {
   cd $_pkgname
