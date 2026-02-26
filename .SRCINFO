@@ -1,0 +1,18 @@
+pkgbase = termitune
+	pkgdesc = A beautiful TUI MP3 music player for Arch Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/m4rcel-lol/TermiTune
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = alsa-lib
+	depends = gcc-libs
+	optdepends = libpulse: PulseAudio/PipeWire support
+	source = termitune-0.1.0.tar.gz::https://github.com/m4rcel-lol/TermiTune/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 5ebab48b036a1542a413cf14401d45d12749c7497cc1e778b57a8c4bde3ca3d7
+
+pkgname = termitune
