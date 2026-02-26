@@ -24,8 +24,10 @@ makedepends=(
 source=(
   "git+https://github.com/wheat32/proton-vpn-qt-app.git#tag=v${pkgver}"
   "proton-vpn-qt-app.desktop"
+  "proton-vpn-sign.svg"
 )
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 build() {
@@ -43,4 +45,7 @@ package() {
 
     install -Dm644 proton-vpn-qt-app.desktop \
         "${pkgdir}/usr/share/applications/proton-vpn-qt-app.desktop"
+
+    install -Dm644 proton-vpn-sign.svg \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/proton-vpn-qt-app.svg"
 }
