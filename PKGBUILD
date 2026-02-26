@@ -3,7 +3,7 @@ pkgname=ai-browser-git
 _pkgname=AI-Browser
 pkgver=1.6.8.r1.g04ba726
 _electronversion=40
-_nodeversion=25
+_nodeversion=24
 pkgrel=1
 pkgdesc='Client app for ChatGPT, Gemini, Claude, Phind, Perplexity, Genspark and Google AI Studio with Monaco Editor integration.(Use system-wide electron)'
 arch=('any')
@@ -14,6 +14,7 @@ conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
     "electron${_electronversion}"
+    'python'
 )
 makedepends=(
     'npm'
@@ -80,6 +81,7 @@ prepare() {
     fi
     _ensure_local_nvm
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
+    NODE_ENV=development    npm add -D node-gyp
     NODE_ENV=development    npm install --legacy-peer-deps
 }
 build() {
@@ -88,11 +90,32 @@ build() {
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.yml"
+    case "${CARCH}" in
+        aarch64)
+            rm -rf "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources/app.asar.unpacked/node_modules/@homebridge/node-pty-prebuilt-multiarch/prebuilds/"{linux-arm,linux-ia32,linux-x64}
+            ;;
+        armv7h)
+            rm -rf "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources/app.asar.unpacked/node_modules/@homebridge/node-pty-prebuilt-multiarch/prebuilds/"{linux-arm64,linux-ia32,linux-x64}
+            ;;
+        i686)
+            rm -rf "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources/app.asar.unpacked/node_modules/@homebridge/node-pty-prebuilt-multiarch/prebuilds/"{linux-arm*,linux-x64}
+            ;;
+        x86_64)
+            rm -rf "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources/app.asar.unpacked/node_modules/@homebridge/node-pty-prebuilt-multiarch/prebuilds/"{linux-arm*,linux-ia32}
+            ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+	find "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-git}" {} +
+    if find "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-git}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/${pkgname%-git}.git/resources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}"
