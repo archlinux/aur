@@ -1,6 +1,6 @@
 pkgbase = inno
 	pkgdesc = A lightweight, event-driven Wayland notification agent (Rust)
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/SykikXO/inno
 	arch = x86_64
@@ -11,9 +11,12 @@ pkgbase = inno
 	depends = cairo
 	depends = dbus
 	depends = glibc
+	depends = ttf-jetbrains-mono-nerd
 	backup = etc/xdg/inno/inno.toml
-	backup = etc/xdg/inno/events/battery.toml
-	source = inno-0.3.0.tar.gz::https://github.com/SykikXO/inno/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 1770f8d72f14d4583616187bfcf276dae924a5b6bc3a2c00b0ae314bc6ce24cf
+	backup = etc/xdg/inno/events/bluetooth.toml
+	backup = etc/xdg/inno/events/laptop_battery.toml
+	backup = etc/xdg/inno/events/headset_battery.toml
+	source = inno-0.4.0.tar.gz::https://github.com/SykikXO/inno/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = c85307817beda2333d5279fe7f4397c7de5d58884eb9715abedc0825cf64058c
 
 pkgname = inno
