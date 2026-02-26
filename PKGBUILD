@@ -1,5 +1,5 @@
 pkgname=mic-indicator-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="PipeWire microphone tray indicator. Pre-compiled."
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('qt6-base' 'pipewire')
 provides=('mic-indicator')
 conflicts=('mic-indicator')
 source=("https://github.com/lincot/mic-indicator/releases/download/v${pkgver}/${pkgname/-bin/}_${pkgver}.tar.gz")
-sha256sums=('e320e2e44198b684bf2e0ac17be93cb7a8755b7dbf87401c316ebd55d55036eb')
+sha256sums=('1c6d62363606b21887af2ebc04db75f63cd0685c625310db51ca4561b69ab4b7')
 
 package() {
   cd "$srcdir"
