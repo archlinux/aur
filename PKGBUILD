@@ -12,7 +12,7 @@ _bldtype=Release
 _mozc_commit=23e60227046494a962832989736bd5b4c6a580b7
 _bcr_commit=d79dfab702994f66c567b6b7384f14e3cd51c2f7
 _dict_to_mozc_commit=f6e4045f0f4eebd156c4397efef525aecf4657a6
-_dict_to_mozc=v0.6.29
+_dict_to_mozc=v0.6.30
 
 _branch=fcitx
 # Sudachi Dictionary
