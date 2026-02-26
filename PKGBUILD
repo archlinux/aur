@@ -1,10 +1,10 @@
 pkgname=mingw-w64-mesa
-pkgver=25.3.1
+pkgver=26.0.1
 pkgrel=1
-pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
+pkgdesc="Open-source OpenGL drivers (mingw-w64)"
 arch=('any')
 url="https://www.mesa3d.org/"
-license=("custom")
+license=("MIT AND BSD-3-Clause AND SGI-B-2.0")
 makedepends=('mingw-w64-meson' 'mingw-w64-cmake' 'mingw-w64-directx-headers' 'python-mako' 'python-packaging' 'python-yaml' 'glslang')
 depends=('mingw-w64-llvm' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-dlfcn')
 options=('staticlibs' '!strip' '!buildflags')
@@ -17,7 +17,7 @@ validpgpkeys=(
   E3E8F480C52ADD73B278EE78E1ECBE07D7D70895 # Juan Antonio Suárez Romero (Igalia, S.L.) <jasuarez@igalia.com>
 )
 source=(https://archive.mesa3d.org/mesa-$pkgver.tar.xz{,.sig})
-sha256sums=('059d0d985622f49588f01aa29152804f4da8ffe6add046e00a52923379c2d8da'
+sha256sums=('bb5104f9f9a46c9b5175c24e601e0ef1ab44ce2d0fdbe81548b59adc8b385dcc'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
