@@ -10,7 +10,7 @@ url='https://www.chiark.greenend.org.uk/~sgtatham/spigot'
 license=(MIT)
 provides=(spigot)
 conflicts=(spigot)
-depends=(glibc gmp ncurses gcc-libs)
+depends=(glibc gmp ncurses libgcc libstdc++)
 makedepends=(cmake halibut)
 source=(
   "$pkgname-$pkgver.tar.gz::$url/spigot-$pkgver.$_commit.tar.gz"
