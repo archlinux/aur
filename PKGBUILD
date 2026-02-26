@@ -42,8 +42,6 @@ makedepends=(
 source=("git+https://github.com/koverstreet/bcachefs-tools.git")
 sha256sums=('SKIP')
 
-options=('!lto')
-
 _common_make_args=(
     BCACHEFS_FUSE=1
     PREFIX=/usr
@@ -65,6 +63,13 @@ prepare() {
     # Fetch Rust deps up front so build/package stages don't need to
     # download crates again when using --locked.
     cargo fetch --locked --target "$(rustc --print host-tuple)"
+
+    # _Disable_ cross-toolchain LTO because we are using different toolchains
+    # for C/C++ and Rust code (i.e., LLVM LTO is incompatible with GCC LTO).
+    # In this project, C/C++ code is linked into Rust code. Therefore, apply
+    # a workaround to force generation of normal object code on C side:
+    CFLAGS+=" -ffat-lto-objects"
+    CXXFLAGS+=" -ffat-lto-objects"
 }
 
 build() {

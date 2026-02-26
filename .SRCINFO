@@ -35,7 +35,6 @@ pkgbase = bcachefs-tools-git
 	depends = udev
 	provides = bcachefs-tools=1.36.1
 	conflicts = bcachefs-tools
-	options = !lto
 	source = git+https://github.com/koverstreet/bcachefs-tools.git
 	sha256sums = SKIP
 
