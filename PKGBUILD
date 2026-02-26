@@ -3,7 +3,7 @@
 
 pkgname=glib
 pkgver=1.2.10
-pkgrel=18
+pkgrel=19
 pkgdesc="Common C routines used by Gtk+ and other libs"
 arch=('i686' 'x86_64' 'armv6h')
 url="http://www.gtk.org/"
@@ -11,17 +11,20 @@ license=('LGPL')
 depends=('glibc' 'sh')
 options=('!makeflags')
 source=(https://download.gnome.org/sources/glib/1.2/${pkgname}-${pkgver}.tar.gz
-	gcc340.patch aclocal-fixes.patch glib1-autotools.patch)
+	gcc340.patch aclocal-fixes.patch glib1-autotools.patch
+        0004-fix-sizeof-test-in-acglib.m4-for-modern-compilers.patch)
 sha1sums=('e5a9361c594608d152d5d9650154c2e3260b87fa'
           'a2cc224a66aeffdcac16ebd9e8af18143cf54918'
           'ae4438cf56c0c9264ee36f6973fb445f9a820be0'
-          '8a25fde3c79567262b3024f4e74c9ca4ee8a6279')
+          '8a25fde3c79567262b3024f4e74c9ca4ee8a6279'
+          'e0df45001632894e84108200e6424d6814c14cb0')
 
 prepare() {
   cd ${pkgname}-${pkgver}
   patch -Np1 -i "${srcdir}/gcc340.patch"
   patch -Np0 -i "${srcdir}/aclocal-fixes.patch"
   patch -Np1 -i "${srcdir}/glib1-autotools.patch"
+  patch -Np1 -i "${srcdir}/0004-fix-sizeof-test-in-acglib.m4-for-modern-compilers.patch"
   sed -i -e 's/ifdef[[:space:]]*__OPTIMIZE__/if 0/' glib.h
   rm acinclude.m4
 }

@@ -1,0 +1,43 @@
+From 972fe44c1bd2021495fe2feb708575eca8dcb871 Mon Sep 17 00:00:00 2001
+From: exponentialmatrix <exponentialmatrix@noreply.gitea.com>
+Date: Wed, 25 Feb 2026 19:05:19 +0100
+Subject: [PATCH 3/3] Fix sizeof test in acglib.m4 for modern compilers
+
+---
+ acglib.m4 | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/acglib.m4 b/acglib.m4
+index 5d3cd93..4b22c91 100644
+--- a/acglib.m4
++++ b/acglib.m4
+@@ -36,12 +36,13 @@ changequote([, ])dnl
+ AC_MSG_CHECKING(size of $2)
+ AC_CACHE_VAL(AC_CV_NAME,
+ [AC_TRY_RUN([#include <stdio.h>
++#include <stdlib.h>
+ $1
+-main()
++int main()
+ {
+   FILE *f=fopen("conftestval", "w");
+   if (!f) exit(1);
+-  fprintf(f, "%d\n", sizeof($2));
++  fprintf(f, "%d\n", (int)sizeof($2));
+   exit(0);
+ }], AC_CV_NAME=`cat conftestval`, AC_CV_NAME=0, ifelse([$4], , , AC_CV_NAME=$4))])dnl
+ AC_MSG_RESULT($AC_CV_NAME)
+@@ -61,8 +62,9 @@ changequote([, ])dnl
+ AC_MSG_CHECKING(byte contents of $2)
+ AC_CACHE_VAL(AC_CV_NAME,
+ [AC_TRY_RUN([#include <stdio.h>
++#include <stdlib.h>
+ $1
+-main()
++int main()
+ {
+   static $2 tv = $5;
+   char *p = (char*) &tv;
+-- 
+2.47.3
+
