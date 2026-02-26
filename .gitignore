@@ -1,0 +1,15 @@
+# Ignore everything ...
+*
+
+# Allow generally:
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!LICENSE*
+
+# Allow specifically
+!cuda.sh
+!cuda.install
+!cuda.conf
+!cuda-findgllib_mk.diff
+!*.pc
