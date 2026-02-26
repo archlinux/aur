@@ -1,0 +1,53 @@
+ensure_sambashare_group() {
+    if ! getent group sambashare >/dev/null; then
+        echo "Creating sambashare group..."
+        groupadd -r sambashare
+    fi
+}
+
+add_invoking_user_to_group() {
+    local target_user=""
+    echo "mx-samba-config.install: attempting to find invoking user for sambashare group..."
+
+    # Try common sudo/doas env vars, then login-derived fallbacks
+    for candidate in \
+        "${SUDO_USER:-}" \
+        "${DOAS_USER:-}" \
+        "$( [ -n "${SUDO_UID:-}" ] && id -nu "${SUDO_UID}" 2>/dev/null )" \
+        "$( [ -n "${DOAS_UID:-}" ] && id -nu "${DOAS_UID}" 2>/dev/null )" \
+        "${LOGNAME:-}" \
+        "$(logname 2>/dev/null)" \
+        "${USER:-}"; do
+        if [ -n "$candidate" ]; then
+            echo "  candidate: ${candidate}"
+        fi
+        if [ -n "$candidate" ] && [ "$candidate" != "root" ] && id -u "$candidate" >/dev/null 2>&1; then
+            target_user="$candidate"
+            break
+        fi
+    done
+
+    if [ -z "$target_user" ]; then
+        echo "mx-samba-config.install: could not determine non-root invoking user to add to sambashare."
+        return
+    fi
+
+    if id -nG "$target_user" | grep -qw sambashare; then
+        echo "mx-samba-config.install: user '$target_user' is already in sambashare group."
+        return
+    fi
+
+    echo "mx-samba-config.install: adding user '$target_user' to sambashare group..."
+    if ! usermod -aG sambashare "$target_user"; then
+        echo "mx-samba-config.install: failed to add '$target_user' to sambashare; please add manually."
+    fi
+}
+
+post_install() {
+    ensure_sambashare_group
+    add_invoking_user_to_group
+}
+
+post_upgrade() {
+    ensure_sambashare_group
+}
