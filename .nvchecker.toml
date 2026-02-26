@@ -1,0 +1,5 @@
+[par-term-bin]
+source = "github"
+github = "paulrobello/par-term"
+use_latest_release = true
+prefix = "v"

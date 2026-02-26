@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Par Term
+Comment=GPU-accelerated terminal emulator
+Exec=par-term
+Icon=par-term
+Terminal=false
+StartupNotify=true
+Categories=System;TerminalEmulator;
