@@ -1,0 +1,4 @@
+*.pkg.tar*
+/polymath.deb
+/pkg
+/src
