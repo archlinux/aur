@@ -41,12 +41,21 @@ package() {
   # Install completions
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+  mkdir -p "${pkgdir}/usr/share/elvish/lib/"
+  mkdir -p "${pkgdir}/usr/share/powershell/Completions/"
 
   # Generate completion scripts
   "${pkgdir}/usr/bin/codex" completion bash >codex.bash
   "${pkgdir}/usr/bin/codex" completion zsh >codex.zsh
+  "${pkgdir}/usr/bin/codex" completion fish >codex.fish
+  "${pkgdir}/usr/bin/codex" completion elvish >codex.elvish
+  "${pkgdir}/usr/bin/codex" completion powershell >codex.ps1
 
   # Install completion files
   install -Dm644 "codex.bash" "${pkgdir}/usr/share/bash-completion/completions/codex"
   install -Dm644 "codex.zsh" "${pkgdir}/usr/share/zsh/site-functions/_codex"
+  install -Dm644 "codex.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/codex.fish"
+  install -Dm644 "codex.elvish" "${pkgdir}/usr/share/elvish/lib/codex.elv"
+  install -Dm644 "codex.ps1" "${pkgdir}/usr/share/powershell/Completions/codex.ps1"
 }
