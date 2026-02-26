@@ -2,7 +2,7 @@
 
 pkgbase=sherpa-onnx
 pkgname=("${pkgbase}" "python-${pkgbase}")
-pkgver=1.12.26
+pkgver=1.12.27
 pkgrel=1
 pkgdesc="Speech-to-text, text-to-speech, speaker diarization, and VAD using next-gen Kaldi with onnxruntime without Internet connection."
 arch=("x86_64" "aarch64" "arm" "riscv64")
@@ -14,7 +14,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "asio-asio-1-24-0.tar.gz::https://github.com/chriskohlhoff/asio/archive/refs/tags/asio-1-24-0.tar.gz"
         "eigen-3.4.1.tar.gz::https://gitlab.com/libeigen/eigen/-/archive/3.4.1/eigen-3.4.1.tar.gz"
         "espeak-ng-f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip::https://github.com/csukuangfj/espeak-ng/archive/f6fed6c58b5e0998b8e68c6610125e2d07d595a7.zip"
-        "hclust-cpp-2024-09-29.tar.gz::https://github.com/csukuangfj/hclust-cpp/archive/refs/tags/2024-09-29.tar.gz"
+        "hclust-cpp-2026-02-25.tar.gz::https://github.com/csukuangfj/hclust-cpp/archive/refs/tags/2026-02-25.tar.gz"
         "json-3.12.0.tar.gz::https://github.com/nlohmann/json/archive/refs/tags/v3.12.0.tar.gz"
         "kaldi-decoder-0.2.11.tar.gz::https://github.com/k2-fsa/kaldi-decoder/archive/refs/tags/v0.2.11.tar.gz"
         "kaldi-native-fbank-1.22.3.tar.gz::https://github.com/csukuangfj/kaldi-native-fbank/archive/refs/tags/v1.22.3.tar.gz"
@@ -24,11 +24,11 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "pa_stable_v190700_20210406.tgz::http://files.portaudio.com/archives/pa_stable_v190700_20210406.tgz"
         "simple-sentencepiece-0.7.tar.gz::https://github.com/pkufool/simple-sentencepiece/archive/refs/tags/v0.7.tar.gz"
         "websocketpp-b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip::https://github.com/zaphoyd/websocketpp/archive/b9aeec6eaf3d5610503439b4fae3581d9aff08e8.zip")
-sha256sums=('d0b679a5d9a10d32da9d9fd49b5f92c981652d71e01b01dfbc4a1d1ff3615d31'
+sha256sums=('e115e6115b51f38cec71cf659a1b39b5a592bb8a9d7fa312f8c8981acea14ac5'
             'cbcaaba0f66722787b1a7c33afe1befb3a012b5af3ad7da7ff0f6b8c9b7a8a5b'
             'b93c667d1b69265cdb4d9f30ec21f8facbbe8b307cf34c0b9942834c6d4fdbe2'
             '70cbf4050e7a014aae19140b05e57249da4720f56128459fbe3a93beaf971ae6'
-            'abab51448a3cb54272aae07522970306e0b2cc6479d59d7b19e7aee4d6cedd33'
+            '8f14e024c709d73afb40ae69cb22de4b73dba67cbce40f2e518813da8139ab56'
             '4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187'
             '85ca462535592541eb5ba6d21843009cf34738f51b28b71f84882a3694b528bf'
             '9176cc66fc7ce1edf85cf355b06e320c57db6297df74277f575183468893cf61'
