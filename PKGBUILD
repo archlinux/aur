@@ -4,7 +4,7 @@
 
 pkgname=gstreamer-meta
 pkgver=1
-pkgrel=5
+pkgrel=6
 arch=('any')
 url="https://wiki.archlinux.org/index.php/GStreamer"
 license=('GPL')
