@@ -4,6 +4,6 @@ includedir=${cudaroot}/targets/x86_64-linux/include
 
 Name: nppicom
 Description: NVIDIA Performance Primitives - Image Processing - Compression
-Version: 12.5
+Version: 12.8
 Libs: -L${libdir} -lnppicom
 Cflags: -I${includedir}

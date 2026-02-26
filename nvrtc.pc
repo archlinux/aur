@@ -4,6 +4,6 @@ includedir=${cudaroot}/targets/x86_64-linux/include
 
 Name: nvrtc
 Description: A runtime compilation library for CUDA C++
-Version: 12.5
+Version: 12.8
 Libs: -L${libdir} -lnvrtc
 Cflags: -I${includedir}

@@ -4,6 +4,6 @@ includedir=${cudaroot}/targets/x86_64-linux/include
 
 Name: cudart
 Description: CUDA Runtime Library
-Version: 12.5
+Version: 12.8
 Libs: -L${libdir} -lcudart
 Cflags: -I${includedir}

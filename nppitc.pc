@@ -4,6 +4,6 @@ includedir=${cudaroot}/targets/x86_64-linux/include
 
 Name: nppitc
 Description: NVIDIA Performance Primitives - Image Processing - Threshold and Compare
-Version: 12.5
+Version: 12.8
 Libs: -L${libdir} -lnppitc
 Cflags: -I${includedir}

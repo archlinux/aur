@@ -4,6 +4,6 @@ includedir=${cudaroot}/targets/x86_64-linux/include
 
 Name: nppi
 Description: NVIDIA Performance Primitives - Image Processing
-Version: 12.5
+Version: 12.8
 Libs: -L${libdir} -lnppi
 Cflags: -I${includedir}

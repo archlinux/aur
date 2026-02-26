@@ -4,6 +4,6 @@ includedir=${cudaroot}/targets/x86_64-linux/include
 
 Name: cuinj64
 Description: CUDA 64-bit Injection Library
-Version: 12.5
+Version: 12.8
 Libs: -L${libdir} -lcuinj64
 Cflags: -I${includedir}

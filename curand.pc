@@ -4,6 +4,6 @@ includedir=${cudaroot}/targets/x86_64-linux/include
 
 Name: curand
 Description: CUDA Random Number Generation Library
-Version: 12.5
+Version: 12.8
 Libs: -L${libdir} -lcurand
 Cflags: -I${includedir}

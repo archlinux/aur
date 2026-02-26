@@ -4,6 +4,6 @@ includedir=${cudaroot}/targets/x86_64-linux/include
 
 Name: npps
 Description: NVIDIA Performance Primitives - Signal Processing
-Version: 12.5
+Version: 12.8
 Libs: -L${libdir} -lnpps
 Cflags: -I${includedir}

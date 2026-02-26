@@ -1,6 +1,6 @@
-pkgbase = cuda-12.5
+pkgbase = cuda-12.8
 	pkgdesc = NVIDIA's GPU programming toolkit
-	pkgver = 12.5.0
+	pkgver = 12.8.0
 	pkgrel = 3
 	url = https://developer.nvidia.com/cuda-zone
 	install = cuda.install
@@ -14,14 +14,14 @@ pkgbase = cuda-12.5
 	optdepends = java-runtime=8: for nsight and nvvp
 	provides = cuda-toolkit
 	provides = cuda-sdk
-	provides = cuda=12.5
+	provides = cuda=12.8
 	conflicts = cuda
 	conflicts = cudnn
 	replaces = cuda-toolkit
 	replaces = cuda-sdk
 	options = !strip
 	options = staticlibs
-	source = http://developer.download.nvidia.com/compute/cuda/12.5.0/local_installers/cuda_12.5.0_555.42.02_linux.run
+	source = https://developer.download.nvidia.com/compute/cuda/12.8.0/local_installers/cuda_12.8.0_570.86.10_linux.run
 	source = cuda.sh
 	source = cuda.conf
 	source = cuda-findgllib_mk.diff
@@ -86,4 +86,4 @@ pkgbase = cuda-12.5
 	sha512sums = db83179b5e2c1f540582938a019a450dbba9e3016922dd04ec0b665466f25e768fa292a8cf9c165dda1a9d25b05f5619eae1dbaf415f474bbbd0d50de7633930
 	sha512sums = 3b4e1afb0b7094fca733344f626e9bd65945a4bb68fc920642ae909fea177993fc1daf2655fa470ecb77f87e08abd2c923becf175e4bc6b10770ee882948e70b
 
-pkgname = cuda-12.5
+pkgname = cuda-12.8

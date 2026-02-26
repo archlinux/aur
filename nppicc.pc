@@ -4,6 +4,6 @@ includedir=${cudaroot}/targets/x86_64-linux/include
 
 Name: nppicc
 Description: NVIDIA Performance Primitives - Image Processing - Color Conversion
-Version: 12.5
+Version: 12.8
 Libs: -L${libdir} -lnppicc
 Cflags: -I${includedir}
