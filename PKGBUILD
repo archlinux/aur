@@ -1,7 +1,7 @@
 # Maintainer: B-Silent <ben10ruitenbeek@gmail.com>
 
 pkgname="docker-compose-bin"
-pkgver="5.0.2"
+pkgver="5.1.0"
 pkgrel=1
 pkgdesc="Official Docker Compose build; docker compose version shows the real version."
 url="https://github.com/docker/compose"
@@ -14,7 +14,7 @@ options=(!debug)
 _binary=docker-compose-linux-x86_64
 
 source=("$_binary-$pkgver::$url/releases/download/v$pkgver/$_binary" "LICENSE::$url/raw/refs/tags/v$pkgver/LICENSE")
-sha256sums=("2d880f723d3da7c779c54fdaea91a842fca8af55d1397f1ed8d7cbab3dd7af67" "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd")
+sha256sums=("5633cb21e06a7c88c7ca48a9334d3d0f7f892e9605ae9e9a45f9a095d4ffceb8" "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd")
 
 package() {
 	chmod +x "${srcdir}/$_binary-$pkgver"
