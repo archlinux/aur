@@ -1,6 +1,6 @@
 pkgbase = xone-dkms
 	pkgdesc = Modern Linux driver for Xbox One and Xbox Series X|S controllers
-	pkgver = 0.5.5
+	pkgver = 0.5.6
 	pkgrel = 1
 	url = https://github.com/dlundqvist/xone
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = xone-dkms
 	makedepends = git
 	depends = dkms
 	depends = xone-dongle-firmware
-	source = dlundqvist.xone::git+https://github.com/dlundqvist/xone.git#tag=v0.5.5
-	sha256sums = 6d6438afb193c47ac2d51e7a9bc2336cd94263f155e09c57bd3e4a02870bfc42
+	source = dlundqvist.xone::git+https://github.com/dlundqvist/xone.git#tag=v0.5.6
+	sha256sums = 8c0f9bd981764f8fe33f6bdea1473a4e2b64a17252ecd6b899d1506d74fa051f
 
 pkgname = xone-dkms
