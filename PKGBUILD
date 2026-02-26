@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: ushineko <https://github.com/ushineko>
 pkgname=clockwork-orange-git
 pkgver=2.7.13.r140.ge962240
 pkgrel=1
@@ -18,7 +18,7 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://github.com/ushineko/clockwork-orange.git")
+source=("clockwork-orange::git+https://github.com/ushineko/clockwork-orange.git")
 sha256sums=('SKIP')
 install=clockwork-orange.install
 
