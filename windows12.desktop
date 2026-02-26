@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Windows12
+Comment=Windows 12 Online Desktop Edition
+Exec=windows12
+Icon=windows12
+Terminal=false
+Categories=Utility;
+StartupNotify=true

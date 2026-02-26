@@ -1,0 +1,23 @@
+pkgbase = windows12-git
+	pkgdesc = Windows 12网页版，提供桌面、应用生态与AI Copilot体验  / Windows 12 Online: A full desktop experience with app ecosystem and AI Copilot.
+	pkgver = r485.d89fdaa
+	pkgrel = 1
+	url = https://github.com/tjy-gitnub/win12/
+	arch = x86_64
+	license = EPL-2.0
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = rust
+	depends = gtk3
+	depends = webkit2gtk
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	provides = windows12
+	conflicts = windows12
+	source = win12::git+https://github.com/tjy-gitnub/win12.git#branch=main
+	source = windows12.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = windows12-git
