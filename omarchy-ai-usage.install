@@ -1,57 +1,201 @@
-post_install() {
+_setup_waybar() {
     local user="${SUDO_USER:-$USER}"
-    if [ "$user" != "root" ] && [ -n "$user" ]; then
-        echo "  󰧑  Configuring Waybar for $user..."
-        su "$user" -c "omarchy-ai-usage-setup" 2>/dev/null && return
+    [ "$user" = "root" ] || [ -z "$user" ] && return 1
+    local home
+    home=$(eval echo "~$user")
+    local src="/usr/share/omarchy-ai-usage/scripts"
+    local dst="$home/.config/waybar/scripts"
+    local cfg="$home/.config/waybar/config.jsonc"
+    local css="$home/.config/waybar/style.css"
+    local ai_cfg="$home/.config/ai-usage/config.json"
+
+    [ -d "$src" ] || return 1
+    [ -f "$cfg" ] || return 1
+
+    # Copy scripts
+    mkdir -p "$dst"
+    cp "$src"/ai-usage*.sh "$dst/"
+    chmod +x "$dst"/ai-usage*.sh
+
+    # Create default config if missing
+    if [ ! -f "$ai_cfg" ]; then
+        mkdir -p "$(dirname "$ai_cfg")"
+        cat > "$ai_cfg" << 'CONF'
+{
+  "display_mode": "icon",
+  "refresh_interval": 60,
+  "providers": {
+    "claude": { "enabled": true },
+    "codex": { "enabled": true }
+  }
+}
+CONF
     fi
-    # Fallback if auto-setup fails
-    cat <<EOF
 
-  ═══════════════════════════════════════════════
-  󰧑  omarchy-ai-usage installed!
+    # Add waybar module if not present
+    if ! grep -q '"custom/ai-usage"' "$cfg" 2>/dev/null; then
+        cp "$cfg" "${cfg}.bak.$(date +%s)"
+        local tmp
+        tmp=$(mktemp)
+        python3 -c "
+import json, re
+with open('$cfg', 'r') as f:
+    content = f.read()
+clean = re.sub(r'//.*$', '', content, flags=re.MULTILINE)
+data = json.loads(clean)
+mods = data.get('modules-right', [])
+if 'custom/ai-usage' not in mods:
+    try:
+        idx = mods.index('cpu')
+        mods.insert(idx, 'custom/separator-right')
+        mods.insert(idx, 'custom/ai-usage')
+    except ValueError:
+        mods.append('custom/ai-usage')
+    data['modules-right'] = mods
+data['custom/ai-usage'] = {
+    'exec': '~/.config/waybar/scripts/ai-usage.sh',
+    'return-type': 'json', 'interval': 60, 'signal': 9,
+    'tooltip': True, 'format': '{}',
+    'on-click': 'omarchy-launch-floating-terminal-with-presentation ~/.config/waybar/scripts/ai-usage-tui.sh'
+}
+with open('$tmp', 'w') as f:
+    json.dump(data, f, indent=2, ensure_ascii=False)
+" 2>/dev/null
+        if [ -s "$tmp" ]; then
+            mv "$tmp" "$cfg"
+        else
+            rm -f "$tmp"
+        fi
+    fi
 
-  Run to configure Waybar:
+    # Add CSS if not present
+    if ! grep -q '#custom-ai-usage' "$css" 2>/dev/null; then
+        cp "$css" "${css}.bak.$(date +%s)"
+        cat >> "$css" << 'CSS'
 
-    omarchy-ai-usage-setup
-  ═══════════════════════════════════════════════
+/* ===== AI Usage ===== */
+
+#custom-ai-usage {
+  padding: 0 6px;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+#custom-ai-usage.ai-ok {
+  color: #a6e3a1;
+}
+
+#custom-ai-usage.ai-warn {
+  color: #FFC107;
+}
+
+#custom-ai-usage.ai-crit {
+  color: #D35F5F;
+}
+
+#custom-ai-usage:hover {
+  color: #e68e0d;
+}
+CSS
+    fi
+
+    # Fix ownership
+    chown -R "$user:$user" "$dst"/ai-usage*.sh "$home/.config/ai-usage" 2>/dev/null
+
+    # Restart waybar
+    pkill -RTMIN+9 waybar 2>/dev/null || true
+
+    echo "  󰧑  Waybar configured for $user"
+}
+
+_remove_waybar() {
+    local user="${SUDO_USER:-$USER}"
+    [ "$user" = "root" ] || [ -z "$user" ] && return 1
+    local home
+    home=$(eval echo "~$user")
+    local dst="$home/.config/waybar/scripts"
+    local cfg="$home/.config/waybar/config.jsonc"
+    local css="$home/.config/waybar/style.css"
+
+    # Remove scripts
+    rm -f "$dst"/ai-usage*.sh
+
+    # Remove waybar module
+    if grep -q '"custom/ai-usage"' "$cfg" 2>/dev/null; then
+        cp "$cfg" "${cfg}.bak.$(date +%s)"
+        local tmp
+        tmp=$(mktemp)
+        python3 -c "
+import json, re
+with open('$cfg', 'r') as f:
+    content = f.read()
+clean = re.sub(r'//.*$', '', content, flags=re.MULTILINE)
+data = json.loads(clean)
+mods = data.get('modules-right', [])
+data['modules-right'] = [m for m in mods if m != 'custom/ai-usage']
+data.pop('custom/ai-usage', None)
+with open('$tmp', 'w') as f:
+    json.dump(data, f, indent=2, ensure_ascii=False)
+" 2>/dev/null
+        if [ -s "$tmp" ]; then
+            mv "$tmp" "$cfg"
+        else
+            rm -f "$tmp"
+        fi
+    fi
+
+    # Remove CSS
+    if grep -q '#custom-ai-usage' "$css" 2>/dev/null; then
+        cp "$css" "${css}.bak.$(date +%s)"
+        local tmp
+        tmp=$(mktemp)
+        python3 -c "
+import re
+with open('$css', 'r') as f:
+    content = f.read()
+content = re.sub(r'/\* ===== AI Usage ===== \*/.*?#custom-ai-usage[^}]*\}', '', content, flags=re.DOTALL)
+content = re.sub(r'\n{3,}', '\n\n', content)
+with open('$tmp', 'w') as f:
+    f.write(content)
+" 2>/dev/null
+        if [ -s "$tmp" ]; then
+            mv "$tmp" "$css"
+        else
+            rm -f "$tmp"
+        fi
+    fi
+
+    # Remove cache
+    rm -f /tmp/ai-usage-cache-*.json
+
+    # Restart waybar
+    pkill -RTMIN+9 waybar 2>/dev/null || true
+
+    echo "  󰧑  Waybar config cleaned for $user"
+}
+
+post_install() {
+    _setup_waybar || cat <<EOF
+
+  Run manually: omarchy-ai-usage-setup
 
 EOF
 }
 
 post_upgrade() {
-    local user="${SUDO_USER:-$USER}"
-    if [ "$user" != "root" ] && [ -n "$user" ]; then
-        echo "  󰧑  Updating Waybar scripts for $user..."
-        su "$user" -c "omarchy-ai-usage-setup" 2>/dev/null && return
-    fi
-    cat <<EOF
+    _setup_waybar || cat <<EOF
 
-  ═══════════════════════════════════════════════
-  󰧑  omarchy-ai-usage upgraded to $1
-
-  Run to update scripts:
-
-    omarchy-ai-usage-setup
-  ═══════════════════════════════════════════════
+  Run manually: omarchy-ai-usage-setup
 
 EOF
 }
 
 post_remove() {
-    local user="${SUDO_USER:-$USER}"
-    if [ "$user" != "root" ] && [ -n "$user" ]; then
-        echo "  󰧑  Cleaning up Waybar config for $user..."
-        su "$user" -c "omarchy-ai-usage-remove" 2>/dev/null && return
-    fi
-    cat <<EOF
+    _remove_waybar || cat <<EOF
 
-  ═══════════════════════════════════════════════
-  󰧑  omarchy-ai-usage removed
-
-  Run to clean up:
-
-    omarchy-ai-usage-remove
-  ═══════════════════════════════════════════════
+  Manually remove:
+    ~/.config/waybar/scripts/ai-usage*.sh
+    ~/.config/ai-usage/
 
 EOF
 }

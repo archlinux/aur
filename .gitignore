@@ -2,3 +2,5 @@
 *.log
 pkg/
 src/
+omarchy-ai-usage-git/
+.INSTALL
