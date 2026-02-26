@@ -10,7 +10,7 @@ pkgbase = xcp
 	license = GPL-3.0-only
 	makedepends = cargo
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
 	source = xcp-0.24.7.tar.gz::https://github.com/tarka/xcp/archive/xcp-v0.24.7.tar.gz
 	sha512sums = 22b1638f306350b4e0aaae391d3d38dde4ec56ee33e4b0031acc2c8ac70f45cc8c1f65cc5fdc2d4d5c87b52807aad9f987de57fc35bba75a772f40e1302453fb
 
