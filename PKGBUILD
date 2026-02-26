@@ -2,7 +2,7 @@
 
 pkgname=polymath
 pkgver=1.4.0.7
-pkgrel=3
+pkgrel=4
 pkgdesc='Advanced keyboard layout customization tool for Flux keyboards'
 arch=('x86_64')
 url='https://fluxkeyboard.com/updates/'
@@ -15,10 +15,12 @@ sha256sums=('1182c14ddf6bd2cdc1c66e06cbcc1b08d4b4772b972c8d63b7aada4b3acfff4d')
 
 build() {
   cd "${srcdir}"
-  ar x polymath.deb
-  rm -rf data && mkdir data
-  tar -C data -xf data.tar.zst
-  rm -rvf data/etc/polkit-1
+  rm -rf deb data && mkdir deb data
+
+  ar --output=deb x polymath.deb
+  tar -C data -xf deb/data.tar.zst
+
+  rm -rf data/etc/polkit-1
   chmod -R g-w data
 }
 
