@@ -4,8 +4,8 @@
 # Contributor: Jens Adam <jra@byte.cx>
 
 pkgname=lazarus-gtk2
-_lazarus_tag=4_4
-pkgver=4.4
+_lazarus_tag=4_6
+pkgver=4.6
 pkgdesc='Delphi-like IDE for FreePascal GTK2 version'
 pkgrel=1
 url='http://www.lazarus.freepascal.org/'
@@ -14,7 +14,7 @@ arch=('x86_64')
 makedepends=('fpc' 'fpc-src' 'gtk2' 'rsync')
 options=(!makeflags libtool staticlibs !strip)
 source=("https://gitlab.com/freepascal.org/lazarus/lazarus/-/archive/lazarus_${_lazarus_tag}/lazarus-lazarus_${_lazarus_tag}.tar.bz2")
-sha512sums=('2c01b489b747b34e4da6e872ceed7be359567ba85d4b00d3ac99239071e54156b0e5a065f3d5757c4bc1e8ba745304adda789364259bc9d2f2b39986d81fcf56')
+sha512sums=('9f59a21d38b36416757b6572ebfa10dba13457fc7a5fd9c91550ea2d1b1daed7c9cc292bd7069a8dd1ac3a8ca2c8231f0456a0fe89f011a92d07a861e0f14684')
 
 build() {
   cd "lazarus-lazarus_${_lazarus_tag}"
