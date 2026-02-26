@@ -1,6 +1,6 @@
 pkgbase = codex-desktop-bin
 	pkgdesc = OpenAI Codex Desktop (prepatched Linux payload)
-	pkgver = 26.224.1209
+	pkgver = 26.226.940
 	pkgrel = 1
 	url = https://openai.com/codex
 	arch = x86_64
@@ -31,9 +31,9 @@ pkgbase = codex-desktop-bin
 	provides = codex-desktop
 	conflicts = codex-desktop
 	options = !strip
-	source = codex-desktop-prepatched-26.224.1209-39124d1e2235-x86_64.tar.gz::https://github.com/maria-rcks/codex-desktop-aur/releases/download/codex-desktop-bin-26.224.1209-39124d1e2235/codex-desktop-prepatched-26.224.1209-39124d1e2235-x86_64.tar.gz
+	source = codex-desktop-prepatched-26.226.940-f99bf52391c0-x86_64.tar.gz::https://github.com/maria-rcks/codex-desktop-aur/releases/download/codex-desktop-bin-26.226.940-f99bf52391c0/codex-desktop-prepatched-26.226.940-f99bf52391c0-x86_64.tar.gz
 	source = codex-icon.png
-	sha256sums = fbac778734b9dc54e81865725b8e2810363f55178a527b723ef4f4ece9084e14
+	sha256sums = 59eeb9de046260ea401664f6f05bfaee453ec52b72dbddba51bce94418ee07b0
 	sha256sums = f33042b1a549fdc2c82b20e8eefa1fd5ac9f93147af40389c4773aaf48d097a7
 
 pkgname = codex-desktop-bin
