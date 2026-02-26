@@ -3,7 +3,7 @@
 
 pkgname=bindiff
 pkgver=8
-pkgrel=2
+pkgrel=3
 pkgdesc="A comparison tool for binary files that assists vulnerability researchers and engineers to quickly find differences and similarities in disassembled code."
 arch=('x86_64')
 url="https://www.zynamics.com/bindiff.html"
@@ -22,6 +22,11 @@ package() {
 
   # Remove the bundled Java runtime
   rm -r "${pkgdir}"/opt/bindiff/jre
+
+  # Correct the value of StartupWMClass
+  sed -i \
+    's/^StartupWMClass=com-google-security-zynamics-bindiff-Launcher$/StartupWMClass=com-google-security-zynamics-bindiff-BinDiff/' \
+    "${pkgdir}"/usr/share/applications/com-google-security-zynamics-bindiff-Launcher.desktop
 
   # Write install location to config file
   sed -i 's/^\( "directory": "\)\(",\)/\1\/opt\/bindiff\/\2/' "${pkgdir}"/etc/opt/bindiff/bindiff.json
