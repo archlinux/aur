@@ -1,6 +1,6 @@
 pkgbase = quickfix-git
 	pkgdesc = C++ Fix Engine Library
-	pkgver = 1.15.1.r297.g4e89249a
+	pkgver = 1.15.1.r312.g00dd2083
 	pkgrel = 1
 	url = http://www.quickfixengine.org
 	arch = x86_64
@@ -14,14 +14,12 @@ pkgbase = quickfix-git
 	optdepends = mysql
 	optdepends = postgresql-libs
 	optdepends = ruby
-	provides = quickfix=1.15.1.r297.g4e89249a
+	provides = quickfix=1.15.1.r312.g00dd2083
 	conflicts = quickfix
 	options = !lto
 	source = git+https://github.com/quickfix/quickfix.git
 	source = cmake.patch
-	source = 663.patch
 	sha256sums = SKIP
-	sha256sums = 48061022832c0eb44a4d37bc618853a66856f98277aa5a33cfd829d0a0e1891a
-	sha256sums = bfb6a425c0e3d06dbc7155b2ab0f06284a50bd28b606a659b4dcd5ff3cd1a9e4
+	sha256sums = cc6314302a3dc5077ba34041fd9b427049395f306f9e86f7b1f14b7415067ba8
 
 pkgname = quickfix-git

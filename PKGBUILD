@@ -2,7 +2,7 @@
 
 pkgname=quickfix-git
 _pkgname=quickfix
-pkgver=1.15.1.r297.g4e89249a
+pkgver=1.15.1.r312.g00dd2083
 pkgrel=1
 pkgdesc="C++ Fix Engine Library"
 arch=(x86_64)
@@ -15,11 +15,9 @@ provides=("quickfix=$pkgver")
 makedepends=(boost python-setuptools swig)
 checkdepends=(ruby)
 source=("git+https://github.com/quickfix/quickfix.git"
-    cmake.patch
-    663.patch)
+    cmake.patch)
 sha256sums=('SKIP'
-            '48061022832c0eb44a4d37bc618853a66856f98277aa5a33cfd829d0a0e1891a'
-            'bfb6a425c0e3d06dbc7155b2ab0f06284a50bd28b606a659b4dcd5ff3cd1a9e4')
+            'cc6314302a3dc5077ba34041fd9b427049395f306f9e86f7b1f14b7415067ba8')
 options=(!lto)
 
 pkgver() {
@@ -29,7 +27,6 @@ pkgver() {
 
 prepare() {
   cd "${_pkgname}"
-  patch -p1 < ../663.patch
   patch -p1 < ../cmake.patch
   cd src/python
   ./swig.sh
