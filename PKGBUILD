@@ -13,6 +13,7 @@ sha256sums=('279f5a3335631091d20838dce8ba798ae95e1c3d81ce3cf5c233f48a68a81f86')
 
 build() {
     cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
     cargo build --frozen --release
 }
 
