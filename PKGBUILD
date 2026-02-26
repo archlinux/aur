@@ -1,13 +1,13 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 
 pkgname=ttl
-pkgver=0.18.2
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Fast, modern traceroute with real-time TUI, per-hop stats, ASN/geo lookup, and ECMP detection."
 url="https://github.com/lance0/ttl"
 license=('MIT' 'Apache-2.0')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lance0/ttl/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('734a5b8e155e4edddb8aa659b3a91e83b319e5215f625c086e5ba3402c8b7304')
+sha256sums=('38343818a4f30e2af754ff6056041ee8068c8413fa82b7104daebb5217779304')
 arch=('x86_64')
 depends=('gcc-libs')
 makedepends=('cargo')
