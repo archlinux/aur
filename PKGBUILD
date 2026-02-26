@@ -2,7 +2,7 @@
 # Co-Maintainer: Lysec <itslysec@gmail.com>
 pkgname=noctalia-shell
 pkgver=4.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell."
 arch=('any')
 url="https://github.com/noctalia-dev/noctalia-shell"
@@ -24,7 +24,6 @@ optdepends=(
   'ddcutil: For external display brightness control'
 )
 conflicts=('noctalia-shell-git')
-install="${pkgname}.install"
 source=("git+$url.git#tag=v$pkgver")
 sha256sums=('372319e99f925c64ed050881c366b7e2469e01710ebeef57c580d0c86cff3c03')
 
@@ -33,7 +32,4 @@ package() {
   
   install -dm755 "$pkgdir/etc/xdg/quickshell/noctalia-shell"
   cp -r ./* "$pkgdir/etc/xdg/quickshell/noctalia-shell/"
-  
-  install -Dm644 "Assets/Services/systemd/noctalia.service" \
-    "$pkgdir/usr/lib/systemd/user/noctalia.service"
 }
