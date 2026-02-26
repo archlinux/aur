@@ -1,6 +1,6 @@
 pkgbase = python-weaviate-client
 	pkgdesc = A python native client for easy interaction with a Weaviate instance.
-	pkgver = 4.20.0
+	pkgver = 4.20.1
 	pkgrel = 1
 	url = https://github.com/weaviate/weaviate-python-client
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-weaviate-client
 	depends = python-protobuf
 	depends = python-deprecation
 	optdepends = weaviate-bin
-	source = python-weaviate-client-4.20.0.tar.gz::https://files.pythonhosted.org/packages/source/w/weaviate_client/weaviate_client-4.20.0.tar.gz
-	b2sums = 2f8382f7db0568bc1360ff2f9d6dbc76af842e7a6846a1a4850f4a63091326ec0061d084db1fa880d7b4f0840262c2ceeee2a45e902b2bf17630bf738c8ca255
+	source = python-weaviate-client-4.20.1.tar.gz::https://files.pythonhosted.org/packages/source/w/weaviate_client/weaviate_client-4.20.1.tar.gz
+	b2sums = f27462b903af4dedbb1a257c18a94385183edb592910e947da862700728659b76c51998247fdbcd81e3fe684582dbe64671415a8cb22b78f67fd435c5a1a98ff
 
 pkgname = python-weaviate-client
