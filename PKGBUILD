@@ -1,6 +1,5 @@
 # Maintainer: Your Name <your-email@example.com>
-pkgname=xjtu-toolbox-git
-_pkgname=XJTUToolBox
+pkgname=xjtutoolbox
 pkgver=v1.2.3
 pkgrel=1
 pkgdesc="仙交百宝箱：西安交通大学一站式校园服务工具（包含课表、成绩、评教、自动抢课助手等）"
