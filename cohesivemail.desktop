@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=CohesiveMail
+Comment=CohesiveMail desktop client
+Exec=/opt/cohesivemail/cohesivemail
+Icon=cohesivemail
+Terminal=false
+Categories=Network;Email;

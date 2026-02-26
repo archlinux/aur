@@ -27,13 +27,22 @@ depends=(
 )
 provides=("cohesivemail")
 conflicts=("cohesivemail")
-source=("https://dl.actuallyreliable.com/apps/cohesivemail-x86-v${pkgver}.tar.gz")
-sha256sums=("821e48a89a3602db152b2af882b80943e0cfe68391a4b28ad93779beee79cb21")
+source=(
+  "https://dl.actuallyreliable.com/apps/cohesivemail-x86-v${pkgver}.tar.gz"
+  "cohesivemail.desktop"
+)
+sha256sums=(
+  "821e48a89a3602db152b2af882b80943e0cfe68391a4b28ad93779beee79cb21"
+  "ad9c16678f1496b7e5f35558fdfe98c528841407e82988543b1eab1960457dbe"
+)
 
 package() {
   install -d "$pkgdir/opt/cohesivemail"
   cp -a "$srcdir"/* "$pkgdir/opt/cohesivemail/"
+  chmod +x "$pkgdir/opt/cohesivemail/cohesivemail"
 
   install -d "$pkgdir/usr/bin"
   ln -s /opt/cohesivemail/cohesivemail "$pkgdir/usr/bin/cohesivemail"
+
+  install -Dm644 "$srcdir/cohesivemail.desktop" "$pkgdir/usr/share/applications/cohesivemail.desktop"
 }
