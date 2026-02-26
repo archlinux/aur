@@ -1,0 +1,30 @@
+pkgbase = mafft-git
+	pkgver = 7.526.r2.g0a2319b
+	pkgrel = 1
+	url = https://mafft.cbrc.jp/alignment/software
+	arch = x86_64
+	license = BSD
+	makedepends = make
+	makedepends = openmpi
+	provides = mafft
+	conflicts = mafft
+	source = git+https://gitlab.com/sysimm/mafft.git
+	source = 001-ftruncate.patch
+	md5sums = SKIP
+	md5sums = 7fcc33e5ccec220c953a7a1eab09cf5a
+
+pkgname = mafft-git
+	pkgdesc = Multiple alignment program for amino acid or nucleotide sequences. https://doi.org/10.1093/molbev/mst010
+	depends = perl
+	depends = sh
+	optdepends = mafft-extensions: extension support
+	optdepends = mafft-mpi: mpi support
+
+pkgname = mafft-extensions-git
+	pkgdesc = MAFFT extensions
+	depends = mafft
+
+pkgname = mafft-mpi-git
+	pkgdesc = MAFFT MPI support
+	depends = mafft
+	depends = openmpi

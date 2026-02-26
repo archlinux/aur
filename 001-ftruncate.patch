@@ -1,0 +1,20 @@
+--- a/MPI/mltaln9_mpi.c
++++ b/MPI/mltaln9_mpi.c
+@@ -1,5 +1,7 @@
+ #include "mltaln.h"
+ #include <mpi.h>
++#include <unistd.h>
++#include <sys/types.h>
+ 
+ #ifdef enableatomic
+ #include <stdatomic.h>
+@@ -46,6 +48,8 @@
+ static int lockfd;
+ int createshm;
+ 
++int truncate(const char *path, off_t length);
++int ftruncate(int fd, off_t length);
+ 
+ 
+ 
+
