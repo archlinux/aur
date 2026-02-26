@@ -1,6 +1,6 @@
 pkgbase = python-rospkg
 	pkgdesc = Standalone Python library for the ROS package system
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/ros-infrastructure/rospkg
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-rospkg
 	depends = python-distro
 	depends = python-yaml
 	conflicts = python2-rospkg
-	source = https://github.com/ros-infrastructure/rospkg/archive/1.6.0.tar.gz
-	sha256sums = 9341c8af5f547888ab484ee61b53d8447b6a52081222d2d5257757ab374c657f
+	source = https://github.com/ros-infrastructure/rospkg/archive/1.6.1.tar.gz
+	sha256sums = 2c4109a02367d56b1e4ceeb86c6faed4bb423643580b3274fcaa2a22a1a3380a
 
 pkgname = python-rospkg
