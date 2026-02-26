@@ -1,9 +1,9 @@
-# Maintainer: rodrigosntg <rodrigo-sntg at github>
+# Maintainer: Rodrigo Santiago <rodrigosantsilva@gmail.com>
 pkgname=omarchy-ai-usage-git
 _pkgname=omarchy-ai-usage
-pkgver=r2.8fe03d6
-pkgrel=3
-pkgdesc="AI usage monitoring for Omarchy — track Claude and Codex rate limits in Waybar"
+pkgver=1.0.0.r0.g78707a8
+pkgrel=1
+pkgdesc="AI usage monitoring for Omarchy (Claude, Codex, Gemini, Antigravity) in Waybar"
 arch=('any')
 url="https://github.com/rodrigo-sntg/omarchy-ai-usage"
 license=('MIT')
@@ -11,31 +11,30 @@ depends=('jq' 'curl' 'gum' 'waybar' 'python')
 makedepends=('git')
 optdepends=(
     'claude-code: Claude CLI for usage monitoring'
+    'gemini-cli: Gemini CLI for usage monitoring'
     'codex: OpenAI Codex CLI for usage monitoring'
 )
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
-source=("${pkgname}::git+https://github.com/rodrigo-sntg/omarchy-ai-usage.git")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    cd "$srcdir/${_pkgname}"
+    git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-    cd "$srcdir/${pkgname}"
+    cd "$srcdir/${_pkgname}"
 
-    # Install scripts to shared location
-    install -Dm755 scripts/ai-usage.sh       "$pkgdir/usr/share/${_pkgname}/scripts/ai-usage.sh"
-    install -Dm755 scripts/ai-usage-claude.sh "$pkgdir/usr/share/${_pkgname}/scripts/ai-usage-claude.sh"
-    install -Dm755 scripts/ai-usage-codex.sh  "$pkgdir/usr/share/${_pkgname}/scripts/ai-usage-codex.sh"
-    install -Dm755 scripts/ai-usage-tui.sh    "$pkgdir/usr/share/${_pkgname}/scripts/ai-usage-tui.sh"
+    # Install all scripts to shared location
+    install -d "$pkgdir/usr/share/${_pkgname}/scripts"
+    install -m755 scripts/*.sh "$pkgdir/usr/share/${_pkgname}/scripts/"
 
     # Install setup/remove helpers to /usr/bin
-    install -Dm755 install.sh   "$pkgdir/usr/bin/omarchy-ai-usage-setup"
-    install -Dm755 uninstall.sh "$pkgdir/usr/bin/omarchy-ai-usage-remove"
+    install -Dm755 install.sh   "$pkgdir/usr/bin/${_pkgname}-setup"
+    install -Dm755 uninstall.sh "$pkgdir/usr/bin/${_pkgname}-remove"
 
     # License and docs
     install -Dm644 LICENSE  "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
