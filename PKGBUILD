@@ -19,13 +19,13 @@ noextract=("${_appimage}")
 source=("https://github.com/Ishidawg/LeShade/releases/download/${pkgver}/${_appimage}"
 		"LICENSE::https://raw.githubusercontent.com/Ishidawg/LeShade/main/LICENSE")
 sha256sums=('b3fb9c1cb94c530e14f4656aec35a47b7436f7e34ace41993655d9251dc725af'
-            'a7b8f406ed4e1a5311d51a1967f91e569a6c0ce815c2bf74956d926613dd61a3')
+			'a7b8f406ed4e1a5311d51a1967f91e569a6c0ce815c2bf74956d926613dd61a3')
 
 prepare() {
 	# Extract AppImage
-    cd "${srcdir}"
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+	cd "${srcdir}"
+	chmod +x "${_appimage}"
+	./"${_appimage}" --appimage-extract
 	cd "${srcdir}/squashfs-root/"
 	# Change the exec name
 	sed -i -e "s/Exec=LeShade/Exec=leshade/" "${_pkgname}.desktop"
@@ -35,8 +35,8 @@ prepare() {
 
 package() {
 	# Create directory structure
-    install -dm755 "${pkgdir}/opt/${_pkgname}"
-    install -dm755 "${pkgdir}/usr/bin"
+	install -dm755 "${pkgdir}/opt/${_pkgname}"
+	install -dm755 "${pkgdir}/usr/bin"
 	# Move extracted content to /opt
 	cp -ar "${srcdir}/squashfs-root/." "${pkgdir}/opt/${_pkgname}/"
 	# Install the .desktop file and the icon
