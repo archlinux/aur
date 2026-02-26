@@ -3,7 +3,7 @@
 _name=pytnl
 pkgbase=python-$_name
 pkgname=($pkgbase $pkgbase-cuda)
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Python bindings for the Template Numerical Library"
 arch=(x86_64)
@@ -30,10 +30,11 @@ checkdepends=(
   python-pytest-xdist
   python-psutil
   python-hypothesis
+  python-mpi4py
   python-numpy
 )
 source=($url/-/archive/$pkgver/$_name-$pkgver.tar.gz)
-b2sums=('ffae47de3a926090d8611e9cb9fbdfd8ad57ac8d3938469d6a8dfa6e1f376362964590f5148f402c1e696e79daa3641acbdeced8a2385ce76378a40f3eee6dfe')
+b2sums=('7aebc6ff798c4b291a4c29d75bb9b37d311e3a1e85817b5fa1ac6a2090f39d72b46ae9ca015514ddc01f9335d573793a7550dbd4a1b8e73b42b2182f9773ae60')
 
 _pick() {
   local p="$1" f d; shift
@@ -76,6 +77,7 @@ check() {
 
 package_python-pytnl() {
   optdepends=(
+    'python-mpi4py: for distributed datastructures (MPI)'
     'python-numpy: interoperability with NumPy'
     'python-pytnl-cuda: additional CUDA-accelerated modules'
   )
