@@ -3,7 +3,7 @@
 pkgname=wheelwizard
 _name=WheelWizard
 _app_id=io.github.TeamWheelWizard.WheelWizard
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="${_name} – Mario Kart Mod Manager & Retro Rewind Auto Updater"
 arch=('x86_64' 'aarch64')
@@ -24,7 +24,7 @@ provides=(${pkgname})
 conflicts=(${pkgname})
 
 source=("${_name}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('3504a061b16b4f27655a49d9d6a4309e22f722de9931366b4a8291d7a6a15cd8c5dcbe684b820a78fcbdd8a20e733a24a0c9bb406c60709a66a081e9b811d1cb')
+b2sums=('8940049e7e355729ad12cf2a37cb74f318ba248a82041df2056c22724b2a30a264b543da69b68c2f422e6ea8a1ebf52bcead4655fdde89f71a98caeb060d40b7')
 
 _arch() {
     if [ "${CARCH}" = 'aarch64' ]; then
@@ -41,6 +41,7 @@ _dotnet_runtime_identifier() {
 prepare() {
     pushd "${_name}-${pkgver}"
     sed -i "s/^Icon=.*$/Icon=${_name}/g" "Flatpak/${_app_id}.desktop"
+    sed -i 's/"version": "8.0.124"/"version": "8.0.123"/' global.json
     popd
 }
 
