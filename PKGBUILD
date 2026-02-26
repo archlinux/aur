@@ -1,17 +1,17 @@
 # Maintainer: ardahzr <ardahzr@github>
 pkgname=lmp-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Spotify-inspired dark-theme GTK3 music player for Linux with YouTube & Spotify download"
 arch=('x86_64')
 url="https://github.com/ardahzr/linux-mp3-youtube"
 license=('MIT')
-depends=('mpg123' 'libpulse' 'gtk3' 'yt-dlp' 'ffmpeg')
+depends=('libpulse' 'gtk3' 'yt-dlp' 'ffmpeg' 'python-mutagen')
 optdepends=('libnotify: desktop notifications')
 provides=('lmp')
 conflicts=('lmp')
 source=("MP3Player-linux-x64-${pkgver}::https://github.com/ardahzr/linux-mp3-youtube/releases/download/v${pkgver}/MP3Player-linux-x64")
-sha256sums=('8963b198a3a3a0f7cb0caeb6b966173f419d01974c3982acab3fb98b2cfe7036')
+sha256sums=('d79cfbb9c90ce300648625172779b55e2569a3907ce163467da3f727413ca85a')
 options=('!strip')
 
 package() {
