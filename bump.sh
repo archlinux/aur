@@ -21,7 +21,29 @@ sed -i "s/^_buildnumber=.*/_buildnumber=${BUILDNUMBER}/" PKGBUILD
 sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
 
 # Calculate checksum from the local tarball (relative to script location)
-TARBALL="$SCRIPT_DIR/../namida/scripts/bundle_output/namida-v${PKGVER}-beta.linux.tar.gz"
+
+TARBALL=""
+CANDIDATES=(
+  "$SCRIPT_DIR/../scripts/bundle_output/namida-v${PKGVER}-beta.linux.tar.gz"
+  "$SCRIPT_DIR/../namida/scripts/bundle_output/namida-v${PKGVER}-beta.linux.tar.gz"
+)
+
+for candidate in "${CANDIDATES[@]}"; do
+  if [ -f "$candidate" ]; then
+    TARBALL="$candidate"
+    echo "Found tarball at: $TARBALL"
+    break
+  fi
+done
+
+if [ -z "$TARBALL" ]; then
+  echo "Warning: Tarball not found in any of:"
+  for candidate in "${CANDIDATES[@]}"; do
+    echo "  $candidate"
+  done
+  exit 1
+fi
+
 if [ -f "$TARBALL" ]; then
   NEW_SHA256=$(sha256sum "$TARBALL" | awk '{print $1}')
   sed -i "s/^sha256sums=.*/sha256sums=('${NEW_SHA256}')/" PKGBUILD
