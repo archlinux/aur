@@ -1,7 +1,7 @@
 # Maintainer: italoghost <eduprodive at posteo dot me>
 pkgname=leshade-bin
 _pkgname=leshade
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=1
 pkgdesc="An unofficial Reshade Installer for Linux."
 arch=('x86_64')
@@ -12,13 +12,13 @@ depends=('keyutils' 'libcap' 'bzip2' 'libgcrypt' 'xz' 'krb5' 'libstdc++'
 		'libgpg-error' 'systemd-libs' 'util-linux-libs' 'brotli' 'lz4'
 		'openssl' 'glib2' 'libffi' 'pcre2' 'libatomic' 'dbus' 'libgcc'
 		'zlib' 'zstd' 'expat' 'e2fsprogs' 'glibc')
-makedepends=('chrpath')
-options=('!strip' '!emptydirs')
+makedepends=('patchelf')
+options=('!strip' '!emptydirs' '!libtool')
 _appimage="LeShade-x86_64.AppImage"
 noextract=("${_appimage}")
 source=("https://github.com/Ishidawg/LeShade/releases/download/${pkgver}/${_appimage}"
 		"LICENSE::https://raw.githubusercontent.com/Ishidawg/LeShade/main/LICENSE")
-sha256sums=('b3fb9c1cb94c530e14f4656aec35a47b7436f7e34ace41993655d9251dc725af'
+sha256sums=('b1d056cffd1205507169a9ca3cad5569c229e2d26eadb94b14cf2e109f427243'
 			'a7b8f406ed4e1a5311d51a1967f91e569a6c0ce815c2bf74956d926613dd61a3')
 
 prepare() {
@@ -30,7 +30,9 @@ prepare() {
 	# Change the exec name
 	sed -i -e "s/Exec=LeShade/Exec=leshade/" "${_pkgname}.desktop"
 	# Remove insecure RUNPATH
-	find . -type f $$   -name '*.so*' -o -name 'LeShade'   $$ -exec chrpath -d {} \; 2>/dev/null || true
+	find . -type f -exec file {} + | grep -E 'ELF.*(executable|shared object)' | cut -d: -f1 | while read -r elf; do
+		patchelf --remove-rpath "$elf" 2>/dev/null || true
+	done
 }
 
 package() {
