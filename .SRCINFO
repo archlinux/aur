@@ -1,0 +1,19 @@
+pkgbase = lidarview
+	pkgdesc = Real-time reception, recording, visualization and processing of 3D LiDAR data (successor to VeloView)
+	pkgver = 5.2.0
+	pkgrel = 1
+	url = https://lidarview.kitware.com
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = gendesk
+	depends = libglvnd
+	depends = libxcb
+	depends = libxkbcommon
+	depends = dbus
+	optdepends = nvidia-utils: NVIDIA GPU acceleration
+	source = LidarView-5.2.0-Linux.tar.gz::https://drive.usercontent.google.com/download?id=1T2-e2nACjePKYZZpS1ds-K1t_rhMjhZA&export=download&confirm=t
+	source = lidarview.svg::https://raw.githubusercontent.com/Kitware/LidarView/master/Application/Client/Resources/Images/LidarViewLogo.svg
+	sha256sums = b1747057eef17c0569aa76a21433aea09446202128221c5399b6fa79f2da9e13
+	sha256sums = SKIP
+
+pkgname = lidarview
