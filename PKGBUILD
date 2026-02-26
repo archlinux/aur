@@ -11,7 +11,7 @@ sha256sums=('SKIP')
 package() {
 	depends=('jq>=1.8.1' 'wget>=1.25.0')
 
-	install -D -t "$pkgdir/usr/bin" "$srcdir/macup-$pkgver/macup"
+	install -D -t "$pkgdir/usr/bin" "$srcdir/macup-$pkgver/dist/macup"
 
 	chmod +x "$pkgdir/usr/bin/macup"
 }
