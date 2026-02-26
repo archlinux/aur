@@ -1,7 +1,7 @@
 # Maintaner: Rudra Saraswat <rs2009@ubuntu.com>
 
 pkgname=apx-gui
-pkgver=1.0.3
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='A frontend in GTK 4 and Libadwaita for Apx.'
 arch=('any')
