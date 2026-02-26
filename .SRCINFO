@@ -1,7 +1,7 @@
 pkgbase = python-scienceplots
 	pkgdesc = Format Matplotlib for scientific plotting
-	pkgver = 2.2.0
-	pkgrel = 4
+	pkgver = 2.2.1
+	pkgrel = 1
 	url = https://github.com/garrettj403/SciencePlots
 	arch = any
 	license = MIT
@@ -14,9 +14,7 @@ pkgbase = python-scienceplots
 	makedepends = python-wheel
 	depends = python-matplotlib
 	conflicts = python-scienceplots-git
-	source = SciencePlots-2.2.0.tar.gz::https://github.com/garrettj403/SciencePlots/archive/2.2.0.tar.gz
-	source = styles.patch::https://github.com/garrettj403/SciencePlots/pull/152.patch
-	sha512sums = f8bd91f86f4034ea5d4fc2343649553c95be7d88c80e42d0506193ef8aef4a6ebb35cbb7413c93b15490d8db89c3eb8bfb268a7fc60b5404d572e33d9c3cf055
-	sha512sums = b8a1149ab335b976e7f5619a26b6ecc578a240a7cbfd99810c0d2c3f4bb2750c56c23e19da1ffd89c49eb0880b093dc30cbedb376026b446fe4167540fc29e76
+	source = SciencePlots-2.2.1.tar.gz::https://github.com/garrettj403/SciencePlots/archive/2.2.1.tar.gz
+	sha512sums = ba076f2debf30896f5e30b84b18f0ee386214e321c56131db758c835b01b0a3b132612d1787844fa47be8f27255dd5f034f5e8029b4214fc1720d370b9ec14f1
 
 pkgname = python-scienceplots

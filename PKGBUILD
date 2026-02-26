@@ -3,24 +3,17 @@
 _base=SciencePlots
 pkgname=python-${_base,,}
 pkgdesc="Format Matplotlib for scientific plotting"
-pkgver=2.2.0
-pkgrel=4
+pkgver=2.2.1
+pkgrel=1
 arch=(any)
 url="https://github.com/garrettj403/${_base}"
 license=(MIT)
 depends=(python-matplotlib)
 makedepends=(python-build python-installer python-setuptools-scm python-wheel)
 checkdepends=(python-pytest texlive-latexextra texlive-fontsrecommended)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz
-  styles.patch::${url}/pull/152.patch)
-sha512sums=('f8bd91f86f4034ea5d4fc2343649553c95be7d88c80e42d0506193ef8aef4a6ebb35cbb7413c93b15490d8db89c3eb8bfb268a7fc60b5404d572e33d9c3cf055'
-            'b8a1149ab335b976e7f5619a26b6ecc578a240a7cbfd99810c0d2c3f4bb2750c56c23e19da1ffd89c49eb0880b093dc30cbedb376026b446fe4167540fc29e76')
+source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
+sha512sums=('ba076f2debf30896f5e30b84b18f0ee386214e321c56131db758c835b01b0a3b132612d1787844fa47be8f27255dd5f034f5e8029b4214fc1720d370b9ec14f1')
 conflicts=(python-${_base,,}-git)
-
-prepare() {
-  cd ${_base}-${pkgver}
-  patch -p1 -i ../styles.patch
-}
 
 build() {
   cd ${_base}-${pkgver}
