@@ -1,21 +1,29 @@
 post_install() {
+    local user="${SUDO_USER:-$USER}"
+    if [ "$user" != "root" ] && [ -n "$user" ]; then
+        echo "  󰧑  Configuring Waybar for $user..."
+        su "$user" -c "omarchy-ai-usage-setup" 2>/dev/null && return
+    fi
+    # Fallback if auto-setup fails
     cat <<EOF
 
   ═══════════════════════════════════════════════
   󰧑  omarchy-ai-usage installed!
 
-  Run the setup to configure Waybar:
+  Run to configure Waybar:
 
     omarchy-ai-usage-setup
-
-  This will copy scripts, add the waybar module,
-  and create the default config.
   ═══════════════════════════════════════════════
 
 EOF
 }
 
 post_upgrade() {
+    local user="${SUDO_USER:-$USER}"
+    if [ "$user" != "root" ] && [ -n "$user" ]; then
+        echo "  󰧑  Updating Waybar scripts for $user..."
+        su "$user" -c "omarchy-ai-usage-setup" 2>/dev/null && return
+    fi
     cat <<EOF
 
   ═══════════════════════════════════════════════
@@ -24,26 +32,25 @@ post_upgrade() {
   Run to update scripts:
 
     omarchy-ai-usage-setup
-
-  Your config at ~/.config/ai-usage/ is preserved.
   ═══════════════════════════════════════════════
 
 EOF
 }
 
 post_remove() {
+    local user="${SUDO_USER:-$USER}"
+    if [ "$user" != "root" ] && [ -n "$user" ]; then
+        echo "  󰧑  Cleaning up Waybar config for $user..."
+        su "$user" -c "omarchy-ai-usage-remove" 2>/dev/null && return
+    fi
     cat <<EOF
 
   ═══════════════════════════════════════════════
   󰧑  omarchy-ai-usage removed
 
-  To clean up waybar config and scripts, run:
+  Run to clean up:
 
     omarchy-ai-usage-remove
-
-  Or manually remove:
-    ~/.config/waybar/scripts/ai-usage*.sh
-    ~/.config/ai-usage/
   ═══════════════════════════════════════════════
 
 EOF

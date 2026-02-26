@@ -1,7 +1,7 @@
 # Maintainer: rodrigosntg <rodrigo-sntg at github>
 pkgname=omarchy-ai-usage-git
 _pkgname=omarchy-ai-usage
-pkgver=r1.fdd6dd7
+pkgver=r2.8fe03d6
 pkgrel=1
 pkgdesc="AI usage monitoring for Omarchy — track Claude and Codex rate limits in Waybar"
 arch=('any')
