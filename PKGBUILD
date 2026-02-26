@@ -25,7 +25,7 @@ esac
 _deb="nordvpn_${_pkgver//_/-}_${_arch}.deb"
 source=("https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/${_deb}")
 
-sha256sums=('SKIP')
+sha256sums=('ade3c11157baa38f487f9758bc8516dfad44ee716a9e0cddf9792239e7a163bc')
 
 package() {
   bsdtar -xf "${srcdir}/${_deb}" -C "${srcdir}"
