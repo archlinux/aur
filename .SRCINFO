@@ -1,6 +1,6 @@
 pkgbase = python-osrf_pycommon
 	pkgdesc = Commonly needed Python modules, used by Python software developed at OSRF
-	pkgver = 2.1.6
+	pkgver = 2.1.7
 	pkgrel = 1
 	url = https://github.com/osrf/osrf_pycommon
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-osrf_pycommon
 	depends = python
 	provides = python-osrf-pycommon
 	conflicts = python-osrf-pycommon
-	source = https://github.com/osrf/osrf_pycommon/archive/2.1.6.tar.gz
-	sha256sums = 7b66edaaf15ef0733dc928f5e9c90ec739fc7a9c490c611be09f15449ddcf799
+	source = https://github.com/osrf/osrf_pycommon/archive/2.1.7.tar.gz
+	sha256sums = 441afd5c3476474a1e5760070fec18860992a4659e84a6a4b59e49217d7cc6af
 
 pkgname = python-osrf_pycommon
