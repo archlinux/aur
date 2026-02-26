@@ -1,0 +1,4 @@
+[btlescan-bin]
+source = "github"
+github = "ztroop/btlescan"
+use_latest_release = true
