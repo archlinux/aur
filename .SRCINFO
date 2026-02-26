@@ -1,7 +1,7 @@
 pkgbase = smile
 	pkgdesc = An emoji picker with custom tags support
 	pkgver = 2.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mijorus.it/projects/smile/
 	arch = any
 	license = GPL-3.0-or-later
@@ -12,6 +12,7 @@ pkgbase = smile
 	depends = libadwaita
 	depends = python-dbus
 	depends = python-gobject
+	depends = which
 	optdepends = dotool: For autopaste service
 	optdepends = wl-clipboard: Automatically paste emojis (Wayland)
 	optdepends = xdotool: Automatically paste emojis (X11)

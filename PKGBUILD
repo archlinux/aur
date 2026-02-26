@@ -3,7 +3,7 @@
 # Contributor: Eli Schwartz
 pkgname=smile
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An emoji picker with custom tags support"
 arch=('any')
 url="https://mijorus.it/projects/smile/"
@@ -14,6 +14,7 @@ depends=(
   'libadwaita'
   'python-dbus'
   'python-gobject'
+  'which'
 )
 makedepends=('meson')
 checkdepends=('appstream-glib')
