@@ -1,5 +1,5 @@
 pkgname=cohesivemail
-pkgver=0.0.73
+pkgver=0.0.74
 pkgrel=2
 pkgdesc="CohesiveMail desktop client"
 arch=("x86_64")
@@ -32,7 +32,7 @@ source=(
   "cohesivemail.desktop"
 )
 sha256sums=(
-  "821e48a89a3602db152b2af882b80943e0cfe68391a4b28ad93779beee79cb21"
+  "e3922f30683f5c7b7d68618f05b45464417a13807a2e4c6f2a1310a3a4a3d180"
   "ad9c16678f1496b7e5f35558fdfe98c528841407e82988543b1eab1960457dbe"
 )
 
