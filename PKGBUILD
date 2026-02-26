@@ -2,16 +2,16 @@
 # Contributor: tee < teeaur at duck dot com >
 
 pkgname=qdrant
-pkgver=1.16.3
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Vector Database for the next generation of AI applications"
 arch=('x86_64')
-url="https://github.com/qdrant/qdrant"
+url="https://qdrant.tech"
 license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'cmake' 'mold' 'clang' 'protobuf')
 source=(
-  "${url}/archive/v${pkgver}.tar.gz"
+  "https://github.com/qdrant/qdrant/archive/v${pkgver}.tar.gz"
 )
 sha256sums=('38acd9ad284c8446e82d1d00037d08afa9c347e674a1ed023d62206df6432cb4')
 
