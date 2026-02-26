@@ -5,9 +5,9 @@
 
 pkgname=rawbit
 pkgver=0.1.17
-pkgrel=1
+pkgrel=2
 pkgdesc='A camera RAW photo preprocessor and importer'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/cartercanedy/rawbit"
 license=('MIT')
 depends=('libgcc')
