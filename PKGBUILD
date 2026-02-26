@@ -2,7 +2,7 @@
 
 pkgname='plasma6-applets-supergfxctl'
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE Plasma plasmoid for supergfxctl"
 arch=('x86_64')
 url="https://gitlab.com/Jhyub/supergfxctl-plasmoid"
