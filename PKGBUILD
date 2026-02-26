@@ -1,6 +1,7 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 # Note: Uses tags from the 'arch' branch
 pkgname=mx-packageinstaller
+pkgver=26.02.1arch
 pkgver=26.02arch
 pkgrel=1
 pkgdesc="MX Package Installer - a tool for managing packages and Flatpak"
@@ -9,8 +10,8 @@ url="https://github.com/MX-Linux/mx-packageinstaller"
 license=("GPL")
 depends=("qt6-base" "xdg-utils" "sudo" "socat")
 makedepends=("cmake" "ninja" "qt6-tools")
-source=("https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/26.02arch.tar.gz")
-sha256sums=('960fe18c19e171a75e0736d71b4110e3c166418bff65aa97aaff8422f13f179a')
+source=("https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/26.02.1arch.tar.gz")
+sha256sums=('e6b56760f40b89b082fc2ed3d12f1dbd70bde8d52d6ad524a8db4bb4c7d32bae')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
