@@ -1,6 +1,6 @@
 # Maintainer: bananasjim <bananasjim1@gmail.com>
 pkgname=rdc-cli
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Unix-friendly CLI for RenderDoc .rdc captures"
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=(
   "git+https://github.com/baldurk/renderdoc.git#tag=v1.41"
   "renderdoc-swig::https://github.com/baldurk/swig/archive/renderdoc-modified-7.zip"
 )
-sha256sums=('be34efde442038c88ec499ed93b738f39541dc71d85da56ed88b800cbc73c76f'
+sha256sums=('c74252e749fbda1b8b42c0fafdeb554b54abf18b1185360432580fc69fec0d30'
             'SKIP'
             '9d7e5013ada6c42ec95ab167a34db52c1cc8c09b89c8e9373631b1f10596c648')
 
