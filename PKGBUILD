@@ -1,5 +1,5 @@
 pkgname=dssat-csm-os-git
-pkgver=v4.8.5.17.r0.g1b2e4ce4
+pkgver=v4.8.5.41.r1.g1b7784c0
 pkgrel=1
 pkgdesc="The Cropping System Model (CSM) from the Decision Support System for Agrotechnology Transfer (DSSAT)"
 arch=('x86_64')
@@ -47,6 +47,11 @@ package() {
     ! -name "share" \
     ! -name "lib" \
     -exec mv -t "${pkgdir}/usr/share/${pkgname}/" {} +
+
+  # Create symlink for hardcoded /DSSAT48/ path in the binary
+  # The Fortran source (Utilities/OSDefsLINUX.for) hardcodes STDPATH = '/DSSAT48/'
+  install -d "${pkgdir}/"
+  ln -s "/usr/share/${pkgname}" "${pkgdir}/DSSAT48"
 
   # Finally, install the license file using its full path and correct name
   install -Dm644 "${srcdir}/dssat-csm-os/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
