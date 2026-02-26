@@ -1,0 +1,25 @@
+pkgbase = sonic1forever-git
+	pkgdesc = Sonic the Hedgehog Forever - a fan overhaul of Sonic 1 (2013 mobile) built on the RSDKv4 decompilation. Requires the original Sonic 1 2013 APK data files.
+	pkgver = r0.g0000000
+	pkgrel = 1
+	url = https://github.com/ElspethThePict/S1Forever
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	makedepends = git
+	makedepends = base-devel
+	depends = sdl2
+	depends = glew
+	depends = libvorbis
+	depends = libogg
+	depends = libtheora
+	provides = sonic1forever
+	conflicts = sonic2013-git
+	source = teamforever-engine::git+https://github.com/ElspethThePict/TeamForever-v4-1.3.git
+	source = s1forever-mod::git+https://github.com/ElspethThePict/S1Forever.git
+	source = s1-scripts::git+https://github.com/RSDKModding/RSDKv4-Script-Decompilation.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = sonic1forever-git
