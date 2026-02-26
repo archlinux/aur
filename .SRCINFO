@@ -1,0 +1,21 @@
+pkgbase = waybar-ai-usage-oauth
+	pkgdesc = Monitor Claude Code and Codex CLI usage in Waybar (OAuth-based)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/poberherr/waybar-ai-usage-oauth
+	install = waybar-ai-usage-oauth.install
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-requests
+	depends = python-json-five
+	conflicts = waybar-ai-usage
+	provides = waybar-ai-usage
+	source = waybar-ai-usage-oauth-0.5.0.tar.gz::https://api.github.com/repos/poberherr/waybar-ai-usage-oauth/tarball/refs/tags/v0.5.0
+	sha256sums = SKIP
+
+pkgname = waybar-ai-usage-oauth
