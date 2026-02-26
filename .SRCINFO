@@ -1,0 +1,14 @@
+pkgbase = multiworld-gg-git
+	pkgdesc = MultiworldGG Multi-Game Randomizer and Server - Fork of Archipelago
+	pkgver = r9671
+	pkgrel = 1
+	url = https://github.com/MultiworldGG/MultiworldGG
+	arch = any
+	license = GPL-3.0
+	makedepends = uv
+	depends = python
+	provides = multiworld-gg
+	source = multiworld-gg::git+https://github.com/FoxAmes/MultiworldGG.git#branch=feat/xdg-terminal-exec
+	sha256sums = SKIP
+
+pkgname = multiworld-gg-git
