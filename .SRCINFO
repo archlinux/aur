@@ -1,0 +1,18 @@
+pkgbase = python-pybvrf
+	pkgdesc = Python package for working with BrainVision Recording Format (BVRF) files
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/cbrnr/pybvrf
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-uv-build
+	depends = python
+	depends = python-mne
+	depends = python-numpy
+	depends = python-jsonschema
+	source = https://files.pythonhosted.org/packages/source/p/pybvrf/pybvrf-0.1.2.tar.gz
+	sha256sums = e1978553413b737e1e2f7ac6d4ac73d39ad7d2ba1d8634d00a9f75744eca4c67
+
+pkgname = python-pybvrf
