@@ -2,7 +2,7 @@
 pkgname=textmerger-bin
 _pkgname=textmerger
 pkgver=2.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A Rust/Tauri GTK3 application for merging text files"
 arch=('x86_64')
 url="https://github.com/pierspad/textmerger"
