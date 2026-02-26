@@ -1,15 +1,14 @@
 pkgbase = rawbit
 	pkgdesc = A camera RAW photo preprocessor and importer
-	pkgver = 0.1.16
+	pkgver = 0.1.17
 	pkgrel = 1
 	url = https://github.com/cartercanedy/rawbit
 	changelog = CHANGELOG.md
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	depends = libiconv
-	depends = gcc-libs
-	source = rawbit-0.1.16.tar.gz::https://github.com/cartercanedy/rawbit/archive/v0.1.16.tar.gz
-	sha256sums = e1e2f87db47090cd1b5eab7aef299b07cccb1692ad63457dcb2fe9460aa248bc
+	depends = libgcc
+	source = rawbit-0.1.17.tar.gz::https://github.com/cartercanedy/rawbit/archive/v0.1.17.tar.gz
+	sha256sums = 1178ec50bf4cc5c4a3cb4c3788615adc2c70380d5d1715168880315b90846f81
 
 pkgname = rawbit

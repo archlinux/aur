@@ -1,5 +1,6 @@
 # Changelog
 
+
 ## [0.1.16](https://github.com/cartercanedy/rawbit/compare/v0.1.15...v0.1.16) - 2025-12-08
 
 ### Fixed
