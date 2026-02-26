@@ -19,11 +19,11 @@ git+${url}.git $install
 ${pkgname%-*}.hook::https://aur.archlinux.org/cgit/aur.git/plain/${pkgname%-*}.hook?h=${pkgname%-*}
 )
 
-sha256sums=('65baa55bb8b32d43e4606ff84029f5180ab318bdf02011e1f3b510f873992341'
-            'f865d677f8ad39c79dde69186629cb6468c2b289c4156dbb8dec8e68b0131b40'
-            'SKIP'
-            '2726a8abe72d73bab070f0868c653fc5b8aa6f0697ddb1d6bd3adbefdd6fd425'
-            'f3371c17a935787a17e949cd87c2a4527058eb220c4c8b1719ca7915e64092d0')
+b2sums=('c92deb468a018ae7f04150d35cb71d3cf7e2e151f23ab84533bca9ccb0c678b94897668c48362aa6549cfa9127250e094719a14f95b59ed4e95f69dcebb3bca1'
+        'e5f7b79f7731be9ee5a7280a9221fb531ac5a2d9820fc5870b68b0eabea667dfbe8f39f41c1e1763a4c84982896afaa54c81ff57847d203b70afafd726689e5d'
+        'SKIP'
+        '0291ddd136ff1b08eaf8da9a2a8a0a15a0a1125901eb72801e553acea7259389338a42f81939829b220ec1de36a2d2c25445f2235355f7e705578addb86f82ae'
+        '1b896e60f51346f9ee586c5e8d6061650d1c153171706961f8c3b60366e167535ca7632bf4e5125e8ab8c974e20033449da2b2d99ede25760eb6122badf5d6d8')
 depends=(glibc)
 makedepends=(nasm git
 gcc make sed) # base-devel
@@ -87,5 +87,5 @@ package(){
   install -Dm644 ${pkgname}.hook -t "$pkgdir"/usr/share/libalpm/hooks
   # Block DL binary
   install -d "${pkgdir}"/opt/vivaldi{,-snapshot}
-  touch "$pkgdir"/opt/vivaldi{,-snapshot}/${_so}.{7.7,7.8,7.9,8.0,8.1,8.2,8.3,8.4,8.5,8.6,8.7}
+  touch "$pkgdir"/opt/vivaldi{,-snapshot}/${_so}.{7.8,7.9,8.0,8.1,8.2,8.3,8.4,8.5,8.6,8.7}
 }
