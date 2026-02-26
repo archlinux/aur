@@ -7,20 +7,12 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/joske/mergers"
 license=('GPL-2.0-only')
 depends=('gtk4' 'gtksourceview5')
-makedepends=('cargo')
+makedepends=('rustup')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/joske/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
+sha256sums=('279f5a3335631091d20838dce8ba798ae95e1c3d81ce3cf5c233f48a68a81f86')
 
 build() {
     cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
     cargo build --frozen --release
 }
 
