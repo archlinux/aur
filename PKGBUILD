@@ -2,19 +2,18 @@
 # Contributor: tee < teeaur at duck dot com >
 
 _pkgname=qdrant
-pkgname=${_pkgname}-bin
-pkgver=1.16.3
-pkgrel=2
+pkgname="${_pkgname}-bin"
+pkgver=1.17.0
+pkgrel=1
 pkgdesc="Vector Database for the next generation of AI applications"
 arch=('x86_64')
 url="https://qdrant.tech"
 license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
-makedepends=()
-provides=('qdrant')
-conflicts=('qdrant')
+provides=($_pkgname)
+conflicts=($_pkgname)
 source_x86_64=("https://github.com/qdrant/qdrant/releases/download/v${pkgver}/qdrant_${pkgver}-1_amd64.deb")
-sha256sums_x86_64=('77a29228349727ce7136c02de44022952efb2913bc5a1034dd02c11aab1ff687')
+sha256sums_x86_64=('a2a9cfe4bd2aa8e188d86404fa1f47ac92253a8b3704ac19b39a796bdd050453')
 
 package() {
   tar -xf data.tar.xz
