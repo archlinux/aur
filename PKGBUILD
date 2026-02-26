@@ -1,6 +1,6 @@
 # Maintainer: Stevan <stevp003@gmail.com>
 pkgname=ttune
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Terminal based guitar tuner"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('portaudio')
 makedepends=('go' 'pkgconf')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SteveMCWin/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('41a1daddae9497b5a55f7864aadb304c25cf9ed678c5827e9b5cf23c6a5ac97e')
+sha256sums=('d4b9ea642b9ff2991b301b78b74c3cabb00b72f4ced84a64fa9715d2c89eeba1')
 
 build() {
     cd "$pkgname-$pkgver"

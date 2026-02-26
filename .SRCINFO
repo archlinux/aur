@@ -1,6 +1,6 @@
 pkgbase = ttune
 	pkgdesc = Terminal based guitar tuner
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 1
 	url = https://github.com/SteveMCWin/ttune
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ttune
 	makedepends = go
 	makedepends = pkgconf
 	depends = portaudio
-	source = ttune-0.8.1.tar.gz::https://github.com/SteveMCWin/ttune/archive/refs/tags/v0.8.1.tar.gz
-	sha256sums = a57aacf7e0dd842b5022d40318455f2dc466ffae6dd0f810ae6dbb6ab2426258
+	source = ttune-0.8.2.tar.gz::https://github.com/SteveMCWin/ttune/archive/refs/tags/v0.8.2.tar.gz
+	sha256sums = d4b9ea642b9ff2991b301b78b74c3cabb00b72f4ced84a64fa9715d2c89eeba1
 
 pkgname = ttune
