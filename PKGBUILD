@@ -2,8 +2,8 @@
 # Co-Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=plugin-autenticacao-gov-pt
-pkgver=2.1.00
-pkgrel=1
+pkgver=2.1.1
+pkgrel=2
 pkgdesc="O plugin Autenticação.Gov (anteriormente designado por aplicação Autenticação.gov.pt) permite realizar o procedimento de autenticação com o Cartão de Cidadão sem necessidade de efetuar a instalação de qualquer componente no navegador"
 arch=('any')
 url=https://autenticacao.gov.pt/fa/ajuda/autenticacaogovpt.aspx
