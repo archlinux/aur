@@ -1,72 +1,104 @@
 # Maintainer: Your Name <your-email@example.com>
-pkgname=xjtutoolbox
-_pkgname=XJTUToolBox
+pkgbase=xjtutoolbox
+pkgname=xjtutoolbox-git
 pkgver=1.2.3
-pkgrel=3
-pkgdesc="仙交百宝箱：西安交通大学一站式校园服务工具（包含课表、成绩、评教、自动抢课助手等）"
+pkgrel=18
+pkgdesc="仙交百宝箱：西安交通大学一站式校园服务工具（混合依赖模式：Official + AUR + Venv）"
 arch=('any')
 url="https://github.com/yan-xiaoo/XJTUToolBox"
 license=('GPL3')
 
-# 核心依赖说明：
-# python-pyside6: GUI 界面
-# python-requests: 网络请求
-# python-beautifulsoup4 & python-lxml: 网页解析
-# python-cryptography: 处理学校登录系统的加密
-# python-pillow: 验证码显示与图像处理
-# python-keyring: 安全存储保存的密码
+# 1. 官方仓库依赖 (Official Repos)
 depends=(
-    'python'
-    'pyside6'
+    'python>=3.10'
+    'python-pyqt5'             # 核心 GUI 框架
     'python-requests'
+    'python-urllib3'
+    'python-idna'
+    'python-certifi'
+    'python-charset-normalizer'
     'python-cryptography'
+    'python-pycryptodome'      # Crypto 模块
+    'python-pyjwt'             # jwt 模块
     'python-beautifulsoup4'
-    'python-lxml'
+    'python-lxml'              # 解析核心
     'python-pillow'
     'python-keyring'
     'python-numpy'
+    'python-icalendar'
+    'python-peewee'
+    'python-tqdm'
+    'python-pytz'
+    'python-markdown'
+    'python-colorama'
+    'libnotify'                # 系统通知支持
+    'qt5-base'
+    'qt5-svg'
+    'qt5-wayland'
 )
 
-makedepends=('git' 'python-setuptools')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+# 2. AUR 依赖 (AUR Packages)
+# 注意：构建前需确保这些包已安装，否则 makepkg 会报错
+depends+=(
+    'python-fake-useragent'
+    'python-plyer'
+    'python-darkdetect'
+)
+
+makedepends=('git' 'python-pip')
+provides=("${pkgbase}")
+conflicts=("${pkgbase}")
 source=("git+https://github.com/yan-xiaoo/XJTUToolBox.git")
 sha256sums=('SKIP')
 
-pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 package() {
-  cd "$_pkgname"
+  cd "$srcdir/XJTUToolBox"
 
-  # 创建目录
-  install -dm755 "$pkgdir/opt/$_pkgname"
+  # --- 目录准备 ---
+  install -dm755 "$pkgdir/opt/$pkgbase"
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/applications"
   install -dm755 "$pkgdir/usr/share/pixmaps"
 
-  # 拷贝源码
-  cp -r * "$pkgdir/opt/$_pkgname/"
+  # --- 源码拷贝 ---
+  cp -r . "$pkgdir/opt/$pkgbase/"
+  rm -rf "$pkgdir/opt/$pkgbase/.git"
+  rm -rf "$pkgdir/opt/$pkgbase/docs"
+  rm -f "$pkgdir/opt/$pkgbase/uv.lock"
 
-  # 启动脚本
+  # --- 构建隔离环境 (Venv) ---
+  # 仅处理你在 AUR 找不到或版本敏感的库
+  # --system-site-packages 是关键：让 venv 能看见系统装好的 pyqt5 和 lxml
+  python -m venv --system-site-packages "$pkgdir/opt/$pkgbase/venv"
+  
+  # --- 补充安装缺失库 ---
+  # 仅安装 PyQt-Fluent-Widgets
+  # 强制禁用字节码编译，规避 Python 3.14 marshal 错误
+  export PYTHONDONTWRITEBYTECODE=1
+  "$pkgdir/opt/$pkgbase/venv/bin/pip" install \
+    --no-cache-dir \
+    --no-compile \
+    PyQt-Fluent-Widgets
+
+  # --- 清理与修正 ---
+  find "$pkgdir/opt/$pkgbase" -name "*.pyc" -delete
+  find "$pkgdir/opt/$pkgbase" -name "__pycache__" -delete
+  find "$pkgdir/opt/$pkgbase/venv" -type f -exec sed -i "s|$pkgdir||g" {} +
+
+  # --- 启动脚本 ---
   cat <<EOF > "$pkgdir/usr/bin/xjtutoolbox"
 #!/bin/sh
-cd /opt/$_pkgname
-exec python main.py "\$@"
+export PYTHONDONTWRITEBYTECODE=1
+cd /opt/$pkgbase
+exec /opt/$pkgbase/venv/bin/python app.py "\$@"
 EOF
   chmod +x "$pkgdir/usr/bin/xjtutoolbox"
 
-  # 图标处理：根据仓库实际路径，通常图标在 assets 目录下
-  # 尝试匹配常见的 logo 文件名
+  # --- 资源文件 ---
   if [ -f "assets/logo.png" ]; then
     install -Dm644 "assets/logo.png" "$pkgdir/usr/share/pixmaps/xjtutoolbox.png"
-  elif [ -f "assets/icon.png" ]; then
-    install -Dm644 "assets/icon.png" "$pkgdir/usr/share/pixmaps/xjtutoolbox.png"
   fi
 
-  # Desktop 文件
   cat <<EOF > "$pkgdir/usr/share/applications/xjtutoolbox.desktop"
 [Desktop Entry]
 Name=XJTUToolBox
