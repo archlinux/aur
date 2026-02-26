@@ -1,7 +1,7 @@
 # Maintainer: LBK Team <info@lbklauncher.com>
 
 pkgname=lbk-launcher-bin
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Інсталятор українізаторів відеоігор"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
     "icon-256.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/master/aur/icons/icon-256.png"
 )
 sha256sums=('6d073a09ba8e34c9ad4946a09576352b5cc3c9adb9ef75703b149bc9d8996342'
-            'af09814ba8dadd51412ad4b79fe9f5382a3289e8fc82ddbc4d031b7c849c3131'
+            'bfdbf1a13225fe5a970dfdca75c4d142a1152f4f1a4e6e0b10f0a6ac659efc5f'
             'ae904b33f9fa483170f816f4ead2d35ef7a163200b1079e0a86c116f78634e0c'
             'a459c319b429a0bb50a7a1d8a519a477757733f6b0ad9cea63780837c2a01e1a'
             'b66ba4c572d0756cf028968dedf1eada20af644eda7e9855ce1b43170e06cad0'
