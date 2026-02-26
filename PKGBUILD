@@ -1,11 +1,11 @@
 # Maintainer: codev911 <codev911@mojosolid.dev>
 
 pkgname=antigravity-deb
-pkgver=1.19.4
-_x86minor=1772005678
-_arm64minor=1772005682
-_x86check=93efa9b6642627b1b0009b5681c6513a
-_arm64check=ca9e0f3a796486916ccbad3f7456bb7c
+pkgver=1.19.5
+_x86minor=1772095947
+_arm64minor=1772095935
+_x86check=c54799e9c89b1ec7c5b6acc14aa95383
+_arm64check=47ff166585ab2c83768e2c310d43a420
 pkgrel=1
 pkgdesc='An agentic development platform from Google, evolving the IDE into the agent-first era.'
 arch=(aarch64 x86_64)
@@ -19,8 +19,8 @@ source=($pkgname.sh)
 source_aarch64=("Antigravity-$pkgver-aarch64.deb::https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian/antigravity_$pkgver-${_arm64minor}_arm64_${_arm64check}.deb")
 source_x86_64=("Antigravity-$pkgver-x86_64.deb::https://us-central1-apt.pkg.dev/projects/antigravity-auto-updater-dev/pool/antigravity-debian/antigravity_$pkgver-${_x86minor}_amd64_${_x86check}.deb")
 sha256sums=('d3f365e6796836980a1439fb78be5cbfe1e11767fbd98fe695d3a953426d038b')
-sha256sums_aarch64=('db662052b943cf91a347a08f2f62198f4c0dccc228baa0c6d326bb0c4df10bce')
-sha256sums_x86_64=('c9eb7d8f88588ebbb783af02b112a70a2ec26155938746d09f77fd9f7f20fcca')
+sha256sums_aarch64=('dde796ce3811e8b9a399d14908eaa6eadcbb85fea5d06284f1dcac0bd6e58bbd')
+sha256sums_x86_64=('25487373c7ccb695adb99f45c750655841c4f1d4b657cb7962ec833c42beceed')
 
 prepare() {
     tar -xpf data.tar.xz
