@@ -1,7 +1,13 @@
+# Maintainer: Your Name <your@email.com>
 pkgname=dssat-csm-os-git
 pkgver=v4.8.5.41.r1.g1b7784c0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cropping System Model (CSM) from the Decision Support System for Agrotechnology Transfer (DSSAT)"
+# To use: Download DSSAT data files from https://dssat.net/data
+# Extract to a directory (e.g., ~/dssat_data) and run:
+#   cd ~/dssat_data/Maize
+#   dscsm048 MZCER048 A UFGA8201.MZX
+# See https://github.com/DSSAT/dssat-csm-os for documentation
 arch=('x86_64')
 url="https://github.com/DSSAT/dssat-csm-os"
 license=('LicenseRef-DSSAT')
@@ -9,6 +15,7 @@ depends=('netcdf-fortran' 'libjpeg-turbo')
 makedepends=('gcc-fortran' 'cmake' 'make' 'git')
 provides=('dssat-csm-os')
 conflicts=('dssat-csm-os')
+install=dssat-csm-os-git.install
 source=("git+https://github.com/DSSAT/dssat-csm-os.git")
 sha256sums=('SKIP')
 

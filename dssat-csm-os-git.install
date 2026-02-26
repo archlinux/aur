@@ -1,0 +1,27 @@
+post_install() {
+  echo "
+==> DSSAT Cropping System Model installed successfully!
+==>
+==> GETTING STARTED:
+==>   1. Download crop data files from: https://dssat.net/data
+==>   2. Extract to a directory (e.g., ~/dssat_data)
+==>   3. Navigate to a crop directory and run:
+==>      cd ~/dssat_data/Maize
+==>      dscsm048 MZCER048 A EXPERIMENT.MZX
+==>
+==> USAGE:
+==>   dscsm048 <model> <runmode> <experiment_file>
+==>
+==> EXAMPLES:
+==>   dscsm048 MZCER048 A UFGA8201.MZX    # Run all maize treatments
+==>   dscsm048 WHAPS048 A EXPERIMENT.MZX  # Run wheat simulation
+==>   dscsm048 I                           # Interactive mode
+==>
+==> For full documentation: https://github.com/DSSAT/dssat-csm-os
+==>
+"
+}
+
+post_upgrade() {
+  post_install
+}
