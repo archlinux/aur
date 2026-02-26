@@ -1,14 +1,13 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.14.0.r33.g4a37051
+pkgver=0.14.0.r51.g19d2027
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
 url="https://shadps4.net/"
 license=('GPL-2.0-or-later')
 depends=(
-	'gcc-libs'
 	'glibc'
 	'glslang>=15'
 	'miniz>=3.1'
@@ -24,7 +23,9 @@ makedepends=(
 	'fmt>=10.2'
 	'git'
 	'half>=1.12'
+	'libgcc'
 	'libpng>=1.6'
+	'libstdc++'
 	'magic_enum>=0.9.7'
 	'nlohmann-json>=3.12'
 	'openal'
@@ -110,7 +111,9 @@ package() {
 		'libavformat.so'
 		'libavutil.so'
 		'libfmt.so'
+		'libgcc_s.so'
 		'libpng16.so'
+		'libstdc++.so'
 		'libswresample.so'
 		'libswscale.so'
 		'libudev.so'
