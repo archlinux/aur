@@ -1,0 +1,16 @@
+pkgbase = dm-tool-bin
+	pkgdesc = 达妙电机上位机工具
+	pkgver = 2.1.5.3
+	pkgrel = 1
+	url = https://gitee.com/kit-miao/dm-tools
+	arch = x86_64
+	license = custom
+	provides = dm-tool
+	options = !debug
+	options = !strip
+	source = https://github.com/syhanjin/dm-tool-releases/releases/download/v2.1.5.3/DMTool.v2.1.5.3-x86_64.AppImage
+	source = send.png
+	sha256sums = 1dbcd3b642f8a771453b4080523a712b421257c6f3c1ebf3f356c2551ba669c0
+	sha256sums = a0e2a0eef89c95bd8c6736ec58ada0271be4843d444590c2c0b07ca079c6699f
+
+pkgname = dm-tool-bin
