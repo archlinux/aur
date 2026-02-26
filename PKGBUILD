@@ -2,7 +2,7 @@
 pkgbase=xjtutoolbox
 pkgname=xjtutoolbox-git
 pkgver=1.2.3
-pkgrel=24
+pkgrel=25
 pkgdesc="仙交百宝箱：西安交通大学一站式校园服务工具（混合依赖模式：Official + AUR + Venv）"
 arch=('any')
 url="https://github.com/yan-xiaoo/XJTUToolBox"
@@ -119,5 +119,6 @@ Type=Application
 Terminal=false
 Categories=Utility;Education;Qt;
 StartupNotify=true
+StartupWMClass=app.py
 EOF
 }
