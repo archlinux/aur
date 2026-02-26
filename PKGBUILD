@@ -1,4 +1,4 @@
-# Maintainer: Dmitry
+# Maintainer: Dmitry Golgowski <d.westcoast@aol.com>
 # Contributor: Jackson McClintock <jacksondm33@gmail.com>
 # Contributor: Immae <ismael.bouya@normalesup.org>
 
