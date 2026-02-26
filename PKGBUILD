@@ -11,13 +11,13 @@ arch=(x86_64)
 license=(LGPL-2.1-or-later)
 depends=(
   fuse3
-  gcc-libs
   gdk-pixbuf2
   glib2
   glibc
   gstreamer
   gst-plugins-base-libs
   json-glib
+  libgcc
   libgudev
   libpipewire
   pipewire
