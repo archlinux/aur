@@ -1,6 +1,6 @@
 pkgname=hyprcord-bin
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="Hyprcord - a custom Discord client"
 arch=('x86_64')
 url="https://github.com/Bebbesi/HyprCord"
@@ -10,7 +10,7 @@ makedepends=('desktop-file-utils')
 provides=('hyprcord')
 conflicts=('hyprcord')
 
-source=("https://github.com/Bebbesi/HyprCord/releases/download/v${pkgver}/Hyprcord-${pkgver}.AppImage")
+source=("https://github.com/Bebbesi/HyprCord/releases/download/hyprcordv1.0.5/Hyprcord-1.0.5.AppImage")
 sha256sums=('a921e180b78bee14b0c56e9ffc1215e6a6e11f5a7cbc6326752970aed858fe73')
 
 prepare() {

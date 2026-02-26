@@ -1,7 +1,7 @@
 pkgbase = hyprcord-bin
 	pkgdesc = Hyprcord - a custom Discord client
-	pkgver = 1.0.4
-	pkgrel = 2
+	pkgver = 1.0.5
+	pkgrel = 1
 	url = https://github.com/Bebbesi/HyprCord
 	arch = x86_64
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = hyprcord-bin
 	depends = at-spi2-core
 	provides = hyprcord
 	conflicts = hyprcord
-	source = https://github.com/Bebbesi/HyprCord/releases/download/v1.0.4/Hyprcord-1.0.4.AppImage
+	source = https://github.com/Bebbesi/HyprCord/releases/download/hyprcordv1.0.5/Hyprcord-1.0.5.AppImage
 	sha256sums = a921e180b78bee14b0c56e9ffc1215e6a6e11f5a7cbc6326752970aed858fe73
 
 pkgname = hyprcord-bin
