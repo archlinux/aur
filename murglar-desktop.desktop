@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Murglar Desktop
+GenericName=Музыкальный проигрыватель
+Comment=Слушайте и скачивайте музыку с любимых сервисов — ВКонтакте, Яндекс Музыки, SoundCloud, Deezer, Звук и WebDAV 
+Exec=/opt/murglar-desktop/murglar-desktop
+Icon=murglar-desktop
+Type=Application
+Categories=Audio;Music
