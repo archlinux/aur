@@ -1,0 +1,18 @@
+pkgbase = mx-service-manager
+	pkgdesc = Service management tool for MX Linux
+	pkgver = 26.02arch
+	pkgrel = 1
+	url = https://github.com/mx-linux/mx-service-manager
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = polkit
+	depends = systemd
+	source = https://github.com/mx-linux/mx-service-manager/archive/refs/tags/26.02arch.tar.gz
+	sha256sums = 84f69a0d6b9811fcd1f55451d66ecaab8ccf63ef58fdb6e13954d5fffb7eec3d
+
+pkgname = mx-service-manager
