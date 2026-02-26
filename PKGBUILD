@@ -1,13 +1,12 @@
 # Maintainer: maria-rcks <maria@kuuro.net>
 
 pkgname=codex-desktop-bin
-pkgver=260210.1703
-pkgrel=4
+pkgver=26.224.1209
+pkgrel=1
 pkgdesc='OpenAI Codex Desktop (repacked from macOS DMG for Linux)'
 arch=('x86_64')
 _electron_pkg='electron40-bin'
 _electron_bin='/usr/bin/electron40'
-_electron_fallback_target='40.4.0'
 url='https://openai.com/codex'
 license=('custom')
 depends=(
@@ -35,7 +34,7 @@ depends=(
   'pango'
   'openai-codex-bin'
 )
-makedepends=('node-gyp' 'p7zip')
+makedepends=('node-gyp' 'p7zip' 'python')
 provides=('codex-desktop')
 conflicts=('codex-desktop')
 options=('!strip')
@@ -151,9 +150,15 @@ build() {
   local gyp_cmd=(node-gyp)
   local electron_target
   electron_target="$($_electron_bin --version 2>/dev/null | sed 's/^v//')"
-  [[ -z "$electron_target" ]] && electron_target="$_electron_fallback_target"
+  [[ -z "$electron_target" ]] && electron_target="${CODEX_ELECTRON_TARGET:-}"
+  if [[ -z "$electron_target" ]]; then
+    echo "ERROR: Failed to resolve Electron target from $_electron_bin or CODEX_ELECTRON_TARGET" >&2
+    echo "Install $_electron_pkg or set CODEX_ELECTRON_TARGET (for CI/non-local builds)." >&2
+    return 1
+  fi
 
   local gyp_env=(
+    PYTHON="${PYTHON:-/usr/bin/python3}"
     npm_config_runtime=electron
     npm_config_target="$electron_target"
     npm_config_disturl=https://electronjs.org/headers
@@ -229,7 +234,7 @@ package() {
   install -Dm644 /dev/stdin "$pkgdir/opt/$pkgname/package.json" << 'EOF'
 {
   "name": "codex-desktop-bin",
-  "version": "260210.1703",
+  "version": "26.224.1209",
   "main": "resources/app.asar"
 }
 EOF
