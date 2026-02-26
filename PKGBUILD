@@ -8,7 +8,7 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=12.8.1
+_pkgver=12.8.3
 _deno_ver=2.5.0
 
 pkgname=firedragon
@@ -76,7 +76,7 @@ source=(firedragon-source-v"$_pkgver".tar.zst::https://gitlab.com/garuda-linux/f
         0023-bgo-969412-glibc-2.43.patch)
 source_x86_64=(deno-x86_64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-x86_64-unknown-linux-gnu.zip)
 source_aarch64=(deno-aarch64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-aarch64-unknown-linux-gnu.zip)
-sha256sums=('341d95b47107309cb1590ec16c0236035d23473d03deb4a9d3ef7e065da288c5'
+sha256sums=('e71e5d13f771ab052e12e3c4b431f6f7cf7ce9e738c4fa7425c15cfce2e9bbbb'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '25e8f2e706aa837f5b6e3c003a6c7f42b07f0a7366d10f9e0d5ad38053767aae')
 sha256sums_x86_64=('4561adb06b13f287a3785276cb29f377b7ffb49d54290178223b037e161446d3')
