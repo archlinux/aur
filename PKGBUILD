@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgbase=azahar
 pkgname=({,libretro-}"$_pkgbase-git")
-pkgver=2125.0.alpha1.r4.gf3fb0b7
+pkgver=2125.0.alpha2.r16.g03d62ef
 pkgrel=1
 arch=('x86_64')
 url="https://azahar-emu.org/"
@@ -9,13 +9,11 @@ license=('GPL-2.0-or-later')
 depends=(
 	'crypto++'
 	'enet'
-	'gcc-libs'
 	'glibc'
 	'glslang'
 )
 makedepends=(
 	'boost'
-	'catch2'
 	'cmake'
 	'cpp-jwt'
 	'cubeb'
@@ -23,7 +21,9 @@ makedepends=(
 	'fmt'
 	'git'
 	'libbacktrace'
+	'libgcc'
 	'libinih'
+	'libstdc++'
 	'libusb'
 	'nlohmann-json'
 	'openal'
@@ -39,6 +39,7 @@ makedepends=(
 	'vulkan-memory-allocator'
 	'zydis'
 )
+checkdepends=('catch2')
 source=(
 	"$_pkgbase::git+https://github.com/azahar-emu/azahar.git"
 	"$_pkgbase-compatibility-list::git+https://github.com/azahar-emu/compatibility-list.git"
@@ -145,8 +146,10 @@ package_azahar-git() {
 		'libcrypto.so'
 		'libcubeb.so'
 		'libfmt.so'
+		'libgcc_s.so'
 		'libopenal.so'
 		'libssl.so'
+		'libstdc++.so'
 		'libusb-1.0.so'
 		'libZydis.so'
 		'qt6-base'
@@ -170,8 +173,10 @@ package_libretro-azahar-git() {
 		'libboost_serialization.so'
 		'libcrypto.so'
 		'libfmt.so'
+		'libgcc_s.so'
 		'libretro-core-info>=1.22.2.r3'
 		'libssl.so'
+		'libstdc++.so'
 		'libZydis.so'
 	)
 	provides=("libretro-$_pkgbase=$pkgver")
