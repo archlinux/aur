@@ -1,0 +1,34 @@
+pkgbase = ctrlrx-dev
+	pkgdesc = MIDI controller software - alternative fork of Ctrlr with extra features
+	pkgver = 5.6.35.juce8.x11scaling
+	pkgrel = 1
+	url = https://github.com/randrej/CtrlrX
+	arch = x86_64
+	license = BSD-3-Clause
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = boost
+	makedepends = libxi
+	makedepends = binutils
+	makedepends = systemd
+	makedepends = mesa
+	makedepends = xorgproto
+	makedepends = pkgconf
+	makedepends = juce
+	makedepends = cmake
+	makedepends = ninja
+	depends = alsa-lib
+	depends = libx11
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxcursor
+	depends = freetype2
+	depends = mesa
+	depends = curl
+	depends = libtiff
+	optdepends = jack: for JACK audio support
+	optdepends = pulseaudio: for PulseAudio support
+	source = ctrlrx-dev::git+https://github.com/randrej/CtrlrX.git#branch=aradovic_juce8_upgrade
+	sha256sums = SKIP
+
+pkgname = ctrlrx-dev
