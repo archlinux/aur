@@ -1,4 +1,5 @@
 *.pkg.tar*
-/polymath.deb
+*.deb
+*.rpm
 /pkg
 /src
