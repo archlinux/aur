@@ -1,4 +1,4 @@
-pkgname=cohesivemail-bin
+pkgname=cohesivemail
 pkgver=0.0.73
 pkgrel=1
 pkgdesc="CohesiveMail desktop client"
