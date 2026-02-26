@@ -1,0 +1,5 @@
+[par-fractal-bin]
+source = "github"
+github = "paulrobello/par-fractal"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Par Fractal
+Comment=GPU-accelerated fractal renderer
+Exec=par-fractal
+Icon=par-fractal
+Terminal=false
+StartupNotify=false
+Categories=Application;Graphics;
