@@ -1,0 +1,9 @@
+/pkg/
+/src/
+/*.src.tar.*
+/*.src.tar.*.sig
+/*.tar.*
+/*.tar.*.sig
+
+/sddm-slice/
+
