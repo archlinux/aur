@@ -2,12 +2,12 @@
 
 pkgname=polymath
 pkgver=1.4.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced keyboard layout customization tool for Flux keyboards'
 arch=('x86_64')
 url='https://fluxkeyboard.com/updates/'
 license=('custom')
-makedepends=('binutils' 'tar' 'zstd' 'cpio')
+makedepends=('binutils' 'tar' 'zstd')
 depends=('mpv')
 options=('!strip' '!debug' '!lto')
 source=("polymath.deb::https://fluxkeyboard.com/updates/polymath/linux/deb/polymath_${pkgver}_amd64.deb")
