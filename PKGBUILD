@@ -1,6 +1,6 @@
 pkgname=bonsai
-pkgver=1.2.1
-pkgrel=4
+pkgver=2.0.0
+pkgrel=5
 pkgdesc="Terminal-based disk usage analyzer, TUI remake of GNOME Baobab"
 arch=('x86_64')
 url="https://github.com/LittleBigOwI/bonsai.git#branch=main"
@@ -13,9 +13,9 @@ md5sums=('SKIP')
 build() {
 	cd "$pkgname"
 	mkdir build
-	cd build
-	cmake -S .. -B . -DCMAKE_BUILD_TYPE=Release
-	make
+	
+	cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+	cmake --build build
 }
 
 package() {
