@@ -1,7 +1,7 @@
 pkgbase = pokerth-bin
 	pkgdesc = Poker game written in C++/Qt
 	pkgver = 2.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pokerth/pokerth
 	arch = x86_64
 	license = AGPL-3.0-or-later
