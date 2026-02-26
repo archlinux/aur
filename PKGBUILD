@@ -4,7 +4,7 @@
 
 # Maintainer: Štěpán Němec <stepnem@smrk.net>
 pkgname=knfmt
-pkgver=5.1.2
+pkgver=5.2.0
 pkgrel=1
 pkgdesc='C code formatter (OpenBSD KNF, limited .clang-format support)'
 arch=(x86_64)
@@ -12,7 +12,7 @@ url=https://github.com/mptre/knfmt
 license=(ISC)
 depends=(gcc-libs glibc)
 source=(https://github.com/mptre/knfmt/releases/download/v"$pkgver"/knfmt-"$pkgver".tar.gz)
-sha256sums=('a37b3f02d8e0a6592b34790be9ced3d40bd6a51f8f07af7e389f86f3bb667739')
+sha256sums=('59160a756ce0af5c1fe1b1b012f4ffb85eff7a7a9a67a7524b674ff980e90685')
 
 build() {
 	cd "$pkgname-$pkgver"
