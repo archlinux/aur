@@ -20,8 +20,6 @@ build() {
   cmake -B build -S "${srcdir}/${_dir}-${pkgver}/${_pkgname}" \
     -DCMAKE_BUILD_TYPE='None' \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DENABLE_TESTS:BOOL=OFF \
-    -DENABLE_EXAMPLES:BOOL=OFF \
     -DPYTHON_SITE_PACKAGES_INSTALL_DIR=${site_packages}
 
   cmake --build build
