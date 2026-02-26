@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=mujoco
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Multi-Joint dynamics with Contact. A general purpose physics simulator."
 arch=($CARCH)
@@ -20,15 +20,18 @@ makedepends=(
   'libxinerama'
   'libxrandr'
   'ninja'
+  'mold'
 )
 source=("${pkgname}::git+https://github.com/deepmind/mujoco.git#tag=$pkgver")
-sha256sums=('56fc16f7609da92a802762e30bd09d1f032ca4289391bbfd419be15ae9d0504d')
+sha256sums=('3e364ab63160919d028d251df7e70581b5c7343cc4fafe98043b33f090313f13')
 
 build() {
   cd "${pkgname}"
 
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_C_FLAGS="-Wno-error=discarded-qualifiers" \
+    -DCMAKE_CXX_FLAGS="-Wno-error=discarded-qualifiers" \
     -B build \
     -G Ninja \
     -Wno-dev
