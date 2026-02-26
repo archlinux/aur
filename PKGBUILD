@@ -1,6 +1,6 @@
 # Maintainer: David Kaya <david@kaya.sk>
 pkgname=ttyms
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A secure terminal client for Microsoft Teams"
 arch=('x86_64' 'aarch64')
