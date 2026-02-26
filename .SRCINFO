@@ -1,0 +1,22 @@
+pkgbase = python-exa-py
+	pkgdesc = Python SDK for Exa API.
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/exa-labs/exa-py
+	arch = any
+	license = MIT
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-openai
+	depends = python-pydantic
+	depends = python-httpx
+	depends = python-httpcore
+	depends = python-dotenv
+	source = https://files.pythonhosted.org/packages/source/e/exa-py/exa_py-2.5.0.tar.gz
+	sha256sums = beb038ff671288e35ab8e6d27811b2d60cd8023c109cb0f48738258b54ed3d82
+
+pkgname = python-exa-py
