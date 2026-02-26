@@ -2,8 +2,9 @@
 
 pkgbase=python-specreduce
 _pyname=${pkgbase#python-}
-pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.5.1
+pkgname=("python-${_pyname}")
+#"python-${_pyname}-doc")
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Astropy coordinated package for Spectroscopic Reductions"
 arch=('any')
@@ -12,18 +13,30 @@ license=('BSD-3-Clause' 'MIT')
 makedepends=('python-setuptools-scm'
              'python-build'
              'python-installer'
-             'python-sphinx-astropy'
-             'python-matplotlib'
-             'python-photutils'
-             'python-specutils'
-             'python-synphot')  # wheel required by new setuptools
+#            'python-sphinx-astropy'
+#            'python-sphinx-copybutton'
+#            'python-pydata-sphinx-theme'
+#            'python-sphinx_design'
+#            'python-nbsphinx'
+#            'python-ipykernel'
+#            'python-matplotlib'
+#            'python-photutils'
+#            'python-specutils'
+#            'python-synphot'
+             )  # wheel required by new setuptools
+# conftest.py
 checkdepends=('python-pytest-astropy-header'
 #             'python-pytest-xdist'
+              'python-specutils'
+              'python-photutils'
+              'python-matplotlib'
+              'python-synphot'
+              'python-pytest-mock'
               'python-pytest-doctestplus'
-              'python-pytest-remotedata')   # photutils, specutils, synphot already in makedepends
-#_peiver=1.16.0
+              'python-pytest-remotedata')   # matplotlib, photutils, specutils, synphot already in makedepends
+#_peiver=1.18.1
 #_datcom=dcba1c6
-source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
 #        "pypeit-${_peiver}-HeI_lines.dat::https://github.com/pypeit/PypeIt/raw/${_peiver}/pypeit/data/arc_lines/lists/HeI_lines.dat"
 #        "https://archive.stsci.edu/hlsps/reference-atlases/cdbs/calspec/agk_81d266_stisnic_007.fits"
 #        "https://archive.stsci.edu/hlsps/reference-atlases/cdbs/calspec/ltt9491_002.fits"
@@ -38,8 +51,8 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #        "${_datcom}-LTT9491.dat::https://github.com/astropy/specreduce-data/raw/${_datcom}/specreduce_data/reference_data/onedstds/snfactory/LTT9491.dat"
 #        "${_datcom}-ltt9491.dat::https://github.com/astropy/specreduce-data/raw/${_datcom}/specreduce_data/reference_data/onedstds/eso/ctiostan/ltt9491.dat"
 #        'doc-use-local-data.patch'
-#        )
-md5sums=('8ef2b518ec20bb39c2cf65b27816da27')
+        )
+md5sums=('fe9a52a41597ad15b27899aaa28f4b1e')
 
 get_pyinfo() {
     [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
@@ -60,8 +73,9 @@ build() {
     cd ${srcdir}/${_pyname}-${pkgver}
     python -m build --wheel --no-isolation
 
-    msg "Building Docs"
-    PYTHONPATH="../build/lib" make -C docs html
+#   msg "Building Docs"
+#   PYTHONPATH="../build/lib" make -C docs html
+#   PYTHONPATH="${srcdir}/${_pyname}-${pkgver}" make -C docs html
 }
 
 check() {
@@ -71,10 +85,10 @@ check() {
 }
 
 package_python-specreduce() {
-    depends=('python>=3.10'
-             'python-specutils>=1.9.1')
-    optdepends=('python-matplotlib'
-                'python-photutils'
+    depends=('python>=3.11'
+             'python-specutils>=2.0'
+             'python-matplotlib>=3.10')
+    optdepends=('python-photutils'
                 'python-synphot'
                 'python-specreduce-doc: Documentation for Specreduce')
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -85,11 +99,11 @@ package_python-specreduce() {
     rm -r ${pkgdir}/$(get_pyinfo site)/{docs,licenses}
 }
 
-package_python-specreduce-doc() {
-    pkgdesc="Documentation for Python Specreduce"
-    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
-
-    install -D -m644 ../../licenses/* -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
-    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
-}
+#package_python-specreduce-doc() {
+#    pkgdesc="Documentation for Python Specreduce"
+#    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
+#
+#    install -D -m644 ../../licenses/* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+#    install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
+#    cp -a html "${pkgdir}/usr/share/doc/${pkgbase}"
+#}
