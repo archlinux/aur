@@ -2,6 +2,7 @@
 # Contributor: Butui Hu <hot123tea123@gmail.com>
 # Contributor: Steffen Weber <-boenki-gmx-de->
 # Contributor: Mick Elliot <micke at sfu dot ca>
+# Contributor: Michael Gruz <michael.gruz at gmail dot com>
 
 pkgbase=mafft-git
 pkgname=('mafft-git' 'mafft-extensions-git' 'mafft-mpi-git')
