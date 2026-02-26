@@ -7,7 +7,7 @@
 
 pkgname=go-configure-sw-hub
 _pkgver_major=6.52
-_pkgver_minor=001
+_pkgver_minor=002
 pkgver=$_pkgver_major.$_pkgver_minor
 
 pkgrel=1
@@ -54,12 +54,13 @@ depends=(
     xcb-util-wm
     zlib
 )
+makedepends=(patchelf)
 conflicts=('greenpak-designer-dev' 'greenpak-designer')
 replaces=('greenpak-designer-dev' 'greenpak-designer')
 options=('!strip' '!debug')
 
 source=("https://renesasweb-greenpak.s3.us-west-2.amazonaws.com/v${_pkgver_major}/go-configure-sw-hub-v${pkgver}-debian-12-amd64.deb")
-b2sums=('87a29b130e1a963cf9ce1517d96b34eef566de7d4f91cd28e309bae6823e547dfa8a2935e2edf753f838fe3309c9656648ade8e1f5421a672c3b83d3ff0e70fe')
+b2sums=('29f00f06da2c57a4ab1979ea4186330dd1871e2123aad942c957d26f8e55a5e4d2bce7b199269060f5adb03175fd1634c91091207ab3d610c5a2ce1d5b7ea155')
 
 package() {
     # Extract the package data
@@ -88,7 +89,10 @@ package() {
     install -dm 755 "${pkgdir}/usr/share/licenses/${pkgname}"
     ln -s "/usr/share/doc/${pkgname}/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/copyright"
 
-    # Create graphviz library symlinks (app built against Debian 12's older graphviz)
-    ln -s libgvc.so.7 "${pkgdir}/usr/lib/libgvc.so.6"
-    ln -s libcgraph.so.8 "${pkgdir}/usr/lib/libcgraph.so.6"
+    # Patch graphviz sonames — app was built against Debian 12's older graphviz (soname 6),
+    # Arch ships soname 7/8. Only GP5 and GP6 link against graphviz.
+    for _bin in GP5 GP6; do
+        patchelf --replace-needed libgvc.so.6 libgvc.so.7 "${pkgdir}/opt/${pkgname}/bin/${_bin}"
+        patchelf --replace-needed libcgraph.so.6 libcgraph.so.8 "${pkgdir}/opt/${pkgname}/bin/${_bin}"
+    done
 }
