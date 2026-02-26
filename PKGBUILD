@@ -8,7 +8,7 @@ license=('GPL3')
 depends=(
     'qt6-base'
     'qt6-svg'
-    'protonvpn-cli'
+    'proton-vpn-cli'
     'iproute2'
 )
 optdepends=(
