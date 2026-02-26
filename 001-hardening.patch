@@ -1,0 +1,29 @@
+Author: Andreas Tille <tille@debian.org>
+Last-Update: 2013-12-19
+Description: Propagate hardening options
+
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -59,9 +59,9 @@
+ CC_OPTS    = -g -Wall -march=native
+ P_DEFINES  =
+ 
+-CFLAGS  = $(CC_OPTS) $(O_OPTS)
+-CXXFLAGS = $(CFLAGS) -std=c++11
+-LDFLAGS = -g
++CFLAGS  += $(CC_OPTS) $(O_OPTS)
++CXXFLAGS += $(CFLAGS) -std=c++11
++LDFLAGS += -g
+ # Note, for profiling, use
+ # make O_OPTS='-pg -O0' LDFLAGS='-g -pg'
+ 
+@@ -201,7 +201,7 @@
+ 	$(CC) $(LDFLAGS) -o $@ thal_main.o thal.o $(LDLIBS)
+ 
+ $(OLIGOTM_EXE): oligotm_main.c oligotm.h $(LIBOLIGOTM)
+-	$(CC) $(CFLAGS) -o $@ oligotm_main.c $(LIBOLIGOTM) $(LIBOPTS) $(LDLIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ oligotm_main.c $(LIBOLIGOTM) $(LIBOPTS) $(LDLIBS)
+ 
+ $(AMPLICONTM_EXE): amplicontm_main.c amplicontm.h $(LIBAMPTM)
+ 	$(CC) $(CFLAGS) -o $@ amplicontm_main.c $(LIBAMPTM) $(LIBOPTS) $(LDLIBS)
+

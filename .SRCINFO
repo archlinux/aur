@@ -1,0 +1,25 @@
+pkgbase = primer3-git
+	pkgdesc = Tool to design flanking oligo nucleotides for DNA amplification
+	pkgver = 2.6.1.r135.g4d4c905
+	pkgrel = 1
+	url = https://github.com/primer3-org/primer3
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = gcc-libs
+	provides = primer3
+	conflicts = primer3
+	source = git+https://github.com/primer3-org/primer3.git
+	source = 001-hardening.patch
+	source = 002-primer_thermodynamic_parameters_path_2_etc.patch
+	source = 003-set_prefix.patch
+	source = 004-buildflags.patch
+	source = 005-gcc15.patch
+	sha256sums = SKIP
+	sha256sums = 8d09fbaf0dd373437b8b42f0178edfafc5230997ada0b7400e7018eced9d3770
+	sha256sums = a86e6d19818dbdc869a6d54dc8ae315cb7c6c4e4c183eeb260b1954984c48e6f
+	sha256sums = 053a9aac933a4d05e5d0be4219e76fcebd7a4e74174754c829ab18ed3d28c695
+	sha256sums = 5f6324ffd99f191466591450d28db268e1756790d3493297497f22682a5409d4
+	sha256sums = bd915bb98ab25898ca797b2e515eb198526a751f52751a9a75c18e5970226ddf
+
+pkgname = primer3-git

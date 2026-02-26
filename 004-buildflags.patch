@@ -1,0 +1,157 @@
+Description: propagate Debian standard build flags.
+Author: Étienne Mollier <emollier@debian.org>
+Forwarded: not-needed
+Last-Update: 2022-07-09
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- primer3.orig/src/Makefile
++++ primer3/src/Makefile
+@@ -52,9 +52,9 @@
+ WINMAKE=mingw32-make
+ 
+ LDLIBS     = -lm
+-AR         = ar
+-CC         = gcc
+-CXX        = g++
++AR         ?= ar
++CC         ?= gcc
++CXX        ?= g++
+ O_OPTS     = -O2
+ CC_OPTS    = -g -Wall -march=native
+ P_DEFINES  =
+@@ -151,98 +151,98 @@
+ 	$(RANLIB) $@
+ 
+ $(LIBOLIGOTM_LIB): oligotm.o
+-	$(CC) -shared -W1,-soname,liboligotm.so.1 -o $(LIBOLIGOTM_DYN) oligotm.o
++	$(CC) $(CPPFLAGS) $(CFLAGS) -shared $(LDFLAGS) -W1,-soname,liboligotm.so.1 -o $(LIBOLIGOTM_DYN) oligotm.o
+ 
+ $(LIBAMPTM): amplicontm.o
+ 	$(AR) rv $@ amplicontm.o
+ 	$(RANLIB) $@
+ 
+ $(LIBAMPTM_LIB): amplicontm.o
+-	$(CC) -shared -W1,-soname,libamplicontm.so.1 -o $(LIBAMPTM_DYN) amplicontm.o
++	$(CC) $(CPPFLAGS) $(CFLAGS) -shared $(LDFLAGS) -W1,-soname,libamplicontm.so.1 -o $(LIBAMPTM_DYN) amplicontm.o
+ 
+ $(LIBDPAL): dpal_primer.o
+ 	$(AR) rv $@ dpal_primer.o
+ 	$(RANLIB) $@
+ 
+ $(LIBDPAL_DYN): dpal_primer.o
+-	$(CC) -shared -W1,-soname,libdpal.so.1 -o $(LIBDPAL_DYN_LIB) dpal_primer.o
++	$(CC) $(CPPFLAGS) $(CFLAGS) -shared $(LDFLAGS) -W1,-soname,libdpal.so.1 -o $(LIBDPAL_DYN_LIB) dpal_primer.o
+ 
+ $(LIBTHAL): thal_primer.o
+ 	$(AR) rv $@ thal_primer.o
+ 	$(RANLIB) $@
+ 
+ $(LIBTHAL_DYN): thal_primer.o
+-	$(CC) -shared -W1,-soname,libthal.so.1 -o $(LIBTHAL_DYN_LIB) thal_primer.o
++	$(CC) $(CPPFLAGS) $(CFLAGS) -shared $(LDFLAGS) -W1,-soname,libthal.so.1 -o $(LIBTHAL_DYN_LIB) thal_primer.o
+ 
+ $(LIBPRIMER3): libprimer3.o p3_seq_lib.o
+ 	$(AR) rv $@ libprimer3.o p3_seq_lib.o
+ 	$(RANLIB) $@
+ 
+ $(LIBPRIMER3_DYN): libprimer3.o p3_seq_lib.o
+-	$(CC) -shared -W1,-soname,liprimer3.so.1 -o $(LIBPRIMER3_DYN) libprimer3.o p3_seq_lib.o
++	$(CC) $(CPPFLAGS) $(CFLAGS) -shared $(LDFLAGS) -W1,-soname,liprimer3.so.1 -o $(LIBPRIMER3_DYN) libprimer3.o p3_seq_lib.o
+ 
+ $(LIBMASKER): masker.o
+ 	$(AR) rv $@ masker.o
+ 	$(RANLIB) $@
+ 
+ $(LIBMASKER_DYN): masker.o
+-	$(CC) -shared -W1,-soname,libmasker.so.1 -o $(LIBMASKER_DYN) masker.o
++	$(CC) $(CPPFLAGS) $(CFLAGS) -shared $(LDFLAGS) -W1,-soname,libmasker.so.1 -o $(LIBMASKER_DYN) masker.o
+ 
+ $(PRIMER_EXE): $(PRIMER_OBJECTS)
+-	$(CXX) $(CXXFLAGS) -lstdc++ $(LDFLAGS) -o $@ $(PRIMER_OBJECTS) $(LIBOPTS) $(LDLIBS)
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lstdc++ $(LDFLAGS) -o $@ $(PRIMER_OBJECTS) $(LIBOPTS) $(LDLIBS)
+ 
+ libprimer3.o: libprimer3.cc libprimer3.h p3_seq_lib.h dpal.h thal.h oligotm.h thal_default_params.h
+-	$(CXX) -c $(CXXFLAGS) $(P_DEFINES) -o $@ libprimer3.cc
++	$(CXX) $(CPPFLAGS) -c $(CXXFLAGS) $(P_DEFINES) $(LDFLAGS) -o $@ libprimer3.cc
+ 
+ $(NTDPAL_EXE): ntdpal_main.o dpal.o
+-	$(CC) $(LDFLAGS) -o $@ ntdpal_main.o dpal.o
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ ntdpal_main.o dpal.o
+ 
+ $(NTTHAL_EXE): thal_main.o thal.o 
+-	$(CC) $(LDFLAGS) -o $@ thal_main.o thal.o $(LDLIBS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ thal_main.o thal.o $(LDLIBS)
+ 
+ $(OLIGOTM_EXE): oligotm_main.c oligotm.h $(LIBOLIGOTM)
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ oligotm_main.c $(LIBOLIGOTM) $(LIBOPTS) $(LDLIBS)
+ 
+ $(AMPLICONTM_EXE): amplicontm_main.c amplicontm.h $(LIBAMPTM)
+-	$(CC) $(CFLAGS) -o $@ amplicontm_main.c $(LIBAMPTM) $(LIBOPTS) $(LDLIBS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ amplicontm_main.c $(LIBAMPTM) $(LIBOPTS) $(LDLIBS)
+ 
+ $(LONG_SEQ_EXE): long_seq_tm_test_main.c oligotm.o
+-	$(CC) $(CFLAGS) -o $@ long_seq_tm_test_main.c oligotm.o $(LIBOPTS) $(LDLIBS)
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ long_seq_tm_test_main.c oligotm.o $(LIBOPTS) $(LDLIBS)
+ 
+ $(MASKER_EXE): masker_main.c $(LIBRARIES)
+-	$(CXX) $(CXXFLAGS) -lstdc++ -o $@ masker_main.c $(LIBRARIES) $(LIBOPTS) $(LDLIBS)
++	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lstdc++ $(LDFLAGS) -o $@ masker_main.c $(LIBRARIES) $(LIBOPTS) $(LDLIBS)
+ 
+ read_boulder.o: read_boulder.c read_boulder.h libprimer3.h dpal.h thal.h p3_seq_lib.h thal_default_params.h 
+-	$(CC) -c $(CFLAGS) $(P_DEFINES) -o $@ read_boulder.c
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(P_DEFINES) $(LDFLAGS) -o $@ read_boulder.c
+ 
+ print_boulder.o: print_boulder.c print_boulder.h libprimer3.h p3_seq_lib.h 
+-	$(CC) -c $(CFLAGS) $(P_DEFINES) -o $@ print_boulder.c
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(P_DEFINES) $(LDFLAGS) -o $@ print_boulder.c
+ 
+ dpal.o: dpal.c dpal.h
+-	$(CC) -c $(CFLAGS) -o $@ dpal.c
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ dpal.c
+ 
+ # We use '-ffloat-store' on windows to prevent undesirable
+ # precision which may lead to differences in floating point results.
+ thal.o: thal.c thal.h thal_default_params.h
+-	$(CC) -c $(CFLAGS) -ffloat-store -o $@ thal.c
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) -ffloat-store $(LDFLAGS) -o $@ thal.c
+ 
+ p3_seq_lib.o: p3_seq_lib.c p3_seq_lib.h libprimer3.h
+-	$(CC) -c $(CFLAGS) -o $@ p3_seq_lib.c
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ p3_seq_lib.c
+ 
+ dpal_primer.o: dpal.c dpal.h
+-	$(CC) -c $(CFLAGS) $(P_DEFINES) -o $@ dpal.c
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(P_DEFINES) $(LDFLAGS) -o $@ dpal.c
+ 
+ thal_primer.o: thal.c thal.h thal_default_params.h
+-	$(CC) -c $(CFLAGS) -ffloat-store $(P_DEFINES) -o $@ thal.c
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) -ffloat-store $(P_DEFINES) $(LDFLAGS) -o $@ thal.c
+ 
+ format_output.o: format_output.c format_output.h libprimer3.h dpal.h thal.h p3_seq_lib.h thal_default_params.h
+-	$(CC) -c $(CFLAGS) $(P_DEFINES) -o $@ format_output.c
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(P_DEFINES) $(LDFLAGS) -o $@ format_output.c
+ 
+ ntdpal_main.o: ntdpal_main.c dpal.h
+-	$(CC) -c $(CC_OPTS) -o $@ ntdpal_main.c
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(CC_OPTS) $(LDFLAGS) -o $@ ntdpal_main.c
+ 
+ thal_main.o: thal_main.c thal.h thal_default_params.h
+-	$(CC) -c $(CFLAGS) -o $@ thal_main.c
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o $@ thal_main.c
+ # We use CC_OPTS above rather than CFLAGS because
+ # gcc 2.7.2 crashes while compiling ntdpal_main.c with -O2
+ 
+@@ -251,10 +251,10 @@
+ oligotm.o: oligotm.c oligotm.h
+ 
+ primer3_boulder_main.o: primer3_boulder_main.c libprimer3.h dpal.h thal.h oligotm.h format_output.h print_boulder.h read_boulder.h thal_default_params.h
+-	$(CC) -c $(CFLAGS) $(P_DEFINES) primer3_boulder_main.c
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(P_DEFINES) $(LDFLAGS) primer3_boulder_main.c
+ 
+ masker.o: masker.c masker.h libprimer3.h
+-	$(CC) -c $(CFLAGS) $(P_DEFINES) masker.c
++	$(CC) -c $(CPPFLAGS) $(CFLAGS) $(P_DEFINES) $(LDFLAGS) masker.c
+ 
+ primer_test: test
+ 
+

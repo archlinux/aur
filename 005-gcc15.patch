@@ -1,0 +1,32 @@
+Description: remove hack for SunOS.
+ The hack is caught erroneously on Debian and results in duplicate
+ declaration of strtod, with mismatching argument count number, causing
+ the following build failure with gcc-15:
+ .
+        read_boulder.c:106:15: error: conflicting types for ‘strtod’; have ‘double(void)’
+          106 | extern double strtod();
+              |               ^~~~~~
+        In file included from read_boulder.c:45:
+Author: Étienne Mollier <emollier@debian.org>
+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1097649
+Forwarded: no
+Last-Update: 2025-10-06
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- primer3.orig/src/read_boulder.c
++++ primer3/src/read_boulder.c
+@@ -99,14 +99,6 @@
+ static const char *pr_program_name = "TMP";
+ 
+ /* 
+- * Hack to support old SunOS headers.  (We do not try to declare _all_
+- * undeclared functions; only those with non-int return types.)
+- */
+-#ifndef __cplusplus
+-extern double strtod();
+-#endif
+-
+-/* 
+  * See read_boulder.h for description.
+  */
+ #define COMPARE(TAG) (!strncmp(s, TAG, tag_len) \

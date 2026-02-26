@@ -1,0 +1,69 @@
+Author: Andreas Tille <tille@debian.org>
+Last-Changed: Thu, 19 Dec 2013 09:58:19 +0100
+Bug-Debian: http://bugs.debian.org/702693
+Description: Configuration in /etc
+ Make sure config files will be searched for in /etc/primer3_config/
+ instead of /opt/primer3_config/
+
+
+--- a/src/primer3_boulder_main.c
++++ b/src/primer3_boulder_main.c
+@@ -532,7 +532,7 @@
+ #endif
+ 
+ #if !defined(OS_WIN)
+-/* in linux, check for ../kmer_lists and /opt/kmer_lists */
++/* in Debian, check for ../kmer_lists and /usr/share/doc/primer3/examples/kmer_lists */
+ static void validate_kmer_lists_path(){
+    if (kmer_lists_path == NULL) {
+       struct stat st;
+@@ -541,11 +541,11 @@
+            (char*) malloc(strlen("../kmer_lists/") * sizeof(char) + 1);
+          if (NULL == kmer_lists_path) exit (-2); /* Out of memory */
+          strcpy(kmer_lists_path, "../kmer_lists/");
+-      } else if ((stat("/opt/kmer_lists", &st) == 0)  && S_ISDIR(st.st_mode)) {
++      } else if ((stat("/usr/share/doc/primer3/examples/kmer_lists", &st) == 0)  && S_ISDIR(st.st_mode)) {
+          kmer_lists_path =
+-           (char*) malloc(strlen("/opt/kmer_lists/") * sizeof(char) + 1);
++           (char*) malloc(strlen("/usr/share/doc/primer3/examples/kmer_lists") * sizeof(char) + 1);
+          if (NULL == kmer_lists_path) exit (-2); /* Out of memory */
+-         strcpy(kmer_lists_path, "/opt/kmer_lists/");
++         strcpy(kmer_lists_path, "/usr/share/doc/primer3/examples/kmer_lists");
+       } else {
+          /* no default directory found */
+          return;
+--- a/src/release_notes.txt
++++ b/src/release_notes.txt
+@@ -418,9 +418,9 @@
+ 1.5 IMPORTANT: because PRIMER_THERMODYNAMIC_ALIGNMENT=1,
+ PRIMER_THERMODYNAMIC_PARAMETERS_PATH must point to the right location.
+ This tag specifies the path to the directory that contains all the
+-parameter files used by the thermodynamic approach. In Linux, there
++parameter files used by the thermodynamic approach. In Debian, there
+ are two *default* locations that are tested if this tag is not
+-defined: ./primer3_config/ and /opt/primer3_config/. For Windows,
++defined: ./primer3_config/ and /etc/primer3_config/. For Windows,
+ there is only one default location: .\primer3_config\.  If the the
+ parameter files are not in one these locations, be sure to set
+ PRIMER_THERMODYNAMIC_PARAMETERS_PATH
+--- a/src/primer3_manual.htm
++++ b/src/primer3_manual.htm
+@@ -280,7 +280,7 @@
+ This tag specifies the path to the directory that contains all the
+ parameter files used by the thermodynamic approach. In Linux, there
+ are two *default* locations that are tested if this tag is not
+-defined: ./primer3_config/ and /opt/primer3_config/. For Windows,
++defined: ./primer3_config/ and /etc/primer3_config/. For Windows,
+ there is only one default location: .\primer3_config\.  If the the
+ parameter files are not in one these locations, be sure to set
+ <a href="#PRIMER_THERMODYNAMIC_PARAMETERS_PATH">PRIMER_THERMODYNAMIC_PARAMETERS_PATH</a>.<br>
+@@ -2337,7 +2337,7 @@
+ <p>This tag specifies the path to the directory that contains all the
+ parameter files used by the thermodynamic approach. In Linux, there are two
+ default locations that are tested if this tag is not defined:
+-<i>./primer3_config/</i> and <i>/opt/primer3_config/</i>.
++<i>./primer3_config/</i> and <i>/etc/primer3_config/</i>.
+ For Windows, there is only one default location: <i>.\primer3_config\</i>.</p>
+ <h3><a id="PRIMER_ANNEALING_TEMP">PRIMER_ANNEALING_TEMP (float; default -10.0)</a></h3>
+ <p>The annealing temperature (Celsius) used in the PCR reaction. Usually
+
