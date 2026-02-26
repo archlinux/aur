@@ -2,14 +2,14 @@
 # Contributor: togatoga <>
 pkgname='karukan'
 pkgver='0.1.0'
-pkgrel=2
+pkgrel=3
 pkgdesc="Japanese Input Method System for Linux, Neural Kana-Kanji Conversion Engine + fcitx5 IME"
 arch=('x86_64')
 url="https://github.com/togatoga/karukan"
 license=('MIT' 'Apache-2.0')
 options=('!lto')
 depends=('fcitx5' 'openssl' 'oniguruma')
-makedepends=('cmake' 'extra-cmake-modules' 'rust' 'libxkbcommon' 'patchelf')
+makedepends=('cmake' 'extra-cmake-modules' 'rust' 'libxkbcommon' 'patchelf' 'clang')
 optdepends=('fcitx5-configtool: GUI configuration tool')
 provides=('karukan')
 conflicts=('karukan')
