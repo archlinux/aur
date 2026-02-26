@@ -8,8 +8,7 @@ url="https://github.com/oldlamps/Theophany"
 license=('GPL-3.0-only')
 provides=('theophany')
 conflicts=('theophany')
-depends=('hicolor-icon-theme') # Ensures the icon system is ready
-
+depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt6-declarative' 'qt6-5compat' 'qt6-svg')
 optdepends=('yt-dlp: for downloading game trailers and media')
 
 source=("theophany::${url}/releases/download/v${pkgver}/theophany_0.1.1_linux_x64"
