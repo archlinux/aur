@@ -1,7 +1,7 @@
 pkgbase = nsnotifyd
 	pkgdesc = DNS NOTIFY message handler
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dotat.at/prog/nsnotifyd/
 	arch = i686
 	arch = x86_64

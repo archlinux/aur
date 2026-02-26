@@ -1,6 +1,6 @@
 pkgname=nsnotifyd
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="DNS NOTIFY message handler"
 arch=(i686 x86_64)
 url="https://dotat.at/prog/nsnotifyd/"
@@ -20,6 +20,9 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
+  # These are already present in the default Makefile.in, but we want to
+  # combine with Arch default cflags (thus the sed above).
+  export CFLAGS+=" -std=gnu99"
   ./configure
   make prefix=/usr
 }
