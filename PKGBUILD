@@ -1,13 +1,13 @@
 # Maintainer: AltoXorg <machinademoniko@gmail.com>
 
 _reponame=SpaghettiKart
-_torch_commit=5773373b3620e4a6bc6c92fdc4690d66741c086d
-_lus_commit=5e33d3e7cd0396f847923cd6c471eaf324e90351
-_sdl_gcdb_commit=5e686a3e781937e7f43138440a032f47140d0624  # This needs to be updated on every package release
+_torch_commit=2d474ddb8da8b213fbdbb49d0273ce31fa955f35
+_lus_commit=f40cfd33b8bc6237d635d4ed82838a7e3f785386
+_sdl_gcdb_commit=9cc9325b050f84808fcc77a868f1ee934555346f  # This needs to be updated on every package release
 
 pkgname=spaghettikart
-pkgver=0.9.9.1
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="An unofficial native port of Mario Kart 64"
 license=("unknown" "MIT")
 arch=("x86_64" "i686" "armv7h" "aarch64")
@@ -19,17 +19,13 @@ source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_rep
         "Torch-${_torch_commit:0:8}.tar.gz::https://github.com/HarbourMasters/Torch/archive/${_torch_commit}.tar.gz"
         "libultraship-${_lus_commit:0:8}.tar.gz::https://github.com/Kenix3/libultraship/archive/${_lus_commit}.tar.gz"
         "https://github.com/mdqinc/SDL_GameControllerDB/raw/${_sdl_gcdb_commit}/gamecontrollerdb.txt"
-        "torch-src-dest-paths.patch::https://github.com/HarbourMasters/Torch/pull/187.patch"
-        "lus-save-file-path.patch::https://github.com/Kenix3/libultraship/pull/908.patch"
-        "spaghettikart-non-portable-fix.patch"
+        "spaghettikart-cmake-flags.patch"
         "spaghettikart.desktop")
-sha256sums=('034156f3ee600b0a9087c9c474ce7b8e0830627deb78488f78ce26dbb31655a5'
-            'c4809596a77415d7376691aa80bdee601b358613a196ad6cf59fdf4185c03227'
-            '40691d2f05679d6c96a33bb8382fd0f4ca09d2c932532aa1aa51de3df635eeb4'
-            '267a3d75aaf537d4083e019fb8bf7030d5425b7db6580c9fafcdcbcb78b8fd12'
-            '80cb215a02a38d5148bf9084721774427857fd6ba187609156439a391d25907e'
-            '906d6265cf744c6f988f39b5986232304801a8a49aea1e39cf8911bd83ddc497'
-            '29506f5deaa631bd0ee17e4a89737e0dc12bee1d71041e0b24bbb59b660c8039'
+sha256sums=('8000025feb798488432e7fb6024ac42ca9b281aa070b4e1e58d361efe0e5b10e'
+            '5d57aac6d7051485207a049eb385c9eeb71d013240720fbd17a35522e0ae4aa0'
+            'abe8cfe0b0c3cf6654abb01fc5704faa7c77272f7e31f707e3a659aa72c3c87c'
+            'dbda45f3000470f0217fa8cd111c13cdb3bb64f65425449b324815bff7d53bf1'
+            '9dc9125a0498a26e4878abdbef3f102602af2d0608312e5ae302b1b68b4d4f27'
             '4c17e6b2514dbc11c87542b2c99bb2de1fed8747a562b9c26a908c3ea86a6f5e')
 
 SHIP_PREFIX=/opt/spaghettikart
@@ -52,13 +48,8 @@ prepare() {
   cp -r ../libultraship-${_lus_commit} libultraship
   cp -r ../Torch-${_torch_commit} torch
 
-  patch -Np1 -i "${srcdir}/spaghettikart-non-portable-fix.patch"
-
-  cd libultraship
-  patch -Np1 -i "${srcdir}/lus-save-file-path.patch"
-
-  cd ../torch
-  patch -Np1 -i "${srcdir}/torch-src-dest-paths.patch"
+  # Required patch for compilation
+  patch -Np1 -i "${srcdir}/spaghettikart-cmake-flags.patch"
 }
 
 build() {
