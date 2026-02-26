@@ -1,8 +1,9 @@
-# Maintaner: Rudra Saraswat <rs2009@ubuntu.com>
+# Maintainer: tlders <tlders@tlde.dev>
+# Contributor: Rudra Saraswat <rs2009@ubuntu.com>
 
 pkgname=apx-gui
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A frontend in GTK 4 and Libadwaita for Apx.'
 arch=('any')
 url="https://github.com/Vanilla-OS/apx-gui"
