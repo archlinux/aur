@@ -1,6 +1,6 @@
 # Maintainer: bop contributors
 pkgname=bop
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Battery Optimization Project - hardware-aware power tuning for Linux laptops'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('iw')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yv-was-taken/bop/archive/v$pkgver.tar.gz")
-sha256sums=('949af27b1696d0188fd97942b18caf5652d49898aebcb1ff855b261f4e103c4b')
+sha256sums=('a666efe4668e6a4e3ec8d7758f5e412c240535c313eeb555811f5097b8e0cf73')
 
 prepare() {
     cd "$pkgname-$pkgver"
