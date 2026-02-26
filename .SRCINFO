@@ -1,7 +1,7 @@
 pkgbase = stoat-desktop-bin
-	pkgdesc = Stoat for Desktop.(Prebuilt version.Use system-wide electron)
+	pkgdesc = Stoat for Desktop. (Prebuilt version. Use system-wide electron)
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://stoat.chat/
 	arch = aarch64
 	arch = x86_64

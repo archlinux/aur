@@ -3,8 +3,8 @@ pkgname=stoat-desktop-bin
 _pkgname=Stoat
 pkgver=1.3.0
 _electronversion=38
-pkgrel=1
-pkgdesc="Stoat for Desktop.(Prebuilt version.Use system-wide electron)"
+pkgrel=2
+pkgdesc="Stoat for Desktop. (Prebuilt version. Use system-wide electron)"
 arch=(
     'aarch64'
     'x86_64'
@@ -49,7 +49,7 @@ prepare() {
     _get_electron_version
     gendesk -q -f -n \
         --pkgname="${pkgname%-bin}" \
-        --pkgdesc="${pkgdesc}" \
+        --pkgdesc="Stoat for Desktop." \
         --categories="Network" \
         --name="${_pkgname}" \
         --exec="${pkgname%-bin} %U"
