@@ -1,0 +1,25 @@
+pkgbase = preload-ng-git
+	pkgdesc = An optimized preload-rs fork with aggressive prefetching (Git version)
+	pkgver = r249.b43c779
+	pkgrel = 1
+	url = https://github.com/firelzrd/preload-ng
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = libgcc
+	depends = glibc
+	provides = preload-ng
+	conflicts = preload-ng
+	options = !lto
+	source = git+https://github.com/firelzrd/preload-ng.git
+	source = preload-ng.service
+	source = preload-ng-user.service
+	sha256sums = SKIP
+	sha256sums = f9d783a067e82bd7d6452901e33eef73b05d56c23522b17f7b19cadd9cc5297d
+	sha256sums = fc3d71b21b28df51a5979fd5c6adb5a4b2381ea771fbbc145520b2dc42fd133c
+	b2sums = SKIP
+	b2sums = 9dbd32813ed9525159cde6541f486752ab45e91f10dc8b77390b5299fd3b4e170bbbec4d3e9183e0482d941b0751024f9205fae865cea20a99514a2004a866c2
+	b2sums = 9b0dfb50aecc8b2d093224111c3cfd4000ae8418a37a5761af0d2e8f9ed4aa21f5eca1988019ea95c2823cda12e7fa9d9805335b38ebcf2bf03e98b7c9788e5e
+
+pkgname = preload-ng-git

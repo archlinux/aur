@@ -1,0 +1,12 @@
+[Unit]
+Description=System Optimizer for Linux running on HDDs
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/preload-ng --state /var/lib/preload-ng/state.db
+ExecReload=kill -HUP $MAINPID
+ConfigurationDirectory=preload-ng::ro
+StateDirectory=preload-ng
+
+[Install]
+WantedBy=multi-user.target
