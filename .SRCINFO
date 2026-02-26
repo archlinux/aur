@@ -12,6 +12,6 @@ pkgbase = gstreamer-meta
 	depends = gst-plugins-espeak
 	depends = gst-plugins-good
 	depends = gst-plugins-ugly
-	optdepends = gst-plugin-pipewire: PipeWire for GStreamer
+	optdepends = gst-plugin-pipewire: PipeWire support for GStreamer
 
 pkgname = gstreamer-meta

@@ -19,5 +19,5 @@ depends=(
         'gst-plugins-ugly'
 )
 optdepends=(
-        'gst-plugin-pipewire: PipeWire for GStreamer'
+        'gst-plugin-pipewire: PipeWire support for GStreamer'
 )
