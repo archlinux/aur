@@ -1,0 +1,26 @@
+pkgbase = simple-mirror-git
+	pkgdesc = An rsync wrapper, built on C++ and Qt.
+	pkgver = r22.g55fa86d
+	pkgrel = 1
+	url = https://github.com/moltenib/simple-mirror
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = rsync
+	optdepends = hicolor-icon-theme: show application icon in desktop menus
+	optdepends = qt6-translations: localized Qt built-in dialogs and standard UI strings
+	provides = simple-mirror
+	conflicts = simple-mirror
+	source = git+https://github.com/moltenib/simple-mirror.git
+	source = simple-mirror.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = simple-mirror-git

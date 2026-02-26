@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Simple Mirror
+Comment=Mirror directories with rsync
+Exec=simple-mirror
+Icon=simple-mirror
+Categories=Utility;FileTools;
+Terminal=false
+StartupNotify=true
