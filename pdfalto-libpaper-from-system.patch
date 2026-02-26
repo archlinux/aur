@@ -1,0 +1,23 @@
+diff -rauN pdfalto-orig/CMakeLists.txt pdfalto-libpaper-from-system-patch/CMakeLists.txt
+--- pdfalto-orig/CMakeLists.txt	2026-02-11 11:04:58.000000000 +0100
++++ pdfalto-libpaper-from-system-patch/CMakeLists.txt	2026-02-26 21:40:15.631924269 +0100
+@@ -143,6 +143,7 @@
+ target_compile_definitions(pdfalto PRIVATE PDFALTO_VERSION_STR=\"${PDFALTO_VERSION_STR}\")
+ 
+ if (HAVE_PAPER_H)
++    set(PAPER_LIBRARY "paper")
+     if (HAVE_FONTCONFIG)
+         target_link_libraries(pdfalto ${PNG_LIBRARY} ${ZLIB_LIBRARY} ${XML_LIBRARY} splash xpdf goo fofi ${ICUUC_LIBRARY} ${ICUDATA_LIBRARY} ${FREETYPE_LIBRARY} dl ${PAPER_LIBRARY} ${FONTCONFIG_LIBRARY} pthread)
+     else ()
+@@ -150,9 +151,9 @@
+     endif ()
+ else ()
+     if (HAVE_FONTCONFIG)
+-        target_link_libraries(pdfalto ${PNG_LIBRARY} ${ZLIB_LIBRARY} ${XML_LIBRARY} splash xpdf goo fofi ${ICUUC_LIBRARY} ${ICUDATA_LIBRARY} ${FREETYPE_LIBRARY} dl ${FONTCONFIG_LIBRARY} pthread)
++        target_link_libraries(pdfalto ${PNG_LIBRARY} ${ZLIB_LIBRARY} ${XML_LIBRARY} splash xpdf goo fofi ${ICUUC_LIBRARY} ${ICUDATA_LIBRARY} ${FREETYPE_LIBRARY} dl ${FONTCONFIG_LIBRARY} pthread paper)
+     else ()
+-        target_link_libraries(pdfalto ${PNG_LIBRARY} ${ZLIB_LIBRARY} ${XML_LIBRARY} splash xpdf goo fofi ${ICUUC_LIBRARY} ${ICUDATA_LIBRARY} ${FREETYPE_LIBRARY} dl pthread)
++        target_link_libraries(pdfalto ${PNG_LIBRARY} ${ZLIB_LIBRARY} ${XML_LIBRARY} splash xpdf goo fofi ${ICUUC_LIBRARY} ${ICUDATA_LIBRARY} ${FREETYPE_LIBRARY} dl pthread paper)
+     endif ()
+ endif ()
+ 

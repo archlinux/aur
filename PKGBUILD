@@ -1,65 +1,50 @@
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 
 pkgname=pdfalto
-pkgver=0.4
-pkgrel=5
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='PDF to XML ALTO file converter'
 arch=('x86_64')
 url='https://github.com/kermitt2/pdfalto'
 license=('GPL2')
-depends=('libtiff' 'freetype2' 'icu' 'libpng14' 'libxml2' 'zlib' 'fontconfig')
+depends=('libtiff' 'freetype2' 'icu' 'libpng14' 'libxml2' 'zlib' 'fontconfig' 'libpaper')
 makedepends=('cmake' 'gcc12' 'git')
-source=("git+https://github.com/kermitt2/${pkgname}.git#tag=${pkgver}"
-        "pdfalto-use-system-libs.patch"
-        "pdfalto-compilation-fixes.patch"
-        "pdfalto-c++17.patch")
-md5sums=('3ab6d630f542e95b63a664ccad5d17a4'
-         '6d1ef0ea61e4ec3f65bca9c5a78fa62f'
-         '8cb9aeb09a45f860ae0b793ce329a425'
-         '5ebbed5a08f7d6fd67fa5dcd3c5ceca2')
+source=("pdfalto-${pkgver}.tar.gz::https://github.com/kermitt2/pdfalto/archive/refs/tags/v${pkgver}.tar.gz"
+        "pdfalto-libpaper-from-system.patch")
+md5sums=('1ba33009d2df19e0027cb6081c078a94'
+         'f5af9f957d51267405017f1b3be20877')
 
 prepare()
 {
-	cd "$srcdir"/$pkgname
+	cd "$srcdir"/$pkgname-$pkgver
 
-	# external references to subproject should not point to clone URLs which
-	# force the user to log in
-	sed -i 's|git@github.com:kermitt2|https://github.com/kermitt2|' .gitmodules
-	git submodule init
-	git submodule update
+	# submodules don't work in the tarball, fetch directly
+	git clone https://github.com/lfoppiano/xpdf-4.05.git
 	
-	# Do NOT inject local includes and static libraries!
-	patch -Np1 -i "$srcdir/pdfalto-use-system-libs.patch"
-	rm -rf "$srcdir/pdfalto/libs/"
+	# libpaper missing, linking against the system library -lpaper
+	patch -Np1 -i "$srcdir/pdfalto-libpaper-from-system.patch"
 
-	patch -Np1 -i "$srcdir/pdfalto-compilation-fixes.patch"
-
-	# ICU increased the minimal level of C++ standard required
-	# to include their header files (and use the library)
-	patch -Np1 -i "$srcdir/pdfalto-c++17.patch"
-	
 	cd ../..
 }
 
 build()
 {
-	rm -rf "$srcdir"/build
-	mkdir "$srcdir"/build
-	cd "$srcdir"/build
+	cd "$srcdir"/$pkgname-$pkgver
+
 	export CC=gcc-12
 	export CXX=g++-12
-	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/$pkgname"
+	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .
 	make
 	cd ../..
 }
 
 package()
 {
-	cd "$srcdir"/build
+	cd "$srcdir"/$pkgname-$pkgver
 
 	# Install pdfalto binary
 	install -Dm775 pdfalto "$pkgdir"/usr/bin/pdfalto
 
 	# Additional files
-	install -Dm644 "$srcdir"/pdfalto/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -Dm644 "$srcdir"/pdfalto-$pkgver/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
