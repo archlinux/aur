@@ -2,16 +2,17 @@
 pkgname=github-store-bin
 _pkgname=GitHub-Store
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, open-source app store for GitHub releases — browse, discover, and install apps with one click. Powered by Kotlin and Compose Multiplatform for Android & Desktop.(Prebuilt version)"
 arch=('x86_64')
-url="https://github.com/rainxchzed/Github-Store"
+url="https://www.github-store.org/"
+_ghurl="https://github.com/rainxchzed/Github-Store"
 license=('Apache-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'alsa-lib'
-    'java-runtime'
+    'java-runtime>=21'
     'libxrender'
     'libx11'
     'libxext'
@@ -21,7 +22,7 @@ depends=(
     'fontconfig'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/${pkgver}/${_pkgname//-/.}-${pkgver}_x86_64.rpm"
+    "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${_pkgname//-/.}-${pkgver}_x86_64.rpm"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('99c619d551cb63efcbd205090532e50e29db888bf5e23fea68e81c8d7da4b19e'
@@ -33,7 +34,8 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     sed -i -e "
         s/Exec=\/opt\/${pkgname%-bin}\/bin\/${_pkgname}/Exec=${pkgname%-bin}/g
-        s/Icon=\/opt\/${pkgname%-bin}\/bin\/${_pkgname}.png/Icon=${pkgname%-bin}/g
+        s/Icon=\/opt\/${pkgname%-bin}\/lib\/${_pkgname}.png/Icon=${pkgname%-bin}/g
+        s/Development/Development;/g
     " "${srcdir}/opt/${pkgname%-bin}/lib/${pkgname%-bin}-${_pkgname}.desktop"
 }
 package() {
