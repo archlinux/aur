@@ -1,3 +1,13 @@
+2026.02.26, v19.6.6
+
+feature:
+- 3987cc82 cloudcmd: redzip v4.5.1 (#457)
+
+2026.02.26, v19.6.5
+
+feature:
+- 964ae989 cloudcmd: redzip v4.5.0 (#457)
+
 2026.02.25, v19.6.4
 
 feature:
