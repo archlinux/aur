@@ -2,7 +2,7 @@
 
 _pkgname=sddm-theme-catppuccin
 pkgname="$_pkgname-git"
-pkgver=1.0.0.r0.ga487ae2
+pkgver=1.1.1.r6.g2869909
 pkgrel=1
 pkgdesc='Soothing pastel theme for SDDM'
 
@@ -18,19 +18,13 @@ depends=(
 makedepends=(
   'git'
   'just'
+  'whiskers'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
-
-_themes=(
-  "catppuccin-latte"
-  "catppuccin-frappe"
-  "catppuccin-macchiato"
-  "catppuccin-mocha"
-)
 
 backup=($(printf 'usr/share/sddm/themes/%s/theme.conf ' "${_themes[@]}"))
 
@@ -48,9 +42,10 @@ package() {
   cd "$_pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  cd dist
-  for theme in "${_themes[@]}"; do
-    find ./$theme -type f -exec install -Dm644 {} "$pkgdir/usr/share/sddm/themes/{}" \;
+  cd themes
+  for dir in */; do
+    [ -e "$dir/theme.conf" ] || continue
+    find ./$dir -type f -exec install -Dm644 {} "$pkgdir/usr/share/sddm/themes/{}" \;
   done
 }
 
