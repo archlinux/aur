@@ -3,7 +3,7 @@
 # Contributor: fkxxyz <fkxxyz@163.com>
 pkgname=youdao-dict
 pkgver=6.0.0
-pkgrel=12
+pkgrel=13
 pkgdesc="YouDao Dictionary.(Prebuilt version)"
 arch=('x86_64')
 license=('LicenseRef-custom')
@@ -37,6 +37,7 @@ depends=(
 	'gst-plugins-base'
 	'qt6-declarative'
 	'qt6-multimedia'
+	'python-pyqt5'
 )
 source=(
 	"${pkgname}-${pkgver}.deb::http://codown.youdao.com/cidian/linux/${pkgname}_${pkgver}-ubuntu-amd64.deb"
@@ -63,6 +64,10 @@ prepare() {
 	" "${srcdir}/usr/share/${pkgname}/dae/plugins.py"
     sed -i "s/usr\/share/usr\/lib/g" "${srcdir}/usr/share/dbus-1/services/com.youdao.backend.service"
 	sed -i "37s/     print/    print/" "${srcdir}/usr/share/${pkgname}/${pkgname}-backend.py"
+	sed -i -e "
+		/if not wmHelper.hasComposite:/d
+		s/\            width = 0/\        width = 0/g
+	" "${srcdir}/usr/share/${pkgname}/dae/shadowwindow.py"
 }
 package(){
 	install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"

@@ -1,7 +1,7 @@
 pkgbase = youdao-dict
 	pkgdesc = YouDao Dictionary.(Prebuilt version)
 	pkgver = 6.0.0
-	pkgrel = 12
+	pkgrel = 13
 	url = http://cidian.youdao.com/
 	arch = x86_64
 	license = LicenseRef-custom
@@ -24,6 +24,7 @@ pkgbase = youdao-dict
 	depends = gst-plugins-base
 	depends = qt6-declarative
 	depends = qt6-multimedia
+	depends = python-pyqt5
 	conflicts = youdao-dict
 	source = youdao-dict-6.0.0.deb::http://codown.youdao.com/cidian/linux/youdao-dict_6.0.0-ubuntu-amd64.deb
 	source = License.html::https://c.youdao.com/dict/law/youdaofanyi_pc_service.html
