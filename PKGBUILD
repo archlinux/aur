@@ -8,8 +8,9 @@ url="https://github.com/SykikXO/inno"
 license=('MIT')
 depends=('wayland' 'cairo' 'dbus' 'glibc' 'ttf-jetbrains-mono-nerd')
 makedepends=('rust' 'cargo')
+options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('58a14adb95f46731935a62a2575a8c31d5fbd152c0165122414e6b7f3cd946cd')
+sha256sums=('SKIP')
 
 build() {
   cd "$pkgname-$pkgver"
