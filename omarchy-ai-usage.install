@@ -1,8 +1,12 @@
 _setup_waybar() {
-    local user="${SUDO_USER:-$USER}"
-    [ "$user" = "root" ] || [ -z "$user" ] && return 1
+    # Detect real user: try SUDO_USER, then logname, then first user with UID >= 1000
+    local user="${SUDO_USER:-}"
+    [ -z "$user" ] && user=$(logname 2>/dev/null)
+    [ -z "$user" ] || [ "$user" = "root" ] && user=$(awk -F: '$3 >= 1000 && $3 < 65534 { print $1; exit }' /etc/passwd)
+    [ -z "$user" ] || [ "$user" = "root" ] && return 1
     local home
-    home=$(eval echo "~$user")
+    home=$(getent passwd "$user" | cut -d: -f6)
+    [ -z "$home" ] && return 1
     local src="/usr/share/omarchy-ai-usage/scripts"
     local dst="$home/.config/waybar/scripts"
     local cfg="$home/.config/waybar/config.jsonc"
@@ -109,10 +113,13 @@ CSS
 }
 
 _remove_waybar() {
-    local user="${SUDO_USER:-$USER}"
-    [ "$user" = "root" ] || [ -z "$user" ] && return 1
+    local user="${SUDO_USER:-}"
+    [ -z "$user" ] && user=$(logname 2>/dev/null)
+    [ -z "$user" ] || [ "$user" = "root" ] && user=$(awk -F: '$3 >= 1000 && $3 < 65534 { print $1; exit }' /etc/passwd)
+    [ -z "$user" ] || [ "$user" = "root" ] && return 1
     local home
-    home=$(eval echo "~$user")
+    home=$(getent passwd "$user" | cut -d: -f6)
+    [ -z "$home" ] && return 1
     local dst="$home/.config/waybar/scripts"
     local cfg="$home/.config/waybar/config.jsonc"
     local css="$home/.config/waybar/style.css"
