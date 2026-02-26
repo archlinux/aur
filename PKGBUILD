@@ -11,7 +11,7 @@ provides=('hyprcord')
 conflicts=('hyprcord')
 
 source=("https://github.com/Bebbesi/HyprCord/releases/download/hyprcordv1.0.5/Hyprcord-1.0.5.AppImage")
-sha256sums=('a921e180b78bee14b0c56e9ffc1215e6a6e11f5a7cbc6326752970aed858fe73')
+sha256sums=('945d840d53201d72ecdc575cbf9c0341f815db3be4e43cb77342ad03feeafd2f')
 
 prepare() {
   chmod +x "Hyprcord-${pkgver}.AppImage"
