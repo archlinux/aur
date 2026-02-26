@@ -1,6 +1,6 @@
 # Maintainer: yhtez <yhtez@protonmail.com>
 pkgname=olympus-git
-pkgver=r916.7f7660b
+pkgver=r1061.cd3c469
 pkgrel=1
 pkgdesc='Everest installer / mod manager for Celeste (git)'
 arch=('x86_64')
@@ -37,14 +37,14 @@ prepare() {
     git config submodule.src/luajit-request.url "$srcdir/luajit-request"
     git -c protocol.file.allow=always submodule update
 
-    printf "%s" "$pkgver" > src/version.txt
+    printf "0.0.0.0-arch-0000-%s" "$(git rev-parse --short=5 HEAD)" > src/version.txt
 }
 
 build() {
     cd "$srcdir/Olympus"
 
-    dotnet build --configuration Release sharp/Olympus.Sharp.sln
-    dotnet publish --configuration Release sharp/Olympus.Sharp.sln --output sharp/publish
+    dotnet build --configuration Release sharp/Olympus.Sharp.csproj
+    dotnet publish --configuration Release sharp/Olympus.Sharp.csproj -p:PublishTrimmed=false --output sharp/publish
 
     cd "$srcdir/lua-subprocess"; luarocks make --lua-version=5.1 --tree="$srcdir/Olympus/luarocks" --deps-mode=none --no-manifest subprocess-scm-1.rockspec
     cd "$srcdir/nativefiledialog"; luarocks make --lua-version=5.1 --tree="$srcdir/Olympus/luarocks" --deps-mode=none --no-manifest lua/nfd-scm-1.rockspec \
