@@ -5,7 +5,7 @@ _pkgname=perch
 pkgname=${_pkgname}-bin
 pkgdesc="A beautiful terminal social client for Mastodon and Bluesky"
 
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,8 +27,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[1]}.tar.gz")
 sha256sums=('7e3daf8540e3ba7bab129fa295aea598afe8bfdd42674d0626559c8964118ea0'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('d8c1f7bb675c3227f25427506c09cb170a3568479fa6d644cbf63c116161899f')
-sha256sums_aarch64=('0e8b82c93bb206e381771061964e36d95528b70b23ee5d1c8efa312edcbdf5d3')
+sha256sums_x86_64=('25558cf04aa63be128af9e3563458a96143260be572364c4da5425d2fe29e338')
+sha256sums_aarch64=('1794e6df9ddb7cf3226aa2631e81fbcdf6c84907ba8a031719163c2f1ade0a07')
 
 
 package() {
