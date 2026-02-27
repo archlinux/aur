@@ -1,0 +1,32 @@
+# Rodecaster Duo PipeWire - install script
+# Runs setup for users with active sessions and prints directions.
+
+post_install() {
+  _run_for_user() {
+    local u="$1"
+    local uid
+    uid=$(getent passwd "$u" 2>/dev/null | cut -d: -f3)
+    [ -z "$uid" ] && return 0
+    [ -d "/run/user/$uid" ] || return 0
+    runuser -u "$u" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+      /usr/bin/rodecaster-duo-set-pro-audio 2>/dev/null || true
+    runuser -u "$u" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+      /usr/bin/rodecaster-duo-pipewire-install 2>/dev/null || true
+    runuser -u "$u" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+      systemctl --user restart pipewire pipewire-pulse 2>/dev/null || true
+  }
+  if [ -n "$SUDO_USER" ]; then
+    _run_for_user "$SUDO_USER"
+  fi
+  for u in $(getent passwd | awk -F: '$3 >= 1000 && $3 < 65534 {print $1}'); do
+    [ -d "/home/$u" ] || continue
+    [ "$u" = "$SUDO_USER" ] && continue
+    _run_for_user "$u" || true
+  done
+  echo ""
+  echo "Rodecaster Duo PipeWire: virtual devices (Game, System, Chat, Music) were set up if the device was connected."
+  echo "If the Duo was not connected, run after plugging it in:"
+  echo "  rodecaster-duo-set-pro-audio && rodecaster-duo-pipewire-install"
+  echo "  systemctl --user restart pipewire pipewire-pulse"
+  echo ""
+}

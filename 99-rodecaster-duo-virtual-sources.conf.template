@@ -1,0 +1,47 @@
+# Rodecaster Duo virtual input sources
+#
+# Inputs:
+#   Main Multitrack → pro-input-1 (RODECaster Duo Pro 1)
+#   Chat            → pro-input-0 (RODECaster Duo Pro)
+#
+# Placeholders: TARGET_CAPTURE_MAIN, TARGET_CAPTURE_CHAT
+
+context.modules = [
+  { name = libpipewire-module-loopback
+    args = {
+      node.description = "Main Multitrack"
+      capture.props = {
+        node.name = "rcp_duo_main_cap"
+        target.object = "TARGET_CAPTURE_MAIN"
+        audio.position = [ FL FR ]
+        stream.dont-remix = true
+        node.passive = true
+        node.dont-reconnect = true
+      }
+      playback.props = {
+        node.name = "rcp_duo_main_src"
+        media.class = "Audio/Source"
+        audio.position = [ FL FR ]
+      }
+    }
+  }
+
+  { name = libpipewire-module-loopback
+    args = {
+      node.description = "Chat"
+      capture.props = {
+        node.name = "rcp_duo_chat_cap"
+        target.object = "TARGET_CAPTURE_CHAT"
+        audio.position = [ FL FR ]
+        stream.dont-remix = true
+        node.passive = true
+        node.dont-reconnect = true
+      }
+      playback.props = {
+        node.name = "rcp_duo_chat_src"
+        media.class = "Audio/Source"
+        audio.position = [ FL FR ]
+      }
+    }
+  }
+]

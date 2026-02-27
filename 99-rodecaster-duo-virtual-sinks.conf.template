@@ -1,0 +1,85 @@
+# Rodecaster Duo virtual stereo sinks (Game, System, Chat, Music)
+#
+# Outputs:
+#   Game, System, Music → pro-output-1 (Main Multitrack, AUX0–AUX9)
+#   Chat               → pro-output-0 (RODECaster Duo Pro / Chat device)
+#
+# Placeholders: TARGET_OBJECT = pro-output-1, TARGET_CHAT_OBJECT = pro-output-0
+
+context.modules = [
+  { name = libpipewire-module-loopback
+    args = {
+      node.description = "Game"
+      capture.props = {
+        node.name = "rcp_duo_game_in"
+        media.class = "Audio/Sink"
+        audio.position = [ FL FR ]
+      }
+      playback.props = {
+        node.name = "rcp_duo_game_out"
+        target.object = "TARGET_OBJECT"
+        audio.position = [ AUX2 AUX3 ]
+        stream.dont-remix = true
+        node.passive = true
+        node.dont-reconnect = true
+      }
+    }
+  }
+
+  { name = libpipewire-module-loopback
+    args = {
+      node.description = "System"
+      capture.props = {
+        node.name = "rcp_duo_system_in"
+        media.class = "Audio/Sink"
+        audio.position = [ FL FR ]
+      }
+      playback.props = {
+        node.name = "rcp_duo_system_out"
+        target.object = "TARGET_OBJECT"
+        audio.position = [ AUX0 AUX1 ]
+        stream.dont-remix = true
+        node.passive = true
+        node.dont-reconnect = true
+      }
+    }
+  }
+
+  { name = libpipewire-module-loopback
+    args = {
+      node.description = "Chat"
+      capture.props = {
+        node.name = "rcp_duo_chat_in"
+        media.class = "Audio/Sink"
+        audio.position = [ FL FR ]
+      }
+      playback.props = {
+        node.name = "rcp_duo_chat_out"
+        target.object = "TARGET_CHAT_OBJECT"
+        audio.position = [ FL FR ]
+        stream.dont-remix = true
+        node.passive = true
+        node.dont-reconnect = true
+      }
+    }
+  }
+
+  { name = libpipewire-module-loopback
+    args = {
+      node.description = "Music"
+      capture.props = {
+        node.name = "rcp_duo_music_in"
+        media.class = "Audio/Sink"
+        audio.position = [ FL FR ]
+      }
+      playback.props = {
+        node.name = "rcp_duo_music_out"
+        target.object = "TARGET_OBJECT"
+        audio.position = [ AUX4 AUX5 ]
+        stream.dont-remix = true
+        node.passive = true
+        node.dont-reconnect = true
+      }
+    }
+  }
+]
