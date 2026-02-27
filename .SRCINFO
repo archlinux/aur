@@ -1,6 +1,6 @@
 pkgbase = python-mprisify
 	pkgdesc = Python MPRIS server library for Linux media player apps
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://gitlab.com/zehkira/mprisify
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-mprisify
 	depends = python-gobject
 	depends = python-pydbus
 	depends = python-strenum
-	source = https://gitlab.com/zehkira/mprisify/-/archive/v1.0.0/mprisify-v1.0.0.tar.gz
-	sha256sums = a3abe8486c22c0e39002f2d46a86812176f8c503bba580580fc1bed24fa56169
+	source = https://gitlab.com/zehkira/mprisify/-/archive/v1.0.1/mprisify-v1.0.1.tar.gz
+	sha256sums = 791d835e497c2749b5bcb4433823921c225b7c92c5c1cd8409651dad3cc18be9
 
 pkgname = python-mprisify

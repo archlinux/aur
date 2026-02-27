@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-mprisify
 _name=${pkgname#python-}
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Python MPRIS server library for Linux media player apps"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=(
   'python-wheel'
 )
 source=("$url/-/archive/v$pkgver/$_name-v$pkgver.tar.gz")
-sha256sums=('a3abe8486c22c0e39002f2d46a86812176f8c503bba580580fc1bed24fa56169')
+sha256sums=('791d835e497c2749b5bcb4433823921c225b7c92c5c1cd8409651dad3cc18be9')
 
 build() {
   cd "$_name-v$pkgver"
