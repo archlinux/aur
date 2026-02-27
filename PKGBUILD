@@ -36,7 +36,9 @@ build() {
 package() {
   cd "${pkgname%-git}"
 
-  DESTDIR="$pkgdir" ./build.sh install
+  export DESTDIR="$pkgdir/" 
+  export PREFIX="/usr"
+  ./build.sh install
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
