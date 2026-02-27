@@ -17,6 +17,7 @@ depends=(
 
 optdepends=(
   'hyprpaper: optional wallpaper backend'
+  'mpvpaper: optional .mp4 wallpaper backend'
   'kitty: optional kitty image previews (slower than sixel)'
   'curl: optional release/version check'
   'wget: optional release/version check'
