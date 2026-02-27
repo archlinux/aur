@@ -4,7 +4,7 @@
 
 pkgname="pterodactyl-wings-bin"
 _name="${pkgname/-bin/}"
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="The server control plane for Pterodactyl Panel - binary package"
 url="https://pterodactyl.io/"
@@ -18,11 +18,11 @@ source=("$_name.service")
 source_x86_64=("$_name-$pkgver-amd64::https://github.com/pterodactyl/wings/releases/download/v$pkgver/wings_linux_amd64")
 source_aarch64=("$_name-$pkgver-arm64::https://github.com/pterodactyl/wings/releases/download/v$pkgver/wings_linux_arm64")
 sha256sums=('62dfff25f9bdae4769f4201ed30e7c2bfca54611bee75512c5626e74c764f46e')
-sha256sums_x86_64=('b8250adebb41f7bf03605753694273b707122d6f11f84f203b23ecc986724577')
-sha256sums_aarch64=('a219d5a97deccccff1e951f8beb97f0f5b59b256d702b2a06bc91a813886b274')
+sha256sums_x86_64=('1c572d4dd49b56749aca439d6d57034aed983bdda8cf222ebdb24d239c199dc9')
+sha256sums_aarch64=('d4cb31482be751a5242f1107feab6c6c4b1fff9626945c574f481f0c37625d80')
 b2sums=('d9afe390fe810ea2b34298d0f53b3fc06033917e35ac1525b1bc905d4835771a6bbbe5383d671576745f4c70b33d5ad08f1ca90d334d0c4a109fda57f76f39c0')
-b2sums_x86_64=('dadfc7d12d979df4379757a93ea1e4ce9754b89494dc29fe64fa1acf5503e0f0e21dc43fdbc4440ac6b1e6eded6a6faa3202477c306b373149cb1cb8a776f9c7')
-b2sums_aarch64=('a1c7e3afd1bee6e9d293f54b13b08edc62d322012ab679dad555fbef51a376a24aa659b8f1f10cd564b52c15cfbeb1e6effd144b6143ee37e1d26b25f6dd1390')
+b2sums_x86_64=('041353e0b9fcfcc7534efaef245effae047a57cdce0de3cd2ae8fd0ab6d29507ad4a239050edf73b761da507825870650ae0646b88109b141615cd05c10f4289')
+b2sums_aarch64=('d4c84010bc5fcab350d392021028cfcf51b95d9134980106f7f2de86e8e9a7769d7e6e4a35c4acf9c24c2dc9955d72be4e872ad7e781432dd5bc98e3387ac180')
 
 package(){
  install -d 640 "$pkgdir/etc/pterodactyl"
