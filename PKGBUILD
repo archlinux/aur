@@ -46,6 +46,13 @@ prepare() {
     # Enable withGlobalTauri so window.__TAURI__ is available to the
     # Leptos WASM frontend (required for IPC command invocation).
     sed -i 's/"withGlobalTauri": false/"withGlobalTauri": true/' src-tauri/tauri.conf.json
+
+    # Fix plugin ID prefix: UI sends "service", validation expected "services".
+    sed -i 's/"services"/"service"/' src-tauri/src/validation.rs
+
+    # Wrap set_var in unsafe block (required by Rust 2024 edition).
+    sed -i 's/std::env::set_var("WEBKIT_DISABLE_COMPOSITING_MODE"/unsafe { std::env::set_var("WEBKIT_DISABLE_COMPOSITING_MODE"/' src-tauri/src/main.rs
+    sed -i 's/"WEBKIT_DISABLE_COMPOSITING_MODE", "1");/"WEBKIT_DISABLE_COMPOSITING_MODE", "1") };/' src-tauri/src/main.rs
 }
 
 build() {
