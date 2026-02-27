@@ -39,4 +39,45 @@ package() {
 	fi
 
 	install -Dm755 "${bin_path}" "${pkgdir}/usr/bin/hapi"
+
+	# Install systemd user services
+	install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/user/hapi-hub.service" <<EOF
+[Unit]
+Description=HAPI Hub
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hapi hub
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
+EOF
+
+	install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/user/hapi-runner.service" <<EOF
+[Unit]
+Description=HAPI Runner
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/hapi runner start --foreground
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
+EOF
+
+	echo "==> To use the official relay service, edit hapi-hub.service:"
+	echo "    systemctl --user edit hapi-hub.service"
+	echo "    Change ExecStart to: /usr/bin/hapi hub --relay"
+	echo ""
+	echo "==> To enable and start the services:"
+	echo "    systemctl --user enable --now hapi-hub.service"
+	echo "    systemctl --user enable --now hapi-runner.service"
 }
