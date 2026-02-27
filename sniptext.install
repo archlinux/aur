@@ -33,21 +33,35 @@ post_install() {
       sudo pacman -S maim xclip
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-[*] OPTIONAL: Enhanced text correction (recommended)
+[*] OPTIONAL: Additional languages
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-  For better OCR error correction:
+  For Russian, French, German, etc:
+    sudo pacman -S tesseract-data-rus   # Russian
+    sudo pacman -S tesseract-data-fra   # French
+    sudo pacman -S tesseract-data-deu   # German
+
+  Then edit ~/.config/sniptext/config.yaml:
+    ocr_language: eng+rus  # Multiple languages
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[*] OPTIONAL: Enhanced spell correction (English only)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  For automatic correction of OCR errors in English:
     yay -S python-symspellpy
 
-  * Dictionary-based spell checking for OCR output
-  * Basic correction works without it, but this makes it better!
+  Note: Currently works for English text only
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Test it!
+Test and configure!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   Test from terminal:
     sniptext --capture-now
+
+  Configuration file will be created at:
+    ~/.config/sniptext/config.yaml
 
   Documentation:
     /usr/share/doc/sniptext/README.md

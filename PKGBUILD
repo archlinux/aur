@@ -1,6 +1,6 @@
 # Maintainer: Daniel Korbelainen <officialpand@gmail.com>
 pkgname=sniptext
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Screen text extractor with OCR and spell correction"
 arch=('any')
@@ -20,25 +20,25 @@ depends=(
     'libnotify'
 )
 optdepends=(
-    'python-scikit-learn: Advanced confidence modeling for ensemble OCR'
+    'python-symspellpy: Spell correction for English text'
+    'python-scikit-learn: Adaptive OCR quality analysis'
     'tesseract-data-rus: Russian language support'
+    'tesseract-data-ell: Greek language support'
+    'tesseract-data-equ: Mathematical equations and symbols'
     'tesseract-data-fra: French language support'
     'tesseract-data-deu: German language support'
     'tesseract-data-spa: Spanish language support'
     'tesseract-data-jpn: Japanese language support'
-    'tesseract-data-chi_sim: Chinese Simplified language support'
-    'slurp: Wayland screen selection (required for Wayland)'
-    'grim: Wayland screenshot tool (required for Wayland)'
-    'wl-clipboard: Wayland clipboard support (required for Wayland)'
-    'maim: X11 screenshot tool'
-    'scrot: X11 screenshot tool'
-    'xclip: X11 clipboard support'
-    'imagemagick: X11 screenshot tool (import command)'
+    'tesseract-data-chi_sim: Chinese Simplified support'
+    'slurp: Wayland region selection'
+    'grim: Wayland screenshots'
+    'wl-clipboard: Wayland clipboard'
+    'maim: X11 screenshots'
+    'xclip: X11 clipboard'
 )
-# Note: For enhanced spell correction, install: yay -S python-symspellpy
 makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('baa711579d7161306e4c84c29255515036146f2df253949aacce35bd0e433010')
+sha256sums=('fc2847f08f5a2b6fe945e60e561894e2e54a5e7380f1e27c358137dce23837d3')
 
 build() {
     cd "$pkgname-$pkgver"
