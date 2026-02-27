@@ -1,7 +1,7 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-mobile
 pkgver=6.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Plasma Mobile shell components'
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url='https://invent.kde.org/plasma/plasma-mobile'
@@ -32,8 +32,8 @@ depends=(
 )
 optdepends=(
   'iio-sensor-proxy: IIO accelerometer proxy needed for screen rotation'
+  'plasma-camera: The camera app for Plasma'
   'plasma-dialer: Phone application'
-  'plasma-login-manager: Official login manager for Plasma'
   'plasma-mobile-sounds: Plasma Mobile sound theme'
   'plasma-workspace-wallpapers: A large wallpaper selection for Plasma'
 )
@@ -58,4 +58,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
+
+  install -Dm644 "${pkgname}-${pkgver}/$pkgname.service" \
+    "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 }
