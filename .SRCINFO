@@ -1,0 +1,13 @@
+pkgbase = enject
+	pkgdesc = Hide .env secrets from AI agents. Encrypted local store with runtime injection.
+	pkgver = 0.2.0alpha
+	pkgrel = 1
+	url = https://github.com/GreatScott/enject
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = enject-0.2.0alpha.tar.gz::https://github.com/GreatScott/enject/archive/refs/tags/v0.2.0-alpha.tar.gz
+	sha256sums = 42fd447c1bf622e1775888b99330bbc9f3f0fe9224b3a943a623f136f032d436
+
+pkgname = enject
