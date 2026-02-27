@@ -1,0 +1,20 @@
+pkgbase = cli-manga
+	pkgdesc = Search, read and download manga from the terminal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/yourusername/cli-manga
+	arch = any
+	license = custom
+	depends = python
+	depends = fzf
+	depends = imagemagick
+	depends = kcc
+	depends = kindlegen
+	depends = okular
+	depends = python-requests
+	depends = python-beautifulsoup4
+	optdepends = python-ua-generator: random user agents to avoid blocks
+	source = cli-manga-1.0.0.tar.gz::https://github.com/yourusername/cli-manga/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = cli-manga
