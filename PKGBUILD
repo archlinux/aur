@@ -1,7 +1,7 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 
 pkgname=vacuumtube
-pkgver=1.5.7
+pkgver=1.5.8
 pkgrel=1
 pkgdesc='Unofficial wrapper of YouTube Leanback with a built-in adblocker and minor enhancements.'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('electron')
 makedepends=('nvm')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('30eb836d7b46287dd906dc4606f6afe6672ad0062a16a45e6593c6ba8ef91349')
+sha256sums=('acb331b99db1b25406c40f8417a18ba4e4ed92b3ea0a96957371278c9d1adca4')
 _nodeversion=23
 
 _srcdir="VacuumTube-$pkgver"
