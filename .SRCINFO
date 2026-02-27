@@ -1,0 +1,20 @@
+pkgbase = awtwall
+	pkgdesc = Fast TUI wallpaper picker for Wayland with libsixel previews
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/dillacorn/awtwall
+	arch = any
+	license = MIT
+	depends = bash
+	depends = imagemagick
+	depends = libsixel
+	depends = swww
+	depends = jq
+	optdepends = hyprpaper: optional wallpaper backend
+	optdepends = kitty: optional kitty image previews (slower than sixel)
+	optdepends = curl: optional release/version check
+	optdepends = wget: optional release/version check
+	source = awtwall-1.0.tar.gz::https://github.com/dillacorn/awtwall/archive/refs/tags/1.0.tar.gz
+	sha256sums = 56e6986e37cf7be12a34b8af947d1d4a3f2f95db7f2add7d85bc90771acc1665
+
+pkgname = awtwall
