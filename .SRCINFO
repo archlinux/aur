@@ -6,6 +6,7 @@ pkgbase = srb-id-pkcs11-git
 	arch = x86_64
 	license = Unlicense
 	makedepends = zig
+	depends = p11-kit
 	depends = pcsclite
 	optdepends = ccid: USB Chip/Smart Card Interface Devices driver
 	provides = srb-id-pkcs11

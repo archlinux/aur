@@ -7,7 +7,7 @@ pkgdesc='An open source PKCS11 v2.40 module for Serbian ID smart cards'
 arch=('x86_64')
 url='https://github.com/ubavic/srb-id-pkcs11'
 license=('Unlicense')
-depends=('pcsclite')
+depends=('p11-kit' 'pcsclite')
 makedepends=('zig')
 optdepends=('ccid: USB Chip/Smart Card Interface Devices driver')
 provides=('srb-id-pkcs11')
@@ -27,9 +27,15 @@ check() {
 
 package() {
     cd "$srcdir/$pkgname"
+
     install -dm755 "$pkgdir/usr/lib/pkcs11"
     cp -a zig-out/lib/*.so "$pkgdir/usr/lib/pkcs11"
     cp -a zig-out/lib/*.so.* "$pkgdir/usr/lib/pkcs11"
+
+    install -dm755 "$pkgdir/usr/share/p11-kit/modules"
+    echo "module: /usr/lib/pkcs11/libsrb-id-pkcs11.so" > srb-id-pkcs11.module
+    install -Dm644 srb-id-pkcs11.module -t "$pkgdir/usr/share/p11-kit/modules"
+
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
