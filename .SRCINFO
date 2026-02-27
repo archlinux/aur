@@ -1,0 +1,18 @@
+pkgbase = noon-libqt
+	pkgdesc = PharmaRacist's Perspective of a Desktop - Qt Library package
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/PharmaRacist/Noon-libqt
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-sql
+	source = git+https://github.com/PharmaRacist/Noon-libqt.git
+	sha256sums = SKIP
+
+pkgname = noon-libqt
