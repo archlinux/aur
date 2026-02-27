@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=escrcpy
-pkgver=2.3.1
+pkgver=2.5.1
 _electronversion=33
 _nodeversion=22
-pkgrel=2
+pkgrel=1
 pkgdesc="📱Graphical Scrcpy to display and control Android devices powered by Electron(Use system-wide electron).使用图形化的 Scrcpy 显示和控制您的 Android 设备，由 Electron 驱动。"
 arch=(
     'aarch64'
@@ -32,7 +32,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('ab68d966d221a68bb5d7cb99be1a1a632f5b253daf6ee8ed91e7c849470ee56c'
+sha256sums=('812a4105803297e656b94a3a48fffbbbd2378e79321f209c899890a36243cdc4'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -47,6 +47,7 @@ _get_electron_version() {
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
+    _get_electron_version
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
         s/@appname@/${pkgname}/g
@@ -54,7 +55,6 @@ prepare() {
         s/@cfgdirname@/${_pkgname}/g
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname}.sh"
-    _get_electron_version
     gendesk -q -f -n \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
@@ -113,20 +113,15 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    case "${CARCH}" in
-        aarch64)
-            install -Dm644 "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/linux-arm64-unpacked/resources/app.asar" \
-                -t "${pkgdir}/usr/lib/${pkgname}"
-            cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/linux-arm64-unpacked/resources/"{app.asar.unpacked,extra} \
-                "${pkgdir}/usr/lib/${pkgname}"
-            ;;
-        x86_64)
-            install -Dm644 "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/linux-unpacked/resources/app.asar" \
-                -t "${pkgdir}/usr/lib/${pkgname}"
-            cp -Pr --no-preserve=ownership "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/linux-unpacked/resources/"{app.asar.unpacked,extra} \
-                "${pkgdir}/usr/lib/${pkgname}"
-            ;;
-    esac
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+	find "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" {} +
+    if find "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${pkgname}-${pkgver}/desktop/dist-release/linux-"*"/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname}"
+            fi
+        done
+    fi
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}/lib"
     ln -sf "/usr/lib/${pkgname}/app.asar.unpacked/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.17.3" \
         "${pkgdir}/usr/lib/${pkgname}/lib/libvips-cpp.so.8.17.3"
