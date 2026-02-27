@@ -13,8 +13,13 @@ optdepends=()
 provides=('openscreen')
 conflicts=('openscreen-bin')
 options=(!debug !strip)
-source=("$url/releases/download/v$pkgver/Openscreen-Linux-latest.AppImage" "openscreen.desktop" "openscreen")
-sha256sums=('374fa7fd2da401afb7dbbbd4bc2331a5126c6730c8e7a9861746ae78119fa60c' 'SKIP' 'SKIP')
+source=(
+    "$url/releases/download/v$pkgver/Openscreen-Linux-latest.AppImage"
+    "$url/raw/refs/heads/main/LICENSE"
+    "openscreen.desktop"
+    "openscreen"
+)
+sha256sums=('374fa7fd2da401afb7dbbbd4bc2331a5126c6730c8e7a9861746ae78119fa60c' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
     chmod +x $srcdir/Openscreen-Linux-latest.AppImage
@@ -28,6 +33,8 @@ package() {
     install -Dm755 "$srcdir/openscreen" "$pkgdir/usr/bin/openscreen"
     install -Dm755 "$srcdir/Openscreen-Linux-latest.AppImage" "$pkgdir/opt/openscreen/Openscreen.AppImage"
     install -Dm755 "$srcdir/openscreen.desktop" "$pkgdir/usr/share/applications/openscreen.desktop"
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/openscreen/LICENSE"
 
     icon_types="16 24 32 48 64 128 256 512 1024"
     for num in $icon_types; do
