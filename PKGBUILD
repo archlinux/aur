@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=retroarch-assets
 pkgname=$_pkgname-git
-pkgver=1.19.0.r13.gc4f1ec8bd
+pkgver=1.22.0.r4.ga7b711d
 pkgrel=1
 pkgdesc="Assets needed for RetroArch"
 arch=('any')
@@ -18,7 +18,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
 }
 
 package() {
