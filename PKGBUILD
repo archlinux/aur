@@ -3,7 +3,7 @@
 _pkgname=lossless-adapter-manager
 pkgname=${_pkgname}
 pkgdesc="Management application for the Input Integrety Lossless Adapter Gamecube adapter."
-pkgver=2.50
+pkgver=2.51
 pkgrel=1
 provides=("${_pkgname}")
 conflicts=("LosslessAdapterManager2")

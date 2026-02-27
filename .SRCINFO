@@ -1,6 +1,6 @@
 pkgbase = lossless-adapter-manager
 	pkgdesc = Management application for the Input Integrety Lossless Adapter Gamecube adapter.
-	pkgver = 2.50
+	pkgver = 2.51
 	pkgrel = 1
 	url = https://www.input-integrity.com/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = lossless-adapter-manager
 	provides = lossless-adapter-manager
 	conflicts = LosslessAdapterManager2
 	options = !strip
-	source = lossless-adapter-manager_2.50.gz::https://mirror.sanin.dev/aur/lossless-adapter-manager/lossless-adapter-manager_2.50.gz?pkgrel=1
+	source = lossless-adapter-manager_2.51.gz::https://mirror.sanin.dev/aur/lossless-adapter-manager/lossless-adapter-manager_2.51.gz?pkgrel=1
 	source = lossless-adapter-manager.sh
 	source = lossless-adapter-manager.desktop
 	source = lossless-adapter-manager.svg
