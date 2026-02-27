@@ -1,0 +1,17 @@
+pkgbase = arctic-comfyui-helper-bin
+	pkgdesc = ComfyUI installer and model manager (prebuilt binary release)
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/ArcticLatent/Arctic-Helper
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	provides = arctic-comfyui-helper
+	conflicts = arctic-comfyui-helper
+	noextract = arctic-comfyui-helper-0.1.4-1-x86_64.pkg.tar.zst
+	source_x86_64 = https://github.com/ArcticLatent/Arctic-Helper/releases/download/v0.1.4/arctic-comfyui-helper-0.1.4-1-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 5f3887da2d6d38041dd20a18e4777cd4579afa4c0fc068deeb5494402b517919
+
+pkgname = arctic-comfyui-helper-bin
