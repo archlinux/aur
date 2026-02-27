@@ -70,14 +70,15 @@ post_install() {
 
 post_upgrade() {
     echo ""
-    echo "==> Voxtype upgraded to 0.6.1"
+    echo "==> Voxtype upgraded to 0.6.3"
     echo ""
 
     _detect_gpu
 
     echo ""
-    echo "    v0.6.1 fixes glibc compatibility for Arch-based distros."
-    echo "    No code changes from v0.6.0 (rebuild-only release)."
+    echo "    v0.6.3: Clipboard restoration, full config override, NixOS improvements."
+    echo "    Paste mode can now restore your clipboard after output."
+    echo "    All config options are now available as CLI flags and VOXTYPE_* env vars."
     echo ""
     # Check if ONNX engines were built
     if [ -f /usr/lib/voxtype/voxtype-onnx ] || [ -f /usr/lib/voxtype/voxtype-onnx-avx2 ]; then
