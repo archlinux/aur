@@ -1,19 +1,19 @@
 pkgbase = autobs-bin
 	pkgdesc = Because the most important part of your day shouldn't be explaining to Jira what you did in Git
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/coolapso/autobs
 	license = MIT
 	conflicts = AutoBS
 	provides = AutoBS
 	arch = aarch64
-	source_aarch64 = https://github.com/coolapso/AutoBS/releases/download/v0.3.0/AutoBS_0.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = a6a9945ef18ec7d35835017888c1c5c429f4b68bb33c9957989a94ade871f112
+	source_aarch64 = https://github.com/coolapso/AutoBS/releases/download/v0.4.0/AutoBS_0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = af7b05c6ff82d947ea294661741b5dee3f9e268af0a5c13728c94081dbbd987f
 	arch = i686
-	source_i686 = https://github.com/coolapso/AutoBS/releases/download/v0.3.0/AutoBS_0.3.0_linux_386.tar.gz
-	sha256sums_i686 = ad6bfe0308a428d88c930b6b4c02daace67ac986cfa79ee98ab7736fb76beed4
+	source_i686 = https://github.com/coolapso/AutoBS/releases/download/v0.4.0/AutoBS_0.4.0_linux_386.tar.gz
+	sha256sums_i686 = c236b07e22ca759c6258fe6ed159cb38d7bccffa463b2c64d539303f3405fa8e
 	arch = x86_64
-	source_x86_64 = https://github.com/coolapso/AutoBS/releases/download/v0.3.0/AutoBS_0.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 1558951362e7333e58e9a153ecdb695765adfa605d181ae23a4102bee70e7edf
+	source_x86_64 = https://github.com/coolapso/AutoBS/releases/download/v0.4.0/AutoBS_0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 96d9e4cd796235cd53ca5b2a5c0dd2541f024847f2ec22aff25810aab528c511
 	
 pkgname = autobs-bin
