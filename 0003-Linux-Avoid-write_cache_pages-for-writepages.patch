@@ -1,7 +1,7 @@
-From 258991eaf2fedc1371ddd6b9e0500ff81cd9b1ec Mon Sep 17 00:00:00 2001
+From d61ac6ced21618105ad2bb8cc7f892cb60976c24 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
-Date: Thu, 8 Jan 2026 15:52:47 -0700
-Subject: [PATCH 3/3] Linux: Avoid write_cache_pages() for ->writepages()
+Date: Thu, 5 Feb 2026 11:06:59 -0700
+Subject: [PATCH 3/5] Linux: Avoid write_cache_pages() for ->writepages
 
 The Linux 6.18 commit:
     'mm: remove write_cache_pages' (7bebb41b96b5a)
@@ -13,9 +13,9 @@ afs_linux_write_pages() function calls write_cache_pages() and passes
 the callback function afs_linux_writefolio_cb() to handle the actual
 writing of individual folios.
 
-The write_cache_pages() was a simple function that used writeback_iter()
-function to iterate over dirty pages then called the provided callback
-function to perform the actual writing:
+write_cache_pages() was a simple function that used writeback_iter() to
+iterate over dirty pages then called the provided callback function to
+perform the actual writing:
 
     aops->writepages (afs_linux_write_pages)
         -> write_cache_pages
@@ -23,16 +23,16 @@ function to perform the actual writing:
            -> afs_linux_writefolio_cb(folio)
 
 With the removal of write_cache_pages(), the OpenAFS kernel module must
-iterate over the folios that need to be written. However the
+iterate over the folios that need to be written. However,
 writeback_iter() is exported as GPL only and cannot be used by the
 OpenAFS kernel module.
 
 Without writeback_iter(), the function afs_linux_write_pages() will need
 to scan the mapping, in order to find the dirty folios directly.
 
-The aops->writepages() method is called to handle writing dirty folios from
-the page cache.  It is passed 2 parameters: a mapping and a writeback
-control, and is generally called in 2 situations:
+The aops->writepages() method is called to handle writing dirty folios
+from the page cache.  It is passed 2 parameters: a mapping and a
+writeback control, and is generally called in 2 situations:
   1 - To verify that the entire mapping is written to stable storage
       (typically after a sync, fsync, msync, unmount, etc) - WB_SYNC_ALL
   2 - During background pagecache cleaning - WB_SYNC_NONE
@@ -40,20 +40,23 @@ control, and is generally called in 2 situations:
 In the first case, the entire specified range within the mapping needs
 to be scanned to locate and write out any dirty folios.  In the second
 case the mapping is being processed in chunks of folios and only a
-specified number of pages are to be written out (the decision of which
-folios to be written is left to the individual file system).
+suggested number of pages are to be written out (the decision of exactly
+how many and which folios to be written is left to the individual file
+system).
 
 The writeback control determines if an entire range of folios within the
-mapping needs to be processed (WB_SYNC_ALL) or only a specific number of
-folios need to be written out (WB_SYNC_NONE and nr_to_write)
+mapping needs to be processed (WB_SYNC_ALL) or we can skip writeout for
+some pages (WB_SYNC_NONE).
 
-For the first case, the scan for dirty folios starts at the specified
-starting folio and continues up to and including the specified ending
-folio.
+For the first case (WB_SYNC_ALL), the scan for dirty folios starts at
+the specified starting folio and continues up to and including the
+specified ending folio.
 
-For the second case, the scan starts at mapping->writeback_index and
-ends when the specified number of folios has been written, wrapping
-around when the end of the range is reached.
+For the second case (WB_SYNC_NONE), the scan starts at
+mapping->writeback_index and ends when the specified number of folios
+has been written, or we reach the end of the range.  If the end of the
+range is reached, we set the mapping->writeback_index to 0 before
+returning.
 
 The process for scanning and writing dirty folios within the mapping is
 mostly the same for both cases.
@@ -72,15 +75,14 @@ mostly the same for both cases.
   Clear the dirty bit on the folio (and if it wasn't dirty skip
     additional processing on the folio).
   Call afs_linux_writefolio_cb() to actually handle the writing of the
-    folio (this clears the PAGECACE_TAG_TOWRITE/_DIRTY tag when we call
+    folio (this clears the PAGECACHE_TAG_TOWRITE/_DIRTY tag when we call
     folio_start_writeback()).  Mark the mapping if there was an error.
   Decrement the writeback control's number of pages to be written.
   If WB_SYNC_NONE, check to see if the writeback control request has
     been satisfied by writing out the requested number of pages.  If
     the writeback control is cyclic, update the mapping with the new
     starting point.  And exit.
-  Continue processing the folios in batches, wrapping back to the start
-  if needed (if range_cyclic is set).
+  Continue processing the folios in batches.
 
 Update afs_linux_write_pages() with the new logic if the Linux kernel
 provides filemap_get_folios_tag() and doesn't have write_cache_pages()
@@ -103,14 +105,22 @@ folio_batch_next() as introduced in 6.8 with the commit:
 Written in collaboration with adeason@sinenomine.net.
 
 Change-Id: I74b8a7a1e9d740db40737ffee5f608cf723cbb52
+Reviewed-on: https://gerrit.openafs.org/16648
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+Tested-by: Cheyenne Wills <cwills@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+(cherry picked from commit 030378b1f430c36de90208dbca55056e05bbb2e3)
 ---
- src/afs/LINUX/osi_vnodeops.c    | 244 +++++++++++++++++++++++++++++++-
+ src/afs/LINUX/osi_vnodeops.c    | 241 +++++++++++++++++++++++++++++++-
  src/cf/linux-kernel-assorted.m4 |   1 +
  src/cf/linux-test4.m4           |  26 ++++
- 3 files changed, 266 insertions(+), 5 deletions(-)
+ 3 files changed, 263 insertions(+), 5 deletions(-)
 
 diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
-index e7456558e..a59ff7331 100644
+index e7456558e..8a1b69a67 100644
 --- a/src/afs/LINUX/osi_vnodeops.c
 +++ b/src/afs/LINUX/osi_vnodeops.c
 @@ -34,9 +34,8 @@
@@ -145,7 +155,7 @@ index e7456558e..a59ff7331 100644
   */
  static int
  afs_linux_writefolio_cb(struct folio *folio, struct writeback_control *wbc, void *priv)
-@@ -3618,11 +3621,242 @@ afs_linux_writefolio_cb(struct folio *folio, struct writeback_control *wbc, void
+@@ -3618,11 +3621,239 @@ afs_linux_writefolio_cb(struct folio *folio, struct writeback_control *wbc, void
      return code;
  }
  
@@ -201,16 +211,8 @@ index e7456558e..a59ff7331 100644
 +    /* Decrement the number of pages to write within this writeback request */
 +    wbc->nr_to_write -= folio_nr_pages(folio);
 +
-+    /*
-+     * afs_linux_writefolio_cb() usually unlocks the folio (on success or
-+     * error). But if it returns AOP_WRITEPAGE_ACTIVATE, then we must
-+     * unlock the folio.
-+     */
++    /* afs_linux_writefolio_cb() unlocks the folio on success or error. */
 +    code = afs_linux_writefolio_cb(folio, wbc, NULL);
-+    if (code == AOP_WRITEPAGE_ACTIVATE) {
-+	folio_unlock(folio);
-+	code = 0;
-+    }
 +
 +    /* Make sure the mapping gets marked with any errors */
 +    mapping_set_error(mapping, code);
@@ -225,11 +227,14 @@ index e7456558e..a59ff7331 100644
 +/*
 + * Writeout all of the pages in the given mapping, from page index 'start' to
 + * 'end', as part of a ->writepages() request.
++ *
++ * On return, *a_eof is set if we processed the entire range, and didn't bail
++ * out early (we hit "eof" of the given range or the mapping).
 + */
 +static int
 +afs_linux_write_pages_range(struct address_space *mapping,
 +			    struct writeback_control *wbc, pgoff_t start,
-+			    pgoff_t end)
++			    pgoff_t end, int *a_eof)
 +{
 +    int code;
 +    int saved_err = 0;
@@ -260,11 +265,10 @@ index e7456558e..a59ff7331 100644
 +     * Obtain the next batch of folios tagged with PAGECACHE_TAG_TOWRITE (or
 +     * _DIRTY). filemap_get_folios_tag() will adjust 'start' to move forward as
 +     * we go, and will return 0 when there are no more pages to write (when
-+     * 'start' is past 'end').
++     * 'start' is past 'end', or we hit EOF).
 +     */
 +    while (filemap_get_folios_tag(mapping, &start, end, tag,
 +				  &wbc->fbatch) != 0) {
-+
 +	/* Go through each folio in the fbatch. */
 +	while ((folio = folio_batch_next(&wbc->fbatch)) != NULL) {
 +	    code = afs_linux_write_pages_folio(mapping, wbc, folio);
@@ -290,6 +294,7 @@ index e7456558e..a59ff7331 100644
 +	folio_batch_release(&wbc->fbatch);
 +    }
 +
++    *a_eof = 1;
 +    code = 0;
 +
 + done:
@@ -306,25 +311,32 @@ index e7456558e..a59ff7331 100644
 +
 +/*
 + * Write out pages in the given address space and range. This is used both for
-+ * synchronous writes, and background best-effort writes.
++ * synchronous writes and background best-effort writes.
 + *
 + * If wbc->mode == WB_SYNC_ALL:
 + * - This is for an fsync(), umount(), etc.
 + * - We must write out all pages in the given range (wbc->range_start to
-+ *   wbc->range_end)
++ *   wbc->range_end).
 + * - If a page is busy being written out as part of another ->writepages()
 + *   request, we must wait synchronously for it to finish.
++ * - If we encounter an error, we must still try to writeout all pages in the
++ *   range (but we must return the error).
 + *
 + * If wbc->mode == WB_SYNC_NONE:
 + * - This is a background request to cleanup pages.
-+ * - We writeout pages from mapping->writeback_index to EOF, but can stop
-+ *   after writing out about wbc->nr_to_write pages.
-+ * - If wbc->range_cyclic is set, after hitting EOF, we start again from offset
-+ *   0, and go until we hit the original starting point
-+ *   (mapping->writeback_index). For example, if mapping->writeback_index is 5,
-+ *   we write out 5,6,7,...,EOF, then 0,1,2,3,4.
++ * - We can stop writing pages after writing out about wbc->nr_to_write pages,
++ *   or if we encounter an error.
 + * - If a page is busy being written out as part of another ->writepages()
 + *   request, just skip it and don't wait.
++ *
++ * If wbc->range_cyclic (only set for WB_SYNC_NONE):
++ * - Ignore wbc->range_start and wbc->range_end, and instead start writing from
++ *   mapping->writeback_index to EOF.
++ * - We may also then writeout the remainder of the mapping starting from 0, but
++ *   this isn't required (and we currently never do this, for simplicity).
++ * - Update mapping->writeback_index before returning to save how far we got,
++ *   so we'll start from there the next time afs_linux_write_pages() is called
++ *   for this mapping.
 + */
 +static int
 +afs_linux_write_pages(struct address_space *mapping,
@@ -333,17 +345,16 @@ index e7456558e..a59ff7331 100644
 +    pgoff_t start = wbc->range_start >> PAGE_SHIFT;
 +    pgoff_t end = wbc->range_end >> PAGE_SHIFT;
 +    int code;
++    int eof = 0;
 +
 +    if (wbc->range_cyclic) {
 +	/*
 +	 * wbc->range_cyclic is set by Linux's background writeback when
 +	 * cleaning dirty folios (WB_SYNC_NONE). The background writeback works
 +	 * in chunks with the wbc->nr_to_write indicating the number of pages
-+	 * to be handled.  In order to ensure that the scan for dirty pages
++	 * to be handled. In order to ensure that the scan for dirty pages
 +	 * isn't always starting at the beginning of the mapping, start where
-+	 * the previous scanning left off (mapping->writeback_index). If end of
-+	 * the mapping is reached while looking for dirty folios, we'll wrap
-+	 * back to the beginning of the mapping, later on in this function.
++	 * the previous scanning left off (mapping->writeback_index).
 +	 */
 +	start = mapping->writeback_index;
 +	end = -1; /* EOF */
@@ -359,23 +370,19 @@ index e7456558e..a59ff7331 100644
 +    folio_batch_init(&wbc->fbatch);
 +    wbc->index = start;
 +
-+    code = afs_linux_write_pages_range(mapping, wbc, start, end);
-+    if (code != 0) {
-+	goto done;
-+    }
++    code = afs_linux_write_pages_range(mapping, wbc, start, end, &eof);
 +
-+    if (wbc->range_cyclic && wbc->nr_to_write > 0) {
-+	/* Start over from the start of the mapping. */
-+	end = start - 1;
-+	start = 0;
-+	code = afs_linux_write_pages_range(mapping, wbc, start, end);
-+    }
-+
-+ done:
 +    if (wbc->range_cyclic) {
-+	/* Start from wbc->index next time. */
++	/*
++	 * If we hit EOF, start from index 0 next time. Otherwise, start from
++	 * where we left off (wbc->index) next time.
++	 */
++	if (eof) {
++	    wbc->index = 0;
++	}
 +	mapping->writeback_index = wbc->index;
 +    }
++
 +    return code;
 +}
 +# else
@@ -435,5 +442,5 @@ index df3c843a6..c978bb0f2 100644
 +		       [-Werror])
 +])
 -- 
-2.52.0
+2.53.0
 
