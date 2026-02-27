@@ -1,7 +1,7 @@
 pkgbase = fileoptimizer-bin
 	pkgdesc = Lossless file size optimizer supporting multiple formats
 	pkgver = 17.10.2857
-	pkgrel = 3
+	pkgrel = 4
 	url = https://nikkhokkho.sourceforge.io/?page=FileOptimizer
 	arch = x86_64
 	license = AGPL-3.0-only or AGPL-3.0-or-later
@@ -10,9 +10,11 @@ pkgbase = fileoptimizer-bin
 	makedepends = imagemagick
 	depends = wine
 	depends = wine-mono
+	depends = wine-gecko
 	provides = fileoptimizer
 	conflicts = fileoptimizer
 	options = !strip
+	options = !debug
 	source = fileoptimizer-17.10.2857.7z.exe::https://sourceforge.net/projects/nikkhokkho/files/FileOptimizer/17.10.2857/FileOptimizerFull.7z.exe/download
 	source = fileoptimizer.desktop
 	sha256sums = 5fe38b7848fc5dac00aa063ce67cdd956c43913420cef8851aed846182ff3dce
