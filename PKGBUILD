@@ -2,7 +2,7 @@
 pkgname=phasor
 PACKAGER="Daniel McGuire <danielmcguire2023@gmail.com>"
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Phasor Programming Language Toolchain"
 arch=('x86_64')
 url="https://github.com/DanielLMcGuire/Phasor"
@@ -14,7 +14,7 @@ options=(strip !debug)
 install=phasor.install
 depends=()
 source=("https://github.com/DanielLMcGuire/Phasor/archive/refs/tags/3.0.0.tar.gz")
-sha256sums=('59199FD6CF7216684E00889F988041CF8C1401A22F03233F3F41F4F8C0A1C67E')
+sha256sums=('342D1C1FC04354A74B52EF3D7AE7BC4A0C5A59342B856EE342416F1E360D959F')
 
 build() {
     cd "$srcdir/Phasor-3.0.0"
