@@ -20,6 +20,11 @@ build() {
     zig build -Doptimize=ReleaseSmall
 }
 
+check() {
+    cd "$srcdir/$pkgname"
+    zig build test
+}
+
 package() {
     cd "$srcdir/$pkgname"
     install -dm755 "$pkgdir/usr/lib/pkcs11"
