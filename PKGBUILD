@@ -145,17 +145,18 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=6.18
-_minor=13
+_minor=14
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
+_tagrel=1
+pkgrel=1
 _stable=${_major}.${_minor}
 #_stable=${_major}
 #_stablerc=${_major}-${_rcver}
-_srcname=linux-${_stable}
-#_srcname=linux-${_major}
+_srctag=cachyos-${_major}.${_minor}-${_tagrel}
+_srcname=${_srctag}
 pkgdesc='Linux BORE + Cachy Sauce Kernel by CachyOS with other patches and improvements - Long Term Service'
-pkgrel=1
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_pkgsuffix}"
 arch=('x86_64')
@@ -183,9 +184,8 @@ _nv_ver=590.48.01
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
-    "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
-    "config"
-    "${_patchsource}/all/0001-cachyos-base-all.patch")
+    "https://github.com/CachyOS/linux/releases/download/${_srctag}/${_srctag}.tar.gz"
+    "config")
 
 # LLVM makedepends
 if _is_lto_kernel; then
@@ -207,7 +207,7 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=3bf17cf5387fa5e0044a6321e663aead38b45969")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=1c702dda346a59e05cfd3029569bbb1d5d91c54b")
 fi
 
 
@@ -734,6 +734,5 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('1b97badce04dcc6a9e674a646e1eec5b2fa31a442856af748de730946113b2549d31ccf24417d0702142bdbde6636d874db7dd6f274f513f973c97e0866a3c34'
-        '81fafd3adcaf3b690d8d4791693e68c7ae921d103ebfd70e8d0ae15cd05ecde5e6672ae43c3a7875686d883c1f5b82d2c8b37b40aee8dcb0563913f9dd6469b6'
-        'f8b35beeb3a02cb9712600a8131e4ef706142284d2a9c5a2432d6b05311fbfa628e0d3b1a8059360b5a5ee4879bd058dad017630f837219ee821dbda7bc4a8d0')
+b2sums=('596ee7428ed274f5307980b97e236631487bc4631cc4355a497ad805255c9e5c021f3fabb328877158bc8d99c38cea063029e19144ce7ba8f8a144d66f90bd3d'
+        '81fafd3adcaf3b690d8d4791693e68c7ae921d103ebfd70e8d0ae15cd05ecde5e6672ae43c3a7875686d883c1f5b82d2c8b37b40aee8dcb0563913f9dd6469b6')
