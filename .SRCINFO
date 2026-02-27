@@ -1,0 +1,24 @@
+pkgbase = kdwrite
+	pkgdesc = 口袋写作 - 跨平台写作工具（Arch Linux通过Wine运行）
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://www.kdwrite.cn
+	arch = x86_64
+	license = custom:Proprietary
+	depends = wine
+	depends = winetricks
+	depends = ttf-dejavu
+	depends = wqy-microhei
+	optdepends = zenity: 图形化提示
+	optdepends = xdg-utils: 打开默认浏览器
+	noextract = kdwrite-1.2.4.exe
+	source = kdwrite-1.2.4.exe::https://oss.kdwrite.cn/0_app/kdwrite_v1.2.4.exe
+	source = kdwrite.desktop
+	source = MicrosoftEdgeWebView2RuntimeInstallerX64.exe::https://go.microsoft.com/fwlink/p/?LinkId=2124703
+	source = kdwrite.png
+	sha256sums = 2e056ae5c47a32f45ba06df1068d55fa5087a7697f1ff3e1e41a488f889a5a2b
+	sha256sums = ea89477560caac0a9ddf8a1513e7ad91cb1c430a0beffbc432f8b5e81ce0bbe3
+	sha256sums = 79859394908084c68804bc6c43b5fd090b1d2d76434645ee2f3a76ced4153594
+	sha256sums = 63014613fe9a5b3b747b5175fe37787e3ec07d7bb3c9ae4e354e55b34605bc11
+
+pkgname = kdwrite

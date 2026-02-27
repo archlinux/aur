@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=口袋写作
+Comment=跨平台写作工具
+Exec=kdwrite
+Icon=kdwrite
+Terminal=false
+Type=Application
+Categories=Office;Utility;TextEditor;
+StartupWMClass=kdwrite_v1.2.4.exe  # 可选：匹配窗口类名，避免多图标
+Keywords=写作;编辑器;
