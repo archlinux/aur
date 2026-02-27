@@ -21,4 +21,4 @@ package() {
   install -Dm755 "${source[0]}" "$pkgdir/usr/bin/$pkgname"
 }
 
-sha256sums=('9d1506b0adfb776aaef66b4ad4b86d986541091a729e43194103c370baf37890')
+sha256sums=('7d4cde74555cc8a3b4452d9a4ef4b7ec7f98821e21a13b4fa86c25b171c31c70')
