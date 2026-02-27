@@ -1,8 +1,8 @@
 # Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=ccase
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="A command line utility for converting between string cases"
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://github.com/rutrum/ccase"
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("gcc-libs")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('7c739949caddeb836194b62a3a0c67470ef087b7b7670466261500ff57a01e5e53ed2a347dbd75fae4e1813f3ea1755a59e46c4038055ca691fec7b4356b31f6')
+sha512sums=('799507a01518dcf110e07533a9a9bd72945292abcfa82ea20059c13ab91db8803fc4986b8d4375af3c02e25e8499e05d91b3a44aee1793a3bbdcdb032038f66c')
 
 prepare() {
   cd ${pkgname}-${pkgver}
