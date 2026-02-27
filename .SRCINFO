@@ -1,0 +1,20 @@
+pkgbase = astro-editor-appimage
+	pkgdesc = A beautiful markdown editor for Astro content collections
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://github.com/dannysmith/astro-editor
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = fuse2
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = astro-editor
+	conflicts = astro-editor
+	options = !strip
+	options = !debug
+	source = Astro.Editor_1.0.10_amd64.AppImage::https://github.com/dannysmith/astro-editor/releases/download/v1.0.10/Astro.Editor_1.0.10_amd64.AppImage
+	sha256sums = 84b2c3919e59c69897d3f80e07bf15fca78a8bb29a089fa4bc42cbceb94aa81c
+
+pkgname = astro-editor-appimage
