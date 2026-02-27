@@ -2,7 +2,7 @@
 # Maintainer: Tim Van Wassenhove <tim@vanwassenhove.be>
 
 pkgname='pane-patrol-bin'
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='ZFC-compliant terminal pane monitor for AI coding agents'
 url='https://github.com/timvw/pane-patrol'
@@ -12,10 +12,10 @@ provides=('pane-patrol')
 conflicts=('pane-patrol')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/timvw/pane-patrol/releases/download/v${pkgver}/pane-patrol_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('01a4d6fa9f663e536066e5268f8b5e8f844ffb8ebfbd9fb23e4b8fdf3d0021b2')
+sha256sums_aarch64=('72c0c20ae2b5c6ba4f1b0e78dab3beedb34b2eae447ebad25a02a6c41ab9199d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/timvw/pane-patrol/releases/download/v${pkgver}/pane-patrol_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('172dc03eadeef674429c6ef585c9c430a86a9df8f91226b69dd2ed3ab8de237a')
+sha256sums_x86_64=('37d6eb81658a4577a6044d03640eb76489ca33a42ca9ba91cb39577d142f537c')
 
 package() {
   install -Dm755 pane-patrol "${pkgdir}/usr/bin/pane-patrol"
