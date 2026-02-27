@@ -4,7 +4,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 _pkgname=ldc
-pkgname=("${_pkgname}-git" 'liblphobos-git')
+pkgname=("${_pkgname}-git" 'libphobos-git')
 groups=('dlang' 'dlang-ldc')
 pkgver=v1.42.0.beta3.9.g2e33c9c487
 epoch=1
@@ -99,7 +99,7 @@ package_ldc-git() {
   mv "$pkgdir/usr/share/bash-completion/completions/ldc2" "$pkgdir/usr/share/bash-completion/completions/ldc2-git"
   rm -rf "$pkgdir/etc/bash_completion.d"
 
-  # remove liblphobos files
+  # remove libphobos files
   rm -rf "${pkgdir}/usr/include"
   rm -rf "${pkgdir}/usr/lib"
 
@@ -115,7 +115,7 @@ package_ldc-git() {
   install -D -m644 "${srcdir}/ldc/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-package_liblphobos-git() {
+package_libphobos-git() {
   provides=('d-runtime' 'd-stdlib')
   depends=('curl')
   options=('staticlibs')
