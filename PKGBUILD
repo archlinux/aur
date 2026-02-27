@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Tool for querying USTB campus WiFi usage information"
 arch=('x86_64')
 url="https://github.com/CakeAL/ustb-wifi-tools"
-license=('MIT')
+license=('unknown')
 depends=(
   'webkit2gtk-4.1'
   'gtk3'
