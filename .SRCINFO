@@ -1,6 +1,6 @@
 pkgbase = finar-bin
 	pkgdesc = Jellyfin frontend client
-	pkgver = 2.0.0
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://openlyst.ink
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = finar-bin
 	provides = finar
 	conflicts = finar
 	options = !strip
-	source = finar-bin-2.0.0.zip::https://github.com/justacalico/Openlyst-more-builds/releases/download/build-13/finar-1.1.0-2026-02-13-linux-x64.zip
+	source = finar-bin-3.0.0.zip::https://gitlab.com/api/v4/projects/79691113/packages/generic/github-mirror/build-14/finar-1.1.0-2026-02-24-linux-x64.zip
 	sha256sums = SKIP
 
 pkgname = finar-bin
