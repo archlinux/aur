@@ -1,0 +1,5 @@
+pkg/
+src/
+
+openscreen-appimage-*.pkg.tar.zst
+Openscreen-Linux-latest.AppImage
