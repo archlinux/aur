@@ -2,7 +2,7 @@
 Type=Application
 Name=CohesiveMail
 Comment=CohesiveMail desktop client
-Exec=/opt/cohesivemail/cohesivemail
+Exec=env LIBGL_ALWAYS_SOFTWARE=1 /opt/cohesivemail/cohesivemail
 Icon=cohesivemail
 Terminal=false
 Categories=Network;Email;
