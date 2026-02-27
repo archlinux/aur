@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=xjtutoolbox
-pkgver=2.0.0
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="XJTUToolBox - A powerful utility tool"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 # 编译依赖 uv 和基础构建工具
 makedepends=('python' 'curl' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/yan-xiaoo/XJTUToolBox/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP') # GitHub Action 会自动更新这个哈希值
+sha256sums=('066ee0f212201bd4aee5704bbbc99833d28ae299ddc01459da7e24161efb07d5')
 
 build() {
     cd "XJTUToolBox-${pkgver}"
