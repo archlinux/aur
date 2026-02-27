@@ -1,0 +1,22 @@
+pkgbase = chatalot
+	pkgdesc = Self-hosted end-to-end encrypted chat platform — desktop client
+	pkgver = 0.22.6
+	pkgrel = 1
+	url = https://github.com/purpleneutral/chatalot
+	install = chatalot.install
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = gtk3
+	depends = libsoup3
+	depends = openssl
+	depends = webkit2gtk-4.1
+	optdepends = libsecret: OS keychain storage for identity keys
+	optdepends = libappindicator-gtk3: system tray support
+	conflicts = chatalot-bin
+	conflicts = chatalot-git
+	options = !strip
+	options = !debug
+	source = chatalot-0.22.6.deb::https://github.com/purpleneutral/chatalot/releases/download/v0.22.6/Chatalot_0.22.6_amd64.deb
+	sha256sums = f43d215bb4446cd7812cc0496843390807ca70f9ad476ed387d2ab936e4966d1
+
+pkgname = chatalot
