@@ -10,6 +10,8 @@ pkgbase = logibar
 	depends = waybar
 	depends = python
 	depends = python-hidapi
+	provides = waybar-logitech-battery
+	conflicts = waybar-logitech-battery
 	source = logibar-0.1.0.tar.gz::https://github.com/mryll/logibar/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = 16eacfffc9d4dd7c2c44102baa35c8254ad17e8a343781da28ec1fafa2130146
 
