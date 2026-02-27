@@ -3,7 +3,7 @@
 pkgname=shorin-contrib-git
 _pkgname=shorin-contrib
 pkgver=r3.6dca334
-pkgrel=1
+pkgrel=3
 pkgdesc="Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-contrib"
@@ -47,7 +47,7 @@ package() {
     # 3. 生成全局统一调度命令：/usr/bin/shorin
     install -dm755 "${pkgdir}/usr/bin"
     
-    cat << 'EOF' > "${pkgdir}/usr/bin/shorin"
+cat << 'EOF' > "${pkgdir}/usr/bin/shorin"
 #!/bin/bash
 # Shorin Contrib - Subcommand Dispatcher
 
@@ -55,14 +55,41 @@ LIB_DIR="/usr/lib/shorin-contrib"
 
 # 如果没有输入参数，动态打印所有可用的子命令
 if [ $# -eq 0 ]; then
-    echo "用法: shorin <子命令> [选项]"
+    echo "用法: shorin <子命令|link|unlink> [选项]"
     echo -e "\n可用子命令:"
     find "$LIB_DIR" -maxdepth 1 -type f -printf "  %f\n" | sort
+    echo -e "\n环境管理:"
+    echo "  link      在 ~/.local/bin 创建所有工具的独立软链接 (免前缀运行)"
+    echo "  unlink    移除所有通过 link 创建的软链接"
     exit 1
 fi
 
 COMMAND="$1"
 shift
+
+# 处理自带的软链接管理命令
+if [ "$COMMAND" = "link" ]; then
+    mkdir -p "$HOME/.local/bin"
+    for script in "$LIB_DIR"/*; do
+        if [ -f "$script" ]; then
+            base_name=$(basename "$script")
+            ln -sf "$script" "$HOME/.local/bin/$base_name"
+            echo "已创建链接: ~/.local/bin/$base_name -> $script"
+        fi
+    done
+    echo -e "\n链接部署完成！请确保 ~/.local/bin 已加入你的 PATH 环境变量。"
+    exit 0
+elif [ "$COMMAND" = "unlink" ]; then
+    for script in "$LIB_DIR"/*; do
+        if [ -f "$script" ]; then
+            base_name=$(basename "$script")
+            rm -f "$HOME/.local/bin/$base_name"
+            echo "已移除链接: ~/.local/bin/$base_name"
+        fi
+    done
+    echo -e "\n链接清理完成！"
+    exit 0
+fi
 
 # 路由分发逻辑
 TARGET_SCRIPT="$LIB_DIR/$COMMAND"
