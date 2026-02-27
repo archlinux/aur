@@ -1,18 +1,23 @@
-# Maintainer: juresu
-
+# Maintainer: ジュレス (juresu) <jullespio@users.noreply.github.com>
 pkgname=rajio-sen
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="A minimalist vaporwave-inspired pirate radio scanner for the terminal"
+pkgdesc="A minimalist vaporwave-inspired pirate radio scanner for the terminal."
 arch=('any')
-url="https://github.com/jullespio/rajio-sen" 
+url="https://github.com/jullespio/rajio-sen"
 license=('MIT')
-depends=('python' 'python-requests' 'python-rich' 'python-zenlog')
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c01ca6a818efcc52e00961531907e545333b846e1a31a54d3251339526fb45bc')
+depends=('python' 'python-requests' 'python-rich' 'python-pick')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jullespio/rajio-sen/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('2765ac712ae791de2f8046515c53b40d24be672f1f4e5ed6bd4c9ef7dfa92f66')
+
+build() {
+  cd "$pkgname-$pkgver"
+  python -m build --wheel --no-isolation
+}
 
 package() {
   cd "$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
