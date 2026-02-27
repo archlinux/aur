@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Tab</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .header {
+            margin-top: 50px;
+            text-align: center;
+        }
+        h1 {
+            color: #0078d4;
+            font-weight: 300;
+            font-size: 36px;
+        }
+        .search-container {
+            width: 100%;
+            max-width: 560px;
+            margin: 20px 0;
+            display: flex;
+        }
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 2px 0 0 2px;
+            outline: none;
+        }
+        input[type="text"]:focus { border-color: #0078d4; }
+        .search-btn {
+            padding: 10px 25px;
+            background: #0078d4;
+            color: white;
+            border: none;
+            border-radius: 0 2px 2px 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .search-btn:hover { background: #005a9e; }
+        .news-container {
+            width: 90%;
+            max-width: 1000px;
+            flex-grow: 1;
+            margin-bottom: 20px;
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>WeeklyBrowse</h1>
+    </div>
+
+    <form class="search-container" id="searchForm">
+        <input type="text" id="q" placeholder="Search the web" autofocus>
+        <button type="submit" class="search-btn">Search</button>
+    </form>
+
+    <div class="news-container">
+        <iframe src="https://www.msn.com/en-us/news"></iframe>
+    </div>
+
+    <script>
+        // This script will be triggered by Java to handle search
+        document.getElementById('searchForm').onsubmit = function(e) {
+            e.preventDefault();
+            var query = document.getElementById('q').value;
+            if (query) {
+                // We send a signal to Java by changing the location
+                window.location.href = "search://" + encodeURIComponent(query);
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=WeeklyBrowse
+Comment=Simple AI-built browser
+Exec=env GTK_THEME=Adwaita:light weeklybrowse
+Icon=weeklybrowse
+Terminal=false
+Categories=Network

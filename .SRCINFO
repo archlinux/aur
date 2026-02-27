@@ -1,0 +1,22 @@
+pkgbase = weeklybrowse
+	pkgdesc = A custom browser with an integrated news portal and bookmarks
+	pkgver = 1.4
+	pkgrel = 2
+	arch = x86_64
+	license = MIT
+	makedepends = java-environment>=11
+	depends = java-runtime>=11
+	depends = swt
+	depends = firefox
+	depends = gtk3
+	depends = gnome-themes-extra
+	source = WeeklyBrowse.java
+	source = newtab.html
+	source = WeeklyBrowse.desktop
+	source = icon.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = weeklybrowse
