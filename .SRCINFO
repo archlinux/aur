@@ -1,6 +1,6 @@
 pkgbase = q-dns
 	pkgdesc = A tiny command line DNS client with support for UDP, TCP, DoT, DoH, DoQ and ODoH.
-	pkgver = 0.19.11
+	pkgver = 0.19.12
 	pkgrel = 1
 	url = https://github.com/natesales/q
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = q-dns
 	makedepends = unzip
 	makedepends = go
 	depends = glibc
-	source = q-0.19.11.zip::https://github.com/natesales/q/archive/refs/tags/v0.19.11.zip
-	sha256sums = dd3717417c54761609704213b12025377ff701ece6a287ce01a941dd19ce64f5
+	source = q-0.19.12.zip::https://github.com/natesales/q/archive/refs/tags/v0.19.12.zip
+	sha256sums = e705d7743f0c42956cc7f4ee1b49a08a4f497e7556975334061818d5b5a02b58
 
 pkgname = q-dns
