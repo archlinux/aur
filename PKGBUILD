@@ -19,10 +19,9 @@ optdepends=(
 source=("$pkgname::git+$url.git#tag=v$pkgver"
 		'pince.desktop'
 		'pince.sh')
-sha256sums=('381dafd683fdad1b476fb4fbcf96fa91e613540f06ea4071020bc7e60cf1de5a'
-            'c3497150719bc7ed20d5a5ad882d7405f5fc2eab127fdc9a17798c9cc1342da7'
-            '58bbcddf4ef9415ea14a6b38221ea9d56523aa71d25f97ff8462e135a25ac464'
-            '528a66294cbf93e141b392c41b3e972973fe39a79161d0c91c09928b78406c42')
+sha256sums=('9698e8a1c843f7350554a7c339d7bbe8785bccf00f6b7f08faeb3dfdd64f32c6'
+            '3660ca6f5f530184de3e9261c417de78ff8e1ae1f03cad9331459bbc6a40d84f'
+            '4111c85f3e5764a21d5b57c4a7ee82a70d91713c9d1e10aac7045079139446ab')
 _installpath='/usr/lib/pince'
 _installsh='install.sh'
 
