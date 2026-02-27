@@ -33,4 +33,6 @@ package() {
     "$pkgdir/usr/share/applications/encrypted-journal.desktop"
   install -Dm644 theme/journal.png \
     "$pkgdir/usr/share/pixmaps/encrypted-journal.png"
+  install -Dm644 LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
