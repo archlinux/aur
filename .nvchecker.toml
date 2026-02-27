@@ -1,0 +1,5 @@
+[bfree-bin]
+source = "github"
+github = "glexposito/bfree"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,19 @@
+pkgbase = bfree-bin
+	pkgdesc = A better free, human by default
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/glexposito/bfree
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = bfree
+	conflicts = bfree
+	source = README-0.1.8.md::https://raw.githubusercontent.com/glexposito/bfree/v0.1.8/README.md
+	source = LICENSE-0.1.8::https://raw.githubusercontent.com/glexposito/bfree/v0.1.8/LICENSE
+	sha256sums = db428035f440b4db034334f6d3357333d4584353826e2b9026c84bb5dab05acd
+	sha256sums = 07ec7d6e8c4890362dd7b638725abc54dc6449edbfa2fbabae6692dfbcebafd5
+	source_x86_64 = bfree-x86_64-0.1.8::https://github.com/glexposito/bfree/releases/download/v0.1.8/bfree
+	sha256sums_x86_64 = ac6bf30a8652d724d3233410a6808f68b573eacde359bee2e90f5707165ae67b
+
+pkgname = bfree-bin
