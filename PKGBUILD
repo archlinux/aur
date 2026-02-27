@@ -17,6 +17,7 @@ license=(BSD)
 depends=(xz sqlite)
 makedepends=(python python-sphinx python-setuptools boost)
 optdepends=('python: for using botan2.py')
+provides=('botan2')
 conflicts=('botan2')
 source=(https://botan.randombit.net/releases/Botan-${pkgver}.tar.xz{,.asc}
         boost-fixes.patch)
