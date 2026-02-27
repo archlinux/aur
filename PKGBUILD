@@ -1,7 +1,7 @@
 # Maintainer: Semyon Ivanov <aur at semyon dot dev>
 
 pkgname=srb-id-pkcs11-git
-pkgver=0.2.0.r18.g8e6098b
+pkgver=0.4.0.r0.gd492d7f
 pkgrel=1
 pkgdesc='An open source PKCS11 v2.40 module for Serbian ID smart cards'
 arch=('x86_64')
@@ -22,9 +22,9 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    install -dm755 "$pkgdir/usr/lib"
-    cp -a zig-out/lib/*.so "$pkgdir/usr/lib/"
-    cp -a zig-out/lib/*.so.* "$pkgdir/usr/lib/"
+    install -dm755 "$pkgdir/usr/lib/pkcs11"
+    cp -a zig-out/lib/*.so "$pkgdir/usr/lib/pkcs11"
+    cp -a zig-out/lib/*.so.* "$pkgdir/usr/lib/pkcs11"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
