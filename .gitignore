@@ -1,5 +1,6 @@
-*.tar.zst
-*.tar.gz
-/neovim/
-/pkg/
-/src/
+**/*
+!/PKGBUILD
+!/.SRCINFO
+!/neovim-git.install
+!/nvimdoc.hook
+!/nvimdoc
