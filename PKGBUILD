@@ -7,7 +7,7 @@ pkgver=1.8.18
 pkgrel=1
 pkgdesc="Transform your command-line experience into a modern, efficient AI Chat interface."
 arch=('x86_64')
-url="https://github.com/iOfficeAI/AionUi" # <-- 示例网址，请替换为官方项目地址
+url="https://github.com/iOfficeAI/AionUi"
 license=('unknown')
 
 depends=(
@@ -16,6 +16,23 @@ depends=(
   'libcups'
   'mesa'
   'alsa-lib'
+  'python'
+  'python-yaml'
+  'python-six'
+  'python-pillow'
+  'python-reportlab'
+  'python-lxml'
+  'npm'
+  'nodejs'
+)
+
+optdepends=(
+    'python-pypdf: PDF processing skills'
+    'python-openpyxl: Excel processing skills'
+    'python-defusedxml: XML processing skills'
+    'python-pptx: PowerPoint processing skills'
+    'python-pdf2image: PDF to image conversion'
+    'python-playwright: Xiaohongshu automation'
 )
 
 provides=("${_pkgname}")
