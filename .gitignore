@@ -1,0 +1,17 @@
+# makepkg build trees
+/src/
+/pkg/
+
+# package artifacts
+*.pkg.tar
+*.pkg.tar.*
+*.src.tar
+*.src.tar.*
+
+# optional local signatures for built artifacts
+*.sig
+
+# local upstream binaries used for checksum verification
+atmos_*_linux_amd64
+atmos_*_linux_arm64
+atmos_*_linux_bin
