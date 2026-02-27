@@ -1,6 +1,6 @@
 pkgbase = openai-codex-bin
 	pkgdesc = Arch Linux package for OpenAI's Codex CLI - Auto Updated
-	pkgver = 0.105.0
+	pkgver = 0.106.0
 	pkgrel = 3
 	url = https://github.com/openai/codex
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = openai-codex-bin
 	conflicts = openai-codex
 	conflicts = openai-codex-autoup-bin
 	replaces = openai-codex-autoup-bin
-	source_x86_64 = codex-0.105.0-x86_64.tar.gz::https://github.com/openai/codex/releases/download/rust-v0.105.0/codex-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 30acba08753c2651bf99a7e98a526198f67a995e776bd4915939c8bcb4f6852d
-	source_aarch64 = codex-0.105.0-aarch64.tar.gz::https://github.com/openai/codex/releases/download/rust-v0.105.0/codex-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 9d491a038b064285555d32d351c0d6d7c47840e727031512dcff71da5f738f0b
+	source_x86_64 = codex-0.106.0-x86_64.tar.gz::https://github.com/openai/codex/releases/download/rust-v0.106.0/codex-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b2a14ebf8b8fba0d2654bb281fc4d81e25b3547ad93214e621ed8da844a6d101
+	source_aarch64 = codex-0.106.0-aarch64.tar.gz::https://github.com/openai/codex/releases/download/rust-v0.106.0/codex-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ddbe25154cdcf210bd91fd8685318c9a9f2c250a7d2d48eef5d3197cbbbb2bc9
 
 pkgname = openai-codex-bin
