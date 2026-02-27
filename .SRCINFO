@@ -1,7 +1,7 @@
 pkgbase = noctalia-qs
 	pkgdesc = Custom fork of Quickshell powering Noctalia Shell
 	pkgver = 0.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/noctalia-dev/noctalia-qs
 	arch = x86_64
 	arch = aarch64
@@ -13,6 +13,7 @@ pkgbase = noctalia-qs
 	makedepends = spirv-tools
 	makedepends = wayland-protocols
 	makedepends = git
+	makedepends = vulkan-headers
 	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
