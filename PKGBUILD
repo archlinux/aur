@@ -3,8 +3,8 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 pkgname=lighthouse-ethereum-bin
 _pkgname=lighthouse
-pkgver=8.1.0
-_pkgver=8.1.0
+pkgver=8.1.1
+_pkgver=8.1.1
 pkgrel=1
 pkgdesc='Ethereum 2.0 client'
 arch=('x86_64' 'aarch64')
@@ -17,9 +17,9 @@ source=("https://raw.githubusercontent.com/sigp/lighthouse/stable/LICENSE")
 source_x86_64=("https://github.com/sigp/lighthouse/releases/download/v${_pkgver}/lighthouse-v${_pkgver}-x86_64-unknown-linux-gnu.tar.gz" "https://github.com/sigp/lighthouse/releases/download/v${_pkgver}/lighthouse-v${_pkgver}-x86_64-unknown-linux-gnu.tar.gz.asc")
 source_aarch64=("https://github.com/sigp/lighthouse/releases/download/v${_pkgver}/lighthouse-v${_pkgver}-aarch64-unknown-linux-gnu.tar.gz" "https://github.com/sigp/lighthouse/releases/download/v${_pkgver}/lighthouse-v${_pkgver}-aarch64-unknown-linux-gnu.tar.gz.asc")
 sha256sums=('91d7b651aa6c6ffe6c36445f2652b49ff86134f6dc558a8bf35a8d407dfe2578')
-sha256sums_x86_64=('6a8c31866045f3d623af08d1498902253fa1b0c009856b33d15d091941af28db'
+sha256sums_x86_64=('4e466857b1a2bb307cf69d5cc706d330d19ab1c39bc7d65f57c903aaf7dc2dfe'
                    'SKIP')
-sha256sums_aarch64=('c39e23cc0d2a4b472403829e7daf8909b44200bf786abe0a196a749ad7e5ab89'
+sha256sums_aarch64=('1479e17d5a9eb1c2930d054f53790bcb216d54d2ce1f23fec5aa41062f552067'
                     'SKIP')
 
 # Key can be imported with `gpg --recv-keys 15E66D941`
