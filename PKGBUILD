@@ -3,7 +3,7 @@
 
 pkgname=rodecaster-duo-pipewire
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual audio sinks/sources for RODECaster Duo"
 arch=(any)
 url="https://github.com/rewalo/rodecaster-duo-pipewire"

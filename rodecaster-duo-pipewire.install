@@ -30,3 +30,27 @@ post_install() {
   echo "  systemctl --user restart pipewire pipewire-pulse"
   echo ""
 }
+
+post_remove() {
+  _run_for_user() {
+    local u="$1"
+    local uid
+    local conf_d
+    uid=$(getent passwd "$u" 2>/dev/null | cut -d: -f3)
+    [ -z "$uid" ] && return 0
+    conf_d=$(getent passwd "$u" 2>/dev/null | cut -d: -f6)/.config/pipewire/pipewire.conf.d
+    rm -f "$conf_d/99-rodecaster-duo-virtual-sinks.conf" \
+          "$conf_d/99-rodecaster-duo-virtual-sources.conf" 2>/dev/null || true
+    [ -d "/run/user/$uid" ] || return 0
+    runuser -u "$u" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+      systemctl --user restart pipewire pipewire-pulse 2>/dev/null || true
+  }
+  if [ -n "$SUDO_USER" ]; then
+    _run_for_user "$SUDO_USER"
+  fi
+  for u in $(getent passwd | awk -F: '$3 >= 1000 && $3 < 65534 {print $1}'); do
+    [ -d "/home/$u" ] || continue
+    [ "$u" = "$SUDO_USER" ] && continue
+    _run_for_user "$u" || true
+  done
+}

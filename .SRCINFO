@@ -1,7 +1,7 @@
 pkgbase = rodecaster-duo-pipewire
 	pkgdesc = Virtual audio sinks/sources for RODECaster Duo
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rewalo/rodecaster-duo-pipewire
 	install = rodecaster-duo-pipewire.install
 	arch = any
