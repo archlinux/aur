@@ -8,7 +8,7 @@ license=('MIT')
 depends=(glibc webkit2gtk-4.1)
 provides=(oranglauncher)
 conflicts=(oranglauncher)
-source=("https://github.com/Orang-Studio/OrangLaunch/releases/download/3.2-Linux/launcher_x64_linux.tar.gz"
+source=("https://github.com/Orang-Studio/OrangLaunch/releases/download/${pkgver}-Linux/launcher_x64_linux_${pkgver}.tar.gz"
         "oranglauncher.desktop"
         "orange.png"
         "LICENSE")
@@ -23,7 +23,7 @@ package() {
     install -d "$pkgdir/usr/share/applications"
     install -d "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 
-    tar -xzf "$srcdir/launcher_x64_linux.tar.gz" -C "$pkgdir/usr/lib/oranglauncher"
+    tar -xzf "$srcdir/launcher_x64_linux_${pkgver}.tar.gz" -C "$pkgdir/usr/lib/oranglauncher"
 
     ln -s /usr/lib/oranglauncher/launcher.bin "$pkgdir/usr/bin/oranglauncher"
 
