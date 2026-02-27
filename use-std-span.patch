@@ -1,24 +1,16 @@
 diff --git a/tools/mxl-info/main.cpp b/tools/mxl-info/main.cpp
-index 866236e..c7818f4 100644
+index 48b3db5..4f75695 100644
 --- a/tools/mxl-info/main.cpp
 +++ b/tools/mxl-info/main.cpp
-@@ -5,6 +5,7 @@
- #include <cstdlib>
- #include <filesystem>
- #include <iostream>
-+#include <span>
- #include <sstream>
- #include <string>
- #include <unistd.h>
-@@ -13,7 +14,6 @@
+@@ -13,7 +13,6 @@
  #include <CLI/CLI.hpp>
  #include <fmt/color.h>
  #include <fmt/format.h>
 -#include <gsl/span>
- #include <picojson/picojson.h>
+ #include <picojson/wrapper.h>
  #include <mxl/flow.h>
  #include <mxl/flowinfo.h>
-@@ -98,7 +98,7 @@ namespace
+@@ -98,7 +97,7 @@ namespace
  
          std::ostream& operator<<(std::ostream& os, mxlFlowInfo const& info)
          {

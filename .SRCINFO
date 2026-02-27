@@ -1,6 +1,6 @@
 pkgbase = mxl-git
 	pkgdesc = Dynamic Media Facility: Media Exchange Layer
-	pkgver = 1.1.0_52aea5a
+	pkgver = 1.1.0_96dfde6
 	pkgrel = 1
 	url = https://github.com/dmf-mxl/mxl
 	arch = x86_64
@@ -20,9 +20,11 @@ pkgbase = mxl-git
 	source = picojson-include-path.patch
 	source = use-std-span.patch
 	source = remove-linker-test.patch
+	source = missing-algo-include.patch
 	sha256sums = SKIP
-	sha256sums = d6913e1459ad785123c1dbfe6f8029c9d247cd0f76037ce52ae4a0d5172a3136
-	sha256sums = 12521275179c90d67a9bd6863dd34ead8aea354c2938d14f15a0c71c59c8a702
-	sha256sums = 083aff62ba622392e54daeb67f01eaa48cc94fa44196cbc94f4f8943be66df5d
+	sha256sums = 361ccfec49df6e5fc6ad2de313c01e6e86dfd2e12e7e674d5180e7e9b295a2d0
+	sha256sums = 3a9dc2d15ce92457a2b2204ebc211e7725b9810222a5a871bc452815d4861ab4
+	sha256sums = efe58b060f99b2af6d2aa0c54abf5837423c625e60b1de59d771759cde5de6ac
+	sha256sums = 32ef38db1954b949f673c2e32c0cc19503403ebc36489026306a76e03931a48b
 
 pkgname = mxl-git
