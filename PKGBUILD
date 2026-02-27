@@ -3,8 +3,8 @@
 # shellcheck shell=bash disable=2034
 
 pkgname="automx2"
-pkgver="2026.0"
-pkgrel=2
+pkgver="2026.1"
+pkgrel=1
 pkgdesc="Mail User Agent (email client) configuration made easy"
 backup=("etc/automx2/automx2.conf")
 install="install.sh"
@@ -18,7 +18,7 @@ makedepends=("grep" "python-build" "python-installer")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
 	"automx2.conf"
 	"automx2.service")
-b2sums=('e5bd4bf168ec57ecb0bce826e3a2ba06e4cc72c7aa50af7832eb99d228e50b6d7423d9aaf56f0a81878d8fcf6d48489dba256dcf7f00e2f7cde10002496a8db8'
+b2sums=('fe0a363bfbdddb3ad5cf1b06bdc8c15767d985258728b529dfa6c1df2d47a8f31de2f8eb7d7123dd710d5b73899a03bf206493b93d00d72b37705a8a4fd5950c'
 	'e7afbacc9166556323f1c46f7bf65a906725cfce31f774f5bd47a5ab32102dacfd318c65c8524cf963918178097f8643b597c72db9514e131ee35d21e05240ce'
 	'b542063ed441dbcfb6c23a8bec997177176d102f9e97bb1d6f97ad84b8f9336ee14556138fc24b24d9ee4a21700b7e4cceb99e53f3cb0201590f489d718f8163')
 arch=("any")
