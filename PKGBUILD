@@ -13,8 +13,8 @@ _base_url="https://github.com/VincentZyuApps/winload/releases/download/v${_tagve
 source_x86_64=("winload-linux-x86_64-v${_tagver}::${_base_url}/winload-linux-x86_64-v${_tagver}")
 source_aarch64=("winload-linux-aarch64-v${_tagver}::${_base_url}/winload-linux-aarch64-v${_tagver}")
 noextract=()
-sha256sums_x86_64=('96ece17cae5f37bc5a1e63ba83f3c7d8fa8b93acf108f1e4e3cd00be07cf056a')
-sha256sums_aarch64=('1edef55001aab200fff9679f5f4b6853b59ea0d98d70809cc85a7c1cdc4c764f')
+sha256sums_x86_64=('39a0a35d3b63d410654a09cc6c77f5323a6db49eaeceb899d4289783d3195df1')
+sha256sums_aarch64=('6a5264ed080496418a8c715f041dee898fdc4fd9f6ee700879f9003fbf66d597')
 
 package() {
     if [[ "$CARCH" == "x86_64" ]]; then
