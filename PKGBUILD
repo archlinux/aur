@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=pipelab-bin
 _pkgname=Pipelab
-pkgver=1.37.0
+pkgver=1.37.4
 _electronversion=32
 pkgrel=1
 pkgdesc="A visual tool to create task automation workflows.(Prebuilt version.Use system-wide electron)"
@@ -16,7 +16,6 @@ depends=(
     'python'
     'python-typing_extensions'
     'python-packaging'
-    'python-setuptools'
 )
 makedepends=(
     'gendesk'
@@ -30,7 +29,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/CynToolkit/pipelab/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('3207463ce6b11e41d9ee71baf7859b71154cdf1fe70fc5051796f76b291890c3'
+sha256sums=('0d0ede7f4d477e60c7b7f21b2f964b7cecca7d3019e2b7cdf33882e00740f0d9'
             '92ddb84a1531980e4142c76f4936b1ff8ea132777df206d4bf6da123c094f8f4'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
