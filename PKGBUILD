@@ -2,10 +2,10 @@
 
 pkgbase=ch343ser-git
 pkgname=(ch343ser-git ch343ser-dkms-git libch343ser-git)
-pkgver=r54.174cdef
-pkgrel=5
+pkgver=r56.b705737
+pkgrel=2
 pkgdesc="USB serial driver for ch342/ch343/ch344/ch347/ch347f/ch9101/ch9102/ch9103/ch9104, etc."
-arch=('any')
+arch=($CARCH)
 url="https://github.com/WCHSoftGroup/ch343ser_linux"
 license=('GPL-2.0-or-later')
 depends=(dkms
