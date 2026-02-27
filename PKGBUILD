@@ -1,6 +1,6 @@
 # Maintainer: tee < teeaur at duck dot com >
 pkgname=sling-cli-bin
-pkgver=1.5.5
+pkgver=1.5.9
 pkgrel=1
 pkgdesc="Sling is a CLI tool that extracts data from a source storage/database"
 arch=(x86_64)
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 provides=('sling')
 conflicts=('sling')
 source=("$pkgname-$pkgver.tgz::https://github.com/slingdata-io/sling-cli/releases/download/v$pkgver/sling_linux_amd64.tar.gz")
-sha256sums=('c8c00f9a73c1b6e7f2230c633b99bbae37bf4d90a693d7b5c498b23eaa84ba54')
+sha256sums=('258af16b0807b9516119adcbc3615426548266c8abbd999e5cb45035deff6d4d')
 
 package() {
   install -Dm755 sling -t "$pkgdir/usr/bin/"
