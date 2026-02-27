@@ -1,7 +1,7 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=ctx
-pkgver=0.1.8
-pkgrel=2
+pkgver=0.1.9
+pkgrel=1
 pkgdesc='Multi-environment context switcher for cloud, Kubernetes, VPN, and SSH tunnels'
 arch=('x86_64')
 url='https://github.com/vlebo/ctx'
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6de582108c146c5665aebf027d7eaacd219e00dcfe4186ab4390ba84711e7976')
+sha256sums=('8c4d219ae0de9081219c0f7de61ecbe577efb1f3a8459897a273dd47fb1e0e8b')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
