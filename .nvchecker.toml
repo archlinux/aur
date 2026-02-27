@@ -1,0 +1,5 @@
+[xq-bin]
+source = "github"
+github = "sibprogrammer/xq"
+use_latest_release = true
+prefix = "v"
