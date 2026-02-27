@@ -1,0 +1,22 @@
+pkgbase = shorin-contrib-git
+	pkgdesc = Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)
+	pkgver = r1.1234567
+	pkgrel = 1
+	url = https://github.com/SHORiN-KiWATA/shorin-contrib
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	optdepends = snapper: for quicksave/quickload btrfs snapshot support
+	optdepends = btrfs-assistant: for advanced btrfs restoration backend
+	optdepends = fuzzel: for GUI menus in Wayland
+	optdepends = libnotify: for desktop notifications
+	optdepends = ffmpeg: for video2gif utility
+	optdepends = fzf: for pacman TUI
+	optdepends = timg: for lsi image preview
+	provides = shorin-contrib
+	conflicts = shorin-contrib
+	source = git+https://github.com/SHORiN-KiWATA/shorin-contrib.git
+	sha256sums = SKIP
+
+pkgname = shorin-contrib-git
