@@ -1,0 +1,25 @@
+post_install() {
+    systemctl --global enable turnupd.service
+    echo "turnupd: service enabled for all users — it will start on next login."
+    echo "To start it now: systemctl --user start turnupd.service"
+}
+
+post_upgrade() {
+    systemctl --global reenable turnupd.service
+    # Restart for all currently logged-in users
+    while read -r uid _; do
+        systemctl -M "${uid}@.host" --user restart turnupd.service 2>/dev/null || true
+    done < <(loginctl list-users --no-legend 2>/dev/null)
+}
+
+pre_remove() {
+    # Stop and disable for all currently logged-in users
+    while read -r uid _; do
+        systemctl -M "${uid}@.host" --user stop    turnupd.service 2>/dev/null || true
+        systemctl -M "${uid}@.host" --user disable turnupd.service 2>/dev/null || true
+    done < <(loginctl list-users --no-legend 2>/dev/null)
+
+    # Remove the global enable symlink
+    # (/etc/systemd/user/default.target.wants/turnupd.service)
+    systemctl --global disable turnupd.service 2>/dev/null || true
+}

@@ -1,7 +1,7 @@
 # Maintainer: Sean Doran <sdoran35@gmail.com>
 # AUR updates are automated via GitHub Actions on version tag push
 pkgname=turn-up-arch
-pkgver=0.3.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="USB serial knob/button mixer daemon for PipeWire/PulseAudio on Linux"
 arch=('any')
@@ -25,7 +25,7 @@ optdepends=(
 )
 install=turnupd.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sean351/turn-up-arch/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2f82dd78afaebf9dc55ae151b15d862fbb0181f33351927db5d1a1b580adf837')
+sha256sums=('652a599238c56b7ac29029b11f7e97efb9355baa1526d3d43a684f833489d5a0')
 
 build() {
     cd "$pkgname-$pkgver"
