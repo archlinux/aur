@@ -1,0 +1,21 @@
+post_install() {
+    echo ":: Setting permissions..."
+    # Allow all users to write to theme.conf so Noctalia Shell can sync colors
+    # Security Note: This makes the file world-writable.
+    chmod 666 /usr/share/sddm/themes/noctalia/theme.conf
+    
+    echo ":: Configuration Instructions:"
+    echo "   To enable color syncing with Noctalia Shell, add the following to"
+    echo "   your ~/.config/noctalia/user-templates.toml:"
+    echo ""
+    echo "      [templates.sddm]"
+    echo "      input_path = \"/usr/share/sddm/themes/noctalia/theme.template.conf\""
+    echo "      output_path = \"/usr/share/sddm/themes/noctalia/theme.conf\""
+    echo ""
+    echo "   The wallpaper sync script is located at:"
+    echo "   /usr/share/sddm/themes/noctalia/sync-shell-wallpaper.sh"
+}
+
+post_upgrade() {
+    post_install
+}
