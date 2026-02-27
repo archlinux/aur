@@ -4,15 +4,25 @@
 # Contributor: Mike Polvere <mic.tjs@gmail.com>
 _pkgname=libretro-mupen64plus-next
 pkgname=$_pkgname-git
-pkgver=r525.2d923939
+pkgver=r529.bc43bced
 pkgrel=1
 pkgdesc="Nintendo 64 core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/mupen64plus-libretro-nx"
 license=('GPL-2.0-only')
 groups=('libretro')
-depends=('gcc-libs' 'glibc' 'libretro-core-info')
-makedepends=('git' 'libgl' 'libpng' 'minizip' 'nasm' 'xxhash' 'zlib')
+depends=('glibc' 'libretro-core-info')
+makedepends=(
+	'git'
+	'libgcc'
+	'libgl'
+	'libpng'
+	'libstdc++'
+	'minizip'
+	'nasm'
+	'xxhash'
+	'zlib'
+)
 provides=("$_pkgname=1:${pkgver#r}")
 conflicts=("$_pkgname")
 replaces=('libretro-mupen64plus-nx-git')
@@ -27,12 +37,17 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	sed -i 's/-O[0123s]//;s/-Ofast//' Makefile
+	# remove hardcoded optimization flags
+	sed -Ei 's/-O([0123s]|fast)//' Makefile
+	# add missing header
 	sed -i '3a #include <cstdint>' GLideN64/src/GLideNHQ/TxHiResLoader.h
+	# fix header path
+	sed -Ei 's/(un)?zip\.h/minizip\/&/' mupen64plus-core/src/main/savestates.c
 }
 
 build() {
-	make -C $_pkgname \
+	cd $_pkgname
+	make \
 		HAVE_PARALLEL_RDP=1 \
 		HAVE_PARALLEL_RSP=1 \
 		HAVE_THR_AL=1 \
@@ -44,7 +59,15 @@ build() {
 }
 
 package() {
-	depends+=('libGL.so' 'libpng16.so' 'libz.so')
+	depends+=(
+		'libgcc_s.so'
+		'libGL.so'
+		'libpng16.so'
+		'libstdc++.so'
+		'libz.so'
+	)
+
+	cd $_pkgname
 	# shellcheck disable=SC2154
-	install -D -t "$pkgdir"/usr/lib/libretro $_pkgname/mupen64plus_next_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro mupen64plus_next_libretro.so
 }
