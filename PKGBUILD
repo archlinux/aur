@@ -12,7 +12,7 @@ _efi_mountpoint=${efi_mountpoint:-/boot}
 # Check http://xenbits.xen.org/xen-extfiles/ for updates
 _grub=0.97
 _lwip=1.3.0
-_newlib=1.16.0
+_newlib=4.4.0.20231231
 _pciutils=2.2.9
 _polarssl=1.1.4
 _zlib=1.2.3
@@ -27,9 +27,9 @@ _common_make_flags=(
 
 pkgbase=xen
 pkgname=("xen" "xen-docs")
-pkgver=4.20.0
-_branch="stable-4.20"
-pkgrel=2
+pkgver=4.21.1pre
+_branch="stable-4.21"
+pkgrel=1
 pkgdesc='Open-source type-1 or baremetal hypervisor - stable branch'
 arch=('x86_64')
 url='https://xenproject.org/'
@@ -38,7 +38,7 @@ options=(!buildflags)
 
 makedepends=(
 	'zlib' 'python' 'ncurses' 'openssl' 'libx11' 'libuuid.so' 'yajl' 'libaio' 'glib2' 'pkgconf' 'git'
-	'bridge-utils' 'iproute2' 'inetutils' 'acpica' 'lib32-glibc' 'gnutls'
+	'iproute2' 'inetutils' 'acpica' 'lib32-glibc' 'gnutls'
 	'vde2' 'lzo' 'pciutils' 'sdl2' 'systemd-libs'
 	'systemd' 'wget' 'pandoc' 'valgrind' 'git' 'bison' 'gettext' 'flex' 'pixman' 'fig2dev' 'python-setuptools'
 ) # last line from namcap, these depends are the xen depends
@@ -69,6 +69,7 @@ _source=(
 # as we follow the stable git branch and only syncing and rebuilding
 # should be required.   If used, patch order will be important.
 _patches=(
+	"xen_strchr_cast.patch" # Not a security patch, needed to compile in recent Arch
 )
 
 
@@ -87,7 +88,7 @@ _stubdom_source=(
 
 
 _sha512sums=(
-	"SKIP" # git+https://xenbits.xen.org/git-http/xen.git#branch=stable-4.20
+	"SKIP" # git+https://xenbits.xen.org/git-http/xen.git#branch=stable-4.21
 	"1bbcbcd9fb8344a207409ec9f0064a45b726416f043f902ca587f5e4fa58497a759be4ffd584fa32318e960aa478864cc05ec026c444e8d27ca8e3248bd67420" # efi-xen.cfg
 	"ccaa2ff82e4203b11e5dec9aeccac2e165721d8067e0094603ecaa7a70b78c9eb9e2287a32687883d26b6ceae6f8d2ad7636ddf949eb658637b3ceaa6999711b" # xen.conf
 	"53ba61587cc2e84044e935531ed161e22c36d9e90b43cab7b8e63bcc531deeefacca301b5dff39ce89210f06f1d1e4f4f5cf49d658ed5d9038c707e3c95c66ef" # tmpfiles.conf
@@ -97,12 +98,13 @@ _sha512sums=(
 )
 
 _patch_sums=(
+	"fb6db4678af5c3bf828f109f7714436f42dc295499e91a7035b786f2f7d015fb4c6a78e790da9c25c001397ffec1aa88da0578d2ae307414856beeb5273ebda7" # xen_strchr_cast.patch
 )
 
 _stub_sums=(
 	"c2bc9ffc8583aeae71cee9ddcc4418969768d4e3764d47307da54f93981c0109fb07d84b061b3a3628bd00ba4d14a54742bc04848110eb3ae8ca25dbfbaabadb" # grub-0.97.tar.gz
 	"1465b58279af1647f909450e394fe002ca165f0ff4a0254bfa9fe0e64316f50facdde2729d79a4e632565b4500cf4d6c74192ac0dd3bc9fe09129bbd67ba089d" # lwip-1.3.0.tar.gz
-	"40eb96bbc6736a16b6399e0cdb73e853d0d90b685c967e77899183446664d64570277a633fdafdefc351b46ce210a99115769a1d9f47ac749d7e82837d4d1ac3" # newlib-1.16.0.tar.gz
+	"ea3baa0b7c9175aae024f0b7d272be092ef2c07483239a99329203e18a44bc23093d29e0ffcbe14bc591f610f0829eacd646cabb06d1c34aa23239cb1b814b46" # newlib-4.4.0.20231231.tar.gz
 	"2b3d98d027e46d8c08037366dde6f0781ca03c610ef2b380984639e4ef39899ed8d8b8e4cd9c9dc54df101279b95879bd66bfd4d04ad07fef41e847ea7ae32b5" # pciutils-2.2.9.tar.bz2
 	"88da614e4d3f4409c4fd3bb3e44c7587ba051e3fed4e33d526069a67e8180212e1ea22da984656f50e290049f60ddca65383e5983c0f8884f648d71f698303ad" # polarssl-1.1.4-gpl.tgz
 	"021b958fcd0d346c4ba761bcf0cc40f3522de6186cf5a0a6ea34a70504ce9622b1c2626fce40675bc8282cf5f5ade18473656abc38050f72f5d6480507a2106e" # zlib-1.2.3.tar.gz
@@ -200,7 +202,7 @@ package_xen() {
 
 	depends=(
 		'zlib' 'python' 'ncurses' 'openssl' 'libx11' 'libuuid.so' 'yajl' 'libaio' 'glib2' 'pkgconf'
-		'bridge-utils' 'iproute2' 'inetutils' 'acpica' 'lib32-glibc' 'gnutls'
+		'iproute2' 'inetutils' 'acpica' 'lib32-glibc' 'gnutls'
 		'vde2' 'lzo' 'pciutils' 'sdl2'
 		'pixman' 'libseccomp' 'libpng' 'libjpeg-turbo' # inhereted depends because of build environment
 	)

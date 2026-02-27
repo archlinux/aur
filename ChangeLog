@@ -1,3 +1,8 @@
+2026-02-25
+	* So, I forgot to update this in a bit.
+	* 4.21-stable
+	* added strchr cast patch
+
 2025-03-13
 	* point to xen-edk2 OVMF file for UEFI
 
