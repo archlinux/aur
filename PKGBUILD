@@ -3,7 +3,7 @@
 pkgname='plugdata-bin'
 _name='plugdata'
 pkgdesc='Plugin wrapper around Pure Data with a new JUCE GUI, allowing patching in DAWs'
-pkgver=0.9.3
+pkgver=0.9.3_1
 pkgrel=1
 groups=('lv2-plugins' 'vst3-plugins' 'clap-plugins' 'pro-audio')
 depends=('freetype2' 'libx11' 'libxrandr' 'libxext' 'libxinerama' 'webkit2gtk' 'libxrender' 'libxinerama' 'libxcursor' 'alsa-lib' 'curl')
@@ -17,9 +17,9 @@ license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/plugdata-team/plugdata/releases/download/v${pkgver/_/-}/plugdata-Debian-x64.tar.xz"
     "${_name}.desktop"
     "${_name}.png")
-sha256sums=('717a3cf5ec889173309bfcd487520749ea38b8d6cd32bdf04c9e6e311a270bd1'
-    '22cdffc139b070f9c1ada241068eef8d88c5b25fc16c4a2cd67582660c98e922'
-    '6e583e7cf952a3b5a587ff85567406c9f3cb0d3516494368b89bc7af6871f869')
+sha256sums=('9217bdf756b9f7202f39070a1548dd45899bf0791b8646ab01630b5dac19e021'
+            '22cdffc139b070f9c1ada241068eef8d88c5b25fc16c4a2cd67582660c98e922'
+            '6e583e7cf952a3b5a587ff85567406c9f3cb0d3516494368b89bc7af6871f869')
 
 package() {
     # Desktop entry & pixmaps
