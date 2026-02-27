@@ -1,0 +1,17 @@
+post_install() {
+    echo "==> Enable the systemd user services to start monitoring automatically:"
+    echo "    systemctl --user enable --now logibar-hidpp-monitor.service"
+    echo "    systemctl --user enable --now logibar-headset-monitor.service"
+}
+
+post_upgrade() {
+    echo "==> Reload and restart the systemd user services:"
+    echo "    systemctl --user daemon-reload"
+    echo "    systemctl --user restart logibar-hidpp-monitor.service"
+    echo "    systemctl --user restart logibar-headset-monitor.service"
+}
+
+post_remove() {
+    echo "==> If you had enabled the services, reload systemd:"
+    echo "    systemctl --user daemon-reload"
+}
