@@ -5,7 +5,7 @@ _pkgname=btlescan
 pkgname=${_pkgname}-bin
 pkgdesc="BTLE/Bluetooth Scanner"
 
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -24,9 +24,9 @@ depends=('glibc' 'gcc-libs' 'dbus')
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
-sha256sums=('c1747f5eb2dcb1263a85af72f615f565fac7f10c526ae09090e1318d52af5a94'
+sha256sums=('de4201897d69adccf3198ca3959eca8c9eb3fc03f63c4fbbfba70011c548a5ec'
             '37fdad1e971ac1b5024c1f36c6a420e5ec6afe37266186fb3cf8ce081a494a76')
-sha256sums_x86_64=('1986eac2ed9094dddcb7f4c6a8dc847e9bf891d83360443edddc1048fe8a303d')
+sha256sums_x86_64=('0aa951763e25386021c31be99421ec3985e5304b244b709109f126579ba74828')
 
 
 case ${CARCH} in
