@@ -1,0 +1,3 @@
+post_upgrade() {
+	echo "Remember to rebuild this plugin when the system Qt is updated."
+}

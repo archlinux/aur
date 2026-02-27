@@ -1,0 +1,21 @@
+pkgbase = qtarcan-git
+	pkgdesc = Qt platform abstraction platform plugin for Arcan
+	pkgver = r46.28d900e
+	pkgrel = 1
+	url = https://codeberg.org/vimpostor/qtarcan
+	install = qtarcan.install
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	license = GPL2
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = arcan
+	depends = qt6-base
+	source = git+https://codeberg.org/vimpostor/qtarcan.git
+	md5sums = SKIP
+
+pkgname = qtarcan-git
