@@ -1,7 +1,7 @@
 # Maintainer: Mohamed Feddad <mrf345@gmail.com>
 
 pkgname=xontrib-term-integrations-git
-pkgver=r53.ab5fc71
+pkgver=r61.1ae335e
 pkgrel=1
 pkgdesc="iTerm2, kitty, and WezTerm shell integrations for Xonsh"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/jnoortheen/xontrib-term-integrations"
 license=('MIT')
 source=("git+$url")
 depends=('xonsh' 'python')
-makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-pdm-pep517')
+makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel' 'python-pdm-backend')
 provides=("xontrib-term-integrations")
 sha256sums=('SKIP')
 

@@ -1,6 +1,6 @@
 pkgbase = xontrib-term-integrations-git
 	pkgdesc = iTerm2, kitty, and WezTerm shell integrations for Xonsh
-	pkgver = r53.ab5fc71
+	pkgver = r61.1ae335e
 	pkgrel = 1
 	url = https://github.com/jnoortheen/xontrib-term-integrations
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = xontrib-term-integrations-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	makedepends = python-pdm-pep517
+	makedepends = python-pdm-backend
 	depends = xonsh
 	depends = python
 	provides = xontrib-term-integrations
