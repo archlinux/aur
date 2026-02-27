@@ -6,7 +6,7 @@ arch=('x86_64')
 url='https://github.com/anyme123/Any-code'
 license=()
 options=("!strip")
-depends=('fuse2' 'hicolor-icon-theme')
+depends=('fuse2')
 source=(
   "https://github.com/anyme123/Any-code/releases/download/v${pkgver}/any-code_${pkgver}_amd64.AppImage"
 )

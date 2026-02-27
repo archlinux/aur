@@ -5,7 +5,6 @@ pkgbase = any-code-appimage
 	url = https://github.com/anyme123/Any-code
 	arch = x86_64
 	depends = fuse2
-	depends = hicolor-icon-theme
 	options = !strip
 	source = https://github.com/anyme123/Any-code/releases/download/v5.27.8/any-code_5.27.8_amd64.AppImage
 	sha512sums = 3f66a3cd2c628b2a83615fca672acba8e5f8160eba93be642725e58146773179d5863a1429bd3e7336079aa7ce25fac2c3e0acf62e2ce7aa3278428c41ce07c8
