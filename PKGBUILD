@@ -17,6 +17,8 @@ sha256sums=('bdee6e237b3945dc44af8d7d3e5e345e0fafbbacabf2d4448ae646103ed5a2ed'
             'ddbe0ca155b67fcfc1fecdba1cbc6a3aac5a2011316bbb4a222e1f48f8987968'
             '3c8133c78d2e468f22643e465f8abcf4404742dc1b80c5eb64742039d70c5afa')
 
+options=(!debug)
+
 package() {
     install -d "$pkgdir/usr/lib/oranglauncher"
     install -d "$pkgdir/usr/bin"

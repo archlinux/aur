@@ -9,6 +9,7 @@ pkgbase = oranglauncher-bin
 	depends = webkit2gtk-4.1
 	provides = oranglauncher
 	conflicts = oranglauncher
+	options = !debug
 	source = https://github.com/Orang-Studio/OrangLaunch/releases/download/3.2.0-Linux/launcher_x64_linux_3.2.0.tar.gz
 	source = oranglauncher.desktop
 	source = orange.png
