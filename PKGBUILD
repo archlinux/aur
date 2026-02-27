@@ -1,7 +1,7 @@
 # Maintainer: yuhldr <yuhldr@qq.com>
 
 pkgname=('python-seekpath')
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A module to obtain and visualize k-vector coefficients and obtain band paths in the Brillouin zone of crystal structures"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(
     "python-flit-core"
 )
 source=("${url}/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('90bde4be9e8b8e596905790bfc956fdee5809f62bbc236dc61a0b974feb669bb')
+sha256sums=('0b83b02c815e87a89fb329f5b75c9cc5dd9bb22b4c98881722ff2ba08bc27b6a')
 
 build() {
   cd "$srcdir"/seekpath-$pkgver/
