@@ -1,6 +1,6 @@
 pkgbase = bar_daemon
 	pkgdesc = Async status bar daemon for Linux. Uses event-driven updating of values
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/tmforshaw/bar_daemon
 	install = bar_daemon.install
@@ -15,7 +15,7 @@ pkgbase = bar_daemon
 	depends = acpi
 	depends = asusctl
 	depends = procps-ng
-	source = bar_daemon-0.6.2.tar.gz::https://github.com/tmforshaw/bar_daemon/archive/refs/tags/v0.6.2.tar.gz
-	sha256sums = 0c8801254b9c07464e6c4c6bba4685b22ea1f3f6ccbfac81cefaa0146fea0356
+	source = bar_daemon-0.6.3.tar.gz::https://github.com/tmforshaw/bar_daemon/archive/refs/tags/v0.6.3.tar.gz
+	sha256sums = 4ca7de61d4e6be90719076f922f9b5a8613179ed10ad255501a684fd45de34b1
 
 pkgname = bar_daemon
