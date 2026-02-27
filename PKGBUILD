@@ -5,11 +5,12 @@
 
 pkgname=wayland-static
 pkgver=1.24.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A computer display server protocol (static library)'
 arch=('x86_64')
 url='https://wayland.freedesktop.org/'
 license=('MIT')
+options=('!lto')
 depends=("wayland=$pkgver" 'glibc' 'libffi' 'expat' 'libxml2' 'default-cursors')
 makedepends=('meson' 'libxslt' 'xmlto' 'graphviz' 'docbook-xsl')
 validpgpkeys=('C7223EBE4EF66513B892598911A30156E0E67611'  # Bryce Harrington
@@ -20,7 +21,10 @@ sha256sums=('82892487a01ad67b334eca83b54317a7c86a03a89cfadacfef5211f11a5d0536'
             'SKIP')
 
 build() {
-  arch-meson wayland-$pkgver build -Ddefault_library=static -Ddocumentation=false
+  CFLAGS="${CFLAGS} -fno-lto" \
+  CXXFLAGS="${CXXFLAGS} -fno-lto" \
+  LDFLAGS="${LDFLAGS} -fno-lto" \
+  arch-meson wayland-$pkgver build -Ddefault_library=static -Ddocumentation=false -Db_lto=false
   meson compile -C build
 }
 
