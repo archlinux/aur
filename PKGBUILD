@@ -4,7 +4,7 @@ _pkgname='Prospect Mail'
 pkgver=1.2.1
 _electronversion=39
 _nodeversion=22
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial Outlook mail desktop client powered by Electron.(Use system-wide electron)"
 arch=(
     'aarch64'
@@ -85,22 +85,22 @@ prepare() {
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     _ensure_local_nvm
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    #NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
 }
 build() {
     cd "${srcdir}/${pkgname}.git"
     _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
+    #NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgnam}"
-	find "${srcdir}/${pkgname}.git/dist/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgnam}" {} +
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+	find "${srcdir}/${pkgname}.git/dist/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" {} +
     if find "${srcdir}/${pkgname}.git/dist/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
         for _subdir in "${srcdir}/${pkgname}.git/dist/linux-"*"/resources/"*; do
             if [ -d "${_subdir}" ]; then
-                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgnam}"
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname}"
             fi
         done
     fi
