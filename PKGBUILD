@@ -14,21 +14,31 @@ optdepends=()
 provides=()
 conflicts=('openscreen-appimage')
 options=(!debug !strip)
-source=("openscreen.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "openscreen.desktop" "openscreen")
-sha256sums=('b238ebbc99d0120145ea9c9a44f21116bcdf902689e42bebfb0988f35f765b9c' 'SKIP' 'SKIP')
+source=(
+    "openscreen.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+    "$url/raw/refs/heads/main/LICENSE"
+    "openscreen.desktop"
+    "openscreen"
+)
+sha256sums=('b238ebbc99d0120145ea9c9a44f21116bcdf902689e42bebfb0988f35f765b9c' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
-	cd "openscreen-$pkgver"
-	pnpm i
+	(
+        cd "openscreen-$pkgver"
+        pnpm i
+	)
 
 	if [[ -d "openscreen-$pkgver/release" ]]; then
-        rm -rv "openscreen-$pkgver/release"
+        echo "==> Clearing release dir"
+        rm -r "openscreen-$pkgver/release"
     fi
 }
 
 build() {
-	cd "openscreen-$pkgver"
-	pnpm run build
+	(
+        cd "openscreen-$pkgver"
+        pnpm run build
+	)
 
 	app=$(find $srcdir/openscreen-$pkgver/release -regex ".*\.AppImage")
 	appdir=$(dirname $app)
@@ -54,6 +64,8 @@ package() {
 	install -Dm755 "$srcdir/openscreen" "$pkgdir/usr/bin/openscreen"
     install -Dm755 "$app" "$pkgdir/opt/openscreen/Openscreen.AppImage"
     install -Dm755 "$srcdir/openscreen.desktop" "$pkgdir/usr/share/applications/openscreen.desktop"
+
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/openscreen/LICENSE"
 
     icon_types="16 24 32 48 64 128 256 512 1024"
     for num in $icon_types; do
