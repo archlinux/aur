@@ -1,0 +1,19 @@
+pkgbase = quick-system-info-gui
+	pkgdesc = A utility to show quick-system-info (inxi, etc...) in a gui
+	pkgver = 26.02arch
+	pkgrel = 1
+	url = https://github.com/MX-Linux/quick-system-info-gui
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = libarchive
+	depends = polkit
+	depends = inxi
+	source = https://github.com/MX-Linux/quick-system-info-gui/archive/refs/tags/26.02arch.tar.gz
+	sha256sums = 3d2d081d83a3b65b7e95ef2fd5bd955179ceb057e2977c9a53ff3a9d20003689
+
+pkgname = quick-system-info-gui
