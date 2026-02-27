@@ -1,15 +1,15 @@
 pkgbase = monochrome
 	pkgdesc = Lossless music streaming
-	pkgver = 2.2.0.8
+	pkgver = 2.2.0.9
 	pkgrel = 1
 	url = https://github.com/monochrome-music/monochrome
 	arch = x86_64
 	license = HIPPOCRATIC LICENSE
 	provides = monochrome
 	conflicts = monochrome
-	source_x86_64 = monochrome-2.2.0.8.zip::https://downloads.samidy.com/out_delivery/monochrome-linux.zip
+	source_x86_64 = monochrome-2.2.0.9.zip::https://downloads.samidy.com/out_delivery/monochrome-linux.zip
 	source_x86_64 = icon.png::https://raw.githubusercontent.com/monochrome-music/monochrome/refs/heads/main/public/assets/96.png
-	sha256sums_x86_64 = d0d951a7b7efcdd9bb918a5520ec520041e4d21ebda7d1872eb289fce4c8ed68
+	sha256sums_x86_64 = 73e0800703cdea364824bb16cefab1e6db9b4499b0e862ba5d74481eb7290296
 	sha256sums_x86_64 = c9551cf8f13846e1d330d408dc1c39b9b9d98448f57d9c722bfddab5bd905084
 
 pkgname = monochrome
