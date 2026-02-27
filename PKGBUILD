@@ -9,7 +9,7 @@
 
 pkgname=botan2.19
 pkgver=2.19.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Crypto library written in C++ (legacy version 2.19)'
 arch=(x86_64)
 url='https://botan.randombit.net/'
