@@ -9,7 +9,7 @@ license=('MIT')
 depends=('bash' 'waybar' 'python' 'python-hidapi')
 install=logibar.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mryll/logibar/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9b6809bc89cbd5d83a69718bb6b91a7056e5290fc712c7d53417b60acdd49e53')
+sha256sums=('16eacfffc9d4dd7c2c44102baa35c8254ad17e8a343781da28ec1fafa2130146')
 
 package() {
     cd "$pkgname-$pkgver"
