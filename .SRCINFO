@@ -1,0 +1,11 @@
+pkgbase = lol
+	pkgdesc = Random LOL generator CLI
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = python
+	source = lol
+	sha256sums = SKIP
+
+pkgname = lol
