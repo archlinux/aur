@@ -7,7 +7,7 @@ _appname=stax
 pkgname=${_cratename}
 pkgdesc="The fastest stacked-branch workflow for Git. Interactive TUI, smart PRs, safe undo"
 
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -25,7 +25,7 @@ provides=("${_appname}")
 conflicts=("${_appname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('37b4e0d668c8e4480d03239a4f246159bfbebe6cb5a6333606404a6d1c27136f')
+sha256sums=('c3dc328e322184048ff759b53b53a390961c744de7acaa5fccd3060210de3df0')
 
 
 build() {
