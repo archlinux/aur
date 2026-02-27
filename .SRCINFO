@@ -1,0 +1,15 @@
+pkgbase = crusader
+	pkgdesc = Network tester to measure network throughput, latency and packet loss (written in Rust)
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/Zoxc/crusader
+	arch = x86_64
+	license = APACHE
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	source = crusader-0.3.2.tar.gz::https://github.com/Zoxc/crusader/archive/v0.3.2.tar.gz
+	sha256sums = c6973decac10a8f96f1cb7608757982a57e266426b52c78ae70f432bb4b699e3
+
+pkgname = crusader
