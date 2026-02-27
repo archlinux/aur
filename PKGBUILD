@@ -1,6 +1,6 @@
 pkgname=python-chibi-github
 _pyname=chibi_github
-pkgver=0.1.2
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="lib to use github api"
 arch=('any')
@@ -10,7 +10,7 @@ groups=()
 depends=("python-chibi-api")
 makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname//-/_}/${_pyname//-/_}-$pkgver.tar.gz")
-sha256sums=('7d8cf77bd590b24f3377f3c4657901160ed72c0c7c4ad51a39c10c0dc7076f9d')
+sha256sums=('205323cd913760b8d057feec596b39b77665702c928962f3052d351d4cab4263')
 
 build() {
 	cd "$_pyname-$pkgver"
