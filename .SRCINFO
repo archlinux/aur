@@ -1,0 +1,26 @@
+pkgbase = konsole-tmux-git
+	pkgdesc = KDE terminal emulator with tmux integration (like iTerm2)
+	pkgver = 25.12.2.r69.g5865591
+	pkgrel = 1
+	url = https://github.com/futpib/konsole
+	arch = x86_64
+	license = GPL-2.0-or-later
+	license = LGPL-2.0-or-later
+	makedepends = extra-cmake-modules>=5.240.0
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = ninja
+	depends = knewstuff
+	depends = knotifyconfig
+	depends = kparts
+	depends = kpty
+	depends = ktextwidgets
+	depends = qt6-multimedia
+	optdepends = keditbookmarks: to manage bookmarks
+	optdepends = tmux: for tmux integration
+	provides = konsole=25.12.2
+	conflicts = konsole
+	source = konsole::git+https://github.com/futpib/konsole.git#branch=master
+	sha256sums = SKIP
+
+pkgname = konsole-tmux-git
