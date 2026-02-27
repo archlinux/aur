@@ -36,6 +36,6 @@ pkgbase = cohesivemail
 	source = https://dl.actuallyreliable.com/apps/cohesivemail-x86-v0.0.74.tar.gz
 	source = cohesivemail.desktop
 	sha256sums = e3922f30683f5c7b7d68618f05b45464417a13807a2e4c6f2a1310a3a4a3d180
-	sha256sums = ad9c16678f1496b7e5f35558fdfe98c528841407e82988543b1eab1960457dbe
+	sha256sums = 1f2deedd7276ffc37f4923c54c39261c8da7babbeb31e4be719c40b65238c6ad
 
 pkgname = cohesivemail
