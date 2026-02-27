@@ -1,6 +1,6 @@
 pkgbase = clipboard-typer
 	pkgdesc = Type clipboard contents keystroke-by-keystroke into the active window
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/skint007/key-sender
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = clipboard-typer
 	optdepends = wtype: Wayland keystroke backend (requires compositor support)
 	optdepends = xdotool: X11 keystroke backend
 	optdepends = wl-clipboard: clipboard access on Wayland
-	source = clipboard-typer-0.3.0.tar.gz::https://github.com/skint007/key-sender/archive/v0.3.0.tar.gz
+	source = clipboard-typer-0.3.1.tar.gz::https://github.com/skint007/key-sender/archive/v0.3.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = clipboard-typer
