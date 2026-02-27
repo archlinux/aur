@@ -1,0 +1,13 @@
+pkgbase = claudectx-bin
+	pkgdesc = Claude context manager - manage Claude API contexts and profiles
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/foxj77/claudectx
+	arch = x86_64
+	license = MIT
+	source = https://github.com/foxj77/claudectx/releases/download/v1.2.0/claudectx_1.2.0_linux_amd64.tar.gz
+	source = https://github.com/foxj77/claudectx/releases/download/v1.2.0/checksums.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = claudectx-bin
