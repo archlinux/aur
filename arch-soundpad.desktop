@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Arch Soundpad
+Comment=Play clips into a virtual microphone
+Exec=arch-soundpad
+Icon=arch-soundpad
+Terminal=false
+Categories=AudioVideo;Audio;
+StartupNotify=true
