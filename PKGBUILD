@@ -2,7 +2,7 @@
 # Co-Maintainer: Marat Bakeev <hawara[at]gmail[dot]com>
 pkgname=atmos-bin
 pkgver=1.207.0
-pkgrel=2
+pkgrel=1
 pkgdesc='Automated Terraform Management & Orchestration Software (ATMOS)'
 arch=(x86_64 aarch64)
 url=https://github.com/cloudposse/atmos

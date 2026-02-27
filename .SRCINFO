@@ -1,7 +1,7 @@
 pkgbase = atmos-bin
 	pkgdesc = Automated Terraform Management & Orchestration Software (ATMOS)
 	pkgver = 1.207.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/cloudposse/atmos
 	arch = x86_64
 	arch = aarch64
