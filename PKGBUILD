@@ -4,9 +4,9 @@ _appname="GitHub Desktop"
 pkgname="${_pkgname}-zh-bin"
 pkgver=3.4.13_linux1
 #_zhpkgver="${pkgver%_linux2}"
-_zhpkgver=3.5.5
+_zhpkgver=3.4.13
 _electronversion=32
-pkgrel=10
+pkgrel=11
 pkgdesc="GUI for managing Git and GitHub.Chinese SC Version.(Use system-wide electron).Github Desktop 汉化版."
 arch=(
     'aarch64'
@@ -38,7 +38,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/shiftkey/desktop/release-${pkgver//_/-}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('266d60806408b93bb891cdb04c4f596dafd0fd47a147c5b74fdce56d2f7ca1dd'
+sha256sums=('7bba3fe1b3661c0f20afbc053245a2aa41a6ce6ec19c95eb8ce16fb191a752da'
             '891d678cd6aa67c0712f663b5fee690f24d11d360795300814f7bf2eb91ba530'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 sha256sums_aarch64=('8914f985013da02e36de63b65fc252dc86fd9326497f0cf3f49402017fe1006f')
@@ -59,16 +59,16 @@ prepare() {
     _get_electron_version
     install -Dm644 "${srcdir}/GithubDesktop汉化工具/Linux/"* -t "${srcdir}/usr/lib/${_pkgname}/resources/app"
     sed -i -e "
-        5i\Name[zh_CN]=Github桌面版
-        6i\Comment[zh_CN]=从桌面对Github进行简单协作
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
+        5i\Name[zh_CN]=Github桌面版
+        6i\Comment[zh_CN]=从桌面对Github进行简单协作
     " "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
-    find "${srcdir}/usr/lib/${_pkgname}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+	find "${srcdir}/usr/lib/${_pkgname}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
     if find "${srcdir}/usr/lib/${_pkgname}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
         for _subdir in "${srcdir}/usr/lib/${_pkgname}/resources/"*; do
             if [ -d "${_subdir}" ]; then
