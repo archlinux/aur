@@ -3,7 +3,7 @@
 
 pkgname=fingerprint-chromium-bin
 _pkgname=fingerprint-chromium
-pkgver=142.0.7444.175
+pkgver=144.0.7559.132
 pkgrel=1
 _upstream_build=1
 pkgdesc="Fingerprint Chromium (Ungoogled Chromium with fingerprinting protection)"
@@ -19,7 +19,7 @@ _reponame="fingerprint-chromium"
 
 # Source with renamed AppImage
 source=("${_pkgname}-${pkgver}.AppImage::https://github.com/${_repouser}/${_reponame}/releases/download/${pkgver}/ungoogled-chromium-${pkgver}-${_upstream_build}-x86_64.AppImage")
-sha256sums=('aba66873fb5aa9528b12903f45e220db632447021e6b315ba678ea6821fcf154')
+sha256sums=('79bad4c8eda407ebfd8ae7d7ce62034c06d118b1db9640ef82e42f63d2ae6d2e')
 
 options=('!strip')
 
