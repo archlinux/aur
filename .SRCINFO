@@ -1,7 +1,7 @@
 pkgbase = waybar-logitech-battery
 	pkgdesc = Waybar widgets and daemons for monitoring Logitech wireless peripheral battery levels
-	pkgver = 0.0.1
-	pkgrel = 2
+	pkgver = 0.1.0
+	pkgrel = 1
 	url = https://github.com/mryll/waybar-logitech-battery
 	install = waybar-logitech-battery.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = waybar-logitech-battery
 	depends = waybar
 	depends = python
 	depends = python-hidapi
-	source = waybar-logitech-battery-0.0.1.tar.gz::https://github.com/mryll/waybar-logitech-battery/archive/refs/tags/v0.0.1.tar.gz
-	sha256sums = 016323e458594262643e15c1ec385334dafd4a5058d12df77f6c37af14688a75
+	source = waybar-logitech-battery-0.1.0.tar.gz::https://github.com/mryll/waybar-logitech-battery/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = a1bb44798961bca6670add896b5b52a1276e1733f7cd4f73da282520b5cc396c
 
 pkgname = waybar-logitech-battery
