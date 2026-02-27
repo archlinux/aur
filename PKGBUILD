@@ -5,15 +5,15 @@ pkgname=jdk17-openj9-bin
 _jdkver=17
 _jdkminor=0
 _jdkpatch=18
-_jdksubpatch=0
-#_jdkfixpack=1
-_jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch} #.${_jdkfixpack}
+_jdksubpatch=1
+_jdkfullver=${_jdkver}.${_jdkminor}.${_jdkpatch}
+_jdkfullerver=${_jdkver}.${_jdkminor}.${_jdkpatch}.${_jdksubpatch}
 _openj9ver=0.57.0
 _patchver=8
-_buildver=${_patchver}_openj9-${_openj9ver}
+_buildver=${_patchver}.${_jdksubpatch}_openj9-${_openj9ver}
 pkgrel=1
 pkgdesc="IBM Semeru OpenJ9 with openjdk${_jdkver}"
-pkgver="${_jdkfullver}b${_buildver//-/_}"
+pkgver="${_jdkfullerver}b${_buildver//-/_}"
 arch=('x86_64')
 url="https://developer.ibm.com/languages/java/semeru-runtimes/downloads"
 license=('custom')
@@ -28,9 +28,9 @@ provides=(
 )
 conflicts=("jdk${_jdkver}-openj9-bin" "jdk${_jdkver}-openj9")
 options=(!strip)
-source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullver}_${_buildver}.tar.gz")
+source=("https://github.com/ibmruntimes/semeru${_jdkver}-binaries/releases/download/jdk-${_jdkfullver}%2B${_buildver}/ibm-semeru-open-jdk_x64_linux_${_jdkfullerver}.tar.gz")
 
-b2sums=('e5ff53214f68945cf80bb68be770a58df7cfda8ba68984ffc2ee0eb176864743a5be8b72e8721ab98ad45aca109d8d6954551d844fc59679dfcac748b1e60591')
+b2sums=('c7ebdc03ea8d1d94b2d9dec14f56e566d07588ad20b73d411398f751f19bf1d69ad1e9c7bb74b8aa2e40a03187af2f690a7d362a7ac0efb7ccc9cff289c33c6d')
 
 _jvmdir=usr/lib/jvm/java-${_jdkver}-j9
 
