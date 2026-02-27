@@ -22,16 +22,20 @@ pkgver() {
 }
 
 prepare() {
+	cd $_pkgname
 	# remove hardcoded optimization flags
-	sed -Ei 's/-O([0123s]|fast)//' $_pkgname/Makefile
+	sed -Ei 's/-O([0123s]|fast)//' Makefile
 }
 
 build() {
-	make -C $_pkgname
+	cd $_pkgname
+	make
 }
 
 package() {
 	depends+=('libgcc_s.so' 'libstdc++.so')
+
+	cd $_pkgname
 	# shellcheck disable=SC2154
-	make -C $_pkgname DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" install
 }
