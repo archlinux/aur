@@ -1,0 +1,21 @@
+pkgbase = openscreen-bin
+	pkgdesc = Create stunning screen recordings for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/siddharthvaddem/openscreen
+	arch = any
+	license = MIT
+	makedepends = nodejs
+	makedepends = pnpm
+	depends = fuse
+	conflicts = openscreen-appimage
+	options = !debug
+	options = !strip
+	source = openscreen.tar.gz::https://github.com/siddharthvaddem/openscreen/archive/refs/tags/v1.1.2.tar.gz
+	source = openscreen.desktop
+	source = openscreen
+	sha256sums = b238ebbc99d0120145ea9c9a44f21116bcdf902689e42bebfb0988f35f765b9c
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = openscreen-bin
