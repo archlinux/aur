@@ -2,7 +2,7 @@
 
 pkgname='openscad-scad-utils-git'
 _gitname='scad-utils'
-pkgver=r22.ccf430e
+pkgver=r26.26f8c2c
 pkgrel=1
 pkgdesc='OpenSCAD utility functions'
 url='https://github.com/openscad/scad-utils'
@@ -12,9 +12,7 @@ license=(
 source=(
  "git+https://github.com/openscad/scad-utils.git"
 )
-sha512sums=(
- 'SKIP'
-)
+sha512sums=('SKIP')
 arch=(
  'x86_64'
  'i686'
@@ -22,6 +20,7 @@ arch=(
 depends=(
  'openscad'
 )
+makedepends=('git')
 
 pkgver() {
  cd "$_gitname"
