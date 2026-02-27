@@ -1,7 +1,7 @@
 pkgbase = leshade-git
 	pkgdesc = Official build for Leshade. An ReShade Manager for Linux
 	pkgver = 2.3.r9.gc00c2fd
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ishidawg/LeShade
 	arch = any
 	license = MIT
@@ -10,6 +10,8 @@ pkgbase = leshade-git
 	makedepends = ninja
 	depends = python
 	depends = pyside6
+	depends = python-certifi
+	depends = python-requests
 	provides = leshade
 	conflicts = leshade
 	conflicts = leshade-bin
