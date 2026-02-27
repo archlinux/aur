@@ -1,3 +1,4 @@
+# Patches from https://github.com/ddlsmurf/libfprint-CS9711
 diff --git a/libfprint/drivers/cs9711/cs9711.c b/libfprint/drivers/cs9711/cs9711.c
 new file mode 100644
 index 0000000..d06a707

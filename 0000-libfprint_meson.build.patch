@@ -1,3 +1,4 @@
+# Patches from https://github.com/ddlsmurf/libfprint-CS9711
 diff --git a/libfprint/meson.build b/libfprint/meson.build
 index 0ca1767..4709bfb 100644
 --- a/libfprint/meson.build
