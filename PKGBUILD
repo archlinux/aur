@@ -17,8 +17,7 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'7a2542aa9b3f37cd879a240d69fab5c3af71af44b5237bc61c5bf2017f4690b7'
-)
+	'8b752db66563ed96d0f5bc91390a02070a8a18a561a6265eabe7ddc279e2968c')
 
 build() {
 	cd ${srcdir}/DeemixFix
