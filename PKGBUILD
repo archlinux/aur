@@ -1,7 +1,7 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=searchtool-gtk
-pkgver=2.2.0
-pkgrel=3.314
+pkgver=2.2.1
+pkgrel=1.314
 pkgdesc='A generic GTK search tool and launcher'
 url='https://github.com/v--/searchtool-gtk'
 arch=('any')
@@ -9,7 +9,7 @@ license=('Unlicense')
 makedepends=(git make gcc python-uv-build python-build python-installer python-wheel)
 depends=(gtk4 python python-gobject python-pydantic python-pyxdg python-pyicu)
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b21ad48afcd60d17793c5b58e5228d18ec617b3d02d2b7c53f20a8e043d0a287')
+sha256sums=('a6576f760f1f08c2b604a30a2fafe90a44bbbe9c4c108657084754244718fedf')
 
 _fullsrcdir() {
     echo "${srcdir}/${pkgname}-${pkgver}"
@@ -18,7 +18,6 @@ _fullsrcdir() {
 build() {
     cd "$(_fullsrcdir)"
     python -m build --wheel --no-isolation
-    sed --in-place 's/CC := cc -Wall $(shell pkg-config --cflags --libs gio-2.0)/CC := cc -Wall $(shell pkg-config --cflags --libs gio-2.0) $(CFLAGS)/' Makefile
     make build-c
 }
 
