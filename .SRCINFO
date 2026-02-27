@@ -1,6 +1,6 @@
 pkgbase = passkeyd
 	pkgdesc = Opinionated WebAuthn authenticator backed by a TPM
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/bjn7/passkeyd
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = passkeyd
 	depends = tpm2-tss
 	options = !debug
 	source = https://github.com/bjn7/passkeyd/releases/download/v1.0.0/passkeyd-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 4f6d5832dd896e9452ecac73dd6467f8aea0a6656b759e1bc612f1fac245b9f3
+	sha256sums = 717e9114f153d514129957a4d5241bfc24ec3f64784f03dedd15459c52758510
 
 pkgname = passkeyd
+
+git commit -m "fix: SHA-256 signature"
