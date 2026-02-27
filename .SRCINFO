@@ -1,6 +1,6 @@
 pkgbase = libretro-cap32-git
 	pkgdesc = Amstrad CPC core
-	pkgver = 4.5.3.r104.g0e3edf8
+	pkgver = 4.5.4.r43.g54eabbb
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/libretro/libretro-cap32
@@ -11,7 +11,7 @@ pkgbase = libretro-cap32-git
 	arch = pentium4
 	arch = x86_64
 	groups = libretro
-	license = GPL2
+	license = GPL-2.0-or-later
 	makedepends = git
 	depends = glibc
 	depends = libretro-core-info
