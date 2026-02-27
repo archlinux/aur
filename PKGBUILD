@@ -1,5 +1,5 @@
  pkgname=anitrack
-pkgver=0.1.3
+pkgver=0.1.5
 pkgrel=1
   pkgdesc="CLI/TUI companion for ani-cli with watch-progress tracking"
   arch=("x86_64")

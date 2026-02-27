@@ -1,6 +1,6 @@
 pkgbase = anitrack
 	pkgdesc = CLI/TUI companion for ani-cli with watch-progress tracking
-	pkgver = 0.1.3
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/MiguelRegueiro/anitrack-cli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = anitrack
 	makedepends = pkgconf
 	depends = ani-cli
 	depends = sqlite
-	source = anitrack-0.1.3.tar.gz::https://crates.io/api/v1/crates/anitrack/0.1.3/download
+	source = anitrack-0.1.5.tar.gz::https://crates.io/api/v1/crates/anitrack/0.1.5/download
 	sha256sums = SKIP
 
 pkgname = anitrack
