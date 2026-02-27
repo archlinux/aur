@@ -1,7 +1,7 @@
 pkgname=python-build123d
 pkgdesc="A python CAD programming library"
 pkgver=0.10.0
-pkgrel=0
+pkgrel=1
 arch=('any')
 url="https://github.com/gumyr/build123d"
 license=('Apache')
@@ -20,6 +20,7 @@ prepare() {
         -e 's/Edge_s/Edge/g' \
         -e 's/Wire_s/Wire/g' \
         -e 's/Face_s/Face/g' \
+        -e 's/BRepFill.Face/BRepFill.Face_s/g' \
         -e 's/Shell_s/Shell/g' \
         -e 's/Solid_s/Solid/g' \
         -e 's/Compound_s/Compound/g' \
