@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 pkgname=dnglab-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Camera RAW to DNG file format converter.(Prebuilt version)"
 arch=(
@@ -18,8 +18,8 @@ optdepends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_arm64.deb")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}-1_amd64.deb")
-sha256sums_aarch64=('4c6de43cbc13909335a50813fb540a227223804f1f21cd7773119ab0f541819e')
-sha256sums_x86_64=('d1aceed214a3e938006a18385649b4a0af5ccc8484712ac60e749756b5d36ae1')
+sha256sums_aarch64=('e94d3b334154b0bbfeadf6d650d1d63e99955bf2a232a19253d63c812bbee535')
+sha256sums_x86_64=('989f794f0eddc34b087879d01c8c1eb569ef1446f2c1951195e6b852edea85c4')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
 }
