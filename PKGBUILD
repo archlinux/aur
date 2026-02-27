@@ -1,6 +1,6 @@
 # Maintainer: Roniel Lopez <roniel.rack@gmail.com>
 pkgname=rondo
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='A modern terminal productivity app combining task management with a daily journal'
 arch=('x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/roniel-rhack/rondo'
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b952eb2a0583ef75360832303d1aa34001a8c76906b5f6a568f49e591dec23e4')
+sha256sums=('12c8056f4eefc30c44766c3c41b750043343041b093a417f95036893a5ac8411')
 
 build() {
     cd "$pkgname-$pkgver"
