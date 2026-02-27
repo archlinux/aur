@@ -37,14 +37,6 @@ build() {
   cargo build --frozen --release --all-features
 }
 
-check() {
-  cd "$pkgname-$pkgver"
-  cd "$pkgname"
-  cargo build --frozen --release --all-features
-  cd "../${pkgname}ctl"
-  cargo build --frozen --release --all-features
-}
-
 package() {
   cd "$pkgname-$pkgver"
   install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
