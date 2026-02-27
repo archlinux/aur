@@ -7,7 +7,13 @@ url="https://dl.actuallyreliable.com/apps"
 license=("custom")
 depends=(
   "gtk3"
-  "nss"
+  "glib2"
+  "pango"
+  "cairo"
+  "gdk-pixbuf2"
+  "harfbuzz"
+  "freetype2"
+  "fontconfig"
   "libx11"
   "libxext"
   "libxrandr"
@@ -18,12 +24,14 @@ depends=(
   "libxcomposite"
   "libxcursor"
   "libxkbcommon"
-  "alsa-lib"
+  "wayland"
+  "libepoxy"
   "mesa"
-  "glib2"
-  "pango"
-  "at-spi2-core"
   "dbus"
+  "at-spi2-core"
+  "wpewebkit"
+  "gstreamer"
+  "gst-plugins-base"
 )
 provides=("cohesivemail")
 conflicts=("cohesivemail")
