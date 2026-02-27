@@ -3,7 +3,7 @@
 _pkgname=firecrawl-py
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=4.17.1
+pkgver=4.18.0
 pkgrel=1
 pkgdesc="Python SDK for Firecrawl API"
 arch=('any')
@@ -12,7 +12,7 @@ license=('AGPL-3.0-or-later')
 depends=(python-dotenv python-nest-asyncio python-pydantic python-requests python-websockets)
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('4ca5a6bf7d67760f0ab4accbebcbc6e07a701cdd75268c5da2ba60c0a5ba37f8')
+sha256sums=('a658cc12ea9c5cae40ee7f0371a3fef00861a70e6b481e7c739e98cf46d95d37')
 
 build() {
     cd "${_pipname}-${pkgver}"
