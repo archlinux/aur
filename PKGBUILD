@@ -1,6 +1,6 @@
 # Maintainer: stormix <contact@stormix.co>
 pkgname=deadlock-modmanager-git
-pkgver=0.15.0.r11.g906b1cf
+pkgver=0.15.0.r15.gfdd20b1
 pkgrel=1
 pkgdesc="A mod manager for the Valve game Deadlock, built with Tauri (git)"
 arch=('x86_64')
