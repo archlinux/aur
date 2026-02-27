@@ -145,17 +145,18 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=6.19
-_minor=3
+_minor=4
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_stable=${_major}.${_minor}
-#_stable=${_major}
-#_stablerc=${_major}-${_rcver}
-_srcname=linux-${_stable}
-#_srcname=linux-${_major}
-pkgdesc='Linux BORE + Cachy Sauce scheduler Kernel by CachyOS with other patches and improvements'
+_tagrel=2
 pkgrel=1
+#_stable=${_major}.${_minor}
+_stable=${_major}
+#_stablerc=${_major}-${_rcver}
+_srctag=cachyos-${_major}.${_minor}-${_tagrel}
+_srcname=${_srctag}
+pkgdesc='Linux BORE + Cachy Sauce scheduler Kernel by CachyOS with other patches and improvements'
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_pkgsuffix}"
 arch=('x86_64')
@@ -183,9 +184,8 @@ _nv_ver=590.48.01
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
-    "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
-    "config"
-    "${_patchsource}/all/0001-cachyos-base-all.patch")
+    "https://github.com/CachyOS/linux/releases/download/${_srctag}/${_srctag}.tar.gz"
+    "config")
 
 # LLVM makedepends
 if _is_lto_kernel; then
@@ -207,7 +207,7 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=3bf17cf5387fa5e0044a6321e663aead38b45969")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=1c702dda346a59e05cfd3029569bbb1d5d91c54b")
 fi
 
 
@@ -736,7 +736,6 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('a6026d06097726bfafc19c83c94949c15bee5578bb7a872612a13a9ddbbdc871e18395832da27350aa476ba947c7e8904b1161c455b8bdf4a5fe9127c32c6818'
-        'a9546720025179d8de1bad124ab74e0fecb5ca8a21f82a1a6dea112ced90b4049ba6cc06f85601c1a46e726b522dfde2be094be7aeffc971ee48341cd27117b5'
-        'd2ff199e5bbc87379f44738058ffa16290077f89bf5d4f5a91e6b4df9b88fdeeae7492e15fd0bec1356a3d5280384fb872f1a637070eb6e49a3bca57658667b3'
+b2sums=('fdae47876ff30f643033bd6f6a178b6b2330c7e9707240faa3ea81cdd49d94fbce2ef8766a4a6d85044260f968b64722d4ce7d17993b2f32d0401f8dc83e263e'
+        '5070693f911739fe6375656b5612b5372c8ea9d289672e7ff535d7d2df18e4e7252370b1a1c865f44574cf933266f83ee6b2e24e7dd4674ba500f63f9a8100a5'
         '226c64dd989ec0c4c444d048707e5d56be4a7ffa59ada31f197015c65a87e7935c8a0a1d6a9d35947e60f90505e5cffb3df9824aec71b2f188bcaa2e89403e0b')
