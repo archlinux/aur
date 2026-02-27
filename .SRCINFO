@@ -1,0 +1,16 @@
+pkgbase = helix-gj1118-lua-git
+	pkgdesc = Helix fork (gj1118) with experimental Lua extension support (git, replaces helix)
+	pkgver = 25.10.20.r474.g9eacae35
+	pkgrel = 1
+	url = https://github.com/gj1118/helix
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = cargo
+	provides = hx
+	conflicts = helix
+	options = !lto
+	source = helix::git+https://github.com/gj1118/helix.git
+	sha256sums = SKIP
+
+pkgname = helix-gj1118-lua-git
