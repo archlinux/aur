@@ -1,6 +1,6 @@
 pkgbase = noon-libqt
 	pkgdesc = PharmaRacist's Perspective of a Desktop - Qt Library package
-	pkgver = 2.1
+	pkgver = r1
 	pkgrel = 1
 	url = https://github.com/PharmaRacist/Noon-libqt
 	arch = x86_64

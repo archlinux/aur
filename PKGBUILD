@@ -10,10 +10,10 @@ depends=('qt6-base' 'qt6-declarative')
 makedepends=('cmake' 'ninja' 'git')
 source=("git+https://github.com/PharmaRacist/Noon-libqt.git")
 sha256sums=('SKIP')
+pkgver=r1
 
 pkgver() {
   cd Noon-libqt
-  git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || \
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
