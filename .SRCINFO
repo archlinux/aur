@@ -1,7 +1,7 @@
 pkgbase = ldc-git
 	pkgdesc = A D Compiler based on the LLVM Compiler Infrastructure including D runtime and libphobos2
-	pkgver = v1.9.0.beta1
-	pkgrel = 2
+	pkgver = v1.42.0.beta3.9.g2e33c9c487
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/ldc-developers/ldc
 	arch = i686
@@ -12,27 +12,27 @@ pkgbase = ldc-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = llvm
-	makedepends = dmd
+	makedepends = lld
+	makedepends = ldc
 	makedepends = bash-completion
+	makedepends = ninja
+	options = !lto
 	source = git+https://github.com/ldc-developers/ldc.git
-	source = git+https://github.com/ldc-developers/druntime.git
 	source = git+https://github.com/ldc-developers/phobos.git
-	source = git+https://github.com/ldc-developers/dmd-testsuite.git
-	source = ldc2.conf
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 7f7eea41e730175ea52993f82bef5bdea6d6fc628344cda9488c04bf4b430024
 
 pkgname = ldc-git
 	depends = liblphobos-git
 	depends = llvm-libs
-	provides = d-compiler=
+	depends = gcc
+	depends = compiler-rt
+	depends = curl
+	provides = d-compiler
 	backup = etc/ldc2-git.conf
 
 pkgname = liblphobos-git
 	depends = curl
 	provides = d-runtime
 	provides = d-stdlib
-
+	options = staticlibs
