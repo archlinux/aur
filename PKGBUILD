@@ -111,8 +111,10 @@ create_symlink "$INSTALL_DIR/WebView2Loader.dll" "$USER_CONFIG_DIR/WebView2Loade
 create_symlink "$INSTALL_DIR/Plugins64" "$USER_CONFIG_DIR/Plugins64" || exit 1
 create_symlink "$INSTALL_DIR/FileOptimizer.chm" "$USER_CONFIG_DIR/FileOptimizer.chm" || exit 1
 
-# Create empty config file if it doesn't exist
-touch "$USER_CONFIG_DIR/FileOptimizer64.ini"
+# Create default config if it doesn't exist (disable auto-updater)
+if [ ! -f "$USER_CONFIG_DIR/FileOptimizer64.ini" ]; then
+    printf '[Options]\nCheckForUpdates=0\n' > "$USER_CONFIG_DIR/FileOptimizer64.ini"
+fi
 
 # Change to the config directory
 cd "$USER_CONFIG_DIR" || { echo "Error: Cannot change to $USER_CONFIG_DIR" >&2; exit 1; }
