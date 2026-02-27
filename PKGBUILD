@@ -6,7 +6,7 @@ arch=('x86_64')
 url='https://github.com/WCY-dt/MrRSS'
 license=()
 options=("!strip")
-depends=('fuse2')
+depends=('fuse2' 'webkit2gtk-4.1' 'hicolor-icon-theme' 'zlib')
 source=(
   "https://github.com/WCY-dt/MrRSS/releases/download/v${pkgver}/MrRSS-${pkgver}-linux-amd64.AppImage"
 )
