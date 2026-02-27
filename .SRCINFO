@@ -29,6 +29,6 @@ pkgbase = linux-system-hardener
 	depends = libxkbcommon
 	depends = systemd
 	source = linux-system-hardener-1.0.2.tar.gz::https://github.com/tidynest/linux-system-hardener/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = NEW_HASH
+	sha256sums = 133e8f2b646a666fc69b2e541fd379b8bf28bbc445a2713733037894ae8dbf79
 
 pkgname = linux-system-hardener

@@ -34,7 +34,7 @@ makedepends=(
     'pkg-config'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tidynest/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('NEW_HASH')
+sha256sums=('133e8f2b646a666fc69b2e541fd379b8bf28bbc445a2713733037894ae8dbf79')
 
 build() {
     cd "$pkgname-$pkgver"
