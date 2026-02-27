@@ -1,6 +1,6 @@
 pkgbase = rondo-bin
 	pkgdesc = A modern terminal productivity app that combines task management with a daily journal
-	pkgver = 0.2.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/roniel-rhack/rondo
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = rondo-bin
 	depends = glibc
 	provides = rondo
 	conflicts = rondo
-	source = LICENSE-0.2.2::https://raw.githubusercontent.com/roniel-rhack/rondo/v0.2.2/LICENSE
-	source = README-0.2.2.md::https://raw.githubusercontent.com/roniel-rhack/rondo/v0.2.2/README.md
+	source = LICENSE-0.2.3::https://raw.githubusercontent.com/roniel-rhack/rondo/v0.2.3/LICENSE
+	source = README-0.2.3.md::https://raw.githubusercontent.com/roniel-rhack/rondo/v0.2.3/README.md
 	sha256sums = 1654036be573fb23122c21f88006be1458b6f6c0a59ccab4501fc10af0a104cc
 	sha256sums = 790cfbe2836f26149dc3c31cc12adf49e75bdb0cb92abadc4f9aa3f0dc21f30c
-	source_x86_64 = rondo-x86_64-0.2.2.tgz::https://github.com/roniel-rhack/rondo/releases/download/v0.2.2/rondo-linux-amd64.tar.gz
-	sha256sums_x86_64 = 9f43e2fb63c94b6e57809583f93ef43764793c6b1964477c746d0c102f0bf009
+	source_x86_64 = rondo-x86_64-0.2.3.tgz::https://github.com/roniel-rhack/rondo/releases/download/v0.2.3/rondo-linux-amd64.tar.gz
+	sha256sums_x86_64 = a0163af9be22487ab917c69c9357457b42b02746c7135699a61ef2d8565bd885
 
 pkgname = rondo-bin

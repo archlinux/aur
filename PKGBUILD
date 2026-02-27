@@ -5,7 +5,7 @@ _pkgname=rondo
 pkgname=${_pkgname}-bin
 pkgdesc="A modern terminal productivity app that combines task management with a daily journal"
 
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,7 +26,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}.tar.gz")
 sha256sums=('1654036be573fb23122c21f88006be1458b6f6c0a59ccab4501fc10af0a104cc'
             '790cfbe2836f26149dc3c31cc12adf49e75bdb0cb92abadc4f9aa3f0dc21f30c')
-sha256sums_x86_64=('9f43e2fb63c94b6e57809583f93ef43764793c6b1964477c746d0c102f0bf009')
+sha256sums_x86_64=('a0163af9be22487ab917c69c9357457b42b02746c7135699a61ef2d8565bd885')
 
 
 package() {
