@@ -1,7 +1,7 @@
 # Maintainer: Eric Jingryd <tidynest@proton.me>
 pkgname=linux-system-hardener
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Linux security automation: scanning, hardening, and rollback across 8 domains"
 arch=('x86_64')
 url="https://github.com/tidynest/linux-system-hardener"
@@ -34,26 +34,7 @@ makedepends=(
     'pkg-config'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tidynest/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5779be8f75f3cfeecae9e1c9118722a517726c15c516cdaaf5cbce9dc59b35a0')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-
-    # Fix CSP: add 'self' to connect-src so WASM can be fetched via
-    # Tauri's custom-protocol (tauri://localhost).
-    sed -i "s/connect-src ipc:/connect-src 'self' ipc:/" src-tauri/tauri.conf.json
-
-    # Enable withGlobalTauri so window.__TAURI__ is available to the
-    # Leptos WASM frontend (required for IPC command invocation).
-    sed -i 's/"withGlobalTauri": false/"withGlobalTauri": true/' src-tauri/tauri.conf.json
-
-    # Fix plugin ID prefix: UI sends "service", validation expected "services".
-    sed -i 's/"services"/"service"/' src-tauri/src/validation.rs
-
-    # Wrap set_var in unsafe block (required by Rust 2024 edition).
-    sed -i 's/std::env::set_var("WEBKIT_DISABLE_COMPOSITING_MODE"/unsafe { std::env::set_var("WEBKIT_DISABLE_COMPOSITING_MODE"/' src-tauri/src/main.rs
-    sed -i 's/"WEBKIT_DISABLE_COMPOSITING_MODE", "1");/"WEBKIT_DISABLE_COMPOSITING_MODE", "1") };/' src-tauri/src/main.rs
-}
+sha256sums=('98439d3f29840cb31b1a3598d82923ddf6d17e6090d07f8e3f50a0f2fc2d54a3')
 
 build() {
     cd "$pkgname-$pkgver"
