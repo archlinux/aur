@@ -1,7 +1,7 @@
 pkgbase = noctalia-qs-git
 	pkgdesc = Custom fork of Quickshell powering Noctalia Shell
 	pkgver = 0.0.1.r0.gb2c7d52
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/noctalia-dev/noctalia-qs
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,7 @@ pkgbase = noctalia-qs-git
 	makedepends = ninja
 	makedepends = cmake
 	makedepends = git
+	makedepends = vulkan-headers
 	depends = qt6-declarative
 	depends = qt6-base
 	depends = jemalloc

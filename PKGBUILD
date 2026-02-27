@@ -2,7 +2,7 @@
 _pkgname=noctalia-qs
 pkgname="$_pkgname-git"
 pkgver=0.0.1.r0.gb2c7d52
-pkgrel=2
+pkgrel=3
 pkgdesc='Custom fork of Quickshell powering Noctalia Shell'
 arch=(x86_64 aarch64)
 url='https://github.com/noctalia-dev/noctalia-qs'
@@ -29,6 +29,7 @@ makedepends=(
   'ninja'
   'cmake'
   'git'
+  'vulkan-headers'
 )
 provides=("$_pkgname" "quickshell")
 conflicts=(
