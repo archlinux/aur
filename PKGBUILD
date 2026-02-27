@@ -1,7 +1,7 @@
 # Maintainer: Alonso Herreros <alonso.herreros at gmail.com
 
 pkgname="hyprcap"
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 url="https://github.com/alonso-herreros/hyprcap"
 pkgdesc="A utility to easily capture screenshots and recordings in Hyprland"
@@ -26,7 +26,7 @@ optdepends=(
 _pkgsrc="$pkgname-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgsrc.$_pkgext::$url/archive/v$pkgver.$_pkgext")
-sha256sums=('f2c6699ce90f40a9dcfbbfb50bedeb0afb2f619e0fee8e60e3873bbfba824258')
+sha256sums=('5cf5c811cfab0bf0a011407f12218bae0be0ae6e6f7a601c033acc0585da73fa')
 
 package() {
   cd "$srcdir/$_pkgsrc"
