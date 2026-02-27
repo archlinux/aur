@@ -1,11 +1,12 @@
 pkgbase = linux-system-hardener
 	pkgdesc = Linux security automation: scanning, hardening, and rollback across 8 domains
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tidynest/linux-system-hardener
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = git
+	makedepends = musl
 	makedepends = openssl
 	makedepends = librsvg
 	makedepends = rust

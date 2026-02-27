@@ -1,7 +1,7 @@
 # Maintainer: Eric Jingryd <tidynest@proton.me>
 pkgname=linux-system-hardener
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux security automation: scanning, hardening, and rollback across 8 domains"
 arch=('x86_64')
 url="https://github.com/tidynest/linux-system-hardener"
@@ -25,6 +25,7 @@ depends=(
 )
 makedepends=(
     'git'
+    'musl'
     'openssl'
     'librsvg'
     'rust'
@@ -37,6 +38,14 @@ sha256sums=('5779be8f75f3cfeecae9e1c9118722a517726c15c516cdaaf5cbce9dc59b35a0')
 
 build() {
     cd "$pkgname-$pkgver"
+
+    # Strip GCC LTO from CFLAGS — GCC LTO bytecode is incompatible with
+    # Rust's linkers (musl self-contained and rust-lld) and causes undefined
+    # references in native C/asm libraries (ring, libsqlite3-sys).
+    # Rust applies its own LTO via [profile.release] lto = true.
+    export CFLAGS="${CFLAGS//-flto=auto/}"
+    export CXXFLAGS="${CXXFLAGS//-flto=auto/}"
+
     cargo build --release --target x86_64-unknown-linux-musl -p hardener-cli
     cd src-tauri && cargo build --release
 }
@@ -47,7 +56,7 @@ package() {
     # Binaries
     install -Dm755 "target/x86_64-unknown-linux-musl/release/hardener" \
         "$pkgdir/usr/bin/hardener"
-    install -Dm755 "src-tauri/target/release/linux-hardener-desktop" \
+    install -Dm755 "target/release/linux-hardener-desktop" \
         "$pkgdir/usr/bin/linux-hardener-desktop"
 
     # Systemd units
