@@ -2,20 +2,23 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-flycast
 pkgname=$_pkgname-git
-pkgver=2.5.r145.g82b4c55
+pkgver=2.6.r144.g55d310b
 pkgrel=1
 pkgdesc="Sega Dreamcast, NAOMI, NAOMI 2, Atomiswave and System SP core (fork of reicast)"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/flyinghead/flycast"
 license=('GPL-2.0-only')
 groups=('libretro')
-depends=('gcc-libs' 'glibc' 'glslang' 'libretro-core-info')
+depends=('glibc' 'glslang' 'libretro-core-info')
 makedepends=(
 	'cmake'
 	'git'
 	'glm'
 	'libchdr'
+	'libgcc'
 	'libgl'
+	'libgomp'
+	'libstdc++'
 	'libzip'
 	'miniupnpc'
 	'vulkan-memory-allocator'
@@ -27,11 +30,15 @@ conflicts=("$_pkgname")
 source=(
 	"flycast::git+$url.git"
 	'flycast-asio::git+https://github.com/flyinghead/asio.git'
+	'flycast-tinygettext::git+https://github.com/flyinghead/tinygettext.git'
+	'tinycmmc::git+https://github.com/Grumbel/tinycmmc.git'
 	'vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git'
 	'xbyak::git+https://github.com/herumi/xbyak.git'
 	'use-system-libs.patch'
 )
 b2sums=(
+	'SKIP'
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -47,17 +54,20 @@ pkgver() {
 prepare() {
 	cd flycast
 	git config submodule.core/deps/asio.url ../flycast-asio
+	git config submodule.core/deps/tinygettext.url ../flycast-tinygettext
 	git config submodule.core/deps/Vulkan-Headers.url ../vulkan-headers
 	git config submodule.core/deps/xbyak.url ../xbyak
 	git -c protocol.file.allow=always submodule update
 	patch -Np1 < ../use-system-libs.patch
 	rm -r core/deps/libretro-common/include/libchdr
-	sed -i '/ccache/d' CMakeLists.txt
-	sed -i '1i #include <cstddef>' core/network/miniupnp.cpp
+	cd core/deps/tinygettext
+	git config submodule.external/tinycmmc.url ../../../../tinycmmc
+	git -c protocol.file.allow=always submodule update
 }
 
 build() {
 	local options=(
+		-D CCACHE_PROGRAM=OFF
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
@@ -73,11 +83,15 @@ build() {
 package() {
 	depends+=(
 		'libchdr.so'
+		'libgcc_s.so'
+		'libgomp.so'
 		'libminiupnpc.so'
+		'libstdc++.so'
 		'libxxhash.so'
 		'libz.so'
 		'libzip.so'
 	)
+
 	# shellcheck disable=SC2154
 	install -D -t "$pkgdir"/usr/lib/libretro build/flycast_libretro.so
 }
