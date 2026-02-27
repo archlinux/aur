@@ -1,0 +1,27 @@
+pkgbase = shortwave-artix-native
+	pkgdesc = Shortwave 5.1.0 natively built for Artix (Systemd-free & CPU Optimized)
+	pkgver = 5.1.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/Shortwave
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	makedepends = cargo
+	makedepends = gettext
+	depends = gtk4
+	depends = libadwaita
+	depends = libshumate
+	depends = libpeas-2
+	depends = glycin-gtk4
+	depends = sqlite
+	depends = gst-plugins-bad
+	depends = desktop-file-utils
+	provides = shortwave
+	conflicts = shortwave
+	conflicts = shortwave-git
+	source = git+https://gitlab.gnome.org/World/Shortwave.git#tag=5.1.0
+	sha256sums = SKIP
+
+pkgname = shortwave-artix-native
