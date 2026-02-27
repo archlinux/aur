@@ -2,8 +2,8 @@
 
 pkgname=shorin-contrib-git
 _pkgname=shorin-contrib
-pkgver=r4.9419d69
-pkgrel=5
+pkgver=r6.03ef656
+pkgrel=2
 pkgdesc="Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-contrib"
@@ -37,7 +37,7 @@ pkgver() {
 package() {
     cd "${_pkgname}"
 
-    # 1. 创建私有库目录，用于存放真实的脚本实体
+    # 1. 创建私有库目录
     install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
 
     # 2. 拍平复制所有脚本
@@ -49,36 +49,47 @@ package() {
     ln -sf "/usr/lib/${_pkgname}/quicksave" "${pkgdir}/usr/bin/quicksave"
     ln -sf "/usr/lib/${_pkgname}/quickload" "${pkgdir}/usr/bin/quickload"
     
-    # 写入 shorin 主调度器
+    # 写入增强版 shorin 主调度器
     cat << 'EOF' > "${pkgdir}/usr/bin/shorin"
 #!/bin/bash
-# Shorin Contrib - Subcommand Dispatcher
+# Shorin Contrib - Subcommand Dispatcher with Descriptions
 
 LIB_DIR="/usr/lib/shorin-contrib"
 
+# 颜色定义
+BLUE='\033[0;34m'
+NC='\033[0m'
+
 if [ $# -eq 0 ]; then
-    echo "用法: shorin <子命令|link|unlink> [选项]"
+    echo -e "用法: ${BLUE}shorin${NC} <子命令> [选项]"
     echo -e "\n可用子命令:"
-    find "$LIB_DIR" -maxdepth 1 -type f -printf "  %f\n" | sort
+    
+    # 遍历库目录并提取描述
+    for script in "$LIB_DIR"/*; do
+        if [ -x "$script" ]; then
+            name=$(basename "$script")
+            # 提取第二行，去掉开头的 "# " 或 "# Description: "
+            desc=$(sed -n '2p' "$script" | sed -E 's/^# (Description: )?//')
+            printf "  ${BLUE}%-15s${NC} %s\n" "$name" "$desc"
+        fi
+    done | sort
+    
     echo -e "\n环境管理:"
-    echo "  link      生成本地用户的快捷软链接 (全程免密)"
-    echo "  unlink    移除本地软链接"
+    printf "  ${BLUE}%-15s${NC} %s\n" "link" "生成本地用户的快捷软链接 (全程免密)"
+    printf "  ${BLUE}%-15s${NC} %s\n" "unlink" "移除本地软链接"
     exit 1
 fi
 
 COMMAND="$1"
 shift
 
-# 软链接管理模块 (纯用户态，绝不弹 sudo)
+# 软链接管理模块
 if [ "$COMMAND" = "link" ]; then
     mkdir -p "$HOME/.local/bin"
     echo "开始生成本地快捷命令..."
-    
     for script in "$LIB_DIR"/*; do
         if [ -f "$script" ]; then
             base_name=$(basename "$script")
-            
-            # 排除掉已经全局安装好的灾备命令
             if [[ "$base_name" != "quicksave" && "$base_name" != "quickload" ]]; then
                 ln -sf "$script" "$HOME/.local/bin/$base_name"
                 echo "  [User] 已链接: ~/.local/bin/$base_name"
@@ -87,7 +98,6 @@ if [ "$COMMAND" = "link" ]; then
     done
     echo -e "\n链接部署完成！"
     exit 0
-
 elif [ "$COMMAND" = "unlink" ]; then
     echo "开始清理快捷命令..."
     for script in "$LIB_DIR"/*; do
@@ -103,21 +113,18 @@ elif [ "$COMMAND" = "unlink" ]; then
     exit 0
 fi
 
-# 路由分发逻辑
 TARGET_SCRIPT="$LIB_DIR/$COMMAND"
-
 if [ -x "$TARGET_SCRIPT" ]; then
     exec "$TARGET_SCRIPT" "$@"
 else
     echo "shorin: 未知子命令 '$COMMAND'" >&2
-    echo "运行 'shorin' 查看所有可用命令。" >&2
     exit 1
 fi
 EOF
 
     chmod +x "${pkgdir}/usr/bin/shorin"
 
-    # 4. 生成 Fish 自动补全脚本
+    # 4. Fish 补全 (保持不变)
     install -dm755 "${pkgdir}/usr/share/fish/vendor_completions.d"
     cat << 'EOF' > "${pkgdir}/usr/share/fish/vendor_completions.d/shorin.fish"
 complete -c shorin -f
