@@ -43,6 +43,7 @@ package() {
 
     # Install binaries - install -D creates parent dirs but pacman handles shared dirs correctly
     install -Dm755 "_build_/arch/Release/minstall" "${pkgdir}/usr/bin/minstall"
+    install -Dm755 "_build_/arch/qtui/Release/libqtui.so" "${pkgdir}/usr/lib/libqtui.so"
     install -Dm755 "scripts/minstall-launcher" "${pkgdir}/usr/bin/minstall-launcher"
     install -Dm755 "scripts/oobe.sh" "${pkgdir}/usr/bin/oobe.sh"
     install -Dm755 "scripts/guess-hwclock" "${pkgdir}/usr/bin/guess-hwclock"
