@@ -3,13 +3,14 @@
 pkgname=shorin-contrib-git
 _pkgname=shorin-contrib
 pkgver=r3.6dca334
-pkgrel=3
+pkgrel=4
 pkgdesc="Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-contrib"
 license=('GPL3')
 depends=('bash')
 makedepends=('git')
+install='shorin-contrib.install'
 
 # 可选依赖：让用你包的人知道特定子命令需要什么环境
 optdepends=(
