@@ -1,12 +1,13 @@
 pkgbase = appmanager
 	pkgdesc = MacOS style AppImage installer and management application
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kem-a/AppManager
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = vala
+	depends = fuse2
 	depends = dwarfs
 	depends = gtk4
 	depends = json-glib

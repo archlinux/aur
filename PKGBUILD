@@ -2,12 +2,13 @@
 pkgname=appmanager
 _app_id=com.github.AppManager
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MacOS style AppImage installer and management application"
 arch=('x86_64')
 url="https://github.com/kem-a/AppManager"
 license=('GPL-3.0-or-later')
 depends=(
+  'fuse2'
   'dwarfs'
   'gtk4'
   'json-glib'
