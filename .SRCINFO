@@ -1,6 +1,6 @@
 pkgbase = xerahs-git
 	pkgdesc = Cross-platform screen capture and file sharing tool (ShareX port) built with Avalonia UI
-	pkgver = r1601.ff89ec7b
+	pkgver = r1682.8236ce9c
 	pkgrel = 1
 	url = https://github.com/ShareX/XerahS
 	arch = x86_64
@@ -14,6 +14,8 @@ pkgbase = xerahs-git
 	optdepends = wl-clipboard: Wayland clipboard support
 	optdepends = xclip: X11 clipboard support
 	optdepends = xdotool: X11 window management
+	optdepends = grim: Wayland screenshot utility
+	optdepends = slurp: Wayland region selection for screenshots
 	provides = xerahs
 	conflicts = xerahs
 	source = xerahs::git+https://github.com/ShareX/XerahS.git

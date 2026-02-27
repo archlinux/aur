@@ -1,6 +1,6 @@
 # Maintainer: unicxrn
 pkgname=xerahs-git
-pkgver=r1601.ff89ec7b
+pkgver=r1682.8236ce9c
 pkgrel=1
 pkgdesc="Cross-platform screen capture and file sharing tool (ShareX port) built with Avalonia UI"
 arch=('x86_64')
@@ -20,6 +20,8 @@ optdepends=(
     'wl-clipboard: Wayland clipboard support'
     'xclip: X11 clipboard support'
     'xdotool: X11 window management'
+    'grim: Wayland screenshot utility'
+    'slurp: Wayland region selection for screenshots'
 )
 provides=('xerahs')
 conflicts=('xerahs')
