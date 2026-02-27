@@ -1,5 +1,5 @@
 pkgname=dwellir-cli-bin
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Dwellir CLI - Blockchain RPC infrastructure from your terminal"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ conflicts=('dwellir-cli')
 
 source_x86_64=("dwellir-linux-amd64-${pkgver}.tar.gz::https://github.com/dwellir-public/cli/releases/download/v${pkgver}/dwellir_linux_amd64.tar.gz")
 source_aarch64=("dwellir-linux-arm64-${pkgver}.tar.gz::https://github.com/dwellir-public/cli/releases/download/v${pkgver}/dwellir_linux_arm64.tar.gz")
-sha256sums_x86_64=('b4a539932394975335a98f96b4a6242d4be7080c5dbee6a3a7134fae6a6c5682')
-sha256sums_aarch64=('861192f6855c538719034abba9dd7e7a6bbe745c3246179ebf86cd96ec18a04b')
+sha256sums_x86_64=('5a7b2b4ee669500aa47e95037bb8b3b3c0024763ffcd52adca3aaa228ca7c372')
+sha256sums_aarch64=('fc97894bcc04ad8c16f283307cd4e254ec35a5103ea88439e3390fcc12eb6d3a')
 
 package() {
   install -Dm755 "${srcdir}/dwellir" "${pkgdir}/usr/bin/dwellir"
