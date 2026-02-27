@@ -1,6 +1,6 @@
 # Maintainer: skint007 <archlinux.repose742@passmail.net>
 pkgname=clipboard-typer
-pkgver=0.2.0.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Type clipboard contents keystroke-by-keystroke into the active window"
 arch=('any')
@@ -10,6 +10,7 @@ depends=(
     'python>=3.12'
     'python-pynput'
     'python-pyperclip'
+    'pyside6'
 )
 makedepends=(
     'python-build'
