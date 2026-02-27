@@ -27,4 +27,7 @@ build() {
 package() {
   cd "${pkgname}"
   DESTDIR="${pkgdir}" meson install -C build
+
+  sed -i 's/^Exec=.*/Exec=leshade/' "${pkgdir}/usr/share/applications/leshade.desktop"
+  sed -i 's/^Icon=.*/Icon=leshade/' "${pkgdir}/usr/share/applications/leshade.desktop"
 }
