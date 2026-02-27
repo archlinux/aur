@@ -1,6 +1,6 @@
 pkgbase = updo
 	pkgdesc = Uptime monitoring CLI tool with alerting and advanced settings
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/Owloops/updo
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = updo
 	depends = glibc
 	options = strip
 	options = buildflags
-	source = https://github.com/Owloops/updo/archive/refs/tags/v0.4.5/updo-0.4.5.tar.gz
-	sha256sums = f43a6bbc056391de8056de8e37dda9eee3f8029661a0337b622e37a81f20d976
+	source = https://github.com/Owloops/updo/archive/refs/tags/v0.4.6/updo-0.4.6.tar.gz
+	sha256sums = 9b75effe092523e2ae9d53ded7f7d286ba70b8c55a3c8b3d99ed36673ac85e60
 
 pkgname = updo
