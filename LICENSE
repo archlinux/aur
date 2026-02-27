@@ -1,4 +1,6 @@
-Copyright Arch Linux Contributors
+Copyright Yaksh Bariya, Arch Linux Maintainers and other contributors
+
+Code based on signal-desktop package by Arch Linux modified to use system Electron
 
 Permission to use, copy, modify, and/or distribute this software for
 any purpose with or without fee is hereby granted.

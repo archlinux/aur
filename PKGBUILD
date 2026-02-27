@@ -1,8 +1,9 @@
-# Maintainer: kpcyrd <kpcyrd[at]archlinux[dot]org>
-# Maintainer: Christian Heusel <gromit@archlinux.org>
-# Contributor: Jean Lucas <jean@4ray.co>
+# Maintainer: Yaksh Bariya <yakshbari4@gmail.com>
 
-pkgname=signal-desktop
+pkgname=signal-desktop-system-electron
+conflicts=('signal-desktop')
+provides=('signal-desktop')
+_parent_pkgname=signal-desktop
 _pkgname=Signal-Desktop
 pkgver=8.0.0
 pkgrel=1
@@ -11,13 +12,8 @@ license=('AGPL-3.0-only')
 arch=('x86_64')
 url="https://signal.org"
 depends=(
-  'alsa-lib' 'libasound.so'
-  'at-spi2-core' 'libatk-bridge-2.0.so'
-  'cairo' 'libcairo.so'
-  'dbus' 'libdbus-1.so'
-  'expat' 'libexpat.so'
+  'electron'
   'gcc-libs'
-  'glib2' 'libgio-2.0.so'
   'glibc'
   'gtk3'
   'hicolor-icon-theme'
@@ -31,27 +27,24 @@ depends=(
   'libxdamage'
   'libxext'
   'libxfixes'
-  'libxkbcommon' 'libxkbcommon.so'
   'libxrandr'
   'mesa'
   'nspr'
   'nss'
-  'pango' 'libpango-1.0.so'
-  'systemd-libs' 'libudev.so'
 )
 makedepends=(
   'git'
   'git-lfs'
   'libxcrypt-compat'
   'node-gyp'
-  'nodejs-lts-jod'
+  'nodejs'
   'pnpm'
   'python'
 )
 optdepends=('xdg-desktop-portal: Screensharing with Wayland')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver}.tar.gz"
-  "${pkgname}.desktop"
+  "${_parent_pkgname}.desktop"
 )
 sha256sums=('f0232d07b6d253b35e02e389d2b4cc5d25d699b609d086f18fd52f696a24dca3'
             'bf388df4b5bbcab5559ebbf220ed4748ed21b057f24b5ff46684e3fe6e88ccce')
@@ -89,15 +82,18 @@ package() {
   cd "${_pkgname}-${pkgver}"
 
   install -d "${pkgdir}/usr/"{lib,bin}
-  cp -a release/linux-unpacked "${pkgdir}/usr/lib/${pkgname}"
-  ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/"
+  cp -a release/linux-unpacked/resources/ "${pkgdir}/usr/lib/${_parent_pkgname}"
+  cat << EOF > "${pkgdir}/usr/bin/${_parent_pkgname}"
+#!/bin/sh
+NODE_ENV=production electron /usr/lib/${_parent_pkgname}/app.asar "\$@"
+EOF
 
-  chmod u+s "${pkgdir}/usr/lib/signal-desktop/chrome-sandbox"
+  chmod +x "${pkgdir}/usr/bin/${_parent_pkgname}"
 
-  install -Dm 644 "../${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+  install -Dm 644 "../${_parent_pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
   for i in 16 24 32 48 64 128 256 512 1024; do
     install -Dm 644 "build/icons/png/${i}x${i}.png" \
-      "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
+      "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${_parent_pkgname}.png"
   done
 }
 
