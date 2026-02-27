@@ -2,3 +2,4 @@ weathr/
 src/
 pkg/
 *.log
+*.tar.zst

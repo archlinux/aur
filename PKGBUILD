@@ -1,6 +1,6 @@
 pkgname=weathr
-_build_hash=622d5cf47ae454964295cada10380db656d89de3
-pkgver=1.3.0
+_build_hash=43637d5adabf0a363a59f1d4b0d9a3938d8eee08
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="a terminal weather app with ascii animation"
 arch=(x86_64)
@@ -19,7 +19,7 @@ options=('!lto')
 
 source=("git+https://github.com/Veirt/weathr#commit=${_build_hash}")
 
-sha512sums=('8abe8546b3cb5611fe02555df273e647fb687325bf252c22fd81986ceb755c507934783c807b9bbb37edc2a99c7ce8fd6e11d43488484c85a07cd3e0f13491ab')
+sha512sums=('4986b601ca797f9f3ecda1a47eab357cf737a08d46f1eb848b0a072a07e1a68ef04d8b0b9baa539c455cdd0456a1cb9598a9301c0d72498cd8e73c156ff8e65f')
 
 pkgver() {
   cd weathr
