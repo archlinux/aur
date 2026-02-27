@@ -74,29 +74,23 @@ This creates:
   - A timestamped backup is written on each profile save.
   - Backup folder: `~/.config/arch-soundpad/backups/`
 
-## AUR-Style Package (Local)
-
-Build and install from this folder:
+## AUR Package
 
 ```bash
-cd /home/jameel-sawafta/temp/arch-soundpad
+yay -S arch-soundpad
+```
+
+Manual build:
+
+```bash
+git clone https://aur.archlinux.org/arch-soundpad.git
+cd arch-soundpad
 makepkg -si
 ```
 
-Run:
+For maintainers: package source is now fetched from GitHub release tarballs.
 
-```bash
-arch-soundpad
-```
-
-Update after changes:
-
-```bash
-cd /home/jameel-sawafta/temp/arch-soundpad
-makepkg -si
-```
-
-## Local Checks
+## Local Checks (Dev Repo)
 
 Quick smoke test:
 
@@ -111,12 +105,12 @@ Headless check only:
 python3 /home/jameel-sawafta/temp/arch-soundpad/soundpad_app.py --headless-check
 ```
 
-## Hotkeys
+## Hotkeys (Current)
 
 - `Enter`: play selected clip
 - `Delete`: remove selected clip
-- `Ctrl+S`: stop playback
-- `Alt+1..9`: play clip slot 1..9
+- `Alt+\`: stop playback
+- Per-clip hotkeys are user-defined (no default bind)
 - Global hotkeys work on X11 (dwm) when `python-xlib` is installed.
 
 ## Notes
