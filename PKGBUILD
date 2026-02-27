@@ -56,14 +56,6 @@ build() {
   mkdir -p build && cd build
 
   local args=(
-    #env
-
-    # Use host DMD
-    # This 1) ensures we use the main dmd package, and not something in the user's $PATH;
-    # and 2) compilation with ldc links Phobos/Druntime as shared libraries;
-    # dmd does static linking to the rescue!
-    #DMD=/usr/bin/dmd
-
     cmake -GNinja \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
