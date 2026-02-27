@@ -2,7 +2,7 @@
 
 _pkgname=epoxy
 pkgname=$_pkgname-git
-pkgver=0.2.0.r2.gf1a9652
+pkgver=0.4.0.r1.geb7350a
 pkgrel=1
 pkgdesc='SmartBox-compatible open source tool for signing ePorezi tax forms'
 arch=('x86_64')
@@ -11,7 +11,6 @@ license=('MIT')
 depends=('gtk4' 'libxml2' 'nspr' 'nss' 'xmlsec')
 makedepends=('cargo')
 optdepends=(
-    'p11-kit: support aggregating multiple PKCS#11 modules'
     'srb-id-pkcs11: Serbian ID card support (unofficial)'
 )
 provides=("$_pkgname")

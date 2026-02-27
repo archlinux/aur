@@ -1,6 +1,6 @@
 pkgbase = epoxy-git
 	pkgdesc = SmartBox-compatible open source tool for signing ePorezi tax forms
-	pkgver = 0.2.0.r2.gf1a9652
+	pkgver = 0.4.0.r1.geb7350a
 	pkgrel = 1
 	url = https://github.com/semyon2105/epoxy
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = epoxy-git
 	depends = nspr
 	depends = nss
 	depends = xmlsec
-	optdepends = p11-kit: support aggregating multiple PKCS#11 modules
 	optdepends = srb-id-pkcs11: Serbian ID card support (unofficial)
 	provides = epoxy
 	conflicts = epoxy
