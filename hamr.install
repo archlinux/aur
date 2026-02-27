@@ -17,6 +17,18 @@ post_upgrade() {
     echo ""
     echo "==> Hamr upgraded to v$1"
     echo ""
+    
+    # Restart hamr services if running to load new plugins
+    if systemctl --user is-active --quiet hamr-daemon 2>/dev/null; then
+        echo "    Restarting hamr services to load updated plugins..."
+        systemctl --user restart hamr-daemon hamr-gtk 2>/dev/null || true
+    fi
+    
+    # Also kill any non-systemd hamr processes
+    killall hamr-daemon hamr-gtk hamr hamr-tui 2>/dev/null || true
+    
+    echo "    Please restart hamr if it was running manually."
+    echo ""
 }
 
 post_remove() {
