@@ -1,6 +1,6 @@
 pkgbase = inno
 	pkgdesc = A lightweight, event-driven Wayland notification agent (Rust)
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/SykikXO/inno
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = inno
 	depends = glibc
 	depends = ttf-jetbrains-mono-nerd
 	options = !debug
-	source = inno-0.4.0.tar.gz::https://github.com/SykikXO/inno/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = SKIP
+	source = inno-0.4.1.tar.gz::https://github.com/SykikXO/inno/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 4e1e0b82f1fbdb5beddb533e50d839841ace6b319062252eb3c1aff8523c2f2a
 
 pkgname = inno
