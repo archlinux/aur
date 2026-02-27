@@ -1,8 +1,8 @@
 # Maintainer: Dustin Pilgrim <dustin.pilgrim1997@gmail.com>
 
 pkgname=stasis
-pkgver=0.9.0
-pkgrel=3
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="A modern Wayland idle manager designed for simplicity and effectiveness"
 arch=('x86_64')
 url="https://github.com/saltnpepper97/stasis"
@@ -18,7 +18,7 @@ optdepends=(
 conflicts=('stasis-git')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7e69a46e3db4145f85a34d822a6f8d4ec67195cc70ad270585119ed9c1d5bd90')
+sha256sums=('24714fd28b913aec483042fc0546949f8f310de4fe9796a1ea3b5d4bedb6b5de')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -39,7 +39,4 @@ package() {
 
     # Install systemd user service file
     install -Dm644 "packaging/systemd/user/stasis.service" "$pkgdir/usr/lib/systemd/user/stasis.service"
-
-    # Install python script for Media Bridge
-    install -Dm755 "scripts/media_bridge_host.py" "$pkgdir/usr/bin/media_bridge_host.py"
 }
