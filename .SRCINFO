@@ -1,7 +1,7 @@
 pkgbase = gojekyll
 	pkgdesc = A fast Go implementation of the Jekyll blogging engine
-	pkgver = 0.2.16
-	pkgrel = 3
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/osteele/gojekyll
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = gojekyll
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/osteele/gojekyll.git#tag=v0.2.16
+	source = git+https://github.com/osteele/gojekyll.git#tag=v0.3.1
 	sha256sums = SKIP
 
 pkgname = gojekyll
