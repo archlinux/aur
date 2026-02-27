@@ -1,6 +1,6 @@
 pkgname=aurora-gui-git
 pkgver=0.0.0.r0.g0000000
-pkgrel=10
+pkgrel=11
 pkgdesc="Wayland-first GTK4 GUI for Arch Linux package management (pacman + AUR via yay/paru)"
 arch=("x86_64")
 url="https://github.com/ahmoodio/aurora"
@@ -93,4 +93,16 @@ package() {
 
   install -Dm644 assets/icons/hicolor/256x256/apps/io.github.ahmoodio.aurora.png \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/io.github.ahmoodio.aurora.png"
+  install -Dm644 assets/icons/hicolor/scalable/apps/io.github.ahmoodio.aurora.png \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.ahmoodio.aurora.png"
+
+  # Compatibility aliases for launchers/compositors that resolve shorter icon names.
+  install -Dm644 assets/icons/hicolor/256x256/apps/io.github.ahmoodio.aurora.png \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/aurora.png"
+  install -Dm644 assets/icons/hicolor/scalable/apps/io.github.ahmoodio.aurora.png \
+    "$pkgdir/usr/share/icons/hicolor/scalable/apps/aurora.png"
+  install -Dm644 assets/icons/hicolor/256x256/apps/io.github.ahmoodio.aurora.png \
+    "$pkgdir/usr/share/pixmaps/io.github.ahmoodio.aurora.png"
+  install -Dm644 assets/icons/hicolor/256x256/apps/io.github.ahmoodio.aurora.png \
+    "$pkgdir/usr/share/pixmaps/aurora.png"
 }
