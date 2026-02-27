@@ -22,7 +22,6 @@ prepare() {
 build() {
     cd "TermiTune-$pkgver"
     export CARGO_HOME="$srcdir/cargo-home"
-    export RUSTFLAGS="-C opt-level=3 -C lto=thin"
     cargo build --release --locked 2>/dev/null || cargo build --release
 }
 
