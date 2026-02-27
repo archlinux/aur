@@ -1,0 +1,15 @@
+pkgbase = hapi-git
+	pkgdesc = App for agentic coding - access coding agent anywhere (Built from source)
+	pkgver = 0.15.3
+	pkgrel = 1
+	url = https://github.com/tiann/hapi
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0
+	depends = bun
+	provides = hapi
+	options = !strip
+	source = git+https://github.com/tiann/hapi.git#tag=v0.15.3
+	sha256sums = SKIP
+
+pkgname = hapi-git
