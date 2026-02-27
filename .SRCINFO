@@ -1,7 +1,7 @@
 pkgbase = hyprspaces
 	pkgdesc = Paired workspace plugin and setup scripts for Hyprland
-	pkgver = 1.1.7
-	pkgrel = 2
+	pkgver = 1.2.7
+	pkgrel = 1
 	url = https://github.com/jtaw5649/hyprspaces
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = hyprspaces
 	depends = hyprland
 	depends = python
 	options = !debug
-	source = hyprspaces-1.1.7.tar.gz::https://github.com/jtaw5649/hyprspaces/archive/refs/tags/v1.1.7.tar.gz
+	source = hyprspaces-1.2.7.tar.gz::https://github.com/jtaw5649/hyprspaces/archive/refs/tags/v1.2.7.tar.gz
 	sha256sums = SKIP
 
 pkgname = hyprspaces
