@@ -13,27 +13,27 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')  # Replace with real hash before AUR submission
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "TermiTune-$pkgver"
     # Download dependencies (offline build)
     export CARGO_HOME="$srcdir/cargo-home"
     cargo fetch --locked 2>/dev/null || cargo fetch
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "TermiTune-$pkgver"
     export CARGO_HOME="$srcdir/cargo-home"
     export RUSTFLAGS="-C opt-level=3 -C lto=thin"
     cargo build --release --locked 2>/dev/null || cargo build --release
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "TermiTune-$pkgver"
     export CARGO_HOME="$srcdir/cargo-home"
     cargo test --release 2>/dev/null || true
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "TermiTune-$pkgver"
 
     # Binary
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
