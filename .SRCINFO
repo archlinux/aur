@@ -1,7 +1,7 @@
 pkgbase = cinny-desktop-system-tray
 	pkgdesc = Yet another matrix client - with support for system tray minimization
-	pkgver = 4.10.1
-	pkgrel = 3
+	pkgver = 4.10.5
+	pkgrel = 1
 	url = https://cinny.in/
 	arch = x86_64
 	license = MIT
@@ -18,11 +18,11 @@ pkgbase = cinny-desktop-system-tray
 	depends = webkit2gtk
 	conflicts = cinny-desktop
 	conflicts = cinny-desktop-bin
-	source = cinny-desktop-4.10.1.zip::https://github.com/cinnyapp/cinny-desktop/releases/download/v4.10.1/cinny-desktop-v4.10.1.zip
+	source = cinny-desktop-4.10.5.zip::https://github.com/cinnyapp/cinny-desktop/releases/download/v4.10.5/cinny-desktop-v4.10.5.zip
 	source = system_tray_item.patch
 	source = single_instance_support.patch
-	md5sums = eeba3b5ab6e9eca71a011b12c4609660
-	md5sums = f9489548639237caa6f29fd2218b9d3b
-	md5sums = 79d8f8ca0527a2a51ee9080bf69c94da
+	sha256sums = 14d93e5ed81d09eb089f709d8c590020d6da8f26bfdb05acc61ad080f28a2b78
+	sha256sums = d19eecf46baf3db986b5072dc32da1786e7474bcd7d7c702327d7cdc40639ab7
+	sha256sums = d584556e92cea4f1d450827681a6a40a4b720840f6ce9da9f1489ab64db59fb0
 
 pkgname = cinny-desktop-system-tray

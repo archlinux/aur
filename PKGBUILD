@@ -1,9 +1,10 @@
-# Maintainer: bytedream <me@bytedream.dev>
+# Maintainer: fereira <eli@fereira.net>
+# Contributer: bytedream <me@bytedream.dev>
 #
 # This file is copied from the 'cinny-desktop' package (https://aur.archlinux.org/packages/cinny-desktop) and modified to include the system tray patches.
 pkgname='cinny-desktop-system-tray'
-pkgver='4.10.1'
-pkgrel='3'
+pkgver='4.10.5'
+pkgrel='1'
 pkgdesc='Yet another matrix client - with support for system tray minimization'
 arch=('x86_64')
 url='https://cinny.in/'
@@ -14,9 +15,9 @@ makedepends=('nodejs' 'npm' 'rust')
 source=("cinny-desktop-${pkgver}.zip::https://github.com/cinnyapp/cinny-desktop/releases/download/v${pkgver}/cinny-desktop-v${pkgver}.zip"
         "system_tray_item.patch"
         "single_instance_support.patch")
-md5sums=('eeba3b5ab6e9eca71a011b12c4609660'
-         'f9489548639237caa6f29fd2218b9d3b'
-         '79d8f8ca0527a2a51ee9080bf69c94da')
+sha256sums=('14d93e5ed81d09eb089f709d8c590020d6da8f26bfdb05acc61ad080f28a2b78'
+            'd19eecf46baf3db986b5072dc32da1786e7474bcd7d7c702327d7cdc40639ab7'
+            'd584556e92cea4f1d450827681a6a40a4b720840f6ce9da9f1489ab64db59fb0')
 
 prepare() {
     patch -d cinny-desktop -Np1 -i ../system_tray_item.patch || true
