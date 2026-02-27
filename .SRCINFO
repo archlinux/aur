@@ -1,6 +1,6 @@
 pkgbase = gazelle-installer
 	pkgdesc = Customizable GUI installer ported from MX Linux and antiX
-	pkgver = 26.02.4arch
+	pkgver = 26.02.5arch
 	pkgrel = 1
 	url = https://github.com/gazelle-installer
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = gazelle-installer
 	optdepends = partitionmanager: KDE partition manager
 	optdepends = cryptsetup: LUKS encryption support
 	options = !emptydirs
-	source = https://github.com/gazelle-installer/gazelle-installer/archive/refs/tags/26.02.4arch.tar.gz
-	sha256sums = 7bc4055efe61e14ffe2f25cc87cc7fca75d17cbb076fbb8db50f46cd0dc3f818
+	source = https://github.com/gazelle-installer/gazelle-installer/archive/refs/tags/26.02.5arch.tar.gz
+	sha256sums = 0be7d4223e4f8b11e09a589890ba1c3213719c0977c403766b6fd45fca813e30
 
 pkgname = gazelle-installer
