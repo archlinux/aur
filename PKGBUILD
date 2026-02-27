@@ -3,7 +3,7 @@
 pkgname=shorin-contrib-git
 _pkgname=shorin-contrib
 pkgver=r4.9419d69
-pkgrel=4
+pkgrel=5
 pkgdesc="Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-contrib"
@@ -46,6 +46,7 @@ package() {
     # 3. 配置全局命令
     install -dm755 "${pkgdir}/usr/bin"
     
+    ln -sf "/usr/lib/${_pkgname}/quicksave" "${pkgdir}/usr/bin/quicksave"
     ln -sf "/usr/lib/${_pkgname}/quickload" "${pkgdir}/usr/bin/quickload"
     
     # 写入 shorin 主调度器
