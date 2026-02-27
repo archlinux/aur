@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=simpleCache
-_pkgver=0.4.2
+_pkgver=0.4.3
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=8
+pkgrel=1
 pkgdesc="Simply Caching R Objects"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('9c06a53b3452831d7ae6ffdc415c6ed3')
-b2sums=('dc60c0bab0556b69dcc772c56a4af9a139cc559694870f3b0d726f6584a5f566dd03f52a4cb287e11eef33cbba6034ff7cb334ed232d237acf5aec27e9eee77b')
+md5sums=('a739960f4fc4b2a2fc3c2aab9f0375e5')
+b2sums=('e89d175f14ee6c9a88118d81d5879440e1b651083a4cf00bcec72f609a5d26e63c39b372832689fbb20e1364b99fead0e838bb78ee57c65b24d450c1964f9e85')
 
 build() {
   mkdir build
