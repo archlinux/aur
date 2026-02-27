@@ -1,0 +1,25 @@
+pkgbase = arch-soundpad
+	pkgdesc = Soundpad-style app for Arch Linux with virtual mic routing
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://local/arch-soundpad
+	install = arch-soundpad.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = tk
+	depends = ffmpeg
+	depends = pipewire-pulse
+	depends = python-xlib
+	source = soundpad_app.py
+	source = arch-soundpad
+	source = arch-soundpad.desktop
+	source = arch-soundpad.svg
+	source = README.md
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = arch-soundpad

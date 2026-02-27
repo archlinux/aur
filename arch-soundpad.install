@@ -1,0 +1,7 @@
+post_install() {
+  echo "Arch Soundpad installed. Run: arch-soundpad"
+}
+
+post_upgrade() {
+  post_install
+}
