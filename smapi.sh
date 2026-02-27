@@ -69,4 +69,9 @@ if [[ ! -f "${conf_path:?}/blacklist.json" ]]; then
     cp "/opt/gog-stardew-valley/game/smapi-internal/blacklist.json" "${conf_path:?}/blacklist.json"
 fi
 
+# Duplicates SMAPI config file to DataPath if it does not exist
+if [[ ! -f "${conf_path:?}/config.user.json" ]]; then
+    cp "/opt/gog-stardew-valley/game/smapi-internal/config.json" "${conf_path:?}/config.user.json"
+fi
+
 /opt/gog-stardew-valley/game/StardewModdingAPI --mods-path "$SMAPI_MODS_PATH" "$@"

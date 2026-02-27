@@ -1,8 +1,8 @@
 # Maintainer: Timur Bagautdinov <mr.bagautdinov14 at gmail dot com>
 
 pkgname="smapi-for-stardew-valley"
-pkgver=4.3.2
-pkgrel=2
+pkgver=4.5.1
+pkgrel=1
 pkgdesc="The modding API for Stardew Valley."
 url="https://github.com/Pathoschild/SMAPI"
 license=("LGPL-3.0-only")
@@ -19,9 +19,9 @@ source=(
 )
 
 sha256sums=(
-    'ed8e9ae12fc83a875f52fbc24eb7623c8981826083edc1b16b240beaabbcee51'
-    '7f5e18cf22f8a0785665a2cb50e98a31cb34fc0171164fedc3982e1a2a69935e'
-    '8a383cfb961cf8c7821615dae6738e34ad06b41212457e7828c5a2c58321f51c'
+    'a0be09beb0ef8e3f7cbb1ab7e7c7e6c7f26bf3dbaabe74c83f64ffcf06d98572'
+    '0ac826915ba178b707fa471b0650f78403d6e4977734c4ac69e079ac46485e33'
+    'a9f7ae9e24d07e47ccd5975b09ed465e629f03bf6e6078b3b144687b6affad9c'
 )
 
 prepare() {
@@ -37,6 +37,10 @@ prepare() {
     sed -i 's|internal static string ApiBlacklistPath => Path.Combine(Constants.InternalFilesPath, "blacklist.json");|internal static string ApiBlacklistPath => Path.Combine(Constants.DataPath, "blacklist.json");|' \
     "$srcdir/SMAPI-$pkgver/src/SMAPI/Constants.cs"
     sed -i 's|internal static string ApiBlacklistFetchedPath => Path.Combine(Constants.InternalFilesPath, "blacklist-updated.json");|internal static string ApiBlacklistFetchedPath => Path.Combine(Constants.DataPath, "blacklist-updated.json");|' \
+    "$srcdir/SMAPI-$pkgver/src/SMAPI/Constants.cs"
+
+    # Change SMAPI options file (config.user.json) path for mod "Generic Mod Config Menu UI"
+    sed -i 's|internal static string ApiUserConfigPath => Path.Combine(Constants.InternalFilesPath, "config.user.json");|internal static string ApiUserConfigPath => Path.Combine(Constants.DataPath, "config.user.json");|' \
     "$srcdir/SMAPI-$pkgver/src/SMAPI/Constants.cs"
 
     # SMAPI version
