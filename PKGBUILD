@@ -23,7 +23,7 @@ optdepends=(
     'pulseaudio: alternative to pipewire-pulse'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sean351/turn-up-arch/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('2579747a47457ded497091793c11d2486293f5902c2d6f184ac935b4a21ef17d')
 
 build() {
     cd "$pkgname-$pkgver"
