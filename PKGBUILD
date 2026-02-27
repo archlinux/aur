@@ -1,7 +1,7 @@
 # Maintainer: Patrick Oberherr <patrick@oberherr.at>
 
 pkgname=waybar-ai-usage-oauth
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Monitor Claude Code and Codex CLI usage in Waybar (OAuth-based)'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling'
 conflicts=('waybar-ai-usage')
 provides=('waybar-ai-usage')
 source=("waybar-ai-usage-oauth-${pkgver}.tar.gz::https://api.github.com/repos/poberherr/waybar-ai-usage-oauth/tarball/refs/tags/v${pkgver}")
-sha256sums=('a42f4746d1a0e9abf1e8a9a327530faa7d75c323342bd05fddde91359488a5ff')
+sha256sums=('bd531dfe9dc91edd257e38f728691bb94ef97b73d3db3012d2c375d78cdc7482')
 
 _srcdir() {
   find "${srcdir}" -maxdepth 1 -type d -name "poberherr-waybar-ai-usage-oauth-*" | head -n 1
