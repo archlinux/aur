@@ -14,7 +14,6 @@ pkgbase = noon-services
 	depends = networkmanager
 	depends = polkit-kde-agent
 	depends = sddm
-	depends = tlp
 	depends = upower
 	depends = wireplumber
 

@@ -16,7 +16,6 @@ depends=(
     'networkmanager'
     'polkit-kde-agent'
     'sddm'
-    'tlp'
     'upower'
     'wireplumber'
 )
@@ -24,4 +23,5 @@ depends=(
 package() {
     install -dm755 "$pkgdir/usr/share/doc/$pkgname"
     echo "System services for Noon" > "$pkgdir/usr/share/doc/$pkgname/README"
+    echo "Battery Profiler isn't included install what u like <3"
 }

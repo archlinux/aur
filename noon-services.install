@@ -5,7 +5,6 @@ post_install() {
     systemctl enable NetworkManager.service
     systemctl enable bluetooth.service
     systemctl enable ufw.service
-    systemctl enable tlp.service
     systemctl enable ananicy-cpp.service
     systemctl enable polkit-kde-agent.service
     systemctl enable upower.service
@@ -20,9 +19,7 @@ pre_remove() {
     systemctl disable NetworkManager.service
     systemctl disable bluetooth.service
     systemctl disable ufw.service
-    systemctl disable tlp.service
     systemctl disable ananicy-cpp.service
     systemctl disable polkit-kde-agent.service
     systemctl disable upower.service
-
 }
