@@ -1,0 +1,5 @@
+packages:
+  - name: gochecker
+    github:
+      repo: cilginc/gochecker
+    prefix: "v"

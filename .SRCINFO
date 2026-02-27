@@ -1,0 +1,15 @@
+pkgbase = gochecker
+	pkgdesc = Version checker for software releases written in go.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/cilginc/gochecker
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = go
+	depends = glibc
+	provides = gochecker
+	conflicts = gochecker
+	source = gochecker-0.0.1.tar.gz::https://github.com/cilginc/gochecker/archive/v0.0.1.tar.gz
+	sha512sums = 5d9c5fe6ab16f012a59977c8a4a71a1ca4ca9e8fdeb2d1f0af6271958c04224a2f386bc0cfe107f1e74260036da115c61fa5bb9ba971fa31fd8e0b1a17ebe54e
+
+pkgname = gochecker
