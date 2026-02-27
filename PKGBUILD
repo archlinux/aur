@@ -1,6 +1,6 @@
 # Maintainer: Jotalea <main@jotalea.com.ar>
 pkgname=oxicord-bin
-pkgver=0.1.7
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Vim-native Discord TUI for terminal enthusiasts. Instant navigation (jk/gG), smart follow mode, infinite history scrolling, and image support."
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ provides=('oxicord')
 conflicts=('oxicord')
 source_x86_64=("oxicord-$pkgver-x86_64::https://github.com/linuxmobile/oxicord/releases/download/v$pkgver/oxicord-x86_64-unknown-linux-gnu")
 source_aarch64=("oxicord-$pkgver-aarch64::https://github.com/linuxmobile/oxicord/releases/download/v$pkgver/oxicord-aarch64-unknown-linux-gnu")
-sha256sums_x86_64=('24e547f7bcade4abd1aedc566cf96222d462fec167de012a13fe6dc521172995')
-sha256sums_aarch64=('97127667298834eee53b0175d2da914dca59b9a3abfbf253d3908f0567ec962d')
+sha256sums_x86_64=('sha256:ce0ab0085a897d08eaf0ce0e71e679e1544b91e227efdd64ac922520699adfd2')
+sha256sums_aarch64=('sha256:6d34867a0de22eda904edf196ff7da0162d557a86f1ff2c9503f4b2dd228acaf')
 
 prepare() {
     # Rename files for easier handling
