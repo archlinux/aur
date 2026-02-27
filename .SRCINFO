@@ -24,14 +24,12 @@ pkgbase = linux-cachyos-rc
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/torvalds/linux/archive/refs/tags/v7.0-rc1.tar.gz
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0-rc1-2/cachyos-7.0-rc1-2.tar.gz
 	source = config
-	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/all/0001-cachyos-base-all.patch
 	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/misc/dkms-clang.patch
 	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/sched/0001-bore-cachy.patch
-	b2sums = 6aaa9ec55154e904913c1038b14a624606eec5dade2003bffa517c3bf5bb02a935e9b81142b10e86eb0457e1221822a149e79316dbcb0482bbc50c0b05a92b9c
-	b2sums = ae792abb13c35bfd32cd37159beba1a3031acce092b24f74083032fcbfb4701143a771a60549f00960800e370504e0bc0dc81e5ffaeb584cd2ce40cd9ebb18d6
-	b2sums = 1a7d7feaea32469194ee4418c226598a8cb0918c6e7ec7f46092f86dcc50b267284f12e58e0d5af52536a21c92d0e67703d40c17ced5ea4f9ec6903c220332ae
+	b2sums = 4481052eed14653ef91df56644fdaf87f7a121fc496bc20c3a375e9e3d7e24914555fa2d1cd8a10916c5052b087a1b35bb42d3108b37d15a12d2e625992a5c9a
+	b2sums = 591040c62075f0815173a9ceb2b00245b643253d94858c1c9d76b972445973e29696680d9d770efa313d8024d03efc3e55e44c05595ba20581c3a023cadf9237
 	b2sums = c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e
 	b2sums = 4abee3fe78bcfee79751396c9c8a4826b7831a0136a95778a416b1450f503de9ae6fb69de9331959368c522dc0dcfe37332c9042606ef50799658a4b3e29075f
 

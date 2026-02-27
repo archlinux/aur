@@ -174,13 +174,14 @@ _minor=0
 #_minorc=$((_minor+1))
 _rcver=rc1
 pkgver=${_major}.${_rcver}
+_tagrel=2
+pkgrel=1
 #_stable=${_major}.${_minor}
 #_stable=${_major}
 _stable=${_major}-${_rcver}
-_srcname=linux-${_stable}
-#_srcname=linux-${_major}
+_srctag=cachyos-${_major}-${_rcver}-${_tagrel}
+_srcname=${_srctag}
 pkgdesc='Linux BORE + LTO + AutoFDO + Propeller + Cachy Sauce Kernel by CachyOS with other patches and improvements - Release Candidate'
-pkgrel=1
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_pkgsuffix}"
 arch=('x86_64')
@@ -208,9 +209,8 @@ _nv_ver=590.48.01
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
-    "https://github.com/torvalds/linux/archive/refs/tags/v${_stable}.tar.gz"
-    "config"
-    "${_patchsource}/all/0001-cachyos-base-all.patch")
+    "https://github.com/CachyOS/linux/releases/download/${_srctag}/${_srctag}.tar.gz"
+    "config")
 
 # LLVM makedepends
 if _is_lto_kernel; then
@@ -232,7 +232,7 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=3bf17cf5387fa5e0044a6321e663aead38b45969")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=1c702dda346a59e05cfd3029569bbb1d5d91c54b")
 fi
 
 
@@ -803,8 +803,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('6aaa9ec55154e904913c1038b14a624606eec5dade2003bffa517c3bf5bb02a935e9b81142b10e86eb0457e1221822a149e79316dbcb0482bbc50c0b05a92b9c'
-        'ae792abb13c35bfd32cd37159beba1a3031acce092b24f74083032fcbfb4701143a771a60549f00960800e370504e0bc0dc81e5ffaeb584cd2ce40cd9ebb18d6'
-        '1a7d7feaea32469194ee4418c226598a8cb0918c6e7ec7f46092f86dcc50b267284f12e58e0d5af52536a21c92d0e67703d40c17ced5ea4f9ec6903c220332ae'
+b2sums=('4481052eed14653ef91df56644fdaf87f7a121fc496bc20c3a375e9e3d7e24914555fa2d1cd8a10916c5052b087a1b35bb42d3108b37d15a12d2e625992a5c9a'
+        '591040c62075f0815173a9ceb2b00245b643253d94858c1c9d76b972445973e29696680d9d770efa313d8024d03efc3e55e44c05595ba20581c3a023cadf9237'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e'
         '4abee3fe78bcfee79751396c9c8a4826b7831a0136a95778a416b1450f503de9ae6fb69de9331959368c522dc0dcfe37332c9042606ef50799658a4b3e29075f')
