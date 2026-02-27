@@ -1,12 +1,12 @@
 pkgbase = nmtui-go
 	pkgdesc = A TUI for managing NetworkManager Wi-Fi connections on Linux
-	pkgver = 0.2.6_beta.2
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/doeixd/nmtui-go
 	arch = x86_64
 	license = MIT
 	depends = networkmanager
-	source = nmtui-go-0.2.6_beta.2.tar.gz::https://github.com/doeixd/nmtui-go/releases/download/v0.2.6-beta.2/nmtui-go_0.2.6-beta.2_linux_amd64.tar.gz
+	source = nmtui-go-0.2.7.tar.gz::https://github.com/doeixd/nmtui-go/releases/download/v0.2.7/nmtui-go_.tar.gz
 	sha256sums = 183d622238314e7f519d3e7e66a7782c7b3987afe5fc4a48033c17bd1404d3c3
 
 pkgname = nmtui-go
