@@ -1,0 +1,16 @@
+pkgbase = synx-git
+	pkgdesc = A fast and easy CLI tool for managing dotfiles with git-based version control
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Blumenwagen/synx
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	provides = synx
+	conflicts = synx
+	source = git+https://github.com/Blumenwagen/synx.git
+	sha256sums = SKIP
+
+pkgname = synx-git
