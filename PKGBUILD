@@ -5,16 +5,16 @@
 # Contributor: Lauri Niskanen <ape@ape3000.com>
 _pkgname=libretro-gambatte
 pkgname=$_pkgname-git
-pkgver=r996.e9b8013
+pkgver=r1082.9fe223d
 pkgrel=1
 epoch=1
 pkgdesc="Nintendo Game Boy/Game Boy Color core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/gambatte-libretro"
-license=('GPL2')
+license=('GPL-2.0-only')
 groups=('libretro')
-depends=('gcc-libs' 'glibc' 'libretro-core-info')
-makedepends=('git')
+depends=('glibc' 'libretro-core-info')
+makedepends=('git' 'libstdc++')
 provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
@@ -22,18 +22,24 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
-	sed -i 's/-O[0123s]//;s/-Ofast//' $_pkgname/Makefile.libretro
+	cd $_pkgname
+	# remove hardcoded optimization flags
+	sed -Ei 's/-O([0123s]|fast)//' Makefile.libretro
 }
 
 build() {
-	make -C $_pkgname
+	cd $_pkgname
+	make
 }
 
 package() {
+	depends+=('libstdc++.so')
+
+	cd $_pkgname
 	# shellcheck disable=SC2154
-	install -D -t "$pkgdir"/usr/lib/libretro $_pkgname/gambatte_libretro.so
+	install -D -t "$pkgdir"/usr/lib/libretro gambatte_libretro.so
 }
