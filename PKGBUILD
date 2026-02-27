@@ -1,6 +1,6 @@
 # Maintainer: Tom <tomemme@outlook.com>
 pkgname=encrypted-journal-git
-pkgver=0.r85.gc49a207
+pkgver=0.r94.g637aedd
 pkgrel=1
 pkgdesc="Encrypted desktop journal app (Tkinter + AES-GCM)"
 arch=('any')

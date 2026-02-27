@@ -1,6 +1,6 @@
 pkgbase = encrypted-journal-git
 	pkgdesc = Encrypted desktop journal app (Tkinter + AES-GCM)
-	pkgver = 0.r85.gc49a207
+	pkgver = 0.r94.g637aedd
 	pkgrel = 1
 	url = https://github.com/tomemme/EncryptedJournal
 	arch = any
