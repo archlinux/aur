@@ -1,7 +1,7 @@
 pkgbase = waybar-codex-usage
 	pkgdesc = Waybar widget displaying OpenAI Codex subscription usage with colored progress bars
-	pkgver = 0.0.1
-	pkgrel = 2
+	pkgver = 0.1.0
+	pkgrel = 1
 	url = https://github.com/mryll/waybar-codex-usage
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = waybar-codex-usage
 	depends = curl
 	depends = jq
 	optdepends = libnotify: desktop notifications on session expiry
-	source = waybar-codex-usage-0.0.1.tar.gz::https://github.com/mryll/waybar-codex-usage/archive/refs/tags/v0.0.1.tar.gz
-	sha256sums = 3422afef4486f4229dbee04d9216f44dfe0a233d1ba04823d2ce4c983a8c8bc1
+	source = waybar-codex-usage-0.1.0.tar.gz::https://github.com/mryll/waybar-codex-usage/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 1c4694244e82a601eb5b9a0b506457ec69826e92646c244201560170424ee2a7
 
 pkgname = waybar-codex-usage
