@@ -6,7 +6,7 @@ arch=('x86_64')
 url='https://orca-studio.com/orcanote/zh/'
 license=()
 options=("!strip")
-depends=('fuse2')
+depends=('fuse2' 'hicolor-icon-theme' 'zlib')
 source=(
   "https://github.com/sethyuan/orca-note/releases/download/v${pkgver}/orcanote-linux-x86_64-${pkgver}.AppImage"
 )
