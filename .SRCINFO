@@ -1,17 +1,17 @@
 pkgbase = heaper-bin
 	pkgdesc = Your files deserve their story
-	pkgver = 16.16.39
+	pkgver = 16.16.41
 	pkgrel = 1
 	url = https://heaper.de/
 	arch = x86_64
 	license = unknown
 	depends = fuse2
-	noextract = heaper-bin-16.16.39.AppImage
+	noextract = heaper-bin-16.16.41.AppImage
 	options = !strip
-	source = heaper-bin-16.16.39.AppImage::https://github.com/JanLunge/heaper-releases/releases/download/electron-v16.16.39/Heaper-16.16.39-x86_64.AppImage
+	source = heaper-bin-16.16.41.AppImage::https://github.com/JanLunge/heaper-releases/releases/download/electron-v16.16.41/Heaper-16.16.41-x86_64.AppImage
 	source = heaper.sh
 	source = heaper.desktop
-	sha256sums = e917a93551a80c313332f4ccafe533412ee3b99f44197cc89d1424f3a8ed1c2a
+	sha256sums = d4296561c8f84138d546ba71c861ae7f6400fa2f1e6c0d106504554b652d1b5f
 	sha256sums = 882d4689f2e4f28857ad6d1ed39f69a87ae5e2e5b69f973094306291703fe9a5
 	sha256sums = 22a32e412696d5be061d27ba43f07bc925e9f2fa835e52e377b710826a7371fd
 
