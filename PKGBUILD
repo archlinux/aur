@@ -1,6 +1,6 @@
 # Maintainer: Wimpy <vvinn.py[AT]gmail.com>
 pkgname=codebuddy-cli
-pkgver=2.51.2
+pkgver=2.52.0
 pkgrel=1
 pkgdesc="腾讯AI编程助手 CodeBuddy CLI 工具 (@tencent-ai/codebuddy-code)"
 arch=('any')
