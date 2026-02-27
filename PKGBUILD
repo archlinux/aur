@@ -1,23 +1,24 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4-qtlauncher
 pkgname=$_pkgname-git
-pkgver=r144.55bb7f7
-pkgrel=2
+pkgver=r208.6c1ca08
+pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (Qt GUI)"
 arch=('aarch64' 'x86_64')
 url="https://shadps4.net/"
 license=('GPL-2.0-or-later')
 depends=(
-	'gcc-libs'
 	'glibc'
 	'hicolor-icon-theme'
-	'pugixml>=1.14'
 	'sdl3>=3.1.8'
 )
 makedepends=(
 	'cmake>=3.16.3'
 	'fmt>=10.2'
 	'git'
+	'libgcc'
+	'libstdc++'
+	'pugixml>=1.14'
 	'qt6-base'
 	'qt6-multimedia'
 	'qt6-tools'
@@ -50,6 +51,8 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	# remove hardcoded flag
 	sed -i '/-march=/d' CMakeLists.txt
+	# remove unneeded header
+	sed -i '/pugixml\.hpp/d' src/common/memory_patcher.cpp
 }
 
 build() {
@@ -69,9 +72,12 @@ build() {
 package() {
 	depends+=(
 		'libfmt.so'
+		'libgcc_s.so'
+		'libstdc++.so'
 		'qt6-base'
 		'qt6-multimedia'
 	)
+
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
 }
