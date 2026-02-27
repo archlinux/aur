@@ -1,6 +1,6 @@
 # Maintainer: Eric Jingryd <tidynest@proton.me>
 pkgname=linux-system-hardener
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Linux security automation: scanning, hardening, and rollback across 8 domains"
 arch=('x86_64')
@@ -34,7 +34,7 @@ makedepends=(
     'pkg-config'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tidynest/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('98439d3f29840cb31b1a3598d82923ddf6d17e6090d07f8e3f50a0f2fc2d54a3')
+sha256sums=('NEW_HASH')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -45,6 +45,11 @@ build() {
     # Rust applies its own LTO via [profile.release] lto = true.
     export CFLAGS="${CFLAGS//-flto=auto/}"
     export CXXFLAGS="${CXXFLAGS//-flto=auto/}"
+
+    # Remap absolute source paths embedded by panic!/unwrap/tracing to
+    # relative prefixes — prevents $srcdir and $HOME leaking into binaries.
+    _remap="--remap-path-prefix=$srcdir=src: --remap-path-prefix=$HOME/.cargo/registry/src/=registry: --remap-path-prefix=$HOME/.rustup/toolchains/=toolchain:"
+    export RUSTFLAGS="${RUSTFLAGS:-} ${_remap}"
 
     cargo build --release --target x86_64-unknown-linux-musl -p hardener-cli
 
