@@ -1,0 +1,17 @@
+pkgbase = open-interpreter-desktop-bin
+	pkgdesc = Open Interpreter Desktop Agent (AppImage, upstream is 'latest' only)
+	pkgver = latest
+	pkgrel = 1
+	url = https://openinterpreter.com/
+	install = open-interpreter-desktop-bin.install
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	provides = interpreter-desktop
+	conflicts = interpreter-desktop
+	options = !strip
+	options = !debug
+	source = Interpreter.AppImage::https://openinterpreter.com/download/linux/appimage
+	sha256sums = SKIP
+
+pkgname = open-interpreter-desktop-bin
