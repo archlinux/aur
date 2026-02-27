@@ -1,0 +1,5 @@
+[gitv]
+source = "git"
+git = "https://github.com/JayanAXHF/gitv.git"
+prefix = "gitv-tui-v"
+include_regex = 'gitv-tui-v\d+\.\d+\.\d+'
