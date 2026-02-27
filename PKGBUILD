@@ -1,8 +1,7 @@
 # Maintainer: Darren Ng <`base64 -d <<<aGMwbWV1QG5hdmVyLmNvbQo=`>
 
-_V=1.4.5
-pkgver=r368.9aed33b
-pkgrel=3
+pkgver=r380.7f76539
+pkgrel=1
 arch=(any)
 
 pkgname=apkeditor-git
@@ -11,10 +10,11 @@ pkgdesc="powerful android apk editor - aapt/aapt2 independent"
 license=(Apache-2.0)
 source=(git+https://github.com/REAndroid/{APKEditor,ARSCLib,JCommand,smali-lib})
 sha256sums=(SKIP SKIP SKIP SKIP)
-provides=(apkeditor=$_V)
+provides=(apkeditor)
 conflicts=(apkeditor)
 
 _J=8
+_JV=VERSION_1_8
 depends=(jre$_J-openjdk-headless)
 makedepends=(jdk$_J-openjdk git)
 
@@ -26,10 +26,10 @@ pkgver() {
 build() {
 
 	# java 1.8
-	[[ JavaVersion.VERSION_1_8 = `find "$srcdir" -name build.gradle | xargs grep -h VERSION | tr -s " " | cut -d " " -f 3 | sort | uniq` ]]
+	[[ JavaVersion.$_JV = `find "$srcdir" -name build.gradle | xargs grep -h VERSION | tr -s " " | cut -d " " -f 3 | sort | uniq` ]]
 	export JAVA_HOME=/usr/lib/jvm/java-$_J-openjdk
 
-	# smali aka smali-lib
+	# alias
 	ln -sv "smali-lib" smali
 
 	# remove prebuilt libs
@@ -40,18 +40,19 @@ build() {
 	# build lib
 	cd "$srcdir"/ARSCLib
 	./gradlew jar
-	mv -v build/libs/ARSCLib-1.3.8.jar "$_L"/ARSCLib.jar
+	# automatically calculate relative path
+	ln -s "$(realpath --relative-to="$_L" build/libs/ARSCLib-*.jar)" "$_L"/ARSCLib.jar
 
 	# build lib
 	cd "$srcdir"/JCommand
 	./gradlew jar
-	mv -v build/libs/JCommand-1.0.0.jar "$_L"/JCommand.jar
+	ln -s "$(realpath --relative-to="$_L" build/libs/JCommand-*.jar)" "$_L"/JCommand.jar
 
 	# build lib
 	cd "$srcdir"/smali
 	./gradlew jar
 	./gradlew :smali:fatjar
-	mv -v smali/build/libs/smali-2.5.2-fat.jar "$_L"/smali.jar
+	ln -s "$(realpath --relative-to="$_L" smali/build/libs/smali-*-fat.jar)" "$_L"/smali.jar
 
 	# build apkeditor
 	cd "$srcdir"/APKEditor
@@ -64,23 +65,24 @@ package() {
 	# install
 	local _S=usr/share/java/apkeditor
 	mkdir -p "$pkgdir"/$_S
-	mv APKEditor/build/libs/APKEditor-$_V.jar "$_"/
+	cp APKEditor/build/libs/APKEditor-*.jar "$_"/APKEditor.jar
 
 	# dump version
-	ln -sv "smali-lib" smali
+	ln -sfv "smali-lib" smali
 	for i in $_P APKEditor ARSCLib JCommand smali; do
 		cd "$srcdir"/$i
 		printf "${i^^}=%s # r%s\n" "$(git rev-parse HEAD)" "$(git rev-list --count HEAD)"
 	done >"$pkgdir"/$_S/VERSION
 
 # runner
-mkdir -p "$pkgdir"/usr/bin
-cd "$_"
+	mkdir -p "$pkgdir"/usr/bin
+	cd "$_"
 cat >apkeditor <<EOF
 #!/bin/sh
-exec /usr/lib/jvm/java-$_J-openjdk/jre/bin/java -jar /$_S/APKEditor-$_V.jar "\$@"
+export JAVA_HOME=/usr/lib/jvm/java-$_J-openjdk
+exec "\$JAVA_HOME"/jre/bin/java -jar /$_S/APKEditor.jar "\$@"
 EOF
-chmod +x apkeditor
+	chmod +x apkeditor
 
 }
 
