@@ -3,7 +3,7 @@
 _pkgauthor=Merrit
 _pkgname=Nyrna
 pkgname=${_pkgname,,}-bin
-pkgver=2.26.0
+pkgver=2.26.1
 pkgrel=1
 pkgdesc='Suspend games and applications at any time and resume whenever you wish'
 url="https://github.com/${_pkgauthor}/${_pkgname,,}"
@@ -20,10 +20,10 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "ICON-${pkgver}::${_urlraw}/assets/icons/codes.merritt.Nyrna.png")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-Linux-Portable.tar.gz")
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '9b7df10497c04c32109da509ea9f844037a8b660e09c27f734a9031d3ee4db08'
+            '516f61c820dcf9e9c2f7c63f6d7abedf1901f50b4b23cb3d3c3dd14551c01db1'
             '28472abdbc7fbc4a19cfe4a808fb8eb69604621981c2e17a6b95bd22d08f7554'
             '7e4aa2e0d19bc204813521afa7dc16c5b69798a92484379666849ba351066f4e')
-sha256sums_x86_64=('07afecd28a7b1a950293caf79b52505bc8a680457c8702f81de9a9ca4632b576')
+sha256sums_x86_64=('52b8a103906b930c02954a1679dacb9be7dfdbbf86baa9a27417ba4add5cc50e')
 
 prepare() {
   cd "${srcdir}/"
