@@ -1,0 +1,18 @@
+pkgbase = codemogger-git
+	pkgdesc = Local code indexing/search for AI coding agents. Uses Turso for vector storage.
+	pkgver = r13.5156917
+	pkgrel = 1
+	url = https://github.com/glommer/codemogger
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = bun
+	provides = codemogger
+	conflicts = codemogger
+	options = !strip
+	options = !debug
+	source = git+https://github.com/glommer/codemogger.git
+	sha256sums = SKIP
+
+pkgname = codemogger-git
