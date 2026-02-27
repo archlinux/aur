@@ -1,7 +1,7 @@
 # Maintainer: Sombrechip88244 <Sombrechip88244@users.noreply.github.com>
 pkgname=tui-games-launcher-git
 pkgver=1.0.0.r0.gff4c8ad
-pkgrel=2
+pkgrel=1
 pkgdesc="A minimal, classic, keyboard-driven game launcher for Steam and more."
 arch=('any')
 url="https://github.com/Sombrechip88244/tui-games-launcher"
@@ -15,10 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
