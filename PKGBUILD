@@ -1,4 +1,5 @@
-# Contributor: Your Name <youremail@domain.com>
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: ItachiSan
 # Based on: https://wiki.archlinux.org/title/Perl_package_guidelines#PKGBUILD_Examples
 _dist=File-DirList
 pkgname=perl-file-dirlist
