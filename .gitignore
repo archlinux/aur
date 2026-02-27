@@ -1,0 +1,7 @@
+pkg/
+src/
+
+openscreen-git/
+
+openscreen-git-*.pkg.tar.zst
+openscreen.tar.gz
