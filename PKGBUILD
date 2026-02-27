@@ -1,7 +1,7 @@
 # Maintainer: noctalia-dev <team@noctalia.dev>
 pkgname=noctalia-qs
 pkgver=0.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Custom fork of Quickshell powering Noctalia Shell'
 arch=(x86_64 aarch64)
 url="https://github.com/noctalia-dev/noctalia-qs"
@@ -35,7 +35,7 @@ makedepends=(
     vulkan-headers
 )
 
-provides=("quickshell")
+provides=("quickshell" "quickshell-git")
 
 conflicts=(
     quickshell
