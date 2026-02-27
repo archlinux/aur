@@ -2,7 +2,7 @@
 
 pkgname=kdenlive-appimage-pure
 _pkgname=kdenlive
-pkgver=25.12.1
+pkgver=25.12.2
 pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework (AppImage build)"
 arch=('x86_64')
@@ -14,8 +14,8 @@ depends=('fuse2')
 options=(!strip)
 _filename="${_pkgname}-${pkgver}-${arch}.AppImage"
 _folder="${pkgver%.*}"
-source_x86_64=("kdenlive-25.12.1-x86_64.AppImage::https://download.kde.org/stable/kdenlive/25.12/linux/kdenlive-25.12.1-x86_64.AppImage")
-sha256sums_x86_64=('21ad5481f686f811794e66c7d46924905d468f0521d5f1c6529b7a42a5df5e17')
+source_x86_64=("kdenlive-25.12.2-x86_64.AppImage::https://download.kde.org/stable/kdenlive/25.12/linux/kdenlive-25.12.2-x86_64.AppImage")
+sha256sums_x86_64=('1917a2473ead9d5e5295e74ae17622a433ffabf1cb63d02f9bbf1920dfbe6e5b')
 
 prepare() {
 	cd "${srcdir}"
@@ -30,27 +30,9 @@ package() {
 
 	local appdir="${pkgdir}/opt/appimages/${_pkgname}"
 	install -d "${appdir}"
-	install -Dm755 "${_filename}" "${appdir}/${_filename}"
-
+	install -Dm755 "${_filename}" "${appdir}/${_filename}"		
 	install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${_pkgname}" <<EOF
 #!/bin/sh
-
-# 为 kdenlive AppImage 配置输入法
-# 此 AppImage 的 Qt 不支持 fcitx 协议，统一使用 ibus
-
-if pgrep -x "fcitx5" > /dev/null || pgrep -x "fcitx" > /dev/null; then
-    # fcitx/fcitx5 运行中：通过 ibus 协议连接
-    export QT_IM_MODULE=ibus
-    export IBUS_USE_PORTAL=1
-elif pgrep -x "ibus-daemon" > /dev/null; then
-    # ibus 运行中：直接连接
-    export QT_IM_MODULE=ibus
-else
-    # 未检测到输入法：使用默认 ibus 配置
-    export QT_IM_MODULE=ibus
-    export IBUS_USE_PORTAL=1
-fi
-
 exec /opt/appimages/${_pkgname}/${_filename} "\$@"
 EOF
 
