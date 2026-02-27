@@ -4,7 +4,7 @@ _pkgname='Prospect Mail'
 pkgver=1.2.1
 _electronversion=39
 _nodeversion=22
-pkgrel=2
+pkgrel=3
 pkgdesc="An unofficial Outlook mail desktop client powered by Electron.(Use system-wide electron)"
 arch=(
     'aarch64'
@@ -85,13 +85,13 @@ prepare() {
         find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
     fi
     _ensure_local_nvm
-    #NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
+    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
 }
 build() {
     cd "${srcdir}/${pkgname}.git"
     _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
-    #NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
+    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"

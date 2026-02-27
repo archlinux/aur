@@ -1,7 +1,7 @@
 pkgbase = prospect-mail
 	pkgdesc = An unofficial Outlook mail desktop client powered by Electron.(Use system-wide electron)
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/julian-alarcon/prospect-mail
 	arch = aarch64
 	arch = armv7h
