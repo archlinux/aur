@@ -1,6 +1,6 @@
 pkgname=hyprcord-bin
 pkgver=1.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Hyprcord - a custom Discord client"
 arch=('x86_64')
 url="https://github.com/Bebbesi/HyprCord"
@@ -19,30 +19,37 @@ prepare() {
 }
 
 package() {
-  # Install app to /opt
+  # Install to /opt
   install -dm755 "${pkgdir}/opt/hyprcord"
-  cp -r squashfs-root/* "${pkgdir}/opt/hyprcord"
+  cp -a squashfs-root/. "${pkgdir}/opt/hyprcord"
 
-  # Fix Chrome sandbox permissions (Crucial for extracted Electron apps)
-  if [ -f "${pkgdir}/opt/hyprcord/chrome-sandbox" ]; then
+  # Normalize permissions (AppImages often ship restrictive perms)
+  find "${pkgdir}/opt/hyprcord" -type d -exec chmod 755 {} \;
+  find "${pkgdir}/opt/hyprcord" -type f -exec chmod 644 {} \;
+
+  # Restore executable bits
+  chmod 755 "${pkgdir}/opt/hyprcord/Hyprcord"
+  chmod 755 "${pkgdir}/opt/hyprcord/Hyprcord.bin"
+  chmod 755 "${pkgdir}/opt/hyprcord/chrome_crashpad_handler"
+
+  # Chrome sandbox must be setuid
+  if [[ -f "${pkgdir}/opt/hyprcord/chrome-sandbox" ]]; then
     chmod 4755 "${pkgdir}/opt/hyprcord/chrome-sandbox"
   fi
 
-  # Create a wrapper script pointing to the capitalized binary
-  install -d "${pkgdir}/usr/bin"
-  cat <<EOF > "${pkgdir}/usr/bin/hyprcord"
+  # Wrapper script
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/hyprcord" <<EOF
 #!/bin/sh
 exec /opt/hyprcord/Hyprcord --ozone-platform-hint=auto "\$@"
 EOF
-  chmod +x "${pkgdir}/usr/bin/hyprcord"
 
-  # Install icon if present
-  if [ -f squashfs-root/usr/share/icons/hicolor/256x256/apps/hyprcord.png ]; then
+  # Icon (if present)
+  if [[ -f squashfs-root/usr/share/icons/hicolor/256x256/apps/hyprcord.png ]]; then
     install -Dm644 squashfs-root/usr/share/icons/hicolor/256x256/apps/hyprcord.png \
       "${pkgdir}/usr/share/icons/hicolor/256x256/apps/hyprcord.png"
   fi
 
-  # Desktop file
+  # Desktop entry
   install -Dm644 /dev/stdin \
     "${pkgdir}/usr/share/applications/hyprcord.desktop" <<EOF
 [Desktop Entry]
@@ -57,8 +64,8 @@ EOF
 
   desktop-file-validate "${pkgdir}/usr/share/applications/hyprcord.desktop"
 
-  # Install license if available
-  if [ -f squashfs-root/LICENSE ]; then
+  # License
+  if [[ -f squashfs-root/LICENSE ]]; then
     install -Dm644 squashfs-root/LICENSE \
       "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   fi
