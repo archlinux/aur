@@ -1,4 +1,4 @@
-# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-02-26 13:53:06
+# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-02-27 11:42:28
 
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Maintainer: Piotr Gorski <piotrgorski@cachyos.org>
@@ -172,17 +172,18 @@ fi
 
 pkgbase="linux-cachyos-native"
 _major=6.19
-_minor=3
+_minor=4
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_stable=${_major}.${_minor}
-#_stable=${_major}
+_tagrel=2
+pkgrel=1
+#_stable=${_major}.${_minor}
+_stable=${_major}
 #_stablerc=${_major}-${_rcver}
-_srcname=linux-${_stable}
-#_srcname=linux-${_major}
+_srctag=cachyos-${_major}.${_minor}-${_tagrel}
+_srcname=${_srctag}
 pkgdesc='Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements.'
-pkgrel=1.1
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgver}-${_pkgsuffix}"
 arch=('x86_64')
@@ -210,9 +211,8 @@ _nv_ver=590.48.01
 _nv_pkg="NVIDIA-Linux-x86_64-${_nv_ver}"
 _nv_open_pkg="NVIDIA-kernel-module-source-${_nv_ver}"
 source=(
-    "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.xz"
-    "config"
-    "${_patchsource}/all/0001-cachyos-base-all.patch")
+    "https://github.com/CachyOS/linux/releases/download/${_srctag}/${_srctag}.tar.gz"
+    "config")
 
 # LLVM makedepends
 if _is_lto_kernel; then
@@ -234,7 +234,7 @@ fi
 # ZFS support
 if [ "$_build_zfs" = "yes" ]; then
     makedepends+=(git)
-    source+=("git+https://github.com/cachyos/zfs.git#commit=3bf17cf5387fa5e0044a6321e663aead38b45969")
+    source+=("git+https://github.com/cachyos/zfs.git#commit=1c702dda346a59e05cfd3029569bbb1d5d91c54b")
 fi
 
 
@@ -810,9 +810,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('a6026d06097726bfafc19c83c94949c15bee5578bb7a872612a13a9ddbbdc871e18395832da27350aa476ba947c7e8904b1161c455b8bdf4a5fe9127c32c6818'
-        '3a291a7365970412096bcb53c81a7a050e608de4e051abe3ec264e9e00ff5a94c0094dfcdc37632a6ad611ad19a614b0f0963cd6a4825c039d3e93e222b1956c'
-        'd2ff199e5bbc87379f44738058ffa16290077f89bf5d4f5a91e6b4df9b88fdeeae7492e15fd0bec1356a3d5280384fb872f1a637070eb6e49a3bca57658667b3'
+b2sums=('fdae47876ff30f643033bd6f6a178b6b2330c7e9707240faa3ea81cdd49d94fbce2ef8766a4a6d85044260f968b64722d4ce7d17993b2f32d0401f8dc83e263e'
+        'af28fa649fc258e87227379cff688ea3bc1440cc23b9c1ee5a63805c618c8b5d37df420ba477afa38f10bbe2ad2ba3af525731e21d144decd8ff0284c0eefeb8'
         'ea26c88950fc06b6ffab93b30e3beacc7d26571a70262334ca8b001dc7899bf96b47d703fbaa7f4e47765c3dafccc23c58a4d4da2169b8ee50012afcb7a1dd96'
         'eae57ceccc78f0730fc4962b20f08f270bd21960e84ad5985433590e5229403a74bfc2518540f9e2ef07d319d9cb2288edfbe0d5f7a27cc7e0903aa61fed388c'
         '05a3cc4954a37897d08e93e8ea1726fc395a12cfb1509f09560bdcf0ae14ed4ca518fda566a618c92db0fb6573e3ed7d02172dd76a3b145982060e060525365b'
