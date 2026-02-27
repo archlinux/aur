@@ -1,6 +1,6 @@
 pkgbase = meteobar-bin
 	pkgdesc = Weather widget for Waybar using Open-Meteo — no API key required (prebuilt binary)
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/mryll/meteobar
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = meteobar-bin
 	optdepends = otf-font-awesome: Font Awesome icon set (--icons fontawesome)
 	provides = meteobar
 	conflicts = meteobar
-	source = meteobar-0.1.2::https://github.com/mryll/meteobar/releases/download/v0.1.2/meteobar-0.1.2-x86_64-linux
-	source = LICENSE-0.1.2::https://raw.githubusercontent.com/mryll/meteobar/v0.1.2/LICENSE
-	sha256sums = d57065e66416c7f3e7b31f865794342099bc0854f282a96b0d900df6f2f376c0
+	source = meteobar-0.1.3::https://github.com/mryll/meteobar/releases/download/v0.1.3/meteobar-0.1.3-x86_64-linux
+	source = LICENSE-0.1.3::https://raw.githubusercontent.com/mryll/meteobar/v0.1.3/LICENSE
+	sha256sums = 1085d94e633122002436c0cca2eb00de4cfbd3b6b7a94adb497bde76a9d8c6fe
 	sha256sums = aa9f3a694508cadff239e4694992eac66611723af6ce8643e80ca5c7db8c9e4e
 
 pkgname = meteobar-bin
