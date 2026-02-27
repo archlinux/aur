@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgbase=xjtutoolbox
 pkgname=xjtutoolbox
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="仙交百宝箱：西安交通大学一站式校园服务工具（混合依赖模式：Official + AUR + Venv）"
 arch=('any')
