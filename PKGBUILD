@@ -3,8 +3,8 @@
 
 pkgname=libreoffice-extension-ooolilypond
 _pkgname=OOoLilyPond
-pkgver=1.1.10
-pkgrel=2
+pkgver=1.1.11
+pkgrel=1
 pkgdesc='With OOoLilyPond (OLy) you can use musical notation within OpenOffice.org. Use it for writing a book on music theory or for writing down exercises for music instruments or voice which need to be commented with text.'
 arch=('any')
 url='https://github.com/OOoLilyPond'
@@ -14,7 +14,7 @@ groups=('libreoffice-extensions')
 #source=("http://downloads.sourceforge.net/ooolilypond/$_pkgname-$pkgver.oxt")
 source=("https://github.com/OOoLilyPond/OOoLilyPond/releases/download/v${pkgver}/${_pkgname}-${pkgver}.oxt")
 
-sha256sums=('953d1f2a1643100f98e2045525eb2f09a001803cab6a65d71a3660a3b0ad0b14')
+sha256sums=('119275f9d44989497561c2afb247cde60d27643da813624e5e731e9c1510c073')
 noextract=("$_pkgname-${pkgver}.oxt")
 options=("!emptydirs")
 
