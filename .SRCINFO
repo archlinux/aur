@@ -1,6 +1,6 @@
 pkgbase = xjtutoolbox-bin
 	pkgdesc = XJTUToolBox - A powerful utility tool (Pre-compiled)
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/yan-xiaoo/XJTUToolBox
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = xjtutoolbox-bin
 	license = MIT
 	provides = xjtutoolbox
 	conflicts = xjtutoolbox
-	source_x86_64 = https://github.com/yan-xiaoo/XJTUToolBox/releases/download/v1.2.3/XJTUToolbox-linux-x86_64.pkg.tar.zst
+	source_x86_64 = https://github.com/yan-xiaoo/XJTUToolBox/releases/download/v1.2.4/XJTUToolbox-linux-x86_64.pkg.tar.zst
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/yan-xiaoo/XJTUToolBox/releases/download/v1.2.3/XJTUToolbox-linux-arm64.pkg.tar.zst
+	source_aarch64 = https://github.com/yan-xiaoo/XJTUToolBox/releases/download/v1.2.4/XJTUToolbox-linux-arm64.pkg.tar.zst
 	sha256sums_aarch64 = SKIP
 
 pkgname = xjtutoolbox-bin

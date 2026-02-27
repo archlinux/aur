@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=xjtutoolbox-bin
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="XJTUToolBox - A powerful utility tool (Pre-compiled)"
 arch=('x86_64' 'aarch64')
