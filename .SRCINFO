@@ -1,6 +1,6 @@
 pkgbase = libretro-bsnes-git
 	pkgdesc = Super Nintendo Entertainment System core
-	pkgver = r3093.4f4e22e8
+	pkgver = r3214.d0a61b2c
 	pkgrel = 1
 	url = https://github.com/libretro/bsnes-libretro
 	arch = aarch64
@@ -10,14 +10,21 @@ pkgbase = libretro-bsnes-git
 	arch = pentium4
 	arch = x86_64
 	groups = libretro
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = git
-	depends = gcc-libs
+	makedepends = libgcc
+	makedepends = libgomp
+	makedepends = libstdc++
 	depends = glibc
 	depends = libretro-core-info
-	provides = libretro-bsnes=1:3093.4f4e22e8
+	provides = libretro-bsnes=1:3214.d0a61b2c
 	conflicts = libretro-bsnes
 	source = libretro-bsnes::git+https://github.com/libretro/bsnes-libretro.git
 	b2sums = SKIP
 
 pkgname = libretro-bsnes-git
+	depends = glibc
+	depends = libretro-core-info
+	depends = libgcc_s.so
+	depends = libgomp.so
+	depends = libstdc++.so
