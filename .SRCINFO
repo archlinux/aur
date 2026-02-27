@@ -11,5 +11,3 @@ pkgbase = passkeyd
 	sha256sums = 717e9114f153d514129957a4d5241bfc24ec3f64784f03dedd15459c52758510
 
 pkgname = passkeyd
-
-git commit -m "fix: SHA-256 signature"
