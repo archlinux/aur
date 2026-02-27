@@ -1,24 +1,22 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
-pkgver=r19147.14d19f8
+pkgver=r19151.416291a
 pkgrel=1
 pkgdesc="Sony PlayStation 2 core (fork of PCSX2)"
 arch=('x86_64')
 url="https://github.com/libretro/ps2"
 license=('GPL-3.0-or-later')
 groups=('libretro')
-depends=(
-	'gcc-libs'
-	'glibc'
-	'libretro-core-info'
-)
+depends=('glibc' 'libretro-core-info')
 makedepends=(
 	'cmake'
 	'fast_float'
 	'fmt9'
 	'git'
+	'libgcc'
 	'libgl'
+	'libstdc++'
 	'libzip'
 	'rapidyaml'
 	'xz'
@@ -36,14 +34,7 @@ source=(
 	"volk::git+https://github.com/zeux/volk.git"
 	"vulkan-headers::git+https://github.com/KhronosGroup/Vulkan-Headers.git"
 )
-b2sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-)
+b2sums=('SKIP'{,,,,,})
 
 pkgver() {
 	cd $_pkgname
@@ -57,7 +48,6 @@ prepare() {
 	git config submodule.3rdparty/vulkan-headers.url "$srcdir"/vulkan-headers
 	git config submodule.pcsx2/GS/parallel-gs.url "$srcdir"/parallel-gs
 	git -c protocol.file.allow=always submodule update
-	sed -i '/ccache/d' CMakeLists.txt
 	sed -i '/fmt/s/7\.1\.3/&...<10/' cmake/SearchForStuff.cmake
 	sed -i '/USE_SYSTEM_LIBS/d' cmake/BuildParameters.cmake
 	sed -i 's|\.\./3rdparty/rapidyaml/rapidyaml/ext/c4core/src/c4/ext/fast_float/include/||' common/StringUtil.h
@@ -73,6 +63,7 @@ prepare() {
 
 build() {
 	local options=(
+		-D CCACHE_FOUND=OFF
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
@@ -89,10 +80,13 @@ build() {
 package() {
 	depends+=(
 		'libfmt.so'
+		'libgcc_s.so'
 		'libryml.so'
+		'libstdc++.so'
 		'libzip.so'
 		'libzstd.so'
 	)
+
 	# shellcheck disable=SC2154
 	install -D -t "$pkgdir"/usr/lib/libretro build/bin/pcsx2_libretro.so
 }
