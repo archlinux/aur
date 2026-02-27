@@ -1,6 +1,6 @@
 pkgbase = credentialsd
 	pkgdesc = Proposal for a Linux credential management xdg portal D-Bus specification, including webauthn/passkey support
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/linux-credentials/credentialsd
 	arch = x86_64
@@ -10,14 +10,18 @@ pkgbase = credentialsd
 	makedepends = zip
 	makedepends = desktop-file-utils
 	makedepends = jq
+	makedepends = blueprint-compiler
+	makedepends = clang
 	depends = gtk4
 	depends = dbus
 	depends = systemd-libs
+	depends = libnfc
+	depends = pcsclite
 	options = !lto
-	source = credentialsd-0.1.0.tar.gz::https://github.com/linux-credentials/credentialsd/archive/refs/tags/v0.1.0.tar.gz
-	source = 0001-fix-get_event_loop-failure.diff
-	sha256sums = 2bc73f5dd91d73eed3446f0ede9256eaf192c76eee21066af4330db22c2c6d8a
-	sha256sums = a4242f4afd655e7a9d1dfd40c2cfe38c279e39111441c213fcb1996721423ff3
+	source = credentialsd-0.2.0.tar.gz::https://github.com/linux-credentials/credentialsd/archive/refs/tags/v0.2.0.tar.gz
+	source = 0001-do-not-build-in-installing.diff
+	sha256sums = 83f0a930f5f0ef617288060137c50c5605c74483237dd03a309967dcd47de605
+	sha256sums = e482662ce56195b3d7a35bac76a897010489cd47e0bfc937c1135217269e70a0
 
 pkgname = credentialsd
 

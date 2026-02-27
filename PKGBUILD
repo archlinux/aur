@@ -1,26 +1,32 @@
 pkgbase=credentialsd
 pkgname=(credentialsd firefox-extension-credentialsd)
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Proposal for a Linux credential management xdg portal D-Bus specification, including webauthn/passkey support"
 arch=(x86_64)
 url=https://github.com/linux-credentials/credentialsd
 license=(LGPL-3.0-or-later)
-depends=(gtk4 dbus systemd-libs)
-makedepends=(rust meson zip desktop-file-utils jq)
+depends=(gtk4 dbus systemd-libs libnfc pcsclite)
+makedepends=(rust meson zip desktop-file-utils jq blueprint-compiler clang)
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/linux-credentials/credentialsd/archive/refs/tags/v$pkgver.tar.gz"
-        "0001-fix-get_event_loop-failure.diff")
-sha256sums=('2bc73f5dd91d73eed3446f0ede9256eaf192c76eee21066af4330db22c2c6d8a'
-            '09fa917e0a5f24156c6641851bbb27514804e15e4137dd4b3d63ae3a69132e08')
+        "0001-do-not-build-in-installing.diff")
+sha256sums=('83f0a930f5f0ef617288060137c50c5605c74483237dd03a309967dcd47de605'
+            'e482662ce56195b3d7a35bac76a897010489cd47e0bfc937c1135217269e70a0')
 
 prepare() {
-    cd "$pkgbase-$pkgver"
-    patch -Np1 -i ../0001-fix-get_event_loop-failure.diff
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_HOME="$srcdir/cargo-home"
+    cd "$pkgname-$pkgver"
+    patch -Np1 -i ../0001-do-not-build-in-installing.diff
+    cargo fetch --locked --target host-tuple
 }
 build() {
     export RUSTUP_TOOLCHAIN=stable
-    arch-meson "$pkgbase-$pkgver" build
+    arch-meson "$pkgbase-$pkgver" build \
+        -Dcargo_home="$srcdir/cargo-home" \
+        -Dcargo_locked=true \
+        -Dcargo_offline=true
     meson compile -C build
 }
 package_credentialsd() {

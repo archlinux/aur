@@ -1,0 +1,57 @@
+diff --git a/credentialsd-ui/src/meson.build b/credentialsd-ui/src/meson.build
+index f6a0a44..5392ccf 100644
+--- a/credentialsd-ui/src/meson.build
++++ b/credentialsd-ui/src/meson.build
+@@ -43,23 +43,19 @@ cargo_env = ['CARGO_HOME=' + cargo_home]
+ custom_target(
+   'credentialsd-ui',
+   build_by_default: true,
+-  build_always_stale: true,
+   output: gui_executable_name,
+   console: true,
+   install: true,
+   install_dir: bindir,
+   depends: resources,
+   command: [
+-    'rm',
+-    '-f', '@OUTPUT@',
+-    '&&',
+     'env',
+     cargo_env,
+     cargo,
+     'build',
+     cargo_options,
+     '&&',
+-    'ln',
++    'ln', '-f',
+     cargo_target_dir / rust_profile / gui_executable_name,
+     '@OUTPUT@',
+   ],
+diff --git a/credentialsd/src/meson.build b/credentialsd/src/meson.build
+index 374d0ef..c6c9254 100644
+--- a/credentialsd/src/meson.build
++++ b/credentialsd/src/meson.build
+@@ -13,22 +13,18 @@ message('@0@'.format(cargo_options))
+ custom_target(
+   'credentialsd',
+   build_by_default: true,
+-  build_always_stale: true,
+   output: backend_executable_name,
+   console: true,
+   install: true,
+   install_dir: bindir,
+   command: [
+-    'rm',
+-    '-f', '@OUTPUT@',
+-    '&&',
+     'env',
+     cargo_env,
+     cargo,
+     'build',
+     cargo_options,
+     '&&',
+-    'ln',
++    'ln', '-f',
+     cargo_target_dir / rust_profile / backend_executable_name,
+     '@OUTPUT@',
+   ],

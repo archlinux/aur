@@ -1,5 +1,5 @@
 *
-!0001-fix-get_event_loop-failure.diff
+!0001-do-not-build-in-installing.diff
 !PKGBUILD
 !.SRCINFO
 !.gitignore
