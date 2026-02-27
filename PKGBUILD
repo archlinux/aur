@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4-qtlauncher
 pkgname=$_pkgname-git
-pkgver=r208.6c1ca08
+pkgver=r209.2183034
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (Qt GUI)"
 arch=('aarch64' 'x86_64')
@@ -18,7 +18,6 @@ makedepends=(
 	'git'
 	'libgcc'
 	'libstdc++'
-	'pugixml>=1.14'
 	'qt6-base'
 	'qt6-multimedia'
 	'qt6-tools'
@@ -33,11 +32,7 @@ source=(
 	"nlohmann-json::git+https://github.com/nlohmann/json.git"
 	"volk::git+https://github.com/zeux/volk.git"
 )
-b2sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-)
+b2sums=('SKIP'{,,})
 
 pkgver() {
 	cd $_pkgname
@@ -51,8 +46,6 @@ prepare() {
 	git -c protocol.file.allow=always submodule update
 	# remove hardcoded flag
 	sed -i '/-march=/d' CMakeLists.txt
-	# remove unneeded header
-	sed -i '/pugixml\.hpp/d' src/common/memory_patcher.cpp
 }
 
 build() {
