@@ -4,11 +4,11 @@ blue="${bold}$(tput setaf 4)"
 yellow="${bold}$(tput setaf 3)"
 
 msg_blue() {
-    printf "${blue}==>${bold} $1${all_off}\n"
+    printf "${blue}!!${bold} $1${all_off}\n"
 }
 
 note() {
-    printf "${blue}==>${yellow} Note:${bold} $1${all_off}\n"
+    printf "${blue}!!${yellow} Note:${bold} $1${all_off}\n"
 }
 
 do_setcap() {
@@ -17,10 +17,18 @@ do_setcap() {
   msg_blue "${all_off}setcap cap_sys_nice=eip \"\$(realpath \"\$(which gamescope)\")\""
 }
 
+issue_1662() {
+  note "${all_off}\"[gamescope] [Error] vulkan: vkImportSemaphoreFdKHR failed (VkResult: -3)\""
+  msg_blue "This is due to upstream issue #1662"
+  msg_blue "Add environment variable ${all_off}'ENABLE_GAMESCOPE_WSI=0'${bold} to your command, or run Gamescope in tty can workaround this bug."
+}
+
 post_install() {
   do_setcap
+  echo ---
+  issue_1662
 }
 
 post_upgrade() {
-  do_setcap
+  post_install
 }
