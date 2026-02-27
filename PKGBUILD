@@ -1,7 +1,7 @@
 # Maintainer: Ishidaw <willianscagol@gmail.com>
 pkgname=leshade-git
 pkgver=2.3.8.r9.gc00c2fd
-pkgrel=3
+pkgrel=4
 pkgdesc="Official build for Leshade. An ReShade Manager for Linux"
 arch=('any')
 url="https://github.com/Ishidawg/LeShade"
@@ -21,8 +21,8 @@ pkgver() {
 build() {
   cd "${pkgname}"
 
-  sed -i "s/^VERSION = .*/_VERSION = \"${pkgver}\"/" main.py
-  sed -i "s/^BUILD_TYPE = .*/BUILD_TYPE = \"Nightly\"/" main.py
+  sed -i "s/^version = .*/version = \"${pkgver}\"/" main.py
+  sed -i "s/^build_type = .*/build_type = \"Nightly\"/" main.py
 
   arch-meson . build
   meson compile -C build
