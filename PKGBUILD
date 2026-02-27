@@ -8,7 +8,7 @@
 readonly _pkgname="CLI11"
 
 pkgname="cli11-compiled"
-pkgver="2.6.1"
+pkgver="2.6.2"
 pkgrel="1"
 pkgdesc="Command line parser for C++."
 arch=("x86_64")
@@ -20,18 +20,25 @@ provides=("cli11")
 conflicts=("cli11")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 options=("!strip")
-sha512sums=("28ff846ca0b736c784d1660b4d1470f34f55fed650c80fb6a2ec26519eaacbb80dd1aa951a4517097579f4aa0cf9527a13f3359744e589e31f852d1bea0ecfc8")
+sha512sums=("3b17c02e120d6c14246157fcfef1e55c34462d8ee3adb55e49f4b180fc2e0d52ec4371505c009839c623ccc5bf4ac16c8c94707d10b1f1cb0e916c3402d2e7a6")
 
 _compile()
 {
     cmake -B "${srcdir}"/"${_pkgname}"-"${pkgver}"/build/ \
+        -D BUILD_SHARED_LIBS=ON \
+        -D CLI11_BOOST=OFF \
         -D CLI11_BUILD_DOCS=ON \
         -D CLI11_BUILD_EXAMPLES=OFF \
         -D CLI11_BUILD_EXAMPLES_JSON=OFF \
         -D CLI11_BUILD_TESTS="$1" \
         -D CLI11_CUDA_TESTS=OFF \
+        -D CLI11_DISABLE_IMPL_HEADERS_INSTALL=ON \
         -D CLI11_FORCE_LIBCXX=OFF \
+        -D CLI11_FULL_INSTALL=OFF \
         -D CLI11_INSTALL=ON \
+        -D CLI11_INSTALL_PACKAGE_TESTS="$1" \
+        -D CLI11_MODULE_TESTS=OFF \
+        -D CLI11_MODULES=OFF \
         -D CLI11_PRECOMPILED=ON \
         -D CLI11_SANITIZERS=OFF \
         -D CLI11_SINGLE_FILE=OFF \
