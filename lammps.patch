@@ -1,0 +1,81 @@
+diff --git a/phono3py/cui/create_force_sets.py b/phono3py/cui/create_force_sets.py
+index 912e054..21fb285 100644
+--- a/phono3py/cui/create_force_sets.py
++++ b/phono3py/cui/create_force_sets.py
+@@ -50,6 +50,7 @@ from phonopy.cui.load_helper import get_nac_params
+ from phonopy.cui.phonopy_script import file_exists, files_exist, print_error
+ from phonopy.file_IO import is_file_phonopy_yaml, parse_FORCE_SETS, write_FORCE_SETS
+ from phonopy.interface.calculator import get_calc_dataset
++from phonopy.interface.lammps import rotate_lammps_forces
+ from phonopy.structure.atoms import PhonopyAtoms
+ 
+ from phono3py.cui.settings import Phono3pySettings
+@@ -293,6 +294,11 @@ def _get_force_sets_fc2(
+         verbose=(log_level > 0),
+     )
+     force_sets = calc_dataset["forces"]
++
++    if interface_mode == "lammps":
++        rotate_lammps_forces(force_sets, supercell.cell,
++                             verbose=(log_level > 0))
++
+     if "points" in calc_dataset:
+         if filename := check_agreements_of_displacements(
+             supercell, disp_dataset, calc_dataset["points"], force_filenames
+@@ -315,6 +321,11 @@ def _get_force_sets_fc2(
+             ],
+             verbose=(log_level > 0),
+         )
++
++        if interface_mode == "lammps":
++            rotate_lammps_forces(calc_dataset_zero["forces"],
++                                 supercell.cell, verbose=(log_level > 0))
++
+         if "points" in calc_dataset_zero:
+             if check_agreement_of_supercell_positions(
+                 supercell, calc_dataset_zero["points"][0]
+@@ -401,6 +412,11 @@ def _get_force_sets_fc3(
+                 verbose=(log_level > 0),
+             )
+         force_sets = calc_dataset["forces"]
++
++        if interface_mode == "lammps":
++            rotate_lammps_forces(force_sets, supercell.cell,
++                                 verbose=(log_level > 0))
++
+         if "points" in calc_dataset:
+             if filename := check_agreements_of_displacements(
+                 supercell, disp_dataset, calc_dataset["points"], force_filenames
+@@ -420,6 +436,11 @@ def _get_force_sets_fc3(
+             ],
+             verbose=(log_level > 0),
+         )
++
++        if interface_mode == "lammps":
++            rotate_lammps_forces(calc_dataset_zero["forces"],
++                                 supercell.cell, verbose=(log_level > 0))
++
+         force_set_zero = calc_dataset_zero["forces"][0]
+         if "points" in calc_dataset_zero:
+             if check_agreement_of_supercell_positions(
+diff --git a/phono3py/interface/calculator.py b/phono3py/interface/calculator.py
+index 977a7ac..81b7587 100644
+--- a/phono3py/interface/calculator.py
++++ b/phono3py/interface/calculator.py
+@@ -36,6 +36,7 @@
+ 
+ calculator_info = {
+     "abinit": {"option": {"name": "--abinit", "help": "Invoke Abinit mode"}},
++    "lammps": {"option": {"name": "--lammps", "help": "Invoke LAMMPS mode"}},
+     # 'aims': {'option': {'name': "--aims",
+     #                     'help': "Invoke FHI-aims mode"}},
+     # 'cp2k': {'option': {'name': "--cp2k",
+@@ -81,6 +82,8 @@ def get_additional_info_to_write_fc2_supercells(
+     additional_info = {}
+     if interface_mode == "qe":
+         additional_info["pre_filename"] = "supercell_%s" % suffix
++    elif interface_mode == "lammps":
++        additional_info["pre_filename"] = f"supercell_{suffix}"
+     elif interface_mode == "crystal":
+         additional_info["template_file"] = "TEMPLATE"
+         additional_info["pre_filename"] = "supercell_%s" % suffix
