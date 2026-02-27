@@ -1,0 +1,12 @@
+pkgbase = minical
+	pkgdesc = Lightweight TUI calendar.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/raand0/minical
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	source = minical-0.1.0.tar.gz::https://github.com/raand0/minical/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = e1c793e427fff044cad7f4741984ee4761105a18207a32eb695e3890bc757e51
+
+pkgname = minical
