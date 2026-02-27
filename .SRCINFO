@@ -1,7 +1,7 @@
 pkgbase = rustconn
 	pkgdesc = Modern connection manager for Linux with GTK4/Wayland-native interface.
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/totoshko88/RustConn
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -12,6 +12,7 @@ pkgbase = rustconn
 	depends = libadwaita
 	depends = openssh
 	depends = openssl
+	depends = sshpass
 	depends = vte4
 	depends = which
 	depends = zstd

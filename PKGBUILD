@@ -2,7 +2,7 @@
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
 url="https://github.com/totoshko88/RustConn"
@@ -14,6 +14,7 @@ depends=(
   'libadwaita'
   'openssh'
   'openssl'
+  'sshpass'
   'vte4'
   'which'
   'zstd'
