@@ -1,11 +1,11 @@
-# Maintainer: hugo
+# Maintainer: aloy555
 
 pkgname=cli-manga
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Search, read and download manga from the terminal"
 arch=('any')
-url="https://github.com/yourusername/cli-manga"
+url="https://github.com/aloy55555123/manga-cli"
 license=('custom')
 depends=(
     'python'
@@ -20,12 +20,12 @@ depends=(
 optdepends=(
     'python-ua-generator: random user agents to avoid blocks'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+source=("cli-manga.py"
+        "LICENSE")
+sha256sums=('SKIP'
+            'SKIP')
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    install -Dm755 cli-manga.py "$pkgdir/usr/bin/cli-manga"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "$srcdir/cli-manga.py" "$pkgdir/usr/bin/cli-manga"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
