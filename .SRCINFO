@@ -1,5 +1,5 @@
 pkgbase = rodecaster-duo-pipewire
-	pkgdesc = Virtual audio sinks/sources for RODECaster Duo (Game, System, Chat, Music)
+	pkgdesc = Virtual audio sinks/sources for RODECaster Duo
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/rewalo/rodecaster-duo-pipewire
@@ -8,7 +8,6 @@ pkgbase = rodecaster-duo-pipewire
 	license = MIT
 	depends = pipewire
 	depends = pipewire-pulse
-	depends = pipewire-cli
 	depends = bash
 	optdepends = wireplumber: recommended session manager
 	source = 99-rodecaster-duo-virtual-sinks.conf.template

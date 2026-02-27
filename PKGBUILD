@@ -1,14 +1,14 @@
 # Maintainer: William Coffey <170283204+rewalo@users.noreply.github.com>
-# Virtual sinks/sources for RODECaster Duo (Game, System, Chat, Music)
+# Virtual sinks/sources for RODECaster Duo
 
 pkgname=rodecaster-duo-pipewire
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Virtual audio sinks/sources for RODECaster Duo (Game, System, Chat, Music)"
+pkgdesc="Virtual audio sinks/sources for RODECaster Duo"
 arch=(any)
 url="https://github.com/rewalo/rodecaster-duo-pipewire"
 license=('MIT')
-depends=(pipewire pipewire-pulse pipewire-cli bash)
+depends=(pipewire pipewire-pulse bash)
 optdepends=('wireplumber: recommended session manager')
 install=rodecaster-duo-pipewire.install
 source=(
