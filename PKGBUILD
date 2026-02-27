@@ -3,7 +3,7 @@
 pkgname=cecup-git
 pkgver=r419.a5a9bfd
 pkgrel=1
-pkgdesc="A GTK-based rsync frontend for directory synchronization"
+pkgdesc="A rsync frontend for making backups"
 arch=('x86_64')
 url="https://github.com/lucas-mior/cecup"
 license=('MIT')
