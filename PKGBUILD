@@ -2,7 +2,7 @@
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 _pkgname=libretro-database
 pkgname=$_pkgname-git
-pkgver=1.19.0.r29.g48ebfeef9
+pkgver=1.22.1.r61.g1b0697f
 pkgrel=1
 epoch=1
 pkgdesc="RetroArch's cheatcode files, content data files, etc."
@@ -20,7 +20,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
 }
 
 package() {
