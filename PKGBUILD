@@ -10,7 +10,7 @@ arch=(x86_64)
 url="https://github.com/JuliaComputing/llvm-cbe"
 license=('LLVM Release License')
 depends=('llvm20')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 
 source=(
 	"git+https://github.com/JuliaHubOSS/${_pkgname}.git"

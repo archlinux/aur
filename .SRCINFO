@@ -6,6 +6,7 @@ pkgbase = llvm-cbe-git
 	arch = x86_64
 	license = LLVM Release License
 	makedepends = cmake
+	makedepends = git
 	depends = llvm20
 	source = git+https://github.com/JuliaHubOSS/llvm-cbe.git
 	sha256sums = SKIP
