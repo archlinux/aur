@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=retroarch-joypad-autoconfig
 pkgname=$_pkgname-git
-pkgver=1.10.3.r0.g760b057
+pkgver=1.22.0.r24.g739cee1
 pkgrel=1
 pkgdesc="RetroArch joypad autoconfig files"
 arch=('any')
@@ -17,11 +17,13 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
 }
 
 prepare() {
-	rm -r $_pkgname/{dinput,mfi,qnx,xinput}
+	cd $_pkgname
+	# remove non-linux drivers
+	rm -r dinput mfi qnx xinput
 }
 
 package() {

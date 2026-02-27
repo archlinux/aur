@@ -1,6 +1,6 @@
 pkgbase = retroarch-joypad-autoconfig-git
 	pkgdesc = RetroArch joypad autoconfig files
-	pkgver = 1.10.3.r0.g760b057
+	pkgver = 1.22.0.r24.g739cee1
 	pkgrel = 1
 	url = https://github.com/libretro/retroarch-joypad-autoconfig
 	arch = any
