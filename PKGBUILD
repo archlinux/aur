@@ -2,8 +2,7 @@
 # Note: Uses tags from the 'arch' branch
 pkgname=mx-packageinstaller
 pkgver=26.02.1arch
-pkgver=26.02arch
-pkgrel=1
+pkgrel=2
 pkgdesc="MX Package Installer - a tool for managing packages and Flatpak"
 arch=("x86_64")
 url="https://github.com/MX-Linux/mx-packageinstaller"
