@@ -11,16 +11,8 @@ optdepends=('gmsh: creation of irregular meshes')
 source=("fipy-$pkgver.tar.gz::https://github.com/usnistgov/fipy/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('faaebf65d3c170efbd7f6999b188b37a8f48e61345330d8ff09222eef9ab97fc')
 
-prepare(){
-   cp -R fipy-${pkgver} fipy-${pkgver}-py3
-   cd fipy-${pkgver}-py3
-   2to3 --write . || true
-   2to3 --write --doctests_only . || true
-}
-
 package() {
-   cd "${srcdir}/fipy-${pkgver}-py3"
-   # fix building by removing ez_setup references
+   cd "${srcdir}/fipy-${pkgver}"
    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
    chmod 644 ${pkgdir}/usr/lib/python*/site-packages/FiPy-${pkgver}-py*.egg-info/*
    install -Dm644 "${srcdir}/fipy-${pkgver}/LICENSE.rst" \
