@@ -5,7 +5,7 @@ _pkgname=trolley
 pkgname=${_pkgname}-bin
 pkgdesc="Run terminal apps anywhere "
 
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,8 +26,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.txz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-cli-${_barch[1]}.tar.xz")
 sha256sums=('4c18a9f725a329460cfac564616d9947864e88429531c02aa6314c39d9c8639d'
             '2bb07097d1c114203af61b79528e410ce5849546f42650edb4bfcdbe74b137ef')
-sha256sums_x86_64=('22275d339c9f2bd2ed192ce44769e31b265c19aa94518f2383befbf796fa398b')
-sha256sums_aarch64=('5ba70191babe571c2187b1032d69207253cbe6f7ae97c136be71da8b213275d5')
+sha256sums_x86_64=('f8163a6a81a8db44326c887d92424d630828aff01acc6bd344fe15ebe1eb2def')
+sha256sums_aarch64=('68e367bb10eab0ebdaf9a878339e933b78998448852a9a9900fb639a50ed0dfd')
 
 
 package() {
