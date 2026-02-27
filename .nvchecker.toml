@@ -1,0 +1,4 @@
+[v2rayn]
+source = "github"
+github = "2dust/v2rayN"
+use_latest_release = true

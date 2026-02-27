@@ -1,72 +1,66 @@
-# Maintainer: yidaduizuoye <yidaduizuoye at outlook dot com>
+# Maintainer:
+# Contributor: yidaduizuoye <yidaduizuoye at outlook dot com>
 
 pkgname=v2rayn
 _pkgname=v2rayN
-pkgver=7.17.3
-_bin_commit=65a63f0737d48cd465b985ac51d14557f8618939
-pkgrel=3
-pkgdesc="A GUI client supporting Xray core, sing-box core and other cores"
-arch=('x86_64' 'aarch64')
+pkgver=7.18.0
+_bin_commit=c58533aca0c90bd269ac90bd9fdfe03ee4450b30
+pkgrel=1
+pkgdesc="A GUI client for Windows, Linux and macOS, support Xray and sing-box and others"
+arch=('aarch64' 'x86_64')
 url="https://github.com/2dust/v2rayN"
 license=('GPL-3.0-only')
-depends=(
-    'dotnet-runtime-8.0'
-    'mihomo'
-    'sing-box'
-    'xray'
-)
-makedepends=(
-    'dotnet-sdk-8.0'
-    'git'
-)
-source=(
-    "git+${url}#tag=${pkgver}"
-    "extra-source-${_bin_commit}.zip::https://raw.githubusercontent.com/2dust/v2rayN-core-bin/${_bin_commit}/v2rayN-linux-64.zip"
-    "${pkgname}.install"
-    "${_pkgname}.sh"
-    "${_pkgname}.desktop"
-)
-sha256sums=('742c3a705c297aa705936f433958ef68c50361d39a04c64ada9ee3659d8d6a0a'
-            'bc9767eb44d350baff88d056509019b5c0a1e416532e6377cc5917be9fdb4f95'
-            'a99db9b70fe1f3def2d876ffb8f2ee6848ed99e912c5f3a5db40c95c49ce2790'
-            '99348ffdebf72cc76c16c95fc158c21df4788cbc85fe2bee3c08f11f6eff2d97'
-            'f68ccb83fb112e3e745efbbd9dbcfe50c4611c9cdb470854934a33ec2cd561f2')
-conflicts=('v2rayn-bin')
-install=${pkgname}.install
+depends=('bash' 'dotnet-runtime-8.0' 'fontconfig' 'glibc' 'libgcc' 'libstdc++' 'xray')
+makedepends=('dotnet-sdk-8.0' 'gendesk' 'git')
 options=('!strip')
+install="${pkgname}.install"
+source=("git+${url}#tag=${pkgver}"
+        "git+https://github.com/2dust/GlobalHotKeys.git"
+        "${pkgname}-bin-${_bin_commit}.zip::${url}-core-bin/raw/${_bin_commit}/v2rayN-linux-64.zip"
+        "${pkgname}.sh")
+sha256sums=('a838965a81e6fa11a346c1f47f33001413f2805c9d8ca7b40e275847fdb338bc'
+            'SKIP'
+            'df588b9b80a1888dab6e0376c77938bae223e8e8dc8b23abccec373da3256897'
+            '0fd5ed368fc6f51f6a8d2507c7cf598edbede076245d5661b06fe4394a6f1390')
 
 prepare() {
-    cd "${srcdir}/${_pkgname}"
-    git submodule update --init --recursive
+    cd "${_pkgname}"
+    git submodule init
+    git config submodule.v2rayN/GlobalHotKeys.url "${srcdir}/GlobalHotKeys"
+    git -c protocol.file.allow=always submodule update
+
+    cd "${_pkgname}"
+    gendesk -f -n \
+        --pkgname "${pkgname}" \
+        --pkgdesc "${pkgdesc}" \
+        --name "${_pkgname}" \
+        --icon "${_pkgname}" \
+        --categories 'Network'
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}/${_pkgname}"
-    dotnet clean ./v2rayN.Desktop/v2rayN.Desktop.csproj \
-        --configuration Release
-    dotnet publish ./v2rayN.Desktop/v2rayN.Desktop.csproj \
-        -p:DebugType=None \
+    cd "${_pkgname}/${_pkgname}"
+    dotnet publish \
         --configuration Release \
-        --no-self-contained \
-        --output output
+        --output build \
+        --runtime linux-x64 \
+        -p:SelfContained=false \
+        v2rayN.Desktop/v2rayN.Desktop.csproj
 }
 
 package() {
-    mkdir -pv "${pkgdir}/usr/lib/${_pkgname}"
-    cd "${srcdir}/${_pkgname}/${_pkgname}"
-    cp -r output/* "${pkgdir}/usr/lib/${_pkgname}"
-    install -Dvm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/v2rayn"
-    install -Dvm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/v2rayN.desktop"
-    install -Dvm644 "v2rayN.Desktop/v2rayN.png" "$pkgdir/usr/share/pixmaps/v2rayN.png"
-    install -Dvm644 ../LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    cd "${_pkgname}/${_pkgname}"
+    mkdir -p "${pkgdir}/usr/lib/${_pkgname}"
+    cp -r build/* "${pkgdir}/usr/lib/${_pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 v2rayN.Desktop/v2rayN.png -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 ../LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
     # Create symlink
-    mkdir -pv "${pkgdir}/usr/lib/${_pkgname}/bin"/{mihomo,xray,sing_box}
-    for bin in mihomo xray sing-box; do
-        ln -sv "../../../../bin/${bin}" "${pkgdir}/usr/lib/${_pkgname}/bin/${bin//-/_}/${bin}"
-    done
+    mkdir -p "${pkgdir}/usr/lib/${_pkgname}/bin/xray"
+    ln -s /usr/bin/xray -t "${pkgdir}/usr/lib/${_pkgname}/bin/xray"
 
     # Install geofiles
-    bsdtar -xf "${srcdir}/extra-source-${_bin_commit}.zip" -C "${srcdir}"
-    cp -r "${srcdir}/v2rayN-linux-64/bin"/{srss,*.dat,*db} "${pkgdir}/usr/lib/${_pkgname}/bin"
+    cp -r "${srcdir}/v2rayN-linux-64/bin/"{srss,*.dat,*db} "${pkgdir}/usr/lib/${_pkgname}/bin"
 }
