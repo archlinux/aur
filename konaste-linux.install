@@ -10,18 +10,6 @@ post_install() {
 	echo -e "Run \033[1mkonaste init\033[22m to create the Wineprefix!"
 }
 
-# post_upgrade() {
-# 	if [[ "$2" == 0.[1-2].[0-9]-* ]]; then
-# 		case "${LANG}" in
-# 			ja*) V03_UPDATE_WARN="v0.3より、Konaste Linuxの全ファイルは\033[1m~/.local/share/konaste-linux\033[22mに保存されます。起動前に以下のコマンドを実行してください：\n  \033[1m\$ konaste --fix-old-directory\033[22m" ;;
-# 			*) V03_UPDATE_WARN="Starting with v0.3, all files for Konaste Linux are now stored in \033[1m~/.local/share/konaste-linux\033[22m. Before launching any games, run the following command:\n  \033[1m\$ konaste --fix-old-directory\033[22m" ;;
-# 		esac
-# 	fi
-#
-# 	echo -e "\n${V03_UPDATE_WARN}\n"
-# 	unset V03_UPDATE_WARN
-# }
-
 post_remove() {
 	case "${LANG}" in
 		ja*) UNINSTALL_TIP="Konaste Linux のアンインストールを完了するには、\033[1m~/.local/share/konaste-linux\033[22m にあるデータディレクトリを削除してください。" ;;
