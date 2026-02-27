@@ -1,7 +1,7 @@
 pkgbase = fsp-bin
 	pkgdesc = Flexible Software Package (FSP) for Renesas RA MCU Family
-	pkgver = 6.3.0
-	pkgrel = 3
+	pkgver = 6.4.0
+	pkgrel = 4
 	url = https://github.com/renesas/fsp
 	arch = x86_64
 	license = LicenseRef-scancode-commercial-license
@@ -12,11 +12,11 @@ pkgbase = fsp-bin
 	options = !lto
 	options = emptydirs
 	source = LICENSE.md::https://raw.githubusercontent.com/renesas/fsp/master/LICENSE.md
-	source = https://github.com/renesas/fsp/releases/download/v6.3.0/setup_fsp_v6_3_0_e2s_v2025-12.xz.run
-	source = https://github.com/renesas/fsp/releases/download/v6.3.0/setup_fsp_v6_3_0_rasc_v2025-12.xz.run
+	source = https://github.com/renesas/fsp/releases/download/v6.4.0/setup_fsp_v6_4_0_e2s_v2025-12.xz.run
+	source = https://github.com/renesas/fsp/releases/download/v6.4.0/setup_fsp_v6_4_0_rasc_v2025-12.xz.run
 	sha256sums = e1f6671c02e028678ed35996becd061f3498e08557986b7d15678d9985c96d97
-	sha256sums = ad9585003c57dfc38b42662ecb8ae55cb114230fe070fba128ef97beaef5054b
-	sha256sums = e1642ca86ce87597537279df9c3b8f839e2fd2ad1656e761b47780e0dc4a053e
+	sha256sums = ecc5909588aaefee7e6c970b68a74dc3ec23e91487b4048952b1a67270b67f76
+	sha256sums = 1d2a3ddfe3a8fd16ad6bfb57311bcfd7fe910040923f8462f9e1a23a1d5a6c69
 
 pkgname = fsp-bin
 	pkgdesc = Flexible Software Package (FSP) for Renesas RA MCU Family
