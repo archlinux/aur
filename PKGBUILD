@@ -2,7 +2,7 @@
 # Maintainer: nickalie
 
 pkgname='nclaw-bin'
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Lightweight, container-first AI assistant powered by Claude Code, accessible through Telegram'
 url='https://github.com/nickalie/nclaw'
@@ -12,10 +12,10 @@ provides=('nclaw')
 conflicts=('nclaw')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/nickalie/nclaw/releases/download/v${pkgver}/nclaw_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('a6df7405ceafd133698e8cc875c260710658ad3b9e57c1b0024de1780ee36449')
+sha256sums_aarch64=('9a66f13747e428baebdd7ad8e3ce937f0ad18f4b035b908bb28486761197267b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/nickalie/nclaw/releases/download/v${pkgver}/nclaw_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('433618e2929cb34308232eb590fcabf561d69f04cb6bcc43406875544748313d')
+sha256sums_x86_64=('d4efaec898e749cd629774c13a5776346fde4dc5e08935e815da47715c95e2fe')
 
 package() {
   install -Dm755 "./nclaw" "${pkgdir}/usr/bin/nclaw"
