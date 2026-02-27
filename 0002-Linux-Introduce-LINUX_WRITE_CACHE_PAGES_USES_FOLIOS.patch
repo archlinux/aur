@@ -1,7 +1,7 @@
-From 65143ec461adda271751ad8ab0a1564358158434 Mon Sep 17 00:00:00 2001
+From 2abac00fac07ca443e6c828513a47a6987915621 Mon Sep 17 00:00:00 2001
 From: Cheyenne Wills <cwills@sinenomine.net>
 Date: Thu, 8 Jan 2026 16:43:19 -0700
-Subject: [PATCH 2/3] Linux: Introduce LINUX_WRITE_CACHE_PAGES_USES_FOLIOS
+Subject: [PATCH 2/5] Linux: Introduce LINUX_WRITE_CACHE_PAGES_USES_FOLIOS
 
 To clarify what is actually being tested, rename the autoconf test and
 variable:
@@ -14,6 +14,14 @@ LINUX_WRITEPAGES_USES_FOLIOS.
 There are no functional changes in this commit.
 
 Change-Id: I915222bfd7d2db3735502df4ed64a76089a8aa2c
+Reviewed-on: https://gerrit.openafs.org/16650
+Reviewed-by: Michael Meffie <mmeffie@sinenomine.net>
+Reviewed-by: Mark Vitale <mvitale@sinenomine.net>
+Reviewed-by: Benjamin Kaduk <kaduk@mit.edu>
+Reviewed-by: Andrew Deason <adeason@sinenomine.net>
+Tested-by: BuildBot <buildbot@rampaginggeek.com>
+Reviewed-by: Cheyenne Wills <cwills@sinenomine.net>
+(cherry picked from commit 5a2421f942ddee757093d9bba07d31c55610bc47)
 ---
  src/afs/LINUX/osi_vnodeops.c    | 4 ++++
  src/cf/linux-kernel-assorted.m4 | 2 +-
@@ -75,5 +83,5 @@ index 9139f2435..df3c843a6 100644
                         [[-Werror]])
  ])
 -- 
-2.52.0
+2.53.0
 

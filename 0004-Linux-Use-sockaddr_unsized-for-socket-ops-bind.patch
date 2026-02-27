@@ -1,0 +1,92 @@
+From d3fb83c71a92e296a92296791cf3ebc2f44b57e0 Mon Sep 17 00:00:00 2001
+From: Cheyenne Wills <cwills@sinenomine.net>
+Date: Thu, 5 Feb 2026 11:14:10 -0700
+Subject: [PATCH 4/5] Linux: Use sockaddr_unsized for socket->ops->bind
+
+The Linux 6.19 commits:
+    'net: Add struct sockaddr_unsized for sockaddr of unknown length'
+    (bf33247a90d3e)
+and
+    'net: Convert proto_ops bind() callbacks to use sockaddr_unsized'
+    (0e50474fa5148)
+updated the socket->ops->bind() method's signature to use a
+'struct sockaddr_unsized *' parameter instead of 'struct sockaddr *'.
+The only external change is that callers need to switch from casting
+to a (struct sockaddr *) to casting to a '(struct sockaddr_unsized *)'
+
+Add a new configure check to see if socket->ops->bind() requires a
+sockaddr_unsized parameter.
+
+The rx/LINUX rxk_NewSocket_Host is the only location where a call to
+socket->ops->bind() is made.  Add a C macro to handle the different
+casts depending on the results of the configure test.
+
+Notes:
+
+The only other socket->ops change was the connect() method and openafs
+does not use that method.
+
+For reference, see the Linux source for o2net_open_listening_sock() in
+fs/ocfs2/cluster/tcp.c, where the only change was in the cast used in
+the sock->ops->bind() call.
+
+Change-Id: I1d5628456919a02b91d41921157e25e1799a3fdc
+---
+ src/cf/linux-kernel-func.m4 | 13 +++++++++++++
+ src/rx/LINUX/rx_knet.c      |  9 +++++++--
+ 2 files changed, 20 insertions(+), 2 deletions(-)
+
+diff --git a/src/cf/linux-kernel-func.m4 b/src/cf/linux-kernel-func.m4
+index de95204cd..1f2c782c2 100644
+--- a/src/cf/linux-kernel-func.m4
++++ b/src/cf/linux-kernel-func.m4
+@@ -388,6 +388,19 @@ AC_CHECK_LINUX_FUNC([get_tree_nodev],
+ 		    [[static int code;
+ 		      code = get_tree_nodev(NULL, fill_super);]])
+ 
++dnl Linux 6.19 introduced struct sockaddr_unsized and updated the
++dnl signature for socket->ops->bind() to use sockaddr_unsized instead of sockaddr.
++dnl When calling, it is sufficient to simply cast a struct sockaddr_in to
++dnl sockaddr_unsized.
++AC_CHECK_LINUX_FUNC([socket_bind_sockaddr_unsized],
++		    [[#include <linux/net.h>
++		      #include <linux/socket.h>]],
++		    [[static struct socket *sockp;
++		      static struct sockaddr_unsized socka;
++		      static int code;
++		      code = sockp->ops->bind(sockp, &socka, sizeof(socka));]])
++
++
+ dnl Consequences - things which get set as a result of the
+ dnl                above tests
+ AS_IF([test "x$ac_cv_linux_func_d_alloc_anon" = "xno"],
+diff --git a/src/rx/LINUX/rx_knet.c b/src/rx/LINUX/rx_knet.c
+index 0ca67a56d..32cba6c6f 100644
+--- a/src/rx/LINUX/rx_knet.c
++++ b/src/rx/LINUX/rx_knet.c
+@@ -36,6 +36,12 @@
+ #endif
+ #include "osi_compat.h"
+ 
++#if defined(HAVE_LINUX_SOCKET_BIND_SOCKADDR_UNSIZED)
++# define BIND_SOCKADDR(sa) ((struct sockaddr_unsized *)(sa))
++#else
++# define BIND_SOCKADDR(sa) ((struct sockaddr *)(sa))
++#endif
++
+ /* rxk_NewSocket
+  * open and bind RX socket
+  */
+@@ -67,8 +73,7 @@ rxk_NewSocketHost(afs_uint32 ahost, short aport)
+     myaddr.sin_family = AF_INET;
+     myaddr.sin_addr.s_addr = ahost;
+     myaddr.sin_port = aport;
+-    code =
+-	sockp->ops->bind(sockp, (struct sockaddr *)&myaddr, sizeof(myaddr));
++    code = sockp->ops->bind(sockp, BIND_SOCKADDR(&myaddr), sizeof(myaddr));
+ 
+     if (code < 0) {
+ 	printk("sock_release(rx_socket) FIXME\n");
+-- 
+2.53.0
+
