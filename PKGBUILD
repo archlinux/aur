@@ -1,6 +1,6 @@
 # Maintainer: buzz <buzz@users.noreply.github.com>
 pkgname=dethrace
-pkgver=0.9.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Reverse engineering the 1997 game \"Carmageddon\""
 arch=('i686' 'x86_64')
@@ -8,14 +8,14 @@ url="https://github.com/dethrace-labs/dethrace"
 license=("GPL3")
 depends=("libgl" "sdl2")
 makedepends=("cmake")
-brender_commit="fa8b5a90dff141f6e7e1f4f146ac593779fe6cea"
+brender_commit="44d27ffa026a0a3ea4dc0642315913bf5bc27e25"
 noextract=("BRender-${brender_commit}.tar.gz")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dethrace-labs/dethrace/archive/refs/tags/v${pkgver}.tar.gz"
         "BRender-${brender_commit}.tar.gz::https://github.com/dethrace-labs/BRender-v1.3.2/archive/${brender_commit}.tar.gz"
         "fix_install_dirs.patch")
 install=$pkgname.install
-sha256sums=("3814ba5ba6735f4679544923782292806bf2c15e84067adeeb221c1a519630b3"
-            "4b75d4d15b111de228d368d3da99a0164648bd0b9ed0c26c66d486e6160f0459"
+sha256sums=("05040a0e3b40b82ca0e2856648969816bca846880d4ea0cb02446d91a5a12985"
+            "40f2291104a4503c4a6dea8db1c75c0101bdcc2545775f483a6ab38d64e592a4"
             "9f76f30245f2d48941f874258a2091c85bdd3966c749b6235da63426e545845e")
 
 prepare() {
