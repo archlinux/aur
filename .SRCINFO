@@ -11,6 +11,7 @@ pkgbase = awtwall
 	depends = swww
 	depends = jq
 	optdepends = hyprpaper: optional wallpaper backend
+	optdepends = mpvpaper: optional .mp4 wallpaper backend
 	optdepends = kitty: optional kitty image previews (slower than sixel)
 	optdepends = curl: optional release/version check
 	optdepends = wget: optional release/version check
