@@ -1,6 +1,6 @@
 pkgbase = magic-trackpad-battery-git
-	pkgdesc = Battery monitor daemon for Apple Magic Trackpad over Bluetooth
-	pkgver = r3.4caed81
+	pkgdesc = Battery monitor and auto-connect for Apple Magic Trackpad over Bluetooth
+	pkgver = r5.16b8922
 	pkgrel = 1
 	url = https://github.com/mmarfil/magic-trackpad-battery
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = magic-trackpad-battery-git
 	depends = python
 	depends = libnotify
 	depends = bash
+	depends = bluez-utils
 	provides = magic-trackpad-battery
 	conflicts = magic-trackpad-battery
 	source = git+https://github.com/mmarfil/magic-trackpad-battery.git
