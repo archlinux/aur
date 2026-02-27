@@ -4,7 +4,7 @@ pkgname=sk-chos-addon
 _basename=sk-chos-tool
 _reponame=sk-chos-config
 _pkgname=${pkgname}
-pkgver=2.26.3
+pkgver=2.27.0
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -90,6 +90,10 @@ package() {
     # install -m644 -t "${pkgdir}/usr/lib/systemd/system/hhd@.service.d" "${source_dir}/systemd/system/hhd@.service.d"/*
     install -dm755 "${pkgdir}/usr/lib/systemd/system/hhd.service.d"
     install -m644 -t "${pkgdir}/usr/lib/systemd/system/hhd.service.d" "${source_dir}/systemd/system/hhd.service.d"/*
+
+	# system-sleep
+	install -dm755 "${pkgdir}/usr/lib/systemd/system-sleep"
+	install -m644 -t "${pkgdir}/usr/lib/systemd/system-sleep" "${source_dir}/systemd/system-sleep"/*
 
     # user service
     install -dm755 "${pkgdir}/usr/lib/systemd/user"
