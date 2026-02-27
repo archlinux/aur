@@ -1,17 +1,17 @@
 pkgbase = perl-file-dirlist
 	pkgdesc = File::DirList - provide a sorted list of directory content
 	pkgver = 0.05
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/File-DirList
 	arch = any
-	license = GPL
-	license = PerlArtistic
+	license = Artistic-1.0-Perl
+	license = GPL-1.0-or-later
 	depends = perl
 	options = !emptydirs
 	options = purge
 	source = https://cpan.metacpan.org/authors/id/T/TP/TPABA/File-DirList/File-DirList-0.05.tar.gz
 	source = tests_use_licenses_dir.patch
 	sha256sums = 993b7d7662e55798448a1edaccb9abd281d2bd23be7eab99f569b8e2962d3bc3
-	sha256sums = 7d7c03da3f11c7ea1007fdf08a34b04feb9f4256688dd17fed53e7520b9f69b2
+	sha256sums = 3c88c35b1f5a7c1581a0869a2403a854b5e742187840cb9f38e165ed788c8952
 
 pkgname = perl-file-dirlist

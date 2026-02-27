@@ -1,6 +1,5 @@
-diff -ur a/t/File-DirList.t b/t/File-DirList.t
---- a/t/File-DirList.t	2024-04-02 19:23:53.427466559 +0200
-+++ b/t/File-DirList.t	2024-04-02 19:24:50.741155420 +0200
+--- a/t/File-DirList.t	2026-02-27 23:14:40.982298950 +0100
++++ b/t/File-DirList.t	2026-02-27 23:14:47.095601706 +0100
 @@ -13,8 +13,8 @@
  # Insert your test code below, the Test::More module is use()ed here so read
  # its man page ( perldoc Test::More ) for help writing this test script.

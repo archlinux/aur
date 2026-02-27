@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
+# LF required for interactive patching as of Git 2.17.1
+*.diff                          text eol=lf
+*.patch                         text eol=lf
+
+# See https://aur.archlinux.org/packages/perl-file-dirlist#comment-966191
+tests_use_licenses_dir.patch    binary
