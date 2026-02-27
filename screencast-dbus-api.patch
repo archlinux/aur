@@ -1,5 +1,94 @@
+From 0d4e92287891016f88c8387815bfcd42430adb48 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jerzy=20Ko=C5=82osowski?= <jerzy@kolosowscy.pl>
+Date: Sun, 22 Feb 2026 06:57:03 +0100
+Subject: [PATCH 1/2] plugins/screencast: Fix potential null dereference in
+ popup window tracking
+
+Window::transientFor() can return nullptr for windows without a parent.
+Add a null check before passing the result to QList::contains() to
+prevent a potential crash when a popup window is added without a valid
+transient parent.
+---
+ src/plugins/screencast/windowscreencastsource.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/plugins/screencast/windowscreencastsource.cpp b/src/plugins/screencast/windowscreencastsource.cpp
+index 59708970ea..c565a337da 100644
+--- a/src/plugins/screencast/windowscreencastsource.cpp
++++ b/src/plugins/screencast/windowscreencastsource.cpp
+@@ -33,7 +33,8 @@ WindowScreenCastSource::WindowScreenCastSource(Window *window)
+     add(window);
+ 
+     connect(workspace(), &Workspace::windowAdded, this, [this](Window *window) {
+-        if (window->isPopupWindow() && m_windows.contains(window->transientFor())) {
++        Window *parent = window->transientFor();
++        if (window->isPopupWindow() && parent && m_windows.contains(parent)) {
+             add(window);
+             if (m_active) {
+                 Q_EMIT frame();
+-- 
+2.53.0
+
+
+From 3c016d547fa3bf86696e7d05f91224e893c93d25 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jerzy=20Ko=C5=82osowski?= <jerzy@kolosowscy.pl>
+Date: Sun, 22 Feb 2026 06:57:23 +0100
+Subject: [PATCH 2/2] plugins/screencast: Add D-Bus API for stream
+ introspection and consumer tracking
+
+Adds a D-Bus ObjectManager interface exposing active screencast streams
+with real-time metadata including consumer application detection via
+PipeWire graph traversal. Enables external applications to query which
+screens/windows are being recorded and by which application.
+
+Key features:
+- D-Bus API on session bus (org.kde.KWin.ScreenCast)
+- Per-stream objects with type-specific interfaces (Window/Output/Region)
+- Asynchronous PipeWire consumer detection with separate
+  consumerConnected/consumerDisconnected signals
+- D-Bus PropertiesChanged signals for geometry, caption, state and
+  consumer changes
+- Integration test for D-Bus API (ObjectManager, properties, Stop method)
+
+State values match the D-Bus XML documentation: idle, paused, streaming.
+---
+ autotests/integration/CMakeLists.txt          |   3 +
+ .../integration/screencast_dbus_test.cpp      | 266 ++++++++++
+ src/plugins/screencast/CMakeLists.txt         |  38 +-
+ .../org.kde.KWin.ScreenCast.Output.xml        |  32 ++
+ .../org.kde.KWin.ScreenCast.Region.xml        |  32 ++
+ .../org.kde.KWin.ScreenCast.Window.xml        |  47 ++
+ .../screencast/org.kde.KWin.ScreenCast.xml    |  36 ++
+ .../screencast/outputscreencastsource.cpp     |  26 +
+ .../screencast/outputscreencastsource.h       |   9 +
+ .../screencast/pipewireconsumertracker.cpp    | 493 ++++++++++++++++++
+ .../screencast/pipewireconsumertracker.h      | 107 ++++
+ .../screencast/regionscreencastsource.h       |  21 +
+ .../screencast/screencastdbusinterface.cpp    | 327 ++++++++++++
+ .../screencast/screencastdbusinterface.h      |  58 +++
+ src/plugins/screencast/screencastmanager.cpp  |  27 +-
+ src/plugins/screencast/screencastmanager.h    |  15 +
+ src/plugins/screencast/screencaststream.cpp   |  46 +-
+ src/plugins/screencast/screencaststream.h     |  15 +-
+ .../screencast/screencaststreamwrapper.cpp    | 187 +++++++
+ .../screencast/screencaststreamwrapper.h      |  92 ++++
+ .../screencast/windowscreencastsource.cpp     |  52 ++
+ .../screencast/windowscreencastsource.h       |  18 +
+ 22 files changed, 1943 insertions(+), 4 deletions(-)
+ create mode 100644 autotests/integration/screencast_dbus_test.cpp
+ create mode 100644 src/plugins/screencast/org.kde.KWin.ScreenCast.Output.xml
+ create mode 100644 src/plugins/screencast/org.kde.KWin.ScreenCast.Region.xml
+ create mode 100644 src/plugins/screencast/org.kde.KWin.ScreenCast.Window.xml
+ create mode 100644 src/plugins/screencast/org.kde.KWin.ScreenCast.xml
+ create mode 100644 src/plugins/screencast/pipewireconsumertracker.cpp
+ create mode 100644 src/plugins/screencast/pipewireconsumertracker.h
+ create mode 100644 src/plugins/screencast/screencastdbusinterface.cpp
+ create mode 100644 src/plugins/screencast/screencastdbusinterface.h
+ create mode 100644 src/plugins/screencast/screencaststreamwrapper.cpp
+ create mode 100644 src/plugins/screencast/screencaststreamwrapper.h
+
 diff --git a/autotests/integration/CMakeLists.txt b/autotests/integration/CMakeLists.txt
-index f9139957ef..990ad3185d 100644
+index 83cd9a41c6..131626a303 100644
 --- a/autotests/integration/CMakeLists.txt
 +++ b/autotests/integration/CMakeLists.txt
 @@ -193,6 +193,9 @@ endif()
@@ -285,10 +374,10 @@ index 0000000000..58062d7f7b
 +WAYLANDTEST_MAIN(KWin::ScreencastDbusTest)
 +#include "screencast_dbus_test.moc"
 diff --git a/src/plugins/screencast/CMakeLists.txt b/src/plugins/screencast/CMakeLists.txt
-index 4dd5262d78..c5b2503f3d 100644
+index 4dd5262d78..85dc9c1059 100644
 --- a/src/plugins/screencast/CMakeLists.txt
 +++ b/src/plugins/screencast/CMakeLists.txt
-@@ -1,16 +1,55 @@
+@@ -1,15 +1,51 @@
 +qt_add_dbus_adaptor(SCREENCAST_DBUS_ADAPTORS
 +    org.kde.KWin.ScreenCast.xml
 +    screencaststreamwrapper.h
@@ -299,24 +388,24 @@ index 4dd5262d78..c5b2503f3d 100644
 +
 +qt_add_dbus_adaptor(SCREENCAST_DBUS_ADAPTORS
 +    org.kde.KWin.ScreenCast.Window.xml
-+    windowstreamwrapper.h
-+    KWin::WindowStreamDBusWrapper
++    screencaststreamwrapper.h
++    KWin::ScreenCastStreamDBusWrapper
 +    windowstreamadaptor
 +    WindowStreamAdaptor
 +)
 +
 +qt_add_dbus_adaptor(SCREENCAST_DBUS_ADAPTORS
 +    org.kde.KWin.ScreenCast.Output.xml
-+    outputstreamwrapper.h
-+    KWin::OutputStreamDBusWrapper
++    screencaststreamwrapper.h
++    KWin::ScreenCastStreamDBusWrapper
 +    outputstreamadaptor
 +    OutputStreamAdaptor
 +)
 +
 +qt_add_dbus_adaptor(SCREENCAST_DBUS_ADAPTORS
 +    org.kde.KWin.ScreenCast.Region.xml
-+    regionstreamwrapper.h
-+    KWin::RegionStreamDBusWrapper
++    screencaststreamwrapper.h
++    KWin::ScreenCastStreamDBusWrapper
 +    regionstreamadaptor
 +    RegionStreamAdaptor
 +)
@@ -327,11 +416,9 @@ index 4dd5262d78..c5b2503f3d 100644
      filteredsceneview.cpp
      main.cpp
      outputscreencastsource.cpp
-+    outputstreamwrapper.cpp
 +    pipewireconsumertracker.cpp
      pipewirecore.cpp
      regionscreencastsource.cpp
-+    regionstreamwrapper.cpp
      screencastbuffer.cpp
 +    screencastdbusinterface.cpp
      screencastlayer.cpp
@@ -340,11 +427,9 @@ index 4dd5262d78..c5b2503f3d 100644
      screencaststream.cpp
 +    screencaststreamwrapper.cpp
      windowscreencastsource.cpp
-+    windowstreamwrapper.cpp
  )
  
- ecm_qt_declare_logging_category(screencast
-@@ -20,4 +59,4 @@ ecm_qt_declare_logging_category(screencast
+@@ -20,4 +56,4 @@ ecm_qt_declare_logging_category(screencast
      DEFAULT_SEVERITY Warning
  )
  
@@ -585,109 +670,6 @@ index 7c3142b179..0cabb154ba 100644
  private:
      QPointer<LogicalOutput> m_output;
      std::optional<pid_t> m_pidToHide;
-diff --git a/src/plugins/screencast/outputstreamwrapper.cpp b/src/plugins/screencast/outputstreamwrapper.cpp
-new file mode 100644
-index 0000000000..5ef34ad3cc
---- /dev/null
-+++ b/src/plugins/screencast/outputstreamwrapper.cpp
-@@ -0,0 +1,48 @@
-+/*
-+    SPDX-FileCopyrightText: 2025 Jerzy Kołosowski <jerzy@kolosowscy.pl>
-+    SPDX-License-Identifier: GPL-2.0-or-later
-+*/
-+
-+#include "outputstreamwrapper.h"
-+#include "outputscreencastsource.h"
-+
-+namespace KWin
-+{
-+
-+OutputStreamDBusWrapper::OutputStreamDBusWrapper(OutputScreenCastSource *source, QObject *parent)
-+    : QObject(parent)
-+    , m_source(source)
-+{
-+    connect(m_source, &OutputScreenCastSource::geometryChanged, this, &OutputStreamDBusWrapper::geometryChanged);
-+}
-+
-+OutputStreamDBusWrapper::~OutputStreamDBusWrapper() = default;
-+
-+QString OutputStreamDBusWrapper::outputName() const
-+{
-+    return m_source->outputName();
-+}
-+
-+double OutputStreamDBusWrapper::x() const
-+{
-+    return m_source->x();
-+}
-+
-+double OutputStreamDBusWrapper::y() const
-+{
-+    return m_source->y();
-+}
-+
-+int OutputStreamDBusWrapper::width() const
-+{
-+    return m_source->width();
-+}
-+
-+int OutputStreamDBusWrapper::height() const
-+{
-+    return m_source->height();
-+}
-+
-+} // namespace KWin
-+
-+#include "moc_outputstreamwrapper.cpp"
-diff --git a/src/plugins/screencast/outputstreamwrapper.h b/src/plugins/screencast/outputstreamwrapper.h
-new file mode 100644
-index 0000000000..1c73b1f302
---- /dev/null
-+++ b/src/plugins/screencast/outputstreamwrapper.h
-@@ -0,0 +1,43 @@
-+/*
-+    SPDX-FileCopyrightText: 2025 Jerzy Kołosowski <jerzy@kolosowscy.pl>
-+    SPDX-License-Identifier: GPL-2.0-or-later
-+*/
-+
-+#pragma once
-+
-+#include <QObject>
-+
-+namespace KWin
-+{
-+
-+class OutputScreenCastSource;
-+
-+class OutputStreamDBusWrapper : public QObject
-+{
-+    Q_OBJECT
-+    Q_CLASSINFO("D-Bus Interface", "org.kde.KWin.ScreenCast.Output")
-+
-+    Q_PROPERTY(QString OutputName READ outputName)
-+    Q_PROPERTY(double X READ x NOTIFY geometryChanged)
-+    Q_PROPERTY(double Y READ y NOTIFY geometryChanged)
-+    Q_PROPERTY(int Width READ width NOTIFY geometryChanged)
-+    Q_PROPERTY(int Height READ height NOTIFY geometryChanged)
-+
-+public:
-+    explicit OutputStreamDBusWrapper(OutputScreenCastSource *source, QObject *parent = nullptr);
-+    ~OutputStreamDBusWrapper() override;
-+
-+    QString outputName() const;
-+    double x() const;
-+    double y() const;
-+    int width() const;
-+    int height() const;
-+
-+Q_SIGNALS:
-+    void geometryChanged();
-+
-+private:
-+    OutputScreenCastSource *m_source;
-+};
-+
-+} // namespace KWin
 diff --git a/src/plugins/screencast/pipewireconsumertracker.cpp b/src/plugins/screencast/pipewireconsumertracker.cpp
 new file mode 100644
 index 0000000000..6fc33eb0d2
@@ -1332,111 +1314,12 @@ index b9fd361e6d..702dd12eb8 100644
  private:
      const Rect m_region;
      const qreal m_scale;
-diff --git a/src/plugins/screencast/regionstreamwrapper.cpp b/src/plugins/screencast/regionstreamwrapper.cpp
-new file mode 100644
-index 0000000000..98268aed45
---- /dev/null
-+++ b/src/plugins/screencast/regionstreamwrapper.cpp
-@@ -0,0 +1,47 @@
-+/*
-+    SPDX-FileCopyrightText: 2025 Jerzy Kołosowski <jerzy@kolosowscy.pl>
-+    SPDX-License-Identifier: GPL-2.0-or-later
-+*/
-+
-+#include "regionstreamwrapper.h"
-+#include "regionscreencastsource.h"
-+
-+namespace KWin
-+{
-+
-+RegionStreamDBusWrapper::RegionStreamDBusWrapper(RegionScreenCastSource *source, QObject *parent)
-+    : QObject(parent)
-+    , m_source(source)
-+{
-+}
-+
-+RegionStreamDBusWrapper::~RegionStreamDBusWrapper() = default;
-+
-+double RegionStreamDBusWrapper::x() const
-+{
-+    return m_source->x();
-+}
-+
-+double RegionStreamDBusWrapper::y() const
-+{
-+    return m_source->y();
-+}
-+
-+int RegionStreamDBusWrapper::width() const
-+{
-+    return m_source->width();
-+}
-+
-+int RegionStreamDBusWrapper::height() const
-+{
-+    return m_source->height();
-+}
-+
-+double RegionStreamDBusWrapper::scale() const
-+{
-+    return m_source->scale();
-+}
-+
-+} // namespace KWin
-+
-+#include "moc_regionstreamwrapper.cpp"
-diff --git a/src/plugins/screencast/regionstreamwrapper.h b/src/plugins/screencast/regionstreamwrapper.h
-new file mode 100644
-index 0000000000..36970d983e
---- /dev/null
-+++ b/src/plugins/screencast/regionstreamwrapper.h
-@@ -0,0 +1,40 @@
-+/*
-+    SPDX-FileCopyrightText: 2025 Jerzy Kołosowski <jerzy@kolosowscy.pl>
-+    SPDX-License-Identifier: GPL-2.0-or-later
-+*/
-+
-+#pragma once
-+
-+#include <QObject>
-+
-+namespace KWin
-+{
-+
-+class RegionScreenCastSource;
-+
-+class RegionStreamDBusWrapper : public QObject
-+{
-+    Q_OBJECT
-+    Q_CLASSINFO("D-Bus Interface", "org.kde.KWin.ScreenCast.Region")
-+
-+    Q_PROPERTY(double X READ x CONSTANT)
-+    Q_PROPERTY(double Y READ y CONSTANT)
-+    Q_PROPERTY(int Width READ width CONSTANT)
-+    Q_PROPERTY(int Height READ height CONSTANT)
-+    Q_PROPERTY(double Scale READ scale CONSTANT)
-+
-+public:
-+    explicit RegionStreamDBusWrapper(RegionScreenCastSource *source, QObject *parent = nullptr);
-+    ~RegionStreamDBusWrapper() override;
-+
-+    double x() const;
-+    double y() const;
-+    int width() const;
-+    int height() const;
-+    double scale() const;
-+
-+private:
-+    RegionScreenCastSource *m_source;
-+};
-+
-+} // namespace KWin
 diff --git a/src/plugins/screencast/screencastdbusinterface.cpp b/src/plugins/screencast/screencastdbusinterface.cpp
 new file mode 100644
-index 0000000000..133a4f4b4b
+index 0000000000..d19a8e72f1
 --- /dev/null
 +++ b/src/plugins/screencast/screencastdbusinterface.cpp
-@@ -0,0 +1,343 @@
+@@ -0,0 +1,327 @@
 +/*
 +    SPDX-FileCopyrightText: 2025 Jerzy Kołosowski <jerzy@kolosowscy.pl>
 +    SPDX-License-Identifier: GPL-2.0-or-later
@@ -1445,14 +1328,11 @@ index 0000000000..133a4f4b4b
 +#include "screencastdbusinterface.h"
 +#include "kwinscreencast_logging.h"
 +#include "outputscreencastsource.h"
-+#include "outputstreamwrapper.h"
 +#include "regionscreencastsource.h"
-+#include "regionstreamwrapper.h"
 +#include "screencastmanager.h"
 +#include "screencaststream.h"
 +#include "screencaststreamwrapper.h"
 +#include "windowscreencastsource.h"
-+#include "windowstreamwrapper.h"
 +
 +#include "outputstreamadaptor.h"
 +#include "regionstreamadaptor.h"
@@ -1497,9 +1377,7 @@ index 0000000000..133a4f4b4b
 +    for (const QDBusObjectPath &path : m_streamPaths.values()) {
 +        QDBusConnection::sessionBus().unregisterObject(path.path());
 +    }
-+    for (const QList<QObject *> &wrappers : std::as_const(m_streamWrappers)) {
-+        qDeleteAll(wrappers);
-+    }
++    qDeleteAll(m_streamWrappers.values());
 +
 +    QDBusConnection::sessionBus().unregisterObject(
 +        QStringLiteral("/org/kde/KWin/ScreenCast"));
@@ -1539,44 +1417,46 @@ index 0000000000..133a4f4b4b
 +        return interfaces;
 +    }
 +
-+    const QList<QObject *> &wrappers = m_streamWrappers[stream];
-+    for (QObject *wrapper : wrappers) {
-+        if (auto *mainWrapper = qobject_cast<ScreenCastStreamDBusWrapper *>(wrapper)) {
-+            QVariantMap props;
-+            props[QStringLiteral("Identifier")] = mainWrapper->identifier();
-+            props[QStringLiteral("Type")] = mainWrapper->type();
-+            props[QStringLiteral("State")] = mainWrapper->state();
-+            props[QStringLiteral("ConsumerApp")] = mainWrapper->consumerApp();
-+            props[QStringLiteral("ConsumerPID")] = mainWrapper->consumerPID();
-+            interfaces[QStringLiteral("org.kde.KWin.ScreenCast")] = props;
-+        } else if (auto *windowWrapper = qobject_cast<WindowStreamDBusWrapper *>(wrapper)) {
-+            QVariantMap props;
-+            props[QStringLiteral("WindowId")] = windowWrapper->windowId();
-+            props[QStringLiteral("WindowClass")] = windowWrapper->windowClass();
-+            props[QStringLiteral("ResourceName")] = windowWrapper->resourceName();
-+            props[QStringLiteral("Caption")] = windowWrapper->caption();
-+            props[QStringLiteral("X")] = windowWrapper->x();
-+            props[QStringLiteral("Y")] = windowWrapper->y();
-+            props[QStringLiteral("Width")] = windowWrapper->width();
-+            props[QStringLiteral("Height")] = windowWrapper->height();
-+            interfaces[QStringLiteral("org.kde.KWin.ScreenCast.Window")] = props;
-+        } else if (auto *outputWrapper = qobject_cast<OutputStreamDBusWrapper *>(wrapper)) {
-+            QVariantMap props;
-+            props[QStringLiteral("OutputName")] = outputWrapper->outputName();
-+            props[QStringLiteral("X")] = outputWrapper->x();
-+            props[QStringLiteral("Y")] = outputWrapper->y();
-+            props[QStringLiteral("Width")] = outputWrapper->width();
-+            props[QStringLiteral("Height")] = outputWrapper->height();
-+            interfaces[QStringLiteral("org.kde.KWin.ScreenCast.Output")] = props;
-+        } else if (auto *regionWrapper = qobject_cast<RegionStreamDBusWrapper *>(wrapper)) {
-+            QVariantMap props;
-+            props[QStringLiteral("X")] = regionWrapper->x();
-+            props[QStringLiteral("Y")] = regionWrapper->y();
-+            props[QStringLiteral("Width")] = regionWrapper->width();
-+            props[QStringLiteral("Height")] = regionWrapper->height();
-+            props[QStringLiteral("Scale")] = regionWrapper->scale();
-+            interfaces[QStringLiteral("org.kde.KWin.ScreenCast.Region")] = props;
-+        }
++    ScreenCastStreamDBusWrapper *wrapper = m_streamWrappers[stream];
++
++    // Common interface properties
++    QVariantMap commonProps;
++    commonProps[QStringLiteral("Identifier")] = wrapper->identifier();
++    commonProps[QStringLiteral("Type")] = wrapper->type();
++    commonProps[QStringLiteral("State")] = wrapper->state();
++    commonProps[QStringLiteral("ConsumerApp")] = wrapper->consumerApp();
++    commonProps[QStringLiteral("ConsumerPID")] = wrapper->consumerPID();
++    interfaces[QStringLiteral("org.kde.KWin.ScreenCast")] = commonProps;
++
++    // Type-specific interface properties
++    ScreenCastSource *source = stream->source();
++    if (qobject_cast<WindowScreenCastSource *>(source)) {
++        QVariantMap props;
++        props[QStringLiteral("WindowId")] = wrapper->windowId();
++        props[QStringLiteral("WindowClass")] = wrapper->windowClass();
++        props[QStringLiteral("ResourceName")] = wrapper->resourceName();
++        props[QStringLiteral("Caption")] = wrapper->caption();
++        props[QStringLiteral("X")] = wrapper->x();
++        props[QStringLiteral("Y")] = wrapper->y();
++        props[QStringLiteral("Width")] = wrapper->width();
++        props[QStringLiteral("Height")] = wrapper->height();
++        interfaces[QStringLiteral("org.kde.KWin.ScreenCast.Window")] = props;
++    } else if (qobject_cast<OutputScreenCastSource *>(source)) {
++        QVariantMap props;
++        props[QStringLiteral("OutputName")] = wrapper->outputName();
++        props[QStringLiteral("X")] = wrapper->x();
++        props[QStringLiteral("Y")] = wrapper->y();
++        props[QStringLiteral("Width")] = wrapper->width();
++        props[QStringLiteral("Height")] = wrapper->height();
++        interfaces[QStringLiteral("org.kde.KWin.ScreenCast.Output")] = props;
++    } else if (qobject_cast<RegionScreenCastSource *>(source)) {
++        QVariantMap props;
++        props[QStringLiteral("X")] = wrapper->x();
++        props[QStringLiteral("Y")] = wrapper->y();
++        props[QStringLiteral("Width")] = wrapper->width();
++        props[QStringLiteral("Height")] = wrapper->height();
++        props[QStringLiteral("Scale")] = wrapper->scale();
++        interfaces[QStringLiteral("org.kde.KWin.ScreenCast.Region")] = props;
 +    }
 +
 +    return interfaces;
@@ -1619,17 +1499,11 @@ index 0000000000..133a4f4b4b
 +        QDBusObjectPath objectPath(path);
 +        m_streamPaths[stream] = objectPath;
 +
-+        QList<QObject *> wrappers = createStreamWrappers(stream);
-+        m_streamWrappers[stream] = wrappers;
++        ScreenCastStreamDBusWrapper *wrapper = createStreamWrapper(stream);
++        m_streamWrappers[stream] = wrapper;
 +
-+        auto *mainWrapper = qobject_cast<ScreenCastStreamDBusWrapper *>(wrappers.first());
-+        if (!mainWrapper) {
-+            qCWarning(KWIN_SCREENCAST) << "Failed to create stream D-Bus wrapper";
-+            return;
-+        }
-+
-+        registerStreamOnDBus(path, mainWrapper);
-+        connectStreamPropertySignals(stream, path, mainWrapper);
++        registerStreamOnDBus(path, wrapper);
++        connectStreamPropertySignals(stream, path, wrapper);
 +    }, Qt::SingleShotConnection);
 +}
 +
@@ -1643,39 +1517,30 @@ index 0000000000..133a4f4b4b
 +    m_streamsAnnouncedOnDBus.remove(stream);
 +    QStringList interfaces = streamInterfaceNames(stream);
 +
-+    if (m_streamWrappers.contains(stream)) {
-+        QList<QObject *> wrappers = m_streamWrappers.take(stream);
-+        qDeleteAll(wrappers);
-+    }
++    delete m_streamWrappers.take(stream);
 +
 +    QDBusConnection::sessionBus().unregisterObject(objectPath.path());
 +    Q_EMIT InterfacesRemoved(objectPath, interfaces);
 +}
 +
-+QList<QObject *> ScreencastDBusInterface::createStreamWrappers(ScreenCastStream *stream)
++ScreenCastStreamDBusWrapper *ScreencastDBusInterface::createStreamWrapper(ScreenCastStream *stream)
 +{
-+    QList<QObject *> wrappers;
++    auto *wrapper = new ScreenCastStreamDBusWrapper(stream, nullptr);
 +
-+    auto *mainWrapper = new ScreenCastStreamDBusWrapper(stream, nullptr);
-+    new ScreenCastAdaptor(mainWrapper);
-+    wrappers.append(mainWrapper);
++    // Common adaptor — always present
++    new ScreenCastAdaptor(wrapper);
 +
++    // Type-specific adaptor — only the one matching the stream source
 +    ScreenCastSource *source = stream->source();
-+    if (auto *windowSource = qobject_cast<WindowScreenCastSource *>(source)) {
-+        auto *windowWrapper = new WindowStreamDBusWrapper(windowSource, nullptr);
-+        new WindowStreamAdaptor(windowWrapper);
-+        wrappers.append(windowWrapper);
-+    } else if (auto *outputSource = qobject_cast<OutputScreenCastSource *>(source)) {
-+        auto *outputWrapper = new OutputStreamDBusWrapper(outputSource, nullptr);
-+        new OutputStreamAdaptor(outputWrapper);
-+        wrappers.append(outputWrapper);
-+    } else if (auto *regionSource = qobject_cast<RegionScreenCastSource *>(source)) {
-+        auto *regionWrapper = new RegionStreamDBusWrapper(regionSource, nullptr);
-+        new RegionStreamAdaptor(regionWrapper);
-+        wrappers.append(regionWrapper);
++    if (qobject_cast<WindowScreenCastSource *>(source)) {
++        new WindowStreamAdaptor(wrapper);
++    } else if (qobject_cast<OutputScreenCastSource *>(source)) {
++        new OutputStreamAdaptor(wrapper);
++    } else if (qobject_cast<RegionScreenCastSource *>(source)) {
++        new RegionStreamAdaptor(wrapper);
 +    }
 +
-+    return wrappers;
++    return wrapper;
 +}
 +
 +bool ScreencastDBusInterface::registerStreamOnDBus(const QString &path, ScreenCastStreamDBusWrapper *wrapper)
@@ -1720,42 +1585,44 @@ index 0000000000..133a4f4b4b
 +        emitPropertiesChanged(path, QStringLiteral("org.kde.KWin.ScreenCast"), changedProps);
 +    });
 +
++    // Type-specific property change signals
 +    ScreenCastSource *source = stream->source();
-+    if (auto *windowSource = qobject_cast<WindowScreenCastSource *>(source)) {
-+        QPointer<WindowScreenCastSource> windowSourcePtr(windowSource);
-+        connect(windowSource, &WindowScreenCastSource::rectChanged, this, [windowSourcePtr, path]() {
-+            if (!windowSourcePtr) {
++    if (qobject_cast<WindowScreenCastSource *>(source)) {
++        connect(wrapper, &ScreenCastStreamDBusWrapper::rectChanged, this, [wrapperPtr, path]() {
++            if (!wrapperPtr) {
 +                return;
 +            }
++            ScreenCastStreamDBusWrapper *wrapper = wrapperPtr.data();
 +
 +            QVariantMap changedProps;
-+            changedProps[QStringLiteral("X")] = windowSourcePtr->x();
-+            changedProps[QStringLiteral("Y")] = windowSourcePtr->y();
-+            changedProps[QStringLiteral("Width")] = windowSourcePtr->width();
-+            changedProps[QStringLiteral("Height")] = windowSourcePtr->height();
++            changedProps[QStringLiteral("X")] = wrapper->x();
++            changedProps[QStringLiteral("Y")] = wrapper->y();
++            changedProps[QStringLiteral("Width")] = wrapper->width();
++            changedProps[QStringLiteral("Height")] = wrapper->height();
 +            emitPropertiesChanged(path, QStringLiteral("org.kde.KWin.ScreenCast.Window"), changedProps);
 +        });
-+        connect(windowSource, &WindowScreenCastSource::captionChanged, this, [windowSourcePtr, path]() {
-+            if (!windowSourcePtr) {
++        connect(wrapper, &ScreenCastStreamDBusWrapper::captionChanged, this, [wrapperPtr, path]() {
++            if (!wrapperPtr) {
 +                return;
 +            }
++            ScreenCastStreamDBusWrapper *wrapper = wrapperPtr.data();
 +
 +            QVariantMap changedProps;
-+            changedProps[QStringLiteral("Caption")] = windowSourcePtr->caption();
++            changedProps[QStringLiteral("Caption")] = wrapper->caption();
 +            emitPropertiesChanged(path, QStringLiteral("org.kde.KWin.ScreenCast.Window"), changedProps);
 +        });
-+    } else if (auto *outputSource = qobject_cast<OutputScreenCastSource *>(source)) {
-+        QPointer<OutputScreenCastSource> outputSourcePtr(outputSource);
-+        connect(outputSource, &OutputScreenCastSource::geometryChanged, this, [outputSourcePtr, path]() {
-+            if (!outputSourcePtr) {
++    } else if (qobject_cast<OutputScreenCastSource *>(source)) {
++        connect(wrapper, &ScreenCastStreamDBusWrapper::geometryChanged, this, [wrapperPtr, path]() {
++            if (!wrapperPtr) {
 +                return;
 +            }
++            ScreenCastStreamDBusWrapper *wrapper = wrapperPtr.data();
 +
 +            QVariantMap changedProps;
-+            changedProps[QStringLiteral("X")] = outputSourcePtr->x();
-+            changedProps[QStringLiteral("Y")] = outputSourcePtr->y();
-+            changedProps[QStringLiteral("Width")] = outputSourcePtr->width();
-+            changedProps[QStringLiteral("Height")] = outputSourcePtr->height();
++            changedProps[QStringLiteral("X")] = wrapper->x();
++            changedProps[QStringLiteral("Y")] = wrapper->y();
++            changedProps[QStringLiteral("Width")] = wrapper->width();
++            changedProps[QStringLiteral("Height")] = wrapper->height();
 +            emitPropertiesChanged(path, QStringLiteral("org.kde.KWin.ScreenCast.Output"), changedProps);
 +        });
 +    }
@@ -1782,10 +1649,10 @@ index 0000000000..133a4f4b4b
 +#include "moc_screencastdbusinterface.cpp"
 diff --git a/src/plugins/screencast/screencastdbusinterface.h b/src/plugins/screencast/screencastdbusinterface.h
 new file mode 100644
-index 0000000000..de2e2fcd89
+index 0000000000..09b70f2dcc
 --- /dev/null
 +++ b/src/plugins/screencast/screencastdbusinterface.h
-@@ -0,0 +1,61 @@
+@@ -0,0 +1,58 @@
 +/*
 +    SPDX-FileCopyrightText: 2025 Jerzy Kołosowski <jerzy@kolosowscy.pl>
 +    SPDX-License-Identifier: GPL-2.0-or-later
@@ -1803,9 +1670,6 @@ index 0000000000..de2e2fcd89
 +class ScreencastManager;
 +class ScreenCastStream;
 +class ScreenCastStreamDBusWrapper;
-+class OutputStreamDBusWrapper;
-+class RegionStreamDBusWrapper;
-+class WindowStreamDBusWrapper;
 +
 +/**
 + * Implements org.freedesktop.DBus.ObjectManager for active screencast streams.
@@ -1835,7 +1699,7 @@ index 0000000000..de2e2fcd89
 +    QVariantMap streamInterfaces(ScreenCastStream *stream) const;
 +    QStringList streamInterfaceNames(ScreenCastStream *stream) const;
 +
-+    QList<QObject *> createStreamWrappers(ScreenCastStream *stream);
++    ScreenCastStreamDBusWrapper *createStreamWrapper(ScreenCastStream *stream);
 +    bool registerStreamOnDBus(const QString &path, ScreenCastStreamDBusWrapper *wrapper);
 +    void connectStreamPropertySignals(ScreenCastStream *stream, const QString &path,
 +                                      ScreenCastStreamDBusWrapper *wrapper);
@@ -1843,7 +1707,7 @@ index 0000000000..de2e2fcd89
 +    ScreencastManager *m_manager;
 +    QHash<ScreenCastStream *, QDBusObjectPath> m_streamPaths;
 +    QSet<ScreenCastStream *> m_streamsAnnouncedOnDBus;
-+    QHash<ScreenCastStream *, QList<QObject *>> m_streamWrappers;
++    QHash<ScreenCastStream *, ScreenCastStreamDBusWrapper *> m_streamWrappers;
 +};
 +
 +} // namespace KWin
@@ -2096,10 +1960,10 @@ index 9518b58a0d..da35f088b8 100644
  } // namespace KWin
 diff --git a/src/plugins/screencast/screencaststreamwrapper.cpp b/src/plugins/screencast/screencaststreamwrapper.cpp
 new file mode 100644
-index 0000000000..b3631723d1
+index 0000000000..c3ed2474b0
 --- /dev/null
 +++ b/src/plugins/screencast/screencaststreamwrapper.cpp
-@@ -0,0 +1,71 @@
+@@ -0,0 +1,187 @@
 +/*
 +    SPDX-FileCopyrightText: 2025 Jerzy Kołosowski <jerzy@kolosowscy.pl>
 +    SPDX-License-Identifier: GPL-2.0-or-later
@@ -2122,6 +1986,14 @@ index 0000000000..b3631723d1
 +    connect(m_stream, &ScreenCastStream::stateChanged, this, &ScreenCastStreamDBusWrapper::stateChanged);
 +    connect(m_stream, &ScreenCastStream::consumerConnected, this, &ScreenCastStreamDBusWrapper::consumerChanged);
 +    connect(m_stream, &ScreenCastStream::consumerDisconnected, this, &ScreenCastStreamDBusWrapper::consumerChanged);
++
++    ScreenCastSource *source = m_stream->source();
++    if (auto *windowSource = qobject_cast<WindowScreenCastSource *>(source)) {
++        connect(windowSource, &WindowScreenCastSource::rectChanged, this, &ScreenCastStreamDBusWrapper::rectChanged);
++        connect(windowSource, &WindowScreenCastSource::captionChanged, this, &ScreenCastStreamDBusWrapper::captionChanged);
++    } else if (auto *outputSource = qobject_cast<OutputScreenCastSource *>(source)) {
++        connect(outputSource, &OutputScreenCastSource::geometryChanged, this, &ScreenCastStreamDBusWrapper::geometryChanged);
++    }
 +}
 +
 +ScreenCastStreamDBusWrapper::~ScreenCastStreamDBusWrapper() = default;
@@ -2168,15 +2040,123 @@ index 0000000000..b3631723d1
 +    m_stream->close();
 +}
 +
++// Window-specific accessors
++
++QString ScreenCastStreamDBusWrapper::windowId() const
++{
++    if (auto *source = qobject_cast<WindowScreenCastSource *>(m_stream->source())) {
++        return source->windowId();
++    }
++    return QString();
++}
++
++QString ScreenCastStreamDBusWrapper::windowClass() const
++{
++    if (auto *source = qobject_cast<WindowScreenCastSource *>(m_stream->source())) {
++        return source->windowClass();
++    }
++    return QString();
++}
++
++QString ScreenCastStreamDBusWrapper::resourceName() const
++{
++    if (auto *source = qobject_cast<WindowScreenCastSource *>(m_stream->source())) {
++        return source->resourceName();
++    }
++    return QString();
++}
++
++QString ScreenCastStreamDBusWrapper::caption() const
++{
++    if (auto *source = qobject_cast<WindowScreenCastSource *>(m_stream->source())) {
++        return source->caption();
++    }
++    return QString();
++}
++
++// Output-specific accessor
++
++QString ScreenCastStreamDBusWrapper::outputName() const
++{
++    if (auto *source = qobject_cast<OutputScreenCastSource *>(m_stream->source())) {
++        return source->outputName();
++    }
++    return QString();
++}
++
++// Shared geometry accessors
++
++double ScreenCastStreamDBusWrapper::x() const
++{
++    ScreenCastSource *source = m_stream->source();
++    if (auto *windowSource = qobject_cast<WindowScreenCastSource *>(source)) {
++        return windowSource->x();
++    } else if (auto *outputSource = qobject_cast<OutputScreenCastSource *>(source)) {
++        return outputSource->x();
++    } else if (auto *regionSource = qobject_cast<RegionScreenCastSource *>(source)) {
++        return regionSource->x();
++    }
++    return 0;
++}
++
++double ScreenCastStreamDBusWrapper::y() const
++{
++    ScreenCastSource *source = m_stream->source();
++    if (auto *windowSource = qobject_cast<WindowScreenCastSource *>(source)) {
++        return windowSource->y();
++    } else if (auto *outputSource = qobject_cast<OutputScreenCastSource *>(source)) {
++        return outputSource->y();
++    } else if (auto *regionSource = qobject_cast<RegionScreenCastSource *>(source)) {
++        return regionSource->y();
++    }
++    return 0;
++}
++
++int ScreenCastStreamDBusWrapper::width() const
++{
++    ScreenCastSource *source = m_stream->source();
++    if (auto *windowSource = qobject_cast<WindowScreenCastSource *>(source)) {
++        return windowSource->width();
++    } else if (auto *outputSource = qobject_cast<OutputScreenCastSource *>(source)) {
++        return outputSource->width();
++    } else if (auto *regionSource = qobject_cast<RegionScreenCastSource *>(source)) {
++        return regionSource->width();
++    }
++    return 0;
++}
++
++int ScreenCastStreamDBusWrapper::height() const
++{
++    ScreenCastSource *source = m_stream->source();
++    if (auto *windowSource = qobject_cast<WindowScreenCastSource *>(source)) {
++        return windowSource->height();
++    } else if (auto *outputSource = qobject_cast<OutputScreenCastSource *>(source)) {
++        return outputSource->height();
++    } else if (auto *regionSource = qobject_cast<RegionScreenCastSource *>(source)) {
++        return regionSource->height();
++    }
++    return 0;
++}
++
++// Region-specific accessor
++
++double ScreenCastStreamDBusWrapper::scale() const
++{
++    if (auto *source = qobject_cast<RegionScreenCastSource *>(m_stream->source())) {
++        return source->scale();
++    }
++    return 1.0;
++}
++
 +} // namespace KWin
 +
 +#include "moc_screencaststreamwrapper.cpp"
 diff --git a/src/plugins/screencast/screencaststreamwrapper.h b/src/plugins/screencast/screencaststreamwrapper.h
 new file mode 100644
-index 0000000000..6e6c1ba6cc
+index 0000000000..180da82a69
 --- /dev/null
 +++ b/src/plugins/screencast/screencaststreamwrapper.h
-@@ -0,0 +1,52 @@
+@@ -0,0 +1,92 @@
 +/*
 +    SPDX-FileCopyrightText: 2025 Jerzy Kołosowski <jerzy@kolosowscy.pl>
 +    SPDX-License-Identifier: GPL-2.0-or-later
@@ -2196,11 +2176,30 @@ index 0000000000..6e6c1ba6cc
 +    Q_OBJECT
 +    Q_CLASSINFO("D-Bus Interface", "org.kde.KWin.ScreenCast")
 +
++    // Common properties (org.kde.KWin.ScreenCast)
 +    Q_PROPERTY(QString Identifier READ identifier CONSTANT)
 +    Q_PROPERTY(QString Type READ type CONSTANT)
 +    Q_PROPERTY(QString State READ state NOTIFY stateChanged)
 +    Q_PROPERTY(QString ConsumerApp READ consumerApp NOTIFY consumerChanged)
 +    Q_PROPERTY(quint32 ConsumerPID READ consumerPID NOTIFY consumerChanged)
++
++    // Window properties (org.kde.KWin.ScreenCast.Window)
++    Q_PROPERTY(QString WindowId READ windowId CONSTANT)
++    Q_PROPERTY(QString WindowClass READ windowClass CONSTANT)
++    Q_PROPERTY(QString ResourceName READ resourceName CONSTANT)
++    Q_PROPERTY(QString Caption READ caption NOTIFY captionChanged)
++
++    // Output properties (org.kde.KWin.ScreenCast.Output)
++    Q_PROPERTY(QString OutputName READ outputName CONSTANT)
++
++    // Shared geometry properties (Window/Output/Region)
++    Q_PROPERTY(double X READ x NOTIFY rectChanged)
++    Q_PROPERTY(double Y READ y NOTIFY rectChanged)
++    Q_PROPERTY(int Width READ width NOTIFY rectChanged)
++    Q_PROPERTY(int Height READ height NOTIFY rectChanged)
++
++    // Region properties (org.kde.KWin.ScreenCast.Region)
++    Q_PROPERTY(double Scale READ scale CONSTANT)
 +
 +public:
 +    explicit ScreenCastStreamDBusWrapper(ScreenCastStream *stream, QObject *parent = nullptr);
@@ -2217,12 +2216,33 @@ index 0000000000..6e6c1ba6cc
 +    QString consumerApp() const;
 +    quint32 consumerPID() const;
 +
++    // Window-specific accessors (used by WindowStreamAdaptor)
++    QString windowId() const;
++    QString windowClass() const;
++    QString resourceName() const;
++    QString caption() const;
++
++    // Output-specific accessor (used by OutputStreamAdaptor)
++    QString outputName() const;
++
++    // Shared geometry accessors (used by Window/Output/Region adaptors)
++    double x() const;
++    double y() const;
++    int width() const;
++    int height() const;
++
++    // Region-specific accessor (used by RegionStreamAdaptor)
++    double scale() const;
++
 +public Q_SLOTS:
 +    void Stop();
 +
 +Q_SIGNALS:
 +    void stateChanged();
 +    void consumerChanged();
++    void captionChanged();
++    void rectChanged();
++    void geometryChanged();
 +
 +private:
 +    ScreenCastStream *m_stream;
@@ -2230,20 +2250,10 @@ index 0000000000..6e6c1ba6cc
 +
 +} // namespace KWin
 diff --git a/src/plugins/screencast/windowscreencastsource.cpp b/src/plugins/screencast/windowscreencastsource.cpp
-index 59708970ea..93a477314f 100644
+index c565a337da..93a477314f 100644
 --- a/src/plugins/screencast/windowscreencastsource.cpp
 +++ b/src/plugins/screencast/windowscreencastsource.cpp
-@@ -33,7 +33,8 @@ WindowScreenCastSource::WindowScreenCastSource(Window *window)
-     add(window);
- 
-     connect(workspace(), &Workspace::windowAdded, this, [this](Window *window) {
--        if (window->isPopupWindow() && m_windows.contains(window->transientFor())) {
-+        Window *parent = window->transientFor();
-+        if (window->isPopupWindow() && parent && m_windows.contains(parent)) {
-             add(window);
-             if (m_active) {
-                 Q_EMIT frame();
-@@ -80,12 +81,16 @@ void WindowScreenCastSource::watch(Window *window)
+@@ -81,12 +81,16 @@ void WindowScreenCastSource::watch(Window *window)
  {
      window->refOffscreenRendering();
      connect(window, &Window::damaged, this, &WindowScreenCastSource::frame);
@@ -2260,7 +2270,7 @@ index 59708970ea..93a477314f 100644
  }
  
  quint32 WindowScreenCastSource::drmFormat() const
-@@ -210,6 +215,54 @@ RectF WindowScreenCastSource::boundingRect() const
+@@ -211,6 +215,54 @@ RectF WindowScreenCastSource::boundingRect() const
      return boundingRect;
  }
  
@@ -2344,127 +2354,6 @@ index 80edd86ac8..67522e9b00 100644
  private:
      void add(Window *window);
      void watch(Window *window);
-diff --git a/src/plugins/screencast/windowstreamwrapper.cpp b/src/plugins/screencast/windowstreamwrapper.cpp
-new file mode 100644
-index 0000000000..fd741407a8
---- /dev/null
-+++ b/src/plugins/screencast/windowstreamwrapper.cpp
-@@ -0,0 +1,63 @@
-+/*
-+    SPDX-FileCopyrightText: 2025 Jerzy Kołosowski <jerzy@kolosowscy.pl>
-+    SPDX-License-Identifier: GPL-2.0-or-later
-+*/
-+
-+#include "windowstreamwrapper.h"
-+#include "windowscreencastsource.h"
-+
-+namespace KWin
-+{
-+
-+WindowStreamDBusWrapper::WindowStreamDBusWrapper(WindowScreenCastSource *source, QObject *parent)
-+    : QObject(parent)
-+    , m_source(source)
-+{
-+    connect(m_source, &WindowScreenCastSource::rectChanged, this, &WindowStreamDBusWrapper::rectChanged);
-+}
-+
-+WindowStreamDBusWrapper::~WindowStreamDBusWrapper() = default;
-+
-+QString WindowStreamDBusWrapper::windowId() const
-+{
-+    return m_source->windowId();
-+}
-+
-+QString WindowStreamDBusWrapper::windowClass() const
-+{
-+    return m_source->windowClass();
-+}
-+
-+QString WindowStreamDBusWrapper::resourceName() const
-+{
-+    return m_source->resourceName();
-+}
-+
-+QString WindowStreamDBusWrapper::caption() const
-+{
-+    return m_source->caption();
-+}
-+
-+double WindowStreamDBusWrapper::x() const
-+{
-+    return m_source->x();
-+}
-+
-+double WindowStreamDBusWrapper::y() const
-+{
-+    return m_source->y();
-+}
-+
-+int WindowStreamDBusWrapper::width() const
-+{
-+    return m_source->width();
-+}
-+
-+int WindowStreamDBusWrapper::height() const
-+{
-+    return m_source->height();
-+}
-+
-+} // namespace KWin
-+
-+#include "moc_windowstreamwrapper.cpp"
-diff --git a/src/plugins/screencast/windowstreamwrapper.h b/src/plugins/screencast/windowstreamwrapper.h
-new file mode 100644
-index 0000000000..c22404fc70
---- /dev/null
-+++ b/src/plugins/screencast/windowstreamwrapper.h
-@@ -0,0 +1,49 @@
-+/*
-+    SPDX-FileCopyrightText: 2025 Jerzy Kołosowski <jerzy@kolosowscy.pl>
-+    SPDX-License-Identifier: GPL-2.0-or-later
-+*/
-+
-+#pragma once
-+
-+#include <QObject>
-+
-+namespace KWin
-+{
-+
-+class WindowScreenCastSource;
-+
-+class WindowStreamDBusWrapper : public QObject
-+{
-+    Q_OBJECT
-+    Q_CLASSINFO("D-Bus Interface", "org.kde.KWin.ScreenCast.Window")
-+
-+    Q_PROPERTY(QString WindowId READ windowId)
-+    Q_PROPERTY(QString WindowClass READ windowClass)
-+    Q_PROPERTY(QString ResourceName READ resourceName)
-+    Q_PROPERTY(QString Caption READ caption)
-+    Q_PROPERTY(double X READ x NOTIFY rectChanged)
-+    Q_PROPERTY(double Y READ y NOTIFY rectChanged)
-+    Q_PROPERTY(int Width READ width NOTIFY rectChanged)
-+    Q_PROPERTY(int Height READ height NOTIFY rectChanged)
-+
-+public:
-+    explicit WindowStreamDBusWrapper(WindowScreenCastSource *source, QObject *parent = nullptr);
-+    ~WindowStreamDBusWrapper() override;
-+
-+    QString windowId() const;
-+    QString windowClass() const;
-+    QString resourceName() const;
-+    QString caption() const;
-+    double x() const;
-+    double y() const;
-+    int width() const;
-+    int height() const;
-+
-+Q_SIGNALS:
-+    void rectChanged();
-+
-+private:
-+    WindowScreenCastSource *m_source;
-+};
-+
-+} // namespace KWin
+-- 
+2.53.0
+

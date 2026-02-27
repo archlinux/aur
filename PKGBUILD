@@ -5,9 +5,9 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kwin-screencast-api
-pkgver=6.6.0
+pkgver=6.6.1
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=3
+pkgrel=1
 pkgdesc='KWin with D-Bus API for screencast stream introspection'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -18,6 +18,7 @@ depends=(aurorae
          breeze
          gcc-libs
          glibc
+         iio-sensor-proxy
          plasma-activities
          kauth
          kcmutils
@@ -67,7 +68,6 @@ depends=(aurorae
          qt6-5compat
          qt6-base
          qt6-declarative
-         qt6-sensors
          qt6-svg
          qt6-tools
          systemd-libs
@@ -85,9 +85,9 @@ optdepends=('plasma-keyboard: virtual keyboard')
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/kwin-$pkgver.tar.xz{,.sig}
         screencast-dbus-api.patch)
-sha256sums=('35134fcfb64d01904cdcd25aea8e90c68c37973a088971e4d678acfdc5020914'
+sha256sums=('cc3c2a825df1a6fe40a5294dc1a5fb0b9d61e4255c89356fdd69b6cb334670eb'
             'SKIP'
-            '460d0d5b11876f593249b1096d29fc12cfb3c12732961e8c909213c4bf83f934')
+            'f3289d7ef7ce89c28391d13cec115c84b3875246cbbd2d28e4942a3faf1b2256')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
