@@ -1,0 +1,5 @@
+[chisel-bin]
+source = "github"
+github = "jpillora/chisel"
+use_latest_release = true
+prefix = "v"
