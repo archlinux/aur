@@ -1,6 +1,6 @@
 # Maintainer: m4rcel-lol <your@email.com>
 pkgname=termitune
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A beautiful, fast TUI MP3 music player for Arch Linux"
 arch=('x86_64' 'aarch64')
