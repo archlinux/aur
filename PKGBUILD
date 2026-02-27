@@ -36,6 +36,18 @@ makedepends=(
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tidynest/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('5779be8f75f3cfeecae9e1c9118722a517726c15c516cdaaf5cbce9dc59b35a0')
 
+prepare() {
+    cd "$pkgname-$pkgver"
+
+    # Fix CSP: add 'self' to connect-src so WASM can be fetched via
+    # Tauri's custom-protocol (tauri://localhost).
+    sed -i "s/connect-src ipc:/connect-src 'self' ipc:/" src-tauri/tauri.conf.json
+
+    # Enable withGlobalTauri so window.__TAURI__ is available to the
+    # Leptos WASM frontend (required for IPC command invocation).
+    sed -i 's/"withGlobalTauri": false/"withGlobalTauri": true/' src-tauri/tauri.conf.json
+}
+
 build() {
     cd "$pkgname-$pkgver"
 
@@ -47,17 +59,30 @@ build() {
     export CXXFLAGS="${CXXFLAGS//-flto=auto/}"
 
     cargo build --release --target x86_64-unknown-linux-musl -p hardener-cli
-    cd src-tauri && cargo build --release
+
+    # Build the Leptos WASM frontend (Tauri embeds these assets from dist/).
+    # Use --public-url="." so asset paths are relative (required for Tauri's
+    # custom-protocol; absolute paths like /foo.js don't resolve).
+    cd crates/hardener-ui && trunk build --release --public-url="." && cd ../..
+
+    cd src-tauri && cargo build --release --features tauri/custom-protocol
 }
 
 package() {
     cd "$pkgname-$pkgver"
 
-    # Binaries
+    # CLI binary (static musl)
     install -Dm755 "target/x86_64-unknown-linux-musl/release/hardener" \
         "$pkgdir/usr/bin/hardener"
+
+    # Desktop binary + wrapper (sets WebKit Wayland workaround)
     install -Dm755 "target/release/linux-hardener-desktop" \
-        "$pkgdir/usr/bin/linux-hardener-desktop"
+        "$pkgdir/usr/lib/linux-hardener/linux-hardener-desktop"
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/linux-hardener-desktop" <<'WRAPPER'
+#!/bin/sh
+export WEBKIT_DISABLE_COMPOSITING_MODE=1
+exec /usr/lib/linux-hardener/linux-hardener-desktop "$@"
+WRAPPER
 
     # Systemd units
     install -Dm644 "systemd/linux-hardener.service" \
