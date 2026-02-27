@@ -1,0 +1,64 @@
+# Maintainer: AImixAE <AImixAE[at]outlook[dot]com>
+
+pkgname=openscreen-bin
+pkgver=1.1.2
+pkgrel=1
+pkgdesc="Create stunning screen recordings for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio."
+arch=('any')
+url="https://github.com/siddharthvaddem/openscreen"
+license=('MIT')
+groups=()
+depends=('fuse')
+makedepends=('nodejs' 'pnpm')
+optdepends=()
+provides=()
+conflicts=('openscreen-appimage')
+options=(!debug !strip)
+source=("openscreen.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "openscreen.desktop" "openscreen")
+sha256sums=('b238ebbc99d0120145ea9c9a44f21116bcdf902689e42bebfb0988f35f765b9c' 'SKIP' 'SKIP')
+
+prepare() {
+	cd "openscreen-$pkgver"
+	pnpm i
+
+	if [[ -d "openscreen-$pkgver/release" ]]; then
+        rm -rv "openscreen-$pkgver/release"
+    fi
+}
+
+build() {
+	cd "openscreen-$pkgver"
+	pnpm run build
+
+	app=$(find $srcdir/openscreen-$pkgver/release -regex ".*\.AppImage")
+	appdir=$(dirname $app)
+
+	chmod +x "$app"
+    (
+        cd "$appdir"
+        "$app" --appimage-extract
+    )
+}
+
+check() {
+    app=$(find $srcdir/openscreen-$pkgver/release -regex ".*\.AppImage")
+	appdir=$(dirname $app)
+
+	[[ -f "$app" ]]
+}
+
+package() {
+    app=$(find $srcdir/openscreen-$pkgver/release -regex ".*\.AppImage")
+	appdir=$(dirname $app)
+
+	install -Dm755 "$srcdir/openscreen" "$pkgdir/usr/bin/openscreen"
+    install -Dm755 "$app" "$pkgdir/opt/openscreen/Openscreen.AppImage"
+    install -Dm755 "$srcdir/openscreen.desktop" "$pkgdir/usr/share/applications/openscreen.desktop"
+
+    icon_types="16 24 32 48 64 128 256 512 1024"
+    for num in $icon_types; do
+        install -Dm644 \
+            "$appdir/squashfs-root/usr/share/icons/hicolor/${num}x${num}/apps/openscreen.png" \
+            "$pkgdir/usr/share/icons/hicolor/${num}x${num}/apps/openscreen.png"
+    done
+}
