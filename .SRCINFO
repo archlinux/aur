@@ -31,7 +31,7 @@ pkgname = ldc-git
 	provides = d-compiler
 	backup = etc/ldc2-git.conf
 
-pkgname = libphobos-git
+pkgname = liblphobos-git
 	depends = curl
 	provides = d-runtime
 	provides = d-stdlib
