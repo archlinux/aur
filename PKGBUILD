@@ -112,4 +112,3 @@ package() {
   # Remove insecure RUNPATH pointing to build dir
   chrpath --delete "$pkgdir/opt/$pkgname"/lib/*.so
 }
-
