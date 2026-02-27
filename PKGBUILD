@@ -1,5 +1,5 @@
 pkgname=ssmt4-linux
-pkgver=0.0.6_beta
+pkgver=0.0.7_beta
 pkgrel=1
 pkgdesc="SSMT4 - Super Simple Linux Game Tools 4th"
 arch=('x86_64')
@@ -12,6 +12,15 @@ optdepends=(
   'xorg-xwayland: XWayland support'
   'wine: Windows game compatibility'
   'winetricks: Wine helper scripts'
+  'umu-launcher: umu-run runtime launcher'
+  'bubblewrap: sandbox mode (bwrap)'
+  'vulkan-tools: Vulkan diagnostics (vulkaninfo)'
+  'pciutils: GPU detection (lspci)'
+  '7zip: HoYoverse split archive extraction'
+  'unzip: Proton archive extraction'
+  'git: Data-parameters repository sync'
+  'polkit: privileged telemetry host edits (pkexec)'
+  'procps-ng: process monitoring (ps/pgrep)'
   'libayatana-appindicator: tray icon support'
 )
 options=('!debug')
@@ -20,7 +29,7 @@ _upstream_ver="${pkgver//_/-}"
 source=(
   "ssmt4-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/xiaobai01111/SSMT4-Linux/releases/download/${_upstream_ver}/ssmt4-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
 )
-sha256sums=('2a82860eb924a463f560f5e201dc407604ea9ce29eaa82c966240992dad59686')
+sha256sums=('SKIP')
 
 package() {
   bsdtar -xpf "${srcdir}/ssmt4-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}"
