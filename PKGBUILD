@@ -20,6 +20,8 @@ depends=(
 makedepends=(
     'cargo'
     'clang'
+    'cmake'
+    'make'
     'nasm'
     'pkg-config'
 )
@@ -37,7 +39,7 @@ optdepends=(
 options=(!lto)
 backup=('etc/dbus-1/system.d/io.lamco.RdpServer.System.conf')
 source=("$pkgname-$pkgver.tar.xz::https://github.com/lamco-admin/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('536890136a48191b54edb4088a9396a9aad98ab8e12a3b160debc5bac00fcf71')
+sha256sums=('38b549510dfd15ab923a165a9af19217b7c212c919c949f88b3bc4ade9d7ab74')
 
 build() {
     cd "$pkgname-$pkgver"

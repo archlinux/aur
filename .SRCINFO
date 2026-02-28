@@ -7,6 +7,8 @@ pkgbase = lamco-rdp-server
 	license = BUSL-1.1
 	makedepends = cargo
 	makedepends = clang
+	makedepends = cmake
+	makedepends = make
 	makedepends = nasm
 	makedepends = pkg-config
 	depends = gcc-libs
@@ -28,6 +30,6 @@ pkgbase = lamco-rdp-server
 	options = !lto
 	backup = etc/dbus-1/system.d/io.lamco.RdpServer.System.conf
 	source = lamco-rdp-server-1.4.0.tar.xz::https://github.com/lamco-admin/lamco-rdp-server/releases/download/v1.4.0/lamco-rdp-server-1.4.0.tar.xz
-	sha256sums = 59507a8b907b3f9f955fe66380739a5c4bde861a9863c5a2e5906037a95d810b
+	sha256sums = 38b549510dfd15ab923a165a9af19217b7c212c919c949f88b3bc4ade9d7ab74
 
 pkgname = lamco-rdp-server
