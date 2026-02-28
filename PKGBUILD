@@ -1,7 +1,8 @@
 # Maintainer: Semyon Ivanov <aur at semyon dot dev>
 
-pkgname=srb-id-pkcs11-git
-pkgver=0.4.0.r0.gd492d7f
+_pkgname=srb-id-pkcs11
+pkgname=$_pkgname-git
+pkgver=0.4.0.r1.g48153cf
 pkgrel=1
 pkgdesc='An open source PKCS11 v2.40 module for Serbian ID smart cards'
 arch=('x86_64')
@@ -9,23 +10,23 @@ url='https://github.com/ubavic/srb-id-pkcs11'
 license=('Unlicense')
 depends=('ccid' 'p11-kit' 'pcsclite')
 makedepends=('zig')
-provides=('srb-id-pkcs11')
-conflicts=('srb-id-pkcs11')
-source=("$pkgname::git+https://github.com/ubavic/srb-id-pkcs11.git")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+https://github.com/ubavic/srb-id-pkcs11.git")
 sha256sums=('SKIP')
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_pkgname"
     zig build -Doptimize=ReleaseSmall
 }
 
 check() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_pkgname"
     zig build test
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_pkgname"
 
     install -dm755 "$pkgdir/usr/lib/pkcs11"
     cp -a zig-out/lib/*.so "$pkgdir/usr/lib/pkcs11"
@@ -35,10 +36,10 @@ package() {
     echo "module: /usr/lib/pkcs11/libsrb-id-pkcs11.so" > srb-id-pkcs11.module
     install -Dm644 srb-id-pkcs11.module -t "$pkgdir/usr/share/p11-kit/modules"
 
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 }
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/$_pkgname"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
