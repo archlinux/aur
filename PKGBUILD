@@ -2,14 +2,14 @@
 
 _name=testcontainers
 pkgname=python-${_name}
-pkgver=4.12.0
+pkgver=4.14.1
 pkgrel=1
 pkgdesc='Python library for throwaway instances of anything that can run in a Docker container.'
 arch=('any')
 url='https://github.com/testcontainers/testcontainers-python'
 license=('Apache-2.0')
 source=("${url}/archive/refs/tags/${_name//-/_}-v${pkgver}.tar.gz")
-sha256sums=('3ae97315217e83275467fd217b13327fcef22ea96f76230dba53560634ef9ed4')
+sha256sums=('84c6f9ea892e32b696f248a45411882f0b746cf5f3eb4ddd3ad97ecee523971b')
 depends=('python>=3.9' 'python-docker' 'python-urllib3' 'python-wrapt' 'python-typing_extensions' 'python-dotenv')
 makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-anyio' 'python-psycopg2' 'python-pg8000' 'python-sqlalchemy' 'python-psycopg' 'python-cassandra-driver' 'python-pytest-asyncio' 'python-kafka-ng' 'python-hvac' 'python-pymilvus' 'python-httpx' 'python-paho-mqtt' 'python-sqlalchemy-cockroachdb' 'python-paramiko' 'python-types-paramiko' 'python-pytest-mock' )
@@ -48,7 +48,7 @@ optdepends=('python-arango: arangodb'
             'python-trino: trino')
 
 build() {
-  cd "${srcdir}"/${_name//-/_}-${pkgname}-${pkgver}
+  cd "${srcdir}"/${_name//-/_}-${pkgname}-v${pkgver}
   python -m build --wheel --no-isolation
 }
 
@@ -57,13 +57,13 @@ check(){
     -vv
     --override-ini="addopts="
   )
-  cd "${srcdir}"/${_name//-/_}-${pkgname}-${pkgver}
+  cd "${srcdir}"/${_name//-/_}-${pkgname}-v${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m installer dist/*.whl
   test-env/bin/python -m pytest "${pytest_options[@]}" core/tests
 }
 
 package() {
-  cd "${srcdir}"/${_name//-/_}-${pkgname}-${pkgver}
+  cd "${srcdir}"/${_name//-/_}-${pkgname}-v${pkgver}
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
