@@ -19,7 +19,7 @@ makedepends=(
     'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+sha256sums=('f786917e88beb9db9fa5e7b6d531a98358c51f45d4a5546d54d0898fcb09f45e')
 
 build() {
     cd "$pkgname-$pkgver"
