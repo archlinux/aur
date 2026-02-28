@@ -1,0 +1,19 @@
+pkgbase = omniget-bin
+	pkgdesc = Media downloader. Paste a link. Get your file. Udemy, Hotmart, Telegram and 1000+ Downloader.(Prebuilt version)
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://discord.gg/TA8A8r2z
+	arch = aarch64
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	provides = omniget=0.3.2
+	conflicts = omniget
+	source_aarch64 = omniget-0.3.2-aarch64.rpm::https://github.com/tonhowtf/omniget/releases/download/v0.3.2/omniget-0.3.2-1.aarch64.rpm
+	sha256sums_aarch64 = 0c00ae766835f50aa4c0bd4c385b6da3023ac71b0590cadcce2c1914b32ba5f4
+	source_x86_64 = omniget-0.3.2-x86_64.rpm::https://github.com/tonhowtf/omniget/releases/download/v0.3.2/omniget-0.3.2-1.x86_64.rpm
+	sha256sums_x86_64 = 3276560bc89e6ab43c638cbbb0817052e4b5b33abb561726f5f439027ab36226
+
+pkgname = omniget-bin
