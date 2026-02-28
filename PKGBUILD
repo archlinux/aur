@@ -1,7 +1,7 @@
 # Maintainer: adenast <adenast@proton.me>
 pkgname=footfetch-git
 _pkgname=footfetch
-pkgver=1.42.4.r0.g1234567
+pkgver=1.42.4.r51.gf51a966
 pkgrel=1
 pkgdesc="A neofetch-like tool for those who prefer feet over faces"
 arch=('x86_64' 'aarch64')
@@ -21,12 +21,12 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  cargo build --release --locked
+  cargo build --release
 }
 
 check() {
   cd "$_pkgname"
-  cargo test --release --locked
+  cargo test --release
 }
 
 package() {
