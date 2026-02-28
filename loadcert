@@ -1,0 +1,89 @@
+#!/usr/bin/bash
+
+Red="\e[0;31m"
+Yellow="\e[0;33m"
+Green="\e[0;32m"
+White="\e[0m"
+
+
+
+
+
+restart_browser() {
+    local browser_name="$1"
+
+    # Проверяем, запущен ли браузер
+    if pgrep -x "$browser_name" > /dev/null || pgrep -f "$browser_name" > /dev/null; then
+        echo "Found opened browser: $browser_name"
+        echo "Closing $browser_name..."
+
+        # Закрываем браузер
+        pkill "$browser_name" 2>/dev/null || pkill -f "$browser_name" 2>/dev/null
+
+        # Даем время на закрытие
+        sleep 2
+
+        echo "Restarting $browser_name..."
+        # Перезапускаем браузер в фоне
+        "$browser_name" &>/dev/null &
+
+        echo "$browser_name successfully restarted."
+        return 0
+    fi
+    return 1
+}
+
+# function printHelpMessage() {
+#   echo "Usage: scpf [-c] [changeperm changeid makealias] <server or alias> <path on the server>
+#         -h --help - Print this message.
+#         -c --changedir - One time changing saving directory on this machine from default.
+#         changeperm - Permanently change saving directory on this machine.
+#         changeid - Permanently change path to identification key.
+#         makealias - Make short name (alias) to desired server." >&2
+# }
+
+if [[ $# -eq 0 ]]; then
+    printf "${Red}Please enter a path to a certificate - loadcert /path/to/cert\n${White}"
+    exit 1
+fi
+
+if [[ ! -f $1 ]]; then
+    printf "${Red}File not found. Please enter a valid path to a certificate - loadcert /path/to/cert\n${White}"
+    exit 1
+fi
+
+output=$(openssl x509 -in $1 -noout -dates 2>&1)
+
+if [[ "$output" == *"Could not"* ]]; then
+    printf "${Red}File probably is not a certificate. Check it and try again - loadcert /path/to/cert\n${White}"
+    exit 1
+fi
+
+printf "${Yellow}CERTIFICATE: \n${White}"
+echo "$output"
+
+printf "${Yellow}Trying to copy the certificate into trust-source folder... \n${White}"
+sudo cp $1 /etc/ca-certificates/trust-source/anchors/
+printf "${Green}Copied! \n${White}"
+
+printf "${Yellow}Updating trusting certificates... \n${White}"
+sudo trust extract-compat
+printf "${Green}Done! \n${White}"
+
+echo "$(openssl verify $1)"
+printf "${Green}Loaded! ${White}Should we restart your browser to apply certificate? [${Green}Y${White}/${Red}n${White}]\n${White}"
+read key
+
+if [[ "$key" =~ ^[Nn]$ ]]; then
+    # N or n PRESSED"
+    exit 0
+else
+    # Y or another PRESSED"
+    browsers=("firefox" "google-chrome" "chromium-browser" "opera" "brave-browser")
+
+    for browser in "${browsers[@]}"; do
+        if restart_browser "$browser"; then
+            exit 0
+        fi
+    done
+fi

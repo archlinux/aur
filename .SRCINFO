@@ -1,0 +1,8 @@
+pkgbase = loadcert
+	pkgdesc = Loads certificate to the system
+	pkgver = 0.0.3
+	pkgrel = 2
+	arch = any
+	license = custom
+
+pkgname = loadcert
