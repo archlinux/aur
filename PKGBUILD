@@ -5,14 +5,28 @@ _name="QCEngine"
 _pkgname="${_name,,}"
 pkgname="python-${_pkgname}"
 pkgver=0.33.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Quantum chemistry program executor and IO standardizer (QCSchema) for quantum chemistry'
 arch=('any')
 url='https://molssi.github.io/QCEngine/'
 license=('BSD-3-Clause')
 makedepends=('python-build' 'python-installer' 'python-wheel')
-depends=('python-qcelemental' 'python-py-cpuinfo' 'python-psutil')
+depends=(
+  'python'
+  'python-numpy'
+  'python-psutil'
+  'python-py-cpuinfo'
+  'python-yaml'
+  # AUR
+  'python-qcelemental'
+)
 optdepends=(
+  'python-msgpack'
+  'python-pkg_resources'
+  'python-pytest'
+  'python-pytorch'
+  'rdkit'
+  # AUR
   'dftd3'
   'dftd4'
   'gamess'
@@ -23,7 +37,6 @@ optdepends=(
   'psi4'
   'python-optking'
   'python-pyberny'
-  'rdkit'
   'xtb'
 )
 checkdepends=('python-msgpack' 'python-pytest')
