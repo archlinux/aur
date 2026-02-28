@@ -1,0 +1,24 @@
+pkgbase = python-ssh-over-nat
+        pkgdesc = SSH-over-NAT tool using NAT-traversal techniques
+        pkgver = 1.0.0
+        pkgrel = 1
+        url = https://github.com/typsoon/SSH-over-NAT
+        arch = any
+        license = MIT
+        makedepends = python-setuptools
+        makedepends = python-setuptools-scm
+        makedepends = python-build
+        makedepends = python-wheel
+        makedepends = git
+        makedepends = python-pip
+        depends = python
+        depends = python-requests
+        depends = python-psutil
+        depends = python-pydantic
+        depends = python-platformdirs
+        depends = python-doit
+        source = SSH-over-NAT::git+https://github.com/typsoon/SSH-over-NAT.git#branch=main
+        sha256sums = SKIP
+
+pkgname = python-ssh-over-nat
+
