@@ -15,7 +15,7 @@ depends=('libolm')
 makedepends=('git' 'go')
 provides=('matterbridge')
 conflicts=('matterbridge')
-backup=("etc/matterbridge/matterbridge.toml")
+backup=("etc/matterbridge.toml")
 source=(
   "${_pkgname}::git+https://github.com/matterbridge-org/matterbridge"
   "matterbridge.service"
