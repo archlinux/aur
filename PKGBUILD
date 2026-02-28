@@ -4,7 +4,7 @@ pkgname=mkbrr-gui-bin
 _srcver="v1.19.0-rc.1"
 pkgver="${_srcver#v}"
 pkgver="${pkgver/-rc./_rc}"
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to create, modify and inspect torrent files. GUI version"
 arch=('x86_64')
 url="https://github.com/autobrr/mkbrr/"
@@ -22,7 +22,7 @@ options=(!strip)
 provides=('mkbrr-gui')
 conflicts=('mkbrr-gui')
 source=("${pkgname}-${pkgver}.tar.gz::${url}releases/download/${_srcver}/mkbrr-gui_${_srcver}_linux_amd64.tar.gz"
-        "https://raw.githubusercontent.com/autobrr/mkbrr/${_srcver}/LICENSE"
+        "mkbrr-gui-license::https://raw.githubusercontent.com/autobrr/mkbrr/${_srcver}/LICENSE"
         mkbrr.png
         mkbrr.desktop)
 sha256sums=('ba0ee8e714e36bcf1d5ab7fb060884881838f9421ac4de4283b133c417bf8998'
@@ -34,7 +34,7 @@ package() {
     install -Dm755 "${srcdir}/mkbrr-gui" "${pkgdir}/usr/bin/mkbrr-gui"
     install -Dm644 "${srcdir}/mkbrr.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/mkbrr.png"
     install -Dm644 "${srcdir}/mkbrr.desktop" "${pkgdir}/usr/share/applications/mkbrr.desktop"
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/mkbrr-gui-license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 
