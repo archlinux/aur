@@ -1,0 +1,14 @@
+pkgbase = vesper-audio-ctl
+	pkgdesc = Audio control tool for PipeWire/PulseAudio
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Rinzlo/audio-ctl
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = libpulse
+	source = vesper-audio-ctl-0.1.0.tar.gz::https://github.com/Rinzlo/audio-ctl/archive/v0.1.0.tar.gz
+	sha256sums = 33e6847b1e4c6548b7f786b36b0129f33361351a23449a5fdcbb82eddd2802ce
+
+pkgname = vesper-audio-ctl
