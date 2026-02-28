@@ -3,7 +3,7 @@
 pkgname=qbit-manage-desktop-bin
 _srcver="v4.6.5"
 pkgver="${_srcver#v}"
-pkgrel=5
+pkgrel=6
 pkgdesc="GUI application for qBit_manage, a program used to manage your qBittorrent instance."
 arch=('x86_64')
 url="https://github.com/StuffAnThings/qbit_manage/"
@@ -13,13 +13,20 @@ depends=(
   libayatana-appindicator
   webkit2gtk-4.1
   hicolor-icon-theme
+  libgcc
+  gdk-pixbuf2
+  cairo
+  zlib-ng-compat
+  glib2
+  libsoup3
+  glibc
 )
 makedepends=('imagemagick')
 options=(!strip)
 provides=('qbit-manage-desktop' 'qbit-manage')
 conflicts=('qbit-manage-desktop')
 source=("${pkgname}-${pkgver}.deb::${url}releases/download/${_srcver}/qBit.Manage_${pkgver}_amd64-desktop-installer.deb"
-        "https://raw.githubusercontent.com/StuffAnThings/qbit_manage/refs/heads/master/LICENSE")
+        "qbit-manage-license::https://raw.githubusercontent.com/StuffAnThings/qbit_manage/refs/heads/master/LICENSE")
 sha256sums=('0b79bc23f7831394e8c19f6b8d69e929dfdd3d71b17ea5dac6fabc2551c612df'
             'SKIP')
 
@@ -38,7 +45,7 @@ prepare() {
 package() {
     cp -r --preserve=mode,timestamps "${srcdir}/usr" "${pkgdir}/"
 
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/qbit-manage-license" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 
