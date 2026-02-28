@@ -1,13 +1,13 @@
 pkgbase = nextcloud-app-user-usage-report
 	pkgdesc = Provides a command which generates a report about all the users and their usage.
-	pkgver = 3.0.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/nextcloud/user_usage_report
 	arch = any
 	license = AGPL-3.0-or-later
 	makedepends = yq
 	makedepends = rsync
-	source = user_usage_report-3.0.0.tar.gz::https://github.com/nextcloud/user_usage_report/archive/v3.0.0.tar.gz
-	sha512sums = ebe10a9ef23ec2cb8c7490cdfa2ae410b29d8ab73e909f977ee2354e9b803d7197da2b63ff35e1f41dc697454ee2665e94cff2cb461f7325625ff519bb78d398
+	source = user_usage_report-4.0.0.tar.gz::https://github.com/nextcloud/user_usage_report/archive/v4.0.0.tar.gz
+	sha512sums = efa23852b283ff0923685f25ea9e116fb7263ce4533f814a2828b02491fbe885ddab597a4fa0415cc16cd229ba674c3befe93edc233c39098ae62f01ab3a5fdb
 
 pkgname = nextcloud-app-user-usage-report
