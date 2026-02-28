@@ -1,6 +1,6 @@
 pkgbase = yatto
 	pkgdesc = Interactive version-controlled todo-list for the command-line
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/handlebargh/yatto
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = yatto
 	conflicts = yatto
 	provides = yatto
 	
-	source = https://github.com/handlebargh/yatto/releases/download/v${pkgver}/yatto-${pkgver}.tar.gz
-	sha256sums = 90b5be778c829cb755aa2e99dfff451d53916780c2ac1b80ebdb9599ea9c32de
+	source = https://github.com/handlebargh/yatto/releases/download/v1.1.2/yatto-1.1.2.tar.gz
+	sha256sums = 96c4f8d790823153595bd15490573cfe53405e99222b6b3e940052277107132c
 	
 pkgname = yatto
