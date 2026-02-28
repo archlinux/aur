@@ -1,0 +1,3 @@
+# yt PAM servisi (yt PAM service.)
+auth       required   pam_unix.so nullok
+account    required   pam_unix.so
