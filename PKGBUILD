@@ -1,25 +1,31 @@
 # Maintainer: italoghost <eduprodive at posteo dot me>
 pkgname=leshade-bin
 _pkgname=leshade
-pkgver=2.3.1
+pkgver=2.3.9
 pkgrel=1
 pkgdesc="An unofficial Reshade Installer for Linux."
 arch=('x86_64')
 url="https://github.com/Ishidawg/LeShade"
 license=("MIT")
 provides=("$_pkgname")
-depends=('keyutils' 'libcap' 'bzip2' 'libgcrypt' 'xz' 'krb5' 'libstdc++'
-		'libgpg-error' 'systemd-libs' 'util-linux-libs' 'brotli' 'lz4'
-		'openssl' 'glib2' 'libffi' 'pcre2' 'libatomic' 'dbus' 'libgcc'
-		'zlib' 'zstd' 'expat' 'e2fsprogs' 'glibc')
+depends=(
+'keyutils' 'libcap' 'bzip2' 'libgcrypt' 'xz' 'krb5' 'libstdc++'
+'libgpg-error' 'systemd-libs' 'util-linux-libs' 'brotli' 'lz4'
+'openssl' 'glib2' 'libffi' 'pcre2' 'libatomic' 'dbus' 'libgcc'
+'zlib' 'zstd' 'expat' 'e2fsprogs' 'glibc'
+)
 makedepends=('patchelf')
 options=('!strip' '!emptydirs' '!libtool')
 _appimage="LeShade-x86_64.AppImage"
 noextract=("${_appimage}")
-source=("https://github.com/Ishidawg/LeShade/releases/download/${pkgver}/${_appimage}"
-		"LICENSE::https://raw.githubusercontent.com/Ishidawg/LeShade/main/LICENSE")
-sha256sums=('b1d056cffd1205507169a9ca3cad5569c229e2d26eadb94b14cf2e109f427243'
-			'a7b8f406ed4e1a5311d51a1967f91e569a6c0ce815c2bf74956d926613dd61a3')
+source=(
+"https://github.com/Ishidawg/LeShade/releases/download/${pkgver}/${_appimage}"
+"LICENSE::https://raw.githubusercontent.com/Ishidawg/LeShade/main/LICENSE"
+)
+sha256sums=(
+'8f1a9f8b30421d0b2cedc791659b3a3978395e0c4809adbbd1623c8b0c2fb443'
+'a7b8f406ed4e1a5311d51a1967f91e569a6c0ce815c2bf74956d926613dd61a3'
+)
 
 prepare() {
 	# Extract AppImage
