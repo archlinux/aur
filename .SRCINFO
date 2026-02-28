@@ -1,0 +1,27 @@
+pkgbase = mkbrr-gui-bin
+	pkgdesc = A tool to create, modify and inspect torrent files. GUI version
+	pkgver = 1.19.0_rc1
+	pkgrel = 1
+	url = https://github.com/autobrr/mkbrr/
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = webkit2gtk-4.1
+	depends = libsoup3
+	depends = glibc
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = hicolor-icon-theme
+	depends = glib2
+	provides = mkbrr-gui
+	conflicts = mkbrr-gui
+	options = !strip
+	source = mkbrr-gui-bin-1.19.0_rc1.tar.gz::https://github.com/autobrr/mkbrr/releases/download/v1.19.0-rc.1/mkbrr-gui_v1.19.0-rc.1_linux_amd64.tar.gz
+	source = https://raw.githubusercontent.com/autobrr/mkbrr/v1.19.0-rc.1/LICENSE
+	source = mkbrr.png
+	source = mkbrr.desktop
+	sha256sums = ba0ee8e714e36bcf1d5ab7fb060884881838f9421ac4de4283b133c417bf8998
+	sha256sums = SKIP
+	sha256sums = 3d2ae1c183781e2fab4008b42f7d2004bbefe363f3e965e95b7b4e00bb67b93d
+	sha256sums = ae73ca45fc81e322750454725b5c315b5566625511854ced2716b0c19a4d1515
+
+pkgname = mkbrr-gui-bin

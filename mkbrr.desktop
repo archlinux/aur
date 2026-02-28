@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=mkbrr
+Icon=mkbrr
+Comment=A tool to create, modify and inspect torrent files.
+GenericName=Torrent File Manager
+Exec=/usr/bin/mkbrr-gui
+NoDisplay=false
+Terminal=false
+Categories=Utility;
+MimeType=
+Keywords=
