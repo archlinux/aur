@@ -1,5 +1,5 @@
 pkgname=powerpipe-bin
-pkgver=1.4.3
+pkgver=1.5.0
 pkgrel=1
 pkgdesc='Powerpipe'
 url='https://github.com/turbot/powerpipe'
@@ -8,7 +8,7 @@ arch=('x86_64')
 provides=('powerpipe')
 depends=('gcc-libs' 'glibc')
 source=("powerpipe-$pkgver-$pkgrel.tgz::https://github.com/turbot/powerpipe/releases/download/v$pkgver/powerpipe.linux.amd64.tar.gz")
-sha256sums=('6f1d79102443f21d024986bed84375b76c3eddf69ddce6b42023e17491d186dd')
+sha256sums=('e2cd16551ae7b4218a2a0abdfa6f006718c7dd9a3ace6e58c2da263e7d642e55')
 
 package() {
     tar xzf $srcdir/powerpipe-$pkgver-$pkgrel.tgz
