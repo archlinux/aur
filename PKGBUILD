@@ -7,8 +7,8 @@ qt="qt${QT_VER}"
 
 pkgname=openboard-git
 _fragment="#branch=master"
-pkgver=1.7.3.r5.g9a884af1
-pkgrel=2
+pkgver=1.7.6.r1.g95e69454
+pkgrel=1
 pkgdesc="Interactive whiteboard software for schools and universities (development version current master)"
 arch=('x86_64' 'i686')
 url="http://openboard.ch/index.en.html"
