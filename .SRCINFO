@@ -1,0 +1,17 @@
+pkgbase = fmt11
+	pkgdesc = Open-source formatting library for C++ (major version 11)
+	pkgver = 11.2.0
+	pkgrel = 1
+	url = https://fmt.dev/11.2/
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = ninja
+	makedepends = cmake
+	depends = gcc-libs
+	provides = libfmt.so
+	provides = libfmt.so.11
+	source = git+https://github.com/fmtlib/fmt.git#commit=40626af88bd7df9a5fb80be7b25ac85b122d6c21
+	sha256sums = b93b8fa1777c5876c5a35867be2ede804240f8627e7e69e147b1718f4063a235
+
+pkgname = fmt11
