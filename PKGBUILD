@@ -2,7 +2,7 @@
 
 pkgname=llm-thalamus
 _pkgname=llm_thalamus
-pkgver=0.13
+pkgver=0.16
 pkgrel=1
 pkgdesc="Local AI controller and PySide6 UI integrating OpenMemory with Ollama"
 arch=('any')
@@ -13,18 +13,19 @@ depends=(
   'python'
   'pyside6'               # Qt6 Python bindings (includes WebEngine bindings) :contentReference[oaicite:0]{index=0}
   'python-markdown-it-py' # markdown-it-py parser
-  'python-requests'
-  'python-openmemory'  # your OpenMemory wrapper package (AUR)
+  'python-mdit_py_plugins' 
+  'python-langgraph'
   'katex'                 # provides /usr/lib/node_modules/katex/dist assets :contentReference[oaicite:1]{index=1}
   'qt6-webengine'         # underlying Qt WebEngine libs :contentReference[oaicite:2]{index=2}
   'highlightjs'           # Javascript highlighting
   'llm-thalamus-theme'    # Meta-mackage that installs a theme.
+  'openmemory-backend'
 )
 makedepends=('python')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/evertvorster/llm_thalamus/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('b2d189a5d6bc9b527ddce25ddd4a3eafde7790d792a7b68b8f56d2fcd14206e9')
+sha256sums=('6146368687421b3daf1e690a7cdc0fca17f565b8d7dd227cf29ccf47d5beaa03')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -32,9 +33,6 @@ build() {
 }
 
 package() {
-  pkgdesc="Core llm-thalamus daemon and UI"
-  depends=('python' 'qt6-base' 'qt6-webengine' 'llm-thalamus-theme')
-
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # Use the project Makefile to install everything
