@@ -3,29 +3,37 @@
 
 _pkgname=liquidsfz
 pkgname="$_pkgname-git"
-pkgver=0.3.2.r720.2fc0713
+pkgver=0.3.2.r764.577a610
 pkgrel=1
 pkgdesc='SFZ Sampler (git version)'
 arch=(x86_64)
 url='https://github.com/swesterfeld/liquidsfz'
 license=(MPL-2.0)
 groups=(lv2-plugins pro-audio)
-depends=(gcc-libs glibc)
-makedepends=(lv2 libjack.so libsndfile readline)
+depends=(glibc libgcc libglvnd libstdc++ libx11 libxcursor libxext libxrandr)
+makedepends=(lv2 jack libsndfile readline)
 checkdepends=(lv2lint)
 optdepends=(
-  'libjack.so: for standalone application'
+  'jack: for standalone application'
   'lv2-host: for loading the LV2 plugin'
 )
 provides=(lib$_pkgname $_pkgname $_pkgname-lv2 $_pkgname-standalone)
 conflicts=(lib$_pkgname $_pkgname $_pkgname-lv2 $_pkgname-standalone)
-source=("$_pkgname::git+https://github.com/swesterfeld/$_pkgname.git")
-sha512sums=('SKIP')
+source=("$_pkgname::git+https://github.com/swesterfeld/$_pkgname.git"
+        'imgui::git+https://github.com/ocornut/imgui.git')
+sha512sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd $_pkgname
   local ver=`grep ^AC_INIT configure.ac | sed -E 's/[^0-9]*([0-9]+\.[0-9]+\.[0-9]+).*/\1/'`
   echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd $_pkgname
+  git submodule init
+  git config submodule.dpf.url "$srcdir/imgui"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
