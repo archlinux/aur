@@ -1,12 +1,12 @@
 # Maintainer: jazztickets <amF6enRpY2tldHNAZ21haWwuY29tCg==>
 pkgname=choria-git
-pkgver=v1.1.0.r6.ge91b121
+pkgver=v1.1.1.r20.g19e3295
 pkgrel=1
 pkgdesc="Finally, an MMORPG that's all about grinding and doing chores"
 arch=('i686' 'x86_64')
 url="https://choria.gitlab.io"
 license=('GPL3')
-depends=('gcc-libs' 'sdl2' 'sdl2_image' 'openal' 'libvorbis' 'libogg' 'freetype2' 'sqlite' 'zlib')
+depends=('gcc-libs' 'sdl3' 'openal' 'libvorbis' 'libogg' 'libwebp' 'freetype2' 'sqlite' 'zlib')
 conflicts=('choria')
 makedepends=('cmake')
 source=("${pkgname}::git+https://gitlab.com/choria/code.git#branch=dev")
