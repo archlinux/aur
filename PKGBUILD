@@ -27,11 +27,11 @@ optdepends=(
     'openssh: SFTP backup target support'
     'libnotify: Desktop notification support'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
-sha256sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LeonLionHeart/ArchVault/archive/refs/tags/archvault-5.0.0-beta.tar.gz.tar.gz")
+sha256sums=('cb975456ebfc3f61e2cfc316daf9423acfe503f2643597d0cf652552ea154cfe')
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver//_/-}"
+    cd "${srcdir}/ArchVault-archvault-5.0.0-beta.tar.gz"
 
     # Install Python source files
     install -dm755 "${pkgdir}/usr/lib/${pkgname}"

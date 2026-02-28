@@ -22,7 +22,7 @@ pkgbase = archvault
 	optdepends = sshfs: SSHFS remote filesystem mounting
 	optdepends = openssh: SFTP backup target support
 	optdepends = libnotify: Desktop notification support
-	source = archvault-5.0.0_beta.tar.gz::https://github.com/LeonLionHeart/archvault/archive/refs/tags/v5.0.0-beta.tar.gz
-	sha256sums = SKIP
+	source = archvault-5.0.0_beta.tar.gz::https://github.com/LeonLionHeart/ArchVault/archive/refs/tags/archvault-5.0.0-beta.tar.gz.tar.gz
+	sha256sums = cb975456ebfc3f61e2cfc316daf9423acfe503f2643597d0cf652552ea154cfe
 
 pkgname = archvault
