@@ -1,0 +1,12 @@
+pkgbase = obsidian-cli-inspector
+	pkgdesc = Local-first CLI/TUI for indexing and querying Obsidian vaults
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jingyi-zhao-01/obsidian-cli-inspector
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	source = obsidian-cli-inspector-0.1.0.tar.gz::https://github.com/jingyi-zhao-01/obsidian-cli-inspector/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = REPLACE_ME
+
+pkgname = obsidian-cli-inspector
