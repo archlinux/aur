@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Cristalix
+Comment=Cristalix Launcher
+Exec=env __GL_THREADED_OPTIMIZATIONS=0 java -jar /usr/bin/Cristalix.jar
+Terminal=false
+NoDisplay=false
+Type=Application
+StartupNotify=true
+Name[en_US]=Cristalix
+Icon=/usr/share/pixmaps/Cristalix.png
+
+

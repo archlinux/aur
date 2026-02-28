@@ -1,0 +1,19 @@
+pkgbase = cristalix
+	pkgdesc = Cristalix Launcher
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://cristalix.gg
+	arch = x86_64
+	license = custom
+	depends = jre8-openjdk
+	depends = jdk17-openjdk
+	depends = jdk21-openjdk
+	noextract = Cristalix.jar
+	source = https://cristalix.gg/content/launcher/Cristalix.jar
+	source = Cristalix.desktop
+	source = Cristalix.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cristalix
