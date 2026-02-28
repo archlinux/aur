@@ -57,20 +57,11 @@ package() {
     install -Dm644 "data/rg-sens.metainfo.xml" \
         "$pkgdir/usr/share/metainfo/rg-sens.metainfo.xml"
 
-    # Install CSS template examples
+    # Install examples
     install -d "$pkgdir/usr/share/rg-sens/examples"
-    install -Dm644 "examples/art_nouveau_panel.html" \
-        "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel.html"
-    install -Dm644 "examples/art_nouveau_panel.css" \
-        "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel.css"
-    install -Dm644 "examples/art_nouveau_panel_responsive.html" \
-        "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel_responsive.html"
-    install -Dm644 "examples/art_nouveau_panel_responsive.css" \
-        "$pkgdir/usr/share/rg-sens/examples/art_nouveau_panel_responsive.css"
-    install -Dm644 "examples/css_template_example.html" \
-        "$pkgdir/usr/share/rg-sens/examples/css_template_example.html"
-    install -Dm644 "examples/css_template_example.css" \
-        "$pkgdir/usr/share/rg-sens/examples/css_template_example.css"
+    for f in examples/*.{html,css,js,json}; do
+        [ -f "$f" ] && install -Dm644 "$f" "$pkgdir/usr/share/rg-sens/$f"
+    done
 
     # Install documentation
     install -d "$pkgdir/usr/share/doc/rg-sens"
