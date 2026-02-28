@@ -1,19 +1,22 @@
 pkgbase = jlivertool-bin
-	pkgdesc = Bilibili 弹幕机.(Prebuilt version.Use system-wide electron)
-	pkgver = 2.4.4
+	pkgdesc = Bilibili 弹幕机.(Prebuilt version)
+	pkgver = 3.0.6
 	pkgrel = 1
 	url = http://jlivertool.xinrea.cn/
 	arch = x86_64
 	license = MIT
-	depends = electron35
-	depends = java-runtime
-	provides = jlivertool=2.4.4
+	depends = xdotool
+	depends = gdk-pixbuf2
+	depends = gtk3
+	depends = openssl
+	depends = libxkbcommon-x11
+	provides = jlivertool=3.0.6
 	conflicts = jlivertool
-	source = jlivertool-2.4.4.pacman::https://github.com/Xinrea/JLiverTool/releases/download/v2.4.4/jlivertool-2.4.4.pacman
-	source = LICENSE-2.4.4.md::https://raw.githubusercontent.com/Xinrea/JLiverTool/v2.4.4/LICENSE.md
+	source = jlivertool-3.0.6.deb::https://github.com/Xinrea/JLiverTool/releases/download/v3.0.6/jlivertool_3.0.6_amd64.deb
+	source = LICENSE-3.0.6.md::https://raw.githubusercontent.com/Xinrea/JLiverTool/v3.0.6/LICENSE.md
 	source = jlivertool.sh
-	sha256sums = 63345d3dd453cf81c90b0239306268f9c8e99b0bf3f64421d8319eef1f8dd844
+	sha256sums = 52fd94d2dbde94b0a32374f4a1f360d0adf23a96b2885149dc09b71a2d3b03f9
 	sha256sums = 5d86e387ac33cf32eee9c968d38483a30567690b843c3768b35fe4bc55b455a8
-	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
 
 pkgname = jlivertool-bin
