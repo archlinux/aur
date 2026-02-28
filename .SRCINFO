@@ -1,0 +1,17 @@
+pkgbase = passmenu-custom-git
+	pkgdesc = passmenu-custom extends the functionality of the original with fast, integrated OTP handling and additional options
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/danielml-mx/passmenu-custom.git
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = pass
+	depends = bash
+	optdepends = xdotool: --type option support under X11
+	optdepends = ydotool: --type option support under Wayland
+	source = git+https://github.com/danielml-mx/passmenu-custom.git
+	sha256sums = SKIP
+
+pkgname = passmenu-custom-git
