@@ -1,6 +1,6 @@
 # Maintainer: Gélules
 pkgname=binance-for-desktop
-pkgver=###PKGVER###
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Binance for Desktop"
 arch=('x86_64')
