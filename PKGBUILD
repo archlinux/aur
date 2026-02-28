@@ -1,6 +1,6 @@
 # Maintainer: Rizki Rakasiwi <rizkirr.xyz@gmail.com>
 pkgname=muslimtify
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Prayer time notifier for the desktop"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('libnotify' 'curl')
 makedepends=('cmake' 'pkgconf')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f52881d7adea1134a91e2ad648a04bbbaf8a2c9797b0cb9403317a192ed5b57c')
+sha256sums=('b246639fa894acc06d7c22694708449a1629316fb7838816a0cedf0f155d064d')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \

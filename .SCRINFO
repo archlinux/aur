@@ -1,0 +1,16 @@
+pkgbase = muslimtify
+	pkgdesc = Prayer time notifier for the desktop
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/rizukirr/muslimtify
+	install = muslimtify.install
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = pkgconf
+	depends = libnotify
+	depends = curl
+	source = muslimtify-0.1.3.tar.gz::https://github.com/rizukirr/muslimtify/archive/v0.1.3.tar.gz
+	sha256sums = d792e4384fd19ea85adb4c0c0f8bc7f09a5cbff7bc95b909ce1edc56c7388e47
+
+pkgname = muslimtify
