@@ -4,8 +4,8 @@ _pkgname=azuredatastudio
 pkgname="${_pkgname}-bin"
 # renovate: datasource=github-releases depName=microsoft/azuredatastudio
 pkgver=1.52.0
-pkgrel=2
-pkgdesc="A data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW. (official prebuilt version)"
+pkgrel=3
+pkgdesc="A data management tool that enables you to work with SQL Server, Azure SQL DB and SQL DW. (final official release)"
 arch=('x86_64')
 url="https://github.com/microsoft/azuredatastudio"
 license=('custom: microsoft')
@@ -17,9 +17,9 @@ depends=('gtk3'
 makedepends=('sed')
 optdepends=('krb5: Windows authentication support'
             'xdg-utils: Desktop integration')
-conflicts=('azuredatastudio')
+conflicts=("${_pkgname}")
 options=('staticlibs')
-source=("https://download.microsoft.com/download/6b2bfeac-9c1b-4182-9a2f-ce86ff8cc371/${_pkgname}-linux-${pkgver}.tar.gz"
+source=("${url}/releases/download/final/${_pkgname}-linux-${pkgver}.tar.gz"
         "${_pkgname}.desktop")
 sha256sums=('6ddb60dec0aecce68cdad2fcb4727fb8d3b96f4ad35395054c58f77ca8dbff6c'
             'ff4b8d7d1648e7552017c103308aef2d291509a73b7b4ed6083501ea55a1b541')
