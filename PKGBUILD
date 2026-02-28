@@ -2,13 +2,13 @@
 # Maintainer: Christophe Robin <crobin at nekoo a-dot com>
 
 pkgname=couchbase-server-community
-pkgver=6.5.1
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="A document database featuring a powerful query language and unrivaled performance at scale."
 arch=('x86_64')
 url="http://www.couchbase.com/"
 source=(
-  "${pkgname}-v${pkgver}.deb::http://packages.couchbase.com/releases/${pkgver}/${pkgname}_${pkgver}-ubuntu16.04_amd64.deb"
+  "${pkgname}-v${pkgver}.deb::http://packages.couchbase.com/releases/${pkgver}/${pkgname}_${pkgver}-linux_amd64.deb"
 )
 install=couchbase-server.install
 depends=(glibc gcc-libs sqlite openssl zlib python2)
@@ -28,4 +28,4 @@ package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/lib"
 }
 
-sha256sums=('baf65fb9cbcec87783d4e9c3ec067143a42cdeef13a884e1f917e8d2f14044b7')
+sha256sums=('ef4c87749b4d724362609a11aee9624cb85eefbf141e3b5dc14804749bf0717e')
