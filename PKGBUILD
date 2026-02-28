@@ -2,31 +2,31 @@
 # Contributor: Eric Berquist <eric dot berquist at gmail dot com>
 
 _name="QCEngine"
-_pkgname="qcengine"
+_pkgname="${_name,,}"
 pkgname="python-${_pkgname}"
 pkgver=0.33.0
 pkgrel=2
-pkgdesc="Quantum chemistry program executor and IO standardizer (QCSchema) for quantum chemistry"
-arch=("any")
-url="https://molssi.github.io/QCEngine/"
-license=("BSD-3-Clause")
-makedepends=("python-setuptools")
-depends=("python-qcelemental" "python-py-cpuinfo" "python-psutil")
+pkgdesc='Quantum chemistry program executor and IO standardizer (QCSchema) for quantum chemistry'
+arch=('any')
+url='https://molssi.github.io/QCEngine/'
+license=('BSD-3-Clause')
+makedepends=('python-setuptools')
+depends=('python-qcelemental' 'python-py-cpuinfo' 'python-psutil')
 optdepends=(
-  "dftd3"
-  "dftd4"
-  "gamess"
-  "mopac"
-  "mrchem"
-  "nwchem"
-  "openmm"
-  "psi4"
-  "python-optking"
-  "python-pyberny"
-  "rdkit"
-  "xtb"
+  'dftd3'
+  'dftd4'
+  'gamess'
+  'mopac'
+  'mrchem'
+  'nwchem'
+  'openmm'
+  'psi4'
+  'python-optking'
+  'python-pyberny'
+  'rdkit'
+  'xtb'
 )
-checkdepends=("python-msgpack" "python-pytest")
+checkdepends=('python-msgpack' 'python-pytest')
 source=("${_name}-v${pkgver}.tar.gz::https://github.com/MolSSI/${_name}/archive/v${pkgver}.tar.gz")
 sha256sums=('7d9317355294b2118b9e959e57394eb3f2205db004d9ebe7441cd5026a7fc6c4')
 
