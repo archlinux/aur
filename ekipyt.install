@@ -1,0 +1,9 @@
+post_install() {
+    echo "[yt] İlk kurulum yapılıyor..."
+    /usr/lib/ekipyt/yt-setup.sh
+}
+
+post_upgrade() {
+    echo "[yt] Güncelleme sonrası kontrol..."
+    /usr/lib/ekipyt/yt-setup.sh
+}
