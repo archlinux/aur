@@ -1,0 +1,13 @@
+pkgbase = ttf-codepixel
+	pkgdesc = Pixel-style font for coding
+	pkgver = 2.2
+	pkgrel = 1
+	url = https://github.com/MrZ626/codePixel
+	arch = any
+	license = custom:OFL
+	source = https://github.com/MrZ626/codePixel/releases/download/v2.2/codePixel-Regular.ttf
+	source = https://openfontlicense.org/documents/OFL.txt
+	sha256sums = 5f27e05419ffd17d626e234ec09056b5b7c03d235a7858f2140b161b2fb59beb
+	sha256sums = 1d361a8f8e8ce6e68457dcd93fb56e162e6baa3bbb7e7573a290d44399f6b57e
+
+pkgname = ttf-codepixel
