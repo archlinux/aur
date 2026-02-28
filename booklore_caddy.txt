@@ -1,5 +1,0 @@
-http://localhost:8081 {
-  root * /usr/share/webapps/booklore/booklore-ui/
-  file_server
-  reverse_proxy /api/* localhost:8095
-}
