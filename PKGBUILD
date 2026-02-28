@@ -1,7 +1,7 @@
 # Maintainer: Sombrechip88244 <Sombrechip88244@users.noreply.github.com>
 pkgname=tui-games-launcher-git
 pkgver=1.0.0.r0.gff4c8ad
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimal, classic, keyboard-driven game launcher for Steam and more."
 arch=('any')
 url="https://github.com/Sombrechip88244/tui-games-launcher"

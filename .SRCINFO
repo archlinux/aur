@@ -1,7 +1,7 @@
 pkgbase = tui-games-launcher-git
 	pkgdesc = A minimal, classic, keyboard-driven game launcher for Steam and more.
 	pkgver = 1.0.0.r0.gff4c8ad
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Sombrechip88244/tui-games-launcher
 	arch = any
 	license = MIT
