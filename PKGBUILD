@@ -1,7 +1,7 @@
 # Maintainer: h0lylag <h0lylag@gravemind.sh>
 
 pkgname=eve-preview-manager
-pkgver=1.6.2
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="EVE Online window preview manager"
 arch=('x86_64')
@@ -11,7 +11,7 @@ options=('!debug')
 depends=('fontconfig' 'libx11' 'libxcb' 'libxkbcommon' 'libxkbcommon-x11' 'hicolor-icon-theme' 'libxcursor' 'libxrandr' 'libxi')
 makedepends=('rust' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/h0lylag/EVE-Preview-Manager/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b6eaafb77266ecf9b261dff2950ad027091e88c9280cec6eee26e80fc811c2c0')
+sha256sums=('2e4453f64d62f04760e7a7e12350c1470320d99fcf0f0ff179c1c1c71f98fdd6')
 
 prepare() {
   cd "EVE-Preview-Manager-${pkgver}"
