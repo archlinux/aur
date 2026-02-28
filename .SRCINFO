@@ -1,7 +1,7 @@
 pkgbase = steel-git
 	pkgdesc = An embedded scheme interpreter in Rust
 	pkgver = 0.8.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mattwparas/steel
 	arch = x86_64
 	license = Apache-2.0 OR MIT

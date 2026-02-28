@@ -3,7 +3,7 @@
 pkgname=steel-git
 _pkgname=steel
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An embedded scheme interpreter in Rust'
 arch=('x86_64')
 url='https://github.com/mattwparas/steel'
