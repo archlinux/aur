@@ -19,7 +19,9 @@ md5sums=('333b6eec83e779935a45c818f712484e'
 
 build() {
   cd $_pkgname-$pkgver
-  ./configure --prefix=/usr \
+  ./configure \
+    CFLAGS="-std=gnu89 -fpermissive -Wno-error=deprecated-non-prototype" \
+    --prefix=/usr \
     --disable-static  \
     --disable-error-on-warning \
     --program-suffix=2.0
