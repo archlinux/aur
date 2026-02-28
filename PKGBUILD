@@ -1,7 +1,7 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=r-ark
-pkgver=0.1.228
+pkgver=0.1.233
 pkgrel=1
 pkgdesc="An R kernel"
 url="https://github.com/r-lib/rig"
@@ -9,6 +9,7 @@ arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=(
     gcc-libs
+    libgcc
     glibc
 )
 conflicts=('r-ark-bin')
@@ -33,4 +34,4 @@ package() {
   install -Dm644 "${srcdir}/ark-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('37387c5a4ebc2d70424acdc3bac41f2bd3e989fbd84a17d94f5e86f81a632c93148844b37b73534de1eb85b570db563efe7253a7484c639e77ce4599419ee0e0')
+sha512sums=('95e2d15689516b95976e4765bd367ed724ba279d19c34245f7bed443480cc809cfc8f29ba5ec5d97209b9cbe5008b653dae8d3d161b821f8d502da3f8d88882c')
