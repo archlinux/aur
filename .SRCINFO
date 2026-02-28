@@ -8,7 +8,11 @@ pkgbase = fastflowlm-git
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
+	makedepends = xrt
 	depends = xrt-plugin-amdxdna
+	depends = fftw
+	depends = curl
+	depends = ffmpeg
 	source = fastflowlm-git::git+https://github.com/FastFlowLM/FastFlowLM.git
 	source = git+https://github.com/mlc-ai/tokenizers-cpp.git#commit=34885cf
 	source = git+https://github.com/google/sentencepiece.git#commit=11051e3
