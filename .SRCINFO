@@ -1,0 +1,35 @@
+pkgbase = retuner
+	pkgdesc = A precision audio pitch shifting plugin for converting music between different tuning standards
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/kushview/retuner
+	arch = x86_64
+	arch = aarch64
+	groups = pro-audio
+	groups = vst3-plugins
+	groups = lv2-plugins
+	groups = clap-plugins
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
+	depends = alsa-lib
+	depends = curl
+	depends = freetype2
+	depends = fontconfig
+	depends = libx11
+	depends = libxext
+	depends = libxinerama
+	depends = libxrandr
+	depends = libxcursor
+	depends = libxcomposite
+	depends = libxrender
+	depends = mesa
+	depends = gtk3
+	options = !debug
+	source = git+https://github.com/kushview/retuner.git#tag=1.1.0
+	sha256sums = 09114ddcc86d843dbffd972102d72fe0e4fb97fbbee27b380a286724b0f27fa1
+
+pkgname = retuner
