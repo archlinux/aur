@@ -63,5 +63,5 @@ build() {
 
 package() {
     cd "$pkgname"
-    meson install -C build --destdir "$pkgdir"
+    meson install -C build --destdir "$pkgdir" --skip-subprojects wlroots
 }
