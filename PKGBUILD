@@ -8,7 +8,7 @@ depends=("tpm2-tss")
 makedepends=()
 url="https://github.com/bjn7/passkeyd"
 source=("https://github.com/bjn7/passkeyd/releases/download/v$pkgver/passkeyd-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('6519dd43737c439d8db7e03ff5ea4854a6937ac5a20aa3e4967670fdb7a5b7c8')
+sha256sums=('95f79ee4fed97ebec16b5eb9d495cc5e8e34443654ea6eb4af1370a935d7e1c6')
 options=('!debug')
 
 package() {
