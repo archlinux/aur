@@ -1,7 +1,7 @@
 # Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
 # Contributor: Istvan Szekeres <szekeres@iii.hu>
 pkgname=corral
-pkgver=0.9.0
+pkgver=0.9.2
 pkgrel=1
 epoch=
 pkgdesc="Pony dependency manager tool"
@@ -13,7 +13,7 @@ makedepends=('ponyc' 'git')
 provides=()
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ponylang/corral/archive/$pkgver.tar.gz")
-sha256sums=('7da78ceb96338b746e3c28ad16454d86fd30da576fa66e8489d781311fd1983b')
+sha256sums=('c6b0000fe2f5c451923988e2fc44da3f2a3c37dd35f2125239028edebdb408b5')
 
 build() {
     cd "$srcdir/corral-$pkgver"
