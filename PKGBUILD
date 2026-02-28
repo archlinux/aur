@@ -1,6 +1,6 @@
 # Maintainer: Marcelo Marfil <https://github.com/mmarfil>
 pkgname=magic-trackpad-battery-git
-pkgver=r6.8c88c52
+pkgver=r8.4a78665
 pkgrel=1
 pkgdesc="Battery monitor and auto-connect for Apple Magic Trackpad over Bluetooth"
 arch=('any')
