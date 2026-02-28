@@ -1,4 +1,4 @@
-# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-02-28 10:04:43
+# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-02-28 11:04:34
 
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Maintainer: Piotr Gorski <piotrgorski@cachyos.org>
@@ -176,8 +176,8 @@ _minor=5
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_tagrel=1
-pkgrel=1
+_tagrel=2
+pkgrel=2
 #_stable=${_major}.${_minor}
 _stable=${_major}
 #_stablerc=${_major}-${_rcver}
@@ -810,7 +810,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('f843763709ea5dfcb6695cb43b2d043bfecd0d62b6c04588f92bd2d5b6d496fb9a03a51e65445919466a165961fda6f20571ef5a797d64853f522c2aad88c7d2'
+b2sums=('ea5e3675a448bc3de664008bea3539ea7c74f562c87739cc62e8278c9e228df521012cdf608694930a68db2bedb96e94b95387675885528f86bc147a230e38cd'
         'af28fa649fc258e87227379cff688ea3bc1440cc23b9c1ee5a63805c618c8b5d37df420ba477afa38f10bbe2ad2ba3af525731e21d144decd8ff0284c0eefeb8'
         'ea26c88950fc06b6ffab93b30e3beacc7d26571a70262334ca8b001dc7899bf96b47d703fbaa7f4e47765c3dafccc23c58a4d4da2169b8ee50012afcb7a1dd96'
         'eae57ceccc78f0730fc4962b20f08f270bd21960e84ad5985433590e5229403a74bfc2518540f9e2ef07d319d9cb2288edfbe0d5f7a27cc7e0903aa61fed388c'
