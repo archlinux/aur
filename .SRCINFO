@@ -1,0 +1,19 @@
+pkgbase = meshtui
+	pkgdesc = Console text-user-interface for Meshtastic
+	pkgver = 0.12.2
+	pkgrel = 1
+	url = https://github.com/PeterGrace/meshtui
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	source = meshtui::git+https://github.com/PeterGrace/meshtui.git#tag=v0.12.2
+	b2sums = cad7cf298271f4877fe18f2ec8628da0eee782e0403f5eeebca072cd0d99ae27b60b8ab7fb0ca0c89753f65c680daa90f6d4dca20c876133ac1c4d4b1078f98b
+
+pkgname = meshtui
