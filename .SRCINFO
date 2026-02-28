@@ -5,6 +5,7 @@ pkgbase = netdiscover
 	url = https://github.com/netdiscover-scanner/netdiscover/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = gcc
 	makedepends = make
