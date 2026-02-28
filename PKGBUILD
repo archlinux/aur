@@ -12,10 +12,10 @@ provides=('watchtower')
 conflicts=('watchtower')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/lajosdeme/watchtower/releases/download/v${pkgver}/watchtower_Linux_arm64.tar.gz")
-sha256sums_aarch64=('3df8a4de40af32f156f94b41a63accade83f8b6467fbb9016944d57db0720c26')
+sha256sums_aarch64=('e44a6374eace701727770adb4c67548148f0da17748834dc3c2b5d9eed8b1da4')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/lajosdeme/watchtower/releases/download/v${pkgver}/watchtower_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('92eb3c3fd03ced6ac841f691c94751b7db40d047d596ad5a645df96dbf9e08ae')
+sha256sums_x86_64=('f31545438f88871393dd01551284846624d59777a3bb19f0e19c6650be3f39b1')
 
 package() {
   install -Dm755 "./watchtower" "${pkgdir}/usr/bin/watchtower"
