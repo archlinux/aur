@@ -9,8 +9,8 @@
 # Contributor: Alex Belanger <i.caught.air@gmail.com>
 
 pkgname=ace
-_pkgver=8_0_3
-pkgver=8.0.3
+_pkgver=8_0_5
+pkgver=8.0.5
 pkgrel=1
 pkgdesc="Framework that provides many components and patterns for developing high-performance, distributed real-time and embedded systems."
 arch=('x86_64')
@@ -29,7 +29,7 @@ provides=('libACE.so' 'libACEXML.so' 'libACEXML_Parser.so'
 )
 
 source=("https://github.com/DOCGroup/ACE_TAO/releases/download/ACE%2BTAO-$_pkgver/ACE-src-$pkgver.tar.gz")
-sha256sums=('7a41ee657c8f23235b91cf165e81bf1d4552aa53d454fdec56227d805f61f5cc')
+sha256sums=('20483cedef5086c5b116f95f18fbcca60a4da59b6e11574ffc333cf951335a6e')
 
 prepare() {
     export ACE_ROOT="$srcdir/ACE_wrappers"
