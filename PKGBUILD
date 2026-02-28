@@ -4,7 +4,7 @@
 
 pkgname=kguiaddons-wayland-clipboard-fix
 pkgver=6.23.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Addons to QtGui - fix Wayland clipboard delay from X11 atoms'
 arch=(x86_64)
 url='https://invent.kde.org/frameworks/kguiaddons'
@@ -28,8 +28,10 @@ optdepends=('pyside6: Python bindings'
 provides=(kguiaddons=$pkgver)
 conflicts=(kguiaddons)
 groups=(kf6)
-source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/kguiaddons-$pkgver.tar.xz{,.sig})
+source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/kguiaddons-$pkgver.tar.xz{,.sig}
+        fix-wayland-clipboard-x11-atoms.patch)
 sha256sums=('b9c5ad9fd8fd8aeff2ae01b1317a0dad3011e4259e50e4f2e5685fee00047b48'
+            'SKIP'
             'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde.org>
               E0A3EB202F8E57528E13E72FD7574483BB57B18D  # Jonathan Esk-Riddell <jr@jriddell.org>
@@ -37,17 +39,7 @@ validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB  # David Faure <faure@kde
 
 prepare() {
   cd kguiaddons-$pkgver
-
-  # Skip X11 selection atoms (SAVE_TARGETS, TARGETS, MULTIPLE, TIMESTAMP) in
-  # Wayland clipboard data-control. These are advertised by XWayland apps but
-  # cannot be served via pipe, causing 1s timeout each before real mime types
-  # (like text/plain) are read. With 3+ atoms this adds 3+ seconds of delay
-  # to every clipboard operation.
-  for _f in src/systemclipboard/waylandclipboard.cpp src/systemclipboard/wlrwaylandclipboard.cpp; do
-    sed -i '/Q_UNUSED(type);/a\
-    static const QStringList x11Atoms = {QStringLiteral("SAVE_TARGETS"), QStringLiteral("TARGETS"), QStringLiteral("MULTIPLE"), QStringLiteral("TIMESTAMP")};\
-    if (x11Atoms.contains(mimeType)) return QVariant();' "$_f"
-  done
+  patch -Np1 -i "$srcdir/fix-wayland-clipboard-x11-atoms.patch"
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = kguiaddons-wayland-clipboard-fix
 	pkgdesc = Addons to QtGui - fix Wayland clipboard delay from X11 atoms
 	pkgver = 6.23.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://invent.kde.org/frameworks/kguiaddons
 	arch = x86_64
 	groups = kf6
@@ -27,10 +27,12 @@ pkgbase = kguiaddons-wayland-clipboard-fix
 	conflicts = kguiaddons
 	source = https://download.kde.org/stable/frameworks/6.23/kguiaddons-6.23.0.tar.xz
 	source = https://download.kde.org/stable/frameworks/6.23/kguiaddons-6.23.0.tar.xz.sig
+	source = fix-wayland-clipboard-x11-atoms.patch
 	validpgpkeys = 53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB
 	validpgpkeys = E0A3EB202F8E57528E13E72FD7574483BB57B18D
 	validpgpkeys = 90A968ACA84537CC27B99EAF2C8DF587A6D4AAC1
 	sha256sums = b9c5ad9fd8fd8aeff2ae01b1317a0dad3011e4259e50e4f2e5685fee00047b48
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = kguiaddons-wayland-clipboard-fix

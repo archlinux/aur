@@ -1,0 +1,34 @@
+--- a/src/systemclipboard/waylandclipboard.cpp	2026-02-06 09:14:28.000000000 -0300
++++ b/src/systemclipboard/waylandclipboard.cpp	2026-02-28 19:14:20.523531161 -0300
+@@ -177,6 +177,14 @@
+ {
+     Q_UNUSED(type);
+ 
++    // X11 selection atoms (SAVE_TARGETS, TARGETS, etc.) are advertised by XWayland
++    // apps but cannot be served via data-control pipe, causing a 1s timeout each.
++    // Valid MIME types always contain a slash (e.g. "text/plain"), so skip anything
++    // that is not a proper MIME type to avoid blocking the clipboard.
++    if (!mimeType.contains(QLatin1Char('/'))) {
++        return QVariant();
++    }
++
+     auto it = m_data.constFind(mimeType);
+     if (it != m_data.constEnd())
+         return *it;
+--- a/src/systemclipboard/wlrwaylandclipboard.cpp	2026-02-06 09:14:28.000000000 -0300
++++ b/src/systemclipboard/wlrwaylandclipboard.cpp	2026-02-28 19:14:20.524217788 -0300
+@@ -167,6 +167,14 @@
+ {
+     Q_UNUSED(type);
+ 
++    // X11 selection atoms (SAVE_TARGETS, TARGETS, etc.) are advertised by XWayland
++    // apps but cannot be served via data-control pipe, causing a 1s timeout each.
++    // Valid MIME types always contain a slash (e.g. "text/plain"), so skip anything
++    // that is not a proper MIME type to avoid blocking the clipboard.
++    if (!mimeType.contains(QLatin1Char('/'))) {
++        return QVariant();
++    }
++
+     auto it = m_data.constFind(mimeType);
+     if (it != m_data.constEnd())
+         return *it;
