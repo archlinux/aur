@@ -2,13 +2,15 @@
 
 pkgname="sing-box-bin"
 pkgver="1.13.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="The universal proxy platform (binary version)"
 provides=("sing-box")
-conflicts=("sing-box" "sing-box-beta" "sing-box-git")
+conflicts=("sing-box" "sing-box-beta" "sing-box-beta-bin" "sing-box-git" "libcronet.so")
+optdepends=('sing-geosite-rule-set: geosite rule sets'
+            'sing-geoip-rule-set: geoip rule sets')
 arch=("x86_64" "armv7h" "aarch64")
 url="https://github.com/SagerNet/sing-box"
-license=("GPL3")
+license=("LicenseRef-sing-box")
 backup=("etc/sing-box/config.json")
 source=("sing-box.service"
         "sing-box@.service"
@@ -30,9 +32,6 @@ sha256sums_armv7h=('5c598e427ba44bf0c45146178e05227ded2d3d20acc498aecdea49a60d96
 sha256sums_aarch64=('57efdb8a256ae0736fa00aee5538c384ee50b40882075d2d1a05a1c3d7c4a889')
 
 package() {
-    declare -A ARCH_MAP
-    ARCH_MAP=( [x86_64]="amd64" [armv7h]="armv7" [aarch64]="arm64" )
-
     install -Dm644 sing-box.service -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 sing-box@.service -t "$pkgdir/usr/lib/systemd/system"
     install -Dm644 sing-box.sysusers "$pkgdir/usr/lib/sysusers.d/sing-box.conf"
@@ -40,8 +39,12 @@ package() {
     install -Dm644 sing-box-split-dns.xml "$pkgdir/usr/share/dbus-1/system.d/sing-box-split-dns.conf"
     install -Dm644 config.json -t "$pkgdir/etc/sing-box"
 
+    declare -A ARCH_MAP
+    ARCH_MAP=( [x86_64]="amd64" [armv7h]="armv7" [aarch64]="arm64" )
+
     cd "sing-box-$pkgver-linux-${ARCH_MAP[$CARCH]}"
     install -Dm755 sing-box -t "$pkgdir/usr/bin"
+    install -Dm644 libcronet.so -t "$pkgdir/usr/lib"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/sing-box"
     install -Dm644 <(./sing-box completion bash) "$pkgdir/usr/share/bash-completion/completions/sing-box"
     install -Dm644 <(./sing-box completion fish) "$pkgdir/usr/share/fish/vendor_completions.d/sing-box.fish"
