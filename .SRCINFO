@@ -16,6 +16,8 @@ pkgbase = radicle-desktop-git
 	makedepends = npm
 	makedepends = pnpm
 	makedepends = nodejs
+	depends = libgit2
+	depends = libgit2.so
 	depends = cairo
 	depends = desktop-file-utils
 	depends = gdk-pixbuf2
@@ -29,6 +31,8 @@ pkgbase = radicle-desktop-git
 	sha256sums = SKIP
 
 pkgname = radicle-desktop-git
+	depends = libgit2
+	depends = libgit2.so
 	depends = cairo
 	depends = desktop-file-utils
 	depends = gdk-pixbuf2

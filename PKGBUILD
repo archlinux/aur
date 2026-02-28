@@ -9,6 +9,7 @@ arch=('x86_64')
 url='https://radicle.xyz/desktop'
 license=('GPL-3.0-only')
 depends=(
+  'libgit2' 'libgit2.so'
   # See https://v2.tauri.app/distribute/aur/#building-from-source
   'cairo'
   'desktop-file-utils'
@@ -88,6 +89,8 @@ build() {
   # a workaround to force generation of normal object code on C side:
   CFLAGS+=" -ffat-lto-objects"
   CXXFLAGS+=" -ffat-lto-objects"
+
+  export LIBGIT2_NO_VENDOR=1
 
   pnpm run build -- --mode production
   cargo tauri build \
