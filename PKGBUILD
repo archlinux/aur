@@ -5,12 +5,12 @@ _name="QCEngine"
 _pkgname="${_name,,}"
 pkgname="python-${_pkgname}"
 pkgver=0.33.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Quantum chemistry program executor and IO standardizer (QCSchema) for quantum chemistry'
 arch=('any')
 url='https://molssi.github.io/QCEngine/'
 license=('BSD-3-Clause')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 depends=('python-qcelemental' 'python-py-cpuinfo' 'python-psutil')
 optdepends=(
   'dftd3'
@@ -32,12 +32,12 @@ sha256sums=('7d9317355294b2118b9e959e57394eb3f2205db004d9ebe7441cd5026a7fc6c4')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --root="${pkgdir}"/ --optimize=1 --skip-build
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
 

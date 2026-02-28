@@ -1,13 +1,15 @@
 pkgbase = python-qcengine
 	pkgdesc = Quantum chemistry program executor and IO standardizer (QCSchema) for quantum chemistry
 	pkgver = 0.33.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://molssi.github.io/QCEngine/
 	arch = any
 	license = BSD-3-Clause
 	checkdepends = python-msgpack
 	checkdepends = python-pytest
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-qcelemental
 	depends = python-py-cpuinfo
 	depends = python-psutil
