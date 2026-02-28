@@ -1,6 +1,6 @@
 # Maintainer: aaddrick <aaddrick@users.noreply.github.com>
 pkgname=selkie
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Markdown viewer with GFM support and Mermaid chart rendering'
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,7 @@ depends=(
 )
 optdepends=('zenity: native file open dialog')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aaddrick/selkie/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f6b3f68c2d375c268deb647d8da757437de7053a9973411c2fce092af5497ef6')
+sha256sums=('c7e51caec06921e2ad2110b78d90f7ffaa220f5f7bde92fe1c659fe4de7f7107')
 
 build() {
   cd "${pkgname}-${pkgver}"
