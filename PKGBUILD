@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}db-bin
 pkgdesc="An analytics database that puts JSON and relational tables on equal footing"
 
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,8 +27,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}.${_barch[1]}.tar.gz")
 sha256sums=('98d8ce207cd2c2fbcb2b6b20271ca9a00100ef807e1730c4e3e4b060a09e98a2'
             '1b37b0c058da81d58ff531c34a564078588849614ee0afd48cccb99c7747ebcf')
-sha256sums_x86_64=('673d39817908c9fd1c070972a3da7730a761c1992e545c335bc2eddede80c65f')
-sha256sums_aarch64=('0c69cc046bbefd24ebe5575742095b8e9491d2825942ca324d78888ee7975703')
+sha256sums_x86_64=('712be17a70a2c76151dd8bac0aadec241144860700730ad597c4763dae092c49')
+sha256sums_aarch64=('8b2d93e1e0860d5c076d82a8b8bba304c5a9d915f79dd88d230dbc69afe40d64')
 
 
 package() {
