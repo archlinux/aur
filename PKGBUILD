@@ -30,7 +30,7 @@ optdepends=(
     'python-steamgriddb: artwork browsing via SteamGridDB'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('692cb7bba95eea1013179b4e5ec92798c65441aab20e1ac6931e38ad3c44f60c')
+sha256sums=('5bc98c7a48a8251a0405dbf07196e00fd3ebd64335642fe8a206be4f0deec765')
 
 package() {
     cd "SteamLibraryManager-$pkgver"
@@ -47,20 +47,20 @@ exec python /usr/lib/steam-library-manager/src/main.py "$@"
 LAUNCHER
 
     # Desktop entry
-    install -Dm644 flatpak/org.steamlibrarymanager.SteamLibraryManager.desktop \
-        "$pkgdir/usr/share/applications/org.steamlibrarymanager.SteamLibraryManager.desktop"
+    install -Dm644 flatpak/io.github.switch_bros.SteamLibraryManager.desktop \
+        "$pkgdir/usr/share/applications/io.github.switch_bros.SteamLibraryManager.desktop"
     sed -i "s|^Exec=steam-library-manager|Exec=$pkgname|" \
-        "$pkgdir/usr/share/applications/org.steamlibrarymanager.SteamLibraryManager.desktop"
+        "$pkgdir/usr/share/applications/io.github.switch_bros.SteamLibraryManager.desktop"
 
     # Icons
     install -Dm644 resources/icon.png \
         "$pkgdir/usr/share/pixmaps/$pkgname.png"
     install -Dm644 resources/icon.svg \
-        "$pkgdir/usr/share/icons/hicolor/scalable/apps/org.steamlibrarymanager.SteamLibraryManager.svg"
+        "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.switch_bros.SteamLibraryManager.svg"
 
     # Metainfo (for GNOME Software / KDE Discover)
-    install -Dm644 resources/org.steamlibrarymanager.metainfo.xml \
-        "$pkgdir/usr/share/metainfo/org.steamlibrarymanager.metainfo.xml"
+    install -Dm644 resources/io.github.switch_bros.SteamLibraryManager.metainfo.xml \
+        "$pkgdir/usr/share/metainfo/io.github.switch_bros.SteamLibraryManager.metainfo.xml"
 
     # License
     install -Dm644 LICENSE \
