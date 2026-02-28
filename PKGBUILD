@@ -9,6 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'openssl')
 makedepends=('cargo')
 optdepends=('otf-font-awesome: Font Awesome icon set (--icons fontawesome)')
+options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mryll/meteobar/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('356662fa7c7db5eade1cdc1e3fbe97ca01c818fa7c3e28d7170d9c66400d5ffc')
 

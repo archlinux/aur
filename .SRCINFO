@@ -9,6 +9,7 @@ pkgbase = meteobar
 	depends = gcc-libs
 	depends = openssl
 	optdepends = otf-font-awesome: Font Awesome icon set (--icons fontawesome)
+	options = !debug
 	source = meteobar-0.1.6.tar.gz::https://github.com/mryll/meteobar/archive/refs/tags/v0.1.6.tar.gz
 	sha256sums = 356662fa7c7db5eade1cdc1e3fbe97ca01c818fa7c3e28d7170d9c66400d5ffc
 
