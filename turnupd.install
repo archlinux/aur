@@ -1,25 +1,32 @@
 post_install() {
     systemctl --global enable turnupd.service
-    echo "turnupd: service enabled for all users — it will start on next login."
-    echo "To start it now: systemctl --user start turnupd.service"
+    systemctl --global enable turnup-ui.service
+    echo "turnupd + turnup-ui: services enabled for all users — they will start on next login."
+    echo "To start them now:"
+    echo "  systemctl --user start turnupd.service"
+    echo "  systemctl --user start turnup-ui.service"
+    echo "UI will be available at http://127.0.0.1:5173"
 }
 
 post_upgrade() {
     systemctl --global reenable turnupd.service
+    systemctl --global reenable turnup-ui.service
     # Restart for all currently logged-in users
     while read -r uid _; do
-        systemctl -M "${uid}@.host" --user restart turnupd.service 2>/dev/null || true
+        systemctl -M "${uid}@.host" --user restart turnupd.service   2>/dev/null || true
+        systemctl -M "${uid}@.host" --user restart turnup-ui.service 2>/dev/null || true
     done < <(loginctl list-users --no-legend 2>/dev/null)
 }
 
 pre_remove() {
     # Stop and disable for all currently logged-in users
     while read -r uid _; do
-        systemctl -M "${uid}@.host" --user stop    turnupd.service 2>/dev/null || true
-        systemctl -M "${uid}@.host" --user disable turnupd.service 2>/dev/null || true
+        systemctl -M "${uid}@.host" --user stop    turnupd.service   2>/dev/null || true
+        systemctl -M "${uid}@.host" --user disable turnupd.service   2>/dev/null || true
+        systemctl -M "${uid}@.host" --user stop    turnup-ui.service 2>/dev/null || true
+        systemctl -M "${uid}@.host" --user disable turnup-ui.service 2>/dev/null || true
     done < <(loginctl list-users --no-legend 2>/dev/null)
 
-    # Remove the global enable symlink
-    # (/etc/systemd/user/default.target.wants/turnupd.service)
-    systemctl --global disable turnupd.service 2>/dev/null || true
+    systemctl --global disable turnupd.service   2>/dev/null || true
+    systemctl --global disable turnup-ui.service 2>/dev/null || true
 }

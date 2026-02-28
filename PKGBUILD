@@ -1,7 +1,7 @@
 # Maintainer: Sean Doran <sdoran35@gmail.com>
 # AUR updates are automated via GitHub Actions on version tag push
 pkgname=turn-up-arch
-pkgver=1.4.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="USB serial knob/button mixer daemon for PipeWire/PulseAudio on Linux"
 arch=('any')
@@ -11,6 +11,8 @@ depends=(
     'python'
     'python-pyserial'
     'python-pulsectl'
+    'python-fastapi'
+    'python-uvicorn'
     'pipewire-pulse'
     'playerctl'
 )
@@ -25,7 +27,7 @@ optdepends=(
 )
 install=turnupd.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sean351/turn-up-arch/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a2e6f7bfb45f1c3efd51a465acfe44bac228de57c5281e1ae71a1f5bf2e93742')
+sha256sums=('acc13b308233f90e7b2f7c43e8d463760416217e5d03fbc836ca164dbad3c61d')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -37,9 +39,11 @@ package() {
 
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    # Systemd user service
+    # Systemd user services
     install -Dm644 contrib/turnupd.service \
         "$pkgdir/usr/lib/systemd/user/turnupd.service"
+    install -Dm644 contrib/turnup-ui.service \
+        "$pkgdir/usr/lib/systemd/user/turnup-ui.service"
 
     # License
     install -Dm644 LICENSE \
