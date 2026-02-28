@@ -1,6 +1,6 @@
-pkgbase = swayidle-git
-	pkgdesc = Idle management daemon for Wayland (git development version)
-	pkgver = 1.8.0.r10.g61d653f
+pkgbase = swayidle-nologind
+	pkgdesc = Idle management daemon for Wayland (without [e]logind integration)
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/swaywm/swayidle
 	arch = x86_64
@@ -10,11 +10,10 @@ pkgbase = swayidle-git
 	makedepends = scdoc
 	makedepends = wayland-protocols
 	depends = wayland
-	depends = systemd-libs
 	depends = glibc
-	provides = swayidle
+	provides = swayidle=1.9.0
 	conflicts = swayidle
-	source = swayidle-git::git+https://github.com/swaywm/swayidle.git
-	b2sums = SKIP
+	source = swayidle-nologind::git+https://github.com/swaywm/swayidle.git#tag=5d94dff3dcca741a9a81c1feb1fd790f3904a990
+	sha256sums = 8451569ab48eb24286281c5f5e124a6d68ed1008b7911426b0f5521df03adf29
 
-pkgname = swayidle-git
+pkgname = swayidle-nologind
