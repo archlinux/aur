@@ -1,13 +1,13 @@
 # Maintainer: Faugus <felix.ribeiro@live.com>
 
 pkgname=faugus-launcher
-pkgver=1.15.9
+pkgver=1.15.10
 pkgrel=1
 pkgdesc="A simple and lightweight app for running Windows games using UMU-Launcher"
 arch=('any')
 url="https://github.com/Faugus/faugus-launcher"
 license=('MIT')
-depends=('python' 'python-gobject' 'python-requests' 'python-pillow' 'python-vdf' 'python-psutil' 'imagemagick' 'icoextract' 'libayatana-appindicator')
+depends=('python' 'python-gobject' 'python-requests' 'python-pillow' 'python-vdf' 'python-psutil' 'libcanberra' 'imagemagick' 'icoextract' 'libayatana-appindicator')
 makedepends=('meson')
 provides=('faugus-launcher')
 conflicts=('faugus-launcher')
