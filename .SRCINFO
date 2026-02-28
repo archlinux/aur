@@ -1,7 +1,7 @@
 pkgbase = dwm
 	pkgdesc = A dynamic window manager for X
 	pkgver = 6.8
-	pkgrel = 1
+	pkgrel = 3
 	url = https://dwm.suckless.org
 	install = dwm.install
 	arch = i686

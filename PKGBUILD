@@ -6,7 +6,7 @@
 
 pkgname=dwm
 pkgver=6.8
-pkgrel=2
+pkgrel=3
 pkgdesc="A dynamic window manager for X"
 url="https://dwm.suckless.org"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
