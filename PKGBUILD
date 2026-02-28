@@ -4,7 +4,7 @@ pkgname=astraeditor-bin
 provides=('astraeditor')
 conflicts=('astraeditor')
 pkgver=1.1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='AstraEditor is a TurboWarp mod used to add more practical features to make your writing lightning fast.'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/AstraEditor/'
@@ -21,9 +21,9 @@ build() {
     cd "$srcdir"
 
     case "$CARCH" in
-        x86_64)  debfile="astraeditor-1.1.3-x86_64.deb" ;;
-        aarch64) debfile="astraeditor-1.1.3-aarch64.deb" ;;
-        armv7h)  debfile="astraeditor-1.1.3-armv7h.deb" ;;
+        x86_64)  debfile="astraeditor-${pkgver}-x86_64.deb" ;;
+        aarch64) debfile="astraeditor-${pkgver}-aarch64.deb" ;;
+        armv7h)  debfile="astraeditor-${pkgver}-armv7h.deb" ;;
     esac
     bsdtar -xf "$debfile"
     bsdtar -xf data.tar.xz
