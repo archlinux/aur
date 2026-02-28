@@ -1,4 +1,5 @@
-# Maintainer: Salamandar <felix@piedallu.me>
+# Maintainer: Alex D'Andrea <alex@dandrea.io>
+# Contributor: Salamandar <felix@piedallu.me>
 # Contributor: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: Martin Wimpress <code@flexion.org>
 # Contributor: kozec <kozec at kozec dot com>
@@ -10,9 +11,7 @@ pkgdesc='GTK3 based GUI and notification area icon for Syncthing.'
 arch=('any')
 url='https://github.com/syncthing-gtk/syncthing-gtk'
 license=('GPL2')
-replaces=( 'syncthing-gtk-python3' )
-provides=( 'syncthing-gtk-python3' )
-conflicts=('syncthing-gtk-python3' )
+conflicts=('syncthing-gtk-git' )
 depends=(
     'syncthing>=2.0' 'gtk3' 'libnotify'
     'python-bcrypt' 'python-cairo' 'python-dateutil' 'python-gobject'
