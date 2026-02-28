@@ -6,7 +6,7 @@ _pname=${pkgname#python-}
 _pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=0.1.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Sphinx needs extension to add support for global substitutions to conf.py"
 arch=("any")
@@ -14,10 +14,14 @@ url="https://github.com/missinglinkelectronics/sphinxcontrib-globalsubs"
 license=('BSD-2-Clause')
 makedepends=('python-setuptools')
 #            'python-build'
-#            'python-installer')
+#            'python-installer'
+#)
 checkdepends=('python-nose')
+#checkdepends=('python-pytest-import-check'
+#              'python-sphinx'
+#    )
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('627823712c3db94d26d2b518e9fd7cd3d901f6ba54b3ab5bddabc7642b2a43b8')
+sha256sums=('439c899035d54a14c097ea0b908d76c87c8f6d8914dccffd2f5fa5ad5edd3288')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -29,11 +33,14 @@ build() {
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    nosetests -v -x #|| warning "Tests failed"
+#   mkdir -p dist/lib
+#   bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+#   pytest dist/lib --import-check -vv -l -ra --color=yes -o console_output_style=count
+    nosetests -v -x || warning "Tests failed"
 }
 
 package() {
-    depends=('python-sphinx>=1.6')
+    depends=('python-sphinx>=7.0')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
