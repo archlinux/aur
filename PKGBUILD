@@ -1,7 +1,7 @@
 # Maintainer: LBK Team <info@lbklauncher.com>
 
 pkgname=lbk-launcher-bin
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Інсталятор українізаторів відеоігор"
 arch=('x86_64')
@@ -16,14 +16,14 @@ source=(
     "LBK-Launcher-linux.AppImage::https://github.com/Vadko/lbk-launcher/releases/download/v${pkgver}/LBK-Launcher-linux.AppImage"
     "lbk-launcher.sh"
     "lbk-launcher.desktop"
-    "icon-32.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/master/aur/icons/icon-32.png"
-    "icon-48.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/master/aur/icons/icon-48.png"
-    "icon-64.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/master/aur/icons/icon-64.png"
-    "icon-128.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/master/aur/icons/icon-128.png"
-    "icon-256.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/master/aur/icons/icon-256.png"
+    "icon-32.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/main/aur/icons/icon-32.png"
+    "icon-48.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/main/aur/icons/icon-48.png"
+    "icon-64.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/main/aur/icons/icon-64.png"
+    "icon-128.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/main/aur/icons/icon-128.png"
+    "icon-256.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/main/aur/icons/icon-256.png"
 )
 sha256sums=('6d073a09ba8e34c9ad4946a09576352b5cc3c9adb9ef75703b149bc9d8996342'
-            'bfdbf1a13225fe5a970dfdca75c4d142a1152f4f1a4e6e0b10f0a6ac659efc5f'
+            'be622979d2dadbf164958594b0bcaa09b4d36017bc37582bf8bf7b3ecfa8c7d3'
             'ae904b33f9fa483170f816f4ead2d35ef7a163200b1079e0a86c116f78634e0c'
             'a459c319b429a0bb50a7a1d8a519a477757733f6b0ad9cea63780837c2a01e1a'
             'b66ba4c572d0756cf028968dedf1eada20af644eda7e9855ce1b43170e06cad0'
