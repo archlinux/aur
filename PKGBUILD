@@ -1,21 +1,20 @@
-# Maintainer: Daniel Nikoloski <nikoloskid at pm dot me>
-# Maintainer: Damian Barabonkov <dbctl at pm dot me
+# Maintainer: dbctl@pm.me
 pkgname=proton-drive-sync-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
-pkgdesc="Proton Drive sync client"
+pkgdesc='Sync local directories to Proton Drive cloud storage'
 arch=('x86_64' 'aarch64')
-url="https://github.com/DamianB-BitFlipper/proton-drive-sync"
-license=('GPL-3.0')
+url='https://github.com/DamianB-BitFlipper/proton-drive-sync'
+license=('GPL-3.0-only')
 depends=('libsecret')
 provides=('proton-drive-sync')
-conflicts=('proton-drive-sync')
-options=('!strip')
-source_x86_64=("${pkgname}-${pkgver}-x64.tar.gz::https://github.com/DamianB-BitFlipper/proton-drive-sync/releases/download/v${pkgver}/proton-drive-sync-linux-x64.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-arm64.tar.gz::https://github.com/DamianB-BitFlipper/proton-drive-sync/releases/download/v${pkgver}/proton-drive-sync-linux-arm64.tar.gz")
-sha512sums_x86_64=('bbed1dfc7b8782a5445c17290bff7a8accb6a9c9e6a01ea77429d6ae4445a06855c350de28be8b73d4a74234fd9bbb8dcfa1d9d4f295ff201eb1d5fcdbb0c188')
-sha512sums_aarch64=('551dc69182114dab08720e73e86e23ade8137f063cd646cc3428ce7890c984f07496f22ed4a56d1091bedf9b3295ed7988d9db15a86ea65caaf3b6b5f786a174')
+conflicts=('proton-drive-sync' 'proton-drive-sync-bin')
+
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/DamianB-BitFlipper/proton-drive-sync/releases/download/v0.2.3/proton-drive-sync-linux-x64.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/DamianB-BitFlipper/proton-drive-sync/releases/download/v0.2.3/proton-drive-sync-linux-arm64.tar.gz")
+sha256sums_x86_64=('00a241e8fdc7b757c3a0b8a06b6d7dce6039618f09a2301af705a99330532a08')
+sha256sums_aarch64=('537457b27a96c7ff8af9ac58a8d256fb7b27f1442babbdc46318bd669d6b4cad')
 
 package() {
-    install -Dm755 "${srcdir}/proton-drive-sync" "${pkgdir}/usr/bin/proton-drive-sync"
+    install -Dm755 proton-drive-sync "${pkgdir}/usr/bin/proton-drive-sync"
 }
