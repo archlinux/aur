@@ -1,19 +1,20 @@
 pkgbase = animeko-appimage
 	pkgdesc = 集找番、追番、看番的一站式弹幕追番平台
-	pkgver = 5.2.0
+	pkgver = 5.3.2
 	pkgrel = 1
 	url = https://github.com/open-ani/animeko/
 	arch = x86_64
 	license = AGPL-3.0-or-later
-	makedepends = 7zip
 	depends = vlc-plugin-ffmpeg
 	depends = vlc-plugin-dvb
 	depends = vlc-plugin-pulse
 	depends = gvfs
+	depends = fuse2
 	provides = animeko
 	conflicts = animeko
+	noextract = ani-5.3.2-linux-x86_64.appimage
 	options = !strip
-	source_x86_64 = https://d.myani.org/v5.2.0/ani-5.2.0-linux-x86_64.appimage
-	sha512sums_x86_64 = 9c57221d60ae524e7db87f0c84fc8bd069d0de0f7b7cc6a140806f017e96f7ff0fe820be756fea3bdd788fbfe19c10e32e853c7afdeab35132c8bbf80b607910
+	source_x86_64 = https://d2.myani.org/v5.3.2/ani-5.3.2-linux-x86_64.appimage
+	sha512sums_x86_64 = 02a1b92eb8f9442b05115b1a108437a55def97aa4d201f2664c9720c129a0053657020984334e8ab91349082e61111e60db99d600a8c8e15182ba496e8eec7b7
 
 pkgname = animeko-appimage

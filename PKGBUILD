@@ -1,41 +1,35 @@
-# Maintainer: shinka <shinnkka1@gmail.com>
-
 pkgname=animeko-appimage
 _pkgname=animeko
-pkgver="5.2.0"
+pkgver="5.3.2"
 pkgrel=1
 pkgdesc='集找番、追番、看番的一站式弹幕追番平台'
 arch=('x86_64')
 url='https://github.com/open-ani/animeko/'
 license=('AGPL-3.0-or-later')
-source_x86_64=("https://d.myani.org/v${pkgver//_/-}/ani-${pkgver//_/-}-linux-${CARCH}.appimage")
-sha512sums_x86_64=('9c57221d60ae524e7db87f0c84fc8bd069d0de0f7b7cc6a140806f017e96f7ff0fe820be756fea3bdd788fbfe19c10e32e853c7afdeab35132c8bbf80b607910')
-depends=('vlc-plugin-ffmpeg' 'vlc-plugin-dvb' 'vlc-plugin-pulse' 'gvfs')
+source_x86_64=("https://d2.myani.org/v${pkgver//_/-}/ani-${pkgver//_/-}-linux-${CARCH}.appimage")
+sha512sums_x86_64=('02a1b92eb8f9442b05115b1a108437a55def97aa4d201f2664c9720c129a0053657020984334e8ab91349082e61111e60db99d600a8c8e15182ba496e8eec7b7')
+depends=('vlc-plugin-ffmpeg' 'vlc-plugin-dvb' 'vlc-plugin-pulse' 'gvfs' 'fuse2')
 conflicts=('animeko')
 provides=('animeko')
-makedepends=('7zip')
 options=('!strip')
+noextract=("ani-${pkgver//_/-}-linux-${CARCH}.appimage")
 
 prepare() {
   chmod +x "${srcdir}/ani-${pkgver//_/-}-linux-${CARCH}.appimage"
-  7z x ${srcdir}/ani-${pkgver//_/-}-linux-${CARCH}.appimage -o${srcdir}/squashfs-root
-  sed -i -E "s|Exec=Ani|Exec=/usr/bin/${_pkgname}|g" "${srcdir}/squashfs-root/${_pkgname}.desktop"
+  "${srcdir}/ani-${pkgver//_/-}-linux-${CARCH}.appimage" --appimage-extract
+  sed -i -E "s|Exec=Ani|Exec=/opt/${_pkgname}/${_pkgname}.AppImage|g" "${srcdir}/squashfs-root/${_pkgname}.desktop"
   sed -i -E "s|Icon=icon|Icon=${_pkgname}|g" "${srcdir}/squashfs-root/${_pkgname}.desktop"
 }
 
 package() {
-  install -d "${pkgdir}/opt/${_pkgname}"
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
-  install -d "${pkgdir}/usr/share/applications"
-  rm -r "${srcdir}/squashfs-root/usr/lib/app/resources"
-  cp -r "${srcdir}/squashfs-root/usr" "${pkgdir}/opt/${_pkgname}/"
+    install -d "${pkgdir}/opt/${_pkgname}"
+    install -d "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
+    install -d "${pkgdir}/usr/share/applications"
 
-  install -Dm755 "${srcdir}/squashfs-root/AppRun" "${pkgdir}/opt/${_pkgname}/AppRun"
+    install -Dm755 "${srcdir}/ani-${pkgver//_/-}-linux-${CARCH}.appimage" "${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
 
-  ln -s "/opt/${_pkgname}/AppRun" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 "${srcdir}/squashfs-root/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
 
-  install -Dm644 "${srcdir}/squashfs-root/icon.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
-
-  install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
+
