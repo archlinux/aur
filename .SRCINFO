@@ -1,6 +1,6 @@
 pkgbase = linux-system-hardener
 	pkgdesc = Linux security automation: scanning, hardening, and rollback across 8 domains
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/tidynest/linux-system-hardener
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = linux-system-hardener
 	depends = libxcb
 	depends = libxkbcommon
 	depends = systemd
-	source = linux-system-hardener-1.0.2.tar.gz::https://github.com/tidynest/linux-system-hardener/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 133e8f2b646a666fc69b2e541fd379b8bf28bbc445a2713733037894ae8dbf79
+	source = linux-system-hardener-1.0.3.tar.gz::https://github.com/tidynest/linux-system-hardener/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = a909b96509b54b6c9419f0b2deb1f07af028492a1169fe0ab6399deffef345c9
 
 pkgname = linux-system-hardener
