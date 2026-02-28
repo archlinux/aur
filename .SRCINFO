@@ -1,6 +1,6 @@
 pkgbase = libretro-dolphin-git
 	pkgdesc = Nintendo GameCube/Wii core
-	pkgver = r44842.df2b1a754b
+	pkgver = r45471.1802842
 	pkgrel = 1
 	url = https://github.com/libretro/dolphin
 	arch = x86_64
@@ -30,14 +30,13 @@ pkgbase = libretro-dolphin-git
 	makedepends = zlib
 	makedepends = zstd
 	depends = enet
-	depends = gcc-libs
 	depends = glibc
 	depends = glslang
 	depends = libretro-core-info
 	depends = libx11
 	depends = libxi
 	depends = pugixml
-	provides = libretro-dolphin=44842.df2b1a754b
+	provides = libretro-dolphin=45471.1802842
 	conflicts = libretro-dolphin
 	source = libretro-dolphin::git+https://github.com/libretro/dolphin.git
 	source = cpp-ipc::git+https://github.com/mutouyun/cpp-ipc.git
@@ -58,7 +57,6 @@ pkgbase = libretro-dolphin-git
 
 pkgname = libretro-dolphin-git
 	depends = enet
-	depends = gcc-libs
 	depends = glibc
 	depends = glslang
 	depends = libretro-core-info
@@ -70,6 +68,7 @@ pkgname = libretro-dolphin-git
 	depends = libcurl.so
 	depends = libEGL.so
 	depends = libfmt.so
+	depends = libgcc_s.so
 	depends = libGLX.so
 	depends = libhidapi-hidraw.so
 	depends = liblz4.so
@@ -80,6 +79,7 @@ pkgname = libretro-dolphin-git
 	depends = libmbedx509.so
 	depends = libsfml-network.so
 	depends = libspng.so
+	depends = libstdc++.so
 	depends = libusb-1.0.so
 	depends = libxxhash.so
 	depends = libz.so

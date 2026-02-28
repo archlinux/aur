@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-dolphin
 pkgname=$_pkgname-git
-pkgver=r44842.df2b1a754b
+pkgver=r45471.1802842
 pkgrel=1
 pkgdesc="Nintendo GameCube/Wii core"
 arch=('x86_64')
@@ -11,7 +11,6 @@ license=('GPL-2.0-or-later')
 groups=('libretro')
 depends=(
 	'enet'
-	'gcc-libs'
 	'glibc'
 	'glslang'
 	'libretro-core-info'
@@ -56,20 +55,11 @@ source=(
 	"vulkan-memory-allocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git"
 	"watcher::git+https://github.com/e-dant/watcher.git"
 )
-b2sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-)
+b2sums=('SKIP'{,,,,,,,})
 
 pkgver() {
 	cd $_pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
@@ -104,6 +94,7 @@ package() {
 		'libcurl.so'
 		'libEGL.so'
 		'libfmt.so'
+		'libgcc_s.so'
 		'libGLX.so'
 		'libhidapi-hidraw.so'
 		'liblz4.so'
@@ -114,11 +105,13 @@ package() {
 		'libmbedx509.so'
 		'libsfml-network.so'
 		'libspng.so'
+		'libstdc++.so'
 		'libusb-1.0.so'
 		'libxxhash.so'
 		'libz.so'
 		'libzstd.so'
 	)
+
 	# shellcheck disable=SC2154
 	install -D -t "$pkgdir"/usr/lib/libretro build/dolphin_libretro.so
 }
