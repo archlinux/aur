@@ -1,15 +1,20 @@
+# Maintainer: Kenneth Shaw <kenshaw at gmail dot com>
 # Maintainer: codekoala <arch@cloudlery.com>
 pkgname=omnictl-bin
 pkgver=1.5.8
 pkgrel=1
 pkgdesc="CLI for Omni - SaaS-simple Kubernetes management platform by Sidero Labs"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/siderolabs/omni"
 license=('BSL-1.1')
 provides=('omnictl')
 conflicts=('omnictl')
-source=("omnictl-${pkgver}::https://github.com/siderolabs/omni/releases/download/v${pkgver}/omnictl-linux-amd64")
-sha256sums=('84cc2faa51d9d76fd22c606c138b20a65967a56db79b5026892a1833274da055')
+
+source_x86_64=("omnictl-${pkgver}::$url/releases/download/v$pkgver/omnictl-linux-amd64")
+source_aarch64=("omnictl-${pkgver}::$url/releases/download/v$pkgver/omnictl-linux-arm64")
+
+sha256sums_x86_64=('84cc2faa51d9d76fd22c606c138b20a65967a56db79b5026892a1833274da055')
+sha256sums_aarch64=('84cc2faa51d9d76fd22c606c138b20a65967a56db79b5026892a1833274da055')
 
 package() {
     install -Dm755 "omnictl-${pkgver}" "${pkgdir}/usr/bin/omnictl"

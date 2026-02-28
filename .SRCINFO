@@ -4,10 +4,13 @@ pkgbase = omnictl-bin
 	pkgrel = 1
 	url = https://github.com/siderolabs/omni
 	arch = x86_64
+	arch = aarch64
 	license = BSL-1.1
 	provides = omnictl
 	conflicts = omnictl
-	source = omnictl-1.5.8::https://github.com/siderolabs/omni/releases/download/v1.5.8/omnictl-linux-amd64
-	sha256sums = 84cc2faa51d9d76fd22c606c138b20a65967a56db79b5026892a1833274da055
+	source_x86_64 = omnictl-1.5.8::https://github.com/siderolabs/omni/releases/download/v1.5.8/omnictl-linux-amd64
+	sha256sums_x86_64 = 84cc2faa51d9d76fd22c606c138b20a65967a56db79b5026892a1833274da055
+	source_aarch64 = omnictl-1.5.8::https://github.com/siderolabs/omni/releases/download/v1.5.8/omnictl-linux-arm64
+	sha256sums_aarch64 = 84cc2faa51d9d76fd22c606c138b20a65967a56db79b5026892a1833274da055
 
 pkgname = omnictl-bin
