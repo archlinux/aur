@@ -1,0 +1,5 @@
+[passport]
+source = "github"
+github = "a2-4am/passport"
+use_latest_release = true
+prefix = "v"
