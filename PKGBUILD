@@ -1,7 +1,7 @@
 # Maintainer: Tomas Runz Jensen <tomasrj@outlook.dk>
 
 pkgname=pyrite64-bin
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="N64 Game-Engine and Editor using libdragon & tiny3d"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
 )
 sha512sums=('a548820c814d3ca10ad1f6c5b1a32c9006215cba5f8a21132392cbd831b0f7bc7e34b3c4d2f4568563e932e756fc418e457f682504e060101d89a2e9fcea4cae'
             'SKIP'
-            '6acf1a40affc15cd0618f91ffce3ff0dfd492223ba0d5a9bfaa0f803590cbe95934d5c5c611bd4ba35ab448937b8ba8ccc715204422288f295ba2c4fd0159cd5'
+            '26ff6c81416d854895b03d0c038099e6aa2a6620e564a2e7fddf2881ffe639465544440dd3bcefc2264a31e87bc8bae6414c5bedf55acd86ef92648cc494ce7f'
             'SKIP'
             '7fa6cf338fe0c7d18122239a5dda749a3b08a18e64b76d6e042b005a89f01656641639d0d0584f91554d2a8c6c0614294dc7d6c013652f37b9efb1c70e37ce47')
 options=('!strip')
