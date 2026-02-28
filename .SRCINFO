@@ -1,6 +1,6 @@
 pkgbase = patrjprof
 	pkgdesc = A Free Java profiler written in Java
-	pkgver = 1.7.0r401
+	pkgver = 1.7.1r404
 	pkgrel = 1
 	url = https://git.rwth-aachen.de/patrick_laszlo.hechler/patr-java-profiler
 	arch = any
@@ -9,23 +9,23 @@ pkgbase = patrjprof
 	optdepends = java-runtime>=8: graphical user interface
 	optdepends = java-runtime-headless>=16: support for socket files for server/client communication
 	optdepends = java-runtime-headless>=24: profile constructors with the new class-file API
-	noextract = patr-java-profiler-start-1.7.0.sh
-	noextract = patr-java-profiler-agent-1.7.0.jar
-	noextract = patr-java-profiler-bootstrap-1.7.0.jar
-	noextract = patr-java-profiler-client-1.7.0.jar
-	noextract = patr-java-profiler-server-1.7.0.jar
-	noextract = patr-java-profiler-test-1.7.0.jar
-	source = patr-java-profiler-start-1.7.0.sh::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler/1.7.0/patr-java-profiler-1.7.0.start-script
-	source = patr-java-profiler-agent-1.7.0.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-agent/1.7.0/patr-java-profiler-agent-1.7.0-jar-with-dependencies.jar
-	source = patr-java-profiler-bootstrap-1.7.0.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-bootstrap/1.7.0/patr-java-profiler-bootstrap-1.7.0.jar
-	source = patr-java-profiler-client-1.7.0.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-client/1.7.0/patr-java-profiler-client-1.7.0.jar
-	source = patr-java-profiler-server-1.7.0.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-server/1.7.0/patr-java-profiler-server-1.7.0.jar
-	source = patr-java-profiler-test-1.7.0.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-test/1.7.0/patr-java-profiler-test-1.7.0.jar
+	noextract = patr-java-profiler-start-1.7.1.sh
+	noextract = patr-java-profiler-agent-1.7.1.jar
+	noextract = patr-java-profiler-bootstrap-1.7.1.jar
+	noextract = patr-java-profiler-client-1.7.1.jar
+	noextract = patr-java-profiler-server-1.7.1.jar
+	noextract = patr-java-profiler-test-1.7.1.jar
+	source = patr-java-profiler-start-1.7.1.sh::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler/1.7.1/patr-java-profiler-1.7.1.start-script
+	source = patr-java-profiler-agent-1.7.1.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-agent/1.7.1/patr-java-profiler-agent-1.7.1-jar-with-dependencies.jar
+	source = patr-java-profiler-bootstrap-1.7.1.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-bootstrap/1.7.1/patr-java-profiler-bootstrap-1.7.1.jar
+	source = patr-java-profiler-client-1.7.1.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-client/1.7.1/patr-java-profiler-client-1.7.1.jar
+	source = patr-java-profiler-server-1.7.1.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-server/1.7.1/patr-java-profiler-server-1.7.1.jar
+	source = patr-java-profiler-test-1.7.1.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-test/1.7.1/patr-java-profiler-test-1.7.1.jar
 	sha512sums = cdef6de2254f01d4398b2fcd8f9c43ca5aa1cac5d44d66595f0c0d7cdcab5082dea7fd323548df46dde468b5f307cc44a267927ed103324b2e0f41df99ab0bc4
-	sha512sums = 48761577f594ddbcc90837db49f591ad6b5251523277bc95c7f55b3fc9d6e67691167cad5416b886dcd5450148097b835cd659a01e5cb15d56dd8bdc3a2ca513
-	sha512sums = 2b5287be0e28cb91d1b9f1d106cab636e4894f4a3a3f97497a67a4ee62086821f6a6a53a5b34c393c9cd8010e8bd9c4f8cf07d50b8a910b29bafe2d36a33b00e
-	sha512sums = 33cfb8498b7df289d24b3fb9279241cffe4502a519c13f555c7c172702eff812002449287796ec42f98ce45339aff4930d587e5bf9e48e6a8b1208175dc6f7c0
-	sha512sums = cd7e73896aa586f32e01f49a9f9e68e5dc6607c8746dc8f3887e30ebad193029caf43ad5ca83a84365788a0ecd35174945a7ede3c686b4c69ed0ae7c20f68dc0
-	sha512sums = 6c3aa47c765848bdc2dc2c02733287727707990e20e33ffe87f2e3ce5d608812e681f29cb914838d9d22745fb7dbcbc816dbcf123b15186706c181ba4ea171e6
+	sha512sums = d18d2427771ab506a27712de2bc5b9564c0c65db48317271f131f4f14e9235abd881861e02784277eef004cb83bf4f9e1088e19a2aafbf4b71de320080167093
+	sha512sums = b56ab72764ea69ecb34e0d98be5fadd3a70c27154970ad212abeb36a95f646f3b27c693f2b840fc15bbfc3bcef6928b352ce9998ffd2a6a585ac86cbfc1beeb1
+	sha512sums = 73935216ead0753abc65a18a08e32ee2b310ef18c081fc25095958c7132c922b87e695a04b098dcbe954dc5a163d62545b578f176320058b6f00dea986f437f1
+	sha512sums = c19bd90d35cbd33b2d910f10ab7baea1d001b6960fab5f2103c62a1e27e2bfc0a40a09bb4b379f1966f715fc63e29be54bf92be06814d5a049ea8876371bc56f
+	sha512sums = c3bed98d6eee463b75bc9987b773f05320253aa27b676e0d6ee446d801d154e40f568bcf5a98c7ec92a5c2709c69ee370ddb56e5979578f7146769e018227144
 
 pkgname = patrjprof
