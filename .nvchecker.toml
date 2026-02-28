@@ -1,5 +1,5 @@
-[arduino-ctags]
-source = "git"
-git = "https://github.com/arduino/ctags.git"
-from_pattern = "-"
-to_pattern = "_"
+[passport]
+source = "github"
+github = "arduino/ctags"
+use_latest_release = true
+prefix = "v"
