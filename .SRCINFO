@@ -1,0 +1,22 @@
+pkgbase = bt-client-bin
+	pkgdesc = 堡塔多机管理
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://www.bt.cn
+	arch = x86_64
+	license = Apache
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux
+	depends = libsecret
+	depends = binutils
+	optdepends = libappindicator-gtk3: systray indicator support
+	source = bt-client-1.2.6.deb::https://download-esa.bt.cn/bt-client/bt-client-linux-1.2.6-amd64.deb
+	sha256sums = ddba7b1f6b364af450f3984dd89b3eaa3ee383d980994632dc60e438081e0f96
+
+pkgname = bt-client-bin
