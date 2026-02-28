@@ -3,16 +3,16 @@
 pkgname=xenia-edge-bin
 pkgver=20260227062222.83a80bc
 _srcver=83a80bc
-pkgrel=1
+pkgrel=2
 pkgdesc="Fork of the Xenia emulator based on Xenia Canary, with aims for quicker iterations and improvements on Vulkan and Linux support."
 arch=('x86_64')
 url="https://github.com/has207/xenia-edge/"
 license=('BSD-3-Clause')
-depends=('zlib')
+depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 provides=('xenia' 'xenia-edge')
 source=("xenia-edge-${pkgver}.AppImage::https://github.com/has207/xenia-edge/releases/download/${_srcver}/xenia_edge_linux.AppImage"
-        "https://raw.githubusercontent.com/has207/xenia-edge/${_srcver}/LICENSE")
+        "xenia-edge-license::https://raw.githubusercontent.com/has207/xenia-edge/${_srcver}/LICENSE")
 sha256sums=('9c2e45f42c928416b49ff673c967825b2e8131e01cc25bee174dcaa450066b10'
             'SKIP')
 
@@ -53,7 +53,7 @@ package() {
     cp -a "${srcdir}/icons" "${pkgdir}/usr/share/"
 
     # Install license
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/xenia-edge/LICENSE"
+    install -Dm644 "${srcdir}/xenia-edge-license" "${pkgdir}/opt/xenia-edge/LICENSE"
     install -dm755 "${pkgdir}/usr/share/licenses/xenia-edge/"
     ln -s "/opt/xenia-edge/LICENSE" "$pkgdir/usr/share/licenses/xenia-edge"
 }
