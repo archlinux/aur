@@ -1,0 +1,18 @@
+pkgbase = pretticy
+	pkgdesc = C library for formatting and prettify JSON, XML and HTML strings
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/javiorfo/pretticy
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	provides = pretticy
+	conflicts = pretticy
+	source = pretticy::git+https://github.com/javiorfo/pretticy.git#tag=0.1.0
+	sha256sums = 559d2903f9f119b703d155030c865e8b757bf2e4acacea3fbe166fdfcde5a53a
+
+pkgname = pretticy
