@@ -1,0 +1,21 @@
+pkgbase = libdparse-ldc2
+	pkgdesc = Library for lexing and parsing D source code, version for LDC2
+	pkgver = 0.25.1
+	pkgrel = 1
+	url = https://github.com/dlang-community/libdparse
+	arch = x86_64
+	license = BSL-1.0
+	makedepends = bash
+	makedepends = chrpath
+	makedepends = findutils
+	makedepends = glib2
+	makedepends = ldc
+	depends = pkg-config
+	depends = ldc
+	options = staticlibs
+	source = https://github.com/dlang-community/libdparse/archive/v0.25.1.tar.gz
+	source = add-makefile.patch
+	source = add-make-helper.patch
+	sha256sums = 83825fda4ce67cac49e1bfdce0051a9e2499a5fadbf3a7f4d0853b487eaebc82
+
+pkgname = libdparse-ldc2
