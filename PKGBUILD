@@ -14,6 +14,7 @@ depends=(
   python-yaml
   python-debian
   python-jsonschema
+  python-ruamel-yaml
   dpkg
   podman
   shadow
@@ -36,10 +37,11 @@ depends=(
   flex
   pkg-config
   python-pip
+  mmdebstrap
 )
 optdepends=(
-  'mmdebstrap: filesystem construction (from AUR)'
   'dctrl-tools: Debian control file tools (from AUR)'
+  'arch-test: Feature testing (from AUR)'
 )
 source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/raspberrypi/rpi-image-gen/archive/refs/tags/v$pkgver.tar.gz"
