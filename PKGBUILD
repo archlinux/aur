@@ -3,7 +3,7 @@
 
 pkgname=llama.cpp-aio
 _pkgname=${pkgname%%-aio}
-pkgver=b8163
+pkgver=b8179
 pkgrel=1
 pkgdesc="Port of Facebook's LLaMA model in C/C++ (All in one: CUDA + ROCm + Vulkan)"
 arch=(x86_64 armv7h aarch64)
@@ -46,7 +46,7 @@ source=(
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.service"
   "https://raw.githubusercontent.com/Orion-zhen/aur-packages/refs/heads/main/assets/llama.cpp/llama.cpp.conf"
 )
-sha256sums=('56b3f240dd24e5cf0db4de6cf2570fbe1994bdcbd4fb9827bc238b80c766a44d'
+sha256sums=('ca9727e388d4ad53cb91f35b8fcb6eff98ed12ffd862ba5546e0e6cc313f294c'
             '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d'
             'e4856f186f69cd5dbfcc4edec9f6b6bd08e923bceedd8622eeae1a2595beb2ec')
 
