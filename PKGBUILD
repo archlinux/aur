@@ -2,7 +2,7 @@
 
 pkgbase=ecal
 pkgname=("${pkgbase}"{,'-app','-samples'})
-pkgver=6.0.0
+pkgver=6.1.0.r0.gf60f5a2
 pkgrel=1
 pkgdesc="enhanced Communication Abstraction Layer"
 arch=('x86_64')
@@ -18,6 +18,7 @@ makedepends=(
 	ftxui # AUR
 	hdf5
 	protobuf
+	protozero
 	qt6-base
 	qwt
 	recycle # AUR
@@ -28,40 +29,39 @@ makedepends=(
 	tinyxml2
 	yaml-cpp
 )
-_tag=f088f51926bc0ff942cb0323ca9fc3de4258f660
+_tag=f60f5a20780f7e5a7780af05f3f6f29eece26a6f
 source=(
-	"$pkgbase-$pkgver::git+https://github.com/eclipse-ecal/ecal.git#tag=$_tag"
+	"$pkgbase::git+https://github.com/eclipse-ecal/ecal.git#tag=$_tag"
 	"FindCMakeFunctions.cmake"
 	"Findrecycle.cmake"
 	"Findasio.cmake"
+	"Findprotozero.cmake"
 	"protobuf-30-compat.patch"
-	"static_app_helpers.patch"
 	"hdf5_target.patch"
-	"fix_mirror_server_name_clash.patch"
-	"fix-component-for-apps.patch"
 )
-sha256sums=('5b659f1034fab768c04c35063adf6fc747de76edbf348cc1d3976b9e06f940a7'
+sha256sums=('66370d4674a3458b983e978cfc9dbd73da2a6b75f980d80ea231abea714b8534'
             '7772a07a3be74dd249eecd8f058e79956755c99cc507bdc79221676e37523807'
             'e8d90f45fad48dee0a5ce4196966a260176f23c766918c0fb493cde509b9a452'
             'a19e5ed8b675bf416fd6013e382043b1c0e7e9552605eb3aba92661e0a56cd30'
-            'eabede2d59f92f9644bd0e6ee68d09040299fb1fe709621f172c141822416430'
-            'fbe08b8aa4dfd4e017ad5d3dd40591c09c6f5b74d5a57469cd953ad2ced4d443'
-            'e38a25c01eaeac394c918dc6e6c65a836d5235f0460b84c293d8eb078374ba6d'
-            'd1eff2178649bf40d27c277b5160074f7f67d5eb79d6ed4cdfdea3f5df52c619'
-            '5dcbd71e570c742b48463f6eac46cc1300ad8da0de440be81758d70e9696cc90')
+            'bab284bced7e486fdf2d32940d268f974fdabbc000001bb01d47e4e0ad6e218a'
+            '1e6992285d6b6e0b9f7130b5edb91abd7b2030cb6a3ea93572758054888f0e1b'
+            'e38a25c01eaeac394c918dc6e6c65a836d5235f0460b84c293d8eb078374ba6d')
+
+pkgver() {
+  cd "$pkgbase"
+  # cutting off 'v' prefix that presents in the git tag
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-	cd "$pkgbase-$pkgver"
+	cd "$pkgbase"
 	patch -Np1 -i ../protobuf-30-compat.patch
-	patch -Np1 -i ../static_app_helpers.patch
 	patch -Np1 -i ../hdf5_target.patch
-	patch -Np1 -i ../fix_mirror_server_name_clash.patch
-	patch -Np1 -i ../fix-component-for-apps.patch
 }
 
 build() {
 	local cmake_options=(
-		-S "$pkgbase-$pkgver"
+		-S "$pkgbase"
 		-B build
 		-DCMAKE_BUILD_TYPE=None
 		-DCMAKE_INSTALL_PREFIX=/usr
@@ -95,8 +95,10 @@ build() {
 
 package_ecal() {
 	depends=(
-		gcc-libs
 		glibc
+		libgcc
+		libstdc++
+		abseil-cpp
 		ecaludp # AUR
 		hdf5
 		protobuf
@@ -105,7 +107,7 @@ package_ecal() {
 	)
 	backup=('etc/ecal/ecal.yaml' 'etc/ecal/ecaltime.yaml')
 
-	install -D -m644 "${srcdir}"/"${pkgbase}-${pkgver}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
+	install -D -m644 "${srcdir}"/"${pkgbase}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
 	DESTDIR="$pkgdir" cmake --install build --component Unspecified
 	DESTDIR="$pkgdir" cmake --install build --component configuration
 	DESTDIR="$pkgdir" cmake --install build --component sdk
@@ -114,8 +116,10 @@ package_ecal() {
 package_ecal-app() {
 	pkgdesc="First-party tools for eCAL"
 	depends=(
-		gcc-libs
 		glibc
+		libgcc
+		libstdc++
+		abseil-cpp
 		ecal # AUR
 		curl
 		fineftp-server # AUR
@@ -128,19 +132,21 @@ package_ecal-app() {
 		yaml-cpp
 	)
 	DESTDIR="$pkgdir" cmake --install build --component app
-	install -D -m644 "${srcdir}"/"${pkgbase}-${pkgver}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
+	install -D -m644 "${srcdir}"/"${pkgbase}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
 }
 
 package_ecal-samples() {
 	pkgdesc="Sample eCAL applications"
 	depends=(
-		gcc-libs
 		glibc
+		libgcc
+		libstdc++
+		abseil-cpp
 		ecal # AUR
 		protobuf
 		qt6-base
 	)
 	DESTDIR="$pkgdir" cmake --install build --component samples
-	install -D -m644 "${srcdir}"/"${pkgbase}-${pkgver}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
+	install -D -m644 "${srcdir}"/"${pkgbase}"/LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
 }
 

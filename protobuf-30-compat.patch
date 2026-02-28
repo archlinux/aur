@@ -516,6 +516,80 @@ index 1b07985b2..2f126d64a 100644
              if(!prefix_.empty()) prefix = prefix_ + "." + prefix;
  
              // do not process default messages to avoid infinite recursions.
+diff --git a/ecal/protoc_gen_pbftags/main.cpp b/ecal/protoc_gen_pbftags/main.cpp
+index 2bfde0802..0f0b47f0f 100644
+--- a/ecal/protoc_gen_pbftags/main.cpp
++++ b/ecal/protoc_gen_pbftags/main.cpp
+@@ -119,7 +119,7 @@ namespace {
+   std::string enumerator_name(const FieldDescriptor* f) {
+     std::string label = label_to_string(f->label());
+     std::string type = field_kind(f);
+-    std::string name = f->name(); // already lower_snake in proto
++    std::string name = std::string(f->name()); // already lower_snake in proto
+     return sanitize_identifier(label + "_" + type + "_" + name);
+   }
+ 
+@@ -127,7 +127,7 @@ namespace {
+   std::string flattened_msg(const Descriptor* d) {
+     std::string s;
+     for (const auto* cur = d; cur != nullptr; cur = cur->containing_type()) {
+-      std::string part = sanitize_identifier(cur->name());
++      std::string part = sanitize_identifier(std::string(cur->name()));
+       s = s.empty() ? part : (part + "_" + s);
+     }
+     return s;
+@@ -135,10 +135,10 @@ namespace {
+ 
+   // Flatten nested enum path: Outer_Inner_EnumName
+   std::string flattened_enum(const EnumDescriptor* e) {
+-    std::string s = sanitize_identifier(e->name());
++    std::string s = sanitize_identifier(std::string(e->name()));
+     const Descriptor* parent = e->containing_type();
+     while (parent) {
+-      s = sanitize_identifier(parent->name()) + "_" + s;
++      s = sanitize_identifier(std::string(parent->name())) + "_" + s;
+       parent = parent->containing_type();
+     }
+     return s;
+@@ -186,7 +186,7 @@ namespace {
+     os << "enum class " << name << " : std::int32_t {\n";
+     for (int i = 0; i < e->value_count(); ++i) {
+       const auto* v = e->value(i);
+-      os << "    " << sanitize_identifier(v->name()) << " = " << v->number();
++      os << "    " << sanitize_identifier(std::string(v->name())) << " = " << v->number();
+       os << (i + 1 < e->value_count() ? ",\n" : "\n");
+     }
+     os << "};\n\n";
+@@ -235,7 +235,7 @@ public:
+     const std::string& /*parameter*/,
+     GeneratorContext* context,
+     std::string* /*error*/) const override {
+-    const std::string out_name = header_name_for_proto(file->name());
++    const std::string out_name = header_name_for_proto(std::string(file->name()));
+     std::unique_ptr<google::protobuf::io::ZeroCopyOutputStream> output(context->Open(out_name));
+     google::protobuf::io::Printer p(output.get(), '$');
+ 
+@@ -247,11 +247,11 @@ public:
+     body << "#include <cstdint>\n";
+     body << "\n";
+ 
+-    if (!file->package().empty()) open_namespaces(body, file->package());
++    if (!file->package().empty()) open_namespaces(body, std::string(file->package()));
+ 
+     walk_messages(body, file);
+ 
+-    if (!file->package().empty()) close_namespaces(body, file->package());
++    if (!file->package().empty()) close_namespaces(body, std::string(file->package()));
+ 
+     p.PrintRaw(body.str());
+     return true;
+@@ -262,4 +262,4 @@ public:
+ int main(int argc, char* argv[]) {
+   PbftagsGenerator gen;
+   return google::protobuf::compiler::PluginMain(argc, argv, &gen);
+-}
+\ No newline at end of file
++}
 -- 
 2.50.1
 
