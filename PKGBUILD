@@ -2,7 +2,7 @@
 # Maintainer: Rafael Senties Martinelli <contact@rsm92.fr>
 
 pkgname=phantom-player-git
-pkgver=v2.0.1.r124.g87f4cbb
+pkgver=v2.0.1.r127.g966371e
 pkgrel=1
 epoch=
 pkgdesc="Smart video player and playlist manager"
@@ -16,7 +16,6 @@ depends=(
 	"gst-plugins-base"
 	"gst-plugins-base-libs"
 	"gst-plugins-good"
-	"gst-plugins-bad"
 	"gst-plugin-gtk"
 	"python"
 	"python-cairo"
@@ -28,6 +27,7 @@ makedepends=("git")
 checkdepends=()
 optdepends=(
 	"gst-libav"
+	"gst-plugins-bad"
 	"gst-plugins-ugly"
 )
 provides=("phantom-player")
@@ -37,9 +37,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://codeberg.org/rsm92/phantom-player/archive/87f4cbb853dc5bb3178f29f661ddcb8bf396de0e.zip")
+source=("https://codeberg.org/rsm92/phantom-player/archive/966371ed29f7e454523a3089977e913890002fa0.zip")
 noextract=()
-sha256sums=('1422e0d74d850a4e27e1e282a4b1d795333e5ef3b717661454a3bb0d5969c61f')
+sha256sums=('724bdbcaddc6b2440b6930e839fbc54d7ee5f444fc08ff08cc05307eec5f8529')
 validpgpkeys=()
 
 package() {
