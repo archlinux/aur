@@ -1,10 +1,10 @@
 pkgbase = libgdata
 	pkgdesc = GLib-based library for accessing online service APIs using the GData protocol
 	pkgver = 0.18.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://wiki.gnome.org/Projects/libgdata
 	arch = x86_64
-	license = GPL
+	license = LGPL-2.1-or-later
 	makedepends = git
 	makedepends = glib2-devel
 	makedepends = gobject-introspection
@@ -12,14 +12,24 @@ pkgbase = libgdata
 	makedepends = meson
 	makedepends = vala
 	depends = gcr
+	depends = glib2
+	depends = glibc
+	depends = json-glib
+	depends = libgcc
 	depends = libgoa
 	depends = libsoup
-	source = git+https://gitlab.gnome.org/GNOME/libgdata.git#commit=eb7db048e5445ad567817dced344c47a20c6ea6b
-	b2sums = SKIP
+	depends = libxml2
+	source = git+https://gitlab.gnome.org/Archive/libgdata.git#tag=0.18.1
+	b2sums = 6d1304109657a56640404b491fc712b22e673a3ec96bcff7198735e072973bca58f806f45f4de44eec840f2dae7f6d7e85b2eaa61f71a988e827ec1c468aaad3
 
 pkgname = libgdata
 	depends = gcr
+	depends = glib2
+	depends = glibc
+	depends = json-glib
+	depends = libgcc
 	depends = libgoa
 	depends = libsoup
+	depends = libxml2
 	depends = libsoup-2.4.so
 	provides = libgdata.so

@@ -3,15 +3,20 @@
 
 pkgname=libgdata
 pkgver=0.18.1
-pkgrel=4
+pkgrel=5
 pkgdesc="GLib-based library for accessing online service APIs using the GData protocol"
 url="https://wiki.gnome.org/Projects/libgdata"
 arch=(x86_64)
-license=(GPL)
+license=(LGPL-2.1-or-later)
 depends=(
   gcr
+  glib2
+  glibc
+  json-glib
+  libgcc
   libgoa
   libsoup
+  libxml2
 )
 makedepends=(
   git
@@ -21,14 +26,8 @@ makedepends=(
   meson
   vala
 )
-_commit=eb7db048e5445ad567817dced344c47a20c6ea6b  # tags/0.18.1^0
-source=("git+https://gitlab.gnome.org/GNOME/libgdata.git#commit=$_commit")
-b2sums=('SKIP')
-
-pkgver() {
-  cd libgdata
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
-}
+source=("git+https://gitlab.gnome.org/Archive/libgdata.git#tag=$pkgver")
+b2sums=('6d1304109657a56640404b491fc712b22e673a3ec96bcff7198735e072973bca58f806f45f4de44eec840f2dae7f6d7e85b2eaa61f71a988e827ec1c468aaad3')
 
 prepare() {
   cd libgdata
