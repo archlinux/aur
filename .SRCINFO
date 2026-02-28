@@ -1,15 +1,18 @@
 pkgbase = dora-bin
 	pkgdesc = Beautiful TUI for media downloading (yt-dlp + ffmpeg)
-	pkgver = 0.6.5
+	pkgver = 0.6.6
 	pkgrel = 1
 	url = https://github.com/Jacke/doradura
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = yt-dlp
 	depends = ffmpeg
 	provides = dora
 	conflicts = dora
-	source = dora-bin-0.6.5.tar.gz::https://github.com/Jacke/doradura/releases/download/tui-v0.6.5/dora-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 7a885f383202c3ade77b56ec3b33236bf845f202fabf6b1b23410507b7e029f3
+	source_x86_64 = dora-bin-0.6.6-x86_64.tar.gz::https://github.com/Jacke/doradura/releases/download/tui-v0.6.6/dora-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = cc96b37505920d6f3106688b1bfc0ef7b26e67e94468b8d81fc2eac6872f68c5
+	source_aarch64 = dora-bin-0.6.6-aarch64.tar.gz::https://github.com/Jacke/doradura/releases/download/tui-v0.6.6/dora-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = e06b9cc8d138227c3141f0c02ad2025bd19eff86537afa0947e2ca8b4efebda4
 
 pkgname = dora-bin
