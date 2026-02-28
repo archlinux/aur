@@ -5,15 +5,15 @@
 # Contributor: almostalive <almostalive2003 at gmail dot com>
 _pkgname=libretro-desmume
 pkgname=$_pkgname-git
-pkgver=r6359.b518fec5
+pkgver=r6361.7f05a8d
 pkgrel=1
 pkgdesc="Nintendo DS core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/desmume"
-license=('GPL-2.0-only')
+license=('GPL-2.0-or-later')
 groups=('libretro')
-depends=('gcc-libs' 'glibc' 'libretro-core-info')
-makedepends=('git' 'libgl' 'libpcap')
+depends=('glibc' 'libretro-core-info')
+makedepends=('git' 'libgcc' 'libgl' 'libpcap' 'libstdc++')
 provides=("$_pkgname=${pkgver#r}")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
@@ -21,12 +21,13 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
 	cd $_pkgname
-	sed -i 's/-O[0123s]//' desmume/src/frontend/libretro/Makefile.libretro
+	# remove hardcoded optimization flags
+	sed -Ei 's/-O([0123s]|fast)//' desmume/src/frontend/libretro/Makefile.libretro
 }
 
 build() {
@@ -35,7 +36,8 @@ build() {
 }
 
 package() {
-	depends+=('libGL.so')
+	depends+=('libgcc_s.so' 'libGL.so' 'libstdc++.so')
+
 	cd $_pkgname
 	# shellcheck disable=SC2154
 	make -C desmume/src/frontend/libretro DESTDIR="$pkgdir" install
