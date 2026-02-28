@@ -1,6 +1,6 @@
 # Maintainer: Steve Holvoet <linux@steho.be>
 pkgname=ghidra-mcp-git
-pkgver=2.0.2.r0.g439ea7c
+pkgver=3.2.0.r0.g96ba897
 pkgrel=1
 pkgdesc="Production-ready Model Context Protocol server for Ghidra reverse engineering platform (latest git version)"
 arch=('any')
@@ -82,6 +82,7 @@ build() {
     "Base"
     "Gui"
     "FileSystem"
+    "Help"
   )
 
   for _jar_name in "${_ghidra_jars[@]}"; do
