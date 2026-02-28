@@ -15,10 +15,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=25H2
-_buildver=24995812
+pkgver=25H2u1
+_buildver=25219725
 _pkgver=${pkgver}_${_buildver}
-pkgrel=4
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -88,7 +88,7 @@ source=(
   'vmmon.patch'
   'vmnet.patch'
 )
-sha256sums=('9beced8a0653c9382e9aa9917168a54bf5635e566c8cb341589d72cf14093322'
+sha256sums=('721aa93c4ebcaa51ac6db75ed97c7a4db10aa88110446890db1e40bfafc7566a'
             '4e66b286b743d9cf788c487295b1dec3c6071d657674f650aadc23e8900758ff'
             'aef8f747bd9a6e84d139c57b8c1f8e87c83a9b9df69cd09602030190fec21973'
             '2c89993d811f5d90f7b0e2a286e9339907055e51ecb16f25509e5c4517326487'
