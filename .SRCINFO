@@ -1,0 +1,12 @@
+pkgbase = omnidotdev-eden
+	pkgdesc = Developer onboarding preflight checks
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://eden.omni.dev
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = https://github.com/omnidotdev/eden-cli/archive/v0.2.0.tar.gz
+	sha256sums = 686c83767f0c778e969552e9c6c507bdcd1a8a13434ec23ffdbb023126fcfa85
+
+pkgname = omnidotdev-eden
