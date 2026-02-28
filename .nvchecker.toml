@@ -1,5 +1,3 @@
 [corral]
 source = "git"
 git = "https://github.com/ponylang/corral"
-#include_regex = "v(.+)"
-#prefix = "thruk-"
