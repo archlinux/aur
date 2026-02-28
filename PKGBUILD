@@ -3,7 +3,7 @@ pkgname=chirpity-bin
 _pkgname=Chirpity
 pkgver=5.10.3
 _electronversion=39
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop application to identify bird vocalisations in lengthy audio files. Uses either BirdNET or a native AI model tuned for the calls of nocturnal migrants.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://chirpity.mattkirkland.co.uk/"
@@ -15,7 +15,6 @@ depends=(
     "electron${_electronversion}"
     'python'
     'ffmpeg'
-    'libsecret'
 )
 source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${CARCH}.AppImage"
