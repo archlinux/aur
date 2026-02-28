@@ -1,12 +1,12 @@
 pkgbase = ski
 	pkgdesc = A hotdogging game, evade the deadly Yeti on your jet-powered skis.
-	pkgver = 6.14
+	pkgver = 6.15
 	pkgrel = 1
 	url = http://www.catb.org/esr/ski/
 	arch = any
 	license = BSD
 	depends = python
-	source = http://www.catb.org/esr/ski/ski-6.14.tar.gz
-	sha256sums = 7f81ab281aa6d3ff65a4558a29ad905b1774d28b2c2192b68d8723caf8764933
+	source = http://www.catb.org/esr/ski/ski-6.15.tar.gz
+	sha256sums = aaff38e0f6a2c789f2c1281871ecc4d3f4e9b14f938a6d3bf914b4285bbdb748
 
 pkgname = ski
