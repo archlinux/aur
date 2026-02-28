@@ -1,0 +1,4 @@
+[receiver]
+source = "git"
+git = "https://github.com/meehow/receiver.git"
+prefix = "v"

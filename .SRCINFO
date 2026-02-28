@@ -1,0 +1,24 @@
+pkgbase = receiver
+	pkgdesc = Discover 30,000+ verified radio stations from around the world
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/meehow/receiver
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = vala
+	depends = gst-plugins-bad
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gstreamer
+	depends = gtk4
+	depends = json-glib
+	depends = libadwaita
+	depends = libsoup3
+	depends = sqlite
+	depends = webkitgtk-6.0
+	depends = webp-pixbuf-loader
+	source = receiver-0.3.6.tar.gz::https://github.com/meehow/receiver/archive/refs/tags/v0.3.6.tar.gz
+	sha256sums = b4b5d5dada6f9312326a650c21ae2cc77cbe6ef43fa10c9170f5a89e1818f399
+
+pkgname = receiver
