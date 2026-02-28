@@ -3,7 +3,7 @@
 
 pkgname=couchbase-server-community
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A document database featuring a powerful query language and unrivaled performance at scale."
 arch=('x86_64')
 url="http://www.couchbase.com/"

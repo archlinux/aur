@@ -1,7 +1,7 @@
 pkgbase = couchbase-server-community
 	pkgdesc = A document database featuring a powerful query language and unrivaled performance at scale.
 	pkgver = 8.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.couchbase.com/
 	install = couchbase-server.install
 	arch = x86_64
