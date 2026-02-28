@@ -1,7 +1,7 @@
 pkgbase = pulp-cli
 	pkgdesc = Command line interface to talk to the Pulp 3 REST API
 	pkgver = 0.38.1
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
 	url = https://github.com/pulp/pulp-cli
 	changelog = pulp-cli.changelog
