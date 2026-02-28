@@ -1,7 +1,7 @@
 pkgbase = rubyripperremix
 	pkgdesc = Secure audiodisc ripper with AccurateRip and CTDB verification (Fork of rubyripper)
 	pkgver = 0.8.0rc4_0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Masterisk-F/RubyRipperRemix
 	arch = any
 	license = GPL-3.0-only
@@ -11,6 +11,8 @@ pkgbase = rubyripperremix
 	depends = ruby-gtk3
 	depends = ruby-gettext
 	depends = ruby-parallel
+	depends = ruby-rake
+	depends = ruby-base64
 	optdepends = cd-discid: Gnudb support
 	optdepends = lame: MP3 encoding support
 	optdepends = vorbis-tools: Ogg Vorbis encoding support

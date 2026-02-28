@@ -7,12 +7,12 @@
 # Contributor: Alexander Fehr <pizzapunk AT gmail DOT com>
 pkgname=rubyripperremix
 pkgver=0.8.0rc4_0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure audiodisc ripper with AccurateRip and CTDB verification (Fork of rubyripper)"
 arch=('any')
 url="https://github.com/Masterisk-F/RubyRipperRemix"
 license=(GPL-3.0-only)
-depends=('libcdio-paranoia' 'ruby' 'ruby-rexml' 'ruby-gtk3' 'ruby-gettext' 'ruby-parallel')
+depends=('libcdio-paranoia' 'ruby' 'ruby-rexml' 'ruby-gtk3' 'ruby-gettext' 'ruby-parallel' 'ruby-rake' 'ruby-base64')
 makedepends=()
 optdepends=('cd-discid: Gnudb support'
             'lame: MP3 encoding support'
