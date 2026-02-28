@@ -1,5 +1,5 @@
 pkgbase = libdparse-ldc2
-	pkgdesc = Library for lexing and parsing D source code, version for ldc2
+	pkgdesc = Library for lexing and parsing D source code, version for LDC2
 	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://github.com/dlang-community/libdparse
