@@ -1,6 +1,6 @@
 pkgbase = fmt-git
 	pkgdesc = Open-source formatting library for C++
-	pkgver = 10.1.1.r40.g7529af8f
+	pkgver = 12.1.0.r109.g88c5a91
 	pkgrel = 1
 	url = https://fmt.dev/
 	arch = aarch64
@@ -12,12 +12,16 @@ pkgbase = fmt-git
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	depends = gcc-libs
+	makedepends = libgcc
+	makedepends = libstdc++
 	depends = glibc
-	provides = fmt=10.1.1.r40.g7529af8f
+	provides = fmt=12.1.0.r109.g88c5a91
 	provides = libfmt.so
 	conflicts = fmt
 	source = fmt::git+https://github.com/fmtlib/fmt.git
 	b2sums = SKIP
 
 pkgname = fmt-git
+	depends = glibc
+	depends = libgcc_s.so
+	depends = libstdc++.so
