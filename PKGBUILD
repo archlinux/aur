@@ -2,7 +2,7 @@
 
 _pkgbase=vk-gl-cts
 pkgname='vulkan-cts'
-pkgver=1.4.5.1
+pkgver=1.4.5.2
 pkgrel=1
 arch=('any')
 pkgdesc='Khronos Vulkan Conformance Tests'
@@ -15,20 +15,20 @@ depends=(
 )
 
 makedepends=(
+	python
 	git
-	python-lxml
 	cmake
 	gcc
 	wayland-protocols
 )
 optdepends=(
-#	"wayland-protocols: DEQP_TARGET=wayland"
 )
 
 source=(
 	"${url}/archive/refs/tags/vulkan-cts-${pkgver}.tar.gz"
 )
-sha256sums=('SKIP'
+sha256sums=(
+	'719d5ef94c598bce7238ec96715f5b2334d7d33dfa18820903b5fe0a1f7a7efe'
 )
 
 prepare() {
