@@ -1,6 +1,6 @@
 pkgbase = amazon-ecr-credential-helper
 	pkgdesc = A credential helper for the Docker daemon that makes it easier to use Amazon EC2 Container Registry.
-	pkgver = 0.11.0
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/awslabs/amazon-ecr-credential-helper
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = amazon-ecr-credential-helper
 	arch = aarch64
 	license = Apache
 	makedepends = go
-	source = amazon-ecr-credential-helper-0.11.0.tar.gz::https://github.com/awslabs/amazon-ecr-credential-helper/archive/v0.11.0.tar.gz
-	sha512sums = c19ec82e826612d439e6f30a18e1948056c7450bfda4ef71d7de7feb73523feb4285c51228560ab2e20450a7341f8fd83d93f7779d70950f0e5d53d1606117d1
+	source = amazon-ecr-credential-helper-0.12.0.tar.gz::https://github.com/awslabs/amazon-ecr-credential-helper/archive/v0.12.0.tar.gz
+	sha512sums = 561d3eca1ba9e2ee7da5b52e135c61a545da6f50ee8e34db34caec1c3bc106b9e1fa4d936288ab0d770c1036b2368bdc38210c409e9eba9445ae036535565e97
 
 pkgname = amazon-ecr-credential-helper
