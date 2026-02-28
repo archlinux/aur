@@ -2,4 +2,5 @@ pkg/
 src/
 *.zst
 *.tar.gz
+*.log
 omnictl-*

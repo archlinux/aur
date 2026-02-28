@@ -1,6 +1,6 @@
 # Maintainer: codekoala <arch@cloudlery.com>
 pkgname=omnictl-bin
-pkgver=1.4.0
+pkgver=1.5.8
 pkgrel=1
 pkgdesc="CLI for Omni - SaaS-simple Kubernetes management platform by Sidero Labs"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('BSL-1.1')
 provides=('omnictl')
 conflicts=('omnictl')
 source=("omnictl-${pkgver}::https://github.com/siderolabs/omni/releases/download/v${pkgver}/omnictl-linux-amd64")
-sha256sums=('009cc5126b1441203a9bd3b1303cd8f0b2affcdfe764385a6673670918d3a5ae')
+sha256sums=('84cc2faa51d9d76fd22c606c138b20a65967a56db79b5026892a1833274da055')
 
 package() {
     install -Dm755 "omnictl-${pkgver}" "${pkgdir}/usr/bin/omnictl"
@@ -19,7 +19,7 @@ package() {
     install -dm755 "${pkgdir}/usr/share/zsh/site-functions"
     install -dm755 "${pkgdir}/usr/share/fish/vendor_completions.d"
 
-    "./omnictl-${pkgver}" completion bash > "${pkgdir}/usr/share/bash-completion/completions/omnictl"
-    "./omnictl-${pkgver}" completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_omnictl"
-    "./omnictl-${pkgver}" completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/omnictl.fish"
+    "${pkgdir}/usr/bin/omnictl" completion bash > "${pkgdir}/usr/share/bash-completion/completions/omnictl"
+    "${pkgdir}/usr/bin/omnictl" completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_omnictl"
+    "${pkgdir}/usr/bin/omnictl" completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/omnictl.fish"
 }
