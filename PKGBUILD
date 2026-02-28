@@ -2,7 +2,7 @@
 # Contributor: kehon
 
 pkgname=traccar-bin
-pkgver=6.12.1 # renovate: datasource=github-tags depName=tananaev/traccar
+pkgver=6.12.2 # renovate: datasource=github-tags depName=tananaev/traccar
 pkgrel=1
 pkgdesc="Open source GPS tracking system"
 arch=('i686' 'x86_64')
@@ -19,4 +19,4 @@ package() {
   chmod 755 -R "${pkgdir}/opt"
 }
 
-sha256sums=('68c1428a670f5c7a27dc9687e35a96b6b8b70e7d0da4c34ea4e227c2e3e02dad')
+sha256sums=('7ec627c7fd3b9cf9047dd3d5f329ce654d40b50759b2e190dcb39bf9f9fff0da')
