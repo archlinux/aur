@@ -13,10 +13,10 @@ provides=('svu')
 conflicts=('svu')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/caarlos0/svu/releases/download/v${pkgver}/svu_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('ba8efd1da67532b811fe2864e43a93128b0c02702d1ad3a685ad58f41923f0eb')
+sha256sums_aarch64=('8f00c170037bcdc1ba7f2b974ec5ac1b39da7457bebc985c5fd410c724e03bac')
+sha256sums_x86_64=('3c093d9461b1875662df232319a314641b78ae78ddfec9378f572258803d699c')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/caarlos0/svu/releases/download/v${pkgver}/svu_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('f9fe4f0edb7d8cf4b0ecd84dd8ffa7e36186da6c701ab5fa59cb75a100a1705e')
 
 package() {
   # bin
