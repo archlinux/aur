@@ -6,7 +6,7 @@
 
 pkgname=dwm
 pkgver=6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic window manager for X"
 url="https://dwm.suckless.org"
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -18,7 +18,7 @@ source=(dwm.desktop
         https://dl.suckless.org/dwm/dwm-$pkgver.tar.gz
         config.h)
 sha256sums=('bc36426772e1471d6dd8c8aed91f288e16949e3463a9933fee6390ee0ccd3f81'
-            '7cfc2c6d9386c07c49e2c906f209c18ba3364ce0b4872eae39f56efdb7fc00a3'
+            'bcf540589ad174d4073f4efa658828411e2f5ba63196cfaf6b71363700f590b7'
             'SKIP')
 
 prepare() {
