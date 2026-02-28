@@ -1,6 +1,6 @@
 pkgbase = r-rcppnumerical
 	pkgdesc = 'Rcpp' Integration for Numerical Computing Libraries
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RcppNumerical
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = r-rcppnumerical
 	optdepends = r-prettydoc
 	optdepends = r-rcppeigen
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/RcppNumerical_0.6-0.tar.gz
-	sha256sums = 2f0715d68a975403e2aa3f087939542001921623bd1bb8d905ebaff05d82d786
+	source = https://cran.r-project.org/src/contrib/RcppNumerical_0.7-0.tar.gz
+	sha256sums = 6e3717669ecbf3ed10fee3919630cd4899d6f534fee0ad9fedb9d4b006034e81
 
 pkgname = r-rcppnumerical
