@@ -2,7 +2,7 @@
 
 pkgname=vja
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple CLI for Vikunja'
 arch=('any')
 url='https://gitlab.com/ce72/vja'
@@ -10,9 +10,10 @@ license=('GPL-3.0-or-later')
 depends=('python'
          'python-click'
          'python-click-aliases'
-         'python-requests'
-         'python-parsedatetime'
          'python-dateutil'
+         'python-parsedatetime'
+         'python-pyjwt'
+         'python-requests'
         )
 makedepends=('python-build'
              'python-setuptools'
