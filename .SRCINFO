@@ -1,0 +1,30 @@
+pkgbase = libavif-noglycin
+	pkgdesc = Library for encoding and decoding .avif files, for gdk-pixbuf2-noglycin
+	pkgver = 1.3.0
+	pkgrel = 5
+	url = https://github.com/AOMediaCodec/libavif
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-libavif
+	makedepends = cmake
+	makedepends = gdk-pixbuf2-noglycin
+	makedepends = git
+	makedepends = nasm
+	makedepends = pandoc-cli
+	depends = aom
+	depends = dav1d
+	depends = glibc
+	depends = libgcc
+	depends = libjpeg-turbo
+	depends = libpng
+	depends = libstdc++
+	depends = libwebp
+	depends = libyuv
+	depends = rav1e
+	depends = svt-av1
+	provides = libavif
+	conflicts = libavif
+	source = git+https://github.com/AOMediaCodec/libavif#tag=v1.3.0
+	sha256sums = 71f5a51a8e1a9198cd9f2e38c158e50815989bb1fe28cc80e481aa16a3e1ec2d
+
+pkgname = libavif-noglycin
