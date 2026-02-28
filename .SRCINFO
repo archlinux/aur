@@ -1,0 +1,18 @@
+pkgbase = hgen
+	pkgdesc = Documentation generator for D
+	pkgver = 0.6.2
+	pkgrel = 0
+	url = https://gitlab.com/os-18/hgen/
+	arch = x86_64
+	license = BSL-1.0
+	makedepends = bash
+	makedepends = findutils
+	makedepends = pkg-config
+	makedepends = libdparse-ldc2
+	makedepends = ldc
+	depends = 
+	depends = libdparse-ldc2
+	source = hgen-0.6.2.tar.gz::https://gitlab.com/os-18/hgen//-/archive/v0.6.2/hgen-v0.6.2.tar.gz
+	sha256sums = 897bea890b915370b89513f8248770ab32c0c7ea0886e0729e5d1ad6b5374e35
+
+pkgname = hgen
