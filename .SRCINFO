@@ -3,6 +3,7 @@ pkgbase = hapi-git
 	pkgver = 0.15.3
 	pkgrel = 1
 	url = https://github.com/tiann/hapi
+	install = hapi-git.install
 	arch = x86_64
 	arch = aarch64
 	license = AGPL-3.0

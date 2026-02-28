@@ -1,0 +1,25 @@
+pre_install() {
+	# Clean up manually installed service files to avoid conflicts
+	rm -f /usr/lib/systemd/user/hapi-hub.service
+	rm -f /usr/lib/systemd/user/hapi-runner.service
+}
+
+pre_upgrade() {
+	pre_install
+}
+
+post_install() {
+	echo "==> To use the official relay service, edit hapi-hub.service:"
+	echo "    systemctl --user edit hapi-hub.service"
+	echo "    Change ExecStart to: /usr/bin/hapi hub --relay"
+	echo ""
+	echo "==> To enable and start the services:"
+	echo "    systemctl --user enable --now hapi-hub.service"
+	echo "    systemctl --user enable --now hapi-runner.service"
+}
+
+post_upgrade() {
+	echo "==> Reloading systemd user daemon..."
+	systemctl --user daemon-reload || true
+	post_install
+}

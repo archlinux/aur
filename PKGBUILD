@@ -12,6 +12,7 @@ license=('AGPL-3.0')
 depends=('bun')
 provides=('hapi')
 options=('!strip')
+install=hapi-git.install
 
 source=("git+https://github.com/tiann/hapi.git#tag=v${pkgver}")
 sha256sums=('SKIP')
@@ -60,14 +61,16 @@ EOF
 	install -Dm644 /dev/stdin "${pkgdir}/usr/lib/systemd/user/hapi-runner.service" <<EOF
 [Unit]
 Description=HAPI Runner
-After=network-online.target
+After=network-online.target hapi-hub.service
 Wants=network-online.target
+Requires=hapi-hub.service
 
 [Service]
-Type=simple
-ExecStart=/usr/bin/hapi runner start --foreground
-Restart=on-failure
-RestartSec=5
+Type=oneshot
+RemainAfterExit=yes
+ExecStartPre=-/usr/bin/rm -f %h/.hapi/runner.state.json.lock
+ExecStart=/usr/bin/hapi runner start
+ExecStop=/usr/bin/hapi runner stop
 
 [Install]
 WantedBy=default.target
