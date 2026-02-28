@@ -11,8 +11,7 @@ depends=('glibc')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
-source=("${_pkgname}-${pkgver}-linux.tar.gz::https://github.com/AlexsJones/llmfit/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz
-")
+source=("${_pkgname}-${pkgver}-linux.tar.gz::https://github.com/AlexsJones/llmfit/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('0ac31db2098e00d550269e469c0abce3bc9d63b3403ab0c80a84c913a6051e48')
 
 
