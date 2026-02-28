@@ -1,7 +1,7 @@
 # Maintainer: qr243vbi
 
 pkgname=(nekobox nekobox-core)
-pkgver=5.10.19
+pkgver=5.10.20
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
 arch=('x86_64' 'aarch64' 'riscv64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost')
 makedepends+=('cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs')
 source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("a5732309c6516ad62a8d8cb3b96fa1468813c164607c4c426f3e9899044561d4")
+sha256sums=("bed1e52bf11cbd256084040985b07ff1714d2504e4aae3f600f4174d486d8281")
 
 prepare() {
     gendesk -f -n \
@@ -50,8 +50,8 @@ package_nekobox-core() {
     depends=('gcc-libs' 'glibc')
     provides=('sing-box')
     conflicts=('sing-box')
-    install -Dm755 "$DEST"/nekobox_core -t "${pkgdir}/usr/lib/NekoBox"
-    upx "${pkgdir}/usr/lib/NekoBox/nekobox_core"
+    install -Dm755 "$DEST"/nekobox_core -t "${pkgdir}/usr/lib/Iblis"
+    upx "${pkgdir}/usr/lib/Iblis/nekobox_core"
 }
 
 package_nekobox() {
@@ -59,22 +59,22 @@ package_nekobox() {
     provides=('nekoray')
     conflicts=('nekoray')
 
-    install -Dm755 "$DEST"/nekobox -t "${pkgdir}/usr/lib/NekoBox"
-    upx "${pkgdir}/usr/lib/NekoBox/nekobox"
+    install -Dm755 "$DEST"/nekobox -t "${pkgdir}/usr/lib/Iblis"
+    upx "${pkgdir}/usr/lib/Iblis/nekobox"
 
     echo '#!/bin/bash -x' > "nekobox.sh"
-    echo 'exec /usr/lib/NekoBox/nekobox -appdata "$@"' >> "nekobox.sh"
+    echo 'exec /usr/lib/Iblis/nekobox -appdata "$@"' >> "nekobox.sh"
 
     echo '#!/bin/bash -x' > "sing-box.sh"
-    echo 'exec /usr/lib/NekoBox/nekobox_core sing-box "$@"' >> "sing-box.sh"
+    echo 'exec /usr/lib/Iblis/nekobox_core sing-box "$@"' >> "sing-box.sh"
 
     install -Dm755 "nekobox.sh" "${pkgdir}/usr/bin/nekobox"
     install -Dm755 "sing-box.sh" "${pkgdir}/usr/bin/sing-box"
     install -Dm644 "nekobox.desktop" -t "${pkgdir}/usr/share/applications"
 
     cd "nekobox-unified-source-${pkgver}"
-    install -Dm644 srslist.json -t "${pkgdir}/usr/lib/NekoBox"
-    cp *.js "${pkgdir}/usr/lib/NekoBox"
-    cp -RfvT "res/public" "${pkgdir}/usr/lib/NekoBox/public"
+    install -Dm644 srslist.json -t "${pkgdir}/usr/lib/Iblis"
+    cp *.js "${pkgdir}/usr/lib/Iblis"
+    cp -RfvT "res/public" "${pkgdir}/usr/lib/Iblis/public"
     install -Dm644 res/public/icon.png "${pkgdir}/usr/share/pixmaps/nekobox.png"
 }
