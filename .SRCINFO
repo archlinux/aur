@@ -1,5 +1,5 @@
 pkgbase = footfetch-git
-	pkgdesc = **CLI** utility for viewing **system information**, but with a **twist**.
+	pkgdesc = A neofetch-like tool for those who prefer feet over faces
 	pkgver = 1.42.4.r0.g1234567
 	pkgrel = 1
 	url = https://github.com/adenast/footfetch

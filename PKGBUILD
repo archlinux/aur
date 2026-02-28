@@ -1,9 +1,9 @@
-# Maintainer: adenast <aiden0@zohomail.com>
+# Maintainer: adenast <adenast@proton.me>
 pkgname=footfetch-git
 _pkgname=footfetch
 pkgver=1.42.4.r0.g1234567
 pkgrel=1
-pkgdesc="**CLI** utility for viewing **system information**, but with a **twist**."
+pkgdesc="A neofetch-like tool for those who prefer feet over faces"
 arch=('x86_64' 'aarch64')
 url="https://github.com/adenast/footfetch"
 license=('MIT')
