@@ -1,26 +1,5 @@
 post_install() {
-    # sysusers.d/tmpfiles.d handle user + directory creation automatically.
-
-    if [ ! -f /etc/greetd/config.toml ]; then
-        cp /etc/greetd/greetd.toml /etc/greetd/config.toml
-        echo "==> Installed greetd config: /etc/greetd/config.toml"
-    elif ! grep -q greetdeez /etc/greetd/config.toml; then
-        echo ""
-        echo "==> greetd config exists but does not use greetdeez."
-        echo "    To activate greetdeez, update [default_session] in /etc/greetd/config.toml:"
-        echo ""
-        echo "      [default_session]"
-        echo "      command = \"cage -s -- /usr/bin/greetdeez\""
-        echo "      user = \"greetdeez\""
-        echo ""
-    fi
-
-    echo ""
-    echo "==> To switch to greetdeez from your current display manager:"
-    echo "    1. sudo systemctl disable --now <current-dm>   (e.g. sddm, gdm, lightdm)"
-    echo "    2. sudo systemctl enable greetd"
-    echo "    3. reboot"
-    echo ""
+    /usr/share/greetdeez/post-install.sh
 }
 
 post_upgrade() {
