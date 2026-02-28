@@ -2,7 +2,7 @@
 pkgname=lenovo-print-driver-lj2400-m7400-bin
 pkgver=5.0.3
 pkgrel=1
-pkgdesc="Lenovo cups printer drivers for LJ2400Pro LJ2405 LJ2405D LJ2605D LJ2655DN LJ2680DN M7400Pro M7400W M7405D M7405DW M7450FPro M7455DNF M7460 M7480 M7490DNF M7605D M7605DW M7615DNA M7625DWA M7626DNA M7628DNA M7655DHF M7675DXF M7680D M7685DXF M7686DXF lenovo-M7690DNA series and compatibles"
+pkgdesc="LJ2400Pro LJ2405 LJ2405D LJ2605D LJ2655DN LJ2680DN M7400Pro M7400W M7405D M7405DW M7450FPro M7455DNF M7460 M7480 M7490DNF M7605D M7605DW M7615DNA M7625DWA M7626DNA M7628DNA M7655DHF M7675DXF M7680D M7685DXF M7686DXF M7690DNA"
 arch=('x86_64')
 url="https://www.lenovo.com"
 license=('custom:lenovo')
@@ -10,6 +10,8 @@ depends=('cups' 'glibc' 'perl' 'bash' 'coreutils' 'findutils')
 optdepends=('python: for additional printer management scripts')
 
 install=lenovo-print-driver.install
+
+thisdebpackagefrom="https://www.chinauos.com/resource/download-drivers/result?keyword=lenovo+M7615dna"
 
 source=(
     "drive-service_signed_com.lenovo.lenovoprints_5.0.3-2_amd64.deb"
@@ -29,13 +31,13 @@ package() {
   done
   rm -f control.tar.* debian-binary data.tar.* 2>/dev/null
   
-  find "$pkgdir" -type d -exec chmod 755 {} \;
-  find "$pkgdir/opt/lenovo/com.lenovo.lenovoprints/bin" -type f -exec chmod 755 {} \;
+  find "$pkgdir" -type d -exec chmod 775 {} \;
+  find "$pkgdir/opt/lenovo/com.lenovo.lenovoprints/bin" -type f -exec chmod 775 {} \;
   
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/lib/cups/filter"
-  install -dm755 "$pkgdir/usr/lib32/cups/filter"
-  install -dm755 "$pkgdir/usr/libexec/cups/filter"
-  install -dm755 "$pkgdir/var/spool/lpd"
+  install -dm775 "$pkgdir/usr/bin"
+  install -dm775 "$pkgdir/usr/lib/cups/filter"
+  install -dm775 "$pkgdir/usr/lib32/cups/filter"
+  install -dm775 "$pkgdir/usr/libexec/cups/filter"
+  install -dm775 "$pkgdir/var/spool/lpd"
   
 }
