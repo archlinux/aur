@@ -5,7 +5,7 @@ pkgver=0.2.2
 pkgrel=2
 pkgdesc='Utility for miscellaneous wlroots extensions'
 url='https://git.sr.ht/~brocellous/wlrctl'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('MIT')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://git.sr.ht/~brocellous/$pkgname/archive/v$pkgver.tar.gz"
