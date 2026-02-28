@@ -2,7 +2,7 @@
 # Maintainer: containerscrew <info@containerscrew.com>
 
 pkgname='rsecure'
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc='Secure file encryption CLI written in Rust'
 url='https://github.com/containerscrew/rsecure'
@@ -12,7 +12,7 @@ provides=('rsecure')
 conflicts=('rsecure')
 makedepends=('rust' 'cargo')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/containerscrew/rsecure/releases/download/${pkgver}/rsecure-${pkgver}.tar.gz")
-sha256sums=('f0a3af1af845b1277a78d36cacd8d8bfb572b256f2024f073e7dd9e1ffd25501')
+sha256sums=('a2206f5717a44050512937605948bf141571a865e07298f4ab97449d333a01ee')
 build() {
   cargo build --release --locked
 }
