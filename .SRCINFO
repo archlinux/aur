@@ -1,0 +1,20 @@
+pkgbase = vskui
+	pkgdesc = A Python widget framework for Hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/vskksa/vskui
+	arch = any
+	license = LGPL-2.1-only
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = python-gobject
+	depends = hyprland
+	source = vskui-0.1.0.tar.gz::https://github.com/vskksa/vskui/archive/v0.1.0.tar.gz
+	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
+
+pkgname = vskui
