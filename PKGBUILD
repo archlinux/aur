@@ -2,11 +2,11 @@
 # Contributor: bbaster <bbaster at tutanota dot org>
 
 pkgname=flashpoint-launcher-bin
-pkgver=14.0.3_20251103
+pkgver=14.0.3_20251201
 _launcherver=${pkgver%_*}
 _timestamp=${pkgver#*_}
 
-pkgrel=6
+pkgrel=7
 pkgdesc="An archive for games and animations from the web."
 arch=('x86_64')
 url="https://flashpointarchive.org/"
@@ -37,7 +37,7 @@ options=(
 )
 
 source=("https://download.flashpointarchive.org/upload/fp${_launcherver}_lin_${_timestamp}.7z")
-sha256sums=('b3ff524f6ba3157b1b0661207e24ae6c478b12fccccca55720c2c31d3034f509')
+sha256sums=('f393a98c5c35e229a744c102b0cb53270b1b4f1b3ebd40d604f98323444a4b1f')
 
 prepare() {
  	patch -p1 -i ../setup-desktop-entry.patch -d "${srcdir}"
