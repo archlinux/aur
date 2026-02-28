@@ -145,7 +145,7 @@ fi
 
 pkgbase="linux-$_pkgsuffix"
 _major=6.18
-_minor=14
+_minor=15
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -734,5 +734,5 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('596ee7428ed274f5307980b97e236631487bc4631cc4355a497ad805255c9e5c021f3fabb328877158bc8d99c38cea063029e19144ce7ba8f8a144d66f90bd3d'
+b2sums=('3f6fadf3a67715275ee5b1d459fa40d570ebbbb124012dd87caec674bafab1037ae970af0130aca522d587e3ec65114a2674500d0ecf66a1b33bb7be58f3619a'
         '81fafd3adcaf3b690d8d4791693e68c7ae921d103ebfd70e8d0ae15cd05ecde5e6672ae43c3a7875686d883c1f5b82d2c8b37b40aee8dcb0563913f9dd6469b6')
