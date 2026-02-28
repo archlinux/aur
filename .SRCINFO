@@ -1,0 +1,15 @@
+pkgbase = omnidotdev-eden-bin
+	pkgdesc = Developer onboarding preflight checks (pre-built)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://eden.omni.dev
+	arch = x86_64
+	license = MIT
+	provides = omnidotdev-eden
+	conflicts = omnidotdev-eden
+	source = https://github.com/omnidotdev/eden-cli/releases/download/v0.2.0/eden-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/omnidotdev/eden-cli/v0.2.0/LICENSE.md
+	sha256sums = SKIP
+	sha256sums = f6d51cfddf65fd0c0c60882e14d5d3a6621e58634e6ef4d59a1a48bc23f243fd
+
+pkgname = omnidotdev-eden-bin
