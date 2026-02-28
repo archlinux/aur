@@ -2,12 +2,12 @@
 
 pkgname=dod-pki-setup
 pkgver=5.14
-pkgrel=1
+pkgrel=2
 pkgdesc="One-click setup for DoD/DoW CAC/PKI on Arch Linux: Install middleware and drivers, DoD cert bundle v${pkgver}, enable pcscd service, register OpenSC PKCS#11 in browser. Works out of the box on Mozilla/Firefox and Chromium/Chrome"
 arch=('any')
 url="https://public.cyber.mil/pki-pke/"
 license=('0BSD')
-depends=('pcsclite' 'ccid' 'opensc' 'nss' 'p11-kit' 'unzip' 'openssl')
+depends=('pcsclite' 'ccid' 'opensc' 'nss' 'p11-kit' 'unzip' 'openssl' 'ca-certificates-utils')
 install="$pkgname.install"
 source=("certs.zip::https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/unclass-certificates_pkcs7_DoD.zip")
 sha256sums=('32595adbe752df5823cedd2c6a4f206c07fcc3c1520fb831015204e9fbb75711')

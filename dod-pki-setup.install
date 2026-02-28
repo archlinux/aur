@@ -1,4 +1,4 @@
-# line to instert into /etc/pkcs11/modules/opensc.module
+# line to insert into /etc/pkcs11/modules/opensc.module
 EXPECTED_LINE="module: /usr/lib/pkcs11/opensc-pkcs11.so"
 
 post_install() {
