@@ -1,6 +1,6 @@
 # Maintainer: m5rcode contributors
 pkgname=m5rcode
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Modern programming language combining Python, C, Java, HolyC, Rust, and Ruby"
 arch=('x86_64')
@@ -12,7 +12,8 @@ optdepends=(
     'gtk3: for m5idle GUI'
     'llvm: for LLVM backend'
 )
-source=("$pkgname-$pkgver.tar.gz")
+install=m5rcode.install
+source=("https://github.com/m5rcode/m5rcode/releases/download/v${pkgver}/m5rcode-${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
