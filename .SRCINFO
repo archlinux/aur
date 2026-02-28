@@ -1,0 +1,13 @@
+pkgbase = vesper-claude-allowlist-prune
+	pkgdesc = Prune junk and duplicates from Claude Code allowlist settings
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Rinzlo/claude-allowlist-prune
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	source = vesper-claude-allowlist-prune-0.1.0.tar.gz::https://github.com/Rinzlo/claude-allowlist-prune/archive/v0.1.0.tar.gz
+	sha256sums = 3db7fef0b39827c2c15d6b02acea85a877a5c9fd91c5f2fae8b64be8ea3765ae
+
+pkgname = vesper-claude-allowlist-prune
