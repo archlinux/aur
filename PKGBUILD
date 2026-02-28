@@ -56,10 +56,10 @@ package() {
 	install -Dm755 "target/release/steel-language-server" "${pkgdir}/usr/bin/steel-language-server"
 	install -Dm755 "target/release/cargo-steel-lib" "${pkgdir}/usr/bin/cargo-steel-lib"
 
-	install -Dm644 <("target/usr/bin/${_pkgname}" "completions" "bash"  ) "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
-	install -Dm644 <("target/usr/bin/${_pkgname}" "completions" "zsh"   ) "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
-	install -Dm644 <("target/usr/bin/${_pkgname}" "completions" "fish"  ) "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
-	install -Dm644 <("target/usr/bin/${_pkgname}" "completions" "elvish") "${pkgdir}/usr/share/elvish/lib/${_pkgname}.elv"
+	install -Dm644 <("target/release/${_pkgname}" "completions" "bash"  ) "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+	install -Dm644 <("target/release/${_pkgname}" "completions" "zsh"   ) "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
+	install -Dm644 <("target/release/${_pkgname}" "completions" "fish"  ) "${pkgdir}/usr/share/fish/vendor_completions.d/${_pkgname}.fish"
+	install -Dm644 <("target/release/${_pkgname}" "completions" "elvish") "${pkgdir}/usr/share/elvish/lib/${_pkgname}.elv"
 
 	install -Dm644 "LICENSE-APACHE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-APACHE"
 	install -Dm644 "LICENSE-MIT" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE-MIT"
