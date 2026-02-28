@@ -23,9 +23,8 @@ depends=(
     'python-pylatex-git'
     'texlive-langportuguese'
     'python-dropbox'
-    'aspell'
-    'aspell-pt'
-    'aspell-en'
+    'texlive-latexextra'
+    'python-cryptography'
 )
 makedepends=('gettext')
 optdepends=(
@@ -51,7 +50,7 @@ optdepends=(
 conflicts=('comm-tac-writer')
 provides=('comm-tac-writer')
 replaces=('comm-tac-writer')
-pkgver=1.3.1.6
+pkgver=1.4.0
 pkgrel=1
 epoch=1
 arch=('any')
