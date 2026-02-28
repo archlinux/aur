@@ -1,4 +1,4 @@
-[passport]
+[arduino-ctags]
 source = "github"
 github = "arduino/ctags"
 use_latest_release = true
