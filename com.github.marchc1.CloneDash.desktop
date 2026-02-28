@@ -6,3 +6,8 @@ Exec=CloneDash
 Icon=com.github.marchc1.CloneDash
 Categories=Game;
 Terminal=false
+Actions=model-editor
+
+[Desktop Action model-editor]
+Name=Run model editor
+Exec=Nucleus.ModelEditor
