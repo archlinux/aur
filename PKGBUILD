@@ -38,7 +38,7 @@ depends=(
 )
 optdepends=('zenity: native file open dialog')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aaddrick/selkie/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('PLACEHOLDER')
+sha256sums=('4c1eda0d95f6253786402fdf1472ddabb6f7bc1ba453b696b67a6e79f2b14c62')
 
 build() {
   cd "${pkgname}-${pkgver}"
