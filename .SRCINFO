@@ -1,0 +1,13 @@
+pkgbase = vesper-ctui
+	pkgdesc = Terminal tables, charts, trees, diagrams, banners, spinners
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Rinzlo/ctui
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	source = vesper-ctui-0.1.0.tar.gz::https://github.com/Rinzlo/ctui/archive/v0.1.0.tar.gz
+	sha256sums = d993b49f2cc575ba8a1f4888f2d47151c0e2a7ddb2ca54d0fbb7d3bab0a11899
+
+pkgname = vesper-ctui
