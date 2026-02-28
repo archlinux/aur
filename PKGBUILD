@@ -3,7 +3,7 @@
 pkgname=qbit-manage-desktop-bin
 _srcver="v4.6.5"
 pkgver="${_srcver#v}"
-pkgrel=4
+pkgrel=5
 pkgdesc="GUI application for qBit_manage, a program used to manage your qBittorrent instance."
 arch=('x86_64')
 url="https://github.com/StuffAnThings/qbit_manage/"
@@ -12,6 +12,7 @@ depends=(
   gtk3
   libayatana-appindicator
   webkit2gtk-4.1
+  hicolor-icon-theme
 )
 makedepends=('imagemagick')
 options=(!strip)

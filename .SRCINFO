@@ -1,7 +1,7 @@
 pkgbase = qbit-manage-desktop-bin
 	pkgdesc = GUI application for qBit_manage, a program used to manage your qBittorrent instance.
 	pkgver = 4.6.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/StuffAnThings/qbit_manage/
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = qbit-manage-desktop-bin
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = webkit2gtk-4.1
+	depends = hicolor-icon-theme
 	provides = qbit-manage-desktop
 	provides = qbit-manage
 	conflicts = qbit-manage-desktop
