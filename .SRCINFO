@@ -1,7 +1,7 @@
 pkgbase = asusctl
 	pkgdesc = A control daemon, tools, and a collection of crates for interacting with ASUS ROG laptops
-	pkgver = 6.3.2
-	pkgrel = 0.1
+	pkgver = 6.3.4
+	pkgrel = 1
 	url = https://asus-linux.org
 	arch = x86_64
 	license = MPL-2.0
@@ -16,14 +16,14 @@ pkgbase = asusctl
 	makedepends = rust
 	makedepends = seatd
 	makedepends = systemd
-	source = git+https://gitlab.com/asus-linux/asusctl.git#tag=6.3.2
-	b2sums = 4bf6b850e19551426c2011cfb75e880fad1f7161a6f3200748d4dafe9a26d038676c1ba3df8bc68d4b080146e1f78abca07984860c0034c15ce0b742fe34477c
+	source = git+https://gitlab.com/asus-linux/asusctl.git#tag=6.3.4
+	b2sums = 5066ebfa7edc27c88513671028847178a5b5fbf8b8113a384ba57961025185e80abf9ad7a0429d4b30be2d2dc5fa8ae023ad97239063fcf6571254e68c35d5d0
 
 pkgname = asusctl
 	pkgdesc = A control daemon, CLI tools, and a collection of crates for interacting with ASUS ROG laptops
 	install = asusctl.install
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	depends = libusb
 	depends = systemd
 	depends = systemd-libs
@@ -38,10 +38,10 @@ pkgname = rog-control-center
 	depends = asusctl
 	depends = fontconfig
 	depends = freetype2
-	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
 	depends = libayatana-appindicator
+	depends = libgcc
 	depends = libinput
 	depends = libxkbcommon
 	depends = mesa
