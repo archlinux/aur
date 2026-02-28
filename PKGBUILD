@@ -3,12 +3,12 @@
 _pkgname=backintime-git
 _pkgname_cli=backintime-cli-git
 pkgname=($_pkgname $_pkgname_cli)
-pkgver=1.6.0.rc1.r3.g6faa8bf4
+pkgver=1.6.1.r9.g5b8a8eed
 pkgrel=1
 url=https://github.com/bit-team/backintime
 license=(GPL-2.0-or-later)
 arch=(any)
-makedepends=(asciidoctor codespell git librsvg man-db python-flake8 reuse ruff) # mkdocs mkdocs-material python
+makedepends=(asciidoctor codespell git librsvg man-db pandoc-cli python-flake8 reuse ruff) # mkdocs mkdocs-material python
 #checkdepends=(openssh python-dbus python-pyfakefs python-pylint rsync systemd)
 install=$_pkgname.install
 source=($_pkgname::git+$url.git)

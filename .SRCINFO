@@ -1,5 +1,5 @@
 pkgbase = backintime-git
-	pkgver = 1.6.0.rc1.r3.g6faa8bf4
+	pkgver = 1.6.1.r9.g5b8a8eed
 	pkgrel = 1
 	url = https://github.com/bit-team/backintime
 	install = backintime-git.install
@@ -10,6 +10,7 @@ pkgbase = backintime-git
 	makedepends = git
 	makedepends = librsvg
 	makedepends = man-db
+	makedepends = pandoc-cli
 	makedepends = python-flake8
 	makedepends = reuse
 	makedepends = ruff
