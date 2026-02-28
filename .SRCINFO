@@ -1,6 +1,6 @@
 pkgbase = sing-box
 	pkgdesc = The universal proxy platform.
-	pkgver = 1.12.23
+	pkgver = 1.13.0
 	pkgrel = 1
 	url = https://sing-box.sagernet.org/
 	arch = i686
@@ -13,14 +13,13 @@ pkgbase = sing-box
 	license = LicenseRef-sing-box
 	makedepends = go
 	depends = glibc
-	optdepends = sing-geosite: sing-geosite database
-	optdepends = sing-geoip: sing-geoip database
+	optdepends = libcronet.so: NaiveProxy outbound support
+	optdepends = sing-geosite-rule-set: geosite rule sets
+	optdepends = sing-geoip-rule-set: geoip rule sets
 	conflicts = sing-box-git
 	conflicts = sing-box-beta
 	backup = etc/sing-box/config.json
-	source = sing-box-1.12.23.tar.gz::https://github.com/SagerNet/sing-box/archive/v1.12.23.tar.gz
-	source = sing-box.rules
-	sha256sums = 58b41bd8d6255c2ddc2ae5eace53171e550c9debaa8e16d89871299055b58b1a
-	sha256sums = 1365536e1875043b969e2e18d7313ab7c6f7f9f63387f25506bb04362b44f206
+	source = sing-box-1.13.0.tar.gz::https://github.com/SagerNet/sing-box/archive/v1.13.0.tar.gz
+	sha256sums = 6ddc71596dc937873c5aba15a4f2b395c5434265efdc1bd21f4c03d8c5b7f641
 
 pkgname = sing-box
