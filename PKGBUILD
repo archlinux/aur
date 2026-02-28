@@ -3,7 +3,7 @@
 _pkgbase=vk-gl-cts
 pkgname='vulkan-cts'
 pkgver=1.4.5.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Khronos Vulkan Conformance Tests'
 url="https://github.com/KhronosGroup/VK-GL-CTS"
@@ -15,7 +15,7 @@ depends=(
 )
 
 makedepends=(
-	python
+	python-lxml
 	git
 	cmake
 	gcc
@@ -25,34 +25,41 @@ optdepends=(
 )
 
 source=(
-	"${url}/archive/refs/tags/vulkan-cts-${pkgver}.tar.gz"
+	"git+${url}.git#tag=vulkan-cts-${pkgver}"
 )
 sha256sums=(
-	'719d5ef94c598bce7238ec96715f5b2334d7d33dfa18820903b5fe0a1f7a7efe'
+	'SKIP'
 )
 
 prepare() {
-	cd ${_pkgbase^^}-${pkgname}-${pkgver}
+	cd ${_pkgbase^^}
 	python3 external/fetch_sources.py
 #	python3 external/fetch_video_decode_samples.py
+	git status >git-status.txt
 	cmake -B build -DCMAKE_BUILD_TYPE=Release -DDEQP_TARGET=wayland .
 }
 
 build() {
-	cd ${_pkgbase^^}-${pkgname}-${pkgver}/build
-	#cmake --build external/vulkancts --parallel
+	cd ${_pkgbase^^}/build
 	_p=$(((`nproc` / 3 +1 )))
 	make -j${_p}
 }
 
 package() {
-	cd ${_pkgbase^^}-${pkgname}-${pkgver}/build
-	install -d ${pkgdir}/usr/bin
-	ln -s /usr/lib/vulkancts/deqp-vk ${pkgdir}/usr/bin/deqp-vk
-	## usage: deqp-vk --deqp-log-filename=$HOME/TestResults.qpa
-	install -D external/vulkancts/modules/vulkan/deqp-vk ${pkgdir}/usr/lib/vulkancts/vulkan/deqp-vk
-	cp -r external/vulkancts/modules/vulkan/* ${pkgdir}/usr/lib/vulkancts/
-	rm -rf ${pkgdir}/usr/lib/vulkancts/{.,*}/{CMakeFiles,*cmake,*.a,Makefile}
-	install -D ../external/vulkancts/README.md ${pkgdir}/usr/share/vulkancts/README.md
-	cp -r ../external/vulkancts/doc ${pkgdir}/usr/share/vulkancts/
+	cd ${_pkgbase^^}
+	install -Dm644 external/vulkancts/README.md ${pkgdir}/usr/share/vulkancts/README.md
+	git log --first-parent "vulkan-cts-${pkgver}^..HEAD" >${pkgdir}/usr/share/vulkancts/git-log.txt
+	cp -r external/vulkancts/doc ${pkgdir}/usr/share/vulkancts/
+	install git-status.txt ${pkgdir}/usr/share/vulkancts/git-status.txt
+	
+	cd build/external/vulkancts/modules/vulkan
+	install -Dm755 /dev/stdin ${pkgdir}/usr/bin/deqp-vk <<EOF
+#! /usr/bin/bash
+## usage: deqp-vk --deqp-log-filename=$HOME/TestResults.qpa
+/usr/lib/vulkancts/deqp-vk --deqp-archive-dir=/usr/lib/vulkancts "\$@"
+EOF
+	install -D deqp-vk ${pkgdir}/usr/lib/vulkancts/deqp-vk
+	cp -r vk-default ${pkgdir}/usr/lib/vulkancts/
+	cp -r vulkan ${pkgdir}/usr/lib/vulkancts/
+	cp -r *.a ${pkgdir}/usr/lib/vulkancts/
 }
