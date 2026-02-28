@@ -1,0 +1,122 @@
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,119 @@
++PROJECT       = dparse
++DESCR         = "Library for lexing and parsing D source code"
++DC            = ldc2
++PREFIX        = usr
++DESTDIR       =
++
++VERSION       := 0.25.1
++MAJOR_VERSION := 0
++
++BASENAME                 := $(PROJECT)-$(DC)
++LIBRARY                  := lib$(BASENAME)
++PCFILE_NAME              := $(BASENAME).pc
++PCFILE_NAME_ST           := $(BASENAME)-static.pc
++OBJFILE                  := $(LIBRARY).o
++SHLIB_BASE               := $(LIBRARY).so
++STLIB_NAME               := $(LIBRARY).a
++SHLIB_WITH_VERSION       := $(SHLIB_BASE).$(VERSION)
++SHLIB_WITH_MAJOR_VERSION := $(SHLIB_BASE).$(MAJOR_VERSION)
++SHLIB_WITHOUT_VERSION    := $(SHLIB_BASE)
++
++B_DIR  := build
++OBJECT := $(B_DIR)/$(OBJFILE)
++SHLIB  := $(B_DIR)/$(SHLIB_WITH_VERSION)
++STLIB  := $(B_DIR)/$(STLIB_NAME)
++PCFILE    := $(B_DIR)/$(PCFILE_NAME)
++PCFILE_ST := $(B_DIR)/$(PCFILE_NAME_ST)
++
++SONAME := $(SHLIB_BASE).$(MAJOR_VERSION)
++
++SHLIB_FLAGS   := $(shell ./mh.sh $(DC) shared-flags $(SONAME))
++DEBUG_FLAGS   := $(shell ./mh.sh $(DC) debug-flags)
++RELEASE_FLAGS := $(shell ./mh.sh $(DC) release-flags)
++OTHER_FLAGS   := -J.
++BUILD_MODE    ?= debug
++ifeq ($(BUILD_MODE),release)
++	BUILD_OPTS := $(RELEASE_FLAGS) $(OTHER_FLAGS)
++else
++	BUILD_OPTS := $(DEBUG_FLAGS) $(OTHER_FLAGS)
++endif
++
++SOURCES   := $(wildcard src/$(PROJECT)/*.d src/std/experimental/*.d)
++RESOURCES := $(wildcard res/*)
++
++LIBDIR          := $(shell ./mh.sh $(DC) library-path)
++INCDIR          := $(shell ./mh.sh $(DC) include-path)
++INST_LIBDIR     := $(DESTDIR)/$(PREFIX)/$(LIBDIR)
++INST_INCDIR_TOP := $(DESTDIR)/$(PREFIX)/$(INCDIR)
++INST_INCDIR     := $(INST_INCDIR_TOP)/$(PROJECT)
++INST_PCDIR      := $(INST_LIBDIR)/pkgconfig
++
++OUT       := -of
++TESTFLAGS := -unittest -main
++ifeq ($(DC),gdc)
++	OUT := -o
++	TESTFLAGS := -funittest -fmain
++endif
++
++.PHONY: all clean *install *-settings shared static generate-pc
++
++release:
++	$(MAKE) BUILD_MODE=release shared
++	$(MAKE) BUILD_MODE=release static
++
++debug:
++	$(MAKE) BUILD_MODE=debug shared
++	$(MAKE) BUILD_MODE=debug static
++
++
++shared: $(SHLIB)
++	@echo "Compiled to" $(SHLIB)
++
++static:  $(STLIB)
++	@echo "Compiled to" $(STLIB)
++
++$(OBJECT): $(SOURCES)
++	mkdir -p $(B_DIR)
++	$(DC) $^ -c $(OUT)$@ $(BUILD_OPTS)
++
++$(SHLIB): $(OBJECT)
++	$(DC) $^ $(OUT)$@ $(SHLIB_FLAGS)
++
++$(STLIB): $(OBJECT)
++	ar r $@ $^
++
++clean:
++	rm -rf build/ doc/ meson_builddir/
++
++install: generate-pc
++	mkdir -p "$(INST_INCDIR)" "$(INST_LIBDIR)" "$(INST_PCDIR)"
++	cp $(SHLIB) "$(INST_LIBDIR)"
++	cp $(STLIB) "$(INST_LIBDIR)"
++	cp -r src/* "$(INST_INCDIR)"
++	ln -sf $(SHLIB_WITH_VERSION) "$(INST_LIBDIR)/$(SHLIB_WITH_MAJOR_VERSION)"
++	ln -sf $(SHLIB_WITH_MAJOR_VERSION) "$(INST_LIBDIR)/$(SHLIB_WITHOUT_VERSION)"
++	cp $(PCFILE) $(PCFILE_ST) "$(INST_PCDIR)/"
++
++DESCR_ENDING := "the $(shell echo $(DC) | tr a-z A-Z) version"
++PC_DESCR     := "Description: $(DESCR), $(DESCR_ENDING)"
++PC_LDIR      := $(subst //,/,/$(PREFIX)/$(LIBDIR))
++PC_IDIR      := $(subst //,/,/$(PREFIX)/$(INCDIR))/dparse
++LPATH_OPT    := $(shell ./mh.sh $(DC) libpath-opt)
++LN_OPT       := $(shell ./mh.sh $(DC) libname-opt)
++SHARED_OPTS  := $(LPATH_OPT)$(PC_LDIR) $(LN_OPT)$(BASENAME)
++STATIC_OPTS  := $(LPATH_OPT)$(PC_LDIR) $(LN_OPT):lib$(BASENAME).a
++
++generate-pc:
++	mkdir -p $(B_DIR)
++	# for dynamic version
++	echo "Name: $(BASENAME)" > $(PCFILE)
++	echo "$(PC_DESCR)" >> $(PCFILE)
++	echo "Version: $(VERSION)" >> $(PCFILE)
++	echo "Libs: $(SHARED_OPTS)" >> $(PCFILE)
++	echo "Cflags: -I$(PC_IDIR)" >> $(PCFILE)
++	# for static version
++	echo "Name: $(BASENAME)-static" > $(PCFILE_ST)
++	echo "$(PC_DESCR). Static library" >> $(PCFILE_ST)
++	echo "Version: $(VERSION)" >> $(PCFILE_ST)
++	echo "Libs: $(STATIC_OPTS)" >> $(PCFILE_ST)
++	echo "Cflags: -I$(PC_IDIR)" >> $(PCFILE_ST)

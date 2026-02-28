@@ -1,0 +1,168 @@
+diff --git /dev/null/ b/mh.sh
+new file mode 100755
+--- /dev/null
++++ b/mh.sh
+@@ -0,0 +1,163 @@
++#!/bin/bash
++# machine architecture: "x86_64-linux-gnu", "arm-linux-gnueabihf", etc.
++MACHINE=$(gcc -dumpmachine)
++
++# ldc2, gdc, dmd
++DC=$1
++# include-path, library-path, debug-flags, release-flags, shared-flags
++REQUEST=$2
++# soname for shared library
++SONAME=$3
++
++GCC_VERSION=$(gcc -dumpversion)
++
++Can_Find() {
++    elem="${@:$#}"
++    for arg in ${@:1:$#-1}; do
++        if [[ "$elem" == "$arg" ]]; then
++            echo TRUE
++            return
++        fi
++    done
++    echo FALSE
++}
++
++
++Check_Compiler() {
++    COMPILER_PATH=$(which $DC)
++    if [[ -z "$COMPILER_PATH" ]]; then
++        echo "${DC}: compiler not found. Exit..."
++        exit 1
++    fi
++}
++Check_Compiler
++
++
++# Creates DISTR_MODE (equal to DEB, RPM, ARCH of DEFAULT)
++Define_Distr_Mode() {
++    INFOFILE="/etc/os-release"
++    if [[ ! -e "$INFOFILE" ]]; then
++        DISTR_MODE=DEFAULT
++        return
++    fi
++
++    DISTR_FAMILY=""
++    DISTR_MODE=""
++
++    ID=$(grep -e "^ID=" "$INFOFILE" | cut -c4- | tr -d '"')
++    ID_LIKE=$(grep -e "^ID_LIKE=" "$INFOFILE" | cut -c9- | tr -d '"')
++    IFS=" " read -ra ID_LIKE_ARR <<< "$ID_LIKE"
++
++    if [[ "$ID" == debian ]]; then
++        DISTR_FAMILY=debian
++        DISTR_MODE=DEB
++    elif [[ "$ID" == arch ]]; then
++        DISTR_FAMILY=arch
++        DISTR_MODE=ARCH
++    elif [[ "$ID" == fedora ]]; then
++        DISTR_FAMILY=fedora
++        DISTR_MODE=RPM
++    else
++        # ID_LIKE can contain "manjaro arch", "opensuse suse"...
++        if [[ `Can_Find ${ID_LIKE_ARR[@]} debian` == TRUE ]]; then
++            DISTR_FAMILY=debian
++            DISTR_MODE=DEB
++        elif [[ `Can_Find ${ID_LIKE_ARR[@]} arch` == TRUE ]]; then
++            DISTR_FAMILY=arch
++            DISTR_MODE=ARCH
++        elif [[ `Can_Find ${ID_LIKE_ARR[@]} suse` == TRUE ]]; then
++            DISTR_FAMILY=suse
++            DISTR_MODE=RPM
++        elif [[ `Can_Find ${ID_LIKE_ARR[@]} fedora` == TRUE ]]; then
++            DISTR_FAMILY=fedora
++            DISTR_MODE=RPM
++        fi
++    fi
++
++    if [[ -z $DISTR_MODE ]]; then
++        DISTR_MODE=DEFAULT
++    fi
++}
++Define_Distr_Mode  # create DISTR_MODE
++
++
++# Library directory
++DEFAULT_LIB_DIR=lib
++DEB_LIB_DIR=lib/${MACHINE}
++RPM_LIB_DIR=lib
++[[ $(getconf LONG_BIT) == 64 ]] && RPM_LIB_DIR=lib64
++
++GCC_LIB_DIR=lib/gcc/${MACHINE}/${GCC_VERSION}/
++if [[ "$DISTR_FAMILY" == "suse" ]]; then
++    GCC_LIB_DIR=${RPM_LIB_DIR}/gcc/${MACHINE}/${GCC_VERSION}/
++fi
++
++# ldc2 paths
++DEFAULT_LDC2_INC_DIR="include/d"
++DEB_LDC2_INC_DIR="lib/ldc/${MACHINE}/include/d"  # Debian, Ubuntu
++RPM_LDC2_INC_DIR=$DEFAULT_LDC2_INC_DIR           # Fedora, openSUSE
++ARCH_LDC2_INC_DIR="include/dlang/ldc"            # ArchLinux, Manjaro
++# ldc2 flags
++LDC2_DEBUG_OPTIONS="-d-debug --gc"
++LDC2_SHLIB_OPTIONS="-shared -soname ${SONAME} -link-defaultlib-shared"
++LDC2_OPTIM_OPTIONS="-O -release --gc"
++LDC2_LPATH_OPT="-L-L"
++LDC2_LNAME_OPT="-L-l"
++
++# dmd paths
++DEFAULT_DMD_INC_DIR="include/dmd"
++ARCH_DMD_INC_DIR="include/dlang/dmd"  # ArchLinux, Manjaro
++# dmd flags
++DMD_DEBUG_OPTIONS="-debug -g"
++DMD_SHLIB_OPTIONS="-fPIC -shared -L-soname=${SONAME} -defaultlib=libphobos2.so"
++DMD_OPTIM_OPTIONS="-O -release"
++DMD_LPATH_OPT="-L-L"
++DMD_LNAME_OPT="-L-l"
++
++# gdc paths
++DEFAULT_GDC_INC_DIR="${GCC_LIB_DIR}/include/d"
++
++# gdc flags
++GDC_BASE_OPTIONS="-fPIC"
++GDC_DEBUG_OPTIONS="-fdebug ${GDC_BASE_OPTIONS}"
++GDC_SHLIB_OPTIONS="-shared -Wl,-soname,${SONAME} -shared-libphobos"
++GDC_OPTIM_OPTIONS="-O2 -frelease ${GDC_BASE_OPTIONS}"
++GDC_LPATH_OPT="-L"
++GDC_LNAME_OPT="-l"
++
++
++Print_Inc_Dir() {
++    INC_DIR=$(eval echo \$${DISTR_MODE}_${DC^^}_INC_DIR)
++    if [[ -z ${INC_DIR} ]]; then
++        INC_DIR=$(eval echo \$DEFAULT_${DC^^}_INC_DIR)
++    fi
++    echo ${INC_DIR}
++}
++
++
++Print_Lib_Dir() {
++    LIB_DIR="$(eval echo \$${DISTR_MODE}_LIB_DIR)"
++    [[ -z ${LIB_DIR} ]] && LIB_DIR="${DEFAULT_LIB_DIR}"
++    echo ${LIB_DIR}
++}
++
++
++Print_Flags() {
++    FLAGS=""
++    case "${REQUEST}" in
++        "shared-flags")  FLAGS=$(eval echo \$${DC^^}_SHLIB_OPTIONS) ;;
++        "debug-flags")   FLAGS=$(eval echo \$${DC^^}_DEBUG_OPTIONS) ;;
++        "release-flags") FLAGS=$(eval echo \$${DC^^}_OPTIM_OPTIONS) ;;
++        "libpath-opt")   FLAGS=$(eval echo \$${DC^^}_LPATH_OPT)     ;;
++        "libname-opt")   FLAGS=$(eval echo \$${DC^^}_LNAME_OPT)     ;;
++        *) ;;
++    esac
++    echo "${FLAGS}"
++}
++
++
++case "${REQUEST}" in
++    "include-path") Print_Inc_Dir ;;
++    "library-path") Print_Lib_Dir ;;
++    *)              Print_Flags   ;;
++esac
