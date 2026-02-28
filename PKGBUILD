@@ -6,7 +6,7 @@
 
 pkgname=i2p
 pkgver=2.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A distributed anonymous network"
 url="https://geti2p.net"
 license=('GPL2')
@@ -39,7 +39,7 @@ sha256sums=('ddc1f2b8f7fffbd5a301a02740d0d0e2387735011bc9a965aab6719f86ce3800'
             'SKIP'
             '644b771ec7f5db3efab3206bf1f896566cdb00d410a54608fda85bdb4c2ad876'
             'fc30dd32f48fe1c93bf36c8297ca48203a1479e4e221ebe62c57cf3c3c0347d3'
-            '00b1c75af7ce57455df0f6bdd033f29368b16922238fbc4837198ae9f8b2a04f'
+            'a09b1af142f740ee8d8ddc222c070db111810825ccfd8af57cbaef6b4ae010bd'
             '90f202e5b66d5a5b425522b409e71fb892d34c534e32ce2d6fe5284015cacf94'
             '7a19b9f90c8792460fd58e8b8aa435a065e34d29a942479850472510e9d3078a'
             '8d39f080c7a2e49226db3a785f3e18583159ef2f95e1ab467fd9984c4e38c9f5'
