@@ -1,7 +1,7 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
 pkgname=meshtui
-pkgver=0.12.2
+pkgver=0.12.3
 pkgrel=1
 pkgdesc='Console text-user-interface for Meshtastic'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-b2sums=('cad7cf298271f4877fe18f2ec8628da0eee782e0403f5eeebca072cd0d99ae27b60b8ab7fb0ca0c89753f65c680daa90f6d4dca20c876133ac1c4d4b1078f98b')
+b2sums=('19b187ac1c7eedc63d2fd356ffcb3c27311c08962c25fe79456cee7af56e423823de374fb20335e7d381b52303af8cdc4e98081d6a06524163e586d246e81bce')
 
 prepare() {
   cd "${pkgname}"
@@ -19,6 +19,7 @@ prepare() {
 
 build() {
   cd "${pkgname}"
+  rm .cargo/config.toml # removes hardcoded rustflags
   cargo build --frozen --release --target-dir=target
 }
 
