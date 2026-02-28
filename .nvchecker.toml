@@ -1,0 +1,4 @@
+[xawtv]
+source = 'regex'
+url = "https://linuxtv.org/downloads/xawtv/"
+regex = 'xawtv-([\d.]+)\.[a-z]'
