@@ -1,12 +1,13 @@
 pkgbase = zzz
 	pkgdesc = A simple program to suspend or hibernate your computer
-	pkgver = 0.1.1
-	pkgrel = 3
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/jirutka/zzz
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = asciidoctor
-	source = zzz-0.1.1.tar.gz::https://github.com/jirutka/zzz/archive/v0.1.1.tar.gz
-	sha256sums = e52d316f85e9ad9fc35ad0b68b9dfc56740d473a859442b6a9d898198135605c
+	depends = glibc
+	source = git+https://github.com/jirutka/zzz.git#tag=abff0e229b386ba60c1ba25868d480708114c72c
+	sha256sums = 251a660688918f72d03714896aa442b185d48dde743c5144d9aa9df50700b449
 
 pkgname = zzz
