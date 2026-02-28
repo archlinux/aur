@@ -1,0 +1,15 @@
+pkgbase = amdxdna-dkms
+	pkgdesc = amdxdna-dkms
+	pkgver = 7.0
+	pkgrel = 1
+	url = https://github.com/superm1/amdxdna-dkms/
+	arch = x86_64
+	license = Apache-2.0
+	depends = dkms
+	provides = amdxdna
+	source = amdxdna-7.0.tar.gz::https://github.com/superm1/amdxdna-dkms/archive/refs/tags/v7.0-drm-misc-fixes-02-26-27.tar.gz
+	source = dkms.conf
+	sha256sums = 91e262da989f5bb7a3f3816bbb7ed18b0c9a561a56a009a6a0eed694b62ee8bb
+	sha256sums = fae6de4c164f771751516aa6710ac83941d97ceb02808225e317a1ba61c6d019
+
+pkgname = amdxdna-dkms
