@@ -10,10 +10,24 @@ pkgdesc='Periodic table, physical constants, and molecule parsing for quantum ch
 arch=('any')
 url='https://docs.qcarchive.molssi.org/projects/qcelemental/en/latest/'
 license=('BSD-3-Clause')
-depends=('python-numpy' 'python-pint' 'python-pydantic')
+depends=(
+  'python'
+  'python-mpmath'
+  'python-msgpack'
+  'python-pint'
+  'python-pydantic'
+)
 makedepends=('python-build' 'python-installer' 'python-poetry' 'python-wheel')
-optdepends=('python-networkx')
-checkdepends=('python-pytest')
+optdepends=(
+  'ipython'
+  'python-importlib-metadata'
+  'python-jsonschema'
+  'python-networkx'
+  'python-numpy'
+  'python-pytest'
+  'python-scipy'
+)
+# checkdepends=('python-pytest')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/MolSSI/${_pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('3571b9bc6c67faba8ea9d988948fd8efc593bf3b5d533486f84ee2e423d60c1e')
 
