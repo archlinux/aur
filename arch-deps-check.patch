@@ -1,0 +1,14 @@
+--- a/lib/dependencies.sh
++++ b/lib/dependencies.sh
+@@ -15,6 +15,11 @@
+    local -a depfiles=()
+    local -a missing=()
+ 
++   # On Arch Linux, rely on PKGBUILD depends; skip Debian dpkg-based check
++   if [[ -f /etc/arch-release ]]; then
++      return 0
++   fi
++
+    while [[ $# -gt 0 ]]; do
+       case "$1" in
+          --category)
