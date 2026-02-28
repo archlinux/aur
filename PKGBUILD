@@ -1,21 +1,21 @@
 # Maintainer: novica <nnovica@gmail.com>
 
 pkgname=r-air
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="An R language server and formatter"
 url="https://github.com/r-lib/rig"
 arch=('x86_64' 'aarch64')
 license=('MIT')
 depends=(
-    gcc-libs
+    libgcc
     glibc
 )
 conflicts=('r-air-bin')
 optdepends=()
 makedepends=('rust')
 options=('!lto' '!debug')
-source=("air-${pkgver}.tar.gz::https://github.com/posit-dev/air/archive/    ${pkgver}.tar.gz")
+source=("air-${pkgver}.tar.gz::https://github.com/posit-dev/air/archive/${pkgver}.tar.gz")
 
 prepare() {
     cd "${srcdir}/air-${pkgver}"
@@ -33,4 +33,4 @@ package() {
   install -Dm644 "${srcdir}/air-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('a8fc63743bbe7fb08460e93c22851624a9ec83451ede22a93759db8fe2ba2dbf52d52301d11da737c7d0548d67e80b009497e0370ede0faac5b7f9c0351d6ae1')
+sha512sums=('3c578924cee3baf2c0b0d61eac5ecf08f0940adbedb347a107f7cb758ed1ecaf8ea5e662f0a9715a5898672bc3e1d0e537824f701c6248cbe3351e30a439c597')
