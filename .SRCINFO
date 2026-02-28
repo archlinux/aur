@@ -1,0 +1,13 @@
+pkgbase = ekipyt
+	pkgdesc = Minimal ve güvenli yetki aracı, onepass ve custom PAM servisi ile
+	pkgver = 1.0
+	pkgrel = 1
+	install = ekipyt.install
+	arch = x86_64
+	license = MIT
+	depends = pam
+	source = yt.c
+	source = yt.cfg
+	source = yt.pam
+
+pkgname = ekipyt
