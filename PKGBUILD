@@ -2,7 +2,7 @@
 # Contributor: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
 
 pkgname=xwayland-satellite-nosystemd
-pkgver=0.8
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Xwayland outside your Wayland (without systemd feature)"
 arch=(x86_64)
@@ -23,9 +23,9 @@ makedepends=(
 provides=("xwayland-satellite=$pkgver")
 conflicts=("xwayland-satellite")
 options=()
-_tag=dacdbc61e427cf8e06d6cdf435eee08df2f054e3 # git rev-parse v${pkgver}
+_tag=11550c83a1f3ee8cd2fd2c4ced7fb56f6cc2b488 # git rev-parse v${pkgver}
 source=("git+${url}.git#tag=${_tag}")
-sha256sums=('cc1347fd78590a03c46027a2372a1e3de7c25cc0d2b770115f44782cbac1dea8')
+sha256sums=('f5d7ed434350ab6a479ff3aa000826cafe3759861e8fad6666dd412c56b6d2f7')
 
 prepare() {
   cd "$srcdir/xwayland-satellite"
