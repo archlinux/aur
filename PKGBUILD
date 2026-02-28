@@ -2,7 +2,7 @@
 # Contributor: Zdeněk Janeček <jan.zdenek@gmail.com>
 
 pkgname=entangle-git
-pkgver=3.0.r47.g69039aa
+pkgver=3.0.r71.g7ac409b
 pkgrel=1
 pkgdesc="GTK graphical interface for tethered photography with digital cameras powered by libgphoto2"
 arch=(x86_64 i686 aarch64)
@@ -26,9 +26,12 @@ build() {
   export CFLAGS="${CFLAGS/D_FORTIFY_SOURCE=3/D_FORTIFY_SOURCE=2}"
   export CXXFLAGS="${CXXFLAGS/D_FORTIFY_SOURCE=3/D_FORTIFY_SOURCE=2}"
 
+  export LDFLAGS="${LDFLAGS} -lm"
+
   cd "entangle"
   sed -i "s/'libraw_r'/'raw_r'/g" meson.build
   arch-meson build -Denable-gtk-doc=true
+
   ninja -C build all
 }
 
