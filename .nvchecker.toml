@@ -1,0 +1,4 @@
+[owncloud]
+source = 'regex'
+url = "https://download.owncloud.com/server/stable/"
+regex = 'owncloud-([\d.]+)\.[a-z]'
