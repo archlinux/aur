@@ -4,5 +4,5 @@ StartupNotify=true
 Name=OneDriveGUI
 Comment=A simple GUI for OneDrive Linux client
 Exec=onedrivegui
-Icon=OneDriveGUI.png
-Categories=Network;Office
+Icon=ms-onedrive
+Categories=Network

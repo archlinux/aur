@@ -1,10 +1,9 @@
-# Maintainer: Alex D'Andrea <alex [at] dandrea dot io>
-# Contributor: zhullyb <zhullyb [at] outlook dot com>
+# Maintainer: cheapl <cheapl@icloud.com>
 
 pkgname=onedrivegui
 _pkgname=OneDriveGUI
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple GUI for OneDrive Linux client, with multi-account support."
 license=("GPL-3.0-or-later")
 depends=("pyside6" "python-requests" "onedrive-abraunegg>=2.5.6" "qt6-webengine")
@@ -16,14 +15,14 @@ url="https://github.com/bpozdena/${_pkgname}"
 source=("git+$url.git#tag=v$pkgver" "onedrivegui.desktop")
 
 sha256sums=('45ff39a282418932fe79167199308fc1e4a096da230ec269c09a2d446eafb7e6'
-            'c531f57c3c8424f265c0aad2e93260eab071d066d75de2f7eebb47e41c644267')
+            '3dc922c758df5ae8901159c0e2bae589164d7c1ff1944ae9290fcbda708fac32')
 
 package(){
     cd "${_pkgname}"
     mkdir -p "${pkgdir}/usr/lib/OneDriveGUI"
     mkdir -p "${pkgdir}/usr/bin"
     cp -r src/{resources,ui,settings,utils} "${pkgdir}/usr/lib/OneDriveGUI"
-    install -Dm644 src/resources/images/OneDriveGUI.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/OneDriveGUI.png"
+    install -Dm644 src/resources/images/OneDriveGUI.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/ms-onedrive.png"
     install -Dm644 "${srcdir}/onedrivegui.desktop" "${pkgdir}/usr/share/applications/onedrivegui.desktop"
     install -Dm755 src/*.py "${pkgdir}/usr/lib/OneDriveGUI/"
     ln -sf /usr/lib/OneDriveGUI/OneDriveGUI.py "${pkgdir}/usr/bin/onedrivegui"
