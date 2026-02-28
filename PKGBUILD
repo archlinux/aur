@@ -1,6 +1,6 @@
 # Maintainer: DonutsDelivery
 pkgname=task-manager-linux-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="GTK4/libadwaita system task manager and performance monitor for Linux"
 arch=('x86_64')
@@ -14,10 +14,13 @@ optdepends=(
 provides=('task-manager-linux')
 conflicts=('task-manager-linux')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/DonutsDelivery/task-manager-linux/releases/download/v${pkgver}/task-manager-linux-x86_64.tar.gz")
-sha256sums=('ab1224fa33686144b1e783b4ba87210e3f33286d1638d8d0569c4a6fb007fc1f')
+sha256sums=('21b68c4c8b08cc70231f3466678017fcecf2e8114b99c82ce06cb059d6759511')
 
 package() {
-    install -Dm755 "${srcdir}/task-manager-linux-x86_64" "${pkgdir}/usr/bin/task-manager-linux"
+    install -Dm755 "${srcdir}/task-manager-linux" "${pkgdir}/usr/bin/task-manager-linux"
+
+    # Icon
+    install -Dm644 "${srcdir}/task-manager-linux.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/task-manager-linux.svg"
 
     # Desktop entry
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/task-manager-linux.desktop" << DESKTOP
@@ -27,7 +30,7 @@ Name=Task Manager
 GenericName=System Monitor
 Comment=System process manager and performance monitor
 Exec=task-manager-linux
-Icon=utilities-system-monitor
+Icon=task-manager-linux
 Terminal=false
 Categories=System;Monitor;
 Keywords=task;process;system;monitor;cpu;memory;gpu;
