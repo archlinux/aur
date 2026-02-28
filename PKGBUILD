@@ -21,7 +21,7 @@ package() {
     install -Dm755 passkeyd-select "$pkgdir/usr/lib/passkeyd/passkeyd-select"
 
     # Database directory
-    install -d -m 755 -o root -g root "$pkgdir/var/lib/passkeyd/database"
+    install -d -m 700 -o root -g root "$pkgdir/var/lib/passkeyd/database"
 
     # Configuration files
     install -Dm644 passkeyd.conf "$pkgdir/etc/passkeyd.conf"
