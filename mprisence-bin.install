@@ -1,0 +1,19 @@
+post_install() {
+  systemctl --user daemon-reload >/dev/null 2>&1 || :
+  echo ">>> Run the following command to enable and start the mprisence service:"
+  echo ">>> systemctl --user enable --now mprisence.service"
+}
+
+post_upgrade() {
+  systemctl --user daemon-reload >/dev/null 2>&1 || :
+  if systemctl --user is-active mprisence.service >/dev/null 2>&1; then
+    echo ">>> Restarting mprisence service..."
+    systemctl --user try-restart mprisence.service >/dev/null 2>&1 || :
+  fi
+}
+
+pre_remove() {
+  echo ">>> Stopping and disabling mprisence service..."
+  systemctl --user disable --now mprisence.service >/dev/null 2>&1 || :
+  systemctl --user daemon-reload >/dev/null 2>&1 || :
+} 
