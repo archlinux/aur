@@ -1,0 +1,17 @@
+pkgbase = kiro-account-manager-bin
+	pkgdesc = Kiro IDE account manager - multi-account switching and quota monitoring (Unofficial Community Package)
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://github.com/hj01857655/kiro-account-manager
+	arch = x86_64
+	license = LicenseRef-CC-BY-NC-SA-4.0
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	optdepends = libappindicator-gtk3: for system tray icon support
+	provides = kiro-account-manager
+	conflicts = kiro-account-manager
+	options = !strip
+	source_x86_64 = KiroAccountManager_1.8.3_amd64.deb::https://github.com/hj01857655/kiro-account-manager/releases/download/v1.8.3/KiroAccountManager_1.8.3_amd64.deb
+	sha256sums_x86_64 = de5afed68e98a80a8da430365b4aa5c519e0aa8156218889f9bf9314ef8973be
+
+pkgname = kiro-account-manager-bin
