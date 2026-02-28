@@ -4,7 +4,7 @@
 
 pkgname=mycli
 pkgver=1.55.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Terminal Client for MySQL with AutoCompletion and Syntax Highlighting'
 arch=('any')
 url='https://github.com/dbcli/mycli'
@@ -35,7 +35,7 @@ makedepends=(
 )
 optdepends=(
     'python-llm: LLM support'
-    'python-sshtunel: SSH support'
+    'python-sshtunnel: SSH support'
 )
 options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dbcli/mycli/archive/v${pkgver}.tar.gz")
