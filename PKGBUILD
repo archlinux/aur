@@ -2,7 +2,7 @@
 # Contributor: Francesco Minnocci <ascoli dot minnocci at gmail dot com>
 pkgname=vieb
 _pkgname=Vieb
-pkgver=12.6.0
+pkgver=12.7.0
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -21,12 +21,13 @@ makedepends=(
     'curl'
     'yarn'
     'gendesk'
+    'jq'
 )
 source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=${pkgver}"
     "${pkgname}.sh"
 )
-sha256sums=('79f3399e9d471eaa370e1726ae7e0bcfda68dfd030c9dbf51775afae13850484'
+sha256sums=('5fa0432a8cb1467fd49d7fa1339bb3b66421068ec169c1622f5884815e5bd851'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -35,8 +36,9 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '^ *"electron": *"' "${srcdir}/${pkgname}-${pkgver}/package.json" | cut -d'"' -f4 | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}-${pkgver}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -84,7 +86,15 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+	find "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" {} +
+    if find "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${pkgname}-${pkgver}/dist/linux-"*"/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname}"
+            fi
+        done
+    fi
     _icon_sizes=(16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512 1024x1024)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${pkgname}-${pkgver}/app/img/icons/${_icons}.png" \
