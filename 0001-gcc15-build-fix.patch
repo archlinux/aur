@@ -1,0 +1,74 @@
+diff --git a/cocofuse/cocofuse.c b/cocofuse/cocofuse.c
+index 5fb238e..e4751a3 100644
+--- a/cocofuse/cocofuse.c
++++ b/cocofuse/cocofuse.c
+@@ -343,11 +343,24 @@ static int coco_rename(const char *path, const char *newname)
+ 	 *    - If so just rename.
+ 	 *    - If not, rename then delete orginal.
+ 	 */
+-	p1 = strrchr(path, '/');
+-	p2 = strrchr(newname, '/');
++
++    char* pathcopy = strdup(path);
++    char* newnamecopy = strdup(newname);
++
++    if (!pathcopy || !newnamecopy)
++    {
++        free(pathcopy);
++        free(newnamecopy);
++        return -ENOMEM;
++    }
++
++	p1 = strrchr(pathcopy, '/');
++	p2 = strrchr(newnamecopy, '/');
+ 
+ 	if (p1 == NULL || p2 == NULL)
+ 	{
++        free(pathcopy);
++        free(newnamecopy);
+ 		ec = -1;
+ #ifdef DEBUG
+ 		syslog(LOG_LEVEL, "coco_rename(%s) = %d", path, ec);
+@@ -358,7 +371,7 @@ static int coco_rename(const char *path, const char *newname)
+ 	*p1 = '\0';
+ 	*p2 = '\0';
+ 
+-	if (strcmp(path, newname) == 0)
++	if (strcmp(pathcopy, newnamecopy) == 0)
+ 	{
+ 		renameonly = 1;
+ 	}
+@@ -369,7 +382,7 @@ static int coco_rename(const char *path, const char *newname)
+ 		*p1 = '/';
+ 		*p2 = '/';
+ 
+-		buff = dsk_path(path);
++		buff = dsk_path(pathcopy);
+ 		ec = -CoCoToUnixError(_coco_rename(buff, p2 + 1));
+ 		free(buff);
+ 	}
+@@ -382,6 +395,8 @@ static int coco_rename(const char *path, const char *newname)
+ 	syslog(LOG_LEVEL, "coco_rename(%s) = %d", path, ec);
+ #endif
+ 
++    free(pathcopy);
++    free(newnamecopy);
+ 	return ec;
+ }
+ 
+diff --git a/libsys/prsnam.c b/libsys/prsnam.c
+index cc49740..baabf91 100644
+--- a/libsys/prsnam.c
++++ b/libsys/prsnam.c
+@@ -41,10 +41,9 @@ error_code _os9_prsnam(const char *filename)
+ error_code _decb_prsnam(const char *filename)
+ {
+ 	error_code ec = 0;
+-	char *dot;
+ 
+ 	/* 1. Check if filename contains a dot */
+-	dot = strchr(filename, '.');
++	const char *dot = strchr(filename, '.');
+ 
+ 	if (dot != NULL)
+ 	{
