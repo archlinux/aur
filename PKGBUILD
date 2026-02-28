@@ -2,13 +2,13 @@
 
 pkgname=opencode-desktop-bin
 pkgver=1.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenCode desktop client"
 arch=('x86_64' 'aarch64')
 url="https://opencode.ai"
 license=('MIT')
-provides=('opencode-desktop')
-conflicts=('opencode-desktop')
+provides=('opencode-desktop' 'opencode')
+conflicts=('opencode-desktop' 'opencode')
 depends=('gtk3' 'webkit2gtk-4.1' 'hicolor-icon-theme' 'gst-plugins-good')
 options=('!strip' '!debug')
 
@@ -33,5 +33,15 @@ package() {
 
   bsdtar -xf "${srcdir}/${debfile}" -C "${srcdir}" data.tar.gz control.tar.gz
   bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
+
+  # Rename binaries
+  mv "${pkgdir}/usr/bin/OpenCode" "${pkgdir}/usr/bin/opencode-desktop"
+  mv "${pkgdir}/usr/bin/opencode-cli" "${pkgdir}/usr/bin/opencode"
+  # Sidecar symlink: Tauri GUI resolves sidecar as "opencode-cli" next to itself
+  ln -s opencode "${pkgdir}/usr/bin/opencode-cli"
+
+  # Patch desktop file
+  sed -i 's|Exec=OpenCode|Exec=opencode-desktop|' "${pkgdir}/usr/share/applications/OpenCode.desktop"
+
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
