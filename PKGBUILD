@@ -1,6 +1,6 @@
 # Maintainer: Jan Martin Reckel <jm.reckel@t-online.de>
 pkgname=cantara
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 epoch=
 pkgdesc="Song Presentation Software"
@@ -13,7 +13,8 @@ conflicts=('cantara-bin')
 makedepends=('lazarus' 'qt6pas')
 provides=("cantara")
 source=("https://github.com/reckel-jm/cantara/archive/refs/tags/v$pkgver.zip")
-md5sums=('741bd861986bc540a1acc2a69abcc5e7')
+md5sums=('0d849ce6b69f476aed4a7400a26063b2')
+options+=('!debug')
 
 prepare() {
     cd "$pkgname-$pkgver"
