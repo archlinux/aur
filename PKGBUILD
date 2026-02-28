@@ -82,6 +82,13 @@ prepare() {
 build() {
   cd radicle-desktop
 
+  # _Disable_ cross-toolchain LTO because we are using different toolchains
+  # for C/C++ and Rust code (i.e., LLVM LTO is incompatible with GCC LTO).
+  # In this project, C/C++ code is linked into Rust code. Therefore, apply
+  # a workaround to force generation of normal object code on C side:
+  CFLAGS+=" -ffat-lto-objects"
+  CXXFLAGS+=" -ffat-lto-objects"
+
   pnpm run build -- --mode production
   cargo tauri build \
     --bundles deb \
