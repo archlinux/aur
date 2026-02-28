@@ -1,8 +1,8 @@
 # Maintainer: BarbUk <julien.virey@gmail.com>
 
 pkgname=rackpeek-bin
-pkgver=0.0.3
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='CLI tool to discover, manage, and document your IT infrastructure and home lab.'
 arch=(x86_64 aarch64)
 url='https://github.com/Timmoth/RackPeek'
@@ -14,9 +14,9 @@ options=(!strip)
 source=($pkgname.install)
 source_x86_64=("$pkgname-$pkgver-x86_64::$url/releases/download/${url##*/}-${pkgver}/${pkgname%-bin}_${pkgver//./_}_linux-x64")
 source_aarch64=("$pkgname-$pkgver-aarch64::$url/releases/download/${url##*/}-${pkgver}/${pkgname%-bin}_${pkgver//./_}_linux-arm64")
-sha256sums=('a8b0762ddaa8b90f0ae195f778b61fcf1293dcc969c34f86894719952ed27b01')
-sha256sums_x86_64=('47ead3be812be06f73c030a42063293c5f552466d36f15f8bbcc705e5af89536')
-sha256sums_aarch64=('7dca9e770298b5be7b093fd6e68a0c8bb8830296dfdfc03a9c553420215eac60')
+sha256sums=('14cd89ed266911aff4d52d76bb976a4cb3ad602cbbc939785a72fd3e45cd4c01')
+sha256sums_x86_64=('893059b1180272305410824bc83d1ca5f0e3a2a69d82671991edda61a2727513')
+sha256sums_aarch64=('94e66ef69959fde37adb6dd2d2faf199ec99ba8259ed80a5f8acdc91a3323ce1')
 install=$pkgname.install
 
 package() {

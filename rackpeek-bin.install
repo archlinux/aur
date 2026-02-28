@@ -1,11 +1,9 @@
 post_install() {
-  echo -e "\nRackpeek does not provide a way to configure the config path yet."
-  echo "You'll need to create a config/config.yaml in the directory where you want to use the app"
+  echo -e "\nTo configure the config path, you need to use RPK_YAML_DIR env variable"
   echo
   echo "Example:"
-  echo '$ mkdir -p ~/inventory/config'
-  echo '$ cd ~/inventory'
-  echo '$ touch config/config.yaml'
-  echo '$ rackpeek -v'
+  echo '$ mkdir ~/inventory'
+  echo '$ RPK_YAML_DIR=~/inventory rackpeek -v'
+  echo '$ RPK_YAML_DIR=~/inventory rackpeek servers summary'
   echo
 }
