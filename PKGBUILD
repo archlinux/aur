@@ -4,7 +4,7 @@ pkgver=5.0.0_beta
 pkgrel=1
 pkgdesc="Backup & Restore Manager for Arch Linux — GUI for rsync, btrfs, tar, rclone with scheduling, encryption, and cloud support"
 arch=('any')
-url="https://github.com/LeonLionHeart/archvault"
+url="https://github.com/LeonLionHeart/ArchVault"
 license=('GPL3')
 depends=(
     'python'
@@ -27,11 +27,11 @@ optdepends=(
     'openssh: SFTP backup target support'
     'libnotify: Desktop notification support'
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LeonLionHeart/ArchVault/archive/refs/tags/archvault-5.0.0-beta.tar.gz.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LeonLionHeart/ArchVault/archive/refs/tags/v5.0.0-beta.tar.gz")
 sha256sums=('cb975456ebfc3f61e2cfc316daf9423acfe503f2643597d0cf652552ea154cfe')
 
 package() {
-    cd "${srcdir}/ArchVault-archvault-5.0.0-beta.tar.gz"
+    cd "${srcdir}/ArchVault-5.0.0-beta"
 
     # Install Python source files
     install -dm755 "${pkgdir}/usr/lib/${pkgname}"
