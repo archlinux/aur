@@ -2,7 +2,7 @@
 
 pkgname=pbtk-git
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolset for reverse engineering and fuzzing Protobuf-based apps'
 url='https://github.com/marin-m/pbtk'
 arch=('i686' 'x86_64')
@@ -26,8 +26,8 @@ package() {
   install -Dm 755 gui.py -t "${pkgdir}/usr/share/pbtk"
   
   find . -regex '.*\(\.bat\|\.exe\|_osx\)' -type f -delete
-  chmod -R 755 extractors utils/external
+  chmod -R 755 src/extractors src/utils/external
   
-  cp -r extractors utils views "${pkgdir}/usr/share/pbtk"
+  cp -r src "${pkgdir}/usr/share/pbtk"
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/pbtk"
 }
