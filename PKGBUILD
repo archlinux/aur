@@ -7,27 +7,26 @@
 
 pkgname=freefilesync
 pkgver=14.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Folder comparison and synchronization software"
 arch=(x86_64)
 url="https://freefilesync.org"
 license=(custom)
 depends=(wxwidgets-gtk3)
 source=(
-    "FreeFileSync_${pkgver}_Source.zip.1::${url}/download/FreeFileSync_${pkgver}_Source.zip"
-    "FreeFileSync_${pkgver}_Source.zip::${url}/download/FreeFileSync_${pkgver}_Source.zip"
+    "FreeFileSync_${pkgver}-2_Source.zip.1::${url}/download/FreeFileSync_${pkgver}_Source.zip"
+    "FreeFileSync_${pkgver}-2_Source.zip::${url}/download/FreeFileSync_${pkgver}_Source.zip"
     FreeFileSync.desktop RealTimeSync.desktop gui.patch
 )
-noextract=("FreeFileSync_${pkgver}_Source.zip.1")
+noextract=("FreeFileSync_${pkgver}-2_Source.zip.1")
 sha256sums=('SKIP'
-            'a615fb8081890bd1cfeb83f053ab96bfe15ba3e6b0ebfb888449e9bb937c48ed'
+            'bc8bccea3e200d072c46381ccd0ab16d5e17bc34040822efb937e591e6cc154f'
             '590d87707240529ca893199f852143f5d7c7266cb050e37e615900b013ac3d51'
             '82439b4b81b0a72652befad9b9db52ffbc0180f307c92205aa5ab344f9f82830'
             'f63ae8deba10a8f7ed8f907e355d0cfecf458263fea8ebc2612cb29b41124187')
 
 prepare() {
     patch -p1 < gui.patch
-    touch zen/warn_static.h
     msg2 "patching other files"
     sed -i 's|wxUSE_EXCEPTIONS|0|' FreeFileSync/Source/{application.cpp,RealTimeSync/application.cpp}
     sed -i '/animalImg/s|^|//|' FreeFileSync/Source/ui/small_dlgs.cpp
