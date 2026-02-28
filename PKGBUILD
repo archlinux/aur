@@ -1,7 +1,7 @@
 # Maintainer: Roland Plüss <roland@dragondreams.ch>
 pkgname=('dragengine' 'deigde')
 pkgbase=dragengine
-pkgver=1.30
+pkgver=1.30.1
 pkgrel=1
 pkgdesc="Drag[en]gine game engine, launcher and editor"
 arch=('x86_64')
@@ -43,7 +43,7 @@ makedepends=('cmake'
              'scons')
 #_commit='331178e1f330948d5a7b212e6e1551bb61c39033'
 #source=("${pkgname}-${pkgver}::git+https://github.com/LordOfDragons/dragengine.git?signed#commit=$_commit"
-_tag='v1.30'
+_tag='v1.30.1'
 source=("${pkgname}-${pkgver}::git+https://github.com/LordOfDragons/dragengine.git#tag=$_tag"
 	'custom.py')
 sha256sums=('56befe497383579164248035ebe0e103c3c0daad5eb43bf80d3d8c70d2bcac3e'
