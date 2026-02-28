@@ -5,7 +5,7 @@ _pkgname=git-brunch
 pkgname=${_pkgname}-bin
 pkgdesc="A git command-line tool to work with branches"
 
-pkgver=1.7.2
+pkgver=1.8.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-Linux")
 sha256sums=('f3007a3b5edc3b8652a67f0a0a2cd1b0cd67c8a527795173b442fef2beb3b2cb'
-            '4f946e55072260651c86f76d134e5536dd25a5929bad8214a41bd378a369df23')
-sha256sums_x86_64=('0d577ef14b40a95943f39d9bc14d143d2aafdfd309376aa810e08f9098696640')
+            'bac052cd68429fc02260e546ca66d5e491a16d70fcafa27e17fb24451eb0db15')
+sha256sums_x86_64=('2422ab77996a39876c1ee0b4981f472bfc1d7040b5e1cf11fc73cf0c2a1e5d0d')
 
 
 package() {
