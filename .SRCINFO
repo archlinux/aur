@@ -1,7 +1,7 @@
 pkgbase = sonic-win-bin
 	pkgdesc = kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre
-	pkgver = 6.5.4
-	pkgrel = 1.1
+	pkgver = 6.6.1
+	pkgrel = 1
 	url = https://github.com/Sonic-DE/sonic-win
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -65,9 +65,9 @@ pkgbase = sonic-win-bin
 	conflicts = kwin-x11
 	conflicts = kwin-x11-sonic-bin
 	replaces = kwin-x11-sonic-bin
-	noextract = kwin-x11-6.5.4-1.1-x86_64.pkg.tar.zst
+	noextract = kwin-x11-6.6.1-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://x11libre.net/repo/arch_based/x86_64/sonic-win-6.5.4-1.1-x86_64.pkg.tar.zst
-	sha256sums = c4c62d18d22ddbe9271541e1518e1956aaa801137c6ea02c6aa393a4a8f33ec2
+	source = https://x11libre.net/repo/arch_based/x86_64/sonic-win-6.6.1-1-x86_64.pkg.tar.zst
+	sha256sums = c4de4fa24a2296886dcb25f3bc00d1b0890d61b5e84726f043c7df0c0b3085f7
 
 pkgname = sonic-win-bin
