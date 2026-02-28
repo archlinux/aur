@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=typesense-dashboard-bin
 _pkgname=Typesense-Dashboard
-pkgver=2.4.5
+pkgver=2.4.6
 _electronversion=39
 pkgrel=1
 pkgdesc="A Typesense Dashboard to manage and browse collections.(Prebuilt version.Use system-wide electron)"
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.png::https://raw.githubusercontent.com/bfritscher/typesense-dashboard/v${pkgver}/public/icons/favicon-128x128.png"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('93c9ded23e84cd2f816a7902cfc6d478ad210e93703504a26faae9e653f54f7b'
+sha256sums=('cdce8a94c0a0ac727917f973338f8d4837c284626fb379aaac7cb6326dcdc910'
             'ce61a0d27e9167938ce2083e1391de1ee514b40d8a0f5c3602a7a04f449f6779'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -47,7 +47,15 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/dist/electron/Packaged/${_pkgname}-linux-x64/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/dist/electron/Packaged/${_pkgname}-linux-x64/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/dist/electron/Packaged/${_pkgname}-linux-x64/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/dist/electron/Packaged/${_pkgname}-linux-x64/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/${pkgname%-bin}-${pkgver}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
 }
