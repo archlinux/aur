@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/SoupcanUBG/polytrack-bin"
 license=('unknown')
 source=("https://github.com/SoupcanUBG/$pkgname/releases/download/Releases/PolyTrack-linux-x64.tar.gz")
-sha256sums=('sha256:bf5d4f9b0ae922ebdaf7c3f65eea417c494e34ece4e25817f0109cd086452515')
+sha256sums=('bf5d4f9b0ae922ebdaf7c3f65eea417c494e34ece4e25817f0109cd086452515')
 
 
 
