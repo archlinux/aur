@@ -2,7 +2,7 @@
 pkgname=wshawk
 _pkgname=wshawk
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Enterprise-grade WebSocket security scanner & Web Penetration Testing Toolkit (Binary Release)"
 arch=('x86_64')
 url="https://github.com/noobforanonymous/wshawk"
@@ -12,7 +12,7 @@ options=(!strip !debug)
 provides=('wshawk-desktop')
 conflicts=('wshawk-git')
 source=("${pkgname}-${pkgver}.pacman::https://github.com/noobforanonymous/wshawk/releases/download/v${pkgver}/wshawk-${pkgver}.pacman"
-        "logo.jpg::https://raw.githubusercontent.com/noobforanonymous/wshawk/main/desktop/src/assets/logo.jpg")
+        "logo.png::https://raw.githubusercontent.com/noobforanonymous/wshawk/main/desktop/build/icon.png")
 sha256sums=('e65d5ec958094f322cfd15ea3738cf75c61931a9736a5294d460ac972f6ce8a6'
             'SKIP') # Skipping logo hash for now to get it working immediately
 
@@ -38,7 +38,7 @@ package() {
   ln -sf /opt/WSHawk/wshawk "$pkgdir/usr/bin/wshawk"
   
   # Install the logo icon (downloaded via source array)
-  install -Dm644 "logo.jpg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/wshawk.jpg"
+  install -Dm644 "logo.png" "$pkgdir/usr/share/pixmaps/wshawk.png"
 
   msg2 "Terminal symlinks and icons created successfully."
 }
