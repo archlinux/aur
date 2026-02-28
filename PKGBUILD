@@ -9,7 +9,7 @@ license=('MIT' 'Apache-2.0')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/m5rcode/m5rcode/archive/v$pkgver.tar.gz")
-sha256sums=('f34e155468c3f3ce19ee3ea9b4e6bec206836902d2b64c84e3ea221f0a0f9766')
+sha256sums=('18467bb958dc95f03ca06c76d56033bbf6667013c812a52b3851d3a582487ec7')
 
 build() {
     cd "$pkgname-$pkgver"
