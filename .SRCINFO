@@ -1,20 +1,19 @@
 pkgbase = matterbridge-git
 	pkgdesc = A simple chat bridge. Bridges between a growing number of protocols.
-	pkgver = v1.16.1.r3.ged5386c2
+	pkgver = v1.26.0.r172.gc22034e9
 	pkgrel = 1
-	url = https://github.com/42wim/matterbridge
+	url = https://github.com/matterbridge-org/matterbridge
 	arch = x86_64
-	license = Apache
+	license = AGPL-3.0-only
 	makedepends = git
 	makedepends = go
-	depends = gcc-libs
+	depends = libolm
 	provides = matterbridge
 	conflicts = matterbridge
 	backup = etc/matterbridge/matterbridge.toml
-	source = matterbridge::git+https://github.com/42wim/matterbridge
+	source = matterbridge::git+https://github.com/matterbridge-org/matterbridge
 	source = matterbridge.service
 	sha256sums = SKIP
 	sha256sums = 4ea133c37b088a69a1f33c68101d6815948c0537de04908c9ed8ed36ab947fdc
 
 pkgname = matterbridge-git
-
