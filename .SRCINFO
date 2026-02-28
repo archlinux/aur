@@ -1,7 +1,7 @@
 pkgbase = entangle
 	pkgdesc = GTK graphical interface for tethered photography with digital cameras powered by libgphoto2
 	pkgver = 3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/entangle/entangle
 	arch = x86_64
 	arch = i686

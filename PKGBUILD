@@ -3,7 +3,7 @@
 
 pkgname=entangle
 pkgver=3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="GTK graphical interface for tethered photography with digital cameras powered by libgphoto2"
 arch=(x86_64 i686 aarch64)
 url="https://gitlab.com/entangle/entangle"
@@ -25,6 +25,8 @@ build() {
   # warning when build with -D_FORTIFY_SOURCE=3 (Arch Linux default)
   export CFLAGS="${CFLAGS/D_FORTIFY_SOURCE=3/D_FORTIFY_SOURCE=2}"
   export CXXFLAGS="${CXXFLAGS/D_FORTIFY_SOURCE=3/D_FORTIFY_SOURCE=2}"
+
+  export LDFLAGS="${LDFLAGS} -lm"
 
   cd "${pkgname}-${pkgver}"
   sed -i "s/'libraw_r'/'raw_r'/g" meson.build
