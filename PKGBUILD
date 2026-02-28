@@ -1,23 +1,26 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 #  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 # Contributor: Mantas <grawity at gmail dot com>
 
 pkgname=nncp
-pkgver=8.13.0
-pkgrel=2
 pkgdesc='Node-to-Node Copy Protocol utilities for secure store-and-forward'
+pkgver=8.13.0
+pkgrel=3
 url='http://www.nncpgo.org/'
+install='nncp.install'
+changelog="$pkgname.changelog"
 arch=('aarch64' 'x86_64')
 license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
-depends=('glibc')
 makedepends=('go')
+depends=('glibc')
 optdepends=(
-  'python-hjson: for manipulating HJSON files'
-  'hjson-cli: for manipulating HJSON files (alternative)'
-  'texinfo: for reading the package documentation'
   'pinfo: for reading the package documentation (alternative)'
+  'python-hjson: for manipulating HJSON files'
+  'texinfo: for reading the package documentation'
 )
+backup=('etc/nncp/nncp.hjson')
 _url='http://www.nncpgo.org/download'             # Original: no https
 _mirror='https://nncp.mirrors.quux.org/download'  # Mirror
 _source="$_mirror"
@@ -30,7 +33,7 @@ source=(
   nncp-uucp.socket
   nncp-uucp@.service
 )
-changelog="$pkgname.changelog"
+validpgpkeys=('92C2F0AEFE73208E46BFF3DE2B25868E75A1A953')
 sha256sums=(
   '8ce3680e98005198d8975e031760b3a9b33be6d2d61844c799f778ca233d05f4'
   'SKIP'
@@ -40,10 +43,6 @@ sha256sums=(
   '9efee582d01776fb489eaa0c3c02a0629cae537794bbcb00eef13a55bbe7d818'
   '319b302a4613b541d1feeb5ad19a290be79d5ac619a6800ed77580c7c8d34801'
 )
-validpgpkeys=('92C2F0AEFE73208E46BFF3DE2B25868E75A1A953')
-
-install='nncp.install'
-backup=('etc/nncp/nncp.hjson')
 
 build() {
   cd "$pkgname-$pkgver"
