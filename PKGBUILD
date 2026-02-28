@@ -2,7 +2,7 @@
 
 pkgname="pulp-cli"
 pkgver="0.38.1"
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Command line interface to talk to the Pulp 3 REST API"
 arch=(
@@ -94,7 +94,7 @@ package() {
 
         install -m 755 -d "${pkgdir}${dir}"
 
-        PYTHONPATH="${pkgdir}/usr/lib/python3.13/site-packages/" \
+        PYTHONPATH="${pkgdir}/usr/lib/python3.14/site-packages/" \
         _PULP_COMPLETE="${shell}_source" \
         python -c \
         "import sys; sys.argv = ['pulp']; from pulp_cli import main; sys.exit(main())" \
