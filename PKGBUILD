@@ -1,5 +1,5 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
-# Contributor: ItachiSan
+# Contributor: Giovanni 'ItachiSan' Santini <giovannisantini93 at yahoo dot it>
 # Based on: https://wiki.archlinux.org/title/Perl_package_guidelines#PKGBUILD_Examples
 _dist=File-DirList
 pkgname=perl-file-dirlist

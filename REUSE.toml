@@ -1,0 +1,38 @@
+version = 1
+
+[[annotations]]
+path = [
+    "PKGBUILD",
+    "README.md",
+    "keys/**",
+    ".SRCINFO",
+    ".gitignore",
+    ".nvchecker.toml",
+    "*.install",
+    "*.sysusers",
+    "*sysusers.conf",
+    "*.tmpfiles",
+    "*tmpfiles.conf",
+    "*.logrotate",
+    "*.pam",
+    "*.service",
+    "*.socket",
+    "*.timer",
+    "*.desktop",
+    "*.hook",
+]
+SPDX-FileCopyrightText = [
+    "Arch Linux contributors",
+    "2021-2026 Giovanni 'ItachiSan' Santini <giovannisantini93 at yahoo dot it>"
+]
+SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "tests_use_licenses_dir.patch",
+]
+SPDX-FileCopyrightText = [
+    "2020-2026 Andrius Merkys <merkys@debian.org>",
+    "2024-2026 Giovanni 'ItachiSan' Santini <giovannisantini93 at yahoo dot it>",
+]
+SPDX-License-Identifier = "Artistic-1.0-Perl or GPL-1.0-or-later"
