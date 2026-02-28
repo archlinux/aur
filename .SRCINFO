@@ -1,0 +1,18 @@
+pkgbase = zcli-git
+	pkgdesc = zcash wallet CLI — ssh keys as wallet seed
+	pkgver = 0.1.0.r1.c0bc397
+	pkgrel = 1
+	url = https://github.com/rotkonetworks/zcli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = protobuf
+	depends = gcc-libs
+	provides = zcli
+	conflicts = zcli
+	source = git+https://github.com/rotkonetworks/zcli.git
+	sha256sums = SKIP
+
+pkgname = zcli-git
