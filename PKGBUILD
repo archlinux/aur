@@ -1,5 +1,5 @@
 pkgname=vectorchord
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Scalable, fast, and disk-friendly vector search in Postgres, successor to pgvecto.rs'
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('AGPL-3.0-only OR Elastic-2.0')
 depends=('postgresql' 'pgvector')
 makedepends=('cargo' 'clang')
 source=("VectorChord-$pkgver.tar.gz::https://github.com/tensorchord/VectorChord/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('dea94f80844294b4b1731dd9ad8da28b008fda8b36919a34adc75c838de457f2')
+sha256sums=('d70b5595bfc852f1f24c05c0a40272e7deecbb0ddf8ffdddec5afa42c2392b1e')
 
 prepare(){
 	cd "VectorChord-$pkgver"
