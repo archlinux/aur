@@ -1,6 +1,6 @@
 pkgbase = plasma-pa-git
 	pkgdesc = Volume applet for Plasma
-	pkgver = v5.19.90.r1.g62d3c9e
+	pkgver = v6.5.90.r32.g3997eca9
 	pkgrel = 1
 	url = https://www.kde.org/workspaces/plasmadesktop/
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = plasma-pa-git
 	makedepends = kdoctools-git
 	depends = plasma-workspace
 	depends = libcanberra-pulse
-	depends = pulseaudio
+	depends = pulse-native-provider
 	depends = perl
 	provides = plasma-volume-control
 	provides = plasma-pa
@@ -22,4 +22,3 @@ pkgbase = plasma-pa-git
 	md5sums = SKIP
 
 pkgname = plasma-pa-git
-

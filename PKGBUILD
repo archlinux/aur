@@ -3,13 +3,13 @@
 
 _srcname=plasma-pa
 pkgname=${_srcname}-git
-pkgver=v5.19.90.r1.g62d3c9e
+pkgver=v6.5.90.r32.g3997eca9
 pkgrel=1
 pkgdesc='Volume applet for Plasma'
 arch=('i686' 'x86_64')
 url='https://www.kde.org/workspaces/plasmadesktop/'
 license=('LGPL')
-depends=(plasma-workspace libcanberra-pulse pulseaudio perl)
+depends=(plasma-workspace libcanberra-pulse pulse-native-provider perl)
 makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
 provides=('plasma-volume-control' 'plasma-pa')
 conflicts=('plasma-volume-control' 'plasma-volume-control-git' 'plasma-pa')
