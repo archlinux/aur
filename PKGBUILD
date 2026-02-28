@@ -3,12 +3,13 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 _pkgname=libretro-shaders-slang
 pkgname=$_pkgname-git
-pkgver=r1257.755b4bb
+pkgver=r1801.b8a7e9e
 pkgrel=1
 pkgdesc="Collection of shaders for libretro"
 arch=('any')
 url="https://github.com/libretro/slang-shaders"
-license=('BSD' 'CCPL' 'GPL2' 'GPL3' 'LGPL2.1' 'LGPL3' 'MIT' 'MPL2' 'Unlicense')
+# https://github.com/libretro/slang-shaders/issues/150
+license=('BSD-3-Clause AND CC0-1.0 AND CC-BY-NC-SA-3.0 AND CC-BY-SA-4.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later AND MIT AND MPL-2.0')
 groups=('libretro')
 makedepends=('git')
 optdepends=('retroarch')
@@ -20,10 +21,16 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+	cd $_pkgname
+	rm -- *.{md,py}
 }
 
 package() {
+	cd $_pkgname
 	# shellcheck disable=SC2154
-	make -C $_pkgname DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" install
 }
