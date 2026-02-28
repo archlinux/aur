@@ -13,7 +13,7 @@ provides=('wshawk-desktop')
 conflicts=('wshawk-git')
 source=("${pkgname}-${pkgver}.pacman::https://github.com/noobforanonymous/wshawk/releases/download/v${pkgver}/wshawk-${pkgver}.pacman"
         "logo.jpg::https://raw.githubusercontent.com/noobforanonymous/wshawk/main/desktop/src/assets/logo.jpg")
-sha256sums=('0312a8a8138f5d24cd61ef89d2d6d94bf111d02eaf69e0d4482028980d8b5da7'
+sha256sums=('e65d5ec958094f322cfd15ea3738cf75c61931a9736a5294d460ac972f6ce8a6'
             'SKIP') # Skipping logo hash for now to get it working immediately
 
 package() {
