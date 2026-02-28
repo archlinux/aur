@@ -1,15 +1,15 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-melondsds
 pkgname=$_pkgname-git
-pkgver=1.2.0.r1.g5d2ece5
-pkgrel=2
+pkgver=1.2.0.r13.g7a25f70
+pkgrel=1
 pkgdesc="Nintendo DS core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/JesseTG/melonds-ds"
 license=('GPL-3.0-or-later')
 groups=('libretro')
-depends=('gcc-libs' 'glibc' 'libretro-core-info>=1.17')
-makedepends=('cmake>=3.19' 'git' 'libgl')
+depends=('glibc' 'libretro-core-info>=1.17')
+makedepends=('cmake>=3.19' 'git' 'libgcc' 'libgl' 'libstdc++')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('!lto') # https://github.com/melonDS-emu/melonDS/issues/2314
@@ -27,24 +27,11 @@ source=(
 	"yamc::git+https://github.com/yohhoy/yamc.git"
 	"zlib::git+https://github.com/madler/zlib.git"
 )
-b2sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-)
+b2sums=('SKIP'{,,,,,,,,,,,})
 
 pkgver() {
 	cd $_pkgname
-	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --abbrev=7 | sed 's/^v//;s/[^-]*-g/r&/;s/-/./g'
 }
 
 build() {
@@ -52,7 +39,6 @@ build() {
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
-		-D CMAKE_POLICY_VERSION_MINIMUM=3.5
 		-D DATE_REPOSITORY_URL="$srcdir"/date
 		-D EMBED_BINARIES_REPOSITORY_URL="$srcdir"/embed-binaries
 		-D ENABLE_LTO_RELEASE=OFF
@@ -72,8 +58,10 @@ build() {
 }
 
 package() {
-	depends+=('libOpenGL.so')
+	depends+=('libgcc_s.so' 'libOpenGL.so' 'libstdc++.so')
+
+	cd build
 	# shellcheck disable=SC2154
-	install -D -t "$pkgdir"/usr/lib/libretro build/src/libretro/melondsds_libretro.so
-	install -Dm644 build/melondsds-LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+	install -D -t "$pkgdir"/usr/lib/libretro src/libretro/melondsds_libretro.so
+	install -Dm644 melondsds-LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
