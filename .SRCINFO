@@ -1,6 +1,6 @@
 pkgbase = pulp-glue
 	pkgdesc = Command line interface to talk to the Pulp 3 REST API
-	pkgver = 0.37.0
+	pkgver = 0.38.1
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/pulp/pulp-cli
@@ -22,7 +22,7 @@ pkgbase = pulp-glue
 	optdepends = python-pygments
 	optdepends = python-click
 	provides = python-pulp-glue
-	source = https://github.com/pulp/pulp-cli/archive/0.37.0/pulp-cli-0.37.0.tar.gz
-	sha256sums = 9ce0671d1eddf31fdd3d7c40aaa19ef74acd64e625ef061d5e1f927a1e099447
+	source = https://github.com/pulp/pulp-cli/archive/0.38.1/pulp-cli-0.38.1.tar.gz
+	sha256sums = 338f3719fea6cdb12a87a0e0532dc97082c34f893131abe0fb586f9e901a7bb4
 
 pkgname = pulp-glue
