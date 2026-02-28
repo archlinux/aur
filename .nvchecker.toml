@@ -1,0 +1,4 @@
+[guile20]
+source = 'regex'
+url = "https://ftp.gnu.org/gnu/guile/"
+regex = 'guile-(2.0.[\d.]+)\.'
