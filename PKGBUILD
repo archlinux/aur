@@ -8,7 +8,7 @@ pkgver=0.30.1
 pkgrel=1
 pkgdesc='Periodic table, physical constants, and molecule parsing for quantum chemistry'
 arch=('any')
-url='https://docs.qcarchive.molssi.org/projects/qcelemental/en/latest/'
+url='https://molssi.github.io/QCElemental/'
 license=('BSD-3-Clause')
 depends=(
   'python'
