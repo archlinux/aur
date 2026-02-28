@@ -1,9 +1,9 @@
 [Unit]
-Description=Matterbridge Daemon
+Description=Matterbridge-%I Daemon
 After=network-online.target
 
 [Service]
-ExecStart=/usr/bin/matterbridge -conf /etc/matterbridge.toml
+ExecStart=/usr/bin/matterbridge -conf /etc/matterbridge/%I.toml
 Restart=always
 RestartSec=5s
 DynamicUser=true

@@ -19,6 +19,7 @@ backup=("etc/matterbridge/matterbridge.toml")
 source=(
   "${_pkgname}::git+https://github.com/matterbridge-org/matterbridge"
   "matterbridge.service"
+  "matterbridge@.service"
 )
 
 
@@ -40,12 +41,14 @@ build() {
 
 package() {
   install -Dm755 "$_pkgname/matterbridge" "$pkgdir/usr/bin/matterbridge"
-  install -Dm644 "$_pkgname/matterbridge.toml.simple" "$pkgdir/etc/$_pkgname/matterbridge.toml"
+  install -Dm644 "$_pkgname/matterbridge.toml.simple" "$pkgdir/etc/matterbridge.toml"
   install -Dm644 "$_pkgname/README.md" "$pkgdir/usr/share/doc/$_pkgname/README"
   install -Dm644 "$_pkgname/matterbridge.toml.sample" "$pkgdir/usr/share/doc/$_pkgname/matterbridge.toml.sample"
 
   install -Dm644 "$srcdir/matterbridge.service" "$pkgdir/usr/lib/systemd/system/matterbridge.service"
+  install -Dm644 "$srcdir/matterbridge@.service" "$pkgdir/usr/lib/systemd/system/matterbridge@.service"
 }
 
 sha256sums=('SKIP'
-            '4ea133c37b088a69a1f33c68101d6815948c0537de04908c9ed8ed36ab947fdc')
+            '7fad1096d304a6d2b4711850e553416553c5928b792a3afe22b5cbdd873403ae'
+            'd6fdc567b2161f6cbaec4ab668b03f58c928370ef9cb27c2a4116feacc3a335f')

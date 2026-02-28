@@ -13,7 +13,9 @@ pkgbase = matterbridge-git
 	backup = etc/matterbridge/matterbridge.toml
 	source = matterbridge::git+https://github.com/matterbridge-org/matterbridge
 	source = matterbridge.service
+	source = matterbridge@.service
 	sha256sums = SKIP
-	sha256sums = 4ea133c37b088a69a1f33c68101d6815948c0537de04908c9ed8ed36ab947fdc
+	sha256sums = 7fad1096d304a6d2b4711850e553416553c5928b792a3afe22b5cbdd873403ae
+	sha256sums = d6fdc567b2161f6cbaec4ab668b03f58c928370ef9cb27c2a4116feacc3a335f
 
 pkgname = matterbridge-git
