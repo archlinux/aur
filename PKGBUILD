@@ -1,7 +1,7 @@
 # Maintainer: noureddinex
 pkgname=lmstudio-bin
-pkgver=0.4.5
-pkgrel=2
+pkgver=0.4.6
+pkgrel=1
 _pkgver=${pkgver}-${pkgrel}
 pkgdesc="LM Studio - A desktop app for exploring and running large language models locally"
 arch=('x86_64')
@@ -13,7 +13,7 @@ install=lmstudio-bin.install
 source=("https://installers.lmstudio.ai/linux/x64/${_pkgver}/LM-Studio-${_pkgver}-x64.AppImage"
          "lmstudio.png"
          "lmstudio.desktop")
-sha256sums=('1beb30c18f5f7f432a6ddbbc6516e09b9287acf86738068e62f1f7744559d7e0'
+sha256sums=('14767ae339a7a87ad0c97e227edfe5554cd6f878825645e95956b8864b2c5ff9'
             '9f791789c959a11316328692807737a5f1bc1c170ae99ec04c56bfd8ee8263e5'
             'd5ac11aae025cd1cc0f9aa0713ee427dc6f46e4d1adac2a5948f93d8bbca705f')
 
