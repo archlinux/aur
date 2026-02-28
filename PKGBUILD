@@ -1,6 +1,6 @@
 pkgname=jcef-jetbrains-git
 pkgdesc="A simple framework for embedding Chromium-based browsers into Java-based applications. (Used for JetBrainsRuntime)"
-pkgver=122.1.9.api1.18.r1073.1760523d
+pkgver=137.0.17.api1.21.r1156.8d939c80
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/JetBrains/jcef"
@@ -14,7 +14,7 @@ conflicts=('jcef-jetbrains')
 
 pkgver() {
     cd jcef
-    ver=$(cat build.xml | grep \"jcef.version\" | cut -d \" -f 4 | sed "s/\(.*\)-.*-chromium-.*-api-\(.*\)/\1.api\2/g")
+    ver=$(cat build.xml | grep \"jcef.version\" | cut -d \" -f 4 | sed -e "s/\(.*\)-.*-chromium-.*-api-\(.*\)/\1.api\2/g" -e 's/-${jcefBranch}-${buildNumber}//')
     count=$(git rev-list --count HEAD)
     sha=$(git rev-parse --short HEAD)
     echo "$ver.r$count.$sha"
@@ -34,4 +34,3 @@ package() {
     tar -xvf jcef_linux_x64.tar.gz -C $pkgdir/usr/lib/jcef-jetbrains --no-same-owner
     install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/jcef-jetbrains/LICENSE
 }
-
