@@ -7,19 +7,20 @@ url="https://github.com/gHashTag/trinity"
 license=('MIT')
 depends=()
 makedepends=('zig')
-source=("https://github.com/gHashTag/trinity/releases/download/v1.0.1/trinity-v1.0.1-linux-x86_64.tar.gz")
+source=("https://github.com/gHashTag/trinity/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
-prepare() {
-  cd "${srcdir}"
-  # Extract archive
-  tar -xzf trinity-v1.0.1-linux-x86_64.tar.gz
+build() {
+  cd "${srcdir}/trinity-${pkgver}"
+  zig build -Doptimize=ReleaseFast tri
 }
 
 package() {
-  cd "${srcdir}"
-  install -Dm755 tri "${pkgdir}/usr/bin/tri"
-  install -Dm644 tri.bash "${pkgdir}/usr/share/bash-completion/completions/tri"
-  install -Dm644 tri.zsh "${pkgdir}/usr/share/zsh/site-functions/_tri"
-  install -Dm644 tri.fish "${pkgdir}/usr/share/fish/vendor_completions.d/tri.fish"
+  cd "${srcdir}/trinity-${pkgver}"
+  install -Dm755 zig-out/bin/tri "${pkgdir}/usr/bin/tri"
+  
+  # Shell completions (need to be generated)
+  install -Dm644 completions/bash/tri.bash "${pkgdir}/usr/share/bash-completion/completions/tri" || true
+  install -Dm644 completions/zsh/_tri "${pkgdir}/usr/share/zsh/site-functions/_tri" || true
+  install -Dm644 completions/fish/tri.fish "${pkgdir}/usr/share/fish/vendor_completions.d/tri.fish" || true
 }
