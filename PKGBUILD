@@ -2,7 +2,7 @@
 # Maintainer: containerscrew <info@containerscrew.com>
 
 pkgname='rsecure-bin'
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc='Secure file encryption CLI written in Rust (pre-compiled binary)'
 url='https://github.com/containerscrew/rsecure'
@@ -12,10 +12,10 @@ provides=('rsecure')
 conflicts=('rsecure')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/containerscrew/rsecure/releases/download/${pkgver}/rsecure_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('f26146d22d38dd221e4b0539ee2cb0cf7b98468035d0e5fc89267e34837727fe')
+sha256sums_aarch64=('c739ab4ea9933b7b4fc72f169748009bfa84f1424746589c4f36142632d6f18d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/containerscrew/rsecure/releases/download/${pkgver}/rsecure_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('807244a61952cf17049d3ddc29fb29009c4ff049a5e470b9a0326e61f2190bea')
+sha256sums_x86_64=('7706aa1ad99f3be71ac492ab7d41c95233c03aa46966520762828080c8ea79fe')
 
 package() {
   install -Dm755 "rsecure" "$pkgdir/usr/bin/rsecure"
