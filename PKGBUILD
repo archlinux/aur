@@ -1,7 +1,7 @@
 # Maintainer: Costin Botescu <costin.botescu@gmail.com>
 pkgname=ocompiler
 _pkgname_atsource=o
-pkgver=5+246
+pkgver=5+247
 _pkgver_atsource=`echo ${pkgver} | sed s/+/-/`
 pkgrel=0
 pkgdesc="O language compiler"
@@ -13,8 +13,8 @@ makedepends=('lib32-glibc' 'bc')
 
 source=("${pkgname}-${pkgver}-0.tar.gz::https://github.com/colin-i/${_pkgname_atsource}/archive/${pkgname}-${pkgver}-0.tar.gz"
 	"obj.txt.gz::https://github.com/colin-i/${_pkgname_atsource}/releases/download/${pkgname}-${pkgver}-0/obj.txt.gz")
-sha256sums=('c0befa73cac7c995f5b79dd19def4440beb7a9f3742c24454a2c59f7842c98e6'
-            '6b3905a2d1891e631585a5d493b91b47527c81a8d91f6debefda5fc4a11deed9')
+sha256sums=('8d81061d4aa6458e33fc3d790300f0c4b4b3bbf40ebcb1cd8b6a8baaf565cd6d'
+            '52b86630414822a78de946f44501b83743ee6e40edb79c076609a9d5b0410d8c')
 
 _ver_atsource_fn() {
 	cd "$_pkgname_atsource-$pkgname-$_pkgver_atsource-0"
