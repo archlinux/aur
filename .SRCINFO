@@ -1,10 +1,11 @@
 pkgbase = glcapsviewer-git
 	pkgdesc = OpenGL Hardware Capability Viewer
 	pkgver = r139.eb621b2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://opengl.gpuinfo.org/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = cmake

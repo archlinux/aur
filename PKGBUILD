@@ -2,10 +2,10 @@
 
 pkgname=glcapsviewer-git
 pkgver=r139.eb621b2
-pkgrel=2
+pkgrel=3
 pkgdesc='OpenGL Hardware Capability Viewer'
 url='https://opengl.gpuinfo.org/'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('GPL3')
 source=('git+https://github.com/SaschaWillems/glCapsViewer'
         'https://github.com/SaschaWillems/glCapsViewer/pull/15.patch'
