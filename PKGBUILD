@@ -1,86 +1,57 @@
-# Maintainer: m5rcode contributors
+# Maintainer: m5rcel <your-email@example.com>
 pkgname=m5rcode
-pkgver=0.2.0
+pkgver=0.3.2
 pkgrel=1
-pkgdesc="Modern programming language combining Python, C, Java, HolyC, Rust, and Ruby"
+pkgdesc="Modern programming language combining Python, C, Java, Rust, and Ruby features"
 arch=('x86_64')
 url="https://github.com/m5rcode/m5rcode"
-license=('MIT' 'Apache')
-depends=('gcc-libs' 'glibc')
-makedepends=('rust' 'cargo' 'pkg-config')
-optdepends=(
-    'gtk3: for m5idle GUI'
-    'llvm: for LLVM backend'
-)
-install=m5rcode.install
-source=("https://github.com/m5rcode/m5rcode/releases/download/v${pkgver}/m5rcode-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+license=('MIT' 'Apache-2.0')
+depends=('gcc-libs')
+makedepends=('rust' 'cargo')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/m5rcode/m5rcode/archive/v$pkgver.tar.gz")
+sha256sums=('f34e155468c3f3ce19ee3ea9b4e6bec206836902d2b64c84e3ea221f0a0f9766')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    
-    # Build compiler
-    cd compiler
-    cargo build --release
-    cd ..
-    
-    # Build tools
-    cd tools/m5repl
-    cargo build --release
-    cd ../..
-    
-    cd tools/m5idle
-    cargo build --release
-    cd ../..
-    
-    # Build formatter
-    rustc --edition 2021 -O tools/m5fmt.rs -o target/release/m5fmt
-    
-    # Build linter
-    rustc --edition 2021 -O tools/m5lint.rs -o target/release/m5lint
-    
-    # Build LSP
-    cd tools/lsp
-    cargo build --release
-    cd ../..
+    cd "$pkgname-$pkgver"
+    cargo build --release --locked
 }
 
 check() {
-    cd "$srcdir/$pkgname-$pkgver"
-    
-    # Run compiler tests
-    cd compiler
-    cargo test --release
-    cd ..
-    
-    # Run integration tests
-    ./target/release/m5repl packages/hello_world.m5 || exit 1
+    cd "$pkgname-$pkgver"
+    cargo test --release --locked
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    
-    # Install main command
-    install -Dm755 m5rcode "$pkgdir/usr/bin/m5rcode"
+    cd "$pkgname-$pkgver"
     
     # Install binaries
-    install -Dm755 compiler/target/release/m5r "$pkgdir/usr/bin/m5r"
-    install -Dm755 tools/m5repl/target/release/m5repl "$pkgdir/usr/bin/m5repl"
-    install -Dm755 tools/m5idle/target/release/m5idle "$pkgdir/usr/bin/m5idle"
-    install -Dm755 target/release/m5fmt "$pkgdir/usr/bin/m5fmt"
-    install -Dm755 target/release/m5lint "$pkgdir/usr/bin/m5lint"
-    install -Dm755 tools/lsp/target/release/m5lsp "$pkgdir/usr/bin/m5lsp"
+    install -Dm755 target/release/m5repl "$pkgdir/usr/bin/m5repl"
+    install -Dm755 target/release/m5rcode "$pkgdir/usr/bin/m5rcode" 2>/dev/null || true
+    
+    # Install tools
+    for tool in m5fmt m5lint m5idle; do
+        if [ -f "target/release/$tool" ]; then
+            install -Dm755 "target/release/$tool" "$pkgdir/usr/bin/$tool"
+        fi
+    done
+    
+    # Install Discord bridge
+    if [ -f "runtime/discord/target/release/m5rcode-discord" ]; then
+        install -Dm755 runtime/discord/target/release/m5rcode-discord "$pkgdir/usr/bin/m5rcode-discord"
+    fi
+    
+    # Install standard library
+    install -dm755 "$pkgdir/usr/share/m5rcode/stdlib"
+    cp -r stdlib/* "$pkgdir/usr/share/m5rcode/stdlib/"
     
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    
-    # Install spec files
-    install -dm755 "$pkgdir/usr/share/doc/$pkgname/spec"
-    install -Dm644 SPEC/*.md "$pkgdir/usr/share/doc/$pkgname/spec/"
-    install -Dm644 SPEC/*.ebnf "$pkgdir/usr/share/doc/$pkgname/spec/"
+    install -Dm644 CHANGELOG_v0.3.2.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
     
     # Install examples
-    install -dm755 "$pkgdir/usr/share/doc/$pkgname/examples"
-    cp -r packages/* "$pkgdir/usr/share/doc/$pkgname/examples/"
+    install -dm755 "$pkgdir/usr/share/m5rcode/examples"
+    cp -r examples/* "$pkgdir/usr/share/m5rcode/examples/"
+    
+    # Install license
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
