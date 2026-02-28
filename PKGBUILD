@@ -3,7 +3,7 @@
 pkgname=qbit-manage-desktop-bin
 _srcver="v4.6.5"
 pkgver="${_srcver#v}"
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI application for qBit_manage, a program used to manage your qBittorrent instance."
 arch=('x86_64')
 url="https://github.com/StuffAnThings/qbit_manage/"
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('imagemagick')
 options=(!strip)
-provides=('qbit-manage-desktop')
+provides=('qbit-manage-desktop' 'qbit-manage')
 conflicts=('qbit-manage-desktop')
 source=("${pkgname}-${pkgver}.deb::${url}releases/download/${_srcver}/qBit.Manage_${pkgver}_amd64-desktop-installer.deb"
         "https://raw.githubusercontent.com/StuffAnThings/qbit_manage/xenia-edge/${_srcver}/LICENSE")
