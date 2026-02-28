@@ -14,7 +14,7 @@ pkgbase = aero-browser
 	depends = electron23
 	provides = aero-browser
 	conflicts = aero-browser
-	source = aero-browser-0.2.2_alpha::git+https://github.com/FrostBreker/Aero#tag=v0.2.2-alpha
+	source = aero-browser-0.2.2_alpha::git+https://github.com/FrostBreker/AeroBrowser#tag=v0.2.2-alpha
 	source = aero-browser.sh
 	sha256sums = f38456566201902febaa9412a481ad299cdcbd867dc9dc1b4ee5a8b5d6a2b945
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
