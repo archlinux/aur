@@ -10,6 +10,7 @@ pkgbase = meteobar-bin
 	optdepends = otf-font-awesome: Font Awesome icon set (--icons fontawesome)
 	provides = meteobar
 	conflicts = meteobar
+	options = !debug
 	source = meteobar-0.1.6::https://github.com/mryll/meteobar/releases/download/v0.1.6/meteobar-0.1.6-x86_64-linux
 	source = LICENSE-0.1.6::https://raw.githubusercontent.com/mryll/meteobar/v0.1.6/LICENSE
 	sha256sums = 5f21ff8ba54307d05ed9b786926e1957a6c806e4bb1fd5b3d5a0c3a9047f5111
