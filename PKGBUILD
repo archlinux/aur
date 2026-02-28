@@ -5,7 +5,9 @@ pkgname=(
   'dns01proxy-acmeproxy'
   'dns01proxy-alidns'
   'dns01proxy-all-inkl'
+  'dns01proxy-arvancloud'
   'dns01proxy-azure'
+  'dns01proxy-bluecat'
   'dns01proxy-bunny'
   'dns01proxy-cloudflare'
   'dns01proxy-cloudns'
@@ -40,6 +42,7 @@ pkgname=(
   'dns01proxy-mijnhost'
   'dns01proxy-mythicbeasts'
   'dns01proxy-namecheap'
+  'dns01proxy-namesilo'
   'dns01proxy-nanelo'
   'dns01proxy-netcup'
   'dns01proxy-netlify'
@@ -56,12 +59,15 @@ pkgname=(
   'dns01proxy-tecnocratica'
   'dns01proxy-tencentcloud'
   'dns01proxy-transip'
+  'dns01proxy-unifi'
+  'dns01proxy-volcengine'
   'dns01proxy-vultr'
   'dns01proxy-websupport'
+  'dns01proxy-wedos'
   'dns01proxy-westcn'
 )
 pkgbase='dns01proxy'
-pkgver='0.1.10'
+pkgver='0.1.11'
 pkgrel=1
 pkgdesc='ACME DNS-01 proxy server'
 arch=('x86_64' 'aarch64')
@@ -104,7 +110,9 @@ package_dns01proxy-acmedns() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -139,6 +147,7 @@ package_dns01proxy-acmedns() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -155,8 +164,11 @@ package_dns01proxy-acmedns() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -185,7 +197,9 @@ package_dns01proxy-acmeproxy() {
     'dns01proxy-acmedns'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -220,6 +234,7 @@ package_dns01proxy-acmeproxy() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -236,8 +251,11 @@ package_dns01proxy-acmeproxy() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -266,7 +284,9 @@ package_dns01proxy-alidns() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -301,6 +321,7 @@ package_dns01proxy-alidns() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -317,8 +338,11 @@ package_dns01proxy-alidns() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -347,7 +371,9 @@ package_dns01proxy-all-inkl() {
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -382,6 +408,7 @@ package_dns01proxy-all-inkl() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -398,8 +425,11 @@ package_dns01proxy-all-inkl() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -423,12 +453,14 @@ package_dns01proxy-all-inkl() {
   sed -i 's/@BUILD@/all-inkl/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
-package_dns01proxy-azure() {
+package_dns01proxy-arvancloud() {
   conflicts=(
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -463,6 +495,7 @@ package_dns01proxy-azure() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -479,12 +512,15 @@ package_dns01proxy-azure() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
-  install -Dm 755 dist/dns01proxy-azure "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 755 dist/dns01proxy-arvancloud "${pkgdir}/usr/bin/dns01proxy"
   install -Dm 644 \
     "${srcdir}/dns01proxy.service" \
     "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
@@ -501,16 +537,18 @@ package_dns01proxy-azure() {
     "${srcdir}/env.conf" \
     "${pkgdir}/etc/dns01proxy/env.conf"
 
-  sed -i 's/@BUILD@/azure/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  sed -i 's/@BUILD@/arvancloud/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
-package_dns01proxy-bunny() {
+package_dns01proxy-azure() {
   conflicts=(
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
-    'dns01proxy-azure'
+    'dns01proxy-arvancloud'
+    'dns01proxy-bluecat'
+    'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
     'dns01proxy-conoha'
@@ -544,6 +582,7 @@ package_dns01proxy-bunny() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -560,8 +599,185 @@ package_dns01proxy-bunny() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-azure "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/azure/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+package_dns01proxy-bluecat() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
+    'dns01proxy-azure'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dnsimple'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-dynv6'
+    'dns01proxy-easydns'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-linode'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-netlify'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-powerdns'
+    'dns01proxy-rfc2136'
+    'dns01proxy-route53'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
+    'dns01proxy-vultr'
+    'dns01proxy-websupport'
+    'dns01proxy-wedos'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-bluecat "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/bluecat/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+package_dns01proxy-bunny() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
+    'dns01proxy-azure'
+    'dns01proxy-bluecat'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dnsimple'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-dynv6'
+    'dns01proxy-easydns'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-linode'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-netlify'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-powerdns'
+    'dns01proxy-rfc2136'
+    'dns01proxy-route53'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
+    'dns01proxy-vultr'
+    'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -591,7 +807,9 @@ package_dns01proxy-cloudflare() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudns'
     'dns01proxy-conoha'
@@ -625,6 +843,7 @@ package_dns01proxy-cloudflare() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -641,8 +860,11 @@ package_dns01proxy-cloudflare() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -672,7 +894,9 @@ package_dns01proxy-cloudns() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-conoha'
@@ -706,6 +930,7 @@ package_dns01proxy-cloudns() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -722,8 +947,11 @@ package_dns01proxy-cloudns() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -753,7 +981,9 @@ package_dns01proxy-conoha() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -787,6 +1017,7 @@ package_dns01proxy-conoha() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -803,8 +1034,11 @@ package_dns01proxy-conoha() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -834,7 +1068,9 @@ package_dns01proxy-desec() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -868,6 +1104,7 @@ package_dns01proxy-desec() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -884,8 +1121,11 @@ package_dns01proxy-desec() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -915,7 +1155,9 @@ package_dns01proxy-digitalocean() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -949,6 +1191,7 @@ package_dns01proxy-digitalocean() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -965,8 +1208,11 @@ package_dns01proxy-digitalocean() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -996,7 +1242,9 @@ package_dns01proxy-directadmin() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -1030,6 +1278,7 @@ package_dns01proxy-directadmin() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -1046,8 +1295,11 @@ package_dns01proxy-directadmin() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1077,7 +1329,9 @@ package_dns01proxy-dnsimple() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -1111,6 +1365,7 @@ package_dns01proxy-dnsimple() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -1127,8 +1382,11 @@ package_dns01proxy-dnsimple() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1158,7 +1416,9 @@ package_dns01proxy-dode() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -1192,6 +1452,7 @@ package_dns01proxy-dode() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -1208,8 +1469,11 @@ package_dns01proxy-dode() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1239,7 +1503,9 @@ package_dns01proxy-domainnameshop() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -1273,6 +1539,7 @@ package_dns01proxy-domainnameshop() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -1289,8 +1556,11 @@ package_dns01proxy-domainnameshop() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1320,7 +1590,9 @@ package_dns01proxy-duckdns() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -1354,6 +1626,7 @@ package_dns01proxy-duckdns() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -1370,8 +1643,11 @@ package_dns01proxy-duckdns() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1401,7 +1677,9 @@ package_dns01proxy-dynu() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -1435,6 +1713,7 @@ package_dns01proxy-dynu() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -1451,8 +1730,11 @@ package_dns01proxy-dynu() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1482,7 +1764,9 @@ package_dns01proxy-dynv6() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -1516,6 +1800,7 @@ package_dns01proxy-dynv6() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -1532,8 +1817,11 @@ package_dns01proxy-dynv6() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1563,7 +1851,9 @@ package_dns01proxy-easydns() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -1597,6 +1887,7 @@ package_dns01proxy-easydns() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -1613,8 +1904,11 @@ package_dns01proxy-easydns() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1644,7 +1938,9 @@ package_dns01proxy-edgeone() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -1678,6 +1974,7 @@ package_dns01proxy-edgeone() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -1694,8 +1991,11 @@ package_dns01proxy-edgeone() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1725,7 +2025,9 @@ package_dns01proxy-gandi() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -1759,6 +2061,7 @@ package_dns01proxy-gandi() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -1775,8 +2078,11 @@ package_dns01proxy-gandi() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1806,7 +2112,9 @@ package_dns01proxy-gcore() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -1840,6 +2148,7 @@ package_dns01proxy-gcore() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -1856,8 +2165,11 @@ package_dns01proxy-gcore() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1887,7 +2199,9 @@ package_dns01proxy-glesys() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -1921,6 +2235,7 @@ package_dns01proxy-glesys() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -1937,8 +2252,11 @@ package_dns01proxy-glesys() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -1968,7 +2286,9 @@ package_dns01proxy-godaddy() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -2002,6 +2322,7 @@ package_dns01proxy-godaddy() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -2018,8 +2339,11 @@ package_dns01proxy-godaddy() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2049,7 +2373,9 @@ package_dns01proxy-googleclouddns() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -2083,6 +2409,7 @@ package_dns01proxy-googleclouddns() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -2099,8 +2426,11 @@ package_dns01proxy-googleclouddns() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2130,7 +2460,9 @@ package_dns01proxy-he() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -2164,6 +2496,7 @@ package_dns01proxy-he() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -2180,8 +2513,11 @@ package_dns01proxy-he() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2211,7 +2547,9 @@ package_dns01proxy-hetzner() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -2245,6 +2583,7 @@ package_dns01proxy-hetzner() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -2261,8 +2600,11 @@ package_dns01proxy-hetzner() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2292,7 +2634,9 @@ package_dns01proxy-huaweicloud() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -2326,6 +2670,7 @@ package_dns01proxy-huaweicloud() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -2342,8 +2687,11 @@ package_dns01proxy-huaweicloud() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2373,7 +2721,9 @@ package_dns01proxy-infomaniak() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -2407,6 +2757,7 @@ package_dns01proxy-infomaniak() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -2423,8 +2774,11 @@ package_dns01proxy-infomaniak() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2454,7 +2808,9 @@ package_dns01proxy-inwx() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -2488,6 +2844,7 @@ package_dns01proxy-inwx() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -2504,8 +2861,11 @@ package_dns01proxy-inwx() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2535,7 +2895,9 @@ package_dns01proxy-ionos() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -2569,6 +2931,7 @@ package_dns01proxy-ionos() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -2585,8 +2948,11 @@ package_dns01proxy-ionos() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2616,7 +2982,9 @@ package_dns01proxy-linode() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -2650,6 +3018,7 @@ package_dns01proxy-linode() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -2666,8 +3035,11 @@ package_dns01proxy-linode() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2697,7 +3069,9 @@ package_dns01proxy-loopia() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -2731,6 +3105,7 @@ package_dns01proxy-loopia() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -2747,8 +3122,11 @@ package_dns01proxy-loopia() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2778,7 +3156,9 @@ package_dns01proxy-luadns() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -2812,6 +3192,7 @@ package_dns01proxy-luadns() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -2828,8 +3209,11 @@ package_dns01proxy-luadns() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2859,7 +3243,9 @@ package_dns01proxy-mailinabox() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -2893,6 +3279,7 @@ package_dns01proxy-mailinabox() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -2909,8 +3296,11 @@ package_dns01proxy-mailinabox() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -2940,7 +3330,9 @@ package_dns01proxy-metaname() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -2974,6 +3366,7 @@ package_dns01proxy-metaname() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -2990,8 +3383,11 @@ package_dns01proxy-metaname() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3021,7 +3417,9 @@ package_dns01proxy-mijnhost() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -3055,6 +3453,7 @@ package_dns01proxy-mijnhost() {
     'dns01proxy-metaname'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -3071,8 +3470,11 @@ package_dns01proxy-mijnhost() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3102,7 +3504,9 @@ package_dns01proxy-mythicbeasts() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -3136,6 +3540,7 @@ package_dns01proxy-mythicbeasts() {
     'dns01proxy-metaname'
     'dns01proxy-mijnhost'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -3152,8 +3557,11 @@ package_dns01proxy-mythicbeasts() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3183,7 +3591,9 @@ package_dns01proxy-namecheap() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -3217,6 +3627,7 @@ package_dns01proxy-namecheap() {
     'dns01proxy-metaname'
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -3233,8 +3644,11 @@ package_dns01proxy-namecheap() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3258,13 +3672,15 @@ package_dns01proxy-namecheap() {
   sed -i 's/@BUILD@/namecheap/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
-package_dns01proxy-nanelo() {
+package_dns01proxy-namesilo() {
   conflicts=(
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -3299,6 +3715,7 @@ package_dns01proxy-nanelo() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
     'dns01proxy-nfsn'
@@ -3314,8 +3731,98 @@ package_dns01proxy-nanelo() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-namesilo "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/namesilo/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+package_dns01proxy-nanelo() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
+    'dns01proxy-azure'
+    'dns01proxy-bluecat'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dnsimple'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-dynv6'
+    'dns01proxy-easydns'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-linode'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
+    'dns01proxy-netcup'
+    'dns01proxy-netlify'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-powerdns'
+    'dns01proxy-rfc2136'
+    'dns01proxy-route53'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
+    'dns01proxy-vultr'
+    'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3345,7 +3852,9 @@ package_dns01proxy-netcup() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -3380,6 +3889,7 @@ package_dns01proxy-netcup() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netlify'
     'dns01proxy-nfsn'
@@ -3395,8 +3905,11 @@ package_dns01proxy-netcup() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3426,7 +3939,9 @@ package_dns01proxy-netlify() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -3461,6 +3976,7 @@ package_dns01proxy-netlify() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-nfsn'
@@ -3476,8 +3992,11 @@ package_dns01proxy-netlify() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3507,7 +4026,9 @@ package_dns01proxy-nfsn() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -3542,6 +4063,7 @@ package_dns01proxy-nfsn() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -3557,8 +4079,11 @@ package_dns01proxy-nfsn() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3588,7 +4113,9 @@ package_dns01proxy-njalla() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -3623,6 +4150,7 @@ package_dns01proxy-njalla() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -3638,8 +4166,11 @@ package_dns01proxy-njalla() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3669,7 +4200,9 @@ package_dns01proxy-ovh() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -3704,6 +4237,7 @@ package_dns01proxy-ovh() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -3719,8 +4253,11 @@ package_dns01proxy-ovh() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3750,7 +4287,9 @@ package_dns01proxy-porkbun() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -3785,6 +4324,7 @@ package_dns01proxy-porkbun() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -3800,8 +4340,11 @@ package_dns01proxy-porkbun() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3831,7 +4374,9 @@ package_dns01proxy-powerdns() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -3866,6 +4411,7 @@ package_dns01proxy-powerdns() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -3881,8 +4427,11 @@ package_dns01proxy-powerdns() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3912,7 +4461,9 @@ package_dns01proxy-rfc2136() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -3947,6 +4498,7 @@ package_dns01proxy-rfc2136() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -3962,8 +4514,11 @@ package_dns01proxy-rfc2136() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -3993,7 +4548,9 @@ package_dns01proxy-route53() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -4028,6 +4585,7 @@ package_dns01proxy-route53() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -4043,8 +4601,11 @@ package_dns01proxy-route53() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4074,7 +4635,9 @@ package_dns01proxy-scaleway() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -4109,6 +4672,7 @@ package_dns01proxy-scaleway() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -4124,8 +4688,11 @@ package_dns01proxy-scaleway() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4155,7 +4722,9 @@ package_dns01proxy-simplydotcom() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -4190,6 +4759,7 @@ package_dns01proxy-simplydotcom() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -4205,8 +4775,11 @@ package_dns01proxy-simplydotcom() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4236,7 +4809,9 @@ package_dns01proxy-spaceship() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -4271,6 +4846,7 @@ package_dns01proxy-spaceship() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -4286,8 +4862,11 @@ package_dns01proxy-spaceship() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4317,7 +4896,9 @@ package_dns01proxy-tecnocratica() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -4352,6 +4933,7 @@ package_dns01proxy-tecnocratica() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -4367,8 +4949,11 @@ package_dns01proxy-tecnocratica() {
     'dns01proxy-spaceship'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4398,7 +4983,9 @@ package_dns01proxy-tencentcloud() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -4433,6 +5020,7 @@ package_dns01proxy-tencentcloud() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -4448,8 +5036,11 @@ package_dns01proxy-tencentcloud() {
     'dns01proxy-spaceship'
     'dns01proxy-tecnocratica'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4479,7 +5070,9 @@ package_dns01proxy-transip() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -4514,6 +5107,7 @@ package_dns01proxy-transip() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -4529,8 +5123,11 @@ package_dns01proxy-transip() {
     'dns01proxy-spaceship'
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4554,13 +5151,15 @@ package_dns01proxy-transip() {
   sed -i 's/@BUILD@/transip/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
-package_dns01proxy-vultr() {
+package_dns01proxy-unifi() {
   conflicts=(
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -4595,6 +5194,7 @@ package_dns01proxy-vultr() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -4611,7 +5211,184 @@ package_dns01proxy-vultr() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-volcengine'
+    'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-wedos'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-unifi "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/unifi/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+package_dns01proxy-volcengine() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
+    'dns01proxy-azure'
+    'dns01proxy-bluecat'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dnsimple'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-dynv6'
+    'dns01proxy-easydns'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-linode'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-netlify'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-powerdns'
+    'dns01proxy-rfc2136'
+    'dns01proxy-route53'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-vultr'
+    'dns01proxy-websupport'
+    'dns01proxy-wedos'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-volcengine "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/volcengine/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+package_dns01proxy-vultr() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
+    'dns01proxy-azure'
+    'dns01proxy-bluecat'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dnsimple'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-dynv6'
+    'dns01proxy-easydns'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-linode'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-netlify'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-powerdns'
+    'dns01proxy-rfc2136'
+    'dns01proxy-route53'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
+    'dns01proxy-websupport'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4641,7 +5418,9 @@ package_dns01proxy-websupport() {
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -4676,6 +5455,7 @@ package_dns01proxy-websupport() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -4692,7 +5472,10 @@ package_dns01proxy-websupport() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
+    'dns01proxy-wedos'
     'dns01proxy-westcn'
   )
   cd "$pkgbase"
@@ -4716,13 +5499,15 @@ package_dns01proxy-websupport() {
   sed -i 's/@BUILD@/websupport/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
-package_dns01proxy-westcn() {
+package_dns01proxy-wedos() {
   conflicts=(
     'dns01proxy-acmedns'
     'dns01proxy-acmeproxy'
     'dns01proxy-alidns'
     'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
     'dns01proxy-azure'
+    'dns01proxy-bluecat'
     'dns01proxy-bunny'
     'dns01proxy-cloudflare'
     'dns01proxy-cloudns'
@@ -4757,6 +5542,7 @@ package_dns01proxy-westcn() {
     'dns01proxy-mijnhost'
     'dns01proxy-mythicbeasts'
     'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
     'dns01proxy-nanelo'
     'dns01proxy-netcup'
     'dns01proxy-netlify'
@@ -4773,8 +5559,98 @@ package_dns01proxy-westcn() {
     'dns01proxy-tecnocratica'
     'dns01proxy-tencentcloud'
     'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
     'dns01proxy-vultr'
     'dns01proxy-websupport'
+    'dns01proxy-westcn'
+  )
+  cd "$pkgbase"
+  install -Dm 755 dist/dns01proxy-wedos "${pkgdir}/usr/bin/dns01proxy"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.service" \
+    "${pkgdir}/usr/lib/systemd/system/dns01proxy.service"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.sysusers" \
+    "${pkgdir}/usr/lib/sysusers.d/dns01proxy.conf"
+  install -Dm 644 \
+    "${srcdir}/dns01proxy.tmpfiles" \
+    "${pkgdir}/usr/lib/tmpfiles.d/dns01proxy.conf"
+  install -Dm 640 \
+    "${srcdir}/dns01proxy.toml" \
+    "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+  install -Dm 600 \
+    "${srcdir}/env.conf" \
+    "${pkgdir}/etc/dns01proxy/env.conf"
+
+  sed -i 's/@BUILD@/wedos/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
+}
+
+package_dns01proxy-westcn() {
+  conflicts=(
+    'dns01proxy-acmedns'
+    'dns01proxy-acmeproxy'
+    'dns01proxy-alidns'
+    'dns01proxy-all-inkl'
+    'dns01proxy-arvancloud'
+    'dns01proxy-azure'
+    'dns01proxy-bluecat'
+    'dns01proxy-bunny'
+    'dns01proxy-cloudflare'
+    'dns01proxy-cloudns'
+    'dns01proxy-conoha'
+    'dns01proxy-desec'
+    'dns01proxy-digitalocean'
+    'dns01proxy-directadmin'
+    'dns01proxy-dnsimple'
+    'dns01proxy-dode'
+    'dns01proxy-domainnameshop'
+    'dns01proxy-duckdns'
+    'dns01proxy-dynu'
+    'dns01proxy-dynv6'
+    'dns01proxy-easydns'
+    'dns01proxy-edgeone'
+    'dns01proxy-gandi'
+    'dns01proxy-gcore'
+    'dns01proxy-glesys'
+    'dns01proxy-godaddy'
+    'dns01proxy-googleclouddns'
+    'dns01proxy-he'
+    'dns01proxy-hetzner'
+    'dns01proxy-huaweicloud'
+    'dns01proxy-infomaniak'
+    'dns01proxy-inwx'
+    'dns01proxy-ionos'
+    'dns01proxy-linode'
+    'dns01proxy-loopia'
+    'dns01proxy-luadns'
+    'dns01proxy-mailinabox'
+    'dns01proxy-metaname'
+    'dns01proxy-mijnhost'
+    'dns01proxy-mythicbeasts'
+    'dns01proxy-namecheap'
+    'dns01proxy-namesilo'
+    'dns01proxy-nanelo'
+    'dns01proxy-netcup'
+    'dns01proxy-netlify'
+    'dns01proxy-nfsn'
+    'dns01proxy-njalla'
+    'dns01proxy-ovh'
+    'dns01proxy-porkbun'
+    'dns01proxy-powerdns'
+    'dns01proxy-rfc2136'
+    'dns01proxy-route53'
+    'dns01proxy-scaleway'
+    'dns01proxy-simplydotcom'
+    'dns01proxy-spaceship'
+    'dns01proxy-tecnocratica'
+    'dns01proxy-tencentcloud'
+    'dns01proxy-transip'
+    'dns01proxy-unifi'
+    'dns01proxy-volcengine'
+    'dns01proxy-vultr'
+    'dns01proxy-websupport'
+    'dns01proxy-wedos'
   )
   cd "$pkgbase"
   install -Dm 755 dist/dns01proxy-westcn "${pkgdir}/usr/bin/dns01proxy"
@@ -4797,7 +5673,7 @@ package_dns01proxy-westcn() {
   sed -i 's/@BUILD@/westcn/g' "${pkgdir}/etc/dns01proxy/dns01proxy.toml"
 }
 
-b2sums=('afabfa6fdd7322b55556991260fbbf3008dfd5f6db3152d7357175ee76bc4760e72eb66f1419aa74958103b0349a0503356bf94f1f53ba48a88743cc74686a91'
+b2sums=('4050f5e88166667e98eafe6740e0e32f60967e7c4700aae26c681ee7a8fbde3230fb305a25e41f2798d1591528c9a435a1247dc7a4cd129c81e94a4a19c41126'
         '3805fbcc7d8d73515f702e0c0bb9066a33477c389586c187f182b6d3989cdf33fe5d63c8b6a4059d2848bacd55014ebf97ff67437e27534c55f4a0a496f65531'
         '0b6a5ecf1e7e475cd5b74e60009f0f48f3e06ef51ef6ba96babe7fb5b9bb5aa80e1effe49c7d1be8fd9309d5446afb1b9800f14e690a71b48b7f442ccc739092'
         '790f85266921ee4634a376132ae394276c85dfd270692406233dcd69ca1e86b9a7cfd0a264c7c51ab30051a225afc1bc3fa3c017f8ec58631e33d27269ece83d'

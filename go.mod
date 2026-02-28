@@ -1,6 +1,6 @@
 module github.com/liujed/dns01proxy-pkgbuild
 
-go 1.25.1
+go 1.26.0
 
 require (
 	github.com/BurntSushi/toml v1.5.0
