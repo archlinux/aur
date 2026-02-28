@@ -1,8 +1,8 @@
 # Maintainer: Regaan <regaan48@gmail.com>
 pkgname=wshawk
 _pkgname=wshawk
-pkgver=3.0.1
-pkgrel=3
+pkgver=3.0.2
+pkgrel=1
 pkgdesc="Enterprise-grade WebSocket security scanner & Web Penetration Testing Toolkit (Binary Release)"
 arch=('x86_64')
 url="https://github.com/noobforanonymous/wshawk"
@@ -13,7 +13,7 @@ provides=('wshawk-desktop')
 conflicts=('wshawk-git')
 source=("${pkgname}-${pkgver}.pacman::https://github.com/noobforanonymous/wshawk/releases/download/v${pkgver}/wshawk-${pkgver}.pacman"
         "logo.jpg::https://raw.githubusercontent.com/noobforanonymous/wshawk/main/desktop/src/assets/logo.jpg")
-sha256sums=('71e2779332842c7900e00c4c7ea16f772473d451118716a96c75e85a6caf748c'
+sha256sums=('a2efef42b739e1abcdcf3eb677d8f5ca1f2367cd5baad426217f1d79c9c01d57'
             'SKIP') # Skipping logo hash for now to get it working immediately
 
 package() {
