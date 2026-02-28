@@ -34,6 +34,6 @@ pkgbase = selkie
 	depends = glibc
 	optdepends = zenity: native file open dialog
 	source = selkie-0.1.0.tar.gz::https://github.com/aaddrick/selkie/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 4c1eda0d95f6253786402fdf1472ddabb6f7bc1ba453b696b67a6e79f2b14c62
+	sha256sums = f6b3f68c2d375c268deb647d8da757437de7053a9973411c2fce092af5497ef6
 
 pkgname = selkie
