@@ -1,6 +1,6 @@
 pkgbase = linux-xanmod-edge
 	pkgdesc = Linux Xanmod - Rolling Release [EDGE]
-	pkgver = 6.19.3
+	pkgver = 6.19.5
 	pkgrel = 1
 	url = http://www.xanmod.org/
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = linux-xanmod-edge
 	options = !strip
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.19.tar.xz
 	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.19.tar.sign
-	source = patch-6.19.3-xanmod1.xz::https://sourceforge.net/projects/xanmod/files/releases/edge/6.19.3-xanmod1/patch-6.19.3-xanmod1.xz/download
+	source = patch-6.19.5-xanmod1.xz::https://sourceforge.net/projects/xanmod/files/releases/main/6.19.5-xanmod1/patch-6.19.5-xanmod1.xz/download
 	source = choose-gcc-optimization.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = 303079a8250b8f381f82b03f90463d12ac98d4f6b149b761ea75af1323521357
 	sha256sums = SKIP
-	sha256sums = b9431b29064dc322f60d844e0f6fca47db63f46b4880f55c71d7c1bbb871e177
+	sha256sums = 1e1d9eb16a3699791bc270416083465bc010995bf4eaea0c30143424d2101517
 	sha256sums = 252688b672d7a6982c28120a9509d63d8dda230e3a21bafd1177819ca161c88f
 
 pkgname = linux-xanmod-edge
