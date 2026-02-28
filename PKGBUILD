@@ -1,6 +1,6 @@
 # Maintainer: Greg Lamberson <greg at lamco dot io>
 pkgname=lamco-rdp-server
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Native Wayland RDP server for GNOME, KDE, Sway, and Hyprland with H.264 encoding and VA-API acceleration"
 arch=('x86_64')
@@ -25,21 +25,32 @@ makedepends=(
 )
 optdepends=(
     'libva: VA-API hardware-accelerated H.264 encoding'
+    'vulkan-icd-loader: GPU-accelerated GUI rendering via wgpu'
     'xdg-desktop-portal-gnome: screen capture and remote input for GNOME'
     'xdg-desktop-portal-kde: screen capture and remote input for KDE Plasma'
     'xdg-desktop-portal-wlr: screen capture for Sway and wlroots compositors'
     'xdg-desktop-portal-hyprland: screen capture for Hyprland'
+    'openh264: H.264 software encoding via EGFX (Cisco binary, BSD-2-Clause)'
 )
+# makepkg's LTO injects -flto=auto into CFLAGS; GCC LTO bitcode in native
+# C libraries (aws-lc-sys, ring, opus) is invisible to the Rust linker.
+options=(!lto)
 backup=('etc/dbus-1/system.d/io.lamco.RdpServer.System.conf')
 source=("$pkgname-$pkgver.tar.xz::https://github.com/lamco-admin/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('0b0108544cea53aa69f7c85b2753982aa705cee370e9a927ad975d183094ce64')
+sha256sums=('536890136a48191b54edb4088a9396a9aad98ab8e12a3b160debc5bac00fcf71')
 
 build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # rust-lld (default since Rust 1.93) fails to link native C libraries
+    # (aws-lc-sys, ring, opus). Force the system cc linker via RUSTFLAGS.
+    # Thin LTO: fat LTO peaks at 8-10GB RAM; thin builds with ~4GB.
+    export RUSTFLAGS="-C linker=cc ${RUSTFLAGS:-}"
+    export CARGO_PROFILE_RELEASE_LTO=thin
+    export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=4
     # Vendored tarball: dependencies already in vendor/ with .cargo/config.toml
-    cargo build --frozen --release --no-default-features --features "pam-auth,h264"
+    cargo build --frozen --release --no-default-features --features "pam-auth,h264,gui,wayland,libei,wl-clipboard"
 }
 
 check() {
@@ -47,14 +58,15 @@ check() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     # Some tests require a Wayland session; allow failure in chroot builds
-    cargo test --frozen --no-default-features --features "pam-auth,h264" || true
+    cargo test --frozen --no-default-features --features "pam-auth,h264,gui,wayland,libei,wl-clipboard" || true
 }
 
 package() {
     cd "$pkgname-$pkgver"
 
-    # Binary
+    # Binaries
     install -Dm755 target/release/lamco-rdp-server "$pkgdir/usr/bin/lamco-rdp-server"
+    install -Dm755 target/release/lamco-rdp-server-gui "$pkgdir/usr/bin/lamco-rdp-server-gui"
 
     # Systemd user service
     install -Dm644 packaging/systemd/lamco-rdp-server.service \
