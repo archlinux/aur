@@ -1,0 +1,18 @@
+pkgbase = steel-git
+	pkgdesc = An embedded scheme interpreter in Rust
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://github.com/mattwparas/steel
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	makedepends = git
+	makedepends = cargo
+	makedepends = setconf
+	depends = glibc
+	provides = steel
+	conflicts = steel
+	options = !lto
+	source = git+https://github.com/mattwparas/steel.git
+	sha256sums = SKIP
+
+pkgname = steel-git
