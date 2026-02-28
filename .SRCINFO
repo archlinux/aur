@@ -24,6 +24,7 @@ pkgbase = python-unitypy-git
 	depends = python-tabulate
 	depends = python-fmod-tookit-git
 	depends = python-astc-encoder-py-git
+	depends = python-psutil
 	provides = python-unitypy
 	conflicts = python-unitypy
 	options = !strip
