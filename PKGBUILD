@@ -1,13 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=receiver
 _app_id=io.github.meehow.Receiver
-pkgver=0.3.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Discover 30,000+ verified radio stations from around the world"
 arch=('x86_64')
 url="https://github.com/meehow/receiver"
 license=('GPL-3.0-or-later')
 depends=(
+  'glib-networking'
   'gst-plugins-bad'
   'gst-plugins-base'
   'gst-plugins-good'
@@ -25,7 +26,7 @@ makedepends=(
   'vala'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b4b5d5dada6f9312326a650c21ae2cc77cbe6ef43fa10c9170f5a89e1818f399')
+sha256sums=('efa8ff12686484df3deeb879b1e697373f10556e23625def8acc58ac654f11f8')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
