@@ -3,7 +3,7 @@ pkgname=qoder-bin
 _pkgname=Qoder
 pkgver=0.4.7
 _electronversion=37
-pkgrel=2
+pkgrel=3
 pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://qoder.com/"
@@ -30,7 +30,7 @@ source=(
     "${pkgname%-bin}.sh"
 )
 sha256sums=('dd7a7758819407dcb68a26e87fa2bee6dc9d5b095aaec139a68b9e1253ab087a'
-            '5ef99067ca0a66509132e88eb4cf5b7f164174552fa0e3657c6278104811b021'
+            '065b5ac40d587593580b9968db37e96e155c42f3cdcbac6d87d1f39c74861ec9'
             '51c4f53005bf6cbfb3740a04f9ede901e7bb84cc60ad6a2bbae77e8355b34ebc'
             'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
 pkgver() {
@@ -59,7 +59,14 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/usr/share/${pkgname%-bin}/resources/app/"* "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/usr/share/${pkgname%-bin}/resources/app" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/usr/share/${pkgname%-bin}/resources/app" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/usr/share/${pkgname%-bin}/resources/app/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/usr/share/pixmaps/${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}"* -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml" -t "${pkgdir}/usr/share/appdata"
