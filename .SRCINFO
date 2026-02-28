@@ -15,7 +15,7 @@ pkgbase = wshawk
 	options = !debug
 	source = wshawk-3.0.2.pacman::https://github.com/noobforanonymous/wshawk/releases/download/v3.0.2/wshawk-3.0.2.pacman
 	source = logo.jpg::https://raw.githubusercontent.com/noobforanonymous/wshawk/main/desktop/src/assets/logo.jpg
-	sha256sums = a2efef42b739e1abcdcf3eb677d8f5ca1f2367cd5baad426217f1d79c9c01d57
+	sha256sums = 0312a8a8138f5d24cd61ef89d2d6d94bf111d02eaf69e0d4482028980d8b5da7
 	sha256sums = SKIP
 
 pkgname = wshawk
