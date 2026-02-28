@@ -5,7 +5,7 @@ _pkgname=bfree
 pkgname=${_pkgname}-bin
 pkgdesc="A better free, human by default"
 
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,9 +23,9 @@ depends=('glibc' 'libgcc')
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}")
-sha256sums=('db428035f440b4db034334f6d3357333d4584353826e2b9026c84bb5dab05acd'
+sha256sums=('bbf859c58da1a2c1c07c25e82698ca64f0a444014bedc8b6e8a47d64fdb1da2d'
             '07ec7d6e8c4890362dd7b638725abc54dc6449edbfa2fbabae6692dfbcebafd5')
-sha256sums_x86_64=('ac6bf30a8652d724d3233410a6808f68b573eacde359bee2e90f5707165ae67b')
+sha256sums_x86_64=('fe16095d8092c6961fea5a6c44b360d0dc8e3be59e97315cf5aa5c847dfdc58f')
 
 
 package() {
