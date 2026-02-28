@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Maintainer: Duncan <duncan@localhost>
-
+# shellcheck disable=SC2034
+# Maintainer: Duncan <duncan@mac-vicar.eu>
+# Co-Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 org=zed-industries
 realname=claude-agent-acp
 pkgname=$realname
