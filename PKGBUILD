@@ -25,13 +25,13 @@ sha256sums=(
 )
 
 build() {
-    cd "v$pkgver"
+    cd "${PROJECT}-$pkgver"
     patch -p1 < "${srcdir}/add-makefile.patch"
     patch -p1 < "${srcdir}/add-make-helper.patch"
     make DC=${DC} || return 1
 }
 
 package() {
-    cd "v$pkgver"
+    cd "${PROJECT}-$pkgver"
     make DESTDIR=$pkgdir install DC=${DC} || return 1
 }
