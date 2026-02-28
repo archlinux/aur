@@ -1,0 +1,20 @@
+pkgbase = m5rcode
+        pkgdesc = Modern programming language combining Python, C, Java, HolyC, Rust, and Ruby
+        pkgver = 0.1.0
+        pkgrel = 1
+        url = https://github.com/m5rcode/m5rcode
+        install = m5rcode.install
+        arch = x86_64
+        license = MIT
+        license = Apache
+        makedepends = rust
+        makedepends = cargo
+        makedepends = pkg-config
+        depends = gcc-libs
+        depends = glibc
+        optdepends = gtk3: for m5idle GUI
+        optdepends = llvm: for LLVM backend
+        source = https://github.com/m5rcode/m5rcode/releases/download/v0.1.0/m5rcode-0.1.0.tar.gz
+        sha256sums = SKIP
+
+pkgname = m5rcode

@@ -1,0 +1,22 @@
+post_install() {
+    echo "m5rcode has been installed!"
+    echo ""
+    echo "Quick start:"
+    echo "  m5rcode run hello.m5      # Run a script"
+    echo "  m5rcode repl              # Start interactive REPL"
+    echo "  m5rcode compile hello.m5  # Compile a script"
+    echo "  m5rcode fmt hello.m5      # Format code"
+    echo "  m5rcode ide               # Launch IDE"
+    echo "  m5rcode help              # Show all commands"
+    echo ""
+    echo "Documentation: /usr/share/doc/m5rcode/"
+    echo "Examples: /usr/share/doc/m5rcode/examples/"
+}
+
+post_upgrade() {
+    echo "m5rcode has been upgraded to version $2"
+}
+
+pre_remove() {
+    echo "Removing m5rcode..."
+}
