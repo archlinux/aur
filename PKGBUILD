@@ -1,4 +1,4 @@
-# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-02-27 11:42:28
+# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-02-28 10:04:43
 
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Maintainer: Piotr Gorski <piotrgorski@cachyos.org>
@@ -172,11 +172,11 @@ fi
 
 pkgbase="linux-cachyos-native"
 _major=6.19
-_minor=4
+_minor=5
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
-_tagrel=2
+_tagrel=1
 pkgrel=1
 #_stable=${_major}.${_minor}
 _stable=${_major}
@@ -810,7 +810,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('fdae47876ff30f643033bd6f6a178b6b2330c7e9707240faa3ea81cdd49d94fbce2ef8766a4a6d85044260f968b64722d4ce7d17993b2f32d0401f8dc83e263e'
+b2sums=('f843763709ea5dfcb6695cb43b2d043bfecd0d62b6c04588f92bd2d5b6d496fb9a03a51e65445919466a165961fda6f20571ef5a797d64853f522c2aad88c7d2'
         'af28fa649fc258e87227379cff688ea3bc1440cc23b9c1ee5a63805c618c8b5d37df420ba477afa38f10bbe2ad2ba3af525731e21d144decd8ff0284c0eefeb8'
         'ea26c88950fc06b6ffab93b30e3beacc7d26571a70262334ca8b001dc7899bf96b47d703fbaa7f4e47765c3dafccc23c58a4d4da2169b8ee50012afcb7a1dd96'
         'eae57ceccc78f0730fc4962b20f08f270bd21960e84ad5985433590e5229403a74bfc2518540f9e2ef07d319d9cb2288edfbe0d5f7a27cc7e0903aa61fed388c'
