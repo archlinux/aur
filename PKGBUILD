@@ -54,6 +54,9 @@ package() {
   install -d "$pkgdir/etc/${_pkgname}/curves"
   install -Dm644 curves/* "$pkgdir/etc/${_pkgname}/curves/"
 
+  # install default config file
+  install -Dm644 config.toml "$pkgdir/etc/${_pkgname}/config.toml"
+
   # install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
