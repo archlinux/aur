@@ -2,7 +2,6 @@
 pkgname=jlivertool
 _pkgname=JLiverTool
 pkgver=3.0.6
-_nodeversion=22
 pkgrel=1
 pkgdesc="Simple Bilibili Danmaku Tool.Bilibili 弹幕机."
 arch=('any')
