@@ -1,0 +1,13 @@
+pkgbase = vesper-claude-cost
+	pkgdesc = Claude Code cost tracker — per-project and per-model breakdowns
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Rinzlo/claude-cost
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	source = vesper-claude-cost-0.1.0.tar.gz::https://github.com/Rinzlo/claude-cost/archive/v0.1.0.tar.gz
+	sha256sums = dce11ba77b9a17e68397bff3723be48b44f52b0bf0526382c2e6a710b5e06668
+
+pkgname = vesper-claude-cost
