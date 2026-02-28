@@ -2,7 +2,7 @@
 # Maintainer: hyperpuncher
 
 pkgname='chough-bin'
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='Fast ASR CLI using Parakeet TDT 0.6b V3'
 url='https://github.com/hyperpuncher/chough'
@@ -13,7 +13,7 @@ conflicts=('chough')
 depends=('ffmpeg')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/hyperpuncher/chough/releases/download/v${pkgver}/chough_v${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('1dcaa798ab5bccc0ce48cffa981870caaa48184c4c595f98beabc7cd3803223d')
+sha256sums_x86_64=('404c3ee2b84bc92f371c063042974be4ec5c288884d7547377fe33989b3d1f67')
 
 package() {
   # Install binary and libraries to /opt/chough/
