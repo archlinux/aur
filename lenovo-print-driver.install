@@ -1,0 +1,101 @@
+# lenovo-print-driver.install
+post_install() {
+  PRINTERS="LJ2405D LJ2605D LJ2405 LJ2400Pro M7405D M7605D M7400Pro M7450FPro M7655DHF M7400W M7405DW M7605DW M7625DWA M7626DNA M7628DNA M7685DXF M7686DXF LJ2680DN M7680D M7460 M7480 M7690DNA M7490DNF M7675DXF M7455DNF M7615DNA LJ2655DN"
+  
+  ARCH=$(uname -m)
+  
+  if [ -d "/opt/lenovo/com.lenovo.lenovoprints/bin/lpd/$ARCH" ]; then
+    ln -sf "/opt/lenovo/com.lenovo.lenovoprints/bin/lpd/$ARCH/rawtobr3" \
+      "/opt/lenovo/com.lenovo.lenovoprints/bin/lpd/rawtobr3"
+    ln -sf "/opt/lenovo/com.lenovo.lenovoprints/bin/lpd/$ARCH/brprintconflsr3" \
+      "/opt/lenovo/com.lenovo.lenovoprints/bin/lpd/brprintconflsr3"
+  fi
+  
+  mkdir -p "/etc/opt/lenovo/com.lenovo.lenovoprints/bin/inf"
+  mkdir -p "/opt/lenovo/com.lenovo.lenovoprints/bin/lpd/inf"
+  
+  ln -sf "/opt/lenovo/com.lenovo.lenovoprints/bin/inf/brlenovoprintsrc" \
+    "/etc/opt/lenovo/com.lenovo.lenovoprints/bin/inf/brlenovoprintsrc"
+  ln -sf "/opt/lenovo/com.lenovo.lenovoprints/bin/inf/brlenovoprintsrc" \
+    "/opt/lenovo/com.lenovo.lenovoprints/bin/lpd/inf/brlenovoprintsrc"
+  
+  for printer in $PRINTERS; do
+    if [ ! -e "/usr/bin/brprintconflsr3_${printer}" ]; then
+      cat > "/usr/bin/brprintconflsr3_${printer}" << EOF
+#!/bin/sh
+/opt/lenovo/com.lenovo.lenovoprints/bin/lpd/brprintconflsr3 -P ${printer} "\$@"
+EOF
+      chmod 755 "/usr/bin/brprintconflsr3_${printer}"
+    fi
+    
+    # 创建 CUPS 过滤器链接
+    for filterdir in "/usr/lib/cups/filter" "/usr/lib32/cups/filter" \
+                     "/usr/lib/cups/filter" "/usr/libexec/cups/filter"; do
+      if [ -d "$filterdir" ] && [ ! -e "$filterdir/lenovo_${printer}" ]; then
+        ln -sf "/opt/lenovo/com.lenovo.lenovoprints/bin/cupswrapper/lpdwrapper" \
+          "$filterdir/lenovo_${printer}"
+      fi
+    done
+  done
+  
+  # 检查 perl 是否存在
+  if [ ! -e "/usr/bin/perl" ]; then
+    PERL_PATH=$(which perl 2>/dev/null)
+    if [ -n "$PERL_PATH" ] && [ -e "$PERL_PATH" ]; then
+      ln -sf "$PERL_PATH" "/usr/bin/perl"
+    else
+      echo "warring: no perl"
+    fi
+  fi
+  
+
+  if systemctl is-active cups.service &>/dev/null; then
+    echo "restart CUPS service..."
+    systemctl try-restart cups.service
+  fi
+  
+  echo "finished."
+}
+
+pre_upgrade() {
+  post_remove
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  PRINTERS="LJ2405D LJ2605D LJ2405 LJ2400Pro M7405D M7605D M7400Pro M7450FPro M7655DHF M7400W M7405DW M7605DW M7625DWA M7626DNA M7628DNA M7685DXF M7686DXF LJ2680DN M7680D M7460 M7480 M7690DNA M7490DNF M7675DXF M7455DNF M7615DNA LJ2655DN"
+  
+  rm -f "/opt/lenovo/com.lenovo.lenovoprints/bin/lpd/rawtobr3"
+  rm -f "/opt/lenovo/com.lenovo.lenovoprints/bin/lpd/brprintconflsr3"
+  
+  rm -f "/etc/opt/lenovo/com.lenovo.lenovoprints/bin/inf/brlenovoprintsrc"
+  rm -f "/opt/lenovo/com.lenovo.lenovoprints/bin/lpd/inf/brlenovoprintsrc"
+  
+  for printer in $PRINTERS; do
+    rm -f "/usr/bin/brprintconflsr3_${printer}"
+    rm -f "/usr/lib/cups/filter/lenovo_${printer}"
+    rm -f "/usr/lib32/cups/filter/lenovo_${printer}"
+    rm -f "/usr/libexec/cups/filter/lenovo_${printer}"
+    
+    rm -rf "/var/spool/lpd/${printer}"
+  done
+  
+  if [ -L "/usr/bin/perl" ] && [ "$(readlink /usr/bin/perl)" != "/usr/bin/perl" ]; then
+    rm -f "/usr/bin/perl"
+  fi
+}
+
+post_remove() {
+  rmdir --ignore-fail-on-non-empty "/etc/opt/lenovo/com.lenovo.lenovoprints/bin/inf" 2>/dev/null
+  rmdir --ignore-fail-on-non-empty "/etc/opt/lenovo/com.lenovo.lenovoprints/bin" 2>/dev/null
+  rmdir --ignore-fail-on-non-empty "/etc/opt/lenovo/com.lenovo.lenovoprints" 2>/dev/null
+  
+  if systemctl is-active cups.service &>/dev/null; then
+    systemctl try-restart cups.service
+  fi
+  
+  echo "removed."
+}
