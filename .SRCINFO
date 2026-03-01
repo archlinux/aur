@@ -1,6 +1,6 @@
 pkgbase = goose-desktop-bin
 	pkgdesc = Goose Desktop (prebuilt .deb repack) — an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM
-	pkgver = 1.26.0
+	pkgver = 1.26.1
 	pkgrel = 1
 	url = https://github.com/block/goose
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = goose-desktop-bin
 	provides = goose-desktop
 	conflicts = goose-desktop
 	options = !strip
-	source = goose_1.26.0_amd64.deb::https://github.com/block/goose/releases/download/v1.26.0/goose_1.26.0_amd64.deb
-	sha256sums = caeba3c20315684f97e3e1e1b8f934a834bd7bad56da4809a5fbae1b3e2ccc57
+	source = goose_1.26.1_amd64.deb::https://github.com/block/goose/releases/download/v1.26.1/goose_1.26.1_amd64.deb
+	sha256sums = b67d60491ea9df962220c9eddb4fc2cf8c53c15770dff87eb32e664614e43d3b
 
 pkgname = goose-desktop-bin
