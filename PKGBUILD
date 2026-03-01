@@ -26,7 +26,7 @@ depends=(
 	'sdl2'
 )
 makedepends=('git' 'xxd' 'autoconf-archive')
-source=('git+https://github.com/karlstav/cava.git' 'autoconf-archive-fix.patch')
+source=('git+https://github.com/karlstav/cava.git')
 conflicts=($_pkgname)
 provides=($_pkgname)
 sha1sums=('SKIP' 'SKIP')
@@ -38,7 +38,6 @@ pkgver() {
 
 prepare() {
   cd $_pkgname
-	patch -p1 -i ../autoconf-archive-fix.patch
   ./autogen.sh
 }
 

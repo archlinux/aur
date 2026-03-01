@@ -23,7 +23,6 @@ pkgbase = cava-git
 	provides = cava
 	conflicts = cava
 	source = git+https://github.com/karlstav/cava.git
-	source = autoconf-archive-fix.patch
 	sha1sums = SKIP
 	sha1sums = SKIP
 
