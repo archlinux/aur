@@ -1,7 +1,7 @@
 # Maintainer: WackyIdeas <wackyideas@disroot.org>
 
 pkgname=('aerothemeplasma-desktop-x11-git')
-pkgver=6.6.1_661.r138762c
+pkgver=6.6.1_662.ra70f432
 pkgrel=1
 pkgdesc="X11 session for AeroThemePlasma"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/aeroshell-desktop/aerothemeplasma"
 license=('AGPL-3.0-or-later')
 depends=(aerothemeplasma-desktop
          aeroshell-kwin-components-x11
-         aeroshell-smod-x11
+         aeroshell-smodglow-x11
          aeroshell-libplasma
          aeroshell-workspace)
 makedepends=(git

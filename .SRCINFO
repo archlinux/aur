@@ -1,6 +1,6 @@
 pkgbase = aerothemeplasma-desktop-x11-git
 	pkgdesc = X11 session for AeroThemePlasma
-	pkgver = 6.6.1_661.r138762c
+	pkgver = 6.6.1_662.ra70f432
 	pkgrel = 1
 	url = https://github.com/aeroshell-desktop/aerothemeplasma
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = aerothemeplasma-desktop-x11-git
 	makedepends = extra-cmake-modules
 	depends = aerothemeplasma-desktop
 	depends = aeroshell-kwin-components-x11
-	depends = aeroshell-smod-x11
+	depends = aeroshell-smodglow-x11
 	depends = aeroshell-libplasma
 	depends = aeroshell-workspace
 	provides = aerothemeplasma-desktop-x11
