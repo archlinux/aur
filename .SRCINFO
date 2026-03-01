@@ -1,0 +1,23 @@
+pkgbase = python-vsmuxtools
+	pkgdesc = The extension to muxtools with vapoursynth and encoding stuff
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://pypi.org/project/vsmuxtools/
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	depends = vapoursynth
+	depends = vapoursynth-plugin-vsjetpack
+	depends = python-numpy
+	depends = python-muxtools
+	provides = vapoursynth-plugin-vsmuxtools
+	provides = python-vsmuxtools
+	conflicts = vapoursynth-plugin-vsmuxtools
+	source = https://files.pythonhosted.org/packages/b0/18/991555dd0034dc16cc9581dfac09a95e373ffc32140d93ae856f04884a96/vsmuxtools-0.4.2.tar.gz
+	sha256sums = 12b841f0f07c98756d616922531af51fb016b74c20d2e79a90e5bf12f54d8ced
+
+pkgname = python-vsmuxtools
