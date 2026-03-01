@@ -1,8 +1,9 @@
 pkgbase = mewline-git
-	pkgdesc = 😺 Elegant and extensible status bar for the meowrch distribution
+	pkgdesc = Status bar for the meowrch distribution. Supports hyprland/bspwm.
 	pkgver = r1.0.0
 	pkgrel = 1
 	url = https://github.com/meowrch/mewline
+	install = mewline.install
 	arch = any
 	license = MIT
 	makedepends = python-uv
@@ -19,10 +20,16 @@ pkgbase = mewline-git
 	depends = tesseract-data-eng
 	depends = tesseract-data-rus
 	depends = cliphist
+	depends = brightnessctl
+	depends = ddcutil
+	depends = slop
+	depends = scrot
 	provides = mewline
 	conflicts = mewline
 	options = !debug
 	source = git+https://github.com/meowrch/mewline.git
+	source = mewline.install
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mewline-git

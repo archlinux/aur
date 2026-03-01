@@ -1,0 +1,12 @@
+post_install() {
+  echo "=> Adding user \${SUDO_USER:-\$USER} to i2c group for external monitor brightness control..."
+  # Добавляем пользователя, который вызвал makepkg (или sudo pacman -U), в группу i2c
+  usermod -aG i2c "${SUDO_USER:-$USER}" || true
+
+  echo "=> You might need to reload the i2c-dev module: sudo modprobe i2c-dev"
+  echo "=> Please logout and login again for group changes to take effect."
+}
+
+post_upgrade() {
+  post_install
+}
