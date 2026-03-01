@@ -1,0 +1,25 @@
+pkgbase = uup-converter-git
+	pkgdesc = A basic UUP converter aimed at Linux and macOS users who don't have access to any Windows machine, but want or need to create an ISO image for latest Windows Insider version downloaded from UUP dump (uupdump.net).
+	pkgver = 0.7.3.r63.20251026.dbc65de
+	pkgrel = 1
+	url = https://git.uupdump.net/uup-dump/converter
+	arch = any
+	groups = uup-dump
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = aria2
+	depends = cabextract
+	depends = chntpw
+	depends = findutils
+	depends = grep
+	depends = wimlib
+	depends = cdrtools
+	provides = uup-converter=0.7.3.r63.20251026.dbc65de
+	conflicts = uup-converter
+	source = uup-converter::git+https://git.uupdump.net/uup-dump/converter.git
+	source = uup-converter.sh
+	sha256sums = SKIP
+	sha256sums = 50f3218e9b89d6956ed3bac141fd80f6c93e54367ee94bb06392eb760358cac3
+
+pkgname = uup-converter-git
