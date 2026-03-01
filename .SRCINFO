@@ -1,5 +1,5 @@
 pkgbase = projtlauncher
-	pkgdesc = A modernized, community-driven Minecraft launcher based on the MultiMC/Prism Launcher lineage.
+	pkgdesc = A Minecraft launcher and automation stack for long-term project health.
 	pkgver = 0.0.4
 	pkgrel = 4
 	url = https://projecttick.org/p/projt-launcher

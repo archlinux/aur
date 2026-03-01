@@ -3,7 +3,7 @@
 pkgname=projtlauncher
 pkgver=0.0.4
 pkgrel=4
-pkgdesc='A modernized, community-driven Minecraft launcher based on the MultiMC/Prism Launcher lineage.'
+pkgdesc='A Minecraft launcher and automation stack for long-term project health.'
 url='https://projecttick.org/p/projt-launcher'
 arch=(x86_64 aarch64)
 license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1')
