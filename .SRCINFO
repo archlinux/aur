@@ -1,11 +1,10 @@
 pkgbase = karukan
 	pkgdesc = Japanese Input Method System for Linux, Neural Kana-Kanji Conversion Engine + fcitx5 IME
 	pkgver = 0.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/togatoga/karukan
 	arch = x86_64
-	license = MIT
-	license = Apache-2.0
+	license = MIT OR Apache-2.0
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = rust
