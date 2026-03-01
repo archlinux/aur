@@ -1,6 +1,6 @@
 pkgbase = yawns
 	pkgdesc = Your Adaptable Widget Notification System
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/ikz87/yawns
 	arch = any
@@ -12,7 +12,8 @@ pkgbase = yawns
 	depends = python-cssutils
 	depends = python-xlib
 	depends = python-gobject
-	source = https://github.com/ikz87/yawns/releases/download/v1.2.0/yawns-v1.2.0.tar.gz
-	sha256sums = 8ef45420ac3631a111e3cec95a417e19abb86527017aff34fc6393801c608a5c
+	depends = python-setproctitle
+	source = https://github.com/ikz87/yawns/releases/download/v1.2.1/yawns-v1.2.1.tar.gz
+	sha256sums = e099c2f694be0a69e7b456c0b3072eb5d4f161b6153a3d4fa8376582e7ff99b8
 
 pkgname = yawns

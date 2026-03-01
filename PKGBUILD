@@ -1,6 +1,6 @@
 # Maintainer: Isaac Arcia <iikz87ii@gmail.com>
 pkgname=yawns
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Your Adaptable Widget Notification System"
 arch=('any')
@@ -14,10 +14,11 @@ depends=(
     'python-cssutils'
     'python-xlib'
     'python-gobject'
+    'python-setproctitle'
 )
 # Note: This expects the release asset created by the packaging script
 source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('8ef45420ac3631a111e3cec95a417e19abb86527017aff34fc6393801c608a5c')
+sha256sums=('e099c2f694be0a69e7b456c0b3072eb5d4f161b6153a3d4fa8376582e7ff99b8')
 
 package() {
     # 1. Enter the extracted directory
