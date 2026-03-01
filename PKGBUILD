@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lhs
-_pkgver=1.2.0
+_pkgver=1.2.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Latin Hypercube Samples"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -19,8 +19,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('f4d7ba180184a9401626d903aa04dda9')
-b2sums=('0576e49344ed462ecefbc6a391f58279c6f49521c0f0d956c5d46879f0d54d37a527322f93afe666cd0d6da01ff3668f78b6d35ca7f5fe83fa371a57e411c05e')
+md5sums=('12128ac8afac4407eb752a4234459686')
+b2sums=('de9ec8a0b77129b87b4b624ffe53ff2d96837c778e434e51142a6bd271602af947679d2e38d0d701e26c2cc44a84fc51cf4c32eccf8c331078a05371e2fed86b')
 
 build() {
   mkdir build
