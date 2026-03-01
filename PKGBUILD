@@ -1,6 +1,6 @@
 # Maintainer: LAA
 pkgname=bupdate-git
-pkgver=0.1.7.r0.g94ff655
+pkgver=0.1.8.r0.gaee95b8
 pkgrel=1
 pkgdesc="Universal package updater — parallel updates for Linux, BSD and Windows (built from git)"
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ provides=('bupdate')
 conflicts=('bupdate' 'bupdate-bin')
 makedepends=('cargo' 'git')
 depends=('gcc-libs')
+options=(!debug)
 optdepends=(
     'sudo: privilege elevation for system package managers'
     'systemd: sleep inhibition during updates'
