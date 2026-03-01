@@ -1,6 +1,6 @@
 # Maintainer: Zynix <crossmacro@zynix.net>
 pkgname=crossmacro
-pkgver=0.9.8.pre.2
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="Cross-platform mouse and keyboard macro automation tool"
 arch=('x86_64')
@@ -9,16 +9,16 @@ license=('GPL-3.0')
 depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr' 'polkit' 'libxtst' 'systemd-libs')
 makedepends=('dotnet-sdk>=10.0' 'clang' 'zlib')
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v0.9.8-pre.2.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v0.9.8.tar.gz"
         "crossmacro.sysusers"
         "crossmacro-modules.conf")
-sha256sums=('1470ec79909286c60ac3ef563147fa93348796db7aba1f399566643506617e77'
+sha256sums=('a7d477ebd717350354ff20331a0597ba6788376a37eecc7ba9d9ab45c58a590d'
             'SKIP'
             'SKIP')  # sysusers and modules config checksums (local files)
 install=crossmacro.install
 
 build() {
-    cd "CrossMacro-0.9.8-pre.2"
+    cd "CrossMacro-0.9.8"
     
     export DOTNET_SKIP_WORKLOAD_INTEGRITY_CHECK=1
     dotnet restore -r linux-x64
@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-    cd "CrossMacro-0.9.8-pre.2"
+    cd "CrossMacro-0.9.8"
     
     # Install UI files
     install -dm755 "$pkgdir/usr/lib/$pkgname"
