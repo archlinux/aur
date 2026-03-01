@@ -7,7 +7,7 @@ _appname=${_pkgname}
 pkgname=${_cratename}
 pkgdesc="A terminal user interface (TUI) for visualizing and exploring strace output"
 
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -25,7 +25,7 @@ provides=("${_appname}")
 conflicts=("${_appname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('829b3726cff1e2d5495dfaebcece0ddc188367b34149020db3c2fb2ace4c4bf3')
+sha256sums=('7cb4a4564b3f6fbd7be2e059893b74b06eca51ab549cae870639b41e689f231c')
 
 
 build() {

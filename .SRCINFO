@@ -1,6 +1,6 @@
 pkgbase = strace-tui
 	pkgdesc = A terminal user interface (TUI) for visualizing and exploring strace output
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Rodrigodd/strace-tui
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = strace-tui
 	depends = libgcc
 	provides = strace-tui
 	conflicts = strace-tui
-	source = strace-tui-1.0.0.crate::https://crates.io/api/v1/crates/strace-tui/1.0.0/download
-	sha256sums = 829b3726cff1e2d5495dfaebcece0ddc188367b34149020db3c2fb2ace4c4bf3
+	source = strace-tui-1.0.1.crate::https://crates.io/api/v1/crates/strace-tui/1.0.1/download
+	sha256sums = 7cb4a4564b3f6fbd7be2e059893b74b06eca51ab549cae870639b41e689f231c
 
 pkgname = strace-tui
