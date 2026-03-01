@@ -1,4 +1,8 @@
 # Maintainer: Mario Ray Mahardhika <leledumbo_cool@yahoo.co.id>
+# Maintainer: kleines Filmröllchen <kleines at filmroellchen dot eu>
+# SPDX-FileCopyrightText: 2025-2026 kleines Filmröllchen <kleines at filmroellchen dot eu>
+# SPDX-License-Identifier: 0BSD
+
 pkgname=karlyriceditor
 pkgver=4.1.2
 pkgrel=1

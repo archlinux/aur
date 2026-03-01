@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2025-2026 kleines Filmröllchen <kleines at filmroellchen dot eu>
+# SPDX-License-Identifier: 0BSD
+
 postinstall() {
   gtk-update-icon-cache -f /usr/share/icons/hicolor
   update-desktop-database -q
