@@ -1,6 +1,6 @@
 pkgbase = cristalix
 	pkgdesc = Cristalix Launcher
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://cristalix.gg
 	arch = x86_64
@@ -14,6 +14,6 @@ pkgbase = cristalix
 	source = Cristalix.png
 	sha256sums = SKIP
 	sha256sums = a281ca9e806bb440677be9e5bf267cbe7dce68f9a2fe303f715f753a27bd3cd4
-	sha256sums = e8e58bbf9a1047e5b65b33ed9503e9bea2e13841109bc235cdf0b253fb55225b
+	sha256sums = 98fe3880a14cbecc6c8fce10b4159cedbe1b36103cb8448a0f83c9afadd61546
 
 pkgname = cristalix

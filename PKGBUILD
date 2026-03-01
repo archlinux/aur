@@ -1,5 +1,5 @@
 pkgname=cristalix
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Cristalix Launcher"
 arch=('x86_64')
@@ -15,7 +15,7 @@ noextract=("Cristalix.jar")
 sha256sums=(
     'SKIP'
     'a281ca9e806bb440677be9e5bf267cbe7dce68f9a2fe303f715f753a27bd3cd4'
-    'e8e58bbf9a1047e5b65b33ed9503e9bea2e13841109bc235cdf0b253fb55225b'
+    '98fe3880a14cbecc6c8fce10b4159cedbe1b36103cb8448a0f83c9afadd61546'
 )
 
 package() {
