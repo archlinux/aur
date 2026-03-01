@@ -2,7 +2,7 @@
 # Co-Maintainer: Lysec <itslysec@gmail.com>
 pkgname=noctalia-shell
 pkgver=4.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell."
 arch=('any')
 url="https://github.com/noctalia-dev/noctalia-shell"
@@ -15,6 +15,7 @@ depends=(
   'ffmpeg'
   'qt6-multimedia'
   'python'
+  'wlr-randr'
 )
 optdepends=(
   'cliphist: For clipboard history support'
