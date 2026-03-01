@@ -1,10 +1,11 @@
 pkgbase = omnidotdev-terminal-bin
 	pkgdesc = GPU-accelerated terminal emulator built to run everywhere (pre-built)
 	pkgver = 0.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://terminal.omni.dev
 	arch = x86_64
 	license = MIT
+	makedepends = ncurses
 	depends = fontconfig
 	depends = freetype2
 	depends = libxkbcommon

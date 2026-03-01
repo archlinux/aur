@@ -1,12 +1,13 @@
 # Maintainer: Omni LLC <team@omni.dev>
 pkgname=omnidotdev-terminal-bin
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GPU-accelerated terminal emulator built to run everywhere (pre-built)"
 arch=('x86_64')
 url="https://terminal.omni.dev"
 license=('MIT')
 depends=('fontconfig' 'freetype2' 'libxkbcommon' 'wayland')
+makedepends=('ncurses')
 provides=('omnidotdev-terminal')
 conflicts=('omnidotdev-terminal')
 source=("https://github.com/omnidotdev/terminal/releases/download/v$pkgver/omni-terminal-x86_64-unknown-linux-gnu.tar.gz"
@@ -30,6 +31,6 @@ package() {
   install -Dm644 "omni-terminal.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/omni-terminal.svg"
   install -Dm644 "dev.omni.Terminal.metainfo.xml" "$pkgdir/usr/share/metainfo/dev.omni.Terminal.metainfo.xml"
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 "omni-terminal.terminfo" "$pkgdir/usr/share/terminfo/o/omni-terminal"
+  tic -sx -o "$pkgdir/usr/share/terminfo" "omni-terminal.terminfo"
   install -Dm644 "NOTICE" "$pkgdir/usr/share/doc/$pkgname/NOTICE"
 }
