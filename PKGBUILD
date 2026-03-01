@@ -54,6 +54,7 @@ package() {
 	cp -p ../flashpoint-launcher.sh "${pkgdir}/usr/bin/flashpoint-launcher"
 
 	echo "Creating the desktop file..."
+    chmod +x "./setup-desktop-entry.sh"
     ENTRY="${srcdir}/flashpoint-archive.desktop" FP_DIR="/opt/Flashpoint/" "./setup-desktop-entry.sh"
 
 	echo "Installing licenses and desktop file..."
