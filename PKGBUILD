@@ -1,7 +1,7 @@
 # Maintainer: mineleng <15119587808@163.com>
 pkgname=apmw
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Apt-PacMan Warpper - 一个将apt风格命令转换为pacman命令的包装器"
 arch=('any')
 license=('MIT')
@@ -15,6 +15,6 @@ build() {
 }
 
 package() {
-    cd "apm-1.0"
+    cd "apmw-1.0"
     install -Dm755 apmw -t "$pkgdir/usr/bin/"
 }
