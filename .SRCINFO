@@ -1,6 +1,6 @@
 pkgbase = doudou-unstable
 	pkgdesc = Music player for self-hosted services (unstable build from GitHub)
-	pkgver = 15.0.0
+	pkgver = 15.0.1
 	pkgrel = 1
 	url = https://openlyst.ink
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = doudou-unstable
 	provides = doudou
 	conflicts = doudou
 	options = !strip
-	source = doudou-unstable-15.0.0.zip::https://github.com/openlyst/builds/releases/download/build-22/doudou-15.0.0-2026-02-27-linux-x64.zip
+	source = doudou-unstable-15.0.1.zip::https://github.com/openlyst/builds/releases/download/build-23/doudou-15.0.1-2026-03-01-linux-x64.zip
 	sha256sums = SKIP
 
 pkgname = doudou-unstable
