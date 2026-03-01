@@ -10,7 +10,7 @@ makedepends=('gcc')
 source=("https://gitee.com/mineleng/apmw/archive/refs/tags/1.0.tar.gz")
 sha256sums=('64120156fbdbdb70f8488153dc7c444061bfc7fe79b77ebeda40730aaaab65ef')
 build() {
-    cd "1.0.0/apmw-1.0.0"
+    cd "apmw-1.0.0"
     gcc -o apmw apmw.c
 }
 
