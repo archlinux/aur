@@ -1,0 +1,17 @@
+pkgbase = lithium
+	pkgdesc = Simple package manager
+	pkgver = 0.0.r6.g58d0959
+	pkgrel = 1
+	url = https://codeberg.org/holos/lithium
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = just
+	depends = libconfig
+	depends = wget
+	provides = lithium
+	conflicts = lithium
+	source = git+https://codeberg.org/holos/lithium.git
+	sha256sums = SKIP
+
+pkgname = lithium
