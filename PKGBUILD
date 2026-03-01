@@ -1,6 +1,6 @@
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 pkgname=claude-conversation-search
-pkgver=1.3.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="CLI + MCP tool for searching Claude Code conversation history with Tantivy/BM25"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-only')
 makedepends=('cargo')
 options=('!lto')
 source=("$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('9dc1d2056d3257285de901a5abe1dc1edea8645117447288abf907622f034b64')
+sha256sums=('9de1657109878155df2f6f9688f602fb16b190f97d1e47d297fd429f15a80970')
 
 build() {
     cd "$pkgname-$pkgver"
