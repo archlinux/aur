@@ -5,7 +5,7 @@ _pkgname=headroom
 pkgname=${_pkgname}-bin
 pkgdesc="Audio loudness analyzer and gain adjustment tool for mastering workflows"
 
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,7 +25,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-linux-${arch[0]}.tar.gz")
 sha256sums=('45f62ea4b8704c36e13c62bdafb15076fc8bf618b9722496534193700a7f61bc'
             '31b22e666493fb90db39f7483e3efe298bb0068512b1d27dab9fe7044c7b7854')
-sha256sums_x86_64=('b21b4232c747ffaade44d9a66e668f5f533401e44220ead313d6ef615e697789')
+sha256sums_x86_64=('82dd517d0265b080dbfbe3ab23af1e4f5e3d4083c23db8a6ac3ec5dfca41da4b')
 
 
 package() {
