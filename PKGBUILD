@@ -15,6 +15,6 @@ build() {
 }
 
 package() {
-    cd "1.0.0/apm-1.0.0"
+    cd "apm-1.0.0"
     install -Dm755 apmw -t "$pkgdir/usr/bin/"
 }
