@@ -3,7 +3,7 @@
 
 pkgname=hotspot
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="The Linux perf GUI for performance analysis"
 arch=('x86_64')
@@ -31,7 +31,7 @@ depends=(
     'threadweaver'
     'vulkan-headers'
 )
-makedepends=('cmake>=3.16.0' 'desktop-file-utils' 'extra-cmake-modules')
+makedepends=('cmake>=3.16.0' 'desktop-file-utils' 'extra-cmake-modules' 'git')
 optdepends=('binutils: Support for annotating individual instructions'
             'rustc-demangle>=0.1.18-2: Demangling of Rust symbols')
 source=("git+$url#commit=b0b3c64725abacb1a1966afe5fabe18fd0f84a1b"

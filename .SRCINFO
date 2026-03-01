@@ -1,7 +1,7 @@
 pkgbase = hotspot
 	pkgdesc = The Linux perf GUI for performance analysis
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/KDAB/hotspot
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = hotspot
 	makedepends = cmake>=3.16.0
 	makedepends = desktop-file-utils
 	makedepends = extra-cmake-modules
+	makedepends = git
 	depends = elfutils
 	depends = kconfig
 	depends = kconfigwidgets
