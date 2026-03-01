@@ -2,7 +2,7 @@ post_install() {
   set -e
   cd /usr/share/unisec
   #rm -f Gemfile.lock
-  bundle config build.nokogiri --use-system-libraries
+  bundle config set build.nokogiri --use-system-libraries
   bundle config set --local path 'vendor/bundle'
   bundle config set --local without development install test lint docs
   bundle install

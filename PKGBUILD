@@ -2,7 +2,7 @@
 
 pkgname=unisec
 _gemname=$pkgname
-pkgver=0.0.6
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='Unicode Security Toolkit.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('ruby')
 makedepends=('git' 'ruby-bundler')
 source=("https://github.com/noraj/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('5922fde428d93ad12df1ade61d188d5f4e8731d704a824e69b7f8beeb7c4d4199393ad327c1b34382b7b2fba7477a78ddd38f2c2263e094ba15da68fbf6e3093')
+sha512sums=('b931d6a6c9a63de77ac7caded9a00845f32e33cf06ee971248956d5d2b794f9b6712f079cbdf44aec9df553412a928644535830e65da96dd4d70a7079eefde40')
 install="$pkgname.install"
 
 package() {
