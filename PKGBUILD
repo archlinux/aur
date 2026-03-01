@@ -6,7 +6,7 @@ pkgrel=0
 _build=6560963780
 pkgdesc="System fetch utility is aimed at informativeness"
 arch=(x86_64)
-url="https://gitlab.com/omnid/scu"
+url="https://gitlab.com/charidot/scu"
 license=(GPL-3.0-or-later)
 depends=(
   gcc-libs
