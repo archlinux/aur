@@ -1,10 +1,10 @@
-# Maintainer: crockednloaded <https://github.com/crockednloaded>
+# Maintainer: stev3m <https://gitlab.com/vibesmiths>
 pkgname=heatsync-bin
 pkgver=1.0.70
 pkgrel=1
 pkgdesc="Real-time system monitor with per-component gauges, sparklines, and vendor-aware hardware labels"
 arch=('x86_64')
-url="https://github.com/crockednloaded/HeatSync"
+url="https://gitlab.com/vibesmiths/HeatSync"
 license=('MIT')
 depends=('fuse2')
 optdepends=(
@@ -15,12 +15,12 @@ provides=('heatsync')
 conflicts=('heatsync')
 options=('!strip')
 source=(
-    "HeatSync-${pkgver}.AppImage::https://github.com/crockednloaded/HeatSync/releases/download/v${pkgver}/HeatSync.AppImage"
-    "icon.png::https://raw.githubusercontent.com/crockednloaded/HeatSync/main/assets/icon.png"
+    "HeatSync-${pkgver}.AppImage::https://gitlab.com/vibesmiths/HeatSync/-/releases/v${pkgver}/downloads/HeatSync.AppImage"
+    "icon.png::https://gitlab.com/vibesmiths/HeatSync/-/raw/main/assets/icon.png"
 )
 sha256sums=(
     '3acd169e745f7c5f31f63c5873ceb0db67da5049d8c986324c6749ffb1b3d021'
-    '6be6c05cda1330bb0a4cfa8428a769fa891e88a71e2b78288e67071df37fa449'
+    '5fd30558f5018d4acca05659f38830c5bd47bf384c8df27025284b359d5fce4a'
 )
 noextract=("HeatSync-${pkgver}.AppImage")
 
@@ -55,6 +55,6 @@ EOF
     # License
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" << 'EOF'
 MIT License — Copyright (c) 2025 crockednloaded
-See https://github.com/crockednloaded/HeatSync/blob/main/LICENSE for full text.
+See https://gitlab.com/vibesmiths/HeatSync/-/blob/main/LICENSE for full text.
 EOF
 }
