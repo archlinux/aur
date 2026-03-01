@@ -1,0 +1,29 @@
+From bf826b0da0990fffa8378392407b8e43e0bf5034 Mon Sep 17 00:00:00 2001
+From: Stelios Tsampas <loathingkernel@gmail.com>
+Date: Mon, 2 Mar 2026 00:33:26 +0200
+Subject: [PATCH] fixup! build: update makefile for more configurability and
+ higher cpu instruction sets
+
+---
+ Makefile.in | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Makefile.in b/Makefile.in
+index 311283898..07f2eae6c 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -735,6 +735,11 @@ $(eval $(call rules-configure,ffmpeg,aarch64,unix))
+ ## gst-libav
+ ##
+ 
++GST_LIBAV_MESON_ARGS := \
++    $(GST_LTO) \
++    -Dtests=disabled \
++    -Ddoc=disabled \
++
+ GST_LIBAV_DEPENDS = gst_orc gstreamer gst_base ffmpeg
+ 
+ $(eval $(call rules-source,gst_libav,$(SRCDIR)/gstreamer/subprojects/gst-libav))
+-- 
+2.53.0
+

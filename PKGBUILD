@@ -2,12 +2,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-cachyos
-_srctag=10.0-20260207
+_srctag=10.0-20260227
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=10.4.1
-_xaliaver=0.4.7
+_xaliaver=0.4.8
 pkgrel=3
 epoch=1
 
@@ -16,8 +16,8 @@ source=(
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     https://github.com/madewokherd/xalia/releases/download/xalia-${_xaliaver}/xalia-${_xaliaver}-net48-mono.zip
+    0001-fixup-build-update-makefile-for-more-configurability.patch
     compatibilitytool.vdf.template
-    proton-cachyos-unbundle-libs.patch
 )
 noextract=(
     wine-gecko-${_geckover}-{x86,x86_64}.tar.xz
@@ -214,7 +214,8 @@ prepare() {
     [ ! -d build ] && mkdir build
 
     cd proton-cachyos
-    patch -Np1 -i "$srcdir"/proton-cachyos-unbundle-libs.patch
+
+    patch -Np1 -i "$srcdir"/0001-fixup-build-update-makefile-for-more-configurability.patch
 
     [ ! -d contrib ] && mkdir -p contrib
     mv "$srcdir"/wine-gecko-${_geckover}-x86{,_64}.tar.xz contrib/
@@ -292,8 +293,8 @@ build() {
         --container-engine="none" \
         --proton-sdk-image="" \
         --build-name="${pkgname}" \
-        --without-bundled-wayland-libs \
-        --without-bundled-libpcap \
+        --without-wayland-libs \
+        --without-libpcap \
         --without-tts
 
     SUBJOBS=$([[ "$MAKEFLAGS" =~ -j\ *([1-9][0-9]*) ]] && echo "${BASH_REMATCH[1]}" || echo "$(nproc)") \
@@ -340,10 +341,10 @@ package() {
         $(find "${_monodir}" -iname "*x86_64.dll" -or -iname "*x86_64.exe")
 }
 
-b2sums=('02881f4c6bc9f0ce1ca4431d52cd7aa86716944b7d6dc1df4f9398ef90a301f093e4662498db48fa7de790c4e4226fd4ea8f8b158bc495fa5c1c90ad3910417b'
+b2sums=('cf91d405c7690752a13a21e21f95ede898b0731ef99b17da20d4b5d499d4b0dca8bf22486feae5d91e4433b670fe7738729afcf59f6c8e86b7e114e18c61ed26'
         '2a73c12585b502ae11188482cbc9fb1f45f95bfe4383a7615011104b132f4845f9813d01fb40277e1934fab5f1b35ab40b4f4a66a9967463dd1d666a666904e9'
         '62856a88266b4757602c0646e024f832974a93f03b9df253fd4895d4f11a41b435840ad8f7003ec85a0d8087dec15f2e096dbfb4b01ebe4d365521e48fd0c5c0'
         '9ca53dee272470806432c61587080e6dc04fd9eaafde4f55f5d57d5557ec6859d77a74b74c9e3f472da04b8ace9609f0927573faab368a25249c76b3e37e65c1'
-        'ae80d4bfb1ce425e86e8ff9d371cd5f87977215a020c090a216a068024860c928ce5372087d15825c6be26848e967041acd1392f2c980f9785358335355ef099'
-        'f0a81d83e644ca074a6bf54fc74ae12f5bd047e29d87fab528fba20e4b8d013547ad4b26e912c2b3218a75114f5c76b64aa84fdbc3054d3a1d9bf96635c6212b'
-        'cef0bb60bc9c26056e96a3796059ff7ded9333a28ccdc9ce49710a517e700ccf77267deaaf834507e3c18c757725b1a1407ef624856c2bac02fdeff94b7f6695')
+        '0780740dd2f07de5c00e0c8d1823bc24e31954d6ccb7875678957aea5e095d5eb8dc13ea9cc56a00abfccdcad59e21150e49fe515815f50e0bd38b50f6ec940c'
+        '715f26f984ac007b6d34631db29d35fd0e3aa1e7e7c3bc12d6ecf6fd5f094f286b7ea725739c3e25b79f8bd157e5149308d8dfb0be16dcd0e9a84e696f8ac08e'
+        'f0a81d83e644ca074a6bf54fc74ae12f5bd047e29d87fab528fba20e4b8d013547ad4b26e912c2b3218a75114f5c76b64aa84fdbc3054d3a1d9bf96635c6212b')
