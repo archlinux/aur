@@ -1,0 +1,23 @@
+pkgbase = eos-smart-update
+	pkgdesc = Smart Update Wrapper for EndeavourOS & Arch Linux with safety checks and backups
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/motorrin/EndeavourOS_Smart_Update_Wrapper
+	arch = any
+	license = MIT
+	depends = bash
+	depends = python
+	depends = pacman
+	depends = tar
+	depends = gawk
+	depends = coreutils
+	depends = psmisc
+	optdepends = reflector: for Arch Linux mirror updates
+	optdepends = eos-rankmirrors: for EndeavourOS mirror updates
+	optdepends = yay: AUR helper support
+	optdepends = paru: AUR helper support
+	optdepends = topgrade: for comprehensive system updates
+	source = https://github.com/motorrin/EndeavourOS_Smart_Update_Wrapper/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = fa1beae0f22885eb364c70d21e2fe97aaf3dcfa80e599561fd1e8eb9be269c7f
+
+pkgname = eos-smart-update
