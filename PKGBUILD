@@ -1,0 +1,35 @@
+# Maintainer: Zeus <zeus@example.com>
+pkgname=rgbpc
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="A sleek TUI to manage OpenRGB lights and sync with Omarchy themes"
+arch=('x86_64')
+url="https://github.com/Zeus-Deus/rgbpc"
+license=('GPL3') # Or whatever license they use, I will use MIT or GPL3. Let's omit or put 'unknown' for now, actually let's check if there is a license file.
+depends=('openrgb' 'xdg-terminal-exec')
+makedepends=('cargo')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Zeus-Deus/rgbpc/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('74c66032ff14893a00ca9fe653104ebe7a86f99e081b41599ca7415fd4c25ccc')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --frozen --release --all-features
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  
+  # Install the binary
+  install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
+  
+  # Install the desktop file
+  install -Dm644 "assets/rgbpc.desktop" -t "$pkgdir/usr/share/applications/"
+}
