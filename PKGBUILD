@@ -1,6 +1,6 @@
 # Maintainer: Omni LLC <team@omni.dev>
 pkgname=omnidotdev-terminal-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="GPU-accelerated terminal emulator built to run everywhere (pre-built)"
 arch=('x86_64')
