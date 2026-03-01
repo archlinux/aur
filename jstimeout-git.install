@@ -1,0 +1,11 @@
+post_install() {
+  echo "==> jstimeout: edit your device list at ~/.config/jstimeout/devices"
+  echo "    A default is copied there automatically on first run."
+  echo "    Add controller names from /proc/bus/input/devices, one per line."
+  echo ""
+  echo "    See /usr/share/jstimeout/devices.example for reference."
+}
+
+post_upgrade() {
+  post_install
+}

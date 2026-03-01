@@ -1,6 +1,6 @@
 # Maintainer: 0x90shell
 pkgname=jstimeout-git
-pkgver=r10.87ec7d1
+pkgver=r12.d40560d
 pkgrel=1
 pkgdesc='Auto-disconnect idle Bluetooth gamepads after a configurable timeout'
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ depends=('bluez-utils')
 makedepends=('git' 'go')
 provides=('jstimeout')
 conflicts=('jstimeout')
+install=jstimeout-git.install
 source=("${pkgname}::git+https://github.com/0x90shell/jstimeout.git")
 sha256sums=('SKIP')
 
@@ -31,6 +32,6 @@ build() {
 package() {
   cd "$pkgname"
   install -Dm755 jstimeout "$pkgdir/usr/bin/jstimeout"
-  install -Dm644 .jstimeout.devices "$pkgdir/usr/share/jstimeout/jstimeout.devices.example"
+  install -Dm644 .jstimeout.devices "$pkgdir/usr/share/jstimeout/devices.example"
   install -Dm644 README.md "$pkgdir/usr/share/doc/jstimeout/README.md"
 }
