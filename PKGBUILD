@@ -6,35 +6,34 @@
 
 pkgname=python-speechrecognition
 pkgver=3.14.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Speech recognition module for Python, supporting several engines and APIs'
 arch=('any')
 url='https://github.com/Uberi/speech_recognition'
 license=('BSD-3-Clause')
 depends=(
   'flac'
-  'python-audioop'
-  'python-requests'
-  'python-tensorflow'
-  'python-botocore'
-  'python-boto3'
-  'python-aifc'
+  'python-audioop-lts'
+  'python-standard-aifc'
+  'python-typing_extensions'
 )
 optdepends=(
   'python-pyaudio: required for microphone input'
-  'python-pocketsphinx'
-  'python-vosk'
-  'python-whisper'
-  'python-google-api-core: Google cloud speech'
-  'python-faster-whisper: required for Whisper'
-  'python-typing_extensions: required for faster Whisper'
-  'python-pytorch: Required for Whisper'
-  'python-numpy: required for Whisper'
-  'python-openai: required for OpenAI'
-  'python-soundfile: required for Whisper'
-  'python-google-cloud-speech: required for Google Cloud Speech-toText API'
-  'python-vosk: required for Vosk recognizer'
-  'python-groq: required for Groq Whisper API'
+  'python-pocketsphinx: CMU Sphinx backend (local)'
+  'python-google-cloud-speech: Google Cloud Speech-to-Text backend'
+  'python-google-api-core: required for Google Cloud Speech-to-Text'
+  'python-tensorflow: Tensorflow backend (local)'
+  'python-vosk: Vosk backend (local)'
+  'python-whisper: OpenAI Whisper backend (local)'
+  'python-faster-whisper: Faster Whisper backend (local)'
+  'python-numpy: required for local Whisper'
+  'python-pytorch: required for local Whisper'
+  'python-soundfile: required for local Whisper'
+  'python-openai: OpenAI Whisper API backend'
+  'python-groq: Groq Whisper API backend'
+  'python-requests: AssemblyAI Speech-to-Text backend'
+  'python-boto3: Amazon Lex and Amazon Transcribe backends'
+  'python-botocore: required for Amazon Transcribe'
 )
 makedepends=(
   'python-build'
@@ -43,10 +42,16 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=(
-  'python-pocketsphinx'
   'python-pytest'
-  'python-httpx'
+  'python-pytest-randomly'
   'python-respx'
+  'python-numpy'
+  'python-pocketsphinx' # test_recognition.py
+  'python-httpx' # whisper_api/ tests
+  'python-openai' # test_openai.py
+  'python-groq' # test_groq.py
+  'python-google-cloud-speech' # test_google_cloud.py
+  'python-cryptography' # test_google_cloud.py
 )
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${pkgver}.tar.gz")
 b2sums=('b7dea453352f6cb6721ebb67cdaa9da09d522d0500b2c7286f11067b1566abe15b23b5a3c1654af1fc7db4b90bb26b09685f78de77c2b04f3adc31a7f7438408')
@@ -63,13 +68,7 @@ build() {
 check() {
   cd "${srcdir}/speech_recognition-${pkgver}"
 
-  python -m pytest \
-    -k "not test_google_cloud" \
-    --ignore=tests/recognizers/test_google_cloud.py \
-    --ignore=tests/recognizers/test_groq.py \
-    --ignore=tests/test_special_features.py \
-    --ignore=tests/recognizers/whisper_api/test_groq.py \
-    tests/ || true
+  python -m pytest --doctest-modules --ignore=tests/recognizers/test_vosk.py speech_recognition/recognizers/ tests/
 }
 
 package() {
