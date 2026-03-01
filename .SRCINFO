@@ -1,7 +1,7 @@
 pkgbase = cava-git
 	pkgdesc = Console-based Audio Visualizer for Alsa. Development version.
 	pkgver = r1136.20a5997
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/karlstav/cava
 	arch = i686
 	arch = x86_64
@@ -23,7 +23,6 @@ pkgbase = cava-git
 	provides = cava
 	conflicts = cava
 	source = git+https://github.com/karlstav/cava.git
-	sha1sums = SKIP
 	sha1sums = SKIP
 
 pkgname = cava-git

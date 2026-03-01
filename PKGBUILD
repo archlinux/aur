@@ -5,7 +5,7 @@
 pkgname=cava-git
 _pkgname=cava
 pkgver=r1136.20a5997
-pkgrel=1
+pkgrel=2
 pkgdesc='Console-based Audio Visualizer for Alsa. Development version.'
 arch=('i686' 'x86_64')
 url='https://github.com/karlstav/cava'
@@ -29,7 +29,7 @@ makedepends=('git' 'xxd' 'autoconf-archive')
 source=('git+https://github.com/karlstav/cava.git')
 conflicts=($_pkgname)
 provides=($_pkgname)
-sha1sums=('SKIP' 'SKIP')
+sha1sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
