@@ -13,13 +13,13 @@ provides=("mprisence")
 install=mprisence-bin.install
 _filename="$_pkgname-$pkgver-$CARCH-unknown-linux-gnu.tar.gz"
 source=("$url/releases/download/$pkgver/$_filename"
-        "mprisence-bin.install"
-        "mprisence.service"
-        "LICENSE")
-sha256sums=("SKIP"
-            "SKIP"
-            "SKIP"
-            "SKIP")
+  "mprisence-bin.install"
+  "mprisence.service"
+  "LICENSE")
+sha256sums=("94434c41812d9afeab255dfc9003f9a5b5bcf07b780252adcd67198418733640"
+  "SKIP"
+  "SKIP"
+  "SKIP")
 
 package() {
   cd "$srcdir"
