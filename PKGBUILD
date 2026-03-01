@@ -2,7 +2,7 @@
 
 _reponame="PT-depiler"
 pkgname="${_reponame,,}"
-pkgver=0.0.5.1502
+pkgver=0.0.5.1538
 pkgrel=1
 pkgdesc="A web extension that can improve the efficiency of PT sites, based on PT-Plugin-Plus and Manifest v3."
 arch=("any")
@@ -13,7 +13,7 @@ license=("MIT")
 makedepends=("git" "nodejs" "pnpm")
 optdepends=('edge-stable' 'google-chrome')
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('9e61c29ebfaeb5a5078be284c6f6e3ed65f7ac074e05ef880e250200fa23a62c')
+sha256sums=('df789874f2326d487b2a2966a0503cdf1936ab5e984aa8006682fea476afb0f3')
 
 build() {
     cd "${pkgname}"
