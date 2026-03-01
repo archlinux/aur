@@ -1,0 +1,11 @@
+Privli is proprietary software distributed by Xuanping.
+
+This file is included so Linux package managers can install a local copy of
+the product license and redistribution notice alongside the application.
+
+You may redistribute unmodified Privli release artifacts only for the purpose
+of packaging and installing the application. No rights are granted to modify,
+reverse engineer, sublicense, or create derivative works unless separately
+authorized in writing by the copyright holder.
+
+Copyright (c) Xuanping. All rights reserved.
