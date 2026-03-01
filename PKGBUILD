@@ -1,10 +1,10 @@
 # Maintainer: Isaac Arcia <iikz87ii@gmail.com>
 pkgname=yawns
-pkgver=1.1.2
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Your Adaptable Widget Notification System"
 arch=('any')
-url="https://github.com/ikz87/yawns/tree/main"
+url="https://github.com/ikz87/yawns"
 license=('GPL-3.0')
 depends=(
     'python'
@@ -15,40 +15,49 @@ depends=(
     'python-xlib'
     'python-gobject'
 )
-source=("https://github.com/ikz87/yawns/archive/refs/tags/v$pkgver.zip")
-sha256sums=('9cac57b9072db319f5799afb2b06133a2116502da4f8c6a1204fef1afd79eaae')
-
-# Custom variable for configuration files
-_configdir="$pkgdir/etc/xdg/$pkgname"
+# Note: This expects the release asset created by the packaging script
+source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.gz")
+sha256sums=('8ef45420ac3631a111e3cec95a417e19abb86527017aff34fc6393801c608a5c')
 
 package() {
-    # Extract the source directory
-    cd "$srcdir/$pkgname-$pkgver"
+    # 1. Enter the extracted directory
+    cd "$srcdir/$pkgname-v$pkgver"
 
-    # Install the main program
-    install -Dm755 "src/app.py" "$pkgdir/usr/share/$pkgname/app.py"  # Correct path
+    # 2. Create the destination directory
+    install -d "$pkgdir/usr/lib/$pkgname"
 
-    # Install Python files
-    install -Dm644 "src/yawns_manager.py" "$pkgdir/usr/share/$pkgname/yawns_manager.py"
-    install -Dm644 "src/yawns_notifications.py" "$pkgdir/usr/share/$pkgname/yawns_notifications.py"
-    install -Dm644 "src/gtk_helpers.py" "$pkgdir/usr/share/$pkgname/gtk_helpers.py"
-    install -Dm644 "src/backends/X11.py" "$pkgdir/usr/share/$pkgname/backends/X11.py"
+    # 3. Copy EVERYTHING from the source to the destination
+    # This ensures src/, assets/, config.ini, etc. are all there
+    cp -r * "$pkgdir/usr/lib/$pkgname/"
 
-    # Install assets
-    install -Dm644 "assets/yawns-logo.png" "$pkgdir/usr/share/$pkgname/assets/yawns-logo.png"
-    install -Dm644 "assets/vinyl.png" "$pkgdir/usr/share/$pkgname/assets/vinyl.png"
-
-    # Install configuration and style files to system-wide config directory
-    install -Dm644 "src/style.qss" "$pkgdir/usr/share/$pkgname/style.qss"
-    install -Dm644 "src/config.ini" "$pkgdir/usr/share/$pkgname/config.ini"
-
-    # Create a wrapper script for first-run setup and execution
-    install -Dm755 -d "$pkgdir/usr/bin"  # Ensure the directory exists for the wrapper script
-    echo '#!/bin/bash
-if [ ! -d "$HOME/.config/yawns" ]; then
-    mkdir -p "$HOME/.config/yawns"
-    cp -r /usr/share/yawns/* "$HOME/.config/yawns"
+    # 4. Create the wrapper script
+    install -d "$pkgdir/usr/bin"
+    
+    cat > "$pkgdir/usr/bin/$pkgname" <<EOF
+#!/bin/bash
+# Check if config dir exists in user home
+if [ ! -d "\$HOME/.config/yawns" ]; then
+    mkdir -p "\$HOME/.config/yawns"
+    echo "Creating default config..."
+    
+    # Copy defaults from the installed library
+    # Note: adjusting path to match where they actually are in the repo
+    if [ -f "/usr/lib/yawns/src/config.ini" ]; then
+        cp "/usr/lib/yawns/src/config.ini" "\$HOME/.config/yawns/"
+    elif [ -f "/usr/lib/yawns/config.ini" ]; then
+        cp "/usr/lib/yawns/config.ini" "\$HOME/.config/yawns/"
+    fi
+    
+    if [ -f "/usr/lib/yawns/src/style.qss" ]; then
+        cp "/usr/lib/yawns/src/style.qss" "\$HOME/.config/yawns/"
+    elif [ -f "/usr/lib/yawns/style.qss" ]; then
+        cp "/usr/lib/yawns/style.qss" "\$HOME/.config/yawns/"
+    fi
 fi
-exec python3 /usr/share/yawns/app.py "$@"' > "$pkgdir/usr/bin/$pkgname"
+
+# EXECUTE THE APP
+exec python3 /usr/lib/yawns/src/app.py "\$@"
+EOF
+
     chmod +x "$pkgdir/usr/bin/$pkgname"
 }
