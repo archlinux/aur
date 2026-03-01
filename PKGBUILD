@@ -1,10 +1,10 @@
-# Maintainer: Dmitry <dimflix.official@gmail.com>
+# Maintainer: dimflix <dimflix.official@gmail.com>
 pkgname=mewline
 conflicts=('mewline-git')
 provides=('mewline-git')
-pkgver=1.4.1
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="😺 Elegant and extensible status bar for the meowrch distribution (stable)"
+pkgdesc="Status bar for the meowrch distribution. Supports hyprland/bspwm."
 arch=('any')
 url="https://github.com/meowrch/mewline"
 license=('MIT')
@@ -20,15 +20,20 @@ depends=(
   'tesseract-data-eng'
   'tesseract-data-rus'
   'cliphist'
+  'brightnessctl'
+  'ddcutil'
+  'slop'
+  'scrot'
 )
 makedepends=(
   'python-uv'
   'git'
   'python-virtualenv'
 )
+install=mewline.install
 options=('!debug')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4cf8572c0e5da07a9e368271836679c8b83e2fdcf1ba19d96c995c8ad3a43074')
+sha256sums=('33997a3936de6c63bdbb6a01483ec0e3b29c5a299e6b5d71edfc80b0f425eecb')
 
 package() {
   cd "$srcdir/mewline-$pkgver"
