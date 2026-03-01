@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=phyloseq
-_pkgver=1.54.0
+_pkgver=1.54.1
 pkgname=r-${_pkgname,,}
-pkgver=1.54.0
+pkgver=1.54.1
 pkgrel=1
 pkgdesc='Handling and analysis of high-throughput microbiome census data'
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3b4618689d0006aa0f305fba2ae011215f0343c30965e664c7495b15f5240a00')
+sha256sums=('78113746323363ebdd62a38374f3495751b5293cf6d630c5807289659eea3bfe')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
