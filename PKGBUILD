@@ -1,8 +1,8 @@
 # Ilya Dikariev <dikiy_evrej_REMOVE_THIS_SHIT_at_web.de>
 
 pkgname=defendguin
-pkgver=0.0.12
-pkgrel=2
+pkgver=0.0.13
+pkgrel=1
 pkgdesc="The arcade oldschool fly and shot game"
 arch=('i686' 'x86_64')
 url="http://www.newbreedsoftware.com/defendguin"
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=
 changelog=
-source=("ftp://ftp.tuxpaint.org/unix/x/defendguin/src/defendguin-0.0.12.tar.gz" Makefile.patch)
+source=("ftp://ftp.tuxpaint.org/unix/x/defendguin/src/defendguin-0.0.13.tar.gz" Makefile.patch)
 noextract=()
-md5sums=('a543e3f5f4e935546116384c6f20d782' '90808584660a8948b58569934bce05e4') #generate with 'makepkg -g'
+md5sums=('11ffbe135c26f579359cd5bd396c1462' '90808584660a8948b58569934bce05e4') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
