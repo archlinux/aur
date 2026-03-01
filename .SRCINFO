@@ -1,6 +1,6 @@
 pkgbase = spaghettikart-git
 	pkgdesc = An unofficial native port of Mario Kart 64 (git)
-	pkgver = 0.9.9.1.r227.g5fc7aebf8
+	pkgver = 0.9.9.1.r238.gaaae77f3b
 	pkgrel = 1
 	url = https://github.com/HarbourMasters/SpaghettiKart
 	install = spaghettikart.install
@@ -35,7 +35,7 @@ pkgbase = spaghettikart-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = c3ddb5e596b0d17aab6cf5851558b56dd65057f406b9b2f2baac363fe82c59d2
+	sha256sums = 9dc9125a0498a26e4878abdbef3f102602af2d0608312e5ae302b1b68b4d4f27
 	sha256sums = 4c17e6b2514dbc11c87542b2c99bb2de1fed8747a562b9c26a908c3ea86a6f5e
 
 pkgname = spaghettikart-git

@@ -2,7 +2,7 @@
 
 _reponame=SpaghettiKart
 pkgname=spaghettikart-git
-pkgver=0.9.9.1.r227.g5fc7aebf8
+pkgver=0.9.9.1.r238.gaaae77f3b
 pkgrel=1
 pkgdesc="An unofficial native port of Mario Kart 64 (git)"
 license=("unknown" "MIT")
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'c3ddb5e596b0d17aab6cf5851558b56dd65057f406b9b2f2baac363fe82c59d2'
+            '9dc9125a0498a26e4878abdbef3f102602af2d0608312e5ae302b1b68b4d4f27'
             '4c17e6b2514dbc11c87542b2c99bb2de1fed8747a562b9c26a908c3ea86a6f5e')
 
 SHIP_PREFIX=/opt/spaghettikart
@@ -62,7 +62,7 @@ prepare() {
   _init_submodule torch Torch
 
   # Required patch for compilation
-  patch -Np1 -i "../spaghettikart-cmake-flags.patch"
+  #patch -Np1 -i "../spaghettikart-cmake-flags.patch"
 }
 
 build() {
