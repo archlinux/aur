@@ -1,7 +1,7 @@
 # Maintainer: Campbell Barton <ideasman42@gmail.com>
 _pkgname=ionwl
 _version=git
-pkgver=0.1.0.r1.gede39c4
+pkgver=0.1.0.r3.gb8c2f88
 pkgname=${_pkgname}-${_version}
 pkgrel=1
 pkgdesc="Manual tiling Wayland compositor."
