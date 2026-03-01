@@ -15,6 +15,7 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export CARGO_PROFILE_RELEASE_DEBUG=true
     cargo build --release
 }
 
