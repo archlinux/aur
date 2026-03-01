@@ -1,4 +1,5 @@
 # Maintainer: Funami
+
 pkgname=wasm-pack-bin
 pkgver=0.10.2
 pkgrel=1
