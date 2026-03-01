@@ -1,8 +1,8 @@
 pkgbase = scu-bin
 	pkgdesc = System fetch utility is aimed at informativeness
 	pkgver = 2.1.0
-	pkgrel = 0
-	url = https://gitlab.com/omnid/scu
+	pkgrel = 1
+	url = https://gitlab.com/charidot/scu
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = gcc-libs
