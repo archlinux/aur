@@ -13,7 +13,8 @@ provides=('Solar2D')
 conflicts=('Solar2D')
 source=("git+https://github.com/coronalabs/corona.git#branch=master"
         "Solar2D.desktop")
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '6f482f05a09b2372901c6d5ff6e8e1a0c9b8a39dc8b49ea0acc1c10e3ed338e4')
 
 # Disable LTO and buildflags to prevent errors with legacy code on modern GCC
 options=('!lto' '!buildflags')
@@ -52,5 +53,5 @@ package() {
   # Use DESTDIR to redirect installation to the package directory
   DESTDIR="$pkgdir" cmake --install build
   ln -s /usr/bin/Solar2D/Solar2D "${pkgdir}/usr/bin/solar2d"
-  install -Dm644 "${srcdir}/solar2d.desktop" "${pkgdir}/usr/share/applications/solar2d.desktop"
+  install -Dm644 "${srcdir}/Solar2D.desktop" "${pkgdir}/usr/share/applications/Solar2D.desktop"
 }

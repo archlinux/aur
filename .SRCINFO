@@ -24,5 +24,6 @@ pkgbase = solar2d-git
 	source = git+https://github.com/coronalabs/corona.git#branch=master
 	source = Solar2D.desktop
 	sha256sums = SKIP
+	sha256sums = 6f482f05a09b2372901c6d5ff6e8e1a0c9b8a39dc8b49ea0acc1c10e3ed338e4
 
 pkgname = solar2d-git
