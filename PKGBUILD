@@ -27,6 +27,6 @@ build() {
 
 package() {
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.TXT -t "$pkgdir/usr/share/share/$pkgname/"
+	install -Dm644 README.TXT -t "$pkgdir/usr/share/doc/$pkgname/"
 	install -Dm755 asm6 -t "$pkgdir/usr/bin/"
 }
