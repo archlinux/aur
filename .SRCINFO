@@ -1,0 +1,16 @@
+pkgbase = cloud-cli-bin
+	pkgdesc = Cloud.ru CLI — command-line interface for managing Cloud.ru services
+	pkgver = 4.2.12
+	pkgrel = 1
+	url = https://cloud.ru/docs/cloud-cli/ug/topics/guides__install-cli-linux
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	provides = cloud-cli
+	conflicts = cloud-cli
+	source_x86_64 = cloud-cli-bin-4.2.12-amd64.tar.gz::https://sbc-cli.obs.ru-moscow-1.hc.sbercloud.ru/cli/4.2.12/cloud-cli-linux-amd64.tar.gz
+	sha256sums_x86_64 = 642d8b33afb113ffb36bd6e87fc1faf5add65fd01dae316cbd3f65c9d1c508ed
+	source_aarch64 = cloud-cli-bin-4.2.12-arm64.tar.gz::https://sbc-cli.obs.ru-moscow-1.hc.sbercloud.ru/cli/4.2.12/cloud-cli-linux-arm64.tar.gz
+	sha256sums_aarch64 = e7b977bb41616acdc474671c76835f9cb529238fe6f39c0953a53854c19b63c3
+
+pkgname = cloud-cli-bin

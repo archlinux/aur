@@ -1,0 +1,3 @@
+[cloud-cli-bin]
+source = "cmd"
+cmd = "tmp=$(mktemp) && curl -sL https://sbc-cli.obs.ru-moscow-1.hc.sbercloud.ru/cli/latest/cloud-cli-linux-amd64.tar.gz | tar -xzO cloud > \"$tmp\" && chmod +x \"$tmp\" && \"$tmp\" version 2>&1 | grep -oP '\\d+\\.\\d+\\.\\d+'; rm -f \"$tmp\""
