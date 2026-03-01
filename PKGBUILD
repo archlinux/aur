@@ -1,0 +1,39 @@
+# Maintainer: WackyIdeas <wackyideas@disroot.org>
+
+pkgname=('aeroshell-smodglow-x11-git')
+pkgver=6.6.1_24.r7980cc9
+pkgrel=1
+pkgdesc="Decoration button glow effect for SMOD decorations"
+arch=(x86_64)
+url="https://gitgud.io/aeroshell/smod"
+license=('AGPL-3.0-or-later')
+depends=(gcc-libs
+         glibc
+         qt6-base
+         libepoxy
+         kcoreaddons
+         aeroshell-smod
+         kwin-x11)
+makedepends=(git
+             extra-cmake-modules
+             kdoctools)
+options=('!debug')
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+conflicts=(aeroshell-smod-x11)
+provides=(aeroshell-smod-x11)
+
+pkgver() {
+  cd "$srcdir/${pkgname%}"
+  echo "$(grep 'set(PROJECT_VERSION ' CMakeLists.txt | cut -d '"' -f 2)_$(git rev-list --count HEAD).r$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cmake -B build -S ${pkgname%}/smodglow \
+    -DBUILD_TESTING=OFF
+  cmake --build build
+}
+
+package() {
+  DESTDIR="$pkgdir" cmake --install build
+}

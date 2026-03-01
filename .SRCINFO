@@ -1,0 +1,24 @@
+pkgbase = aeroshell-smodglow-x11-git
+	pkgdesc = Decoration button glow effect for SMOD decorations
+	pkgver = 6.6.1_24.r7980cc9
+	pkgrel = 1
+	url = https://gitgud.io/aeroshell/smod
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = extra-cmake-modules
+	makedepends = kdoctools
+	depends = gcc-libs
+	depends = glibc
+	depends = qt6-base
+	depends = libepoxy
+	depends = kcoreaddons
+	depends = aeroshell-smod
+	depends = kwin-x11
+	provides = aeroshell-smod-x11
+	conflicts = aeroshell-smod-x11
+	options = !debug
+	source = aeroshell-smodglow-x11-git::git+https://gitgud.io/aeroshell/smod.git
+	sha256sums = SKIP
+
+pkgname = aeroshell-smodglow-x11-git
