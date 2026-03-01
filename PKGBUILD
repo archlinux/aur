@@ -18,6 +18,7 @@ depends=(
   glibc
   libgudev
   libgusb
+  opencv
   openssl
   pixman
 )
@@ -30,7 +31,6 @@ makedepends=(
   python-cairo
   python-gobject
   systemd
-  opencv
   cmake
   doctest
 )

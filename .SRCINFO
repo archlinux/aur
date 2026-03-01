@@ -17,7 +17,6 @@ pkgbase = libfprint-cs9711-git
 	makedepends = python-cairo
 	makedepends = python-gobject
 	makedepends = systemd
-	makedepends = opencv
 	makedepends = cmake
 	makedepends = doctest
 	depends = gcc-libs
@@ -25,6 +24,7 @@ pkgbase = libfprint-cs9711-git
 	depends = glibc
 	depends = libgudev
 	depends = libgusb
+	depends = opencv
 	depends = openssl
 	depends = pixman
 	provides = libfprint=1.94.10+28.r1866.20260227.c3691e54
