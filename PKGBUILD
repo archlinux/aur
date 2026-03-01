@@ -1,7 +1,7 @@
 # Maintainer: Briar Campbell <nex@nexusxe.com>
 _pkgname=fw-fanctrl-rs
 pkgname=${_pkgname}-git
-pkgver=r23.gf38a594
+pkgver=r37.gea01337
 pkgrel=1
 pkgdesc="A lightweight, pure-Rust daemon for custom fan control on Framework laptops"
 arch=('x86_64')
@@ -12,6 +12,8 @@ backup=('etc/fw-fanctrl-rs/config.toml')
 makedepends=('cargo-nightly' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+
+install="${_pkgname}.install"
 
 source=("git+${url}.git")
 b2sums=('SKIP')
