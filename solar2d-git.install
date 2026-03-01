@@ -1,0 +1,9 @@
+post_install() {
+  echo ">>> NOTE: Solar2D may crash on startup (SIGABRT) if certain game controllers"
+  echo ">>> or flight sim peripherals (hotas, pedals, etc.) are connected."
+  echo ">>> If the application fails to start, please try disconnecting these."
+}
+
+post_upgrade() {
+  post_install
+}
