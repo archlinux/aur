@@ -1,0 +1,24 @@
+pkgbase = gryt-chat-bin
+	pkgdesc = Gryt Chat — real-time voice chat desktop client
+	pkgver = 1.0.131
+	pkgrel = 1
+	url = https://gryt.chat
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	depends = alsa-lib
+	depends = gtk3
+	depends = libnotify
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	optdepends = libappindicator-gtk3: tray icon support
+	optdepends = avahi: LAN server discovery via mDNS
+	provides = gryt-chat
+	conflicts = gryt-chat
+	options = !strip
+	options = !debug
+	source = https://github.com/Gryt-chat/gryt/releases/download/v1.0.131/Gryt-Chat-1.0.131-linux-amd64.deb
+	sha256sums = SKIP
+
+pkgname = gryt-chat-bin
