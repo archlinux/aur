@@ -15,6 +15,7 @@ pkgbase = aside
 	makedepends = python-scikit-build
 	makedepends = wayland-protocols
 	makedepends = cmake
+	makedepends = git
 	depends = wayland
 	depends = cairo
 	depends = pango
@@ -29,11 +30,11 @@ pkgbase = aside
 	optdepends = grim: screenshot plugin
 	optdepends = slurp: screenshot region selection
 	source = aside-0.1.0.tar.gz::https://github.com/scottstav/aside/archive/v0.1.0.tar.gz
-	source = piper1-gpl-1.4.1.tar.gz::https://github.com/OHF-Voice/piper1-gpl/archive/v1.4.1.tar.gz
+	source = piper1-gpl::git+https://github.com/OHF-Voice/piper1-gpl.git#tag=v1.4.1
 	source = en_US-lessac-medium.onnx::https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx
 	source = en_US-lessac-medium.onnx.json::https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json
 	sha256sums = 2ed42aa3f8bbbd47d9cbe9d3c38ab358a2b4bf05cfb21fa928798f64bb03ded3
-	sha256sums = 2ed52a87bb7a2b7a181f6ad38d8f78f3f753ff9fc02c68377e897f20b6ae8247
+	sha256sums = SKIP
 	sha256sums = 5efe09e69902187827af646e1a6e9d269dee769f9877d17b16b1b46eeaaf019f
 	sha256sums = efe19c417bed055f2d69908248c6ba650fa135bc868b0e6abb3da181dab690a0
 

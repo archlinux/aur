@@ -31,6 +31,7 @@ makedepends=(
     'python-scikit-build'
     'wayland-protocols'
     'cmake'
+    'git'
 )
 optdepends=(
     'grim: screenshot plugin'
@@ -38,17 +39,17 @@ optdepends=(
 )
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-    "piper1-gpl-$_piperver.tar.gz::https://github.com/OHF-Voice/piper1-gpl/archive/v$_piperver.tar.gz"
+    "piper1-gpl::git+https://github.com/OHF-Voice/piper1-gpl.git#tag=v$_piperver"
     "en_US-lessac-medium.onnx::https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx"
     "en_US-lessac-medium.onnx.json::https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json"
 )
 sha256sums=('2ed42aa3f8bbbd47d9cbe9d3c38ab358a2b4bf05cfb21fa928798f64bb03ded3'
-            '2ed52a87bb7a2b7a181f6ad38d8f78f3f753ff9fc02c68377e897f20b6ae8247'
+            'SKIP'
             '5efe09e69902187827af646e1a6e9d269dee769f9877d17b16b1b46eeaaf019f'
             'efe19c417bed055f2d69908248c6ba650fa135bc868b0e6abb3da181dab690a0')
 
 prepare() {
-    cd "$srcdir/piper1-gpl-$_piperver"
+    cd "$srcdir/piper1-gpl"
     sed -i 's/"cmake", "ninja"//' pyproject.toml
 }
 
@@ -58,7 +59,7 @@ build() {
     python -m build --wheel --no-isolation
 
     # Build piper-tts wheel from source
-    cd "$srcdir/piper1-gpl-$_piperver"
+    cd "$srcdir/piper1-gpl"
     python -m build --wheel --no-isolation
 
     # Create fully isolated venv
@@ -71,7 +72,7 @@ build() {
 
     # Install piper-tts from the wheel we just built
     "$_pip" install --no-cache-dir --no-deps \
-        "$srcdir/piper1-gpl-$_piperver/dist/"piper_tts-*.whl
+        "$srcdir/piper1-gpl/dist/"piper_tts-*.whl
     "$_pip" install --no-cache-dir onnxruntime pathvalidate
 
     # Install all remaining Python deps
