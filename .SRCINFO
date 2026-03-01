@@ -1,0 +1,23 @@
+pkgbase = pwmenu-bin
+	pkgdesc = Launcher-driven audio manager for Linux
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/e-tho/pwmenu
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	depends = libpipewire
+	provides = pwmenu
+	conflicts = pwmenu
+	source = README-0.4.0.md::https://raw.githubusercontent.com/e-tho/pwmenu/v0.4.0/README.md
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/e-tho/pwmenu/v0.4.0/LICENSE.md
+	sha256sums = 0862aab1964b15b192d87d11164101738a671fc7533221af5240fb7e4d76ee59
+	sha256sums = 5735febb4249f2fea35481266e47668eb890404f83714ec3d12f68e80c95d72f
+	source_x86_64 = pwmenu-x86_64-0.4.0::https://github.com/e-tho/pwmenu/releases/download/v0.4.0/pwmenu-x86_64-linux-gnu
+	sha256sums_x86_64 = 72e5f128a82194aa85caf406fcffd6d995cc0e7e4135f6cc1dfc9bce2f15413e
+	source_aarch64 = pwmenu-aarch64-0.4.0::https://github.com/e-tho/pwmenu/releases/download/v0.4.0/pwmenu-aarch64-linux-gnu
+	sha256sums_aarch64 = e74ba334555f62c84d2131fdf0ec593d717f06d990ccfbb3f98c2c2dbdf7bcbe
+
+pkgname = pwmenu-bin

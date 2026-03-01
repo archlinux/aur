@@ -1,0 +1,5 @@
+[pwmenu-bin]
+source = "github"
+github = "e-tho/pwmenu"
+use_latest_release = true
+prefix = "v"
