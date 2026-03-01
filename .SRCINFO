@@ -1,7 +1,7 @@
 pkgbase = openvino
 	pkgdesc = A toolkit for optimizing and deploying deep learning models
-	pkgver = 2025.4.1
-	pkgrel = 2
+	pkgver = 2026.0.0
+	pkgrel = 1
 	url = https://docs.openvino.ai/
 	arch = x86_64
 	license = Apache-2.0
@@ -22,7 +22,7 @@ pkgbase = openvino
 	makedepends = python-wheel
 	makedepends = snappy
 	options = !emptydirs
-	source = git+https://github.com/openvinotoolkit/openvino.git#commit=82bbf0292c5bd490bc25a383e63d6461d3ee05c5?signed
+	source = git+https://github.com/openvinotoolkit/openvino.git#commit=c6d6a13a8863f576b627dabcda0c40b090638f9e?signed
 	source = oneDNN-openvinotoolkit::git+https://github.com/openvinotoolkit/oneDNN.git
 	source = git+https://github.com/herumi/xbyak.git
 	source = git+https://github.com/madler/zlib.git
@@ -50,7 +50,7 @@ pkgbase = openvino
 	source = 010-openvino-change-install-paths.patch
 	source = 020-openvino-disable-werror.patch
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
-	sha256sums = bdd6b8c7f36bd72886d5ea69676f4bc5bcbc04ce6aa310710d4f1e0cbff3af53
+	sha256sums = 649999fb2517dea413ef5a537f7b54d9966f1ec424eab148f4fd80349b83fd59
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -75,7 +75,7 @@ pkgbase = openvino
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = a7c333ec8272b2a9c7adb87a194bbdbee5f5b281da0cfaaa99acf2316c32f6ac
+	sha256sums = c5ed3a23fc153a082e97841c892b83685426a431a1a32a40f120d91633943e53
 	sha256sums = d5ff4b19ca9daf2b052650d2d7f60297239091c68e57fd7d5637508be0ef0e52
 
 pkgname = openvino
@@ -99,7 +99,7 @@ pkgname = openvino-intel-gpu-plugin
 	depends = libstdc++
 	depends = ocl-icd
 	depends = onetbb
-	depends = openvino=2025.4.1
+	depends = openvino=2026.0.0
 	depends = pugixml
 
 pkgname = openvino-intel-npu-plugin
@@ -111,7 +111,7 @@ pkgname = openvino-intel-npu-plugin
 	depends = libstdc++
 	depends = onetbb
 	depends = opencv
-	depends = openvino=2025.4.1
+	depends = openvino=2026.0.0
 	depends = pugixml
 
 pkgname = python-openvino
@@ -119,7 +119,7 @@ pkgname = python-openvino
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	depends = openvino=2025.4.1
+	depends = openvino=2026.0.0
 	depends = python
 	depends = python-numpy
 	depends = python-openvino-telemetry

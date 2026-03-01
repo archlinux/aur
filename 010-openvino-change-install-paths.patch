@@ -64,21 +64,18 @@
      # symbolic links
 --- a/src/common/util/src/file_util.cpp
 +++ b/src/common/util/src/file_util.cpp
-@@ -422,9 +422,9 @@ ov::util::FilePath ov::util::get_compiled_plugin_path(const std::string& plugin)
+@@ -212,7 +212,7 @@ std::filesystem::path ov::util::get_compiled_plugin_path(const std::filesystem::
+     const auto ov_library_path = get_ov_lib_path();
  
      // plugin can be found either:
+-    const std::filesystem::path sub_folder_path{std::string("openvino-") + OpenVINO_VERSION};
++    const std::filesystem::path sub_folder_path{std::string("openvino")};
  
--    // 1. in openvino-X.Y.Z folder relative to libopenvino.so
-+    // 1. in openvino folder relative to libopenvino.so
-     std::ostringstream str;
--    str << "openvino-" << OpenVINO_VERSION;
-+    str << "openvino";
-     const auto sub_folder = str.str();
- 
-     std::string abs_file_path = ov::util::path_join({ov_library_path, sub_folder, plugin}).string();
+     if (auto plugin_path = ov_library_path / sub_folder_path / plugin; ov::util::file_exists(plugin_path)) {
+         return plugin_path;
 --- a/src/plugins/intel_npu/tools/compile_tool/CMakeLists.txt
 +++ b/src/plugins/intel_npu/tools/compile_tool/CMakeLists.txt
-@@ -32,7 +32,7 @@ ov_add_target(ADD_CPPLINT
+@@ -31,7 +31,7 @@ ov_add_target(TYPE EXECUTABLE
                        npu_tools_utils)
  
  set_target_properties(${TARGET_NAME} PROPERTIES
@@ -87,7 +84,7 @@
                            CXX_STANDARD 17)
  
  # TODO: fix warnings and remove this exception
-@@ -45,13 +45,13 @@ endif()
+@@ -44,13 +44,13 @@ endif()
  #
  
  install(TARGETS ${TARGET_NAME}
@@ -105,7 +102,7 @@
  endif()
 --- a/src/plugins/intel_npu/tools/protopipe/CMakeLists.txt
 +++ b/src/plugins/intel_npu/tools/protopipe/CMakeLists.txt
-@@ -68,7 +68,7 @@ ov_add_target(ADD_CPPLINT
+@@ -67,7 +67,7 @@ ov_add_target(TYPE EXECUTABLE
                LINK_LIBRARIES PRIVATE ${DEPENDENCIES})
  
  set_target_properties(${TARGET_NAME} PROPERTIES
@@ -114,7 +111,7 @@
                            CXX_STANDARD 17)
  
  if (WIN32)
-@@ -80,13 +80,13 @@ endif()
+@@ -79,13 +79,13 @@ endif()
  #
  
  install(TARGETS ${TARGET_NAME}
@@ -132,7 +129,7 @@
  endif()
 --- a/src/plugins/intel_npu/tools/single-image-test/CMakeLists.txt
 +++ b/src/plugins/intel_npu/tools/single-image-test/CMakeLists.txt
-@@ -54,7 +54,7 @@ ov_add_target(ADD_CPPLINT
+@@ -53,7 +53,7 @@ ov_add_target(TYPE EXECUTABLE
  ov_set_threading_interface_for(${TARGET_NAME})
  
  set_target_properties(${TARGET_NAME} PROPERTIES
@@ -141,7 +138,7 @@
                            CXX_STANDARD 17)
  
  # TODO: fix warnings and remove this exception
-@@ -67,13 +67,13 @@ endif()
+@@ -66,13 +66,13 @@ endif()
  #
  
  install(TARGETS ${TARGET_NAME}
