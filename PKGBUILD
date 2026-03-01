@@ -15,6 +15,7 @@ depends=(
     'kwindowsystem>=6.0'
     'kconfig>=6.0'
     'kcoreaddons>=6.0'
+    'kdbusaddons>=6.0'
     'ki18n>=6.0'
     'kglobalaccel>=6.0'
     'kcolorscheme>=6.0'
