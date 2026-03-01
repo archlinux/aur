@@ -47,4 +47,4 @@ index b13a1e6..4d6aacf
  # This is for backwards compatibility, and will be removed in the future.
 -ln "$ENTRY" Flashpoint.desktop
 \ No newline at end of file
-+ln "$ENTRY" Flashpoint.desktop
++ln -f "$ENTRY" Flashpoint.desktop
