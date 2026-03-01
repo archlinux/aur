@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=oxicord-git
-pkgver=0.1.8.r46.g5855c40
+pkgver=0.1.9.r8.gb65b93b
 pkgrel=1
 pkgdesc='Vim-native Discord TUI for terminal enthusiasts'
 arch=(x86_64)
@@ -9,6 +9,8 @@ url='https://github.com/linuxmobile/oxicord'
 license=(GPL-3.0-only)
 depends=(chafa dbus glibc libgcc)
 makedepends=(cargo git)
+provides=(oxicord)
+conflicts=(oxicord)
 options=(!lto)
 source=("git+$url.git")
 b2sums=('SKIP')
