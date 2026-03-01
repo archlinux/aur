@@ -1,20 +1,21 @@
 pkgbase = freetype2-git
 	pkgdesc = Font rasterization library (from git)
-	pkgver = 2.14.0+p0+g007c46ebb
+	pkgver = 2.14.2+p0+gf4205da14
 	pkgrel = 2
 	epoch = 1
 	url = https://www.freetype.org/
 	arch = x86_64
 	license = FTL OR GPL-2.0-or-later
 	makedepends = cairo
-	makedepends = gcc-libs
 	makedepends = git
 	makedepends = glib2
 	makedepends = harfbuzz
+	makedepends = libgcc
 	makedepends = librsvg
+	makedepends = libstdc++
 	makedepends = libx11
 	makedepends = meson
-	makedepends = qt5-base
+	makedepends = qt6-base
 	depends = brotli
 	depends = bzip2
 	depends = glibc
@@ -22,23 +23,22 @@ pkgbase = freetype2-git
 	depends = zlib
 	source = git+https://gitlab.freedesktop.org/freetype/freetype.git
 	source = git+https://gitlab.freedesktop.org/freetype/freetype-demos.git
+	source = freetype2.sh
 	source = 0001-Enable-table-validation-modules.patch
 	source = 0002-Enable-subpixel-rendering.patch
 	source = 0003-Enable-long-PCF-family-names.patch
-	source = freetype2.sh
 	validpgpkeys = E30674707856409FF1948010BE6C3AAC63AD8E3F
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = f45ec7d03193b446d8b46c8d981f330843a1ab2c83a91a5011cb328b26b4fc4c4b5729f32f3270018cf5ba8a162712bd0ebc2cd67f97b906e46ce293aeda466f
-	b2sums = b9481bfe770104b181a59be8cf30c90d329447d3ba04bd7dc641a54057cf2a9024c1a881d096b7ff940e9b467960ff3e08e611686d9a01136523fbb34299d057
-	b2sums = 1ced8e4ef522b111759953f6b4b38864b1a705e5b6705222282b0e6857a4ee7ac8bdcec35248f53dd8b628fabb8861ee82c4ac957f4c71229bac94d8aaf82984
 	b2sums = a964f46886b5017a5c180f29408f72ae8aba29f37404c48b4681ff12ca0a2cfa2a8e219480e98d63d45fb5c266a6e5826df170c9a0d701cd866e395c5ac6e87d
+	b2sums = f45ec7d03193b446d8b46c8d981f330843a1ab2c83a91a5011cb328b26b4fc4c4b5729f32f3270018cf5ba8a162712bd0ebc2cd67f97b906e46ce293aeda466f
+	b2sums = 95f1117e0c411341c4874520f28c6da6ae40d13fdb39b6bc78912c0a2703d2c4487d0dff2b280a3bd93b7236aacb9c8325c359f0935461aeb54898c4906726c3
+	b2sums = 3e9991bd945f74cc9d21c375decd90a2c1a56542e6e44f0f37723cd14bc96fbb5fe1e8ca3dfe59d485be69eb69d7dc98fb73d532413632f8be8c5f2cc419f938
 
 pkgname = freetype2-git
-	install = freetype2.install
 	optdepends = harfbuzz: Improved autohinting
 	provides = libfreetype.so
-	provides = freetype2=2.14.0+p0+g007c46ebb
+	provides = freetype2=2.14.2+p0+gf4205da14
 	conflicts = freetype2
 	backup = etc/profile.d/freetype2.sh
 
@@ -46,11 +46,12 @@ pkgname = freetype2-demos-git
 	pkgdesc = Freetype tools and demos (from git)
 	depends = cairo
 	depends = freetype2-git
-	depends = gcc-libs
 	depends = glib2
 	depends = glibc
+	depends = libgcc
 	depends = librsvg
+	depends = libstdc++
 	depends = libx11
-	optdepends = qt5-base: ftinspect
-	provides = freetype2-demos=2.14.0+p0+g007c46ebb
+	optdepends = qt6-base: ftinspect
+	provides = freetype2-demos=2.14.2+p0+gf4205da14
 	conflicts = freetype2-demos

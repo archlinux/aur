@@ -6,7 +6,7 @@ pkgname=(
   freetype2-git
   freetype2-demos-git
 )
-pkgver=2.14.0+p0+g007c46ebb
+pkgver=2.14.2+p0+gf4205da14
 pkgrel=2
 epoch=1
 pkgdesc="Font rasterization library (from git)"
@@ -22,29 +22,30 @@ depends=(
 )
 makedepends=(
   cairo
-  gcc-libs
   git
   glib2
   harfbuzz
+  libgcc
   librsvg
+  libstdc++
   libx11
   meson
-  qt5-base
+  qt6-base
 )
 source=(
   git+https://gitlab.freedesktop.org/freetype/freetype.git
   git+https://gitlab.freedesktop.org/freetype/freetype-demos.git
+  freetype2.sh
   0001-Enable-table-validation-modules.patch
   0002-Enable-subpixel-rendering.patch
   0003-Enable-long-PCF-family-names.patch
-  freetype2.sh
 )
 b2sums=('SKIP'
         'SKIP'
+        'a964f46886b5017a5c180f29408f72ae8aba29f37404c48b4681ff12ca0a2cfa2a8e219480e98d63d45fb5c266a6e5826df170c9a0d701cd866e395c5ac6e87d'
         'f45ec7d03193b446d8b46c8d981f330843a1ab2c83a91a5011cb328b26b4fc4c4b5729f32f3270018cf5ba8a162712bd0ebc2cd67f97b906e46ce293aeda466f'
-        'b9481bfe770104b181a59be8cf30c90d329447d3ba04bd7dc641a54057cf2a9024c1a881d096b7ff940e9b467960ff3e08e611686d9a01136523fbb34299d057'
-        '1ced8e4ef522b111759953f6b4b38864b1a705e5b6705222282b0e6857a4ee7ac8bdcec35248f53dd8b628fabb8861ee82c4ac957f4c71229bac94d8aaf82984'
-        'a964f46886b5017a5c180f29408f72ae8aba29f37404c48b4681ff12ca0a2cfa2a8e219480e98d63d45fb5c266a6e5826df170c9a0d701cd866e395c5ac6e87d')
+        '95f1117e0c411341c4874520f28c6da6ae40d13fdb39b6bc78912c0a2703d2c4487d0dff2b280a3bd93b7236aacb9c8325c359f0935461aeb54898c4906726c3'
+        '3e9991bd945f74cc9d21c375decd90a2c1a56542e6e44f0f37723cd14bc96fbb5fe1e8ca3dfe59d485be69eb69d7dc98fb73d532413632f8be8c5f2cc419f938')
 validpgpkeys=(
   E30674707856409FF1948010BE6C3AAC63AD8E3F # Werner Lemberg <wl@gnu.org>
 )
@@ -105,7 +106,6 @@ package_freetype2-git() {
     "freetype2=$pkgver"
   )
   conflicts=(freetype2)
-  install=freetype2.install
   backup=(etc/profile.d/freetype2.sh)
 
   meson install -C build --destdir="$pkgdir"
@@ -124,13 +124,14 @@ package_freetype2-demos-git() {
   depends=(
     cairo
     freetype2-git
-    gcc-libs
     glib2
     glibc
+    libgcc
     librsvg
+    libstdc++
     libx11
   )
-  optdepends=('qt5-base: ftinspect')
+  optdepends=('qt6-base: ftinspect')
   provides=("freetype2-demos=$pkgver")
   conflicts=(freetype2-demos)
 
