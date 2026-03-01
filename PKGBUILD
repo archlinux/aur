@@ -12,8 +12,8 @@ optdepends=(
   'pipewire: PipeWire audio backend'
 )
 makedepends=('gcc' 'make')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/yourname/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/m4rcel-lol/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+b2sums=('53c94c1f11385b79ef7fb6815046c122f04dbc5efd36a9f8a63b294e872582e1fb4a45b02908b6f5b606bf7ab2da574581b6b0b046e135d3678b7810d0b4ef70')
 
 build() {
   cd "$pkgname-$pkgver"
