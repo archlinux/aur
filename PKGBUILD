@@ -1,13 +1,13 @@
 # Maintainer: Omni LLC <team@omni.dev>
 pkgname=omnidotdev-terminal
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GPU-accelerated terminal emulator built to run everywhere"
 arch=('x86_64')
 url="https://terminal.omni.dev"
 license=('MIT')
 depends=('fontconfig' 'freetype2' 'libxkbcommon' 'wayland')
-makedepends=('cargo' 'cmake' 'python')
+makedepends=('cargo' 'cmake' 'ncurses' 'python')
 source=("https://github.com/omnidotdev/terminal/archive/v$pkgver.tar.gz")
 sha256sums=('4316f48ca2b5b34edf6cd0dbf8bca877f6b3e907a72e11864b517afd0dd06d84')
 
@@ -22,7 +22,7 @@ package() {
   install -Dm644 "misc/omni-terminal.desktop" "$pkgdir/usr/share/applications/omni-terminal.desktop"
   install -Dm644 "misc/logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/omni-terminal.svg"
   install -Dm644 "misc/dev.omni.Terminal.metainfo.xml" "$pkgdir/usr/share/metainfo/dev.omni.Terminal.metainfo.xml"
-  install -Dm644 "misc/omni-terminal.terminfo" "$pkgdir/usr/share/terminfo/o/omni-terminal"
+  tic -sx -o "$pkgdir/usr/share/terminfo" "misc/omni-terminal.terminfo"
   install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "NOTICE.md" "$pkgdir/usr/share/doc/$pkgname/NOTICE"
 }
