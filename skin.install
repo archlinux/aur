@@ -1,0 +1,6 @@
+post_install() {
+    echo
+    echo "A default viewer skin has been installed to /usr/share/periscope/example-skin."
+    echo "To use this skin, copy it to ~/.config/periscope"
+    echo
+}
