@@ -1,6 +1,6 @@
 pkgbase = btlescan-bin
 	pkgdesc = BTLE/Bluetooth Scanner
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/ztroop/btlescan
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = btlescan-bin
 	depends = dbus
 	provides = btlescan
 	conflicts = btlescan
-	source = README-1.1.2.md::https://raw.githubusercontent.com/ztroop/btlescan/1.1.2/README.md
-	source = LICENSE-1.1.2::https://raw.githubusercontent.com/ztroop/btlescan/1.1.2/LICENSE
+	source = README-1.1.3.md::https://raw.githubusercontent.com/ztroop/btlescan/1.1.3/README.md
+	source = LICENSE-1.1.3::https://raw.githubusercontent.com/ztroop/btlescan/1.1.3/LICENSE
 	sha256sums = 9adb256349970884a5e847d5d2987921146a01d92e23ad54a16b4a5bcdea80ee
 	sha256sums = 37fdad1e971ac1b5024c1f36c6a420e5ec6afe37266186fb3cf8ce081a494a76
-	source_x86_64 = btlescan-x86_64-1.1.2.tgz::https://github.com/ztroop/btlescan/releases/download/1.1.2/btlescan-1.1.2-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 4052d0a3053be02942c06c0c271464fd2c7a7cab4ec0203b03410fe354e6b02c
+	source_x86_64 = btlescan-x86_64-1.1.3.tgz::https://github.com/ztroop/btlescan/releases/download/1.1.3/btlescan-1.1.3-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 8e2c408a515b51780d4baae18f7129a93c16bebca288df38f74c17f4cbddf573
 
 pkgname = btlescan-bin
