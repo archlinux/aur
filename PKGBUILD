@@ -25,9 +25,9 @@ b2sums=('e4bd1e79e142cf9a136dcdf7f6b0efff879d28094e3afc93e24ab9ebb2546d74378d6d0
 _installdir=/opt/intel
 
 prepare() {
-  cp "${srcdir}/sgx_linux_x64_sdk_${_pkgver}.bin" "${srcdir}/sgx_linux_x64_sdk.bin"
-  patch --binary --force -p1 -i "${srcdir}/intel-sgx-sdk-skip-tmp.patch"
-  chmod +x "${srcdir}/sgx_linux_x64_sdk.bin"
+  cp "${srcdir}/sgx_linux_x64_sdk_${_pkgver}.bin" "${srcdir}"/sgx_linux_x64_sdk.bin
+  patch --binary --force -p1 -i "${srcdir}/intel-sgx-sdk-skip-tmp.patch" -d "${srcdir}"
+  chmod +x "${srcdir}"/sgx_linux_x64_sdk.bin
 }
 
 package() (
