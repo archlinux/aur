@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Exit on error
+set -e
+
+# Check if URL is provided
+if [ -z "$1" ]; then
+	echo "Usage: yt-mp3 <youtube-url>"
+	exit 1
+fi
+
+URL="$1"
+
+yt-dlp -x \
+	--audio-format mp3 \
+	--audio-quality 0 \
+	-o "%(artist)s - %(title)s.%(ext)s" \
+	"$URL"
