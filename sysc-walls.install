@@ -31,6 +31,13 @@ post_upgrade() {
 
 SYSC-WALLS UPGRADED
 
+v1.0.1 Changelog:
+  - Fixed kitty process leaks (processes not killed on resume)
+  - Fixed process group management (orphan child processes)
+  - Fixed data races in idle detection and Wayland bindings
+  - Added compositor output parser tests
+  - Added animation cycle interval configuration
+
 Restart the service to apply changes:
     systemctl --user restart sysc-walls.service
 

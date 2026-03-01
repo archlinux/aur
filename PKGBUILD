@@ -1,15 +1,15 @@
 # Maintainer: Nomadcxx <noovie@gmail.com>
 pkgname=sysc-walls
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="A terminal screensaver, designed in Go and built for Wayland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Nomadcxx/sysc-walls"
-license=('MIT')
+license=('GPL-3.0-only')
 depends=('kitty' 'wayland')
 makedepends=('go>=1.24' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Nomadcxx/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('6dac75c831e7a743b388cbee34364d59e3797aab800f7850fa2e603114b92f0f')
 install=${pkgname}.install
 
 build() {
