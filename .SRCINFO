@@ -1,7 +1,7 @@
 pkgbase = python-speechrecognition
 	pkgdesc = Speech recognition module for Python, supporting several engines and APIs
 	pkgver = 3.14.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Uberi/speech_recognition
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,6 @@ pkgbase = python-speechrecognition
 	checkdepends = python-pytest
 	checkdepends = python-httpx
 	checkdepends = python-respx
-	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
@@ -37,7 +36,7 @@ pkgbase = python-speechrecognition
 	optdepends = python-google-cloud-speech: required for Google Cloud Speech-toText API
 	optdepends = python-vosk: required for Vosk recognizer
 	optdepends = python-groq: required for Groq Whisper API
-	source = git+https://github.com/Uberi/speech_recognition.git#tag=3.14.4
-	sha256sums = 8e0faf51aa924510a58406f57c937d9f01b4fb45b2d7269b4fe2bbd68784e72e
+	source = python-speechrecognition-3.14.4.tgz::https://github.com/Uberi/speech_recognition/archive/refs/tags/3.14.4.tar.gz
+	b2sums = b7dea453352f6cb6721ebb67cdaa9da09d522d0500b2c7286f11067b1566abe15b23b5a3c1654af1fc7db4b90bb26b09685f78de77c2b04f3adc31a7f7438408
 
 pkgname = python-speechrecognition
