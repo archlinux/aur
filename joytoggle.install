@@ -1,0 +1,18 @@
+post_install() {
+    systemctl daemon-reload
+    systemctl enable --now joytoggle.service
+    chown $(logname):$(logname) /var/lib/joytoggle 2>/dev/null || true
+    echo ""
+    echo "JoyToggle installed! Launch from your app launcher or run: joytoggle"
+    echo ""
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    systemctl restart joytoggle.service
+}
+
+post_remove() {
+    systemctl disable --now joytoggle.service 2>/dev/null || true
+    systemctl daemon-reload
+}
