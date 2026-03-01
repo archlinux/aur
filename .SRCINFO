@@ -1,6 +1,6 @@
 pkgbase = proc-bin
 	pkgdesc = A semantic CLI tool for process management
-	pkgver = 1.7.3
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://github.com/yazeed/proc
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = proc-bin
 	depends = libgcc
 	provides = proc
 	conflicts = proc
-	source = LICENSE-1.7.3::https://raw.githubusercontent.com/yazeed/proc/v1.7.3/LICENSE
-	source = README-1.7.3.md::https://raw.githubusercontent.com/yazeed/proc/v1.7.3/README.md
+	source = LICENSE-1.7.4::https://raw.githubusercontent.com/yazeed/proc/v1.7.4/LICENSE
+	source = README-1.7.4.md::https://raw.githubusercontent.com/yazeed/proc/v1.7.4/README.md
 	sha256sums = c7f9eb97a593a88e42431614564bf73d3b2177ffbc959a63cfe62856b4a10d1e
 	sha256sums = 4f74616794814fbd9e290769b86be35e41d7d3275d9f0d06031cc724f09ff52c
-	source_x86_64 = proc-x86_64-1.7.3.tgz::https://github.com/yazeed/proc/releases/download/v1.7.3/proc-linux-x86_64.tar.gz
-	sha256sums_x86_64 = b28567645b6b3833abadc4510faf0f83d3da6d022e4a82598a5f7d2b9cc325ff
-	source_aarch64 = proc-aarch64-1.7.3.tgz::https://github.com/yazeed/proc/releases/download/v1.7.3/proc-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 3fa4ffe22ccf9a56191acc5119399772ec061c823d6dbdd50d8dae7fabb51a95
+	source_x86_64 = proc-x86_64-1.7.4.tgz::https://github.com/yazeed/proc/releases/download/v1.7.4/proc-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 32e6cd845a83994ce951b39c128b10802d331ba8e02a2e9700a7a20798941912
+	source_aarch64 = proc-aarch64-1.7.4.tgz::https://github.com/yazeed/proc/releases/download/v1.7.4/proc-linux-aarch64.tar.gz
+	sha256sums_aarch64 = ef1f5aa0db6093c85bb976795088e849ad8dffe7f70fb9fb889835dda7b165e7
 
 pkgname = proc-bin
