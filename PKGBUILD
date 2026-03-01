@@ -4,19 +4,19 @@
 # Contributor: hdhoang <arch@hdhoang.space>
 
 pkgname=nginx-mainline-mod-fancyindex
-pkgver=0.5.2
-pkgrel=3
+pkgver=0.6.0
+pkgrel=1
 _modname="${pkgname#nginx-mainline-mod-}"
 pkgdesc="Fancy index module for the nginx-mainline web server"
 arch=('x86_64'
       'aarch64'
       'armv7h')
 url="https://www.nginx.com/resources/wiki/modules/fancy_index/"
-license=('BSD')
+license=('BSD-2-Clause')
 depends=('nginx-mainline')
 makedepends=('nginx-mainline-src')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aperezdc/ngx-$_modname/archive/v$pkgver.tar.gz")
-sha256sums=('c3dd84d8ba0b8daeace3041ef5987e3fb96e9c7c17df30c9ffe2fe3aa2a0ca31')
+sha256sums=('d212fdc1393261612126def3e091c376adeda5646130b4240093f47b550bc5ef')
 
 # Required for compilation with /usr/src/nginx/configure
 prepare() {
