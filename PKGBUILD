@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=zlob
-pkgver=1.2.9
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A fast SIMD-accelerated glob pattern matcher'
 url='https://github.com/dmtrKovalenko/zlob'
@@ -10,7 +10,7 @@ makedepends=('zig')
 provides=('zlob' 'libzlob.so')
 conflicts=('zlob-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgname_$pkgver.tar.gz")
-sha256sums=('5bb833431d829835cb90123d1ca158eb186ef6f413a327dbc53c5a73c736f67c')
+sha256sums=('97c785b186fbd6a52205a990b84c3f437132add63c16ea1e2e1925a3e44df772')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -25,3 +25,5 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+# vim: ts=4 sw=4 et:
