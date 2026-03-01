@@ -28,7 +28,7 @@ optdepends=(
     'libnotify: Desktop notification support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/LeonLionHeart/ArchVault/archive/refs/tags/v5.0.0-beta.tar.gz")
-sha256sums=('cb975456ebfc3f61e2cfc316daf9423acfe503f2643597d0cf652552ea154cfe')
+sha256sums=('8b8626e1d5291ffc0854c19dc21e6ebf254e800e81232a72d435d374d4e632e8')
 
 package() {
     cd "${srcdir}/ArchVault-5.0.0-beta"
