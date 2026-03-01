@@ -1,9 +1,14 @@
 -------------------------------------------------------
  Changelog    : pyconcurrent
- Tags         : 2.11.0 ➙ 2.13.2
-              : 2026-01-03 ➙ 2026-02-19
+ Tags         : 2.12.0 ➙ 2.14.0
+              : 2026-01-03 ➙ 2026-03-01
               : 6 tags. See Docs for full changelog
 -------------------------------------------------------
+
+ 2026-03-01   : 2.14.0
+              - timeout is now float or int. No reason for it to be limited to int.
+ 2026-02-19   ⋯
+              - update Docs/Changelogs
 
  2026-02-19   : 2.13.2
               - Fix typo in example-2 of docs. No code change.
@@ -24,9 +29,4 @@
 
  2026-01-03   : 2.12.0
               - Add some uv installer options to install script
-              - update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
-
- 2026-01-03   : 2.11.0
-              - Actualy make the hatch to uv changes (oops)
-                Change license to GPL-2.0-or-later
               - update Docs/Changelogs Docs/_build/html Docs/pyconcurrent.pdf
