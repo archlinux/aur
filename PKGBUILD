@@ -1,6 +1,6 @@
 # Maintainer: dillacorn (AUR: dillacorn, Reddit: u/dillacorn)
 pkgname=awtwall
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc='Fast TUI wallpaper picker for Wayland with libsixel previews'
 arch=('any')
@@ -30,7 +30,7 @@ optdepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dillacorn/awtwall/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0ec4896323dc639adddd63ebc184270693346f150065e0a0b20769387abe0847')
+sha256sums=('979ab1ef195d172040b3e1a28e3585e0742150718ec3450e5b61bfbef6a3d284')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
