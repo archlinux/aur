@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=scFeatureFilter
-_pkgver=1.30.0
+_pkgver=1.30.1
 pkgname=r-${_pkgname,,}
-pkgver=1.30.0
+pkgver=1.30.1
 pkgrel=1
 pkgdesc='A correlation-based method for quality filtering of single-cell RNAseq data'
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9cac919c05f63b10cc12449d5078640cb8378c7e96fba391e5d68a212d536a5c')
+sha256sums=('2722676c875cab6cd266b472ee0e32e534c1f04191cf4e9b384da455aee1d6a8')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
