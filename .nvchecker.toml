@@ -1,0 +1,5 @@
+[bzmenu-bin]
+source = "github"
+github = "e-tho/bzmenu"
+use_latest_release = true
+prefix = "v"

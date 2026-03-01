@@ -1,0 +1,22 @@
+pkgbase = bzmenu-bin
+	pkgdesc = Launcher-driven Bluetooth manager for Linux
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/e-tho/bzmenu
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	provides = bzmenu
+	conflicts = bzmenu
+	source = README-0.4.0.md::https://raw.githubusercontent.com/e-tho/bzmenu/v0.4.0/README.md
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/e-tho/bzmenu/v0.4.0/LICENSE.md
+	sha256sums = 438e7a3d4db4f297e59d196e0e10e3c70eb87d4004ea27a56c46d172dcee30d5
+	sha256sums = 5735febb4249f2fea35481266e47668eb890404f83714ec3d12f68e80c95d72f
+	source_x86_64 = bzmenu-x86_64-0.4.0::https://github.com/e-tho/bzmenu/releases/download/v0.4.0/bzmenu-x86_64-linux-gnu
+	sha256sums_x86_64 = 4285e3fb7bbbfdaafd1ca0ef62a47ca4999ca8ade05665a20edac0289a55f63d
+	source_aarch64 = bzmenu-aarch64-0.4.0::https://github.com/e-tho/bzmenu/releases/download/v0.4.0/bzmenu-aarch64-linux-gnu
+	sha256sums_aarch64 = 4ab471f21dbec21e853a74dda428c5574894cbe7426474ef3218b0a22e535fb3
+
+pkgname = bzmenu-bin
