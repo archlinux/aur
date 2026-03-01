@@ -6,7 +6,7 @@ pkgdesc="Help manage configs, dotfiles and packages"
 arch=("any")
 url="https://gitlab.com/aurze/$pkgname"
 license=('GPL-3.0-only')
-source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/aurze/$pkgname/-/archive/0.1.0/$pkgname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/aurze/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 b2sums=("ce286773610ffb60de73b602d4579cbd3a172fbfa7f44eee83ad757331159f0dc33c52e6c44d88dce70425c91181668f58045ecc1a7c3aa389ac30896605f91c")
 
 makedepends=("cargo")
