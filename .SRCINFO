@@ -1,0 +1,16 @@
+pkgbase = grabchars
+	pkgdesc = Get keystrokes directly from user - interactive terminal input for shell scripts
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/DanielSmith/grabchars
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = Apache-2.0
+	makedepends = cargo
+	provides = grabchars
+	conflicts = grabchars-bin
+	source = https://static.crates.io/crates/grabchars/grabchars-2.0.1.crate
+	sha256sums = a56b56e9d50371a74004ad5bc98f79f67ee66ffec695975de0fe4673a1f92fce
+
+pkgname = grabchars
