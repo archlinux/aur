@@ -1,6 +1,6 @@
 # Maintainer: byteowlz <dev@byteowlz.com>
 pkgname=hstry
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Universal AI chat history database with full-text search"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ depends=('gcc-libs' 'sqlite')
 optdepends=('bash: for shell completions' 'zsh: for shell completions')
 source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/byteowlz/hstry/releases/download/v$pkgver/hstry-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::https://github.com/byteowlz/hstry/releases/download/v$pkgver/hstry-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('3a2a0901e91158698816f6a1c019de0219a1f1be5099a9fd122a3e917338282d')
-sha256sums_aarch64=('91c6448435ee45e8753cd4e571e08845586f3f06c60ca1bb255359ce3053a7bb')
+sha256sums_x86_64=('814f8e60b1d3ddf022b6e0aab95642be10c1275725a06593f94fa03963aa0a33')
+sha256sums_aarch64=('97fce979dde45b6387ed719c83373774a862110446b9e267e7a0101b7928d198')
 
 package() {
     install -Dm755 hstry "$pkgdir/usr/bin/hstry"
