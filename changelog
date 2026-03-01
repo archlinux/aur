@@ -1,3 +1,10 @@
+2026-02-25 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 6.3.3.3-1:
+    Fixed custom game name no longer working due to Steam breaking change, this affects CustomGamePlayedWhileIdle, CustomGamePlayedWhileFarming as well as play <GameName> command. Since they clearly want to kill that functionality, expect for this workaround to stop working in the near future as well (@JustArchi #3551).
+    Misc BGR logging enhancements (@Knight1 #3545 #3546).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2026-01-27 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 6.3.2.3-1:
     Added all as recognized target to fbrm, fqrm, mabrm and tbrm commands (@JustArchi).
