@@ -2,7 +2,7 @@
 
 _reponame=SpaghettiKart
 pkgname=spaghettikart-git
-pkgver=0.9.9.1.r238.gaaae77f3b
+pkgver=1.0.0.r2.g5c93004e3
 pkgrel=1
 pkgdesc="An unofficial native port of Mario Kart 64 (git)"
 license=("unknown" "MIT")
@@ -62,7 +62,7 @@ prepare() {
   _init_submodule torch Torch
 
   # Required patch for compilation
-  #patch -Np1 -i "../spaghettikart-cmake-flags.patch"
+  patch -Np1 -i "../spaghettikart-cmake-flags.patch"
 }
 
 build() {
