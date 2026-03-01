@@ -1,0 +1,22 @@
+pkgbase = aerothemeplasma-desktop-x11-git
+	pkgdesc = X11 session for AeroThemePlasma
+	pkgver = 6.6.1_661.r138762c
+	pkgrel = 1
+	url = https://github.com/aeroshell-desktop/aerothemeplasma
+	arch = any
+	groups = aerothemeplasma
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = extra-cmake-modules
+	depends = aerothemeplasma-desktop
+	depends = aeroshell-kwin-components-x11
+	depends = aeroshell-smod-x11
+	depends = aeroshell-libplasma
+	depends = aeroshell-workspace
+	provides = aerothemeplasma-desktop-x11
+	conflicts = aerothemeplasma-desktop-x11
+	options = !debug
+	source = aerothemeplasma-desktop-x11-git::git+https://github.com/aeroshell-desktop/aerothemeplasma.git
+	sha256sums = SKIP
+
+pkgname = aerothemeplasma-desktop-x11-git
