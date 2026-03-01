@@ -36,7 +36,7 @@ package() {
 	echo 'Type=Application' >> "$pkgdir/usr/share/applications/TLEscope.desktop"
 	echo 'Name=TLEscope' >> "$pkgdir/usr/share/applications/TLEscope.desktop"
 	echo 'Exec=TLEscope' >> "$pkgdir/usr/share/applications/TLEscope.desktop"
-	echo "Icon=$pkgdir/opt/TLEscope/logo.png" >> "$pkgdir/usr/share/applications/TLEscope.desktop"
+	echo 'Icon=/opt/TLEscope/logo.png' >> "$pkgdir/usr/share/applications/TLEscope.desktop"
 	echo 'Terminal=false' >> "$pkgdir/usr/share/applications/TLEscope.desktop"
 	echo 'Categories=Utility;Science;' >> "$pkgdir/usr/share/applications/TLEscope.desktop"
 }
