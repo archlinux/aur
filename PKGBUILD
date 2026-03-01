@@ -6,19 +6,18 @@
 
 pkgname=python-speechrecognition
 pkgver=3.14.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Speech recognition module for Python, supporting several engines and APIs'
-arch=('i686' 'x86_64') # embedded FLAC binaries for these platforms
+arch=('any')
 url='https://github.com/Uberi/speech_recognition'
-license=('BSD-3-Clause AND GPL-2.0-or-later') # FLAC binaries released under GPLv2
+license=('BSD-3-Clause')
 depends=(
+  'flac'
   'python-audioop'
   'python-requests'
   'python-tensorflow'
   'python-botocore'
   'python-boto3'
-  'lib32-glibc'
-  'flac'
   'python-aifc'
 )
 optdepends=(
@@ -54,6 +53,9 @@ b2sums=('b7dea453352f6cb6721ebb67cdaa9da09d522d0500b2c7286f11067b1566abe15b23b5a
 
 build() {
   cd "${srcdir}/speech_recognition-${pkgver}"
+
+  # Remove packaged FLAC binaries in favor of the Arch Linux package.
+  rm speech_recognition/flac-* LICENSE-FLAC.txt
 
   python -m build --wheel --no-isolation
 }
