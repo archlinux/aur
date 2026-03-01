@@ -1,6 +1,6 @@
 pkgbase = openvpn-auth-oauth2
 	pkgdesc = A Plugin/management interface client for OpenVPN server to handle an OIDC based single sign-on (SSO) auth flows
-	pkgver = 1.27.0
+	pkgver = 1.27.1
 	pkgrel = 1
 	url = https://github.com/jkroepke/openvpn-auth-oauth2
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = openvpn-auth-oauth2
 	depends = openvpn>=2.6.2
 	backup = etc/conf.d/openvpn-auth-oauth2
 	backup = etc/openvpn-auth-oauth2/config.yaml
-	source = https://github.com/jkroepke/openvpn-auth-oauth2/archive/refs/tags/v1.27.0.tar.gz
-	sha256sums = ca1e766442cb4dd499b1bc757469cc851d0b1111a762c26555fc6b2f38bb8b38
+	source = https://github.com/jkroepke/openvpn-auth-oauth2/archive/refs/tags/v1.27.1.tar.gz
+	sha256sums = 4253e2d124bc67eeda25eddf4b834465cfaecc3f47c7a0a0d0a8c6c899c9dd02
 
 pkgname = openvpn-auth-oauth2
