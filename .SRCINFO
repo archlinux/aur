@@ -1,6 +1,6 @@
 pkgbase = orca-slicer-nightly-bin
 	pkgdesc = G-code generator for 3D printers (nightly builds)
-	pkgver = 2025.05.16.171331Z
+	pkgver = 2026.03.01.175437Z
 	pkgrel = 1
 	url = https://github.com/SoftFever/OrcaSlicer
 	arch = x86_64
@@ -21,7 +21,8 @@ pkgbase = orca-slicer-nightly-bin
 	depends = gst-libav
 	provides = orca-slicer
 	conflicts = orca-slicer
-	source = https://github.com/SoftFever/OrcaSlicer/releases/download/nightly-builds/OrcaSlicer_Linux_AppImage_Ubuntu2404_V2.3.1-dev.AppImage
+	options = !strip
+	source = https://github.com/OrcaSlicer/OrcaSlicer/releases/download/nightly-builds/OrcaSlicer_Linux_AppImage_Ubuntu2404_nightly.AppImage
 	sha512sums = SKIP
 
 pkgname = orca-slicer-nightly-bin

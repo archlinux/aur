@@ -1,7 +1,7 @@
 # Maintainer: uberben <ben at benbergman dot ca>
 
 pkgname="orca-slicer-nightly-bin"
-pkgver=2025.05.16.171331Z
+pkgver=2026.03.01.175437Z
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (nightly builds)"
 arch=('x86_64')
@@ -10,13 +10,14 @@ license=('AGPL3')
 depends=('mesa' 'glu' 'cairo' 'gtk3' 'libsoup' 'webkit2gtk' 'webkit2gtk-4.1' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'gst-plugins-base' 'gst-libav')
 provides=("orca-slicer")
 conflicts=("orca-slicer")
+options=('!strip')
 
 src() {
     curl -L \
   -H "Accept: application/vnd.github+json" \
   -H "X-GitHub-Api-Version: 2022-11-28" \
   https://api.github.com/repos/SoftFever/OrcaSlicer/releases/tags/nightly-builds \
-  | jq --raw-output ".assets | map({ name: .name, date: .created_at, url: .browser_download_url }) | map(select(.name | test(\"AppImage\")))[0].url"
+  | jq --raw-output '.assets | map({ name: .name, date: .created_at, url: .browser_download_url }) | map(select(.name | test("AppImage")))[0].url'
 }
 
 source=($(src))
@@ -50,7 +51,7 @@ package() {
 	install -d "$pkgdir/opt/${pkgname%-bin}/"
 	cp -av squashfs-root/* "$pkgdir/opt/${pkgname%-bin}/"
 	rm -rf "$pkgdir/opt/${pkgname%-bin}/usr/"
-	rm "$pkgdir/opt/${pkgname%-bin}"/{OrcaSlicer.desktop,AppRun,OrcaSlicer.png,OrcaSlicer-x86_64.AppImage}
+	rm "$pkgdir/opt/${pkgname%-bin}"/{OrcaSlicer.desktop,AppRun,OrcaSlicer.png}
 
 	install -d "$pkgdir/usr/bin"
 	ln -s "/opt/${pkgname%-bin}/bin/orca-slicer" "$pkgdir/usr/bin/"
