@@ -1,5 +1,5 @@
 pkgname=lithium
-pkgver=0.0.r6.g58d0959
+pkgver=0.4
 pkgrel=1
 pkgdesc="Simple package manager"
 arch=('x86_64')
