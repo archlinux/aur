@@ -1,0 +1,20 @@
+pkgbase = basecamp-bin
+	pkgdesc = CLI for Basecamp project management
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/basecamp/basecamp-cli
+	license = MIT
+	optdepends = bash-completion: for bash shell completions
+	optdepends = zsh: for zsh shell completions
+	optdepends = fish: for fish shell completions
+	conflicts = basecamp
+	conflicts = basecamp-cli
+	provides = basecamp
+	arch = aarch64
+	source_aarch64 = https://github.com/basecamp/basecamp-cli/releases/download/v0.2.0/basecamp_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 0ffd1bc61d0f23d263733910822ca0052716a531b86aaad908c396170577dd23
+	arch = x86_64
+	source_x86_64 = https://github.com/basecamp/basecamp-cli/releases/download/v0.2.0/basecamp_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 017d2a1c2b29033aefde43a0f50e25dae09c1c8f44bd84c28aec3db5d83fb621
+	
+pkgname = basecamp-bin
