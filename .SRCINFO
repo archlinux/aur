@@ -1,7 +1,7 @@
 pkgbase = rocm-nightly-gfx110x-bin
 	pkgdesc = AMD ROCm Nightly Release (gfx110X) - Monolithic Install
 	pkgver = 7.12.0a20260228
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocm.nightlies.amd.com
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = rocm-nightly-gfx110x-bin
 	depends = gcc-libs
 	depends = python-pyelftools
 	depends = python
+	provides = amdsmi
 	provides = rocm-core
 	provides = rocm-cmake
 	provides = rocm-llvm
@@ -58,6 +59,7 @@ pkgbase = rocm-nightly-gfx110x-bin
 	provides = rocm-opencl-sdk
 	provides = rocm-ml-sdk
 	provides = rocm=7.12.0a20260228
+	conflicts = amdsmi
 	conflicts = rocm-core
 	conflicts = rocm-cmake
 	conflicts = rocm-llvm
