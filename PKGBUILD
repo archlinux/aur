@@ -5,8 +5,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-speechrecognition
-pkgver=3.14.4
-pkgrel=6
+pkgver=3.14.5
+pkgrel=1
 pkgdesc='Speech recognition module for Python, supporting several engines and APIs'
 arch=('any')
 url='https://github.com/Uberi/speech_recognition'
@@ -56,7 +56,7 @@ checkdepends=(
 )
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${pkgver}.tar.gz"
         'https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip')
-b2sums=('b7dea453352f6cb6721ebb67cdaa9da09d522d0500b2c7286f11067b1566abe15b23b5a3c1654af1fc7db4b90bb26b09685f78de77c2b04f3adc31a7f7438408'
+b2sums=('0c9d0023e21ffd72dc281c00649f9af7388b7a1887279bd53a185145483a559689d3c35935fc482a069e3f66ce46f42171cc5318ee2068875d63bd17c0a76dbe'
         'a0b871f1598d933d613d26e7a09c1c7f2e26af7ef83cbb58b6eb06581fe61ed7fab248a8e892a68470e217082bf705865ebae9118f85e0c136fb43aa310f2841')
 
 build() {
