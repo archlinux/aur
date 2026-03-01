@@ -2,7 +2,7 @@
 # Contributor: Michel Zou <xantares09@hotmail.com>
 _base=scipy
 pkgname=pypy3-${_base}
-pkgver=1.17.0
+pkgver=1.17.1
 pkgrel=1
 pkgdesc="Fundamental algorithms for scientific computing in Python"
 arch=(x86_64)
@@ -18,7 +18,7 @@ source=(${_base}-${pkgver}::git+https://github.com/${_base}/${_base}.git?signed#
   git+https://github.com/${_base}/pocketfft
   git+https://github.com/${_base}/unuran)
 validpgpkeys=('AD0C5067D1DECED72F6245670196A9293365B112') # Tyler Reddy <tyler.je.reddy@gmail.com>
-sha512sums=('32e05efc4c36145ad7c2799454a44fe7d27a456794dcde53fd3470be3a0f157c2b778c9d506cc077a5767ef406cd7568b356db3bb950ff0fd7999e8dccffe63d'
+sha512sums=('7a117faaddad3ff7d6a9944cac8c04f466d4dc965fca9bb3725f0ccb06b0782f3c4de3bc65b59a25ac84c71f41c163a4ccda9c6683a17acb76251758e307d27a'
             'SKIP'
             'SKIP'
             'SKIP'
