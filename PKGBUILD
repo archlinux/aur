@@ -2,7 +2,7 @@
 
 pkgname=scu-bin
 pkgver=2.1.0
-pkgrel=0
+pkgrel=1
 _build=6560963780
 pkgdesc="System fetch utility is aimed at informativeness"
 arch=(x86_64)
