@@ -3,7 +3,7 @@
 _pkgauthor=l5yth
 _pkgname=lsu
 pkgname=${_pkgname}-bin
-pkgdesc="List systemd units"
+pkgdesc="A Rust terminal UI for viewing systemd service units and their journal"
 
 pkgver=0.1.1
 pkgrel=1

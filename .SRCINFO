@@ -1,5 +1,5 @@
 pkgbase = lsu-bin
-	pkgdesc = List systemd units
+	pkgdesc = A Rust terminal UI for viewing systemd service units and their journal
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/l5yth/lsu
