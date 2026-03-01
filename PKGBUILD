@@ -2,18 +2,18 @@
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=pulse-secure
-pkgver=22.8r3_b35577
+pkgver=22.8r5_b41063
 pkgrel=1
 pkgdesc='Ivanti Secure Access Client'
 arch=(x86_64)
 license=(custom)
 url='https://www.pulsesecure.net/'
-depends=(gcc-libs libgnome-keyring openssl curl dbus libbsd dmidecode patch)
+depends=(gcc-libs libsecret openssl curl dbus libbsd dmidecode patch)
 install=${pkgname}.install
-source=("EULA.txt" "setup_cef.sh.patch")
-source_x86_64=("https://static.elisa.com/v2/image/2tqybbhjs47b/Mok3PsknSTt7cqboqWSvm/ps-pulse-linux-22.8r3-b35577-installer.rpm")
-md5sums=('261848a28201e5386ec4bf587473a48b' 'f8446831883d4892df34209a736dc080')
-md5sums_x86_64=('d9be65e4bc926ce65bcd27d68299af8c')
+source=("EULA.txt")
+source_x86_64=("https://dl.vpn.ucsb.edu/clients/Linux%20VPN%20Client/ps-pulse-linux-22.8r5-b41063-installer.rpm")
+md5sums=('261848a28201e5386ec4bf587473a48b')
+md5sums_x86_64=('93a073f8ff0f30d71bb603388dadb417')
 optdepends=('psmisc: for pulsesvc -K', 'gtkmm3: for pulseUi', 'webkit2gtk: for pulseUi')
 conflicts=(pulse-connect-secure)
 
@@ -23,7 +23,6 @@ package() {
     for d in $(find opt/pulsesecure -type d); do
         install -dm755 "$d" "$pkgdir"/"$d";
     done
-    patch opt/pulsesecure/bin/setup_cef.sh setup_cef.sh.patch
     for f in $(find opt/pulsesecure/bin -type f); do
         install -Dm755 "$f" "$pkgdir"/"$f";
     done
