@@ -1,7 +1,7 @@
 pkgbase = arch-smart-update
-	pkgdesc = Universal Smart Update Wrapper for Arch Linux and its derivatives (currently only EndeavourOS)
+	pkgdesc = Universal Smart Update Wrapper for Arch Linux and its derivatives
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/motorrin/Arch_Smart_Update
 	arch = any
 	license = MIT

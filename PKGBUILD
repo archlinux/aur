@@ -1,8 +1,8 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
 pkgver=1.1.0
-pkgrel=1
-pkgdesc="Universal Smart Update Wrapper for Arch Linux and its derivatives (currently only EndeavourOS)"
+pkgrel=2
+pkgdesc="Universal Smart Update Wrapper for Arch Linux and its derivatives"
 arch=('any')
 url="https://github.com/motorrin/Arch_Smart_Update"
 license=('MIT')
