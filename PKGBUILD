@@ -1,7 +1,7 @@
 # Maintainer: Andres Morey <andres@kubetail.com>
 
 pkgname=kubetail-cli
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Real-time logging dashboard for Kubernetes"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=('kubetail')
 conflicts=('kubetail')
 
 source=("https://github.com/kubetail-org/kubetail/releases/download/cli%2Fv${pkgver}/kubetail-${pkgver}-vendored.tar.gz")
-sha256sums=('d81ff1a6972a2c802d88615e5eaf18ddfe16d9db4eee4d62b22dcfb1ea3d5831')
+sha256sums=('d4dccae81f41eee4e9c3cbd7f14696a2e20367a27ff3c07649f0f57451025acb')
 
 build() {
     export GOWORK="off"
