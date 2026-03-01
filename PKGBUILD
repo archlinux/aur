@@ -20,8 +20,8 @@ makedepends=(git
 options=('!debug')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
-conflicts=(aeroshell-smod-x11)
-provides=(aeroshell-smod-x11)
+conflicts=(aeroshell-smodglow-x11)
+provides=(aeroshell-smodglow-x11)
 
 pkgver() {
   cd "$srcdir/${pkgname%}"
