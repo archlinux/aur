@@ -1,0 +1,27 @@
+pkgbase = tlescope-bin
+	pkgdesc = TLEscope is a satellite visualization tool designed to transform Two-Line Element (TLE) sets into intuitive, interactive data.
+	pkgver = 3.7.2
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/aweeri/TLEscope
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = unzip
+	depends = base-devel
+	depends = git
+	depends = alsa-lib
+	depends = libx11
+	depends = libxrandr
+	depends = libxi
+	depends = mesa
+	depends = glu
+	depends = libxcursor
+	depends = libxinerama
+	depends = wayland
+	depends = libxkbcommon
+	depends = curl
+	conflicts = tlescope-git
+	source = https://github.com/aweeri/TLEscope/releases/latest/download/TLEscope-Linux.zip
+	sha256sums = SKIP
+
+pkgname = tlescope-bin
