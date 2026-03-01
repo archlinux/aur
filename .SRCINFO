@@ -1,0 +1,16 @@
+pkgbase = fico-xpress-bin
+	pkgdesc = FICO Xpress Optimization Suite (Mosel & Solver)
+	pkgver = 9.8.0
+	pkgrel = 1
+	url = https://www.fico.com/en/fico-xpress-community-license
+	arch = x86_64
+	license = custom:commercial
+	depends = gcc-libs
+	depends = bash
+	provides = fico-xpress
+	conflicts = fico-xpress
+	options = !strip
+	source = local://xp9.8.0_linux_x86_64_setup.tar
+	sha256sums = 7984e5476b0dde4e8c1995c1c0057bd4ebc43d5484de6c05cca8846d01734c8b
+
+pkgname = fico-xpress-bin
