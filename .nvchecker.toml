@@ -1,0 +1,5 @@
+[iwmenu-bin]
+source = "github"
+github = "e-tho/iwmenu"
+use_latest_release = true
+prefix = "v"

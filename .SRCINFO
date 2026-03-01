@@ -1,0 +1,22 @@
+pkgbase = iwmenu-bin
+	pkgdesc = Launcher-driven Wi-Fi manager for Linux
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/e-tho/iwmenu
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	provides = iwmenu
+	conflicts = iwmenu
+	source = README-0.4.0.md::https://raw.githubusercontent.com/e-tho/iwmenu/v0.4.0/README.md
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/e-tho/iwmenu/v0.4.0/LICENSE.md
+	sha256sums = d0798bac294e2c13e91dc2d0c1aea119f48129d2aed109e534cb2ea2f71529d9
+	sha256sums = 5735febb4249f2fea35481266e47668eb890404f83714ec3d12f68e80c95d72f
+	source_x86_64 = iwmenu-x86_64-0.4.0::https://github.com/e-tho/iwmenu/releases/download/v0.4.0/iwmenu-x86_64-linux-gnu
+	sha256sums_x86_64 = 2e0b366faa37a76c4c9bfe4bfec506a1c4008e4dedf2639b407d168894d993df
+	source_aarch64 = iwmenu-aarch64-0.4.0::https://github.com/e-tho/iwmenu/releases/download/v0.4.0/iwmenu-aarch64-linux-gnu
+	sha256sums_aarch64 = c735bc61d56cd8378deac77ae79a5cb39454fff869120c9acb45ccf60f7fef7b
+
+pkgname = iwmenu-bin
