@@ -7,7 +7,7 @@
 
 pkgname=openrc
 pkgver=0.63
-pkgrel=1
+pkgrel=2
 pkgdesc='Dependency based init system that works with sysvinit and systemd or on its own.'
 arch=('i686' 'x86_64')
 url='https://github.com/OpenRC/openrc'
@@ -51,7 +51,6 @@ build() {
         --libdir=/usr/lib            \
         -Dbash-completions=true      \
         -Dbranding='"Arch Linux"'    \
-        -Dos=Linux                   \
         -Dpam=true                   \
         -Dpkg_prefix=''              \
         -Dpkgconfig=true             \
