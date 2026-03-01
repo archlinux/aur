@@ -1,0 +1,4 @@
+[python-eigency]
+source = "github"
+github = "wouterboomsma/eigency"
+use_max_tag = "true"
