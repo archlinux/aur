@@ -1,8 +1,8 @@
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 pkgname=ccusage-statusline-rs
 pkgver=1.8.0
-pkgrel=1
-pkgdesc="Ultra-fast Rust statusline for Claude Code with real-time usage tracking, billing blocks, and burn rate monitoring"
+pkgrel=2
+pkgdesc="Fast statusline for Claude Code w/usage tracking, billing blocks, burn rate monitoring"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ticpu/ccusage-statusline-rs"
 license=('MIT')
@@ -16,6 +16,7 @@ build() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export CARGO_PROFILE_RELEASE_DEBUG=true
     cargo build --release
 }
 
