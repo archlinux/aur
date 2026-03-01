@@ -1,0 +1,5 @@
+[shellman-bin]
+source = "github"
+github = "Its-Atharva-Gupta/Shellman"
+use_latest_release = true
+prefix = "v"
