@@ -1,4 +1,4 @@
-pkgbase = mindustry
+pkgbase = mindustry-sdl3
 	pkgdesc = A sandbox tower defense game
 	pkgver = 155.4
 	pkgrel = 2
