@@ -2,8 +2,8 @@
 
 pkgname=shorin-contrib-git
 _pkgname=shorin-contrib
-pkgver=r6.03ef656
-pkgrel=3
+pkgver=r9.0be4a29
+pkgrel=2
 pkgdesc="Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-contrib"
@@ -46,13 +46,21 @@ package() {
     # 3. 配置全局命令
     install -dm755 "${pkgdir}/usr/bin"
     
+    # 系统级（需 root 或全局可用）的命令，直接在打包阶段链接到 /usr/bin
     ln -sf "/usr/lib/${_pkgname}/quicksave" "${pkgdir}/usr/bin/quicksave"
     ln -sf "/usr/lib/${_pkgname}/quickload" "${pkgdir}/usr/bin/quickload"
+    ln -sf "/usr/lib/${_pkgname}/change-grub-theme" "${pkgdir}/usr/bin/change-grub-theme"
     
     # 写入增强版 shorin 主调度器
     cat << 'EOF' > "${pkgdir}/usr/bin/shorin"
 #!/bin/bash
-# Shorin Contrib - Subcommand Dispatcher with Descriptions
+set -euo pipefail
+
+# =============================================================================
+# 功能描述:
+#   Shorin Contrib 的主调度器。
+#   支持动态解析子命令描述，执行对应脚本，以及为普通用户生成免密本地快捷链接。
+# =============================================================================
 
 LIB_DIR="/usr/lib/shorin-contrib"
 
@@ -90,7 +98,8 @@ if [ "$COMMAND" = "link" ]; then
     for script in "$LIB_DIR"/*; do
         if [ -f "$script" ]; then
             base_name=$(basename "$script")
-            if [[ "$base_name" != "quicksave" && "$base_name" != "quickload" ]]; then
+            # 排除已经是全局命令的脚本
+            if [[ "$base_name" != "quicksave" && "$base_name" != "quickload" && "$base_name" != "change-grub-theme" ]]; then
                 ln -sf "$script" "$HOME/.local/bin/$base_name"
                 echo "  [User] 已链接: ~/.local/bin/$base_name"
             fi
@@ -103,7 +112,8 @@ elif [ "$COMMAND" = "unlink" ]; then
     for script in "$LIB_DIR"/*; do
         if [ -f "$script" ]; then
             base_name=$(basename "$script")
-            if [[ "$base_name" != "quicksave" && "$base_name" != "quickload" ]]; then
+            # 排除已经是全局命令的脚本
+            if [[ "$base_name" != "quicksave" && "$base_name" != "quickload" && "$base_name" != "change-grub-theme" ]]; then
                 rm -f "$HOME/.local/bin/$base_name"
                 echo "  [User] 已移除: ~/.local/bin/$base_name"
             fi
