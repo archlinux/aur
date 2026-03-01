@@ -1,6 +1,6 @@
 # Maintainer: gilbus <aur (AT) tinkershell.eu>
 pkgname=workout-tracker
-pkgver=2.4.1
+pkgver=2.6.0
 pkgrel=1
 pkgdesc='A workout tracking web application for personal use (or family, friends), geared towards running and other GPX-based activities'
 url="https://github.com/jovandeginste/workout-tracker"
@@ -10,7 +10,7 @@ makedepends=('go' 'make' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
 	"${pkgname}.service"
 	"${pkgname}.env.dist")
-sha256sums=('656e9fb398649e86bf396262c425f9e41b256ce03614aef69104b52598c08341'
+sha256sums=('819cc7c987ad8d65c842f95c541da9e1e3932da0fa5b55f0f37bc5553e6231fd'
             '341941ad9a8ef27d09b3527058597709c9624d80d1319f36252aaa4e60073014'
             'b06f581b4d7ec4991b89ddad9547da284de49f3ad349186e4a2787e9daeb7930')
 backup=("etc/$pkgname/env")
@@ -28,9 +28,8 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  npm install
-  make build-dist
-  make build-tw
+  make build-frontend
+
   go build -o build ./cmd/...
 }
 
