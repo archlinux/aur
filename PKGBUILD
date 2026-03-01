@@ -1,6 +1,6 @@
 # Maintainer: rzhli tayuebuliuhen@gmail.com
 pkgname='ftnn-desktop'
-pkgver='16.4.14908'
+pkgver='16.5.15008'
 pkgrel=1
 pkgdesc="Futu，富途，股票软件"
 arch=('x86_64')
@@ -32,9 +32,9 @@ package() {
     # 修复权限
     chmod +x "${pkgdir}/opt/FTNN/FTNN"
 
-    # 建立软链接
+    # 建立软链接（指向 Launch 脚本以确保 LD_LIBRARY_PATH 正确设置）
     install -d "${pkgdir}/usr/bin"
-    ln -sf /opt/FTNN/FTNN "${pkgdir}/usr/bin/ftnn"
+    ln -sf /opt/FTNN/Launch "${pkgdir}/usr/bin/ftnn"
 
     # 图标安装
     install -d "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
@@ -48,7 +48,7 @@ package() {
 [Desktop Entry]
 Name=FTNN 富途牛牛
 Comment=Trade stocks
-Exec=ftnn %U
+Exec=/opt/FTNN/Launch %U
 Icon=ftnn
 Terminal=false
 Type=Application
