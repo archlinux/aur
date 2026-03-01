@@ -2,11 +2,12 @@
 # Contributor: eduardosm
 
 pkgname=subtitleedit-avalonia
-pkgver=5.0.0.preview114
+pkgver=5.0.0.beta1
 pkgrel=1
-pkgdesc='An advanced subtitle editor and converter (preview build with Avalonia UI)'
+epoch=1
+pkgdesc='An advanced subtitle editor and converter (beta build with Avalonia UI)'
 arch=('any')
-url='https://github.com/niksedk/subtitleedit-avalonia'
+url='https://github.com/SubtitleEdit/subtitleedit'
 license=('MIT')
 optdepends=('ffmpeg: waveform extraction'
             'mpv: video support'
@@ -14,11 +15,11 @@ optdepends=('ffmpeg: waveform extraction'
 provides=('subtitleedit')
 conflicts=('subtitleedit')
 options=('!strip')
-source=("SubtitleEdit-Linux-x64-${pkgver//.p/-p}.tar.gz::https://github.com/niksedk/subtitleedit-avalonia/releases/download/v${pkgver//.p/-p}/SubtitleEdit-Linux-x64.tar.gz"
+source=("SubtitleEdit-Linux-x64-${pkgver}.tar.gz::https://github.com/SubtitleEdit/subtitleedit/releases/download/v${pkgver//.b/-b}/SubtitleEdit-Linux-x64.tar.gz"
         'subtitleedit'
         'subtitleedit.desktop'
         'subtitleedit.png')
-b2sums=('c546d8558b2d1b051c2a41348d8ac71dd88a8a9bbbfca0d670517272b4dd1f93e0f88beb7d41ec83aaa00ca27f3ee028eea25c97b98b28723f9bc82df5a7410a'
+b2sums=('a2fb72a2ae4dc6f222798c905a29e98c93c8511d5986a90038a827df55a62b4922e1c60f9990b592411121b03ebd20e35a0748e04ec26a001d8233a866e063b5'
         '0e2d96c9611ba8428db13eefb624bbfc4f9e055ce9d56eeac37e275597b073f1222d06760634aef979e3667f1f70e5b0c9400316682ebec8842b02cd3a7df639'
         'bbeafd804a2d0ad6de03886771ecafbf3ebaa6ad86f449f2609c413114f898370102d1303135db0e21d04ca2612d40055c8f4de2458fc4a907f709e84940133b'
         'eefd5090791d860aa17f209ccf1d277b6e394af12bce07ecdebae5782b53cd9721c6d53e8034c038c0bdce5ffd09ba0c954aa90aa9cd9fbcffc1558d1010dc26')
