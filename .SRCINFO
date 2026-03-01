@@ -1,13 +1,13 @@
 pkgbase = perforator
 	pkgdesc = Continuous profiling tool designed for large data centers
-	pkgver = 0.0.7
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/yandex/perforator/
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = python
 	depends = glibc
-	source = https://github.com/yandex/perforator/archive/v0.0.7/perforator-0.0.7.tar.gz
-	sha256sums = 74e3e4f15513c825999131c39bc96a0c977b2e4d5e135b93a60b5279af9920cc
+	source = https://github.com/yandex/perforator/archive/v0.1.0/perforator-0.1.0.tar.gz
+	sha256sums = 9baaa8570f14cf31f4d26373f6e5befda4f219b5d2a3f9a8e2a260354729118a
 
 pkgname = perforator

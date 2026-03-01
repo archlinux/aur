@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=perforator
-pkgver=0.0.7
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Continuous profiling tool designed for large data centers'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=(
 makedepends=(
     'python')
 source=("https://github.com/yandex/perforator/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('74e3e4f15513c825999131c39bc96a0c977b2e4d5e135b93a60b5279af9920cc')
+sha256sums=('9baaa8570f14cf31f4d26373f6e5befda4f219b5d2a3f9a8e2a260354729118a')
 
 build() {
     cd "${pkgname}-${pkgver}"
