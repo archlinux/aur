@@ -1,6 +1,6 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=ralphex-bin
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="CLI tool that orchestrates Claude Code to execute implementation plans autonomously"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/umputun/ralphex/v$
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/umputun/ralphex/releases/download/v${pkgver}/ralphex_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/umputun/ralphex/releases/download/v${pkgver}/ralphex_${pkgver}_linux_arm64.tar.gz")
 sha256sums=('155d97114b2d9b7f66181d0ba258aca57f97b8b957dd1662745bf57218c41ef3')
-sha256sums_x86_64=('08f57b92b4b6a04928848bdfcb5daba900b171a55230147ddde3e8f4ee2fd2c6')
-sha256sums_aarch64=('db903c69f40ce8cfab9dd470393919a8bee5d962d75533206bd8f54a48e2da51')
+sha256sums_x86_64=('619d7a5b17c0ab13e38f1d7f5f5cecbb8327baf6a597c1761118ed2a1074f229')
+sha256sums_aarch64=('3955c82deb27a1bf334162cdb42d52efdac96c427380cecef9bfc6a1c88190b1')
 
 latestver() {
     curl -fsSL "https://api.github.com/repos/umputun/ralphex/releases/latest" |
