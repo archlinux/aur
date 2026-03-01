@@ -16,10 +16,10 @@ source=("https://github.com/omnidotdev/terminal/releases/download/v$pkgver/omni-
         "LICENSE::https://raw.githubusercontent.com/omnidotdev/terminal/v$pkgver/LICENSE.md"
         "NOTICE::https://raw.githubusercontent.com/omnidotdev/terminal/v$pkgver/NOTICE.md"
         "omni-terminal.terminfo::https://raw.githubusercontent.com/omnidotdev/terminal/v$pkgver/misc/omni-terminal.terminfo")
-sha256sums=('0436de59a48d9d543f4efa503793ada82e3768dc108e5981c5e5b4a49849e44e'
+sha256sums=('4d38b980c6edcae4f490fae3250064a838917dcf010a14d20f1f24a394ad1c9f'
             'b9887bfd7879525cefd1df7eaf19eb0caab3429e886a4f9ee3752103335fd82e'
-            '2d7f9413eae1f14a6622aee6378a634193064e6a599fbd71e7fceca35816c37c'
-            'a5df97f21941198fd6e31d8f6e4344898ca11cdddff0e8964928544f468c0645'
+            'f1e389bb95778e9e8fdba238f5b57a9385a32049de00b867b44805693825e9fc'
+            '0e2aa06d215a73ec5c073b39ddab21a33a187cc7a9df3c92e11a03ef3fa1aa84'
             'f6d51cfddf65fd0c0c60882e14d5d3a6621e58634e6ef4d59a1a48bc23f243fd'
             'b8bddc6fe92d9fea081898999839d77b3b64f190f6e025b9528ce5800f6678af'
             '92ab864206e507d9a6993b018f797666dc093de489554a6d55a12c49588fdc43')
