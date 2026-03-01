@@ -1,6 +1,6 @@
 pkgbase = linux-wallpaperengine-git
 	pkgdesc = use steam's wallpaperengine on linux
-	pkgver = r581.cf764a8
+	pkgver = r592.fe32484
 	pkgrel = 1
 	url = https://github.com/Almamu/linux-wallpaperengine
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = linux-wallpaperengine-git
 	makedepends = cmake
 	makedepends = sdl2
 	makedepends = glm
+	makedepends = wayland-protocols
+	makedepends = xorg-xrandr
 	depends = lz4
 	depends = ffmpeg
 	depends = mpv
@@ -22,8 +24,6 @@ pkgbase = linux-wallpaperengine-git
 	depends = libxcomposite
 	depends = libxdamage
 	depends = nspr
-	optdepends = xorg-xrandr: support for X11
-	optdepends = wayland-protocols: support for wayland
 	provides = linux-wallpaperengine
 	source = linux-wallpaperengine-git::git+https://github.com/Almamu/linux-wallpaperengine.git#branch=main
 	sha512sums = SKIP
