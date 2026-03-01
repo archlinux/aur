@@ -16,13 +16,13 @@ source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('38dd77910d24c96436ce7c417eeff9701f98e9ada2a1cb3cf92918ab0f62ed1f')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/patchy-${pkgver}"
 
   CI=true bun install --frozen-lockfile
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/patchy-${pkgver}"
 
   PATCHY_VERSION="${pkgver}" bun run build --single
 }
@@ -43,7 +43,7 @@ _arch() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/patchy-${pkgver}"
 
   local pkg
   pkg="patchy-linux-$(_arch)"
