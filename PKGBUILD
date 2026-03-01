@@ -2,7 +2,7 @@
 
 pkgname=changie
 pkgver=1.24.0
-pkgrel=1
+pkgrel=2
 epoch=0
 pkgdesc="Automated changelog tool for preparing releases with lots of customization options."
 arch=('x86_64')
@@ -47,6 +47,7 @@ build() {
 }
 
 check() {
+  unset ${!CHANGIE_*}
   cd "$pkgname"
   go test ./...
 }
