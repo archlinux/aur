@@ -1,0 +1,14 @@
+pkgbase = asm6
+	pkgdesc = A 6502 assembler
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://3dscapture.com/NES/
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = custom:asm6
+	source = https://3dscapture.com/NES/asm6.zip
+	sha512sums = 1cd32d8e4f2e58a1263c77d5a38bfb069e2ed087cf5186dee2d4e6c9796c9cf93905a7ab5d834ff7d03b935f805e7e854d1069c5d1b6a22ee36138bda754c6ea
+
+pkgname = asm6
