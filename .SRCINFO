@@ -1,0 +1,20 @@
+pkgbase = system-keyboard-qt
+	pkgdesc = Graphical frontend for configuring X11 keyboard layouts
+	pkgver = 26.02arch
+	pkgrel = 1
+	url = https://github.com/MX-Linux/system-keyboard-qt
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = xorg-setxkbmap
+	depends = polkit
+	depends = flags-common
+	optdepends = xdg-utils: help display
+	source = https://github.com/MX-Linux/system-keyboard-qt/archive/refs/tags/26.02arch.tar.gz
+	sha256sums = d56ff3994b67a90884c7f8944fa7debd02d788ac86a290cf1fd071005d1eb727
+
+pkgname = system-keyboard-qt
