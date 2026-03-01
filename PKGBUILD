@@ -1,6 +1,6 @@
 # Maintainer: Enbeon <actuallyenbeon at gmail dot com>
 pkgname=jd-gui-duo
-pkgver=2.0.103
+pkgver=2.0.105
 pkgrel=1
 pkgdesc="A 2-in-1 JAVA decompiler based on JD-CORE v0 and v1"
 arch=('any')
@@ -15,11 +15,11 @@ source=(
 	"jd_icon_128.png"
 	"assembler_pom.patch"
 )
-sha256sums=('3112b75cfa921863fc3749ce6d202259b0adc3fe40034a80787ffd6bfc69f898'
+sha256sums=('b23dda2bc21374b408680516f21983c157d0818736072eac7b1c5e1a065010e9'
             '7e3c81892a95aa411afe7a5dc93b5e7a891b1c52fcc65670a08b5b5618b8aafc'
             'd40a09c9c228b55dcb54823b878cd180521386a11abffed478ce89439fd4e184'
             '62c763642af8cbfd1e00dc8763dcc92a66eefc7aceaa4069d29909bfc197240a'
-            'c1f400f37795d4152c656df03d392178671c8e43feed72c9ba1e73df38fef7c1')
+            '2ecaa68f7d41d19e8a3d3de1030ff4fe408fe51878e17b364da2914beef940af')
 
 build() {
 	patch "$pkgname-$pkgver/assembler/pom.xml" < "assembler_pom.patch"
