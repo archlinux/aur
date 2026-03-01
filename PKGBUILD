@@ -1,16 +1,18 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=stremio
-pkgver=4.4.171
+pkgver=4.4.176
 pkgrel=1
+_serverjs_ver=4.4.172
 pkgdesc='A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)'
 arch=('x86_64')
 url='https://www.stremio.com/'
 license=('GPL-3.0-only')
 depends=(
-    'gcc-libs'
     'glibc'
     'hicolor-icon-theme'
+    'libgcc'
+    'libstdc++'
     'mpv'
     'nodejs'
     'openssl'
@@ -28,14 +30,14 @@ makedepends=(
 source=("git+https://github.com/Stremio/stremio-shell.git#tag=v${pkgver}"
         'git+https://github.com/Ivshti/libmpv.git'
         'git+https://github.com/itay-grudev/SingleApplication.git'
-        "stremio-${pkgver}-server.js"::"https://dl.strem.io/four/v${pkgver}/server.js"
-        "stremio-${pkgver}-stremio.asar"::"https://dl.strem.io/four/v${pkgver}/stremio.asar"
+        "stremio-${_serverjs_ver}-server.js"::"https://dl.strem.io/four/v${_serverjs_ver}/server.js"
+        "stremio-${_serverjs_ver}-stremio.asar"::"https://dl.strem.io/four/v${_serverjs_ver}/stremio.asar"
         '010-stremio-do-not-download-server-js.patch')
-sha256sums=('70acafb9e959cba52ef2f6335bac84b2ea3d65d929019c2d4d542edc11f4d490'
+sha256sums=('25248ae6d54c1c669ec2a90f64ba7e0717a6d8436c0495b58f602e0af638c37d'
             'SKIP'
             'SKIP'
-            'c2a24354fb8ead12d527b6af184b3ad0d1665a76b2c4a108ad81eb3b312165c9'
-            '2142db99f12287f9b4a7b85c0f6a1e7a85f877ba24dd9ec0952342b55a72af03'
+            '08d5510a771c3d07a8b1f9c0e521324551d6055b001c5a56c7a79e3e3e0474ef'
+            'a6cb74bd82323ecaa898323c0b710d4297ebad50dd4f2389d84b8426ef6d943a'
             'b5eff88b30d8c6030e36ca4949ebf6ff9515efbedc0b9bc748110cd1fbc0671a')
 
 prepare() {
@@ -45,7 +47,7 @@ prepare() {
     git -C stremio-shell -c protocol.file.allow='always' submodule update
     
     # do not download server.js during 'make'
-    ln -s "../stremio-${pkgver}-server.js" stremio-shell/server.js
+    ln -s "../stremio-${_serverjs_ver}-server.js" stremio-shell/server.js
     patch -d stremio-shell -Np1 -i "${srcdir}/010-stremio-do-not-download-server-js.patch"
 }
 
@@ -57,8 +59,8 @@ package() {
     make -C stremio-shell -f release.makefile PREFIX="$pkgdir" install
     
     # streaming server files
-    install -D -m644 "stremio-${pkgver}-server.js"    "${pkgdir}/opt/stremio/server.js"
-    install -D -m644 "stremio-${pkgver}-stremio.asar" "${pkgdir}/opt/stremio/stremio.asar"
+    install -D -m644 "stremio-${_serverjs_ver}-server.js"    "${pkgdir}/opt/stremio/server.js"
+    install -D -m644 "stremio-${_serverjs_ver}-stremio.asar" "${pkgdir}/opt/stremio/stremio.asar"
     
     # binary and desktop file
     install -d -m755 "${pkgdir}/usr/"{bin,share/applications}
