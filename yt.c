@@ -51,11 +51,14 @@ static int my_conv(int num_msg, const struct pam_message **msg,
     aresp = calloc(num_msg, sizeof(struct pam_response));
     if (!aresp) return PAM_CONV_ERR;
 
+    const char *username = (const char *)appdata_ptr;
+
     for (int i = 0; i < num_msg; i++) {
         if (msg[i]->msg_style == PAM_PROMPT_ECHO_OFF) {
             char input[128];
-            read_password(input, sizeof(input),
-                "[yt] sosisli için şifre doğrulama: ");
+            char prompt[256];
+            snprintf(prompt, sizeof(prompt), "[yt] %s için şifre doğrulama: ", username);
+            read_password(input, sizeof(input), prompt);
             aresp[i].resp = strdup(input);
             aresp[i].resp_retcode = 0;
         }
