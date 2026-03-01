@@ -1,5 +1,5 @@
 pkgbase = mindustry-sdl3
-	pkgdesc = A sandbox tower defense game
+	pkgdesc = SDL3 backend version of Mindustry.
 	pkgver = 155.4
 	pkgrel = 2
 	url = https://github.com/Anuken/Mindustry
@@ -9,7 +9,7 @@ pkgbase = mindustry-sdl3
 	makedepends = libicns
 	depends = alsa-lib
 	source = mindustry-155.4.tar.gz::https://github.com/Anuken/Mindustry/archive/v155.4.tar.gz
-	source = mindustry-arc-155.4.tar.gz::https://github.com/Anuken/Arc/archive/refs/tags/v155.4.tar.gz 
+	source = mindustry-arc-155.4.tar.gz::https://github.com/Anuken/Arc/archive/refs/tags/v155.4.tar.gz
 	source = 0001-remove-borderless-fullscreen.patch::https://github.com/Anuken/Mindustry/commit/a6b29b854cd58957b5be1e8f2740073efbc9ac19.patch
 	source = 0002-revert-sdl2.patch::https://github.com/Anuken/Mindustry/commit/88e487303de535fc988f5efa54bcb16222963d5f.patch
 	source = 0003-proper-backend.patch::https://github.com/Anuken/Mindustry/commit/48d3fa1c11e97816084d77b0ba15322dbeab4432.patch
@@ -19,13 +19,14 @@ pkgbase = mindustry-sdl3
 	sha256sums = cc7b3ccda6a05b0b459fae4794a60cfa2a66d4aa6b6cda876aa2595ac56eda1c
 	sha256sums = 715f7912d531679fcc046ddba3604d77f062a01dd99a4ad943ec1fc6a9d2fa1e
 
-pkgname = mindustry
+pkgname = mindustry-sdl3
+	install = mindustry-sdl3.install
 	depends = alsa-lib
 	depends = java-runtime>=17
 	depends = hicolor-icon-theme
 
-pkgname = mindustry-server
-	pkgdesc = A sandbox tower defense game - server
+pkgname = mindustry-server-sdl3
+	pkgdesc = SDL3 backend version of Mindustry. - server
 	depends = alsa-lib
 	depends = java-runtime>=17
 	depends = hicolor-icon-theme
