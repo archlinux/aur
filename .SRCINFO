@@ -1,4 +1,4 @@
-pkgbase = ring
+pkgbase = ring-bin
 	pkgdesc = Ping-like utility written in Rust
 	pkgver = 0.0.1
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = ring
 	source = https://github.com/mhashirshahzad/ring/releases/download/v0.0.1/ring.tar.gz
 	sha256sums = 208af812b770fe1fcd42be129df09e19c7dfee2e018659cbb0bc013ce150b229
 
-pkgname = ring
+pkgname = ring-bin
