@@ -1,6 +1,10 @@
---- a/setup-desktop-entry.sh.old
-+++ b/setup-desktop-entry.sh
-@@ -1,31 +1,32 @@
+diff --git a/setup-desktop-entry.sh b/setup-desktop-entry-MOD.sh
+old mode 100755
+new mode 100644
+index b13a1e6..4d6aacf
+--- a/setup-desktop-entry.sh
++++ b/setup-desktop-entry-MOD.sh
+@@ -1,32 +1,36 @@
  #!/usr/bin/env sh
  # Generate a desktop entry for Flashpoint Archive.
  
@@ -14,7 +18,8 @@
 +# Default: absolute path to script's directory
 +[ "$FP_DIR" ] || FP_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
 +
- printf "[Desktop Entry]
+ printf "#!/usr/bin/env xdg-open
+ [Desktop Entry]
  Type=Application
  Name=Flashpoint Archive
  Comment=An archive for games and animations from the web.
@@ -22,11 +27,10 @@
 +Icon=$FP_DIR/Launcher/icon.svg
  StartupWMClass=flashpoint-launcher
  Exec=/usr/bin/env -S " > "$ENTRY"
- if [ "`file -b --mime-type Libraries/libgtk-3.so.0`" = 'application/x-sharedlib' ]; then
--  printf "GALLIUM_DRIVER=\"i915,i965,iris,nouveau,nouveau_vieux,r200,r300,r600,radeon,radeonsi,zink,swrast\" GDK_PIXBUF_MODULE_FILE=\"$PWD/Libraries/loaders.cache\" GSETTINGS_SCHEMA_DIR=\"$PWD/Libraries\" LD_LIBRARY_PATH=\"$PWD/Libraries\" LIBGL_DRIVERS_PATH=\"$PWD/Libraries\" PATH=\"$PWD/Libraries" >> "$ENTRY" 
--  if [ ! -d FPSoftware/Wine/bin ]; then
-+  printf "GALLIUM_DRIVER=\"i915,i965,iris,nouveau,nouveau_vieux,r200,r300,r600,radeon,radeonsi,zink,swrast\" GDK_PIXBUF_MODULE_FILE=\"$FP_DIR/Libraries/loaders.cache\" GSETTINGS_SCHEMA_DIR=\"$FP_DIR/Libraries\" LD_LIBRARY_PATH=\"$FP_DIR/Libraries\" LIBGL_DRIVERS_PATH=\"$FP_DIR/Libraries\" PATH=\"$FP_DIR/Libraries" >> "$ENTRY" 
-+  if [ ! -d $FP_DIR/FPSoftware/Wine/bin ]; then
+ if [ "`file -b --mime-type Libraries/lib/x86_64-linux-gnu/libgtk-3.so.0`" = 'application/x-sharedlib' ]; then
+-  printf "GALLIUM_DRIVER=\"i915,i965,iris,nouveau,nouveau_vieux,r200,r300,r600,radeon,radeonsi,zink,swrast\" GDK_PIXBUF_MODULE_FILE=\"$PWD/Libraries/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache\" GSETTINGS_SCHEMA_DIR=\"$PWD/Libraries/share/glib-2.0/schemas\" GTK_MODULES= LD_LIBRARY_PATH=\"$PWD/Libraries/lib/x86_64-linux-gnu\" LIBGL_DRIVERS_PATH=\"$PWD/Libraries/lib/x86_64-linux-gnu/dri\" PATH=\"$PWD/Libraries/bin" >> "$ENTRY"
++  printf "GALLIUM_DRIVER=\"i915,i965,iris,nouveau,nouveau_vieux,r200,r300,r600,radeon,radeonsi,zink,swrast\" GDK_PIXBUF_MODULE_FILE=\"$FP_DIR/Libraries/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders.cache\" GSETTINGS_SCHEMA_DIR=\"$FP_DIR/Libraries/share/glib-2.0/schemas\" GTK_MODULES= LD_LIBRARY_PATH=\"$FP_DIR/Libraries/lib/x86_64-linux-gnu\" LIBGL_DRIVERS_PATH=\"$FP_DIR/Libraries/lib/x86_64-linux-gnu/dri\" PATH=\"$FP_DIR/Libraries/bin" >> "$ENTRY"
+   if ! [ -d FPSoftware/Wine/bin ]; then
      CMD="`command -v wine`"
      [ "$CMD" ] && printf ":${CMD%/*}" >> "$ENTRY"
    fi
@@ -39,7 +43,8 @@
  Terminal=false
  Categories=Archiving;Game;
  SingleMainWindow=true" >> "$ENTRY"
--
--# This is for backwards compatibility, and will be removed in the future.
+ 
+ # This is for backwards compatibility, and will be removed in the future.
 -ln "$ENTRY" Flashpoint.desktop
 \ No newline at end of file
++ln "$ENTRY" Flashpoint.desktop
