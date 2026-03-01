@@ -1,15 +1,14 @@
 pkgbase = multiwatch
 	pkgdesc = Forks and watches multiple instances of a program in the same context
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
-	url = http://redmine.lighttpd.net/projects/multiwatch/wiki
+	url = https://redmine.lighttpd.net/projects/multiwatch
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = cmake
+	makedepends = meson
 	depends = libev
-	source = http://download.lighttpd.net/multiwatch/releases-1.x/multiwatch-1.0.0.tar.bz2
-	md5sums = 87f74dbaf5318f2b2dce3d0bf9f5025c
+	source = https://download.lighttpd.net/multiwatch/releases-1.x/multiwatch-1.0.1.tar.gz
+	b2sums = fb65f92e2105c9b6bebd3078fba4bd8324268d11f742fa395a4271370aee9d7a4e99fa783ae79ac5e453b8b6850098926dae2876e9ebd2efe60cd43c49bfa6bb
 
 pkgname = multiwatch
-

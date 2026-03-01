@@ -1,28 +1,27 @@
-# Maintainer: Paul Dann <pdgiddie at gmail dot com>
+# Maintainer: Nocifer <apmichalopoulos at gmail dot com>
+# Contributor: Paul Dann <pdgiddie at gmail dot com>
+
 pkgname=multiwatch
-pkgver='1.0.0'
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Forks and watches multiple instances of a program in the same context'
 arch=('i686' 'x86_64')
-url="http://redmine.lighttpd.net/projects/multiwatch/wiki"
+url='https://redmine.lighttpd.net/projects/multiwatch'
 license=('MIT')
 depends=('libev')
-makedepends=('cmake')
-source=("http://download.lighttpd.net/multiwatch/releases-1.x/multiwatch-$pkgver.tar.bz2")
-md5sums=('87f74dbaf5318f2b2dce3d0bf9f5025c')
+makedepends=('meson')
+source=("https://download.lighttpd.net/multiwatch/releases-1.x/multiwatch-${pkgver}.tar.gz")
+b2sums=('fb65f92e2105c9b6bebd3078fba4bd8324268d11f742fa395a4271370aee9d7a4e99fa783ae79ac5e453b8b6850098926dae2876e9ebd2efe60cd43c49bfa6bb')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  rm -rf build
-  mkdir build
-  cd build
-  cmake ..
-  make
+    cd ${pkgname}-${pkgver}
+
+    meson setup build --prefix "${pkgdir}"/usr
+    meson compile -C build
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/build"
-  install -Dm 755 multiwatch $pkgdir/usr/bin/multiwatch
-}
+    cd ${pkgname}-${pkgver}
 
-# vim:set ts=2 sw=2 et:
+    meson install -C build
+}
