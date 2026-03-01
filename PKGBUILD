@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=dlss-updater
 _app_id="io.github.recol.$pkgname"
-pkgver=3.9.2
+pkgver=3.9.3
 pkgrel=1
 pkgdesc="DLSS, XeSS, DirectStorage, FSR, and Streamline DLL updater for games"
 arch=('any')
@@ -13,7 +13,7 @@ depends=(
   'python-aiosqlite'
   'python-appdirs'
   'python-darkdetect'
-  'python-flet>=0.80.4'
+  'python-flet'
   'python-msgspec'
   'python-nvidia-ml-py'
   'python-packaging'
@@ -39,7 +39,7 @@ checkdepends=(
 optdepends=('python-rapidfuzz: Fast fuzzy string matching for game search')
 source=("DLSS-Updater-$pkgver.tar.gz::$url/archive/refs/tags/V$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('dd2ecff809215e20eaa1b73ff0fd95b6df5cc0de60ccfe72918494370cdf8679'
+sha256sums=('018eaca1c281568cd3ac391bc52dfad2e5f256073d2133776cbd2504a29c2a09'
             'd98bd361773dee09cc82fa02a185a9fdf21779676ed72b69d550323e9abe14f0')
 
 prepare() {
