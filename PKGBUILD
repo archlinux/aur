@@ -3,7 +3,7 @@
 
 pkgname=xml2rfc
 pkgver=3.31.0
-pkgrel=2
+pkgrel=3
 pkgdesc='generates RFCs and IETF drafts from XML according to the DTD in RFC 2629'
 url='https://pypi.python.org/pypi/xml2rfc'
 arch=(any)
@@ -25,6 +25,7 @@ makedepends=(
 	python-installer
 	python-wheel
 )
+optdepends=('python-weasyprint: PDF support')
 license=(LicenseRef-BSD-3-Clause)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname//-/_}/${pkgname//-/_}-$pkgver.tar.gz")
 sha256sums=('0a1d4ccc4425aed39b5f0f833a8eb1e0f9e8f1897d3441c3a15877dee36cf484')
@@ -38,5 +39,5 @@ package() {
   cd "$pkgname-$pkgver"
 	python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/xml2rfc/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
