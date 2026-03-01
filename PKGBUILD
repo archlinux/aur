@@ -1,17 +1,16 @@
-# Maintainer: envolution
+# Maintainer: marmis <tiagodepalves@gmail.com>
+# Contributor: "marmis" Tiago de Paula <tiagodepalves@gmail.com>
+# Contributor: envolution
 # Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
-# shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-speechrecognition
-_pkg=speechrecognition
-_pkgdir=speech_recognition
 pkgver=3.14.4
-pkgrel=1
-pkgdesc="Google-powered speech recognition for Python"
-arch=('x86_64')
-url="https://github.com/Uberi/speech_recognition"
-license=('MIT')
+pkgrel=2
+pkgdesc='Speech recognition module for Python, supporting several engines and APIs'
+arch=('i686' 'x86_64') # embedded FLAC binaries for these platforms
+url='https://github.com/Uberi/speech_recognition'
+license=('BSD-3-Clause AND GPL-2.0-or-later') # FLAC binaries released under GPLv2
 depends=(
   'python-audioop'
   'python-requests'
@@ -20,48 +19,50 @@ depends=(
   'python-boto3'
   'lib32-glibc'
   'flac'
-  'python-aifc')
+  'python-aifc'
+)
 optdepends=(
-  'python-pyaudio: Required for microphone input'
+  'python-pyaudio: required for microphone input'
   'python-pocketsphinx'
   'python-vosk'
   'python-whisper'
   'python-google-api-core: Google cloud speech'
-  'python-faster-whisper: Required for Whisper'
-  'python-typing_extensions: Required for faster Whisper'
+  'python-faster-whisper: required for Whisper'
+  'python-typing_extensions: required for faster Whisper'
   'python-pytorch: Required for Whisper'
-  'python-numpy: Required for whisper'
-  'python-openai: Required for openai'
-  'python-soundfile: Required for whisper'
-  'python-google-cloud-speech: Required for Google Cloud Speech-toText API'
-  'python-vosk: Required for Vosk recognizer'
-  'python-groq: Required for Groq Whisper API'
+  'python-numpy: required for Whisper'
+  'python-openai: required for OpenAI'
+  'python-soundfile: required for Whisper'
+  'python-google-cloud-speech: required for Google Cloud Speech-toText API'
+  'python-vosk: required for Vosk recognizer'
+  'python-groq: required for Groq Whisper API'
 )
-
 makedepends=(
   'git'
   'python-build'
   'python-installer'
   'python-setuptools'
-  'python-wheel')
-provides=('python-speech_recognition')
+  'python-wheel'
+)
 checkdepends=(
   'python-pocketsphinx'
   'python-pytest'
   'python-httpx'
-  'python-respx')
-source=("git+https://github.com/Uberi/speech_recognition.git#tag=${pkgver}")
+  'python-respx'
+)
+source=("git+${url}.git#tag=${pkgver}")
 sha256sums=('8e0faf51aa924510a58406f57c937d9f01b4fb45b2d7269b4fe2bbd68784e72e')
 
 build() {
-  cd "$_pkgdir"
+  cd "${srcdir}/speech_recognition"
+
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cp -r "${_pkgdir}/tests" "${srcdir}/tests"
+  cp -r "${srcdir}/speech_recognition/tests" "${srcdir}/tests"
   cd "${srcdir}"
-  PYTHONPATH="${_pkgdir}" python -m pytest \
+  PYTHONPATH="${srcdir}/speech_recognition" python -m pytest \
     -k "not test_google_cloud" \
     --ignore=tests/recognizers/test_google_cloud.py \
     --ignore=tests/recognizers/test_groq.py \
@@ -72,8 +73,9 @@ check() {
 }
 
 package() {
-  cd "$_pkgdir"
-  python -m installer --destdir "$pkgdir" dist/*.whl
-  install -Dm644 LICENSE* -t ${pkgdir}/usr/share/licenses/$pkgname/
+  cd "${srcdir}/speech_recognition"
+
+  python -m installer --destdir "${pkgdir}" dist/*.whl
+
+  install -Dm644 LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-# vim:set ts=2 sw=2 et:
