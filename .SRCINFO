@@ -10,6 +10,7 @@ pkgbase = pumpkin-git
 	makedepends = clang
 	depends = glibc
 	provides = pumpkin
+	conflicts = pumpkin
 	options = !debug
 	source = pumpkin-git::git+https://github.com/Pumpkin-MC/Pumpkin.git
 	sha256sums = SKIP
