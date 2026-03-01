@@ -1,7 +1,7 @@
 # Maintainer: Ross Ceb aur@roceb.xyz
 pkgname=sonicrust-git
 _binaryname=sonicrust
-pkgver=0.1.5.r0.g429b842
+pkgver=0.1.6.r0.ga48442c
 pkgrel=1
 pkgdesc="A Terminal based music player for Subsonic-compatible servers, written in Rust."
 arch=('x86_64' 'aarch64')
