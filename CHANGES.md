@@ -1,5 +1,213 @@
 # Release Notes
 
+## 2.90.3
+
+This release follows up on #3109 in 2.90.2 and extends better isolation to `--venv` script shebangs
+when emitting hermetic scripts (the default; only subverted by `--non-hermetic-venv-scripts`).
+
+* Use more isolation in venv scripts when available. (#3110)
+
+## 2.90.2
+
+This release fixes bugs resulting from imperfect isolation of Python interpreters by Pex. In
+particular, `sys.path` pollution from items in the `CWD` is mitigated for many common use cases.
+
+This release also updates vendored Pip's vendored certifi's cacert.pem to that from
+certifi 2026.2.25.
+
+* Update vendored Pip's CA cert bundle. (#3108)
+* Further isolate Python interpreters when possible. (#3109)
+
+## 2.90.1
+
+This release fixes a Pex caching bug when creating `--layout packed` PEXes and alternating between
+the default (`--compress`) and `--no-compress`. Previously this could lead errors building the
+packed PEX which necessitated clearing the PEX cache.
+
+* Fix `--layout packed` bootstrap and wheel caches. (#3106)
+
+## 2.90.0
+
+This release adds support for wrapping PEP-660 `build_editable` to `pex_build.setuptools.build`
+plugins and dogfoods this.
+
+* Support wrapping `build_editable` in wrap. (#3105)
+
+## 2.89.1
+
+This release adds better diagnostics for certain Pex filesystem interaction errors.
+
+* Add `safe_copy` failure diagnostic message. (#3103)
+
+## 2.89.0
+
+This release exports the path of the installed `.desktop` file as the `DESKTOP_FILE` environment
+variable for commands in `--scie-icon` and `--scie-desktop-file` PEX scies. The `DESKTOP_FILE`
+path may not exist, but if it does it can be used to implement desktop application uninstallation
+in the PEX scie application code.
+
+* Export `DESKTOP_FILE` for PEX scie .desktop apps. (#3100)
+
+## 2.88.1
+
+This release fixes `.desktop` files installed by `--scie-icon` and `--scie-desktop-file` PEX scies
+to be more robust. They now work even if the original PEX scie they were installed by is (re)moved
+as well as properly handling a `SCIE_BASE` with spaces in the path.
+
+* Fix `.desktop` files installed by PEX scies. (#3099)
+
+## 2.88.0
+
+This release adds support for `--pip-version 26.0.1`.
+
+* Add support for `--pip-version 26.0.1`. (#3098)
+
+## 2.87.0
+
+This release adds support for `--pip-version 26.0`.
+
+* Add support for `--pip-version 26.0`. (#3091)
+
+## 2.86.1
+
+This release fixes a bug in constraints file requirement parsing. Previously, Pex tried to validate
+constraints beyond its own needs, anticipating Pip's needs, leading to a failure to handle direct
+reference URL requirements, including VCS requirements.
+
+* Fix constraints file parsing for URL requirements. (#3090)
+
+## 2.86.0
+
+This release adds support for Linux PEX scies installing themselves with a desktop entry on first
+run. This is enabled via either of `--scie-icon` or `--scie-desktop-file`. By default, the end-user
+is prompted to approve a desktop install but this can be bypassed at build time with
+`--no-scie-prompt-desktop-install` or at runtime using the `PEX_DESKTOP_INSTALL` environment
+variable.
+
+* Add PEX scie Linux .desktop install support. (#3087)
+
+## 2.85.3
+
+This release upgrades vendored `packaginged for Python>=3.8 to the latest release; bringing some bug
+fixes and performance improvements.
+
+* Upgrade vendored `packaging` to 26.0 for Python>=3.8. (#3083)
+
+## 2.85.2
+
+This release makes running a PEX using venv-execution and sh-bootstrapping (that is, build with
+`--sh-boot --venv`) more likely to behave identically with a cold or warm `PEX_ROOT` cache. This
+includes running with `PEX_PYTHON=...`,  `PEX_PYTHON_PATH=...`, `PEX_PATH=...`, `PEX_VENV=...` and
+`PEX_IGNORE_RCFILES=...`.
+
+* Avoid fast-path in `--sh-boot` script for more variables. (#2729)
+
+## 2.85.1
+
+This release upgrades the floor of `science` to 0.17.2 to pick up better handling for CPython 3.9
+which was dropped in new [PBS][PBS] releases at the end of 2025.
+
+* Upgrade science to 0.17.2 (#3081)
+
+## 2.85.0
+
+This release introduces a new `--interpreter-selection-strategy` option for use when building PEXes
+that use `--interpreter-constraint`s. When multiple interpreters satisfy the specified
+`--interpreter-constraint`s, the `--interpreter-selection-strategy` allows you to direct Pex to
+select the `oldest` (the default and the existing behavior) or the `newest`. In either case, the
+highest available patch version will be selected from amongst multiple interpeters with the same
+major and minor versions.
+
+* Support an `--interpreter-selection-strategy` option. (#3080)
+
+## 2.84.0
+
+This release causes `pex ...` to emit the output path of the generated PEX (and / or scies) on
+STDOUT. If `--seed verbose` is set, then the output path of the PEX is included in the new
+`"seeded_from"` field.
+
+* Emit PEX output path to stdout. (#3079)
+
+## 2.83.0
+
+This release adds support for templating `{platform}` in PEX file names. When this substitution
+token is found, it is replaced with the most specific platform tag(s) of wheels in the PEX. For
+example:
+```console
+:; python -mpex ansicolors -o "ansicolors-{platform}.pex"
+
+:; ./ansicolors-py2.py3-none-any.pex
+Pex 2.83.0 hermetic environment with 1 requirement and 1 activated distribution.
+Python 3.14.2 (main, Dec  5 2025, 14:39:48) [GCC 15.2.0] on linux
+Type "help", "pex", "copyright", "credits" or "license" for more information.
+>>> pex()
+Running from PEX file: ./ansicolors-py2.py3-none-any.pex
+Requirements:
+  ansicolors
+Activated Distributions:
+  ansicolors-1.1.8-py2.py3-none-any.whl
+>>>
+
+:; python -mpex \
+    --complete-platform package/complete-platforms/linux-x86_64.json \
+    --complete-platform package/complete-platforms/macos-aarch64.json ansible \
+    -o "ansible-{platform}.pex"
+
+:; ./ansible-cp314-cp314-macosx_11_0_arm64.manylinux2014_x86_64.pex
+Pex 2.83.0 hermetic environment with 1 requirement and 10 activated distributions.
+Python 3.14.2 (main, Dec  5 2025, 14:39:48) [GCC 15.2.0] on linux
+Type "help", "pex", "copyright", "credits" or "license" for more information.
+>>> pex()
+Running from PEX file: ./ansible-cp314-cp314-macosx_11_0_arm64.manylinux2014_x86_64.pex
+Requirements:
+  ansible
+Activated Distributions:
+  ansible-13.2.0-py3-none-any.whl
+  ansible_core-2.20.1-py3-none-any.whl
+  jinja2-3.1.6-py3-none-any.whl
+  markupsafe-3.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+  pyyaml-6.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+  cryptography-46.0.3-cp311-abi3-manylinux_2_34_x86_64.whl
+  cffi-2.0.0-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl
+  pycparser-2.23-py3-none-any.whl
+  packaging-25.0-py3-none-any.whl
+  resolvelib-1.2.1-py3-none-any.whl
+>>>
+```
+
+* Support a `{platform}` placeholder in PEX file names. (#3078)
+
+## 2.82.1
+
+This release fixes `pex3 scie create --dest-dir` to work when the specified PEX is a local file
+path. Previously `--dest-dir` only worked when the specified PEX was an URL.
+
+* Fix `pex3 scie create --dest-dir` handling. (#3076)
+
+## 2.82.0
+
+This release adds support for resource path bindings to plain PEXes as a follow-on to adding
+resource binding support for PEX scies in the 2.81.0 release. Resource paths are bound to
+environment variables with `--bind-resource-path`. Additionally, the existing `--inject-args` option
+now supports replacement of `{pex.env.<env var name>}` placeholders with the corresponding
+environment variable value. Notably, the combination of these features allows passing the paths of
+files contained in a PEX to third party scripts without extra shim code.
+
+* Support passing PEX file paths to 3rd party scripts.  (#3074)
+
+## 2.81.0
+
+This release adds the ability to set a custom scie entrypoint for PEX scies using `--scie-exe`,
+`--scie-args` and `--scie-env`, as well as bind resource paths to environment variables using
+`--scie-bind-resource-path`. The combination of these new features allows broad flexibility
+defining a PEX scie's boot command.
+
+Additionally, the `pex3 scie create` command gains the ability to use a URL for the PEX to convert
+to a scie and optionally specify a size (via `#size=<expected size>`) and / or fingerprint (via
+`#<algorithm>=<expected fingerprint>`) to verify the download against.
+
+* Support converting existing Pants PEXes to performant scies. (#3072)
+
 ## 2.80.0
 
 This release adds the `pex3 scie create` tool for creating scies from existing PEX files. This
@@ -1183,7 +1391,7 @@ In addition, the 2.24.2 release included a wheel with no compression
 This release fixes a long-standing bug in "YOLO-mode" foreign platform
 speculative wheel builds. Previously if the speculatively built wheel
 had tags that did not match the foreign platform, the process errored
-pre-emptively. This was correct for complete foreign platforms, where 
+pre-emptively. This was correct for complete foreign platforms, where
 all tag information is known, but not for all cases of abbreviated
 platforms, where the failure was overly aggressive in some cases. Now
 foreign abbreviated platform speculative builds are only rejected when
