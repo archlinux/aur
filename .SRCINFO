@@ -1,8 +1,9 @@
 pkgbase = fico-xpress-bin
 	pkgdesc = FICO Xpress Optimization Suite (Mosel & Solver)
 	pkgver = 9.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.fico.com/en/fico-xpress-community-license
+	install = fico-xpress-bin.install
 	arch = x86_64
 	license = custom:commercial
 	depends = gcc-libs
