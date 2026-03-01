@@ -1,0 +1,12 @@
+pkgbase = q5k-usb-udev
+	pkgdesc = Qudelix-5k USB udev rules.
+	pkgver = 2026.02.28
+	pkgrel = 1
+	url = https://gist.github.com/hmtheboy154/21c0a25ff025667981a35b6656f7da69
+	arch = any
+	license = BSD
+	depends = udev
+	source = 99-qudelix.rules::https://gist.github.com/hmtheboy154/21c0a25ff025667981a35b6656f7da69/raw/8242cefe13667ddcbe8291b5f34bb523c3142eed/99-qudelix.rules
+	sha256sums = ad149184621060ae8fe0212c34937007c1431afca1b7afb183b7ad77e03ca4d2
+
+pkgname = q5k-usb-udev
