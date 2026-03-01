@@ -28,8 +28,8 @@ makedepends=(
   'wayland-protocols>=1.41'
 )
 
-provides=(mangowc wayland-compositor)
-conflicts=(mangowc mangowc-wlonly-git)
+provides=(mangowm wayland-compositor)
+conflicts=(mangowm mangowm-wlonly-git)
 source=("$pkgname::git+https://github.com/mangowm/mango.git")
 md5sums=('SKIP')
 options=('!strip' '!lto')
