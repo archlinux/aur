@@ -1,6 +1,6 @@
 pkgbase = ffstudio-bin
 	pkgdesc = Node-based FFmpeg frontend
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/Draver93/ff-studio
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ffstudio-bin
 	provides = ffstudio
 	conflicts = ffstudio
 	options = !debug
-	source = https://github.com/Draver93/ff-studio/releases/download/v0.2.6/FFStudio_0.2.6_amd64.deb
-	sha256sums = 71fbc8431dde9350243fef16c7a106ad15d15599b24c1480e32969a725c81ed6
+	source = https://github.com/Draver93/ff-studio/releases/download/v0.2.7/FFStudio_0.2.7_amd64.deb
+	sha256sums = 4b5094c07cf531adc5e3d26382be48f35baa2881c9d213ccbffdb39ae5acb883
 
 pkgname = ffstudio-bin
