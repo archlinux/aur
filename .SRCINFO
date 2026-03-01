@@ -1,7 +1,7 @@
 pkgbase = valhalla
 	pkgdesc = Routing engine for OpenStreetMap.
 	pkgver = 3.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/valhalla/valhalla
 	arch = x86_64
 	license = custom:MIT
@@ -20,7 +20,9 @@ pkgbase = valhalla
 	depends = gdal
 	source = valhalla-3.6.3::git+https://github.com/valhalla/valhalla#tag=3.6.3
 	source = fix-cxxopts-cstdint.patch
+	source = fix-adminbuilder-empty-inner-rings.patch
 	sha256sums = SKIP
 	sha256sums = acadf0436ebe1932cd742201b16ce2d26f3f0bc2a8cddd7ee18e14534b81c2ce
+	sha256sums = SKIP
 
 pkgname = valhalla

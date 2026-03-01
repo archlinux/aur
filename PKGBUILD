@@ -4,7 +4,7 @@
 _pkgname=valhalla
 pkgname=$_pkgname
 pkgver=3.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Routing engine for OpenStreetMap."
 arch=('x86_64')
 url="https://github.com/valhalla/valhalla"
@@ -12,9 +12,11 @@ license=('custom:MIT')
 depends=('prime_server' 'boost-libs' 'protobuf' 'python' 'libspatialite' 'luajit' 'chrono-date' 'gdal')
 makedepends=('cmake' 'git' 'vim' 'jq' 'boost')
 source=("$_pkgname-$pkgver::git+${url}#tag=$pkgver"
-        "fix-cxxopts-cstdint.patch")
+        "fix-cxxopts-cstdint.patch"
+        "fix-adminbuilder-empty-inner-rings.patch")
 sha256sums=('SKIP'
-            'acadf0436ebe1932cd742201b16ce2d26f3f0bc2a8cddd7ee18e14534b81c2ce')
+            'acadf0436ebe1932cd742201b16ce2d26f3f0bc2a8cddd7ee18e14534b81c2ce'
+            'SKIP')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -22,6 +24,9 @@ prepare() {
 
   # Fix missing cstdint include in cxxopts (conditional application)
   patch -Np1 --forward -i ../fix-cxxopts-cstdint.patch || true
+
+  # Fix crash when admin polygon has no inner rings (empty vector .front() call)
+  patch -Np1 --forward -i ../fix-adminbuilder-empty-inner-rings.patch || true
 
   cmake -S. -Bbuild \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
