@@ -1,6 +1,6 @@
 pkgbase = note-gen
 	pkgdesc = A cross-platform Markdown note-taking application with AI integration (X11/Wayland compatible)
-	pkgver = 0.26.0
+	pkgver = 0.26.1
 	pkgrel = 1
 	url = https://github.com/codexu/note-gen
 	install = note-gen.install
@@ -31,7 +31,7 @@ pkgbase = note-gen
 	conflicts = note-gen-bin
 	options = !strip
 	options = !lto
-	source = note-gen-0.22.2.tar.gz::https://github.com/codexu/note-gen/archive/note-gen-v0.26.0nullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnulltar.gz
-	sha256sums = d0f7d324e39078085f32524bf5109d861d7a2cfce110006579a93e99e8962a04
+	source = note-gen-0.22.2.tar.gz::https://github.com/codexu/note-gen/archive/note-gen-v0.26.1nullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnullnulltar.gz
+	sha256sums = ab57c1056b4903d66f884493829b3dfe4fada0b9b710ecdd3c2bb865f92e6214
 
 pkgname = note-gen
