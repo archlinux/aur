@@ -1,10 +1,10 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=filestash-git
-pkgver=r2185.6f6e57aa
+pkgver=r2200.e8b4d062
 pkgrel=1
 pkgdesc="Universal file management platform / storage-agnostic Dropbox alternative"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/mickael-kerjean/filestash"
 license=('AGPL-3.0-or-later')
 depends=('glibc' 'libwebp' 'libjpeg-turbo' 'libpng' 'giflib' 'brotli' 'libraw')
@@ -13,43 +13,43 @@ provides=('filestash')
 conflicts=('filestash')
 install=filestash.install
 source=("filestash::git+${url}.git"
-        'filestash.service'
-        'filestash.service.user'
-        'filestash.sysusers'
-        'filestash.tmpfiles')
+    'filestash.service'
+    'filestash.service.user'
+    'filestash.sysusers'
+    'filestash.tmpfiles')
 sha256sums=('SKIP'
-            'c2ea7d9e607705436e69f4316085c4fca65f3eb6d9deccd28733ff9803a87c35'
-            '82f43ff56e53648e837ed1e41d13978f9542ef5f407ad2ca9eaa0413c125f8ee'
-            '5ada147680c5bcd4890117a6a2ea2cf3d3949917f845b65cf6adcc8148bbc8e7'
-            '597a2eabf7f0465734400e38c69f4ebed1af2930246b673e3bfc90437b9fd6a2')
+    'c2ea7d9e607705436e69f4316085c4fca65f3eb6d9deccd28733ff9803a87c35'
+    '82f43ff56e53648e837ed1e41d13978f9542ef5f407ad2ca9eaa0413c125f8ee'
+    '5ada147680c5bcd4890117a6a2ea2cf3d3949917f845b65cf6adcc8148bbc8e7'
+    '597a2eabf7f0465734400e38c69f4ebed1af2930246b673e3bfc90437b9fd6a2')
 
 pkgver() {
-  cd "${srcdir}/filestash"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "${srcdir}/filestash"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/filestash"
-  
-  # Fix static library linking - convert to dynamic linking for Arch
-  # Arch provides only .so shared libraries, not .a static libraries
-  # Pattern: -l:lib{name}.a → -l{name}
-  find server/plugin/plg_image_c -name "*.go" -type f -exec sed -i \
-    's/-l:lib\([^.]*\)\.a/-l\1/g' \
-    {} +
-  
-  # Fix video cache paths - make them respect FILESTASH_CACHE_PATH env var for XDG compliance
-  # For plg_video_transcoder: remove VideoCachePath from const block and add as a var after
-  sed -i '/^\tVideoCachePath     = "data\/cache\/video\/"$/d' server/plugin/plg_video_transcoder/index.go
-  
-  # Add path/filepath import
-  sed -i '/^import (/,/^)/{
+    cd "${srcdir}/filestash"
+
+    # Fix static library linking - convert to dynamic linking for Arch
+    # Arch provides only .so shared libraries, not .a static libraries
+    # Pattern: -l:lib{name}.a → -l{name}
+    find server/plugin/plg_image_c -name "*.go" -type f -exec sed -i \
+        's/-l:lib\([^.]*\)\.a/-l\1/g' \
+        {} +
+
+    # Fix video cache paths - make them respect FILESTASH_CACHE_PATH env var for XDG compliance
+    # For plg_video_transcoder: remove VideoCachePath from const block and add as a var after
+    sed -i '/^\tVideoCachePath     = "data\/cache\/video\/"$/d' server/plugin/plg_video_transcoder/index.go
+
+    # Add path/filepath import
+    sed -i '/^import (/,/^)/{
     /^)/ i\
 \	"path/filepath"
   }' server/plugin/plg_video_transcoder/index.go
-  
-  # Add var declaration and init function after the const block
-  sed -i '/^const ($/,/^)$/{
+
+    # Add var declaration and init function after the const block
+    sed -i '/^const ($/,/^)$/{
     /^)$/ a\
 \
 var VideoCachePath string\
@@ -62,18 +62,18 @@ func init() {\
 \	VideoCachePath = filepath.Join(cachePath, "video") + "/"\
 }
   }' server/plugin/plg_video_transcoder/index.go
-  
-  # Same for thumbnail plugin - remove VideoCachePath from const block
-  sed -i '/^\tVideoCachePath = "data\/cache\/video-thumbnail\/"$/d' server/plugin/plg_video_thumbnail/index.go
-  
-  # Add path/filepath import
-  sed -i '/^import (/,/^)/{
+
+    # Same for thumbnail plugin - remove VideoCachePath from const block
+    sed -i '/^\tVideoCachePath = "data\/cache\/video-thumbnail\/"$/d' server/plugin/plg_video_thumbnail/index.go
+
+    # Add path/filepath import
+    sed -i '/^import (/,/^)/{
     /^)/ i\
 \	"path/filepath"
   }' server/plugin/plg_video_thumbnail/index.go
-  
-  # Add var declaration and init function after the const block
-  sed -i '/^const ($/,/^)$/{
+
+    # Add var declaration and init function after the const block
+    sed -i '/^const ($/,/^)$/{
     /^)$/ a\
 \
 var VideoCachePath string\
@@ -86,10 +86,10 @@ func init() {\
 \	VideoCachePath = filepath.Join(cachePath, "video-thumbnail") + "/"\
 }
   }' server/plugin/plg_video_thumbnail/index.go
-  
-  # Patch constants.go to support FHS-compliant log and cache paths via env vars
-  # This allows separating /var/log/filestash and /var/cache/filestash from /var/lib/filestash
-  sed -i '/^func init() {$/,/^}$/ {
+
+    # Patch constants.go to support FHS-compliant log and cache paths via env vars
+    # This allows separating /var/log/filestash and /var/cache/filestash from /var/lib/filestash
+    sed -i '/^func init() {$/,/^}$/ {
     /rootPath := "data\/"/ a\
 \	// Support FHS-compliant paths\
 \	logPath := os.Getenv("FILESTASH_LOG_PATH")\
@@ -107,49 +107,49 @@ func init() {\
 \		TMP_PATH = filepath.Join(rootPath, TMP_PATH)\
 \	}
   }' server/common/constants.go
-  
-  # Generate Go code - must run from repository root where go.mod is
-  export GOPATH="${srcdir}/go"
-  go generate -x ./server/...
+
+    # Generate Go code - must run from repository root where go.mod is
+    export GOPATH="${srcdir}/go"
+    go generate -x ./server/...
 }
 
 build() {
-  cd "${srcdir}/filestash"
-  
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-  
-  # Build with fts5 tag for SQLite full-text search
-  go build \
-    -buildmode=pie \
-    -trimpath \
-    -ldflags="-linkmode external -extldflags \"${LDFLAGS}\"" \
-    -tags "fts5" \
-    -o dist/filestash \
-    cmd/main.go
+    cd "${srcdir}/filestash"
+
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+
+    # Build with fts5 tag for SQLite full-text search
+    go build \
+        -buildmode=pie \
+        -trimpath \
+        -ldflags="-linkmode external -extldflags \"${LDFLAGS}\"" \
+        -tags "fts5" \
+        -o dist/filestash \
+        cmd/main.go
 }
 
 package() {
-  cd "${srcdir}/filestash"
-  
-  # Install binary
-  install -Dm755 dist/filestash "$pkgdir/usr/bin/filestash"
-  
-  # Install systemd system service (runs as filestash user)
-  install -Dm644 "$srcdir/filestash.service" "$pkgdir/usr/lib/systemd/system/filestash.service"
-  
-  # Install systemd user service (for running with systemctl --user)
-  install -Dm644 "$srcdir/filestash.service.user" "$pkgdir/usr/lib/systemd/user/filestash.service"
-  
-  # Install sysusers.d configuration
-  install -Dm644 "$srcdir/filestash.sysusers" "$pkgdir/usr/lib/sysusers.d/filestash.conf"
-  
-  # Install tmpfiles.d configuration
-  install -Dm644 "$srcdir/filestash.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/filestash.conf"
-  
-  # Install license
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${srcdir}/filestash"
+
+    # Install binary
+    install -Dm755 dist/filestash "$pkgdir/usr/bin/filestash"
+
+    # Install systemd system service (runs as filestash user)
+    install -Dm644 "$srcdir/filestash.service" "$pkgdir/usr/lib/systemd/system/filestash.service"
+
+    # Install systemd user service (for running with systemctl --user)
+    install -Dm644 "$srcdir/filestash.service.user" "$pkgdir/usr/lib/systemd/user/filestash.service"
+
+    # Install sysusers.d configuration
+    install -Dm644 "$srcdir/filestash.sysusers" "$pkgdir/usr/lib/sysusers.d/filestash.conf"
+
+    # Install tmpfiles.d configuration
+    install -Dm644 "$srcdir/filestash.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/filestash.conf"
+
+    # Install license
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
