@@ -1,0 +1,24 @@
+post_install() {
+    echo ":: Enable and start the service with:"
+    echo "   sudo systemctl enable --now framework-control.service"
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    if systemctl is-active --quiet framework-control.service; then
+        systemctl restart framework-control.service
+    fi
+}
+
+pre_remove() {
+    if systemctl is-active --quiet framework-control.service; then
+        systemctl stop framework-control.service
+    fi
+    if systemctl is-enabled --quiet framework-control.service; then
+        systemctl disable framework-control.service
+    fi
+}
+
+post_remove() {
+    systemctl daemon-reload
+}
