@@ -1,6 +1,6 @@
 # Maintainer: figr <figr@gmx.de>
 pkgname=music-ratatui
-pkgver=0.3.8
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A terminal musicplayer build with Ratatui."
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('music-ratatui-bin' 'music-ratatui-bin-debug')
 makedepends=('rust' 'cargo' 'pkgconf' 'git' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav')
 source=("git+https://gitlab.com/figr/music-ratatui.git#tag=v$pkgver")
 options=('!lto')
-sha256sums=('eebf211ffd754250b8f0bf441a470c172ec781d0eaaec1312142e857118e3a42')
+sha256sums=('8745d1823ad2fc9a63186c4c30d6b509ea7c58264524a1554569704f06a89d74')
 
 build() {
     cd "$pkgname"
