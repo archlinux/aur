@@ -1,7 +1,7 @@
-# Maintainer: TheFeelTrain <thefeeltrain@thefeeltrain.com>
+# Maintainer: TheFeelTrain <the@feeltra.in>
 pkgname=python-vsjetengine
 _origpkgname=vsjetengine
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An engine for vapoursynth previewers, renderers, and script analysis tools."
 arch=("x86_64")
@@ -16,8 +16,8 @@ makedepends=(
 	"python-hatchling"
 )
 conflicts=("vapoursynth-plugin-vsengine-git")
-source=("https://files.pythonhosted.org/packages/8f/46/48df69732ccb663eef32572de54489a123fd466d3e544123b1a9b92d342a/vsjetengine-1.1.0.tar.gz")
-sha256sums=("5464295595f18d499d4c9e28b78fbfc00993e7469b4259540dad552b24bad32a")
+source=("https://files.pythonhosted.org/packages/cd/c5/0389f55cdc914005dbf1281d82f16da1cc5ef4696bff0cac8cf2a94b614b/vsjetengine-1.2.0.tar.gz")
+sha256sums=("1e19eb83de71f42bf55548e1e1c2fafc1cd23a2c93da9373711868ed7ac90cfd")
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
