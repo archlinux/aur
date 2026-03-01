@@ -1,0 +1,20 @@
+pkgbase = pactrack
+	pkgdesc = Arch Linux package update tray tracker
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/greasycat/pactrack
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = bash
+	depends = dbus
+	depends = fakeroot
+	depends = glib2
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libnotify
+	depends = pacman
+	source = pactrack-0.1.0.tar.gz::https://github.com/greasycat/pactrack/releases/download/v0.1.0/source.tar.gz
+	sha256sums = e8123107e7d573be06eb7fbdf295885d2fda7cfad6902dc3e3fd94c6efdf1066
+
+pkgname = pactrack
