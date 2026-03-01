@@ -2,7 +2,7 @@
 
 pkgname=scuisei-git
 _pkgname=scuisei-rs
-pkgver=0.1.1.r0.gc6ec674
+pkgver=0.1.2.r1.g11d9b46
 pkgrel=1
 pkgdesc="Blazing fast successor for SCXvid-standalone"
 arch=('x86_64')
