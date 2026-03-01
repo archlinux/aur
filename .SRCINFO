@@ -1,0 +1,19 @@
+pkgbase = bwfall
+	pkgdesc = Binary Waterfall CLI - Raw Data Media Player for any binary file
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/yourname/bwfall
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = make
+	depends = alsa-lib
+	depends = ncurses
+	optdepends = libpulse: PulseAudio audio backend
+	optdepends = pipewire: PipeWire audio backend
+	source = bwfall-1.0.0.tar.gz::https://github.com/yourname/bwfall/archive/refs/tags/v1.0.0.tar.gz
+	b2sums = SKIP
+
+pkgname = bwfall
