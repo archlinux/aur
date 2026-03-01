@@ -3,7 +3,7 @@
 _gpuarch=gfx1151
 pkgname="rocm-nightly-${_gpuarch,,}-bin"
 pkgver=7.12.0a20260228
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD ROCm Nightly Release (${_gpuarch}) - Monolithic Install"
 arch=('x86_64')
 url="https://rocm.nightlies.amd.com"
@@ -12,6 +12,7 @@ depends=('glibc' 'gcc-libs' 'python-pyelftools' 'python')
 
 # 官方源冲突列表：涵盖了 Core, Compilers, HIP, Math Libs, ML, Tools 等
 _rocm_packages=(
+    'amdsmi'
     'rocm-core' 'rocm-cmake' 'rocm-llvm' 'rocm-device-libs'
     'hsa-rocr' 'hsakmt-roct' 'comgr' 'rocminfo' 'rocwmma'
     'hip-runtime-amd' 'hip-runtime-nvidia'
