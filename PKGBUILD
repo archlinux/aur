@@ -1,6 +1,7 @@
 # Maintainer: kleines Filmröllchen <kleines at filmroellchen dot eu>
 # SPDX-FileCopyrightText: 2026 kleines Filmröllchen <kleines at filmroellchen dot eu>
 # SPDX-License-Identifier: 0BSD
+
 pkgname="kittehlist-git"
 pkgdesc="todo list for kittehs - development version"
 arch=("x86_64" "aarch64" "riscv64")
@@ -9,8 +10,8 @@ license=("MIT" "Apache-2.0")
 source=("git+https://codeberg.org/annaaurora/kittehlist.git#branch=archbuild")
 b2sums=("SKIP")
 
-depends=("postgresql" "openssh" "zstd")
-makedepends=("rust" "jq" "just" "esbuild" "minify")
+depends=("postgresql-libs" "zstd" "libgcc")
+makedepends=("git" "jq" "rustup" "clang" "wasm-pack" "just" "esbuild" "minify")
 options=(!debug !lto)
 
 pkgrel=1
@@ -24,6 +25,8 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/kittehlist"
+
+	rustup install stable
 	cargo --version
 	cargo --locked fetch
 }
@@ -40,4 +43,9 @@ package() {
 	find frontend -type f -exec install -Dm644 "{}" "${pkgdir}/usr/share/kittehlist/{}" \;
 	popd
 	# TODO: example config, systemd files
+}
+
+check() {
+	cd "${srcdir}/kittehlist"
+	target/releash/kittehlist_server --version
 }
