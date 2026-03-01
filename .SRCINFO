@@ -1,15 +1,18 @@
 pkgbase = python-date2name
 	pkgdesc = Handling time-stamps and date-stamps in file names
-	pkgver = 2024.4.26.1
-	pkgrel = 2
+	pkgver = 2026.3.1.1
+	pkgrel = 1
 	url = https://github.com/novoid/date2name
 	arch = any
 	license = GPL-3.0-only
 	checkdepends = python-pytest
 	makedepends = git
-	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	source = python-date2name::git+https://github.com/novoid/date2name.git#commit=5edf3cde92910284e23c1d0928f8eabc191d078d
-	sha256sums = bc463f50cace13658c5d984c2faf21fb3699c6b40fde07f8ef2d5975adcb453e
+	source = python-date2name::git+https://github.com/novoid/date2name.git#commit=8288f190e6af224a4c4e7b8de8e60a334b016660
+	sha256sums = 4955a786df444e025f741a82dd74dab191dbf26a8ffc9dabfbbccd0b7942f088
 
 pkgname = python-date2name
