@@ -1,7 +1,8 @@
 # Maintainer: Nebulosa  <nebulosa2007-at-yandex-dot-ru>
+# Owner: srtnnm <a641557-at-gmail-dot-com>
 
 pkgname=scu
-pkgver=1.6.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="System fetch utility is aimed at informativeness"
 arch=(x86_64)
@@ -14,7 +15,7 @@ depends=(
 makedepends=(rust)
 options=(!debug !lto)
 source=($url/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('c024538871d9c9996f5fee0550a79c34957ba88724a15ceca6963ee6a2130440c5a20eaf19fa297f7c22d57ae691475ffd6babc121aa762ed199ef4041731da0')
+b2sums=('66103ad029a6fd9489b7275abd949eb192e21586c5dc8f0638344941af85fae68be93688187ee1f4d05d54f8b759dcc590cf509bfb31930b8afea393dd09ab93')
 
 prepare() {
   cd $pkgname-$pkgver
