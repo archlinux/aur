@@ -2,8 +2,7 @@
 # Co-maintainer: holaguz <agustin dot catellani at gmail dot com>
 pkgname=tlescope-bin
 pkgver=3.7.2
-pkgrel=3
-epoch=1
+pkgrel=4
 pkgdesc="TLEscope is a satellite visualization tool designed to transform Two-Line Element (TLE) sets into intuitive, interactive data."
 arch=(x86_64)
 url="https://github.com/aweeri/TLEscope"
