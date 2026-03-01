@@ -1,7 +1,7 @@
 # Maintainer: Ross Ceb aur@roceb.xyz
 pkgname=sonicrust
 _binaryname=sonicrust
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A Terminal based music player for Subsonic-compatible servers, written in Rust."
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ provides=("$_binaryname")
 # options=(!strip)
 conflicts=('sonicrust-bin' 'sonicrust-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('35c8c486dfbc17b626d695cf9d2979040177cdb29da080ad29cad5984c3f323e')
+sha256sums=('1d1e5c39dda46ce9d75314e0bd334813d6db4000288c3aa2c6580876c6ab72f2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
