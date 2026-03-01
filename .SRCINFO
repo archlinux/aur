@@ -1,0 +1,13 @@
+pkgbase = turf-bin
+	pkgdesc = Turf compiler
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/turf-lang/turf-lang
+	arch = x86_64
+	license = MIT
+	provides = turf
+	conflicts = turf
+	source = https://github.com/turf-lang/turf-lang/releases/download/v0.5.0/turf-v0.5.0-linux-arch-x86_64.tar.gz
+	sha256sums = b3a5e14ff2ab9e5712c6a6c03f0cac289fd95944ae59fa89a4f399dbbe004607
+
+pkgname = turf-bin
