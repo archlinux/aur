@@ -1,0 +1,5 @@
+[psn-bin]
+source = "github"
+github = "l5yth/psn"
+use_latest_release = true
+prefix = "v"
