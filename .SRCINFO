@@ -1,0 +1,20 @@
+pkgbase = vid-cli-git
+	pkgdesc = Watching YouTube on a browser is too heavy for my Celeron, so I wrote a minimal bash script as a workaround.
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/Renxznm/vid-cli
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = yt-dlp
+	depends = fzf
+	depends = mpv
+	depends = ffmpeg
+	depends = gawk
+	provides = vid-cli
+	conflicts = vid-cli
+	source = git+https://github.com/Renxznm/vid-cli.git
+	sha256sums = SKIP
+
+pkgname = vid-cli-git
