@@ -3,7 +3,7 @@
 pkgname=shorin-contrib-git
 _pkgname=shorin-contrib
 pkgver=r6.03ef656
-pkgrel=2
+pkgrel=3
 pkgdesc="Shorin's personal Arch Linux toolbox and system utilities (Subcommand version)"
 arch=('any')
 url="https://github.com/SHORiN-KiWATA/shorin-contrib"
