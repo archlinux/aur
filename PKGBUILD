@@ -61,8 +61,8 @@ package() {
     install -Dm755 "target/release/rg-sens" "$pkgdir/usr/bin/rg-sens"
 
     # Install desktop file
-    install -Dm644 "data/rg-sens.desktop" \
-        "$pkgdir/usr/share/applications/rg-sens.desktop"
+    install -Dm644 "data/com.github.rg-sens.desktop" \
+        "$pkgdir/usr/share/applications/com.github.rg-sens.desktop"
 
     # Install icon
     install -Dm644 "rg-sens.png" \
