@@ -5,6 +5,7 @@ pkgbase = borse
 	url = https://github.com/vEnhance/borse
 	arch = any
 	license = MIT
+	makedepends = python-hatchling
 	depends = python
 	depends = python-tomli-w
 	source = https://files.pythonhosted.org/packages/source/b/borse/borse-0.3.0.tar.gz
