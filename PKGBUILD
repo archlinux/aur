@@ -39,9 +39,10 @@ build() {
 CXX=g++
 CC=gcc
 CFLAGS+=-Wall -pipe -I. -D_GNU_SOURCE -std=c11
+OPT_CFLAGS=-g
 CXXFLAGS+=-Wall -pipe -I. -D_GNU_SOURCE -std=c++17
 EXE_CFLAGS+=-fPIC
-export CFLAGS CXXFLAGS EXE_CFLAGS CXX CC
+export CFLAGS CXXFLAGS EXE_CFLAGS CXX CC OPT_CFLAGS
 EOF
   make -j20 prefix="/usr" DESTDIR="$pkgdir"
 }
