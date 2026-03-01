@@ -1,7 +1,7 @@
 # Maintainer: Danilo <aur ät dbrgn döt ch>
 pkgname=threema-desktop-beta
 pkgdesc="Threema Desktop 2.0 Beta."
-pkgver=2.0_beta59
+pkgver=2.0_beta60
 _pkgver=${pkgver//_/-}
 pkgrel=1
 arch=('x86_64')
@@ -46,7 +46,7 @@ makedepends=(
 )
 #options=('strip')
 source=("https://releases.threema.ch/desktop/${_pkgver}/threema-desktop-v${_pkgver}-source.7z")
-b2sums=('23e2901abd5fe4e388df0d30ebc18ca2bef7128c77967fdaf04621cf83a52dd6fbb497d6b2049ef53bbf759a421859fbdedc66db2069b2d71084c79fba22b4aa') # Use get-checksum.sh to update
+b2sums=('e1a050d99f361b81601bbadf89a2a7f98f077cf2eb044bbc2c43d498621d974df203efcfc89c23fcd598a5effe9c811dcdfb40f55eab3d540d918b0c234429cf') # Use get-checksum.sh to update
 
 # See https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
 _ensure_local_nvm() {
