@@ -1,0 +1,22 @@
+pkgbase = todesk-appimage
+	pkgdesc = ToDesk remote desktop - AppImage version with full service support (unofficial build)
+	pkgver = 4.8.5.1
+	pkgrel = 1
+	url = https://github.com/nitaishi520/todesk-appimage
+	arch = x86_64
+	license = custom:proprietary
+	makedepends = wget
+	makedepends = tar
+	depends = libxcb
+	depends = libxrandr
+	depends = libxrender
+	depends = libgl
+	depends = libx11
+	depends = libxtst
+	provides = todesk
+	conflicts = todesk
+	conflicts = todesk-bin
+	source = https://github.com/nitaishi520/todesk-appimage/releases/download/v4.8.5.1/ToDesk-v4.8.5.1-amd64.AppImage
+	sha256sums = SKIP
+
+pkgname = todesk-appimage
