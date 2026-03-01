@@ -1,0 +1,23 @@
+pkgbase = arch-smart-update
+	pkgdesc = Universal Smart Update Wrapper for Arch Linux and its derivatives (currently only EndeavourOS)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/motorrin/Arch_Smart_Update
+	arch = any
+	license = MIT
+	depends = bash
+	depends = python
+	depends = pacman
+	depends = tar
+	depends = gawk
+	depends = coreutils
+	depends = psmisc
+	optdepends = reflector: for Arch Linux mirror updates
+	optdepends = eos-rankmirrors: for EndeavourOS mirror updates
+	optdepends = yay: AUR helper support
+	optdepends = paru: AUR helper support
+	optdepends = topgrade: for comprehensive system updates
+	source = https://github.com/motorrin/Arch_Smart_Update/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = f08a3b6ca5b30819a4294f99cf7109e4baadcab0a688592a9330d3cda37e38a5
+
+pkgname = arch-smart-update
