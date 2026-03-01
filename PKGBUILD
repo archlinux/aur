@@ -14,7 +14,7 @@ makedepends=('python-pip' 'python-setuptools' 'python-wheel')
 depends=('python' 'python-rich' 'python-pyfiglet' 'python-playsound3')
 provides=("${_name}")
 
-_whl="ttime-${pkgver}-py3-none-any.whl"
+_whl="${_name}-${pkgver}-py3-none-any.whl"
 
 options=('!strip')
 noextract=("${_whl}")
