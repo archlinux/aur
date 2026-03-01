@@ -5,7 +5,7 @@ pkgrel=2
 pkgdesc="Enable or disable joystick and sim controller devices without unplugging"
 arch=('any')
 url="https://github.com/Mirkko/joytoggle"
-license=('MIT')
+license=('GPL3')
 install=joytoggle.install
 depends=(
     'python'
