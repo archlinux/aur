@@ -2,7 +2,7 @@
 
 pkgname=portty-bin
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="XDG Desktop Portal backend for TTY environments (prebuilt binaries)"
 arch=('x86_64')
 url="https://github.com/werdxz/portty"
@@ -12,8 +12,8 @@ provides=('portty')
 conflicts=('portty' 'portty-git')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/WERDXZ/portty/archive/refs/tags/v${pkgver}.tar.gz"
-    "portty-${pkgver}::https://github.com/WERDXZ/portty/releases/download/v${pkgver}/portty"
-    "porttyd-${pkgver}::https://github.com/WERDXZ/portty/releases/download/v${pkgver}/porttyd"
+    "portty-bin-${pkgver}::https://github.com/WERDXZ/portty/releases/download/v${pkgver}/portty"
+    "porttyd-bin-${pkgver}::https://github.com/WERDXZ/portty/releases/download/v${pkgver}/porttyd"
 )
 sha256sums=(
     '351e0c12a57e182b1cbf0669085288502ef541334d6c2992645ed0b103fc711c'
@@ -25,10 +25,10 @@ package() {
     cd "portty-${pkgver}"
 
     # Install daemon
-    install -Dm755 "$srcdir/porttyd-${pkgver}" "$pkgdir/usr/lib/portty/porttyd"
+    install -Dm755 "$srcdir/porttyd-bin-${pkgver}" "$pkgdir/usr/lib/portty/porttyd"
 
     # Install CLI
-    install -Dm755 "$srcdir/portty-${pkgver}" "$pkgdir/usr/bin/portty"
+    install -Dm755 "$srcdir/portty-bin-${pkgver}" "$pkgdir/usr/bin/portty"
 
     # Install portal file
     install -Dm644 "misc/tty.portal" "$pkgdir/usr/share/xdg-desktop-portal/portals/tty.portal"
