@@ -1,0 +1,18 @@
+post_install() {
+  echo ">>>"
+  echo ">>> Framework Control installed!"
+  echo ">>> To start the service now and on boot, run:"
+  echo ">>> sudo systemctl enable --now framework-control.service"
+  echo ">>>"
+}
+
+post_upgrade() {
+  # This ensures the new service file logic is loaded
+  systemctl daemon-reload
+  
+  echo ">>>"
+  echo ">>> Framework Control has been updated."
+  echo ">>> If the service is already running, you may want to restart it:"
+  echo ">>> sudo systemctl restart framework-control.service"
+  echo ">>>"
+}
