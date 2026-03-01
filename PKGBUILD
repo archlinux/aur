@@ -19,7 +19,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 license=('MIT')
 
 provides=("${_appname}")
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname,,}")
 
 makedepends=('tar')
 depends=('glibc' 'zlib')
