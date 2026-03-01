@@ -2,7 +2,7 @@
 # Maintainer: Christian Winther <dottie at jippi dot dev>
 
 pkgname='dottie-bin'
-pkgver=0.16.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Makes working with .env files easy'
 url='https://github.com/jippi/dottie'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('dottie')
 conflicts=('dottie')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jippi/dottie/releases/download/v0.16.0/dottie_Linux_arm64.tar.gz")
-sha256sums_aarch64=('95f6eb110dfefb97c57e7a32b00534118f9fc17f19642097a5db18d10b89ccd5')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jippi/dottie/releases/download/v${pkgver}/dottie_Linux_arm64.tar.gz")
+sha256sums_aarch64=('45ece85ec2a18cd76147e436f324ae4a98cb83832468aad9f28c126e0b8e4961')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jippi/dottie/releases/download/v0.16.0/dottie_Linux_armv7.tar.gz")
-sha256sums_armv7h=('dbc3ffeb00209b4b297a516c20d44115dff89e94ba14eb3de23844b45c866b2e')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jippi/dottie/releases/download/v${pkgver}/dottie_Linux_armv7.tar.gz")
+sha256sums_armv7h=('2c519315e6339f8a3d2d29924fb5234d066054c24d00c37aa575bf3b3223fd8f')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jippi/dottie/releases/download/v0.16.0/dottie_Linux_i386.tar.gz")
-sha256sums_i686=('91b754ca9d0ef46a8dd91398674de74de03cb224ed90803bbbebbc9261833878')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jippi/dottie/releases/download/v${pkgver}/dottie_Linux_i386.tar.gz")
+sha256sums_i686=('ca0bb9371103447524e9d1946520d7ffc1d624d4d7a1b3bb437dcc6268f2a826')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jippi/dottie/releases/download/v0.16.0/dottie_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('7b948ade2d1459fe5b4de223f106fb48ca8bd02363931f4a6af8df12110ce496')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jippi/dottie/releases/download/v${pkgver}/dottie_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('b9e25784db09eb7661fd39151f0a872376067958585ca35260872c9dd22138d9')
 
 package() {
   # bin
