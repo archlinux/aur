@@ -1,13 +1,13 @@
 pkgbase = valt-bin
 	pkgdesc = Keyboard-driven terminal password manager — encrypted, offline, no cloud
-	pkgver = 0.1.6
+	pkgver = 0.1.7
 	pkgrel = 1
 	url = https://github.com/jbgriesner/valt
 	arch = x86_64
 	license = GPL-3.0-or-later
 	provides = valt
 	conflicts = valt
-	source = valt-0.1.6-x86_64.tar.gz::https://github.com/jbgriesner/valt/releases/download/v0.1.6/valt-v0.1.6-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 58aa26d3ca9ddcb5462e1cb53caf4267c19927ef62996588869445ed7d20af24
+	source = valt-0.1.7-x86_64.tar.gz::https://github.com/jbgriesner/valt/releases/download/v0.1.7/valt-v0.1.7-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 18a1da6a876e5e9eb41394da42e0e1a02003e4618866b263ca32bf6deb389adf
 
 pkgname = valt-bin
