@@ -1,6 +1,6 @@
 pkgbase = python-pyccel
 	pkgdesc = Python extension language using accelerators
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/pyccel/pyccel
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-pyccel
 	depends = python-termcolor
 	depends = python-textx
 	depends = python-packaging
-	source = pyccel-2.1.0.tar.gz::https://github.com/pyccel/pyccel/archive/v2.1.0.tar.gz
-	sha512sums = 7fadb3381fb81fc16666f34f44d7e62c8c2210ca56e197e1912fc034135e46cc7ae2d41e14eeeea52522d37a180dd2b690d6cc164cd808c9b2acbeed2926a1f8
+	source = pyccel-2.2.0.tar.gz::https://github.com/pyccel/pyccel/archive/v2.2.0.tar.gz
+	sha512sums = 16f069b83749f2aa053020437065055e9c77fab5a2dc9023b1e4f24cc5d5bc7fc137a6a57a52d62a1eaf5f359830d714099c5e85fa7026e644fb6471007fd4ec
 
 pkgname = python-pyccel
