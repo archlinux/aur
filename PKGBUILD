@@ -2,7 +2,7 @@
 # Contributor: Joseph DiGiovanni <jdigiovanni78 at gmail dot com>
 # Contributer: Eric Cheng <eric at chengeric dot com>
 pkgname=gnome-shell-extension-alphabetical-grid-extension
-pkgver=43.0
+pkgver=44.0
 pkgrel=1
 pkgdesc="Alphabetically order GNOME's app grid and folders"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('gnome-shell')
 makedepends=('jq')
 source=("alphabetical-grid-extension-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0fe9d76752d5afc5a847c7ded38cc18399907e93f3ecf8e74a89458b13e79381')
+sha256sums=('5dbb7f09921426a74fdf0834c72e44e89f1fb60cc364f25deda835c55bcb2639')
 
 build() {
   cd "alphabetical-grid-extension-$pkgver"
