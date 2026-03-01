@@ -1,0 +1,42 @@
+pkgbase = reevr
+	pkgdesc = REEV-R is a cross-platform convolution reverb with modulation for pre/send and post/volume signals.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/tiagolr/reevr
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = lv2
+	makedepends = cmake
+	makedepends = libx11
+	makedepends = freetype2
+	makedepends = fontconfig
+	makedepends = alsa-lib
+	makedepends = libxrandr
+	makedepends = libxinerama
+	makedepends = libxcursor
+	source = reevr::git+https://github.com/tiagolr/reevr.git
+	md5sums = SKIP
+
+pkgname = reevr
+	pkgdesc = REEV-R is a cross-platform convolution reverb with modulation for pre/send and post/volume signals. Standalone version.
+	groups = pro-audio
+	depends = freetype2
+	depends = alsa-lib
+
+pkgname = reevr-lv2
+	pkgdesc = REEV-R is a cross-platform convolution reverb with modulation for pre/send and post/volume signals. LV2 plugin.
+	groups = pro-audio
+	groups = lv2-plugins
+	depends = freetype2
+	depends = alsa-lib
+	depends = lv2-host
+
+pkgname = reevr-vst3
+	pkgdesc = REEV-R is a cross-platform convolution reverb with modulation for pre/send and post/volume signals. VST3 plugin.
+	groups = pro-audio
+	groups = vst3-plugins
+	depends = freetype2
+	depends = alsa-lib
+	depends = vst3-host
