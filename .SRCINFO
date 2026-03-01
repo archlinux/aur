@@ -1,7 +1,7 @@
 pkgbase = fabric-server
 	pkgdesc = A Fabric (a modular, lightweight mod loader) enabled Minecraft server
 	pkgver = 1.21.11_0.18.4_1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fabricmc.net
 	install = fabric-server.install
 	arch = any
@@ -20,6 +20,6 @@ pkgbase = fabric-server
 	source = minecraft-server-1.0.4.tar.gz::https://github.com/Edenhofer/minecraft-server/archive/refs/tags/v1.0.4.tar.gz
 	source = fabric-installer-1.1.1.jar::https://maven.fabricmc.net/net/fabricmc/fabric-installer/1.1.1/fabric-installer-1.1.1.jar
 	sha512sums = dd4d68ca061c97a1e3cb5c0bb68439f7d8d45b15092344f3c4dbd4f7f39fef433d566670ad440970061007d93055183b570c7bf98f09c111ecdf8ab0f208f556
-	sha512sums = 7e593bf7b2786851aed680186e50dbbf8af7e7e592bc69c28c199d739307ea4b80b3575954a817ed97171d1516ea8afdd6ede4767d51ec414dbd3a1032111516
+	sha512sums = f95731a5f7b950f309f5b7d367c377727ceca6484fbde3c513e16b508d840ec4dfeb8471a9122a07a029d62cacd8b5d0726c60e27edc0d9a93ad928e34f5e24e
 
 pkgname = fabric-server
