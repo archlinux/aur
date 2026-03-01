@@ -1,13 +1,13 @@
 pkgbase = snick
 	pkgdesc = Simple little snake game powered by SDL3!
-	pkgver = 0.5.1
-	pkgrel = 5
+	pkgver = 0.5.2
+	pkgrel = 6
 	url = https://codeberg.org/genuinely-jaava/snick
 	arch = x86_64
 	license = GPL-3.0-or-later
 	provides = snick
 	conflicts = snick
-	source = https://codeberg.org/genuinely-jaava/snick/archive/v0.5.1.tar.gz
-	sha256sums = 75e86073bdaccb232ae210adf4e2ce682a37e361bb298c50704937fbdd8804df
+	source = https://codeberg.org/genuinely-jaava/snick/archive/v0.5.2.tar.gz
+	sha256sums = 4a5b78b449f6cb875c13a70e75d3743caa188905cca628e737d83b3ce74f118c
 
 pkgname = snick
