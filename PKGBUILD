@@ -10,7 +10,7 @@ url="https://www.freedownloadmanager.org/"
 license=('Freeware')
 depends=('openssl' 'xdg-utils' 'ffmpeg' 'libtorrent' 'gst-plugins-base' 'qt6-wayland')
 # source=("${pkgname}-${pkgver}-amd64.deb::http://debrepo.freedownloadmanager.org/pool/main/f/${pkgname}/${pkgname}_${pkgver}_amd64.deb")
-source=("https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb")
+source=("${pkgname}-${pkgver}-amd64.deb::https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb")
 sha256sums=("862b7d46447f8057d4e16273ee5764a60dedb1def638aaebb59d717823acd772")
 
 prepare() {
