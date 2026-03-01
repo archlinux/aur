@@ -4,7 +4,7 @@
 pkgbase=grub-secureboot-scripts
 pkgname=$pkgbase
 pkgver=0.0.2
-pkgrel=8
+pkgrel=9
 pkgdesc='GRUB SecureBoot scripts to setup SecureBoot using sbctl with automatic signing of GRUB files and kernel images'
 arch=('any')
 march=''
@@ -20,7 +20,7 @@ source=(
 )
 sha512sums=(
 	'40e0388f1e2de0eb5f5f67c3eb0853c51463c946c6aecd75bc91649f51610992a4fc3cadf76f852bf40d80f06e735a56a174d19eeb3cf449c6cc19b7dc1fc84c'
-	'2d227b688c7516de187d8f16e7e90227d192bf0afb7a1d2c1167f84b6859e5743557e09f6e85d0f203d030a1bce7dbe5c8cd97a8a248c33f814913d62d7a99a1'
+	'b24a23432adae94bc96abd40e7dd92544aadce9bdb44fd1d0e9b900ac28b6c6b1b913f12a1fb147dddc24df6e0ad8e6e44e0a61d0ca2c09cce278fc8cd9748fe'
 	'8fe05c81026ffa39f9503fdfa7cdff7ca20529d440ab8138196b97098d58b8d9fa44897a5f4724f223e01db8202de59cbfb68bc368c948330f718be7993c01b5'
 	'b3611b9c6fd99f89612c17468b011aa52716bd61dcf23e547516d633d0f1ce499b272007fa2f04813baf82dc08f4653a99907a59d906ff1c1937418181ccf2a2'
 	'f2eb1166e65d5e1809949be154e80a1240f0f9e043600e212ccaf40c7aee1dfc23afffe18ea192e3d62dbb229dbd0995261563ea79cf886eed32351b69565d37'
