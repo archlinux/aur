@@ -9,6 +9,7 @@ pkgbase = anitrack
 	makedepends = pkgconf
 	depends = ani-cli
 	depends = sqlite
+	options = !lto
 	source = anitrack-0.1.7.tar.gz::https://crates.io/api/v1/crates/anitrack/0.1.7/download
 	sha256sums = SKIP
 

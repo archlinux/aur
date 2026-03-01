@@ -7,6 +7,7 @@ pkgrel=1
   license=("GPL-3.0-or-later")
   depends=("ani-cli" "sqlite")
   makedepends=("rust>=1.85" "pkgconf")
+  options=("!lto")
   source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
   sha256sums=("SKIP")
 
