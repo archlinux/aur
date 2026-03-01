@@ -1,6 +1,6 @@
 pkgbase = t2sz
-	pkgdesc = It compress a file into a seekable zstd. If the file is a tar archive it compress each file in the archive into an independent frame, hence the name: tar 2 seekable zstd.
-	pkgver = 1.1.2
+	pkgdesc = It compresses a file into a seekable zstd. If the file is a tar archive it compresses each file in the archive into an independent frame, hence the name: tar 2 seekable zstd.
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/martinellimarco/t2sz
 	arch = i686
@@ -8,11 +8,12 @@ pkgbase = t2sz
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
+	checkdepends = zstd
 	makedepends = git
 	makedepends = cmake
 	depends = zstd
 	provides = t2sz
-	source = git+https://github.com/martinellimarco/t2sz#tag=v1.1.2
+	source = git+https://github.com/martinellimarco/t2sz#tag=v1.2.0
 	sha256sums = SKIP
 
 pkgname = t2sz
