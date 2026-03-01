@@ -1,40 +1,33 @@
 pkgbase = projtlauncher
 	pkgdesc = A modernized, community-driven Minecraft launcher based on the MultiMC/Prism Launcher lineage.
-	pkgver = 0.0.3
+	pkgver = 0.0.4
 	pkgrel = 4
-	url = https://projtlauncher.yongdohyun.org.tr
+	url = https://projecttick.org/p/projt-launcher
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-or-later AND GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1
+	license = GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1
 	makedepends = cmake
-	makedepends = extra-cmake-modules
-	makedepends = gamemode
 	makedepends = ghc-filesystem
 	makedepends = git
-	makedepends = jdk17-openjdk
+	makedepends = jdk21-openjdk
 	makedepends = scdoc
-	depends = cmark
 	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
-	depends = java-runtime=17
+	depends = java-runtime=21
 	depends = libgl
-	depends = qrencode
 	depends = qt6-5compat
 	depends = qt6-base
 	depends = qt6-imageformats
 	depends = qt6-networkauth
 	depends = qt6-svg
-	depends = quazip-qt6
-	depends = tomlplusplus
-	depends = zlib
 	optdepends = glfw: to use system GLFW libraries
 	optdepends = openal: to use system OpenAL libraries
 	optdepends = visualvm: Profiling support
 	optdepends = xorg-xrandr: for older minecraft versions
 	optdepends = java-runtime=8: for older minecraft versions
 	optdepends = flite: minecraft voice narration
-	source = git+https://github.com/Project-Tick/ProjT-Launcher.git#tag=0.0.3-4?submodules
+	source = git+https://gitlab.com/Project-Tick/core/ProjT-Launcher.git#tag=0.0.4-4?submodules
 	source = lionshead.license
 	source = batch.license
 	source = mdi.license
