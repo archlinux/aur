@@ -2,7 +2,7 @@
 
 _plug=jetpytools
 pkgname=python-${_plug}
-pkgver=2.2.1
+pkgver=2.2.5
 pkgrel=1
 pkgdesc="Python package: ${_plug}"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('python' 'python-typing_extensions')
 makedepends=('python-installer')
 provides=('python-stgpytools')
 conflicts=('python-stgpytools')
-source=("https://files.pythonhosted.org/packages/db/e3/594ba963ca3d2982ed03cea292623b7f8c53b9734f4a87678eb835d0797c/jetpytools-2.2.1-py3-none-any.whl")
-sha256sums=('00452111c2584dd439f96ff94a9c585e8357916a53f71e0108fe94b32ca536f6')
+source=("https://files.pythonhosted.org/packages/b0/60/8b78677077292be302ac84284987565a804ad25420cb08474b7405a70670/jetpytools-2.2.5-py3-none-any.whl")
+sha256sums=('5fec12c798d12e7f4c3b7e4916303d382b82293e71d6f9aba59e729e00626bc4')
 
 package() {
   python -m installer --destdir="$pkgdir" "${_plug}-${pkgver}-py3-none-any.whl"
