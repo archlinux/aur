@@ -1,0 +1,22 @@
+pkgbase = dumbshot
+	pkgdesc = An elegant, painless one-click screenshot utility for Wayland (grim + slurp)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Faynot/dumbshot
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = grim
+	depends = slurp
+	depends = wl-clipboard
+	depends = libnotify
+	optdepends = wofi: Рекомендуемый GUI для выбора действий
+	optdepends = rofi: Альтернативный GUI
+	optdepends = dmenu: Минималистичный GUI
+	optdepends = satty: Для редактирования скриншотов
+	optdepends = hyprland: Для автоматического определения мониторов через hyprctl
+	source = dumbshot-0.1.0.tar.gz::https://github.com/Faynot/dumbshot/archive/v0.1.0.tar.gz
+	sha256sums = 62ed6b0d894903399904f536492e0080b705e7d2453f12617df4b0c730553b7b
+
+pkgname = dumbshot
