@@ -1,0 +1,5 @@
+SUBSYSTEM=="usb", ATTRS{idVendor}=="3761", TAG+="uaccess"
+SUBSYSTEM=="usb_device", ATTRS{idVendor}=="3761", TAG+="uaccess"
+SUBSYSTEM=="usb", ATTRS{idVendor}=="2207", ATTRS{idProduct}=="350a", TAG+="uaccess"
+SUBSYSTEM=="usb_device", ATTRS{idVendor}=="2207", ATTRS{idProduct}=="350a", TAG+="uaccess"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="3761", TAG+="uaccess"
