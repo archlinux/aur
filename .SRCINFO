@@ -1,7 +1,7 @@
 pkgbase = apmw
 	pkgdesc = Apt-PacMan Warpper - 一个将apt风格命令转换为pacman命令的包装器
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = MIT
 	makedepends = gcc

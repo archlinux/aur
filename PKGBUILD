@@ -1,7 +1,7 @@
 # Maintainer: mineleng <15119587808@163.com>
 pkgname=apmw
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Apt-PacMan Warpper - 一个将apt风格命令转换为pacman命令的包装器"
 arch=('any')
 license=('MIT')
