@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/NexusXe/fw-fanctrl-rs"
 license=('AGPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'systemd')
+backup=('etc/fw-fanctrl-rs/config.toml')
 makedepends=('cargo-nightly' 'git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
