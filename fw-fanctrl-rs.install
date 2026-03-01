@@ -1,23 +1,23 @@
 post_install() {
-  local BOLD_CYAN='\e[1;36m'
+  local BOLD_BLUE='\e[1;34m'
   local BOLD='\e[1m'
   local RESET='\e[0m'
-  echo -e "${BOLD_CYAN}::${RESET}${BOLD} To start and enable the fan controller, run:${RESET}"
+  echo -e "${BOLD_BLUE}::${RESET}${BOLD} To start and enable the fan controller, run:${RESET}"
   echo -e "   sudo systemctl enable --now fw-fanctrl@\$(id -u).service"
 }
 
 post_upgrade() {
-  local BOLD_CYAN='\e[1;36m'
+  local BOLD_BLUE='\e[1;34m'
   local BOLD='\e[1m'
   local RESET='\e[0m'
-  echo -e "${BOLD_CYAN}::${RESET}${BOLD} Restarting active fw-fanctrl services if they are running...${RESET}"
+  echo -e "${BOLD_BLUE}::${RESET}${BOLD} Restarting active fw-fanctrl services if they are running...${RESET}"
   systemctl try-restart 'fw-fanctrl@*.service' >/dev/null 2>&1 || true
 }
 
 pre_remove() {
-  local BOLD_CYAN='\e[1;36m'
+  local BOLD_BLUE='\e[1;34m'
   local BOLD='\e[1m'
   local RESET='\e[0m'
-  echo -e "${BOLD_CYAN}::${RESET}${BOLD} Stopping active fw-fanctrl services...${RESET}"
+  echo -e "${BOLD_BLUE}::${RESET}${BOLD} Stopping active fw-fanctrl services...${RESET}"
   systemctl stop 'fw-fanctrl@*.service' >/dev/null 2>&1 || true
 }
