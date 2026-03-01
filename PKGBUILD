@@ -29,7 +29,7 @@ sha256sums_x86_64=('78173c698057f9e6515a5697f627734f0618f6d5948612e675209a11d583
 
 
 package() {
-	cd "${srcdir}" || exit
+	cd "${srcdir}/" || exit
 
 	install -Dm755 "${_pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/${_pkgname}"
 
