@@ -15,7 +15,7 @@ depends=('python>=3.13' 'python-vdf' 'python-json5' 'python-requests' 'python-cl
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wojtmic/prefixer/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('57d5483cc8897dc64dda366bacc85c5e0ff258f7959c9545df8835260499b901')
+sha256sums=('4584a3cb4a408f98a66ada9620759895cb4beccf2ff1938ae6d6f60e44073997')
 
 build() {
   cd "$srcdir/prefixer-${pkgver}"
