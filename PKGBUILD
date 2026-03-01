@@ -50,7 +50,7 @@ optdepends=(
   'rust: support for Cargo package management'
   'scons: support for building SCons-dependent packages'
   'subversion: support for Subversion checkouts'
-  'waf: support for building waf-dependent packages'
+  'waf: support for building Waf-dependent packages'
   'zsh-completions: shell completion for zsh'
 )
 _base_url=https://github.com/releng-tool/releng-tool/releases/download
