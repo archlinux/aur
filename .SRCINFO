@@ -7,6 +7,7 @@ pkgbase = pumpkin-bin
 	arch = aarch64
 	license = GPL-3.0
 	provides = pumpkin
+	conflicts = pumpkin
 	options = !debug
 	source_x86_64 = pumpkin-X64-Linux::https://github.com/Pumpkin-MC/Pumpkin/releases/download/nightly/pumpkin-X64-Linux
 	sha256sums_x86_64 = SKIP
