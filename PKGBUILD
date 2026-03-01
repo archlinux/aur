@@ -1,7 +1,7 @@
 # Maintainer: Paul Harvey <hed-phsuarnaba@smu.edu.ph>
 pkgname=hyprsettings-git
-pkgver=0.9.1.1
-pkgrel=2
+pkgver=0.9.1.2
+pkgrel=1
 pkgdesc="Configurator for Hyprland (alpha, development version, git snapshot)"
 arch=('x86_64')
 url="https://github.com/acropolis914/hyprsettings"
@@ -35,6 +35,7 @@ package() {
     python -m compileall -d "/usr/lib/$pkgname" -q "$pkgdir/usr/lib/$pkgname"
 
     # 5. Internal run.sh
+    echo "$(date '+%Y-%m-%d %H:%M:%S')" >> "$pkgdir/usr/lib/$pkgname/.aur-installed"
     cat > "$pkgdir/usr/lib/$pkgname/run.sh" <<EOF
 #!/usr/bin/env bash
 cd "\$(dirname "\$0")"
@@ -44,14 +45,14 @@ EOF
 
     # 6. System wrapper
     cat > "$pkgdir/usr/bin/hyprsettings" <<EOF
-#!/usr/bin/env bash
+#!/usr/bin/env bash_aur
 exec /usr/lib/$pkgname/run.sh "\$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/hyprsettings"
 
     # 7. Desktop entry
     install -dm755 "$pkgdir/usr/share/applications"
-    cat > "$pkgdir/usr/share/applications/hyprsettings.desktop" <<EOF
+    cat > "$pkgdir/usr/share/applications/hyprsettings_aur.desktop" <<EOF
 [Desktop Entry]
 Name=HyprSettings
 Comment=A GUI configurator for Hyprland
@@ -62,7 +63,7 @@ Type=Application
 Categories=Utility;
 StartupNotify=true
 EOF
-    chmod 644 "$pkgdir/usr/share/applications/hyprsettings.desktop"
+    chmod 644 "$pkgdir/usr/share/applications/hyprsettings_aur.desktop"
 
     # 8. Icon
     install -Dm644 "$srcdir/$pkgname/assets/icon-48.png" \
