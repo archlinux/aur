@@ -1,0 +1,12 @@
+pkgbase = apmw
+	pkgdesc = Apt-PacMan Warpper - 一个将apt风格命令转换为pacman命令的包装器
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	makedepends = gcc
+	depends = pacman
+	source = https://gitee.com/mineleng/apmw/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = a9acf31ec5480dba183137ac0dc3547621035f224763886bd7b6e98a8493f1ca
+
+pkgname = apmw
