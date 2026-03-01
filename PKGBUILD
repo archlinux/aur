@@ -2,8 +2,8 @@
 _sourceName="HyperHeadset"
 
 pkgname="hyperheadset-git"
-pkgver=v1.5.1.r0.gf51f219
-pkgrel=1
+pkgver=1.5.1.r0.gf51f219
+pkgrel=2
 pkgdesc="A CLI and tray application for monitoring and managing HyperX headsets."
 arch=('x86_64')
 url="https://github.com/LennardKittner/HyperHeadset"
@@ -29,7 +29,7 @@ conflicts=("hyperheadset" "hyperheadset-bin")
 
 pkgver() {
   cd "${_sourceName}"
-  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
