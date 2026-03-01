@@ -37,7 +37,7 @@ package() {
     # 5. Internal run.sh
     echo "$(date '+%Y-%m-%d %H:%M:%S')" >> "$pkgdir/usr/lib/$pkgname/.aur-installed"
     cat > "$pkgdir/usr/lib/$pkgname/run.sh" <<EOF
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 cd "\$(dirname "\$0")"
 exec python3 src/hyprsettings "\$@"
 EOF
@@ -45,7 +45,7 @@ EOF
 
     # 6. System wrapper
     cat > "$pkgdir/usr/bin/hyprsettings" <<EOF
-#!/usr/bin/env bash_aur
+#!/usr/bin/env sh
 exec /usr/lib/$pkgname/run.sh "\$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/hyprsettings"
