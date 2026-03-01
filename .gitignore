@@ -18,4 +18,4 @@ pkg/
 src/
 music-ratatui/
 # End of https://www.toptal.com/developers/gitignore/api/archlinuxpackages
-music-ratatui-bin_0.3.8_linux
+music-ratatui-bin_*
