@@ -4,7 +4,7 @@ _system_libs=true
 _self_contained=false
 
 pkgname=clonedash-git
-pkgver=r1988.g38c60712
+pkgver=r1997.g3819e33c
 pkgrel=1
 pkgdesc="An open-source, from scratch clone of Muse Dash (a parkour rhythm game)."
 arch=("x86_64")
@@ -78,12 +78,14 @@ package() {
         "./CloneDash/bin/Release/net$_dotnet_version/$_rid/publish" \
          "$pkgdir/usr/lib/clonedash/CloneDash"
     cp -a --no-preserve=ownership -t "$pkgdir/usr/lib/clonedash/CloneDash" \
-        "./CloneDash/bin/Release/net$_dotnet_version/$_rid/assets"
+        "./CloneDash/bin/Release/net$_dotnet_version/$_rid/assets" \
+        "./CloneDash/bin/Release/net$_dotnet_version/$_rid/raylib.so"
     cp -a --no-preserve=ownership \
         "./Nucleus.ModelEditor/bin/Release/net$_dotnet_version/$_rid/publish" \
         "$pkgdir/usr/lib/clonedash/Nucleus.ModelEditor"
     cp -a --no-preserve=ownership -t "$pkgdir/usr/lib/clonedash/Nucleus.ModelEditor" \
-        "./Nucleus.ModelEditor/bin/Release/net$_dotnet_version/$_rid/assets"
+        "./Nucleus.ModelEditor/bin/Release/net$_dotnet_version/$_rid/assets" \
+        "./Nucleus.ModelEditor/bin/Release/net$_dotnet_version/$_rid/raylib.so"
     ln -srfv "$pkgdir/usr/lib/clonedash/CloneDash/Clone Dash" "$pkgdir/usr/bin/CloneDash"
     ln -srfv "$pkgdir/usr/lib/clonedash/Nucleus.ModelEditor/Nucleus.ModelEditor" "$pkgdir/usr/bin/Nucleus.ModelEditor"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
