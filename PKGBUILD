@@ -2,7 +2,7 @@
 _pkgname=corona
 pkgname=solar2d-git
 pkgver=3728.r0.ab736b71
-pkgrel=3
+pkgrel=4
 pkgdesc="Solar2D (formerly Corona SDK) cross-platform game engine"
 arch=('x86_64')
 url="https://github.com/coronalabs/corona"
