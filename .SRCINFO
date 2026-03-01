@@ -1,6 +1,6 @@
 pkgbase = omnidotdev-terminal
 	pkgdesc = GPU-accelerated terminal emulator built to run everywhere
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://terminal.omni.dev
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = omnidotdev-terminal
 	depends = freetype2
 	depends = libxkbcommon
 	depends = wayland
-	source = https://github.com/omnidotdev/terminal/archive/v0.1.0.tar.gz
-	sha256sums = 0270eeb683707355403e81be861682e7fb5ae0e864e215ff47b9bacde39f3258
+	source = https://github.com/omnidotdev/terminal/archive/v0.1.1.tar.gz
+	sha256sums = 4316f48ca2b5b34edf6cd0dbf8bca877f6b3e907a72e11864b517afd0dd06d84
 
 pkgname = omnidotdev-terminal
