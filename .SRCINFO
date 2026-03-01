@@ -1,0 +1,10 @@
+pkgbase = better-iptv
+	pkgdesc = Modern, powerful IPTV player for Linux, Windows, and macOS (meta-package)
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/mewset/better-iptv
+	arch = any
+	license = GPL2
+	depends = better-iptv-bin
+
+pkgname = better-iptv
