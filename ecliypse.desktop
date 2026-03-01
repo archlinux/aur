@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Ecliypse
+Comment=High-performance game launcher and downloader
+Exec=/usr/bin/ecliypse
+Icon=ecliypse
+Terminal=false
+StartupNotify=true
+Categories=Game;Settings;Network;

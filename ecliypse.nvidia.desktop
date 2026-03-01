@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Ecliypse (Nvidia)
+Comment=High-performance game launcher and downloader
+Exec=env __NV_DISABLE_EXPLICIT_SYNC=1 /usr/bin/ecliypse
+Icon=ecliypse
+Terminal=false
+StartupNotify=true
+Categories=Game;Settings;Network;
+PrefersNonDefaultGPU=true
