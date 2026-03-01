@@ -1,7 +1,7 @@
 pkgbase = python-newspaper4k
 	pkgdesc = A fork and continuation of the newspaper3k/newspaper package.
-	pkgver = 0.9.4.1
-	pkgrel = 2
+	pkgver = 0.9.5
+	pkgrel = 1
 	url = https://github.com/andythefactory/newspaper4k
 	arch = any
 	license = MIT
@@ -29,7 +29,7 @@ pkgbase = python-newspaper4k
 	optdepends = python-indic-nlp-library
 	optdepends = python-cloudscraper
 	optdepends = python-gnews
-	source = python-newspaper4k-0.9.4.1.tar.gz::https://github.com/andythefactory/newspaper4k/archive/refs/tags/0.9.4.1.tar.gz
-	b2sums = 9e0aa228cb8c29e41c41b90b0bda90f2f51b7c6e3ddec572b60d7fb1a7a734d6c0f313f9bc277fda9bbb5ebb1794efa0147c65bbdc63cff73e45fb03fe36ee41
+	source = python-newspaper4k-0.9.5.tar.gz::https://github.com/andythefactory/newspaper4k/archive/refs/tags/0.9.5.tar.gz
+	b2sums = 77c97a7d527b995b04f51e46c6753c83ab70c0c7e08e6907d8e66db25bb2c07c4720a5002bf1d8f8a36dcb8406f82a5cb8307edae93d1f0bc26cf2131b6e74e3
 
 pkgname = python-newspaper4k
