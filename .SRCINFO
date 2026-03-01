@@ -1,0 +1,11 @@
+pkgbase = flags-common
+	pkgdesc = Package of national flags
+	pkgver = 26.02arch
+	pkgrel = 1
+	url = https://mxlinux.org
+	arch = any
+	license = GPL-3.0-or-later
+	source = https://github.com/MX-Linux/flags-common/archive/refs/tags/26.02arch.tar.gz
+	sha256sums = 4e115aa93eb2aa5b679022daa220f800ae70b9a7588cbe49776f2a9dd0aa1a74
+
+pkgname = flags-common
