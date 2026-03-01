@@ -6,7 +6,7 @@
 
 _gitname="libsigrok"
 pkgname="libsigrok-sipeed-slogic-git"
-pkgver=0.2.1.r4392.gf06f7881
+pkgver=0.2.1.r4422.g75563b42
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, core library with Sipeed Slogic Analyzer support patches (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -29,6 +29,8 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${_gitname}"
   patch -p 1 < ${srcdir}/0001-sipeed-slogic-analyzer-Add-Support-for-Sipeed-SLogic-Series-including-SLogic16U3-5Gbps.patch
+  # Adjust Python bindings for SWIG >= 4.4.#280
+  git cherry-pick 77c2f1b20657827f3a58d42355fccc81a24f4527
 }
 
 
