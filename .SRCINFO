@@ -1,0 +1,16 @@
+pkgbase = aerothemeplasma-sounds-git
+	pkgdesc = Collection of sound themes designed for AeroThemePlasma
+	pkgver = 4.r55d2f5f
+	pkgrel = 1
+	url = https://gitgud.io/aeroshell/atp/aerothemeplasma-sounds
+	arch = any
+	groups = aerothemeplasma
+	license = AGPL-3.0-or-later
+	makedepends = git
+	provides = aerothemeplasma-sounds
+	conflicts = aerothemeplasma-sounds
+	options = !debug
+	source = aerothemeplasma-sounds-git::git+https://gitgud.io/aeroshell/atp/aerothemeplasma-sounds.git
+	sha256sums = SKIP
+
+pkgname = aerothemeplasma-sounds-git
