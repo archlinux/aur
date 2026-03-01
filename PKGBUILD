@@ -2,7 +2,7 @@
 
 pkgname=polymath
 pkgver=1.4.0.7
-pkgrel=7
+pkgrel=8
 pkgdesc='Advanced keyboard layout customization tool for Flux keyboards'
 arch=('x86_64')
 url='https://fluxkeyboard.com/updates/'
@@ -30,9 +30,10 @@ build() {
 }
 
 package() {
-  install -Dm644 "${srcdir}/udev.rules" "${pkgdir}/usr/lib/udev/rules.d/95-polymath.rules"
   mkdir "${pkgdir}/opt"
   cp -r "${srcdir}/data/opt/polymath" "${pkgdir}/opt/"
+  cp -r "${srcdir}/data/usr" "${pkgdir}/"
+  install -Dm644 "${srcdir}/udev.rules" "${pkgdir}/usr/lib/udev/rules.d/95-polymath.rules"
 }
 
 # vim:set ts=2 sw=2 et:
