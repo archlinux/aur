@@ -1,28 +1,31 @@
-# Maintainer: Ryan Pepper <pypper@protonmail.com>
-# Maintainer: Daniel Landau <daniel@landau.fi>
-# Maintainer: Christian Bundy <christianbundy@fraction.io>
-# Maintainer: Linus Karlsson <linus@zozs.se>
 
-pkgname=ssb-patchwork
+# Maintainer: Julian Stauffer <julian.stauffer.js@gmail.com>
+# Contributor: Ryan Pepper <pypper@protonmail.com>
+# Contributor: Daniel Landau <daniel@landau.fi>
+# Contributor: Christian Bundy <christianbundy@fraction.io>
+# Contributor: Linus Karlsson <linus@zozs.se>
+
+pkgname=poncho-wonky
 _upstream=patchwork
-pkgver=3.18.1
+pkgver=4.5.0
 pkgrel=1
-pkgdesc="A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB)"
-arch=('i686' 'x86_64')
-url="https://github.com/ssbc/patchwork"
+pkgdesc="A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB),fork of patchwork"
+arch=('x86_64')
+url="https://github.com/soapdog/patchwork"
 license=('AGPL3')
-depends=('libxtst' 'libxext' 'libxkbfile' 'libsodium' 'libxss' 'gtk2' 'alsa-lib' 'nss' 'electron11')
+depends=('libxtst' 'libxext' 'libxkbfile' 'libsodium' 'libxss' 'gtk4' 'alsa-lib' 'nss' 'electron39')
 makedepends=('nodejs' 'npm')
+replaces=('ssb-patchwork')
 options=(!strip)
 source=(
-"https://github.com/ssbc/${_upstream}/archive/v${pkgver}.tar.gz"
+"${url}/archive/v${pkgver}.tar.gz"
 'run.sh'
 "${pkgname}.desktop"
 )
 
-sha256sums=('8a6aeddcdf4d61ab61f014275561205e4fdaf5a65ab55adfc9cbf71b49145f0d'
-            'f485ed3ce7530ceda6575d5446e50b4c365bd01894139483c506e7f7a6559b77'
-            'b226436970db40030ad03e9cd847c103aa534d775cd81212308e86a23917d76a')
+sha256sums=('294a5cac51eace1ff4f7faacd6792eb4bd1eb85dff04aa6d41d15f0b586c666e'
+            'e1518685a1c37abd0a801d0a2872c4e05eb27434402bb9d304c5db8323f4c3a8'
+            '26fab2036df5395992a44d92b59238bdda4a6bcebed9883db71c6ab026357f9c')
 
 
 build() {
@@ -33,12 +36,12 @@ build() {
     sed -i '/postinstall/d' package.json
 
     # Electron's version.
-    export npm_config_target=$(electron11 -v)
+    export npm_config_target=$(electron39 -v)
     # The architecture of Electron, can be ia32 or x64.
     export npm_config_arch=x64
     export npm_config_target_arch=x64
     # Download headers for Electron.
-    export npm_config_disturl=https://atom.io/download/electron
+    export npm_config_disturl=https://nodejs.org/dist
     # Tell node-pre-gyp that we are building for Electron.
     export npm_config_runtime=electron
     # Install all dependencies, and store cache to ~/.electron-gyp.

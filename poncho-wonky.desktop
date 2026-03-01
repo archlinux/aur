@@ -1,10 +1,10 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
-Name=Patchwork
+Name=Poncho Wonky
 Comment=A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB)
-Exec=ssb-patchwork
-Icon=ssb-patchwork
+Exec=poncho-wonky
+Icon=poncho-wonky
 Terminal=false
 StartupNotify=false
 Categories=Network;Application;
