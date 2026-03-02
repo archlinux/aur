@@ -1,6 +1,6 @@
 # Maintainer: JC Francois <jc.francois@gmail.com>
 pkgname=tiddlydesktop
-pkgver=0.0.20
+pkgver=0.0.22
 pkgrel=1
 pkgdesc="TiddlyDesktop is a special purpose web browser for working with locally stored TiddlyWikis"
 url="https://github.com/Jermolene/TiddlyDesktop"
@@ -16,10 +16,10 @@ source=(https://github.com/Jermolene/TiddlyDesktop/releases/download/v${pkgver}/
         tiddlydesktop.sh
 		tiddlydesktop.desktop)
 
-sha256sums=('3ffc6c90588b81222fabae7af825615652b472ec53ce58d3fb5b8ed21afcff55'
-            '18d34ec9a3d2f6946ca7386bfd6eb521174e0b36eb3043d62b69315ef74b286b'
+sha256sums=('fe221e77ecd6fc7d5c93a2475b3c47b06b3e6d37435bbdcfd60bf4a59e90424a'
+            '6e1188c12bfcfa02c89236258105bad1d42653d52aa5c2bba13241ffc154b964'
             '9f47a64b912a2ab3efc67a94559130c6d4e76a74b6a4a37c400972ef768b87e0'
-            'a81adff1a65143c21a0b486ad6219ad493c75db53672bc229e08f0012c40b153')
+            '10086a0f3e65e8276cd6d80be940c623adf049f8fd21dcf12c397703e4521193')
 
 package() {
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
@@ -32,9 +32,6 @@ package() {
     chmod 755 ${pkgdir}/usr/share/${pkgname}/chromedriver
     chmod 755 ${pkgdir}/usr/share/${pkgname}/chrome_crashpad_handler
     chmod 755 ${pkgdir}/usr/share/${pkgname}/minidump_stackwalk
-    chmod 755 ${pkgdir}/usr/share/${pkgname}/nacl_helper
-    chmod 755 ${pkgdir}/usr/share/${pkgname}/nacl_helper_bootstrap
-    chmod 755 ${pkgdir}/usr/share/${pkgname}/nacl_irt_x86_64.nexe
     chmod 755 ${pkgdir}/usr/share/${pkgname}/nw
     chmod 755 ${pkgdir}/usr/share/${pkgname}/nwjc
 
