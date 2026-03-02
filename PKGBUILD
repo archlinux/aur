@@ -1,4 +1,4 @@
-# Maintainer: Scott Stavropoulos <scottstav@gmail.com>
+# Maintainer: Scott Stavinoha <scottstavinoha@gmail.com>
 pkgname=aside
 pkgver=0.3.0
 pkgrel=1
