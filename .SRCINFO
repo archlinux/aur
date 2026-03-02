@@ -3,7 +3,6 @@ pkgbase = photoqt-extensions-bin
 	pkgver = 5.2
 	pkgrel = 1
 	url = http://photoqt.org/
-	install = photoqt-extensions.install
 	arch = x86_64
 	license = GPL2
 	depends = exiv2

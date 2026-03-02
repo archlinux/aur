@@ -13,7 +13,6 @@ provides=('photoqt-extensions-bin-debug')
 depends=('exiv2' 'imagemagick')
 source=(https://photoqt.org/downloads/bin/$_pkgname-$pkgver.tar.gz)
 sha256sums=('a2f8edabfc7517ff20cb6b1f12892eb4de94be709d096f61836584663c0df1ec')
-install="photoqt-extensions.install"
 
   # Extensions configured with:
   #
