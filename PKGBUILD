@@ -1,7 +1,7 @@
 # Maintainer: Kartatz <kartatz at amanoteam.com>
 pkgname=motomagx-gcc-cross-bin
 pkgver=15.2.0
-pkgrel=20260213
+pkgrel=20260302
 pkgdesc='A GCC cross-compiler targeting MotoMAGX'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url='https://github.com/AmanoTeam/motomagx-gcc-cross'
@@ -17,10 +17,10 @@ source_x86_64=("https://github.com/AmanoTeam/motomagx-gcc-cross/releases/downloa
 source_aarch64=("https://github.com/AmanoTeam/motomagx-gcc-cross/releases/download/gcc-${pkgver%%.*}/aarch64-unknown-linux-gnu.tar.xz")
 source_armv7h=("https://github.com/AmanoTeam/motomagx-gcc-cross/releases/download/gcc-${pkgver%%.*}/arm-unknown-linux-gnueabihf.tar.xz")
 
-sha256sums_i686=('d17bf634d937ab0045d8c757223adc7a28e4458a2b055617610252fa302ff8bf')
-sha256sums_x86_64=('fe83b3d444ded19626b6c18b70c49af6dff121a793e5e7820925c10b59da5907')
-sha256sums_aarch64=('2ff022e95d79c15254696685dc276259bc337f276e9a56d5b4ffc2f85e51f8ce')
-sha256sums_armv7h=('3e9590f7a1e4c43645c2bbbffeb6d3f6805cc43df902e994a5b819f1f9852052')
+sha256sums_i686=('6ff06fcd3ebe10e1146bfcfc3e916eaab9c40dc1feb1e5b6c81a6b97004a4c5a')
+sha256sums_x86_64=('484b2dfb6f7387fc095ae919899dcbcf9af1a70d1b91afb5d087ac5c2cf7de1b')
+sha256sums_aarch64=('9c0a4902db1c09e8e9ec578045534525de1ffd76845e5c7dbc40dbcda12ab289')
+sha256sums_armv7h=('f0a9658832e638ac2c091c775dd1ee89c81eec9cc9714525758230dea3e508f7')
 
 package() {
 	
