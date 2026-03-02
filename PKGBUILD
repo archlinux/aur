@@ -2,7 +2,7 @@
 
 pkgname=bootc-bcvk
 _pkgname=bcvk
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='Launches ephemeral VMs from bootc containers and creates disk images.'
 url='https://github.com/bootc-dev/bcvk'
@@ -19,7 +19,7 @@ depends=(
 )
 arch=(x86_64)
 source=("https://github.com/bootc-dev/bcvk/releases/download/v$pkgver/bcvk-$pkgver.tar.zstd")
-sha256sums=('2e99202a437903d9a2fa28b5126d0c721c2db5b9ccb3fc1e8e751d85b0e56357')
+sha256sums=('3b636dca2c20b4581d2d0105126c7952215e176e20cf8e4690a5fb1b0db8bdc3')
 
 prepare() {
     set -x
