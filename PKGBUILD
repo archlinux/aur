@@ -2,7 +2,7 @@
 
 pkgname=stremio
 pkgver=4.4.176
-pkgrel=1
+pkgrel=2
 _serverjs_ver=4.4.172
 pkgdesc='A one-stop hub for video content aggregation (Movies, TV shows, series, live television or web channels)'
 arch=('x86_64')
@@ -32,13 +32,15 @@ source=("git+https://github.com/Stremio/stremio-shell.git#tag=v${pkgver}"
         'git+https://github.com/itay-grudev/SingleApplication.git'
         "stremio-${_serverjs_ver}-server.js"::"https://dl.strem.io/four/v${_serverjs_ver}/server.js"
         "stremio-${_serverjs_ver}-stremio.asar"::"https://dl.strem.io/four/v${_serverjs_ver}/stremio.asar"
-        '010-stremio-do-not-download-server-js.patch')
+        '010-stremio-do-not-download-server-js.patch'
+        '020-stremio-fix-application-version.patch')
 sha256sums=('25248ae6d54c1c669ec2a90f64ba7e0717a6d8436c0495b58f602e0af638c37d'
             'SKIP'
             'SKIP'
             '08d5510a771c3d07a8b1f9c0e521324551d6055b001c5a56c7a79e3e3e0474ef'
             'a6cb74bd82323ecaa898323c0b710d4297ebad50dd4f2389d84b8426ef6d943a'
-            'b5eff88b30d8c6030e36ca4949ebf6ff9515efbedc0b9bc748110cd1fbc0671a')
+            'b5eff88b30d8c6030e36ca4949ebf6ff9515efbedc0b9bc748110cd1fbc0671a'
+            'b1c9f3de221dbe2d96a3b61fca4fef67713d630ca816d3c344e3a40cb795e26e')
 
 prepare() {
     git -C stremio-shell submodule init
@@ -49,6 +51,8 @@ prepare() {
     # do not download server.js during 'make'
     ln -s "../stremio-${_serverjs_ver}-server.js" stremio-shell/server.js
     patch -d stremio-shell -Np1 -i "${srcdir}/010-stremio-do-not-download-server-js.patch"
+    
+    patch -d stremio-shell -Np1 -i "${srcdir}/020-stremio-fix-application-version.patch"
 }
 
 build() {
