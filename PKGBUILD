@@ -127,8 +127,8 @@ package_asf() {
     find "${pkgdir}/usr/lib/${pkgname}" -type f -exec chmod 644 {} \;
     find "${pkgdir}/usr/lib/${pkgname}" -type d -exec chmod 755 {} \;
 
-    install -d -m 755 "${pkgdir}/var/lib/${pkgname}/config"
-    install -D -m644 "${srcdir}/ASF.json" "${pkgdir}/var/lib/${pkgname}/config/ASF.json"
+    install -d -m 750 "${pkgdir}/var/lib/${pkgname}/config"
+    install -D -m640 "${srcdir}/ASF.json" "${pkgdir}/var/lib/${pkgname}/config/ASF.json"
     install -D -m644 "${srcdir}/NLog.config" "${pkgdir}/usr/lib/${pkgname}/NLog.config"
 
     install -D -m644 "${srcdir}/asf.env" "${pkgdir}/etc/asf/asf"
@@ -137,6 +137,6 @@ package_asf() {
     # Setup system user and group
     echo 'u asf - "ArchiSteamFarm" /var/lib/asf' |
       install -Dm644 /dev/stdin "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
-    echo -e 'd /var/lib/asf 0755 asf asf -\nd /tmp/ASF 0777 asf asf -' |
+    echo -e 'd /var/lib/asf 0750 asf asf -\nd /tmp/ASF 0777 asf asf -' |
       install -Dm644 /dev/stdin "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
 }
