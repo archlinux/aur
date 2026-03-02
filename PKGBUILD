@@ -1,20 +1,20 @@
 # Maintainer: sim0n <aur.direction446@aleeas.com>
 pkgname=sing-box-ref1nd
 _pkgname=sing-box
-pkgver=1.12.14
+pkgver=1.13.0
 pkgrel=1
 
 pkgdesc='The universal proxy platform.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
-url='https://github.com/reF1nd/sing-box/tree/reF1nd-dev'
+url='https://github.com/reF1nd/sing-box'
 license=('GPL3 with name use or association addition')
 
-makedepends=('go')
+makedepends=('go' 'mold')
 provides=("$_pkgname")
 options=('!debug')
 
 source=("$_pkgname-$pkgver-reF1nd.tar.gz::https://github.com/reF1nd/sing-box/archive/refs/tags/v$pkgver-reF1nd.tar.gz")
-sha256sums=('ef3b4edff1231cbb44be1ce728567ce9f61eac94cb0e2d8e8413d424bc4a4c0b')
+sha256sums=('e9375201dbcc3b4f0094489e70288cc5ea707cebab39bb675803ed2eb6739333')
 
 conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$pkgname-git")
 
@@ -29,6 +29,8 @@ build(){
     export CGO_CXXFLAGS="$CXXFLAGS"
     export CGO_LDFLAGS="$LDFLAGS"
     export VERSION="$pkgver"
+    export CGO_ENABLED=1
+    export CGO_LDFLAGS="-fuse-ld=mold"
 
     go build \
         -v \
@@ -41,10 +43,6 @@ build(){
             -X \"github.com/sagernet/sing-box/constant.Version=$VERSION\"
             -s -w -buildid= -linkmode=external" \
         ./cmd/sing-box
-
-    sed -i "/^\[Service\]$/a StateDirectory=$_pkgname"    release/config/$_pkgname.service
-    sed -i "/^\[Service\]$/a StateDirectory=$_pkgname-%i" release/config/$_pkgname@.service
-    sed -i "/^\[Service\]$/a User=$_pkgname"              release/config/$_pkgname*.service
 
     echo "u $_pkgname - \"Sing-box Service\" - -" > "release/config/$_pkgname.sysusers"
 
