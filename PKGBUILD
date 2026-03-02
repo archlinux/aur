@@ -1,7 +1,7 @@
-# Maintainer: Josema294 https://github.com/josema294
+# Maintainer: Josema294 intrepido.absinthe645@passinbox.com
 pkgname=wtop
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-based system monitor written in Rust, providing real-time metrics for CPU, GPU, memory, disks, and network"
 arch=('x86_64')
 url="https://github.com/josema294/wtop"
@@ -9,7 +9,7 @@ license=('AGPL3')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9a5088652e93ea345e51c6ca618b4aa7b265117c9dcaf46d4364de7fcaa1c1ee')
+sha256sums=('19ef3bc2bc6dabe305b515e9dc0ef87018f022505c3a2cee606f5bf842820171')
 
 build() {
   cd "$pkgname-$pkgver"

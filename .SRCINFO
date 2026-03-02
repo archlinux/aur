@@ -1,7 +1,7 @@
 pkgbase = wtop
 	pkgdesc = A web-based system monitor written in Rust, providing real-time metrics for CPU, GPU, memory, disks, and network
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/josema294/wtop
 	arch = x86_64
 	license = AGPL3
@@ -9,6 +9,6 @@ pkgbase = wtop
 	makedepends = cargo
 	depends = gcc-libs
 	source = wtop-0.2.0.tar.gz::https://github.com/josema294/wtop/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 9a5088652e93ea345e51c6ca618b4aa7b265117c9dcaf46d4364de7fcaa1c1ee
+	sha256sums = 19ef3bc2bc6dabe305b515e9dc0ef87018f022505c3a2cee606f5bf842820171
 
 pkgname = wtop
