@@ -1,19 +1,19 @@
 pkgbase = mozregression-gui-bin
 	pkgdesc = Regression range finder for Firefox
-	pkgver = 7.0.0
-	pkgrel = 2
+	pkgver = 7.2.0
+	pkgrel = 1
 	url = https://github.com/mozilla/mozregression
 	arch = any
 	license = MPL
 	depends = libbsd
 	depends = libyaml
 	depends = python
-	provides = mozregression-gui=7.0.0
+	provides = mozregression-gui=7.2.0
 	options = !strip
-	source = mozregression-gui-bin-7.0.0.tar.gz::https://github.com/mozilla/mozregression/releases/download/7.0.0/mozregression-gui-ubuntu-24.04.tar.gz
+	source = mozregression-gui-bin-7.2.0.tar.gz::https://github.com/mozilla/mozregression/releases/download/7.2.0/mozregression-gui-ubuntu-24.04.tar.gz
 	source = mozregression-gui.desktop
 	source = https://raw.githubusercontent.com/mozilla/mozregression/master/gui/icons/app_icon.png
-	sha256sums = bfe8ddd01896d3a5992464cfa113c0ee3e2154c1ddb17e9250a2899f461b85a8
+	sha256sums = 725928b000b851a5e2abaf25895402a7992157f0b992fd7afbcf9b06b1b83b38
 	sha256sums = 0b51e2692ef75addd98365185ff05524426ca1735f43d6b1cafa0e71d71481cb
 	sha256sums = eec9a7ab76d757b7f03ceea4a65623337a6625989f4aa801d07f71aa37175e23
 
