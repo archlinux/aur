@@ -1,6 +1,6 @@
 pkgbase = catwalk-bin
 	pkgdesc = 🐈 A collection of LLM inference providers and models
-	pkgver = 0.25.0
+	pkgver = 0.25.1
 	pkgrel = 1
 	url = https://github.com/charmbracelet/catwalk
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = catwalk-bin
 	license = MIT
 	provides = catwalk
 	conflicts = catwalk
-	source = README-0.25.0.md::https://raw.githubusercontent.com/charmbracelet/catwalk/v0.25.0/README.md
-	source = LICENSE-0.25.0::https://raw.githubusercontent.com/charmbracelet/catwalk/v0.25.0/LICENSE
+	source = README-0.25.1.md::https://raw.githubusercontent.com/charmbracelet/catwalk/v0.25.1/README.md
+	source = LICENSE-0.25.1::https://raw.githubusercontent.com/charmbracelet/catwalk/v0.25.1/LICENSE
 	sha256sums = d482c99d082bfcf086071f5756340de605a204731a07a43cada07e8b953a32d6
 	sha256sums = 8a77c755a1d1fbdc932e86f0449549121820b6f4cc1234b12fcfc8d38013c1de
-	source_x86_64 = catwalk-x86_64-0.25.0.tgz::https://github.com/charmbracelet/catwalk/releases/download/v0.25.0/catwalk_0.25.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = cbc60c269d8f8d4250c636e77e49342437066562820aa9d09e4870359c7a9baa
-	source_aarch64 = catwalk-aarch64-0.25.0.tgz::https://github.com/charmbracelet/catwalk/releases/download/v0.25.0/catwalk_0.25.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = ca790ed89bdb51cd2144991c3ff22d3bdece21503dcc5c932604801410e0a4ed
+	source_x86_64 = catwalk-x86_64-0.25.1.tgz::https://github.com/charmbracelet/catwalk/releases/download/v0.25.1/catwalk_0.25.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = f6714a3b4242d5b80030c4bcaee7b01cd7fd437f7576314c9df6d5f80558d268
+	source_aarch64 = catwalk-aarch64-0.25.1.tgz::https://github.com/charmbracelet/catwalk/releases/download/v0.25.1/catwalk_0.25.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 575590f43a90128457bafe20e99382696c9f61c79abefcdc774c7d65f6c74b13
 
 pkgname = catwalk-bin
