@@ -1,10 +1,10 @@
 pkgname=cmdcreate-git
 pkgver=r523.8f24cc4
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to create custom commands for your custom scripts"
 arch=('any')
 url="https://github.com/owen-debiasio/cmdcreate"
-license=('MIT')
+license=('GPL3')
 
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
@@ -29,4 +29,5 @@ build() {
 package() {
   cd cmdcreate
   install -Dm755 target/release/cmdcreate "$pkgdir/usr/bin/cmdcreate"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
