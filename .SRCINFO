@@ -1,6 +1,6 @@
 pkgbase = python-underthesea
 	pkgdesc = Vietnamese NLP Toolkit
-	pkgver = 8.3.0
+	pkgver = 9.2.11
 	pkgrel = 1
 	url = https://pypi.org/project/underthesea
 	arch = any
@@ -17,6 +17,7 @@ pkgbase = python-underthesea
 	depends = python-fire
 	depends = python-google-auth-oauthlib
 	depends = python-joblib
+	depends = python-huggingface-hub
 	depends = python-librosa
 	depends = python-nltk
 	depends = python-numpy
@@ -49,7 +50,7 @@ pkgbase = python-underthesea
 	conflicts = python-underthesea
 	options = !strip
 	options = !debug
-	source = underthesea-8.3.0.tar.gz::https://files.pythonhosted.org/packages/source/u/underthesea/underthesea-8.3.0.tar.gz
-	sha256sums = d9ba8dfbd2ffd4ab3982cb3d3c4483e2658951991f6585fb820c751015b850f2
+	source = underthesea-9.2.11.tar.gz::https://files.pythonhosted.org/packages/source/u/underthesea/underthesea-9.2.11.tar.gz
+	sha256sums = 524ed429d1697573259aa0bfaef9d9e1b22f63ec4cfe2f8fa0ad5368086830cd
 
 pkgname = python-underthesea
