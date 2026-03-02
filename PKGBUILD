@@ -1,6 +1,6 @@
 # Maintainer: dbctl@pm.me
 pkgname=proton-drive-sync-bin
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='Sync local directories to Proton Drive cloud storage'
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ depends=('libsecret')
 provides=('proton-drive-sync')
 conflicts=('proton-drive-sync' 'proton-drive-sync-bin')
 
-source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/DamianB-BitFlipper/proton-drive-sync/releases/download/v0.2.3/proton-drive-sync-linux-x64.tar.gz")
-source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/DamianB-BitFlipper/proton-drive-sync/releases/download/v0.2.3/proton-drive-sync-linux-arm64.tar.gz")
-sha256sums_x86_64=('00a241e8fdc7b757c3a0b8a06b6d7dce6039618f09a2301af705a99330532a08')
-sha256sums_aarch64=('537457b27a96c7ff8af9ac58a8d256fb7b27f1442babbdc46318bd669d6b4cad')
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/DamianB-BitFlipper/proton-drive-sync/releases/download/v0.2.4/proton-drive-sync-linux-x64.tar.gz")
+source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/DamianB-BitFlipper/proton-drive-sync/releases/download/v0.2.4/proton-drive-sync-linux-arm64.tar.gz")
+sha256sums_x86_64=('c73ae43648d6ff710de83b9477e1df9628d7b7ad601245c37bec361228301994')
+sha256sums_aarch64=('40ed3dbe5ccd7513c7c02068dab27e17c765abffe34b5c21417fe2b1838a3bcf')
 
 package() {
     install -Dm755 proton-drive-sync "${pkgdir}/usr/bin/proton-drive-sync"
