@@ -1,7 +1,7 @@
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 # Maintainer: SFN
 pkgname=feather-tk
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="A lightweight toolkit for building cross-platform applications"
 arch=("x86_64")
@@ -15,7 +15,7 @@ backup=()
 options=()
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/grizzlypeak3d/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 noextract=()
-sha256sums=('8ca5b50e0a297d562304904e1d256ba27dfd9e21870fa2b9c277e1dda469def4')
+sha256sums=('c2ae836209838c7b5c397d9b349c53bb2fd09eb7c6bb77d59ddaf88885b94ed2')
 
 CFLAGS+=" -ffat-lto-objects" #lto problems with static libs
 CXXFLAGS+=" -ffat-lto-objects" #lto problems with static libs
