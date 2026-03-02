@@ -3,10 +3,10 @@ pkgname=puzzletea
 pkgver=1.6.0
 pkgrel=1
 pkgdesc="A collection of puzzle bubbles for BubbleTea"
-arch=('any')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/FelineStateMachine/puzzletea"
 license=('MIT')
-depends=()
+depends=('glibc')
 makedepends=('go')
 checkdepends=('just')
 source=("https://github.com/FelineStateMachine/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
@@ -30,4 +30,5 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
