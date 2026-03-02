@@ -1,6 +1,6 @@
 pkgname=syncovery-bin
-pkgver=11.12.13
-pkgrel=2
+pkgver=11.13.4
+pkgrel=1
 pkgdesc="Syncovery File Synchronization Tool"
 arch=('x86_64')
 url="https://www.syncovery.com"
