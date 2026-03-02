@@ -1,0 +1,3 @@
+
+# file contains mixed line endings, make sure git doesn't mess with them
+*.patch binary

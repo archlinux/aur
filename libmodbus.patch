@@ -1,0 +1,61 @@
+diff --color -ura package.orig/qModMaster-code-0.5.2-3/qModMaster.pro package.new/qModMaster-code-0.5.2-3/qModMaster.pro
+--- package.orig/qModMaster-code-0.5.2-3/qModMaster.pro	2026-03-02 23:21:15.421856160 +0100
++++ package.new/qModMaster-code-0.5.2-3/qModMaster.pro	2026-03-02 23:24:11.146056844 +0100
+@@ -12,7 +12,6 @@
+ 
+ SOURCES += src/main.cpp \
+     src/mainwindow.cpp \
+-    3rdparty/libmodbus/modbus.c \
+     forms/about.cpp \
+     forms/settingsmodbusrtu.cpp \
+     forms/settingsmodbustcp.cpp \
+@@ -22,9 +21,6 @@
+     src/rawdatamodel.cpp \
+     forms/settings.cpp \
+     forms/busmonitor.cpp \
+-    3rdparty/libmodbus/modbus-data.c \
+-    3rdparty/libmodbus/modbus-tcp.c \
+-    3rdparty/libmodbus/modbus-rtu.c \
+     src/rawdatadelegate.cpp \
+     src/registersdatadelegate.cpp \
+     src/modbuscommsettings.cpp \
+@@ -36,7 +32,6 @@
+     forms/tools.cpp
+ 
+ HEADERS  += src/mainwindow.h \
+-    3rdparty/libmodbus/modbus.h \
+     forms/about.h \
+     forms/settingsmodbusrtu.h \
+     forms/settingsmodbustcp.h \
+@@ -58,8 +53,7 @@
+     src/infobar.h \
+     forms/tools.h
+ 
+-INCLUDEPATH += 3rdparty/libmodbus \
+-    3rdparty/QsLog
++INCLUDEPATH += 3rdparty/QsLog
+ 
+ TRANSLATIONS += translations/$$TARGET"_zh_CN.ts"
+ TRANSLATIONS += translations/$$TARGET"_zh_TW.ts"
+@@ -93,6 +87,8 @@
+     icons/icons.qrc \
+     translations/translations.qrc
+ 
++CONFIG += link_pkgconfig
++PKGCONFIG += libmodbus
+ 
+ 
+ 
+diff --color -ura package.orig/qModMaster-code-0.5.2-3/src/modbusadapter.cpp package.new/qModMaster-code-0.5.2-3/src/modbusadapter.cpp
+--- package.orig/qModMaster-code-0.5.2-3/src/modbusadapter.cpp	2026-03-02 23:21:15.422117490 +0100
++++ package.new/qModMaster-code-0.5.2-3/src/modbusadapter.cpp	2026-03-02 23:23:17.881958773 +0100
+@@ -45,7 +45,8 @@
+ 
+     QLOG_INFO()<<  "Modbus Connect RTU";
+ 
+-    m_modbus = modbus_new_rtu(port.toLatin1().constData(),baud,parity.toLatin1(),dataBits,stopBits,RTS);
++    // package note: the removed rts parameter is only used in the windows build
++    m_modbus = modbus_new_rtu(port.toLatin1().constData(),baud,parity.toLatin1(),dataBits,stopBits);
+     line = "Connecting to Serial Port [" + port + "]...";
+     QLOG_TRACE() <<  line;
+ 

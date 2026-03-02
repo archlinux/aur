@@ -1,0 +1,6 @@
+*
+!.git*
+!PKGBUILD
+!.SRCINFO
+!*.desktop
+!*.patch
