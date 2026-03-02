@@ -2,7 +2,7 @@
 
 pkgname=rymdport-bin
 pkgver=3.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform application for easy encrypted sharing of files, folders, and text between devices."
 url="https://github.com/Jacalz/rymdport"
 license=('GPLv3')
@@ -13,7 +13,7 @@ sha256sums=('b7e0c98e4da90bd7a14087ec9ebe4f00b07dbe0be797d7105cf871aa22090db1')
 
 prepare() {
   # Fix broken .desktop file.
-  sed -i 's/rymdport%F/rymdport "%F"/g' "${srcdir}/usr/local/share/applications/Rymdport.desktop"
+  sed -i 's/rymdport%F/rymdport %F/g' "${srcdir}/usr/local/share/applications/Rymdport.desktop"
 }
 
 package() {
