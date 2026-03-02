@@ -1,7 +1,7 @@
 pkgbase = oscgoesbrrr
 	pkgdesc = Make haptics in real life go BRRR from VRChat
 	pkgver = 1.44.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://osc.toys/
 	arch = x86_64
 	license = CC-BY-NC-SA-4.0

@@ -3,7 +3,7 @@
 pkgname='oscgoesbrrr'
 pkgdesc='Make haptics in real life go BRRR from VRChat'
 pkgver='1.44.0'
-pkgrel='1'
+pkgrel='2'
 arch=('x86_64')
 url='https://osc.toys/'
 license=('CC-BY-NC-SA-4.0')
@@ -48,8 +48,8 @@ build() {
     rm -rf "dist/linux-unpacked/usr/lib/$pkgname/node_modules/node-gyp-build"
     rmdir "dist/linux-unpacked/usr/lib/$pkgname/node_modules" 2>/dev/null || :
 
-    sed -i -e "s#\b/usr/bin/electron\b#/usr/bin/electron$_electron_ver#" \
-         -e "s#\b/usr/lib/oscgoesbrrr\b#/usr/lib/$pkgname#" ../oscgoesbrrr
+    sed -i -e "s#/usr/bin/electron\b#/usr/bin/electron$_electron_ver#" \
+         -e "s#/usr/lib/oscgoesbrrr\b#/usr/lib/$pkgname#" ../oscgoesbrrr
     sed -i -e "s/^Version=.*/Version=$pkgver/" ../OscGoesBrrr.desktop
 }
 
