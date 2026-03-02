@@ -1,0 +1,19 @@
+pkgbase = fastq-bin
+	pkgdesc = High-performance Redis-backed job queue written in C (prebuilt binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/OxoGhost01/FastQ
+	arch = x86_64
+	arch = aarch64
+	license = custom:PolyForm-Noncommercial-1.0.0
+	depends = hiredis
+	depends = json-c
+	depends = openssl
+	provides = fastq
+	conflicts = fastq
+	source_x86_64 = fastq-v1.0.0-linux-x86_64.tar.gz::https://github.com/OxoGhost01/FastQ/releases/download/v1.0.0/fastq-v1.0.0-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 32b5289875c1c636e2561a64967aa8e6035de8e0cf4085414596d4aef2b4cd50
+	source_aarch64 = fastq-v1.0.0-linux-arm64.tar.gz::https://github.com/OxoGhost01/FastQ/releases/download/v1.0.0/fastq-v1.0.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = b9f83b0795dfa92ddb7eb211fa7a89d331d868b39d90aefb51151e28276f111d
+
+pkgname = fastq-bin
