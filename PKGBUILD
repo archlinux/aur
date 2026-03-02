@@ -4,7 +4,7 @@
 
 pkgname=libfprint-tod
 _pkgdirname=libfprint
-pkgver=1.94.10+tod1
+pkgver=1.95.0+tod1
 pkgrel=1
 pkgdesc="Library for fingerprint readers - TOD version"
 url="https://fprint.freedesktop.org/"
@@ -38,16 +38,19 @@ provides=(libfprint libfprint-tod libfprint-2.so libfprint-2-tod.so)
 conflicts=(libfprint)
 groups=(fprint)
 source=("git+https://gitlab.freedesktop.org/3v1n0/libfprint.git?signed#tag=v$pkgver")
-b2sums=('db769bb449028589e8e97975a4d6304f1c4cbf2c2658af007734d909afa3d58f62ab1e6adcaeaa3117b2b6c3ce98b227738fc33085b25c0606ea475e848f3cec')
+b2sums=('775269aa72360b6e5636080d548841b0a2488e35dfbba7e65b6cceba7d67f844f808cb34aa960cb55c651c0bd958fc55e12b1370c42eaec8aef88b7caf6b5348')
 validpgpkeys=(
   D4C501DA48EB797A081750939449C2F50996635F # Marco Trevisan (Treviño) <mail@3v1n0.net>
 )
 
-prepare() {
-  cd $_pkgdirname
-}
-
 build() {
+  local meson_options=(
+    # Add virtual drivers for integration tests (e.g. in fprintd)
+    -D drivers=all
+
+    -D installed-tests=false
+  )
+
   arch-meson $_pkgdirname build "${meson_options[@]}"
   meson compile -C build
 }
