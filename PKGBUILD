@@ -20,7 +20,7 @@ conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$pkgname-git")
 
 backup=("etc/$_pkgname/config.json")
 
-_tags=with_utls,with_gvisor,with_quic,with_wireguard,with_clash_api,with_acme,with_dhcp,with_tailscale
+_tags=with_utls,with_gvisor,with_quic,with_wireguard,with_clash_api,with_acme,with_dhcp,with_tailscale,with_naive_outbound
 build(){
     cd "$_pkgname-$pkgver-reF1nd"
 
