@@ -3,7 +3,7 @@
 _pkgauthor=coder
 _pkgname=agentapi
 pkgname=${_pkgname}-bin
-pkgver=0.11.8
+pkgver=0.12.0
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="HTTP API for Claude Code, Goose, Aider, Gemini, Amp, and Codex"
@@ -22,8 +22,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pk
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}")
 sha256sums=('6a11e5fb1fdbffeb88c33f160214a034a7198fed8aedc28ba709a299413d64bf'
             'f1fd64a62a807a5b1fb09fc96bdf904740bd9d21b5ce7e0fdd47d58143f3a8ca')
-sha256sums_x86_64=('222aa0668ba004833c73a9e4c15429b32448d9bc78c17e778c61e9b071a1b81b')
-sha256sums_aarch64=('d3272a152ecc75b791e0a93bae3760bb701161089d2f4ce8d5e1a53d8f605bfb')
+sha256sums_x86_64=('7bad417ff761ca1659b1ec911d63201862872984467d18c2ead48f40d41de198')
+sha256sums_aarch64=('e8856e91d905f4f1f349c2e3a473ae8d7a72c0a5d66e707dae60099cc2fdc8c3')
 
 
 package() {
