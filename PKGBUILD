@@ -12,7 +12,7 @@ depends=('libcap')
 makedepends=('cargo')
 install="pent.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/valentinradu/Pent/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bc5cfdb4ff08b807c0205f79e4db1643d7c0658849f8c39b982b719515eaa4a2')
+sha256sums=('98e29b7297e6f1e9bdc316622506a4c333442b1bb410bdf4e508b29e39e76000')
 
 prepare() {
     cd "Pent-$pkgver"
