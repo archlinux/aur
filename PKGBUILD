@@ -12,10 +12,10 @@ conflicts=('kyp' 'kyp-git')
 depends=('xclip')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/stickpro/kyp/releases/download/v${pkgver}/kyp_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('050d677ecd68c29eb967a059116256f4b00eff84a8aab52ab174cf37607bc4b3')
+sha256sums_aarch64=('cab0226c885e824fe09b0a4ef8b2c8df21578e871807554bcc33de624348c875')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/stickpro/kyp/releases/download/v${pkgver}/kyp_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('fca479e428d0eb5a61b10f2aaa36afe3bf549b397a6660b505ff61d28c8559d0')
+sha256sums_x86_64=('a2da9a5cbb2138642c1de91de1d0b4d4753ea582316aa26e29c53f9ae403a944')
 
 package() {
   install -Dm755 kyp "${pkgdir}/usr/bin/kyp"
