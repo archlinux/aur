@@ -1,0 +1,18 @@
+pkgbase = lucent-bin
+	pkgdesc = A blazing-fast, D-Bus activated Wayland notification daemon (Pre-compiled)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/CPT-Dawn/Lucent
+	arch = x86_64
+	license = MIT
+	depends = glib2
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = dbus
+	provides = lucent
+	conflicts = lucent
+	conflicts = lucent-git
+	source = lucent-1.0.1.tar.gz::https://github.com/CPT-Dawn/Lucent/releases/download/v1.0.1/lucent-x86_64.tar.gz
+	sha256sums = 3b48e297fab78557228cfe845a64d3731bfd4c664a74658bb8eb152a8a78df65
+
+pkgname = lucent-bin
