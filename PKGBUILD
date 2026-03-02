@@ -3,7 +3,7 @@ pkgname=python-kintree
 # _name=${pkgname#python-}
 _name=Ki-nTree
 pkgver=1.2.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Fast part creation in KiCad and InvenTree"
 url="https://github.com/sparkmicro/Ki-nTree"
 depends=(
@@ -18,6 +18,7 @@ depends=(
     'python-yaml'
     'python-validators'
     'python-wrapt-timeout-decorator'
+    # AUR
     'python-cloudscraper'
 )
 makedepends=(
