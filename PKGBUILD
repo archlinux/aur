@@ -1,44 +1,54 @@
-# Maintainer: tippfehlr@tippfehlr.dev
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
 # Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
 
 # should be renamed to arduino-core-avr to match upstream and Debian.
 pkgname=arduino-avr-core
 pkgver=1.8.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Arduino AVR core with upstream avr-gcc and avrdude"
-arch=('any')
+arch=('any') # binaries are for avr
 url="https://github.com/arduino/ArduinoCore-avr"
 # arduinocore-avr has no top-level license and contains a number of
 # different licenses. Most is licensed LGPL-2.1+, but other licenses are used,
 # including non-standard licenses.
 # See https://github.com/arduino/ArduinoCore-avr/issues/376 for more information.
-#
-# All licenses provided by the repository are packaged in 
-# /usr/share/arduino/hardware/archlinux-arduino/avr
-license=('LGPL-2.1-or-later AND BSD-3-Clause AND MIT AND GPL-2.0-or-later AND ISC AND LicenseRef-custom')
+license=('LGPL-2.1-or-later AND BSD-3-Clause AND MIT AND GPL-2.0-or-later AND GPL-3.0-or-later AND ISC AND LicenseRef-wifishield AND LicenseRef-LUFA')
 depends=('avrdude' 'avr-gcc' 'avr-libc')
-options=(!strip !emptydirs !debug)
-source=("https://github.com/arduino/ArduinoCore-avr/archive/$pkgver/$pkgname-$pkgver.tar.gz"
-        "platform.patch")
-sha512sums=('d7a84d702c41909762a1815eb42b68fe8324a5f5e7124c5c49113babeb1ee67c958c355b31a7ff79102d4dbe91fc14d61c05b8ca50e074056554187a9043536d'
-            '916d76a1313fa9372e141eb132eb3d5d4db32e27f695d3b6b0e2894111bfdacd54feec2ba6ea89b10918b9ef904f9b3d4c105c37d5a6851ac92c5c1758679f00')
-validpgpkeys=('326567C1C6B288DF32CB061A95FA6F43E21188C4') # Arduino Packages <support@arduino.cc>
+makedepends=('git')
+options=(!strip)
+source=("git+$url#tag=$pkgver")
+sha512sums=('f62044fc440445eb7f357bde19512f811441b9b4522a1bde8463342ec1484de2f14ca3692430505d8ce05402532dfa16f403de0a9b249b2d21f6d8285ec4bbaf')
 
 prepare() {
-	# Prepare arduino avr core to be used with internal avr-gcc
-	cd ArduinoCore-avr-$pkgver
+	cd ArduinoCore-avr
 
-	# Update version in patchfile, then apply it
-	sed -i "s/^ version=.*/ version=${pkgver}/" "${srcdir}/platform.patch"
-	patch -Np1 -i "${srcdir}/platform.patch"
-
-	# Remove elf files
-	find . -name "*.elf" -type f -exec rm -f {} \;
-	find . -name "*.a" -type f -exec rm -f {} \;
+	sed -i 's|{runtime.tools.avr-gcc.path}|/usr|' platform.txt
+	sed -i 's|{runtime.tools.avrdude.path}|/|' platform.txt
 }
 
 package() {
-	# Copy archlinux arduino avr core
-	install -dm755 "${pkgdir}/usr/share/arduino/hardware/archlinux-arduino/avr"
-	cp -ar ArduinoCore-avr-$pkgver/* "${pkgdir}/usr/share/arduino/hardware/archlinux-arduino/avr"
+	_avr_path="/usr/share/arduino/hardware/archlinux-arduino/avr"
+	_avr_src="$srcdir/ArduinoCore-avr"
+	install -d "${pkgdir}${_avr_path}" "$pkgdir/usr/share/licenses/$pkgname"
+	cp -ar ArduinoCore-avr/* "${pkgdir}${_avr_path}"
+
+	# Licenses
+	cd "$pkgdir/usr/share/licenses/$pkgname/"
+	# this is a modified GPL-3.0 file
+	ln -s "$_avr_path/drivers/gemma/license/libusb0/installer_license.txt" LICENSE-GPL-3.0-libusb0
+	# LicenseRef-wifishield
+	ln -s "$_avr_path/firmwares/wifishield/wifiHD/src/license.txt" LICENSE-LicenseRef-wifishield
+	# LicenseRef-LUFA, used in bootloaders/caterina* and firmwares/atmegaxxu2
+	head -n 30 "$_avr_src/bootloaders/caterina/Caterina.c" >LICENSE-LicenseRef-LUFA
+	# the MIT license of Udp.h
+	head -n 33 "$_avr_src/cores/arduino/Udp.h" >LICENSE-MIT-Udp
+	# similar yet different ISC licenses
+	head -n 18 "$_avr_src/cores/arduino/CDC.cpp" >LICENSE-ISC-CDC
+	head -n 19 "$_avr_src/cores/arduino/USBCore.cpp" >LICENSE-ISC-USBCore.cpp
+	head -n 17 "$_avr_src/cores/arduino/USBCore.h" >LICENSE-ISC-USBCore.h
+	head -n 18 "$_avr_src/cores/arduino/USBDesc.h" >LICENSE-ISC-USBDesc
+	head -n 18 "$_avr_src/libraries/HID/src/HID.h" >LICENSE-ISC-HID
+	# BSD-3-Clause licenses
+	head -n 39 "$_avr_src/bootloaders/optiboot/boot.h" >LICENSE-BSD-3-Clause-optiboot
+	head -n 30 "$_avr_src/firmwares/wifishield/wifi_dnld/src/clocks.h" >LICENSE-BSD-3-Clause-wifishield
 }
