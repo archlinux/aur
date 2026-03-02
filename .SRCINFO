@@ -14,7 +14,6 @@ pkgbase = horcrux
 	license = MIT
 	makedepends = git
 	makedepends = go
-	conflicts = horcrux
 	source = git+https://github.com/jesseduffield/horcrux#tag=v0.3
 	sha512sums = 197db754c15acdbbde48e760a633ad4997a5f49613f6236c167f51cb27b596dab6d7fbf1fbe3ecea1434c763feee49f5720da6f1df91f5fd5fcae3eae849e6c5
 
