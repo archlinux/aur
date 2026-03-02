@@ -15,7 +15,6 @@ depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt
 optdepends=('photoqt-extensions-bin: Official extensions for PhotoQt')
 source=(https://photoqt.org/downloads/bin/$_pkgname-$pkgver.tar.gz)
 sha256sums=('03f50b753a0cee926a605fd138ced7c29d3ac4c4a9fd36d5c245e8045c0bce5f')
-install="photoqt.install"
 
   # PhotoQt configured with:
   #
