@@ -20,8 +20,8 @@ pkgbase = meshiji
 	depends = libxrender
 	depends = libxtst
 	depends = xz
-	provides = meshiji-git
-	conflicts = meshiji-git
+	provides = meshiji
+	conflicts = meshiji
 	source = git+https://github.com/Veridian-Zenith/meshiji.git#tag=v1.1.0
 	sha256sums = SKIP
 
