@@ -1,6 +1,6 @@
 pkgbase = theophany-bin
-	pkgdesc = A modern, high-performance game library manager and launcher built with Rust and QML
-	pkgver = 0.1.1
+	pkgdesc = A modern, high-performance game library manager and launcher built with Rust and QML. ROMs, Steam, Epic Games (Legendary), and eXoDOS imports
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/oldlamps/Theophany
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = theophany-bin
 	optdepends = yt-dlp: for downloading game trailers and media
 	provides = theophany
 	conflicts = theophany
-	source = theophany::https://github.com/oldlamps/Theophany/releases/download/v0.1.1/theophany_0.1.1_linux_x64
+	source = theophany-0.2.0::https://github.com/oldlamps/Theophany/releases/download/v0.2.0/theophany_linux_x64
 	source = theophany.png::https://github.com/oldlamps/Theophany/raw/refs/heads/main/assets/tray_icon.png
 	source = theophany.desktop
-	sha256sums = 7046c46b901aa88442e485d5a4d79208250d7657b875a6aa2ec65a09c7afe033
+	sha256sums = b71434540a290198db96a15756841b3f0c2729a16bd0aef91e1ddc93f2c6c3be
 	sha256sums = fd14eb407f45dace71b084e3f7ab523822075058326b1840f366e4da2ca2915e
-	sha256sums = a494376c3c89672deda9aaa37dc484afddfa4433631a10fb0dfa8dcbd22d06a2
+	sha256sums = 4163f4a5c268f0cb0281908a3fa537671e349999b5e263bd7d7430f11349b76d
 
 pkgname = theophany-bin
