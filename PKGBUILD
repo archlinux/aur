@@ -1,6 +1,6 @@
 # Maintainer: HcgRandon <me@randon.moe>
 pkgname=heaper-bin
-pkgver=16.16.41
+pkgver=16.16.43
 pkgrel=1
 pkgdesc="Your files deserve their story"
 arch=('x86_64')
@@ -8,11 +8,11 @@ url="https://heaper.de/"
 license=('unknown')
 depends=('fuse2')
 options=(!strip)
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/JanLunge/heaper-releases/releases/download/electron-v${pkgver}/Heaper-${pkgver}-x86_64.AppImage"
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/JanLunge/heaper-releases/releases/download/v${pkgver}/Heaper-${pkgver}-x86_64.AppImage"
         "heaper.sh"
         "heaper.desktop")
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha256sums=('d4296561c8f84138d546ba71c861ae7f6400fa2f1e6c0d106504554b652d1b5f'
+sha256sums=('9abf234ffe71d7183400eb7951df86065d9085d8052a62c0fa3d62a611401787'
             '882d4689f2e4f28857ad6d1ed39f69a87ae5e2e5b69f973094306291703fe9a5'
             '22a32e412696d5be061d27ba43f07bc925e9f2fa835e52e377b710826a7371fd')
 
