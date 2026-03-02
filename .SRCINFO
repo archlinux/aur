@@ -1,7 +1,7 @@
 pkgbase = nob.h
 	pkgdesc = Header only library for writing build recipes in C
 	pkgver = 3.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tsoding/nob.h
 	arch = any
 	license = MIT
