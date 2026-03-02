@@ -1,7 +1,7 @@
 # Maintainer: cysp74 at gmail dot com
 _name=ocp-curses
 pkgname="${_name}-git"
-pkgver=0.2.102.r2.g0065417
+pkgver=3.2.0.r0.g8ef6621
 pkgrel=1
 pkgdesc="Open Cubic Player - ncurses only (GIT Version)"
 arch=('i686' 'x86_64')
@@ -40,6 +40,7 @@ build() {
 	--without-x11 \
 	--without-sdl \
 	--without-sdl2 \
+	--without-sdl3 \
 	--with-ncurses \
 	--without-debug"
 
