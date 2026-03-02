@@ -9,7 +9,7 @@
 pkgname='offpunk'
 _pkgname='offpunk'
 pkgdesc='Command-line and offline-centric browser for the web and various smolnet protocols'
-pkgver=3.0
+pkgver=3.1
 pkgrel=1
 arch=('any')
 url='https://git.sr.ht/~lioploum/offpunk'
@@ -39,7 +39,6 @@ optdepends=(
   'python-beautifulsoup4: for web browsing - HTML parsing'
   'python-readability-lxml: for web browsing - HTML parsing'
   'chafa: chafa and ansiwrap are required to render images in terminal'
-  'timg: view images and videos in the terminal (alternative)'
   
   # « Nice to have »
   'python-setproctitle: allows offpunk to change its process title'
