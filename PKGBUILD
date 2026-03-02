@@ -2,14 +2,14 @@
 # Contributor: mwberry <matt@comp.uter.science>
 
 pkgname=re2c-git
-pkgver=4.0.2.r19.ggb8406137d
+pkgver=4.4.r7.gg55802e3b4
 pkgrel=1
 pkgdesc='Lexer generator for C, C++, D, Go, Haskell, Java, JS, OCaml, Python, Rust, V and Zig'
 arch=(x86_64)
 url='https://re2c.org'
-license=('custom:PublicDomain')
-depends=('gcc-libs')
-makedepends=('git' 'python')
+license=('LicenseRef-re2c')
+depends=('libgcc' 'libstdc++' 'glibc')
+makedepends=('git' 'python' 'cmake')
 source=(git+https://github.com/skvadrik/re2c)
 sha1sums=('SKIP')
 provides=('re2c')
@@ -21,19 +21,18 @@ pkgver() {
 }
 
 build() {
-  cd "re2c"
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+  cmake -S re2c -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -Wno-dev
+  cmake --build build
 }
 
 check() {
-  make -C "re2c" check
+  ctest --test-dir build --output-on-failure
 }
 
 package() {
-  cd "re2c"
-  make DESTDIR="$pkgdir" install
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 "re2c/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
