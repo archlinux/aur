@@ -7,8 +7,8 @@
 
 pkgname="keypunch-git"
 _appname="keypunch"
-pkgver=6.2.r8.g77f9956
-pkgrel=1
+pkgver=6.2.r20.g8d64ff6
+pkgrel=2
 epoch=1
 pkgdesc='Practice your typing skills'
 url='https://github.com/bragefuglseth/keypunch'
@@ -16,7 +16,7 @@ arch=('aarch64' 'x86_64')
 license=('GPL-3.0-or-later')
 provides=('keypunch')
 conflicts=('keypunch')
-depends=('gtk4' 'libadwaita')
+depends=('hicolor-icon-theme' 'graphene' 'gtk4' 'libadwaita')
 makedepends=('blueprint-compiler' 'cargo' 'git' 'meson' 'ninja')
 source=("git+${url}.git")
 sha512sums=('SKIP')
