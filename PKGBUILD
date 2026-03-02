@@ -2,22 +2,16 @@
 pkgname=lamb-git
 _pkgname=${pkgname%-git}
 pkgver=r68.b5f6c02
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiny Pure Functional Programming Language in C"
 arch=('x86_64')
 url="https://github.com/tsoding/lamb"
 license=('MIT')
-groups=()
-depends=()
+depends=('glibc')
 makedepends=('git' 'gcc')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-replaces=()
-backup=()
-options=('!strip')
-install=
 source=('git+https://github.com/tsoding/lamb.git')
-noextract=()
 sha256sums=('SKIP')
 
 pkgver() {
@@ -29,12 +23,12 @@ pkgver() {
 build() {
 	cd "$_pkgname"
 
-	gcc -o lamb lamb.c
+	gcc $CFLAGS $LDFLAGS -o lamb lamb.c
 }
 
 package() {
 	cd "$_pkgname"
 
 	install -Dm755 "$_pkgname" "$pkgdir/usr/bin/lamb"
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

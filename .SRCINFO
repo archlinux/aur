@@ -1,15 +1,15 @@
 pkgbase = lamb-git
 	pkgdesc = Tiny Pure Functional Programming Language in C
 	pkgver = r68.b5f6c02
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tsoding/lamb
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = gcc
+	depends = glibc
 	provides = lamb
 	conflicts = lamb
-	options = !strip
 	source = git+https://github.com/tsoding/lamb.git
 	sha256sums = SKIP
 
