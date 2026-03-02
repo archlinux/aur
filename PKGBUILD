@@ -3,7 +3,7 @@
 pkgname="librepods"
 pkgver=0.2.0alpha
 _pkgver="${pkgver//alpha/-alpha}"
-pkgrel=1
+pkgrel=2
 pkgdesc="AirPods liberated from Apple's ecosystem"
 arch=(
   'x86_64'
@@ -13,8 +13,9 @@ license=(
   'GPL-3.0-only'
 )
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
+  'libstdc++'
   'openssl'
   'qt6-base'
   'qt6-connectivity'
@@ -25,7 +26,7 @@ makedepends=(
 )
 _pkgsrc="${url##*/}-${_pkgver}"
 source=(
-  "${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz"
+  "${url}/archive/refs/tags/v${_pkgver}/${_pkgsrc}.tar.gz"
 )
 b2sums=('5276e060b0e72ad5fb7a10a746d4e219cc7be36c10318692d6b08dae25faa6074defed31275ddbf8f7d2d8b7b89bcd46040a2f85ff440d646771607e874a779a')
 
