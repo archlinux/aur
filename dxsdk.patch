@@ -1,11 +1,11 @@
---- OIS-1.5/CMakeLists.txt	2021-05-19 17:15:01.306668095 +0200
-+++ patched/CMakeLists.txt	2021-05-19 17:15:37.593334759 +0200
-@@ -103,7 +103,7 @@
-             MESSAGE(STATUS "Found DirectX SDK at ${OIS_WIN32_DXSDK_DIR}")
-         endif()
+--- a/CMakeLists.txt	2026-02-27 11:57:49.000000000 +0100
++++ b/CMakeLists.txt	2026-03-02 10:34:47.877580157 +0100
+@@ -125,7 +125,7 @@
+                 MESSAGE(STATUS "Found DirectX SDK at ${OIS_WIN32_DXSDK_DIR}")
+             endif()
  
--        include_directories("${OIS_WIN32_DXSDK_DIR}/Include")
-+        include_directories("${OIS_WIN32_DXSDK_DIR}/include")
+-            include_directories("${OIS_WIN32_DXSDK_DIR}/Include")
++            include_directories("${OIS_WIN32_DXSDK_DIR}/include")
+         endif()
      endif()
  
-     if(BUILD_SHARED_LIBS)
