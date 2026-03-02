@@ -8,5 +8,3 @@ post_install() {
     echo " from the AUR."
     echo ""
 }
-
-post_upgrade() {}
