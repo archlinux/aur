@@ -2,7 +2,7 @@
 
 pkgname=toolshed
 pkgver=2.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Utilities for Tandy Color Computer and Dragon microcomputers cross-development."
 arch=('x86_64')
 url="https://github.com/nitros9project/toolshed"
@@ -14,7 +14,7 @@ source=(
   "0001-gcc15-build-fix.patch"
   "0002-full-relro.patch")
 sha256sums=('b36656b1af034936cf851b2b5bfb6e8bd468149e081e408b0b6e6837a1ff7a2e'
-            'cb35950530b87ec1ccde034e393cd4e853660b6aeee5c8bd0e66557c2ab34fbb'
+            '4fb6d05295a525bb564cc8627d429bdf14dded1da48eb25f7e1e999686350970'
             '310c8c9dbb524205b0c82621fb6fbb978000aa355655b685ea845c20aa262234')
 
 prepare() {
