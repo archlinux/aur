@@ -1,4 +1,4 @@
-From b19e2517822c68f32a1db84c565c1bf00ee72d57 Mon Sep 17 00:00:00 2001
+From d20a84c400e44b408c561dbdac5c2a9c219b59ad Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 4 Apr 2018 16:36:56 +0100
 Subject: [PATCH 1/2] Cairo backend added to Qt5 wrapper
@@ -52,7 +52,7 @@ index 5306ebfe..abb527b3 100644
      target_include_directories(poppler-qt5 SYSTEM PRIVATE ${NSS3_INCLUDE_DIRS})
  endif()
 diff --git a/qt5/src/poppler-document.cc b/qt5/src/poppler-document.cc
-index 511badfe..e143bb3c 100644
+index 083dbe76..9126d47b 100644
 --- a/qt5/src/poppler-document.cc
 +++ b/qt5/src/poppler-document.cc
 @@ -712,6 +712,9 @@ QSet<Document::RenderBackend> Document::availableRenderBackends()
@@ -66,7 +66,7 @@ index 511badfe..e143bb3c 100644
  }
  
 diff --git a/qt5/src/poppler-page.cc b/qt5/src/poppler-page.cc
-index 900c2a89..5ee4dd19 100644
+index d89c5ce6..aed3d0e4 100644
 --- a/qt5/src/poppler-page.cc
 +++ b/qt5/src/poppler-page.cc
 @@ -59,6 +59,7 @@
@@ -87,7 +87,7 @@ index 900c2a89..5ee4dd19 100644
  
  #include "poppler-private.h"
  #include "poppler-page-transition-private.h"
-@@ -631,6 +635,69 @@ QImage Page::renderToImage(double xres, double yres, int xPos, int yPos, int w,
+@@ -632,6 +636,69 @@ QImage Page::renderToImage(double xres, double yres, int xPos, int yPos, int w,
          img = tmpimg;
          break;
      }
@@ -157,7 +157,7 @@ index 900c2a89..5ee4dd19 100644
      }
  
      if (shouldAbortRenderCallback && shouldAbortRenderCallback(payload)) {
-@@ -656,6 +723,9 @@ bool Page::renderToPainter(QPainter *painter, double xres, double yres, int x, i
+@@ -657,6 +724,9 @@ bool Page::renderToPainter(QPainter *painter, double xres, double yres, int x, i
  
          return renderToQPainter(&qpainter_output, painter, m_page, xres, yres, x, y, w, h, rotate, flags);
      }
@@ -168,7 +168,7 @@ index 900c2a89..5ee4dd19 100644
      return false;
  }
 diff --git a/qt5/src/poppler-qt5.h b/qt5/src/poppler-qt5.h
-index f127c477..e503aaf1 100644
+index 77913d7f..4fac50ac 100644
 --- a/qt5/src/poppler-qt5.h
 +++ b/qt5/src/poppler-qt5.h
 @@ -1214,7 +1214,8 @@ public:
@@ -182,7 +182,7 @@ index f127c477..e503aaf1 100644
  
      /**
 diff --git a/qt5/tests/CMakeLists.txt b/qt5/tests/CMakeLists.txt
-index e610413a..26c45088 100644
+index cb7dcaab..a599a931 100644
 --- a/qt5/tests/CMakeLists.txt
 +++ b/qt5/tests/CMakeLists.txt
 @@ -7,6 +7,11 @@ include_directories(
@@ -198,5 +198,5 @@ index e610413a..26c45088 100644
    string(REPLACE "-" "" test_name ${exe})
    set(${test_name}_SOURCES
 -- 
-2.52.0
+2.53.0
 
