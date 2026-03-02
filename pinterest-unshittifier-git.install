@@ -1,0 +1,10 @@
+post_install() {
+  echo ":: For enable service use:"
+  echo ":: systemctl --user enable --now pinterest-unshittifier.service"
+}
+
+post_upgrade() {
+  echo ":: Restart service after upgrade:"
+  echo ":: systemctl --user daemon-reload"
+  echo ":: systemctl --user restart pinterest-unshittifier.service"
+}
