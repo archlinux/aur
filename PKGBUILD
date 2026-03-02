@@ -13,13 +13,13 @@ conflicts=('aaa')
 depends=('ffmpeg')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/asciimoth/aaa/releases/download/2.0.1/aaa_2.0.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('70225503868d2b0d35887244f879c997710b5615d556586df4bb4cb777b2c8df')
+sha256sums_aarch64=('4e44bdad711958161fa558a23055c2866768b3860f9c755cfadc46840b507726')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/asciimoth/aaa/releases/download/2.0.1/aaa_2.0.1_linux_386.tar.gz")
-sha256sums_i686=('025414fa1e543b25d30f81b25389a10e631481b04e01dcae6a32b331515c9a40')
+sha256sums_i686=('820f22efc09e87c22b51839c8080e6e29ef773ebdfaf4fa4dc4f40ffd87d2187')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/asciimoth/aaa/releases/download/2.0.1/aaa_2.0.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('f42692b985b57859bcda757ba1a545cbc8ef99644e6a7898ba702dfd273c95f7')
+sha256sums_x86_64=('1f80869d1ed3bbfa1a366e010b0831ad31668d3d5a14d144f5ebeaa87bf3f807')
 
 package() {
   install -Dm755 "./aaa" "${pkgdir}/usr/bin/aaa"
