@@ -2,7 +2,7 @@
 _sourceName="hypr_steam_watcher"
 
 pkgname="hypr_steam_watcher-git"
-pkgver=1.0.0.r9.gd783449
+pkgver=1.0.0.r10.gdc19c97
 pkgrel=1
 pkgdesc="Automatically tags newly launched Steam games in Hyprland."
 arch=('x86_64')
