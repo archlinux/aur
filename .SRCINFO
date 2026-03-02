@@ -1,6 +1,6 @@
 pkgbase = passkeyd
 	pkgdesc = Opinionated WebAuthn authenticator backed by a TPM
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/bjn7/passkeyd
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = passkeyd
 	options = !debug
 	backup = etc/passkeyd.conf
 	backup = usr/share/passkeyd/theme.conf
-	source = passkeyd-1.3.0.tar.gz::https://github.com/bjn7/passkeyd/releases/download/v1.3.0/passkeyd-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = e818fb8211d12ab547cc31a91f20be9999ef85beeb039883cfea94958f921130
+	source = passkeyd-1.4.0.tar.gz::https://github.com/bjn7/passkeyd/releases/download/v1.4.0/passkeyd-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = c3b2b8108cbe19037fd79813bd0f3d72193595d2abfa2d6c69d8165d3e79b2ce
 
 pkgname = passkeyd
