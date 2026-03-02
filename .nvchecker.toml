@@ -1,0 +1,4 @@
+[sabiql]
+source = "git"
+git = "https://github.com/riii111/sabiql"
+prefix = "v"
