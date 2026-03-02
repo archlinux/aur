@@ -1,0 +1,17 @@
+pkgbase = podpisuj
+	pkgdesc = Podpisuj - signature software from Slovakia
+	pkgver = 5.7.120
+	pkgrel = 1
+	url = https://www.podpisuj.sk/
+	install = podpisuj.install
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = xdg-utils
+	makedepends = binutils
+	makedepends = libarchive
+	options = !emptydirs
+	source = https://www.podpisuj.sk/staticweb/install/podpisuj-5.7.120.deb
+	sha256sums = c8861affd1d259efe5bd580f76f3eab59c5d4326ba489f8ed40b0a4b76c9bc6d
+
+pkgname = podpisuj
