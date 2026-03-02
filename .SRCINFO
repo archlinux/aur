@@ -1,12 +1,12 @@
 pkgbase = kuva
 	pkgdesc = Scientific plotting library in Rust with various backends.
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Psy-Fer/kuva
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	source = kuva-0.1.2.tar.gz::https://github.com/Psy-Fer/kuva/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = 592cc5b43ca300504194809866a4cf0a0552b1bc6ae6d5b1e884cbe443023098
+	sha256sums = 4b29ecb8c098b8d3c98098aafc3ad45e3800362bd383a07a980b59333455ddc8
 
 pkgname = kuva
