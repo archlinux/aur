@@ -3,3 +3,5 @@ src
 .nvchecker_update.json
 build_pkg.sh
 install_deps.sh
+depfilter.awk
+depfilter_opt.awk
