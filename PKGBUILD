@@ -1,8 +1,8 @@
 # Maintainer: Rodrigo Sakaguchi <rodrigosaka@outlook.com>
 
 pkgname=gnome-pomodoro-extension
-pkgver=0.28.1
-pkgrel=4
+pkgver=0.29.0
+pkgrel=1
 pkgdesc='GNOME Shell extension that manages focus and break cycles with the Pomodoro technique'
 arch=('i686' 'x86_64')
 url='https://github.com/focustimerhq/FocusTimer'
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('meson' 'vala')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/focustimerhq/FocusTimer/archive/$pkgver.tar.gz")
-sha256sums=('ab8136fe4e585941d67dbb7a81e2442285a0cbeead47fb1c99a37ffd473a4e53')
+sha256sums=('82f31c1f704e0a5d993b990a4a1160bc9281dc80b359dd9727c89d7157ad3527')
 
 build() {
   cd "$srcdir/FocusTimer-$pkgver"
