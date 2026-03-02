@@ -8,4 +8,5 @@ Icon=ffdec
 Terminal=false
 StartupNotify=false
 Categories=Development;Network;Utility;WebDevelopment;Java
+MimeType=application/x-shockwave-flash
 Keywords=FFdec;JPEXS
