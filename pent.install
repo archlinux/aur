@@ -1,0 +1,21 @@
+post_install() {
+    echo ""
+    echo "pent needs cap_net_admin to transparently proxy network traffic."
+    echo "Skip this if you only need filesystem sandboxing (proxy mode won't work)."
+    read -r -p "Enable network proxying? [Y/n] " REPLY
+    case "$REPLY" in
+        [nN]*)
+            echo "Skipped. To enable later: sudo setcap cap_net_admin=ep /usr/bin/pent"
+            ;;
+        *)
+            setcap cap_net_admin=ep usr/bin/pent || {
+                echo "WARNING: setcap failed; proxy mode will not be available."
+                echo "         Run: sudo setcap cap_net_admin=ep /usr/bin/pent"
+            }
+            ;;
+    esac
+}
+
+post_upgrade() {
+    post_install "$1"
+}

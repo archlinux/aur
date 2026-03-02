@@ -1,0 +1,15 @@
+pkgbase = pent
+	pkgdesc = Wrap any process in a filesystem and network sandbox
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/valentinradu/Pent
+	install = pent.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = libcap
+	source = pent-0.0.1.tar.gz::https://github.com/valentinradu/Pent/archive/refs/tags/v0.0.1.tar.gz
+	sha256sums = 2cadf4501f7113f1289465dbc303e26c5a4d74bd70a0d3495c0a8bd8408203e7
+
+pkgname = pent
