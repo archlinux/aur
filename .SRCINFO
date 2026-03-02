@@ -1,0 +1,16 @@
+pkgbase = python-kdl-py
+	pkgdesc = A parser for the KDL language
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/daeken/kdl-py
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python>=3.7
+	depends = python-typing_extensions
+	source = https://files.pythonhosted.org/packages/source/k/kdl-py/kdl-py-1.2.0.tar.gz
+	sha256sums = 63f3f46c6277dedadce44dcfc94672bf6e6bf3330b90122e0134c22857e29973
+
+pkgname = python-kdl-py
