@@ -1,6 +1,5 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-# https://github.com/Mayowa-Ojo/chmod-cli/releases/download/v0.2.0/chmod-cli_0.2.0_Linux_x86_64.tar.gz
 _pkgauthor=Mayowa-Ojo
 _pkgname=chmod-cli
 pkgname=${_pkgname}-bin
