@@ -1,5 +1,5 @@
 pkgbase = arch-update
-	pkgdesc = An update notifier & applier that assists you with important pre / post update tasks
+	pkgdesc = An interactive update notifier & applier that assists you with important pre / post update tasks
 	pkgver = 3.18.0
 	pkgrel = 1
 	url = https://github.com/Antiz96/arch-update

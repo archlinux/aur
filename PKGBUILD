@@ -3,7 +3,7 @@
 pkgname=arch-update
 pkgver=3.18.0
 pkgrel=1
-pkgdesc="An update notifier & applier that assists you with important pre / post update tasks"
+pkgdesc="An interactive update notifier & applier that assists you with important pre / post update tasks"
 url="https://github.com/Antiz96/arch-update"
 arch=('any')
 license=('GPL-3.0-or-later')
