@@ -3,13 +3,14 @@
 name=happ-desktop
 pkgname=happ-desktop
 url="https://github.com/Happ-proxy/happ-desktop"
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Happ is a mobile application designed for convenient proxy server management, powered by the robust Xray core."
 arch=('x86_64')
 license=('custom')
-source=("https://github.com/Happ-proxy/happ-desktop/releases/download/${pkgver}/Happ.linux.x64.deb")
-sha256sums=('05f4328c711aee061c6e702f5a1ef1c6ef18181774129a59e3b41212682b0d74')
+source=("https://github.com/Happ-proxy/happ-desktop/releases/download/${pkgver}/Happ.linux.x64.pkg.tar.zst")
+noextract=("Happ.linux.x64.pkg.tar.zst")
+sha256sums=('3838da92c952de0ac92f985cc26d67311efe1f50ca7f0cba5e2959f0fbb4892f')
 
 
 makedepends=(
@@ -30,8 +31,10 @@ build() {
 }
 
 package() {
+  cd "$srcdir"
+  pacman -U --noconfirm ./Happ.linux.x64.pkg.tar.zst
   # Копируем необходимые файлы в каталог пакета
-  echo "Extracting the data.tar.zst..."
-  bsdtar -xf data.tar.zst -C "$pkgdir/"
+ # echo "Extracting the data.tar.zst..."
+#bsdtar -xf data.tar.zst -C "$pkgdir/"
 }
 
