@@ -1,7 +1,7 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=cloudflarespeedtest-git
-pkgver=2.2.5.25.g1d9d742
+pkgver=2.3.4.9.g2de42f8
 pkgrel=1
 pkgdesc="XIU2/CloudflareSpeedTest 🌩 “Choose Your Own Preferred IP” Test Cloudflare CDN latency and speed, get the fastest IP! Written in go."
 arch=($CARCH)
@@ -37,6 +37,8 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GO111MODULE=on
+    export GOPROXY=https://goproxy.cn,direct
     go build -o build
 }
 
