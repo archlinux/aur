@@ -39,7 +39,7 @@ makedepends=(
     'qt6-shadertools'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/isac322/krema/archive/v$pkgver.tar.gz")
-sha256sums=('8cdbf740807ef04bf584619ede0733dd8b86131eacc15251d04d6fcdb79b7a92')
+sha256sums=('8158ffcc2c27716800d84a3647b9d832ef821eb2e3388ad1526cc49c456283e8')
 
 build() {
     cmake -S "$pkgname-$pkgver" -B build \
