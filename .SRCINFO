@@ -26,7 +26,7 @@ pkgbase = speak-to-ai
 	options = !lto
 	source = speak-to-ai-1.7.0.tar.gz::https://github.com/AshBuk/speak-to-ai/archive/refs/tags/v1.7.0.tar.gz
 	source = whisper-cpp-1.8.3.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v1.8.3.tar.gz
-	sha256sums = 52b0debc682487248b4cef2d03721c2c47b683acf49d859486e8063fdd504eb3
+	sha256sums = 16af60c94b3de66afdad5b39b3be3ceacacefa12f4566b182b11efeededb9402
 	sha256sums = 870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a
 
 pkgname = speak-to-ai
