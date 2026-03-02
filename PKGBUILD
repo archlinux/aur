@@ -1,14 +1,16 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal Smart Update Wrapper for Arch Linux and its derivatives"
 arch=('any')
 url="https://github.com/motorrin/Arch_Smart_Update"
 license=('MIT')
-depends=('bash' 'python' 'pacman' 'tar' 'gawk' 'coreutils' 'psmisc')
+depends=('bash' 'python' 'pacman' 'tar' 'gawk' 'coreutils' 'psmisc' 'curl')
 optdepends=('reflector: for Arch Linux mirror updates'
+            'cachyos-rate-mirrors: for CachyOS mirror updates'
             'eos-rankmirrors: for EndeavourOS mirror updates'
+            'eos-update: for EndeavourOS core updates'
             'yay: AUR helper support'
             'paru: AUR helper support'
             'topgrade: for comprehensive system updates')
