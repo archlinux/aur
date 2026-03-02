@@ -1,7 +1,7 @@
 # Maintainer: Michael Cortese <mcortese1406@gmail.com>
 pkgname=kuva
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific plotting library in Rust with various backends."
 arch=('x86_64')
 url="https://github.com/Psy-Fer/kuva"
@@ -28,4 +28,4 @@ package() {
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-sha256sums=('592cc5b43ca300504194809866a4cf0a0552b1bc6ae6d5b1e884cbe443023098')
+sha256sums=('4b29ecb8c098b8d3c98098aafc3ad45e3800362bd383a07a980b59333455ddc8')
