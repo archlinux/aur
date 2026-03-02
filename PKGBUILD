@@ -3,12 +3,12 @@
 
 pkgname=s3tui
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple S3 CLI client for file transfers and more"
 arch=('x86_64')
 url="https://github.com/softberries/s3tui"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('b865c93ba2910785c56748a815a1f4cfcf1f0bba9d2dac4b3b855589f1421020')
@@ -40,7 +40,7 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 
-	install -Dm755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+	install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
