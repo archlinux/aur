@@ -1,6 +1,6 @@
 # Maintainer: rzhli tayuebuliuhen@gmail.com
 pkgname='ftnn-desktop'
-pkgver='16.5.15008'
+pkgver='16.5.15018'
 pkgrel=1
 pkgdesc="Futu，富途，股票软件"
 arch=('x86_64')
@@ -52,7 +52,7 @@ Exec=/opt/FTNN/Launch %U
 Icon=ftnn
 Terminal=false
 Type=Application
-Categories=Finance;
+Categories=Finance;Network;
 StartupWMClass=FTNN
 MimeType=x-scheme-handler/futu;
 EOF
