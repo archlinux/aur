@@ -5,7 +5,7 @@ _root_dir=/opt/barmer-ecare
 
 
 pkgname="barmer-ecare-bin"
-pkgver=25.10.2
+pkgver=25.12.3
 pkgrel=1
 pkgdesc='Desktopanwendung für die Elektronische Patientenakte der BARMER extrahiert aus dem snap packet der BARMER'
 arch=('x86_64')
