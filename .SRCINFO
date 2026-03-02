@@ -1,14 +1,15 @@
 pkgbase = se
 	pkgdesc = A screen oriented version of the classic UNIX text editor ed
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://se-editor.org/
 	arch = i686
 	arch = x86_64
 	license = custom:public domain
 	depends = ncurses
 	source = http://se-editor.org/dist/se-3.0.1.tar.gz
+	source = strict-prototypes.patch
 	md5sums = 1591fbb514729f846a4f12bdc45ee600
+	md5sums = 9d2147cdfae71f7a114fb0970ec2ac21
 
 pkgname = se
-

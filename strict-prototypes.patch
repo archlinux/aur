@@ -1,0 +1,52 @@
+diff --git a/src/main.c b/src/main.c
+index 41c5eac..b7c7b8d 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -127,7 +127,6 @@ extern char *getenv ();
+ 
+ int main (int argc, char *argv[])
+ {
+-	char *basename ();
+ 	void (*old_int)(int);
+ 	void (*old_quit)(int);
+ 	void (*old_stop)(int);
+diff --git a/src/edit.c b/src/edit.c
+index c045277..86a4661 100644
+--- a/src/edit.c
++++ b/src/edit.c
+@@ -1171,7 +1171,6 @@ int ptscan (int way, int *num)
+ int settab (char str[])
+ {
+ 	int i, j, n, maxstop, last, inc, ret;
+-	int ctoi ();
+ 
+ 	for (i = 0; i < MAXLINE; i++)   /* clear all tab stops */
+ 		Tabstops[i] = SE_NO;
+diff --git a/src/main.c b/src/main.c
+index 5105a0a..021373e 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -120,7 +120,7 @@ int Crypting = SE_NO;	/* doing file encryption? */
+ char Key[KEYSIZE] = "";	/* saved encryption key */
+ #endif /* HAVE_CRYPT_PROG */
+ 
+-extern char *getenv ();
++extern char *getenv (const char *name);
+ 
+ /* main --- main program for screen editor */
+ 
+diff --git a/src/scratch.c b/src/scratch.c
+index ac89cde..cb34957 100644
+--- a/src/scratch.c
++++ b/src/scratch.c
+@@ -196,10 +196,8 @@ int gtxt (LINEDESC *ptr)
+ int inject (char lin[])
+ {
+ 	int i;
+-	int maklin ();
+ 	LINEDESC *k1, *k2;
+ 	LINEDESC *k3;
+-	LINEDESC *getind ();
+ 
+ 	for (i = 0; lin [i] != SE_EOS; )
+ 	{
