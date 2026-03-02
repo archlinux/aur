@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Open eCard-App (opencard) is an open source alternative of the AusweisApp'
 arch=('any')
 url='https://www.openecard.org'
-license=("GPL3")
+license=("GPL-3.0-or-later")
 depends=('java-runtime>=17' 'pcsclite')
 makedepends=('git' 'gradle')
 provides=('open-ecard')
