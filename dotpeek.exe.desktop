@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=dotPeek
+Comment=.NET Decompiler and Assembly Browser
+Exec=dotpeek
+Type=Application
+Terminal=false
+Categories=Application;Development;
+Icon=dotpeek
+StartupWMClass=dotPeek.exe
+# It doesn't process argv, so you'll have to drag&drop or use the horiffic Wine file dialog
+# MimeType=application/vnd.microsoft.portable-executable
