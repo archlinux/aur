@@ -1,12 +1,12 @@
 # Maintainer: Dheeraj Vittal Shenoy <dheerajshenoy22@gmail.com>
 pkgname=lektra-git
-pkgver=0.6.3
+pkgver=v0.6.4
 pkgrel=1
 pkgdesc="High-performance PDF reader that prioritizes screen space and control"
 arch=('x86_64')
 url="https://codeberg.org/lektra/lektra"
 license=('AGPL-3.0')
-depends=('qt6-base' 'curl' 'libsynctex')
+depends=('qt6-base' 'curl' 'libsynctex' 'djvulibre')
 makedepends=('git' 'cmake' 'ninja' 'pkgconf')
 provides=("lektra")
 conflicts=("lektra")
