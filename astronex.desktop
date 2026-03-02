@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Astronex
+Exec=/usr/bin/astronex %U
+Terminal=false
+Type=Application
+Icon=astronex
+Categories=Education;
+Comment=Software of astrology Astronex

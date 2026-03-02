@@ -1,0 +1,19 @@
+pkgbase = astronex-bin
+	pkgdesc = Appimage version in python2 of Astronex. A program for calculating and drawing astrological charts according to the API Method
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/Uthopik/astronex-appimage
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	options = !strip
+	source = astronex-appimage-1.2.3-x86_64.AppImage::https://github.com/Uthopik/astronex-appimage/releases/download/v1.2/astronex-appimage-1.2.3-x86_64.AppImage
+	source = astronex.desktop
+	source = astronex.svg
+	sha256sums = 9a04d6ca1bc9b6be9f8e8c72d1443e044af480dea1098dd4783a3dff9d701e88
+	sha256sums = da62d673e47b995ea4fa7d9ee1600fd5ea953b440388ad278a2b4d07362273a1
+	sha256sums = 5989875f29c8fabdccfc1be4c488a314e3154af9f539ab8e579b17dc52ec7145
+
+pkgname = astronex-bin
