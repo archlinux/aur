@@ -1,15 +1,15 @@
 # Maintainer: Andy Locks <jandylokc@gmail.com>
 pkgname=irnix
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='A system for organizing objects, which turns the file system into objects with methods and contracts.'
 arch=('x86_64')
 url="https://github.com/AndyLocks/irnix"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('0fd9c3ea75e34bba30a67a23354e316a5c7658b124e063f985a841c6bca0bcb8')
+sha256sums=('ec7309542107a11bc5ed051cc44e1c7455c1358320138f28a5b0eb2f176793af')
 
 build() {
   cd "$srcdir/$pkgname-$pkgname-v$pkgver"

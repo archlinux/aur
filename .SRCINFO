@@ -1,14 +1,14 @@
 pkgbase = irnix
 	pkgdesc = A system for organizing objects, which turns the file system into objects with methods and contracts.
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/AndyLocks/irnix
 	arch = x86_64
-	license = GPL-3.0-only
+	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = glibc
 	depends = gcc-libs
-	source = https://github.com/AndyLocks/irnix/archive/refs/tags/irnix-v0.0.4.tar.gz
-	sha256sums = 0fd9c3ea75e34bba30a67a23354e316a5c7658b124e063f985a841c6bca0bcb8
+	source = https://github.com/AndyLocks/irnix/archive/refs/tags/irnix-v0.0.5.tar.gz
+	sha256sums = ec7309542107a11bc5ed051cc44e1c7455c1358320138f28a5b0eb2f176793af
 
 pkgname = irnix
