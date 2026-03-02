@@ -1,8 +1,8 @@
 # Maintainer: Dae Euhwa <daedaevibin@naver.com>
 pkgname=meshiji
 pkgver=1.1.0
-pkgrel=1
-pkgdesc="A modern, cross-platform file explorer built with Flutter"
+pkgrel=2
+pkgdesc="A modern, flutter-based file explorer"
 arch=('x86_64')
 url="https://github.com/Veridian-Zenith/meshiji"
 license=('OSL-3.0')
@@ -56,7 +56,7 @@ package() {
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/meshiji.desktop" <<EOF
 [Desktop Entry]
 Name=Meshiji
-Comment=A modern, cross-platform file explorer
+Comment=A modern, flutter-based file explorer
 Exec=meshiji
 Icon=meshiji
 Terminal=false

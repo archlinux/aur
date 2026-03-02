@@ -1,7 +1,7 @@
 pkgbase = meshiji
-	pkgdesc = A modern, cross-platform file explorer built with Flutter
+	pkgdesc = A modern, flutter-based file explorer
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Veridian-Zenith/meshiji
 	arch = x86_64
 	license = OSL-3.0
