@@ -13,7 +13,6 @@ depends=('exiv2' 'imagemagick')
 makedepends=('cmake' 'qt6-tools')
 source=(https://photoqt.org/downloads/extensions/$pkgname-$pkgver.tar.gz)
 sha256sums=('9c594bda696e78a51e148a1c5920446bf99dcd1ed1f8de16fff0be9238660d46')
-install="photoqt-extensions.install"
 
 # NOTE
 # To use GraphicsMagick instead of ImageMagick replace it in the depends array above and change
