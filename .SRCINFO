@@ -1,9 +1,8 @@
 pkgbase = darkmx
 	pkgdesc = Decentralized communication app that utilizes Tor hidden services to allow you to easily have an anonymous, reliable, and censorship-resistant presence on the internet.
-	pkgver = 1.37
+	pkgver = 1.42
 	pkgrel = 1
-	url = http://darkmx.app/
-	install = darkmx.install
+	url = https://darkmx.app/
 	arch = x86_64
 	license = custom:darkmx
 	depends = gtk2
@@ -12,7 +11,7 @@ pkgbase = darkmx
 	optdepends = gconf: for shell integration
 	source = LICENSE
 	sha256sums = c4adbd46bfdeaf329fa03c578960b157f211a3626c532ae168be9d60514ef0d0
-	source_x86_64 = https://download.darkmx.app/darkmx-1.37-linux64.tar.gz
-	sha256sums_x86_64 = dc84a0becf891c75e81e224f03f9014ebc515fecfbf3559b14a5c1567d00b7bd
+	source_x86_64 = https://download.darkmx.app/darkmx-1.42-linux64.tar.gz
+	sha256sums_x86_64 = 7608510f48df3289f6d16449ccf2e62b724d6f8058826bcf12c4c62c7efb00ce
 
 pkgname = darkmx
