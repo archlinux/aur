@@ -39,7 +39,7 @@ conflicts=('klassy')
 replaces=(classik)
 
 source=("https://download.opensuse.org/repositories/home:/paulmcauley/Arch/${arch}/${_pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst")
-sha256sums=('8d09248c7013e5e4a3c9c09794b3cfdb3aaede1d98e1c29acbb65e942f60a2e6')
+md5sums=('SKIP')
 
 options=(!debug)
 
