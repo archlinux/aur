@@ -12,8 +12,7 @@ license=('GPL2')
 conflicts=('photoqt' 'photoqt-debug')
 provides=('photoqt' 'photoqt-bin-debug')
 depends=('exiv2' 'imagemagick' 'qt6-imageformats' 'qt6-multimedia' 'qt6-svg' 'qt6-declarative' 'qt6-location' 'qt6-positioning' 'libraw' 'hicolor-icon-theme' 'libarchive' 'kimageformats' 'mpv' 'resvg' 'python-pychromecast' 'qt6-webengine' 'zxing-cpp' 'lcms2' 'devil' 'openmp' 'yaml-cpp' 'qca-qt6')
-optdepends=('libqpsd-git: PSB/PSD support'
-            'xcftools: XCF support')
+optdepends=('photoqt-extensions-bin: Official extensions for PhotoQt')
 source=(https://photoqt.org/downloads/bin/$_pkgname-$pkgver.tar.gz)
 sha256sums=('03f50b753a0cee926a605fd138ced7c29d3ac4c4a9fd36d5c245e8045c0bce5f')
 install="photoqt.install"

@@ -28,13 +28,12 @@ pkgbase = photoqt-bin
 	depends = openmp
 	depends = yaml-cpp
 	depends = qca-qt6
-	optdepends = libqpsd-git: PSB/PSD support
-	optdepends = xcftools: XCF support
+	optdepends = photoqt-extensions-bin: Official extensions for PhotoQt
 	provides = photoqt
 	provides = photoqt-bin-debug
 	conflicts = photoqt
 	conflicts = photoqt-debug
 	source = https://photoqt.org/downloads/bin/photoqt-5.2.tar.gz
-	sha256sums = d21cb7ef60c12d42ca9ac6e592285f9c95eac1032efe27e4e78bd1464d9bca1d
+	sha256sums = 03f50b753a0cee926a605fd138ced7c29d3ac4c4a9fd36d5c245e8045c0bce5f
 
 pkgname = photoqt-bin
