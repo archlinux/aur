@@ -1,6 +1,6 @@
 pkgname=cmdcreate-git
-pkgver=r523.8f24cc4
-pkgrel=2
+pkgver=r524.fef787b
+pkgrel=4
 pkgdesc="Allows you to create custom commands for your custom scripts"
 arch=('any')
 url="https://github.com/owen-debiasio/cmdcreate"
