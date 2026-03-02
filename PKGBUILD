@@ -23,6 +23,8 @@ depends=(
   'libxdamage'
   'libxkbcommon'
   'libxmu'
+  'libxtst'
+  'libinput'
   'libxres'
   'libxxf86vm'
   'luajit'
@@ -31,8 +33,11 @@ depends=(
   'libxi'
   'libavif'
   'libdecor'
+  'openvr'
+  'libdisplay-info'
   'seatd' # wlroots deps
   'xcb-util-errors' # wlroots deps
+  'xcb-util-wm' # wlroots deps
   'sdl2'
   'vulkan-icd-loader'
   'xorg-xwayland')
