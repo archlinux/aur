@@ -1,14 +1,14 @@
-# Maintainer: 
-# Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
+# Maintainer: Nathan Pilkington <npil>
+# Contributor: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch-git
-pkgver=11.11.r44.g448dc51
+pkgver=12.12.r278.g8550ab2
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
 url="https://github.com/sonic2kk/steamtinkerlaunch"
-license=('GPL3')
-depends=('bash' 'procps-ng' 'unzip' 'xxd' 'wget' 'xdotool' 'xorg-xprop' 'xorg-xrandr' 'xorg-xwininfo' 'yad')
+license=('GPL-3.0-only')
+depends=('bash' 'gawk' 'procps-ng' 'unzip' 'xxd' 'wget' 'xdotool' 'xorg-xprop' 'xorg-xrandr' 'xorg-xwininfo' 'yad')
 makedepends=('git')
 optdepends=(
 	'strace: write a strace log of the launched game'
@@ -23,10 +23,8 @@ optdepends=(
 	'boxtron: for optional Boxtron support'
 	'scummvm: for optional ScummVM support via Roberta'
 	'wine: for optional wine support'
-	'gameconqueror: for optional cheating'
 	'gamescope: for optional GameScope support'
 	'libnotify: for optional Notifier'
-	'innoextract: optional for extracting the Cheat Engine setup archive'
 	'usbutils: optional for a quick VR HMD presence check'
 	'jq: optional for extracting game names from the steam api'
 	'rsync: optional for backing up steamuser files from proton games'
@@ -39,7 +37,7 @@ optdepends=(
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/sonic2kk/steamtinkerlaunch.git')
-sha1sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
