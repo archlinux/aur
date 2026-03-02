@@ -1,6 +1,6 @@
 # Maintainer: Scott Stavropoulos <scottstav@gmail.com>
 pkgname=aside
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 _piperver=1.4.1
 pkgdesc="Wayland-native LLM desktop assistant"
@@ -43,8 +43,8 @@ source=(
     "en_US-lessac-medium.onnx::https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx"
     "en_US-lessac-medium.onnx.json::https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json"
 )
-sha256sums=('2ed42aa3f8bbbd47d9cbe9d3c38ab358a2b4bf05cfb21fa928798f64bb03ded3'
-            'SKIP'
+sha256sums=('f2e950fa6c31193575c153168d2731d17a6e38530df4b19a2089b65065617214'
+            'df1aa63504633df54e625c2a83997bba83d4c3d36504e431fb47964bc2aa4d0e'
             '5efe09e69902187827af646e1a6e9d269dee769f9877d17b16b1b46eeaaf019f'
             'efe19c417bed055f2d69908248c6ba650fa135bc868b0e6abb3da181dab690a0')
 
