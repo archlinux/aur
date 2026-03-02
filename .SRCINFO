@@ -1,0 +1,22 @@
+pkgbase = python-jsparser
+	pkgdesc = Fast javascript parser (based on esprima.js)
+	pkgver = 2.7.3
+	pkgrel = 1
+	url = https://pypi.org/project/jsparser
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	provides = python-jsparser
+	provides = python-pyjsparser
+	conflicts = python-jsparser
+	conflicts = python-pyjsparser
+	options = !strip
+	options = !debug
+	source = jsparser-2.7.3.tar.gz::https://files.pythonhosted.org/packages/source/j/jsparser/jsparser-2.7.3.tar.gz
+	sha256sums = 4fcbbd6545d4c1fd48b58542bcf634a13fcd06c08eee91c3a68956a8c307c295
+
+pkgname = python-jsparser
