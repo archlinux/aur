@@ -1,0 +1,14 @@
+pkgbase = openbitdo
+	pkgdesc = Beginner-first clean-room 8BitDo utility
+	pkgver = 0.0.1rc1
+	pkgrel = 1
+	url = https://github.com/bybrooklyn/openbitdo
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = cargo
+	depends = hidapi
+	source = openbitdo-v0.0.1-rc.1.tar.gz::https://github.com/bybrooklyn/openbitdo/archive/refs/tags/v0.0.1-rc.1.tar.gz
+	sha256sums = 3df720180bc6618826c8795701b2ffcbf2c3598eedeb086923fa810a100408a4
+
+pkgname = openbitdo
