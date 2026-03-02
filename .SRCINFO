@@ -1,12 +1,12 @@
 pkgbase = lazyjournal
 	pkgdesc = TUI for journalctl, file system logs, as well Docker and Podman containers for quick viewing and filtering with fuzzy find and regex support
-	pkgver = 0.8.4
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://github.com/Lifailon/lazyjournal
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = lazyjournal-0.8.4.tar.gz::https://github.com/Lifailon/lazyjournal/archive/refs/tags/0.8.4.tar.gz
-	sha256sums = 9129e9d01ba4ba7a90749297150b567803071f450b7c681a47705e41586aef42
+	source = lazyjournal-0.8.5.tar.gz::https://github.com/Lifailon/lazyjournal/archive/refs/tags/0.8.5.tar.gz
+	sha256sums = 2cfc8aa53c195a1ad7b7a6c3f9b17652eac4c24863d8c1079e61acf9497819c1
 
 pkgname = lazyjournal
