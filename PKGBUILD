@@ -1,6 +1,6 @@
 # Maintainer: Aayush <me@a2ys.dev>
 pkgname=turf-bin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Turf compiler"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 provides=('turf')
 conflicts=('turf')
 source=("https://github.com/turf-lang/turf-lang/releases/download/v${pkgver}/turf-v${pkgver}-linux-arch-x86_64.tar.gz")
-sha256sums=('b3a5e14ff2ab9e5712c6a6c03f0cac289fd95944ae59fa89a4f399dbbe004607')
+sha256sums=('1579e9701706dc4c1c3f8a49300a00931eb1675c608445c755b64d3d1d234d2f')
 
 package() {
 	cd "$srcdir"
