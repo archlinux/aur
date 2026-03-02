@@ -8,7 +8,10 @@ pkgbase = dotidx
 	makedepends = git
 	depends = python
 	depends = python-rich
+	depends = python-textual
 	depends = rsync
+	depends = git
+	depends = jq
 	source = dotidx::git+https://github.com/ArielBaron/dotidx.git#tag=v2.0.5
 	sha256sums = 968f92d86e25e02cbc284a3aa85ff7d6c51d246e5c52f30fcb6375e065d2bd74
 
