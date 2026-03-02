@@ -11,12 +11,12 @@ source=("https://github.com/Dilluti0n/DPIBreak/archive/refs/tags/v${pkgver}.tar.
 sha256sums=('59d94cc86f9003f076d321c59f2df182154a88d09a65acace123e102c37b5019')
 
 build() {
-    cd "dpireak-${pkgver}"
+    cd "dpibreak-${pkgver}"
     cargo build --release
 }
 
 package() {
-    cd "dpireak-${pkgver}"
+    cd "dpibreak-${pkgver}"
     install -Dm755 target/release/dpibreak "$pkgdir/usr/bin/dpibreak"
     install -Dm644 dpibreak.1 "$pkgdir/usr/share/man/man1/dpibreak.1"
 }
