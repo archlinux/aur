@@ -1,0 +1,21 @@
+pkgbase = lucent-git
+	pkgdesc = A blazing-fast, D-Bus activated Wayland notification daemon
+	pkgver = 1.0.0.r1.ge210e56
+	pkgrel = 1
+	url = https://github.com/CPT-Dawn/Lucent
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = glib2
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = dbus
+	provides = lucent
+	conflicts = lucent
+	source = lucent::git+https://github.com/CPT-Dawn/Lucent.git
+	sha256sums = SKIP
+
+pkgname = lucent-git
