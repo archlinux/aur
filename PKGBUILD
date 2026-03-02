@@ -1,10 +1,10 @@
 # Maintainer: <agustinballesteros04@gmail.com>
 pkgname=kew-git
 pkgrel=1
-pkgver=v3.7.3.6ceaf02
+pkgver=v3.7.3.4ef2489
 pkgdesc="A command-line music player"
 arch=('x86_64')
-url="https://github.com/ravachol/kew"
+url="https://codeberg.org/ravachol/kew"
 license=('GPL2')
 conflicts=('kew')
 depends=('fftw' 'faad' 'git' 'chafa' 'taglib' 'libogg' 'gcc' 'make' 'glib2' 'opus' 'opusfile' 'libvorbis' 'curl')

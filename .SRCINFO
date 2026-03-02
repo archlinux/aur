@@ -1,8 +1,8 @@
 pkgbase = kew-git
 	pkgdesc = A command-line music player
-	pkgver = v3.7.3.6ceaf02
+	pkgver = v3.7.3.4ef2489
 	pkgrel = 1
-	url = https://github.com/ravachol/kew
+	url = https://codeberg.org/ravachol/kew
 	arch = x86_64
 	license = GPL2
 	depends = fftw
@@ -20,7 +20,7 @@ pkgbase = kew-git
 	depends = curl
 	conflicts = kew
 	replaces = cue-git
-	source = git+https://github.com/ravachol/kew
+	source = git+https://codeberg.org/ravachol/kew
 	sha256sums = SKIP
 
 pkgname = kew-git
