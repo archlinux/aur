@@ -7,7 +7,7 @@ _OTRExporter_commit=32e088e28c8cdd055d4bb8f3f219d33ad37963f3
 
 pkgbase=2s2h
 pkgname=(2s2h 2s2h-otr-exporter)
-pkgver=4.0.0
+pkgver=4.0.2
 pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 #url="https://shipofharkinian.com/"
@@ -22,7 +22,7 @@ source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_rep
         "OTRExporter-${_OTRExporter_commit:0:8}.tar.gz::https://github.com/louist103/OTRExporter/archive/${_OTRExporter_commit}.tar.gz"
         "ZAPDTR-${_ZAPDTR_commit:0:8}.tar.gz::https://github.com/louist103/ZAPDTR/archive/${_ZAPDTR_commit}.tar.gz"
         "2s2h.desktop")
-sha256sums=('1d9d8662073628857c84efe9b40f13367470ee071809c9da4b830697f1bb010d'
+sha256sums=('514647bce3d5b7c26635c6c28007ae0a0e169d265254f3c9c9b2002f0fa4fb4e'
             '6215214daabd17245ba657138e85b7c46b80b8d84a469c1fe15fdd4aa93f9706'
             '91a863f8899f2ebfc7868ccad4b5982ae416799c76358ce5b2c0edc11e42a672'
             '8016f735f9ef4e177384b0e51f243e374bf2f67ba66bdd5d21af8b185aed1635'
