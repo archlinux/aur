@@ -2,13 +2,13 @@
 # Contributor: MaryJaneInChain <maryjaneinchain@gmail.com>
 
 pkgname=tic-80-git
-pkgver=1.2.3019.32853aa
+pkgver=1.2.3054.ae1195a
 pkgrel=1
 pkgdesc='TIC-80 tiny computer emulator'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://tic80.com/"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'libglvnd' 'curl')
+depends=('glibc' 'libgcc' 'libstdc++' 'libglvnd' 'curl')
 makedepends=('git' 'cmake' 'ruby-rake' 'glu')
 provides=("tic-80")
 
@@ -26,12 +26,6 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_gitname"
     git submodule update --init --recursive --depth=1
-
-    # Update SDL2 to 2.32.8 to fix build failure with recent pipewire
-    # Upstream has an open PR for this at https://github.com/nesbox/TIC-80/pull/2779
-    cd vendor/sdl2
-    git fetch --tags
-    git checkout release-2.32.8
 }
 
 build() {
