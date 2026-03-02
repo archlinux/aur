@@ -1,6 +1,6 @@
 pkgbase = arch-update-git
-	pkgdesc = An update notifier & applier that assists you with important pre / post update tasks (git version)
-	pkgver = 3.15.7.r567.7323154
+	pkgdesc = An interactive update notifier & applier that assists you with important pre / post update tasks (git version)
+	pkgver = 3.18.0.r645.2f09f5e
 	pkgrel = 1
 	url = https://github.com/Antiz96/arch-update
 	arch = any

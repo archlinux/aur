@@ -2,9 +2,9 @@
 
 pkgname=arch-update-git
 _pkgname="${pkgname%-git}"
-pkgver=3.15.7.r567.7323154
+pkgver=3.18.0.r645.2f09f5e
 pkgrel=1
-pkgdesc="An update notifier & applier that assists you with important pre / post update tasks (git version)"
+pkgdesc="An interactive update notifier & applier that assists you with important pre / post update tasks (git version)"
 url="https://github.com/Antiz96/arch-update"
 arch=('any')
 license=('GPL-3.0-or-later')
