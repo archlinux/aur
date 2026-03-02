@@ -1,0 +1,44 @@
+set -e
+
+setup_icons() {
+	cd /usr/share/autenticacao-gov
+	regex="([^_]+)_([0-9]+).png$"
+	for file in *.png
+	do
+		if [[ $file  =~ $regex ]]
+		then
+			icon="${BASH_REMATCH[1]##*/}"
+			size="${BASH_REMATCH[2]}"
+			case "$1" in
+				install)
+					echo xdg-icon-resource install --context apps --size "$size" "$file" "$icon"
+					;;
+				uninstall)
+					echo xdg-icon-resource uninstall --context apps --size "$size" "$icon"
+					;;
+				*)
+					exit 1
+					;;
+			esac
+		fi
+	done
+}
+
+setup_fonts() {
+ fc-cache /usr/share/fonts/pteid/lato
+}
+
+post_upgrade() {
+	post_install
+	setup_fonts
+}
+
+post_install() {
+	setup_icons install
+	setup_fonts
+}
+
+pre_remove() {
+	setup_icons uninstall
+}
+
