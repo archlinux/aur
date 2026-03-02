@@ -3,10 +3,14 @@ pkgbase = puzzletea
 	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/FelineStateMachine/puzzletea
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
 	license = MIT
 	checkdepends = just
 	makedepends = go
+	depends = glibc
 	source = https://github.com/FelineStateMachine/puzzletea/archive/refs/tags/v1.6.0.tar.gz
 	sha256sums = 3ab891edbb8ee338c6e0d59c71212761fd15d6672a613370a27e0f2d7d2f40dc
 
