@@ -1,17 +1,17 @@
-# Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
 
 pkgname=servicer-bin
 pkgver=0.1.13
-pkgrel=2
+pkgrel=3
 pkgdesc="Simplify service management on systemd"
 url="https://github.com/servicer-labs/servicer"
 license=("MIT")
 arch=("x86_64" "aarch64")
 provides=("servicer")
 conflicts=("servicer")
-depends=("glibc" "gcc-libs")
+depends=("glibc" "libgcc")
 _prefix=$pkgname-$pkgver
-source=("$_prefix-LICENSE::https://raw.githubusercontent.com/servicer-labs/servicer/master/LICENSE")
+source=("$_prefix-LICENSE::https://raw.githubusercontent.com/servicer-labs/servicer/refs/tags/v$pkgver/LICENSE")
 source_x86_64=("$_prefix-servicer::$url/releases/download/v$pkgver/servicer-x86_64-unknown-linux-gnu")
 source_aarch64=("$_prefix-servicer::$url/releases/download/v$pkgver/servicer-aarch64-unknown-linux-gnu")
 sha512sums=('778e038b9358fea1bf0466292a11f07a77f86b774c956e25fb89a746700e4f1f062fee0c46375c0e30e16ebb90965c6db0914c0442272eeffd2c6167d8bcb44a')
