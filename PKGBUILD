@@ -5,12 +5,13 @@
 pkgname=sjmcl-bin
 pkgdesc='🌟 A Minecraft launcher from @SJMC-Dev'
 pkgver=1.0.0beta.1
-pkgrel=1
+_pkgver=1.0.0-beta.1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 license=(GPL-3.0,custom:LICENSE.EXTRA)
 url='https://github.com/UNIkeEN/SJMCL'
-_baseurl="${url}/releases/download/v${pkgver}"
-_source="SJMCL_${pkgver}_linux_${CARCH}.deb"
+_baseurl="${url}/releases/download/v${_pkgver}"
+_source="SJMCL_${_pkgver}_linux_${CARCH}.deb"
 
 sha512sums=('5556b520002a8ed21b890e19364b3f9a640eca5e9170a90b70ad7ab519d505fd12d1b2306643b5cf73d56cb0d7530de1a4aa81c6ef165146c6460661bd5114ba')
 sha512sums_x86_64=('328ae66c92160b14b75763bb4771fa85632917106833406371356ee1fdd7ac77ebfccadcfa8fddea69c77dbb11ba88d807232679d91550d79a89440baba81f05')
