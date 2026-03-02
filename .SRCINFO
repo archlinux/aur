@@ -1,6 +1,6 @@
 pkgbase = offpunk
 	pkgdesc = Command-line and offline-centric browser for the web and various smolnet protocols
-	pkgver = 3.0
+	pkgver = 3.1
 	pkgrel = 1
 	url = https://git.sr.ht/~lioploum/offpunk
 	install = offpunk.install
@@ -22,7 +22,6 @@ pkgbase = offpunk
 	optdepends = python-beautifulsoup4: for web browsing - HTML parsing
 	optdepends = python-readability-lxml: for web browsing - HTML parsing
 	optdepends = chafa: chafa and ansiwrap are required to render images in terminal
-	optdepends = timg: view images and videos in the terminal (alternative)
 	optdepends = python-setproctitle: allows offpunk to change its process title
 	optdepends = xclip: copies text to/from the X11 clipboard
 	optdepends = xsel: copies text to/from the X11 clipboard (alternative)
@@ -43,7 +42,7 @@ pkgbase = offpunk
 	conflicts = xkcdpunk
 	noextract = offpunk
 	options = !strip
-	source = git+https://git.sr.ht/~lioploum/offpunk#tag=v3.0
+	source = git+https://git.sr.ht/~lioploum/offpunk#tag=v3.1
 	sha256sums = SKIP
 
 pkgname = offpunk
