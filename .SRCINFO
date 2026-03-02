@@ -1,13 +1,14 @@
 pkgbase = objection
 	pkgdesc = Runtime mobile exploration toolkit powered by Frida
 	pkgver = 1.12.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sensepost/objection
 	arch = any
 	license = GPLv3
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = uv
+	makedepends = npm
 	depends = python>=3.10
 	depends = python-click>=8.2.0
 	depends = python-delegator>=0.1.1

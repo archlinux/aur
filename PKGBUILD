@@ -2,7 +2,7 @@
 
 pkgname=objection
 pkgver=1.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Runtime mobile exploration toolkit powered by Frida'
 arch=('any')
 url="https://github.com/sensepost/$pkgname"
@@ -25,7 +25,7 @@ depends=(
   'python-setuptools>=70.0.0'
   'python-tabulate>=0.9.0'
 )
-makedepends=(python-build python-installer uv)
+makedepends=(python-build python-installer uv npm)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('45da8861f2b0a0a54b8a00f1c73e23ac0cb8b0787be21ed1b2860bb8a9313c17')
 
@@ -34,6 +34,10 @@ sha256sums=('45da8861f2b0a0a54b8a00f1c73e23ac0cb8b0787be21ed1b2860bb8a9313c17')
 
 build() {
     cd $pkgname-$pkgver
+    (
+        cd agent
+        npm ci
+    )
     python -m build --wheel --no-isolation
 }
 
