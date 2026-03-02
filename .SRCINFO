@@ -1,0 +1,16 @@
+pkgbase = pinchtab-bin
+	pkgdesc = High-performance browser automation bridge and multi-instance orchestrator with advanced stealth injection and real-time dashboard.
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://github.com/pinchtab/pinchtab
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = pinchtab
+	conflicts = pinchtab
+	source = pinchtab-linux-amd64::https://github.com/pinchtab/pinchtab/releases/download/v0.7.6/pinchtab-linux-amd64
+	source = LICENSE::https://raw.githubusercontent.com/pinchtab/pinchtab/fe09a076da94ecdbda1967d800b1ba9b6e925d55/LICENSE
+	sha256sums = b8fe9699b5c1246144f0296b99bbf14d0480f2ccf0bf7542bffbc21edd1d33db
+	sha256sums = 8e526b04f1f02203eebfd55aead0657a7ae87e0591cf8a44fbee19441aa0f116
+
+pkgname = pinchtab-bin
