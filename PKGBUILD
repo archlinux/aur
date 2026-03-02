@@ -1,13 +1,15 @@
-# Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
+# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
 
 pkgname=cpx-bin
 pkgver=1.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Cargo-like CLI for C++, compatible with CMake (vcpkg), Bazel and Meson"
 arch=(x86_64 aarch64)
 url="https://github.com/ozacod/cpx"
 license=(MIT)
 depends=(cmake vcpkg bazel meson)
+provides=(cpx)
+conflicts=(cpx)
 source=("$pkgname-LICENSE::https://raw.githubusercontent.com/ozacod/cpx/refs/tags/v$pkgver/LICENSE")
 source_x86_64=("$pkgname-$pkgver-x86_64::https://github.com/ozacod/cpx/releases/download/v$pkgver/cpx-linux-amd64")
 source_aarch64=("$pkgname-$pkgver-aarch64::https://github.com/ozacod/cpx/releases/download/v$pkgver/cpx-linux-arm64")
