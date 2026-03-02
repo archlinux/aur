@@ -4,7 +4,7 @@ pkgname=git-autofixup
 pkgdesc='A git subcommand to automatically create fixup commits for topic branches'
 url='https://github.com/torbiak/git-autofixup'
 license=('Artistic2.0')
-pkgver=0.004007
+pkgver=0.005000
 pkgrel=1
 depends=(perl git)
 makedepends=(make patch)
@@ -16,7 +16,7 @@ source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/torbiak/git-autofixup/archive/refs/tags/v$pkgver.tar.gz"
 )
 
-sha512sums=('19807c323b315040f3dbead5cba88db93580f6a10280710854b4bf8999d2fed15a3568324bff653a9fe22e65267a9b19a08b713241f6c83240e9a22350f80811')
+sha512sums=('a409672715b87566cd14f31bbfd2552d96ae6b31a5746cc797ac621f513d6facd009b16801fe2f4d8e4068ba271d7db1a5323775100da28f51d975d2a1068959')
 
 build() {
 	cd "$pkgname-$pkgver"
