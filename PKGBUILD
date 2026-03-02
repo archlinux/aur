@@ -1,7 +1,7 @@
 # Maintainer: Kartatz <kartatz at amanoteam.com>
 pkgname=android-gcc-cross-bin
 pkgver=15.2.0
-pkgrel=20260217
+pkgrel=20260301
 pkgdesc='A GCC cross-compiler targeting Android'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url='https://github.com/AmanoTeam/Pino'
@@ -17,10 +17,10 @@ source_x86_64=("https://github.com/AmanoTeam/Pino/releases/download/gcc-${pkgver
 source_aarch64=("https://github.com/AmanoTeam/Pino/releases/download/gcc-${pkgver%%.*}/aarch64-unknown-linux-gnu.tar.xz")
 source_armv7h=("https://github.com/AmanoTeam/Pino/releases/download/gcc-${pkgver%%.*}/arm-unknown-linux-gnueabihf.tar.xz")
 
-sha256sums_i686=('58e601e0dabd8c0858bddfd49e9ba4940850dc59090a05cc32b7a2fc033492b0')
-sha256sums_x86_64=('6c627f307d20df582bff2260fbf96155c1d9f9e45937380e9461fcda4db2d87d')
-sha256sums_aarch64=('2f0bcbdd222dd8688cf10e4b855037a92dd165b8781d99728f192837ecf4abe5')
-sha256sums_armv7h=('876d10f39f4904ebb319d609651ab05b24d465e54496005840c3b897f0f4d5a2')
+sha256sums_i686=('25098a1c0649f64e60183520e614e1b14900be3248b07478d90b6f09d5a6f641')
+sha256sums_x86_64=('d94fa2e03f40ab473220a9d47566ae7ddaa3f2a2c0be19b419be6a7a7284e503')
+sha256sums_aarch64=('4bff12c7479acc98919a97eb880e3a482f3eefd740f355b98b9f93b32dfe3e2e')
+sha256sums_armv7h=('a451a6e2f3bb4eb700f879bfd5a0d54210a46580114d212af5239d3a8552ccf4')
 
 __alt_pkgname='pino'
 
