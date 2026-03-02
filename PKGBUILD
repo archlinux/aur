@@ -1,7 +1,7 @@
 # Maintainer: Nikita Goncarenko <myftr12394 at gmail dot com>
 # Co-maintainer: holaguz <agustin dot catellani at gmail dot com>
 pkgname=tlescope-bin
-pkgver=1
+pkgver=3.7.2
 pkgrel=5
 pkgdesc="TLEscope is a satellite visualization tool designed to transform Two-Line Element (TLE) sets into intuitive, interactive data."
 arch=(x86_64)
