@@ -1,8 +1,7 @@
 # Maintainer: Scott Stavropoulos <scottstav@gmail.com>
 pkgname=aside
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-_piperver=1.4.1
 pkgdesc="Wayland-native LLM desktop assistant"
 arch=('x86_64')
 url="https://github.com/scottstav/aside"
@@ -16,7 +15,6 @@ depends=(
     'gtk4'
     'gtk4-layer-shell'
     'portaudio'
-    'espeak-ng'
     'python'
     'gobject-introspection'
 )
@@ -28,10 +26,7 @@ makedepends=(
     'meson-python'
     'python-pip'
     'python-setuptools'
-    'python-scikit-build'
     'wayland-protocols'
-    'cmake'
-    'git'
 )
 optdepends=(
     'grim: screenshot plugin'
@@ -39,27 +34,12 @@ optdepends=(
 )
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-    "piper1-gpl::git+https://github.com/OHF-Voice/piper1-gpl.git#tag=v$_piperver"
-    "en_US-lessac-medium.onnx::https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx"
-    "en_US-lessac-medium.onnx.json::https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json"
 )
-sha256sums=('f2e950fa6c31193575c153168d2731d17a6e38530df4b19a2089b65065617214'
-            'df1aa63504633df54e625c2a83997bba83d4c3d36504e431fb47964bc2aa4d0e'
-            '5efe09e69902187827af646e1a6e9d269dee769f9877d17b16b1b46eeaaf019f'
-            'efe19c417bed055f2d69908248c6ba650fa135bc868b0e6abb3da181dab690a0')
-
-prepare() {
-    cd "$srcdir/piper1-gpl"
-    sed -i 's/"cmake", "ninja"//' pyproject.toml
-}
+sha256sums=('b6b42d41161a65eebb53f047663bd7adf88513780db49014fd960c51a7bb6765')
 
 build() {
     # Build aside wheel (C overlay + Python package)
     cd "$srcdir/$pkgname-$pkgver"
-    python -m build --wheel --no-isolation
-
-    # Build piper-tts wheel from source
-    cd "$srcdir/piper1-gpl"
     python -m build --wheel --no-isolation
 
     # Create fully isolated venv
@@ -69,11 +49,6 @@ build() {
     # Install aside (no-deps: we install deps explicitly below)
     "$_pip" install --no-cache-dir --no-deps \
         "$srcdir/$pkgname-$pkgver/dist/aside_assistant-"*.whl
-
-    # Install piper-tts from the wheel we just built
-    "$_pip" install --no-cache-dir --no-deps \
-        "$srcdir/piper1-gpl/dist/"piper_tts-*.whl
-    "$_pip" install --no-cache-dir onnxruntime pathvalidate
 
     # Install all remaining Python deps
     "$_pip" install --no-cache-dir \
@@ -117,12 +92,6 @@ EOF
 
     # ── example config ────────────────────────────────────────────────────
     install -Dm644 data/config.toml.example "$pkgdir/usr/share/aside/config.toml.example"
-
-    # ── default TTS voice model ───────────────────────────────────────────
-    install -Dm644 "$srcdir/en_US-lessac-medium.onnx" \
-        "$pkgdir/usr/share/piper-voices/en/en_US/lessac/medium/en_US-lessac-medium.onnx"
-    install -Dm644 "$srcdir/en_US-lessac-medium.onnx.json" \
-        "$pkgdir/usr/share/piper-voices/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json"
 
     # ── license ───────────────────────────────────────────────────────────
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
