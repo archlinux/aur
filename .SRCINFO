@@ -11,17 +11,19 @@ pkgbase = qtkeychain
 	makedepends = qt5-tools
 	makedepends = qt6-declarative
 	makedepends = qt6-tools
-	depends = gcc-libs
 	depends = glib2
 	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = org.freedesktop.secrets
 	source = git+https://github.com/frankosterfeld/qtkeychain#tag=0.15.0
 	sha256sums = 0ffe67e46fa4a99da93c1f13090a7e153dfe1cee25b9ef269f85a504834360db
 
 pkgname = qtkeychain-qt5
-	depends = gcc-libs
 	depends = glib2
 	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = org.freedesktop.secrets
 	depends = qt5-base
 	optdepends = kwallet5: kwallet backend
@@ -30,9 +32,10 @@ pkgname = qtkeychain-qt5
 	replaces = qtkeychain
 
 pkgname = qtkeychain-qt6
-	depends = gcc-libs
 	depends = glib2
 	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = org.freedesktop.secrets
 	depends = qt6-base
 	optdepends = kwallet: kwallet backend

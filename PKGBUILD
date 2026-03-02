@@ -11,9 +11,10 @@ pkgdesc='Provides support for secure credentials storage'
 arch=(x86_64)
 url='https://github.com/frankosterfeld/qtkeychain'
 license=(BSD-3-Clause)
-depends=(gcc-libs
-         glib2
+depends=(glib2
          glibc
+         libgcc
+         libstdc++
          org.freedesktop.secrets)
 makedepends=(clang
              cmake
