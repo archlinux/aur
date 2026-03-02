@@ -1,0 +1,17 @@
+pkgbase = dpibreak-git
+	pkgdesc = DPI circumvention tool written in Rust
+	pkgver = r357.f5c4f03
+	pkgrel = 1
+	url = https://github.com/Dilluti0n/DPIBreak
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = nftables
+	provides = dpibreak
+	conflicts = dpibreak
+	source = dpibreak-git::git+https://github.com/Dilluti0n/DPIBreak.git
+	sha256sums = SKIP
+
+pkgname = dpibreak-git
