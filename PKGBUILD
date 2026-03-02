@@ -88,7 +88,7 @@ build() {
     cd "${srcdir}/${pkgname%-git}.git"
     _ensure_local_nvm
     local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     npm run build
+    NODE_ENV=production NODE_OPTIONS="--max-old-space-size=4096" npm run build
     NODE_ENV=production     npm exec -c "electron-builder --linux dir -c.electronDist=${electronDist} --config electron-builder.yml"
     case "${CARCH}" in
         aarch64)
