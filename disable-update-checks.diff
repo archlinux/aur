@@ -1,0 +1,57 @@
+diff --git a/packages/compass/src/main/auto-update-manager.ts b/packages/compass/src/main/auto-update-manager.ts
+index 9bf645a81..bbae9754b 100644
+--- a/packages/compass/src/main/auto-update-manager.ts
++++ b/packages/compass/src/main/auto-update-manager.ts
+@@ -987,7 +987,7 @@ class CompassAutoUpdateManager {
+     const { preferences } = compassApp;
+     this.preferences = preferences;
+     const supported = supportsAutoupdater();
+-    const enabled = !!preferences.getPreferences().autoUpdates;
++    const enabled = false;
+ 
+     log.info(
+       mongoLogId(1001000133),
+@@ -996,31 +996,6 @@ class CompassAutoUpdateManager {
+       { ...this.autoUpdateOptions, supported, enabled }
+     );
+ 
+-    preferences.onPreferenceValueChanged('autoUpdates', (enabled) => {
+-      log.info(
+-        mongoLogId(1_001_000_251),
+-        'AutoUpdateManager',
+-        `autoUpdate preference toggled to ${enabled ? 'enabled' : 'disabled'}`,
+-        {
+-          enabled,
+-        }
+-      );
+-
+-      if (enabled) {
+-        track('Autoupdate Enabled', {
+-          //
+-        });
+-        this.setState(
+-          AutoUpdateManagerStates.CheckingForUpdatesForAutomaticCheck
+-        );
+-      } else {
+-        track('Autoupdate Disabled', {
+-          //
+-        });
+-        this.setState(AutoUpdateManagerStates.Disabled);
+-      }
+-    });
+-
+     // TODO(COMPASS-7233): This is kinda pointless at the moment because the
+     // preferences start as disabled and then become enabled the moment they are
+     // loaded. Which would immediately kick off the state change.
+diff --git a/packages/compass/src/main/menu.ts b/packages/compass/src/main/menu.ts
+index 1b4a8b2fb..b3e78a508 100644
+--- a/packages/compass/src/main/menu.ts
++++ b/packages/compass/src/main/menu.ts
+@@ -314,7 +314,6 @@ function helpSubMenu(
+   if (process.platform !== 'darwin') {
+     subMenu.push(separator());
+     subMenu.push(nonDarwinAboutItem());
+-    subMenu.push(updateSubmenu(windowState, app));
+   }
+ 
+   return {
