@@ -25,4 +25,5 @@ build() {
 package() {
     cd "$pkgname"
     install -Dm755 target/release/dpibreak "$pkgdir/usr/bin/dpibreak"
+    install -Dm644 dpibreak.1 "$pkgdir/usr/share/man/man1/dpibreak.1"
 }
