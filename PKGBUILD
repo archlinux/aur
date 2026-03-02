@@ -1,11 +1,11 @@
 # Maintainer: Andy Locks <jandylokc@gmail.com>
 pkgname=stringp
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='A "key-value" utility for UNIX-like systems. Allows to conveniently store values and retrieve them by key.'
 arch=('x86_64')
 url="https://github.com/AndyLocks/string-pool"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
