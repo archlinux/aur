@@ -31,7 +31,8 @@ build() {
 }
 
 package() {
-  cd "$srcdir"
+  #cd "$srcdir"
+  tar -xvf "${srcdir}/пакет-1.0.0-1-x86_64.pkg.tar.zst" -C "${pkgdir}"
  # pacman -U --noconfirm ./Happ.linux.x64.pkg.tar.zst
   # Копируем необходимые файлы в каталог пакета
  # echo "Extracting the data.tar.zst..."
