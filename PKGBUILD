@@ -2,7 +2,7 @@
 # Contributor: nangidev: <>
 _pkgname=Epic-Asset-Manager
 pkgname=epic-asset-manager
-pkgver=3.9.2
+pkgver=3.9.3
 pkgrel=1
 pkgdesc="A frontend to Assets purchased on Epic Games Store"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('cargo' 'meson')
 provides=(eam)
 conflicts=(eam)
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('44083a39a1225bc54c2755a87647aa310370f6c5428088a528c7ea676c3a9b63')
+sha256sums=('507396dd4a4c759548e4a55a606bcf691362129de30ad45d284848d395412a4b')
 
 prepare() {
 	cd "$srcdir"
