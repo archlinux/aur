@@ -8,7 +8,7 @@
 _pkgbase=transmission
 _pkgname=transmission-cli
 pkgname=transmission-cli-git
-pkgver=4.1.0.beta.2.r0.gac5c9e082
+pkgver=4.1.0.beta.5.r234.g7d3b22639
 pkgrel=1
 arch=(x86_64 armv7h)
 url="https://www.transmissionbt.com/"
@@ -54,8 +54,10 @@ prepare() {
 		third-party/fmt \
 		third-party/googletest \
 		third-party/libutp \
+		third-party/madler-crcany \
 		third-party/rapidjson \
 		third-party/rpavlik-cmake-modules \
+		third-party/sigslot \
 		third-party/small \
 		third-party/utfcpp \
 		third-party/wide-integer
@@ -115,7 +117,7 @@ package() {
 	install -d "$pkgdir"/usr/share/transmission
 	cp -a web/public_html/ "$pkgdir"/usr/share/transmission
 
-	install -Dm644 ../daemon/transmission-daemon.service \
+	install -Dm644 ../build/daemon/transmission-daemon.service \
 		"$pkgdir/usr/lib/systemd/system/transmission.service"
 
 	install -Dm644 ../COPYING -t "$pkgdir/usr/share/licenses/transmission-cli"
