@@ -1,7 +1,7 @@
 pkgbase=gcc-snapshot
 pkgname=({gcc,gcc-ada,gcc-ga68,gcc-gcobol,gcc-d,gcc-fortran,gcc-go,gcc-m2,gcc-objc,gcc-rust,gcc-libs,libasan,libatomic,libga68,libgcc,libgccjit,libgcobol,libgfortran,libgm2,libgnat,libgo,libgomp,libgphobos,libitm,liblsan,libobjc,libquadmath,libstdc++,libtsan,libubsan,libvtv,lib32-gcc-libs,lto-dump}-snapshot)
-pkgver=16.0.0.snapshot20260222
-_pkgver=16-20260222
+pkgver=16.0.0.snapshot20260301
+_pkgver=16-20260301
 _majorver=${_pkgver//-*}
 _snapshot=${_pkgver#*-}
 _realver=${pkgver//.s*}
@@ -31,7 +31,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               343C2FF0FBEE5EC2EDBEF399F3599FF828C67298  # Niels Möller <nisse@lysator.liu.se>
               A534BE3F83E241D918280AEB5831D11A0D4DB02A  # vincent@vinc17.net
               AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3) # Andres Enge <andreas.enge@inria.fr>
-sha256sums=('717a9d8c00fc31cc5bf5020adb0f1e2a73967c746e0d921cbddbe12bf15ae30b'
+sha256sums=('186f096d67686288b2be2f79636a524555da35c034d14f473063e29038ab51e3'
             'SKIP'
             'a3c2b80201b89e68616f4ad30bc66aee4927c3ce50e33929ca819d5c43538898'
             'SKIP'
@@ -414,7 +414,7 @@ package_gcc-rust-snapshot() {
 }
 
 package_gcc-libs-snapshot() {
-  pkgdesc="GNU Compiler Collection - GCC runtime libraries (snapshot)"
+  pkgdesc="GNU Compiler Collection - Runtime libraries (snapshot)"
   depends=("libasan-snapshot=${pkgver}-${pkgrel}" "libatomic-snapshot=${pkgver}-${pkgrel}" "libga68-snapshot=${pkgver}-${pkgrel}" "libgfortran-snapshot=${pkgver}-${pkgrel}" "libgcc-snapshot=${pkgver}-${pkgrel}" "libgnat-snapshot=${pkgver}-${pkgrel}" "libgo-snapshot=${pkgver}-${pkgrel}" "libgomp-snapshot=${pkgver}-${pkgrel}" "libgphobos-snapshot=${pkgver}-${pkgrel}" "libitm-snapshot=${pkgver}-${pkgrel}" "liblsan-snapshot=${pkgver}-${pkgrel}" "libobjc-snapshot=${pkgver}-${pkgrel}" "libquadmath-snapshot=${pkgver}-${pkgrel}" "libstdc++-snapshot=${pkgver}-${pkgrel}" "libtsan-snapshot=${pkgver}-${pkgrel}" "libubsan-snapshot=${pkgver}-${pkgrel}" "libvtv-snapshot=${pkgver}-${pkgrel}" "glibc>=2.40")
   provides=(${pkgname}-multilib gcc-libs-multilib "gcc-libs=${pkgver}-${pkgrel}")
   replaces=(${pkgname}-multilib gcc-libs-multilib gcc-libs)
@@ -477,7 +477,7 @@ package_libga68-snapshot() {
 }
 
 package_libgcc-snapshot() {
-  pkgdesc="GNU Compiler Collection - GCC low-level runtime libraries (snapshot)"
+  pkgdesc="GNU Compiler Collection - Low-level runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libgcc libgcc_s.so libgcc_s_asneeded.so)
   replaces=(${pkgname}-multilib libgcc)
@@ -496,7 +496,7 @@ package_libgcc-snapshot() {
 }
 
 package_libgccjit-snapshot() {
-  pkgdesc="GNU Compiler Collection - GCC Just-In-Time compilation framework (snapshot)"
+  pkgdesc="GNU Compiler Collection - Just-In-Time compilation framework (snapshot)"
   depends=("gcc-snapshot=${pkgver}-${pkgrel}")
   provides=(${pkgname}-multilib libgccjit)
   replaces=(${pkgname}-multilib libgccjit)
@@ -707,7 +707,7 @@ package_libobjc-snapshot() {
 }
 
 package_libquadmath-snapshot() {
-  pkgdesc="GNU Compiler Collection - GCC Quad-Precision Math runtime libraries (snapshot)"
+  pkgdesc="GNU Compiler Collection - Quad-Precision Math runtime libraries (snapshot)"
   depends=("glibc>=2.40")
   provides=(${pkgname}-multilib libquadmath libquadmath.so)
   replaces=(${pkgname}-multilib libquadmath)
@@ -799,7 +799,7 @@ package_libvtv-snapshot() {
 }
 
 package_lib32-gcc-libs-snapshot() {
-  pkgdesc="GNU Compiler Collection - 32-bit GCC runtime libraries (snapshot)"
+  pkgdesc="GNU Compiler Collection - 32-bit Runtime libraries (snapshot)"
   depends=("lib32-glibc>=2.40")
   provides=(${pkgname}-multilib lib32-gcc-libs libasan.so libatomic.so libga68.so libgdruntime.so libgfortran.so libgcc_s.so libgnarl-${_majorver}.so libgnat-${_majorver}.so libgo.so libgomp.so libgphobos.so libitm.so libobjc.so libquadmath.so libstdc++.so libubsan.so)
   replaces=(${pkgname}-multilib lib32-gcc-libs)
