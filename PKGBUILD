@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Liberty <jon9097 at gmail dot com>
 
 pkgname=obs-branch-output
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="OBS Studio plugin: Branch Output filter (per-source/scene streaming & recording)"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ depends=('obs-studio')
 makedepends=('cmake' 'ninja' 'git' 'gcc')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/OPENSPHERE-Inc/branch-output/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('de8966d8f2cbef19dd4590dcb69db6009ba54fe14608f7966976d0280b9ef280930b451f4f9930da4f335b36aff55b5193e9b803371947d3bdfaac8705d89eba')
+sha512sums=('a001455755a3b33fcec844b45ba6318a0c2b78f08ddcd0538c0cbbe66fc4e5c1bb931001152ef7db05024368ca6ae075d6bc045cc849773f3afe70e3bd299cec')
 
 build() {
   cmake -S "branch-output-$pkgver" -B build -G Ninja \

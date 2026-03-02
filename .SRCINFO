@@ -1,6 +1,6 @@
 pkgbase = obs-branch-output
 	pkgdesc = OBS Studio plugin: Branch Output filter (per-source/scene streaming & recording)
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/OPENSPHERE-Inc/branch-output
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = obs-branch-output
 	makedepends = git
 	makedepends = gcc
 	depends = obs-studio
-	source = obs-branch-output-1.0.7.tar.gz::https://github.com/OPENSPHERE-Inc/branch-output/archive/refs/tags/1.0.7.tar.gz
-	sha512sums = de8966d8f2cbef19dd4590dcb69db6009ba54fe14608f7966976d0280b9ef280930b451f4f9930da4f335b36aff55b5193e9b803371947d3bdfaac8705d89eba
+	source = obs-branch-output-1.0.8.tar.gz::https://github.com/OPENSPHERE-Inc/branch-output/archive/refs/tags/1.0.8.tar.gz
+	sha512sums = a001455755a3b33fcec844b45ba6318a0c2b78f08ddcd0538c0cbbe66fc4e5c1bb931001152ef7db05024368ca6ae075d6bc045cc849773f3afe70e3bd299cec
 
 pkgname = obs-branch-output
