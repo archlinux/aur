@@ -1,5 +1,5 @@
 diff --git a/apps/studio/electron-builder-config.js b/apps/studio/electron-builder-config.js
-index 84b31326a..78db7a0c0 100644
+index 9e2a2e7e2..d83c1a004 100644
 --- a/apps/studio/electron-builder-config.js
 +++ b/apps/studio/electron-builder-config.js
 @@ -33,6 +33,8 @@ module.exports = {
@@ -37,10 +37,12 @@ index 84b31326a..78db7a0c0 100644
        'pacman'
      ],
      desktop: {
-@@ -158,61 +147,9 @@ module.exports = {
-     },
+@@ -159,63 +148,9 @@ module.exports = {
      publish: ['github']
    },
+   pacman: {
+-    depends: ["c-ares", "ffmpeg", "gtk3", "llhttp", "libevent", "libvpx", "libxslt", "libxss", "minizip", "nss", "re2", "snappy", "libnotify", "libappindicator-gtk3"]
+-  },
 -  deb: {
 -    publish: [
 -      'github'
@@ -63,7 +65,7 @@ index 84b31326a..78db7a0c0 100644
 -      "--socket=pulseaudio",
 -      "--filesystem=home",
 -      "--talk-name=org.freedesktop.Notifications"
-+  pacman: {
++    depends: ["c-ares", "ffmpeg", "gtk3", "llhttp", "libevent", "libvpx", "libxslt", "libxss", "minizip", "nss", "re2", "snappy", "libnotify", "libappindicator-gtk3"],
 +    fpm: [
 +      '--pacman-compression=none'
      ]
