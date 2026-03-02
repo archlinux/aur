@@ -3,7 +3,7 @@
 pkgname=wizstr
 _archivever=2026.1.2
 pkgver=2026.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ string processing library"
 arch=('x86_64' 'aarch64')
 url="https://gitee.com/libbylg/str"
@@ -21,6 +21,7 @@ build() {
 
 	cmake -B build \
 		-S "${_srcdir}" \
+		-DWIZSTR_NAMESPACE=${pkgname} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release
 
