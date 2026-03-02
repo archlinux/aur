@@ -1,0 +1,16 @@
+pkgbase = brother-dcpl2622dw
+	pkgdesc = CUPS and LPR drivers for the Brother DCP-L2622DW
+	pkgver = 4.1.0_1
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=eu_ot&lang=en&prod=dcpl2622dw_eu
+	arch = x86_64
+	arch = i686
+	license = GPL-2.0-only
+	license = custom:Brother EULA
+	depends = cups
+	optdepends = brscan5: scanner support.
+	optdepends = brscan-skey: scanner key tool.
+	source = https://download.brother.com/welcome/dlf106013/dcpl2622dwpdrv-4.1.0-1.i386.rpm
+	sha256sums = a884d3ac2cb94f90c9cce2535252468cf8d88ab5389d9b1a9630af2c1e227b7b
+
+pkgname = brother-dcpl2622dw
