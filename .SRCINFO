@@ -1,7 +1,7 @@
 pkgbase = wshawk
 	pkgdesc = Enterprise-grade WebSocket security scanner & Web Penetration Testing Toolkit (Binary Release)
-	pkgver = 3.0.2
-	pkgrel = 3
+	pkgver = 3.0.3
+	pkgrel = 1
 	url = https://github.com/noobforanonymous/wshawk
 	arch = x86_64
 	license = ISC
@@ -13,9 +13,9 @@ pkgbase = wshawk
 	conflicts = wshawk-git
 	options = !strip
 	options = !debug
-	source = wshawk-3.0.2.pacman::https://github.com/noobforanonymous/wshawk/releases/download/v3.0.2/wshawk-3.0.2.pacman
+	source = wshawk-3.0.3.pacman::https://github.com/noobforanonymous/wshawk/releases/download/v3.0.3/wshawk-3.0.3.pacman
 	source = logo.png::https://raw.githubusercontent.com/noobforanonymous/wshawk/main/desktop/build/icon.png
-	sha256sums = e65d5ec958094f322cfd15ea3738cf75c61931a9736a5294d460ac972f6ce8a6
+	sha256sums = 7a7c0d5de58870d1858062f282cfbaef3e7d6943efa530e20e3187779f109939
 	sha256sums = SKIP
 
 pkgname = wshawk
