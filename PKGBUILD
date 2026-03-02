@@ -1,8 +1,8 @@
 # Maintainer: shiyi
 pkgname=fd-rdd-git
 _pkgname=vcp-fd-rdd
-pkgver=0.4.4.r30.ee4e078
-pkgrel=1
+pkgver=0.4.4
+pkgrel=3
 pkgdesc="Event-driven elastic file indexer with RDD lineage and glob support"
 arch=('x86_64')
 options=(!lto)
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    printf "%s.r%s.%s" "$(grep -m1 '^version' Cargo.toml | cut -d'"' -f2)" "$(git rev-list --count HEAD 2>/dev/null || echo 0)" "$(git rev-parse --short HEAD 2>/dev/null || echo init)"
+    printf "0.2.0.r%s.%s" "$(git rev-list --count HEAD 2>/dev/null || echo 0)" "$(git rev-parse --short HEAD 2>/dev/null || echo init)"
 }
 
 prepare() {
