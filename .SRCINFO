@@ -1,16 +1,17 @@
 pkgbase = sweet-cursors-hyprcursor-git
 	pkgdesc = Sweet cursor theme for hyprcursor
-	pkgver = r371.2beb340
-	pkgrel = 2
-	url = https://github.com/EliverLara/Sweet
+	pkgver = r445.1d92ac7
+	pkgrel = 1
+	url = https://github.com/Gigas002/Sweet
 	arch = x86_64
 	license = GPL3
 	makedepends = git
 	makedepends = inkscape
+	makedepends = xorg-xcursorgen
 	depends = hyprcursor
 	provides = Sweet-cursors-hyprcursor
 	options = !strip
-	source = git+https://github.com/EliverLara/Sweet.git#branch=nova
+	source = git+https://github.com/Gigas002/Sweet.git#branch=cursors
 	sha256sums = SKIP
 
 pkgname = sweet-cursors-hyprcursor-git
