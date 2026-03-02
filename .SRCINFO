@@ -1,0 +1,17 @@
+pkgbase = susshi-bin
+	pkgdesc = modern, terminal-based SSH connection manager (pre-built binary)
+	pkgver = 0.8.5
+	pkgrel = 1
+	url = https://github.com/yatoub/susshi
+	arch = x86_64
+	license = MIT
+	depends = openssh
+	provides = susshi
+	conflicts = susshi
+	source = https://github.com/yatoub/susshi/archive/refs/tags/v0.8.5.tar.gz
+	b2sums = SKIP
+	source_x86_64 = susshi-0.8.5-linux-amd64::https://github.com/yatoub/susshi/releases/download/v0.8.5/susshi-linux-amd64
+	b2sums_x86_64 = SKIP
+
+pkgname = susshi-bin
+
