@@ -1,6 +1,6 @@
 # Maintainer: Leandro <leandro@example.com>
 pkgname=vix
-pkgver=0.1.1
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="vix - vi-like editor based on Plan 9's structural regular expressions"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('ISC')
 depends=('lua' 'libtermkey' 'ncurses')
 makedepends=('git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lvitals/vix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('48a5fc7e5c66f5542c4743860bab9ae0c0c4910e555c806b3154aeff9d8e2a4c')
+sha256sums=('3bbc134ca4d58aa8106aa16db0bae290f5e4b17c4eb52a84742c1cad65e4683f')
 
 build() {
   cd "$pkgname-$pkgver"
