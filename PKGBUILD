@@ -2,7 +2,7 @@
 # Co-Maintainer: Imon Chakraborty
 pkgname='kaizen-bin'
 pkgver='2.0.2'
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal-based anime streaming & browsing tool"
 arch=('x86_64')
 url="https://github.com/serene-brew/kaizen"
