@@ -1,6 +1,6 @@
 pkgbase = mdns-tui-browser
 	pkgdesc = A terminal-based mDNS service browser
-	pkgver = 1.23.6
+	pkgver = 1.24.0
 	pkgrel = 1
 	url = https://github.com/hrzlgnm/mdns-tui-browser
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = mdns-tui-browser
 	makedepends = rust
 	options = !strip
 	options = !emptydirs
-	source = mdns-tui-browser-1.23.6.tar.gz::https://github.com/hrzlgnm/mdns-tui-browser/archive/refs/tags/v1.23.6.tar.gz
-	sha256sums = e6844b6fc9e75419c2a5ac78921761513325193e272b497c81e05d64ad207c98
+	source = mdns-tui-browser-1.24.0.tar.gz::https://github.com/hrzlgnm/mdns-tui-browser/archive/refs/tags/v1.24.0.tar.gz
+	sha256sums = 16faf46a004b53d4d25f175953bb0a0897fdebad36dd5680bea0ccf9a7cf9684
 
 pkgname = mdns-tui-browser
