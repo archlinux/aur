@@ -29,5 +29,5 @@ build() {
 package() {
   cd cmdcreate
   install -Dm755 target/release/cmdcreate "$pkgdir/usr/bin/cmdcreate"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/cmdcreate/LICENSE"
 }
