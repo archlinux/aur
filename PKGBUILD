@@ -11,7 +11,6 @@ depends=(
     'python-pyqt6'
     'python-psutil'
     'python-pillow'
-    'python-opencv'
     'python-vdf'
     'python-yaml'
     'python-beautifulsoup4'
@@ -30,7 +29,7 @@ optdepends=(
     'python-steamgriddb: artwork browsing via SteamGridDB'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5bc98c7a48a8251a0405dbf07196e00fd3ebd64335642fe8a206be4f0deec765')
+sha256sums=('0eac51a054811864d319a964eab801ca1f99716cad8b9001c2ef106c538bacfd')
 
 package() {
     cd "SteamLibraryManager-$pkgver"
@@ -38,7 +37,7 @@ package() {
     # Install application to /usr/lib/steam-library-manager/
     local _instdir="$pkgdir/usr/lib/$pkgname"
     install -d "$_instdir"
-    cp -r src resources requirements-user.txt "$_instdir/"
+    cp -r src requirements-user.txt "$_instdir/"
 
     # Create launcher script
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<'LAUNCHER'
@@ -53,13 +52,13 @@ LAUNCHER
         "$pkgdir/usr/share/applications/io.github.switch_bros.SteamLibraryManager.desktop"
 
     # Icons
-    install -Dm644 resources/icon.png \
+    install -Dm644 src/resources/icon.png \
         "$pkgdir/usr/share/pixmaps/$pkgname.png"
-    install -Dm644 resources/icon.svg \
+    install -Dm644 src/resources/icon.svg \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.switch_bros.SteamLibraryManager.svg"
 
     # Metainfo (for GNOME Software / KDE Discover)
-    install -Dm644 resources/io.github.switch_bros.SteamLibraryManager.metainfo.xml \
+    install -Dm644 src/resources/io.github.switch_bros.SteamLibraryManager.metainfo.xml \
         "$pkgdir/usr/share/metainfo/io.github.switch_bros.SteamLibraryManager.metainfo.xml"
 
     # License

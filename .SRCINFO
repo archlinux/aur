@@ -9,7 +9,6 @@ pkgbase = steam-library-manager
 	depends = python-pyqt6
 	depends = python-psutil
 	depends = python-pillow
-	depends = python-opencv
 	depends = python-vdf
 	depends = python-yaml
 	depends = python-beautifulsoup4
@@ -25,6 +24,6 @@ pkgbase = steam-library-manager
 	optdepends = python-keyring: secure token storage via system keyring
 	optdepends = python-steamgriddb: artwork browsing via SteamGridDB
 	source = steam-library-manager-1.1.1.tar.gz::https://github.com/Switch-Bros/SteamLibraryManager/archive/v1.1.1.tar.gz
-	sha256sums = 5bc98c7a48a8251a0405dbf07196e00fd3ebd64335642fe8a206be4f0deec765
+	sha256sums = 0eac51a054811864d319a964eab801ca1f99716cad8b9001c2ef106c538bacfd
 
 pkgname = steam-library-manager
