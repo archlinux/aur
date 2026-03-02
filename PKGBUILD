@@ -3,8 +3,8 @@ _pkgname=koishi
 pkgname="${_pkgname}-desktop-bin"
 _appname="chat.${_pkgname}.desktop"
 _shortname=koi
-pkgver=1.1.3
-pkgrel=2
+pkgver=1.1.4
+pkgrel=1
 pkgdesc="Launch Koishi from your desktop.(Prebuilt version)"
 arch=('x86_64')
 url="https://koishi.chat/manual/starter/"
@@ -13,24 +13,27 @@ license=('AGPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'nodejs'
-)
-makedepends=(
-    'fuse2'
+    'libgcc'
+    'libstdc++'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-v${pkgver}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-v${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('1ec0313db4fe5b8c2c1f22da6920917bf154292cae95b0523e29293b4f37d4ba'
+sha256sums=('246b4035deb7c6c3182ad808c4186ff4dca3c1488c2530653410e939c1a3c1f7'
             'ea5a06e60638828a3290c51071549a991ffdbb87e686b5d47a7114615a3be7c6')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_shortname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
+    fi
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
+    fi
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i "s/${_shortname}/${_pkgname}/g" "${srcdir}/squashfs-root/${_appname}.desktop"
     find "${srcdir}/squashfs-root/usr/share/metainfo" -type f -exec sed -i "s/${_appname}/${pkgname%-bin}/g" {} +
 }
