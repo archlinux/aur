@@ -1,8 +1,8 @@
 # Maintainer: Nick <nickallbritton@proton.me>
 
 pkgname=snick
-pkgver=0.5.2
-pkgrel=6
+pkgver=0.5.3
+pkgrel=7
 pkgdesc="Simple little snake game powered by SDL3!"
 url="https://codeberg.org/genuinely-jaava/snick"
 license=("GPL-3.0-or-later")
@@ -10,7 +10,7 @@ arch=("x86_64")
 provides=("snick")
 conflicts=("snick")
 source=("https://codeberg.org/genuinely-jaava/snick/archive/v$pkgver.tar.gz")
-sha256sums=('4a5b78b449f6cb875c13a70e75d3743caa188905cca628e737d83b3ce74f118c')
+sha256sums=('ca71770d67a9e1da519e9a09faa2b34b99ef617153d5eb6ed7ade3c3bb8a40da')
 
 build() {
   cd $pkgname/
