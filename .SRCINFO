@@ -15,7 +15,7 @@ pkgbase = dm-nuke
 	source = install.sh
 	source = run.sh
 	source = manpage
-	sha256sums = 3b73bcede64123c50e828684816712b7ea5131fbab68da28cf7f6a7d97de1795
+	sha256sums = 80d78a5d9ef29d7c8143e77d7965424637eb7d4446594a4e4879f61da67722f4
 	sha256sums = 75d125c788156bd6bfbc54803c0a2d95ad8c1b44c30b3eb409e1a5da91af40b9
 	sha256sums = bce180f18f22c0e7d6166165aa6236fa6eb4aad9e7a03df029b37cded4630034
 
