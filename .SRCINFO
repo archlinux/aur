@@ -1,6 +1,6 @@
 pkgbase = python-google-cloud-iam
 	pkgdesc = Google Cloud IAM python SDK
-	pkgver = 2.20.0
+	pkgver = 2.21.0
 	pkgrel = 1
 	url = https://github.com/googleapis/google-cloud-python
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-google-cloud-iam
 	depends = python-google-auth
 	depends = python-grpcio
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/g/google_cloud_iam/google_cloud_iam-2.20.0.tar.gz
-	sha256sums = 06568ed8313f59fac46d21a5aae4c54eb1dda9f6bcecf2736c58ab1065dc9173
+	source = https://files.pythonhosted.org/packages/source/g/google_cloud_iam/google_cloud_iam-2.21.0.tar.gz
+	sha256sums = fc560527e22b97c6cbfba0797d867cf956c727ba687b586b9aa44d78e92281a3
 
 pkgname = python-google-cloud-iam
