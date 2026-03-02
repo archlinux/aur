@@ -1,6 +1,6 @@
 pkgbase = nemlai
 	pkgdesc = NemlAI CLI client and Python SDK for automated grocery replenishment
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://nemlai.fly.dev
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = nemlai
 	makedepends = python-hatchling
 	depends = python
 	depends = python-httpx
-	source = https://files.pythonhosted.org/packages/source/n/nemlai/nemlai-0.1.0.tar.gz
-	sha256sums = 19a4b914954df6a1be43e73e52161804babbb5279e76e2c1589105396de78e49
+	source = https://pypi.org/packages/source/n/nemlai/nemlai-0.2.0.tar.gz
+	sha256sums = 2ffe7297eb8d621819ce90d4e46121cfd5c07b37038b5f0629256a112d574383
 
 pkgname = nemlai
