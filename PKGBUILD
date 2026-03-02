@@ -1,6 +1,6 @@
 # Maintainer: Scott Stavinoha <scottstavinoha@gmail.com>
 pkgname=aside
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Wayland-native LLM desktop assistant"
 arch=('x86_64')
@@ -43,7 +43,7 @@ optdepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('aa2da2eb850bf19203de403cb04cc97bc7e30e5b3b53c512d49a09ed0ae9aa37')
+sha256sums=('0ff14a11c8502ad4a5a8da3e82db6ce682495174ef576bb7dba45d63597e7108')
 
 build() {
     # Build aside wheel (C overlay + Python package)

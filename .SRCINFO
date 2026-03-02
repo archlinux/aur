@@ -1,6 +1,6 @@
 pkgbase = aside
 	pkgdesc = Wayland-native LLM desktop assistant
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/scottstav/aside
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = aside
 	depends = python-aiohttp
 	depends = python-httpx
 	depends = gobject-introspection
-	source = aside-0.3.1.tar.gz::https://github.com/scottstav/aside/archive/v0.3.1.tar.gz
-	sha256sums = aa2da2eb850bf19203de403cb04cc97bc7e30e5b3b53c512d49a09ed0ae9aa37
+	source = aside-0.3.2.tar.gz::https://github.com/scottstav/aside/archive/v0.3.2.tar.gz
+	sha256sums = 0ff14a11c8502ad4a5a8da3e82db6ce682495174ef576bb7dba45d63597e7108
 
 pkgname = aside
