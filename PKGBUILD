@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: 2026 Krema Contributors
 
 pkgname=krema
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A lightweight dock for KDE Plasma 6 — spiritual successor to Latte Dock'
 arch=('x86_64' 'aarch64')
