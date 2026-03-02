@@ -16,19 +16,18 @@ makedepends=('git' 'npm>=11.4.1' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-backup=('etc/mongodb-compass.conf')
 source=(
 	"$pkgname::git+https://github.com/mongodb-js/compass"
 	'hadron-build-ffmpeg.diff'
 	'fix-argv.diff'
+	'disable-update-checks.diff'
 	'update-dependencies.diff'
-	'mongodb-compass.conf'
 )
 b2sums=('SKIP'
-        'c0f139a686be88867b54ee530bd95bf51e71ccf2d07f25a8a70fffdfc7592ff017fd386641170a80596f855b2df39da5dc05fc563c018540fc3bc610e16971e1'
+        '56e2476e1543109bd543861b9f487f8f30399df6937f4343d108a9d0e99d457b2abc1df30def601f7c19ac611a2379e67649cf2619cea5825da5d839b00d56e1'
         '925dbea3aa18e5ac3529276f0c5d4c42d7ae5cb81cc9e5df3b411af751b8314e9a20bd0c5c7af144d2cdd11a26634a11aa7c064545d96003566640f5005375df'
-        'ddf1fa38c8eaf45af6c1aff985720bf9f6b95a981c7a0f1ec692db8043b0d6adca89166b91c1266afd4c141b69bb9b1aea4d32a2edb53ccbf4a62a2d708e1236'
-        '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
+        '2abf7d270582feb99bfee914928cdf9dbae18b11edd787dd906d36f43d9e6752720636b4dab82149aaf55f021acb90768e853ceaed140cd321f85b65685fcdb2'
+        '49fcaba20d432e52c7640fab42bc6781180d79a661290322e9ec82c6f04d07252c246a2e19e21b01949e7af0e76b7cbb4eb0f74c286f4195b2cd30687d192f1e')
 
 _sourcedirectory="$pkgname"
 
@@ -40,6 +39,9 @@ prepare() {
 
 	# Apply argv fixes
 	patch --forward -p1 < "$srcdir/fix-argv.diff"
+	
+	# Disable update checks
+	patch --forward -p1 < "$srcdir/disable-update-checks.diff"
 
 	# Set npm overrides for various dependencies
 	patch --forward -p1 < "$srcdir/update-dependencies.diff"
@@ -113,8 +115,6 @@ Type=Application
 StartupNotify=true
 Categories=Office;Database;Building;Debugger;IDE;GUIDesigner;Profiling;
 EOF
-
-	install -Dm644 "$srcdir/mongodb-compass.conf" "$pkgdir/etc/mongodb-compass.conf"
 
 	install -Dm644 "$srcdir/$_sourcedirectory/packages/compass/app-icons/linux/mongodb-compass-logo-dev.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
