@@ -1,6 +1,6 @@
 pkgbase = kubectl-neat
 	pkgdesc = Clean up Kuberntes yaml and json output to make it readable
-	pkgver = 2.0.3
+	pkgver = 2.0.4
 	pkgrel = 1
 	url = https://github.com/itaysk/kubectl-neat
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = kubectl-neat
 	license = Apache
 	makedepends = go
 	depends = kubectl
-	source = https://github.com/itaysk/kubectl-neat/archive/v2.0.3/kubectl-neat-2.0.3.tar.gz
-	sha256sums = d4788cac64102db35c69e21d99a67a08a83848f955cb9bf14fa9a56c49935b4f
+	source = https://github.com/itaysk/kubectl-neat/archive/v2.0.4/kubectl-neat-2.0.4.tar.gz
+	sha256sums = 293f024a2bac000464679292252a17d3942966b268c0fe6c5bd73e672fdfbf10
 
 pkgname = kubectl-neat

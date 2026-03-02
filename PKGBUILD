@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=kubectl-neat
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc='Clean up Kuberntes yaml and json output to make it readable'
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,10 @@ depends=('kubectl')
 makedepends=('go')
 groups=('kubectl-plugins')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('d4788cac64102db35c69e21d99a67a08a83848f955cb9bf14fa9a56c49935b4f')
+sha256sums=('293f024a2bac000464679292252a17d3942966b268c0fe6c5bd73e672fdfbf10')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver" || exit
   export CGO_ENABLED=1
   export CGO_LDFLAGS="$LDFLAGS"
   export CGO_CFLAGS="$CFLAGS"
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver" || exit
   install -Dm755 "$pkgname" -t "$pkgdir/usr/bin"
   install -Dm644 demo.png Readme.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
