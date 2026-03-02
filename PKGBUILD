@@ -4,7 +4,7 @@
 # Contributor: Chris Allison <daemon@cca.me.uk>
 
 pkgname=ccextractor
-pkgver=0.96.5
+pkgver=0.96.6
 pkgrel=1
 pkgdesc="A closed captions and teletext subtitles extractor for media file."
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('clang' 'ffmpeg' 'gpac' 'rust')
 source=(
   https://github.com/CCExtractor/ccextractor/releases/download/v$pkgver/ccextractor.$pkgver.tar.gz
 )
-sha512sums=('e55be913197811ee7c1a619893439a327039bf874f2aee72a082a512868a966b93f65810f45c72714036d285216c0aacf4c85e71a6ff2d8976fcb8cf54d6efef')
+sha512sums=('e953ba6d3884270c53535398160303a36ab0f9b4753322380eb32dc1301ad0d5e76e4cee0bd6739f02569cc5fbc6631c24a9525a4e6004648f112e31300c11d1')
 
 build() {
   cd "$srcdir/$pkgname/linux"
