@@ -2,7 +2,7 @@
 # Contributor: Danilo Kuehn <dk[at]nogo-software[dot]de>
 _pkgname=dry
 pkgname=$_pkgname-bin
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="dry: a terminal application to manage Docker containers and images"
 url="https://github.com/moncho/$_pkgname"
@@ -14,10 +14,10 @@ source_x86_64=("${_pkgdownload}-x86_64::$url/releases/download/v${pkgver}/$_pkgn
 source_i686=("${_pkgdownload}-i686::$url/releases/download/v${pkgver}/$_pkgname-linux-386")
 source_armv7h=("${_pkgdownload}-armv7h::$url/releases/download/v${pkgver}/$_pkgname-linux-armv7")
 source_aarch64=("${_pkgdownload}-aarch64::$url/releases/download/v${pkgver}/$_pkgname-linux-arm64")
-sha256sums_x86_64=('f8e580faa44bf70dfe6b2ead0e7a95fc64ad1a9becd6c6fce999de761b52a714')
-sha256sums_i686=('bf02be6fc7bdf4550f35c4b2c32b4bf27eb5ef1e4c99f985f02e3b447d1ed758')
-sha256sums_armv7h=('d8a3594943ba4d7b60e0f58ee1cd712cb790200738234da5944362043ef817ed')
-sha256sums_aarch64=('da903aeb820a68d15db327747ebfc5434329e3269cf2978ab3657cb85981edd4')
+sha256sums_x86_64=('cb38b16d1f45cd6fd9360e9191fff595e7df5604013f6fb0d47f654cf6cdbe70')
+sha256sums_i686=('0c42ea9c74f525f7a0ec4254241f9130c1c985e98b482e680b2e83902399292f')
+sha256sums_armv7h=('6e40489840ea9517fa5e1a5f63043f9caa542873bc7f605f993adb2ca34f5afc')
+sha256sums_aarch64=('8309aae6b6fc2c580e5863cd3436bbe9b22fe0a45a4d57c90691f8795debb5c9')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgdownload}-$CARCH" "${pkgdir}/usr/bin/${_pkgname}"
