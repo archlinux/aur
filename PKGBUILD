@@ -8,7 +8,7 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=6.5.1
+pkgver=6.6.0
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -69,15 +69,15 @@ conflicts=("forkgram-bin")
 
 options=('!debug' '!emptydirs')
 
-_pkgsrc="frk-v$pkgver-full"
+_pkgsrc="frk-v-full"
 _pkgsrc_tdlib="telegram-tdlib"
 _pkgext="tar.gz"
 source=(
-  "$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/v$pkgver/$_pkgsrc.$_pkgext"
+  "$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/v$pkgver/frk-v-full.$_pkgext"
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
 )
 sha256sums=(
-  '65a6b085e5dbaf3bcaa4b0f0253d6754468029ad0a5989abe23e36101078ad1f'
+  'f45df0f4ce8603ccb25033378f6532aebbe7fff7fdfa110b9581427de79eafa6'
   'SKIP'
 )
 
@@ -92,6 +92,12 @@ prepare() {
       patch -d "$_pkgsrc" -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
+
+  cd "$_pkgsrc"
+
+  # fix minizip headers
+  sed -E -e 's&#include <((un)?zip\.h)>&#include <minizip/\1>&g' \
+    -i Telegram/lib_base/base/zlib_help.h
 }
 
 build() {
@@ -121,7 +127,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr
     -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
     -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON
-    -DTDESKTOP_API_TEST=ON
     -DTDESKTOP_API_ID=611335
     -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
     -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF
@@ -164,49 +169,4 @@ package() {
   fi
 
   DESTDIR="$pkgdir" cmake --install build
-
-  # remove unwanted files
-  find "$pkgdir/usr/share/icons" \( -name '*.png' -o -name '*.svg' \) -delete
-  rm "$pkgdir/usr/share/applications/org.telegram.desktop.desktop"
-  rm "$pkgdir/usr/share/metainfo/org.telegram.desktop.metainfo.xml"
-  rm "$pkgdir/usr/share/dbus-1/services/org.telegram.desktop.service"
-
-  # rename executable
-  mv -v "$pkgdir"/usr/bin/{Telegram,"$_pkgname"}
-
-  # icon
-  install -Dm644 "$srcdir/$_pkgsrc/Telegram/Resources/art/forkgram/logo_256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
-
-  # service
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/dbus-1/services/forkgram.service" << END
-[D-BUS Service]
-Name=org.telegram.desktop
-Exec=/usr/bin/$_pkgname
-END
-
-  # launcher
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
-[Desktop Entry]
-Name=${_pkgname^}
-Comment=$pkgdesc
-TryExec=$_pkgname
-Exec=$_pkgname -- %u
-Icon=$_pkgname
-Terminal=false
-StartupWMClass=TelegramDesktop
-Type=Application
-Categories=Chat;Network;InstantMessaging;Qt;
-MimeType=x-scheme-handler/tg;x-scheme-handler/tonsite;
-Keywords=tg;chat;im;messaging;messenger;sms;tdesktop;$_pkgname
-Actions=quit;
-DBusActivatable=true
-SingleMainWindow=true
-X-GNOME-UsesNotifications=true
-X-GNOME-SingleWindow=true
-
-[Desktop Action quit]
-Exec=$_pkgname -quit
-Name=Quit ${_pkgname^}
-Icon=application-exit
-END
 }
