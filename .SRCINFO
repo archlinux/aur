@@ -1,0 +1,17 @@
+pkgbase = susshi
+	pkgdesc = modern, terminal-based SSH connection manager
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/yatoub/sushi
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	depends = openssh
+	source = https://github.com/yatoub/sushi/archive/refs/tags/v0.8.1.tar.gz
+	b2sums = 413ba7bb878eb00263539964fc9a546eb486b964f5a9c25344bcef7137215b80c65c47553370da591d6d536d74e5092c1b84d0f0db07e0650b4dd7fade76f7e2
+
+pkgname = susshi
