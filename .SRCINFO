@@ -1,16 +1,19 @@
 pkgbase = darkmx
 	pkgdesc = Decentralized communication app that utilizes Tor hidden services to allow you to easily have an anonymous, reliable, and censorship-resistant presence on the internet.
 	pkgver = 1.42
-	pkgrel = 1
+	pkgrel = 2
 	url = https://darkmx.app/
 	arch = x86_64
 	license = custom:darkmx
-	depends = gtk2
-	depends = hicolor-icon-theme
+	makedepends = patchelf
+	depends = gtk3
+	depends = libpng
 	depends = dbus-glib
 	optdepends = gconf: for shell integration
 	source = LICENSE
+	source = darkmx-pixbuf-fix.c
 	sha256sums = c4adbd46bfdeaf329fa03c578960b157f211a3626c532ae168be9d60514ef0d0
+	sha256sums = dbf214252dc6b687064dc35c9dd4a9f036a4c38f616007b40bc5f0643657782b
 	source_x86_64 = https://download.darkmx.app/darkmx-1.42-linux64.tar.gz
 	sha256sums_x86_64 = 7608510f48df3289f6d16449ccf2e62b724d6f8058826bcf12c4c62c7efb00ce
 
