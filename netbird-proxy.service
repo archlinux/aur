@@ -1,0 +1,27 @@
+[Unit]
+Description=NetBird Reverse Proxy
+Documentation=https://docs.netbird.io/manage/reverse-proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=netbird-proxy
+Group=netbird-proxy
+EnvironmentFile=/etc/netbird-proxy/proxy.env
+ExecStart=/usr/bin/netbird-proxy
+Restart=on-failure
+RestartSec=5s
+
+StateDirectory=netbird-proxy
+RuntimeDirectory=netbird-proxy
+
+# Hardening
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+NoNewPrivileges=yes
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

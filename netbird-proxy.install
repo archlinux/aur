@@ -1,0 +1,24 @@
+pre_install() {
+  getent group  netbird-proxy > /dev/null || groupadd -r netbird-proxy
+  getent passwd netbird-proxy > /dev/null || \
+    useradd -r -g netbird-proxy -d /var/lib/netbird-proxy -s /sbin/nologin \
+      -c "NetBird Reverse Proxy" netbird-proxy
+}
+
+pre_upgrade() {
+  pre_install
+}
+
+post_install() {
+  echo "==> Edit /etc/netbird-proxy/proxy.env and set NB_PROXY_TOKEN before starting."
+  echo "==> Generate a token with:"
+  echo "      netbird-server token create --config /etc/netbird-server/config.yaml"
+  echo "==> Then: systemctl enable --now netbird-proxy"
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  if systemctl is-active --quiet netbird-proxy; then
+    systemctl restart netbird-proxy
+  fi
+}
