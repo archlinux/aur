@@ -25,6 +25,7 @@ depends=(
     'python-dropbox'
     'texlive-latexextra'
     'python-cryptography'
+    'python-matplotlib'
 )
 makedepends=('gettext')
 optdepends=(

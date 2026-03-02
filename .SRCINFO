@@ -27,6 +27,7 @@ pkgbase = tac-writer
 	depends = python-dropbox
 	depends = texlive-latexextra
 	depends = python-cryptography
+	depends = python-matplotlib
 	optdepends = hunspell-bg: For Bulgarian spell checking
 	optdepends = hunspell-de: For German spell checking
 	optdepends = hunspell-el: For Greek spell checking
