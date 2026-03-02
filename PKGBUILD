@@ -13,7 +13,7 @@ groups=(clap-plugins lv2-plugins pro-audio vst3-plugins)
 options=('!debug')
 conflicts=(airwindows-consolidated-git)
 source=("AirwindowsConsolidated-${_airwin}-Linux.zip::https://github.com/baconpaul/airwin2rack/releases/download/DAWPlugin/AirwindowsConsolidated-${_airwin}-Linux.zip")
-sha256sums=('c22e2af087883e85c40b1bf455b20d838581852a94adcecac60545ced17599f1')
+sha256sums=('8d5ad38e0f1e6084fc476d1927f779b925a983e4d3179129f0cadbd05612034b')
 
 
 _install_plugin() {
