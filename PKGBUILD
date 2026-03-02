@@ -1,6 +1,6 @@
 # Maintainer: Andy Locks <jandylokc@gmail.com>
 pkgname=swhook
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='A minimalistic Webhook server'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('c7a25c1891cf4186cac66480185ffea6d53d09d3133dbfd5bbe5ba5de822bd6c')
+sha256sums=('283548b6f998ac69a09801f491c96a172b3721c481084d2d7dc73e073635df23')
 
 build() {
   cd "$srcdir/$pkgname-$pkgname-v$pkgver"
