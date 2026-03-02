@@ -3,33 +3,47 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Yufan You <ouuansteve at gmail>
 
-_npmname=dockerfile-language-server-nodejs
 pkgname=dockerfile-language-server
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Language server for Dockerfiles'
 arch=('any')
 url='https://github.com/rcjsuen/dockerfile-language-server'
 license=('MIT')
 depends=('nodejs')
-makedepends=('npm')
-source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
-sha512sums=('892dc6514027d5b0b7b0374bca0e8252721a5507d5889061f8585604f7ed2ba90992150cc451b6b2bdb93aa315699811b15b891283697e58093771426e4034d4')
-noextract=("$pkgname-$pkgver.tgz")
+makedepends=('npm' 'git')
+source=("git+$url#tag=v$pkgver")
+sha512sums=('d0701685e423547bff35c7c1fc56d7250d62e4ed7a6ae77d6bc506b99cd2503c9f7e2bd99807d04d0d2705e764d43fe4d3ad7767fe528a80c78fe6bb9e6f6bac')
+
+prepare() {
+	cd $pkgname
+	npm install
+}
+
+build() {
+	cd $pkgname
+	npm run build
+}
+
+check() {
+	cd $pkgname
+	npm test
+}
 
 package() {
-	export NODE_ENV=production
-	npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$pkgname-$pkgver.tgz"
-	install -d \
-		"$pkgdir/usr/share/licenses/$pkgname/" \
-		"$pkgdir/usr/share/doc/$pkgname/"
-	ln -s \
-		"/usr/lib/node_modules/$_npmname/License.txt" \
-		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	ln -s \
-		"/usr/lib/node_modules/$_npmname/OriginalLicense.txt" \
-		"$pkgdir/usr/share/licenses/$pkgname/ORIGINAL_LICENSE"
-	ln -s \
-		"/usr/lib/node_modules/$_npmname/README.md" \
-		"$pkgdir/usr/share/doc/$pkgname/"
+	cd $pkgname
+
+	local mod_dir=/usr/lib/node_modules/$pkgname
+	install -d "${pkgdir}${mod_dir}"
+
+	cp -r out/src "${pkgdir}${mod_dir}/lib"
+	cp -r package.json bin node_modules "${pkgdir}${mod_dir}/"
+
+	install -d "$pkgdir/usr/bin/"
+	ln -s "$mod_dir/bin/docker-langserver" "$pkgdir/usr/bin/docker-langserver"
+	chmod 755 "$pkgdir/usr/lib/node_modules/$pkgname/bin/docker-langserver"
+
+	install -Dm644 License.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 OriginalLicense.txt "$pkgdir/usr/share/licenses/$pkgname/ORIGINAL_LICENSE"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
