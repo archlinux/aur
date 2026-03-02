@@ -1,0 +1,4 @@
+[cljfmt-bin]
+source = "github"
+github = "weavejester/cljfmt"
+use_latest_release = true
