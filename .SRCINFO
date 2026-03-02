@@ -9,6 +9,6 @@ pkgbase = openbitdo
 	makedepends = cargo
 	depends = hidapi
 	source = openbitdo-v0.0.1-rc.1.tar.gz::https://github.com/bybrooklyn/openbitdo/archive/refs/tags/v0.0.1-rc.1.tar.gz
-	sha256sums = 3df720180bc6618826c8795701b2ffcbf2c3598eedeb086923fa810a100408a4
+	sha256sums = 8edc9356326dbd2083229e14e5ebee15bf33c45601b1f7edd1e87e163d2b0da7
 
 pkgname = openbitdo
