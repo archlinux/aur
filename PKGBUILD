@@ -10,8 +10,8 @@ depends=('gcc-libs' 'sqlite')
 optdepends=('bash: for shell completions' 'zsh: for shell completions')
 source_x86_64=("$pkgname-$pkgver.tar.gz::https://github.com/byteowlz/hstry/releases/download/v$pkgver/hstry-v$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver.tar.gz::https://github.com/byteowlz/hstry/releases/download/v$pkgver/hstry-v$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('240b03ac3ce0a853d19efef6956e085ac25ffb9b95481aa2c8b407030d940f88')
-sha256sums_aarch64=('af6c5bde4f16ef096172314f93065b84ad417bdd9fc284ded7961d1a03e6944f')
+sha256sums_x86_64=('bfb155ac2d0d63381b5a857cbe0fc4003c05220f4eec0508124f7273e1999ff2')
+sha256sums_aarch64=('fd63d98e4caf2558bf97b5a1d4d14390d2a427f9ea843fa3963ffe245bfbf046')
 
 package() {
     install -Dm755 hstry "$pkgdir/usr/bin/hstry"
