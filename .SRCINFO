@@ -1,6 +1,6 @@
 pkgbase = dm-nuke
 	pkgdesc = Decrypt smart nuke mkinitcpio hook. Supports keyfile, keyscript and nuke password that destroy LUKS headers.
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://vlasov.pro/ru/p/dm-crypt-nuke/
 	arch = x86_64
