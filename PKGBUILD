@@ -1,7 +1,7 @@
 # Maintainer: AlienFromDia <zacharias@4zellen.se>
 options=('!strip')
 pkgname=mtg-forge-bin
-pkgver=2.0.10
+pkgver=2.0.11
 pkgrel=1
 pkgdesc="An unofficial rules engine for the world's greatest card game."
 arch=("any")
@@ -47,7 +47,7 @@ package() {
 	rm "$pkgdir"/opt/Forge/*.{exe,command,cmd}
 }
 
-sha256sums=('4d44183d2438877bf2c3879e69f2ec0922b41f346bfd168bf71e9c61e3164066'
+sha256sums=('3bc3f8a4f4a19c90c2e07e65610ab7494528e497038c1746b9f4f14d4eb44c1c'
             '37a09e0299034f88a6c677d4924a34c51f447d4acf92580af46fb9eafbb7692e'
             '456f35df3e35010cb386b57525b225cf3f0495c85bc3e71cb6491c4375621fc5'
             '37b5b8ae063f816fb9d9723614412685fab0265154163febba0531c0ace0cb11')
