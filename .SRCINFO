@@ -1,6 +1,6 @@
 pkgbase = xemu
 	pkgdesc = Original Xbox emulator (fork of XQEMU)
-	pkgver = 0.8.131
+	pkgver = 0.8.134
 	pkgrel = 1
 	url = https://xemu.app/
 	install = xemu.install
@@ -30,23 +30,20 @@ pkgbase = xemu
 	depends = glibc
 	depends = glslang
 	depends = hicolor-icon-theme
-	depends = sdl2
+	depends = sdl3
 	optdepends = fancy-mouse-boot-rom: first-stage xbox bootrom
-	source = xemu::git+https://github.com/xemu-project/xemu.git#tag=v0.8.131
-	b2sums = 29bc40d926980a8a085b46b0657d488ae8614ccb7de64d281e4cebc53ae65348b69b68986ff5e1685c804702641f6c5a4bd58a312f5a21dab06e3181ba61dc54
+	source = xemu::git+https://github.com/xemu-project/xemu.git#tag=v0.8.134
+	b2sums = 466c6a1b8d269dc7e3484d7622c44c21c3dc2f6551fb4d5faafc4d718b9010b9866c112b7f62d19c4d0f8515494ce82eb312f09f8ee4a4d436c2fa5a43b16eda
 
 pkgname = xemu
 	depends = gcc-libs
 	depends = glibc
 	depends = glslang
 	depends = hicolor-icon-theme
-	depends = sdl2
+	depends = sdl3
 	depends = libcurl.so
 	depends = libepoxy.so
-	depends = libgdk-3.so
 	depends = libglib-2.0.so
-	depends = libgobject-2.0.so
-	depends = libgtk-3.so
 	depends = libpcap.so
 	depends = libusb-1.0.so
 	depends = libsamplerate.so

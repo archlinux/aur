@@ -2,7 +2,7 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.8.131
+pkgver=0.8.134
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=(x86_64)
@@ -13,7 +13,7 @@ depends=(
 	glibc
 	glslang
 	hicolor-icon-theme
-	sdl2
+	sdl3
 )
 makedepends=(
 	cmake
@@ -44,7 +44,7 @@ install=$pkgname.install
 source=(
 	"$pkgname::git+https://github.com/xemu-project/xemu.git#tag=v$pkgver"
 )
-b2sums=('29bc40d926980a8a085b46b0657d488ae8614ccb7de64d281e4cebc53ae65348b69b68986ff5e1685c804702641f6c5a4bd58a312f5a21dab06e3181ba61dc54')
+b2sums=('466c6a1b8d269dc7e3484d7622c44c21c3dc2f6551fb4d5faafc4d718b9010b9866c112b7f62d19c4d0f8515494ce82eb312f09f8ee4a4d436c2fa5a43b16eda')
 
 prepare() {
 	cd $pkgname
@@ -75,10 +75,7 @@ package() {
 	depends+=(
 		'libcurl.so'
 		'libepoxy.so'
-		'libgdk-3.so'
 		'libglib-2.0.so'
-		'libgobject-2.0.so'
-		'libgtk-3.so'
 		'libpcap.so'
 		'libusb-1.0.so'
 		'libsamplerate.so'
