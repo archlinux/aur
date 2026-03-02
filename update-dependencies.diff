@@ -1,13 +1,13 @@
 diff --git a/package.json b/package.json
-index 597aa80e3..483e75c5e 100644
+index a8b63c2b0..cc50ddaf2 100644
 --- a/package.json
 +++ b/package.json
-@@ -122,6 +122,9 @@
+@@ -118,6 +118,9 @@
+     "@leafygreen-ui/select": "^17.0.3",
      "@leafygreen-ui/text-input": "^16.2.3",
      "@leafygreen-ui/tokens": "^4.2.2",
-     "@leafygreen-ui/typography": "^22.2.4",
--    "kerberos": "^2.2.2"
-+    "kerberos": "^2.2.2",
+-    "@leafygreen-ui/typography": "^22.2.4"
++    "@leafygreen-ui/typography": "^22.2.4",
 +    "electron": "%%ELECTRON_VERSION%%",
 +    "electron-to-chromium": "latest",
 +    "html-webpack-plugin": "5.6.5"
