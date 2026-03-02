@@ -2,13 +2,13 @@
 # Contributor: Charlotte Van Petegem <charlotte@vanpetegem.me>
 
 pkgname=taglib-git
-pkgver=2.0.2.r6.648f5e58
+pkgver=2.2.r2.c43d2b3f
 pkgrel=1
 pkgdesc="A Library for reading and editing the meta-data of several popular audio formats"
 arch=(x86_64)
 url="https://taglib.github.io/"
 license=(LGPL-2.1-only MPL-2.0)
-depends=(gcc-libs sh zlib)
+depends=(glibc libgcc libstdc++ sh zlib)
 makedepends=(cmake git utf8cpp)
 checkdepends=(cppunit)
 source=("git+https://github.com/taglib/taglib.git")
