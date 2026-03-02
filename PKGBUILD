@@ -2,7 +2,7 @@
 _pkgname='mongodb-compass-beta'
 _edition=' Beta'
 pkgname="$_pkgname-bin"
-_pkgver='1.49.1-beta.2'
+_pkgver='1.49.2-beta.9'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - beta version - binary version'
@@ -21,14 +21,11 @@ optdepends=('org.freedesktop.secrets')
 options=('!debug')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-backup=('etc/mongodb-compass.conf')
 _betaprefix="$([[ "$_pkgname" =~ -beta$ ]] && printf 'beta/' || printf '')"
 source=(
 	"$pkgname-$pkgver.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm"
-	'mongodb-compass.conf'
 )
-b2sums=('99dd718676bac976cb0d523843b3aa029bc051727ca2f0632e99976166485042f21e99602a8a0abbcb5c7fe387d0265047843f1b27dcecede5fce0bbbcd1af24'
-        '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
+b2sums=('64dd02204ea502ef4f03e088037fd196fea7ba3dcd3b338c865230a7e56a8ec3cabd2afbf05ba5c074f9bd1c9deb671d7872a22968f4bb1ec4aa901f6568694c')
 
 check() {
 	_checkoutput="$(ELECTRON_OZONE_PLATFORM_HINT='auto' "$srcdir/usr/lib/$_pkgname/MongoDB Compass$_edition" --no-sandbox --version)"
@@ -51,8 +48,6 @@ package() {
 
 	install -dm755 "$pkgdir/usr/bin/"
 	ln -sf "/usr/lib/$_pkgname/MongoDB Compass$_edition" "$pkgdir/usr/bin/$_pkgname"
-
-	install -Dm644 "$srcdir/mongodb-compass.conf" "$pkgdir/etc/mongodb-compass.conf"
 
 	install -Dm644 "usr/share/applications/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 	install -Dm644 "usr/share/pixmaps/$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
