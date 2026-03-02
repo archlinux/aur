@@ -3,7 +3,7 @@ pkgver=1.1.3
 pkgrel=1
 arch=('any')
 url="https://github.com/owen-debiasio/cmdcreate"
-license=('MIT')
+license=('GPL3')
 depends=('curl' 'nano' 'git' 'openssl')
 makedepends=('cargo' 'git' 'rust')
 pkgdesc="Allows you to create custom commands for your custom scripts"
@@ -21,4 +21,5 @@ build() {
 package() {
     cd "$srcdir/$pkgname"
     install -Dm755 target/release/cmdcreate "$pkgdir/usr/bin/cmdcreate"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
