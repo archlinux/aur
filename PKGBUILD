@@ -1,6 +1,6 @@
 # Maintainer: Scott Stavinoha <scottstavinoha@gmail.com>
 pkgname=aside
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Wayland-native LLM desktop assistant"
 arch=('x86_64')
@@ -13,9 +13,17 @@ depends=(
     'json-c'
     'pipewire'
     'gtk4'
+    'libadwaita'
     'gtk4-layer-shell'
     'portaudio'
     'python'
+    'python-gobject'
+    'python-cairo'
+    'python-tiktoken'
+    'python-openai'
+    'python-pydantic'
+    'python-aiohttp'
+    'python-httpx'
     'gobject-introspection'
 )
 makedepends=(
@@ -29,31 +37,32 @@ makedepends=(
     'wayland-protocols'
 )
 optdepends=(
-    'grim: screenshot plugin'
-    'slurp: screenshot region selection'
+    # STT: sudo aside enable-stt (faster-whisper, ~100MB)
+    # TTS: sudo aside enable-tts (piper-tts)
 )
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('b6b42d41161a65eebb53f047663bd7adf88513780db49014fd960c51a7bb6765')
+sha256sums=('aa2da2eb850bf19203de403cb04cc97bc7e30e5b3b53c512d49a09ed0ae9aa37')
 
 build() {
     # Build aside wheel (C overlay + Python package)
     cd "$srcdir/$pkgname-$pkgver"
     python -m build --wheel --no-isolation
 
-    # Create fully isolated venv
-    python -m venv "$srcdir/venv"
+    # Create venv with access to system site-packages so distro-provided
+    # C extensions (numpy, PyGObject, pycairo) are used directly.
+    python -m venv --system-site-packages "$srcdir/venv"
     local _pip="$srcdir/venv/bin/pip"
 
     # Install aside (no-deps: we install deps explicitly below)
     "$_pip" install --no-cache-dir --no-deps \
         "$srcdir/$pkgname-$pkgver/dist/aside_assistant-"*.whl
 
-    # Install all remaining Python deps
-    "$_pip" install --no-cache-dir \
-        litellm faster-whisper sounddevice soundfile \
-        numpy webrtcvad-wheels PyGObject pycairo
+    # Install litellm — heavy deps (tiktoken, openai, pydantic, aiohttp, httpx)
+    # come from system packages via --system-site-packages, so pip only pulls
+    # the lightweight remainder.
+    "$_pip" install --no-cache-dir litellm
 }
 
 package() {
