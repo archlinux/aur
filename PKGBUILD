@@ -1,5 +1,5 @@
 pkgname=rovibe
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='OS-level identity and permission isolation for AI coding agents'
 arch=(any)
@@ -9,7 +9,7 @@ depends=(bash git)
 optdepends=('bats: integration test suite (run: sudo bats tests/isolation.bats)'
              'apparmor: kernel-level execution sandboxing for agent sessions')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/knowlen/rovibe/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b9f2a77af9a5d8b45bb2060bf02caf40639c7ef7d7abf6b4d75fd0d589a9b6d5')
+sha256sums=('cf1523f279ca6bb074370852fda4f3a6ccb1c7b08d879c539ffdb5d6cd8cc572')
 install=rovibe.install
 
 package() {
