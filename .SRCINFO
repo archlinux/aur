@@ -1,7 +1,7 @@
 pkgbase = nurv-bin
-	pkgdesc = Assumption Based Runtime Verificaton tool built on nuXmv
+	pkgdesc = Assumption Based Runtime Verification tool built on nuXmv
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://es-static.fbk.eu/tools/nurv/
 	arch = x86_64
 	license = LicenseRef-NuRV-FBK-License
