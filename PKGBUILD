@@ -1,7 +1,7 @@
 # Maintainer: KokaKiwi <kokakiwi+aur at kokakiwi dot net>
 
 _rockname=moonscript
-_rockver=0.5.0
+_rockver=0.6.0
 _rockrel=1
 
 pkgbase="lua-$_rockname"
@@ -22,9 +22,9 @@ makedepends=(
 )
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/leafo/moonscript/archive/refs/tags/v$pkgver.tar.gz"
         LICENSE)
-sha256sums=('1adb5bb38f9c6f306250f6e90d92796fe100408ee062ac0d14f3c4c22c92e682'
+sha256sums=('b98e58f4657ffc2e730904da0b4034796ff16f08e4e6c47c681905fd56509037'
             '81dfcb5d1f1b97c76b5dec57809e203c536aac48e66260d4563137283717280b')
-b2sums=('bda1e8fcd0191e8525ed6a7ecaf393712e24f8242b1dba5019b03f539d1e9acaa74faf67a1e3acddbb9b05f5cb570496d9910ff4f3a86986f2a8aa92234b41ef'
+b2sums=('34f3006ec2c51f525d1aab9c42d79ca3361114c9dbd179be4b57e36604598d25d9613d5f8d22587a201cebfea0a1ef9ddf31a19389aafb31634d48f66f818fde'
         'bd1d80f17545a9e82d40589969b3eafea115715890fc3fcbe8f83fdff2839ecb1a8dd913beb97b56a8b4758d3d633f785b485063093f39a7876cc1e47623ed3f')
 
 _package() {
