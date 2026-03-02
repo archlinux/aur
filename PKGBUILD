@@ -2,7 +2,7 @@
 pkgname=mewline
 conflicts=('mewline-git')
 provides=('mewline-git')
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Status bar for the meowrch distribution. Supports hyprland/bspwm."
 arch=('any')
@@ -33,7 +33,7 @@ makedepends=(
 install=mewline.install
 options=('!debug')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('33997a3936de6c63bdbb6a01483ec0e3b29c5a299e6b5d71edfc80b0f425eecb')
+sha256sums=('0bbc38d1ef7045dddca752b9d2c5cdcbc46edf9b3459defafe2e687ad11cc22b')
 
 package() {
   cd "$srcdir/mewline-$pkgver"
