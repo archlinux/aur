@@ -1,6 +1,6 @@
 pkgbase = gst-thumbnailers
 	pkgdesc = GStreamer video and audio file thumbnailer
-	pkgver = 1.0alpha.3
+	pkgver = 1.0rc
 	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/gst-thumbnailers
 	arch = x86_64
@@ -8,14 +8,22 @@ pkgbase = gst-thumbnailers
 	makedepends = git
 	makedepends = meson
 	makedepends = rust
-	depends = glib2
-	depends = gstreamer
 	depends = glycin
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = glibc
+	depends = glib2
+	depends = libgcc
+	optdepends = gst-libav: Extra media decoders (via FFmpeg)
+	optdepends = gst-plugins-bad: Extra media decoders
+	optdepends = gst-plugins-ugly: Extra media decoders
 	conflicts = gstreamer-thumbnailer
 	conflicts = gst-video-thumbnailer
 	replaces = gstreamer-thumbnailer
 	replaces = gst-video-thumbnailer
-	source = git+https://gitlab.gnome.org/GNOME/gst-thumbnailers.git#tag=1.0.alpha.3
-	sha256sums = 7506ec91af7b891dde332cf16ed6ce678bbd4d8226b93980729c60e1cd9f0065
+	source = git+https://gitlab.gnome.org/GNOME/gst-thumbnailers.git#tag=1.0.rc
+	sha256sums = 6e5511d4b401f8901b8a2cade31e1d65fa3f1e0b1c2d6cbf186505137cbd0b82
 
 pkgname = gst-thumbnailers
