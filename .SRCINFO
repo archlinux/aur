@@ -1,0 +1,28 @@
+pkgbase = meshiji-git
+	pkgdesc = A modern, cross-platform file explorer built with Flutter
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Veridian-Zenith/meshiji
+	arch = x86_64
+	license = OSL-3.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = clang
+	makedepends = fvm
+	depends = gtk3
+	depends = libx11
+	depends = libxext
+	depends = libxfixes
+	depends = libxi
+	depends = libxrandr
+	depends = libxrender
+	depends = libxtst
+	depends = xz
+	provides = meshiji
+	conflicts = meshiji
+	source = git+https://github.com/Veridian-Zenith/meshiji.git#tag=v1.1.0
+	sha256sums = SKIP
+
+pkgname = meshiji-git
