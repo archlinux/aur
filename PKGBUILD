@@ -1,7 +1,7 @@
 # Maintainer: Ivan Janković <ivan.jankovic.unix@gmail.com>
 
 pkgname=tmuzika
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Terminal music player with ncurses UI and GStreamer backend"
 arch=('x86_64')
@@ -11,19 +11,18 @@ depends=('gstreamer' 'glib2' 'ncurses')
 makedepends=('git' 'pkgconf')
 provides=('tmuzika')
 conflicts=('tmuzika')
-#source=("git+$url.git")
 source=("tmuzika-$pkgver.tar.gz::https://github.com/ivanjeka/tmuzika/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
+
 build() {
-	#cd tmuzika-$pkgver
 	cd "$srcdir/$pkgname-$pkgver"
 	make
 }
 
 package() {
-	#cd tmuzika
 	cd "$srcdir/$pkgname-$pkgver"
+
 	# binarni fajl
 	make DESTDIR="$pkgdir" install
 
