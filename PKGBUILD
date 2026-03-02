@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=tree-sitter-elixir
-pkgver=0.3.4
-pkgrel=3
+pkgver=0.3.5
+pkgrel=1
 pkgdesc="Elixir grammar for tree-sitter"
 arch=('i686' 'x86_64')
 url="https://github.com/elixir-lang/tree-sitter-elixir"
@@ -13,7 +13,7 @@ makedepends=('nodejs' 'tree-sitter-cli')
 provides=('libtree-sitter-elixir.so')
 options=('staticlibs')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/elixir-lang/tree-sitter-elixir/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cd40b25fc0259fda2f456d7a1e29c067c58c11cd7d96fbf71b546da069d92239')
+sha256sums=('7d8bf37949e2bea75a19d38491d7680ed1c9f0f5a41a5235832d718ec174c7c4')
 
 
 build() {
