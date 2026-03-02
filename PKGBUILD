@@ -2,7 +2,7 @@
 _target='compass-isolated'
 _edition=' Isolated Edition'
 pkgname="mongodb-$_target"
-_pkgver='1.49.1'
+_pkgver='1.49.2'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - Isolated Edition'
@@ -13,19 +13,18 @@ _electronpkg='electron37'
 depends=("$_electronpkg" 'krb5' 'libmongocrypt>=1.12.0' 'libsecret' 'lsb-release' 'nodejs>=22.21.1')
 makedepends=('git' 'npm>=11.4.1' 'python' 'unzip')
 optdepends=('org.freedesktop.secrets')
-backup=('etc/mongodb-compass.conf')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/mongodb-js/compass/archive/v$_pkgver.tar.gz"
 	'hadron-build-ffmpeg.diff'
 	'fix-argv.diff'
+	'disable-update-checks.diff'
 	'update-dependencies.diff'
-	'mongodb-compass.conf'
 )
-b2sums=('efda14cfc07d5439a99627ffc1101b91684bbf831048232410d63c1ce2dfdbb2364c40942da04924b1ea2b7d6f63eb864b9b149df970b805209658ca3655e4fc'
-        'c0f139a686be88867b54ee530bd95bf51e71ccf2d07f25a8a70fffdfc7592ff017fd386641170a80596f855b2df39da5dc05fc563c018540fc3bc610e16971e1'
+b2sums=('c6938db0bc38c126e520693d2c6c84db317f8718a9d6d4bdc6ea6460f7e55494d13e08a1ce62dbcc232fbaae479e712bcc0e75be59d472f4732ab19e2fd6f4b1'
+        '56e2476e1543109bd543861b9f487f8f30399df6937f4343d108a9d0e99d457b2abc1df30def601f7c19ac611a2379e67649cf2619cea5825da5d839b00d56e1'
         '925dbea3aa18e5ac3529276f0c5d4c42d7ae5cb81cc9e5df3b411af751b8314e9a20bd0c5c7af144d2cdd11a26634a11aa7c064545d96003566640f5005375df'
-        '5f42f9cd32956adb4c90e5db5f24afbccf63a881fb1e87913d6d52938c3d358db10b18e4caae5e4d2ac65e206f61e8af092388c729ec09f67e18ea1e3edc3f07'
-        '42535bfc10db335d685fad29aade1d091554a321fb4032b72db5699a450c6d701f630c45bb0d4cf9f456e77e3263a5aed49e843516cd3016d1a837ac5f1e6fec')
+        '2abf7d270582feb99bfee914928cdf9dbae18b11edd787dd906d36f43d9e6752720636b4dab82149aaf55f021acb90768e853ceaed140cd321f85b65685fcdb2'
+        '4f3a3b5b1cb2864fb5305ac708069967430c6edeb219267400a03f9652c36ed492055ed515a5cf9bd16d5c4217da38139df009ae124e8dedf1d850737a0548c7')
 
 _sourcedirectory="compass-$_pkgver"
 
@@ -37,6 +36,9 @@ prepare() {
 
 	# Apply argv fixes
 	patch --forward -p1 < "$srcdir/fix-argv.diff"
+	
+	# Disable update checks
+	patch --forward -p1 < "$srcdir/disable-update-checks.diff"
 
 	# Set npm overrides for various dependencies
 	patch --forward -p1 < "$srcdir/update-dependencies.diff"
@@ -102,8 +104,6 @@ Type=Application
 StartupNotify=true
 Categories=Office;Database;Building;Debugger;IDE;GUIDesigner;Profiling;
 EOF
-
-	install -Dm644 "$srcdir/mongodb-compass.conf" "$pkgdir/etc/mongodb-compass.conf"
 
 	if [[ "$_target" =~ -beta$ ]]; then
 		install -Dm644 "$srcdir/$_sourcedirectory/packages/compass/app-icons/linux/mongodb-compass-logo-beta.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
