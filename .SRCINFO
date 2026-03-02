@@ -1,0 +1,15 @@
+pkgbase = wavelib-git
+	pkgdesc = C Implementation of Discrete Wavelet Transform (DWT,SWT and MODWT), Continuous Wavelet transform (CWT) and Discrete Packet Transform ( Full Tree Decomposition and Best Basis DWPT).
+	pkgver = r131.7f61bf5
+	pkgrel = 1
+	url = https://github.com/rafat/wavelib/tree/master
+	arch = any
+	license = BSD 3-Clause
+	makedepends = cmake
+	makedepends = git
+	options = !debug
+	options = !lto
+	source = wavelib-git::git+https://github.com/rafat/wavelib.git
+	sha256sums = SKIP
+
+pkgname = wavelib-git
