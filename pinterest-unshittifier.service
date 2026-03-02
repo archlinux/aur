@@ -1,0 +1,11 @@
+[Unit]
+Description=Pinterest Unshittifier Daemon
+
+[Service]
+ExecStart=/usr/bin/pinterest-unshittifier
+Restart=on-failure
+RestartSec=2
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target

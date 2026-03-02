@@ -1,0 +1,16 @@
+pkgbase = pinterest-unshittifier-git
+	pkgdesc = Daemon to fix Pinterest filenames and extensions in Downloads
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Tok1shu/pinterest-unshittifier
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-watchdog
+	source = pinterest-unshittifier-git::git+https://github.com/Tok1shu/pinterest-unshittifier
+	source = pinterest-unshittifier.service
+	sha256sums = SKIP
+	sha256sums = fdae1ab09dfd1cbdd830a6c2eb821def3d35984e81c7e4b84ea81e4176c7d94c
+
+pkgname = pinterest-unshittifier-git
