@@ -1,6 +1,6 @@
 pkgbase = playonlinux
 	pkgdesc = GUI for managing Windows programs under linux
-	pkgver = 4.4.r54.ga91f598
+	pkgver = 4.4.r56.gfde00fe
 	pkgrel = 1
 	url = https://www.playonlinux.com/
 	arch = x86_64

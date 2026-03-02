@@ -6,7 +6,7 @@
 # Contributor: Skunnyk <skunnyk@archlinux.fr>
 
 pkgname=playonlinux
-pkgver=4.4.r54.ga91f598
+pkgver=4.4.r56.gfde00fe
 pkgrel=1
 pkgdesc="GUI for managing Windows programs under linux"
 arch=('x86_64')
@@ -39,7 +39,6 @@ build() {
 
 prepare() {
     cd "${srcdir}/playonlinux4"
-    patch -Np1 -i ../../urllib3.patch
 }
 
 package() {
