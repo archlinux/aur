@@ -1,8 +1,8 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=hush3
-pkgver=3.10.3
-pkgrel=2
+pkgver=3.10.5
+pkgrel=1
 pkgdesc='HUSH (Privacy Cryptocurrency and Messenger) full node that supports z-addresses'
 url='http://git.hush.is/hush/hush3'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('unzip' 'wget' 'git' 'python' 'rust' 'curl' 'autoconf')
 provides=('hush3')
 conflicts=('hush3-bin')
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('03bc50f02b4a1cafbf553cdb69b57da320225264ec586af0190d8deda0d3e91cf004f9a9ce88ffa9d601273465c890448f3c1e618c249c3704aad46aba8b02f5')
+sha512sums=('1d7e088b94b5d6b7fc7fb33e2edcf7f702afbceb58ab1a56540910268f31f8bef2ecb99abe7f34cc4cc78910df48572b0c57b1ea1b794b63bdf611d3281ed72d')
 
 build() {
   tar xzvf v$pkgver.tar.gz
@@ -28,8 +28,6 @@ package() {
   install -Dm755 "${srcdir}/$pkgname/src/hushd" "${pkgdir}/opt/$pkgname/hushd"
   install -Dm755 "${srcdir}/$pkgname/src/hush-arrakis-chain" "${pkgdir}/opt/$pkgname/hush-arrakis-chain"
   install -Dm755 "${srcdir}/$pkgname/src/hush-tx" "${pkgdir}/opt/$pkgname/hush-tx"
-  install -Dm755 "${srcdir}/$pkgname/src/dragonxd" "${pkgdir}/opt/$pkgname/dragonxd"
-  install -Dm755 "${srcdir}/$pkgname/src/dragonx-cli" "${pkgdir}/opt/$pkgname/dragonx-cli"
 
   # install required sapling files and asmap.dat
   install -Dm644 "${srcdir}/$pkgname/sapling-output.params" "${pkgdir}/opt/$pkgname/sapling-output.params"
@@ -50,8 +48,6 @@ package() {
   ln -s /opt/${pkgname}/hushd "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/hush-arrakis-chain "${pkgdir}/usr/bin"
   ln -s /opt/${pkgname}/hush-tx "${pkgdir}/usr/bin"
-  ln -s /opt/${pkgname}/dragonx-cli "${pkgdir}/usr/bin"
-  ln -s /opt/${pkgname}/dragonxd "${pkgdir}/usr/bin"
 
   install -d "${pkgdir}/usr/share/hush"
   ln -s /opt/${pkgname}/sapling-output.params "${pkgdir}/usr/share/hush"
