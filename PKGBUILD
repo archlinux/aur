@@ -13,10 +13,10 @@ url="https://networkmanager.dev/docs/vpn/"
 arch=(x86_64)
 license=(GPL-2.0-or-later)
 depends=(
-  gcc-libs
   glib2
   glibc
   gtk4
+  libgcc
   libnm
   libnma-gtk4
   libsecret
@@ -89,9 +89,9 @@ package_networkmanager-openvpn() {
 package_networkmanager-vpn-plugin-openvpn() {
   pkgdesc+=" (VPN plugin only)"
   depends=(
-    gcc-libs
     glib2
     glibc
+    libgcc
     libnm
     openvpn
   )
