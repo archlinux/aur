@@ -1,0 +1,14 @@
+pkgbase = claude-cowork-rs
+	pkgdesc = Linux daemon for Claude Desktop Cowork (Local Agent Mode)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bKNNNNN/claude-cowork-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = claude-cowork-rs-0.1.0.tar.gz::https://github.com/bKNNNNN/claude-cowork-rs/archive/v0.1.0.tar.gz
+	sha256sums = 8d0290055ce344335178b89768352f7db832931e410c8510e1dafb5d5b7bb55d
+
+pkgname = claude-cowork-rs
