@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('3646287e5ee0068f3950916d43ea27db1ff19117177861ed9700d411dac5a5d4')
+sha256sums=('08d7b7ffecf9f2f72ad88f1ecaee4bbf669b81cbf502fa6daa8e71ccbd68a2ca')
 
 build() {
   cd "$srcdir/string-pool-$pkgname-v$pkgver"
