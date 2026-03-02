@@ -1,7 +1,7 @@
 pkgbase = python-nanoid
 	pkgdesc = A tiny, secure, URL-friendly, unique string ID generator for Python
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/puyuan/py-nanoid
 	arch = any
 	license = MIT

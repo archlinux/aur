@@ -1,11 +1,11 @@
-# Maintainer: 
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
 # Contributor: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=python-nanoid
 _name=${pkgname#python-}
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A tiny, secure, URL-friendly, unique string ID generator for Python"
 arch=('any')
 url="https://github.com/puyuan/py-nanoid"
