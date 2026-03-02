@@ -2,7 +2,7 @@
 
 pkgname=bazaar-git
 _pkgname=bazaar
-pkgver=0.6.3.r5.g0768995
+pkgver=0.7.10.r83.gd0a7ea2
 pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)"
 arch=('x86_64')
@@ -35,21 +35,23 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
   "bazaar::git+https://github.com/kolunmi/bazaar.git"
+  "blueprint-compiler::git+https://gitlab.gnome.org/GNOME/blueprint-compiler.git#tag=v0.20.0"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'a99a90cf5d39a97a0770038ecbd4edede2643a6ff116c6dd9308ae3e70573631')
 
 pkgver() {
   cd bazaar
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+
 }
 
 build() {
-  cd bazaar
-  meson setup --prefix=/usr --buildtype=release build
-  ninja -C build
+  meson setup --prefix=/usr --buildtype=release bazaar bazaar-build
+  ninja -C bazaar-build
 }
 
 package() {
-  cd bazaar
-  DESTDIR="$pkgdir" meson install -C build
+  # skip subprojects
+  DESTDIR="$pkgdir" meson install -C bazaar-build --skip-subprojects
 }
