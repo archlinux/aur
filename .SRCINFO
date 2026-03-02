@@ -1,0 +1,23 @@
+pkgbase = uptater
+	pkgdesc = Clean, robust GUI for managing Arch Linux packages and AUR updates
+	pkgver = 1.0.1.3
+	pkgrel = 1
+	url = https://github.com/gytdoo/uptater
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = qt6-tools
+	makedepends = pkgconf
+	depends = qt6-base
+	depends = qtermwidget
+	depends = pacman-contrib
+	depends = curl
+	optdepends = reflector: for mirrorlist management
+	provides = uptater
+	conflicts = uptater-bin
+	conflicts = uptater-git
+	options = !debug
+	source = uptater-1.0.1.3.tar.gz::https://github.com/gytdoo/uptater/archive/refs/tags/v1.0.1.3.tar.gz
+	sha256sums = 182701a699f44acccec25a0aec78221d8182041d8b3d2d2aaa0dcaf598b38916
+
+pkgname = uptater
