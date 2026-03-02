@@ -1,7 +1,7 @@
 # Maintainer: Clarence <xjh.azzbcc@gmail.com>
 _pkgname=spandsp
 pkgname=${_pkgname}-git
-pkgver=3.0.0.r536.g5394b2c
+pkgver=3.0.0.r563.g7977601
 pkgrel=1
 pkgdesc="A DSP library for telephony (FreeSWITCH version)"
 arch=('x86_64')
@@ -20,8 +20,12 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
+
+  sed -i "s|libdir='\${exec_prefix}/lib/x86_64-linux-gnu'|libdir='\${exec_prefix}/lib'|g" configure.ac
+  sed -i "s|libdir='\${exec_prefix}/lib64'|libdir='\${exec_prefix}/lib'|g" configure.ac
+
   ./autogen.sh
-  ./configure --prefix=/usr --disable-static
+  ./configure --prefix=/usr --libdir=/usr/lib --disable-static
   make -C src
 }
 
@@ -30,4 +34,3 @@ package() {
   make DESTDIR="$pkgdir" -C src install
   make DESTDIR="$pkgdir" install-pkgconfigDATA
 }
-
