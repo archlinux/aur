@@ -1,7 +1,7 @@
 pkgbase = arduino-avr-core
 	pkgdesc = Arduino AVR core with upstream avr-gcc and avrdude
 	pkgver = 1.8.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/arduino/ArduinoCore-avr
 	arch = any
 	license = LGPL-2.1-or-later AND BSD-3-Clause AND MIT AND GPL-2.0-or-later AND GPL-3.0-or-later AND ISC AND LicenseRef-wifishield AND LicenseRef-LUFA

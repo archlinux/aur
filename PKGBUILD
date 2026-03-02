@@ -4,7 +4,7 @@
 # should be renamed to arduino-core-avr to match upstream and Debian.
 pkgname=arduino-avr-core
 pkgver=1.8.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Arduino AVR core with upstream avr-gcc and avrdude"
 arch=('any') # binaries are for avr
 url="https://github.com/arduino/ArduinoCore-avr"
@@ -39,16 +39,16 @@ package() {
 	# LicenseRef-wifishield
 	ln -s "$_avr_path/firmwares/wifishield/wifiHD/src/license.txt" LICENSE-LicenseRef-wifishield
 	# LicenseRef-LUFA, used in bootloaders/caterina* and firmwares/atmegaxxu2
-	head -n 30 "$_avr_src/bootloaders/caterina/Caterina.c" >LICENSE-LicenseRef-LUFA
+	sed -n '1,/\*\//p; 1,/^\*\//d; 1,/\*\//p' "$_avr_src/bootloaders/caterina/Caterina.c" >LICENSE-LicenseRef-LUFA
 	# the MIT license of Udp.h
-	head -n 33 "$_avr_src/cores/arduino/Udp.h" >LICENSE-MIT-Udp
+	sed -n '1,/^ \*\//p' "$_avr_src/cores/arduino/Udp.h" >LICENSE-MIT-Udp
 	# similar yet different ISC licenses
-	head -n 18 "$_avr_src/cores/arduino/CDC.cpp" >LICENSE-ISC-CDC
-	head -n 19 "$_avr_src/cores/arduino/USBCore.cpp" >LICENSE-ISC-USBCore.cpp
-	head -n 17 "$_avr_src/cores/arduino/USBCore.h" >LICENSE-ISC-USBCore.h
-	head -n 18 "$_avr_src/cores/arduino/USBDesc.h" >LICENSE-ISC-USBDesc
-	head -n 18 "$_avr_src/libraries/HID/src/HID.h" >LICENSE-ISC-HID
+	sed -n '1,/^\*\//p' "$_avr_src/cores/arduino/CDC.cpp" >LICENSE-ISC-CDC
+	sed -n '1,/^\*\//p' "$_avr_src/cores/arduino/USBCore.cpp" >LICENSE-ISC-USBCore.cpp
+	sed -n '1,/^\*\//p' "$_avr_src/cores/arduino/USBCore.h" >LICENSE-ISC-USBCore.h
+	sed -n '1,/^ \*\//p' "$_avr_src/cores/arduino/USBDesc.h" >LICENSE-ISC-USBDesc
+	sed -n '1,/^ \*\//p' "$_avr_src/libraries/HID/src/HID.h" >LICENSE-ISC-HID
 	# BSD-3-Clause licenses
-	head -n 39 "$_avr_src/bootloaders/optiboot/boot.h" >LICENSE-BSD-3-Clause-optiboot
-	head -n 30 "$_avr_src/firmwares/wifishield/wifi_dnld/src/clocks.h" >LICENSE-BSD-3-Clause-wifishield
+	sed -n '1,/^\*\//d; 1,/\*\//p' "$_avr_src/bootloaders/optiboot/boot.h" >LICENSE-BSD-3-Clause-optiboot
+	sed -n '1,/^ \*\//p' "$_avr_src/firmwares/wifishield/wifi_dnld/src/clocks.h" >LICENSE-BSD-3-Clause-wifishield
 }
