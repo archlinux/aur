@@ -3,8 +3,8 @@
 _pkgauthor=keircn
 _pkgname=archium
 pkgname=${_pkgname}-bin
-pkgver=1.10.3
-pkgrel=2
+pkgver=1.10.4
+pkgrel=1
 pkgdesc="Archium is a wrapper for AUR helpers such as YAY and Paru"
 arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -21,12 +21,12 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
     "COMPLETIONS-${pkgver}.zsh::${_urlraw}/completions/archium.zsh"
     "COMPLETIONS-${pkgver}.fish::${_urlraw}/completions/archium.fish")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('0ea41b972bc6a798e8198d0a70fba65b55e37267db997fb22576e5ca5de4af2f'
-            '51e89e6701f3278edd5fcf57b98eb819d7c4c884444062b5ae5690efc8f73f93'
-            '79d27058423f72378c99a998be3aa776fc60f41059aedde47e690b98f4ba3f34'
-            '30794b2e46cce4ee1d52039274653c0f496f455a5d925760351219d73b16c88f'
-            '03c7d1742b7efa3fe6148eaa789ba0d3321c1fa2605d8d164874aae53aee1fa6')
-sha256sums_x86_64=('a578beed98ba03bc532f6dacf84026bf6863a761acd5941c1ad2758ce2bc6ee0')
+sha256sums=('bbe1f2309460375355b43d720b5043590a481c5fef64ba1b51cdb45e8ea9f81f'
+            '64884d0e219ec69eb586cb6bfd112ae61ca7cc9d7cee22033cb6ad294d6b3846'
+            'f65f1bc2ff9e33e36a0f2ed98bc21dd1cd262d07a4588889e875a75e96dab2ee'
+            'fc914b73edfda6bb54c3564ea46ee0ba9fe918bc05f066661b829d6c6406a681'
+            '7ca37c452a577032b867daff95963d8d781a66adffa19a899b0380687c21e254')
+sha256sums_x86_64=('253dcecfd6e0a234c0586c24b178f49b9a2077d117ba4fac7ba46f44f0f4576f')
 
 prepare() {
     cd "${srcdir}/" || exit
