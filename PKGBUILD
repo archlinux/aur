@@ -1,5 +1,5 @@
 # Maintainer: Dae Euhwa <daedaevibin@naver.com>
-pkgname=meshiji-git
+pkgname=meshiji
 pkgver=1.1.0
 pkgrel=1
 pkgdesc="A modern, cross-platform file explorer built with Flutter"
@@ -9,8 +9,8 @@ license=('OSL-3.0')
 depends=('gtk3' 'libx11' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxtst' 'xz')
 makedepends=('git' 'cmake' 'ninja' 'pkgconf' 'clang' 'fvm')
 optdepends=()
-provides=('meshiji')
-conflicts=('meshiji')
+provides=('meshiji-git')
+conflicts=('meshiji-git')
 source=("git+https://github.com/Veridian-Zenith/meshiji.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
