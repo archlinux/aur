@@ -1,0 +1,37 @@
+#!/usr/bin/openrc-run
+
+# OpenRC Init script for 'temp-throttle' (https://github.com/Sepero/temp-throttle).
+# Distributed under the terms of the GNU General Public License version 3.0, or any later version at your choice.
+# (c) dreieck, 2026-03-02.
+
+# Version and edit date of the initscript (keep the next lines in that format for automatic version parsing by package build scripts):
+# INITSCRIPTVERSION=0.1
+# INITSCRIPTDATE=20260302
+
+if [ -n "${temp_throttle_config}" ]; then
+  _configarg="-c ${temp_throttle_config}"
+else
+  _configarg="-c /etc/temp-throttle.conf"
+fi
+
+if [ -n "${temp_throttle_pidfile}" ]; then
+  pidfile="${temp_throttle_pidfile}"
+else
+  pidfile=/run/temp-throttle.pid
+fi
+
+if [ -n "${temp_throttle_logfile}" ]; then
+  _logarg="-l ${temp_throttle_logfile}"
+else
+  _logarg="-l /dev/null"
+fi
+
+name="temp-throttle"
+description="Temperature based CPUFreq throttling daemon (throttles maximum scaling frequency)."
+command=/usr/bin/temp-throttle
+command_args="${_configarg} ${_logarg} ${temp_throttle_extra_args}"
+command_background=yes
+
+depend() {
+  after cpupower
+}

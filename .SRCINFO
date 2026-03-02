@@ -1,0 +1,17 @@
+pkgbase = temp-throttle-openrc
+	pkgdesc = OpenRC init script for 'temp-throttle'.
+	pkgver = 0.1.d20260302
+	pkgrel = 1
+	epoch = 0
+	url = https://aur.archlinux.org/pkgbase/temp-throttle-openrc
+	arch = any
+	license = GPL-3.0-or-later
+	depends = temp-throttle
+	optdepends = openrc: To make use of the OpenRC initscripts.
+	backup = etc/conf.d/temp-throttle
+	source = temp-throttle-openrc
+	source = temp-throttle-conf.d
+	sha256sums = e5c77af0eafce01f96914a425ba6a754d38ce813a3ee8cc8ef9e5daff357320c
+	sha256sums = 80601aef49cdd5d93075daf3a916e5e1f4e308f5234d93914bca3f17b27fbaeb
+
+pkgname = temp-throttle-openrc
