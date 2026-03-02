@@ -1,0 +1,23 @@
+pkgbase = memory-desktop-bin
+	pkgdesc = Persistent cognitive layer for AI systems — desktop interface
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Sakaax/memory
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = libayatana-appindicator
+	provides = memory-desktop
+	conflicts = memory-desktop
+	source = memory_0.1.2_amd64.deb::https://github.com/Sakaax/memory/releases/download/v0.1.2/memory_0.1.2_amd64.deb
+	source = memory-desktop.desktop::https://raw.githubusercontent.com/Sakaax/memory/main/desktop/dist-assets/memory-desktop.desktop
+	source = memory-desktop-128.png::https://raw.githubusercontent.com/Sakaax/memory/main/desktop/src-tauri/icons/128x128.png
+	source = memory-desktop-32.png::https://raw.githubusercontent.com/Sakaax/memory/main/desktop/src-tauri/icons/32x32.png
+	sha256sums = 5650b6bd9357f6f141716e1539a16913103903b0448c557f4159c82cf43f8746
+	sha256sums = 1e2bb437df5fc47bbbbb6d98ebe345984a35ce7e0809281c3417f9f9b23b3982
+	sha256sums = 72bbd07c12014580f9e00e1108c704a9ff46d2a5dd215a6ec3c5f17f3549053c
+	sha256sums = c95698b503684c81865d92c0fde91b56e888d5d995dbba38c7e51f1a4d9fe415
+
+pkgname = memory-desktop-bin
