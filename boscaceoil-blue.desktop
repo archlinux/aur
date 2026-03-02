@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Bosca Ceoil Blue
+Exec=/usr/bin/boscaceoil-blue %F
+Comment=A simple and beginner-friendly app for making music
+Categories=Music;Multimedia;
+Icon=boscaceoil-blue
+Terminal=false
