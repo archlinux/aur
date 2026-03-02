@@ -1,16 +1,15 @@
 pkgbase = lrc_tty
 	pkgdesc = Terminal lyric viewer for MPRIS players
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://github.com/larsgrah/lrc_tty
 	arch = x86_64
 	license = GPL3
 	makedepends = zig
 	makedepends = pkgconf
-	depends = playerctl
 	depends = dbus
 	options = !debug
-	source = lrc_tty-0.5.tar.gz::https://github.com/larsgrah/lrc_tty/archive/refs/tags/v0.5.tar.gz
-	sha256sums = fb1bfa68808361b029d879b4096b7070c7ece45d1289906265fa895ac77fab41
+	source = lrc_tty-0.6.tar.gz::https://github.com/larsgrah/lrc_tty/archive/refs/tags/v0.6.tar.gz
+	sha256sums = 6cf5d568f72c5c2db996197d8bc39aef839beb75462b1feef369b14d777bfece
 
 pkgname = lrc_tty
