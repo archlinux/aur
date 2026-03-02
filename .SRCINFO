@@ -1,7 +1,7 @@
 pkgbase = tail-tray
 	pkgdesc = Tailscale tray menu and UI for the KDE Plasma Desktop
-	pkgver = 0.2.29
-	pkgrel = 2
+	pkgver = 0.2.30
+	pkgrel = 1
 	url = https://github.com/SneWs/tail-tray
 	arch = x86_64
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = tail-tray
 	depends = knotifications
 	optdepends = davfs2: to access Tail drives
 	options = strip
-	source = git+https://github.com/SneWs/tail-tray#tag=v0.2.29
-	sha512sums = 2e53df9c69cf82938376e55726b90a1957933da05a76fb19d2c83e0fccaf1f0c60086c9f583fddbe8a1bb336bd7f44982993e6d49b5391da8c9f46c510eb1de3
+	source = git+https://github.com/SneWs/tail-tray#tag=v0.2.30
+	sha512sums = 4f8da56f2df85976b6929919db09e005b2471010f8421c371077dfb5c3e431d47f92cbeab9d4a90dca70678cdccf2d82f99b7f364511064793d0e4c194c0822e
 
 pkgname = tail-tray
