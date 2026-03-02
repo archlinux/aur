@@ -1,0 +1,14 @@
+pkgbase = swhook
+	pkgdesc = A minimalistic Webhook server
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/AndyLocks/swhook
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = https://github.com/AndyLocks/swhook/archive/refs/tags/swhook-v0.0.1.tar.gz
+	sha256sums = c7a25c1891cf4186cac66480185ffea6d53d09d3133dbfd5bbe5ba5de822bd6c
+
+pkgname = swhook
