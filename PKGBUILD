@@ -6,6 +6,7 @@ pkgdesc="Local-first terminal password manager with TOTP support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/stickpro/kyp"
 license=('MIT')
+keywords=('password-manager' 'passwords' 'totp' '2fa' 'cli' 'tui' 'security' 'encryption' 'sqlite')
 provides=('kyp')
 conflicts=('kyp-bin' 'kyp-git')
 makedepends=('go')
