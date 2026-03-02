@@ -3,13 +3,13 @@
 
 pkgname=prek
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="⚡ Better 'pre-commit', re-engineered in Rust"
 arch=('x86_64')
 url='https://github.com/j178/prek'
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('git' 'rust' 'libxml2')
+makedepends=('git' 'cargo' 'libxml2')
 checkdepends=('cargo-nextest')
 options=('!lto')
 _commit='04b1308c98552cbba104e91480b8810453a22e7e'
@@ -25,13 +25,13 @@ pkgver() {
 prepare() {
   cd "$pkgname" || exit
 
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked
 }
 
 build() {
   cd "$pkgname" || exit
 
-  cargo build --frozen --release
+  cargo build --frozen --release --target-dir target
 }
 
 # TODO: https://github.com/jmelahman/PKGBUILDs/issues/119
