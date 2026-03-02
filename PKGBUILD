@@ -35,8 +35,10 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
   "bazaar::git+https://github.com/kolunmi/bazaar.git"
+  "blueprint-compiler::git+https://gitlab.gnome.org/GNOME/blueprint-compiler.git#tag=v0.20.0"
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            'a99a90cf5d39a97a0770038ecbd4edede2643a6ff116c6dd9308ae3e70573631')
 
 pkgver() {
   cd bazaar
@@ -44,8 +46,17 @@ pkgver() {
 
 }
 
+prepare() {
+  cd bazaar
+  mkdir -p subprojects
+
+  # use bp compiler from source
+  ln -sf "$srcdir/blueprint-compiler" subprojects/blueprint-compiler
+}
+
 build() {
-  meson setup --prefix=/usr --buildtype=release bazaar bazaar-build
+  # avoid subproject download
+  meson setup --prefix=/usr --buildtype=release --wrap-mode=nodownload bazaar bazaar-build
   ninja -C bazaar-build
 }
 
