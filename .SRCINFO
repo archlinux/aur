@@ -1,15 +1,21 @@
 pkgbase = basecamp-cli
-	pkgdesc = CLI for interacting with Basecamp projects and card tables
-	pkgver = 0.2.0
+	pkgdesc = CLI for Basecamp project management
+	pkgver = 0.2.1
 	pkgrel = 1
-	url = https://github.com/robzolkos/basecamp-cli
-	arch = x86_64
+	url = https://github.com/basecamp/basecamp-cli
 	arch = aarch64
+	arch = x86_64
 	license = MIT
+	optdepends = bash-completion: for bash shell completions
+	optdepends = zsh: for zsh shell completions
+	optdepends = fish: for fish shell completions
 	makedepends = go
-	depends = glibc
-	options = !debug
-	source = basecamp-cli-0.2.0.tar.gz::https://github.com/robzolkos/basecamp-cli/archive/v0.2.0.tar.gz
-	sha256sums = 29947f58b960d05836f8a6bc7feb0d1741538014825deb0163036b19e3e0163e
-
+	makedepends = git
+	conflicts = basecamp
+	conflicts = basecamp-bin
+	provides = basecamp
+	
+	source = https://github.com/basecamp/basecamp-cli/releases/download/v0.2.1/basecamp-0.2.1.tar.gz
+	sha256sums = 346d8e07a5b5fd15ad0a6d0d274100e994bcc94e12d08cea0738e51d1a07253c
+	
 pkgname = basecamp-cli
