@@ -3,24 +3,21 @@
 # Contributor: fabioticconi <fabio dot ticconi at gmail dot com>
 
 pkgname=weidu-bin
-pkgver=249
+pkgver=251
+_pkgver=251.00
 pkgrel=1
 pkgdesc="A dialogue compiler for Infinity Engine games (precompiled binary)"
 arch=('x86_64')
 url="http://weidu.org"
-license=('GPL2')
-source=(https://github.com/WeiDUorg/weidu/releases/download/v$pkgver.00/WeiDU-Linux-$pkgver-amd64.zip)
-md5sums=('e80e52ed8dd95eeba8005eb0ea6c9e29')
+license=('GPL-2.0-or-later')
+source=(https://github.com/WeiDUorg/weidu/releases/download/v$_pkgver/WeiDU-Linux-$pkgver.zip)
+sha256sums=('3e1a34ec5d6e934b1d4a34541a1312d0170b120c6efe903a732415acde3bd3c0')
 options=('!strip')
 
 package() {
   
   cd "$srcdir/WeiDU-Linux"
   
-  install -D -m755 ./mosunpack "${pkgdir}/usr/bin/mosunpack"
-  install -D -m755 ./mospack "${pkgdir}/usr/bin/mospack"
-  install -D -m755 ./tisunpack "${pkgdir}/usr/bin/tisunpack"
-  install -D -m755 ./tispack "${pkgdir}/usr/bin/tispack"
   install -D -m755 ./tolower "${pkgdir}/usr/bin/tolower"
   install -D -m755 ./weidu "${pkgdir}/usr/bin/weidu"
   install -D -m755 ./weinstall "${pkgdir}/usr/bin/weinstall"
@@ -31,8 +28,6 @@ package() {
   cp -r ./examples "${pkgdir}/usr/share/doc/${pkgname}/examples"
 
   # copy the readmes
-  install -D -m644 ./readme-mosunpack.txt "${pkgdir}/usr/share/doc/${pkgname}/readme-mosunpack.txt"
-  install -D -m644 ./readme-tisunpack.txt "${pkgdir}/usr/share/doc/${pkgname}/readme-tisunpack.txt"
   install -D -m644 ./README-WeiDU-Changes.txt "${pkgdir}/usr/share/doc/${pkgname}/README-WeiDU-Changes.txt"
   install -D -m644 ./README-WeiDU.html "${pkgdir}/usr/share/doc/${pkgname}/README-WeiDU.html"
 }
