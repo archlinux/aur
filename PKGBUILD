@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=simpleCache
-_pkgver=0.4.3
+_pkgver=0.5.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -18,8 +18,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('a739960f4fc4b2a2fc3c2aab9f0375e5')
-b2sums=('e89d175f14ee6c9a88118d81d5879440e1b651083a4cf00bcec72f609a5d26e63c39b372832689fbb20e1364b99fead0e838bb78ee57c65b24d450c1964f9e85')
+md5sums=('6254c246b90cca56202361158f2432ea')
+b2sums=('142ee9919efdfae2adee6e06b36cbd30b335a2920827f5463c69fb2cb713b7968b3d215297126c9d2e127a20bc01f64cf9ed2dec504f86145b04cb469c7894c1')
 
 build() {
   mkdir build
