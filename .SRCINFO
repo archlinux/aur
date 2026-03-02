@@ -1,5 +1,5 @@
 pkgbase = autenticacao-gov-pt-git
-	pkgdesc = Portuguese Citizen Card Application (Portugal eID) source code based version
+	pkgdesc = Portuguese Citizen Card Application (Portugal eID) origin/HEAD compilation, development ready
 	pkgver = 3.14.0.r91.g8b1696c
 	pkgrel = 1
 	url = http://www.cartaodecidadao.pt/
