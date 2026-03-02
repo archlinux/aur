@@ -21,11 +21,11 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
     "COMPLETIONS-${pkgver}.zsh::${_urlraw}/completions/archium.zsh"
     "COMPLETIONS-${pkgver}.fish::${_urlraw}/completions/archium.fish")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('bbe1f2309460375355b43d720b5043590a481c5fef64ba1b51cdb45e8ea9f81f'
-            '64884d0e219ec69eb586cb6bfd112ae61ca7cc9d7cee22033cb6ad294d6b3846'
-            'f65f1bc2ff9e33e36a0f2ed98bc21dd1cd262d07a4588889e875a75e96dab2ee'
-            'fc914b73edfda6bb54c3564ea46ee0ba9fe918bc05f066661b829d6c6406a681'
-            '7ca37c452a577032b867daff95963d8d781a66adffa19a899b0380687c21e254')
+sha256sums=('5658b713add980d64e9caa95a7b3b7c5c2caedd5e54d38cae1cc98ed3db9a2ab'
+            'bafa36688616d176b4a00006a922780f246fbdd8da330c9394f026ab5c78604e'
+            '5676b6d48d04bef5971070dfeb74c966c3ea79521b3fb19e522e781c7e8cc1cd'
+            'e349123a95f975bf8861e28effcc8325c15cdece9c8b3aebdc8df26f05678cb0'
+            '5af791ae656c94244d4df467a08a068b0e9a68f0cb67aa9d9faee5816ef7fe1c')
 sha256sums_x86_64=('253dcecfd6e0a234c0586c24b178f49b9a2077d117ba4fac7ba46f44f0f4576f')
 
 prepare() {
