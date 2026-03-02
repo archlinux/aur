@@ -1,6 +1,6 @@
 pkgname=passkeyd
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Opinionated WebAuthn authenticator backed by a TPM"
 arch=('x86_64')
 license=('GPL3')
@@ -8,7 +8,7 @@ depends=("tpm2-tss")
 makedepends=()
 url="https://github.com/bjn7/passkeyd"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bjn7/passkeyd/releases/download/v$pkgver/passkeyd-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('73d8f7f9d394ddca9947f94f8cdd5d054d1342fa6f5e920210026075b2531818')
+sha256sums=('013fa640ac39f93b699acf39ee12a92afbeacda4014289d4bb931d66294f3951')
 options=('!debug')
 backup=('etc/passkeyd.conf' 'usr/share/passkeyd/theme.conf')
 
