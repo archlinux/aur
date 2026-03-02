@@ -1,6 +1,6 @@
 # Maintainer: Patrick Hechler <patrjprof.aur@ph.anderemails.de>
 pkgname=patrjprof
-pkgver=1.7.2.r411
+pkgver=1.7.3.r417
 _pkgver="$(echo "${pkgver}" | sed -E 's/[.]r[0-9]+$//')"
 pkgrel=1
 pkgdesc="A Free Java profiler written in Java"
@@ -23,7 +23,7 @@ install=
 changelog=
 
 source=("patr-java-profiler-start-${_pkgver}.sh::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler/${_pkgver}/patr-java-profiler-${_pkgver}.start-script"
-        "patr-java-profiler-agent-${_pkgver}.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-agent/${_pkgver}/patr-java-profiler-agent-${_pkgver}-jar-with-dependencies.jar"
+        "patr-java-profiler-agent-${_pkgver}.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-agent/${_pkgver}/patr-java-profiler-agent-${_pkgver}.jar"
         "patr-java-profiler-bootstrap-${_pkgver}.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-bootstrap/${_pkgver}/patr-java-profiler-bootstrap-${_pkgver}.jar"
         "patr-java-profiler-client-${_pkgver}.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-client/${_pkgver}/patr-java-profiler-client-${_pkgver}.jar"
         "patr-java-profiler-server-${_pkgver}.jar::https://nexuspat.hechler.de/repository/maven-releases/de/hechler/patrick/profiler/patr-java-profiler-server/${_pkgver}/patr-java-profiler-server-${_pkgver}.jar"
@@ -31,11 +31,11 @@ source=("patr-java-profiler-start-${_pkgver}.sh::https://nexuspat.hechler.de/rep
         )
 noextract=("${source[@]%%::*}")
 sha512sums=('cdef6de2254f01d4398b2fcd8f9c43ca5aa1cac5d44d66595f0c0d7cdcab5082dea7fd323548df46dde468b5f307cc44a267927ed103324b2e0f41df99ab0bc4'
-            'bb4c348c81123a3b98cc17ffa1383bb724b8962e12196d55739e4774f8c4ff954e8b34c8085eac4dcf55ec4fdf9b94d3e034bbbf4ec2207a73761a7940919a04'
-            '6312d4ad52bd73df22500ae889cd75ebf8bccd46b8ded2b8cc3a626ee3613aae3561b989980725b266aeb6a630862bd58b153568ffc4626b13f6b2f024eeec2d'
-            '59a856bdd6485147e4955a4a95f5ec24f6108eee8e9d9842dd0bd0e23f29a60a329e1e99f7b0d7774668d21eb50dcd645f88c785d56b573683232e20a795461c'
-            '7754bee3bd749e949d7733b59de0ca8be015e476823205d101114784599788cc96bd182d421b02e667a786b24d19826d021804a06ba068fb7f7ccfb9e716059f'
-            '017705a93c7446825a53792fc9e45159ebfb017bdf84c50817e725f59fd2aa5daf25e21f130acd10e99eb63232725b236cb1f97e7f1157252e776c0b856b8a0f'
+            '5b7650ef10a05a6f9ba977c1e9ea8956d00ee4edf1dbdc94caf5f69086c69c56378257caa0cc6340146121771e5e631883baa8dbb1a4b0bd8cc5d25307e48064'
+            '80427d2a22a96c6fd0a66f717820e3be22cc6e48a2a15a0f2e309bd4378e32d01c9d44dbaa92e37dad9f3bc613fc1fe6763633651a6ae8613c7ab95065faf2df'
+            'fa50a4745a2309a61c4551a659bccd21351140068649df075b66b27514f400f61d332f1bf0d2e7fdc68cb2a9f49dbf8c65617ad287b99746ffb814fafecd2b10'
+            '27eb5b220f8bb02b2a69852386e097a6795a2dec90d0b2b1c9efcb5099badb4fdf09f38206314be9ffb6ecdd4fa842ecb788add54cd6967beaa480e116053362'
+            '62ee6d4325f0642e2de45817b78b8aebfb821094f41f549f29d75ea531f2b5299afb1f2f9f7b2a06439ba9ff329bc7b1ed0e3e6beee9088234ac660cb60f98a8'
             )
 
 build() {
