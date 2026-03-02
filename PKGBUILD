@@ -6,7 +6,7 @@ pkgdesc="Binary Waterfall CLI - Raw Data Media Player for any binary file"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/m4rcel-lol/bwfall"
 license=('GPL-3.0-or-later')
-depends=('alsa-lib' 'ncurses')
+depends=('alsa-lib' 'ncurses' 'sdl2')
 optdepends=(
   'libpulse: PulseAudio audio backend'
   'pipewire: PipeWire audio backend'
