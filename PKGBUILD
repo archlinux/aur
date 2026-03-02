@@ -2,7 +2,7 @@
 # Maintainer: Zen Wen <zen.8841@gmail.com>
 
 pkgname=subtitleeditor
-pkgver=0.55.0
+pkgver=0.56.2
 pkgrel=1
 pkgdesc="A GTK+3 tool to create or edit subtitles for GNU/Linux/*BSD"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('desktop-file-utils' 'enchant' 'gst-plugins-base' 'gstreamermm' 'gst-li
 makedepends=('intltool')
 changelog=$pkgname.changelog
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/subtitleeditor/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('1bfcd00efb1d0aeae55ac32129d5007a29697cd32351a52306675eabfda7dbb1')
+sha256sums=('333598a35facfc2c1d6b9c53f9e722c21044c7025bfc02d596ac40a853f976b3')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver

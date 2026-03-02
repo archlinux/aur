@@ -1,6 +1,6 @@
 pkgbase = subtitleeditor
 	pkgdesc = A GTK+3 tool to create or edit subtitles for GNU/Linux/*BSD
-	pkgver = 0.55.0
+	pkgver = 0.56.2
 	pkgrel = 1
 	url = https://subtitleeditor.github.io/subtitleeditor/
 	changelog = subtitleeditor.changelog
@@ -17,7 +17,7 @@ pkgbase = subtitleeditor
 	depends = libsigc++
 	depends = libxml++2.6
 	depends = xdg-utils
-	source = subtitleeditor-0.55.0.tar.gz::https://github.com/subtitleeditor/subtitleeditor/archive/refs/tags/0.55.0.tar.gz
-	sha256sums = 1bfcd00efb1d0aeae55ac32129d5007a29697cd32351a52306675eabfda7dbb1
+	source = subtitleeditor-0.56.2.tar.gz::https://github.com/subtitleeditor/subtitleeditor/archive/refs/tags/0.56.2.tar.gz
+	sha256sums = 333598a35facfc2c1d6b9c53f9e722c21044c7025bfc02d596ac40a853f976b3
 
 pkgname = subtitleeditor
