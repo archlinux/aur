@@ -1,7 +1,7 @@
 # Maintainer: wituz
 pkgname=saphi-bin
-pkgver=0.0.7.0.0.0.7.0beta
-pkgrel=3
+pkgver=0.0.8.1.0.0.8.0beta
+pkgrel=1
 pkgdesc="Leaderboard and time-trial tracking client for Crash Team Racing custom tracks"
 arch=('x86_64')
 url="https://5ever.crashteamranking.com/"
