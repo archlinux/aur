@@ -1,7 +1,7 @@
 # Maintainer: Omni LLC <team@omni.dev>
 pkgname=omnidotdev-terminal
-pkgver=0.1.1
-pkgrel=3
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="GPU-accelerated terminal emulator built to run everywhere"
 arch=('x86_64')
 url="https://terminal.omni.dev"
@@ -9,7 +9,6 @@ license=('MIT')
 depends=('fontconfig' 'freetype2' 'libxkbcommon' 'wayland')
 makedepends=('cargo' 'cmake' 'ncurses' 'python')
 source=("https://github.com/omnidotdev/terminal/archive/v$pkgver.tar.gz")
-sha256sums=('4316f48ca2b5b34edf6cd0dbf8bca877f6b3e907a72e11864b517afd0dd06d84')
 
 build() {
   cd "terminal-$pkgver"
@@ -26,3 +25,4 @@ package() {
   install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "NOTICE.md" "$pkgdir/usr/share/doc/$pkgname/NOTICE"
 }
+sha256sums=('699a8ba76401fd55fa41b6406b4c4ed3894b5b0be363c9fa1da0ae6631ab85fc')
