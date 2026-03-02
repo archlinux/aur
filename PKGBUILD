@@ -15,6 +15,7 @@ depends=(
     'python-scapy'
     'python-rich'
     'python-netaddr'
+    'python-netifaces'
 )
 makedepends=(
     'python-build'
