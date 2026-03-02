@@ -8,7 +8,7 @@ makedepends=('cargo')
 depends=('openssh')
 arch=('i686' 'x86_64' 'aarch64' 'armv6h' 'armv7h')
 source=("https://github.com/yatoub/susshi/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=(7e60a8287e12b211f1d5618e85531d490b6d987a75ef3836047402bb50afb099cab10a03fcdd92c33f345f99834d376dfca9316875e5a33732fbb975c953c570)
+b2sums=(65462964e8397c672a9f1106a1356f8631181010fda7dd9233e1e75ce15d3b53791371077db528963dc967789ce9a69b211035aca25b27adac678c5f2ada724e)
 
 prepare() {
     cd $pkgname-$pkgver
