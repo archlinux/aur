@@ -2,22 +2,17 @@
 pkgname=flag.h-git
 _pkgname=${pkgname%-git}
 pkgver=r53.7d36992
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line flag parsing in C"
 arch=('any')
 url="https://github.com/tsoding/flag.h"
 license=('MIT')
-groups=()
 depends=()
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-replaces=()
-backup=()
-options=('!strip')
-install=
+options=('!debug')
 source=('git+https://github.com/tsoding/flag.h.git')
-noextract=()
 sha256sums=('SKIP')
 
 pkgver() {
