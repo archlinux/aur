@@ -1,12 +1,12 @@
 pkgbase = sumconfigs
 	pkgdesc = Help manage configs, dotfiles and packages
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://gitlab.com/aurze/sumconfigs
 	arch = any
 	license = GPL-3.0-only
 	makedepends = cargo
-	source = sumconfigs-0.2.0.tar.gz::https://gitlab.com/aurze/sumconfigs/-/archive/0.2.0/sumconfigs-0.2.0.tar.gz
-	b2sums = ce286773610ffb60de73b602d4579cbd3a172fbfa7f44eee83ad757331159f0dc33c52e6c44d88dce70425c91181668f58045ecc1a7c3aa389ac30896605f91c
+	source = sumconfigs-0.2.1.tar.gz::https://gitlab.com/aurze/sumconfigs/-/archive/0.2.1/sumconfigs-0.2.1.tar.gz
+	b2sums = 2551ccae037447bcd98af2b6f3508e0b2063a6a1d92892dc4044d11a10334cd9062bdf6aac61e78b478cfc35f851a283e63dbba0be64fdc80ebc04bd475e1773
 
 pkgname = sumconfigs
