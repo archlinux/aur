@@ -1,7 +1,7 @@
 # Maintainer: lingdianshiren <ldsrwu@foxmail.com>
 
 pkgname=fluxdown-bin
-pkgver=0.1.23
+pkgver=0.1.24
 pkgrel=1
 #epoch=
 pkgdesc="A Rust-powered download manager with HTTP, FTP, BitTorrent and HLS/DASH streaming support. Smart multi-threaded acceleration, seamless browser integration, beautiful interface — free forever, zero ads."
@@ -16,7 +16,7 @@ source=(
   "LICENSE.html"
 )
 sha256sums=(
-  "e873369d138a939eedf60061facbd6b0584f36b7f03c557ed6541c70e630e66d"
+  "a3fad54cd53bfb520b9b44a87db71ceed18e3930831273d845a8679512066554"
   "c0c71478dc43ef82e440c31ba4115547e19c72c6e40b1aa6941e40bf47ccf8ee"
 )
 options=(!strip)
