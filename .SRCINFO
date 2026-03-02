@@ -1,6 +1,6 @@
 pkgbase = mewline
 	pkgdesc = Status bar for the meowrch distribution. Supports hyprland/bspwm.
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/meowrch/mewline
 	install = mewline.install
@@ -27,7 +27,7 @@ pkgbase = mewline
 	provides = mewline-git
 	conflicts = mewline-git
 	options = !debug
-	source = https://github.com/meowrch/mewline/archive/refs/tags/v2.0.1.tar.gz
-	sha256sums = 0bbc38d1ef7045dddca752b9d2c5cdcbc46edf9b3459defafe2e687ad11cc22b
+	source = https://github.com/meowrch/mewline/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = 8003c86397e03c001ff514e182445c9e7044d243472291dc5f12fbe21abf691f
 
 pkgname = mewline
