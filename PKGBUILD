@@ -8,7 +8,7 @@
 
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=6.5.1.r0.g6b0fc1b
+pkgver=6.6.0.r5.g1705e5a
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -92,6 +92,10 @@ _source_telegram() {
         patch -Np1 -F100 -i "${srcdir:?}/$src"
       fi
     done
+
+    # fix minizip headers
+    sed -E -e 's&#include <((un)?zip\.h)>&#include <minizip/\1>&g' \
+      -i Telegram/lib_base/base/zlib_help.h
   )
 
   _build_telegram() (
@@ -104,7 +108,6 @@ _source_telegram() {
       -DCMAKE_INSTALL_PREFIX=/usr
       -DCMAKE_PREFIX_PATH="$srcdir/deps/usr"
       -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON
-      -DTDESKTOP_API_TEST=ON
       -DTDESKTOP_API_ID=611335
       -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c
       -DDESKTOP_APP_USE_PACKAGED_FONTS=OFF
