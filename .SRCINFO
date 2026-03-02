@@ -1,0 +1,22 @@
+pkgbase = sabiql-bin
+	pkgdesc = A fast, driver-less TUI to browse, query, and edit PostgreSQL databases
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://github.com/riii111/sabiql
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = sabiql
+	conflicts = sabiql
+	source = README-1.6.1.md::https://raw.githubusercontent.com/riii111/sabiql/v1.6.1/README.md
+	source = LICENSE-1.6.1::https://raw.githubusercontent.com/riii111/sabiql/v1.6.1/LICENSE
+	sha256sums = f236b011def0217a6fa174c98b688b7405cce31c68683d2465a23086863a11db
+	sha256sums = 74812e48d7ae28605df88571cdcf5002bb1de19b89c8a05a07ccfecd9c1962e4
+	source_x86_64 = sabiql-x86_64-1.6.1.tgz::https://github.com/riii111/sabiql/releases/download/v1.6.1/sabiql-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 433c244e42aac05496d98c28ed889d54c60d2515bc4aebb9116f1fb92a8cad09
+	source_aarch64 = sabiql-aarch64-1.6.1.tgz::https://github.com/riii111/sabiql/releases/download/v1.6.1/sabiql-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4faf186911860a0ceb76ccad2e58f9d09e9df7dc711a4ad460b7f2640ed3f98d
+
+pkgname = sabiql-bin

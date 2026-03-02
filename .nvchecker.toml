@@ -1,0 +1,5 @@
+[sabiql-bin]
+source = "github"
+github = "riii111/sabiql"
+use_latest_release = true
+prefix = "v"
