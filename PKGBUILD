@@ -1,6 +1,6 @@
 pkgname=cmdcreate
-pkgver=1.1.3
-pkgrel=3
+pkgver=1.1.4
+pkgrel=1
 arch=('any')
 url="https://github.com/owen-debiasio/cmdcreate"
 license=('GPL3')
