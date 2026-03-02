@@ -1,7 +1,7 @@
 # Maintainer: Oliver Weissbarth <mail@oweissbarth.de>
 # Maintainer: SFN
 pkgname=tl-render
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="tlRender is an open source library for building playback and review applications for visual effects, film, and animation."
 arch=("x86_64")
@@ -15,7 +15,7 @@ backup=()
 options=()
 source=("tlRender-${pkgver}.tar.gz::https://github.com/grizzlypeak3d/tlRender/archive/refs/tags/${pkgver}.tar.gz" "zlibng-config.cmake")
 noextract=()
-sha256sums=('29e548fbc6cdc09fe4ee79d295b352f69078d91cbc1b5362a1324c665fe52d5e'
+sha256sums=('0c1cb3c799a0fc41acd432cc3dbdc5e421ed769bf900824820038fd5b387df6a'
             '72d993ec6dceff21552f22c25aff2bc8ceea4cb7315029e0ab6bf7878af9ec21')
 
 CFLAGS+=" -ffat-lto-objects" # lto problems with static libs
