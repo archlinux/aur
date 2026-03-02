@@ -35,10 +35,8 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(
   "bazaar::git+https://github.com/kolunmi/bazaar.git"
-  "blueprint-compiler::git+https://gitlab.gnome.org/GNOME/blueprint-compiler.git#tag=v0.20.0"
 )
-sha256sums=('SKIP'
-            'a99a90cf5d39a97a0770038ecbd4edede2643a6ff116c6dd9308ae3e70573631')
+sha256sums=('SKIP')
 
 pkgver() {
   cd bazaar
