@@ -2,8 +2,8 @@
 # Contributor: Mikael Eriksson <mikael_eriksson@miffe.org>
 
 _pkgbase=ocp
-pkgname=('ocp' 'ocp-sdl2')
-pkgver=3.1.3
+pkgname=('ocp' 'ocp-sdl3')
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Open Cubic Player"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ makedepends=('alsa-lib'
         'flac'
         'git'
         'ncurses'
-        'sdl2'
+        'sdl3'
         'xa'
         'libgme'
         'libancient'
@@ -49,9 +49,10 @@ build() {
         make DESTDIR="$pkgdir" subdirs ocp ocp.hlp
 }
 
-package_ocp-sdl2() {
+package_ocp-sdl3() {
         provides=(${_pkgbase}=${pkgver})
-        conflicts=('ocp' 'ocp-curses')
+        conflicts=('ocp' 'ocp-sdl2' 'ocp-curses')
+        replaces=('ocp-sdl2')
         install=${_pkgbase}.install
         depends=('alsa-lib'
                 'bzip2'
@@ -59,7 +60,7 @@ package_ocp-sdl2() {
                 'freetype2'
                 'hicolor-icon-theme'
                 'ncurses'
-                'sdl2'
+                'sdl3'
                 'shared-mime-info'
                 'zlib'
                 'libancient'
@@ -69,7 +70,9 @@ package_ocp-sdl2() {
                 'ttf-unifont')
         cd $_pkgbase
         ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
-        --without-sdl --without-x11\
+        --without-sdl\
+        --without-sdl2\
+        --without-x11\
         --without-update-desktop-database\
         --without-update-mime-database\
         --with-unifont-ttf=/usr/share/fonts/Unifont/Unifont.ttf\
@@ -81,7 +84,7 @@ package_ocp-sdl2() {
 
 package_ocp() {
         provides=(${_pkgbase}=${pkgver})
-        conflicts=('ocp-curses' 'ocp-sdl2')
+        conflicts=('ocp-sdl2' 'ocp-curses')
         depends=('alsa-lib'
                 'bzip2'
                 'cjson'
@@ -90,8 +93,11 @@ package_ocp() {
                 'libancient'
                 'libdiscid')
         cd $_pkgbase
-        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core\
-        --without-x11 --without-sdl --without-sdl2\
+        ./configure --prefix=/usr --sysconfdir=/etc --with-builtin=core cross_compiling=yes\
+        --without-x11\
+        --without-sdl\
+        --without-sdl2\
+        --without-sdl3\
         --without-update-desktop-database\
         --without-update-mime-database
         make DESTDIR="$pkgdir" libocp.so
