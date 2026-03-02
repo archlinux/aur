@@ -1,50 +1,39 @@
-# Maintainer: Dae <daedaevibin@naver.com>
+# Maintainer: Dae Euhwa <daedaevibin@naver.com>
 pkgname=voix
-pkgver=0.0.26b
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 install=voix.install
-pkgdesc="A privilege escalation tool replacing sudo/doas/sudo-rs, using PAM for authentication - WILL REPLACE SUDO!!"
+pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication"
 arch=('x86_64')
 url="https://github.com/Veridian-Zenith/Voix"
-license=('AGPL-3.0-or-later' 'VCL-1.0')
+license=('OSL-3.0' 'AGPL-3.0-or-later' 'VCL-1.0')
 depends=('pam')
-makedepends=('cmake' 'gcc' 'make' 'pkgconf')
-provides=('sudo' 'doas' 'sudo-rs' 'sudo-rs-symlink')
-replaces=('sudo' 'doas' 'sudo-rs' 'sudo-rs-symlink')
-conflicts=('sudo' 'doas' 'sudo-rs' 'sudo-rs-symlink')
-source=("https://github.com/Veridian-Zenith/Voix/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e1950bee7fc899d05f0097a6468eb9c738f8eeb4585bab4692bbd9e31878ec2a')
+makedepends=('cmake>=3.18' 'gcc' 'make' 'pkgconf')
+backup=('etc/pam.d/voix' 'etc/voix.conf')
+source=("git+https://github.com/Veridian-Zenith/Voix.git")
+sha256sums=('SKIP')
 
-build() {
-  cd "Voix-${pkgver}/src"
-  cmake -B build -DCMAKE_BUILD_TYPE=Release
-  cmake --build build
+pkgver() {
+    # simply return the static version set at the top of this PKGBUILD
+    echo "$pkgver"
 }
 
-backup=('etc/pam.d/voix' 'etc/voix/config.lua')
+prepare() {
+    cd Voix
+    # Verify CMakeLists.txt exists
+    test -f CMakeLists.txt || return 1
+}
+
+build() {
+    cd Voix
+    cmake -B build \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_COMPILER=clang++
+    cmake --build build --parallel
+}
 
 package() {
-  cd "Voix-${pkgver}/src"
-
-  # Install binary (Setuid fix applied later)
-  install -Dm4755 build/voix "${pkgdir}/usr/bin/voix"
-
-  # Symlink /usr/bin/sudo -> /usr/bin/voix
-  ln -sf /usr/bin/voix "${pkgdir}/usr/bin/sudo"
-
-  # Install config
-  install -Dm644 lua/config.lua   "${pkgdir}/etc/voix/config.lua"
-
-  # Install licenses
-  install -Dm644 LICENSE-AGPLv3   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-AGPLv3"
-  install -Dm644 LICENSE-VCL1.0   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-VCL1.0"
-
- # Make sure PAM directory exists
-  install -dm755 "${pkgdir}/etc/pam.d"
-
-  # Create PAM config file
-  cat > "${pkgdir}/etc/pam.d/voix" << EOF
-auth     required   pam_unix.so
-account  required   pam_unix.so
-EOF
+    cd Voix/build
+    cmake --install . --prefix "${pkgdir}/usr"
 }
