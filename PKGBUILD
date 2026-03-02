@@ -9,7 +9,7 @@
 _pkgname=discord
 _electron=electron
 pkgname=${_pkgname}_arch_electron
-pkgver=0.0.126
+pkgver=0.0.127
 pkgrel=1
 epoch=1
 pkgdesc="Discord using system provided ${_electron} for increased security and performance"
@@ -29,7 +29,7 @@ optdepends=('libpulse: Pulseaudio support'
 source=("https://dl.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'discord-launcher.sh'
         'krisp-patcher.py') # original: https://github.com/sersorrel/sys/blob/main/hm/discord/krisp-patcher.py
-sha512sums=('0ce28b4ddb69c4963e218fc07dc4fdb96f16175e532a607ec14d7f1a670de3ab167da79f7538eda305d3f8318b0333f898e0d88d713f308cf99d0f54e9c3874c'
+sha512sums=('dc682a4170547a53a0f8b1ecedba07c179bd23b4645b96ca8ae4dec3ca3a226ee978ab44bcc0522bb480169c4d2859d98b5ad5729647887b2c48f98b1be2a0d5'
             '5e2b4bc955606c23d3f788d73e81fbd6e6278b618ad85c5a3edc722428bbb6460c5dc874ad9b6ab893f658e669e1a0aa1a0d0830ddbfc019d01596425903dd57'
             '42cef68c1f7d574b4fbe859a4dc616e8994c7d16f62bcae3ff1f88e1edc58ac37b39c238d7defa9c97ceda417fcd6224cf0a0fd2608b8d18d0877e3c1befa59c')
 
@@ -59,7 +59,7 @@ build() {
   sed -i -e "/^const appName/d" -e "/^const exePath/d" -e "/^const exeDir/d" -e "/^const iconPath/d" \
     -e "s|^Exec=\${exePath}$|Exec=/usr/bin/${_pkgname}|" \
     -e "s|^Name=\${appName}$|Name=${_pkgname^}|" \
-    -e "s|^Icon=\${iconPath}$|Icon=/usr/share/pixmaps/${_pkgname}.png|" \
+    -e "s|^Icon=\${iconPath}$|Icon=${_pkgname}|" \
     resources/app/app_bootstrap/autoStart/linux.js
   asar p resources/app resources/app.asar
   rm -rf resources/app
@@ -73,7 +73,7 @@ package() {
   cp -r ${_pkgname^}/resources "${pkgdir}/usr/share/${_pkgname}/"
 
   # intall icon and desktop file
-  install -Dm 644 ${_pkgname^}/$_pkgname.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm 644 ${_pkgname^}/$_pkgname.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
   install -Dm 644 ${_pkgname^}/$_pkgname.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   # install the launch script
