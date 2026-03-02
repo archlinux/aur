@@ -1,8 +1,8 @@
-# Maintainer: Alexander Schnaidt <alex.schnaidt@gmail.com>
+# Maintainer: Alexander Schnaidt <alexander.schnaidt@mailbox.org>
 # Contributor: blackleg <blackleg@openmailbox.org>
 
 pkgname=xplane-sdk-devel
-pkgver=4.2.0
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="X-Plane SDK"
 url="https://developer.x-plane.com/sdk/"
@@ -10,7 +10,7 @@ arch=("any")
 license=(LicenseRef-xplane-sdk)
 depends=(glibc)
 source=("https://developer.x-plane.com/wp-content/plugins/code-sample-generation/sdk_zip_files/XPSDK${pkgver//./}.zip")
-sha256sums=('42aeb0d525f2a7f8fd55541c071319f08967b6ec216edde197c75034ef6bcf5a')
+sha256sums=('b9875ab27b593927b4f9b3e0ddfffe7401ee5dce6d86b50aea0da65f70ff7816')
 
 package() {
 	cd "$srcdir/SDK/CHeaders"
