@@ -2,7 +2,7 @@
 _pkgname=c43
 pkgbase=c47
 pkgname=(c47 r47)
-pkgver=00.109.03.00b2.p2
+pkgver=00.109.03.01b0
 pkgrel=1
 pkgdesc="Emulator for the C47 pocket calculator"
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc' 'gtk3' 'hicolor-icon-theme' 'bash' 'python' 'cairo' 'libpulse' 'glib2' 'gmp')
 makedepends=('meson' 'python-sphinx' 'doxygen' 'python-breathe' 'xlsxio' 'gendesk' 'icoutils' 'git')
 source=("https://gitlab.com/rpncalculators/c43/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('3ee56c5e8039ffef8f1abe5d8c9525a4b8e06e6dc805646e94ae36d3769b38f7')
+sha256sums=('a2567c60a78ea2bfb8b4c83fa3aa49cf1a768c77221569bd1d69466b99c2d144')
 
 prepare() {
 	cd "$srcdir"
