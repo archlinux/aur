@@ -1,7 +1,7 @@
 # Maintainer: sim0n <aur.direction446@aleeas.com>
 pkgname=sing-box-ref1nd-git
 _pkgname=sing-box
-pkgver=1.13.0.alpha.36.reF1nd
+pkgver=1.13.0.reF1nd.r0.g7536a830
 pkgrel=1
 
 pkgdesc='The universal proxy platform.'
@@ -15,24 +15,35 @@ provides=("$_pkgname")
 source=("$_pkgname::git+https://github.com/reF1nd/sing-box.git#branch=reF1nd-dev")
 sha256sums=(SKIP)
 
-
 conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$_pkgname-ref1nd")
 
 backup=("etc/$_pkgname/config.json")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  # Get the latest tag that contains ref1nd and (beta or alpha)
-  latest_tag=$(git tag --list | grep -i ref1nd | grep -E "(beta|alpha)" | sort -V | tail -1)
-  if [ -z "$latest_tag" ]; then
-    echo "No suitable tag found" >&2
+
+  mapfile -t _tags < <(git tag --list "*[Rr][Ee][Ff]1[Nn][Dd]*")
+
+  if [ ${#_tags[@]} -eq 0 ]; then
+    echo "Error: No tags containing 'reF1nd' found." >&2
     exit 1
   fi
-  # Remove 'v' prefix and convert to pkgver format
-  version=${latest_tag#v}
-  echo "$version" | sed 's/-/./g'
-}
 
+  _latest_tag="${_tags[0]}"
+  for _t in "${_tags[@]}"; do
+    _cur_v=$(echo "${_t#v}" | tr '-' '.')
+    _max_v=$(echo "${_latest_tag#v}" | tr '-' '.')
+
+    if [ "$(vercmp "$_cur_v" "$_max_v")" -gt 0 ]; then
+      _latest_tag="$_t"
+    fi
+  done
+
+  _rev=$(git rev-list --count "$_latest_tag..HEAD")
+  _hash=$(git rev-parse --short HEAD)
+
+  printf "%s.r%s.g%s" "$(echo "${_latest_tag#v}" | tr '-' '.')" "$_rev" "$_hash"
+}
 
 _tags=with_utls,with_gvisor,with_quic,with_wireguard,with_clash_api,with_acme,with_dhcp,with_tailscale,with_naive_outbound
 build(){
@@ -57,10 +68,6 @@ build(){
             -X \"github.com/sagernet/sing-box/constant.Version=$VERSION\"
             -s -w -buildid= -linkmode=external" \
         ./cmd/sing-box
-
-    sed -i "/^\[Service\]$/a StateDirectory=$_pkgname"    release/config/$_pkgname.service
-    sed -i "/^\[Service\]$/a StateDirectory=$_pkgname-%i" release/config/$_pkgname@.service
-    sed -i "/^\[Service\]$/a User=$_pkgname"              release/config/$_pkgname*.service
 
     echo "u $_pkgname - \"Sing-box Service\" - -" > "release/config/$_pkgname.sysusers"
 
