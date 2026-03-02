@@ -1,6 +1,6 @@
 pkgname=unpackerr
-pkgver=0.14.5
-pkgrel=797
+pkgver=0.15.0
+pkgrel=1
 pkgdesc='Extracts downloads so Radarr, Sonarr, Lidarr or Readarr may import them.'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'pentium4')
 url='https://golift.io/unpackerr'
