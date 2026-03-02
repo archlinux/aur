@@ -9,10 +9,8 @@ url='https://github.com/libxls/libxls'
 license=('BSD')
 depends=('glibc')
 makedepends=('autoconf-archive')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/libxls/libxls/archive/v${pkgver}.tar.gz" 
-        "xlstypes.patch")
-sha512sums=('44967976a054d3bd2759b98304c02155b586abad8405b54d2a4f0c86bc16613d7bf83608f0330c90f5ab70ed08a22e63f2c6f5888f3fb2a255c21ff54f77057b'
-            '2cb582e062fc5966e21f19a164cbb58a7a5b4842c5571e6ba7f73e2657e98e585dc082c513499887dd272039dc3e76a018501b08c80bd2b05b66df6e2f049265')
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/libxls/libxls/archive/v${pkgver}.tar.gz") 
+sha512sums=('44967976a054d3bd2759b98304c02155b586abad8405b54d2a4f0c86bc16613d7bf83608f0330c90f5ab70ed08a22e63f2c6f5888f3fb2a255c21ff54f77057b')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
