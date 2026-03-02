@@ -1,25 +1,29 @@
 # Maintainer: Faynot <faynotdev@gmail.com>
 pkgname=dumbshot
-pkgver=0.1.0
-pkgrel=1
+pkgver=0.2.0
+pkgrel=2
 pkgdesc="An elegant, painless one-click screenshot utility for Wayland (grim + slurp)"
 arch=('x86_64')
 url="https://github.com/Faynot/dumbshot"
 license=('MIT')
-depends=('grim' 'slurp' 'wl-clipboard' 'libnotify')
-makedepends=('rust' 'cargo')
-optdepends=(
-    'wofi: Рекомендуемый GUI для выбора действий'
-    'rofi: Альтернативный GUI'
-    'dmenu: Минималистичный GUI'
-    'satty: Для редактирования скриншотов'
-    'hyprland: Для автоматического определения мониторов через hyprctl'
+depends=(
+  'grim'
+  'slurp'
+  'wl-clipboard'
+  'libnotify'
+  'eww'
+  'hyprland'
+  'xdg-utils'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Faynot/$pkgname/archive/v$pkgver.tar.gz") # If you are ripping off the web
-# If you are compiling locally, replace source with:
-# source=("local_files")
-
-sha256sums=('62ed6b0d894903399904f536492e0080b705e7d2453f12617df4b0c730553b7b')
+makedepends=(
+  'rust'
+  'cargo'
+)
+optdepends=(
+  'satty: Screenshot annotation editor'
+)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Faynot/$pkgname/archive/v$pkgver.tar.gz")
+sha256sums=('02fcedad690a570a36363e12ea870159e04e6207a380fb452d20459a38c58c75')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -41,7 +45,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-  
+
   # Установка лицензии (если есть файл LICENSE)
   if [ -f LICENSE ]; then
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
