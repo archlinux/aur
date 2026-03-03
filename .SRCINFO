@@ -1,7 +1,7 @@
 pkgbase = ttf2png
 	pkgdesc = Create a PNG image containing a set of glyphs from a true type font
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.tdb.fi/ttf2png.shtml
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ttf2png
 	depends = freetype2
 	depends = glibc
 	depends = libpng
-	source = ttf2png-2.0.tar.gz::https://www.tdb.fi/files/ttf2png-2.0.tar.gz
+	source = https://www.tdb.fi/files/ttf2png-2.0.tar.gz
 	sha256sums = ef461eade67a6a954d5787c20dabc0848ab8eaff0eab859dfdb36528d30e1ba4
 
 pkgname = ttf2png
