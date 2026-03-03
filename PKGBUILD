@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-store-git
-pkgver=1.0.0.alpha.6.r3.g9896668
+pkgver=1.0.8.r9.gc29e42f
 pkgrel=1
 pkgdesc="COSMIC Store"
 arch=('x86_64' 'aarch64')
@@ -17,10 +17,6 @@ makedepends=(
   'git'
   'just'
   'mold'
-)
-optdepends=(
-  'archlinux-appstream-data: Appstream data for use with packagekit'
-  'packagekit: package manager integration module'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
