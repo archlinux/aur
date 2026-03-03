@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=6.6
+pkgver=6.7
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -27,7 +27,8 @@ optdepends=('buildah: for export_buildroot_image plugin'
             'nosync: to speed up yum/dnf database access'
             'pigz: for parallel compression of chroot cache'
             'podman: to use bootstrap images (recommended)'
-            'procenv: for procenv plugin')
+            'procenv: for procenv plugin'
+            'skopeo: for hermetic bootstrap images')
 install="$pkgname.install"
 backup=("etc/$pkgname/logging.ini"
         "etc/$pkgname/hermetic-build.cfg"
@@ -35,7 +36,7 @@ backup=("etc/$pkgname/logging.ini"
 source=("$url/archive/$_pkgtag.tar.gz"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('dbeb1c6415c1fcf43bc67234b00eb6da25569899c92b9ffb26cf6495e3060842'
+sha256sums=('1186262d5015a4ecd609ee5cf9082e94d974fff0c1e6ec57eadc68a545e11749'
             'f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651'
             'a32ef4b3a19490280d3e8fcdebe9dd3348636a97e214850ce6cfc6bffa56a5d3')
 
