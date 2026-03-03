@@ -4,7 +4,7 @@
 
 pkgname=onlyoffice-bin
 pkgver=9.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
@@ -50,19 +50,4 @@ prepare() {
 
 package() {
     cp -dr --no-preserve='ownership' "onlyoffice-${pkgver}"/pkg/* "$pkgdir"
-    
-    # icons
-    local _file
-    local _res
-    while read -r -d '' _file
-    do
-        _res="$(sed 's/\.png$//;s/^.*-//' <<< "$_file")"
-        install -d -m755 "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps"
-        ln -sr "${pkgdir}/opt/onlyoffice/desktopeditors/asc-de-${_res}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/onlyoffice-desktopeditors.png"
-    done < <(find "${pkgdir}/opt/onlyoffice/desktopeditors" -maxdepth 1 -type f -name 'asc-de-*.png' -print0)
-    
-    # 3rd party licenses
-    install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -sr "${pkgdir}/opt/onlyoffice/desktopeditors/3DPARTYLICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/3DPARTYLICENSE"
 }
