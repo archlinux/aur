@@ -1,0 +1,4 @@
+[crier-bin]
+source = "github"
+github = "skorotkiewicz/crier"
+use_latest_release = true
