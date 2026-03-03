@@ -1,6 +1,6 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Universal Smart Update Wrapper for Arch Linux and its derivatives"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('reflector: for Arch Linux mirror updates'
             'paru: AUR helper support'
             'topgrade: for comprehensive system updates')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ea02431f6b2fa725901188427d4efdce3a0ba6caf481eafe2e90bd2e5e12641b')
+sha256sums=('cac53a0d37db3dd49a4690431117e279677cb3706eaae3623b831a898ddb760d')
 
 package() {
     cd "Arch_Smart_Update-${pkgver}"
