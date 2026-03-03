@@ -17,7 +17,7 @@ pkgbase = hardword
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/Archetylator/hardword/releases/download/app-v0.1.0/Hardword_0.1.0_amd64.deb
-	sha256sums_x86_64 = 490d529c5243152f5b96bff69094de5d31858fcc5f821c79d0108cfc8da69ff3
+	source = https://github.com/Archetylator/hardword/releases/download/app-v0.1.0/Hardword_0.1.0_amd64.deb
+	sha256sums = SKIP
 
 pkgname = hardword
