@@ -1,0 +1,27 @@
+pkgbase = python-bertviz
+	pkgdesc = Tool for visualizing attention in the Transformer model
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://github.com/jessevig/bertviz
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-transformers
+	depends = python-pytorch
+	depends = python-tqdm
+	depends = python-boto3
+	depends = python-requests
+	depends = python-regex
+	depends = python-sentencepiece
+	depends = python-ftfy
+	depends = python-numpy
+	depends = python-six
+	depends = ipython
+	source = https://files.pythonhosted.org/packages/9c/11/edd831ca9748c844e262cb6ae09d0827526b09e2ab004c3c59adb70f126e/bertviz-1.4.1.tar.gz
+	sha256sums = 28d5c350a45dd4ece16f74df3f44ed15548e3ebaf36d837ac93bc60a594bf07a
+
+pkgname = python-bertviz
