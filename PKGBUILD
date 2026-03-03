@@ -1,7 +1,7 @@
 # Maintainer: Jeff Hagadorn <noreply@github.com>
 pkgname=z13gui-bin
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc='GTK4 overlay GUI companion for z13ctl'
 arch=('x86_64')
 url='https://github.com/dahui/z13gui'
@@ -11,7 +11,7 @@ conflicts=('z13gui')
 depends=('glibc' 'gtk4' 'gtk4-layer-shell' 'z13ctl')
 install=z13gui-bin.install
 source=("https://github.com/dahui/z13gui/releases/download/v${pkgver}/z13gui_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('647bc8a8c850ff4c3a6942b27b6256e97b858eedec1783838ac89e665c82536c')
+sha256sums=('584d1bb5fa4a28a9966e0841b4869abee6e39dbe4004175d7395673ca7e7f3f7')
 
 package() {
     install -Dm755 "z13gui"                                    "${pkgdir}/usr/bin/z13gui"
