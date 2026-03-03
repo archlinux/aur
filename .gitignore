@@ -1,0 +1,12 @@
+# AUR repo allowlist: keep packaging sources only.
+*
+
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!prepare-overlay.sh
+!fido2-manage.desktop
+!fido2-manage.png
+!LICENSE
+!README.md
+!check-aur-package.sh

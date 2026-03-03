@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=FIDO2 Manage (Token2)
+Comment=Manage FIDO2 and passkeys on security keys
+Exec=fido2-manage-gui
+Icon=fido2-manage
+Terminal=false
+Categories=Utility;
+Keywords=FIDO2;U2F;Passkey;Token2;Security Key;
+StartupNotify=true
