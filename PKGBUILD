@@ -5,7 +5,7 @@
 _base=green-tunnel
 pkgname=${_base}-bin
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Anti-censorship utility that bypasses ISPs' deep packet inspection"
 arch=('x86_64')
 url="https://github.com/SadeghHayeri/GreenTunnel"
@@ -22,6 +22,6 @@ prepare() {
 }
 
 package() {
-	tar xf data.tar.xz -C "$pkgdir/"
+	tar xf data.tar.xzt -C "$pkgdir/"
 	install -Dm 644 "$pkgdir"/usr/share/doc/$_base/copyright "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
