@@ -1,25 +1,29 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgname=sse-bin
-pkgver=15.0.8_1
+pkgname=grunner-git
+pkgver=r1.abcdef1
 pkgrel=1
-pkgdesc="Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks"
+pkgdesc="A fast, keyboard-driven application launcher for GNOME (git)"
 arch=('x86_64')
-url="https://paranoiaworks.mobi"
-license=('custom')
-source=(
-    "$url/download/files/pfte_${pkgver//_/-}_amd64.deb"
-    "license.txt"
-)
-sha256sums=(
-    '31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c'
-    'f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527'
-)
+url="https://github.com/Nihmar/grunner"
+license=('MIT')
+depends=('gtk4')
+makedepends=('rust' 'cargo' 'git')
 
-options=('!strip')
+source=("$pkgname::git+https://github.com/Nihmar/grunner.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "$pkgname"
+    RUSTFLAGS="-C target-cpu=native" cargo build --release
+}
 
 package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
-    echo "Installing license and desktop file..."
-    install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-    install -Dm644 "${pkgdir}/opt/pfte/lib/pfte-Paranoia_File_and_Text_Encryption.desktop" "${pkgdir}/usr/share/applications/pfte-Paranoia_File_and_Text_Encryption.desktop"
+    cd "$pkgname"
+    install -Dm755 "target/release/grunner"          "$pkgdir/usr/bin/grunner"
+    install -Dm644 "assets/grunner.svg"               "$pkgdir/usr/share/icons/hicolor/scalable/apps/grunner.svg"
+    install -Dm644 "packaging/grunner.desktop"        "$pkgdir/usr/share/applications/grunner.desktop"
 }
