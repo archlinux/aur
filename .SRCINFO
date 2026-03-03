@@ -1,0 +1,15 @@
+pkgbase = teqn-git
+	pkgdesc = TeX equations to Neateqn converter preprocessor
+	pkgver = r75.a14a98d
+	pkgrel = 1
+	url = https://github.com/mahdiElliot/teqn
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	provides = teqn
+	conflicts = teqn
+	source = teqn-git::git+https://github.com/mahdiElliot/teqn
+	sha256sums = SKIP
+
+pkgname = teqn-git
