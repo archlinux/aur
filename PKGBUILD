@@ -12,7 +12,8 @@ depends=(libsixel cairo glibc nss dbus alsa-lib pango)
 makedepends=(git libxkbcommon base-devel cmake pkg-config curl 
              libx11 libxcomposite libxdamage libxfixes libxrandr 
              mesa pango atk cups alsa-lib nss nspr glib2)
-source=("git+${url}.git")
+source=("git+${url}.git"
+        LICENSE)
 
 pkgver() {
   cd $_pkgname
@@ -60,6 +61,8 @@ package() {
   cd ..
   cp -r examples "${pkgdir}/usr/lib/${_pkgname}/"
   install -Dm644 -t "$pkgdir/usr/share/${_pkgname}" *.md
+  install -Dm644 -t "$pkgdir/usr/share/licenses/${_pkgname}" ../LICENSE
 }
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '47d7a3aecfe168f6cc1f5302ff210dd8f03902c9a15023c75f636f29301bd383')
 
