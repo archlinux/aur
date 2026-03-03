@@ -1,7 +1,7 @@
 # Maintainer: Mr.Zero88 <huesmann.mats+aur@gmail.com>
 
 pkgname=steamvr-linux-fixes-layer-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A Vulkan layer that patches SteamVR's vrcompositor to address issues for wired headsets"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=(
   "$pkgname-$pkgver.zip::https://github.com/BnuuySolutions/SteamVRLinuxFixes/releases/download/v$pkgver/VK_LAYER_BNUUY_steamvr_linux_fixes.zip"
 )
 sha256sums=(
-  '5ca9a7cee47a5377645ee2c7a899af118c38dd4490331ba5fa00adc0b4089cb1'
+  '4bfce24f71ec13d672e0f087c66315306c8c3e6ce068c3c7113ad76bd72b30c5'
 )
 
 prepare() {
@@ -20,8 +20,8 @@ prepare() {
 }
 
 package() {  
-  install -d "$pkgdir/usr/share/vulkan/explicit_layer.d"
-  install -m755 "$srcdir/VkLayer_steamvr_linux_fixes.json" "$pkgdir/usr/share/vulkan/explicit_layer.d/VkLayer_steamvr_linux_fixes.json"
+  install -d "$pkgdir/usr/share/vulkan/implicit_layer.d"
+  install -m755 "$srcdir/VkLayer_steamvr_linux_fixes.json" "$pkgdir/usr/share/vulkan/implicit_layer.d/VkLayer_steamvr_linux_fixes.json"
   install -d "$pkgdir/usr/lib/"
   install -m755 "$srcdir/libsteamvr_linux_fixes.so" "$pkgdir/usr/lib/libsteamvr_linux_fixes.so"
 }
