@@ -19,7 +19,7 @@ depends=(
   'wayland'
   'libdrm'
   'mesa'
-  'google-breakpad'
+	'cppcheck'
 	'vulkan-headers'
 	'polkit'
 )
