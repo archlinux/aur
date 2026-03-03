@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=peersky-browser
 _pkgname='Peersky Browser'
-pkgver=1.0.0_beta.18
+pkgver=1.0.0_beta.19
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -28,7 +28,7 @@ source=(
     "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver//_/-}"
     "${pkgname}.sh"
 )
-sha256sums=('f1031334bfc8ecc0d7d1c7cd82a280085ce9def5a8e4e898a10af2a7a3c8b0ca'
+sha256sums=('16a9bfbad90301569c9b24c402974567354f6b7101f582fcd7d23700fdbb6240'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
