@@ -9,7 +9,7 @@ license=('BSD-3-Clause')
 depends=('hidapi')
 makedepends=('cargo')
 source=("${pkgname}-${_upstream_tag}.tar.gz::${url}/archive/refs/tags/${_upstream_tag}.tar.gz")
-sha256sums=('55008b60355f93be0ea70a4e119797281691ce01f424275b2830e1a4c8995ef4')
+sha256sums=('90fcdfd169f2e018c7027759b292111277897b2362ea4ceacf1586488c118f54')
 
 build() {
   cd "${srcdir}/openbitdo-${_upstream_tag#v}/sdk"
