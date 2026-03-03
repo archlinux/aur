@@ -9,7 +9,7 @@
 
 _pack=tablicious
 pkgname=octave-${_pack}
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Table (relational, tabular data) implementation for GNU Octave"
 arch=(any)
@@ -25,7 +25,7 @@ install=${pkgname}.install
 _archive=${_pack}-${pkgver}.tar.gz
 source=("https://github.com/apjanke/${pkgname}/releases/download/v${pkgver}/${_archive}")
 noextract=("${_archive}")
-sha512sums=('dcee3401cea812319521d4e0dd18b8f42050ce60695fd1f99b898d35e63687e136dcbc2abdee1d47e2dc8dd34015312b5d00a10dc51b06782ba473867deb0d00')
+sha512sums=('e98e61a43d84da4a41c47e1d1094f11b790bea61f6d200766eeab0d5230d8e73ca76b18c700259534178e5865e7f3b3161df1a965aaa989b59dc9e1d4233ae45')
 
 _octave_run() {
   octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
