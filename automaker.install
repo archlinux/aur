@@ -1,0 +1,32 @@
+post_install() {
+  echo ""
+  echo "==> Automaker has been installed!"
+  echo ""
+  echo "    Run 'automaker' to start the application."
+  echo ""
+  echo "    Before using Automaker, make sure you have:"
+  echo "    1. Node.js 22+ installed"
+  echo "    2. Claude Code CLI installed and authenticated"
+  echo "       See: https://code.claude.com/docs/en/quickstart"
+  echo ""
+  echo "    For more information, visit:"
+  echo "    https://github.com/AutoMaker-Org/automaker"
+  echo ""
+  echo "==> Security Notice:"
+  echo "    This software uses AI-powered tooling that has access to your"
+  echo "    operating system. Consider using Docker for isolation."
+  echo "    See: https://github.com/AutoMaker-Org/automaker#docker-deployment"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo ""
+  echo "==> Automaker has been removed."
+  echo "    Configuration files in ~/.automaker/ and data files in"
+  echo "    ~/.local/share/automaker/ may still exist."
+  echo ""
+}

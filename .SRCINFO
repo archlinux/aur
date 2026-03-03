@@ -1,0 +1,34 @@
+pkgbase = automaker-git
+	pkgdesc = An autonomous AI development studio that helps you build software faster using AI-powered agents
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/AutoMaker-Org/automaker
+	install = automaker.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs>=22.0.0
+	makedepends = npm
+	makedepends = python
+	makedepends = gcc
+	makedepends = make
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = nodejs>=22.0.0
+	depends = npm
+	optdepends = claude-code-cli: Claude Code CLI for authentication
+	optdepends = github-cli: GitHub integration
+	provides = automaker
+	conflicts = automaker
+	options = !strip
+	options = !emptydirs
+	source = automaker-git::git+https://github.com/AutoMaker-Org/automaker.git#branch=main
+	sha256sums = SKIP
+
+pkgname = automaker-git
