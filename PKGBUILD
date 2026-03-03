@@ -1,6 +1,6 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner
-pkgver=4.12.3
+pkgver=4.12.4
 pkgrel=1
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
@@ -47,6 +47,7 @@ depends=(
 )
 makedepends=(
   'base-devel'
+  'ccache'
   'clang'
   'cmake'
   'git'
@@ -85,7 +86,6 @@ build() {
 
     export CFLAGS="${CFLAGS}"
     export CXXFLAGS="${CXXFLAGS}"
-    export RCC_VERSION="${pkgver}-${pkgrel}"
 
     cd "$srcdir/RogPerfTuner"
      make pkgbuild
