@@ -2,7 +2,7 @@
 
 pkgname=brow6el-git
 _pkgname="${pkgname%-*}"
-pkgver=r41.g6d8fcdf
+pkgver=0.2.0.r3.g2ecdac8
 pkgrel=1
 pkgdesc="Terminal Web Browser with Sixel Support"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("git+${url}.git"
 
 pkgver() {
   cd $_pkgname
-  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
