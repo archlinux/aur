@@ -2,23 +2,23 @@
 
 _pkgname=steamos-manager
 pkgname=${_pkgname}-hhd-git
-pkgver=0.r619.g3dcc586
-pkgrel=2
+pkgver=0.r653.geb0b639
+pkgrel=1
 pkgdesc="Fork of Valve's steamos-manager with Handheld Daemon (HHD) TDP integration"
 arch=('x86_64')
-url='https://github.com/bazzite-org/steamos-manager'
+url='https://github.com/hhd-dev/steamos-manager-hhd'
 license=('MIT')
 depends=(
 	'hhd>=4.1'
 	'dbus'
-	'gamescope-session-steam-git'
 	'systemd-libs')
 makedepends=(
 	'git'
 	'rust'
-	'clang')
+	'clang'
+	'speech-dispatcher')
 source=(
-	"${_pkgname}::git+https://github.com/bazzite-org/steamos-manager.git"
+	"${_pkgname}::git+https://github.com/hhd-dev/steamos-manager-hhd.git"
 	"no-orca-service.patch")
 sha256sums=('SKIP'
             '10a36852b2cddf2ecc4f76df0cbabd9dd1f53c507590ecb0e58e6524511ba38f')
@@ -47,10 +47,4 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
     make install DESTDIR="${pkgdir}"
-
-    install -d -m0755 "$pkgdir/usr/lib/systemd/user/gamescope-session-plus@steam.service.wants/"
-    ln -s ../steamos-manager.service "$pkgdir/usr/lib/systemd/user/gamescope-session-plus@steam.service.wants/"
-    
-    install -d -m0755 "${pkgdir}/usr/bin"
-    ln -s ../lib/steamos-manager "${pkgdir}/usr/bin/steamos-manager"
 }
