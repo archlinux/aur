@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
-license=('AGPL3')
+license=('AGPL-3.0-only')
 depends=('python-csdr-luarvique>=0.18.36' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools' 'python-distutils-extra')
 install=openwebrx-plus.install
 optdepends=(
@@ -17,7 +17,8 @@ optdepends=(
     'codecserver: decode audio data from digital voice modes using the AMBE codec, leagally trustworthy'
     'codecserver-softmbe: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec'
     'codecserver-mbelib-module: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec'
-    'codec2: demodulate FreeDV digital transmissions'
+    'codec2: demodulate classic FreeDV digital transmissions'
+    'radae-decoder-git: demodulate FreeDV RADEv1 digital voice transmissions'
     'm17-cxx-demod: demodulate M17 digital voice signals'
     'wsjtx: decode FT8, FST4, FST4, Q65 digital modes'
     'msk144decoder: decode the MSK144 digimode'
