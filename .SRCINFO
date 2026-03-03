@@ -1,16 +1,18 @@
 pkgbase = cmix
 	pkgdesc = lossless data compression program aimed at optimizing compression ratio at the cost of high CPU/memory usage
-	pkgver = 20
+	pkgver = 21
 	pkgrel = 1
 	url = https://www.byronknoll.com/cmix.html
 	arch = x86_64
 	license = GPL-3.0-only
-	makedepends = make
+	makedepends = clang
 	optdepends = tar: compress multiple files by making a tarball
 	options = !debug
-	source = cmix-20.tar.gz::https://github.com/byronknoll/cmix/archive/refs/tags/v20.tar.gz
+	source = cmix-21.tar.gz::https://github.com/byronknoll/cmix/archive/refs/tags/v21.tar.gz
 	source = clang21.patch
-	sha256sums = SKIP
+	source = make.patch
+	sha256sums = c0ff50f24604121bd7ccb843045c0946db1077cfb9ded10fe4c181883e6dbb42
 	sha256sums = 50e77b7ffb8ead9b3a4d109f909830764816edf997887d30bfdcc26385b35fa1
+	sha256sums = 5ae98387810149ee9b12aa69bdecd48172715920f6cbb83ebf40cfb29dbcd057
 
 pkgname = cmix
