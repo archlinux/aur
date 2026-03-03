@@ -7,7 +7,7 @@
 
 _pkgname="trilium"
 pkgname="$_pkgname-next-git"
-pkgver=0.99.1.r627.g994a9de
+pkgver=0.102.0.r24.g4c5aada
 pkgrel=1
 pkgdesc="A hierarchical note taking application"
 url="https://github.com/TriliumNext/Trilium"
@@ -99,7 +99,7 @@ package() {
   cp -r "$_pkgsrc"/apps/desktop/dist/out/*-linux-x64/resources/* "$pkgdir/$_install_path/$_pkgname/"
 
   # icon
-  install -Dm644 "$_pkgsrc"/apps/desktop/dist/assets/images/icon-color.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
+  install -Dm644 "$_pkgsrc"/apps/desktop/dist/assets/images/icon-color.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 
   # launcher
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END

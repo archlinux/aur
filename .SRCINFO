@@ -1,6 +1,6 @@
 pkgbase = trilium-next-git
 	pkgdesc = A hierarchical note taking application
-	pkgver = 0.99.1.r627.g994a9de
+	pkgver = 0.102.0.r24.g4c5aada
 	pkgrel = 1
 	url = https://github.com/TriliumNext/Trilium
 	arch = x86_64
