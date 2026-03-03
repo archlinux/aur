@@ -1,0 +1,7 @@
+[upwork]
+source = "jq"
+url = "https://upwork-usw2-desktopapp.upwork.com/binaries/versions-win.json"
+filter = '.Prod.version'
+
+# This makes 5.8.0.41_f0de03505cc349f2
+# filter = '.Prod.downloadUrls["windows-64"] | capture("v(?<x>\\d+)_(?<y>\\d+)_(?<z>\\d+)_(?<patch>\\d+)_(?<commit>[^/]+)/") | "\(.x).\(.y).\(.z).\(.patch)_\(.commit)"'

@@ -4,4 +4,8 @@
 !*.install
 !.gitignore
 !LICENSE
+!LICENSES/
+!LICENSES/**
+!REUSE.toml
+!.nvchecker.toml
 !upwork
