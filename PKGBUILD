@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="qdl"
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="Tool to communicate with Qualcomm System On a Chip bootroms to install or execute code"
 arch=(
@@ -24,7 +24,7 @@ _pkgsrc="${pkgname}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
 )
-b2sums=('691dc7e6625ea7c19c62aed41a4bb6c63b8371c1f1182b88e5b0173b8cd5e5799e23ef99e4c09f82cd5d4060bc5b48e96a607ee9d6e19104a5d42c4adc797d82')
+b2sums=('c523c01c9a9d5c8902679ec76e88ea7068a4e8c0485bd5ac462fc150cc0b4029439723640eaecf7fdc547faea98760d9e108d8555ef275498291d78eeaaebeef')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
