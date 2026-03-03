@@ -38,15 +38,19 @@ makedepends=(
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive/v${pkgver}.tar.gz"
         "torchvision-0_17_1-fix-build.patch"
+        "0001-Fix-setup.py-breaks-with-setuptools-82-9386.patch"
 )
 b2sums=('030dfea9d216ddc82f40d1efff79e132dd4da117214c8d638cb26a7ed26e85c6fba85806fe8db486d83d5091544b325d30387090ac73d6b467a6be5b474a05d6'
-        'b2036b9f4102c50cbcf6813e4a5c46d2899c11ab8d20236eadb5ac1f88d927ee0fb809c880ca3ad9194efa8df665a47d05085b5352b804dabe8925836ecfd0f7')
+        'b2036b9f4102c50cbcf6813e4a5c46d2899c11ab8d20236eadb5ac1f88d927ee0fb809c880ca3ad9194efa8df665a47d05085b5352b804dabe8925836ecfd0f7'
+        '2532345be1043f7406bc0ec63ff758d11c1ab2f70b51392dfd26a23d15765f7993f8d140721951ec1ccd9a9e963e7bfb522f4df393908929adfe1104c6293dc8')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # https://github.com/pytorch/vision/issues/8307
   patch -N -i "${srcdir}"/torchvision-0_17_1-fix-build.patch
+  # Remove pkg_resources use
+  patch -Np1 -i "${srcdir}"/0001-Fix-setup.py-breaks-with-setuptools-82-9386.patch
 
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${_pkgname}-cuda-${pkgver}"
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/python-${_pkgname}-${pkgver}"

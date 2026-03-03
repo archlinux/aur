@@ -24,6 +24,7 @@ SPDX-License-Identifier = "0BSD"
 [[annotations]]
 path = [
     "torchvision-0_17_1-fix-build.patch",
+    "0001-Fix-setup.py-breaks-with-setuptools-82-9386.patch",
 ]
 SPDX-FileCopyrightText = "torchvision contributors"
 SPDX-License-Identifier = "BSD-3-Clause"

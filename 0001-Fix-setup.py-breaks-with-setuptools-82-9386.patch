@@ -1,0 +1,42 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: zy1git <zycoding1@gmail.com>
+Date: Tue, 17 Feb 2026 16:27:42 -0800
+Subject: [PATCH] Fix setup.py breaks with setuptools>=82 (#9386)
+
+Co-authored-by: Zhitao Yu <zhitao@fb.com>
+(cherry picked from commit 766436522f5d2d8190d7bedd33302699005c7acb)
+---
+ setup.py | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index c3ba164007..332282a258 100644
+--- a/setup.py
++++ b/setup.py
+@@ -8,10 +8,11 @@ import subprocess
+ import sys
+ import sysconfig
+ import warnings
++from importlib.metadata import distribution, PackageNotFoundError
+ from pathlib import Path
+ 
+ import torch
+-from pkg_resources import DistributionNotFound, get_distribution, parse_version
++from packaging.version import parse as parse_version
+ from setuptools import find_packages, setup
+ from torch.utils.cpp_extension import BuildExtension, CppExtension, CUDA_HOME, CUDAExtension, ROCM_HOME
+ 
+@@ -92,8 +93,8 @@ def write_version_file(version, sha):
+ def get_requirements():
+     def get_dist(pkgname):
+         try:
+-            return get_distribution(pkgname)
+-        except DistributionNotFound:
++            return distribution(pkgname)
++        except PackageNotFoundError:
+             return None
+ 
+     pytorch_dep = os.getenv("TORCH_PACKAGE_NAME", "torch")
+-- 
+2.51.0
+
