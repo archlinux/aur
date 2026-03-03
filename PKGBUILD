@@ -1,6 +1,6 @@
 # Maintainer: David Williams <davewil1973@gmail.com>
 pkgname=tidewave-bin
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Coding agent for full-stack web app development"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('tidewave')
 source=("tidewave-${pkgver}.AppImage::https://github.com/tidewave-ai/tidewave_app/releases/download/v${pkgver}/tidewave-app-amd64.AppImage"
         "tidewave.desktop"
         "tidewave.svg")
-sha256sums=('00e2ffb0fd3c17f04ba715cf9cb18ec4561889fc236b1a12dbda3401a884bef5'
+sha256sums=('7e9d9ee86ce88bb7f5f3fb97c56bec3ace235e543ba37dfc8ab9144474173d0a'
             '85b9f83e6ae7f42de7bcfc6186c75d764482ca8fe68d5799b919d1840ce6cd94'
             'e564de08f393cdfd0aaa095f55e4a0d761d250b2210e5e9ac05e4a22119307b8')
 options=('!strip')
