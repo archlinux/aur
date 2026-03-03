@@ -1,7 +1,7 @@
 pkgbase = sslh-git
 	pkgdesc = SSL/SSH/OpenVPN/XMPP/tinc port multiplexer
-	pkgver = 2.1.1.r16.gde7351f
-	pkgrel = 2
+	pkgver = 2.3.0.r17.g9fadd60
+	pkgrel = 1
 	url = http://www.rutschle.net/tech/sslh.shtml
 	install = sslh.install
 	arch = i686
@@ -19,6 +19,14 @@ pkgbase = sslh-git
 	conflicts = sslh
 	backup = etc/sslh/default.cfg
 	source = sslh-git::git+https://github.com/yrutschle/sslh
+	source = sslh.service
+	source = sslh-select.service
+	source = sslh-ev.service
+	source = sslh-fork.service
 	sha256sums = SKIP
+	sha256sums = 3d084889cb671df22382767d181e25f1c0a0d63b6937cadb550af0153c488c74
+	sha256sums = 42182146dfe6ca99c5e07e1009f017567a276c504308ed39ecc05b304f28f107
+	sha256sums = 6580a61b81a0a1a9806a9d23a82dcc2e601f237bd1e4bd66a550e385cca13d51
+	sha256sums = a6aabd7ad68c9c1fdb0e2f5dcb9f8e108651a77d5422e718a1186607b8657bea
 
 pkgname = sslh-git
