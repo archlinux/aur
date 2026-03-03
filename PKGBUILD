@@ -21,7 +21,7 @@ package() {
   		cp -r "$srcdir/data" "$pkgdir/opt/$pkgname/"
 
   		install -Dm644 "$srcdir/data/flutter_assets/assets/app_icon.png" \
-  			"$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+  			"$pkgdir/usr/share/icons/hicolor/256x256/apps/kelivo.png"
 
   		install -Dm644 "$srcdir/kelivo.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   		
