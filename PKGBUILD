@@ -2,7 +2,7 @@
 
 pkgname=fcp-support-git
 _pkgname=fcp-support
-pkgver=r44.cc8061d
+pkgver=r48.03c3c42
 pkgrel=1
 pkgdesc="Focusrite Control Protocol user-space driver for Scarlett 4th Gen big models (16i16, 18i16, 18i20)"
 arch=('x86_64')
