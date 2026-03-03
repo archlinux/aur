@@ -1,6 +1,6 @@
 pkgbase = markus-bin
 	pkgdesc = A local WYSIWYG Markdown editor built with Electron, React, and ProseMirror
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/benquemax/markus-the-editor
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = markus-bin
 	conflicts = markus-the-editor
 	options = !strip
 	options = !debug
-	source = Markus-0.9.0.AppImage::https://github.com/benquemax/markus-the-editor/releases/download/v0.9.0/Markus-0.9.0.AppImage
-	sha256sums = a6cdc5170e102515adfd1f46ef5e95c2fa9c26e9cfe8abfbd1cd88ac99253657
+	source = Markus-0.10.0.AppImage::https://github.com/benquemax/markus-the-editor/releases/download/v0.10.0/Markus-0.10.0.AppImage
+	sha256sums = e279e43afb6287e47290c6c8cc9f8b391e26c6f668afd55d450e62ef599b47f4
 
 pkgname = markus-bin
