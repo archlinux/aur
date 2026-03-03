@@ -1,0 +1,18 @@
+pkgbase = supashift-bin
+	pkgdesc = Manage multiple Supabase CLI profiles with isolated sessions
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/villawebcl/supashift
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	optdepends = supabase: run Supabase CLI commands
+	optdepends = docker: local supabase start/status
+	optdepends = tmux: multi-session workflow
+	source_x86_64 = supashift-bin-0.1.2-x86_64.tar.gz::https://github.com/villawebcl/supashift/releases/download/v0.1.2/supashift_0.1.2_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 49fb6f0d190ba58961d5e477ba514e4fff9b02294a1388e1b736da77a39ca931
+	source_aarch64 = supashift-bin-0.1.2-aarch64.tar.gz::https://github.com/villawebcl/supashift/releases/download/v0.1.2/supashift_0.1.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8c8fcbb07e56d09ad73b5bc1a2dea5c5c00ed4c554bbd0bfe0abe057e706fe5f
+
+pkgname = supashift-bin
