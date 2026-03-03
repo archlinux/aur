@@ -1,4 +1,5 @@
 # Maintainer Nihmar at https://github.com/Nihmar/grunner
+
 pkgname=grunner-git
 pkgver=r1.abcdef1
 pkgrel=1
@@ -10,7 +11,6 @@ depends=('gtk4')
 makedepends=('rust' 'cargo' 'git')
 provides=('grunner')
 conflicts=('grunner')
-
 source=("$pkgname::git+https://github.com/Nihmar/grunner.git")
 sha256sums=('SKIP')
 
@@ -27,6 +27,6 @@ build() {
 package() {
     cd "$pkgname"
     install -Dm755 "target/release/grunner"          "$pkgdir/usr/bin/grunner"
-    install -Dm644 "assets/grunner.svg"               "$pkgdir/usr/share/icons/hicolor/scalable/apps/grunner.svg"
-    install -Dm644 "assets/grunner.desktop"        "$pkgdir/usr/share/applications/grunner.desktop"
+    install -Dm644 "assets/grunner.svg"              "$pkgdir/usr/share/icons/hicolor/scalable/apps/grunner.svg"
+    install -Dm644 "assets/grunner.desktop"          "$pkgdir/usr/share/applications/grunner.desktop"
 }
