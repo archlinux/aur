@@ -2,13 +2,13 @@
 pkgname=lntrn
 pkgver=1.0
 pkgrel=1
-pkgdesc="A neofetch-style system info tool for Lantern DE — renders a lantern icon as ANSI half-block art alongside system info"
+pkgdesc="Displays system information alongside an ANSI Lantern - For Lantern DE"
 arch=('any')
 url="https://github.com/Jca56/lntrn"
-license=('custom')
+license=('GPL-3.0-only')
 depends=('bash' 'python' 'python-pillow')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Jca56/lntrn/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('82a656338635b082d5ebd445cad45e2ebb4cd03015e6a2e1d60d6c02ab068d82')
+sha256sums=('27d95e1ed843c284bbc97479ffe8833cc5fb17e1a406f00557fecef071e68c0d')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
