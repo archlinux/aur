@@ -1,6 +1,6 @@
 pkgbase = yamagi-quake2-zaero-git
 	pkgdesc = Zaero for yamagi-quake2 (development version)
-	pkgver = r90.d52ee31
+	pkgver = r172.f2d8d96
 	pkgrel = 1
 	url = https://www.yamagi.org/quake2/
 	install = yamagi-quake2-zaero.install

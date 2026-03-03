@@ -1,7 +1,7 @@
 # Maintainer: Andrius Lukosevicius <niobium93@gmail.com>
 
 pkgname=yamagi-quake2-zaero-git
-pkgver=r90.d52ee31
+pkgver=r172.f2d8d96
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Zaero for yamagi-quake2 (development version)"
@@ -39,7 +39,7 @@ package() {
   install -Dm755 ../$pkg.sh "$pkgdir"/usr/bin/$pkg
 
   # doc
-  install -Dm644 -t "$pkgdir"/usr/share/doc/$pkg README
+  install -Dm644 -t "$pkgdir"/usr/share/doc/$pkg README.md
 
   # desktop entry
   install -Dm644 -t "$pkgdir"/usr/share/applications ../$pkg.desktop
