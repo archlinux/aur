@@ -1,7 +1,7 @@
 pkgbase = catt-qt
 	pkgdesc = Cast All The Things Qt GUI
-	pkgver = 4.0
-	pkgrel = 5
+	pkgver = 5.1
+	pkgrel = 1
 	url = https://github.com/soreau/catt-qt
 	arch = any
 	license = GPL-3.0-or-later
@@ -13,11 +13,9 @@ pkgbase = catt-qt
 	depends = python-pychromecast
 	depends = python-pyqt5
 	depends = python-requests
-	source = catt-qt-4.0.tar.gz::https://github.com/soreau/catt-qt/archive/refs/tags/v4.0.tar.gz
-	source = pychromecast-14.patch
+	source = catt-qt-5.1.tar.gz::https://github.com/soreau/catt-qt/archive/refs/tags/v5.1.tar.gz
 	source = catt-qt.desktop
-	sha256sums = c5f0b39b0b33ffa1ff2aa9db884da9dbfd0ad36611eb295b1b9296fb3814b46f
-	sha256sums = c29db56162ed3233b0763d7ea61a86092ef9222c3bcfad253a87b97922faa014
+	sha256sums = a6dd84c9991073434de99c56a39f472a7ed657a107eb66c6c97c43d8084884f9
 	sha256sums = 98011e8a1a716bbdd455bb455ef61e48b1e9a4f08f003392c796c228abbac6f4
 
 pkgname = catt-qt
