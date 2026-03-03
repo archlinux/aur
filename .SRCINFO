@@ -1,0 +1,12 @@
+pkgbase = span
+	pkgdesc = real-time noninteractive top-alternative system monitor panel for linux written in python
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/3xiondev/span
+	arch = any
+	license = GPL3
+	source = https://github.com/3xionDev/span/releases/download/1.0.0/span-1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = span
+	depends = lm_sensors
