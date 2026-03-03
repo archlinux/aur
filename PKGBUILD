@@ -7,7 +7,7 @@
 
 _pkgname="trilium"
 pkgname="$_pkgname-next"
-pkgver=0.101.3
+pkgver=0.102.0
 pkgrel=1
 pkgdesc="A hierarchical note taking application"
 url="https://github.com/TriliumNext/Trilium"
@@ -30,7 +30,7 @@ conflicts=("$_pkgname")
 _pkgsrc="${_pkgname^}-$pkgver"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
-sha256sums=('cd443ef24ef493463408f6fc7273528f852ed2bedf24abf3f535627e277d4eaa')
+sha256sums=('787dc35301c3a27a5b069aeedcc2bd68e24ab3e969cef1bea4f4dca35103128d')
 
 _nvm_env() {
   export HOME="$SRCDEST/node-home"
@@ -93,7 +93,7 @@ package() {
   cp -r "$_pkgsrc"/apps/desktop/dist/out/*-linux-x64/resources/* "$pkgdir/$_install_path/$_pkgname/"
 
   # icon
-  install -Dm644 "$_pkgsrc"/apps/desktop/dist/assets/images/icon-color.svg "$pkgdir/usr/share/pixmaps/$_pkgname.svg"
+  install -Dm644 "$_pkgsrc"/apps/desktop/dist/assets/images/icon-color.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.svg"
 
   # launcher
   install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
