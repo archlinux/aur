@@ -14,7 +14,7 @@ url="https://github.com/cs50/python-cs50"
 # from https://github.com/cs50/python-cs50/blob/7247c92fdb4832a04d510ad0d31f16f9307ae8fa/setup.py#L13
 depends=('python' 'python-flask' 'python-packaging' 'python-sqlalchemy' 'python-sqlparse' 'python-termcolor' 'python-wheel')
 makedepends=('python-build' 'python-installer')
-license=('GPLv3')
+license=('GPL-3.0-or-later')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/${_module/-/_}-$pkgver.tar.gz")
 sha256sums=('0cc8fb9d454f784318a82abd996b7e122c1eb5ea0dd367b5e9b406462066d259')
