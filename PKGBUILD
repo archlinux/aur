@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=screamingfrogseospider-jre
-pkgver=23.2
+pkgver=23.3
 pkgrel=1
 pkgdesc="spiders websites’ links, images, CSS, script and apps from an SEO perspective. With bundled jre if you have issues with openjdk"
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ source=(
   "LICENSE"
   "screamingfrogseospider"
 )
-b2sums=('497675ce772979abe3cd69620ad784fbca713f46ac2528ec17ede5b31dba590b8368637fc93d4684a9fd01d88cfba23a7a10021376e3d5d607d1c34ae06c65f0'
+b2sums=('ce865aeff9fe3816d44bc74baddd10549d33466c6aaba5d8d0a4e12a88e3a21b9cc3875f5eb9fe8a67a3e5bd0516b37627557cf21e1e3bcef183f6a995eb83e5'
         '6cde786ef5e5bf0e2d1cb9403eb9bbe6923731e22263e1cd2b3c3f0258d6efb4151eba5b59ee9e87894d17af75f1f72509bd389d1425a9fcab37ba51d9b50cd7'
         '7d0afe711366086d889a26237e96696b917552ea9023cbf5b11b4479943d1cd922c8adeafc3d988e5038a828775e810fdcce07ed5cad03c89da511747ed0c3cb')
 
