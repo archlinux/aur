@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=handbook-git
 _pkgname=Handbook
-pkgver=0.26.0.r0.gc06599d
+pkgver=0.27.0.r0.ga5e8679
 _electronversion=39
-_nodeversion=21
+_nodeversion=22
 pkgrel=1
 pkgdesc="Create small, movable, and easily concealable windows for quick use.(Use system-wide electron)"
 arch=('any')
@@ -41,7 +41,7 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/package.json" | tr -d '^')
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname//-/.}/package.json" | tr -d '^' | tr -d '=')
     _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
@@ -97,6 +97,15 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+	find "${srcdir}/${pkgname//-/.}/out/${_pkgname}-linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" {} +
+    if find "${srcdir}/${pkgname//-/.}/out/${_pkgname}-linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${pkgname//-/.}/out/${_pkgname}-linux-"*"/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/${pkgname//-/.}/out/${_pkgname}-linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
     install -Dm644 "${srcdir}/${pkgname//-/.}/assets/img/icons/app/book.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
