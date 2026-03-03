@@ -3,7 +3,7 @@
 
 _pkgname=vgmtrans
 pkgname=${_pkgname}-git
-pkgver=r1504.6f5f12f
+pkgver=r1545.37545b4
 pkgrel=1
 pkgdesc="Converter for sequenced videogame music"
 arch=("x86_64")
@@ -32,6 +32,10 @@ prepare() {
 		git -c protocol.file.allow=always submodule update lib/"${module}"
 	done
 
+	# HACK: Deactivate the Qt deploy/RPATH parts (because it conflicts with the system packaging)
+	sed -i 's/NOT FLATPAK/FALSE/' src/ui/qt/CMakeLists.txt
+	sed -i -e '/INSTALL_RPATH_USE_LINK_PATH/d' -e 's/INSTALL_RPATH/FROG/g' src/ui/qt/CMakeLists.txt
+
 	mkdir build || true
 }
 
@@ -52,12 +56,12 @@ package() {
 
 	make DESTDIR="${pkgdir}" install
 
-	# Install missing CLI binary (and BASS stuff)
-	install -Dm755 "bin/vgmtrans-cli" "${pkgdir}/usr/bin/vgmtrans-cli"
-	install -Dm644 "../lib/bass/libbass.so" "${pkgdir}/usr/lib/${_pkgname}/libbass.so"
-	install -Dm644 "../lib/bass/libbassmidi.so" "${pkgdir}/usr/lib/${_pkgname}/libbassmidi.so"
+	# Install missing CLI/shell binaries (and move the BASS libraries/licenses to the right place)
+	install -Dm755 "src/ui/cli/vgmtrans-cli" "${pkgdir}/usr/bin/vgmtrans-cli"
+	install -Dm755 "src/ui/shell/vgmtrans-shell" "${pkgdir}/usr/bin/vgmtrans-shell"
 
-	# Install the licenses
-	install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "../licenses/LICENSE_oki_adpcm_state" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE_oki_adpcm_state"
+	install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
+	mv "${pkgdir}"/usr/lib/libbass*.so "${pkgdir}/usr/lib/${_pkgname}"
+	mv "${pkgdir}"/usr/share/licenses/LICENSE* "${pkgdir}/usr/share/licenses/vgmtrans"
+	mv "${pkgdir}/usr/share/licenses/vgmtrans" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
