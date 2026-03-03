@@ -3,7 +3,7 @@
 _Name="DiscordChatExporter"
 _pkgname="discord-chat-exporter-cli"
 pkgname="${_pkgname}-bin"
-pkgver=2.46.1
+pkgver=2.47
 pkgrel=1
 pkgdesc="Exports Discord chat logs to a file - CLI"
 arch=(
@@ -51,9 +51,9 @@ noextract=(
 )
 sha256sums=('f09a6c8baee695e8d1db784fc89ce1bbcfd68d58e5b623bc0577b0bebc48d86e'
             '16effc795aac6a9ad3143bb679c5d93e41f99fc2a0796e91362d4e09b529da79')
-sha256sums_aarch64=('4648e1547c866f48288f3c610035ca0225969e1345e2114081e8ab95fcf4bbde')
-sha256sums_armv7h=('94ec8a6f742bb2962cdfcd523d8be0d8deb4a3b37cdc50022084c6af58bb710e')
-sha256sums_x86_64=('5732685fff0e4dafd1487eba57695a984be9630688fac2b902d053d165796615')
+sha256sums_aarch64=('936aff4797bfba8ceaee416ac52b6831607e283e58988fe022184a03957a7cd3')
+sha256sums_armv7h=('68850dc5d86a5c45511a0e0644c29c14a3ee4e545a22d19b5eefaffe801d6527')
+sha256sums_x86_64=('3c886aa6786c19ef3c3f4992fff4a94394bd1c288e7abb4d5ad126be87bc0dc3')
 
 prepare() {
   mkdir -p "${_pkgsrc}-${CARCH}"
