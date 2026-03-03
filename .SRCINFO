@@ -1,0 +1,15 @@
+pkgbase = hyprlayer
+	pkgdesc = CLI tool for managing Hyprland layer configurations
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://github.com/BrightBlock/hyprlayer-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	source = hyprlayer-1.4.4.tar.gz::https://github.com/BrightBlock/hyprlayer-cli/archive/refs/tags/v1.4.4.tar.gz
+	sha256sums = SKIP
+
+pkgname = hyprlayer
