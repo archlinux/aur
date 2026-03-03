@@ -4,13 +4,13 @@ pkgver=r10.840f54a
 pkgrel=1
 pkgdesc="A refined, cross-platform Jellyfin-focused music player"
 arch=('x86_64')
-url="https://github.com/Xmoncoco/coppelia"
+url="https://github.com/j6k4m8/coppelia"
 license=('Apache')
 depends=('gtk3' 'mpv')
 makedepends=('git' 'flutter' 'cmake' 'ninja' 'pkgconf')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+https://github.com/Xmoncoco/coppelia.git"
+source=("git+https://github.com/j6k4m8/coppelia.git"
         "coppelia.desktop")
 sha256sums=('SKIP'
             'SKIP')
