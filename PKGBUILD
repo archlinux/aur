@@ -1,7 +1,8 @@
-# Maintainer: Mahdi Sarikhani <mahdisarikhani@outlook.com>
+# Maintainer: Inkurey22 <inkurey22.tr@proton.me>
+# Contributor: Mahdi Sarikhani <mahdisarikhani@outlook.com>
 
 pkgname=qlementine
-pkgver=1.2.2
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Modern QStyle for desktop Qt6 applications"
 arch=('x86_64')
@@ -10,7 +11,7 @@ license=('MIT')
 makedepends=('cmake' 'qt6-base' 'qt6-svg')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ff81a868e684dcb0fc405894993a3c27af73d9abb6fe6598b6548337a1662120')
+sha256sums=('ed5196e6e04614db65f9a5f813eb35bf05076b7bce07892db33e85cf7b598616')
 
 build() {
     cmake -B build -S "${pkgname}-${pkgver}" \
