@@ -1,0 +1,26 @@
+pkgbase = we-layerd-git
+	pkgdesc = Rust daemon to run Wallpaper Engine via Wine on Wayland compositors
+	pkgver = r74.6140b9f
+	pkgrel = 1
+	url = https://github.com/Aromatic05/we-layerd
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cargo
+	depends = ffmpeg
+	depends = gtk3
+	depends = libx11
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxfixes
+	depends = libxrender
+	depends = vulkan-icd-loader
+	depends = xdotool
+	optdepends = wine: required to run Wallpaper Engine
+	optdepends = wlr-randr: monitor management for wlroots-based compositors
+	provides = we-layerd
+	conflicts = we-layerd
+	source = we-layerd::git+https://github.com/Aromatic05/we-layerd.git
+	sha256sums = SKIP
+
+pkgname = we-layerd-git
