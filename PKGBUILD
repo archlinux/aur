@@ -7,7 +7,7 @@ _sdl_gcdb_commit=9cc9325b050f84808fcc77a868f1ee934555346f  # This needs to be up
 
 pkgname=spaghettikart
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial native port of Mario Kart 64"
 license=("unknown" "MIT")
 arch=("x86_64" "i686" "armv7h" "aarch64")
@@ -81,7 +81,7 @@ package() {
   install -dm755 "${pkgdir}/${SHIP_PREFIX}" "${pkgdir}/usr/bin/"
 
   # Main executable & assets to /opt
-  cp -r build/yamls "${pkgdir}/${SHIP_PREFIX}"
+  cp -r build/{yamls,meta} "${pkgdir}/${SHIP_PREFIX}"
   install -m755 build/Spaghettify "${pkgdir}/${SHIP_PREFIX}"
   install -m644 -t "${pkgdir}/${SHIP_PREFIX}" \
         build/config.yml \
