@@ -1,0 +1,18 @@
+pkgbase = podserv-b-git
+	pkgdesc = a minimalist podcast server (type b) for serving media files on the web
+	pkgver = 0.1.0.r1.g77e6269
+	pkgrel = 1
+	url = https://github.com/l5yth/podserv-b
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	options = !debug
+	source = git+https://github.com/l5yth/podserv-b.git
+	sha256sums = SKIP
+
+pkgname = podserv-b-git
