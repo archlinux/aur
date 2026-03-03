@@ -3,8 +3,8 @@
 # Contributor: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname=processing-bin
 _pkgname=Processing
-pkgver=4.5.2
-_subver=1313
+pkgver=4.5.3
+_subver=1314
 pkgrel=1
 arch=(
     'aarch64'
@@ -22,17 +22,18 @@ depends=(
     'libxi'
     'libxext'
     'libx11'
-    'libxcursor'
-    'freetype2'
+    'fontconfig'
+    'libglvnd'
     'libxtst'
+    'libxrender'
 )
 makedepends=(
     'gendesk'
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.zip::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-aarch64-portable.zip")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.zip::${_ghurl}/releases/download/${pkgname%-bin}-${_subver}-${pkgver}/${pkgname%-bin}-${pkgver}-linux-x64-portable.zip")
-sha256sums_aarch64=('7c73c3f75c3cb513d423847e253ea18a064bf6d2f52741b80ae316bf738c9395')
-sha256sums_x86_64=('5d5ce0f5a59cffc86f12b49997184434f554ff546932323f148aad92626bc3ff')
+sha256sums_aarch64=('c5b7b10a80f008d4903fe0238fc3861e0259d0a790b145c881d72d01598a4897')
+sha256sums_x86_64=('bf1dd11fbbd3a5bb039818439c310de3319ee3d9f80ef0bd27df929f849eae1f')
 prepare() {
     gendesk -q -f -n \
         --pkgname="${pkgname%-bin}" \
@@ -41,6 +42,8 @@ prepare() {
         --name="${_pkgname}" \
         --exec="${pkgname%-bin} %U"
     find "${srcdir}/${_pkgname}/lib/app/resources/modes/java/application/launch4j/w32api" -type f -exec chmod 644 {} +
+    find "${srcdir}/${_pkgname}/lib/app/resources/modes/java/application/launch4j/bin" \
+        \( -name "*-macos" -o -name "*armv6*" -o -name "*windows*" \)
 }
 package() {
     install -Dm755 -d "${pkgdir}/"{usr/lib/"${pkgname%-bin}",usr/bin}
