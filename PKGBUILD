@@ -1,14 +1,14 @@
   # Maintainer: Nauris Steins <me@naurissteins.com>
   pkgname=matuwall
-  pkgver=0.1.2
+  pkgver=0.1.3
   pkgrel=1
-  pkgdesc="GTK4 + libadwaita wallpaper picker for matugen"
+  pkgdesc="GTK4 + libadwaita wallpaper switcher"
   arch=('x86_64')
   url="https://github.com/naurissteins/Matuwall"
   license=('GPL-3.0-or-later')
   depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'gtk4-layer-shell')
   makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-  optdepends=('matugen: apply wallpapers/colors')
+  optdepends=('matugen: apply colors' 'awww: apply wallpapers')
   source=("$pkgname-$pkgver.tar.gz::https://github.com/naurissteins/Matuwall/archive/refs/tags/$pkgver.tar.gz")
   sha256sums=('SKIP')
 
