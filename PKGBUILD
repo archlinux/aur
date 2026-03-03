@@ -5,7 +5,7 @@ _Pkgname=Vial
 
 pkgname="${_pkgname}-bin"
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time, similar to VIA. Keychron branch."
 arch=('x86_64')
 url="https://github.com/Tymon3310/vial-gui"
@@ -13,41 +13,75 @@ license=("GPL-2.0-only")
 options=(!strip !debug)
 provides=("vial" "vial-keychron")
 conflicts=("vial" "vial-appimage" "vial-git" "vial-keychron-git")
-depends=("zlib" "fuse2" "hicolor-icon-theme")
+depends=("hicolor-icon-theme" "glibc" "gcc-libs" "zlib" "expat" "freetype2" "libpng" "fontconfig")
+makedepends=("fuse2")
 _appimage="Vial-x86_64.AppImage"
 source_x86_64=("${_appimage}::https://github.com/Tymon3310/vial-gui/releases/download/v${pkgver}/Vial-x86_64.AppImage"
-               "59-vial.rules")
+  "59-vial.rules")
 noextract=("${_appimage}")
 sha256sums_x86_64=('3035b3424f94b0c1b2d937f0f942499b38bd5b3f804b70f351c88b9ed9c2c2ae'
-                   'a6af0820ee6960dccab9ce0df0a898ccd0a50fecd992e341656dd1af78680502')
+  'a6af0820ee6960dccab9ce0df0a898ccd0a50fecd992e341656dd1af78680502')
 
 prepare() {
-    chmod +x "${_appimage}"
-    ./"${_appimage}" --appimage-extract
+  chmod +x "${_appimage}"
+  ./"${_appimage}" --appimage-extract
 }
 
 build() {
-    # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=Vial|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_pkgname}|" \
-        "squashfs-root/${_Pkgname}.desktop"
+  cd squashfs-root
+
+  # Adjust .desktop so it will work outside of AppImage container
+  sed -i -E "s|Exec=Vial|Exec=/usr/bin/${_pkgname}|" "${_Pkgname}.desktop"
+
+  # Remove problematic bundled libraries that conflict with Arch system libraries (fixes xcb Qt plugin crash)
+  rm -f _internal/libstdc++.so*
+  rm -f _internal/libgcc_s.so*
+  rm -f _internal/libz.so*
+  rm -f _internal/libglib-2.0.so*
+  rm -f _internal/libgthread-2.0.so*
+  rm -f _internal/libdbus-1.so*
+  rm -f _internal/libuuid.so*
+  rm -f _internal/libexpat.so*
+  rm -f _internal/libcrypt.so*
+  rm -f _internal/libcrypto.so*
+  rm -f _internal/libssl.so*
+  rm -f _internal/libffi.so*
+  rm -f _internal/liblzma.so*
+  rm -f _internal/libfontconfig.so*
+  rm -f _internal/libfreetype.so*
+  rm -f _internal/libpng16.so*
+  rm -f _internal/libsystemd.so*
 }
 
 package() {
-    # Install the raw AppImage to /opt
-    install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
+  # Create directories
+  install -dm755 "$pkgdir/opt/${_pkgname}"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/applications"
+  install -dm755 "$pkgdir/usr/share/icons/hicolor/1024x1024/apps"
+  install -dm755 "$pkgdir/usr/lib/udev/rules.d"
 
-    # Install Desktop file from the extracted AppImage
-    install -Dm644 "${srcdir}/squashfs-root/${_Pkgname}.desktop" \
-            "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  # Copy the extracted and cleaned application
+  cp -r "${srcdir}/squashfs-root/"* "${pkgdir}/opt/${_pkgname}/"
 
-    # Install Icon image from the extracted AppImage
-    install -Dm644 "${srcdir}/squashfs-root/Vial.png" \
-            "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/Vial.png"
+  # Fix permissions
+  find "$pkgdir/opt/${_pkgname}" -type d -exec chmod 755 {} \;
+  find "$pkgdir/opt/${_pkgname}" -type f -exec chmod 644 {} \;
+  chmod 755 "$pkgdir/opt/${_pkgname}/Vial"
+  chmod 755 "$pkgdir/opt/${_pkgname}/AppRun"
 
-    # Symlink executable
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${_pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
+  # Desktop file
+  install -Dm644 "${pkgdir}/opt/${_pkgname}/${_Pkgname}.desktop" \
+    "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
-    # Create udev rule
-    install -Dm644 "$srcdir/59-vial.rules" "$pkgdir/usr/lib/udev/rules.d/59-vial.rules"
+  # Icon image
+  install -Dm644 "${pkgdir}/opt/${_pkgname}/Vial.png" \
+    "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/Vial.png"
+  sed -i "s|Icon=Vial|Icon=Vial|" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+
+  # Symlink executable
+  ln -s "/opt/${_pkgname}/Vial" "${pkgdir}/usr/bin/${_pkgname}"
+
+  # Create udev rule
+  install -Dm644 "$srcdir/59-vial.rules" "$pkgdir/usr/lib/udev/rules.d/59-vial.rules"
 }
