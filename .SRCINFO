@@ -1,6 +1,6 @@
 pkgbase = claudebar
 	pkgdesc = Waybar widget displaying Claude AI subscription usage with colored progress bars
-	pkgver = 0.1.8
+	pkgver = 0.1.9
 	pkgrel = 1
 	url = https://github.com/mryll/claudebar
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = claudebar
 	optdepends = libnotify: desktop notifications on auth expiry
 	provides = waybar-claude-usage
 	conflicts = waybar-claude-usage
-	source = claudebar-0.1.8.tar.gz::https://github.com/mryll/claudebar/archive/refs/tags/v0.1.8.tar.gz
-	sha256sums = a2c634575fa9a1c92822ddb89052245a1134f767b2e391f5fb08e1f7f5ad8fbb
+	source = claudebar-0.1.9.tar.gz::https://github.com/mryll/claudebar/archive/refs/tags/v0.1.9.tar.gz
+	sha256sums = e1c8fddaac31e98856184eca3918a3cd97e32c0ce693d98a0d28c11da899d3c6
 
 pkgname = claudebar
