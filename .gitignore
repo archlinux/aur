@@ -1,0 +1,5 @@
+pkg/
+src/
+sononym
+*.pkg.tar.zst
+*.tar.bz2
