@@ -16,7 +16,7 @@ depends=("glibc")
 makedepends=("cmake")
 checkdepends=("cmake")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/tarball/release-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=("660237ea338af8308beaf5d01003e2f33e8bb58b4de07e4d95b2ca6b9c79b05aad3172e4d7e34b83c3257faccfdde854a19b7c69b0a28d5545e7af18f246d21c")
+sha512sums=("fe807921ed16baf15dfef97881d1d8659bb1c2c5c5886201d9ca5d671220f3e476d630fe9e0a458ffe468ee708f79258dd7f3904cef0dbb291f8f3384effd39b")
 
 _compile()
 {
