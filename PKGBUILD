@@ -47,14 +47,14 @@ optdepends=(
   'python-accelerate: Accelerated inference for Voxtral-HF (voxtral-hf extra)'
   'python-mistral-common: Voxtral-HF audio tokenizer (voxtral-hf extra, AUR)'
   # [diarization-sortformer] Speaker diarization via NeMo (SOTA 2025, Python 3.10-3.12)
-  'python-nemo-toolkit: Advanced speaker diarization (diarization-sortformer extra, not packaged - install via pip)'
+  'python-nemo-toolkit: Advanced speaker diarization (diarization-sortformer extra, AUR)'
   # [diarization-diart] Speaker diarization via diart (not recommended, conflicts with CUDA 12.9)
-  'python-diart: Real-time speaker diarization (diarization-diart extra, not packaged - install via pip)'
+  'python-diart: Real-time speaker diarization (diarization-diart extra, AUR)'
   # [sentence_tokenizer] Sentence-level audio buffer trimming
-  'python-mosestokenizer: Sentence tokenizer for buffer trimming (sentence_tokenizer extra, not packaged - install via pip)'
-  'python-wtpsplit: Segment-then-tokenize sentence splitter (sentence_tokenizer extra, not packaged - install via pip)'
+  'python-mosestokenizer: Sentence tokenizer for buffer trimming (sentence_tokenizer extra, AUR)'
+  'python-wtpsplit: Segment-then-tokenize sentence splitter (sentence_tokenizer extra, AUR)'
   # [translation] Multi-language translation (200 languages via NLLB)
-  'python-nllw: NLLB-based translation support (translation extra, not packaged - install via pip)'
+  'python-nllw: NLLB-based translation support (translation extra, AUR)'
   # [test] Test suite
   'python-pytest: Run test suite (test extra)'
 )
