@@ -6,7 +6,7 @@
 
 pkgname=xdelta
 pkgver=1.1.4
-pkgrel=8
+pkgrel=9
 pkgdesc='Binary file delta generator'
 arch=('x86_64' 'i686')
 url="http://sourceforge.net/projects/xdelta/"
@@ -17,7 +17,6 @@ depends=(
   'glibc'
   'zlib'
 )
-makedepends=('gcc14')
 options=('!libtool')
 source=("https://github.com/bbidulock/xdelta/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
         'xdelta-1.1.4-aclocal.patch')
@@ -31,9 +30,8 @@ prepare() {
 
 build() {
   cd ${pkgname}-${pkgver}
-  export CC=gcc-14
   ./configure --prefix=/usr --mandir=/usr/share/man
-  make CFLAGS="$CFLAGS -Wno-error=int-conversion -Wno-error=incompatible-pointer-types"
+  make CFLAGS="$CFLAGS -Wno-error=int-conversion -Wno-error=incompatible-pointer-types -std=gnu17"
 }
 
 package() {

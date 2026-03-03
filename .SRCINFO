@@ -1,12 +1,11 @@
 pkgbase = xdelta
 	pkgdesc = Binary file delta generator
 	pkgver = 1.1.4
-	pkgrel = 8
+	pkgrel = 9
 	url = http://sourceforge.net/projects/xdelta/
 	arch = x86_64
 	arch = i686
 	license = GPL-2.0-or-later
-	makedepends = gcc14
 	depends = bash
 	depends = glib
 	depends = glibc
