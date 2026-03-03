@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitbutler
-pkgver=0.19.3
+pkgver=0.19.4
 pkgrel=1
 url="https://github.com/${pkgname}app/$pkgname"
 pkgdesc='Version control client, backed by Git, powered by Tauri/Rust/Svelte'
@@ -21,7 +21,7 @@ makedepends=(cargo
 options=(!lto)
 _archive="$pkgname-release-$pkgver"
 source=("$url/archive/release%2F$pkgver/$_archive.tar.gz")
-sha256sums=('9f1df0ce89a6e1c595dbc7380f8536a42b1de00a728ff0edcf230603f84ceeb7')
+sha256sums=('7c0f55839f22b1a7080790600e10db97c3d603ae016fae7147ff564c8a089b54')
 
 prepare() {
 	cd "$_archive"
@@ -40,7 +40,7 @@ prepare() {
 			| (.bundle.externalBin |= $externalbin)
 		' \
 		--arg pkgver "$pkgver" \
-		--argjson externalbin '["gitbutler-git-setsid", "gitbutler-git-askpass", "but"]' \
+		--argjson externalbin '["gitbutler-git-askpass", "but"]' \
 		crates/gitbutler-tauri/tauri.conf.release.json \
 		> tauri.conf.arch.json
 }
@@ -62,7 +62,7 @@ build() {
 		-p gitbutler-git \
 		-p but
 	# keep in sync with crates/gitbutler-tauri/inject-git-binaries.sh
-	for bin in target/release/{gitbutler-git-{askpass,setsid},but}; do
+	for bin in target/release/{but,gitbutler-git-askpass}; do
 		cp -av "$bin" "crates/gitbutler-tauri/${bin##*/}-$(rustc --print host-tuple)"
 	done
 	# tauri does not have "bare files" bundler, piggyback on the deb one
