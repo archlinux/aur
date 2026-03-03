@@ -7,23 +7,20 @@ arch=('x86_64')
 url="https://github.com/Web-Next-Music/Next-Music-Client"
 license=('MIT')
 depends=('glibc' 'gtk3' 'alsa-lib' 'desktop-file-utils')
-source=("https://github.com/Web-Next-Music/Next-Music-Client/releases/download/next-music_${pkgver}/next-music_${pkgver}_amd64.deb")
+options=('!strip' '!debug' '!zipman' '!emptydirs')
+_pkgfile="next-music_${pkgver}_x64.pkg.tar.zst"
+source=("${_pkgfile}::https://github.com/Web-Next-Music/Next-Music-Client/releases/download/next-music_${pkgver}/${_pkgfile}")
 sha256sums=('SKIP')
+noextract=("${_pkgfile}")
 
 package() {
-  cd "${srcdir}"
-
-  ar x "next-music_${pkgver}_amd64.deb"
-  tar -xf data.tar.*
-
-  [[ -d usr ]] && cp -r usr "${pkgdir}/"
-  [[ -d opt ]] && cp -r opt "${pkgdir}/"
+  bsdtar -xf "${srcdir}/${_pkgfile}" -C "${pkgdir}" \
+    --exclude='.PKGINFO' \
+    --exclude='.BUILDINFO' \
+    --exclude='.MTREE' \
+    --exclude='.CHANGELOG' \
+    --exclude='.INSTALL'
 
   mkdir -p "${pkgdir}/usr/bin"
-  cat > "${pkgdir}/usr/bin/next-music" <<'EOF'
-#!/bin/bash
-gtk-launch next-music
-EOF
-
-  chmod +x "${pkgdir}/usr/bin/next-music"
+  ln -sf '/opt/Next Music/next-music' "${pkgdir}/usr/bin/next-music"
 }
