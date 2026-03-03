@@ -7,6 +7,12 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
+## 20260302
+
+### Added
+
+- AC_DIGITALSIGN_ACP_G3.crt
+
 ## 20260225
 
 ### Added
