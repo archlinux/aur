@@ -1,9 +1,11 @@
 # Maintainer: neycrol <330578697@qq.com>
 pkgname=bcachefs-kernel-dkms-git
 _pkgname=bcachefs-kernel
-pkgver=r1385308.357e37e
+_repo_url="https://github.com/koverstreet/bcachefs.git"
+_branch="master"
+pkgver=20260302131047.6ebab1b41eda
 pkgrel=1
-# Required because earlier releases used timestamp-based pkgver values.
+# Keep epoch for version-order continuity with already-published epoch=1 builds.
 epoch=1
 pkgdesc="Bcachefs DKMS module from upstream bcachefs kernel sources"
 arch=('any')
@@ -16,74 +18,156 @@ optdepends=(
     'clang: required when building against clang-built kernels'
 )
 # Compatibility: this package replaces alternative bcachefs DKMS/source providers.
-provides=("bcachefs-dkms=${pkgver}")
+provides=('bcachefs-dkms')
 conflicts=('bcachefs-dkms' 'bcachefs-git' 'bcachefs-source-git')
 source=(
-    "${_pkgname}::git+https://github.com/koverstreet/bcachefs.git#branch=master"
     "dkms.conf.in"
     "Makefile.dkms"
 )
-sha256sums=('SKIP'
-            'b57dd60f10e457258b894badc561f9a43339ae7491aebf3a98e56ef74934dfa0'
+sha256sums=('b57dd60f10e457258b894badc561f9a43339ae7491aebf3a98e56ef74934dfa0'
             'a37fa1baaf8825631ceff9410b3be78e06d19833814586cd3140b4af9c2f8d14')
 
-pkgver() {
-    cd "$srcdir/$_pkgname"
+_source_fetched=0
 
-    # Arch VCS guideline-compatible, deterministic, and network-free.
-    printf "r%s.%s" \
-        "$(git rev-list --count HEAD)" \
-        "$(git rev-parse --short=7 HEAD)"
+_git_retry() {
+    local _attempt
+    for _attempt in 1 2 3; do
+        if "$@"; then
+            return 0
+        fi
+        warning "Git command failed (attempt ${_attempt}/3): $*"
+        sleep "${_attempt}"
+    done
+    return 1
+}
+
+_fetch_source() {
+    (( _source_fetched == 1 )) && return 0
+
+    local _repo_dir="$srcdir/$_pkgname"
+    local _lock_file="$srcdir/.source_fetch.lock"
+    {
+        if ! flock -w 120 9; then
+            error "Timed out waiting for source fetch lock."
+            return 1
+        fi
+
+        # Migrate away from legacy bare mirrors from old source=git+ handlers.
+        if [[ -f "$_repo_dir/HEAD" && ! -d "$_repo_dir/.git" ]]; then
+            msg2 "Removing legacy bare repository at $_repo_dir..."
+            rm -rf "$_repo_dir"
+        fi
+
+        if [[ ! -d "$_repo_dir/.git" ]]; then
+            msg2 "Cloning shallow sparse source..."
+            rm -rf "$_repo_dir"
+            _git_retry git clone --depth=1 --filter=blob:none --no-checkout --sparse \
+                "$_repo_url" "$_repo_dir"
+        fi
+
+        # Keep origin URL/branch canonical and refresh to latest commit only.
+        git -C "$_repo_dir" remote set-url origin "$_repo_url"
+        if ! _git_retry git -C "$_repo_dir" fetch --depth=1 origin "$_branch"; then
+            warning "Fetch failed; recreating source checkout..."
+            rm -rf "$_repo_dir"
+            _git_retry git clone --depth=1 --filter=blob:none --no-checkout --sparse \
+                "$_repo_url" "$_repo_dir"
+            _git_retry git -C "$_repo_dir" fetch --depth=1 origin "$_branch"
+        fi
+
+        git -C "$_repo_dir" sparse-checkout init --no-cone >/dev/null 2>&1 || true
+        _git_retry git -C "$_repo_dir" sparse-checkout set fs/bcachefs
+        _git_retry git -c advice.detachedHead=false -C "$_repo_dir" checkout --force FETCH_HEAD
+    } 9>"$_lock_file"
+
+    _source_fetched=1
+}
+
+_pkgver_from_repo() {
+    local _head
+    _head="$(git -C "$srcdir/$_pkgname" rev-parse --verify HEAD)"
+    printf "%s.%s" \
+        "$(TZ=UTC git -C "$srcdir/$_pkgname" show -s --format=%cd --date=format:%Y%m%d%H%M%S "$_head")" \
+        "$(git -C "$srcdir/$_pkgname" rev-parse --short=12 "$_head")"
+}
+
+pkgver() {
+    _fetch_source
+    _pkgver_from_repo
 }
 
 prepare() {
+    _fetch_source
+
     local _repo_dir="$srcdir/$_pkgname"
+    local _build_dir="$srcdir/build.$(_pkgver_from_repo)"
+    local _module_version="$_build_dir/fs/bcachefs/module-version.c"
 
-    # Sources come from makepkg source() stage; no network access here.
-    rm -rf "$srcdir/build"
-    install -dm755 "$srcdir/build"
+    rm -rf "$_build_dir"
+    install -dm755 "$_build_dir/fs"
+    cp -a "$_repo_dir/fs/bcachefs" "$_build_dir/fs/"
 
-    install -dm755 "$srcdir/build/fs"
-    cp -a "$_repo_dir/fs/bcachefs" "$srcdir/build/fs/"
+    install -m644 "$srcdir/dkms.conf.in" "$_build_dir/dkms.conf"
+    install -m644 "$srcdir/Makefile.dkms" "$_build_dir/Makefile"
 
-    cp -a "$_repo_dir/include" "$srcdir/build/"
-
-    install -m644 "$srcdir/dkms.conf.in" "$srcdir/build/dkms.conf"
-    install -m644 "$srcdir/Makefile.dkms" "$srcdir/build/Makefile"
-    sed -i "s|@PKGVER@|${pkgver}|g" "$srcdir/build/dkms.conf"
-
-    # Generate module-version.c required by standalone DKMS builds unless
-    # upstream already provides it.
-    local _module_version="$srcdir/build/fs/bcachefs/module-version.c"
-    if [ -e "$_module_version" ]; then
-        warning "Upstream already provides module-version.c; keeping upstream file."
-    else
-        msg2 "Generating module-version.c..."
-        cat > "$_module_version" <<EOF
-// Generated by PKGBUILD for standalone DKMS build
-#include <linux/module.h>
-MODULE_VERSION("${pkgver}");
-EOF
-    fi
-
-    if [ -f "$srcdir/build/fs/bcachefs/Makefile" ]; then
-        msg2 "Renaming upstream Makefile to Kbuild..."
-        mv "$srcdir/build/fs/bcachefs/Makefile" "$srcdir/build/fs/bcachefs/Kbuild"
-    elif [ -f "$srcdir/build/fs/bcachefs/Kbuild" ]; then
-        msg2 "Using upstream Kbuild as-is..."
-    else
+    # Build expects at least one upstream module build file.
+    if [[ ! -f "$_build_dir/fs/bcachefs/Makefile" && ! -f "$_build_dir/fs/bcachefs/Kbuild" ]]; then
         error "Neither Makefile nor Kbuild found in fs/bcachefs."
         return 1
+    fi
+
+    # Refuse links/special files here; only regular files are accepted.
+    if [[ -L "$_module_version" ]]; then
+        error "Refusing symlinked module-version.c in staged tree."
+        return 1
+    fi
+    if [[ -e "$_module_version" && ! -f "$_module_version" ]]; then
+        error "module-version.c exists but is not a regular file."
+        return 1
+    fi
+
+    # Generate only when upstream does not provide one.
+    if [[ ! -e "$_module_version" ]]; then
+        msg2 "Generating module-version.c template..."
+        cat > "$_module_version" <<'EOF'
+// Generated by PKGBUILD for standalone DKMS build
+#include <linux/module.h>
+MODULE_VERSION("@PKGVER@");
+EOF
     fi
 }
 
 package() {
-    # Install DKMS source tree under /usr/src/bcachefs-<version>.
-    local install_dir="$pkgdir/usr/src/bcachefs-${pkgver}"
-    install -dm755 "$install_dir"
+    local _build_dir="$srcdir/build.${pkgver}"
+    local _install_dir="$pkgdir/usr/src/bcachefs-${pkgver}"
+    local _module_version
+    local _repo_pkgver
+    local _pkgver_escaped
 
-    cp -a "$srcdir/build/fs" "$install_dir/"
-    cp -a "$srcdir/build/include" "$install_dir/"
-    install -m644 "$srcdir/build/dkms.conf" "$install_dir/dkms.conf"
-    install -m644 "$srcdir/build/Makefile" "$install_dir/Makefile"
+    _module_version="$_build_dir/fs/bcachefs/module-version.c"
+    _repo_pkgver="$(_pkgver_from_repo)"
+
+    if [[ "$_repo_pkgver" != "$pkgver" ]]; then
+        error "pkgver drift detected: repo=${_repo_pkgver}, package=${pkgver}"
+        return 1
+    fi
+
+    if [[ ! -d "$_build_dir/fs/bcachefs" ]]; then
+        error "Prepared source tree is missing: $_build_dir/fs/bcachefs"
+        return 1
+    fi
+
+    _pkgver_escaped=${pkgver//\\/\\\\}
+    _pkgver_escaped=${_pkgver_escaped//&/\\&}
+    _pkgver_escaped=${_pkgver_escaped//|/\\|}
+
+    sed -i "s|@PKGVER@|${_pkgver_escaped}|g" "$_build_dir/dkms.conf"
+    if [[ -f "$_module_version" ]] && grep -q '@PKGVER@' "$_module_version"; then
+        sed -i "s|@PKGVER@|${_pkgver_escaped}|g" "$_module_version"
+    fi
+
+    install -dm755 "$_install_dir"
+    cp -a "$_build_dir/fs" "$_install_dir/"
+    install -m644 "$_build_dir/dkms.conf" "$_install_dir/dkms.conf"
+    install -m644 "$_build_dir/Makefile" "$_install_dir/Makefile"
 }
