@@ -54,9 +54,9 @@ sha256sums=(
 build() {
   cd "${srcdir}/hiresTI-${pkgver}"
 
-  cargo build --manifest-path src_rust/rust_audio_core/Cargo.toml --release --locked
-  cargo build --manifest-path src_rust/rust_viz_core/Cargo.toml --release --locked
-  cargo build --manifest-path src_rust/rust_launcher/Cargo.toml --release --locked
+  cargo build --manifest-path src_rust/rust_audio_core/Cargo.toml --release
+  cargo build --manifest-path src_rust/rust_viz_core/Cargo.toml --release
+  cargo build --manifest-path src_rust/rust_launcher/Cargo.toml --release
 }
 
 package() {
