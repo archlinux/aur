@@ -1,4 +1,4 @@
-pkgbase = ArchVault
+pkgbase = archvault
 	pkgdesc = Backup & Restore Manager for Arch Linux — GUI for rsync, btrfs, tar, rclone with scheduling, encryption, and cloud support
 	pkgver = 5.0.2_beta
 	pkgrel = 1
@@ -23,7 +23,7 @@ pkgbase = ArchVault
 	optdepends = openssh: SFTP backup target support
 	optdepends = libnotify: Desktop notification support
 	optdepends = xdg-desktop-portal: GNOME Background Apps panel integration
-	source = ArchVault-5.0.2_beta.tar.gz::https://github.com/LeonLionHeart/ArchVault/archive/refs/tags/v5.0.2-beta.tar.gz
+	source = archvault-5.0.2_beta.tar.gz::https://github.com/LeonLionHeart/ArchVault/archive/refs/tags/v5.0.2-beta.tar.gz
 	sha256sums = 50934f293ba63c8463d8cce3d9d129630cd1f6bf6c098d738e4de44893ecec79
 
-pkgname = ArchVault
+pkgname = archvault
