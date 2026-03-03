@@ -5,7 +5,7 @@ _pname=${pkgbase#python-}
 _pyname=MyST-NB
 #_pyname=${_pname//-/_}
 pkgname=("python-${_pname}")
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Parse and execute ipynb files in Sphinx"
 arch=('any')
@@ -25,29 +25,31 @@ checkdepends=('python-pytest-param-files'
               'python-pytest-regressions'
 #             'python-pytest-xdist'
               'python-beautifulsoup4'
-              'python-ipywidgets'
+#             'python-ipywidgets'
               'python-jupyter-cache'
               'python-matplotlib'
               'python-myst-parser'
               'python-nbdime'
-              'python-pandas'
+#             'python-pandas'
               'python-sphinx'
-              'python-sympy'
+#             'python-sympy'
               'jupyter-nbconvert'
-              'python-jupytext')   #    'python-importlib-metadata' <- jupyter...
+              'python-ipykernel')   #    'python-importlib-metadata' <- jupyter...
+#             'python-jupytext'
 #checkdepends=('python-nose' 'python-myst-parser' 'python-jupyter-cache' 'ipython')
 # nbformat importlib-metadata <- jupyter-cache
 #checkdepends=('python-jupyter-sphinx' 'python-jupyter-cache' 'jupyter-nbconvert' 'python-yaml' 'python-sphinx-togglebutton')
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/executablebooks/MyST-NB/archive/refs/tags/v${pkgver}.tar.gz")
 #       'Makefile')
-md5sums=('d2825a4ccf6d7b9b5385632c8ffca651')
+md5sums=('e4e3217f76e9c5ae8ca2324ca88cd490')
 
-#prepare() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-#    ln -s ${srcdir}/Makefile docs
-#}
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+#   ln -s ${srcdir}/Makefile docs
+    sed -i "/pending/a \    'ignore:Argument \"parser_name\" will be removed:PendingDeprecationWarning'," pyproject.toml
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
