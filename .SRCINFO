@@ -1,6 +1,6 @@
 pkgbase = awf-gtk3
 	pkgdesc = Theme preview application for GTK 3
-	pkgver = 3.2.0
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/luigifab/awf-extended
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = awf-gtk3
 	depends = libnotify>=0.7.0
 	depends = hicolor-icon-theme
 	conflicts = awf-git
-	source = https://github.com/luigifab/awf-extended/archive/v3.2.0/awf-extended-3.2.0.tar.gz
-	sha256sums = 788d8bf4ed77a77849853843479e513a44193ab65156b2a5a39cfc566bc101aa
+	source = https://github.com/luigifab/awf-extended/archive/v4.0.0/awf-extended-4.0.0.tar.gz
+	sha256sums = dd3c5606375d67272097564fd1426b0ffdb3f2b83ef23c12f57ee772977b3a0d
 
 pkgname = awf-gtk3
