@@ -7,8 +7,8 @@ pkgdesc='A command line tool for decoding streamed (prerecorded) video game audi
 arch=('x86_64')
 url="https://github.com/$_pkgname/$_pkgname"
 license=('ISC')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("$_pkgname-cli")
+conflicts=("$_pkgname-cli")
 source=("$_pkgname-$pkgver-cli.zip"::"$url/releases/download/$pkgver/$_pkgname-linux-cli.zip"
         "COPYING-$pkgver"::"https://raw.githubusercontent.com/$_pkgname/$_pkgname/refs/tags/$pkgver/COPYING")
 b2sums=('071dce6235696953d68c101575b38e193ed5c55b047eb29c045424d0e7929e5544417395468d50cabe5c79993bc57334da9e186b8a4988738694c2b12717ac9a'
