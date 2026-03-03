@@ -11,7 +11,7 @@ depends=(
   'glib2'
   'gtk3'
   'gom'
-  'libpeas'
+  'libpeas-2'
   'sqlite'
   'gstreamer'
   'libcanberra'
