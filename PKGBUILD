@@ -7,7 +7,7 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc="AUR and Pacman package manager helper with Slint UI"
 url="https://github.com/Enzo415611/linux-tool"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 arch=('x86_64')
 provides=('linux-tool')
 conflicts=('linux-tool')
@@ -32,10 +32,32 @@ depends=(
     'dbus'              # libdbus-1.so.3
 )
 
+# Opcional: para validar o .desktop durante o build (comente se não quiser)
+#makedepends=('desktop-file-utils')
+
 source=("https://github.com/Enzo415611/linux-tool/releases/download/v${pkgver}/linux-tool-${pkgver}-x86_64.tar.gz")
 sha256sums=('ee0695dc480e897ab58d3216e7fc01253507e3fa1f64a6230d253880871c8770')
 
 package() {
     install -Dm755 linux-tool "$pkgdir/usr/bin/linux-tool"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Cria o arquivo .desktop diretamente no pacote (sem precisar dele no source)
+    install -Dm644 /dev/null "$pkgdir/usr/share/applications/linux-tool.desktop"
+    cat > "$pkgdir/usr/share/applications/linux-tool.desktop" << 'EOF'
+[Desktop Entry]
+Type=Application
+Name=Linux Tool
+GenericName=Gerenciador de Pacotes AUR e Pacman
+Comment=Ferramenta auxiliar para AUR e Pacman com interface gráfica Slint
+Exec=linux-tool
+Icon=system-software-install
+Terminal=false
+Categories=System;PackageManager;Utility;
+Keywords=aur;pacman;package;manager;slint;
+StartupNotify=true
+EOF
+
+
+    desktop-file-validate "$pkgdir/usr/share/applications/linux-tool.desktop" || true
 }
