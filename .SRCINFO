@@ -1,6 +1,6 @@
 pkgbase = alsa-scarlett-gui-git
 	pkgdesc = GUI for the ALSA controls presented by the Scarlett2 driver, Development version
-	pkgver = 1.0beta3
+	pkgver = 1.0beta6
 	pkgrel = 1
 	url = https://github.com/geoffreybennett/alsa-scarlett-gui
 	arch = i686
@@ -23,7 +23,7 @@ pkgbase = alsa-scarlett-gui-git
 	depends = openssl
 	provides = alsa-scarlett-gui
 	conflicts = alsa-scarlett-gui
-	source = git+https://github.com/geoffreybennett/alsa-scarlett-gui.git#tag=1.0beta3
+	source = git+https://github.com/geoffreybennett/alsa-scarlett-gui.git#tag=1.0beta6
 	sha256sums = SKIP
 
 pkgname = alsa-scarlett-gui-git
