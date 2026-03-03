@@ -1,6 +1,6 @@
 # Maintainer: Aster O'Connor <archlinux.anatomist477 at passmail dot net>
 pkgname=hylo-llvm-bin
-pkgver=20251214_185311
+pkgver=20260302_194515
 _llvm_ver=20.1.6
 pkgrel=1
 pkgdesc="LLVM library and binaries compatible with Swift and Hylo"
@@ -10,7 +10,7 @@ license=('Apache-2.0 WITH LLVM-exception')
 depends=('curl' 'bash' 'gcc-libs' 'glibc' 'zstd' 'ncurses' 'libxml2')
 options=('!debug' '!strip' 'staticlibs')
 source=("https://github.com/hylo-lang/llvm-build/releases/download/${pkgver//_/-}/llvm-${_llvm_ver}-${CARCH}-unknown-linux-gnu-MinSizeRel.tar.zst")
-sha256sums=('4eb3c1e9b6938244fea5aa684c088543ffbab7433c4749580394e959303ed809')
+sha256sums=('226e241a1697b57fd7402c6bb00ebcf5c2d980e499aa9d4782fa80c61d09559f')
 
 # We install llvm.pc to /usr/lib/pkgconfig/llvm.pc
 # This is a little scary sounding, but is required for
