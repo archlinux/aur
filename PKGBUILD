@@ -1,39 +1,47 @@
-# Maintainer: YOUR NAME <your@email>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=papdieo
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.1.6
+pkgrel=1
 pkgdesc="Hyprland-compatible wallpaper management CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/xiaotinglian/papdieo"
 license=('MIT')
-depends=(
-  'gstreamer'
-  'gst-plugins-base'
-  'gst-plugins-good'
-  'gst-plugins-bad'
-  'gst-plugins-ugly'
-  'gst-libav'
-  'wayland'
-  'hyprland'
-)
-makedepends=('git' 'cargo' 'rust')
-conflicts=('papdieo-git')
-source=("git+https://github.com/xiaotinglian/papdieo.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav')
+optdepends=(
+    'nvidia-utils: better NVIDIA video decode path'
+    'vulkan-icd-loader: better NVIDIA video decode path'
+    'wayland-compositor')
+makedepends=('git' 'cargo')
+source=("$pkgname::git+$url#tag=v$pkgver")
+sha256sums=('ef58f395af41dab9a8f4a6ebb3445204da57b5b76d9f4321e71c9be0b9803d86')
+
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+
+    cd "$pkgname"
+    cargo update
+    cargo fetch --locked --target host-tuple
+}
 
 build() {
-  cd "$srcdir/papdieo"
-  cargo build --release --frozen
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+
+    cd "$pkgname"
+    cargo build --release --frozen --all-features
 }
 
 check() {
-  cd "$srcdir/papdieo"
-  cargo test --release --frozen
+    export RUSTUP_TOOLCHAIN=stable
+
+    cd "$pkgname"
+    cargo test --frozen --all-features
 }
 
 package() {
-  cd "$srcdir/papdieo"
-  install -Dm755 "target/release/papdieo" "$pkgdir/usr/bin/papdieo"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    cd "$pkgname"
+    install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
