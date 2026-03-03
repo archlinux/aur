@@ -1,4 +1,4 @@
-# Maintainer: Cristian Villalobos <villawolf@localhost>
+# Maintainer: Supashift Maintainers <maintainers@supashift.dev>
 
 pkgname=supashift-bin
 pkgver=0.1.3
