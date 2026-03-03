@@ -1,0 +1,2 @@
+#!/bin/env sh
+pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(sudo pacman -Rsnc {})+accept'

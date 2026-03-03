@@ -1,0 +1,2 @@
+#!/bin/env sh
+yay -Slq | fzf --preview 'yay -Si {}' --layout=reverse --bind 'enter:execute(yay -S {})+accept'

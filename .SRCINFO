@@ -1,0 +1,17 @@
+pkgbase = paczf-yay
+	pkgdesc = A TUI frontend for pacman/yay using fzf
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MPL-2.0
+	depends = fzf
+	depends = less
+	depends = yay
+	source = pacget
+	source = pacls
+	source = pacrm
+	sha256sums = 17029390403836a51118d512abb5adb13971f66aef1453822169dfa40cd6d4af
+	sha256sums = dfcfaa1fcc14d58d659bf2b685d023fde787c083b541cca04f5a3c5a8fdf78d9
+	sha256sums = e7bfd84b723660898dcf0f579b2f2ea0398d5ff9192c11dca05ae434675d39b5
+
+pkgname = paczf-yay
