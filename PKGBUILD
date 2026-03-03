@@ -1,4 +1,5 @@
-# Maintainer: Your Name <your.email@example.com>
+# code Maintainer:  j6k4m8
+# package Maintainer:  XmoncocoX <xmoncocox@gmail.com>
 pkgname=coppelia-bin
 pkgver=0.0.10.alpha
 _pkgver=v0.0.10-alpha
