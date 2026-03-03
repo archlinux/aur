@@ -1,10 +1,12 @@
 pkgname=hiresti
 pkgver=1.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="High-Res TIDAL player for Linux with bit-perfect playback support"
 arch=('x86_64')
 url="https://github.com/yelanxin/hiresTI"
 license=('GPL-3.0-or-later')
+_commit=3929e3827eb888b24d6644e913fc285b65f860e3
+_srcdir="hiresTI-${_commit}"
 depends=(
   'alsa-lib'
   'gst-plugin-pipewire'
@@ -45,14 +47,14 @@ conflicts=(
   'hiresti-git'
 )
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/yelanxin/hiresTI/archive/refs/tags/v${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/yelanxin/hiresTI/archive/${_commit}.tar.gz"
 )
 sha256sums=(
-  'a2568f28b4ae918be77cd7933d9404bd77eae4b432874742d65531d3c29bd466'
+  'c27ebdaafad1ed5a680cdadff7bd970e19c29dc462651a9c01726b06d080f05d'
 )
 
 build() {
-  cd "${srcdir}/hiresTI-${pkgver}"
+  cd "${srcdir}/${_srcdir}"
 
   cargo build --manifest-path src_rust/rust_audio_core/Cargo.toml --release
   cargo build --manifest-path src_rust/rust_viz_core/Cargo.toml --release
@@ -60,7 +62,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/hiresTI-${pkgver}"
+  cd "${srcdir}/${_srcdir}"
 
   local app_dir="${pkgdir}/usr/share/${pkgname}"
 

@@ -1,7 +1,7 @@
 pkgbase = hiresti
 	pkgdesc = High-Res TIDAL player for Linux with bit-perfect playback support
 	pkgver = 1.4.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yelanxin/hiresTI
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -36,7 +36,7 @@ pkgbase = hiresti
 	optdepends = python-qrcode: QR-code login flow
 	conflicts = hiresti-bin
 	conflicts = hiresti-git
-	source = hiresti-1.4.9.tar.gz::https://github.com/yelanxin/hiresTI/archive/refs/tags/v1.4.9.tar.gz
-	sha256sums = a2568f28b4ae918be77cd7933d9404bd77eae4b432874742d65531d3c29bd466
+	source = hiresti-1.4.9.tar.gz::https://github.com/yelanxin/hiresTI/archive/3929e3827eb888b24d6644e913fc285b65f860e3.tar.gz
+	sha256sums = c27ebdaafad1ed5a680cdadff7bd970e19c29dc462651a9c01726b06d080f05d
 
 pkgname = hiresti
