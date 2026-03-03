@@ -1,6 +1,6 @@
 # Maintainer: dougy147 <luc@dougy147.com>
 pkgname=mcbash
-pkgver=0.8.5
+pkgver=0.8.6
 pkgrel=1
 pkgdesc="scan for valid MAC addresses on some IPTV platforms"
 arch=(x86_64 i686)
@@ -10,7 +10,6 @@ depends=()
 makedepends=(git)
 checkdepends=()
 provides=(mcbash)
-install=post_install.install
 source=("${pkgname}::git+${url}")
 md5sums=('SKIP')
 
