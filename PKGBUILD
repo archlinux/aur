@@ -1,6 +1,6 @@
 # Maintainer: Luca Anastasio <anastasio dot lu at gmail dot com>
 pkgname=remoteit-desktop-bin
-pkgver=3.35.4
+pkgver=3.41.0
 pkgrel=1
 pkgdesc="Remote.it cross platform desktop application for creating and hosting connections"
 url="https://remote.it/"
@@ -15,7 +15,7 @@ backup=()
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://downloads.remote.it/desktop/v${pkgver}/Remote.It-Installer-amd64.deb")
-md5sums=('ee232877972acd9933586ba945c596f0')
+md5sums=('afa7284958cc13b3aec193d2bb83cb1a')
 
 package() {
   tar xf data.tar.xz -C "${pkgdir}"
