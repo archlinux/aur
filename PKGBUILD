@@ -2,7 +2,7 @@
 _base=pyccel
 pkgname=python-${_base}
 pkgdesc="Python extension language using accelerators"
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 arch=(any)
 url="https://github.com/${_base}/${_base}"
@@ -11,7 +11,7 @@ depends=(python-filelock python-numpy python-sympy python-termcolor python-textx
 makedepends=(python-build python-installer python-hatchling)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('16f069b83749f2aa053020437065055e9c77fab5a2dc9023b1e4f24cc5d5bc7fc137a6a57a52d62a1eaf5f359830d714099c5e85fa7026e644fb6471007fd4ec')
+sha512sums=('9fb1aae829e5d0f3372b1416c6c60bf9a259f4a0a6c84948ce032471f77c4318557fe5b52c587b518e986097fe80eb9beca4074978eac42ef2df15f857189798')
 
 build() {
   cd ${_base}-${pkgver}
