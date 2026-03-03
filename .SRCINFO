@@ -1,6 +1,6 @@
 pkgbase = skim-git
 	pkgdesc = Fuzzy Finder in rust!
-	pkgver = 3.4.0.r3.gf2388c09
+	pkgver = 3.6.0.r1.gb52dc0cf
 	pkgrel = 1
 	url = https://github.com/skim-rs/skim
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = skim-git
 	optdepends = zsh: zsh keybindings
 	provides = skim
 	conflicts = skim
+	options = !lto
 	source = skim-git::git+https://github.com/skim-rs/skim
 	sha256sums = SKIP
 

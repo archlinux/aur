@@ -1,7 +1,7 @@
 # Maintainer: lilydjwg <lilydjwg@gmail.com>
 # Contributor: Ariel AxionL <axionl@aosc.io>
 pkgname=skim-git
-pkgver=3.4.0.r3.gf2388c09
+pkgver=3.6.0.r1.gb52dc0cf
 pkgrel=1
 pkgdesc="Fuzzy Finder in rust!"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=("skim")
 provides=("skim")
 url="https://github.com/skim-rs/skim"
 license=('MIT')
-
+options=('!lto')
 source=("$pkgname::git+$url")
 
 sha256sums=('SKIP')
