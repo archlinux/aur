@@ -1,0 +1,18 @@
+pkgbase = pixelify-sans-font
+	pkgdesc = Pixelify Sans font by Stefie Justprince
+	pkgver = r36.39df74a
+	pkgrel = 1
+	arch = any
+	license = OFL-1.1
+	makedepends = git
+	source = Pixelify-Sans-main::git+https://github.com/eifetx/Pixelify-Sans.git#commit=39df74a
+	sha256sums = a6fa10e82c8b0d6c669d114a305fd8c43ce03402874e8144739c1a3e8baf2708
+
+pkgname = otf-pixelify-sans
+	pkgdesc = Pixelify Sans font by Stefie Justprince (OTF)
+
+pkgname = ttf-pixelify-sans
+	pkgdesc = Pixelify Sans font by Stefie Justprince (TTF)
+
+pkgname = ttf-pixelify-sans-variable
+	pkgdesc = Pixelify Sans font by Stefie Justprince (Variable TTF)
