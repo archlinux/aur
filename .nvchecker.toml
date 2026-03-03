@@ -1,0 +1,5 @@
+[lazytail-bin]
+source = "github"
+github = "raaymax/lazytail"
+use_latest_release = true
+prefix = "v"
