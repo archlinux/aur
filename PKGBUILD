@@ -2,7 +2,7 @@
 
 pkgname=opencpn-plugin-o_charts
 pkgver=2.0.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc="use charts from o-charts.org in opencpn"
 arch=('x86_64' 'aarch64')
 license=("GPL2" "custom")
