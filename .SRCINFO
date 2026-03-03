@@ -1,6 +1,6 @@
 pkgbase = kicad-git
 	pkgdesc = Electronic schematic and printed circuit board (PCB) design tools
-	pkgver = 9.99.0.r3989.gc6d70fa3bb
+	pkgver = 10.0.0.rc1.1.r631.gdb0744f369
 	pkgrel = 1
 	url = https://kicad.org/
 	install = kicad.install
@@ -31,6 +31,7 @@ pkgbase = kicad-git
 	depends = libspnav
 	depends = poppler
 	depends = poppler-glib
+	depends = webkit2gtk-4.1
 	optdepends = kicad-library: for footprints
 	provides = kicad
 	conflicts = kicad

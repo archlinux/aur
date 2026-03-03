@@ -1,7 +1,7 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=kicad-git
-pkgver=9.99.0.r3989.gc6d70fa3bb
+pkgver=10.0.0.rc1.1.r631.gdb0744f369
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later')
 depends=('glew' 'wxwidgets-gtk3' 'desktop-file-utils' 'boost-libs' 'python'
          'glm' 'curl' 'swig' 'python-wxpython' 'opencascade'
          'ngspice>=27' 'unixodbc' 'libgit2' 'protobuf' 'zstd' 'nng'
-         'libspnav' 'poppler' 'poppler-glib')
+         'libspnav' 'poppler' 'poppler-glib' 'webkit2gtk-4.1')
 makedepends=('cmake' 'git' 'zlib' 'mesa' 'boost')
 optdepends=('kicad-library: for footprints')
 conflicts=('kicad' 'kicad-bzr')
