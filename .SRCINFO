@@ -1,0 +1,16 @@
+pkgbase = squeaky
+	pkgdesc = Arch Linux system cleanup tool - removes stale caches, orphaned packages, old logs, and temp files
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/jcstr/squeaky
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = pacman-contrib: Pacman Cache cleaning via paccache
+	optdepends = sudo: system-level cleanup without running squeaky as root
+	source = squeaky-0.1.tar.gz::https://github.com/jcstr/squeaky/archive/refs/tags/0.1.tar.gz
+	sha256sums = 311fc76ba4c1a5b3d94150f147497d3edbf5216d011f61f2f2facb119e2fc2d6
+
+pkgname = squeaky
