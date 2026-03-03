@@ -24,7 +24,7 @@ source=(
     "dkms.conf.in"
     "Makefile.dkms"
 )
-sha256sums=('b57dd60f10e457258b894badc561f9a43339ae7491aebf3a98e56ef74934dfa0'
+sha256sums=('65ba768fc98fd73e400385bf3155cdcb14b04d2189ebc1429dec0c0ad7594e3f'
             'a37fa1baaf8825631ceff9410b3be78e06d19833814586cd3140b4af9c2f8d14')
 
 _source_fetched=0
