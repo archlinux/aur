@@ -1,0 +1,135 @@
+diff --git a/etc/byobu/Makefile.am b/etc/byobu/Makefile.am
+index 4066faca..4ccd516f 100644
+--- a/etc/byobu/Makefile.am
++++ b/etc/byobu/Makefile.am
+@@ -1,3 +1,2 @@
+ etcdir = @sysconfdir@/@PACKAGE@/
+-etc_DATA = backend socketdir
+-dist_etc_DATA = $(etc_DATA)
++dist_etc_DATA = backend socketdir
+diff --git a/usr/bin/Makefile.am b/usr/bin/Makefile.am
+index 63452d99..e280dbd1 100644
+--- a/usr/bin/Makefile.am
++++ b/usr/bin/Makefile.am
+@@ -1,5 +1,4 @@
+-bin_SCRIPTS = byobu  byobu-config  byobu-ctrl-a  byobu-disable  byobu-disable-prompt  byobu-enable  byobu-enable-prompt  byobu-export  byobu-janitor  byobu-keybindings  byobu-launch  byobu-launcher  byobu-launcher-install  byobu-launcher-uninstall  byobu-layout  byobu-prompt  byobu-quiet  byobu-reconnect-sockets  byobu-select-backend  byobu-select-profile  byobu-select-session  byobu-silent  byobu-status  byobu-status-detail  byobu-shell byobu-ugraph byobu-ulevel col1 ctail wifi-status vigpg manifest purge-old-kernels
+-dist_bin_SCRIPTS = $(bin_SCRIPTS)
++dist_bin_SCRIPTS = byobu  byobu-config  byobu-ctrl-a  byobu-disable  byobu-disable-prompt  byobu-enable  byobu-enable-prompt  byobu-export  byobu-janitor  byobu-keybindings  byobu-launch  byobu-launcher  byobu-launcher-install  byobu-launcher-uninstall  byobu-layout  byobu-prompt  byobu-quiet  byobu-reconnect-sockets  byobu-select-backend  byobu-select-profile  byobu-select-session  byobu-silent  byobu-status  byobu-status-detail  byobu-shell byobu-ugraph byobu-ulevel col1 ctail wifi-status vigpg manifest purge-old-kernels
+ 
+ install-exec-hook:
+ 	cd $(DESTDIR)$(bindir) && rm -f byobu-screen && $(LN_S) byobu byobu-screen
+diff --git a/usr/lib/byobu/Makefile.am b/usr/lib/byobu/Makefile.am
+index c5015daa..1d8747b1 100644
+--- a/usr/lib/byobu/Makefile.am
++++ b/usr/lib/byobu/Makefile.am
+@@ -1,3 +1,2 @@
+ libdirdir = $(prefix)/lib/@PACKAGE@
+-libdir_SCRIPTS = apport  arch  battery  cpu_count  cpu_freq  cpu_temp  color  custom  date  disk  disk_io  distro  entropy  fan_speed  hostname  ip_address  load_average  logo  mail  memory  menu  network  packages  processes  raid  reboot_required  release  services  session  swap  time  time_binary time_utc trash updates_available  uptime  users  whoami  wifi_quality
+-dist_libdir_SCRIPTS = $(libdir_SCRIPTS)
++dist_libdir_SCRIPTS = apport  arch  battery  cpu_count  cpu_freq  cpu_temp  color  custom  date  disk  disk_io  distro  entropy  fan_speed  hostname  ip_address  load_average  logo  mail  memory  menu  network  packages  processes  raid  reboot_required  release  services  session  swap  time  time_binary time_utc trash updates_available  uptime  users  whoami  wifi_quality
+diff --git a/usr/lib/byobu/include/Makefile.am b/usr/lib/byobu/include/Makefile.am
+index 7d5ce71c..193a24d2 100644
+--- a/usr/lib/byobu/include/Makefile.am
++++ b/usr/lib/byobu/include/Makefile.am
+@@ -1,3 +1,2 @@
+ inclibdirdir = $(prefix)/lib/@PACKAGE@/include
+-inclibdir_SCRIPTS = common colors config.py constants cycle-status dirs icons mondrian notify_osd shutil select-session.py tmux-detach-all-but-current-client tmux-send-command-to-all-panes tmux-send-command-to-all-windows toggle-utf8
+-dist_inclibdir_SCRIPTS = $(inclibdir_SCRIPTS)
++dist_inclibdir_SCRIPTS = common colors config.py constants cycle-status dirs icons mondrian notify_osd shutil select-session.py tmux-detach-all-but-current-client tmux-send-command-to-all-panes tmux-send-command-to-all-windows toggle-utf8
+diff --git a/usr/share/byobu/desktop/Makefile.am b/usr/share/byobu/desktop/Makefile.am
+index aec2facb..13062c6b 100644
+--- a/usr/share/byobu/desktop/Makefile.am
++++ b/usr/share/byobu/desktop/Makefile.am
+@@ -1,3 +1,2 @@
+ desktopdir = $(datadir)/@PACKAGE@/desktop
+-desktop_SCRIPTS = byobu.desktop byobu.desktop.old
+-dist_desktop_SCRIPTS = $(desktop_SCRIPTS)
++dist_desktop_SCRIPTS = byobu.desktop byobu.desktop.old
+diff --git a/usr/share/byobu/keybindings/Makefile.am b/usr/share/byobu/keybindings/Makefile.am
+index fa5c33e9..03948320 100644
+--- a/usr/share/byobu/keybindings/Makefile.am
++++ b/usr/share/byobu/keybindings/Makefile.am
+@@ -1,3 +1,2 @@
+ keybindingsdir = $(datadir)/@PACKAGE@/keybindings
+-keybindings_DATA = common f-keys f-keys.screen f-keys.screen.disable f-keys.tmux f-keys.tmux.disable mouse.tmux.disable mouse.tmux.enable none tmux-screen-keys.conf
+-dist_keybindings_DATA = $(keybindings_DATA)
++dist_keybindings_DATA = common f-keys f-keys.screen f-keys.screen.disable f-keys.tmux f-keys.tmux.disable mouse.tmux.disable mouse.tmux.enable none tmux-screen-keys.conf
+diff --git a/usr/share/byobu/pixmaps/Makefile.am b/usr/share/byobu/pixmaps/Makefile.am
+index 0f7dcf76..492c7ab7 100644
+--- a/usr/share/byobu/pixmaps/Makefile.am
++++ b/usr/share/byobu/pixmaps/Makefile.am
+@@ -1,5 +1,5 @@
+ pixmapsdir = $(datadir)/@PACKAGE@/pixmaps
+-pixmaps_DATA =                                  \
++dist_pixmaps_DATA =                                  \
+         byobu.14.png                            \
+         byobu.192.png                           \
+         byobu.64.png                            \
+@@ -7,4 +7,3 @@ pixmaps_DATA =                                  \
+         byobu-banner.svg                        \
+         byobu.png                               \
+         byobu.svg
+-dist_pixmaps_DATA = $(pixmaps_DATA)
+diff --git a/usr/share/byobu/pixmaps/highcontrast/Makefile.am b/usr/share/byobu/pixmaps/highcontrast/Makefile.am
+index b6cc8dfb..bd4943ef 100644
+--- a/usr/share/byobu/pixmaps/highcontrast/Makefile.am
++++ b/usr/share/byobu/pixmaps/highcontrast/Makefile.am
+@@ -1,3 +1,2 @@
+ pixmapsdir = $(datadir)/@PACKAGE@/pixmaps/highcontrast
+-pixmaps_DATA = byobu.svg
+-dist_pixmaps_DATA = $(pixmaps_DATA)
++dist_pixmaps_DATA = byobu.svg
+diff --git a/usr/share/byobu/profiles/Makefile.am b/usr/share/byobu/profiles/Makefile.am
+index a4157c6c..b04ba18f 100644
+--- a/usr/share/byobu/profiles/Makefile.am
++++ b/usr/share/byobu/profiles/Makefile.am
+@@ -1,3 +1,2 @@
+ profilesdir = $(datadir)/@PACKAGE@/profiles
+-profiles_DATA = bashrc byoburc dircolors screenrc common tmux tmuxrc NONE
+-dist_profiles_DATA = $(profiles_DATA)
++dist_profiles_DATA = bashrc byoburc dircolors screenrc common tmux tmuxrc NONE
+diff --git a/usr/share/byobu/status/Makefile.am b/usr/share/byobu/status/Makefile.am
+index a2edc701..85be8321 100644
+--- a/usr/share/byobu/status/Makefile.am
++++ b/usr/share/byobu/status/Makefile.am
+@@ -1,3 +1,2 @@
+ statusdir = $(datadir)/@PACKAGE@/status
+-status_DATA = status statusrc
+-dist_status_DATA = $(status_DATA)
++dist_status_DATA = status statusrc
+diff --git a/usr/share/byobu/windows/Makefile.am b/usr/share/byobu/windows/Makefile.am
+index 41bf5038..893aef85 100644
+--- a/usr/share/byobu/windows/Makefile.am
++++ b/usr/share/byobu/windows/Makefile.am
+@@ -1,3 +1,2 @@
+ windowsdir = $(datadir)/@PACKAGE@/windows
+-windows_DATA = common
+-dist_windows_DATA = $(windows_DATA)
++dist_windows_DATA = common
+diff --git a/usr/share/dbus-1/services/Makefile.am b/usr/share/dbus-1/services/Makefile.am
+index 0ae64856..1a4641d5 100644
+--- a/usr/share/dbus-1/services/Makefile.am
++++ b/usr/share/dbus-1/services/Makefile.am
+@@ -1,3 +1,2 @@
+ servicedir = $(datadir)/dbus-1/services
+-service_DATA = us.kirkland.terminals.byobu.service
+-dist_service_DATA = $(service_DATA)
++dist_service_DATA = us.kirkland.terminals.byobu.service
+diff --git a/usr/share/doc/byobu/Makefile.am b/usr/share/doc/byobu/Makefile.am
+index 53f051bc..5ba02ca0 100644
+--- a/usr/share/doc/byobu/Makefile.am
++++ b/usr/share/doc/byobu/Makefile.am
+@@ -1,3 +1,2 @@
+ docdir = $(datadir)/doc/@PACKAGE@
+-doc_DATA = help.screen.txt help.tmux.txt
+-dist_doc_DATA = $(doc_DATA)
++dist_doc_DATA = help.screen.txt help.tmux.txt
+diff --git a/usr/share/sounds/byobu/Makefile.am b/usr/share/sounds/byobu/Makefile.am
+index f9a81763..1d4ec8ad 100644
+--- a/usr/share/sounds/byobu/Makefile.am
++++ b/usr/share/sounds/byobu/Makefile.am
+@@ -1,3 +1,2 @@
+ sounddir = $(datadir)/sounds/byobu
+-sound_DATA = byobu.ogg
+-dist_sound_DATA = $(sound_DATA)
++dist_sound_DATA = byobu.ogg

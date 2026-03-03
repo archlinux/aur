@@ -6,7 +6,7 @@
 # Contributor: Justin Coffman <jcoffman at datasecu dot red>
 
 pkgname=byobu
-pkgver=6.13
+pkgver=6.14
 pkgrel=1
 pkgdesc='Enhanced tmux'
 arch=(any)
@@ -14,15 +14,22 @@ url='https://byobu.org/'
 license=(GPL-3.0-only)
 depends=(libnewt python tmux)
 makedepends=(gettext git setconf)
-source=("git+https://github.com/dustinkirkland/byobu#tag=$pkgver")
-b2sums=('f38fd536c89c144abbbb896b97e563ead77e7f9e8d9c5f2acac7d5bed221bb32af4b7fe7506ec006834be7fd5239759ea7276cceeedee70eb4027d8353c4d892')
+source=("git+https://github.com/dustinkirkland/byobu#tag=$pkgver"
+        "byobu-6.14-fix-double-install.patch")
+b2sums=('ed5627709175ab1c719cb94906035b2e2df31bccd48760450632a8700422e9bf6a418dc6e2feb8c95da3e77b3741c00b8eed09824b73e4c1db075679f322a81d'
+        '14da0443aeb3fb306c1f4bc139c74cc65e561b8b9b818efb2ffef877ed2aa37a039dda2620e090f58afdd910201e0036d91f3868d913ccdaa42006778072a1f8')
 
 prepare() {
+  cd $pkgname
+  
+  # Fix double installation issue in Makefile.am files
+  patch -p1 -i ../byobu-6.14-fix-double-install.patch
+  
   # Adjust path to SOCKETDIR
-  setconf "$pkgname/etc/byobu/socketdir" SOCKETDIR '"/tmp/screens"'
+  setconf etc/byobu/socketdir SOCKETDIR '"/tmp/screens"'
 
   # Tweak the two .desktop files that comes with Byobu
-  cd $pkgname/usr/share/byobu/desktop
+  cd usr/share/byobu/desktop
   setconf byobu.desktop Name 'Byobu Gnome Terminal'
   setconf byobu.desktop Icon=/usr/share/byobu/pixmaps/byobu.svg
   setconf byobu.desktop \
