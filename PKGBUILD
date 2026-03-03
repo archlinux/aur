@@ -5,10 +5,10 @@
 
 _variant=gaokun3
 pkgbase=linux-$_variant
-pkgver=6.14.y
-pkgrel=3
+pkgver=6.19.y
+pkgrel=1
 pkgdesc='Linux for HUAWEI MateBook E Go (sc8280xp)'
-url='https://github.com/steev/linux.git'
+url='https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 arch=('any')
 license=('GPL-2.0-only')
 makedepends=(
@@ -31,38 +31,19 @@ options=(
 
 _srcname=linux
 
-# Apr, 2025
-# Since 6.14, dsi_related_rebase_required/*patch can't be applied anymore,
-# I will not fix them anymore, it is EOL for me. but don't worry, these
-# patches are not necessary to enable any notable features, check it only
-# when you are planning to bring up internal panel.
-_patch_list=(
-0001-Revert-clk-qcom-Park-shared-RCGs-upon-registration.patch
-0013-arm64-dts-qcom-sc8280xp-add-MDSS-registers-interconn.patch
-0014-arm64-dts-qcom-add-the-slpi-node-for-sc8280xp.patch
-)
-
-_patch_list_sha256sums=(
-798a05ea08755422a85a75d0eb88de268af4ad76589f9f17232911eb791573c5
-d6e473571cd9fd214e5c177efc6820015225faf46f3567763f2f69c0af2abd08
-cb6dd640354a85149190a05b9404c0869114a6873fcf9f5869a64e0dadc76085
-)
-
 source=(
   config
   linux-gaokun3.preset
   mkinitcpio-gaokun3.conf
-  sc8280xp-huawei-gaokun3.dts
-  sc8280xp-huawei-gaokun3-camera.dtsi
   update-grub
+  git+https://github.com/right-0903/linux-gaokun.git
 )
 sha256sums=(
-  'f6ebfccba580ed254fb0441ef035f3a2a8d0ca835cf94cdbf038208c417acb32'
+  'c8f767aa2ca8de78464bdb769fda2371bbf48f3c3cb9d7169be2afab4b2bcaf6'
   '53b52ebe0de167308134725740651371f90b34a290cbe7dc1727adf2a1fcb62d'
-  '739469d0083cd08f685870f5ae832546243cb97d0843b70b76867485e6502a9f'
-  'afef7e0d1e355ca6a7c403d53611d1f9b3db2ea5eac000e45c1c47613c3e8872'
-  'daffd3bdd3de87d454954eaa471ff8bcfa321e50cdb82a4452226b17c698ebf2'
+  'c69349a951e0003294c74c0a3d7a75447e5e131b82c8698d83cc91c1e9dd32db'
   '3bb0d75940d7ff605f412608bc4d83c08938d0c52c705ed2bc5b265f084bea29'
+  'SKIP'
 )
 
 source+=("${_patch_list[@]}")
@@ -85,12 +66,18 @@ export KBUILD_BUILD_USER=nuvole
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
-  git clone --depth=1 $url -b lenovo-x13s-linux-$pkgver
-  cd $_srcname
-  git apply $srcdir/00*patch # Not using git am to avoid setting git identity
-  rm -rf .git # to avoid getting our kernel name polluted with the hash tag or dirty or +
-  cp $srcdir/sc8280xp-huawei-gaokun3*.dts* arch/arm64/boot/dts/qcom/
+  # for my quickly local rebuild
+  if [ ! -d 'linux' ]; then
+    git clone --depth=1 $url -b linux-$pkgver $_srcname
+    cd $_srcname
+    # Not using git am to avoid setting git identity
+    git apply $srcdir/linux-gaokun/patch\ sets/recommended/*
+    rm -rf .git # to avoid getting our kernel name polluted with the hash tag or dirty or +
+    cp $srcdir/linux-gaokun/dts/sc8280xp-huawei-gaokun3*.dts* arch/arm64/boot/dts/qcom/
+    cd ..
+  fi
 
+  cd $_srcname
   # when we repeat build something
   rm scripts/kconfig/conf scripts/mod/modpost scripts/mod/mk_elfconfig \
      scripts/dtc/dtc scripts/dtc/fdtoverlay scripts/basic/fixdep \
@@ -152,7 +139,7 @@ _package() {
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build link
-  rm "$modulesdir"/build
+  rm "$modulesdir"/build || :
 
   # devicetree & files
   install -Dm644 arch/arm64/boot/dts/qcom/sc8280xp-huawei-gaokun3.dtb -T "$pkgdir/boot/sc8280xp-huawei-$_variant.dtb"
@@ -189,7 +176,7 @@ _cross_compile_tools() {
 
   # asn1_compiler, kallsyms, sorttable
   aarch64-linux-gnu-gcc -o scripts/kallsyms scripts/kallsyms.c  -I scripts/include -O2
-  aarch64-linux-gnu-gcc -o scripts/sorttable scripts/sorttable.c -I tools/include/ -O2
+  aarch64-linux-gnu-gcc -o scripts/sorttable scripts/sorttable.c scripts/elf-parse.c -I tools/include/ -O2
   aarch64-linux-gnu-gcc -o scripts/asn1_compiler scripts/asn1_compiler.c -I include -O2
 }
 
