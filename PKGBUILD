@@ -9,8 +9,8 @@ license=('BSD-3-Clause')
 depends=('hidapi')
 source_x86_64=("openbitdo-${_upstream_tag}-linux-x86_64.tar.gz::${url}/releases/download/${_upstream_tag}/openbitdo-${_upstream_tag}-linux-x86_64.tar.gz")
 source_aarch64=("openbitdo-${_upstream_tag}-linux-aarch64.tar.gz::${url}/releases/download/${_upstream_tag}/openbitdo-${_upstream_tag}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('1fe5fdec8737d8c4620601039db36bc6b98163b2cb4541b9443f53ce3562b058')
-sha256sums_aarch64=('dd3768f2ca549fd45c0a1631269ee405e3986912e6bf6496f0e715df7830d9f0')
+sha256sums_x86_64=('f3848464967918b43015cbfc534a6fdc41845507aaee870b8f50b0ac1ad00ca5')
+sha256sums_aarch64=('3e14b48149bbab29e045502531d2669abb4afe2f77310b9f559e54d264eb0546')
 
 package() {
   local extracted_dir

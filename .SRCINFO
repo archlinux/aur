@@ -8,8 +8,8 @@ pkgbase = openbitdo-bin
 	license = BSD-3-Clause
 	depends = hidapi
 	source_x86_64 = openbitdo-v0.0.1-rc.1-linux-x86_64.tar.gz::https://github.com/bybrooklyn/openbitdo/releases/download/v0.0.1-rc.1/openbitdo-v0.0.1-rc.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 1fe5fdec8737d8c4620601039db36bc6b98163b2cb4541b9443f53ce3562b058
+	sha256sums_x86_64 = f3848464967918b43015cbfc534a6fdc41845507aaee870b8f50b0ac1ad00ca5
 	source_aarch64 = openbitdo-v0.0.1-rc.1-linux-aarch64.tar.gz::https://github.com/bybrooklyn/openbitdo/releases/download/v0.0.1-rc.1/openbitdo-v0.0.1-rc.1-linux-aarch64.tar.gz
-	sha256sums_aarch64 = dd3768f2ca549fd45c0a1631269ee405e3986912e6bf6496f0e715df7830d9f0
+	sha256sums_aarch64 = 3e14b48149bbab29e045502531d2669abb4afe2f77310b9f559e54d264eb0546
 
 pkgname = openbitdo-bin
