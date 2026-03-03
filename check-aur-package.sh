@@ -64,7 +64,7 @@ fi
 
 # Optional static analysis.
 if command -v shellcheck >/dev/null 2>&1; then
-  shellcheck prepare-overlay.sh check-aur-package.sh || {
+  shellcheck prepare-overlay.sh check-aur-package.sh release-aur.sh || {
     echo "ERROR: shellcheck reported issues" >&2
     exit 1
   }

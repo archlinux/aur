@@ -41,3 +41,23 @@ To include a clean chroot build (recommended by ArchWiki):
 ```bash
 AUR_CHECK_CHROOT=1 ./check-aur-package.sh
 ```
+
+## Release Helper
+
+Run all release checks and enforce clean git state:
+
+```bash
+./release-aur.sh
+```
+
+Run checks and push to AUR in one step:
+
+```bash
+./release-aur.sh --push
+```
+
+Include clean chroot build in release gate:
+
+```bash
+./release-aur.sh --chroot
+```
