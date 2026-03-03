@@ -1,0 +1,14 @@
+pkgbase = python-mc-check-git
+	pkgdesc = Minecraft server status checker
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/alvaniss/mc-check
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = python
+	depends = python-requests
+	source = mc_check.py::https://raw.githubusercontent.com/alvaniss/mc-check/main/mc_check.py
+	sha256sums = SKIP
+
+pkgname = python-mc-check-git
