@@ -1,6 +1,6 @@
 pkgname=codex-app-electron-port-bin
-pkgver=2026.02.25
-pkgrel=2
+pkgver=2026.03.03
+pkgrel=1
 pkgdesc="Unofficial Electron-port repackaging of Codex desktop app from macOS DMG"
 arch=('x86_64')
 url="https://github.com/Tomakin/codex-app-electron-port-bin"
@@ -14,12 +14,15 @@ optdepends=(
   'base-devel: needed for native module rebuild helper'
   'python: needed for native module rebuild helper'
   'sudo: allows native rebuild helper to update files under /opt'
+  'paru: optional helper for package auto-update command'
+  'yay: optional helper for package auto-update command'
 )
 install="${pkgname}.install"
 source=(
   "Codex.dmg::https://persistent.oaistatic.com/codex-app-prod/Codex.dmg"
   "${pkgname}.sh"
   "${pkgname}-rebuild-native.sh"
+  "${pkgname}-autoupdate.sh"
   "${pkgname}.desktop"
   "${pkgname}.install"
   "${pkgname}.LICENSE"
@@ -28,10 +31,11 @@ noextract=('Codex.dmg')
 # Intentionally SKIP for Codex.dmg to track the latest DMG at the fixed upstream URL.
 sha256sums=(
   'SKIP'
-  '17d9de91630379ca668fcfc97768fd3e24196b5e80f5ea1c5652c7f65d6919b4'
+  '08175f104f47c50df15504b7d3ed0bbf7c4f80c9451ebcdd2454c5fd1e4c4fe1'
   '4f8046f265b15c285c1a9b0b58aea18d4c25c4dc3581908334c6dadd462f3a19'
+  '19f503eb576b9f74f85c5d14891c903718d82ea547958e789d79bb455a1440d3'
   'd127bf3d7be45efc29269658dacc76ec95367c3e9f5b6058a65e3377af5dad8a'
-  'f4adaa2f270a869dd2edf38efd62ea6c2a882db621460169b090b7cf466c505b'
+  'b5839b253081393a8c10946e6486d1a153402c131c4659a3515eb6499b16e6ba'
   '3d03f0c1bcf7a4567574f1e890ad757e94c0fbcfdad12a3bdfc2b4a20789bf57'
 )
 
@@ -65,6 +69,8 @@ package() {
     "${pkgdir}/usr/bin/${pkgname}"
   install -Dm755 "${srcdir}/${pkgname}-rebuild-native.sh" \
     "${pkgdir}/usr/bin/${pkgname}-rebuild-native"
+  install -Dm755 "${srcdir}/${pkgname}-autoupdate.sh" \
+    "${pkgdir}/usr/bin/${pkgname}-autoupdate"
   install -Dm644 "${srcdir}/${pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "${srcdir}/${pkgname}.LICENSE" \

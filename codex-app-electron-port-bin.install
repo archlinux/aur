@@ -24,6 +24,12 @@ Required after install:
 
 If Electron is updated later, rerun:
   codex-app-electron-port-bin-rebuild-native
+
+Optional package self-update helper:
+  codex-app-electron-port-bin-autoupdate --check
+  codex-app-electron-port-bin-autoupdate
+
+This helper uses `paru` or `yay` if available.
 EOF
 }
 

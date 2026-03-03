@@ -62,6 +62,27 @@ Notes:
 - If `pnpm` blocks build scripts, run `pnpm approve-builds` and retry.
 - Codex CLI install is recommended for app integration.
 
+## Optional Auto-Update Flow
+
+You can check and update this AUR package with:
+
+```bash
+codex-app-electron-port-bin-autoupdate --check
+codex-app-electron-port-bin-autoupdate
+```
+
+This helper uses `paru` or `yay` if available.
+
+For reliability, periodic updates (timer/cron) are recommended over running package updates on every app launch.
+
+If you still want launch-time updates, enable:
+
+```bash
+export CODEX_APP_AUTO_UPDATE_ON_LAUNCH=1
+```
+
+Then run `codex-app-electron-port-bin` as usual.
+
 ## Local Development / Testing
 
 ```bash
