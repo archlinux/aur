@@ -12,13 +12,13 @@ conflicts=('keylightd')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v${pkgver}/keylightd_${pkgver}_linux_arm64.tar.gz"
                  "${pkgname}_${pkgver}_aarch64_sbom.spdx.json::https://github.com/jmylchreest/keylightd/releases/download/v${pkgver}/keylightd_${pkgver}_linux_arm64_sbom.spdx.json")
-sha256sums_aarch64=('5cb2131244573fd15ab1a0e2ceb4e2166239e56c0754a603960dea67df7075cf'
-                    '3d6d9c400d7ab53c0b20cef7a543c21751dc91447631832a2a9f4ef2d0d58946')
+sha256sums_aarch64=('5ead29d45b0b3220cafa0cdec1b114bfcf66dd45f7e7a1f89b533e3080bba9f2'
+                    '8fb8465e133084f226eb91d1cbc5010d35e9c652684784fa1ed9b3d6b0cbe5b6')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/keylightd/releases/download/v${pkgver}/keylightd_${pkgver}_linux_amd64.tar.gz"
                "${pkgname}_${pkgver}_x86_64_sbom.spdx.json::https://github.com/jmylchreest/keylightd/releases/download/v${pkgver}/keylightd_${pkgver}_linux_amd64_sbom.spdx.json")
-sha256sums_x86_64=('648269332935017731bba7b10606ae1c924cdb0382a23ddf999720c737d9027f'
-                   '31e48a56b61aa3ccdd625cfc88626444bc3638fad3a0ad092981c5f3c450c1b9')
+sha256sums_x86_64=('73572365aa23c6f20a4f19c934271c8dd0fc8f640600a1f576efe2db34f73e5e'
+                   '335e6d5be2bfd0fa72c30e3b78729f427218720f7b888b3397cb6f7f1a4a8b4e')
 
 package() {
   # binaries
