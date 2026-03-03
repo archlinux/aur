@@ -3,13 +3,13 @@
 # Contributor: dorphell <dorphell@gmx.net>
 
 pkgname=gc-git
-pkgver=8.2.0.r1165.gf2630a42
+pkgver=8.2.0.r2433.gf97b59c6
 pkgrel=1
 pkgdesc="A garbage collector for C and C++"
 arch=('x86_64')
 url="https://www.hboehm.info/gc/"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libstdc++')
 makedepends=('git')
 source=($pkgname::git+https://github.com/ivmai/bdwgc.git)
 sha512sums=('SKIP')
