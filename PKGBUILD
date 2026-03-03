@@ -2,7 +2,7 @@
 # Contributor: Shane Blackthorne <arch@blackthorne.dev>
 
 pkgname=iwmenu
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Launcher-driven Wi-Fi manager for Linux"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('dmenu: launcher for options navigation via stdin'
 )
 conflicts=($pkgname-git $pkgname-bin)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9537bf39032a229558e34f7e98700bb0f1924d818aa4bc55ee92c7ddf4bd73b9')
+sha256sums=('feb608a42bf7cdc77babade9610d577d7e86e17e06f9426759a3457c0ca106b0')
 
 prepare() {
 	cd "$pkgname-$pkgver"

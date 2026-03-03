@@ -1,6 +1,6 @@
 pkgbase = iwmenu
 	pkgdesc = Launcher-driven Wi-Fi manager for Linux
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/e-tho/iwmenu
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = iwmenu
 	optdepends = nerd-fonts: for font-based icons (default mode)
 	conflicts = iwmenu-git
 	conflicts = iwmenu-bin
-	source = iwmenu-0.3.0.tar.gz::https://github.com/e-tho/iwmenu/archive/v0.3.0.tar.gz
-	sha256sums = 9537bf39032a229558e34f7e98700bb0f1924d818aa4bc55ee92c7ddf4bd73b9
+	source = iwmenu-0.4.0.tar.gz::https://github.com/e-tho/iwmenu/archive/v0.4.0.tar.gz
+	sha256sums = feb608a42bf7cdc77babade9610d577d7e86e17e06f9426759a3457c0ca106b0
 
 pkgname = iwmenu
