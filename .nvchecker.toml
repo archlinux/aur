@@ -1,0 +1,5 @@
+[pent-bin]
+source = "github"
+github = "valentinradu/Pent"
+use_latest_release = true
+prefix = "v"
