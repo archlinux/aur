@@ -4,7 +4,7 @@ pkgname=microsoft-azure-vpn-client-bin
 _pkgname=microsoft-azurevpnclient
 _serverbase=https://packages.microsoft.com
 pkgver=3.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc='The official Azure VPN Client, supporting Entra ID and certificates'
 arch=('x86_64')
 url='https://learn.microsoft.com/en-us/azure/vpn-gateway/point-to-site-entra-vpn-client-linux'
@@ -35,7 +35,7 @@ source=(
 
 sha256sums=(
   '9e5d360433d1d374d9a1051bb29a65103e81ca74ebeaa35155d1f0e9fc94577b'
-  '0d7150522a05145d31e7c8d492425b5b346ba57003fb4c8ed23249eec5d56b63'
+  '92aef00ea8faeb5d4fdb7e4bd612dcdb55da4da4ee42ae63093fa947831c0dd8'
 )
 
 package() {
