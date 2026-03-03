@@ -1,0 +1,21 @@
+pkgbase = quickshell-games-launchers-git
+	pkgdesc = Quickshell game launcher for Hyprland with pywal/wallust integration
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/Eaquo/quickshell-games-launchers
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = quickshell
+	depends = python
+	depends = qt6-declarative
+	depends = ttf-font-awesome
+	optdepends = python-vdf: non-Steam game detection via shortcuts.vdf
+	optdepends = python-openrgb: RGB launcher support
+	optdepends = python-watchdog: RGB launcher support
+	provides = quickshell-games-launchers
+	conflicts = quickshell-games-launchers
+	source = quickshell-games-launchers-git::git+https://github.com/Eaquo/quickshell-games-launchers.git
+	sha256sums = SKIP
+
+pkgname = quickshell-games-launchers-git
