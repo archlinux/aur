@@ -1,5 +1,6 @@
 # Generated using pip2pkgbuild - https://github.com/wenLiangcan/pip2pkgbuild | https://aur.archlinux.org/packages/pip2pkgbuild
-# Maintainer: lalala <lalala_233@qq.com>
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
+# Contributer: lalala <lalala_233@qq.com>
 # Contributer: Ryen Burns <bburns91@gmail.com>
 # Contributer: loryeam <loryeam@gmail.com>
 
