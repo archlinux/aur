@@ -1,6 +1,6 @@
 # Maintainer: fa5e4658010be730
 pkgname=subs2srs-gtk3-git
-pkgver=r1.73dcc3f
+pkgver=r1.0cf257a
 pkgrel=1
 pkgdesc="Generate Anki flashcards from media with subtitles (GTK3 port)"
 arch=('x86_64')
