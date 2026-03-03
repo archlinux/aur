@@ -1,6 +1,6 @@
 pkgbase = dolphie
 	pkgdesc = Your single pane of glass for real-time analytics into MySQL/MariaDB & ProxySQL
-	pkgver = 6.13.3
+	pkgver = 6.13.4
 	pkgrel = 1
 	url = https://github.com/charles-001/dolphie
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = dolphie
 	provides = dolphie
 	conflicts = python-dolphie
 	replaces = python-dolphie
-	source = dolphie-6.13.3.tar.gz::https://github.com/charles-001/dolphie/archive/refs/tags/6.13.3.tar.gz
-	sha256sums = 521f0c0dec362e74492b37aae0781c01492d7997d4229c66beb3f8070a37b7e1
+	source = dolphie-6.13.4.tar.gz::https://github.com/charles-001/dolphie/archive/refs/tags/6.13.4.tar.gz
+	sha256sums = b9d6eddf6637d2b9248309c50e45bf1a95808b4a1479bd77df1c5c38f11e40d0
 
 pkgname = dolphie
