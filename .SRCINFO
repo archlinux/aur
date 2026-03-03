@@ -1,12 +1,12 @@
 pkgbase = river-shifttags-git
-	pkgdesc = A small utility for the river Wayland compositor to rotate the focused tags
-	pkgver = 0.1.0.r0.g541bce8
+	pkgdesc = A small utility for the river-classic Wayland compositor to rotate the focused tags
+	pkgver = 0.2.2.r0.geae9a95
 	pkgrel = 1
 	url = https://gitlab.com/akumar-xyz/river-shifttags
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	depends = river
+	depends = river-classic
 	provides = river-shifttags
 	source = git+https://gitlab.com/akumar-xyz/river-shifttags.git
 	sha256sums = SKIP
