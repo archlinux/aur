@@ -4,25 +4,50 @@
 
 pkgname=onlyoffice-bin
 pkgver=9.3.0
-pkgrel=4
+pkgrel=5
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
 license=('AGPL-3.0-only')
 depends=(
     'alsa-lib'
+    'at-spi2-core'
+    'cairo'
     'curl'
+    'dbus'
     'desktop-file-utils'
+    'expat'
+    'fontconfig'
+    'freetype2'
+    'glib2'
+    'glibc'
     'gtk3'
     'gstreamer'
     'gst-plugins-base-libs'
     'gst-plugins-ugly'
     'hicolor-icon-theme'
+    'libcups'
+    'libdrm'
+    'libgcc'
+    'libgl'
     'libnotify'
     'libpulse'
+    'libstdc++'
+    'libx11'
+    'libxcomposite'
+    'libxdamage'
+    'libxcb'
+    'libxext'
+    'libxfixes'
+    'libxi'
+    'libxkbcommon'
+    'libxrandr'
     'libxss'
+    'mesa'
     'nss'
     'nspr'
+    'pango'
+    'sh'
     'ttf-carlito'
     'ttf-dejavu'
     'ttf-liberation')
