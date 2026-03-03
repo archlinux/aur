@@ -1,0 +1,17 @@
+pkgbase = strace-tui-bin
+	pkgdesc = A terminal user interface (TUI) for visualizing and exploring strace output - Binary build
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/Rodrigodd/strace-tui
+	arch = x86_64
+	license = MIT
+	provides = strace-tui
+	conflicts = strace-tui
+	source = strace-tui-1.0.1.tar.gz::https://github.com/Rodrigodd/strace-tui/releases/download/v1.0.1/strace-tui-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE-APACHE::https://raw.githubusercontent.com/Rodrigodd/strace-tui/refs/tags/v1.0.1/LICENSE-APACHE
+	source = LICENSE-MIT::https://raw.githubusercontent.com/Rodrigodd/strace-tui/refs/tags/v1.0.1/LICENSE-MIT
+	sha256sums = b7579e37a0e01c5ea77584292f7af284b1c0e0bf199981665828237f0f27a42c
+	sha256sums = eb05d6b88d26a5ba2c0545a08ae89d4944b317142159bea7566cece2084b6aa4
+	sha256sums = bf2ad3dbaa5ac44fbfa8e91227b304099412501750d912e2a1ab520d277faef8
+
+pkgname = strace-tui-bin
