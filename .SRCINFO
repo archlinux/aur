@@ -1,0 +1,22 @@
+pkgbase = coppelia-git
+	pkgdesc = A refined, cross-platform Jellyfin-focused music player
+	pkgver = r10.840f54a
+	pkgrel = 1
+	url = https://github.com/Xmoncoco/coppelia
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = flutter
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = gtk3
+	depends = mpv
+	provides = coppelia
+	conflicts = coppelia
+	source = git+https://github.com/Xmoncoco/coppelia.git
+	source = coppelia.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = coppelia-git
