@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=geforce-infinity
 _app_id=net.astralvixen.geforceinfinity
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
-_nodeversion=22
+_nodeversion=24
 _electronversion=37
 pkgdesc="A next-gen application designed to enhance the GeForce NOW experience."
 arch=('x86_64')
@@ -15,10 +15,11 @@ makedepends=(
   'git'
   'nvm'
   'python-setuptools'
+  'yarn'
 )
 source=("GeForce-Infinity-$pkgver.tar.gz::https://github.com/AstralVixen/GeForce-Infinity/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('d5a9c8885aa87769a0e1353b09668e20bd6036a6561cc3a89f31530e8df8a24b'
+sha256sums=('40bec8d5b62dad448801edf041b3307592d207e88ba421ccd2b94c9ffd255c07'
             '426e8f155c4f2273201ad33d0c0521c35bbea2259a11cb018572d6ca8b40b82d')
 
 _ensure_local_nvm() {
@@ -46,13 +47,14 @@ prepare() {
 build() {
   cd "GeForce-Infinity-$pkgver"
   export npm_config_cache="$srcdir/npm_cache"
+  export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
   export ELECTRON_SKIP_BINARY_DOWNLOAD=1
   electronDist="/usr/lib/electron${_electronversion}"
   electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   _ensure_local_nvm
-  bun install
-  bun run build
-  bun electron-builder --linux --x64 --dir \
+  yarn install
+  yarn build
+  yarn electron-builder --linux --x64 --dir \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
