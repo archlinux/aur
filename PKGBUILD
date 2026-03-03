@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python')
 optdepends=('bash-completion: tab completion')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/icanttipe/freedcamp-cli/archive/v$pkgver.tar.gz")
-sha256sums=('16ece8596e46f4fb03b3466a31d640db6a63e73cda02be3235796ff97c4ef7b5')
+sha256sums=('a6e76c4467e876bffe9c8513d7fa297640f9e37924ed6dbc956cce35a0d108ee')
 
 package() {
   cd "$pkgname-$pkgver"
