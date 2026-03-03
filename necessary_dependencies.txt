@@ -17,6 +17,7 @@ Module: urllib.parse
     open_webui/routers/images.py
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
+    open_webui/routers/terminals.py
     open_webui/utils/headers.py
     open_webui/utils/images/comfyui.py
     open_webui/utils/redis.py
@@ -166,6 +167,7 @@ Module: aiohttp
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
     open_webui/routers/pipelines.py
+    open_webui/routers/terminals.py
     open_webui/routers/tools.py
     open_webui/utils/anthropic.py
     open_webui/utils/code_interpreter.py
@@ -261,6 +263,7 @@ Module: fastapi
     open_webui/routers/scim.py
     open_webui/routers/skills.py
     open_webui/routers/tasks.py
+    open_webui/routers/terminals.py
     open_webui/routers/tools.py
     open_webui/routers/users.py
     open_webui/routers/utils.py
@@ -304,6 +307,7 @@ Module: fastapi.responses
     open_webui/routers/openai.py
     open_webui/routers/scim.py
     open_webui/routers/tasks.py
+    open_webui/routers/terminals.py
     open_webui/routers/users.py
     open_webui/utils/middleware.py
 Module: fastapi.staticfiles
@@ -499,6 +503,7 @@ Module: open_webui.models.models
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
     open_webui/test/apps/webui/routers/test_models.py
+    open_webui/utils/access_control/files.py
     open_webui/utils/chat.py
     open_webui/utils/embeddings.py
     open_webui/utils/middleware.py
@@ -530,12 +535,14 @@ Module: open_webui.models.users
     open_webui/routers/ollama.py
     open_webui/routers/openai.py
     open_webui/routers/scim.py
+    open_webui/routers/terminals.py
     open_webui/routers/users.py
     open_webui/socket/main.py
     open_webui/test/apps/webui/routers/test_auths.py
     open_webui/test/apps/webui/routers/test_users.py
     open_webui/tools/builtin.py
-    open_webui/utils/access_control.py
+    open_webui/utils/access_control/__init__.py
+    open_webui/utils/access_control/files.py
     open_webui/utils/actions.py
     open_webui/utils/anthropic.py
     open_webui/utils/audit.py
@@ -562,6 +569,7 @@ Module: open_webui.models.chats
     open_webui/routers/utils.py
     open_webui/socket/main.py
     open_webui/tools/builtin.py
+    open_webui/utils/access_control/files.py
     open_webui/utils/files.py
     open_webui/utils/middleware.py
     open_webui/utils/pdf_generator.py
@@ -610,7 +618,7 @@ Module: open_webui.config
     open_webui/socket/main.py
     open_webui/storage/provider.py
     open_webui/tools/builtin.py
-    open_webui/utils/access_control.py
+    open_webui/utils/access_control/__init__.py
     open_webui/utils/middleware.py
     open_webui/utils/models.py
     open_webui/utils/oauth.py
@@ -625,6 +633,7 @@ Module: open_webui.env
     open_webui/internal/db.py
     open_webui/main.py
     open_webui/migrations/env.py
+    open_webui/models/groups.py
     open_webui/models/oauth_sessions.py
     open_webui/models/users.py
     open_webui/retrieval/loaders/main.py
@@ -729,6 +738,7 @@ Module: open_webui.utils.auth
     open_webui/routers/scim.py
     open_webui/routers/skills.py
     open_webui/routers/tasks.py
+    open_webui/routers/terminals.py
     open_webui/routers/tools.py
     open_webui/routers/users.py
     open_webui/routers/utils.py
@@ -818,10 +828,12 @@ Module: open_webui.utils.access_control
     open_webui/routers/prompts.py
     open_webui/routers/retrieval.py
     open_webui/routers/skills.py
+    open_webui/routers/terminals.py
     open_webui/routers/tools.py
     open_webui/routers/users.py
     open_webui/socket/main.py
     open_webui/utils/auth.py
+    open_webui/utils/middleware.py
     open_webui/utils/models.py
     open_webui/utils/tools.py
 Module: open_webui.utils.anthropic
@@ -999,6 +1011,7 @@ Module: open_webui.models.channels
     open_webui/routers/files.py
     open_webui/socket/main.py
     open_webui/tools/builtin.py
+    open_webui/utils/access_control/files.py
 Module: open_webui.models.messages
   Imported in:
     open_webui/routers/channels.py
@@ -1028,10 +1041,12 @@ Module: open_webui.models.groups
     open_webui/routers/prompts.py
     open_webui/routers/scim.py
     open_webui/routers/skills.py
+    open_webui/routers/terminals.py
     open_webui/routers/tools.py
     open_webui/routers/users.py
     open_webui/tools/builtin.py
-    open_webui/utils/access_control.py
+    open_webui/utils/access_control/__init__.py
+    open_webui/utils/access_control/files.py
     open_webui/utils/groups.py
     open_webui/utils/models.py
     open_webui/utils/oauth.py
@@ -1077,6 +1092,8 @@ Module: open_webui.models.access_grants
     open_webui/routers/tools.py
     open_webui/socket/main.py
     open_webui/tools/builtin.py
+    open_webui/utils/access_control/__init__.py
+    open_webui/utils/access_control/files.py
     open_webui/utils/models.py
     open_webui/utils/tools.py
 Module: open_webui.models.knowledge
@@ -1087,6 +1104,7 @@ Module: open_webui.models.knowledge
     open_webui/routers/knowledge.py
     open_webui/routers/retrieval.py
     open_webui/tools/builtin.py
+    open_webui/utils/access_control/files.py
 Module: open_webui.models.files
   Imported in:
     open_webui/models/groups.py
@@ -1097,12 +1115,13 @@ Module: open_webui.models.files
     open_webui/routers/knowledge.py
     open_webui/routers/retrieval.py
     open_webui/tools/builtin.py
+    open_webui/utils/access_control/files.py
     open_webui/utils/files.py
-Module: open_webui.routers.files
+Module: open_webui.utils.access_control.files
   Imported in:
-    open_webui/routers/images.py
+    open_webui/routers/files.py
+    open_webui/routers/retrieval.py
     open_webui/tools/builtin.py
-    open_webui/utils/files.py
 Module: open_webui.routers.knowledge
   Imported in:
     open_webui/tools/builtin.py
@@ -1182,6 +1201,10 @@ Module: open_webui.storage.provider
     open_webui/routers/files.py
     open_webui/routers/knowledge.py
     open_webui/routers/retrieval.py
+    open_webui/utils/files.py
+Module: open_webui.routers.files
+  Imported in:
+    open_webui/routers/images.py
     open_webui/utils/files.py
 Module: open_webui.retrieval.web.utils
   Imported in:
@@ -1644,6 +1667,9 @@ Module: ldap3
 Module: ldap3.utils.conv
   Imported in:
     open_webui/routers/auths.py
+Module: starlette.background
+  Imported in:
+    open_webui/routers/terminals.py
 Module: open_webui.utils.channels
   Imported in:
     open_webui/routers/channels.py
