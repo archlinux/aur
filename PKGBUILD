@@ -7,20 +7,26 @@ arch=('x86_64')
 url="https://github.com/byronknoll/cmix"
 license=('GPL-3.0-only')
 depends=('glibc' 'gcc-libs')
-makedepends=('git' 'clang' 'make')
+makedepends=('git' 'clang')
 provides=('cmix')
 conflicts=('cmix')
-source=("$pkgname"::"git+${url}")
-sha256sums=('SKIP')
+source=("$pkgname"::"git+${url}"
+		"clang21.patch")
+sha256sums=('SKIP'
+            '50e77b7ffb8ead9b3a4d109f909830764816edf997887d30bfdcc26385b35fa1')
 
 pkgver() {
   cd "$pkgname"
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
+prepare() {
+  git -C "$srcdir/$pkgname" apply -v "$srcdir"/clang21.patch
+}
+
 build() {
   cd $pkgname
-  make CC=clang++
+  make CC=clang CXX=clang++
 }
 
 package() {

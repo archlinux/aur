@@ -1,0 +1,35 @@
+diff --git a/src/models/fxcmv1.cpp b/src/models/fxcmv1.cpp
+index 2113b15..0c537c9 100644
+--- a/src/models/fxcmv1.cpp
++++ b/src/models/fxcmv1.cpp
+@@ -19,6 +19,7 @@
+ 
+ #include "fxcmv1.h"
+ 
++#include <stdint.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+diff --git a/src/models/paq8.cpp b/src/models/paq8.cpp
+index 2504726..dc76660 100644
+--- a/src/models/paq8.cpp
++++ b/src/models/paq8.cpp
+@@ -21,6 +21,7 @@
+ #include "paq8.h"
+ #include "../preprocess/preprocessor.h"
+ 
++#include <stdint.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+diff --git a/src/preprocess/preprocessor.cpp b/src/preprocess/preprocessor.cpp
+index 184ea0d..1ae6333 100644
+--- a/src/preprocess/preprocessor.cpp
++++ b/src/preprocess/preprocessor.cpp
+@@ -1,5 +1,6 @@
+ // This preprocessor is adapted from paq8l, paq8hp12any and paq8px.
+ 
++#include <stdint.h>
+ #include <vector>
+ #include <cstdlib>
+ #include <string.h>

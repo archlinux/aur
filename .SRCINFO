@@ -7,7 +7,6 @@ pkgbase = cmix-git
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = clang
-	makedepends = make
 	depends = glibc
 	depends = gcc-libs
 	provides = cmix
