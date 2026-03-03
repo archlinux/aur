@@ -1,7 +1,7 @@
 # Maintainer: Ross Chadwick <git at ross dot ch>
 
 pkgname=hyprls
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="A LSP server for Hyprland config files"
 arch=('any')
@@ -10,9 +10,9 @@ license=('MIT')
 optdepends=('hyprland')
 makedepends=('go' 'just')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('3a749405a88d5f8cd18eb830ad34aab0044bb0eca2b390b471c5bfb61aca21f8c2ba39ce7ffe4eb4859ca38b4195ecfbdab3f8585b5a11b5ca00f90858ec9e13')
+sha512sums=('60692de02760d847021d92ce76376a5fc6beb4e06b9c19ac2f6e4cf621bd7a0509cf419c6b6dce7ebfd75d8f190d740ec15210c747564de56d721336db680ff7')
 
-build(){
+build() {
     cd "${pkgname}-${pkgver}"
     just build
 }
