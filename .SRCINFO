@@ -1,6 +1,6 @@
 pkgbase = python-dearpygui
 	pkgdesc = A fast and powerful Graphical User Interface Toolkit for Python with minimal dependencies
-	pkgver = 2.1.1
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/hoffstadt/DearPyGui
 	arch = x86_64
@@ -20,11 +20,11 @@ pkgbase = python-dearpygui
 	depends = libxinerama
 	depends = libxrandr
 	depends = python>=3.8
-	source = git+https://github.com/hoffstadt/DearPyGui#tag=v2.1.1
+	source = git+https://github.com/hoffstadt/DearPyGui#tag=v2.2.0
 	source = git+https://github.com/ocornut/imgui
 	source = git+https://github.com/epezent/implot
 	source = git+https://github.com/glfw/glfw
-	b2sums = 432babcc901b04da2d5814e0def0e9f27911fbff468186f233c4119017bcd3ca3813a63efdd4a05ac1b9806cbd45c650173d8867656ca8e160b4e7369b60c372
+	b2sums = 5f666d5051ef4a77691acc8a91f3126575a663d0e062bd315ee708d1da0ec491f9dcc3b02d778f865d2043cb7fab54c52ec69bb81f554e0c9d937be3064e0438
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP

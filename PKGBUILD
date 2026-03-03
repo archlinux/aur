@@ -3,7 +3,7 @@
 
 _name=DearPyGui
 pkgname=python-dearpygui
-pkgver=2.1.1
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='A fast and powerful Graphical User Interface Toolkit for Python with minimal dependencies'
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=("git+$url#tag=v$pkgver"
         "git+https://github.com/ocornut/imgui"
         "git+https://github.com/epezent/implot"
         "git+https://github.com/glfw/glfw")
-b2sums=('432babcc901b04da2d5814e0def0e9f27911fbff468186f233c4119017bcd3ca3813a63efdd4a05ac1b9806cbd45c650173d8867656ca8e160b4e7369b60c372'
+b2sums=('5f666d5051ef4a77691acc8a91f3126575a663d0e062bd315ee708d1da0ec491f9dcc3b02d778f865d2043cb7fab54c52ec69bb81f554e0c9d937be3064e0438'
         'SKIP'
         'SKIP'
         'SKIP')
