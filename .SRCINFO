@@ -1,6 +1,6 @@
 pkgbase = c47-bin
 	pkgdesc = Emulator for the C47 pocket calculator
-	pkgver = 00.109.03.01b0
+	pkgver = 00.109.03.01b1
 	pkgrel = 1
 	url = https://47calc.com
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = c47-bin
 	depends = hicolor-icon-theme
 	provides = c47
 	conflicts = c47
-	source = https://gitlab.com/api/v4/projects/14055190/packages/generic/c47/00.109.03.01b0/c47-linux-00.109.03.01b0.zip
-	source = https://gitlab.com/rpncalculators/c43/-/archive/00.109.03.01b0/c43-00.109.03.01b0.tar.gz
-	sha256sums = 09612a9bfd852e81ac79a2c07353efdc8c351ea87e01c3a66c4e863b41d79150
-	sha256sums = a2567c60a78ea2bfb8b4c83fa3aa49cf1a768c77221569bd1d69466b99c2d144
+	source = https://gitlab.com/api/v4/projects/14055190/packages/generic/c47/00.109.03.01b1/c47-linux-00.109.03.01b1.zip
+	source = https://gitlab.com/rpncalculators/c43/-/archive/00.109.03.01b1/c43-00.109.03.01b1.tar.gz
+	sha256sums = 2a1f0689ab3af92338d0a4ec31833f2d1ea3f69a9a9a2185b6cbac54b9951fab
+	sha256sums = 9b9f7406fa9fa82720519f64cab367ed29109e2756bcb4f92bc1114105696d2f
 
 pkgname = c47-bin
 	provides = c47
