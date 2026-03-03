@@ -21,8 +21,8 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm755 "target/release/clippa-harvest" "$pkgdir/usr/bin/${pkgname}"
-  install -Dm755 "target/release/clippa-manage" "$pkgdir/usr/bin/${pkgname}"
+  install -Dm755 "target/release/clippa-harvest" "$pkgdir/usr/bin/clippa-harvest"
+  install -Dm755 "target/release/clippa-manage" "$pkgdir/usr/bin/clippa-manage"
   install -Dm644 "$srcdir/clippa-harvest.service" "$pkgdir/usr/lib/systemd/user/clippa-harvest.service"
 
 }
