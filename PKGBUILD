@@ -1,8 +1,7 @@
 # Maintainer:
 # Contributor: Marcel <aur-feedback [ät] marehr.dialup.fu-berlin.de>
 
-: ${_pkgver:=859732::9.58.0-2025-06-16}
-: ${_chksum:=f849acecad4c9b108259c643b2688fd65c35723cd23368abe5dd64b917cc18c0}
+: ${_pkgver:=913594::10.7.0-2026-02-18}
 
 _pkgname="intel-sde"
 pkgname="$_pkgname"
@@ -18,8 +17,6 @@ depends=(
 )
 optdepends=(
   'bash'
-  'lib32-gcc-libs'
-  'lib32-glibc'
   'python'
   'python-distro'
 )
@@ -32,7 +29,7 @@ options=('!debug' '!strip')
 _pkgsrc="sde-external-${_pkgver##*::}-lin"
 _pkgext="tar.xz"
 source=("https://downloadmirror.intel.com/${_pkgver%%::*}/$_pkgsrc.$_pkgext")
-sha256sums=("${_chksum:-SKIP}")
+sha256sums=('ca3d4086de4acb3faedf9f57b541c6936b7d5e19ae2bf763b6ea933573a0a217')
 
 package() {
   install -dm755 "$pkgdir/opt/$_pkgname"
