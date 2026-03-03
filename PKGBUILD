@@ -1,6 +1,6 @@
 # Maintainer: Scott Stavinoha <scottstavinoha@gmail.com>
 pkgname=aside
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="LLM assistant for Wayland desktops — overlay, voice, tools, any model"
 arch=('x86_64')
@@ -43,7 +43,7 @@ optdepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('0ff14a11c8502ad4a5a8da3e82db6ce682495174ef576bb7dba45d63597e7108')
+sha256sums=('10f0f07cfe525db848ed0f78aa3e4bdb5983c698f89f60574566647660c006df')
 
 build() {
     # Build aside wheel (C overlay + Python package)
