@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 
 pkgname='monochrome'
-pkgver=2.2.0.16
+pkgver=2.2.0.17
 pkgrel=1
 pkgdesc="Lossless music streaming"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source_x86_64=(
   "$pkgname-$pkgver.zip::https://downloads.samidy.com/out_delivery/monochrome-linux.zip"
   "icon.png::https://raw.githubusercontent.com/monochrome-music/monochrome/refs/heads/main/public/assets/96.png"
 )
-sha256sums_x86_64=('f1f540d8ac97f72cc5e17fa643609089c4d7713c437b198ea03edfb1f2be5f33'
+sha256sums_x86_64=('ed56292bdcce08186afd93b1889c195dbcbdc84b80cc544da9b4e570d44e4c25'
                    'c9551cf8f13846e1d330d408dc1c39b9b9d98448f57d9c722bfddab5bd905084')
 
 package() {
