@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-frei0r-plugins
 	pkgdesc = Collection of video effect plugins (mingw-w64)
-	pkgver = 2.5.4
+	pkgver = 2.5.5
 	pkgrel = 1
 	url = https://frei0r.dyne.org/
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = mingw-w64-frei0r-plugins
 	options = !buildflags
 	options = staticlibs
 	options = !debug
-	source = git+https://github.com/dyne/frei0r#tag=v2.5.4
+	source = git+https://github.com/dyne/frei0r#tag=v2.5.5
 	validpgpkeys = 6113D89CA825C5CEDD02C87273B35DA54ACB7D10
-	b2sums = 08b99d438f97547f0f15d036d3fee2cf967fda7de95d7b72e77c9289b4ea782786fa41cfdc0b58f1902300434cedcef4c22b3f5072784be8e7100bdd2b8425f4
+	b2sums = ff58f433e68a9fa72cd9f3af215b260f7a55e290c08c8300f3ba05252895fddf80931bafc195af6422f85fdb0c7a81ea2a94ee20103e2cced1900bb0ac2956f2
 
 pkgname = mingw-w64-frei0r-plugins
