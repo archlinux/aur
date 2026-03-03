@@ -1,6 +1,6 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner
-pkgver=4.12.4
+pkgver=4.12.5
 pkgrel=1
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
@@ -26,7 +26,6 @@ conflicts=('rog-perf-tuner-git')
 depends=(
   'asusctl'
   'coreutils'
-  'cpp-httplib'
   'hicolor-icon-theme'
   'hidapi'
   'libusb'
@@ -47,7 +46,6 @@ depends=(
 )
 makedepends=(
   'base-devel'
-  'ccache'
   'clang'
   'cmake'
   'git'
