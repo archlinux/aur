@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=DDRTree
-_pkgver=0.1.5
+_pkgver=0.1.6
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="Learning Principal Graphs with DDRTree"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -19,8 +19,8 @@ makedepends=(
   r-rcppeigen
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b9970fe30d198db164d071f87abd17a5')
-b2sums=('0ac4018cfe0828f0451a545d37ebe93b4a3a63df79ee373cd7826b30632913794ced043a077e167d9f77211d1870ff443ce252a7035489a73f21afd42bb67f7e')
+md5sums=('5ea110db9072407e5cd4b08364120b3c')
+b2sums=('f136b21024a029e05ce510a582086fcd2c0477385b96e4fba82410ed01b7eb2a050778a8f62b7d21fd7867e7bffeb2032de517e05ad4b684a5fb4cb41aca6c92')
 
 build() {
   mkdir build
