@@ -1,4 +1,4 @@
-pkg/
-src/
-libsigrok/
-*.pkg.*
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore

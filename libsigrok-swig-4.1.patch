@@ -1,0 +1,45 @@
+diff --git a/Makefile.am b/Makefile.am
+index 280cf64d..2080b27b 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -876,7 +876,7 @@ python-build: $(PDIR)/timestamp
+ 
+ $(PDIR)/timestamp: $(PDIR)/sigrok/core/classes.i \
+ 		bindings/swig/classes.i bindings/swig/templates.i \
+-		bindings/swig/enums.i $(PDOC_START) $(PDOC_END) \
++		$(PDOC_START) $(PDOC_END) \
+ 		$(library_include_HEADERS) \
+ 		$(nodist_library_include_HEADERS) \
+ 		$(bindings_cxx_libsigrokcxx_la_include_HEADERS) \
+@@ -918,8 +918,7 @@ $(RDOC): $(srcdir)/bindings/swig/doc.py $(CPPXMLDOC)
+ 	$(AM_V_GEN)$(PYTHON) $(srcdir)/bindings/swig/doc.py ruby $(CPPXMLDOC) > $@
+ 
+ $(RWRAP): $(srcdir)/$(RDIR)/classes.i $(RDOC) \
+-		bindings/swig/classes.i bindings/swig/templates.i \
+-		bindings/swig/enums.i
++		bindings/swig/classes.i bindings/swig/templates.i
+ 	$(AM_V_GEN)$(SWIG) -ruby -c++ -Ibindings -Ibindings/cxx/include -I$(RDIR) $(local_includes) $(swig_defs) -o $@ $(srcdir)/$(RDIR)/classes.i
+ 
+ $(ROBJ): $(RWRAP) \
+@@ -977,7 +976,7 @@ $(JDOC): $(srcdir)/bindings/swig/doc.py $(CPPXMLDOC)
+ 	$(AM_V_GEN)$(PYTHON) $(srcdir)/bindings/swig/doc.py java $(CPPXMLDOC) > $@
+ 
+ $(JCXX): $(srcdir)/$(JSWG) $(JDOC) bindings/swig/classes.i \
+-		bindings/swig/templates.i bindings/swig/enums.i \
++		bindings/swig/templates.i \
+ 		$(bindings_cxx_libsigrokcxx_la_include_HEADERS) \
+ 		$(nodist_bindings_cxx_libsigrokcxx_la_include_HEADERS)
+ 	-$(AM_V_at)rm -f $(java_cleanfiles)
+diff --git a/bindings/swig/classes.i b/bindings/swig/classes.i
+index 523995da..3e1d8a6c 100644
+--- a/bindings/swig/classes.i
++++ b/bindings/swig/classes.i
+@@ -215,6 +215,8 @@ typedef std::map<const sigrok::ConfigKey *, Glib::VariantBase>
+ 
+ %include <libsigrokcxx/libsigrokcxx.hpp>
+ 
++#ifdef SWIGCXX
+ %include "swig/enums.i"
++#endif
+ 
+ %include <libsigrokcxx/enums.hpp>

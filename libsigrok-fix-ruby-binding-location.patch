@@ -1,0 +1,13 @@
+diff --git i/configure.ac w/configure.ac
+index 9c42cf3b..9dffe7af 100644
+--- i/configure.ac
++++ w/configure.ac
+@@ -566,7 +566,7 @@ PKG_CHECK_MODULES([TESTS], [$SR_PKGLIBS_TESTS glib-2.0 $SR_PKGLIBS])
+ AM_COND_IF([BINDINGS_CXX], [
+ 	PKG_CHECK_MODULES([LIBSIGROKCXX], [$SR_PKGLIBS_CXX])
+ 	PKG_CHECK_MODULES([PYSIGROK], [$SR_PKGLIBS_PYTHON $SR_PKGLIBS_CXX])
+-	PKG_CHECK_MODULES([RBSIGROK], [$SR_PKGLIBS_RUBY $SR_PKGLIBS_CXX], [AC_SUBST(RBSIGROK_EXTDIR, "lib/$($PKG_CONFIG --variable=sitearch $SR_PKGLIBS_RUBY)/$($PKG_CONFIG --variable=RUBY_BASE_NAME $SR_PKGLIBS_RUBY)/vendor_ruby/$($PKG_CONFIG --variable=ruby_version $SR_PKGLIBS_RUBY)")])
++	PKG_CHECK_MODULES([RBSIGROK], [$SR_PKGLIBS_RUBY $SR_PKGLIBS_CXX], [AC_SUBST(RBSIGROK_EXTDIR, "lib/$($PKG_CONFIG --variable=RUBY_BASE_NAME $SR_PKGLIBS_RUBY)/vendor_ruby/$($PKG_CONFIG --variable=ruby_version $SR_PKGLIBS_RUBY)")])
+ ])
+ 
+ # Check for specific libusb features, now that we know the CFLAGS.
