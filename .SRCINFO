@@ -1,0 +1,20 @@
+pkgbase = pkgtrack
+	pkgdesc = Track which Arch Linux packages you actually use via eBPF execution tracing
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jetm/pkgtrack
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = bcc-libbpf-tools
+	depends = python
+	depends = python-click
+	depends = python-rich
+	depends = python-systemd
+	source = pkgtrack-0.1.0.tar.gz::https://github.com/jetm/pkgtrack/archive/v0.1.0.tar.gz
+	sha256sums = 25b9fd32c2387eebcfa5704edb6d8ac89a3409de86e468c8354e691895b82883
+
+pkgname = pkgtrack
