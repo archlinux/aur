@@ -2,7 +2,7 @@
 
 pkgbase=x-tools
 pkgname=x-tools
-pkgver=7.6.0
+pkgver=7.6.3
 pkgrel=1
 groups=()
 pkgdesc="Qt SerialPort-BLE-UDP-TCP-WebSocket-Modbus-CAN Assistant."
@@ -47,7 +47,7 @@ checkdepends=(
 )
 optdepends=()
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('547c23c3f70757c461f3309adf848e5ec76c0c45d1f21b70e11b67fa81ecb370')
+sha256sums=('107a0c19d96a18ac64ed2cc648a9c55b36622188e7d40ade2c414989bca59991')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
@@ -71,7 +71,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}/bin/Linux/None/xTools"
+    cd "${srcdir}/${pkgname}/bin/"*/Linux/None/xTools
     install -Dm0755 xTools -t "${pkgdir}/usr/share/${pkgname}/"
     cp -r translations "${pkgdir}/usr/share/${pkgname}/"
 
