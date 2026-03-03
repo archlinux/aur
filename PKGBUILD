@@ -1,6 +1,6 @@
 # Maintainer: sichvs <pers32100@gmail.com>
 pkgname=secry
-pkgver=1.1.8
+pkgver=1.1.10
 pkgrel=1
 pkgdesc='AES-256-GCM / ChaCha20-Poly1305 / XChaCha20-Poly1305 token encryption CLI'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha256sums=('6c0f0c2d9e098bbd891642f69f3a354fb5e372f177c19d984a1510de3f65e01e')
+sha256sums=('4700510f19b3f08fbd38f5aad29b90c9022d69003d81bf70f6fc82459619e82b')
 
 build() {
     cd "$srcdir"

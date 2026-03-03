@@ -1,6 +1,6 @@
 pkgbase = secry
 	pkgdesc = AES-256-GCM / ChaCha20-Poly1305 / XChaCha20-Poly1305 token encryption CLI
-	pkgver = 1.1.8
+	pkgver = 1.1.10
 	pkgrel = 1
 	url = https://github.com/rushpym-dotcom/secry-rs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = secry
 	license = MIT
 	makedepends = rust
 	makedepends = cargo
-	source = secry-1.1.8.tar.gz::https://crates.io/api/v1/crates/secry/1.1.8/download
-	sha256sums = 6c0f0c2d9e098bbd891642f69f3a354fb5e372f177c19d984a1510de3f65e01e
+	source = secry-1.1.10.tar.gz::https://crates.io/api/v1/crates/secry/1.1.10/download
+	sha256sums = 4700510f19b3f08fbd38f5aad29b90c9022d69003d81bf70f6fc82459619e82b
 
 pkgname = secry
