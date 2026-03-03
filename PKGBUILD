@@ -37,6 +37,7 @@ package_catppuccin-plasma-colorscheme-frappe() {
 package_catppuccin-plasma-colorscheme-macchiato() {
 	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	mkdir -p "${pkgdir}/usr/share/color-schemes/"
+	rm -rf ${srcdir}/Macchiato-color-schemes/*Mocha*
 	cp -rf ${srcdir}/Macchiato-color-schemes/* "${pkgdir}/usr/share/color-schemes/"
 }
 
