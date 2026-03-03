@@ -1,6 +1,6 @@
 # Maintainer: Valentin Radu
 pkgname=pent
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc="Wrap any process in a filesystem and network sandbox"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('libcap')
 makedepends=('cargo')
 install="pent.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/valentinradu/Pent/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('883a3fac0513a5b8ee3631a93577e7c4dbd7487364ddf162746af8bccdcc7621')
+sha256sums=('03c83b93c39a8147020b52dc1f2a4bd6d046a8c45c7948a38e61eca82a3243d3')
 
 prepare() {
     cd "Pent-$pkgver"
