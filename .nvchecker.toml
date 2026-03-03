@@ -1,0 +1,4 @@
+[green-tunnel-bin]
+source = "git"
+git = "https://github.com/SadeghHayeri/GreenTunnel.git"
+prefix = "v"
