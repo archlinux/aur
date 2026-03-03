@@ -1,6 +1,6 @@
 # Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=1code
-pkgver=0.0.79
+pkgver=0.0.81
 pkgrel=1
 pkgdesc="Best UI for Claude Code with local and remote agent execution"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=("$pkgname-bin" "$pkgname-git")
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('63a9273ab86a69e33a2923f054ceefdbe82735aa0b692372ba4d78e5de1d6123'
+sha256sums=('851bc9d7c2ffc198b006207b860d3dabe6548abeec4dbfdc8c82d681f60e3a6c'
             '44ecea6b700e7f097b4c22669d24ee19ae3d6b61967621eb0dd2eb478eaf47df')
 
 # ci/cd flag: gh repo for auto updates
