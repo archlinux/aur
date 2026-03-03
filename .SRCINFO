@@ -1,13 +1,13 @@
 pkgbase = ps2_manager
 	pkgdesc = A game manager for Open PS2 Loader (OPL)
-	pkgver = 1.6.1
+	pkgver = 1.6.3
 	pkgrel = 2
 	url = https://code.weexnes.dev/ps2_manager
 	arch = x86_64
 	license = GPL3
 	makedepends = dotnet-sdk
 	options = !strip
-	source = ps2_manager-1.6.1.tar.gz::https://code.weexnes.dev/~downloads/projects/1/archives?revision=refs/tags/1.6.1&format=tgz
+	source = ps2_manager-1.6.3.tar.gz::https://code.weexnes.dev/~downloads/projects/1/archives?revision=refs/tags/1.6.3&format=tgz
 	sha256sums = SKIP
 
 pkgname = ps2_manager
