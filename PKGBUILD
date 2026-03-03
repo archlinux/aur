@@ -1,8 +1,6 @@
 # Maintainer: Valentin Radu
-#
-# Package name is "pent". If that is taken on AUR, use "pent-sandbox".
 pkgname=pent
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Wrap any process in a filesystem and network sandbox"
 arch=('x86_64' 'aarch64')
@@ -12,7 +10,7 @@ depends=('libcap')
 makedepends=('cargo')
 install="pent.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/valentinradu/Pent/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('501117a3f80b41fb676f47b0d21664d67b2d292157bff9b74effb8fd14216c0f')
+sha256sums=('2a5f96fa4a1afc34ab4fba90826cb377827bc8d43b06f8f6451a4c3d03ace11b')
 
 prepare() {
     cd "Pent-$pkgver"
