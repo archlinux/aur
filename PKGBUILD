@@ -8,7 +8,7 @@ url='https://github.com/dcprevere/org-cli'
 provides=('org-cli')
 conflicts=('org-cli')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/org-linux-x64.tar.gz")
-sha256sums=('ddc5639081bbdb89ab48a163b7aec70c132aee3378e23e5695ff6828a49862ad')
+sha256sums=('835784ddbf8db36da932ff13c0b401a1267833eec4f64418655aeaab6b81b3af')
 options=('!strip')
 
 package() {
