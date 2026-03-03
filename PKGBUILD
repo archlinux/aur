@@ -4,22 +4,37 @@
 
 pkgname=onlyoffice-bin
 pkgver=9.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
 license=('AGPL-3.0-only')
-depends=('curl' 'gtk3' 'alsa-lib' 'libpulse' 'gstreamer' 'gst-plugins-base-libs'
-         'gst-plugins-ugly' 'libxss' 'nss' 'nspr' 'ttf-dejavu' 'ttf-liberation'
-         'ttf-carlito' 'desktop-file-utils' 'hicolor-icon-theme' 'libnotify')
-optdepends=('libreoffice: for OpenSymbol fonts'
-            'otf-takao: for japanese Takao fonts'
-            'ttf-ms-fonts: for Microsoft fonts'
-            'gst-plugins-good: for playing embedded video files'
-            'gst-libav: for playing embedded video files')
+depends=(
+    'alsa-lib'
+    'curl'
+    'desktop-file-utils'
+    'gtk3'
+    'gstreamer'
+    'gst-plugins-base-libs'
+    'gst-plugins-ugly'
+    'hicolor-icon-theme'
+    'libnotify'
+    'libpulse'
+    'libxss'
+    'nss'
+    'nspr'
+    'ttf-carlito'
+    'ttf-dejavu'
+    'ttf-liberation')
+optdepends=(
+    'gst-libav: for playing embedded video files'
+    'gst-plugins-good: for playing embedded video files'
+    'libreoffice: for OpenSymbol fonts'
+    'otf-takao: for japanese Takao fonts'
+    'ttf-ms-fonts: for Microsoft fonts')
 provides=("onlyoffice=${pkgver}")
 conflicts=('onlyoffice')
-options=('!strip' '!emptydirs')
+options=('!emptydirs' '!strip')
 source=("onlyoffice-desktopeditors-${CARCH}-${pkgver}.deb"::"https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v${pkgver}/onlyoffice-desktopeditors_amd64.deb"
         '010-onlyoffice-bin-fix-document-opening.patch')
 noextract=("onlyoffice-desktopeditors-${CARCH}-${pkgver}.deb")
@@ -43,11 +58,11 @@ package() {
     do
         _res="$(sed 's/\.png$//;s/^.*-//' <<< "$_file")"
         install -d -m755 "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps"
-        ln -s "../../../../../../opt/onlyoffice/desktopeditors/asc-de-${_res}.png" \
+        ln -sr "${pkgdir}/opt/onlyoffice/desktopeditors/asc-de-${_res}.png" \
             "${pkgdir}/usr/share/icons/hicolor/${_res}x${_res}/apps/onlyoffice-desktopeditors.png"
     done < <(find "${pkgdir}/opt/onlyoffice/desktopeditors" -maxdepth 1 -type f -name 'asc-de-*.png' -print0)
     
     # 3rd party licenses
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s ../../../../opt/onlyoffice/desktopeditors/3DPARTYLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/3DPARTYLICENSE"
+    ln -sr "${pkgdir}/opt/onlyoffice/desktopeditors/3DPARTYLICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/3DPARTYLICENSE"
 }
