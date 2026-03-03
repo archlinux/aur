@@ -1,5 +1,5 @@
 pkgbase = bf-git
-	pkgdesc = A Brainfuck Interpreter
+	pkgdesc = An enhanced visual Brainfuck interpreter with extended UTF-8 encoding support and additional pre-processing directives
 	pkgver = v1.1.2.g3d1c0b0
 	pkgrel = 1
 	url = https://github.com/Galaxy-Suns/bf
