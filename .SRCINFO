@@ -1,7 +1,7 @@
 pkgbase = tsql
 	pkgdesc = A modern PostgreSQL manager TUI
-	pkgver = 0.4.0
-	pkgrel = 3
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/fcoury/tsql
 	arch = x86_64
 	arch = aarch64
@@ -9,9 +9,8 @@ pkgbase = tsql
 	makedepends = cargo
 	makedepends = tree-sitter
 	provides = tsql
-	source = tsql-0.4.0.tar.gz::https://static.crates.io/crates/tsql/tsql-0.4.0.crate
-	source = tsql-0.4.0.tar.gz.asc
-	sha256sums = 8a4781f9e268257a08423ef4c2adb25ea996cc29eb5b2ecf1d5a4b91abd93e24
-	sha256sums = SKIP
+	options = !lto
+	source = tsql-0.5.0.tar.gz::https://static.crates.io/crates/tsql/tsql-0.5.0.crate
+	sha256sums = e16ad90ee032d0588db0d8f772e5452aaaa9af157cf49c1ae08085e2867a8a54
 
 pkgname = tsql
