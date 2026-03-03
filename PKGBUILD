@@ -11,7 +11,7 @@ makedepends=('cargo' 'base-devel')
 options=(!lto)
 install=tirith.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ffea5bf2f4eaa4bde6db059a6cb25d6d1e54995c5bdffaee5e84f6f896aabb77')
+sha256sums=('b3ab34dbe2261485c7122264e52770a2e429b9e68baa9f8f506c43d35b8c2934')
 
 prepare() {
   cd "$pkgname-$pkgver"
