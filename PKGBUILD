@@ -3,7 +3,7 @@
 pkgbase=catppuccin-plasma-colorscheme
 pkgname=(${pkgbase}-{latte,frappe,macchiato,mocha})
 pkgver=0.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Soothing pastel theme for KDE Plasma"
 arch=('any')
 url="https://github.com/catppuccin/kde"
