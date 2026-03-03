@@ -1,5 +1,3 @@
 [python-findiff]
-source = "github"
-github = "maroba/findiff"
-use_max_tag = "true"
-prefix = "v"
+source = "pypi"
+pypi = "findiff"
