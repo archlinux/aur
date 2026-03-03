@@ -1,19 +1,19 @@
 pkgbase = handbook-bin
 	pkgdesc = Create small, movable, and easily concealable windows for quick use.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.26.0
+	pkgver = 0.27.0
 	pkgrel = 1
 	url = https://github.com/ECRomaneli/Handbook
 	arch = x86_64
 	license = MIT
 	depends = electron39
-	provides = handbook=0.26.0
+	provides = handbook=0.27.0
 	conflicts = handbook
 	options = !emptydirs
-	source = handbook-0.26.0.rpm::https://github.com/ECRomaneli/Handbook/releases/download/0.26.0/Handbook-0.26.0-x64-Setup.rpm
-	source = LICENSE-0.26.0::https://raw.githubusercontent.com/ECRomaneli/Handbook/0.26.0/LICENSE
+	source = handbook-0.27.0.rpm::https://github.com/ECRomaneli/Handbook/releases/download/0.27.0/handbook-0.27.0.x86_64.rpm
+	source = LICENSE-0.27.0::https://raw.githubusercontent.com/ECRomaneli/Handbook/0.27.0/LICENSE
 	source = handbook.sh
-	sha256sums = a82313e48a3811fcb90967b09d9b4775cd405d158755b8578776405f8701de22
-	sha256sums = f95781392d074cd6a4f9de8e5ea6625bee7df3678dc98be6c56358ee527a18c8
+	sha256sums = 6e862e0bd64b136cae22044a4d767434c178f5274ee63c823274caece5709c30
+	sha256sums = f0cf8bd391f773dca303159de1b19dbb8626d86f4aae45a548320031f113283b
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = handbook-bin
