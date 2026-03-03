@@ -1,10 +1,10 @@
 pkgbase = podserv-b-git
 	pkgdesc = a minimalist podcast server (type b) for serving media files on the web
-	pkgver = 0.1.0.r1.g77e6269
+	pkgver = 0.1.0.r4.gf41bd9c
 	pkgrel = 1
 	url = https://github.com/l5yth/podserv-b
+	install = podserv-b.install
 	arch = x86_64
-	arch = i686
 	arch = aarch64
 	arch = armv7h
 	arch = armv6h

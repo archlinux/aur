@@ -1,0 +1,25 @@
+# Copyright (c) 2026 l5yth
+# SPDX-License-Identifier: Apache-2.0
+
+post_install() {
+  getent group  podserv-b &>/dev/null || groupadd --system podserv-b
+  getent passwd podserv-b &>/dev/null || \
+    useradd --system --gid podserv-b --home-dir /srv/podcasts \
+            --shell /sbin/nologin podserv-b
+  chown podserv-b:podserv-b /srv/podcasts
+  systemctl daemon-reload
+  echo "  systemctl enable --now podserv-b"
+}
+
+post_upgrade() {
+  getent group  podserv-b &>/dev/null || groupadd --system podserv-b
+  getent passwd podserv-b &>/dev/null || \
+    useradd --system --gid podserv-b --home-dir /srv/podcasts \
+            --shell /sbin/nologin podserv-b
+  systemctl daemon-reload
+}
+
+post_remove() {
+  userdel  podserv-b 2>/dev/null || true
+  groupdel podserv-b 2>/dev/null || true
+}
