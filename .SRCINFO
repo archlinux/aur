@@ -1,5 +1,5 @@
 pkgbase = lntrn
-	pkgdesc = Displays system information alongside an ANSI Lantern - For Lantern DE
+		pkgdesc = Displays system information alongside an ANSI Lantern
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/Jca56/lntrn

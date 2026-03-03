@@ -2,7 +2,7 @@
 pkgname=lntrn
 pkgver=1.0
 pkgrel=1
-pkgdesc="Displays system information alongside an ANSI Lantern - For Lantern DE"
+pkgdesc="Displays system information alongside an ANSI Lantern"
 arch=('any')
 url="https://github.com/Jca56/lntrn"
 license=('GPL-3.0-only')
