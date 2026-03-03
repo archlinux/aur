@@ -7,7 +7,7 @@ _TESTS=0 # Set to 1 to enable tests.  Warning - they are slow and won't work wel
 
 pkgname='testssl.sh-git'
 _pkgname='testssl.sh'
-pkgver=3.2rc4+r4739+g4b4260831
+pkgver=3.3dev.snapshot.2602.r8.g87ecc1c
 pkgrel=1
 
 pkgdesc="Testing TLS/SSL encryption (git version)"
@@ -50,11 +50,7 @@ source=(
 
 pkgver() {
   cd ${pkgname}
-
-  _version=$(git tag --sort=-v:refname --list | head -n1)
-  _commits=$(git rev-list --count HEAD)
-  _short_commit_hash=$(git rev-parse --short=9 HEAD)
-  echo "${_version#'v'}+r${_commits}+g${_short_commit_hash}"
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
