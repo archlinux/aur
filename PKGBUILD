@@ -42,13 +42,21 @@ optdepends=(
   'python-pytorch-opt-rocm: Optimized GPU acceleration with AMD ROCm'
   'cuda: NVIDIA CUDA toolkit'
   'rocm-core: AMD ROCm platform'
-  # Optional features (available in official repos)
-  'python-transformers: Voxtral-HF streaming support'
-  'python-pytest: Run test suite'
-  # Speaker diarization and sentence trimming (not yet in AUR, install via pip)
-  'python-diart: Real-time speaker diarization (diart backend, not recommended)'
-  'python-nemo-toolkit: Advanced speaker diarization (Sortformer backend, SOTA 2025)'
-  'python-mosestokenizer: Sentence-level buffer trimming'
+  # [voxtral-hf] Voxtral via HuggingFace transformers
+  'python-transformers: Voxtral-HF streaming support (voxtral-hf extra)'
+  'python-accelerate: Accelerated inference for Voxtral-HF (voxtral-hf extra)'
+  'python-mistral-common: Voxtral-HF audio tokenizer (voxtral-hf extra, AUR)'
+  # [diarization-sortformer] Speaker diarization via NeMo (SOTA 2025, Python 3.10-3.12)
+  'python-nemo-toolkit: Advanced speaker diarization (diarization-sortformer extra, AUR)'
+  # [diarization-diart] Speaker diarization via diart (not recommended, conflicts with CUDA 12.9)
+  'python-diart: Real-time speaker diarization (diarization-diart extra, AUR)'
+  # [sentence_tokenizer] Sentence-level audio buffer trimming
+  'python-mosestokenizer: Sentence tokenizer for buffer trimming (sentence_tokenizer extra, AUR)'
+  'python-wtpsplit: Segment-then-tokenize sentence splitter (sentence_tokenizer extra, AUR)'
+  # [translation] Multi-language translation (200 languages via NLLB)
+  'python-nllw: NLLB-based translation support (translation extra, install via pip)'
+  # [test] Test suite
+  'python-pytest: Run test suite (test extra)'
 )
 
 backup=()
