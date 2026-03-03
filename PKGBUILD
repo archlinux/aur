@@ -1,7 +1,7 @@
 # Maintainer: Mr.Zero88 <huesmann.mats+aur@gmail.com>
 
 pkgname=steamvr-linux-fixes-layer-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A Vulkan layer that patches SteamVR's vrcompositor to address issues for wired headsets"
 arch=('x86_64')
@@ -11,7 +11,7 @@ source=(
   "$pkgname-$pkgver.zip::https://github.com/BnuuySolutions/SteamVRLinuxFixes/releases/download/v$pkgver/VK_LAYER_BNUUY_steamvr_linux_fixes.zip"
 )
 sha256sums=(
-  '4bfce24f71ec13d672e0f087c66315306c8c3e6ce068c3c7113ad76bd72b30c5'
+  'df933084df5da0d13296f2e90b47d1fa3c52eca2aa71dd09ae1a747fdb4a3305'
 )
 
 prepare() {
