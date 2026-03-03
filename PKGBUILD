@@ -1,7 +1,7 @@
 # Maintainer: Dae Euhwa <daedaevibin@naver.com>
 pkgname=meshiji
 pkgver=1.1.0
-pkgrel=2
+pkgrel=4
 pkgdesc="A modern, flutter-based file explorer"
 arch=('x86_64')
 url="https://github.com/Veridian-Zenith/meshiji"
