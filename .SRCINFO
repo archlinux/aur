@@ -1,6 +1,6 @@
 pkgbase = remoteit-desktop-bin
 	pkgdesc = Remote.it cross platform desktop application for creating and hosting connections
-	pkgver = 3.35.4
+	pkgver = 3.41.0
 	pkgrel = 1
 	url = https://remote.it/
 	install = remoteit-desktop-bin.install
