@@ -8,7 +8,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 
 _pkgname="xcp"
 pkgname="$_pkgname-git"
-pkgver=0.21.3.r0.g2c8c3f0
+pkgver=0.24.2.r35.gee00e7a
 pkgrel=1
 pkgdesc="An extended 'cp'"
 url="https://github.com/tarka/xcp"
@@ -16,16 +16,18 @@ license=("GPL-3.0-only")
 arch=('x86_64')
 
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
 )
 makedepends=(
   'git'
   'cargo'
 )
 
-provides=("$_pkgname=$pkgver")
+provides=("$_pkgname")
 conflicts=("$_pkgname")
+
+options=('!lto')
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git")
@@ -43,6 +45,10 @@ prepare() {
 }
 
 build() {
+  local _nproc=$(nproc)
+  export CARGO_PROFILE_RELEASE_LTO=false
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$((_nproc > 16 ? _nproc : 16))
+
   cd "$_pkgsrc"
   cargo build --frozen --release --all-features
 }

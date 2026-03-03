@@ -1,16 +1,17 @@
 pkgbase = xcp-git
 	pkgdesc = An extended 'cp'
-	pkgver = 0.21.3.r0.g2c8c3f0
+	pkgver = 0.24.2.r35.gee00e7a
 	pkgrel = 1
 	url = https://github.com/tarka/xcp
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = cargo
-	depends = gcc-libs
 	depends = glibc
-	provides = xcp=0.21.3.r0.g2c8c3f0
+	depends = libgcc
+	provides = xcp
 	conflicts = xcp
+	options = !lto
 	source = xcp::git+https://github.com/tarka/xcp.git
 	sha256sums = SKIP
 

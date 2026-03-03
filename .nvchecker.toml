@@ -1,4 +1,0 @@
-[xcp-git]
-source = "git"
-git = "https://github.com/tarka/xcp.git"
-prefix = "v"
