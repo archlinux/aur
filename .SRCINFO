@@ -1,0 +1,22 @@
+pkgbase = vgx-bin
+	pkgdesc = A Git pre-commit security scanner with LLM integration to detect vulnerabilities before they enter your codebase
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/rohansx/vgx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = vgx
+	conflicts = vgx
+	source = README-2.0.0.md::https://raw.githubusercontent.com/rohansx/vgx/v2.0.0/README.md
+	source = LICENSE-2.0.0::https://raw.githubusercontent.com/rohansx/vgx/v2.0.0/LICENSE
+	sha256sums = 98daa662ddf50d0943325a85c4816dcad498acb522ab4d08f0e31e6049fb1084
+	sha256sums = 3b7cea79aafb99e78919cd599aea32ba77a5db8ad33c2ff677e5ca4f1fb5b3fc
+	source_x86_64 = vgx-x86_64-2.0.0::https://github.com/rohansx/vgx/releases/download/v2.0.0/vgx_linux_amd64
+	sha256sums_x86_64 = 4eba155610c22efa3d467a6a13b3f552a6b99de70af22b7bb7facdfd16bc84bf
+	source_aarch64 = vgx-aarch64-2.0.0::https://github.com/rohansx/vgx/releases/download/v2.0.0/vgx_linux_arm64
+	sha256sums_aarch64 = b3ae24d74d8379ad21bf4d37d7c2a819d50539d4074b9c7bdadc8d6bd25419e7
+
+pkgname = vgx-bin

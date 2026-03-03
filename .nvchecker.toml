@@ -1,0 +1,5 @@
+[vgx-bin]
+source = "github"
+github = "rohansx/vgx"
+use_latest_release = true
+prefix = "v"
