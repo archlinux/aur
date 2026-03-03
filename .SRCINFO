@@ -1,6 +1,6 @@
 pkgbase = ecliypse-bin
 	pkgdesc = High-performance game launcher and downloader
-	pkgver = 2.0.0
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://ecliypse.com
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = ecliypse-bin
 	options = !debug
 	source = ecliypse.desktop
 	source = ecliypse.nvidia.desktop
-	source = https://s3.lillianne.solutions/aur/ecliypse-2.0.0.tar.gz
-	sha256sums = dbbc0b51d73513b148805a1bb682100efcb17b423656bebcff7e3df2283e9077
-	sha256sums = 498e41f8beeccee357b451afa50d529c5726da882d38e2b4b5610aa4afd8257b
-	sha256sums = d085cb10c8a09463aea3669ddd2558353ddf5b0cbbc62730dd9b29fad4f62772
+	source = https://s3.lillianne.solutions/aur/ecliypse-2.0.3.tar.gz
+	sha256sums = 5db70863de4d1bfe8c3cde5fad073239a3d12479ee187734361eadff32f45f7a
+	sha256sums = cdf6993a2dc593d882da4ad82840ecb471583fb763bb138d402a8728de0362eb
+	sha256sums = ac97defdc650ca20fbc40944327e2094707815101751dd31ab3617d2129819d8
 
 pkgname = ecliypse-bin

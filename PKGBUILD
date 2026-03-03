@@ -1,7 +1,7 @@
 # Maintainer: Sovereign <contact@sovrulez.net>
 pkgname=ecliypse-bin
 _pkgname=ecliypse
-pkgver=2.0.0
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="High-performance game launcher and downloader"
 arch=('x86_64')
@@ -16,9 +16,9 @@ source=("${_pkgname}.desktop"
         "${_pkgname}.nvidia.desktop"
         "https://s3.lillianne.solutions/aur/${_pkgname}-${pkgver}.tar.gz")
 
-sha256sums=('dbbc0b51d73513b148805a1bb682100efcb17b423656bebcff7e3df2283e9077'
-            '498e41f8beeccee357b451afa50d529c5726da882d38e2b4b5610aa4afd8257b'
-            'd085cb10c8a09463aea3669ddd2558353ddf5b0cbbc62730dd9b29fad4f62772')
+sha256sums=('5db70863de4d1bfe8c3cde5fad073239a3d12479ee187734361eadff32f45f7a'
+            'cdf6993a2dc593d882da4ad82840ecb471583fb763bb138d402a8728de0362eb'
+            'ac97defdc650ca20fbc40944327e2094707815101751dd31ab3617d2129819d8')
 
 package() {
   install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
