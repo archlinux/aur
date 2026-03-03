@@ -11,7 +11,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"${url}/archive/refs/tags/v${pkgver}.tar.
 sha256sums=('8e16addc52fcd44c4b7cb17c3a9795c86313ebf5744a995d49ab064895573750')
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	install -Dm644 'darcula2.palette' -t "${pkgdir}/usr/share/org.gnome.Ptyxis/palettes"
 }
