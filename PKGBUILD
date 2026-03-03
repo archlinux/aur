@@ -10,3 +10,16 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("${url}/releases/download/app-v${pkgver}/Hardword_${pkgver}_amd64.deb")
 sha256sums=('SKIP')
+package() {
+    cd "$srcdir"
+
+    # extract deb
+    bsdtar -xf Hardword_${pkgver}_amd64.deb
+
+    # extract actual app payload
+    bsdtar -xf data.tar.*
+
+    # copy into package directory
+    cp -r usr "$pkgdir/"
+}
+
