@@ -1,6 +1,6 @@
 pkgbase = envy-bin
 	pkgdesc = A terminal based tool for managing secrets with both TUI and CLI support
-	pkgver = 1.1.2
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/XENONCYBER/envy
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = envy-bin
 	license = MIT
 	provides = envy
 	conflicts = envy
-	source_x86_64 = envy-x86_64-1.1.2.tgz::https://github.com/XENONCYBER/envy/releases/download/v1.1.2/envy_1.1.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 6ebea26c048bf86c88accbee4afeec2f31f760d5afa06fed517e285cac0cf542
-	source_aarch64 = envy-aarch64-1.1.2.tgz::https://github.com/XENONCYBER/envy/releases/download/v1.1.2/envy_1.1.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 55707762d422cd5d6b253ba70a4df3b9750174db257cb450154493e28d115eec
+	source_x86_64 = envy-x86_64-1.2.1.tgz::https://github.com/XENONCYBER/envy/releases/download/v1.2.1/envy_1.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = a53fefda93ee99dc7a3ea73dcd7c1c568e2a5114a6afd023e40fae11b8f48471
+	source_aarch64 = envy-aarch64-1.2.1.tgz::https://github.com/XENONCYBER/envy/releases/download/v1.2.1/envy_1.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = d4487fc5102d6c5cb40b4005f5a8434723934f51fbe8555a45969ef9190c2fd8
 
 pkgname = envy-bin

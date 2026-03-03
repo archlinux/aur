@@ -5,7 +5,7 @@ _pkgname=envy
 pkgname=${_pkgname}-bin
 pkgdesc="A terminal based tool for managing secrets with both TUI and CLI support"
 
-pkgver=1.1.2
+pkgver=1.2.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('6ebea26c048bf86c88accbee4afeec2f31f760d5afa06fed517e285cac0cf542')
-sha256sums_aarch64=('55707762d422cd5d6b253ba70a4df3b9750174db257cb450154493e28d115eec')
+sha256sums_x86_64=('a53fefda93ee99dc7a3ea73dcd7c1c568e2a5114a6afd023e40fae11b8f48471')
+sha256sums_aarch64=('d4487fc5102d6c5cb40b4005f5a8434723934f51fbe8555a45969ef9190c2fd8')
 
 
 package() {
