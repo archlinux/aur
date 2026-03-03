@@ -9,4 +9,4 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("${url}/releases/download/app-v${pkgver}/Hardword_${pkgver}_amd64.deb")
-source_aarch64=("${url}/releases/download/app-v${pkgver}/Hardword_${pkgver}_arm64.deb")
+sha256sums_x86_64=("490d529c5243152f5b96bff69094de5d31858fcc5f821c79d0108cfc8da69ff3")
