@@ -1,0 +1,16 @@
+pkgbase = op-cache-git
+	pkgdesc = A fast caching proxy for 1Password CLI op read commands
+	pkgver = 0
+	pkgrel = 1
+	url = https://github.com/crmne/op-cache
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = op-cache
+	conflicts = op-cache
+	source = op-cache::git+https://github.com/crmne/op-cache.git#branch=fix/socket-auth-hardening
+	sha256sums = SKIP
+
+pkgname = op-cache-git
