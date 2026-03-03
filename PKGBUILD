@@ -1,6 +1,6 @@
 pkgname=hardword
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Write documents"
 arch=('x86_64')
 url="https://github.com/Archetylator/hardword"
