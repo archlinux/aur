@@ -1,0 +1,24 @@
+pkgbase = hardword
+	pkgdesc = Write documents
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Archetylator/hardword
+	install = hardword.install
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/Archetylator/hardword/releases/download/app-v0.1.0/Hardword_0.1.0_amd64.deb
+	source_aarch64 = https://github.com/Archetylator/hardword/releases/download/app-v0.1.0/Hardword_0.1.0_arm64.deb
+
+pkgname = hardword
