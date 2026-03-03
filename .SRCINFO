@@ -1,7 +1,7 @@
 pkgbase = onlyoffice-bin
 	pkgdesc = An office suite that combines text, spreadsheet and presentation editors
 	pkgver = 9.3.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.onlyoffice.com/
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -29,6 +29,7 @@ pkgbase = onlyoffice-bin
 	provides = onlyoffice=9.3.0
 	conflicts = onlyoffice
 	noextract = onlyoffice-desktopeditors-x86_64-9.3.0.deb
+	options = !debug
 	options = !emptydirs
 	options = !strip
 	source = onlyoffice-desktopeditors-x86_64-9.3.0.deb::https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v9.3.0/onlyoffice-desktopeditors_amd64.deb

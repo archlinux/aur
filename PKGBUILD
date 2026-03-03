@@ -4,7 +4,7 @@
 
 pkgname=onlyoffice-bin
 pkgver=9.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc='An office suite that combines text, spreadsheet and presentation editors'
 arch=('x86_64')
 url='https://www.onlyoffice.com/'
@@ -34,7 +34,7 @@ optdepends=(
     'ttf-ms-fonts: for Microsoft fonts')
 provides=("onlyoffice=${pkgver}")
 conflicts=('onlyoffice')
-options=('!emptydirs' '!strip')
+options=('!debug' '!emptydirs' '!strip')
 source=("onlyoffice-desktopeditors-${CARCH}-${pkgver}.deb"::"https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v${pkgver}/onlyoffice-desktopeditors_amd64.deb"
         '010-onlyoffice-bin-fix-document-opening.patch')
 noextract=("onlyoffice-desktopeditors-${CARCH}-${pkgver}.deb")
