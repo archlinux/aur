@@ -8,14 +8,14 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 _pkgname="mpd-discord-rpc"
 pkgname="$_pkgname"
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Displays metadata of currently playing song from MPD in Discord using Rich Presence"
 url="https://github.com/JakeStanger/mpd-discord-rpc"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('MIT')
 
 depends=(
-  'gcc-libs'
+  'libgcc'
   'openssl'
 )
 makedepends=(
@@ -32,13 +32,19 @@ source=("$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext")
 sha256sums=('fa3d9fac82fa0f32d03d28ef6cab926e4907526636d44edabdfedc3525f9ad08')
 
 build() {
+  local _nproc=$(nproc)
+  local _units=$((_nproc > 16 ? _nproc : 16))
+  export CARGO_PROFILE_RELEASE_LTO=false
+  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$_units
+  export RUSTFLAGS="-C opt-level=2 -C codegen-units=$_units -C lto=off"
+
   cd "$_pkgsrc"
   cargo build --release --locked --target-dir target
 }
 
 package() {
   cd "$_pkgsrc"
-  install -Dm755 "target/release/mpd-discord-rpc" "$pkgdir/usr/bin/mpd-discord-rpc"
+  install -Dm755 "$CARGO_TARGET_DIR/release/mpd-discord-rpc" "$pkgdir/usr/bin/mpd-discord-rpc"
   install -Dm644 "mpd-discord-rpc.service" -t "$pkgdir/usr/lib/systemd/user/"
 
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
