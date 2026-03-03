@@ -5,7 +5,7 @@
 # - https://aur.archlinux.org/ollama-for-amd-git
 
 pkgname=ollama-for-amd
-pkgver=0.13.5
+pkgver=0.16.1
 pkgrel=1
 pkgdesc='Create, run and share large language models (LLMs) with ROCm, patched for AMD GPUs'
 arch=(x86_64 aarch64)
@@ -22,7 +22,7 @@ source=(${url}/archive/refs/tags/v${pkgver}.tar.gz
     sysusers.conf
     tmpfiles.conf)
 b2sums=(
-    '10cbd510d3fd73a4c8df89b6dc1dac36b512daa85902d3ba99d2210e294b167a80874f242b4b93c505eb8c195b7163c11632e7a1e15a308fbd4483e0e6bca801'
+    '6aaff17a9aba8891a62cb2095d38f5e45ea760c30b41e48757b2087c2c140a29d8d2d05712ca410585bf1278db08af3ab27d781b0a26408d709c8130a881c08c'
     '683efc624a883aeb653b0afe944c0ab1fb4b79ff838066d3050d5ec6f8d21770c8cf65cf6fbb2ade7daacb65e0b54caed93cce1f7b987991aec6a9b69464f1ee'
     '68622ac2e20c1d4f9741c57d2567695ec7b5204ab43356d164483cd3bc9da79fad72489bb33c8a17c2e5cb3b142353ed5f466ce857b0f46965426d16fb388632'
     'e8f2b19e2474f30a4f984b45787950012668bf0acb5ad1ebb25cd9776925ab4a6aa927f8131ed53e35b1c71b32c504c700fe5b5145ecd25c7a8284373bb951ed')
