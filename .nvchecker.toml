@@ -1,0 +1,4 @@
+[gitversion-bin]
+source = "github"
+github = "GitTools/GitVersion"
+use_latest_release = true
