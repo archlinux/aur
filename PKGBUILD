@@ -2,12 +2,22 @@
 pkgname=ecliypse-bin
 _pkgname=ecliypse
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance game launcher and downloader"
 arch=('x86_64')
 url="https://ecliypse.com"
 license=('custom:commercial')
-depends=('webkit2gtk-4.1' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libsecret' 'hicolor-icon-theme')
+depends=(
+  'webkit2gtk-4.1'
+  'gtk3'
+  'libappindicator-gtk3'
+  'librsvg'
+  'libsecret'
+  'hicolor-icon-theme'
+  'gstreamer'
+  'gst-plugins-base'
+  'gst-plugins-good'
+)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip' '!debug')
