@@ -17,7 +17,7 @@ options=(!strip)
 source_x86_64=(
   "${_pkgname}-${_upstream_pkgver}-x86_64.deb::${_ghurl}/releases/download/v${_upstream_pkgver}-linux/LazyTyper_${_upstream_pkgver}_amd64.deb"
 )
-sha256sums_x86_64=('321e02529e72cf54e83d5b04afd8c45ac91c9d9530bbc9f31bef114dca136878')
+sha256sums_x86_64=('82a4ba7905ed450492a8f73f5878d2ca23a7a83fd2afaba25c79e0d677980b12')
 
 package() {
   local deb_file="${srcdir}/${_pkgname}-${_upstream_pkgver}-x86_64.deb"

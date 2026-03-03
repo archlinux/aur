@@ -17,6 +17,6 @@ pkgbase = lazytyper-bin
 	conflicts = lazytyper-appimage
 	options = !strip
 	source_x86_64 = LazyTyper-1.8.7-x86_64.deb::https://github.com/oldcai/LazyTyper-releases/releases/download/v1.8.7-linux/LazyTyper_1.8.7_amd64.deb
-	sha256sums_x86_64 = 321e02529e72cf54e83d5b04afd8c45ac91c9d9530bbc9f31bef114dca136878
+	sha256sums_x86_64 = 82a4ba7905ed450492a8f73f5878d2ca23a7a83fd2afaba25c79e0d677980b12
 
 pkgname = lazytyper-bin
