@@ -1,0 +1,19 @@
+pkgbase = open-pencil-bin
+	pkgdesc = AI-native design editor. Open-source Figma alternative built with Tauri.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/open-pencil/open-pencil
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = hicolor-icon-theme
+	provides = open-pencil
+	conflicts = open-pencil
+	options = !strip
+	source = open-pencil-bin-0.4.2.deb::https://github.com/open-pencil/open-pencil/releases/download/v0.4.2/OpenPencil_0.4.2_amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/open-pencil/open-pencil/v0.4.2/LICENSE
+	sha256sums = a52a5d458dadccfa75ea3c8248c39263405d399fd93f41911588b4304bb76e0e
+	sha256sums = 144ecf9417a43cca1cc2096acbac8b00beff9210191504709d586bf7552dcfa2
+
+pkgname = open-pencil-bin
