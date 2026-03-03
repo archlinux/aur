@@ -1,0 +1,65 @@
+# Maintainer: Zane Schepke <support@wgtunnel.com>
+pkgname=wgtunnel-bin
+# Update on release
+pkgver=1.0.0
+pkgrel=1
+install=wgtunnel-bin.install
+pkgdesc="WireGuard and AmneziaWG VPN client with auto-tunneling, lockdown and proxying"
+arch=('x86_64')
+url="https://wgtunnel.com"
+license=('MIT')
+
+depends=('gtk3' 'iproute2' 'libsecret' 'nftables')
+optdepends=('libnotify: desktop notifications')
+
+provides=("wgtunnel=${pkgver}")
+conflicts=('wgtunnel' 'wgtunnel-git')
+options=(!strip !emptydirs)
+
+source=(
+  "wgtunnel-${pkgver}.tar.gz::https://github.com/wgtunnel/desktop/releases/download/${pkgver}/wgtunnel-${pkgver}-linux-amd64.tar.gz"
+)
+
+# Update on release
+sha256sums=('8ded1f2d58ddfb7aea5c2a68691b8ab4b71692d731f21f28f464f1c691b9df2c')
+
+package() {
+  cd "$srcdir"
+
+  tar -xzf "wgtunnel-${pkgver}.tar.gz"
+
+  # Install full app bundle
+  install -d "$pkgdir/usr/lib/wgtunnel"
+  cp -a "wgtunnel-${pkgver}/." "$pkgdir/usr/lib/wgtunnel/"
+
+  # Symlink to PATH
+  install -d "$pkgdir/usr/bin"
+  ln -s /usr/lib/wgtunnel/bin/wgtunnel \
+    "$pkgdir/usr/bin/wgtunnel"
+  ln -s /usr/lib/wgtunnel/bin/wgtctl \
+    "$pkgdir/usr/bin/wgtctl"
+
+  # Install desktop file
+  install -Dm644 \
+    "$pkgdir/usr/lib/wgtunnel/share/applications/com.zaneschepke.wireguardautotunnel.wgtunnel.desktop" \
+    "$pkgdir/usr/share/applications/com.zaneschepke.wireguardautotunnel.wgtunnel.desktop"
+
+  # Install icons
+  cd "$pkgdir/usr/lib/wgtunnel/share/icons/hicolor"
+  for size in */; do
+      install -d "$pkgdir/usr/share/icons/hicolor/$size"
+      cp -a "$size"/* "$pkgdir/usr/share/icons/hicolor/$size/"
+  done
+
+  # Install systemd service
+  install -Dm644 \
+    "$pkgdir/usr/lib/wgtunnel/lib/systemd/system/wgtunnel-daemon.service" \
+    "$pkgdir/usr/lib/systemd/system/wgtunnel-daemon.service"
+
+  # Patch service paths
+  sed -i 's|ExecStart=.*|ExecStart=/usr/lib/wgtunnel/bin/daemon|' \
+    "$pkgdir/usr/lib/systemd/system/wgtunnel-daemon.service"
+
+  sed -i 's|WorkingDirectory=.*|WorkingDirectory=/usr/lib/wgtunnel|' \
+    "$pkgdir/usr/lib/systemd/system/wgtunnel-daemon.service"
+}

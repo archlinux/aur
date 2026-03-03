@@ -1,0 +1,22 @@
+pkgbase = wgtunnel-bin
+	pkgdesc = WireGuard and AmneziaWG VPN client with auto-tunneling, lockdown and proxying
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://wgtunnel.com
+	install = wgtunnel-bin.install
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = iproute2
+	depends = libsecret
+	depends = nftables
+	optdepends = libnotify: desktop notifications
+	provides = wgtunnel=1.0.0
+	conflicts = wgtunnel
+	conflicts = wgtunnel-git
+	options = !strip
+	options = !emptydirs
+	source = wgtunnel-1.0.0.tar.gz::https://github.com/wgtunnel/desktop/releases/download/1.0.0/wgtunnel-1.0.0-linux-amd64.tar.gz
+	sha256sums = 8ded1f2d58ddfb7aea5c2a68691b8ab4b71692d731f21f28f464f1c691b9df2c
+
+pkgname = wgtunnel-bin

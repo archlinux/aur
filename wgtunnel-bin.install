@@ -1,0 +1,20 @@
+post_install() {
+    echo "Updating icon cache..."
+    gtk-update-icon-cache -f /usr/share/icons/hicolor
+    update-desktop-database /usr/share/applications 2>/dev/null || true
+  cat << 'EOF'
+
+=== WG Tunnel Installed Successfully ===
+
+For KDE users: log out and back in (or restart plasmashell) to see the app icon.
+
+Enable and start the daemon with:
+
+    sudo systemctl enable --now wgtunnel-daemon.service
+
+EOF
+}
+
+pre_remove() {
+  systemctl disable --now wgtunnel-daemon.service 2>/dev/null || true
+}
