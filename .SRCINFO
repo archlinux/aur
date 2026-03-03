@@ -1,0 +1,19 @@
+pkgbase = clippa-rs
+	pkgdesc = A clipboard manager tui/service for wayland based compositors written in rust
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/shiroanon/clippa-rs
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = wl-clipboard
+	source = clippa-rs-0.1.3.tar.gz::https://github.com/shiroanon/clippa-rs/archive/v0.1.3.tar.gz
+	source = clippa-harvest.service::https://raw.githubusercontent.com/shiroanon/clippa-rs/v0.1.3/clippa-harvest.service
+	sha256sums = fd5d91324901e5677d87da347d09e683b10862b4bda22d27827c86236b8085c7
+	sha256sums = 1a9166d74a12a3f3bc496a3cd16127beb402406c2fc60d3666d6c8e9112462dd
+
+pkgname = clippa-rs
