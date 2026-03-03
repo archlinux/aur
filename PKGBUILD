@@ -2,7 +2,7 @@
 
 pkgname=pufferpanel-bin
 _pkgname=pufferpanel
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="PufferPanel: A web-base game management system (binary version)."
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ optdepends=('nginx: TLS support'
 depends=()
 source_aarch64=(https://github.com/PufferPanel/PufferPanel/releases/download/v${pkgver///-}/pufferpanel_${pkgver///-}_arm64.deb)
 source_x86_64=(https://github.com/PufferPanel/PufferPanel/releases/download/v${pkgver///-}/pufferpanel_${pkgver///-}_amd64.deb)
-b2sums_x86_64=('5d834e0d7c8fae27e8270c1c2a9d53b74dcd5c22d79756f2bb050a62895e5b24ca1cabc342eeb8c87f98bb8a17c1fac0f427e07bb826ca58742d8ee06cdb5cb8')
-b2sums_aarch64=('d7a96a7883a84022093cd3e6b5b8b3de0a67be0c9587d91c79cf855fdddd8280e51cb2015b52047a4926f8701837072a4fe78fe7946ab72031a8b52b4936e2c8')
+b2sums_x86_64=('8c8192698009ff3b6ef5b7b0428cde49dbd4f927c3f67365c0064c246dbc7a189e61e323c51cc8c3291c97bf327392bea5d3a1d1f717bc11a0c8fcb257bb20f7')
+b2sums_aarch64=('8fdefbbc904cf76a3e51b261f527e5696ae4e31482746cab506b2c07f8e48c0cf026e17f0abcf69fc19a066f6b17812bbd9e44cd4144b293f2c4b8de1a123a74')
 package() {
   tar -xJf control.tar.xz
   tar -xJf data.tar.xz
