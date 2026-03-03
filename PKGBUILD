@@ -5,7 +5,7 @@ _pkgname="${pkgname//-bin/""}"
 __pkgname=konform
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=140.8.0_104
+pkgver=140.8.0_105
 _konformver="${pkgver%_*}"
 _konformrel="${pkgver#*_}"
 pkgrel=1
@@ -45,7 +45,6 @@ depends=(
   pango
   pixman
   sh
-  ttf-font
   zlib
 )
 makedepends=(git)
@@ -84,12 +83,12 @@ source=(
 )
 source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
-sha256sums=('42ba5afb0bfb159778315868f652f7e283b5bbd1e6130c80795a38409b2dbc08'
+sha256sums=('a79443dae0ae6a7499e888b5642caf5ed5bde1a481030ab5738b263955605122'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4')
-sha256sums_x86_64=('9a7cab74655812cb185b5b26dd4d5b1568fd890f36b240d42a7df17e9eea7641'
+sha256sums_x86_64=('303ab6414506ab4a3f304ac3b9ac8289b88166998321d93cbac6436684337bef'
                    'SKIP')
-sha256sums_aarch64=('0188fcffe3aaae1bd4d3fd8a0aede31d1280394b6bb87d5b3f397e0b0146b9e1'
+sha256sums_aarch64=('0259e43de844b54fa476770d211dabad5928e40e3eb921fa204d7b3dddd9d123'
                     'SKIP')
 
 package() {
