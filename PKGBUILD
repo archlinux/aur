@@ -3,7 +3,7 @@
 
 _name=slider
 pkgname=python-$_name
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Utilities for working with osu! files and data."
 arch=(any)
@@ -19,7 +19,7 @@ depends=(
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
 source=("$url/archive/v$pkgver.tar.gz")
-b2sums=('6c9fe08b1963e4528f31f195dd41ca7cf85da43c007da59229f867559f6ab48fadd035ab5ea388a9325abe8439b4ad05e46f00f88621acd91ff14ced235fe684')
+b2sums=('381addf5e183f44b147b8308daaddd010a5628104a0d88e7ad531cb9dd315947ade9eb69d5e03e4c88f170bc9729082a06a019df14994353ef08e81b2c32663e')
 
 # prepare() {
 #     cd $_name-$pkgver
