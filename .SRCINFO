@@ -1,0 +1,14 @@
+pkgbase = cli-taskbar-calendar
+	pkgdesc = Month/year popup calendar scripts for taskbar integrations
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/entemomoh2/cli-taskbar-calendar
+	arch = any
+	license = MIT
+	depends = bash
+	depends = util-linux
+	depends = alacritty
+	source = cli-taskbar-calendar-0.1.4.tar.gz::https://github.com/entemomoh2/cli-taskbar-calendar/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 9714fffa4059414a8d4b009c94c3957dd16f1e7cfbdba91afae59053f0f6f378
+
+pkgname = cli-taskbar-calendar
