@@ -1,0 +1,16 @@
+pkgbase = fahhh-git
+	pkgdesc = A minimal, blazingly fast auditory disappointment for failed commands
+	pkgver = 0.1.0.r4.g84863c8
+	pkgrel = 1
+	url = https://github.com/arghyadipchak/fahhh
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	depends = alsa-lib
+	provides = fahhh
+	conflicts = fahhh
+	source = git+https://github.com/arghyadipchak/fahhh.git
+	sha256sums = SKIP
+
+pkgname = fahhh-git
