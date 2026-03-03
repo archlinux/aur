@@ -1,0 +1,24 @@
+pkgbase = svgtopng-git
+	pkgdesc = SVG to PNG Converter
+	pkgver = 1.0.r1.g8d66691
+	pkgrel = 1
+	url = https://github.com/tonglingcn/svgtopng
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt6-tools
+	makedepends = ninja
+	makedepends = vulkan-headers
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = hicolor-icon-theme
+	depends = qt6-base
+	depends = qt6-svg
+	provides = svgtopng
+	conflicts = svgtopng
+	source = svgtopng-git::git+https://github.com/tonglingcn/svgtopng.git
+	sha256sums = SKIP
+
+pkgname = svgtopng-git
