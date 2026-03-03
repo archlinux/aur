@@ -1,0 +1,14 @@
+pkgbase = awf-qt5
+	pkgdesc = Theme preview application for Qt 5
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/luigifab/awf-extended
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base>=5.15.0
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	source = https://github.com/luigifab/awf-extended/archive/v4.0.0/awf-extended-4.0.0.tar.gz
+	sha256sums = dd3c5606375d67272097564fd1426b0ffdb3f2b83ef23c12f57ee772977b3a0d
+
+pkgname = awf-qt5
