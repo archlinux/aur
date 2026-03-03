@@ -1,6 +1,6 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner-git
-pkgver=4.12.5.r0
+pkgver=4.12.5.r3
 pkgrel=1
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
@@ -11,7 +11,7 @@ license=(
   'GPL2'
 )
 source=(
-  "git+$url.git#commit=36bddfda"
+  "git+$url.git#commit=55beb45d"
 )
 sha256sums=(
   'SKIP'
@@ -26,7 +26,6 @@ conflicts=('rog-perf-tuner')
 depends=(
   'asusctl'
   'coreutils'
-  'cpp-httplib'
   'hicolor-icon-theme'
   'hidapi'
   'libusb'
@@ -47,7 +46,6 @@ depends=(
 )
 makedepends=(
   'base-devel'
-  'ccache'
   'clang'
   'cmake'
   'git'
