@@ -8,7 +8,7 @@
 
 pkgname=opencpn
 pkgver=5.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Chart Plotting / Marine Navigation"
 arch=('x86_64' 'aarch64')
 license=("GPL2")
