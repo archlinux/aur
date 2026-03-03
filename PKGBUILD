@@ -1,3 +1,4 @@
+# Maintainer Nihmar at https://github.com/Nihmar/grunner
 pkgname=grunner-git
 pkgver=r1.abcdef1
 pkgrel=1
