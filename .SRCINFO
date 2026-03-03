@@ -1,7 +1,7 @@
 pkgbase = qodercli-bin
 	pkgdesc = Qoder Agentic CLI - Advanced AI coding agent from Alibaba
 	pkgver = 0.1.29
-	pkgrel = 5
+	pkgrel = 4
 	url = https://qoder.com/cli
 	arch = x86_64
 	arch = aarch64

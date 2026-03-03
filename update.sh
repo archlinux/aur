@@ -64,8 +64,7 @@ fi
 # --- update license ---
 if [[ "$license_changed" -eq 1 ]]; then
   mv "$tmp_license" "$LICENSE_FILE"
-  # Only update the first sha256sum (LICENSE), preserve the rest
-  sed -i "s/^sha256sums=('\\?[a-f0-9]*'\\?/sha256sums=('$new_sha'/" "$PKGBUILD"
+  sed -i "s/^sha256sums=.*/sha256sums=('$new_sha')/" "$PKGBUILD"
   if [[ "$ver_changed" -eq 0 ]]; then
     new_rel=$((cur_rel + 1))
     sed -i -E "s/^pkgrel=.*/pkgrel=$new_rel/" "$PKGBUILD"
