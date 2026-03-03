@@ -23,6 +23,6 @@ pkgbase = meshiji
 	provides = meshiji
 	conflicts = meshiji
 	source = git+https://github.com/Veridian-Zenith/meshiji.git#tag=v1.1.0
-	sha256sums = SKIP
+	sha256sums = fa2ab3da2fe0daef81b684290248a60a4d1d4f2116fd1549df6ac947b3db2d56
 
 pkgname = meshiji
