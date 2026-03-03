@@ -1,6 +1,6 @@
 pkgbase = green-tunnel-bin
 	pkgdesc = Anti-censorship utility that bypasses ISPs' deep packet inspection
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://github.com/SadeghHayeri/GreenTunnel
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = green-tunnel-bin
 	provides = green-tunnel
 	conflicts = green-tunnel
 	options = !emptydirs
-	source = green-tunnel-bin-2.0.1.zip::https://github.com/SadeghHayeri/GreenTunnel/releases/download/v2.0.1/green-tunnel-debian.zip
-	b2sums = 9fc8126f72d2ac76d5b295d62e76c3894b30ec34f632c8c8937dfd87438f6e304a555faead7fd40bfbc7add8abadfec04bdca53ff81ba87e36ad6d68cb802143
+	source = green-tunnel-bin-2.0.2.zip::https://github.com/SadeghHayeri/GreenTunnel/releases/download/v2.0.2/green-tunnel-debian.zip
+	b2sums = aeefd3782344e9c8203d601195ac20a09b2a11069710d5d20b731e3b2a30d251e0a804bf91a3fdde6848da6630042e5dcc3c2f8803a294d1f0b6c97fd9d67789
 
 pkgname = green-tunnel-bin
