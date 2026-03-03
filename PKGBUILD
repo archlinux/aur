@@ -1,6 +1,6 @@
 # Maintainer: RiverOnVenus <error@zhui.dev>
 pkgname=cmix-git
-pkgver=20.r10.g3cf2d2f
+pkgver=21.r10.g38e2a9e
 pkgrel=1
 pkgdesc="lossless data compression program aimed at optimizing compression ratio at the cost of high CPU/memory usage"
 arch=('x86_64')
