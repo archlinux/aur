@@ -7,6 +7,8 @@ url="https://github.com/Nihmar/grunner"
 license=('MIT')
 depends=('gtk4')
 makedepends=('rust' 'cargo' 'git')
+provides=('grunner')
+conflicts=('grunner')
 
 source=("$pkgname::git+https://github.com/Nihmar/grunner.git")
 sha256sums=('SKIP')

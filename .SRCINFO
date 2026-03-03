@@ -9,6 +9,8 @@ pkgbase = grunner-git
 	makedepends = cargo
 	makedepends = git
 	depends = gtk4
+	provides = grunner
+	conflicts = grunner
 	source = grunner-git::git+https://github.com/Nihmar/grunner.git
 	sha256sums = SKIP
 
