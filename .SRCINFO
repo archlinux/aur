@@ -1,21 +1,22 @@
 pkgbase = sigil-git
 	pkgdesc = multi-platform EPUB2/EPUB3 ebook editor
-	pkgver = 2.0.2.r66.gafab2835
+	pkgver = 2.7.0.r86.gc032f1cf
 	pkgrel = 1
 	url = https://github.com/Sigil-Ebook/Sigil
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = git
+	makedepends = ninja
 	makedepends = qt6-tools
 	depends = hicolor-icon-theme
 	depends = hunspell
 	depends = mathjax
 	depends = minizip
+	depends = python
 	depends = python-css-parser
 	depends = python-dulwich
 	depends = python-lxml
-	depends = qt6-5compat
 	depends = qt6-svg
 	depends = qt6-webengine
 	optdepends = hunspell-en_US: for English dictionary support
@@ -28,9 +29,8 @@ pkgbase = sigil-git
 	optdepends = python-pillow: recommended for plugins
 	optdepends = python-regex: recommended for plugins
 	optdepends = tk: recommended for plugins
-	provides = sigil=2.0.2
+	provides = sigil=2.7.0
 	conflicts = sigil
-	options = !debug
 	source = sigil::git+https://github.com/Sigil-Ebook/Sigil.git
 	source = 0001-modify-default-navigation-css.patch
 	source = 0002-skip-epub-version-check.patch
