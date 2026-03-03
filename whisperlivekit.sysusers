@@ -1,0 +1,5 @@
+# whisperlivekit system user
+# A dedicated static user is required instead of DynamicUser=yes because DynamicUser
+# bind-mounts CacheDirectory under /var/cache/private/ with MS_NOEXEC, preventing
+# dlopen() from loading Triton JIT-compiled .so files at runtime.
+u whisperlivekit - "WhisperLiveKit server" /var/lib/whisperlivekit -

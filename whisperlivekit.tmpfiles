@@ -1,0 +1,6 @@
+# whisperlivekit runtime directories
+# /var/lib: persistent model state and HOME for the service user
+d /var/lib/whisperlivekit  0750 whisperlivekit whisperlivekit - -
+# /var/cache: HuggingFace downloads and Triton JIT-compiled .so cache
+# Must be on a real (non-bind-mount) exec-capable path; see whisperlivekit.service
+d /var/cache/whisperlivekit 0750 whisperlivekit whisperlivekit - -

@@ -1,0 +1,58 @@
+[Unit]
+Description=WhisperLiveKit real-time speech-to-text server
+Documentation=https://github.com/QuentinFuxa/WhisperLiveKit
+After=network.target
+
+[Service]
+Type=simple
+# DynamicUser=yes is NOT used here. DynamicUser bind-mounts StateDirectory and
+# CacheDirectory into the service's private namespace; those bind-mounts inherit
+# MS_NOEXEC from the host, which prevents dlopen() from loading Triton JIT-compiled
+# .so files ("failed to map segment from shared object"). ExecPaths= can override
+# noexec at the namespace level, but only works on real paths - DynamicUser redirects
+# CacheDirectory to /var/cache/private/... which is itself noexec and ExecPaths=
+# cannot reach through the symlink in time. A dedicated static user avoids all of
+# this: the directories are owned directly on the real filesystem with normal exec.
+User=whisperlivekit
+Group=whisperlivekit
+ExecStart=/usr/bin/whisperlivekit-server
+Restart=on-failure
+RestartSec=5s
+
+# Override host/port via: systemctl edit whisperlivekit
+Environment=WLK_HOST=localhost
+Environment=WLK_PORT=8000
+
+# Home and HuggingFace model cache
+Environment=HOME=/var/lib/whisperlivekit
+Environment=HF_HOME=/var/cache/whisperlivekit/huggingface
+Environment=TRANSFORMERS_CACHE=/var/cache/whisperlivekit/huggingface/transformers
+Environment=HF_HUB_CACHE=/var/cache/whisperlivekit/huggingface/hub
+
+# Triton JIT cache: compiled .so files are dlopen()-ed at runtime, so they must live
+# on an exec-capable path. /var/cache/whisperlivekit is on the real filesystem (not a
+# bind-mount), so exec is permitted for the dedicated whisperlivekit user.
+Environment=TRITON_CACHE_DIR=/var/cache/whisperlivekit/triton
+Environment=TRITON_HOME=/var/cache/whisperlivekit/triton
+
+# Security hardening
+NoNewPrivileges=yes
+# PrivateTmp is intentionally NOT set. ROCm/HIP uses mmap(fd=/dev/zero, MAP_SHARED)
+# to create anonymous shared memory regions for GPU<->CPU IPC. PrivateTmp=yes creates
+# a new mount namespace; /dev/zero opened inside that namespace produces MAP_SHARED
+# mappings invisible to the GPU driver (which runs outside the namespace), causing
+# GPU Hang -> abort. See: systemd-coredump 'Module /dev/zero (deleted)' entries.
+#
+# Instead, /tmp and /var/tmp are whitelisted via ReadWritePaths= below so that
+# Python tempfile / Triton build system have a writable scratch space without
+# creating any mount namespace isolation.
+ProtectSystem=strict
+ProtectHome=yes
+# ExecPaths= explicitly grants exec permission for /var/cache/whisperlivekit so that
+# Triton JIT-compiled .so files placed in TRITON_CACHE_DIR can be dlopen()-ed at runtime.
+# This is necessary when /var/cache (or the underlying filesystem) is mounted noexec.
+ExecPaths=/var/cache/whisperlivekit
+ReadWritePaths=/var/lib/whisperlivekit /var/cache/whisperlivekit /tmp /var/tmp
+
+[Install]
+WantedBy=multi-user.target

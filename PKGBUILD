@@ -1,0 +1,100 @@
+# Maintainer: SteamedFish <steamedfish@hotmail.com>
+
+pkgname=whisperlivekit
+_pyname=WhisperLiveKit
+pkgver=0.2.19
+pkgrel=1
+pkgdesc='Real-time speech-to-text with speaker diarization using Whisper'
+arch=('x86_64')
+url='https://github.com/QuentinFuxa/WhisperLiveKit'
+license=('Apache-2.0')
+
+depends=(
+  python
+  python-fastapi
+  python-librosa
+  python-soundfile
+  uvicorn
+  python-websockets
+  python-huggingface-hub
+  python-faster-whisper
+  python-pytorch
+  python-torchaudio
+  python-tqdm
+  python-tiktoken
+  python-safetensors
+  ffmpeg
+)
+
+makedepends=(
+  git
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
+
+optdepends=(
+  # GPU acceleration (available in official repos)
+  'python-pytorch-cuda: GPU acceleration with NVIDIA CUDA'
+  'python-pytorch-rocm: GPU acceleration with AMD ROCm'
+  'python-pytorch-opt-cuda: Optimized GPU acceleration with NVIDIA CUDA'
+  'python-pytorch-opt-rocm: Optimized GPU acceleration with AMD ROCm'
+  'cuda: NVIDIA CUDA toolkit'
+  'rocm-core: AMD ROCm platform'
+  # Optional features (available in official repos)
+  'python-transformers: Voxtral-HF streaming support'
+  'python-pytest: Run test suite'
+  # Speaker diarization and sentence trimming (not yet in AUR, install via pip)
+  'python-diart: Real-time speaker diarization (diart backend, not recommended)'
+  'python-nemo-toolkit: Advanced speaker diarization (Sortformer backend, SOTA 2025)'
+  'python-mosestokenizer: Sentence-level buffer trimming'
+)
+
+backup=()
+
+source=(
+  "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+  "whisperlivekit.service"
+  "whisperlivekit.sysusers"
+  "whisperlivekit.tmpfiles"
+  "fix-ctranslate2-runtimeerror.patch"
+)
+sha256sums=('1eb76d3cff0677e5f7e8974f228befb6bc934e4b54ddba43fe740fc38c9ae0eb'
+            '8f395442dff271772d410d26153c2c78399f21d269817a5e4e6bc7a279c0e314'
+            'e936f54d000a6f34fa727c990f4110c62709ed4d03a65e5d50ddebca08c4b3fb'
+            'd2f966dc3213128bf66c94280e8156e566f999af182d0bcbefd0ef3fb541602b'
+            '35fd8dcb29e37b8534215e82bacdf0216173dbcbc813dd4b90fb842eaa54a9b4')
+
+build() {
+  cd "$_pyname-$pkgver"
+  # Fix ctranslate2 RuntimeError with PyTorch 2.10+ (upstream bug, not yet fixed)
+  patch -p1 < "$srcdir/fix-ctranslate2-runtimeerror.patch"
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "$_pyname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  # Install license
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+
+  # Install documentation
+  install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+
+  # Install systemd service
+  install -Dm644 "$srcdir/whisperlivekit.service" \
+    "$pkgdir/usr/lib/systemd/system/whisperlivekit.service"
+
+  # Install sysusers.d: creates the dedicated whisperlivekit system user on install.
+  # A static user is required because DynamicUser bind-mounts CacheDirectory with
+  # MS_NOEXEC, preventing dlopen() of Triton JIT-compiled .so files.
+  install -Dm644 "$srcdir/whisperlivekit.sysusers" \
+    "$pkgdir/usr/lib/sysusers.d/whisperlivekit.conf"
+
+  # Install tmpfiles.d: creates and owns /var/lib and /var/cache directories.
+  # Cannot use install -o/-g at build time (user doesn't exist on build host).
+  install -Dm644 "$srcdir/whisperlivekit.tmpfiles" \
+    "$pkgdir/usr/lib/tmpfiles.d/whisperlivekit.conf"
+}
