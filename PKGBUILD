@@ -2,7 +2,7 @@
 pkgname=aside
 pkgver=0.3.2
 pkgrel=1
-pkgdesc="Wayland-native LLM desktop assistant"
+pkgdesc="LLM assistant for Wayland desktops — overlay, voice, tools, any model"
 arch=('x86_64')
 url="https://github.com/scottstav/aside"
 license=('MIT')

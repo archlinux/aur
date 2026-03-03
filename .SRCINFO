@@ -1,5 +1,5 @@
 pkgbase = aside
-	pkgdesc = Wayland-native LLM desktop assistant
+	pkgdesc = LLM assistant for Wayland desktops — overlay, voice, tools, any model
 	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/scottstav/aside
