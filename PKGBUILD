@@ -1,7 +1,7 @@
 # Maintainer: t4k1t <t4k1t plus aur at protonmail dot com>
 
 pkgname=kdlfmt
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A formatter for kdl documents."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hougesen/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('00680596a12c8fd44d5d42ae8d0cee84bea8664025d5d67ca711ca74fce70a1f382f0d34fc2a6bc4479f11fed1aa35681f40928226127604b51f3fa794d34853')
+b2sums=('4e3d17adca3f41a2304eebaf7e7142395305d4041695317e4115498139b081b164ee3ab61472f15ba6df77556c8d7b0cbcd9854d188452befbb9c0ee21df3ce4')
 options=(!lto)
 
 build() {
