@@ -1,19 +1,19 @@
 pkgbase = envio
 	pkgdesc = A Modern And Secure CLI Tool For Managing Environment Variables
-	pkgver = 0.6.1
-	pkgrel = 2
+	pkgver = 0.7.0
+	pkgrel = 1
 	url = https://envio-cli.github.io/home
-	arch = x86_64
 	arch = aarch64
 	arch = i686
-	license = Apache-2.0
-	license = MIT
+	arch = x86_64
+	license = Apache-2.0 OR MIT
 	makedepends = cargo
-	depends = gcc-libs
+	depends = dbus
 	depends = glibc
 	depends = gpgme
+	depends = libgcc
 	depends = libgpg-error
-	source = envio-0.6.1.tar.gz::https://github.com/envio-cli/envio/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = 24cd7c485226be7f7921a95ae4edaf3cb510c90a339c51e51423c3eb4deee6dc
+	source = https://github.com/envio-cli/envio/archive/refs/tags/v0.7.0/envio-0.7.0.tar.gz
+	sha256sums = 729a02ac8a5e129fa5129de6ee62f7e2c408502dafc25924d65d02558caa5a08
 
 pkgname = envio

@@ -1,0 +1,4 @@
+[envio]
+source = "git"
+git = "https://github.com/envio-cli/envio.git"
+prefix = "v"
