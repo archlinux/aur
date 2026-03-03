@@ -3,7 +3,7 @@
 # Contributor: so1ar <so1ar114514@gmail.com>
 
 pkgname=v2ray-domain-list-custom
-pkgver=202602282217
+pkgver=202603022221
 pkgrel=1
 pkgdesc="A list of domains to be used as geosites for routing purpose in Project V (Loyalsoldier's rules)"
 arch=('any')
@@ -13,7 +13,7 @@ provides=('v2ray-domain-list-community')
 conflicts=('v2ray-domain-list-community')
 
 source=("geosite-${pkgver}.dat::https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${pkgver}/geosite.dat")
-sha256sums=('9f4379e92bcaa1aa4ba7f9a1789057b0c612d656ce68061ef031d09359cb637b')
+sha256sums=('8ed8a0b97d67db3128bb34f12b001ab00c8d48d76b03adfcfd82a8922eb993c3')
 
 latestver() {
     curl -fsSL "https://api.github.com/repos/Loyalsoldier/v2ray-rules-dat/releases/latest" |
