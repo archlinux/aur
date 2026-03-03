@@ -6,7 +6,7 @@ _appname=${_pkgname,,}
 pkgname=${_pkgname,,}-bin
 pkgdesc="Wrap any process in a filesystem and network sandbox"
 
-pkgver=0.0.2
+pkgver=0.0.4
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,8 +27,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}.tar.gz")
 sha256sums=('9b2d7324c180b220f5be3c63bf3d3fd4ccd8172fe6fb33328ebf0dc5a9ed0aa6'
             'fdbff1942963f9e9e15aecb13800bb42886a349a681b94236d511d6715d27fbd')
-sha256sums_x86_64=('ea110856f14602b00042ae1369a79877eac74efb13a9a70e6fa21358af3203be')
-sha256sums_aarch64=('ec0430bc7b84eb3e72b09b10a80d788964833f0643ea24ee9016b962ee632c76')
+sha256sums_x86_64=('a43193205ab8b44253956e38a71f5e4f0916ae7bb410df9b1645a74f84b6a25f')
+sha256sums_aarch64=('39bc487ba3861a1084a00970be16b253f547520bbd145677833821615a07e104')
 
 
 package() {

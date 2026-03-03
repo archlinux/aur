@@ -1,6 +1,6 @@
 pkgbase = pent-bin
 	pkgdesc = Wrap any process in a filesystem and network sandbox
-	pkgver = 0.0.2
+	pkgver = 0.0.4
 	pkgrel = 1
 	url = https://github.com/valentinradu/Pent
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = pent-bin
 	license = MIT
 	provides = pent
 	conflicts = pent
-	source = README-0.0.2.md::https://raw.githubusercontent.com/valentinradu/Pent/v0.0.2/README.md
-	source = LICENSE-0.0.2::https://raw.githubusercontent.com/valentinradu/Pent/v0.0.2/LICENSE
+	source = README-0.0.4.md::https://raw.githubusercontent.com/valentinradu/Pent/v0.0.4/README.md
+	source = LICENSE-0.0.4::https://raw.githubusercontent.com/valentinradu/Pent/v0.0.4/LICENSE
 	sha256sums = 9b2d7324c180b220f5be3c63bf3d3fd4ccd8172fe6fb33328ebf0dc5a9ed0aa6
 	sha256sums = fdbff1942963f9e9e15aecb13800bb42886a349a681b94236d511d6715d27fbd
-	source_x86_64 = Pent-x86_64-0.0.2.tgz::https://github.com/valentinradu/Pent/releases/download/v0.0.2/pent-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = ea110856f14602b00042ae1369a79877eac74efb13a9a70e6fa21358af3203be
-	source_aarch64 = Pent-aarch64-0.0.2.tgz::https://github.com/valentinradu/Pent/releases/download/v0.0.2/pent-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = ec0430bc7b84eb3e72b09b10a80d788964833f0643ea24ee9016b962ee632c76
+	source_x86_64 = Pent-x86_64-0.0.4.tgz::https://github.com/valentinradu/Pent/releases/download/v0.0.4/pent-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = a43193205ab8b44253956e38a71f5e4f0916ae7bb410df9b1645a74f84b6a25f
+	source_aarch64 = Pent-aarch64-0.0.4.tgz::https://github.com/valentinradu/Pent/releases/download/v0.0.4/pent-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 39bc487ba3861a1084a00970be16b253f547520bbd145677833821615a07e104
 
 pkgname = pent-bin
