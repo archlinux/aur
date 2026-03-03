@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Coppelia
+Comment=A refined, cross-platform Jellyfin-focused music player
+Exec=coppelia
+Icon=coppelia.svg
+Terminal=false
+Categories=AudioVideo;Audio;Player;
+Keywords=music;jellyfin;player;audio;
