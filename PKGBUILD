@@ -1,6 +1,6 @@
 # Maintainer: SwitchBros <switchbros@proton.me>
 pkgname=steam-library-manager
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A powerful Steam library organizer for Linux - the modern Depressurizer alternative"
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
     'python-steamgriddb: artwork browsing via SteamGridDB'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c12487f1a814758a27549ed71b198aef02451dc25472db182dbaff786d061a34')
+sha256sums=('83ab372b57d376e7f39a7f34f1089fcb2ef808c993ddbcd45232c9f19d173bde')
 
 package() {
     cd "SteamLibraryManager-$pkgver"
@@ -37,12 +37,12 @@ package() {
     # Install application to /usr/lib/steam-library-manager/
     local _instdir="$pkgdir/usr/lib/$pkgname"
     install -d "$_instdir"
-    cp -r src requirements-user.txt "$_instdir/"
+    cp -r steam_library_manager requirements-user.txt "$_instdir/"
 
     # Create launcher script
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<'LAUNCHER'
 #!/bin/sh
-exec python /usr/lib/steam-library-manager/src/main.py "$@"
+exec python /usr/lib/steam-library-manager/steam_library_manager/main.py "$@"
 LAUNCHER
 
     # Desktop entry
@@ -52,13 +52,13 @@ LAUNCHER
         "$pkgdir/usr/share/applications/io.github.switch_bros.SteamLibraryManager.desktop"
 
     # Icons (must match Icon= in desktop file: io.github.switch_bros.SteamLibraryManager)
-    install -Dm644 src/resources/icon.svg \
+    install -Dm644 steam_library_manager/resources/icon.svg \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.switch_bros.SteamLibraryManager.svg"
-    install -Dm644 src/resources/icon.png \
+    install -Dm644 steam_library_manager/resources/icon.png \
         "$pkgdir/usr/share/icons/hicolor/512x512/apps/io.github.switch_bros.SteamLibraryManager.png"
 
     # Metainfo (for GNOME Software / KDE Discover)
-    install -Dm644 src/resources/io.github.switch_bros.SteamLibraryManager.metainfo.xml \
+    install -Dm644 steam_library_manager/resources/io.github.switch_bros.SteamLibraryManager.metainfo.xml \
         "$pkgdir/usr/share/metainfo/io.github.switch_bros.SteamLibraryManager.metainfo.xml"
 
     # License
