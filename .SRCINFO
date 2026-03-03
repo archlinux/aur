@@ -1,0 +1,16 @@
+pkgbase = bf-git
+	pkgdesc = A Brainfuck Interpreter
+	pkgver = v1.1.2.g3d1c0b0
+	pkgrel = 1
+	url = https://github.com/Galaxy-Suns/bf
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = sed
+	makedepends = cmake
+	provides = bf
+	conflicts = bf
+	source = bf::git+https://github.com/Galaxy-Suns/bf.git
+	md5sums = SKIP
+
+pkgname = bf-git
