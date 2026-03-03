@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=cherry-studio-git
 _pkgname="Cherry Studio"
-pkgver=1.7.19.r20.gd8e2861
-_electronversion=38
-_nodeversion=22
+pkgver=1.7.22.r3.ge72bde3
+_electronversion=40
+_nodeversion=24
 pkgrel=1
 pkgdesc="🍒 Cherry Studio is a desktop client that supports for multiple LLM providers.(Use system-wide electron)"
 arch=('any')
@@ -22,7 +22,6 @@ makedepends=(
     'git'
     'curl'
     'pnpm'
-    'gcc'
     'jq'
 )
 source=(
