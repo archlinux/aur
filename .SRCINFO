@@ -5,7 +5,6 @@ pkgbase = hardword
 	url = https://github.com/Archetylator/hardword
 	install = hardword.install
 	arch = x86_64
-	arch = aarch64
 	license = custom
 	depends = cairo
 	depends = desktop-file-utils
