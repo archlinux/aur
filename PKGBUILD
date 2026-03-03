@@ -14,9 +14,9 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ericc-ch/$pkgname/archive/v
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
 sha256sums=('d068030271b917c9f59e21dda4dbd36840372160efa1b1f0598e35dc277689de'
-            'SKIP'
-            'SKIP'
-            'SKIP')
+            'a7004c6615c495e2de12b63bf6babd5e44a45c75302d0038bccae7698508e403'
+            '0f92b16903a63303768377725ea7f73f253221ef0cb42e08cc8bacf0d8cd17d1'
+            'aa2a9bd994a6b258b09d9d9efc9d9cb5429bd5378855ca2a53ad18c3ac7b0558')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
