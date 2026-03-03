@@ -1,0 +1,34 @@
+[Unit]
+Description=GitHub Copilot OpenAI/Anthropic-compatible API server
+Documentation=https://github.com/ericc-ch/copilot-api
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=copilot-api
+Group=copilot-api
+
+# Store all data under /var/lib/copilot-api — paths.ts uses os.homedir()
+# so we redirect HOME there; the token ends up at
+# /var/lib/copilot-api/.local/share/copilot-api/github_token
+Environment=HOME=/var/lib/copilot-api
+
+ExecStart=/usr/bin/copilot-api start
+Restart=on-failure
+RestartSec=5
+
+# Persistent state directory managed by systemd
+StateDirectory=copilot-api
+StateDirectoryMode=0750
+
+# Security hardening
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/copilot-api
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

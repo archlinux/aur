@@ -1,0 +1,14 @@
+post_install() {
+  echo '==> Authenticate before starting the service:'
+  echo '    sudo -u copilot-api HOME=/var/lib/copilot-api copilot-api auth'
+  echo ''
+  echo '==> Then enable and start the service:'
+  echo '    systemctl enable --now copilot-api'
+  echo ''
+  echo '==> The API will be available at http://localhost:4141'
+}
+
+post_upgrade() {
+  echo '==> copilot-api upgraded. Restart the service to apply:'
+  echo '    systemctl restart copilot-api'
+}

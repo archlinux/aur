@@ -1,0 +1,3 @@
+# Type 'u' creates a system user with no login shell and no home dir creation
+# (we let StateDirectory= handle /var/lib/copilot-api)
+u copilot-api - "copilot-api server" /var/lib/copilot-api
