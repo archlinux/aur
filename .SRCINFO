@@ -9,6 +9,8 @@ pkgbase = cmix
 	optdepends = tar: compress multiple files by making a tarball
 	options = !debug
 	source = cmix-20.tar.gz::https://github.com/byronknoll/cmix/archive/refs/tags/v20.tar.gz
+	source = clang21.patch
 	sha256sums = SKIP
+	sha256sums = 50e77b7ffb8ead9b3a4d109f909830764816edf997887d30bfdcc26385b35fa1
 
 pkgname = cmix

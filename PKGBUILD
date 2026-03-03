@@ -10,12 +10,18 @@ options=(!debug)
 depends=()
 makedepends=('make')
 optdepends=('tar: compress multiple files by making a tarball')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/byronknoll/cmix/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=(SKIP)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/byronknoll/cmix/archive/refs/tags/v$pkgver.tar.gz"
+		clang21.patch)
+sha256sums=(SKIP
+            '50e77b7ffb8ead9b3a4d109f909830764816edf997887d30bfdcc26385b35fa1')
+
+prepare() {
+	patch -Np1 -d "${srcdir}"/"$pkgname-$pkgver" -i "${srcdir}"/clang21.patch
+}
 
 build() {
 	cd "$pkgname-$pkgver"
-	make
+	make CC="clang" CXX="clang++"
 }
 
 package() {
