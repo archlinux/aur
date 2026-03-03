@@ -1,0 +1,19 @@
+pkgbase = radae-decoder-git
+	pkgdesc = FreeDV RADEv1 decoder/encoder with GUI (RADAE_Gui) and CLI tools including webrx_rade_decode
+	pkgver = r108.940d4e5
+	pkgrel = 1
+	url = https://github.com/peterbmarks/radae_decoder
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	makedepends = git
+	makedepends = cmake
+	depends = gtk3
+	depends = hamlib
+	depends = libpulse
+	provides = radae-decoder
+	conflicts = radae-decoder
+	source = radae_decoder::git+https://github.com/peterbmarks/radae_decoder.git
+	sha256sums = SKIP
+
+pkgname = radae-decoder-git
