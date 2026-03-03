@@ -1,0 +1,18 @@
+pkgbase = python-ptpimg-uploader
+	pkgdesc = Upload image files or URLs to ptpimg.me
+	pkgver = 0.13
+	pkgrel = 1
+	url = https://github.com/theirix/ptpimg-uploader
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	optdepends = python-pyperclip: clipboard support (--clip)
+	source = ptpimg_uploader-0.13.tar.gz::https://files.pythonhosted.org/packages/source/p/ptpimg-uploader/ptpimg_uploader-0.13.tar.gz
+	sha256sums = b2bc87d0fb2b4c8d810fe0d73651db7fd14b9a14b43c88634d6f9aee21705541
+
+pkgname = python-ptpimg-uploader
