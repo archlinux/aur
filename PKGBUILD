@@ -1,5 +1,5 @@
 pkgname=x3dctl
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Deterministic workload policy controller for AMD X3D processors"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('sudo')
 makedepends=('gcc' 'make')
 backup=('etc/x3dctl.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GrandBIRDLizard/X3Dctl/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('342aebe39fb4aee856619a9985b88c90a534c69cf167d101f13ff3aa5a58555d')
+sha256sums=('ffc1fc3eaad53af9d5fc6b6d49c7b92412b2ee22b287baa1f136d02eab1ba29b')
 
 build() {
   cd "${srcdir}/X3Dctl-${pkgver}"
@@ -18,7 +18,15 @@ build() {
 
 package() {
   cd "${srcdir}/X3Dctl-${pkgver}"
+
   make DESTDIR="${pkgdir}" PREFIX=/usr install
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 etc/x3dctl.conf \
+    "${pkgdir}/etc/x3dctl.conf"
+
+  install -Dm440 packaging/x3dctl.sudoers \
+    "${pkgdir}/etc/sudoers.d/x3dctl"
+
+  install -Dm644 LICENSE \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
