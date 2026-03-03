@@ -1,6 +1,6 @@
 pkgbase = pomotroid-bin
 	pkgdesc = Simple and visually-pleasing Pomodoro timer
-	pkgver = 0.13.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Splode/pomotroid
 	arch = x86_64
@@ -8,14 +8,7 @@ pkgbase = pomotroid-bin
 	depends = zlib
 	depends = hicolor-icon-theme
 	options = !strip
-	source_x86_64 = https://github.com/Splode/pomotroid/releases/download/v0.13.0/pomotroid-0.13.0-linux.tar.gz
-	source_x86_64 = https://raw.githubusercontent.com/Splode/pomotroid/master/LICENSE
-	source_x86_64 = pomotroid.desktop
-	source_x86_64 = pomotroid.png
-	md5sums_x86_64 = aeef5bfe6909db84366ccbdb44c76750
-	md5sums_x86_64 = 98368ac76439a0812a58d0a586b28ed1
-	md5sums_x86_64 = 4276e15ba2505a034a80a272e9c9f0ed
-	md5sums_x86_64 = 81ad82d2a70c058cb80a6ee7679c5f66
+	source_x86_64 = pomotroid-bin-1.0.0.deb::https://github.com/Splode/pomotroid/releases/download/v1.0.0/Pomotroid_1.0.0_amd64.deb
+	sha256sums_x86_64 = a16db74476ce07eba8ecc113918e781a4cce6b26fd970b8429f730e094e7c0ef
 
 pkgname = pomotroid-bin
-
