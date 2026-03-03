@@ -1,6 +1,6 @@
 # Maintainer: LAA
 pkgname=bupdate-bin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Universal package updater — parallel updates for Linux, BSD and Windows (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ optdepends=(
 _dlbase="https://codeberg.org/LAA/bupdate/releases/download/v${pkgver}"
 source_x86_64=("bupdate-linux-amd64-${pkgver}::${_dlbase}/bupdate-linux-amd64")
 source_aarch64=("bupdate-linux-arm64-${pkgver}::${_dlbase}/bupdate-linux-arm64")
-sha256sums_x86_64=('e7a1267ce0792e6599a022576538300c9154dcedd1b55f42923dfc87a2f6883a')
-sha256sums_aarch64=('e1c513f6bf93c7b548c2dfd4ba4fd4d333f7f29eaa2470acd10e32c146c3b26d')
+sha256sums_x86_64=('6a1ca0673a1729184e32a022bbf4ae33a65058021f34374165610a4874eb59a1')
+sha256sums_aarch64=('d652d262479ca6c9afcaa247f6956dba646fc7fbd1062baef9b39cb99beb5688')
 
 package() {
     if [[ "$CARCH" == "x86_64" ]]; then
