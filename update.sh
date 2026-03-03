@@ -3,13 +3,13 @@
 AUR_NAME=offlinemsmtp
 PROJ_NAME=offlinemsmtp
 DESCRIPTION="Use msmtp offline by queuing email until you have an internet connection."
-URL=https://github.com/sumnerevans/offlinemsmtp
+URL=https://github.com/bbbart/offlinemsmtp
 DEPENDS=(python-inotify python-gobject)
 LICENSE='GPL3'
 ADDITIONAL="replaces=('python-offlinemsmtp')"
 SOURCES=(
-    https://github.com/sumnerevans/${PROJ_NAME}/archive/refs/tags/v$1.tar.gz
-    https://raw.githubusercontent.com/sumnerevans/${PROJ_NAME}/master/systemd/offlinemsmtp.service
+    https://github.com/bbbart/${PROJ_NAME}/archive/refs/tags/v$1.tar.gz
+    https://raw.githubusercontent.com/bbbart/${PROJ_NAME}/master/systemd/offlinemsmtp.service
 )
 NOEXTRACT=(offlinemsmtp.service)
 
@@ -41,7 +41,7 @@ for d in ${DEPENDS[*]}; do
 done
 
 echo ")
-makedepends=('python-poetry' 'python-installer')
+makedepends=('python-build' 'python-hatchling' 'python-installer')
 license=('${LICENSE}')
 arch=('any')
 source=(" >> PKGBUILD
@@ -65,8 +65,7 @@ ${ADDITIONAL}
 
 build() {
     cd \"\${srcdir}/\${_module}-\${pkgver}\"
-    sed -i '/keywords.*/ainclude = [ { path = \"offlinemsmtp/*\" } ]' pyproject.toml    
-    poetry build --format=wheel
+    python -m build --wheel --no-isolation
 }
 
 package() {
