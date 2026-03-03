@@ -1,0 +1,5 @@
+[envio-bin]
+source = "github"
+github = "envio-cli/envio"
+use_latest_release = true
+prefix = "v"
