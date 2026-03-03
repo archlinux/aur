@@ -1,5 +1,5 @@
 pkgbase = hyprlayer
-	pkgdesc = CLI tool for managing Hyprland layer configurations
+	pkgdesc = CLI for managing thoughts for AI coding agents
 	pkgver = 1.4.4
 	pkgrel = 1
 	url = https://github.com/BrightBlock/hyprlayer-cli

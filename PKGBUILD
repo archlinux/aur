@@ -1,8 +1,8 @@
-# Maintainer: John Tsiros <jtsiros@brightblock.dev>
+# Maintainer: Jon Tsiros <jon@brightblock.ai>
 pkgname=hyprlayer
 pkgver=1.4.4
 pkgrel=1
-pkgdesc="CLI tool for managing Hyprland layer configurations"
+pkgdesc="CLI for managing thoughts for AI coding agents"
 arch=('x86_64' 'aarch64')
 url="https://github.com/BrightBlock/hyprlayer-cli"
 license=('MIT')
