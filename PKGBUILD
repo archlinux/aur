@@ -33,6 +33,7 @@ makedepends=(
 install=pudu-launcher.install
 provides=('pudu-launcher')
 conflicts=('pudu-launcher')
+options=(!lto)  # ring crate's assembly objects break with Arch's system-wide -flto
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
