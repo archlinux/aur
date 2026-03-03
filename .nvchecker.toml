@@ -1,0 +1,5 @@
+[workz-bin]
+source = "github"
+github = "rohansx/workz"
+use_latest_release = true
+prefix = "v"
