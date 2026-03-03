@@ -1,26 +1,18 @@
-# Maintainer: stormix <contact@stormix.co>
+# Maintainer: stormix <hello@stormix.co>
 pkgname=deadlock-modmanager-git
 pkgver=0.15.0.r39.g45c90ca
 pkgrel=1
-pkgdesc="A mod manager for the Valve game Deadlock, built with Tauri (git)"
+pkgdesc='A mod manager for the Valve game Deadlock (git)'
 arch=('x86_64')
-url="https://github.com/deadlock-mod-manager/deadlock-mod-manager"
+url='https://github.com/deadlock-mod-manager/deadlock-mod-manager'
 license=('GPL-3.0-only')
-depends=(
-    'webkit2gtk-4.1'
-    'gtk3'
-    'libappindicator-gtk3'
-    'xdg-utils'
-)
-makedepends=(
-    'git'
-    'rustup'
-    'nodejs'
-    'pnpm'
-)
+makedepends=('git' 'cargo' 'cargo-tauri' 'pnpm' 'lld' 'gcc')
+depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2'
+         'glib2' 'gtk3' 'libsoup3' 'pango' 'openssl' 'bzip2' 'hicolor-icon-theme'
+         'gst-plugins-good')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-options=('!strip' '!lto')
+conflicts=("${pkgname%-git}" "${pkgname%-git}-bin")
+options=('!lto')
 source=("${pkgname}::git+https://github.com/deadlock-mod-manager/deadlock-mod-manager.git")
 sha256sums=('SKIP')
 
@@ -31,54 +23,44 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
-    pnpm install --frozen-lockfile
+    cd "${srcdir}/${pkgname}/apps/desktop"
+    pnpm install
+
+    cd src-tauri
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}/apps/desktop"
-
+    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=lld"
+    export CC=gcc
+    export CXX=g++
+    export CARGO_TARGET_DIR=target
     export VITE_API_URL="https://api.deadlockmods.app"
     export VITE_WEB_URL="https://deadlockmods.app"
     export VITE_AUTH_URL="https://auth.deadlockmods.app"
 
-    # Build the binary only — no bundler overhead
-    pnpm tauri build --no-bundle
+    cd "${srcdir}/${pkgname}/apps/desktop"
+    cargo tauri build --no-bundle -- --frozen
 }
 
 package() {
     local _srcroot="${srcdir}/${pkgname}"
     local _tauri="${_srcroot}/apps/desktop/src-tauri"
 
-    # Binary
+    install -Dm644 "${_srcroot}/distribution/aur/deadlock-modmanager.desktop" \
+        "${pkgdir}/usr/share/applications/deadlock-modmanager.desktop"
+
     install -Dm755 "${_tauri}/target/release/deadlock-mod-manager" \
-        "${pkgdir}/usr/bin/deadlock-mod-manager"
-
-    # Icons
+        "${pkgdir}/usr/bin/deadlock-modmanager"
     install -Dm644 "${_tauri}/icons/32x32.png" \
-        "${pkgdir}/usr/share/icons/hicolor/32x32/apps/deadlock-mod-manager.png"
+        "${pkgdir}/usr/share/icons/hicolor/32x32/apps/deadlock-modmanager.png"
     install -Dm644 "${_tauri}/icons/128x128.png" \
-        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/deadlock-mod-manager.png"
+        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/deadlock-modmanager.png"
     install -Dm644 "${_tauri}/icons/128x128@2x.png" \
-        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/deadlock-mod-manager.png"
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/deadlock-modmanager.png"
     install -Dm644 "${_tauri}/icons/icon.png" \
-        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/deadlock-mod-manager.png"
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/deadlock-modmanager.png"
 
-    # Desktop entry
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/deadlock-mod-manager.desktop" <<EOF
-[Desktop Entry]
-Name=Deadlock Mod Manager
-Comment=A mod manager for the Valve game Deadlock
-Exec=deadlock-mod-manager %u
-Icon=deadlock-mod-manager
-Terminal=false
-Type=Application
-Categories=Game;Utility;
-MimeType=x-scheme-handler/deadlock-mod-manager;x-scheme-handler/deadlock-modmanager;x-scheme-handler/dlmm;
-StartupWMClass=deadlock-mod-manager
-EOF
-
-    # AppStream metadata
     install -Dm644 "${_tauri}/dev.stormix.deadlock-mod-manager.metainfo.xml" \
         "${pkgdir}/usr/share/metainfo/dev.stormix.deadlock-mod-manager.metainfo.xml"
 }
