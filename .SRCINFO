@@ -1,6 +1,6 @@
 pkgbase = discord-chat-exporter
 	pkgdesc = Exports Discord chat logs to a file
-	pkgver = 2.46.1
+	pkgver = 2.47
 	pkgrel = 1
 	url = https://github.com/Tyrrrz/DiscordChatExporter
 	arch = aarch64
@@ -12,9 +12,9 @@ pkgbase = discord-chat-exporter
 	depends = dotnet-runtime-10.0
 	options = !strip
 	options = !debug
-	source = https://github.com/Tyrrrz/DiscordChatExporter/archive/refs/tags/2.46.1/DiscordChatExporter-2.46.1.tar.gz
+	source = https://github.com/Tyrrrz/DiscordChatExporter/archive/refs/tags/2.47/DiscordChatExporter-2.47.tar.gz
 	source = discord-chat-exporter_xdg_settings.patch
-	b2sums = 5d151be7002be43dd9411bb045d39ebfc8b42ea0e2f04890f426a2d88e0bd9b22c4a8e5b26c066f078c90f9e5f039e04a4475f1a4a4d49020a6d4fef66e79bf1
+	b2sums = aedd44539bdbd92225f8ded056861fdfcca14f5a867452845e183195bc868333f79917d8b88cb54b97b76692d3f6ff5bc0170bdaac7e194aa2d8d0dee35439bb
 	b2sums = ec3740a7c60b0f5fc2773e991e6cde9b4116d77d50094b237e118f456d9273c18a8e3bc2da2ff8a86eb35fa7df4f81c94759467b415f53e4794fb7a4e0929a91
 
 pkgname = discord-chat-exporter-core
@@ -23,9 +23,9 @@ pkgname = discord-chat-exporter-core
 pkgname = discord-chat-exporter-cli
 	pkgdesc = Exports Discord chat logs to a file - CLI
 	depends = dotnet-runtime-10.0
-	depends = discord-chat-exporter-core>=2.46.1-1
+	depends = discord-chat-exporter-core>=2.47-1
 
 pkgname = discord-chat-exporter-gui
 	pkgdesc = Exports Discord chat logs to a file - GUI
 	depends = dotnet-runtime-10.0
-	depends = discord-chat-exporter-core>=2.46.1-1
+	depends = discord-chat-exporter-core>=2.47-1
