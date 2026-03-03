@@ -1,0 +1,18 @@
+[Unit]
+Description=ZeroClaw autonomous AI agent runtime
+Documentation=https://github.com/zeroclaw-labs/zeroclaw
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=zeroclaw
+ExecStart=/usr/bin/zeroclaw daemon
+Restart=on-failure
+RestartSec=5s
+Environment=RUST_LOG=info
+Environment=ZEROCLAW_CONFIG_DIR=/var/lib/zeroclaw
+
+[Install]
+WantedBy=multi-user.target
