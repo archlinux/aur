@@ -1,0 +1,23 @@
+pkgbase = python-nllw
+	pkgdesc = Simultaneous Machine Translation (SimulMT) with NLLB model optimization — NoLanguageLeftWaiting
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/QuentinFuxa/NoLanguageLeftWaiting
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytorch
+	depends = python-transformers
+	depends = python-huggingface-hub
+	depends = python-pandas
+	optdepends = python-ctranslate2: faster CPU/GPU inference backend
+	optdepends = python-textual: interactive demo TUI
+	optdepends = python-bertviz: attention visualization
+	source = https://files.pythonhosted.org/packages/47/84/cd9e2c8ed1ac942911f8ab9378fd875bd85a62af81025cb56b9b4435314b/nllw-0.1.5.tar.gz
+	sha256sums = 67f9c13fff6b43c2e05b2e762e7001471329dbdb34634b56a2cab639807b1b9a
+
+pkgname = python-nllw
