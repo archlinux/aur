@@ -4,8 +4,8 @@ _pkgname=marble-maps-extra
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=r34.20250522.9690e45
-pkgrel=2
-pkgdesc="Additional maps for marble. Includes: "
+pkgrel=3
+pkgdesc="Additional maps for marble. Includes: OpenStreetMap default with hillshading, OpenTopoMap, OpenStreetMap france, ÖPNVKarte, hillshading overlay by 'karry'."
 url="https://gitlab.com/dreieckli/marble-maps-extra"
 arch=('any')
 license=(
@@ -24,11 +24,12 @@ makedepends=(
   'git'
 )
 optdepends=(
-  'marble-maps-thunderforest:   Additional maps served by thunderforest.com.'
-  'marble-maps-tracestrack:     Additional maps served by tracestrack.com.'
-  'marble-maps-sachsen:         Additional maps for the German federal state "Sachsen".'
   'marble-maps-googlemaps:      Google Maps.'
   'marble-maps-googlesat:       Google satellite.'
+  'marble-maps-sachsen:         Additional maps for the German federal state "Sachsen".'
+  'marble-maps-scandinavia:     Additional maps for Denmark, Sweden and Norway.'
+  'marble-maps-thunderforest:   Additional maps served by thunderforest.com.'
+  'marble-maps-tracestrack:     Additional maps served by tracestrack.com.'
   'marble-maps-virtualearthos:  Bing maps.'
   'marble-maps-virtualearth:    Bing satellite.'
   'marble-restricted-maps:      For additional maps with restricted licensing.'
