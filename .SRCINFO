@@ -1,0 +1,21 @@
+pkgbase = zeroclaw
+	pkgdesc = Zero overhead, fully autonomous AI assistant runtime (100% Rust)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/zeroclaw-labs/zeroclaw
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = clang
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = zeroclaw-0.2.0.tar.gz::https://github.com/zeroclaw-labs/zeroclaw/archive/refs/tags/v0.2.0.tar.gz
+	source = zeroclaw.service
+	sha256sums = 8253e16b5832422e613e0f0e089688cc20346ee297fa51737e9dd12e6dd75662
+	sha256sums = 95de33ab8566088ba9ba482ae991c139cb956b7e0b1dd541b2d83fcf16b5b561
+
+pkgname = zeroclaw
