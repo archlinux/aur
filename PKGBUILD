@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=strace-tui-git
 _pkgname=strace-tui
-pkgver=1.2.0.beta.2.r5.g71c6ffb
+pkgver=1.0.1.r0.g60ebce5
 pkgrel=1
 pkgdesc=' A terminal user interface (TUI) for visualizing and exploring strace output'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
