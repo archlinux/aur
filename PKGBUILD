@@ -14,7 +14,7 @@ conflicts=('kai')
 options=('!strip')
 
 source=("Kai-${pkgver}-linux-x86_64.tar.gz::https://github.com/SimonSchubert/Kai/releases/download/v${pkgver}/Kai-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('b2fba56db4fa18d6690da1c98cc156865e034eb527c001218d96a6cf8a71bd67')
+sha256sums=('4b390c085a596a9d5ecbad4836d4622b048b6c551b7273e11aecea63a65a7abc')
 
 package() {
     # Install application files
