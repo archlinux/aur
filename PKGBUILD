@@ -1,47 +1,52 @@
-# Maintainer: YOUR NAME <your@email>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=papdieo-git
-pkgver=0.1.0.r0.g0000000
-pkgrel=2
+_pkgname="${pkgname%-git}"
+pkgver=0.1.6.r0.g0691aee
+pkgrel=1
 pkgdesc="Hyprland-compatible wallpaper management CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/xiaotinglian/papdieo"
 license=('MIT')
-depends=(
-  'gstreamer'
-  'gst-plugins-base'
-  'gst-plugins-good'
-  'gst-plugins-bad'
-  'gst-plugins-ugly'
-  'gst-libav'
-  'wayland'
-  'hyprland'
-)
-makedepends=('git' 'cargo' 'rust')
-provides=('papdieo')
-conflicts=('papdieo')
-source=("git+https://github.com/xiaotinglian/papdieo.git")
+depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav')
+optdepends=(
+    'nvidia-utils: better NVIDIA video decode path'
+    'vulkan-icd-loader: better NVIDIA video decode path'
+    'wayland-compositor')
+makedepends=('git' 'cargo')
+source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/papdieo"
-  local ver
-  ver=$(grep '^version = ' Cargo.toml | head -n1 | cut -d'"' -f2)
-  printf "%s.r%s.g%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git -C "$_pkgname" describe --long --abbrev=7 | sed 's/^v//;s/-/.r/;s/-/./'
+}
+
+prepare() {
+    export RUSTUP_TOOLCHAIN=stable
+
+    cd "$_pkgname"
+    cargo update
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
-  cd "$srcdir/papdieo"
-  cargo build --release --frozen
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+
+    cd "$_pkgname"
+    cargo build --release --frozen --all-features
 }
 
 check() {
-  cd "$srcdir/papdieo"
-  cargo test --release --frozen
+    export RUSTUP_TOOLCHAIN=stable
+
+    cd "$_pkgname"
+    cargo test --frozen --all-features
 }
 
 package() {
-  cd "$srcdir/papdieo"
-  install -Dm755 "target/release/papdieo" "$pkgdir/usr/bin/papdieo"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    cd "$_pkgname"
+    install -Dm755 "target/release/$_pkgname" -t "$pkgdir/usr/bin/"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
