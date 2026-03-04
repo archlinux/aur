@@ -1,5 +1,5 @@
 pkgname=libelectron-electron-meta
-pkgver=39
+pkgver=40
 pkgrel=1
 arch=("x86_64" "aarch64")
 license=('GPL')
