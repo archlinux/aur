@@ -11,7 +11,7 @@
 
 : ${_build_level:=1}
 
-: ${_cksum:=06ee7927556ff1aa8810c4826501b0fdb169ebdc180644b882cf7c143ac1c177}
+: ${_cksum:=4f21c01f4d04c1d1b3ed794153f8900802c92497be620b07c4869530f2d28ee3}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -23,7 +23,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.12.75
+pkgver=6.18.16
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -78,25 +78,25 @@ validpgpkeys=(
 
 if [[ ${_build_vfio::1} == "t" ]]; then
   source+=(
-    1001-6.8.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
-    1002-6.8.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
+    1001-6.14.0-add-acs-overrides.patch # updated from https://lkml.org/lkml/2013/5/30/513
+    1002-6.18.0-i915-vga-arbiter.patch  # updated from https://lkml.org/lkml/2014/5/9/517
   )
   sha256sums+=(
-    'b35c26d5dc31fb9cfac68292de7b1ee8ca93b4647e4958efc77e2c77f586f1f2'
-    '966c15da4044a9a3b5f9d362c2cf08303f1265ad4489c9835c95973b71255d07'
+    '6bca6264da6717402ec89ec5ed06b8997fe3df7a20a3a57eb5a85f64e12bc396'
+    '323fc06392a6c10d7eb3d844cde527fa7709c82f776238cebc98d8c966b06549'
   )
 fi
 
 if [[ ${_build_arch_patch::1} == "t" ]]; then
   source+=(
     "0001-$pkgver-disallow-unprivileged-CLONE_NEWUSER.patch"::"$_dl_url_arch/-/raw/$_srctag/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-    "0002-$pkgver-set-default-aslr-bits.patch"::"$_dl_url_arch/-/raw/$_srctag/0002-Default-to-maximum-amount-of-ASLR-bits.patch"
-    "0003-$pkgver-nvidia-skip-simpledrm.patch"::"$_dl_url_arch/-/raw/$_srctag/0003-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch"
+    "0002-$pkgver-set-default-aslr-bits.patch"::"$_dl_url_arch/-/raw/$_srctag/0002-drm-amdgpu-avoid-memory-allocation-in-the-critical-code-path-v3.patch"
+    "0003-$pkgver-nvidia-skip-simpledrm.patch"::"$_dl_url_arch/-/raw/$_srctag/0003-drm-amdgpu-use-GFP_ATOMIC-instead-of-NOWAIT-in-the-critical-path.patch"
   )
   sha256sums+=(
-    '3cf389ced2b40e6457421cb27892bf126b73032fbf1de895ecc37b13d981a17c'
-    '423b2c6fbc8d6df79997550bef1b1e4f6f402b668007d150013623a83a12b49e'
-    '596f8e0aef1df72a84685e8f2b8a9dde7e33b513de555fae6069ba652cbd00c1'
+    'e5bda61fa4405571a0267cd8812329bb8a432a37efb50459461628d371849906'
+    'c31b8c0ace123f5c1a0012a1254272eea9ac9cdd0d3e5d538ca6b11830dd01b0'
+    '0f482368b62c3cece941e2d3ba497bf322db59315df5c2f72500fc1318e4768e'
   )
 fi
 
