@@ -1,18 +1,22 @@
 pkgbase = python-tarantool
 	pkgdesc = Python client library for Tarantool 1.6 Database
-	pkgver = 0.9.0
-	pkgrel = 6
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/tarantool/tarantool-python
 	arch = any
 	license = BSD
 	checkdepends = tarantool
 	checkdepends = python-dbapi-compliance
 	checkdepends = python-yaml
+	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-msgpack
-	source = https://github.com/tarantool/tarantool-python/archive/0.9.0/python-tarantool-0.9.0.tar.gz
-	source = unittest-alias-removal.patch
-	sha512sums = 180c2f677177eef4e8afc882d08dc9556faab914c37521666a294e31373d3f6ff001b347f50a17fcc13afb033c84f759933f11045a4b3823d0aba2b407dc1805
-	sha512sums = 9254ebea6009efd0bc124f1ced7606eb0d844b699cc07256678d30a69ccfbe0dc99fee2abc30b874b36f353d4444cf1b189590bab103503d6dc354ab856e13da
+	depends = python-pytz
+	source = git+https://github.com/tarantool/tarantool-python#tag=1.0.0
+	sha512sums = 770e0fc4fba28b34dfdfee9270eb4f280e09f378e87f5f1fb5641ef3791e77aaaf1b91a5e1bc5002132d90ee294acd790157f00ffe949d862568a583c01a275c
 
 pkgname = python-tarantool
