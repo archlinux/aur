@@ -16,7 +16,7 @@ optdepends=(
 )
 conflicts=('oneclient-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Polyfrost/OneLauncher/archive/refs/tags/oneclient-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('c98c8db9b64d30080d70ee7e4d05ffb5d322d010f81f6c49ac834cfda9a9b78f')
 options=('!lto')
 
 prepare() {
