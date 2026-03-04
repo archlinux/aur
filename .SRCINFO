@@ -1,0 +1,23 @@
+pkgbase = ttf-ioskeley-mono-nerd
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/mzIngDev/ioskeley-mono-nerd-font
+	arch = any
+	license = OFL
+	depends = fontconfig
+	source = hinted.zip::https://codeberg.org/mzIngDev/ioskeley-mono-nerd-font/releases/download/v1.0.0/ioskeley-mono-nerd-hinted.zip
+	source = unhinted.zip::https://codeberg.org/mzIngDev/ioskeley-mono-nerd-font/releases/download/v1.0.0/ioskeley-mono-nerd-unhinted.zip
+	source = LICENSE::https://codeberg.org/mzIngDev/ioskeley-mono-nerd-font/raw/branch/main/LICENSE
+	sha256sums = 64a1f9bab7c0be908898d998e7f046699b45e08482cb00a538dcf7f40e09e438
+	sha256sums = d8081224caa044f1c1af4828eb0d190132c180961d7732d0bb837a030565b8bf
+	sha256sums = c93f36aa6b37e165f9a80fb493ea22044faa6e97cd500f07dc2e8c8715c59d11
+
+pkgname = ttf-ioskeley-mono-nerd
+	pkgdesc = Ioskeley Mono Nerd Font (Hinted) - A patched version for standard screens
+	provides = ttf-ioskeley-mono-nerd
+	conflicts = ttf-ioskeley-mono-nerd-unhinted
+
+pkgname = ttf-ioskeley-mono-nerd-unhinted
+	pkgdesc = Ioskeley Mono Nerd Font (Unhinted) - A patched version for HiDPI/4K screens
+	provides = ttf-ioskeley-mono-nerd
+	conflicts = ttf-ioskeley-mono-nerd
