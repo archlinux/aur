@@ -13,17 +13,11 @@ into your firefox profile directory, which should be located at:
 click "Clear startup cache..." and restart firefox.
 Then you can copy additional .uc.js and .as.css files to be loaded into the
 'chrome' folder, and install legacy extensions via the Add-ons Manager inside
-firefox. Some additional scripts and addons are available in
-
-  /usr/share/firefox-userchromejs/misc
-
-For more detailed instructions, see:
+firefox. Some such extensions, scripts and addons are available on:
 
   https://github.com/xiaoxiaoflood/firefox-scripts/
-
-Some other scripts can be found in (archived, but still maintained):
-
-  https://github.com/Izheil/Quantum-Nox-Firefox-Dark-Full-Theme/
+  https://github.com/onemen/TabMixPlus
+  https://github.com/Izheil/Quantum-Nox-Firefox-Dark-Full-Theme/ (archived, but still maintained)
 
 EOF
 }

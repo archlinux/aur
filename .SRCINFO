@@ -1,17 +1,15 @@
 pkgbase = firefox-userchromejs
 	pkgdesc = Patching Firefox to enable JS injection (userchrome-js)
-	pkgver = 136
+	pkgver = 150.0a1
 	pkgrel = 1
-	url = https://github.com/xiaoxiaoflood/firefox-scripts
+	url = https://github.com/onemen/TabMixPlus
 	install = firefox-userchromejs.install
 	arch = any
 	license = MPL2
 	depends = firefox
-	source = https://codeload.github.com/xiaoxiaoflood/firefox-scripts/tar.gz/a898ac59fb0ca3886c0c46b184fdbc037c83c037
-	source = https://github.com/user-attachments/files/19132964/chrome.zip
-	source = https://github.com/user-attachments/files/18858682/config.zip
-	sha512sums = a57f0239fac97e36ad6c86b588db7d49c86d5f0a77a74d5aaa7e45d6d406bd7d3316882010fe2db244f23266ad601cf63cb63ab50078d168e9fcd705f6ccf1ee
-	sha512sums = 0303e7b143cccf1d8218568cefa0c30c633e70ca385af7bc8af204f38605dfa0e99260b4f75fe2d3bbce60202cc54e813a89e20c531edb91751e06f616955f0f
-	sha512sums = 44134b5c226d52341d546e3743d2af65d2f4dc5f56e4ba97315b8208a7fa0c9641a8ac87790622ba9ff908d6ebce1ded5ee06c9ab63810a0ea27eb4202fefecc
+	source = https://github.com/onemen/TabMixPlus/releases/download/dev-build/fx-folder.zip
+	source = https://github.com/onemen/TabMixPlus/releases/download/dev-build/utils.zip
+	sha512sums = 2be133a5ab9d253370111ba7517e9e8442b014a3bf83313ddb84563dbf6c8493eaaff852a9a334200b17786b4a077c4369f981f0782886745849a07729553ded
+	sha512sums = 0c07b1ca43c3cee05a0b6a2b075f6b57ede3e0998bfcc877a5e96a2a3e560f60a87a554036b99e4fc2cf6016d14548ec1673f7d4fbca7535dc1722f2983e7232
 
 pkgname = firefox-userchromejs
