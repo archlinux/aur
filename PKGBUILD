@@ -1,19 +1,22 @@
 # Maintainer: italoghost <eduprodive at posteo dot me>
 pkgname=ppsspp-bin
 _pkgname=ppsspp
-pkgver=1.19.3
+pkgver=1.20.1
 pkgrel=1
 pkgdesc="A PSP emulator for Android, Windows, Mac and Linux, written in C++"
 arch=('x86_64')
 url="https://www.ppsspp.org/"
-license=("GPL 2.0 or later")
+license=("GPL-2.0-or-later")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+depends=('libgcc' 'dbus' 'glibc' 'pcre2' 'systemd-libs' 'libgomp' 'util-linux-libs'
+		'zstd' 'libelf' 'libffi' 'zlib' 'bzip2' 'libusb' 'bash'
+		'expat' 'libstdc++' 'brotli' 'glib2' 'libtool')
 options=('!strip')
 _appimage=PPSSPP-v${pkgver}-anylinux-x86_64.AppImage
 noextract=("${_appimage}")
 source=("https://github.com/hrydgard/ppsspp/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('540f317c1ed6661894167d2dce21b62295857e1a912274982da7048cf2256466')
+sha256sums=('cd5bd9e07073eecf4a7aa28e51a053a9b3df245c75bcd2dc0fdfcb76dd2e7922')
 
 prepare() {
 	# Extract AppImage
@@ -24,24 +27,20 @@ prepare() {
 	cd "${srcdir}/squashfs-root/"
 	mv "PPSSPPSDL.desktop" "$_pkgname.desktop"
 	sed -i -e "s/Exec=PPSSPPSDL/Exec=ppsspp/" "$_pkgname.desktop"
-	
+
 }
 
 package() {
-	#Icon
-	install -Dm644 "squashfs-root/$_pkgname.png" -t "$pkgdir/usr/share/pixmaps"
-	
-	# Desktop file
-	install -Dm644 "squashfs-root/$_pkgname.desktop" -t "$pkgdir/usr/share/applications"
-	
-	# Main files
-	install -d "$pkgdir/opt"
-	cp -avR squashfs-root/ "$pkgdir/opt/$_pkgname"
-	
-	# Linking the script to the executable
-	install -dm755 "$pkgdir/usr/bin"
-	ln -sf "/opt/$_pkgname/AppRun" "$pkgdir/usr/bin/$_pkgname"
-	
+	# Create directory structure
+    install -dm755 "${pkgdir}/opt/${_pkgname}"
+    install -dm755 "${pkgdir}/usr/bin"
+	# Move extracted content to /opt
+	cp -ar "${srcdir}/squashfs-root/." "${pkgdir}/opt/${_pkgname}/"
+	# Install the .desktop file and the icon
+	install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
+	install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+	# Create a symbolic link for the AppRun
+	ln -s "/opt/${_pkgname}/AppRun" "${pkgdir}/usr/bin/${_pkgname}"
 	# Permissions
-	find "$pkgdir/opt/$_pkgname" -type d -exec chmod 755 {} +
+	chmod -R u+rwX,go+rX,go-w "${pkgdir}/opt/${_pkgname}"
 }
