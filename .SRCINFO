@@ -1,0 +1,32 @@
+pkgbase = kh-ucanfd
+	pkgdesc = KunHong UCANFD Linux driver
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://gitee.com/ChengDu-KunHong/KH-UCANFD_Linux_SDK
+	arch = x86_64
+	license = GPL-2.0-only AND LGPL-2.0-only
+	makedepends = libarchive
+	depends = sh
+	depends = dkms
+	depends = glibc
+	depends = popt
+	optdepends = can-utils: Linux-CAN / SocketCAN user space applications
+	source = KH-UCANFD_Linux_SDK-v1.3.0.zip::https://gitee.com/ChengDu-KunHong/KH-UCANFD_Linux_SDK/releases/download/v1.3.0/KH-UCANFD_Linux_SDK.zip
+	sha256sums = 4b4b1064e0de5d872f30ee7561df780c531946a3b9c85211f34d04f8a3da23d6
+
+pkgname = kh-ucanfd
+	pkgdesc = KCAN-USB device firmware upgrade tool kit supports firmware version query, upgrade, APP switching and other functions.
+	arch = x86_64
+	depends = sh
+	depends = glibc
+	provides = kh-ucanfd
+	conflicts = kh-ucanfd
+
+pkgname = kh-ucanfd-dkms
+	pkgdesc = KunHong UCANFD Linux driver for dkms
+	arch = any
+	depends = sh
+	depends = dkms
+	depends = popt
+	provides = kh-ucanfd-dkms
+	conflicts = kh-ucanfd-dkms
