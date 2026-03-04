@@ -1,6 +1,5 @@
 # Maintainer: zsh-ncursed <zsh.ncursed@gmail.com>
 pkgname=somafm_tui
-pkgver=0.4.7
 pkgrel=1
 pkgdesc="Terminal user interface for SomaFM internet radio"
 arch=('any')
@@ -8,8 +7,23 @@ url="https://github.com/zsh-ncursed/somafm_tui"
 license=('MIT')
 depends=('python' 'python-requests' 'python-mpv' 'python-dbus-next')
 makedepends=('git')
-source=("git+https://github.com/zsh-ncursed/somafm_tui.git#tag=v0.4.7")
+source=("git+https://github.com/zsh-ncursed/somafm_tui.git")
 sha256sums=('SKIP')
+
+# pkgver() is called by makepkg during build to determine version
+# In CI (GitHub Actions), GITHUB_REF_NAME is set to the tag name (e.g., "v0.4.9")
+# In local builds, git describe is used to get version from tags
+pkgver() {
+    if [ -n "$GITHUB_REF_NAME" ]; then
+        echo "$GITHUB_REF_NAME" | sed 's/^v//'
+    elif [ -n "$VERSION" ]; then
+        # Fallback for AUR action which may pass VERSION
+        echo "$VERSION" | sed 's/^v//'
+    else
+        cd "$pkgname"
+        git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || echo "0.0.0"
+    fi
+}
 
 prepare() {
     cd "$pkgname"
@@ -71,3 +85,4 @@ package() {
     install -Dm644 IMPROVEMENTS.md "$pkgdir/usr/share/doc/$pkgname/IMPROVEMENTS.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+pkgver=0.4.9
