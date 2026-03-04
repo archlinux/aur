@@ -1,6 +1,6 @@
 # Maintainer: purpleneutral <purpleneutral@users.noreply.github.com>
 pkgname=displayctl
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="GTK 4 display configuration tool with visual layout editor"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
     'wlr-randr: Wayland (wlroots) display backend'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8ffbccd6d0fb78b93ffa7117b8d7026efdea019a19dc5285cd288deb2053b653')
+sha256sums=('e7edc71f501953fd2fc3db8ed6fd2aa185f78a0c37ba3c36973c662a217ffc28')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
