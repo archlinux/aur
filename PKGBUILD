@@ -8,7 +8,7 @@
 
 _pkgname="forkgram"
 pkgname="$_pkgname"
-pkgver=6.6.0
+pkgver=6.6.2
 pkgrel=1
 pkgdesc="Fork of the Telegram Desktop messaging app"
 url="https://github.com/Forkgram/tdesktop"
@@ -26,7 +26,7 @@ depends=(
   libjxl
   libvpx
   libxdamage
-  minizip
+  minizip-ng
   openal
   openh264
   opus
@@ -69,15 +69,15 @@ conflicts=("forkgram-bin")
 
 options=('!debug' '!emptydirs')
 
-_pkgsrc="frk-v-full"
+_pkgsrc="frk-v$pkgver-full"
 _pkgsrc_tdlib="telegram-tdlib"
 _pkgext="tar.gz"
 source=(
-  "$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/v$pkgver/frk-v-full.$_pkgext"
+  "$_pkgname-$pkgver.$_pkgext"::"$url/releases/download/v$pkgver/$_pkgsrc.$_pkgext"
   "$_pkgsrc_tdlib"::"git+https://github.com/tdlib/td.git"
 )
 sha256sums=(
-  'f45df0f4ce8603ccb25033378f6532aebbe7fff7fdfa110b9581427de79eafa6'
+  'e16769d004529ce7e658b3cb80d925615db8c5eebfce03eba9b91eaa9d43dc0a'
   'SKIP'
 )
 
@@ -92,12 +92,6 @@ prepare() {
       patch -d "$_pkgsrc" -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
-
-  cd "$_pkgsrc"
-
-  # fix minizip headers
-  sed -E -e 's&#include <((un)?zip\.h)>&#include <minizip/\1>&g' \
-    -i Telegram/lib_base/base/zlib_help.h
 }
 
 build() {
