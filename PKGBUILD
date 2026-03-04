@@ -3,7 +3,7 @@
 # shellcheck shell=bash disable=SC2034,SC2148,SC2154,SC2164
 
 pkgname=marimo
-pkgver=0.20.2
+pkgver=0.20.4
 pkgrel=1
 pkgdesc="A reactive Python notebook that's reproducible, git-friendly, and deployable as scripts or apps"
 arch=(any)
@@ -62,11 +62,14 @@ optdepends=(
 )
 
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-$pkgver.tar.gz")
-sha256sums=('cdab009b65d58d571640ab8bb2ede68ab3b755c8f99f06b934a23f3b8aba3f34')
+sha256sums=('7f46ce837953717504673e33e47fb42a619bf5f9d2000d1a3a3b1663a47c5498')
 
 build() {
     cd $pkgname-$pkgver
-    uv build --wheel --clear --cache-dir build_cache -o dist
+    uv build --wheel \
+        -p /usr/bin/python3 \
+        --cache-dir build_cache \
+        --clear -o dist
 }
 
 package() {
