@@ -15,8 +15,8 @@ sha256sums=("de06c8d63568738fbeff88d3e5bad30769f5568bf4c56595fdd4c654a21e6983"
 			"d70d4b0a4968c1c4b2323e7a1522850a919ca7d03c7d66026d05234aaf13449b")
 
 package() {
-        install -d "$pkgdir/opt/$pkgname"
-        install -Dm755 "$srcdir/kelivo" "$pkgdir/opt/$pkgname/kelivo"
+        install -d "$pkgdir/opt/kelivo"
+        install -Dm755 "$srcdir/kelivo" "$pkgdir/opt/kelivo/kelivo"
 		cp -r "$srcdir/lib" "$pkgdir/opt/$pkgname/"
   		cp -r "$srcdir/data" "$pkgdir/opt/$pkgname/"
 
