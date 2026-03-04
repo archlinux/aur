@@ -1,0 +1,15 @@
+[Unit]
+Description=Clippa-rs Link Harvester
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+
+ExecStart=/usr/bin/clippa-harvest
+Restart=always
+RestartSec=3
+Environment=WAYLAND_DISPLAY=wayland-1
+
+[Install]
+WantedBy=graphical-session.target
