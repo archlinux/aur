@@ -1,4 +1,4 @@
 *~
 *.log
-properties-cpp_*.orig.tar.gz
+properties-cpp_*.orig.tar.*
 properties-cpp-*-any.pkg.tar.*
