@@ -1,0 +1,28 @@
+pkgbase = ros2-humble-bond_core
+	pkgver = 4.1.2
+	pkgrel = 1
+	url = https://index.ros.org/p/bond/
+	arch = x86_64
+	license = BSD
+	makedepends = cmake
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = ros2-humble
+	source = https://github.com/ros/bond_core/archive/refs/tags/4.1.2.tar.gz
+	sha256sums = e0580220510c918c9beb125bba5df1e78082a666552efc9a4cc22647155c62a2
+
+pkgname = ros2-humble-bond_core
+	pkgdesc = Meta-package for bond_core runtime dependencies
+	arch = x86_64
+	depends = ros2-humble-bond
+	depends = ros2-humble-bondcpp
+	depends = ros2-humble-bondpy
+	depends = ros2-humble-smclib
+
+pkgname = ros2-humble-bondpy
+	pkgdesc = Python implementation of bond_core
+	arch = x86_64
+	depends = ros2-humble
+	depends = ros2-humble-bond
+	depends = ros2-humble-smclib
+	depends = python

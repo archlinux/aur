@@ -1,0 +1,27 @@
+# Build artifacts
+*.pkg.tar.zst
+*-any.pkg.tar.zst
+*-x86_64.pkg.tar.zst
+
+# Build logs
+build-*.log
+*-x86_64-build.log
+*-x86_64-package_*.log
+*-namcap.log
+
+# Makepkg temporary files
+src/
+pkg/
+
+# Staging
+_staging/
+
+# Source tarball (optional)
+4.1.2.tar.gz
+
+# Other
+*.pyc
+__pycache__/
+.python-version
+.venv/
+.cache/
