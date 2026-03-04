@@ -25,7 +25,7 @@ options=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::https://download.qoder.com/release/latest/${pkgname%-bin}_${CARCH}.rpm"
-    "LICENSE.html::${srcdir}/LICENSE.html"
+    "LICENSE.html"
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
