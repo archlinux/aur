@@ -1,13 +1,14 @@
 pkgbase = upwork
 	pkgdesc = Track your time for Hourly Payment Protection. Stay connected.
 	pkgver = 5.8.0.41
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.upwork.com/ab/downloads/?os=linux
 	arch = x86_64
 	license = LicenseRef-Upwork-EULA
 	makedepends = asar
 	makedepends = curl
 	depends = electron36
+	optdepends = upwork-wayland: Allows screenshot to work in Wayland
 	optdepends = libappindicator: For system notifications
 	optdepends = gnome-shell-extension-appindicator: To show tray icon in GNOME
 	conflicts = upwork-beta

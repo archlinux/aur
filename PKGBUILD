@@ -3,7 +3,7 @@
 
 pkgname=upwork
 pkgver=5.8.0.41
-pkgrel=1
+pkgrel=2
 _hashver='f0de03505cc349f2'
 pkgdesc='Track your time for Hourly Payment Protection. Stay connected.'
 arch=('x86_64')
@@ -12,6 +12,7 @@ license=('LicenseRef-Upwork-EULA')
 depends=('electron36')
 makedepends=('asar' 'curl')
 optdepends=(
+  'upwork-wayland: Allows screenshot to work in Wayland'
   'libappindicator: For system notifications'
   'gnome-shell-extension-appindicator: To show tray icon in GNOME'
 )
