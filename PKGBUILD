@@ -2,13 +2,13 @@
 # Contributor: Ben Booth <benwbooth@gmail.com>
 
 pkgname=bamtools-git
-pkgver=2.5.2.r4.g2bd8699
+pkgver=2.5.3
 pkgrel=1
 pkgdesc="C++ API & command-line toolkit for working with BAM data"
 arch=('x86_64')
 url="https://github.com/pezmaster31/bamtools"
 license=('MIT')
-depends=('gcc-libs' 'jsoncpp' 'zlib')
+depends=('glibc' 'libgcc' 'libstdc++' 'jsoncpp' 'zlib')
 makedepends=('cmake' 'git')
 provides=('bamtools')
 conflicts=('bamtools')

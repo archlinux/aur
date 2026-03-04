@@ -1,13 +1,15 @@
 pkgbase = bamtools-git
 	pkgdesc = C++ API & command-line toolkit for working with BAM data
-	pkgver = 2.5.2.r4.g2bd8699
+	pkgver = 2.5.3
 	pkgrel = 1
 	url = https://github.com/pezmaster31/bamtools
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = git
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = jsoncpp
 	depends = zlib
 	provides = bamtools
