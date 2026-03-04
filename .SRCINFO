@@ -1,6 +1,6 @@
 pkgbase = fw-fanctrl-rs-git
 	pkgdesc = A lightweight daemon for custom fan control on Framework laptops
-	pkgver = r51.gadd11f7
+	pkgver = r52.g8710905
 	pkgrel = 1
 	url = https://github.com/NexusXe/fw-fanctrl-rs
 	install = fw-fanctrl-rs.install

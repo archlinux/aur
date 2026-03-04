@@ -1,7 +1,7 @@
 # Maintainer: Briar Campbell <nex@nexusxe.com>
 _pkgname=fw-fanctrl-rs
 pkgname=${_pkgname}-git
-pkgver=r51.gadd11f7
+pkgver=r52.g8710905
 pkgrel=1
 pkgdesc="A lightweight daemon for custom fan control on Framework laptops"
 arch=('x86_64')
