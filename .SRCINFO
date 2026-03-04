@@ -1,0 +1,14 @@
+pkgbase = onepdfplease-git
+	pkgdesc = A TUI for doing simple PDF tasks
+	pkgver = r181.06d41c2
+	pkgrel = 1
+	url = https://github.com/SofusA/qobuz-player
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	conflicts = onepdfplease
+	source = onepdfplease-git::git+https://github.com/chetanjangir0/onepdfplease.git
+	sha256sums = SKIP
+
+pkgname = onepdfplease-git
