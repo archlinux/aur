@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgname=zeroclaw
-pkgver=0.1.7
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Zero overhead, fully autonomous AI assistant runtime (100% Rust)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -10,9 +10,13 @@ license=('MIT' 'Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('rust' 'clang' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zeroclaw-labs/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-        "zeroclaw.service")
-sha256sums=('8494d08a047a4d52546e7ba37dffa9aa0334f72c968357231f583dd395df2479'
-            '95de33ab8566088ba9ba482ae991c139cb956b7e0b1dd541b2d83fcf16b5b561')
+        "zeroclaw.service"
+        "zeroclaw.sysusers"
+        "zeroclaw.tmpfiles")
+sha256sums=('8253e16b5832422e613e0f0e089688cc20346ee297fa51737e9dd12e6dd75662'
+            '54c38bdb24d359cdc9945290b2b27782249dea39c6d9998528e4b254837ab2ba'
+            '5e22a9f53bab669beab7058c8b7d1c2b090eb7900fb8c9bd94fd3ad609e7afbf'
+            '07911d8ca762bc87daf58e7d72ad9067517baedaeccd65f2ae7609962af8216f')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -40,4 +44,7 @@ package() {
     install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
     # system service (systemctl enable --now zeroclaw)
     install -Dm644 "$srcdir/zeroclaw.service" "$pkgdir/usr/lib/systemd/system/zeroclaw.service"
+    # system user and state directory
+    install -Dm644 "$srcdir/zeroclaw.sysusers" "$pkgdir/usr/lib/sysusers.d/zeroclaw.conf"
+    install -Dm644 "$srcdir/zeroclaw.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/zeroclaw.conf"
 }
