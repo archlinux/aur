@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond <dbermond@archlinux.org>
 # Contributor: Mikalai Ramanovich < narod.ru: nikolay.romanovich >
 pkgname=onlyoffice
-pkgver=9.2.1
+pkgver=9.3.1
 pkgrel=1
 pkgdesc="An office suite that combines text, spreadsheet and presentation editors allowing to create, view and edit local documents"
 arch=(x86_64)
@@ -44,21 +44,21 @@ options=(
     '!lto'
 )
 _url=https://github.com/ONLYOFFICE
-# The tag used for sumodules
-_tag=v9.2.1.43
+# The tag used for indirect sumodules
+_tag=v9.3.1.9
 # ICU: scripts/core_common/modules/icu.py
 _icu_major=74
 _icu_minor=2
 source=(
     # Source
     "git+${_url}/DesktopEditors#tag=v$pkgver"
-    "$pkgname-core::git+${_url}/core#tag=$_tag"
-    "$pkgname-desktop-apps::git+${_url}/desktop-apps#tag=$_tag"
-    "$pkgname-desktop-sdk::git+${_url}/desktop-sdk#tag=$_tag"
-    "$pkgname-dictionaries::git+${_url}/dictionaries#tag=$_tag"
-    "$pkgname-sdkjs::git+${_url}/sdkjs#tag=$_tag"
+    "$pkgname-core::git+${_url}/core#commit=7043b3609328e917a4791aec8f3e8fca3225120f"
+    "$pkgname-desktop-apps::git+${_url}/desktop-apps#commit=bc46371aa062a7718cd90268e94c3d2b10ce3c51"
+    "$pkgname-desktop-sdk::git+${_url}/desktop-sdk#commit=6bd2051287a496ac1504214caca69a5729625696"
+    "$pkgname-dictionaries::git+${_url}/dictionaries#commit=d3223bbb777883db66ac3cd249f71c6ebdc992c7"
+    "$pkgname-sdkjs::git+${_url}/sdkjs#commit=aa78926242b3da023255d9c7e9180e5a3294167b"
+    "$pkgname-web-apps::git+${_url}/web-apps#commit=1c8ca9987876bada73c0bde21367da09c0e1ed83"
     "$pkgname-sdkjs-forms::git+${_url}/sdkjs-forms#tag=$_tag"
-    "$pkgname-web-apps::git+${_url}/web-apps#tag=$_tag"
     "$pkgname-build_tools::git+${_url}/build_tools#tag=$_tag"
     "$pkgname-core-fonts::git+${_url}/core-fonts#tag=$_tag"
     "$pkgname-document-templates::git+${_url}/document-templates#tag=$_tag"
@@ -79,20 +79,21 @@ source=(
     "0001-Dynamically-link-libstdc-in-icu.patch"
     "use-fpermissive.diff"
     "fix-glib-qt-macro-collision.diff"
+    "no-git-update.diff"
     fix-limits-include{,-1}.diff
     "do-not-build-commercial.diff"
     system-heif{,-0}.diff
     "fix-QDesktopWidget-include.diff"
 )
-sha256sums=('5a4ef3ce5a6cbe56446017e235006342c64343dc680539966b7723e184a1d1e4'
-            'ca41e1a699f6511d74052b19126046401262adc7b08c07396890abe6ade23dbf'
-            'eca52ce3bc9fa13ca05262515dfcc23be118d301ac895bd422e098c00a1479dd'
-            '5503ed4ad138c1cef42b1ce732316a981c2aaf84f1d49b0787c3d36e7901e0b1'
+sha256sums=('980a6e953dd1b2612b7b77856f6b59b896aa166bd89b67fc9ba7731475cb608b'
+            '9c61aa21383e8452ea8782a83a79168cb43798e79b3573631cacfe2439f5e237'
+            '98c6c0e50544a5a340e88763177c563466c5ec83b704947b48594e9e3298ec92'
+            'dcc813babd24f0e2cfb6fd6c70d9bddcf483b52111184e10e3f6b0c4286e9ec6'
             '62dc945a78f38ab87e9d0a1a0cfefe0ddee29ba9de4e48468f7047d0aac4e645'
-            '3dafdfa485104b95eb48449fba58d8f5ade8ae48faace0ed9e06dcf64ce90179'
-            'bf07e092f73a3c82ce00552ae6258c39e6da6edb974a5690076ca470e2bdb5f0'
-            '78120e5b0624175d12c0f97d70afb272839a74f4a486ef4c9c49c20e6f7849e3'
-            '183cb0099fb1c5ad3f206898a2b11148976d03f4d7b3ae216828fe796ab47c3e'
+            'c76faf2261a11cc241e67414029db03764d8bf2eef6df90de6d5c17598207c06'
+            '80db20deff266435d281273baac4efa123119d0fe73a5af65f61ab9952ea30a3'
+            'd9d7de2e5721cdde754fd4daa96bc2baafafcf53e1c3785fd1ee716c3a19ae85'
+            'd7a36d4b0667e6b6415f09d969f73c1ae358168bfb397adf8730b3050d6329ac'
             '55c1d70a8bdd8f818af8e4c784bfc03f0569fcb863cc6797f888b749153ed720'
             '1a9ddf334ee246bcd4f412475f91dd2a70408521998f358dbcae18976f861e56'
             'SKIP'
@@ -108,7 +109,8 @@ sha256sums=('5a4ef3ce5a6cbe56446017e235006342c64343dc680539966b7723e184a1d1e4'
             'b3e040f0551dc469d91d23487e05bdb7123d2a3e50c5180c44be868a6f42ecbf'
             'a3561d1f18a61c404c8f9f9ed51484b2e19e3caaee86b71b1cabe3c7ccd0053a'
             '222dab12468f27b2bc1cc098ad2e4ca5bff8df845939f5cba2efff2165eafbcd'
-            '2c698dc512b4b0d94c8e427a2ac9a6f3e92aeb1c33414c30dfc48fa44832f6ec'
+            'f824db52d68fe7dd6e48ad4f3316e2036ce2096f66c1ae08278e0725219bc8ea'
+            'a062edfcca4fc2103f5d7eeffeb22539de4a633eddd3ba4ed555ac1976be5176'
             'cb87384ce721ac15a82d254efe8662be0eb9011c122edfcb1caa07194fbae697'
             '8761a41683733f8c297fda55485126e895b1271aefd0f834078eb417878afbb0'
             'b7bce5799d2f52026795169e40d6a3b436bb8c481d769cc8ff9df19a7e9e29cd'
@@ -152,6 +154,8 @@ prepare() {
     patch -Np1 -i ../0001-Fix-boost-module-import.patch
     patch -Np1 -i ../0001-Add-update-only-to-avoid-download-and-build-at-once.patch
     patch -Np1 -i ../0002-Add-no-third-party-update-and-update-third-party-onl.patch
+    # Don't update our pinned git repos
+    patch -Np1 -i ../no-git-update.diff
     # Fix the way to get qt version
     patch -Np1 -i ../0003-use-QT_VERSION-env-instead-of-guessing.patch
     # Don't build debs/rpm/..
@@ -164,7 +168,7 @@ prepare() {
     sed -i 's|http://|https://|' ./scripts/core_common/modules/cef.py
 
     # We manually update the sources, so --update 0
-    ./configure.py --module desktop --update 0 --branch "tags/$_tag" --qt-dir "$(realpath tools/linux/system_qt)"
+    ./configure.py --module desktop --update 0 --qt-dir "$(realpath tools/linux/system_qt)"
     ./make.py --update-only
 
     # fetch V8 before updating third party to have a chance to patch it
@@ -244,7 +248,7 @@ build() {
 package() {
     cd build_tools
     ./make_package.py -P linux_x86_64 -T desktop -V "$pkgver" -B "$pkgrel"
-    cd ../desktop-apps/win-linux/package/linux/tar
+    cd ../desktop-apps/package/tar
     tar xf onlyoffice-desktopeditors-"$pkgver"-"$pkgrel"-"$CARCH".tar.xz
     rm -f *.tar.xz
 
