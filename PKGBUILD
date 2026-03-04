@@ -11,10 +11,10 @@ provides=('crtui')
 conflicts=('crtui')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ksckaan1/crtui/releases/download/v${pkgver}/crtui_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('6981d67b7cc492e805703937e0e4cd78963a1c7f701ce619db0601bc565eba0a')
+sha256sums_aarch64=('1e18fea35f8d52904c291595ab5198e378f8bb2490af1c9edabab5775ca22907')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ksckaan1/crtui/releases/download/v${pkgver}/crtui_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('7d0c4cefdce984cd3d8b2995619b3367f1a9fff6bf186647c29669141451c2fc')
+sha256sums_x86_64=('0b4ac7e97eacddee4d1e9428291e45bf7118d76105e6c946d20822dce5e7cb76')
 
 package() {
   install -Dm755 "./crtui" "${pkgdir}/usr/bin/crtui"
