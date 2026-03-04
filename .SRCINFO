@@ -1,6 +1,6 @@
 pkgbase = weimail-bin
 	pkgdesc = Native Xinchuang email client, free email client software that supports multiple Xinchuang platforms.Just used in China.(Prebuilt version)
-	pkgver = 2.3.6.8
+	pkgver = 2.3.7.0
 	pkgrel = 1
 	url = https://ankexinchuang.cn/
 	arch = aarch64
@@ -12,13 +12,13 @@ pkgbase = weimail-bin
 	depends = nss
 	depends = dbus-glib
 	depends = libxt
-	provides = weimail=2.3.6.8
+	provides = weimail=2.3.7.0
 	conflicts = weimail
 	source = weimail.sh
 	sha256sums = 9c37097fe7ef47cb66652053d95471239ec132a05d5e78664fe47b936878aa1d
-	source_aarch64 = weimail-2.3.6.8-aarch64.deb::https://ota.ankexinchuang.cn/new/client/uos/weimail/ankexinchuang.cn/latest/weimail-latest-arm64.deb
-	sha256sums_aarch64 = 890654f83638cde76270fd37501cd2c680386cf49230b68ee194bd905ed33727
-	source_x86_64 = weimail-2.3.6.8-x86_64.deb::https://ota.ankexinchuang.cn/new/client/uos/weimail/ankexinchuang.cn/latest/weimail-latest-amd64.deb
-	sha256sums_x86_64 = 474ae824a53e4878c25f9b3095b7e664e669ab4f1f7510281d8ef03ce3a06c2a
+	source_aarch64 = weimail-2.3.7.0-aarch64.deb::https://ota.ankexinchuang.cn/new/client/uos/weimail/ankexinchuang.cn/latest/weimail-latest-arm64.deb
+	sha256sums_aarch64 = 7503d0788d7f1716796cfc36419a3f0cc6e6241a399eccb3d338e0aec468083e
+	source_x86_64 = weimail-2.3.7.0-x86_64.deb::https://ota.ankexinchuang.cn/new/client/uos/weimail/ankexinchuang.cn/latest/weimail-latest-amd64.deb
+	sha256sums_x86_64 = 0c4e57fab0e843bff9a2d2b406aa5b4d675818c472cbc17eefc320728592c069
 
 pkgname = weimail-bin
