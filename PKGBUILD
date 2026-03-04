@@ -1,5 +1,5 @@
 pkgname=passkeyd
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Opinionated WebAuthn authenticator backed by a TPM"
 arch=('x86_64')
