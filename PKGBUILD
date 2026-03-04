@@ -1,6 +1,6 @@
 # Maintainer: Jos Dehaes <jos@dehaes.be>
 pkgname=mergers
-pkgver=0.5.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A visual diff and merge tool written in Rust with GTK4"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL-2.0-only')
 depends=('gtk4' 'gtksourceview5')
 makedepends=('rustup')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/joske/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7947b467701a58d83e293027e26d0f17c41659e45955acaea483cbe3c9c77ee2')
+sha256sums=('ecd3312ce10424f6133a7033207c50d7494988a678b8354476a4faf24ae988f0')
 
 build() {
     cd "$pkgname-$pkgver"
