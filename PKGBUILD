@@ -1,5 +1,5 @@
 pkgname=waybar-hyprspaces-fork-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Prebuilt Waybar fork with hyprspaces paired workspace support"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('!debug')
 _release_tag="hyprspaces-v${pkgver}"
 _asset="waybar-hyprspaces-fork-x86_64.tar.zst"
 source=("${url}/releases/download/${_release_tag}/${_asset}")
-sha256sums=('d9fa173f6f64dc67e65f00f09490efaabc50c0c88afa2e25f572af6c54a841a3')
+sha256sums=('88ab939592cd7b9c4840492e119b307c294814b370dfee162b2ee3acc37a21c1')
 
 package() {
   install -Dm755 "${srcdir}/waybar" "${pkgdir}/usr/lib/hyprspaces/waybar-fork/bin/waybar"

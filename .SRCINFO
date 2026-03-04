@@ -1,6 +1,6 @@
 pkgbase = waybar-hyprspaces-fork-bin
 	pkgdesc = Prebuilt Waybar fork with hyprspaces paired workspace support
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/jtaw5649/Waybar
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = waybar-hyprspaces-fork-bin
 	depends = waybar
 	provides = waybar-hyprspaces-fork
 	conflicts = waybar-hyprspaces-fork
-	options = !debug
-	source = https://github.com/jtaw5649/Waybar/releases/download/hyprspaces-v0.1.2/waybar-hyprspaces-fork-x86_64.tar.zst
-	sha256sums = d9fa173f6f64dc67e65f00f09490efaabc50c0c88afa2e25f572af6c54a841a3
+	source = https://github.com/jtaw5649/Waybar/releases/download/hyprspaces-v0.1.3/waybar-hyprspaces-fork-x86_64.tar.zst
+	sha256sums = 88ab939592cd7b9c4840492e119b307c294814b370dfee162b2ee3acc37a21c1
 
 pkgname = waybar-hyprspaces-fork-bin
