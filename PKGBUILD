@@ -2,7 +2,7 @@
 pkgname=duckstation-preview-latest-bin
 _pkgname="duckstation-qt"
 _pkgid=org.duckstation.DuckStation
-pkgver=0.1.10827
+pkgver=0.1.10915
 pkgrel=1
 pkgdesc="Fast PlayStation 1 emulator for PC and Android"
 arch=('x86_64')
@@ -53,4 +53,7 @@ package() {
 
     # Create a symbolic link for the AppRun
     ln -s "/opt/${_pkgname}/AppRun" "${pkgdir}/usr/bin/${_pkgname}"
+
+	# Permissions
+	chmod -R u+rwX,go+rX,go-w "${pkgdir}/opt/${_pkgname}"
 }
