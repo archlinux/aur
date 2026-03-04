@@ -5,7 +5,7 @@ _pkgname=gitv
 pkgname=${_pkgname}-bin
 pkgdesc="A terminal-based viewer for GitHub issues"
 
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 _pkgvername=gitv-tui-v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE-MIT")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
-sha256sums=('72377fa9861d71d85733fab133fcd7422668b715c8b57e65ff7803a123bd0ea3'
+sha256sums=('29a3ccf767afca6f642e0443f5a5ff56fcee3270981be4aa8ca806976cd552ab'
             'a200714fe406a47e3884b5ecbd250df63d8687399ba8f0f10f50f32d384c673a')
-sha256sums_x86_64=('69de0f5e5afdaeaa88cf626d686505ca992634be78e2a8e6624459baab8f0b8e')
-sha256sums_aarch64=('f8122eda22895a83c10d5f345f43925c8fc69374dce700555a4997def7c633a8')
+sha256sums_x86_64=('b9bd82d4f5139ee4cabe7de27d1dca189bc6798abff1635c32067a2a513627fe')
+sha256sums_aarch64=('bea44499f5f29996561412bdcf53a4eb5705b6f0acfab1e9770e0da5721b551c')
 
 
 package() {
