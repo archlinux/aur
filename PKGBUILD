@@ -4,7 +4,7 @@ _projectname="virtualearth"
 _pkgname="marble-maps-${_projectname}"
 pkgname="${_pkgname}-git"
 pkgver=r2.20230717.b1c89a9
-pkgrel=1
+pkgrel=2
 pkgdesc='Microsoft satellite map for the Marble desktop globe.'
 arch=(
   'any'
@@ -31,6 +31,7 @@ conflicts=(
   "marble-restricted-maps-git<=latest"
 )
 replaces=()
+groups=('marble-maps')
 
 source=(
   "${_projectname}::${_gitprotocol}://${_giturl}"
