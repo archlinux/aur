@@ -1,0 +1,36 @@
+pkgbase = python-arviz-base
+	pkgdesc = Base ArviZ features and converters
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://python.arviz.org/projects/base
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = python-flit-core>=3.4
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx-copybutton
+	makedepends = python-sphinx_design
+	makedepends = python-sphinx-book-theme
+	makedepends = python-jupyter-sphinx
+	makedepends = python-myst-nb
+	makedepends = python-numpydoc
+	makedepends = python-xarray
+	makedepends = python-h5netcdf
+	makedepends = python-linkify-it-py
+	source = https://github.com/arviz-devs/arviz-base/archive/refs/tags/v1.0.0.tar.gz
+	md5sums = c5de8180bdf4ef0229dd059b5c0a95a1
+
+pkgname = python-arviz-base
+	depends = python>=3.12
+	depends = python-numpy>=2
+	depends = python-xarray>=2024.11.0
+	depends = python-typing_extensions>=3.10
+	optdepends = python-h5netcdf
+	optdepends = python-h5py
+	optdepends = python-netcdf4
+	optdepends = python-zarr
+	optdepends = python-arviz-base-doc: Documentation for arviz-base
+
+pkgname = python-arviz-base-doc
+	pkgdesc = Documentation for Python arviz-base
