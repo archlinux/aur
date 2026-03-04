@@ -3,7 +3,7 @@ _pkgname=fw-fanctrl-rs
 pkgname=${_pkgname}-git
 pkgver=r51.gadd11f7
 pkgrel=1
-pkgdesc="A lightweight, pure-Rust daemon for custom fan control on Framework laptops"
+pkgdesc="A lightweight daemon for custom fan control on Framework laptops"
 arch=('x86_64')
 url="https://github.com/NexusXe/fw-fanctrl-rs"
 license=('AGPL-3.0-or-later')
@@ -59,6 +59,9 @@ package() {
 
   # install default config file
   install -Dm644 config.toml "$pkgdir/etc/${_pkgname}/config.toml"
+
+  # install the header
+  install -Dm644 include/fw-fanctrl-rs.h "$pkgdir/usr/include/fw-fanctrl-rs.h"
 
   # install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
