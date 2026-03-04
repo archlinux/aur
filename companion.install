@@ -5,6 +5,8 @@ post_install() {
 }
 
 post_upgrade() {
-    echo "There is a new environment variable (SENTRY_DISABLE) available to disable sentry error reporting in companion."
-    echo "It's not enabled by default. You have to modify the desktop file or systemd unit to use it."
+    if [ $(vercmp $2 4.2.4) -lt 0 ]; then
+        echo "There is a new environment variable (SENTRY_DISABLE) available to disable sentry error reporting in companion."
+        echo "It's not enabled by default. You have to modify the desktop file or systemd unit to use it."
+    fi
 }
