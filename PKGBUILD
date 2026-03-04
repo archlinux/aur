@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sqlui-native-bin
-pkgver=1.64.4
+pkgver=1.64.5
 _electronversion=28
 pkgrel=1
 pkgdesc="A simple UI client for most SQL Engines,supports most dialects of RMBDs and has limited supports for Cassandra,MongoDB,Redis,CockroachDB,Azure CosmosDB and Azure Storage Tab.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/synle/sqlui-native/${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c3ade9edf401a9207cde828e86d26c026b3dd985da22fcff61c6e8ed37b365c0'
+sha256sums=('ce1a95116459b738927803a230c6c58f81b8e80e77073854b37151c0dc67bf2b'
             'a73494126f54d27c6155eecb8504842414b50317f84986eb1439fee7bb326099'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
