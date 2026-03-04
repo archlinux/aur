@@ -2,8 +2,8 @@
 pkgname=flomo-bin
 _pkgname=Flomo
 _zhsname='浮墨笔记'
-pkgver=5.25.91
-_electronversion=32
+pkgver=5.26.21
+_electronversion=36
 pkgrel=1
 pkgdesc="A new generation of cloud knowledge base for personal note-taking and knowledge creation, team collaboration and knowledge accumulation.(Prebuilt version.Use system-wide electron)新一代云端知识库，用于个人笔记与知识创作，团队协同与知识沉淀"
 arch=('x86_64')
@@ -26,8 +26,8 @@ source=(
     "LICENSE.html::https://help.flomoapp.com/legal/"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2d343f0070a3acdd588951ac9b4403c52a7af7a2626a77ed53c5d3ca811a6135'
-            'b109d17d1f6d608cac916ba8d66b960c8aa715364291920eec7f59214592f822'
+sha256sums=('048b6bb55246ea9a1175eb84ff2e22801452e52764ab3f6e9f9dd4462bf27249'
+            '43c857854dc015c6a04849787221bf2165bb273c4a6cd14f8cc24b1a754a6f58'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/tmp/${pkgname%-bin}.exe" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -53,6 +53,7 @@ prepare() {
     7z x -aoa "${srcdir}/\$PLUGINSDIR/app-64.7z" -o"${srcdir}/tmp"
     _get_electron_version
     asar e "${srcdir}/tmp/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${srcdir}/tmp/resources/app.asar"
     find "${srcdir}/app.asar.unpacked" -type f -name "*.gz" -exec rm -rf {} +
     sed -i -e "
         s/icon.ico/icon.png/g
@@ -61,11 +62,19 @@ prepare() {
     sed -i 's/"icons\/"+e/"icons\/icon.png"/g' "${srcdir}/app.asar.unpacked/background.js"
     cp "${srcdir}/app.asar.unpacked/icons/32x32.png" "${srcdir}/app.asar.unpacked/icons/darkTemplate.png"
     cp "${srcdir}/app.asar.unpacked/icons/32x32.png" "${srcdir}/app.asar.unpacked/icons/icon.png"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/tmp/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/tmp/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/tmp/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/tmp/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     icon_sizes=(16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512 1024x1024)
     for _icons in "${icon_sizes[@]}";do
         install -Dm644 "${srcdir}/app.asar.unpacked/icons/${_icons}.png" \
