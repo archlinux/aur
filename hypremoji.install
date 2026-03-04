@@ -15,7 +15,8 @@ post_install() {
     HYPRLAND_CONF="$USER_HOME/.config/hypr/hyprland.conf"
     HYPREMOJI_CONFIG_DIR="$USER_HOME/.config/hypremoji"
     HYPREMOJI_CONF="$HYPREMOJI_CONFIG_DIR/hypremoji.conf"
-    PASTE_CONFIG="$HYPREMOJI_CONFIG_DIR/paste_config.json"
+    # PASTE_CONFIG="$HYPREMOJI_CONFIG_DIR/paste_config.json" // DEPRECATED, NOW INCLUDED IN CONFIG.JSON
+    CONFIG_JSON="$HYPREMOJI_CONFIG_DIR/config.json"
 
     mkdir -p "$HYPREMOJI_CONFIG_DIR"
     if [[ -n "$SUDO_USER" ]]; then
@@ -27,15 +28,15 @@ post_install() {
         if [[ -n "$SUDO_USER" ]]; then
             chown "$SUDO_USER:$SUDO_USER" "$HYPREMOJI_CONF"
         fi
-        echo "    -> Created config at $HYPREMOJI_CONF"
+        echo "    -> Created hyprland config at $HYPREMOJI_CONF"
     fi
 
-    if [[ ! -f "$PASTE_CONFIG" ]]; then
-        cp /usr/share/hypremoji/paste_config.json "$PASTE_CONFIG"
+    if [[ ! -f "$CONFIG_JSON" ]]; then
+        cp /usr/share/hypremoji/config.json "$CONFIG_JSON"
         if [[ -n "$SUDO_USER" ]]; then
-            chown "$SUDO_USER:$SUDO_USER" "$PASTE_CONFIG"
+            chown "$SUDO_USER:$SUDO_USER" "$CONFIG_JSON"
         fi
-        echo "    -> Created paste config at $PASTE_CONFIG"
+        echo "    -> Created config at $CONFIG_JSON"
     fi
 
     if [[ ! -f "$HYPRLAND_CONF" ]]; then
@@ -116,108 +117,9 @@ post_install() {
     echo "==> Installation complete"
     echo "    Run 'hypremoji' to open the emoji picker"
 }
-# Function to convert old cursor syntax to new syntax
-convert_cursor_syntax() {
-    local line="$1"
-    
-    # Pattern: cursor -X% -Y% -> (cursor_x-(window_w*0.X)) (cursor_y-(window_h*0.Y))
-    if echo "$line" | grep -q "cursor -[0-9]\+% -[0-9]\+%"; then
-        
-        # Extract percentages
-        local x_percent=$(echo "$line" | sed -n 's/.*cursor -\([0-9]\+\)% -[0-9]\+%.*/\1/p')
-        local y_percent=$(echo "$line" | sed -n 's/.*cursor -[0-9]\+% -\([0-9]\+\)%.*/\1/p')
-        
-        # Convert to decimal (50 -> 0.50, 5 -> 0.05, 95 -> 0.95)
-        local x_decimal="0.$(printf "%02d" $x_percent)"
-        local y_decimal="0.$(printf "%02d" $y_percent)"
-        
-        # Replace the old syntax with new syntax
-        local result=$(echo "$line" | sed "s|cursor -${x_percent}% -${y_percent}%|(cursor_x-(window_w*${x_decimal})) (cursor_y-(window_h*${y_decimal}))|")
-        echo "$result"
-    else
-        echo "$line"
-    fi
-}
-
-# Function to update hypremoji.conf to new Hyprland syntax
-update_hypremoji_syntax() {
-    local conf_file="$1"
-    
-    if [[ ! -f "$conf_file" ]]; then
-        return 0
-    fi
-    
-    # Check if already updated (verifica que NO tenga la sintaxis vieja)
-    if ! grep -q "windowrulev2" "$conf_file" && ! grep -q "title:\^(HyprEmoji)" "$conf_file"; then
-        echo "    -> Config already using new syntax"
-        return 0
-    fi
-    
-    echo "    -> Migrating to new Hyprland syntax..."
-    
-    local temp_file=$(mktemp)
-    local updated=false
-    local line_num=0
-    
-    # FIX: Usar un process substitution con cat para asegurar que se lean todas las líneas
-    while IFS= read -r line || [[ -n "$line" ]]; do  # <- ¡ESTE ES EL FIX!
-        line_num=$((line_num + 1))
-        
-        local new_line="$line"
-        
-        # Convert windowrulev2 -> windowrule
-        if echo "$new_line" | grep -q "windowrulev2"; then
-            new_line=$(echo "$new_line" | sed 's/windowrulev2 =/windowrule =/g')
-        fi
-        
-        # Fix float rule: windowrule = float, -> windowrule = float true,
-        if echo "$new_line" | grep -q "windowrule = float,"; then
-            new_line=$(echo "$new_line" | sed 's/windowrule = float,/windowrule = float true,/g')
-        fi
-        
-        # Convert title:^(HyprEmoji)$ -> match:title ^(HyprEmoji)$
-        if echo "$new_line" | grep -q "title:\^(HyprEmoji)"; then
-            new_line=$(echo "$new_line" | sed 's/title:\^(HyprEmoji)\$/match:title ^(HyprEmoji)$/g')
-        fi
-        
-        # Convert cursor syntax if present
-        if echo "$new_line" | grep -q "cursor -[0-9]\+% -[0-9]\+%"; then
-            new_line=$(convert_cursor_syntax "$new_line")
-            updated=true
-        fi
-        
-        # Check if line was modified
-        if [[ "$line" != "$new_line" ]]; then
-            updated=true
-        fi
-        
-        echo "$new_line" >> "$temp_file"
-    done < "$conf_file"
-    
-    cat "$temp_file" >&2
-    
-    if [[ "$updated" == true ]]; then
-        mv "$temp_file" "$conf_file"
-        echo "    -> Syntax migration completed"
-        
-        if [[ -n "$SUDO_USER" ]]; then
-            chown "$SUDO_USER:$SUDO_USER" "$conf_file"
-        fi
-    else
-        rm "$temp_file"
-        echo "    -> No syntax changes needed"
-    fi
-    
-    cat "$conf_file" >&2
-}
 
 post_upgrade() {
-    echo "==> Upgrading hypremoji configuration..."
-    
-    if [[ -f /usr/share/hypremoji/setting_in_hyprland_config.sh ]]; then
-        rm -f /usr/share/hypremoji/setting_in_hyprland_config.sh
-        echo "    -> Removed deprecated setup script"
-    fi
+    echo "==> Upgrading hypremoji to v1.2..."
 
     get_user_home() {
         if [[ -n "$SUDO_USER" ]]; then
@@ -228,224 +130,159 @@ post_upgrade() {
     }
 
     USER_HOME=$(get_user_home)
-    HYPRLAND_CONF="$USER_HOME/.config/hypr/hyprland.conf"
     HYPREMOJI_DIR="$USER_HOME/.config/hypremoji"
     HYPREMOJI_CONF="$HYPREMOJI_DIR/hypremoji.conf"
-    PASTE_CONFIG="$HYPREMOJI_DIR/paste_config.json"
-    BACKUP_FILE="${USER_HOME}/.config/hypr/hyprland-backup-$(date +%Y%m%d-%H%M%S).conf"
+    OLD_PASTE_CONFIG="$HYPREMOJI_DIR/paste_config.json"
+    NEW_CONFIG="$HYPREMOJI_DIR/config.json"
+    STYLE_CSS="$HYPREMOJI_DIR/style.css"
 
-    if [[ ! -f "$PASTE_CONFIG" ]]; then
-        if [[ -f /usr/share/hypremoji/paste_config.json ]]; then
-            cp /usr/share/hypremoji/paste_config.json "$PASTE_CONFIG"
-            if [[ -n "$SUDO_USER" ]]; then
-                chown "$SUDO_USER:$SUDO_USER" "$PASTE_CONFIG"
-            fi
-            echo "    -> Created paste config at $PASTE_CONFIG"
-        fi
-    fi
-
-    if [[ -f "$HYPREMOJI_CONF" ]]; then
-        echo "    -> Found existing hypremoji.conf"
-        update_hypremoji_syntax "$HYPREMOJI_CONF"
+    # Migrar paste_config.json → config.json
+    if [[ -f "$OLD_PASTE_CONFIG" ]] && [[ ! -f "$NEW_CONFIG" ]]; then
+        echo "    -> Migrating paste_config.json to config.json"
         
-        if [[ -f "$HYPRLAND_CONF" ]] && ! grep -q "source.*hypremoji/hypremoji.conf" "$HYPRLAND_CONF"; then
-            echo "    -> Warning: hypremoji.conf exists but not sourced in hyprland.conf"
-            echo ""
-            read -p "    Add source line to hyprland.conf? [Y/n]: " response
-            response=${response:-Y}
-            
-            case "$response" in
-                [Yy]* )
-                    {
-                        echo ""
-                        echo "# HyprEmoji config"
-                        echo "source = ~/.config/hypremoji/hypremoji.conf"
-                    } >> "$HYPRLAND_CONF"
-                    echo "    -> Added source line to hyprland.conf"
-                    echo "    -> Reload Hyprland to apply changes"
-                    ;;
-                * )
-                    echo "    -> Skipped"
-                    ;;
-            esac
+        # Verificar si ya tiene current_pin_mode
+        if grep -q '"current_pin_mode"' "$OLD_PASTE_CONFIG"; then
+            # Ya lo tiene, solo renombrar
+            mv "$OLD_PASTE_CONFIG" "$NEW_CONFIG"
         else
-            echo "    -> Configuration up to date"
+            # Agregar el campo usando sed
+            sed '$ s/}$/,\n  "current_pin_mode": "cursor_down"\n}/' \
+                "$OLD_PASTE_CONFIG" > "$NEW_CONFIG"
+            rm "$OLD_PASTE_CONFIG"
+            echo "       -> Added current_pin_mode: cursor_down"
         fi
         
-        echo ""
-        echo "==> Upgrade complete"
-        return 0
+        if [[ -n "$SUDO_USER" ]]; then
+            chown "$SUDO_USER:$SUDO_USER" "$NEW_CONFIG"
+        fi
     fi
 
-    echo "    -> Detected old configuration structure (v1.0.2 or earlier)"
-
-    if [[ ! -f "$HYPRLAND_CONF" ]]; then
-        echo "    -> No Hyprland config found, creating fresh config"
-        
-        mkdir -p "$HYPREMOJI_DIR"
-        
-        if [[ -f /usr/share/hypremoji/hypremoji.conf ]]; then
-            cp /usr/share/hypremoji/hypremoji.conf "$HYPREMOJI_CONF"
-            if [[ -n "$SUDO_USER" ]]; then
-                chown -R "$SUDO_USER:$SUDO_USER" "$HYPREMOJI_DIR"
-            fi
-            echo "    -> Created default config at $HYPREMOJI_CONF"
+    # Si no existe ninguno, crear desde cero
+    if [[ ! -f "$NEW_CONFIG" ]]; then
+        cp /usr/share/hypremoji/config.json "$NEW_CONFIG"
+        if [[ -n "$SUDO_USER" ]]; then
+            chown "$SUDO_USER:$SUDO_USER" "$NEW_CONFIG"
         fi
-        
-        echo ""
-        echo "==> Upgrade complete"
-        return 0
+        echo "    -> Created config.json"
     fi
 
-    if ! grep -q "# WindowRules for HyprEmojis\|# SUPER + PERIOD to open Hypremoji\|windowrulev2.*HyprEmoji\|bind.*hypremoji" "$HYPRLAND_CONF"; then
-        echo "    -> No old configuration found in hyprland.conf"
-        echo "    -> Creating fresh configuration"
-
-        mkdir -p "$HYPREMOJI_DIR"
-        
-        if [[ -f /usr/share/hypremoji/hypremoji.conf ]]; then
-            cp /usr/share/hypremoji/hypremoji.conf "$HYPREMOJI_CONF"
-            if [[ -n "$SUDO_USER" ]]; then
-                chown -R "$SUDO_USER:$SUDO_USER" "$HYPREMOJI_DIR"
-            fi
-            echo "    -> Created config at $HYPREMOJI_CONF"
-        fi
-        
-        if ! grep -q "source.*hypremoji/hypremoji.conf" "$HYPRLAND_CONF"; then
-            echo ""
-            read -p "    Add source line to hyprland.conf? [Y/n]: " response
-            response=${response:-Y}
+    if [[ -f "$STYLE_CSS" ]]; then
+        # Verificar si ya tiene los estilos v1.2
+        if ! grep -q "New styles for v1.2 components" "$STYLE_CSS"; then
+            echo "    -> Adding v1.2 styles to style.css"
             
-            case "$response" in
-                [Yy]* )
-                    cp "$HYPRLAND_CONF" "$BACKUP_FILE"
-                    if [[ -n "$SUDO_USER" ]]; then
-                        chown "$SUDO_USER:$SUDO_USER" "$BACKUP_FILE"
-                    fi
-                    echo "    -> Backup created: $BACKUP_FILE"
-                    
-                    {
-                        echo ""
-                        echo "# HyprEmoji config"
-                        echo "source = ~/.config/hypremoji/hypremoji.conf"
-                    } >> "$HYPRLAND_CONF"
-                    
-                    echo "    -> Added source line to hyprland.conf"
-                    echo "    -> Reload Hyprland to apply changes"
-                    ;;
-                * )
-                    echo "    -> Skipped"
-                    ;;
-            esac
+            cat >> "$STYLE_CSS" << 'EOF'
+
+
+/* New styles for v1.2 components */
+/* You can integrate these styles into your custom theme */
+
+:root{
+  --error: #c41313;
+}
+
+.generic-btn{
+  color: var(--primary-col);
+  -gtk-icon-size: 24px; 
+}
+
+.toast-container {
+  background-color: var(--btn-list-col);
+  border-radius: 10px;
+  padding: 5px 15px;
+  margin: 0 20px;
+  margin-bottom: 20px;
+  border: 1px solid var(--primary-col);
+  
+  transition: all 0.3s ease-in-out;
+  transform: scale(0.0000000001);
+}
+
+.toast-container.error {
+  border: 1px solid var(--error);
+}
+
+.toast-label {
+  color: white;
+  font-weight: 700;
+}
+
+.show-toast {
+  transform: scale(1);
+
+  animation-name: boingCombo;
+  animation-duration: 5s;
+  animation-fill-mode: both;
+}
+
+@keyframes boingCombo {
+  0% {
+    opacity: 0;
+    transform: scale3d(.3,.3,.3);
+  }
+
+  0.6% {
+    transform: scale3d(1.1,1.1,1.1);
+  }
+
+  1.2% {
+    transform: scale3d(.9,.9,.9);
+  }
+
+  1.8% {
+    opacity: 1;
+    transform: scale3d(1.03,1.03,1.03);
+  }
+
+  2.4% {
+    transform: scale3d(.97,.97,.97);
+  }
+
+  3% {
+    opacity: 1;
+    transform: scale3d(1,1,1);
+  }
+
+  90% {
+    opacity: 1;
+    transform: scale3d(1,1,1);
+  }
+
+  92% {
+    transform: scale3d(.9,.9,.9);
+  }
+
+  95%, 95.5% {
+    opacity: 1;
+    transform: scale3d(1.1,1.1,1.1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale3d(.3,.3,.3);
+  }
+}
+EOF
+            
+            if [[ -n "$SUDO_USER" ]]; then
+                chown "$SUDO_USER:$SUDO_USER" "$STYLE_CSS"
+            fi
+            echo "       -> Styles added successfully"
+        else
+            echo "    -> v1.2 styles already present, skipping"
         fi
-        
-        echo ""
-        echo "==> Upgrade complete"
-        return 0
+    else
+        echo "    -> Warning: style.css not found at $STYLE_CSS"
+        echo "       Run hypremoji once to generate default styles"
     fi
     
     echo ""
-    echo "==> Old hypremoji configuration detected in hyprland.conf"
-    echo "    hypremoji now uses a separate config file: ~/.config/hypremoji/hypremoji.conf"
+    echo "==> Upgrade complete to v1.2"
+    echo "    • New: Toast notifications"
+    echo "    • New: Pin mode toggle with refresh button"
+    echo "    • Updated: config.json (renamed from paste_config.json)"
+    echo "    • Updated: 4 new/updated SVG icons"
     echo ""
-    read -p "    Migrate to new configuration system? [Y/n]: " response
-    response=${response:-Y}
-    
-    case "$response" in
-        [Yy]* )
-            cp "$HYPRLAND_CONF" "$BACKUP_FILE"
-            if [[ -n "$SUDO_USER" ]]; then
-                chown "$SUDO_USER:$SUDO_USER" "$BACKUP_FILE"
-            fi
-            echo "    -> Backup created: $BACKUP_FILE"
-            
-            TEMP_EXTRACT=$(mktemp)
-            
-            CUSTOM_BIND=$(grep "bind.*hypremoji" "$HYPRLAND_CONF" | grep -v "^[[:space:]]*#" | head -1 || echo "")
-            
-            grep "windowrulev2.*HyprEmoji" "$HYPRLAND_CONF" | grep -v "^[[:space:]]*#" > "$TEMP_EXTRACT"
-            
-            mkdir -p "$HYPREMOJI_DIR"
-            
-            {
-                echo "# HyprEmoji Configuration"
-                echo ""
-                
-                if [[ -n "$CUSTOM_BIND" ]]; then
-                    echo "# Keybind to open hypremoji"
-                    echo "$CUSTOM_BIND"
-                else
-                    echo "# Keybind to open hypremoji"
-                    echo "bind = SUPER, period, exec, hypremoji"
-                fi
-                
-                echo ""
-                echo "# Window rules for HyprEmoji"
-                
-                HAS_FLOAT=$(grep "windowrulev2 = float.*HyprEmoji" "$TEMP_EXTRACT" || echo "")
-                HAS_MOVE=$(grep "windowrulev2 = move.*HyprEmoji" "$TEMP_EXTRACT" || echo "")
-                HAS_SIZE=$(grep "windowrulev2 = size.*HyprEmoji" "$TEMP_EXTRACT" || echo "")
-                
-                if [[ -n "$HAS_FLOAT" ]]; then
-                    echo "$HAS_FLOAT"
-                else
-                    echo "windowrulev2 = float, title:^(HyprEmoji)\$"
-                fi
-                
-                if [[ -n "$HAS_SIZE" ]]; then
-                    echo "$HAS_SIZE"
-                else
-                    echo "windowrulev2 = size 307 340, title:^(HyprEmoji)\$"
-                fi
-                
-                if [[ -n "$HAS_MOVE" ]]; then
-                    echo "$HAS_MOVE"
-                else
-                    echo "windowrulev2 = move cursor -50% -5%, title:^(HyprEmoji)\$"
-                fi
-                
-            } > "$HYPREMOJI_CONF"
-            
-            rm "$TEMP_EXTRACT"
-            
-            if [[ -n "$SUDO_USER" ]]; then
-                chown -R "$SUDO_USER:$SUDO_USER" "$HYPREMOJI_DIR"
-            fi
-            
-            echo "    -> Created $HYPREMOJI_CONF with your custom settings"
-            
-            TEMP_HYPR=$(mktemp)
-            grep -v "# SUPER.*Hypremoji\|# WindowRules for HyprEmojis\|bind.*hypremoji\|windowrulev2.*HyprEmoji" "$HYPRLAND_CONF" > "$TEMP_HYPR"
-            
-            if ! grep -q "source.*hypremoji/hypremoji.conf" "$TEMP_HYPR"; then
-                {
-                    echo ""
-                    echo "# HyprEmoji config"
-                    echo "source = ~/.config/hypremoji/hypremoji.conf"
-                } >> "$TEMP_HYPR"
-            fi
-            
-            cat "$TEMP_HYPR" > "$HYPRLAND_CONF"
-            rm "$TEMP_HYPR"
-            
-            if [[ -n "$SUDO_USER" ]]; then
-                chown "$SUDO_USER:$SUDO_USER" "$HYPRLAND_CONF"
-            fi
-            
-            echo "    -> Migration completed successfully"
-            echo "    -> Your custom keybind and window position were preserved"
-            echo "    -> Old rules removed from hyprland.conf"
-            echo "    -> New source line added"
-            echo "    -> Reload Hyprland to apply changes (SUPER + SHIFT + R)"
-            ;;
-        * )
-            echo "    -> Skipped migration"
-            echo "    -> You can migrate manually by moving your hypremoji rules to:"
-            echo "       ~/.config/hypremoji/hypremoji.conf"
-            echo "    -> Then add to hyprland.conf: source = ~/.config/hypremoji/hypremoji.conf"
-            ;;
-    esac
-    
-    echo ""
-    echo "==> Upgrade complete"
+    echo "    Note: New styles added to the end of your style.css"
+    echo "    Your custom theme remains intact!"
 }
