@@ -1,4 +1,4 @@
-# Maintainer: Nick <nick@example.com>
+# Maintainer: Nick <nxckmusicprod@gmail.com>
 pkgname=cybergrind-git
 pkgver=r61.35b80ff
 pkgrel=1

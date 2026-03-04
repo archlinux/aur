@@ -1,6 +1,6 @@
 pkgbase = cybergrind-git
 	pkgdesc = A terminal-based idle game with a cyberpunk theme
-	pkgver = r1.0b
+	pkgver = r61.35b80ff
 	pkgrel = 1
 	url = https://github.com/nxck2005/whiletrue
 	arch = x86_64
