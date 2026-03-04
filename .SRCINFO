@@ -9,6 +9,6 @@ pkgbase = wtop
 	makedepends = cargo
 	depends = gcc-libs
 	source = wtop-0.2.1.tar.gz::https://github.com/josema294/wtop/archive/refs/tags/v0.2.1.tar.gz
-	sha256sums = af21e03457bd557639eff29f50398c0c71aabdbf431eda8d36cfd2800f986769
+	sha256sums = 71b99e0bdb7a37080f72f33cd9249d4764716b644743d73dcf545fd556dda8e3
 
 pkgname = wtop

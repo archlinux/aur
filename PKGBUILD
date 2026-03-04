@@ -9,7 +9,7 @@ license=('AGPL3')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('af21e03457bd557639eff29f50398c0c71aabdbf431eda8d36cfd2800f986769')
+sha256sums=("71b99e0bdb7a37080f72f33cd9249d4764716b644743d73dcf545fd556dda8e3")
 
 build() {
   cd "$pkgname-$pkgver"
