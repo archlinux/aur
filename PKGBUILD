@@ -1,5 +1,5 @@
 pkgname=zerofs-bin
-pkgver=1.0.1
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="The Filesystem That Makes S3 your Primary Storage. ZeroFS is 9P/NFS/NBD on top of S3."
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ conflicts=('zerofs' 'zerofs-git')
 license=('AGPLv3')
 
 source=(zerofs-pgo-multiplatform-$pkgver.tar.gz::"https://github.com/Barre/ZeroFS/releases/download/v$pkgver/zerofs-pgo-multiplatform.tar.gz")
-sha256sums=('8a6852b788dbf5bf9087f2d1562a6fad698c9e0aa3b052097d2049b280ecae3c')
+sha256sums=('f49c45afa3476eeb0bc578576fe8ab41d0b74c06041d3e10e6822993e717cdee')
 
 package() {
 	case $CARCH in
