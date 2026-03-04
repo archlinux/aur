@@ -1,0 +1,22 @@
+pkgbase = memerist
+	pkgdesc = A modern meme editor built with GTK 4 and Libadwaita
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/vani-tty1/memerist
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = gcc
+	makedepends = pkg-config
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	depends = libpng
+	depends = libjpeg
+	source = memerist-0.4.2.tar.gz::https://github.com/vani-tty1/memerist/archive/refs/tags/v0.4.2.tar.gz
+	sha256sums = 19221b98aa40f65c4f9b285f76d9f00b7fbb663961026223fe9377c85afec1a2
+	b2sums = 19aa3a031f80589412b34eb4c8151b0380e1f9c0ba23b9b99de80c2f35784d5e2e3da701c5d05fe1e514093e4a3a04476de2944b40d343169455a5e4a4dd2774
+
+pkgname = memerist
