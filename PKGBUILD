@@ -2,22 +2,23 @@
 
 pkgname=gnome-pomodoro-extension
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='GNOME Shell extension that manages focus and break cycles with the Pomodoro technique'
 arch=('i686' 'x86_64')
 url='https://github.com/focustimerhq/FocusTimer'
 license=('GPL3')
 depends=(
   'glib2'
-  'gtk3'
+  'gtk4'
+  'libadwaita'
+  'graphene'
+  'pango'
   'gom'
   'libpeas-2'
   'sqlite'
   'gstreamer'
-  'libcanberra'
   'json-glib'
   'cairo'
-  'gdk-pixbuf2'
   'gobject-introspection'
 )
 makedepends=('meson' 'vala')
