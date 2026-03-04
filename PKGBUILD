@@ -2,20 +2,22 @@
 # Contributor: devome <evinedeng@hotmail.com>
 
 pkgbase=opentelemetry-python-contrib
-pkgver=0.60b1
+pkgver=0.61b0
 pkgrel=1
 arch=("any")
 _url="https://github.com/open-telemetry/${pkgbase}"
 license=("Apache-2.0")
 makedepends=('python-build' 'python-hatchling' 'python-installer' 'python-wheel')
 source=("${pkgbase}-${pkgver}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('195f897d2782ba2b5f4327830c6ba1688ec19c6d7bb50f5fb423e8e52d09dd049b202182dba17ee2709e2efe451070b4097481447c72ea3494ff3f625fa31506')
+b2sums=('9da506cfd588aeb65220f127ede5a6fc11fbe0df14ff195612b7166c94574872d95a59e9662b4c80ddcb8d0119f3145f48c035cc802b91c1865d80ecd929b5ff')
 
 # run './geninfo.sh' to generate following variables
 pkgname=(
     "python-opentelemetry-exporter-credential-provider-gcp"
     "python-opentelemetry-exporter-prometheus-remote-write"
     "python-opentelemetry-exporter-richconsole"
+    "python-opentelemetry-instrumentation-anthropic"
+    "python-opentelemetry-instrumentation-claude-agent-sdk"
     "python-opentelemetry-instrumentation-google-genai"
     "python-opentelemetry-instrumentation-langchain"
     "python-opentelemetry-instrumentation-openai-agents-v2"
@@ -89,6 +91,8 @@ _pkgdescs=(
     "GCP OTLP Exporter Credential Provider for OpenTelemetry"
     "Prometheus Remote Write Metrics Exporter for OpenTelemetry"
     "Rich Console Exporter for OpenTelemetry"
+    "OpenTelemetry Anthropic instrumentation"
+    "OpenTelemetry Claude Agent SDK instrumentation"
     "OpenTelemetry"
     "OpenTelemetry Official Langchain instrumentation"
     "OpenTelemetry Official OpenAI Agents instrumentation"
@@ -162,6 +166,8 @@ _urls=(
     "${_url}/tree/main/exporter/opentelemetry-exporter-credential-provider-gcp"
     "${_url}/tree/main/exporter/opentelemetry-exporter-prometheus-remote-write"
     "${_url}/tree/main/exporter/opentelemetry-exporter-richconsole"
+    "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-anthropic"
+    "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-claude-agent-sdk"
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-google-genai"
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-langchain"
     "${_url}/tree/main/instrumentation-genai/opentelemetry-instrumentation-openai-agents-v2"
@@ -236,9 +242,11 @@ _depends=(
     "python-opentelemetry-api python-opentelemetry-sdk python-protobuf python-requests python-snappy"
     "python-opentelemetry-api python-opentelemetry-sdk python-opentelemetry-semantic-conventions python-rich"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-genai"
-    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-genai"
-    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-genai"
+    "python-opentelemetry-instrumentation"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-genai"
+    "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-genai"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-genai"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions"
     "python-opentelemetry-api python-opentelemetry-instrumentation python-opentelemetry-semantic-conventions python-opentelemetry-util-http python-wrapt"
@@ -308,6 +316,8 @@ _optdepends=(
     ""
     ""
     ""
+    "python-anthropic"
+    "python-claude-agent-sdk"
     "python-google-genai"
     "python-langchain"
     "python-openai-agents"

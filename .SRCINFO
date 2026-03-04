@@ -1,5 +1,5 @@
 pkgbase = opentelemetry-python-contrib
-	pkgver = 0.60b1
+	pkgver = 0.61b0
 	pkgrel = 1
 	arch = any
 	license = Apache-2.0
@@ -7,8 +7,8 @@ pkgbase = opentelemetry-python-contrib
 	makedepends = python-hatchling
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = opentelemetry-python-contrib-0.60b1.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.60b1.tar.gz
-	b2sums = 195f897d2782ba2b5f4327830c6ba1688ec19c6d7bb50f5fb423e8e52d09dd049b202182dba17ee2709e2efe451070b4097481447c72ea3494ff3f625fa31506
+	source = opentelemetry-python-contrib-0.61b0.tar.gz::https://github.com/open-telemetry/opentelemetry-python-contrib/archive/refs/tags/v0.61b0.tar.gz
+	b2sums = 9da506cfd588aeb65220f127ede5a6fc11fbe0df14ff195612b7166c94574872d95a59e9662b4c80ddcb8d0119f3145f48c035cc802b91c1865d80ecd929b5ff
 
 pkgname = python-opentelemetry-exporter-credential-provider-gcp
 	pkgdesc = GCP OTLP Exporter Credential Provider for OpenTelemetry
@@ -37,6 +37,24 @@ pkgname = python-opentelemetry-exporter-richconsole
 	depends = python-rich
 	optdepends = 
 
+pkgname = python-opentelemetry-instrumentation-anthropic
+	pkgdesc = OpenTelemetry Anthropic instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-anthropic
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-genai
+	optdepends = python-anthropic
+
+pkgname = python-opentelemetry-instrumentation-claude-agent-sdk
+	pkgdesc = OpenTelemetry Claude Agent SDK instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-claude-agent-sdk
+	depends = python-opentelemetry-api
+	depends = python-opentelemetry-instrumentation
+	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-genai
+	optdepends = python-claude-agent-sdk
+
 pkgname = python-opentelemetry-instrumentation-google-genai
 	pkgdesc = OpenTelemetry
 	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-google-genai
@@ -49,9 +67,7 @@ pkgname = python-opentelemetry-instrumentation-google-genai
 pkgname = python-opentelemetry-instrumentation-langchain
 	pkgdesc = OpenTelemetry Official Langchain instrumentation
 	url = https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-langchain
-	depends = python-opentelemetry-api
 	depends = python-opentelemetry-instrumentation
-	depends = python-opentelemetry-semantic-conventions
 	optdepends = python-langchain
 
 pkgname = python-opentelemetry-instrumentation-openai-agents-v2
@@ -69,6 +85,7 @@ pkgname = python-opentelemetry-instrumentation-openai-v2
 	depends = python-opentelemetry-api
 	depends = python-opentelemetry-instrumentation
 	depends = python-opentelemetry-semantic-conventions
+	depends = python-opentelemetry-util-genai
 	optdepends = python-openai
 
 pkgname = python-opentelemetry-instrumentation-vertexai
