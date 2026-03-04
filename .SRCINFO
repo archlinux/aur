@@ -1,6 +1,6 @@
 pkgbase = p4lang-p4c
 	pkgdesc = P4 reference compiler
-	pkgver = 1.2.5.10
+	pkgver = 1.2.5.11
 	pkgrel = 1
 	url = https://github.com/p4lang/p4c
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = p4lang-p4c
 	depends = python-ply
 	depends = python-pyroute2
 	depends = python-scapy
-	source = p4lang-p4c-1.2.5.10.tar.gz::https://github.com/p4lang/p4c/archive/refs/tags/v1.2.5.10.tar.gz
+	source = p4lang-p4c-1.2.5.11.tar.gz::https://github.com/p4lang/p4c/archive/refs/tags/v1.2.5.11.tar.gz
 	source = googletest-1.14.0.tar.gz::https://github.com/google/googletest/archive/refs/tags/v1.14.0.tar.gz
 	source = bpftool-7.5.0.tar.gz::https://github.com/libbpf/bpftool/releases/download/v7.5.0/bpftool-libbpf-v7.5.0-sources.tar.gz
 	source = git+https://github.com/p4lang/p4runtime.git#commit=ec4eb5ef70dbcbcbf2f8357a4b2b8c2f218845a5
