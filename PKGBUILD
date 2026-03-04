@@ -1,7 +1,7 @@
 # Maintainer:  Misaka13514 <Misaka13514 at gmail dot com>
 
 pkgname=iptv-checker
-pkgver=0.30.0
+pkgver=0.30.1
 pkgrel=1
 pkgdesc="Node.js CLI tool for checking links in IPTV playlists"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('nodejs' 'ffmpeg')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('95cc244dd8d500267c601d09a80aebb6d288bc940d1569b2376710f8807ac2ae')
+sha256sums=('fae60beb61b8e1a107184948ec8efdf958ff7d9ae2394e5c3ede1ba7f830cf8f')
 
 package() {
     npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${pkgname}-${pkgver}.tgz"
