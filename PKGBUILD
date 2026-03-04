@@ -56,4 +56,7 @@ package() {
 
     # Create a symbolic link for the AppRun
     ln -s "/opt/${_pkgname}/AppRun" "${pkgdir}/usr/bin/shadps4"
+
+	# Permissions
+	chmod -R u+rwX,go+rX,go-w "${pkgdir}/opt/${_pkgname}"
 }
