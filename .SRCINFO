@@ -1,0 +1,17 @@
+pkgbase = cybergrind-git
+	pkgdesc = A terminal-based idle game with a cyberpunk theme
+	pkgver = r1.0b
+	pkgrel = 1
+	url = https://github.com/nxck2005/whiletrue
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = ncurses
+	provides = cybergrind
+	conflicts = cybergrind
+	source = cybergrind::git+https://github.com/nxck2005/whiletrue.git
+	md5sums = SKIP
+
+pkgname = cybergrind-git
