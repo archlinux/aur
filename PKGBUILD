@@ -1,6 +1,6 @@
   # Maintainer: Nauris Steins <me@naurissteins.com>
   pkgname=matuwall
-  pkgver=0.1.3
+  pkgver=0.1.4
   pkgrel=1
   pkgdesc="GTK4 + libadwaita wallpaper switcher"
   arch=('x86_64')
