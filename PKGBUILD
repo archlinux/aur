@@ -3,7 +3,7 @@ pkgname=qoder-bin
 _pkgname=Qoder
 pkgver=0.4.7
 _electronversion=37
-pkgrel=3
+pkgrel=4
 pkgdesc="Agent Programming Platform for Real Software.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://qoder.com/"
@@ -25,12 +25,12 @@ options=(
 )
 source=(
     "${pkgname%-bin}-${pkgver}.rpm::https://download.qoder.com/release/latest/${pkgname%-bin}_${CARCH}.rpm"
-    "LICENSE-${pkgver}::https://qoder.com/product-service"
+    "LICENSE.html::${srcdir}/LICENSE.html"
     "${pkgname%-bin}.js"
     "${pkgname%-bin}.sh"
 )
 sha256sums=('dd7a7758819407dcb68a26e87fa2bee6dc9d5b095aaec139a68b9e1253ab087a'
-            '065b5ac40d587593580b9968db37e96e155c42f3cdcbac6d87d1f39c74861ec9'
+            'd93359b3ca57aec94960975eec23b6412dc8fc0c5b5fcbce57bee0931e01ec61'
             '51c4f53005bf6cbfb3740a04f9ede901e7bb84cc60ad6a2bbae77e8355b34ebc'
             'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
 pkgver() {
