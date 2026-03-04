@@ -1,5 +1,5 @@
 pkgname=goonget
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="CLI tool to fetch images/gifs/videos from rule34 and display them directly in terminal"
 arch=('any')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python' 'python-requests' 'chafa')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('792077886e237ba9319521270f3f1ca037d509bb2977d3a05b923b7e1b1d351f')
+sha256sums=('4e40d25233efadeede34e17f4cc45311ee62c95bae23ef6a3cb025d216d83be0')
 
 build() {
     cd "$srcdir/GoonGet-$pkgver"
