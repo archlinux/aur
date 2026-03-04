@@ -6,10 +6,10 @@ pkgdesc="High-performance PDF reader that prioritizes screen space and control"
 arch=('x86_64')
 url="https://codeberg.org/lektra/lektra"
 license=('AGPL-3.0')
-depends=('qt6-base')
-optdepends=(
-    'libsynctex: for synctex support'
-    'djvulibre: for djvu support'
+depends=(
+    'qt6-base'
+    'libsynctex'
+    'djvulibre'
 )
 makedepends=('git' 'cmake' 'pkgconf')
 provides=("lektra")
