@@ -2,23 +2,26 @@
 
 _ocamlname=ipaddr
 pkgname=ocaml-$_ocamlname
-pkgver=5.6.1
-pkgrel=2
+pkgver=5.6.2
+pkgrel=1
 pkgdesc="A library for manipulation of IP (and MAC) address representations"
 arch=('x86_64')
 url="https://github.com/mirage/ocaml-ipaddr"
 license=('ISC')
 depends=('ocaml')
 makedepends=('dune' 'ocaml-domain-name' 'ocaml-hex' 'ocaml-macaddr')
-checkdepends=('ocaml-ounit' 'ocaml-ppx_sexp_conv')
+#checkdepends=('ocaml-ounit' 'ocaml-ppx_sexp_conv')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tbz::${url}/releases/download/v${pkgver}/${_ocamlname}-${pkgver}.tbz")
-sha256sums=('1e617df8abd45843c823e9be75267d27426cb578661cf25622d50b25ae14a319')
+sha256sums=('08a3fa6e6411490b6661e5b10229ea9ec6b8c3738e9f6b255859b13f145be136')
 
-check() {
-    cd "${srcdir}/${_ocamlname}-${pkgver}"
-    dune runtest --verbose
-}
+# ppx_sexp_conv does not build with OCaml 5.4
+# cf. https://github.com/janestreet/ppx_sexp_conv/issues/43
+#
+# check() {
+#     cd "${srcdir}/${_ocamlname}-${pkgver}"
+#     dune runtest --verbose
+# }
 
 build() {
     cd "${srcdir}/${_ocamlname}-${pkgver}"

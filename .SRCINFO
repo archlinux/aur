@@ -1,19 +1,17 @@
 pkgbase = ocaml-ipaddr
 	pkgdesc = A library for manipulation of IP (and MAC) address representations
-	pkgver = 5.6.1
-	pkgrel = 2
+	pkgver = 5.6.2
+	pkgrel = 1
 	url = https://github.com/mirage/ocaml-ipaddr
 	arch = x86_64
 	license = ISC
-	checkdepends = ocaml-ounit
-	checkdepends = ocaml-ppx_sexp_conv
 	makedepends = dune
 	makedepends = ocaml-domain-name
 	makedepends = ocaml-hex
 	makedepends = ocaml-macaddr
 	depends = ocaml
 	options = !strip
-	source = ocaml-ipaddr-5.6.1.tbz::https://github.com/mirage/ocaml-ipaddr/releases/download/v5.6.1/ipaddr-5.6.1.tbz
-	sha256sums = 1e617df8abd45843c823e9be75267d27426cb578661cf25622d50b25ae14a319
+	source = ocaml-ipaddr-5.6.2.tbz::https://github.com/mirage/ocaml-ipaddr/releases/download/v5.6.2/ipaddr-5.6.2.tbz
+	sha256sums = 08a3fa6e6411490b6661e5b10229ea9ec6b8c3738e9f6b255859b13f145be136
 
 pkgname = ocaml-ipaddr
