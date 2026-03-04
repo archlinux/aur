@@ -1,0 +1,12 @@
+pkgbase = kustomrunner
+	pkgdesc = Kustomrunner – customizable script runner
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = bash
+	depends = python
+	source = kustomrunner-1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = kustomrunner
