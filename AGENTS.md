@@ -52,6 +52,10 @@ bash -n qodercli.bash && zsh -n qodercli.zsh && fish -n qodercli.fish
 - This package conflicts with `qoder-cli` (a hypothetical source-built variant). The binary is installed as `/usr/bin/qodercli`.
 - **AUR repositories must not contain subdirectories.** All files must be at the repo root.
 
+- `update.sh` relies on line-oriented `sed` — do not reformat PKGBUILD fields (`pkgver=`, `sha256sums=()` block, etc.) or the script will silently break.
+- `source+=()` and `sha256sums` arrays must stay in the same order (LICENSE, bash, zsh, fish).
+- AUR repo — changes are published via `git push` directly (no pull requests).
+
 ## Updating Shell Completions
 
 After a `pkgver` bump or when completions are reported incorrect, update all three scripts (`qodercli.bash`, `qodercli.zsh`, `qodercli.fish`) consistently:
@@ -65,7 +69,6 @@ After a `pkgver` bump or when completions are reported incorrect, update all thr
 ```
 qodercli [flags]
 qodercli <command> [flags]
-qodercli mcp <subcommand> [flags]
 ```
 
 Discover actual commands/subcommands/flags via `qodercli --help`, `qodercli <command> --help`, etc. Exclude the `completion` command from completion scripts (it doesn't work correctly).
