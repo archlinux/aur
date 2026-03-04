@@ -1,6 +1,6 @@
 pkgbase = inav-configurator-bin
 	pkgdesc = Crossplatform configuration tool for the INAV flight control system
-	pkgver = 9.0.0
+	pkgver = 9.0.2
 	pkgrel = 1
 	url = https://github.com/iNavFlight/inav-configurator
 	install = inav-configurator.install
@@ -10,9 +10,9 @@ pkgbase = inav-configurator-bin
 	provides = inav-configurator
 	conflicts = inav-configurator
 	options = !strip
-	source_x86_64 = https://github.com/iNavFlight/inav-configurator/releases/download/9.0.0/INAV-Configurator_linux_x64_9.0.0.zip
-	sha256sums_x86_64 = 9f9e90134649dac94bd1665b9c1976a448005280ccba1e3aee05adf9e4706bd7
-	source_aarch64 = https://github.com/iNavFlight/inav-configurator/releases/download/9.0.0/INAV-Configurator_linux_arm64_9.0.0.zip
-	sha256sums_aarch64 = 5bea0169b8d79bfd1df1d31f87bb1ed9768a2fc51ffbae9725173a1be10f9924
+	source_x86_64 = https://github.com/iNavFlight/inav-configurator/releases/download/untagged-58a74ccc453672f866b7/INAV-Configurator_linux_x64_9.0.2.zip
+	sha256sums_x86_64 = a177aae2472477ebba106763af5ebf34002c9c3af343ee1b43a38e0f680283fe
+	source_aarch64 = https://github.com/iNavFlight/inav-configurator/releases/download/untagged-58a74ccc453672f866b7/INAV-Configurator_linux_arm64_9.0.2.zip
+	sha256sums_aarch64 = 37ed8091f16da5415796474e89abcec07d7c0d7dea8a515a2906d81028b57390
 
 pkgname = inav-configurator-bin
