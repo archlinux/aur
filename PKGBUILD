@@ -2,7 +2,7 @@
 # Maintainer: snowdropQwQ <xpecnh2n@gmail.com>
 
 pkgname=micyou-bin
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Turn your Android device into a high-quality wireless microphone for your PC"
 arch=('x86_64')
