@@ -3,7 +3,7 @@
 # Maintainer: l5yth <aur@l5y.tech>
 
 pkgname=podserv-b-git
-pkgver=0.1.0.r4.gf41bd9c
+pkgver=0.1.1.r0.g2dee28d
 pkgrel=1
 pkgdesc="a minimalist podcast server (type b) for serving media files on the web"
 arch=('x86_64' 'aarch64' 'armv7h' 'armv6h')
