@@ -1,0 +1,19 @@
+pkgbase = rv-ruby-bin
+	pkgdesc = Extremely fast Ruby version and gem manager
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://rv.dev/
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = rv-ruby
+	conflicts = rv-ruby
+	source_x86_64 = rv-0.5.2-x86_64.tar.xz::https://github.com/spinel-coop/rv/releases/download/v0.5.2/rv-x86_64-unknown-linux-gnu.tar.xz
+	b2sums_x86_64 = e6b1bab77f3db654a1aee728832dc806eb2358ef6a96baf8440064de45251d8e884f36eb8e63e1dbc8037c8a64b3b5abd5be4e4bde56263ab5a2fc9d83397fcf
+	source_aarch64 = rv-0.5.2-aarch64.tar.xz::https://github.com/spinel-coop/rv/releases/download/v0.5.2/rv-aarch64-unknown-linux-gnu.tar.xz
+	b2sums_aarch64 = 90f0b55a1004021f7f00c0aaee412bc2472aeffb730a03c98f5398aea067221cc22a1f850e1a10551ac7e809196618f93c8d20255d640d1e73ed9aa81360fd33
+
+pkgname = rv-ruby-bin
