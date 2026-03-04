@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/vicrodh/qbz"
 license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'alsa-lib' 'libappindicator-gtk3' 'libxkbcommon' 'openssl' 'sqlite' 'dbus')
-makedepends=('nodejs' 'npm' 'rust' 'cargo' 'pkgconf' 'clang' 'cmake' 'gcc' 'perl' 'nasm')
+makedepends=('nodejs' 'npm' 'rust' 'cargo' 'pkgconf' 'cmake' 'gcc' 'perl')
 optdepends=(
     'alsa-utils: Required for bit-perfect device detection and better ALSA device names'
     'pipewire-alsa: PipeWire audio support'
