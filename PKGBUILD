@@ -1,6 +1,6 @@
 # Maintainer: NemlAI <aur@nemlai.fly.dev>
 pkgname=nemlai
-pkgver=0.4.1
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="CLI and Python SDK for automated grocery replenishment on Nemlig.com (Denmark). Built for OpenClaw and other agents."
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-httpx')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/n/nemlai/nemlai-${pkgver}.tar.gz")
-sha256sums=('2528b6ffd9b71cf07b10ffaf850e2eeec445e68b8f99c2b25bfb2ce9aebfe86f')
+sha256sums=('5859b8aef215eef0162075619eff7a0f0c0d623f7f9485cfb279006240073d90')
 
 build() {
   cd "nemlai-${pkgver}"
