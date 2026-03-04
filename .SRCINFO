@@ -1,0 +1,16 @@
+pkgbase = ovolay-bin
+	pkgdesc = Volume Overlay (Binary Release)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/thnikk/ovolay
+	arch = x86_64
+	license = MIT
+	depends = gtk4-layer-shell
+	depends = libpulse
+	depends = pulseaudio
+	provides = ovolay
+	conflicts = ovolay
+	source = ovolay-bin-1.0.0.zip::https://github.com/thnikk/ovolay/releases/download/v1.0.0/ovolay-arch.zip
+	sha256sums = 0103ac596f3fe5dbc6d4130bdf5b27b683f413ba66aaf73e8480e2cc6cfaddcc
+
+pkgname = ovolay-bin
