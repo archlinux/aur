@@ -1,0 +1,15 @@
+pkgbase = betterfetch-git
+	pkgdesc = Print system information (alternative to fastfetch and neofetch)
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/flopsyan/betterfetch
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	depends = bash
+	provides = betterfetch
+	conflicts = betterfetch
+	source = git+https://github.com/flopsyan/betterfetch.git
+	sha256sums = SKIP
+
+pkgname = betterfetch-git
