@@ -1,0 +1,19 @@
+pkgbase = python-davey
+	pkgdesc = A Discord Audio & Video End-to-End Encryption (DAVE) Protocol implementation
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/Snazzah/davey
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-maturin
+	makedepends = cargo
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/d/davey/davey-0.1.4.tar.gz
+	source = LICENSE-0.1.4::https://raw.githubusercontent.com/Snazzah/davey/main/LICENSE
+	sha256sums = 79e0c64cc3ed6d407e2ebdc672a474065c3bb11297221003d4d12f885ac3d5bf
+	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+
+pkgname = python-davey
