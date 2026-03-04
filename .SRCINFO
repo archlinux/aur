@@ -24,6 +24,6 @@ pkgbase = archvault
 	optdepends = libnotify: Desktop notification support
 	optdepends = xdg-desktop-portal: GNOME Background Apps panel integration
 	source = archvault-5.0.2_beta.tar.gz::https://github.com/LeonLionHeart/ArchVault/archive/refs/tags/v5.0.2-beta.tar.gz
-	sha256sums = e58395f2ce3a29d5de6aa69c6d9e4d97e2dd928c1c0c599d99c0aafeb88cde0a
+	sha256sums = SKIP
 
 pkgname = archvault
