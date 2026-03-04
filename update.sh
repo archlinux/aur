@@ -64,7 +64,11 @@ fi
 # --- update license ---
 if [[ "$license_changed" -eq 1 ]]; then
   mv "$tmp_license" "$LICENSE_FILE"
-  sed -i "s/^sha256sums=.*/sha256sums=('$new_sha')/" "$PKGBUILD"
+  sed -i -E "/^sha256sums=/,/\)/{
+    /^sha256sums=/{ s/^sha256sums=.*/sha256sums=('$new_sha'/; b }
+    /\)/{ s/.*/             'SKIP')/; b }
+    s/.*/             'SKIP'/
+  }" "$PKGBUILD"
   if [[ "$ver_changed" -eq 0 ]]; then
     new_rel=$((cur_rel + 1))
     sed -i -E "s/^pkgrel=.*/pkgrel=$new_rel/" "$PKGBUILD"

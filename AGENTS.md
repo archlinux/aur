@@ -50,37 +50,25 @@ bash -n qodercli.bash && zsh -n qodercli.zsh && fish -n qodercli.fish
 - Checksums (`sha256sums_x86_64`, `sha256sums_aarch64`, `sha256sums`) must match the actual source files. Use `update.sh` or `updpkgsums` to recalculate.
 - After a version bump, check if new CLI commands/flags were added and update the shell completion scripts accordingly.
 - This package conflicts with `qoder-cli` (a hypothetical source-built variant). The binary is installed as `/usr/bin/qodercli`.
+- **AUR repositories must not contain subdirectories.** All files must be at the repo root.
 
 ## Updating Shell Completions
 
-After a `pkgver` bump or when completions are reported incorrect, update all three scripts (`qodercli.bash`, `qodercli.zsh`, `qodercli.fish`) consistently.
+After a `pkgver` bump or when completions are reported incorrect, update all three scripts (`qodercli.bash`, `qodercli.zsh`, `qodercli.fish`) consistently:
 
-### Steps
-
-1. Run `qodercli --help` and each subcommand's `--help` (recursively for `mcp` sub-subcommands)
-2. Compare output against existing completion scripts to find new/changed/removed commands or flags
-3. Update all three scripts
-4. Validate syntax: `bash -n qodercli.bash && zsh -n qodercli.zsh && fish -n qodercli.fish`
-5. Run the functional test below
-6. Regenerate `.SRCINFO` if PKGBUILD changed
+1. Run `qodercli --help` and each subcommand's `--help` (recursively for `mcp` sub-subcommands) to discover new/changed/removed commands or flags
+2. Update all three scripts, following existing patterns in each file
+3. Validate syntax: `bash -n qodercli.bash && zsh -n qodercli.zsh && fish -n qodercli.fish`
 
 ### CLI Structure
 
 ```
 qodercli [flags]
 qodercli <command> [flags]
-
-Commands: jobs, rm, feedback, help, mcp, status, update
-  (ignore "completion" command - it does not work)
-
-mcp subcommands: add, auth, get, list, remove
+qodercli mcp <subcommand> [flags]
 ```
 
-### Script Conventions
-
-- **bash**: `_init_completion` with inline fallback (no hard dependency on bash-completion). `_filedir` with `compgen -f`/`compgen -d` fallback. Subcommand detection by scanning `words` array; `$prev` dispatch for flag values.
-- **zsh**: `#compdef qodercli` header, `_arguments -C` with `->command`/`->args` states. `mcp` uses nested `_arguments -C` with `->mcp_command`/`->mcp_args`. Ends with `_qodercli "$@"`.
-- **fish**: `complete -c qodercli -f` to disable default file completion. Condition functions: `__qodercli_no_subcommand`, `__qodercli_using_subcommand`, `__qodercli_mcp_no_subcommand`, `__qodercli_using_mcp_subcommand`.
+Discover actual commands/subcommands/flags via `qodercli --help`, `qodercli <command> --help`, etc. Exclude the `completion` command from completion scripts (it doesn't work correctly).
 
 ### Flag Type Mapping
 
@@ -91,19 +79,3 @@ mcp subcommands: add, auth, get, list, remove
 | string | return (no completion) | `:label:` | `-r` |
 | file | `compgen -f` | `:file:_files` | `-r -F` |
 | dir | `compgen -d` | `:dir:_directories` | `-r -F` |
-
-### Functional Test
-
-```bash
-bash -c '
-source ./qodercli.bash
-COMP_WORDS=(qodercli ""); COMP_CWORD=1; COMP_LINE="qodercli "; COMP_POINT=${#COMP_LINE}
-_qodercli; echo "top-level: ${COMPREPLY[*]}"
-
-COMPREPLY=(); COMP_WORDS=(qodercli mcp ""); COMP_CWORD=2; COMP_LINE="qodercli mcp "; COMP_POINT=${#COMP_LINE}
-_qodercli; echo "mcp: ${COMPREPLY[*]}"
-
-COMPREPLY=(); COMP_WORDS=(qodercli --model ""); COMP_CWORD=2; COMP_LINE="qodercli --model "; COMP_POINT=${#COMP_LINE}
-_qodercli; echo "--model: ${COMPREPLY[*]}"
-'
-```
