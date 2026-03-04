@@ -1,7 +1,7 @@
 # Maintainer: flopsyan <aur@flopsyan.de>
 
 pkgname=betterfetch-git
-pkgver=1
+pkgver=r29.7707ea0
 pkgrel=1
 pkgdesc='Print system information (alternative to fastfetch and neofetch)'
 arch=(any)

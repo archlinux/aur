@@ -1,6 +1,6 @@
 pkgbase = betterfetch-git
 	pkgdesc = Print system information (alternative to fastfetch and neofetch)
-	pkgver = 1
+	pkgver = r29.7707ea0
 	pkgrel = 1
 	url = https://github.com/flopsyan/betterfetch
 	arch = any
