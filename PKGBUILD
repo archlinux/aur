@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgname=zeroclaw
-pkgver=0.1.7
+pkgver=0.1.8alpha.1
 pkgrel=1
 pkgdesc="Zero overhead, fully autonomous AI assistant runtime (100% Rust)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -12,24 +12,24 @@ optdepends=('bubblewrap: sandbox-bubblewrap isolation support'
             'chromium: browser-native feature'
             'postgresql: memory-postgres backend')
 makedepends=('rust' 'clang' 'cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/zeroclaw-labs/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/zeroclaw-labs/${pkgname}/archive/refs/tags/v0.1.8-alpha.1.tar.gz"
         "zeroclaw.service"
         "zeroclaw.sysusers"
         "zeroclaw.tmpfiles")
-sha256sums=('8494d08a047a4d52546e7ba37dffa9aa0334f72c968357231f583dd395df2479'
+sha256sums=('39d8fc08facb6a71dd4da1b23892350a9581c30f2ae9bf83e5b36125b957dba0'
             'de97ac176531d176ac627bd031e8a79f7adb5a440f321c9b9b0a492fda1154ee'
             '5e22a9f53bab669beab7058c8b7d1c2b090eb7900fb8c9bd94fd3ad609e7afbf'
             '07911d8ca762bc87daf58e7d72ad9067517baedaeccd65f2ae7609962af8216f')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-0.1.8-alpha.1"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_HOME="$srcdir/.cargo-home"
     cargo fetch --locked
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-0.1.8-alpha.1"
     export RUSTUP_TOOLCHAIN=stable
     # zeroclaw requires clang; gcc will not compile successfully
     export CC=clang
@@ -38,11 +38,11 @@ build() {
     cargo build \
         --release \
         --frozen \
-        --features channel-lark,channel-matrix,memory-postgres,observability-otel,browser-native,sandbox-landlock,sandbox-bubblewrap
+        --features channel-lark,channel-matrix,memory-postgres,observability-otel,browser-native,sandbox-landlock,sandbox-bubblewrap,wasm-tools,firecrawl,web-fetch-html2md
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname-0.1.8-alpha.1"
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
     install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
