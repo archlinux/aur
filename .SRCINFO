@@ -18,7 +18,7 @@ pkgbase = zeroclaw
 	source = zeroclaw.sysusers
 	source = zeroclaw.tmpfiles
 	sha256sums = 8494d08a047a4d52546e7ba37dffa9aa0334f72c968357231f583dd395df2479
-	sha256sums = 54c38bdb24d359cdc9945290b2b27782249dea39c6d9998528e4b254837ab2ba
+	sha256sums = de97ac176531d176ac627bd031e8a79f7adb5a440f321c9b9b0a492fda1154ee
 	sha256sums = 5e22a9f53bab669beab7058c8b7d1c2b090eb7900fb8c9bd94fd3ad609e7afbf
 	sha256sums = 07911d8ca762bc87daf58e7d72ad9067517baedaeccd65f2ae7609962af8216f
 
