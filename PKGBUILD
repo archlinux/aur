@@ -2,7 +2,7 @@
 
 pkgname=cherry-studio-bin
 _pkgname=cherry-studio
-pkgver=1.7.22
+pkgver=1.7.23
 pkgrel=1
 pkgdesc="🍒 Cherry Studio is a desktop client that supports for multiple LLM providers "
 arch=('x86_64' 'aarch64')
@@ -32,10 +32,10 @@ noextract=("${_pkgname}-${pkgver}.AppImage")
 # Architecture-specific SHA256 checksums
 case "$CARCH" in
   x86_64)
-    _sha256sum='5190d71e06f5f939258d905b45f9502a881a0369a6709b7ceffcfbfea86d04a1'
+    _sha256sum='5581c6d4eb844749ae1c1d73d0f875e90df441db4f27ad4dbcb2c3e7cff3015c'
     ;;
   aarch64)
-    _sha256sum='75f9d555495794172bdbcc67c353149f3bf79af0104882268fe6c70b3cf5cfac'
+    _sha256sum='8401bd4e05fd1db67ecf66cc0ec7043d3478703b1a0a0cfb585ab9ad95cbb03b'
     ;;
 esac
 
