@@ -4,7 +4,7 @@
 
 pkgname=visual-studio-code-live-bin
 _pkgname=visual-studio-code
-pkgver=1.109.5
+pkgver=1.110
 pkgrel=1
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (live binary version)"
 arch=('x86_64' 'aarch64' 'armv7h')
