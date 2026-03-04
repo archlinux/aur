@@ -1,6 +1,6 @@
 # Maintainer: zsh-ncursed <zsh.ncursed@gmail.com>
 pkgname=somafm_tui
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 pkgdesc="Terminal user interface for SomaFM internet radio"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/zsh-ncursed/somafm_tui"
 license=('MIT')
 depends=('python' 'python-requests' 'python-mpv' 'python-dbus-next')
 makedepends=('git')
-source=("git+https://github.com/zsh-ncursed/somafm_tui.git#tag=v0.4.6")
+source=("git+https://github.com/zsh-ncursed/somafm_tui.git#tag=v0.4.7")
 sha256sums=('SKIP')
 
 prepare() {
@@ -43,20 +43,20 @@ package() {
     install -dm755 "$pkgdir/usr/share/bash-completion/completions"
     install -dm755 "$pkgdir/usr/share/fish/vendor_completions.d"
 
-    # Install main Python package files (now in somafm_tui/ subdirectory)
-    install -Dm644 somafm_tui/__init__.py "$pkgdir/usr/lib/somafm_tui/__init__.py"
-    install -Dm644 somafm_tui/__main__.py "$pkgdir/usr/lib/somafm_tui/__main__.py"
-    install -Dm644 somafm_tui/player.py "$pkgdir/usr/lib/somafm_tui/player.py"
-    install -Dm644 somafm_tui/config.py "$pkgdir/usr/lib/somafm_tui/config.py"
-    install -Dm644 somafm_tui/themes.py "$pkgdir/usr/lib/somafm_tui/themes.py"
-    install -Dm644 somafm_tui/themes.json "$pkgdir/usr/lib/somafm_tui/themes.json"
-    install -Dm644 somafm_tui/models.py "$pkgdir/usr/lib/somafm_tui/models.py"
-    install -Dm644 somafm_tui/channels.py "$pkgdir/usr/lib/somafm_tui/channels.py"
-    install -Dm644 somafm_tui/mpris_service.py "$pkgdir/usr/lib/somafm_tui/mpris_service.py"
-    install -Dm644 somafm_tui/ui.py "$pkgdir/usr/lib/somafm_tui/ui.py"
-    install -Dm644 somafm_tui/http_client.py "$pkgdir/usr/lib/somafm_tui/http_client.py"
-    install -Dm644 somafm_tui/terminal.py "$pkgdir/usr/lib/somafm_tui/terminal.py"
-    install -Dm644 somafm_tui/timer.py "$pkgdir/usr/lib/somafm_tui/timer.py"
+    # Install main Python package files (from somafm_tui/ subdirectory)
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/__init__.py" "$pkgdir/usr/lib/somafm_tui/__init__.py"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/__main__.py" "$pkgdir/usr/lib/somafm_tui/__main__.py"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/player.py" "$pkgdir/usr/lib/somafm_tui/player.py"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/config.py" "$pkgdir/usr/lib/somafm_tui/config.py"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/themes.py" "$pkgdir/usr/lib/somafm_tui/themes.py"
+    install -Dm644 "$srcdir/$pkgname/themes.json" "$pkgdir/usr/lib/somafm_tui/themes.json"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/models.py" "$pkgdir/usr/lib/somafm_tui/models.py"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/channels.py" "$pkgdir/usr/lib/somafm_tui/channels.py"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/mpris_service.py" "$pkgdir/usr/lib/somafm_tui/mpris_service.py"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/ui.py" "$pkgdir/usr/lib/somafm_tui/ui.py"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/http_client.py" "$pkgdir/usr/lib/somafm_tui/http_client.py"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/terminal.py" "$pkgdir/usr/lib/somafm_tui/terminal.py"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/timer.py" "$pkgdir/usr/lib/somafm_tui/timer.py"
 
     # Install executable wrapper
     install -Dm755 somafm-tui "$pkgdir/usr/bin/somafm-tui"
