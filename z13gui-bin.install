@@ -1,6 +1,7 @@
 post_install() {
     udevadm control --reload-rules
     udevadm trigger
+    setcap cap_bpf,cap_perfmon+ep /usr/bin/z13gui 2>/dev/null || true
     systemctl --global enable z13ctl.socket z13ctl.service
     systemctl --global enable z13gui.service
 }
@@ -8,4 +9,5 @@ post_install() {
 post_upgrade() {
     udevadm control --reload-rules
     udevadm trigger
+    setcap cap_bpf,cap_perfmon+ep /usr/bin/z13gui 2>/dev/null || true
 }
