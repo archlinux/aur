@@ -1,6 +1,6 @@
 # Maintainer: Guru <anjanaya@gmail.com>
 pkgname=open-pencil-bin
-pkgver=0.4.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="AI-native design editor. Open-source Figma alternative built with Tauri."
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('open-pencil')
 conflicts=('open-pencil')
 source=("${pkgname}-${pkgver}.deb::https://github.com/open-pencil/open-pencil/releases/download/v${pkgver}/OpenPencil_${pkgver}_amd64.deb"
         "LICENSE::https://raw.githubusercontent.com/open-pencil/open-pencil/v${pkgver}/LICENSE")
-sha256sums=('a52a5d458dadccfa75ea3c8248c39263405d399fd93f41911588b4304bb76e0e'
+sha256sums=('5527a4cacad04a4470a1f4012d35e02f5ddf832f5241842900fa6dc4b97513bd'
             '144ecf9417a43cca1cc2096acbac8b00beff9210191504709d586bf7552dcfa2')
 options=('!strip')
 
