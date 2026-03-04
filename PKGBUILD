@@ -6,8 +6,8 @@ pkgdesc='LocalStack CLI v2'
 arch=('x86_64' 'aarch64')
 url='https://github.com/localstack/lstk'
 license=('Apache-2.0')
-depends=('glibc')
 makedepends=('git' 'go')
+optdepends=('docker: required to run LocalStack containers with lstk start/stop/logs')
 options=(!debug)
 source=("git+https://github.com/localstack/lstk.git#tag=v${pkgver}")
 sha256sums=('SKIP')
@@ -19,13 +19,11 @@ build() {
   _commit="$(git rev-parse --short HEAD)"
   _build_date="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 
-  go build \
+  CGO_ENABLED=0 go build \
     -trimpath \
     -buildmode=pie \
     -mod=readonly \
     -ldflags="
-      -linkmode external
-      -extldflags '$LDFLAGS'
       -X github.com/localstack/lstk/internal/version.version=${pkgver}
       -X github.com/localstack/lstk/internal/version.commit=${_commit}
       -X github.com/localstack/lstk/internal/version.buildDate=${_build_date}
