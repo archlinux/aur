@@ -2,7 +2,7 @@
 
 _name=langgraph
 pkgname=python-$_name
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="Building stateful, multi-actor applications with LLMs."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-langchain-core' 'python-langgraph-checkpoint' 'python-
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-mock' 'python-syrupy' 'python-httpx' 'python-pytest-xdist' 'python-psutil' 'python-pytest-repeat' 'python-langgraph-checkpoint-sqlite' 'python-langgraph-checkpoint-postgres' 'python-psycopg' 'python-pycryptodome' 'python-redis')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('feac2729faba7d3c325bef76f240d7d7f66b02d2cbf4fdb1ed7d0cc83f963651')
+sha256sums=('73bd10ee14a8020f31ef07e9cd4c1a70c35cc07b9c2b9cd637509a10d9d51e29')
 
 build() {
     cd "$srcdir"/$_name-$pkgver
