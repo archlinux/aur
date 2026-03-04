@@ -1,6 +1,6 @@
 pkgbase = shadps4-qtlauncher-pre-release-bin
 	pkgdesc = The official Qt launcher for shadps4 emulator (Pre-release version)
-	pkgver = 20260208.2f10920
+	pkgver = 20260304.034d58e
 	pkgrel = 1
 	url = https://github.com/shadps4-emu/shadps4-qtlauncher
 	arch = x86_64

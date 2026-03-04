@@ -2,7 +2,7 @@
 pkgname=shadps4-qtlauncher-pre-release-bin
 _pkgname=shadPS4QtLauncher
 _pkgid=net.shadps4.shadps4-qtlauncher
-pkgver=20260208.2f10920
+pkgver=20260304.034d58e
 pkgrel=1
 pkgdesc="The official Qt launcher for shadps4 emulator (Pre-release version)"
 arch=('x86_64')
@@ -79,4 +79,7 @@ package() {
 
     # Create a symbolic link for the AppRun
     ln -s "/opt/${_pkgname}/AppRun" "${pkgdir}/usr/bin/shadps4-qtlauncher"
+
+	# Permissions
+	chmod -R u+rwX,go+rX,go-w "${pkgdir}/opt/${_pkgname}"
 }
