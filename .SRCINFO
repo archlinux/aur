@@ -1,24 +1,24 @@
 pkgbase = dida365-bin
 	pkgdesc = Todo list, checklist and task manager app, Linux desktop application.(Prebuilt version.Use system-wide electron)
-	pkgver = 6.0.40
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://www.dida365.com
 	arch = aarch64
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = electron21
-	provides = dida365=6.0.40
+	provides = dida365=8.0.0
 	conflicts = dida
 	conflicts = dida365
 	source = LICENSE-opensource.html::https://www.dida365.com/license/web
 	source = LICENSE-custom.html::https://www.dida365.com/about/tos
 	source = dida365.sh
-	sha256sums = f47b9d990cface0f36b30c9a71534308d84518669d17864e4633a4f515d09985
-	sha256sums = c626332f19edfccbda060f34a325035c5e320cb59cb5fa00055b21338e84b516
-	sha256sums = f2fe8c189974ffb9d445e9a42bd4f1d5b60185607c3fcafae79ab44be224e013
-	source_aarch64 = dida365-6.0.40-aarch64.rpm::https://cdn.dida365.cn/download/linux/linux_rpm_arm64/dida-6.0.40-aarch64.rpm
-	sha256sums_aarch64 = 46fd91ac1e67181690e28b76a30b4dac937942256cd3f2ead801952b6a1e1b9f
-	source_x86_64 = dida365-6.0.40-x86_64.rpm::https://cdn.dida365.cn/download/linux/linux_rpm_x64/dida-6.0.40-x86_64.rpm
-	sha256sums_x86_64 = 40d4889bb99c741ed014e21f0d5b850422b2dcce205c069ab959e834fe2cf7df
+	sha256sums = 0c017098b96710cf2673adb68219743985b0e49ad53415439289c8de1e254823
+	sha256sums = f30e3bc2873435c3e28f46b4a5d10fa4f1b9f379285fbba7abcee1b8c370dbeb
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = dida365-8.0.0-aarch64.rpm::https://cdn.dida365.cn/download/linux/linux_rpm_arm64/dida-8.0.0-aarch64.rpm
+	sha256sums_aarch64 = 27e0765b3a4a9908e1c884b5e99b4d779d15404f5c01c4ad741efe3c2ab1f68d
+	source_x86_64 = dida365-8.0.0-x86_64.rpm::https://cdn.dida365.cn/download/linux/linux_rpm_x64/dida-8.0.0-x86_64.rpm
+	sha256sums_x86_64 = 998d60cf4d8e6cd3e9e730b95dc1b513332b72becf11c3db0836c28e446b92ae
 
 pkgname = dida365-bin
