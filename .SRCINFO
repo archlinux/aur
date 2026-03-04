@@ -1,0 +1,21 @@
+pkgbase = python-uncalled-for
+	pkgdesc = Async dependency injection for Python functions.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/chrisguidry/uncalled-for/
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-pytest-randomly
+	checkdepends = python-pytest-timeout
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/u/uncalled-for/uncalled_for-0.2.0.tar.gz
+	sha256sums = b4f8fdbcec328c5a113807d653e041c5094473dd4afa7c34599ace69ccb7e69f
+
+pkgname = python-uncalled-for
