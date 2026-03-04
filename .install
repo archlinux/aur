@@ -1,0 +1,12 @@
+post_install() {
+    echo ">>> Kustomrunner installed."
+    echo "Run it with: kustomrunner"
+}
+
+post_upgrade() {
+    echo ">>> Kustomrunner upgraded."
+}
+
+pre_remove() {
+    echo ">>> Kustomrunner removing..."
+}
