@@ -1,39 +1,35 @@
 # Maintainer: Dae Euhwa <daedaevibin@naver.com>
 pkgname=voix
-pkgver=2.0.0
+_pkgname=Voix # The case-sensitive name of the repository from git
+pkgver=2.2.0
 pkgrel=1
-install=voix.install
 pkgdesc="A secure privilege escalation tool replacing sudo/doas, using PAM for authentication"
 arch=('x86_64')
 url="https://github.com/Veridian-Zenith/Voix"
-license=('OSL-3.0' 'AGPL-3.0-or-later' 'VCL-1.0')
+license=('OSL-3.0')
 depends=('pam')
-makedepends=('cmake>=3.18' 'gcc' 'make' 'pkgconf')
+makedepends=('cmake>=3.18' 'ninja' 'gcc' 'pkgconf' 'git')
 backup=('etc/pam.d/voix' 'etc/voix.conf')
 source=("git+https://github.com/Veridian-Zenith/Voix.git")
 sha256sums=('SKIP')
 
+# This function generates the version string based on the latest git commit
+# It will look like: 2.2.0.r<commit_count>.<short_commit_hash>
 pkgver() {
-    # simply return the static version set at the top of this PKGBUILD
-    echo "$pkgver"
-}
-
-prepare() {
-    cd Voix
-    # Verify CMakeLists.txt exists
-    test -f CMakeLists.txt || return 1
+  cd "$_pkgname"
+  printf "2.2.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd Voix
+    cd "$_pkgname"
     cmake -B build \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_COMPILER=clang++
-    cmake --build build --parallel
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -G Ninja
+    cmake --build build
 }
 
 package() {
-    cd Voix/build
-    cmake --install . --prefix "${pkgdir}/usr"
+    cd "$_pkgname"
+    DESTDIR="$pkgdir" cmake --install build
 }

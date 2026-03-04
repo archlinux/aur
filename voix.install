@@ -1,65 +1,9 @@
-#!/bin/bash
-# Voix .install script for Arch Linux AUR package
-
 post_install() {
-    echo ""
-    echo "=== Voix Installed Successfully ==="
-    echo ""
-    echo "Voix is now installed and ready to use!"
-    echo ""
-    echo "Configuration files:"
-    echo "  - /etc/voix.conf            (main configuration)"
-    echo "  - /etc/pam.d/voix           (PAM configuration)"
-    echo ""
-    echo "Documentation:"
-    echo "  man voix                    (view manual page)"
-    echo ""
-    echo "Testing:"
-    echo "  voix whoami                 # Test basic functionality"
-    echo "  voix -u username id         # Test as different user"
-    echo ""
-    echo "Important notes:"
-    echo "  - Voix binary has setuid bit set for proper operation"
-    echo "  - Verify /etc/pam.d/voix is configured for your system"
-    echo "  - Check /etc/voix.conf for access rules"
-    echo "  - Only users in wheel/sudo groups can escalate by default"
-    echo ""
-    echo "Security reminder:"
-    echo "  - Keep voix updated to latest version"
-    echo "  - Review configuration files regularly"
-    echo "  - Monitor /var/log/voix.log for suspicious activity"
-    echo ""
+    echo ">>> Voix has been installed."
+    echo ">>> Please review the configuration file at /etc/voix.conf"
+    echo ">>> and the PAM configuration at /etc/pam.d/voix"
 }
 
 post_upgrade() {
     post_install
-    echo ""
-    echo "=== Upgrade Complete ==="
-    echo "Your configuration files have been preserved."
-    echo "Check for .pacnew files if config format has changed."
-    echo ""
-    echo "Backup files to review:"
-    [ -f /etc/voix.conf.pacnew ] && echo "  ✓ /etc/voix.conf.pacnew"
-    [ -f /etc/pam.d/voix.pacnew ] && echo "  ✓ /etc/pam.d/voix.pacnew"
-    [ ! -f /etc/voix.conf.pacnew ] && [ ! -f /etc/pam.d/voix.pacnew ] && echo "  ✓ No configuration changes needed"
-    echo ""
-    echo "If you see .pacnew files above, merge them with your current configs:"
-    echo "  sudo cp /etc/voix.conf.pacnew /etc/voix.conf"
-    echo "  sudo cp /etc/pam.d/voix.pacnew /etc/pam.d/voix"
-    echo ""
-}
-
-post_remove() {
-    echo ""
-    echo "=== Voix Uninstalled ==="
-    echo ""
-    echo "Configuration files have been preserved for your reference:"
-    echo "  - /etc/voix.conf"
-    echo "  - /etc/pam.d/voix"
-    echo ""
-    echo "To completely remove voix and all configuration files:"
-    echo "  sudo rm -rf /etc/voix /etc/pam.d/voix"
-    echo ""
-    echo "Thank you for using Voix!"
-    echo ""
 }
