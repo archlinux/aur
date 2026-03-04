@@ -1,17 +1,24 @@
 # Maintainer: Omni <team@omni.dev>
 pkgname=omnidotdev-terminal
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="GPU-accelerated terminal emulator built to run everywhere"
 arch=('x86_64')
 url="https://terminal.omni.dev"
 license=('MIT')
 depends=('fontconfig' 'freetype2' 'libxkbcommon' 'wayland')
-makedepends=('cargo' 'cmake' 'ncurses' 'python')
+makedepends=('cargo' 'cmake' 'ncurses' 'python' 'wasm-bindgen-cli')
 source=("https://github.com/omnidotdev/terminal/archive/v$pkgver.tar.gz")
 
 build() {
   cd "terminal-$pkgver"
+
+  # Build WASM frontend (embedded into serve binary via include_dir!)
+  rustup target add wasm32-unknown-unknown
+  cargo build -p omni-terminal-wasm --target wasm32-unknown-unknown --release
+  wasm-bindgen target/wasm32-unknown-unknown/release/omni_terminal_wasm.wasm \
+    --out-dir frontends/wasm/wasm --target web --no-typescript
+
   cargo build --release -p omni-terminal
 }
 
@@ -25,4 +32,4 @@ package() {
   install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "NOTICE.md" "$pkgdir/usr/share/doc/$pkgname/NOTICE"
 }
-sha256sums=('42ca5d5fc3324903937dd7c55bec52093b036e3cba2735375a6fed4839c608d9')
+sha256sums=('4a23f34454e053ad9052ea497d72ea35149be3ff2d736f064cf18d5b6ab131ec')
