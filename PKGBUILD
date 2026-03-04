@@ -1,15 +1,16 @@
 # Maintainer: Rikai <rikaisensei@gmail.com>
 pkgname=rdm
-pkgver=1.3.3
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A simple yet powerful dotfile manager powered by lua"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Rikaisan/rdm"
 license=("GPL-3.0-only")
-depends=("libgit2" "glibc" "gcc-libs")
-makedepends=("meson")
+depends=("glibc" "gcc-libs" "lua")
+optdepends=("libgit2: repository cloning support")
+makedepends=("meson" "libgit2")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Rikaisan/rdm/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d332599ad76eb724fd4c754c6dc2c9bb6e3bf4da2ce5b49d5ff92d51939661af')
+sha256sums=('550e2c8eddf58656fa4cfa7867d1c64031d316e7c48d751ec71b6760cc3d68c8')
 
 prepare() {
 	cd "$pkgname-$pkgver"
