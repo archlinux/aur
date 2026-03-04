@@ -1,0 +1,26 @@
+pkgbase = oneclient-bin
+	pkgdesc = Next-generation open source Minecraft launcher
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://polyfrost.org/projects/oneclient
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = openssl
+	depends = dbus
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = webkit2gtk-4.1
+	depends = libgl
+	depends = libpulse
+	depends = libx11
+	depends = libxcursor
+	depends = libxext
+	depends = libxxf86vm
+	optdepends = xorg-xrandr: very legacy minecraft versions
+	provides = oneclient
+	conflicts = oneclient
+	source = https://github.com/Polyfrost/OneLauncher/releases/download/oneclient-1.0.3/oneclient_1.0.3_amd64.deb
+	sha256sums = df5a0b5d8206679b5323788a542529ca95380d39f190fc7ba4f6effcdad182ae
+
+pkgname = oneclient-bin
