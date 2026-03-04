@@ -3,7 +3,7 @@
 _Name="RMG"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
-pkgver=0.8.8
+pkgver=0.8.9
 pkgrel=1
 pkgdesc="Rosalie's Mupen GUI"
 arch=('x86_64')
@@ -18,9 +18,9 @@ _pkgsrc="${_pkgname}-${pkgver}"
 source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
         "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
 source_x86_64=("${_pkgsrc}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_Name}-Portable-Linux64-v${pkgver}.AppImage")
-sha256sums=('ce6b1f629192d11cb26dc0bbe319bc8d61b476541b2424b4d28fb0d7c0ac92a5'
+sha256sums=('28b6e286fa75c9b1edd4b0cbff916ef33c53d0fc4fb86f5e157434c4cc5db5ae'
             'e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052')
-sha256sums_x86_64=('b227412e937b4c11e00d8f335aa297efd761e519586badebea4311701c917cf6')
+sha256sums_x86_64=('7419df393ce45f0d9645f0d9234e1e7e1270d5891c5860ccc7948d45868a02ca')
 
 prepare() {
   cd "${srcdir}"

@@ -1,6 +1,6 @@
 pkgbase = rmg-bin
 	pkgdesc = Rosalie's Mupen GUI
-	pkgver = 0.8.8
+	pkgver = 0.8.9
 	pkgrel = 1
 	url = https://github.com/Rosalie241/RMG
 	arch = x86_64
@@ -24,11 +24,11 @@ pkgbase = rmg-bin
 	depends = zlib
 	provides = rmg
 	conflicts = rmg
-	source = rmg-0.8.8-README.md::https://github.com/Rosalie241/RMG/raw/refs/tags/v0.8.8/README.md
-	source = rmg-0.8.8-LICENSE::https://github.com/Rosalie241/RMG/raw/refs/tags/v0.8.8/LICENSE
-	sha256sums = ce6b1f629192d11cb26dc0bbe319bc8d61b476541b2424b4d28fb0d7c0ac92a5
+	source = rmg-0.8.9-README.md::https://github.com/Rosalie241/RMG/raw/refs/tags/v0.8.9/README.md
+	source = rmg-0.8.9-LICENSE::https://github.com/Rosalie241/RMG/raw/refs/tags/v0.8.9/LICENSE
+	sha256sums = 28b6e286fa75c9b1edd4b0cbff916ef33c53d0fc4fb86f5e157434c4cc5db5ae
 	sha256sums = e57f1c320b8cf8798a7d2ff83a6f9e06a33a03585f6e065fea97f1d86db84052
-	source_x86_64 = rmg-0.8.8-x86_64.AppImage::https://github.com/Rosalie241/RMG/releases/download/v0.8.8/RMG-Portable-Linux64-v0.8.8.AppImage
-	sha256sums_x86_64 = b227412e937b4c11e00d8f335aa297efd761e519586badebea4311701c917cf6
+	source_x86_64 = rmg-0.8.9-x86_64.AppImage::https://github.com/Rosalie241/RMG/releases/download/v0.8.9/RMG-Portable-Linux64-v0.8.9.AppImage
+	sha256sums_x86_64 = 7419df393ce45f0d9645f0d9234e1e7e1270d5891c5860ccc7948d45868a02ca
 
 pkgname = rmg-bin
