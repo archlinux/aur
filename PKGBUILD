@@ -19,7 +19,7 @@ sha256sums_aarch64=('8cd7398b8fc1cd70d41e386af9995cbddc1043d9018391c29f056f14357
 
 package() {
     bsdtar -xf data.tar.xz -C "${pkgdir}/"
-    chmod +x ${pkgdir}/opt/koala.clash/koala-clash
+    chmod +x ${pkgdir}/opt/koala-clash/koala-clash
     chmod +x ${pkgdir}/opt/koala-clash/resources/files/koala-clash-service
     chmod +sx ${pkgdir}/opt/koala-clash/resources/sidecar/mihomo
     chmod +sx ${pkgdir}/opt/koala-clash/resources/sidecar/mihomo-alpha
