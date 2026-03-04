@@ -24,8 +24,9 @@ provides=("${pkgname}")
 conflicts=()
 backup=()
 
+install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OMNIDROID2995/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('9d08df50e2a9bbd487c1258bca610c8bc3675e1a3f35f0cff679ca95f15336d0')
+sha256sums=('SKIP')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -38,6 +39,9 @@ package() {
     install -dm755 "${pkgdir}/usr/lib/${pkgname}/strings"
     install -Dm644 src/strings/*.txt "${pkgdir}/usr/lib/${pkgname}/strings/"
     
+    # Install icon to system icon theme
+    install -Dm644 src/icon.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname}.png"
+
     # Install disclaimer files (all languages)
     install -Dm644 src/disclaimer-*.txt "${pkgdir}/usr/lib/${pkgname}/"
     

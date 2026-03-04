@@ -3,6 +3,7 @@ pkgbase = gnome-aur-manager
 	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/OMNIDROID2995/gnome-aur-manager
+	install = gnome-aur-manager.install
 	arch = any
 	license = GPL-3.0-or-later
 	depends = python>=3.10
@@ -16,6 +17,6 @@ pkgbase = gnome-aur-manager
 	optdepends = gnome-software-packagekit-plugin: Integration with GNOME Software Center
 	provides = gnome-aur-manager
 	source = gnome-aur-manager-2.0.0.tar.gz::https://github.com/OMNIDROID2995/gnome-aur-manager/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 9d08df50e2a9bbd487c1258bca610c8bc3675e1a3f35f0cff679ca95f15336d0
+	sha256sums = SKIP
 
 pkgname = gnome-aur-manager
