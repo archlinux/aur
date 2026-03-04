@@ -1,7 +1,7 @@
 pkgbase = clippa-rs
 	pkgdesc = A clipboard manager tui/service for wayland based compositors written in rust
 	pkgver = 0.1.5.2
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/shiroanon/clippa-rs
 	arch = x86_64
 	arch = i686
@@ -9,7 +9,6 @@ pkgbase = clippa-rs
 	makedepends = cargo
 	makedepends = git
 	makedepends = cmake
-	makedepends = perl
 	depends = gcc-libs
 	depends = glibc
 	depends = wl-clipboard
