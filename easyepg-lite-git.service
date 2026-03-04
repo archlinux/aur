@@ -35,7 +35,6 @@ RestrictRealtime = yes
 LockPersonality = yes
 MemoryDenyWriteExecute = yes
 RemoveIPC = yes
-UMask = 077
 ProtectHostname = yes
 ProcSubset = pid
 

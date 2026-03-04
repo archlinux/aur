@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=easyepg-lite-git
-pkgver=r149.6756605
+pkgver=r173.7016b30
 pkgrel=1
 pkgdesc="XMLTV grabber tool using Gracenote's TMS API"
 url="https://github.com/sunsettrack4/script.service.easyepg-lite"
@@ -23,7 +23,7 @@ source=(
 )
 sha512sums=(
 	SKIP
-	f6c94c77140100bff307e6197cb7b564be663e88d56ce956da5001f5c47dc35827c63ace9ce4a61e44a798cff41e378fe79a2a79ee98f9ee1f00cf96076dac0b # easyepg-lite-git.service
+	ff1408c656661db4b6139505f26e9fb80f13ff1eeff790d5b6e2e13f158182088748f1c0380d22d5d4d9cbba1429669b2e47cb64de88ee8e0c49495e19d319f8 # easyepg-lite-git.service
 	50d1cf2531e375766666f2f7950fdd9e0c18ed213ab4a8e3486f3922b0c33997e21f67b074dfd39603bcf6585df85754e84a199544427b840c4723d9fc7f8ba3 # startup.sh
 )
 
