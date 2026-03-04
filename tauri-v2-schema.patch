@@ -1,0 +1,30 @@
+diff --unified --recursive --text a/apps/desktop/src-tauri/tauri.appstore.conf.json b/apps/desktop/src-tauri/tauri.appstore.conf.json
+--- a/apps/desktop/src-tauri/tauri.appstore.conf.json	2026-03-04 14:15:20.439870547 -0700
++++ b/apps/desktop/src-tauri/tauri.appstore.conf.json	2026-03-04 07:26:45.905906953 -0700
+@@ -8,10 +8,10 @@
+     "macOS": {
+       "signingIdentity": "Apple Distribution",
+       "entitlements": "./Entitlements.mas.plist",
+-      "infoPlist": "./Info.appstore.plist",
+       "minimumSystemVersion": "12.0",
+       "files": {
+-        "embedded.provisionprofile": "./embedded.provisionprofile"
++        "embedded.provisionprofile": "./embedded.provisionprofile",
++        "Info.plist": "./Info.appstore.plist"
+       }
+     }
+   }
+diff --unified --recursive --text a/apps/desktop/src-tauri/tauri.conf.json b/apps/desktop/src-tauri/tauri.conf.json
+--- a/apps/desktop/src-tauri/tauri.conf.json	2026-03-04 14:15:20.439870547 -0700
++++ b/apps/desktop/src-tauri/tauri.conf.json	2026-03-04 07:26:45.904906964 -0700
+@@ -38,7 +38,9 @@
+     ],
+     "macOS": {
+       "signingIdentity": "Developer ID Application",
+-      "infoPlist": "./Info.plist"
++      "files": {
++        "Info.plist": "./Info.plist"
++      }
+     },
+     "icon": [
+       "icons/icon.png",

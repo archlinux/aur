@@ -1,7 +1,7 @@
 pkgbase = mindwtr
 	pkgdesc = Mind Like Water: A complete Getting Things Done (GTD) productivity system
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dongdongbh/Mindwtr
 	arch = x86_64
 	license = AGPL-3.0-or-later
@@ -20,7 +20,9 @@ pkgbase = mindwtr
 	depends = webkit2gtk-4.1
 	source = git+https://github.com/dongdongbh/Mindwtr.git#tag=v0.7.1
 	source = mindwtr.desktop
+	source = tauri-v2-schema.patch
 	sha256sums = fe6dea5fbdcf61c4ea8b69f3b8a3b75f28033e076dd2cdc473e16435a307fc0d
 	sha256sums = c283dc386b122df8db1157a2f74e7cfd780ab65133ab8fef6c74b2179f85161c
+	sha256sums = e68d0b4c532d82965f6c83644316951d6c59e0ba81a235758c779b4b8c320982
 
 pkgname = mindwtr
