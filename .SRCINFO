@@ -1,18 +1,17 @@
 pkgbase = passkeyd-qt
 	pkgdesc = A Qt UI for passkeyd
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/Damglador/passkeyd-qt
 	arch = any
 	license = GPL-3.0
 	makedepends = git
-	makedepends = cargo
 	depends = passkeyd
 	depends = python-pydantic
 	depends = python-pam
 	depends = pyside6
 	options = !lto
-	source = git+https://github.com/Damglador/passkeyd-qt.git#tag=0.5.0
-	sha256sums = SKIP
+	source = git+https://github.com/Damglador/passkeyd-qt.git#tag=0.6.0
+	sha256sums = 6ca15bd698a9e5dcb315159e5857e883dc7dc4e08c159f4bdf97159f0d65db9b
 
 pkgname = passkeyd-qt
