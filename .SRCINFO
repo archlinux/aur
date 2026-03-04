@@ -1,0 +1,16 @@
+pkgbase = php84-pdo_sqlsrv
+	pkgdesc = Microsoft SQL Server PDO Drivers for PHP 8.4
+	pkgver = 5.13.0
+	pkgrel = 1
+	url = https://pecl.php.net/package/pdo_sqlsrv
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = php84
+	depends = php84-pdo
+	depends = msodbcsql
+	backup = etc/php84/conf.d/30-pdo_sqlsrv.ini
+	source = https://pecl.php.net/get/pdo_sqlsrv-5.13.0.tgz
+	sha256sums = efa859bcc48d97f25268dbdebf1db25f25610d7fa36b3ee91073c1c99411e24c
+
+pkgname = php84-pdo_sqlsrv
