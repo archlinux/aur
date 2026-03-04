@@ -1,10 +1,10 @@
 post_install() {
     z13ctl setup
-    systemctl --global enable z13ctl.socket z13ctl.service
+    systemctl --global enable z13ctl.socket z13ctl.service || true
 }
 
 post_upgrade() {
     udevadm control --reload-rules
     udevadm trigger
-    systemctl --global daemon-reload
+    systemctl daemon-reload || true
 }
