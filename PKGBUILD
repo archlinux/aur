@@ -3,12 +3,12 @@ pkgdesc='MollySocket allows getting Signal notifications via UnifiedPush.'
 url="https://github.com/mollyim/mollysocket"
 license=("AGPL-3.0")
 arch=(x86_64 aarch64)
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 makedepends=(cargo clang toml-cli)
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
 	"$pkgname.service")
-sha256sums=('0e6dc9c9711471156b7c52365c351f75a56b032e53209970bac733f0d9c5c3ef'
+sha256sums=('db9d913af9e285422f260397acbf4341d48c1e7d2e0b50b08b209e2101a63fea'
             'f6d64321c1031956e30f9fca51512f04aa8b40cbe56b2c5333793d505bde7185')
 options=(!lto !debug)
 backup=("etc/mollysocket/config.toml")
