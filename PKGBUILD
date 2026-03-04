@@ -2,7 +2,7 @@
 # Contributor: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3-bin
 _pkgname=rpcs3
-pkgver=0.0.40.18872
+pkgver=0.0.40.18876
 pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator (Latest Binary)'
 arch=('x86_64')
@@ -69,6 +69,6 @@ package() {
     install -Dm644 "$srcdir/squashfs-root/${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
     install -Dm644 "$srcdir/squashfs-root/usr/share/metainfo/${_pkgname}.metainfo.xml" "$pkgdir/usr/share/metainfo/${_pkgname}.metainfo.xml"
 
-    # Permissions
-    chmod -R u+rwX,go+rX,go-w "$pkgdir/"
+	# Permissions
+	chmod -R u+rwX,go+rX,go-w "${pkgdir}/opt/${_pkgname}"
 }
