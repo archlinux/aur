@@ -2,7 +2,7 @@
 
 pkgname=markus-bin
 _appname=markus-the-editor
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="A local WYSIWYG Markdown editor built with Electron, React, and ProseMirror"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=('markus' 'markus-the-editor')
 conflicts=('markus' 'markus-the-editor')
 options=('!strip' '!debug')
 source=("Markus-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Markus-${pkgver}.AppImage")
-sha256sums=('e279e43afb6287e47290c6c8cc9f8b391e26c6f668afd55d450e62ef599b47f4')
+sha256sums=('47d58e9eca0a13241cabade6654a66438f9f0b1589a4a862e203a15b854f47f9')
 
 prepare() {
     chmod +x "Markus-${pkgver}.AppImage"
