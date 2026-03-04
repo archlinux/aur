@@ -1,7 +1,7 @@
 pkgbase = matlab-gcc-meta
 	pkgdesc = A high-level language for numerical computation and visualization
 	pkgver = R2025b
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.mathworks.com/support/requirements/supported-compilers-linux.html
 	arch = any
 	license = 0BSD
@@ -234,36 +234,42 @@ pkgname = matlab-r2025b-gcc8-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025b, GCC8, meta)
 	depends = gcc8
 	provides = matlab-r2025b-gcc-meta=8
+	provides = matlab-gcc-meta=8
 	conflicts = matlab-r2025b-gcc-meta
 
 pkgname = matlab-r2025b-gcc9-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025b, GCC9, meta)
 	depends = gcc9
 	provides = matlab-r2025b-gcc-meta=9
+	provides = matlab-gcc-meta=9
 	conflicts = matlab-r2025b-gcc-meta
 
 pkgname = matlab-r2025b-gcc10-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025b, GCC10, meta)
 	depends = gcc10
 	provides = matlab-r2025b-gcc-meta=10
+	provides = matlab-gcc-meta=10
 	conflicts = matlab-r2025b-gcc-meta
 
 pkgname = matlab-r2025b-gcc11-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025b, GCC11, meta)
 	depends = gcc11
 	provides = matlab-r2025b-gcc-meta=11
+	provides = matlab-gcc-meta=11
 	conflicts = matlab-r2025b-gcc-meta
 
 pkgname = matlab-r2025b-gcc12-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025b, GCC12, meta)
 	depends = gcc12
 	provides = matlab-r2025b-gcc-meta=12
+	provides = matlab-gcc-meta=12
 	conflicts = matlab-r2025b-gcc-meta
 
 pkgname = matlab-r2025b-gcc13-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025b, GCC13, meta)
 	depends = gcc13
 	provides = matlab-r2025b-gcc-meta=13
+	provides = matlab-gcc-meta=13
 	conflicts = matlab-r2025b-gcc-meta
 
 pkgname = matlab-r2011b-gcc-meta
@@ -407,6 +413,7 @@ pkgname = matlab-r2025a-gcc-fortran-meta
 pkgname = matlab-r2025b-gcc-fortran-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2025b, GCC10 Fortran, meta)
 	depends = gcc10-fortran
+	provides = matlab-gcc-fortran-meta=10
 
 pkgname = matlab-r2020b-gcc-fortran-meta
 	pkgdesc = A high-level language for numerical computation and visualization (R2020b, GCC8 Fortran, meta)

@@ -2,7 +2,7 @@
 
 pkgbase="matlab-gcc-meta"
 pkgver=R2025b
-pkgrel=4
+pkgrel=5
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=(
   'any'
@@ -107,13 +107,18 @@ declare -Ag _gcc_fortrans=(
 )
 
 for _release in "${!_gccs[@]}"; do
-  local _flag=0
+  local _flag_pkgname=0
   if [[ "${_gccs[${_release}]}" == *" "* ]]; then
-    _flag=1
+    _flag_pkgname=1
+  fi
+
+  local _flag_provides=0
+  if [[ "${_release}" == "${pkgver}" ]]; then
+    _flag_provides=1
   fi
 
   for _gcc in ${_gccs[${_release}]}; do
-    if (( _flag )); then
+    if (( _flag_pkgname )); then
       _pkgname="matlab-${_release,,}-gcc${_gcc}-meta"
     else
       _pkgname="matlab-${_release,,}-gcc-meta"
@@ -128,8 +133,10 @@ package_${_pkgname}() {
     'gcc${_gcc//.}'
   )
 
-  $( (( _flag )) && echo "provides=(matlab-${_release,,}-gcc-meta=${_gcc})" )
-  $( (( _flag )) && echo "conflicts=(matlab-${_release,,}-gcc-meta)" )
+  $( (( _flag_pkgname )) && echo "provides+=(matlab-${_release,,}-gcc-meta=${_gcc})" )
+  $( (( _flag_pkgname )) && echo "conflicts+=(matlab-${_release,,}-gcc-meta)" )
+
+  $( (( _flag_provides )) && echo "provides+=(matlab-gcc-meta=${_gcc})" )
 
   install -vd \"\${pkgdir}/usr/bin\"
   ln -vsf 'gcc-${_gcc}' \"\${pkgdir}/usr/bin/gcc-matlab-${_release}\"
@@ -139,13 +146,18 @@ package_${_pkgname}() {
 done
 
 for _release in "${!_gcc_fortrans[@]}"; do
-  local _flag=0
+  local _flag_pkgname=0
   if [[ "${_gcc_fortrans[${_release}]}" == *" "* ]]; then
-    _flag=1
+    _flag_pkgname=1
+  fi
+
+  local _flag_provides=0
+  if [[ "${_release}" == "${pkgver}" ]]; then
+    _flag_provides=1
   fi
 
   for _gcc_fortran in ${_gcc_fortrans[${_release}]}; do
-    if (( _flag )); then
+    if (( _flag_pkgname )); then
       _pkgname="matlab-${_release,,}-gcc${_gcc_fortran}-fortran-meta"
     else
       _pkgname="matlab-${_release,,}-gcc-fortran-meta"
@@ -160,8 +172,10 @@ package_${_pkgname}() {
     'gcc${_gcc_fortran//.}-fortran'
   )
 
-  $( (( _flag )) && echo "provides=(matlab-${_release,,}-gcc-fortran=${_gcc_fortran})" )
-  $( (( _flag )) && echo "conflicts=(matlab-${_release,,}-gcc-fortran)" )
+  $( (( _flag_pkgname )) && echo "provides+=(matlab-${_release,,}-gcc-fortran-meta=${_gcc_fortran})" )
+  $( (( _flag_pkgname )) && echo "conflicts+=(matlab-${_release,,}-gcc-fortran-meta)" )
+
+  $( (( _flag_provides )) && echo "provides+=(matlab-gcc-fortran-meta=${_gcc_fortran})" )
 
   install -vd \"\${pkgdir}/usr/bin\"
   ln -vsf 'gfortran-${_gcc_fortran}' \"\${pkgdir}/usr/bin/gfortran-matlab-${_release}\"
