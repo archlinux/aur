@@ -1,6 +1,6 @@
 pkgbase = ipfs-rainbow
 	pkgdesc = ipfs-rainbow
-	pkgver = 1.21.0
+	pkgver = 1.22.0
 	pkgrel = 1
 	url = https://github.com/ipfs/rainbow
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = ipfs-rainbow
 	makedepends = go
 	conflicts = ipfs-rainbow-bin
 	conflicts = ipfs-rainbow-git
-	source = https://github.com/ipfs/rainbow/archive/refs/tags/v1.21.0.tar.gz
+	source = https://github.com/ipfs/rainbow/archive/refs/tags/v1.22.0.tar.gz
 	source = ipfs-rainbow.service
 	source = ipfs-rainbow.confd
-	b2sums = 1bdf64e1d374b64ab51c40b7c55d4c7ed729cd967cf9746e777109839444c7c9d8246243d63ba28c0854a5d0308b85a7e9c4479403775966d86ad4b4d5288da0
+	b2sums = a4d2c5a31e8cee5f6f2d25af95f17ba659ea58ea577f3447cd33b722fd8f30c454c8c0f000dfe7f576106778c0e47ceecb85ce308d50826c15b84d9ba4210125
 	b2sums = c816fac82e1e21a0e2d6f8c9c8e23b95939bff52d4b272c9ccbf3aa93160e555989258ae6d2547feaf41f4a1bb0d7b0ea017ff4f00e1d1c1671c59d3b1d1e789
 	b2sums = 4c46d5c22e470862c7d28b98578b35333889e0b5536ae7a06d9b8036278e436e85a7961f7e6cea7863be7e5f21ea1aebb79de6ebc753e49b6c194ddd04759cdb
 
