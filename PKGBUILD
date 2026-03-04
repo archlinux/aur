@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=calmly-writer-bin
 _pkgname='Calmly Writer'
-pkgver=2.0.60
+pkgver=2.0.63
 _electronversion=34
 pkgrel=1
 pkgdesc="An editor designed to focus on what you want to tell, with a simple, unobtrusive and ease-to-use user interface."
@@ -23,10 +23,10 @@ source=(
     "LICENSE.html::${url}/eula.htm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('ab9ee67a02dca392372a108443df43587671306b91e2d91923728ba770a37e83'
+sha256sums=('a97d8a67ab0f70d0db8a5c305071d1dc6e107f91d7f24bcd2146dffa0a51b2e1'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('9a48a3b28679d83a1883e82c06ffae994daeed70e7a5f26802488658f08f2101')
-sha256sums_x86_64=('49394a074d9b25d7c42fab83b3547dd1c5b97ad94adf03643bd90648c44dce7c')
+sha256sums_aarch64=('6319fcde6b30d2bd297d4deab080f1289fbf62ab25c30072e1443d34ad3539c6')
+sha256sums_x86_64=('3180b94c6da846b43d5668bc5f70c2baed845098c39ac13359251f3863f4316a')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
@@ -55,8 +55,15 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${_pkgname}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/opt/${_pkgname}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/opt/${_pkgname}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/opt/${_pkgname}/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     _icon_sizes=(16x16 32x32 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
