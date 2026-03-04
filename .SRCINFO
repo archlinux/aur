@@ -10,6 +10,8 @@ pkgbase = ovolay-bin
 	provides = ovolay
 	conflicts = ovolay
 	source = ovolay-bin-1.0.0.zip::https://github.com/thnikk/ovolay/releases/download/v1.0.0/ovolay-arch.zip
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/thnikk/ovolay/main/LICENSE
 	sha256sums = 0103ac596f3fe5dbc6d4130bdf5b27b683f413ba66aaf73e8480e2cc6cfaddcc
+	sha256sums = 8f02b1f2d8cd6f9b0b35d8f808d3a7a02804bc611bc78a5d17d0cd7c6b102e25
 
 pkgname = ovolay-bin
