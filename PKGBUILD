@@ -2,9 +2,9 @@
 # https://github.com/axpnet/aeroftp
 
 pkgname=aeroftp-bin
-pkgver=2.7.2
+pkgver=2.8.2
 pkgrel=1
-pkgdesc="Modern multi-protocol file client with AI, encryption and cloud storage (FTP, SFTP, WebDAV, S3, 19 protocols)"
+pkgdesc="Modern multi-protocol file client with AI, encryption and cloud storage (FTP, SFTP, WebDAV, S3, 20 protocols)"
 arch=('x86_64')
 url="https://github.com/axpnet/aeroftp"
 license=('GPL-3.0-or-later')
@@ -31,7 +31,7 @@ options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/axpnet/aeroftp/releases/download/v${pkgver}/AeroFTP_${pkgver}_amd64.AppImage"
         "aeroftp.desktop"
         "aeroftp.png::https://raw.githubusercontent.com/axpnet/aeroftp/main/src-tauri/icons/128x128.png")
-sha256sums=('b8f453bf7ceed4fb9dc40f8702cb8858c95a68cf43befc22a16745655c259b2b'
+sha256sums=('f24f2b267f3a6c7ad07739941232f9623458a324ba5fc9bc5566ff2ef8f4b6e6'
             '5d70a0129cbf1aa2eedc8d100551b177b96d9cc952b827b5b5a0afc4832750d9'
             '2ccf82e6bfdf22ec5a8d0735acf1e02bd00c44cb4ffab3895d46dc941c4a7cb6')
 noextract=("${pkgname}-${pkgver}.AppImage")
