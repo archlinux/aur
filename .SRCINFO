@@ -16,6 +16,8 @@ pkgbase = lianli-linux-git
 	depends = ffmpeg
 	provides = lianli-linux
 	conflicts = lianli-linux
+	options = !debug
+	options = strip
 	source = git+https://github.com/sgtaziz/lian-li-linux.git
 	sha256sums = SKIP
 

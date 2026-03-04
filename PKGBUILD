@@ -12,6 +12,7 @@ provides=('lianli-linux')
 conflicts=('lianli-linux')
 source=("git+${url}.git")
 sha256sums=('SKIP')
+options=('!debug' 'strip')
 
 pkgver() {
   cd lian-li-linux
