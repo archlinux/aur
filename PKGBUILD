@@ -8,7 +8,7 @@ depends=("tpm2-tss")
 makedepends=()
 url="https://github.com/bjn7/passkeyd"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bjn7/passkeyd/releases/download/v$pkgver/passkeyd-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('b97f6a9e3be2253edb91c316465d61aac7bb1b293d5f7737aecd9d24255d9ed8')
+sha256sums=('e975e369d75a9fac874832863b512725af4e455a989125116da13c28722a11e7')
 options=('!debug')
 backup=('etc/passkeyd.conf' 'usr/share/passkeyd/theme.conf')
 
