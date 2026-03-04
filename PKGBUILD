@@ -53,7 +53,7 @@ optdepends=(
 )
 source=(
   "${_pkgname}::git+https://github.com/SchildiChat/schildichat-desktop.git#branch=lite"
-  "git+https://github.com/SchildiChat/compound-web.git"
+  "git+https://github.com/SchildiChat/compound-web.git#branch=sc"
   "git+https://github.com/SchildiChat/matrix-js-sdk.git"
   # "git+https://github.com/SchildiChat/matrix-react-sdk.git"
   "git+https://github.com/SchildiChat/element-web.git"
@@ -79,17 +79,25 @@ prepare() {
   cd ${_pkgname}
   export npm_config_cache="${srcdir}/npm_cache"
   _ensure_local_nvm
+  printf '%s\n' " --> Running 'nvm install ${_nodeversion}' ..."
   nvm install "${_nodeversion}"
 
+  printf '%s\n' " --> Running 'git submodule init' ..."
   git submodule init
+  printf '%s\n' "     \`-> Configuring 'compound-web' git submodule URL ..."
   git config submodule.compound-web.url     "${srcdir}/compound-web"
+  printf '%s\n' "     \`-> Configuring 'matrix-js-sdk' git submodule URL ..."
   git config submodule.matrix-js-sdk.url    "${srcdir}/matrix-js-sdk"
+  # printf '%s\n' "     \`-> Configuring 'matrix-react-sdk' git submodule URL ..."
   # git config submodule.matrix-react-sdk.url "${srcdir}/matrix-react-sdk"
+  printf '%s\n' "     \`-> Configuring 'element-web' git submodule URL ..."
   git config submodule.element-web.url      "${srcdir}/element-web"
+  printf '%s\n' "     \`-> Configuring 'element-desktop' git submodule URL ..."
   git config submodule.element-desktop.url  "${srcdir}/element-desktop"
+  printf '%s\n' " --> Running 'git submodule update' ..."
   git -c protocol.file.allow=always submodule update
 
-  # Specify electron version in launcher
+  printf '%s\n' " --> Specifying electron version in launcher script ..."
   sed -i "s|@ELECTRON@|${_electron}|" "${srcdir}/schildichat-desktop.sh"
 
   _electron_dist="/usr/lib/${_electron}"
@@ -107,6 +115,7 @@ prepare() {
 
   cd ${srcdir}/${_pkgname}
 
+  printf '%s\n' " --> Generating git log ..."
   git log > git.log
 
   printf '%s\n' " --> Running 'make setup' ..."
