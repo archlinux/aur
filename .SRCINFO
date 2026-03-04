@@ -1,13 +1,13 @@
 pkgbase = hyprshot-rs
-	pkgdesc = A utility to easily take screenshots in Hyprland using your mouse
-	pkgver = 0.1.7
+	pkgdesc = A utility to easily take screenshots in Wayland using your mouse
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/shikoucore/hyprshot-rs
 	arch = x86_64
 	license = GPL-3.0
 	provides = hyprshot-rs
 	conflicts = hyprshot-rs
-	source = https://github.com/shikoucore/hyprshot-rs/releases/download/v0.1.7/hyprshot-rs-0.1.7-x86_64.tar.gz
-	sha256sums = 078acd323e312a50323699572d0627348207909f7ea083f0669c9dcce9aa6da6
+	source = https://github.com/shikoucore/hyprshot-rs/releases/download/v0.1.8/hyprshot-rs-0.1.8-x86_64.tar.gz
+	sha256sums = cebaf849637096499a4518a370fd21de48af40e51d43d59af921f2fbddae4b27
 
 pkgname = hyprshot-rs
