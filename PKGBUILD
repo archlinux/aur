@@ -1,12 +1,12 @@
 # original PKGBUILD: https://aur.archlinux.org/packages/libsigrok-git
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
+# Maintainer: aisuneko icecat <iceneko@protonmail.ch>
 
-# Sipeed Slogic Analyzer support:
-# 1. mainline pull request: [sipeed-slogic-analyzer: Add Support for Sipeed SLogic Series, including SLogic16U3 5Gbps #262](https://github.com/sigrokproject/libsigrok/pull/262)
+# Forked from https://aur.archlinux.org/packages/libsigrok-sipeed-slogic-git. Tracks upstream to github.com/sipeed/libsigrok
 
 _gitname="libsigrok"
 pkgname="libsigrok-sipeed-slogic-git"
-pkgver=0.2.1.r4422.g75563b42
+pkgver=r6146.43f554d
 pkgrel=1
 pkgdesc="Client software that supports various hardware logic analyzers, core library with Sipeed Slogic Analyzer support patches (git version)"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -16,21 +16,16 @@ depends=('libzip' 'libftdi' 'alsa-lib' 'libserialport-git' 'glibmm' 'libieee1284
 makedepends=('git' 'autoconf-archive' 'doxygen')
 conflicts=("${_gitname}-git")
 provides=("${_gitname}-git")
-source=("git+https://github.com/sigrokproject/${_gitname}/"
-	"0001-sipeed-slogic-analyzer-Add-Support-for-Sipeed-SLogic-Series-including-SLogic16U3-5Gbps.patch")
-sha512sums=('SKIP'
-            'a89276812366ce60ce6972f702c5c997711844d1cfd4d3618f946cf224451f026f35f581aba08f74ad2e88670fcccd38ebcb1c38c8256ff164973dea7e09793c')
+source=("git+https://github.com/sipeed/${_gitname}/#branch=slogic-dev")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  git describe --exclude 'libsigrok-unreleased' --long | sed 's/^libsigrok-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
   cd "${srcdir}/${_gitname}"
-  patch -p 1 < ${srcdir}/0001-sipeed-slogic-analyzer-Add-Support-for-Sipeed-SLogic-Series-including-SLogic16U3-5Gbps.patch
-  # Adjust Python bindings for SWIG >= 4.4.#280
-  git cherry-pick 77c2f1b20657827f3a58d42355fccc81a24f4527
 }
 
 

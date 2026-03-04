@@ -1,6 +1,6 @@
 pkgbase = libsigrok-sipeed-slogic-git
 	pkgdesc = Client software that supports various hardware logic analyzers, core library with Sipeed Slogic Analyzer support patches (git version)
-	pkgver = 0.2.1.r4422.g75563b42
+	pkgver = r6146.43f554d
 	pkgrel = 1
 	url = http://www.sigrok.org/wiki/Libsigrok
 	arch = armv6h
@@ -19,9 +19,7 @@ pkgbase = libsigrok-sipeed-slogic-git
 	depends = libieee1284
 	provides = libsigrok-git
 	conflicts = libsigrok-git
-	source = git+https://github.com/sigrokproject/libsigrok/
-	source = 0001-sipeed-slogic-analyzer-Add-Support-for-Sipeed-SLogic-Series-including-SLogic16U3-5Gbps.patch
+	source = git+https://github.com/sipeed/libsigrok/#branch=slogic-dev
 	sha512sums = SKIP
-	sha512sums = a89276812366ce60ce6972f702c5c997711844d1cfd4d3618f946cf224451f026f35f581aba08f74ad2e88670fcccd38ebcb1c38c8256ff164973dea7e09793c
 
 pkgname = libsigrok-sipeed-slogic-git
