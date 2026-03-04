@@ -1,7 +1,7 @@
 # Maintainer: Briar Campbell <nex@nexusxe.com>
 _pkgname=fw-fanctrl-rs
 pkgname=${_pkgname}-git
-pkgver=r53.g302241c
+pkgver=r71.gcf1c0ae
 pkgrel=1
 pkgdesc="A lightweight daemon for custom fan control on Framework laptops"
 arch=('x86_64')
@@ -64,8 +64,8 @@ package() {
   install -Dm644 include/fw-fanctrl-rs.h "$pkgdir/usr/include/${_pkgname}.h"
 
   # install the examples
-  # install -d "$pkgdir/usr/share/doc/${_pkgname}/examples"
-  # install -Dm644 examples/* "$pkgdir/usr/share/doc/${_pkgname}/examples/"
+  install -d "$pkgdir/usr/share/doc/${_pkgname}/examples"
+  install -Dm644 examples/* "$pkgdir/usr/share/doc/${_pkgname}/examples/"
 
   # install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
