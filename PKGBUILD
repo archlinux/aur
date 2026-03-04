@@ -28,6 +28,7 @@ prepare() {
 
 build() {
   cd lian-li-linux
+  export CARGO_PROFILE_RELEASE_STRIP=symbols
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release
