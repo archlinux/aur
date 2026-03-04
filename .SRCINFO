@@ -1,0 +1,20 @@
+pkgbase = wakadash-bin
+	pkgdesc = A live terminal dashboard for WakaTime coding stats
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/b00y0h/wakadash
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = wakadash
+	conflicts = wakadash
+	source = README-1.2.0.md::https://raw.githubusercontent.com/b00y0h/wakadash/v1.2.0/README.md
+	source = LICENSE-1.2.0::https://raw.githubusercontent.com/b00y0h/wakadash/v1.2.0/LICENSE
+	sha256sums = f08c12b00e13affaa02632acebf492b7126a6e1375fdbdba3c582d9cf8050617
+	sha256sums = 24e1635315adc2a281632235b4aa28d7df2496f9841288e76f40445f3d09594e
+	source_x86_64 = wakadash-x86_64-1.2.0.tgz::https://github.com/b00y0h/wakadash/releases/download/v1.2.0/wakadash_1.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e60cf7f849260327b755479f8a6d08646181d9cbd77f7869296075883ca0c664
+	source_aarch64 = wakadash-aarch64-1.2.0.tgz::https://github.com/b00y0h/wakadash/releases/download/v1.2.0/wakadash_1.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4c195601b17aa4ad6ae78e80c49d04d0920722a72399db0c8b5b2118b3721470
+
+pkgname = wakadash-bin

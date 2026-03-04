@@ -1,0 +1,5 @@
+[wakadash-bin]
+source = "github"
+github = "b00y0h/wakadash"
+use_latest_release = true
+prefix = "v"
