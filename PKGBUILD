@@ -14,9 +14,8 @@ depends=(glfw libjpeg-turbo glslang vulkan-icd-loader vulkan-tools perl-image-ex
 # useful for most cases, so this optdepend is kinda hard though.
 optdepends=(
 'ffmpeg: video input/output'
-'rust: rawler raw loading (kinda essential, but rustc via rustup works too)'
 'alsa-lib: audio output')
-makedepends=(rsync sed xxd cmake vulkan-headers git pkgconf make)
+makedepends=(rsync sed xxd cmake vulkan-headers git pkgconf make rust)
 # there is no official vkdt release package. if there were, it would be in conflict with this git package:
 # conflicts=(vkdt)
 provides=(vkdt)
@@ -42,7 +41,8 @@ CFLAGS+=-Wall -pipe -I. -D_GNU_SOURCE -std=c11
 OPT_CFLAGS=-g
 CXXFLAGS+=-Wall -pipe -I. -D_GNU_SOURCE -std=c++17
 EXE_CFLAGS+=-fPIC
-export CFLAGS CXXFLAGS EXE_CFLAGS CXX CC OPT_CFLAGS
+VKDT_USE_RAWINPUT=2
+export CFLAGS CXXFLAGS EXE_CFLAGS CXX CC OPT_CFLAGS VKDT_USE_RAWINPUT
 EOF
   make -j20 prefix="/usr" DESTDIR="$pkgdir"
 }
