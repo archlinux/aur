@@ -40,5 +40,6 @@ build() {
 
 package() {
     cd ${pkgname}
+    install -Dm644 ${srcdir}/${pkgname}/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
     install -Dm755 "${srcdir}/${pkgname}/bin/onepdfplease" "${pkgdir}/usr/bin/onepdfplease"
     }
