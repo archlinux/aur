@@ -6,15 +6,15 @@ pkgrel=1
 pkgdesc=''
 url=''
 arch=('aarch64' 'x86_64')
-license=('')
+license=('MIT')
 provides=('crtui')
 conflicts=('crtui')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ksckaan1/crtui/releases/download/v${pkgver}/crtui_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('570647867f3612550e8f2589862412f7de36dbe86d5ece4eace024bce3cddfe6')
+sha256sums_aarch64=('5c20169f37a2bc2ae76510571fcdda62e90143a9d7673360ea7637dd392deb5f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ksckaan1/crtui/releases/download/v${pkgver}/crtui_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('2c6099f33d5fdbe0db836125f9945e6031ea90b7b4013e391201342056f50f8f')
+sha256sums_x86_64=('ab2c8cabf554d1a2e395146d59bf19b449f450c6bd3124cff0dd5901002257af')
 
 package() {
   install -Dm755 "./crtui" "${pkgdir}/usr/bin/crtui"
