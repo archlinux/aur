@@ -1,0 +1,17 @@
+pkgbase = instawow-bin
+	pkgdesc = A CLI add-on manager for World of Warcraft.
+	pkgver = 7.0.0.post1
+	pkgrel = 1
+	url = https://github.com/layday/instawow
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	provides = instawow
+	conflicts = instawow
+	noextract = instawow-7.0.0.post1-x86_64.zip
+	source = instawow-7.0.0.post1-LICENSE.md::https://raw.githubusercontent.com/layday/instawow/refs/tags/v7.0.0.post1/COPYING
+	sha256sums = SKIP
+	source_x86_64 = instawow-7.0.0.post1-x86_64.zip::https://github.com/layday/instawow/releases/download/v7.0.0.post1/instawow-cli-7.0.0.post1-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 6850abf948ebaf022c3c3cba337103cf2e2e8dc0a0377ba715564fc4b835dc9f
+
+pkgname = instawow-bin
