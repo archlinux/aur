@@ -1,0 +1,17 @@
+pkgbase = monochrome-git
+	pkgdesc = Lossless music streaming
+	pkgver = r1027.f967d29
+	pkgrel = 1
+	url = https://github.com/monochrome-music/monochrome
+	arch = x86_64
+	license = HIPPOCRATIC LICENSE
+	makedepends = git
+	makedepends = bun
+	provides = monochrome
+	conflicts = monochrome
+	source_x86_64 = monochrome::git+https://github.com/monochrome-music/monochrome.git
+	source_x86_64 = icon.png::https://raw.githubusercontent.com/monochrome-music/monochrome/refs/heads/main/public/assets/appicon.png
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+
+pkgname = monochrome-git
