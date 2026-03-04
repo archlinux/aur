@@ -1,7 +1,7 @@
 # Maintainer: italoghost <eduprodive at posteo dot me>
 pkgname=leshade-bin
 _pkgname=leshade
-pkgver=2.3.9
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="An unofficial Reshade Installer for Linux."
 arch=('x86_64')
@@ -22,10 +22,8 @@ source=(
 "https://github.com/Ishidawg/LeShade/releases/download/${pkgver}/${_appimage}"
 "LICENSE::https://raw.githubusercontent.com/Ishidawg/LeShade/main/LICENSE"
 )
-sha256sums=(
-'8f1a9f8b30421d0b2cedc791659b3a3978395e0c4809adbbd1623c8b0c2fb443'
-'a7b8f406ed4e1a5311d51a1967f91e569a6c0ce815c2bf74956d926613dd61a3'
-)
+sha256sums=('6a96f054adfc1caf968ad492a1c9d6f1e5b0dbdf72816ff190d3163ab8ccde6c'
+            'a7b8f406ed4e1a5311d51a1967f91e569a6c0ce815c2bf74956d926613dd61a3')
 
 prepare() {
 	# Extract AppImage
