@@ -17,8 +17,9 @@ makedepends=(
   )
 depends=(
   'wayland'
+  'exiv2'
+  'luajit'
   'libxkbcommon'
-  'json-c'
   'fontconfig'
   'freetype2'
   'hicolor-icon-theme'
@@ -30,7 +31,6 @@ depends=(
   'libtiff'
   'libsixel'
   'libraw'
-  'libexif'
   'openexr'
   )
 optdepends=('bash-completion: Bash completions')
