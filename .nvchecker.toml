@@ -1,0 +1,5 @@
+[binco-bin]
+source = "github"
+github = "dd86k/binco"
+use_latest_release = true
+prefix = "v"
