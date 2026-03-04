@@ -1,9 +1,9 @@
 # Maintainer: xaque <xaque at duck dot com>
 
-_stablever=2510.0
-_engver=25.10
-_builddate="20251010"
-_debname="o3de_2510_0.deb"
+_stablever=2510.2
+_engver=25.10.2
+_builddate="20260126"
+_debname="o3de_2510_2.deb"
 _binname="o3de"
 
 pkgname=o3de-bin
@@ -29,7 +29,7 @@ source=("open-3d-engine.desktop"
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            '6b38139f1b8c05495312003b050ab6c2e5bcf7e019a8922bf3440a7d7fa561e5'
+            '1e791446f88f371a25813738f055ea8811031a2e388adeda126a1d0d9ea2eb74'
             'SKIP'
             'SKIP'
             'SKIP')
