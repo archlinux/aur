@@ -1,9 +1,9 @@
 pkgbase = marble-maps-thunderforest-git
 	pkgdesc = Maps served by thunderforest for KDE marble. API key required and asked for during build.
 	pkgver = r14.20250522.627ff63
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
-	url = https://gitlab.com/dreieckli/marble-maps-thunderforest
+	url = https://codeberg.org/dreieck/marble-maps-thunderforest
 	arch = any
 	license = custom: Public Domain
 	license = custom: Thunderforest/ OSM.
@@ -13,7 +13,7 @@ pkgbase = marble-maps-thunderforest-git
 	provides = marble-maps-thunderforest=r14.20250522.627ff63
 	conflicts = marble-maps-thunderforest
 	options = emptydirs
-	source = marble-maps-thunderforest::git+https://gitlab.com/dreieckli/marble-maps-thunderforest.git
+	source = marble-maps-thunderforest::git+https://codeberg.org/dreieck/marble-maps-thunderforest.git
 	sha256sums = SKIP
 
 pkgname = marble-maps-thunderforest-git

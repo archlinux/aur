@@ -4,9 +4,9 @@ _pkgname=marble-maps-thunderforest
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=r14.20250522.627ff63
-pkgrel=1
+pkgrel=2
 pkgdesc="Maps served by thunderforest for KDE marble. API key required and asked for during build."
-url="https://gitlab.com/dreieckli/marble-maps-thunderforest"
+url="https://codeberg.org/dreieck/marble-maps-thunderforest"
 arch=('any')
 license=(
   'custom: Public Domain'
@@ -26,7 +26,7 @@ conflicts=("${_pkgname}")
 replaces=()
 options=('emptydirs')
 source=(
-  "${_pkgname}::git+https://gitlab.com/dreieckli/marble-maps-thunderforest.git"
+  "${_pkgname}::git+${url}.git"
 )
 sha256sums=(
   'SKIP'
