@@ -1,13 +1,13 @@
 # Maintainer: Dainz <mbenjaminarancibia@gmail.com>
 pkgname='etali'
-pkgver=v1.0.0.r0.g64006c0
-pkgrel=1
+pkgver=v1.1.0.r0.g26eb01e
+pkgrel=2
 pkgdesc="A simple CLI tool for the Scryfall API."
 arch=('x86_64')
 url="https://github.com/xdainz/Etali"
 options=('!debug' 'strip')
 license=('MIT')
-depends=('jsoncpp' 'curl' 'gcc-libs' 'glibc')
+depends=('jsoncpp' 'curl' 'gcc-libs' 'glibc' 'libstdc++' 'libgcc' 'vim')
 makedepends=('git')
 source=("etali::git+https://github.com/xdainz/Etali.git")
 sha256sums=('SKIP')
