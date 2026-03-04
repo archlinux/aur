@@ -1,6 +1,6 @@
 pkgbase = displayctl
 	pkgdesc = GTK 4 display configuration tool with visual layout editor
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/purpleneutral/displayctl
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = displayctl
 	depends = pango
 	optdepends = xorg-xrandr: X11 display backend
 	optdepends = wlr-randr: Wayland (wlroots) display backend
-	source = displayctl-1.0.3.tar.gz::https://github.com/purpleneutral/displayctl/archive/v1.0.3.tar.gz
-	sha256sums = e7edc71f501953fd2fc3db8ed6fd2aa185f78a0c37ba3c36973c662a217ffc28
+	source = displayctl-1.0.4.tar.gz::https://github.com/purpleneutral/displayctl/archive/v1.0.4.tar.gz
+	sha256sums = 756555d5ddeaed8c666070639d714383c5010ed75671cb970076a7498f6e967e
 
 pkgname = displayctl
