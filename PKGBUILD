@@ -1,7 +1,7 @@
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=gcn64tools-git
-pkgver=r423.e8420ea
+pkgver=r467.43db365
 pkgrel=1
 pkgdesc='Raphnet USB adapter management tools.'
 arch=('any')
@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/gcn64tools/src"
-	make ${MAKEFLAGS:-CFLAGS=-O2 -j$(nproc)}
+	make ${MAKEFLAGS}
 }
 
 package() {

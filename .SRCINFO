@@ -1,6 +1,6 @@
 pkgbase = gcn64tools-git
 	pkgdesc = Raphnet USB adapter management tools.
-	pkgver = r423.e8420ea
+	pkgver = r467.43db365
 	pkgrel = 1
 	url = https://github.com/raphnet/gcn64tools
 	install = gcn64tools.install
