@@ -2,7 +2,7 @@
 
 _name=openai-agents
 pkgname=python-$_name
-pkgver=0.10.2
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="OpenAI Agents SDK."
 arch=('any')
@@ -10,7 +10,7 @@ url='https://github.com/openai/openai-agents-python'
 license=('MIT')
 depends=('python' 'python-openai' 'python-pydantic' 'python-griffe' 'python-typing_extensions' 'python-requests' 'python-mcp')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-inline-snapshot' 'python-sounddevice' 'python-websockets' 'python-graphviz' 'python-fastapi' 'python-aiosqlite' 'python-cryptography' 'python-fakeredis' 'litellm')
+checkdepends=('python-pytest' 'python-pytest-asyncio' 'python-pytest-mock' 'python-pytest-xdist' 'python-inline-snapshot' 'python-sounddevice' 'python-websockets' 'python-graphviz' 'python-fastapi' 'python-aiosqlite' 'python-cryptography' 'python-fakeredis' 'litellm')
 optdepends=('python-numpy: voice' 'python-websockets: voice'
             'python-graphviz: viz'
             'litellm: litellm'
@@ -20,7 +20,7 @@ optdepends=('python-numpy: voice' 'python-websockets: voice'
             'python-redis: redis'
             'python-dapr: dapr' 'python-grpcio: dapr')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('195b0d81bb0f4b142c4b9153f2a54c1d332ca024a03e8e24b945f1cff8532ebd')
+sha256sums=('32259275b6d42d50e35e29439d35bd8fd0946c9e78bb9f14fe05f019fddb7ea9')
 
 build() {
   cd "$srcdir"/${_name//-/_}-$pkgver
