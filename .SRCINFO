@@ -1,6 +1,6 @@
 pkgbase = plasma6-applet-truelink-monitor
 	pkgdesc = Real WiFi physical layer monitor for KDE Plasma 6 - shows RSSI dBm, PHY Rate, MCS, MIMO
-	pkgver = 1.1.15
+	pkgver = 1.1.16
 	pkgrel = 1
 	url = https://github.com/xycld/truelink-monitor
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = plasma6-applet-truelink-monitor
 	depends = libplasma
 	depends = networkmanager-qt
 	depends = libnl
-	source = plasma6-applet-truelink-monitor-1.1.15.tar.gz::https://github.com/xycld/truelink-monitor/releases/download/v1.1.15/truelink-monitor-v1.1.15.tar.gz
-	sha256sums = d341e529f7a29cdd481cc1215951ac458e195a0fb82c676bc33648b5c5a2c9af
+	source = plasma6-applet-truelink-monitor-1.1.16.tar.gz::https://github.com/xycld/truelink-monitor/releases/download/v1.1.16/truelink-monitor-v1.1.16.tar.gz
+	sha256sums = 58a6a464281ef98069fcbe8e531b8ef4fdcd8591bbae8782cf69af95bfe95921
 
 pkgname = plasma6-applet-truelink-monitor
