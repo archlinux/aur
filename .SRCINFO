@@ -1,6 +1,6 @@
 pkgbase = nemlai
 	pkgdesc = CLI and Python SDK for automated grocery replenishment on Nemlig.com (Denmark). Built for OpenClaw and other agents.
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://nemlai.fly.dev
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = nemlai
 	makedepends = python-hatchling
 	depends = python
 	depends = python-httpx
-	source = https://files.pythonhosted.org/packages/source/n/nemlai/nemlai-0.4.0.tar.gz
-	sha256sums = c1e9f03c4a81ce25d3e922f670ac640436ba5c9443a427a3f298714b31ec1f4a
+	source = https://files.pythonhosted.org/packages/source/n/nemlai/nemlai-0.4.1.tar.gz
+	sha256sums = 2528b6ffd9b71cf07b10ffaf850e2eeec445e68b8f99c2b25bfb2ce9aebfe86f
 
 pkgname = nemlai
