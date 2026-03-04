@@ -1,6 +1,6 @@
 # Maintainer: Dimitrije Randjelovic <m1z23r@gmail.com>
 pkgname=nikode
-pkgver=3.5.2
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="A modern API client for developers"
 arch=('x86_64')
