@@ -1,0 +1,18 @@
+pkgbase = gonob
+	pkgdesc = A simple AUR helper written in golang
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/SnowsSky/gonob
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = pacman
+	depends = git
+	depends = fakeroot
+	depends = debugedit
+	depends = curl
+	optdepends = sudo: privilege elevation
+	source = gonob-1.0.1.tar.gz::https://github.com/SnowsSky/gonob/archive/v1.0.1.tar.gz
+	sha256sums = 4e02528318995cff64aa7f4a9dc1c9a1a15f88d8ee75dc2c6efe5cdc1d4386d0
+
+pkgname = gonob
