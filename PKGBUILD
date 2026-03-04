@@ -6,7 +6,7 @@
 
 pkgname=wxwidgets-gtk3-unstable
 _pkgname=wxWidgets
-pkgver=3.3.1
+pkgver=3.3.2
 pkg_name_ver="${_pkgname}-${pkgver}"
 pkgrel=1
 pkgdesc="GTK+3 implementation of wxWidgets API for GUI"
@@ -19,7 +19,7 @@ provides=()
 #provides=(wxwidgets-gtk3)
 conflicts=()
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('f936c8d694f9c49a367a376f99c751467150a4ed7cbf8f4723ef19b2d2d9998d')
+sha256sums=('50a28cb668de47b0e006cd6ebed8cf4f76c1cac6116fb3c978c44478219103f2')
 
 #pkgver() {
 #  cd "${srcdir}/${pkg_name_ver}"
@@ -33,8 +33,8 @@ prepare()
 
   # This hack is needed for wx-3.3.1 - as its cmake create_symlink function is broken
   # Fixed upstream in wx - remove when updating to wx-3.3.2
-  cp -v "${startdir}/build_cmake_install.cmake.new" "${srcdir}/${pkg_name_ver}/build/cmake/install.cmake"
-  cp -v "${startdir}/build_cmake_utils_CMakeLists.txt.new" "${srcdir}/${pkg_name_ver}/build/cmake/utils/CMakeLists.txt"
+  #cp -v "${startdir}/build_cmake_install.cmake.new" "${srcdir}/${pkg_name_ver}/build/cmake/install.cmake"
+  #cp -v "${startdir}/build_cmake_utils_CMakeLists.txt.new" "${srcdir}/${pkg_name_ver}/build/cmake/utils/CMakeLists.txt"
 
 }
 
@@ -63,7 +63,9 @@ package()
 
   mv "${pkgdir}/usr/bin/wx-config" "${pkgdir}/usr/bin/wx-config-${pkgver}"
   mv "${pkgdir}/usr/bin/wxrc" "${pkgdir}/usr/bin/wxrc-${pkgver}"
-  mv "${pkgdir}/usr/lib/cmake/wxWidgets" "${pkgdir}/usr/lib/cmake/wxWidgets-${pkgver}"
+
+  # 3.3.1
+  #mv "${pkgdir}/usr/lib/cmake/wxWidgets" "${pkgdir}/usr/lib/cmake/wxWidgets-${pkgver}"
 
   #chrpath -d "${pkgdir}"/usr/bin/wxrc-*
   #chrpath -d "${pkgdir}/usr/lib/"*.so
