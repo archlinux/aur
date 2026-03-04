@@ -1,0 +1,13 @@
+pkgbase = immichfs
+	pkgdesc = Fuse filesystem for immich
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codegiant.io/scottrix/scottrix/repository/5573/files/main/README.md
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = python-fusepy
+	source = git+:https://codegiant.io/scottrix/scottrix/immichfs.git#pkgver
+	sha256sums = SKIP
+
+pkgname = immichfs
