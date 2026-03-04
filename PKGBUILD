@@ -16,16 +16,13 @@ source=("$_pkgname::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  # Generate version string from git history
-  ( set -o pipefail
-    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || \
-    printf "0.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "$_pkgname"
+  # Bulletproof versioning: Count commits and add short hash
+  printf "0.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$_pkgname"
   
   # Install the main binary to /usr/bin/
   install -Dm755 bin/sonic-tte "$pkgdir/usr/bin/sonic-tte"
