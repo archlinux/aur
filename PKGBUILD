@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Atom Long <atom0815@gmail.com>
 pkgname=electron-builder
-pkgver=26.0.12
+pkgver=26.8.1
 # 可以通过 npm search electron-builder来确定版本
 pkgrel=1
 pkgdesc="A complete solution to package and build a ready for distribution Electron app with “auto update” support out of the box"
@@ -21,7 +21,7 @@ options=(
 )
 source=("${pkgname}-${pkgver}.tgz::http://registry.npmmirror.com/${pkgname}/-/${pkgname#nodejs-}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('1458adb3d7c531c7aa65529a91ceda8262957d047c8413c2693e574a513ee8a1')
+sha256sums=('e44ebd6e310ff8b20bc0604f0a22043341134fa95cf4ee82f2025c51a31eaa04')
 package() {
     HOME="${srcdir}/.electron-gyp"
     {
