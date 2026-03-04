@@ -1,0 +1,17 @@
+pkgbase = sonic-tte-git
+	pkgdesc = A high-impact animated media screensaver for the terminal using TerminalTextEffects
+	pkgver = 0.1.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/shmall03/sonic-tte
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = playerctl
+	depends = figlet
+	depends = python-terminaltexteffects
+	provides = sonic-tte
+	conflicts = sonic-tte
+	source = git+https://github.com/shmall03/sonic-tte.git
+	sha256sums = SKIP
+
+pkgname = sonic-tte-git
