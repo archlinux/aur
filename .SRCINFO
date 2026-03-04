@@ -1,0 +1,38 @@
+pkgbase = python-torii
+	pkgdesc = A Python-based HDL and framework for silicon-based witchcraft
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/shrine-maiden-heavy-industries/torii-hdl
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pip
+	makedepends = python-setuptools-scm
+	makedepends = python-setuptools>=66
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = python<4.0
+	depends = python-jinja>=1:3.1
+	depends = python-jinja<1:4.0
+	depends = python-platformdirs>=4.0
+	depends = python-platformdirs<5.0
+	depends = python-pyvcd>=0.4.0
+	depends = python-pyvcd<0.5.0
+	depends = python-rich>=13.7.0
+	depends = python-setuptools>=66
+	depends = yosys
+	optdepends = gtkwave: Simulation trace viewing
+	optdepends = surfer-waveform: Simulation trace viewing
+	optdepends = sby: Formal Verification support
+	optdepends = yices: Formal Verification support
+	optdepends = nextpnr-ice40: Lattice iCE40 FPGA support
+	optdepends = nextpnr-ecp5: Lattice ECP5/ECP5G FPGA support
+	optdepends = nextpnr-machxo2: Lattice machXO2/machXO3L FPGA support
+	provides = python-torii=0.8.1
+	conflicts = python-torii-git
+	conflicts = python-torii-nightly
+	source = torii-0.8.1.tar.gz::https://files.pythonhosted.org/packages/source/t/torii/torii-0.8.1.tar.gz
+	sha256sums = d56cc7fb15126692a34899c5d9b6300db8e72db2c5306f8883ce40177c099763
+
+pkgname = python-torii
