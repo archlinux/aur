@@ -1,6 +1,6 @@
 pkgbase = rog-perf-tuner-git
 	pkgdesc = An utility to manage Asus Rog laptop performance and RGB lighting
-	pkgver = 4.12.5.r5
+	pkgver = 4.12.5.r6
 	pkgrel = 1
 	url = https://github.com/Emiliopg91/RogPerfTuner
 	install = rog-perf-tuner-git.install
@@ -39,7 +39,7 @@ pkgbase = rog-perf-tuner-git
 	depends = upower
 	provides = rog-perf-tuner
 	conflicts = rog-perf-tuner
-	source = git+https://github.com/Emiliopg91/RogPerfTuner.git#commit=f3636f2a
+	source = git+https://github.com/Emiliopg91/RogPerfTuner.git#commit=f45defb3
 	options = !debug
 	options = !lto
 	sha256sums = SKIP
