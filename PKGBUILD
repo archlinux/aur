@@ -64,8 +64,8 @@ package() {
   install -Dm644 include/fw-fanctrl-rs.h "$pkgdir/usr/include/${_pkgname}.h"
 
   # install the examples
-  install -d "$pkgdir/usr/share/doc/${_pkgname}/examples"
-  install -Dm644 examples/* "$pkgdir/usr/share/doc/${_pkgname}/examples/"
+  # install -d "$pkgdir/usr/share/doc/${_pkgname}/examples"
+  # install -Dm644 examples/* "$pkgdir/usr/share/doc/${_pkgname}/examples/"
 
   # install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
