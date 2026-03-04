@@ -29,7 +29,7 @@ optdepends=(
     'xdg-desktop-portal: GNOME Background Apps panel integration'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
-sha256sums=('50934f293ba63c8463d8cce3d9d129630cd1f6bf6c098d738e4de44893ecec79')
+sha256sums=('e58395f2ce3a29d5de6aa69c6d9e4d97e2dd928c1c0c599d99c0aafeb88cde0a')
 
 package() {
     cd "${srcdir}/ArchVault-${pkgver//_/-}"
