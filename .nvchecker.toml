@@ -1,0 +1,5 @@
+[logstalgia]
+source = "github"
+github = "acaudwell/Logstalgia"
+use_latest_release = true
+prefix = "logstalgia-"

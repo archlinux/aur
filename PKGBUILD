@@ -1,25 +1,23 @@
-# Maintainer: Sebastian Krzyszkowiak <dos@dosowisko.net>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Sebastian Krzyszkowiak <dos@dosowisko.net>
 # Contributor: Kristaps Karlsons <kristaps.karlsons@gmail.com>
 # Contributor: Ole Roeßler <ole.roessler@gmail.com>
 
 pkgname=logstalgia
-pkgver=1.1.4
-pkgrel=2
-pkgdesc="a website access log visualisation tool"
+pkgver=1.1.5
+pkgrel=1
+pkgdesc="replay or stream website access logs as a retro arcade game"
 url="https://github.com/acaudwell/Logstalgia"
 arch=('i686' 'x86_64')
-license=('GPL3')
+license=('GPL-3.0')
 groups=('system')
-depends=('pcre' 'sdl2_image' 'ftgl' 'glew' 'glm' 'boost' 'libpng')
-source=(https://github.com/acaudwell/Logstalgia/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz
-        boost-1.89.patch)
-sha256sums=('c049eff405e924035222edb26bcc6c7b5f00a08926abdb7b467e2449242790a9'
-            'ed3e81179cd6649b449e8f912b7e1d63da005bd5e577055874a8858d7f0c4018')
+makedeps=('boost-libs')
+depends=('glibc' 'libgcc' 'libstdc++' 'pcre2' 'sdl2-compat' 'sdl2_image' 'ftgl' 'glew' 'glu' 'glm' 'boost' 'libpng' 'libglvnd' 'freetype2')
+source=("${url}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('028936e9f663c877d6969ad25f145c7b420797e9a3e01c6c184815ed8309f481')
 
 prepare() {
   cd $pkgname-$pkgver
-
-  patch -p1 < ../boost-1.89.patch
 
   autoreconf -fiv
 }
