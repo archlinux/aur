@@ -31,6 +31,11 @@ prepare() {
 
 build() {
     cd "${srcdir}/qbz-${pkgver}"
+
+    # Workaround: Arch's rust package defaults to rust-lld which breaks
+    # ring crate's native C/ASM library linking. Force traditional ld.
+    export RUSTFLAGS="-C link-arg=-fuse-ld=bfd"
+
     npm ci
     npm run build
     npx tauri build --no-bundle
