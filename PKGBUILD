@@ -13,10 +13,10 @@ conflicts=('revoco')
 depends=('exiftool' 'ffmpeg')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fulgidus/revoco/releases/download/v${pkgver}/revoco_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('6e3836ecec9f05df34f95392b2756a1b8dd57e498fe2adf61d18d5c40abb7f98')
+sha256sums_aarch64=('f740f113d59473fb10574acf07fce8f34070fc4619c016c3be47b88e5720cd9e')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fulgidus/revoco/releases/download/v${pkgver}/revoco_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('0d7c82e27ed4a5015166198623707b95a1f2195e59c1026e4325ab24c00bf4e4')
+sha256sums_x86_64=('5c0c0af9a042f7578b47adc2620c0d161fcfba5213be4a577c7f3bc0e2db6a48')
 
 package() {
   install -Dm755 "./revoco" "${pkgdir}/usr/bin/revoco"
