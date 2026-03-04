@@ -1,0 +1,21 @@
+pkgbase = marble-maps-sachsen-git
+	pkgdesc = Aerial (RGB and CIR) and topographic (DTK10, DTK25, DTK50, DTK100 and historic) maps provided by the German federal state of Saxony. WMS maps, if 'marble' crashes try 'marble-qt'.
+	pkgver = r10.20260304.5339929
+	pkgrel = 1
+	epoch = 0
+	url = https://codeberg.org/dreieck/marble-maps-sachsen
+	arch = any
+	groups = marble-maps
+	license = Unlicense
+	license = LicenseRef-GeoSN
+	makedepends = bash
+	makedepends = git
+	depends = marble-common
+	provides = marble-maps-sachsen
+	conflicts = marble-maps-sachsen
+	replaces = marble-maps-sachsen<=20230922.01
+	options = emptydirs
+	source = marble-maps-sachsen::git+https://codeberg.org/dreieck/marble-maps-sachsen.git
+	sha256sums = SKIP
+
+pkgname = marble-maps-sachsen-git
