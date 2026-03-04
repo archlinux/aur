@@ -1,0 +1,16 @@
+pkgbase = lstk
+	pkgdesc = LocalStack CLI v2
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/localstack/lstk
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	options = !debug
+	source = git+https://github.com/localstack/lstk.git#tag=v0.2.3
+	sha256sums = SKIP
+
+pkgname = lstk
