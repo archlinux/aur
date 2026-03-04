@@ -1,6 +1,6 @@
 # Maintainer: Louis Cornell <lpcornel@gmail.com>
 pkgname=musiclib-cli
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Music library control plane: ratings, tagging, and mobile sync (CLI)"
 arch=('x86_64')
@@ -33,7 +33,7 @@ conflicts=('musiclib')
 # After tagging on GitHub, compute the hash with: makepkg -g >> PKGBUILD
 # and replace SKIP below with the printed sha256sum line.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5d86a841e4fb15244084e09ab7fc68f45cce2241391a133ba6b7ab940c5d5161')
+sha256sums=('9efeb2f90f0acd94ab235b8da1258fc61e718715deaae0603fedc88894954fac')
 
 build() {
     # GitHub extracts the tarball as musiclib-<version>/, not musiclib-cli-<version>/

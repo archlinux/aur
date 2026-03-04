@@ -1,6 +1,6 @@
 pkgbase = musiclib-cli
 	pkgdesc = Music library control plane: ratings, tagging, and mobile sync (CLI)
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/Harpo3/musiclib
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = musiclib-cli
 	optdepends = rsgain: ReplayGain loudness normalization (boost subcommand)
 	optdepends = conky: Desktop telemetry display (Conky integration)
 	conflicts = musiclib
-	source = musiclib-cli-1.0.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v1.0.tar.gz
-	sha256sums = 5d86a841e4fb15244084e09ab7fc68f45cce2241391a133ba6b7ab940c5d5161
+	source = musiclib-cli-1.1.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v1.1.tar.gz
+	sha256sums = 9efeb2f90f0acd94ab235b8da1258fc61e718715deaae0603fedc88894954fac
 
 pkgname = musiclib-cli
