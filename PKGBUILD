@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=zen-adblocker
 pkgver=0.19.1
-pkgrel=1
-_nodeversion=24
+pkgrel=2
+_nodeversion=22
 pkgdesc="Simple, free and efficient ad-blocker and privacy guard"
 arch=('x86_64' 'aarch64')
 url="https://zenprivacy.net"
@@ -54,9 +54,10 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath"
   _ensure_local_nvm
   wails build \
-    -tags "-trimpath -buildmode=pie -mod=readonly -modcacherw" \
     -ldflags "-linkmode=external -extldflags \"${LDFLAGS}\" \
       -X 'github.com/ZenPrivacy/zen-desktop/internal/cfg.Version=${pkgver}' \
       -X 'github.com/ZenPrivacy/zen-desktop/internal/constants.InstanceID=${_instance_id}' \
