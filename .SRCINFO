@@ -7,6 +7,6 @@ pkgbase = libelectron-electron-meta
 	license = GPL
 	depends = electron40
 	source = electron
-	sha256sums = 880a9d68ae83337a3faa3a69f8248e705884c54b4e7a96ebce6e7ea7110d2cfd
+	sha256sums = 44a6b6496f4cdf70fb2c34797985ff9b5eb1b27f78eda4b2bfb36284c5fbd422
 
 pkgname = libelectron-electron-meta
