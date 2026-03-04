@@ -1,6 +1,6 @@
 pkgbase = termirs-bin
 	pkgdesc = A modern, async SSH terminal client
-	pkgver = 0.2.11
+	pkgver = 0.2.12
 	pkgrel = 1
 	url = https://github.com/caelansar/termirs
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = termirs-bin
 	license = MIT
 	provides = termirs
 	conflicts = termirs
-	source = LICENSE-0.2.11::https://raw.githubusercontent.com/caelansar/termirs/v0.2.11/LICENSE
-	source = README-0.2.11.md::https://raw.githubusercontent.com/caelansar/termirs/v0.2.11/README.md
+	source = LICENSE-0.2.12::https://raw.githubusercontent.com/caelansar/termirs/v0.2.12/LICENSE
+	source = README-0.2.12.md::https://raw.githubusercontent.com/caelansar/termirs/v0.2.12/README.md
 	sha256sums = c2ebfd5271fc48667a40415fc0b01daf0e1d812a0fd33b36f6f9bc2bd7e052c3
 	sha256sums = a371603dd3a376d06388b966efdb0b602c6163712ac1a258c99743dafcedb765
-	source_x86_64 = termirs-x86_64-0.2.11.tgz::https://github.com/caelansar/termirs/releases/download/v0.2.11/termirs-v0.2.11-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = d36cd992a3a9ee40aa464b8091fe2327822e920418c9af033379c56107c5cdb3
-	source_aarch64 = termirs-aarch64-0.2.11.tgz::https://github.com/caelansar/termirs/releases/download/v0.2.11/termirs-v0.2.11-aarch64-unknown-linux-musl.tar.gz
-	sha256sums_aarch64 = 8d0d18d37d83d5a043a411144ab60478010540b9afc1dd7d05bdc054918033a4
+	source_x86_64 = termirs-x86_64-0.2.12.tgz::https://github.com/caelansar/termirs/releases/download/v0.2.12/termirs-v0.2.12-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 3ee2fb64b3ad2133de3302a9a4ec7c7fc29a9a787393b1ed9efa5d7ac0483ffb
+	source_aarch64 = termirs-aarch64-0.2.12.tgz::https://github.com/caelansar/termirs/releases/download/v0.2.12/termirs-v0.2.12-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 9c53179bec8d1a621eb06bcc0412a6ac177e33a926bf61395bf36ce9f2b49042
 
 pkgname = termirs-bin
