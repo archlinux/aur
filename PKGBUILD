@@ -1,5 +1,5 @@
 pkgname=('mingw-w64-highs')
-pkgver=1.12.0
+pkgver=1.13.1
 pkgrel=1
 pkgdesc='Linear optimization software (mingw-w64)'
 url='https://github.com/ERGO-Code/HiGHS'
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-cmake')
 options=('!strip' '!buildflags' 'staticlibs')
 depends=('mingw-w64-zlib')
 source=("https://github.com/ERGO-Code/HiGHS/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cd0daddaca57e66b55524588d715dc62dcee06b5ab9ad186412dc23bc71ae342')
+sha256sums=('d491448e585dbf08cd8945ca5dcbbe3b784d73b9c68eea4e7456274619d56164')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -25,6 +25,7 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/HiGHS-$pkgver/build-${_arch}"
     make DESTDIR="${pkgdir}" install
+    rm -r "${pkgdir}"/usr/${_arch}/share
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
   done
