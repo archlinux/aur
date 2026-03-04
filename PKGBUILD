@@ -1,13 +1,15 @@
 # Maintainer: MiguVT <cuentas@miguvt.com>
 
 pkgname=fixvr-git
-pkgver=r1.e6d996f
-pkgrel=1
+pkgver=r2.e6d996f
+pkgrel=2
 pkgdesc="udev rule that fixes the Valve Index blank EDID (640×480) bug on Linux"
 arch=('any')
 url="https://github.com/MiguVT/fixvr"
 license=('MIT')
 makedepends=('git')
+optdepends=('xr-hardware: udev access rules for Valve hidraw/USB nodes (avoids duplicate rules)'
+            'steam-devices: steam-devices provides the same Valve access rules')
 provides=('fixvr')
 conflicts=('fixvr')
 install=fixvr.install
