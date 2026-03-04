@@ -1,4 +1,4 @@
-# Maintainer: Javier Tia <javier dot tia at gmail dot com>
+# Maintainer: Javier Tia <floss@jetm.me>
 _pkgname=difi
 pkgname=difi-bin
 pkgver=0.1.8
