@@ -4,7 +4,7 @@
 _commit=HEAD
 _pkgname=marsdev
 pkgname=${_pkgname}-git
-pkgver=r159.b85b895
+pkgver=r160.908caa4
 pkgrel=1
 pkgdesc="Cross-platform Sega Mega Drive / Super 32X / Sharp X68000 toolchain"
 arch=('x86_64')
@@ -13,9 +13,9 @@ makedepends=('boost' 'texinfo' 'wget' 'java-environment>=11')
 depends=('java-environment>=11')
 provides=('marsdev' 'x68k-tools' 'sik-tools' 'flamewing-tools' 'sgdk')
 license=('MIT')
-source=("git+$url#commit=$_commit" 'sgdk-parallel-build.patch')
+source=("git+$url#commit=$_commit")
 
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 options=('!strip' '!debug' '!lto')
 
 pkgver() {
@@ -38,7 +38,6 @@ prepare() {
   echo "MARS_INSTALL_DIR: ${MARS_INSTALL_DIR}"
   #echo "SGDK_VER: ${SGDK_VER}"
   git submodule update --init
-  cat "${srcdir}/sgdk-parallel-build.patch" | patch -p1
 }
 
 build() {
