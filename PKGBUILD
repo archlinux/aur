@@ -1,8 +1,8 @@
 # Maintainer: tuanapi <tuanapi@proton.me>
 _pkgname=openanime
 pkgname="${_pkgname}-bin"
-pkgver=1.0.5
-pkgrel=2
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="Unofficial OpenAnime Linux istemcisi - WebGPU/Vulkan destekli"
 arch=('x86_64')
 url="https://github.com/tuanapi/OpenAnime-Linux-Desktop-App"
