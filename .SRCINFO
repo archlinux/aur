@@ -1,6 +1,6 @@
 pkgbase = teams-for-linux-bin
 	pkgdesc = Unofficial Microsoft Teams for Linux client (binary version)
-	pkgver = 2.7.8
+	pkgver = 2.7.9
 	pkgrel = 1
 	url = https://github.com/IsmaelMartinez/teams-for-linux
 	arch = x86_64
@@ -16,11 +16,11 @@ pkgbase = teams-for-linux-bin
 	conflicts = teams-for-linux-git
 	conflicts = teams-for-linux-wbundled-electron
 	options = !strip
-	source_x86_64 = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.7.8/teams-for-linux_2.7.8_amd64.deb
-	b2sums_x86_64 = 0b522552426acb392bff5a205eb95b6ee7926743799bb209437113fc72041ca22b9f6eb506d8527994bb9ef4e3cf74362b4195f9cf5fb8cd21f4e11a327d2afe
-	source_aarch64 = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.7.8/teams-for-linux_2.7.8_arm64.deb
-	b2sums_aarch64 = 4f9dace5151099dd57a21ac5213579d22940f6a26e97551ed38be876fd44a3a994f4ba90656f2c83768c3cf2d9c1bd7865d55f04714538f71881e854d6ff67b3
-	source_armv7h = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.7.8/teams-for-linux_2.7.8_armv7l.deb
-	b2sums_armv7h = b555e9789c4430352349e7ea5f870a8fdec2377fdccd5f7692833adca8865cf7092b92c5c2a6e1618ba67711bae211d2258ee7cf250bb0523a4669e93beed9a4
+	source_x86_64 = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.7.9/teams-for-linux_2.7.9_amd64.deb
+	b2sums_x86_64 = 3dbbb0f7a0654a6ffde9cd2216da4857aec8b3a92a4f670b10bf8de19bee96e4a9a824919556af050d8eaa58f7ee8a09c0de9c9585a7e2d86344b67405bdca96
+	source_aarch64 = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.7.9/teams-for-linux_2.7.9_arm64.deb
+	b2sums_aarch64 = aad411ea34808723230b15f0562a96272edfd0e965127460e726b333528cbdb17a6c8678c089aafb05d66c13970dcd4d0ccf8101628441c3e592bb961c382c63
+	source_armv7h = https://github.com/IsmaelMartinez/teams-for-linux/releases/download/v2.7.9/teams-for-linux_2.7.9_armv7l.deb
+	b2sums_armv7h = 92a04c67bf7c5cef8f24669fe557b29bca6371393ac878cd0008c5b8c5114cfd451f4af86d3b1ac1435ffa83d91fcc569c08d95a228b132da6123569b58c6f21
 
 pkgname = teams-for-linux-bin
