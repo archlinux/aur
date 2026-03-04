@@ -18,9 +18,7 @@ pkgbase = siyuan
 	provides = siyuan
 	conflicts = siyuan
 	conflicts = siyuan-note
-	source = siyuan-3.5.7::git+https://github.com/siyuan-note/siyuan#tag=v3.5.7
 	source = siyuan.sh
-	sha256sums = 0bb3c09899d7c85091da969807f8133474655f442520246af20eb84b754516c4
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = siyuan

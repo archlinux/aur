@@ -31,12 +31,8 @@ makedepends=(
     'git'
     'jq'
 )
-source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
-    "${pkgname}.sh"
-)
-sha256sums=('0bb3c09899d7c85091da969807f8133474655f442520246af20eb84b754516c4'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+source=("${pkgname}.sh")
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -49,6 +45,12 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
+    cd "${srcdir}"
+    git clone \
+        --depth 1 \
+        --branch "v${pkgver}" \
+        "${_ghurl}" \
+        "${pkgname}-${pkgver}"
     cd "${srcdir}/${pkgname}-${pkgver}/app"
     _get_electron_version
     sed -i -e "
