@@ -17,9 +17,12 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  # Generate version string from git history
-  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || 
-  printf "0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Try to use git tags, fallback to commit count if no tags exist
+  if git describe --long --tags >/dev/null 2>&1; then
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  else
+    printf "0.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  fi
 }
 
 package() {
