@@ -6,7 +6,7 @@
 
 _pkgname='iwd'
 pkgname=iwd-git
-pkgver=3.6.r11.g8ebc4780
+pkgver=3.11.r37.g4deea739
 pkgrel=1
 pkgdesc='Internet Wireless Daemon'
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
     'glibc'
     'readline'
     'libreadline.so'
-    'gcc-libs'
+    'libgcc'
 )
 makedepends=(
     'git'
