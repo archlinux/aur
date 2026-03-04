@@ -1,0 +1,27 @@
+pkgbase = huion-tablet-h610prov2
+	pkgdesc = Huion Tablet Driver Setting Software (requires X11)
+	pkgver = 15.0.0.175
+	pkgrel = 1
+	url = https://www.huion.com
+	install = huion-tablet-h610prov2.install
+	arch = x86_64
+	license = ISC
+	license = custom:Huion
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-quickcontrols
+	depends = libx11
+	depends = libxext
+	depends = libxrender
+	depends = libxrandr
+	depends = dbus
+	depends = systemd-libs
+	provides = huion
+	conflicts = huiontablet
+	options = !debug
+	source = https://driverdl.huion.com/driver/Linux/HuionTablet_LinuxDriver_v15.0.0.175.x86_64.deb
+	source = huiontablet-launch.sh
+	sha256sums = bcf4d9263f2a82e942c79929a89d9841adef527febf91c43027ab3311f2c3ede
+	sha256sums = d4a7faa8a401382b7da065b2bb56877057eb882a5ea066e52db593ed52b1f27b
+
+pkgname = huion-tablet-h610prov2

@@ -1,0 +1,141 @@
+# Arch Linux install script for Huion Tablet Driver
+# This replaces Debian's preinst, postinst, prerm, and postrm scripts
+
+pre_install() {
+    # This driver is X11-only; block installation under Wayland
+    if [ -n "$WAYLAND_DISPLAY" ] || [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        echo ""
+        echo "ERROR: This driver requires X11 and does not support Wayland."
+        echo "You appear to be in a Wayland session (WAYLAND_DISPLAY or XDG_SESSION_TYPE=wayland)."
+        echo "Installation aborted. Use an X11 session or XWayland is not sufficient for this driver."
+        echo ""
+        exit 1
+    fi
+}
+
+post_install() {
+    echo ""
+    echo "=========================================="
+    echo "Huion Tablet Driver installed successfully"
+    echo "=========================================="
+    echo ""
+    
+    # Configure Bluetooth input (if bluetooth is installed)
+    if [ -f "/etc/bluetooth/input.conf" ]; then
+        # Enable UserspaceHID for better tablet support
+        if ! grep -q "^UserspaceHID=true" /etc/bluetooth/input.conf; then
+            sed -i 's/#UserspaceHID=true/UserspaceHID=true/' /etc/bluetooth/input.conf
+            echo "Enabled UserspaceHID in Bluetooth configuration"
+        fi
+    fi
+    
+    # Install udev rules
+    if [ -f "/usr/lib/udev/rules.d/20-huion.rules" ]; then
+        echo "Installing udev rules..."
+        # Reload udev rules
+        udevadm control --reload-rules
+        udevadm trigger
+        echo "Udev rules installed and reloaded"
+    fi
+
+    # Allow users to write HUION_*.cfg in /opt/huiontablet/res (fixes write_a_user_config errors)
+    [ -d /opt/huiontablet/res ] && chmod 777 /opt/huiontablet/res
+
+    echo ""
+    echo "NOTE: This driver requires X11 (not Wayland)."
+    echo ""
+    echo "To start the driver, run:"
+    echo "  /opt/huiontablet/huiontablet.sh"
+    echo ""
+    echo "To have the command on your PATH, add to ~/.bashrc (or your shell config):"
+    echo "  export PATH=\"/opt/huiontablet:\$PATH\""
+    echo "Then you can run huiontablet.sh from any terminal, or launch 'HuionTablet' from your application menu."
+    echo ""
+    echo "You may need to reboot for udev rules to take full effect."
+    echo ""
+}
+
+pre_upgrade() {
+    # Block upgrade on Wayland
+    if [ -n "$WAYLAND_DISPLAY" ] || [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+        echo ""
+        echo "ERROR: This driver requires X11 and does not support Wayland."
+        echo "You appear to be in a Wayland session. Upgrade aborted."
+        echo ""
+        exit 1
+    fi
+
+    echo "Stopping Huion driver processes before upgrade..."
+    
+    # Stop running processes gracefully
+    killall huionCore 2>/dev/null || true
+    killall huiontablet 2>/dev/null || true
+    
+    # Wait a moment for processes to exit
+    sleep 1
+    
+    # Force kill if still running
+    killall -9 huionCore 2>/dev/null || true
+    killall -9 huiontablet 2>/dev/null || true
+    
+    echo "Huion driver stopped."
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "Stopping Huion driver before removal..."
+    
+    # Stop running processes
+    killall huiontablet 2>/dev/null || true
+    killall huionCore 2>/dev/null || true
+    
+    # Wait for processes to exit
+    sleep 1
+    
+    # Force kill if necessary
+    killall -9 huiontablet 2>/dev/null || true
+    killall -9 huionCore 2>/dev/null || true
+    
+    echo "Huion driver stopped."
+}
+
+post_remove() {
+    echo "Cleaning up Huion Tablet files..."
+    
+    # Remove main application directory
+    # (Usually handled by pacman, but ensure it's gone)
+    rm -rf /opt/huiontablet/ 2>/dev/null || true
+    
+    # Clean up user-level PID and log files
+    # Iterate through all user home directories properly
+    for home_dir in /home/*; do
+        # Skip if not a directory
+        [ -d "$home_dir" ] || continue
+        
+        # Remove PID files
+        rm -f "$home_dir/.HuionCore.pid" 2>/dev/null || true
+        rm -f "$home_dir/.DriverUI.pid" 2>/dev/null || true
+        
+        # Remove log file
+        rm -f "$home_dir/.huion.log" 2>/dev/null || true
+    done
+    
+    # Also check root's home directory
+    if [ -d "/root" ]; then
+        rm -f /root/.HuionCore.pid 2>/dev/null || true
+        rm -f /root/.DriverUI.pid 2>/dev/null || true
+        rm -f /root/.huion.log 2>/dev/null || true
+    fi
+    
+    # Remove udev rules
+    rm -f /usr/lib/udev/rules.d/20-huion.rules 2>/dev/null || true
+    
+    # Reload udev after removing rules
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger 2>/dev/null || true
+    
+    echo "Uninstall cleanup completed."
+}
