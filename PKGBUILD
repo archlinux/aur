@@ -1,5 +1,6 @@
-# Maintainer: William Di Luigi <williamdiluigi@gmail.com>
-# Maintainer: Tomasz Zok <tomasz dot zok at gmail dot com>
+# Maintainer: TwoOfTwelve <contact@twooftwelve.de>
+# Contributor: William Di Luigi <williamdiluigi@gmail.com>
+# Contributor: Tomasz Zok <tomasz dot zok at gmail dot com>
 
 pkgname=jplag
 pkgver=6.3.0
