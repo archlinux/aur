@@ -27,7 +27,7 @@ build() {
     cd "${srcdir}/${pkgname}"
     npm ci
     npm run build
-    npx tauri build --bundles none
+    npx tauri build --no-bundle
 }
 
 package() {
