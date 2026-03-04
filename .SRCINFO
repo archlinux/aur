@@ -1,9 +1,9 @@
 pkgbase = obs-studio-themed-git
 	pkgdesc = A themed look for OBS Studio
-	pkgver = r2.a24f04d
+	pkgver = r6.7297f43
 	pkgrel = 1
 	url = https://codeberg.org/MorsMortium/obs-studio-themed
-	arch = any
+	arch = x86_64
 	license = GPL-2.0-or-later
 	depends = obs-studio
 	provides = obs-studio-themed
