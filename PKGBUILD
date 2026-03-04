@@ -2,9 +2,9 @@
 pkgname=yubico-authenticator
 _app_id=com.yubico.yubioath
 pkgdesc="Yubico Authenticator for Desktop"
-pkgver=7.3.1
-pkgrel=2
-_flutter_ver=3.35.3  ## Check .github/workflows/env for version
+pkgver=7.3.2
+pkgrel=1
+_flutter_ver=3.41.2  ## Check .github/workflows/env for version
 arch=('x86_64' 'aarch64')
 url="https://github.com/Yubico/yubioath-flutter"
 license=('Apache-2.0')
@@ -33,7 +33,7 @@ makedepends=(
   'python-wheel'
 )
 source=("git+https://github.com/Yubico/yubioath-flutter.git#tag=$pkgver?signed")
-sha256sums=('682d5468b563d3c137060ab3fd66c814ff9ed36ebc109294291a615969fe94ee')
+sha256sums=('6a4a150ab6fd64664c0cea613bf04ea46e3b3ba1db5bd3079a9fc20812a04c0c')
 validpgpkeys=('20EE325B86A81BCBD3E56798F04367096FBA95E8')  # Dain Nilsson <dain@yubico.com>
 
 prepare() {
@@ -49,10 +49,6 @@ prepare() {
 
   # Pull dependencies within prepare, allowing for offline builds later on
   fvm flutter pub get
-
-  # tray_manager_plugin: Ignore app_indicator_new deprecation warning
-  sed -i '15 i target_compile_options(${PLUGIN_NAME} PRIVATE -Wno-deprecated)' \
-    linux/flutter/ephemeral/.plugin_symlinks/tray_manager/linux/CMakeLists.txt
 
   desktop-file-edit --set-key=Exec --set-value="authenticator" --set-icon="${_app_id}" \
     "resources/linux/linux_support/${_app_id}.desktop"
