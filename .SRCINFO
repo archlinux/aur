@@ -1,9 +1,9 @@
 pkgbase = marble-maps-extra-git
 	pkgdesc = Additional maps for marble. Includes: OpenStreetMap default with hillshading, OpenTopoMap, OpenStreetMap france, ÖPNVKarte, hillshading overlay by 'karry'.
 	pkgver = r34.20250522.9690e45
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 0
-	url = https://gitlab.com/dreieckli/marble-maps-extra
+	url = https://codeberg.org/dreieck/marble-maps-extra
 	arch = any
 	license = CC-BY-NC-SA-3.0
 	license = CC-BY-SA-3.0
@@ -32,7 +32,7 @@ pkgbase = marble-maps-extra-git
 	provides = marble-maps-oepnvkarte
 	conflicts = marble-maps-extra
 	options = emptydirs
-	source = marble-maps-extra::git+https://gitlab.com/dreieckli/marble-maps-extra.git
+	source = marble-maps-extra::git+https://codeberg.org/dreieck/marble-maps-extra.git
 	sha256sums = SKIP
 
 pkgname = marble-maps-extra-git
