@@ -1,0 +1,32 @@
+pkgbase = python-arviz-plots
+	pkgdesc = ArviZ-plots provides ready to use and composable plots for Bayesian Workflow.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://python.arviz.org/projects/plots
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-hypothesis
+	checkdepends = python-arviz-base
+	checkdepends = python-arviz-stats
+	checkdepends = python-bokeh
+	checkdepends = python-matplotlib
+	checkdepends = python-h5netcdf
+	checkdepends = python-plotly
+	checkdepends = python-webcolors
+	checkdepends = python-xarray-einstats
+	makedepends = python-flit-core>=3.4
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://github.com/arviz-devs/arviz-plots/archive/refs/tags/v1.0.0.tar.gz
+	md5sums = 80e0007d687957854c100c85028df7d4
+
+pkgname = python-arviz-plots
+	depends = python>=3.12
+	depends = python-arviz-base>=1.0
+	depends = python-arviz-stats>=1.0
+	depends = python-xarray-einstats
+	optdepends = python-bokeh>=3.4: bokeh backend
+	optdepends = python-matplotlib>=3.9: bokeh backend
+	optdepends = python-plotly>=5.19: plotly backend
+	optdepends = python-webcolors: plotly backend
