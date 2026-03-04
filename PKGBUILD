@@ -4,7 +4,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=librsvg-git
-pkgver=2.61.1.r39.g569c2c2b7
+pkgver=2.62.0
 pkgrel=1
 epoch=2
 pkgdesc="SVG rendering library"
@@ -15,10 +15,10 @@ depends=(
   cairo
   dav1d
   freetype2
-  gcc-libs
   glib2
   glibc
   harfbuzz
+  libgcc
   libxml2
   pango
 )
