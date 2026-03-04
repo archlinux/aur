@@ -7,10 +7,13 @@ pkgver=3.0.1
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Console hashing utility with a twist"
+
 arch=('x86_64')
 _barch=('x86_64-linux-musl-static')
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+
 license=('MIT')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
