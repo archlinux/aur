@@ -61,8 +61,11 @@ package() {
   install -Dm644 config.toml "$pkgdir/etc/${_pkgname}/config.toml"
 
   # install the header
-  install -Dm644 include/fw-fanctrl-rs.h "$pkgdir/usr/include/fw-fanctrl-rs.h"
+  install -Dm644 include/fw-fanctrl-rs.h "$pkgdir/usr/include/${_pkgname}.h"
+
+  # install the examples
+  install -Dm644 examples/* "$pkgdir/usr/share/doc/${_pkgname}/examples/"
 
   # install license
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }
