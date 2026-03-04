@@ -1,0 +1,25 @@
+post_install() {
+	_reload_udev
+	echo "  Reconnect your Valve Index to apply the fix immediately,"
+	echo "  or it will take effect automatically on next boot."
+}
+
+post_upgrade() {
+	_reload_udev
+}
+
+pre_remove() {
+	# Reload *before* the file disappears so udev forgets the rule.
+	# The trigger is still useful to clear any lingering rule effects.
+	_reload_udev
+}
+
+_reload_udev() {
+	echo "  Reloading udev rules..."
+	if command -v udevadm >/dev/null 2>&1; then
+		udevadm control --reload-rules
+		udevadm trigger --subsystem-match=usb --subsystem-match=hidraw
+	else
+		echo "  WARNING: udevadm not found — please reboot to apply changes."
+	fi
+}
