@@ -1,8 +1,9 @@
+# shellcheck shell=bash disable=SC2034 disable=SC2154
 # Maintainer: Lucas Melo <luluco250 at gmail dot com>
 
 pkgname=gcn64tools-git
 pkgver=r467.43db365
-pkgrel=1
+pkgrel=2
 pkgdesc='Raphnet USB adapter management tools.'
 arch=('any')
 url='https://github.com/raphnet/gcn64tools'
@@ -23,13 +24,13 @@ sha256sums=(
 install=gcn64tools.install
 
 pkgver() {
-	cd "$srcdir/gcn64tools"
+	cd "$srcdir/gcn64tools" || exit 1
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "$srcdir/gcn64tools/src"
-	make ${MAKEFLAGS}
+	cd "$srcdir/gcn64tools/src" || exit 1
+	make "${MAKEFLAGS}"
 }
 
 package() {
@@ -39,21 +40,21 @@ package() {
 	install -Dm644 "$srcdir/raphnet-manager.desktop" -t "$usr/share/applications"
 	install -Dm644 "$srcdir/raphnet-manager.svg" -t "$usr/share/icons/hicolor/scalable/apps"
 
-	cd "$srcdir/gcn64tools/src"
+	cd "$srcdir/gcn64tools/src" || exit 1
 	mkdir -p "$usr/bin"
 	make install PREFIX="$usr"
 
-	cd '../firmwares'
+	cd '../firmwares' || exit 1
 
 	# Future-proof by automatically determining the name of each firmware
 	# folder.
 	for f in *; do
-		cd $f
+		cd "$f" || exit 1
 		files=(*.hex)
 		# Get the name of the first firmware file found and remove everything
 		# after the hyphen.
 		name=${files[0]%-*}
-		install -Dm644 * -t "$usr/share/gcn64tools/firmware/$name"
+		install -Dm644 ./* -t "$usr/share/gcn64tools/firmware/$name"
 		cd ..
 	done
 }
