@@ -4,8 +4,8 @@
 # Maintainer: Luciano Ciccariello <luciano.ciccariello@docker.com>
 
 pkgname=docker-desktop
-pkgver=4.62.0
-_revision=219486
+pkgver=4.63.0
+_revision=220185
 pkgrel=1
 pkgdesc="Docker Desktop is an easy-to-install application that enables you to locally build and share containerized applications and microservices."
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('docker-compose' 'docker-buildx' 'docker-mcp')
 makedepends=('w3m')
 install='docker-desktop.install'
 source=("$pkgname-$pkgver-x86_64.tar.zst::https://desktop.docker.com/linux/main/amd64/$_revision/$pkgname-x86_64.pkg.tar.zst")
-sha256sums=('6bf03e5d17063b4f367d457ce35ac349da97139200062feaeecd8f6179e8a59c')
+sha256sums=('8cf2dcbbc8800037513ab0894eb3a67b4ca74829e57478edea0be2e25a37fd9e')
 
 package() {
     install -d "${pkgdir}/usr/bin"
@@ -25,6 +25,7 @@ package() {
     install -d "${pkgdir}/usr/lib/systemd/user"
     install -d "${pkgdir}/usr/lib/docker/cli-plugins"
     install -m644 "${srcdir}/usr/lib/systemd/user/docker-desktop.service" "${pkgdir}/usr/lib/systemd/user/docker-desktop.service"
+    install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-agent" "${pkgdir}/usr/lib/docker/cli-plugins/docker-agent"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-ai" "${pkgdir}/usr/lib/docker/cli-plugins/docker-ai"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-buildx" "${pkgdir}/usr/lib/docker/cli-plugins/docker-buildx"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-compose" "${pkgdir}/usr/lib/docker/cli-plugins/docker-compose"
@@ -35,6 +36,7 @@ package() {
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-mcp" "${pkgdir}/usr/lib/docker/cli-plugins/docker-mcp"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-offload" "${pkgdir}/usr/lib/docker/cli-plugins/docker-offload"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-pass" "${pkgdir}/usr/lib/docker/cli-plugins/docker-pass"
+    install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-sandbox" "${pkgdir}/usr/lib/docker/cli-plugins/docker-sandbox"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-sbom" "${pkgdir}/usr/lib/docker/cli-plugins/docker-sbom"
     install -m755 "${srcdir}/usr/lib/docker/cli-plugins/docker-scout" "${pkgdir}/usr/lib/docker/cli-plugins/docker-scout"
     install -m755 "${srcdir}/usr/bin/docker-credential-desktop" "${pkgdir}/usr/bin/docker-credential-desktop"
