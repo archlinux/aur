@@ -1,7 +1,7 @@
 # Maintainer: YOUR NAME <your@email.com>
 
 pkgname=tobby-bin
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="The Terminal Obby — a modern IRC client for the terminal (pre-built binary)"
 arch=('x86_64' 'aarch64')
@@ -22,12 +22,12 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
 source_x86_64=(
     "tobby-${pkgver}-x86_64::https://github.com/ObsidianIRC/tobby/releases/download/v${pkgver}/tobby-x86_64-linux"
 )
-sha256sums_x86_64=('c57d26556588111196605f66e40867bd1b25f26d768831db530a103aee824365')
+sha256sums_x86_64=('ff76c8ed9acd1539937be954778c7d78b0e7e84357a1d94b1bb9d3fcc21a0346')
 
 source_aarch64=(
     "tobby-${pkgver}-aarch64::https://github.com/ObsidianIRC/tobby/releases/download/v${pkgver}/tobby-aarch64-linux"
 )
-sha256sums_aarch64=('7687449c2bde50906ca2df31cbec1071fd2564577cb36c55fef6c41402cea621')
+sha256sums_aarch64=('178b39b760b2520f5899d6c5ab3f65bec301e7646d1175f6b71d3d9d2d8a2ed3')
 
 # Do NOT strip — bun --compile embeds the JS bytecode after the ELF sections
 # in a non-standard layout that strip will corrupt.
