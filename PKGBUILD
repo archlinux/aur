@@ -1,14 +1,14 @@
 # Maintainer: maria-rcks <maria@kuuro.net>
 
 pkgname=codex-desktop-bin
-pkgver=26.228.1430
+pkgver=26.303.1606
 pkgrel=1
 pkgdesc='OpenAI Codex Desktop (prepatched Linux payload)'
 arch=('x86_64')
 _electron_pkg='electron40-bin'
 _release_repo='maria-rcks/codex-desktop-aur'
-_release_tag='codex-desktop-bin-26.228.1430-f5851dd56048'
-_bundle_name='codex-desktop-prepatched-26.228.1430-f5851dd56048-x86_64.tar.gz'
+_release_tag='codex-desktop-bin-26.303.1606-e2b89c9b74c6'
+_bundle_name='codex-desktop-prepatched-26.303.1606-e2b89c9b74c6-x86_64.tar.gz'
 url='https://openai.com/codex'
 license=('custom')
 depends=(
@@ -45,7 +45,7 @@ source=(
   'codex-icon.png'
 )
 sha256sums=(
-  'be6965d5e95c13d7eb06ea1140865c25565a5762205c201ed490f4cb09707975'
+  '743b5f081c1d5a00ecee6584c8dfc8197e4b697fa77b8bbc06fa1425bba1d2b0'
   'f33042b1a549fdc2c82b20e8eefa1fd5ac9f93147af40389c4773aaf48d097a7'
 )
 
@@ -64,7 +64,7 @@ package() {
   install -Dm644 /dev/stdin "$pkgdir/opt/$pkgname/package.json" << 'EOF'
 {
   "name": "codex-desktop-bin",
-  "version": "26.228.1430",
+  "version": "26.303.1606",
   "main": "resources/app.asar"
 }
 EOF
