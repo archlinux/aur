@@ -1,5 +1,6 @@
 # Maintainer: BABEL (Anya Desdein)
 # Contributor: Ported from Debian package v15.0.0.175
+# This is an unofficial community package. Not affiliated with or endorsed by Huion.
 
 # Ensure UTF-8 so bsdtar can handle pathnames with non-ASCII characters (e.g. Chinese in res/DevImg)
 export LC_ALL=C.UTF-8
