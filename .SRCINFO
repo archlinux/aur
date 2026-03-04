@@ -1,0 +1,14 @@
+pkgbase = zfetch-rs
+	pkgdesc = A fast system fetch tool
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/zodium-project/zfetch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = zfetch-rs::git+https://github.com/zodium-project/zfetch.git#branch=stable
+	sha256sums = SKIP
+
+pkgname = zfetch-rs
