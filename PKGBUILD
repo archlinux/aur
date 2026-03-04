@@ -10,6 +10,7 @@ pkgver=r36.39df74a
 pkgrel=1
 pkgdesc="Pixelify Sans font by Stefie Justprince"
 arch=(any)
+url="https://github.com/eifetx/Pixelify-Sans"
 license=('OFL-1.1')
 makedepends=(git)
 #source=(https://github.com/eifetx/Pixelify-Sans/archive/main.zip)
