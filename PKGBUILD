@@ -6,14 +6,16 @@
 # maintained by Heftig for the 'linux' package in the Arch 'Core' repo. 
 
 pkgbase=linux-stub
-pkgver=6.18.9.arch1
+pkgver=6.18.13.arch1
 pkgrel=1
 #pkgdesc
   _oldpkgdesc='Linux'
   _newpkgdesc="with initramfs dependency made optional and CONFIG_DEV_BLK_NVME=y"
   pkgdesc="$_oldpkgdesc, $_newpkgdesc."
 url='https://github.com/archlinux/linux'
-arch=(x86_64)
+arch=(
+  x86_64
+)
 license=(GPL-2.0-only)
 makedepends=(
   bc
@@ -39,27 +41,30 @@ source=(
   # Linux kernel source
     https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   # Patch(s) for the Linux kernel for Arch
-      $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
-  # The main kernel config file from the 'linux' package for the Arch 'Core' repo
-    config::https://gitlab.archlinux.org/api/v4/projects/42594/repository/files/config/raw/\?ref\=$pkgver-$pkgrel
+    $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
+)
+source_x86_64=(
+  # The x86_64 kernel config file from the 'linux' package for the Arch 'Core' repo
+    config.x86_64::https://gitlab.archlinux.org/api/v4/projects/42594/repository/files/config.x86_64/raw/\?ref\=$pkgver-$pkgrel
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   83BC8889351B5DEBBB68416EB8AC08600F108CDF  # Jan Alexander Steffens (heftig)
 )
+# https://gitlab.archlinux.org/packaging/packages/linux/blob/6.18.13.arch1-1/PKGBUILD
+sha256sums=('ed2c3c55fd38e6836c094fce356f2567f9516130b73354a29857960368c5687f'
+            'SKIP'
+            '14243970091e511f41c225a085b310210ece8e37c1113a05915bbc553fafc6bb'
+            'SKIP')
+sha256sums_x86_64=('e765199f6fbafbe57d013d40e0d2918cbab30fb2a090e01eb7821a515b6b1b8a')
+b2sums=('1b97badce04dcc6a9e674a646e1eec5b2fa31a442856af748de730946113b2549d31ccf24417d0702142bdbde6636d874db7dd6f274f513f973c97e0866a3c34'
+        'SKIP'
+        '6882fdc7cba9285c530bb7a6467aed471d3099971b0db50fb359e5b3ed6e043055b49ad35f82b9325ec2a942b39a409d14a7ecd2a5dd0c90f9a6e98958110a31'
+        'SKIP')
+b2sums_x86_64=('9e161a131a1914eca05b7e69b04b544c7bec5b49c081aac08e7883ad3403e1578651e8e5560b083e47aa5830f5f271417ebecbbef0e3b245dd3ab7e06136940e')
+
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-# https://gitlab.archlinux.org/packaging/packages/linux/blob/6.18.arch1-1/PKGBUILD
-sha256sums=('030115ff8fb4cb536d8449dc40ebc3e314e86ba1b316a6ae21091a11cc930578'
-            'SKIP'
-            '4815407239a6df15f8e0362ff652f9faf2e558fd774b08645e80ca664128e390'
-            'SKIP'
-            '9fed188f89847418aaf6416b64457a30bee34dcd0fa42a84dbd0f4dfca063402')
-b2sums=('9aed902e41583597cb7595efe77504630a621993d20f89365a93cf2ea4d9790a6361d93cbb7fd7603881a4f82b76394b7e12fb4e4a88c9fedb2d63d64a9d49d3'
-        'SKIP'
-        '0e9a6bbc9baf4e6706699257e811dcdb7d7e6c946a45f660ee56c564d907efaaac53387b29668ca3fc3082c5badc30ee082dac9d8de2bde72c79365af4050b47'
-        'SKIP'
-        'bef3377ad86440af76e9dde4c29c9f4aaad42f5fe343f7d31f5eb537d6d358602f996f5d63986af275f2e92f94e71dc28c320edc8c03d05bd64dbd8ed23d75dc')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -84,10 +89,10 @@ prepare() {
     done
 
   echo "Setting config..."
-    sed -i 's/CONFIG_BLK_DEV_NVME=m/CONFIG_BLK_DEV_NVME=y/' ../config
-    cp ../config .config
+    sed -i 's/CONFIG_BLK_DEV_NVME=m/CONFIG_BLK_DEV_NVME=y/' ../config.$CARCH
+    cp ../config.$CARCH .config
     make olddefconfig
-    diff -u ../config .config || :
+    diff -u ../config.$CARCH .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -106,6 +111,7 @@ _package() {
     kmod
   )
   optdepends=(
+    "$pkgbase-headers: headers and scripts for building modules"
     'initramfs: for early-userspace boot support'
     'linux-firmware: firmware images needed for some devices'
     'scx-scheds: to use sched-ext schedulers'
@@ -155,24 +161,32 @@ _package-headers() {
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
 
+  local karch
+  case $CARCH in
+    x86_64) karch=x86 ;;
+    *) echo "Unknown CARCH $CARCH"; exit 1 ;;
+  esac
+
   echo "Installing build files..."
     install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map localversion.* \
      version vmlinux tools/bpf/bpftool/vmlinux.h
     install -Dt "$builddir/kernel" -m644 kernel/Makefile
-    install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+    install -Dt "$builddir/arch/$karch" -m644 arch/$karch/Makefile
     cp -t "$builddir" -a scripts
     ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
-  # Required when STACK_VALIDATION is enabled
+  if [[ $(scripts/config -s CONFIG_HAVE_STACK_VALIDATION) = y ]]; then
     install -Dt "$builddir/tools/objtool" tools/objtool/objtool
-
-  # Required when DEBUG_INFO_BTF_MODULES is enabled
+  fi
+  
+  if [[ $(scripts/config -s CONFIG_DEBUG_INFO_BTF_MODULES) = y ]]; then
     install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
-
+  fi
+  
   echo "Installing headers..."
     cp -t "$builddir" -a include
-    cp -t "$builddir/arch/x86" -a arch/x86/include
-    install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+    cp -t "$builddir/arch/$karch" -a arch/$karch/include
+    install -Dt "$builddir/arch/$karch/kernel" -m644 arch/$karch/kernel/asm-offsets.s
 
   # idk :')
     install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
@@ -192,17 +206,19 @@ _package-headers() {
   echo "Installing KConfig files..."
     find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  echo "Installing Rust files..."
-    install -Dt "$builddir/rust" -m644 rust/*.rmeta
-    install -Dt "$builddir/rust" rust/*.so
-
+  if [[ $(scripts/config -s CONFIG_RUST) = y ]]; then
+    echo "Installing Rust files..."
+      install -Dt "$builddir/rust" -m644 rust/*.rmeta
+      install -Dt "$builddir/rust" rust/*.so
+  fi
+  
   echo "Installing unstripped VDSO..."
     make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install link=  # Suppress build-id symlinks
 
   echo "Removing unneeded architectures..."
     local arch
     for arch in "$builddir"/arch/*/; do
-      [[ $arch = */x86/ ]] && continue
+      [[ $arch = */$karch/ ]] && continue
       echo "Removing $(basename "$arch")"
       rm -r "$arch"
     done
