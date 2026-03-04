@@ -1,14 +1,14 @@
 pkgbase = neovim-zenbones
 	pkgdesc = Contrast-focused Neovim colorscheme
-	pkgver = 4.3.5
+	pkgver = 4.11.0
 	pkgrel = 1
 	url = https://github.com/mcchrish/zenbones.nvim
 	arch = any
 	license = MIT
 	makedepends = git
-	source = neovim-zenbones::git+https://github.com/mcchrish/zenbones.nvim#commit=006f15a?signed
+	source = neovim-zenbones::git+https://github.com/mcchrish/zenbones.nvim#commit=22b7fb7?signed
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
-	sha256sums = e10c03e00020c58067496df060abe639b14cdeca1e8a4fd81c5109c44a6c340f
+	sha256sums = b3a955730ff89c3fef6411cf34e6e7bb63c76a0de20a6d999f35db761c50d3fe
 
 pkgname = neovim-zenbones
 	install = zenbones.install

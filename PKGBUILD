@@ -2,16 +2,16 @@
 
 pkgbase=neovim-zenbones
 pkgname=('neovim-zenbones' 'vim-zenbones' 'neovim-zenbones-extras')
-pkgver=4.3.5
+pkgver=4.11.0
 pkgrel=1
-_commit=006f15a
+_commit=22b7fb7
 pkgdesc="Contrast-focused Neovim colorscheme"
 arch=('any')
 url="https://github.com/mcchrish/zenbones.nvim"
 license=('MIT')
 makedepends=('git')
 source=("$pkgbase::git+$url#commit=$_commit?signed")
-sha256sums=('e10c03e00020c58067496df060abe639b14cdeca1e8a4fd81c5109c44a6c340f')
+sha256sums=('b3a955730ff89c3fef6411cf34e6e7bb63c76a0de20a6d999f35db761c50d3fe')
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
 
 package_neovim-zenbones() {
@@ -24,7 +24,7 @@ package_neovim-zenbones() {
 
 	cd "$pkgbase"
 	find autoload doc colors lua \
-		-type f -exec install -Dvm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+		-type f -exec install -Dvm644 '{}' "$pkgdir/usr/share/nvim/site/pack/dist/start/$pkgname/{}" \;
 	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dvm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
