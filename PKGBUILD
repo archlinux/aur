@@ -1,6 +1,6 @@
 # Maintainer: Ahmet Yildirim <ahmetyildirim@protonmail.com>
 pkgname=md-viewer-git
-pkgver=0.1.0
+pkgver=0.1.2.r0.g2b51270
 pkgrel=1
 pkgdesc="Fast, lightweight markdown viewer for Linux with tabs, file explorer, and live reload"
 arch=('x86_64')
@@ -39,9 +39,11 @@ pkgver() {
 
 build() {
     cd "$pkgname"
+    # Unset makepkg flags that interfere with Rust/mimalloc/ring builds
+    unset CFLAGS CXXFLAGS LDFLAGS
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --release --locked
+    cargo build --release
 }
 
 package() {
