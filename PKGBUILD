@@ -1,7 +1,7 @@
 # Maintainer: walldmtd <walldmtd at proton dot me>
 
 pkgname=cclip
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Clipboard manager for wayland"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL-3.0-or-later AND MIT') # thirdparty/pollen is under MIT
 depends=('glibc' 'libsqlite3.so' 'libwayland-client.so' 'libxxhash.so')
 makedepends=('git' 'meson' 'wayland') # 'wayland' is required for `wayland-scanner`
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('47c8c0c9ab1277d26dd58aeaf3e9970117ea62330a807c2047a2b4c91738c0436004f0cdfc91c05c215cdabb1aa444c668c61d1334d4ec6f4ea371038a9af92b')
+b2sums=('efd175353ca105ea4c0733457308576110eda8f4124ff0fc3640ee3ab6cc251ea85c0d449498ec6cd4ae1462860da821327f3d457b9ce659cadd6bd68b0d0133')
 
 build() {
 	arch-meson --buildtype=release "$pkgname-$pkgver" build
