@@ -2,7 +2,7 @@
 pkgname=libredwg-git
 _pkgname=libredwg
 pkgver=latest
-pkgrel=2
+pkgrel=3
 pkgdesc="A free C library to handle DWG files"
 arch=('i686' 'x86_64')
 url="https://www.gnu.org/software/libredwg/"
@@ -15,7 +15,7 @@ build() {
   cd "$_pkgname"
 
   sh autogen.sh
-  ./configure --prefix=/usr
+  ./configure --disable-werror --prefix=/usr
   make
 }
 
