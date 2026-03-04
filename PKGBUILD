@@ -9,8 +9,18 @@ arch=('x86_64')
 url="https://wgtunnel.com"
 license=('MIT')
 
-depends=('gtk3' 'iproute2' 'libsecret' 'nftables')
-optdepends=('libnotify: desktop notifications')
+depends=(
+  'gtk3'
+  'libsecret'
+  'gcc-libs'
+  'freetype2'
+  'fontconfig'
+)
+optdepends=(
+  'libnotify: desktop notifications'
+  'gnome-keyring: GNOME keyring backend'
+  'kwallet: KDE keyring backend'
+)
 
 provides=("wgtunnel=${pkgver}")
 conflicts=('wgtunnel' 'wgtunnel-git')
