@@ -13,6 +13,7 @@ pkgbase = bapctools-git
 	depends = python-colorama
 	depends = python-argcomplete
 	depends = python-ruamel-yaml
+	depends = python-vermin
 	optdepends = gcc: for compiling c++ sources,
 	optdepends = clang: for compiling c++ sources,
 	optdepends = pypy3: for running python submissions with pypy,
