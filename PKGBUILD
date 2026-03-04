@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=zen-adblocker
-pkgver=0.18.1
+pkgver=0.19.1
 pkgrel=1
-_nodeversion=22
+_nodeversion=24
 pkgdesc="Simple, free and efficient ad-blocker and privacy guard"
 arch=('x86_64' 'aarch64')
 url="https://zenprivacy.net"
@@ -24,7 +24,7 @@ makedepends=(
 )
 source=("git+https://github.com/ZenPrivacy/zen-desktop.git#tag=v$pkgver"
         "$pkgname.desktop")
-sha256sums=('d23ff1df8f6a4f50c3e0f4f21e594c8e0c4ca8df30f4371d2410de804365881e'
+sha256sums=('4cd7f8adfbcf4f03e176504085c27526a1c76c8836885958482477b6a5ae53a6'
             '83ba6731812f400d32e595b893e8b1e42a8df5c32d11637976c39dad40e243cf')
 
 _ensure_local_nvm() {
@@ -54,11 +54,11 @@ build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   _ensure_local_nvm
   wails build \
-    -ldflags "-X 'github.com/ZenPrivacy/zen-desktop/internal/cfg.Version=${pkgver}' \
+    -tags "-trimpath -buildmode=pie -mod=readonly -modcacherw" \
+    -ldflags "-linkmode=external -extldflags \"${LDFLAGS}\" \
+      -X 'github.com/ZenPrivacy/zen-desktop/internal/cfg.Version=${pkgver}' \
       -X 'github.com/ZenPrivacy/zen-desktop/internal/constants.InstanceID=${_instance_id}' \
       -X 'github.com/ZenPrivacy/zen-desktop/internal/selfupdate.NoSelfUpdate=true'" \
     -m -skipbindings \
