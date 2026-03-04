@@ -1,6 +1,6 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner
-pkgver=4.12.5
+pkgver=4.12.6
 pkgrel=1
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
@@ -34,6 +34,7 @@ depends=(
   'power-profiles-daemon'
   'python'
   'python-pip'
+  'python-yaml'
   'qt6-base'
   'qt6-charts'
   'qt6-svg'
@@ -70,6 +71,8 @@ prepare() {
 }
 
 build() {
+    pip install --break-system-packages asyncio pyyaml
+
     clean_flags() {
         echo "$1" \
         | sed -E 's/(^| )-Wp,-D_FORTIFY_SOURCE=[0-9]+//g' \
