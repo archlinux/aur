@@ -1,13 +1,14 @@
 pkgbase = freedcamp-cli
 	pkgdesc = CLI tool for Freedcamp project management API
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/icanttipe/freedcamp-cli
 	arch = any
 	license = MIT
 	depends = python
 	optdepends = bash-completion: tab completion
-	source = freedcamp-cli-1.0.0.tar.gz::https://github.com/icanttipe/freedcamp-cli/archive/v1.0.0.tar.gz
-	sha256sums = a6e76c4467e876bffe9c8513d7fa297640f9e37924ed6dbc956cce35a0d108ee
+	optdepends = uv: required for MCP server (freedcamp-mcp)
+	source = freedcamp-cli-1.1.0.tar.gz::https://github.com/icanttipe/freedcamp-cli/archive/v1.1.0.tar.gz
+	sha256sums = afb7d33f262dcaf1ec4da9e2f55974259aa2745da4e2978adbac6d2e34c50c0e
 
 pkgname = freedcamp-cli
