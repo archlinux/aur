@@ -8,6 +8,9 @@ arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/zeroclaw-labs/zeroclaw"
 license=('MIT' 'Apache-2.0')
 depends=('gcc-libs' 'glibc')
+optdepends=('bubblewrap: sandbox-bubblewrap isolation support'
+            'chromium: browser-native feature'
+            'postgresql: memory-postgres backend')
 makedepends=('rust' 'clang' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zeroclaw-labs/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         "zeroclaw.service"
@@ -34,7 +37,8 @@ build() {
     export CARGO_HOME="$srcdir/.cargo-home"
     cargo build \
         --release \
-        --frozen
+        --frozen \
+        --features channel-lark,channel-matrix,memory-postgres,observability-otel,browser-native,sandbox-landlock,sandbox-bubblewrap
 }
 
 package() {
