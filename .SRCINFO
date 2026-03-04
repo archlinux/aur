@@ -1,6 +1,6 @@
 pkgbase = bzmenu
 	pkgdesc = Launcher-driven Bluetooth manager for Linux
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/e-tho/bzmenu
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = bzmenu
 	optdepends = nerd-fonts: for font-based icons (default mode)
 	conflicts = bzmenu-git
 	conflicts = bzmenu-bin
-	source = bzmenu-0.3.0.tar.gz::https://github.com/e-tho/bzmenu/archive/v0.3.0.tar.gz
-	sha256sums = a51185d603bc2ed5dfb814ae9295b5a004b6e857baf27ceff5e50dfbb980bce5
+	source = bzmenu-0.4.0.tar.gz::https://github.com/e-tho/bzmenu/archive/v0.4.0.tar.gz
+	sha256sums = d38db4f9d530126ab7d0fc4487f25b2da0b3b7e17ffc2635e92151d9f4a4253f
 
 pkgname = bzmenu
