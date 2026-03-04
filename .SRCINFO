@@ -11,7 +11,7 @@ pkgbase = sonic-tte-git
 	depends = python-terminaltexteffects
 	provides = sonic-tte
 	conflicts = sonic-tte
-	source = git+https://github.com/shmall03/sonic-tte.git
+	source = sonic-tte::git+https://github.com/shmall03/sonic-tte.git
 	sha256sums = SKIP
 
 pkgname = sonic-tte-git

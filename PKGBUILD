@@ -2,7 +2,7 @@
 
 _pkgname=sonic-tte
 pkgname=$_pkgname-git
-pkgver=0.1.r0.g0000000 # Will be updated by pkgver()
+pkgver=0.1.r0.g0000000
 pkgrel=1
 pkgdesc="A high-impact animated media screensaver for the terminal using TerminalTextEffects"
 arch=('any')
@@ -12,27 +12,25 @@ depends=('playerctl' 'figlet' 'python-terminaltexteffects')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+${url}.git")
+source=("$_pkgname::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  # Try to use git tags, fallback to commit count if no tags exist
-  if git describe --long --tags >/dev/null 2>&1; then
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  else
+  cd "$srcdir/$_pkgname"
+  # Generate version string from git history
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' || \
     printf "0.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  fi
+  )
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
   
   # Install the main binary to /usr/bin/
   install -Dm755 bin/sonic-tte "$pkgdir/usr/bin/sonic-tte"
   
   # Install helper scripts and assets to /usr/share/sonic-tte/
-  # Note: center_text.py is placed here as a helper, not in global PATH
   install -Dm755 bin/center_text.py "$pkgdir/usr/share/$_pkgname/center_text.py"
   install -Dm644 share/fonts/Delta-Corps-Priest-1.flf "$pkgdir/usr/share/$_pkgname/fonts/Delta-Corps-Priest-1.flf"
   install -Dm644 share/sonic-tte.conf.example "$pkgdir/usr/share/$_pkgname/sonic-tte.conf.example"
