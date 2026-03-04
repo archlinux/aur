@@ -1,0 +1,18 @@
+pkgbase = wstui
+	pkgdesc = A terminal frontend for WhatsApp
+	pkgver = 0.0.1alpha1
+	pkgrel = 1
+	url = https://github.com/NullSeile/wstui
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = cargo
+	makedepends = wayland
+	makedepends = go
+	depends = chafa
+	source = https://github.com/NullSeile/wstui/archive/refs/tags/v0.0.1alpha1.tar.gz
+	sha256sums = bf2d4ae400fd4dae2e4ee672bee42f1e1740980fe601e1951cabb239d9589c20
+
+pkgname = wstui
