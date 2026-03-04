@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=tray-link-bin
 _pkgname='Tray Link'
-pkgver=2.1.0
+pkgver=2.1.1
 _electronversion=33
 pkgrel=1
 pkgdesc="System tray application to provide a shortcut for your projects on vscode and github-desktop.(Prebuilt version.Use system-wide electron)"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a2d64d8ed01c5cdb0fd7593083f88a11189275d44474ef9f1c57ccb6624a0323'
+sha256sums=('271f81e1aa132b49c97746633e24438ca69eb41a89303234bf87d635dcfcc8aa'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
