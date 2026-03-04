@@ -1,7 +1,7 @@
 # Maintainer: Greg Lamberson <greg at lamco dot io>
 pkgname=lamco-rdp-server
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Wayland RDP server for GNOME, KDE, Sway, and Hyprland with H.264 encoding and VA-API acceleration"
 arch=('x86_64')
 url="https://github.com/lamco-admin/lamco-rdp-server"
@@ -38,8 +38,15 @@ optdepends=(
 # C libraries (aws-lc-sys, ring, opus) is invisible to the Rust linker.
 options=(!lto)
 backup=('etc/dbus-1/system.d/io.lamco.RdpServer.System.conf')
-source=("$pkgname-$pkgver.tar.xz::https://github.com/lamco-admin/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('01043ee0cf03dbf36f10b0e007484c8e52deecce7913064f9fd6b23e951f9e76')
+source=("$pkgname-$pkgver.tar.xz::https://github.com/lamco-admin/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz"
+        'fix-systemd-service-hardening.patch')
+sha256sums=('01043ee0cf03dbf36f10b0e007484c8e52deecce7913064f9fd6b23e951f9e76'
+            '4ad5cce200f065730b90dc04fe972942daef66b563a833e4cf1a699abea91bdf')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    patch -Np1 -i "$srcdir/fix-systemd-service-hardening.patch"
+}
 
 build() {
     cd "$pkgname-$pkgver"
