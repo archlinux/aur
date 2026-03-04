@@ -1,7 +1,7 @@
 # Maintainer: https://github.com/Geralt-Of-Rivia-Witcher/
 
 pkgname=tbreakout-bin
-pkgver=0.1.6
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Retro terminal Breakout game written in Go using tcell"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
 )
 
 sha256sums=(
-  "af79c3d9ce771bf5a7c541d904dfec170f0892b534ff3a9cc433f63908f6bca6"
+  "a5c2fba4d2e64c90eba1b35912cd078454a051ef8092a751029c4499104c08c2"
 )
 
 package() {
