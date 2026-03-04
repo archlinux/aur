@@ -1,0 +1,13 @@
+pkgbase = adb-wifi-scanner
+	pkgdesc = Scans and connects to Android devices over ADB wireless debugging. The command is: adbw.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Piliii/adb-wifi-scanner
+	arch = any
+	license = MIT
+	depends = android-tools
+	depends = nmap
+	source = adbw.sh
+	sha256sums = SKIP
+
+pkgname = adb-wifi-scanner
