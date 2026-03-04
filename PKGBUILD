@@ -1,7 +1,7 @@
 # Maintainer: MiguVT <cuentas@miguvt.com>
 
 pkgname=fixvr-git
-pkgver=r1.23ebaa1
+pkgver=r1.e6d996f
 pkgrel=1
 pkgdesc="udev rule that fixes the Valve Index blank EDID (640×480) bug on Linux"
 arch=('any')
