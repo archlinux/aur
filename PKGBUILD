@@ -27,6 +27,6 @@ build() {
 package() {
     cd "$pkgname"
     install -Dm755 "target/release/grunner"          "$pkgdir/usr/bin/grunner"
-    install -Dm644 "assets/grunner.svg"              "$pkgdir/usr/share/icons/hicolor/scalable/apps/grunner.svg"
-    install -Dm644 "assets/grunner.desktop"          "$pkgdir/usr/share/applications/grunner.desktop"
+    install -Dm644 "assets/org.nihmar.grunner.svg"              "$pkgdir/usr/share/icons/hicolor/scalable/apps/grunner.svg"
+    install -Dm644 "assets/org.nihmar.grunner.desktop"          "$pkgdir/usr/share/applications/grunner.desktop"
 }
