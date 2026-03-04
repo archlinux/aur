@@ -5,7 +5,7 @@
 
 # Maintainer: Alfred Roos alfred@stensatter.se
 pkgname=linecounter-git
-pkgver=2.2.7
+pkgver=2.3.7
 pkgrel=1
 epoch=
 pkgdesc="This is a program that can count all lines in your source code. Run lctr to count all lines. Run lctr -h for help!"
@@ -13,7 +13,7 @@ arch=(x86_64)
 url="https://gitlab.com/spynets1/Linecounter.git"
 license=('MIT')
 groups=()
-depends=(python-flagser)
+depends=()
 makedepends=(git python python-pip)
 checkdepends=()
 optdepends=()
@@ -37,5 +37,6 @@ package() {
     cd lctr
     install -Dm644 ./src/fileReader.py "$pkgdir/usr/bin/fileReader.py"
     install -Dm644 ./src/printer.py "$pkgdir/usr/bin/printer.py"
+    install -Dm644 ./src/flagser.py "$pkgdir/usr/bin/flagser.py"
     install -Dm755 ./src/main.py "$pkgdir/usr/bin/lctr"
 }
