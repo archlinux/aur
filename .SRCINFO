@@ -1,0 +1,13 @@
+pkgbase = bookmark-plus
+	pkgdesc = A bookmark manager for your favorite shell
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://devan.gg/bookmark
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = bookmark-0.1.0.tar.gz::https://github.com/imdevan/bookmark/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = c12a5e74fae7ef4d0c18c9f4d0516d8b7bf065e94e1a9abee0fbfbe03ae047f7
+
+pkgname = bookmark-plus
