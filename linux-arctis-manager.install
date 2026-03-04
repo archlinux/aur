@@ -1,11 +1,54 @@
+# Colors
+_c='\e[1;34m' # Bold Blue
+_r='\e[0m'    # Reset
+
+post_install() {
+    echo ""
+    echo -e "${_c}:: ARCTIS MANAGER: INITIAL SETUP${_r}"
+    echo ":: -----------------------------------------------------------------------"
+    echo ":: Run these commands as your normal user (DO NOT USE SUDO):"
+    echo "::"
+    echo ":: 1. Generate system udev rules (requires password):"
+    echo -e "::    ${_c}lam-cli udev write-rules --force --reload${_r}"
+    echo "::"
+    echo ":: 2. Create desktop application menu entries:"
+    echo -e "::    ${_c}lam-cli desktop write${_r}"
+    echo "::"
+    echo ":: After running these, you can launch Arctis Manager from your menu."
+    echo ":: -----------------------------------------------------------------------"
+    echo ""
+}
+
 post_upgrade() {
-	echo -e "\e[1;33m" # yellow
+    echo ""
+    echo -e "${_c}:: ARCTIS MANAGER: UPDATE COMPLETED${_r}"
+    echo ":: -----------------------------------------------------------------------"
+    echo ":: To ensure new device support and rule fixes are active, run:"
+    echo "::"
+    echo -e "::    ${_c}lam-cli udev write-rules --force --reload${_r}"
+    echo "::"
+    echo ":: (No action needed if your device is already working correctly)"
+    echo ":: -----------------------------------------------------------------------"
+    echo ""
+}
 
-	echo 'Attention:'
-	echo
-	echo 'If you used this package before, the program behind has been rewritten.'
-	echo 'If you expect the previous software for your setup please use the Linux-Arctis-Manager-Legacy package'
+pre_remove() {
+    echo -e "${_c}:: ARCTIS MANAGER: PRE-REMOVAL CLEANUP${_r}"
+    echo ":: Attempting to remove desktop entries..."
+    # Running while the binary still exists in /usr/bin/
+    lam-cli desktop remove 2>/dev/null || true
+}
 
-	echo -e "\e[1;0m" # default
-
+post_remove() {
+    echo ""
+    echo -e "${_c}:: ARCTIS MANAGER: FINAL CLEANUP${_r}"
+    echo ":: -----------------------------------------------------------------------"
+    echo ":: The package has been removed, but some user files may remain."
+    echo ":: To fully clean up, run these as your normal user:"
+    echo "::"
+    echo -e ":: 1. Remove config files:    ${_c}rm -rf ~/.config/arctis_manager${_r}"
+    echo -e "::                            ${_c}rm ~/.config/systemd/user/arctis-manager.service${_r}"
+    echo -e ":: 2. Remove udev rules:      ${_c}sudo rm /usr/lib/udev/rules.d/91-steelseries-arctis.rules${_r}"
+    echo ":: -----------------------------------------------------------------------"
+    echo ""
 }
