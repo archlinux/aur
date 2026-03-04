@@ -1,0 +1,5 @@
+[migrate-bin]
+source = "github"
+github = "golang-migrate/migrate"
+use_latest_release = true
+prefix = "v"

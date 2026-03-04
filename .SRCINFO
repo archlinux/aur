@@ -1,12 +1,19 @@
 pkgbase = migrate-bin
 	pkgdesc = Database migration handling
-	pkgver = 4.6.2
+	pkgver = 4.19.1
 	pkgrel = 1
 	url = https://github.com/golang-migrate/migrate
 	arch = x86_64
+	arch = i686
+	arch = aarch64
 	license = MIT
-	source_x86_64 = https://github.com/golang-migrate/migrate/releases/download/v4.6.2/migrate.linux-amd64.tar.gz
-	sha256sums_x86_64 = bf68db05bf8490c7960dc6ce5d2e60462a42baec207859282e8663f447ab31dd
+	provides = migrate
+	conflicts = migrate
+	source_x86_64 = migrate-x86_64-4.19.1.tgz::https://github.com/golang-migrate/migrate/releases/download/v4.19.1/migrate.linux-amd64.tar.gz
+	sha256sums_x86_64 = 2ac648fbd1b127b69ab5a7b33cf96212178f71e22379fc50573630c6f4c7ce18
+	source_i686 = migrate-x86_64-4.19.1.tgz::https://github.com/golang-migrate/migrate/releases/download/v4.19.1/migrate.linux-386.tar.gz
+	sha256sums_i686 = 2ac648fbd1b127b69ab5a7b33cf96212178f71e22379fc50573630c6f4c7ce18
+	source_aarch64 = migrate-aarch64-4.19.1.tgz::https://github.com/golang-migrate/migrate/releases/download/v4.19.1/migrate.linux-arm64.tar.gz
+	sha256sums_aarch64 = 2fea2455c0f3f07cc3f4b98471c951ad1a716059574b20b6416bd1e9058751c5
 
 pkgname = migrate-bin
-
