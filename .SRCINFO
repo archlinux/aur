@@ -1,6 +1,6 @@
 pkgbase = gnome-aur-manager
 	pkgdesc = A modern GNOME application to browse and manage AUR packages with GTK4 and Libadwaita
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/OMNIDROID2995/gnome-aur-manager
 	arch = any
@@ -9,12 +9,13 @@ pkgbase = gnome-aur-manager
 	depends = python-gobject
 	depends = gtk4
 	depends = libadwaita
+	depends = vte4
 	depends = yay
-	depends = gnome-console
 	depends = pacman
+	optdepends = gnome-console: Required for AppStream PackageKit one-click setup in disclaimer
 	optdepends = gnome-software-packagekit-plugin: Integration with GNOME Software Center
 	provides = gnome-aur-manager
-	source = gnome-aur-manager-1.0.0.tar.gz::https://github.com/OMNIDROID2995/gnome-aur-manager/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 24a25b240346649c5cf57eda3a44a7f0b72d4a2469fca45474127265321c4fd9
+	source = gnome-aur-manager-2.0.0.tar.gz::https://github.com/OMNIDROID2995/gnome-aur-manager/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 9d08df50e2a9bbd487c1258bca610c8bc3675e1a3f35f0cff679ca95f15336d0
 
 pkgname = gnome-aur-manager
