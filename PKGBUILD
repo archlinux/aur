@@ -1,6 +1,6 @@
 # Maintainer: Andrew Shark <ashark on linuxcomp.ru>
 pkgname=amd-vulkan-prefixes
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Select needed vulkan implementation with vk_radv, vk_amdvlk or vk_pro prefix"
 arch=('any')
@@ -8,7 +8,7 @@ license=('GPL')
 url="https://gitlab.com/AndrewShark/amd-vulkan-prefixes"
 source=(https://gitlab.com/AndrewShark/amd-vulkan-prefixes/-/raw/main/amd_vulkan_prefixes.sh
         https://gitlab.com/AndrewShark/amd-vulkan-prefixes/-/raw/main/amd_vulkan_prefixes.bash-completion)
-sha256sums=("85883797efa8f0e72427cff9f691a8988c59efbbbebf8dce85cbdc8236b97f3d"
+sha256sums=("51a9545af95f15d4660bbf5887099b9d30e0a9ea01fb98e03194e153a4ebf8e3"
             "aaf96ea2ae87c7dab678e8a33986199256312dd70004aec87b5fd0f8b65ebaef")
 
 
