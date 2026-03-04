@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mindwtr
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 _nodeversion=20
 pkgdesc="Mind Like Water: A complete Getting Things Done (GTD) productivity system"
@@ -26,7 +26,7 @@ makedepends=(
 )
 source=("git+https://github.com/dongdongbh/Mindwtr.git#tag=v$pkgver"
         "$pkgname.desktop")
-sha256sums=('dac35ed47415be39daf28e026bebc41dc5f75aedb64a27dce34885f98252d8a3'
+sha256sums=('fe6dea5fbdcf61c4ea8b69f3b8a3b75f28033e076dd2cdc473e16435a307fc0d'
             'c283dc386b122df8db1157a2f74e7cfd780ab65133ab8fef6c74b2179f85161c')
 
 _ensure_local_nvm() {
@@ -44,6 +44,27 @@ prepare() {
   cd Mindwtr
   _ensure_local_nvm
   nvm install "${_nodeversion}"
+  # tauri_conf_v2_compat: normalize deprecated bundle.macOS.infoPlist for tauri v2 schema.
+  node - <<'NODE'
+const fs = require('fs');
+const configPaths = [
+  'apps/desktop/src-tauri/tauri.conf.json',
+  'apps/desktop/src-tauri/tauri.appstore.conf.json'
+];
+
+for (const configPath of configPaths) {
+  if (!fs.existsSync(configPath)) continue;
+  const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+  const mac = config?.bundle?.macOS;
+  if (!mac || typeof mac.infoPlist !== 'string' || mac.infoPlist.length === 0) continue;
+  const infoPlist = mac.infoPlist;
+  delete mac.infoPlist;
+  mac.files = { ...(mac.files || {}), 'Info.plist': infoPlist };
+  fs.writeFileSync(configPath, JSON.stringify(config, null, 2) + '\n');
+  console.log(`Patched ${configPath} for tauri v2 schema compatibility`);
+}
+NODE
+
 
   cd apps/desktop/src-tauri
   export RUSTUP_TOOLCHAIN=stable
