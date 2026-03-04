@@ -1,9 +1,10 @@
 pkgbase = marble-maps-googlesat-git
 	pkgdesc = Google Satellite for the Marble desktop globe.
 	pkgver = r14.20240209.d194cf9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gitlab.com/marble-restricted-maps/googlesat
 	arch = any
+	groups = marble-maps
 	license = custom: unknown.
 	makedepends = git
 	provides = marble-maps-googlesat
