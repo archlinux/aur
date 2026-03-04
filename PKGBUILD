@@ -2,7 +2,7 @@
 
 pkgname=vtun-ng
 _github_account=leakingmemory
-pkgver=3.0.22
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Easy network tunneling with encryption and traffic shaping and rewrite of vtun.'
 arch=(x86_64 i686 aarch64)
@@ -11,7 +11,7 @@ license=(GPL-2.0-or-later)
 makedepends=('cargo')
 depends=('net-tools')
 source=("https://github.com/${_github_account}/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ffb8a3404eb2890c01338fef207557b8c6cbee0d54ea0eb38629c6ed412ecc95')
+sha256sums=('29b0fe9c83f627a46c3a3274353314d6ef95161f01d80d80a3f9a36d5bb43b7e')
 
 prepare() {
   export RUSTUP_TOOLCHAIN=stable
