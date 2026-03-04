@@ -4,10 +4,13 @@ pkgbase = libmixmod
 	pkgrel = 1
 	url = https://github.com/mixmod
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = eigen
-	depends = gcc-libs
+	depends = libgcc
+	depends = libgomp
+	depends = libstdc++
+	depends = glibc
 	source = https://github.com/mixmod/mixmod/archive/refs/tags/v2.1.11.tar.gz
 	sha256sums = e95414decf5b2c2c5eebd7fca10e0100f2d753cbfca0694f4ac75da3b39b005e
 
