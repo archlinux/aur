@@ -4,6 +4,7 @@ src/*
 *.xz
 *.gz
 *.zip
+*.deb
 *.lua
 *.template
 *.lock

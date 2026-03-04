@@ -20,32 +20,17 @@ license=('GPL-3.0-only')
 install=inav-configurator.install
 
 package() {
-	mkdir -p "$pkgdir/opt/inav"
-	mkdir -p "$pkgdir/usr/bin"
+	cd "$pkgdir"
 
-	# Determine the source folder based on the architecture
-	local source_folder
+	local deb_arch
 	case "$CARCH" in
-		x86_64)
-			source_folder="INAV Configurator-linux-x64"
-			;;
-		aarch64)
-			source_folder="INAV Configurator-linux-arm64"
-			;;
-		*)
-			echo "Unsupported architecture: $CARCH"
-			exit 1
-			;;
+		x86_64)  deb_arch="x64" ;;
+		aarch64) deb_arch="arm64" ;;
+		*) echo "Unsupported architecture: $CARCH"; exit 1 ;;
 	esac
-	
-	cp -dpr --no-preserve=ownership "$srcdir/$source_folder" "$pkgdir/opt/inav/inav-configurator"
 
-	chmod 755 "$pkgdir/opt/inav/inav-configurator/"
-	chmod +x "$pkgdir/opt/inav/inav-configurator/inav-configurator"
-	chmod +x "$pkgdir/opt/inav/inav-configurator/chrome_crashpad_handler"
+	bsdtar -xf "$srcdir/INAV-Configurator_linux_${deb_arch}_$pkgver.deb"
+	bsdtar -xf data.tar.*
 
-	install -Dm644 "$srcdir/$source_folder/resources/app/assets/linux/inav-configurator.desktop" "$pkgdir/usr/share/applications/inav-configurator.desktop"
-
-	install -d "$pkgdir/usr/bin/"
-	ln -s "/opt/inav/inav-configurator/inav-configurator" "$pkgdir/usr/bin/inav-configurator"
+	rm -rf DEBIAN
 }
