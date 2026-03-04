@@ -1,6 +1,6 @@
 pkgbase = lobster
 	pkgdesc = Shell script to watch Movies/Webseries/Shows from the terminal.
-	pkgver = v4.5.1
+	pkgver = v4.6.2
 	pkgrel = 1
 	url = https://github.com/justchokingaround/lobster
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = lobster
 	optdepends = ueberzugpp: used for image preview with fzf
 	provides = lobster
 	conflicts = lobster
-	source = https://github.com/justchokingaround/lobster/archive/refs/tags/v4.5.1.tar.gz
-	md5sums = 50c500f3ea8f64c9480ae1d9556760a4
+	source = https://github.com/justchokingaround/lobster/archive/refs/tags/v4.6.2.tar.gz
+	md5sums = 919d470b272774b111bf2706120c412c
 
 pkgname = lobster
