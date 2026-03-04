@@ -1,10 +1,8 @@
 # Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
-_name1=logfire-api
-_name0=logfire
-pkgbase=python-$_name0
-pkgname=(python-$_name1 python-$_name0)
-pkgver=4.15.1
+_name=logfire
+pkgname=python-$_name
+pkgver=4.25.0
 pkgrel=1
 arch=('any')
 url='https://github.com/pydantic/logfire'
@@ -76,23 +74,30 @@ checkdepends=('python-httpx'
               'python-openai-agents'
               'python-websockets'
               'python-pydantic-ai-slim'
+              # 'python-pydantic-evals'
               'python-langchain'
               'python-langchain-openai'
               'python-langgraph'
               'python-opentelemetry-instrumentation-google-genai'
               'python-google-genai'
               # 'python-openinference-instrumentation-litellm'
-              'litellm')
-source=("$_name0-$pkgver::git+$url.git#tag=v$pkgver")
-sha256sums=('aeba41894e2b2ae2a735190f6a28bc1d0eea43389da8c58a85b514d4e6a52c81')
+              'litellm'
+              # 'python-openinference-instrumentation-dspy'
+              'python-dspy'
+              # 'python-surrealdb'
+              'python-pytest-examples'
+              'python-pytest-timeout'
+              'python-pytest-asyncio')
+source=("$_name0::git+$url.git#tag=v$pkgver")
+sha256sums=('7f209a311c55bfb7d952cf1efb124663870467b734eddb3708886b264735164b')
 
 prepare(){
-  cd "$srcdir"/$_name0-$pkgver
+  cd "$srcdir"/$_name0
   sed -i "s/'gzip, deflate, zstd',/IsAnyStr(regex='^gzip, deflate(?:, br|, zstd|, br, zstd)?$'),/g" tests/otel_integrations/test_httpx.py
 }
 
 build() {
-  cd "$srcdir"/$_name0-$pkgver
+  cd "$srcdir"/$_name0
   python -m build --wheel --no-isolation $_name1
   python -m build --wheel --no-isolation
 }
@@ -101,6 +106,7 @@ check() {
   local pytest_options=(
     -vv
     --disable-warnings
+    -p 'no:benchmark'
     -n auto
     --dist=loadgroup
     # Test for Logfire developers
@@ -109,24 +115,16 @@ check() {
     --ignore tests/otel_integrations/test_celery.py
     --ignore tests/otel_integrations/test_mysql.py
     --ignore tests/otel_integrations/test_redis.py
-    # Fails if there is others packages supported by opentelemetry-instrumentation
-    --deselect tests/test_cli.py::test_inspect
-    # Need openinference-instrumentation-litellm package
-    --deselect tests/otel_integrations/test_litellm.py::test_litellm_instrumentation
-    --deselect tests/test_logfire_api.py::test_runtime[with_logfire]
   )
-  cd "$srcdir"/$_name0-$pkgver
-  PYTHONPATH=$PWD:$PWD/$_name1 pytest "${pytest_options[@]}" tests
+  cd "$srcdir"/$_name0
+  python -m venv --system-site-packages test-env
+  ln -sf /usr/bin/ruff test-env/bin/ruff
+  test-env/bin/python -m installer $_name1/dist/*.whl
+  test-env/bin/python -m installer dist/*.whl
+  test-env/bin/python -m pytest "${pytest_options[@]}" tests
 }
 
-package_python-logfire-api() {
-  pkgdesc='Shim for the Logfire SDK which does nothing unless Logfire is installed.'
-  url='https://github.com/pydantic/logfire/tree/main/logfire-api'
-  cd "$srcdir"/$_name0-$pkgver
-  python -m installer --destdir="$pkgdir" $_name1/dist/*.whl
-}
-
-package_python-logfire() {
+package() {
   pkgdesc='The best Python observability tool!'
   depends+=('python-opentelemetry-sdk' 'python-opentelemetry-exporter-otlp-proto-http' 'python-opentelemetry-instrumentation' 'python-rich' 'python-protobuf' 'python-typing_extensions' 'python-executing')
   optdepends=('python-opentelemetry-instrumentation-system-metrics: system-metrics'
@@ -136,8 +134,7 @@ package_python-logfire() {
               'python-opentelemetry-instrumentation-aiohttp-client: aiohttp-client'
               'python-opentelemetry-instrumentation-aiohttp-server: aiohttp-server'
               'python-opentelemetry-instrumentation-celery: celery'
-              'python-opentelemetry-instrumentation-django: django'
-              'python-opentelemetry-instrumentation-asgi: django'
+              'python-opentelemetry-instrumentation-django: django' 'python-opentelemetry-instrumentation-asgi: django'
               'python-opentelemetry-instrumentation-fastapi: fastapi'
               'python-opentelemetry-instrumentation-flask: flask'
               'python-opentelemetry-instrumentation-httpx: httpx'
@@ -153,8 +150,11 @@ package_python-logfire() {
               'python-opentelemetry-instrumentation-sqlite3: sqlite3'
               'python-opentelemetry-instrumentation-aws-lambda: aws-lambda'
               'python-opentelemetry-instrumentation-google-genai: google-genai'
-              'python-openinference-instrumentation-litellm: litellm')
+              'python-openinference-instrumentation-litellm: litellm'
+              'python-openinference-instrumentation-dspy: dspy'
+              'python-httpx: datasets' 'python-pydantic: datasets' 'pydantic-evals: datasets'
+              'python-pydantic: variables')
   url='https://github.com/pydantic/logfire'
-  cd "$srcdir"/$_name0-$pkgver
+  cd "$srcdir"/$_name0
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
