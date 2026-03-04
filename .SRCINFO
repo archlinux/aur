@@ -1,0 +1,22 @@
+pkgbase = lianli-linux-git
+	pkgdesc = Open-source Linux replacement for L-Connect 3 — fan control, RGB, LCD streaming for Lian Li devices
+	pkgver = r36.5d9c01c
+	pkgrel = 1
+	url = https://github.com/sgtaziz/lian-li-linux
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = clang
+	makedepends = cmake
+	makedepends = pkg-config
+	depends = hidapi
+	depends = libusb
+	depends = ffmpeg
+	provides = lianli-linux
+	conflicts = lianli-linux
+	source = git+https://github.com/sgtaziz/lian-li-linux.git
+	sha256sums = SKIP
+
+pkgname = lianli-linux-git
