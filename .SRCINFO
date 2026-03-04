@@ -1,0 +1,16 @@
+pkgbase = ratools
+	pkgdesc = CLI script interpreter and toolkit for writing RetroAchievements (rascript-cli)
+	pkgver = 1.16.2
+	pkgrel = 1
+	url = https://github.com/Jamiras/RATools
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-6.0
+	makedepends = git
+	depends = icu
+	options = !strip
+	options = staticlibs
+	source = RATools::git+https://github.com/Jamiras/RATools.git#tag=v1.16.2
+	sha256sums = SKIP
+
+pkgname = ratools
