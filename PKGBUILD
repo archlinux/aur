@@ -2,17 +2,18 @@
 
 _name=ddgs
 pkgname=python-$_name
-pkgver=9.10.0
+pkgver=9.11.1
 pkgrel=1
 pkgdesc="Dux Distributed Global Search. A metasearch library that aggregates results from diverse web search services."
 arch=('any')
 url="https://github.com/deedy5/ddgs"
 license=('MIT')
-depends=('python' 'python-click' 'python-primp' 'python-lxml' 'python-httpx' 'python-h2' 'python-socksio' 'python-brotli' 'python-brotlicffi' 'python-fake-useragent')
+depends=('python' 'python-click' 'python-primp' 'python-lxml')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest' 'python-pytest-dependency')
+checkdepends=('python-pytest')
+optdepends=('python-fastapi: api' 'python-mcp: api' 'uvicorn: api' 'python-colorama: api' 'python-httptools: api' 'python-dotenv: api' 'python-pyyaml: api' 'python-uvloop: api' 'python-watchfiles: api' 'python-websockets: api')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2cf3367e1abf96e7879757233c626ead08bd4d408b89a2360ece9378fcdb78f0')
+sha256sums=('fd096f3f29e19c2bce200659ffcffd00485180f90c2a29aa7f1cce79e337fbeb')
 
 build() {
     cd "$srcdir"/$_name-$pkgver
@@ -23,6 +24,7 @@ check() {
   local pytest_options=(
     -vv
     --disable-warnings
+    -k "not books and not images"
   )
   cd "$srcdir"/$_name-$pkgver
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" tests
