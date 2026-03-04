@@ -2,9 +2,9 @@
 # Contributor: criptixo <therealcriptixo@gmail.com>
 pkgname=waveterm-bin
 _pkgname=Wave
-pkgver=0.14.0
-_electronversion=38
-pkgrel=2
+pkgver=0.14.1
+_electronversion=40
+pkgrel=1
 pkgdesc='An open-source, cross-platform terminal for seamless workflows.(Prebuilt version.Use system-wide electron)'
 arch=(
     'aarch64'
@@ -25,8 +25,8 @@ source=(
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-aarch64-${pkgver}.pacman")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.pacman::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-linux-x64-${pkgver}.pacman")
 sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('f733b6049c5107036e3acd496984a1935175886ba7e9110a4e26345aa4eba60c')
-sha256sums_x86_64=('3213fe562ba391974bac87b87dfa1979f2c64f90c145084e6936dbc5dd66f78f')
+sha256sums_aarch64=('d06cc7d73232ae57b776c0478795b6f0bcdde1531eee3543f4da20f03ece8ff4')
+sha256sums_x86_64=('2b1fccea98c83275f9e60422a6afde763d9d5af1ffe3cc4f51c9aba385cd5d09')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -45,6 +45,7 @@ prepare() {
         s/Icon=${_pkgname}/Icon=${pkgname%-bin}/g
         s/TerminalEmulator/TerminalEmulator;Utility/g
     " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    rm -rf "${srcdir}/opt/${_pkgname}/resources/"{apparmor-profile,package-type}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
