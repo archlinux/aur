@@ -1,0 +1,5 @@
+[yewtube-bin]
+source = "github"
+github = "mps-youtube/yewtube"
+use_latest_release = true
+prefix = "v"
