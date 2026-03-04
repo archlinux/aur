@@ -3,7 +3,7 @@
 pkgname=ani2xcursor-bin
 _pkgname=ani2xcursor
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert Windows animated cursor themes to Linux Xcursor format (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/yuzujr/ani2xcursor"
@@ -36,4 +36,11 @@ package() {
 
   install -Dm644 completions/zsh/_ani2xcursor \
     "$pkgdir/usr/share/zsh/site-functions/_ani2xcursor"
+
+  # Install compiled translations
+  for mo in share/locale/*/LC_MESSAGES/ani2xcursor.mo; do
+    lang=$(echo "$mo" | cut -d/ -f3)
+    install -Dm644 "$mo" \
+      "${pkgdir}/usr/share/locale/${lang}/LC_MESSAGES/ani2xcursor.mo"
+  done
 }

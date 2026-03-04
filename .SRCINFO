@@ -1,7 +1,7 @@
 pkgbase = ani2xcursor-bin
 	pkgdesc = Convert Windows animated cursor themes to Linux Xcursor format (prebuilt binary)
 	pkgver = 1.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yuzujr/ani2xcursor
 	arch = x86_64
 	license = MIT
