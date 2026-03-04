@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Upwork
+Exec=/usr/bin/upwork-wayland %U
+Terminal=false
+Type=Application
+Icon=upwork
+StartupWMClass=Upwork
+Comment=Upwork Desktop Application (Wayland)
+MimeType=x-scheme-handler/upwork;x-scheme-handler/upwork;x-scheme-handler/upwork;x-scheme-handler/upwork;
+Categories=Utility;

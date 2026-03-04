@@ -1,0 +1,26 @@
+pkgbase = upwork-wayland
+	pkgdesc = Allows Upwork screenshots to work under Wayland by replacing its GDK API calls
+	pkgver = 20250925.143605
+	pkgrel = 1
+	url = https://github.com/tiesselune/upwork-wayland
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = gcc
+	makedepends = git
+	makedepends = make
+	makedepends = pkgconf
+	depends = flameshot
+	depends = gdk-pixbuf2
+	depends = glib
+	depends = libx11
+	depends = upwork
+	options = !buildflags
+	options = !debug
+	options = !makeflags
+	options = !strip
+	source = git+https://github.com/tiesselune/upwork-wayland.git
+	source = upwork-wayland.desktop
+	b2sums = SKIP
+	b2sums = 00939efb06bc71995d9a5c66dc5062f5eda82abf1e7e2b5e5e4054812ad993816f673cd9892113969a7d27de79982db3caf20cd523106565bafe6c923b1cabcb
+
+pkgname = upwork-wayland
