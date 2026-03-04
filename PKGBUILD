@@ -2,7 +2,7 @@
 pkgname=shadps4-pre-release-bin
 _pkgname=shadPS4
 _pkgid=net.shadps4.shadPS4
-pkgver=20260208.c9a9cf2
+pkgver=20260303.14450d3
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (Pre-release version - SDL)"
 arch=('x86_64')
