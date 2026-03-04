@@ -1,7 +1,7 @@
 # Maintainer: LBK Team <info@lbklauncher.com>
 
 pkgname=lbk-launcher-bin
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Інсталятор українізаторів відеоігор"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('lbk-launcher')
 conflicts=('lbk-launcher')
 options=(!strip !debug)
 source=(
-    "LBK.Launcher-linux.AppImage::https://github.com/Vadko/lbk-launcher/releases/download/v${pkgver}/LBK.Launcher-linux.AppImage"
+    "LBK-Launcher-linux.AppImage::https://github.com/Vadko/lbk-launcher/releases/download/v${pkgver}/LBK-Launcher-linux.AppImage"
     "lbk-launcher.sh"
     "lbk-launcher.desktop"
     "icon-32.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/main/aur/icons/icon-32.png"
@@ -23,7 +23,7 @@ source=(
     "icon-256.png::https://raw.githubusercontent.com/Vadko/lbk-launcher/main/aur/icons/icon-256.png"
 )
 sha256sums=('6d073a09ba8e34c9ad4946a09576352b5cc3c9adb9ef75703b149bc9d8996342'
-            '7e6b81b93a15c2335ef85ba3895937003dc3008a0f307110df4dadd8bef7f7ff'
+            '0181a22bcf43c31860f3cbf7fc3f46bf2e61c5cdd6da315e742401921c769e79'
             'ae904b33f9fa483170f816f4ead2d35ef7a163200b1079e0a86c116f78634e0c'
             'a459c319b429a0bb50a7a1d8a519a477757733f6b0ad9cea63780837c2a01e1a'
             'b66ba4c572d0756cf028968dedf1eada20af644eda7e9855ce1b43170e06cad0'
@@ -32,8 +32,8 @@ sha256sums=('6d073a09ba8e34c9ad4946a09576352b5cc3c9adb9ef75703b149bc9d8996342'
             '1556ac85d8f75e379905c933e2a48c7fef58fe9869195080b2ef701e1bcabe53')
 
 prepare() {
-    chmod +x "${srcdir}/LBK.Launcher-linux.AppImage"
-    "${srcdir}/LBK.Launcher-linux.AppImage" --appimage-extract
+    chmod +x "${srcdir}/LBK-Launcher-linux.AppImage"
+    "${srcdir}/LBK-Launcher-linux.AppImage" --appimage-extract
 }
 
 package() {
