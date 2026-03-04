@@ -1,0 +1,14 @@
+pkgbase = crtui-bin
+	pkgdesc =
+	pkgver = 0.3.6
+	pkgrel = 1
+	conflicts = crtui
+	provides = crtui
+	arch = aarch64
+	source_aarch64 = https://github.com/ksckaan1/crtui/releases/download/v0.3.6/crtui_0.3.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = b4ad0e5d2ba9e8157412084e9779b369856635be200bccb4b8afbbd6e68f1dc7
+	arch = x86_64
+	source_x86_64 = https://github.com/ksckaan1/crtui/releases/download/v0.3.6/crtui_0.3.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = d4b664321f96ed8fdcbbcac6d6b95f05536955cd9f8828c73ad423c58c1708e1
+	
+pkgname = crtui-bin
