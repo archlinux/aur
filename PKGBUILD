@@ -1,7 +1,7 @@
 # Maintainer: Francesco Pira <dev at fpira dot com>
 
 pkgname=poof-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Magic manager of pre-built software (Prebuilt Binary)"
 url="https://github.com/pirafrank/poof"
@@ -14,17 +14,17 @@ arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 
 # Dynamic source URL selection based on the build architecture
 source_x86_64=("${url}/releases/download/v${pkgver}/poof-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('11ba94a2a6e879f1b531efacb10f6519192a46b77cd01f81898d6793d76231a2')
+sha256sums_x86_64=('fb493fd43b56d7542085fc3d5c7f007e66723268f54e8537d6788354bc580ccc')
 
 source_aarch64=("${url}/releases/download/v${pkgver}/poof-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_aarch64=('813f0f4444e632782b7c36bcc7b2f3e69d7eb73dbfd191407ec3e44570f4dc97')
+sha256sums_aarch64=('fe434e7119b4e06526459442cf892a34a107d9d8aa50ace79372a0c17a02d338')
 
 # Note: upstream armv7l maps to Arch armv7h
 source_armv7h=("${url}/releases/download/v${pkgver}/poof-${pkgver}-armv7-unknown-linux-gnueabihf.tar.gz")
-sha256sums_armv7h=('6279da2a64027332b93cd0d7b8d8fcc67e4d30296a2264d23b736db1ce97881a')
+sha256sums_armv7h=('f485575e5f1014c7c9a118dc42115b7d497217d41391283604cacf1c38c94c8b')
 
 source_riscv64=("${url}/releases/download/v${pkgver}/poof-${pkgver}-riscv64gc-unknown-linux-gnu.tar.gz")
-sha256sums_riscv64=('fe67db892f5edc5026738f36fb91bfc1d936f222998cbe1bdd8dd8c583385740')
+sha256sums_riscv64=('e51c426cd15bf3db2832552262e6f192c4e8cc6b47dfe30f3cbfdf9db89d03d2')
 
 package() {
     # Arch automatically downloads only the source_CARCH file
