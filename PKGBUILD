@@ -6,8 +6,8 @@ pkgdesc="Native Qobuz client for Linux with bit-perfect hi-res audio, DAC passth
 arch=('x86_64' 'aarch64')
 url="https://github.com/vicrodh/qbz"
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3' 'alsa-lib' 'libappindicator-gtk3' 'libxkbcommon' 'openssl')
-makedepends=('nodejs' 'npm' 'rust' 'cargo' 'pkgconf' 'clang')
+depends=('webkit2gtk-4.1' 'gtk3' 'alsa-lib' 'libappindicator-gtk3' 'libxkbcommon' 'openssl' 'sqlite' 'dbus')
+makedepends=('nodejs' 'npm' 'rust' 'cargo' 'pkgconf' 'clang' 'cmake' 'gcc')
 optdepends=(
     'alsa-utils: Required for bit-perfect device detection and better ALSA device names'
     'pipewire-alsa: PipeWire audio support'
@@ -17,6 +17,17 @@ provides=('qbz')
 conflicts=('qbz-bin' 'qbz-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vicrodh/qbz/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
+
+prepare() {
+    cd "${srcdir}/qbz-${pkgver}"
+
+    # Use system SQLite instead of bundled (proper distro packaging)
+    sed -i 's/rusqlite = { version = "0.31", features = \["bundled"\]/rusqlite = { version = "0.31"/g' \
+        src-tauri/Cargo.toml \
+        crates/qbz-audio/Cargo.toml \
+        crates/qbz-library/Cargo.toml \
+        crates/qbz-integrations/Cargo.toml
+}
 
 build() {
     cd "${srcdir}/qbz-${pkgver}"
