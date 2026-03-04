@@ -1,8 +1,8 @@
 # Maintainer: yuzujr <15568103056@163.com>
 
 pkgname=ani2xcursor
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.4.3
+pkgrel=1
 pkgdesc="Convert Windows animated cursor themes to Linux Xcursor format"
 arch=('x86_64')
 url="https://github.com/yuzujr/ani2xcursor"
@@ -17,7 +17,7 @@ makedepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('48d1bb8491cd085f849405d1d88be135dd1167fbe484f93ea66937ffcd66c086')
+sha256sums=('cd17401898e96f65001153b5f97a154f4d758bfad972aec70913556833ba4b0b')
 
 _xmake_env() {
   export XMAKE_GLOBALDIR="$srcdir/.xmake-global"
