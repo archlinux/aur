@@ -1,5 +1,7 @@
 *.pkg.tar*
 *.deb
 *.rpm
+*.pyc
+__pycache__
 /pkg
 /src
