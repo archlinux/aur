@@ -1,0 +1,31 @@
+pkgbase = qbz-git
+	pkgdesc = Native Qobuz client for Linux with bit-perfect hi-res audio, DAC passthrough, Last.fm scrobbling, and Chromecast/DLNA casting (development version)
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/vicrodh/qbz
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = clang
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = alsa-lib
+	depends = libappindicator-gtk3
+	depends = libxkbcommon
+	depends = openssl
+	optdepends = alsa-utils: Required for bit-perfect device detection and better ALSA device names
+	optdepends = pipewire-alsa: PipeWire audio support
+	optdepends = pipewire-pulse: PulseAudio compatibility
+	provides = qbz
+	conflicts = qbz
+	conflicts = qbz-bin
+	source = qbz-git::git+https://github.com/vicrodh/qbz.git#branch=main
+	sha256sums = SKIP
+
+pkgname = qbz-git
