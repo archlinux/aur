@@ -1,6 +1,6 @@
 pkgbase = kpt-bin
 	pkgdesc = Automate Kubernetes Configuration Editing
-	pkgver = 1.0.0_beta.61
+	pkgver = 1.0.0_beta.61.1
 	pkgrel = 1
 	url = https://kpt.dev/
 	arch = aarch64
@@ -10,11 +10,11 @@ pkgbase = kpt-bin
 	depends = docker
 	depends = git
 	depends = kubectl
-	provides = kpt=1.0.0_beta.61
+	provides = kpt=1.0.0_beta.61.1
 	conflicts = kpt
-	source_aarch64 = kpt-1.0.0_beta.61-aarch64.tar.gz::https://github.com/kptdev/kpt/releases/download/v1.0.0-beta.61/kpt_linux_arm64-1.0.0-beta.61.tar.gz
-	sha256sums_aarch64 = 8b40603efdd73dc9259ac8ecac7d57035a7901fc4232f1e03f0547a7df88d473
-	source_x86_64 = kpt-1.0.0_beta.61-x86_64.tar.gz::https://github.com/kptdev/kpt/releases/download/v1.0.0-beta.61/kpt_linux_amd64-1.0.0-beta.61.tar.gz
-	sha256sums_x86_64 = 89fa34c8867835bcdec5bd62708668853894d7858c64f00624c63946d0db1bba
+	source_aarch64 = kpt-1.0.0_beta.61.1-aarch64.tar.gz::https://github.com/kptdev/kpt/releases/download/v1.0.0-beta.61.1/kpt_linux_arm64-1.0.0-beta.61.1.tar.gz
+	sha256sums_aarch64 = 759d7eaba2ab366e42fccd23cd94a43eed75de30709f8e331d7cefedb65856b9
+	source_x86_64 = kpt-1.0.0_beta.61.1-x86_64.tar.gz::https://github.com/kptdev/kpt/releases/download/v1.0.0-beta.61.1/kpt_linux_amd64-1.0.0-beta.61.1.tar.gz
+	sha256sums_x86_64 = 6e68144c2d5029c1b763cb2a6e8b2d2c0a82994fbdb6ebc67ea44271a39b4fae
 
 pkgname = kpt-bin
