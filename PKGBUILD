@@ -4,7 +4,7 @@ _pkgname=helio
 pkgname="${_pkgname}-workstation-bin"
 _debname="fm.${_pkgname}.Workstation"
 _appname=Helio
-pkgver=3.16
+pkgver=3.17
 pkgrel=1
 pkgdesc="A free and open-source music sequencer for desktop and mobile platforms.(Prebuilt version)"
 arch=('x86_64')
@@ -14,7 +14,6 @@ license=('GPL-3.0-only')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
-    'libcurl-gnutls'
     'alsa-lib'
     'libglvnd'
     'freetype2'
@@ -25,7 +24,7 @@ options=(
 source=(
     "${pkgname%-bin}-${pkgver}.deb::https://ci.helio.fm/${_pkgname}-${pkgver}-x64.deb"
 )
-sha256sums=('4fbbe21fa69379ce229101bb2cc5665455b8737e2f4c56c735bec097c23dfae0')
+sha256sums=('6134c6a801c6bc0b9b7df4870f3d90e3500c259c3d60628f54c11fc0b032aedc')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -i "s/\/usr\/bin\/${_pkgname}/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_appname}.desktop"
