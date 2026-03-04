@@ -1,6 +1,6 @@
 pkgbase = perl-pdl
 	pkgdesc = The Perl Data Language
-	pkgver = 2.101
+	pkgver = 2.103
 	pkgrel = 1
 	url = https://metacpan.org/release/PDL
 	arch = i686
@@ -28,9 +28,9 @@ pkgbase = perl-pdl
 	depends = netpbm
 	depends = ffmpeg
 	options = !emptydirs
-	source = perl-pdl-2.101.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-2.101.tar.gz
+	source = perl-pdl-2.103.tar.gz::https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-2.103.tar.gz
 	source = perldl.conf
-	sha256sums = 856ac7de9612301dac944398d7787962c73a7832100f8aeeecd1ed6571fbb603
+	sha256sums = 543bc79a61ffc6fa85ff7d556589344e11555adbdf63140564a21f7d0353e904
 	sha256sums = SKIP
 
 pkgname = perl-pdl
