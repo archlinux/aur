@@ -4,7 +4,7 @@
 _commit=HEAD
 _pkgname=marsdev
 pkgname=${_pkgname}-git
-pkgver=r157.3c11da3
+pkgver=r159.b85b895
 pkgrel=1
 pkgdesc="Cross-platform Sega Mega Drive / Super 32X / Sharp X68000 toolchain"
 arch=('x86_64')
@@ -13,9 +13,9 @@ makedepends=('boost' 'texinfo' 'wget' 'java-environment>=11')
 depends=('java-environment>=11')
 provides=('marsdev' 'x68k-tools' 'sik-tools' 'flamewing-tools' 'sgdk')
 license=('MIT')
-source=("git+$url#commit=$_commit")
+source=("git+$url#commit=$_commit" 'sgdk-parallel-build.patch')
 
-sha256sums=('SKIP')
+sha256sums=('SKIP' 'SKIP')
 options=('!strip' '!debug' '!lto')
 
 pkgver() {
@@ -25,19 +25,20 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
-  git submodule update --init
   export   CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -fstack-clash-protection -fcf-protection"
   export CXXFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -fstack-clash-protection -fcf-protection"
   export  LDFLAGS="-static-libstdc++ -static-libgcc -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
   export MAKEFLAGS=--jobs=$(nproc)
   export MARS_INSTALL_DIR="${pkgdir}/opt/marsdev"
-  export SGDK_VER="v2.11"
+  #export SGDK_VER="v2.11"
   echo "CFLAGS: ${CFLAGS}"
   echo "CXXFLAGS: ${CXXFLAGS}"
   echo "LDFLAGS: ${LDFLAGS}"
   echo "MAKEFLAGS: ${MAKEFLAGS}"
   echo "MARS_INSTALL_DIR: ${MARS_INSTALL_DIR}"
-  echo "SGDK_VER: ${SGDK_VER}"
+  #echo "SGDK_VER: ${SGDK_VER}"
+  git submodule update --init
+  cat "${srcdir}/sgdk-parallel-build.patch" | patch -p1
 }
 
 build() {
