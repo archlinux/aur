@@ -1,0 +1,11 @@
+post_install(){
+	echo "Enable argument completion for BAPCtools:"
+	echo "Zsh:"
+	cat << 'DOC'
+$ echo "autoload -U +X bashcompinit\nbashcompinit\n"'eval "$(register-python-argcomplete bt)"' >> ~/.zshrc
+DOC
+	echo "Bash:"
+	cat << 'DOC'
+$ echo 'eval "$(register-python-argcomplete bt)"' >> ~/.bashrc
+DOC
+}
