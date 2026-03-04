@@ -10,10 +10,10 @@
 # Contributor: Jomar Milan <jomarm@jomarm.com>
 
 pkgname=aseprite
-pkgver=1.3.16.1
+pkgver=1.3.17
 _skiaver=m124
 _skiahash=08a5439a6b
-pkgrel=2
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -42,7 +42,7 @@ makedepends=(# "Meta" dependencies
              # Fuck it, compiling with GCC>=13 is broken and I'm not gonna write a patch to fix it
              clang
              )
-source=("https://github.com/aseprite/aseprite/releases/download/v1.3.16/Aseprite-v1.3.16.1-Source.zip"
+source=("https://github.com/aseprite/aseprite/releases/download/v1.3.17/Aseprite-v1.3.17-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
         "skia-$_skiaver.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/$_skiaver-$_skiahash.tar.gz"
         # forgive me, I couldn't figure out linker errors.
@@ -64,7 +64,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v1.3.16/Aseprite
 noextract=("Aseprite-v$pkgver-Source.zip"
            "skia-$_skiaver.tar.gz"
            "aseprite-skia-$_skiaver-flutter.tar.gz") # Don't extract Aseprite or skia sources at the root
-sha256sums=('8961e7cff572f7bd432c240be5214c9dd228d4bb582521a44ff554f011de551a'
+sha256sums=('887dd92c0d47988848f86405c05d73ba6af9e572a37fa63870350ac3d2ef3782'
             'c2a567d6b8bb933a92615cbdee0de268d02c3a06863337ee8822eedab9ed66ba'
             'b52f179a687ef2f91a52b696ab6581f4a37df5e88cb22040fa1ec6567cf0ebb1'
             'c246ab3a2f1dad3b0244ea4e571404978c748777b8814670d2798e137e9e0d4f'

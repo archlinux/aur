@@ -1,7 +1,7 @@
 pkgbase = aseprite
 	pkgdesc = Create animated sprites and pixel art
-	pkgver = 1.3.16.1
-	pkgrel = 2
+	pkgver = 1.3.17
+	pkgrel = 1
 	url = https://www.aseprite.org/
 	arch = x86_64
 	license = LicenseRef-Aseprite-EULA
@@ -34,10 +34,10 @@ pkgbase = aseprite
 	depends = libfontconfig.so
 	depends = libxcursor
 	depends = libxrandr
-	noextract = Aseprite-v1.3.16.1-Source.zip
+	noextract = Aseprite-v1.3.17-Source.zip
 	noextract = skia-m124.tar.gz
 	noextract = aseprite-skia-m124-flutter.tar.gz
-	source = https://github.com/aseprite/aseprite/releases/download/v1.3.16/Aseprite-v1.3.16.1-Source.zip
+	source = https://github.com/aseprite/aseprite/releases/download/v1.3.17/Aseprite-v1.3.17-Source.zip
 	source = skia-m124.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/m124-08a5439a6b.tar.gz
 	source = skia-m124-icu::git+https://chromium.googlesource.com/chromium/deps/icu.git#commit=a0718d4f121727e30b8d52c7a189ebf5ab52421f
 	source = aseprite-strings::git+https://github.com/aseprite/strings.git#commit=0f49265d7e7aea4b862b7d1e670ed969e8a469b8
@@ -51,7 +51,7 @@ pkgbase = aseprite
 	source = shared-libwebp-found.patch
 	source = include_cstdint.patch
 	source = shared_libjpeg-turbo.patch
-	sha256sums = 8961e7cff572f7bd432c240be5214c9dd228d4bb582521a44ff554f011de551a
+	sha256sums = 887dd92c0d47988848f86405c05d73ba6af9e572a37fa63870350ac3d2ef3782
 	sha256sums = c2a567d6b8bb933a92615cbdee0de268d02c3a06863337ee8822eedab9ed66ba
 	sha256sums = b52f179a687ef2f91a52b696ab6581f4a37df5e88cb22040fa1ec6567cf0ebb1
 	sha256sums = c246ab3a2f1dad3b0244ea4e571404978c748777b8814670d2798e137e9e0d4f
