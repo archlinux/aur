@@ -5,7 +5,7 @@ pkgdesc="Kustomrunner – customizable script runner"
 arch=('any')
 license=('MIT')
 depends=('bash' 'python')
-source=("$pkgname-$pkgver.tar.gz")
+source=("kustomrunner-1.0.0-beta.tar.gz")
 sha256sums=('SKIP')
 
 package() {

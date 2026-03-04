@@ -6,7 +6,7 @@ pkgbase = kustomrunner
 	license = MIT
 	depends = bash
 	depends = python
-	source = kustomrunner-1.0.0.tar.gz
+	source = kustomrunner-1.0.0-beta.tar.gz
 	sha256sums = SKIP
 
 pkgname = kustomrunner
