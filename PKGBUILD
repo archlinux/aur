@@ -1,7 +1,7 @@
 # Maintainer: basicallygit <91993321+basicallygit@users.noreply.github.com>
 # Issues with this package may be submitted to https://github.com/basicallygit/nacrypt/issues
 pkgname=nacrypt
-pkgver=1.2.4
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="A simple & secure file encryption utility"
 url="https://github.com/basicallygit/nacrypt"
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('libsodium' 'libseccomp' 'libcap')
 makedepends=('clang')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/basicallygit/nacrypt/archive/$pkgver.tar.gz")
-sha256sums=("5f305e16b39347b400d0753acccffda1911939a99bb1917cb3d9a0fdd1396017")
+sha256sums=("d1e4df4847aa5cd9bd36d10cd16c21105f4f46f51e42534afed7386488633c49")
 
 prepare() {
 	cd "$pkgname-$pkgver"
