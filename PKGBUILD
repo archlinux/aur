@@ -23,8 +23,8 @@ pkgname=(
   python-opentelemetry-semantic-conventions
   python-opentelemetry-test-utils
 )
-pkgver=1.39.1
-pkgrel=2
+pkgver=1.40.0
+pkgrel=1
 pkgdesc="OpenTelemetry Python API and SDK"
 url="https://github.com/open-telemetry/opentelemetry-python"
 license=(Apache-2.0)
@@ -52,7 +52,7 @@ checkdepends=(
   python-typing_extensions
 )
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('141bd35522ed50a18b13a53b2443cd79389723678263cbe032d0794beb3f23a41cd0b01185748309f968ff094ae2015320a7b75ec7f78ab9eefd6abc4c5cf0fb')
+b2sums=('a52ce43e047347d55ce3ba54c2db4fa883f7e543eac9cfe4e3aa92f03db3a0a2fa943235e9f1fe61b5b7bfe377f7c3a661822405c357e2b31885ca7f20c636d6')
 
 _archive="$_pkgbase-$pkgver"
 
