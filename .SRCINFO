@@ -1,7 +1,7 @@
 pkgbase = rv-ruby-bin
 	pkgdesc = Extremely fast Ruby version and gem manager
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rv.dev/
 	arch = x86_64
 	arch = aarch64

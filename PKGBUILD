@@ -3,7 +3,7 @@
 # The name `rv` is occupied by an R package manager
 pkgname=rv-ruby-bin
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Extremely fast Ruby version and gem manager'
 url=https://rv.dev/
 arch=(x86_64 aarch64)
@@ -33,8 +33,8 @@ package() {
   install -Dm755 -t "$pkgdir/usr/bin/" rv rvx
 
   install -Dm644 -t "$pkgdir/usr/share/fish/vendor_completions.d/" rv.fish
-  install -Dm644 -T rv.bash "$pkgdir/usr/share/bash-completion/completions/rg"
-  install -Dm644 -T rv.zsh "$pkgdir/usr/share/zsh/site-functions/_rg"
+  install -Dm644 -T rv.bash "$pkgdir/usr/share/bash-completion/completions/rv"
+  install -Dm644 -T rv.zsh "$pkgdir/usr/share/zsh/site-functions/_rv"
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" \
     README.md CHANGELOG.md
