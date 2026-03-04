@@ -2,13 +2,13 @@
 #Contributor=SecByShresth <Shresthpaul133@gmail.com>
 pkgname=python-whisper
 pkgver=1.1.10
-pkgrel=2
+pkgrel=3
 pkgdesc='Fixed-size database that provides fast, reliable storage of numeric data over time.'
 arch=('any')
 url='https://github.com/graphite-project/whisper'
 license=('Apache')
 depends=('python' 'python-six' 'python-configobj')
-optdepends=('python-rrdtool: for rrd2whisper.py support')
+optdepends=('rrdtool: for rrd2whisper.py support')
 conflicts=('python2-whisper')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 options=(!emptydirs)
