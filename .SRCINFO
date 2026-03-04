@@ -1,14 +1,16 @@
 pkgbase = youtube-chat-rs-git
-	pkgdesc = Rust crate to fetch YouTube live chat messages
+	pkgdesc = Fetch YouTube live chat messages from terminal
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/efekrskl/youtube-chat-rs
 	arch = x86_64
 	license = MIT
-	makedepends = rust
 	makedepends = cargo
 	makedepends = git
+	makedepends = clang
 	depends = glibc
+	depends = gcc-libs
+	options = !lto
 	source = youtube-chat-rs-git::git+https://github.com/efekrskl/youtube-chat-rs.git
 	sha256sums = SKIP
 

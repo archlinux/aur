@@ -1,15 +1,17 @@
 # Maintainer: Abdullah Koyuncu <wisewebworks@outlook.com>
 pkgname='youtube-chat-rs-git'
 pkgver=0.1.0
-pkgrel=1
-pkgdesc='Rust crate to fetch YouTube live chat messages'
+pkgrel=2
+pkgdesc='Fetch YouTube live chat messages from terminal'
 arch=('x86_64')
 url="https://github.com/efekrskl/youtube-chat-rs"
 license=('MIT')
-depends=('glibc')
-makedepends=('rust' 'cargo' 'git')
+depends=('glibc' 'gcc-libs')
+makedepends=('cargo' 'git' 'clang')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
+
+options=(!lto)
 
 pkgver() {
   cd "$pkgname"
@@ -17,13 +19,23 @@ pkgver() {
     | sed 's/version *= *"\(.*\)"/\1/'
 }
 
+prepare() {
+  cd "$pkgname"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked
+}
+
 build() {
   cd "$pkgname"
-  cargo build --release
+
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+
+  cargo build --frozen --release
 }
 
 package() {
   cd "$pkgname"
-  install -Dm755 "target/release/youtube-chat-rs" "$pkgdir/usr/bin/youtube-chat-rs"
-  # install -Dm644 LICENSE "$pkgdir/usr/share/licenses/youtube-chat-rs/LICENSE"
+  install -Dm0755 target/release/youtube-chat-rs \
+    "$pkgdir/usr/bin/youtube-chat-rs"
 }
