@@ -1,6 +1,6 @@
 pkgbase = poncho-wonky
 	pkgdesc = A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB),fork of patchwork
-	pkgver = 4.5.0
+	pkgver = 4.6.1
 	pkgrel = 1
 	url = https://github.com/soapdog/patchwork
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = poncho-wonky
 	depends = electron39
 	replaces = ssb-patchwork
 	options = !strip
-	source = https://github.com/soapdog/patchwork/archive/v4.5.0.tar.gz
+	source = https://github.com/soapdog/patchwork/archive/v4.6.1.tar.gz
 	source = run.sh
 	source = poncho-wonky.desktop
 	sha256sums = 294a5cac51eace1ff4f7faacd6792eb4bd1eb85dff04aa6d41d15f0b586c666e
