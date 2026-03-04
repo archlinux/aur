@@ -1,0 +1,20 @@
+pkgbase = ferris-scan-bin
+	pkgdesc = Lightweight and simple Rust based file scanner
+	pkgver = 0.25
+	pkgrel = 1
+	url = https://github.com/Vnilabean/ferris-scan
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ferris-scan-tui
+	provides = ferris-scan-gui
+	conflicts = ferris-scan
+	source = README-0.25.md::https://raw.githubusercontent.com/Vnilabean/ferris-scan/v0.25/README.MD
+	sha256sums = d82b78d7da087d42ab7fe4ff143f3699e760e44802b10b3da032e6b18943289b
+	source_x86_64 = ferris-scan-tui-0.25::https://github.com/Vnilabean/ferris-scan/releases/download/v0.25/ferris-scan-tui-v0.25-linux
+	source_x86_64 = ferris-scan-gui-0.25::https://github.com/Vnilabean/ferris-scan/releases/download/v0.25/ferris-scan-gui-v0.25-linux
+	sha256sums_x86_64 = 042f87347fcea75dfa7ace17a92f4f242df5c971f63cb95ab778280238585aa8
+	sha256sums_x86_64 = daf760b2b271f654a76dae5cadeb50277ab7484d09bf27136a8afe07fe83b2b9
+
+pkgname = ferris-scan-bin

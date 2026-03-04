@@ -1,0 +1,5 @@
+[ferris-scan-bin]
+source = "github"
+github = "Vnilabean/ferris-scan"
+use_max_tag = true
+prefix = "v"
