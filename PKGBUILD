@@ -1,6 +1,6 @@
 # Maintainer: Omni <team@omni.dev>
 pkgname=omnidotdev-terminal
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="GPU-accelerated terminal emulator built to run everywhere"
 arch=('x86_64')
@@ -32,4 +32,4 @@ package() {
   install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "NOTICE.md" "$pkgdir/usr/share/doc/$pkgname/NOTICE"
 }
-sha256sums=('4a23f34454e053ad9052ea497d72ea35149be3ff2d736f064cf18d5b6ab131ec')
+sha256sums=('5661f049695eccacdcd06b07c2e5a1d100d6d68837335f97846781a1a7100ef3')
