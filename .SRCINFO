@@ -1,12 +1,12 @@
 pkgbase = rondo
 	pkgdesc = A modern terminal productivity app combining task management with a daily journal
-	pkgver = 0.4.1
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/roniel-rhack/rondo
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = rondo-0.4.1.tar.gz::https://github.com/roniel-rhack/rondo/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = 11cd3523f5b149fe0ccaccc14d6f8f7ccb9f2db679f2f1f6e71e7e7aecd5cdca
+	source = rondo-0.5.0.tar.gz::https://github.com/roniel-rhack/rondo/archive/refs/tags/v0.5.0.tar.gz
+	sha256sums = 6dbaa05d97c873187cab4fd6cbb8845e9f3e482eedea1c96c7ddd9cddbb5c471
 
 pkgname = rondo
