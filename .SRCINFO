@@ -9,6 +9,7 @@ pkgbase = lstk
 	makedepends = git
 	makedepends = go
 	optdepends = docker: required to run LocalStack containers with lstk start/stop/logs
+	optdepends = xdg-utils: use xdg-open to launch browser-based login flow
 	options = !debug
 	source = git+https://github.com/localstack/lstk.git#tag=v0.2.3
 	sha256sums = SKIP

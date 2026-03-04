@@ -7,7 +7,10 @@ arch=('x86_64' 'aarch64')
 url='https://github.com/localstack/lstk'
 license=('Apache-2.0')
 makedepends=('git' 'go')
-optdepends=('docker: required to run LocalStack containers with lstk start/stop/logs')
+optdepends=(
+  'docker: required to run LocalStack containers with lstk start/stop/logs'
+  'xdg-utils: use xdg-open to launch browser-based login flow'
+)
 options=(!debug)
 source=("git+https://github.com/localstack/lstk.git#tag=v${pkgver}")
 sha256sums=('SKIP')
