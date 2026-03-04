@@ -1,6 +1,6 @@
 pkgbase = rpcs3-bin
 	pkgdesc = Open-source Sony PlayStation 3 Emulator (Latest Binary)
-	pkgver = 0.0.39.18705
+	pkgver = 0.0.40.18872
 	pkgrel = 1
 	url = https://rpcs3.net/
 	arch = x86_64

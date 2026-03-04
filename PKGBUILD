@@ -2,7 +2,7 @@
 # Contributor: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=rpcs3-bin
 _pkgname=rpcs3
-pkgver=0.0.39.18705
+pkgver=0.0.40.18872
 pkgrel=1
 pkgdesc='Open-source Sony PlayStation 3 Emulator (Latest Binary)'
 arch=('x86_64')
