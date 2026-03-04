@@ -1,0 +1,5 @@
+[tiki-bin]
+source = "github"
+github = "boolean-maybe/tiki"
+use_latest_release = true
+prefix = "v"

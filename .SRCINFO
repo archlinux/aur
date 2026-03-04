@@ -1,0 +1,16 @@
+pkgbase = tiki-bin
+	pkgdesc = Markdown-based git-versioned documentation and issue management
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/boolean-maybe/tiki
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = tiki
+	conflicts = tiki
+	source_x86_64 = tiki-x86_64-0.1.5.tgz::https://github.com/boolean-maybe/tiki/releases/download/v0.1.5/tiki_0.1.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 868b54a9c8a725e185c650780d1a1533e21c6d21e60c1eb0f92b29a0808086c3
+	source_aarch64 = tiki-aarch64-0.1.5.tgz::https://github.com/boolean-maybe/tiki/releases/download/v0.1.5/tiki_0.1.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2e709f112922fa4be53ad50576e633c5a56d38d8fabb24076eb38a5c163b19fc
+
+pkgname = tiki-bin
