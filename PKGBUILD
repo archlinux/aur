@@ -17,7 +17,7 @@
 # Contributor: Supdrewin <supdrewin at gmail dot com>
 
 pkgbase=mesa-amdonly-gaming-git
-pkgver=25.3.0_devel.212049.1c57f889082.d41d8cd
+pkgver=26.1.0_devel.219374.37ba573877a.d41d8cd
 options=(!lto) # LTO is bad for mesa, makes random applications crash on my system
 pkgname=(
   'amdonly-gaming-vulkan-mesa-layers-git'
@@ -146,7 +146,7 @@ build() {
     -D valgrind=disabled
     -D video-codecs=all
     -D vulkan-drivers=amd
-    -D vulkan-layers=device-select,overlay
+    -D vulkan-layers=device-select,overlay,anti-lag
     -D vulkan-beta=true
     --wrap-mode=nofallback
     -D sysconfdir=/etc
