@@ -1,6 +1,6 @@
 # Maintainer: thadah <thadahdenyse@protonmail.com>
 pkgname=commet-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A client for Matrix focused on providing a feature rich experience while maintaining a simple interface"
 url="https://commet.chat"
@@ -37,7 +37,7 @@ conflicts=('commet')
 options=('!strip')
 source=("${pkgname}-${pkgver}.deb::https://github.com/commetchat/commet/releases/download/v${pkgver}/commet-ubuntu-24.04-x64.deb")
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('75cbd6453cdc46f17be5706d97ea4231434cf817ac375f226edcc8876b1b21be')
+sha256sums=('967ebba447e85bc82a1a8dee7f59466776b7be6dc8c93e1e16411feddc093405')
 
 package() {
   cd "${srcdir}"
