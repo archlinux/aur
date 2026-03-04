@@ -4,9 +4,9 @@ _pkgname=marble-maps-tracestrack
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=r2.20250522.780a1a7
-pkgrel=1
+pkgrel=2
 pkgdesc="Maps served by Tracestrack Maps for KDE marble. API key required and asked for during build."
-url="https://gitlab.com/dreieckli/marble-maps-tracestrack"
+url="https://codeberg.org/dreieck/marble-maps-tracestrack"
 arch=('any')
 license=(
   'LicenseRef-Public_Domain'
@@ -35,7 +35,7 @@ conflicts=(
 replaces=()
 options=('emptydirs')
 source=(
-  "${_pkgname}::git+https://gitlab.com/dreieckli/marble-maps-tracestrack.git"
+  "${_pkgname}::git+${url}.git"
 )
 sha256sums=(
   'SKIP'
