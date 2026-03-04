@@ -17,7 +17,7 @@ provides=('micyou')
 conflicts=('micyou')
 options=('!strip')
 source=("https://github.com/LanRhyme/MicYou/releases/download/v${pkgver}/MicYou-Linux-${pkgver}.deb")
-sha256sums=('92424ac07d1c5733a278b13a299f4671394de9fdf10791b726cfd089cb5d5e27')
+sha256sums=('f81e36e068353ab89497f03f16fc8e3b091858520e5b75472b73d00e0cf64f9a')
 noextract=("MicYou-Linux-${pkgver}.deb")
 
 package() {
