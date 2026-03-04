@@ -1,6 +1,6 @@
 # Maintainer: Lasse Vestergaard <hello@lassejlv.dk>
 pkgname=termy-bin
-pkgver=0.1.36
+pkgver=0.1.37
 pkgrel=1
 pkgdesc="Minimal GPUI-powered terminal (pre-compiled binary)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('termy')
 source=("termy-${pkgver}.tar.gz::https://github.com/lassejlv/termy/releases/download/v${pkgver}/Termy-v${pkgver}-linux-x86_64.tar.gz"
         "termy.desktop"
         "termy_icon.png::https://raw.githubusercontent.com/lassejlv/termy/v${pkgver}/assets/termy_icon.png")
-b2sums=('cf447e82717e0058c4b8ff94b58e78213cd710ada5624792528ab313f9b2088173974fb9bfa8a6eb879d48ae5c02cae7f6a81d5f8e3e90974fdd12284ad8fe0a'
+b2sums=('b8490702ebb2229e2155079b304dab8c1d3c86122246cb9c1f21e015bd0f2d93b369d74fa55e855b2ea9db5bddf228dee2afdf028f860a1c872d1540ec8777b6'
         '310d92f8a26968092eab7c5434701e6c2a8cbb40d0179f12031eb755f1bf743bb3d52e678000a30b247eb7a0c29d81ad38d8c4d042aef6d1beb18707aaefa4f8'
         '9d27df18af7c50fcbc788f574a614ddb7ac479a584093a78070e2b9cafbdd85c0f4a9214d0475922d175f407ab0e84444ce471b21ce9279aac4206904f4240b3')
 
