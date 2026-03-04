@@ -5,6 +5,7 @@ pkgbase = marble-maps-extra-git
 	epoch = 0
 	url = https://codeberg.org/dreieck/marble-maps-extra
 	arch = any
+	groups = marble-maps
 	license = CC-BY-NC-SA-3.0
 	license = CC-BY-SA-3.0
 	license = CC-BY-SA-2.0

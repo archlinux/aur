@@ -15,7 +15,7 @@ license=(
   'ODbL-1.0'        # The OpenStreetMap data
   'LicenseRef-SRTM' # The SRTM data included in some maps (most likely public domain, see https://gis.stackexchange.com/a/444078/90521)
 )
-groups=()
+groups=('marble-maps')
 depends=(
   'marble-common'
 )
