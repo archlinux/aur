@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://github.com/Geralt-Of-Rivia-Witcher/tbreakout"
 license=('MIT')
 depends=('glibc')
+options=('!debug')
 
 source=(
   "tbreakout::https://github.com/Geralt-Of-Rivia-Witcher/tbreakout/releases/download/v${pkgver}/tbreakout-linux-amd64"
