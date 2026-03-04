@@ -1,0 +1,19 @@
+pkgbase = eez-studio-bin
+	pkgdesc = Cross-platform low-code GUI and automation (Prebuilt binary)
+	pkgver = 0.26.2
+	pkgrel = 1
+	url = https://github.com/eez-open/studio
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = nss
+	depends = atkmm
+	depends = cups
+	depends = gtk3
+	depends = alsa-lib
+	depends = python
+	conflicts = eez-studio-appimage
+	options = !strip
+	source = https://github.com/eez-open/studio/releases/download/v0.26.2/eezstudio-0.26.2.x86_64.rpm
+	sha256sums = 84fe91a5c93102c068f1f7aa09fa5f3842993cad72872aded38e184e59f3942d
+
+pkgname = eez-studio-bin
