@@ -1,6 +1,6 @@
 pkgbase = geforce-infinity-bin
 	pkgdesc = A work-in-progress application designed to enhance the GeForce NOW experience.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://geforce-infinity.xyz/
 	arch = x86_64
@@ -8,10 +8,10 @@ pkgbase = geforce-infinity-bin
 	depends = electron37
 	conflicts = geforce-infinity
 	options = !emptydirs
-	source = geforce-infinity-1.2.1.deb::https://github.com/AstralVixen/GeForce-Infinity/releases/download/1.2.1/GeForceInfinity-linux-1.2.1-amd64.deb
-	source = LICENSE-1.2.1::https://raw.githubusercontent.com/AstralVixen/GeForce-Infinity/1.2.1/LICENSE
+	source = geforce-infinity-1.2.2.deb::https://github.com/AstralVixen/GeForce-Infinity/releases/download/1.2.2/GeForceInfinity-linux-1.2.2-amd64.deb
+	source = LICENSE-1.2.2::https://raw.githubusercontent.com/AstralVixen/GeForce-Infinity/1.2.2/LICENSE
 	source = geforce-infinity.sh
-	sha256sums = 614e7939d20ef0537762f7587090cb83d70dba24399e03e03e753448bce95ed5
+	sha256sums = 7be48916825b660ad06292fe4459a0004a857e6df968c23bb56a73694ad8dade
 	sha256sums = 669b46a31342a99549197ed97fac42000bbfe178114b2d6843aa08f6902b11a1
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
