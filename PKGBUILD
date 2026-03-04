@@ -1,6 +1,6 @@
 pkgname=caddy-multiplugins
-pkgver=2.10.2
-pkgrel=3
+pkgver=2.11.1
+pkgrel=1
 pkgdesc="Caddy web server"
 arch=('any')
 url="https://github.com/caddyserver/caddy"
