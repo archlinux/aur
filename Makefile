@@ -53,4 +53,4 @@ update_tag: ## get and update newest version in PKGBUILD
 test: ## test (needs make packaging)
 	docker build -t arch:arch-package-test -f $(MAKEFILE_DIR)/Dockerfile $(MAKEFILE_DIR) && \
 	docker run -it --rm -v $(MAKEFILE_DIR):/work -w /work arch:arch-package-test ./test.sh
-	
+
