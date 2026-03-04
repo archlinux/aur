@@ -1,0 +1,11 @@
+pkgbase = octoberctl
+	pkgdesc = The official October Linux management utility
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/october-os/octoberctl
+	arch = x86_64
+	license = GPL-3.0-or-later
+	source = octoberctl::https://github.com/october-os/octoberctl/releases/download/1.0/octoberctl
+	sha256sums = 67423e1cbd63ae208e7934cace1493cb1d1f2995dfd61a7f8def00475202fa51
+
+pkgname = octoberctl
