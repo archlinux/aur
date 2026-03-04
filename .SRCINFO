@@ -1,0 +1,19 @@
+pkgbase = uefisettings-git
+	pkgdesc = A tool to read and modify BIOS/UEFI settings from Linux terminal (Git version)
+	pkgver = 0.1.5.r56.149bc92
+	pkgrel = 1
+	url = https://github.com/linuxboot/uefisettings
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cargo
+	makedepends = git
+	depends = libgcc
+	depends = glibc
+	provides = uefisettings
+	conflicts = uefisettings
+	options = !lto
+	source = git+https://github.com/linuxboot/uefisettings.git
+	sha256sums = SKIP
+	b2sums = SKIP
+
+pkgname = uefisettings-git
