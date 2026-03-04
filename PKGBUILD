@@ -1,13 +1,13 @@
 # Maintainer: Nicolas <arsenault.nic@gmail.com>
 pkgname=sumconfigs
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Help manage configs, dotfiles and packages"
 arch=("any")
 url="https://gitlab.com/aurze/$pkgname"
 license=('GPL-3.0-only')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/aurze/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=("2551ccae037447bcd98af2b6f3508e0b2063a6a1d92892dc4044d11a10334cd9062bdf6aac61e78b478cfc35f851a283e63dbba0be64fdc80ebc04bd475e1773")
+b2sums=("792dbf3d40bfd6f8fe5fd0ae1d60faef50fcb717eb12ac5de466ec0eaf49da1302910cf1efd34959230b930e7ed68443bd9c5c573c241cec3ea023e3334328a0")
 
 makedepends=("cargo")
 
