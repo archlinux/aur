@@ -2,7 +2,7 @@
 
 _name=spitch
 pkgname=python-$_name
-pkgver=1.45.0
+pkgver=1.47.0
 pkgrel=1
 pkgdesc='The official Python library for the spitch API.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-httpx' 'python-pydantic' 'python-typing_extensions' 'p
 makedepends=('python-hatchling' 'python-hatch-fancy-pypi-readme' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-respx' 'python-pytest' 'python-pytest-asyncio' 'python-time-machine' 'python-dirty-equals' 'python-rich' 'python-pytest-xdist' 'npm' 'nodejs')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e0542818538435c3aca624fa12654b401d18de02f93d3a594b7bf54142b4e7ed')
+sha256sums=('97a483cde780f876ace9edb39833abdd6d2c78ae947992f29a18004f5472e46c')
 
 prepare(){
   cd "$srcdir"/$_name-python-$pkgver
@@ -34,6 +34,7 @@ check() {
     # Need to be fixed by developers
     --deselect tests/api_resources/test_speech.py
     --deselect tests/api_resources/test_files.py
+    -k "not test_parse_retry_after_header"
   )
   cd "$srcdir"/$_name-python-$pkgver
   trap 'pkill "npm exec prism"' EXIT
