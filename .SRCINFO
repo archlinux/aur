@@ -35,7 +35,7 @@ pkgbase = dinox
 	depends = webrtc-audio-processing
 	depends = gdk-pixbuf2
 	depends = mosquitto
-	source = https://github.com/rallep71/dinox/archive/refs/tags/v1.1.4.7.tar.gz
+	source = https://github.com/rallep71/dinox/archive/refs/tags/v1.1.5.1.tar.gz
 	sha256sums = c67fc987f5b1256b21891333dc68722ebdc0f5780e304b65a627b006b6c8b0a6
 
 pkgname = dinox
