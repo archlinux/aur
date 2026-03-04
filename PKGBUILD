@@ -14,7 +14,7 @@
 
 : ${_build_level:=1}
 
-: ${_cksum=030115ff8fb4cb536d8449dc40ebc3e314e86ba1b316a6ae21091a11cc930578}
+: ${_cksum=ed2c3c55fd38e6836c094fce356f2567f9516130b73354a29857960368c5687f}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -26,7 +26,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.18.9
+pkgver=6.18.13
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -66,7 +66,7 @@ _srctag=$(
 _srcname=linux-$pkgver
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar".{xz,sign}
-  "config-$pkgver"::"$_dl_url_arch/-/raw/$_srctag/config"
+  "config-$pkgver"::"$_dl_url_arch/-/raw/$_srctag/config.x86_64"
 )
 sha256sums=(
   "${_cksum:-SKIP}"
