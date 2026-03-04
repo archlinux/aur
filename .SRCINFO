@@ -4,10 +4,14 @@ pkgbase = hmat-oss
 	pkgrel = 1
 	url = https://github.com/jeromerobert/hmat-oss
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	makedepends = cmake
 	depends = cblas
 	depends = lapacke
+	depends = libgcc
+	depends = libstdc++
+	depends = libgomp
+	depends = glibc
 	source = https://github.com/jeromerobert/hmat-oss/archive/1.11.1.tar.gz
 	sha256sums = 01c5946f063178cf05a9cac4906eb06ba3b784a0f03a68e8ef757ec368dc077a
 
