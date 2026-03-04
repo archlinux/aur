@@ -1,0 +1,77 @@
+_ensure_user_and_dirs() {
+  local user="music-file-playlist-online-sync"
+  local group="music-file-playlist-online-sync"
+
+  if ! getent group "$group" >/dev/null; then
+    groupadd --system "$group" 2>/dev/null || true
+  fi
+
+  if ! getent passwd "$user" >/dev/null; then
+    useradd --system --no-create-home \
+      --shell /usr/bin/nologin \
+      --gid "$group" \
+      --home-dir /var/lib/music-sync \
+      "$user" 2>/dev/null || true
+  fi
+
+  mkdir -p /etc/music-sync
+  mkdir -p /var/lib/music-sync
+  mkdir -p /var/log/music-sync
+
+  if [ ! -f /etc/music-sync/config.toml ] && [ -f /etc/music-sync/example-config.toml ]; then
+    cp /etc/music-sync/example-config.toml /etc/music-sync/config.toml
+  fi
+
+  touch /var/lib/music-sync/music-sync.db
+
+  chown -R "$user":"$group" /var/lib/music-sync /var/log/music-sync /etc/music-sync 2>/dev/null || true
+  chmod 750 /var/lib/music-sync /var/log/music-sync /etc/music-sync 2>/dev/null || true
+  chmod 640 /var/lib/music-sync/music-sync.db 2>/dev/null || true
+
+  chmod 640 /etc/music-sync/config.toml 2>/dev/null || true
+}
+
+_init_db_schema() {
+  if ! command -v sqlite3 >/dev/null 2>&1; then
+    return
+  fi
+
+  local db="/var/lib/music-sync/music-sync.db"
+  local schema="/usr/share/music-file-playlist-online-sync/schema.sql"
+
+  if [ ! -f "$schema" ]; then
+    return
+  fi
+
+  # If credentials table does not exist, assume schema is missing and apply it.
+  if ! sqlite3 "$db" ".schema credentials" >/dev/null 2>&1; then
+    sqlite3 "$db" < "$schema" || true
+  fi
+}
+
+post_install() {
+  _ensure_user_and_dirs
+  _init_db_schema
+
+  echo "\nTo finish setup:"
+  echo "1. Review the config file (auto-created if missing):"
+  echo "   sudo nano /etc/music-sync/config.toml   # edit root_folder, db_path, credentials"
+  echo "   NOTE: the music-file-playlist-online-sync user must have read+write access to root_folder"
+  echo "         so it can create/update .m3u playlists (e.g. via setfacl or a shared group)."
+  echo "2. Reload systemd and choose how to run sync:"
+  echo "   sudo systemctl daemon-reload"
+  echo "   # Recommended: continuous watcher plus timers:"
+  echo "   sudo systemctl enable --now music-file-playlist-online-sync-watcher.service"
+  echo "   sudo systemctl enable --now music-file-playlist-online-sync-reconcile.timer"
+  echo "3. To change how often the reconcile timer runs, use an override:"
+  echo "   sudo systemctl edit music-file-playlist-online-sync-reconcile.timer"
+  echo "\nAuthentication:"
+  echo "- For Spotify/Tidal, set credentials in config and follow provider instructions."
+  echo "- If no credentials are configured, the worker will use MockProvider (no real sync)."
+  echo "\nSee /etc/music-sync/example-config.toml and project README for details."
+}
+
+post_upgrade() {
+  _ensure_user_and_dirs
+  _init_db_schema
+}

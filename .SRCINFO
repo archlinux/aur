@@ -1,0 +1,16 @@
+pkgbase = music-file-playlist-online-sync
+	pkgdesc = Music folder to local playlists to remote playlist sync tool (Spotify/Tidal)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Balibaloo/music-playlist-online-sync
+	install = music-file-playlist-online-sync.install
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = systemd
+	source = https://github.com/Balibaloo/music-playlist-online-sync.git
+	md5sums = SKIP
+
+pkgname = music-file-playlist-online-sync
