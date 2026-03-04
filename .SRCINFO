@@ -1,0 +1,21 @@
+pkgbase = ufwall
+	pkgdesc = A terminal UI for managing UFW (Uncomplicated Firewall)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/The-Robin-Hood/ufWall
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = ufw
+	provides = ufwall
+	conflicts = ufwall
+	conflicts = ufwall-git
+	noextract = ufwall-0.1.0-x86_64
+	noextract = ufwall-0.1.0-aarch64
+	options = !strip
+	source_x86_64 = ufwall-0.1.0-x86_64::https://github.com/The-Robin-Hood/ufWall/releases/download/v0.1.0/ufWall-linux-amd64
+	sha256sums_x86_64 = 3a92083df32fe6f78c0d31ca51ff55ca4b9bb232a7a32ced1f9e798458a1bd60
+	source_aarch64 = ufwall-0.1.0-aarch64::https://github.com/The-Robin-Hood/ufWall/releases/download/v0.1.0/ufWall-linux-arm64
+	sha256sums_aarch64 = 2c2823191d5eb4540cfcf5fe837c7e2f6d00799f5d8b8ea497dff3a95824b1e5
+
+pkgname = ufwall
