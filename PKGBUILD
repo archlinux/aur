@@ -2,10 +2,10 @@
 _themename='smallscreen-raleigh-compact'
 pkgname="xfwm4-theme-${_themename}-git"
 pkgver=r16.20230725.8038dc8
-pkgrel=1
+pkgrel=2
 pkgdesc="An Xfwm4 theme using only the necessary screen space and trying to imitate the 'raleigh' colour theme."
 arch=('any')
-url="https://gitlab.com/dreieckli/xfwm4-theme-${_themename}"
+url="https://codeberg.org/dreieck/xfwm4-theme-${_themename}"
 license=('GPL3')
 depends=()
 optdepends=(
