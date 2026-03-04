@@ -7,7 +7,7 @@ pkgdesc="LPR and CUPS driver for the Brother DCP-1610W and DCP-1612W printers"
 arch=('i686' 'x86_64')
 url="http://support.brother.com/g/b/producttop.aspx?c=as_ot&lang=en&prod=dcp1610w_eu_as"
 license=('GPL2')
-depends=('cups')
+depends=('cups' 'ghostscript')
 depends_x86_64=('lib32-glibc')
 optdepends=('brscan4: scanner support')
 source=(http://download.brother.com/welcome/dlf101535/dcp1610wlpr-3.0.1-1.i386.rpm
