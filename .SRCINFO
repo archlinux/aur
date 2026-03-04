@@ -1,6 +1,6 @@
 pkgbase = r-forestplot
 	pkgdesc = Advanced Forest Plot Using 'grid' Graphics
-	pkgver = 3.1.7
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=forestplot
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = r-forestplot
 	optdepends = r-tidyr
 	optdepends = r-tidyselect
 	optdepends = r-tidyverse
-	source = https://cran.r-project.org/src/contrib/forestplot_3.1.7.tar.gz
-	sha256sums = b71882cd25ae5caa9ca41b3e0294d42f7756ea35c3d9a2fe0245ef8ab2491f4a
+	source = https://cran.r-project.org/src/contrib/forestplot_3.2.0.tar.gz
+	sha256sums = 1f6e4795fb7411a1161494ab6f592e32044f45253bb6a2e02bbca4ac146102e7
 
 pkgname = r-forestplot
