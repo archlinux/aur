@@ -27,7 +27,6 @@ checkdepends=(
 )
 # The source line renames the downloaded file for consistency
 source=("$pkgname-v$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-# Confirmed correct checksum
 sha256sums=('4cbebde4951b197c44c99b6e8783a96fb7164581a827590eb775a4726461be55')
 
 # The directory name inside the tarball is pynng-0.8.1
@@ -40,8 +39,9 @@ build() {
 
 check() {
     cd "$_sourcedir"
-    # Add the just-built library to the path so pytest can find it
-    export PYTHONPATH="$srcdir/$_sourcedir/build/lib"
+    # setup.py copies the built .so back into the source pynng/ directory,
+    # so pointing PYTHONPATH at the source root is sufficient.
+    export PYTHONPATH="$srcdir/$_sourcedir"
     pytest
 }
 
