@@ -2,14 +2,14 @@
 
 pkgname=uwaka-git
 _pkgname="${pkgname%-git}"
-pkgver=0.7.0
+pkgver=0.8.0
 pkgver() { git -C "$_pkgname" describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'; }
 pkgrel=1
 pkgdesc="Universal Wakatime Client"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/yayaduckd/$_pkgname"
 license=('MIT')
-makedepends=('git' 'zig=0.13.0')
+makedepends=('git' 'zig=0.15.2')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url")
