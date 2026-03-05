@@ -1,0 +1,14 @@
+pkgbase = sshproxy-bin
+	pkgdesc = sshproxy provides a type of single-sign-on capability for SSH to NERSC systems.
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://portal.nersc.gov/cfs/mfa/
+	arch = x86_64
+	license = custom
+	depends = glibc
+	source = sshproxy-2.1.2-linux-x86_64.tar.gz::https://portal.nersc.gov/cfs/mfa/sshproxy-2.1.2-linux-x86_64.tar.gz
+	source = LICENSE
+	sha256sums = 6ac773f3741c5da6dbc9f7d79fed1859400d30adbf42d1b67114456e08275800
+	sha256sums = 3165d1dcc087757481edcffc2f338061eb4b4bb6b27012916bee6c410c644cbe
+
+pkgname = sshproxy-bin
