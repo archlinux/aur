@@ -1,6 +1,6 @@
 pkgbase = rustdesk-appimage
 	pkgdesc = Yet another remote desktop software, written in Rust. Works out of the box, no configuration required.
-	pkgver = 1.4.5
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://github.com/rustdesk/rustdesk
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = rustdesk-appimage
 	provides = rustdesk
 	conflicts = rustdesk
 	options = !strip
-	source_x86_64 = rustdesk-1.4.5-1-x86_64.AppImage::https://github.com/rustdesk/rustdesk/releases/download/1.4.5/rustdesk-1.4.5-x86_64.AppImage
-	sha256sums_x86_64 = 3551cfcf86b0a8c1124c981a45adc2d7feca6f3e36b9310ce56cf0586ed41fc6
-	source_aarch64 = rustdesk-1.4.5-1-aarch64.AppImage::https://github.com/rustdesk/rustdesk/releases/download/1.4.5/rustdesk-1.4.5-aarch64.AppImage
-	sha256sums_aarch64 = d7557e55421c1dfb0d6409258c229d6365bac48ab928ef25b040a3ff72539b81
+	source_x86_64 = rustdesk-1.4.6-1-x86_64.AppImage::https://github.com/rustdesk/rustdesk/releases/download/1.4.6/rustdesk-1.4.6-x86_64.AppImage
+	sha256sums_x86_64 = f91b13ac685cd63b28157d5387d8329910229d5e0e4e228b5d27d2163e664a5f
+	source_aarch64 = rustdesk-1.4.6-1-aarch64.AppImage::https://github.com/rustdesk/rustdesk/releases/download/1.4.6/rustdesk-1.4.6-aarch64.AppImage
+	sha256sums_aarch64 = 07250cb33ec7e75d9a4d7623cb4213d0601850502bf6557c70568fc1df3a5f0b
 
 pkgname = rustdesk-appimage
