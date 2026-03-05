@@ -8,12 +8,8 @@ pkgdesc="A powerful interactive shell script to manage Arduino CLI projects"
 arch=('any')
 url="https://github.com/abod8639/${_pkgname}"
 license=('MIT')
-depends=('bash' 'arduino-cli')
-optdepends=(
-  'fzf: for enhanced interactive menus'
-  'jq: for update notifications'
-  'neovim: for the "Edit Project (nvim)" menu option'
-)
+depends=('bash' 'arduino-cli' 'fzf' 'jq' 'neovim')
+optdepends=()
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://github.com/abod8639/${_pkgname}.git")
