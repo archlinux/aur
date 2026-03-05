@@ -1,12 +1,12 @@
 pkgname=python-pkgbuild-parser
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Simple Python module to extract basic information directly from PKGBUILD files (not .SRCINFO)"
 arch=('any')
 url="https://codeberg.org/KevinCrrl/pkgbuild_parser"
 license=('MIT')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=("f011d9911d93eab2f7cced813b1d8825e9eea258489dbea68b0b89a913caa99c2b94a2a6d8cf54a571457a32c20bef28d11e8977e8b5dbeecac026f36e1f83e4")
+sha512sums=("1b1b948d4c9a73eb018805bb844feebbe231e0466470b659f2d082e8b8d91bea03faf6898a56c2d8edd526d36d8a3ea353a96e22d1cd6d9195c4452c0e81ab88")
 conflicts=()
 depends=(
     'python'
@@ -26,5 +26,4 @@ build() {
 package() {
     cd "${srcdir}/pkgbuild_parser"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
