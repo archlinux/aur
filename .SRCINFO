@@ -1,0 +1,24 @@
+pkgbase = rosec-bin
+	pkgdesc = Read-only Secret Service daemon with Bitwarden backend
+	pkgver = 0.0.9
+	pkgrel = 1
+	url = https://github.com/jmylchreest/rosec
+	install = rosec.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = dbus
+	depends = pam
+	optdepends = libnotify: desktop notifications on lock/unlock
+	optdepends = rosec-provider-bitwarden-pm-bin: Bitwarden Password Manager provider
+	optdepends = rosec-provider-bitwarden-sm-bin: Bitwarden Secrets Manager provider
+	optdepends = rosec-provider-gnome-keyring-bin: GNOME Keyring read-only provider
+	provides = rosec
+	provides = org.freedesktop.secrets
+	conflicts = rosec
+	source_x86_64 = rosec-0.0.9-x86_64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.9/rosec-0.0.9-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = dbc9b7585c0ab1700016dbfaf986cae427b01d66ddbc57bb042c70a9eb7b2996
+	source_aarch64 = rosec-0.0.9-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.9/rosec-0.0.9-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = @AARCH64_SHA256@
+
+pkgname = rosec-bin

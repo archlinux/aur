@@ -1,0 +1,36 @@
+post_install() {
+    echo ""
+    echo "==> rosec: Getting started"
+    echo ""
+    echo "  Activate rosec as your Secret Service provider:"
+    echo ""
+    echo "    rosec enable"
+    echo ""
+    echo "  This installs user-local D-Bus activation files and enables the"
+    echo "  systemd user service. If gnome-keyring is installed, it will be"
+    echo "  masked automatically (D-Bus activation only — gnome-keyring itself"
+    echo "  is not modified or removed)."
+    echo ""
+    echo "  To undo:  rosec disable"
+    echo "  To check: rosec status"
+    echo ""
+    echo "==> rosec: PAM auto-unlock (optional)"
+    echo ""
+    echo "  To automatically unlock rosec providers at login, include the"
+    echo "  installed PAM config in your login and/or screen locker configs:"
+    echo ""
+    echo "    # /etc/pam.d/system-local-login (covers login + screen lockers):"
+    echo "    auth     include  rosec"
+    echo "    session  include  rosec"
+    echo ""
+    echo "  The pam_rosec.so module captures your password during auth and"
+    echo "  replays it to rosec-pam-unlock during session open. It is marked"
+    echo "  optional and CANNOT block login under any circumstance."
+    echo ""
+    echo "  See: https://github.com/jmylchreest/rosec#pam-auto-unlock"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
