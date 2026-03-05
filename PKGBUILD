@@ -7,7 +7,7 @@
 
 _name=jasper
 pkgname=lib32-jasper
-pkgver=4.2.8
+pkgver=4.2.9
 pkgrel=1
 pkgdesc='Software-based implementation of the codec specified in the emerging JPEG-2000 Part-1 standard'
 pkgdesc+=" (32-bit, lib-only)"
@@ -27,7 +27,7 @@ makedepends=(
 )
 _srcdir="${pkgname}-${pkgver}"
 source=("${_srcdir}::git+${_git}#tag=version-${pkgver}")
-b2sums=('322e8afd6bdd0e215978787d6acb13cfc33cce26cced47ad8063097cd2d9af5ee6651c10d42c53d4ded5e10d02d334fa3f3ed6302fff3556341eba92b9e446a1')
+b2sums=('a46897583ba35e0f9b125b30704d666e919d287df11f0800fe02b07663f12121c0fd80f0d9b854311c98a299f2a0e3f97aa985d7d152bdf9fff89e57fe513f6f')
 provides=('libjasper.so')
 
 prepare() {
