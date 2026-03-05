@@ -10,14 +10,14 @@ pkgdesc="Client for Proxmox Backup Server (binary release from Debian)"
 arch=('x86_64')
 url="https://pbs.proxmox.com"
 license=('AGPL-3.0-or-later')
-depends=('acl>=2.2.23' 'fuse3>=3.2.3' 'openssl>=3.0.0' 'zstd>=1.5.2' 'gcc-libs>=15.1.1' 'glibc>=2.27')
+depends=('acl>=2.2.23' 'fuse3>=3.2.3' 'openssl>=3.0.0' 'zstd>=1.5.2' 'libgcc>=15.2.1' 'glibc>=2.27')
 makedepends=('patchelf>=0.18.0')
 options=('!strip' '!emptydirs')
 
-pkgver=3.4.6_1
+pkgver=4.1.4_1
 pkgrel=1
-source_x86_64=("http://download.proxmox.com/debian/pbs-client/dists/bookworm/main/binary-amd64/proxmox-backup-client_3.4.6-1_amd64.deb")
-sha512sums_x86_64=('5be9da65584915b79996713d81005ecc3b6477dea29e7338d308def9285ac2bef615e4e2a6a800523a838633bf32dfb08a8bc61818e932019c5360f7ef067b71')
+source_x86_64=("http://download.proxmox.com/debian/pbs-client/dists/trixie/main/binary-amd64/proxmox-backup-client_4.1.4-1_amd64.deb")
+sha512sums_x86_64=('77dff295458478ed019def8a8f83921d5ecfa0dbaff7384add52943cb5bc4fc219cdf86831a778869029e84a2236f5415edeef4c358cc1d9dd3c2f5d89735f78')
 
 conflicts=('proxmox-backup-client')
 
@@ -27,11 +27,4 @@ package(){
 	tar -xJ -f data.tar.xz -C "${pkgdir}"
 
 	install -D -m644 "${pkgdir}/usr/share/doc/proxmox-backup-client/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-AGPL3"
-
-        # Replace dependency as suggested by https://aur.archlinux.org/packages/proxmox-backup-client-bin#comment-1026835.
-        # Required because Arch's version of libfuse is newer than Debian's.
-        # Before releasing any new version, attempt to run without these lines
-
-        patchelf --replace-needed libfuse3.so.3 libfuse3.so ${pkgdir}/usr/bin/proxmox-backup-client
-        patchelf --replace-needed libfuse3.so.3 libfuse3.so ${pkgdir}/usr/bin/pxar
 }
