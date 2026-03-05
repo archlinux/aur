@@ -1,6 +1,6 @@
 pkgbase = receiver
 	pkgdesc = Discover 30,000+ verified radio stations from around the world
-	pkgver = 0.3.7
+	pkgver = 0.3.8
 	pkgrel = 1
 	url = https://github.com/meehow/receiver
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = receiver
 	depends = sqlite
 	depends = webkitgtk-6.0
 	depends = webp-pixbuf-loader
-	source = receiver-0.3.7.tar.gz::https://github.com/meehow/receiver/archive/refs/tags/v0.3.7.tar.gz
-	sha256sums = efa8ff12686484df3deeb879b1e697373f10556e23625def8acc58ac654f11f8
+	source = receiver-0.3.8.tar.gz::https://github.com/meehow/receiver/archive/refs/tags/v0.3.8.tar.gz
+	sha256sums = 007d48b939cfd581adcc96571835bdf73b855c4a91bc41ed1f19db33d66e3b0c
 
 pkgname = receiver
