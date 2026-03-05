@@ -1,0 +1,19 @@
+pkgbase = oracle-bin
+	pkgdesc = A blazing-fast Rust code inspector for the terminal
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/yashksaini-coder/oracle
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = oracle
+	conflicts = oracle
+	source = README-0.1.2.md::https://raw.githubusercontent.com/yashksaini-coder/oracle/0.1.2/README.md
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/yashksaini-coder/oracle/0.1.2/LICENSE
+	sha256sums = 6366385d3e25a0f6bafa90d2cafbe1c9fc3f0783e8093f5cd72bea9122c86d0c
+	sha256sums = 68113f0f6c0e957164f5dbc1b2ef96b75c60264cc75e4ffbc1847d3bb3cd6f9f
+	source_x86_64 = oracle-x86_64-0.1.2.tgz::https://github.com/yashksaini-coder/oracle/releases/download/0.1.2/oracle-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 0c1a37c3ff8d9bc6a66abaf0b232b6b2afe69f4507f7c392fe83f6c862263924
+
+pkgname = oracle-bin

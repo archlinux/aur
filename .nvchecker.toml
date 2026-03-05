@@ -1,0 +1,5 @@
+[oracle-bin]
+source = "github"
+github = "yashksaini-coder/oracle"
+use_latest_release = true
+prefix = ""
