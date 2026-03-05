@@ -1,5 +1,5 @@
 pkgname=fetchdots
-pkgver=1.0.0
+pkgver=1.0
 pkgrel=1
 pkgdesc="Fetch and manage dotfiles using FetchDots"
 arch=('x86_64')
