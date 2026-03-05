@@ -1,12 +1,11 @@
 pkgbase = nodejs-fontmin
 	pkgdesc = Font converter/Optimizer
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ecomfe/fontmin
 	arch = x86_64
 	license = MIT
 	makedepends = npm
-	depends = gcc-libs
 	depends = nodejs
 	depends = python
 	depends = python-setuptools
