@@ -1,6 +1,6 @@
 pkgbase = bazaar-git
 	pkgdesc = A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)
-	pkgver = 0.7.10.r83.gd0a7ea2
+	pkgver = 0.7.10.r94.g01873ab
 	pkgrel = 1
 	url = https://github.com/kolunmi/bazaar
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = bazaar-git
 	depends = json-glib
 	depends = libadwaita
 	depends = libdex
+	depends = libmalcontent
 	depends = libsecret
 	depends = libsoup3
 	depends = libxmlb

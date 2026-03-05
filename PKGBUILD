@@ -2,7 +2,7 @@
 
 pkgname=bazaar-git
 _pkgname=bazaar
-pkgver=0.7.10.r83.gd0a7ea2
+pkgver=0.7.10.r94.g01873ab
 pkgrel=1
 pkgdesc="A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)"
 arch=('x86_64')
@@ -21,6 +21,7 @@ depends=(
   'json-glib'
   'libadwaita'
   'libdex'
+  'libmalcontent'
   'libsecret'
   'libsoup3'
   'libxmlb'
