@@ -15,7 +15,7 @@ pkgbase = multiworld-gg-git
 	depends = openssl
 	depends = zlib
 	depends = expat
-	optdepends = xdg-term-exec: Better terminal support
+	optdepends = xdg-terminal-exec: Better terminal support
 	provides = multiworld-gg
 	conflicts = multiworld-gg
 	source = multiworld-gg::git+https://github.com/MultiworldGG/MultiworldGG.git#branch=main
