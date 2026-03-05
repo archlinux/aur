@@ -1,6 +1,6 @@
 pkgname=aurora-gui-git
 pkgver=0.0.0.r0.g0000000
-pkgrel=32
+pkgrel=33
 pkgdesc="Wayland-first GTK4 GUI for Arch Linux package management (pacman + AUR via yay/paru)"
 arch=("x86_64")
 url="https://github.com/ahmoodio/aurora"
