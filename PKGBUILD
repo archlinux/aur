@@ -10,7 +10,7 @@ depends=()
 makedepends=('rust' 'cargo')
 backup=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5bad69f0dbf182bd4ac26502cc349c6e98aafe8c7edc6bc55a19c7c2216eb17f')
+sha256sums=('0ed0bbef7260ee59c23136c9d0890993e24f4fa6fe41fa7390ed50f229c84078')
 
 prepare() {
     cd "Lattice-d-$pkgver"
