@@ -9,6 +9,6 @@ pkgbase = rosec-provider-gnome-keyring-bin
 	provides = rosec-provider-gnome-keyring
 	conflicts = rosec-provider-gnome-keyring
 	source = rosec-provider-gnome-keyring-0.0.7.wasm.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.7/rosec-provider-gnome-keyring-0.0.7.wasm.tar.gz
-	sha256sums = 9af482446bc87496ec00e65c22dbbd620184db0c657a3c1b23bf5715014de73a
+	sha256sums = 98b105b686c93c796107e62d83075b299de076f73411dd0f08a363291c7f189d
 
 pkgname = rosec-provider-gnome-keyring-bin
