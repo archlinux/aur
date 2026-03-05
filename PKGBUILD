@@ -41,8 +41,8 @@ _basever="$({ grep -Eq '[0-9]\.[0-9]+\.[0-9]+' <<< "$pkgver" && printf '%s' "${p
 _srcname="linux-${_basever}"
 source=("https://linux-libre.fsfla.org/pub/linux-libre/releases/${_basever}-gnu/linux-libre-${_basever}-gnu.tar.lz"{,.sign}
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${pkgver}-gnu/patch-${_basever}-gnu-${pkgver}-gnu.bz2"{,.sign}
-        'https://repo.parabola.nu/other/linux-libre/logos/logo_linux_'{clut224.ppm,vga16.ppm,mono.pbm}{,.sig}
-        'config')
+        'https://repo.parabola.nu/other/linux-libre/logos/logo_linux_'{clut224.ppm,vga16.ppm,mono.pbm}{,.sig})
+source_x86_64=('config.x86_64')
 sha256sums=('ec0e54c200259d2161b1a77c920eda6a206b01948845ae2641a07dfe7880326e'
             'SKIP'
             'b77723dc59d41f30a13841566f95dc926476e17e7afb177b226d6117e43af177'
@@ -52,8 +52,19 @@ sha256sums=('ec0e54c200259d2161b1a77c920eda6a206b01948845ae2641a07dfe7880326e'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
             '13bd7a8d9ed6b6bc971e4cd162262c5a20448a83796af39ce394d827b0e5de74'
-            'SKIP'
-            '688f7b10c9e947e26aba6cd82fc0f0ce5dbaeddc9ca5b393cf4a2d863adac6c8')
+            'SKIP')
+sha256sums_x86_64=('688f7b10c9e947e26aba6cd82fc0f0ce5dbaeddc9ca5b393cf4a2d863adac6c8')
+b2sums=('0eeb3ad6143da22e6785cb2383fe6cfebc16952872d0f51ebc674df929aaf77f3aab2b5e47247fa1f7974c81b2a088637dc61a7bb285ab91af390bfc24b58107'
+        'SKIP'
+        '25de8db565a692b0a00c26747dd7ce32db07f99cf3ed08448ca7721daa9b1b4c927422ad06e6ef1a8fea9b500348ecee808f8b8b17082217ae09e24ab7bb6ad6'
+        'SKIP'
+        '73fee2ae5cb1ffd3e6584e56da86a8b1ff6c713aae54d77c0dab113890fc673dc5f300eb9ed93fb367b045ece8fa80304ff277fe61665eccf7b7ce24f0c045eb'
+        'SKIP'
+        'd02a1153a4285b32c774dca4560fe37907ccf30b8e487a681b717ed95ae9bed5988875c0a118938e5885ae9d2857e53a6f216b732b6fa3368e3c5fe08c86382c'
+        'SKIP'
+        '580911af9431c066bbc072fd22d5e2ef65f12d8358cec5ff5a4f1b7deebb86cef6b5c1ad631f42350af72c51d44d2093c71f761234fb224a8b9dbb3b64b8201d'
+        'SKIP')
+b2sums_x86_64=('0d79f7c985b6bc11679322ec28c73538e484c5f47becf98a62c9b8a53fdf1e2b16197fd18ffbd6a6a389398353563403523bed5124f0c0da4666eedaeb9b53a6')
 validpgpkeys=('474402C8C582DAFBE389C427BCB7CF877E7D47A7'  # Alexandre Oliva
               '6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78') # David P.
 
@@ -84,9 +95,9 @@ prepare() {
   done
 
   echo "Setting config..."
-  cp ../config .config
+  cp "../config.${CARCH}" .config
   make olddefconfig
-  diff -u ../config .config || :
+  diff -u "../config.${CARCH}" .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -105,9 +116,10 @@ _package() {
     kmod
   )
   optdepends=(
-    'wireless-regdb: to set the correct wireless channels of your country'
+    "${pkgbase}-headers: headers and scripts for building modules"
     'linux-firmware: firmware images needed for some devices'
     'scx-scheds: to use sched-ext schedulers'
+    'wireless-regdb: to set the correct wireless channels of your country'
   )
   provides=(
     KSMBD-MODULE
@@ -142,28 +154,37 @@ _package() {
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=(pahole)
+  provides=(LINUX-HEADERS)
 
   cd "$_srcname"
   local _builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+
+  local _karch
+  case "$CARCH" in
+    x86_64) _karch='x86' ;;
+    *) echo "Unknown CARCH ${CARCH}"; exit 1 ;;
+  esac
 
   echo "Installing build files..."
   install -Dt "$_builddir" -m644 .config Makefile Module.symvers System.map \
     localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$_builddir/kernel" -m644 kernel/Makefile
-  install -Dt "$_builddir/arch/x86" -m644 arch/x86/Makefile
+  install -Dt "$_builddir/arch/${_karch}" -m644 "arch/${_karch}/Makefile"
   cp -t "$_builddir" -a scripts
   ln -srt "$_builddir" "$_builddir/scripts/gdb/vmlinux-gdb.py"
 
-  # required when STACK_VALIDATION is enabled
-  install -Dt "$_builddir/tools/objtool" tools/objtool/objtool
+  if [[ "$(scripts/config -s CONFIG_HAVE_STACK_VALIDATION)" = 'y' ]]; then
+    install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
+  fi
 
-  # required when DEBUG_INFO_BTF_MODULES is enabled
-  install -Dt "$_builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  if [[ "$(scripts/config -s CONFIG_DEBUG_INFO_BTF_MODULES)" = 'y' ]]; then
+    install -Dt "${_builddir}/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  fi
 
   echo "Installing headers..."
   cp -t "$_builddir" -a include
-  cp -t "$_builddir/arch/x86" -a arch/x86/include
-  install -Dt "$_builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+  cp -t "$_builddir/arch/${_karch}" -a "arch/${_karch}/include"
+  install -Dt "$_builddir/arch/${_karch}/kernel" -m644 "arch/${_karch}/kernel/asm-offsets.s"
 
   install -Dt "$_builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$_builddir/net/mac80211" -m644 net/mac80211/*.h
@@ -182,10 +203,20 @@ _package-headers() {
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$_builddir/{}" \;
 
+  echo "Installing Rust files..."
+  if [[ "$(scripts/config -s CONFIG_RUST)" = 'y' ]]; then
+    install -Dt "${_builddir}/rust" -m644 rust/*.rmeta
+    install -Dt "${_builddir}/rust" rust/*.so
+  fi
+
+  echo "Installing unstripped VDSO..."
+  make INSTALL_MOD_PATH="${pkgdir}/usr" vdso_install \
+    link=  # Suppress build-id symlinks
+
   echo "Removing unneeded architectures..."
   local arch
   for arch in "$_builddir"/arch/*/; do
-    [[ $arch = */x86/ ]] && continue
+    [[ $arch = */"${_karch}/" ]] && continue
     echo "Removing $(basename "$arch")"
     rm -r "$arch"
   done
@@ -241,7 +272,11 @@ _package-docs() {
   ln -sr "$_builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=(
+    "$pkgbase"
+    "$pkgbase-headers"
+    "$pkgbase-docs"
+)
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
