@@ -2,7 +2,7 @@
 # Maintainer: Yeyito <yeyito@yeyito.dev>
 pkgname=laurel-server-git
 pkgver=r0
-pkgrel=1
+pkgrel=2
 pkgdesc='Laurel clip server — serves video clips with a management UI and API'
 arch=('any')
 url='https://github.com/Yeyito777/Laurel-server'
