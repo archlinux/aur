@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=claude-squad-bin
-pkgver=1.0.14
+pkgver=1.0.16
 pkgrel=1
 pkgdesc='Manage multiple AI terminal agents like Claude Code, Aider, Codex, OpenCode and Amp'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('claude-squad')
 conflicts=('claude-squad')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/claude-squad_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/claude-squad_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('fbc909866d96296e9dc49550941947fe98c2ae827cd5ff981e065aac02e9b5e3')
-sha256sums_aarch64=('8cc2094d6813941ba6730d5f0550f6cc28fda1a19f90b15200f16ac97ede0c44')
+sha256sums_x86_64=('7b6a0d7880116a9deee5cd14414a63f4ecf19e532e768479f4d0270d174a34ca')
+sha256sums_aarch64=('1be404d12b12277f57ebc91d95ac08cbed27ff1c01517a8e20238c7f3d28b4df')
 
 package() {
     install -Dm755 claude-squad "${pkgdir}/usr/bin/claude-squad"
