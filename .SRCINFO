@@ -1,13 +1,12 @@
 pkgbase = python-torii
 	pkgdesc = A Python-based HDL and framework for silicon-based witchcraft
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shrine-maiden-heavy-industries/torii-hdl
 	arch = any
 	license = BSD-2-Clause
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-pip
 	makedepends = python-setuptools-scm
 	makedepends = python-setuptools>=66
 	makedepends = python-wheel

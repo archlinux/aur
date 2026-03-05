@@ -4,7 +4,7 @@
 _pkgname="torii"
 pkgname="python-${_pkgname}"
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python-based HDL and framework for silicon-based witchcraft"
 arch=("any")
 url="https://github.com/shrine-maiden-heavy-industries/torii-hdl"
@@ -23,7 +23,6 @@ depends=(
 makedepends=(
 	"python-build"
 	"python-installer"
-	"python-pip"
 	"python-setuptools-scm"
 	"python-setuptools>=66"
 	"python-wheel"
@@ -52,16 +51,6 @@ build() {
 
 	# Build the core Torii wheel
 	SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}" python -m build --wheel --no-isolation
-
-	# Set up the virtual-environment to build the Torii docs
-	python -m venv --clear torii-docs-env
-	torii-docs-env/bin/python -m pip install -r docs/requirements.txt
-	torii-docs-env/bin/python -m pip install installer
-	torii-docs-env/bin/python -m installer dist/*.whl
-	# Build the docs
-	torii-docs-env/bin/python -m sphinx -b html docs build-docs
-	# Clean up some extra files we don't want/need
-	rm build-docs/CNAME build-docs/.nojekyll
 }
 
 package() {
@@ -70,11 +59,6 @@ package() {
 	# Install the Torii wheel and License
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-	# Install the Torii documentation
-	mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
-	cp -r build-docs/ "${pkgdir}/usr/share/doc/${pkgname}"
-	chmod -R 664 "${pkgdir}/usr/share/doc/${pkgname}"
 }
 
 check() {
