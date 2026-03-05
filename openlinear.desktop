@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=OpenLinear
+Exec=/usr/bin/openlinear
+Icon=openlinear
+Type=Application
+Categories=Development;
+Terminal=false
