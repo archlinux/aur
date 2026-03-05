@@ -10,7 +10,7 @@
 
 pkgname=nvidia-beta-dkms
 pkgver=590.48.01
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA kernel modules - module sources (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -27,7 +27,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
 sha256sums=('d57a303ef837d27fa875e871e69a5caacf2a6239bbad2542d179cfb01c0c4ae5'
             '2c39c32025035b7c79223f7ae971bd3f4d1dec3715ebb6b0b5e4f7a7819951cd'
             '291bc6568e18496a4c2e732fd8616f6d536d8e9f3ab51f1959e3fc08f0de126b'
-            '5f457abcb62de09148c14ceca060243c2c1152485dd99323641c2077f47d5a5e')
+            '90d790b0ab3b9093f49646e4e2e267e078e2bad07d9a190f864513c6fe04d7f6')
 
 prepare() {
     # extract the source file
