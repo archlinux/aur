@@ -1,4 +1,5 @@
-# Maintainer: Brian Wo <brianwo at protonmail dot com>
+# Maintainer: Everything2067 <anand shaurya at proton dot me>
+# Contributor: Brian Wo <brianwo at protonmail dot com>
 # Contributor: Matt Quintanilla <matt @ matt quintanilla . xyz>
 # Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 
