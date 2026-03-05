@@ -9,6 +9,6 @@ pkgbase = rosec-provider-bitwarden-sm-bin
 	provides = rosec-provider-bitwarden-sm
 	conflicts = rosec-provider-bitwarden-sm
 	source = rosec-provider-bitwarden-sm-0.0.7.wasm.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.7/rosec-provider-bitwarden-sm-0.0.7.wasm.tar.gz
-	sha256sums = c510e84ea769f2d702bae84f80d69923e8980ef5a7229cf8778b2f9b5367be21
+	sha256sums = d697a57573207874cf35a54f3f0f3b9cbf6f35bc3664df21097f1efcc44ef4f7
 
 pkgname = rosec-provider-bitwarden-sm-bin
