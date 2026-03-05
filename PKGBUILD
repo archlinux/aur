@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 # Maintainer:  Chmouel Boudjnah <chmouel@chmouel.com>
 pkgname=openai-codex-bin
-pkgver=0.110.0
+pkgver=0.111.0
 pkgrel=3
 pkgdesc="Arch Linux package for OpenAI's Codex CLI - Auto Updated"
 arch=('x86_64' 'aarch64')
@@ -20,8 +20,8 @@ keywords=('codex' 'openai' 'cli' 'ai' 'machine-learning' 'chatgpt')
 source_x86_64=(
   "codex-${pkgver}-x86_64.tar.gz::https://github.com/openai/codex/releases/download/rust-v${pkgver}/codex-x86_64-unknown-linux-gnu.tar.gz"
 )
-sha256sums_x86_64=('a71a65070dfd36f853bc70d7decb055ee5cdeef0044906bd3d0698f6f2202124')
-sha256sums_aarch64=('b4c892a775cafb6909590ff0e621eee503a4aeb98ce9eee1bd9291bc29fd0b88')
+sha256sums_x86_64=('13979d3fb03ffc4fd9880d36ebb94b37a4868975ff19c5140571813c076c60a0')
+sha256sums_aarch64=('bf8aea3b87544f0209c8f7014f0c32e19617cb744293107bcdde8555c4469751')
 
 source_aarch64=(
   "codex-${pkgver}-aarch64.tar.gz::https://github.com/openai/codex/releases/download/rust-v${pkgver}/codex-aarch64-unknown-linux-gnu.tar.gz"
