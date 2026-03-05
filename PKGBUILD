@@ -4,7 +4,7 @@ _pkgname=marble-maps-extra
 pkgname="${_pkgname}-git"
 epoch=0
 pkgver=r34.20250522.9690e45
-pkgrel=5
+pkgrel=6
 pkgdesc="Additional maps for marble. Includes: OpenStreetMap default with hillshading, OpenTopoMap, OpenStreetMap france, ÖPNVKarte, hillshading overlay by 'karry'."
 url="https://codeberg.org/dreieck/marble-maps-extra"
 arch=('any')
@@ -32,7 +32,6 @@ optdepends=(
   'marble-maps-tracestrack:     Additional maps served by tracestrack.com.'
   'marble-maps-virtualearthos:  Bing maps.'
   'marble-maps-virtualearth:    Bing satellite.'
-  'marble-restricted-maps:      For additional maps with restricted licensing.'
 )
 provides=(
   "${_pkgname}=${pkgver}"
