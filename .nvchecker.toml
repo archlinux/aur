@@ -1,0 +1,5 @@
+[seristack-bin]
+source = "github"
+github = "TechXploreLabs/seristack"
+use_latest_release = true
+prefix = "v"
