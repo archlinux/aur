@@ -2,7 +2,7 @@
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 pkgname=claude-code
 pkgver=2.1.69
-pkgrel=1
+pkgrel=2
 pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/anthropics/claude-code"
@@ -32,13 +32,10 @@ sha256sums_aarch64=('ecc7bbf10513ff122327866eb97212945b73afd7f81e30700375cdf10f5
 package() {
 	install -Dm755 "${srcdir}/claude-${pkgver}-${CARCH}" "${pkgdir}/opt/claude-code/bin/claude"
 
-	# Create wrapper script that sets NPM_CONFIG_PREFIX to avoid false npm detection
+	# Create wrapper script to disable autoupdater
 	install -dm755 "${pkgdir}/usr/bin"
 	cat > "${pkgdir}/usr/bin/claude" << 'EOF'
 #!/bin/sh
-# Wrapper to prevent claude from detecting /usr/bin/claude as npm-global installation
-export NPM_CONFIG_PREFIX="${NPM_CONFIG_PREFIX:-/nonexistent}"
-# Disable autoupdater
 export DISABLE_AUTOUPDATER=1
 exec /opt/claude-code/bin/claude "$@"
 EOF

@@ -1,7 +1,7 @@
 pkgbase = claude-code
 	pkgdesc = An agentic coding tool that lives in your terminal
 	pkgver = 2.1.69
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anthropics/claude-code
 	arch = x86_64
 	arch = aarch64
