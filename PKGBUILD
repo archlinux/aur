@@ -3,7 +3,7 @@
 # Contributor: Marcel Mehlmann <marcel@mzumquadrat.de>
 
 pkgname='ttdl'
-pkgver=4.23.0
+pkgver=4.24.4
 pkgrel=1
 pkgdesc='Terminal ToDo List, a CLI tool to manage todo lists in todo.txt format.'
 url='https://github.com/VladimirMarkelov/ttdl'
@@ -13,7 +13,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 install='ttdl.install'
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/v$pkgver.tar.gz")
-b2sums=('e0d086ee7c946a27e511b29a0fd1c04e8806f2b2c2728e4fecb376915cec5b07e85af59e14110c76f5ad611db300db52fc30df9a1711ee7f4e5bece7aabdecde')
+b2sums=('85ef7c50668c9cc516bf9eab5b14b4df63906eafc631b70ec9a3d2d418cd5036082a15d29df00d2311382a3264f622bc419c3dc10360445e21ab979131e57f03')
 options=(!lto)
 
 prepare() {
