@@ -1,12 +1,12 @@
 pkgbase = omnidotdev-cli
 	pkgdesc = Agentic CLI for the Omni ecosystem
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://cli.omni.dev
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = https://github.com/omnidotdev/cli/archive/v0.5.0.tar.gz
-	sha256sums = 713b3802d69312f3658f3fe648eec343225304482782ee1ba77c7739b8b747f2
+	source = https://github.com/omnidotdev/cli/archive/v0.6.0.tar.gz
+	sha256sums = ec22f1abeac34bd6c047d8b84f049e2c312a6db466e3ac058989d6be326d8441
 
 pkgname = omnidotdev-cli

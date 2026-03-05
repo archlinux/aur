@@ -1,6 +1,6 @@
-# Maintainer: Omni LLC <team@omni.dev>
+# Maintainer: Omni <team@omni.dev>
 pkgname=omnidotdev-cli
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Agentic CLI for the Omni ecosystem"
 arch=('x86_64')
@@ -9,7 +9,6 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("https://github.com/omnidotdev/cli/archive/v$pkgver.tar.gz")
-sha256sums=('713b3802d69312f3658f3fe648eec343225304482782ee1ba77c7739b8b747f2')
 
 build() {
   cd "cli-$pkgver"
@@ -21,3 +20,4 @@ package() {
   install -Dm755 "target/release/omni" "$pkgdir/usr/bin/omni"
   install -Dm644 "LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums=('ec22f1abeac34bd6c047d8b84f049e2c312a6db466e3ac058989d6be326d8441')
