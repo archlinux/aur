@@ -1,7 +1,7 @@
 pkgbase = vtracer
 	pkgdesc = Convert PNG to SVG
 	pkgver = 0.6.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/visioncortex/vtracer
 	arch = x86_64
 	makedepends = rust
