@@ -1,6 +1,6 @@
 # Maintainer: Louis Cornell <lpcornel@gmail.com>
 pkgname=musiclib
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="Music library control plane: ratings, tagging, and mobile sync (KDE GUI)"
 arch=('x86_64')
@@ -44,7 +44,7 @@ provides=('musiclib-cli')
 conflicts=('musiclib-cli')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9efeb2f90f0acd94ab235b8da1258fc61e718715deaae0603fedc88894954fac')
+sha256sums=('cf35c0e8ba1f5c843ec4bc8905be4503d854dbbfa4988be6be43422be55c161a')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \

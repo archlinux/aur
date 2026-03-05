@@ -1,6 +1,6 @@
 pkgbase = musiclib
 	pkgdesc = Music library control plane: ratings, tagging, and mobile sync (KDE GUI)
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/Harpo3/musiclib
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = musiclib
 	optdepends = kid3: Full KDE ID3 tag editor GUI (optional companion app)
 	provides = musiclib-cli
 	conflicts = musiclib-cli
-	source = musiclib-1.1.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v1.1.tar.gz
-	sha256sums = 9efeb2f90f0acd94ab235b8da1258fc61e718715deaae0603fedc88894954fac
+	source = musiclib-1.2.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v1.2.tar.gz
+	sha256sums = cf35c0e8ba1f5c843ec4bc8905be4503d854dbbfa4988be6be43422be55c161a
 
 pkgname = musiclib
