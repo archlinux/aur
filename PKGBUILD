@@ -4,10 +4,16 @@
 # Contributor: max_meyer
 # Contributor: Stefan Husmann
 
+### 2026-01: Building LaTeX documentation fails, see https://github.com/xyz2tex/svg2tikz/issues/246. So, commented out.
+#            If we re-enable, uncomment corresponding lines in
+#            - [ ] `makedepends` array,
+#            - [ ] `build()`,
+#            - [ ] `package()`.
+
 pkgname=svg2tikz-git
 _gitname="svg2tikz"
 pkgver=3.3.4.r626.20251129.72efc44
-pkgrel=2
+pkgrel=3
 pkgdesc="Set of tools for converting SVG graphics to TikZ/PGF code."
 arch=('any')
 url="http://xyz2tex.github.io/svg2tikz/"
@@ -34,11 +40,11 @@ makedepends=(
   'python-sphinx-copybutton>=0.5.1'   # For building the documentation.
   'python-sphinx-furo>=2023.9.10'     # For building the documentation.
   'python-sphinxext-opengraph>=0.7.5' # For building the documentation.
-  'texlive-bin'                       # For building the documentation.
-  'texlive-binextra'                  # For building the documentation (`latexmk`).
-  'texlive-latexrecommended'          # For building the documentation (`cmap.sty`).
-  'texlive-fontsrecommended'          # For building the documentation (`tgtermes.sty`).
-  'texlive-latexextra'                # For building the documentation (`fncychap.sty`).
+  #'texlive-bin'                       # For building the documentation.
+  #'texlive-binextra'                  # For building the documentation (`latexmk`).
+  #'texlive-latexrecommended'          # For building the documentation (`cmap.sty`).
+  #'texlive-fontsrecommended'          # For building the documentation (`tgtermes.sty`).
+  #'texlive-latexextra'                # For building the documentation (`fncychap.sty`).
 )
 checkdepends=(
   'python-inkex>=1.2.2'
@@ -94,8 +100,8 @@ build() {
   python -m build --wheel --no-isolation
 
   cd docs
-  make latex
-  make -C _build/latex all-pdf
+  #make latex
+  #make -C _build/latex all-pdf
   make htmlhelp
 }
 
@@ -117,7 +123,7 @@ package() {
   for _docfile in "${srcdir}/git.log" CHANGELOG.md README.md; do
     install -Dvm644 "${_docfile}" "${pkgdir}/usr/share/doc/svg2tikz/$(basename "${_docfile}")"
   done
-  install -Dvm644 -t "${pkgdir}/usr/share/doc/svg2tikz" "docs/_build/latex/svg2tikz.pdf"
+  #install -Dvm644 -t "${pkgdir}/usr/share/doc/svg2tikz" "docs/_build/latex/svg2tikz.pdf"
   cp -rv docs/_build/htmlhelp "${pkgdir}/usr/share/doc/svg2tikz"/
 
   install -Dvm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
