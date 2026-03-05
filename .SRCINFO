@@ -8,6 +8,6 @@ pkgbase = latticed
 	makedepends = rust
 	makedepends = cargo
 	source = latticed-0.1.2.tar.gz::https://github.com/rugbedbugg/Lattice-d/archive/v0.1.2.tar.gz
-	sha256sums = d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed
+	sha256sums = 2a50a1919d0d56b8ce002e0c5b4c117f689b571d7fd89da176312b20bd975ca3
 
 pkgname = latticed
