@@ -11,6 +11,7 @@ pkgbase = p4lang-pi
 	depends = protobuf
 	depends = boost-libs
 	depends = readline
+	options = !debug
 	source = git+https://github.com/p4lang/PI.git#tag=v0.1.0
 	sha256sums = SKIP
 

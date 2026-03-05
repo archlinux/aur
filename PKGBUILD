@@ -18,6 +18,7 @@ makedepends=(
 )
 source=("git+https://github.com/p4lang/PI.git#tag=v${pkgver}")
 sha256sums=('SKIP')
+options=(!debug)
 
 prepare() {
     cd PI
