@@ -1,7 +1,7 @@
 # Maintainer: notfranko_ <notfranko@techlab.cloud>
 
 pkgbase=linux-bsb
-pkgver=6.18.7.arch1
+pkgver=6.19.6.arch1
 pkgrel=1
 pkgdesc='Linux kernel with patches to make the Bigscreen Beyond headset work properly'
 url='https://github.com/archlinux/linux'
