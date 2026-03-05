@@ -8,8 +8,8 @@ url="https://github.com/devzeebo/bifrost"
 license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git' 'make')
-provides=("bf" "bifrost-server")
-conflicts=("bf" "bifrost-server")
+provides=("bf" "bifrost-server" "bifrost-go")
+conflicts=("bf" "bifrost-server" "bifrost-go")
 
 backup=('etc/bifrost/bifrost.env')
 
