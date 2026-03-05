@@ -8,7 +8,7 @@ _deps_gui=('cosmic-icon-theme')
 
 pkgbase=openscq30-bin
 pkgname=("openscq30"-{cli,gui}-"bin")
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Cross platform application for controlling settings of Soundcore headphones"
 arch=(x86_64)
@@ -20,9 +20,9 @@ source=(
 	"${pkgbase}-cli-${pkgver}::$url/releases/download/v$pkgver/openscq30-cli-linux-${arch}"
 	"${pkgbase}-gui-${pkgver}::$url/releases/download/v$pkgver/openscq30-gui-linux-${arch}")
 sha256sums=(
-	'1bba8668801af807a2826385477503e735822558694db74bc57ec5b27a142190'
-	'e3da40918ebe81eafd3b4d78f71bc6436f178746a2364313cad5e79cd7a0ee48'
-	'f87b61a6919f08b60efbc30b57baee54767a63cc5a41dcec2a9e28172e6417f5'
+	'207c3a3f0cba06308ae2d00e877931d0ebdf0d9fead9f774ca12f6d56c549a60'
+	'63b1e8f71ecd7b2f8b7ac4712aab00b7e5d6d546e10504c91b53a4a931a22d09'
+	'0b05de929039f6721ab3f5ff7377e0bf198bbaaa2d2d1969dd1478e6692489e7'
 )
 
 package_openscq30-cli-bin() {
