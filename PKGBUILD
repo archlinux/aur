@@ -1,5 +1,5 @@
 pkgname=x3dctl
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=2
 pkgdesc="Deterministic workload policy controller for AMD X3D processors"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('sudo')
 makedepends=('gcc' 'make')
 backup=('etc/x3dctl.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/GrandBIRDLizard/X3Dctl/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8a13f805286b2a6d1bd2cc7cf40ffef2d03f6c5b19819c1641ebd64af95a4477')
+sha256sums=('7b04ea2af1ca1f8d350de5a3a17a2fe28a11508e9b6d9c19506b405dcb45247c')
 
 build() {
   cd "${srcdir}/X3Dctl-${pkgver}"
