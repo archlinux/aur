@@ -6,6 +6,7 @@ pkgbase = multiworld-gg-bin
 	arch = x86_64
 	license = GPL-3.0
 	depends = python
+	optdepends = xdg-terminal-exec: Better terminal support
 	provides = multiworld-gg
 	conflicts = multiworld-gg
 	source = https://github.com/MultiworldGG/MultiworldGG/releases/download/0.7.224/MultiworldGG_0.7.224_linux-x86_64.tar.gz
