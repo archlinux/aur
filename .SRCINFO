@@ -1,11 +1,11 @@
 pkgbase = fish-session-git
 	pkgdesc = UI-first session manager for Fish shell with persistent PTY sessions (git version)
 	pkgver = 0.1.2.r1.gd62f418
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AtefR/fish-session
 	arch = x86_64
 	arch = aarch64
-	license = custom:unlicensed
+	license = LicenseRef-Unlicensed
 	makedepends = cargo
 	makedepends = rust
 	makedepends = git
