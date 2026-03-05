@@ -2,7 +2,7 @@
 # Maintainer: Yeyito <yeyito@yeyito.dev>
 pkgname=laurel-git
 pkgver=r0
-pkgrel=2
+pkgrel=1
 pkgdesc='Self-hosted clip capture and sharing for Linux — press a hotkey, get a shareable link'
 arch=('x86_64')
 url='https://github.com/Yeyito777/Laurel'
