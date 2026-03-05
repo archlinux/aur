@@ -1,0 +1,12 @@
+pkgbase = brother-hl-l3230cdw
+	pkgdesc = CUPS driver for Brother HL-L3230CDW
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/
+	arch = x86_64
+	license = custom:brother commercial license
+	depends = cups
+	source = https://download.brother.com/welcome/dlf103944/hll3230cdwpdrv-1.0.2-0.i386.rpm
+	sha256sums = 7dfbc1d2f3543e97ab7ad56b961e47df98c18347b76962408cc9b30b4e452e90
+
+pkgname = brother-hl-l3230cdw
