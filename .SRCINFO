@@ -1,6 +1,6 @@
 pkgbase = python-mpsplots
 	pkgdesc = A matplotlib wrapper for defered plots and plotting styles
-	pkgver = 1.8.5
+	pkgver = 1.8.6
 	pkgrel = 1
 	url = https://github.com/MartinPdeS/MPSPlots
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-mpsplots
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	depends = python-pyvista
-	source = MPSPlots-1.8.5.tar.gz::https://github.com/MartinPdeS/MPSPlots/archive/v1.8.5.tar.gz
-	sha512sums = e6440f3cf105d412b847763a6a99167988f1ceeb8199c1c76e969a71bcf48d1f1e4108bfcf063d5435a5564188468d5b1f06165e8259849d5fb23fed1546e192
+	source = MPSPlots-1.8.6.tar.gz::https://github.com/MartinPdeS/MPSPlots/archive/v1.8.6.tar.gz
+	sha512sums = 23a007379f9f189cd1a1e01605d0f7e335fa166e3f232691e8370b9efb55049059275d3d3bafe5211d945343b54b732e6a5686436eac9cdb77efbe752070004b
 
 pkgname = python-mpsplots
