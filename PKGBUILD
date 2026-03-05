@@ -10,8 +10,7 @@ pkgname=("${pkgbase}" "${pkgbase}-opt" "${pkgbase}-cuda" "${pkgbase}-opt-cuda" "
 # https://github.com/pytorch/vision?tab=readme-ov-file#installation
 pkgver=2.10.0
 pkgrel=2
-_pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
-pkgdesc="${_pkgdesc}"
+pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 arch=('x86_64')
 url="https://pytorch.org"
 license=('BSD-3-Clause-Modification')
@@ -425,14 +424,12 @@ _package() {
 }
 
 package_python-pytorch() {
-  pkgdesc="${_pkgdesc}"
-
   cd "${srcdir}/${_pkgname}"
   _package
 }
 
 package_python-pytorch-opt() {
-  pkgdesc="${_pkgdesc} (with AVX2 CPU optimizations)"
+  pkgdesc+=" (with AVX2 CPU optimizations)"
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver})
 
@@ -441,7 +438,7 @@ package_python-pytorch-opt() {
 }
 
 package_python-pytorch-cuda() {
-  pkgdesc="${_pkgdesc} (with CUDA)"
+  pkgdesc+=" (with CUDA)"
   depends+=(cuda nccl cudnn magma-cuda onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver})
@@ -451,7 +448,7 @@ package_python-pytorch-cuda() {
 }
 
 package_python-pytorch-opt-cuda() {
-  pkgdesc="${_pkgdesc} (with CUDA and AVX2 CPU optimizations)"
+  pkgdesc+=" (with CUDA and AVX2 CPU optimizations)"
   depends+=(cuda nccl cudnn magma-cuda onednn)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver} python-pytorch-cuda=${pkgver})
@@ -461,7 +458,7 @@ package_python-pytorch-opt-cuda() {
 }
 
 package_python-pytorch-rocm() {
-  pkgdesc="${_pkgdesc} (with ROCm)"
+  pkgdesc+=" (with ROCm)"
   depends+=(rocm-hip-sdk hipblaslt roctracer miopen-hip magma-hip onednn python-triton python-aotriton)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver})
@@ -471,7 +468,7 @@ package_python-pytorch-rocm() {
 }
 
 package_python-pytorch-opt-rocm() {
-  pkgdesc="${_pkgdesc} (with ROCm and AVX2 CPU optimizations)"
+  pkgdesc+=" (with ROCm and AVX2 CPU optimizations)"
   depends+=(rocm-hip-sdk hipblaslt roctracer miopen-hip magma-hip onednn python-triton python-aotriton)
   conflicts=(python-pytorch)
   provides=(python-pytorch=${pkgver} python-pytorch-rocm=${pkgver})

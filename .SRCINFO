@@ -150,7 +150,6 @@ pkgbase = python-pytorch
 	b2sums = 32ae3f8b7602bad8b76e418857e843e700134b93832d6166dfead944cf8c3225a8d254cdf8ba9cc2807b08c53c27d6d72f738ef285f280ab87e0f246bf45e8f5
 
 pkgname = python-pytorch
-	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
 
 pkgname = python-pytorch-opt
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration (with AVX2 CPU optimizations)
