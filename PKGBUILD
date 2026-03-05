@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=materialious
 _app_id=us.materialio.Materialious
-pkgver=1.16.7
+pkgver=1.16.9
 pkgrel=1
 _nodeversion=24
 _electronversion=40
@@ -17,7 +17,7 @@ makedepends=(
 )
 source=("Materialious-$pkgver.tar.gz::https://github.com/Materialious/Materialious/archive/refs/tags/$pkgver.tar.gz"
         "$pkgname.sh")
-sha256sums=('47d3c77f504d14c6226cdc6bf44a7297f055f76fdb814920fece157746aa8133'
+sha256sums=('ac385294ed838c9ed8a49a6e711baee5e549d47f847686d8c1b493c4e4a003dd'
             'ae23af6865ab1638d46df5158fa09d41357f57068f1676af86e1a0e6e00459ed')
 
 _ensure_local_nvm() {
@@ -52,6 +52,7 @@ build() {
    _ensure_local_nvm
   npm install
   npm run build
+  npm prune --omit=dev
   npx cap telemetry off
   npx cap sync @capacitor-community/electron
 
