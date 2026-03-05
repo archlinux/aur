@@ -1,0 +1,33 @@
+[Unit]
+Description=Reth Execution Client (Gnosis Chain)
+After=network-online.target
+Wants=network-online.target
+Documentation=https://github.com/gnosischain/reth_gnosis
+Documentation=https://docs.gnosischain.com/node/manual/execution/reth
+
+[Service]
+Type=simple
+User=reth-gnosis
+Group=reth-gnosis
+WorkingDirectory=/var/lib/reth-gnosis
+ExecStart=/usr/bin/reth-gnosis node \
+    --chain gnosis \
+    --datadir /var/lib/reth-gnosis \
+    --log.file.directory /var/lib/reth-gnosis/logs \
+    --http \
+    --http.addr 127.0.0.1 \
+    --http.port 8545 \
+    --http.api eth,net,web3 \
+    --authrpc.addr 127.0.0.1 \
+    --authrpc.port 8551 \
+    --authrpc.jwtsecret /var/lib/reth-gnosis/jwt.hex \
+    --port 30303 \
+    --discovery.port 30303 \
+    --metrics 127.0.0.1:9001
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65535
+LimitMEMLOCK=infinity
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,31 @@
+pkgbase = reth-gnosis
+	pkgdesc = Gnosis Chain execution client built on Reth (Rust Ethereum)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/gnosischain/reth_gnosis
+	install = reth-gnosis.install
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = clang
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = openssl
+	makedepends = git
+	depends = gcc-libs
+	provides = reth-gnosis
+	conflicts = reth-gnosis-git
+	options = !lto
+	backup = etc/reth-gnosis/config.toml
+	source = reth-gnosis-1.0.1::git+https://github.com/gnosischain/reth_gnosis.git#tag=v1.0.1
+	source = reth-gnosis.service
+	source = reth-gnosis.sysusers
+	source = reth-gnosis.tmpfiles
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = reth-gnosis

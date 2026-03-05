@@ -1,0 +1,2 @@
+d /var/lib/reth-gnosis 0750 reth-gnosis reth-gnosis -
+d /var/lib/reth-gnosis/logs 0750 reth-gnosis reth-gnosis -
