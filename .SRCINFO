@@ -1,0 +1,21 @@
+pkgbase = python-hatch-gettext
+	pkgdesc = Hatch build hook plugin for GNU gettext
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/damonlynch/hatch-gettext
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-packaging
+	depends = python
+	depends = python-hatchling
+	depends = python-rich
+	source = https://github.com/damonlynch/hatch-gettext/releases/download/v1.1.1/hatch-gettext-1.1.1.tar.gz
+	source = https://github.com/damonlynch/hatch-gettext/releases/download/v1.1.1/hatch-gettext-1.1.1.tar.gz.asc
+	validpgpkeys = E26048A9F4A803B91CB1BD648005B1F36970BE28
+	sha256sums = dd45d0d097f5b8e7c68b7c3c1c6cb6b5e7dc81a5b44da8be45e3f5034d0a1cd9
+	sha256sums = SKIP
+
+pkgname = python-hatch-gettext
