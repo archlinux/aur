@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=termusic-git
-pkgver=0.12.1.r109.gba57b44
+pkgver=0.12.1.r138.g80da861
 pkgrel=1
 pkgdesc='Music Player TUI written in Rust'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url=https://github.com/tramhao/termusic
 license=(GPL-3.0-or-later MIT)
 depends=(
   dbus gst-libav gst-plugins-bad gst-plugins-base gst-plugins-good gst-plugins-ugly gstreamer
-  libsixel mpv opus ueberzugpp) # alsa-lib libmpv.so
+  libsixel mpv opus) # alsa-lib libmpv.so
 makedepends=(cargo clang git protobuf)
 optdepends=(
   'emoji-font: display emojis'

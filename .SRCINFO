@@ -1,6 +1,6 @@
 pkgbase = termusic-git
 	pkgdesc = Music Player TUI written in Rust
-	pkgver = 0.12.1.r109.gba57b44
+	pkgver = 0.12.1.r138.g80da861
 	pkgrel = 1
 	url = https://github.com/tramhao/termusic
 	arch = x86_64
@@ -20,7 +20,6 @@ pkgbase = termusic-git
 	depends = libsixel
 	depends = mpv
 	depends = opus
-	depends = ueberzugpp
 	optdepends = emoji-font: display emojis
 	optdepends = ffmpeg: extract audio by downloader
 	optdepends = ueberzug: cover art
