@@ -4,7 +4,7 @@ pkgname='plugdata-bin'
 _name='plugdata'
 pkgdesc='Plugin wrapper around Pure Data with a new JUCE GUI, allowing patching in DAWs'
 pkgver=0.9.3_1
-pkgrel=1
+pkgrel=2
 groups=('lv2-plugins' 'vst3-plugins' 'clap-plugins' 'pro-audio')
 depends=('freetype2' 'libx11' 'libxrandr' 'libxext' 'libxinerama' 'webkit2gtk' 'libxrender' 'libxinerama' 'libxcursor' 'alsa-lib' 'curl')
 makedepends=()
@@ -14,12 +14,12 @@ conflicts=($_name)
 arch=('x86_64')
 url='https://github.com/plugdata-team/plugdata'
 license=('GPL3')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/plugdata-team/plugdata/releases/download/v${pkgver/_/-}/plugdata-Debian-x64.tar.xz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/plugdata-team/plugdata/releases/download/v${pkgver/_/-}/plugdata-Arch-x64.tar.xz"
     "${_name}.desktop"
     "${_name}.png")
-sha256sums=('9217bdf756b9f7202f39070a1548dd45899bf0791b8646ab01630b5dac19e021'
-            '22cdffc139b070f9c1ada241068eef8d88c5b25fc16c4a2cd67582660c98e922'
-            '6e583e7cf952a3b5a587ff85567406c9f3cb0d3516494368b89bc7af6871f869')
+sha256sums=('baa17fb8fe43071af8ec5454a82992afc040258fdbb1e581bfc8efbde3bfbe44'
+    '22cdffc139b070f9c1ada241068eef8d88c5b25fc16c4a2cd67582660c98e922'
+    '6e583e7cf952a3b5a587ff85567406c9f3cb0d3516494368b89bc7af6871f869')
 
 package() {
     # Desktop entry & pixmaps
