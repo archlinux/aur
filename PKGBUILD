@@ -1,6 +1,6 @@
 # Maintainer: dan361 <daniel@m8t.io>
 pkgname=lowfi-bin
-pkgver=2.0.2
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="An extremely simple lofi player."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 provides=('lowfi')
 conflicts=('lowfi')
 source=("https://github.com/talwat/lowfi/releases/download/${pkgver}/lowfi-linux-x86_64")
-sha256sums=('8af7dcb9a5853efa56778d9f8156c8426611fdfc0463bec567f08a043553d25a')
+sha256sums=('e6d1579bc7ce8840d3d40079ac9571fcd82cca69bf156ee292f93354f334990f')
 package() {
   cd "${srcdir}"
 
