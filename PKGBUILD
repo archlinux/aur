@@ -5,7 +5,7 @@ _pkgname=xfr
 pkgname=${_pkgname}-bin
 pkgdesc="A modern iperf3 alternative with a live TUI, multi-client server, and QUIC support"
 
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,11 +25,11 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-APACHE-${pkgver}::${_urlraw}/LICENSE-APACHE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.gz")
-sha256sums=('f4e9b54ecfb0be9f176fd6693b9c97a9c7c49b40dcef086c4196f80f5d1e7db4'
+sha256sums=('b64a994f87387082ed0106e85e5c9541e8051eb753b632685bd63e313c169462'
             'a2b22ab13af7492f75197a7e5ce71ba8e0ae01f8f27154f8383c8e8ded29c9e0'
             'b3699bdf3129bcb12f559d6dcfa597cfae1e3d2b793e90de297f90c4d25cdea0')
-sha256sums_x86_64=('1caf79af8cd29eb9883869ca8f4736f402cad24cc48cfdb1cc889bf69d13a002')
-sha256sums_aarch64=('1caf79af8cd29eb9883869ca8f4736f402cad24cc48cfdb1cc889bf69d13a002')
+sha256sums_x86_64=('025d2d80a652b5e7140219696bf7028cc295059b5498341e877d26cad20c4b66')
+sha256sums_aarch64=('025d2d80a652b5e7140219696bf7028cc295059b5498341e877d26cad20c4b66')
 
 build() {
 	cd "${srcdir}/" || exit
