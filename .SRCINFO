@@ -1,6 +1,6 @@
 pkgbase = netmount-bin
 	pkgdesc = Unified management and mounting of cloud storage facilities.(Prebuilt version)统一管理和挂载云存储设施
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = http://netmount.cn/
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = netmount-bin
 	depends = webkit2gtk-4.1
 	depends = rclone
 	depends = alist
-	provides = netmount=1.2.2
+	provides = netmount=1.2.3
 	conflicts = netmount
 	options = !strip
-	source = netmount-1.2.2.rpm::https://github.com/VirtualHotBar/NetMount/releases/download/v1.2.2/NetMount-1.2.2-1.x86_64.rpm
-	sha256sums = 9ba3ade8161b9b2813ad936e9f135fa1e608f9dcac05f35adc9d01e8923a1ba1
+	source = netmount-1.2.3.rpm::https://github.com/VirtualHotBar/NetMount/releases/download/v1.2.3/NetMount-1.2.3-1.x86_64.rpm
+	sha256sums = 0504f01685af23aba8893b42434de21307b2754c0ac0112305891cfb883070b6
 
 pkgname = netmount-bin
