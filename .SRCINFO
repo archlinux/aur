@@ -1,6 +1,6 @@
 pkgbase = termy-bin
 	pkgdesc = Minimal GPUI-powered terminal (pre-compiled binary)
-	pkgver = 0.1.41
+	pkgver = 0.1.42
 	pkgrel = 1
 	url = https://github.com/lassejlv/termy
 	arch = x86_64
@@ -14,10 +14,10 @@ pkgbase = termy-bin
 	depends = vulkan-icd-loader
 	provides = termy
 	conflicts = termy
-	source = termy-0.1.41.tar.gz::https://github.com/lassejlv/termy/releases/download/v0.1.41/Termy-v0.1.41-linux-x86_64.tar.gz
+	source = termy-0.1.42.tar.gz::https://github.com/lassejlv/termy/releases/download/v0.1.42/Termy-v0.1.42-linux-x86_64.tar.gz
 	source = termy.desktop
-	source = termy_icon.png::https://raw.githubusercontent.com/lassejlv/termy/v0.1.41/assets/termy_icon.png
-	b2sums = b1fc710650a469634f8ddfb2e9610748b88310f5b19b153e6af92fdff07e18fe8ce2723e0d2f59da3abb22aea7be0482712b1d9a2a79e535640a0d3dcec22a0d
+	source = termy_icon.png::https://raw.githubusercontent.com/lassejlv/termy/v0.1.42/assets/termy_icon.png
+	b2sums = dfa3e6f77711a3b6fb1e0158e71079f1b33053d32e5e88152dfbe06da50584a68f9f4630353a2b70d7496792fac88bd6686b8b8c51e66216bca1ba39f144d831
 	b2sums = 310d92f8a26968092eab7c5434701e6c2a8cbb40d0179f12031eb755f1bf743bb3d52e678000a30b247eb7a0c29d81ad38d8c4d042aef6d1beb18707aaefa4f8
 	b2sums = 9d27df18af7c50fcbc788f574a614ddb7ac479a584093a78070e2b9cafbdd85c0f4a9214d0475922d175f407ab0e84444ce471b21ce9279aac4206904f4240b3
 
