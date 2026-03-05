@@ -31,6 +31,7 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   bigscreen-beyond-kernel.patch
   0001-Change-device-uvc_version-check-on-dwMaxVideoFrameSi.patch
+  amd-bsb-dsc-fix.patch
   $url/releases/download/$_srctag/linux-$_srctag.patch.zst{,.sig}
   config  # the main kernel config file
 )
