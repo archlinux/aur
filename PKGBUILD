@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=rtk
-pkgver=0.22.2
+pkgver=0.26.0
 pkgrel=1
 pkgdesc='CLI proxy that reduces LLM token consumption by 60-90% on common dev commands'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ provides=('rtk')
 conflicts=('rtk-bin')
 options=(!lto)
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('cf8048e4c40f712e553b41078de52de4436902cfae92bea7d47f097ce24c1b5e')
+sha256sums=('af6871eadc1260a8a9ec1cc6fd2a9cb1355539fde6592c18132b42d2607f2a70')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
