@@ -1,0 +1,18 @@
+pkgbase = s3sh
+	pkgdesc = interactive S3 shell with Unix-like commands and archive navigation
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/dacort/s3sh
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	depends = libbz2.so
+	options = !lto
+	options = !debug
+	source = https://github.com/dacort/s3sh/archive/v0.2.1/s3sh-0.2.1.tar.gz
+	sha512sums = 46f4417b453bb5df1a107c32e311e9c91d7128b2a711777ebb4ccd920806cd8e6a08793127e97092e7009e3efe482af6e3f6e2af11abef1f688e06da5119147c
+
+pkgname = s3sh
