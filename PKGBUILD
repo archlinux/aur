@@ -28,10 +28,6 @@ package() {
 
     # binary
     install -Dm755 target/release/resonanceid-cli "$pkgdir/usr/bin/resonanceid-cli"
-    # systemd service
-    install -Dm644 resonanceid-cli.service "$pkgdir/usr/lib/systemd/system/resonanceid-cli.service"
-    # storage directory
-    install -dm755 "$pkgdir/var/lib/resonanceid-cli"
     # license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     # readme
