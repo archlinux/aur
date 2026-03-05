@@ -2,10 +2,10 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=RcppGSL
-_pkgver=0.3.13
+_pkgver=0.3.14
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=5
+pkgrel=1
 pkgdesc="'Rcpp' Integration for 'GNU GSL' Vectors and Matrices"
 arch=(x86_64)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -21,8 +21,8 @@ optdepends=(
   r-tinytest
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('d03bf65ffa004822e2169c382ee1033c')
-b2sums=('d322e4071c8b5a5df68192241151a032cd7b4f99511537c27f33d6ff75b0fcf127862f6b9e8397d4c82a4adbfd2a9116b6535d7d7b699d489d00224690467b84')
+md5sums=('6bf482ea28f800a859739d751e0890d1')
+b2sums=('23249428afd77af1f8d7e89f3c2886adeee06354d275f55c80272286977f8baa57403f831b08aa6810185408be36fca295dbb9611ec750ce71474706752d4480')
 
 build() {
   mkdir build
