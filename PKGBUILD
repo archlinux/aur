@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gt
-_pkgver=1.2.0
+_pkgver=1.3.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -32,6 +32,7 @@ depends=(
   r-xml2
 )
 optdepends=(
+  r-bit64
   r-farver
   r-fontawesome
   r-ggplot2
@@ -52,8 +53,8 @@ optdepends=(
   r-withr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('7d87e212c83e0a9ea76a2bd0ee72d784')
-b2sums=('ab9a31823bbfba3c31b265f0dea7643f4cd92977c6f2bf16c7817b71fc45e15d10e9c0443643856b0e5b6074087709be3c4052690614c1d0577aed6c8013c510')
+md5sums=('81c2eb281461bb8423faaca8dbd1b640')
+b2sums=('5b259e1f6f6117a9db1a81f46b2c80e5acd6b5fed5888aad32e23caef1821ed49e55ef304ca48357620dbdca08eee2422567ed801d082ea62f7a396bf6a5ef79')
 
 build() {
   mkdir build
