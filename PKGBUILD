@@ -9,7 +9,7 @@ license=('MIT')
 depends=('docker')
 makedepends=('cargo' 'bun-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/backmeupplz/myground/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('aa501f1f2fd01bfa148177ed1347b94e5d6000376130720b66f4499b363c7898')
 
 prepare() {
   cd "$pkgname-$pkgver"
