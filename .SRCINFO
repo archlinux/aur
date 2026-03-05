@@ -1,6 +1,6 @@
 pkgbase = rosec-provider-bitwarden-sm-bin
 	pkgdesc = Bitwarden Secrets Manager provider for rosec (prebuilt)
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/jmylchreest/rosec
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = rosec-provider-bitwarden-sm-bin
 	depends = rosec
 	provides = rosec-provider-bitwarden-sm
 	conflicts = rosec-provider-bitwarden-sm
-	source = rosec-provider-bitwarden-sm-0.0.8.wasm.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.8/rosec-provider-bitwarden-sm-0.0.8.wasm.tar.gz
-	sha256sums = 9f504088b92181070f9a0e0cf9e9711c60b14ead2749ce516bfabbf244eb2bb1
+	source = rosec-provider-bitwarden-sm-0.0.9.wasm.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.9/rosec-provider-bitwarden-sm-0.0.9.wasm.tar.gz
+	sha256sums = c4a41d6bc6f3dd848a6611427a672a155dfea838c2e4bf7498d4f7aad2acd17c
 
 pkgname = rosec-provider-bitwarden-sm-bin
