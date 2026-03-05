@@ -1,10 +1,15 @@
 pkgbase = protonmail-bridge-free-bin-git
 	pkgdesc = Integrate ProtonMail account with any program that supports IMAP and SMTP (Git prebuilt binary)
-	pkgver = 3.21.2
+	pkgver = 3.23.0.r1.33882e1
 	pkgrel = 1
 	url = https://github.com/mnixry/proton-bridge
 	arch = x86_64
 	license = GPL-3.0-only
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = libfido2
+	depends = libsecret
 	source = https://nightly.link/mnixry/proton-bridge/workflows/build-multi-platform/master/build-ubuntu-latest.zip
 	source = https://gitlab.archlinux.org/archlinux/packaging/packages/protonmail-bridge/-/raw/03d60b89cfb30580ad1bb8bc5c86e28348fa6ad2/protonmail-bridge.service
 	sha256sums = SKIP

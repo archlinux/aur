@@ -1,16 +1,25 @@
 # Maintainer: aisuneko icecat <iceneko@protonmail.ch>
 pkgbase=protonmail-bridge-free-bin-git
 pkgname=(protonmail-bridge-free-bin-git protonmail-bridge-free-core-bin-git)
-pkgver=3.21.2
+pkgver=3.23.0.r1.33882e1
+_pkgver=3.23.0
 pkgrel=1
 pkgdesc="Integrate ProtonMail account with any program that supports IMAP and SMTP (Git prebuilt binary)"
 arch=(x86_64)
 url="https://github.com/mnixry/proton-bridge"
 license=('GPL-3.0-only')
+depends=('qt6-base' 'qt6-declarative' 'qt6-svg' 'libfido2' 'libsecret')
 source=("https://nightly.link/mnixry/proton-bridge/workflows/build-multi-platform/master/build-ubuntu-latest.zip"
 		"https://gitlab.archlinux.org/archlinux/packaging/packages/protonmail-bridge/-/raw/03d60b89cfb30580ad1bb8bc5c86e28348fa6ad2/protonmail-bridge.service")
 sha256sums=("SKIP"
 			'5d273f1245fec8549a3daa3fe76e22bb6c23957cf5bcb51c24f878e19c7a5692')
+pkgver() {
+  cd "$pkgname"
+  ( set -o pipefail
+    git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
+}
 
 prepare(){
 	cd "$srcdir"
