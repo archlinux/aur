@@ -7,7 +7,7 @@
 # This PKGBUILD is just an adaptation of the nginx-mod-lua from 
 
 pkgname=nginx-mod-lua
-pkgver=0.10.28
+pkgver=0.10.29R2
 pkgrel=1
 epoch=1
 
@@ -23,7 +23,7 @@ license=('LicenseRef-openresty')
 source=(https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz
         ${license}.txt
 	cookie.patch)
-sha256sums=('634827d54de6216cb0502d14f76610788b3a3e33160e91d5578d6db0d9a34a20'
+sha256sums=('2435bb65900d556a9175c77548ff0ef4cb507b786f57f7d1c4a7904a7f5063fd'
             'db9cc61814b06cffc464af6137a1640f8402f863659e19686b2e93900d2b9614'
             '774e46d085ca8bd0d7cd84a36946cf1fd31f284ca9ebc90828b758297614975b')
 
