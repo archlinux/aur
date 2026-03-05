@@ -1,0 +1,18 @@
+pkgbase = spectacle-trayicon-git
+	pkgdesc = KDE Plasma StatusNotifierItem tray icon for Spectacle (git version)
+	pkgver = 1.0.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/ravencrowonyt/spectacle-sni
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-pydbus
+	depends = python-gobject
+	depends = libdbusmenu-glib
+	depends = gobject-introspection
+	depends = spectacle
+	source = git+https://github.com/ravencrowonyt/spectacle-sni.git
+	sha256sums = SKIP
+
+pkgname = spectacle-trayicon-git
