@@ -1,7 +1,7 @@
 pkgbase = laurel-git
 	pkgdesc = Self-hosted clip capture and sharing for Linux — press a hotkey, get a shareable link
 	pkgver = r0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Yeyito777/Laurel
 	install = laurel.install
 	arch = x86_64
