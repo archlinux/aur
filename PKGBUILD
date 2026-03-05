@@ -2,7 +2,7 @@
 # Maintainer: wheaney <wayne at xronlinux dot com>
 _pkgbase=breezy-desktop
 pkgname="${_pkgbase}"-gnome-git
-pkgver=2.8.7
+pkgver=2.9.1
 pkgrel=1
 pkgdesc="Breezy GNOME - XR desktop"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ url="https://github.com/wheaney/breezy-desktop"
 license=('GPL-3.0')
 makedepends=('ninja' 'meson' 'librsvg')
 depends=('gtk4' 'python' 'python-pydbus' 'python-yaml' 'python-gobject' 'gnome-shell>=45.0' 'xr-driver-git>=2.0.0' 'libadwaita' 'gst-python' 'gst-plugin-pipewire')
-source=("git+${url}#commit=ce7a5c378dadcfdb55661a7d6724ba55687b915a")
+source=("git+${url}#commit=0d53d10a43e0a8c307dadba5f18327bd75e2bdfb")
 md5sums=(SKIP)
 
 _uuid="breezydesktop@xronlinux.com"
@@ -64,6 +64,7 @@ build() {
 package() {
     # copy gnome extension
     install -Dm755 ${_pkgbase}/ui/data/com.xronlinux.BreezyDesktop.gschema.xml "${pkgdir}"/usr/share/glib-2.0/schemas/com.xronlinux.BreezyDesktop.gschema.xml
+    install -Dm755 ${_pkgbase}/gnome/bin/breezy_gnome_logs "${pkgdir}"/usr/bin/breezy_gnome_logs
 
     install -d "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/"
     cp -r ${_pkgbase}/gnome/src/* "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/"
