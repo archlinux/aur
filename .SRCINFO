@@ -1,0 +1,14 @@
+pkgbase = baseconv
+	pkgdesc = A CLI tool to convert numbers between binary, decimal and hexadecimal
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ido55/baseconv
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	source = baseconv-1.0.tar.gz::https://github.com/ido55/baseconv/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 3781e744cbd04ec0bf0f6904b73280e346b2f5f3c080276c1229dbe2ddf844f0
+
+pkgname = baseconv
