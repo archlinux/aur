@@ -15,6 +15,7 @@ pkgbase = ik-llama.cpp-cuda-git
 	depends = gcc-libs
 	depends = glibc
 	depends = nvidia-utils
+	depends = nccl
 	optdepends = python-numpy: needed for convert_hf_to_gguf.py
 	optdepends = python-safetensors: needed for convert_hf_to_gguf.py
 	optdepends = python-sentencepiece: needed for convert_hf_to_gguf.py

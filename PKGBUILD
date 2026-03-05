@@ -16,6 +16,7 @@ depends=(
   gcc-libs
   glibc
   nvidia-utils
+  nccl
 )
 makedepends=(
   cmake
