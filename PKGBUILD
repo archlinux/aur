@@ -4,16 +4,16 @@ pkgbase="awatcher"
 pkgname=('awatcher-bundle' 'aw-awatcher')
 pkgdesc="Activity and idle watchers"
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/2e3s/${pkgbase}"
 license=('MPL-2.0')
 depends=()
-makedepends=('rust' 'cargo' 'npm' 'git' 'dbus' 'openssl')
+makedepends=('rust' 'cargo' 'npm' 'git' 'dbus' 'openssl' 'libxkbcommon')
 source=(
     "${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('79ee24f811e93dd33d00f83477ef0d3b713cabe9f43c039115fcaf691ce5ceae')
+sha256sums=('cee1645936c0941646563c2cb419ec1fdc2dba61a2a0582567eb1c9c27fcdce4')
 # LTO seems to break libsqlite3-sys compilation
 options=('!lto')
 
@@ -54,7 +54,7 @@ build() {
 
 package_awatcher-bundle() {
     pkgdesc="Activity and idle watchers (bundled version)"
-    depends=('dbus' 'openssl')
+    depends=('dbus' 'openssl' 'libgcc' 'glibc')
 
     cd "${pkgbase}-${pkgver}"
     install -Dm0755 "target/release/${pkgbase}-bundle" -t "${pkgdir}/usr/bin"
@@ -62,7 +62,7 @@ package_awatcher-bundle() {
 
 package_aw-awatcher() {
     pkgdesc="Activity and idle watchers (ActivityWatch module)"
-    depends=('openssl')
+    depends=('openssl' 'libgcc' 'glibc')
     optdepends=('activitywatch: ActivityWatch server')
 
     cd "${pkgbase}-${pkgver}"

@@ -1,7 +1,7 @@
 pkgbase = awatcher
 	pkgdesc = Activity and idle watchers
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/2e3s/awatcher
 	arch = x86_64
 	license = MPL-2.0
@@ -11,16 +11,21 @@ pkgbase = awatcher
 	makedepends = git
 	makedepends = dbus
 	makedepends = openssl
+	makedepends = libxkbcommon
 	options = !lto
 	source = awatcher-0.3.3.tar.gz::https://github.com/2e3s/awatcher/archive/refs/tags/v0.3.3.tar.gz
-	sha256sums = 79ee24f811e93dd33d00f83477ef0d3b713cabe9f43c039115fcaf691ce5ceae
+	sha256sums = cee1645936c0941646563c2cb419ec1fdc2dba61a2a0582567eb1c9c27fcdce4
 
 pkgname = awatcher-bundle
 	pkgdesc = Activity and idle watchers (bundled version)
 	depends = dbus
 	depends = openssl
+	depends = libgcc
+	depends = glibc
 
 pkgname = aw-awatcher
 	pkgdesc = Activity and idle watchers (ActivityWatch module)
 	depends = openssl
+	depends = libgcc
+	depends = glibc
 	optdepends = activitywatch: ActivityWatch server
