@@ -1,6 +1,6 @@
 # Maintainer: Rumata <Rumata01@github.com>
 pkgname=petbottle-bin
-pkgver=0.1.13
+pkgver=0.1.14
 pkgrel=1
 pkgdesc="Yerel not uygulamasi"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('petbottle')
 conflicts=('petbottle')
 depends=('gtk3' 'webkit2gtk' 'libappindicator-gtk3')
 source=("${pkgname}-${pkgver}.deb::https://github.com/Rumata01/Petbottle-public/releases/download/v${pkgver}/petbottle_${pkgver}_amd64.deb")
-sha256sums=('ab8975c1b4fd3feb2fae55dc40e12b3aba666ba3c25e961c1443810aad172173')
+sha256sums=('732bf6946ee5736330af75e37c5041e767e2b1af40a60935cffd0fcd42671e9b')
 
 package() {
     
