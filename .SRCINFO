@@ -1,0 +1,22 @@
+pkgbase = ncm-desktop-for-linux-git
+	pkgdesc = A third-party NetEase Cloud Music client for Linux
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/dddqmmx/ncm-desktop-for-linux
+	arch = x86_64
+	license = MIT
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = electron
+	provides = ncm-desktop-for-linux
+	conflicts = ncm-desktop-for-linux
+	options = !strip
+	source = git+https://github.com/dddqmmx/ncm-desktop-for-linux.git
+	source = ncm-desktop-for-linux.sh
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ncm-desktop-for-linux-git
