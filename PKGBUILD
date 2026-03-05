@@ -24,7 +24,7 @@ _ghurl="https://github.com/electron/nightlies"
 license=('MIT')
 provides=(
     'electron'
-    "electron=${pkgver}"
+    "${_pkgname}"
 )
 conflicts=(
     'electron'

@@ -17,13 +17,13 @@ pkgbase = electron-nightly-bin
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
 	provides = electron
-	provides = electron=42.0.0nightly.20260303
+	provides = electron42
 	conflicts = electron
 	conflicts = electron42
 	noextract = electron-42.0.0-nightly.20260303-x86_64.zip
 	source_x86_64 = electron-42.0.0-nightly.20260303-x86_64.zip::https://github.com/electron/nightlies/releases/download/v42.0.0-nightly.20260303/electron-v42.0.0-nightly.20260303-linux-x64.zip
 	source_x86_64 = electron
-	sha256sums_x86_64 = 43a1142ff9f2b34997511bff2e3a0c4dbe31d236d19235f6a48cff27c73c9c98
+	sha256sums_x86_64 = 7b450b6e96611b27d4fc8a3bb3d5730f81d8b838509076a8ca48257380d1448c
 	sha256sums_x86_64 = 8140c9dbc76f387b16c0bedc6e5d05462b3f0c3aa241ab9f0d88db021564600e
 
 pkgname = electron-nightly-bin
