@@ -3,7 +3,7 @@
 
 pkgname='smartctl_exporter'
 pkgver='0.14.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Prometheus exporter for S.M.A.R.T. metrics using smartctl'
 arch=('x86_64' 'aarch64')
 _uri="github.com/prometheus-community"
@@ -13,10 +13,14 @@ makedepends=('go')
 depends=('smartmontools')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}"
-	"${pkgname}.service")
+	"${pkgname}.service"
+	"${url}/pull/290.patch"
+	"${url}/pull/293.patch")
 sha256sums=('0c3a658b1a16117e31e808f6f8852ddc7df5be6edea1b17c08263069b72d88d8'
-            '5645b05537feb19bd57218ed358403ee7e1bc7520a015a2a885730cff35b7367'
-            '089ce0787b99c05d59b3f00447b50543851bd190f02679dd41a5ea094caea1cf')
+            '8e67aa678e74b64d500529334001fa029d163cb61146810faeec22401b07d362'
+            '2b88ccdd7a0582510721dc8ee54c685d9a92503611517aae9fc34d1b113e124c'
+            'c0286315e557649eaf878726b45349086cc395cc280f6beb39a5423a01f50ca5'
+            '7b4b124ae3ee4f57101500ec9ea48dbd8d1f7f13602db5369f94f13b915c26fb')
 backup=("etc/conf.d/${pkgname}")
 
 prepare() {
@@ -28,12 +32,20 @@ prepare() {
   eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
   mkdir -p "${GOPATH}/src/${_uri}"
   ln -snf "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/${_uri}/${pkgname}"
+
+  cd "${GOPATH}/src/${_uri}/${pkgname}"
+  for e in "../"*".patch"
+    do
+    echo "Apply patch: ${e}"
+    patch -p1 -i "../${e}"
+  done
 }
 
 build() {
   cd "${GOPATH}/src/${_uri}/${pkgname}"
   GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" \
   go build -x \
+    -tags="netgo" \
     -buildmode="pie" \
     -trimpath \
     -mod="readonly" \
@@ -47,6 +59,7 @@ build() {
 }
 
 package() {
+  install -Dm0644 "${GOPATH}/src/${_uri}/${pkgbase}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm0755 "${GOPATH}/src/${_uri}/${pkgname}/${pkgname}" -t "${pkgdir}/usr/bin"
   install -Dm0644 "${pkgname}" -t "${pkgdir}/etc/conf.d"
   install -Dm0644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"

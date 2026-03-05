@@ -1,7 +1,7 @@
 pkgbase = smartctl_exporter
 	pkgdesc = Prometheus exporter for S.M.A.R.T. metrics using smartctl
 	pkgver = 0.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prometheus-community/smartctl_exporter
 	arch = x86_64
 	arch = aarch64
@@ -12,8 +12,12 @@ pkgbase = smartctl_exporter
 	source = https://github.com/prometheus-community/smartctl_exporter/archive/refs/tags/v0.14.0.tar.gz
 	source = smartctl_exporter
 	source = smartctl_exporter.service
+	source = https://github.com/prometheus-community/smartctl_exporter/pull/290.patch
+	source = https://github.com/prometheus-community/smartctl_exporter/pull/293.patch
 	sha256sums = 0c3a658b1a16117e31e808f6f8852ddc7df5be6edea1b17c08263069b72d88d8
-	sha256sums = 5645b05537feb19bd57218ed358403ee7e1bc7520a015a2a885730cff35b7367
-	sha256sums = 089ce0787b99c05d59b3f00447b50543851bd190f02679dd41a5ea094caea1cf
+	sha256sums = 8e67aa678e74b64d500529334001fa029d163cb61146810faeec22401b07d362
+	sha256sums = 2b88ccdd7a0582510721dc8ee54c685d9a92503611517aae9fc34d1b113e124c
+	sha256sums = c0286315e557649eaf878726b45349086cc395cc280f6beb39a5423a01f50ca5
+	sha256sums = 7b4b124ae3ee4f57101500ec9ea48dbd8d1f7f13602db5369f94f13b915c26fb
 
 pkgname = smartctl_exporter
