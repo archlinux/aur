@@ -2,7 +2,7 @@
 
 pkgname=lotus-lang
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A systems programming language with Rust-inspired imports, type-first bindings, and x86-64 assembly output"
 arch=('x86_64')
 url="https://github.com/j-alexander3375/Lotus"
@@ -19,7 +19,7 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=vendor"
     
     cd src
     go build -o ../lotus .
