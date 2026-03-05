@@ -3,8 +3,8 @@
 # Contributor: Dwayne Bent <dbb@dbb.io>
 
 pkgname=silverbullet
-pkgver=2.4.1
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc='Clean Markdown-based writing/note taking application'
 arch=('i686' 'x86_64' 'aarch64' 'riscv64')
 url='https://github.com/silverbulletmd/silverbullet'
@@ -18,7 +18,7 @@ source=(
   "$pkgname-user.service"
   "$pkgname.sh"
 )
-sha256sums=('2a72555af0bdbecb6cf9f069ed5f658b7f199f42b37bb9907b02aec3555e4510'
+sha256sums=('df66d7bd80f0145315e32340f486b9ce42e7223965bd4c499ba476b40df54c7b'
             '93ac8414f9af3c29e43554468f2f5f5e37cbe0792d57e84a9f5228305aeed89d'
             '5f01fe05f871f60277508f8cf39e879a7db18f1ff45c1ef7b2359089bfe1a0bd'
             'c208d9388a720462991bcd4842d33e8fdf43daa3c17751f2801233af9ddd5b33')
