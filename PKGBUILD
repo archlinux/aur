@@ -10,7 +10,7 @@
 # Caleb Maclennan <caleb@alerque.com>
 _pkgname=electron42
 pkgname=electron-nightly-bin
-_pkgver=42.0.0-nightly.20260123
+_pkgver=42.0.0-nightly.20260303
 pkgver="${_pkgver/-}"
 pkgrel=1
 pkgdesc="Build cross platform desktop apps with web technologies — prebuilt nightly binary"
