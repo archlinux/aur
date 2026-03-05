@@ -1,0 +1,75 @@
+_DKMS_MODULE="casper-wmi"
+_DKMS_VER="1.0.0"
+
+post_install() {
+    # ── DKMS: casper-wmi kernel modülünü derle ve yükle ──────
+    echo ":: casper-wmi kernel modülü DKMS ile derleniyor..."
+    dkms add -m "${_DKMS_MODULE}" -v "${_DKMS_VER}" 2>/dev/null || true
+    dkms build -m "${_DKMS_MODULE}" -v "${_DKMS_VER}" || {
+        echo "HATA: DKMS build başarısız. 'linux-headers' paketinin kurulu olduğundan emin olun."
+        echo "  sudo pacman -S linux-headers"
+        return
+    }
+    dkms install -m "${_DKMS_MODULE}" -v "${_DKMS_VER}" || true
+
+    # ── Modülü yükle ─────────────────────────────────────────
+    modprobe casper-wmi 2>/dev/null || true
+
+    # ── Udev kurallarını yeniden yükle ───────────────────────
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger --subsystem-match=leds 2>/dev/null || true
+
+    # ── Systemd daemon reload ────────────────────────────────
+    systemctl daemon-reload 2>/dev/null || true
+
+    echo ""
+    echo "╔══════════════════════════════════════════════════════════╗"
+    echo "║  Casper Keyboard RGB – Kurulum tamamlandı!              ║"
+    echo "╠══════════════════════════════════════════════════════════╣"
+    echo "║                                                        ║"
+    echo "║  Kullanım:                                             ║"
+    echo "║    casper-keyboard-rgb          → GUI başlat           ║"
+    echo "║    casper-keyboard-rgb --restore → Son rengi yükle     ║"
+    echo "║                                                        ║"
+    echo "║  Açılışta renk geri yükleme:                           ║"
+    echo "║    sudo systemctl enable casper-keyboard-rgb-restore   ║"
+    echo "║                                                        ║"
+    echo "║  Yeniden başlatma gerekmez, hemen kullanabilirsiniz!   ║"
+    echo "║                                                        ║"
+    echo "╚══════════════════════════════════════════════════════════╝"
+    echo ""
+}
+
+pre_upgrade() {
+    # Eski DKMS modülünü temizle (sürüm değişmişse)
+    dkms remove -m "${_DKMS_MODULE}" -v "${_DKMS_VER}" --all 2>/dev/null || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    # Modülü kaldır
+    modprobe -r casper-wmi 2>/dev/null || true
+
+    # Systemd servisini durdur
+    systemctl disable --now casper-keyboard-rgb-restore.service 2>/dev/null || true
+}
+
+post_remove() {
+    # DKMS modülünü kaldır
+    dkms remove -m "${_DKMS_MODULE}" -v "${_DKMS_VER}" --all 2>/dev/null || true
+
+    # Udev yeniden yükle
+    udevadm control --reload-rules 2>/dev/null || true
+
+    # Systemd daemon reload
+    systemctl daemon-reload 2>/dev/null || true
+
+    echo ""
+    echo "Casper Keyboard RGB kaldırıldı."
+    echo "Kullanıcı ayarları korundu: ~/.config/casper-keyboard-rgb/"
+    echo "Silmek için: rm -rf ~/.config/casper-keyboard-rgb/"
+    echo ""
+}
