@@ -1,18 +1,20 @@
 pkgbase = web-ext
 	pkgdesc = A command line tool to help build, run, and test web extensions
-	pkgver = 8.9.0
+	pkgver = 9.4.0
 	pkgrel = 1
 	url = https://developer.mozilla.org/en-US/Add-ons/WebExtensions
 	arch = any
 	license = MPL-2.0
+	checkdepends = python-nose
 	makedepends = npm
 	makedepends = node-gyp
+	depends = python
 	depends = nodejs-lts
 	provides = nodejs-web-ext
 	conflicts = nodejs-web-ext
 	replaces = nodejs-web-ext
 	options = !strip
-	source = https://github.com/mozilla/web-ext/archive/refs/tags/8.9.0.tar.gz
-	sha256sums = ca69dd74433566d50d6e5a38b4573c2b87b9daa807c14ea7876f1afab26a22e6
+	source = https://github.com/mozilla/web-ext/archive/refs/tags/9.4.0.tar.gz
+	sha256sums = 8f43cbc2dc7c72d416bc17741989a1cde1bb623062380127fceaafe62c2913e3
 
 pkgname = web-ext

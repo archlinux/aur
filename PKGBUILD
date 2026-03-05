@@ -5,7 +5,7 @@
 
 pkgname=web-ext
 # https://github.com/mozilla/web-ext/releases
-pkgver=8.9.0
+pkgver=9.4.0
 pkgrel=1
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
@@ -15,8 +15,9 @@ license=('MPL-2.0')
 # See "engines" in https://github.com/mozilla/web-ext/blob/master/package.json
 # XXX: somehow nodejs 20 breaks tests
 # Per https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/, web-ext requires the current LTS (long-term support) versions of NodeJS.
-depends=('nodejs-lts')
+depends=('python' 'nodejs-lts')
 makedepends=('npm' 'node-gyp')
+checkdepends=('python-nose')
 replaces=('nodejs-web-ext')
 provides=('nodejs-web-ext')
 conflicts=('nodejs-web-ext')
@@ -24,7 +25,7 @@ conflicts=('nodejs-web-ext')
 options=('!strip')
 # tarball on npmjs lacks scripts for building from sources
 source=("https://github.com/mozilla/web-ext/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ca69dd74433566d50d6e5a38b4573c2b87b9daa807c14ea7876f1afab26a22e6')
+sha256sums=('8f43cbc2dc7c72d416bc17741989a1cde1bb623062380127fceaafe62c2913e3')
 
 prepare() {
   cd "$srcdir"
