@@ -1,6 +1,6 @@
 pkgbase = arch-smart-update
 	pkgdesc = Universal Smart Update Wrapper for Arch Linux and its derivatives
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/motorrin/Arch_Smart_Update
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = arch-smart-update
 	optdepends = yay: AUR helper support
 	optdepends = paru: AUR helper support
 	optdepends = topgrade: for comprehensive system updates
-	source = https://github.com/motorrin/Arch_Smart_Update/archive/refs/tags/v2.4.0.tar.gz
-	sha256sums = a46f50cc6b326ce6533c41628a6208944066b680e317b2b7f703a9b9001eaf1c
+	source = https://github.com/motorrin/Arch_Smart_Update/archive/refs/tags/v2.5.0.tar.gz
+	sha256sums = a5370c0ad41c66ab778ebf25865c6c512fc45eb2a746b48e9a06a7095e58d07d
 
 pkgname = arch-smart-update
