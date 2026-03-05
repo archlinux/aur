@@ -4,7 +4,7 @@
 
 _pkgname=nuclei
 pkgname="${_pkgname}-bin"
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc='Fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -19,10 +19,10 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.zip::${url}/releases/download/v${pk
 source_armv7h=("${_pkgname}-${pkgver}-armv7h.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm.zip")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.zip")
 b2sums=('2029dad2ab2740376273b715f27e950511c8392b1e575226a922a818041dbf95f60eca51f33b3b036cf5cc5b6f8f8b0a81221e1d80ff69f4ddad8e0f8ed37ba2')
-b2sums_i686=('736797e71eb2b807237b1ee1e16299fc07b571374820dc1244444104a6b1cedc34be14516ead9ef10b3ea7fed8e78b3ddd5acaedb37d0bde201ee69b86c51216')
-b2sums_x86_64=('b77988d8582006955879fcea966e22d69e3c7cbd20e5e242f1617c173ced6a789a8a2538f10bbbeeae91e9135d0233024e80a86eddcccc4fe247225323e1b7fa')
-b2sums_armv7h=('a52a191e2105fb4ac48e7ab3bc012e57bf8990f33f4c470839da12f05a4fb4dbb12bc9826576aa0256a2f5f63bd40b10fdec27efefe0ed4f44311e3d81632075')
-b2sums_aarch64=('6d945fde882d9b8170c212f065e7352bed18ba3137fac3b495437c34bc033fa3887dac8b1767847dac05a684d8a9f4be32844e46e7fb3096c92cd4189dee1409')
+b2sums_i686=('645f578fa9a23009ffc8cd2adf84192513bbf94dd9708c28e99397b98d175934683163bf010402e562ccb2d0afad162ab6ad6a89924aff5d24f0a054a0227309')
+b2sums_x86_64=('652d643e40de9cd63b6faf362b913f552708a2b87ed66d5f4242a56dba14a741543448dba4cbbe988b08aa552054e6c2947784b08d93f72c8ab8ab568672779b')
+b2sums_armv7h=('a4b3084073dec045a81bfd7d9f280146d7187b69c66367144793296eb25822a32ec2881ff3bec39421f8a76a526146f0d49b985015dd644baef9a1af1e582b32')
+b2sums_aarch64=('11c71bb6c9c23d62e53540828a230b3edbf12fe1bf5cd7f5ff54bc18a1c8c2afbe40a7c51069db84299892e798cee5607ec5c75898c35fd66657c27422301417')
 
 package() {
   install -Dvm755 "${_pkgname}" -t "${pkgdir}/usr/bin"
