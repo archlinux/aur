@@ -1,6 +1,6 @@
 pkgbase = mixtapes-git
 	pkgdesc = A modern, Linux-first YouTube Music player (formerly Muse)
-	pkgver = r61.fe07ef6
+	pkgver = r62.d9ad870
 	pkgrel = 1
 	url = https://github.com/m-obeid/Muse
 	arch = any
