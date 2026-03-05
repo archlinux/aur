@@ -1,0 +1,21 @@
+pkgbase = coolercontrol-git
+	pkgdesc = A program to monitor and control your cooling devices
+	pkgver = 3.1.1.r217.g221dfd7
+	pkgrel = 1
+	url = https://gitlab.com/coolercontrol/coolercontrol
+	arch = x86_64
+	license = GPL-3.0-or-later
+	checkdepends = appstream-glib
+	checkdepends = desktop-file-utils
+	makedepends = cmake
+	depends = qt6-webengine
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = coolercontrold
+	provides = coolercontrol
+	conflicts = coolercontrol
+	source = git+https://gitlab.com/coolercontrol/coolercontrol.git
+	sha256sums = SKIP
+
+pkgname = coolercontrol-git
