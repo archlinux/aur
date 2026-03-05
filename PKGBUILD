@@ -1,12 +1,12 @@
-# Maintainer: none
+# Maintainer: Jah Way <jahway603 at protonmail dot com>
 # Contributor: tarball <bootctl@gmail.com>
 
 pkgname=etesync-knotes
-pkgver=1.1
+pkgver=2.0
 pkgrel=1
 arch=('x86_64' 'aarch64' 'riscv64')
-url='https://gitlab.com/JBeaumont81/Etesync-Knotes'
-pkgdesc='Secure note-taking application with Etebase for encrypted synchronization'
+url='https://codeberg.org/Josselin_Beaumont/Etesync-Knotes'
+pkgdesc='Secure Etesync note-taking application with Etebase for encrypted synchronization'
 license=('GPL-3.0-or-later')
 depends=(
   'gcc-libs'
@@ -18,22 +18,20 @@ depends=(
   'qt6-base'
 )
 makedepends=('cmake')
-source=("$url/-/archive/v$pkgver/Etesync-Knotes-v$pkgver.tar.gz")
-sha256sums=('41fae45c771286a5938dc7dad9885f65bc5dc2cc681d52a6aa673193b30527c9')
+source=("$url/archive/v$pkgver.tar.gz")
+sha512sums=('03ed5dc7bb19991924779ba6226dc66179973e62938b136e3ddfd7dd878a5560ae5dc232791e85689be1224bc3469512aeabe06962437942ca0e21af21dfe2f3')
 
 build() {
-  cd Etesync-Knotes-v$pkgver
+  cd $pkgname
   make
 }
 
 package() {
-  cd Etesync-Knotes-v$pkgver
-
+  cd $pkgname
   make PREFIX="$pkgdir/usr" install
+
+  install -Dm644 "$srcdir/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   rm -f "$pkgdir/usr/share/applications/mimeinfo.cache"
   rm -f "$pkgdir/usr/share/icons/hicolor/icon-theme.cache"
-
-  cd "$pkgdir/usr/lib"
-  ln -sf libetebase.so libetebase.so.0
 }

@@ -1,8 +1,8 @@
 pkgbase = etesync-knotes
-	pkgdesc = Secure note-taking application with Etebase for encrypted synchronization
-	pkgver = 1.1
+	pkgdesc = Secure Etesync note-taking application with Etebase for encrypted synchronization
+	pkgver = 2.0
 	pkgrel = 1
-	url = https://gitlab.com/JBeaumont81/Etesync-Knotes
+	url = https://codeberg.org/Josselin_Beaumont/Etesync-Knotes
 	arch = x86_64
 	arch = aarch64
 	arch = riscv64
@@ -15,7 +15,7 @@ pkgbase = etesync-knotes
 	depends = libsecret
 	depends = openssl
 	depends = qt6-base
-	source = https://gitlab.com/JBeaumont81/Etesync-Knotes/-/archive/v1.1/Etesync-Knotes-v1.1.tar.gz
-	sha256sums = 41fae45c771286a5938dc7dad9885f65bc5dc2cc681d52a6aa673193b30527c9
+	source = https://codeberg.org/Josselin_Beaumont/Etesync-Knotes/archive/v2.0.tar.gz
+	sha512sums = 03ed5dc7bb19991924779ba6226dc66179973e62938b136e3ddfd7dd878a5560ae5dc232791e85689be1224bc3469512aeabe06962437942ca0e21af21dfe2f3
 
 pkgname = etesync-knotes
