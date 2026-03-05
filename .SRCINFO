@@ -1,0 +1,23 @@
+pkgbase = zerx-lab-fluxdown-bin
+	pkgdesc = FluxDown - Rust 驱动的多协议下载管理器（HTTP/FTP/BitTorrent）
+	pkgver = 0.1.26
+	pkgrel = 1
+	url = https://fluxdown.zerx.dev
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libsecret
+	depends = libayatana-appindicator
+	provides = fluxdown
+	conflicts = fluxdown
+	options = !strip
+	source_x86_64 = FluxDown-0.1.26-linux-x64.tar.gz::https://fluxdown.zerx.dev/api/download/FluxDown-0.1.26-linux-x64.tar.gz
+	sha256sums_x86_64 = a2d300efdb7f66adcd2a2c97dd7e44d2119332ba6f6685c0d7759d7be677f5cd
+
+pkgname = zerx-lab-fluxdown-bin
