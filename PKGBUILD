@@ -3,8 +3,8 @@
 
 pkgname=etesync-knotes
 pkgver=2.0
-pkgrel=1
-arch=('x86_64' 'aarch64' 'riscv64')
+pkgrel=2
+arch=('x86_64')
 url='https://codeberg.org/Josselin_Beaumont/Etesync-Knotes'
 pkgdesc='Secure Etesync note-taking application with Etebase for encrypted synchronization'
 license=('GPL-3.0-or-later')
@@ -13,6 +13,7 @@ depends=(
   'glib2'
   'glibc'
   'hicolor-icon-theme'
+  'libetebase'
   'libsecret'
   'openssl'
   'qt6-base'
