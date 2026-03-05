@@ -7,7 +7,7 @@
 _pkgname='nullfsvfs'
 pkgname='nullfsvfs-dkms'
 pkgdesc='Virtual black hole file system that behaves like /dev/null'
-pkgver=0.25
+pkgver=0.26
 pkgrel=1
 url='https://github.com/abbbi/nullfsvfs'
 arch=('any')
@@ -38,10 +38,10 @@ package() {
 }
 
 sha256sums=(
-  '934e052e96f13ea5ee78918f15d736fe35154572e42cefb48df76e90398e8bbf'
+  '50137549c4055e3ee7edbb04e97161c810773fe00fd5f9f3a13d5297ce9a3502'
 )
 b2sums=(
-  '77324bc570112ef0902f7159ef4fd6d28b905305471d67ed82aa8170af6d0cc556e56b9857b28b0886ae84019caca91fd59d4ec6ca8e7d24db8db4b644ccc960'
+  'b0e0c2c5cf92fe5f763ca10977ccd1afe9da3719e8feda3fb33d50c6a82c6584e1739c3873a564c7638ad98c1cc1f4f548f7238fa1621fc54d48e0d18a2c346e'
 )
 
 # eof
