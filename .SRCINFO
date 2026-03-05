@@ -1,6 +1,6 @@
 pkgbase = virtualbox-guest-iso-dev
 	pkgdesc = The official VirtualBox Guest Additions ISO image for virtualbox dev version
-	pkgver = 7.2.97.172851
+	pkgver = 7.2.97.172991
 	pkgrel = 1
 	epoch = 1
 	url = https://www.virtualbox.org/
@@ -12,10 +12,10 @@ pkgbase = virtualbox-guest-iso-dev
 	conflicts = virtualbox-iso-additions
 	replaces = virtualbox-additions
 	replaces = virtualbox-iso-additions
-	noextract = VBoxGuestAdditions_7.2.97.172851.iso
-	source = https://www.virtualbox.org/download/testcase/VBoxGuestAdditions_7.2.97-172851.iso
+	noextract = VBoxGuestAdditions_7.2.97.172991.iso
+	source = https://www.virtualbox.org/download/testcase/VBoxGuestAdditions_7.2.97-172991.iso
 	source = license
-	sha256sums = c047c58766a20823e3ad734c83c6372e68d1308581b26b7ac694a61c219665da
+	sha256sums = 755372d8e1ed1862a67a636a374f6a6ea0fae0951d156eaa7b99903a9b547d77
 	sha256sums = fbe9cd6288037bff44716642ee4bea9c42c2d60eb5ed86cb48fa95147d9e8623
 
 pkgname = virtualbox-guest-iso-dev
