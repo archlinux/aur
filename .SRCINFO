@@ -1,0 +1,17 @@
+pkgbase = telmi-sync-bin
+	pkgdesc = Cross-platform application to create and synchronize stories and audio with TelmiOS
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/DantSu/Telmi-Sync
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = fuse2
+	options = !strip
+	source = telmi-sync-0.16.0.AppImage::https://github.com/DantSu/Telmi-Sync/releases/download/0.16.0/Telmi.Sync-0.16.0.AppImage
+	source = telmi-sync.png::https://raw.githubusercontent.com/DantSu/Telmi-Sync/master/electron/build/Icon.png
+	source = telmi-sync.desktop
+	sha256sums = SKIP
+	sha256sums = 3720701886cced6877ac7b512d466fe388c1486dfc34d1c7f78cc3b1f19a6d73
+	sha256sums = SKIP
+
+pkgname = telmi-sync-bin

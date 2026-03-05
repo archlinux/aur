@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Telmi Sync
+Comment=Create and synchronize stories and audio with TelmiOS
+Exec=telmi-sync
+Icon=telmi-sync
+Terminal=false
+Type=Application
+Categories=Utility;
+StartupWMClass=Telmi Sync
