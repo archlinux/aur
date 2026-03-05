@@ -2,7 +2,7 @@
 
 _pkgname="dolphin"
 pkgname="$_pkgname-tabopts"
-pkgver=25.12.2
+pkgver=25.12.3
 pkgrel=1
 pkgdesc='KDE File Manager - with extended tab options'
 url="https://invent.kde.org/system/dolphin/-/merge_requests/1152"
@@ -48,7 +48,7 @@ source=(
   "dolphin-MR1152-tab_options.patch"::"https://invent.kde.org/system/dolphin/-/commit/a31695655194c57c608f938c94684fe8db93696b.patch"
 )
 sha256sums=(
-  '5489cce485cf12179b2d0e2d49b4a819f1c4a08182409ff1386b3bf1df7075c6'
+  'bb804cc5ac10917af97f51dc1de95a64d8a03d79a2239de0949e027b8aaac9c7'
   'bf81aa3ed12a3cdad45ec96f136d629ab0b6a2b20c54239a89ebdd418813e4ae'
 )
 
