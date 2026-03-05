@@ -1,0 +1,24 @@
+pkgbase = coolercontrold-git
+	pkgdesc = A program to monitor and control your cooling devices. This package contains the CoolerControl service daemon.
+	pkgver = 3.1.1.r217.g221dfd7
+	pkgrel = 1
+	url = https://gitlab.com/coolercontrol/coolercontrol
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	makedepends = protobuf
+	depends = libdrm
+	depends = gcc-libs
+	depends = glibc
+	optdepends = nvidia-utils: NVIDIA GPU support
+	optdepends = liquidctl: liquidctl driver support
+	optdepends = lm_sensors: kernel hwmon driver support
+	provides = coolercontrold
+	conflicts = coolercontrold
+	conflicts = coolercontrol-liqctld
+	options = !lto
+	source = git+https://gitlab.com/coolercontrol/coolercontrol.git
+	sha256sums = SKIP
+
+pkgname = coolercontrold-git
