@@ -1,6 +1,6 @@
 pkgbase = archie
 	pkgdesc = Fast & Easy package management for Arch Linux
-	pkgver = 3.5.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/Gur0v/archie-ng
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = archie
 	makedepends = rust
 	makedepends = cargo
 	depends = paru
-	source = archie-3.5.0.tar.gz::https://github.com/Gur0v/archie-ng/archive/refs/tags/v3.5.0.tar.gz
-	sha256sums = 2565f60c4c01fed45a68b5d0986329801cdc7d26157463d09539b997e4dccf7b
+	source = archie-3.6.0.tar.gz::https://github.com/Gur0v/archie-ng/archive/refs/tags/v3.6.0.tar.gz
+	sha256sums = 00afe3e8c2c321f0a400c73a5e542f8f7cd5cb7229a14da2a3223e6fc5eb82f1
 
 pkgname = archie
