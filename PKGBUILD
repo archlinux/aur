@@ -44,9 +44,10 @@ package() {
     install -Dm644 extension/Chrome/* "$pkgdir"/usr/lib/$pkgname-chromium/
 
     # Icons
-    ln -s extension/Chrome/icon.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$pkgname.png
+    install -d "$pkgdir"/usr/share/icons/hicolor/scalable/apps
+    ln -s /usr/lib/$pkgname-chromium/icon.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$pkgname.svg
     for i in 16 48 128; do
-        install -d "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/
-        ln -s extension/Chrome/icon$i.png "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png
+        install -d "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps
+        ln -s /usr/lib/$pkgname-chromium/icon${i}.png "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png
     done
 }
