@@ -1,0 +1,23 @@
+pkgbase = libfprint-goodixtls511-git
+	pkgdesc = libfprint with Goodix GF511 (27c6:5110) TLS fingerprint sensor driver
+	pkgver = r1814.0ad27c6
+	pkgrel = 1
+	url = https://github.com/buxel/libfprint.git
+	arch = x86_64
+	license = LGPL-2.1-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = pkgconf
+	makedepends = glib2-devel
+	depends = libgusb
+	depends = gnutls
+	depends = libgudev
+	optdepends = fprintd: D-Bus daemon for fingerprint authentication
+	provides = libfprint
+	provides = libfprint-2.so=2-64
+	conflicts = libfprint
+	conflicts = libfprint-goodixtls-git
+	source = libfprint-goodixtls511-git::git+https://github.com/buxel/libfprint.git#branch=goodixtls-upstream-mr
+	sha256sums = SKIP
+
+pkgname = libfprint-goodixtls511-git
