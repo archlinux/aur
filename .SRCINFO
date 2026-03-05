@@ -1,7 +1,7 @@
 pkgbase = commet-bin
 	pkgdesc = A client for Matrix focused on providing a feature rich experience while maintaining a simple interface
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://commet.chat
 	arch = x86_64
 	license = AGPL-3.0-only
@@ -17,6 +17,7 @@ pkgbase = commet-bin
 	depends = harfbuzz
 	depends = libdrm
 	depends = libepoxy
+	depends = libkeybinder3
 	depends = libsoup3
 	depends = libx11
 	depends = libxcomposite

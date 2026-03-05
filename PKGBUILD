@@ -1,7 +1,7 @@
 # Maintainer: thadah <thadahdenyse@protonmail.com>
 pkgname=commet-bin
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A client for Matrix focused on providing a feature rich experience while maintaining a simple interface"
 url="https://commet.chat"
 license=('AGPL-3.0-only')
@@ -19,6 +19,7 @@ depends=(
   'harfbuzz'
   'libdrm'
   'libepoxy'
+  'libkeybinder3'
   'libsoup3'
   'libx11'
   'libxcomposite'
