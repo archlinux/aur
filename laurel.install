@@ -1,18 +1,17 @@
 post_install() {
     echo ""
-    echo -e "\033[1;33m  LAUREL: Run the \033[1mlaurel\033[1;33m command in your terminal to finish setup.\033[0m"
+    echo -e "\033[1;33m  LAUREL: Run \033[1mlaurel\033[1;33m in your terminal to finish setup.\033[0m"
     echo ""
 }
 
 post_upgrade() {
     echo ""
-    echo "==> Laurel upgraded. Restart the service to pick up changes:"
-    echo "       systemctl --user restart laurel-replay"
+    echo -e "\033[1;33m  LAUREL: Run \033[1mlaurel\033[1;33m to check status or \033[1mlaurel setup\033[1;33m to reconfigure.\033[0m"
     echo ""
 }
 
 pre_remove() {
-    echo "==> Stopping Laurel..."
-    echo "    Run: systemctl --user disable --now laurel-replay"
+    echo ""
+    echo "==> Run before uninstalling: systemctl --user disable --now laurel-replay"
     echo ""
 }
