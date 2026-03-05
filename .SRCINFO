@@ -1,0 +1,18 @@
+pkgbase = arduino-cli-manager-git
+	pkgdesc = A powerful interactive shell script to manage Arduino CLI projects
+	pkgver = r61.29d67dd
+	pkgrel = 1
+	url = https://github.com/abod8639/arduino-cli-manager
+	arch = any
+	license = MIT
+	depends = bash
+	depends = arduino-cli
+	optdepends = fzf: for enhanced interactive menus
+	optdepends = jq: for update notifications
+	optdepends = neovim: for the "Edit Project (nvim)" menu option
+	provides = arduino-cli-manager
+	conflicts = arduino-cli-manager
+	source = arduino-cli-manager::git+https://github.com/abod8639/arduino-cli-manager.git
+	sha256sums = SKIP
+
+pkgname = arduino-cli-manager-git
