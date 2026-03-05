@@ -1,8 +1,8 @@
 # Maintainer: meehl
 
 pkgname='rusty-path-of-building'
-pkgver=0.2.10
-pkgrel=2
+pkgver=0.2.11
+pkgrel=1
 pkgdesc="An offline build planner for Path of Exile 1 and 2 using the cross-platform 'rusty-path-of-building' runtime"
 url='https://github.com/meehl/rusty-path-of-building'
 license=('MIT')
@@ -17,7 +17,7 @@ source=(
     "rusty-path-of-building-1.desktop"
     "rusty-path-of-building-2.desktop"
 )
-b2sums=('f4986cf18d0e16fb3ca3c7fa5a87889b9185984c832ff6e8eea5e07e71225556cb2dc740e1de7680742c76156945d19ef517ac099d4cae3cd2e609057c6b45e5'
+b2sums=('17b9daac811f640edff48092e55f8d4831c8ac581813085d4cd47e432140fa1de04f7c02600d5b4938c144fe31b791717c52a8ce6863e49c4f90d7ec1b102f2e'
         'aee0f8d3e6171cbe4a331af35125948f2a8398ec9d59d899f58133355cae67ac4fd0b87f38b2efe1f8cf23870bbbb2ac534a6992b5ab31189a9ed42a9d637db6'
         'c2af601318bda69c8c7eba72b37cb6c1a63e052ee50c9e62fe257e2e820952ea92475ce25a573970d0ea3d80348dee7b9e9460563d4e4a1e02064e175a1d0968')
 
