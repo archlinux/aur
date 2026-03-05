@@ -1,0 +1,29 @@
+From ba90b0adffb5fedc894889b0962c22fff5bb748d Mon Sep 17 00:00:00 2001
+From: Tomas Hrnciar <thrnciar@redhat.com>
+Date: Thu, 7 Jan 2021 11:46:29 +0100
+Subject: [PATCH] fix Boost with Python 3.10
+
+---
+ src/exec.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/exec.cpp b/src/exec.cpp
+index 171c6f41..caa7d086 100644
+--- a/libs/python/src/exec.cpp
++++ b/libs/python/src/exec.cpp
+@@ -106,10 +106,10 @@ object BOOST_PYTHON_DECL exec_file(char const *filename, object global, object l
+   char *f = const_cast<char *>(filename);
+   // Let python open the file to avoid potential binary incompatibilities.
+ #if PY_VERSION_HEX >= 0x03040000
+-  FILE *fs = _Py_fopen(f, "r");
++  FILE *fs = fopen(f, "r");
+ #elif PY_VERSION_HEX >= 0x03000000
+   PyObject *fo = Py_BuildValue("s", f);
+-  FILE *fs = _Py_fopen(fo, "r");
++  FILE *fs = fopen(fo, "r");
+   Py_DECREF(fo);
+ #else
+   PyObject *pyfile = PyFile_FromString(f, const_cast<char*>("r"));
+-- 
+2.29.2
+

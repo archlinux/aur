@@ -9,7 +9,7 @@ _pkgname=boost
 pkgver=1.65.1
 _boostver=${pkgver//./_}
 _mainpkgver=1.65
-pkgrel=10
+pkgrel=11
 pkgdesc="Free peer-reviewed portable C++ source libraries - compat version"
 arch=('x86_64')
 url='https://www.boost.org/'
@@ -22,7 +22,7 @@ source=(https://archives.boost.io/release/${pkgver}/source/boost_${_boostver}.ta
     https://github.com/boostorg/python/commit/660487c43fde76f3e64f1cb2e644500da92fe582.patch
     https://github.com/boostorg/python/commit/0474de0f6cc9c6e7230aeb7164af2f7e4ccf74bf.patch
     https://github.com/boostorg/python/commit/99a5352b5cf790c559a7b976c1ba99520431d9d1.patch
-    https://src.fedoraproject.org/fork/thrnciar/rpms/boost/raw/047403fc9c6ea6f581f38214f680f3173e157138/f/boost-1.73-python3.10-Py_fopen.patch
+    boost-1.73-python3.10-Py_fopen.patch::https://src.fedoraproject.org/fork/thrnciar/rpms/boost/raw/047403fc9c6ea6f581f38214f680f3173e157138/f/boost-1.73-python3.10-Py_fopen.patch
     500194edb7833d0627ce7a2595fec49d0aae2484_python_tree.patch
     500194edb7833d0627ce7a2595fec49d0aae2484_boost_tree.patch)
 #source=(https://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}_${_boostver}.tar.bz2)

@@ -1,7 +1,7 @@
 pkgbase = boost-65-compat
 	pkgdesc = Free peer-reviewed portable C++ source libraries - compat version
 	pkgver = 1.65.1
-	pkgrel = 10
+	pkgrel = 11
 	url = https://www.boost.org/
 	arch = x86_64
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = boost-65-compat
 	source = https://github.com/boostorg/python/commit/660487c43fde76f3e64f1cb2e644500da92fe582.patch
 	source = https://github.com/boostorg/python/commit/0474de0f6cc9c6e7230aeb7164af2f7e4ccf74bf.patch
 	source = https://github.com/boostorg/python/commit/99a5352b5cf790c559a7b976c1ba99520431d9d1.patch
-	source = https://src.fedoraproject.org/fork/thrnciar/rpms/boost/raw/047403fc9c6ea6f581f38214f680f3173e157138/f/boost-1.73-python3.10-Py_fopen.patch
+	source = boost-1.73-python3.10-Py_fopen.patch::https://src.fedoraproject.org/fork/thrnciar/rpms/boost/raw/047403fc9c6ea6f581f38214f680f3173e157138/f/boost-1.73-python3.10-Py_fopen.patch
 	source = 500194edb7833d0627ce7a2595fec49d0aae2484_python_tree.patch
 	source = 500194edb7833d0627ce7a2595fec49d0aae2484_boost_tree.patch
 	sha256sums = 9807a5d16566c57fd74fb522764e0b134a8bbe6b6e8967b83afefd30dcd3be81
