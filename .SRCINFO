@@ -42,9 +42,9 @@ pkgbase = trivalent-bin
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
 	optdepends = qt6-base: QT UI support
-	source = https://repo.secureblue.dev/Packages/trivalent-145.0.7632.116-442971.x86_64.rpm
-	source = https://repo.secureblue.dev/Packages/trivalent-qt6-ui-145.0.7632.116-442971.x86_64.rpm
-	sha256sums = f3ec93ab783933f6f3da8eacb513bcd8ed4e2c63174b637f4bde49bf4bba292f
-	sha256sums = 3515a2846b341b1d053152f1e198cf81a7de405d97f9da0ff18e3fab360cc2e6
+	source = https://repo.secureblue.dev/Packages/trivalent-145.0.7632.159-443143.x86_64.rpm
+	source = https://repo.secureblue.dev/Packages/trivalent-qt6-ui-145.0.7632.159-443143.x86_64.rpm
+	sha256sums = 4e383279ab8fa69a69925b17794e46128db257653ec373418eedc1d6c6ffdc8a
+	sha256sums = e3cd6426106ccf925492d8660f3faaa789467290e06f60914fe024b5f493c962
 
 pkgname = trivalent-bin
