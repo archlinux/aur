@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=MarkLite
+GenericName=MarkLite
+Comment=A lightweight Markdown viewer and editor
+Exec=marklite %U
+Icon=marklite
+Categories=Development;Utility;
+Keywords=Markdown;MarkLite;
+MimeType=text/markdown;text/x-markdown;
+StartupNotify=true
+Terminal=false

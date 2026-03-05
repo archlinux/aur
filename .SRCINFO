@@ -1,0 +1,19 @@
+pkgbase = marklite
+	pkgdesc = A lightweight Markdown viewer and editor for Linux
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://gitlab.com/mchilson/marklite
+	arch = x86_64
+	license = MIT
+	makedepends = flutter
+	makedepends = clang
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	depends = gtk3
+	source = marklite-0.3.0.tar.gz::https://gitlab.com/mchilson/marklite/-/archive/b43e62aa36c78c0050f60bfbdf4862db72142f0a/marklite-b43e62aa36c78c0050f60bfbdf4862db72142f0a.tar.gz
+	source = marklite.desktop
+	sha256sums = 3535a6c3f4db7260cf27930fd2460216014b8732036fd534872b0ad00acf4f38
+	sha256sums = SKIP
+
+pkgname = marklite
