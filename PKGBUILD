@@ -2,7 +2,7 @@
 
 _pkgname=arduino-cli-manager
 pkgname=${_pkgname}-git
-pkgver=r61.29d67dd
+pkgver=v2.0.0.r4.718d108
 pkgrel=1
 pkgdesc="A powerful interactive shell script to manage Arduino CLI projects"
 arch=('any')
