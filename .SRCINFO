@@ -1,0 +1,18 @@
+pkgbase = agsh
+	pkgdesc = An agentic shell where you speak human, not bash
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://docs.agsh.sh
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	depends = sqlite
+	source = agsh-0.1.2.tar.gz::https://github.com/k4yt3x/agsh/archive/0.1.2.tar.gz
+	sha256sums = 4f8624a35ecbae578c2e1274c1579d82c51c8a8ec61a2068a19252a84221358e
+
+pkgname = agsh
