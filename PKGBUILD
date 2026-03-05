@@ -3,7 +3,7 @@
 # Contributor: Fhilipe Coelho <fhilipecoelho.dev@gmail.com>
 
 pkgname=hydra-launcher-bin
-pkgver=3.9.0
+pkgver=3.9.1
 pkgrel=1
 pkgdesc="Hydra Launcher is an open-source gaming platform created to be the single tool that you need in order to manage your gaming library."
 arch=('x86_64')
@@ -41,7 +41,7 @@ depends=('alsa-lib'
 options=('!strip')
 source=("${url}/releases/download/v${pkgver}/hydralauncher_${pkgver}_amd64.deb"
         "${pkgname}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
-sha256sums=('72ac16d9f49d6f533c8e291212438b4a95221aa12d06a7a45a5437119e2ebdaf'
+sha256sums=('624d77db4612b03fed4cce5d046c1a13aa842192737871c1af5a0e7fa937aec3'
             '32619612c2e0223e86c4908747ec14bef64c3c423fee80910c1aa944769b66f9')
 
 package() {
