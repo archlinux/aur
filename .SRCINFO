@@ -1,0 +1,14 @@
+pkgbase = multiworld-gg-bin
+	pkgdesc = MultiworldGG Multi-Game Randomizer and Server - Fork of Archipelago
+	pkgver = 0.7.224
+	pkgrel = 1
+	url = https://github.com/MultiworldGG/MultiworldGG
+	arch = x86_64
+	license = GPL-3.0
+	depends = python
+	provides = multiworld-gg
+	conflicts = multiworld-gg
+	source = https://github.com/MultiworldGG/MultiworldGG/releases/download/0.7.224/MultiworldGG_0.7.224_linux-x86_64.tar.gz
+	sha256sums = 7ad25be43de91d376fe235947f4c03c6d872f347042f4bab79f792d9e78a9ff6
+
+pkgname = multiworld-gg-bin
