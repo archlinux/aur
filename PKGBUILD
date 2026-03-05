@@ -7,7 +7,7 @@
 
 _pkgname=cura
 pkgname=$_pkgname-bin
-pkgver=5.11.0
+pkgver=5.12.0
 pkgrel=1
 pkgdesc='State-of-the-art slicer app to prepare your 3D models for your 3D printer'
 url='https://ultimaker.com/software/ultimaker-cura'
@@ -26,7 +26,7 @@ source=(
 )
 
 sha512sums=(
-  '507947b6c799ed5d07f7dd9cd222bf19ca5651d1621f94c8bb232633bbb21dc97cfd0f247544740fb2330fd0595b8a989d15af6a84ed4b545e3b93ae02b42503'
+  'f805367d9bd5ad87bb66e53aa4504d4fb98f5b06cee7dbb898ed5f102594f6cc1d59551fdb68903d6d6cd15fa948b300c29e2ef302e2ae5e3f211caf2322e851'
   'fd58d0df072b27bb541d8160ab4d0c21a7de2ee74835d72bc96dc46f1b78ca46df43aa027215974227912d064e4c9273dc7ae8f84ee0205241b80283ed095133'
 )
 
