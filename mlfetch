@@ -1,0 +1,59 @@
+# MLFetch - the fetch for minimalism
+# By MLevankov
+
+#!/bin/sh
+
+init_fetch() {
+	export os=$(uname -r)
+	export date=$(date)
+	export user_name=$(whoami)
+	export host_name=$(cat /etc/hostname)
+	export sh=$(basename "${SHELL}")
+	export uptime=$(uptime)
+}
+
+show_help() {
+	echo -e "--help - Showing help\n"
+	echo "--logo - Set logo"
+	echo -e "Example: mlfetch --logo logo/freebsd.txt\n"
+	echo "--log - Saves info to log"
+	echo "Example: mlfetch --log fetch.log"
+}
+
+show_fetch() {
+	echo "OS: ${os}"
+	echo "Date: ${date}"
+	echo "Username: ${user_name}"
+	echo "Hostname: ${host_name}"
+	echo "Terminal: ${TERM}"
+	echo "Shell: ${sh}"
+	echo "Uptime: ${uptime}"
+}
+
+save_to_log() {
+	cat > $log << EOF
+OS: ${os}
+Date: ${date}
+Username: ${user_name}
+Hostname: ${host_name}
+Terminal: ${TERM}
+Shell: ${sh}
+Uptime: ${uptime}
+EOF
+}
+
+init_fetch
+
+if [ "$1" = "--log" ]
+then
+	log="$2" save_to_log
+elif [ "$1" = "--logo" ]
+then
+	cat "$2"
+	show_fetch
+elif [ "$1" = "--help" ]
+then
+	show_help
+else
+	show_fetch
+fi

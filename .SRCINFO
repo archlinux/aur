@@ -1,0 +1,13 @@
+pkgbase = mlfetch
+	pkgdesc = A fetch for minimalizm. Modified for Arch Linux. cr4at4d by MLevankov
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/MLevankov/mlfetch
+	arch = x86_64
+	license = BSD 3-Clause
+	makedepends = base-devel
+	depends = bash
+	source = mlfetch
+	md5sums = SKIP
+
+pkgname = mlfetch
