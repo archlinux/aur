@@ -1,13 +1,16 @@
 pkgbase = splunk
 	pkgdesc = Statistical analysis and search tool for logs and machine data
 	pkgver = 10.2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 3
 	url = https://www.splunk.com/
 	install = splunk.install
 	arch = x86_64
 	license = custom
 	options = !strip
+	options = libtool
+	options = staticlibs
+	options = !zipman
 	source = splunk.service
 	source = splunk.sysusers
 	source = splunk.tmpfiles
