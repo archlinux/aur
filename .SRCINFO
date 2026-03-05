@@ -1,7 +1,7 @@
 pkgbase = meshiji
 	pkgdesc = A modern, flutter-based file explorer
-	pkgver = 1.2.0
-	pkgrel = 3
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://github.com/Veridian-Zenith/meshiji
 	arch = x86_64
 	license = OSL-3.0
@@ -20,7 +20,7 @@ pkgbase = meshiji
 	depends = libxrender
 	depends = libxtst
 	depends = xz
-	source = git+https://github.com/Veridian-Zenith/meshiji.git#tag=v1.2.0
-	sha256sums = 1f5b3a943afc99a2a811a5764c8a380108933364c0fa8e1895c2eac933ad5fbd
+	source = git+https://github.com/Veridian-Zenith/meshiji.git#tag=v1.2.2-beta
+	sha256sums = 0a3e67cb7b5a346412f354ffb139db5fb9295e1d039393b86439d194e34eea4c
 
 pkgname = meshiji
