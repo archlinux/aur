@@ -1,13 +1,13 @@
-_commit="f01f599526784492bd892af943b3c2b08bdc4ac0"
-_solarxr_commit="b0147eeffaa97a16400de174383c91be2ec31ab5"
+_commit="0236a05f265f3fbeeb1c71083acbb486878da064"
+_solarxr_commit="fa2895b19a53d9b1686de8c2a6efe2b3e9ca4fc6"
 _pkgname="slimevr-server"
 pkgbase="${_pkgname}"
 pkgname=(
   "slimevr-server"
   "slimevr-gui"
 )
-pkgver="18.1.0"
-pkgrel="3"
+pkgver="18.2.0"
+pkgrel="1"
 pkgdesc="Server for SlimeVR Full Body Tracking System"
 arch=("x86_64")
 url="https://github.com/SlimeVR/SlimeVR-Server"

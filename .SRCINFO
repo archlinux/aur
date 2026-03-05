@@ -1,7 +1,7 @@
 pkgbase = slimevr-server
 	pkgdesc = Server for SlimeVR Full Body Tracking System
-	pkgver = 18.1.0
-	pkgrel = 3
+	pkgver = 18.2.0
+	pkgrel = 1
 	url = https://github.com/SlimeVR/SlimeVR-Server
 	arch = x86_64
 	license = MIT
@@ -15,8 +15,8 @@ pkgbase = slimevr-server
 	makedepends = webkit2gtk-4.1
 	makedepends = java-runtime-headless-openjdk=17
 	options = !lto
-	source = slimevr-server::git+https://github.com/SlimeVR/SlimeVR-Server.git#commit=f01f599526784492bd892af943b3c2b08bdc4ac0
-	source = solarxr-protocol::git+https://github.com/SlimeVR/SolarXR-Protocol.git#commit=b0147eeffaa97a16400de174383c91be2ec31ab5
+	source = slimevr-server::git+https://github.com/SlimeVR/SlimeVR-Server.git#commit=0236a05f265f3fbeeb1c71083acbb486878da064
+	source = solarxr-protocol::git+https://github.com/SlimeVR/SolarXR-Protocol.git#commit=fa2895b19a53d9b1686de8c2a6efe2b3e9ca4fc6
 	source = slimevr-server-bin
 	source = slimevr-server.service
 	sha512sums = SKIP
