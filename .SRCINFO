@@ -1,6 +1,6 @@
 pkgbase = chough-bin
 	pkgdesc = Fast ASR CLI using Parakeet TDT 0.6b V3
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/hyperpuncher/chough
 	license = MIT
@@ -9,6 +9,6 @@ pkgbase = chough-bin
 	provides = chough
 	arch = x86_64
 	source_x86_64 = https://github.com/hyperpuncher/chough/releases/download/v${pkgver}/chough_v${pkgver}_linux_x86_64.tar.gz
-	sha256sums_x86_64 = 84373d43d7a4f5bf03576b0424a1890978ab911170a1c5c9ecd1d329172ac8d2
+	sha256sums_x86_64 = 5b994cd9a53f8106630caff52baf54ab3e01aec1305d38f3003d198d119c8ec3
 	
 pkgname = chough-bin
