@@ -1,6 +1,6 @@
 # Maintainer: Partha Pratim Gogoi 160270614+rugbedbugg@users.noreply.github.com
 pkgname=resonanceid-cli
-pkgver=0.1.2
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Shazam-style audio fingerprinting CLI that identifies songs from song clips"
 arch=('x86_64')
@@ -37,4 +37,4 @@ package() {
     # readme
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
-  
+
