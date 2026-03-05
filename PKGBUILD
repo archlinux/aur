@@ -1,6 +1,6 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=s3sh
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="interactive S3 shell with Unix-like commands and archive navigation"
 url="https://github.com/dacort/s3sh"
@@ -31,4 +31,4 @@ package() {
     install -Dm644 "${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('46f4417b453bb5df1a107c32e311e9c91d7128b2a711777ebb4ccd920806cd8e6a08793127e97092e7009e3efe482af6e3f6e2af11abef1f688e06da5119147c')
+sha512sums=('025f9fb24048ac49ff4ac1216f8970c961d35c7488eee0d892caff6e18703b428fa1f1a2715e7bdf2d6e698c5faf59b6d314147e7155896c617972783eae5534')
