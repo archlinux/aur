@@ -1,7 +1,7 @@
 # Maintainer: vlensys <monkeeeloll@gmail.com>
 
 pkgname=hyprbole
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Terminal UI for managing Hyprland config"
 arch=('any')
