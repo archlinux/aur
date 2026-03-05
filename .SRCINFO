@@ -1,0 +1,55 @@
+pkgbase = rosec-git
+	pkgdesc = Read-only Secret Service daemon with Bitwarden backend (git)
+	pkgver = r0.unknown
+	pkgrel = 1
+	url = https://github.com/jmylchreest/rosec
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkg-config
+	makedepends = dbus
+	makedepends = pam
+	options = !lto
+	source = rosec-git::git+https://github.com/jmylchreest/rosec.git
+	sha256sums = SKIP
+
+pkgname = rosec-git
+	pkgdesc = Read-only Secret Service daemon with Bitwarden backend (git)
+	install = rosec.install
+	depends = dbus
+	depends = pam
+	optdepends = rosec-provider-bitwarden-pm-git: Bitwarden Password Manager provider
+	optdepends = rosec-provider-bitwarden-sm-git: Bitwarden Secrets Manager provider
+	optdepends = rosec-provider-gnome-keyring-git: GNOME Keyring read-only provider
+	optdepends = libnotify: desktop notifications on lock/unlock
+	provides = rosec
+	provides = org.freedesktop.secrets
+	conflicts = rosec
+	conflicts = rosec-bin
+
+pkgname = rosec-provider-bitwarden-pm-git
+	pkgdesc = Bitwarden Password Manager provider for rosec (git)
+	arch = any
+	depends = rosec-git
+	provides = rosec-provider-bitwarden-pm
+	conflicts = rosec-provider-bitwarden-pm
+	conflicts = rosec-provider-bitwarden-pm-bin
+
+pkgname = rosec-provider-bitwarden-sm-git
+	pkgdesc = Bitwarden Secrets Manager provider for rosec (git)
+	arch = any
+	depends = rosec-git
+	provides = rosec-provider-bitwarden-sm
+	conflicts = rosec-provider-bitwarden-sm
+	conflicts = rosec-provider-bitwarden-sm-bin
+
+pkgname = rosec-provider-gnome-keyring-git
+	pkgdesc = GNOME Keyring read-only provider for rosec (git)
+	arch = any
+	depends = rosec-git
+	provides = rosec-provider-gnome-keyring
+	conflicts = rosec-provider-gnome-keyring
+	conflicts = rosec-provider-gnome-keyring-bin
