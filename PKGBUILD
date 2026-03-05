@@ -1,7 +1,7 @@
 # Maintainer: LitiaEeloo <litiaeeloo@gmail.com>
 
 pkgname=blooming-blockery-bin
-pkgver=0.0.17
+pkgver=0.0.18
 pkgrel=1
 pkgdesc="A structured document editor for designers and developers."
 url="https://github.com/photonfoxlime/bb"
@@ -9,8 +9,8 @@ license=("Apache-2.0")
 arch=("x86_64")
 provides=("blooming-blockery")
 conflicts=("blooming-blockery")
-source=("https://github.com/photonfoxlime/bb/releases/download/v0.0.17/blooming-blockery-x86_64-unknown-linux-gnu.tar.xz")
-sha256sums=('08407bfbfffab4e52454a96b2c0e3a4a65aaea3eaef2d1c8a244c60cbe6dfd33')
+source=("https://github.com/photonfoxlime/bb/releases/download/v0.0.18/blooming-blockery-x86_64-unknown-linux-gnu.tar.xz")
+sha256sums=('cf69703412026e0056d7600a7e1cad585b4944a7d0cdac00a67076dc49d47cb9')
 
 package() {
     install -Dm755 blooming-blockery-x86_64-unknown-linux-gnu/blooming-blockery -t "$pkgdir/usr/bin"
