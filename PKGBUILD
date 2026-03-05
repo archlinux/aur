@@ -1,6 +1,6 @@
 pkgname=x3dctl
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Deterministic workload policy controller for AMD X3D processors"
 arch=('x86_64')
 url="https://github.com/GrandBIRDLizard/X3Dctl"
@@ -24,7 +24,8 @@ package() {
   install -Dm644 etc/x3dctl.conf \
     "${pkgdir}/etc/x3dctl.conf"
 
-  install -Dm440 packaging/x3dctl.sudoers \
+  install -dm750 "${pkgdir}/etc/sudoers.d"
+  install -m440 packaging/x3dctl.sudoers \
     "${pkgdir}/etc/sudoers.d/x3dctl"
 
   install -Dm644 LICENSE \

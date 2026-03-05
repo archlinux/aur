@@ -1,7 +1,7 @@
 pkgbase = x3dctl
 	pkgdesc = Deterministic workload policy controller for AMD X3D processors
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GrandBIRDLizard/X3Dctl
 	arch = x86_64
 	license = MIT
