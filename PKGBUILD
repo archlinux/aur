@@ -1,7 +1,7 @@
 # Maintainer: Shuv <shuv@example.com>
 
 pkgname=shuvoice-git
-pkgver=0.1.0.r0
+pkgver=0.1.2.r0
 pkgrel=1
 pkgdesc="Streaming speech-to-text overlay for Hyprland/Wayland with pluggable ASR backends"
 arch=('x86_64')
@@ -11,12 +11,15 @@ provides=('shuvoice')
 conflicts=('shuvoice')
 
 # NOTE:
-# - ASR backends are optional and can be installed via distro packages or pip/uv.
+# - Default Sherpa backend runtime is included via python-sherpa-onnx
+#   (typically provided by python-sherpa-onnx-bin on AUR).
+# - NeMo/Moonshine backends are optional and can be installed via distro packages or pip/uv.
 # - python-pytorch-cuda enables GPU acceleration for NeMo/Sherpa CUDA backends.
 depends=(
   'python'
   'python-numpy'
   'python-sounddevice'
+  'python-sherpa-onnx'
   'gtk4'
   'gtk4-layer-shell'
   'python-gobject'
@@ -31,7 +34,7 @@ optdepends=(
   'python-pytorch-cuda: GPU acceleration for NeMo and Sherpa CUDA backends'
   'python-tomli: TOML parsing for Python < 3.11'
   'python-nemo-toolkit: NeMo ASR backend (if packaged for your Arch setup)'
-  'python-pip: install backend wheels (nemo-toolkit[asr], sherpa-onnx, useful-moonshine-onnx)'
+  'python-pip: install optional backend wheels (nemo-toolkit[asr], useful-moonshine-onnx)'
   'ydotool: alternative text injection utility'
   'espeak-ng: TTS engine for scripts/tts_roundtrip.py'
 )
@@ -46,7 +49,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/shuvoice"
-  printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "0.1.2.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
