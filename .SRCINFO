@@ -1,7 +1,7 @@
 pkgbase = arch-smart-update
-	pkgdesc = Universal Smart Update Wrapper for Arch Linux and its derivatives
+	pkgdesc = Not sure when to update Arch Linux or its derivative? This script will help you decide!
 	pkgver = 2.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/motorrin/Arch_Smart_Update
 	arch = any
 	license = MIT

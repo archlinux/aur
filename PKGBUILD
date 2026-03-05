@@ -1,8 +1,8 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
 pkgver=2.5.1
-pkgrel=1
-pkgdesc="Universal Smart Update Wrapper for Arch Linux and its derivatives"
+pkgrel=2
+pkgdesc="Not sure when to update Arch Linux or its derivative? This script will help you decide!"
 arch=('any')
 url="https://github.com/motorrin/Arch_Smart_Update"
 license=('MIT')
