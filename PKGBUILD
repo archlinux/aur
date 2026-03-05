@@ -2,8 +2,8 @@
 # Contributor: Edmund Lodewijks <echo "==gCt92YuwWah1WYlR3byBHQ4VnbpxGajJXY" | rev | base64 -d>
 
 pkgname=oniux
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='Isolate applications over Tor using Linux namespaces'
 arch=(x86_64)
 url='https://gitlab.torproject.org/tpo/core/oniux'
@@ -14,7 +14,7 @@ options=(!lto)
 source=("git+$url.git#tag=v$pkgver?signed")
 validpgpkeys=('772628464C6E8F56DBB5ACEC4CBE96203A1A78A7'  # Clara Engler <cve@cve.cx>
               '1C1BC007A9F607AA8152C040BEA7B180B1491921') # Alexander Færøy <ahf@0x90.dk>
-b2sums=('99116de8715d0ff0d84a2ccd3a0f13e63140378264d13844241e19f976c9dcc9fa97189bead63285329fe1c3f8e6d359d34b386e9aeae8ac250e84bcb17d00ee')
+b2sums=('02f24f21b10dfcb3f5886404dba30c800008dbc24de178e7ecd91cf3e844eefa778033131644716873bedab5c3557f7b3f9bb224e2963f7f1c746b5ad1b337f3')
 
 prepare() {
     cd oniux
