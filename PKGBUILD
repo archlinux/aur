@@ -1,6 +1,6 @@
 # Maintainer: tequa
 pkgname=mkinitcpio-wifi
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="mkinitcpio hook to enable wifi remote access"
 arch=(any)
