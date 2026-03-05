@@ -1,13 +1,13 @@
 pkgbase = blooming-blockery-bin
 	pkgdesc = A structured document editor for designers and developers.
-	pkgver = 0.0.5
-	pkgrel = 2
+	pkgver = 0.0.17
+	pkgrel = 1
 	url = https://github.com/photonfoxlime/bb
 	arch = x86_64
 	license = Apache-2.0
 	provides = blooming-blockery
 	conflicts = blooming-blockery
-	source = https://github.com/photonfoxlime/bb/releases/download/v0.0.5/blooming-blockery-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums = d8ab7656894abff4d15770dc22ce9d11592b95a6bffedf793f121eb7462f5911
+	source = https://github.com/photonfoxlime/bb/releases/download/v0.0.17/blooming-blockery-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums = 08407bfbfffab4e52454a96b2c0e3a4a65aaea3eaef2d1c8a244c60cbe6dfd33
 
 pkgname = blooming-blockery-bin
