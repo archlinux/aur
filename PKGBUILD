@@ -1,5 +1,5 @@
 pkgname=aurora-gui-bin
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Prebuilt Wayland-first GTK4 GUI for Arch Linux package management (pacman + AUR via yay/paru)"
 arch=('x86_64')

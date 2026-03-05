@@ -1,6 +1,6 @@
 pkgbase = aurora-gui-bin
 	pkgdesc = Prebuilt Wayland-first GTK4 GUI for Arch Linux package management (pacman + AUR via yay/paru)
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/ahmoodio/aurora
 	install = aurora.install
@@ -19,7 +19,7 @@ pkgbase = aurora-gui-bin
 	conflicts = aurora-gui
 	conflicts = aurora-gui-git
 	conflicts = aurora-pacman-gui-git
-	source = aurora-gui-bin-0.1.9.tar.gz::https://github.com/ahmoodio/aurora/releases/download/v0.1.9/aurora-linux-x86_64.tar.gz
+	source = aurora-gui-bin-0.1.10.tar.gz::https://github.com/ahmoodio/aurora/releases/download/v0.1.10/aurora-linux-x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = aurora-gui-bin
