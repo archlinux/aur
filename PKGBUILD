@@ -4,8 +4,8 @@
 
 _name="mpm"
 pkgname="matlab-${_name}"
-_commit="577e541e76f51d2973f19cf5aa77e103efb61170"
-pkgver=2026.1+r137.g577e541
+_commit="9c0797e8124b674c37f464d9889ce15dcf8a6e47"
+pkgver=2026.2+r139.g9c0797e
 _pkgver="${pkgver%+*}"
 pkgrel=1
 epoch=1
@@ -36,8 +36,8 @@ source=(
 source_x86_64=(
   "${pkgname}-${_pkgver}-x86_64::https://ssd.mathworks.com/supportfiles/downloads/${_name}/${_pkgver}/glnxa64/${_name}"
 )
-sha256sums=('97692dd8d42ef8c619c6b991a75f4bfac879937492e398573a12c601584ccc60')
-sha256sums_x86_64=('fabde725878ed1af771c48f63ba4e2d9d5094e6f0a46d5fec1e101256117dfd5')
+sha256sums=('0e56d3b20330fc0047e6ecfd65d193505ed6811bf28250d943387460b5e935c8')
+sha256sums_x86_64=('95bf86d6c6b800c8e6db68baa5c36b412c64d514f7a01a5ad9d42da864415f53')
 
 pkgver() {
   cd "${srcdir}/${_pkgsrc}"
