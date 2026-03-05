@@ -2,7 +2,7 @@
 
 pkgname=linux-beep-music
 _gitname=beeps
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Collection of beep melodies"
 arch=('any')
@@ -16,6 +16,7 @@ package() {
   cd "${_gitname}"
   install -m 755 -D aerodynamic.sh       "${pkgdir}/usr/bin/beep-song-aerodynamic"
   install -m 755 -D alarm.sh             "${pkgdir}/usr/bin/beep-song-alarm"
+  install -m 755 -D badapple.sh          "${pkgdir}/usr/bin/beep-song-badapple"
   install -m 755 -D beveryhillscop.sh    "${pkgdir}/usr/bin/beep-song-beveryhillscop"
   install -m 755 -D carramelldansen.sh   "${pkgdir}/usr/bin/beep-song-carramelldansen"
   install -m 755 -D ff-victory.sh        "${pkgdir}/usr/bin/beep-song-ff-victory"
