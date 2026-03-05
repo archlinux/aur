@@ -1,5 +1,5 @@
 pkgname=embuer
-pkgver=0.2.3
+pkgver=0.2.19
 pkgrel=1
 pkgdesc="A small session runner an systemd user slice replacement for embedded systems"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=(
 optdepends=()
 makedepends=('cargo')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b1188e97192ddb497016e9967cf2b93f6098dcac7a2d423c6c7cf4bc9daedcbf')
+sha256sums=('332665d9651bab8952c95e141b32ee15c3ab07f6d426c23ecddcd1e915fdc38d')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
