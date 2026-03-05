@@ -157,7 +157,7 @@ b2sums=('d292c6f62caf0076be25eda28311fe7a7f93fe3e7e2a2ea5f0f794818d2012fd0fba45f
         'SKIP'
         'SKIP'
         'SKIP'
-        '400270990c63a248f9ad298580c9efe8c7757bcec111375ffeb8fbae79d1b855ab8bfd270b7efbccbf442bcdb2a9336e08de8a3e458533b3d7ccffbb6d1d43bc'
+        '8c91e931f34fcc1cc5d916572e9808435bbc4a853d80af92a5484b4bb1111ef3b2a1c58283b97c2c3071de3177a124669004855f7ebad0734b0941714e3baf4f'
         'af8c724ed80898ae3875a295ad6bd4d18d90f8a9124f6cff6d1b2f525bf7806fe61306e739c1f7362fbd8d0e4f8ba57d0e3bf925ea3f7a78a0a98f26722db147'
         '0a8fc110a306e81beeb9ddfb3a1ddfd26aeda5e3f7adfb0f7c9bc3fd999c2dde62e0b407d3eca573097a53fd97329214e30e8767fb38d770197c7ec2b53daf18'
         '20d044c5c80354af5ed63847fa4332e96cbfc32a351788f6458fb92b322de7f64b10c188ff26e4f34e422cfe30e082c3ca23ee3e9094616c142aa53588dd451e'
@@ -245,7 +245,9 @@ prepare() {
   git checkout dfb664994c1e5056961c90d5e4f70bf7acc8af10
   cd ../..
 
+  # Avoid using /usr/include along with -isystem
   # https://bugs.archlinux.org/task/64981
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/python-pytorch/-/issues/37
   patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
 
   # patch python dependencies in pyproject.toml
