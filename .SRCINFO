@@ -1,6 +1,6 @@
 pkgbase = meshcore-open-git
 	pkgdesc = Open-source Flutter client for MeshCore LoRa mesh networking devices.
-	pkgver = alpha6+44.r252.20260218.9437846
+	pkgver = alpha6+185.r393.20260304.7d8e049
 	pkgrel = 1
 	url = https://github.com/zjs81/meshcore-open
 	arch = i686
@@ -38,7 +38,7 @@ pkgbase = meshcore-open-git
 	depends = libpango-1.0.so
 	depends = libpangocairo-1.0.so
 	optdepends = hicolor-icon-theme: For hicolor theme hierarchy.
-	provides = meshcore-open=alpha6+44.r252.20260218.9437846
+	provides = meshcore-open=alpha6+185.r393.20260304.7d8e049
 	conflicts = meshcore-open
 	source = meshcore-open::git+https://github.com/zjs81/meshcore-open.git
 	source = meshcore-open.desktop
