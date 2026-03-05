@@ -2,7 +2,7 @@
 
 _suffix=rc
 pkgname="obs-studio-${_suffix}"
-_pkgver=32.1.0-rc2
+_pkgver=32.1.0-rc3
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 epoch=12
