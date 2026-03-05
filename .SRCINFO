@@ -1,6 +1,6 @@
 pkgbase = mkbrr
 	pkgdesc = A tool to create, modify and inspect torrent files
-	pkgver = 1.19.0
+	pkgver = 1.20.0
 	pkgrel = 1
 	url = https://github.com/autobrr/mkbrr
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mkbrr
 	makedepends = go
 	provides = mkbrr
 	conflicts = mkbrr
-	source = mkbrr-1.19.0.tar.gz::https://github.com/autobrr/mkbrr/archive/refs/tags/v1.19.0.tar.gz
-	sha256sums = 8e583a17cc2d7fa9384c42a269349474bf4441cbb5d3f701de36cd9fd7752255
+	source = mkbrr-1.20.0.tar.gz::https://github.com/autobrr/mkbrr/archive/refs/tags/v1.20.0.tar.gz
+	sha256sums = 6a9cadf38b8c5dfed76246eccf44cda1329f39022a720cab44ae5cc4d0c11888
 
 pkgname = mkbrr
