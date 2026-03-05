@@ -1,7 +1,7 @@
 # Maintainer: Jack Reitano <thnikk645@gmail.com>
 pkgname=ovolay-bin
 _pkgname=ovolay
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Volume Overlay (Binary Release)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/ovolay-arch.zip"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/thnikk/ovolay/main/LICENSE")
-sha256sums=('0103ac596f3fe5dbc6d4130bdf5b27b683f413ba66aaf73e8480e2cc6cfaddcc'
+sha256sums=('1756270e3577373683baaf61d04e17db9c44894826467222d437dcb05af90a4c'
             '8f02b1f2d8cd6f9b0b35d8f808d3a7a02804bc611bc78a5d17d0cd7c6b102e25')
 
 package() {
