@@ -1,6 +1,6 @@
 pkgbase = rosec-bin
 	pkgdesc = Read-only Secret Service daemon with Bitwarden backend
-	pkgver = 0.0.9
+	pkgver = 0.0.10
 	pkgrel = 1
 	url = https://github.com/jmylchreest/rosec
 	install = rosec.install
@@ -16,9 +16,9 @@ pkgbase = rosec-bin
 	provides = rosec
 	provides = org.freedesktop.secrets
 	conflicts = rosec
-	source_x86_64 = rosec-0.0.9-x86_64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.9/rosec-0.0.9-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = dbc9b7585c0ab1700016dbfaf986cae427b01d66ddbc57bb042c70a9eb7b2996
-	source_aarch64 = rosec-0.0.9-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.9/rosec-0.0.9-aarch64-unknown-linux-gnu.tar.gz
+	source_x86_64 = rosec-0.0.10-x86_64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.10/rosec-0.0.10-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = ec5c64a9899a150a12024d5ebba597c09d712e00168cf1d4c76133e8e163bbc6
+	source_aarch64 = rosec-0.0.10-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.10/rosec-0.0.10-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = @AARCH64_SHA256@
 
 pkgname = rosec-bin

@@ -3,13 +3,13 @@
 # AUR package: rosec-bin
 #
 # This PKGBUILD installs pre-built binaries from the GitHub release.
-# The release workflow renders this file by substituting 0.0.9 and
-# dbc9b7585c0ab1700016dbfaf986cae427b01d66ddbc57bb042c70a9eb7b2996 / @AARCH64_SHA256@ before committing to the AUR.
+# The release workflow renders this file by substituting 0.0.10 and
+# ec5c64a9899a150a12024d5ebba597c09d712e00168cf1d4c76133e8e163bbc6 / @AARCH64_SHA256@ before committing to the AUR.
 #
 # To build manually, replace the placeholders and run makepkg -si.
 
 pkgname=rosec-bin
-pkgver=0.0.9
+pkgver=0.0.10
 pkgrel=1
 pkgdesc="Read-only Secret Service daemon with Bitwarden backend"
 arch=('x86_64' 'aarch64')
@@ -38,7 +38,7 @@ source_aarch64=(
     "rosec-${pkgver}-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v${pkgver}/rosec-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
 )
 
-sha256sums_x86_64=('dbc9b7585c0ab1700016dbfaf986cae427b01d66ddbc57bb042c70a9eb7b2996')
+sha256sums_x86_64=('ec5c64a9899a150a12024d5ebba597c09d712e00168cf1d4c76133e8e163bbc6')
 sha256sums_aarch64=('@AARCH64_SHA256@')
 
 package() {
@@ -64,18 +64,8 @@ package() {
     install -Dm644 "${srcdir_inner}/contrib/pam/rosec" \
         "${pkgdir}/etc/pam.d/rosec"
 
-    # Service activation files (shipped as reference examples — use
-    # `rosec enable` to generate them with correct binary paths at runtime)
-    install -Dm644 "${srcdir_inner}/contrib/systemd/rosecd.service" \
-        "${pkgdir}/usr/share/doc/${pkgname}/systemd/rosecd.service"
-    install -Dm644 "${srcdir_inner}/contrib/systemd/rosecd.socket" \
-        "${pkgdir}/usr/share/doc/${pkgname}/systemd/rosecd.socket"
-    install -Dm644 "${srcdir_inner}/contrib/dbus/org.freedesktop.secrets.service" \
-        "${pkgdir}/usr/share/doc/${pkgname}/dbus/org.freedesktop.secrets.service"
-    install -Dm644 "${srcdir_inner}/contrib/dbus/org.gnome.keyring.service" \
-        "${pkgdir}/usr/share/doc/${pkgname}/dbus/org.gnome.keyring.service"
-    install -Dm644 "${srcdir_inner}/contrib/autostart/rosecd.desktop" \
-        "${pkgdir}/usr/share/doc/${pkgname}/autostart/rosecd.desktop"
+    # Service activation files are generated at runtime by `rosec enable`
+    # with the correct binary paths — no static copies shipped.
 
     # Docs
     install -Dm644 "${srcdir_inner}/README.md" \
