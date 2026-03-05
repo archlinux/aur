@@ -1,6 +1,6 @@
 # Maintainer: Omni <team@omni.dev>
 pkgname=omnidotdev-terminal-bin
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="GPU-accelerated terminal emulator built to run everywhere (pre-built)"
 arch=('x86_64')
@@ -27,7 +27,7 @@ package() {
   tic -sx -o "$pkgdir/usr/share/terminfo" "$pkgname-$pkgver.terminfo"
   install -Dm644 "$pkgname-$pkgver-NOTICE" "$pkgdir/usr/share/doc/$pkgname/NOTICE"
 }
-sha256sums=('1225c1d653fa1833f058d14c172e801ae0af25a72159c86e7021d10420ca6a3e'
+sha256sums=('2604c0f0f23318dd36691fceae20f328604326266c9f047b2479ac66a402155f'
             'b9887bfd7879525cefd1df7eaf19eb0caab3429e886a4f9ee3752103335fd82e'
             'f1e389bb95778e9e8fdba238f5b57a9385a32049de00b867b44805693825e9fc'
             '0e2aa06d215a73ec5c073b39ddab21a33a187cc7a9df3c92e11a03ef3fa1aa84'
