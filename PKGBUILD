@@ -1,7 +1,7 @@
 # Maintainer: aarto <aarto@aur.archlinux.org>
 pkgname=turso
-pkgver=0.4.4
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc='Turso Database is an in-process SQL database, compatible with SQLite.'
 url='https://github.com/tursodatabase/turso'
 license=('MIT')
@@ -10,7 +10,7 @@ options=(!lto)
 depends=(oniguruma)
 makedepends=(cargo libaegis libgit2 mimalloc oniguruma simsimd)
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/source.tar.gz")
-sha256sums=('85c07166f32c1b5403dc6ff4bafb24784bcad151ee55308b5492126fd69ca281')
+sha256sums=('c77e6837be4dbac007096583c8fdbf2eea696ff93ba36d395cafea4021a3d00a')
 
 prepare() {
     cd "${pkgname}_cli-$pkgver"
