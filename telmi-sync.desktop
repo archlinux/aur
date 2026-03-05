@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Telmi Sync
 Comment=Create and synchronize stories and audio with TelmiOS
-Exec=telmi-sync
+Exec=telmi-sync --ozone-platform=x11
 Icon=telmi-sync
 Terminal=false
 Type=Application
