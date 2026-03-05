@@ -1,7 +1,7 @@
 # Maintainer: atomicfs <https://aur.archlinux.org/account/atomicfs>
 
 pkgname=robotframework
-pkgver=7.1.1
+pkgver=7.4.2
 pkgrel=1
 pkgdesc="A keyword-driven test automation framework"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(
   'python-wheel'
 )
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('50095a9191191a67592680846b8a9a98d0c439f77d96516b530fd0fa2a3829fe97df01c4883836160f99e1044a8801a2b49fb773f974c8ff0fb5718ef3dc7526')
+sha512sums=('9b897a2bf4c94840f87d9832f70e63c8797b6fec061ba441b418f1ce86304861a9806247f9da6a92ab0277314125396313d2cf7e435190866675ddf4353d17f2')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
