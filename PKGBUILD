@@ -8,7 +8,7 @@ url="https://github.com/soulaudio/soul-player"
 license=('AGPL3')
 depends=('gtk3' 'webkit2gtk' 'libayatana-appindicator')
 source=("${pkgname}-${pkgver}.deb::https://github.com/soulaudio/soul-player/releases/download/v${pkgver}/Soul.Player_${pkgver}_amd64.deb")
-sha256sums=('deae80cb0d626ed0d9d5e700dbcf88615d2611072a319c84d1085d45c26ed8c0')
+sha256sums=('36b6071d3c1d375b2f17cd37693f93cd34d7529cf07f460dbb3cc53dbddee246')
 
 package() {
     # Extract DEB package
