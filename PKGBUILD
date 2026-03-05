@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=siyuan-git
-pkgver=3.5.2.r0.g411bc7b
+pkgver=3.5.9.r0.gd03ebde
 _electronversion=39
 _nodeversion=22
 pkgrel=1
@@ -28,12 +28,8 @@ makedepends=(
     'curl'
     'pnpm'
 )
-source=(
-    "${pkgname//-/.}::git+${_ghurl}.git"
-    "${pkgname%-git}.sh"
-)
-sha256sums=('SKIP'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+source=("${pkgname%-git}.sh")
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname//-/.}"
     set -o pipefail
@@ -51,6 +47,11 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
+    cd "${srcdir}"
+    git clone \
+        --depth 1 \
+        "${_ghurl}" \
+        "${pkgname//-/.}"
     cd "${srcdir}/${pkgname//-/.}/app"
     _get_electron_version
     sed -i -e "
