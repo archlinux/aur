@@ -1,5 +1,5 @@
 diff --git a/apps/studio/electron-builder-config.js b/apps/studio/electron-builder-config.js
-index 9e2a2e7e2..d83c1a004 100644
+index a475cf5f3..e581eafee 100644
 --- a/apps/studio/electron-builder-config.js
 +++ b/apps/studio/electron-builder-config.js
 @@ -33,6 +33,8 @@ module.exports = {
@@ -10,8 +10,8 @@ index 9e2a2e7e2..d83c1a004 100644
 +  electronVersion: "%%ELECTRON_VERSION%%",
    extraResources: [
      {
-       from: './extra_resources/demo.db',
-@@ -133,24 +135,11 @@ module.exports = {
+       from: "node_modules/@beekeeperstudio/bks-ai-shell",
+@@ -141,24 +143,11 @@ module.exports = {
        role: "Editor"
      }
    ],
@@ -37,7 +37,7 @@ index 9e2a2e7e2..d83c1a004 100644
        'pacman'
      ],
      desktop: {
-@@ -159,63 +148,9 @@ module.exports = {
+@@ -169,66 +158,9 @@ module.exports = {
      publish: ['github']
    },
    pacman: {
@@ -90,13 +90,16 @@ index 9e2a2e7e2..d83c1a004 100644
 -    // FIXME: Add AppX/MSIX build back in once certificate issues resolved
 -    target: ['nsis', 'portable'],
 -    publish: ['github'],
--    sign: "./build/win/sign.js",
+-    signtoolOptions: {
+-      sign: "./build/win/sign.js",
+-    },
 -  },
 -  portable: {
 -    "artifactName": "${productName}-${version}-portable.exe",
 -  },
 -  nsis: {
--    oneClick: false
+-    oneClick: false,
+-    include: './build/win/msvc-redist.nsh'
 -  },
 -  appx: {
 -    applicationId: "beekeeperstudio",

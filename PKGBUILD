@@ -1,13 +1,13 @@
 # Maintainer: Daniel Peukert <daniel@peukert.cc>
 pkgname='beekeeper-studio'
-pkgver='5.5.7'
+pkgver='5.6.0'
 pkgrel='1'
 epoch='1'
 pkgdesc='Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/$pkgname/$pkgname"
 license=('GPL-3.0-only AND LicenseRef-BeekeeperStudioApplicationEULA')
-_electronpkg='electron32'
+_electronpkg='electron39'
 depends=("$_electronpkg")
 makedepends=('git' 'libxcrypt-compat' 'nodejs' 'python' 'yarn')
 provides=("$pkgname-ultimate=$pkgver")
@@ -18,16 +18,14 @@ source=(
 	'electron-builder-config.diff'
 	'fix-argv.diff'
 	'disable-update-checking.diff'
-	'update-dependencies.diff'
 	'missing-log-app-name.diff'
 	'LICENSE.md'
 )
-b2sums=('8c519728c10bca224ca24314aecf004577bb79427c0bbf7d91ba91970b5f8b96d6a00bf295094b9c9e05f546d95804081201fb6871c3434a92ca585fa43c6428'
+b2sums=('a4e2fcf5356a1b0f165c25071fa57d03552deb14d0494e0089d128a3460b261c7f9152ce227fe9b032596f79c62e66617799923617057f17aafe7f8a2baab5af'
         '54b46275a83a6099b22bc511a6293178abccccad6d1cc36bf812166f93f75b1379a3201dac9ee85e05cf7c3b0de7e94829fd3fb619ccca513924ebf3101850f0'
-        '1c40b0b82210152875b279d73244f6a81fdc2f79ccaa7965df77577adb19adc7907d1105e8e8645116c5a6d28e2c97f71b96818158493eb1594d6b26c8052214'
-        'bd2086856e6d42964f6a29051d4d9b732f6be7706c6a181e4193e45bcd39b5613a408d4780dc5a71f44d698ece0068132d135755c5f7fe80fd1ca03cc4b30aaa'
-        '258e8f585fc7f96f4964e9bddd79d7450b028611d63850934361d99e25a37eddcbf7effe3479826f1e508ae4b524870bc2a10b884c8e7bfeb6e298e30e555837'
-        '1ac5688a883c5ade4e72990901dd4a8308594b3a3864e576f6af9e0f638b532f22f0aafac246a5462b3a81e6775d054341f70aa644d12f89bb1f78365ecbc479'
+        '90163bb36201dfbf603c759768dba22451c9ec977b0402dfc183c54340abc4a20dc3823ff5e35a84359376551fde7200942bd67f26c9922a7da80c88797e3070'
+        '0e4a1f426ed0f69804461cdf5dad9edec67a4245db6a2075e5d2a921e7e6a047904800b343e87434ac0b268359861e0d93d3f62d69a772b3788ccb33c630e65c'
+        'beb73ad1b69f98fd565cdafbc1fad9604f0c1994b38398960537a60f2e3c74bd5705a0e522e68627a29b25d1f7b738aa94c543928ffdbe198c61b7258103a662'
         '36e0dab7e6e489a19cb6709a39a0f38f2f9a34200c7af297b94b8aa5e24ecdc3ec9451a0791d79ba72b7c51ad156d9abdb2b52deee7c3b3da3a5faa637480ebc'
         'e3c500691772f577a9f96b7672ba2f823eae58b9a22bd92bc1d9d0da73620d92a9c503b5d8850b59c6e8bf7126dfb0c23e6e2a738fb10865fc85a4a2a572fbdd')
 
@@ -47,9 +45,6 @@ prepare() {
 
 	# Replace package name, flag file name and Electron version in launcher script
 	sed -i -e "s/%%PKGNAME%%/$pkgname/g" -e "s/%%ELECTRON%%/$_electronpkg/g" -e 's/%%FLAGFILENAME%%/bks/g' "$srcdir/electron-launcher.sh"
-
-	# Set npm overrides for various dependencies to be compatible with current node and Linux versions
-	patch --forward -p1 < "$srcdir/update-dependencies.diff"
 
 	# Install dependencies
 	HUSKY=0 yarn install --ignore-engines
@@ -81,10 +76,17 @@ package() {
 	# Binary
 	install -Dm755 "$srcdir/electron-launcher.sh" "$pkgdir/usr/bin/$pkgname"
 
+	# Modify AppArmor profile and move it to the correct location
+	sed "s|\"/opt/Beekeeper Studio/$pkgname\"|Exec=\"/usr/bin/$pkgname\"|" -i 'linux-unpacked/resources/apparmor-profile'
+	install -dm755 "$pkgdir/etc/apparmor.d/"
+	install -Dm644 'linux-unpacked/resources/apparmor-profile' "$pkgdir/etc/apparmor.d/usr.bin.beekeeper-studio"
+	rm -f 'linux-unpacked/resources/apparmor-profile'
+
 	# Copy various resources (runtime dependencies, configs, demo files, etc.)
+	rm -f 'linux-unpacked/resources/app-update.yml'
+	rm -f 'linux-unpacked/resources/package-type'
 	install -dm755 "$pkgdir/usr/lib/"
 	cp -r --no-preserve=ownership --preserve=mode 'linux-unpacked/resources/' "$pkgdir/usr/lib/$pkgname/"
-	rm -f "$pkgdir/usr/lib/$pkgname/app-update.yml"
 
 	# Extract pacman archive and copy support files (desktop, icons, mime)
 	mkdir -p "$srcdir/$pkgname-$pkgver-pacman/"
