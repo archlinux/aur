@@ -4,16 +4,16 @@ pkgbase=openjph-git
 pkgname=(
     'openjph-git'
     'openjph-doc-git')
-pkgver=0.26.1.r0.g25940a1
+pkgver=0.26.3.r16.g43e4715
 pkgrel=1
 pkgdesc='Open-source implementation of JPEG2000 Part-15 (git version)'
 arch=('x86_64')
 url='https://github.com/aous72/OpenJPH/'
 license=('BSD-2-Clause')
 makedepends=(
+    'clang'
     'cmake'
     'doxygen'
-    'gcc14'
     'git'
     'libtiff')
 checkdepends=(
@@ -27,8 +27,8 @@ pkgver() {
 
 build() {
     # https://github.com/aous72/OpenJPH/issues/186
-    export CC='gcc-14'
-    export CXX='g++-14'
+    export CC='clang'
+    export CXX='clang++'
     
     cmake -B build -S OpenJPH \
         -G 'Unix Makefiles' \
@@ -53,7 +53,7 @@ package_openjph-git() {
         'libstdc++'
         'libtiff')
     provides=('openjph')
-    conflicts=('openexr' 'openjph')
+    conflicts=('openjph')
     
     DESTDIR="$pkgdir" cmake --install build
     install -D -m644 OpenJPH/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
