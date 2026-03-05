@@ -1,6 +1,6 @@
 pkgbase = glpi-agent
 	pkgdesc = GLPI Agent
-	pkgver = 1.15
+	pkgver = 1.16
 	pkgrel = 1
 	url = https://www.glpi-project.org
 	arch = any
@@ -44,7 +44,7 @@ pkgbase = glpi-agent
 	backup = etc/glpi-agent/toolbox-plugin.cfg
 	backup = usr/share/glpi-agent/pci.ids
 	backup = usr/share/glpi-agent/usb.ids
-	source = https://github.com/glpi-project/glpi-agent/archive/refs/tags/1.15.tar.gz
-	sha256sums = 9b9c6849cbf0bb9169b6dc0909f32dfd88389697dd6bf550c1b20f73425381e1
+	source = https://github.com/glpi-project/glpi-agent/archive/refs/tags/1.16.tar.gz
+	sha256sums = f267522e85fe151c1777071ee652ca1e4b2cccca1ec74bb913b1aff907f954e4
 
 pkgname = glpi-agent
