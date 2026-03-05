@@ -1,6 +1,6 @@
 pkgbase = revoco-bin
 	pkgdesc = Data liberation tool for escaping big tech walled gardens
-	pkgver = 0.1.10
+	pkgver = 0.1.11
 	pkgrel = 1
 	url = https://github.com/fulgidus/revoco
 	license = GPL-3.0
@@ -9,10 +9,10 @@ pkgbase = revoco-bin
 	conflicts = revoco
 	provides = revoco
 	arch = aarch64
-	source_aarch64 = https://github.com/fulgidus/revoco/releases/download/v0.1.10/revoco_0.1.10_linux_arm64.tar.gz
-	sha256sums_aarch64 = b5993a9290936b6ce31acabb0cb601749b9c2ed7e0c59ad675df6d5cdc7fc213
+	source_aarch64 = https://github.com/fulgidus/revoco/releases/download/v0.1.11/revoco_0.1.11_linux_arm64.tar.gz
+	sha256sums_aarch64 = d351fafbc03df36b93158cb3904a2f6987989a6a0704758cc342df12264d38d5
 	arch = x86_64
-	source_x86_64 = https://github.com/fulgidus/revoco/releases/download/v0.1.10/revoco_0.1.10_linux_amd64.tar.gz
-	sha256sums_x86_64 = 7b1fd4cc0230f7fc09c1929e4aef8e86229e7993e41cdd96210301c93de0d90f
+	source_x86_64 = https://github.com/fulgidus/revoco/releases/download/v0.1.11/revoco_0.1.11_linux_amd64.tar.gz
+	sha256sums_x86_64 = ff25ae113381f921df52208734f8b0059ec4f9fb8f6328ebc12d5536d301187e
 	
 pkgname = revoco-bin
