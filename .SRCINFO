@@ -1,6 +1,6 @@
 pkgbase = fetchdots
 	pkgdesc = Fetch and manage dotfiles using FetchDots
-	pkgver = 1.0.0
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://fetchdots.net
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = fetchdots
 	makedepends = gcc
 	makedepends = make
 	depends = ncurses
-	source = https://github.com/jaysalw/fetchdotfiles/archive/refs/tags/v1.0.0.tar.gz
+	source = https://github.com/jaysalw/fetchdotfiles/archive/refs/tags/1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = fetchdots
