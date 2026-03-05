@@ -5,7 +5,6 @@ pkgbase = arduino-cli-manager-git
 	url = https://github.com/abod8639/arduino-cli-manager
 	arch = any
 	license = MIT
-	depends = bash
 	depends = arduino-cli
 	depends = fzf
 	depends = jq
