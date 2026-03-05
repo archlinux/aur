@@ -2,7 +2,7 @@
 pkgname=steam-library-manager
 _app_id=io.github.switch_bros.SteamLibraryManager
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful Steam library organizer for Linux - the modern Depressurizer alternative"
 arch=('any')
 url="https://github.com/Switch-Bros/SteamLibraryManager"
