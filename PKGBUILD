@@ -1,7 +1,7 @@
 # Maintainer: Pairadux
 
 pkgname=lapse-appimage
-pkgver=0.0.1rc1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='A spaced repetition flashcard app built with Flutter'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}.AppImage::https://github.com/Pairadux/lapse/releas
         "lapse.desktop::https://raw.githubusercontent.com/Pairadux/lapse/v${pkgver}/.github/aur/lapse.desktop"
         "lapse.png::https://raw.githubusercontent.com/Pairadux/lapse/v${pkgver}/assets/icons/icon-other.png")
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha256sums=('e1808ef07405f5b665eedaa39160ec4ec1bf535c4b8a79238c7defc4b22806fe'
+sha256sums=('e81bfad40130ef486b36c3f4fed70ebc63ca41afc615ef024fbd65c8ff66a068'
             'SKIP'
             'SKIP')
 
