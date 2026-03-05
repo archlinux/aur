@@ -1,7 +1,7 @@
 pkgbase = axiom-axle
 	pkgdesc = Lean evaluation and metaprogramming utilities for provers
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AxiomMath/axiom-lean-engine
 	arch = any
 	license = MIT

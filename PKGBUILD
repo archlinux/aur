@@ -3,7 +3,7 @@
 pkgname=axiom-axle
 _name=axiom_axle
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lean evaluation and metaprogramming utilities for provers'
 arch=(any)
 url=https://github.com/AxiomMath/axiom-lean-engine
