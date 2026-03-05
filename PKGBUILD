@@ -5,7 +5,7 @@ _pkgname=lsu
 pkgname=${_pkgname}-bin
 pkgdesc="A Rust terminal UI for viewing systemd service units and their journal"
 
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,9 +23,9 @@ depends=('glibc' 'libgcc')
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}")
-sha256sums=('eb67b51f78826e6694a079e40ef7a00a368c55efe42f4e3f8884d17f6cd83d2a'
+sha256sums=('eecb49888eb1ecda7f58057b5eef30b98ebc6a7f8809b5697b088c3ad99d4755'
             '151eccbd6510c963ab990ab2989c8d3cebde6fb05a6e5a9b0090ba414092f7d8')
-sha256sums_x86_64=('1cb3f00f256a15e537ce1ef5926d96449b9bf0e34a0d860baec7075141f5599f')
+sha256sums_x86_64=('7641c58c2d9994ba6882556f156e8b011d70b4d049f46fb4cc4722ef976523ec')
 
 
 package() {
