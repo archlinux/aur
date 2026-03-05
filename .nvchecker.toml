@@ -1,0 +1,5 @@
+[feedr-bin]
+source = "github"
+github = "bahdotsh/feedr"
+use_latest_release = true
+prefix = "v"

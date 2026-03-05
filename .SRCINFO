@@ -1,0 +1,20 @@
+pkgbase = feedr-bin
+	pkgdesc = A feature-rich terminal-based RSS/Atom feed reader written in Rust
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/bahdotsh/feedr
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	provides = feedr
+	conflicts = feedr
+	source = README-0.4.0.md::https://raw.githubusercontent.com/bahdotsh/feedr/v0.4.0/README.md
+	source = LICENSE-0.4.0::https://raw.githubusercontent.com/bahdotsh/feedr/v0.4.0/LICENSE
+	sha256sums = b86f3d35ba72d72238de3002f628e1824e8dc043eb02d5e8a0b9face6bec7fc5
+	sha256sums = e635a29d3556c9b030c44f42c52aee20aa6d22c0e448003baef320e9dc2e1764
+	source_x86_64 = feedr-x86_64-0.4.0::https://github.com/bahdotsh/feedr/releases/download/v0.4.0/feedr-linux-x86_64
+	sha256sums_x86_64 = b776e4f418687ed3a9729e5b123494f7bfbb85642331041a133e41a9df3d29f0
+
+pkgname = feedr-bin
