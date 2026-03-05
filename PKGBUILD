@@ -3,7 +3,7 @@
 
 _pkgname=vgmtrans
 pkgname=${_pkgname}-git
-pkgver=r1545.37545b4
+pkgver=r1550.b684e65
 pkgrel=1
 pkgdesc="Converter for sequenced videogame music"
 arch=("x86_64")
@@ -32,10 +32,6 @@ prepare() {
 		git -c protocol.file.allow=always submodule update lib/"${module}"
 	done
 
-	# HACK: Deactivate the Qt deploy/RPATH parts (because it conflicts with the system packaging)
-	sed -i 's/NOT FLATPAK/FALSE/' src/ui/qt/CMakeLists.txt
-	sed -i -e '/INSTALL_RPATH_USE_LINK_PATH/d' -e 's/INSTALL_RPATH/FROG/g' src/ui/qt/CMakeLists.txt
-
 	mkdir build || true
 }
 
@@ -47,7 +43,11 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}/build"
 
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_RPATH="/usr/lib/${_pkgname}" ..
+	cmake -DCMAKE_INSTALL_PREFIX=/usr \
+			-DCMAKE_INSTALL_LIBDIR="lib/${_pkgname}" \
+			-DNO_QT_DEPLOY=ON \
+			-DINSTALL_SHELL=ON \
+			..
 	make
 }
 
@@ -56,12 +56,6 @@ package() {
 
 	make DESTDIR="${pkgdir}" install
 
-	# Install missing CLI/shell binaries (and move the BASS libraries/licenses to the right place)
-	install -Dm755 "src/ui/cli/vgmtrans-cli" "${pkgdir}/usr/bin/vgmtrans-cli"
-	install -Dm755 "src/ui/shell/vgmtrans-shell" "${pkgdir}/usr/bin/vgmtrans-shell"
-
-	install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
-	mv "${pkgdir}"/usr/lib/libbass*.so "${pkgdir}/usr/lib/${_pkgname}"
-	mv "${pkgdir}"/usr/share/licenses/LICENSE* "${pkgdir}/usr/share/licenses/vgmtrans"
-	mv "${pkgdir}/usr/share/licenses/vgmtrans" "${pkgdir}/usr/share/licenses/${pkgname}"
+	# Move the licenses to the right place
+	mv "${pkgdir}/usr/share/licenses/${_pkgname}" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
