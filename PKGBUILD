@@ -1,5 +1,5 @@
 pkgname=swordfish-git
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A pkill-like CLI tool with more control over process management."
 arch=('x86_64')
