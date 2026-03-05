@@ -1,20 +1,17 @@
 # Maintainer: zodium-project
 pkgname=zfetch-rs
-pkgver=2.2.2
+pkgver=2.3.0
 pkgrel=1
-pkgdesc="A fast system fetch tool"
+pkgdesc="A fast & pretty system fetch tool written in rust"
 arch=('x86_64' 'aarch64')
-url="https://github.com/zodium-project/zfetch"
+url="https://github.com/zodium-project/zfetch-rs"
 license=('MIT')
 depends=()
 makedepends=('rust' 'cargo')
-source=("zfetch-rs::git+https://github.com/zodium-project/zfetch.git#branch=stable")
+conflicts=('zfetch')
+provides=('zfetch')
+source=("zfetch-rs::git+https://github.com/zodium-project/zfetch-rs.git#branch=main")
 sha256sums=('SKIP')
-
-pkgver() {
-    cd "zfetch-rs"
-    git tag | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -1 | sed 's/^v//'
-}
 
 prepare() {
     cd "zfetch-rs"
@@ -26,13 +23,7 @@ build() {
     cd "zfetch-rs"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
-}
-
-check() {
-    cd "zfetch-rs"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
+    cargo build --locked --release
 }
 
 package() {
