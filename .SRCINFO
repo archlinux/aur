@@ -1,0 +1,26 @@
+pkgbase = zerx-lab-dida365-bin
+	pkgdesc = 滴答清单 - 跨平台 Todo & Task Manager
+	pkgver = 8.0.0
+	pkgrel = 1
+	url = https://dida365.com
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = libsecret
+	optdepends = libappindicator: 系统托盘图标支持
+	optdepends = libayatana-appindicator: 系统托盘图标支持（Ayatana）
+	provides = dida
+	provides = dida365
+	conflicts = dida
+	conflicts = dida365
+	options = !strip
+	source_x86_64 = dida-8.0.0-amd64.deb::https://dida365.com/static/getApp/download?type=linux_deb_x64
+	sha256sums_x86_64 = 58614aeea4b48e714739a39e5c415af24ba231bd6020b94eb9f4dcca2e414a1f
+
+pkgname = zerx-lab-dida365-bin
