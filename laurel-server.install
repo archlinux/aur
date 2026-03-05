@@ -37,3 +37,4 @@ pre_remove() {
     echo "    Run: sudo systemctl disable --now laurel-api"
     echo ""
 }
+
