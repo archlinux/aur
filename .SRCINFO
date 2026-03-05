@@ -1,7 +1,7 @@
 pkgbase = open-in-mpv
 	pkgdesc = open-in-mpv handler and Chromium extension — a simple web extension which helps open video in mpv.
 	pkgver = 2.4.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Baldomo/open-in-mpv
 	install = open-in-mpv.install
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = open-in-mpv
 	makedepends = go
 	depends = mpv
 	depends = xdg-utils
-	source = open-in-mpv-2.4.3.zip::https://github.com/Baldomo/open-in-mpv/releases/download/v2.4.3/open-in-mpv_2.4.3.tar.gz
+	source = open-in-mpv-2.4.3.tar.gz::https://github.com/Baldomo/open-in-mpv/releases/download/v2.4.3/open-in-mpv_2.4.3.tar.gz
 	sha256sums = 8bc927cf814886e076fd7276b2b59814629834e40a4c488c71a19e0b23144aad
 
 pkgname = open-in-mpv

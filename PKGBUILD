@@ -3,7 +3,7 @@
 
 pkgname=open-in-mpv
 pkgver=2.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="open-in-mpv handler and Chromium extension — a simple web extension which helps open video in mpv."
 arch=('x86_64')
 url="https://github.com/Baldomo/${pkgname}"
@@ -13,7 +13,7 @@ depends=(
     'xdg-utils'
 )
 makedepends=('go')
-source=("$pkgname-$pkgver.zip::$url/releases/download/v$pkgver/${pkgname}_$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname}_$pkgver.tar.gz")
 sha256sums=('8bc927cf814886e076fd7276b2b59814629834e40a4c488c71a19e0b23144aad')
 install="${pkgname}.install"
 
@@ -42,4 +42,11 @@ package() {
     # Install Chrome extension files
     install -dm755 "$pkgdir"/usr/lib/$pkgname-chromium
     install -Dm644 extension/Chrome/* "$pkgdir"/usr/lib/$pkgname-chromium/
+
+    # Icons
+    ln -s extension/Chrome/icon.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/$pkgname.png
+    for i in 16 48 128; do
+        install -d "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/
+        ln -s extension/Chrome/icon$i.png "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$pkgname.png
+    done
 }
