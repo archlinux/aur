@@ -43,7 +43,7 @@ build() {
 
 package_vtracer() {
 	license=('MIT')
-	depends=('gcc-libs')
+	depends=('libgcc')
 
 	cd "${pkgbase}-${pkgver}"
 

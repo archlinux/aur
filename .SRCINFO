@@ -13,7 +13,7 @@ pkgbase = vtracer
 
 pkgname = vtracer
 	license = MIT
-	depends = gcc-libs
+	depends = libgcc
 
 pkgname = python-vtracer
 	pkgdesc = Python bindings for vtracer
