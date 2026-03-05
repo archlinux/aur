@@ -1,14 +1,24 @@
 pkgbase = multiworld-gg-git
 	pkgdesc = MultiworldGG Multi-Game Randomizer and Server - Fork of Archipelago
-	pkgver = r9671
+	pkgver = r9734
 	pkgrel = 1
 	url = https://github.com/MultiworldGG/MultiworldGG
-	arch = any
+	arch = x86_64
 	license = GPL-3.0
+	checkdepends = uv
 	makedepends = uv
+	makedepends = git
 	depends = python
+	depends = glibc
+	depends = libstdc++
+	depends = libgcc
+	depends = openssl
+	depends = zlib
+	depends = expat
+	optdepends = xdg-term-exec: Better terminal support
 	provides = multiworld-gg
-	source = multiworld-gg::git+https://github.com/FoxAmes/MultiworldGG.git#branch=feat/xdg-terminal-exec
+	conflicts = multiworld-gg
+	source = multiworld-gg::git+https://github.com/MultiworldGG/MultiworldGG.git#branch=main
 	sha256sums = SKIP
 
 pkgname = multiworld-gg-git
