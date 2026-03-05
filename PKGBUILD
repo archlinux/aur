@@ -1,5 +1,5 @@
 pkgname=optomizer
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Optomizer Java application"
 arch=('any')
@@ -11,9 +11,9 @@ source=("git+https://github.com/AlphaWolf6940/Optomizer.git")
 sha256sums=('SKIP')
 
 package() {
-    cd Optomizer/bin-30-11-25
+    cd Optomizer/
 
-    install -Dm644 OptomizerV3.1.0.jar \
+    install -Dm644 OptomizerV3.2.0.jar \
         "$pkgdir/usr/share/optomizer/Optomizer.jar"
 
     install -Dm755 /dev/stdin \
