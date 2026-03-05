@@ -1,81 +1,60 @@
-# Maintainer: Vital Reichmuth (furbyhaxx) <furbyhaxx@gmail.com>
+# Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
+# Contributor: Vital Reichmuth (furbyhaxx) <furbyhaxx@gmail.com>
 # Contributor: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=polaris
-pkgver=0.14.2
-_webver=build-66
-pkgrel=3
-pkgdesc='Music streaming application, designed to let you enjoy your music collection from any computer or mobile device'
-arch=('x86_64')
+pkgver=0.16.0
+pkgrel=1
+pkgdesc='A self-hosted music streaming server'
+arch=('aarch64' 'x86_64')
 url='https://github.com/agersant/polaris'
 license=('MIT')
-depends=('openssl' 'sqlite')
-makedepends=('cargo' 'npm' 'sqlite' 'zstd' 'openssl' 'git')
-backup=('etc/polaris/config.toml')
-# disable lto as ring is having isssues with it: https://github.com/briansmith/ring/issues/1444
+depends=('libgcc')
+makedepends=('git' 'rust')
 options=('!lto')
-source=(
-#     "polaris-$pkgver.tar.gz::https://github.com/agersant/polaris/archive/$pkgver.tar.gz"
-    "f625c57d203bdd3f2d7fcd99ccce1032f04d9b91.tar.gz::https://github.com/agersant/polaris/archive/f625c57d203bdd3f2d7fcd99ccce1032f04d9b91.tar.gz"
-    "polaris-web-$_webver.tar.gz::https://github.com/agersant/polaris-web/archive/$_webver.tar.gz"
-    'config.toml'
-    'polaris.tmpfiles'
-    'polaris.sysusers'
-    'polaris.service'
-    'git-version.patch'
-)
-sha512sums=(
-    '0a2d0278261fef384d802d666ee28c0206d38474dd0486ce2a0de813c92c6dc45eb037fdfa0d3678b0b7fd66ce56845cb940e64c44663029f25a872f7ced6038'
-    '1965d8d1510bb3ceaec919631f2fce79a198ae19ecd2e26c93276ba175b1df480f99e1ef9815b3140a27071825805fe62738562f7ddba8161084f7b3ddf1e75a'
-    '2e4fe41b394508cb6a767a5b5732745d48d08c32967f66696934346e78f42de529ae47b3102d269198781c04f76cdf8c15555f5090f6b08bce09b2a0c13779ff'
-    'ca327748ca9c297a8facede92b6e8e8aa0c040228b1d84c5754b5f10a8e8a60a8a13b4e4db501b1bdd3c24ff13bec6ec0eec7dc3f2881ba6de72bf095e936644'
-    '970c9e0e7fbd48a51a644da1ccb9563ba463c1b30bc60581f226c155a7c6b443bdeb1a4b272550a6d19bfc922f2ec6715364e55f6c589e4c87abc3c12b67a9fa'
-    '4e3521cb664f5cc47551e38fab8d979f0de0be62c02f301b48bd0ddfc48479ea00f0309db1bd293192fc75d31968c7ea88dddaa5d91b8304558d7d6baef016a9'
-    '04c6a52ebcd828e4271eb9f1a39ae5063d63f7ce13e4bccd6ebc8321975bc7cec60c9f11fa37742769cab43bedf6b3a2329230fef8064884bde6f00718876868'
-)
-install='polaris.install'
+source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${pkgname^}_${pkgver}.tar.gz"
+        "${pkgname}.service"
+        "${url}/raw/refs/tags/${pkgver}/docs/CONFIGURATION.md"
+        "${url}/raw/refs/tags/${pkgver}/docs/DDNS.md"
+        "${url}/raw/refs/tags/${pkgver}/LICENSE")
+b2sums=('ac2cd9c4a5ab6ec9fd2ced6cebbe7a33f1a7f83231ec80af8e6b07940e1f67e325fdbe9f3c4d42a82b3aca096c23b486b33964fcbadf7484d521108ef2dfdb41'
+        'f1472f577868139673a5a74bda932a1e94f41f011dfbb08e3cd19abe60afedb494657aee844c1807b0b85088f8a1c13f1a9f7e6ad1c58f5479dfa52738b72392'
+        '8460996f8a3a56a854d3c0373c8f07a572a032a2d5ef9db8d898b487b4f18264a245d03ed41a7856f2054bb77ced3ac05def2f48ea83140bd15772e98aaa23f2'
+        '3ad7155313052ff4a95fbfae6ccf88da5537faf3df16094f5389bbfcdb7a10f3a0f1584dacf63baafa13f5b5013561a552a8faa400ed305fd72d890512ad3133'
+        'eb1273bd7089096a647d8cb86a5d910b675ff226938f768cac78394de268b7bd965f56d5ae91b2deee52d3da89dac9f2fa2372957551935b04373508604839ec')
 
 prepare() {
-    mv "polaris-f625c57d203bdd3f2d7fcd99ccce1032f04d9b91" $pkgname-$pkgver
-    cd $pkgname-$pkgver
-	# rust 1.80+ introduced a bug which prevents time-rs from building
-	# interestingly it also fails to compile with "cargo" as dependency but "cargo-nightly" works but hangs on the tests
-	# remove once this issue is resolved
-	#export RUSTUP_TOOLCHAIN=1.79.0
-    #cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
+  cd "${pkgname}"
+  cargo fetch
 }
 
 build() {
-    # Build the server
-    cd $pkgname-$pkgver
-    #echo "Applying Dependencies Patch"
-    git apply ../git-version.patch
-    cp res/unix/Makefile .
-    make PREFIX=/usr LOCALSTATEDIR=/var RUNSTATEDIR=/run build
-
-    # Build the client
-    export CYPRESS_CACHE_FOLDER="$srcdir/npm-cache"
-    cd "$srcdir/polaris-web-$_webver"
-    npm install --cache "$srcdir/npm-cache"
-    npm run production
-}
-
-check() {
-    cd $pkgname-$pkgver
-    # tests hang in an arch chroot
-    cargo test --release --locked || true
+  cd "${pkgname}"
+  POLARIS_WEB_DIR="/usr/share/polaris/web" \
+    POLARIS_CONFIG_DIR="/var/lib/polaris" \
+    POLARIS_DATA_DIR="/var/lib/polaris" \
+    POLARIS_LOG_DIR="/var/log/polaris" \
+    POLARIS_CACHE_DIR="/var/cache/polaris" \
+    POLARIS_PID_DIR="/run/polaris" \
+    cargo build --frozen --release --target-dir=target
 }
 
 package() {
-    install -Dm644 config.toml -t "$pkgdir/etc/polaris"
-    install -Dm644 polaris.service -t "$pkgdir/usr/lib/systemd/system"
-    install -Dm644 polaris.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
-    install -Dm644 polaris.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-
-    cd $pkgname-$pkgver
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-    install -Dm755 target/release/polaris -t "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/usr/share/polaris"
-    cp -rT "$srcdir/polaris-web-$_webver/dist" "$pkgdir/usr/share/polaris/web"
-    cp -rT docs/swagger "$pkgdir/usr/share/polaris/swagger"
+  # binary
+  install -Dm755 "${srcdir}/${pkgname}/target/release/${pkgname}" \
+    "${pkgdir}/usr/bin/${pkgname}"
+  # web
+  install -dm755 "${pkgdir}/usr/share/polaris"
+  cp -a "${srcdir}/${pkgname}/web" "${pkgdir}/usr/share/polaris"
+  # service
+  install -Dm644 "${srcdir}/${pkgname}.service" \
+    "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  # docs
+  install -Dm644 "${srcdir}/CONFIGURATION.md" \
+    "${pkgdir}/usr/share/doc/${pkgname}/CONFIGURATION.md"
+  install -Dm644 "${srcdir}/DDNS.md" \
+    "${pkgdir}/usr/share/doc/${pkgname}/DDNS.md"
+  # license
+  install -D -m644 "${srcdir}/LICENSE" \
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

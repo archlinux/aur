@@ -1,0 +1,5 @@
+*
+!.gitignore
+!PKGBUILD
+!polaris.service
+!.SRCINFO

@@ -1,26 +1,17 @@
 [Unit]
-Description=Polaris: music streaming application
-After=syslog.target
-After=network.target
+Description=A self-hosted music streaming server
+Documentation=https://github.com/agersant/polaris/blob/master/README.md
+Wants=network-online.target
+After=network-online.target
 
 [Service]
-User=polaris
-Group=polaris
 Type=simple
-WorkingDirectory=~
-Environment=USER=polaris HOME=/var/lib/polaris
-ExecStart=/usr/bin/polaris -f -c /etc/polaris/config.toml
-
-# Additional security-related features
-PrivateTmp=true
-ProtectHome=read-only
-ProtectControlGroups=true
-ProtectKernelModules=true
-ProtectKernelTunables=true
-RestrictAddressFamilies=AF_INET AF_INET6
-RestrictNamespaces=true
-RestrictRealtime=true
-SystemCallArchitectures=native
+DynamicUser=yes
+StateDirectory=polaris
+RuntimeDirectory=polaris
+CacheDirectory=polaris
+LogsDirectory=polaris
+ExecStart=/usr/bin/polaris -f
 
 [Install]
 WantedBy=multi-user.target
