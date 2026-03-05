@@ -1,0 +1,22 @@
+pkgbase = laurel-server-git
+	pkgdesc = Laurel clip server — serves video clips with a management UI and API
+	pkgver = r0
+	pkgrel = 1
+	url = https://github.com/Yeyito777/Laurel-server
+	install = laurel-server.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = nginx
+	depends = python
+	depends = ffmpeg
+	optdepends = certbot: HTTPS certificate management
+	optdepends = certbot-nginx: certbot nginx plugin
+	provides = laurel-server
+	conflicts = laurel-server
+	backup = etc/laurel-server.conf
+	backup = etc/nginx/sites-available/laurel.conf
+	source = git+https://github.com/Yeyito777/Laurel-server.git
+	sha256sums = SKIP
+
+pkgname = laurel-server-git

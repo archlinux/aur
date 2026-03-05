@@ -1,0 +1,39 @@
+post_install() {
+    echo ""
+    echo "==> Laurel server installed."
+    echo "    1. Edit the config:"
+    echo "       sudo nano /etc/laurel-server.conf"
+    echo "       Set DOMAIN and USER for your setup."
+    echo ""
+    echo "    2. Set up SSL:"
+    echo "       sudo certbot --nginx -d your-domain.com"
+    echo ""
+    echo "    3. Template and activate nginx config:"
+    echo "       Replace {{DOMAIN}} and {{API_PORT}} in:"
+    echo "       /etc/nginx/sites-available/laurel.conf"
+    echo "       sudo ln -s /etc/nginx/sites-available/laurel.conf /etc/nginx/sites-enabled/"
+    echo "       sudo systemctl reload nginx"
+    echo ""
+    echo "    4. Deploy the homepage:"
+    echo "       sudo cp /usr/share/laurel-server/index.html /srv/clips/"
+    echo ""
+    echo "    5. Start the API:"
+    echo "       sudo systemctl enable --now laurel-api"
+    echo ""
+    echo "    For auto-deploy via git push, see:"
+    echo "       /usr/share/laurel-server/post-receive"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> Laurel server upgraded."
+    echo "    Restart the API: sudo systemctl restart laurel-api"
+    echo ""
+}
+
+pre_remove() {
+    echo "==> Stopping Laurel server..."
+    echo "    Run: sudo systemctl disable --now laurel-api"
+    echo ""
+}
