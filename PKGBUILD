@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=kmcp-bin
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc='CLI tool and Kubernetes controller for building, testing and deploying MCP servers'
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('kmcp')
 conflicts=('kmcp')
 source_x86_64=("${pkgname}-${pkgver}-x86_64::${url}/releases/download/v${pkgver}/kmcp-linux-amd64")
 source_aarch64=("${pkgname}-${pkgver}-aarch64::${url}/releases/download/v${pkgver}/kmcp-linux-arm64")
-sha256sums_x86_64=('1363be33665a8c6c6834841718f3f0a3ce1e2e09c0dee3b2093249d8ab7ef99c')
-sha256sums_aarch64=('2d732699d52e448a7cdd37049edfe80f5d4e14e7bf935649f642f8a890b9e7f3')
+sha256sums_x86_64=('cf6a755c9fe1fd964fafe2599bedb80a76b6bf93fdce7e825dd72e6ab667d2a7')
+sha256sums_aarch64=('74c1f66046c42fac525331a3d09f2900b3ea7de1f3d5ee8d4e448bcffc82f66a')
 
 package() {
     install -Dm755 "${pkgname}-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/kmcp"
