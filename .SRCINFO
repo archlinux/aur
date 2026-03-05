@@ -1,0 +1,14 @@
+pkgbase = googleworkspace-cli-bin
+	pkgdesc = One CLI for all of Google Workspace
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/googleworkspace/cli
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	options = !strip
+	options = !debug
+	source = https://github.com/googleworkspace/cli/releases/download/v0.4.1/gws-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 9965c70a289d566c71077020f69be9f630a7501ac07901810d0cfd4a9e285dc7
+
+pkgname = googleworkspace-cli-bin
