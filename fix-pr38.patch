@@ -1,0 +1,29 @@
+--- pilot-link/autogen.sh
++++ pilot-link/autogen.sh
+@@ -16,7 +16,7 @@
+   DIE=1
+ }
+ 
+-(grep "^AM_PROG_LIBTOOL" $srcdir/configure.ac >/dev/null) && {
++(grep "^LT_INIT" $srcdir/configure.ac >/dev/null) && {
+   (glibtool --version) < /dev/null > /dev/null 2>&1 || 
+   (libtool --version) < /dev/null > /dev/null 2>&1 || {
+     echo
+@@ -173,7 +173,7 @@
+ 	  test -r $dr/aclocal.m4 && chmod u+w $dr/aclocal.m4
+         fi
+       fi
+-      if grep "^AM_PROG_LIBTOOL" configure.ac >/dev/null; then
++      if grep "^LT_INIT" configure.ac >/dev/null; then
+ 	if test -z "$NO_LIBTOOLIZE" ; then 
+ 	    case "$OSTYPE" in
+ 		*darwin*)
+@@ -199,7 +199,7 @@
+ 	exit 1
+       }
+ 
+-      if grep "^AM_CONFIG_HEADER" configure.ac >/dev/null; then
++      if grep "^AC_CONFIG_HEADERS" configure.ac >/dev/null; then
+ 	echo "Running autoheader..."
+ 	$AUTOHEADER || { echo "**Error**: autoheader failed."; exit 1; }
+       fi
