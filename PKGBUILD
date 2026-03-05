@@ -2,7 +2,7 @@
 
 pkgname=uwaka-git
 _pkgname="${pkgname%-git}"
-pkgver=0.8.0
+pkgver=0.8.1
 pkgver() { git -C "$_pkgname" describe --tags | sed 's/^v//;s/-/.r/;s/-/./g'; }
 pkgrel=1
 pkgdesc="Universal Wakatime Client"
@@ -15,7 +15,7 @@ conflicts=("$_pkgname")
 source=("git+$url")
 sha256sums=('SKIP')
 
-execname="uwaka_$arch-linux"
+execname="uwaka_$arch-linux-inotify"
 
 build() {
 	cd "$srcdir/$_pkgname"
