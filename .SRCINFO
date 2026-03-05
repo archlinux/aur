@@ -1,6 +1,6 @@
 pkgbase = basilisk-desktop-bin
 	pkgdesc = Open-source AI/LLM red teaming desktop app with 29 attack modules, genetic prompt evolution (SPE-NL), OWASP LLM Top 10 coverage, and 5 report formats. Built by Rot Hackers.
-	pkgver = 1.0.1
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://basilisk.rothackers.com
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = basilisk-desktop-bin
 	conflicts = basilisk-desktop
 	options = !debug
 	options = !strip
-	source = basilisk-1.0.1.AppImage::https://github.com/noobforanonymous/basilisk/releases/download/v1.0.1/basilisk-1.0.1.AppImage
-	sha256sums = 6acc5da86aa6721db7826729e657226bb4a61d00f16ad5ab783f16d6567dcf1b
+	source = basilisk-1.0.6.AppImage::https://github.com/noobforanonymous/basilisk/releases/download/v1.0.6/basilisk-1.0.6.AppImage
+	sha256sums = SKIP
 
 pkgname = basilisk-desktop-bin
