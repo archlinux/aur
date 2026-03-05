@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=yasp
+GenericName=TUI server picker for CS2
+Comment=TUI server picker for CS2
+Exec=/usr/bin/yasp
+Icon=yasp
+Terminal=true
+Categories=Utility;
