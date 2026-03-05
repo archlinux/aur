@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="Fetch and manage dotfiles using FetchDots"
 arch=('x86_64')
 url="https://fetchdots.net"
-license=('MIT')
+license=('GNU')
 
 depends=('ncurses')
 makedepends=('gcc' 'make')
