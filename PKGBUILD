@@ -1,6 +1,6 @@
 # Maintainer: Andy Locks <jandylokc@gmail.com>
 pkgname=stringp
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc='A "key-value" utility for UNIX-like systems. Allows to conveniently store values and retrieve them by key.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/$pkgname-v$pkgver.tar.gz")
-sha256sums=('a3b3992b2aef548b8061fab95388f8dffcdd347012798ed9b561b07673645874')
+sha256sums=('d1f1c90621893f1568576329285065339ad8ade64da018c4eae605dedd5ed94c')
 
 build() {
   cd "$srcdir/string-pool-$pkgname-v$pkgver"
@@ -21,6 +21,7 @@ package() {
 
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 stringp.1.gz "$pkgdir/usr/share/man/man1/stringp.1.gz"
 
   mkdir -p "$pkgdir/usr/share/bash-completion/completions"
   mkdir -p "$pkgdir/usr/share/zsh/site-functions"
