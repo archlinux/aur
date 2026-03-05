@@ -2,11 +2,11 @@
 
 pkgname=fish-session
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='UI-first session manager for Fish shell with persistent PTY sessions'
 arch=('x86_64' 'aarch64')
 url='https://github.com/AtefR/fish-session'
-license=('custom:unlicensed')
+license=('LicenseRef-Unlicensed')
 depends=('fish')
 makedepends=('cargo' 'rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AtefR/fish-session/archive/refs/tags/v$pkgver.tar.gz")
@@ -29,4 +29,7 @@ package() {
     "$pkgdir/usr/share/fish/vendor_functions.d/fish_session.fish"
   install -Dm644 "conf.d/fish-session.fish" \
     "$pkgdir/usr/share/fish/vendor_conf.d/fish-session.fish"
+
+  printf 'Unlicensed\n' > "$srcdir/LICENSE"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
