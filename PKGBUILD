@@ -2,7 +2,7 @@
 
 _pkgname=wstui
 pkgname="${_pkgname}-git"
-pkgver=0.0.1alpha1.r0.g6f4bd68
+pkgver=0.0.1alpha1.r1.gd577a3c
 pkgrel=1
 pkgdesc='A terminal frontend for WhatsApp (development version)'
 url="https://github.com/NullSeile/${_pkgname}"
