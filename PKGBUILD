@@ -2,7 +2,7 @@
 # Maintainer: wheaney <wayne at xronlinux dot com>
 _pkgbase=XRLinuxDriver
 pkgname="xr-driver-git"
-pkgver=2.8.4
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="XR Linux Driver"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('GPL-3.0')
 install=hooks.install
 makedepends=('cmake' 'make')
 depends=('openssl' 'libevdev' 'libusb' 'json-c' 'curl' 'hidapi' 'wayland' 'systemd-libs' 'python-yaml' 'rust')
-source=("git+${url}#commit=906646fb8502c0e5ea125e1e390ea2f3fa921f81")
+source=("git+${url}#commit=6345f594674b4acbdfd6944d1c60ecb1fcb455aa")
 md5sums=(SKIP)
 
 prepare() {
@@ -46,6 +46,7 @@ package() {
     sed -i '/Environment/d' ${_pkgbase}/systemd/xr-driver.service
     install -Dm644 ${_pkgbase}/systemd/xr-driver.service "${pkgdir}"/usr/lib/systemd/user/xr-driver.service
     install -Dm755 ${_pkgbase}/bin/xr_driver_cli "${pkgdir}"/usr/bin/xr_driver_cli
+    install -Dm755 ${_pkgbase}/bin/xr_driver_logs "${pkgdir}"/usr/bin/xr_driver_logs
 
     # Install architecture-specific libraries
     if compgen -G "${_pkgbase}/lib/${CARCH}/*.so" > /dev/null; then

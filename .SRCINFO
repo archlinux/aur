@@ -1,6 +1,6 @@
 pkgbase = xr-driver-git
 	pkgdesc = XR Linux Driver
-	pkgver = 2.8.4
+	pkgver = 2.9.2
 	pkgrel = 1
 	url = https://github.com/wheaney/XRLinuxDriver
 	install = hooks.install
@@ -19,7 +19,7 @@ pkgbase = xr-driver-git
 	depends = systemd-libs
 	depends = python-yaml
 	depends = rust
-	source = git+https://github.com/wheaney/XRLinuxDriver#commit=906646fb8502c0e5ea125e1e390ea2f3fa921f81
+	source = git+https://github.com/wheaney/XRLinuxDriver#commit=6345f594674b4acbdfd6944d1c60ecb1fcb455aa
 	md5sums = SKIP
 
 pkgname = xr-driver-git
