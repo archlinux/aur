@@ -1,9 +1,11 @@
 pkgbase = transcode
 	pkgdesc = A video/DVD ripper and encoder for the terminal/console
 	pkgver = 1.1.7
-	pkgrel = 48
+	pkgrel = 49
 	url = https://sources.archlinux.org/other/packages/transcode
 	arch = x86_64
+	arch = i686
+	arch = aarch64
 	license = GPL-2.0-only
 	makedepends = autoconf
 	makedepends = make
