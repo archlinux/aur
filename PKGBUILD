@@ -2,7 +2,7 @@
 
 _pkgname=telegram-tdlib
 pkgname=${_pkgname}
-pkgver=1.8.60
+pkgver=1.8.62
 pkgrel=1
 pkgdesc='Cross-platform library for building Telegram clients'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -13,18 +13,18 @@ makedepends=('make' 'gcc' 'cmake' 'gperf' 'git')
 provides=('telegram-tdlib')
 conflicts=('telegram-tdlib')
 options=('!lto' '!debug')
-source=("git+https://github.com/tdlib/td.git#commit=0da5c72f8365fb4857096e716d53175ddbdf5a15")
-sha256sums=('15b6aaf55bf1ec940bef624cc2df3d620a721d9cb223f30540b06386dcf5ce43')
+source=("${_pkgname}-${pkgver}::git+https://github.com/tdlib/td.git#commit=e597838871547131ef92332fca601f5effba4e8a")
+sha256sums=('e880b0ebc6d2d9400931712819d10ffd815145ff4ce67492cec8761f4e2cd9a4')
 
 build() {
-    mkdir -p "td/build"
-    cd "td/build" || exit
-    cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release ..
-    cmake --build .
+  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+  mkdir -p build
+  cd build || exit
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release ..
+  cmake --build .
 }
 
 package() {
-    cd "td/build" || exit
-    mkdir -p "$pkgdir"/usr
-    DESTDIR="$pkgdir" cmake --build . --target install
+  cd "${srcdir}/${_pkgname}-${pkgver}/build" || exit
+  DESTDIR="$pkgdir" cmake --build . --target install
 }

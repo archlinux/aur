@@ -3,4 +3,4 @@
 /*.tar.zst
 /pkg
 /src
-/td
+/telegram-tdlib-*
