@@ -1,0 +1,21 @@
+pkgbase = wput-git
+	pkgdesc = A command-line FTP-client for uploading files (RafalVonau fork)
+	pkgver = r42.abc1234
+	pkgrel = 1
+	url = https://github.com/RafalVonau/wput
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	provides = wput
+	conflicts = wput
+	source = wput-git::git+https://github.com/RafalVonau/wput.git
+	sha256sums = SKIP
+
+pkgname = wput-git
