@@ -1,14 +1,14 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zyfun-bin
-pkgver=3.4.0
-_electronversion=36
+pkgver=3.4.2
+_electronversion=38
 pkgrel=1
 pkgdesc="Cross-platform desktop video resource player, free high value.(Prebuilt version.Use system-wide electron)跨平台桌面端视频资源播放器,免费高颜值"
 arch=(
     'aarch'
     'x86_64'
 )
-url="https://github.com/Hiram-Wong/ZyPlayer"
+url="https://github.com/Hiram-Wong/zyfun"
 license=("MIT")
 provides=("${pkgname%-bin}-${pkgver}")
 conflicts=(
@@ -21,17 +21,19 @@ depends=(
     'python'
     'python-requests'
     'python-lxml'
+    'python-pyzmq'
+    'python-pycryptodome'
 )
 source_aarch=("${pkgname%-bin}-${pkgver}-aarch.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${url}/releases/download/v${pkgver}/${pkgname%-bin}-linux-${pkgver}-x86_64.rpm")
 source=(
-    "LICENSE-${pkgver}::https://raw.githubusercontent.com/Hiram-Wong/ZyPlayer/v${pkgver}/LICENSE"
+    "LICENSE-${pkgver}.txt::https://raw.githubusercontent.com/Hiram-Wong/zyfun/v${pkgver}/LICENSE.txt"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('05a41f7b9dc819453e9c8c3ea4e144fe7e3d09d0f78bdf800e92810312f99094'
+sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch=('929f571125bb3616207663a181d4b3c6a1aceb0faef30c244d8de2986d37f82e')
-sha256sums_x86_64=('d11f98ffef8447d1aff16ce8dff98633e89969ad738b404edfbd258d68f9cc0f')
+sha256sums_aarch=('9b53e83a4d488e2aae8a5522ef28174f81778f5be3979176411efda4c0cd9f68')
+sha256sums_x86_64=('0669622d157f8df17ad8b694c8155d70681ea8212bafc52318c387385f09f854')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
@@ -49,16 +51,38 @@ prepare() {
         s/\/opt\/${pkgname%-bin}\///g
         s/Audio;Video/AudioVideo/g
     " "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
+    rm -rf \
+        "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/7zip-bin-full/"{mac,win,linux/{arm,ia32}} \
+        "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/zeromq/build/"{darwin,win32}
+    case "${CARCH}" in
+        aarch64)
+            rm -rf \
+                "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/7zip-bin-full/linux/x64" \
+                "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/zeromq/build/linux/x64"
+                ;;
+        x86_64)
+            rm -rf \
+                "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/7zip-bin-full/linux/arm64" \
+                "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/zeromq/build/linux/arm64"
+                ;;
+    esac
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/opt/${pkgname%-bin}/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${pkgname%-bin}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/opt/${pkgname%-bin}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/opt/${pkgname%-bin}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/opt/${pkgname%-bin}/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-bin}.png" \
             -t "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps"
     done
-    install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE-${pkgver}.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
