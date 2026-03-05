@@ -1,6 +1,6 @@
 #lskdfj Maintainer: Robert Ulmer <arch.x(at)frontexpers.com>
 pkgname="filius"
-pkgver="2.9.4"
+pkgver="2.10.1"
 _pkgver="${pkgver}"
 pkgrel=1
 pkgdesc="Network simulation program"
@@ -10,8 +10,8 @@ license=('GPL')
 depends=('java-runtime>=17')
 source=(http://www.lernsoftware-filius.de/downloads/Setup/$pkgname-$_pkgver.zip)
 package() {
-	cd $srcdir
-	# cp -r usr/ etc/ $pkgdir
+  cd $srcdir
+  # cp -r usr/ etc/ $pkgdir
   mkdir -p $pkgdir/usr/bin/
   mkdir -p $pkgdir/usr/share/filius/
   mkdir -p $pkgdir/usr/share/pixmaps/
@@ -20,14 +20,14 @@ package() {
   rm Filius.exe
   rm Filius.command
   # mv lib $pkgdir/usr/lib/filius
-  cp -r Changelog.md  config  Einfuehrung_Filius.pdf  filius.jar  filius.sh  GPLv2.txt  GPLv3.txt  hilfe  img  Introduction_Filius.pdf  lib  tmpl $pkgdir/usr/share/filius/
+  cp -r Changelog.md config Einfuehrung_Filius.pdf filius.jar filius.sh GPLv2.txt GPLv3.txt hilfe img Introduction_Filius.pdf lib tmpl $pkgdir/usr/share/filius/
   chmod +x $pkgdir/usr/share/filius/filius.sh
-  echo '#!/usr/bin/env sh' > $pkgdir/usr/bin/filius
-  echo '[ -n "${WAYLAND_DISPLAY}" ] && export _JAVA_AWT_WM_NONREPARENTING=1' >> $pkgdir/usr/bin/filius
-  echo '/usr/share/filius/filius.sh $*' >> $pkgdir/usr/bin/filius
+  echo '#!/usr/bin/env sh' >$pkgdir/usr/bin/filius
+  echo '[ -n "${WAYLAND_DISPLAY}" ] && export _JAVA_AWT_WM_NONREPARENTING=1' >>$pkgdir/usr/bin/filius
+  echo '/usr/share/filius/filius.sh $*' >>$pkgdir/usr/bin/filius
   chmod +x $pkgdir/usr/bin/filius
 
-  base64 -d > $pkgdir/usr/share/pixmaps/filius32.png <<EOF
+  base64 -d >$pkgdir/usr/share/pixmaps/filius32.png <<EOF
 iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABhmlDQ1BJQ0MgcHJvZmlsZQAAKJF9
 kTtIw1AUhv8+pEUqDnZQcchQnSyIigguWoUiVAi1QqsOJjd9QZOGJMXFUXAtOPhYrDq4OOvq4CoI
 gg8QJ0cnRRcp8dyk0CLGA5f78d/z/9x7LuBvVJhqBscAVbOMdDIhZHOrQugVPgwgjBkEJWbqc6KY
@@ -49,7 +49,7 @@ hw4VO3UnHMS+rGT/zG1olRgpe96YnXAQKyP2vP1zYC3wHXgPvIopKfCjFZfD4XA9NdaISNInt75F
 8ud56qf8L3SUS7sHJVXXAAAAAElFTkSuQmCC
 EOF
 
-cat > $pkgdir/usr/share/mime/packages/filius.xml << EOF
+  cat >$pkgdir/usr/share/mime/packages/filius.xml <<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
     <mime-type type="application/x-filius">
@@ -61,7 +61,7 @@ cat > $pkgdir/usr/share/mime/packages/filius.xml << EOF
 </mime-info>
 EOF
 
-cat > $pkgdir/usr/share/applications/filius.desktop << EOF
+  cat >$pkgdir/usr/share/applications/filius.desktop <<EOF
 [Desktop Entry]
 Name=Filius
 Name[de]=Filius
@@ -78,6 +78,4 @@ EOF
 
 }
 
-
-sha256sums=('22702d82d8b5a3b5af12969662b59e1a6d817d356afb5c04b5eb90fa0a2d6364')
-
+sha256sums=('3581ef60f3983748d44354744d6c0dd1662e05fea39c2f1b7597e84f1660385e')
