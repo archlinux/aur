@@ -1,0 +1,25 @@
+post_install() {
+    echo ""
+    echo "==> Laurel installed."
+    echo "    1. Copy and edit the config:"
+    echo "       cp /etc/laurel/config.sh ~/.config/laurel/config.sh"
+    echo "       Set CLIP_SERVER and CLIP_DOMAIN to your server."
+    echo ""
+    echo "    2. Enable and start the replay buffer:"
+    echo "       systemctl --user daemon-reload"
+    echo "       systemctl --user enable --now laurel-replay"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> Laurel upgraded. Restart the service to pick up changes:"
+    echo "       systemctl --user restart laurel-replay"
+    echo ""
+}
+
+pre_remove() {
+    echo "==> Stopping Laurel..."
+    echo "    Run: systemctl --user disable --now laurel-replay"
+    echo ""
+}

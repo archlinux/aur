@@ -1,0 +1,22 @@
+pkgbase = laurel-git
+	pkgdesc = Self-hosted clip capture and sharing for Linux — press a hotkey, get a shareable link
+	pkgver = r0
+	pkgrel = 1
+	url = https://github.com/Yeyito777/Laurel
+	install = laurel.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = gpu-screen-recorder
+	depends = xclip
+	depends = libx11
+	depends = openssh
+	optdepends = libnotify: desktop notifications via notify-send
+	optdepends = pipewire: clip sound playback via pw-play
+	provides = laurel
+	conflicts = laurel
+	backup = etc/laurel/config.sh
+	source = git+https://github.com/Yeyito777/Laurel.git
+	sha256sums = SKIP
+
+pkgname = laurel-git
