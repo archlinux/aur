@@ -9,7 +9,7 @@ if [ ${#_baseverl} -gt 2 ]; then
 else
 	pkgver=${_basever}.0
 fi
-pkgrel=1
+pkgrel=2
 epoch=3
 pkgdesc="Splunk Universal Forwarder"
 url="https://www.splunk.com/"
@@ -25,6 +25,7 @@ sha256sums=('a2e28b83efc9a390c490ae26f991eee99d7e122c6278b581b457c8b81757a9bc'
             'bca1b7720a827973f1c959cb78d788324f47dd6fcfc03bf4452c457f2d044db5')
 sha256sums_x86_64=('c85663bba7522892bee5572c97f72c4ccda5de636e838a063759403f7a385ff6')
 sha256sums_aarch64=('e9693f3efb95071ca21635719fd364e09169f429c18f358adb78847325cd1669')
+options=(!strip libtool staticlibs !zipman)
 
 package() {
 	cd "$srcdir"
