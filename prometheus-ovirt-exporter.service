@@ -1,18 +1,35 @@
 [Unit]
 Description=Prometheus oVirt exporter
-After=network.target network-online.target basic.target
-Wants=network-online.target
+Documentation=https://github.com/czerwonk/ovirt_exporter
+Requires=network-online.target
+After=network-online.target nss-lookup.target basic.target
+Wants=network-online.target nss-lookup.target
 StartLimitIntervalSec=30
 StartLimitBurst=3
 
 [Service]
-EnvironmentFile=-/etc/conf.d/prometheus-ovirt-exporter
-ExecStart=/usr/bin/prometheus-ovirt-exporter $OPTIONS
-Type=simple
-Restart=on-failure
-RestartSec=30
 User=prometheus-ovirt-exporter
 Group=prometheus-ovirt-exporter
+EnvironmentFile=-/etc/conf.d/prometheus-ovirt-exporter
+Restart=on-failure
+RestartSec=30
+ExecStart=/usr/bin/prometheus-ovirt-exporter $OVIRT_EXPORTER_ARGS
+ExecStop=/bin/kill -s SIGTERM $MAINPID
+ExecReload=/bin/kill -HUP $MAINPID
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+ProtectHostname=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictNamespaces=true
+MemoryDenyWriteExecute=true
+PrivateDevices=true
+CapabilityBoundingSet=
 
 [Install]
 WantedBy=multi-user.target
