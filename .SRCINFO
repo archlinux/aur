@@ -1,0 +1,16 @@
+pkgbase = sqry-bin
+	pkgdesc = Semantic code search tool
+	pkgver = 4.8.16
+	pkgrel = 1
+	url = https://sqry.dev
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = sqry
+	conflicts = sqry
+	source_x86_64 = sqry-4.8.16-x86_64::https://github.com/verivus-oss/sqry/releases/download/v4.8.16/sqry-linux-x86_64
+	sha256sums_x86_64 = 12b8bb6327c386804a7c21a303b5312a0d38640d12f46956b7926358e935f284
+	source_aarch64 = sqry-4.8.16-aarch64::https://github.com/verivus-oss/sqry/releases/download/v4.8.16/sqry-linux-arm64
+	sha256sums_aarch64 = 6876d83b4974ceed8bb898a8f0eabc1f0eaf795a9523877058393968c526b3c2
+
+pkgname = sqry-bin
