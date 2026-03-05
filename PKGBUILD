@@ -23,7 +23,7 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target host-tuple
+  cargo fetch --locked
 }
 
 build() {
