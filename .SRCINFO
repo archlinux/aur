@@ -1,0 +1,14 @@
+pkgbase = myground
+	pkgdesc = Self-hosting platform — hold your ground
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/backmeupplz/myground
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = bun-bin
+	depends = docker
+	source = myground-0.1.0.tar.gz::https://github.com/backmeupplz/myground/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = myground
