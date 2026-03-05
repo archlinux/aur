@@ -16,8 +16,8 @@ source=("${_pkgname}::git+https://github.com/abod8639/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 package() {
