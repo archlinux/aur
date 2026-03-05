@@ -7,14 +7,12 @@
 ## options
 : ${_build_arch_patch:=true}
 
-: ${_build_clang:=false}
-
 : ${_build_vfio:=true}
 : ${_build_lts:=false}
 
 : ${_build_level:=1}
 
-: ${_cksum=ed2c3c55fd38e6836c094fce356f2567f9516130b73354a29857960368c5687f}
+: ${_cksum=4d9f3ff73214f68c0194ef02db9ca4b7ba713253ac1045441d4e9f352bc22e14}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -26,7 +24,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.18.13
+pkgver=6.19.6
 pkgrel=1
 pkgdesc='Linux'
 url='https://www.kernel.org'
@@ -37,11 +35,13 @@ makedepends=(
   bc
   cpio
   gettext
-  git
   libelf
   pahole
   perl
   python
+  rust
+  rust-bindgen
+  rust-src
   tar
   xz
 
@@ -110,13 +110,6 @@ if [[ "${_build_arch_patch::1}" == "t" ]]; then
   )
 fi
 
-if [[ "${_build_clang::1}" == "t" ]]; then
-  makedepends+=(clang llvm lld)
-
-  export LLVM=1
-  export LLVM_IAS=1
-fi
-
 if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
   export KCFLAGS="-march=x86-64-v${_build_level::1} -O3"
 fi
@@ -128,15 +121,10 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 _prepare_extra() {
   # remove extra version suffix
   sed -E 's&^(EXTRAVERSION =).*$&\1&' -i Makefile
-
-  if [[ "${_build_clang::1}" == "t" ]]; then
-    scripts/config --disable LTO_CLANG_FULL
-    scripts/config --enable LTO_CLANG_THIN
-  fi
 }
 
 prepare() {
-  cp "config-$pkgver" "config"
+  cp "config-$pkgver" "config.$CARCH"
 
   cd $_srcname
 
@@ -156,9 +144,9 @@ prepare() {
   done
 
   echo "Setting config..."
-  cp ../config .config
+  cp ../config.$CARCH .config
   make olddefconfig
-  diff -u ../config .config || :
+  diff -u ../config.$CARCH .config || :
 
   _prepare_extra
 
@@ -170,7 +158,7 @@ build() {
   cd $_srcname
   make all
   make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
-  #make htmldocs
+  #make htmldocs SPHINXOPTS=-QT
 }
 
 _package() {
@@ -181,12 +169,14 @@ _package() {
     kmod
   )
   optdepends=(
+    "$pkgbase-headers: headers and scripts for building modules"
     'linux-firmware: firmware images needed for some devices'
     'scx-scheds: to use sched-ext schedulers'
     'wireless-regdb: to set the correct wireless channels of your country'
   )
   provides=(
     KSMBD-MODULE
+    NTSYNC-MODULE
     VIRTUALBOX-GUEST-MODULES
     WIREGUARD-MODULE
   )
@@ -213,28 +203,40 @@ _package() {
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel (ACS override and i915 VGA arbiter patches)"
   depends=(pahole)
+  provides=(LINUX-HEADERS)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(< version)/build"
+
+  local karch
+  case $CARCH in
+    x86_64) karch=x86 ;;
+    *)
+      echo "Unknown CARCH $CARCH"
+      exit 1
+      ;;
+  esac
 
   echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
     localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
-  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+  install -Dt "$builddir/arch/$karch" -m644 arch/$karch/Makefile
   cp -t "$builddir" -a scripts
   ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
-  # required when STACK_VALIDATION is enabled
-  install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+  if [[ $(scripts/config -s CONFIG_HAVE_STACK_VALIDATION) = y ]]; then
+    install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+  fi
 
-  # required when DEBUG_INFO_BTF_MODULES is enabled
-  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  if [[ $(scripts/config -s CONFIG_DEBUG_INFO_BTF_MODULES) = y ]]; then
+    install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  fi
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
-  cp -t "$builddir/arch/x86" -a arch/x86/include
-  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+  cp -t "$builddir/arch/$karch" -a arch/$karch/include
+  install -Dt "$builddir/arch/$karch/kernel" -m644 arch/$karch/kernel/asm-offsets.s
 
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
@@ -253,10 +255,20 @@ _package-headers() {
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
+  echo "Installing Rust files..."
+  if [[ $(scripts/config -s CONFIG_RUST) = y ]]; then
+    install -Dt "$builddir/rust" -m644 rust/*.rmeta
+    install -Dt "$builddir/rust" rust/*.so
+  fi
+
+  echo "Installing unstripped VDSO..."
+  make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
+    link= # Suppress build-id symlinks
+
   echo "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
-    [[ $arch = */x86/ ]] && continue
+    [[ $arch = */$karch/ ]] && continue
     echo "Removing $(basename "$arch")"
     rm -r "$arch"
   done
