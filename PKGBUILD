@@ -1,45 +1,41 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=dupl-git
-pkgver=r109.28d787e
+pkgver=r119.8836f5c
 pkgrel=1
-epoch=
-pkgdesc="A tool for code clone detection."
+pkgdesc='A tool for code clone detection.'
 arch=('i686' 'x86_64')
-url="https://github.com/mibk/dupl"
+url='https://github.com/mibk/dupl'
 license=('MIT')
-groups=()
-depends=()
 makedepends=('git' 'go')
-optdepends=()
-checkdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-changelog=
-install=
-noextract=()
-_gourl=github.com/mibk/dupl
+conflicts=("${pkgname%-*}")
+replaces=("${pkgname%-*}")
+source=("$pkgname::git+https://github.com/mibk/dupl")
+md5sums=('SKIP')
 
 pkgver() {
-  GOPATH="$srcdir" go get -d ${_gourl}
-  cd "$srcdir/src/${_gourl}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  GOPATH="$srcdir" go get -fix -v ${_gourl}
-}
-
-check() {
-  GOPATH="$srcdir" go test -v -x ${_gourl}
+	cd "$srcdir/$pkgname"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	go build \
+		-o "${_binname}" \
+		-trimpath \
+		-buildmode='pie' \
+		-mod='readonly' \
+		-modcacherw \
+		-ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+		.
 }
 
 package() {
-  cd "$srcdir"
-  install -D -m755 bin/dupl "$pkgdir/usr/bin/dupl"
-  install -D -m644 src/${_gourl}/README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
-  install -D -m644 src/${_gourl}/LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
+	cd "$srcdir/$pkgname"
+	install -D -m755 dupl "$pkgdir/usr/bin/dupl"
+	install -D -m644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
+	install -D -m644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
-
