@@ -17,29 +17,45 @@ AUR (Arch User Repository) package for `qodercli-bin`, packaging the pre-built Q
 ## Commands
 
 ### Update to latest upstream version
-```bash
-./update.sh
-```
-Fetches the manifest from `https://download.qoder.com/qodercli/channels/manifest.json`, compares versions and license, updates PKGBUILD checksums/version, and regenerates .SRCINFO.
 
-### Regenerate .SRCINFO after manual PKGBUILD edits
-```bash
-makepkg --printsrcinfo > .SRCINFO
-```
+When user says "检查升级", "check update", or wants to update the package:
 
-### Test-build the package locally
-```bash
-makepkg -si
-```
+1. **Check for updates**
+   ```bash
+   ./update.sh
+   git diff
+   ```
 
-### Validate PKGBUILD
-```bash
-namcap PKGBUILD
-```
+2. **Check completions**
+   ```bash
+   qodercli --help
+   qodercli <subcommand> --help
+   ```
+   Compare with completion scripts. Update if CLI changed.
 
-### Validate shell completion scripts
+3. **Validate** (before commit)
+   ```bash
+   bash -n qodercli.bash && zsh -n qodercli.zsh && fish -n qodercli.fish
+   namcap PKGBUILD
+   makepkg -si  # optional: local test build
+   ```
+
+4. **Commit** (only after validation passed)
+   Use conventional commits format, e.g.:
+   - `chore(aur): bump pkgrel=N, update LICENSE checksum`
+   - `chore(aur): upgrade to vX.Y.Z`
+
+5. **Push** (only when user explicitly requests)
+   ```bash
+   git push
+   ```
+
+### Other Commands
+
 ```bash
-bash -n qodercli.bash && zsh -n qodercli.zsh && fish -n qodercli.fish
+makepkg --printsrcinfo > .SRCINFO  # Regenerate after manual PKGBUILD edits
+makepkg -si                        # Test-build locally
+namcap PKGBUILD                    # Validate PKGBUILD
 ```
 
 ## Workflow Notes
