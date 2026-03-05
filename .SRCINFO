@@ -1,0 +1,13 @@
+pkgbase = perl-sendmail-pmilter
+	pkgdesc = Perl binding of Sendmail Milter protocol
+	pkgver = 1.27
+	pkgrel = 1
+	url = https://metacpan.org/dist/Sendmail-PMilter
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	source = https://cpan.metacpan.org/authors/id/G/GW/GWHAYWOOD/Sendmail-PMilter-1.27.tar.gz
+	sha256sums = bb5265360d3c00b312e5ede02484ec2200a5252e48bebb4978420711d8d49b66
+
+pkgname = perl-sendmail-pmilter
