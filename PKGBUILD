@@ -14,10 +14,10 @@ optdepends=('bash-completion: for bash completion support' 'jq: for pretty-print
 backup=('etc/ochami/config.yaml')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/OpenCHAMI/ochami/releases/download/v${pkgver}/ochami_Linux_arm64.tar.gz")
-sha256sums_aarch64=('22ad2e66fc726dc11d1dad34a941519e6310d4c374d1796e411eef410cc0eae2')
+sha256sums_aarch64=('335988136574448b851134aca61305d27561d65a176f3fb641f11a3dc73e6740')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/OpenCHAMI/ochami/releases/download/v${pkgver}/ochami_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('19a27d035c7a0049afa5733f29b047af3df185bdb59a4ed65dc50214daa41a0c')
+sha256sums_x86_64=('edeb10db8c2b283e7adafbd5c36f24c2df6edeef9973c248d5dcdc419846b1f8')
 
 package() {
   # Binary
