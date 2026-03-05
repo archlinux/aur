@@ -20,7 +20,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('4a1cbfe6a12894dd8d7178ac62bc0df7e9e6f6167f2c6d75aa8b27ce1d12e655')
 install="${pkgname}.install"
 
 _srcdir="casper_excalibur_keyboard_rgb_linux-${pkgver}"
