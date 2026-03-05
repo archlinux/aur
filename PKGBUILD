@@ -2,7 +2,7 @@
 
 pkgname='cfn-guard'
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Guard offers a policy-as-code domain-specific language (DSL) to write rules and validate JSON- and YAML-formatted data such as CloudFormation Templates, K8s configurations, and Terraform JSON plans/configurations against those rules.'
 url='https://github.com/aws-cloudformation/cloudformation-guard'
 license=('Apache')
@@ -10,12 +10,12 @@ arch=('x86_64')
 depends=('gcc-libs')
 conflicts=("cfn-guard-git")
 source=("${url}/releases/download/${pkgver}/${pkgname}-v3-ubuntu-latest.tar.gz")
-sha256sums=('7fbdb4fd7cf3f0ef2498717da3b8b4308d7ab405cdfd5a05213dd1a1e0e7b6a7')
+sha256sums=('03f0a701f6765abe32089df034b0dea18a4bf7cfbb6d3f3b2350eb8d1c46e9fd')
 
 build() {
-  ${srcdir}/cfn-guard-v3-ubuntu-latest/cfn-guard completions --shell='zsh' > cfn-guard.zsh
-  ${srcdir}/cfn-guard-v3-ubuntu-latest/cfn-guard completions --shell='bash' > cfn-guard.bash
-  ${srcdir}/cfn-guard-v3-ubuntu-latest/cfn-guard completions --shell='fish' > cfn-guard.fish
+  ${srcdir}/cfn-guard-v3-ubuntu-latest/cfn-guard completions --shell='zsh' >cfn-guard.zsh
+  ${srcdir}/cfn-guard-v3-ubuntu-latest/cfn-guard completions --shell='bash' >cfn-guard.bash
+  ${srcdir}/cfn-guard-v3-ubuntu-latest/cfn-guard completions --shell='fish' >cfn-guard.fish
 }
 
 package() {
