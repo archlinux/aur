@@ -1,0 +1,19 @@
+pkgbase = hyprexpose-git
+	pkgdesc = Lightweight workspace overview for Hyprland with live window thumbnails
+	pkgver = r0
+	pkgrel = 1
+	url = https://github.com/ThiagoAVicente/hyprexpose
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = cairo
+	depends = pango
+	depends = hyprland
+	provides = hyprexpose
+	conflicts = hyprexpose
+	source = git+https://github.com/ThiagoAVicente/hyprexpose.git
+	sha256sums = SKIP
+
+pkgname = hyprexpose-git
