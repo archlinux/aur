@@ -2,7 +2,7 @@
 
 pkgname=fish-session-git
 _pkgname=fish-session
-pkgver=0.1.4.r0.g77d3e4e
+pkgver=0.1.4.r1.g0bb61ed
 pkgrel=3
 pkgdesc='UI-first session manager for Fish shell with persistent PTY sessions (git version)'
 arch=('x86_64' 'aarch64')
