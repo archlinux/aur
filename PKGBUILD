@@ -2,7 +2,7 @@
 # Contributor: Bryan Malyn <bim9262@gmail.com>
 
 pkgname=i3status-rust-git
-pkgver=0.34.0.r3571.g6fa650384
+pkgver=0.35.0.r3635.g8f1bb3303
 pkgrel=1
 pkgdesc='Very resourcefriendly and feature-rich replacement for i3status to use with bar programs (like i3bar and swaybar), written in pure Rust'
 arch=('x86_64')
@@ -41,8 +41,13 @@ build() {
   cd "${pkgname%-*}"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --release --features 'pulseaudio maildir pipewire'
-  cargo xtask generate-manpage
+  myflags=(
+    --release
+    --features 'pulseaudio maildir pipewire'
+    --no-default-features
+  )
+  cargo build "${myflags[@]}" --package i3status-rs --package xtask
+  cargo run "${myflags[@]}" --package xtask -- generate-manpage
 }
 
 package() {
