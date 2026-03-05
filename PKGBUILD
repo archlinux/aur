@@ -14,11 +14,11 @@ pkgname=(
   'electron-fiddle-blur-me-not'
   'element-desktop-blur-me-not'
   'rambox-pro-bin-blur-me-not'
-  'signal-desktop-blur-me-not'
+  # 'signal-desktop' -- create a `signal-desktop-flags.conf` file instead
   # 'spotify' -- create a `spotify-flags.conf` file instead
 )
 
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='Auto-enable Wayland (ozone) for apps that come with a vendored Electron'
 arch=('any')
