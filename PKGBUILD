@@ -4,7 +4,7 @@
 
 _basename=gnutls
 pkgver=3.8.9
-pkgrel=2
+pkgrel=3
 pkgname="${_basename}${pkgver}"
 pkgdesc="A library which provides a secure layer over a reliable transport layer"
 arch=(
@@ -16,12 +16,13 @@ license=(
 url="https://www.gnutls.org"
 depends=(
   'brotli>=1.0.0'
-  'gcc-libs'
   'glibc'
   'gmp'
   'leancrypto>=1.2.0'
+  'libgcc'
   'libidn2'
   'libp11-kit>=0.23.11'
+  'libstdc++'
   'libtasn1'
   'libunistring'
   'nettle'
