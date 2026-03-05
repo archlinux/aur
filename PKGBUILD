@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=textclean
-_pkgver=0.9.3
+_pkgver=0.9.7
 pkgname=r-${_pkgname,,}
-pkgver=0.9.3
-pkgrel=4
+pkgver=0.9.7
+pkgrel=1
 pkgdesc='Text Cleaning Tools'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -24,7 +24,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3f6f3b0abaa3567a1d29f5457087aad31277f3c1473747989c9804479881f24d')
+sha256sums=('48928230498ad807bee75cb7e1e1490bef93536b2c45cc9d237a38825b26b732')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
