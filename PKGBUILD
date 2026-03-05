@@ -1,0 +1,40 @@
+# Maintainer: Partha Pratim Gogoi 160270614+rugbedbugg@users.noreply.github.com
+pkgname=resonanceid-cli
+pkgver=0.1.2
+pkgrel=1
+pkgdesc="Shazam-style audio fingerprinting CLI that identifies songs from song clips"
+arch=('x86_64')
+url="https://github.com/rugbedbugg/ResonanceID-cli"
+license=('MIT')
+depends=()
+makedepends=('rust' 'cargo')
+backup=()
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('83eb188c2ffe70072f9bd9e0db532d57cea7af41d0eda740c7b7c26efad867c9')
+prepare() {
+    cd "ResonanceID-cli-$pkgver"
+    cargo fetch --locked
+}
+build() {
+    cd "ResonanceID-cli-$pkgver"
+    cargo build --release --locked
+}
+check() {
+    cd "ResonanceID-cli-$pkgver"
+    cargo test --release --locked
+}
+package() {
+    cd "ResonanceID-cli-$pkgver"
+
+    # binary
+    install -Dm755 target/release/resonanceid-cli "$pkgdir/usr/bin/resonanceid-cli"
+    # systemd service
+    install -Dm644 resonanceid-cli.service "$pkgdir/usr/lib/systemd/system/resonanceid-cli.service"
+    # storage directory
+    install -dm755 "$pkgdir/var/lib/resonanceid-cli"
+    # license
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # readme
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+}
+  
