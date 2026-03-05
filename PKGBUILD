@@ -1,7 +1,7 @@
 # Maintainer: Taygun86
 
 pkgname=zapret-gtk
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="GUI client for Zapret DPI Bypass"
 arch=('x86_64')
