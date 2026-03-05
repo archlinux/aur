@@ -2,7 +2,7 @@
 # Contributor: 0x00002a <markus@optiikka.io>
 
 pkgname=libfprint-goodixtls511-git
-pkgver=r1814.0ad27c6
+pkgver=r1813.8c36740
 pkgrel=1
 pkgdesc="libfprint with Goodix GF511 (27c6:5110) TLS fingerprint sensor driver"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('libfprint' 'libfprint-goodixtls-git')
                                          # multiple Goodix TLS sensors; only replace it
                                          # if the user explicitly chooses this package
 
-depends=('libgusb' 'gnutls' 'libgudev')
+depends=('glib2' 'glibc' 'gnutls' 'libgudev' 'libgusb' 'openssl' 'pixman')
 makedepends=('git' 'meson' 'pkgconf' 'glib2-devel')
 optdepends=('fprintd: D-Bus daemon for fingerprint authentication')
 
@@ -37,6 +37,7 @@ build() {
         -Ddoc=false \
         -Dgtk-examples=false \
         -Dintrospection=false \
+        -Dinstalled-tests=false \
         -Dgoodixtls=enabled
     ninja -C build
 }
