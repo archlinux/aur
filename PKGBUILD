@@ -1,4 +1,4 @@
-# Maintainer: Partha 160270614+rugbedbugg@users.noreply.github.com
+# Maintainer: Partha Pratim Gogoi 160270614+rugbedbugg@users.noreply.github.com
 pkgname=latticed
 pkgver=0.1.2
 pkgrel=1
@@ -10,7 +10,7 @@ depends=()
 makedepends=('rust' 'cargo')
 backup=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed')
+sha256sums=('2a50a1919d0d56b8ce002e0c5b4c117f689b571d7fd89da176312b20bd975ca3')
 
 prepare() {
     cd "Lattice-d-$pkgver"
