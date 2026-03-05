@@ -34,30 +34,46 @@ get_mods_depending_on_recursive () {
 
 build ()
 {
+    local device="wlan0"
+
     # Are we even needed?
-    if [ ! -r "/etc/wpa_supplicant/initcpio.conf" ]; then
-        echo "There is no wifi config /etc/wpa_supplicant/initcpio.conf; (create and rerun?); exit"
-        return 0
-    fi
+	if [ ! -r "/etc/wpa_supplicant/initcpio.conf" ]; then
+		echo "There is no wifi config /etc/wpa_supplicant/initcpio.conf; (create and rerun?); exit"
+		return 0
+	fi
 
-    # wireless modules
-    add_checked_modules "/drivers/net/wireless/"
+	# wireless modules
+	add_checked_modules "/drivers/net/wireless/"
 
-    # make sure loaded modules depending on cfg80211 are included (e.g. iwlmvm)
-    local mod
-    for mod in $(get_mods_depending_on_recursive cfg80211) ; do
-        add_module $mod
-    done
+	# make sure loaded modules depending on cfg80211 are included (e.g. iwlmvm)
+	local mod
+	for mod in $(get_mods_depending_on_recursive cfg80211) ; do
+		add_module $mod
+	done
 
-    # make sure to add module ccm (needed in some cases)
-    add_module ccm
+	# make sure to add module ccm (needed in some cases)
+	add_module ccm
+	add_binary "wpa_supplicant"
 
-    add_binary "killall"
-    add_binary "wpa_supplicant"
-    add_binary "ip"
-    add_runscript
-
-    add_file "/etc/wpa_supplicant/initcpio.conf" "/etc/wpa_supplicant/initcpio.conf"
+	# systemd enabled
+	if declare -F add_systemd_unit &>/dev/null; then
+		add_systemd_unit "wpa_supplicant@.service"
+		add_file "/etc/wpa_supplicant/initcpio.conf" "/etc/wpa_supplicant/wpa_supplicant-$device.conf"
+		add_dir /etc/systemd/system/wpa_supplicant@.service.d
+		cat > "$BUILDROOT/etc/systemd/system/wpa_supplicant@.service.d/initramfs.conf" <<INNER
+		[Unit]
+		DefaultDependencies=no
+		Before=cryptsetup.target
+INNER
+		add_symlink "/etc/systemd/system/initrd.target.wants/wpa_supplicant@$device.service" \
+                "/usr/lib/systemd/system/wpa_supplicant@.service"
+	# init enabled
+	else
+		add_binary "killall"
+		add_binary "ip"
+		add_runscript
+		add_file "/etc/wpa_supplicant/initcpio.conf" "/etc/wpa_supplicant/initcpio.conf"
+	fi
 }
 
 help ()

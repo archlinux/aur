@@ -12,7 +12,7 @@ install="mkinitcpio-wifi.install"
 source=('wifi.hook'
         'wifi.install')
 sha256sums=('6af8f536a1ca30c5702acc63ee70346568643d234df7729f3ba70197ef4dd723'
-            '445dbe0457ae61fc053660e2935d925cd8949b449c3f88e36c72d1f1093a553c')
+            '62ae7aaaaa46681296fe30c5daeba5511315a427b75952b2d88b86d7f9a23763')
 
 package() {
   install -Dm 644 wifi.hook \
