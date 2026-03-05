@@ -1,22 +1,22 @@
 pkgbase = python-pynng
 	pkgdesc = Ergonomic bindings for nanomsg next generation (nng), in Python
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/codypiersall/pynng
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	checkdepends = python-pytest
 	checkdepends = python-pytest-asyncio
 	checkdepends = python-pytest-trio
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
 	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	makedepends = python-cffi
 	depends = python>=3.12
 	depends = python-sniffio
-	source = python-pynng-v0.8.1.tar.gz::https://github.com/codypiersall/pynng/archive/refs/tags/v0.8.1.tar.gz
-	sha256sums = 4cbebde4951b197c44c99b6e8783a96fb7164581a827590eb775a4726461be55
+	source = python-pynng-v0.9.0.tar.gz::https://github.com/codypiersall/pynng/archive/refs/tags/v0.9.0.tar.gz
+	sha256sums = 66f0b87007a0d90bc0ee13e6cfeeefc1d5aa7deb0dc06a05b4689516acce757b
 
 pkgname = python-pynng
