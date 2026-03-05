@@ -3,7 +3,7 @@
 pkgname=linux-arctis-manager
 _pkgname=Linux-Arctis-Manager
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A replacement for SteelSeries GG software, to manage your Arctis device on Linux!"
 arch=('x86_64')
 url="https://github.com/elegos/Linux-Arctis-Manager"
