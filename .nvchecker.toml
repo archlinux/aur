@@ -2,3 +2,4 @@
 source = 'git'
 git = 'https://github.com/monitoring-plugins/monitoring-plugins/'
 prefix = 'v'
+exclude_regex = ".*-rc\\d+"
