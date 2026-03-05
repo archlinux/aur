@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="rayforge"
-pkgver=1.0.2
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A software for laser cutters and engravers"
 arch=(
@@ -30,19 +30,19 @@ depends=(
   'python-gobject>=3.50.0'
   'python-numpy>=2.3.4'
   'python-opencv'
-  'python-opengl>=3.1.9'
-  # 'python-opengl-accelerate>=3.1.9' ???
+  'python-opengl>=3.1.10'
+  # 'python-opengl-accelerate>=3.1.10' ???
   'python-platformdirs>=4.3.6'
   'python-pluggy>=1.6.0'
   'python-pyclipper>=1.3.0.post6'
-  'python-pypdf>=6.6.0'
+  'python-pypdf>=6.7.0'
   'python-pyserial'
   'python-pyserial-asyncio>=0.6'
   'python-pyvips>=3.0.0'
   'python-scipy>=1.16.3'
   'python-semver>=3.0.2'
   'python-svgelements>=1.9.6'
-  'python-vtracer>=0.6.5' # >=0.6.11
+  'python-vtracer>=0.6.11'
   'python-websockets>=14.2'
   'python-yaml>=6.0.2'
 )
@@ -68,7 +68,7 @@ _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=${pkgver}"
 )
-sha256sums=('21d7bf6158d1752a62291a51e5c0a3c0f2e9abb5f497ebbfbdea48e20d615cba')
+sha256sums=('b06cc231a9367046197734bc690b1ad9779269f9564eab530ba35246e693c1de')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
