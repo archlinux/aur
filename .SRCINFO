@@ -1,0 +1,29 @@
+pkgbase = python-torii-boards
+	pkgdesc = Supplementary FPGA Board Files for Torii
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/shrine-maiden-heavy-industries/torii-boards
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pip
+	makedepends = python-setuptools-scm
+	makedepends = python-setuptools>=66
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = python<4.0
+	depends = python-torii>=0.8.1
+	optdepends = dfu-util: Board Programming
+	optdepends = openfpgaloader: Board Programming
+	optdepends = openocd: Board Programming
+	optdepends = nextpnr-ice40: Lattice iCE40 FPGA support
+	optdepends = nextpnr-ecp5: Lattice ECP5/ECP5G FPGA support
+	optdepends = nextpnr-machxo2: Lattice machXO2/machXO3L FPGA support
+	provides = python-torii-boards=0.8.1
+	conflicts = python-torii-boards-git
+	conflicts = python-torii-boards-nightly
+	source = torii-boards-0.8.1.tar.gz::https://files.pythonhosted.org/packages/source/t/torii_boards/torii_boards-0.8.1.tar.gz
+	sha256sums = 272aa62bb3d77cbc977b002ff446acd981c4b4194c09f04d1edac5aa1a60bbf7
+
+pkgname = python-torii-boards
