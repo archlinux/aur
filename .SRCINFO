@@ -1,7 +1,7 @@
 pkgbase = pinterest-unshittifier-git
 	pkgdesc = Daemon to fix Pinterest filenames and extensions in Downloads
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Tok1shu/pinterest-unshittifier
 	install = pinterest-unshittifier-git.install
 	arch = any
