@@ -9,7 +9,7 @@ license=('MIT')
 depends=('ncurses')
 makedepends=('gcc' 'make')
 
-source=("https://github.com/jaysalw/fetchdotfiles/archive/refs/tags/v${pkgver}.tar.gz")
+source=("https://github.com/jaysalw/fetchdotfiles/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 build() {
