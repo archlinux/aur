@@ -1,7 +1,7 @@
 pkgbase = huion-tablet-h610prov2
 	pkgdesc = Huion Tablet Driver Setting Software (requires X11)
 	pkgver = 15.0.0.175
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.huion.com
 	install = huion-tablet-h610prov2.install
 	arch = x86_64

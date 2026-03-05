@@ -1,6 +1,3 @@
-# Arch Linux install script for Huion Tablet Driver
-# This replaces Debian's preinst, postinst, prerm, and postrm scripts
-
 pre_install() {
     # This driver is X11-only; block installation under Wayland
     if [ -n "$WAYLAND_DISPLAY" ] || [ "$XDG_SESSION_TYPE" = "wayland" ]; then
@@ -67,14 +64,9 @@ pre_upgrade() {
 
     echo "Stopping Huion driver processes before upgrade..."
     
-    # Stop running processes gracefully
-    killall huionCore 2>/dev/null || true
-    killall huiontablet 2>/dev/null || true
-    
-    # Wait a moment for processes to exit
-    sleep 1
-    
-    # Force kill if still running
+    timeout 5 killall -w huionCore 2>/dev/null || true
+    timeout 5 killall -w huiontablet 2>/dev/null || true
+    # Force kill if still running after timeout
     killall -9 huionCore 2>/dev/null || true
     killall -9 huiontablet 2>/dev/null || true
     
@@ -88,14 +80,10 @@ post_upgrade() {
 pre_remove() {
     echo "Stopping Huion driver before removal..."
     
-    # Stop running processes
-    killall huiontablet 2>/dev/null || true
-    killall huionCore 2>/dev/null || true
-    
-    # Wait for processes to exit
-    sleep 1
-    
-    # Force kill if necessary
+    # Stop running processes: send SIGTERM and wait for exit (timeout 5s each)
+    timeout 5 killall -w huiontablet 2>/dev/null || true
+    timeout 5 killall -w huionCore 2>/dev/null || true
+    # Force kill if still running after timeout
     killall -9 huiontablet 2>/dev/null || true
     killall -9 huionCore 2>/dev/null || true
     
@@ -105,12 +93,8 @@ pre_remove() {
 post_remove() {
     echo "Cleaning up Huion Tablet files..."
     
-    # Remove main application directory
-    # (Usually handled by pacman, but ensure it's gone)
     rm -rf /opt/huiontablet/ 2>/dev/null || true
     
-    # Clean up user-level PID and log files
-    # Iterate through all user home directories properly
     for home_dir in /home/*; do
         # Skip if not a directory
         [ -d "$home_dir" ] || continue
@@ -123,17 +107,14 @@ post_remove() {
         rm -f "$home_dir/.huion.log" 2>/dev/null || true
     done
     
-    # Also check root's home directory
     if [ -d "/root" ]; then
         rm -f /root/.HuionCore.pid 2>/dev/null || true
         rm -f /root/.DriverUI.pid 2>/dev/null || true
         rm -f /root/.huion.log 2>/dev/null || true
     fi
     
-    # Remove udev rules
     rm -f /usr/lib/udev/rules.d/20-huion.rules 2>/dev/null || true
     
-    # Reload udev after removing rules
     udevadm control --reload-rules 2>/dev/null || true
     udevadm trigger 2>/dev/null || true
     
