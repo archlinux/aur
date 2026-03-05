@@ -6,7 +6,7 @@
 _pkgname=transcode
 pkgname="${_pkgname}"
 pkgver=1.1.7
-pkgrel=47
+pkgrel=48
 pkgdesc='A video/DVD ripper and encoder for the terminal/console'
 arch=(x86_64)
 url="https://sources.archlinux.org/other/packages/${pkgname}"
@@ -89,7 +89,7 @@ build() {
   cd ${pkgname}-${pkgver}
 
   CFLAGS+=" -std=gnu11" # Needed for newer GCC versions.
-  CFLAGS+=" -Wno-implicit-function-declaration -Wno-error=implicit-function-declaration" # Otherwise, leads to compile errors when using 'lame'.
+  CFLAGS+=" -Wno-implicit-function-declaration -Wno-error=implicit-function-declaration -Wno-strict-prototypes -Wno-unused-but-set-variable -Wno-enum-int-mismatch -Wno-pointer-sign -Wno-unused-result" # Otherwise, leads to compile errors when using 'lame'. Also, we silence some other warnings.
   export CFLAGS
 
   ## Prefer ffmpeg4.4 libraries in beeing found -- needed for libavcodec, libavformat, libpostproc:
