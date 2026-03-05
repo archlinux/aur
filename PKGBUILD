@@ -3,7 +3,7 @@
 _pkgname="mslink"
 pkgname="${_pkgname}"
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="This application allow you to create Windows Shortcut files (extension .LNK) without needing a Windows OS."
 arch=(
   'i386'
@@ -26,6 +26,7 @@ makedepends=(
 optdepends=(
   "bash: For the bash variant."
 )
+DLAGENTS=('https::/usr/bin/curl -qgb "" -fLC - --retry 3 --user-agent Mozilla --retry-delay 3 -o %o %u') # Needs user agent header to be set
 source=(
   "https://www.mamachine.org/mslink/mslink_v${pkgver}.tar.gz"  # C source
   "https://www.mamachine.org/mslink/mslink_v${pkgver}.sh"      # bash variant

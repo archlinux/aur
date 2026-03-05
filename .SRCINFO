@@ -1,7 +1,7 @@
 pkgbase = mslink
 	pkgdesc = This application allow you to create Windows Shortcut files (extension .LNK) without needing a Windows OS.
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mamachine.org/mslink/index.en.html
 	arch = i386
 	arch = i686
