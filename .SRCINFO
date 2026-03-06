@@ -10,6 +10,9 @@ pkgbase = insync-dolphin
 	makedepends = extra-cmake-modules
 	makedepends = qt6-base
 	makedepends = git
+	makedepends = kconfig
+	makedepends = kcoreaddons
+	makedepends = kio
 	depends = insync
 	depends = dolphin
 	source = insync-dolphin::git+https://github.com/felagund/dolphin-insync-plugin-plasma-6.git#branch=master

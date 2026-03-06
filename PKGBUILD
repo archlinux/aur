@@ -18,6 +18,9 @@ makedepends=(
     'extra-cmake-modules'
     'qt6-base'
     'git'
+    'kconfig'
+    'kcoreaddons'
+    'kio'
 )
 source=("${pkgname}::git+https://github.com/felagund/dolphin-insync-plugin-plasma-6.git#branch=master")
 sha256sums=('SKIP')
