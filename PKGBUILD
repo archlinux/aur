@@ -1,17 +1,17 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=openchamber
 _npmname=@openchamber/web
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="Desktop and web interface for OpenCode AI agent"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/btriapitsyn/openchamber"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/@openchamber/web/-/web-${pkgver}.tgz")
 noextract=("web-${pkgver}.tgz")
-sha256sums=('d0cd8b0f35cebb8c050e07732465110fd560d5161fc9dd1d34290b8cfec43520')
+sha256sums=('413d0f12161e42930b55c262e2acaf166f4389caca3c380a7afb8c403bb60714')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
@@ -41,4 +41,9 @@ package() {
         break
       fi
     done
+
+    rm -f "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/bun-pty/rust-pty/target/release/librust_pty_arm64.so"
+
+    mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
+    printf "%s\n" "MIT" > "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
