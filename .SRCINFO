@@ -1,6 +1,6 @@
 pkgbase = freetube-bin
 	pkgdesc = An open source desktop YouTube player built with privacy in mind.
-	pkgver = 0.23.13
+	pkgver = 0.23.14
 	pkgrel = 1
 	url = https://github.com/FreeTubeApp/FreeTube
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = freetube-bin
 	conflicts = freetube
 	options = !strip
 	options = staticlibs
-	source_x86_64 = freetube-bin-0.23.13-amd64.deb::https://github.com/FreeTubeApp/FreeTube/releases/download/v0.23.13-beta/freetube_0.23.13_beta_amd64.deb
-	sha256sums_x86_64 = c7e9371a794cdc4e065471bb19b424bc36f20f3531b9d8c0b6f25e21f5db14f7
-	source_aarch64 = freetube-bin-0.23.13-arm64.deb::https://github.com/FreeTubeApp/FreeTube/releases/download/v0.23.13-beta/freetube_0.23.13_beta_arm64.deb
-	sha256sums_aarch64 = 96a89fbb99c1ed9b4aababac8fc8f209aa7e0c3a582b6e652c69edaae46a564c
+	source_x86_64 = freetube-bin-0.23.14-amd64.deb::https://github.com/FreeTubeApp/FreeTube/releases/download/v0.23.14-beta/freetube_0.23.14_beta_amd64.deb
+	sha256sums_x86_64 = c918041da11592dde2d3336d5441f2eb077878ce59feda04e524b380c853e461
+	source_aarch64 = freetube-bin-0.23.14-arm64.deb::https://github.com/FreeTubeApp/FreeTube/releases/download/v0.23.14-beta/freetube_0.23.14_beta_arm64.deb
+	sha256sums_aarch64 = 34da4e2e0d7631550f3d0d71d3dc3de145f325c3f8048e9809d04605628701f4
 
 pkgname = freetube-bin
