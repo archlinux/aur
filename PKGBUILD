@@ -2,9 +2,9 @@
 # Maintainer: Elliott Fournier-Robert <elliott1447@gmail.com>
 
 pkgname=octoberctl-bin
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
-sha256sums=('67423e1cbd63ae208e7934cace1493cb1d1f2995dfd61a7f8def00475202fa51')
+sha256sums=('5ed45e928e7cfb293275c806d35d3a211fda29129568fad4ee3800a242b3ba3d')
 
 url='https://github.com/october-os/octoberctl'
 pkgdesc='The official October Linux management utility'
@@ -12,7 +12,7 @@ arch=('x86_64')
 license=('GPL-3.0-or-later')
 
 _asset_name="octoberctl"
-source=("${_asset_name}::https://github.com/october-os/octoberctl/releases/download/1.0/${_asset_name}")
+source=("${_asset_name}::https://github.com/october-os/octoberctl/releases/download/${pkgver}/${_asset_name}")
 
 package() {
     install -d "${pkgdir}/usr/bin"
