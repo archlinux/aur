@@ -30,7 +30,7 @@ source=(
 )
 
 
-sha256sums=('479b1c5490fd8c5c68218c4b142ae97641828dca93315ec49ab5c4bbd7fa117f'
+sha256sums=('ff2b9d3ab062dafb9c84d4206b20594bdc3925b7b489fa3eeeed53fa4e88c5eb'
             'SKIP'
             'SKIP')
 
