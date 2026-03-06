@@ -1,7 +1,7 @@
 # Maintainer: Steven Seifried <gitlab@canox.net>
 # Contributor: Steven Seifried <gitlab@canox.net>
 pkgname=gnome-shell-extension-tuxedo-fnlock-status
-pkgver=6
+pkgver=7
 pkgrel=1
 pkgdesc="GNOME Shell Extension to display the FnLock status of TUXEDO devices "
 arch=('any')
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=('gnome-shell')
 options=(!strip !debug)
 source=("https://github.com/StevenSeifried/tuxedo-fnlock-status/releases/download/v${pkgver}/tuxedo-fnlock-status@stevenseifried.github.io.zip")
-sha256sums=('5a7b714fc38203a73b8b166ba2a37e0d50c777a81ea4c6268031871d54b64bce')
-sha512sums=('edc8fb8d58cfd9fa7b97cdc9b027798a62d310aaf8f9b8de2f7cb5e42967d3f4ad0fbc31455ee26a47e9627b106ab559e3d47b53fb77532457ef90a86eb34732')
+sha256sums=('872968d5eafe8a36e40c4d03b680e1213a2f34acf3d8a2d7009cd2d31675c3cb')
+sha512sums=('f700f158a4082e245021840c265f7767d893f268fdb45ae242726ba150ac74d3cd1e27fa34b7c57a034646038283a9f7eb525a7631e153faaca490742242f5cd')
 
 package() {
     destdir="$pkgdir/usr/share/gnome-shell/extensions/tuxedo-fnlock-status@stevenseifried.github.io/"
