@@ -1,6 +1,6 @@
 # Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=hister-git
-pkgver=0.7.0.r18.g8eb236b
+pkgver=0.7.0.r30.ga28b9cb
 pkgrel=1
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites (git)"
 arch=('x86_64' 'aarch64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags --abbrev=7 --match 'v[0-9]*' 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.g%s" \
             "$(git rev-list --count HEAD)" \
             "$(git rev-parse --short=7 HEAD)"
