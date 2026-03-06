@@ -5,15 +5,16 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Fuse filesystem for immich"
 arch=('x86_64')
-url="https://codegiant.io/scottrix/scottrix/repository/5573/files/main/README.md"
+url="https://codeberg.org/scottrix/immichfs"
 license=('MIT')
 depends=('python' 'python-fusepy')
-source=("git+:https://codegiant.io/scottrix/scottrix/immichfs.git#pkgver")
+source=("git+https://codeberg.org/scottrix/immichfs.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  cp src/immichfs ${DESTDIR}/usr/bin/immichfs
-  chown root:root ${DESTDIR}/usr/bin/immichfs
-  chmod ugo+rx ${DESTDIR}/usr/bin/immichfs
+  cd "$srcdir/$pkgname"
+  mkdir -p $pkgdir/usr/bin
+  cp src/immichfs $pkgdir/usr/bin/immichfs
+  chown root:root ${pkgdir}/usr/bin/immichfs
+  chmod ugo+rx ${pkgdir}/usr/bin/immichfs
 }
