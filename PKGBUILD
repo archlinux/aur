@@ -5,12 +5,12 @@ _crate="b64url"
 _cratever="0.1.1"
 pkgname="b64url"
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Command line URL-safe Base-64 encoder/decoder'
 url='https://crates.io/crates/b64url'
 license=('MIT')
 
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/b64url/0.1.1/download")
