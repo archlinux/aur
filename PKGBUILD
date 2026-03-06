@@ -5,12 +5,12 @@ _crate="next-rust-release-date"
 _cratever="0.2.2"
 pkgname="next-rust-release-date"
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='When&#39;&#34;&#39;&#34;&#39;s the next Rust release?'
 url='https://crates.io/crates/next-rust-release-date'
 license=('Apache-2.0' 'MIT')
 
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/next-rust-release-date/0.2.2/download")
@@ -42,6 +42,6 @@ build() {
 package() {
 	cd "$srcdir/$_crate-$_cratever"
 	install -Dm755 "target/release/next-rust-release-date" -t "$pkgdir/usr/bin"
-	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 'LICENSE-APACHE' -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

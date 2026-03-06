@@ -1,6 +1,6 @@
 {
-  ".i": 5,
+  ".i": 6,
   "crate": "next-rust-release-date",
   "version": "0.2.2",
-  "pkgrel": 1
+  "pkgrel": 2
 }
