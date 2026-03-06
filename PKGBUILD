@@ -1,7 +1,7 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 pkgname=gram-editor-bin
 pkgver=1.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A code editor for humanoid apes and grumpy toads"
 
 provides=(gram-editor gram)
@@ -12,22 +12,20 @@ arch=('x86_64')
 url="https://codeberg.org/GramEditor/gram"
 license=(GPL-3.0-or-later AGPL-3.0-or-later Apache-2.0)
 
-depends=(alsa-lib
-	fontconfig
-	glibc
-	libstdc++
-    libxcb
-    libxkbcommon
-    libxkbcommon-x11
-	openssl
-	sqlite
-    vulkan-driver
-    vulkan-icd-loader
-    vulkan-tools
-    wayland
-	zlib
-	zstd
-)
+depends=('alsa-lib'
+         'fontconfig'
+         'gcc-libs'
+         'glibc'
+         'libxcb'
+         'libxkbcommon'
+         'libxkbcommon-x11'
+         'openssl'
+         'sqlite'
+         'vulkan-driver'
+         'vulkan-icd-loader'
+         'vulkan-tools'
+         'wayland'
+         'zlib')
 
 optdepends=('clang: improved C/C++ language support'
             'eslint: improved Javascript language support'
