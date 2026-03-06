@@ -1,5 +1,6 @@
 # Maintainer: zsh-ncursed <zsh.ncursed@gmail.com>
 pkgname=somafm_tui
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="Terminal user interface for SomaFM internet radio"
 arch=('any')
@@ -7,21 +8,20 @@ url="https://github.com/zsh-ncursed/somafm_tui"
 license=('MIT')
 depends=('python' 'python-requests' 'python-mpv' 'python-dbus-next')
 makedepends=('git')
-source=("git+https://github.com/zsh-ncursed/somafm_tui.git#tag=$GITHUB_REF_NAME")
-sha256sums=('845b3110e9f23986a6e233db77efbfca7c69e0dca2723e1c1e2010768de797d4')
 
-# pkgver() is called by makepkg during build to determine version
-# In CI (GitHub Actions), GITHUB_REF_NAME is set to the tag name (e.g., "v0.4.9")
-# In local builds, git describe is used to get version from tags
+# Use explicit tag for source
+source=("git+https://github.com/zsh-ncursed/somafm_tui.git#tag=v${pkgver}")
+sha256sums=('0f1ed8b399abfeab1960dbfd9f8ee6b47664d64a1fec409d53b53e5f62068054')
+
+# pkgver() is used in CI to override version from git tag
 pkgver() {
     if [ -n "$GITHUB_REF_NAME" ]; then
-        echo "$GITHUB_REF_NAME" | sed 's/^v//'
+        echo "${GITHUB_REF_NAME#v}"
     elif [ -n "$VERSION" ]; then
-        # Fallback for AUR action which may pass VERSION
-        echo "$VERSION" | sed 's/^v//'
+        echo "${VERSION#v}"
     else
-        cd "$pkgname"
-        git describe --tags --abbrev=0 2>/dev/null | sed 's/^v//' || echo "0.0.0"
+        # Local build - use hardcoded pkgver
+        echo "$pkgver"
     fi
 }
 
@@ -92,4 +92,3 @@ package() {
     install -Dm644 CONTRIBUTING.md "$pkgdir/usr/share/doc/$pkgname/CONTRIBUTING.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-pkgver=0.5.5
