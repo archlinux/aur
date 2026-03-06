@@ -1,0 +1,21 @@
+--- a/distro/systemd/openvpn-client@.service.in
++++ b/distro/systemd/openvpn-client@.service.in
+@@ -7,7 +7,7 @@
+ Documentation=https://community.openvpn.net/openvpn/wiki/HOWTO
+ 
+ [Service]
+-Type=notify
++Type=simple
+ PrivateTmp=true
+ WorkingDirectory=/etc/openvpn/client
+ ExecStart=@sbindir@/openvpn --suppress-timestamps --nobind --config %i.conf
+--- a/distro/systemd/openvpn-server@.service.in
++++ b/distro/systemd/openvpn-server@.service.in
+@@ -8,6 +8,7 @@
+ 
+ [Service]
+ Type=notify
++Restart=always
+ PrivateTmp=true
+ WorkingDirectory=/etc/openvpn/server
+ ExecStart=@sbindir@/openvpn --status %t/openvpn-server/status-%i.log --status-version 2 --suppress-timestamps --config %i.conf
