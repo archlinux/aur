@@ -1,7 +1,7 @@
 # Maintainer: Simon Legner <Simon.Legner@gmail.com>
 # Maintainer: Shengyu Zhang <la@archlinuxcn.org>
 pkgname=coredns
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=3
 pkgdesc="A DNS server that chains plugins"
 makedepends=('go' 'make')
@@ -15,7 +15,7 @@ source=(coredns-${pkgver}.tar.gz::https://github.com/coredns/${pkgname}/archive/
   coredns.service
   coredns-sysusers.conf)
 
-sha256sums=('ec814e2de304caaaabdbdc0c174e8f5e1668274d8c3da387d76cbb9b91faad66'
+sha256sums=('ab933ed4f04de3cf377d0ecc8399fa1a6613cecdd7a1c40d90eb0a7471463fdb'
             '030cd8e938c293c11a9acdb09b138f98b37874772072336792ec4bf0d9eff9b1'
             '536d03f8b20b0d2d6e8f96edd7e4e4dd7f6fef39ab0e952522d8725f3cc186b7')
 
@@ -36,7 +36,10 @@ prepare() {
 
 build() {
   export GOPATH="$srcdir/build"
-  # export PATH=$GOPATH/bin:$PATH
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "coredns-$pkgver"
