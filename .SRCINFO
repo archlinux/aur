@@ -1,7 +1,7 @@
 pkgbase = youtube-tui
 	pkgdesc = An aesthetically pleasing YouTube TUI written in Rust
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tui.siri.ws/youtube
 	arch = aarch64
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = youtube-tui
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	makedepends = cargo-auditable
-	depends = gcc-libs
+	depends = libgcc
 	depends = libsixel
 	depends = libxcb
 	depends = mpv

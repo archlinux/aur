@@ -5,12 +5,12 @@ _crate="youtube-tui"
 _cratever="0.9.3"
 pkgname="youtube-tui"
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc='An aesthetically pleasing YouTube TUI written in Rust'
 url='https://tui.siri.ws/youtube'
 license=('GPL-3.0-or-later')
 
-depends=('gcc-libs' 'libsixel' 'libxcb' 'mpv')
+depends=('libgcc' 'libsixel' 'libxcb' 'mpv')
 makedepends=('cargo' 'cargo-auditable')
 optdepends=('konsole: Default terminal emulator'
             'yt-dlp: Default YouTube downloader')
