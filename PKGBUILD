@@ -1,4 +1,4 @@
-# Maintainer: ido55 <ido.rennert@email.com>
+# Maintainer: BitterSteel
 pkgname=baseconv
 pkgver=1.0
 pkgrel=1
