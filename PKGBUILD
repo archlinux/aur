@@ -23,8 +23,8 @@ provides=("${_execs[@]}")
 conflicts=("${_pkgname}")
 depends=('glibc' 'libgcc')
 
-source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_pkgvername}-${_barch[0]}.tar.gz")
-source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_pkgvername}-${_barch[0]}.tar.gz")
+source_x86_64=("${_appname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_pkgvername}-${_barch[0]}.tar.gz")
+source_aarch64=("${_appname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_pkgvername}-${_barch[0]}.tar.gz")
 sha256sums_x86_64=('c040ebdc96991b218297fc2a714a4a151dd900a7bf6ff125155ba254867f46eb')
 sha256sums_aarch64=('c040ebdc96991b218297fc2a714a4a151dd900a7bf6ff125155ba254867f46eb')
 

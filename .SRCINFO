@@ -12,9 +12,9 @@ pkgbase = tmux-plugin-panel-bin
 	provides = tmuxthemes
 	provides = tmuxplugins
 	conflicts = Tmux-Plugin-Panel
-	source_x86_64 = Tmux-Plugin-Panel-x86_64-0.1.1.tgz::https://github.com/marlocarlo/Tmux-Plugin-Panel/releases/download/v0.1.1/tmuxpanel-v0.1.1-linux-x64.tar.gz
+	source_x86_64 = tmuxpanel-x86_64-0.1.1.tgz::https://github.com/marlocarlo/Tmux-Plugin-Panel/releases/download/v0.1.1/tmuxpanel-v0.1.1-linux-x64.tar.gz
 	sha256sums_x86_64 = c040ebdc96991b218297fc2a714a4a151dd900a7bf6ff125155ba254867f46eb
-	source_aarch64 = Tmux-Plugin-Panel-aarch64-0.1.1.tgz::https://github.com/marlocarlo/Tmux-Plugin-Panel/releases/download/v0.1.1/tmuxpanel-v0.1.1-linux-x64.tar.gz
+	source_aarch64 = tmuxpanel-aarch64-0.1.1.tgz::https://github.com/marlocarlo/Tmux-Plugin-Panel/releases/download/v0.1.1/tmuxpanel-v0.1.1-linux-x64.tar.gz
 	sha256sums_aarch64 = c040ebdc96991b218297fc2a714a4a151dd900a7bf6ff125155ba254867f46eb
 
 pkgname = tmux-plugin-panel-bin
