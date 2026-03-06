@@ -12,7 +12,7 @@ pkgbase = joytoggle
 	depends = libadwaita
 	depends = polkit
 	depends = systemd
-	source = joytoggle-1.0.0.tar.gz::https://github.com/Mirkko/joytoggle/archive/refs/heads/main.tar.gz
-	sha256sums = b5d0aa65a2e8a15a4879bc90ed7469821e4db6fc2df826ce393e77e6bae65682
+	source = joytoggle-1.0.0.tar.gz::https://github.com/Mirkko/joytoggle/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = aea81376e6bef314b3b14f9796cec600716f132673a0e7e2f2a98adf848c2161
 
 pkgname = joytoggle

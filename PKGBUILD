@@ -15,11 +15,11 @@ depends=(
     'polkit'
     'systemd'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/heads/main.tar.gz")
-sha256sums=('b5d0aa65a2e8a15a4879bc90ed7469821e4db6fc2df826ce393e77e6bae65682')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('aea81376e6bef314b3b14f9796cec600716f132673a0e7e2f2a98adf848c2161')
 
 package() {
-    cd "$srcdir/joytoggle-main"
+    cd "$srcdir/joytoggle-$pkgver"
 
     # App files
     install -dm755 "$pkgdir/usr/lib/joytoggle"
