@@ -1,7 +1,7 @@
 # Maintainer: kaizen403 <kaizen403@proton.me>
 pkgname=openlinear-bin
 pkgver=0.1.23
-pkgrel=2
+pkgrel=3
 pkgdesc="AI-powered project management that actually writes the code — desktop app"
 arch=('x86_64')
 url="https://github.com/kaizen403/openlinear"
@@ -39,7 +39,8 @@ else
   export WEBKIT_DISABLE_DMABUF_RENDERER=1
   export APPIMAGE_EXTRACT_AND_RUN=1
 fi
-exec /opt/openlinear/openlinear.AppImage "$@"
+nohup /opt/openlinear/openlinear.AppImage "$@" > /dev/null 2>&1 &
+disown
 EOF
   chmod 755 "${pkgdir}/usr/bin/openlinear"
 
