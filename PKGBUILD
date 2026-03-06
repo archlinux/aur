@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=android-knot-bin
 _pkgname=Knot
-pkgver=1.2.38
+pkgver=2.1.79
 pkgrel=1
 pkgdesc="An Android gadget that integrates common modules such as Todo, Notes and Reader and supports various clients (Win, Mac, Linux) for editing Todo and Notes.(Prebuilt version)"
 arch=('x86_64')
@@ -11,40 +11,43 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     'e2fsprogs'
-    'alsa-lib'
     'sqlite'
     'qt6-declarative'
-    'qt6-webchannel'
-    'qt6-webengine'
     'qt6-positioning'
     'libgpg-error'
     'nss'
     'nspr'
+    'qt6-multimedia'
+    'qt6-charts'
+    'qt6-location'
 )
-makedepends=(
-    'fuse2'
+optdepends=(
+    'fcitx5-qt'
 )
 options=(
     '!strip'
     '!emptydirs'
 )
 source=(
-    "${pkgname%-bin}-${pkgver}.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-Linux-${CARCH}.AppImage"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-Linux-${CARCH}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ic005k/Knot/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('591b4fb39db42de5177d91c41ad7f5c48469f7034f5e3a700f7a9ab82c62c4fc'
-            '81f996086ab62a5fbbff9f8b6998eadff91a30e8c89458e7f2f81a74e3d7a4a2'
+sha256sums=('5f752f0848db3a2a53e6f479623ae4be95ca6b5d4f80ebf0be0ada3933916c11'
+            '5076e0113e6e491d04559dd9ec0a80a35392bec88928393d47b8dd620aa96d66'
             '6f38e0cb252008b84532d5914cb851aa45518771db172e7f5a091fe16123e05e')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
         s/@runname@/${_pkgname}/g
     " "${srcdir}/${pkgname%-bin}.sh"
-    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" ];then
-        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage"
+    if [ ! -x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" ];then
+        chmod +x "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     fi
-    "${srcdir}/${pkgname%-bin}-${pkgver}.AppImage" --appimage-extract > /dev/null
+    if [ -d "${srcdir}/squashfs-root" ];then
+        rm -rf "${srcdir}/squashfs-root"
+    fi
+    "${srcdir}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage" --appimage-extract > /dev/null
     sed -i -e "
         s/Exec=${_pkgname}/Exec=${pkgname%-bin}/g
         s/icon/${pkgname%-bin}/g
