@@ -1,7 +1,7 @@
-# Maintainer: vcpd1 <sashamamedov032003@gmail.com>
+# Maintainer: vcpd1 <https://github.com/vcpd1>
 
 pkgname=voxcii-git
-pkgver=r11.d4c9b52
+pkgver=r12.c7ff4ee
 pkgrel=1
 pkgdesc="Terminal-based ASCII 3D model viewer written in C++"
 arch=('x86_64')
