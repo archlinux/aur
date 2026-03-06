@@ -1,7 +1,7 @@
 pkgbase = coolercontrold-git
 	pkgdesc = A program to monitor and control your cooling devices. This package contains the CoolerControl service daemon.
 	pkgver = 3.1.1.r217.g221dfd7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/coolercontrol/coolercontrol
 	arch = x86_64
 	license = GPL-3.0-or-later

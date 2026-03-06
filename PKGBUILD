@@ -4,7 +4,7 @@
 
 pkgname=coolercontrold-git
 pkgver=3.1.1.r217.g221dfd7
-pkgrel=1
+pkgrel=2
 pkgdesc="A program to monitor and control your cooling devices. This package contains the CoolerControl service daemon."
 arch=('x86_64')
 url="https://gitlab.com/coolercontrol/coolercontrol"
@@ -48,14 +48,8 @@ pkgver() {
 }
 
 build() {
-	# cd "${srcdir}/${pkgname%d-git}/coolercontrol-ui"
-	# npm ci
-	# npm run build
-	# cp -r dist/* "${srcdir}/${pkgname%d-git}/${pkgname%-git}/resources/app/"
-	cd "${srcdir}/${pkgname%d-git}/${pkgname%-git}"
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	cargo build --release --locked
+	cd "${srcdir}/${pkgname%d-git}"
+	make build-daemon
 }
 
 check() {
