@@ -11,9 +11,11 @@ pkgbase = kio-s3
 	makedepends = extra-cmake-modules
 	makedepends = cmake
 	makedepends = kdoctools
+	makedepends = kcmutils
 	depends = kio
 	depends = ki18n
 	depends = aws-sdk-cpp
+	depends = kirigami-addons
 	source = git+https://invent.kde.org/network/kio-s3.git
 	sha256sums = SKIP
 
