@@ -2,7 +2,7 @@
 # hyprbole Hyprland config manager
 # no set -e: pick_list uses non-zero returns intentionally
 
-FIXES=4 # add +1 whenever you've successfully found a bug and fxed it
+FIXES=5 # add +1 whenever you've successfully found a bug and fxed it
 for _arg in "$@"; do
     [[ "$_arg" == "--fixes" ]] && { printf "successful bug fixes: %d\n" "$FIXES"; exit 0; }
 done
@@ -274,37 +274,33 @@ prompt_input() {
 prompt_select() {
     local label="$1"; shift
     local opts=("$@") sel=0
-    PSEL_LINES=1
+
     _render_psel() {
         local cols; cols=$(tput cols)
         local i
 
-        # clear however many lines the last render used
-        printf '\r\033[2K' > /dev/tty
-        for (( i=1; i<PSEL_LINES; i++ )); do
-            printf '\033[A\033[2K' > /dev/tty
-        done
+        # jump back to saved cursor position and clear from there to end of screen
+        printf '\033[u\033[J' > /dev/tty
 
         printf "  ${MUTED}>${R}  ${WHITE}${BOLD}%s${R}  " "$label" > /dev/tty
         local line_len=$(( ${#label} + 7 ))
-        PSEL_LINES=1
 
         for (( i=0; i<${#opts[@]}; i++ )); do
             local opt_len=$(( ${#opts[$i]} + 3 ))
             if (( line_len + opt_len > cols )); then
                 printf '\n    ' > /dev/tty
                 line_len=4
-                (( PSEL_LINES++ ))
             fi
             (( i==sel )) \
                 && printf "${BG_SEL}${ACC}${BOLD} %s ${R}  " "${opts[$i]}" > /dev/tty \
                 || printf "${MUTED} %s ${R}  " "${opts[$i]}" > /dev/tty
             line_len=$(( line_len + opt_len ))
         done
-        printf "\n${MUTED}  ←/→  ctrl+q${R}\n" > /dev/tty
-        (( PSEL_LINES += 2 ))
+        printf "\n${MUTED}  ←/→  ctrl+q${R}" > /dev/tty
     }
+
     printf '\033[?25l' > /dev/tty
+    printf '\033[s' > /dev/tty   # save cursor position once
     CANCELLED=0; _render_psel
     while true; do
         local k1="" k2="" k3=""
