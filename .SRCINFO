@@ -1,0 +1,27 @@
+pkgbase = kdecrypt
+	pkgdesc = PGP/GPG file encryption and decryption manager for KDE Plasma
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Guid-Lab/kdecrypt
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt6-tools
+	makedepends = kdoctools
+	makedepends = gettext
+	depends = qt6-base
+	depends = kcoreaddons
+	depends = ki18n
+	depends = kxmlgui
+	depends = kwidgetsaddons
+	depends = kwallet
+	depends = kdbusaddons
+	depends = kwindowsystem
+	depends = openssl
+	depends = gnupg
+	optdepends = khelpcenter: for the built-in handbook
+	source = kdecrypt-1.0.0.tar.gz::https://github.com/Guid-Lab/kdecrypt/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = kdecrypt
