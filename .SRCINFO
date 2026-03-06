@@ -1,0 +1,21 @@
+pkgbase = gram-bin
+	pkgdesc = The Gram Code Editor
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://codeberg.org/GramEditor/gram
+	arch = x86_64
+	license = GPL-3.0-or-later
+	license = AGPL-3.0-or-later
+	license = Apache-2.0
+	optdepends = clang: improved C/C++ language support
+	optdepends = eslint: improved Javascript language support
+	optdepends = pyright: improved Python language support
+	optdepends = rust-analyzer: improved Rust language support
+	provides = gram
+	conflicts = gram
+	source = gram-bin-1.0.0.tar.gz::https://codeberg.org/GramEditor/gram/releases/download/1.0.0/gram-linux-x86_64-1.0.0.tar.gz
+	source = gram.sh
+	sha256sums = 12b945739396312d9af27b1866d5b05ac6caf78415027798f5a68c1282bec331
+	sha256sums = 65844d78ba9e000a63f39f9f4f2c3d20a2383c6e802d2ae37555db1a10562fd7
+
+pkgname = gram-bin
