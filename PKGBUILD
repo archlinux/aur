@@ -3,7 +3,7 @@
 
 pkgname=python-local_moonie
 _pypiname=local_moonie
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Local OpenAI-compatible proxy with Firefox/Selenium search + Ollama backend for Avante.nvim"
 arch=('any')
