@@ -1,0 +1,24 @@
+pkgbase = oh-my-pi-git
+	pkgdesc = AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more (git build)
+	pkgver = v0.7.8.r2962b6a5146
+	pkgrel = 1
+	url = https://github.com/can1357/oh-my-pi
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = rustup
+	makedepends = cmake
+	makedepends = make
+	depends = glibc
+	depends = gcc-libs
+	depends = bun
+	provides = omp
+	conflicts = omp
+	options = !lto
+	options = !strip
+	source = git+https://github.com/can1357/oh-my-pi.git
+	sha256sums = SKIP
+
+pkgname = oh-my-pi-git
