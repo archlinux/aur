@@ -1,7 +1,7 @@
 pkgbase = gram-editor-bin
 	pkgdesc = A code editor for humanoid apes and grumpy toads
 	pkgver = 1.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://codeberg.org/GramEditor/gram
 	arch = x86_64
 	license = GPL-3.0-or-later

@@ -1,7 +1,7 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 pkgname=gram-editor-bin
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A code editor for humanoid apes and grumpy toads"
 
 provides=(gram-editor gram)
@@ -36,7 +36,6 @@ optdepends=('clang: improved C/C++ language support'
             'eslint: improved Javascript language support'
             'pyright: improved Python language support'
             'rust-analyzer: improved Rust language support')
-# Make depends removed. Will be re-added if brux maintains a non-make build system by its next stable release
 
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/${pkgver}/gram-linux-x86_64-${pkgver}.tar.gz")
 sha256sums=('SKIP')
