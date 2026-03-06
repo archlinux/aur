@@ -3,7 +3,7 @@
 pkgname=honor-fmi721-kbd-dkms
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Keyboard backlight driver for Honor MagicBook X14 Plus 2024 (FMI-721)"
+pkgdesc="Keyboard backlight driver for Honor X14 Plus 2024 (FMI-721)"
 arch=('x86_64')
 url="https://github.com/vasilews/honor-fmi721-kbd"
 license=('GPL-2.0-only')
