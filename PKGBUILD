@@ -4,7 +4,7 @@
 
 pkgname=bazarr
 pkgver=1.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Subtitle management and download automation for Sonarr and Radarr."
 arch=('any')
 url="https://www.bazarr.media"
@@ -32,8 +32,8 @@ depends=(
   unrar
 )
 optdepends=(
-  'psycopg2: postgresql backend'
   'mediainfo: scan media files'
+  'python-psycopg2: postgresql backend'
 )
 makedepends=('unzip')
 options=('!debug')
