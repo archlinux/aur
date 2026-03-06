@@ -1,6 +1,6 @@
 pkgbase = iptv-checker
 	pkgdesc = Node.js CLI tool for checking links in IPTV playlists
-	pkgver = 0.30.2
+	pkgver = 0.30.3
 	pkgrel = 1
 	url = https://github.com/freearhey/iptv-checker
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = iptv-checker
 	makedepends = npm
 	depends = nodejs
 	depends = ffmpeg
-	noextract = iptv-checker-0.30.2.tgz
-	source = https://registry.npmjs.org/iptv-checker/-/iptv-checker-0.30.2.tgz
-	sha256sums = c6129d8be7a705070a93d4e6bb31247fae2e0562837607b94e0b1a7ce02413e4
+	noextract = iptv-checker-0.30.3.tgz
+	source = https://registry.npmjs.org/iptv-checker/-/iptv-checker-0.30.3.tgz
+	sha256sums = 564cf654a5df43036f634e58ab14f977b0c7378fbd1a50d93b04eabd3dcc95e5
 
 pkgname = iptv-checker
