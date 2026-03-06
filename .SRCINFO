@@ -6,7 +6,7 @@ pkgbase = legacy-launcher-ely.by
 	arch = any
 	license = GPL3
 	depends = jdk21-openjdk>=21
-	source = LegacyLauncher.jar
+	source = https://github.com/Pro7777tim/legacy-launcher-ely.by/blob/master/LegacyLauncher.jar
 	source = legacy-launcher.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
