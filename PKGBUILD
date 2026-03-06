@@ -1,5 +1,5 @@
 pkgname=diskard
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A fast TUI disk usage analyzer with trash/delete functionality"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/shoenot/diskard/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a5e6c6e1de120632885e53b99fe5da078636cca74390fe711189812e08528f62')
+sha256sums=('c5c5df3c78cf5128ac52b0540d9c389950c976a50b7e35d6ad60812b898158dc')
 
 build() {
     cd "$pkgname-$pkgver"
