@@ -2,7 +2,7 @@
 
 _name=ddgs
 pkgname=python-$_name
-pkgver=9.11.1
+pkgver=9.11.2
 pkgrel=1
 pkgdesc="Dux Distributed Global Search. A metasearch library that aggregates results from diverse web search services."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 checkdepends=('python-pytest')
 optdepends=('python-fastapi: api' 'python-mcp: api' 'uvicorn: api' 'python-colorama: api' 'python-httptools: api' 'python-dotenv: api' 'python-pyyaml: api' 'python-uvloop: api' 'python-watchfiles: api' 'python-websockets: api')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fd096f3f29e19c2bce200659ffcffd00485180f90c2a29aa7f1cce79e337fbeb')
+sha256sums=('088614114eb5eeef501cc9eaa225884f3de0d3759e745a45c9c709e913ac68d3')
 
 build() {
     cd "$srcdir"/$_name-$pkgver
