@@ -5,7 +5,7 @@
 : "${CADDY_STATICALLY_LINKED:=""}"
 
 pkgname=caddy-custom
-pkgver=2.11.1
+pkgver=2.11.2
 pkgrel=1
 pkgdesc='Caddy web server with plugins'
 url='https://github.com/caddyserver/caddy'
@@ -24,8 +24,8 @@ source=("plugin-list"
 sha256sums=('SKIP'
             '1dbef6bd4a096fcbab353a6bec0f6e34f8b6d2470e422c380642c2bd8ff83c20'
             'c3119c98b285c4bf10c0581fba09b87df3999e0e5a335d94f074eae454a99e70'
-            '6d0a9e90b3a7ea0b385a66003f493c1a7317f47d57faadd0ee7d82798b7d89e3'
-            '04e676637e2f0675a2f4385ac1a00449ff60c0f3c969c967ce7770b1420cee0c')
+            'ee12f7b5f97308708de5067deebb3d3322fc24f6d54f906a47a0a4e8db799122'
+            '2e55e3ef89621d7d0408ca024b11103e49d55473c0f3130ba855a4de1825cfa8')
 
 if [[ "${CADDY_STATICALLY_LINKED}" != "yes" ]]
 then
