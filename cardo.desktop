@@ -1,0 +1,8 @@
+[Desktop Entry]
+Categories=Audio;
+Comment=Cardo
+Exec=cardo
+Icon=cardo
+Name=Cardo
+Terminal=false
+Type=Application
