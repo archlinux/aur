@@ -1,7 +1,7 @@
 # Maintainer: Mikodzi <mirek@utumno.cc>
 pkgname=joytoggle
 pkgver=1.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Enable or disable joystick and sim controller devices without unplugging"
 arch=('any')
 url="https://github.com/Mirkko/joytoggle"
@@ -16,7 +16,7 @@ depends=(
     'systemd'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('aea81376e6bef314b3b14f9796cec600716f132673a0e7e2f2a98adf848c2161')
+sha256sums=('10ac0802fe4f6584fd2952d534d7af7c9dd99bde41ca001befbc0237c7ce8092')
 
 package() {
     cd "$srcdir/joytoggle-$pkgver"
