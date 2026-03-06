@@ -14,7 +14,13 @@ depends=(gcc-libs # libgcc_s.so
          zlib libz.so
          zsh)
 makedepends=(cargo
+             imagemagick
+             ollama
+             tesseract
              jq)
+optdepends=('imagemagick: convert PDFs prior to OCR'
+            'ollama: extract data from images or OCR using local models'
+            'tesseract: process using OCR')
 provides=("${pkgname%-git}=$pkgver")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
@@ -43,7 +49,7 @@ _srcenv() {
 
 build() {
 	_srcenv
-	./configure --prefix="/usr"
+	./configure --prefix="/usr" --with-imagemagick --with-ollama --with-tesseract
 	make
 }
 
