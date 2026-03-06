@@ -1,6 +1,6 @@
 pkgbase = okteto
 	pkgdesc = Build better applications by developing and testing your code directly in Kubernetes
-	pkgver = 3.17.0
+	pkgver = 3.17.1
 	pkgrel = 1
 	url = https://www.okteto.com
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = okteto
 	makedepends = go
 	depends = glibc
 	optdepends = kubectl
-	source = okteto-3.17.0.tar.gz::https://github.com/okteto/okteto/archive/refs/tags/3.17.0.tar.gz
-	sha256sums = cb0f4e123e9c058359fbebb07ebd7b936c130dab8d8e7d5c6e626c442d89bc54
+	source = okteto-3.17.1.tar.gz::https://github.com/okteto/okteto/archive/refs/tags/3.17.1.tar.gz
+	sha256sums = 0f855c95349dff8de053c7085f4821834ac31257ad55c05068ba758fbb13de5b
 
 pkgname = okteto
