@@ -2,28 +2,28 @@
 #			Jake <aur@ja-ke.tech>
 
 # These variables should be updated with ./update_download_id.sh
-_download_url='https://magentacloud.de/s/cWXX22tMrAtZFRS/download/cgm-rc-flight-simulator-linux-2066.zip'
+_download_url='https://magentacloud.de/s/PYk7AqSad5eSknS/download/cgm-rc-flight-simulator-linux-2076.zip'
 # _download_[id|file] can be cleaned up later
-_download_id='cWXX22tMrAtZFRS'
-_download_file='cgm-rc-flight-simulator-linux-2066.zip'
-_pkgver='2.066'
+_download_id='PYk7AqSad5eSknS'
+_download_file='cgm-rc-flight-simulator-linux-2076.zip'
+_pkgver='2.076'
 
 pkgname=next
-pkgver=2.066
+pkgver=${_pkgver}
 pkgrel=1
 pkgdesc="CGM rc Heli Flight Simulator"
 arch=('x86_64')
 url="http://www.rc-aerobatics.eu/index_e.html"
 license=('custom')
-optdepends=(	'joyutils: jscal, jstest, and jsattach utilities for the Linux joystick driver'
-		'controllermap: Game controller mapping generator, to generate env. var. SDL_GAMECONTROLLERCONFIG')
+optdepends=( 'joyutils: jscal, jstest, and jsattach utilities for the Linux joystick driver'
+             'controllermap: Game controller mapping generator, to generate env. var. SDL_GAMECONTROLLERCONFIG')
 
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.zip::${_download_url}"
         "next.desktop"
         "next.sh")
 
-sha512sums=('d960d3f4578268412e642360c298ae21fe180631f0c1c0a3b37b68dfc01e515bee1ed167c4c4161bc0707bc166bcff65216eab7c21783ac68034861dd8b9dffd'
+sha512sums=('2c259781b4e5ca9b9299ff2167e45c79ec2dc354fab9a1000a13b5a0cea0c3b22bd18d0bb2f795f48fbec178f89564e814f172ea384bc43d5a080aa2cdd7d927'
             '73fa793d92ef60e052b82776e89316024fbe46634a695516820b0f2740727c92e94da72f318bb22817686e53f827106ce3048126852c23608295464d90ee4b6d'
             'c982aea8a23d6259069f97a8a71f74270811488818ad0e5c8496047f94cf357d64fe3267f04628030d6b766dc3dd62d5d56ab0387e4ad5bd943a7e7a39598669')
 
