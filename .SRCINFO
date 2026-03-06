@@ -1,5 +1,5 @@
 pkgbase = memoa-bin
-	pkgdesc = A Tauri App for Markdown Editing
+	pkgdesc = The best for Markdown Editing
 	pkgver = 0.1.312
 	pkgrel = 1
 	url = https://example.com/memoa
