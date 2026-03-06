@@ -1,6 +1,6 @@
 pkgbase = mergers
 	pkgdesc = A visual diff and merge tool written in Rust with GTK4
-	pkgver = 0.6.1
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/joske/mergers
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mergers
 	makedepends = rustup
 	depends = gtk4
 	depends = gtksourceview5
-	source = mergers-0.6.1.tar.gz::https://github.com/joske/mergers/archive/refs/tags/v0.6.1.tar.gz
-	sha256sums = 8852689b029d56fd06c4284b2bf7f0a85020e715310c74de813137de8ddc0a5a
+	source = mergers-0.7.0.tar.gz::https://github.com/joske/mergers/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 4c6f9f7b5e1b7164f124c4c2650235dfb1d0a71f494551c950e5b993f1608109
 
 pkgname = mergers
