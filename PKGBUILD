@@ -13,15 +13,15 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('09bd7f7caa8451fad78a33efce9f3b368c614b2893866f57e27baa7ccd183382')
 prepare() {
     cd "ResonanceID-cli-$pkgver"
-    cargo fetch --locked
+    cargo fetch
 }
 build() {
     cd "ResonanceID-cli-$pkgver"
-    cargo build --release --locked
+    cargo build --release
 }
 check() {
     cd "ResonanceID-cli-$pkgver"
-    cargo test --release --locked
+    cargo test --release
 }
 package() {
     cd "ResonanceID-cli-$pkgver"
