@@ -3,7 +3,7 @@
 pkgname=vsview-git
 _origpkgname=vsview
 pkgver=0.1.0b1.7.gaa95a3b
-pkgrel=1
+pkgrel=2
 pkgdesc='The next-generation VapourSynth previewer (GIT version)'
 arch=('x86_64')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
@@ -42,10 +42,12 @@ pkgver() {
 
 build() {
     cd "${_origpkgname}"
+    rm -f dist/*.whl
     python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${_origpkgname}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_origpkgname/LICENSE"
 }
