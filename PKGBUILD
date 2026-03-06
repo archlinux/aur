@@ -1,6 +1,6 @@
 # Maintainer: ninni <soelder@hotmail.com>
 pkgname=awakened-poe-trade-git
-pkgver=3.27.103.r1.g7c80a1b3
+pkgver=3.27.106.r10.g3f1468c9
 pkgrel=1
 pkgdesc='Path of Exile trading app for price checking'
 arch=('x86_64')
@@ -35,7 +35,7 @@ prepare() {
   # LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
   # git checkout $LATEST_TAG
   _ensure_local_nvm
-  nvm install 20
+  nvm install 24
 }
 
 build() {
