@@ -5,12 +5,12 @@ _crate="llm-cli"
 _cratever="0.1.1"
 pkgname="llm-cli"
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A CLI for running inference on supported Large Language Models. Powered by th...'
 url='https://crates.io/crates/llm-cli'
 license=('Apache-2.0' 'MIT')
 
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/llm-cli/0.1.1/download")
