@@ -1,0 +1,15 @@
+pkgbase = sniptt-ots
+	pkgdesc = Share end-to-end encrypted secrets with others via a one-time URL
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/sniptt-official/ots
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	provides = ots
+	conflicts = ots
+	source = sniptt-ots-0.3.1.tar.gz::https://github.com/sniptt-official/ots/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 09f0b0d7ca44ec8414dbf631009df8c00f4750247c0f9ba25a32f0aa270e09cc
+
+pkgname = sniptt-ots
