@@ -5,12 +5,12 @@ _crate="hickory-util"
 _cratever="0.25.2"
 pkgname="hickory-util"
 pkgver=0.25.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Utilities that complement Hickory DNS. '
 url='https://hickory-dns.org/'
 license=('Apache-2.0' 'MIT')
 
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 conflicts=('trust-dns-util')
 replaces=('trust-dns-util')
