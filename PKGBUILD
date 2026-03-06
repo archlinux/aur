@@ -3,13 +3,14 @@
 
 pkgname=upwork
 pkgver=5.8.0.41
-pkgrel=2
+pkgrel=3
 _hashver='f0de03505cc349f2'
 pkgdesc='Track your time for Hourly Payment Protection. Stay connected.'
 arch=('x86_64')
 url='https://www.upwork.com/ab/downloads/?os=linux'
 license=('LicenseRef-Upwork-EULA')
-depends=('electron36')
+_electron='electron36'
+depends=("$_electron")
 makedepends=('asar' 'curl')
 optdepends=(
   'upwork-wayland: Allows screenshot to work in Wayland'
@@ -20,11 +21,11 @@ conflicts=('upwork-beta')
 source=(
   "https://upwork-usw2-desktopapp.upwork.com/binaries/v${pkgver//./_}_$_hashver/upwork_${pkgver}_amd64.deb"
   'upwork-team-software-license-agreement-1-1.pdf::https://upwork.pactsafe.io/versions/6887e5128f84f23a737bf6bb.pdf'
-  'upwork')
+  'upwork.sh')
 # See https://upwork-usw2-desktopapp.upwork.com/binaries/v5_8_0_41_f0de03505cc349f2/upwork_5.8.0.41_amd64.deb.sha256
 sha256sums=('b2ed1ff34cfcc09cfa9ff472e39443aa999dd773867a57aef6f50798fb257239'
             '1d2db24cd1364f79d11b8683c15274f4e5c7ed9a3e46a5938b55c6e9ca56937f'
-            'fcb171ae876829020910e8b304726d180b4e50ff991042bdf3dd479e1a22d1a4')
+            '2c0d3d540933d4d5af57ab3021a2f37a2e855b43c1255dffccb333fd172ac5dd')
 
 # These are the headers that Upwork 5.8.0.33 Electron use to download the update file without restriction.
 # Notice that we are using the headers from an older Upwork version.
@@ -44,6 +45,9 @@ DLAGENTS=("https::/usr/bin/curl $(printf -- "-H %s " "${_headers[@]// /\\ }") -q
 
 prepare() {
   bsdtar -xf data.tar.xz -C "$srcdir"
+
+  # Change Electron executable
+  sed -i "s|@ELECTRON@|$_electron|" upwork.sh
 
   # Change the upwork wrapper path to /usr/bin/upwork
   sed -i 's|Exec=/opt/Upwork/upwork|Exec=/usr/bin/upwork|' "$srcdir/usr/share/applications/upwork.desktop"
@@ -71,7 +75,7 @@ prepare() {
 
 package() {
   # 1. COPY THE BINARIES
-  install -Dm755 upwork "$pkgdir/usr/bin/upwork"
+  install -Dm755 upwork.sh "$pkgdir/usr/bin/upwork"
   install -Dm755 -t "$pkgdir/usr/lib/upwork/" "$srcdir/opt/Upwork/"{cmon,uta_native.node}
   install -Dm644 "$srcdir/opt/Upwork/resources/app.asar" "$pkgdir/usr/lib/upwork/app.asar"
 

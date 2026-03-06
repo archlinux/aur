@@ -1,2 +1,0 @@
-#!/bin/sh
-exec electron36 /usr/lib/upwork/app.asar --gtk-version=3 --disable-gpu-sandbox "$@"
