@@ -1,4 +1,4 @@
-pkgbase = openvpn-xor-git
+pkgbase = openvpn-xor
 	pkgdesc = OpenVPN with XOR patch to bypass DPI monitoring in places like China (also known as OpenVPN stealth/scramble mode)
 	pkgver = 2.6.17
 	pkgrel = 1
@@ -27,7 +27,7 @@ pkgbase = openvpn-xor-git
 	conflicts = openvpn-git
 	conflicts = openvpn-xor-patched
 	conflicts = libressl
-	source = https://github.com/openvpn/openvpn/archive/v2.6.17.tar.gz
+	source = https://github.com/openvpn-xor/openvpn-xor/archive/v2.6.17.tar.gz
 	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.6.17/patches/02-tunnelblick-openvpn_xorpatch-a.diff
 	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.6.17/patches/03-tunnelblick-openvpn_xorpatch-b.diff
 	source = https://raw.githubusercontent.com/Tunnelblick/Tunnelblick/master/third_party/sources/openvpn/openvpn-2.6.17/patches/04-tunnelblick-openvpn_xorpatch-c.diff
@@ -46,4 +46,4 @@ pkgbase = openvpn-xor-git
 	sha256sums = 6e1d0147076ce0221e4e22e0a10d70c17eaa3740fe21461aff931c107416564f
 	sha256sums = 3f69857f9b2c27c3a391a4592b6a264d4cffe4d35166f1fcdfddac632f2b7970
 
-pkgname = openvpn-xor-git
+pkgname = openvpn-xor

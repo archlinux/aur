@@ -1,5 +1,5 @@
 # Maintainer: Pete Alexandrou <pete@ozmartians.com>
-pkgname=openvpn-xor-git
+pkgname=openvpn-xor
 pkgver=2.6.17
 pkgrel=1
 pkgdesc='OpenVPN with XOR patch to bypass DPI monitoring in places like China (also known as OpenVPN stealth/scramble mode)'
