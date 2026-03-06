@@ -1,9 +1,9 @@
-# Maintainer: TheFeelTrain <thefeeltrain@thefeeltrain.com>
+# Maintainer: TheFeelTrain <the@feeltra.in>
 pkgname=python-vsjetengine-git
 _origpkgname=vsjetengine
-pkgver=1.0.0.0.g8a05a8e
+pkgver=v1.2.0.0.g6f6d704
 pkgrel=1
-pkgdesc="An engine for vapoursynth previewers, renderers and script analyis tools. (GIT version)"
+pkgdesc="An engine for vapoursynth previewers, renderers, and script analysis tools. (GIT version)"
 arch=("x86_64")
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-jet-engine'
 license=("EUPL-1.2")
@@ -15,6 +15,7 @@ makedepends=(
 	"python-wheel"
 	"python-setuptools"
 	"python-hatchling"
+	"python-versioningit"
 )
 conflicts=(
 	"python-${_origpkgname}"
