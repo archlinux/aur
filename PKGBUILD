@@ -2,7 +2,7 @@
 
 _name=Patchance
 pkgname="${_name,,}"
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc='A modern graphical patchbay for JACK'
 arch=(any)
@@ -15,7 +15,7 @@ optdepends=(
 )
 groups=(pro-audio)
 source=("https://github.com/Houston4444/Patchance/releases/download/v$pkgver/$_name-$pkgver-source.tar.gz")
-sha256sums=('bbfd3c6c3509fea6da930372fe557681a8cf869714bc3bca2bf4f9606481a9c0')
+sha256sums=('5e838637154a7b46ad2c13e1f3a3b657bd6fbab0b389cab00688010d0e5c9224')
 
 prepare() {
   cd $_name-$pkgver
