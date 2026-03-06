@@ -8,8 +8,6 @@ url='https://github.com/sniptt-official/ots'
 license=('Apache-2.0')
 depends=('glibc')
 makedepends=('go')
-provides=('ots')
-conflicts=('ots')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('09f0b0d7ca44ec8414dbf631009df8c00f4750247c0f9ba25a32f0aa270e09cc')
 
