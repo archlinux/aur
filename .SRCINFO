@@ -1,0 +1,17 @@
+pkgbase = voxcii-git
+	pkgdesc = Terminal-based ASCII 3D model viewer
+	pkgver = r1.0
+	pkgrel = 1
+	url = https://github.com/ashish0kumar/voxcii
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	depends = ncurses
+	provides = voxcii
+	conflicts = voxcii
+	source = voxcii-git::git+https://github.com/ashish0kumar/voxcii.git
+	sha256sums = SKIP
+
+pkgname = voxcii-git
