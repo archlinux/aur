@@ -1,17 +1,61 @@
+_run_as_user() {
+    if [ -n "$SUDO_USER" ]; then
+        local _uid=$(id -u "$SUDO_USER")
+        if [ -S "/run/user/$_uid/bus" ]; then
+            sudo -u "$SUDO_USER" \
+                XDG_RUNTIME_DIR="/run/user/$_uid" \
+                DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$_uid/bus" \
+                "$@"
+            return $?
+        fi
+    fi
+    return 1
+}
+
 post_install() {
-    echo "==> Enable the systemd user services to start monitoring automatically:"
-    echo "    systemctl --user enable --now logibar-hidpp-monitor.service"
-    echo "    systemctl --user enable --now logibar-headset-monitor.service"
+    echo "==> Setting up HID device permissions..."
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger --action=change --subsystem-match=hidraw 2>/dev/null || true
+
+    echo "==> Starting Logibar monitoring services..."
+    if _run_as_user systemctl --user daemon-reload && \
+       _run_as_user systemctl --user start logibar-hidpp-monitor.service && \
+       _run_as_user systemctl --user start logibar-headset-monitor.service; then
+        echo "==> Logibar is ready. Battery widgets will appear in Waybar."
+    else
+        echo "==> Could not start services automatically. Start them manually:"
+        echo "    systemctl --user daemon-reload"
+        echo "    systemctl --user start logibar-hidpp-monitor.service"
+        echo "    systemctl --user start logibar-headset-monitor.service"
+    fi
 }
 
 post_upgrade() {
-    echo "==> Reload and restart the systemd user services:"
-    echo "    systemctl --user daemon-reload"
-    echo "    systemctl --user restart logibar-hidpp-monitor.service"
-    echo "    systemctl --user restart logibar-headset-monitor.service"
+    echo "==> Updating HID device permissions..."
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger --action=change --subsystem-match=hidraw 2>/dev/null || true
+
+    echo "==> Restarting Logibar monitoring services..."
+    if _run_as_user systemctl --user daemon-reload && \
+       _run_as_user systemctl --user try-restart logibar-hidpp-monitor.service && \
+       _run_as_user systemctl --user try-restart logibar-headset-monitor.service; then
+        echo "==> Logibar updated successfully."
+    else
+        echo "==> Could not restart services automatically. Restart them manually:"
+        echo "    systemctl --user daemon-reload"
+        echo "    systemctl --user try-restart logibar-hidpp-monitor.service"
+        echo "    systemctl --user try-restart logibar-headset-monitor.service"
+    fi
+}
+
+pre_remove() {
+    echo "==> Stopping Logibar services..."
+    _run_as_user systemctl --user disable --now logibar-hidpp-monitor.service 2>/dev/null || true
+    _run_as_user systemctl --user disable --now logibar-headset-monitor.service 2>/dev/null || true
 }
 
 post_remove() {
-    echo "==> If you had enabled the services, reload systemd:"
-    echo "    systemctl --user daemon-reload"
+    echo "==> Cleaning up..."
+    udevadm control --reload-rules 2>/dev/null || true
+    _run_as_user systemctl --user daemon-reload 2>/dev/null || true
 }

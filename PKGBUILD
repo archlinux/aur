@@ -1,6 +1,6 @@
 # Maintainer: mryll <https://github.com/mryll>
 pkgname=logibar
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Waybar widgets and daemons for monitoring Logitech wireless peripheral battery levels'
 arch=('any')
@@ -11,7 +11,7 @@ conflicts=('waybar-logitech-battery')
 provides=('waybar-logitech-battery')
 install=logibar.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mryll/logibar/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('58e3582511e2f997d65fba15d70ed44dc7d58ee861678db65b23d74ee400998a')
+sha256sums=('e753a0e869861a63ba137dd796db16278d166d016bde3b404d9b4fafbe754ba2')
 
 package() {
     cd "$pkgname-$pkgver"
@@ -29,6 +29,17 @@ package() {
         "$pkgdir/usr/lib/systemd/user/logibar-hidpp-monitor.service"
     sed -i 's|ExecStart=.*|ExecStart=/usr/bin/logibar-headset-monitor|' \
         "$pkgdir/usr/lib/systemd/user/logibar-headset-monitor.service"
+
+    # Udev rule for HID device access
+    install -Dm644 udev/99-logitech-hidraw.rules \
+        "$pkgdir/usr/lib/udev/rules.d/99-logitech-hidraw.rules"
+
+    # Enable services by default (symlinks into default.target.wants)
+    install -dm755 "$pkgdir/usr/lib/systemd/user/default.target.wants"
+    ln -s ../logibar-hidpp-monitor.service \
+        "$pkgdir/usr/lib/systemd/user/default.target.wants/logibar-hidpp-monitor.service"
+    ln -s ../logibar-headset-monitor.service \
+        "$pkgdir/usr/lib/systemd/user/default.target.wants/logibar-headset-monitor.service"
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
