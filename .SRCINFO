@@ -1,0 +1,16 @@
+pkgbase = mtc
+	pkgdesc = C++ compiler for mt-lang
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/mystyy01/mt-lang-compiler
+	arch = x86_64
+	license = custom:unknown
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	depends = glibc
+	depends = clang
+	source = mtc::git+https://github.com/mystyy01/mt-lang-compiler#branch=main
+	sha256sums = SKIP
+
+pkgname = mtc
