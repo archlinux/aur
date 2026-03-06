@@ -1,0 +1,38 @@
+pkgbase = amdgpu-exporter
+	pkgdesc = AMD GPU metrics exporter for Prometheus
+	pkgver = 1.4.2
+	pkgrel = 1
+	url = https://github.com/ROCm/device-metrics-exporter
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = go
+	makedepends = cmake
+	makedepends = hip-runtime-amd
+	makedepends = rocprofiler
+	makedepends = elfutils
+	makedepends = pkgconf
+	makedepends = amdsmi
+	makedepends = rocm-gpu-agent
+	makedepends = patchelf
+	source = device-metrics-exporter-1.4.2.tar.gz::https://github.com/ROCm/device-metrics-exporter/archive/refs/tags/v1.4.2.tar.gz
+	source = amd-metrics-exporter.service
+	sha256sums = 3c89251fdcd9f9ad7d4aaeaf7f71cb4af32fb6b95efb4249aea32ee0731da448
+	sha256sums = 1200ad9753baf0cc7f16fa702303dac3b7f3ec9a049a77b0fbc7e5f7fe7c586f
+
+pkgname = amdgpu-exporter
+	pkgdesc = AMD GPU metrics exporter for Prometheus
+	depends = glibc
+	depends = zlib
+	depends = amdsmi
+	depends = rocprofiler
+	depends = hip-runtime-amd
+	depends = rocm-gpu-agent
+	depends = rocprofiler-client
+	optdepends = prometheus: scrape /metrics HTTP endpoint
+	backup = etc/metrics/config.json
+
+pkgname = rocprofiler-client
+	pkgdesc = ROCm profiler client library and CLI for amdgpu-exporter
+	depends = glibc
+	depends = rocprofiler
+	provides = librocpclient.so=0-64

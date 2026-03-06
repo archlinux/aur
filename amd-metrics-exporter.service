@@ -1,0 +1,20 @@
+[Unit]
+Description=AMD GPU Prometheus Metrics Exporter Service
+Documentation=https://github.com/ROCm/device-metrics-exporter
+Wants=gpuagent.service
+After=gpuagent.service network.target
+
+[Service]
+User=root
+Group=root
+Type=simple
+Restart=on-failure
+RestartSec=10
+ExecStartPre=/bin/sleep 5
+ExecStart=/usr/bin/amd-metrics-exporter
+ExecStop=/bin/kill -15 $MAINPID
+MemoryHigh=4G
+CPUQuota=100%
+
+[Install]
+WantedBy=multi-user.target
