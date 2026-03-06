@@ -1,0 +1,16 @@
+pkgbase = honor-fmi721-kbd-dkms
+	pkgdesc = Keyboard backlight driver for Honor MagicBook X14 Plus 2024 (FMI-721)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/vasilews/honor-fmi721-kbd
+	install = honor-fmi721-kbd-dkms.install
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = git
+	depends = dkms
+	optdepends = linux-headers: build module for default kernel
+	optdepends = linux-lts-headers: build module for LTS kernel
+	source = git+https://github.com/vasilews/honor-fmi721-kbd.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = honor-fmi721-kbd-dkms

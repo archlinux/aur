@@ -1,0 +1,18 @@
+post_install() {
+    echo ""
+    echo "==========================================="
+    echo " Module will load automatically on reboot"
+    echo ""
+    echo " To activate NOW (without reboot):"
+    echo "   sudo modprobe honor_fmi721_kbd"
+    echo "==========================================="
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    modprobe -r honor_fmi721_kbd 2>/dev/null || true
+}
