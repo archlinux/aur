@@ -1,7 +1,7 @@
 pkgbase = scans2any
 	pkgdesc = Convert and merge infrastructure scans to Typst, Markdown, HTML, ...
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/softScheck/scans2any
 	arch = any
 	license = AGPL-3.0-or-later
@@ -18,6 +18,8 @@ pkgbase = scans2any
 	depends = python-tabulate
 	depends = python-rich
 	depends = python-yaml
+	depends = python-defusedxml
+	depends = python-pydantic
 	provides = scans2any
 	conflicts = scans2any-git
 	source = https://files.pythonhosted.org/packages/source/s/scans2any/scans2any-1.0.0.tar.gz
