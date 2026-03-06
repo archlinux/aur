@@ -5,12 +5,12 @@ _crate="cargo-all-features"
 _cratever="1.12.0"
 pkgname="cargo-all-features"
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Cargo subcommand to build and test all feature flag combinations'
 url='https://crates.io/crates/cargo-all-features'
 license=('Apache-2.0' 'MIT')
 
-depends=('gcc-libs' 'cargo')
+depends=('libgcc' 'cargo')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/cargo-all-features/1.12.0/download")
@@ -64,6 +64,6 @@ package() {
 	install -Dm755 "target/release/cargo-build-all-features" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/cargo-check-all-features" -t "$pkgdir/usr/bin"
 	install -Dm755 "target/release/cargo-test-all-features" -t "$pkgdir/usr/bin"
-	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 'LICENSE-APACHE' -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
