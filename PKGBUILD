@@ -5,12 +5,12 @@ _crate="pdfutil"
 _cratever="0.4.0"
 pkgname="pdfutil"
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A utility for PDF document manipulation.'
 url='https://github.com/J-F-Liu/lopdf/tree/master/pdfutil'
 license=('MIT')
 
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/pdfutil/0.4.0/download")
