@@ -1,0 +1,19 @@
+pkgbase = comp-scan-bin
+	pkgdesc = A fully local AI agent that scans your system, observes usage patterns, and suggests one-click improvements
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/vvk147/comp-scan
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = comp-scan
+	conflicts = comp-scan
+	source = README-0.1.0.md::https://raw.githubusercontent.com/vvk147/comp-scan/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/vvk147/comp-scan/v0.1.0/LICENSE
+	sha256sums = 2a33dd2c79d50d3c29b0de7ef6fb24f0260fe84342ede584d460e272702c84fa
+	sha256sums = 5447f2a67bffd76834a0066f0357a710e0d416e8a24df93e377be3e2452f960e
+	source_x86_64 = comp-scan-x86_64-0.1.0.tgz::https://github.com/vvk147/comp-scan/releases/download/v0.1.0/compscan-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 91eb2a2fc50789e5e257bcde63edb08780af501fd9e5e022688525e3c9e75190
+
+pkgname = comp-scan-bin

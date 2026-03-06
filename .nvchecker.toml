@@ -1,0 +1,5 @@
+[comp-scan-bin]
+source = "github"
+github = "vvk147/comp-scan"
+use_latest_release = true
+prefix = "v"
