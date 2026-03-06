@@ -2,7 +2,7 @@
 
 _name=google-genai
 pkgname=python-$_name
-pkgver=1.65.0
+pkgver=1.66.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-mcp' 'python-aiohttp' 'python-sentencepiece' 'python-protobuf')
 optdepends=('python-aiohttp: aiohttp' 'python-sentencepiece: local-tokenizer' 'python-protobuf: local-tokenizer')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c81d517ee37af1042c97877299c16bc4249aa1640d537169da7764e9b19820f0')
+sha256sums=('4d0735469cf74a65e422c9d913cb9bbf557e0f7038bcd354d8daa1c4dc29389c')
 
 prepare(){
   cd "$srcdir"/${pkgname//google-/}-$pkgver
