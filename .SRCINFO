@@ -16,7 +16,6 @@ pkgbase = judoshiai
 	depends = libssh2
 	depends = libuv
 	depends = gnutls
-	depends = lua54
 	depends = mpg123
 	depends = libxml2
 	source = judoshiai-4.4.deb::https://sourceforge.net/projects/judoshiai/files/Linux-x86_64/judoshiai_4.4-1_amd64.deb/download
