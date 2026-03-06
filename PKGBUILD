@@ -5,7 +5,6 @@ pkgrel=1
 pkgdesc='A code editor for humanoid apes and grumpy toads'
 arch=(x86_64)
 url=https://gram.liten.app
-_url="https://codeberg.org/GramEditor/$pkgname"
 license=(GPL-3.0-or-later AGPL-3.0-or-later Apache-2.0)
 depends=(alsa-lib libasound.so
          curl libcurl.so
@@ -43,7 +42,7 @@ optdepends=('clang: improved C/C++ language support'
             'rust-analyzer: improved Rust language support'
             'org.freedesktop.secrets: to keep you logged into your Zed account')
 replaces=(gram-editor)
-source=("$_url/archive/$pkgver.tar.gz")
+source=("https://codeberg.org/GramEditor/gram/archive/$pkgver.tar.gz")
 sha256sums=('27ff4148d5d191cd9ce36c5f8c2284898e0de9ad0cab04e3ad6fe5d1247f9bbb')
 
 _binname=gram
