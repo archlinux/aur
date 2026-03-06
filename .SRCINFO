@@ -1,6 +1,6 @@
 pkgbase = aeroshell-smodglow-x11-git
 	pkgdesc = Decoration button glow effect for SMOD decorations
-	pkgver = 6.6.1_24.r7980cc9
+	pkgver = 6.6.2_26.r4ced8a6
 	pkgrel = 1
 	url = https://gitgud.io/aeroshell/smod
 	arch = x86_64
