@@ -1,0 +1,5 @@
+[mezzotone-bin]
+source = "github"
+github = "joaoheitorgarcia/Mezzotone"
+use_latest_release = true
+prefix = "v"

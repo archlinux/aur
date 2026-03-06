@@ -1,0 +1,20 @@
+pkgbase = mezzotone-bin
+	pkgdesc = A terminal UI (TUI) application written in Go that converts images and GIFs into ASCII or Unicode art
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/joaoheitorgarcia/Mezzotone
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mezzotone
+	conflicts = Mezzotone
+	source = README-1.1.0.md::https://raw.githubusercontent.com/joaoheitorgarcia/Mezzotone/v1.1.0/README.md
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/joaoheitorgarcia/Mezzotone/v1.1.0/LICENSE
+	sha256sums = 01025303c092b175f459fbf7b850e423a52d1d730e1b0db4cc87ce3ca71f5ac3
+	sha256sums = 52d2fee59711a3373bea27d637831b5ab234443d3cf1d68ec076a37d0ed3c333
+	source_x86_64 = mezzotone-x86_64-1.1.0::https://github.com/joaoheitorgarcia/Mezzotone/releases/download/v1.1.0/app-linux-amd64
+	sha256sums_x86_64 = 116c9114dc460c72d79caec96bdfeae123f949c2b98899a3309baadeb45f0839
+	source_aarch64 = mezzotone-aarch64-1.1.0::https://github.com/joaoheitorgarcia/Mezzotone/releases/download/v1.1.0/app-linux-arm64
+	sha256sums_aarch64 = 00b9de00f3afc8390a0bbacf53a59fbabefdccb0082499986e2642cc41f7e8e3
+
+pkgname = mezzotone-bin
