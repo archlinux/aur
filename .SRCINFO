@@ -25,7 +25,6 @@ pkgbase = libxfce4ui-git
 	depends = libgtop
 	depends = libepoxy
 	depends = hicolor-icon-theme
-	optdepends = glade: Glade designer plugin
 	provides = libxfce4ui=4.21.3
 	conflicts = libxfce4ui
 	source = libxfce4ui::git+https://gitlab.xfce.org/xfce/libxfce4ui

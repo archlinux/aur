@@ -16,7 +16,6 @@ groups=('xfce4-git')
 depends=('libxfce4util' 'gtk3' 'xfconf' 'libsm' 'startup-notification' 'libgudev'
          'libgtop' 'libepoxy' 'hicolor-icon-theme')
 makedepends=('git' 'gtk-doc' 'gobject-introspection' 'vala' 'xfce4-dev-tools' 'meson')
-optdepends=('glade: Glade designer plugin')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}")
