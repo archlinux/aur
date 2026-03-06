@@ -1,6 +1,6 @@
 pkgbase = fish-session
 	pkgdesc = UI-first session manager for Fish shell with persistent PTY sessions
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/AtefR/fish-session
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = fish-session
 	makedepends = cargo
 	makedepends = rust
 	depends = fish
-	source = fish-session-0.1.4.tar.gz::https://github.com/AtefR/fish-session/archive/refs/tags/v0.1.4.tar.gz
-	sha256sums = 5b5f5e72bef88bcddbf9fbfeae36194a3217051d6a1d5ebf0f2bf0bf27c445e3
+	source = fish-session-0.1.5.tar.gz::https://github.com/AtefR/fish-session/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = 5275788c6619826c32113bd6389c67007f286d967fa30528b8e502c882f03a9c
 
 pkgname = fish-session
