@@ -2,8 +2,8 @@
 # Contributor: Lamelos <lamelos at gmail.com>
 
 pkgname=butane
-pkgver=0.26.0
-pkgrel=2
+pkgver=0.27.0
+pkgrel=1
 pkgdesc="Human readable Butane Configs into machine readable Ignition Configs Translator"
 arch=("any")
 url="https://github.com/coreos/butane"
@@ -11,7 +11,7 @@ license=("Apache-2.0")
 makedepends=("git" "go" "make")
 source=("git+${url}.git#tag=v${pkgver}"
         "change-bin-dir.patch")
-sha256sums=('5a5bc6d2bf2adb3e29aa30e95df0a2de1f57bedc491bd60b76e842f9774fc666'
+sha256sums=('e0af0d96d8a6e24941f99903cca5b70f1d732a26cec8a4d7e7235c703a58975e'
             'bdb99494bf163a89269858f2aeb28b389837e9eb0b92b7b2c20e5a03f4941cde')
 
 prepare() {
