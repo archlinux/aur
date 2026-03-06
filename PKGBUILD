@@ -64,7 +64,7 @@ package() {
     install -Dm644 "$srcdir/$pkgname/somafm_tui/player.py" "$pkgdir/usr/lib/somafm_tui/player.py"
     install -Dm644 "$srcdir/$pkgname/somafm_tui/config.py" "$pkgdir/usr/lib/somafm_tui/config.py"
     install -Dm644 "$srcdir/$pkgname/somafm_tui/themes.py" "$pkgdir/usr/lib/somafm_tui/themes.py"
-    install -Dm644 "$srcdir/$pkgname/themes.json" "$pkgdir/usr/lib/somafm_tui/themes.json"
+    install -Dm644 "$srcdir/$pkgname/themes.json" "$pkgdir/usr/lib/somafm_tui/somafm_tui/themes.json"
     install -Dm644 "$srcdir/$pkgname/somafm_tui/models.py" "$pkgdir/usr/lib/somafm_tui/models.py"
     install -Dm644 "$srcdir/$pkgname/somafm_tui/channels.py" "$pkgdir/usr/lib/somafm_tui/channels.py"
     install -Dm644 "$srcdir/$pkgname/somafm_tui/mpris_service.py" "$pkgdir/usr/lib/somafm_tui/mpris_service.py"
@@ -92,4 +92,4 @@ package() {
     install -Dm644 CONTRIBUTING.md "$pkgdir/usr/share/doc/$pkgname/CONTRIBUTING.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-pkgver=0.5.0
+pkgver=0.5.1
