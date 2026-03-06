@@ -1,6 +1,6 @@
 pkgbase = debsigs-git
 	pkgdesc = toolset for cryptographically signing Debian packages
-	pkgver = r96.05c081a
+	pkgver = r148.e2b78e2
 	pkgrel = 1
 	url = https://gitlab.com/debsigs/debsigs
 	arch = any
@@ -14,4 +14,3 @@ pkgbase = debsigs-git
 	md5sums = SKIP
 
 pkgname = debsigs-git
-
