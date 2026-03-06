@@ -14,7 +14,7 @@ pkgname=(
   libnm-iwd
   nm-iwd-cloud-setup
 )
-pkgver=1.54.3
+pkgver=1.56.0
 pkgrel=1
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
@@ -25,7 +25,6 @@ makedepends=(
   bash
   curl
   dnsmasq
-  gcc-libs
   git
   glib2-devel
   glibc
@@ -34,6 +33,7 @@ makedepends=(
   iproute2
   iwd
   jansson
+  libgcc
   libmm-glib
   libndp
   libnewt
@@ -64,7 +64,7 @@ checkdepends=(
 )
 source=("git+https://gitlab.freedesktop.org/NetworkManager/NetworkManager.git#tag=${pkgver/[a-z]/-&}"
         "$pkgbase.install")
-b2sums=('5da0800e5ea38f8eda955bf854c778b93e3a17b80da8602b48e017e66e74392caf9458701f6b7a4b9de85108d30ecd89d5491bd26123925228b6788d3b6aae32'
+b2sums=('43aee5cce5e92861f89520fbb2174ed54a89adc89d6b903b40feddf3f8ab5b0f97559a90efc83cb2919e3eca01700726b8d2f665621bcf3a491127981625e136'
         '1045d7a75487dd063e2d52f2c94944c04650b9337d4cb839b66dc692f477797406ed2164725a53a1c213c46dd7ea398ca9764ee09386766554aa179d8c320cd2')
 
 build() {
@@ -121,11 +121,11 @@ package_networkmanager-iwd() {
   depends=(
     audit
     curl
-    gcc-libs
     glib2
     glibc
     iproute2
     jansson
+    libgcc
     iwd
     libmm-glib
     libndp
@@ -215,9 +215,9 @@ END
 package_libnm-iwd() {
   pkgdesc="NetworkManager client library with iwd backend"
   depends=(
-    gcc-libs
     glib2
     glibc
+    libgcc
     nspr
     nss
     systemd-libs
@@ -234,9 +234,10 @@ package_nm-iwd-cloud-setup() {
   depends=(
     bash
     curl
-    gcc-libs
     glib2
     glibc
+    jannson
+    libgcc
     libnm
     networkmanager-iwd
   )
