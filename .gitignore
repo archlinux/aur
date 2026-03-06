@@ -1,0 +1,9 @@
+# Exclude everything by default
+*
+
+# Force-add specific files
+!.gitignore
+!.SRCINFO
+!megadot
+!megadot.desktop
+!PKGBUILD

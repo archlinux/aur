@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=MegaCrit fork of Godot Engine
+Terminal=false
+Name=Megadot
+Exec=megadot
+Type=Application
+Categories=Development;Utility;
+Icon=megadot

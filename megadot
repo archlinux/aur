@@ -1,0 +1,3 @@
+#!/bin/bash
+
+(cd /usr/lib/megadot; ./MegaDot_v4.5.1-stable_mono_linux.x86_64)
