@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=rocketchat-server-standalone
-pkgver=8.1.1
+pkgver=8.2.0
 pkgrel=1
 pkgdesc="The Ultimate Open Source WebChat Platform"
 arch=("any")
@@ -18,7 +18,7 @@ source=("rocketchat-${pkgver}.tar::https://releases.rocket.chat/${pkgver}/downlo
     "rocketchat-server.conf"
     "rocketchat-user.conf"
 "rocketchat.service")
-sha512sums=('eaaa1bca5f0cf903c6b58c6a8004b84cca8c31c382103974449cd22c659177ec5d8285a28b8b13fdf41653632ad78317d68bbf9a5f887cc09729e9200a8e46d3'
+sha512sums=('1d2fd985c503e7bba0cc8ec933cef2b96044678e5dd4153983676aa9784cef3b07d8041b74f2b262408e11c26956e214e5d69fcae776c5e5563036b878790530'
             '5a981ef5f4a0ecb3e21a62c368c4086c683e9eefda94b195d01d0c64c03f3b10a960ef41b1fc0d55d20848aa4fcd6e8c774118ac2d6d53e3e5b3772fe872a1c2'
             '4ff8899a47612a81f73c1c6449fb30a7ddfb0b199756db7f73e0a3078cf818b88e481fd828296b148a348d137ae529ce591d6c2bd6b57ae9278188e715086b59'
             '0086f72f16a594116586d4b6783b104f7bba779e4f8e31e5988c7fa67e1c7d9fc95215d0a04c4f24c72b4183774a9768a29b05c828990125dd4a3379a69aa648'
