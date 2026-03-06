@@ -1,7 +1,7 @@
-# Maintainer: Stefan <stefan@gehr.xyz>
+# Maintainer: Stefan Gehr <stefan@gehr.xyz>
 _name=seniorpw
 pkgname="${_name}"-git
-pkgver=r203.77aa38a
+pkgver=r282.55b3cd2
 pkgrel=1
 pkgdesc='password manager using age as backend; inspired by pass'
 arch=('any')
