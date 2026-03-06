@@ -2,7 +2,7 @@
 
 pkgname=netbird-proxy
 pkgver=0.66.2
-pkgrel=1
+pkgrel=2
 pkgdesc='WireGuard-based overlay network: reverse proxy service'
 arch=(x86_64 aarch64 armv7h armv6h)
 url='https://github.com/netbirdio/netbird'
@@ -59,4 +59,5 @@ package() {
   install -Dm644 netbird-proxy.service -t "$pkgdir/usr/lib/systemd/system/"
   install -Dm640 proxy.env "$pkgdir/etc/netbird-proxy/proxy.env"
   install -Dm644 "netbird-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "netbird-$pkgver/proxy/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.proxy"
 }

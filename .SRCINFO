@@ -1,7 +1,7 @@
 pkgbase = netbird-proxy
 	pkgdesc = WireGuard-based overlay network: reverse proxy service
 	pkgver = 0.66.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/netbirdio/netbird
 	install = netbird-proxy.install
 	arch = x86_64
