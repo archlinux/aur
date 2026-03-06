@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Zerene Stacker focus stacking software"
 arch=('x86_64')
 url="https://zerenesystems.com/"
-license=('custom')
+license=('proprietary')
 #depends=('java-runtime')
 source=("https://zerenesystems.com/stacker/downloads/ZS-Linux-Intel-64bit-T2024-11-18-1210.zip"
        "ZereneStackerLogo_x2-128.png")

@@ -1,0 +1,13 @@
+pkgbase = zerene-stacker
+	pkgdesc = Zerene Stacker focus stacking software
+	pkgver = 2024.11.18
+	pkgrel = 1
+	url = https://zerenesystems.com/
+	arch = x86_64
+	license = proprietary
+	source = https://zerenesystems.com/stacker/downloads/ZS-Linux-Intel-64bit-T2024-11-18-1210.zip
+	source = ZereneStackerLogo_x2-128.png
+	sha256sums = 9ccb4133a2f0e53419f5a0b41e6ac2d37b7b1e5e0d0c4f6f0d3601187c853c2e
+	sha256sums = afea1098f5c0b02ee1b717ea951d27601f759bae1f8979b8b2ca04d0f74cfaa3
+
+pkgname = zerene-stacker
