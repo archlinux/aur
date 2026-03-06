@@ -1,6 +1,6 @@
 # Maintainer: David Mulder <dmulder@suse.com>
 pkgname=himmelblau
-pkgver=4.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Entra ID / Azure AD authentication for Linux (PAM, NSS, broker, SSO)"
 arch=('x86_64' 'aarch64')
@@ -32,7 +32,7 @@ makedepends=(
 provides=('aad-cli' 'authd-msentraid' 'linux-entra-sso' 'intune-portal')
 backup=('etc/himmelblau/himmelblau.conf')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/himmelblau-idm/himmelblau/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('8a265092c5d20dc8ae96178243c20a068953d4c07dd55ca19873ec81718553e7')
 
 prepare() {
     cd "${pkgname}-${pkgver}"

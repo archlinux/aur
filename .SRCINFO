@@ -1,6 +1,6 @@
 pkgbase = himmelblau
 	pkgdesc = Entra ID / Azure AD authentication for Linux (PAM, NSS, broker, SSO)
-	pkgver = 4.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/himmelblau-idm/himmelblau
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = himmelblau
 	provides = linux-entra-sso
 	provides = intune-portal
 	backup = etc/himmelblau/himmelblau.conf
-	source = himmelblau-4.0.0.tar.gz::https://github.com/himmelblau-idm/himmelblau/archive/refs/tags/4.0.0.tar.gz
-	sha256sums = SKIP
+	source = himmelblau-3.0.1.tar.gz::https://github.com/himmelblau-idm/himmelblau/archive/refs/tags/3.0.1.tar.gz
+	sha256sums = 8a265092c5d20dc8ae96178243c20a068953d4c07dd55ca19873ec81718553e7
 
 pkgname = himmelblau
