@@ -1,6 +1,6 @@
 pkgname=mtc
-pkgver=0.4.0
-pkgrel=4
+pkgver=1
+pkgrel=1
 pkgdesc="C++ compiler for mt-lang"
 arch=('x86_64')
 url="https://github.com/mystyy01/mt-lang-compiler"
