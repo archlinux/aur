@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=8.0.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -135,6 +135,7 @@ depends=(
   "rubberband>=$_rubberbandver"
   sdl2
   snappy
+  sndio
   speex
   v4l-utils
   vapoursynth
@@ -281,6 +282,7 @@ _args+=(
   --enable-libxcb-shape
   --enable-lzma
   --enable-sdl2
+  --enable-sndio
   --enable-xlib
   --enable-zlib
   --enable-ffnvcodec
@@ -414,7 +416,6 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     rtmpdump
     'shine'
     smbclient
-    sndio
     tesseract
     twolame
     'uavs3d-git' # uavs3d >= 1.1.41 is required by ffmpeg so switch to uavs3d-git
@@ -429,7 +430,6 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
   makedepends+=(patchutils)
   _args+=(
     --disable-rpath
-    --enable-sndio 
     --enable-chromaprint
     --enable-gcrypt
     --enable-gray
@@ -482,8 +482,6 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --disable-whisper # whisper.cpp conflicts with imagemagick
   )
   provides+=(ffmpeg-full)
-else
-  _args+=(--disable-sndio) # sndio is not present when upstream package is built
 fi
 
 if [[ $_add_gcc_libs_as_deps == 'ON' ]]; then
