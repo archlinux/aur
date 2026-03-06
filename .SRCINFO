@@ -1,6 +1,6 @@
 pkgbase = raysession
 	pkgdesc = Session manager for audio programs using the Non Session Manager (NSM) API
-	pkgver = 0.17.3
+	pkgver = 0.17.4
 	pkgrel = 1
 	url = https://github.com/Houston4444/RaySession
 	arch = any
@@ -18,9 +18,9 @@ pkgbase = raysession
 	depends = qt6-svg
 	optdepends = python-gobject: additional JACK helper scripts
 	optdepends = python-pyjacklib: additional JACK helper scripts
-	source = https://github.com/Houston4444/RaySession/releases/download/v0.17.3/RaySession-0.17.3-source.tar.gz
+	source = https://github.com/Houston4444/RaySession/releases/download/v0.17.4/RaySession-0.17.4-source.tar.gz
 	source = raysession-makefile-destdir.patch
-	sha256sums = 846a6a9d3730182e14cd95e6846a8b70d82af45d24e3591308f408e092e85545
+	sha256sums = ab953150ddbde0bfd48c1df6647ce0bef6f279fe5b711ad1823974e85245a52f
 	sha256sums = d551c1660bff9cbd1a45e6bdbfc5b81894cd118b78534340e5ec0bb274e527fa
 
 pkgname = raysession
