@@ -2,7 +2,7 @@
 pkgname=memoa-bin
 pkgver=0.1.312
 pkgrel=1
-pkgdesc="The best for Markdown Editing"
+pkgdesc="A Tauri App for Markdown Editing"
 arch=('x86_64')
 url="https://example.com/memoa"
 license=('unknown')
