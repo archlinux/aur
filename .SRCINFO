@@ -8,6 +8,7 @@ pkgbase = rdbcli-bin
 	arch = armv7h
 	license = MIT
 	depends = icu
+	depends = git
 	provides = rdbcli=1.0.0
 	conflicts = rdbcli
 	conflicts = rdbcli-git
