@@ -5,12 +5,12 @@ _crate="ellipse-bin"
 _cratever="1.0.1"
 pkgname="ellipse"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command that truncates and ellipses strings in a human-friendly way'
 url='https://crates.io/crates/ellipse-bin'
 license=('GPL-3.0-only')
 
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/ellipse-bin/1.0.1/download")
