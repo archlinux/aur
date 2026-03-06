@@ -6,4 +6,4 @@ Comment=Слушайте и скачивайте музыку с любимых 
 Exec=/opt/murglar-desktop/murglar-desktop
 Icon=murglar-desktop
 Type=Application
-Categories=Audio;Music
+Categories=Audio;Music;Player

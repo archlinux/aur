@@ -1,9 +1,9 @@
 # Maintainer: qnezor <hello at qnezor.ru>
 
 pkgname=murglar-desktop
-pkgver=5.2.149
+pkgver=5.3.150
 pkgrel=1
-pkgdesc="Murglar Desktop application"
+pkgdesc="Listen and download music from your favorite music services — VK, Yandex Music, SoundCloud, Deezer, Zvuk and WebDAV"
 arch=('any')
 url="https://github.com/badmannersteam/murglar-downloads"
 license=('custom')
@@ -13,10 +13,10 @@ source=("https://github.com/badmannersteam/murglar-downloads/releases/download/M
         "murglar-desktop.sh"
         "murglar-desktop.desktop")
 noextract=("Murglar-Desktop-${pkgver}-all-platforms.jar")
-sha256sums=('f0cb5d4937bf19db6c6063ef203eeae30b571ec70d4f90da7d9134492ebb72d6'
+sha256sums=('89508496d0a412af27f885b41f999fc8d20b1d43fbc7ffcebcaa24f4a6fde11b'
         '6ae9f55254656355cb2268d6d11ff268f0827d19bcfae217b616c04b7b7915bd'
         '52cd65b6f7024d8e62f9ca76ad25d8743e9dc6e5f639834f856310ffb0a2023c'
-        '58ad0677841f3a35fb85a1b90e7e72603fb6f863dc7a47477bc676a252ebfe6f')
+        '2747f8f58ca204e5e6fc4b96a70b502fa5ad77dde71e9b103c2aa6ea3042510e')
 
 package() {
     install -dm755 "$pkgdir/opt/$pkgname"
