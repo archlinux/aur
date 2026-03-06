@@ -1,0 +1,16 @@
+pkgbase = spinwheel-base
+	pkgdesc = A simple terminal wheel spinner. no modes, no dependencies, no frills.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/the-traveler/spinwheel
+	arch = any
+	groups = spinwheel
+	license = GPL-3.0-or-later
+	depends = lua
+	provides = spinwheel
+	conflicts = spinwheel
+	conflicts = spinwheel-pulse
+	source = spinwheel.lua
+	sha256sums = SKIP
+
+pkgname = spinwheel-base
