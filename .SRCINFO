@@ -1,0 +1,19 @@
+pkgbase = rdbcli-bin
+	pkgdesc = Relational database command-line tools.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lipeilin2006/rdbcli
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	depends = icu
+	provides = rdbcli=1.0.0
+	conflicts = rdbcli
+	conflicts = rdbcli-git
+	replaces = rdbcli
+	options = !strip
+	source = https://github.com/lipeilin2006/rdbcli/releases/download/1.0.0/rdbcli-1.0.0-linux-x64.tar.gz
+	sha256sums = 857dcfa17855ea8fae1c8042fec13daa89281e9f31965abe6d812071c0686ed6
+
+pkgname = rdbcli-bin
