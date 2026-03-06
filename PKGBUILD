@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('any')
@@ -12,6 +12,7 @@ depends=(
   'libayatana-appindicator'
   'libnotify'
   'playerctl'
+  'python-click'
   'python-cryptography'
   'python-fastapi'
   'python-getmac'
@@ -51,8 +52,8 @@ optdepends=(
 )
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
          "$pkgname.1")
-sha256sums=('640e516c241c49e41521533dd99da8ffd8b32d9b64bb6f9f1f885b7e5969d650'
-            '34fd09ea7b1bf2b80cb750a07d1601a232e5b0823a66cfdbdef2311fad2b3916')
+sha256sums=('ce80d9ec26e071fdced66a94a4a6d26761273aa4297cf22ca122b1765bddf1eb'
+            '00f81445d181770676ceac2d1de3abad4e55e2df7339b4c9410b7e5c90b4cb33')
 
 build() {
   cd "PCLink-$pkgver"
