@@ -1,0 +1,20 @@
+pkgbase = musicbox-bin
+	pkgdesc = A visually stunning, plugin-based, and highly customizable local music player.(Prebuilt version.Use system-wide electron)一款高颜值、插件化、可深度定制的本地音乐播放器
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://musicbox.asxe.vip/
+	arch = x86_64
+	license = MIT
+	makedepends = asar
+	depends = electron37
+	provides = musicbox=0.2.4
+	conflicts = musicbox
+	options = !emptydirs
+	source = musicbox-0.2.4.rpm::https://github.com/asxez/MusicBox/releases/download/0.2.4/MusicBox-0.2.4.x86_64.rpm
+	source = LICENSE-0.2.4::https://raw.githubusercontent.com/asxez/MusicBox/0.2.4/LICENSE
+	source = musicbox.sh
+	sha256sums = f73e86bebf0c6803c54236fb8016e8aba6cb97591e9398d69b6e8e6f39fb4f8a
+	sha256sums = ff9aafe6b093630789b655b4ff402a7ed146fc6cf88b23108f646fc48773b491
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = musicbox-bin
