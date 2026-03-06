@@ -1,7 +1,7 @@
 # Maintainer: CELESTIFYX Team <celestifyx@gmail.com>
 
 pkgname="lynxfetch"
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Super fast, versatile, and customizable command-line fetcher."
 arch=("x86_64")
@@ -14,11 +14,15 @@ depends=("glibc"
     "dbus")
 
 source=("https://gitlab.com/${pkgname}/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=("ba05ba6e1b652094c4ec1849dc6d31858c0d4141a5fb362c6a5224bbfb459f71abe29901b2263a85ab3df6cbef273b9e5d16879b1d76fff476f53ac410ba8e2c")
+sha512sums=("6bfa340b4ef8f3f404863a9c0a7fadceb1dd6acc77b30771c551d5671a8d49253ef67877b1ffb1ed031f83aee6845ecdd3da81ecfe3a4c512ca9acac950b1ba6")
 
 package() {
     cd "${pkgname}-${pkgver}"
 
     cargo build -r
     install -Dm755 "target/release/${pkgname}" -t "${pkgdir}/usr/bin/"
+
+    install -Dm644 "completions/${pkgname}.bash" "${pkgdir}/usr/share/bash-completion/completions/${pkgname}"
+    install -Dm644 "completions/${pkgname}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname}.fish"
+    install -Dm644 "completions/${pkgname}.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_${pkgname}"
 }
