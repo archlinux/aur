@@ -23,7 +23,7 @@ pkgbase = orca-slicer-unstable-bin
 	conflicts = orca-slicer
 	options = !strip
 	options = !debug
-	source = https://github.com/OrcaSlicer/OrcaSlicer/releases/download/v2.3.2-rc2/OrcaSlicer_Linux_AppImage_Ubuntu2404_V2.3.2-rc2.AppImage
+	source = https://github.com/OrcaSlicer/OrcaSlicer/releases/download/v${_pkgver}/OrcaSlicer_Linux_AppImage_Ubuntu2404_V${_pkgver}.AppImage
 	sha512sums = c1966ba2046633aa85fa144d8e2d3f9481a87b0618470f5960d29fba4c97ca9cbb4b1c8597173839e763ab5f41385c117a37ccccdf4e95baefabd7f9ac5c43a5
 
 pkgname = orca-slicer-unstable-bin
