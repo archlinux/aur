@@ -5,12 +5,12 @@ _crate="cargo-clean-all"
 _cratever="0.6.4"
 pkgname="cargo-clean-all"
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Recursively clean all cargo projects in a given directory that match the spec...'
 url='https://github.com/dnlmlr/cargo-clean-all'
 license=('MIT')
 
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/cargo-clean-all/0.6.4/download")
