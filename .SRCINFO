@@ -1,16 +1,16 @@
 pkgbase = clip-bin
 	pkgdesc = Upload your clipboard for sharing
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/bemoty/clip
 	license = MIT
 	conflicts = clip
 	provides = clip
 	arch = aarch64
-	source_aarch64 = https://github.com/bemoty/clip/releases/download/v0.4.0/clip_0.4.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = bcd4b111e330972ba6292a66a8a949f87ff3a3369d596f3ff95337318b431bef
+	source_aarch64 = https://github.com/bemoty/clip/releases/download/v0.4.1/clip_0.4.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = f1c1957836d4f45fbe10e1bf13885082cddba945534bc841a96614e15a6bc4cf
 	arch = x86_64
-	source_x86_64 = https://github.com/bemoty/clip/releases/download/v0.4.0/clip_0.4.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = a7e169819af49bc178425185a69233dae7e7b60fdec1ef92e8b9c403111bc096
+	source_x86_64 = https://github.com/bemoty/clip/releases/download/v0.4.1/clip_0.4.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = cf7b00f6fdcc9f50ea21afa1332f77e000ad0dd03254e90cb0c7bdd2902af328
 	
 pkgname = clip-bin
