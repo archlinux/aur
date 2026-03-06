@@ -1,0 +1,20 @@
+pkgbase = enteauth-rs-git
+	pkgdesc = Get 2FA codes via CLI (works with the official app)
+	pkgver = r5.e23eb5a
+	pkgrel = 1
+	url = https://github.com/Supernovatux/enteauth-rs
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cargo
+	depends = ente-auth
+	depends = sqlite
+	optdepends = wl-clipboard: Wayland copy support
+	optdepends = xclip: X11 copy support
+	optdepends = xsel: X11 copy support
+	provides = enteauth-rs
+	conflicts = enteauth-rs
+	source = git+https://github.com/Supernovatux/enteauth-rs.git
+	sha256sums = SKIP
+
+pkgname = enteauth-rs-git
