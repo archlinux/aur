@@ -1,6 +1,6 @@
 # Maintainer: Rui Jiang <me@ruijiang.me>
 pkgname=noxdir
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Terminal utility for visualizing file system usage."
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=("$pkgname")
 depends=('go')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/crumbyte/noxdir/archive/v$pkgver.tar.gz")
-sha256sums=('4dea1bbc26815d95afa99263933113cbfbefdb6c52327ca59b8fc220f1a59871')
+sha256sums=('c88b8e64628b42be513424b37335d72438535cfa5545dcc53058c871bbab2bef')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
