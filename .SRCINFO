@@ -1,6 +1,6 @@
 pkgbase = littleutils
 	pkgdesc = Utilities for compression, file manipulation, text cleanup, and images/PDF optimization
-	pkgver = 1.2.8
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://sourceforge.net/projects/littleutils/
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = littleutils
 	depends = lzip
 	depends = lzma_alone
 	depends = lzop
+	depends = optipng
 	depends = perl
 	depends = perl-cryptx
 	depends = pngcrush
@@ -32,7 +33,7 @@ pkgbase = littleutils
 	depends = zstd
 	optdepends = wget: for download capability in the to-* recompression utilities
 	conflicts = file-rename-utils
-	source = https://sourceforge.net/projects/littleutils/files/littleutils-source/1.2.8/littleutils-1.2.8.tar.lz
-	sha256sums = 1528fd0445a641db1402605052f554b40a7ad1113772c517841a361c0c6eca35
+	source = https://sourceforge.net/projects/littleutils/files/littleutils-source/1.4.0/littleutils-1.4.0.tar.lz
+	sha256sums = fc75d439dab45733a0aaa60c2df640f1b9f5effd0671cc9dd32b23f922450eed
 
 pkgname = littleutils
