@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="${_pkgname}-Linux-${pkgver}-amd64.AppImage"
-source_x86_64=("${_appimage}::https://github.com/eden-emulator/Releases/releases/download/${_upstreamver}/${_pkgname}-Linux-${_upstreamver}-amd64-gcc-standard.AppImage")
+source_x86_64=("${_appimage}::https://git.eden-emu.dev/eden-emu/eden/releases/download/${_upstreamver}/${_pkgname}-Linux-${_upstreamver}-amd64-gcc-standard.AppImage")
 sha256sums_x86_64=("8cfc8fad5bc6ea915ec7932452f445857706a3c14e2398ae383c8b7bfe455a52")
 
 prepare() {
