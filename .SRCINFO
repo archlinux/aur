@@ -1,7 +1,7 @@
 pkgbase = networkmanager-iwd
 	pkgdesc = Network connection manager and user applications; using iwd backend instead of wpa_supplicant
 	pkgver = 1.56.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://networkmanager.dev/
 	arch = x86_64
 	license = LGPL-2.1-or-later
@@ -104,7 +104,7 @@ pkgname = nm-iwd-cloud-setup
 	depends = curl
 	depends = glib2
 	depends = glibc
-	depends = jannson
+	depends = jansson
 	depends = libgcc
 	depends = libnm
 	depends = networkmanager-iwd

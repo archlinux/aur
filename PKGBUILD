@@ -15,7 +15,7 @@ pkgname=(
   nm-iwd-cloud-setup
 )
 pkgver=1.56.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Network connection manager and user applications; using iwd backend instead of wpa_supplicant"
 url="https://networkmanager.dev/"
 arch=(x86_64)
@@ -236,7 +236,7 @@ package_nm-iwd-cloud-setup() {
     curl
     glib2
     glibc
-    jannson
+    jansson
     libgcc
     libnm
     networkmanager-iwd
