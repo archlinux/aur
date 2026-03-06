@@ -1,7 +1,7 @@
 pkgbase = p4lang-pi
 	pkgdesc = An implementation framework for a P4Runtime server
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/p4lang/PI
 	arch = x86_64
 	license = Apache-2.0
@@ -9,6 +9,8 @@ pkgbase = p4lang-pi
 	makedepends = git
 	depends = grpc
 	depends = protobuf
+	depends = python-grpcio
+	depends = python-protobuf
 	depends = boost-libs
 	depends = readline
 	options = !debug
