@@ -30,7 +30,7 @@ sha256sums=('bfb421053d3f6610d4e1779a49b2e2de49f6ae928ae19b5516b705f256ca8b6d'
             '6e1d0147076ce0221e4e22e0a10d70c17eaa3740fe21461aff931c107416564f'
             '3f69857f9b2c27c3a391a4592b6a264d4cffe4d35166f1fcdfddac632f2b7970')
 prepare() {
-    cd "${pkgname%-xor-git}-${pkgver}"/
+    cd "openvpn-${pkgver}"/
 
     # patch systemd
     git apply "${startdir}/systemd.diff"
@@ -48,7 +48,7 @@ prepare() {
 }
 
 build() {
-    cd "${pkgname%-xor-git}-${pkgver}"/
+    cd "openvpn-${pkgver}"/
 
     autoreconf -vi
 
@@ -70,40 +70,40 @@ build() {
 }
 
 check() {
-	cd "${pkgname%-xor-git}-${pkgver}"/
+	cd "openvpn-${pkgver}"/
 	make check
 }
 
 package() {
-    cd "${pkgname%-xor-git}-${pkgver}"/
+    cd "openvpn-${pkgver}"/
 
     # Install openvpn
     make CFLAGS="-march=native" DESTDIR="${pkgdir}" install
 
     # Create empty configuration directories
-    install -d -m0750 -g 90 "${pkgdir}"/etc/${pkgname%-xor-git}/{client,server}
+    install -d -m0750 -g 90 "${pkgdir}"/etc/openvpn/{client,server}
 
     # Install examples
-    install -d -m0755 "${pkgdir}"/usr/share/${pkgname%-xor-git}
-    cp -r sample/sample-config-files "${pkgdir}"/usr/share/${pkgname%-xor-git}/examples
+    install -d -m0755 "${pkgdir}"/usr/share/openvpn
+    cp -r sample/sample-config-files "${pkgdir}"/usr/share/openvpn/examples
 
     # Install license
-    install -d -m0755 "${pkgdir}"/usr/share/licenses/${pkgname%-xor-git}/
-    ln -sf /usr/share/doc/${pkgname%-xor-git}/{COPYING,COPYRIGHT.GPL} "${pkgdir}"/usr/share/licenses/${pkgname%-xor-git}/
+    install -d -m0755 "${pkgdir}"/usr/share/licenses/openvpn/
+    ln -sf /usr/share/doc/openvpn/{COPYING,COPYRIGHT.GPL} "${pkgdir}"/usr/share/licenses/openvpn/
 
     # Install contrib
     for FILE in $(find contrib -type f); do
     	case "$(file --brief --mime-type "${FILE}")" in
-    		"text/x-shellscript") install -D -m0755 "${FILE}" "${pkgdir}/usr/share/${pkgname%-xor-git}/${FILE}" ;;
-    		*) install -D -m0644 "${FILE}" "${pkgdir}/usr/share/${pkgname%-xor-git}/${FILE}" ;;
+    		"text/x-shellscript") install -D -m0755 "${FILE}" "${pkgdir}/usr/share/openvpn/${FILE}" ;;
+    		*) install -D -m0644 "${FILE}" "${pkgdir}/usr/share/openvpn/${FILE}" ;;
     	esac
     done
 
     # enable scheduling priority changes (nice)
-    sed -i '14s/$/ CAP_SYS_NICE/' "distro/systemd/${pkgname%-xor-git}-client@.service"
-    sed -i '15s/$/ CAP_SYS_NICE/' "distro/systemd/${pkgname%-xor-git}-server@.service"
+    sed -i '14s/$/ CAP_SYS_NICE/' "distro/systemd/openvpn-client@.service"
+    sed -i '15s/$/ CAP_SYS_NICE/' "distro/systemd/openvpn-server@.service"
 
     # Install systemd files
-    install -D -m0644 distro/systemd/${pkgname%-xor-git}-client@.service ${pkgdir}/usr/lib/systemd/system/${pkgname%-xor-git}-client@.service
-    install -D -m0644 distro/systemd/${pkgname%-xor-git}-server@.service ${pkgdir}/usr/lib/systemd/system/${pkgname%-xor-git}-server@.service
+    install -D -m0644 distro/systemd/openvpn-client@.service ${pkgdir}/usr/lib/systemd/system/openvpn-client@.service
+    install -D -m0644 distro/systemd/openvpn-server@.service ${pkgdir}/usr/lib/systemd/system/openvpn-server@.service
 }
