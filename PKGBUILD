@@ -5,7 +5,7 @@
 # Contributor: David Roheim <david.roheim@gmail.com>
 
 pkgname=hadoop-bin
-pkgver=3.4.2
+pkgver=3.4.3
 pkgrel=1
 pkgdesc='An open-source software for reliable, scalable, distributed computing'
 arch=('x86_64')
@@ -14,10 +14,10 @@ license=('APACHE')
 conflicts=('yarn' 'hadoop')
 depends=('inetutils' 'java-runtime-headless>=11' 'openssh' 'protobuf')
 
-source=("https://dlcdn.apache.org/hadoop/common/hadoop-${pkgver}/hadoop-${pkgver}-lean.tar.gz"
+source=("https://dlcdn.apache.org/hadoop/common/hadoop-${pkgver}/hadoop-${pkgver}.tar.gz"
         "hadoop" "hadoop.sh"
         hadoop-{datanode,historyserver,namenode,resourcemanager,secondarynamenode}.service)
-sha256sums=('6324a83fe11e517890436fc6d80bc829506ed252cbe2465752b91220900dfb83'
+sha256sums=('ca65b67a9cdad27b3aa1cb81496a3136de572bab3e8f2289c2aade965f687353'
             '22ea61fd1f1e33a444360a99effb4540784f4254e6be631ead9c7106799e0960'
             '35476cfcad71d441d5df372af6af44b19e5ea65eafa732b3fc54d503c2871a16'
             '876d40b0a2ec9b9cec9b667d7909591ee0ef1acbd5417a0357c33539d8a54e1a'
@@ -31,7 +31,7 @@ install=hadoop.install
 package() {
     # Extract and copy files to /usr
     mkdir -p "$pkgdir"/usr
-    tar -xzf "$srcdir"/hadoop-${pkgver}-lean.tar.gz -C "$pkgdir"/usr --strip-components=1
+    tar -xzf "$srcdir"/hadoop-${pkgver}.tar.gz -C "$pkgdir"/usr --strip-components=1
 
     # Move sbin files to bin
     cd "$pkgdir"/usr
