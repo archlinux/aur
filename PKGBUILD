@@ -1,7 +1,7 @@
 # Maintainer: Shi Yanling <sylphenix@outlook.com>
 
 pkgname=sff
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc='Simple and fast terminal file manager'
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
   'ffmpegthumbnailer: video thumbnail generation'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('09731b27f6e9d6e9700a38ed24acc749b2972d139535be9394f87e83e9ad894b')
+sha256sums=('80736c30fe0150cec98afce2dae835cc5e0e3944d2ed1a618490ea78213b71de')
 
 build() {
   cd "${pkgname}"
