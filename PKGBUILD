@@ -3,11 +3,12 @@
 
 pkgname=(zoho-cliq zoho-cliq-upstream-electron)
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Zoho Cliq communication software'
 arch=('x86_64')
 url="https://www.zoho.com/cliq/desktop/linux.html"
 license=('Proprietary')
+provides=('zoho-cliq')
 depends=('alsa-lib' 'gtk3' 'libsecret' 'libxss' 'libxtst' 'nss' 'xdg-utils')
 optdepends=('libappindicator-gtk3: Systray indicator support'
             'org.freedesktop.secrets: Keyring password store support')
@@ -18,39 +19,29 @@ sha256sums=('1b6c171a9fafcea38d22692ad3b1e883be0659787a3ee12062175ec1cfe7a553')
 
 package_zoho-cliq() {
     conflicts=('zoho-cliq-upstream-electron')
-    install -d "${pkgdir}/opt"
+    install -d "${pkgdir}/opt/Cliq"
     install -d "${pkgdir}/usr/share"
     cd "${srcdir}"
     tar xf data.tar.xz
-    cp -r opt/Cliq "${pkgdir}/opt/Cliq"
+    cp -r opt/Cliq/* "${pkgdir}/opt/Cliq/"
     cp -r usr/share/* "${pkgdir}/usr/share/"
 }
 
 package_zoho-cliq-upstream-electron() {
-    electron_ver='electron37'
+    # The only difference is that this package copies over only the resources/ folder
+    # and creates a launcher wrapper.
+    electron_ver='electron36'
     depends+=($electron_ver)
     conflicts=('zoho-cliq')
     pkgdesc='Zoho Cliq running on upstream Electron (experimental)'
-    install_files=(
-        '/opt/Cliq/resources/app.asar'
-        '/usr/share/applications/cliq.desktop'
-        '/usr/share/doc/cliq/changelog.gz'
-        '/usr/share/icons/hicolor/16x16/apps/cliq.png'
-        '/usr/share/icons/hicolor/32x32/apps/cliq.png'
-        '/usr/share/icons/hicolor/48x48/apps/cliq.png'
-        '/usr/share/icons/hicolor/64x64/apps/cliq.png'
-        '/usr/share/icons/hicolor/128x128/apps/cliq.png'
-        '/usr/share/icons/hicolor/256x256/apps/cliq.png'
-        '/usr/share/icons/hicolor/512x512/apps/cliq.png'
-        '/usr/share/icons/hicolor/1024x1024/apps/cliq.png'
-    )
 
+    install -d "${pkgdir}/opt/Cliq"
+    install -d "${pkgdir}/usr/share"
+    cd "${srcdir}"
     tar xf data.tar.xz
+    cp -r opt/Cliq/resources/* "${pkgdir}/opt/Cliq/"
+    cp -r usr/share/* "${pkgdir}/usr/share/"
 
-    for file in "${install_files[@]}"; do
-        install -Dm 644 "${srcdir}${file}" "${pkgdir}${file}"
-    done
-
-    echo -e "#!/bin/bash\n\nexec /usr/bin/$electron_ver /opt/Cliq/resources/app.asar" > "${pkgdir}/opt/Cliq/cliq"
+    echo -e "#!/bin/sh\n\nexec /usr/bin/$electron_ver /opt/Cliq/app.asar" > "${pkgdir}/opt/Cliq/cliq"
     chmod +x "${pkgdir}/opt/Cliq/cliq"
 }
