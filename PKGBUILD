@@ -18,7 +18,7 @@ _versionn=0
 _versionm=0
 # Historically, not all tags begin with "idea/" such as "2025.3-rc-2".
 _tagprefix=idea/
-_tagsuffix=eap-6
+_tagsuffix=eap-7
 # Get build number from the following, in order of preference (as it's not always available
 # on GitHub):
 #
@@ -31,7 +31,7 @@ _tagsuffix=eap-6
 #   EAP version ("snap install intellij-idea --classic --edge"). This will match that in
 #   "build.txt" in the source at GitHub, although that file only contains the first two
 #   parts, followed by ".SNAPSHOT".
-_build=261.21849.20
+_build=261.22158.46
 
 pkgver="$_versionyyyy.$_versionr.$_versionn.$_versionm.$_build$([ -n "$_tagsuffix" ] && echo -n ".$_tagsuffix" | tr - _)"
 pkgrel=1
@@ -57,7 +57,7 @@ optdepends=(
 source=("git+https://github.com/JetBrains/intellij-community.git#tag=$_tag"
   idea-android::"git+https://github.com/JetBrains/android.git#tag=$_tag"
   idea.desktop)
-sha256sums=('63d288a550031daade97ff07665afdfe3e17fb1ca1b5af7eebf008d1dc391769'
+sha256sums=('af5db2aebe81dff09276e49167d3d6eb0920239017fc0cdf794f0131a3dada23'
   '5459c57e3367785ac569b12324e604d524f6acb061be1dbf7bb13962f7c808e1'
   '7e653ec3049058e2dcd7ca262081164ba417ea664885af7b5e4f94bcc987038f')
 
