@@ -1,0 +1,17 @@
+pkgbase = filecraft-cli
+	pkgdesc = A CLI organizer you didn’t know you needed — yet.
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/murtazapatel89100/Filecraft
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-typer
+	source = https://pypi.io/packages/source/f/filecraft-cli/filecraft_cli-1.0.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = filecraft-cli
