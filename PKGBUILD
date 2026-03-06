@@ -38,7 +38,7 @@ build() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     npm ci
-    npx tauri build -b none
+    npx tauri build -b deb
 }
 
 package() {
