@@ -6,22 +6,26 @@ _crate="mstickereditor"
 _cratever="0.3.7"
 pkgname="mstickereditor"
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='import sticker packs from telegram, to be used at the Maunium sticker picker ...'
 url='https://crates.io/crates/mstickereditor'
 license=('Apache-2.0')
 
-depends=('gcc-libs' 'ffmpeg' 'libwebp' 'rlottie')
+depends=('libgcc' 'ffmpeg' 'libwebp' 'rlottie')
 makedepends=('cargo' 'cargo-auditable' 'clang' 'lld')
 
-source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/mstickereditor/0.3.7/download")
-sha512sums=('0e610577f93353d4a2a0024f0bed5943414e56cc723e7053c963c7d99d74d2daf4355c4abd43e0a3dc77517b9b2b52d39c7eb75858a20731c3a221d2b1c8c6f8')
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/mstickereditor/0.3.7/download"
+        'ffmpeg-8-compat')
+sha512sums=('0e610577f93353d4a2a0024f0bed5943414e56cc723e7053c963c7d99d74d2daf4355c4abd43e0a3dc77517b9b2b52d39c7eb75858a20731c3a221d2b1c8c6f8'
+            '208e3953b2e896edd5120e72db669d942502ad52741b006de77041e04ee9115d1cdba9581a70dba6ece7380bf3f76d2424b56bc22ad46e6099fa681d3ae3a166')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
 
 prepare() {
 	cd "$srcdir/$_crate-$_cratever"
+	
+	patch -Np1 -i "$srcdir/ffmpeg-8-compat"
 
 	export RUSTUP_TOOLCHAIN=stable
 

@@ -1,0 +1,165 @@
+diff -Naur mstickereditor-0.3.7.bak/Cargo.lock mstickereditor-0.3.7/Cargo.lock
+--- mstickereditor-0.3.7.bak/Cargo.lock	2026-03-06 15:39:06.147097004 +0100
++++ mstickereditor-0.3.7/Cargo.lock	2026-03-06 15:45:56.603395981 +0100
+@@ -133,7 +133,7 @@
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "726e4313eb6ec35d2730258ad4e15b547ee75d6afaa1361a922e78e59b7d8078"
+ dependencies = [
+- "bitflags 2.6.0",
++ "bitflags 2.9.4",
+  "cexpr",
+  "clang-sys",
+  "lazy_static",
+@@ -143,25 +143,25 @@
+  "proc-macro2",
+  "quote",
+  "regex",
+- "rustc-hash",
++ "rustc-hash 1.1.0",
+  "shlex",
+  "syn 2.0.59",
+ ]
+ 
+ [[package]]
+ name = "bindgen"
+-version = "0.70.1"
++version = "0.72.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f49d8fed880d473ea71efb9bf597651e77201bdd4893efe54c9e5d65ae04ce6f"
++checksum = "993776b509cfb49c750f11b8f07a46fa23e0a1386ffc01fb1e7d343efc387895"
+ dependencies = [
+- "bitflags 2.6.0",
++ "bitflags 2.9.4",
+  "cexpr",
+  "clang-sys",
+  "itertools",
+  "proc-macro2",
+  "quote",
+  "regex",
+- "rustc-hash",
++ "rustc-hash 2.1.1",
+  "shlex",
+  "syn 2.0.59",
+ ]
+@@ -174,9 +174,9 @@
+ 
+ [[package]]
+ name = "bitflags"
+-version = "2.6.0"
++version = "2.9.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "b048fb63fd8b5923fc5aa7b340d8e156aec7ec02f0c78fa8a6ddc2613f6f71de"
++checksum = "2261d10cca569e4643e526d8dc2e62e433cc8aba21ab764233731f8d369bf394"
+ 
+ [[package]]
+ name = "block-buffer"
+@@ -451,22 +451,22 @@
+ 
+ [[package]]
+ name = "ffmpeg-next"
+-version = "7.1.0"
++version = "8.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "da02698288e0275e442a47fc12ca26d50daf0d48b15398ba5906f20ac2e2a9f9"
++checksum = "d658424d233cbd993a972dd73a66ca733acd12a494c68995c9ac32ae1fe65b40"
+ dependencies = [
+- "bitflags 2.6.0",
++ "bitflags 2.9.4",
+  "ffmpeg-sys-next",
+  "libc",
+ ]
+ 
+ [[package]]
+ name = "ffmpeg-sys-next"
+-version = "7.1.0"
++version = "8.0.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "2bc3234d0a4b2f7d083699d0860c6c9dd83713908771b60f94a96f8704adfe45"
++checksum = "9bca20aa4ee774fe384c2490096c122b0b23cf524a9910add0686691003d797b"
+ dependencies = [
+- "bindgen 0.70.1",
++ "bindgen 0.72.1",
+  "cc",
+  "libc",
+  "num_cpus",
+@@ -618,9 +618,9 @@
+ 
+ [[package]]
+ name = "hermit-abi"
+-version = "0.3.9"
++version = "0.5.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d231dfb89cfffdbc30e7fc41579ed6066ad03abda9e567ccafae602b97ec5024"
++checksum = "fc0fef456e4baa96da950455cd02c081ca953b141298e41db3fc7e36b1da849c"
+ 
+ [[package]]
+ name = "http"
+@@ -942,7 +942,7 @@
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "c0ff37bd590ca25063e35af745c343cb7a0271906fb7b37e4813e8f79f00268d"
+ dependencies = [
+- "bitflags 2.6.0",
++ "bitflags 2.9.4",
+  "libc",
+ ]
+ 
+@@ -1083,8 +1083,7 @@
+ [[package]]
+ name = "mstickerlib"
+ version = "0.3.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "47b0d0a1fdcefcb3d32a81e01bd70cb13c157dc1b5cb561fa48c27342003ea93"
++source = "git+https://github.com/LuckyTurtleDev/mstickereditor?rev=6249cc69c361922053a8e0f07a13966b42b43c22#6249cc69c361922053a8e0f07a13966b42b43c22"
+ dependencies = [
+  "anyhow",
+  "derive-getters",
+@@ -1138,11 +1137,11 @@
+ 
+ [[package]]
+ name = "num_cpus"
+-version = "1.16.0"
++version = "1.17.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "4161fcb6d602d4d2081af7c3a45852d875a03dd337a6bfdd6e06407b61342a43"
++checksum = "91df4bbde75afed763b708b7eee1e8e7651e02d97f6d5dd763e89367e957b23b"
+ dependencies = [
+- "hermit-abi 0.3.9",
++ "hermit-abi 0.5.2",
+  "libc",
+ ]
+ 
+@@ -1466,6 +1465,12 @@
+ checksum = "08d43f7aa6b08d49f382cde6a7982047c3426db949b1424bc4b7ec9ae12c6ce2"
+ 
+ [[package]]
++name = "rustc-hash"
++version = "2.1.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d"
++
++[[package]]
+ name = "rustc_version"
+ version = "0.4.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -1480,7 +1485,7 @@
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "65e04861e65f21776e67888bfbea442b3642beaa0138fdb1dd7a84a52dffdb89"
+ dependencies = [
+- "bitflags 2.6.0",
++ "bitflags 2.9.4",
+  "errno",
+  "libc",
+  "linux-raw-sys",
+diff -Naur mstickereditor-0.3.7.bak/Cargo.toml mstickereditor-0.3.7/Cargo.toml
+--- mstickereditor-0.3.7.bak/Cargo.toml	2026-03-06 15:39:06.147133543 +0100
++++ mstickereditor-0.3.7/Cargo.toml	2026-03-06 15:45:08.054419834 +0100
+@@ -65,7 +65,8 @@
+ version = "0.4.20"
+ 
+ [dependencies.mstickerlib]
+-version = "0.3.2"
++git = "https://github.com/LuckyTurtleDev/mstickereditor"
++rev = "6249cc69c361922053a8e0f07a13966b42b43c22"
+ features = ["log"]
+ default-features = false
+ 
