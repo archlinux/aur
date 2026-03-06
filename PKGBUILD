@@ -2,24 +2,40 @@
 # Contributor: MoDoJ
 
 pkgname=insync-dolphin
-pkgver=3.7.9.50368
+epoch=1
+pkgver=r29.de53666
 pkgrel=1
-pkgdesc="This package contains the service menu for integrating Insync with Dolphin"
-url="https://www.insynchq.com"
-license=('custom')
+pkgdesc="Insync context menus and overlay icons for Dolphin - Plasma 6"
 arch=('x86_64')
-options=('!strip' '!emptydirs')
-depends=("insync" "dolphin")
-source=("${pkgname}-${pkgver}.deb::https://cdn.insynchq.com/builds/linux/${pkgname}_${pkgver}_all.deb")
-sha256sums=('05e8c6888cf99cfa230457e654ad1afcd741e5ea45362ea23dd7c4caed8f17ee')
-noextract=("${pkgname}-${pkgver}.deb")
+url="https://github.com/felagund/dolphin-insync-plugin-plasma-6"
+license=('GPL-2.0-only')
+depends=(
+    'insync'
+    'dolphin'
+)
+makedepends=(
+    'cmake'
+    'extra-cmake-modules'
+    'qt6-base'
+    'git'
+)
+provides=('dolphin-insync-plugin-plasma-6')
+conflicts=('dolphin-insync-plugin-plasma-6')
+source=("${pkgname}::git+https://github.com/felagund/dolphin-insync-plugin-plasma-6.git#branch=master")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "${pkgname}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd "${pkgname}"
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -B build/
+    cmake --build build/
+}
 
 package() {
-   cd $srcdir
-   ar x ${pkgname}-${pkgver}.deb
-   tar xvf data.tar.gz   
-   mv usr "$pkgdir/"
-   install -dm 755 "$pkgdir/usr/lib/qt"
-   mv "$pkgdir/usr/lib/x86_64-linux-gnu/qt5/plugins" "$pkgdir/usr/lib/qt/"
-   echo "Icon=insync" >> "$pkgdir/usr/share/kservices5/fileitemactioninsyncplugin.desktop"
+    cd "${pkgname}"
+    DESTDIR="${pkgdir}" cmake --install build/
 }
