@@ -3,7 +3,7 @@
 _pkgauthor=eycorsican
 _pkgname=leaf
 pkgname=${_pkgname}-bin
-pkgver=0.14.0
+pkgver=0.14.2
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A versatile and efficient proxy framework with nice features suitable for various use cases"
@@ -21,9 +21,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}-unknown-linux-musl.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.gz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}-unknown-linux-musl.gz")
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
-            '077ff2957523ea441db9c48f93fb5a24f15310b46a141831881b19c94e776ec0')
-sha256sums_x86_64=('bc265b12aa9f6199b93b7d5630e40121e710707b4869e28d8dc3bc17d8aa79ab')
-sha256sums_aarch64=('7bff5081819de45e762b82bb6b52ff15ac85df468760325047a3430a5e74d8e6')
+            'd5e82324bdc92d852ef39e0609818ad0931b50be1b6c14a3214a71bbb08bc52b')
+sha256sums_x86_64=('8ee97cfb1b90d28af95f38f8834880b02837e404dcab63d2168afc996c2b9772')
+sha256sums_aarch64=('012ea2b6339a794b28baaedea4f544abb61ef6c3366320ef7bf1900265fc69f1')
 
 
 package() {
