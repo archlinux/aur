@@ -8,7 +8,7 @@ pkgdesc="Relational database command-line tools."
 arch=("x86_64" "aarch64" "armv7h")
 url="https://github.com/lipeilin2006/rdbcli"
 license=("MIT")
-depends=("icu" "git")
+depends=("icu")
 makedepends=()
 optdepends=()
 provides=("rdbcli=${pkgver}")
