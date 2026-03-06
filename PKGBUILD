@@ -5,14 +5,14 @@
 
 _pkgname='icann-rdap'
 pkgname="$_pkgname-bin"
-pkgver=0.0.27
+pkgdesc='ICANN implementation of RDAP: the Registry Data Access Protocol (pre-compiled)'
+pkgver=0.0.28
 pkgrel=1
-pkgdesc='ICANN implementation of the Registry Data Access Protocol [RDAP] (pre-compiled)'
-arch=('aarch64' 'x86_64')
 url="https://github.com/icann/$_pkgname"
+arch=('aarch64' 'x86_64')
 _rawurl="https://raw.githubusercontent.com/icann/$_pkgname/refs/heads/main"
 license=('Apache-2.0 OR MIT')  # SPDX-License-Identifier: Apache-2.0 OR MIT
-depends=('gcc-libs' 'glibc')
+depends=('glibc' 'libgcc')
 provides=('rdap' "$_pkgname")
 conflicts=('openrdap-client' "${provides[@]}")
 source_aarch64=(
@@ -60,11 +60,11 @@ package() {
 }
 
 sha256sums_aarch64=(
-  'a0bd388db320bf07e1b56aeee0be4f66c6da06dc43e0487923f03dd70a7eb381'
+  '044da8b1f628be0daf77e54602cfa0fdb15712609d81e61df769c58cc9b97ee8'
   "${_skip[@]}"
 )
 sha256sums_x86_64=(
-  '403d5862f7fb85cf0f67febe46d8595313df214626b12e7efa718c62dc8bc63f'
+  '9826f12ec4c969c44ad0fc3f1f5967a718f095a18157e54e67c51f99f401b949'
   "${_skip[@]}"
 )
 
