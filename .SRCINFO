@@ -1,6 +1,6 @@
 pkgbase = podserv-b-git
 	pkgdesc = a minimalist podcast server (type b) for serving media files on the web
-	pkgver = 0.1.1.r0.g2dee28d
+	pkgver = 0.1.2.r0.g536e372
 	pkgrel = 1
 	url = https://github.com/l5yth/podserv-b
 	install = podserv-b.install
