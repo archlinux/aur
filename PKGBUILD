@@ -1,7 +1,7 @@
 # Maintainer: KiWi42 < pullthisplug dash aur at yahoo dot com >
 
 pkgname=scans2any-git
-pkgver=0.8.0.post1+b208965
+pkgver=1.0.0.post0+a0beaad
 pkgrel=1
 pkgdesc="Convert and merge infrastructure scans to Typst, Markdown, HTML, ..."
 arch=("any")
@@ -9,24 +9,24 @@ url="https://github.com/softScheck/scans2any"
 license=("AGPL-3.0-or-later")
 provides=(scans2any scans2any-git)
 conflicts=(scans2any)
-depends=(python python-defusedxml python-jinja python-libnmap python-pandas
-	python-partial-json-parser python-sortedcontainers python-tabulate
-	python-tqdm python-yaml)
+depends=(python python-jinja python-libnmap python-pandas
+         python-partial-json-parser python-sortedcontainers python-tabulate
+         python-rich python-yaml python-defusedxml python-pydantic)
 makedepends=(python-build python-installer python-wheel uv)
 checkdepends=(uv)
 source=(${pkgname}::git+https://github.com/softScheck/scans2any.git)
 sha256sums=("SKIP")
 
 pkgver() {
-	cd ${pkgname}
-	uv sync --quiet
-	uv run ./data/bump-version.py bump git
+    cd ${pkgname}
+    uv sync --quiet --allow-insecure-host=https://pypi.softscheck.local
+    uv run ./data/bump-version.py compute git
 }
 
 build() {
-	cd ${pkgname}
-	uv run ./data/bump-version.sh git dry-run
-	python -m build --wheel
+    cd ${pkgname}
+    uv run ./data/bump-version.py bump git --dry-run
+    python -m build --wheel
 }
 
 check() {
