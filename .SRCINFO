@@ -1,18 +1,16 @@
 pkgbase = ros2-humble-behaviortree-cpp-v3
 	pkgdesc = Behavior Trees Library in C++. Batteries included.
-	pkgver = 3.8.3
-	pkgrel = 4
+	pkgver = 3.8.7
+	pkgrel = 1
 	url = https://index.ros.org/p/behaviortree_cpp/
 	arch = any
-	makedepends = cmake
-	makedepends = boost
 	depends = ros2-humble
 	depends = boost-libs
 	depends = zeromq
 	depends = ncurses
-	source = https://github.com/BehaviorTree/BehaviorTree.CPP/archive/refs/tags/3.8.3.tar.gz
-	source = https://github.com/BehaviorTree/BehaviorTree.CPP/pull/825.patch
-	sha256sums = 5dd782cc73913b0bfe26adb6fe3d7c10f1e2063a0a994bcba4d4e2ac86470196
-	sha256sums = 137f84951984c5eb0fd2ff9c0abb6ec2ff65b8e0b718d54377d499539bc9c531
+	makedepends = cmake
+	makedepends = boost
+	source = https://github.com/BehaviorTree/BehaviorTree.CPP/archive/refs/tags/3.8.7.tar.gz
+	sha256sums = 8f8d4d98708b05a79c60ce7c968c09e32a539eedf6615489a4e19b2fa1db633d
 
 pkgname = ros2-humble-behaviortree-cpp-v3
