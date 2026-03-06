@@ -3,7 +3,7 @@
 _pkgname="gopher64"
 pkgname="${_pkgname}-bin"
 pkgver=1.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="N64 emulator written in Rust"
 arch=(
   'aarch64'
@@ -14,9 +14,12 @@ license=(
   'GPL-3.0-only'
 )
 depends=(
+  'fontconfig'
+  'freetype2'
   'glibc'
   'hicolor-icon-theme'
-  'wayland'
+  'libgcc'
+  'libstdc++'
 )
 makedepends=(
   'gendesk'
