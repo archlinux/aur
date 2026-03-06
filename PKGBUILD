@@ -4,7 +4,7 @@
 
 _pkgauthor=laktak
 pkgname=chkbit
-pkgver=6.5.0
+pkgver=6.6.0
 pkgrel=1
 pkgdesc="Check your files for data corruption and deduplicate."
 url="https://github.com/${_pkgauthor}/${pkgname}"
@@ -15,7 +15,7 @@ provides=("${pkgname}")
 makedepends=('go' 'help2man')
 options=('!debug')
 source=("https://github.com/$_pkgauthor/$pkgname/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c1ec3df9885c18fbd5746ee64c371c06210908c7f6f33816f2249a09382b46e1')
+sha256sums=('69a5c709d78604ed9d21b5439b2fbae96e21f729d7d36f417d50348dc9fdcc81')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
