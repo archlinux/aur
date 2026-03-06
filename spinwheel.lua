@@ -414,16 +414,16 @@ end
 local function mode_gambling()
     local symbols = {
         { name="7",      glyph="7"       },
-        { name="dollar", glyph="\uf155"  },
-        { name="star",   glyph="\uf005"  },
-        { name="heart",  glyph="\uf004"  },
-        { name="bolt",   glyph="\uf0e7"  },
-        { name="bomb",   glyph="\uf1e2"  },
-        { name="gift",   glyph="\uf06b"  },
+        { name="dollar", glyph="💶"  },
+        { name="star",   glyph="⭐"   },
+        { name="heart",  glyph="❤"   },
+        { name="bolt",   glyph="⚡"   },
+        { name="bomb",   glyph="💢"   },
+        { name="gift",   glyph="🎫"   },
     }
 
     local credits = 10
-    print("SLOT MACHINE  \uf422")
+    print("SLOT MACHINE  🎰")
     print("starting credits: " .. credits)
     print("cost: 1 | pair = +2 | match 3 = +10 | 777 = +50\n")
 
@@ -439,7 +439,7 @@ local function mode_gambling()
             r2 = symbols[math.random(1, #symbols)]
             r3 = symbols[math.random(1, #symbols)]
             clear()
-            print("SLOT MACHINE  \uf422 | credits: " .. credits .. "\n")
+            print("SLOT MACHINE  🎰 | credits: " .. credits .. "\n")
             print(string.rep("=", 37))
             print(string.format("|  %-10s |  %-10s |  %-10s |",
                 r1.glyph, r2.glyph, r3.glyph))
@@ -452,7 +452,7 @@ local function mode_gambling()
         r3 = symbols[math.random(1, #symbols)]
 
         clear()
-        print("SLOT MACHINE  \uf422 | credits: " .. credits .. "\n")
+        print("SLOT MACHINE  🎰 | credits: " .. credits .. "\n")
         print(string.rep("=", 37))
         print(string.format("|  %-10s |  %-10s |  %-10s |",
             r1.glyph, r2.glyph, r3.glyph))
@@ -460,10 +460,10 @@ local function mode_gambling()
 
         if r1.name == "7" and r2.name == "7" and r3.name == "7" then
             credits = credits + 50
-            print("\uf422  7 7 7  \uf422  MEGA JACKPOT! +50 credits!")
+            print("🎰  7 7 7  🎰  MEGA JACKPOT! +50 credits!")
         elseif r1.name == r2.name and r2.name == r3.name then
             credits = credits + 10
-            print("\uf005  JACKPOT! +10 credits!")
+            print("⭐  JACKPOT! +10 credits!")
         elseif r1.name == r2.name or r2.name == r3.name or r1.name == r3.name then
             credits = credits + 2
             print("match! +2 credits.")
