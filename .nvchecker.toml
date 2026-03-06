@@ -1,0 +1,5 @@
+[oken-bin]
+source = "github"
+github = "linkwithjoydeep/oken"
+use_latest_release = true
+prefix = "v"

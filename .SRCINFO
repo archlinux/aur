@@ -1,0 +1,18 @@
+pkgbase = oken-bin
+	pkgdesc = A smarter SSH CLI with better host management and fuzzy host picker. Works standalone or as an optional drop-in replacement for ssh.
+	pkgver = 0.3.8
+	pkgrel = 1
+	url = https://github.com/linkwithjoydeep/oken
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = oken
+	conflicts = oken
+	source_x86_64 = oken-x86_64-0.3.8.txz::https://github.com/linkwithjoydeep/oken/releases/download/v0.3.8/oken-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 4cb6316979f70ffa6741b15d72f99ac1824b34a0fd71b732092559d1978c9236
+	source_aarch64 = oken-aarch64-0.3.8.txz::https://github.com/linkwithjoydeep/oken/releases/download/v0.3.8/oken-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 71d5e6a5310cfabe71b83444603d7e02d0639c0b26f328907dc49d4f52a842d3
+
+pkgname = oken-bin
