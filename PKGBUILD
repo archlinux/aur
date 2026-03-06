@@ -5,12 +5,12 @@ _crate="refinery_cli"
 _cratever="0.9.0"
 pkgname="refinery_cli"
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides the CLI for the Refinery crate'
 url='https://crates.io/crates/refinery_cli'
 license=('MIT')
 
-depends=('gcc-libs' 'openssl' 'sqlite')
+depends=('libgcc' 'openssl' 'sqlite')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/refinery_cli/0.9.0/download")
