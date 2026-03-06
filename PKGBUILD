@@ -3,7 +3,7 @@
 
 _pkgname=mmh3
 pkgname="python-${_pkgname}"
-pkgver=5.2.0
+pkgver=5.2.1
 pkgrel=1
 pkgdesc="Python extension for MurmurHash (MurmurHash3), a set of fast and robust hash functions."
 arch=("x86_64" "aarch64" "i686")
@@ -12,7 +12,7 @@ license=('MIT')
 depends=("python")
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${_pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('ced50db669612487fe095656dd8c282e00e5bc6e3624012e0c76105bc206539055de373c32aa2e97b78a242f924e0f795f3745ed17b4921b08753071b9721ebc')
+b2sums=('105fcb0bb1a320ac84366348d60375e089e369d526eae8202a209a349d27d171737f15adafee7d7a8c3728101d9f29323ff4e908f332a2533832021749cd521b')
 
 build() {
     cd "${_pkgname}-${pkgver}"
