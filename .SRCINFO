@@ -1,6 +1,6 @@
 pkgbase = aeroshell-kwin-components-x11-git
 	pkgdesc = X11 KWin effects for AeroShell-based desktops
-	pkgver = 6.6.1_29.r76bacb9
+	pkgver = 6.6.2_33.r9d6c567
 	pkgrel = 1
 	url = https://gitgud.io/aeroshell/aeroshell-kwin-components
 	arch = x86_64
