@@ -1,6 +1,6 @@
 # Maintainer: Jeff Hagadorn <noreply@github.com>
 pkgname=z13ctl-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='CLI and daemon for ASUS ROG Flow Z13 hardware control'
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflicts=('z13ctl')
 depends=('glibc')
 install=z13ctl-bin.install
 source=("https://github.com/dahui/z13ctl/releases/download/v${pkgver}/z13ctl_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('2f52d1bc923af7ee7cd3ff0db6204859fd51c171a0793d90fbb8051f9db5b4bb')
+sha256sums=('5954f55a368762d58296d505b845de40777ff660641d2d86ab0c0bdafafccbb8')
 
 package() {
     # Fix hardcoded path from v1.0.0 tarball (no-op for future releases)
