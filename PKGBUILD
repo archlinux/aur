@@ -1,7 +1,7 @@
 # Maintainer: Enbeon <actuallyenbeon at gmail dot com>
 pkgname=megadot
 pkgver=4.5.1_m.8
-pkgrel=1
+pkgrel=2
 pkgdesc="MegaCrit fork of Godot Engine"
 arch=('any')
 url="https://megadot.megacrit.com/"
@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=('600545c11c08a2de0be7d6ac29a93ec102af63fd8382de89283e4a4a76dd53a4'
             '4301b5e7bf07816ae7c39bba9974085638f09789601926b1083b52140acc84b0'
-            'e4915c08a41132a751f9d6227601a5374c1b0d637f05f8bd5be699de5d5fb52a'
+            'bee26e95a693369df0fe8c6e942063fec108bb29eed29c7351902ed8cea9ce28'
             'cc881332ee52deb4f4e9ae13a523fc7df06a0c2fd31bbb17fafa5931f2ab72d6')
 
 prepare() {

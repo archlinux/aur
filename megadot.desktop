@@ -1,7 +1,7 @@
 [Desktop Entry]
 Comment=MegaCrit fork of Godot Engine
 Terminal=false
-Name=Megadot
+Name=MegaDot
 Exec=megadot
 Type=Application
 Categories=Development;Utility;
