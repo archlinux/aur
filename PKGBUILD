@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=PoissonBinomial
-_pkgver=1.2.7
+_pkgver=1.2.8
 pkgname=r-${_pkgname,,}
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc='Efficient Computation of Ordinary and Generalized Poisson Binomial Distributions'
 arch=('x86_64')
@@ -21,7 +21,7 @@ optdepends=(
   r-rmarkdown
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('60cc429ec7180003f7a961015fa8392ac22785d1bbc3c3d31d3187367585616f')
+sha256sums=('76dc2b362fed728da1c4da34ba20dfb484d78c989a6263226c73d05aa944d048')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
