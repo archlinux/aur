@@ -1,0 +1,14 @@
+pkgbase = karnmap
+	pkgdesc = A CLI Karnaugh Map simplifier supporting 2-4 variables with don't care conditions
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ido55/karnmap
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	depends = gcc-libs
+	source = karnmap-1.0.tar.gz::https://github.com/ido55/karnmap/archive/refs/tags/v1.0.tar.gz
+	sha256sums = afa06f391e91892bce9e54a4fd5472f58d8f0adb1fd63643c9cdd8f705194c86
+
+pkgname = karnmap
