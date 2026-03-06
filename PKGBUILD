@@ -5,6 +5,13 @@
 #                                   + rosec-provider-gnome-keyring-git
 #
 # Builds rosec and all WASM providers from source (latest git HEAD).
+# rosec is a multi-provider Secret Service daemon: local encrypted vaults,
+# Bitwarden (PM and SM), GNOME Keyring, and custom WASM plugins.  It includes
+# an SSH agent with FUSE-mounted key files and PAM auto-unlock support.
+#
+# The release workflow renders this file by substituting 0.0.12.
+# At build time, pkgver() overrides the static version with the actual
+# git-derived version.
 
 pkgbase=rosec-git
 pkgname=(
@@ -13,9 +20,9 @@ pkgname=(
     'rosec-provider-bitwarden-sm-git'
     'rosec-provider-gnome-keyring-git'
 )
-pkgver=r0.unknown
+pkgver=0.0.12
 pkgrel=1
-pkgdesc="Read-only Secret Service daemon with Bitwarden backend (git)"
+pkgdesc="Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock (git)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jmylchreest/rosec"
 license=('MIT')
@@ -114,12 +121,14 @@ check() {
 }
 
 package_rosec-git() {
-    pkgdesc="Read-only Secret Service daemon with Bitwarden backend (git)"
+    pkgdesc="Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock (git)"
     depends=('dbus' 'pam')
     optdepends=(
         'rosec-provider-bitwarden-pm-git: Bitwarden Password Manager provider'
         'rosec-provider-bitwarden-sm-git: Bitwarden Secrets Manager provider'
         'rosec-provider-gnome-keyring-git: GNOME Keyring read-only provider'
+        'fuse3: SSH key FUSE filesystem at $XDG_RUNTIME_DIR/rosec/ssh'
+        'openssh: SSH agent support'
         'libnotify: desktop notifications on lock/unlock'
     )
     provides=('rosec' 'org.freedesktop.secrets')
@@ -157,7 +166,7 @@ package_rosec-git() {
 }
 
 package_rosec-provider-bitwarden-pm-git() {
-    pkgdesc="Bitwarden Password Manager provider for rosec (git)"
+    pkgdesc="Bitwarden Password Manager provider for rosec (sync, SSH keys) (git)"
     arch=('any')
     depends=('rosec-git')
     provides=('rosec-provider-bitwarden-pm')
@@ -173,7 +182,7 @@ package_rosec-provider-bitwarden-pm-git() {
 }
 
 package_rosec-provider-bitwarden-sm-git() {
-    pkgdesc="Bitwarden Secrets Manager provider for rosec (git)"
+    pkgdesc="Bitwarden Secrets Manager provider for rosec (sync) (git)"
     arch=('any')
     depends=('rosec-git')
     provides=('rosec-provider-bitwarden-sm')
