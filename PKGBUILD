@@ -5,7 +5,7 @@ _pkgname=dsw
 pkgname=${_pkgname}-bin
 pkgdesc="A simple, lightweight local alternative to TriggerCMD"
 
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,9 +26,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
 sha256sums=('859eb190b73b79fb7ff00b19bec989abe222efe8127df15c5bf857fdbbd61abe'
-            '5a742f7405e78a80fe5f06ed57138d8154856aecaeecc71f8f1d5345352d8101')
-sha256sums_x86_64=('15bbd09e85a954cbeddd112810890c3cd7fcabb1bca1e30641c71330dd1e40f2')
-sha256sums_aarch64=('df6419260c0fff840f3dcd314bbb3aff378fcbbfc7f32e3fbb6b90444b8e4967')
+            'c4a812c91c75bf676001345cae15030729ca69d6469b2e8d49672e78c60b60ee')
+sha256sums_x86_64=('a9a98f9198676a17027cbeeb5e8e5cd207770b76b043feebe856f610627429c9')
+sha256sums_aarch64=('2f92ce79af5b2b3a0510dd6a2ba18230066780a574307d586edc69f2e13a6285')
 
 
 package() {
