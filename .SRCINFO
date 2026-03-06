@@ -1,6 +1,6 @@
 pkgbase = sc0710-dkms-git
-	pkgdesc = DKMS driver for Elgato 4K60 Pro MK.2 (sc0710) capture card
-	pkgver = 2026.01.31.1.r66.7973216
+	pkgdesc = DKMS driver for Elgato 4K60 Pro MK.2 & 4K Pro (sc0710) capture cards
+	pkgver = 2026.03.05.1.r66.7973216
 	pkgrel = 1
 	url = https://github.com/Nakildias/sc0710
 	install = sc0710.install
@@ -11,6 +11,8 @@ pkgbase = sc0710-dkms-git
 	provides = sc0710-dkms
 	provides = elgato-4k60pro-mk2-driver
 	provides = elgato-4k60pro-mk2-dkms
+	provides = elgato-4kpro-driver
+	provides = elgato-4kpro-dkms
 	conflicts = sc0710-dkms
 	conflicts = sc0710
 	source = git+https://github.com/Nakildias/sc0710.git

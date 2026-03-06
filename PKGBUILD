@@ -1,15 +1,15 @@
 # Maintainer: Nakildias <nakildiaspro@gmail.com>
 pkgname=sc0710-dkms-git
 _pkgname=sc0710
-pkgver=2026.01.31.1.r66.7973216
+pkgver=2026.03.05.1.r66.7973216
 pkgrel=1
-pkgdesc="DKMS driver for Elgato 4K60 Pro MK.2 (sc0710) capture card"
+pkgdesc="DKMS driver for Elgato 4K60 Pro MK.2 & 4K Pro (sc0710) capture cards"
 arch=('x86_64')
 url="https://github.com/Nakildias/sc0710"
 license=('GPL-2.0-or-later')
 depends=('dkms')
 makedepends=('git')
-provides=("${_pkgname}-dkms" "elgato-4k60pro-mk2-driver" "elgato-4k60pro-mk2-dkms")
+provides=("${_pkgname}-dkms" "elgato-4k60pro-mk2-driver" "elgato-4k60pro-mk2-dkms" "elgato-4kpro-driver" "elgato-4kpro-dkms")
 conflicts=("${_pkgname}-dkms" "${_pkgname}")
 install=${_pkgname}.install
 source=("git+https://github.com/Nakildias/sc0710.git")
