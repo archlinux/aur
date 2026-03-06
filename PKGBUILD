@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=N2R
-_pkgver=1.0.3
+_pkgver=1.0.4
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -20,8 +20,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('b3d43a66bc38311a9fd470114306967e')
-b2sums=('3776ebae6cf6493842cd17d6dec7e43c959df65ca4e5e421a0c08f88958ec770a5f18b2fbaa3d12cb624dff241281b4aca2826c4b87acfb1f7b5cd673c8d7df0')
+md5sums=('1e7b2e272c683bd7f2cc7efbc50f72ac')
+b2sums=('9337c446bd1ebda6d944dd7ce79e9877594e7557b6796b22169becd9c46d1ddc09448dbaccebf5849c577ab066846a44120e74b3d8e140684f74183e75fafe8b')
 
 build() {
   mkdir build
