@@ -1,7 +1,7 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 pkgname=gram-editor-bin
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A code editor for humanoid apes and grumpy toads"
 
 provides=(gram-editor)
@@ -30,15 +30,12 @@ sha256sums=('SKIP')
 package() {
 	cd "gram.app"
 
-	mkdir -p "${pkgdir}/usr" "${pkgdir}/usr/share" "${pkgdir}/usr/share/licenses" "${pkgdir}/usr/share/licenses/gram-editor"
-
 	cp -r . "${pkgdir}/usr"
 	
-	mv "${pkgdir}/usr/licenses.md" "${pkgdir}/usr/share/licenses/gram-editor/licenses.md"
-
 	rm -rf "${pkgdir}/usr/lib"
 	
-	mkdir -p "${pkgdir}/usr/lib" "${pkgdir}/usr/lib/gram"
+	mkdir -p "${pkgdir}/usr/share" "${pkgdir}/usr/share/licenses" "${pkgdir}/usr/share/licenses/gram-editor" "${pkgdir}/usr/lib" "${pkgdir}/usr/lib/gram"
+	mv "${pkgdir}/usr/licenses.md" "${pkgdir}/usr/share/licenses/gram-editor/licenses.md"
 	
 	mv "${pkgdir}/usr/libexec/gram-editor" "${pkgdir}/usr/lib/gram/gram-editor"
 	rm -rf "${pkgdir}/usr/libexec"
