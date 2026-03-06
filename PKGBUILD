@@ -1,6 +1,6 @@
 pkgname=mtc
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ compiler for mt-lang"
 arch=('x86_64')
 url="https://github.com/mystyy01/mt-lang-compiler"
@@ -23,5 +23,5 @@ package() {
   install -d "$pkgdir/usr/lib/mtc_stdlib"
   cp -a stdlib/. "$pkgdir/usr/lib/mtc_stdlib/"
 
-  install -Dm644 "README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 "CHANGELOG.md" "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }
