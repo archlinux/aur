@@ -14,7 +14,9 @@ pkgbase = drop-oss-app
 	depends = gcc-libs
 	depends = webkit2gtk-4.1
 	depends = umu-launcher
+	depends = libappindicator
+	depends = libayatana-appindicator
 	source = git+https://github.com/Drop-OSS/drop-app.git#commit=c9ceb3f50ea061f0023f87211775e8380a181cbc
-	sha256sums = 9b61a8bd255253e9cf8e7e3955819347853f125aa22a18ffbd690d98ea91b8e8
+	sha256sums = 0b67f5f5e59f931ee30bd67c78c91f43df6bd4a828610d4dcc2f3a8fc42bcf1a
 
 pkgname = drop-oss-app

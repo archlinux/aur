@@ -13,10 +13,10 @@ pkgdesc="Desktop client for the Drop OSS project."
 arch=(any)
 url="https://droposs.org/"
 license=('AGPL-3.0-only')
-depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'umu-launcher')
+depends=('glib2' 'glibc' 'gcc-libs' 'webkit2gtk-4.1' 'umu-launcher' 'libappindicator' 'libayatana-appindicator')
 source=("git+https://github.com/Drop-OSS/drop-app.git#commit=c9ceb3f50ea061f0023f87211775e8380a181cbc")
 # source=('https://github.com/Drop-OSS/drop-app/archive/refs/tags/v0.3.3.tar.gz')
-makedepends=('yarn' 'cargo')
+makedepends=('pnpm' 'cargo' 'gcc' 'pkgconf')
 sha256sums=('0b67f5f5e59f931ee30bd67c78c91f43df6bd4a828610d4dcc2f3a8fc42bcf1a')
 
 _desktop="
