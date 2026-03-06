@@ -1,4 +1,4 @@
-pkgbase = datomic
+pkgbase = datomic-bin
 	pkgdesc = A database of flexible, time-based facts, supporting queries and joins, with elastic scalability and ACID transactions.
 	pkgver = 1.0.7394
 	pkgrel = 1
@@ -7,9 +7,12 @@ pkgbase = datomic
 	arch = any
 	license = APACHE
 	depends = java-environment
+	provides = datomic
+	conflicts = datomic
+	replaces = datomic
 	source = datomic-1.0.7394.zip::https://datomic-pro-downloads.s3.amazonaws.com/1.0.7394/datomic-pro-1.0.7394.zip
 	source = transactor.properties
 	sha256sums = 8e3a6334dfc728c1c431dccc537dc88a9d2baf70f29bad5438df9d7c8c7146ae
 	sha256sums = e622f80994c4c21e52d59f8724d06fc6672c25479224619d3cc172df32fe31de
 
-pkgname = datomic
+pkgname = datomic-bin
