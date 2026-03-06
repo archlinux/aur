@@ -3,9 +3,9 @@
 
 pkgname=intel-sgx-sdk-bin
 pkgdesc='Intel® Software Guard Extensions SDK for Linux* OS'
-pkgver=2.27
+pkgver=2.28
 _pkgver="${pkgver}.100.1"
-pkgrel=2
+pkgrel=1
 url='https://github.com/intel/linux-sgx'
 arch=('x86_64')
 license=('BSD-3-Clause AND LicenseRef-IntelSgx-ThirdParty') # https://github.com/intel/linux-sgx?tab=License-1-ov-file
@@ -16,9 +16,10 @@ optdepends=(
 )
 provides=("intel-sgx-sdk=${pkgver}")
 conflicts=('intel-sgx-sdk')
+options=(!strip !debug) # debug symbols already included from upstream, better not to strip them
 source=("https://download.01.org/intel-sgx/sgx-linux/${pkgver}/distro/ubuntu24.04-server/sgx_linux_x64_sdk_${_pkgver}.bin"
         'intel-sgx-sdk-skip-tmp.patch')
-b2sums=('e4bd1e79e142cf9a136dcdf7f6b0efff879d28094e3afc93e24ab9ebb2546d74378d6d0ccf0562eec495ae0b40f7bdb63a51e1945e5ca98b148411fff37cd402'
+b2sums=('efcffe898d3241a7c01356ed9e6bb4d9307cce73a5947f197501217c9fd05644b2808da58b43e931311dcdbbfd4d1b4ac75e4641f7ddd76709d378aeac7187e7'
         '172c8158deae15e54b6a5de6c891b287403def61841a9b877105ddf04c3358ac187b98d4e89f9eea06fc36c8b9afa2ea12b41c17c86754559f23dd1e403924dd')
 
 ## Here you can change the installation directory.
