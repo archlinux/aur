@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sokuji-bin
 _pkgname=Sokuji
-pkgver=0.15.0
+pkgver=0.15.1
 _electronversion=40
 pkgrel=1
 pkgdesc="Provide real-time simultaneous interpretation using OpenAI's Realtime API.(Prebuilt version.Use system-wide electron)"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('c52a65b03d5e4216ce095922e0ca260d96bd62c59c4f5e6ef3358d580d567711'
+sha256sums=('6e11e38e4457c6c744aac9fb385311b339b49bffa7faf40ed47636617c454e56'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -34,7 +34,9 @@ prepare() {
     bsdtar -xf "${srcdir}/data."*
     _get_electron_version
     sed -i "s/Audio/AudioVideo/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
-    rm -rf "${srcdir}/usr/lib/${pkgname%-bin}/resources/resources/drivers/SokujiVirtualAudio.driver/Contents/MacOS"
+    rm -rf \
+        "${srcdir}/usr/lib/${pkgname%-bin}/resources/resources/drivers/SokujiVirtualAudio.driver/Contents/MacOS" \
+        "${srcdir}/usr/lib/${pkgname%-bin}/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v6/"{darwin,win32,linux/arm64}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
