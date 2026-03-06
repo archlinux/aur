@@ -1,6 +1,6 @@
 pkgbase = tilt-bin
 	pkgdesc = Local Kubernetes development with no stress
-	pkgver = 0.36.3
+	pkgver = 0.37.0
 	pkgrel = 1
 	url = https://tilt.dev
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = tilt-bin
 	depends = glibc
 	provides = tilt
 	conflicts = tilt
-	source_x86_64 = https://github.com/tilt-dev/tilt/releases/download/v0.36.3/tilt.0.36.3.linux.x86_64.tar.gz
-	sha256sums_x86_64 = 23a71a6625fe1a801bf5f5a49d985aaf6da79606dcd5e6eaee5defbef90c8fef
-	source_aarch64 = https://github.com/tilt-dev/tilt/releases/download/v0.36.3/tilt.0.36.3.linux.arm64.tar.gz
-	sha256sums_aarch64 = eda52f5114ddaaf33996c39eefb980813d58bb7843c58808b206d29ba5c35df3
-	source_armv7h = https://github.com/tilt-dev/tilt/releases/download/v0.36.3/tilt.0.36.3.linux.arm.tar.gz
-	sha256sums_armv7h = 7f1189c66091757db9d6a4cdfdc778abf03b76b802753d5e785cc111602590d5
+	source_x86_64 = https://github.com/tilt-dev/tilt/releases/download/v0.37.0/tilt.0.37.0.linux.x86_64.tar.gz
+	sha256sums_x86_64 = c2c7d3649233f01bc5d230b66b8ccd332401f348dc22b863fcf7244da6970ff1
+	source_aarch64 = https://github.com/tilt-dev/tilt/releases/download/v0.37.0/tilt.0.37.0.linux.arm64.tar.gz
+	sha256sums_aarch64 = 84457137539d8e4be6e90e9afecf8ef692ad3f8c19e9bf3355f3fbf4f8dce55f
+	source_armv7h = https://github.com/tilt-dev/tilt/releases/download/v0.37.0/tilt.0.37.0.linux.arm.tar.gz
+	sha256sums_armv7h = c56dfb91dacb1a62a6c61648014784418e420f564c7ca59d6d5682e15ba85a5a
 
 pkgname = tilt-bin
