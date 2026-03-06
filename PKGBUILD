@@ -2,7 +2,7 @@
 # Thanks to https://aur.archlinux.org/packages/factorio/ for authentication code
 
 pkgname=fmodstudio
-pkgver=2.02.24
+pkgver=2.03.12
 pkgrel=1
 pkgdesc="Desktop application for adaptive audio content creation"
 arch=('x86_64')
