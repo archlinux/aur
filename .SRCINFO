@@ -1,0 +1,17 @@
+pkgbase = texlive-fontawesome5
+	pkgdesc = Font Awesome 5 with LaTeX support (CTAN fontawesome5 package)
+	pkgver = 5.15.4
+	pkgrel = 1
+	url = https://ctan.org/pkg/fontawesome5
+	install = texlive-fontawesome5.install
+	arch = any
+	license = LPPL-1.3c
+	license = OFL-1.1
+	depends = texlive-basic
+	optdepends = texlive-xetex: XeLaTeX/LuaLaTeX support for Font Awesome 5 Pro
+	provides = texlive-fontawesome5
+	conflicts = texlive-fontsextra
+	source = https://mirrors.ctan.org/fonts/fontawesome5.zip
+	sha256sums = 83c86c8a92d80e0b2c84af78a055d10798f8294f63b397ba8225351b9eaaa500
+
+pkgname = texlive-fontawesome5
