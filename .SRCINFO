@@ -10,7 +10,7 @@ pkgbase = brawltag
 	makedepends = glib2
 	depends = libadwaita
 	depends = gtk4
-	source = git+https://github.com/Moony727/BrawlTag.git
+	source = brawltag::git+https://github.com/Moony727/BrawlTag.git
 	sha256sums = SKIP
 
 pkgname = brawltag

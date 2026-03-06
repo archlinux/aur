@@ -8,7 +8,7 @@ url="https://github.com/Moony727/BrawlTag"
 license=('GPL3')
 depends=('libadwaita' 'gtk4')
 makedepends=('cmake' 'gcc' 'glib2')
-source=("git+https://github.com/Moony727/BrawlTag.git")
+source=("${pkgname}::git+https://github.com/Moony727/BrawlTag.git")
 sha256sums=('SKIP')
 
 build() {
