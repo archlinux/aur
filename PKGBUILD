@@ -2,7 +2,7 @@
 
 pkgbase=openarm-can
 pkgname=(openarm-can python-openarm-can)
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc='A C++ library for CAN communication with OpenArm robotic hardware, supporting Damiao motors over CAN/CAN-FD interfaces.'
 arch=($CARCH)
@@ -35,7 +35,7 @@ makedepends=(
 checkdepends=()
 optdepends=()
 source=("${pkgbase}::git+${url}.git#tag=${pkgver}")
-sha256sums=('4c87689f99b9deb2ad55db464ef8c44c688923e267c715b1944f738d343cf43c')
+sha256sums=('48ba51cac67e61ec62ba409fd86595aa844881bb1b47703fc97d506a9ab5ac60')
 
 prepare() {
   git -C "${srcdir}/${pkgbase}" clean -dfx

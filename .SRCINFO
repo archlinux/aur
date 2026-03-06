@@ -1,6 +1,6 @@
 pkgbase = openarm-can
 	pkgdesc = A C++ library for CAN communication with OpenArm robotic hardware, supporting Damiao motors over CAN/CAN-FD interfaces.
-	pkgver = 1.2.7
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://github.com/enactic/openarm_can
 	arch = x86_64
@@ -23,8 +23,8 @@ pkgbase = openarm-can
 	depends = python
 	depends = python-can
 	depends = python-numpy
-	source = openarm-can::git+https://github.com/enactic/openarm_can.git#tag=1.2.7
-	sha256sums = 4c87689f99b9deb2ad55db464ef8c44c688923e267c715b1944f738d343cf43c
+	source = openarm-can::git+https://github.com/enactic/openarm_can.git#tag=1.2.8
+	sha256sums = 48ba51cac67e61ec62ba409fd86595aa844881bb1b47703fc97d506a9ab5ac60
 
 pkgname = openarm-can
 	arch = x86_64
