@@ -5,12 +5,12 @@ _crate="cargo-hf2"
 _cratever="0.3.3"
 pkgname="cargo-hf2"
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Cargo Subcommand for Microsoft HID Flashing Library for UF2 Bootloaders'
 url='https://crates.io/crates/cargo-hf2'
 license=('Apache-2.0' 'MIT')
 
-depends=('gcc-libs' 'hidapi' 'libusb')
+depends=('libgcc' 'hidapi' 'libusb')
 makedepends=('cargo' 'cargo-auditable')
 optdepends=('adafruit-boards-udev: udev rule for adafruit boards')
 
