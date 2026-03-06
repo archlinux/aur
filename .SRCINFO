@@ -1,6 +1,6 @@
 pkgbase = lektra-git
 	pkgdesc = High-performance PDF reader that prioritizes screen space and control
-	pkgver = 0.6.5.r31.g72655d1
+	pkgver = 0.6.5.r59.g28de7b0
 	pkgrel = 1
 	url = https://codeberg.org/lektra/lektra
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = lektra-git
 	makedepends = cmake
 	makedepends = pkgconf
 	depends = qt6-base
-	depends = libmupdf
 	depends = libsynctex
 	depends = djvulibre
 	provides = lektra
