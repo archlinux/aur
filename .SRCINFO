@@ -1,7 +1,7 @@
 pkgbase = joytoggle
 	pkgdesc = Enable or disable joystick and sim controller devices without unplugging
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Mirkko/joytoggle
 	install = joytoggle.install
 	arch = any

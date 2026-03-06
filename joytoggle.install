@@ -1,5 +1,7 @@
 post_install() {
     systemctl daemon-reload
+    # Clear any stale state so a fresh install never disables devices
+    rm -f /var/lib/joytoggle/state.json
     systemctl enable --now joytoggle.service
     chown $(logname):$(logname) /var/lib/joytoggle 2>/dev/null || true
     echo ""
@@ -8,8 +10,9 @@ post_install() {
 }
 
 post_upgrade() {
+    # Only reload the unit file — do not restart the service mid-session
+    # as it would re-apply saved state and could disable live devices
     systemctl daemon-reload
-    systemctl restart joytoggle.service
 }
 
 post_remove() {

@@ -1,7 +1,7 @@
 # Maintainer: Mikodzi <mirek@utumno.cc>
 pkgname=joytoggle
 pkgver=1.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Enable or disable joystick and sim controller devices without unplugging"
 arch=('any')
 url="https://github.com/Mirkko/joytoggle"
