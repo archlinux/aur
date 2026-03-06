@@ -1,7 +1,7 @@
 # Maintainer: AtefR
 
 pkgname=fish-session
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc='UI-first session manager for Fish shell with persistent PTY sessions'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('LicenseRef-Unlicensed')
 depends=('fish')
 makedepends=('cargo' 'rust')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AtefR/fish-session/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5275788c6619826c32113bd6389c67007f286d967fa30528b8e502c882f03a9c')
+sha256sums=('563bc327b2767fbf4a0f5853fce1cf4b93203672ed4a7a2c0eb370a81f92dd1b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
