@@ -1,7 +1,7 @@
 pkgbase = sourcegit
 	pkgdesc = GUI client for GIT users
-	pkgver = 2026.04
-	pkgrel = 2
+	pkgver = 2026.05
+	pkgrel = 1
 	url = https://github.com/sourcegit-scm/sourcegit
 	arch = x86_64
 	license = MIT
@@ -11,9 +11,9 @@ pkgbase = sourcegit
 	depends = git
 	depends = xdg-utils
 	optdepends = git-credential-manager: third-party authentication support
-	source = git+https://github.com/sourcegit-scm/sourcegit.git#tag=v2026.04
+	source = git+https://github.com/sourcegit-scm/sourcegit.git#tag=v2026.05
 	source = git+https://github.com/love-linger/AvaloniaEdit.git
-	sha256sums = 31de98179229e88561e5fd0bf9e0588a7b21ecb20f58b5298b14de25cb5d9ace
+	sha256sums = edb1f10fccd43955c48f6b211005aa35f3367f25a48e42172227223f49c2bd75
 	sha256sums = SKIP
 
 pkgname = sourcegit
