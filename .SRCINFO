@@ -1,0 +1,16 @@
+pkgbase = brawltag
+	pkgdesc = Native C++/Libadwaita tool for Brawl Stars Tag/ID conversion
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Moony727/BrawlTag
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = glib2
+	depends = libadwaita
+	depends = gtk4
+	source = git+https://github.com/Moony727/BrawlTag.git
+	sha256sums = SKIP
+
+pkgname = brawltag
