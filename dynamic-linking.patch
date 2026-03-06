@@ -1,0 +1,9 @@
+--- Cargo.toml.bak	2026-03-06 13:50:30.677244015 +0100
++++ Cargo.toml	2026-03-06 13:50:40.807472888 +0100
+@@ -37,5 +37,6 @@
+ [dependencies.libbpf-rs]
+ version = "0.24"
++default-features = false
+
+ [dependencies.libc]
+ version = "0.2"

@@ -1,0 +1,19 @@
+pkgbase = compendium
+	pkgdesc = A user-friendly strace for x86 Linux with HTML reports
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://crates.io/crates/compendium
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = cargo-auditable
+	depends = libgcc
+	depends = libbpf
+	source = compendium-0.2.0.tar.gz::https://static.crates.io/crates/compendium/0.2.0/download
+	source = dynamic-linking.patch
+	sha512sums = 6d63001d889e3d42e095f45577b22e581548cf71cdc42ac90f755436c4a39b5da9cf222f8220dee3aeae08cdaebd9babeab14f44315d91a2a6fa4642e9f52dcc
+	sha512sums = 5554bf10e40e8a9698c8042ce37fc474431df07c78019f2ce2aa9e9ea04a0f48dc63120a896a7d768607286815f6a57732656ee5b6e5275dddd48e112790bf7a
+
+pkgname = compendium
