@@ -2,7 +2,7 @@
 # Maintainer: Sebastian Stepper <sebastian-stepper@gmx.de>
 
 pkgname='bab-bin'
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc='Task runner for defining project commands in YAML'
 url='https://github.com/bab-sh/bab'
@@ -13,13 +13,13 @@ conflicts=('bab')
 optdepends=('bash-completion: for bash completions' 'zsh: for zsh completions' 'fish: for fish completions')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/bab-sh/bab/releases/download/v${pkgver}/bab_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('cbfd847c95fd3469e3bc909eeca21d9467f5737fe843cb62af62fd80076e2ca5')
+sha256sums_aarch64=('190387d5d92091e54e954df8fa72742398be7b238658ed7f5df9949f26aac0c6')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/bab-sh/bab/releases/download/v${pkgver}/bab_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('8fb9e69be6ef23439d6dce842f25c5bbe7aaa56639f41f1c8f98780d37342a77')
+sha256sums_armv7h=('e34501d7b66719ca7c22cb09e761e3d7086b20c89224de77c7317d67781408ca')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/bab-sh/bab/releases/download/v${pkgver}/bab_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('54f53cb21c3ae0f8d73091de2bb983ba7930ab7566292f69b57cc9a3f485bbe7')
+sha256sums_x86_64=('5623fcb91875dd4ff3428109babce5880be1c49698e59f741add768161908bf0')
 
 package() {
   # Binary
