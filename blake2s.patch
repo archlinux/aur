@@ -1,0 +1,340 @@
+diff -rupN a/cookie.c b/cookie.c
+--- a/cookie.c	2025-10-19 15:46:38.000000000 +0200
++++ b/cookie.c	2025-10-27 14:00:12.238299861 +0100
+@@ -33,7 +33,7 @@ static void precompute_key(u8 key[NOISE_
+ 			   const u8 pubkey[NOISE_PUBLIC_KEY_LEN],
+ 			   const u8 label[COOKIE_KEY_LABEL_LEN])
+ {
+-	struct blake2s_state blake;
++	struct blake2s_ctx blake;
+ 
+ 	blake2s_init(&blake, NOISE_SYMMETRIC_KEY_LEN);
+ 	blake2s_update(&blake, label, COOKIE_KEY_LABEL_LEN);
+@@ -77,7 +77,7 @@ static void compute_mac1(u8 mac1[COOKIE_
+ {
+ 	len = len - sizeof(struct message_macs) +
+ 	      offsetof(struct message_macs, mac1);
+-	blake2s(mac1, message, key, COOKIE_LEN, len, NOISE_SYMMETRIC_KEY_LEN);
++	blake2s(key, NOISE_SYMMETRIC_KEY_LEN, message, len, mac1, COOKIE_LEN);
+ }
+ 
+ static void compute_mac2(u8 mac2[COOKIE_LEN], const void *message, size_t len,
+@@ -85,13 +85,13 @@ static void compute_mac2(u8 mac2[COOKIE_
+ {
+ 	len = len - sizeof(struct message_macs) +
+ 	      offsetof(struct message_macs, mac2);
+-	blake2s(mac2, message, cookie, COOKIE_LEN, len, COOKIE_LEN);
++	blake2s(cookie, COOKIE_LEN, message, len, mac2, COOKIE_LEN);
+ }
+ 
+ static void make_cookie(u8 cookie[COOKIE_LEN], struct sk_buff *skb,
+ 			struct cookie_checker *checker)
+ {
+-	struct blake2s_state state;
++	struct blake2s_ctx blake;
+ 
+ 	if (wg_birthdate_has_expired(checker->secret_birthdate,
+ 				     COOKIE_SECRET_MAX_AGE)) {
+@@ -103,15 +103,15 @@ static void make_cookie(u8 cookie[COOKIE
+ 
+ 	down_read(&checker->secret_lock);
+ 
+-	blake2s_init_key(&state, COOKIE_LEN, checker->secret, NOISE_HASH_LEN);
++	blake2s_init_key(&blake, COOKIE_LEN, checker->secret, NOISE_HASH_LEN);
+ 	if (skb->protocol == htons(ETH_P_IP))
+-		blake2s_update(&state, (u8 *)&ip_hdr(skb)->saddr,
++		blake2s_update(&blake, (u8 *)&ip_hdr(skb)->saddr,
+ 			       sizeof(struct in_addr));
+ 	else if (skb->protocol == htons(ETH_P_IPV6))
+-		blake2s_update(&state, (u8 *)&ipv6_hdr(skb)->saddr,
++		blake2s_update(&blake, (u8 *)&ipv6_hdr(skb)->saddr,
+ 			       sizeof(struct in6_addr));
+-	blake2s_update(&state, (u8 *)&udp_hdr(skb)->source, sizeof(__be16));
+-	blake2s_final(&state, cookie);
++	blake2s_update(&blake, (u8 *)&udp_hdr(skb)->source, sizeof(__be16));
++	blake2s_final(&blake, cookie);
+ 
+ 	up_read(&checker->secret_lock);
+ }
+diff -rupN a/crypto/include/zinc/blake2s.h b/crypto/include/zinc/blake2s.h
+--- a/crypto/include/zinc/blake2s.h	2025-10-19 15:46:38.000000000 +0200
++++ b/crypto/include/zinc/blake2s.h	2025-10-27 14:25:02.578616935 +0100
+@@ -16,7 +16,7 @@ enum blake2s_lengths {
+ 	BLAKE2S_KEY_SIZE = 32
+ };
+ 
+-struct blake2s_state {
++struct blake2s_ctx {
+ 	u32 h[8];
+ 	u32 t[2];
+ 	u32 f[2];
+@@ -25,29 +25,29 @@ struct blake2s_state {
+ 	unsigned int outlen;
+ };
+ 
+-void blake2s_init(struct blake2s_state *state, const size_t outlen);
+-void blake2s_init_key(struct blake2s_state *state, const size_t outlen,
+-		      const void *key, const size_t keylen);
+-void blake2s_update(struct blake2s_state *state, const u8 *in, size_t inlen);
+-void blake2s_final(struct blake2s_state *state, u8 *out);
+-
+-static inline void blake2s(u8 *out, const u8 *in, const u8 *key,
+-			   const size_t outlen, const size_t inlen,
+-			   const size_t keylen)
++void blake2s_init(struct blake2s_ctx *ctx, size_t outlen);
++void blake2s_init_key(struct blake2s_ctx *ctx, size_t outlen,
++		      const void *key, size_t keylen);
++void blake2s_update(struct blake2s_ctx *ctx, const u8 *in, size_t inlen);
++void blake2s_final(struct blake2s_ctx *ctx, u8 *out);
++
++static inline void blake2s(const u8 *key, size_t keylen,
++			   const u8 *in, size_t inlen,
++			   u8 *out, size_t outlen)
+ {
+-	struct blake2s_state state;
++	struct blake2s_ctx ctx;
+ 
+ 	WARN_ON(IS_ENABLED(DEBUG) && ((!in && inlen > 0) || !out || !outlen ||
+ 		outlen > BLAKE2S_HASH_SIZE || keylen > BLAKE2S_KEY_SIZE ||
+ 		(!key && keylen)));
+ 
+ 	if (keylen)
+-		blake2s_init_key(&state, outlen, key, keylen);
++		blake2s_init_key(&ctx, outlen, key, keylen);
+ 	else
+-		blake2s_init(&state, outlen);
++		blake2s_init(&ctx, outlen);
+ 
+-	blake2s_update(&state, in, inlen);
+-	blake2s_final(&state, out);
++	blake2s_update(&ctx, in, inlen);
++	blake2s_final(&ctx, out);
+ }
+ 
+ void blake2s_hmac(u8 *out, const u8 *in, const u8 *key, const size_t outlen,
+diff -rupN a/crypto/zinc/blake2s/blake2s.c b/crypto/zinc/blake2s/blake2s.c
+--- a/crypto/zinc/blake2s/blake2s.c	2025-10-19 15:46:38.000000000 +0200
++++ b/crypto/zinc/blake2s/blake2s.c	2025-10-27 14:30:18.084956888 +0100
+@@ -37,19 +37,18 @@ static const u8 blake2s_sigma[10][16] =
+ 	{ 10, 2, 8, 4, 7, 6, 1, 5, 15, 11, 9, 14, 3, 12, 13, 0 },
+ };
+ 
+-static inline void blake2s_set_lastblock(struct blake2s_state *state)
++static inline void blake2s_set_lastblock(struct blake2s_ctx *ctx)
+ {
+ 	state->f[0] = -1;
+ }
+ 
+-static inline void blake2s_increment_counter(struct blake2s_state *state,
+-					     const u32 inc)
++static inline void blake2s_increment_counter(struct blake2s_ctx *ctx, u32 inc)
+ {
+ 	state->t[0] += inc;
+ 	state->t[1] += (state->t[0] < inc);
+ }
+ 
+-static inline void blake2s_init_param(struct blake2s_state *state,
++static inline void blake2s_init_param(struct blake2s_ctx *ctx,
+ 				      const u32 param)
+ {
+ 	int i;
+@@ -60,14 +59,14 @@ static inline void blake2s_init_param(st
+ 	state->h[0] ^= param;
+ }
+ 
+-void blake2s_init(struct blake2s_state *state, const size_t outlen)
++void blake2s_init(struct blake2s_ctx *ctx, const size_t outlen)
+ {
+ 	WARN_ON(IS_ENABLED(DEBUG) && (!outlen || outlen > BLAKE2S_HASH_SIZE));
+ 	blake2s_init_param(state, 0x01010000 | outlen);
+ 	state->outlen = outlen;
+ }
+ 
+-void blake2s_init_key(struct blake2s_state *state, const size_t outlen,
++void blake2s_init_key(struct blake2s_ctx *ctx, const size_t outlen,
+ 		      const void *key, const size_t keylen)
+ {
+ 	u8 block[BLAKE2S_BLOCK_SIZE] = { 0 };
+@@ -88,17 +87,17 @@ static bool *const blake2s_nobs[] __init
+ static void __init blake2s_fpu_init(void)
+ {
+ }
+-static inline bool blake2s_compress_arch(struct blake2s_state *state,
++static inline bool blake2s_compress_arch(struct blake2s_ctx *ctx,
+ 					 const u8 *block, size_t nblocks,
+-					 const u32 inc)
++					 u32 inc)
+ {
+ 	return false;
+ }
+ #endif
+ 
+-static inline void blake2s_compress(struct blake2s_state *state,
++static inline void blake2s_compress(struct blake2s_ctx *ctx,
+ 				    const u8 *block, size_t nblocks,
+-				    const u32 inc)
++				    u32 inc)
+ {
+ 	u32 m[16];
+ 	u32 v[16];
+@@ -167,7 +166,7 @@ static inline void blake2s_compress(stru
+ 	}
+ }
+ 
+-void blake2s_update(struct blake2s_state *state, const u8 *in, size_t inlen)
++void blake2s_update(struct blake2s_ctx *ctx, const u8 *in, size_t inlen)
+ {
+ 	const size_t fill = BLAKE2S_BLOCK_SIZE - state->buflen;
+ 
+@@ -191,7 +190,7 @@ void blake2s_update(struct blake2s_state
+ 	state->buflen += inlen;
+ }
+ 
+-void blake2s_final(struct blake2s_state *state, u8 *out)
++void blake2s_final(struct blake2s_ctx *ctx, u8 *out)
+ {
+ 	WARN_ON(IS_ENABLED(DEBUG) && !out);
+ 	blake2s_set_lastblock(state);
+@@ -206,33 +205,33 @@ void blake2s_final(struct blake2s_state
+ void blake2s_hmac(u8 *out, const u8 *in, const u8 *key, const size_t outlen,
+ 		  const size_t inlen, const size_t keylen)
+ {
+-	struct blake2s_state state;
++	struct blake2s_ctx ctx;
+ 	u8 x_key[BLAKE2S_BLOCK_SIZE] __aligned(__alignof__(u32)) = { 0 };
+ 	u8 i_hash[BLAKE2S_HASH_SIZE] __aligned(__alignof__(u32));
+ 	int i;
+ 
+ 	if (keylen > BLAKE2S_BLOCK_SIZE) {
+-		blake2s_init(&state, BLAKE2S_HASH_SIZE);
+-		blake2s_update(&state, key, keylen);
+-		blake2s_final(&state, x_key);
++		blake2s_init(&ctx, BLAKE2S_HASH_SIZE);
++		blake2s_update(&ctx, key, keylen);
++		blake2s_final(&ctx, x_key);
+ 	} else
+ 		memcpy(x_key, key, keylen);
+ 
+ 	for (i = 0; i < BLAKE2S_BLOCK_SIZE; ++i)
+ 		x_key[i] ^= 0x36;
+ 
+-	blake2s_init(&state, BLAKE2S_HASH_SIZE);
+-	blake2s_update(&state, x_key, BLAKE2S_BLOCK_SIZE);
+-	blake2s_update(&state, in, inlen);
+-	blake2s_final(&state, i_hash);
++	blake2s_init(&ctx, BLAKE2S_HASH_SIZE);
++	blake2s_update(&ctx, x_key, BLAKE2S_BLOCK_SIZE);
++	blake2s_update(&ctx, in, inlen);
++	blake2s_final(&ctx, i_hash);
+ 
+ 	for (i = 0; i < BLAKE2S_BLOCK_SIZE; ++i)
+ 		x_key[i] ^= 0x5c ^ 0x36;
+ 
+-	blake2s_init(&state, BLAKE2S_HASH_SIZE);
+-	blake2s_update(&state, x_key, BLAKE2S_BLOCK_SIZE);
+-	blake2s_update(&state, i_hash, BLAKE2S_HASH_SIZE);
+-	blake2s_final(&state, i_hash);
++	blake2s_init(&ctx, BLAKE2S_HASH_SIZE);
++	blake2s_update(&ctx, x_key, BLAKE2S_BLOCK_SIZE);
++	blake2s_update(&ctx, i_hash, BLAKE2S_HASH_SIZE);
++	blake2s_final(&ctx, i_hash);
+ 
+ 	memcpy(out, i_hash, outlen);
+ 	memzero_explicit(x_key, BLAKE2S_BLOCK_SIZE);
+diff -rupN a/crypto/zinc/blake2s/blake2s-x86_64-glue.c b/crypto/zinc/blake2s/blake2s-x86_64-glue.c
+--- a/crypto/zinc/blake2s/blake2s-x86_64-glue.c	2025-10-19 15:46:38.000000000 +0200
++++ b/crypto/zinc/blake2s/blake2s-x86_64-glue.c	2025-10-27 14:18:44.957043749 +0100
+@@ -8,10 +8,10 @@
+ #include <asm/processor.h>
+ #include <asm/fpu/api.h>
+ 
+-asmlinkage void blake2s_compress_ssse3(struct blake2s_state *state,
++asmlinkage void blake2s_compress_ssse3(struct blake2s_ctx *ctx,
+ 				       const u8 *block, const size_t nblocks,
+ 				       const u32 inc);
+-asmlinkage void blake2s_compress_avx512(struct blake2s_state *state,
++asmlinkage void blake2s_compress_avx512(struct blake2s_ctx *ctx,
+ 					const u8 *block, const size_t nblocks,
+ 					const u32 inc);
+ 
+@@ -34,7 +34,7 @@ static void __init blake2s_fpu_init(void
+ #endif
+ }
+ 
+-static inline bool blake2s_compress_arch(struct blake2s_state *state,
++static inline bool blake2s_compress_arch(struct blake2s_ctx *ctx,
+ 					 const u8 *block, size_t nblocks,
+ 					 const u32 inc)
+ {
+diff -rupN a/noise.c b/noise.c
+--- a/noise.c	2025-10-19 15:46:38.000000000 +0200
++++ b/noise.c	2025-10-27 14:21:42.653911110 +0100
+@@ -36,10 +36,10 @@ static atomic64_t keypair_counter = ATOM
+ 
+ void __init wg_noise_init(void)
+ {
+-	struct blake2s_state blake;
++	struct blake2s_ctx blake;
+ 
+-	blake2s(handshake_init_chaining_key, handshake_name, NULL,
+-		NOISE_HASH_LEN, sizeof(handshake_name), 0);
++	blake2s(NULL, 0, handshake_name, sizeof(handshake_name),
++		handshake_init_chaining_key, NOISE_HASH_LEN);
+ 	blake2s_init(&blake, NOISE_HASH_LEN);
+ 	blake2s_update(&blake, handshake_init_chaining_key, NOISE_HASH_LEN);
+ 	blake2s_update(&blake, identifier_name, sizeof(identifier_name));
+@@ -307,33 +307,33 @@ void wg_noise_set_static_identity_privat
+ 
+ static void hmac(u8 *out, const u8 *in, const u8 *key, const size_t inlen, const size_t keylen)
+ {
+-	struct blake2s_state state;
++	struct blake2s_ctx blake;
+ 	u8 x_key[BLAKE2S_BLOCK_SIZE] __aligned(__alignof__(u32)) = { 0 };
+ 	u8 i_hash[BLAKE2S_HASH_SIZE] __aligned(__alignof__(u32));
+ 	int i;
+ 
+ 	if (keylen > BLAKE2S_BLOCK_SIZE) {
+-		blake2s_init(&state, BLAKE2S_HASH_SIZE);
+-		blake2s_update(&state, key, keylen);
+-		blake2s_final(&state, x_key);
++		blake2s_init(&blake, BLAKE2S_HASH_SIZE);
++		blake2s_update(&blake, key, keylen);
++		blake2s_final(&blake, x_key);
+ 	} else
+ 		memcpy(x_key, key, keylen);
+ 
+ 	for (i = 0; i < BLAKE2S_BLOCK_SIZE; ++i)
+ 		x_key[i] ^= 0x36;
+ 
+-	blake2s_init(&state, BLAKE2S_HASH_SIZE);
+-	blake2s_update(&state, x_key, BLAKE2S_BLOCK_SIZE);
+-	blake2s_update(&state, in, inlen);
+-	blake2s_final(&state, i_hash);
++	blake2s_init(&blake, BLAKE2S_HASH_SIZE);
++	blake2s_update(&blake, x_key, BLAKE2S_BLOCK_SIZE);
++	blake2s_update(&blake, in, inlen);
++	blake2s_final(&blake, i_hash);
+ 
+ 	for (i = 0; i < BLAKE2S_BLOCK_SIZE; ++i)
+ 		x_key[i] ^= 0x5c ^ 0x36;
+ 
+-	blake2s_init(&state, BLAKE2S_HASH_SIZE);
+-	blake2s_update(&state, x_key, BLAKE2S_BLOCK_SIZE);
+-	blake2s_update(&state, i_hash, BLAKE2S_HASH_SIZE);
+-	blake2s_final(&state, i_hash);
++	blake2s_init(&blake, BLAKE2S_HASH_SIZE);
++	blake2s_update(&blake, x_key, BLAKE2S_BLOCK_SIZE);
++	blake2s_update(&blake, i_hash, BLAKE2S_HASH_SIZE);
++	blake2s_final(&blake, i_hash);
+ 
+ 	memcpy(out, i_hash, BLAKE2S_HASH_SIZE);
+ 	memzero_explicit(x_key, BLAKE2S_BLOCK_SIZE);
+@@ -434,7 +434,7 @@ static bool __must_check mix_precomputed
+ 
+ static void mix_hash(u8 hash[NOISE_HASH_LEN], const u8 *src, size_t src_len)
+ {
+-	struct blake2s_state blake;
++	struct blake2s_ctx blake;
+ 
+ 	blake2s_init(&blake, NOISE_HASH_LEN);
+ 	blake2s_update(&blake, hash, NOISE_HASH_LEN);
