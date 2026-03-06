@@ -1,6 +1,6 @@
 # Maintainer: zodium-project
 pkgname=zfetch-rs
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A fast & pretty system fetch tool written in rust"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=()
 makedepends=('rust' 'cargo')
 conflicts=('zfetch')
 provides=('zfetch')
-source=("zfetch-rs::git+https://github.com/zodium-project/zfetch-rs.git#branch=main")
+source=("zfetch-rs::git+https://github.com/zodium-project/zfetch-rs.git#branch=stable")
 sha256sums=('SKIP')
 
 prepare() {
