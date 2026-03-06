@@ -1,6 +1,6 @@
 pkgbase = drop-oss-app
 	pkgdesc = Desktop client for the Drop OSS project.
-	pkgver = 0.3.4
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://droposs.org/
 	arch = any
@@ -14,9 +14,7 @@ pkgbase = drop-oss-app
 	depends = gcc-libs
 	depends = webkit2gtk-4.1
 	depends = umu-launcher
-	depends = libappindicator
-	depends = libayatana-appindicator
-	source = git+https://github.com/Drop-OSS/drop-app.git#commit=28d7a741c12b318959717e3e788fafaf29c8493c
-	sha256sums = 7122692292968c80f1bcab189d7580fa3318bd6e66f703bd14ce6bc642452918
+	source = git+https://github.com/Drop-OSS/drop-app.git#commit=c9ceb3f50ea061f0023f87211775e8380a181cbc
+	sha256sums = 9b61a8bd255253e9cf8e7e3955819347853f125aa22a18ffbd690d98ea91b8e8
 
 pkgname = drop-oss-app
