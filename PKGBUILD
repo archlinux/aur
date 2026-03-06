@@ -7,8 +7,8 @@ url="https://github.com/zsh-ncursed/somafm_tui"
 license=('MIT')
 depends=('python' 'python-requests' 'python-mpv' 'python-dbus-next')
 makedepends=('git')
-source=("git+https://github.com/zsh-ncursed/somafm_tui.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/zsh-ncursed/somafm_tui.git#tag=$GITHUB_REF_NAME")
+sha256sums=('845b3110e9f23986a6e233db77efbfca7c69e0dca2723e1c1e2010768de797d4')
 
 # pkgver() is called by makepkg during build to determine version
 # In CI (GitHub Actions), GITHUB_REF_NAME is set to the tag name (e.g., "v0.4.9")
@@ -92,4 +92,4 @@ package() {
     install -Dm644 CONTRIBUTING.md "$pkgdir/usr/share/doc/$pkgname/CONTRIBUTING.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-pkgver=0.5.4
+pkgver=0.5.5
