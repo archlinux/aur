@@ -1,6 +1,6 @@
 pkgbase = scans2any
 	pkgdesc = Convert and merge infrastructure scans to Typst, Markdown, HTML, ...
-	pkgver = 0.8.1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/softScheck/scans2any
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = scans2any
 	depends = python-yaml
 	provides = scans2any
 	conflicts = scans2any-git
-	source = https://files.pythonhosted.org/packages/source/s/scans2any/scans2any-0.8.1.tar.gz
-	sha256sums = cdeb68a84570c7ce0ae8829ff1eefb1257170c78016556522d62ab39257d17a3
+	source = https://files.pythonhosted.org/packages/source/s/scans2any/scans2any-1.0.0.tar.gz
+	sha256sums = b9e792897a715f68ed0cf2ba6314b97f542b2f763cfb8eba6b32c2e78286eed3
 
 pkgname = scans2any

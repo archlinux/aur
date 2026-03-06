@@ -1,7 +1,7 @@
 # Maintainer: KiWi42 < pullthisplug dash aur at yahoo dot com >
 
 pkgname=scans2any
-pkgver=0.8.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Convert and merge infrastructure scans to Typst, Markdown, HTML, ..."
 arch=("any")
@@ -14,7 +14,7 @@ depends=(python python-defusedxml python-jinja python-libnmap python-pandas
 	python-tqdm python-yaml)
 makedepends=(python-build python-installer python-wheel uv)
 source=(https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/${pkgname//-/_}-$pkgver.tar.gz)
-sha256sums=("cdeb68a84570c7ce0ae8829ff1eefb1257170c78016556522d62ab39257d17a3")
+sha256sums=("b9e792897a715f68ed0cf2ba6314b97f542b2f763cfb8eba6b32c2e78286eed3")
 
 
 build() {
