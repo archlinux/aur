@@ -1,6 +1,6 @@
 pkgbase = somafm_tui
 	pkgdesc = Terminal user interface for SomaFM internet radio
-	pkgver = 0.5.7
+	pkgver = 0.5.8
 	pkgrel = 1
 	url = https://github.com/zsh-ncursed/somafm_tui
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = somafm_tui
 	depends = python-requests
 	depends = python-mpv
 	depends = python-dbus-next
-	source = git+https://github.com/zsh-ncursed/somafm_tui.git#tag=v0.5.7
-	sha256sums = d0435db74629351a624e757f82d9f43cf45497ba091b962cfa5ac362c0af1fc4
+	source = git+https://github.com/zsh-ncursed/somafm_tui.git#tag=v0.5.8
+	sha256sums = 258dcf7fb5999f6b811c7d81c98b86ce3dd4bbe20853d732ed4f893f4665a7f3
 
 pkgname = somafm_tui
