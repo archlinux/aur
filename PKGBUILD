@@ -18,8 +18,10 @@ options=(!buildflags)
 url="http://www.calculix.de/"
 license=('GPL2')
 depends=('arpack' 'blas' 'intel-oneapi-mkl')
-optdepends=('calculix-doc: documentation and examples'
-    'tetgen: for tet meshing')
+optdepends=(
+    'calculix-doc: documentation and examples'
+    'tetgen: for tet meshing'
+)
 makedepends=('gcc-fortran' 'perl')
 checkdepends=('perl')
 conflicts=('calculix-ccx')
@@ -31,10 +33,12 @@ source=(
     "http://www.dhondt.de/ccx_${pkgver}.structest.tar.bz2"
 )
 
-sha256sums=('9c88385c10fb04f5dc6c4e98027a51bebdd8aee3920e05190d6c1dd08357d6e7'
+sha256sums=(
+    '9c88385c10fb04f5dc6c4e98027a51bebdd8aee3920e05190d6c1dd08357d6e7'
     'be2259fd9a7b990d0453b30708e1b05f2cd4b6df4a90fa96f0e4abd1ae7beaa0'
     'db8b1361b89e357266d1dcebc071b3fd9fd37b83b4b7bb6f4a0f99b1759fbe80'
-    '3407b2ce1366df62b1ab43a21ea76ff54386b8842e6cd8660fd9047526be5dec')
+    '3407b2ce1366df62b1ab43a21ea76ff54386b8842e6cd8660fd9047526be5dec'
+)
 #
 # NOTE: remove -Wno-implicit when code is fixed by upstream
 #       idem for -Wno-return-mismatch
