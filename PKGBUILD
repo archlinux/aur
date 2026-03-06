@@ -1,5 +1,5 @@
 pkgname=mtc
-pkgver=1.0.0
+pkgver=1.0.0.r0.g0000000
 pkgrel=1
 pkgdesc="C++ compiler for mt-lang"
 arch=('x86_64')
@@ -9,6 +9,14 @@ depends=('glibc' 'clang')
 makedepends=('gcc' 'make' 'git')
 source=("$pkgname::git+$url#branch=main")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  local rev hash
+  rev=$(git rev-list --count HEAD)
+  hash=$(git rev-parse --short=7 HEAD)
+  printf "1.0.0.r%s.g%s" "$rev" "$hash"
+}
 
 build() {
   cd "$srcdir/$pkgname"
