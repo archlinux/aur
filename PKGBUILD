@@ -2,7 +2,7 @@
 # Contributor: Tobias Brunner <tobias@tobru.ch>
 
 _npmname=cloudron
-_npmver=7.0.5
+_npmver=7.0.6
 pkgname=cloudron-cli
 pkgver=$_npmver
 pkgrel=1
@@ -15,7 +15,7 @@ makedepends=('npm' 'jq')
 optdepends=()
 source=("https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz")
 noextract=("$_npmname-$_npmver.tgz")
-sha256sums=('286529f2f0b1e4a3d3fb1e6af0e511ecb23d9a97e42edc4a6a5917f4fdf92257')
+sha256sums=('c11eb183ab0a10767f76d6d74f672b252fefca646687cb2a99c01f9e2bb050f3')
 
 package() {
 	npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
@@ -23,6 +23,9 @@ package() {
 	# Install license
 	local _npmdir="$pkgdir/usr/lib/node_modules/$_npmname"
 	install -Dm644 "$_npmdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	# Remove unnecessary bare-* prebuilds (suppresses strip warnings)
+	find "$pkgdir" -path "*/prebuilds/*" -name "*.bare" -delete
 
 	# Remove references to $pkgdir
 	find "$pkgdir" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
