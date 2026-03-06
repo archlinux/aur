@@ -1,6 +1,6 @@
 pkgbase = bab
 	pkgdesc = Task runner for defining project commands in YAML
-	pkgver = 0.7.2
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/bab-sh/bab
 	arch = aarch64
@@ -15,7 +15,7 @@ pkgbase = bab
 	conflicts = bab-bin
 	provides = bab
 	
-	source = https://github.com/bab-sh/bab/releases/download/v${pkgver}/bab-${pkgver}.tar.gz
-	sha256sums = 041d18b873bb9423db99713fc2a9e03dd4386e774984d7c3a1e5190edfbbe0e8
+	source = https://github.com/bab-sh/bab/releases/download/v0.7.3/bab-0.7.3.tar.gz
+	sha256sums = e107fe8383053ba11ee3f0c9f9710cb33726cc021f417253b4361d3df779dc9a
 	
 pkgname = bab
