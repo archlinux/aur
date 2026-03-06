@@ -1,6 +1,6 @@
 pkgbase = mtc
 	pkgdesc = C++ compiler for mt-lang
-	pkgver = 1
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/mystyy01/mt-lang-compiler
 	arch = x86_64

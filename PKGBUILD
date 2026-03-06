@@ -1,5 +1,5 @@
 pkgname=mtc
-pkgver=1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="C++ compiler for mt-lang"
 arch=('x86_64')
