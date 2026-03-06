@@ -5,12 +5,12 @@ _crate="cargo-duplicates"
 _cratever="0.8.4"
 pkgname="cargo-duplicates"
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Cargo subcommand for displaying when different versions of a same dependency ...'
 url='https://crates.io/crates/cargo-duplicates'
 license=('MIT')
 
-depends=('gcc-libs' 'curl')
+depends=('libgcc' 'curl')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/cargo-duplicates/0.8.4/download")
