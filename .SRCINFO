@@ -1,0 +1,18 @@
+pkgbase = spinwheel-pulse
+	pkgdesc = A terminal wheel spinner with named wheels and built-in modes (pulseaudio)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://codeberg.org/the-traveler/spinwheel
+	arch = any
+	groups = spinwheel
+	license = GPL-3.0-or-later
+	depends = luajit
+	depends = libpulse
+	provides = spinwheel
+	conflicts = spinwheel
+	source = spinwheel.lua
+	source = spinwheel.1
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = spinwheel-pulse

@@ -1,0 +1,87 @@
+.TH SPINWHEEL 1 "2026" "spinwheel 0.1.0" "User Commands"
+.SH NAME
+spinwheel \- a terminal wheel spinner
+.SH SYNOPSIS
+.B spinwheel
+.br
+.B spinwheel
+.I name
+.br
+.B spinwheel
+\fB\-\-new\fR
+.I name
+.br
+.B spinwheel
+\fB\-m\fR|\fB\-\-mode\fR
+.I modename
+.SH DESCRIPTION
+.B spinwheel
+is a terminal wheel spinner. Items scroll in a list with an arrow pointing
+at the selected entry. The wheel spins and slows to a random stop.
+.PP
+With no arguments, spinwheel prompts for items and spins immediately.
+Nothing is saved.
+.PP
+Named wheels are stored in
+.I ~/.config/spinwheel/wheels/
+and can be reloaded by name at any time.
+.SH OPTIONS
+.TP
+.B (no arguments)
+Prompt for items, spin, discard. Nothing is saved.
+.TP
+.I name
+Load the named wheel
+.I name
+and spin it.
+.TP
+\fB\-\-new\fR \fIname\fR
+Prompt for items, save as a named wheel, then spin.
+.TP
+\fB\-m\fR, \fB\-\-mode\fR \fImodename\fR
+Run a built-in mode. See
+.B MODES
+below.
+.SH MODES
+.TP
+.B bpm-match
+Flash a beat indicator at a given BPM. Prompts for a BPM, an optional
+time limit, and an optional audio file. Audio playback requires pipewire
+.RB ( pw-play )
+or pulseaudio
+.RB ( paplay ).
+If the audio dependency is not installed, spinwheel will offer to install
+it using the system package manager.
+.TP
+.B cmd
+Enter a list of shell commands separated by commas. The wheel spins and
+the winning command is run with
+.BR sudo .
+Prompts for confirmation before executing. Potentially destructive
+commands (rm, dd, wipefs, etc.) require typing
+.I "I promise i won't sue you lol"
+before proceeding.
+.TP
+.B rigged
+Enter a list of items, then pick the winner yourself. The wheel spins
+and lands on your choice. Totally random. Definitely.
+.TP
+.B gambling
+A three-reel slot machine. Starts with 10 credits. Costs 1 credit per
+spin. Pair = +2. Three of a kind = +10. Three 7s = +50 (MEGA JACKPOT).
+Credits are not real. Requires a Nerd Font patched terminal font for
+symbols to display correctly.
+.SH FILES
+.TP
+.I ~/.config/spinwheel/spinwheel.conf
+Global configuration file.
+.TP
+.I ~/.config/spinwheel/wheels/
+Saved named wheels. Each wheel stored as
+.IR wheelname\-wheel.conf .
+.SH LICENSE
+GPL-3.0-or-later
+.SH SEE ALSO
+.BR luajit (1),
+.BR pw-play (1),
+.BR paplay (1)
