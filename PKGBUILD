@@ -1,7 +1,5 @@
-# Maintainer: bko <aur at bil dot co dot ua>
-
 pkgname=pgadmin4-server
-pkgver=9.12
+pkgver=9.13
 pkgrel=1
 pkgdesc='The core server package for pgAdmin. pgAdmin is the most popular and feature rich Open Source administration and development platform for PostgreSQL, the most advanced Open Source database in the world.'
 arch=('x86_64')
@@ -11,7 +9,7 @@ depends=('postgresql-libs' 'krb5' 'python-dbus')
 makedepends=("python" "python-pip" "postgresql-libs" "gcc" "nodejs" "corepack" "pkgconf" "cmake" "dbus" "npm" "wget" "unzip" "syft" "patch")
 provides=('pgadmin4-server')
 source=("pgadmin4-${pkgver}.tar.gz::https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v${pkgver}/source/pgadmin4-${pkgver}.tar.gz" "server.patch")
-sha256sums=('f72f5d688eed9f65d523046492ce868bcb4251c04f763cb6b834b13be0ad6744' 'd276423ab3eaa7abaf14e720c51f49cc18a528d2e1b6324d4d05257d5d58f556')
+sha256sums=('57b6c55a7725c5ea8fcbe35480b2dd8998db5d3f32248a6db6b448813384267b' 'd276423ab3eaa7abaf14e720c51f49cc18a528d2e1b6324d4d05257d5d58f556')
 
 prepare() {
   cd "$srcdir/pgadmin4-${pkgver}"
