@@ -1,0 +1,20 @@
+[Unit]
+Description=AMD GPU Metrics Reader Service
+After=network.target
+Before=amd-metrics-exporter.service
+
+[Service]
+User=root
+Group=root
+EnvironmentFile=/etc/gpuagent/gpuagent.conf
+Type=simple
+Restart=on-failure
+RestartSec=10
+
+ExecStart=/usr/bin/gpuagent
+
+MemoryHigh=1G
+CPUQuota=50%
+
+[Install]
+WantedBy=multi-user.target
