@@ -4,11 +4,11 @@ After=network.target
 
 [Service]
 Type=simple
-Environment=RUST_LOG=debug,aws_config=info,aws_runtime=info,aws_sdk_dynamodb=info,aws_sdk_sts=info,aws_sigv4=info,aws_smithy_runtime=info,aws_smithy_runtime_api=info,hyper=info,openraft=info,opentelemetry_sdk=info,scylla=info
+Environment=RUST_LOG=debug,aws_config=info,aws_runtime=info,aws_sdk_dynamodb=info,aws_sdk_sts=info,aws_sigv4=info,aws_smithy_runtime=info,aws_smithy_runtime_api=info,hyper=info,openraft=info,opentelemetry_sdk=info,scylla=info,axum::rejection=trace
 User=indielinks
 Group=indielinks
-WorkingDirectory=/var/run/indielinks
-ExecStart=/usr/bin/indielinksd --no-daemon -c /etc/indielinks.toml -L /var/run/indielinks --debug --plain
+WorkingDirectory=/
+ExecStart=/usr/bin/indielinksd --no-daemon -c /etc/indielinks.toml --debug --plain
 Restart=on-failure
 
 [Install]
