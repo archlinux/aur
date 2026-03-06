@@ -1,6 +1,6 @@
 pkgbase = python-rioxarray
 	pkgdesc = geospatial xarray extension powered by rasterio
-	pkgver = 0.21.0
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/corteva/rioxarray
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-rioxarray
 	depends = python-rasterio
 	depends = python-xarray
 	depends = python-pyproj
-	source = rioxarray-0.21.0.tar.gz::https://github.com/corteva/rioxarray/archive/0.21.0.tar.gz
-	sha512sums = d2e48c334aeeeabd0a5fc6b51e85d006e33fa064bf028b2cf1bd5edd8209393082b4851dfcf976d93e9598fdb2891d29187d8783aabef010aa50002fc13637a5
+	source = rioxarray-0.22.0.tar.gz::https://github.com/corteva/rioxarray/archive/0.22.0.tar.gz
+	sha512sums = 3a11133412f1e9296af7ad82502e2b1d7ffb98274a56adcd169c714c14b3e396a8003aa22ce2ddee18b1d1f82cdd135fbfa7b1eeeb5b2d290ebb6d070683ee57
 
 pkgname = python-rioxarray
