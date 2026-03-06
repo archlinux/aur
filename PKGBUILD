@@ -1,7 +1,7 @@
 # Maintainer: kaizen403 <kaizen403@proton.me>
 pkgname=openlinear-bin
 pkgver=0.1.23
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-powered project management that actually writes the code — desktop app"
 arch=('x86_64')
 url="https://github.com/kaizen403/openlinear"
@@ -13,6 +13,7 @@ optdepends=(
 )
 provides=('openlinear')
 conflicts=('openlinear')
+options=('!strip' '!debug')
 source=(
   "openlinear-${pkgver}-x86_64.AppImage::https://github.com/kaizen403/openlinear/releases/download/v${pkgver}/openlinear-${pkgver}-x86_64.AppImage"
   "openlinear.desktop"
