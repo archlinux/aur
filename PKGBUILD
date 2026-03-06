@@ -20,6 +20,9 @@ sha256sums=('e7861c4d252ac48ff94e092bfbbac8977e4b441543308e72f65f329bd6258211'
 prepare() {
 	cd "$_pkgname"
     git apply ../0001-Link-against-system-openssl-libsodium.patch
+	if check_option "debug" "y"; then
+		sed -i -e 's/binding=Binding.RustCPython/&, debug=True/' setup.py
+	fi
 }
 
 build() {
