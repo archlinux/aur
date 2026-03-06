@@ -8,9 +8,7 @@
 
 pkgname=calculix-ccx-pardiso
 pkgver=2.23
-pkgrel=1
-provides=('calculix')
-replaces=('calculix')
+pkgrel=2
 conflicts=('calculix')
 pkgdesc="CalculiX: 3D Structural Finite Element Program - Solver with Pardiso"
 arch=('i686' 'x86_64')
