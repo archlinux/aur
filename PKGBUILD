@@ -1,8 +1,8 @@
 # Maintainer: Louis Cornell <lpcornel@gmail.com>
 pkgname=musiclib-cli
 pkgver=1.2
-pkgrel=1
-pkgdesc="Music library control plane: ratings, tagging, and mobile sync (CLI)"
+pkgrel=2
+pkgdesc="Command line application for organizing and managing a music library. Requires Audacious player, Kid3 Audio Tagger, and kdeconnect for mobile sync"
 arch=('x86_64')
 url="https://github.com/Harpo3/musiclib"
 license=('GPL-3.0-or-later')
