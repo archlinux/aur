@@ -5,12 +5,12 @@ _crate="cargo-readme"
 _cratever="3.3.1"
 pkgname="cargo-readme"
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A cargo subcommand to generate README.md content from doc comments'
 url='https://crates.io/crates/cargo-readme'
 license=('Apache-2.0' 'MIT')
 
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/cargo-readme/3.3.1/download")
@@ -42,6 +42,6 @@ build() {
 package() {
 	cd "$srcdir/$_crate-$_cratever"
 	install -Dm755 "target/release/cargo-readme" -t "$pkgdir/usr/bin"
-	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 'LICENSE-APACHE' -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
