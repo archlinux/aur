@@ -1,0 +1,23 @@
+pkgbase = pave-git
+	pkgdesc = Smart window tiling manager for KDE/KWin
+	pkgver = 0.1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/TheVisher/Pave
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = dbus
+	depends = procps-ng
+	provides = pave
+	conflicts = pave
+	source = pave-git::git+https://github.com/TheVisher/Pave.git
+	sha256sums = SKIP
+
+pkgname = pave-git
