@@ -2,7 +2,7 @@
 pkgname=pikatorrent-bin
 _pkgname=PikaTorrent
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="BitTorrent client ⚡. For mobile, desktop & server.(Prebuilt version)"
 arch=(
     'aarch64'
@@ -18,6 +18,7 @@ depends=(
     'gtk3'
     'openssl'
     'mpv'
+    'libayatana-appindicator'
 )
 makedepends=(
     'gendesk'
