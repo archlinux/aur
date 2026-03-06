@@ -1,0 +1,16 @@
+pkgbase = onvif-python
+	pkgdesc = A modern Python library for ONVIF-compliant devices
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = https://github.com/nirsimetri/onvif-python
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-setuptools
+	depends = python-requests
+	depends = python-zeep
+	source = onvif-python-0.2.10.tar.gz::https://github.com/nirsimetri/onvif-python/archive/refs/tags/v0.2.10.tar.gz
+	sha512sums = d810ff5bc8ff4930782090fd45796e6c1202292af22743b3dd85d797630e663e7cb8b946b9d5a6ba70c4e905719cf6a7409c7abe44279dcab51822c921254e35
+
+pkgname = onvif-python
