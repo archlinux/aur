@@ -1,6 +1,6 @@
 pkgbase = channelz-bin
 	pkgdesc = CLI tool to encode static assets with Gzip and Brotli
-	pkgver = 0.12.4
+	pkgver = 0.12.5
 	pkgrel = 1
 	url = https://github.com/Blobfolio/channelz
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = channelz-bin
 	depends = gcc-libs
 	provides = channelz
 	conflicts = channelz
-	source_x86_64 = https://github.com/Blobfolio/channelz/releases/download/v0.12.4/channelz_0.12.4-1_amd64.deb
-	sha256sums_x86_64 = 01aed1337dc3deebc9f6a47bb608633902398f2787df778553b149c3ca1b464d
+	source_x86_64 = https://github.com/Blobfolio/channelz/releases/download/v0.12.5/channelz_0.12.5-1_amd64.deb
+	sha256sums_x86_64 = 2f36ba020f2f6a1b65b29031db2529397e1b088b744862f44ff8e06cb1dcec29
 
 pkgname = channelz-bin
