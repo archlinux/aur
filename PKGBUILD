@@ -2,7 +2,7 @@
 _base=FireflyAlgorithm
 pkgname=python-${_base,,}
 pkgdesc="Implementation of Firefly Algorithm in Python"
-pkgver=0.4.6
+pkgver=0.4.7
 pkgrel=1
 arch=(any)
 url="https://github.com/firefly-cpp/${_base}"
@@ -11,7 +11,7 @@ depends=(python-numpy)
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('2fdd6f33327dd07c232403254bdbe6015ee40d7d89cc8245af8e55a018725a569b1b05ea158be58486da2ab2b6c59e0848da39e075846a756d0dd63fdedd0c41')
+sha512sums=('5391d5176265f335c666547bb0367d314720bb901ae3f1979f68864f43e2ac2db61d67798424e6aaf83cd8aeb879eee12f51fd1246fd2e7a890ad0b6ad9a05a4')
 
 build() {
   cd ${_base}-${pkgver}
