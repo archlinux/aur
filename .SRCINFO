@@ -1,6 +1,6 @@
 pkgbase = hamr-bin
 	pkgdesc = A fast, extensible desktop launcher for Linux (pre-built binaries)
-	pkgver = 1.0.18
+	pkgver = 1.0.19
 	pkgrel = 1
 	url = https://github.com/Stewart86/hamr
 	install = hamr.install
@@ -26,7 +26,7 @@ pkgbase = hamr-bin
 	provides = hamr
 	conflicts = hamr
 	replaces = hamr-qml
-	source = hamr-bin-1.0.18.tar.gz::https://github.com/Stewart86/hamr/releases/download/v1.0.18/hamr-linux-x86_64.tar.gz
+	source = hamr-bin-1.0.19.tar.gz::https://github.com/Stewart86/hamr/releases/download/v1.0.19/hamr-linux-x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = hamr-bin
