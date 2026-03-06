@@ -31,6 +31,10 @@ depends=(
   sqlite
   unrar
 )
+optdepends=(
+  'psycopg2: postgresql backend'
+  'mediainfo: scan media files'
+)
 makedepends=('unzip')
 options=('!debug')
 source=(
