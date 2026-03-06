@@ -1,0 +1,38 @@
+--- a/sw/nic/gpuagent/svc/gpu_watch_svc.hpp
++++ b/sw/nic/gpuagent/svc/gpu_watch_svc.hpp
+@@ -38,6 +38,8 @@
+ #include "nic/gpuagent/api/include/aga_gpu_watch.hpp"
+ #include "nic/gpuagent/api/internal/aga_gpu_watch.hpp"
+ 
++#include <memory>
++
+ static inline sdk_ret_t
+ aga_svc_gpu_watch_create (const GPUWatchRequest *proto_req,
+                           GPUWatchResponse *proto_rsp)
+@@ -98,7 +100,7 @@
+ {
+     sdk_ret_t ret;
+     aga_obj_key_t key;
+-    aga_gpu_watch_info_t info;
++    auto info = std::make_unique<aga_gpu_watch_info_t>();
+ 
+     if (proto_req == NULL) {
+         proto_rsp->set_apistatus(types::ApiStatus::API_STATUS_INVALID_ARG);
+@@ -113,14 +115,14 @@
+     }
+     for (int i = 0; i < proto_req->id_size(); i ++) {
+         aga_obj_key_proto_to_api_spec(&key, proto_req->id(i));
+-        memset(&info, 0, sizeof(aga_gpu_watch_info_t));
+-        ret = aga_gpu_watch_read(&key, &info);
++        memset(info.get(), 0, sizeof(aga_gpu_watch_info_t));
++        ret = aga_gpu_watch_read(&key, info.get());
+         if (unlikely(ret != SDK_RET_OK)) {
+             proto_rsp->set_apistatus(sdk_ret_to_api_status(ret));
+             break;
+         }
+         proto_rsp->set_apistatus(types::ApiStatus::API_STATUS_OK);
+-        aga_gpu_watch_info_to_get_rsp_proto(proto_rsp, &info);
++        aga_gpu_watch_info_to_get_rsp_proto(proto_rsp, info.get());
+     }
+     return ret;
+ }
