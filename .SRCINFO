@@ -1,0 +1,21 @@
+pkgbase = memoa-bin
+	pkgdesc = The best for Markdown Editing
+	pkgver = 0.1.312
+	pkgrel = 1
+	url = https://example.com/memoa
+	arch = x86_64
+	license = unknown
+	depends = gtk3
+	depends = webkit2gtk
+	depends = openssl
+	provides = memoa
+	conflicts = memoa
+	options = !strip
+	source = https://repository.hellonico.info/repository/arch/memoa/0.1.312/memoa
+	source = memoa.png
+	source = memoa.desktop
+	sha256sums = efacfba72f2a0b8af482b7e9799c7417ad44b97d69aeb012b550cfb2e232978e
+	sha256sums = 72efe0d27e0fb81dd20b151c240ce99dddea08afcb1c6b2deb7556ed2b2690e5
+	sha256sums = 8bbe11862d09b4d2fa9820b530c16ac6681e52bfe64fb3d8e20cebc9bdb8c2a2
+
+pkgname = memoa-bin

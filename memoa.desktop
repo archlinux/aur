@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Memoa
+Comment=Markdown Editor
+Exec=/usr/bin/memoa %F
+Icon=memoa
+Categories=Utility;TextEditor;
+Terminal=false
+MimeType=text/markdown;text/x-markdown;
