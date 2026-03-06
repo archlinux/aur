@@ -3,7 +3,7 @@ pkgname=actual-bin
 _pkgname=Actual
 pkgver=26.3.0
 _electronversion=39
-pkgrel=1
+pkgrel=2
 pkgdesc="A local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -13,7 +13,10 @@ url="https://actualbudget.org/"
 _ghurl="https://github.com/actualbudget/actual"
 license=('MIT')
 provides=("${pkgname%-bin}=${pkgver}")
-conflicts=("${pkgname%-bin}")
+conflicts=(
+    "${pkgname%-bin}"
+    "${pkgname%-bin}-appimage"
+)
 depends=(
     "electron${_electronversion}"
 )
