@@ -1,7 +1,7 @@
 pkgbase = server-box-bin
 	pkgdesc = ServerBox - A flutter app that helps you connect to your server.
 	pkgver = 1.0.1316
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lollipopkit/flutter_server_box
 	arch = x86_64
 	license = MIT
