@@ -2,9 +2,9 @@
 
 pkgname="minijinja-cli-bin"
 pkgver=2.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line utility for the MiniJinja template engine"
-arch=(x86_64 aarch64)
+arch=(x86_64 aarch64 armv7h)
 url="https://github.com/mitsuhiko/minijinja"
 license=(MIT)
 depends=(glibc)
@@ -16,6 +16,9 @@ sha256sums_x86_64=("01a71df98a1304b07a64e97aaa00010518b87ec860dbf2ca1521f3c9c0e7
 
 source_aarch64=("$pkgname-$pkgver.src.tar.xz::$url/releases/download/$pkgver/minijinja-cli-aarch64-unknown-linux-gnu.tar.xz")
 sha256sums_aarch64=("9b402b8b4689de915b75dcc68894807276611055ed7bce3e5620af08073e6fa1")
+
+source_armv7h=("$pkgname-$pkgver.src.tar.xz::$url/releases/download/$pkgver/minijinja-cli-armv7-unknown-linux-gnueabihf.tar.xz")
+sha256sums_armv7h=("22dd54dd819e9cd8506c44c34ea206e8453865b8477bbb267f6ea01dc710feeb")
 
 package () {
     cd "minijinja-cli-$CARCH-unknown-linux-gnu"
