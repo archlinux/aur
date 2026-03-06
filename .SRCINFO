@@ -1,7 +1,7 @@
 pkgbase = musiclib
-	pkgdesc = Music library control plane: ratings, tagging, and mobile sync (KDE GUI)
+	pkgdesc = KDE application for organizing and managing a music library. Requires Audacious player, Kid3 Audio Tagger, and kdeconnect for mobile sync
 	pkgver = 1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Harpo3/musiclib
 	arch = x86_64
 	license = GPL-3.0-or-later
