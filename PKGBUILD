@@ -5,12 +5,12 @@ _crate="mkvdump"
 _cratever="0.6.0"
 pkgname="mkvdump"
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc='MKV and WebM parser CLI tool'
 url='https://crates.io/crates/mkvdump'
 license=('Apache-2.0' 'MIT')
 
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/mkvdump/0.6.0/download")
@@ -60,6 +60,6 @@ check() {
 package() {
 	cd "$srcdir/$_crate-$_cratever"
 	install -Dm755 "target/release/mkvdump" -t "$pkgdir/usr/bin"
-	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 'LICENSE-APACHE' -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
