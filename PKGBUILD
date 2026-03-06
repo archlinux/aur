@@ -1,6 +1,6 @@
 # Maintainer: Antoine Pierlot-Garcin <antoine@bokbox.com>
 pkgname=debsigs-git
-pkgver=r96.05c081a
+pkgver=r148.e2b78e2
 pkgrel=1
 pkgdesc="toolset for cryptographically signing Debian packages"
 arch=('any')
@@ -35,12 +35,12 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname%-git}/perl"
 	perl Makefile.PL
 	make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname%-git}/perl"
 	make DESTDIR="$pkgdir/" install
 }
