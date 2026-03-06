@@ -1,6 +1,6 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-bigscreen-git
-pkgver=5.26.90.r756.g638831b
+pkgver=5.26.90.r757.gcae4149
 pkgrel=1
 pkgdesc="A big launcher giving you easy access to any installed apps and skills"
 arch=('any')
