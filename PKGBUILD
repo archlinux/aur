@@ -5,12 +5,12 @@ _crate="svg2pdf-cli"
 _cratever="0.13.0"
 pkgname="svg2pdf"
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The command line interface for svg2pdf.'
 url='https://crates.io/crates/svg2pdf-cli'
 license=('Apache-2.0' 'MIT')
 
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/svg2pdf-cli/0.13.0/download")
