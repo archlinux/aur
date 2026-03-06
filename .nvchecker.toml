@@ -1,0 +1,5 @@
+[tmux-plugin-panel-bin]
+source = "github"
+github = "marlocarlo/Tmux-Plugin-Panel"
+use_latest_release = true
+prefix = "v"
