@@ -1,0 +1,17 @@
+pkgbase = tayga-git
+	pkgdesc = Simple, no-fuss NAT64 for Linux
+	pkgver = git
+	pkgrel = 1
+	url = https://github.com/apalrd/tayga
+	arch = i686
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	depends = glibc
+	provides = tayga
+	conflicts = tayga
+	backup = etc/tayga/default.conf
+	source = git+https://github.com/apalrd/tayga
+	sha256sums = SKIP
+
+pkgname = tayga-git
