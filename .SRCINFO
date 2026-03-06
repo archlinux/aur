@@ -1,0 +1,29 @@
+pkgbase = vsview
+	pkgdesc = The next-generation VapourSynth previewer
+	pkgver = 0.1.0b0
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-view
+	arch = x86_64
+	license = EUPL-1.2
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-hatchling
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-versioningit
+	makedepends = python-wheel
+	depends = vapoursynth
+	depends = vapoursynth-plugin-vsjetpack
+	depends = python-jetpytools
+	depends = python-vsjetengine
+	depends = python-vspackrgb
+	depends = python-pydantic
+	depends = python-typer
+	depends = python-pygments
+	depends = python-pluggy
+	depends = python-typing_extensions
+	depends = pyside6
+	source = vsview::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=vsview/v0.1.0b0
+	sha256sums = SKIP
+
+pkgname = vsview
