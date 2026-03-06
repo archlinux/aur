@@ -16,20 +16,23 @@ conflicts=("rdbcli" "rdbcli-git")
 replaces=("rdbcli")
 options=(!strip)
 
-if [[ "${CARCH}" == "x86_64" ]]; then
-  runtime_identifier="x64"
-  sha256sums=("857dcfa17855ea8fae1c8042fec13daa89281e9f31965abe6d812071c0686ed6")
-elif [[ "${CARCH}" == "aarch64" ]]; then
-  runtime_identifier="arm64"
-  sha256sums=("06dc5da61feb08ddf0e5321cc0edd9e5327185012363b38902761f6f1c7d89fe")
-elif [[ "${CARCH}" == "armv7h" ]]; then
-  runtime_identifier="arm"
-  sha256sums=("0fb330e2ffa6c91011ffcaaf055eff61f82e9b869e926f0bf63a5a2d32cc75ad")
-fi
+declare -A _arch_map=(
+    ["x86_64"]="x64"
+    ["armv7h"]="arm"
+    ["aarch64"]="arm64"
+)
 
-gzip_filename="rdbcli-${pkgver}-linux-${runtime_identifier}.tar.gz"
+declare -A _sha256sums=(
+    ["x86_64"]="857dcfa17855ea8fae1c8042fec13daa89281e9f31965abe6d812071c0686ed6"
+    ["armv7h"]="06dc5da61feb08ddf0e5321cc0edd9e5327185012363b38902761f6f1c7d89fe"
+    ["aarch64"]="0fb330e2ffa6c91011ffcaaf055eff61f82e9b869e926f0bf63a5a2d32cc75ad"
+)
+
+gzip_filename="rdbcli-${pkgver}-linux-${_arch_map["${CARCH}"]}.tar.gz"
 
 source=("${url}/releases/download/${pkgver}/${gzip_filename}")
+
+sha256sums=("${_sha256sums[$CARCH]}")
 
 prepare() {
   :
