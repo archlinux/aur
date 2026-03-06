@@ -1,0 +1,19 @@
+pkgbase = omp-manager-bin
+	pkgdesc = Installation and manager for 'Oh My Posh'
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/marlocarlo/omp-manager
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = omp-manager
+	conflicts = omp-manager
+	source = README-0.1.2.md::https://raw.githubusercontent.com/marlocarlo/omp-manager/v0.1.2/README.md
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/marlocarlo/omp-manager/v0.1.2/LICENSE
+	sha256sums = 494383aee9470a1b5f5b679f19774396dd04066e4bb4c623d43e71f1099f4049
+	sha256sums = ecc876ad078555efcf4aed435dd4a8ee9e2beff482c3b7d2a114813ebff3fbd6
+	source_x86_64 = omp-manager-x86_64-0.1.2.tgz::https://github.com/marlocarlo/omp-manager/releases/download/v0.1.2/omp-manager-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = df2b818bcea07f1503f00da7bade119aa7fb05f71e2fa32f21e4f85ef0f10e78
+
+pkgname = omp-manager-bin

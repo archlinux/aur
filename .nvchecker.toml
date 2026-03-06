@@ -1,0 +1,5 @@
+[omp-manager-bin]
+source = "github"
+github = "marlocarlo/omp-manager"
+use_latest_release = true
+prefix = "v"
