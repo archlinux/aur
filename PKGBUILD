@@ -5,12 +5,12 @@ _crate="cargo-diet"
 _cratever="1.2.7"
 pkgname="cargo-diet"
 pkgver=1.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Make your crate lean by computing size-optimal include directives for Cargo m...'
 url='https://crates.io/crates/cargo-diet'
 license=('MIT')
 
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/cargo-diet/1.2.7/download")

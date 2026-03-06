@@ -1,7 +1,7 @@
 pkgbase = cargo-diet
 	pkgdesc = Make your crate lean by computing size-optimal include directives for Cargo m...
 	pkgver = 1.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://crates.io/crates/cargo-diet
 	arch = aarch64
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = cargo-diet
 	license = MIT
 	makedepends = cargo
 	makedepends = cargo-auditable
-	depends = gcc-libs
+	depends = libgcc
 	source = cargo-diet-1.2.7.tar.gz::https://static.crates.io/crates/cargo-diet/1.2.7/download
 	sha512sums = 15fae7b330131bfdc426fa7f5a500bf40c6fe1110ebf66c9861bc4f392f8467fd52f32c2f6f6f395801efd13a26e30b78a3904c14501f0154e7fcf10c56b2b83
 
