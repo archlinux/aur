@@ -3,7 +3,7 @@
 _pkgname=qttube
 _pkgver=1.0
 pkgname=${_pkgname}-git
-pkgver=${_pkgver}.r573.g39b8dc2
+pkgver=${_pkgver}.r608.gdfe6619
 pkgrel=1
 pkgdesc="A Qt frontend for YouTube."
 arch=('i686' 'x86_64' 'aarch64')
@@ -53,7 +53,6 @@ build() {
 package() {
     DESTDIR="$pkgdir" cmake --install build
 
-    cd "${srcdir}/QtTube"
-    install -Dm644 "application/program_info/qttube.desktop" "$pkgdir/usr/share/applications/qttube.desktop"
-    install -Dm644 "application/res/qttube.svg" "$pkgdir/usr/share/pixmaps/qttube.svg"
+    install -Dm644 "build/program_info/qttube.desktop" "$pkgdir/usr/share/applications/qttube.desktop"
+    install -Dm644 "$srcdir/QtTube/application/res/qttube.svg" "$pkgdir/usr/share/pixmaps/qttube.svg"
 }
