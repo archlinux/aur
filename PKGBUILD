@@ -2,7 +2,7 @@
 # Maintainer: Luca Giugliardi <lukeemhigh plus dev at protonmail dot com>
 
 pkgname='docker-scout'
-pkgver=1.20.0
+pkgver=1.20.1
 pkgrel=1
 pkgdesc="Docker Scout is a set of software supply chain features integrated into Docker's user interfaces and command line interface (CLI)."
 url='https://github.com/docker/scout-cli'
@@ -11,13 +11,11 @@ license=('PROPRIETARY')
 
 get_sums() {
   # usage: bash -c 'source PKGBUILD && get_sums'
-  for CARCH in x86_64 aarch64
-  do
+  for CARCH in x86_64 aarch64; do
     pkgver=$(grep '^pkgver=' PKGBUILD | cut -f2 -d=)
     CARCH=$CARCH makepkg --verifysource --nobuild --noextract
   done
-  for CARCH in x86_64 aarch64
-  do
+  for CARCH in x86_64 aarch64; do
     echo "sha256sums_${CARCH}=("
     [ "$CARCH" == aarch64 ] && CARCH=arm64
     sha256sum "docker-scout_${pkgver}_${CARCH}.tar.gz" | sed -r 's|(\w+).+|  \1|'
@@ -28,10 +26,10 @@ get_sums() {
 source_aarch64=("${pkgname}_${pkgver}_arm64.tar.gz::https://github.com/docker/scout-cli/releases/download/v${pkgver}/docker-scout_${pkgver}_linux_arm64.tar.gz")
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/docker/scout-cli/releases/download/v${pkgver}/docker-scout_${pkgver}_linux_amd64.tar.gz")
 sha256sums_x86_64=(
-  6c134d5ad94325b91a18730cc25f2a5785c658b737af36e553e8fec7b34d9826
+  ae9be366433aa2f7ba13eabeb2920148b8e66751b22f137edf07dc7fa39a9319
 )
 sha256sums_aarch64=(
-  f21b17d2e06b592eaadae5ab491cacf8c25781c9542a580d6b3663dad42b9dd0
+  739bcd3fac5e7dbdf228c125381e84ff7744fe8ba68ef777c8f7897f2c6b0f29
 )
 
 package() {
