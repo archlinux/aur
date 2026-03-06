@@ -9,6 +9,7 @@ pkgdesc='Document viewer for PDF and other document formats aimed at the GNOME d
 arch=(x86_64)
 url='https://apps.gnome.org/Papers/'
 license=(GPL-2.0-or-later)
+groups=(gnome)
 depends=(
   cairo
   dconf
@@ -76,11 +77,6 @@ build() {
 # }
 
 package() {
-  groups=(gnome)
-
   meson install -C build --destdir "$pkgdir" --no-rebuild
-
-  mkdir -p doc/usr/share
-  mv {"$pkgdir",doc}/usr/share/doc
 }
 

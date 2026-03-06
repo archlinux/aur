@@ -4,6 +4,7 @@ pkgbase = papers-git
 	pkgrel = 1
 	url = https://apps.gnome.org/Papers/
 	arch = x86_64
+	groups = gnome
 	license = GPL-2.0-or-later
 	makedepends = appstream
 	makedepends = blueprint-compiler
@@ -40,4 +41,3 @@ pkgbase = papers-git
 	b2sums = SKIP
 
 pkgname = papers-git
-	groups = gnome
