@@ -1,6 +1,6 @@
 # Maintainer: Michael König <m.koenig@kit.edu>
 pkgname=bwlog
-pkgver=0.3.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Lightweight Linux system logger for per-core CPU, NIC throughput, and interrupt rates"
 arch=('x86_64')
@@ -9,12 +9,12 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/v$pkgver.tar.gz")
-sha256sums=('d6284c78d6d80ca69b1427ba30e8a0997769576711190e88275b07beb783ddd8')
+sha256sums=('0ef092a2a2b022f44aaaf3695a2a6efcfa98c3db0841215b7ba0200ebbcd8f00')
 
 
 prepare() {
     cd "$pkgname-v$pkgver-"*
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -23,7 +23,7 @@ build() {
     export CARGO_TARGET_DIR=target
     export CFLAGS="${CFLAGS/-flto=auto/}"
     export CXXFLAGS="${CXXFLAGS/-flto=auto/}"
-    cargo build --release --locked
+    cargo build --release --frozen
 }
 
 package() {

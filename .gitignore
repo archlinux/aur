@@ -1,0 +1,4 @@
+src/
+pkg/
+bwlog*.tar.gz
+bwlog*.pkg.tar.zst
