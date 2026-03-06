@@ -3,8 +3,8 @@
 _pkgname1=kwin-x11
 _pkgname2=sonic-win
 pkgname="${_pkgname2}-bin"
-pkgver=6.6.1
-pkgrel=1
+pkgver=6.6.2
+pkgrel=2
 pkgdesc="kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre"
 arch=(x86_64)
 url="https://github.com/Sonic-DE/${_pkgname2}"
@@ -71,7 +71,7 @@ provides=($_pkgname kwin-x11 "${_pkgname1}-sonic-bin")
 conflicts=($_pkgname kwin-x11 "${_pkgname1}-sonic-bin")
 replaces=("${_pkgname1}-sonic-bin")
 
-sha256sums=('c4de4fa24a2296886dcb25f3bc00d1b0890d61b5e84726f043c7df0c0b3085f7')
+sha256sums=('2a7723e52895abdaab93aebe33044eb29a136dd384de3b538dc41b5cb120b883')
 
 package() {
   tar -xf "${_pkgname1}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" usr
