@@ -1,6 +1,6 @@
 # Maintainer: rzhli tayuebuliuhen@gmail.com
 pkgname='ftnn-desktop'
-pkgver='16.5.15018'
+pkgver='16.6.15108'
 pkgrel=1
 pkgdesc="Futu，富途，股票软件"
 arch=('x86_64')
@@ -29,8 +29,12 @@ package() {
     bsdtar -xf "FTNN_desktop_${pkgver}_amd64.deb"
     bsdtar -xf data.tar.* -C "${pkgdir}"
 
+    # 删除上游 deb 中误打包的 /out 目录
+    rm -rf "${pkgdir}/out"
+
     # 修复权限
     chmod +x "${pkgdir}/opt/FTNN/FTNN"
+    chmod 4755 "${pkgdir}/opt/FTNN/chrome-sandbox"
 
     # 建立软链接（指向 Launch 脚本以确保 LD_LIBRARY_PATH 正确设置）
     install -d "${pkgdir}/usr/bin"
