@@ -1,7 +1,7 @@
 pkgbase = cargo-doc2readme
 	pkgdesc = cargo subcommand to create a readme file containing the rustdoc comments from...
 	pkgver = 0.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://crates.io/crates/cargo-doc2readme
 	arch = aarch64
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = cargo-doc2readme
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = cargo-auditable
-	depends = gcc-libs
+	depends = libgcc
 	source = cargo-doc2readme-0.6.5.tar.gz::https://static.crates.io/crates/cargo-doc2readme/0.6.5/download
 	sha512sums = 62cba9920905b693427d70988fe9450b0a58c2a0e6cdc02b9479cb7db069bb11a46826105bde82f83c5d0c64cf2e224e19f21436aed5fee646dd13d5bfed36b1
 

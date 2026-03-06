@@ -5,12 +5,12 @@ _crate="cargo-doc2readme"
 _cratever="0.6.5"
 pkgname="cargo-doc2readme"
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='cargo subcommand to create a readme file containing the rustdoc comments from...'
 url='https://crates.io/crates/cargo-doc2readme'
 license=('Apache-2.0')
 
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/cargo-doc2readme/0.6.5/download")
