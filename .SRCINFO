@@ -1,0 +1,14 @@
+pkgbase = dustoff
+	pkgdesc = Find and remove JS/TS build artifacts wasting disk space
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/westpoint-io/dustoff
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs>=18.18.0
+	noextract = dustoff-1.0.0.tgz
+	source = https://registry.npmjs.org/dustoff/-/dustoff-1.0.0.tgz
+	sha256sums = 8cc42c03f1925bb44cde7b981a9f37e09a1a32a9cbf2630217479dd6342355d3
+
+pkgname = dustoff
