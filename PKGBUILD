@@ -2,7 +2,7 @@
 
 pkgname=python-jbom
 _name=${pkgname#python-}
-pkgver=6.28.0
+pkgver=6.28.1
 pkgrel=1
 pkgdesc="Intelligent KiCad Bill of Materials generator with inventory matching"
 provides=(${pkgname})
@@ -28,7 +28,7 @@ makedepends=(
 optdepends=('kicad')
 license=('MIT')
 source=("${_name}::git+${url}.git#tag=v$pkgver")
-sha256sums=('95da38f26b383b069042aee930c2c86b75e89bf150f9c3d739ba96dbe40b2451')
+sha256sums=('4494325dec1699d9b0d59ff190347a0760062f121b9713b5d2cd024018a0b0f8')
 
 prepare() {
     git -C "${srcdir}/${_name}" clean -dfx
