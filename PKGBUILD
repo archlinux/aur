@@ -1,6 +1,6 @@
 # Maintainer: LeonLionHeart
 pkgname=archvault
-pkgver=5.0.2_beta
+pkgver=5.0.3_beta
 pkgrel=1
 pkgdesc="Backup & Restore Manager for Arch Linux — GUI for rsync, btrfs, tar, rclone with scheduling, encryption, and cloud support"
 arch=('any')
@@ -29,7 +29,7 @@ optdepends=(
     'xdg-desktop-portal: GNOME Background Apps panel integration'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver//_/-}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('9b5af52df858225a1a7b49597e0bf3a894a8ad19d8e55f307e4e20fe7e4a5ea1')
 
 package() {
     cd "${srcdir}/ArchVault-${pkgver//_/-}"
