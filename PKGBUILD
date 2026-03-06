@@ -5,9 +5,9 @@
 _arch=armv7l
 _target=$_arch-unknown-linux-gnueabihf
 pkgname=$_arch-binutils
-pkgver=2.45
+pkgver=2.46
 pkgrel=1
-_commit=2bc7af1ff7732451b6a7b09462a815c3284f9613
+_commit=49d4d3fafa4ec4ff5a3460d91d5b1ed5286487db
 pkgdesc='A set of programs to assemble and manipulate binary and object files for armv7l'
 arch=('x86_64')
 url='https://www.gnu.org/software/binutils/'
@@ -17,7 +17,7 @@ makedepends=('git')
 source=(git+https://sourceware.org/git/binutils-gdb.git#commit=${_commit}
   gold-warn-unsupported.patch
 )
-sha256sums=('005763c1ecf23168be877788ed148467d31b1852ff15b27c0f69343c2a64652a'
+sha256sums=('0a4d90af84c0c310048fa80352178fc16bfb98de6dbf7c7efeb1d7f6276ed011'
             '2d430b66f84a19c154725ec535280c493be1d34f1a90f95208dce02fecd0e4e4')
 
 validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93'  # Tristan Gingold <gingold@adacore.com>
