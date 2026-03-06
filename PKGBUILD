@@ -10,7 +10,7 @@ depends=()
 makedepends=('rust' 'cargo')
 backup=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('83eb188c2ffe70072f9bd9e0db532d57cea7af41d0eda740c7b7c26efad867c9')
+sha256sums=('09bd7f7caa8451fad78a33efce9f3b368c614b2893866f57e27baa7ccd183382')
 prepare() {
     cd "ResonanceID-cli-$pkgver"
     cargo fetch --locked
