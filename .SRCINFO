@@ -1,7 +1,7 @@
 pkgbase = sonic-x11-session-bin
 	pkgdesc = KDE Plasma X11 Session, light version with fixes and improvements
-	pkgver = 6.6.1
-	pkgrel = 2
+	pkgver = 6.6.2
+	pkgrel = 1
 	url = https://github.com/Sonic-DE/plasma-workspace-sonic
 	arch = x86_64
 	license = custom
@@ -114,9 +114,9 @@ pkgbase = sonic-x11-session-bin
 	conflicts = sonic-x11-session
 	conflicts = plasma-x11-session-sonic
 	replaces = plasma-x11-session-sonic
-	noextract = -6.6.1-2-x86_64.pkg.tar.zst
+	noextract = -6.6.2-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://x11libre.net/repo/arch_based/x86_64/sonic-x11-session-6.6.1-2-x86_64.pkg.tar.zst
-	sha256sums = fa35a0d09421533ec457ecc2d8cf846a3f27664944095859871a2f0f06668e2e
+	source = https://x11libre.net/repo/arch_based/x86_64/sonic-x11-session-6.6.2-1-x86_64.pkg.tar.zst
+	sha256sums = 16556b01c3e48abfeaf2c483034f5bc6d3e398712308e0c044862783cd3a3a3e
 
 pkgname = sonic-x11-session-bin
