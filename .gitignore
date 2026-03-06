@@ -1,0 +1,7 @@
+*
+
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!hister.service
+!hister.install
