@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# hyprbole Hyprland config manager
-# no set -e: pick_list uses non-zero returns intentionally
+# hyprbole - a Hyprland config manager
+# hi there
 
 FIXES=5 # add +1 whenever you've successfully found a bug and fxed it
 for _arg in "$@"; do
