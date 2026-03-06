@@ -52,6 +52,7 @@ package() {
     # Create directories
     install -dm755 "$pkgdir/usr/bin"
     install -dm755 "$pkgdir/usr/lib/somafm_tui"
+    install -dm755 "$pkgdir/usr/lib/somafm_tui/core"
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
     install -dm755 "$pkgdir/usr/share/doc/$pkgname"
     install -dm755 "$pkgdir/usr/share/bash-completion/completions"
@@ -71,6 +72,13 @@ package() {
     install -Dm644 "$srcdir/$pkgname/somafm_tui/http_client.py" "$pkgdir/usr/lib/somafm_tui/http_client.py"
     install -Dm644 "$srcdir/$pkgname/somafm_tui/terminal.py" "$pkgdir/usr/lib/somafm_tui/terminal.py"
     install -Dm644 "$srcdir/$pkgname/somafm_tui/timer.py" "$pkgdir/usr/lib/somafm_tui/timer.py"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/cli.py" "$pkgdir/usr/lib/somafm_tui/cli.py"
+
+    # Install core module files
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/core/__init__.py" "$pkgdir/usr/lib/somafm_tui/core/__init__.py"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/core/playback.py" "$pkgdir/usr/lib/somafm_tui/core/playback.py"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/core/state.py" "$pkgdir/usr/lib/somafm_tui/core/state.py"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/core/input.py" "$pkgdir/usr/lib/somafm_tui/core/input.py"
 
     # Install executable wrapper
     install -Dm755 somafm-tui "$pkgdir/usr/bin/somafm-tui"
@@ -82,7 +90,6 @@ package() {
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 CONTRIBUTING.md "$pkgdir/usr/share/doc/$pkgname/CONTRIBUTING.md"
-    install -Dm644 IMPROVEMENTS.md "$pkgdir/usr/share/doc/$pkgname/IMPROVEMENTS.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-pkgver=0.4.9
+pkgver=0.5.0
