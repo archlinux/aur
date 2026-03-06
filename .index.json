@@ -1,6 +1,6 @@
 {
-  ".i": 5,
+  ".i": 6,
   "crate": "qrcode2pdf",
   "version": "0.1.1",
-  "pkgrel": 1
+  "pkgrel": 2
 }

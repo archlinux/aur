@@ -5,12 +5,12 @@ _crate="qrcode2pdf"
 _cratever="0.1.1"
 pkgname="qrcode2pdf"
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Render barcodes (QR Codes, Aztec, Data Matrix, etc) using rxing into a krilla...'
 url='https://crates.io/crates/qrcode2pdf'
 license=('EUPL-1.2')
 
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/qrcode2pdf/0.1.1/download")
