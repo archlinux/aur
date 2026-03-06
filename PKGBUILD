@@ -5,12 +5,12 @@ _crate="faketty"
 _cratever="1.0.20"
 pkgname="faketty"
 pkgver=1.0.20
-pkgrel=1
+pkgrel=2
 pkgdesc='Wrapper to exec a command in a pty, even if redirecting the output'
 url='https://crates.io/crates/faketty'
 license=('Apache-2.0' 'MIT')
 
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
 source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/faketty/1.0.20/download")
