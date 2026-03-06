@@ -5,12 +5,12 @@ _crate="hickory-dns"
 _cratever="0.25.2"
 pkgname="hickory-dns"
 pkgver=0.25.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Hickory DNS is a safe and secure DNS server with DNSSEC support. Eventually t...'
 url='https://hickory-dns.org/'
 license=('Apache-2.0' 'MIT')
 
-depends=('gcc-libs')
+depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 replaces=('trust-dns')
 
@@ -82,7 +82,7 @@ check() {
 package() {
 	cd "$srcdir/$_crate-$_cratever"
 	install -Dm755 "target/release/hickory-dns" -t "$pkgdir/usr/bin"
-	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 'LICENSE-APACHE' -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 'LICENSE-MIT' -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 "$srcdir/hickory-dns.service" -t "$pkgdir//usr/lib/systemd/system/"
 }

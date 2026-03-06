@@ -1,7 +1,7 @@
 pkgbase = hickory-dns
 	pkgdesc = Hickory DNS is a safe and secure DNS server with DNSSEC support. Eventually t...
 	pkgver = 0.25.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hickory-dns.org/
 	arch = aarch64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = hickory-dns
 	license = MIT
 	makedepends = cargo
 	makedepends = cargo-auditable
-	depends = gcc-libs
+	depends = libgcc
 	replaces = trust-dns
 	source = hickory-dns-0.25.2.tar.gz::https://static.crates.io/crates/hickory-dns/0.25.2/download
 	source = hickory-dns.service
