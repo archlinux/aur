@@ -1,7 +1,7 @@
 # Maintainer: cafreo
 pkgname=wealthfolio-bin
 _pkgname=Wealthfolio
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 epoch=
 pkgdesc="A Beautiful and Boring Investment Tracker, with Local Data Storage. No Subscriptions, No Cloud."
