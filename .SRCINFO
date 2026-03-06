@@ -1,0 +1,19 @@
+pkgbase = kqalc-bin
+	pkgdesc = Full qalculate power in KRunner
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/noctuum/kqalc
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	depends = libqalculate
+	optdepends = wl-clipboard: clipboard support on Wayland
+	optdepends = xclip: clipboard support on X11
+	provides = kqalc
+	conflicts = kqalc
+	source_x86_64 = https://github.com/noctuum/kqalc/releases/download/v0.1.0/kqalc_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = c8924ae3976db30704a75d7c065dec5d5faf6177ed93697e7c3aa2fd944bf0c7
+	source_aarch64 = https://github.com/noctuum/kqalc/releases/download/v0.1.0/kqalc_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 04ec112106553afb26abdc5734782138886ebe5e751dbcbcf0080ae49abfc810
+
+pkgname = kqalc-bin
