@@ -19,8 +19,6 @@ makedepends=(
     'qt6-base'
     'git'
 )
-provides=('dolphin-insync-plugin-plasma-6')
-conflicts=('dolphin-insync-plugin-plasma-6')
 source=("${pkgname}::git+https://github.com/felagund/dolphin-insync-plugin-plasma-6.git#branch=master")
 sha256sums=('SKIP')
 
