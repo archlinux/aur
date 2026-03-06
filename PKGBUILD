@@ -1,6 +1,6 @@
 pkgname=mtc
 pkgver=1.0.0.r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ compiler for mt-lang"
 arch=('x86_64')
 url="https://github.com/mystyy01/mt-lang-compiler"
@@ -20,7 +20,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make -j8 release
+  local mtc_version="${pkgver}-${pkgrel}"
+  make -j8 release MTC_VERSION="$mtc_version"
 }
 
 package() {
