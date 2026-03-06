@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Legacy Launcher
+Comment=Minecraft Legacy Launcher
+Exec=java -jar /usr/lib/legacy-launcher/LegacyLauncher.jar
+Icon=minecraft
+Terminal=false
+Categories=Game;

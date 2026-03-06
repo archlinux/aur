@@ -1,0 +1,14 @@
+pkgbase = legacy-launcher-ely.by
+	pkgdesc = Legacy launcher version from ely.by
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://llaun.ch/
+	arch = any
+	license = GPL3
+	depends = jdk21-openjdk>=21
+	source = LegacyLauncher.jar
+	source = legacy-launcher.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = legacy-launcher-ely.by
