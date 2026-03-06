@@ -1,4 +1,4 @@
-# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-03-03 10:45:15
+# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-03-06 10:41:31
 
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Maintainer: Piotr Gorski <piotrgorski@cachyos.org>
@@ -177,7 +177,7 @@ _minor=rc1
 _rcver=rc1
 pkgver=${_major}.${_rcver}
 _tagrel=2
-pkgrel=1.2
+pkgrel=1.3
 #_stable=${_major}.${_minor}
 #_stable=${_major}
 _stable=${_major}-${_rcver}
