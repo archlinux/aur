@@ -1,5 +1,5 @@
 pkgname=vapoursynth-preview-git
-pkgver=0.11.0.1.g8f9f666
+pkgver=0.20.0.0.g41d0727
 pkgrel=1
 pkgdesc="Previewer for VapourSynth scripts (GIT version)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=(
     'python-pyqt6-sip'
     'python-pyaml'
     'python-qdarkstyle'
-    'vapoursynth-plugin-vsengine'
+    'python-vsjetengine'
     'vapoursynth-plugin-vsakarin'
     'python-matplotlib'
     'vapoursynth-plugin-vstools'
@@ -20,6 +20,7 @@ depends=(
 makedepends=('git'
     'python-pip'
     'python-wheel'
+    'python-versioningit'
 )
 provides=("vapoursynth-preview")
 conflicts=("vapoursynth-preview")
