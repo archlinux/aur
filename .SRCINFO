@@ -1,0 +1,18 @@
+pkgbase = python-vspackrgb
+	pkgdesc = RGB packing for VapourSynth frames
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://pypi.org/project/vspackrgb/
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	makedepends = python-versioningit
+	depends = python-hatch-cython
+	source = https://files.pythonhosted.org/packages/2d/db/936d4e4a55c39cf74ea622bbf2dd71cdaeab93e85611e26292430ff627ce/vspackrgb-1.1.0.tar.gz
+	sha256sums = add0f2fc205772fb2148b73df9521d64a09c3ad503c6566ec62f72b5c6c83d50
+
+pkgname = python-vspackrgb
