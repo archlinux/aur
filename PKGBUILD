@@ -12,7 +12,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=(!strip)
 source=('awakened-poe-trade.desktop' 'awakened-poe-trade-browser.desktop' 'git+https://github.com/SnosMe/awakened-poe-trade.git')
-md5sums=('757dfd41e34ba7065e4882d418acb91b' 'eab1cba6facb9d08237b3e93c7375145' 'SKIP')
+md5sums=('2eab8c2ffd753ffa92c4d29afd40357e' 'a1f76ef3919af54e7d3d0d9d41539320' 'SKIP')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean

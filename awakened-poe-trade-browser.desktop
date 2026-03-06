@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Awakened PoE Trade (Browser)
 Comment=Path of Exile app for price checking (Browser)
-Exec=/usr/bin/awakened-poe-trade --no-overlay
+Exec=/usr/bin/awakened-poe-trade --no-overlay --ozone-platform=x11
 Icon=/usr/share/pixmaps/awakened-poe-trade.ico
 Type=Application
 Categories=Utility;Game;GameTool;
