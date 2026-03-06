@@ -1,6 +1,6 @@
 pkgname=mtc
 pkgver=0.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="C++ compiler for mt-lang"
 arch=('x86_64')
 url="https://github.com/mystyy01/mt-lang-compiler"
@@ -12,7 +12,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "$srcdir/$pkgname"
-  make release
+  make -j8 release
 }
 
 package() {
