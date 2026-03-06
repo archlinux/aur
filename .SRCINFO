@@ -1,0 +1,16 @@
+pkgbase = seniorpw-git
+	pkgdesc = password manager using age as backend; inspired by pass
+	pkgver = r203.77aa38a
+	pkgrel = 1
+	url = https://gitlab.com/retirement-home/seniorpw
+	arch = any
+	license = AGPL3
+	makedepends = cargo
+	makedepends = git
+	depends = tree
+	optdepends = git
+	optdepends = wl-clipboard
+	source = git+https://gitlab.com/retirement-home/seniorpw.git
+	md5sums = SKIP
+
+pkgname = seniorpw-git
