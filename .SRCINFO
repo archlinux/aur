@@ -1,6 +1,6 @@
 pkgbase = python-mktxp
 	pkgdesc = Prometheus Exporter for Mikrotik RouterOS devices
-	pkgver = 1.2.16
+	pkgver = 1.2.17
 	pkgrel = 1
 	url = https://github.com/akpw/mktxp
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-mktxp
 	depends = speedtest-cli
 	depends = python-waitress
 	depends = python-packaging
-	source = mktxp-1.2.16.tar.gz::https://github.com/akpw/mktxp/archive/refs/tags/v1.2.16.tar.gz
-	sha256sums = 03efbfd21d27348f72c0e6d4737ced5e70cd4d2de6ac83121d110456982b54eb
+	source = mktxp-1.2.17.tar.gz::https://github.com/akpw/mktxp/archive/refs/tags/v1.2.17.tar.gz
+	sha256sums = a4b1e96945d70810dee4d55df6c0867ae440b8d10e956c80dc93eff46a1535fa
 
 pkgname = python-mktxp
