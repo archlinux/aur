@@ -1,7 +1,7 @@
 # Maintainer: wituz
 pkgname=saphi-bin
 pkgver=0.0.8.2.0.0.8.1beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Leaderboard and time-trial tracking client for Crash Team Racing custom tracks"
 arch=('x86_64')
 url="https://5ever.crashteamranking.com/"
@@ -18,13 +18,11 @@ sha256sums=('SKIP'  # Checksum changes with each release; using /latest/ URL
 package() {
     # Install main application
     install -dm755 "${pkgdir}/opt/saphi"
-    cp -r "${srcdir}/Client"/* "${pkgdir}/opt/saphi/"
-
-    # Make executable
-    chmod +x "${pkgdir}/opt/saphi/Client"
+    install -Dm755 "${srcdir}/Client" "${pkgdir}/opt/saphi/Client"
+    cp -r "${srcdir}/data" "${pkgdir}/opt/saphi/data"
 
     # Install icon
-    install -Dm644 "${srcdir}/Client/data/wheel_icon.png" "${pkgdir}/usr/share/pixmaps/saphi.png"
+    install -Dm644 "${srcdir}/data/wheel_icon.png" "${pkgdir}/usr/share/pixmaps/saphi.png"
 
     # Install desktop file
     install -Dm644 "${srcdir}/saphi.desktop" "${pkgdir}/usr/share/applications/saphi.desktop"
