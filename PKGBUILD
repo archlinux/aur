@@ -2,25 +2,54 @@
 
 _name="libavif"
 pkgname="lib32-${_name}"
-pkgver=1.3.0
+pkgver=1.4.0
+_libargparse=ee74d1b53bd680748af14e737378de57e2a0a954 # should match cmake/Modules/LocalLibargparse.cmake
 pkgrel=1
 pkgdesc="Library for encoding and decoding .avif files (32-bit)"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://github.com/AOMediaCodec/${_name}"
-license=('LicenseRef-libavif')
-depends=('lib32-aom' 'lib32-libdav1d' 'lib32-gcc-libs' 'lib32-glib2'
-         'lib32-glibc' 'lib32-libwebp' 'lib32-libyuv' 'lib32-rav1e'
-         'lib32-svt-av1' "${_name}>=${pkgver}")
-makedepends=('cmake>=3.13' 'lib32-gdk-pixbuf2' 'lib32-gtest') # 'nasm'
-provides=("${_name}.so")
-_pkgsrc="${_name}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${_name}_gtest.patch")
-sha256sums=('0a545e953cc049bf5bcf4ee467306a2f113a75110edf59e61248873101cd26c1'
+license=(
+  'LicenseRef-libavif'
+)
+depends=(
+  "${_name}>=${pkgver}"
+  'lib32-aom'
+  'lib32-libdav1d'
+  'lib32-gcc-libs'
+  'lib32-glib2'
+  'lib32-glibc'
+  'lib32-libwebp'
+  'lib32-libyuv'
+  'lib32-rav1e'
+  'lib32-svt-av1'
+)
+makedepends=(
+  'cmake>=3.13'
+  'git'
+  'lib32-gdk-pixbuf2'
+  'lib32-gtest'
+  'lib32-libxml2'
+  # 'nasm'
+)
+provides=(
+  "${_name}.so"
+)
+_pkgsrc="${url##*/}"
+source=(
+  "git+${url}.git#tag=v${pkgver}"
+  "git+https://github.com/kmurray/libargparse.git#commit=${_libargparse}"
+  "${_name}_gtest.patch"
+)
+sha256sums=('25bee0eaa99a437183f18fc45bf8da8ba8946d91b7b7d4df30c599aa4bdad829'
+            '235020da02227503eb09961efd664aca6e544a8b3ed5533cf81e1862bb94f48f'
             '2b35300a447f70d56809f35be961e6c12dff3e9034043775a42f4c0aba6a09c5')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
+  cp -a "${srcdir}/libargparse" -t "ext"
+
   patch -Np1 -i "${srcdir}/${_name}_gtest.patch"
 }
 
@@ -31,8 +60,6 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   local cmake_options=(
     -G 'Unix Makefiles'
-    -B "${_pkgsrc}/build"
-    -S "${_pkgsrc}"
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
@@ -47,11 +74,12 @@ build() {
     -D AVIF_CODEC_RAV1E=SYSTEM
     -D AVIF_CODEC_SVT=SYSTEM
     -D AVIF_LIBSHARPYUV=SYSTEM
+    -D AVIF_LIBXML2=SYSTEM
     -D AVIF_GTEST:BOOL=ON
-)
+  )
   
   cd "${srcdir}"
-  cmake "${cmake_options[@]}"
+  cmake -B "${_pkgsrc}/build" -S "${_pkgsrc}" "${cmake_options[@]}"
   cmake --build "${_pkgsrc}/build"
 }
 

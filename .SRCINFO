@@ -1,13 +1,16 @@
 pkgbase = lib32-libavif
 	pkgdesc = Library for encoding and decoding .avif files (32-bit)
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/AOMediaCodec/libavif
 	arch = x86_64
 	license = LicenseRef-libavif
 	makedepends = cmake>=3.13
+	makedepends = git
 	makedepends = lib32-gdk-pixbuf2
 	makedepends = lib32-gtest
+	makedepends = lib32-libxml2
+	depends = libavif>=1.4.0
 	depends = lib32-aom
 	depends = lib32-libdav1d
 	depends = lib32-gcc-libs
@@ -17,11 +20,12 @@ pkgbase = lib32-libavif
 	depends = lib32-libyuv
 	depends = lib32-rav1e
 	depends = lib32-svt-av1
-	depends = libavif>=1.3.0
 	provides = libavif.so
-	source = libavif-1.3.0.tar.gz::https://github.com/AOMediaCodec/libavif/archive/refs/tags/v1.3.0.tar.gz
+	source = git+https://github.com/AOMediaCodec/libavif.git#tag=v1.4.0
+	source = git+https://github.com/kmurray/libargparse.git#commit=ee74d1b53bd680748af14e737378de57e2a0a954
 	source = libavif_gtest.patch
-	sha256sums = 0a545e953cc049bf5bcf4ee467306a2f113a75110edf59e61248873101cd26c1
+	sha256sums = 25bee0eaa99a437183f18fc45bf8da8ba8946d91b7b7d4df30c599aa4bdad829
+	sha256sums = 235020da02227503eb09961efd664aca6e544a8b3ed5533cf81e1862bb94f48f
 	sha256sums = 2b35300a447f70d56809f35be961e6c12dff3e9034043775a42f4c0aba6a09c5
 
 pkgname = lib32-libavif

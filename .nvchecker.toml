@@ -2,3 +2,5 @@
 source = "archpkg"
 archpkg = "libavif"
 strip_release = true
+from_pattern = '^(.*)$'
+to_pattern = '\1updatelibargparse'
