@@ -4,7 +4,7 @@
 
 _target=riscv-none-elf
 pkgname=$_target-binutils
-pkgver=2.45.1
+pkgver=2.46.0
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the RISC-V (bare-metal) target'
 arch=(x86_64)
@@ -13,8 +13,8 @@ license=(GPL)
 depends=(zlib libelf)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
 sha512sums=(
-    'ea030419eba387579ab717be7e3223fc99e93b586860b06003c12489f93441640d4082736f76aa5e98233db4f46e232f536a45e471486de1f5b64e1b827c167e'
-    '1b0e413032c86ff1b9550043f21eca9120bb528c9eb47d39df7ca2de29754e4081da00e0f41ab913d7bd8ccc28d3ea5811e245734bf3b92b973c3eba6aabd390'
+    '32f880bb4f69351f4ae54a5d00359625c6c49d8e76624fb5cffdf174c79c8d3212f66225b81c12933c6ed59604ab652560773dd92fab384b930c97a9d4e1fdf2'
+    '018464031b1fb9031e7dce39fed33a12cc91eb77a931d218c885dee01154ead5d45b237c5670eff2c487e6d957a760bc6f2d7e9072b86ba5ae24dc776dd21908'
 )
 validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F' # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
               '5EF3A41171BB77E6110ED2D01F3D03348DB1A3E2') # Sam James <sam@cmpct.info>
@@ -25,6 +25,8 @@ prepare() {
 }
 
 build() {
+
+  CFLAGS="${CFLAGS} -Wno-error"
   cd binutils-$pkgver
 
   ./configure --target=$_target \
