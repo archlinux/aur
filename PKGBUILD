@@ -5,12 +5,12 @@ _crate="hf2-cli"
 _cratever="0.3.3"
 pkgname="hf2-cli"
 pkgver=0.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc='CLI for Microsoft HID Flashing Library for UF2 Bootloaders'
 url='https://crates.io/crates/hf2-cli'
 license=('Apache-2.0' 'MIT')
 
-depends=('gcc-libs' 'hidapi' 'libusb')
+depends=('libgcc' 'hidapi' 'libusb')
 makedepends=('cargo' 'cargo-auditable')
 optdepends=('adafruit-boards-udev: udev rule for adafruit boards')
 

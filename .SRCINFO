@@ -1,7 +1,7 @@
 pkgbase = hf2-cli
 	pkgdesc = CLI for Microsoft HID Flashing Library for UF2 Bootloaders
 	pkgver = 0.3.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://crates.io/crates/hf2-cli
 	arch = aarch64
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = hf2-cli
 	license = MIT
 	makedepends = cargo
 	makedepends = cargo-auditable
-	depends = gcc-libs
+	depends = libgcc
 	depends = hidapi
 	depends = libusb
 	optdepends = adafruit-boards-udev: udev rule for adafruit boards
