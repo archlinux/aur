@@ -1,5 +1,5 @@
 pkgbase = proton-vpn-qt-app
-	pkgdesc = Qt6 GUI frontend for the ProtonVPN CLI
+	pkgdesc = A Qt GUI frontend for the ProtonVPN CLI
 	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/wheat32/proton-vpn-qt-app
