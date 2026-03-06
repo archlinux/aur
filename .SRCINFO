@@ -8,6 +8,6 @@ pkgbase = resonanceid-cli
 	makedepends = rust
 	makedepends = cargo
 	source = resonanceid-cli-0.8.2.tar.gz::https://github.com/rugbedbugg/ResonanceID-cli/archive/v0.8.2.tar.gz
-	sha256sums = 09bd7f7caa8451fad78a33efce9f3b368c614b2893866f57e27baa7ccd183382
+	sha256sums = b1030164a7dab14f08d18c30279b9920fc56c1577b41707bc807061a2c20b292
 
 pkgname = resonanceid-cli
