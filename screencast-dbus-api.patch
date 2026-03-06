@@ -1,4 +1,4 @@
-From 0d4e92287891016f88c8387815bfcd42430adb48 Mon Sep 17 00:00:00 2001
+From 319ff2d2a7b3bf0415664b47b62684073da22a37 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jerzy=20Ko=C5=82osowski?= <jerzy@kolosowscy.pl>
 Date: Sun, 22 Feb 2026 06:57:03 +0100
 Subject: [PATCH 1/2] plugins/screencast: Fix potential null dereference in
@@ -30,7 +30,7 @@ index 59708970ea..c565a337da 100644
 2.53.0
 
 
-From 3c016d547fa3bf86696e7d05f91224e893c93d25 Mon Sep 17 00:00:00 2001
+From 6f2e4314886233897c2c00bfed40356f5dbb216d Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jerzy=20Ko=C5=82osowski?= <jerzy@kolosowscy.pl>
 Date: Sun, 22 Feb 2026 06:57:23 +0100
 Subject: [PATCH 2/2] plugins/screencast: Add D-Bus API for stream
