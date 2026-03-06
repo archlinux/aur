@@ -5,12 +5,12 @@ _crate="lottieconv"
 _cratever="0.3.1"
 pkgname="lottieconv"
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Convert lottie files to WEBP or GIF'
 url='https://crates.io/crates/lottieconv'
 license=('MIT')
 
-depends=('gcc-libs' 'libwebp' 'rlottie')
+depends=('libgcc' 'libwebp' 'rlottie')
 makedepends=('cargo' 'cargo-auditable' 'clang')
 conflicts=('lottie2gif' 'lottie2webp')
 replaces=('lottie2gif' 'lottie2webp')
