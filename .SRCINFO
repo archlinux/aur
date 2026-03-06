@@ -1,7 +1,7 @@
 pkgbase = gram-editor-bin
 	pkgdesc = A code editor for humanoid apes and grumpy toads
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://codeberg.org/GramEditor/gram
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -34,6 +34,6 @@ pkgbase = gram-editor-bin
 	conflicts = gram-editor
 	conflicts = gram
 	source = gram-editor-bin-1.0.0.tar.gz::https://codeberg.org/GramEditor/gram/releases/download/1.0.0/gram-linux-x86_64-1.0.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 12b945739396312d9af27b1866d5b05ac6caf78415027798f5a68c1282bec331
 
 pkgname = gram-editor-bin

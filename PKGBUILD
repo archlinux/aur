@@ -1,7 +1,7 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 pkgname=gram-editor-bin
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A code editor for humanoid apes and grumpy toads"
 
 provides=(gram-editor gram)
@@ -38,19 +38,14 @@ optdepends=('clang: improved C/C++ language support'
             'rust-analyzer: improved Rust language support')
 
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/${pkgver}/gram-linux-x86_64-${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('12b945739396312d9af27b1866d5b05ac6caf78415027798f5a68c1282bec331')
 
 package() {
 	cd "gram.app"
-
-	cp -r . "${pkgdir}/usr"
 	
-	rm -rf "${pkgdir}/usr/lib"
-	
-	mkdir -p "${pkgdir}/usr/share" "${pkgdir}/usr/share/licenses" "${pkgdir}/usr/share/licenses/gram-editor" "${pkgdir}/usr/lib" "${pkgdir}/usr/lib/gram"
-	mv "${pkgdir}/usr/licenses.md" "${pkgdir}/usr/share/licenses/gram-editor/licenses.md"
-	
-	mv "${pkgdir}/usr/libexec/gram-editor" "${pkgdir}/usr/lib/gram/gram-editor"
-	rm -rf "${pkgdir}/usr/libexec"
+	install -Dm0755 bin/gram "$pkgdir/usr/bin/gram"
+	install -Dm0755 libexec/gram-editor "$pkgdir/usr/lib/gram/gram-editor"
+	install -Dm0644 share/applications/gram.desktop "$pkgdir/usr/share/applications/se.ziran.Gram.desktop"
+	install -Dm0644 share/icons/hicolor/512x512/apps/gram.png "$pkgdir/usr/share/icons/gram.png"
 }
 
