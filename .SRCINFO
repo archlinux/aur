@@ -1,7 +1,7 @@
 pkgbase = sonic-workspace-bin
 	pkgdesc = KDE Plasma Workspace, light version with fixes and improvements for X11 session
-	pkgver = 6.6.1
-	pkgrel = 2.1
+	pkgver = 6.6.2
+	pkgrel = 2
 	url = https://github.com/Sonic-DE/sonic-workspace
 	arch = x86_64
 	license = custom
@@ -114,9 +114,9 @@ pkgbase = sonic-workspace-bin
 	conflicts = sonic-workspace
 	conflicts = plasma-workspace-sonic-bin
 	replaces = plasma-workspace-sonic-bin
-	noextract = -6.6.1-2.1-x86_64.pkg.tar.zst
+	noextract = -6.6.2-2-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://x11libre.net/repo/arch_based/x86_64/sonic-workspace-6.6.1-2.1-x86_64.pkg.tar.zst
-	sha256sums = 7adeefb34795a8751d1128eeeb1b34fa29d9069e96dc52c1665e6e23ad8220b6
+	source = https://x11libre.net/repo/arch_based/x86_64/sonic-workspace-6.6.2-2-x86_64.pkg.tar.zst
+	sha256sums = cf49e9098dbf8570aab1cf16822d125db29c0b44f68f1e2782e0045a039b2688
 
 pkgname = sonic-workspace-bin
