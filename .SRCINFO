@@ -1,6 +1,6 @@
 pkgbase = orca-slicer-unstable-bin
 	pkgdesc = G-code generator for 3D printers (versions including beta, release candidates and stable versions)
-	pkgver = 2.3.2_rc
+	pkgver = 2.3.2_rc2
 	pkgrel = 1
 	url = https://github.com/OrcaSlicer/OrcaSlicer
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = orca-slicer-unstable-bin
 	conflicts = orca-slicer
 	options = !strip
 	options = !debug
-	source = https://github.com/OrcaSlicer/OrcaSlicer/releases/download/v2.3.2-rc/OrcaSlicer_Linux_AppImage_Ubuntu2404_V2.3.2-rc.AppImage
-	sha512sums = ba891306cd36f60ab3cd937c537444cf414d2c9d2a4a7340804c0e12029f634ad34d441e44441fbda7f1fdaac30b638633b0f02c182cc6bbc2df9fc11f00aa12
+	source = https://github.com/OrcaSlicer/OrcaSlicer/releases/download/v2.3.2-rc2/OrcaSlicer_Linux_AppImage_Ubuntu2404_V2.3.2-rc2.AppImage
+	sha512sums = c1966ba2046633aa85fa144d8e2d3f9481a87b0618470f5960d29fba4c97ca9cbb4b1c8597173839e763ab5f41385c117a37ccccdf4e95baefabd7f9ac5c43a5
 
 pkgname = orca-slicer-unstable-bin
