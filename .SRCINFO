@@ -1,17 +1,20 @@
 pkgbase = python-some-flask-helpers
 	pkgdesc = Generic tools for Flask applications
-	pkgver = 0.2.2
+	pkgver = 0.2.10
 	pkgrel = 1
 	url = https://github.com/marcus67/some_flask_helpers
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
+	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python-flask
 	depends = python-requests
-	source = python-some-flask-helpers-0.2.2.tar.gz::https://files.pythonhosted.org/packages/source/s/some-flask-helpers/some-flask-helpers-0.2.2.tar.gz
-	sha256sums = 303631b4108756711fdeaa4a008ed91082fd221c0ef7f56cc72c4d4a693943b6
+	depends = python-werkzeug
+	source = python-some-flask-helpers::git+https://github.com/marcus67/some_flask_helpers#commit=e75b9e0?signed
+	validpgpkeys = 75D11C9B6734A07B044F3FEB49382A9B7F488EF2
+	sha256sums = 72d26e4f56fe14256fc128c45e405701a0efcd49d525e4ea59006fa5b607aad5
 
 pkgname = python-some-flask-helpers
