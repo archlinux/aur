@@ -1,6 +1,6 @@
 pkgbase = adbyss-bin
 	pkgdesc = DNS blocklist manager
-	pkgver = 0.23.2
+	pkgver = 0.23.3
 	pkgrel = 1
 	url = https://github.com/Blobfolio/adbyss
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = adbyss-bin
 	depends = gcc-libs
 	provides = adbyss
 	conflicts = adbyss
-	source_x86_64 = https://github.com/Blobfolio/adbyss/releases/download/v0.23.2/adbyss_0.23.2-1_amd64.deb
-	sha256sums_x86_64 = 533384b1b885ee289e9c735994efaba4ea2ed9f7e40f9fe6b2d78551bb0e3ff8
+	source_x86_64 = https://github.com/Blobfolio/adbyss/releases/download/v0.23.3/adbyss_0.23.3-1_amd64.deb
+	sha256sums_x86_64 = c8d68010613e7d311c3b65b29b9eead2758361e49fa2d4248db19132f15734a4
 
 pkgname = adbyss-bin
