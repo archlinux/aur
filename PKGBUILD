@@ -2,14 +2,18 @@
 
 _pkgname="gopher64"
 pkgname="${_pkgname}-bin"
-pkgver=1.1.14
+pkgver=1.1.15
 pkgrel=1
 pkgdesc="N64 emulator written in Rust"
-arch=('aarch64' 'x86_64')
+arch=(
+  'aarch64'
+  'x86_64'
+ )
 url="https://github.com/${_pkgname}/${_pkgname}"
-license=('GPL-3.0-only')
+license=(
+  'GPL-3.0-only'
+)
 depends=(
-  'gcc-libs'
   'glibc'
   'hicolor-icon-theme'
   'wayland'
@@ -24,32 +28,37 @@ conflicts=(
   "${_pkgname}"
 )
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
-        "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE")
-        # "${_pkgsrc}.1024x1024.png::${url}/raw/refs/tags/v${pkgver}/data/icon/${_pkgname}.png")
-source_aarch64=("${_pkgsrc}-aarch64::${url}/releases/download/v${pkgver}/${_pkgname}-linux-aarch64")
-source_x86_64=("${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64")
+source=(
+  "${_pkgsrc}-README.md::${url}/raw/refs/tags/v${pkgver}/README.md"
+  "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/v${pkgver}/LICENSE"
+  # "${_pkgsrc}.1024x1024.png::${url}/raw/refs/tags/v${pkgver}/data/icon/${_pkgname}.png"
+)
+source_aarch64=(
+  "${_pkgsrc}-aarch64::${url}/releases/download/v${pkgver}/${_pkgname}-linux-aarch64"
+)
+source_x86_64=(
+  "${_pkgsrc}-x86_64::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x86_64"
+)
 sha256sums=('95e04ec4bc1331e8d12bfb353db17dd8e7c8d7d9f83c0580728453b8e9b8b4d1'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             'c5b7d0fc27c4a838b174b6b2f3357d66b888b97cd9b5acd5460d1d102c7a8597'
             '886c63542d29a20804de8c3555a9abb2dac635b55b521ecffb067ec484780d67'
             '589dbc308e9910010fa0cbfdfa895dbc7dc895876ad3fda882008c59d7db3d22')
-sha256sums_aarch64=('f7cc6b3551aa64dce7587e5d220f2133d948cc6937033f3959c057f0cd8883d7')
-sha256sums_x86_64=('d7e1280af65eefac4dad1723663486a07684c408362a968c759e55ed88db4cca')
+sha256sums_aarch64=('a0c74ddfee1b88b52a3d06dc31a813c817f83b197c3846036cd4fb9df7be7f08')
+sha256sums_x86_64=('3c716e0ae4e111a3c17f12cd4b11ac2ad2393e6bb93a4df6a38366ce5add5602')
 
 for _size in 128 256 512; do
-  source+=("${_pkgsrc}.${_size}x${_size}.png::${url}/raw/refs/tags/v${pkgver}/data/icon/${_pkgname}_${_size}x${_size}.png")
+  source+=(
+    "${_pkgsrc}.${_size}x${_size}.png::${url}/raw/refs/tags/v${pkgver}/data/icon/${_pkgname}_${_size}x${_size}.png"
+  )
 done
 
 build() {
   cd "${srcdir}"
   gendesk -f -n \
-    --name "${_pkgname}" \
-    --exec "${_pkgname}" \
-    --icon "${_pkgname}" \
-    --comment "${pkgdesc}" \
-    --categories "Game;Emulator" \
-    "${_pkgname}"
+    --pkgname "${_pkgname}" \
+    --pkgdesc "${pkgdesc}" \
+    --categories "Game;Emulator"
 }
 
 package() {
