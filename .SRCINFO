@@ -17,7 +17,7 @@ pkgbase = judoshiai
 	depends = libuv
 	depends = gnutls
 	depends = mpg123
-	depends = libxml2
+	depends = libxml2-legacy
 	source = judoshiai-4.4.deb::https://sourceforge.net/projects/judoshiai/files/Linux-x86_64/judoshiai_4.4-1_amd64.deb/download
 	sha256sums = SKIP
 

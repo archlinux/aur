@@ -6,7 +6,7 @@ pkgdesc="A set of programs to help organize a judo tournament"
 arch=('x86_64')
 url="https://www.judoshiai.org"
 license=('custom')
-depends=('libao' 'cairo' 'curl' 'gdk-pixbuf2' 'gtk3' 'pango' 'librsvg' 'libssh2' 'libuv' 'gnutls' 'mpg123' 'libxml2')
+depends=('libao' 'cairo' 'curl' 'gdk-pixbuf2' 'gtk3' 'pango' 'librsvg' 'libssh2' 'libuv' 'gnutls' 'mpg123' 'libxml2-legacy')
 makedepends=('binutils')
 source=("judoshiai-${pkgver}.deb::https://sourceforge.net/projects/judoshiai/files/Linux-x86_64/judoshiai_${pkgver}-1_amd64.deb/download")
 sha256sums=('SKIP')
@@ -28,7 +28,6 @@ package() {
     cp -r "${srcdir}/usr/lib/judoshiai" "${pkgdir}/usr/lib/"
 
     # Symlinks für Debian-benannte Bibliotheken
-    ln -sf /usr/lib/libxml2.so.16 "${pkgdir}/usr/lib/libxml2.so.2"
     ln -sf /usr/lib/liblua5.4.so "${pkgdir}/usr/lib/liblua5.4.so.0"
 
     # Desktop-Einträge installieren
