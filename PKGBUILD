@@ -3,15 +3,15 @@
 # AUR package: rosec-bin
 #
 # This PKGBUILD installs pre-built binaries from the GitHub release.
-# The release workflow renders this file by substituting 0.0.10 and
-# ec5c64a9899a150a12024d5ebba597c09d712e00168cf1d4c76133e8e163bbc6 / @AARCH64_SHA256@ before committing to the AUR.
+# The release workflow renders this file by substituting 0.0.12 and
+# 2123938651add67efcfe3c59fbbd18881ed600d6dce29ace3e0363248da52262 / @AARCH64_SHA256@ before committing to the AUR.
 #
 # To build manually, replace the placeholders and run makepkg -si.
 
 pkgname=rosec-bin
-pkgver=0.0.10
+pkgver=0.0.12
 pkgrel=1
-pkgdesc="Read-only Secret Service daemon with Bitwarden backend"
+pkgdesc="Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jmylchreest/rosec"
 license=('MIT')
@@ -20,11 +20,13 @@ depends=(
     'pam'
 )
 optdepends=(
+    'fuse3: SSH key FUSE filesystem at $XDG_RUNTIME_DIR/rosec/ssh'
+    'openssh: SSH agent support'
     'libnotify: desktop notifications on lock/unlock'
 )
 optdepends+=(
-    'rosec-provider-bitwarden-pm-bin: Bitwarden Password Manager provider'
-    'rosec-provider-bitwarden-sm-bin: Bitwarden Secrets Manager provider'
+    'rosec-provider-bitwarden-pm-bin: Bitwarden Password Manager provider (sync, SSH keys)'
+    'rosec-provider-bitwarden-sm-bin: Bitwarden Secrets Manager provider (sync)'
     'rosec-provider-gnome-keyring-bin: GNOME Keyring read-only provider'
 )
 provides=('rosec' 'org.freedesktop.secrets')
@@ -38,7 +40,7 @@ source_aarch64=(
     "rosec-${pkgver}-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v${pkgver}/rosec-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
 )
 
-sha256sums_x86_64=('ec5c64a9899a150a12024d5ebba597c09d712e00168cf1d4c76133e8e163bbc6')
+sha256sums_x86_64=('2123938651add67efcfe3c59fbbd18881ed600d6dce29ace3e0363248da52262')
 sha256sums_aarch64=('@AARCH64_SHA256@')
 
 package() {
