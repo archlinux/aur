@@ -14,7 +14,7 @@ depends=('glibc')
 makedepends=('go' 'git')
 optdepends=('bash-completion: for bash completions' 'zsh: for zsh completions' 'fish: for fish completions')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/bab-sh/bab/releases/download/v${pkgver}/bab-${pkgver}.tar.gz")
-sha256sums=('e107fe8383053ba11ee3f0c9f9710cb33726cc021f417253b4361d3df779dc9a')
+sha256sums=('ea74db823f52d87797e7f2529cb77cea6a82994d841a5ae2fb700e83ce2538e8')
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -25,8 +25,8 @@ build() {
   go build \
   -ldflags="-s -w -buildid='' -linkmode=external \
   -X main.version=${pkgver} \
-  -X main.commit=1408961ae0f545fd1d74156da2aa637ce53612fe \
-  -X main.date=2026-03-06T19:29:10Z" \
+  -X main.commit=12813b1f585bf489217645054de8d549be121b7e \
+  -X main.date=2026-03-06T22:03:55Z" \
   -o bab .
 
   # Generate shell completions
