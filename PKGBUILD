@@ -1,6 +1,6 @@
 # Maintainer: Kaz Walker <me@kazatron.com>
 pkgname=sharkfin
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Messaging over MCP for agent/human development teams'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL-2.0-only')
 makedepends=('go')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('82fc0875edb66da22cfa656e16b09f61b832b9e77149abd26ad6d12de1c0c648')
+sha256sums=('08e42cbde68b08f65182d04278569adfec91e08489e8aca257f38967efa5bd7c')
 
 build() {
     cd "Sharkfin-v${pkgver}"
