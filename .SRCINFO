@@ -1,0 +1,16 @@
+pkgbase = make-4.3
+	pkgdesc = GNU make 4.3 - without directory cache bug present in 4.4
+	pkgver = 4.3
+	pkgrel = 1
+	url = https://www.gnu.org/software/make
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL3
+	makedepends = gcc
+	depends = glibc
+	source = https://ftp.gnu.org/gnu/make/make-4.3.tar.gz
+	sha256sums = e05fdde47c5f7ca45cb697e973894ff4f5d79e13b750ed57d7b66d8defc78e19
+
+pkgname = make-4.3
