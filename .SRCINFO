@@ -1,0 +1,29 @@
+pkgbase = python-local_moonie
+	pkgdesc = Local OpenAI-compatible proxy with Firefox/Selenium search + Ollama backend for Avante.nvim
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/gub-7/local_moonie
+	install = python-local_moonie.install
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.11
+	depends = python-fastapi
+	depends = uvicorn
+	depends = python-pydantic
+	depends = python-selenium
+	depends = python-httpx
+	depends = python-dotenv
+	optdepends = ollama: Local LLM backend (required for generation)
+	optdepends = firefox: Web browser for search feature
+	optdepends = geckodriver: WebDriver for Firefox automation
+	backup = etc/local-moonie/config.env
+	source = https://files.pythonhosted.org/packages/source/l/local_moonie/local_moonie-0.1.1.tar.gz
+	source = local-moonie.service
+	sha256sums = aa3470c5fc28ca8a53e07f2d9bce5cd6e4891eef192ea1570a528983eb254142
+	sha256sums = 1889b59e45990091891ae253dda963fc862cab91bf9f9f256af1515dc2963c83
+
+pkgname = python-local_moonie

@@ -1,0 +1,23 @@
+[Unit]
+Description=Local Moonie OpenAI-compatible proxy with Ollama + Firefox search
+Documentation=https://github.com/gub-7/local_moonie
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/local-moonie/config.env
+ExecStart=/usr/bin/local-moonie
+Restart=on-failure
+RestartSec=5s
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=true
+ReadWritePaths=/tmp
+
+[Install]
+WantedBy=multi-user.target
+

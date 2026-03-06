@@ -1,0 +1,40 @@
+post_install() {
+    echo ""
+    echo "==> Local Moonie has been installed!"
+    echo ""
+    echo "==> Configuration file: /etc/local-moonie/config.env"
+    echo "    Edit this file to customize your settings."
+    echo ""
+    echo "==> Prerequisites:"
+    echo "    1. Install and start Ollama:"
+    echo "       yay -S ollama"
+    echo "       ollama serve"
+    echo ""
+    echo "    2. Pull the required models:"
+    echo "       ollama pull llama3.2:3b"
+    echo "       ollama pull mxbai-embed-large:latest"
+    echo ""
+    echo "==> To start the service:"
+    echo "    systemctl --user enable --now local-moonie.service"
+    echo "    OR run directly: local-moonie"
+    echo ""
+    echo "==> The service will log the configuration file path on startup."
+    echo "    Check logs with: journalctl --user -u local-moonie -f"
+    echo ""
+    echo "==> For Avante.nvim integration, see:"
+    echo "    /usr/share/doc/python-local_moonie/README.md"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ""
+    echo "==> Local Moonie has been removed."
+    echo "==> Configuration file at /etc/local-moonie/config.env has been preserved."
+    echo "    Remove it manually if no longer needed."
+    echo ""
+}
+
