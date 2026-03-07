@@ -2,7 +2,7 @@
 # Contributor: George Angelopoulos <george@usermod.net>
 
 pkgname=tremc
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc='Curses interface client for Transmission'
 arch=(any)
@@ -14,7 +14,7 @@ optdepends=(
   'python-geoip2: guess which country peers come from'
   'python-pyperclip: copy magnet links to the system clipboard')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('7fe1a873465c3bbcc9c96c2447bcad56915249cc07b9ee232182d8975b4dfadd')
+sha256sums=('0f0aceb3ddc01f5b4784e2400a727e17e3f8875cd9107ac38b68d12b98ba8f00')
 
 package() {
   install -Dm644 $pkgname-$pkgver/settings.cfg -t "$pkgdir/usr/share/$pkgname"
