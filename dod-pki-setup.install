@@ -1,29 +1,10 @@
-# line to insert into /etc/pkcs11/modules/opensc.module
-EXPECTED_LINE="module: /usr/lib/pkcs11/opensc-pkcs11.so"
-
 post_install() {
-
-  # Install the trust anchor
-  echo "Installing DoD root certs..."
-  install -Dm644 "$pkgdir/dod-cas.crt" "/etc/ca-certificates/trust-source/anchors/dod-cas.crt"
-
   echo "Refreshing CA trust store for DoD certs..."
   update-ca-trust || echo "Warning: update-ca-trust failed"
 
-  MODULE_FILE="/etc/pkcs11/modules/opensc.module"
-  MODULE_DIR="/etc/pkcs11/modules"
-
-  # Create directory if missing
-  [ -d "$MODULE_DIR" ] || install -dm755 "$MODULE_DIR"
-
-  # Check if file exists and already contains our exact line
-  if [ -f "$MODULE_FILE" ] && grep -Fx "$EXPECTED_LINE" "$MODULE_FILE" >/dev/null; then
-    echo "opensc.module already contains the expected line – skipping"
-  else
-    echo "Adding OpenSC PKCS#11 module registration..."
-    # Append (creates file if missing)
-    printf '%s\n' "$EXPECTED_LINE" >> "$MODULE_FILE"
-  fi
+  [ -d "/etc/pkcs11/modules" ] || install -dm755 "/etc/pkcs11/modules"
+  echo "Adding OpenSC PKCS#11 module registration..."
+  printf '%s\n' "module: /usr/lib/pkcs11/opensc-pkcs11.so" > "/etc/pkcs11/modules/opensc.module"
 
   echo "Enabling and starting pcscd service..."
   systemctl enable --now pcscd.service || echo "Warning: pcscd enable/start failed"
@@ -37,26 +18,10 @@ pre_remove() {
   echo "Disabling pcscd service..."
   systemctl disable --now pcscd.service || true
 
-  MODULE_FILE="/etc/pkcs11/modules/opensc.module"
-
-  if [ -f "$MODULE_FILE" ]; then
-    # Count non-empty lines after removing our line
-    REMAINING=$(grep -vFx "$EXPECTED_LINE" "$MODULE_FILE" | grep -v '^$' | wc -l)
-
-    if [ "$REMAINING" -eq 0 ]; then
-      # File would be empty after removal → delete it
-      echo "Removing opensc.module (only contained our line)"
-      rm -f "$MODULE_FILE"
-    else
-      # Remove just our line, keep the rest
-      echo "Removing our line from opensc.module (other content remains)"
-      grep -vFx "$EXPECTED_LINE" "$MODULE_FILE" > "$MODULE_FILE.tmp" && \
-        mv "$MODULE_FILE.tmp" "$MODULE_FILE" || \
-        echo "Warning: Failed to edit opensc.module"
-    fi
-  fi
+  echo "Removing OpenSC PKCS#11 module registration..."
+  rm -f "/etc/pkcs11/modules/opensc.module"
 
   echo "Removing DoD cert anchor and refreshing trust..."
-  rm -f /etc/ca-certificates/trust-source/anchors/dod-cas.crt
+  rm -f "/etc/ca-certificates/trust-source/anchors/dod-cas.crt"
   update-ca-trust || true
 }
