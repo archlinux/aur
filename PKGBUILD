@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=gnome-shell-extension-notification-configurator-git
-pkgver=1.3.0.r2.gcb22fd0
+pkgver=2.1.0.r0.g1eeeb6b
 pkgrel=1
-pkgdesc="Advanced GNOME notification capabilities including rate limiting, custom color theming per application, and notification positioning"
+pkgdesc="Ultimate Notification Configurator for GNOME"
 arch=('any')
 url="https://github.com/ExposedCat/gnome-notification-configurator"
 license=('LGPL-3.0-or-later')
