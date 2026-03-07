@@ -1,7 +1,8 @@
 # Maintainer: Zachary M <minein12 at protonmail dot com>
 
 pkgname='min-ed-launcher'
-pkgver=v0.12.2
+pkgver=0.12.2
+_pkgver=v${pkgver}
 pkgrel=2
 pkgdesc='Minimal Elite Dangerous Launcher'
 url='https://github.com/rfvgyhn/min-ed-launcher'
@@ -11,7 +12,7 @@ makedepends=(
     'dotnet-sdk-8.0-bin'
     'git'
 )
-source=("git+${url}.git#tag=${pkgver}")
+source=("git+${url}.git#tag=${_pkgver}")
 sha256sums=('65d3962f8b45a46ed5fd0b014d7118c7f5d57fdeb35ce7376c587681318e2413')
 install=${pkgname}.install
 options=(!strip)

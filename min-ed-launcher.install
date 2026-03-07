@@ -1,6 +1,6 @@
 post_install() {
     echo ""
     echo "Additional setup is required depending on the user's storefront (Steam, Epic, etc.)"
-    echo "Usage instructions are located at https://github.com/rfvgyhn/min-ed-launcher"
+    echo "Usage instructions are located at https://github.com/rfvgyhn/min-ed-launcher?tab=readme-ov-file#usage"
     echo ""
 }
