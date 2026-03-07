@@ -7,12 +7,12 @@
 # Bitwarden (PM and SM), GNOME Keyring, and custom WASM plugins.  It includes
 # an SSH agent with FUSE-mounted key files and PAM auto-unlock support.
 #
-# The release workflow renders this file by substituting 0.0.13.
+# The release workflow renders this file by substituting 0.0.14.
 # At build time, pkgver() overrides the static version with the actual
 # git-derived version.
 
 pkgname=rosec-git
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc="Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock (git)"
 arch=('x86_64' 'aarch64')
@@ -110,10 +110,10 @@ prepare() {
 }
 
 build() {
-    # Build native binaries (rosecd, rosec, rosec-pam-unlock)
+    # Build native binaries (rosecd, rosec, rosec-prompt, rosec-pam-unlock)
     cd "${srcdir}/${pkgname}"
-    cargo build --release --locked --bin rosecd --bin rosec --bin rosec-pam-unlock 2>/dev/null || \
-    cargo build --release         --bin rosecd --bin rosec --bin rosec-pam-unlock
+    cargo build --release --locked --bin rosecd --bin rosec --bin rosec-prompt --bin rosec-pam-unlock 2>/dev/null || \
+    cargo build --release         --bin rosecd --bin rosec --bin rosec-prompt --bin rosec-pam-unlock
 
     # Build PAM module (C, no Rust deps — tiny .so for libpam)
     cd "${srcdir}/${pkgname}/contrib/pam"
@@ -143,8 +143,9 @@ package() {
     cd "${srcdir}/${pkgname}"
 
     # Binaries
-    install -Dm755 target/release/rosecd "${pkgdir}/usr/bin/rosecd"
-    install -Dm755 target/release/rosec  "${pkgdir}/usr/bin/rosec"
+    install -Dm755 target/release/rosecd        "${pkgdir}/usr/bin/rosecd"
+    install -Dm755 target/release/rosec         "${pkgdir}/usr/bin/rosec"
+    install -Dm755 target/release/rosec-prompt  "${pkgdir}/usr/bin/rosec-prompt"
 
     # PAM helper binary — talks to rosecd over D-Bus to unlock providers
     install -Dm755 target/release/rosec-pam-unlock \
