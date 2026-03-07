@@ -1,0 +1,5 @@
+[dmarc-cat]
+source = "github"
+github = "keltia/dmarc-cat"
+use_max_tag = true
+prefix = "v"
