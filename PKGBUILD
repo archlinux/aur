@@ -1,6 +1,6 @@
 # Maintainer: invisi101 <https://github.com/invisi101>
 pkgname=fuetem-arch
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Arch Linux system maintenance console — cleanup, health, security, monitoring"
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
   'foot: terminal emulator for system monitor window'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('bb2f33caad9baef7261f284f8ad101791c1b9588e4252b936fabab3062f826b9')
+sha256sums=('e5fdf7b2a74aeb0f1cb2954eb466c2bd24eb58c833c513d413db845b3f1bf030')
 
 package() {
   cd "${pkgname}-${pkgver}"
@@ -41,5 +41,6 @@ package() {
   install -Dm755 lib/sysmonitor.sh "$pkgdir/usr/lib/fuetem/sysmonitor.sh"
 
   install -Dm644 assets/arch.png "$pkgdir/usr/share/fuetem/arch.png"
+  install -Dm644 assets/fuetem.desktop "$pkgdir/usr/share/applications/fuetem.desktop"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
