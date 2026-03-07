@@ -1,0 +1,21 @@
+pkgbase = vlang-nightly-bin
+	pkgdesc = Simple, fast, safe, compiled language for developing maintainable software (weekly nightly build)
+	pkgver = weekly.2026.08
+	pkgrel = 1
+	url = https://vlang.io
+	install = vlang-nightly-bin.install
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libx11
+	optdepends = glfw: Needed for graphics support
+	optdepends = freetype2: Needed for graphics support
+	optdepends = openssl: Needed for http support
+	provides = vlang
+	conflicts = vlang
+	conflicts = vlang-bin
+	conflicts = vlang-git
+	source = vlang-nightly-bin::https://github.com/vlang/v/releases/download/weekly.2026.08/v_linux.zip
+	sha256sums = 9a71226a554a184d7d4dac9898bc5a9a65b496da26ec1ad0d412721b775be789
+
+pkgname = vlang-nightly-bin

@@ -1,0 +1,11 @@
+# AUR package files
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.tar.gz
+src/
+pkg/
+
+# Editor files
+*.swp
+*.swo
+*~

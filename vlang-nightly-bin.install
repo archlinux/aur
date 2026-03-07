@@ -1,0 +1,10 @@
+post_install() {
+    echo "==> vlang-nightly-bin has been installed."
+    echo "==> The 'v' compiler is available at /usr/bin/v"
+    echo "==> Run 'v help' to get started."
+}
+
+post_remove() {
+    echo "==> vlang-nightly-bin has been removed."
+    echo "==> You may need to refresh your PATH if v command is still found."
+}
