@@ -1,0 +1,14 @@
+pkgbase = wordleinc
+	pkgdesc = A terminal-based Wordle clone written in C with case-insensitive logic.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/goal10der/wordleinc
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	depends = glibc
+	source = wordleinc-1.0.0.tar.gz::https://github.com/goal10der/wordleinc/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = wordleinc
