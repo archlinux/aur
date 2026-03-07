@@ -1,0 +1,16 @@
+# Ignore source tarballs downloaded during build
+*.tar.gz
+*.tar.xz
+*.tar.zst
+*.zip
+
+# Ignore build and packaging directories
+/src/
+/pkg/
+
+# Ignore compiled binaries (if any remain)
+nac
+
+# Ignore log files
+*.log
+update.sh

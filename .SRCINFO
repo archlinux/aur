@@ -1,6 +1,6 @@
 pkgbase = nac-bin
 	pkgdesc = n8n As Code - The missing GitOps link for n8n
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/crymfox/nac
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = nac-bin
 	depends = glibc
 	provides = nac
 	conflicts = nac
-	source = nac-0.1.2.tar.gz::https://github.com/crymfox/nac/archive/v0.1.2.tar.gz
-	sha256sums = 48f1328399c1633c17962a691643312d9fca3fea1a0b0c7692459970f8074539
+	source = nac-0.1.3.tar.gz::https://github.com/crymfox/nac/archive/v0.1.3.tar.gz
+	sha256sums = 7200d4e4233fcc5679a89898d7ed64f31e5a8539b19ed8937d3272b7e5687259
 
 pkgname = nac-bin

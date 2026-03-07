@@ -1,6 +1,6 @@
 # Maintainer: Crymfox <sameur.bh@gmail.com>
 pkgname=nac-bin
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="n8n As Code - The missing GitOps link for n8n"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go')
 provides=('nac')
 conflicts=('nac')
 source=("nac-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('48f1328399c1633c17962a691643312d9fca3fea1a0b0c7692459970f8074539')
+sha256sums=('7200d4e4233fcc5679a89898d7ed64f31e5a8539b19ed8937d3272b7e5687259')
 build() {
   cd "nac-$pkgver"
 
