@@ -3,13 +3,13 @@
 # AUR package: rosec-bin
 #
 # This PKGBUILD installs pre-built binaries from the GitHub release.
-# The release workflow renders this file by substituting 0.0.13 and
-# 90e2767ea4c22f497a303e59cd4be01d7ccaa38a1b90ebf41f6abe35ed45f03b / @AARCH64_SHA256@ before committing to the AUR.
+# The release workflow renders this file by substituting 0.0.14 and
+# 8e46637be761411298c730c948a496977d7e0ecbb20cdb48b4696940ab4d5c41 / @AARCH64_SHA256@ before committing to the AUR.
 #
 # To build manually, replace the placeholders and run makepkg -si.
 
 pkgname=rosec-bin
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc="Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock"
 arch=('x86_64' 'aarch64')
@@ -40,7 +40,7 @@ source_aarch64=(
     "rosec-${pkgver}-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v${pkgver}/rosec-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
 )
 
-sha256sums_x86_64=('90e2767ea4c22f497a303e59cd4be01d7ccaa38a1b90ebf41f6abe35ed45f03b')
+sha256sums_x86_64=('8e46637be761411298c730c948a496977d7e0ecbb20cdb48b4696940ab4d5c41')
 sha256sums_aarch64=('@AARCH64_SHA256@')
 
 package() {
@@ -49,8 +49,9 @@ package() {
     srcdir_inner=$(find "${srcdir}" -maxdepth 1 -type d -name '*-linux-gnu' | head -1)
 
     # Binaries
-    install -Dm755 "${srcdir_inner}/rosecd" "${pkgdir}/usr/bin/rosecd"
-    install -Dm755 "${srcdir_inner}/rosec"  "${pkgdir}/usr/bin/rosec"
+    install -Dm755 "${srcdir_inner}/rosecd"       "${pkgdir}/usr/bin/rosecd"
+    install -Dm755 "${srcdir_inner}/rosec"        "${pkgdir}/usr/bin/rosec"
+    install -Dm755 "${srcdir_inner}/rosec-prompt" "${pkgdir}/usr/bin/rosec-prompt"
 
     # PAM helper binary — talks to rosecd over D-Bus to unlock providers
     install -Dm755 "${srcdir_inner}/rosec-pam-unlock" \
