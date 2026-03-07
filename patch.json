@@ -149,6 +149,14 @@
 				}
 			]
 		},
+		"quantum.qsharp-lang-vscode": {
+			"onFileOpen": [
+				{
+					"pathGlob": "{**/*.qs,**/*.qsc,**/*.qasm}",
+					"important": true
+				}
+			]
+		},
 		"typespec.typespec-vscode": {
 			"onFileOpen": [
 				{
@@ -911,6 +919,10 @@
 				"startCommand": "remote-tunnels.connectCurrentWindowToTunnel",
 				"priority": 0
 			}
+		},
+		"amlext": {
+			"friendlyName": "Azure Machine Learning",
+			"extensionId": "ms-toolsai.vscode-ai-remote"
 		}
 	},
 	"extensionAllowedBadgeProviders": [
