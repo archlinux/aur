@@ -1,11 +1,10 @@
 pkgbase = vsview
 	pkgdesc = The next-generation VapourSynth previewer
-	pkgver = 0.1.0b1
-	pkgrel = 2
+	pkgver = 0.1.0b3
+	pkgrel = 1
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-view
 	arch = x86_64
 	license = EUPL-1.2
-	makedepends = git
 	makedepends = python-build
 	makedepends = python-hatchling
 	makedepends = python-installer
@@ -22,9 +21,15 @@ pkgbase = vsview
 	depends = python-pygments
 	depends = python-pluggy
 	depends = python-typing_extensions
-	depends = python-pathvalidate
+	depends = python-keyring
 	depends = pyside6
-	source = vsview::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=vsview/v0.1.0b1
+	optdepends = vapoursynth-plugin-bestsource: Source filter
+	optdepends = vsview-comp: Make comparisons with Slowpoke Pics
+	optdepends = vsview-fftspectrum: Display the FFT spectrum of a video clip
+	optdepends = vsview-frameprops-extended: Add more categories and formats to frameprops
+	optdepends = vsview-split-planes: Display video clips' constituent planes
+	optdepends = vsview-plugins: All vsview plugins
+	source = vsview::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=vsview/v0.1.0b3
 	sha256sums = SKIP
 
 pkgname = vsview
