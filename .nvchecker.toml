@@ -1,0 +1,5 @@
+[sqldef-bin]
+source = "github"
+github = "sqldef/sqldef"
+use_max_tag = true
+prefix = "v"
