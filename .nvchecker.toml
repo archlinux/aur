@@ -1,0 +1,5 @@
+[git-vendor]
+source = "github"
+github = "brettlangdon/git-vendor"
+use_max_tag = true
+prefix = "v"
