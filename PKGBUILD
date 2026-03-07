@@ -1,6 +1,6 @@
 # Maintainer: Xavrir <xavrir@github.com>
 pkgname=tuxtuner
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="System performance control for Linux - CPU threads, GPU modes, and display refresh rates"
 arch=('x86_64')
@@ -10,9 +10,9 @@ depends=(
     'gtk4'
     'libadwaita'
     'polkit'
-    'hyprland'
 )
 optdepends=(
+    'hyprland: For display refresh rate control'
     'supergfxctl: For GPU mode switching on ASUS laptops'
 )
 makedepends=(
@@ -22,7 +22,7 @@ makedepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Xavrir/$pkgname/archive/v$pkgver.tar.gz"
 )
-sha256sums=('SKIP')
+sha256sums=('3b7af914a91f72aab529f20dd77c46d497619dcc5bf9a452fd1f99a7f6f04ef1')
 
 build() {
     cd "$pkgname-$pkgver/rust"
@@ -36,14 +36,14 @@ package() {
     install -Dm755 "rust/target/release/tuxtuner" "$pkgdir/usr/bin/tuxtuner"
 
     # Install helper script
-    install -Dm755 "src/tuxtuner-helper" "$pkgdir/usr/libexec/tuxtuner-helper"
+    install -Dm755 "src/tuxtuner-helper" "$pkgdir/usr/lib/tuxtuner/tuxtuner-helper"
 
     # Install polkit policy
     install -Dm644 "data/com.github.xavrir.tuxtuner.policy" \
         "$pkgdir/usr/share/polkit-1/actions/com.github.xavrir.tuxtuner.policy"
 
     # Update polkit policy path
-    sed -i 's|/usr/local/libexec/tuxtuner-helper|/usr/libexec/tuxtuner-helper|g' \
+    sed -i 's|/usr/local/lib/tuxtuner/tuxtuner-helper|/usr/lib/tuxtuner/tuxtuner-helper|g' \
         "$pkgdir/usr/share/polkit-1/actions/com.github.xavrir.tuxtuner.policy"
 
     # Install desktop file
