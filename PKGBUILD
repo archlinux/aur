@@ -4,7 +4,7 @@ origname=lexid
 pkgname=python-lexid
 pkgver=2021.1006
 _ref='1334ace84f67f59d93a96b9bf0a4953fb7a15da6'
-pkgrel=2
+pkgrel=3
 pkgdesc='A Micro Library to Increment Lexical Ids'
 arch=(any)
 url="https://github.com/mbarkhau/$origname"
@@ -14,6 +14,7 @@ makedepends=(
     "python-build"
     "python-installer"
     "python-lib3to6"
+    "python-pathlib2"
 )
 source=("${url}/archive/${_ref}.zip")
 
