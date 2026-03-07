@@ -1,6 +1,6 @@
 # Maintainer: f0ruD <fzero@rubi.gd>
 pkgname=witr
-pkgver=0.2.7
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A tool to determine why a process is running."
 arch=('x86_64' 'aarch64')
@@ -32,3 +32,4 @@ package() {
 }
 
 sha256sums=('72ac280aec9fa4a82df59b2323472a3de25cffbd30968ad56dfba0d53a17306d')
+sha256sums=('b4106952853c712bf60d0e9871d2eeecec8045d171360faec9e17329dbbe2653')
