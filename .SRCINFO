@@ -1,0 +1,17 @@
+pkgbase = pdf-parser-git
+	pkgdesc = pdf-parser, use it to parse a PDF document
+	pkgver = 0.7.13_0kali1_0_g1a402e8
+	pkgrel = 1
+	url = https://gitlab.com/kalilinux/packages/pdf-parser.git/
+	arch = any
+	license = GPL-2+
+	makedepends = git
+	depends = python>=2.5.1
+	depends = zlib>=1.3.2-2
+	depends = python-pyzipper>=0.3.6-1
+	provides = pdf-parser
+	conflicts = pdf-parser
+	source = git+https://gitlab.com/kalilinux/packages/pdf-parser.git/
+	sha256sums = SKIP
+
+pkgname = pdf-parser-git
