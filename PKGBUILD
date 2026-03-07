@@ -2,7 +2,7 @@
 # Contributor: Michał Wojdyła <micwoj9292@gmail.com>
 pkgname=ohrrpgce-svn
 pkgver=wip.r14251
-pkgrel=1
+pkgrel=2
 pkgdesc="A role playing game creation engine (svn wip)"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -55,6 +55,18 @@ EOF
 EOF
   chmod a+x hspeak
 
+  # Create an XDG desktop entry for Vikings of Midgard
+  cat << EOF > vikings.desktop
+[Desktop Entry]
+Type=Application
+Name=Vikings of Midgard
+Comment=A classic RPG bundled with the OHRRPGCE engine
+Exec=/usr/games/ohrrpgce-game /usr/share/games/ohrrpgce/vikings/vikings.rpg
+Icon=ohrrpgce-game
+Terminal=false
+Categories=Game;RolePlaying;
+EOF
+
   # Compile engine components
   if [ "$CARCH" = "x86_64" ]; then
     scons arch=64 game custom unlump relump
@@ -78,12 +90,18 @@ package() {
     scons release=1 install destdir="$pkgdir"
   fi
 
-  # Manually place the wrapper and script where the system expects them
+  # Manually place the wrapper and Euphoria scripts where the system expects them
   install -Dm755 hspeak "$pkgdir/usr/share/games/ohrrpgce/hspeak"
   install -Dm644 hspeak.exw "$pkgdir/usr/share/games/ohrrpgce/hspeak.exw"
+  install -Dm644 hsspiffy.e "$pkgdir/usr/share/games/ohrrpgce/hsspiffy.e"
+
+  # Copy the additional euphoria includes directory
+  mkdir -p "$pkgdir/usr/share/games/ohrrpgce/euphoria"
+  cp -r euphoria/* "$pkgdir/usr/share/games/ohrrpgce/euphoria/"
 
   # Install the vikings builtin game
   mkdir -p "$pkgdir/usr/share/games/ohrrpgce/vikings"
   cp -r vikings/* "$pkgdir/usr/share/games/ohrrpgce/vikings/"
   rm -rf "$pkgdir/usr/share/games/ohrrpgce/vikings/vikings.rpgdir"
+  install -Dm644 vikings.desktop "$pkgdir/usr/share/applications/vikings.desktop"
 }
