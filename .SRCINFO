@@ -1,0 +1,19 @@
+pkgbase = vsview-fftspectrum
+	pkgdesc = A vsview plugin displaying the Fast Fourier transform spectrum of a video clip
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/vsview-fftspectrum/
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	makedepends = python-versioningit
+	depends = vsview
+	depends = vapoursynth-plugin-fftspectrum-rs
+	source = https://files.pythonhosted.org/packages/40/14/67c0067e331159c457d88a50be321aee6c2f3c0a8e20539f6a5ff80aaae9/vsview_fftspectrum-0.1.1.tar.gz
+	sha256sums = e5ca48e2ce22f832d1c081b4c87774817a5c4a8668d546b16a3336c0c9f45082
+
+pkgname = vsview-fftspectrum
