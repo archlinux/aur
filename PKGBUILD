@@ -3,17 +3,16 @@
 
 pkgname=odinls-git
 _pkgname_no_git="${pkgname%-*}"
-pkgver=dev_2025_11.r38.g465e4b4
+pkgver=dev_2026_02.r100.ged6b8eb
 pkgrel=1
-pkgdesc='ols: Language server for Odin'
+pkgdesc='Language server and source code formatter for Odin'
 arch=('x86_64')
 url='https://github.com/DanielGavin/ols'
 license=('MIT')
 depends=('odin')
 makedepends=('git')
-optdepends=('odinfmt: Odin source code formatter')
-provides=("$_pkgname_no_git=$pkgver")
-conflicts=("$_pkgname_no_git")
+provides=("$_pkgname_no_git=$pkgver" "odinfmt=$pkgver")
+conflicts=("$_pkgname_no_git" 'odinfmt')
 options=(!lto)
 source=("$_pkgname_no_git::git+$url.git")
 sha256sums=(SKIP)
@@ -26,14 +25,18 @@ pkgver() {
 build() {
     cd "$_pkgname_no_git/"
     ./build.sh
+    ./odinfmt.sh
 }
 
 package() {
     cd "$_pkgname_no_git/"
     install -Dm755 ols "$pkgdir/usr/lib/$_pkgname_no_git/ols"
+    install -Dm755 odinfmt "$pkgdir/usr/lib/$_pkgname_no_bin/odinfmt"
     install -Dm644 -t "$pkgdir/usr/lib/$_pkgname_no_git/builtin/" builtin/*
-    install -dm755 "$pkgdir/usr/bin/"
     # symlink in /usr/bin
+    install -dm755 "$pkgdir/usr/bin/"
     ln -s "/usr/lib/$_pkgname_no_git/ols" "$pkgdir/usr/bin/$_pkgname_no_git"
+    ln -s "/usr/lib/$_pkgname_no_git/odinfmt" "$pkgdir/usr/bin/odinfmt"
+    # distribute license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname_no_git/LICENSE"
 }
