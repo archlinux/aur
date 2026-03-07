@@ -3,13 +3,13 @@
 # AUR package: rosec-bin
 #
 # This PKGBUILD installs pre-built binaries from the GitHub release.
-# The release workflow renders this file by substituting 0.0.12 and
-# 2123938651add67efcfe3c59fbbd18881ed600d6dce29ace3e0363248da52262 / @AARCH64_SHA256@ before committing to the AUR.
+# The release workflow renders this file by substituting 0.0.13 and
+# 90e2767ea4c22f497a303e59cd4be01d7ccaa38a1b90ebf41f6abe35ed45f03b / @AARCH64_SHA256@ before committing to the AUR.
 #
 # To build manually, replace the placeholders and run makepkg -si.
 
 pkgname=rosec-bin
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock"
 arch=('x86_64' 'aarch64')
@@ -40,7 +40,7 @@ source_aarch64=(
     "rosec-${pkgver}-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v${pkgver}/rosec-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
 )
 
-sha256sums_x86_64=('2123938651add67efcfe3c59fbbd18881ed600d6dce29ace3e0363248da52262')
+sha256sums_x86_64=('90e2767ea4c22f497a303e59cd4be01d7ccaa38a1b90ebf41f6abe35ed45f03b')
 sha256sums_aarch64=('@AARCH64_SHA256@')
 
 package() {
