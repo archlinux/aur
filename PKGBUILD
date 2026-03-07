@@ -9,7 +9,7 @@ license=('BSD')
 depends=('qt6-base')
 optdepends=('postgresql-libs')
 options=(!debug)
-sha256sums_x86_64=('b5938078e51ef0c0e3a902840be41842aa88a92afdedf7a5a9a2f2e7988cbabf')
+sha256sums_x86_64=('d9776601ab6628ad8cb37f854a72f784acd4e11ffa132b017c4153a259f6bb3a')
 source_x86_64=("http://helineva.net/t-lasku/t-lasku-$pkgver-amd64.tar.gz")
 
 build() {
