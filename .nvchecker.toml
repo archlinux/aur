@@ -1,0 +1,5 @@
+[rarbg-selfhosted]
+source = "github"
+github = "mgdigital/rarbg-selfhosted"
+use_max_tag = true
+prefix = "v"
