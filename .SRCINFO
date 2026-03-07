@@ -8,6 +8,7 @@ pkgbase = rocm-gpu-agent
 	makedepends = go
 	makedepends = python
 	makedepends = patchelf
+	makedepends = boost
 	depends = amdsmi
 	depends = abseil-cpp
 	depends = grpc

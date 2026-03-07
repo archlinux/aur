@@ -25,6 +25,7 @@ makedepends=(
     'go'
     'python'
     'patchelf'
+    'boost'
 )
 
 _srcname="gpu-agent-${pkgver}"
