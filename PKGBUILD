@@ -3,12 +3,12 @@
 
 _pkgname=pikaur-static
 pkgname="${_pkgname}-git"
-pkgver=1.33.2
+pkgver=1.33.3
 pkgrel=1
 pkgdesc='AUR helper without dependencies which asks all questions before installing/building. Static build for recovery situations, similar to `pacman-static`'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/actionless/pikaur"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 source=(
 	"$pkgname::git+${url}.git#branch=master"
 )
