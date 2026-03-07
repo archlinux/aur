@@ -1,11 +1,12 @@
-# Maintainer: Pulsar33550336 <pulsar33550336@163.com>
-# Maintainer: Andreas Baumann <mail@andreasbaumann.cc>
+# Maintainer: Devel <Denislav08@proton.me>
+# Contributor: Pulsar33550336 <pulsar33550336@163.com>
+# Contributor: Andreas Baumann <mail@andreasbaumann.cc>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Martin Rodriguez Reboredo <yakoyoku@gmail.com>
 # Contributor: Joshua Glass <joshuag1000@outlook.com>
 
 pkgname=arduino-ide
-pkgver=2.3.7
+pkgver=2.3.8
 pkgrel=1
 pkgdesc="Open-source electronics prototyping platform"
 arch=(x86_64)
@@ -18,7 +19,7 @@ depends=(
   gcc-libs
   glib2
   glibc
-  electron30-bin
+  electron30
   libsecret
   libx11
   libxkbfile
@@ -43,15 +44,16 @@ optdepends=(
   'python-pyserial: Needed for esptool'
   'usbutils: Needed for stm32 boards using st-link'
 )
-_tag=2bfd24338c3c484a063fb91e6920c718a811ec0c
+_tag=edf2575570abf94208a3cc40925d7e721794dc01
 source=(
   git+https://github.com/arduino/arduino-ide.git#tag=${_tag}
   arduino-ide.sh
   arduino-ide.desktop
 )
-b2sums=('e4b42f6f6d0ef5daf61f1246a1bc30b82d30a5e1f6839c4a937e09e4d358eb5c43ae7e1c9046b2c7e16406407d5d6362074c4d8233f98fd66549f8cd22e3a948'
-        '7b898d099bf9cfab9339d92976a8a75ddf3c3e55e64661c24bb386fad9da4a6b461bc49ca3607a15bd58820dc8eb709179e5808b7619c3f5f095db82478b5fea'
-        '9b7c45d5081f23415c3dfd3d098cbe425b207f82a480b09f192e5d0e95511da5c8985ad20667301b8977a0ab3166c8b6aa5992e36df75173785bb026a10f8edb')
+
+sha256sums=('e14102f0a96d15b5c8b3121fd13459d8116280ad41af567cf31e9c824460d1b7'
+            'd8462a3cf2cb7ceaac49b07208ff4c6ac7ac7918d89f61ce3037ca9bc0d2dcfb'
+            'bfa4fc5098c423770f49a17ca6f7c401c1ce5e4b1936b50a8f0fed5bbd83a7fc')
 
 prepare() {
   cd arduino-ide
@@ -74,7 +76,7 @@ prepare() {
 
 pkgver() {
   cd arduino-ide
-  git describe --tags
+  git describe --tags | cut -d '-' -f 1
 }
 
 build() {
