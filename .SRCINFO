@@ -1,8 +1,8 @@
 pkgbase = runbox
 	pkgdesc = A popup runbox for both wayland and x11
 	pkgver = 0.2.3
-	pkgrel = 1
-	url = https://gitlab.lmao.sbs/Gerg0Vagyok/RunBox
+	pkgrel = 2
+	url = https://git.lmao.sbs/Gerg0Vagyok/RunBox
 	arch = x86_64
 	license = MIT
 	makedepends = make
@@ -10,7 +10,7 @@ pkgbase = runbox
 	makedepends = qt6-base
 	depends = qt6-base
 	optdepends = bear: making compilation database
-	source = git+https://gitlab.lmao.sbs/Gerg0Vagyok/RunBox.git#branch=master
+	source = git+https://git.lmao.sbs/Gerg0Vagyok/RunBox.git#branch=master
 	sha256sums = SKIP
 
 pkgname = runbox
