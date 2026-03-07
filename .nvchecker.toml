@@ -1,0 +1,4 @@
+[rocky]
+source = "git"
+git = "https://github.com/pelicanmapping/rocky.git"
+prefix = "v"

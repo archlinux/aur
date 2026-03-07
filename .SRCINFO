@@ -1,0 +1,25 @@
+pkgbase = rocky
+	pkgdesc = C++ SDK for rendering maps and globes
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pelicanmapping/rocky
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.21
+	makedepends = entt
+	makedepends = glm
+	makedepends = nlohmann-json
+	depends = fmt
+	depends = gdal
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = proj
+	depends = spdlog
+	depends = sqlite
+	depends = zlib
+	provides = librocky.so
+	source = https://github.com/pelicanmapping/rocky/archive/refs/tags/v1.0.0/rocky-1.0.0.tar.gz
+	b2sums = a196a12057078a1b9703d3f2393fd55caf0a81d5c918fec456c23cd887ff8d84511d943f89c72dfeb7a3356dce868c8ef428c3d6b922d781ba359ba8981091d4
+
+pkgname = rocky
