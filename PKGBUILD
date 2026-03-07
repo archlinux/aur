@@ -1,23 +1,17 @@
 # Maintainer: Evangelos Foutras <foutrelis@archlinux.org>
 
 pkgname=polly
-pkgver=21.1.8
+pkgver=22.1.0
 pkgrel=1
 pkgdesc="High-level loop and data-locality optimizer and optimization infrastructure for LLVM"
 arch=('x86_64')
 url="https://polly.llvm.org/"
 license=('Apache-2.0 WITH LLVM-exception')
-depends=('gcc-libs')
+depends=('libstdc++' 'glibc')
 makedepends=('llvm' 'cmake' 'ninja' 'python-sphinx')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
-source=($_source_base/polly-$pkgver.src.tar.xz{,.sig}
-        $_source_base/llvm-$pkgver.src.tar.xz{,.sig}
-        $_source_base/cmake-$pkgver.src.tar.xz{,.sig})
-sha256sums=('13a59bfb59e4ed0d8878a359f06b7a378e299a29505ddce62398e30ce0570273'
-            'SKIP'
-            'd9022ddadb40a15015f6b27e6549a7144704ded8828ba036ffe4b8165707de21'
-            'SKIP'
-            '85735f20fd8c81ecb0a09abb0c267018475420e93b65050cc5b7634eab744de9'
+source=($_source_base/llvm-project-$pkgver.src.tar.xz{,.sig})
+sha256sums=('25d2e2adc4356d758405dd885fcfd6447bce82a90eb78b6b87ce0934bd077173'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
               'D574BD5D1D0E98895E3BF90044F2485E45D59042'  # Tobias Hieta <tobias@hieta.se>
@@ -26,13 +20,12 @@ validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstell
 )
 
 prepare() {
-  mv cmake{-$pkgver.src,}
-  cd polly-$pkgver.src
+  cd llvm-project-$pkgver.src/polly
   mkdir build
 }
 
 build() {
-  cd polly-$pkgver.src/build
+  cd llvm-project-$pkgver.src/polly/build
 
   CFLAGS+=' -ffat-lto-objects'
   CXXFLAGS+=' -ffat-lto-objects'
@@ -47,7 +40,7 @@ build() {
     -DCMAKE_INSTALL_DOCDIR=share/doc
     -DCMAKE_INSTALL_PREFIX=/usr
     -DLLVM_BUILD_DOCS=ON
-    -DLLVM_BUILD_MAIN_SRC_DIR="$srcdir/llvm-$pkgver.src"
+    -DLLVM_BUILD_MAIN_SRC_DIR="$srcdir/llvm-project-$pkgver.src/llvm"
     -DLLVM_ENABLE_SPHINX=ON
     -DLLVM_EXTERNAL_LIT=/usr/bin/lit
     -DLLVM_LINK_LLVM_DYLIB=ON
@@ -58,15 +51,15 @@ build() {
 }
 
 check() {
-  cd polly-$pkgver.src/build
+  cd llvm-project-$pkgver.src/polly/build
   ninja check-polly
 }
 
 package() {
-  cd polly-$pkgver.src/build
+  cd llvm-project-$pkgver.src/polly/build
 
   DESTDIR="$pkgdir" ninja install
-  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/llvm-project-$pkgver.src/polly/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Remove documentation sources
   rm -r "$pkgdir"/usr/share/doc/polly/html/{_sources,.buildinfo}
