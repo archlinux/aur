@@ -2,9 +2,9 @@
 
 pkgname=sonic-win
 _pkgname=kwin-x11
-pkgver=6.6.2
-_pkgver=$pkgver
+pkgver=6.6.2.1
 _pkgtag=$pkgver
+_plasmaver=$(echo $pkgver | cut -f1-3 -d'.')
 pkgrel=1
 pkgdesc='kwin-x11 with ports from kwin-wayland, bug fixes, and maybe other improvements, for XLibre'
 arch=(x86_64)
@@ -50,7 +50,7 @@ depends=(aurorae
          libxi
          libxkbcommon
          libxkbcommon-x11
-         libplasma=$_pkgver
+         libplasma=$_plasmaver
          mesa
          plasma-x11-session
          qt6-5compat
@@ -78,7 +78,7 @@ conflicts=($_pkgname)
 source=("${url}/archive/refs/tags/${_pkgtag}.tar.gz")
 install="$pkgname.install"
 options=(!debug)
-sha256sums=('62822884fe0a45d9599ed927375dfead88f4d142e1436c2b11973c356ca24011')
+sha256sums=('781e56db40ff06c204730cd4e67461a963457814e56e2a172fd1dfb12eef5c7a')
 
 build() {
   #cmake -B build -S $pkgname \
