@@ -1,8 +1,8 @@
 # Maintainer: Robert Schiele <rschiele@gmail.com>
 
 pkgname=structurizr-git
-pkgver=6.0.0.r27.ge48b883
-pkgrel=2
+pkgver=2026.03.06.r0.ga465ec4
+pkgrel=1
 pkgdesc="Software architecture models as code"
 arch=('any')
 url="https://structurizr.com/"
@@ -18,21 +18,21 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd structurizr
-    git describe --long --abbrev=7 --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --abbrev=7 --tags --match 'v????.??.??' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
     cd structurizr
-    mvn -DexcludedGroups=IntegrationTest package
+    mvn -DexcludedGroups=IntegrationTest package -Dapp.revision=$pkgver
 }
 
 package() {
     cd structurizr
-    install -D -m644 -t "$pkgdir/usr/share/java/${pkgname}" structurizr-application/target/structurizr-*.war
+    install -D -m644 -t "$pkgdir/usr/share/java/${pkgname}" structurizr-application/target/structurizr-${pkgver}.war
     mkdir -p "$pkgdir/usr/share/${pkgname}"
     cp -a structurizr-themes "$pkgdir/usr/share/${pkgname}/themes"
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     mkdir -p "$pkgdir/usr/bin"
-    sed -e "s|/structurizr/|/${pkgname}/|g" "$srcdir/structurizr.sh" > "$pkgdir/usr/bin/structurizr"
+    sed -e "s|/structurizr/|/${pkgname}/|g;s|1\.0\.0|${pkgver}|" "$srcdir/structurizr.sh" > "$pkgdir/usr/bin/structurizr"
     chmod 755 "$pkgdir/usr/bin/structurizr"
 }

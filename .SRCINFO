@@ -1,7 +1,7 @@
 pkgbase = structurizr-git
 	pkgdesc = Software architecture models as code
-	pkgver = 6.0.0.r27.ge48b883
-	pkgrel = 2
+	pkgver = 2026.03.06.r0.ga465ec4
+	pkgrel = 1
 	url = https://structurizr.com/
 	arch = any
 	license = Apache-2.0
