@@ -1,0 +1,5 @@
+[termite]
+source = "github"
+github = "aperezdc/termite"
+use_max_tag = true
+prefix = "v"
