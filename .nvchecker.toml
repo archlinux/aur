@@ -1,0 +1,5 @@
+[pilgo]
+source = "github"
+github = "gbrlsnchs/pilgo"
+use_max_tag = true
+prefix = "v"
