@@ -1,6 +1,6 @@
 # Maintainer: Xavrir <xavrir@github.com>
 pkgname=tuxtuner
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="System performance control for Linux - CPU threads, GPU modes, and display refresh rates"
 arch=('x86_64')
