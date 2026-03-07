@@ -1,8 +1,10 @@
 [Desktop Entry]
-Name=Firestorm
-Comment=A third-party viewer for Second Life (TM) and OpenSim grids
-Exec=/opt/firestorm/firestorm
-Icon=/opt/firestorm/firestorm_icon.png
+Name=Firestorm Viewer (OS)
+Comment=Client for accessing 3D virtual worlds
+Exec=firestorm-os
+Icon=firestorm-os
 Terminal=false
 Type=Application
 Categories=Application;Internet;Network;Game
+StartupNotify=true
+StartupWMClass=do-not-directly-run-firestorm-os

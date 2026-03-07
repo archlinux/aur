@@ -1,0 +1,13 @@
+diff --git a/indra/cmake/00-Common.cmake b/indra/cmake/00-Common.cmake
+index 5e92f59964..29b9d10639 100644
+--- a/indra/cmake/00-Common.cmake
++++ b/indra/cmake/00-Common.cmake
+@@ -149,7 +149,7 @@ if (LINUX)
+   # Check if this is the case, if yes, do not define it again.
+   execute_process(
+       COMMAND echo "int main( char **a, int c ){ \n#ifdef _FORTIFY_SOURCE\n#error FORTITY_SOURCE_SET\n#else\nreturn 0;\n#endif\n}" 
+-      COMMAND sh -c "${CMAKE_CXX_COMPILER} ${CMAKE_CXX_COMPILER_ARG1} -xc++ -w - -o /dev/null"
++      COMMAND sh -c "${CMAKE_CXX_COMPILER} ${CMAKE_CXX_COMPILER_ARG1} ${CMAKE_CXX_FLAGS} -xc++ -w - -o /dev/null"
+       OUTPUT_VARIABLE FORTIFY_SOURCE_OUT
+          ERROR_VARIABLE FORTIFY_SOURCE_ERR
+          RESULT_VARIABLE FORTIFY_SOURCE_RES
