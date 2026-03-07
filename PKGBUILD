@@ -2,7 +2,7 @@
 
 pkgname=linyaps-store-minimalist-bin
 # _pkgname=
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="Linyaps Store Minimalist"
 arch=('x86_64')
@@ -30,7 +30,7 @@ optdepends=("linyaps: Next-Gen Universal Package Manager for Linux (linglong)")
 backup=()
 options=('!strip' '!debug')
 source=("${url}/releases/download/${pkgver}/linux-${pkgver}-x86_64.deb")
-sha256sums=('86b53d5aed67b7f72d4a4e7cb489bcb3bc38f2d813f05bf785e9a762077e9282')
+sha256sums=('c350affb07226e664d8ad2bacf8179a5278071d09b33c67b45a9378b0821f785')
 noextract=("linux-${pkgver}-x86_64.deb")
 
 package() {
