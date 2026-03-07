@@ -2,9 +2,9 @@
 pkgname=axiocnc-bin
 _pkgname=axiocnc
 pkgver=0.0.89
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc=""
+pkgdesc="G-Code Sender Built for Stable, Predictable Runs."
 arch=(x86_64)
 url="https://axiocnc.com"
 license=()
