@@ -1,0 +1,5 @@
+[menu-qalc]
+source = "github"
+github = "barbuk/menu-qalc"
+use_max_tag = true
+prefix = "v"
