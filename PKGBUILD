@@ -1,12 +1,12 @@
 # Maintainer: invisi101 <https://github.com/invisi101>
 pkgname=fuetem-arch
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Arch Linux system maintenance console — cleanup, health, security, monitoring"
 arch=('any')
 url="https://github.com/invisi101/fuetem-arch"
 license=('GPL-3.0-only')
-depends=('bash' 'pacman-contrib' 'bind' 'iproute2' 'coreutils' 'systemd'
+depends=('bash' 'curl' 'pacman-contrib' 'bind' 'iproute2' 'coreutils' 'systemd'
          'smartmontools' 'nmap' 'lm_sensors' 'arch-audit' 'gitleaks')
 optdepends=(
   'btrfs-progs: btrfs filesystem checks'
@@ -19,7 +19,7 @@ optdepends=(
   'flatpak: flatpak cleanup support'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('28c5f1b73d2eb49134a67fd59198a7253c9e1d55a2e12d8598b4ec55fc8af65e')
+sha256sums=('b348050c546ac5fc9680be7fd4bafa088b9e2d4476de4c5219e1d85c98df7de1')
 
 package() {
   cd "${pkgname}-${pkgver}"
