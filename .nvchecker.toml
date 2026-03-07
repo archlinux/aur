@@ -1,0 +1,3 @@
+[python-click-extra]
+source = "pypi"
+pypi = "click-extra"
