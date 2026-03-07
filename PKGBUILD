@@ -23,6 +23,7 @@ package() {
 	install -Dvm644 "$pkgname.ini" "$pkgdir/etc/$_gitname/$pkgname.ini"
 	install -Dvm644 README.md "$pkgdir/usr/share/doc/$_gitname/README.md"
 	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$_gitname/"
+	install -Dvm644 "doc/$_gitname.jar.1" "$pkgdir/usr/share/man/man1/$pkgname.jar.1"
 	install -Dvm644 "$pkgname.service" -t "$pkgdir/usr/lib/systemd/system/"
 
 	# make absolute just in case
