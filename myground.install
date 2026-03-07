@@ -1,0 +1,17 @@
+post_install() {
+  echo ""
+  echo "  To start MyGround, enable and start the systemd service:"
+  echo ""
+  echo "    sudo systemctl enable --now myground@\$(whoami)"
+  echo ""
+  echo "  Then open http://localhost:8080 to complete setup."
+  echo ""
+}
+
+post_upgrade() {
+  echo ""
+  echo "  Restart MyGround to use the new version:"
+  echo ""
+  echo "    sudo systemctl restart myground@\$(whoami)"
+  echo ""
+}
