@@ -10,47 +10,72 @@ AUR (Arch User Repository) package for `qodercli-bin`, packaging the pre-built Q
 
 - `PKGBUILD` — Arch package build recipe. Downloads pre-built binaries from `download.qoder.com` and installs them to `/usr/bin/qodercli`.
 - `.SRCINFO` — Auto-generated metadata from PKGBUILD. **Never edit manually.**
-- `LICENSE` — Local HTML copy of the Qoder Product Service license (fetched from `https://qoder.com/product-service` by `update.sh`). This is a committed local file, not downloaded during `makepkg`.
-- `update.sh` — Automation script that checks for new upstream releases and license changes, then updates PKGBUILD/SRCINFO accordingly. Requires: `curl`, `jq`, `sed`, `sha256sum`, `makepkg`, `cmp`.
-- `qodercli.bash`, `qodercli.zsh`, `qodercli.fish` — Shell completion scripts installed by the package. Maintained manually; must be updated when upstream adds/changes CLI commands or flags.
+- `LICENSE` — Local HTML copy of the Qoder Product Service license (fetched from `https://qoder.com/product-service`). Committed local file.
+- `qodercli.bash`, `qodercli.zsh`, `qodercli.fish` — Shell completion scripts. Maintained manually.
 
-## Commands
-
-### Update to latest upstream version
+## Update Workflow
 
 When user says "检查升级", "check update", or wants to update the package:
 
-1. **Check for updates**
-   ```bash
-   ./update.sh
-   git diff
-   ```
+### 1. Fetch upstream info
 
-2. **Check completions**
-   ```bash
-   qodercli --help
-   qodercli <subcommand> --help
-   ```
-   Compare with completion scripts. Update if CLI changed.
+```bash
+curl -fsSL https://download.qoder.com/qodercli/channels/manifest.json
+```
 
-3. **Validate** (before commit)
-   ```bash
-   bash -n qodercli.bash && zsh -n qodercli.zsh && fish -n qodercli.fish
-   namcap PKGBUILD
-   makepkg -si  # optional: local test build
-   ```
+Extract from manifest:
+- `latest` — new version string
+- `sha256` for `os=linux, arch=amd64` — for x86_64
+- `sha256` for `os=linux, arch=arm64` — for aarch64
 
-4. **Commit** (only after validation passed)
-   Use conventional commits format, e.g.:
-   - `chore(aur): bump pkgrel=N, update LICENSE checksum`
-   - `chore(aur): upgrade to vX.Y.Z`
+```bash
+curl -fsSL https://qoder.com/product-service -o /tmp/LICENSE.new
+sha256sum /tmp/LICENSE.new
+```
 
-5. **Push** (only when user explicitly requests)
-   ```bash
-   git push
-   ```
+### 2. Compare and update PKGBUILD
 
-### Other Commands
+**If version changed:**
+- Update `pkgver=<new_version>`
+- Reset `pkgrel=1`
+- Update `sha256sums_x86_64=('<amd64_sha256>')`
+- Update `sha256sums_aarch64=('<arm64_sha256>')`
+
+**If LICENSE changed** (compare sha256):
+- Replace `LICENSE` file with new content
+- Update `sha256sums=('<new_license_sha256>'` (first entry)
+- If version didn't change: increment `pkgrel`
+
+**Regenerate .SRCINFO:**
+```bash
+makepkg --printsrcinfo > .SRCINFO
+```
+
+### 3. Check completions (only if version changed)
+
+Reference sources:
+- `qodercli --help`, `qodercli <subcommand> --help`
+- https://docs.qoder.com/cli/using-cli
+
+Compare with completion scripts. Update if CLI changed.
+
+### 4. Validate
+
+```bash
+bash -n qodercli.bash && zsh -n qodercli.zsh && fish -n qodercli.fish
+namcap PKGBUILD
+makepkg -si  # optional: local test build
+```
+
+### 5. Commit
+
+Use conventional commits format.
+
+### 6. Push
+
+Only when user explicitly requests: `git push`
+
+## Other Commands
 
 ```bash
 makepkg --printsrcinfo > .SRCINFO  # Regenerate after manual PKGBUILD edits
@@ -63,12 +88,10 @@ namcap PKGBUILD                    # Validate PKGBUILD
 - When `pkgver` changes, `pkgrel` resets to `1`.
 - When only the LICENSE changes (no version bump), `pkgrel` is incremented.
 - `.SRCINFO` must always be regenerated and committed alongside any PKGBUILD change.
-- Checksums (`sha256sums_x86_64`, `sha256sums_aarch64`, `sha256sums`) must match the actual source files. Use `update.sh` or `updpkgsums` to recalculate.
+- Checksums (`sha256sums_x86_64`, `sha256sums_aarch64`, `sha256sums`) must match the actual source files.
 - After a version bump, check if new CLI commands/flags were added and update the shell completion scripts accordingly.
 - This package conflicts with `qoder-cli` (a hypothetical source-built variant). The binary is installed as `/usr/bin/qodercli`.
 - **AUR repositories must not contain subdirectories.** All files must be at the repo root.
-
-- `update.sh` relies on line-oriented `sed` — do not reformat PKGBUILD fields (`pkgver=`, `sha256sums=()` block, etc.) or the script will silently break.
 - `source+=()` and `sha256sums` arrays must stay in the same order (LICENSE, bash, zsh, fish).
 - AUR repo — changes are published via `git push` directly (no pull requests).
 
@@ -76,7 +99,9 @@ namcap PKGBUILD                    # Validate PKGBUILD
 
 After a `pkgver` bump or when completions are reported incorrect, update all three scripts (`qodercli.bash`, `qodercli.zsh`, `qodercli.fish`) consistently:
 
-1. Run `qodercli --help` and each subcommand's `--help` (recursively for `mcp` sub-subcommands) to discover new/changed/removed commands or flags
+1. Discover new/changed/removed commands or flags via:
+   - `qodercli --help` and each subcommand's `--help` (recursively for `mcp` sub-subcommands)
+   - https://docs.qoder.com/cli/using-cli
 2. Update all three scripts, following existing patterns in each file
 3. Validate syntax: `bash -n qodercli.bash && zsh -n qodercli.zsh && fish -n qodercli.fish`
 
