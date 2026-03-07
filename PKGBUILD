@@ -3,7 +3,7 @@
 pkgname=vsview-git
 _origpkgname=vsview
 pkgver=0.1.0b1.7.gaa95a3b
-pkgrel=2
+pkgrel=3
 pkgdesc='The next-generation VapourSynth previewer (GIT version)'
 arch=('x86_64')
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
@@ -19,6 +19,7 @@ depends=(
     'python-pygments'
     'python-pluggy'
     'python-typing_extensions'
+    'python-pathvalidate'
     'pyside6'
 )
 makedepends=(
