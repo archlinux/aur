@@ -1,5 +1,5 @@
 [klfc-bin]
 source = "github"
 github = "39aldo39/klfc"
-use_max_tag = true
+use_latest_release = true
 prefix = "v"
