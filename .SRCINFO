@@ -1,6 +1,6 @@
 pkgbase = particlemusic-bin
 	pkgdesc = A cross-platform local music player based on Flutter
-	pkgver = 1.0.14
+	pkgver = 1.0.15
 	pkgrel = 1
 	url = https://github.com/AfalpHy/ParticleMusic
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = particlemusic-bin
 	depends = glibc
 	provides = particlemusic
 	conflicts = particlemusic
-	source = ParticleMusic-1.0.14-linux-amd64.deb::https://github.com/AfalpHy/ParticleMusic/releases/download/v1.0.14/ParticleMusic-1.0.14-linux-amd64.deb
+	source = ParticleMusic-1.0.15-linux-amd64.deb::https://github.com/AfalpHy/ParticleMusic/releases/download/v1.0.15/ParticleMusic-1.0.15-linux-amd64.deb
 	sha256sums = SKIP
 
 pkgname = particlemusic-bin
