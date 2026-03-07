@@ -10,7 +10,7 @@ pkgver=4.6.3
 pkgrel=1
 pkgdesc="A C++ and Python library for efficient inference with Transformer models."
 arch=('x86_64')
-url="https://opennmt.net/CTranslate2"
+url="https://github.com/OpenNMT/CTranslate2"
 license=('MIT')
 makedepends=(
   'cmake'
