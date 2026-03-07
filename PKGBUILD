@@ -20,6 +20,7 @@ sha256sums=(
     'ae3e2566417009e6dfd825785d88d33f6c02b9a7070f8c5bad8d58d83e3be3e9'
 )
 noextract=("LOVR_Playspace-x86_64-${pkgver}.AppImage")
+options=('!strip')
 
 prepare() {
     chmod +x "LOVR_Playspace-x86_64-${pkgver}.AppImage"
