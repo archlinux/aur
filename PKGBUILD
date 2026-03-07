@@ -6,7 +6,7 @@ _setFullLibdir="${_setPrefix}/${_setLibdir}"
 _pkgbasename=glslang
 
 pkgname=lib32-$_pkgbasename
-pkgver=1.4.335.0
+pkgver=1.4.341.0
 pkgrel=1
 epoch=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (32bit)'
@@ -31,7 +31,7 @@ source=(
   "git+${url}.git#tag=vulkan-sdk-${pkgver}"
 )
 sha256sums=(
-  '262eaf3026bcc5f75b608cc1bb593a0b4f199fdf5006cfe3335e18d0407906f4'
+  'bf7d224dc960f044884d9ca2285d0df56b618a76c501eee0bc24d10c40cf2c38'
 )
 
 prepare() {
