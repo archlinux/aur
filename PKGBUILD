@@ -7,16 +7,18 @@ arch=('x86_64')
 url="https://github.com/goal10der/wordleinc"
 license=('MIT')
 depends=('glibc')
-makedepends=('gcc' 'make')
+# ADDED 'git' here because you are now using a git source
+makedepends=('gcc' 'make' 'git') 
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 build() {
-    cd "$pkgname-$pkgver"
+    # Git clones into $pkgname, not $pkgname-$pkgver
+    cd "$pkgname"
     make
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     make DESTDIR="$pkgdir" PREFIX=/usr install
 }

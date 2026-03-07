@@ -7,6 +7,7 @@ pkgbase = wordleinc
 	license = MIT
 	makedepends = gcc
 	makedepends = make
+	makedepends = git
 	depends = glibc
 	source = wordleinc::git+https://github.com/goal10der/wordleinc.git
 	sha256sums = SKIP
