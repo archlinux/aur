@@ -1,6 +1,6 @@
 pkgbase = 7zkpxc
 	pkgdesc = Secure 7-Zip wrapper with KeePassXC integration
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/lxstig/7zkpxc
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = 7zkpxc
 	conflicts = 7zkpxc
 	provides = 7zkpxc
 	
-	source = https://github.com/lxstig/7zkpxc/releases/download/v0.2.8/7zkpxc_0.2.8_src.tar.gz
-	sha256sums = c044ea299e8f58a8c98255106252671196c7dcf9f1673cee25cc402939218f2b
+	source = https://github.com/lxstig/7zkpxc/releases/download/v0.2.9/7zkpxc_0.2.9_src.tar.gz
+	sha256sums = 1a72b4fd4b471ba0527e264d8884fef24bd35d7880110b2f97a418a0bbc082f4
 	
 pkgname = 7zkpxc
