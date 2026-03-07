@@ -1,7 +1,7 @@
 # Maintainer: wszqkzqk <wszqkzqk@qq.com>
 
 pkgname=guiless-bing-search
-pkgver=r12.20260307.d665631
+pkgver=r13.20260307.883b233
 pkgrel=1
 pkgdesc='A tool for accessing Bing search results in GUI-less environments'
 arch=('any')
