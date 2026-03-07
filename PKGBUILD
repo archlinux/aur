@@ -6,7 +6,7 @@ _source_type='pypi-releases'
 _pypi_package='myloginpath'
 
 pkgname="python-${_pypi_package}"
-pkgver="${_upstreamver}"
+pkgver="0.0.4"
 pkgrel=1
 pkgdesc="MySQL login path file reader"
 arch=('any')
@@ -21,16 +21,12 @@ sha256sums=('c44b8d11e8f35a02eeac4b88bf244203c09cc496bfa19ce99a79561c038f9d09')
 
 build() {
     cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
-
     python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${srcdir}/${_pypi_package//-/_}-${pkgver}/"
-
     python -m installer --destdir="${pkgdir}" dist/*.whl
-
     install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-
     install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
