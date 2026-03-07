@@ -2,7 +2,7 @@
 
 pkgbase=spectacle-trayicon-git
 pkgname=('spectacle-trayicon-git')
-pkgver=0
+pkgver=1.1.0.r0.g0000000
 pkgrel=1
 pkgdesc="KDE Plasma system tray icon for Spectacle screenshot tool with quick capture modes"
 arch=('any')
