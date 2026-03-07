@@ -4,7 +4,7 @@
 
 _pkgname='traefik'
 pkgname="${_pkgname}-bin"
-pkgver=3.6.0
+pkgver=3.6.10
 pkgrel=1
 pkgdesc='A modern reverse proxy written in Go'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -35,11 +35,11 @@ sha256sums=('da59d047177cae773d248684e8484d91c71201f5bc07fe72452efdf9bed1a7f4'
             '42f46aa462f7347cc63f4a88e38ba9cebeab9f6bcb4f6f3717dafd17a8018e56'
             '9acc04ac38893d05c5f3b1407fbc36d5f7ae179af5f13e12231194f1f469390d'
             'abfcfe24e742bf8968749ea79e2c0425bef3d37d16eb60311b5a994312a1e54d')
-sha256sums_i686=('f63c68c5f6a32b2c0befda007c69634b22e6f42ff7aa66a299ffcbf9182fde48')
-sha256sums_x86_64=('2588c6164cc28f9fde7b76ecad741fb30560b5bea742dbfe321d958bd5959bc1')
-sha256sums_armv6h=('846f2546aea6a27152259acb4f3ad94e89e911ff6940358820f1c3102e61879d')
-sha256sums_armv7h=('d195fd5daeb94577c2dcdd9ce15f3d25e719356e7716f5d7a993ab4f771f099a')
-sha256sums_aarch64=('5160ac783ac6f864d6eee11d27eb0689fc3be3bd7416a5b656635db8abd37a4c')
+sha256sums_i686=('e803fb96459f4ae7a3b87fd1fca72283d967e0957cfb5ad279ea2153c9360ce8')
+sha256sums_x86_64=('85a60ec110ad6e2c7161d8d93e9f3d57838603ed08b32420ca375b670245d597')
+sha256sums_armv6h=('11fe770e9eaf88aa8e11fddeaa2b1ea29050ce3326fe9f162c9f09679ac57605')
+sha256sums_armv7h=('fdb949f57fc5435da652d7f94fe67c1651150e08600943f8f9d8b083cdbd1de4')
+sha256sums_aarch64=('d22bfa7cb9f1ca482420d6b63f72a13104c9b087a092045393ce32a6d13de4d8')
 
 package() {
   cd "${srcdir}"
