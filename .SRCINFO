@@ -1,12 +1,12 @@
 pkgbase = bluepala
 	pkgdesc = Golang based BlueZ manager inspired by Impala
-	pkgver = 0.7.5
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/joel-sgc/bluepala
 	arch = x86_64
 	license = WTFPL
 	makedepends = go
-	source = bluepala-0.7.5.tar.gz::https://github.com/joel-sgc/bluepala/archive/refs/tags/0.7.5.tar.gz
+	source = bluepala-1.0.0.tar.gz::https://github.com/joel-sgc/bluepala/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = bluepala
