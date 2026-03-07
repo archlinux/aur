@@ -1,0 +1,17 @@
+pkgbase = maplibre-native-qt-git
+	pkgdesc = MapLibre Native Qt Bindings and Qt Location Plugin
+	pkgver = v3.0.0.r38.g181f28b
+	pkgrel = 1
+	arch = x86_64
+	license = BSD-2-Clause
+	depends = ccache
+	depends = cmake
+	depends = gcc
+	depends = icu
+	depends = ninja
+	depends = qt6-base
+	depends = qt6-location
+	source = maplibre-native-qt-git::git+https://github.com/maplibre/maplibre-native-qt.git
+	sha256sums = SKIP
+
+pkgname = maplibre-native-qt-git
