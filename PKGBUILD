@@ -8,18 +8,23 @@ url="https://github.com/bkryza/clang-include-graph"
 license=('MIT')
 depends=('gcc-libs' 'glibc' 'clang' 'boost-libs')
 makedepends=('git' 'cmake' 'boost' 'llvm')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bkryza/clang-include-graph/archive/refs/tags/${pkgver}.tar.gz")
+source=("git+https://github.com/bkryza/clang-include-graph.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "${srcdir}/clang-include-graph"
+  git describe --long --tags | sed 's/-/.r/;s/-/./'
+}
+
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/clang-include-graph"
 
   # patch to make tests conditional
   sed -i 's/^add_subdirectory(tests)$/if(BUILD_TESTS)\nadd_subdirectory(tests)\nendif()/' CMakeLists.txt
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/clang-include-graph"
 
   cmake -B build \
     -DCMAKE_BUILD_TYPE=Release \
@@ -29,7 +34,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/clang-include-graph"
 
   # Install the main binary manually
   install -Dm755 build/clang-include-graph "${pkgdir}/usr/bin/clang-include-graph"

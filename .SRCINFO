@@ -13,7 +13,7 @@ pkgbase = clang-include-graph-git
 	depends = glibc
 	depends = clang
 	depends = boost-libs
-	source = clang-include-graph-git-0.2.0.tar.gz::https://github.com/bkryza/clang-include-graph/archive/refs/tags/0.2.0.tar.gz
+	source = git+https://github.com/bkryza/clang-include-graph.git
 	sha256sums = SKIP
 
 pkgname = clang-include-graph-git
