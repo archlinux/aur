@@ -1,14 +1,13 @@
 # Maintainer: raindropqwq <raindropqwq@outlook.com>
-# Maintainer: snowdropQwQ <xpecnh2n@gmail.com>
 
 pkgname=micyou-bin
 pkgver=1.1.4
-pkgrel=2
+pkgrel=1
 pkgdesc="Turn your Android device into a high-quality wireless microphone for your PC"
 arch=('x86_64')
 url="https://github.com/LanRhyme/MicYou"
 license=('MIT')
-depends=('alsa-lib' 'fontconfig' 'freetype2' 'glibc' 'libappindicator' 'libgl' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst' 'zlib')
+depends=('alsa-lib' 'adb' 'fontconfig' 'freetype2' 'glibc' 'libappindicator' 'libgl' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst' 'zlib')
 optdepends=(
     'bluez-libs: Bluetooth connectivity support'
     'xdg-utils: Open URLs in default browser'
