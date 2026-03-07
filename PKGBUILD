@@ -19,7 +19,7 @@ source=("app::git+https://github.com/neuroforest/app.git#commit=$_commit"
         'neurowiki.desktop')
 sha256sums=('SKIP'
             'b0f745fde1dbd9767d199266f7c5883f2e46510c7ece565a0743000e49629565'
-            '8361e0798e96b174f0f05b608646635f54dacffde0ddbeea58300fd72ff85b49')
+            '7533ca9accca26b1537c5083a4141897ca2b85b5b0bd6982392d95e7ddf0d0f9')
 
 pkgver() {
     cd "$srcdir/app"

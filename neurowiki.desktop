@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=NeuroWiki
-Comment=NeuroForest knowledge management application
+Comment=NW.js based user interface for NeuroForest
 Exec=neurowiki
 Icon=neuroforest
 Terminal=false
