@@ -1,16 +1,33 @@
 post_install() {
   cat << 'EOF'
 
-****************************************************************
-*      Hooray! ksteamtrayicon was installed successfully.      *
-****************************************************************
-*                                                              *
-* To start it, run the following command:                      *
-*   kioclient exec /etc/xdg/autostart/ksteamtrayicon.desktop   *
-*                                                              *
-* Or you can just log out of KDE Plasma and log back in.       *
-*                                                              *
-****************************************************************
+********************************************************************
+*        Hooray! ksteamtrayicon was installed successfully.        *
+********************************************************************
+*                                                                  *
+* To start it immediately, run the following command:              *
+*     kioclient exec /etc/xdg/autostart/ksteamtrayicon.desktop     *
+*                                                                  *
+* Or simply log out of KDE Plasma and log back in.                 *
+*                                                                  *
+********************************************************************
+
+EOF
+}
+
+post_upgrade() {
+  cat << 'EOF'
+
+********************************************************************
+*        Hooray! ksteamtrayicon was upgraded successfully.         *
+********************************************************************
+*                                                                  *
+* To start the new version immediately, run the following command: *
+*     kioclient exec /etc/xdg/autostart/ksteamtrayicon.desktop     *
+*                                                                  *
+* Or simply log out of KDE Plasma and log back in.                 *
+*                                                                  *
+********************************************************************
 
 EOF
 }
