@@ -1,6 +1,6 @@
 pkgbase = twitch-drops-miner-bin
 	pkgdesc = An app that allows you to AFK mine timed Twitch drops, with automatic drop claiming and channel switching.
-	pkgver = 20260215.121506
+	pkgver = 20260307.091114
 	pkgrel = 1
 	url = https://github.com/DevilXD/TwitchDropsMiner
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = twitch-drops-miner-bin
 	conflicts = twitch-drops-miner
 	options = !strip
 	source_x86_64 = Twitch.Drops.Miner-x86_64.AppImage::https://github.com/DevilXD/TwitchDropsMiner/actions/runs/16847076869/artifacts/3725324177
-	sha256sums_x86_64 = 366d016719c2dfc53f36ed68a68836fb6fd1602a8983e7be97cf3b31f0decfb3
+	sha256sums_x86_64 = c89d7ae416d587019a184a208001e98f2157a7c75ad8e984ca78d9f542973631
 	source_aarch64 = Twitch.Drops.Miner-aarch64.AppImage::https://assets.dataflare.app/release/linux/aarch64/Dataflare.AppImage
-	sha256sums_aarch64 = 0ca9a5e3e1ea7cb35fb640b8e3951e95a5809608256766b802a6b597d5a614c1
+	sha256sums_aarch64 = 0958b5eff5ee83b2567d32a8236e0b98203f57d9770f97272cfcb60bae3723fc
 
 pkgname = twitch-drops-miner-bin
