@@ -4,10 +4,10 @@
 
 pkgname=obsidian-2-theme-git
 pkgver=2.25.r307.ga6ec054
-pkgrel=1
+pkgrel=2
 pkgdesc="Obsidian 2 themes for Gnome 3.22+, all colors"
 arch=(any)
-url="https://www.gnome-look.org/p/1173113/"
+url="https://github.com/madmaxms/theme-obsidian-2"
 license=(GPL-3.0-or-later)
 makedepends=(git)
 optdepends=('gnome-tweaks: A tool to customize advanced GNOME 3 options.')
