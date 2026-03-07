@@ -3,14 +3,14 @@
 # Maintainer: l5yth <aur@l5y.tech>
 
 pkgname=psn-git
-pkgver=0.1.1.r0.g6822583
+pkgver=0.1.2.r0.g7df4e2d
 pkgrel=1
 pkgdesc="Terminal UI for process status navigation and control"
-arch=('x86_64')
+arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/l5yth/psn"
 license=('Apache')
 options=('!debug')
-depends=('procps-ng')
+depends=()
 makedepends=('cargo' 'git')
 source=("git+https://github.com/l5yth/psn.git")
 sha256sums=('SKIP')
