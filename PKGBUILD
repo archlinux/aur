@@ -2,8 +2,8 @@
 
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-tvguide
-pkgver=1.3.11
-pkgrel=2
+pkgver=1.3.12
+pkgrel=1
 epoch=1
 _vdrapi=11
 pkgdesc="highly customizable 2D EPG viewer plugin."
@@ -15,7 +15,7 @@ _plugname=${pkgname//vdr-/}
 source=("${url}/-/archive/v${pkgver}/tvguide-v${pkgver}.tar.bz2"
         "50-$_plugname.conf")
 backup=("etc/vdr/conf.avail/50-$_plugname.conf")
-sha256sums=('7e196013e684829c60ecd604b7e58e6953a6825289eaca4313491f9a1f154122'
+sha256sums=('23f3c01e4eabb82389923ea229b6dbd248cea512651ba9ea60ba798c4e1bc31c'
             '6e556c9cce43a02eeb881950e4e7c8ea0c270af00f609bf9bf950294203a3391')
 
 build() {
