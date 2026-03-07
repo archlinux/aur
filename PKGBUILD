@@ -2,7 +2,7 @@
 pkgname=lfe
 pkgver=2.2.0
 pkgrel=3
-pkgdesc="LISP Flavoured Erlang"
+pkgdesc="Lisp Flavoured Erlang"
 arch=('x86_64')
 url="https://github.com/lfe/lfe"
 license=('Apache')
