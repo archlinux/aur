@@ -1,6 +1,6 @@
 pkgbase = loghew-bin
 	pkgdesc = A TUI to read and observe .log files
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/nehadyounis/loghew
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = loghew-bin
 	depends = libgcc
 	provides = loghew
 	conflicts = loghew
-	source_x86_64 = loghew-x86_64-0.1.1.txz::https://github.com/nehadyounis/loghew/releases/download/v0.1.1/loghew-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = 77d52a5a7bde872e197d8a3dcc9bcd711d2744a94e320fbca19db51c3bf2fbf1
-	source_aarch64 = loghew-aarch64-0.1.1.txz::https://github.com/nehadyounis/loghew/releases/download/v0.1.1/loghew-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 91741c25d2a8866ce29ead157ec56e6fe4772042425c7d441ea99982b2ad6e0d
+	source_x86_64 = loghew-x86_64-0.1.2.txz::https://github.com/nehadyounis/loghew/releases/download/v0.1.2/loghew-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = b472de86ff169e5def8579fe33ef121780b951f7b423f06e9a54bc98bb6fa4b4
+	source_aarch64 = loghew-aarch64-0.1.2.txz::https://github.com/nehadyounis/loghew/releases/download/v0.1.2/loghew-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 5db52b93fe1241e422600f86e730f2eac2d343921fe9e696676891267af64aaa
 
 pkgname = loghew-bin

@@ -5,7 +5,7 @@ _pkgname=loghew
 pkgname=${_pkgname}-bin
 pkgdesc="A TUI to read and observe .log files"
 
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ depends=('glibc' 'libgcc')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('77d52a5a7bde872e197d8a3dcc9bcd711d2744a94e320fbca19db51c3bf2fbf1')
-sha256sums_aarch64=('91741c25d2a8866ce29ead157ec56e6fe4772042425c7d441ea99982b2ad6e0d')
+sha256sums_x86_64=('b472de86ff169e5def8579fe33ef121780b951f7b423f06e9a54bc98bb6fa4b4')
+sha256sums_aarch64=('5db52b93fe1241e422600f86e730f2eac2d343921fe9e696676891267af64aaa')
 
 
 case ${CARCH} in
