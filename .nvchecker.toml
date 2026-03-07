@@ -1,0 +1,5 @@
+[splatmoji]
+source = "github"
+github = "cspeterson/splatmoji"
+use_max_tag = true
+prefix = "v"
