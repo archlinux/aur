@@ -1,7 +1,7 @@
 # Maintainer: llyy@sipeed.com
 pkgname=maixvision-bin
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="MaixVision development environment for Sipeed Maix series AIoT boards"
 arch=('x86_64')
 url="https://www.sipeed.com/maixvision"
@@ -19,21 +19,18 @@ prepare() {
 }
 
 package() {
-  # 复制所有文件到系统
   cp -r "$srcdir/opt" "$pkgdir/"
 
-  # 创建符号链接到/usr/bin以便从终端启动
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/MaixVersion/maixversion" "$pkgdir/usr/bin/maixvision"
 
-  # 安装桌面文件
   install -Dm644 "$srcdir/maixvision.desktop" "$pkgdir/usr/share/applications/maixvision.desktop"
 
-  # 安装图标
   install -Dm644 "$srcdir/maixvision.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/maixvision.png"
 
-  # 修复权限
   find "$pkgdir" -type d -exec chmod 755 {} \;
   find "$pkgdir" -type f -exec chmod 644 {} \;
+
   chmod 755 "$pkgdir/opt/MaixVision/maixvision"
+  chmod 755 "$pkgdir/opt/MaixVision/resources/app.asar.unpacked/node_modules/node/bin/node"
 }
