@@ -5,7 +5,7 @@
 
 _pkgname=openSeaChest
 pkgname=openseachest
-pkgver=25.05.3
+pkgver=26.03.0
 pkgrel=1
 pkgdesc='Seagate utilities useful for performing various operations on SATA, SAS, NVMe, and USB storage devices.'
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ url='https://github.com/Seagate/openSeaChest'
 license=('MPL-2.0')
 makedepends=('meson' 'ninja')
 source=("$pkgname-$pkgver.tar.xz::${url}/releases/download/v${pkgver}/SourceCode_With_Submodules.tar.xz")
-b2sums=('c1a59cfddf9ef629f2fa807cf71908de9e4b66b7e1190ec8036fafa154d08cc495f66886e33c9829a5c56cba1954ba67135f7f767bb828b91cfa1641e4f9accd')
+b2sums=('6bc2c4f1064ca77d0357c226f907abee31365f70f7060d0bf82f919ac86d26dcf6f5a657870485b2475f579fc910533ffb5c9d91ef7f2959aae0388b5b70f990')
 
 build() {
 	cd "${_pkgname}-v${pkgver}"
