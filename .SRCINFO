@@ -1,0 +1,14 @@
+pkgbase = uxn2-git
+	pkgdesc = A graphical emulator for the Varvara Computer, written in C99(SDL2).
+	pkgver = r0.0a736c2
+	pkgrel = 1
+	url = https://git.sr.ht/~rabbits/uxn2
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = sdl2-compat
+	provides = uxn2
+	source = git+https://git.sr.ht/~rabbits/uxn2
+	sha256sums = SKIP
+
+pkgname = uxn2-git
