@@ -9,6 +9,6 @@ pkgbase = soul-player
 	depends = webkit2gtk
 	depends = libayatana-appindicator
 	source = soul-player-0.1.14.deb::https://github.com/soulaudio/soul-player/releases/download/v0.1.14/Soul.Player_0.1.14_amd64.deb
-	sha256sums = 68a463bee4c5bf26da9ec10df2958c858c5b66a53622ca2ba6b72b291a86c525
+	sha256sums = ec052f891778d2d2a12d118fb70305b4a11082b25638a519d402677c2a13d67f
 
 pkgname = soul-player
