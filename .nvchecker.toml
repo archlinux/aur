@@ -1,0 +1,5 @@
+[pinact]
+source = "github"
+github = "suzuki-shunsuke/pinact"
+use_max_tag = true
+prefix = "v"
