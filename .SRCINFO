@@ -1,0 +1,17 @@
+pkgbase = typemonky-bin
+	pkgdesc = Offline touch typing trainer (prebuilt binary, GTK4, Wayland-friendly)
+	pkgver = 0.1.0.alpha.2_202603071958
+	pkgrel = 1
+	url = https://github.com/Levantado/typemonky
+	arch = x86_64
+	license = MIT
+	depends = gtk4
+	depends = libadwaita
+	depends = sqlite
+	provides = typemonky
+	conflicts = typemonky
+	conflicts = typemonky-git
+	source = typemonky-v0.1.0-alpha.2+202603071958-linux-x86_64.tar.gz::https://github.com/Levantado/typemonky/releases/download/v0.1.0-alpha.2+202603071958/typemonky-v0.1.0-alpha.2+202603071958-linux-x86_64.tar.gz
+	sha256sums = e3d539057bb485f1b5e6ac308714ea018e486c7f9db55e03c390a1178be6c49a
+
+pkgname = typemonky-bin
