@@ -12,3 +12,16 @@ index cc3d37e1d0c4..42223710e8dd 100755
  # end of Android
  
  CONFIG_LIBNVDIMM=y
+diff --git a/tools/lib/bpf/libbpf.c b/tools/lib/bpf/libbpf.c
+index 95f2ffefff3f..947aad1b0f8a 100644
+--- a/tools/lib/bpf/libbpf.c
++++ b/tools/lib/bpf/libbpf.c
+@@ -11252,7 +11252,7 @@ static int resolve_full_path(const char *file, char *result, size_t result_sz)
+ 
+ 			if (s[0] == ':')
+ 				s++;
+-			next_path = strchr(s, ':');
++			next_path = (char*)strchr(s, ':');
+ 			seg_len = next_path ? next_path - s : strlen(s);
+ 			if (!seg_len)
+ 				continue;

@@ -1,6 +1,6 @@
 pkgbase = linux-wsl2-waydroid
 	pkgdesc = Linux WSL2
-	pkgver = 6.6.114.1
+	pkgver = 6.6.123.2
 	pkgrel = 1
 	url = https://github.com/microsoft/WSL2-Linux-Kernel
 	install = linux-wsl2-waydroid.install
@@ -21,7 +21,7 @@ pkgbase = linux-wsl2-waydroid
 	makedepends = qemu-img
 	options = !debug
 	options = !strip
-	source = linux-msft-wsl-6.6.114.1::git+https://github.com/microsoft/WSL2-Linux-Kernel#tag=linux-msft-wsl-6.6.114.1
+	source = linux-msft-wsl-6.6.123.2::git+https://github.com/microsoft/WSL2-Linux-Kernel#tag=linux-msft-wsl-6.6.123.2
 	source = patch.diff
 	source = gen_modules_vhdx.sh
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886

@@ -1,7 +1,7 @@
 # Maintainer: Julian Xhokaxhiu <info at julianxhokaxhiu dot com>
 
 pkgbase=linux-wsl2-waydroid
-pkgver=6.6.114.1
+pkgver=6.6.123.2
 pkgrel=1
 pkgdesc='Linux WSL2'
 url='https://github.com/microsoft/WSL2-Linux-Kernel'
@@ -43,12 +43,12 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=(
   'SKIP'
-  '210c22692f71aef7a91dc6c5687f2a72182f9efc8d77b87e3be86020910baea2'
+  '47ef4597da75dbc120f13adc6b6155d85bd64cc89fbc6cec12e321be73a86f8a'
   '5d0cc65e1c7ec377bd68fce21f130047c58ca57bb3cd5c1350b4d29b26e2b022'
 )
 b2sums=(
   'SKIP'
-  '92c9c8f54912488bc9d63b32efc2b34a5911a3695cfc00f85806aab8018bac98dafb7e52f40bda2aa8831ae27575cabfc3a8b3d978fa7e1d68b9602a97f3ee92'
+  '9d1ea7aa8cf7ded184ef3b29465489b7ba7e92f2052b6110ee359840b1d064b8e9cc30c1c25cfbc2908bd55a7f1f6551fbe4818b6516588bcc50664bf1cb8852'
   '3703d2ffd57f80af85847930e59126d377cad89b54291ebae1c0c0a2ba9f2193f19bf54b81579c62527fdc1fa7c430b9b0cab9bba83bf72b6f89afe0b06f7dea'
 )
 
