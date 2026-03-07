@@ -1,0 +1,19 @@
+pkgbase = ruby-sdl2
+	pkgdesc = Ruby wrapper for SDL 2.x
+	pkgver = 0.3.6.r3.g6ebccec
+	pkgrel = 1
+	url = https://github.com/ohai/ruby-sdl2
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = ruby-rake
+	depends = ruby
+	depends = ruby-docs
+	depends = sdl2
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	source = git+https://github.com/ohai/ruby-sdl2.git#commit=6ebccec7072bb8286d8020c49d2e099142402c6c
+	sha256sums = 5e777b847ead7765fb2096bea2b5c9c5fea480f955403dd34474139fb67734c5
+
+pkgname = ruby-sdl2
