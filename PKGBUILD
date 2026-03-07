@@ -13,9 +13,8 @@ source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 build() {
-    # Git clones into $pkgname, not $pkgname-$pkgver
     cd "$pkgname"
-    make
+    make PREFIX=/usr
 }
 
 package() {
