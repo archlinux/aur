@@ -1,0 +1,19 @@
+pkgbase = vsview-comp
+	pkgdesc = A vsview plugin to make comparison backed by Slowpoke Pics
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://pypi.org/project/vsview-comp/
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	makedepends = python-versioningit
+	depends = vsview
+	depends = python-httpx
+	source = https://files.pythonhosted.org/packages/d3/0a/30416f4b8afe551caff58604e8fed43552c3ac6327f0ddeb5b8d75fb3472/vsview_comp-0.1.2.tar.gz
+	sha256sums = 979744fc6d3ac4bb757608aeac7ec93b6f188fc0035afbb2f8c3c2958e18321b
+
+pkgname = vsview-comp
