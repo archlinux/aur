@@ -1,8 +1,8 @@
 # Maintainer: allddd <me (at) allddd (dot) onl>
 
 pkgname=mkinitcpio-extras
-pkgver=2
-pkgrel=2
+pkgver=3
+pkgrel=1
 pkgdesc='Collection of mkinitcpio hooks for busybox based initramfs'
 arch=('any')
 url='https://gitlab.com/allddd/mkinitcpio-extras'
@@ -24,7 +24,7 @@ conflicts=(
     'mkinitcpio-tinyssh'
 )
 source=("${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('7f541506eb07cb5d85e30da5a33e24ff59e21e7b9154624c23f884e3c6057aaf')
+sha256sums=('2d76c5cea844448908d5b84d5739feb83e93bfa2d595ac34805651ac4593baa6')
 
 package() {
     cd "${srcdir}/${pkgname}-v${pkgver}"
