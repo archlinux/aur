@@ -14,7 +14,7 @@ pkgbase = lovr-playspace-bin
 	noextract = LOVR_Playspace-x86_64-0.2.1.AppImage
 	source = LOVR_Playspace-x86_64-0.2.1.AppImage::https://github.com/SpookySkeletons/lovr-playspace/releases/download/0.2.1/LOVR_Playspace-x86_64.AppImage
 	source = lovr-playspace.desktop
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 996e863b6d4d725d3d18fd3a27b5ea503d55d281c2f15332c2556a1484f503fa
+	sha256sums = ae3e2566417009e6dfd825785d88d33f6c02b9a7070f8c5bad8d58d83e3be3e9
 
 pkgname = lovr-playspace-bin

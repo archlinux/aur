@@ -16,8 +16,8 @@ source=(
     "lovr-playspace.desktop"
 )
 sha256sums=(
-    'SKIP'
-    'SKIP'
+    '996e863b6d4d725d3d18fd3a27b5ea503d55d281c2f15332c2556a1484f503fa'
+    'ae3e2566417009e6dfd825785d88d33f6c02b9a7070f8c5bad8d58d83e3be3e9'
 )
 noextract=("LOVR_Playspace-x86_64-${pkgver}.AppImage")
 
