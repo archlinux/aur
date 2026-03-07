@@ -291,6 +291,9 @@
 	},
 	"settingsSearchUrl": "https://bingsettingssearch.trafficmanager.net/api/Search",
 	"extensionEnabledApiProposals": {
+		"mrleemurray.theme-2026": [
+			"css"
+		],
 		"ms-azuretools.vscode-containers": [
 			"authenticationChallenges"
 		],
@@ -470,6 +473,7 @@
 			"quickDiffProvider",
 			"remoteCodingAgents",
 			"shareProvider",
+			"tabInputMultiDiff",
 			"tabInputTextMerge",
 			"tokenInformation",
 			"treeItemMarkdownLabel",
@@ -492,7 +496,6 @@
 			"chatParticipantAdditions",
 			"defaultChatParticipant",
 			"embeddings",
-			"chatEditing",
 			"chatProvider",
 			"mappedEditsProvider",
 			"aiRelatedInformation",
@@ -508,6 +511,8 @@
 			"contribCommentEditorActionsMenu",
 			"contribCommentThreadAdditionalMenu",
 			"contribCommentsViewThreadMenus",
+			"contribChatEditorInlineGutterMenu",
+			"extensionAffinity",
 			"newSymbolNamesProvider",
 			"findFiles2",
 			"chatReferenceDiagnostic",
@@ -523,6 +528,7 @@
 			"languageModelSystem",
 			"languageModelCapabilities",
 			"languageModelThinkingPart",
+			"languageModelToolSupportsModel",
 			"chatStatusItem",
 			"taskProblemMatcherStatus",
 			"contribLanguageModelToolSets",
@@ -533,7 +539,12 @@
 			"chatSessionsProvider",
 			"devDeviceId",
 			"contribEditorContentMenu",
-			"tokenInformation"
+			"tokenInformation",
+			"chatPromptFiles",
+			"mcpServerDefinitions",
+			"tabInputMultiDiff",
+			"workspaceTrust",
+			"chatHooks"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
