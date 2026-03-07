@@ -8,6 +8,7 @@ url='https://github.com/Kamyil/work-tuimer'
 license=('MIT')
 makedepends=('cargo' 'rust')
 depends=('gcc-libs' 'glibc')
+options=('!lto')
 arch=('x86_64' 'aarch64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Kamyil/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('SKIP')  # Will be filled after first test build
