@@ -1,7 +1,7 @@
 # Maintainer: yumi
 
 pkgname=shvspy-bin
-pkgver=1.14.2
+pkgver=1.14.3
 pkgrel=1
 pkgdesc="SHV Spy (AppImage)"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
   "shvspy.desktop"
 )
 
-sha256sums=('5e15c001198ccfa20cd2960423219c9a9f4e0706ee8d7c174bd91a8e60772032'
+sha256sums=('6b52630c4bc11c6018ec4781b01198bff64c5acf888c58ec07679e9bcd196ee0'
             '785183a3abf7d60bc1e37a4661cddcd2dbcf8451e465c83f705c6df007116fc4'
             'a7a2e367dee84b4bd22bfc4aca237373c2a11f74bee28fdc4a327303d2b0a4c5'
             '78fb4ff4cef729f40d6729bb8f7788868e26d41dd6d26feddbfebb7a958dcb1c')
