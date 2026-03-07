@@ -1,8 +1,8 @@
 pkgname=szsol-rs
 pkgver=0.7.0
 pkgrel=1
-pkgdesc="A simple solitaire card game originating from SHENZHEN I/O"
-arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h' 'riscv64')
+pkgdesc="A solitaire card game originating from SHENZHEN I/O, with tui/cli mode and solver"
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://github.com/ghoker143/szsol-rs"
 license=('MIT')
 depends=('gcc-libs')
