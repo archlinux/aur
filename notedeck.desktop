@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=NoteDeck
+Comment=Misskey deck client for desktop
+Exec=notedeck
+Icon=com.notedeck.desktop
+Type=Application
+Categories=Network;InstantMessaging;
+Keywords=Misskey;Fediverse;SNS;Deck;
+StartupWMClass=notedeck
