@@ -2,7 +2,7 @@
 
 pkgname=qmd
 _npmname="@tobilu/qmd"
-pkgver=1.0.7
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="On-device search engine for markdown files with BM25, vector, and LLM-powered search"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('nodejs>=22')
 makedepends=('npm' 'cmake')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/qmd-${pkgver}.tgz")
-sha256sums=('c00f6b6b33486faeaecc0b7eb40ce148f2b66d77023527a4541fdefdfc5525e9')
+sha256sums=('e172db78fb2b885e4b848a2819025d1cdd88de76ab87ec9c12a9126c1ccc958c')
 
 latestver() {
   curl -s "https://registry.npmjs.org/${_npmname}" | jq -r '.["dist-tags"].latest'
