@@ -1,6 +1,6 @@
 pkgbase = wordleinc
 	pkgdesc = A terminal-based Wordle clone written in C with case-insensitive logic.
-	pkgver = 1.0.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/goal10der/wordleinc
 	arch = x86_64

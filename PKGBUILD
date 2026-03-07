@@ -1,6 +1,6 @@
 # Maintainer: goal10der <goal10derphone@gmail.com>
 pkgname=wordleinc
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A terminal-based Wordle clone written in C with case-insensitive logic."
 arch=('x86_64')
