@@ -1,48 +1,48 @@
-# Maintainer: sTiKyt <stikyt@protonmail.com>
+# Maintainer: sTiKyt <stikyt@proton.me>
+
 pkgname=draquet-polyglot-bin
-pkgver=3.5.1
+pkgver=3.6.1
 pkgrel=1
-
 pkgdesc="PolyGlot is a conlang construction toolkit"
-arch=('x86_64')
-url="http://draquet.github.io/PolyGlot/index.html"
+arch=('x86_64' 'aarch64')
+url="https://github.com/DraqueT/PolyGlot"
 license=('MIT')
-depends=('alsa-lib' 'freetype2' 'glibc' 'libpng' 'libx11' 'libxau' 'libxcb' 'libxdmcp' 'libxext' 'libxi' 'libxrender' 'libxtst' 'zlib')
-makedepends=('git' 'xz' 'tar')
+depends=('alsa-lib' 'bash' 'freetype2' 'gcc-libs' 'giflib' 'glibc' 'harfbuzz' 'hicolor-icon-theme'
+         'lcms2' 'libjpeg-turbo' 'libpng' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst' 'zlib')
 provides=('draquet-polyglot')
-install=
-source=("${pkgname}-${pkgver}-${pkgrel}.deb::https://github.com/DraqueT/PolyGlot/releases/download/${pkgver}/PolyGlot-Ins-Lin.deb")
-md5sums=('49ed5f7c0547cfa5420eeb3c979a1617')
-
-desktopname=draquet-polyglot.desktop
+conflicts=('draquet-polyglot')
+noextract=("${pkgname}-${pkgver}.deb")
+source=("draquet-polyglot.desktop")
+source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/DraqueT/PolyGlot/releases/download/v${pkgver}/polyglot-linear-a_${pkgver}-1_amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}.deb::https://github.com/DraqueT/PolyGlot/releases/download/v${pkgver}/polyglot-linear-a_${pkgver}-1_arm64.deb")
+sha256sums=('92b10fc2c60fcdbcc9d9880891b51a02eebe1c49e3baf56b8cbe187e34832944')
+sha256sums_x86_64=('7f534c534bdeb82b2a4abc42428612342dc04c28d0980d1faf517bf771eb5c46')
+sha256sums_aarch64=('d9f1bbfe6309588bf7a76591f035026fe3a6115423c99fd41c65ef74960a70fe')
 
 prepare() {
-	cd "$srcdir"
-        tar -xf data.tar.xz
-}
-
-build() {
-        # Generate .desktop entry
-        echo "[Desktop Entry]" > $desktopname
-        echo "Name=PolyGlot" >> $desktopname
-        echo "Comment=${pkgdesc}" >> $desktopname
-        echo "Icon=draquet-polyglot" >> $desktopname
-        echo "Exec=PolyGlot" >> $desktopname
-        echo "Type=Application" >> $desktopname
-        echo "Encoding=UTF-8" >> $desktopname
-        echo "Terminal=false" >> $desktopname
-        echo "Categories=Development;Science;Translation;Dictionary;TextTools;Languages;" >> $desktopname
+    ar x "${pkgname}-${pkgver}.deb"
+    tar -xf data.tar.zst
 }
 
 package() {
-	      # Install PolyGlot to necessary folders
-        install -Dm755 $srcdir/opt/polyglot-linear-a/bin/PolyGlot "$pkgdir/usr/bin/PolyGlot"
-        install -Dm644 $srcdir/opt/polyglot-linear-a/share/doc/copyright "$pkgdir/usr/share/doc/copyright"
-        mkdir -p "$pkgdir/usr/lib/"
-        cp -r $srcdir/opt/polyglot-linear-a/lib/* "$pkgdir/usr/lib/"
+    local instdir="$pkgdir/usr/lib/draquet-polyglot"
+    install -dm755 "$instdir"
 
-        # Install Icon
-        install -Dm644 $srcdir/opt/polyglot-linear-a/lib/application-zip.png "$pkgdir/usr/share/pixmaps/draquet-polyglot.png"
-        # Install .desktop entry
-        install -Dm644 $srcdir/$desktopname "$pkgdir/usr/share/applications/${desktopname}"
+    # Install full app tree (includes bundled JRE — no java-runtime dep needed)
+    cp -r opt/polyglot-linear-a/. "$instdir"
+
+    # Launcher symlink
+    install -dm755 "$pkgdir/usr/bin"
+    ln -s /usr/lib/draquet-polyglot/bin/PolyGlot "$pkgdir/usr/bin/PolyGlot"
+
+    # Icon
+    install -Dm644 opt/polyglot-linear-a/lib/PolyGlot.png \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/draquet-polyglot.png"
+
+    # Desktop entry
+    install -Dm644 draquet-polyglot.desktop "$pkgdir/usr/share/applications/draquet-polyglot.desktop"
+
+    # License
+    install -Dm644 opt/polyglot-linear-a/share/doc/copyright \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

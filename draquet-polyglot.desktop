@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=PolyGlot
+Comment=Conlang construction toolkit
+Exec=PolyGlot
+Icon=draquet-polyglot
+Terminal=false
+Categories=Development;Education;
+Keywords=conlang;language;linguistics;constructed;
+MimeType=application/zip;
