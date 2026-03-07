@@ -32,6 +32,6 @@ package() {
   cd "${srcdir}/spectacle-sni"
 
   install -Dm755 spectacle-trayicon.py "${pkgdir}/usr/bin/spectacle-trayicon"
-  install -Dm644 packaging/spectacle-sni.desktop "${pkgdir}/usr/share/applications/spectacle-trayicon.desktop"
+  install -Dm644 packaging/spectacle-trayicon.desktop "${pkgdir}/usr/share/applications/spectacle-trayicon.desktop"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
