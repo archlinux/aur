@@ -7,7 +7,7 @@ _pkgbasename=glslang
 
 pkgname=lib32-$_pkgbasename
 pkgver=1.4.341.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='OpenGL and OpenGL ES shader front end and validator (32bit)'
 arch=('x86_64')
@@ -16,7 +16,8 @@ license=('BSD-3-Clause')
 depends=(
   "$_pkgbasename>=$pkgver"
   'lib32-glibc'
-  'lib32-gcc-libs'
+  'libgcc'
+  'libstdc++'
   'lib32-spirv-tools'
 )
 makedepends=(
