@@ -1,0 +1,19 @@
+pkgbase = ani-stream
+	pkgdesc = A lightweight CLI tool to stream and download anime from the terminal
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/aliabdoxd27-source/ani-stream
+	arch = any
+	license = MIT
+	depends = curl
+	depends = fzf
+	depends = mpv
+	optdepends = yt-dlp: for HLS stream downloads
+	optdepends = ffmpeg: alternative for downloads
+	optdepends = aria2: for faster downloads
+	optdepends = rofi: for rofi-based menu selection
+	optdepends = ani-skip: for skipping intros
+	source = git+https://github.com/aliabdoxd27-source/ani-stream.git#tag=v3.1.0
+	sha256sums = SKIP
+
+pkgname = ani-stream
