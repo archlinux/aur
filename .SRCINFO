@@ -1,6 +1,6 @@
 pkgbase = icann-rdap
 	pkgdesc = ICANN implementation of the Registry Data Access Protocol (RDAP)
-	pkgver = 0.0.27
+	pkgver = 0.0.28
 	pkgrel = 1
 	url = https://github.com/icann/icann-rdap
 	arch = aarch64
@@ -11,7 +11,7 @@ pkgbase = icann-rdap
 	depends = libgcc
 	provides = rdap
 	conflicts = rdap
-	source = icann-rdap-0.0.27.tar.gz::https://github.com/icann/icann-rdap/archive/refs/tags/v0.0.27.tar.gz
-	sha256sums = 2a675b661e5a5025e16db1375447d78868dc1273b90a8d806a2210746ebc9da0
+	source = icann-rdap-0.0.28.tar.gz::https://github.com/icann/icann-rdap/archive/refs/tags/v0.0.28.tar.gz
+	sha256sums = 9854f31c96086cc54110c7d86e7f4c99a37810aab0a9e2b9331d68918c374ede
 
 pkgname = icann-rdap
