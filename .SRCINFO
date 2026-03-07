@@ -1,0 +1,21 @@
+pkgbase = console2svg-bin
+	pkgdesc = Easily convert terminal output into SVG images
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/arika0093/console2svg
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = console2svg
+	conflicts = console2svg
+	source = README-0.6.2.md::https://raw.githubusercontent.com/arika0093/console2svg/v0.6.2/README.md
+	source = LICENSE-0.6.2::https://raw.githubusercontent.com/arika0093/console2svg/v0.6.2/LICENSE
+	sha256sums = aa56638a35e7b45606120c888d5f3bddd27e782ce2c0231c8bc2d80dc982de8b
+	sha256sums = 98777468c101698f56a7e16011578e44db2c1fb6c5b70f614f1fc3be6d551d36
+	source_x86_64 = console2svg-x86_64-0.6.2::https://github.com/arika0093/console2svg/releases/download/v0.6.2/console2svg-linux-x64
+	sha256sums_x86_64 = 448d20a272a2bad9b9d79e0d7565ea366fe345b203a3dd03cca05d739025eb22
+	source_aarch64 = console2svg-aarch64-0.6.2::https://github.com/arika0093/console2svg/releases/download/v0.6.2/console2svg-linux-arm64
+	sha256sums_aarch64 = 8180346a7665aaa865a7f61961094e61ef2531ff2fcd17fdc7ced9dba48118be
+
+pkgname = console2svg-bin

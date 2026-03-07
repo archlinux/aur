@@ -1,0 +1,5 @@
+[console2svg-bin]
+source = "github"
+github = "arika0093/console2svg"
+use_latest_release = true
+prefix = "v"
