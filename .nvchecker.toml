@@ -1,0 +1,5 @@
+[sql-tap]
+source = "github"
+github = "mickamy/sql-tap"
+use_max_tag = true
+prefix = "v"
