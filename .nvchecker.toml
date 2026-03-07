@@ -1,0 +1,5 @@
+[xdgctl]
+source = "github"
+github = "mitjafelicijan/xdgctl"
+use_max_tag = true
+prefix = "v"
