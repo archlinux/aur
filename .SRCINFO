@@ -1,6 +1,6 @@
 pkgbase = spectacle-trayicon-git
 	pkgdesc = System tray icon for Spectacle with quick capture modes and persistent settings
-	pkgver = 1.0.0.r0.g0000000
+	pkgver = 1.1.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/ravencrowonyt/spectacle-sni
 	install = spectacle-trayicon.install
