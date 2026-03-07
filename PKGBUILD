@@ -1,6 +1,6 @@
 pkgname=networkmanager-openvpn-xor
 pkgver=1.12.5
-pkgrel=1
+pkgrel=2
 pkgdesc="NetworkManager VPN plugin for Standard and XOR Patched OpenVPN"
 url="https://networkmanager.dev/docs/vpn/"
 arch=(x86_64)
@@ -29,17 +29,16 @@ conflicts=(
   "networkmanager-openvpn"
   "networkmanager-vpn-plugin-openvpn"
 )
-source=(
-  "https://github.com/NetworkManager/NetworkManager-openvpn/archive/refs/tags/${pkgver}.tar.gz"
-  "git+https://github.com/maintuner/networkmanager-openvpn-xor.git#branch=master"
-)
-b2sums=('feb9f37f0c5935123d144885517f3b7e7321453807449b4646cb792b24a33035e4735cc6464a4b441f7af4b0ae84e89b60e5390be71234497ca813a240283600'
-        'SKIP')
+provides=(networkmanager-openvpn)
+source=("git+https://github.com/maintuner/networkmanager-openvpn-xor.git#branch=master")
+b2sums=("SKIP")
 
 prepare() {
-  cd "NetworkManager-openvpn-${pkgver}"
+  cd "$pkgname"
+  git submodule update --init --recursive
 
-  for patch in ../networkmanager-openvpn-xor/patches/*.patch
+  cd "NetworkManager-openvpn"
+  for patch in ../patches/*.patch
   do
     patch --batch -p1 -F3 < "$patch"
   done
@@ -57,14 +56,14 @@ build() {
     --with-gtk4
   )
 
-  cd "NetworkManager-openvpn-${pkgver}"
+  cd "$pkgname/NetworkManager-openvpn"
   ./configure "${configure_options[@]}"
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
 package() {
-  cd "NetworkManager-openvpn-${pkgver}"
+  cd "$pkgname/NetworkManager-openvpn"
   make DESTDIR="$pkgdir" install dbusservicedir=/usr/share/dbus-1/system.d
   echo 'u nm-openvpn - "NetworkManager OpenVPN"' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
