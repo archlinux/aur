@@ -1,0 +1,5 @@
+[gitlab-ci-linter]
+source = "gitlab"
+gitlab = "orobardet/gitlab-ci-linter"
+use_max_tag = true
+prefix = "v"
