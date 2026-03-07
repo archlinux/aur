@@ -1,0 +1,29 @@
+[Unit]
+Description=Traefik ACME certs dumper (export acme.json to PEM files)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/conf.d/traefik-certs-dumper
+
+# NOTE: --post-hook runs only when using --watch and source changes.
+ExecStart=/usr/bin/traefik-certs-dumper file \
+  --version ${TCD_VERSION} \
+  --source ${TCD_SOURCE} \
+  --dest ${TCD_DEST} \
+  --watch \
+  --domain-subdir=true \
+  --crt-ext=.pem --key-ext=.pem \
+  --crt-name=fullchain --key-name=privkey \
+  --post-hook "/usr/bin/systemctl restart ${TCD_POSTHOOK_SERVICE}"
+
+Restart=on-failure
+RestartSec=2
+
+# Hardening (paths can be adjusted if you change config)
+ReadOnlyPaths=/etc/traefik/acme.json
+ReadWritePaths=/etc/stalwart-mail/public-certs
+
+[Install]
+WantedBy=multi-user.target
