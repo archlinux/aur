@@ -1,6 +1,6 @@
 # Maintainer: kobe-koto <k [at] koto [dot] cc>
 pkgname=preaur-bin
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="PreAUR, build AUR (not only) pkgbuilds ahead of time. (prebuilt binary)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ conflicts=('preaur')
 source=(
   "${pkgname}-${pkgver}.min.js::${url}/releases/download/v${pkgver}/preaur.min.js"
   )
-sha256sums=('c0a12f0b18d986e4864d92aa69fde5882bb326a09313f34b5a70a3e16fd17824')
+sha256sums=('86d1eb2fe4f58dfe8d265d8524a171394be39703cc8f9a2d204eaa5ea0cc2e03')
 
 package() {
   install -Dm755 "$srcdir/${pkgname}-${pkgver}.min.js" "$pkgdir/usr/bin/preaur"
