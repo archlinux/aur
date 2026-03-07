@@ -1,0 +1,18 @@
+pkgbase = easygamma-git
+	pkgdesc = Simple GTK3 GUI for gamma and brightness control on X11 via xrandr
+	pkgver = r4.d17fad4
+	pkgrel = 1
+	url = https://github.com/jahamars/EasyGamma
+	arch = x86_64
+	license = MIT
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = git
+	depends = gtkmm3
+	depends = xorg-xrandr
+	provides = easygamma
+	conflicts = easygamma
+	source = easygamma-git::git+https://github.com/jahamars/EasyGamma.git
+	sha256sums = SKIP
+
+pkgname = easygamma-git
