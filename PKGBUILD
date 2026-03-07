@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-all
-pkgver=2.19.3
+pkgver=2.20.0
 pkgrel=1
 pkgdesc='elephant + all official elephant providers'
 url='https://github.com/abenz1267/elephant'
@@ -9,10 +9,10 @@ arch=('x86_64' 'aarch64')
 license=('GPL')
 depends=('libqalculate' 'wl-clipboard' 'imagemagick' 'fd' 'wtype' 'jq' 'sqlite3')
 makedepends=('go')
-conflicts=('elephant' 'elephant-bitwarden' 'elephant-dnfpackages' 'elephant-1password' 'elephant-bookmarks' 'elephant-nirisessions' 'elephant-niriactions' 'elephant-archlinuxpkgs' 'elephant-bluetooth' 'elephant-calc' 'elephant-clipboard' 'elephant-desktopapplications' 'elephant-files' 'elephant-menus' 'elephant-providerlist' 'elephant-runner' 'elephant-snippets' 'elephant-symbols' 'elephant-todo' 'elephant-unicode' 'elephant-websearch' 'elephant-windows')
-provides=('elephant' 'elephant-nirisessions' 'elephant-niriactions' 'elephant-archlinuxpkgs' 'elephant-bluetooth' 'elephant-calc' 'elephant-clipboard' 'elephant-desktopapplications' 'elephant-files' 'elephant-menus' 'elephant-providerlist' 'elephant-runner' 'elephant-snippets' 'elephant-symbols' 'elephant-todo' 'elephant-unicode' 'elephant-websearch' 'elephant-windows')
+conflicts=('elephant' 'elephant-wireplumber' 'elephant-bitwarden' 'elephant-dnfpackages' 'elephant-1password' 'elephant-bookmarks' 'elephant-nirisessions' 'elephant-niriactions' 'elephant-archlinuxpkgs' 'elephant-bluetooth' 'elephant-calc' 'elephant-clipboard' 'elephant-desktopapplications' 'elephant-files' 'elephant-menus' 'elephant-providerlist' 'elephant-runner' 'elephant-snippets' 'elephant-symbols' 'elephant-todo' 'elephant-unicode' 'elephant-websearch' 'elephant-windows')
+provides=('elephant' 'elephant-wireplumber' 'elephant-nirisessions' 'elephant-niriactions' 'elephant-archlinuxpkgs' 'elephant-bluetooth' 'elephant-calc' 'elephant-clipboard' 'elephant-desktopapplications' 'elephant-files' 'elephant-menus' 'elephant-providerlist' 'elephant-runner' 'elephant-snippets' 'elephant-symbols' 'elephant-todo' 'elephant-unicode' 'elephant-websearch' 'elephant-windows')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('92f6737a717ed489dc041ee377992214ef8d6b3641c1436376d05672c97fc01e')
+sha256sums=('a5283f020e9f8d6ea5375e8a9275f59a4259b5e56d6de0f618961acae4bfba4b')
 
 build() {
     # Build main elephant binary
@@ -23,7 +23,7 @@ build() {
     cd ../../internal/providers
 
     # Build each provider
-    for provider in archlinuxpkgs bitwarden dnfpackages 1password bookmarks bluetooth nirisessions niriactions calc clipboard desktopapplications files menus providerlist runner snippets symbols todo unicode websearch windows; do
+    for provider in wireplumber archlinuxpkgs bitwarden dnfpackages 1password bookmarks bluetooth nirisessions niriactions calc clipboard desktopapplications files menus providerlist runner snippets symbols todo unicode websearch windows; do
         cd $provider
         go build -ldflags="-s -w" -buildvcs=false -buildmode=plugin -trimpath
         cd ..
@@ -37,7 +37,7 @@ package() {
 
     # Install all provider plugins
     cd ../../internal/providers
-    for provider in archlinuxpkgs bitwarden dnfpackages bookmarks 1password nirisessions niriactions bluetooth calc clipboard desktopapplications files menus providerlist runner snippets symbols todo unicode websearch windows; do
+    for provider in wireplumber archlinuxpkgs bitwarden dnfpackages bookmarks 1password nirisessions niriactions bluetooth calc clipboard desktopapplications files menus providerlist runner snippets symbols todo unicode websearch windows; do
         install -Dm 755 $provider/$provider.so -t "${pkgdir}/usr/lib/elephant"
     done
 
