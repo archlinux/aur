@@ -1,0 +1,3 @@
+#!/bin/sh
+unset GTK_MODULES;
+"/opt/RizomUV/AppRun" "$@"

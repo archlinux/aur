@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=RizomUV
+GenericName=UV unwrapping software
+Comment=RizomUV - professional-grade UV unwrapping software.
+Path=/opt/RizomUV
+Exec=/opt/RizomUV/rizomuv
+Terminal=false
+Icon=rizomuv_logo512x512
+Categories=Graphics;
