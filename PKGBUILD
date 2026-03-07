@@ -1,7 +1,7 @@
 # Maintainer: justbispo <aur.fyxy0@slmail.me>
 
 pkgname=chromium-dearrow-bin
-pkgver=2.2.3
+pkgver=2.3
 pkgrel=1
 pkgdesc='Crowdsourcing better titles and thumbnails on YouTube'
 arch=(any)
@@ -12,7 +12,7 @@ optdepends=(chromium vivaldi google-chrome opera brave)
 provides=(chromium-dearrow)
 install=chromium-dearrow.install
 source=("$pkgname-$pkgver.zip::$url/releases/download/$pkgver/ChromeExtension.zip")
-sha256sums=('4b74133303052880755a420c520a50a120ca7f103d6e17cc7c36d1824c916580')
+sha256sums=('5cdcaf5836b3ba9cde301cc309a03e2d9c473f69abf85691e86cc723b45d38ad')
 
 build() {
     cd "$srcdir"/"$_dirname"
