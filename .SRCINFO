@@ -1,6 +1,6 @@
 pkgbase = flavortime-bin
 	pkgdesc = A Rust application that allows you to share your Flavortime referral code and hours coded on Discord!
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/hackclub/flavortime
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = flavortime-bin
 	provides = Flavortime
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/hackclub/flavortime/releases/download/v1.1.2/Flavortime_1.1.2_amd64.deb
-	sha256sums = 6b214f75de3015825e41c73b842c3f8267c4b53f465b7c9470ef31ddbb88fb88
+	source = https://github.com/hackclub/flavortime/releases/download/v1.1.3/Flavortime_1.1.3_amd64.deb
+	sha256sums = 8693525c72c2576ff2e9b59e6d377214977841b6cffdc1a7c95f465a67d1ab24
 
 pkgname = flavortime-bin
