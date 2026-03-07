@@ -10,8 +10,8 @@
 
 _pkgname=kate
 pkgname="${_pkgname}-root"
-pkgver=25.12.1
-pkgrel=2
+pkgver=25.12.3
+pkgrel=1
 arch=(
   'x86_64'
   'i686'
@@ -120,8 +120,8 @@ source=(
   "0001-Defuse-root-block.patch"
 )
 sha256sums=(
-  '1323014ca4054ac624dd5805c1128ba666a861ae2c3a22fba1e703df42f92844'  # ${_pkgname}-${pkgver}.tar.xz
-  'b05f0568550fdb26e94b726042771f87928090ef1aa8e9a3b61801e91e93c4ea'  # ${_pkgname}-${pkgver}.tar.xz.sig
+  'd761d976c19922843617211d9069ded08d6eb43891e28e56eb9385b626ce90ab'  # ${_pkgname}-${pkgver}.tar.xz
+  '4929de65a89f5ae7a41956559a55e73e0977aa266eca5d36a33008a05e0eb97b'  # ${_pkgname}-${pkgver}.tar.xz.sig
   'abc7a33c8e8cd3a79ea4699bca0086c4146a9a43771a10fc60b97dcf62faca44'  # 0001-Defuse-root-block.patch
 )
 validpgpkeys=(
@@ -153,7 +153,7 @@ build() {
   #       |   ^~~~~
   # ```
 
-  ## Silence some warnings
+  ## Silence some compiler warnings
   local _NOWARNINGS _warning _CFLAGSADDITIONS
   _NOWARNINGS=("unused-result" "deprecated-declarations" "maybe-uninitialized")
   _CFLAGSADDITIONS=""
