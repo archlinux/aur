@@ -1,0 +1,5 @@
+[rackpeek-bin]
+source = "github"
+github = "Timmoth/RackPeek"
+use_max_tag = true
+prefix = "RackPeek-"
