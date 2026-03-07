@@ -1,0 +1,5 @@
+[skeema]
+source = "github"
+github = "skeema/skeema"
+use_max_tag = true
+prefix = "v"
