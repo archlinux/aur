@@ -1,0 +1,19 @@
+pkgbase = t3-code
+	pkgdesc = T3 Code - AI-native code editor by Ping Labs
+	pkgver = 0.0.0.alpha.22
+	pkgrel = 1
+	url = https://github.com/pingdotgg/t3code
+	arch = x86_64
+	license = MIT
+	depends = bash
+	depends = fuse2
+	depends = hicolor-icon-theme
+	provides = t3-code
+	conflicts = t3-code
+	options = !strip
+	source = t3-code-0.0.0.alpha.22.AppImage::https://github.com/pingdotgg/t3code/releases/download/v0.0.0-alpha.22/T3-Code-0.0.0-alpha.22-x86_64.AppImage
+	source = start
+	sha256sums = 874c768a54e341d41f825a963ca9c339442afec9abd63072a7775db4f3d999a6
+	sha256sums = a08fe7f4c01d5c38a8d64195ccc335cc97397f9fc80bb13723999b035f3a0cc9
+
+pkgname = t3-code

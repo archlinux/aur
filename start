@@ -1,0 +1,2 @@
+#!/bin/sh
+exec /opt/t3-code/t3-code.AppImage "$@"
