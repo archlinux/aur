@@ -147,11 +147,12 @@ package_ctranslate2() {
     # 'onednn'
     'openblas'
     # Implicit
-    'gcc-libs'
+    'libgcc'
+    'libstdc++'
+    'libgomp'
     'glibc'
   )
 #  optdepends=('cuda')
-  provides=('libctranslate2.so=4')
 
   DESTDIR="$pkgdir" cmake --install build
 
@@ -167,12 +168,12 @@ package_python-ctranslate2() {
     'ctranslate2'
     'python-numpy'
     'python-pytorch'
-    'python-setuptools'
     'python-yaml'
     # Implicit
     'python'
-    'gcc-libs'
+    'libgcc'
     'glibc'
+    'libstdc++'
   )
 #  optdepends=('python-pytorch-cuda')
 
