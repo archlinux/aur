@@ -2,8 +2,8 @@
 
 _pkgname='min-ed-launcher'
 pkgname="${_pkgname}-git"
-pkgver=v0.12.2.r26.g9814c54
-pkgrel=2
+pkgver=0.12.2.r26.g9814c54
+pkgrel=1
 pkgdesc='Minimal Elite Dangerous Launcher'
 url='https://github.com/rfvgyhn/min-ed-launcher'
 arch=('x86_64')
@@ -21,7 +21,7 @@ options=(!strip)
 
 pkgver() {
     cd "$pkgname"
-    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

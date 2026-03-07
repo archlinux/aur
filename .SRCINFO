@@ -1,7 +1,7 @@
 pkgbase = min-ed-launcher-git
 	pkgdesc = Minimal Elite Dangerous Launcher
-	pkgver = v0.12.2.r26.g9814c54
-	pkgrel = 2
+	pkgver = 0.12.2.r26.g9814c54
+	pkgrel = 1
 	url = https://github.com/rfvgyhn/min-ed-launcher
 	install = min-ed-launcher-git.install
 	arch = x86_64
