@@ -1,0 +1,5 @@
+[cleanuparr]
+source = "github"
+github = "Cleanuparr/Cleanuparr"
+use_max_tag = true
+prefix = "v"
