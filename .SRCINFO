@@ -1,7 +1,8 @@
 pkgbase = ohrrpgce
 	pkgdesc = A role playing game creation engine
-	pkgver = lexiphanic.r14251
-	pkgrel = 3
+	pkgver = lexiphanic.r14257
+	pkgrel = 1
+	epoch = 1
 	url = http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page
 	arch = i686
 	arch = x86_64
