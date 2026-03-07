@@ -3,7 +3,7 @@
 _pkgname=nali-nt
 pkgname=${_pkgname}-bin
 pkgver="1.7.5"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="集成了 NextTrace LEOMOEAPI 的 nali; 一个查询 IP 地理信息和 CDN 服务提供商的离线终端工具. An offline tool for querying IP geographic information and CDN provider. (Binary Package)"
 arch=(
     "x86_64"
@@ -15,7 +15,6 @@ arch=(
     "mipsel"
     "mips64"
     "mips64el"
-    "mipsel"
     "ppc64"
     "ppc64le"
     "riscv64"
