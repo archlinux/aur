@@ -1,0 +1,5 @@
+[tylax-bin]
+source = "github"
+github = "scipenai/tylax"
+use_latest_release = true
+prefix = "v"
