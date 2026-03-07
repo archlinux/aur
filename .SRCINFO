@@ -1,7 +1,7 @@
 pkgbase = t-lasku
 	pkgdesc = A Finnish invoicing software
 	pkgver = 1.28.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://helineva.net/t-lasku/
 	arch = x86_64
 	license = BSD
@@ -9,6 +9,6 @@ pkgbase = t-lasku
 	optdepends = postgresql-libs
 	options = !debug
 	source_x86_64 = http://helineva.net/t-lasku/t-lasku-1.28.1-amd64.tar.gz
-	sha256sums_x86_64 = d9776601ab6628ad8cb37f854a72f784acd4e11ffa132b017c4153a259f6bb3a
+	sha256sums_x86_64 = 2c362b27c80292e5503d6a9bc9f769d731865eee7693f3fd2dc1d7e5fab1828b
 
 pkgname = t-lasku
