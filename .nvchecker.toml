@@ -1,0 +1,5 @@
+[hostctl-bin]
+source = "github"
+github = "guumaster/hostctl"
+use_max_tag = true
+prefix = "v"
