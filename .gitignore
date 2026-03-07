@@ -1,12 +1,15 @@
-*.jar
-*.exe
-*.msi
-*.zip
-*.tgz
-*.log
-*.log.*
-*.sig
-*.pkg.tar.zst
+#
+# SPDX-FileCopyrightText: Arch Linux Contributors
+#
+# SPDX-License-Identifier: 0BSD
+#
 
-pkg/
-src/
+*
+!LICENSES/
+!LICENSES/0BSD*
+!.gitignore
+!.SRCINFO
+!LICENSE
+!PKGBUILD
+!checkupdates-notify-v*.tar.xz
+

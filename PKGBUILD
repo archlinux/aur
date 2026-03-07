@@ -1,8 +1,15 @@
 # Maintainer: karnage42 karnage42.hatbox448@aleeas.com
+
+#
+# SPDX-FileCopyrightText: Arch Linux Contributors
+#
+# SPDX-License-Identifier: 0BSD
+#
+
 pkgname=checkupdates-notify
 pkgdesc="Sends a notification if package updates are available"
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 url="https://codeberg.org/karnage42/checkupdates-notify"
 arch=("any")
 license=("0BSD")
@@ -10,11 +17,11 @@ depends=("bash")
 makedepends=()
 install=
 changelog=
-source=('checkupdates-notify-v0.1-4.tar.xz')
-sha256sums=('dd9f379d3ad7a037951b474e6c45b1a19e2cfbd76f43db92c2e9a9645f9624fa')
+source=('checkupdates-notify-v0.1-5.tar.xz')
+sha256sums=('c562b32d93aabf21d70c6c1ea5d8f0e2e328e493f7e33112f985bffe14013b4c')
 
 package() {
 	depends=("pacman-contrib" "bash")
 
-	./install.sh "$pkgdir"
+	./_install.sh "$pkgdir"
 }
