@@ -1,6 +1,6 @@
 pkgbase = cliamp
 	pkgdesc = A retro terminal music player inspired by Winamp 2.x
-	pkgver = 1.18.4
+	pkgver = 1.19.0
 	pkgrel = 1
 	url = https://github.com/bjarneo/cliamp
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = cliamp
 	depends = libogg
 	depends = ffmpeg
 	depends = yt-dlp
-	source = cliamp-1.18.4.tar.gz::https://github.com/bjarneo/cliamp/archive/refs/tags/v1.18.4.tar.gz
-	sha256sums = c5d206d4cd9e93ed727426350ae679e8814022868231518cc8c2854715a963cc
+	source = cliamp-1.19.0.tar.gz::https://github.com/bjarneo/cliamp/archive/refs/tags/v1.19.0.tar.gz
+	sha256sums = 133034e02ad93437e72024582f117a632dfd93dc5775f1c34973cab93e5b403a
 
 pkgname = cliamp
