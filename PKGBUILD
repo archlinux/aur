@@ -3,13 +3,13 @@
 # AUR package: rosec-bin
 #
 # This PKGBUILD installs pre-built binaries from the GitHub release.
-# The release workflow renders this file by substituting 0.0.14 and
-# 8e46637be761411298c730c948a496977d7e0ecbb20cdb48b4696940ab4d5c41 / @AARCH64_SHA256@ before committing to the AUR.
+# The release workflow renders this file by substituting 0.0.15 and
+# bccf500f66a1a76ee846fdd104b6e5f578af3f9d5823d45ad8aa05ff3e4b771f / @AARCH64_SHA256@ before committing to the AUR.
 #
 # To build manually, replace the placeholders and run makepkg -si.
 
 pkgname=rosec-bin
-pkgver=0.0.14
+pkgver=0.0.15
 pkgrel=1
 pkgdesc="Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock"
 arch=('x86_64' 'aarch64')
@@ -40,7 +40,7 @@ source_aarch64=(
     "rosec-${pkgver}-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v${pkgver}/rosec-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
 )
 
-sha256sums_x86_64=('8e46637be761411298c730c948a496977d7e0ecbb20cdb48b4696940ab4d5c41')
+sha256sums_x86_64=('bccf500f66a1a76ee846fdd104b6e5f578af3f9d5823d45ad8aa05ff3e4b771f')
 sha256sums_aarch64=('@AARCH64_SHA256@')
 
 package() {
@@ -69,6 +69,12 @@ package() {
 
     # Service activation files are generated at runtime by `rosec enable`
     # with the correct binary paths — no static copies shipped.
+
+    # Shell completions
+    install -Dm644 "${srcdir_inner}/contrib/bash/rosec.bash" \
+        "${pkgdir}/usr/share/bash-completion/completions/rosec"
+    install -Dm644 "${srcdir_inner}/contrib/zsh/_rosec" \
+        "${pkgdir}/usr/share/zsh/site-functions/_rosec"
 
     # Docs
     install -Dm644 "${srcdir_inner}/README.md" \
