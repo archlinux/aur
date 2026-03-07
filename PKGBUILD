@@ -1,6 +1,6 @@
 pkgname=ksteamtrayicon
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A small Python script to keep the Steam tray icon in sync with the KDE Plasma 6 desktop color scheme"
 arch=('any')
 url="https://github.com/marcotuliomatos/ksteamtrayicon"

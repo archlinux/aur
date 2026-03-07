@@ -1,13 +1,16 @@
 post_install() {
   cat << 'EOF'
 
-*******************************************************
-* Hooray! ksteamtrayicon was installed successfully.  *
-*******************************************************
-*                                                     *
-* To start it, log out of KDE Plasma and log back in. *
-*                                                     *
-*******************************************************
+****************************************************************
+*      Hooray! ksteamtrayicon was installed successfully.      *
+****************************************************************
+*                                                              *
+* To start it, run the following command:                      *
+*   kioclient exec /etc/xdg/autostart/ksteamtrayicon.desktop   *
+*                                                              *
+* Or you can just log out of KDE Plasma and log back in.       *
+*                                                              *
+****************************************************************
 
 EOF
 }
