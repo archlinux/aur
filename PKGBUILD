@@ -7,7 +7,7 @@ _execname=${_pkgname,,}
 pkgname=${_execname}-bin
 pkgdesc="A terminal UI (TUI) application written in Go that converts images and GIFs into ASCII or Unicode art"
 
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,10 +26,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_execname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}")
 source_aarch64=("${_execname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}")
-sha256sums=('01025303c092b175f459fbf7b850e423a52d1d730e1b0db4cc87ce3ca71f5ac3'
+sha256sums=('a839a28b32d72bc2afe398a98545ff99eb6d2d9b306eb8cbe87748fd7742b7c2'
             '52d2fee59711a3373bea27d637831b5ab234443d3cf1d68ec076a37d0ed3c333')
-sha256sums_x86_64=('116c9114dc460c72d79caec96bdfeae123f949c2b98899a3309baadeb45f0839')
-sha256sums_aarch64=('00b9de00f3afc8390a0bbacf53a59fbabefdccb0082499986e2642cc41f7e8e3')
+sha256sums_x86_64=('c963377ccb221790af87f54f3c7f9400f536b8af4b631ad5fa872d1ff78e613d')
+sha256sums_aarch64=('1ae0c73705d0278d3bfa9061c6cf5ad66182910f7dc3fb45c82223643284f7e3')
 
 
 package() {
