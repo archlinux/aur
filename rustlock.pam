@@ -1,0 +1,5 @@
+# PAM configuration for rustlock
+# Install this file to /etc/pam.d/rustlock
+
+# Use the standard login service authentication
+auth include login
