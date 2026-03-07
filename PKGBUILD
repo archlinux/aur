@@ -1,12 +1,13 @@
 pkgname=easygamma-git
 pkgver=r4.d17fad4
 pkgrel=1
-pkgdesc="Simple GTK3 GUI for gamma and brightness control on X11 via xrandr"
+pkgdesc="Simple GTK3 GUI for gamma and brightness control on X11 and Wayland"
 arch=('x86_64')
 url="https://github.com/jahamars/EasyGamma"
 license=('MIT')
-depends=('gtkmm3' 'xorg-xrandr')
-makedepends=('gcc' 'pkgconf' 'git')
+depends=('gtkmm3' 'wayland')
+makedepends=('gcc' 'pkgconf' 'cmake' 'wayland-protocols' 'git')
+optdepends=('xorg-xrandr: X11 gamma control')
 provides=('easygamma')
 conflicts=('easygamma')
 source=("$pkgname::git+https://github.com/jahamars/EasyGamma.git")
@@ -18,12 +19,14 @@ pkgver() {
 }
 
 build() {
-    cd "$pkgname"
-    g++ main.cpp -o easygamma $(pkg-config gtkmm-3.0 --cflags --libs)
+    cmake -S "$pkgname" -B build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build build
 }
 
 package() {
-    cd "$pkgname"
-    install -Dm755 easygamma "$pkgdir/usr/bin/easygamma"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    DESTDIR="$pkgdir" cmake --install build
+    install -Dm644 "$pkgname/README.md" \
+        "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
