@@ -1,0 +1,5 @@
+[strace-parser-bin]
+source = "gitlab"
+gitlab = "gitlab-com/support/toolbox/strace-parser"
+use_max_tag = true
+prefix = "v"
