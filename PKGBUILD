@@ -8,7 +8,7 @@
 pkgbase=nvidia-390xx-utils
 pkgname=('nvidia-390xx-utils' 'opencl-nvidia-390xx' 'nvidia-390xx-dkms')
 pkgver=390.157
-pkgrel=19
+pkgrel=20
 arch=('x86_64')
 url="https://www.nvidia.com/"
 license=('custom')
@@ -56,7 +56,7 @@ b2sums=('8e24aea70b139185bd682b080d32aeda673e6e92b45a90e6f6e0d736674180400bc8bd1
         'a957b5d3afb60d4879c5e25bf4b947a670048e23559864f5bced6b9ab4f79e3f9c62ad7fad52def372fa2dbe4df70410d205aa4386021e1f4db476b02836fcc5'
         '68345d8fb2ea00bd7042fe6cf1c8e63c8f9be411a710eb4f40734ca109f278466d9de1f4b3a2676767b7c16d179ce9b382ebe49c181d081f157304d220d69b12'
         'efaed80af94533496ea77293ce48e383d836559316b8a2c9dd36a73c5ea3170f8ee61ec9a4151db13e4a28a167d3b9d7773baad9c082596e8f043de92b4c1932'
-        'ec79dfcb1b31b5935993ed2ad91678e24ae46a9b23b5c11a611bdcefc1948a06ec8e4cce82b0eff7742ffef232a1c619ab8b3d0b72a57e8149f8dbde8cc69179'
+        '81bcb76be322badb3e06f34a9002de3df2c5ca260fa839b8a0bb0831ccd2278102612247fa086d7d4ac9003ca8c58800f6e51fb4c76b379c7fd707a5b6f96e5d'
         'a8234f542c2324ad698443e3decf7b6eacf3cb420b7aded787f102a8d32b64c2a8d45ea58e37a5e3b6f2f060f0cccd63d3a182065f57c606006d0ff8c7f6bb05')
 
 create_links() {
@@ -125,7 +125,7 @@ prepare() {
     # From Joan Bruguera (
     #     https://github.com/joanbm/nvidia-470xx-linux-mainline/blob/master/patches/nvidia-470xx-fix-linux-6.19-part1.patch
     #     https://github.com/joanbm/nvidia-470xx-linux-mainline/blob/master/patches/nvidia-470xx-fix-linux-6.19-part2.patch
-    # ), edited by vnctdj
+    # ), edited by vnctdj + Wargoth
     patch -Np1 -i ../kernel-6.19.patch
 
     cd kernel

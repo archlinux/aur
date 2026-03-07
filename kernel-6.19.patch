@@ -454,11 +454,41 @@ index a06c12c..c30f8cc 100644
  #else
      return NV_FALSE;
  #endif
+diff --git a/kernel/nvidia/nvlink_linux.c b/kernel/nvidia/nvlink_linux.c
+index ba57b86..39816ae 100644
+--- a/kernel/nvidia/nvlink_linux.c
++++ b/kernel/nvidia/nvlink_linux.c
+@@ -30,6 +30,7 @@
+ #include "nv-linux.h"
+ #include "nv-procfs.h"
+ #include "nv-time.h"
++#include <linux/hardirq.h>
+ 
+ #define MAX_ERROR_STRING           512
+ 
+@@ -570,7 +571,7 @@ void NVLINK_API_CALL nvlink_sleep(unsigned int ms)
+ 
+     nv_gettimeofday(&tm_aux);
+ 
+-    if (in_irq() && (ms > NV_MAX_ISR_DELAY_MS))
++    if (in_hardirq() && (ms > NV_MAX_ISR_DELAY_MS))
+     {
+         return;
+     }
 diff --git a/kernel/nvidia/os-interface.c b/kernel/nvidia/os-interface.c
-index 262171f..b08dd28 100644
+index 262171f..dd65432 100644
 --- a/kernel/nvidia/os-interface.c
 +++ b/kernel/nvidia/os-interface.c
-@@ -193,7 +193,7 @@ BOOL NV_API_CALL os_semaphore_may_sleep(void)
+@@ -17,6 +17,8 @@
+ #include "nv-time.h"
+ #include "nv-gpu-numa.h"
+ 
++#include <linux/hardirq.h>
++
+ #define MAX_ERROR_STRING 512
+ static char nv_error_string[MAX_ERROR_STRING];
+ nv_spinlock_t nv_error_string_lock;
+@@ -193,7 +195,7 @@ BOOL NV_API_CALL os_semaphore_may_sleep(void)
  
  BOOL NV_API_CALL os_is_isr(void)
  {
@@ -467,3 +497,21 @@ index 262171f..b08dd28 100644
  }
  
  // return TRUE if the caller is the super-user
+@@ -510,7 +512,7 @@ NV_STATUS NV_API_CALL os_delay_us(NvU32 MicroSeconds)
+     nv_gettimeofday(&tm1);
+ #endif
+ 
+-    if (in_irq() && (MicroSeconds > NV_MAX_ISR_DELAY_US))
++    if (in_hardirq() && (MicroSeconds > NV_MAX_ISR_DELAY_US))
+         return NV_ERR_GENERIC;
+     
+     mdelay_safe_msec = MicroSeconds / 1000;
+@@ -555,7 +557,7 @@ NV_STATUS NV_API_CALL os_delay(NvU32 MilliSeconds)
+     tm_start = tm_aux;
+ #endif
+ 
+-    if (in_irq() && (MilliSeconds > NV_MAX_ISR_DELAY_MS))
++    if (in_hardirq() && (MilliSeconds > NV_MAX_ISR_DELAY_MS))
+         return NV_ERR_GENERIC;
+ 
+     if (!NV_MAY_SLEEP()) 
