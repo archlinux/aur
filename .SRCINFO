@@ -1,0 +1,16 @@
+pkgbase = xeres-bin
+	pkgdesc = A decentralized and secure application designed for communication and sharing.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://xeres.io
+	install = post.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = xdg-utils
+	provides = xeres
+	conflicts = xeres
+	options = !strip
+	source = https://github.com/zapek/Xeres/releases/download/v1.1.1/xeres_1.1.1_ubuntu-24.04_amd64.deb
+	sha512sums = adb11c17bdcf1aaa9a1b80aef610ce3411961646f7b74259e77d9dd59de27723bea186d0077035c5f167018c4a8a5486291424a91fc01f5bada23f50574f8e3d
+
+pkgname = xeres-bin
