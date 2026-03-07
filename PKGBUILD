@@ -1,4 +1,5 @@
 # Maintainer: raindropqwq <raindropqwq@outlook.com>
+# Maintainer: snowdropQwQ <xpecnh2n@gmail.com>
 
 pkgname=micyou-bin
 pkgver=1.1.4
