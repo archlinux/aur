@@ -8,11 +8,11 @@ _buildcommit=c062931c9b
 _upstream_tag="v${_tagstamp}.${_buildcommit}"
 
 pkgver="${_tagstamp}.${_buildcommit}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Nightly release of the Eden Nintendo Switch emulator (PGO optimized)"
 arch=('x86_64')
 url="https://github.com/Eden-CI/Nightly"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 provides=('eden')
