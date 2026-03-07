@@ -5,7 +5,7 @@ _pkgname=psn
 pkgname=${_pkgname}-bin
 pkgdesc="A Rust terminal UI for viewing process status and sending signals"
 
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,9 +23,9 @@ depends=('glibc' 'libgcc')
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}")
-sha256sums=('e4bc4841da7151e3e091a52d1b4763d2e6f7a662a04b90ef4bcf7e90a2efb00f'
+sha256sums=('307cee332f8bb36eedc202a36e51de323b1ad8d7827cf88a2744bfb706717ca4'
             '151eccbd6510c963ab990ab2989c8d3cebde6fb05a6e5a9b0090ba414092f7d8')
-sha256sums_x86_64=('78173c698057f9e6515a5697f627734f0618f6d5948612e675209a11d583f070')
+sha256sums_x86_64=('88964c5d11ad8641173c9005f23ede08044001bdb26e8e2491c536ccc6c20dba')
 
 
 package() {

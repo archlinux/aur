@@ -1,6 +1,6 @@
 pkgbase = psn-bin
 	pkgdesc = A Rust terminal UI for viewing process status and sending signals
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/l5yth/psn
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = psn-bin
 	depends = libgcc
 	provides = psn
 	conflicts = psn
-	source = README-0.1.1.md::https://raw.githubusercontent.com/l5yth/psn/v0.1.1/README.md
-	source = LICENSE-0.1.1::https://raw.githubusercontent.com/l5yth/psn/v0.1.1/LICENSE
-	sha256sums = e4bc4841da7151e3e091a52d1b4763d2e6f7a662a04b90ef4bcf7e90a2efb00f
+	source = README-0.1.2.md::https://raw.githubusercontent.com/l5yth/psn/v0.1.2/README.md
+	source = LICENSE-0.1.2::https://raw.githubusercontent.com/l5yth/psn/v0.1.2/LICENSE
+	sha256sums = 307cee332f8bb36eedc202a36e51de323b1ad8d7827cf88a2744bfb706717ca4
 	sha256sums = 151eccbd6510c963ab990ab2989c8d3cebde6fb05a6e5a9b0090ba414092f7d8
-	source_x86_64 = psn-x86_64-0.1.1::https://github.com/l5yth/psn/releases/download/v0.1.1/psn
-	sha256sums_x86_64 = 78173c698057f9e6515a5697f627734f0618f6d5948612e675209a11d583f070
+	source_x86_64 = psn-x86_64-0.1.2::https://github.com/l5yth/psn/releases/download/v0.1.2/psn
+	sha256sums_x86_64 = 88964c5d11ad8641173c9005f23ede08044001bdb26e8e2491c536ccc6c20dba
 
 pkgname = psn-bin
