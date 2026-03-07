@@ -6,7 +6,7 @@ _pkgname=walker
 
 pkgname=${_pkgname}-bin
 
-pkgver=2.14.2
+pkgver=2.15.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -50,10 +50,10 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tar.gz::${url}/releases/downloa
 
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '08387c89b86a82db9d206fd960735f6ae859f62acc8a21dfe99b7558f1d689b4'
-            '12228b2fdbacaa326ee103eb77f5961e6fdba5f8f9fda3d6521002bac8faa5ad'
+            '3f21ad4f17474032e7c619a156fbf63d5ff502ad05b6390f0df4efc899a2a566'
             'd6dac24c66c6e851e4a0f702154ccd92a1b0f64990beeff393b530ccd1089721'
             'e9613245a50e92f6da1e6f09bc84473fae716ee4c30b2536a4f0b285a1536c94'
-            '1c08b011b1c28ca332c96888e4b8fc02f36ec1e057986acfca568dfa4cccf73f'
+            'ece4a09405b837a6741879c64bbf3661ae080ffe928f3e4799c861f2f3b94e21'
             'b3597b72d3b51ecb9cec4aacd0d4a0629938e62e504fa60fdc6261fd092fea51'
             '4fe8af0457cdf1631ff3b6ac4ead13111e9044ab8071bcfe4dcbf48d0af0ff98'
             '8ded6a2cc65c1c8cb2390e272b27a2a6b33d265d8a1981acab09990400b0b3ae'
@@ -65,7 +65,7 @@ sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '55106a1ce3b6a477fbaa04e50e7df367b0e242287f207f8fc7b6460f401dafd3'
             '073a912e3eee95249236af90ce50496a3b94bd840919b2d94e058054dbf3ca25'
             '8fd6507610cad6fe96a3db48dd4d523cc398fe3286d88ebc132dfe2e939b1f08')
-sha256sums_x86_64=('cd2c135b1178e7259061d4176b14d4bc12b741d1feb8189670fa836a3d331244')
+sha256sums_x86_64=('6fcc97d93d0307d773834ced15b1727280d4d908deb327033423391cb8e5afa0')
 
 prepare() {
     cd "${srcdir}" || exit 1
