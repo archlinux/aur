@@ -1,6 +1,6 @@
 pkgbase = preaur-bin
 	pkgdesc = PreAUR, build AUR (not only) pkgbuilds ahead of time. (prebuilt binary)
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/kobe-koto/preaur
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = preaur-bin
 	depends = base-devel
 	provides = preaur
 	conflicts = preaur
-	source = preaur-bin-0.0.2.min.js::https://github.com/kobe-koto/preaur/releases/download/v0.0.2/preaur.min.js
-	sha256sums = 86d1eb2fe4f58dfe8d265d8524a171394be39703cc8f9a2d204eaa5ea0cc2e03
+	source = preaur-bin-0.0.3.min.js::https://github.com/kobe-koto/preaur/releases/download/v0.0.3/preaur.min.js
+	sha256sums = df589367b59563e0f5e119c86e19f0429c588fbf6b388db98053fe41ac153470
 
 pkgname = preaur-bin
