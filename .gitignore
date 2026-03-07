@@ -1,0 +1,12 @@
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+*.pkg.tar.zst
+
+pkg/
+src/
