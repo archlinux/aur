@@ -1,130 +1,78 @@
-# Maintainer:  Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
+# Maintainer: Jason Go <jasongo@jasongo.net>
+# Contributor: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 # Contributor: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=franz
-#pkgver=${_pkgver//-/_} # Leaving it here for possible dev/beta package :)
 pkgver=5.11.0
-pkgrel=1
-# Due to the previous "_beta" naming
-epoch=1
-pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
-arch=(x86_64 i686)
-url='https://meetfranz.com'
-license=(Apache)
-# Allow to easily switch between Electron versions.
-# Expected one is 'electron25' (Electron 25). May change soon.
-# This is automatically replaced in `franz.sh` with the package name, as
-# the executable matches the package name (as of 2023-09-11).
-_electron='electron33'
-depends=($_electron)
-makedepends=(expac nvm python)
-source=("https://github.com/meetfranz/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
-        franz.desktop
-        franz.sh.in)
-sha512sums=('56e6623ad7bf2a5a30f2b24fa1a7dfd062b22eb9eff922a6c3f2498f7ec35b1150f6884a6462961c47377fa52d23d55412bea4b2d82ddb4f2bab125b34a893a8'
-            '049c4bf2e0f362f892e8eef28dd18a6c321251c686a9c9e49e4abfb778057de2fc68b95b4ff7bb8030a828a48b58554a56b810aba078c220cb01d5837083992e'
-            '7ccf058421b173830493f35417d204e3a735fc20f801283dad3f658abeb484f6244bc535634c2f02ab2cb8e35a0e1a92dd3d06be5943e121ddccbbee7ad74b48')
-
-# Helper function for setting up nvm nicely.
-# Found here: https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
-# Personal extras at the bottom of the function :)
-_ensure_nvm_setup() {
-  # let's be sure we are starting clean
-  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-  export NVM_DIR="$srcdir/.nvm"
-
-  # The init script returns 3 if version specified
-  # in ./.nvrc is not (yet) installed in $NVM_DIR
-  # but nvm itself still gets loaded ok
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-
-  # Personal extras
-  # Avoid installing Electron as we use the system one
-  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-  # For safety, define the NPM cache in $srcdir
-  # Better configuration for npm cache and calling installed binaries
-  export npm_config_cache="$srcdir/npm_cache"
-}
+pkgrel=2
+epoch=1 # Due to the previous "_beta" naming
+pkgdesc='Messaging app for WhatsApp, Slack, Telegram, Gmail, Hangouts and many many more.'
+arch=('x86_64')
+url='https://github.com/meetfranz/franz'
+license=('Apache-2.0')
+_electron='electron39'
+depends=("$_electron")
+makedepends=('git' 'nodejs' 'npm')
+source=("git+$url.git#tag=v$pkgver"
+        'franz.sh.in')
+b2sums=('188b530974e5cc5c859d7d3dc06b42ab636c1fe8e4a9707b6a4938c59ebe6387b5417467f5d4742ebcf82076145cb919c82ee924ac3cf9253f4601e18224b466'
+        '04f4015d858f38e847783bb8a7e1f774ae22a85ce7de174e5f24826934a4ffbeb978a52af7e20da39eb87a191b834d5b02ef19f121f2f8b4fcf175a2ac6bcb66')
 
 prepare() {
-  # Small patching
-  cd "$pkgname-$pkgver"
-
-  # Adjust the electron version to use when building
-  echo "--> Using Electron package:   $_electron"
-  electron_version="$(cat /usr/lib/$_electron/version)"
-  echo "--> Electron package version: $electron_version"
-  sed -i -E "s|(\s+\"electron\":).*,|\1 \"$electron_version\",|" package.json
+  cd franz
 
   # Prevent Franz from being launched in development mode
   # This changes all the occurences where 'isDevMode' is set to a value.
   grep -lr 'isDevMode =' src | xargs sed -E 's|^(.*isDevMode =) .*$|\1 false|' -i
 
-  # Setup nvm
-  _ensure_nvm_setup
+  # Just make a stored deb file
+  sed -i "s|^\s*compression:.*|compression: store|" electron-builder.yml
 
-  echo "--> Install toolchain with nvm"
-  nvm install
+  # Update electron-builder to work on latest system nodejs
+  npm add -D electron-builder@latest
 
-  echo "--> Install modules dependencies"
-  # The author still uses old dependencies resolution.
-  # Luckily it is "documented" in the Appveyor CI file.
-  # Also in the Github CI:
-  # https://github.com/meetfranz/franz/blob/master/.github/workflows/build.yml#L56
-  # About the double double escape, that is because the first '--' is for
-  # npm exec, while the second is for lerna.
-  # See: https://github.com/lerna/lerna/issues/2921
-  # npm exec --package="lerna@3.8" --yes -- lerna bootstrap
-  # However, after the installation above, all works fine ;)
+  # Use system electron binaries
+  export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+  
   npm install
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd franz
 
-  # Be sure we are correctly setup
-  _ensure_nvm_setup
+  npx lerna run build
+  npx gulp build
+  # We prefer to build the deb format so we can have a ready made /usr/share/* much easily
+  npx electron-builder --linux deb --publish=never -c.electronDist=/usr/lib/"$_electron"
 
-  # Actually build the package
-  echo "--> Building the package"
-  # The following are the same commands done from "npm build", with slight changes for the electron-builder
-  npm exec lerna run build
-  npm exec gulp build
-  _electron_dist="/usr/lib/$_electron"
-  _electron_version="$(cat $_electron_dist/version)"
-  npm exec -- electron-builder --linux dir -c.electronDist=$_electron_dist -c.electronVersion=$_electron_version
+  # Then extract the deb file
+  bsdtar -xf ./out/franz*_amd64.deb --include='data.tar*' -O | bsdtar -xf - -C "$srcdir"
 }
 
 check() {
-  cd "$pkgname-$pkgver"
-
-  # Be sure we are correctly setup
-  _ensure_nvm_setup
-
-  # Run the tests
-  echo "--> Running the tests"
+  cd franz
   npm run test
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  # 1. COPY THE BINARIES
+  sed -i "s|@ELECTRON@|$_electron|" franz.sh.in
+  install -Dm755 franz.sh.in "$pkgdir/usr/bin/franz"
+  mkdir -p "$pkgdir/usr/lib/franz/"
+  cp -dr --no-preserve=ownership ./opt/Franz/resources/* "$pkgdir/usr/lib/franz/"
+  rm -f "$pkgdir/usr/lib/franz/"{apparmor-profile,default_app.asar,package-type}
 
-  # Point the proper Electron package version, so that people can complain when it's updated.
-  # This is for extra safety & reminds me of upgrading the package.
-  # Keeping this here if I'll switch back to `electron`, which is more unstable.
-  #electron_version="`expac %v $_electron | cut -d'-' -f1`"
-  #depends=("${_electron}=${electron_version}")
+  # 2. COPY THE REST OF THE /usr/share/* from deb file
+  sed -i 's|Exec=/opt/Franz/franz|Exec=/usr/bin/franz|' ./usr/share/applications/franz.desktop
+  mkdir -p "$pkgdir/usr/share"
+  cp -dr --no-preserve=ownership ./usr/share/* "$pkgdir/usr/share"
 
-  # Install the .asar files
-  install -dm 755 "$pkgdir/usr/lib/$pkgname"
-  cp -r --no-preserve=ownership --preserve=mode out/linux-unpacked/resources "$pkgdir/usr/lib/$pkgname/"
+  # 3. COPY DOCS AND LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/franz/" ./franz/{CHANGELOG.md,CODE_OF_CONDUCT.md,CONTRIBUTING.md,README.md}
+  install -Dm644 ./franz/LICENSE "$pkgdir/usr/share/licenses/franz/LICENSE"
 
-  # Install icon
-  install -Dm 644 "$srcdir/franz.desktop" "$pkgdir/usr/share/applications/franz.desktop"
-  install -Dm 644 build-helpers/images/icon.png "$pkgdir/usr/share/icons/franz.png"
-
-  # Install run script
-  sed "s|@ELECTRON@|$_electron|" "$srcdir/franz.sh.in" > franz.sh
-  install -Dm 755 franz.sh "$pkgdir/usr/bin/franz"
+  # 4. COPY APPARMOR PROFILE
+  sed -i 's|/opt/Franz/franz|/usr/bin/franz|' ./opt/Franz/resources/apparmor-profile
+  install -Dm644 ./opt/Franz/resources/apparmor-profile "$pkgdir/etc/apparmor.d/franz"
 }

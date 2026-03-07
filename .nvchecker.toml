@@ -1,0 +1,5 @@
+[franz]
+source = "github"
+github = "meetfranz/franz"
+use_latest_release = true
+prefix = "v"
