@@ -9,7 +9,7 @@ license=('AGPL3')
 depends=('cairo' 'pam' 'gdk-pixbuf2' 'libxkbcommon')
 makedepends=('rust' 'cargo' 'pkg-config')
 source=("git+https://github.com/JorySeverijnse/rustlock.git")
-sha256sums=('SKIP')
+sha256sums=('3475c412e118c21d8a51b50f439b58267fc784e18a15edfc9f95a4f24ecd9038')
 
 build() {
   cd "$pkgname"
