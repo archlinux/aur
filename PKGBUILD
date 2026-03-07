@@ -1,7 +1,7 @@
 # maintainer: bipin <kbipinkumar@pm.me>
 pkgname=libgff
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="GFF/GTF parsing from gffread as a library"
 arch=(x86_64)
 url="https://github.com/COMBINE-lab/libgff"
@@ -10,7 +10,7 @@ depends=('glibc' 'gcc-libs')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/COMBINE-lab/libgff/archive/refs/tags/v${pkgver}.tar.gz"
     'libgff-dynamic-build-corrected.patch')
-sha256sums=('7656b19459a7ca7d2fd0fcec4f2e0fd0deec1b4f39c703a114e8f4c22d82a99c'
+sha256sums=('96d2bda64aaf9cf7b6c1a42205e408b0ef2a353ba42dad560db215e7ec105e2e'
             'e97af693ac84a70fcf3a513063f3eb413406e7ef7e808bf12caa2f38476f713f')
 
 prepare() {
