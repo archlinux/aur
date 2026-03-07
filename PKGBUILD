@@ -1,7 +1,7 @@
 # Maintainer: tstonge <tylertstonge@gmail.com>
 pkgname=ampcast-bin
 _pkgname=ampcast
-pkgver=0.9.24
+pkgver=0.9.25
 pkgrel=1
 pkgdesc="A music player inspired by Winamp."
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
   "ampcast.desktop"
 )
 sha256sums=(
-  "4a47394f2dad9efe051d3371d6c70f999ad2fd590e74ea51a18a6fd1f799e4dd"
+  "057e62463166d05e0bc0f5dae5f694dd7ce776bade0c5da8f8521ddc4be0f6c0"
   "SKIP"
   "SKIP"
 )

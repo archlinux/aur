@@ -1,6 +1,6 @@
 pkgbase = ampcast-bin
 	pkgdesc = A music player inspired by Winamp.
-	pkgver = 0.9.24
+	pkgver = 0.9.25
 	pkgrel = 1
 	url = https://github.com/rekkyrosso/ampcast
 	arch = x86_64
@@ -13,10 +13,10 @@ pkgbase = ampcast-bin
 	provides = ampcast
 	options = !strip
 	options = !debug
-	source = https://github.com/rekkyrosso/ampcast/releases/download/v0.9.24/ampcast-0.9.24-linux-x64.tar.xz
+	source = https://github.com/rekkyrosso/ampcast/releases/download/v0.9.25/ampcast-0.9.25-linux-x64.tar.xz
 	source = ampcast256x256.png
 	source = ampcast.desktop
-	sha256sums = 4a47394f2dad9efe051d3371d6c70f999ad2fd590e74ea51a18a6fd1f799e4dd
+	sha256sums = 057e62463166d05e0bc0f5dae5f694dd7ce776bade0c5da8f8521ddc4be0f6c0
 	sha256sums = SKIP
 	sha256sums = SKIP
 
