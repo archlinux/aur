@@ -1,4 +1,21 @@
+# AUR build directories
 src/
 pkg/
+
+# Built packages
+*.pkg.tar.*
+
+# Source archives (fetched by makepkg)
+*.tar.*
+
+# Logs and signatures
+*.log
+*.sig
+
+# Development artifacts
 networkmanager-openvpn-xor/
-networkmanager-openvpn-xor-*.pkg.tar.zst
+*~
+*.swp
+
+# Local ignore file itself
+.gitignore

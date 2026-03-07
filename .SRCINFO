@@ -1,7 +1,7 @@
 pkgbase = networkmanager-openvpn-xor
 	pkgdesc = NetworkManager VPN plugin for Standard and XOR Patched OpenVPN
-	pkgver = 1.12.0
-	pkgrel = 2
+	pkgver = 1.12.5
+	pkgrel = 1
 	url = https://networkmanager.dev/docs/vpn/
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -20,7 +20,10 @@ pkgbase = networkmanager-openvpn-xor
 	optdepends = libnma: GUI support (GTK 3)
 	conflicts = networkmanager-openvpn-git
 	conflicts = networkmanager-openvpn
-	source = git+https://github.com/maintuner/networkmanager-openvpn-xor
+	conflicts = networkmanager-vpn-plugin-openvpn
+	source = https://github.com/NetworkManager/NetworkManager-openvpn/archive/refs/tags/1.12.5.tar.gz
+	source = git+https://github.com/maintuner/networkmanager-openvpn-xor.git#branch=master
+	b2sums = feb9f37f0c5935123d144885517f3b7e7321453807449b4646cb792b24a33035e4735cc6464a4b441f7af4b0ae84e89b60e5390be71234497ca813a240283600
 	b2sums = SKIP
 
 pkgname = networkmanager-openvpn-xor
