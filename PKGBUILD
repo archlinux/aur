@@ -1,7 +1,7 @@
 # Maintainer: sonofaglitch <sonofaglitch@mailbox.org>
 pkgname=lfe
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="LISP Flavoured Erlang"
 arch=('x86_64')
 url="https://github.com/lfe/lfe"
@@ -14,8 +14,9 @@ sha512sums=('029cbc638f1c125fbb9053de5f7bb1d261575e6f390e38133f34d3bc6f2905c4d8a
 package() {
   cd "$pkgname-$pkgver"
   make PREFIX="${pkgdir}/usr" install
+  cd "${pkgdir}"/usr/bin
   for link in *; do
-    ln -sfv "../lib/lfe/bin/${link}" "${link}"
+    ln -sf "../lib/lfe/bin/${link}" "${link}"
   done
   rm -rv "${pkgdir}/usr/share/man/cat1"
   rm -rv "${pkgdir}/usr/share/man/cat3"

@@ -1,7 +1,7 @@
 pkgbase = lfe
 	pkgdesc = LISP Flavoured Erlang
 	pkgver = 2.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lfe/lfe
 	arch = x86_64
 	license = Apache
