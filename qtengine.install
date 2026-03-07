@@ -16,12 +16,12 @@ post_install() {
     echo '    The default config file can be found in /etc/qtengine/config.example.json'
     echo '    Copy it to ~/.config/qtengine/config.json and modify accordingly.'
     echo '    Then, set the environment variable `QT_QPA_PLATFORMTHEME` to `qtengine` to use qtengine.'
-    echo ""
+    echo ''
 }
 
-post_upgrade() {
-    post_install
-}
+# post_upgrade() {
+#    post_install
+# }
 
 #post_remove() {
 #
