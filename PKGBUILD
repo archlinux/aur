@@ -2,12 +2,12 @@
 
 pkgname=lovr-playspace-bin
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Room boundary overlay for OpenXR, made with LÖVR"
 arch=('x86_64')
 url="https://github.com/SpookySkeletons/lovr-playspace"
 license=('MIT')
-depends=('libx11' 'gcc-libs' 'glibc' 'bash' 'openxr')
+depends=('libx11' 'gcc-libs' 'glibc' 'bash' 'openxr' 'glfw')
 optdepends=('envision: automatic plugin integration')
 provides=('lovr-playspace')
 conflicts=('lovr-playspace')
