@@ -26,6 +26,7 @@ validpgpkeys=()
 
 prepare() {
 	cd "$pkgname-$pkgver"
+	sed -i /_FORTIFY_SOURCE/d features/lomiri_common.prf
 }
 
 build() {
