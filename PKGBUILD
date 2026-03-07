@@ -2,7 +2,7 @@
 _mode=host
 pkgname=plasma-wireguard-vpn
 pkgdesc="Package that adds quicksettings button for Wireguard VPN"
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 _arches=all
 arch=(
