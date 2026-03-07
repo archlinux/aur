@@ -1,7 +1,7 @@
 pkgbase = vdr-streamdev
 	pkgdesc = Implementation of the VTP (Video Transfer Protocol)
-	pkgver = 0.6.4
-	pkgrel = 5
+	pkgver = 0.6.5
+	pkgrel = 1
 	url = https://github.com/vdr-projects/vdr-plugin-streamdev
 	arch = x86_64
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = vdr-streamdev
 	license = GPL2
 	depends = gcc-libs
 	depends = vdr-api=11
-	source = vdr-streamdev-0.6.4.tar.gz::https://github.com/vdr-projects/vdr-plugin-streamdev/archive/refs/tags/0.6.4.tar.gz
+	source = vdr-streamdev-0.6.5.tar.gz::https://github.com/vdr-projects/vdr-plugin-streamdev/archive/refs/tags/0.6.5.tar.gz
 	source = 50-streamdev-server.conf
-	sha256sums = 1698afccb5fde1ea4e40794ae187fa42ce7fc38af48c12ecd3fa1d3154c6c794
+	sha256sums = db2b05ec3971b509dc198581fb0031c0848d07b2a2ecaa7bb83ee147c5bcdaf9
 	sha256sums = cec0056ca0f140f773f443396ea5f95632f077c4a653a4c5b753ec4937ca3e72
 
 pkgname = vdr-streamdev-client

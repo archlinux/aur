@@ -4,9 +4,9 @@
 # Contributor: Ole Ernst <olebowle[at]gmx[dot]com
 pkgbase=vdr-streamdev
 pkgname=(vdr-streamdev-{client,server})
-pkgver=0.6.4
+pkgver=0.6.5
+pkgrel=1
 _vdrapi=11
-pkgrel=5
 pkgdesc="Implementation of the VTP (Video Transfer Protocol)"
 url="https://github.com/vdr-projects/vdr-plugin-streamdev"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ _plugname=${pkgbase//vdr-/}
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/vdr-projects/vdr-plugin-streamdev/archive/refs/tags/$pkgver.tar.gz"
         "50-$_plugname-server.conf")
 
-sha256sums=('1698afccb5fde1ea4e40794ae187fa42ce7fc38af48c12ecd3fa1d3154c6c794'
+sha256sums=('db2b05ec3971b509dc198581fb0031c0848d07b2a2ecaa7bb83ee147c5bcdaf9'
             'cec0056ca0f140f773f443396ea5f95632f077c4a653a4c5b753ec4937ca3e72')
 
 build() {
