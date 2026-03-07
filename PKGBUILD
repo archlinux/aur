@@ -1,8 +1,8 @@
-# Maintainer: karnage42 karnkaul@proton.me
+# Maintainer: karnage42 karnage42.hatbox448@aleeas.com
 pkgname=checkupdates-notify
 pkgdesc="Sends a notification if package updates are available"
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 url="https://codeberg.org/karnage42/checkupdates-notify"
 arch=("any")
 license=("0BSD")
@@ -10,8 +10,8 @@ depends=("bash")
 makedepends=()
 install=
 changelog=
-source=('checkupdates-notify-v0.1-3.tar.xz')
-sha256sums=('51c8e08b8139dc745c88a663b49db8f4c94219d5525c4802856761b506766ae7')
+source=('checkupdates-notify-v0.1-4.tar.xz')
+sha256sums=('dd9f379d3ad7a037951b474e6c45b1a19e2cfbd76f43db92c2e9a9645f9624fa')
 
 package() {
 	depends=("pacman-contrib" "bash")
