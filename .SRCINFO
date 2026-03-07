@@ -1,0 +1,24 @@
+pkgbase = gitfourchette-git
+	pkgdesc = The comfortable Git UI for Linux
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitfourchette.org
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyqt6
+	depends = python-pygit2
+	depends = git
+	optdepends = python-pygments: syntax highlighting
+	optdepends = python-mfusepy: mount commits as a FUSE filesystem (requires fuse3)
+	provides = gitfourchette
+	conflicts = gitfourchette
+	conflicts = gitfourchette-bin
+	source = git+https://github.com/jorio/gitfourchette.git
+	sha256sums = SKIP
+
+pkgname = gitfourchette-git
