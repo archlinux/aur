@@ -1,0 +1,5 @@
+[input-remapper]
+source = "github"
+github = "sezanzeb/input-remapper"
+use_max_tag = true
+
