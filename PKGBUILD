@@ -3,7 +3,7 @@
 
 pkgname=('win-gadgets-git')
 pkgver=6.6.2_41.r612e6cc
-pkgrel=1
+pkgrel=2
 pkgdesc="A recreation of the Windows Gadgets for AeroShell-based desktops"
 arch=(x86_64)
 url="https://gitgud.io/catpswin56/win-gadgets"
@@ -26,6 +26,8 @@ depends=(glibc
          plasma-workspace)
 makedepends=(git
              extra-cmake-modules)
+conflicts=('win-gadgets')
+provides=('win-gadgets=${pkgver}')
 options=('!debug')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
