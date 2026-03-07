@@ -1,6 +1,6 @@
 pkgbase = pikaur-static
 	pkgdesc = AUR helper without dependencies which asks all questions before installing/building. Static build for recovery situations, similar to `pacman-static`
-	pkgver = 1.33.2
+	pkgver = 1.33.3
 	pkgrel = 1
 	url = https://github.com/actionless/pikaur
 	changelog = CHANGELOG
@@ -10,7 +10,7 @@ pkgbase = pikaur-static
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL-3.0-only
+	license = GPL-3.0-or-later
 	makedepends = nuitka
 	makedepends = python-ordered-set
 	makedepends = ccache
@@ -25,7 +25,7 @@ pkgbase = pikaur-static
 	conflicts = pikaur-static-git
 	options = !buildflags
 	options = !strip
-	source = pikaur-static-1.33.2.tar.gz::https://github.com/actionless/pikaur/archive/1.33.2.tar.gz
-	b2sums = 52004734699ade3f2e487352bb174eb46e934e0aca4ba99b3425cb6e367d1ebae6ab87c283e8cedcf2cb209bb3ce9078d74f2f527dacaaafa354dbfd3b33da59
+	source = pikaur-static-1.33.3.tar.gz::https://github.com/actionless/pikaur/archive/1.33.3.tar.gz
+	b2sums = 897f30a700cee167cf8ae92f7865871187485e211b1f5657caaa1e808eebab124b0d88914fa54f6ea9315adfffc292c3fa5b40a7c6d4c88566896e7358146733
 
 pkgname = pikaur-static
