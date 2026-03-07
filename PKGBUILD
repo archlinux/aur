@@ -18,6 +18,8 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 
 license=("LicenseRef-GitHub")
 
+changelog="changelog.md"
+
 provides=("${_appname}")
 conflicts=("${pkgname%%-bin}" "${pkgname%%-cli-bin}")
 
