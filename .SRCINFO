@@ -1,0 +1,18 @@
+pkgbase = cwal16
+	pkgdesc = Blazing-fast pywal-like color palette generator written in C, fork of cwal with extra features.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shadowash8/cwal16
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = imagemagick
+	depends = libimagequant
+	depends = lua
+	provides = cwal
+	conflicts = cwal
+	source = cwal16-1.0.0.tar.gz::https://github.com/shadowash8/cwal16/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = cwal16
