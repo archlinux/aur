@@ -15,7 +15,8 @@ _enable_libsyncthing=${MINGW_W64_SYNCTHING_TRAY_ENABLE_LIBSYNCTHING:-ON}
 _reponame=syncthingtray
 pkgname=mingw-w64-syncthingtray
 _name=${pkgname#mingw-w64-}
-pkgver=2.0.7
+pkgver=2.0.9
+[[ $BUILD_BEFORE_TAGGING ]] && _pkgver=branch=master || _pkgver=tag=v$pkgver
 pkgrel=1
 arch=('any')
 pkgdesc='Tray application for Syncthing (mingw-w64)'
@@ -27,12 +28,14 @@ depends=('mingw-w64-crt' 'mingw-w64-qt5-svg' 'mingw-w64-qtutilities' 'mingw-w64-
 [[ $_webview_provider == webengine ]] && depends+=('mingw-w64-qt5-webengine')
 [[ $_js_provider == script ]] && depends+=('mingw-w64-qt5-script')
 [[ $_js_provider == qml ]] && depends+=('mingw-w64-qt5-declarative')
-makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'ninja')
-[[ $_enable_libsyncthing == ON ]] && makedepends+=('git' 'go')
-url="https://github.com/Martchus/${_reponame}"
-source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-[[ $_enable_libsyncthing == ON ]] && source+=("syncthing::git+https://github.com/Martchus/syncthing.git#branch=libsyncthing-latest")
-sha256sums=('e19777fe6791f3c8e03a2bc010d3a6bce6a18b8a2c304b068f70860f03527dd1'
+makedepends=('mingw-w64-gcc' 'mingw-w64-cmake' 'mingw-w64-qt5-tools' 'ffmpeg' 'ninja' 'git')
+[[ $_enable_libsyncthing == ON ]] && makedepends+=('go')
+url=https://github.com/Martchus/${_reponame}
+_github_url=git+https://github.com/Martchus
+_git_url=${MARTCHUS_GIT_URL_PREFIX:-$_github_url}
+source=("$_reponame::$_git_url/${_reponame}#$_pkgver")
+[[ $_enable_libsyncthing == ON ]] && source+=("syncthing::$_github_url/syncthing")
+sha256sums=('SKIP'
             'SKIP')
 options=(!buildflags staticlibs !strip !emptydirs)
 
@@ -50,23 +53,16 @@ fi
 [[ $_enable_libsyncthing == ON ]] && _disable_libsyncthing=OFF || _disable_libsyncthing=ON
 
 prepare() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-
-  # ensure path where the libsyncthing Git submodule would be cloned into exists
-  mkdir -p 'syncthing/go/src/github.com/syncthing'
-  pushd 'syncthing/go/src/github.com/syncthing'
-
-  # delete empty sub directory of the Git submodule present in the archive from GitHub
-  [[ -d syncthing ]] && rm -r syncthing
-
-  # link libsyncthing repo where the Git submodule would have been cloned into
-  ln -sf "$srcdir/syncthing" .
-
-  popd
+  cd "$srcdir/$_reponame"
+  [[ $_enable_libsyncthing == ON ]] || return 0
+  git submodule init
+  git config submodule.libsyncthing/go/src/github.com/syncthing/syncthing.url "$srcdir/syncthing"
+  git -c protocol.file.allow=always submodule update
 }
 
 build() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+  cd "$srcdir/$_reponame"
+  echo "git rev: $(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 
   declare -A _config_flags=(
     [shared]="
@@ -101,6 +97,7 @@ build() {
         -G Ninja \
         -DCMAKE_BUILD_TYPE:STRING='Release' \
         -DCMAKE_INSTALL_PREFIX="/usr/${_arch}" \
+        -DAPPEND_GIT_REVISION:BOOL=OFF \
         -DCONFIGURATION_NAME:STRING="${_cfg}" \
         -DCONFIGURATION_DISPLAY_NAME="" \
         -DCONFIGURATION_PACKAGE_SUFFIX:STRING="-${_cfg}" \
@@ -121,7 +118,7 @@ build() {
 }
 
 check() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+  cd "$srcdir/$_reponame"
 
   for _arch in 'x86_64-w64-mingw32'; do
     for _cfg in 'static'; do
@@ -136,7 +133,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
+  cd "$srcdir/$_reponame"
 
   install \
     -D --target-directory="$pkgdir/usr/share/licenses/$pkgname" \
