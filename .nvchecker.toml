@@ -1,0 +1,5 @@
+[profilarr]
+source = "github"
+github = "Dictionarry-Hub/profilarr"
+use_max_tag = true
+prefix = "v"

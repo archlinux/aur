@@ -5,7 +5,7 @@ pkgver=1.1.4
 pkgrel=1
 pkgdesc="Configuration Management Platform for Radarr/Sonarr"
 arch=('x86_64')
-url="https://github.com/Dictionarry-Hub/$pkgname"
+url="https://github.com/Dictionarry-Hub/profilarr"
 license=('AGPL-3.0-only')
 depends=(
   python
