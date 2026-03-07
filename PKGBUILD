@@ -1,7 +1,7 @@
 pkgname=obsidian-cli-inspector-git
 _pkgname=obsidian-cli-inspector
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Local-first CLI/TUI for indexing and querying Obsidian vaults (development version)"
 arch=('x86_64')
 url="https://github.com/jingyi-zhao-01/obsidian-cli-inspector"
@@ -13,7 +13,7 @@ makedepends=('git' 'cargo' 'gcc' 'pkgconf')
 provides=('obsidian-cli-inspector')
 conflicts=('obsidian-cli-inspector')
 
-options=('!lto')
+options=('!lto' '!debug')
 
 source=("git+https://github.com/jingyi-zhao-01/obsidian-cli-inspector.git")
 sha256sums=('SKIP')
