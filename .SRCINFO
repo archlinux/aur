@@ -1,6 +1,6 @@
 pkgbase = guiless-bing-search
 	pkgdesc = A tool for accessing Bing search results in GUI-less environments
-	pkgver = r7.20260226.1cc22f5
+	pkgver = r8.20260307.f5e7356
 	pkgrel = 1
 	url = https://github.com/wszqkzqk/GUILessBingSearch
 	arch = any
