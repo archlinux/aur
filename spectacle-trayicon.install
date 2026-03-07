@@ -1,6 +1,6 @@
 post_install() {
   echo "Spectacle Tray Icon installed."
-  echo "Run 'spectacle-sni' to start it."
+  echo "Run 'spectacle-trayicon' to start it."
 }
 
 post_upgrade() {

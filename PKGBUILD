@@ -1,4 +1,4 @@
-# Maintainer: Raven Crow <ravencrowonyt@icloud.com>
+# Maintainer: ravencrow <ravencrowonyt@icloud.com>
 
 pkgbase=spectacle-trayicon-git
 pkgname=('spectacle-trayicon-git')
@@ -31,7 +31,7 @@ pkgver() {
 package() {
   cd "${srcdir}/spectacle-sni"
 
-  install -Dm755 spectacle-sni.py "${pkgdir}/usr/bin/spectacle-sni"
-  install -Dm644 packaging/spectacle-sni.desktop "${pkgdir}/usr/share/applications/spectacle-sni.desktop"
+  install -Dm755 spectacle-sni.py "${pkgdir}/usr/bin/spectacle-trayicon"
+  install -Dm644 packaging/spectacle-sni.desktop "${pkgdir}/usr/share/applications/spectacle-trayicon.desktop"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
