@@ -8,7 +8,7 @@ pkgbase = wordleinc
 	makedepends = gcc
 	makedepends = make
 	depends = glibc
-	source = wordleinc-1.0.0.tar.gz::https://github.com/goal10der/wordleinc/archive/refs/tags/v1.0.0.tar.gz
+	source = wordleinc::git+https://github.com/goal10der/wordleinc.git
 	sha256sums = SKIP
 
 pkgname = wordleinc

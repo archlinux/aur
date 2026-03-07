@@ -8,7 +8,7 @@ url="https://github.com/goal10der/wordleinc"
 license=('MIT')
 depends=('glibc')
 makedepends=('gcc' 'make')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 build() {
