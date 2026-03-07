@@ -28,6 +28,6 @@ pkgbase = fuetem-arch
 	optdepends = alacritty: terminal emulator for system monitor window
 	optdepends = foot: terminal emulator for system monitor window
 	source = fuetem-arch-1.0.0.tar.gz::https://github.com/invisi101/fuetem-arch/archive/v1.0.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = bb2f33caad9baef7261f284f8ad101791c1b9588e4252b936fabab3062f826b9
 
 pkgname = fuetem-arch

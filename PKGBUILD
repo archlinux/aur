@@ -26,7 +26,7 @@ optdepends=(
   'foot: terminal emulator for system monitor window'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('bb2f33caad9baef7261f284f8ad101791c1b9588e4252b936fabab3062f826b9')
 
 package() {
   cd "${pkgname}-${pkgver}"
