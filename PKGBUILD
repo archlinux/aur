@@ -2,7 +2,7 @@
 # Maintainer: Gaurav Gosain <itsgauravgosain@gmail.com>
 
 pkgname='streamd-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A CLI tool that renders streamed LLM output as beautiful markdown in the terminal'
 url='https://github.com/Gaurav-Gosain/streamd'
@@ -12,16 +12,16 @@ provides=('streamd')
 conflicts=('streamd')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Gaurav-Gosain/streamd/releases/download/v${pkgver}/streamd_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('27f53c41842ea252d3581e37adf12ecdee233ffc4da5ef817659f88af648c1e6')
+sha256sums_aarch64=('abe76a9ac386838968e7205806bb30a16d513316491551ef4e111676c69a7df1')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/Gaurav-Gosain/streamd/releases/download/v${pkgver}/streamd_${pkgver}_Linux_armv7.tar.gz")
-sha256sums_armv7h=('cf1fdcf62da72c36a1d6c982f9ea8eb309d8a8692726138cfd14f9a7b086c118')
+sha256sums_armv7h=('5907f33883f895f234d9b905f083f7782e217e90a2903c19cb8499ca4bfafd07')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/Gaurav-Gosain/streamd/releases/download/v${pkgver}/streamd_${pkgver}_Linux_i386.tar.gz")
-sha256sums_i686=('ac459582ea6e9f130ed57757ae8163db84ae7fdea7830f77ca6664a8dda128be')
+sha256sums_i686=('6fbaceda6a96bae8f5b09ebc5872915f946616edc234ce4cfe9a8bfc745b46f4')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Gaurav-Gosain/streamd/releases/download/v${pkgver}/streamd_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('d956200a2e7e24125eaf53e2772cd98961aa1221fc3b6f804295ec378541e356')
+sha256sums_x86_64=('22a948ad8aa028d87667e29aa0c86ff67cf2656fdc1069e62b2a08db6cf664d0')
 
 package() {
   # bin
