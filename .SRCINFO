@@ -1,0 +1,18 @@
+pkgbase = mx-cleanup
+	pkgdesc = GUI for system cleanup and maintenance
+	pkgver = 26.03
+	pkgrel = 1
+	url = https://github.com/MX-Linux/mx-cleanup
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = xdg-utils
+	depends = qt6-base
+	depends = polkit
+	source = https://github.com/MX-Linux/mx-cleanup/archive/refs/tags/26.03.tar.gz
+	sha256sums = 3bf6b56896fbaf6dd52c61a5ad1d23c7be2e2867725a7cf568d47e6ca6ea193a
+
+pkgname = mx-cleanup
