@@ -9,6 +9,7 @@ pkgbase = squix-bin
 	depends = glibc
 	provides = squix
 	conflicts = squix
+	conflicts = pam-bin
 	replaces = pam-bin
 	source = LICENSE-0.3.0::https://raw.githubusercontent.com/eduardofuncao/squix/v0.3.0-beta/LICENSE
 	source = README-0.3.0.md::https://raw.githubusercontent.com/eduardofuncao/squix/v0.3.0-beta/README.md

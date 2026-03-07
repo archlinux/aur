@@ -1,6 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=eduardofuncao
+_pkgname_old=pam
 _pkgname=squix
 _appname=${_pkgname}
 pkgname=${_pkgname}-bin
@@ -18,9 +19,9 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 
 license=('MIT')
 
-conflicts=("${_pkgname}")
+conflicts=("${_pkgname}" "${_pkgname_old}-bin")
+replaces=("${_pkgname_old}-bin")
 provides=("${_pkgname}")
-replaces=('pam-bin')
 depends=('glibc')
 
 source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
