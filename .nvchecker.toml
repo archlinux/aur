@@ -1,0 +1,5 @@
+[git-statuses]
+source = "github"
+github = "bircni/git-statuses"
+use_max_tag = true
+
