@@ -1,7 +1,7 @@
 # Maintainer: FennecTECH <fennectech@gmail.com>
 pkgname=firestorm-bin
 pkgver=7.2.3.80036
-pkgrel=80036
+pkgrel=1
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life."
 url="http://www.firestormviewer.org/"
 license=('GPL')
