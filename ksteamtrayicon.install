@@ -1,0 +1,13 @@
+post_install() {
+  cat << 'EOF'
+
+*******************************************************
+* Hooray! ksteamtrayicon was installed successfully.  *
+*******************************************************
+*                                                     *
+* To start it, log out of KDE Plasma and log back in. *
+*                                                     *
+*******************************************************
+
+EOF
+}
