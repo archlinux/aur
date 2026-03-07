@@ -1,7 +1,7 @@
 pkgbase = qtengine
 	pkgdesc = QT Platform Theme made easy
-	pkgver = 0.2.0
-	pkgrel = 6
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/kossLAN/qtengine
 	install = qtengine.install
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = qtengine
 	provides = qtengine
 	conflicts = qtengine-bin
 	conflicts = qtengine-git
-	source = https://github.com/kossLAN/qtengine/archive/refs/tags/0.2.0.tar.gz
+	source = https://github.com/kossLAN/qtengine/archive/refs/tags/0.2.1.tar.gz
 	source = config.example.json
-	sha256sums = 87d93bfa7eefc8fe3b652bc4dd7c82358e4f5d6e7f9bc123e76f4f63c02fbfcc
+	sha256sums = 3dc1278952a5ba9520208b5819c92bb4966a335897b6c30099c9320c87b15221
 	sha256sums = 5dfcc6479a03140e492eff69936c708d1bffba3edf9d5312b27b5efff61fa06e
 
 pkgname = qtengine
