@@ -1,6 +1,6 @@
 pkgbase = sshconfig-lint-bin
 	pkgdesc = Linter for OpenSSH client config files
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/Noah4ever/sshconfig-lint
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = sshconfig-lint-bin
 	depends = glibc
 	provides = sshconfig-lint
 	conflicts = sshconfig-lint
-	source = LICENSE::https://raw.githubusercontent.com/Noah4ever/sshconfig-lint/v0.2.0/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/Noah4ever/sshconfig-lint/v0.3.0/LICENSE
 	sha256sums = 639f6db74e400988e217e0b995eecab4d4a38a2f36e6e2a90c6f6b477b69c648
-	source_x86_64 = sshconfig-lint-linux-x86_64.tar.gz::https://github.com/Noah4ever/sshconfig-lint/releases/download/v0.2.0/sshconfig-lint-linux-x86_64.tar.gz
+	source_x86_64 = sshconfig-lint-linux-x86_64.tar.gz::https://github.com/Noah4ever/sshconfig-lint/releases/download/v0.3.0/sshconfig-lint-linux-x86_64.tar.gz
 	sha256sums_x86_64 = 4ecfdc6c0eaae17b613f31f162f25038f5a348138a88e677125c1a3af88dc0a6
-	source_aarch64 = sshconfig-lint-linux-arm64.tar.gz::https://github.com/Noah4ever/sshconfig-lint/releases/download/v0.2.0/sshconfig-lint-linux-arm64.tar.gz
+	source_aarch64 = sshconfig-lint-linux-arm64.tar.gz::https://github.com/Noah4ever/sshconfig-lint/releases/download/v0.3.0/sshconfig-lint-linux-arm64.tar.gz
 	sha256sums_aarch64 = 4c63fc57074e3e586ead988a79d964b075ce44735f0148e0b6845d6a153fdd92
 
 pkgname = sshconfig-lint-bin
