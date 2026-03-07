@@ -1,0 +1,51 @@
+# Maintainer: sTiKyt <stikyt@proton.me>
+
+pkgname=lovr-playspace-bin
+pkgver=0.2.1
+pkgrel=1
+pkgdesc="Room boundary overlay for OpenXR, made with LÖVR"
+arch=('x86_64')
+url="https://github.com/SpookySkeletons/lovr-playspace"
+license=('MIT')
+depends=('libx11' 'gcc-libs' 'glibc')
+optdepends=('envision: automatic plugin integration')
+provides=('lovr-playspace')
+conflicts=('lovr-playspace')
+source=(
+    "LOVR_Playspace-x86_64-${pkgver}.AppImage::https://github.com/SpookySkeletons/lovr-playspace/releases/download/${pkgver}/LOVR_Playspace-x86_64.AppImage"
+    "lovr-playspace.desktop"
+)
+sha256sums=(
+    'SKIP'
+    'SKIP'
+)
+noextract=("LOVR_Playspace-x86_64-${pkgver}.AppImage")
+
+prepare() {
+    chmod +x "LOVR_Playspace-x86_64-${pkgver}.AppImage"
+    ./"LOVR_Playspace-x86_64-${pkgver}.AppImage" --appimage-extract
+}
+
+package() {
+    # Binary
+    install -Dm755 squashfs-root/usr/bin/lovr-playspace "$pkgdir/usr/lib/lovr-playspace/lovr-playspace"
+
+    # Bundled libraries
+    install -Dm755 -t "$pkgdir/usr/lib/lovr-playspace/" squashfs-root/usr/lib/*.so*
+
+    # Wrapper: sets LD_LIBRARY_PATH so the binary finds its bundled .so files
+    install -dm755 "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/lovr-playspace" << 'EOF'
+#!/bin/bash
+exec env LD_LIBRARY_PATH=/usr/lib/lovr-playspace /usr/lib/lovr-playspace/lovr-playspace "$@"
+EOF
+    chmod 755 "$pkgdir/usr/bin/lovr-playspace"
+
+    # Desktop entry (ours, not the bundled one)
+    install -Dm644 lovr-playspace.desktop "$pkgdir/usr/share/applications/lovr-playspace.desktop"
+
+    # Icon (extracted from AppImage)
+    install -Dm644 \
+        squashfs-root/usr/share/icons/hicolor/256x256/apps/lovr-playspace.png \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/lovr-playspace.png"
+}

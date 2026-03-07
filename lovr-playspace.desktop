@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=LÖVR Playspace
+Comment=Room boundary overlay for OpenXR
+Exec=lovr-playspace
+Icon=lovr-playspace
+Terminal=false
+Categories=Utility;X-WiVRn-VR;
+Keywords=VR;Virtual Reality;OpenXR;OpenVR;Playspace;
+X-XR-Plugin=true
+X-XR-Plugin-Exec=lovr-playspace
