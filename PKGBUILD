@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mindwtr
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.7.2
+pkgrel=1
 _nodeversion=20
 pkgdesc="Mind Like Water: A complete Getting Things Done (GTD) productivity system"
 arch=('x86_64')
@@ -26,10 +26,9 @@ makedepends=(
 )
 source=("git+https://github.com/dongdongbh/Mindwtr.git#tag=v$pkgver"
         "$pkgname.desktop"
-        'tauri-v2-schema.patch')
-sha256sums=('fe6dea5fbdcf61c4ea8b69f3b8a3b75f28033e076dd2cdc473e16435a307fc0d'
-            'c283dc386b122df8db1157a2f74e7cfd780ab65133ab8fef6c74b2179f85161c'
-            'e68d0b4c532d82965f6c83644316951d6c59e0ba81a235758c779b4b8c320982')
+)
+sha256sums=('0f52acfc4328326e760540d34d9802c70f65f3db97ee2f98eeffb2ca3608a9b2'
+            'c283dc386b122df8db1157a2f74e7cfd780ab65133ab8fef6c74b2179f85161c')
 
 _ensure_local_nvm() {
   # let's be sure we are starting clean
@@ -45,8 +44,6 @@ _ensure_local_nvm() {
 prepare() {
   cd Mindwtr
 
-  # tauri_conf_v2_compat: normalize deprecated bundle.macOS.infoPlist for tauri v2 schema
-  patch -Np1 -i ../tauri-v2-schema.patch
 
   _ensure_local_nvm
   nvm install "${_nodeversion}"
