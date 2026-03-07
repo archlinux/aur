@@ -23,6 +23,12 @@ pkgbase = libsignal-client
 	depends = java-runtime
 	options = !lto
 	source = libsignal-0.87.4.tar.gz::https://github.com/signalapp/libsignal/archive/refs/tags/v0.87.4.tar.gz
+	source = boring::git+https://github.com/signalapp/boring
+	source = curve25519-dalek::git+https://github.com/signalapp/curve25519-dalek
+	source = SparsePostQuantumRatchet.git::git+https://github.com/signalapp/SparsePostQuantumRatchet.git
 	sha512sums = 8750e79b31ae26e20809d83721a225a59409c0b1f7a082fa888181f9a45c4359ee6f7938e031fe3707d3b8ff7e23d94891fb460fee67297f475b444604cd6eb5
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
 
 pkgname = libsignal-client
