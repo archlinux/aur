@@ -1,7 +1,7 @@
 # Maintainer: Zack Fitch <zack@johnzfitch.com>
 pkgname=claude-cowork-linux
 pkgver=1.1.4010
-pkgrel=3
+pkgrel=5
 pkgdesc="Anthropic Claude Desktop with Cowork (local agent) support for Linux"
 arch=('x86_64')
 url="https://github.com/johnzfitch/claude-cowork-linux"
@@ -9,8 +9,9 @@ license=('custom:proprietary')
 depends=(
     'electron'
     'nodejs'
-    'gnome-keyring'
 )
+# gnome-keyring is recommended but not required; launcher detects SecretService
+# at runtime and falls back to --password-store=basic if unavailable
 makedepends=(
     'p7zip'
     'npm'
@@ -20,6 +21,8 @@ makedepends=(
 optdepends=(
     'xdg-utils: for opening URLs'
     'bubblewrap: for sandbox isolation'
+    'gnome-keyring: SecretService provider for secure credential storage'
+    'kwallet: SecretService provider for KDE users'
 )
 provides=('claude-cowork' 'claude-desktop')
 conflicts=(
@@ -35,7 +38,7 @@ _rnet_wheel="rnet-3.0.0rc14-cp311-abi3-manylinux_2_34_x86_64.whl"
 
 source=(
     "git+https://github.com/johnzfitch/claude-cowork-linux.git"
-    "https://github.com/johnzfitch/claude-cowork-linux/releases/download/v3.0.1/${_rnet_wheel}"
+    "https://github.com/johnzfitch/claude-cowork-linux/releases/download/v3.0.2/${_rnet_wheel}"
 )
 sha256sums=(
     'SKIP'
@@ -52,7 +55,7 @@ pkgver() {
     "$venv_dir/bin/pip" install --quiet "${srcdir}/${_rnet_wheel}" 2>/dev/null
 
     local version
-    version=$("$venv_dir/bin/python" "${srcdir}/claude-cowork-linux/tools/fetch-dmg.py" 2>/dev/null \
+    version=$("$venv_dir/bin/python" "${srcdir}/claude-cowork-linux/fetch-dmg.py" 2>/dev/null \
         | awk '{print $1}')
     rm -rf "$venv_dir"
 
@@ -72,7 +75,7 @@ prepare() {
     # Fetch latest DMG URL via rnet, download with curl
     echo "Fetching latest Claude Desktop DMG URL..."
     local dmg_url
-    dmg_url=$("$venv_dir/bin/python" "${srcdir}/claude-cowork-linux/tools/fetch-dmg.py" --url)
+    dmg_url=$("$venv_dir/bin/python" "${srcdir}/claude-cowork-linux/fetch-dmg.py" --url)
     echo "Downloading DMG from CDN..."
     curl -fSL --progress-bar -o "${srcdir}/Claude.dmg" "$dmg_url"
 
@@ -149,7 +152,7 @@ build() {
 
     # Apply cowork patch
     echo "Applying cowork patch..."
-    python "${_repo}/patches/enable-cowork.py" \
+    python "${_repo}/enable-cowork.py" \
         "${srcdir}/linux-app-extracted/.vite/build/index.js"
 
     # Repack into app.asar
@@ -173,8 +176,18 @@ if [[ -n "$WAYLAND_DISPLAY" ]] || [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
     export ELECTRON_OZONE_PLATFORM_HINT=wayland
 fi
 
+# Detect password store backend
+PW_STORE="gnome-libsecret"
+if ! dbus-send --session --print-reply --dest=org.freedesktop.DBus /org/freedesktop/DBus \
+     org.freedesktop.DBus.NameHasOwner string:"org.freedesktop.secrets" 2>/dev/null \
+     | grep -q "boolean true"; then
+    PW_STORE="basic"
+fi
+
 exec electron /usr/lib/claude-cowork/app.asar \
-    --no-sandbox --password-store=gnome-libsecret \
+    --no-sandbox \
+    --disable-gpu \
+    --password-store="$PW_STORE" \
     --enable-features=GlobalShortcutsPortal "$@"
 EOF
 
