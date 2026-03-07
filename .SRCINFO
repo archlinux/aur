@@ -1,0 +1,17 @@
+pkgbase = preaur-git
+	pkgdesc = PreAUR, build AUR (not only) pkgbuilds ahead of time.
+	pkgver = 0.0.4.r2.g00e9293
+	pkgrel = 1
+	url = https://github.com/kobe-koto/PreAUR
+	arch = any
+	license = AGPL-3.0-only
+	depends = bun
+	depends = git
+	depends = devtools
+	depends = base-devel
+	provides = preaur
+	conflicts = preaur
+	source = git+https://github.com/kobe-koto/PreAUR.git
+	sha256sums = SKIP
+
+pkgname = preaur-git
