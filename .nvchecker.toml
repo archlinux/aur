@@ -1,0 +1,5 @@
+[blip]
+source = "github"
+github = "block/blip"
+use_max_tag = true
+prefix = "v"
