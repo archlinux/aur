@@ -3,7 +3,7 @@
 pkgname=vsview-comp
 _origpkgname=vsview_comp
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A vsview plugin to make comparison backed by Slowpoke Pics"
 arch=("x86_64")
 url='https://pypi.org/project/vsview-comp/'
@@ -11,6 +11,8 @@ license=("MIT")
 depends=(
     "vsview"
     "python-httpx"
+	"python-pathvalidate"
+	"python-jinja"
 )
 makedepends=(
 	"python-build"
