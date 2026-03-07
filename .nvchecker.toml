@@ -2,4 +2,4 @@
 source = "github"
 github = "gearnode/privatebin"
 use_max_tag = true
-
+prefix = "v"
