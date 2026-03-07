@@ -3,7 +3,7 @@
 options=(!debug !strip)
 
 pkgname=msdf-atlas-gen
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="MSDF font atlas generator"
 url=https://github.com/Chlumsky/msdf-atlas-gen
@@ -14,15 +14,8 @@ makedepends=(git cmake gcc make)
 provides=(msdf-atlas-gen=$pkgver)
 conflicts=(msdf-atlas-gen-git)
 
-source=("${pkgname}-${pkgver}.tag.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-		"use_msdfgen_1_13.patch")
-sha256sums=('SKIP' 'd1f23b2b927f25c9e3d8cf5a5ebcd1ece8be5ff2c4bc5b9c866eeaa84c676d19')
-
-prepare() {
-	cd "$srcdir/${pkgname}-${pkgver}"
-
-	patch --forward --strip=1 --input="$srcdir/use_msdfgen_1_13.patch"
-}
+source=("${pkgname}-${pkgver}.tag.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
 
 build()
 {
