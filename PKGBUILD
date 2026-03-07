@@ -287,7 +287,7 @@ build() {
 
   ## Silence some compiler warnings (and, just to be sure, do not treat them as errors as well):
   local _NOWARNINGS _NOWARNINGS_CConly _NOWARNINGS_CXXonly _warning _CFLAGSADDITIONS _CFLAGSADDITIONS_CConly _CFLAGSADDITIONS_CXXonly
-  _NOWARNINGS=('deprecated-declarations' 'unused-result' 'lto-type-mismatch' 'discarded-qualifiers')
+  _NOWARNINGS=('deprecated-declarations' 'unused-result' 'lto-type-mismatch' 'discarded-qualifiers' 'attribute-warning')
   _NOWARNINGS_CConly=('implicit-function-declaration')
   _NOWARNINGS_CXXonly=()
   _CFLAGSADDITIONS=''
