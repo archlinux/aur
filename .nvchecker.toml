@@ -1,0 +1,5 @@
+[pvetui]
+source = "github"
+github = "devnullvoid/pvetui"
+use_max_tag = true
+prefix = "v"
