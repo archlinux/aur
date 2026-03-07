@@ -1,7 +1,7 @@
 pkgbase = vsview
 	pkgdesc = The next-generation VapourSynth previewer
 	pkgver = 0.1.0b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-view
 	arch = x86_64
 	license = EUPL-1.2
@@ -22,6 +22,7 @@ pkgbase = vsview
 	depends = python-pygments
 	depends = python-pluggy
 	depends = python-typing_extensions
+	depends = python-pathvalidate
 	depends = pyside6
 	source = vsview::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=vsview/v0.1.0b1
 	sha256sums = SKIP
