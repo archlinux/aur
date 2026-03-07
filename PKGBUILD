@@ -4,14 +4,19 @@ _Name="Lerc"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Limited Error Raster Compression library"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://github.com/Esri/${_pkgname}"
-license=('Apache-2.0')
+license=(
+  'Apache-2.0'
+)
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
+  'libstdc++'
 )
 provides=(
   "${_pkgname}"
@@ -21,12 +26,14 @@ conflicts=(
   "${_pkgname}"
 )
 _pkgsrc="${url##*/}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+source=(
+  "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+)
 sha256sums=('91431c2b16d0e3de6cbaea188603359f87caed08259a645fd5a3805784ee30a0')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
-  cp "${_Name}.pc.in" "${_Name}.pc"
+  cp -v "${_Name}.pc.in" "${_Name}.pc"
   sed -e "s|@CMAKE_INSTALL_PREFIX@|/usr|g" \
       -e "s|@CMAKE_INSTALL_INCLUDEDIR@|include|g" \
       -e "s|@CMAKE_INSTALL_LIBDIR@|lib|g" \
