@@ -1,0 +1,5 @@
+[cursus]
+source = "gitlab"
+gitlab = "n0r1sk/cursus"
+use_max_tag = true
+prefix = "v"
