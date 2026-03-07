@@ -1,0 +1,14 @@
+pkgbase = vsview-plugins
+	pkgdesc = Meta package to install all vsview plugins
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-view
+	arch = any
+	license = None
+	depends = vsview
+	depends = vsview-comp
+	depends = vsview-fftspectrum
+	depends = vsview-split-planes
+	depends = vsview-frameprops-extended
+
+pkgname = vsview-plugins
