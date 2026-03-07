@@ -1,5 +1,5 @@
 pkgname=obsidian-cli-inspector-git
-pkgver=0.2.2.r17.ggcf9a4ae
+pkgver=0.2.2.r18.ggcc97b31
 pkgrel=1
 pkgdesc="Local-first CLI/TUI for indexing and querying Obsidian vaults (unstable git version)"
 arch=('x86_64')
