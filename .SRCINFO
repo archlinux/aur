@@ -1,0 +1,15 @@
+pkgbase = uxncli-git
+	pkgdesc = A partial emulator for the Varvara Ordinator, written in ANSI C.
+	pkgver = r38.06844ce
+	pkgrel = 1
+	url = https://git.sr.ht/~rabbits/uxncli
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	provides = uxncli
+	conflicts = uxn-git
+	source = git+https://git.sr.ht/~rabbits/uxncli
+	sha256sums = SKIP
+
+pkgname = uxncli-git
