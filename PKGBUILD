@@ -1,4 +1,3 @@
-# Maintainer: mars <твой@email.com>
 pkgname=easygamma-git
 pkgver=r4.d17fad4
 pkgrel=1
