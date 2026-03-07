@@ -2,7 +2,7 @@
 pkgname=firestorm-git
 _pkgver=7.2.3
 pkgver=7.2.3.80036
-pkgrel=1
+pkgrel=2
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life  and OpenSim grids (git/os version)"
 arch=('x86_64')
 url=https://www.firestormviewer.org
@@ -64,14 +64,18 @@ prepare() {
     echo "Applying patch $(basename "$p")"
     patch -Np1 -i "$p" || exit 1
   done
-
-  if [[ -f "$startdir/fmodstudioapi20307linux.tar.gz" ]]; then
-    cp "$startdir/fmodstudioapi20307linux.tar.gz" "$srcdir/3p-fmodstudio/"
-  fi
-
 }
 
 build() {
+  # Rename _GLIBCXX_ASSERTIONS to _NO_GLIBCXX_ASSERTION if defined
+  # The problem is that makepkg might define -D_GLIBCXX_ASSERTIONS.
+  # There is a bug in FS right now that causes the assertion to trigger a crash so we rename it to NO_GLIBCXX_ASSERTIONS to disable the assertions.
+  # This is not ideal but it is a workaround until the underlying issue in FS is fixed.
+  CPPFLAGS=${CPPFLAGS//_GLIBCXX_ASSERTIONS/_NO_GLIBCXX_ASSERTIONS}
+  CXXFLAGS=${CXXFLAGS//_GLIBCXX_ASSERTIONS/_NO_GLIBCXX_ASSERTIONS}
+  export CPPFLAGS CXXFLAGS
+
+
   cd "$pkgname"
   export AUTOBUILD_VARIABLES_FILE="$srcdir/fs-build-variables/variables"
   
@@ -88,13 +92,15 @@ build() {
   # - Don't use FMOD Studio for audio. FMOD Studio requires an account to download the API. Falling back to OpenAL for audio support.
   # - Don't use Havok for physics. Havok requires license. This only affects Mesh uploads.
   # - Enable OpenSim support
+  # - Pass --fresh to cmake to ensure flags are up to date
   autobuild build -A 64 -c ReleaseFS -- --chan ReleaseOSArchx64 \
     --package \
     --avx2 \
     -DUSE_KDU:BOOL=OFF \
     -DUSE_FMODSTUDIO:BOOL=OFF \
     -DHAVOK_TPV:BOOL=OFF \
-    -DOPENSIM:BOOL=ON
+    -DOPENSIM:BOOL=ON \
+    --fresh
   
   # Deactivate the virtual environment after the build is complete
   deactivate
