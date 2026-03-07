@@ -1,22 +1,25 @@
 pkgbase = php-openswoole-git
-	pkgdesc = Programmatic Server for PHP with Async IO, Coroutines and Fibers
-	pkgver = 22.1.2.r72.gc9136395a
+	pkgdesc = High-performance network framework based on an event-driven, asynchronous, non-blocking I/O coroutine programming model for PHP.
+	pkgver = v26.2.0.r1.g45573e1b7
 	pkgrel = 1
-	url = https://openswoole.com/
-	arch = any
-	license = unkown
+	url = https://github.com/openswoole/ext-openswoole
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
 	makedepends = git
 	makedepends = gcc>=4.8
-	depends = linux>=2.3.32
-	depends = php>=8.1.0
-	depends = brotli
-	depends = glibc
+	depends = php>=8.3.0
+	depends = openssl
+	depends = curl
+	depends = postgresql-libs
+	depends = c-ares
+	depends = liburing
+	depends = glibc>=2.17
 	depends = gcc-libs
-	depends = zlib
-	optdepends = openssl
-	optdepends = c-ares
+	depends = zlib>=1.2.11
+	depends = brotli>=1.0.7
 	optdepends = gdb
-	provides = openswoole.so=22.1.2.r72.gc9136395a
+	provides = php-openswoole
 	source = php-openswoole-git::git+https://github.com/openswoole/ext-openswoole.git
 	sha256sums = SKIP
 

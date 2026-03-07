@@ -1,34 +1,34 @@
 # Maintainer: mohachi <hachiassali15@gmail.com>
 
 pkgname="php-openswoole-git"
-pkgver="22.1.2.r72.gc9136395a"
+pkgver="v26.2.0.r1.g45573e1b7"
 pkgrel=1
-pkgdesc="Programmatic Server for PHP with Async IO, Coroutines and Fibers"
-arch=('any')
-url="https://openswoole.com/"
-license=("unkown")
-depends=("linux>=2.3.32" "php>=8.1.0" "brotli" "glibc" "gcc-libs" "zlib")
+pkgdesc="High-performance network framework based on an event-driven, asynchronous, non-blocking I/O coroutine programming model for PHP."
+arch=("x86_64" "aarch64")
+url="https://github.com/openswoole/ext-openswoole"
+license=("Apache-2.0")
+depends=("php>=8.3.0" "openssl" "curl" "postgresql-libs" "c-ares" ""liburing"" "glibc>=2.17" "gcc-libs" "zlib>=1.2.11" "brotli>=1.0.7")
 makedepends=("git" "gcc>=4.8")
-optdepends=("openssl" "c-ares" "gdb")
-provides=("openswoole.so=$pkgver")
-source=("$pkgname::git+https://github.com/openswoole/ext-openswoole.git")
-sha256sums=('SKIP')
+optdepends=("gdb")
+provides=("php-openswoole")
+source=("$pkgname::git+$url.git")
+sha256sums=("SKIP")
 
 pkgver() {
     cd "$pkgname"
-    git describe --tags --long | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
+    git describe --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g"
 }
 
 build() {
     cd "$pkgname"
     phpize &&\
     ./configure --enable-openssl \
-                --enable-mysqlnd \
-                --enable-sockets \
                 --enable-http2 \
                 --enable-hook-curl \
                 --with-postgres \
-                --enable-cares && \
+                --enable-cares \
+                --enable-mysqlnd \
+                --enable-io-uring
     make -j$(nproc)
 }
 
