@@ -1,6 +1,6 @@
 pkgbase = fuetem-arch
 	pkgdesc = Arch Linux system maintenance console — cleanup, health, security, monitoring
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/invisi101/fuetem-arch
 	arch = any
@@ -25,7 +25,7 @@ pkgbase = fuetem-arch
 	optdepends = yay: AUR update checking and cache cleanup
 	optdepends = chezmoi: dotfile drift detection
 	optdepends = flatpak: flatpak cleanup support
-	source = fuetem-arch-1.2.1.tar.gz::https://github.com/invisi101/fuetem-arch/archive/v1.2.1.tar.gz
-	sha256sums = b348050c546ac5fc9680be7fd4bafa088b9e2d4476de4c5219e1d85c98df7de1
+	source = fuetem-arch-1.2.2.tar.gz::https://github.com/invisi101/fuetem-arch/archive/v1.2.2.tar.gz
+	sha256sums = d870269e92d7a992d0b18b64f61e26491b9638c5eacb6435f2a72459dbbb03a1
 
 pkgname = fuetem-arch
