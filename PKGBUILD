@@ -2,7 +2,7 @@
 # Contributor: shimi <shimi.chen@gmail.com>
 # Contributor: Dmytro Meleshko <dmytro.meleshko@gmail.com>
 pkgname=imagewriter
-_pkgver=1.10.1432200249.1d253d9-2.22
+_pkgver=1.10.1432200249.1d253d9-2.23
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="A graphical utility for writing raw disk images & hybrid isos to USB keys"
@@ -15,7 +15,7 @@ depends=(
   'udisks2'
 )
 source=("https://download.opensuse.org/tumbleweed/repo/src-oss/src/$pkgname-${_pkgver}.src.rpm")
-sha256sums=('453b25ec56326511a7990a472983f7dd5752f811619b279e403031b4c2fbd58a')
+sha256sums=('8e7be5782796e5c20e0e82b477f5911f3e0e8df7de7de5038d5ea1f3cba9ef3b')
 
 prepare() {
   bsdtar xvf "$pkgname-${_pkgver%-*}.tar.xz"
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd "$pkgname-${_pkgver%-*}"
-  CFLAGS="$CFLAGS -DKIOSKHACK"
+  CFLAGS="${CFLAGS} -DKIOSKHACK"
   qmake-qt5 PREFIX="$pkgdir/usr" DEFINES=USEUDISKS2 "$pkgname.pro"
   make
 }
