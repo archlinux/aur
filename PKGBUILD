@@ -7,7 +7,7 @@
 #
 
 pkgname=mas
-_pkgbuild=231
+_pkgbuild=300
 pkgver=1.42b${_pkgbuild}
 _pkgfilebase=asl-current
 _pkgfile=${_pkgfilebase}-142-bld${_pkgbuild}
@@ -15,7 +15,7 @@ pkgrel=1
 pkgdesc="Macro cross-assembler (asl) for various processors and microcontrollers."
 arch=("i686" "x86_64")
 url='http://john.ccac.rwth-aachen.de:8000/as/'
-license=('GPL2')
+license=('GPL-2.0-only')
 
 #required for full docs
 #makedepends=('texlive-core')
@@ -24,8 +24,8 @@ source=("http://john.ccac.rwth-aachen.de:8000/ftp/as/source/c_version/${_pkgfile
 				"Makefile.def"
 				"makefile_nodocs.patch")
 
-sha256sums=('d4186fd32bc00606ca15add6c978b91340d007047b7b830b9ec0dc95516e97e5'
-            'a245fe24db2359b36f2224f7a70914979593c20beb633f10b9ca7bdcfa033851'
+sha256sums=('42095a1d0971e58776ae82cc42f8fb86a9f73daa7087ff1f9e95243d68d7174d'
+            'c313ee110a0c5ffc4908890ccf439da14f0bc90d923a9839b12e88ae51038938'
             '67c5d45388250f030c0cf5dfa4c18bec0f55aa2d5ae9b21875d32b0167d3e9d7')
 
 prepare() {

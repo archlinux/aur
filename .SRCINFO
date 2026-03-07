@@ -1,16 +1,16 @@
 pkgbase = mas
 	pkgdesc = Macro cross-assembler (asl) for various processors and microcontrollers.
-	pkgver = 1.42b231
+	pkgver = 1.42b300
 	pkgrel = 1
 	url = http://john.ccac.rwth-aachen.de:8000/as/
 	arch = i686
 	arch = x86_64
-	license = GPL2
-	source = http://john.ccac.rwth-aachen.de:8000/ftp/as/source/c_version/asl-current-142-bld231.tar.bz2
+	license = GPL-2.0-only
+	source = http://john.ccac.rwth-aachen.de:8000/ftp/as/source/c_version/asl-current-142-bld300.tar.bz2
 	source = Makefile.def
 	source = makefile_nodocs.patch
-	sha256sums = d4186fd32bc00606ca15add6c978b91340d007047b7b830b9ec0dc95516e97e5
-	sha256sums = a245fe24db2359b36f2224f7a70914979593c20beb633f10b9ca7bdcfa033851
+	sha256sums = 42095a1d0971e58776ae82cc42f8fb86a9f73daa7087ff1f9e95243d68d7174d
+	sha256sums = c313ee110a0c5ffc4908890ccf439da14f0bc90d923a9839b12e88ae51038938
 	sha256sums = 67c5d45388250f030c0cf5dfa4c18bec0f55aa2d5ae9b21875d32b0167d3e9d7
 
 pkgname = mas

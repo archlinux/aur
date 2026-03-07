@@ -1,4 +1,5 @@
 # Slightly modified to work better with makepkg :
+# - basic file 'Makefile.def-unknown-linux'
 # - use "overide CFLAGS" to append to environment CFLAGS
 # - remove "-fomit-frame-pointer" which is enabled at -O3 anyway
 # - prepend "$DESTDIR" so "make install" will work as desired
@@ -29,13 +30,5 @@ TARG_EXEXTENSION = $(HOST_EXEXTENSION)
 BINDIR = $(DESTDIR)/usr/bin
 INCDIR = $(DESTDIR)/usr/include/asl
 MANDIR = $(DESTDIR)/usr/share/man
-LIBDIR = $(DESTDIR)/usr/lib/asl
+LIBDIR =
 DOCDIR = $(DESTDIR)/usr/share/doc/asl
-
-# -------------------------------------------------------------------------
-# character encoding to use (choose one of them)
-
-# CHARSET = CHARSET_ASCII7
-# CHARSET = CHARSET_IBM437
-CHARSET = CHARSET_UTF8
-# CHARSET = CHARSET_ISO8859_1
