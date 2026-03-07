@@ -291,6 +291,9 @@
 	},
 	"settingsSearchUrl": "https://bingsettingssearch.trafficmanager.net/api/Search",
 	"extensionEnabledApiProposals": {
+		"mrleemurray.theme-2026": [
+			"css"
+		],
 		"ms-azuretools.vscode-containers": [
 			"authenticationChallenges"
 		],
@@ -355,7 +358,8 @@
 		],
 		"ms-python.vscode-python-envs": [
 			"terminalShellEnv",
-			"terminalDataWriteEvent"
+			"terminalDataWriteEvent",
+			"taskExecutionTerminal"
 		],
 		"ms-dotnettools.dotnet-interactive-vscode": [
 			"notebookMessaging"
@@ -470,6 +474,7 @@
 			"quickDiffProvider",
 			"remoteCodingAgents",
 			"shareProvider",
+			"tabInputMultiDiff",
 			"tabInputTextMerge",
 			"tokenInformation",
 			"treeItemMarkdownLabel",
@@ -488,6 +493,7 @@
 			"devDeviceId"
 		],
 		"GitHub.copilot-chat": [
+			"agentSessionsWorkspace",
 			"interactive",
 			"terminalDataWriteEvent",
 			"terminalExecuteCommandEvent",
@@ -496,7 +502,6 @@
 			"chatParticipantAdditions",
 			"defaultChatParticipant",
 			"embeddings",
-			"chatEditing",
 			"chatProvider",
 			"mappedEditsProvider",
 			"aiRelatedInformation",
@@ -512,6 +517,8 @@
 			"contribCommentEditorActionsMenu",
 			"contribCommentThreadAdditionalMenu",
 			"contribCommentsViewThreadMenus",
+			"contribChatEditorInlineGutterMenu",
+			"extensionAffinity",
 			"newSymbolNamesProvider",
 			"findFiles2",
 			"chatReferenceDiagnostic",
@@ -527,6 +534,7 @@
 			"languageModelSystem",
 			"languageModelCapabilities",
 			"languageModelThinkingPart",
+			"languageModelToolSupportsModel",
 			"chatStatusItem",
 			"taskProblemMatcherStatus",
 			"contribLanguageModelToolSets",
@@ -536,7 +544,16 @@
 			"dataChannels",
 			"chatSessionsProvider",
 			"devDeviceId",
-			"contribEditorContentMenu"
+			"contribEditorContentMenu",
+			"tokenInformation",
+			"chatPromptFiles",
+			"mcpServerDefinitions",
+			"tabInputMultiDiff",
+			"workspaceTrust",
+			"chatHooks",
+			"chatDebug",
+			"environmentPower",
+			"terminalTitle"
 		],
 		"GitHub.remotehub": [
 			"contribRemoteHelp",
@@ -555,7 +572,8 @@
 		],
 		"ms-python.vscode-pylance": [
 			"terminalShellEnv",
-			"portsAttributes"
+			"portsAttributes",
+			"codeActionAI"
 		],
 		"ms-python.debugpy": [
 			"contribViewsWelcome",
@@ -607,6 +625,10 @@
 		"ms-dotnettools.vscodeintellicode-csharp": [
 			"inlineCompletionsAdditions"
 		],
+		"ms-dotnettools.vscode-dotnet-modernize": [
+			"chatParticipantAdditions",
+			"chatPromptFiles"
+		],
 		"microsoft-IsvExpTools.powerplatform-vscode": [
 			"fileSearchProvider",
 			"textSearchProvider"
@@ -617,7 +639,8 @@
 		],
 		"TeamsDevApp.ms-teams-vscode-extension": [
 			"chatParticipantAdditions",
-			"languageModelSystem"
+			"languageModelSystem",
+			"mcpServerDefinitions"
 		],
 		"ms-vscode.vscode-copilot-vision": [
 			"chatReferenceBinaryData",
@@ -646,6 +669,13 @@
 		"openai.chatgpt": [
 			"languageModelProxy",
 			"chatSessionsProvider"
+		],
+		"TypeScriptTeam.native-preview": [
+			"editorHoverVerbosityLevel",
+			"multiDocumentHighlightProvider"
+		],
+		"ms-vscode.vscode-eng-codereview": [
+			"chatContextProvider"
 		]
 	},
 	"tasConfig": {
