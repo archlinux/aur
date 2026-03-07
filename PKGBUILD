@@ -31,7 +31,7 @@ source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_p
 sha256sums=('20003a400243ad1f3ecc7672b863b401419494f085439ad0796e56fffeb933ba'
             '57764ebae827c1c96dc5c1b74e2579ff34d3abcaabb54f5e5498fb2f612330cc'
             'b0debd79cc9d9af53bf20577adbdb4fcad95914697ec0234352d48c1aacc1b70')
-sha256sums_x86_64=('14b5a19066d758ad4b4375427971a435af15f36a87e7db04da4ecdeb18f37072')
+sha256sums_x86_64=('42604ba08f21e9ae4b63c277f87b5792f64248099f512087f0aac04661fa073f')
 sha256sums_aarch64=('4ccdaa3d92496e319f253ef14aeba01f5ae69adbd66b5e82b9a079c7256b5159')
 
 
