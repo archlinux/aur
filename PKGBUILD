@@ -10,8 +10,8 @@ provides=('codewire')
 conflicts=('codewire')
 source_x86_64=("https://github.com/codewiresh/codewire/releases/download/v${pkgver}/cw-v${pkgver}-x86_64-unknown-linux-musl")
 source_aarch64=("https://github.com/codewiresh/codewire/releases/download/v${pkgver}/cw-v${pkgver}-aarch64-unknown-linux-gnu")
-sha256sums_x86_64=('33e80f3220dd394dc0a1cfcfe83422d4b9ed05e097f2765676e46577f1990667')
-sha256sums_aarch64=('838e6c6ccc2d49866154a399d18008533479308b39e45e883a76e6b1598110bb')
+sha256sums_x86_64=('19848e04f2191bae9030999d74db2b2ad2449125dc28417435a39eb56825bd16')
+sha256sums_aarch64=('81422f22e0402e3b4efa25fc7e83e84cc38d0339584a13fb3dde28a808ceb856')
 
 package() {
   install -Dm755 "cw-v${pkgver}-"* "${pkgdir}/usr/local/bin/cw"
