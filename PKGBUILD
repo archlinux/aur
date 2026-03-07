@@ -4,7 +4,7 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=145.0.7632.116
+pkgver=145.0.7632.159
 pkgrel=1
 _manual_clone=0
 # The following error occures on Abseil 20250512.0:
@@ -54,7 +54,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         fix-trust-store-segfault.patch
         fix-undeclared-identifiers.patch
 )
-sha256sums=('1c6a35ce9bc2347473678aa69292c3b358d3818e7a5cc827ec412829eff73ca4'
+sha256sums=('12e53b149f7621ee0741d25005a8d7e79cf95ce13efc4063fda04b4db6c882f1'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             SKIP
