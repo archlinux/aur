@@ -2,7 +2,7 @@
 
 pkgname=neomod-bin
 _pkgname=${pkgname%-bin}
-pkgver=43.05
+pkgver=43.06
 pkgrel=1
 pkgdesc="Third-party McOsu fork, with additional features"
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(
   "$_pkgname.sh"
 )
 
-sha256sums=('9a1c6a016f58ccda163cd76855bbe68b8ea10adf07bb5683d5a63ccc57406311'
+sha256sums=('9782f97c83e0a53a5541e7e358dca1c1b6245afe6f4b76a587e98e9a5c01cc9a'
             'f74e0a47c46aa33c708211acef3f0140c63c904c09b7eb97410276eec403803c'
             '5b4e71eecf4129c6acb1c0ef885b039e203e0cf517dc30ac8f2e9c33bca23544'
             '8ad58373f8f6298136c454c3b1af6819debfa5f94a9148829c3d5db67b6874d3'
