@@ -1,6 +1,6 @@
-pkgbase = linux-lts
-	pkgdesc = LTS Linux
-	pkgver = 6.12.75
+pkgbase = linux-lts612
+	pkgdesc = LTS 6.12 Linux
+	pkgver = 6.12.76
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
@@ -20,8 +20,8 @@ pkgbase = linux-lts
 	makedepends = texlive-latexextra
 	options = !debug
 	options = !strip
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.75.tar.xz
-	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.75.tar.sign
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.76.tar.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.76.tar.sign
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	source = 0002-Default-to-maximum-amount-of-ASLR-bits.patch
 	source = 0003-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch
@@ -41,8 +41,8 @@ pkgbase = linux-lts
 	b2sums = 410dc8911051905c5c01b47890eeff817fc180434372864cfa9ee0d77e0ff43571b9fcc3c193d562c4dcd49511edf7c6c01dde12dd0778845d1868dc435531ea
 	b2sums = ac5c72567b9e4d5e1bcdcaeb699e82d5f01408b2bfd9feea7ee72a0b6dc939e141a02bbc1f53d8cfdbf336a0f877ee42762ae2cdeeb8c4c849d377fad58c72a2
 
-pkgname = linux-lts
-	pkgdesc = The LTS Linux kernel and modules
+pkgname = linux-lts612
+	pkgdesc = The LTS 6.12 Linux kernel and modules
 	license = Apache-2.0 OR MIT
 	license = BSD-2-Clause OR GPL-2.0-or-later
 	license = BSD-3-Clause
@@ -87,8 +87,8 @@ pkgname = linux-lts
 	provides = WIREGUARD-MODULE
 	replaces = wireguard-lts
 
-pkgname = linux-lts-headers
-	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel
+pkgname = linux-lts612-headers
+	pkgdesc = Headers and scripts for building modules for the LTS 6.12 Linux kernel
 	license = BSD-3-Clause
 	license = BSD-3-Clause OR GPL-2.0-only
 	license = GPL-1.0-or-later
@@ -134,8 +134,8 @@ pkgname = linux-lts-headers
 	depends = pahole
 	provides = LINUX-HEADERS
 
-pkgname = linux-lts-docs
-	pkgdesc = Documentation for the LTS Linux kernel
+pkgname = linux-lts612-docs
+	pkgdesc = Documentation for the LTS 6.12 Linux kernel
 	license = BSD-3-Clause
 	license = GFDL-1.1-no-invariants-or-later
 	license = GPL-2.0-only
