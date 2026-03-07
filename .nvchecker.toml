@@ -1,0 +1,5 @@
+[ferrite]
+source = "github"
+github = "OlaProeis/Ferrite"
+use_max_tag = true
+prefix = "v"
