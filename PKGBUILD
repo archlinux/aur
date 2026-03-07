@@ -2,8 +2,8 @@
 
 pkgname=orchestrator
 pkgver=3.2.6
-_pkgrelease=18
-pkgrel=2
+_pkgrelease=-20
+pkgrel=1
 pkgdesc='MySQL replication topology management and HA'
 arch=(x86_64)
 url='https://github.com/percona/orchestrator'
@@ -12,8 +12,8 @@ conflicts=("${pkgname}-bin")
 depends=(glibc)
 makedepends=('go')
 options=(!lto)
-source=("$pkgname-$pkgver-$_pkgrelease.tar.gz::$url/archive/refs/tags/v$pkgver-$_pkgrelease.tar.gz")
-sha256sums=('8332a2875b3ab4ae779c16cb299adde246aba6bbd326c0d758fb7cd3c550bd9e')
+source=("$pkgname-$pkgver$_pkgrelease.tar.gz::$url/archive/refs/tags/v$pkgver$_pkgrelease.tar.gz")
+sha256sums=('6da51cc11944ccfd084bf491383ed0cd007cc1d1b6070480ed9ca4523d8dceee')
 
 prepare() {
   cd "$pkgname-$pkgver-$_pkgrelease"
