@@ -4,7 +4,7 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=bcal
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc="Storage conversion and expression calculator"
 arch=("i686" "x86_64" "aarch64")
@@ -12,7 +12,7 @@ url="https://github.com/jarun/bcal"
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jarun/bcal/archive/v${pkgver//_/-}.tar.gz")
 depends=('readline' 'bc')
-sha256sums=('141f39d866f62274b2262164baaac6202f60749862c84c2e6ed231f6d03ee8df')
+sha256sums=('7e00d38aca2272ef93f55515841e2912ecf845914ec140f8e4c356e1493cf5cf')
 
 package() {
   make -C "${pkgname}-${pkgver}" DESTDIR="${pkgdir}" PREFIX="/usr" install
