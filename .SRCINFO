@@ -1,9 +1,9 @@
-pkgbase = vlang-nightly-bin
-	pkgdesc = Simple, fast, safe, compiled language for developing maintainable software (weekly nightly build)
+pkgbase = vlang-weekly-bin
+	pkgdesc = Simple, fast, safe, compiled language for developing maintainable software (weekly build)
 	pkgver = weekly.2026.08
 	pkgrel = 1
 	url = https://vlang.io
-	install = vlang-nightly-bin.install
+	install = vlang-weekly-bin.install
 	arch = x86_64
 	license = MIT
 	depends = glibc
@@ -15,7 +15,9 @@ pkgbase = vlang-nightly-bin
 	conflicts = vlang
 	conflicts = vlang-bin
 	conflicts = vlang-git
-	source = vlang-nightly-bin::https://github.com/vlang/v/releases/download/weekly.2026.08/v_linux.zip
+	conflicts = vlang-nightly-bin
+	replaces = vlang-nightly-bin
+	source = vlang-weekly-bin::https://github.com/vlang/v/releases/download/weekly.2026.08/v_linux.zip
 	sha256sums = 9a71226a554a184d7d4dac9898bc5a9a65b496da26ec1ad0d412721b775be789
 
-pkgname = vlang-nightly-bin
+pkgname = vlang-weekly-bin

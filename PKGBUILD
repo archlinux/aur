@@ -1,8 +1,8 @@
 # Maintainer: Benedick Montales <montales.benedick@gmail.com>
-pkgname=vlang-nightly-bin
+pkgname=vlang-weekly-bin
 pkgver=weekly.2026.08
 pkgrel=1
-pkgdesc='Simple, fast, safe, compiled language for developing maintainable software (weekly nightly build)'
+pkgdesc='Simple, fast, safe, compiled language for developing maintainable software (weekly build)'
 arch=('x86_64')
 url='https://vlang.io'
 license=('MIT')
@@ -12,10 +12,11 @@ optdepends=(
     'freetype2: Needed for graphics support'
     'openssl: Needed for http support'
 )
-conflicts=('vlang' 'vlang-bin' 'vlang-git')
+conflicts=('vlang' 'vlang-bin' 'vlang-git' 'vlang-nightly-bin')
 provides=('vlang')
-install=vlang-nightly-bin.install
-source=("${pkgname}::https://github.com/vlang/v/releases/download/${pkgver}/v_linux.zip")
+replaces=('vlang-nightly-bin')
+install=vlang-weekly-bin.install
+source=("vlang-weekly-bin::https://github.com/vlang/v/releases/download/${pkgver}/v_linux.zip")
 sha256sums=('9a71226a554a184d7d4dac9898bc5a9a65b496da26ec1ad0d412721b775be789')
 
 pkgver() {
@@ -33,7 +34,7 @@ pkgver() {
 prepare() {
     cd "${srcdir}/v"
     # Disable v up to prevent conflicts with package manager
-    echo "println('v up is disabled; use your AUR helper to update vlang-nightly-bin instead.')" > 'cmd/tools/vup.v'
+    echo "println('v up is disabled; use your AUR helper to update vlang-weekly-bin instead.')" > 'cmd/tools/vup.v'
 }
 
 build() {
