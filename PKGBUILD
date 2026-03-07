@@ -33,8 +33,14 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${srcdir}/spectacle-sni"
 
-  git describe --long --tags --abbrev=7 2>/dev/null | \
-    sed 's/^v//' | sed 's/\([^-]*-g\)/r\1/' | tr '-' '.'
+  if git describe --long --tags --abbrev=7 >/dev/null 2>&1; then
+    git describe --long --tags --abbrev=7 | \
+      sed 's/^v//' | sed 's/\([^-]*-g\)/r\1/' | tr '-' '.'
+  else
+    printf "0.r%s.g%s" \
+      "$(git rev-list --count HEAD)" \
+      "$(git rev-parse --short HEAD)"
+  fi
 }
 
 package() {
