@@ -1,0 +1,5 @@
+[snippy-snippet]
+source = "github"
+github = "barbUk/snippy"
+use_max_tag = true
+prefix = "v"
