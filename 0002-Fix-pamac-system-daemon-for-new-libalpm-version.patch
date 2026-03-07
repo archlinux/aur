@@ -1,0 +1,43 @@
+From 825f604566bd1780498319e10ee0a4d66ae04185 Mon Sep 17 00:00:00 2001
+From: sudoBash418 <sudoBash418@gmail.com>
+Date: Fri, 26 Apr 2024 16:02:21 -0600
+Subject: [PATCH] Fix pamac-system-daemon for new libalpm version
+
+Key revocation status is no longer available, so we always try
+importing keys.
+---
+ src/pamac-system-daemon/system_daemon.vala | 11 +++--------
+ 1 file changed, 3 insertions(+), 8 deletions(-)
+
+diff --git a/src/pamac-system-daemon/system_daemon.vala b/src/pamac-system-daemon/system_daemon.vala
+index 69afd7a..43a1fa2 100644
+--- a/src/pamac-system-daemon/system_daemon.vala
++++ b/src/pamac-system-daemon/system_daemon.vala
+@@ -1146,7 +1146,7 @@ namespace Pamac {
+ 						unowned Alpm.List<Alpm.Conflict*> list = err_data;
+ 						while (list != null) {
+ 							Alpm.Conflict* conflict = list.data;
+-							string conflict_detail = _("%s and %s are in conflict").printf (conflict->package1, conflict->package2);
++							string conflict_detail = _("%s and %s are in conflict").printf (conflict->package1.name, conflict->package2.name);
+ 							// only print reason if it contains new information
+ 							if (conflict->reason.mod != Alpm.Depend.Mode.ANY) {
+ 								conflict_detail += " (%s)".printf (conflict->reason.compute_string ());
+@@ -1841,13 +1841,8 @@ private void cb_question (void *ctx, Alpm.Question.Data data) {
+ 			data.corrupted_remove = 1;
+ 			break;
+ 		case Alpm.Question.Type.IMPORT_KEY:
+-			if (data.import_key_key.revoked == 1) {
+-				// Do not get revoked key
+-				data.import_key_import = 0;
+-			} else {
+-				// Auto get not revoked key
+-				data.import_key_import = 1;
+-			}
++			// Auto-get key
++			data.import_key_import = 1;
+ 			break;
+ 		default:
+ 			data.any_answer = 0;
+-- 
+2.44.0
+
