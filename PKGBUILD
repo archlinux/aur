@@ -5,7 +5,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=2.5.336.r0.ge3063d6cd6
+pkgver=2.7.164.r0.g3c7eb2ac88
 pkgrel=1
 pkgdesc='PlayStation 2 emulator'
 arch=(x86_64)
@@ -57,6 +57,7 @@ optdepends=(
     'libpipewire: Pipewire support'
     'libpulse: Pulseaudio support'
     'qt6-wayland: Wayland support'
+    'noto-fonts: System font support'
 )
 provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})

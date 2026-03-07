@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = PlayStation 2 emulator
-	pkgver = 2.5.336.r0.ge3063d6cd6
+	pkgver = 2.7.164.r0.g3c7eb2ac88
 	pkgrel = 1
 	url = https://github.com/PCSX2/pcsx2
 	install = pcsx2-git.install
@@ -44,6 +44,7 @@ pkgbase = pcsx2-git
 	optdepends = libpipewire: Pipewire support
 	optdepends = libpulse: Pulseaudio support
 	optdepends = qt6-wayland: Wayland support
+	optdepends = noto-fonts: System font support
 	provides = pcsx2
 	conflicts = pcsx2
 	options = !lto
