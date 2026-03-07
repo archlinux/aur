@@ -2,7 +2,7 @@
 pkgbase=linux-galaxyaudio
 pkgname=(linux-galaxyaudio linux-galaxyaudio-headers)
 _pkgname=linux
-pkgver=6.18.7
+pkgver=6.19.6
 pkgrel=1
 pkgdesc='Linux kernel for Samsung Galaxy Book 4 with MAX98390 sound support'
 arch=(x86_64)
@@ -21,9 +21,9 @@ source=(
   "config"
   "max98390-sound.patch"
 )
-sha256sums=('b726a4d15cf9ae06219b56d87820776e34d89fbc137e55fb54a9b9c3015b8f1e'
-            '3afa69d43f44a8d88f01080bbf1cee73dab85d8c726714cb08e9f1f33dc8b24c'
-            '11d333d7efe10e52dee4c662a6598b4eb689095ed58c0306379ff7855551e9d1')
+sha256sums=('4d9f3ff73214f68c0194ef02db9ca4b7ba713253ac1045441d4e9f352bc22e14'
+            'ea0faab7ec127f8510edbb7934fe3060c4a5617c23900e7f049b539c3db579d9'
+            '1a307906770dcd549be003dca120531653d8ad9f3c27b3fc9df5fe99384812b2')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
@@ -40,6 +40,8 @@ prepare() {
 
   echo "Enabling Galaxy Book 4 Sound Configs..."
   scripts/config --module CONFIG_SND_SOC_MAX98390
+  scripts/config --module CONFIG_SND_HDA_SCODEC_MAX98390
+  scripts/config --module CONFIG_SND_HDA_SCODEC_MAX98390_I2C
   scripts/config --enable CONFIG_SND_HDA_CODEC_REALTEK
 
   echo "Disabling Debug Info for faster build..."
@@ -69,7 +71,7 @@ package_linux-galaxyaudio() {
   depends=(coreutils kmod initramfs)
   optdepends=('linux-firmware: firmware images needed for some devices')
   provides=(linux)
-  conflicts=(linux)
+
 
   cd "${_pkgname}-${pkgver}"
   
