@@ -3,7 +3,7 @@
 _pkgbasename=libplacebo
 pkgname=lib32-$_pkgbasename
 pkgver=7.360.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Reusable library for GPU-accelerated video/image rendering primitives (32bit)'
 url='https://github.com/haasn/libplacebo'
 arch=('x86_64')
@@ -16,7 +16,8 @@ depends=(
         'lib32-lcms2'
         'lib32-shaderc'
         'lib32-glibc'
-        'lib32-gcc-libs'
+        'libgcc'
+        'libstdc++'
         'lib32-libunwind'
         'lib32-libdovi'
 #        'lib32-xxhash'
