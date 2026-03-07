@@ -27,6 +27,8 @@ pkgver() {
 }
 
 prepare() {
+    mv "${srcdir}/pamac-classic" "${srcdir}/pamac-classic-fixed"
+
 	cd "${srcdir}/${pkgname}"
 }
 
@@ -43,3 +45,4 @@ package() {
 	cd "${srcdir}/${pkgname}"
 	DESTDIR="$pkgdir" meson install -C build
 }
+sha256sums=('SKIP')
