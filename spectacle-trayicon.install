@@ -1,6 +1,10 @@
 post_install() {
   echo "Spectacle Tray Icon installed."
   echo "Run 'spectacle-trayicon' to start it."
+  echo
+  echo "To enable autostart for your user:"
+  echo "  mkdir -p ~/.config/autostart"
+  echo "  cp /usr/share/doc/spectacle-trayicon-git/spectacle-trayicon.autostart.desktop ~/.config/autostart/"
 }
 
 post_upgrade() {

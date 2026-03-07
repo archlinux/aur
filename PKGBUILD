@@ -1,4 +1,4 @@
-# Maintainer: Raven Crow <ravencrowonyt@icloud.com>
+# Maintainer: ravencrow <ravencrowonyt@icloud.com>
 
 pkgbase=spectacle-trayicon-git
 pkgname=('spectacle-trayicon-git')
@@ -45,6 +45,9 @@ package() {
 
   install -Dm644 packaging/spectacle-trayicon.desktop \
     "${pkgdir}/usr/share/applications/spectacle-trayicon.desktop"
+
+  install -Dm644 packaging/spectacle-trayicon.autostart.desktop \
+    "${pkgdir}/usr/share/doc/${pkgname}/spectacle-trayicon.autostart.desktop"
 
   install -Dm644 LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
