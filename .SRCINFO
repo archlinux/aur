@@ -1,7 +1,7 @@
 pkgbase = ohrrpgce-svn
 	pkgdesc = A role playing game creation engine (svn wip)
-	pkgver = wip.r14248
-	pkgrel = 1
+	pkgver = wip.r14257
+	pkgrel = 2
 	url = http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page
 	arch = i686
 	arch = x86_64
