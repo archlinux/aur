@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Portage Manifest
+Comment=Package browser for Arch Linux
+Exec=/usr/bin/portage-manifest
+Icon=portage-manifest.svg
+Terminal=false
+Type=Application
+Categories=Utility;PackageManager;
+Keywords=package;aur;arch;flatpak;pacman;yay;

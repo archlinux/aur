@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="256px"
+   height="256px"
+   viewBox="0 0 256 256"
+   version="1.1"
+   xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .glow-border {
+        fill: none;
+        stroke: #1793d1; /* Arch blue */
+        stroke-width: 6;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+        filter: drop-shadow(0 0 8px rgba(23, 147, 209, 0.9));
+      }
+      .inner-structure {
+        fill: #2e3440;
+        stroke: #1793d1; /* Changed to Arch blue */
+        stroke-width: 4;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+      }
+      .install-arrow {
+        fill: #1793d1; /* Arch blue */
+        filter: drop-shadow(0 0 6px rgba(23, 147, 209, 0.8));
+      }
+      .arch-dots {
+        fill: #88c0d0; /* Keep teal for contrast */
+      }
+    </style>
+  </defs>
+  <g transform="translate(128,128)">
+    <circle
+       class="glow-border"
+       cx="0"
+       cy="0"
+       r="110" />
+    
+    <!-- Small "Arch dots" to hint at Arch Linux -->
+    <circle class="arch-dots" cx="-30" cy="-30" r="4" />
+    <circle class="arch-dots" cx="30" cy="-30" r="4" />
+    
+    <g transform="translate(0,5)">
+      <path
+         class="inner-structure"
+         d="M -60,60 L -60,-20 C -60,-55 -30,-85 0,-85 C 30,-85 60,-55 60,-20 L 60,60 L 30,60 L 30,-20 C 30,-35 15,-50 0,-50 C -15,-50 -30,-35 -30,-20 L -30,60 Z" />
+      
+      <path
+         class="inner-structure"
+         d="M -20,20 L -20,-10 C -20,-15 -15,-20 -10,-20 L 10,-20 C 15,-20 20,-15 20,-10 L 20,20 M -20,-5 L -10,-5 M 10,-5 L 20,-5 M -20,5 L -10,5 M 10,5 L 20,5"
+         style="fill:none" />
+      
+      <path
+         class="inner-structure"
+         d="M -70,70 L 0,-95 L 70,70"
+         style="fill:none;stroke:#1793d1;stroke-width:3" />
+    </g>
+    
+    <g transform="translate(0,90)">
+      <path
+         class="install-arrow"
+         d="M 0,-15 L -8,-7 L 8,-7 Z" />
+      <rect
+         class="install-arrow"
+         x="-8"
+         y="0"
+         width="16"
+         height="3"
+         rx="1.5" />
+    </g>
+  </g>
+</svg>
