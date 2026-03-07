@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=NeuroWiki
+Comment=NeuroForest knowledge management application
+Exec=neurowiki
+Icon=neuroforest
+Terminal=false
+Categories=Science;Education;Office;
+StartupWMClass=NeuroWiki

@@ -1,0 +1,26 @@
+pkgbase = neuroforest-git
+	pkgdesc = NeuroForest knowledge engineering platform
+	pkgver = 1.2.0.r120.7772b0f
+	pkgrel = 1
+	url = https://github.com/neuroforest
+	arch = x86_64
+	license = custom
+	makedepends = git
+	makedepends = npm
+	depends = docker
+	depends = docker-compose
+	depends = python
+	depends = rsync
+	depends = ttf-liberation
+	provides = neuroforest
+	conflicts = neuroforest
+	options = !strip
+	options = !debug
+	source = app::git+https://github.com/neuroforest/app.git#commit=7772b0fdde699521a716012c871a5e31e503c2fe
+	source = neurowiki.sh
+	source = neurowiki.desktop
+	sha256sums = SKIP
+	sha256sums = b0f745fde1dbd9767d199266f7c5883f2e46510c7ece565a0743000e49629565
+	sha256sums = 8361e0798e96b174f0f05b608646635f54dacffde0ddbeea58300fd72ff85b49
+
+pkgname = neuroforest-git
