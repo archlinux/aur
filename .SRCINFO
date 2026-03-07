@@ -1,0 +1,19 @@
+pkgbase = traefik-certs-dumper
+	pkgdesc = Dump ACME data from Traefik (acme.json) to certificate files
+	pkgver = 2.11.0
+	pkgrel = 1
+	url = https://github.com/ldez/traefik-certs-dumper
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = go
+	depends = glibc
+	backup = etc/conf.d/traefik-certs-dumper
+	source = traefik-certs-dumper-2.11.0.tar.gz::https://github.com/ldez/traefik-certs-dumper/archive/refs/tags/v2.11.0.tar.gz
+	source = traefik-certs-dumper.service
+	source = traefik-certs-dumper.conf
+	sha256sums = 0a9b48af5daf60e61e594f7a65d48c7bfdfa25833d4daf95a5e7a2606487e1e3
+	sha256sums = 5e1c32df98ccbba5cd54601debc6825605c210ddc6db4c0203a141f62d559e0a
+	sha256sums = f5f94aa45994371d03522d1ab0e42d2be525e15c13d982e39b2f5b2f78d0db20
+
+pkgname = traefik-certs-dumper
