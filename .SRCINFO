@@ -1,6 +1,6 @@
 pkgbase = szsol-rs
 	pkgdesc = A simple solitaire card game originating from SHENZHEN I/O
-	pkgver = 0.3.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/ghoker143/szsol-rs
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = szsol-rs
 	makedepends = rust
 	makedepends = cargo
 	depends = gcc-libs
-	source = szsol-rs-0.3.0.tar.gz::https://github.com/ghoker143/szsol-rs/archive/refs/tags/v0.3.0.tar.gz
+	source = szsol-rs-0.7.0.tar.gz::https://github.com/ghoker143/szsol-rs/archive/refs/tags/v0.7.0.tar.gz
 	sha256sums = cb59b12d2e60192ddf696a3287460073f2f3b260051ac2348e3e1e7c265efe1f
 
 pkgname = szsol-rs
