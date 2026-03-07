@@ -1,7 +1,7 @@
 # Maintainer: OGIOS <ogios@foxmail.com>
 _pkgname=wayfreeze
 pkgname=wayfreeze-git
-pkgver=r65.8277f98
+pkgver=r81.8f813ab
 pkgrel=1
 pkgdesc="Tool to freeze the screen of a Wayland compositor "
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ url="https://github.com/Jappie3/wayfreeze"
 license=('AGPL-3.0')
 provides=(wayfreeze)
 depends=('wayland' 'libxkbcommon')
-makedepends=(cargo git)
+makedepends=(rust git)
 options=(!debug)
 source=("git+$url.git")
 sha256sums=('SKIP')
