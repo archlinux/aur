@@ -1,6 +1,5 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-# https://github.com/arika0093/console2svg/releases/download/v0.6.2/console2svg-linux-x64
 _pkgauthor=arika0093
 _pkgname=console2svg
 pkgname=${_pkgname}-bin
