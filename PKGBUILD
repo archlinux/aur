@@ -3,14 +3,14 @@
 _pkgsuffix=bin
 _pkgauthor=abenz1267
 _pkgname=elephant
-_pkgproviders=(websearch unicode todo symbols runner providerlist menus files desktopapplications clipboard calc archlinuxpkgs bluetooth windows snippets niriactions nirisessions bookmarks 1password dnfpackages bitwarden)
+_pkgproviders=(websearch unicode todo symbols runner providerlist menus files desktopapplications clipboard calc archlinuxpkgs bluetooth windows snippets niriactions nirisessions bookmarks 1password dnfpackages bitwarden wireplumber)
 
 pkgbase=${_pkgname}-${_pkgsuffix}
 pkgname=(${_pkgname}-all-${_pkgsuffix} ${_pkgname}-${_pkgsuffix} $(for provider in ${_pkgproviders[@]}; do echo ${_pkgname}-${provider}-${_pkgsuffix} ; done))
 
 _packages=(${pkgname[@]})
 
-pkgver=2.19.3
+pkgver=2.20.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -34,28 +34,29 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v
                $(for provider in ${_pkgproviders[@]}; do echo "${provider}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${provider}-linux-${_barch[0]}.tar.gz" ; done))
 sha256sums=('3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '77c380f4172541442054e2c23c2c0c1d0184b453ee52a26e352c1460972b65f1')
-sha256sums_x86_64=('2e54053bdd645d5d314644b742d3588461b2f073c618d35668ba4512b8cc5008'
-                   '31013028011044b2153990b53190a849e24fe83543b7bd3c8ee53f83ed7651f2'
-                   '7562507927af70d8702a8826dd1de2ba00e00c71a7c9680a273fdc42651cf16c'
-                   '0ae1271f9556af67afecf46b7a1af22e700ca7711f85b6c9ec9df3f78eb02f7d'
-                   '7c939dc228208cffe03d71fab7a0b7c9dcfbe4e9ebc1d72a63298113fa5d5df8'
-                   '3efe9c3c1b02f7c99209ce504016ae974dcbf735d2406b28833c26c2fc22b827'
-                   'e4d57b16dcbe7641a698540f761c8f502dfd7137b380cb36b4a8244525e8947f'
-                   'dc92f5479a7ac689ce05e054e6b486fd2bc46e8d47521fcb103bcc05bcb5300f'
-                   '31bc4ef76e8691ea7ca0c54d0709a9ade9cdc8e56fd01d5838d0eb24e4ea9f49'
-                   '92a78886c58e7616958f6258a7273bb0adbc9e2d0a33a141432f450c6367f0a7'
-                   'f03ee281852a8bf727fe5f976a94586b4183a8b086e8bd3dfaa39d7165fe955f'
-                   'b08793f1aa56f3ea65d474c3510a05aa507e6f37807a10a0979b1b1516f23f4d'
-                   'd0c0cad474ba4be9668a5e9433a9078dc59f58d44777735d827466ff56610753'
-                   '70a17dac8455abf44557272e523abc68c3ff9b5e62a582c8c6349cf68c580e80'
-                   '04811b7f901ddf2e92028492586c9a84efa24c52f64405f2b3c724adfd59845c'
-                   'ea0cadd19743f4655987c82aab6e6b5c0f41df407a55892d3d195c2806803d42'
-                   '13ebb7136383b1e4408f63b0922bda3c5e84865554ec8e5c7af065977175cc7b'
-                   'b883f98d1c35b0d5e18545f46d635589f90ddb5dce8f12979142b8571f6e885a'
-                   '359db46344488964025440fa4316d007209c1ce6ec1713eb3b97dd6b7d206440'
-                   '40ecf66ce897a9ca385d3ffb7c8d992adb025835205cea62035f0d262fe67b8b'
-                   '96e4552c5985d39df92bc967d4903cecd59a6e1733066432ef99276d1d297e3a'
-                   'e1d75aed396c0b86d6baa94e23d7fa8f04df7d99fcddb1ca88b46e14629f1f7a')
+sha256sums_x86_64=('2189a06232c98627bcf4fd6b0fa417e55f91ec16e73bf9f41d84b936404e1c74'
+                   'b33928090bea3cd38b8045469cee3bec505097b9eecba9032e6703c6fcbf4c72'
+                   'cae579641a867e4652db9ce295c19ab4f3933dc707bc39c09381992080004c13'
+                   '7ac0f00084cdcb49e0a7999cd15ee72153f90c81fdc958e4c6449e98722a3be6'
+                   'fd46305465d6c952fe0ce5d62b3a4a6fb9a4e25d722d237d298eb2979a91f27b'
+                   'd351246a07cd5a06ba6e668ba9fe65c87849a7cec898146e75e4f0d36bb5172a'
+                   '314b463d368ff649e7f9f4ef5c9c647498aa2df3a08a5b9962ad563d107df05d'
+                   'a4695c157e16b219e1ef934689af53919e7d99589639d0940695d5bd06acedc4'
+                   'f9974138b384611d9de7c8b4c572461e43fd86590aa544f06996a9919a0fa4cc'
+                   '4ff6f8d4aca8ed703fe79315f1444935459bea70523f464a53e10810ef0ca51a'
+                   'b9f86f7a4937de3c20f4418f30003d8dea59900ea0442fc56f5699526a692080'
+                   'e7de3d31a199016ae7f42b643f38f83cb23a76baf90a1146df9b96ce1b2bb393'
+                   '39c5f4f0f3419c044e29395072b2c3f4325055ddfa1a23af10aa6922a9cdc176'
+                   '4ab7869c11c92b5e76b391f13cf1cb878b5cfa866c8d958555b50b1c87cf976e'
+                   'ef79cab5da98d8fe6715acb5051af8e7e476a72f8ba542cea9fa4264676d66a2'
+                   '03699b06bb2268d5197a040128b9418212140bf5717f72a3c61a0b017b628547'
+                   '8c59b3c54b3cbdb3f8f409d0a2eaea19b18eac9cf1cbe5872359d175b6250f69'
+                   '361e68d139ef866b81f49cca660200699a2afbd7c172267f741b0550eb2eb893'
+                   '21901c9a379f264cfc2ed52fc8bec4f1b5cf196ae1f98ae7347b36209844ce49'
+                   '302a53a6266c6993bebca5376cc2ae73b4d8b61a67bc0e51e4ede346be4daf96'
+                   '87921280c97b14af1d0553ef3de84e7ce95c3a647acc2a13c4350c9b70587247'
+                   '1d5349a7972f86fbcd07d13262e83894119d75f9d38160be0a67da5032027843'
+                   '71c1cb423f9a0ff118bc759c22cee91a6250df747df7225970734a9c47bc14a1')
 
 case $CARCH in
     ${arch[0]})
@@ -383,3 +384,16 @@ package_elephant-bitwarden-bin() {
     install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
+package_elephant-wireplumber-bin() {
+    pkgdesc="${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)} provider for ${_pkgname}"
+
+    conflicts=("${pkgname%%-${_pkgsuffix}}")
+    provides=("${pkgname%%-${_pkgsuffix}}")
+    depends+=("${_pkgname}-${_pkgsuffix}" "wireplumber")
+
+    cd "${srcdir}/" || exit
+
+    install -Dm755 "${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}-linux-${_CARCH}.so" "${pkgdir}/etc/xdg/${_pkgname}/providers/${pkgname:${#_pkgname}+1:(${#pkgname}-${#_pkgname}-${#_pkgsuffix}-2)}.so"
+
+    install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
