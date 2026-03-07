@@ -1,7 +1,7 @@
 #Maintainer: Archisman Panigrahi <apandada1ATgmail.com>
 pkgname=quickbib
 pkgver=0.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="QuickBib: DOI/arXiv → BibTeX desktop utility"
 url="https://github.com/archisman-panigrahi/QuickBib"
 license=('GPL3')
