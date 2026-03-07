@@ -38,9 +38,8 @@ prepare() {
 
 build() {
     cd "${srcdir}/v"
-    # Pre-built binary, no build needed
-    # Just verify it works
-    ./v version
+    # Pre-built binary, just build the tools using gcc instead of tcc
+    VFLAGS="-cc gcc" ./v build-tools
 }
 
 package() {
