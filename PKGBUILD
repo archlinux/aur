@@ -3,12 +3,12 @@
 
 _pkgname=pikaur
 pkgname="${_pkgname}-git"
-pkgver=1.33.2
+pkgver=1.33.3
 pkgrel=1
 pkgdesc="AUR helper which asks all questions before installing/building. Inspired by pacaur, yaourt and yay."
 arch=('any')
 url="https://github.com/actionless/pikaur"
-license=('GPL-3.0-only')
+license=('GPL-3.0-or-later')
 source=(
 	"$pkgname::git+${url}.git#branch=master"
 )
@@ -62,6 +62,6 @@ package() {
 	done
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 pikaur.1 "${pkgdir}/usr/share/man/man1/${_pkgname}.1"
-	cp -r ./packaging/* "${pkgdir}"
-	cp -r ./dist/* "${pkgdir}"
+	cp -r ./packaging/usr "${pkgdir}"
+	cp -r ./dist/usr "${pkgdir}"
 }
