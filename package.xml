@@ -144,9 +144,9 @@ January 16, 2019</license>
     <localPackage path="platform-tools" obsolete="false">
         <type-details xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns5:genericDetailsType"/>
         <revision>
-            <major>36</major>
+            <major>37</major>
             <minor>0</minor>
-            <micro>2</micro>
+            <micro>0</micro>
         </revision>
         <display-name>Android SDK Platform-Tools</display-name>
         <uses-license ref="android-sdk-license"/>
