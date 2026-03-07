@@ -1,6 +1,6 @@
 # Maintainer: link2xt <link2xt@testrun.org>
 pkgname=lomiri-ui-toolkit
-pkgver=1.3.5110
+pkgver=1.3.5903
 pkgrel=1
 epoch=
 pkgdesc="Lomiri UI Toolkit"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://gitlab.com/ubports/development/core/lomiri-ui-toolkit/-/archive/$pkgver/lomiri-ui-toolkit-$pkgver.tar.gz")
 noextract=()
-sha256sums=('62f8f9878ea5806f38875282a4cad4ee639885061e346051de5528dedfa5968e')
+sha256sums=('1aeca827586965b27cbb85129488e7a1c12b436c3f2b339abd7dd121a2aeecc9')
 validpgpkeys=()
 
 prepare() {
@@ -31,7 +31,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	qmake
+	qmake-qt5 CONFIG+="no_docs"
 	make
 }
 
