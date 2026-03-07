@@ -3,34 +3,28 @@
 # Contributor: scan
 
 pkgname=obsidian-2-theme-git
-pkgver=2.21.r0.g5da6c3a
+pkgver=2.25.r307.ga6ec054
 pkgrel=1
 pkgdesc="Obsidian 2 themes for Gnome 3.22+, all colors"
 arch=(any)
 url="https://www.gnome-look.org/p/1173113/"
-license=(GPL3)
+license=(GPL-3.0-or-later)
 makedepends=(git)
-optdepends=('gnome-tweak-tool: A tool to customize advanced GNOME 3 options.')
+optdepends=('gnome-tweaks: A tool to customize advanced GNOME 3 options.')
 options=(!strip)
-source=("theme-obsidian-2-blue::git+https://github.com/madmaxms/theme-obsidian-2.git"
-	    "theme-obsidian-2-green::git+https://github.com/madmaxms/theme-obsidian-2#branch=green"
-	    "theme-obsidian-2-amber::git+https://github.com/madmaxms/theme-obsidian-2#branch=amber"
-        "theme-obsidian-2-purple::git+https://github.com/madmaxms/theme-obsidian-2#branch=purple"
-	    "theme-obsidian-2-red::git+https://github.com/madmaxms/theme-obsidian-2#branch=red")
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP'
-         'SKIP')
+source=("obsidian-2-theme::git+https://github.com/madmaxms/theme-obsidian-2.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "theme-obsidian-2-blue"
+  cd "obsidian-2-theme"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
   install -d "${pkgdir}/usr/share/themes"
-  cp -r ${srcdir}/theme-obsidian-2-{blue,amber,green,red,purple}/Obsidian* ${pkgdir}/usr/share/themes/
+
+  cd obsidian-2-theme
+  cp -r Obsidian-2* ${pkgdir}/usr/share/themes/
 
   find ${pkgdir} -type f -exec chmod 644 {} \;
   find ${pkgdir} -type d -exec chmod 755 {} \;
