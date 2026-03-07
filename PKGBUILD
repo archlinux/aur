@@ -2,7 +2,7 @@
 
 pkgbase=treelite
 pkgname=(treelite python-treelite)
-pkgver=4.6.1
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="Universal model exchange and serialization format for decision tree forests"
 arch=($CARCH)
@@ -31,7 +31,7 @@ makedepends=(
 checkdepends=()
 optdepends=()
 source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('bc60122d6d788f57e106b911458bbe4f00754b3668e24ae262b92f1fbec2c9bf')
+sha256sums=('d267a3ff3f6c030f127a8066d3cae0545497de901185765635c045df6fa7059e')
 options=()
 
 build() {
