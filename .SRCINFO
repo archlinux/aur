@@ -1,8 +1,9 @@
 pkgbase = spectacle-trayicon-git
-	pkgdesc = KDE Plasma StatusNotifierItem tray icon for Spectacle (git version)
+	pkgdesc = System tray icon for Spectacle with quick capture modes and persistent settings
 	pkgver = 1.0.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/ravencrowonyt/spectacle-sni
+	install = spectacle-trayicon.install
 	arch = any
 	license = MIT
 	makedepends = git
@@ -12,6 +13,9 @@ pkgbase = spectacle-trayicon-git
 	depends = libdbusmenu-glib
 	depends = gobject-introspection
 	depends = spectacle
+	provides = spectacle-trayicon
+	conflicts = spectacle-trayicon
+	conflicts = spectacle-sni-git
 	source = git+https://github.com/ravencrowonyt/spectacle-sni.git
 	sha256sums = SKIP
 

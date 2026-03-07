@@ -1,9 +1,10 @@
-# Maintainer: ravencrowonyt <ravencrowonyt@icloud.com>
+# Maintainer: Raven Crow <ravencrowonyt@icloud.com>
 
-pkgname=spectacle-trayicon-git
+pkgbase=spectacle-trayicon-git
+pkgname=('spectacle-trayicon-git')
 pkgver=1.0.0.r0.g0000000
 pkgrel=1
-pkgdesc="KDE Plasma StatusNotifierItem tray icon for Spectacle (git version)"
+pkgdesc="System tray icon for Spectacle with quick capture modes and persistent settings"
 arch=('any')
 url="https://github.com/ravencrowonyt/spectacle-sni"
 license=('MIT')
@@ -16,12 +17,14 @@ depends=(
   'spectacle'
 )
 makedepends=('git')
+provides=('spectacle-trayicon')
+conflicts=('spectacle-trayicon' 'spectacle-sni-git')
+install='spectacle-trayicon.install'
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/spectacle-sni"
-  # r<revcount>.g<short-hash>
   printf "1.0.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
