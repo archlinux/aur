@@ -1,7 +1,7 @@
 pkgbase = win-gadgets-git
 	pkgdesc = A recreation of the Windows Gadgets for AeroShell-based desktops
 	pkgver = 6.6.2_41.r612e6cc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitgud.io/catpswin56/win-gadgets
 	arch = x86_64
 	groups = aerothemeplasma-extras
@@ -25,6 +25,8 @@ pkgbase = win-gadgets-git
 	depends = kunitconversion
 	depends = kholidays
 	depends = plasma-workspace
+	provides = win-gadgets=${pkgver}
+	conflicts = win-gadgets
 	options = !debug
 	source = win-gadgets-git::git+https://gitgud.io/catpswin56/win-gadgets.git
 	sha256sums = SKIP
