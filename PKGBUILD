@@ -1,7 +1,7 @@
 # Maintainer: BarbUk <julien.virey@gmail.com>
 
 pkgname=rackpeek-bin
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='CLI tool to discover, manage, and document your IT infrastructure and home lab.'
 arch=(x86_64 aarch64)
@@ -15,8 +15,8 @@ source=($pkgname.install)
 source_x86_64=("$pkgname-$pkgver-x86_64::$url/releases/download/${url##*/}-${pkgver}/${pkgname%-bin}_${pkgver//./_}_linux-x64")
 source_aarch64=("$pkgname-$pkgver-aarch64::$url/releases/download/${url##*/}-${pkgver}/${pkgname%-bin}_${pkgver//./_}_linux-arm64")
 sha256sums=('14cd89ed266911aff4d52d76bb976a4cb3ad602cbbc939785a72fd3e45cd4c01')
-sha256sums_x86_64=('d261f63c612ea6e84daaa6b6bf2a610bca0c6ab5250c36d4f3f2de139e266cba')
-sha256sums_aarch64=('b609ed321f40eefe1f99e50a0da44f2f258c037a5220f0a12d09a4b13ff8766c')
+sha256sums_x86_64=('d3a55ca18c169b12ca3d0811570d748d44d34a8a587dfa16322b5daa5e134891')
+sha256sums_aarch64=('ff13dec3bb0be9a747230448bdff23a0791e589242dff6998ea785a9e46bb81b')
 install=$pkgname.install
 
 package() {
