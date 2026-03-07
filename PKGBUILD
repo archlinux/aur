@@ -1,7 +1,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=libclc
-pkgver=21.1.8
+pkgver=22.1.0
 pkgrel=1
 pkgdesc="Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -9,8 +9,8 @@ url="https://libclc.llvm.org/"
 license=('Apache-2.0 WITH LLVM-exception')
 makedepends=('cmake' 'ninja' 'clang' 'llvm' 'python' 'spirv-llvm-translator')
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
-source=($_source_base/libclc-$pkgver.src.tar.xz{,.sig})
-sha256sums=('6c2677362a53531c35edf482bdc9171ea0471ca0a1e9138ac9b5a1782925616f'
+source=($_source_base/llvm-project-$pkgver.src.tar.xz{,.sig})
+sha256sums=('25d2e2adc4356d758405dd885fcfd6447bce82a90eb78b6b87ce0934bd077173'
             'SKIP')
 validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstellar@redhat.com>
               'D574BD5D1D0E98895E3BF90044F2485E45D59042'  # Tobias Hieta <tobias@hieta.se>
@@ -19,12 +19,12 @@ validpgpkeys=('474E22316ABF4785A88C6E8EA2C794A986419D8A'  # Tom Stellard <tstell
 )
 
 prepare() {
-  cd libclc-$pkgver.src
+  cd llvm-project-$pkgver.src/libclc
   mkdir build
 }
 
 build() {
-  cd libclc-$pkgver.src/build
+  cd llvm-project-$pkgver.src/libclc/build
 
 
   local cmake_args=(
@@ -38,11 +38,11 @@ build() {
 }
 
 package() {
-  cd libclc-$pkgver.src/build
+  cd llvm-project-$pkgver.src/libclc/build
 
   DESTDIR="$pkgdir" ninja install
 
-  install -Dm644 ../LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/llvm-project-$pkgver.src/libclc/LICENSE.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
