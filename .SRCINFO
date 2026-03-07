@@ -1,10 +1,10 @@
 pkgbase = python-base-app
 	pkgdesc = Framework for Python apps with simple web frontend
-	pkgver = 0.2.36
+	pkgver = 0.2.45
 	pkgrel = 1
 	url = https://github.com/marcus67/python_base_app
 	arch = any
-	license = GPL3
+	license = GPL-3.0-or-later
 	checkdepends = python-pytest
 	checkdepends = python-coverage
 	makedepends = python-setuptools
@@ -26,9 +26,9 @@ pkgbase = python-base-app
 	depends = python-some-flask-helpers
 	depends = python-urllib3
 	depends = python-wtforms
-	source = python-base-app-0.2.36.tar.gz::https://files.pythonhosted.org/packages/source/p/python-base-app/python-base-app-0.2.36.tar.gz
+	source = python-base-app-0.2.45.tar.gz::https://files.pythonhosted.org/packages/source/p/python-base-app/python-base-app-0.2.45.tar.gz
 	source = remove-tests.patch
-	sha256sums = b0d75bbee0029a6235fa8f6dd139b449d56a0007325db81acb8c70fa61ba7963
+	sha256sums = 2a491295ad00d8421688148b546deabb5745f83e4980db753bea6c73704f8a51
 	sha256sums = 19e40dc0d994701eac4803457765e52cef4240ade0b6f1432818dd1d437454b0
 
 pkgname = python-base-app
