@@ -1,6 +1,7 @@
 # Maintainer: Devel <Denislav08@proton.me>
-# Co-Maintainer: Hugo Posnic <hugo.posnic@gmail.com>
-# Contributor: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Co-Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Contributor: Hugo Posnic <hugo.posnic@gmail.com>
+
 
 pkgname=coulr
 pkgver=2.3.0
