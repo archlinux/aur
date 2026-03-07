@@ -18,8 +18,9 @@ pkgbase = libbonobo
 	backup = etc/bonobo-activation/bonobo-activation-config.xml
 	source = https://download.gnome.org/sources/libbonobo/2.32/libbonobo-2.32.1.tar.bz2
 	source = bonobo-activation-config.xml
+	source = libbonobo-2.32.1-activation-base-service.patch
 	sha256sums = 9160d4f277646400d3bb6b4fa73636cc6d1a865a32b9d0760e1e9e6ee624976b
 	sha256sums = 081de245c42de10ebeea3cbcd819c5ce5d0a15b9bdde9c2098302b1e14965af2
+	sha256sums = ecbc2d039288533ae143d63f679b39d36329ee1b75fd15fab5976a9c37068b28
 
 pkgname = libbonobo
-

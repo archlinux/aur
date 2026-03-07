@@ -13,14 +13,18 @@ makedepends=('intltool' 'pkgconfig' 'python')
 backup=('etc/bonobo-activation/bonobo-activation-config.xml')
 url="http://www.gnome.org"
 source=(https://download.gnome.org/sources/libbonobo/2.32/libbonobo-${pkgver}.tar.bz2
-	bonobo-activation-config.xml)
+	bonobo-activation-config.xml
+	libbonobo-2.32.1-activation-base-service.patch)
 install=libbonobo.install
 sha256sums=('9160d4f277646400d3bb6b4fa73636cc6d1a865a32b9d0760e1e9e6ee624976b'
-            '081de245c42de10ebeea3cbcd819c5ce5d0a15b9bdde9c2098302b1e14965af2')
+            '081de245c42de10ebeea3cbcd819c5ce5d0a15b9bdde9c2098302b1e14965af2'
+			'ecbc2d039288533ae143d63f679b39d36329ee1b75fd15fab5976a9c37068b28')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p1 < ../libbonobo-2.32.1-activation-base-service.patch
   sed -i "s#-DG_DISABLE_DEPRECATED##" activation-server/Makefile.in
+  
 }
 
 build() {

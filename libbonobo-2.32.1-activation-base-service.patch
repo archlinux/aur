@@ -1,0 +1,37 @@
+diff --git a/bonobo-activation/bonobo-activation-base-service.c b/bonobo-activation/bonobo-activation-base-service.c
+index d274378..609b565 100644
+--- a/bonobo-activation/bonobo-activation-base-service.c
++++ b/bonobo-activation/bonobo-activation-base-service.c
+@@ -160,21 +160,24 @@ bonobo_activation_registration_iterate (const BonoboActivationBaseService *base_
+ 
+ 	for (link = registries; link; link = link->next) {
+ 		RegistryInfo *ri;
+-		void (*func_ptr) ();
++		void (*func_ptr_2arg) (const BonoboActivationBaseServiceRegistry *, gpointer);
++		void (*func_ptr_4arg) (
++			const BonoboActivationBaseServiceRegistry *, const char *,
++			const BonoboActivationBaseService *, gpointer
++			);
+ 
+ 		ri = link->data;
+ 
+-		func_ptr = *(gpointer *) ((guchar *) ri->registry + offset);
+-
+-		if (!func_ptr)
+-			continue;
+-
+ 		switch (nargs) {
+ 		case 4:
+-			func_ptr (ri->registry, ior, base_service, ri->user_data);
++			func_ptr_4arg = *(gpointer *) ((guchar *) ri->registry + offset);
++			if (!func_ptr_4arg) continue;
++			func_ptr_4arg (ri->registry, ior, base_service, ri->user_data);
+ 			break;
+ 		case 2:
+-			func_ptr (ri->registry, ri->user_data);
++			func_ptr_2arg = *(gpointer *) ((guchar *) ri->registry + offset);
++			if (!func_ptr_2arg) continue;
++			func_ptr_2arg (ri->registry, ri->user_data);
+ 			break;
+ 		}
+ 	}
