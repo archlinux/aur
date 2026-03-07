@@ -1,0 +1,5 @@
+[parrot-tts-bin]
+source = "github"
+github = "rishiskhare/parrot"
+use_max_tag = true
+prefix = "v"
