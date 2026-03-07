@@ -1,7 +1,7 @@
 # Maintainer: Ahmed Zaki <ahmed@zakii.de>
 
 pkgname=gitfourchette-git
-pkgver=1.6.0
+pkgver=1.6.0.r20.g6bf85b7e
 pkgrel=1
 pkgdesc="The comfortable Git UI for Linux"
 arch=('any')
@@ -30,10 +30,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/gitfourchette"
-    python - <<EOF
-from gitfourchette.appconsts import APP_VERSION
-print(APP_VERSION)
-EOF
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
