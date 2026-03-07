@@ -1,6 +1,6 @@
 pkgbase = myground
 	pkgdesc = Self-hosting platform — hold your ground
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/backmeupplz/myground
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = myground
 	makedepends = cargo
 	makedepends = bun-bin
 	depends = docker
-	source = myground-0.1.7.tar.gz::https://github.com/backmeupplz/myground/archive/refs/tags/v0.1.7.tar.gz
-	sha256sums = 5765fae952911ad0cf5dac70b6b59a6209cfbe9599132d3698feebfdd7f17ed6
+	source = myground-0.1.8.tar.gz::https://github.com/backmeupplz/myground/archive/refs/tags/v0.1.8.tar.gz
+	sha256sums = a84847d8073486ae2b7036627f8d79831a007cf8c12a62fa6d892632fb308100
 
 pkgname = myground
