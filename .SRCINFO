@@ -1,4 +1,4 @@
-pkgbase = nac
+pkgbase = nac-bin
 	pkgdesc = n8n As Code - The missing GitOps link for n8n
 	pkgver = 0.1.2
 	pkgrel = 1
@@ -8,7 +8,9 @@ pkgbase = nac
 	license = MIT
 	makedepends = go
 	depends = glibc
+	provides = nac
+	conflicts = nac
 	source = nac-0.1.2.tar.gz::https://github.com/crymfox/nac/archive/v0.1.2.tar.gz
 	sha256sums = 48f1328399c1633c17962a691643312d9fca3fea1a0b0c7692459970f8074539
 
-pkgname = nac
+pkgname = nac-bin
