@@ -2,7 +2,7 @@
 
 pkgname=python-segments
 _name=${pkgname#python-}
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 epoch=
 pkgdesc="Segmentation with orthography profiles"
@@ -28,7 +28,7 @@ optdepends=()
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('381143f66f59eaf45398f5bb57f899d6501be011048ec5f92754c9b24b181615')
+sha256sums=('bba71f5520ddd54c8aa2f4d765a60618c6862162d6e7356a4a097f2223166f5b')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
