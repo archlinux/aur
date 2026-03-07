@@ -2,7 +2,7 @@
 
 pkgname=maplibre-native-qt-git
 pkgver=v3.0.0.r38.g181f28b
-pkgrel=1
+pkgrel=2
 pkgdesc="MapLibre Native Qt Bindings and Qt Location Plugin"
 arch=('x86_64')
 depends=('ccache' 'cmake' 'gcc' 'icu' 'ninja' 'qt6-base' 'qt6-location')
@@ -47,4 +47,8 @@ package() {
   mkdir -p ${pkgdir}/usr/lib/qt6/
   cp -rpf ${srcdir}/install/qml ${pkgdir}/usr/lib/qt6/qml
   cp -rpf ${srcdir}/install/plugins ${pkgdir}/usr/lib/qt6/plugins
+  for i in $(find ${pkgdir} -name '*.cmake'); do
+    sed -i 's/plugins\//lib\/qt6\/plugins\//g' ${i}
+    sed -i 's/qml\//lib\/qt6\/qml\//g' ${i}
+  done
 }
