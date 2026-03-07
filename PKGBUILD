@@ -9,7 +9,7 @@
 pkgbase=nvidia-470xx-utils
 pkgname=('nvidia-470xx-utils' 'opencl-nvidia-470xx' 'nvidia-470xx-dkms')
 pkgver=470.256.02
-pkgrel=8.00
+pkgrel=8.01
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -31,6 +31,8 @@ source=('nvidia-drm-outputclass.conf'
         "nvidia-470xx-fix-linux-6.14.patch"
         "nvidia-470xx-fix-linux-6.15.patch"
         "nvidia-470xx-fix-linux-6.17.patch"
+        "nvidia-470xx-fix-linux-6.19-part1.patch"
+        "nvidia-470xx-fix-linux-6.19-part2.patch"
         )
 
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
@@ -48,7 +50,9 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
             'c577d422799580e6a7b12670439dd7d68f9474ae17e96355144b7037d9a36228f22e53682f317ec7ca0f6a83d2520ede376350d02a2c072d0d195768f4115cba'
             '7f0ab1d27d08fc091e8190ff040115607eb2d0c4a6ab710f8083899c3ed44a30eb4479c0bae8a072ee54409734f9c78a10f0c2555157526e153b4578ccf8aea6'
             '556c6575f413a7e877d40de2533e65b80857d38f26cd31c2257cdde08818293e761105ac689f006829f8d18387ffbf72f5d5c9d03cb57ccab7a620bb98dbe033'
-            '7d68cfc8d088e53a7724104d4093c7b43b863caa0a937598cc4ad22161d69f2e2c15e0c9fc65813c05685d0995966a9f40cdfe86949bb921acfb3de51200453f')
+            '7d68cfc8d088e53a7724104d4093c7b43b863caa0a937598cc4ad22161d69f2e2c15e0c9fc65813c05685d0995966a9f40cdfe86949bb921acfb3de51200453f'
+            '9267dfcefbfd1e4e0f7a6661c151aa1626c15b6091766876a23e7e0dd20068a7279b0af2b38153f6ab219ccd5239ee7df0eeecaf754b5ab5dd8286508cb3be34'
+            '9962feaf22b32b3fe7e3125eaafe7319a2bb45ab11482260701b06c6994104e64110466156b22ecc6cd9f493f18575ca56365ede90162b6f7d03877e7c679167')
 
 create_links() {
     # create soname links
@@ -84,6 +88,8 @@ prepare() {
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.14.patch"
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.15.patch"
     patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.17.patch"
+    patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.19-part1.patch"
+    patch -p1 -i "${srcdir}/nvidia-470xx-fix-linux-6.19-part2.patch"
 
     sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
     sed -i 's/__JOBS/`nproc`/' dkms.conf
