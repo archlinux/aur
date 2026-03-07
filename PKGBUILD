@@ -2,7 +2,7 @@
 # Co-Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
 pkgname=coulr
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Color box to help developers and designers"
 url="https://github.com/Huluti/Coulr"
@@ -12,7 +12,7 @@ depends=('python-gobject' 'libadwaita' 'libportal-gtk4')
 makedepends=('git' 'meson')
 checkdepends=('appstream-glib')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('76b688f26dc588a2b146109f5da29873e70e3a73f1f0d12bc22ed15a2c830f9a')
+sha256sums=('eb43628da7f0df3af9c7dc3acf144e909c8f2741b628042d64cee008161e6875')
 
 build() {
   arch-meson Coulr-$pkgver build
