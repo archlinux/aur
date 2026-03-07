@@ -1,0 +1,5 @@
+[orchestrator]
+source = "github"
+github = "percona/orchestrator"
+use_max_tag = true
+prefix = "v"
