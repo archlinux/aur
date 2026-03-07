@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <imlonghao@archlinuxcn.org>
 
 pkgname=vykar
-pkgver=0.11.5
+pkgver=0.11.8
 pkgrel=1
 pkgdesc='Fast, encrypted, deduplicated backups in Rust'
 url='https://github.com/borgbase/vykar'
@@ -10,7 +10,7 @@ makedepends=('cargo' 'cairo' 'pango' 'atk')
 depends=('glibc' 'libgcc' 'gtk3' 'fontconfig' 'gdk-pixbuf2' 'glib2' 'xdotool')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-b2sums=('437ff10064a1ac7bb75ae5cae44d99c10e7f11b8d91db51bbdd137296ce89d1c7e4d11b9609605579bdaba5c415beac44e1f7f99a42b487776f86fa32fb0ec04')
+b2sums=('335fbf563c8741b65669cfe2022d49496bae13e194b07813cb100105691c4e9cf1f29f88d1905e62b8bd51216d4b5bbd6ad75eefe79ff1991f325cd8b82154cc')
 options=(!lto)
 
 prepare() {
@@ -36,4 +36,5 @@ package() {
     cd "$pkgname-$pkgver"
     ls -al "target/release/$pkgname"
     install -Dm0755 -t "$pkgdir/usr/bin/" target/release/vykar target/release/vykar-server target/release/vykar-gui
+    install -Dm0644 -t "$pkgdir/etc/vykar/" vykar.example.yaml
 }
