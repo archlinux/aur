@@ -1,20 +1,18 @@
 pkgbase = obsidian-cli-inspector-git
-	pkgdesc = Local-first CLI/TUI for indexing and querying Obsidian vaults (development version)
-	pkgver = 0.0.0
-	pkgrel = 2
+	pkgdesc = Local-first CLI/TUI for indexing and querying Obsidian vaults (unstable git version)
+	pkgver = 0.2.2.r14.gg3d60853
+	pkgrel = 1
 	url = https://github.com/jingyi-zhao-01/obsidian-cli-inspector
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = git
 	makedepends = cargo
 	makedepends = gcc
 	makedepends = pkgconf
+	makedepends = git
 	depends = sqlite
-	provides = obsidian-cli-inspector
-	conflicts = obsidian-cli-inspector
 	options = !lto
 	options = !debug
-	source = git+https://github.com/jingyi-zhao-01/obsidian-cli-inspector.git
+	source = git+https://github.com/jingyi-zhao-01/obsidian-cli-inspector.git#branch=master
 	sha256sums = SKIP
 
 pkgname = obsidian-cli-inspector-git
