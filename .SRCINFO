@@ -1,0 +1,23 @@
+pkgbase = novabar
+	pkgdesc = A modern, modular macOS-style panel for Linux (X11/XFCE) built with Vala and GTK3
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/novik133/NovaBar
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = vala
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk3
+	depends = glib2
+	depends = libwnck3
+	depends = networkmanager
+	depends = appmenu-gtk-module
+	depends = gtk-layer-shell
+	source = novabar-0.1.4.tar.gz::https://github.com/novik133/NovaBar/archive/v0.1.4.tar.gz
+	sha256sums = 4fe9441f55376e18f4ace9841b71508659157e8760e4f59ae932a8b94c39230e
+
+pkgname = novabar
