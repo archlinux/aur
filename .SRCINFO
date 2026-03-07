@@ -1,0 +1,14 @@
+pkgbase = footermilter
+	pkgdesc = FooterMilter insert a footer/disclaimer at the end of the body of an email
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/tachtler/FooterMilter.git
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	depends = java-runtime>=1.8
+	backup = etc/FooterMilter/footermilter.ini
+	source = git+https://github.com/tachtler/FooterMilter.git
+	sha256sums = SKIP
+
+pkgname = footermilter
