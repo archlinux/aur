@@ -1,4 +1,4 @@
-# Maintainer: Mrinmoy <grx8x0mfy@mozmail.com>
+# Maintainer: Mrinmoy <mrinmoym@duck.com>
 pkgname=axiocnc-bin
 _pkgname=axiocnc
 pkgver=0.0.89
