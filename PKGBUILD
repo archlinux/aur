@@ -2,7 +2,7 @@
 
 pkgname=footermilter
 _gitname=FooterMilter
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='FooterMilter insert a footer/disclaimer at the end of the body of an email'
 arch=('any')
@@ -23,7 +23,7 @@ package() {
 	install -Dvm644 "$pkgname.ini" "$pkgdir/etc/$_gitname/$pkgname.ini"
 	install -Dvm644 README.md "$pkgdir/usr/share/doc/$_gitname/README.md"
 	install -Dvm644 LICENSE -t "$pkgdir/usr/share/licenses/$_gitname/"
-	install -Dvm644 "doc/$_gitname.jar.1" "$pkgdir/usr/share/man/man1/$pkgname.jar.1"
+	install -Dvm644 "doc/$_gitname.jar.1" "$pkgdir/usr/share/man/man1/$pkgname.1"
 	install -Dvm644 "$pkgname.service" -t "$pkgdir/usr/lib/systemd/system/"
 
 	# make absolute just in case
