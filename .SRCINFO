@@ -1,0 +1,18 @@
+pkgbase = dmultiwall-git
+	pkgdesc = Dynamic multi-monitor wallpaper setter using feh
+	pkgver = r17.3cac58a
+	pkgrel = 1
+	url = https://github.com/ZappaBoy/dmultiwall
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = feh
+	depends = imagemagick
+	depends = bc
+	provides = dmultiwall=r17.3cac58a
+	conflicts = dmultiwall
+	source = dmultiwall::git+https://github.com/ZappaBoy/dmultiwall.git
+	sha256sums = SKIP
+
+pkgname = dmultiwall-git
