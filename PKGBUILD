@@ -1,10 +1,10 @@
-# Maintainer: Nikos Toutountzoglou <nikos dot toutou at protonmail dot com>
+# Maintainer: Nikos Toutountzoglou <nikos.toutou@protonmail.com>
 # Contributor: Josef Miegl <josef@miegl.cz>
 # Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 
 pkgname=kamailio
-pkgver=6.0.5
-pkgrel=2
+pkgver=6.1.1
+pkgrel=1
 pkgdesc="SIP Server for large VoIP and real-time communication platforms"
 arch=('x86_64')
 url="https://www.kamailio.org"
@@ -58,7 +58,7 @@ backup=(
 
 source=("https://www.kamailio.org/pub/${pkgname}/latest/src/${pkgname}-${pkgver}_src.tar.gz"
         "${pkgname}.sysusers")
-sha256sums=('2c4a65f0c4e43542ecd042423b6fc829ee15ab09a56ae7f441b7427d6bce1b30'
+sha256sums=('ea26f117449bb9bd806d033c1eb90b9f625bc15319140bb3ca3d40afeed81f9a'
             'e2ad5c2f3213f2ce7de9524da378d062525ce99e2b401590ec0394c521a3d0c8')
 
 prepare() {
