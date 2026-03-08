@@ -3,7 +3,7 @@
 
 pkgname=python-normality
 _pkg="${pkgname#python-}"
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc='Micro-library for normalizing text strings'
 license=('MIT')
@@ -13,7 +13,7 @@ depends=('python' 'python-banal' 'python-chardet' 'python-charset-normalizer' 'p
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('70956ae1472b3762746eb15906a30161e0c564bd0a9f3f6e97f0ec6f34bfea16')
+sha256sums=('9d2d3705ec5458b36986d5a0ec32b07f4805780c74700c6fd6cb998017d1091f')
 
 latestver() {
 	curl -fsSL "https://pypi.org/pypi/${_pkg}/json" | jq -r '.info.version'
