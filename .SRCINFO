@@ -1,6 +1,6 @@
 pkgbase = kangaroo
 	pkgdesc = Pollard's Kangaroo ECDLP solver for secp256k1 using Vulkan/Metal/DX12 compute
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/oritwoen/kangaroo
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = kangaroo
 	depends = glibc
 	depends = vulkan-icd-loader
 	optdepends = vulkan-validation-layers: for debugging
-	source = git+https://github.com/oritwoen/kangaroo.git#tag=v0.7.0
+	source = git+https://github.com/oritwoen/kangaroo.git#tag=v0.7.1
 	sha256sums = SKIP
 
 pkgname = kangaroo
