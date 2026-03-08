@@ -7,7 +7,9 @@ post_install() {
   echo ""
   echo "Then open your browser to:"
   echo "  http://127.0.0.1:8999 or http://localhost:8999"
-  echo "If it isn't accessible check your firewall"
+  echo "If it isn't accessible check your firewall."
+  echo ""
+  echo "Restart after update."
   echo ""
 }
 
