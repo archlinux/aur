@@ -1,7 +1,7 @@
-pkgver=1.8.2
-pkgrel=1
+pkgver=1.8.4
+pkgrel=184
 sha256sums=(
-	b9ac4c30b48b1c82af8c4ef76166aa7e9befc0cde53f0c2f03209ec7b82cbcb7
+    0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
     c621dce4fd45c2e911848fb03f7e4da7d0e31e03a08d7186b54e58e2a92593be
 )
 _pkgname=pixiv-multiplatform
@@ -11,13 +11,13 @@ url="https://pmf.kagg886.top"
 license=(GPL3)
 arch=(x86_64)
 source=(
-    "https://github.com/magic-cucumber/Pixiv-MultiPlatform/releases/download/v$pkgver/linux.tar.gz"
+    "https://github.com/kagg886/Pixiv-MultiPlatform/releases/download/$pkgver/linux.tar.gz"
     Pixiv-MultiPlatform.desktop
 )
 
 package(){
-    install -d $pkgdir/opt/
-    cp -r Pixiv-MultiPlatform $pkgdir/opt/
-    install -Dm755 Pixiv-MultiPlatform.desktop $pkgdir/usr/share/applications/Pixiv-MultiPlatform.desktop
-    install -Dm644 Pixiv-MultiPlatform/lib/Pixiv-MultiPlatform.png $pkgdir/usr/share/icons/hicolor/256x256/apps/Pixiv-MultiPlatform.png
+    install -d $pkgdir/opt/Pixiv-MultiPlatform/
+    cp -ar composeApp/build/compose/binaries/main-release/app/Pixiv-MultiPlatform $pkgdir/opt/
+    install -Dm755 ../Pixiv-MultiPlatform.desktop $pkgdir/usr/share/applications/Pixiv-MultiPlatform.desktop
+    install -Dm644 composeApp/build/compose/binaries/main-release/app/Pixiv-MultiPlatform/lib/Pixiv-MultiPlatform.png $pkgdir/usr/share/icons/hicolor/256x256/apps/Pixiv-MultiPlatform.png
 }
