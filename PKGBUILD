@@ -2,7 +2,7 @@
 
 _pkgbase=ollama-lab
 pkgname=$_pkgbase-bin
-pkgver=0.4.10
+pkgver=0.5.0
 _version=${pkgver/+/-}
 pkgrel=1
 epoch=
@@ -31,7 +31,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    '0ef0021adeed6bae02710f49ef550d2264b75d8da393862f3032c25e537ab967'
+    '899c89bfee26adcef0981d3f662805b15e28926b5962b6c6299c1d87a88d7c39'
 )
 validpgpkeys=()
 
