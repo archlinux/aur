@@ -1,6 +1,6 @@
 pkgbase = zeek
 	pkgdesc = A network analysis framework
-	pkgver = 7.0.3
+	pkgver = 8.0.6
 	pkgrel = 1
 	url = https://zeek.org
 	arch = x86_64
@@ -19,16 +19,15 @@ pkgbase = zeek
 	depends = libmaxminddb
 	depends = python
 	optdepends = python-semantic-version: zeekpkg
-	source = https://github.com/zeek/zeek/releases/download/v7.0.3/zeek-7.0.3.tar.gz
-	source = https://github.com/zeek/zeek/releases/download/v7.0.3/zeek-7.0.3.tar.gz.asc
+	source = https://download.zeek.org/zeek-8.0.6.tar.gz
+	source = https://download.zeek.org/zeek-8.0.6.tar.gz.asc
 	source = zeek.tmpfiles.conf
 	validpgpkeys = 962FD2187ED5A1DD82FC478A33F15EAEF8CB8019
-	sha256sums = 029e389f5405d8831657202a7be542be756a8c5811bfaab7376c1c6b10e1d9e3
-	sha256sums = 047c414eb4139d5c41757a0b84b518c723149becb40a3067b7203a6b8e8de9a8
+	sha256sums = 7263baa298cc9cd116520b2937cd196882783dbbdf9d5619e9938b3f08a4abac
+	sha256sums = SKIP
 	sha256sums = af5b7e14caae88122d0e6dd29539ae77ed3388c70a12ea0ed73c9a3f6de16d91
-
-	b2sums = b0c9795bd65beed65cbf1503babf9bdb57ebb8354a6c40e6075340c468679a017fe99a4b366534a5762db732b6bbf9334e72358f93ec443da76ec8453f430d6c
-	b2sums = 0ac8d04643d9b949d0dc9f8efe6e8369ddc8b1d1af7121dffb7a2d5e4961f617fb953565cd0c5b5a541184ef4b47bf400e4084fae1e855eb0154d650531d7a1a
+	b2sums = 321c1df784bef46590c92588f94f10e21169e1bb8c6b1abefe2de84b3ebb815fb2c31a4c20cbcfb51f65cd52fdbd18ac74c51fb0103c715357812fbb5ff77f85
+	b2sums = SKIP
 	b2sums = df5e4479c89cc2b0764e26e35bdcbcd7d00b131d7f4cd35c336e734ae334a40a2142285a2c8ea9db8961a34bb4d2799ba89505ab3e3881a16792c7e804ef1d73
 
 pkgname = zeek
