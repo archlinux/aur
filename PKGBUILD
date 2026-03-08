@@ -2,7 +2,7 @@
 
 _pkgname=pathy
 pkgname=python-${_pkgname}
-pkgver=0.11.0
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="Logging utilities for spaCy"
 arch=(x86_64 aarch64)
@@ -16,7 +16,7 @@ makedepends=(
     python-wheel
 )
 source=("https://github.com/justindujardin/${_pkgname}/archive/refs/tags/v${pkgver}.zip")
-b2sums=("351148e99829268ed20663259425155846bc2bef9f6a0b6b893f9a5b276e1c77740ac5302d7fbb6fc594d3cea601aee99f5d97f90c1ad4fbc505d17ebfc65ec7")
+b2sums=("b89563983836c8aac7950942110c78031f64c65784de983663a937bc076bfd1b0db7e4c0b05d32f685bf0ecfaeaf578aae44a4f7718e77780fbcaebad76fac90")
 
 build() {
     cd "${_pkgname}-${pkgver}"

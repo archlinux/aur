@@ -1,6 +1,6 @@
 pkgbase = python-pathy
 	pkgdesc = Logging utilities for spaCy
-	pkgver = 0.11.0
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://github.com/explosion/spacy-loggers
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-pathy
 	depends = python-smart_open
 	depends = python-typer
 	depends = python-pathlib-abc
-	source = https://github.com/justindujardin/pathy/archive/refs/tags/v0.11.0.zip
-	b2sums = 351148e99829268ed20663259425155846bc2bef9f6a0b6b893f9a5b276e1c77740ac5302d7fbb6fc594d3cea601aee99f5d97f90c1ad4fbc505d17ebfc65ec7
+	source = https://github.com/justindujardin/pathy/archive/refs/tags/v0.14.0.zip
+	b2sums = b89563983836c8aac7950942110c78031f64c65784de983663a937bc076bfd1b0db7e4c0b05d32f685bf0ecfaeaf578aae44a4f7718e77780fbcaebad76fac90
 
 pkgname = python-pathy
