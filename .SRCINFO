@@ -7,6 +7,7 @@ pkgbase = dream-nox
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
+	makedepends = git
 	depends = libfdk-aac
 	depends = faad2
 	depends = libpulse
