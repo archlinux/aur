@@ -1,0 +1,12 @@
+pkgbase = vsview-plugins-essential
+	pkgdesc = Meta package to install vsview plugins considered essential
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-view
+	arch = any
+	license = None
+	depends = vsview-comp
+	depends = vsview-split-planes
+	depends = vsview-frameprops-extended
+
+pkgname = vsview-plugins-essential
