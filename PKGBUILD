@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lfe-git
-pkgver='r9.046ddc5'
+pkgver='r11.50f3ec4'
 pkgrel=1
 epoch=1
 pkgdesc="Lisp Flavoured Erlang"
