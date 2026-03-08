@@ -22,9 +22,9 @@ package() {
 
     install -Dm755 build/wavedl "$pkgdir/usr/bin/wavedl"
 
-    install -Dm644 misc/logo.svg \
+    install -Dm644 misc/wavedl.svg \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/wavedl.svg"
 
-    install -Dm644 wavedl.desktop \
+    install -Dm644 misc/wavedl.desktop \
         "$pkgdir/usr/share/applications/wavedl.desktop"
 }
