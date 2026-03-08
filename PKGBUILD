@@ -95,6 +95,29 @@ fs.writeFileSync(f, patched);
 " "$PAKE_USER_DIR/dist/cli.js"
 fi
 
+# Auto-detect distro: choose appropriate target unless user specified --targets
+if [[ "$*" != *"--targets"* ]]; then
+    if grep -qi "debian\|ubuntu\|mint" /etc/os-release 2>/dev/null; then
+        if [[ "$(uname -m)" == "aarch64" ]]; then
+            set -- "$@" --targets deb-arm64
+        else
+            set -- "$@" --targets deb
+        fi
+    elif grep -qi "fedora\|rhel\|centos\|opensuse\|sles" /etc/os-release 2>/dev/null; then
+        if [[ "$(uname -m)" == "aarch64" ]]; then
+            set -- "$@" --targets rpm-arm64
+        else
+            set -- "$@" --targets rpm
+        fi
+    else
+        if [[ "$(uname -m)" == "aarch64" ]]; then
+            set -- "$@" --targets appimage-arm64
+        else
+            set -- "$@" --targets appimage
+        fi
+    fi
+fi
+
 exec node "$PAKE_USER_DIR/dist/cli.js" "$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/pake"
