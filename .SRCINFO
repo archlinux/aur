@@ -1,0 +1,23 @@
+pkgbase = argus-bin
+	pkgdesc = Lightweight monitor to notify of new software releases via Gotify/Slack/other messages and/or WebHooks.
+	pkgver = 0.29.3
+	pkgrel = 3
+	url = https://release-argus.io/
+	arch = x86_64
+	arch = aarch64
+	provides = argus
+	backup = etc/argus/config.yml
+	source = config.yml
+	source = argus.service
+	source = tmpfiles.conf
+	source = sysusers.conf
+	sha256sums = 7ea09ebc9ae76e3b57c47a566b26ee11e0aab12dde11c3aa594fd3d351df5d22
+	sha256sums = 73e249a0bf4ad7f14d28371001307882b33d17f6a34116449c3a84ff0bd768c7
+	sha256sums = 73699eccca0aa9e134ea6e930ac87ab8441108fdd9d950b662ea4dc1c4a7ad9e
+	sha256sums = b0da219ff1c738c17e449984702740870cdb2d369e7dc50e655f5d2ae83e7287
+	source_x86_64 = Argus-0.29.3.linux-amd64::https://github.com/release-argus/Argus/releases/download/0.29.3/Argus-0.29.3.linux-amd64
+	sha256sums_x86_64 = 3a663a095f81abc8101f84721a7a8bfc710e923cf93710cea1800a9038228204
+	source_aarch64 = Argus-0.29.3.linux-arm64::https://github.com/release-argus/Argus/releases/download/0.29.3/Argus-0.29.3.linux-arm64
+	sha256sums_aarch64 = 191b9c6e3bed5b224249b2d612a13fd17908939ad7c960b8f0f372473b1d7052
+
+pkgname = argus-bin
