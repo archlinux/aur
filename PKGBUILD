@@ -1,6 +1,6 @@
 # Maintainer: Forest Ames <fox dot ames at smallfox dot io>
 pkgname=puzzletea
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A collection of puzzle bubbles for BubbleTea"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go')
 checkdepends=('just')
 source=("https://github.com/FelineStateMachine/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bf8f2083ff114865922953031b20767b5d5208750fa1df45ea6e785dbbe9b6e8')
+sha256sums=('373b97633a09f0aeb0bbe58c6dde8fac8e25f9ff86ff7150207766ef6c389944')
 
 build() {
   cd "$pkgname-$pkgver"
