@@ -2,7 +2,7 @@
 # Contributor: Arthur Stuhl <ArturKauffmann@proton.me>
 
 pkgname=socialstreamninja
-pkgver=0.3.95
+pkgver=0.3.98
 pkgrel=1
 pkgdesc="Standalone version of Social Stream Ninja - Electron-based application for capturing social media streams"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('fuse' 'zlib' 'glibc')
 optdepends=('gtk3: GTK integration' 'qt6-base: Qt6 framework intergration' 'wayland: A computer display server protocol' 'nss: Network security services' 'libxss: X11 screensaver extension' 'libnotify: Desktop notifications' 'libxtst: X11 testing')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/steveseguin/social_stream/releases/download/${pkgver}/socialstreamninja_linux_v${pkgver}_x86_64.AppImage"
         "socialstreamninja.desktop")
-sha256sums=('708d642695dc62ffdfeae1dbcdf288e5e68630b1cb51af4d133add887dcda202'
+sha256sums=('915688eeb11cdeea266f1b2a53c6044f36ecb822cd8461746f5819bd41e9de1a'
             'SKIP')
 sha512sums=('SKIP'
            '0409f3ad018ff9d32143340e8be052f3b6f32c17b200e968e1634954a39ef5c3981ebd1c5e099fc604e31722e3f0e5b953965e3726500d7e557d3b7def3e8e7b')
