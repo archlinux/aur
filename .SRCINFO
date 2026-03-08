@@ -1,18 +1,20 @@
 pkgbase = librevna-gui-bin
 	pkgdesc = GUI application for the LibreVNA, a 100kHz to 6GHz 2 port USB based VNA
 	pkgver = 1.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jankae/LibreVNA
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = qt6-base
 	depends = qt6-svg
+	optdepends = librevna-firmware: firmware files and default firmware path for device update
+	optdepends = librevna-udev: udev rules for LibreVNA device access
 	optdepends = librecal-udev: udev rules for LibreCAL control
 	provides = librevna-gui
 	conflicts = librevna-gui
 	source = https://github.com/jankae/LibreVNA/releases/download/v1.6.5/LibreVNA-GUI-Ubuntu-v1.6.5.zip
-	source = https://raw.githubusercontent.com/jankae/LibreVNA/v1.6.5/Software/PC_Application/51-vna.rules
+	source = librevna-src-v1.6.5.tar.gz::https://github.com/jankae/LibreVNA/archive/refs/tags/v1.6.5.tar.gz
 	sha256sums = 667d57bfd514923f2e581aa8c4cf98ca06be5765d6bae9d499180642fbcb9054
-	sha256sums = a37bf60fa15f700152df2969a8af598de82f9ffc51aa6173bd31adac246c70be
+	sha256sums = 63f924d9c9fb258a379de94f922a2a4a6d2fa6552ebab63fbb91cc29a5d6aee4
 
 pkgname = librevna-gui-bin
