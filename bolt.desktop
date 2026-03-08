@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Bolt
+Comment=Fast multi-segment download manager
+Exec=bolt
+Icon=bolt
+Terminal=false
+Type=Application
+Categories=Network;FileTransfer;GTK;
+Keywords=download;manager;accelerator;
+StartupWMClass=bolt

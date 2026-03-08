@@ -1,0 +1,20 @@
+pkgbase = bolt-dm-bin
+	pkgdesc = Fast multi-segment download manager
+	pkgver = 0.3.0_beta
+	pkgrel = 1
+	url = https://github.com/dasunNimantha/bolt
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = openssl
+	depends = fontconfig
+	provides = bolt-dm
+	conflicts = bolt-dm
+	source = https://github.com/dasunNimantha/bolt/releases/download/v0.3.0-beta/bolt-linux-x86_64
+	source = bolt.desktop
+	source = bolt.svg
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bolt-dm-bin
