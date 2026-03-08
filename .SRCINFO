@@ -1,0 +1,20 @@
+pkgbase = eask-cli-bin
+	pkgdesc = CLI for building, running, testing, and managing Emacs Lisp dependencies
+	pkgver = 0.12.10
+	pkgrel = 1
+	url = https://github.com/emacs-eask/cli
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = emacs>=26.1
+	provides = eask-cli
+	conflicts = eask-cli
+	conflicts = eask-cli-git
+	options = !strip
+	options = !debug
+	source_x86_64 = eask-cli-bin-0.12.10-linux.tar.gz::https://github.com/emacs-eask/cli/releases/download/0.12.10/eask_0.12.10_linux-x64.tar.gz
+	sha256sums_x86_64 = 6d211b6f730bae0d6b86cb3c924dbed50b3ea1a7e3f3b49b0506dc6b9c1b48e1
+	source_aarch64 = eask-cli-bin-0.12.10-linux.tar.gz::https://github.com/emacs-eask/cli/releases/download/0.12.10/eask_0.12.10_linux-arm64.tar.gz
+	sha256sums_aarch64 = 1e5637fd37668d8272e50b04882f1e1b92ac5830ce0f01b5fcb965b66069b0be
+
+pkgname = eask-cli-bin
