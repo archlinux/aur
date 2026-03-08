@@ -1,7 +1,7 @@
 # Maintainer:
 pkgname=pudu-launcher-git
 pkgver=r12.d57587d
-pkgrel=1
+pkgrel=2
 pkgdesc="Alternative game launcher for Unitystation"
 arch=('x86_64')
 url="https://github.com/corp-0/PuduLauncher"
@@ -51,6 +51,8 @@ prepare() {
   # `generate-ts` runs `dotnet build -c Debug`; keep AOT/trim for release publish only.
   sed -i "s|<PublishAot>true</PublishAot>|<PublishAot Condition=\"'\\\$(Configuration)' == 'Release'\">true</PublishAot>|" src-dotnet/PuduLauncher/PuduLauncher.csproj
   sed -i "s|<PublishTrimmed>true</PublishTrimmed>|<PublishTrimmed Condition=\"'\\\$(Configuration)' == 'Release'\">true</PublishTrimmed>|" src-dotnet/PuduLauncher/PuduLauncher.csproj
+  # Disable signed updater artifacts - AUR users don't have the private key
+  sed -i 's/"createUpdaterArtifacts": true/"createUpdaterArtifacts": false/' src-tauri/tauri.conf.json
   npm ci
 }
 
