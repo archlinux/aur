@@ -1,0 +1,22 @@
+settings:
+  log:
+    level: INFO       # Log level, DEBUG/VERBOSE/INFO/WARNING/ERROR
+    timestamps: false # Log with timestamps
+  data:
+    database_file: /var/lib/argus/argus.db # SQLite DB file used to track the state of services
+  web:
+    listen_host: 0.0.0.0  # IP address to listen on
+    listen_port: 8080     # Port to listen on
+    basic_auth:
+      username: 'admin'        # Basic auth username, e.g. `admin`
+      password: 'secretpassword'        # Basic auth password, e.g. `test123`
+
+service:
+  release-argus/argus:
+    latest_version:
+      type: github
+      url: release-argus/argus
+    dashboard:
+      icon: https://raw.githubusercontent.com/release-argus/Argus/master/web/ui/react-app/public/favicon.svg
+      icon_link-to: https://release-argus.io
+      web_url: https://github.com/release-argus/Argus/blob/master/CHANGELOG.md

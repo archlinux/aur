@@ -1,0 +1,14 @@
+[Unit]
+Description=Argus Server
+Documentation=https://release-argus.io/docs
+After=network-online.target
+
+[Service]
+User=argus
+Group=argus
+Restart=on-failure
+ExecStart=/usr/bin/argus \
+  -config.file=/etc/argus/config.yml
+
+[Install]
+WantedBy=multi-user.target
