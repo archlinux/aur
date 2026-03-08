@@ -1,0 +1,6 @@
+post_install() {
+    echo ":: Add to your hyprland.conf:"
+    echo "     exec-once = hyprresume"
+    echo ":: Configuration: ~/.config/hypr/hyprresume.toml"
+    echo ":: Documentation: https://github.com/IraSkyx/hyprresume"
+}

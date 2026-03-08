@@ -8,6 +8,7 @@ url='https://github.com/IraSkyx/hyprresume'
 license=('BSD-3-Clause')
 depends=('gcc-libs')
 makedepends=('cargo' 'mold')
+install=$pkgname.install
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('ad6be6b9167f66c238e0cfb22e7a652a8dc8d634f17dd34ef26720f5eea8fca6')

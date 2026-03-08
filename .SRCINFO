@@ -3,6 +3,7 @@ pkgbase = hyprresume
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/IraSkyx/hyprresume
+	install = hyprresume.install
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = cargo
