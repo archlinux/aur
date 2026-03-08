@@ -1,6 +1,6 @@
 # Maintainer: Fight_xing<fightxing@outlook.com>
 # Contributor: Qiufuyu123 <qiufuyutony@gmail.com>
-pkgname=casioemuneo
+pkgname=casioemuneo-git
 pkgver=r81.23de343
 pkgrel=1
 pkgdesc="Casio ClassWiz emulator, assembler and debugger"
