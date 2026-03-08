@@ -5,7 +5,7 @@
 pkgname=gambit-c
 pkgver=4.9.7  # github.com/gambit/gambit/releases/latest
 pkgrel=2
-pkgdesc='Gambit Scheme is a complete, portable, efficient and reliable implementation of the Scheme programming language.'
+pkgdesc='Gambit Scheme system is a complete, portable, efficient and reliable implementation of the Scheme programming language.'
 arch=(x86_64)
 url='https://gambitscheme.org/'
 license=(Apache LGPL)

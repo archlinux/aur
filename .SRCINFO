@@ -1,5 +1,5 @@
 pkgbase = gambit-c
-	pkgdesc = Gambit Scheme is a complete, portable, efficient and reliable implementation of the Scheme programming language.
+	pkgdesc = Gambit Scheme system is a complete, portable, efficient and reliable implementation of the Scheme programming language.
 	pkgver = 4.9.7
 	pkgrel = 2
 	url = https://gambitscheme.org/
