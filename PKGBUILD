@@ -3,7 +3,7 @@
 # Contributor: lxstig <lxst@tutamail.com>
 
 pkgname='7zkpxc'
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Secure 7-Zip wrapper with KeePassXC integration'
 url='https://github.com/lxstig/7zkpxc'
@@ -14,10 +14,10 @@ conflicts=('7zkpxc')
 depends=('glibc' '7zip' 'keepassxc')
 makedepends=('go')
 source=("${pkgname}_${pkgver}.tar.gz::https://github.com/lxstig/7zkpxc/releases/download/v${pkgver}/7zkpxc_${pkgver}_src.tar.gz")
-sha256sums=('da1ae3945296fce3ca0f16ecdff19e127fe81cd3b6957958722bdc641b29fe48')
+sha256sums=('f58cfa5088d2dcabedb6d9afc59b3d076d6ed56ea5d3dc65caad651afe565b89')
 build() {
   export CGO_ENABLED=0
-  go build -trimpath -ldflags "-s -w -X main.version=1.1.0 -X main.commit=41ca32fd6ae866df310e362ad8c5e1aa96d0a535 -X main.date=2026-03-08T00:07:56Z" -o ./7zkpxc ./cmd/7zkpxc
+  go build -trimpath -ldflags "-s -w -X main.version=1.1.1 -X main.commit=dd630470993dd9abda475f8c04dc8cb20bfe3145 -X main.date=2026-03-08T04:36:20Z" -o ./7zkpxc ./cmd/7zkpxc
 }
 package() {
   # Install binary
