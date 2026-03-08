@@ -9,7 +9,7 @@ pkgdesc="A self-hosted game stream host for Moonlight"
 url="https://app.lizardbyte.dev"
 source=(
     "$_pkgname-$pkgver.pkg.tar.zst"::"https://github.com/LizardByte/Sunshine/releases/download/$_gittag/sunshine-$pkgver-1-x86_64.pkg.tar.zst"
-    "$_pkgname-$pkgver.desktop"::"https://raw.githubusercontent.com/LizardByte/Sunshine/$_gittag/packaging/linux/dev.lizardbyte.app.Sunshine.desktop"
+    "$_pkgname-$pkgver.desktop"::"https://github.com/LizardByte/Sunshine/commits/master/packaging/linux/dev.lizardbyte.app.Sunshine.desktop"
     "sunshine-capabilities.hook"
 )
 arch=('x86_64')
@@ -47,7 +47,7 @@ makedepends=('patchelf')
 provides=('sunshine-bin')
 sha256sums=(
     'd0bbf3decacac2c8167fdadf36fb3dd5a86354d22dd1a0154f3966adf52b3f84'
-    '733594073f27c818f89ae1b065943384806811f02048376b76f64ce9c8768229'
+    'SKIP'
     'SKIP'
 )
 
