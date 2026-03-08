@@ -1,0 +1,20 @@
+pkgbase = labyrinthine-git
+	pkgdesc = Linux-first Rust terminal maze runner with Q-learning, auto-solving, and progressive levels
+	pkgver = r4.e4ad034
+	pkgrel = 1
+	url = https://github.com/xeoxaz/Labyrinthine
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	optdepends = nvidia-utils: enable CUDA probing via nvidia-smi
+	optdepends = rocminfo: enable ROCm probing
+	optdepends = vulkan-tools: enable Vulkan probing
+	provides = labyrinthine
+	conflicts = labyrinthine
+	source = labyrinthine::git+https://github.com/xeoxaz/Labyrinthine.git
+	b2sums = SKIP
+
+pkgname = labyrinthine-git
