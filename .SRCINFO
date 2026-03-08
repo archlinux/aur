@@ -1,6 +1,6 @@
 pkgbase = eccodes
 	pkgdesc = ECMWF decoding library for GRIB, BUFR and GTS
-	pkgver = 2.45.0
+	pkgver = 2.46.0
 	pkgrel = 2
 	url = https://confluence.ecmwf.int/display/ECC/ecCodes+Home
 	arch = i686
@@ -9,18 +9,18 @@ pkgbase = eccodes
 	makedepends = gcc-fortran
 	makedepends = cmake
 	depends = glibc
-	depends = gcc-libs
 	depends = libaec
+	depends = libgcc
+	depends = libgfortran
 	depends = libpng
+	depends = libstdc++
 	depends = openjpeg2
 	depends = netcdf
 	optdepends = bash
 	optdepends = ksh
 	conflicts = grib_api
 	conflicts = libbufr-ecmwf
-	source = eccodes-2.45.0-Source.tar.gz::https://confluence.ecmwf.int/download/attachments/45757960/eccodes-2.45.0-Source.tar.gz?api=v2
-	source = eccodes-2.45.0-test-data.tar.gz::https://get.ecmwf.int/repository/test-data/eccodes/eccodes_test_data.tar.gz
-	sha512sums = aa5f5c01ce9d551706ca8242ab6a4663b0c6bf114aa229e2aa01dba549fac1d3d57a06cf8907f18dcba4c9f1a446cbc253c3675ebf77f62ee5ac2c4fb8800dce
-	sha512sums = 8b4c7159dd7ed0e1e69068ec7dcabe94064f0d2abf9eac4fca2a9c730d500999e8edf1e7eeebba6fb12ae99b223c1b0843e31414538333c52f2508cb2d410151
+	source = eccodes-2.46.0-Source.tar.gz::https://confluence.ecmwf.int/download/attachments/45757960/eccodes-2.46.0-Source.tar.gz?api=v2
+	sha512sums = 732ab0f23f3b56681fc103c8f8bb49ae46b06d4278c8cf0cddd99731b4bc2101910e161a3fd1b6bffeaa968d72c2e2de8ab0a9c33c23025e554302fb084d167a
 
 pkgname = eccodes
