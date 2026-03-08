@@ -1,0 +1,5 @@
+[klein-bin]
+source = "github"
+github = "Adarsh-codesOP/Klein"
+use_latest_release = true
+prefix = "v"
