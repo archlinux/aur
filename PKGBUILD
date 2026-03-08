@@ -7,7 +7,7 @@ arch=('any')
 license=('MIT')
 depends=('python' 'tk' 'python-pillow')
 makedepends=('python-pip')
-source=(https://github.com/Jelly-Fish-Dev/music-tags)
+source=()
 sha256sums=()
 
 package() {
