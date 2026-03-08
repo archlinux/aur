@@ -1,5 +1,5 @@
 diff --git a/src/protocols/org-kde-plasma-virtual-desktop.xml b/src/protocols/org-kde-plasma-virtual-desktop.xml
-index 5d9f825..3d6afb3 100644
+index 5d9f825..0e9b9c2 100644
 --- a/src/protocols/org-kde-plasma-virtual-desktop.xml
 +++ b/src/protocols/org-kde-plasma-virtual-desktop.xml
 @@ -6,7 +6,7 @@
@@ -11,7 +11,7 @@ index 5d9f825..3d6afb3 100644
      <request name="get_virtual_desktop">
          <description summary="get the org_kde_plasma_virtual_desktop interface for a desktop">
              Given the id of a particular virtual desktop, get the corresponding org_kde_plasma_virtual_desktop which represents only the desktop with that id.
-@@ -51,20 +51,77 @@
+@@ -51,20 +51,68 @@
          <description summary="sent all information about desktops">
              This event is sent after all other properties have been sent after
              binding to the desktop manager global and after all changes to
@@ -53,15 +53,6 @@ index 5d9f825..3d6afb3 100644
 +        </description>
 +        <arg name="desktop_id" type="string" summary="Id of desktop to activate"/>
 +    </request>
-+
-+    <event name="uuid">
-+        <description summary="A unique id for this outputdevice">
-+            The uuid can be used to identify the output. It's controlled by
-+            the server entirely. The server should make sure the uuid is
-+            persistent across restarts. An empty uuid is considered invalid.
-+        </description>
-+        <arg name="uuid" type="string" summary="output devices ID"/>
-+    </event>
 +
 +    <event name="name">
 +        <description summary="Output's name">
