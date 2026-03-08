@@ -1,0 +1,7 @@
+src/
+pkg/
+fairywren-icon-theme/
+*.tar.zst
+*.tar.gz
+*.tar.xz
+*.log

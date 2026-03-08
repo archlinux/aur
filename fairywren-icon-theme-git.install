@@ -1,0 +1,15 @@
+post_install() {
+	for d in usr/share/icons/FairyWren_*/; do
+		gtk-update-icon-cache -q -t -f "$d" 2>/dev/null || true
+	done
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	for d in usr/share/icons/FairyWren_*/; do
+		gtk-update-icon-cache -q -t -f "$d" 2>/dev/null || true
+	done
+}
