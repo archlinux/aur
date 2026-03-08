@@ -1,6 +1,6 @@
 pkgbase = codewire-bin
 	pkgdesc = Persistent process server for AI coding agents
-	pkgver = 0.2.54
+	pkgver = 0.2.55
 	pkgrel = 1
 	url = https://codewire.sh
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = codewire-bin
 	license = MIT
 	provides = codewire
 	conflicts = codewire
-	source_x86_64 = https://github.com/codewiresh/codewire/releases/download/v0.2.54/cw-v0.2.54-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = 266a6a2e226a488033d29c2638ae08a28209f2e70e19c2e139f0a6a6bef026da
-	source_aarch64 = https://github.com/codewiresh/codewire/releases/download/v0.2.54/cw-v0.2.54-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = 0aea2f1d1feb259a480f70ee4efe8c733632c7ef82cc1eb5eb0a770a22d2874f
+	source_x86_64 = https://github.com/codewiresh/codewire/releases/download/v0.2.55/cw-v0.2.55-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = 3c07a11d0de90b793b082fe17794f4f5c232af05fc271386e69850638bf95652
+	source_aarch64 = https://github.com/codewiresh/codewire/releases/download/v0.2.55/cw-v0.2.55-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = 7e688246bc95e0f9ead8e66d6ea4ebd84dfe6e062eeec667a1691f0382d82280
 
 pkgname = codewire-bin
