@@ -1,6 +1,6 @@
 pkgbase = linux-hardened-git
 	pkgdesc = Security-Hardened Linux
-	pkgver = 6.18.15.r1401918.gdbbf7a8a4996
+	pkgver = 6.18.15.r1401916.g1172ec0fe8d2
 	pkgrel = 1
 	url = https://github.com/anthraxx/linux-hardened
 	arch = x86_64
@@ -26,18 +26,19 @@ pkgbase = linux-hardened-git
 	options = !debug
 	options = !strip
 	source = linux-hardened::git+https://github.com/anthraxx/linux-hardened#branch=6.18?signed
-	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = E240B57E2C4630BA768E2F26FC1B547C8D8172C8
 	sha256sums = SKIP
-	sha256sums = f241ded1d5a873a2887ccfac3e6ff9b535fd75da59affb5c27c652c2a374dbd0
+	source_x86_64 = config.x86_64
+	sha256sums_x86_64 = f241ded1d5a873a2887ccfac3e6ff9b535fd75da59affb5c27c652c2a374dbd0
 
 pkgname = linux-hardened-git
 	pkgdesc = The Security-Hardened Linux kernel and modules
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
+	optdepends = linux-hardened-headers-git: headers and scripts for building modules
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = scx-scheds: to use sched-ext schedulers
 	optdepends = wireless-regdb: to set the correct wireless channels of your country
@@ -51,7 +52,7 @@ pkgname = linux-hardened-git
 pkgname = linux-hardened-headers-git
 	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux kernel
 	depends = pahole
-	provides = linux-hardened-headers
+	provides = LINUX-HEADERS
 
 pkgname = linux-hardened-docs-git
 	pkgdesc = Documentation for the Security-Hardened Linux kernel

@@ -6,11 +6,13 @@
 pkgbase=linux-hardened-git
 _srcname=${pkgbase/-git/}
 _gitbranch=6.18
-pkgver=6.18.15.r1401918.gdbbf7a8a4996
+pkgver=6.18.15.r1401916.g1172ec0fe8d2
 pkgrel=1
 pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
-arch=(x86_64)
+arch=(
+  x86_64
+)
 license=(GPL-2.0-only)
 makedepends=(
   bc
@@ -40,15 +42,15 @@ options=(
 )
 source=(
   "${_srcname}::git+https://github.com/anthraxx/linux-hardened#branch=${_gitbranch}?signed"
-  config  # the main kernel config file
 )
+source_x86_64=(config.x86_64)
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
   E240B57E2C4630BA768E2F26FC1B547C8D8172C8  # Levente Polyak
 )
-sha256sums=('SKIP'
-            'f241ded1d5a873a2887ccfac3e6ff9b535fd75da59affb5c27c652c2a374dbd0')
+sha256sums=('SKIP')
+sha256sums_x86_64=('f241ded1d5a873a2887ccfac3e6ff9b535fd75da59affb5c27c652c2a374dbd0')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -84,9 +86,9 @@ prepare() {
   done
 
   echo "Setting config..."
-  cp ../config .config
+  cp ../config.$CARCH .config
   make olddefconfig
-  diff -u ../config .config || :
+  diff -u ../config.$CARCH .config || :
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -95,7 +97,7 @@ prepare() {
 build() {
   cd $_srcname
 
-  make htmldocs &
+  make htmldocs SPHINXOPTS=-QT &
   local pid_docs=$!
 
   make all
@@ -111,6 +113,7 @@ _package() {
     kmod
   )
   optdepends=(
+    "$_srcname-headers-git: headers and scripts for building modules"
     'linux-firmware: firmware images needed for some devices'
     'scx-scheds: to use sched-ext schedulers'
     'wireless-regdb: to set the correct wireless channels of your country'
@@ -147,28 +150,37 @@ _package() {
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
   depends=(pahole)
+  provides=(LINUX-HEADERS)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
+
+  local karch
+  case $CARCH in
+    x86_64) karch=x86 ;;
+    *) echo "Unknown CARCH $CARCH"; exit 1 ;;
+  esac
 
   echo "Installing build files..."
   install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
     localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
   install -Dt "$builddir/kernel" -m644 kernel/Makefile
-  install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
+  install -Dt "$builddir/arch/$karch" -m644 arch/$karch/Makefile
   cp -t "$builddir" -a scripts
   ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
 
-  # required when STACK_VALIDATION is enabled
-  install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+  if [[ $(scripts/config -s CONFIG_HAVE_STACK_VALIDATION) = y ]]; then
+    install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+  fi
 
-  # required when DEBUG_INFO_BTF_MODULES is enabled
-  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  if [[ $(scripts/config -s CONFIG_DEBUG_INFO_BTF_MODULES) = y ]]; then
+    install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+  fi
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
-  cp -t "$builddir/arch/x86" -a arch/x86/include
-  install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
+  cp -t "$builddir/arch/$karch" -a arch/$karch/include
+  install -Dt "$builddir/arch/$karch/kernel" -m644 arch/$karch/kernel/asm-offsets.s
 
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
@@ -188,8 +200,10 @@ _package-headers() {
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
   # echo "Installing Rust files..."
+  # if [[ $(scripts/config -s CONFIG_RUST) = y ]]; then
   # install -Dt "$builddir/rust" -m644 rust/*.rmeta
   # install -Dt "$builddir/rust" rust/*.so
+  # fi
 
   echo "Installing unstripped VDSO..."
   make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
@@ -198,7 +212,7 @@ _package-headers() {
   echo "Removing unneeded architectures..."
   local arch
   for arch in "$builddir"/arch/*/; do
-    [[ $arch = */x86/ ]] && continue
+    [[ $arch = */$karch/ ]] && continue
     echo "Removing $(basename "$arch")"
     rm -r "$arch"
   done
