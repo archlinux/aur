@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/tachtler/FooterMilter.git"
 license=('Apache-2.0')
 depends=('java-runtime>=1.8')
-backup=('etc/FooterMilter/footermilter.ini')
+backup=(etc/FooterMilter/footermilter.ini)
 makedepends=('git')
 source=("git+https://github.com/tachtler/FooterMilter.git")
 sha256sums=('SKIP')
