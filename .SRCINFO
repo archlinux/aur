@@ -1,0 +1,18 @@
+pkgbase = modelsdev-git
+	pkgdesc = Browse AI models, benchmarks, and coding agents from the terminal
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/arimxyer/models
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = modelsdev
+	provides = models
+	conflicts = modelsdev
+	conflicts = modelsdev-bin
+	source = git+https://github.com/arimxyer/models.git
+	sha256sums = SKIP
+
+pkgname = modelsdev-git
