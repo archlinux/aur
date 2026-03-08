@@ -1,7 +1,7 @@
 pkgbase = venera-bin
 	pkgdesc = A comic reader that support reading local and network comics.
-	pkgver = 1.6.2
-	pkgrel = 2
+	pkgver = 1.6.3
+	pkgrel = 1
 	url = https://github.com/venera-app/venera
 	arch = x86_64
 	license = GPL-3.0-only
@@ -19,8 +19,7 @@ pkgbase = venera-bin
 	depends = pango
 	depends = webkit2gtk-4.1
 	conflicts = venera
-	options = !debug
-	source = https://github.com/venera-app/venera/releases/download/v1.6.2/venera_1.6.2_amd64.deb
-	sha256sums = b95880aff16f9e19e81b2d17885923aae00bb679223723827315c0ed4e269620
+	source = https://github.com/venera-app/venera/releases/download/v1.6.3/venera_1.6.3_amd64.deb
+	sha256sums = c34f1ebed62dfcafe78dc83413347581dfdb90f144d2125fecfd5c2cd440805c
 
 pkgname = venera-bin
