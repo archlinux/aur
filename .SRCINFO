@@ -1,0 +1,21 @@
+pkgbase = sphereview-git
+	pkgdesc = Image viewer for 360° equirectangular photospheres and panoramas
+	pkgver = v0.1.6.r0.gfe0428b
+	pkgrel = 1
+	url = https://github.com/dynobo/sphereview
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = blueprint-compiler
+	makedepends = rust
+	makedepends = npm
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	depends = webkitgtk-6.0
+	provides = sphereview-git
+	conflicts = sphereview-git
+	source = git+https://github.com/dynobo/sphereview
+	sha256sums = SKIP
+
+pkgname = sphereview-git
