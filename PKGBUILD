@@ -1,7 +1,7 @@
 # Maintainer: lingdianshiren <ldsrwu@foxmail.com>
 
 pkgname=fluxdown-bin
-pkgver=0.1.26
+pkgver=0.1.27
 pkgrel=1
 #epoch=
 pkgdesc="A Rust-powered download manager with HTTP, FTP, BitTorrent and HLS/DASH streaming support. Smart multi-threaded acceleration, seamless browser integration, beautiful interface — free forever, zero ads."
@@ -15,10 +15,8 @@ source=(
   "https://fluxdown.zerx.dev/api/download/FluxDown-${pkgver}-linux-x64.tar.gz"
   "LICENSE.html"
 )
-sha256sums=(
-  "a2d300efdb7f66adcd2a2c97dd7e44d2119332ba6f6685c0d7759d7be677f5cd"
-  "c0c71478dc43ef82e440c31ba4115547e19c72c6e40b1aa6941e40bf47ccf8ee"
-)
+sha256sums=('fcc652efd22824056d46cab1dc068aea663b9fa8849c9c266b7975623e5e1a16'
+            'c0c71478dc43ef82e440c31ba4115547e19c72c6e40b1aa6941e40bf47ccf8ee')
 options=(!strip)
 package() {
   install -d "$pkgdir/opt/$pkgname"

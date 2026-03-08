@@ -1,15 +1,15 @@
 pkgbase = fluxdown-bin
 	pkgdesc = A Rust-powered download manager with HTTP, FTP, BitTorrent and HLS/DASH streaming support. Smart multi-threaded acceleration, seamless browser integration, beautiful interface — free forever, zero ads.
-	pkgver = 0.1.26
+	pkgver = 0.1.27
 	pkgrel = 1
 	url = https://fluxdown.zerx.dev/
 	arch = x86_64
 	license = LicenseRef-custom
 	depends = gtk3
 	options = !strip
-	source = https://fluxdown.zerx.dev/api/download/FluxDown-0.1.26-linux-x64.tar.gz
+	source = https://fluxdown.zerx.dev/api/download/FluxDown-0.1.27-linux-x64.tar.gz
 	source = LICENSE.html
-	sha256sums = a2d300efdb7f66adcd2a2c97dd7e44d2119332ba6f6685c0d7759d7be677f5cd
+	sha256sums = fcc652efd22824056d46cab1dc068aea663b9fa8849c9c266b7975623e5e1a16
 	sha256sums = c0c71478dc43ef82e440c31ba4115547e19c72c6e40b1aa6941e40bf47ccf8ee
 
 pkgname = fluxdown-bin
