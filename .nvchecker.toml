@@ -1,0 +1,5 @@
+[aic-bin]
+source = "github"
+github = "arimxyer/aic"
+use_latest_release = true
+prefix = "v"
