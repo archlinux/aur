@@ -8,7 +8,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 _pkgname="rapidraw"
 pkgname="$_pkgname-git"
 pkgdesc="GPU-accelerated RAW image editor"
-pkgver=1.5.0.r0.gb417f4a
+pkgver=1.5.1.r0.g24e0e69+718400a
 pkgrel=1
 url="https://github.com/CyberTimon/RapidRAW"
 license=('AGPL-3.0-only')
@@ -45,14 +45,16 @@ prepare() {
 
 pkgver() (
   cd "$srcdir/$_pkgsrc"
-  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+  local _gitver _libhash
+  _gitver=$(git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
+    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g')
+  _rawler_hash=$(git -C src-tauri/rawler rev-parse --short=7 HEAD)
+  printf '%s+%s' "$_gitver" "$_rawler_hash"
 )
 
 build() {
-  local _nproc=$(nproc)
-  export CARGO_PROFILE_RELEASE_LTO=false
-  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$((_nproc > 16 ? _nproc : 16))
+  local _units=$(OMP_NUM_THREADS=16 nproc --all)
+  export RUSTFLAGS="-C opt-level=2 -C codegen-units=$_units -C lto=off"
 
   cd "$_pkgsrc"
   npm install
