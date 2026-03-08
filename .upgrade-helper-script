@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+source PKGBUILD
+wget --quiet https://codeload.github.com/lfe/lfe/zip/refs/heads/develop -O lfe-develop.zip
+unzip -qq lfe-develop.zip
+verpkg() {
+  cd "${pkgname%-git}-develop"
+  printf "r%s.%s"                  \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
+}
+target_ver=`verpkg`
+sed -i "s/'[a-z0-9]*\.[a-z0-9]*'/'${target_ver}'/" PKGBUILD
+makepkg --printsrcinfo > .SRCINFO
+rm -r lfe-develop*
