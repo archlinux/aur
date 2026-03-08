@@ -3,6 +3,7 @@ pkgname=music-tags
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="Desktop app for viewing and editing audio file metadata"
+url="https://github.com/Jelly-Fish-Dev/music-tags"
 arch=('any')
 license=('MIT')
 depends=('python' 'tk' 'python-pillow')
