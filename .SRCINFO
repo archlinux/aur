@@ -1,18 +1,18 @@
 pkgbase = kestrel-bin
 	pkgdesc = File encryption done right
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.0.3
+	pkgrel = 1
 	url = https://getkestrel.com
-	arch = x86_64
 	arch = aarch64
+	arch = x86_64
 	license = BSD-3-Clause
 	provides = kestrel
 	conflicts = kestrel
-	source = README-1.0.2.md::https://github.com/finfet/kestrel/raw/v1.0.2/README.md
-	sha256sums = f765d5b753c97aeaff2a856dffa575962101bcdc813bc8811d78ccfc2f8fff07
-	source_x86_64 = kestrel-1.0.2-x86_64.tar.gz::https://github.com/finfet/kestrel/releases/download/v1.0.2/kestrel-linux-v1.0.2-amd64.tar.gz
-	sha256sums_x86_64 = 8ca35dc478042a6b81bfe2b3a8cdf5344b3d5bf34e73ac46fdd7598a3e7e652b
-	source_aarch64 = kestrel-1.0.2-aarch64.tar.gz::https://github.com/finfet/kestrel/releases/download/v1.0.2/kestrel-linux-v1.0.2-arm64.tar.gz
-	sha256sums_aarch64 = 02b979b5770b234cf7d2336bc0521f9a7e36409f67aab467726346a3dfc50eaa
+	source = kestrel-1.0.3-README.md::https://github.com/finfet/kestrel/raw/refs/tags/v1.0.3/README.md
+	sha256sums = 070005204acc0d99c16bf12629fedcd092b610e67d1af325fa836815cd6a4a03
+	source_aarch64 = https://github.com/finfet/kestrel/releases/download/v1.0.3/kestrel-linux-v1.0.3-arm64.tar.gz
+	sha256sums_aarch64 = 32838890ef8b8f8a6dfcabd54ea831e046a8ae314ce140be1b963f23a88d0210
+	source_x86_64 = https://github.com/finfet/kestrel/releases/download/v1.0.3/kestrel-linux-v1.0.3-amd64.tar.gz
+	sha256sums_x86_64 = ec902fa8511c00eb5bddebf9cf32e988877e89a2c6304a92a5a6b95cafa647fa
 
 pkgname = kestrel-bin

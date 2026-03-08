@@ -1,4 +1,5 @@
 [kestrel-bin]
-source = "git"
-git = "https://github.com/finfet/kestrel.git"
+source = "github"
+github = "finfet/kestrel"
+use_latest_release = true
 prefix = "v"
