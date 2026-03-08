@@ -1,6 +1,6 @@
 pkgbase = kh-ucanfd
 	pkgdesc = KunHong UCANFD Linux driver
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://gitee.com/ChengDu-KunHong/KH-UCANFD_Linux_SDK
 	arch = x86_64
@@ -9,16 +9,21 @@ pkgbase = kh-ucanfd
 	depends = sh
 	depends = dkms
 	depends = glibc
+	depends = python
 	depends = popt
 	optdepends = can-utils: Linux-CAN / SocketCAN user space applications
-	source = KH-UCANFD_Linux_SDK-v1.3.0.zip::https://gitee.com/ChengDu-KunHong/KH-UCANFD_Linux_SDK/releases/download/v1.3.0/KH-UCANFD_Linux_SDK.zip
-	sha256sums = 4b4b1064e0de5d872f30ee7561df780c531946a3b9c85211f34d04f8a3da23d6
+	optdepends = python-can: Controller Area Network support for Python
+	optdepends = openarm-can: A C++ library for CAN communication with OpenArm robotic hardware, supporting Damiao motors over CAN/CAN-FD interfaces.
+	optdepends = python-openarm-can: Python bindings for the OpenArm CAN library, enabling easy integration and communication with OpenArm robotic hardware over CAN/CAN-FD interfaces.
+	source = KH-UCANFD_Linux_SDK-1.3.1.zip::https://gitee.com/ChengDu-KunHong/KH-UCANFD_Linux_SDK/releases/download/v1.3.1/KH-UCANFD_Linux_SDK.zip
+	sha256sums = fb90bc67803421a3fc8f60bf2d446777da9f145ac5c802982433e1e7c19a1bf9
 
 pkgname = kh-ucanfd
 	pkgdesc = KCAN-USB device firmware upgrade tool kit supports firmware version query, upgrade, APP switching and other functions.
 	arch = x86_64
 	depends = sh
 	depends = glibc
+	depends = python
 	provides = kh-ucanfd
 	conflicts = kh-ucanfd
 

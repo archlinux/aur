@@ -2,7 +2,7 @@
 
 pkgbase=kh-ucanfd
 pkgname=(kh-ucanfd kh-ucanfd-dkms)
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 epoch=
 pkgdesc="KunHong UCANFD Linux driver"
@@ -13,24 +13,30 @@ depends=(
     sh
     dkms
     glibc
+    python
     popt
 )
 makedepends=(
     libarchive
 )
-optdepends=("can-utils: Linux-CAN / SocketCAN user space applications")
+optdepends=(
+    "can-utils: Linux-CAN / SocketCAN user space applications"
+    "python-can: Controller Area Network support for Python"
+    "openarm-can: A C++ library for CAN communication with OpenArm robotic hardware, supporting Damiao motors over CAN/CAN-FD interfaces."
+    "python-openarm-can: Python bindings for the OpenArm CAN library, enabling easy integration and communication with OpenArm robotic hardware over CAN/CAN-FD interfaces."
+)
 backup=()
 options=()
 install=
 _name=KH-UCANFD_Linux_SDK
 source=(
-    "${_name}-v${pkgver}.zip::${url}/releases/download/v${pkgver}/${_name}.zip"
+    "${_name}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_name}.zip"
 )
-sha256sums=('4b4b1064e0de5d872f30ee7561df780c531946a3b9c85211f34d04f8a3da23d6')
+sha256sums=('fb90bc67803421a3fc8f60bf2d446777da9f145ac5c802982433e1e7c19a1bf9')
 noextract=()
 
 build() {
-    cd ${srcdir}/${_name}-v${pkgver}
+    cd ${srcdir}/${_name}-${pkgver}
     sed -i -e 's|sudo ||g' \
         -e 's|$(INSTALL_DIR)|$(DESTDIR)$(INSTALL_DIR)|g' \
         -e 's|$(SCRIPT_DIR)|$(DESTDIR)$(SCRIPT_DIR)|g' \
@@ -54,10 +60,11 @@ package_kh-ucanfd() {
     depends=(
         sh
         glibc
+        python
     )
     arch=($CARCH)
 
-    cd ${srcdir}/${_name}-v${pkgver}
+    cd ${srcdir}/${_name}-${pkgver}
 
     make -C tools/fw_tool/ PREFIX="/usr" DESTDIR="$pkgdir" install
     make -C KH-socket-can-test INSTALL_DIR="/usr/bin" DESTDIR="$pkgdir" install
@@ -78,7 +85,7 @@ package_kh-ucanfd-dkms() {
     )
     arch=(any)
 
-    cd ${srcdir}/${_name}-v${pkgver}/driver
+    cd ${srcdir}/${_name}-${pkgver}/driver
 
     install -Dm0755 kcanosdiag.sh -t ${pkgdir}/usr/bin/
     install -Dm0755 lskcan -t ${pkgdir}/usr/bin/
@@ -132,5 +139,5 @@ DEST_MODULE_LOCATION[0]="/updates"
 AUTOINSTALL="yes"
 EOF
 
-    install -Dm644 "${srcdir}"/${_name}-v${pkgver}/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}"/${_name}-${pkgver}/LICENSE* -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
