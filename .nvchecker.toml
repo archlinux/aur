@@ -1,0 +1,4 @@
+[matchmaker-bin]
+source = "github"
+github = "Squirreljetpack/matchmaker"
+use_latest_release = true

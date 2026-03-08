@@ -1,0 +1,19 @@
+pkgbase = matchmaker-bin
+	pkgdesc = A fuzzy searcher, powered by nucleo and written in rust
+	pkgver = 0.0.10
+	pkgrel = 1
+	url = https://github.com/Squirreljetpack/matchmaker
+	arch = x86_64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	provides = mm
+	conflicts = matchmaker
+	source = README-0.0.10.md::https://raw.githubusercontent.com/Squirreljetpack/matchmaker/0.0.10/matchmaker-cli/README.md
+	source = LICENSE-0.0.10::https://raw.githubusercontent.com/Squirreljetpack/matchmaker/0.0.10/matchmaker-lib/LICENSE
+	sha256sums = 8e91917c622a42809fae03a23f6e4b3dd5f0d5353593a919498bdd7233215777
+	sha256sums = d0b72bc24eb472035c25af6eff3946409fe62609ce40cfd21746af992cf8a8d4
+	source_x86_64 = matchmaker-x86_64-0.0.10.tgz::https://github.com/Squirreljetpack/matchmaker/releases/download/0.0.10/matchmaker-linux.tar.gz
+	sha256sums_x86_64 = 9a512e435f22e3f881c382b79e64c3d7ec0506cead15097ab1855ba105031154
+
+pkgname = matchmaker-bin
