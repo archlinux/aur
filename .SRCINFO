@@ -1,6 +1,6 @@
 pkgbase = grabchars-bin
 	pkgdesc = Get keystrokes directly from user - interactive terminal input for shell scripts
-	pkgver = 2.0.1
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/DanielSmith/grabchars
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = grabchars-bin
 	license = Apache-2.0
 	provides = grabchars
 	conflicts = grabchars
-	source_x86_64 = grabchars-2.0.1-x86_64.tar.gz::https://github.com/DanielSmith/grabchars/releases/download/v2.0.1/grabchars-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 8be33210502654d1709f1165643505316772fc78e5235b388bfe38246b32f977
-	source_aarch64 = grabchars-2.0.1-aarch64.tar.gz::https://github.com/DanielSmith/grabchars/releases/download/v2.0.1/grabchars-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 659e4f75e3d0427869f6293359ed172d0ec4832e0323ef222ac33c421f0f6826
+	source_x86_64 = grabchars-2.1.0-x86_64.tar.gz::https://github.com/DanielSmith/grabchars/releases/download/v2.1.0/grabchars-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 160068be71deaba073dd3232c923094943ac41a4c7114d59acaac382944da278
+	source_aarch64 = grabchars-2.1.0-aarch64.tar.gz::https://github.com/DanielSmith/grabchars/releases/download/v2.1.0/grabchars-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 1aa5b1a34bbf52a322ce3aabbbfe6287826e7f44c55201c37c5fd70c456a0012
 
 pkgname = grabchars-bin
