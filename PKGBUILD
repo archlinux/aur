@@ -6,6 +6,7 @@ pkgver=r29.f2286a9
 pkgrel=1
 pkgdesc='aprs.fi APRS symbol set, high-resolution, vector'
 arch=('any')
+makedepends=('git')
 url='https://github.com/hessu/aprs-symbols'
 license=('custom')
 source=(
