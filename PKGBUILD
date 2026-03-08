@@ -10,8 +10,8 @@ pkgdesc="Lisp Flavoured Erlang"
 url='http://lfe.io/'
 arch=('x86_64')
 license=('Apache_v2')
-depends=('erlang-nox' 'rebar')
-makedepends=('pandoc')
+depends=('erlang')
+makedepends=('make')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=('git+https://github.com/lfe/lfe.git#branch=develop')
@@ -19,31 +19,18 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-
   printf "r%s.%s"                  \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  cd "${pkgname%-git}"
-
-  make
-}
-
 package () {
   cd "${pkgname%-git}"
-
   make PREFIX="${pkgdir}/usr" install
-
   cd "${pkgdir}"/usr/bin
-
-  # Properly symlink lfe binaries:
   for link in *; do
     ln -sfv "../lib/lfe/bin/${link}" "${link}"
   done
-
-  # Remove useless files / folders:
   rm -rv "${pkgdir}/usr/share/man/cat1"
   rm -rv "${pkgdir}/usr/share/man/cat3"
   rm -rv "${pkgdir}/usr/share/man/cat7"

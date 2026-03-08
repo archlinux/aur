@@ -6,9 +6,8 @@ pkgbase = lfe-git
 	url = http://lfe.io/
 	arch = x86_64
 	license = Apache_v2
-	makedepends = pandoc
-	depends = erlang-nox
-	depends = rebar
+	makedepends = make
+	depends = erlang
 	provides = lfe
 	conflicts = lfe
 	source = git+https://github.com/lfe/lfe.git#branch=develop
