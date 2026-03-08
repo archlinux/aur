@@ -1,0 +1,11 @@
+--- qtwebkit-2.3.4/Source/WTF/wtf/gobject/GOwnPtr.h
++++ qtwebkit-2.3.4/Source/WTF/wtf/gobject/GOwnPtr.h
+@@ -28,8 +28,6 @@
+ #include <wtf/Assertions.h>
+ #include <wtf/Noncopyable.h>
+ 
+-extern "C" void g_free(void*);
+-
+ namespace WTF {
+ 
+ template <typename T> inline void freeOwnedGPtr(T* ptr);

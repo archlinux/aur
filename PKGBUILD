@@ -3,41 +3,37 @@
 
 pkgname=qtwebkit
 pkgver=2.3.4
-pkgrel=9
+pkgrel=10
 arch=('i686' 'x86_64')
 url='http://trac.webkit.org/wiki/QtWebKit'
 pkgdesc='An open source web browser engine (Qt port)'
-license=('LGPL2.1' 'GPL3')
+license=('LGPL-2.1-or-later' 'GPL-3.0-or-later')
 depends=('fontconfig' 'gcc-libs' 'glib2' 'glibc' 'gst-plugins-base-libs' 'gstreamer'
          'libglvnd' 'libjpeg-turbo' 'libpng' 'libx11' 'libxrender' 'qt4' 'sqlite'
          'systemd-libs' 'zlib')
-makedepends=('gperf' 'python2' 'ruby')
+makedepends=('git' 'gperf' 'python' 'ruby')
 conflicts=('qt<4.8')
 _qtver=4.8.7
 source=("https://sources.archlinux.org/other/packages/${pkgname}/${pkgname}-${pkgver}.tar.xz"
         "https://download.qt.io/archive/qt/4.8/${_qtver}/qt-everywhere-opensource-src-${_qtver}.tar.gz"
-        "https://src.fedoraproject.org/rpms/qtwebkit/raw/rawhide/f/webkit-qtwebkit-23-gcc5.patch"
-        "https://src.fedoraproject.org/rpms/qtwebkit/raw/rawhide/f/webkit-qtwebkit-23-glib2.patch"
-        "https://src.fedoraproject.org/rpms/qtwebkit/raw/rawhide/f/qtwebkit-bison-3.7.patch"
-        'use-python2.patch' 'qwebview.patch' 'fix-build-in-usr.patch')
+        "git+https://src.fedoraproject.org/rpms/qtwebkit.git#commit=fb37b4c762fe55ed2236e9b815e16587caa6043d"
+        'fix-build-in-usr.patch' 'fix-g_free.patch' 'qwebview.patch')
 sha1sums=('31bc60de1cf26bb0766d539b4d564651ddbb0650'
           '76aef40335c0701e5be7bb3a9101df5d22fe3666'
-          '4b3f92a914674ef311b2a7c0ca329d01e1af76cf'
-          '67a3f86a7981be01baa507bbd091be048cdf18af'
-          '77b258bd267b070f21f4b7d5b480238c300020fb'
-          '315b6ff603f35e5492a036f7082f6aa075dfb607'
-          'c3df6107233f466a032e36681cee07f16536657c'
-          '412a58db507fa14268c9f30627d62fd448f9dccb')
+          '9460a62908dc2f81d3490ccdac19ca5ea13bc285'
+          '412a58db507fa14268c9f30627d62fd448f9dccb'
+          'fcfa5e79f6d405c70c7227864623ec20f5fc05f2'
+          'c3df6107233f466a032e36681cee07f16536657c')
 
 prepare() {
 	cd "${pkgname}"-"${pkgver}"
-	patch -p1 -i "${srcdir}"/use-python2.patch
 	patch -p1 -i "${srcdir}"/fix-build-in-usr.patch
+	patch -p1 -i "${srcdir}"/fix-g_free.patch
 
-	# Fix build on Arch using additional patched (from Fedora)
-	patch -p1 -i "${srcdir}"/webkit-qtwebkit-23-gcc5.patch
-	patch -p1 -i "${srcdir}"/webkit-qtwebkit-23-glib2.patch
-	patch -p1 -i "${srcdir}"/qtwebkit-bison-3.7.patch
+	# Use Fedora patches for fixes, Python 3 compatibility, etc.
+	for p in "${srcdir}"/qtwebkit/*.patch; do
+		patch -p1 -i "${p}"
+	done
 
 	cd ../qt-everywhere-opensource-src-"${_qtver}"
 	patch -p1 -i "${srcdir}"/qwebview.patch
