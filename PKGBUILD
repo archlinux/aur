@@ -1,6 +1,7 @@
 # Maintainer: goetzc
 # Maintainer: James P. Harvey <jamespharvey20 at gmail dot com>
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
+# Maintainer: gesh <gesh@gesh.uni.cx>
 
 pkgname=python-spotipy
 _pkgname="${pkgname#python-}"
