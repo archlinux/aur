@@ -1,7 +1,7 @@
 pkgbase = openscreen-git
 	pkgdesc = Create stunning screen recordings for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio.
-	pkgver = r231.87735c2
-	pkgrel = 1
+	pkgver = r261.9540a8c
+	pkgrel = 2
 	url = https://github.com/siddharthvaddem/openscreen
 	arch = x86_64
 	license = MIT
