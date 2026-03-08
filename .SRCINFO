@@ -1,6 +1,6 @@
 pkgbase = prs-scan
 	pkgdesc = Defensive-first web security scanner
-	pkgver = 2.1.1
+	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/MOYARU/prs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = prs-scan
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = git+https://github.com/MOYARU/prs.git#tag=v2.1.1
+	source = git+https://github.com/MOYARU/prs.git#tag=v1.5.0
 	sha256sums = SKIP
 
 pkgname = prs-scan

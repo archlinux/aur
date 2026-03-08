@@ -1,5 +1,5 @@
 pkgname=prs-scan
-pkgver=2.1.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Defensive-first web security scanner"
 arch=('x86_64' 'aarch64')
