@@ -5,7 +5,7 @@ _pkgname=batctl
 pkgname=${_pkgname}-tui-bin
 pkgdesc="TUI and CLI tool for managing battery charge thresholds on Linux laptops"
 
-pkgver=2026.3.6
+pkgver=2026.3.7
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -30,8 +30,8 @@ sha256sums=('04e57bd3e7164f66c9d351879eba829498f85a4e790d058aa106bc5244c895c0'
             '48fc4ed0c9295d3785a935cb975db515b89a8c1a2832567fa87d257309917ce3'
             'ae662942ce66e7c646933ec28eda787d4e9854d4ebd7edd0231fad44358447de'
             'e952d16b4353c9cfcce380fe9a51b101985b6c4a2ea74dd57344e35899c852df')
-sha256sums_x86_64=('3904eb3313c07cb4b23f95e8e0741a14eabdc8f9b23e1a9c6792d0dceb14b254')
-sha256sums_aarch64=('920486392985a7bb389951a6d634eb6d635f73749e59dae365d106146b611267')
+sha256sums_x86_64=('adb863875b851ba3aa1525f2b647c2ef1cd10474179f71e6275aca6e978a1652')
+sha256sums_aarch64=('05690c786704f957d778c438bee41ddbd98c820c9dc0ff31a79b685775095391')
 
 
 package() {
