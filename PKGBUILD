@@ -4,7 +4,7 @@
 # Contributor: Mick Elliot <micke at sfu dot ca>
 # Contributor: Michael Gruz <michael.gruz at gmail dot com>
 
-pkgbase=mafft-git
+pkgbase=mafft
 pkgname=('mafft-git' 'mafft-extensions-git' 'mafft-mpi-git')
 pkgver=7.526.r2.g0a2319b
 pkgrel=1
@@ -12,8 +12,8 @@ arch=('x86_64')
 url='https://mafft.cbrc.jp/alignment/software'
 license=('BSD')
 makedepends=('make' 'openmpi')
-provides=(${pkgname%-git})
-conflicts=(${pkgname%-git})
+provides=(${pkgbase})
+#conflicts=(${pkgbase})
 #source=("${pkgbase}-${pkgver}.tgz::https://gitlab.com/sysimm/mafft/-/archive/v${pkgver}/mafft-v${pkgver}.tar.gz")
 #sha1sums=('98d36d806bc215bb1f32143b4090e90d6a073062')
 #source=("${pkgbase}-${pkgver}.tgz::git+https://gitlab.com/sysimm/mafft.git")
