@@ -1,6 +1,6 @@
 pkgbase = arch-smart-update
 	pkgdesc = Not sure when to update Arch Linux or its derivative? This script will help you decide!
-	pkgver = 2.6.2
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/motorrin/Arch_Smart_Update
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = arch-smart-update
 	optdepends = yay: AUR helper support
 	optdepends = paru: AUR helper support
 	optdepends = topgrade: for comprehensive system updates
-	source = https://github.com/motorrin/Arch_Smart_Update/archive/refs/tags/v2.6.2.tar.gz
-	sha256sums = ccc6d8c8f49f7c13876c9be92e8e88b1dda5f66fc48bc8c3c4e784cbee2f0ddb
+	source = https://github.com/motorrin/Arch_Smart_Update/archive/refs/tags/v2.7.1.tar.gz
+	sha256sums = 0dff0e0e025f06ff2a546764dd4dcabc1060009f335651dfc997981a168b45c8
 
 pkgname = arch-smart-update
