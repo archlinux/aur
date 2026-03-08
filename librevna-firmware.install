@@ -1,0 +1,20 @@
+post_install() {
+  cat <<'EOF'
+
+LibreVNA firmware files installed.
+
+Firmware location:
+  /usr/share/librevna/firmware/
+
+Update procedure:
+  LibreVNA-GUI -> Device -> Firmware Update
+
+Documentation:
+  /usr/share/doc/librevna-firmware/README
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
