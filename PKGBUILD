@@ -1,6 +1,6 @@
 # Maintainer: cacarico <https://github.com/cacarico>
 pkgname=hyprlua-git
-pkgver=0.0.1.r0.g2a9022b
+pkgver=0.0.1.r4.g7d00dc0
 pkgrel=1
 pkgdesc="Lua 5.4 scripting support for Hyprland via hyprland.lua config"
 arch=('x86_64')
