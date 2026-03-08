@@ -17,26 +17,22 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  # Check if tags exist before using git describe
+
+  # 1. Explicitly check if git-describe works
   if git describe --long --tags >/dev/null 2>&1; then
+    # It worked! Now we can safely pipe it to sed.
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   else
-    # Fallback if no tags exist
+    # It failed! Now we provide the absolute fallback.
     printf "0.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
 }
 
 package() {
   cd "$_pkgname"
-  
-  # Install the main binary
   install -Dm755 bin/sonic-tte "$pkgdir/usr/bin/sonic-tte"
-  
-  # Install helper scripts and assets to /usr/share/sonic-tte/
   install -Dm755 bin/center_text.py "$pkgdir/usr/share/$_pkgname/center_text.py"
   install -Dm644 share/fonts/Delta-Corps-Priest-1.flf "$pkgdir/usr/share/$_pkgname/fonts/Delta-Corps-Priest-1.flf"
   install -Dm644 share/sonic-tte.conf.example "$pkgdir/usr/share/$_pkgname/sonic-tte.conf.example"
-  
-  # Install license
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
