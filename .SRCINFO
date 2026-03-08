@@ -1,0 +1,18 @@
+pkgbase = mx-locale
+	pkgdesc = GUI configuration tool for locales
+	pkgver = 26.03
+	pkgrel = 1
+	url = https://github.com/MX-Linux/mx-locale
+	arch = x86_64
+	arch = i686
+	license = LGPL3
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = glibc
+	depends = qt6-base
+	depends = polkit
+	source = https://github.com/MX-Linux/mx-locale/archive/refs/tags/26.03.tar.gz
+	sha256sums = 9190a083a233d7e4d6abd5dbd39535600024fc5625aa79bc8d60c38b20194bdd
+
+pkgname = mx-locale
