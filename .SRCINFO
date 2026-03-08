@@ -1,0 +1,16 @@
+pkgbase = llog-bin
+	pkgdesc = A command-line diary for developers and minimalists
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/thdxg/llog
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = llog
+	conflicts = llog
+	source_x86_64 = llog-x86_64-0.0.6.tgz::https://github.com/thdxg/llog/releases/download/v0.0.6/llog_0.0.6_linux_amd64.tar.gz
+	sha256sums_x86_64 = 12e1cb9c9b333f15fd54df4a50656aa771f0ce324c2979d36dc6629c11192f93
+	source_aarch64 = llog-aarch64-0.0.6.tgz::https://github.com/thdxg/llog/releases/download/v0.0.6/llog_0.0.6_linux_arm64.tar.gz
+	sha256sums_aarch64 = da12fac3df49c83fb6bb3df54fd88e30c802e2c8134b4c7fff9747665dd04375
+
+pkgname = llog-bin

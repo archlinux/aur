@@ -1,0 +1,5 @@
+[llog-bin]
+source = "github"
+github = "thdxg/llog"
+use_latest_release = true
+prefix = "v"
