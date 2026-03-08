@@ -1,6 +1,6 @@
 pkgbase = upnote-bin
 	pkgdesc = A modern note-taking app with Markdown support
-	pkgver = 9.16.2
+	pkgver = 9.17.4
 	pkgrel = 1
 	url = https://getupnote.com/
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = upnote-bin
 	provides = upnote
 	conflicts = upnote
 	conflicts = upnote-appimage
-	noextract = UpNote-9.16.2.AppImage
+	noextract = UpNote-9.17.4.AppImage
 	options = !strip
-	source = UpNote-9.16.2.AppImage::https://download.getupnote.com/app/UpNote.AppImage
+	source = UpNote-9.17.4.AppImage::https://download.getupnote.com/app/UpNote.AppImage
 	source = upnote.desktop
-	sha256sums = fc135d1913645ef814b5034385ce49160c03f87cf4380501434671f352f4c1d2
+	sha256sums = 773e80e30081c3e8feb5aefd1854f3d420b2b940c387e0e004036768b08e1398
 	sha256sums = b40297727050ae7e01632053e1de4437982cc9495ba0ab3cb67f0ebc583ec8c7
 
 pkgname = upnote-bin

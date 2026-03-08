@@ -1,7 +1,8 @@
-# Maintainer: tychy
+# Maintainer: Devel <Denislav08@proton.me>
+# Contributor: tychy
 
 pkgname=upnote-bin
-pkgver=9.16.2
+pkgver=9.17.4
 pkgrel=1
 pkgdesc="A modern note-taking app with Markdown support"
 arch=('x86_64')
@@ -13,7 +14,7 @@ conflicts=('upnote' 'upnote-appimage')
 options=('!strip')
 source=("UpNote-${pkgver}.AppImage::https://download.getupnote.com/app/UpNote.AppImage"
         "upnote.desktop")
-sha256sums=('fc135d1913645ef814b5034385ce49160c03f87cf4380501434671f352f4c1d2'
+sha256sums=('773e80e30081c3e8feb5aefd1854f3d420b2b940c387e0e004036768b08e1398'
             'b40297727050ae7e01632053e1de4437982cc9495ba0ab3cb67f0ebc583ec8c7')
 noextract=("UpNote-${pkgver}.AppImage")
 
