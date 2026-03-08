@@ -1,0 +1,25 @@
+pkgbase = pipette-desktop-git
+	pkgdesc = Pipette — Vial-compatible keyboard configurator (Git version)
+	pkgver = 0.3.1.r3.gc15f8ee
+	pkgrel = 1
+	url = https://github.com/darakuneko/pipette-desktop
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = pnpm
+	makedepends = python
+	makedepends = make
+	makedepends = gcc
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = mesa
+	provides = pipette-desktop
+	conflicts = pipette-desktop-bin
+	options = !strip
+	source = git+https://github.com/darakuneko/pipette-desktop.git
+	sha256sums = SKIP
+
+pkgname = pipette-desktop-git
