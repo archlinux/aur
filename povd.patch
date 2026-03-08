@@ -411,7 +411,7 @@ index e933b3da03..b8e8709be5 100644
      void filterByActivityChanged() const;
      void filterByRegionChanged();
 diff --git a/libtaskmanager/virtualdesktopinfo.cpp b/libtaskmanager/virtualdesktopinfo.cpp
-index 60c5f5a8ae..2faa2fe6fe 100644
+index 60c5f5a8ae..871ef3b329 100644
 --- a/libtaskmanager/virtualdesktopinfo.cpp
 +++ b/libtaskmanager/virtualdesktopinfo.cpp
 @@ -18,6 +18,7 @@
@@ -474,7 +474,7 @@ index 60c5f5a8ae..2faa2fe6fe 100644
  int VirtualDesktopInfo::XWindowPrivate::numberOfDesktops() const
  {
      return KX11Extras::numberOfDesktops();
-@@ -281,13 +297,61 @@ protected:
+@@ -281,13 +297,56 @@ protected:
      }
  };
  
@@ -490,7 +490,6 @@ index 60c5f5a8ae..2faa2fe6fe 100644
 +    {
 +        wl_proxy_destroy(reinterpret_cast<wl_proxy *>(object()));
 +    }
-+    QString uuid;
 +    QString name;
 +    QString activeDesktopId;
 +Q_SIGNALS:
@@ -499,10 +498,6 @@ index 60c5f5a8ae..2faa2fe6fe 100644
 +    void activeDesktopChanged(QString activeDesktopId);
 +
 +protected:
-+    void org_kde_plasma_output_virtual_desktop_uuid(const QString &uuid) override
-+    {
-+        this->uuid = uuid;
-+    }
 +    void org_kde_plasma_output_virtual_desktop_name(const QString &name) override
 +    {
 +        this->name = name;
@@ -537,7 +532,7 @@ index 60c5f5a8ae..2faa2fe6fe 100644
      {
          connect(this, &QWaylandClientExtension::activeChanged, this, [this] {
              if (!isActive()) {
-@@ -301,10 +365,13 @@ public:
+@@ -301,10 +360,13 @@ public:
              wl_proxy_destroy(reinterpret_cast<wl_proxy *>(object()));
          }
      }
@@ -551,7 +546,7 @@ index 60c5f5a8ae..2faa2fe6fe 100644
      void done();
  
  protected:
-@@ -324,6 +391,31 @@ protected:
+@@ -324,6 +386,31 @@ protected:
      {
          Q_EMIT done();
      }
@@ -569,10 +564,10 @@ index 60c5f5a8ae..2faa2fe6fe 100644
 +            &PlasmaOutputVirtualDesktop::done,
 +            this,
 +            [this, outputVdPtr]() {
-+                QString uuid = outputVdPtr->uuid;
-+                connect(outputVdPtr, &PlasmaOutputVirtualDesktop::removed, this, [this, uuid]() {
-+                    std::erase_if(outputs, [uuid](const std::unique_ptr<PlasmaOutputVirtualDesktop> &outputVd) {
-+                        return outputVd->uuid == uuid;
++                QString name = outputVdPtr->name;
++                connect(outputVdPtr, &PlasmaOutputVirtualDesktop::removed, this, [this, name]() {
++                    std::erase_if(outputs, [name](const std::unique_ptr<PlasmaOutputVirtualDesktop> &outputVd) {
++                        return outputVd->name == name;
 +                    });
 +                });
 +            },
@@ -583,7 +578,7 @@ index 60c5f5a8ae..2faa2fe6fe 100644
  };
  
  class Q_DECL_HIDDEN VirtualDesktopInfo::WaylandPrivate : public VirtualDesktopInfo::Private
-@@ -342,6 +434,7 @@ public:
+@@ -342,6 +429,7 @@ public:
      void init() override;
      void addDesktop(const QString &id, quint32 position);
      QVariant currentDesktop() const override;
@@ -591,7 +586,7 @@ index 60c5f5a8ae..2faa2fe6fe 100644
      int numberOfDesktops() const override;
      QVariantList desktopIds() const override;
      QStringList desktopNames() const override;
-@@ -378,6 +471,11 @@ void VirtualDesktopInfo::WaylandPrivate::init()
+@@ -378,6 +466,11 @@ void VirtualDesktopInfo::WaylandPrivate::init()
              rows = 0;
              virtualDesktops.clear();
              currentVirtualDesktop.clear();
@@ -603,7 +598,7 @@ index 60c5f5a8ae..2faa2fe6fe 100644
              Q_EMIT currentDesktopChanged();
              Q_EMIT numberOfDesktopsChanged();
              Q_EMIT navigationWrappingAroundChanged();
-@@ -428,6 +526,10 @@ void VirtualDesktopInfo::WaylandPrivate::init()
+@@ -428,6 +521,10 @@ void VirtualDesktopInfo::WaylandPrivate::init()
              Q_EMIT desktopPositionsChanged();
          }
      });
@@ -614,7 +609,7 @@ index 60c5f5a8ae..2faa2fe6fe 100644
  }
  
  void VirtualDesktopInfo::WaylandPrivate::addDesktop(const QString &id, quint32 position)
-@@ -461,6 +563,20 @@ QVariant VirtualDesktopInfo::WaylandPrivate::currentDesktop() const
+@@ -461,6 +558,20 @@ QVariant VirtualDesktopInfo::WaylandPrivate::currentDesktop() const
      return currentVirtualDesktop;
  }
  
@@ -635,7 +630,7 @@ index 60c5f5a8ae..2faa2fe6fe 100644
  int VirtualDesktopInfo::WaylandPrivate::numberOfDesktops() const
  {
      return virtualDesktops.size();
-@@ -562,6 +678,7 @@ VirtualDesktopInfo::VirtualDesktopInfo(QObject *parent)
+@@ -562,6 +673,7 @@ VirtualDesktopInfo::VirtualDesktopInfo(QObject *parent)
      }
  
      connect(d, &VirtualDesktopInfo::Private::currentDesktopChanged, this, &VirtualDesktopInfo::currentDesktopChanged);
@@ -643,7 +638,7 @@ index 60c5f5a8ae..2faa2fe6fe 100644
      connect(d, &VirtualDesktopInfo::Private::numberOfDesktopsChanged, this, &VirtualDesktopInfo::numberOfDesktopsChanged);
      connect(d, &VirtualDesktopInfo::Private::desktopIdsChanged, this, &VirtualDesktopInfo::desktopIdsChanged);
      connect(d, &VirtualDesktopInfo::Private::desktopNamesChanged, this, &VirtualDesktopInfo::desktopNamesChanged);
-@@ -583,6 +700,23 @@ QVariant VirtualDesktopInfo::currentDesktop() const
+@@ -583,6 +695,23 @@ QVariant VirtualDesktopInfo::currentDesktop() const
      return d->currentDesktop();
  }
  
