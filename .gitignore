@@ -1,1 +1,6 @@
 note
+pkg/
+src/
+*.dmg
+*.pkg.tar
+*.html

@@ -2,7 +2,7 @@
 _pkgname=zalo
 pkgname=zalo-macos
 provides=(zalo)
-pkgver=25.11.20
+pkgver=26.1.20
 pkgrel=1
 epoch=1
 pkgdesc="Unofficial Zalo client for Linux, ported from MacOS version"
@@ -25,11 +25,12 @@ source=(
     "LICENSE.html::https://zalo.vn/dieukhoan"
 )
 noextract=("zalo.dmg")
-sha256sums=('4232e917d134f40897032e3be0ff1697f39cd0531965f5b9a491bb1b8c2a86a9'
-            '3c54d9828c0e4b763226516ab1d7984c72777e70165983795f5d77c8db93fec9'
-            '1d193ab57424a663d0f1180219a7dd8454ba325fdcc75fa0eb4b343e733e32a0'
-            '54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445'
-            'SKIP'
+sha256sums=(
+    '3e9f64585ff45cede2be62fc6b05324c3861be407e0831fc63897f60a272585c'
+    '3c54d9828c0e4b763226516ab1d7984c72777e70165983795f5d77c8db93fec9'
+    '1d193ab57424a663d0f1180219a7dd8454ba325fdcc75fa0eb4b343e733e32a0'
+    '54556414e921d2e72db65cdace024251c05e31ce2e1aa3db82aa330436815445'
+    'SKIP'
 )
 options=('!strip' '!purge')
 prepare() {
