@@ -4,12 +4,12 @@ pkgname=sunshine-beta-bin
 _pkgname=sunshine-beta-bin
 pkgver=2026.307.191712
 _gittag=v$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hosted game stream host for Moonlight"
 url="https://app.lizardbyte.dev"
 source=(
     "$_pkgname-$pkgver.pkg.tar.zst"::"https://github.com/LizardByte/Sunshine/releases/download/$_gittag/sunshine-$pkgver-1-x86_64.pkg.tar.zst"
-    "$_pkgname-$pkgver.desktop"::"https://github.com/LizardByte/Sunshine/commits/master/packaging/linux/dev.lizardbyte.app.Sunshine.desktop"
+    "$_pkgname-$pkgver.desktop"::"https://github.com/LizardByte/Sunshine/blob/master/packaging/linux/dev.lizardbyte.app.Sunshine.desktop"
     "sunshine-capabilities.hook"
 )
 arch=('x86_64')
