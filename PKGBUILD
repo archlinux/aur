@@ -2,7 +2,7 @@
 # Previous : Alex Henrie <alexhenrie24@gmail.com>
 
 pkgname=esp-idf
-pkgver=5.5.2
+pkgver=5.5.3
 pkgrel=1
 pkgdesc="Espressif IoT Development Framework. Official development framework for ESP32."
 arch=('i686' 'x86_64' 'aarch' 'aarch64' 'armv7h')
@@ -29,4 +29,4 @@ package() {
 	mkdir -p ${pkgdir}/opt/esp-idf
 	cp -R . ${pkgdir}/opt/esp-idf
 }
-sha256sums=('2c7b0f38185a74eac04f1a7c7e09786cac5e271f76ffc4e672c2e5735e626e1d')
+sha256sums=('d16e6b57b1df1a523aff6a1d0ef2f99cf058cb71e73f694429769eaaea171428')
