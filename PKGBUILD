@@ -5,7 +5,7 @@ _pkgname=gitv
 pkgname=${_pkgname}-bin
 pkgdesc="A terminal-based viewer for GitHub issues"
 
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 _pkgvername=gitv-tui-v${pkgver}
 
@@ -27,8 +27,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
 sha256sums=('29a3ccf767afca6f642e0443f5a5ff56fcee3270981be4aa8ca806976cd552ab'
             'a200714fe406a47e3884b5ecbd250df63d8687399ba8f0f10f50f32d384c673a')
-sha256sums_x86_64=('b9bd82d4f5139ee4cabe7de27d1dca189bc6798abff1635c32067a2a513627fe')
-sha256sums_aarch64=('bea44499f5f29996561412bdcf53a4eb5705b6f0acfab1e9770e0da5721b551c')
+sha256sums_x86_64=('b480bc3d3d9049d2370b3d22bf968ba038f965ad6f66c7f39e9cab648f7160e7')
+sha256sums_aarch64=('47345f22dfe5700ecf1a5648665303c43e6bc6b9118ce6c5a155df6b42a7bbf3')
 
 
 package() {
