@@ -1,0 +1,17 @@
+pkgbase = steam-grunge-editor
+	pkgdesc = Grunge-style Steam artwork editor — create distressed covers, heroes, logos and icons for your Steam library
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Huzzama/Steam-Grunge
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	depends = python>=3.10
+	depends = python-pip
+	depends = python-virtualenv
+	depends = libgl
+	optdepends = steam: sync artwork directly to Steam
+	source = steam-grunge-editor-1.0.0.tar.gz::https://github.com/Huzzama/Steam-Grunge/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = ac61cc2a7c82e47f2e3a075b4c781751e83a71a9c4d85149ebe723de47c8e5b8
+
+pkgname = steam-grunge-editor
