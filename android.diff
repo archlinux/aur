@@ -1,0 +1,66 @@
+diff --git a/lib/gif/build.gradle.kts b/lib/gif/build.gradle.kts
+index 511c1a4..11ffd2e 100644
+--- a/lib/gif/build.gradle.kts
++++ b/lib/gif/build.gradle.kts
+@@ -4,7 +4,6 @@ import okio.buffer
+ import okio.source
+ 
+ plugins {
+-    alias(libs.plugins.androidLibrary)
+     alias(libs.plugins.kotlinMultiplatform)
+     alias(libs.plugins.kotlinSerialization)
+     alias(libs.plugins.spotless)
+@@ -15,42 +14,6 @@ version = "1.0"
+ 
+ fun prop(key: String) = project.findProperty(key) as String
+ 
+-android {
+-    ndkVersion = "29.0.14206865"
+-    namespace = "top.kagg886.gif"
+-
+-    compileSdk = prop("TARGET_SDK").toInt()
+-
+-    defaultConfig {
+-        minSdk = prop("MIN_SDK").toInt()
+-        externalNativeBuild {
+-            cmake {
+-                targets += "cargo-build_gif_rust"
+-            }
+-        }
+-        ndk {
+-            // 只支持arm64和x64
+-            abiFilters += listOf("arm64-v8a", "x86_64")
+-        }
+-    }
+-
+-    buildTypes {
+-        release {
+-            isMinifyEnabled = false
+-            proguardFiles(
+-                getDefaultProguardFile("proguard-android-optimize.txt"),
+-                "proguard-rules.pro",
+-            )
+-        }
+-    }
+-
+-    externalNativeBuild {
+-        cmake {
+-            path = File("src/rust/CMakeLists.txt")
+-        }
+-    }
+-}
+-
+ val kotlinArchToRustArch = mapOf(
+     "iosArm64" to "aarch64-apple-ios",
+     "iosSimulatorArm64" to "aarch64-apple-ios-sim",
+@@ -74,10 +37,6 @@ kotlin {
+         }
+     }
+ 
+-    androidTarget {
+-        publishLibraryVariants("release")
+-    }
+-
+     sourceSets {
+         commonMain.dependencies {
+             implementation(libs.kermit)

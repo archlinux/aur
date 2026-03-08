@@ -1,6 +1,6 @@
 _pkgname=pixiv-multiplatform
 pkgname=pixiv-multiplatform-git
-pkgver=1.8.2
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="基于Kotlin技术栈的全平台的第三方pixiv客户端"
 url="https://pmf.kagg886.top"
@@ -9,6 +9,12 @@ arch=(any)
 makedepends=(jdk17-openjdk rust)
 source=("git+https://github.com/magic-cucumber/Pixiv-MultiPlatform.git")
 sha512sums=(SKIP)
+
+prepare(){
+    cd Pixiv-MultiPlatform
+#     patch -p1 <../../cn.diff  # 使用 maven.aliyun.com
+    patch -p1 <../../android.diff
+}
 
 build(){
     cd Pixiv-MultiPlatform

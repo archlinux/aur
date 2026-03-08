@@ -1,0 +1,32 @@
+diff --git a/settings.gradle.kts b/settings.gradle.kts
+index 6fdf967..6fccd09 100644
+--- a/settings.gradle.kts
++++ b/settings.gradle.kts
+@@ -10,8 +10,8 @@ pluginManagement {
+                 includeGroupAndSubgroups("com.google")
+             }
+         }
+-        mavenCentral()
+-        gradlePluginPortal()
++        maven("https://maven.aliyun.com/repository/central")
++        maven("https://maven.aliyun.com/repository/gradle-plugin")
+     }
+ }
+ plugins {
+@@ -22,14 +22,8 @@ dependencyResolutionManagement {
+     repositories {
+         maven("https://oss.sonatype.org/content/repositories/snapshots/")
+         mavenLocal()
+-        google {
+-            mavenContent {
+-                includeGroupAndSubgroups("androidx")
+-                includeGroupAndSubgroups("com.android")
+-                includeGroupAndSubgroups("com.google")
+-            }
+-        }
+-        mavenCentral()
++        maven("https://maven.aliyun.com/repository/google")
++        maven("https://maven.aliyun.com/repository/central")
+         maven("https://jogamp.org/deployment/maven")
+     }
+ }
