@@ -3,7 +3,7 @@
 pkgbase=python-stwcs
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=1.7.6
+pkgver=1.7.7
 pkgrel=1
 pkgdesc="WCS based distortion models and coordinate transformation"
 arch=('any')
@@ -20,7 +20,7 @@ checkdepends=('python-pytest'
               'python-lxml'
               'python-requests')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a8b336d68fae30af73484f449e7fa03a')
+md5sums=('be697f569d46950c55d8885c2794cead')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
