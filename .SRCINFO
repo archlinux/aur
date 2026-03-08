@@ -1,10 +1,10 @@
 pkgbase = openmeters-git
-	pkgdesc = A fast and simple audio metering/visualization program for Linux.
+	pkgdesc = Fast and professional audio metering/visualization for Linux.
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/httpsworldview/openmeters
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cargo
 	makedepends = pkgconf
