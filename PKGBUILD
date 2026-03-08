@@ -1,9 +1,9 @@
 # Contributor: Dan Beste <dan.ray.beste@gmail.com>
 # Contributor: anekos <anekos@snca.net>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: sonofaglitch <sonofaglitch@mailbox.org>
 
 pkgname=lfe-git
-pkgver='r11.50f3ec4'
+pkgver='r12.539d87c'
 pkgrel=1
 epoch=1
 pkgdesc="Lisp Flavoured Erlang"
