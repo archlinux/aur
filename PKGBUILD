@@ -1,6 +1,6 @@
 # Maintainer: Jaka Polesnik <polesnik.jaka@gmail.com>
 pkgname=portage-manifest
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A unified package browser for Arch Linux - search official repos, AUR, and Flatpak with beautiful README rendering"
 arch=('x86_64')

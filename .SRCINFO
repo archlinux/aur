@@ -1,6 +1,6 @@
 pkgbase = portage-manifest
 	pkgdesc = A unified package browser for Arch Linux - search official repos, AUR, and Flatpak with beautiful README rendering
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Pol-Jak-295/portage-manifest
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = portage-manifest
 	depends = pacman
 	depends = yay
 	depends = flatpak
-	source = portage-manifest-1.0.0.tar.gz::https://github.com/Pol-Jak-295/portage-manifest/archive/refs/tags/v1.0.0.tar.gz
+	source = portage-manifest-1.0.1.tar.gz::https://github.com/Pol-Jak-295/portage-manifest/archive/refs/tags/v1.0.1.tar.gz
 	source = portage-manifest.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
