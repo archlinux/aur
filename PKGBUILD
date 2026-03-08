@@ -6,7 +6,7 @@ _pkgname=ggc
 pkgname=${_pkgname}-bin
 pkgdesc="A modern Git CLI tool with both traditional command-line and interactive incremental-search UI"
 
-pkgver=8.0.1
+pkgver=8.1.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,9 +25,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('b95b1591a73837d47364bc900f794047eac4579dfd2340a126de68682939c04d')
-sha256sums_i686=('e41b2754ee7a5293dfee7942d4e0097e9337e166eb050752103271f1538df942')
-sha256sums_aarch64=('4866e07cf78a79905f7cd966c8d35a298907f3a006ca640ad3507b166e29ea96')
+sha256sums_x86_64=('fde8afceb26ff5064ccd8dfb824cff6e6d1a1da2c6a0a3969ebd68035f696a4d')
+sha256sums_i686=('6ae7bacb60158666adcd2bd49a3aa50137de85e1ecac35786f7af27a8dbba050')
+sha256sums_aarch64=('e498dada859a622f203462f2322a5b753ba2b2acea16151db722503157cf397b')
 
 
 package() {
