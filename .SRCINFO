@@ -1,25 +1,25 @@
 pkgbase = arctime
-	pkgdesc = A Simple, powerful and efficient cross-platform subtitle production software
-	pkgver = 3.1.1
+	pkgdesc = A simple, powerful and efficient cross-platform subtitle production software
+	pkgver = 4.5
 	pkgrel = 1
-	url = http://arctime.org
-	arch = i686
+	url = https://arctime.cn
 	arch = x86_64
 	license = custom
-	depends = ffmpeg
-	depends = java-runtime=8
-	depends = vlc
-	source = ARCTIME_PRO_3.1.1_LINUX.7z::https://t.arctime.cn/ap2x
+	depends = mpv
+	depends = java-runtime
+	options = !strip
+	options = !debug
+	source = https://dlm.arctime.pro/ARCTIME_PRO_4.5_LINUX.7z
+	source = arctime.desktop
 	source = 16x16.png
 	source = 24x24.png
 	source = 32x32.png
 	source = 48x48.png
-	source = arctime.desktop
-	sha256sums = 7b45dde078ec213fa101ecabdc477b554b6e815c69abe6e99ae3049a4da1046b
+	sha256sums = 4f8ba8bb0ab17ba2645f29b38ddf52eb3d44e2df492527a6f390676a84ff120a
+	sha256sums = e51a09ab47c28cd40dccd09d91f865e788e01b9aa21686a14efe520243b5688d
 	sha256sums = 9f490a4fc4d4f15e31b15e84717e11ce794e908055484f22d02aa0a166093677
 	sha256sums = 406a3953b7b5d54814f6613f23badc0eff04909688d67295371aeeead862ae85
 	sha256sums = fcd6ecf0a786658968d0c8747b860b5238c0df73c873642dd7ce5fca186d2122
 	sha256sums = c9bc9ac2ffdc703b672c1f918ea4d48479693bdc69dfd346a077547de47ce7d1
-	sha256sums = a044211ac433add27c66cb5850ec2d0bf5e001ef5aa97a79d43ae542267fb0ef
 
 pkgname = arctime
