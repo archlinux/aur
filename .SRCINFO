@@ -1,7 +1,7 @@
 pkgbase = sonic-tte-git
 	pkgdesc = Animated terminal media screensaver using TerminalTextEffects
 	pkgver = 0.1.r0.g0000000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shmall03/sonic-tte
 	arch = any
 	license = GPL3

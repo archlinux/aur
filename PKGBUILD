@@ -3,7 +3,7 @@
 _pkgname=sonic-tte
 pkgname=$_pkgname-git
 pkgver=0.1.r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="Animated terminal media screensaver using TerminalTextEffects"
 arch=('any')
 url="https://github.com/shmall03/sonic-tte"
@@ -17,15 +17,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-
-  # 1. Explicitly check if git-describe works
-  if git describe --long --tags >/dev/null 2>&1; then
-    # It worked! Now we can safely pipe it to sed.
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-  else
-    # It failed! Now we provide the absolute fallback.
-    printf "0.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  fi
+  # Most robust way: get count and hash separately. 
+  # No pipes, no sed, no tags required.
+  local _count=$(git rev-list --count HEAD)
+  local _hash=$(git rev-parse --short HEAD)
+  printf "0.1.r%s.g%s" "$_count" "$_hash"
 }
 
 package() {
