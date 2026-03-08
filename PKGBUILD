@@ -10,7 +10,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 _pkgname="rapidraw"
 pkgname="$_pkgname"
 pkgdesc="GPU-accelerated RAW image editor"
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 url="https://github.com/CyberTimon/RapidRAW"
 license=('AGPL-3.0-only')
@@ -36,7 +36,7 @@ source=(
   "$_pkgname-rawler-${_commit_rawler::7}.$_pkgext"::"https://github.com/CyberTimon/RapidRAW-DngLab/archive/${_commit_rawler}.$_pkgext"
 )
 sha256sums=(
-  '48f4d19ff1ec7f4fb1383ba76f5fdcc8894e3a02a376ff25d5bb273a4e6b4d57'
+  'a4e5494e20eeb0d8c303767ce4c02c8831880b7b22e3553af90ee6a53bcd3051'
   '354318d3c1bbdf64b0d2e0f8afaefc304895937656f0d8b76b2e103e2a46dc93'
 )
 
@@ -49,9 +49,8 @@ prepare() {
 }
 
 build() {
-  local _nproc=$(nproc)
-  export CARGO_PROFILE_RELEASE_LTO=false
-  export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=$((_nproc > 16 ? _nproc : 16))
+  local _units=$(OMP_NUM_THREADS=16 nproc --all)
+  export RUSTFLAGS="-C opt-level=2 -C codegen-units=$_units -C lto=off"
 
   cd "$_pkgsrc"
   npm install
