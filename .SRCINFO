@@ -1,6 +1,6 @@
 pkgbase = notification-tray-git
 	pkgdesc = FreeDesktop-compliant notification daemon with grouping, DnD, batching, and persistence
-	pkgver = r81.a291c2a
+	pkgver = latest
 	pkgrel = 1
 	url = https://github.com/ctrl-q/notification-tray
 	install = notification-tray.install
