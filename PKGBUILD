@@ -3,14 +3,14 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=shiny
-_pkgver=1.12.1
+_pkgver=1.13.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Web Application Framework for R"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
-license=('GPL-3.0-only AND MIT AND BSD-3-Clause AND Apache-2.0 AND GPL-2.0-or-later')
+license=('MIT')
 depends=(
   r-bslib
   r-cachem
@@ -63,8 +63,8 @@ optdepends=(
   r-otelsdk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('10bbe8880aac8ad4336f8d83f9b36495')
-b2sums=('d39a43ad1a30c66d4bb26ec8f09166a9a0e43637a36ebebf923051a9851a86b2482598c12936f8bbaf28202935eec39a0e44cb95143a38cb47d0288b46da8243')
+md5sums=('855af399bccf9df94450f850580012e5')
+b2sums=('f004ab7b4d5390d7e65f63136b0894bdb4a4cf8aa90da946e8a8e565823be996f5c95c7715c8cc7e4a03146b02ec2b8d3237295ae06ac7e58165fc26d86f50d0')
 
 build() {
   mkdir build
