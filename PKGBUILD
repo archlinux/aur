@@ -1,7 +1,7 @@
 # Maintainer: fft
 # Contributor: George Stelle <stelleg@gmail.com>
 pkgname=argobots-git
-pkgver=v1.2.r4.gbb6faac
+pkgver=v1.2.r15.gbffdf56
 pkgrel=1
 pkgver() {
   cd "${pkgname}"
@@ -9,7 +9,7 @@ pkgver() {
 }
 pkgdesc='Lightweight, low-level threading and tasking framework'
 arch=('x86_64')
-url="argobots.org"
+url='https://argobots.org'
 license=('LicenseRef-UChicago-Argonne')
 source=("${pkgname}"::git+https://github.com/pmodels/argobots.git)
 md5sums=('SKIP')
@@ -18,7 +18,7 @@ makedepends=(automake autoconf git libtool)
 build() {
   cd "${pkgname}"
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --disable-checks --prefix=/usr
   make
 }
 
