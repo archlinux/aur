@@ -1,6 +1,6 @@
 pkgbase = opencode-gemini-auth
 	pkgdesc = Google Gemini OAuth Plugin for opencode
-	pkgver = 1.4.7
+	pkgver = 1.4.8
 	pkgrel = 1
 	url = https://github.com/jenslys/opencode-gemini-auth
 	install = opencode-gemini-auth.install
@@ -11,7 +11,7 @@ pkgbase = opencode-gemini-auth
 	conflicts = opencode-gemini-auth-debug
 	options = !strip
 	options = !debug
-	source = opencode-gemini-auth-1.4.7.tar.gz::https://github.com/jenslys/opencode-gemini-auth/archive/refs/tags/v1.4.7.tar.gz
-	sha256sums = 47cf40bd885ed9f648408368ad6714d515c9de086edc1796aceff2edfec41643
+	source = opencode-gemini-auth-1.4.8.tar.gz::https://github.com/jenslys/opencode-gemini-auth/archive/refs/tags/v1.4.8.tar.gz
+	sha256sums = 462b5ed53983d7a9c86061a74b901ddfeb89c22e4f1660cf15f566e6ada1c59b
 
 pkgname = opencode-gemini-auth
