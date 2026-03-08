@@ -23,12 +23,16 @@ depends=(
 )
 makedepends=(
   'cmake>=2.8.12'
+  'git'
 )
-_pkgsrc="${url##*/}-${_pkgver}"
+_pkgsrc="${url##*/}"
 source=(
-  "${url}/archive/refs/tags/v${_pkgver}/${_pkgsrc}.tar.gz"
+  "${_pkgsrc}::git+${url}.git#tag=v${_pkgver}?signed"
 )
-b2sums=('5276e060b0e72ad5fb7a10a746d4e219cc7be36c10318692d6b08dae25faa6074defed31275ddbf8f7d2d8b7b89bcd46040a2f85ff440d646771607e874a779a')
+b2sums=('4a3f8bb003fd9c304d1c88f202f3abb93ca023c4e283fcacb7fce6b9fbbeda4220622e4a7b2fc2af088b7073d23ec70be5ca73b178ac97dfbef3d45389f5101b')
+validpgpkeys=(
+  '2D58709F32193AA828ED43D72DBD7F9150AB7E67' # Kavish Devar (GitHub Signing Key) <mail@kavishdevar.me>
+)
 
 build() {
   local cmake_options=(
