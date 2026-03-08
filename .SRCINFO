@@ -1,6 +1,6 @@
 pkgbase = imapfilter
 	pkgdesc = A mail filtering utility for processing IMAP mailboxes
-	pkgver = 2.8.4
+	pkgver = 2.8.5
 	pkgrel = 1
 	url = https://github.com/lefcha/imapfilter
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = imapfilter
 	depends = pcre2
 	depends = openssl
 	optdepends = openssl: SSL/TLS encryption and CRAM-MD5 authentication
-	source = imapfilter-2.8.4.tar.gz::https://github.com/lefcha/imapfilter/archive/refs/tags/v2.8.4.tar.gz
-	sha256sums = 836cf14a9736d15b251952a84e01d641d7dce78a7be6be94220beee81414dbfb
+	source = imapfilter-2.8.5.tar.gz::https://github.com/lefcha/imapfilter/archive/refs/tags/v2.8.5.tar.gz
+	sha256sums = 81930d83c99a07305554b2fd283422aefb4f069e13cff971377f3f844e601424
 
 pkgname = imapfilter
