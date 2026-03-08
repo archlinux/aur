@@ -1,15 +1,15 @@
 pkgbase = gambit-c
-	pkgdesc = Efficient implementation of the Scheme programming language
+	pkgdesc = Gambit Scheme is a complete, portable, efficient and reliable implementation of the Scheme programming language.
 	pkgver = 4.9.7
-	pkgrel = 1
-	url = https://github.com/gambit/gambit
+	pkgrel = 2
+	url = https://gambitscheme.org/
 	arch = x86_64
 	license = Apache
 	license = LGPL
 	makedepends = git
 	options = staticlibs
 	options = !lto
-	source = https://gambitscheme.org/latest/gambit-v4_9_7.tgz
-	b2sums = e232c9e6529575cf3d677cc3e3fa2fa22545c5ef6805b992f1aa49a562ee114f285090812c399ae277a1ac2aa66774c99b62796cafd0a5bc35053000f40979d1
+	source = https://github.com/gambit/gambit/archive/refs/tags/v4.9.7.tar.gz
+	b2sums = 81c7848dc07bae8b23c97942c581f75abbc40070e7e60453f7d303c4310d93177d03effd2ea68176aab3b75a66489d2a3d3a9f682a44f90b62fb9e8558e9e7b1
 
 pkgname = gambit-c
