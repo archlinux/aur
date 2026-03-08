@@ -1,0 +1,12 @@
+post_install() {
+  echo ">>> KeyResolve requires access to input devices."
+  echo ">>> 1. Add your user to the 'input' group:"
+  echo ">>>    sudo usermod -aG input \$USER"
+  echo ">>> 2. Reload udev rules (or reboot):"
+  echo ">>>    sudo udevadm control --reload-rules && sudo udevadm trigger"
+  echo ">>> 3. Log out and back in for group changes to take effect."
+}
+
+post_upgrade() {
+  post_install
+}

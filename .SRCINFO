@@ -1,0 +1,19 @@
+pkgbase = keyresolve-git
+	pkgdesc = Snap Tap / SOCD-style keyboard input handling for Linux (Wayland & X11)
+	pkgver = r5.048c158
+	pkgrel = 1
+	url = https://github.com/Antosser/KeyResolve
+	install = keyresolve.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	provides = keyresolve
+	conflicts = keyresolve
+	source = keyresolve-git::git+https://github.com/Antosser/KeyResolve.git
+	sha256sums = SKIP
+
+pkgname = keyresolve-git
