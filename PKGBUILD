@@ -5,7 +5,7 @@
 
 # Maintainer: Hayden Johnson <hajohn100@gmail.com>
 pkgname=chessterm
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 epoch=
 pkgdesc="Play Chess in the terminal!"

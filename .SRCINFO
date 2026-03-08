@@ -1,11 +1,11 @@
 pkgbase = chessterm
 	pkgdesc = Play Chess in the terminal!
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/Chewt/chessterm
 	arch = x86_64
 	license = MIT
-	source = https://github.com/Chewt/chessterm/archive/refs/tags/v1.1.0.tar.gz
+	source = https://github.com/Chewt/chessterm/archive/refs/tags/v1.1.1.tar.gz
 	md5sums = SKIP
 
 pkgname = chessterm
