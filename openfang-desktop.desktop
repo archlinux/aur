@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=OpenFang
+GenericName=Agent Operating System
+Comment=Open-source Agent Operating System built in Rust
+Exec=openfang-desktop
+Icon=openfang-desktop
+Categories=Utility;Productivity;
+Keywords=ai;agent;openfang;
+StartupNotify=true
+StartupWMClass=openfang-desktop

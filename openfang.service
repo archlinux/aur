@@ -1,0 +1,34 @@
+[Unit]
+Description=OpenFang Agent OS Daemon
+Documentation=https://github.com/RightNow-AI/openfang
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=openfang
+Group=openfang
+ExecStart=/usr/bin/openfang start
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+
+# Environment
+EnvironmentFile=-/etc/openfang/env
+WorkingDirectory=/var/lib/openfang
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/openfang
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+MemoryDenyWriteExecute=false
+RestrictRealtime=true
+
+[Install]
+WantedBy=multi-user.target

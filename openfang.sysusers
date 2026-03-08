@@ -1,0 +1,2 @@
+# Type  Name      ID   GECOS              Home             Shell
+u       openfang  -    "OpenFang daemon"   /var/lib/openfang /usr/bin/nologin

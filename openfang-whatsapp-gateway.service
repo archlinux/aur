@@ -1,0 +1,25 @@
+[Unit]
+Description=OpenFang WhatsApp Gateway
+Documentation=https://openfang.sh
+After=network-online.target openfang.service
+Wants=network-online.target
+BindsTo=openfang.service
+
+[Service]
+Type=simple
+User=openfang
+Group=openfang
+EnvironmentFile=-/etc/openfang/env
+ExecStart=/usr/bin/openfang-whatsapp-gateway
+Restart=on-failure
+RestartSec=5s
+
+# Sandboxing
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/lib/openfang
+
+[Install]
+WantedBy=multi-user.target
