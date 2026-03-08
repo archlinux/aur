@@ -1,6 +1,6 @@
 pkgbase = untitled-imgui-framework
 	pkgdesc = Cross-platform desktop application framework based on dear imgui
-	pkgver = 2.4.0.0
+	pkgver = 2.4.9.0
 	pkgrel = 1
 	url = https://github.com/MadLadSquad/UntitledImGuiFramework
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = untitled-imgui-framework
 	provides = libUntitledImGuiFramework.so
 	provides = UVKBuildTool
 	provides = libUVKBuildToolLib.so
-	source = https://github.com/MadLadSquad/UntitledImGuiFramework/releases/download/v2.4.0.0/untitled-imgui-framework-2.4.0.0.tar.xz
-	sha256sums = 22d8db1517be653aa2a7c55213b3e8e045f68647c5d40226dcd00f99757531ad
+	source = https://github.com/MadLadSquad/UntitledImGuiFramework/releases/download/v2.4.9.0/untitled-imgui-framework-2.4.9.0.tar.xz
+	sha256sums = 7fc694f58a44047366c4af310923450757e02d4ded2ee493967677d9d2360481
 
 pkgname = untitled-imgui-framework
