@@ -1,0 +1,16 @@
+pkgbase = umanag
+	pkgdesc = A basic User Management tool for Unix using Zenity
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/example/umanag
+	arch = any
+	license = MIT
+	depends = bash
+	depends = zenity
+	depends = polkit
+	source = u_manag.sh
+	source = umanag.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = umanag
