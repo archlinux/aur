@@ -1,0 +1,14 @@
+pkgbase = arts
+	pkgdesc = Another Ridiculous Time Saver - an AUR helper
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Dronables/arts
+	arch = x86_64
+	license = GPL3
+	depends = git
+	depends = base-devel
+	depends = go
+	source = arts::git+https://github.com/Dronables/arts
+	md5sums = SKIP
+
+pkgname = arts
