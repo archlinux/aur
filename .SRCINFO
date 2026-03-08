@@ -1,0 +1,18 @@
+pkgbase = cftui-bin
+	pkgdesc = A terminal user interface (TUI) for managing Cloudflare DNS records (binary)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/devnullvoid/cloudflare-tui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = cftui
+	conflicts = cftui
+	conflicts = cftui-git
+	source_x86_64 = cftui_Linux_x86_64.tar.gz::https://github.com/devnullvoid/cloudflare-tui/releases/download/v0.2.0/cftui_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = cftui_Linux_arm64.tar.gz::https://github.com/devnullvoid/cloudflare-tui/releases/download/v0.2.0/cftui_Linux_arm64.tar.gz
+	sha256sums_aarch64 = SKIP
+
+pkgname = cftui-bin
