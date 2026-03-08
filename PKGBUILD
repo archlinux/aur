@@ -1,7 +1,7 @@
 # Maintainer: Murtaza Patel <murtazapatel89100@gmail.com>
 
 pkgname=filecraft-cli-bin
-pkgver=1.0.3
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="FileCraft CLI organizer (prebuilt binary)"
 arch=('x86_64')
