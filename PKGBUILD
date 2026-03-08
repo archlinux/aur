@@ -5,7 +5,7 @@
 pkgname=python-spotipy
 _pkgname="${pkgname#python-}"
 pkgver=2.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A light weight Python library for the Spotify Web API'
 arch=('any')
 url='https://github.com/spotipy-dev/spotipy'
