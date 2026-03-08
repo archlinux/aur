@@ -1,14 +1,14 @@
 pkgbase = lib32-avahi
 	pkgdesc = Service Discovery for Linux using mDNS/DNS-SD (compatible with Bonjour) (32-bit)
-	pkgver = 0.8+r194+g3f79789
-	pkgrel = 2
+	pkgver = 0.9rc3
+	pkgrel = 1
 	url = https://github.com/avahi/avahi
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	makedepends = glib2-devel
 	makedepends = lib32-gtk3
 	makedepends = lib32-libevent
-	depends = avahi>=0.8+r194+g3f79789
+	depends = avahi>=0.9rc3
 	depends = lib32-dbus>=0.34
 	depends = lib32-gdbm
 	depends = lib32-glib2>=2.4
@@ -23,9 +23,9 @@ pkgbase = lib32-avahi
 	provides = libavahi-libevent.so
 	provides = libavahi-ui-gtk3.so
 	provides = libdns_sd.so
-	source = avahi-3f79789c484518f82c36ff59c0f45abe7e6580a2.tar.gz::https://github.com/avahi/avahi/archive/3f79789c484518f82c36ff59c0f45abe7e6580a2.tar.gz
+	source = https://github.com/avahi/avahi/archive/refs/tags/v0.9-rc3/avahi-0.9-rc3.tar.gz
 	source = 0001-HACK-Install-fixes.patch
-	sha512sums = e81d7a2844ab539a348a074f8dbcb90bdde81876f918c6ec6f98bd54d33ccbe32b51d345e60680ecdd7801d473254d150a42abc392bec4672321d85a576c48bc
+	sha512sums = de4c2606ff63a22bf386fc1577621c67a3f1277071e4b4aa39c2eb3255cf7759679edfcb205cec2c89e67c798c4ab779a91971aa5dec74bcf08ed95567ae7c33
 	sha512sums = 0cbea74889b2f9d767ff6d8df93f020112eac5ca64a6b9f9ecf3dda1d1b5423a5fe0c46f3845351502ec6d990c51d58434c394182f159bccd38c38c2ddc65f6d
 
 pkgname = lib32-avahi
