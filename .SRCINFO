@@ -1,0 +1,20 @@
+pkgbase = keymux
+	pkgdesc = Keyboard middleware for gaming with low-level input interception
+	pkgver = 1.0.11
+	pkgrel = 1
+	url = https://github.com/fibsussy/keymux
+	install = keymux.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = systemd
+	depends = udev
+	depends = libevdev
+	optdepends = niri: automatic game mode detection in Niri compositor
+	options = !debug
+	source = https://github.com/fibsussy/keymux/releases/download/v1.0.11/keymux-1.0.11-x86_64.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/fibsussy/keymux/v1.0.11/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = keymux
