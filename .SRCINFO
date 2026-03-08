@@ -1,0 +1,14 @@
+pkgbase = libx360-git
+	pkgdesc = Tools for working with x360 format media.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/WilkerSebastian/libX360
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	source = libx360-git-1.0.0::git+https://github.com/WilkerSebastian/libX360.git#branch=main
+	sha256sums = SKIP
+
+pkgname = libx360-git
