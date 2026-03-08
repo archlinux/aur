@@ -1,7 +1,7 @@
 # Maintainer: Brandon <bmcomis2018@gmail.com>
 
 pkgname=diurnals
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Receive a daily popup to notify about upcoming Todoist tasks"
 arch=(any)
