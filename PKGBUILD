@@ -1,7 +1,7 @@
 # Maintainer: Xavier Francisco <echo moc.liamg@ocsicnarf.n.reivax | rev>
 
 pkgname=git-side
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A Git subcommand that versions files that should not live in the main repository"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('git' 'gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Solexma/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('8f60fdb4e828468da239e82fdb8e16194c93114691906aa1822cf3446a8c613a')
+sha256sums=('2338431bed14cf06f3966df6a7c39087d4536d3807b277a4a4ca87485a8a5809')
 
 prepare() {
   cd "$pkgname-$pkgver"
