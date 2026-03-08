@@ -44,9 +44,9 @@ package() {
 
     install -Dm644 mx-locale.desktop "${pkgdir}/usr/share/applications/mx-locale.desktop"
 
-    install -dm755 "${pkgdir}/usr/share/doc/mx-locale"
+    install -dm755 "${pkgdir}/usr/share/doc/mx-locale/help"
     if [ -d help ]; then
-        cp -r help/* "${pkgdir}/usr/share/doc/mx-locale/" 2>/dev/null || true
+        cp -r help/* "${pkgdir}/usr/share/doc/mx-locale/help/" 2>/dev/null || true
     fi
     install -Dm644 license.html "${pkgdir}/usr/share/doc/mx-locale/license.html"
     if [ -f debian/changelog ]; then
