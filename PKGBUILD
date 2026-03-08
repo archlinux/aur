@@ -3,13 +3,12 @@
 _pkgauthor=mcandre
 _pkgname=kirill
 pkgname=${_pkgname}-bin
-pkgver=0.0.7
+pkgver=0.0.9
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A JSON document integrity checker"
-arch=('x86_64' 'i686' 'aarch64')
-_barch=('x86_64' 'i686' 'aarch64')
-_clib='gnu'
+arch=('x86_64' 'aarch64')
+_barch=('x86_64-unknown-linux-musl' 'aarch64-unknown-linux-musl')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 license=('BSD-2-Clause')
@@ -18,14 +17,14 @@ provides=("${_pkgname}")
 depends=('glibc' 'gcc-libs')
 conflicts=("${_pkgname}"{,-git})
 
-source=("${_pkgname}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}.tgz"
-        "README-${pkgver}.md::${_urlraw}/README.md"
+source=("README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
-sha256sums=('af163b6e5a9939e17f5a9a9575d6412c48b9cd0768acc20e084f436b1030e1e1'
-            'a8e71254099fdc3ac4c0ae1387799a8926d2fcc611a7c44d251629e5812f980f'
-            '101d1171849ca84c68bc5a59bbd8e54f18a4f8ab7e9bdc3d3fdfb7c173ffbf7f')
-
-BIN_FOLDER="${_pkgname}-${pkgver}/${CARCH}-unknown-linux-${_clib}"
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tgz")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tgz")
+sha256sums=('5e1c9a99ffe544f91b0c409dd084a5f40392869152e2abc1e196764c94eacaf5'
+            '5891781734416d32b3ee9412671be9b1cab9310ccb9c20bacd435c4eb88f7861')
+sha256sums_x86_64=('eeccfbf8ae68e5ec4435d3835a139b6c306da41f142b5c97e4986e344a15f14d')
+sha256sums_aarch64=('604cf59b9df99bcde261f75592c05c9c26fbf9ebb60386034030eee63b48bf2f')
 
 package() {
 	cd "${srcdir}/" || exit
