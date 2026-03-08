@@ -1,21 +1,21 @@
-# Maintainer: Thomas Krug <t.krug@elektronenpumpe.de>
+# Maintainer: East Arctica <eastarctica@gmail.com>
 # Contributor: Thomas Krug <t.krug@elektronenpumpe.de>
 
 pkgname=mosquitto-git
 _pkgname=mosquitto
-pkgver=r2713.8589f082
-pkgrel=1
-pkgdesc="An Open Source MQTT v3.1 Broker"
+pkgver=r4725.b3b4d77e
+pkgrel=2
+pkgdesc="An open source MQTT broker"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-url="http://mosquitto.org/"
-depends=('openssl' 'cjson')
-makedepends=('mercurial' 'python' 'docbook-xsl')
+url="https://mosquitto.org/"
+depends=('openssl' 'cjson' 'libmicrohttpd')
+makedepends=('git' 'python' 'docbook-xsl')
 conflicts=('mosquitto')
 provides=('mosquitto')
 replaces=('mosquitto-hg')
 license=('EPL')
 install=$pkgname.install
-source=("$_pkgname::git://github.com/eclipse/mosquitto.git"
+source=("$_pkgname::git+https://github.com/eclipse-mosquitto/mosquitto.git"
         'mosquitto.service')
 md5sums=('SKIP'
          'bac7f1ff5c13b9e04e82c875c5f2c422')
