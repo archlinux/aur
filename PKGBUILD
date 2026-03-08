@@ -61,7 +61,7 @@ build() {
   export DOTNET_CLI_TELEMETRY_OPTOUT=1
   export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
   export AllowMissingPrunePackageData=true
-  npx tauri build -b deb || true  # signing error is expected (no TAURI_SIGNING_PRIVATE_KEY); deb is already built
+  npx tauri build -b deb
 }
 
 package() {
