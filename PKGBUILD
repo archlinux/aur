@@ -10,17 +10,18 @@ url="https://github.com/shmall03/sonic-tte"
 license=('GPL3')
 depends=('playerctl' 'figlet' 'python-terminaltexteffects')
 makedepends=('git')
-provides=("sonic-tte")
-conflicts=("sonic-tte")
-source=("sonic-tte::git+${url}.git")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$_pkgname::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "sonic-tte"
-  # Use git describe for better versioning, fallback to commit count
+  cd "$_pkgname"
+  # Check if tags exist before using git describe
   if git describe --long --tags >/dev/null 2>&1; then
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   else
+    # Fallback if no tags exist
     printf "0.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   fi
 }
@@ -28,7 +29,7 @@ pkgver() {
 package() {
   cd "$_pkgname"
   
-  # Install the main binary to /usr/bin/
+  # Install the main binary
   install -Dm755 bin/sonic-tte "$pkgdir/usr/bin/sonic-tte"
   
   # Install helper scripts and assets to /usr/share/sonic-tte/
