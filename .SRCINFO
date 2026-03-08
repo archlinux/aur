@@ -1,6 +1,6 @@
 pkgbase = r-shinymatrix
 	pkgdesc = Shiny Matrix Input Field
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=shinyMatrix
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r-shinymatrix
 	depends = r-shiny
 	optdepends = r-covr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/shinyMatrix_0.8.0.tar.gz
-	sha256sums = fc9dd16128b783cb2e09e24703fe76dcf0f3d7f76da07c04573b11d7038c9536
+	source = https://cran.r-project.org/src/contrib/shinyMatrix_0.8.1.tar.gz
+	sha256sums = f66b990fa2804c1b528e5345128949ebeb7af3f743a81955e86db60395f187ec
 
 pkgname = r-shinymatrix
