@@ -2,7 +2,7 @@
 
 pkgname=python-rodi
 _name=${pkgname#python-}
-pkgver=2.0.8
+pkgver=2.1.0
 pkgrel=1
 epoch=
 pkgdesc="Implementation of dependency injection for Python 3"
@@ -36,7 +36,7 @@ checkdepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('de122527dc6c0dd2d28bf57ac425b9dd22e37535fb1d7d22eadab0a079edcbe4')
+sha256sums=('7e1548361dcff5eb5e5228c752ed9a3ac1535cbdc1ba0561deeb63b686f069c5')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"

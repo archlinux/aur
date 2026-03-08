@@ -1,6 +1,6 @@
 pkgbase = python-rodi
 	pkgdesc = Implementation of dependency injection for Python 3
-	pkgver = 2.0.8
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://pypi.org/project/rodi
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-rodi
 	conflicts = python-rodi
 	options = !strip
 	options = !debug
-	source = rodi-2.0.8.tar.gz::https://files.pythonhosted.org/packages/source/r/rodi/rodi-2.0.8.tar.gz
-	sha256sums = de122527dc6c0dd2d28bf57ac425b9dd22e37535fb1d7d22eadab0a079edcbe4
+	source = rodi-2.1.0.tar.gz::https://files.pythonhosted.org/packages/source/r/rodi/rodi-2.1.0.tar.gz
+	sha256sums = 7e1548361dcff5eb5e5228c752ed9a3ac1535cbdc1ba0561deeb63b686f069c5
 
 pkgname = python-rodi
