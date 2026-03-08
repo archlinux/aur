@@ -6,21 +6,39 @@ pkgdesc="A unified package browser for Arch Linux - search official repos, AUR, 
 arch=('x86_64')
 url="https://github.com/Pol-Jak-295/portage-manifest"
 license=('CC-BY-NC')
-depends=('fuse2' 'electron' 'pacman' 'yay' 'flatpak')  # fuse2 needed for AppImage
-makedepends=()
-source=("$pkgname-$pkgver.AppImage::https://github.com/Pol-Jak-295/portage-manifest/releases/download/v$pkgver/Portage.Manifest-$pkgver.AppImage"
+depends=('pacman' 'yay' 'flatpak')
+makedepends=('npm' 'nodejs')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Pol-Jak-295/portage-manifest/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
 sha256sums=('SKIP'
             'SKIP')
 
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  npm install
+  npm run build  # or whatever your build script is (check package.json)
+}
+
 package() {
-  # Install AppImage
+  cd "$srcdir/$pkgname-$pkgver"
+
+  # Install the built app (adjust path based on your electron-builder output)
+  install -dm755 "$pkgdir/usr/lib/$pkgname"
+  cp -r dist/linux-unpacked/* "$pkgdir/usr/lib/$pkgname/"
+
+  # Wrapper script so it runs via system electron
   install -dm755 "$pkgdir/usr/bin"
-  install -Dm755 "$srcdir/$pkgname-$pkgver.AppImage" "$pkgdir/usr/bin/$pkgname"
-  
-  # Install desktop file
-  install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-  
-  # Optional: Install icon
-  # install -Dm644 "$srcdir/icon.svg" "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+exec electron /usr/lib/$pkgname/resources/app.asar "\$@"
+EOF
+  chmod 755 "$pkgdir/usr/bin/$pkgname"
+
+  # Desktop file
+  install -Dm644 "$pkgname.desktop" \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+  # Icon (uncomment if you have one)
+install -Dm644 "$pkgname.svg" \
+  "$pkgdir/usr/share/pixmaps/$pkgname.svg"
 }
