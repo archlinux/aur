@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Maintainer: Kaz Walker <me@kazatron.com>
 pkgname=nexus-virt
-pkgver=0.0.8
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Lightweight VM lifecycle daemon for containerd and Kata Containers'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ _node_exporter_ver=1.10.2
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("https://github.com/prometheus/node_exporter/releases/download/v${_node_exporter_ver}/node_exporter-${_node_exporter_ver}.linux-amd64.tar.gz")
 source_aarch64=("https://github.com/prometheus/node_exporter/releases/download/v${_node_exporter_ver}/node_exporter-${_node_exporter_ver}.linux-arm64.tar.gz")
-sha256sums=('886efe98257b80089be6925990669605117cd743b3f7ea2027c5ed643a842c7e')
+sha256sums=('199c138cfe735be52054e4e09b28a897c1e0df9fc62d4b40adb411f60db05bec')
 sha256sums_x86_64=('c46e5b6f53948477ff3a19d97c58307394a29fe64a01905646f026ddc32cb65b')
 sha256sums_aarch64=('de69ec8341c8068b7c8e4cfe3eb85065d24d984a3b33007f575d307d13eb89a6')
 
