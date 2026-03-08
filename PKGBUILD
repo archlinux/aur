@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=gump
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc='A smarter cd command - directory jumper using frecency'
 arch=('x86_64')
