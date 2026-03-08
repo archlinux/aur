@@ -5,31 +5,70 @@ _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
 _commit_rel="3cb6e4e8ba7961d0fb62b2a27fb0dd5ef929ce8d" # 16.09
 _commit="8c101adcccabc57ecbfe5be9250344448bee7908" # r782
-pkgver="16.09+r782+g${_commit::7}"
-pkgrel=2
+pkgver="16.09+r782~g${_commit::7}"
+pkgrel=3
 pkgdesc="A ground control station and firmware for UAV flight controllers"
-arch=('i686' 'x86_64')
+arch=(
+  'i686'
+  'x86_64'
+)
 url="https://www.librepilot.org"
 _url="https://bitbucket.org/${_pkgname}/${_pkgname}"
-license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'glibc' 'libusb'  'qt5-base' 'qt5-declarative'
-         'qt5-multimedia' 'qt5-serialport' 'qt5-svg' 'qt5-xmlpatterns'
-         'qt6-declarative' 'sdl' 'systemd-libs') # 'openscenegraph' 'osgearth' 'qt5-quick1'
-# makedepends=('patchelf')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-replaces=("${_pkgname}-rpm")
-options=('!strip')
-_pkgsrc="${_pkgname}-${pkgver}"
-noextract=("${_pkgsrc}-"{x86_64,i686}".deb")
-source=("${_pkgsrc}-CREDITS.txt::${_url}/raw/${_commit}/CREDITS.txt"
-        "${_pkgsrc}-GPLv3.txt::${_url}/raw/${_commit}/GPLv3.txt"
-        "${_pkgsrc}-LICENSE.txt::${_url}/raw/${_commit}/LICENSE.txt"
-        "${_pkgsrc}-MILESTONES.txt::${_url}/raw/${_commit}/MILESTONES.txt"
-        "${_pkgsrc}-README.md::${_url}/raw/${_commit}/README.md"
-        "${_pkgsrc}-WHATSNEW.txt::${_url}/raw/${_commit}/WHATSNEW.txt")
-source_i686=("${_pkgsrc}-i686.deb::https://ppa.launchpadcontent.net/${_pkgname}/next/ubuntu/pool/main/${_pkgname::4}/${_pkgname}/${_pkgname}_${pkgver//+g/'~g'}-0bionic1_i386.deb")
-source_x86_64=("${_pkgsrc}-x86_64.deb::https://ppa.launchpadcontent.net/${_pkgname}/next/ubuntu/pool/main/${_pkgname::4}/${_pkgname}/${_pkgname}_${pkgver//+g/'~g'}-0bionic1_amd64.deb")
+license=(
+  'GPL-3.0-or-later'
+)
+depends=(
+  'glibc'
+  'libgcc'
+  'libstdc++'
+  'libusb'
+  # 'openscenegraph'
+  # 'osgearth'
+  'qt5-base'
+  'qt5-declarative'
+  'qt5-multimedia'
+  # 'qt5-quick1'
+  'qt5-serialport'
+  'qt5-svg'
+  'qt5-xmlpatterns'
+  'qt6-declarative'
+  'sdl'
+  'systemd-libs'
+)
+makedepends=(
+  # 'patchelf'
+)
+provides=(
+  "${_pkgname}"
+)
+conflicts=(
+  "${_pkgname}"
+)
+replaces=(
+  "${_pkgname}-rpm"
+)
+options=(
+  '!strip'
+)
+_pkgsrc="${_pkgname}-${_commit}"
+source=(
+  "${_pkgsrc}-CREDITS.txt::${_url}/raw/${_commit}/CREDITS.txt"
+  "${_pkgsrc}-GPLv3.txt::${_url}/raw/${_commit}/GPLv3.txt"
+  "${_pkgsrc}-LICENSE.txt::${_url}/raw/${_commit}/LICENSE.txt"
+  "${_pkgsrc}-MILESTONES.txt::${_url}/raw/${_commit}/MILESTONES.txt"
+  "${_pkgsrc}-README.md::${_url}/raw/${_commit}/README.md"
+  "${_pkgsrc}-WHATSNEW.txt::${_url}/raw/${_commit}/WHATSNEW.txt"
+)
+source_i686=(
+  "https://ppa.launchpadcontent.net/${_pkgname}/next/ubuntu/pool/main/${_pkgname::4}/${_pkgname}/${_pkgname}_${pkgver}-0bionic1_i386.deb"
+)
+source_x86_64=(
+  "https://ppa.launchpadcontent.net/${_pkgname}/next/ubuntu/pool/main/${_pkgname::4}/${_pkgname}/${_pkgname}_${pkgver}-0bionic1_amd64.deb"
+)
+noextract=(
+  "${source_i686[@]##*/}"
+  "${source_x86_64[@]##*/}"
+)
 b2sums=('19501a2b7a4152ce33f9f7367a37efb29d4fcb203b671dda72e9344fb59dd136f8a6e5334c982ec9c5948b39840edcc835b45aae2c2d742377432c2ec8ef0cbb'
         'ab7e38fc42fb6686add7393ecc3c7ec622cc0d72d0304ded3e56c2f96dc8433c584520896a30c037affa44461ecccfaf3ffa4a97a7e050e8ed0ec4c592caa45c'
         '082b4372cad0a65a7f75d828061ac8902bec800eae3efbb3b900fc4c96f16bfdbfc1590b5526670d360747f6c13ff56382cd008348f1ce4d1238dd6274bb0d13'
@@ -40,23 +79,24 @@ b2sums_i686=('7ea8dbc1063dfcbe4241a75d8f960eee1e73234cd8272d5a42321bde51e9b7110f
 b2sums_x86_64=('afbeeb358d1b0ec6a04ba5af6bc676e28e3551c64e602a78e197c2fae50d2db30fb1733cba0920f1c96b81317109938851804f17f25fc9aff12e6498340549df')
 
 prepare() {
+  local source_carch="source_${CARCH}[0]"
+  local source_arch="${!source_carch}"
+  local source_artifact="${source_arch##*/}"
+
   cd "${srcdir}"
-  mkdir -p "${_pkgsrc}-${CARCH}"
-  bsdtar -xf "${_pkgsrc}-${CARCH}.deb" data.tar.*
-  bsdtar -xzf data.tar.* --strip-components 1 -C "${srcdir}/${_pkgsrc}-${CARCH}"
+  mkdir -p "${source_artifact%.deb}"
+  bsdtar -xf "${source_artifact}" data.tar.*
+  bsdtar -xzf data.tar.* --strip-components 1 -C "${srcdir}/${source_artifact%.deb}"
   rm -f data.tar.*
-}
 
-build() {
-  cd "${srcdir}/${_pkgsrc}-${CARCH}"
-  find "lib" -type f -exec install -D "{}" "usr/{}" \;
+  cd "${source_artifact%.deb}"
+  cp -aT --update=none "lib" "usr/lib"
   rm -rf "lib"
-  
-  cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/share/doc/${_pkgname}"
-  rm -f ./*Debian* copyright INSTALL
 
-  # cd "${srcdir}/${_pkgsrc}-${CARCH}/usr/lib/${_pkgname}-gcs"
-  # find . -type f \( -name 'libGCSOsgEarth.so.1.0.0' -o -name 'libPfdQml.so' \) \
+  cd "usr"
+  rm -vf "share/doc/${_pkgname}/"{*Debian*,copyright,INSTALL}
+
+  # find "lib/${_pkgname}-gcs" -type f \( -name 'libGCSOsgEarth.so.1.0.0' -o -name 'libPfdQml.so' \) \
   #    -exec patchelf --replace-needed "libOpenThreads.so.20" "libOpenThreads.so" {} \; \
   #    -exec patchelf --replace-needed "libosg.so.131"        "libosg.so" {} \; \
   #    -exec patchelf --replace-needed "libosgDB.so.131"      "libosgDB.so" {} \; \
@@ -69,8 +109,12 @@ build() {
 }
 
 package() {
+  local source_carch="source_${CARCH}[0]"
+  local source_arch="${!source_carch}"
+  local source_artifact="${source_arch##*/}"
+
   cd "${srcdir}"
-  cp -vr --no-preserve=ownership "${_pkgsrc}-${CARCH}"/* "${pkgdir}"
+  cp -vaT --no-preserve=ownership "${source_artifact%.deb}" "${pkgdir}"
 
   install -vDm644 "${_pkgsrc}-CREDITS.txt"    "${pkgdir}/usr/share/doc/${_pkgname}/CREDITS.txt"
   install -vDm644 "${_pkgsrc}-MILESTONES.txt" "${pkgdir}/usr/share/doc/${_pkgname}/MILESTONES.txt"
