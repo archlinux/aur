@@ -1,13 +1,13 @@
 pkgbase = aspm
 	pkgdesc = A secure private messenger
-	pkgver = 1.0.0
+	pkgver = 1.12.3
 	pkgrel = 1
 	url = https://github.com/fredima2x/aspm
 	arch = x86_64
-	license = MIT
+	license = GPL
 	depends = python
 	depends = python-pyqt5
-	source = aspm-1.0.0.tar.gz::https://github.com/fredima2x/aspm/archive/v1.0.0.tar.gz
-	sha256sums = SKIP
+	source = aspm-1.12.3.tar.gz::https://github.com/fredima2x/aspm/archive/v1.12.3.tar.gz
+	sha256sums = 7009d495734a4294db839e8eedb94b0be9e53b04091cc2fd354974f14d3f598c
 
 pkgname = aspm
