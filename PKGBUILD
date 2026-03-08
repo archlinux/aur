@@ -7,7 +7,7 @@
 pkgbase=mafft
 pkgname=('mafft-git' 'mafft-extensions-git' 'mafft-mpi-git')
 pkgver=7.526.r2.g0a2319b
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://mafft.cbrc.jp/alignment/software'
 license=('BSD')
