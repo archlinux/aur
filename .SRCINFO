@@ -1,12 +1,12 @@
 pkgbase = salome-configuration
 	pkgdesc = Salome CMake configuration
-	pkgver = 9.14.0
+	pkgver = 9.15.0
 	pkgrel = 1
 	url = https://www.salome-platform.org
 	arch = any
 	license = LGPL2+
 	makedepends = cmake
-	source = git+https://github.com/SalomePlatform/configuration.git#tag=V9_14_0
-	md5sums = SKIP
+	source = git+https://github.com/SalomePlatform/configuration.git#tag=V9_15_0
+	md5sums = d543671bed159b6c9523b0e12afa7e74
 
 pkgname = salome-configuration
