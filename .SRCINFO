@@ -8,6 +8,7 @@ pkgbase = fbpanel-git
 	license = GPL
 	makedepends = automake
 	makedepends = autoconf
+	makedepends = gdk-pixbuf-xlib
 	depends = gtk2
 	depends = python2
 	provides = fbpanel
