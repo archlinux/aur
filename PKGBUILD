@@ -1,7 +1,7 @@
 # Maintainer: Theodore Huang <teddyhuangnan@gmail.com>
 pkgname=jjui-bin
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Text User Interface (TUI) designed for interacting with the Jujutsu version control system."
 arch=("x86_64" "aarch64")
 url="https://github.com/idursun/jjui"
@@ -21,6 +21,8 @@ source_aarch64=(
 sha256sums=('287dc795228e18d40fe378a70b577d9fd019b638841af5f3d26c1170cb1ed4df')
 sha256sums_x86_64=('8820aeea2540e32a645bd04c339cbc9f0ff8db5c88c63088b5fd201508627ca8')
 sha256sums_aarch64=('d1bc44c392f730aca337c8c6536c92fab1f9c233e04f26e66ca9e94ba752be8e')
+
+install=jjui-bin.install
 
 build() {
     mkdir -p "$srcdir/$pkgname-$pkgver"
