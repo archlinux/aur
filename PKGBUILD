@@ -6,11 +6,12 @@ pkgrel=1
 pkgdesc="Casio ClassWiz emulator, assembler and debugger"
 arch=('x86_64')
 url="https://github.com/qiufuyu123/CasioEmuNeo"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 install="${pkgname}.install"
-depends=('sdl2' 'sdl2_image' 'lua53')
+depends=('sdl2' 'glibc' 'bash')
 makedepends=('git' 'xmake')
 optdepends=(
+  'hicolor-icon-theme: icon theme hierarchy for app icon lookup'
   'zenity: desktop directory picker for first-run guide'
   'kdialog: KDE directory picker for first-run guide'
   'noto-fonts-cjk: better CJK font fallback'
@@ -26,7 +27,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/CasioEmuNeo"
-  xmake f -m release --yes
+  xmake f -m release --ldflags="-Wl,-z,relro,-z,now" --yes
   xmake
 }
 
