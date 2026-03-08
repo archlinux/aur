@@ -1,5 +1,5 @@
 pkgname=obsidian-cli-inspector-git
-pkgver=0.2.2.r24.gga7a1d57
+pkgver=obsidian.cli.inspector.v1.0.0.r1.g769d24d
 pkgrel=1
 pkgdesc="Local-first CLI/TUI for indexing and querying Obsidian vaults (unstable git version)"
 arch=('x86_64')
@@ -13,7 +13,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  git describe --long --tags | sed "s/^v//;s/-/.r/;s/-/.g/"
+  git describe --long --tags --always | sed -E "s/^v//; s/-([0-9]+)-g/.r\\1.g/; s/-/./g; s/[^0-9A-Za-z.]/./g"
 }
 
 build() {
