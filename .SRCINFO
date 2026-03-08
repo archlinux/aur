@@ -1,6 +1,6 @@
 pkgbase = pyrite64-bin
 	pkgdesc = N64 Game-Engine and Editor using libdragon & tiny3d
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/HailToDodongo/pyrite64
 	arch = x86_64
@@ -27,12 +27,12 @@ pkgbase = pyrite64-bin
 	options = !strip
 	source = https://github.com/DragonMinded/libdragon/releases/download/toolchain-continuous-prerelease/gcc-toolchain-mips64-x86_64.deb
 	source = git+https://github.com/DragonMinded/libdragon.git#branch=preview
-	source = https://github.com/HailToDodongo/pyrite64/releases/download/v0.4.0/pyrite64-0_4_0-linux.zip
+	source = https://github.com/HailToDodongo/pyrite64/releases/download/v0.5.0/pyrite64-0_5_0-linux.zip
 	source = git+https://github.com/HailToDodongo/tiny3d.git
 	source = pyrite64.desktop
 	sha512sums = a548820c814d3ca10ad1f6c5b1a32c9006215cba5f8a21132392cbd831b0f7bc7e34b3c4d2f4568563e932e756fc418e457f682504e060101d89a2e9fcea4cae
 	sha512sums = SKIP
-	sha512sums = 26ff6c81416d854895b03d0c038099e6aa2a6620e564a2e7fddf2881ffe639465544440dd3bcefc2264a31e87bc8bae6414c5bedf55acd86ef92648cc494ce7f
+	sha512sums = 7bdfdeb5395418020f409110abf90e957b01eae68f844b7326ed46599433ce78a7c0f2d2033cbd1ecec638a18f5ced4090a30b85f7179d115e517b1080b489a2
 	sha512sums = SKIP
 	sha512sums = 7fa6cf338fe0c7d18122239a5dda749a3b08a18e64b76d6e042b005a89f01656641639d0d0584f91554d2a8c6c0614294dc7d6c013652f37b9efb1c70e37ce47
 
