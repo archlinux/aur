@@ -1,7 +1,7 @@
 pkgbase = vsview
 	pkgdesc = The next-generation VapourSynth previewer
 	pkgver = 0.1.0b3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-view
 	arch = x86_64
 	license = EUPL-1.2
@@ -28,7 +28,9 @@ pkgbase = vsview
 	optdepends = vsview-fftspectrum: Display the FFT spectrum of a video clip
 	optdepends = vsview-frameprops-extended: Add more categories and formats to frameprops
 	optdepends = vsview-split-planes: Display video clips' constituent planes
-	optdepends = vsview-plugins: All vsview plugins
+	optdepends = vsview-audio-convert: Convert and resample audio
+	optdepends = vsview-plugins-all: Meta package for all plugins
+	optdepends = vsview-plugins-essential: Meta package for essential plugins
 	source = vsview::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=vsview/v0.1.0b3
 	sha256sums = SKIP
 
