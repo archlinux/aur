@@ -1,0 +1,9 @@
+deprecation==2.1.0
+eyeD3==0.9.9
+filetype==1.2.0
+musicbrainzngs==0.7.1
+mutagen==1.47.0
+packaging==26.0
+pillow==12.1.1
+sv_ttk==2.6.1
+tkinterdnd2==0.4.3

@@ -1,0 +1,12 @@
+pkgbase = music-tags
+	pkgdesc = Desktop app for viewing and editing audio file metadata
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = custom
+	makedepends = python-pip
+	depends = python
+	depends = tk
+	depends = python-pillow
+
+pkgname = music-tags

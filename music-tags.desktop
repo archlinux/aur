@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Music Tags
+Comment=View and edit audio file metadata
+Exec=music-tags
+Icon=music-tags
+Type=Application
+Categories=Audio;Music;

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:cc="http://web.resource.org/cc/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" xmlns:ns1="http://sozi.baierouge.fr" id="svg1094" sodipodi:docname="music_folder_al_arthur_01r.svg" viewBox="0 0 212.68 187.09" sodipodi:version="0.32" version="1.0" inkscape:output_extension="org.inkscape.output.svg.inkscape" inkscape:version="0.45.1" sodipodi:docbase="/Users/johnolsen/Desktop/openclipart-0.20-pre/recovered-zerobyte-files/computer/icons">
+  <defs id="defs3">
+    <linearGradient id="linearGradient2002" y2="53.323" gradientUnits="userSpaceOnUse" y1="278.48" gradientTransform="matrix(1.1223 0 0 .78898 1.0575 -285.48)" x2="118.78" x1="120.91" inkscape:collect="always">
+      <stop id="stop1836" style="stop-color:#64c4de" offset="0"/>
+      <stop id="stop1837" style="stop-color:#64c4de;stop-opacity:0" offset="1"/>
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview id="base" bordercolor="#ffffff" inkscape:pageshadow="0" inkscape:window-width="640" pagecolor="#ffffff" inkscape:zoom="0.43415836" inkscape:window-x="329" borderopacity="0.0" inkscape:current-layer="layer1" inkscape:cx="305.25953" inkscape:cy="417.84947" inkscape:window-y="67" inkscape:window-height="541" inkscape:pageopacity="0.0"/>
+  <g id="layer1" inkscape:label="Layer 1" inkscape:groupmode="layer" transform="translate(224.38 -112.35)">
+    <g id="g1997" inkscape:export-ydpi="25.413172" inkscape:export-xdpi="25.413172" inkscape:export-filename="/home/al/Desktop/Inkscape art/musicfolder.png" transform="translate(-305.8 600.69)">
+      <path id="path1998" style="fill-rule:evenodd;stroke:#bfbcbc;stroke-linecap:round;stroke-width:2.1612;fill:#ffffff" transform="translate(81.496 -262.2)" d="m15.617-214.97c-8.0937 0-14.621 6.77-14.621 15.2l-0.00032 17.67v75.11 35.991c0 8.436 6.5276 15.208 14.621 15.208h181.25c8.09 0 14.62-6.772 14.62-15.208v-111.1c0-8.43-6.53-15.2-14.62-15.2h-117.3l0.003-2.47c0-8.43-6.527-15.2-14.621-15.2h-49.335z"/>
+      <path id="path1999" style="fill-rule:evenodd;stroke:#bfbcbc;stroke-linecap:round;stroke-width:2.082;fill:url(#linearGradient2002)" transform="translate(81.496 -262.2)" d="m15.679-203.49c-8.0939 0-14.622 6.29-14.622 14.12l0.0005 16.39v69.71 33.399c0 7.829 6.5276 14.114 14.622 14.114h181.25c8.1 0 14.62-6.285 14.62-14.114v-103.11c0-7.82-6.52-14.11-14.62-14.11h-117.3l0.005-2.28c0-7.83-6.528-14.12-14.621-14.12h-49.335z"/>
+      <path id="path2000" style="fill-rule:evenodd;fill:#000000" d="m169.02-453.54l-14.04 106.53c-3.08-8.22-9.5-13.75-17.64-13.9-12.82-0.24-24.99 12.94-27.16 29.41-2.17 16.46 6.48 30.01 19.3 30.25 11.18 0.21 21.86-9.79 25.85-23.26h0.43l0.69-5.28c0.05-0.29 0.14-0.56 0.18-0.86 0.04-0.29 0.02-0.56 0.05-0.85l15.51-117.73c6.37 12.33 43.27 53.71 45.47 15.98 0.56-39.09-0.28-2.58-17.98-2.91-14.43-0.26-23.68-14.24-27.05-16.42l0.12-0.89-3.73-0.07z"/>
+      <path id="path2001" style="fill-rule:evenodd;fill:#000000" d="m240.2-488.34l-21.7 105.24c-2.48-8.42-8.48-14.4-16.59-15.13-12.77-1.17-25.87 11.1-29.22 27.37-3.35 16.26 4.3 30.4 17.07 31.56 11.14 1.02 22.51-8.18 27.46-21.33l0.43 0.04 1.07-5.23c0.07-0.28 0.18-0.54 0.24-0.83s0.06-0.56 0.11-0.85l23.98-116.3c5.46 12.75 39.28 56.69 44.19 19.22 3.39-38.95-0.09-2.6-17.72-4.2-14.37-1.31-22.58-15.92-25.79-18.33l0.18-0.89-3.71-0.34z"/>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>Music Folder Icon</dc:title>
+        <dc:date>2009-04-02T00:37:07</dc:date>
+        <dc:description>A Music Folder icon by Al Arthur</dc:description>
+        <dc:source>https://openclipart.org/detail/23730/music-folder-icon-by-anonymous-23730</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Anonymous</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>computer</rdf:li>
+            <rdf:li>folder</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>music</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
