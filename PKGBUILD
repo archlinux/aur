@@ -7,23 +7,21 @@ pkgname=(
   maturin-git
   python-maturin-git
 )
-pkgver=1.8.6.r11.g90b30a4e
+pkgver=1.12.5.r15.ge9747a17
 pkgrel=1
 pkgdesc="Build and publish crates with pyo3, rust-cpython and cffi bindings"
 url="https://github.com/PyO3/maturin"
 arch=(x86_64)
 license=('Apache-2.0 OR MIT')
 makedepends=(
-  bzip2
-  gcc-libs
   git
-  glibc
   python-build
   python-installer
   python-setuptools
   python-setuptools-rust
   python-wheel
   rust
+  xz
 )
 checkdepends=(
  python-cffi
@@ -45,7 +43,7 @@ pkgver() {
 prepare() {
   cd $_pkgbase
   sed -ri 's/^license = .*"([^"]+)"}/license = "\1"/' pyproject.toml
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
@@ -69,11 +67,10 @@ check() {
 
 package_maturin-git() {
   depends=(
-    bzip2
-    gcc-libs
+    libgcc
     glibc
-    openssl
     rust
+    xz
   )
   provides=("${pkgname%-git}")
   conflicts=("${pkgname%-git}")

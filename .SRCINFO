@@ -1,6 +1,6 @@
 pkgbase = maturin-git
 	pkgdesc = Build and publish crates with pyo3, rust-cpython and cffi bindings
-	pkgver = 1.8.6.r11.g90b30a4e
+	pkgver = 1.12.5.r15.ge9747a17
 	pkgrel = 1
 	url = https://github.com/PyO3/maturin
 	arch = x86_64
@@ -8,33 +8,30 @@ pkgbase = maturin-git
 	checkdepends = python-cffi
 	checkdepends = python-pycparser
 	checkdepends = python-virtualenv
-	makedepends = bzip2
-	makedepends = gcc-libs
 	makedepends = git
-	makedepends = glibc
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-setuptools-rust
 	makedepends = python-wheel
 	makedepends = rust
+	makedepends = xz
 	options = !lto
 	source = maturin::git+https://github.com/PyO3/maturin.git
 	sha512sums = SKIP
 	b2sums = SKIP
 
 pkgname = maturin-git
-	depends = bzip2
-	depends = gcc-libs
+	depends = libgcc
 	depends = glibc
-	depends = openssl
 	depends = rust
+	depends = xz
 	provides = maturin
 	conflicts = maturin
 
 pkgname = python-maturin-git
 	pkgdesc = Build and publish crates with pyo3, rust-cpython and cffi bindings - Python bindings
-	depends = maturin-git=1.8.6.r11.g90b30a4e
+	depends = maturin-git=1.12.5.r15.ge9747a17
 	depends = python
 	provides = python-maturin
 	conflicts = python-maturin
