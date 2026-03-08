@@ -1,6 +1,6 @@
 pkgbase = python-pyroomacoustics
 	pkgdesc = Package for audio signal processing for indoor applications and beamforming algorithms
-	pkgver = 0.8.4
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://github.com/LCAV/pyroomacoustics
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-pyroomacoustics
 	optdepends = libsamplerate: for resampling signals
 	optdepends = python-matplotlib: to create graphs and plots
 	optdepends = python-sounddevice: to play sound samples
-	source = pyroomacoustics-0.8.4.tar.gz::https://github.com/LCAV/pyroomacoustics/archive/v0.8.4.tar.gz
-	sha256sums = 29e368095239f9d6966f2fbedc20b57d6ca634dd6297557c769fd739d4e1251c
+	source = pyroomacoustics-0.8.5.tar.gz::https://github.com/LCAV/pyroomacoustics/archive/v0.8.5.tar.gz
+	sha256sums = d35ce59d87ce005fd6d76d071041ab4d1cb5906af2777e710fb77b52bebb9a9b
 
 pkgname = python-pyroomacoustics
