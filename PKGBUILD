@@ -1,7 +1,7 @@
 # Maintainer: Jed Liu <jed-aur.archlinux.org at litech dot org>
 
 pkgname=plasma-applet-rss-feeds
-pkgver=0.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='A barebones Plasma applet for displaying an RSS feed'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('plasma-workspace')
 source=(
   "https://github.com/liujed/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-b2sums=('49a4438bb445255fb683063094eef035bb91ecb660c422165db75b20484ac3d0472d6f7b55e50a5532b6ad12ced3396388730393c8cb3613a76f1e792999013a')
+b2sums=('64c0e440297c4cc64c5d81ef4cacd366865c4e4fad1bba1bef69cf05b20dc236e5829054bae6e2d2bc55c59906baf9e68eb7a2004a317dc95309d763729ffb6d')
 
 package() {
   install -d "${pkgdir}/usr/share/plasma/plasmoids/com.github.liujed.rssfeeds"
