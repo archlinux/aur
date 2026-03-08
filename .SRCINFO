@@ -1,7 +1,7 @@
 pkgbase = replay-bin
 	pkgdesc = Replay - UI for generating songs with AI singers, RVC training and speech conversion. Offline, local, and free.
-	pkgver = 7.3.3
-	pkgrel = 1
+	pkgver = 8.7.0
+	pkgrel = 2
 	url = https://github.com/KylerianHD/replay-bin
 	arch = x86_64
 	license = GPL3 OR unknown
@@ -15,7 +15,7 @@ pkgbase = replay-bin
 	depends = util-linux-libs
 	depends = libsecret
 	optdepends = libappindicator3-1: A library to allow applications to export a menu into the panel. Based on KSNI it also works in KDE and will fallback to generic Systray support.
-	source = Replay-7.3.3.deb::https://github.com/KylerianHD/replay-bin/releases/download/7.3.3/Replay-7.3.3.deb
-	sha256sums = 5d3cc65ae2f8fcdd794afbc244dc162e7c14af615b51dab96d4760a1f0620571
+	source = Replay-8.7.0.deb::https://github.com/KylerianHD/replay-bin/releases/download/8.7.0/Replay-8.7.0.deb
+	sha256sums = 2cbdf0ce5ec26c6212ac3c34863b056182ab8e6dfba2bdfb37c2ed6504b6c258
 
 pkgname = replay-bin

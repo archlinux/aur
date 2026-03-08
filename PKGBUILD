@@ -1,7 +1,7 @@
 # Maintainer: KylerianHD (aka ToxicByte) <contact@kylerianhd.com>
 pkgname=replay-bin
-pkgver=7.3.3
-pkgrel=1
+pkgver=8.7.0
+pkgrel=2
 pkgdesc="Replay - UI for generating songs with AI singers, RVC training and speech conversion. Offline, local, and free."
 arch=('x86_64')
 url="https://github.com/KylerianHD/replay-bin"
@@ -25,7 +25,7 @@ makedepends=()  # no build‐time deps, binaries ship pre‐built
 source=(
   "Replay-${pkgver}.deb::https://github.com/KylerianHD/replay-bin/releases/download/${pkgver}/Replay-${pkgver}.deb"
 )
-sha256sums=('5d3cc65ae2f8fcdd794afbc244dc162e7c14af615b51dab96d4760a1f0620571')
+sha256sums=('2cbdf0ce5ec26c6212ac3c34863b056182ab8e6dfba2bdfb37c2ed6504b6c258')
 
 build() {
   :;
