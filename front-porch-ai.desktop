@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Front Porch AI
+Exec=front-porch-ai
+Icon=front-porch-ai
+Type=Application
+Categories=Utility;
+Comment=A chilled out frontend for KoboldCPP
