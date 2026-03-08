@@ -1,6 +1,6 @@
 pkgbase = pixiv-multiplatform-git
 	pkgdesc = 基于Kotlin技术栈的全平台的第三方pixiv客户端
-	pkgver = 1.8.2
+	pkgver = 1.8.4
 	pkgrel = 1
 	url = https://pmf.kagg886.top
 	arch = any
