@@ -25,7 +25,6 @@ build() {
         -Dtests=disabled
         -Dtests_x11=disabled
         -Dtests_wl_clipboard=disabled
-        -Dtypelib_installer=false
     )
 
     arch-meson "${pkgname%-git}" build "${meson_options[@]}"
