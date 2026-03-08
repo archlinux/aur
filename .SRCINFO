@@ -1,0 +1,17 @@
+pkgbase = figlet-go
+	pkgdesc = Go FIGdriver. Generates ASCII art from text using FIGlet fonts.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/damienbutt/figlet
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	conflicts = figlet
+	provides = figlet
+	
+	source = https://github.com/damienbutt/figlet/releases/download/v0.1.0/figlet_0.1.0_source.tar.gz
+	sha256sums = 7d05953557d1060a535e3a09d758a6db25e31e237ed53778ec2e4874e25b392f
+	
+pkgname = figlet-go
