@@ -2,20 +2,23 @@
 
 pkgbase='ahriman'
 pkgname=('ahriman' 'ahriman-core' 'ahriman-triggers' 'ahriman-web')
-pkgver=2.19.4
+pkgver=2.20.0
 pkgrel=1
 pkgdesc="ArcH linux ReposItory MANager"
 arch=('any')
 url="https://ahriman.readthedocs.io/"
 license=('GPL-3.0-or-later')
-depends=('devtools>=1:1.0.0' 'git' 'pyalpm' 'python-bcrypt' 'python-inflection' 'python-pyelftools' 'python-requests')
-makedepends=('python-build' 'python-flit' 'python-installer' 'python-wheel')
+depends=('devtools>=1:1.0.0' 'git' 'pyalpm' 'python-bcrypt' 'python-filelock' 'python-inflection' 'python-pyelftools' 'python-requests')
+makedepends=('npm' 'python-build' 'python-flit' 'python-installer' 'python-wheel')
 source=("https://github.com/arcan1s/ahriman/releases/download/$pkgver/$pkgbase-$pkgver.tar.gz"
         "$pkgbase.sysusers"
         "$pkgbase.tmpfiles")
 
 build() {
     cd "$pkgbase-$pkgver"
+
+    npm --prefix "frontend" install --cache "$srcdir/npm-cache"
+    npm --prefix "frontend" run build
 
     python -m build --wheel --no-isolation
 }
@@ -40,6 +43,7 @@ package_ahriman-core() {
                 'rsync: sync by using rsync')
     install="$pkgbase.install"
     backup=('etc/ahriman.ini'
+            'etc/ahriman.ini.d/00-housekeeping.ini'
             'etc/ahriman.ini.d/logging.ini')
 
     cd "$pkgbase-$pkgver"
@@ -49,6 +53,7 @@ package_ahriman-core() {
 
     # keep usr/share configs as reference and copy them to /etc
     install -Dm644 "$pkgdir/usr/share/$pkgbase/settings/ahriman.ini" "$pkgdir/etc/ahriman.ini"
+    install -Dm644 "$pkgdir/usr/share/$pkgbase/settings/ahriman.ini.d/00-housekeeping.ini" "$pkgdir/etc/ahriman.ini.d/00-housekeeping.ini"
     install -Dm644 "$pkgdir/usr/share/$pkgbase/settings/ahriman.ini.d/logging.ini" "$pkgdir/etc/ahriman.ini.d/logging.ini"
 
     install -Dm644 "$srcdir/$pkgbase.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgbase.conf"
@@ -88,6 +93,6 @@ package_ahriman-web() {
 
     install -Dm644 "$pkgdir/usr/share/$pkgbase/settings/ahriman.ini.d/00-web.ini" "$pkgdir/etc/ahriman.ini.d/00-web.ini"
 }
-sha256sums=('ab30821e6520e06c78b4570c777edbb1ab0f928dbb89b6230a96188be7bd5e2f'
+sha256sums=('8131b608c47d9575dbc16dfdaec7a1bdebec645b0d4951fbbe50afe73deed7fb'
             '0c1cb37a57c47b5159c626f69c08d094c58241319e2a5a3b29c76170b92f09c8'
             '720a02af47ac718b31acd9feb73b1b81a5eed4f0bc4ca7a18dfc299dc0da5013')
