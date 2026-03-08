@@ -1,6 +1,6 @@
 # Maintainer: motorrin
 pkgname=arch-smart-update
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Not sure when to update Arch Linux or its derivative? This script will help you decide!"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('reflector: for Arch Linux mirror updates'
             'paru: AUR helper support'
             'topgrade: for comprehensive system updates')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('969c118b42205f5fabdcd639d850b3aa36572bb088ee772c8ea84f651b39a780')
+sha256sums=('ccc6d8c8f49f7c13876c9be92e8e88b1dda5f66fc48bc8c3c4e784cbee2f0ddb')
 
 package() {
     cd "Arch_Smart_Update-${pkgver}"
