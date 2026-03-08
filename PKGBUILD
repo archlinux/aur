@@ -1,7 +1,7 @@
 # Maintainer: Icaro Motta <icarogomesmotta@proton.me>
 pkgname=autoanimedownloader-bin
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An app that automatically downloads your anime from Anilist"
 arch=('x86_64' 'aarch64')
 url="https://github.com/icarosuper/AutoAnimeDownloader"

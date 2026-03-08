@@ -1,7 +1,7 @@
 pkgbase = autoanimedownloader-bin
 	pkgdesc = An app that automatically downloads your anime from Anilist
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/icarosuper/AutoAnimeDownloader
 	arch = x86_64
 	arch = aarch64
