@@ -1,0 +1,16 @@
+pkgbase = wshawk
+	pkgdesc = Enterprise-grade WebSocket Security Scanner & Web Pentest Toolkit by Rot Hackers
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://wshawk.rothackers.com
+	arch = x86_64
+	license = GPL3
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	provides = wshawk
+	conflicts = wshawk
+	source = wshawk-3.0.1.AppImage::https://github.com/regaan/wshawk/releases/download/v3.0.1/wshawk-3.0.1.AppImage
+	sha256sums = cce4b6995fd760a795daf930f4e546ea0eed9ce703e62055d33413b809dfe141
+
+pkgname = wshawk
