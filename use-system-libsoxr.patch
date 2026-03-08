@@ -1,0 +1,163 @@
+--- a/CMakeLists.txt	2026-03-07 17:17:29.226687116 -0800
++++ b/CMakeLists.txt	2026-03-07 17:04:28.068770814 -0800
+@@ -7,88 +7,23 @@
+     LANGUAGES C CXX
+ )
+ 
+-# original soxr repository on sourceforge
+-# set(SOXR_GIT "https://git.code.sf.net/p/soxr/code")
+-
+-# mirror on github (faster)
+-set(SOXR_GIT "https://github.com/chirlu/soxr.git")
+-
+-# use commit from February 24, 2018
+-# commit id is the same for the sourceforge and github repository
+-set(SOXR_COMMIT "945b592b70470e29f917f4de89b4281fbbd540c0")
+-
+-
+-# Include modules
+-include(FetchContent)
++# 1. Find the system libsoxr using PkgConfig
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(SOXR REQUIRED IMPORTED_TARGET soxr)
+ 
++# Include standard modules
+ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
+ include(Clang)
+-include(fetch)
+-include(soxr)
+-
+ Clang_GetStyle_CXX(IS_CLANG_GCC IS_CLANG_MSVC)
+ 
+-
+-# Custom options
+-set(SOXR_SOURCE_DIR "" CACHE PATH "Path to a custom soxr source directory")
+-
+-option(SOXR_USE_PATCHES "Apply patches to soxr for compatibility" ON)
+-
+ # OpenMP support
+-
+-if (DEFINED WITH_OPENMP)
+-    set(WITH_OPENMP_SET_BY_USER ON)
+-else()
+-    set(WITH_OPENMP_SET_BY_USER OFF)
+-endif()
+-
+-
+ option(WITH_OPENMP "Enable OpenMP support" ON)
+ 
+-
+ if (WITH_OPENMP)
+-    if (WITH_OPENMP_SET_BY_USER)
+-        find_package(OpenMP)
+-        if (NOT OpenMP_C_FOUND)
+-            message(FATAL_ERROR "OpenMP requested, but not found.")
+-        endif()
+-    else()
+-        find_package(OpenMP)
+-        if (NOT OpenMP_C_FOUND)
+-            message(WARNING "OpenMP enabled by default, but not found. Proceeding without it.")
+-            set(WITH_OPENMP OFF)
+-        endif()
+-    endif()
++    find_package(OpenMP REQUIRED)
+ endif()
+ 
+-
+-# Prepare soxr source directory
+-
+-if (SOXR_SOURCE_DIR)
+-    if (NOT EXISTS "${SOXR_SOURCE_DIR}/CMakeLists.txt")
+-        message(FATAL_ERROR "Error: Specified soxr source directory does not contain CMakeLists.txt")
+-    endif()
+-
+-    message(STATUS "Using custom soxr from ${SOXR_SOURCE_DIR}")
+-    set(SOXR_BINARY_DIR "${CMAKE_BINARY_DIR}/soxr-build")
+-else()
+-    fetch_FromGit("${SOXR_GIT}" "${SOXR_COMMIT}" SOXR_SOURCE_DIR SOXR_BINARY_DIR)
+-endif()
+-
+-
+-# Add soxr source directory to the project
+-
+-# disable soxr tests and libsamplerate bindings
+-set(BUILD_TESTS OFF CACHE INTERNAL "Disable tests")
+-set(WITH_LSR_BINDINGS OFF CACHE INTERNAL "Disable LSR bindings")
+-
+-if (${SOXR_USE_PATCHES})
+-    soxr_AddPatched("${SOXR_SOURCE_DIR}" "${SOXR_BINARY_DIR}")
+-else()
+-    add_subdirectory("${SOXR_SOURCE_DIR}" "${SOXR_BINARY_DIR}")
+-endif()
+-
+-
++# Define the library
+ add_library(AudioResample SHARED
+     "${CMAKE_SOURCE_DIR}/src/plugin.cpp"
+     "${CMAKE_SOURCE_DIR}/src/resample.cpp"
+@@ -123,52 +58,25 @@
+ 
+ target_compile_features(AudioResample PRIVATE cxx_std_20)
+ 
+-target_link_libraries(AudioResample PRIVATE soxr)
+-
++# 2. Link to the imported PkgConfig target
++# This automatically handles include directories and link paths
++target_link_libraries(AudioResample PRIVATE PkgConfig::SOXR)
+ 
+ # Linker options for OpenMP support
+ if (WITH_OPENMP)
+-    if ((CMAKE_SYSTEM_NAME STREQUAL "Windows") AND ((CMAKE_CXX_COMPILER_ID STREQUAL "GNU") OR ${IS_CLANG_GCC}) AND NOT ${BUILD_SHARED_LIBS})
+-        # Windows + GCC/Clang(GCC) + static
+-        # use -fopenmp as linker argument to let the linker find a static library
+-        # because apparently "target_link_libraries(AudioResample PRIVATE OpenMP::OpenMP_CXX)" prefers a dynamically linked library
+-        target_link_options(AudioResample PRIVATE -static -fopenmp)
+-    else()
+-        target_link_libraries(AudioResample PRIVATE OpenMP::OpenMP_C)
+-    endif()
++    target_link_libraries(AudioResample PRIVATE OpenMP::OpenMP_CXX)
+ endif()
+ 
+-
++# Optimization and Warning flags
+ target_compile_options(AudioResample
+     PRIVATE
+-    # Debug + CXX + GCC/Clang(GCC)
+-    $<$<AND:$<CONFIG:Debug>,$<COMPILE_LANGUAGE:CXX>,$<OR:$<CXX_COMPILER_ID:GNU>,$<BOOL:${IS_CLANG_GCC}>>>:
+-        -Wall -Wextra -Wpedantic -Wno-unused-parameter -Wno-unused-variable>
+-
+-    # Release + CXX + GCC/Clang(GCC)
+-    $<$<AND:$<CONFIG:Release>,$<COMPILE_LANGUAGE:CXX>,$<OR:$<CXX_COMPILER_ID:GNU>,$<BOOL:${IS_CLANG_GCC}>>>:
+-        -O2 -Wall -Wextra -Wpedantic -Wno-unused-parameter -Wno-unused-variable>
+-
+-    # Debug + CXX + MSVC/Clang(MSVC)
+-    $<$<AND:$<CONFIG:Debug>,$<COMPILE_LANGUAGE:CXX>,$<OR:$<CXX_COMPILER_ID:MSVC>,$<BOOL:${IS_CLANG_MSVC}>>>:
+-        /W4 /wd4100 /wd4702 /Zc:__cplusplus>
+-
+-    # Release + CXX + MSVC/Clang(MSVC)
+-    $<$<AND:$<CONFIG:Release>,$<COMPILE_LANGUAGE:CXX>,$<OR:$<CXX_COMPILER_ID:MSVC>,$<BOOL:${IS_CLANG_MSVC}>>>:
+-        /W4 /wd4100 /wd4702 /Zc:__cplusplus>
+-)
+-
+-
+-target_link_options(AudioResample
+-    PRIVATE
+-    # Windows + CXX + GCC/Clang(GCC)
+-    $<$<AND:$<PLATFORM_ID:Windows>,$<LINK_LANGUAGE:CXX>,$<OR:$<CXX_COMPILER_ID:GNU>,$<BOOL:${IS_CLANG_GCC}>>>:
+-        -static -static-libstdc++ -s>
+-
+-    # Non-Windows + CXX + GCC/Clang(GCC)
+-    $<$<AND:$<NOT:$<PLATFORM_ID:Windows>>,$<LINK_LANGUAGE:CXX>,$<OR:$<CXX_COMPILER_ID:GNU>,$<BOOL:${IS_CLANG_GCC}>>>:
+-        -static -s>
++    $<$<OR:$<CXX_COMPILER_ID:GNU>,$<BOOL:${IS_CLANG_GCC}>>: -Wall -Wextra -Wpedantic -Wno-unused-parameter>
++    $<$<OR:$<CXX_COMPILER_ID:MSVC>,$<BOOL:${IS_CLANG_MSVC}>>: /W4 /wd4100 /Zc:__cplusplus>
+ )
+ 
++# Static linking logic for Windows/GCC if preferred
++if(WIN32 AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
++    target_link_options(AudioResample PRIVATE -static -static-libstdc++ -s)
++endif()
+ 
+-set_target_properties(AudioResample PROPERTIES PREFIX "")
++set_target_properties(AudioResample PROPERTIES PREFIX "")
+\ No newline at end of file
