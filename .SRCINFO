@@ -1,5 +1,5 @@
 pkgbase = lfe-git
-	pkgdesc = Lisp Flavoured Erlang
+	pkgdesc = Lisp Flavoured Erlang is not a casual Lisp. It's a Lisp for those who want to build distributed applications -- like the Erlang software that powers 40% of the world's telecommunications.
 	pkgver = r12.539d87c
 	pkgrel = 1
 	epoch = 1
