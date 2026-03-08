@@ -1,7 +1,7 @@
 # Maintainer: ywxt <ywxt@ywxt.org>
 pkgname=dkitle-bin
 pkgver=0.1.alpha
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop application for dkitle"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ywxt/dkitle"
@@ -9,6 +9,14 @@ license=('MIT')
 provides=('dkitle')
 conflicts=('dkitle')
 depends=('gcc-libs' 'glibc')
+optdepends=(
+    'vulkan-icd-loader: GPU rendering via wgpu/Vulkan backend'
+    'libxkbcommon: keyboard input support'
+    'libx11: X11 display support'
+    'wayland: Wayland display support'
+    'fontconfig: system font discovery'
+    'freetype2: font rendering'
+)
 options=('!strip')
 
 _tag=v0.1-alpha
