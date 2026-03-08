@@ -1,0 +1,5 @@
+[gohan-bin]
+source = "github"
+github = "bmf-san/gohan"
+use_latest_release = true
+prefix = "v"
