@@ -7,7 +7,6 @@ pkgdesc="A beautiful Plex media server client built with Flutter"
 arch=('x86_64')
 url="https://github.com/edde746/plezy"
 license=('GPL-3.0-or-later')
-depends=('libkeybinder3' 'mpv')
 source=("${pkgname%-bin}-${pkgver}.tar.gz::https://github.com/edde746/plezy/releases/download/${pkgver}/plezy-linux-x64.tar.gz"
         "${pkgname%-bin}.desktop")
 sha256sums=('044248cb0196f246569efc6a455cb2a8845b0eae36301d6268dcab4033922c2d'
