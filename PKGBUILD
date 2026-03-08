@@ -1,10 +1,10 @@
 _godot_repo=https://github.com/godotengine/godot/releases/download
 # See Scripts/GodotVersion.cs
-_godot=4.5
+_godot=4.6
 _system_godot=false
 
 pkgname=thrive
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="the evolution game Thrive."
 arch=("x86_64" "aarch64")
@@ -12,7 +12,7 @@ url="https://revolutionarygamesstudio.com/"
 license=("GPL-3.0-or-later AND LicenseRef-CCPL AND OFL-1.1")
 depends=("libxrender" "libxi" "libx11" "libglvnd" "libxinerama" "zlib" "libxrandr"
          "libxext" "glibc" "libxcursor" "fontconfig" "gcc-libs")
-makedepends=("git" "git-lfs" "dotnet-sdk-9.0" "cmake" "clang" "lld" "ninja" "jq" "python")
+makedepends=("git" "git-lfs" "dotnet-sdk-10.0" "cmake" "clang" "lld" "ninja" "jq" "python")
 source=("git+https://github.com/Revolutionary-Games/Thrive.git#tag=v$pkgver"
         "git+https://github.com/Revolutionary-Games/RevolutionaryGamesCommon.git"
         "git+https://github.com/jrouwe/JoltPhysics.git"
@@ -29,16 +29,16 @@ else
     source_aarch64+=("godot-$_godot-aarch64.zip::$_godot_repo/$_godot-stable/Godot_v$_godot-stable_mono_linux_arm64.zip")
 fi
 
-sha256sums=('a908d2339b1df2065da38487ce36ca939d2d298cd3f44c66daff3116bd990da9'
+sha256sums=('1176dfe43746b29d572f1eb44791211d73027827e63598c87e6f4db9619be83b'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'ad118205d8ae304bab84fa937590bd1b43a9567bb7f82be778678c891ce858bb')
-sha256sums_x86_64=('54563c82bf3b6c1329e74862df1ee23f653e8a41355140434649bb6479158100')
-sha256sums_aarch64=('cb4c86d9e92130db51ae1b98ef9c0ffc212ba4f9e5d4141370fdf59279cec8d1')
+            '46056e8394cd1f1f85ccfaabddffc1a67f595bfd99fbda6cd62afa751dbfc519')
+sha256sums_x86_64=('cb4c54e0b74a44f3b3c6c4a6c25e5185f3b715d4a43981342ae7b981af50e271')
+sha256sums_aarch64=('38880b68e1028d9b14da5e48c1b32f6615113ded90e8f094fe9b0c4edfc5f82b')
 
 options=("!lto") # -flto=thin is added in CMakeLists.txt
 
