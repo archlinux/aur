@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Liv - liv.cl321@gmail.com 
 pkgname=dbc-editor-git
 pkgver="1.0.0"
 pkgrel=1
