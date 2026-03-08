@@ -1,7 +1,7 @@
 # Maintainer: desbma
 # shellcheck disable=SC2034,SC2148,SC2154,SC2164
 pkgname=shh
-pkgver=2026.1.27
+pkgver=2026.3.8
 pkgrel=1
 pkgdesc='Automatic systemd service hardening guided by strace profiling'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs'
          'strace')
 makedepends=('cargo' 'systemd')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/desbma/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('cf979174e8cba3f704adcbd411158d7d1c6b2f49b3a967f1034a6a9b56180cc272e0c4fcbda1cb32b4f8a7741703b4e935ddda37dd6c14cc12fa516cb97f19f4')
+sha512sums=('75ab6b2b50c6348c50fa0841059cb1e83730fa14941d420cb0326763283a5c1408815674381fbd3f8e3f7c8189ffb01f2d3220335f383c4c34323351f208cefc')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -24,10 +24,11 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
 
     mkdir -p target/man
-    cargo run --frozen --features generate-extra -- gen-man-pages ./target/man/
+    cargo run --frozen --features generate-extras -- gen-man-pages ./target/man/
+    rm target/man/shh-gen-*
 
     mkdir -p target/shellcompletions
-    cargo run --frozen --features generate-extra -- gen-shell-complete ./target/shellcompletions
+    cargo run --frozen --features generate-extras -- gen-shell-completions ./target/shellcompletions
 
     cargo build --frozen --release
 }
@@ -35,7 +36,7 @@ build() {
 check() {
     cd "${pkgname}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --bins
+    cargo test --frozen
 }
 
 package() {
