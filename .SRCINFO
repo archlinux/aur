@@ -1,6 +1,6 @@
 pkgbase = numr-bin
 	pkgdesc = A text calculator for natural language expressions with a vim-style TUI
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/nasedkinpv/numr
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = numr-bin
 	provides = numr
 	provides = numr-cli
 	conflicts = numr
-	source = README-0.5.1.md::https://raw.githubusercontent.com/nasedkinpv/numr/v0.5.1/README.md
-	source = LICENSE-0.5.1::https://raw.githubusercontent.com/nasedkinpv/numr/v0.5.1/LICENSE
+	source = README-0.5.2.md::https://raw.githubusercontent.com/nasedkinpv/numr/v0.5.2/README.md
+	source = LICENSE-0.5.2::https://raw.githubusercontent.com/nasedkinpv/numr/v0.5.2/LICENSE
 	sha256sums = 5dacb26baa3e557233606c3f967deede263faf659b0943aa7ceeb23137d45daf
 	sha256sums = d606ed9e171d1b6c0fc38573e5509c4b70d9df40c8a736c78455382c7559ea2b
-	source_x86_64 = numr-x86_64-0.5.1.tgz::https://github.com/nasedkinpv/numr/releases/download/v0.5.1/numr-v0.5.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = ad32ccf6571272fc24478c56e5ea6a95a2fbd1b26d7dcc748fd414a65c25b118
-	source_aarch64 = numr-aarch64-0.5.1.tgz::https://github.com/nasedkinpv/numr/releases/download/v0.5.1/numr-v0.5.1-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 86cfb74ac15a37aecf72a927e75164f82cbe1f60a980a2044709f4773bcd0824
+	source_x86_64 = numr-x86_64-0.5.2.tgz::https://github.com/nasedkinpv/numr/releases/download/v0.5.2/numr-v0.5.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a9625fed3210aee56af81737d1d51a47eb3006b87c038bd52a65d644d610bd3f
+	source_aarch64 = numr-aarch64-0.5.2.tgz::https://github.com/nasedkinpv/numr/releases/download/v0.5.2/numr-v0.5.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 24152fc86ae2690d72b4d99d219120a43eabadb8e5b393d25dc5becf951047ed
 
 pkgname = numr-bin

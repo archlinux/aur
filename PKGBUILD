@@ -5,7 +5,7 @@ _pkgname=numr
 pkgname=${_pkgname}-bin
 pkgdesc="A text calculator for natural language expressions with a vim-style TUI"
 
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,8 +27,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
 sha256sums=('5dacb26baa3e557233606c3f967deede263faf659b0943aa7ceeb23137d45daf'
             'd606ed9e171d1b6c0fc38573e5509c4b70d9df40c8a736c78455382c7559ea2b')
-sha256sums_x86_64=('ad32ccf6571272fc24478c56e5ea6a95a2fbd1b26d7dcc748fd414a65c25b118')
-sha256sums_aarch64=('86cfb74ac15a37aecf72a927e75164f82cbe1f60a980a2044709f4773bcd0824')
+sha256sums_x86_64=('a9625fed3210aee56af81737d1d51a47eb3006b87c038bd52a65d644d610bd3f')
+sha256sums_aarch64=('24152fc86ae2690d72b4d99d219120a43eabadb8e5b393d25dc5becf951047ed')
 
 
 package() {
