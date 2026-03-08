@@ -1,5 +1,5 @@
 pkgname=aspm
-pkgver=1.12.5
+pkgver=1.12.6
 pkgrel=1
 pkgdesc="A secure private messenger"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=(
     'python-pyqt5'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/fredima2x/aspm/archive/v$pkgver.tar.gz")
-sha256sums=('daecae675cc1124372a8eb627b5933c032fb49639b5c25f4806c7f9d5e0aba04')
+sha256sums=('7d81f74410de79d8f449ec95cd7687f6c5d86ac0159492c897c72e18e5da703c')
 
 package() {
     local src="$srcdir/$pkgname-$pkgver/client"  # ← client/ Unterordner!
