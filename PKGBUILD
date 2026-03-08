@@ -11,7 +11,7 @@ depends=('fmt' 'pugixml' 'qt6-base' 'qt6-svg' 'spdlog')
 provides=('arma3-unix-launcher')
 conflicts=('arma3-unix-launcher')
 source=("https://github.com/muttleyxd/arma3-unix-launcher/releases/download/$_gittag/arma3-unix-launcher-$pkgver-$pkgrel-x86_64.pkg.tar.zst")
-sha256sums=('6f31f0cdbe7be3417886eb85dc581444b14c693471b9bd17816f03adb1a7ae31')
+sha256sums=('34f5732097648fcc4a59b88fe99676b28a04cf5602fe7d7392870be8baa17af6')
 
 package() 
 {

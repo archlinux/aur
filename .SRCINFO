@@ -13,6 +13,6 @@ pkgbase = arma3-unix-launcher-bin
 	provides = arma3-unix-launcher
 	conflicts = arma3-unix-launcher
 	source = https://github.com/muttleyxd/arma3-unix-launcher/releases/download/commit-461/arma3-unix-launcher-461.6d9dd42-1-x86_64.pkg.tar.zst
-	sha256sums = 6f31f0cdbe7be3417886eb85dc581444b14c693471b9bd17816f03adb1a7ae31
+	sha256sums = 34f5732097648fcc4a59b88fe99676b28a04cf5602fe7d7392870be8baa17af6
 
 pkgname = arma3-unix-launcher-bin
