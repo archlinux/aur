@@ -1,7 +1,7 @@
 pkgbase = eden-nightly-bin
 	pkgdesc = Nightly release of the Eden Nintendo Switch emulator (PGO optimized)
-	pkgver = 1772822051.c062931c9b
-	pkgrel = 2
+	pkgver = 1772907795.11ad71b1e7
+	pkgrel = 1
 	url = https://github.com/Eden-CI/Nightly
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -10,7 +10,7 @@ pkgbase = eden-nightly-bin
 	provides = eden
 	conflicts = eden
 	options = !strip
-	source = Eden-Linux-c062931c9b-amd64-clang-pgo.AppImage::https://github.com/Eden-CI/Nightly/releases/download/v1772822051.c062931c9b/Eden-Linux-c062931c9b-amd64-clang-pgo.AppImage
-	sha256sums = d3860e9110c74ea786c124f6282d42f1a4938ce4414dbd30c8efb8600fb2aa13
+	source = Eden-Linux-11ad71b1e7-amd64-clang-pgo.AppImage::https://github.com/Eden-CI/Nightly/releases/download/v1772907795.11ad71b1e7/Eden-Linux-11ad71b1e7-amd64-clang-pgo.AppImage
+	sha256sums = 8cb1febcccafd006967f417133a323c436c12e054e3e9c1a379137eed72baeb4
 
 pkgname = eden-nightly-bin
