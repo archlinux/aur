@@ -1,6 +1,6 @@
 # Maintainer: Dasun P
 pkgname=bolt-dm-bin
-pkgver=0.3.2_beta
+pkgver=0.3.3_beta
 pkgrel=1
 pkgdesc="Fast multi-segment download manager"
 arch=('x86_64')
@@ -11,8 +11,10 @@ provides=('bolt-dm')
 conflicts=('bolt-dm')
 source=("${url}/releases/download/v${pkgver//_/-}/bolt-linux-x86_64"
         "bolt.desktop"
-        "bolt.svg")
+        "bolt.svg"
+        "bolt-dm-bin.install")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 

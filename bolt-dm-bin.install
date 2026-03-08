@@ -1,0 +1,8 @@
+# Update icon cache so the app icon shows in launchers
+post_install() {
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor || true
+}
+
+post_upgrade() {
+    post_install
+}
