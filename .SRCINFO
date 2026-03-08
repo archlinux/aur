@@ -1,6 +1,6 @@
 pkgbase = noctalia-qs
 	pkgdesc = Custom fork of Quickshell powering Noctalia Shell
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://github.com/noctalia-dev/noctalia-qs
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = noctalia-qs
 	conflicts = quickshell
 	conflicts = quickshell-git
 	options = !debug
-	source = noctalia-qs-0.0.5.tar.gz::https://github.com/noctalia-dev/noctalia-qs/archive/v0.0.5.tar.gz
-	sha256sums = b0552dcffa6ddfbf81fa890508fca50b2cfa46a2c95f7a6945b94cdb45052026
+	source = noctalia-qs-0.0.6.tar.gz::https://github.com/noctalia-dev/noctalia-qs/archive/v0.0.6.tar.gz
+	sha256sums = d8cc89ed32a723f845e2cd5d452949ccd21f2d9bd047712ed296ed5dd267d3bd
 
 pkgname = noctalia-qs
