@@ -3,7 +3,7 @@
 
 pkgname=pake-cli
 pkgver=3.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn any webpage into a desktop app with one command (Tauri/Rust-based CLI)"
 arch=('any')
 url="https://github.com/tw93/Pake"

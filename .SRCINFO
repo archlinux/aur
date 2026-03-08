@@ -1,7 +1,7 @@
 pkgbase = pake-cli
 	pkgdesc = Turn any webpage into a desktop app with one command (Tauri/Rust-based CLI)
 	pkgver = 3.10.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tw93/Pake
 	arch = any
 	license = MIT
