@@ -1,0 +1,16 @@
+pkgbase = gentle-ai
+	pkgdesc = AI Gentle Stack - Ecosystem configurator for AI coding agents
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/Gentleman-Programming/gentle-ai
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = gentle-ai
+	conflicts = gentle-ai
+	source_x86_64 = gentle-ai_1.4.0_linux_amd64.tar.gz::https://github.com/Gentleman-Programming/gentle-ai/releases/download/v1.4.0/gentle-ai_1.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 7480579ea4172c755a08e6a45a1cd13dacad64208f74f2a3e9acafb771b7d996
+	source_aarch64 = gentle-ai_1.4.0_linux_arm64.tar.gz::https://github.com/Gentleman-Programming/gentle-ai/releases/download/v1.4.0/gentle-ai_1.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = f7d7c703ad484107f7cd08b3b287215a0a6a1e077befcdcfb1e6f1478030c476
+
+pkgname = gentle-ai
