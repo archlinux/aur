@@ -1,0 +1,31 @@
+_casioemuneo_firmware_notice() {
+  cat << 'EOF'
+[casioemuneo] Notice / 提示:
+Due to copyright restrictions, this package cannot include non-free Casio firmware.
+If you need firmware, please refer to:
+https://github.com/Physics365/991CN-X-CW-Decompilation
+
+由于版权原因，本软件包无法包含非自由的 Casio 固件。
+如果你需要固件，请参考：
+https://github.com/Physics365/991CN-X-CW-Decompilation
+EOF
+}
+
+post_install() {
+  _casioemuneo_firmware_notice
+}
+
+post_upgrade() {
+  _casioemuneo_firmware_notice
+}
+
+post_remove() {
+  cat << 'EOF'
+[casioemuneo] Uninstall Notice / 卸载提示:
+Removing this package does not remove any Casio firmware.
+Please remove firmware files manually if needed.
+
+卸载本软件包不会移除任何 Casio 固件。
+如有需要，请手动删除固件文件。
+EOF
+}

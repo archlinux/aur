@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=CasioEmuNeo
+Comment=Casio ClassWiz emulator, assembler and debugger
+Exec=casioemuneo
+Icon=casio
+Terminal=false
+Categories=Education;Utility;Emulator;
+StartupNotify=true
