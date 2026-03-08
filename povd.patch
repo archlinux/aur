@@ -1,17 +1,19 @@
 diff --git a/autotests/integration/effects/desktop_switching_animation_test.cpp b/autotests/integration/effects/desktop_switching_animation_test.cpp
-index fa24c17b3c..9196fbba30 100644
+index fa24c17b3c..054fcd5d58 100644
 --- a/autotests/integration/effects/desktop_switching_animation_test.cpp
 +++ b/autotests/integration/effects/desktop_switching_animation_test.cpp
-@@ -33,6 +33,8 @@ private Q_SLOTS:
+@@ -33,6 +33,10 @@ private Q_SLOTS:
  
      void testSwitchDesktops_data();
      void testSwitchDesktops();
 +    void testSwitchPerOutputDesktops_data();
 +    void testSwitchPerOutputDesktops();
++    void testConcurrentSwitchPerOutputDesktops_data();
++    void testConcurrentSwitchPerOutputDesktops();
  };
  
  void DesktopSwitchingAnimationTest::initTestCase()
-@@ -77,6 +79,7 @@ void DesktopSwitchingAnimationTest::cleanup()
+@@ -77,6 +81,7 @@ void DesktopSwitchingAnimationTest::cleanup()
      QVERIFY(effects->loadedEffects().isEmpty());
  
      VirtualDesktopManager::self()->setCount(1);
@@ -19,7 +21,7 @@ index fa24c17b3c..9196fbba30 100644
  
      Test::destroyWaylandConnection();
  }
-@@ -135,5 +138,74 @@ void DesktopSwitchingAnimationTest::testSwitchDesktops()
+@@ -135,5 +140,149 @@ void DesktopSwitchingAnimationTest::testSwitchDesktops()
      QVERIFY(Test::waitForWindowClosed(window));
  }
  
@@ -88,6 +90,81 @@ index fa24c17b3c..9196fbba30 100644
 +    QCOMPARE(effects->activeFullScreenEffect(), effect);
 +
 +    // Eventually, the animation will be complete.
++    QTRY_VERIFY(!effect->isActive());
++    QTRY_COMPARE(effects->activeFullScreenEffect(), nullptr);
++}
++
++void DesktopSwitchingAnimationTest::testConcurrentSwitchPerOutputDesktops_data()
++{
++    QTest::addColumn<QString>("effectName");
++    QTest::addColumn<bool>("isPerOutputVirtualDesktops");
++
++    QTest::newRow("Fade Desktop") << QStringLiteral("fadedesktop") << false;
++    QTest::newRow("Fade Desktop + per-output desktops") << QStringLiteral("fadedesktop") << true;
++    QTest::newRow("Slide") << QStringLiteral("slide") << false;
++    QTest::newRow("Slide + per-output desktops") << QStringLiteral("slide") << true;
++}
++
++void DesktopSwitchingAnimationTest::testConcurrentSwitchPerOutputDesktops()
++{
++    // This test verifies that KWin doesn't crash if a window is added on one output, moved to another and deleted while the slide effect is running.
++
++    QFETCH(QString, effectName);
++    QFETCH(bool, isPerOutputVirtualDesktops);
++    LogicalOutput *output1 = workspace()->outputs().at(0);
++    LogicalOutput *output2 = workspace()->outputs().at(1);
++    VirtualDesktopManager::self()->setPerOutputVirtualDesktops(isPerOutputVirtualDesktops);
++    VirtualDesktopManager::self()->setCount(3);
++    QCOMPARE(VirtualDesktopManager::self()->current(output1), 1u);
++    QCOMPARE(VirtualDesktopManager::self()->current(output2), 1u);
++    QCOMPARE(VirtualDesktopManager::self()->count(), 3u);
++    QCOMPARE(VirtualDesktopManager::self()->isPerOutputVirtualDesktops(), isPerOutputVirtualDesktops);
++
++    // The Fade Desktop effect will do nothing if there are no windows to fade,
++    // so we have to create a dummy test windows.
++    Test::XdgToplevelWindow window1;
++    QVERIFY(window1.show());
++    window1.m_window->setOutput(output1);
++    QCOMPARE(window1.m_window->desktops().count(), 1);
++    QCOMPARE(window1.m_window->desktops().first(), VirtualDesktopManager::self()->desktops().first());
++    QCOMPARE(window1.m_window->output(), output1);
++
++    Test::XdgToplevelWindow window2;
++    QVERIFY(window2.show());
++    window2.m_window->setOutput(output2);
++    QCOMPARE(window2.m_window->desktops().count(), 1);
++    QCOMPARE(window2.m_window->desktops().first(), VirtualDesktopManager::self()->desktops().first());
++    QCOMPARE(window2.m_window->output(), output2);
++
++    workspace()->setActiveOutput(output1);
++
++    // Load effect that will be tested.
++    QVERIFY(effects);
++    QVERIFY(effects->loadEffect(effectName));
++    QCOMPARE(effects->loadedEffects().count(), 1);
++    QCOMPARE(effects->loadedEffects().first(), effectName);
++    Effect *effect = effects->findEffect(effectName);
++    QVERIFY(effect);
++    QVERIFY(!effect->isActive());
++
++    // Switch to the second virtual desktop on first output.
++    VirtualDesktopManager::self()->setCurrent(2u, output1);
++    QCOMPARE(VirtualDesktopManager::self()->current(output1), 2u);
++    QVERIFY(effect->isActive());
++    QCOMPARE(effects->activeFullScreenEffect(), effect);
++
++    // Open a temp window on output1 while the switch effect is running.
++    Test::XdgToplevelWindow tempWindow;
++    QVERIFY(tempWindow.show());
++    QCOMPARE(tempWindow.m_window->output(), output1);
++
++    // Move the temp window to output2 and delete it.
++    tempWindow.m_window->sendToOutput(output2);
++    tempWindow.unmapAndWaitForClosed();
++    QVERIFY(effect->isActive());
++    QCOMPARE(effects->activeFullScreenEffect(), effect);
++
++    // Eventually, the animation will be complete. This is when the slide effect crashed.
 +    QTRY_VERIFY(!effect->isActive());
 +    QTRY_COMPARE(effects->activeFullScreenEffect(), nullptr);
 +}
@@ -1195,6 +1272,128 @@ index f44c0c090c..b607c89e89 100644
 +
  WAYLANDTEST_MAIN(VirtualDesktopTest)
  #include "virtual_desktop_test.moc"
+diff --git a/autotests/integration/x11_window_test.cpp b/autotests/integration/x11_window_test.cpp
+index d3f3ba5df1..37428f47da 100644
+--- a/autotests/integration/x11_window_test.cpp
++++ b/autotests/integration/x11_window_test.cpp
+@@ -59,6 +59,7 @@ private Q_SLOTS:
+     void testInteractiveMoveUnmaximizeInitiallyHorizontal();
+     void testInteractiveMoveUnmaximizeVertical();
+     void testInteractiveMoveUnmaximizeInitiallyVertical();
++    void testConfigureRequestMoveWithPerOutputDesktops();
+     void testFullScreen();
+     void testInitiallyFullScreen();
+     void testRequestFullScreen();
+@@ -107,6 +108,7 @@ private Q_SLOTS:
+     void testCloseInactiveTransient();
+     void testCloseGroupTransient();
+     void testCloseInactiveGroupTransient();
++    void testTransientOnAnotherOutputWithPerOutputDesktops();
+     void testModal();
+     void testGroupModal();
+     void testCloseModal();
+@@ -157,11 +159,13 @@ void X11WindowTest::initTestCase()
+ void X11WindowTest::init()
+ {
+     VirtualDesktopManager::self()->setCount(2);
++    VirtualDesktopManager::self()->setPerOutputVirtualDesktops(false);
+ 
+     QFETCH_GLOBAL(qreal, scale);
+     kwinApp()->setXwaylandScale(scale);
+ 
+     QVERIFY(Test::setupWaylandConnection());
++    workspace()->setActiveOutput(workspace()->outputs()[0]);
+ }
+ 
+ void X11WindowTest::cleanup()
+@@ -735,6 +739,49 @@ void X11WindowTest::testInteractiveMoveUnmaximizeInitiallyVertical()
+     QCOMPARE(interactiveMoveResizeFinishedSpy.count(), 1);
+ }
+ 
++void X11WindowTest::testConfigureRequestMoveWithPerOutputDesktops()
++{
++    // This test verifies that x11 window moved to another output via configure request will be moved to the output's current virtual desktop as well.
++
++    VirtualDesktopManager::self()->setCount(2);
++    VirtualDesktopManager::self()->setPerOutputVirtualDesktops(true);
++
++    auto outputs = workspace()->outputs();
++    QCOMPARE(outputs.count(), 2);
++    const auto desktops = VirtualDesktopManager::self()->desktops();
++    VirtualDesktopManager::self()->setCurrent(desktops[0], outputs[0]);
++    VirtualDesktopManager::self()->setCurrent(desktops[1], outputs[1]);
++
++    // Create the window on output 0, desktop 0
++    Test::XcbConnectionPtr c = Test::createX11Connection();
++    QVERIFY(!xcb_connection_has_error(c.get()));
++    X11Window *window = createWindow(c.get(), Rect(100, 100, 100, 200));
++    QCOMPARE(VirtualDesktopManager::self()->currentDesktop(outputs[0]), desktops[0]);
++    QCOMPARE(VirtualDesktopManager::self()->currentDesktop(outputs[1]), desktops[1]);
++    QCOMPARE(window->output(), outputs[0]);
++    QCOMPARE(window->desktops(), {desktops[0]});
++
++    // Move the window to output 1
++    QSignalSpy frameGeometryChangedSpy(window, &Window::frameGeometryChanged);
++    const uint32_t values[] = {
++        Xcb::toXNative(1500), /* x */
++        Xcb::toXNative(0), /* y */
++        Xcb::toXNative(100), /* width */
++        Xcb::toXNative(200) /* height */
++    };
++    xcb_configure_window(c.get(), window->window(),
++                         XCB_CONFIG_WINDOW_X | XCB_CONFIG_WINDOW_Y | XCB_CONFIG_WINDOW_HEIGHT | XCB_CONFIG_WINDOW_WIDTH,
++                         values);
++    xcb_flush(c.get());
++    QVERIFY(frameGeometryChangedSpy.wait());
++
++    // The window should be moved to output 1's current desktop (1). The current desktops should stay the same on both outputs.
++    QCOMPARE(window->output(), outputs[1]);
++    QCOMPARE(window->desktops(), {desktops[1]});
++    QCOMPARE(VirtualDesktopManager::self()->currentDesktop(outputs[0]), desktops[0]);
++    QCOMPARE(VirtualDesktopManager::self()->currentDesktop(outputs[1]), desktops[1]);
++}
++
+ void X11WindowTest::testFullScreen()
+ {
+     // This test verifies that the fullscreen mode can be toggled and state changes are propagated to the client.
+@@ -2544,6 +2591,37 @@ void X11WindowTest::testCloseInactiveGroupTransient()
+     QCOMPARE(workspace()->activeWindow(), unrelated);
+ }
+ 
++void X11WindowTest::testTransientOnAnotherOutputWithPerOutputDesktops()
++{
++    // This test verifies that when a transient is opened on another output, it's opened on that output's current desktop instead of the parent's desktop.
++
++    VirtualDesktopManager::self()->setCount(2);
++    VirtualDesktopManager::self()->setPerOutputVirtualDesktops(true);
++
++    auto outputs = workspace()->outputs();
++    QCOMPARE(outputs.count(), 2);
++    const auto desktops = VirtualDesktopManager::self()->desktops();
++    VirtualDesktopManager::self()->setCurrent(desktops[0], outputs[0]);
++    VirtualDesktopManager::self()->setCurrent(desktops[1], outputs[1]);
++
++    // Create a parent and a child windows.
++    Test::XcbConnectionPtr c = Test::createX11Connection();
++    QVERIFY(!xcb_connection_has_error(c.get()));
++    X11Window *parent = createWindow(c.get(), Rect(0, 0, 100, 200));
++    X11Window *child = createWindow(c.get(), Rect(Xcb::toXNative(1500), 0, 100, 200), [&c, &parent](xcb_window_t windowId) {
++        xcb_icccm_set_wm_transient_for(c.get(), windowId, parent->window());
++    });
++    QVERIFY(child->isTransient());
++    QCOMPARE(child->transientFor(), parent);
++    QVERIFY(parent->hasTransient(child, true));
++    QCOMPARE(parent->output(), outputs[0]);
++    QCOMPARE(parent->desktops(), {desktops[0]});
++    QCOMPARE(child->output(), outputs[1]);
++    QCOMPARE(child->desktops(), {desktops[1]});
++    QCOMPARE(VirtualDesktopManager::self()->currentDesktop(outputs[0]), desktops[0]);
++    QCOMPARE(VirtualDesktopManager::self()->currentDesktop(outputs[1]), desktops[1]);
++}
++
+ void X11WindowTest::testModal()
+ {
+     // Create a parent and a child windows.
 diff --git a/autotests/integration/xdgshellwindow_rules_test.cpp b/autotests/integration/xdgshellwindow_rules_test.cpp
 index 28f827e119..00d6b528f8 100644
 --- a/autotests/integration/xdgshellwindow_rules_test.cpp
@@ -2884,7 +3083,7 @@ index be06788927..313da18606 100644
      // Map the area to the output local coordinates.
      m_rect.translate(-m_screen->geometry().topLeft());
 diff --git a/src/plugins/slide/slide.cpp b/src/plugins/slide/slide.cpp
-index 9ee9066536..59d3205491 100644
+index 9ee9066536..604f40250c 100644
 --- a/src/plugins/slide/slide.cpp
 +++ b/src/plugins/slide/slide.cpp
 @@ -22,6 +22,15 @@
@@ -3238,17 +3437,17 @@ index 9ee9066536..59d3205491 100644
 +        for (LogicalOutput *screen : screens) {
 +            getSlideEffectScreen(screen).desktopChangingCancelled();
 +        }
-     }
- }
- 
--QPointF SlideEffect::moveInsideDesktopGrid(QPointF p)
++    }
++}
++
 +void SlideEffectScreen::desktopChangingCancelled()
 +{
 +    if (m_state != State::Inactive) {
 +        startAnimation(m_gesturePos, effects->currentDesktop(m_screen), nullptr);
-+    }
-+}
-+
+     }
+ }
+ 
+-QPointF SlideEffect::moveInsideDesktopGrid(QPointF p)
 +QPointF SlideEffectScreen::moveInsideDesktopGrid(QPointF p)
  {
      if (p.x() < 0) {
@@ -3265,7 +3464,7 @@ index 9ee9066536..59d3205491 100644
  {
      if (m_state == State::Inactive) {
          return;
-@@ -467,6 +584,21 @@ void SlideEffect::windowAdded(EffectWindow *w)
+@@ -467,6 +584,20 @@ void SlideEffect::windowAdded(EffectWindow *w)
  }
  
  void SlideEffect::windowDeleted(EffectWindow *w)
@@ -3275,19 +3474,18 @@ index 9ee9066536..59d3205491 100644
 +        return;
 +    }
 +
-+    // This cannot use getSlideEffectScreen, because the screen may be removed before the window.
-+    auto it = m_slideEffectScreens.find(w->screen());
-+    if (it == m_slideEffectScreens.end()) {
-+        return;
++    // It's necessary to delete it in all screens, because the window may have changed screens since it was added. This happens e.g. with the desktop change OSD
++    // window if the slide effect is triggered on both screens consecutively: the window is added on the first screen and deleted on the second screen.
++    for (SlideEffectScreen &effectScreen : m_slideEffectScreens) {
++        effectScreen.windowDeleted(w);
 +    }
-+    it->windowDeleted(w);
 +}
 +
 +void SlideEffectScreen::windowDeleted(EffectWindow *w)
  {
      if (m_state == State::Inactive) {
          return;
-@@ -483,7 +615,7 @@ void SlideEffect::windowDeleted(EffectWindow *w)
+@@ -483,7 +614,7 @@ void SlideEffect::windowDeleted(EffectWindow *w)
   * This function decides when it's better to wrap around the grid or not.
   * Only call if wrapping is enabled.
   */
@@ -3296,7 +3494,7 @@ index 9ee9066536..59d3205491 100644
  {
      int w = effects->desktopGridWidth();
      int h = effects->desktopGridHeight();
-@@ -543,13 +675,18 @@ void SlideEffect::optimizePath()
+@@ -543,13 +674,18 @@ void SlideEffect::optimizePath()
   * This function finds the true fastest path, regardless of which direction the animation is already going;
   * I was a little upset about this limitation until I realized that MacOS can't even wrap desktops :)
   */
@@ -3317,7 +3515,7 @@ index 9ee9066536..59d3205491 100644
  
  #include "moc_slide.cpp"
 diff --git a/src/plugins/slide/slide.h b/src/plugins/slide/slide.h
-index ca184a0a53..ece88dbc8c 100644
+index ca184a0a53..20421d63cb 100644
 --- a/src/plugins/slide/slide.h
 +++ b/src/plugins/slide/slide.h
 @@ -43,41 +43,28 @@ namespace KWin
@@ -3388,7 +3586,7 @@ index ca184a0a53..ece88dbc8c 100644
      enum class State {
          Inactive,
          ActiveAnimation,
-@@ -133,6 +115,60 @@ private:
+@@ -133,6 +115,57 @@ private:
      QList<EffectWindow *> m_elevatedWindows;
      QHash<EffectWindow *, WindowData> m_windowData;
      bool m_switchingActivity = false;
@@ -3441,15 +3639,12 @@ index ca184a0a53..ece88dbc8c 100644
 +    int m_vGap;
 +    bool m_slideBackground;
 +
-+    SpringMotion m_motionX;
-+    SpringMotion m_motionY;
-+
 +    bool m_switchingActivity = false;
 +    QHash<LogicalOutput *, SlideEffectScreen> m_slideEffectScreens;
  };
  
  inline int SlideEffect::horizontalGap() const
-@@ -151,6 +187,11 @@ inline bool SlideEffect::slideBackground() const
+@@ -151,6 +184,11 @@ inline bool SlideEffect::slideBackground() const
  }
  
  inline bool SlideEffect::isActive() const
@@ -4448,7 +4643,7 @@ index 73689827f5..ec5b3e87c6 100644
  {
      m_config = std::move(config);
 diff --git a/src/wayland/plasmavirtualdesktop.cpp b/src/wayland/plasmavirtualdesktop.cpp
-index 9c90574d0e..ba7a078d89 100644
+index 9c90574d0e..5051efa427 100644
 --- a/src/wayland/plasmavirtualdesktop.cpp
 +++ b/src/wayland/plasmavirtualdesktop.cpp
 @@ -5,6 +5,7 @@
@@ -4469,7 +4664,7 @@ index 9c90574d0e..ba7a078d89 100644
  
  class PlasmaVirtualDesktopInterfacePrivate : public QtWaylandServer::org_kde_plasma_virtual_desktop
  {
-@@ -34,6 +36,21 @@ protected:
+@@ -34,6 +36,20 @@ protected:
      void org_kde_plasma_virtual_desktop_request_activate(Resource *resource) override;
  };
  
@@ -4480,7 +4675,6 @@ index 9c90574d0e..ba7a078d89 100644
 +    ~PlasmaOutputVirtualDesktopInterfacePrivate();
 +
 +    PlasmaOutputVirtualDesktopInterface *q;
-+    QString uuid;
 +    QString name;
 +    QString activeDesktopId;
 +
@@ -4491,7 +4685,7 @@ index 9c90574d0e..ba7a078d89 100644
  class PlasmaVirtualDesktopManagementInterfacePrivate : public QtWaylandServer::org_kde_plasma_virtual_desktop_management
  {
  public:
-@@ -41,6 +58,7 @@ public:
+@@ -41,6 +57,7 @@ public:
  
      QTimer doneTimer;
      QList<PlasmaVirtualDesktopInterface *> desktops;
@@ -4499,7 +4693,7 @@ index 9c90574d0e..ba7a078d89 100644
      quint32 rows = 0;
      quint32 columns = 0;
      PlasmaVirtualDesktopManagementInterface *q;
-@@ -48,6 +66,8 @@ public:
+@@ -48,6 +65,8 @@ public:
      inline QList<PlasmaVirtualDesktopInterface *>::const_iterator constFindDesktop(const QString &id);
      inline QList<PlasmaVirtualDesktopInterface *>::iterator findDesktop(const QString &id);
  
@@ -4508,7 +4702,7 @@ index 9c90574d0e..ba7a078d89 100644
  protected:
      void org_kde_plasma_virtual_desktop_management_get_virtual_desktop(Resource *resource, uint32_t id, const QString &desktop_id) override;
      void org_kde_plasma_virtual_desktop_management_request_create_virtual_desktop(Resource *resource, const QString &name, uint32_t position) override;
-@@ -100,6 +120,20 @@ PlasmaVirtualDesktopManagementInterfacePrivate::PlasmaVirtualDesktopManagementIn
+@@ -100,6 +119,19 @@ PlasmaVirtualDesktopManagementInterfacePrivate::PlasmaVirtualDesktopManagementIn
  {
  }
  
@@ -4520,7 +4714,6 @@ index 9c90574d0e..ba7a078d89 100644
 +
 +    auto outputVdClientResource = outputVd->d->add(resource->client(), std::min(resource->version(), s_output_desktop_version));
 +    send_output_added(resource->handle, outputVdClientResource->handle);
-+    outputVd->d->send_uuid(outputVdClientResource->handle, outputVd->uuid());
 +    outputVd->d->send_name(outputVdClientResource->handle, outputVd->name());
 +    outputVd->d->send_active_desktop_id(outputVdClientResource->handle, outputVd->activeDesktop());
 +    outputVd->d->send_done(outputVdClientResource->handle);
@@ -4529,7 +4722,7 @@ index 9c90574d0e..ba7a078d89 100644
  void PlasmaVirtualDesktopManagementInterfacePrivate::org_kde_plasma_virtual_desktop_management_bind_resource(Resource *resource)
  {
      quint32 i = 0;
-@@ -111,6 +145,10 @@ void PlasmaVirtualDesktopManagementInterfacePrivate::org_kde_plasma_virtual_desk
+@@ -111,6 +143,10 @@ void PlasmaVirtualDesktopManagementInterfacePrivate::org_kde_plasma_virtual_desk
          send_rows(resource->handle, rows);
      }
  
@@ -4540,7 +4733,7 @@ index 9c90574d0e..ba7a078d89 100644
      send_done(resource->handle);
  }
  
-@@ -211,6 +249,54 @@ void PlasmaVirtualDesktopManagementInterface::removeDesktop(const QString &id)
+@@ -211,6 +247,53 @@ void PlasmaVirtualDesktopManagementInterface::removeDesktop(const QString &id)
      }
  }
  
@@ -4552,7 +4745,6 @@ index 9c90574d0e..ba7a078d89 100644
 +    }
 +
 +    auto outputVd = new PlasmaOutputVirtualDesktopInterface();
-+    outputVd->d->uuid = output->uuid();
 +    outputVd->d->name = output->name();
 +    outputVd->d->activeDesktopId = activeDesktopId;
 +
@@ -4595,7 +4787,7 @@ index 9c90574d0e..ba7a078d89 100644
  QList<PlasmaVirtualDesktopInterface *> PlasmaVirtualDesktopManagementInterface::desktops() const
  {
      return d->desktops;
-@@ -349,6 +435,73 @@ void PlasmaVirtualDesktopInterface::sendDone()
+@@ -349,6 +432,68 @@ void PlasmaVirtualDesktopInterface::sendDone()
      }
  }
  
@@ -4628,11 +4820,6 @@ index 9c90574d0e..ba7a078d89 100644
 +
 +PlasmaOutputVirtualDesktopInterface::~PlasmaOutputVirtualDesktopInterface()
 +{
-+}
-+
-+QString PlasmaOutputVirtualDesktopInterface::uuid() const
-+{
-+    return d->uuid;
 +}
 +
 +QString PlasmaOutputVirtualDesktopInterface::name() const
@@ -4670,7 +4857,7 @@ index 9c90574d0e..ba7a078d89 100644
  
  #include "moc_plasmavirtualdesktop.cpp"
 diff --git a/src/wayland/plasmavirtualdesktop.h b/src/wayland/plasmavirtualdesktop.h
-index 42da075edd..715c193614 100644
+index 42da075edd..9732e63740 100644
 --- a/src/wayland/plasmavirtualdesktop.h
 +++ b/src/wayland/plasmavirtualdesktop.h
 @@ -13,8 +13,11 @@
@@ -4696,7 +4883,7 @@ index 42da075edd..715c193614 100644
      /**
       * @returns All the desktops present.
       */
-@@ -156,4 +163,39 @@ private:
+@@ -156,4 +163,38 @@ private:
      std::unique_ptr<PlasmaVirtualDesktopInterfacePrivate> d;
  };
  
@@ -4706,7 +4893,6 @@ index 42da075edd..715c193614 100644
 +public:
 +    ~PlasmaOutputVirtualDesktopInterface() override;
 +
-+    QString uuid() const;
 +    QString name() const;
 +
 +    /**
@@ -5158,28 +5344,228 @@ index 6fd0cb68f9..0710a63f1c 100644
      Window *findWindowToActivateOnDesktop(VirtualDesktop *desktop);
      void removeWindow(Window *window);
 diff --git a/src/x11window.cpp b/src/x11window.cpp
-index 2f951319d5..e04319d8fa 100644
+index 2f951319d5..e2f16ac2fb 100644
 --- a/src/x11window.cpp
 +++ b/src/x11window.cpp
-@@ -516,7 +516,7 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
-             if (on_all) {
-                 initialDesktops = QList<VirtualDesktop *>{};
-             } else if (on_current) {
+@@ -40,6 +40,7 @@
+ #include <KX11Extras>
+ // Qt
+ #include <QProcess>
++#include <QScopeGuard>
+ // xcb
+ #include <xcb/xcb_icccm.h>
+ // system
+@@ -477,104 +478,6 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
+ 
+     readActivities(activitiesCookie);
+ 
+-    // Initial desktop placement
+-    std::optional<QList<VirtualDesktop *>> initialDesktops;
+-    if (session) {
+-        if (session->onAllDesktops) {
+-            initialDesktops = QList<VirtualDesktop *>{};
+-        } else {
+-            VirtualDesktop *desktop = VirtualDesktopManager::self()->desktopForX11Id(session->desktop);
+-            if (desktop) {
+-                initialDesktops = QList<VirtualDesktop *>{desktop};
+-            }
+-        }
+-        setOnActivities(session->activities);
+-    } else {
+-        // If this window is transient, ensure that it is opened on the
+-        // same window as its parent.  this is necessary when an application
+-        // starts up on a different desktop than is currently displayed
+-        if (isTransient()) {
+-            auto mainwindows = mainWindows();
+-            bool on_current = false;
+-            bool on_all = false;
+-            Window *maincl = nullptr;
+-            // This is slightly duplicated from Placement::placeOnMainWindow()
+-            for (auto it = mainwindows.constBegin(); it != mainwindows.constEnd(); ++it) {
+-                if (mainwindows.count() > 1 && // A group-transient
+-                    (*it)->isSpecialWindow() && // Don't consider toolbars etc when placing
+-                    !(info->state() & NET::Modal)) { // except when it's modal (blocks specials as well)
+-                    continue;
+-                }
+-                maincl = *it;
+-                if ((*it)->isOnCurrentDesktop()) {
+-                    on_current = true;
+-                }
+-                if ((*it)->isOnAllDesktops()) {
+-                    on_all = true;
+-                }
+-            }
+-            if (on_all) {
+-                initialDesktops = QList<VirtualDesktop *>{};
+-            } else if (on_current) {
 -                initialDesktops = QList<VirtualDesktop *>{VirtualDesktopManager::self()->currentDesktop()};
-+                initialDesktops = QList<VirtualDesktop *>{VirtualDesktopManager::self()->currentDesktop(output())};
-             } else if (maincl) {
-                 initialDesktops = maincl->desktops();
-             }
-@@ -563,7 +563,7 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
-         if (isDesktop()) {
-             initialDesktops = QList<VirtualDesktop *>{};
-         } else {
+-            } else if (maincl) {
+-                initialDesktops = maincl->desktops();
+-            }
+-
+-            if (maincl) {
+-                setOnActivities(maincl->activities());
+-            }
+-        } else if (RootInfo::desktopEnabled()) { // a transient shall appear on its leader and not drag that around
+-            int desktopId = 0;
+-            if (info->desktop()) {
+-                desktopId = info->desktop(); // Window had the initial desktop property, force it
+-            }
+-            if (desktopId == 0 && asn_valid && asn_data.desktop() != 0) {
+-                desktopId = asn_data.desktop();
+-            }
+-            if (desktopId) {
+-                if (desktopId == NET::OnAllDesktops) {
+-                    initialDesktops = QList<VirtualDesktop *>{};
+-                } else {
+-                    VirtualDesktop *desktop = VirtualDesktopManager::self()->desktopForX11Id(desktopId);
+-                    if (desktop) {
+-                        initialDesktops = QList<VirtualDesktop *>{desktop};
+-                    }
+-                }
+-            }
+-        }
+-#if KWIN_BUILD_ACTIVITIES
+-        if (Workspace::self()->activities() && !isMapped && !skipTaskbar() && isNormalWindow() && !activitiesDefined) {
+-            // a new, regular window, when we're not recovering from a crash,
+-            // and it hasn't got an activity. let's try giving it the current one.
+-            // TODO: decide whether to keep this before the 4.6 release
+-            // TODO: if we are keeping it (at least as an option), replace noborder checking
+-            // with a public API for setting windows to be on all activities.
+-            // something like KWindowSystem::setOnAllActivities or
+-            // KActivityConsumer::setOnAllActivities
+-            setOnActivity(Workspace::self()->activities()->current(), true);
+-        }
+-#endif
+-    }
+-
+-    // If initialDesktops has no value, it means that the client doesn't prefer any
+-    // desktop so place it on the current virtual desktop.
+-    if (!initialDesktops.has_value()) {
+-        if (isDesktop()) {
+-            initialDesktops = QList<VirtualDesktop *>{};
+-        } else {
 -            initialDesktops = QList<VirtualDesktop *>{VirtualDesktopManager::self()->currentDesktop()};
-+            initialDesktops = QList<VirtualDesktop *>{VirtualDesktopManager::self()->currentDesktop(output())};
-         }
+-        }
+-    }
+-    setDesktops(rules()->checkDesktops(*initialDesktops, !isMapped));
+-    if (RootInfo::desktopEnabled()) {
+-        info->setDesktop(desktopId());
+-    } else {
+-        info->setDesktop(1);
+-    }
+-    workspace()->updateOnAllDesktopsOfTransients(this); // SELI TODO
+-    // onAllDesktopsChange(); // Decoration doesn't exist here yet
+-
+     QStringList activitiesList;
+     activitiesList = rules()->checkActivity(activitiesList, !isMapped);
+     if (!activitiesList.isEmpty()) {
+@@ -756,6 +659,104 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
+         moveResize(keepInArea(moveResizeGeometry(), area, partial_keep_in_area));
      }
-     setDesktops(rules()->checkDesktops(*initialDesktops, !isMapped));
-@@ -869,7 +869,7 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
+ 
++    // Initial desktop placement
++    std::optional<QList<VirtualDesktop *>> initialDesktops;
++    if (session) {
++        if (session->onAllDesktops) {
++            initialDesktops = QList<VirtualDesktop *>{};
++        } else {
++            VirtualDesktop *desktop = VirtualDesktopManager::self()->desktopForX11Id(session->desktop);
++            if (desktop) {
++                initialDesktops = QList<VirtualDesktop *>{desktop};
++            }
++        }
++        setOnActivities(session->activities);
++    } else {
++        // If this window is transient, ensure that it is opened on the
++        // same window as its parent.  this is necessary when an application
++        // starts up on a different desktop than is currently displayed
++        if (isTransient()) {
++            auto mainwindows = mainWindows();
++            bool on_current = false;
++            bool on_all = false;
++            Window *maincl = nullptr;
++            // This is slightly duplicated from Placement::placeOnMainWindow()
++            for (auto it = mainwindows.constBegin(); it != mainwindows.constEnd(); ++it) {
++                if (mainwindows.count() > 1 && // A group-transient
++                    (*it)->isSpecialWindow() && // Don't consider toolbars etc when placing
++                    !(info->state() & NET::Modal)) { // except when it's modal (blocks specials as well)
++                    continue;
++                }
++                maincl = *it;
++                if ((*it)->isOnCurrentDesktop()) {
++                    on_current = true;
++                }
++                if ((*it)->isOnAllDesktops()) {
++                    on_all = true;
++                }
++            }
++            if (on_all) {
++                initialDesktops = QList<VirtualDesktop *>{};
++            } else if (on_current) {
++                initialDesktops = QList<VirtualDesktop *>{VirtualDesktopManager::self()->currentDesktop(output())};
++            } else if (maincl) {
++                initialDesktops = maincl->desktops();
++            }
++
++            if (maincl) {
++                setOnActivities(maincl->activities());
++            }
++        } else if (RootInfo::desktopEnabled()) { // a transient shall appear on its leader and not drag that around
++            int desktopId = 0;
++            if (info->desktop()) {
++                desktopId = info->desktop(); // Window had the initial desktop property, force it
++            }
++            if (desktopId == 0 && asn_valid && asn_data.desktop() != 0) {
++                desktopId = asn_data.desktop();
++            }
++            if (desktopId) {
++                if (desktopId == NET::OnAllDesktops) {
++                    initialDesktops = QList<VirtualDesktop *>{};
++                } else {
++                    VirtualDesktop *desktop = VirtualDesktopManager::self()->desktopForX11Id(desktopId);
++                    if (desktop) {
++                        initialDesktops = QList<VirtualDesktop *>{desktop};
++                    }
++                }
++            }
++        }
++#if KWIN_BUILD_ACTIVITIES
++        if (Workspace::self()->activities() && !isMapped && !skipTaskbar() && isNormalWindow() && !activitiesDefined) {
++            // a new, regular window, when we're not recovering from a crash,
++            // and it hasn't got an activity. let's try giving it the current one.
++            // TODO: decide whether to keep this before the 4.6 release
++            // TODO: if we are keeping it (at least as an option), replace noborder checking
++            // with a public API for setting windows to be on all activities.
++            // something like KWindowSystem::setOnAllActivities or
++            // KActivityConsumer::setOnAllActivities
++            setOnActivity(Workspace::self()->activities()->current(), true);
++        }
++#endif
++    }
++
++    // If initialDesktops has no value, it means that the client doesn't prefer any
++    // desktop so place it on the current virtual desktop.
++    if (!initialDesktops.has_value()) {
++        if (isDesktop()) {
++            initialDesktops = QList<VirtualDesktop *>{};
++        } else {
++            initialDesktops = QList<VirtualDesktop *>{VirtualDesktopManager::self()->currentDesktop(output())};
++        }
++    }
++    setDesktops(rules()->checkDesktops(*initialDesktops, !isMapped));
++    if (RootInfo::desktopEnabled()) {
++        info->setDesktop(desktopId());
++    } else {
++        info->setDesktop(1);
++    }
++    workspace()->updateOnAllDesktopsOfTransients(this); // SELI TODO
++    // onAllDesktopsChange(); // Decoration doesn't exist here yet
++
+     // CT: Extra check for stupid jdk 1.3.1. But should make sense in general
+     // if client has initial state set to Iconic and is transient with a parent
+     // window that is not Iconic, set init_state to Normal
+@@ -869,7 +870,7 @@ bool X11Window::manage(xcb_window_t w, bool isMapped)
          // If session saving, force showing new windows (i.e. "save file?" dialogs etc.)
          // also force if activation is allowed
          if (!isOnCurrentDesktop() && !isMapped && !session && (allow || isSessionSaving)) {
@@ -5188,7 +5574,18 @@ index 2f951319d5..e04319d8fa 100644
          }
  
          // If the window is on an inactive activity during session saving, temporarily force it to show.
-@@ -3599,7 +3599,7 @@ void X11Window::moveResizeInternal(const RectF &rect, MoveResizeMode mode)
+@@ -3274,6 +3275,10 @@ const QPointF X11Window::calculateGravitation(bool invert) const
+ // coordinates are in kwin logical
+ void X11Window::configureRequest(int value_mask, qreal rx, qreal ry, qreal rw, qreal rh, int gravity, bool from_tool)
+ {
++    auto resetInConfigureRequestFlag = qScopeGuard([this]() {
++        m_inConfigureRequest = false;
++    });
++    m_inConfigureRequest = true;
+     const int configurePositionMask = XCB_CONFIG_WINDOW_X | XCB_CONFIG_WINDOW_Y;
+     const int configureSizeMask = XCB_CONFIG_WINDOW_WIDTH | XCB_CONFIG_WINDOW_HEIGHT;
+     const int configureGeometryMask = configurePositionMask | configureSizeMask;
+@@ -3599,7 +3604,7 @@ void X11Window::moveResizeInternal(const RectF &rect, MoveResizeMode mode)
      const RectF oldBufferGeometry = m_bufferGeometry;
      const RectF oldFrameGeometry = m_frameGeometry;
      const RectF oldClientGeometry = m_clientGeometry;
@@ -5197,17 +5594,30 @@ index 2f951319d5..e04319d8fa 100644
  
      m_frameGeometry = frameGeometry;
      m_clientGeometry = clientGeometry;
-@@ -3629,6 +3629,10 @@ void X11Window::moveResizeInternal(const RectF &rect, MoveResizeMode mode)
+@@ -3629,6 +3634,11 @@ void X11Window::moveResizeInternal(const RectF &rect, MoveResizeMode mode)
      }
      if (oldOutput != m_output) {
          Q_EMIT outputChanged();
 +
-+        if (isInteractiveMoveResize()) {
++        // X11Window can be moved/resized interactively by the client itself via configureRequest.
++        if (m_inConfigureRequest || isInteractiveMoveResize()) {
 +            finishInteractiveOutputChange(oldOutput);
 +        }
      }
      updateShapeRegion();
  }
+diff --git a/src/x11window.h b/src/x11window.h
+index 63d228a1a2..08c1853109 100644
+--- a/src/x11window.h
++++ b/src/x11window.h
+@@ -430,6 +430,7 @@ private:
+     bool m_frameCallbackHeartbeat = false;
+     quint64 m_surfaceSerial = 0;
+     int m_inflightUnmaps = 0;
++    bool m_inConfigureRequest = false;
+ };
+ 
+ /**
 diff --git a/src/xdgshellwindow.cpp b/src/xdgshellwindow.cpp
 index 968e224a65..76fbbea084 100644
 --- a/src/xdgshellwindow.cpp

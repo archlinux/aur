@@ -3,7 +3,7 @@ _pkgname=kwin
 pkgname=$_pkgname-povd
 pkgver=6.6.2
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=1
+pkgrel=2
 pkgdesc='An easy to use, but flexible, Wayland compositor (patched for per-output virtual desktops)'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -83,7 +83,7 @@ source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz
         povd.patch)
 sha256sums=('89db742659f0c96140ba39b4053ade7e1c20660e7eb82c18b5a68c16f93356e8'
             'SKIP'
-            '2a70a02c18664c4c0f566aa02646d6c06c09a436bc00e76b0c8c0db63a88903f')
+            '752fe3574b0378a92da736665c5121291ee727d39c995e328048d132f256bbab')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>
