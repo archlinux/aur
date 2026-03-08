@@ -1,6 +1,6 @@
 pkgbase = postgresql-git
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 18.beta1.r2020.g2f2c9d83637
+	pkgver = 18.beta1.r2092.ga1bd0c16157
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -118,7 +118,7 @@ pkgname = postgresql-git
 	backup = etc/logrotate.d/postgresql
 
 pkgname = postgresql-libs-git
-	pkgdesc = - client binaries and libraries
+	pkgdesc = Sophisticated object-relational DBMS - client binaries and libraries
 	depends = curl
 	depends = libcurl.so
 	depends = glibc
@@ -144,7 +144,7 @@ pkgname = postgresql-libs-git
 	conflicts = postgresql-libs
 
 pkgname = postgresql-docs-git
-	pkgdesc = - HTML documentation
+	pkgdesc = Sophisticated object-relational DBMS- HTML documentation
 	arch = any
 	depends = 
 	provides = postgresql-docs

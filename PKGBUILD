@@ -6,7 +6,7 @@
 
 pkgbase=postgresql-git
 pkgname=('postgresql-git' 'postgresql-libs-git' 'postgresql-docs-git')
-pkgver=18.beta1.r2020.g2f2c9d83637
+pkgver=18.beta1.r2092.ga1bd0c16157
 pkgrel=1
 pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
@@ -190,7 +190,7 @@ package_postgresql-git() {
 }
 
 package_postgresql-libs-git() {
-  pkgdesc=" - client binaries and libraries"
+  pkgdesc+=" - client binaries and libraries"
   depends=(
     curl libcurl.so
     glibc
@@ -211,7 +211,7 @@ package_postgresql-libs-git() {
 }
 
 package_postgresql-docs-git() {
-  pkgdesc="- HTML documentation"
+  pkgdesc+="- HTML documentation"
   depends=()
   provides=('postgresql-docs')
   conflicts=('postgresql-docs')
