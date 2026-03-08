@@ -15,6 +15,11 @@ if [ ! -d $datadir ]; then
   else
     mkdir -p $datadir
   fi
+else
+  # Starting with version 1.1.0, app uses SQLite for configs, backup old json configs
+  if [ -f $datadir/config/configs.json ] && [ ! -f $datadir/config/throne.db ]; then
+    mv $datadir/config $datadir/config_old
+  fi
 fi
 
 # Remove broken (since 1.0.2-beta.1) links to geo assets
