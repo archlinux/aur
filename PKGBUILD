@@ -26,9 +26,11 @@ source=(
 )
 source_aarch64=(
   "${_url}/releases/download/v${pkgver}/${_pkgname}-linux-v${pkgver}-arm64.tar.gz"
+  # "${url}/releases/v${pkgver}/${_pkgname}-linux-v${pkgver}-arm64.tar.gz"
 )
 source_x86_64=(
   "${_url}/releases/download/v${pkgver}/${_pkgname}-linux-v${pkgver}-amd64.tar.gz"
+  # "${url}/releases/v${pkgver}/${_pkgname}-linux-v${pkgver}-amd64.tar.gz"
 )
 sha256sums=('070005204acc0d99c16bf12629fedcd092b610e67d1af325fa836815cd6a4a03')
 sha256sums_aarch64=('32838890ef8b8f8a6dfcabd54ea831e046a8ae314ce140be1b963f23a88d0210')
