@@ -2,8 +2,8 @@
 
 _pkgname=sonic-tte
 pkgname=$_pkgname-git
-pkgver=0.1.r0.g0000000
-pkgrel=2
+pkgver=0.1.r20.g070dce1
+pkgrel=1
 pkgdesc="Animated terminal media screensaver using TerminalTextEffects"
 arch=('any')
 url="https://github.com/shmall03/sonic-tte"
