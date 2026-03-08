@@ -7,9 +7,7 @@ pkgbase = plezy-bin
 	license = GPL-3.0-or-later
 	provides = plezy
 	conflicts = plezy
-	source = plezy-1.24.1.tar.gz::https://github.com/edde746/plezy/releases/download/1.24.1/plezy-linux-x64.tar.gz
-	source = plezy.desktop
-	sha256sums = 044248cb0196f246569efc6a455cb2a8845b0eae36301d6268dcab4033922c2d
-	sha256sums = 8d0babb9ad5540b243be88957ed6ca92608ea80801728d0fe3252ba64de64693
+	source = plezy-1.24.1.pkg.tar.zst::https://github.com/edde746/plezy/releases/download/1.24.1/plezy-linux-x64.pkg.tar.zst
+	sha256sums = fcddd85230cfa4bc2d25236b672708933e0adc5a1666a92b0420d96c58865ff1
 
 pkgname = plezy-bin
