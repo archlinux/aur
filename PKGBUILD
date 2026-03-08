@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="A Java short-wave weatherfax receiver/converter"
 arch=('any')
 url="https://arachnoid.com/JWX/"
-license=('GPL3')
+license=('GPL-2.0-or-later')
 depends=('java-runtime' 'bash')
 source=("https://arachnoid.com/JWX/resources/JWX.jar"
         "$pkgname.sh"
