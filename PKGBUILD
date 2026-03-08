@@ -3,13 +3,13 @@
 
 pkgname=odinls-git
 _pkgname_no_git="${pkgname%-*}"
-pkgver=dev_2026_02.r100.ged6b8eb
+pkgver=dev_2026_02.r104.gbde7cef
 pkgrel=1
 pkgdesc='Language server and source code formatter for Odin'
 arch=('x86_64')
 url='https://github.com/DanielGavin/ols'
 license=('MIT')
-depends=('odin')
+depends=('odin-git')
 makedepends=('git')
 provides=("$_pkgname_no_git=$pkgver" "odinfmt=$pkgver")
 conflicts=("$_pkgname_no_git" 'odinfmt')
@@ -31,7 +31,7 @@ build() {
 package() {
     cd "$_pkgname_no_git/"
     install -Dm755 ols "$pkgdir/usr/lib/$_pkgname_no_git/ols"
-    install -Dm755 odinfmt "$pkgdir/usr/lib/$_pkgname_no_bin/odinfmt"
+    install -Dm755 odinfmt "$pkgdir/usr/lib/$_pkgname_no_git/odinfmt"
     install -Dm644 -t "$pkgdir/usr/lib/$_pkgname_no_git/builtin/" builtin/*
     # symlink in /usr/bin
     install -dm755 "$pkgdir/usr/bin/"
