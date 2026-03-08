@@ -1,6 +1,6 @@
 pkgbase = chibi-cli-git
 	pkgdesc = Chibi for AniList - A lightweight anime & manga tracker CLI app powered by AniList (Upstream GIT).
-	pkgver = 1.2.0.63.g27666af
+	pkgver = 1.2.0.65.g95c0226
 	pkgrel = 1
 	url = https://chibi-cli.pages.dev/
 	arch = x86_64
