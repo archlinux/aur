@@ -6,7 +6,7 @@ pkgver=0.2.8.r4.g1ed53a9
 pkgrel=1
 pkgdesc="SSH to any machine without ip, behind a NAT/firewall without port forwarding or VPN setup"
 arch=('x86_64' 'aarch64')
-url="https://github.com/futpib/iroh-ssh"
+url="https://github.com/rustonbsd/iroh-ssh"
 license=('MIT')
 depends=('gcc-libs' 'openssh')
 makedepends=('rust' 'cargo' 'git')
@@ -14,7 +14,7 @@ options=(!lto)
 provides=('iroh-ssh')
 conflicts=('iroh-ssh')
 install="${pkgname}.install"
-source=("git+https://github.com/futpib/iroh-ssh.git"
+source=("git+https://github.com/rustonbsd/iroh-ssh.git"
         'iroh-ssh-server.service')
 sha256sums=('SKIP'
             'SKIP')
