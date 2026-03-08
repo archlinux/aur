@@ -15,7 +15,11 @@ sha256sums_x86_64=('370352b127d4d433f81e7c2603886e3847b901ff857695afa873540cabca
 sha256sums_aarch64=('4c77bc3a8a472bf5eb3ed045e1bbebf9adac0d7c717d75485382df6ffcf89a9d')
 
 package() {
-  cd "${srcdir}/AutoAnimeDownloader_Linux_"*
+  if [[ "${CARCH}" == "aarch64" ]]; then
+    cd "${srcdir}/AutoAnimeDownloader_Linux_Arm64"
+  else
+    cd "${srcdir}/AutoAnimeDownloader_Linux_x86"
+  fi
 
   install -Dm755 autoanimedownloader-daemon "${pkgdir}/usr/bin/autoanimedownloader-daemon"
   install -Dm755 autoanimedownloader "${pkgdir}/usr/bin/autoanimedownloader"
