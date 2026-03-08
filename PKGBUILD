@@ -5,7 +5,7 @@
 
 pkgname=forkgram-bin
 _pkgname=forkgram
-pkgver=6.4.2
+pkgver=6.6.2
 pkgrel=1
 pkgdesc="Forkgram is the fork of the official Telegram Desktop application - Static binary"
 arch=(x86_64)
@@ -29,7 +29,7 @@ optdepends=(
 
 # Sources
 source=(
-	"${_pkgname}-${pkgver}.tar.xz::https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/Telegram.tar.xz"
+	"${_pkgname}-${pkgver}.tar.xz::https://github.com/Forkgram/tdesktop/releases/download/v${pkgver}/Forkgram.tar.xz"
 	"$pkgname.desktop"
 	tg.protocol
 	https://raw.githubusercontent.com/Forkgram/tdesktop/dev/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png)
@@ -37,7 +37,7 @@ source=(
 
 
 # Checksums
-sha256sums=('fe8cc4025ceea401a761a85731c9eedda89a7749e99bc6e401723dcc5010df29'
+sha256sums=('9ea9161363101427c4ede25e7e0faef7686fd578f10bfe7ed9d83a2cd8173f58'
             '75ce3ba1386180543d56731803a1505b40b8205e2c09165f14c1b45c767d8f4b'
             '9fd7d8ce9c4246ed414ddf15c2a19f6df1a749c1e6cb23ac1aac2fc0e6152fe7'
             '13c5b79d31f123ba4da10d57f93e11bf9490c78476dc44758a9d58f6b4488f0a'
@@ -60,7 +60,7 @@ package() {
 	install -dm755 "$pkgdir/usr/share/applications/"
 
 	# Program
-	install -Dm755 "$srcdir/Telegram" "$pkgdir/usr/bin/forkgram"
+	install -Dm755 "$srcdir/Forkgram" "$pkgdir/usr/bin/forkgram"
 
 	# Remove RPATH informations
 	chrpath --delete "$pkgdir/usr/bin/forkgram"
