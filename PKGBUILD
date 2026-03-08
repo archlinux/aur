@@ -1,7 +1,7 @@
 # Maintainer: mc_klatz
 pkgname=sone
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Linux TIDAL client — lossless streaming with bit-perfect ALSA output"
 arch=('x86_64')
 url="https://github.com/lullabyX/sone"
@@ -36,8 +36,13 @@ prepare() {
        sed -i 's/"active": true/"active": false/' src-tauri/tauri.conf.json
 }
 
+
 build() {
     cd "$srcdir/sone-$pkgver"
+    if ! rustc --version | awk '{split($2,v,"."); if (v[1]<1 || (v[1]==1 && v[2]<85)) exit 1}'; then
+        error "Rust >= 1.85 required (edition2024 support)"
+        return 1
+    fi
     export CARGO_HOME="$srcdir/cargo-home"
     npm run tauri build
 }

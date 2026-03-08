@@ -1,7 +1,7 @@
 pkgbase = sone
 	pkgdesc = Native Linux TIDAL client — lossless streaming with bit-perfect ALSA output
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lullabyX/sone
 	arch = x86_64
 	license = GPL-3.0-only
