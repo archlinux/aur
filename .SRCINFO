@@ -13,6 +13,7 @@ pkgbase = hyprlua-git
 	depends = pixman
 	provides = hyprlua
 	conflicts = hyprlua
+	options = !debug
 	source = hyprlua-git::git+https://github.com/cacarico/hyprlua.git
 	sha256sums = SKIP
 

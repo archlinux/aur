@@ -8,6 +8,7 @@ url="https://github.com/cacarico/hyprlua"
 license=('MIT')
 depends=('hyprland' 'lua' 'pixman')
 makedepends=('cmake' 'pkgconf' 'git')
+options=('!debug')
 provides=('hyprlua')
 conflicts=('hyprlua')
 source=("$pkgname::git+https://github.com/cacarico/hyprlua.git")
