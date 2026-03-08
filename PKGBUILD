@@ -1,4 +1,5 @@
-# Maintainer: Your Name <your@email.com>
+# Maintainer: guglovich <guglovich164@gmail.com>
+# Created with assistance from Claude (Anthropic)
 
 _pkgname=llm-checker
 pkgname=llm-checker
@@ -33,28 +34,23 @@ package() {
   install -dm755 "${_moduledir}"
   install -dm755 "${pkgdir}/usr/bin"
 
-  # Copy package files including installed node_modules.
   cp -r "${srcdir}/bin"          "${_moduledir}/bin"
   cp -r "${srcdir}/src"          "${_moduledir}/src"
   cp -r "${srcdir}/analyzer"     "${_moduledir}/analyzer"
   cp -r "${srcdir}/node_modules" "${_moduledir}/node_modules"
   install -m644 "${srcdir}/package.json" "${_moduledir}/package.json"
 
-  # Fix permissions.
   find "${pkgdir}" -type d -exec chmod 755 {} +
   find "${pkgdir}" -type f -exec chmod 644 {} +
   find "${_moduledir}/bin" -type f -name '*.js' -exec chmod 755 {} +
 
-  # Create CLI symlink.
   ln -sf "/usr/lib/node_modules/${_pkgname}/bin/enhanced_cli.js" \
     "${pkgdir}/usr/bin/llm-checker"
 
-  # Install license.
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 "${srcdir}/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  # Install documentation.
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
   for _doc in README.md CHANGELOG.md ADVANCED_USAGE.md USAGE_GUIDE.md; do
     if [[ -f "${srcdir}/${_doc}" ]]; then
