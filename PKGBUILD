@@ -8,12 +8,17 @@ pkgrel=1
 pkgdesc="A network analysis framework"
 arch=('x86_64')
 url="https://zeek.org"
-license=('BSD')
-depends=(zlib libpcap bash libmaxminddb python)
+license=('BSD-3-Clause')
+depends=(zlib libpcap bash libmaxminddb python hiredis zeromq)
 makedepends=(cmake swig bison flex openssl geoip gperftools shadow)
 optdepends=(
-  'python-semantic-version: zeekpkg'
+  'python-gitpython: zkg git source support'
+  'python-semantic-version: zkg'
+  'python-argcomplete: shell completion for zkg'
+  'python-sphinx: btest sphinx support'
+  'python-docutils: btest sphinx support'
 )
+
 source=("https://download.zeek.org/zeek-$pkgver.tar.gz"{,.asc}
         zeek.tmpfiles.conf)
 
