@@ -1,0 +1,29 @@
+# WireGuard Portal configuration
+# Full documentation: https://wgportal.org/latest/documentation/configuration/
+
+core:
+  # Admin credentials - MUST BE SET BEFORE STARTING THE SERVICE
+  # Password must be at least 16 characters long
+  admin_user: admin@wgportal.local
+  admin_password: CHANGE_ME_AT_LEAST_16_CHARS
+
+web:
+  listening_address: :8888
+  external_url: http://localhost:8888
+  request_logging: false
+  # Generate random secrets with: openssl rand -hex 32
+  # session_secret: changeme
+  # csrf_secret: changeme
+
+database:
+  type: sqlite
+  sqlite:
+    database: /var/lib/wg-portal/wg-portal.db
+
+backend:
+  # Use local WireGuard installation
+  default: local
+
+mail:
+  host: ""
+  port: 25

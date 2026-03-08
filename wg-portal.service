@@ -1,0 +1,26 @@
+[Unit]
+Description=WireGuard Portal - Web-based WireGuard VPN configuration portal
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+Environment=WG_PORTAL_CONFIG=/etc/wg-portal/config.yml
+ExecStart=/usr/bin/wg-portal
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+
+# State directory for SQLite database
+StateDirectory=wg-portal
+WorkingDirectory=/var/lib/wg-portal
+
+# Hardening
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/wg-portal /etc/wireguard
+
+[Install]
+WantedBy=multi-user.target
