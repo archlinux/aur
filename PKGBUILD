@@ -3,8 +3,8 @@
 
 pkgbase=dictype
 pkgname=(dictype dictype-fcitx)
-pkgver=0.0.6
-pkgrel=2
+pkgver=0.0.7
+pkgrel=1
 pkgdesc='real-time voice-to-text input on Linux'
 arch=('x86_64')
 url='https://github.com/Xinkai/dictype'
@@ -21,7 +21,7 @@ makedepends=(
   grpc
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('3ad234cbe8089f4a3fc26e2cacf4b4fa4d11c015e33254a99717d78732978b73ef594dbf78cc178edacd1254da113a2970cd97e7be3ccc3c5822e247f189b992')
+sha512sums=('9ce95d217930dba6a1201d82af073adecf9c968cf31f12b33b4ae01bd3f2b6dae57f6f8fd79c85635a4179ef9060a8ed937fdc7a43bb1f0d1df3a6b70af0d852')
 
 build() {
   cd "${srcdir}/${pkgbase}-${pkgver}"
