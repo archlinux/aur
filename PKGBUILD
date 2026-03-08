@@ -2,7 +2,7 @@
 # Maintainer: fulgidus <fulgidus@users.noreply.github.com>
 
 pkgname='revoco-bin'
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc='Data liberation tool for escaping big tech walled gardens'
 url='https://github.com/fulgidus/revoco'
@@ -13,10 +13,10 @@ conflicts=('revoco')
 depends=('exiftool' 'ffmpeg')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/fulgidus/revoco/releases/download/v${pkgver}/revoco_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('d351fafbc03df36b93158cb3904a2f6987989a6a0704758cc342df12264d38d5')
+sha256sums_aarch64=('a45e1ae5aa08152433403a4724dd5a4e7eb7e9dd4f1125f730e721fc4ba99a2d')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/fulgidus/revoco/releases/download/v${pkgver}/revoco_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('ff25ae113381f921df52208734f8b0059ec4f9fb8f6328ebc12d5536d301187e')
+sha256sums_x86_64=('bf3ee33f3cde9675d90eea148b47b5a468ff7cd47f861ff6f9eface2f138cc4f')
 
 package() {
   install -Dm755 "./revoco" "${pkgdir}/usr/bin/revoco"
