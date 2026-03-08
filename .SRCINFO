@@ -1,6 +1,6 @@
 pkgbase = ollama-lab
 	pkgdesc = Yet another (unofficial) Ollama GUI
-	pkgver = 0.4.10
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/ollama-lab/ollama-lab
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = ollama-lab
 	optdepends = ollama
 	options = !strip
 	options = !lto
-	source = https://github.com/ollama-lab/ollama-lab/archive/refs/tags/v0.4.10.tar.gz
+	source = https://github.com/ollama-lab/ollama-lab/archive/refs/tags/v0.5.0.tar.gz
 	source = ollama-lab.desktop
-	sha256sums = 184b40081d22ca89cf86b1e7d3c5109e5ed31f703ef25e75a35de7be726ec986
+	sha256sums = 7baa999a7eae29b960a45dc7c89e45a8e091e22556c15974a47ed0d13ca9e126
 	sha256sums = ca14ad8184e6f04439e3f8484bdffd121dc0e81159de260a1b1da560df2ade49
 
 pkgname = ollama-lab
