@@ -4,12 +4,15 @@ pkgbase=seanime-git
 pkgname=('seanime-server-git' 'seanime-denshi-git')
 _pkgname=seanime
 _electronver=39
-pkgver=v3.5.0.r3.g71b99cf
+pkgver=v3.5.2.r0.g29f7947
 pkgrel=1
 pkgdesc="Open-source media server with a web interface and desktop app for anime and manga."
 arch=('x86_64' 'aarch64')
 url="https://github.com/5rahim/seanime"
 license=('GPL-3.0-only')
+depends=('glibc'
+	 'libgcc'
+	 'libstdc++')
 makedepends=('git'
              'make'
              'npm'
@@ -47,13 +50,13 @@ build() {
     npm install
     make build-all
 
-    # Prepare for server (go)
+    # Prepare for the server (go)
 
     cd "${srcdir}/${_pkgname}"
 
     mkdir -p binaries
 
-    # Server: We can be build for both (x64/arm64) try to conform with upstream
+    # Server: We can build for both (x64/arm64 or aarch64) try to conform with upstream
 
     if [ "$CARCH" = aarch64 ]; then
     export GOARCH=arm64
@@ -97,7 +100,7 @@ build() {
 
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     npm ci
-    npm exec -- electron-builder build --linux --${_Arch}  --dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
+    npm exec -- electron-builder build --linux --${_Arch} --dir -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
 package_seanime-server-git() {
