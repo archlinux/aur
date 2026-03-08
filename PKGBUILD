@@ -1,8 +1,8 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=rad
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="Modern CLI scripts made easy."
 arch=('x86_64' 'aarch64')
 url="https://github.com/amterp/rad"

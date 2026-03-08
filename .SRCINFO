@@ -1,7 +1,7 @@
 pkgbase = rad
 	pkgdesc = Modern CLI scripts made easy.
-	pkgver = 0.8.0
-	pkgrel = 3
+	pkgver = 0.8.1
+	pkgrel = 1
 	url = https://github.com/amterp/rad
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = rad
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/amterp/rad.git#tag=v0.8.0
+	source = git+https://github.com/amterp/rad.git#tag=v0.8.1
 	sha256sums = SKIP
 
 pkgname = rad
