@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Digital Speech Decoder - Florida Man Edition"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/lwvmobile/dsd-fme.git"
-license=('custom:copyright')
+license=('custom')
 install="$pkgname.install"
 depends=(
     'libpulse'
