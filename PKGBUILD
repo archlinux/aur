@@ -2,7 +2,7 @@
 pkgname=fladder-bin
 _pkgname=Fladder
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Simple Jellyfin Frontend"
 arch=('x86_64')
 url="https://github.com/Fladder-App/Fladder"
@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=('e2d91cbb019d1a7810200793f622945c5afa00b20dfc8faa48e08de479efa581'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
-            '76f8c52297b4f423dd6767a37b56c30ea3398e16f2e0500911ba01df40635ce1')
+            '0511c6da677cf361abb8d997a9e8795b39ab083cdbe79b2d7bbb8896c4c5d733')
 
 conflicts=("fladder")
 provides=("fladder")
