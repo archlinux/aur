@@ -1,8 +1,8 @@
 # Maintainer: Michael Langer <laminarlade at t-online DOT de>
 pkgname=gradia
-pkgver=1.11.3
-pkgrel=3
-_pkghash=472a970e10c3a85f9db938719ebba121321c1d90
+pkgver=1.12.0
+pkgrel=1
+#pkghash=166290f8be8a525cc9c51a851b9e3e8921bf1017
 pkgdesc="Make your screenshots ready for the world."
 arch=('x86_64')
 url="https://github.com/AlexanderVanhee/Gradia"
@@ -33,15 +33,16 @@ makedepends=(
 )
 options=('!debug')
 source=(
-#    "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
-    "$pkgname-$pkgver.zip::${url}/archive/$_pkghash.zip"
+    "$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v$pkgver.tar.gz"
+#    "$pkgname-$pkgver.zip::${url}/archive/$pkghash.zip"
     "gradia_ocr.patch"
 )
-sha256sums=('b4146b2a30f91908a5f43c572fa6099be36c4377bdcd1ca6950a666bb5335e86'
+sha256sums=('14133044e017d8688ddb66e23681f2b95840c18aae12b9d41e27eb8d84cea794'
             '770b874fed71ec84a6a190b6e931be9189f512b4433eaef8996dca32644472d7')
 
 prepare() {
-  mv Gradia-$_pkghash $pkgname-$pkgver
+#  mv Gradia-$pkghash $pkgname-$pkgver
+  mv Gradia-$pkgver $pkgname-$pkgver
   patch -d $pkgname-$pkgver -p1 < gradia_ocr.patch
 }
 

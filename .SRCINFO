@@ -1,7 +1,7 @@
 pkgbase = gradia
 	pkgdesc = Make your screenshots ready for the world.
-	pkgver = 1.11.3
-	pkgrel = 3
+	pkgver = 1.12.0
+	pkgrel = 1
 	url = https://github.com/AlexanderVanhee/Gradia
 	arch = x86_64
 	license = GPL-3.0-only
@@ -26,9 +26,9 @@ pkgbase = gradia
 	depends = python-cairo
 	depends = python-pytesseract
 	options = !debug
-	source = gradia-1.11.3.zip::https://github.com/AlexanderVanhee/Gradia/archive/472a970e10c3a85f9db938719ebba121321c1d90.zip
+	source = gradia-1.12.0.tar.gz::https://github.com/AlexanderVanhee/Gradia/archive/refs/tags/v1.12.0.tar.gz
 	source = gradia_ocr.patch
-	sha256sums = b4146b2a30f91908a5f43c572fa6099be36c4377bdcd1ca6950a666bb5335e86
+	sha256sums = 14133044e017d8688ddb66e23681f2b95840c18aae12b9d41e27eb8d84cea794
 	sha256sums = 770b874fed71ec84a6a190b6e931be9189f512b4433eaef8996dca32644472d7
 
 pkgname = gradia
