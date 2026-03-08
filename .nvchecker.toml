@@ -1,0 +1,5 @@
+[batctl-tui-bin]
+source = "github"
+github = "Ooooze/batctl"
+use_latest_release = true
+prefix = "v"
