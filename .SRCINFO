@@ -1,0 +1,19 @@
+pkgbase = hyprlua-git
+	pkgdesc = Lua 5.4 scripting support for Hyprland via hyprland.lua config
+	pkgver = 0.0.1.r0.g2a9022b
+	pkgrel = 1
+	url = https://github.com/cacarico/hyprlua
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = git
+	depends = hyprland
+	depends = lua54
+	depends = pixman
+	provides = hyprlua
+	conflicts = hyprlua
+	source = hyprlua-git::git+https://github.com/cacarico/hyprlua.git
+	sha256sums = SKIP
+
+pkgname = hyprlua-git
