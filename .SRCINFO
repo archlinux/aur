@@ -1,0 +1,20 @@
+pkgbase = libretro-quicknes-azerty-git
+	pkgdesc = libretro implementation of QuickNES Core (NES)
+	pkgver = r419.e732387
+	pkgrel = 1
+	url = https://github.com/libretro/QuickNES_Core
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	groups = libretro
+	license = GPL
+	makedepends = git
+	depends = glibc
+	depends = zlib
+	provides = libretro-quicknes
+	conflicts = libretro-quicknes
+	conflicts = libretro-quicknes-git
+	source = libretro-quicknes-azerty-git::git+https://github.com/libretro/QuickNES_Core.git
+	sha256sums = SKIP
+
+pkgname = libretro-quicknes-azerty-git
