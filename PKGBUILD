@@ -1,7 +1,7 @@
 # Maintainer: Cyrrrt <cyrrrt@cyrrrt.me>
 pkgname=keyresolve-git
 _pkgname=KeyResolve
-pkgver=r5.048c158
+pkgver=r6
 pkgrel=1
 pkgdesc="Snap Tap / SOCD-style keyboard input handling for Linux (Wayland & X11)"
 arch=('x86_64' 'aarch64')
