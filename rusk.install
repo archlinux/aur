@@ -25,7 +25,7 @@ _update_completions() {
   (( ${#shells[@]} > 0 )) || return 0
 
   if sudo -u "$SUDO_USER" /usr/bin/rusk completions install "${shells[@]}" &>/dev/null; then
-    echo -e "\033[36mrusk: shell completions updated\033[0m"
+    echo "rusk: shell completions updated"
   else
     echo -e "\033[38;5;208mrusk: failed to update shell completions\033[0m" >&2
   fi
