@@ -4,7 +4,7 @@
 pkgname=mermaid-cli
 pkgver=11.12.0
 pkgrel=1
-pkgdesc='Generate images from from Mermaid files'
+pkgdesc='Generate images from Mermaid files'
 arch=(any)
 url="https://github.com/mermaid-js/$pkgname"
 license=(MIT)
