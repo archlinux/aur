@@ -12,6 +12,7 @@ depends=('gcc-libs')
 source=("rusk-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('a4ec45ca7a1394969c8cdd93017631e243acb29e4d918822e7bd2e5df5261ef7')
 options=('!debug')
+install=rusk.install
 
 build() {
   cd "$pkgname-$pkgver"

@@ -1,0 +1,36 @@
+# If the user already had completions (e.g. from a previous manual/cargo install)
+post_install() {
+  _update_completions
+}
+
+# Refresh completion scripts if they have been installed
+post_upgrade() {
+  _update_completions
+}
+
+_update_completions() {
+  [[ -z "$SUDO_USER" ]] && return 0
+
+  local home
+  home=$(sudo -u "$SUDO_USER" sh -c 'echo "$HOME"')
+  [[ -z "$home" || ! -d "$home" ]] && return 0
+
+  local shells=()
+  [[ -f "$home/.bash_completion.d/rusk" ]] && shells+=(bash)
+  [[ -f "$home/.zsh/completions/_rusk" ]] && shells+=(zsh)
+  [[ -f "$home/.config/fish/completions/rusk.fish" ]] && shells+=(fish)
+  [[ -f "$home/.config/nushell/completions/rusk.nu" ]] && shells+=(nu)
+  [[ -f "$home/.config/powershell/rusk-completions.ps1" ]] && shells+=(powershell)
+
+  (( ${#shells[@]} > 0 )) || return 0
+
+  if sudo -u "$SUDO_USER" /usr/bin/rusk completions install "${shells[@]}" &>/dev/null; then
+    echo -e "\033[36mrusk: shell completions updated\033[0m"
+  else
+    echo -e "\033[38;5;208mrusk: failed to update shell completions\033[0m" >&2
+  fi
+}
+
+op=$1
+shift
+$op "$@"
