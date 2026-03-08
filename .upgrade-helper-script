@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 git diff --quiet PKGBUILD && echo "NOTE: apparently no changes in the 'PKGBUILD' => have the 'version' updated first"
 source PKGBUILD
-wget --quiet "$url/archive/$pkgver.tar.gz" -O "${pkgname}-${pkgver}.tar.gz"
+wget --quiet "${url_src}/archive/${pkgver}.tar.gz" -O "${pkgname}-${pkgver}.tar.gz"
 sha512sum_targz=$(sha512sum ${pkgname}-${pkgver}.tar.gz | cut -d\  -f1)
 rm ${pkgname}-${pkgver}.tar.gz
 sed -i "s/sha512sums=('[a-zA-Z0-9]*'/sha512sums=('${sha512sum_targz}'/" PKGBUILD
