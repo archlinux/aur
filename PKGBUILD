@@ -1,10 +1,10 @@
-# Maintainer: guglovich <guglovich164@gmail.com>
+# Maintainer: guglovich <your@email.com>
 # Created with assistance from Claude (Anthropic)
 
 _pkgname=llm-checker
 pkgname=llm-checker
-pkgver=3.5.3
-pkgrel=2
+pkgver=3.5.4
+pkgrel=1
 pkgdesc="CLI tool that scans hardware and recommends optimal LLM models for local inference with Ollama integration"
 arch=('any')
 url="https://github.com/Pavelevich/llm-checker"
@@ -14,7 +14,7 @@ makedepends=('npm')
 optdepends=('ollama: for running recommended models locally')
 options=('!debug')
 source=("${_pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
-b2sums=('0e82ec17a38d55abfa4773b961112f5c4067aa134de287602e7d6e4d4b88bb1cd207ed8485a4f33441146fd4791d0f63e4c8aec8b7734aa30db6dc6b74a2198e')
+b2sums=('f56e187ccdb32ac5c1cff7247ddb841ef9cd0362482a70a527eca161ae74938752abf2884e057896cd534def5b9bc4f1a1c747374b478f2eb9449e0f9b2ce440')
 
 prepare() {
   bsdtar -xf "${srcdir}/${_pkgname}-${pkgver}.tgz" \
