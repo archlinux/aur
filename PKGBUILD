@@ -1,7 +1,7 @@
 # Maintainer: Miawgogo <aur@miawgogo.me>
 
 pkgname=dnsinspector-dnsproxy
-pkgver=1.1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='A Proxy server for DNS over HTTP, TLS, and QUIC'
 arch=('any')
@@ -16,7 +16,7 @@ source=(
   dnsinspector-dnsproxy.sysusers
 )
 sha256sums=(
-  '4153d67a06b08f6760ec29fa6dd8514a8b3d80b3ad34826a70579b27b86e3301'
+  '9c0d656bb53a02f03d2f68860be9a4410969032e9b3f07d8bef690262f58125b'
   'aa1881d1abaa0699a6e574e6711f28b7ba7fd2aa3e5e0322324af00a8ab079ae'
   '788d5d7d961cc16fa2d4b354b5759aed7909765712d776db109a8af1f07ec5b8'
 )
