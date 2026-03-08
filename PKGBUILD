@@ -3,7 +3,7 @@
 
 _pkgname=moonraker
 pkgname="${_pkgname}-venv-git"
-pkgver=0.9.3.r110.g00170f3
+pkgver=0.10.0.r10.gfb257f8
 pkgrel=1
 pkgdesc="Web API Server for Klipper"
 arch=(any)
@@ -22,7 +22,7 @@ source=(
 )
 sha256sums=(
   'SKIP'
-  '0812bb0e4fe19df74f845297bf38ce88d86985111db06bb04310888fd14cc077'
+  '96f2f9a88c63edb7411a57f2ce8b68d0d72d41ecea7be2e60029c3805d15584a'
   '8112fbcb737d546340e5da10782cec8b6779c9d17ee096056fd0b715b1a09e4d'
   'dc098d326b5c72c01592f1eb02ca2405ae71c328bc7d07a7c177c905aa29be01'
 )

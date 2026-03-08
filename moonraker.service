@@ -8,6 +8,7 @@ RuntimeDirectory=moonraker
 RemainAfterExit=no
 Restart=always
 RestartSec=10
+TimeoutSec=15min
 
 ExecStartPre=/usr/bin/python -m venv --upgrade /var/lib/moonraker/.venv 
 ExecStartPre=/var/lib/moonraker/.venv/bin/python -m pip install --requirement /usr/share/moonraker/moonraker-requirements.txt
@@ -18,9 +19,6 @@ ExecStart=/var/lib/moonraker/.venv/bin/python /usr/share/moonraker/moonraker.py 
   --debug \
   --datapath /var/lib/moonraker \
   --configfile /etc/moonraker/moonraker.conf
-
-Restart=always
-RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
