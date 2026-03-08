@@ -4,21 +4,25 @@ _pkgname=sonic-tte
 pkgname=$_pkgname-git
 pkgver=0.1.r0.g0000000
 pkgrel=1
-pkgdesc="A high-impact animated media screensaver for the terminal using TerminalTextEffects"
+pkgdesc="Animated terminal media screensaver using TerminalTextEffects"
 arch=('any')
 url="https://github.com/shmall03/sonic-tte"
 license=('GPL3')
 depends=('playerctl' 'figlet' 'python-terminaltexteffects')
 makedepends=('git')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-source=("$_pkgname::git+${url}.git")
+provides=("sonic-tte")
+conflicts=("sonic-tte")
+source=("sonic-tte::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  # Bulletproof versioning: Count commits and add short hash
-  printf "0.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "sonic-tte"
+  # Use git describe for better versioning, fallback to commit count
+  if git describe --long --tags >/dev/null 2>&1; then
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  else
+    printf "0.1.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  fi
 }
 
 package() {
