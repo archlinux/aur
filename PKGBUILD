@@ -3,7 +3,7 @@
 pkgbase=python-crds
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
-pkgver=13.1.7
+pkgver=13.1.9
 pkgrel=1
 pkgdesc="Calibration Reference Data System for HST and JWST"
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=('python-setuptools-scm' 'python-build' 'python-installer')
 ##             'python-pylint'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #       'fix-roman-asdf-test.patch')
-md5sums=('7f13d88f829d603eb0651b51908f8fc6')
+md5sums=('54067f04a71b809451c750035477433f')
 
 #get_pyinfo() {
 #    [[ $1 == "site" ]] && python -c "import site; print(site.getsitepackages()[0])" || \
