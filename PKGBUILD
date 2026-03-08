@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Maintainer: Kaz Walker <me@kazatron.com>
 pkgname=nexus-virt
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Lightweight VM lifecycle daemon for containerd and Kata Containers'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ _node_exporter_ver=1.10.2
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 source_x86_64=("https://github.com/prometheus/node_exporter/releases/download/v${_node_exporter_ver}/node_exporter-${_node_exporter_ver}.linux-amd64.tar.gz")
 source_aarch64=("https://github.com/prometheus/node_exporter/releases/download/v${_node_exporter_ver}/node_exporter-${_node_exporter_ver}.linux-arm64.tar.gz")
-sha256sums=('30c752e2338ebec417b91d8ceafe91fd3512ce66195849b0f04db1b48e9096d7')
+sha256sums=('68ac17f764ee07e044d615bf5ca967ef06421d59653b41d045c95369e8a3b1ef')
 sha256sums_x86_64=('c46e5b6f53948477ff3a19d97c58307394a29fe64a01905646f026ddc32cb65b')
 sha256sums_aarch64=('de69ec8341c8068b7c8e4cfe3eb85065d24d984a3b33007f575d307d13eb89a6')
 
@@ -43,7 +43,8 @@ package() {
     install -Dm755 nexus-btrfs "${pkgdir}/usr/bin/nexus-btrfs"
     install -Dm755 nexus-dns "${pkgdir}/usr/bin/nexus-dns"
     install -Dm644 dist/nexus.service "${pkgdir}/usr/lib/systemd/user/nexus.service"
-    install -Dm644 dist/49-nexus-resolved.rules "${pkgdir}/etc/polkit-1/rules.d/49-nexus-resolved.rules"
+    install -dm750 "${pkgdir}/etc/polkit-1/rules.d"
+    install -m644 dist/49-nexus-resolved.rules "${pkgdir}/etc/polkit-1/rules.d/49-nexus-resolved.rules"
 
     # node_exporter from upstream Prometheus release (strip debug symbols to
     # avoid debugedit warnings from makepkg).
