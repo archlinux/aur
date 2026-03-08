@@ -1,20 +1,15 @@
-pkgbase = ngircd
-	pkgdesc = Next Generation IRC Daemon
-	pkgver = 27
-	pkgrel = 0
-	url = https://ngircd.barton.de/
-	arch = x86_64
-	license = GPL
-	depends = openssl
-	depends = libident
-	depends = zlib
-	backup = etc/ngircd.conf
-	source = https://ngircd.barton.de/pub/ngircd/ngircd-27.tar.gz
-	source = https://ngircd.barton.de/pub/ngircd/ngircd-27.tar.gz.sig
-	source = ngircd.service
-	validpgpkeys = F5B9F52ED90920D2520376A2C24A0F637E364856
-	sha256sums = fd38ef21339daf81d6af4a630ba3b2de51a1b42c181843ee77635a5a661fe73c
-	sha256sums = SKIP
-	sha256sums = f02e30f6864ba1130bcc85bedc44ad782687f572c06f10e0501b0ddcf532b404
-
 pkgname = ngircd
+pkgver = 27
+pkgrel = 1
+pkgdesc = Next Generation IRC Daemon (without ident support)
+arch = x86_64
+url = https://ngircd.barton.de/
+license = GPL-2.0-or-later
+depends = openssl
+depends = zlib
+backup = etc/ngircd.conf
+source = https://ngircd.barton.de/pub/ngircd/ngircd-27.tar.gz
+source = ngircd.service
+sha256sums = fd38ef21339daf81d6af4a630ba3b2de51a1b42c181843ee77635a5a661fe73c
+sha256sums = f02e30f6864ba1130bcc85bedc44ad782687f572c06f10e0501b0ddcf532b404
+

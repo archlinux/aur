@@ -1,41 +1,35 @@
-# Maintainer: Kyle Keen <keenerd@gmail.com>
-# Contributor: Mateusz Herych <heniekk@gmail.com>
-# Contributor: Alexander Rødseth <rodseth@gmail.com>
-
+# Maintainer: Gyf Ooya <gyfooya@gmail.com>
 pkgname=ngircd
 pkgver=27
-pkgrel=0
-pkgdesc="Next Generation IRC Daemon"
+pkgrel=1
+pkgdesc="Next Generation IRC Daemon (without ident support)"
 arch=('x86_64')
-backup=(etc/ngircd.conf)
 url="https://ngircd.barton.de/"
-license=('GPL')
-depends=('openssl' 'libident' 'zlib')
-source=("https://ngircd.barton.de/pub/ngircd/ngircd-$pkgver.tar.gz"{,.sig}
-        ngircd.service)
+license=('GPL-2.0-or-later')
+depends=('openssl' 'zlib')
+backup=('etc/ngircd.conf')
+
+source=("https://ngircd.barton.de/pub/ngircd/ngircd-$pkgver.tar.gz"
+        "ngircd.service")
 sha256sums=('fd38ef21339daf81d6af4a630ba3b2de51a1b42c181843ee77635a5a661fe73c'
-            'SKIP'
             'f02e30f6864ba1130bcc85bedc44ad782687f572c06f10e0501b0ddcf532b404')
-validpgpkeys=('F5B9F52ED90920D2520376A2C24A0F637E364856') # Alexander Barton <alex@barton.de>
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  ./configure --prefix=/usr \
-  	--sysconfdir=/etc \
-  	--sbindir=/usr/bin \
-  	--mandir=/usr/share/man \
-  	--with-ident \
-  	--with-openssl \
-  	--enable-ipv6
+  cd "$srcdir/ngircd-$pkgver"
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --sbindir=/usr/bin \
+    --mandir=/usr/share/man \
+    --without-ident \
+    --with-openssl \
+    --enable-ipv6
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
+  cd "$srcdir/ngircd-$pkgver"
   make DESTDIR="$pkgdir" install
-  install -Dm644 ../ngircd.service "$pkgdir/usr/lib/systemd/system/ngircd.service"
+  install -Dm644 "$srcdir/ngircd.service" \
+    "$pkgdir/usr/lib/systemd/system/ngircd.service"
 }
-
-# vim:set ts=2 sw=2 et:
