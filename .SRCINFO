@@ -1,7 +1,7 @@
 pkgbase = qtox-toktok
 	pkgdesc = Powerful Tox client written in C++/Qt (TokTok fork)
 	pkgver = 1.18.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TokTok/qTox
 	arch = x86_64
 	license = GPL3
@@ -15,6 +15,7 @@ pkgbase = qtox-toktok
 	depends = qrencode
 	depends = sqlcipher
 	depends = openal
+	depends = libglvnd
 	optdepends = sonnet>=6.0: spell checking support
 	optdepends = xscreensaver>=1.2: auto-away status support
 	source = https://github.com/TokTok/qTox/releases/download/v1.18.4/v1.18.4.tar.xz
