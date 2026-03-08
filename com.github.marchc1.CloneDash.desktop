@@ -2,7 +2,7 @@
 Type=Application
 Name=Clone Dash
 Comment=Clone Dash Game
-Exec=CloneDash
+Exec=CloneDash -noupdate
 Icon=com.github.marchc1.CloneDash
 Categories=Game;
 Terminal=false
