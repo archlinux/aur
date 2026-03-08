@@ -10,7 +10,7 @@ arch=('any')
 url='https://github.com/spotipy-dev/spotipy'
 license=('MIT')
 depends=(python python-requests python-redis python-urllib3)
-makedepends=('python-setuptools')
+makedepends=(python-build python-installer python-setuptools)
 optdepends=('python-pymemcache: to cache requests')
 conflicts=("$pkgname-git")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/spotipy-dev/spotipy/archive/$pkgver.tar.gz")
@@ -18,11 +18,11 @@ b2sums=('28aa615a2692ac7202946dfb30d25bd1e75c570cb68e1d7ed1671a10ae0b0598859c1de
 
 build() {
     cd "spotipy-$pkgver"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "spotipy-$pkgver"
-    python setup.py install --root="$pkgdir" --skip-build --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"
 }
