@@ -31,7 +31,7 @@ package() {
   cp -a "${srcdir}/staging/lib/node_modules/@tobilu/qmd" "${pkgdir}/usr/lib/node_modules/@tobilu/qmd"
 
   install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/node_modules/@tobilu/qmd/qmd" "${pkgdir}/usr/bin/qmd"
+  ln -s "/usr/lib/node_modules/@tobilu/qmd/dist/qmd.js" "${pkgdir}/usr/bin/qmd"
 
   # License
   install -Dm644 "${pkgdir}/usr/lib/node_modules/@tobilu/qmd/LICENSE" \
@@ -50,8 +50,11 @@ package() {
     \( -name '*darwin*' -o -name '*win32*' -o -name '*win64*' -o -name '*android*' -o -name '*freebsd*' -o -name '*-musl*' \) \
     -delete 2>/dev/null || true
 
-  # Remove build artifacts with $srcdir references
-  rm -rf "${node_root}/node_modules/better-sqlite3/build"
+  # Remove build artifacts with $srcdir references, but keep the native .node binding
+  find "${node_root}/node_modules/better-sqlite3/build" -type f \
+    ! -name '*.node' -delete 2>/dev/null || true
+  find "${node_root}/node_modules/better-sqlite3/build" -type d -empty \
+    -delete 2>/dev/null || true
 
   # Remove peer deps not needed at runtime (dist/ is prebuilt JS)
   rm -rf "${node_root}/node_modules/typescript"
