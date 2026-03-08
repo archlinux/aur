@@ -1,6 +1,6 @@
 pkgbase = bolt-dm-bin
 	pkgdesc = Fast multi-segment download manager
-	pkgver = 0.3.0_beta
+	pkgver = 0.3.1_beta
 	pkgrel = 1
 	url = https://github.com/dasunNimantha/bolt
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = bolt-dm-bin
 	depends = fontconfig
 	provides = bolt-dm
 	conflicts = bolt-dm
-	source = https://github.com/dasunNimantha/bolt/releases/download/v0.3.0-beta/bolt-linux-x86_64
+	source = https://github.com/dasunNimantha/bolt/releases/download/v0.3.1-beta/bolt-linux-x86_64
 	source = bolt.desktop
 	source = bolt.svg
 	sha256sums = SKIP

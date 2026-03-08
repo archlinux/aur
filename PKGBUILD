@@ -1,6 +1,6 @@
 # Maintainer: Dasun P
 pkgname=bolt-dm-bin
-pkgver=0.3.0_beta
+pkgver=0.3.1_beta
 pkgrel=1
 pkgdesc="Fast multi-segment download manager"
 arch=('x86_64')
