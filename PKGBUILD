@@ -1,36 +1,41 @@
-# This file is part of BlackArch Linux ( https://www.blackarch.org/ ).
-# See COPYING for license details.
-# Maintainer: kerichuu <kerichuudev@gmail.com>
-
+# Maintainer: kitic
 pkgname=salwyrr
 pkgver=4
 pkgrel=1
-pkgdesc='The best launcher of Minecraft since 2017'
+pkgdesc='Minecraft launcher with built-in client features, mod support and PvP optimizations'
 arch=('any')
 url='https://salwyrr.com'
 license=('custom:unknown')
 depends=('java-environment')
-makedepends=()
-source=("https://salwyrr.com/$pkgver/Salwyrr%20Minecraft%20Launcher%20$pkgver.jar")
-sha512sums=(e3c3d8d6287ad48a7fe6e2f7bce3b8732031373c15ddd1c4f56973b922df01ed0a3088c372a9939679a284e6c2e87e37519480525ee2fded1024442421f370d4)
+
+source=("salwyrr.jar::https://salwyrr.com/$pkgver/Salwyrr%20Minecraft%20Launcher%20$pkgver.jar"
+        "salwyrr.png::https://www.salwyrr.com/img/salwyrrclient/min.png")
+
+sha512sums=('130337c5738e9cee84dff629c5d4a34f9b2bbf587e7b0eaa518075a76a8086854e7604c9ae23455eca239fbbf36c3c1472b477d306a347a1dba9b1c63c61ee3d'
+            'fbfb75ee33d31cee6bc547e2654164ba053947574e5bd3bf7ce2606dea32a89c82d76bf7c77ff8d9a7f2370da5b1fcf79775b23d12b5198541543538e87dfcfa')
 
 package() {
   install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+  install -dm 755 "$pkgdir/usr/share/pixmaps"
+  install -dm 755 "$pkgdir/usr/share/applications"
 
-  install -Dm 755 "Salwyrr%20Minecraft%20Launcher%20$pkgver.jar" "$pkgdir/usr/share/$pkgname/Salwyrr%20Minecraft%20Launcher%20$pkgver.jar"
+  install -Dm 644 "salwyrr.jar" "$pkgdir/usr/share/$pkgname/salwyrr.jar"
+  install -Dm 644 "salwyrr.png" "$pkgdir/usr/share/pixmaps/salwyrr.png"
 
   cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/bin/sh
-exec java -jar /usr/share/$pkgname/Salwyrr%20Minecraft%20Launcher%20$pkgver.jar"\$@"
+exec java -jar /usr/share/$pkgname/salwyrr.jar "\$@"
 EOF
-  
-  cat > "$HOME/.local/share/applications/$pkgname.desktop" << EOF
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+
+  cat > "$pkgdir/usr/share/applications/$pkgname.desktop" << EOF
 [Desktop Entry]
 Name=Salwyrr
-Exec=java -jar /usr/share/$pkgname/Salwyrr%20Minecraft%20Launcher%20$pkgver.jar
+Exec=$pkgname
+Icon=salwyrr
 Type=Application
 StartupNotify=true
+Categories=Game;
 EOF
-
-  chmod +x "$pkgdir/usr/bin/$pkgname"
 }

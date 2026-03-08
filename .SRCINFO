@@ -1,12 +1,14 @@
 pkgbase = salwyrr
-	pkgdesc = The best launcher of Minecraft since 2017
+	pkgdesc = Minecraft launcher with built-in client features, mod support and PvP optimizations
 	pkgver = 4
 	pkgrel = 1
 	url = https://salwyrr.com
 	arch = any
 	license = custom:unknown
 	depends = java-environment
-	source = https://salwyrr.com/4/Salwyrr%20Minecraft%20Launcher%204.jar
-	sha512sums = e3c3d8d6287ad48a7fe6e2f7bce3b8732031373c15ddd1c4f56973b922df01ed0a3088c372a9939679a284e6c2e87e37519480525ee2fded1024442421f370d4
+	source = salwyrr.jar::https://salwyrr.com/4/Salwyrr%20Minecraft%20Launcher%204.jar
+	source = salwyrr.png::https://www.salwyrr.com/img/salwyrrclient/min.png
+	sha512sums = 130337c5738e9cee84dff629c5d4a34f9b2bbf587e7b0eaa518075a76a8086854e7604c9ae23455eca239fbbf36c3c1472b477d306a347a1dba9b1c63c61ee3d
+	sha512sums = fbfb75ee33d31cee6bc547e2654164ba053947574e5bd3bf7ce2606dea32a89c82d76bf7c77ff8d9a7f2370da5b1fcf79775b23d12b5198541543538e87dfcfa
 
 pkgname = salwyrr
