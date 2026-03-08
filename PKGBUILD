@@ -2,10 +2,10 @@
 # Maintainer: Dominic Meiser [git at msrd0 dot de]
 
 _crate="cargo-doc2readme"
-_cratever="0.6.5"
+_cratever="0.7.0"
 pkgname="cargo-doc2readme"
-pkgver=0.6.5
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='cargo subcommand to create a readme file containing the rustdoc comments from...'
 url='https://crates.io/crates/cargo-doc2readme'
 license=('Apache-2.0')
@@ -13,8 +13,8 @@ license=('Apache-2.0')
 depends=('libgcc')
 makedepends=('cargo' 'cargo-auditable')
 
-source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/cargo-doc2readme/0.6.5/download")
-sha512sums=('62cba9920905b693427d70988fe9450b0a58c2a0e6cdc02b9479cb7db069bb11a46826105bde82f83c5d0c64cf2e224e19f21436aed5fee646dd13d5bfed36b1')
+source=("$_crate-$_cratever.tar.gz::https://static.crates.io/crates/cargo-doc2readme/0.7.0/download")
+sha512sums=('b2e60e822b65eab3af4483b9039b29e0f868063b30a8c1f0a4a7f629668a97c3e2bcc2b99851936f31bcf6d38386143991946de747a971609da103b2dc06c03d')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
 arch=('aarch64' 'i686' 'x86_64')
