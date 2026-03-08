@@ -1,0 +1,5 @@
+[numr-bin]
+source = "github"
+github = "nasedkinpv/numr"
+use_latest_release = true
+prefix = "v"
