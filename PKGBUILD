@@ -3,12 +3,12 @@
 
 pkgname=prql
 pkgver=0.13.10
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple, powerful, pipelined SQL replacement"
 arch=(x86_64)
 url=https://prql-lang.org
 license=(Apache-2.0)
-depends=(gcc-libs)
+depends=(glibc libgcc)
 makedepends=(cargo python)
 source=(https://github.com/PRQL/prql/archive/$pkgver/$pkgname-$pkgver.tar.gz)
 sha256sums=('ca618ce52bbec3de60b5bf8193c4c0f208b7681374575b809e4f1604867dba47')
@@ -16,7 +16,7 @@ sha256sums=('ca618ce52bbec3de60b5bf8193c4c0f208b7681374575b809e4f1604867dba47')
 prepare() {
   cd $pkgname-$pkgver
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
