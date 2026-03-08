@@ -9,8 +9,8 @@ pkgbase = codewire-bin
 	provides = codewire
 	conflicts = codewire
 	source_x86_64 = https://github.com/codewiresh/codewire/releases/download/v0.2.54/cw-v0.2.54-x86_64-unknown-linux-musl
-	sha256sums_x86_64 = c8d1a89c17b61786fabf4005b3ecf7f3e3acf620df8ddee580e0795d83d31fa5
+	sha256sums_x86_64 = 266a6a2e226a488033d29c2638ae08a28209f2e70e19c2e139f0a6a6bef026da
 	source_aarch64 = https://github.com/codewiresh/codewire/releases/download/v0.2.54/cw-v0.2.54-aarch64-unknown-linux-gnu
-	sha256sums_aarch64 = 6ae24ccfda0213daffed47033a94c6a651e6102686983403911633a4e2f7e1b7
+	sha256sums_aarch64 = 0aea2f1d1feb259a480f70ee4efe8c733632c7ef82cc1eb5eb0a770a22d2874f
 
 pkgname = codewire-bin
