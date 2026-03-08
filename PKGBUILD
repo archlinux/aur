@@ -1,7 +1,7 @@
 # Maintainer: Denis Benato <benato.denis96@gmail.com>
 
 pkgname=atomrootfsinit
-pkgver=0.7.0
+pkgver=0.7.5
 pkgrel=1
 pkgdesc=''
 url='https://github.com/NeroReflex/atomrootfsinit'
@@ -13,7 +13,7 @@ source=(
     "https://github.com/NeroReflex/AtomButter/archive/refs/tags/$pkgver.tar.gz"
 )
 b2sums=(
-    "172be78a566e680205fb3acc38e03c7e4959053045c0db54d82eae65b863ebf5878682ec5b561e233dae7ea121eb4b388ddf64b4fd3f72ddc962b7267cc11c1a"
+    "573b3fef91db9bb202950adfcbc3dffb9d4eb4422753e4a26fcd12931aba984d0b93c5928c2a90a1c748b159bbb7cf77266d5cc92497dc2656a651ab8120c080"
 )
 
 prepare() {
@@ -32,6 +32,5 @@ build() {
 package() {
     cd $srcdir/$pkgname-$pkgver
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
-    # for custom license, e.g. MIT
-    # install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
