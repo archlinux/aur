@@ -20,6 +20,10 @@ pkgver() {
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    meson subprojects download --sourcedir "${pkgname%-git}"
+}
+
 build() {
     local meson_options=(
         -Dtests=disabled
