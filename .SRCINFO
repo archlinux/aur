@@ -1,0 +1,27 @@
+pkgbase = pipette-desktop-keychron-git
+	pkgdesc = Pipette — Vial-compatible keyboard configurator (Git version). Keychron fork
+	pkgver = 0.2.2.r24.g4c9c6e6
+	pkgrel = 1
+	url = https://github.com/tymon3310/pipette-desktop
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = pnpm
+	makedepends = python
+	makedepends = make
+	makedepends = gcc
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = mesa
+	provides = pipette-desktop
+	conflicts = pipette-desktop-bin
+	conflicts = pipette-desktop-keychron-bin
+	conflicts = pipette-desktop-git
+	options = !strip
+	source = git+https://github.com/tymon3310/pipette-desktop.git
+	sha256sums = SKIP
+
+pkgname = pipette-desktop-keychron-git
