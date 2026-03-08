@@ -1,6 +1,6 @@
 # Maintainer: waterlubber <waterlubber42 at gmail dot com>
 pkgname=intel-level-zero-raytracing-support-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r150.git.3f30b62
+pkgver=r193.git.8e14fd8
 pkgrel=1
 pkgdesc="Intel OneAPI Raytracing Support"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/intel/level-zero-raytracing-support"
 license=('Apache-2.0')
 depends=('gcc-libs' 'glibc')
 makedepends=('git' 'cmake')
-provides=("${pkgname%-VCS}")
-conflicts=("${pkgname%-VCS}")
+provides=("${pkgname%-VCS}" 'intel-level-zero-raytracing-support')
+conflicts=("${pkgname%-VCS}" 'intel-level-zero-raytracing-support')
 source=("git+https://github.com/intel/level-zero-raytracing-support.git")
 sha256sums=('SKIP')
 
