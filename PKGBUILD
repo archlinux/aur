@@ -9,7 +9,6 @@ _pkgvername=v${pkgver}
 pkgdesc="Rust cross-compiler"
 arch=('x86_64' 'aarch64')
 _barch=('x86_64-unknown-linux-musl' 'aarch64-unknown-linux-musl')
-_clib='gnu'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
 license=('BSD-2-Clause')
