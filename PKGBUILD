@@ -1,7 +1,7 @@
 # Maintainer: Zack Fitch <zack@johnzfitch.com>
 pkgname=claude-cowork-linux
 pkgver=1.1.4010
-pkgrel=5
+pkgrel=6
 pkgdesc="Anthropic Claude Desktop with Cowork (local agent) support for Linux"
 arch=('x86_64')
 url="https://github.com/johnzfitch/claude-cowork-linux"
