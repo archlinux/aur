@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=u_manag
+Comment=User Management Tool
+Exec=/usr/bin/umanag
+Icon=user-info
+Terminal=false
+Type=Application
+Categories=System;Settings;
+Keywords=user;management;accounts;
