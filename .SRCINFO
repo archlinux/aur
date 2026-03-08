@@ -1,6 +1,6 @@
 pkgbase = awakened-poe-trade-git
 	pkgdesc = Path of Exile trading app for price checking
-	pkgver = 3.27.106.r10.g3f1468c9
+	pkgver = 3.28.102.r0.g6583016d
 	pkgrel = 1
 	url = https://github.com/SnosMe/awakened-poe-trade
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = awakened-poe-trade-git
 	source = awakened-poe-trade.desktop
 	source = awakened-poe-trade-browser.desktop
 	source = git+https://github.com/SnosMe/awakened-poe-trade.git
-	md5sums = 757dfd41e34ba7065e4882d418acb91b
-	md5sums = eab1cba6facb9d08237b3e93c7375145
+	md5sums = 2eab8c2ffd753ffa92c4d29afd40357e
+	md5sums = a1f76ef3919af54e7d3d0d9d41539320
 	md5sums = SKIP
 
 pkgname = awakened-poe-trade-git
