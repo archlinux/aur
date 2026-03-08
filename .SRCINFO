@@ -1,0 +1,24 @@
+pkgbase = proton-vpn-daemon-openrc
+	pkgdesc = Proton VPN Daemon (OpenRC init script, no systemd)
+	pkgver = 0.13.5
+	pkgrel = 1
+	url = https://github.com/ProtonVPN/proton-vpn-daemon
+	install = proton-vpn-daemon-openrc.install
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = python-setuptools
+	depends = python
+	depends = dbus
+	depends = python-bcc
+	depends = python-dbus-fast
+	depends = python-psutil
+	depends = python-packaging
+	depends = wireguard-tools
+	depends = python-proton-vpn-api-core
+	depends = openrc
+	provides = proton-vpn-daemon
+	conflicts = proton-vpn-daemon
+	source = proton-vpn-daemon-openrc-0.13.5.tar.gz::https://github.com/ProtonVPN/proton-vpn-daemon/archive/refs/tags/v0.13.5.tar.gz
+	sha256sums = SKIP
+
+pkgname = proton-vpn-daemon-openrc

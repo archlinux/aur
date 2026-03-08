@@ -1,0 +1,13 @@
+post_install() {
+    rc-update add proton-vpn-daemon default
+    rc-service proton-vpn-daemon start
+}
+
+post_upgrade() {
+    rc-service proton-vpn-daemon restart 2>/dev/null || true
+}
+
+pre_remove() {
+    rc-service proton-vpn-daemon stop 2>/dev/null || true
+    rc-update del proton-vpn-daemon default 2>/dev/null || true
+}
