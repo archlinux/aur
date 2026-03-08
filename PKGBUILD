@@ -1,6 +1,6 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=booklore
-pkgver=2.0.6
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Self hosted ebook reader"
 arch=('x86_64')
@@ -20,7 +20,7 @@ booklore.tmpfiles
 booklore.install
 )
 sha512sums_x86_64=(
-4c1b37947a5c947b25e3fd8f7291bd729bcce01f45c05bbce083a9beda9b9f7f041e0c815091fb482155c377031efade105da7e11a3b0ea2ffd6070e29dab3f9
+0d54a286cc1d230faebed80c28b95aca58996f6a2a97a1200d7218d60deafa9c331715e7dc30ca26af9fff18fc389e396cb7233b375da0d8ea26bc7be01f64d5
 'SKIP'
 'SKIP'
 'SKIP'

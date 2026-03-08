@@ -7,11 +7,6 @@ post_install() {
     echo -e "\033[1;34mINFO\033[0m\033[1m:     * To access, go to localhost:8095/\033[0m"
 }
 
-post_upgrade() {
-    echo -e "\033[1;34mINFO\033[0m\033[1m:     * Major changes for this release. A reverse proxy is no longer required to use booklore. \033[0m"
-    echo -e "\033[1;34mINFO\033[0m\033[1m:     * Booklore can be accessed directly at localhost:8095/ (to change the port edit the the PKGFILE, and rebuild). \033[0m"
-    echo -e "\033[1;34mINFO\033[0m\033[1m:     * If you still want to use a reverse proxy, change any proxy information related from '/api' to '/'. \033[0m"
-}
 post_remove() {
     userdel booklore
 }
