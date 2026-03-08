@@ -1,3 +1,4 @@
+pkgbase = ngircd
 pkgname = ngircd
 pkgver = 27
 pkgrel = 1
