@@ -1,24 +1,30 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Sergey A <murlakatamenka@disroot.org>
 pkgname=falcond
-pkgver=1.2.3
-pkgrel=5
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Advanced Linux gaming performance daemon"
 arch=('x86_64')
-url="https://github.com/PikaOS-Linux/falcond"
+url="https://git.pika-os.com/general-packages/falcond"
 license=('MIT')
 depends=(
+  'dbus'
   'falcond-profiles'
   'power-profiles-daemon'
+  'sudo'
 )
 makedepends=('zig')
 optdepends=('scx-scheds: SCX Scheduler Integration')
 conflicts=('gamemode')
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('327fbdf18832cae126bd343ece008a1ed1c4581b10ffdd74bb50233e96802a3c')
+noextract=("$pkgname-$pkgver.tar.gz")
+sha256sums=('d2f9e21b680e485d69a8b8fa962f8b2d4590d259083f0df17b831c7b71f26894')
 
 prepare() {
+  mkdir -p "$pkgname-$pkgver"
+  bsdtar xf "$pkgname-$pkgver.tar.gz" --strip-components 1 -C "$pkgname-$pkgver"
+
   cd "$pkgname-$pkgver/$pkgname"
   export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-global-cache"
 	zig build --fetch
