@@ -2,7 +2,7 @@
 
 pkgname=litecoin-bin
 pkgver=0.21.4
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://www.litecoin.org/"
 license=('MIT')
@@ -21,21 +21,19 @@ sha256sums_x86_64=('857fc41091f2bae65c3bf0fd4d388fca915fc93a03f16dd2578ac3cc9289
 validpgpkeys=(
   'D35621D53A1CC6A3456758D03620E9D387E55666'  # David Burkett
 )
-options=('!strip')
+options=(!strip !emptydirs)
 depends=(
+  brotli
   bzip2
+  expat
   fontconfig
   freetype2
-  gcc-libs
-  glib2
   glibc
-  graphite
-  harfbuzz
+  libgcc
   libpng
   libxau
   libxcb
   libxdmcp
-  pcre
   zlib
 )
 provides=(${pkgname%-bin})
