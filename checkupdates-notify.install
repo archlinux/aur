@@ -1,0 +1,21 @@
+## arg 1:  the new package version
+post_install() {
+	echo "==> checkupdates-notify runs as a user service (not system-wide)"
+	echo "==> Enable and start: systemctl --user enable --now checkupdates-notify.timer"
+	echo "==> (Optional) Edit the timer frequency: systemctl --user edit --full checkupdates-notify.timer"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+	echo "==> checkupdates-notify has been updated"
+	echo "==> If the timer is running, restart it to use the new version:"
+	echo "==> systemctl --user restart checkupdates-notify.timer"
+}
+
+## arg 1:  the old package version
+post_remove() {
+	echo "==> checkupdates-notify has been removed"
+	echo "==> Disable the timer if running:"
+	echo "==> systemctl --user disable --now checkupdates-notify.timer"
+}

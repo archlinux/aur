@@ -7,21 +7,21 @@
 #
 
 pkgname=checkupdates-notify
-pkgdesc="Sends a notification if package updates are available"
+pkgdesc='Sends a notification if package updates are available'
 pkgver=0.1
-pkgrel=5
-url="https://codeberg.org/karnage42/checkupdates-notify"
-arch=("any")
-license=("0BSD")
-depends=("bash")
+pkgrel=6
+url='https://codeberg.org/karnage42/checkupdates-notify'
+arch=('any')
+license=('0BSD')
+depends=('bash')
 makedepends=()
-install=
+install="$pkgname.install"
 changelog=
-source=('checkupdates-notify-v0.1-5.tar.xz')
-sha256sums=('c562b32d93aabf21d70c6c1ea5d8f0e2e328e493f7e33112f985bffe14013b4c')
+source=("$pkgname-v0.1-6.tar.xz")
+sha256sums=('89e0664272f556c0c010bb7cc55f5090eb7a5d3765a842f0d96ad9584ed17a35')
 
 package() {
-	depends=("pacman-contrib" "bash")
+	depends=('pacman-contrib' 'bash')
 
-	./_install.sh "$pkgdir"
+	./_install.sh "$pkgdir" $pkgname
 }

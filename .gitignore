@@ -12,4 +12,5 @@
 !LICENSE
 !PKGBUILD
 !checkupdates-notify-v*.tar.xz
+!checkupdates-notify.install
 !REUSE.toml
