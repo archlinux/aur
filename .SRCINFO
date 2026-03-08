@@ -1,5 +1,5 @@
 pkgbase = lfe
-	pkgdesc = Lisp Flavoured Erlang
+	pkgdesc = Lisp Flavoured Erlang is not a casual Lisp. It's a Lisp for those who want to build distributed applications -- like the Erlang software that powers 40% of the world's telecommunications.
 	pkgver = 2.2.0
 	pkgrel = 3
 	url = https://lfe.io/

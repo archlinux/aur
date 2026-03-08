@@ -2,7 +2,7 @@
 pkgname=lfe
 pkgver=2.2.0
 pkgrel=3
-pkgdesc="Lisp Flavoured Erlang"
+pkgdesc="Lisp Flavoured Erlang is not a casual Lisp. It's a Lisp for those who want to build distributed applications -- like the Erlang software that powers 40% of the world's telecommunications."
 arch=('x86_64')
 url="https://lfe.io/"
 url_src="https://github.com/lfe/lfe"
