@@ -1,7 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=falcond-gui
-pkgver=1.0.1
-pkgrel=2
+_app_id=com.pikaos.falcondgui
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="A GTK4/LibAdwaita application to control and monitor the Falcond gaming optimization daemon."
 arch=('x86_64')
 url="https://git.pika-os.com/general-packages/falcond-gui"
@@ -14,7 +15,7 @@ depends=(
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('2e153e2fd63cae328b777b609791e68d2d9c3ff586a604a9130ca2ff89ea60e3')
+sha256sums=('11ea44718e44701ef6e36e626d3d804273e670252cd7cb3eea49d762978c1914')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver"
@@ -43,7 +44,7 @@ check() {
 package() {
   cd "$pkgname-$pkgver/$pkgname"
   install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dm644 res/falcond.png -t "$pkgdir/usr/share/pixmaps/"
-  install -Dm644 "res/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 "res/${_app_id}.png" -t "$pkgdir/usr/share/pixmaps/"
+  install -Dm644 "res/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 ../LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
