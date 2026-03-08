@@ -1,12 +1,11 @@
 pkgbase = qmd
 	pkgdesc = On-device search engine for markdown files with BM25, vector, and LLM-powered search
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tobi/qmd
 	arch = x86_64
 	license = MIT
 	makedepends = npm
-	makedepends = cmake
 	depends = nodejs>=22
 	options = !debug
 	source = qmd-1.1.5.tgz::https://registry.npmjs.org/@tobilu/qmd/-/qmd-1.1.5.tgz

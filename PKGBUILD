@@ -3,13 +3,13 @@
 pkgname=qmd
 _npmname="@tobilu/qmd"
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="On-device search engine for markdown files with BM25, vector, and LLM-powered search"
 arch=('x86_64')
 url="https://github.com/tobi/qmd"
 license=('MIT')
 depends=('nodejs>=22')
-makedepends=('npm' 'cmake')
+makedepends=('npm')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/qmd-${pkgver}.tgz")
 sha256sums=('70809ee06d1a7a519d689f2987731d06dbd5389c321f447528a8b5c3d5579f15')
@@ -58,4 +58,9 @@ package() {
 
   # Remove peer deps not needed at runtime (dist/ is prebuilt JS)
   rm -rf "${node_root}/node_modules/typescript"
+  # Clean dangling .bin symlinks left by removed peer deps
+  find "${node_root}/node_modules/.bin" -xtype l -delete 2>/dev/null || true
+
+  # Remove build obj.target hardlink duplicates
+  rm -rf "${node_root}/node_modules/better-sqlite3/build/Release/obj.target"
 }
