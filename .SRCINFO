@@ -1,10 +1,10 @@
 pkgbase = voxcii-git
 	pkgdesc = Terminal-based ASCII 3D model viewer written in C++
-	pkgver = r11.d4c9b52
+	pkgver = r12.c7ff4ee
 	pkgrel = 1
 	url = https://github.com/ashish0kumar/voxcii
 	arch = x86_64
-	license = GPL-3.0-or-later
+	license = MIT
 	makedepends = gcc
 	makedepends = make
 	makedepends = git
