@@ -1,6 +1,6 @@
 pkgbase = obsidian-cli-inspector
 	pkgdesc = Local-first CLI/TUI for indexing and querying Obsidian vaults
-	pkgver = 0.2.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/jingyi-zhao-01/obsidian-cli-inspector
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = obsidian-cli-inspector
 	makedepends = pkgconf
 	depends = sqlite
 	options = !lto
-	source = obsidian-cli-inspector-0.2.2.tar.gz::https://github.com/jingyi-zhao-01/obsidian-cli-inspector/archive/refs/tags/v0.2.2.tar.gz
-	sha256sums = 935de1d25a666a77138ae77cf94ce7e28a0d39e895763fa00905b7654edf73cd
+	options = !debug
+	source = obsidian-cli-inspector-1.0.3.tar.gz::https://github.com/jingyi-zhao-01/obsidian-cli-inspector/archive/refs/tags/obsidian-cli-inspector-v1.0.3.tar.gz
+	sha256sums = 561a53019bdc3c0d5e964c87e85832c1b273b7e2d30a2907bda18a94b61dfa4f
 
 pkgname = obsidian-cli-inspector
