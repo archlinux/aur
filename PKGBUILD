@@ -1,5 +1,5 @@
 pkgname=labyrinthine
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Linux-first Rust terminal maze runner with Q-learning, auto-solving, and progressive levels"
 arch=('x86_64')
