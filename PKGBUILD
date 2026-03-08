@@ -2,15 +2,15 @@
 # Contributor: Roy Oursler <roy.j.oursler@intel.com>
 
 pkgname=isa-l_crypto
-pkgver=2.25.0
-pkgrel=2
+pkgver=2.26
+pkgrel=1
 pkgdesc="A collection of optimized low-level functions targeting storage applications"
 arch=(x86_64)
 url="https://github.com/intel/${pkgname}"
 license=('BSD-3-Clause')
-makedepends=('nasm')
+makedepends=('autoconf' 'automake' 'make' 'nasm')
 source=("${url}/archive/v${pkgver}.tar.gz")
-b2sums=('18328b404a2686718fc8cf9bc596816e4521ec85440e8aad2bb40d32eabc606807617fc08c2790c4bb0a0b84648fa9820a4a6c19ac6a3cbbbc2cd96bddfd1eb9')
+b2sums=('2b20262b6c759be487e75691a85a30d5fe463f868157c65e47bd3f66399882b791ca515dc7838b2384ef8f86746ddbddf87249ce10b29f895a850274cae5f350')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"

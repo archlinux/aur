@@ -1,12 +1,15 @@
 pkgbase = isa-l_crypto
 	pkgdesc = A collection of optimized low-level functions targeting storage applications
-	pkgver = 2.25.0
-	pkgrel = 2
+	pkgver = 2.26
+	pkgrel = 1
 	url = https://github.com/intel/isa-l_crypto
 	arch = x86_64
 	license = BSD-3-Clause
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = make
 	makedepends = nasm
-	source = https://github.com/intel/isa-l_crypto/archive/v2.25.0.tar.gz
-	b2sums = 18328b404a2686718fc8cf9bc596816e4521ec85440e8aad2bb40d32eabc606807617fc08c2790c4bb0a0b84648fa9820a4a6c19ac6a3cbbbc2cd96bddfd1eb9
+	source = https://github.com/intel/isa-l_crypto/archive/v2.26.tar.gz
+	b2sums = 2b20262b6c759be487e75691a85a30d5fe463f868157c65e47bd3f66399882b791ca515dc7838b2384ef8f86746ddbddf87249ce10b29f895a850274cae5f350
 
 pkgname = isa-l_crypto
