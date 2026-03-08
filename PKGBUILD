@@ -1,7 +1,7 @@
 # Maintainer: yvs <VSYakovetsky@gmail.com>
 
-_ver="0.3"
-_tag="d3da356"
+_ver="1.0"
+_tag="d164dab"
 _build="_build"
 
 pkgname=pingpath
