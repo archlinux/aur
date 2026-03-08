@@ -1,6 +1,6 @@
 pkgbase = imagemagick-full
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all possible features)
-	pkgver = 7.1.2.15
+	pkgver = 7.1.2.16
 	pkgrel = 1
 	url = https://www.imagemagick.org/
 	arch = x86_64
@@ -56,10 +56,10 @@ pkgbase = imagemagick-full
 	makedepends = xz
 	makedepends = zlib
 	makedepends = zstd
-	source = https://imagemagick.org/archive/releases/ImageMagick-7.1.2-15.tar.lz
-	source = https://imagemagick.org/archive/releases/ImageMagick-7.1.2-15.tar.lz.asc
+	source = https://imagemagick.org/archive/releases/ImageMagick-7.1.2-16.tar.lz
+	source = https://imagemagick.org/archive/releases/ImageMagick-7.1.2-16.tar.lz.asc
 	validpgpkeys = D8272EF51DA223E4D05B466989AB63D48277377A
-	sha256sums = 83708c43de3f9c446541e541bad58e0231d9c277948f51b6a082a58c5f2b2827
+	sha256sums = 2bc5ddd7d27de724dd22ede7105e9487ec25189d580b342d2b6dbfa5665d81fb
 	sha256sums = SKIP
 
 pkgname = imagemagick-full
@@ -71,7 +71,6 @@ pkgname = imagemagick-full
 	depends = flif
 	depends = fontconfig
 	depends = freetype2
-	depends = gcc-libs
 	depends = ghostscript
 	depends = glib2
 	depends = glibc
@@ -81,6 +80,8 @@ pkgname = imagemagick-full
 	depends = jbigkit
 	depends = lcms2
 	depends = libfpx
+	depends = libgcc
+	depends = libgomp
 	depends = libheif
 	depends = libjpeg-turbo
 	depends = libjxl
@@ -90,6 +91,7 @@ pkgname = imagemagick-full
 	depends = libraqm
 	depends = libraw
 	depends = librsvg
+	depends = libstdc++
 	depends = libtiff
 	depends = libultrahdr
 	depends = libwebp
@@ -111,9 +113,9 @@ pkgname = imagemagick-full
 	depends = xz
 	depends = zlib
 	optdepends = imagemagick-full-doc: manual and API docs
-	provides = imagemagick=7.1.2.15
-	provides = libmagick=7.1.2.15
-	provides = libmagick-full=7.1.2.15
+	provides = imagemagick=7.1.2.16
+	provides = libmagick=7.1.2.16
+	provides = libmagick-full=7.1.2.16
 	conflicts = imagemagick
 	conflicts = libmagick
 	replaces = libmagick-full
@@ -135,5 +137,5 @@ pkgname = imagemagick-full
 pkgname = imagemagick-full-doc
 	pkgdesc = An image viewing/manipulation program (Q32 HDRI with all possible features) (manual and API docs)
 	arch = any
-	provides = imagemagick-doc=7.1.2.15
+	provides = imagemagick-doc=7.1.2.16
 	conflicts = imagemagick-doc

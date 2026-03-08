@@ -13,7 +13,7 @@
 
 pkgbase=imagemagick-full
 pkgname=('imagemagick-full' 'imagemagick-full-doc')
-pkgver=7.1.2.15
+pkgver=7.1.2.16
 pkgrel=1
 arch=('x86_64')
 _qdepth='32'
@@ -73,7 +73,7 @@ makedepends=(
     'zlib'
     'zstd')
 source=("https://imagemagick.org/archive/releases/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.lz"{,.asc})
-sha256sums=('83708c43de3f9c446541e541bad58e0231d9c277948f51b6a082a58c5f2b2827'
+sha256sums=('2bc5ddd7d27de724dd22ede7105e9487ec25189d580b342d2b6dbfa5665d81fb'
             'SKIP')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')  # Lexie Parsimoniae
 
@@ -171,7 +171,6 @@ package_imagemagick-full() {
         'flif'
         'fontconfig'
         'freetype2'
-        'gcc-libs'
         'ghostscript'
         'glib2'
         'glibc'
@@ -181,6 +180,8 @@ package_imagemagick-full() {
         'jbigkit'
         'lcms2'
         'libfpx'
+        'libgcc'
+        'libgomp'
         'libheif'
         'libjpeg-turbo'
         'libjxl'
@@ -190,6 +191,7 @@ package_imagemagick-full() {
         'libraqm'
         'libraw'
         'librsvg'
+        'libstdc++'
         'libtiff'
         'libultrahdr'
         'libwebp'
