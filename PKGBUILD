@@ -5,7 +5,7 @@
 _pkgname='spacedrive'
 pkgname="${_pkgname}-bin"
 pkgver='0.4.3'
-pkgrel='1'
+pkgrel='2'
 epoch='1'
 pkgdesc="A file manager from the future."
 arch=('x86_64')
@@ -14,7 +14,7 @@ _url_source='https://github.com/spacedriveapp/spacedrive'
 license=('AGPL3')
 source=("Spacedrive-linux-$pkgver-x86_64.deb::${_url_source}/releases/download/${pkgver}/Spacedrive-linux-x86_64.deb")
 sha256sums=('30b0801cd2c9ffd6dd0812c106cb2ba64f7cbaf2937c7b3d606c66c49d75fe86')
-depends=(gtk3 ffmpeg glibc gcc-libs glib2 pango libsoup cairo gdk-pixbuf2 libheif onnxruntime webkit2gtk-4.1 xdotool)
+depends=(gtk3 ffmpeg7.1 glibc gcc-libs glib2 pango libsoup cairo gdk-pixbuf2 libheif onnxruntime webkit2gtk-4.1 xdotool)
 provides=(spacedrive)
 conflicts=(spacedrive)
 
@@ -23,6 +23,7 @@ package() {
   #temporary workaround fixes #2006
   mkdir -p "${pkgdir}/usr/lib/spacedrive/"
   ln -s "/usr/lib/libonnxruntime.so" "${pkgdir}/usr/lib/spacedrive/libonnxruntime.so"
+  ln -s /usr/lib/libxdo.so.4 $pkgdir/usr/lib/libxdo.so.3
 
   chmod -R 755 "${srcdir}/usr/share/"
   install -Dm755 "${srcdir}/usr/bin/spacedrive" "${pkgdir}/usr/bin/spacedrive"

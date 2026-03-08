@@ -1,13 +1,13 @@
 pkgbase = spacedrive-bin
 	pkgdesc = A file manager from the future.
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://spacedrive.com
 	arch = x86_64
 	license = AGPL3
 	depends = gtk3
-	depends = ffmpeg
+	depends = ffmpeg7.1
 	depends = glibc
 	depends = gcc-libs
 	depends = glib2
