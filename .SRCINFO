@@ -1,8 +1,8 @@
 pkgbase = unpackerr
 	pkgdesc = Extracts downloads so Radarr, Sonarr, Lidarr or Readarr may import them.
-	pkgver = 0.15.0
-	pkgrel = 2
-	url = https://golift.io/unpackerr
+	pkgver = 0.15.2
+	pkgrel = 960
+	url = https://unpackerr.zip
 	arch = x86_64
 	arch = arm
 	arch = armv6h
@@ -13,8 +13,13 @@ pkgbase = unpackerr
 	license = MIT
 	makedepends = go
 	makedepends = gzip
+	optdepends = transmission-cli: torrent downloader (CLI and daemon)
+	optdepends = transmission-gtk: torrent downloader (GTK+)
+	optdepends = transmission-qt: torrent downloader (Qt)
+	optdepends = deluge: torrent downloader
+	optdepends = rtorrent: torrent downloader
 	backup = etc/unpackerr/unpackerr.conf
-	source = unpackerr-0.15.0.tar.gz::https://github.com/Unpackerr/unpackerr/archive/v0.15.0.tar.gz
-	sha512sums = 028df1b70d0b3471c4086827a5bf81771fc5fa5df71300d7d13e6ca53b939d9b6e472d520300975a884b94a86bf80fca6dbb1f99e0235f66044802377640da53
+	source = unpackerr-0.15.2.tar.gz::https://github.com/Unpackerr/unpackerr/archive/v0.15.2.tar.gz
+	sha512sums = fb4c0cde39cbecb72b6b55b700fc73a3d2889a7b5d5a6db0e45ca8bfbeff7309c378b8f87adc8b625249138581e48dd4398b2518b035905a92492e5691d6f4b6
 
 pkgname = unpackerr

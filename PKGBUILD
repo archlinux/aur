@@ -1,14 +1,24 @@
-pkgname=unpackerr
-pkgver=0.15.0
-pkgrel=2
+# Maintainer: David Newhall II <captain@golift.io>
+# Maintainer: Donald Webster <fryfrog@gmail.com>
+
+pkgname='unpackerr'
+pkgver=0.15.2
+pkgrel=960
 pkgdesc='Extracts downloads so Radarr, Sonarr, Lidarr or Readarr may import them.'
 arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'pentium4')
-url='https://golift.io/unpackerr'
+url='https://unpackerr.zip'
 license=('MIT')
 makedepends=('go' 'gzip')
+optdepends=(
+  'transmission-cli: torrent downloader (CLI and daemon)'
+  'transmission-gtk: torrent downloader (GTK+)'
+  'transmission-qt: torrent downloader (Qt)'
+  'deluge: torrent downloader'
+  'rtorrent: torrent downloader'
+)
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Unpackerr/unpackerr/archive/v${pkgver}.tar.gz")
-sha512sums=('028df1b70d0b3471c4086827a5bf81771fc5fa5df71300d7d13e6ca53b939d9b6e472d520300975a884b94a86bf80fca6dbb1f99e0235f66044802377640da53')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Unpackerr/unpackerr/archive/v0.15.2.tar.gz")
+sha512sums=('fb4c0cde39cbecb72b6b55b700fc73a3d2889a7b5d5a6db0e45ca8bfbeff7309c378b8f87adc8b625249138581e48dd4398b2518b035905a92492e5691d6f4b6')
 
 backup=("etc/${pkgname}/${pkgname}.conf")
 
@@ -20,22 +30,18 @@ prepare(){
 build() {
   cd "$pkgname-$pkgver"
 
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
-  export VLDFLAGS="-w -s -X 'golift.io/version.Branch=main (${sha512sums[0]:0:11})' \
+  LDFLAGS="-w -s -X 'golift.io/version.Branch=main (${sha512sums[0]:0:11})' \
     -X golift.io/version.BuildDate=$(date -u +%Y-%m-%dT%H:%M:00Z) \
-    -X golift.io/version.BuildUser=$(whoami) \
+    -X golift.io/version.BuildUser=$(whoami || echo unknown) \
     -X golift.io/version.Revision=${pkgrel} \
     -X golift.io/version.Version=${pkgver}"
 
-  go build -o unpackerr -ldflags "$VLDFLAGS" .
-  go run github.com/davidnewhall/md2roff@v0.0.1 --manual unpackerr --version ${pkgver} --date "${DATE}" README.md
-  go run github.com/davidnewhall/md2roff@v0.0.1 --manual unpackerr --version ${pkgver} --date "${DATE}" examples/MANUAL.md
+  go build -o unpackerr -ldflags "$LDFLAGS" .
+  go run github.com/davidnewhall/md2roff@v0.0.1 --manual unpackerr --version "${pkgver}" --date "${DATE}" README.md
+  go run github.com/davidnewhall/md2roff@v0.0.1 --manual unpackerr --version "${pkgver}" --date "${DATE}" examples/MANUAL.md
   gzip -9 examples/MANUAL
-  mv examples/MANUAL.gz ${pkgname}.1.gz
+  mv examples/MANUAL.gz "${pkgname}.1.gz"
 }
 
 package() {
@@ -53,7 +59,7 @@ package() {
 
   # License, documentation, manual.
   install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m 644 *.html examples/* "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -D -m 644 ./*.html examples/* "${pkgdir}/usr/share/doc/${pkgname}/"
   install -D -m 644 "${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
 
   # Install the systemd service unit and system user account.
