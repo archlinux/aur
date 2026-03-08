@@ -3,7 +3,7 @@
 # Former Contributor: ml <>
 
 pkgname=alda
-pkgver=2.3.3
+pkgver=2.4.1
 pkgrel=1
 pkgdesc='A music programming language for musicians'
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('alda-bin')
 makedepends=('go')
 source=("$pkgname-release-$pkgver.tar.gz::https://codeload.github.com/$pkgname-lang/$pkgname/tar.gz/refs/tags/release-$pkgver"
   alda-player )
-b2sums=('e81a2df8192fb94ac620097a42a57a8e77d9d6ea6771e10fb80e26ebea0f4a031cce2f883a164848ced1635d74e300239cca3c3380eddca246a182a65288e4eb'
+b2sums=('7d97f433381825a08f95b9aedc34c60e344e8e5360f05bf34f688a57b19bcb8f8a78e37a9aab6b3522fa7285e9e8cb9a36090ab2ef29c959f21e84d91eeb4d68'
   '5d6bdd39c1178fd5504a308d95606a82bae781159128e3c5d79c989a253871b36f92123410479d8734df2dbf335ccab2f194d99503fddb76f9e86bb0ed8acee4')
 
 build() {
