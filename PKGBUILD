@@ -1,7 +1,7 @@
 # Maintainer: Ivan Janković <ivan.jankovic.unix@gmail.com>
 
 pkgname=tmuzika
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Terminal music player with ncurses UI and GStreamer backend"
 arch=('x86_64')

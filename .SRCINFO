@@ -1,6 +1,6 @@
 pkgbase = tmuzika
 	pkgdesc = Terminal music player with ncurses UI and GStreamer backend
-	pkgver = 1.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/ivanjeka/tmuzika.git
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tmuzika
 	depends = ncurses
 	provides = tmuzika
 	conflicts = tmuzika
-	source = tmuzika-1.1.tar.gz::https://github.com/ivanjeka/tmuzika/archive/refs/tags/v1.1.tar.gz
+	source = tmuzika-1.1.1.tar.gz::https://github.com/ivanjeka/tmuzika/archive/refs/tags/v1.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = tmuzika
