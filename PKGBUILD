@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A Java Navtex marine weather receiver/converter"
 arch=('any')
 url="https://arachnoid.com/JNX/"
-license=('GPL3')
+license=('GPL-2.0-or-later')
 depends=('java-runtime' 'bash')
 source=("https://arachnoid.com/JNX/JNX.jar"
         "$pkgname.sh"
