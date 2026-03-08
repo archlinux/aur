@@ -1,14 +1,14 @@
 # Maintainer: cap153 <1536989047@qq.com>
 
 pkgname=lanchat-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A cross-platform LAN chat software that supports file transfer, written in Rust."
 arch=("x86_64")
 url="https://github.com/cap153/LANChat"
 license=('custom')
 depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup3' 'pango' 'webkit2gtk-4.1')
-source=("https://github.com/cap153/LANChat/releases/download/v0.1.1/LANChat_0.1.1_amd64.deb")
+source=("https://github.com/cap153/LANChat/releases/download/v0.1.2/LANChat_0.1.2_amd64.deb")
 sha256sums=('SKIP')
 options=('!strip')
 
