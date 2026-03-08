@@ -1,6 +1,6 @@
 pkgbase = lfe-git
 	pkgdesc = Lisp Flavoured Erlang
-	pkgver = r1171.9a75089
+	pkgver = r9.046ddc5
 	pkgrel = 1
 	epoch = 1
 	url = http://lfe.io/

@@ -3,11 +3,11 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lfe-git
-pkgver=r1171.9a75089
+pkgver='r9.046ddc5'
 pkgrel=1
 epoch=1
 pkgdesc="Lisp Flavoured Erlang"
-url='http://lfe.io/'
+url='https://lfe.io/'
 arch=('x86_64')
 license=('Apache_v2')
 depends=('erlang')
@@ -15,14 +15,7 @@ makedepends=('make')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=('git+https://github.com/lfe/lfe.git#branch=develop')
-sha256sums=('SKIP')
-
-pkgver() {
-  cd "${pkgname%-git}"
-  printf "r%s.%s"                  \
-    "$(git rev-list --count HEAD)" \
-    "$(git rev-parse --short HEAD)"
-}
+sha512sums=('SKIP')
 
 package () {
   cd "${pkgname%-git}"
