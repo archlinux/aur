@@ -1,10 +1,10 @@
 # Maintainer: Christian Möllmann (knoelliX) <moellix@knoellix.net>
 pkgname=nativmix
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Hardware-assisted volume mixer for PipeWire/PulseAudio with Arduino support"
 arch=('any')
-url="https://github.com/knoelliX/NativMix"
+url="https://github.com/knoellix/NativMix"
 license=('GPL-3.0-or-later')
 
 depends=(
@@ -29,8 +29,8 @@ optdepends=(
 # Falls du keine extra .install Datei hast, kommentiere diese Zeile aus:
 # install=nativmix.install
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/knoelliX/NativMix/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('208513a8c046f75f2bcb38a728200c105bdf0df2920e52517a20085790ae8e31')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/knoellix/NativMix/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('80e2aca891c15af16e68f8a4907cbc7177eea87c67fd42f3400dc9e714e08bc2')
 
 prepare() {
     cd "${srcdir}/NativMix-${pkgver}"
