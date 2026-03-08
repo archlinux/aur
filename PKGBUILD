@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
-pkgver=0.9.10
+pkgver=0.9.12
 pkgrel=1
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
@@ -14,7 +14,6 @@ depends=(
   'libadwaita'
   'openssh'
   'openssl'
-  'sshpass'
   'vte4'
   'which'
   'zstd'
@@ -28,7 +27,7 @@ optdepends=(
   'bitwarden-cli: Password storage method option'
   'boundary: Boundary CLI'
   'cloudflared: Cloudflare CLI'
-  'freerdp: RDP client'
+  'freerdp: External RDP client fallback'
   'google-cloud-cli: Google Cloud CLI'
   'gtk-vnc: VNC Client option'
   'inetutils: Telnet client'
@@ -44,15 +43,14 @@ optdepends=(
   'picocom: Serial terminal client'
   'realvnc-vnc-viewer: VNC client option'
   'remmina: VNC client option'
-#  'spice-gtk: SPICE client option'  ## not found, using embedded
   'tailscale: Tailscale CLI'
   'teleport: Teleport CLI'
-  'tigervnc: VNC client option'
-  'virt-viewer: SPICE client option'
+  'tigervnc: External VNC client fallback'
+  'virt-viewer: External SPICE client fallback'
   'waypipe: Wayland application forwarding for SSH connections'
 )
 source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6255e8d33f3286eaf9ed21a5fd92f3b6d276371c256431f18653287a45963428')
+sha256sums=('d7c2641221c344c372ab23b425d486460bc4d82b3af119a39c8048086f8f3cca')
 
 prepare() {
   cd "RustConn-$pkgver"
@@ -90,5 +88,12 @@ package() {
   for i in 128 256; do
     install -Dm644 "$pkgname/assets/icons/hicolor/${i}x${i}/apps/${_app_id}.png" -t \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/"
+  done
+
+  for po_file in po/*.po; do
+    [ -f "$po_file" ] || continue
+    lang=$(basename "${po_file}" .po)
+    install -d "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES"
+    msgfmt -o "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/$pkgname.mo" "${po_file}"
   done
 }
