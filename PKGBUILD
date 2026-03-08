@@ -5,7 +5,7 @@ _pkgname=console2svg
 pkgname=${_pkgname}-bin
 pkgdesc="Easily convert terminal output into SVG images"
 
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,8 +27,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pk
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}")
 sha256sums=('813859788a813ad0b48713aa64aafc3848ab7f467b5b53e8841e03e7900a6a2e'
             '98777468c101698f56a7e16011578e44db2c1fb6c5b70f614f1fc3be6d551d36')
-sha256sums_x86_64=('7073fc822dcc56399e035158e1af647658db749b5d04b1c75b4428a3ae32fc7c')
-sha256sums_aarch64=('c10b73a5e87d3571d7e94d5fb94fac002f03bdf444038b8a913a6053cb9dcf32')
+sha256sums_x86_64=('7c6b8120cb13bbe1391ba42e5444de951150e4706aa7a4390254244ba0e4d8a6')
+sha256sums_aarch64=('08fb850b9cfd91ca5d558a19cae6ed20539a6b11869a150ea93ca7ac135f2362')
 
 
 package() {
