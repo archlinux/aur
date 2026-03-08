@@ -1,10 +1,10 @@
 [Desktop Entry]
 Type=Application
-Version=0.1.1
+Version=0.2.1
 Name=Theophany
 Comment=A Modern game library manager and launcher
 Exec=theophany
 Icon=theophany
 Terminal=false
 Categories=Game;Utility;
-Keywords=Games;Launcher;Epic;Steam;
+Keywords=Games;Launcher;Epic;Steam;eXoDOS;
