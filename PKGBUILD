@@ -1,0 +1,101 @@
+# Maintainer: guglovich <jinseoyeon@archlinux>
+# Created with assistance from Claude (Anthropic)
+
+pkgname=pake-cli
+pkgver=3.10.0
+pkgrel=1
+pkgdesc="Turn any webpage into a desktop app with one command (Tauri/Rust-based CLI)"
+arch=('any')
+url="https://github.com/tw93/Pake"
+license=('MIT')
+depends=('nodejs')
+makedepends=('npm' 'node-gyp' 'python')
+optdepends=(
+    'rust: for building apps with pake-cli'
+    'rustup: for building apps with pake-cli (alternative to rust)'
+)
+options=('!debug')
+
+_pkgname=pake-cli
+
+source=("https://registry.npmjs.org/${_pkgname}/-/${_pkgname}-${pkgver}.tgz")
+b2sums=('dd276a06495287433ca4da483f7098b3367c76f825fe830c86f1342a16a7e3d9b69a80cab4d81f3f99ef4bfce11c6bff92aac91239054310fb8993abf53be3f0')
+
+prepare() {
+    bsdtar -xf "${_pkgname}-${pkgver}.tgz"
+
+    # sharp requires node-addon-api and node-gyp to be resolvable from its own directory
+    npm install \
+        --cache "${srcdir}/npm-cache" \
+        --no-fund \
+        --no-audit \
+        --prefix "${srcdir}/package" \
+        node-addon-api node-gyp
+
+    export npm_config_node_gyp="$(which node-gyp)"
+
+    npm install \
+        --cache "${srcdir}/npm-cache" \
+        --no-fund \
+        --no-audit \
+        --prefix "${srcdir}" \
+        "${srcdir}/package"
+}
+
+check() {
+    if ! command -v rustc &>/dev/null && ! command -v rustup &>/dev/null; then
+        warning "Neither 'rust' nor 'rustup' is installed."
+        warning "pake-cli requires one of them to build desktop apps."
+        warning "Install with: sudo pacman -S rust  OR  sudo pacman -S rustup"
+    fi
+}
+
+_installdir="/usr/share/${pkgname}"
+
+package() {
+    # Install module files into /usr/share/pake-cli
+    install -dm755 "${pkgdir}${_installdir}"
+    cp -r "${srcdir}/package/dist"      "${pkgdir}${_installdir}/dist"
+    cp -r "${srcdir}/package/src-tauri" "${pkgdir}${_installdir}/src-tauri"
+    cp -r "${srcdir}/node_modules"      "${pkgdir}${_installdir}/node_modules"
+    install -Dm644 "${srcdir}/package/package.json" \
+        "${pkgdir}${_installdir}/package.json"
+
+    # Install license
+    install -Dm644 "${srcdir}/package/LICENSE" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # Wrapper script: copies pake-cli to user's XDG dir on first run or after update,
+    # then executes from there (pake-cli writes to its own directory at runtime)
+    install -dm755 "${pkgdir}/usr/bin"
+    cat > "${pkgdir}/usr/bin/pake" << 'EOF'
+#!/bin/bash
+PAKE_USER_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/pake-cli"
+PAKE_SYS_DIR="/usr/share/pake-cli"
+
+_sys_ver=$(node -p "require('$PAKE_SYS_DIR/package.json').version" 2>/dev/null)
+_usr_ver=$(node -p "require('$PAKE_USER_DIR/package.json').version" 2>/dev/null)
+
+if [[ "$_sys_ver" != "$_usr_ver" ]]; then
+    echo "pake-cli: updating working directory to version $_sys_ver ..."
+    rm -rf "$PAKE_USER_DIR"
+    cp -r "$PAKE_SYS_DIR" "$PAKE_USER_DIR"
+
+    # Fix: D-Bus identifier segments must not start with a digit.
+    # pake generates identifiers like com.pake.9fd638 which causes a panic.
+    node -e "
+const fs = require('fs');
+const f = process.argv[1];
+const s = fs.readFileSync(f, 'utf8');
+const patched = s.replace(
+    'return \`com.pake.\${postFixHash}\`;',
+    'const safeHash = /^[0-9]/.test(postFixHash) ? \"a\" + postFixHash : postFixHash; return \`com.pake.\${safeHash}\`;'
+);
+fs.writeFileSync(f, patched);
+" "$PAKE_USER_DIR/dist/cli.js"
+fi
+
+exec node "$PAKE_USER_DIR/dist/cli.js" "$@"
+EOF
+    chmod 755 "${pkgdir}/usr/bin/pake"
+}
