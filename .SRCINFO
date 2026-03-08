@@ -1,6 +1,6 @@
 pkgbase = python-mprisgovee
 	pkgdesc = light anything up with govee, right from mpris.
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://github.com/obvRedwolf/mprisgovee
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-mprisgovee
 	depends = python-colorthief
 	depends = python-requests
 	depends = playerctl
-	source = python-mprisgovee-1.1.7.tar.gz::https://github.com/obvRedwolf/mprisgovee/archive/refs/tags/v1.1.7.tar.gz
-	sha256sums = 0444ed351da37e83e17269d57661f9e3b672b3567262953c256142d514dc2083
+	source = python-mprisgovee-1.1.8.tar.gz::https://github.com/obvRedwolf/mprisgovee/archive/refs/tags/v1.1.8.tar.gz
+	sha256sums = 3afb75f5576872ba082280f4fbf0c2181e9e0ebaa37036ba5c0d6e476cef4775
 
 pkgname = python-mprisgovee

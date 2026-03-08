@@ -1,7 +1,7 @@
 # Maintainer: Ronald Nguyen <ronaldpham32766@outlook.com>
 
 pkgname=python-mprisgovee
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="light anything up with govee, right from mpris."
 arch=('any')
@@ -23,7 +23,7 @@ makedepends=(
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/obvRedwolf/mprisgovee/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('0444ed351da37e83e17269d57661f9e3b672b3567262953c256142d514dc2083')
+sha256sums=('3afb75f5576872ba082280f4fbf0c2181e9e0ebaa37036ba5c0d6e476cef4775')
 
 build() {
     cd "$srcdir/mprisgovee-$pkgver"
