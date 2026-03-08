@@ -1,0 +1,17 @@
+pkgbase = pearl-appimage
+	pkgdesc = Pearl - Olas Operate App
+	pkgver = 1.4.4.rc2
+	pkgrel = 1
+	url = https://github.com/valory-xyz/olas-operate-app
+	arch = x86_64
+	license = Apache-2.0
+	depends = zlib-ng-compat
+	depends = hicolor-icon-theme
+	noextract = pearl-appimage-1.4.4.rc2.AppImage
+	options = !strip
+	source_x86_64 = pearl-appimage-1.4.4.rc2.AppImage::https://github.com/valory-xyz/olas-operate-app/releases/download/v1.4.4-rc2/Pearl-1.4.4-rc2-linux-x86_64.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/valory-xyz/olas-operate-app/refs/tags/v1.4.4-rc2/LICENSE
+	sha256sums_x86_64 = ec4716feb091b0e9271c2f818e81c2e0ae77206ccbbe7ef88c7506245214c46d
+	sha256sums_x86_64 = 99d04307e996295e42cf87a30730622aa6a7e99f3354b021f71c0ceb83b6156e
+
+pkgname = pearl-appimage
