@@ -6,6 +6,7 @@ pkgbase = librepods
 	arch = x86_64
 	license = GPL-3.0-only
 	makedepends = cmake>=2.8.12
+	makedepends = git
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
@@ -13,7 +14,8 @@ pkgbase = librepods
 	depends = qt6-base
 	depends = qt6-connectivity
 	depends = qt6-declarative
-	source = https://github.com/kavishdevar/librepods/archive/refs/tags/v0.2.0-alpha/librepods-0.2.0-alpha.tar.gz
-	b2sums = 5276e060b0e72ad5fb7a10a746d4e219cc7be36c10318692d6b08dae25faa6074defed31275ddbf8f7d2d8b7b89bcd46040a2f85ff440d646771607e874a779a
+	source = librepods::git+https://github.com/kavishdevar/librepods.git#tag=v0.2.0-alpha?signed
+	validpgpkeys = 2D58709F32193AA828ED43D72DBD7F9150AB7E67
+	b2sums = 4a3f8bb003fd9c304d1c88f202f3abb93ca023c4e283fcacb7fce6b9fbbeda4220622e4a7b2fc2af088b7073d23ec70be5ca73b178ac97dfbef3d45389f5101b
 
 pkgname = librepods
