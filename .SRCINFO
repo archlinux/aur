@@ -1,6 +1,6 @@
 pkgbase = kalico-git
 	pkgdesc = Klipper, but Limitless
-	pkgver = r5822.91fd6480
+	pkgver = r5899.f26c79c77
 	pkgrel = 1
 	url = https://kalico.gg
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = kalico-git
 	source = sysusers.d-kalico.conf
 	source = tmpfiles.d-kalico.conf
 	md5sums = SKIP
-	md5sums = 92bebe556e304bc6be82109fe873569c
+	md5sums = eb9db23ddb047813f5c92b7b64fd242c
 	md5sums = 18074e35a16bf065d12ca10f7b0d5f3c
 	md5sums = 7a00293052c04fba501441380c6bb817
 	optdepends_x86_64 = arm-none-eabi-binutils: for ARM MCU firmware compilation

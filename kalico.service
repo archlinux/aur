@@ -12,6 +12,7 @@ RemainAfterExit=no
 Environment=PYTHONUNBUFFERED=1
 Restart=always
 RestartSec=10
+TimeoutSec=15min
 
 ExecStartPre=/usr/bin/python -m venv --upgrade /var/lib/kalico/.venv
 ExecStartPre=/var/lib/kalico/.venv/bin/python -m pip install --requirement /usr/share/kalico/scripts/klippy-requirements.txt
