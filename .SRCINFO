@@ -1,0 +1,25 @@
+pkgbase = front-porch-ai-beta-bin
+	pkgdesc = A chilled out frontend for KoboldCPP (beta/pre-release)
+	pkgver = 0.9.0_Beta
+	pkgrel = 1
+	url = https://github.com/linux4life1/front-porch-AI
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	depends = glib2
+	depends = libsecret
+	depends = fuse2
+	provides = front-porch-ai
+	conflicts = front-porch-ai
+	conflicts = front-porch-ai-bin
+	noextract = Front_Porch_AI-Linux.AppImage
+	options = !strip
+	options = !debug
+	source = Front_Porch_AI-Linux.AppImage::https://github.com/linux4life1/front-porch-AI/releases/download/0.9.0-Beta/Front_Porch_AI-Linux.AppImage
+	source = front-porch-ai.desktop
+	source = front-porch-ai.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = front-porch-ai-beta-bin
