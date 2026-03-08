@@ -1,9 +1,9 @@
-pkgbase = casioemuneo
+pkgbase = casioemuneo-git
 	pkgdesc = Casio ClassWiz emulator, assembler and debugger
 	pkgver = r81.23de343
 	pkgrel = 1
 	url = https://github.com/qiufuyu123/CasioEmuNeo
-	install = casioemuneo.install
+	install = casioemuneo-git.install
 	arch = x86_64
 	license = GPL3
 	makedepends = git
@@ -15,6 +15,10 @@ pkgbase = casioemuneo
 	optdepends = kdialog: KDE directory picker for first-run guide
 	optdepends = noto-fonts-cjk: better CJK font fallback
 	source = git+https://github.com/qiufuyu123/CasioEmuNeo.git
+	source = casioemuneo.desktop
+	source = casio.png
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = casioemuneo
+pkgname = casioemuneo-git

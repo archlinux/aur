@@ -16,7 +16,8 @@ optdepends=(
   'noto-fonts-cjk: better CJK font fallback'
 )
 source=("git+${url}.git")
-sha256sums=('SKIP')
+source+=("casioemuneo.desktop" "casio.png")
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd "${srcdir}/CasioEmuNeo"
@@ -93,6 +94,6 @@ EOF
 
   chmod 755 "${pkgdir}/usr/bin/casioemuneo"
 
-  install -Dm644 "${startdir}/casioemuneo.desktop" "${pkgdir}/usr/share/applications/casioemuneo.desktop"
-  install -Dm644 "${startdir}/casio.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/casio.png"
+  install -Dm644 "${srcdir}/casioemuneo.desktop" "${pkgdir}/usr/share/applications/casioemuneo.desktop"
+  install -Dm644 "${srcdir}/casio.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/casio.png"
 }
