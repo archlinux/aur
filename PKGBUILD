@@ -1,7 +1,7 @@
 # Maintainer: Anatoly Rugalev <anatoly.rugalev@gmail.com>
 pkgname=hyprwallhaven-bin
 _pkgname=hyprwallhaven
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A CLI tool for managing Wallhaven wallpapers on Hyprland with fuzzel integration (Binary)"
 arch=('x86_64' 'aarch64')
@@ -15,9 +15,9 @@ source=("https://github.com/AnatolyRugalev/hyprwallhaven/archive/refs/tags/v${pk
 source_x86_64=("${_pkgname}-linux-amd64-v${pkgver}::https://github.com/AnatolyRugalev/hyprwallhaven/releases/download/v${pkgver}/hyprwallhaven-linux-amd64")
 source_aarch64=("${_pkgname}-linux-aarch64-v${pkgver}::https://github.com/AnatolyRugalev/hyprwallhaven/releases/download/v${pkgver}/hyprwallhaven-linux-aarch64")
 
-sha256sums=('b79b4fdda6d59ee6e40cedb93191def9aaabc6d422c817b8675f4a20416443cb')
-sha256sums_x86_64=('c827b2bc2423ed86a680ea67f79729b5cde1d41cb314d0d097cdd4d5845f3a80')
-sha256sums_aarch64=('0af785fd4404c8715212dd683baa64b6ff4b1ee346c1b2d3eb75985ef70d6ccd')
+sha256sums=('817fc34ce4973a30090a0810a132923eb65ad00eb54c1c83d13e583aa42aa8ef')
+sha256sums_x86_64=('e40c19db4f04144d14f66a7a645826abfdf211f53708216cc2c64dd617e32a06')
+sha256sums_aarch64=('c7611f57a00c2b61c0521ecd06b2efc6c2f3fb5d27a98c11aa2f0e1e440f993b')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
