@@ -2,8 +2,8 @@
 
 pkgname=releng-tool
 _pkgpyname=releng_tool
-pkgver=2.9.0
-_pkgtarget=v2.9
+pkgver=2.10.0
+_pkgtarget=v2.10
 pkgrel=1
 pkgdesc='A tool to create packages for select runtime environments
  (e.g. embedded targets)'
@@ -23,7 +23,6 @@ optdepends=(
   'autoconf: support for Autotools package management'
   'bash-completion: shell completion for bash'
   'breezy: support for Bazaar cloning'
-  'bzr: support for Bazaar cloning'
   'cmake: support for CMake package management'
   'cvs: support for CVS checkouts'
   'dropbear-scp: support for secure-copy fetching of sources'
@@ -59,8 +58,8 @@ source=(
   $_base_url/$_pkgtarget/$_pkgpyname-$pkgver.tar.gz.asc
 )
 sha512sums=(
-  ef0d339e1b69d5a6ad06e0b71200e91c240914ad1292d1f2f340d8a9eb01dc16a0caeb2f88b14f476f1616c31225391fe8920f0a0c738e3148cf6107ea4031c6
-  8c0fa7345b35584ca04458df1e74b9f6696f53604bff6c7d19bb449e6bd409b8faf06b91d83b7d364ce977b46a7bcfe3ed45ed5aa9e0ba8c01e122b7f4ce2fd1
+  e719502afa4ba4c32fa702a59f0a2f5fb0fc3e4432f9a0393e55184c5cdfebfd84385896f93052c0f52d5080ee60df3da7c99c92503b4353eea9dc45a5761f9c
+  159c40278feb022695e632d0d7e5c8f68d1340ffea50b2393eda12f2a2f45d4aa820cb0d12dcb6bffc3a2a51c57f648810730149d366aff995ddafde15b9062e
 )
 validpgpkeys=(D04A27BA9305DBBD354E653902D3C27B922CCC13)
 
