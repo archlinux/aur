@@ -1,0 +1,19 @@
+pkgbase = vsview-audio-convert
+	pkgdesc = A vsview plugin for converting audio sample types and resampling audio clips.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://pypi.org/project/vsview-audio-convert/
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-hatchling
+	makedepends = python-versioningit
+	depends = vsview
+	depends = vapoursynth-plugin-audioresample
+	source = https://files.pythonhosted.org/packages/74/a2/58b3deb5fddf2e21b25956d5bcd4130bc5a2aba62f060565a8e401bc816e/vsview_audio_convert-0.1.1.tar.gz
+	sha256sums = 93d5fb5c9ff3e39b32ae7b6808ee3b67420291f4e910c093b9734356dfd43b59
+
+pkgname = vsview-audio-convert
