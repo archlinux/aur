@@ -1,6 +1,6 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=kimaki
-pkgver=0.4.73
+pkgver=0.4.74
 pkgrel=1
 pkgdesc="Discord bot - Iron Man's Jarvis for coding agents with OpenCode integration"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('npm' 'jq')
 options=()
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
 noextract=("${pkgname}-${pkgver}.tgz")
-sha256sums=('e34802784329f6633ab166d113d720a8800d59ffe3c03842a5d4ec1ba9c25837')
+sha256sums=('d4e5a700876577ff093afe78d3733b726f1afd9c2773fb3470eecad0e682a3db')
 
 package() {
     export npm_config_build_from_source=true
@@ -34,4 +34,16 @@ package() {
     chmod 644 "$pkgjson"
 
     find "${pkgdir}" -type f \( -name '*.so' -o -name '*.so.*' -o -name '*.node' \) -exec strip --strip-unneeded {} + 2>/dev/null || true
+
+    find "${pkgdir}/usr/lib/node_modules/${pkgname}" -type d -name 'build' -prune -exec rm -rf {} + 2>/dev/null || true
+    find "${pkgdir}/usr/lib/node_modules/${pkgname}" -type f -name 'config.gypi' -delete 2>/dev/null || true
+    find "${pkgdir}/usr/lib/node_modules/${pkgname}" -type f -name 'Makefile' -delete 2>/dev/null || true
+    find "${pkgdir}/usr/lib/node_modules/${pkgname}" -type f -name '*.o' -delete 2>/dev/null || true
+
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    if [ -f "${pkgdir}/usr/lib/node_modules/${pkgname}/LICENSE" ]; then
+        install -Dm644 "${pkgdir}/usr/lib/node_modules/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    elif [ -f "${pkgdir}/usr/lib/node_modules/${pkgname}/LICENSE.md" ]; then
+        install -Dm644 "${pkgdir}/usr/lib/node_modules/${pkgname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    fi
 }
