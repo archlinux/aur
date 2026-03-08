@@ -3,7 +3,7 @@
 
 
 pkgname=librevna-gui
-pkgver=1.6.4
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="GUI application for the LibreVNA, a 100kHz to 6GHz 2 port USB based VNA"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('qt6-tools')
 optdepends=('librecal-udev: udev rules for LibreCAL control')
 
 source=("https://github.com/jankae/LibreVNA/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('73c4f32c1703bd9a431b2f67b79fb5eae2e6c17ebda8de429979333ca897518c')
+sha256sums=('63f924d9c9fb258a379de94f922a2a4a6d2fa6552ebab63fbb91cc29a5d6aee4')
 
 build() {
   local _src="$srcdir/LibreVNA-${pkgver}/Software/PC_Application/LibreVNA-GUI"
