@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('fcitx5')
 makedepends=('cmake' 'extra-cmake-modules' 'fcitx5')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2c81f36d81e2d1830c48f68836334450f7e9a1c85fe222fb63207a09e0e4fb51')
+sha256sums=('7e4a1aa2ab3587c86235e3bf5b01e19c2c514eeb256ba6520af370934089a3dc')
 
 build() {
     cmake -B build -S "laren-$pkgver" \
