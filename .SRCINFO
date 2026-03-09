@@ -1,0 +1,13 @@
+pkgbase = aweber
+	pkgdesc = CLI for the AWeber API
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/andrewrabert/aweber-rs
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = aweber-0.1.1.tar.gz::https://github.com/andrewrabert/aweber-rs/archive/v0.1.1.tar.gz
+	sha256sums = 53423ccefece30bd4d8f3aeaf0ac85a17054974e7d5d50fa89220f96d04c1432
+
+pkgname = aweber
