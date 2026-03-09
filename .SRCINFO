@@ -1,0 +1,15 @@
+pkgbase = s6-linux-init-man-pages-git
+	pkgdesc = man page versions of the documentation for the s6-linux-init suite
+	pkgver = v1.2.0.0.2.r0.fb5bab3
+	pkgrel = 1
+	url = https://git.sr.ht/~humm/s6-linux-init-man-pages
+	arch = any
+	license = ISC
+	makedepends = git
+	optdepends = s6-linux-init: package documented by these man pages
+	provides = s6-linux-init-man-pages
+	conflicts = s6-linux-init-man-pages
+	source = git+https://git.sr.ht/~humm/s6-linux-init-man-pages
+	sha256sums = SKIP
+
+pkgname = s6-linux-init-man-pages-git

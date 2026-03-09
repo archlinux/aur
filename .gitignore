@@ -1,0 +1,3 @@
+s6-linux-init-man-pages
+pkg/
+*.zst
