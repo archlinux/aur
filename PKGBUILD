@@ -3,7 +3,7 @@
 
 pkgname='perl-math-prime-util'
 pkgver='0.73.git'
-pkgrel='12'
+pkgrel='13'
 pkgdesc="Math::Prime::Util - utilities related to prime numbers, including fast sieves and factoring (ntheory)"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -17,7 +17,7 @@ optdepends=(
     'perl-math-bigint-gmp: for faster BigInt operations.'
 )
 makedepends=()
-_githash="2cbc682138d77968d9069627f99f07b8e7e133ca"
+_githash="eec116a562945391ce796a73b426c4326ed366f2"
 provides=(
     'perl-math-prime-util'
     'perl-math-prime-util-chacha'
@@ -36,7 +36,7 @@ provides=(
 )
 url='https://metacpan.org/release/Math-Prime-Util'
 source=("https://github.com/danaj/Math-Prime-Util/archive/$_githash.zip")
-b2sums=('9a927f8c8d45ed0bd600b349b73f6d9acba113750689d1f8b0ba7e0ffef939be4e958cb787e61562e3424e6206d008d283c4f65cf90c8a1b9aecc79a2545c283')
+b2sums=('1ce88e5608a501db69c8dcb2c86bcb9ceff95e96b0a0ea74fed8c721cfe19ec05f46a198045f90e16d9c8d8eef8cbbb721c6ad106ee6727d1caa09d2c1762b00')
 _distdir="Math-Prime-Util-$_githash"
 
 build() {
