@@ -1,6 +1,6 @@
 pkgbase = r-lmertest
 	pkgdesc = Tests in Linear Mixed Effects Models
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=lmerTest
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = r-lmertest
 	depends = r-numderiv
 	optdepends = r-pbkrtest
 	optdepends = r-tools
-	source = https://cran.r-project.org/src/contrib/lmerTest_3.2-0.tar.gz
-	sha256sums = c068c1cbd8debda6ca5f90875c59a5cfe1b58d04e9e04054b6b9321679972c83
+	source = https://cran.r-project.org/src/contrib/lmerTest_3.2-1.tar.gz
+	sha256sums = a0c5e6958940824fe09fc595383548e65ff08d3e363f4940e84a51084c025968
 
 pkgname = r-lmertest

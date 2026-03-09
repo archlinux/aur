@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=lmerTest
-_pkgver=3.2-0
+_pkgver=3.2-1
 pkgname=r-${_pkgname,,}
-pkgver=3.2.0
+pkgver=3.2.1
 pkgrel=1
 pkgdesc='Tests in Linear Mixed Effects Models'
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
   r-tools
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('c068c1cbd8debda6ca5f90875c59a5cfe1b58d04e9e04054b6b9321679972c83')
+sha256sums=('a0c5e6958940824fe09fc595383548e65ff08d3e363f4940e84a51084c025968')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
