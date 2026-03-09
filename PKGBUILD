@@ -1,7 +1,7 @@
 # Maintainer: Regaan <contact@rothackers.com>
 pkgname=basilisk-desktop-bin
-pkgver=1.0.6
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 pkgdesc="Open-source AI/LLM red teaming desktop app with 29 attack modules, genetic prompt evolution (SPE-NL), OWASP LLM Top 10 coverage, and 5 report formats. Built by Regaan Independent Security Researcher."
 arch=('x86_64')
 url="https://basilisk.rothackers.com"
@@ -10,7 +10,7 @@ depends=('zlib' 'hicolor-icon-theme' 'libglvnd')
 provides=('basilisk-desktop')
 conflicts=('basilisk-desktop')
 options=('!debug' '!strip')
-source=("basilisk-${pkgver}.AppImage::https://github.com/noobforanonymous/basilisk/releases/download/v${pkgver}/basilisk-${pkgver}.AppImage")
+source=("basilisk-${pkgver}.AppImage::https://github.com/regaan/basilisk/releases/download/v${pkgver}/basilisk-${pkgver}.AppImage")
 sha256sums=('SKIP')
 
 package() {
