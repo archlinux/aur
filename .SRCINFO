@@ -15,6 +15,6 @@ pkgbase = fcitx5-laren
 	optdepends = fcitx5-gtk: GTK input module
 	optdepends = fcitx5-qt: Qt input module
 	source = fcitx5-laren-0.1.0.tar.gz::https://github.com/mmaher88/laren/archive/v0.1.0.tar.gz
-	sha256sums = 7d094ad2e0310e3b78eb2e0efa798fce4de71e0406d1e0d5baace1634d726c19
+	sha256sums = c2dd15d904987bdfc8ef89d4caa77a36b9c5a73c046504b1802139bf862a23b3
 
 pkgname = fcitx5-laren
