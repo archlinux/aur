@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/openclaw/openclaw"
 license=('MIT')
 depends=('nodejs>=22' 'bubblewrap')
-makedepends=('git' 'bun' 'python')
+makedepends=('git' 'bun' 'pnpm' 'npm' 'python')
 optdepends=('bubblewrap: for experimental additional sandboxed execution')
 provides=('openclaw')
 conflicts=('openclaw')
@@ -48,10 +48,13 @@ prepare() {
         gzip -d < "$srcdir/openclaw-commit-382fe80" > $srcdir/openclaw-commit-382fe80.patch
         patch -R -p1 < "$srcdir/openclaw-commit-382fe80.patch"
     fi
-    # Sharp needs node-gyp resolvable in node_modules when building from source
-    bun add -d node-gyp
-    bun install
-    # Install UI dependencies
+    # bun has a bug with pnpm-lock.yaml workspace link migration (bun/issues/23026)
+    # which causes @agentclientprotocol/sdk and other scoped packages to fail with 405.
+    # Use pnpm (the upstream package manager) for dependency installation instead.
+    # Restore pnpm as packageManager field so pnpm install accepts the project.
+    sed -i 's/"packageManager": "bun@[^"]*"/"packageManager": "pnpm@10.30.3"/' package.json
+    pnpm install
+    # Install UI dependencies (scripts/ui.js detects bun and uses it if available)
     bun run ui:install
 }
 

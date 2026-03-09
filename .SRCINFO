@@ -8,6 +8,8 @@ pkgbase = openclaw-git
 	license = MIT
 	makedepends = git
 	makedepends = bun
+	makedepends = pnpm
+	makedepends = npm
 	makedepends = python
 	depends = nodejs>=22
 	depends = bubblewrap
