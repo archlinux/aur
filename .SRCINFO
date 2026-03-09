@@ -1,14 +1,14 @@
 pkgbase = python-camb
 	pkgdesc = Code for Anisotropies in the Microwave Background
-	pkgver = 1.6.4
-	pkgrel = 2
+	pkgver = 1.6.5
+	pkgrel = 1
 	url = https://github.com/cmbant/CAMB
 	arch = any
 	license = custom
 	makedepends = python-build
 	makedepends = python-installer
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/c/camb/camb-1.6.4.tar.gz
-	sha256sums = 5103be105e3fe8ce2f0a9bb99d4d9919fa0db80700580d8a7e7fc46184462cd1
+	source = https://files.pythonhosted.org/packages/source/c/camb/camb-1.6.5.tar.gz
+	sha256sums = 402c14e76faf541a383bdc5a0fcc56e5d8fdf1636fc9a8fa082ab0fa8a0c4a05
 
 pkgname = python-camb
