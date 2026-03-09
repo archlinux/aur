@@ -17,11 +17,11 @@ depends=(
 )
 makedepends=(
     base-devel
-    cmake
-    ninja
-    llvm
     clang
+    cmake
     lld
+    llvm
+    ninja
 )
 source=(
     'git+https://github.com/superg/redumper.git'
