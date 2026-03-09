@@ -1,0 +1,22 @@
+pkgbase = ironclaw-git
+	pkgdesc = OpenClaw-inspired Rust personal AI assistant focused on privacy and security
+	pkgver = 0.0.0.r0.gd73e35c
+	pkgrel = 1
+	url = https://github.com/nearai/ironclaw
+	arch = x86_64
+	arch = aarch64
+	arch = loong64
+	license = Apache-2.0 OR MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	depends = postgresql-libs
+	optdepends = postgresql: local PostgreSQL database
+	provides = ironclaw
+	conflicts = ironclaw
+	source = git+https://github.com/nearai/ironclaw.git
+	sha256sums = SKIP
+
+pkgname = ironclaw-git
