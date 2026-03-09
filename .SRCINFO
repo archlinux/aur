@@ -1,0 +1,17 @@
+pkgbase = snowemu
+	pkgdesc = A friendly and accurate 68k Macintosh emulator
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://snowemu.com/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = sdl2
+	options = !debug
+	options = !lto
+	source = https://github.com/twvd/snow/archive/refs/tags/v1.3.1.tar.gz
+	sha256sums = db733fc8948e30c8b8b4d78ae60991d84c7df63003d6bb8d3630379338dae3a5
+
+pkgname = snowemu
