@@ -1,7 +1,7 @@
 pkgbase = retypex-git
 	pkgdesc = Switch keyboard layout of the last typed word or selected text on Wayland/Hyprland
 	pkgver = r1.unknown
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Lyssten/retypex
 	arch = x86_64
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: Lyssten <131473921+Lyssten@users.noreply.github.com>
 pkgname=retypex-git
 pkgver=r1.unknown
-pkgrel=1
+pkgrel=2
 pkgdesc="Switch keyboard layout of the last typed word or selected text on Wayland/Hyprland"
 arch=('x86_64')
 url="https://github.com/Lyssten/retypex"
