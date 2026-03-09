@@ -1,4 +1,0 @@
-[river-git]
-source = "git"
-git = "https://codeberg.org/river/river.git"
-prefix = "v"
