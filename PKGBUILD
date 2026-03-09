@@ -1,6 +1,6 @@
 # Maintainer: Nikolay Bryskin <nbryskin@gmail.com>
 pkgname=gopass-secret-service
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="D-Bus Secret Service provider using GoPass as backend"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ provides=('secret-service')
 conflicts=('gnome-keyring')
 backup=('etc/gopass-secret-service/config.yaml')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nikicat/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('99fe5da77ee5a999473fcd60e10e9d48e9fb616a03ba94d4f4e01d21b33e0b51')
 
 build() {
     cd "${pkgname}-${pkgver}"
