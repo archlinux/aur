@@ -1,7 +1,7 @@
 # Maintainer: Tommi Helineva <tommi.helineva+aur@gmail.com>
 pkgname=t-lasku
 pkgver=1.28.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Finnish invoicing software"
 arch=('x86_64')
 url="http://helineva.net/t-lasku/"
@@ -9,17 +9,14 @@ license=('BSD')
 depends=('qt6-base')
 optdepends=('postgresql-libs')
 options=(!debug)
-sha256sums_x86_64=('2c362b27c80292e5503d6a9bc9f769d731865eee7693f3fd2dc1d7e5fab1828b')
+sha256sums_x86_64=('83a88a5e6336628dc00076d6687c3db6aa32587ba549c2401989cfbaccf13e6d')
 source_x86_64=("http://helineva.net/t-lasku/t-lasku-$pkgver-amd64.tar.gz")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  gcc -lm -ldl -lQt6Sql -lQt6Xml -lQt6Gui -lQt6Widgets \
-    -lQt6PrintSupport -lQt6Core -lpthread -lstdc++ \
-    -o t-lasku t-lasku-relocatable
-  gcc -lm -ldl -lQt6Sql -lQt6Xml -lQt6Gui -lQt6Widgets \
-    -lQt6PrintSupport -lQt6Core -lpthread -lstdc++ \
-    -o t-lasku-cli t-lasku-cli-relocatable
+  QT_FLAGS=$(pkg-config --cflags --libs Qt6Core Qt6Gui Qt6Widgets Qt6Sql Qt6Xml Qt6PrintSupport)
+  g++ t-lasku-relocatable -o t-lasku $QT_FLAGS -lm -ldl -lpthread
+  g++ t-lasku-cli-relocatable -o t-lasku-cli $QT_FLAGS -lm -ldl -lpthread
 }
 
 package() {
