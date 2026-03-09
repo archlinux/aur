@@ -1,6 +1,6 @@
 pkgbase = letmein
 	pkgdesc = Authenticating port knocker
-	pkgver = 12.1.0
+	pkgver = 12.1.1
 	pkgrel = 1
 	url = https://github.com/mbuesch/letmein
 	install = letmein.install
@@ -17,7 +17,7 @@ pkgbase = letmein
 	depends = nftables
 	backup = etc/letmein.conf
 	backup = etc/letmeind.conf
-	source = letmein-12.1.0.tar.gz::https://github.com/mbuesch/letmein/archive/letmein-12.1.0.tar.gz
-	sha256sums = 205966c8d539731a6101a6eabc8d73549cd45d39db13d79421667f0863d27ba8
+	source = letmein-12.1.1.tar.gz::https://github.com/mbuesch/letmein/archive/letmein-12.1.1.tar.gz
+	sha256sums = 82d1ccb78581f651451a900e00a5b6994d018d3f28b82485aa3be3dc192f00c5
 
 pkgname = letmein
