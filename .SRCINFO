@@ -1,7 +1,7 @@
 pkgbase = sillytavern
 	pkgdesc = Locally installed user interface for LLMs, image generation, and TTS voice models
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SillyTavern/SillyTavern
 	arch = i686
 	arch = pentium4
@@ -15,7 +15,6 @@ pkgbase = sillytavern
 	makedepends = jq
 	depends = nodejs
 	depends = perl
-	depends = bash
 	conflicts = sillytavern-git
 	backup = usr/share/sillytavern/config.yaml
 	source = sillytavern-1.16.0.tar.gz::https://github.com/SillyTavern/SillyTavern/archive/refs/tags/1.16.0.tar.gz

@@ -4,12 +4,12 @@
 pkgname=sillytavern
 _pkgname=SillyTavern
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Locally installed user interface for LLMs, image generation, and TTS voice models"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/SillyTavern/$_pkgname"
 license=('AGPL-3.0-only')
-depends=('nodejs' 'perl' 'bash')
+depends=('nodejs' 'perl')
 makedepends=('npm' 'jq')
 conflicts=('sillytavern-git')
 backup=('usr/share/sillytavern/config.yaml')
@@ -53,7 +53,7 @@ package() {
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<-EOF
-		#!/bin/sh
+		#!/usr/bin/sh
 		mkdir -p "\$HOME/.local/share/$pkgname"
 		cd /usr/share/$pkgname && exec node /usr/share/$pkgname/server.js --dataRoot "\$HOME/.local/share/$pkgname" "\$@"
 	EOF
