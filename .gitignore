@@ -1,0 +1,27 @@
+# makepkg build dirs
+pkg/
+src/
+
+# built packages
+*.pkg.tar.*
+
+# downloaded sources
+*.tar
+*.tar.gz
+*.zip
+*.zst
+
+# VCS checkouts
+*.git/
+*/.git/
+
+# makepkg metadata
+*.log
+
+# editor files
+*~
+*.swp
+*.swo
+
+# debug
+*.debug
