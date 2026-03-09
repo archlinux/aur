@@ -27,7 +27,7 @@ conflicts=('ssmt4-linux-git')
 
 _upstream_ver="${pkgver//_/-}"
 source=(
-  "ssmt4-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/xiaobai14491-afk/SSMT4-Linux/releases/download/v${_upstream_ver}/ssmt4-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
+  "ssmt4-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst::https://github.com/xiaobai14491-afk/SSMT4-Linux/releases/download/${_upstream_ver}/ssmt4-linux-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst"
 )
 sha256sums=('98f4845dc589d1f14f1d60567979de04dbaf48a6d9ef25283fadd69a37fee4e2')
 

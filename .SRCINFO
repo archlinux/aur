@@ -25,7 +25,7 @@ pkgbase = ssmt4-linux
 	optdepends = wayland: Wayland support
 	provides = ssmt4-linux
 	conflicts = ssmt4-linux-git
-	source = ssmt4-linux-0.0.8_beta-1-x86_64.pkg.tar.zst::https://github.com/xiaobai14491-afk/SSMT4-Linux/releases/download/v0.0.8-beta/ssmt4-linux-0.0.8_beta-1-x86_64.pkg.tar.zst
+	source = ssmt4-linux-0.0.8_beta-1-x86_64.pkg.tar.zst::https://github.com/xiaobai14491-afk/SSMT4-Linux/releases/download/0.0.8-beta/ssmt4-linux-0.0.8_beta-1-x86_64.pkg.tar.zst
 	sha256sums = 98f4845dc589d1f14f1d60567979de04dbaf48a6d9ef25283fadd69a37fee4e2
 
 pkgname = ssmt4-linux
