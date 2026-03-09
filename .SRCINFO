@@ -1,6 +1,6 @@
 pkgbase = python-polychord
 	pkgdesc = Next generation nested sampling (python library)
-	pkgver = 1.20.1
+	pkgver = 1.22.2
 	pkgrel = 1
 	url = https://github.com/PolyChord/PolyChordLite
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-polychord
 	depends = gcc-fortran
 	depends = openmpi
 	options = !emptydirs
-	source = https://github.com/PolyChord/PolyChordLite/archive/1.20.1.tar.gz
-	sha256sums = 6e1e0310ea3f00613ec1d9017ae0ec68d031c8f3edd7f403672b4dc8821d5772
+	source = https://github.com/PolyChord/PolyChordLite/archive/1.22.2.tar.gz
+	sha256sums = f7407a3ad24cba9f0f0fef41e1f3646d72d1c308355e20b21abc222c17cb3509
 
 pkgname = python-polychord

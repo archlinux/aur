@@ -1,6 +1,6 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-polychord
-pkgver=1.20.1
+pkgver=1.22.2
 pkgrel=1
 pkgdesc="Next generation nested sampling (python library)"
 arch=(any)
@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/PolyChord/PolyChordLite/archive/${pkgver}.tar.gz")
-sha256sums=('6e1e0310ea3f00613ec1d9017ae0ec68d031c8f3edd7f403672b4dc8821d5772')
+sha256sums=('f7407a3ad24cba9f0f0fef41e1f3646d72d1c308355e20b21abc222c17cb3509')
 
 build() {
     cd "$srcdir/PolyChordLite-$pkgver"
