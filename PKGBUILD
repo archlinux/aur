@@ -3,7 +3,7 @@
 _pkgauthor=jpillora
 _pkgname=chisel
 pkgname=${_pkgname}-bin
-pkgver=1.11.4
+pkgver=1.11.5
 pkgrel=1
 pkgdesc='A fast TCP/UDP tunnel over HTTP'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -25,9 +25,9 @@ source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.gz::${url}/releases/download/v
 
 sha256sums=('445b61eeea1445c155ad63e1c47b1abfa80a922f2f133577f19c12bf9582c0ff'
             '5a1f193ef28b529eee01cf734ef5701ee174d219f94e41d3d110bf5286a532a8')
-sha256sums_x86_64=('fecd47fcbd78514a1f8041897acbea8be3cdbb91afb98e32c3fc8bdc5ba53e27')
-sha256sums_i686=('a8bd65752ec9782302cfd93fade8daa32f0e07029df94a1e4683655a94026c61')
-sha256sums_aarch64=('51f1ef688740ee354ad38257253e876ef9863b31f266e5b63dc3626a658810f6')
+sha256sums_x86_64=('2506226c4710a3c8d3b332f83d0f3b412fe2a8436b710ea0dbec44b288ab309b')
+sha256sums_i686=('86553b96b8cfa74ad58143fb183578d10020a009fc0bf95c55c6203b8cb05df8')
+sha256sums_aarch64=('1a4f16aad733f022b9aa90903268d730bfb20b03f9484f7ab4863e442737fa9a')
 
 
 package() {
