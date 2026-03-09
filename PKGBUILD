@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/FastFlowLM/FastFlowLM"
 license=('MIT')
 depends=('xrt-plugin-amdxdna' 'fftw' 'curl' 'ffmpeg')
-makedepends=('cmake' 'git' 'ninja' 'xrt' 'boost')
+makedepends=('cmake' 'git' 'ninja' 'xrt' 'boost' 'rust')
 
 source=("${pkgname}::git+${url}.git"
     "git+https://github.com/mlc-ai/tokenizers-cpp.git#commit=34885cf"
