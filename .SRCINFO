@@ -1,18 +1,18 @@
 pkgbase = media-hoarder-bin
 	pkgdesc = The media frontend for data hoarders and movie lovers.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.4.7
+	pkgver = 1.4.8
 	pkgrel = 1
 	url = https://github.com/theMK2k/Media-Hoarder
 	arch = x86_64
 	license = MIT
 	makedepends = asar
 	depends = electron13
-	provides = media-hoarder=1.4.7
+	provides = media-hoarder=1.4.8
 	conflicts = media-hoarder
-	source = media-hoarder-1.4.7.rpm::https://github.com/theMK2k/Media-Hoarder/releases/download/v1.4.7/media-hoarder-1.4.7-linux-x64.rpm
-	source = LICENSE-1.4.7::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/v1.4.7/LICENSE.md
+	source = media-hoarder-1.4.8.rpm::https://github.com/theMK2k/Media-Hoarder/releases/download/v1.4.8/media-hoarder-1.4.8-linux-x64.rpm
+	source = LICENSE-1.4.8::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/v1.4.8/LICENSE.md
 	source = media-hoarder.sh
-	sha256sums = 8303c9f133711c680b13f6bb7d63ab85e7fafc76ef058433b79d87a24a576024
+	sha256sums = 04f27dff984e1c6dafb1149bf44afb9613f23451ac45bf03b6b35eaf60ff5495
 	sha256sums = 3c67fce0428a3d133bb589cd1db329789ec235049af1412511f89420c99ae9a6
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
