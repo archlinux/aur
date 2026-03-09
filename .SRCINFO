@@ -1,7 +1,7 @@
 pkgbase = python-torii-boards
 	pkgdesc = Supplementary FPGA Board Files for Torii
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shrine-maiden-heavy-industries/torii-boards
 	arch = any
 	license = BSD-2-Clause
@@ -14,6 +14,7 @@ pkgbase = python-torii-boards
 	depends = python>=3.11
 	depends = python<4.0
 	depends = python-torii>=0.8.1
+	depends = python-torii<1.0
 	optdepends = dfu-util: Board Programming
 	optdepends = openfpgaloader: Board Programming
 	optdepends = openocd: Board Programming

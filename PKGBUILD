@@ -4,7 +4,7 @@
 _pkgname="torii-boards"
 pkgname="python-${_pkgname}"
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Supplementary FPGA Board Files for Torii"
 arch=("any")
 url="https://github.com/shrine-maiden-heavy-industries/torii-boards"
@@ -13,7 +13,7 @@ provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git" "${pkgname}-nightly")
 depends=(
 	"python>=3.11" "python<4.0"
-	"python-torii>=${pkgver}"
+	"python-torii>=${pkgver}" "python-torii<1.0"
 )
 makedepends=(
 	"python-build"
