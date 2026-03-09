@@ -31,6 +31,7 @@ _github_backup_repo='https://github.com/xiaobai14491-afk/SSMT4-Linux-bak.git'
 _gitee_repo='https://gitee.com/xiaobai01111/ssmt4-linux.git'
 _source_repo="${SSMT4_AUR_SOURCE_REPO:-}"
 _source_tag="${pkgver//_/-}"
+_source_name="${pkgname}"
 
 _probe_repo_tag() {
   local repo_url="$1"
@@ -79,23 +80,23 @@ if [[ -z "${_source_repo}" ]]; then
 fi
 
 source=(
-  "git+${_source_repo}#tag=${_source_tag}"
+  "${_source_name}::git+${_source_repo}#tag=${_source_tag}"
 )
-sha256sums=('SKIP')
+sha256sums=('d2dff8e585635de06f71b63e53a84ab92dcfa5ad53082365ceaacdb7eab47407')
 
 prepare() {
-  cd "${srcdir}/SSMT4-Linux"
+  cd "${srcdir}/${_source_name}"
   pnpm install --frozen-lockfile
 }
 
 build() {
-  cd "${srcdir}/SSMT4-Linux"
+  cd "${srcdir}/${_source_name}"
   pnpm run build
   cargo build --manifest-path src-tauri/Cargo.toml --release
 }
 
 package() {
-  cd "${srcdir}/SSMT4-Linux"
+  cd "${srcdir}/${_source_name}"
 
   install -Dm755 "src-tauri/target/release/SSMT4-linux" "${pkgdir}/usr/bin/SSMT4-linux"
 
