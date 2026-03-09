@@ -1,7 +1,7 @@
 pkgbase = python-ultranest
 	pkgdesc = Fit and compare complex models reliably and rapidly with advanced sampling techniques.
-	pkgver = 4.4.0
-	pkgrel = 2
+	pkgver = 4.5.0
+	pkgrel = 1
 	url = https://github.com/JohannesBuchner/ultranest
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = python-ultranest
 	depends = cython
 	provides = lsbi
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/u/ultranest/ultranest-4.4.0.tar.gz
-	sha256sums = dfebdc4b2bc0138238f65e8f957b70fe296cb094c895172f4a368e792a59b501
+	source = https://files.pythonhosted.org/packages/source/u/ultranest/ultranest-4.5.0.tar.gz
+	sha256sums = 09c3a8cdc350ee8034ec709e8f65e20da3145a94425695973ae75f8ce4e5ef72
 
 pkgname = python-ultranest

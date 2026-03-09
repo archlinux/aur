@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-ultranest
 _name=${pkgname#python-}
-pkgver=4.4.0
-pkgrel=2
+pkgver=4.5.0
+pkgrel=1
 pkgdesc="Fit and compare complex models reliably and rapidly with advanced sampling techniques."
 arch=(any)
 url="https://github.com/JohannesBuchner/ultranest"
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('dfebdc4b2bc0138238f65e8f957b70fe296cb094c895172f4a368e792a59b501')
+sha256sums=('09c3a8cdc350ee8034ec709e8f65e20da3145a94425695973ae75f8ce4e5ef72')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
