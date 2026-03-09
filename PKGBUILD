@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-flake8-pyproject
 _name=Flake8-pyproject
-pkgver=1.2.3
-pkgrel=3
+pkgver=1.2.4
+pkgrel=1
 pkgdesc="Flake8 plug-in loading the configuration from pyproject.toml"
 arch=(any)
 url="https://github.com/john-hen/${_name}"
@@ -18,7 +18,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=(8f065721c53c1fe22d423d82db99eef6559b463a8701aa03b03668d43abfc851)
+sha256sums=('9075bdd9712b03a9dad78652425081bbee63c9ad759bf9efb3a0eb1cd1b180c3')
 
 build() {
     cd "$srcdir/$_name-$pkgver"

@@ -1,7 +1,7 @@
 pkgbase = python-flake8-pyproject
 	pkgdesc = Flake8 plug-in loading the configuration from pyproject.toml
-	pkgver = 1.2.3
-	pkgrel = 3
+	pkgver = 1.2.4
+	pkgrel = 1
 	url = https://github.com/john-hen/Flake8-pyproject
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = python-flake8-pyproject
 	depends = python-tomli
 	depends = python-wheel
 	options = !emptydirs
-	source = https://github.com/john-hen/Flake8-pyproject/archive/1.2.3.tar.gz
-	sha256sums = 8f065721c53c1fe22d423d82db99eef6559b463a8701aa03b03668d43abfc851
+	source = https://github.com/john-hen/Flake8-pyproject/archive/1.2.4.tar.gz
+	sha256sums = 9075bdd9712b03a9dad78652425081bbee63c9ad759bf9efb3a0eb1cd1b180c3
 
 pkgname = python-flake8-pyproject
