@@ -1,7 +1,7 @@
 # Maintainer: OpenLyst <https://openlyst.ink>
 # Version and download URL from Openlyst API: https://openlyst.ink/docs/api
 pkgname=klit-bin
-pkgver=8.0.1
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="E926 API client"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=()
 provides=('klit')
 conflicts=('klit')
 options=('!strip')
-source=("klit-bin-${pkgver}.zip::https://gitlab.com/api/v4/projects/79691113/packages/generic/github-mirror/build-21/klit-8.0.1-2026-02-27-linux-x64.zip")
+source=("klit-bin-${pkgver}.zip::https://gitlab.com/api/v4/projects/79691113/packages/generic/github-mirror/build-68/klit-9.0.0-2026-03-09-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
