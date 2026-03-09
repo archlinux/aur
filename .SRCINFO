@@ -1,7 +1,7 @@
 pkgbase = modiva-launcher-bin
-	pkgdesc = The official Modiva launcher
+	pkgdesc = The official Modiva Minecraft launcher
 	pkgver = 1.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://modiva-launcher.xyz
 	arch = x86_64
 	license = proprietary

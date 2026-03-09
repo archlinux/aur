@@ -1,8 +1,8 @@
 # Maintainer: Kotsasmin <kotsasmin@gmail.com>
 pkgname=modiva-launcher-bin
 pkgver=1.4.7
-pkgrel=1
-pkgdesc="The official Modiva launcher"
+pkgrel=2
+pkgdesc="The official Modiva Minecraft launcher"
 arch=('x86_64')
 url="https://modiva-launcher.xyz"
 license=('proprietary')
