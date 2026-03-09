@@ -1,7 +1,27 @@
-LibreVNA-GUI-*.zip
-51-vna.rules
+# makepkg build dirs
+pkg/
+src/
 
-pkg
-src
+# built packages
+*.pkg.tar.*
 
-librevna-gui-*.pkg.tar.zst
+# downloaded sources
+*.tar
+*.tar.gz
+*.zip
+*.zst
+
+# VCS checkouts
+*.git/
+*/.git/
+
+# makepkg metadata
+*.log
+
+# editor files
+*~
+*.swp
+*.swo
+
+# debug
+*.debug
