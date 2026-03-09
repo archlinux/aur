@@ -4,7 +4,7 @@
 # Requires Plasma 6.6+ (KF6 6.6, Qt 6.6, LayerShellQt 6.6, KWin 6.6).
 
 pkgname=plasmazones
-pkgver=1.15.11
+pkgver=1.15.12
 pkgrel=1
 pkgdesc='FancyZones-style window tiling for KDE Plasma'
 arch=('x86_64')
@@ -37,7 +37,7 @@ optdepends=(
 )
 conflicts=('plasmazones-bin' 'plasmazones-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3476c0ab84f7ea33c38d4a344b924565f22f6fa5de77b07252cfef8367ab937d')
+sha256sums=('cf0a96fb61d6bed5dc1ef260508cf1e6c95dec569f0f3a49c65eca61d366fb88')
 install=plasmazones.install
 
 build() {
