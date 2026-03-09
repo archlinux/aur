@@ -1,0 +1,24 @@
+post_install() {
+    echo ""
+    echo "==> Laren (Arabizi to Arabic) has been installed."
+    echo ""
+    echo "    To use it:"
+    echo "    1. Install fcitx5-im group for full integration:"
+    echo "       sudo pacman -S fcitx5-configtool fcitx5-gtk fcitx5-qt"
+    echo ""
+    echo "    2. KDE Wayland: System Settings > Virtual Keyboard > Fcitx 5"
+    echo "       X11: Add these to your environment:"
+    echo "         export GTK_IM_MODULE=fcitx"
+    echo "         export QT_IM_MODULE=fcitx"
+    echo "         export XMODIFIERS=@im=fcitx"
+    echo ""
+    echo "    3. Add Laren as input method:"
+    echo "       fcitx5-configtool > Add Input Method > search 'Laren'"
+    echo ""
+    echo "    4. Log out and back in, then toggle with Ctrl+Space."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

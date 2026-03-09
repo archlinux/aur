@@ -7,9 +7,13 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/mmaher88/laren"
 license=('GPL-3.0-or-later')
 depends=('fcitx5')
+install=fcitx5-laren.install
+optdepends=('fcitx5-configtool: GUI to add Laren as input method'
+            'fcitx5-gtk: GTK input module'
+            'fcitx5-qt: Qt input module')
 makedepends=('cmake' 'extra-cmake-modules' 'fcitx5')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7e4a1aa2ab3587c86235e3bf5b01e19c2c514eeb256ba6520af370934089a3dc')
+sha256sums=('562d8d4506cd56befa782e31264003fd0e0f3d1b89acdf08945d7908e30091eb')
 
 build() {
     cmake -B build -S "laren-$pkgver" \
