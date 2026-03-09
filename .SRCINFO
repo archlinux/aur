@@ -1,18 +1,19 @@
 pkgbase = python-margarine
 	pkgdesc = Posterior Sampling and Marginal Bayesian Statistics
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://github.com/htjb/margarine
 	arch = any
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
-	depends = python-numpy
-	depends = python-matplotlib
-	depends = python-scipy
-	depends = python-pandas
+	depends = python-tensorflow-probability
+	depends = python-flax
+	depends = python-jax
+	depends = python-optax
+	depends = python-tqdm
 	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/source/m/margarine/margarine-1.0.0.tar.gz
-	sha256sums = 4680a79b0b66a0fdb37e21e217e3bc7cbbf8e4a1d6cf19defabdec12ba976812
+	source = https://files.pythonhosted.org/packages/source/m/margarine/margarine-2.0.1.tar.gz
+	sha256sums = 91b5afe78826468a988bb90f110984dfd88db4fe5ff9d64d98d384ffc7d52559
 
 pkgname = python-margarine
