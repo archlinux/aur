@@ -3,7 +3,7 @@
 # Maintainer: Soramane <soramane32 at gmail dot com>
 
 pkgname='caelestia-cli'
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='The main cli for the Caelestia dotfiles'
 arch=('any')
@@ -17,7 +17,7 @@ provides=('caelestia-cli')
 conflicts=('caelestia-cli-git')
 _archive="caelestia-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.gz")
-sha256sums=('e768893bc70caff951643691c37974d5736d5143ab47ee2f0333a55f8c1c4d35')
+sha256sums=('2fc0e0601983c7e3a1c849d0cd765231f29ea4d298792a2844a4b46122482e37')
 
 build() {
     cd "${srcdir}/${_archive}"

@@ -1,6 +1,6 @@
 pkgbase = caelestia-cli
 	pkgdesc = The main cli for the Caelestia dotfiles
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/caelestia-dots/cli
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = caelestia-cli
 	optdepends = caelestia-shell: shell control and screenshot function
 	provides = caelestia-cli
 	conflicts = caelestia-cli-git
-	source = https://github.com/caelestia-dots/cli/releases/download/v1.0.5/caelestia-1.0.5.tar.gz
-	sha256sums = e768893bc70caff951643691c37974d5736d5143ab47ee2f0333a55f8c1c4d35
+	source = https://github.com/caelestia-dots/cli/releases/download/v1.0.6/caelestia-1.0.6.tar.gz
+	sha256sums = 2fc0e0601983c7e3a1c849d0cd765231f29ea4d298792a2844a4b46122482e37
 
 pkgname = caelestia-cli
