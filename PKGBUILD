@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-todoist-python
 _name=${pkgname#python-}
-pkgver=8.1.3
-pkgrel=3
+pkgver=8.1.4
+pkgrel=1
 pkgdesc="The official Todoist Python API library"
 arch=(any)
 url="https://github.com/Doist/$_name"
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('00544a0395510fa8f28a0b9960fed6390396a87ab51a35336ee7b3d1fd74ef45')
+sha256sums=('46483a7922e241ef0365a56ed8312794a2def112e44702a6a70f936988fe969d')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
