@@ -2,7 +2,7 @@ pkgbase = transformers_ocr-git
 	pkgdesc = An OCR tool for manga using Transformers (maintained fork)
 	pkgver = r111.9d12573
 	pkgrel = 1
-	url = https://gitlab.com/fkzys/transformers-ocr
+	url = https://gitlab.com/fkzys/transformers_ocr
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -19,7 +19,7 @@ pkgbase = transformers_ocr-git
 	optdepends = xfce4-screenshooter: taking screenshots on XFCE
 	provides = transformers_ocr
 	conflicts = transformers_ocr
-	source = transformers_ocr-git::git+https://gitlab.com/fkzys/transformers-ocr.git
+	source = transformers_ocr-git::git+https://gitlab.com/fkzys/transformers_ocr.git
 	sha256sums = SKIP
 
 pkgname = transformers_ocr-git
