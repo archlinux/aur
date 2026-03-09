@@ -1,6 +1,6 @@
 # Maintainer: buding <1259085392z@gmail.com>
 pkgname=pixelterm-c
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="A high-performance terminal image/video/book browser written in C, based on the Chafa library"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('pkgconf')
 provides=('pixelterm-c')
 options=('!debug' '!strip')
 source=("pixelterm-c-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5b8c2cf3d44252d78a2eff100bc7f8651b42a53d5d4d82443c49ceb165c5f56c')
+sha256sums=('4c84784a2107715efceec537e238b603270b6a37e3c12301b989e67f00b5e936')
 
 build() {
   cd "${srcdir}/PixelTerm-C-${pkgver}"
