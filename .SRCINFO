@@ -1,6 +1,6 @@
 pkgbase = opencloud
 	pkgdesc = secure and private way to store, access, and share your files
-	pkgver = 5.1.0
+	pkgver = 5.2.0
 	pkgrel = 1
 	url = https://github.com/opencloud-eu/opencloud
 	install = opencloud.install
@@ -12,13 +12,13 @@ pkgbase = opencloud
 	makedepends = pnpm
 	optdepends = opencloud-web: if wanting to use a customized web interface
 	backup = etc/opencloud/opencloud.env
-	source = git+https://github.com/opencloud-eu/opencloud.git#tag=v5.1.0
+	source = git+https://github.com/opencloud-eu/opencloud.git#tag=v5.2.0
 	source = go.mk.patch
 	source = opencloud.env
 	source = opencloud.service
 	source = opencloud.sysusers
 	source = opencloud.tmpfiles
-	sha512sums = 35d764173f754df33e196ca8285fb597cb19b10936da56e0c09ec513503eebf1bad73d2650dc2d877a3aab224d0c05254b727c66176c56f593a1fe064723c2a1
+	sha512sums = e81b4407f19f35e64648611af7cacd0625aeba8c41f706f98ca92bdcfbfd88df76f5cacbbfdfe579480386b6c801c3ddcd604cc4902e28b35ba3cdb27daa9276
 	sha512sums = da70b77bf25c87d75f1a662d00a339f9b8756e6f8e33e17dcc0663d2dcd7d4981720a93fe1ba6c788d8a5e7f484f8e292e59273793106d496955c5a670862318
 	sha512sums = a8d58020e085b0027bb27226d05d36eb0c1f52c3813f67a3a69cadbbf51bcff8d1a5341057f7a88d0961e3430b1cc9416f4d25e087d1512f3319fd194804c15e
 	sha512sums = af6b2e80ebaf130fb3e8f6038580bea4db811499d06f2962604941f75d1f8ef0dd3692bf21e54c0611864c49217c8fa457cb6773775a1aa47c7254330f83ba7f
