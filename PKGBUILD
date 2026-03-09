@@ -3,7 +3,7 @@
 pkgname='sidef'
 _pkgname='Sidef'
 pkgver='26.01'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A modern object-oriented programming language."
 arch=('any')
 url="https://github.com/trizen/sidef"
@@ -14,9 +14,9 @@ makedepends=()
 depends=(
     'perl>=5.18.0' 'perl-data-dump' 'perl-math-gmpq>=0.45' 'perl-math-gmpz>=0.39' 'perl-math-mpfr>=3.36' 'perl-math-mpc'
     'perl-math-prime-util-gmp>=0.52' 'perl-term-readline-gnu' 'perl-algorithm-combinatorics' 'perl-algorithm-loops'
+    'perl-math-prime-util>=0.73'
 )
 optdepends=(
-    'perl-math-prime-util: for better performance in several functions'
     'perl-forks: for better threading support'
 )
 source=("https://cpan.metacpan.org/authors/id/T/TR/TRIZEN/${_pkgname}-${pkgver}.tar.gz")
