@@ -2,7 +2,7 @@
 #_gitbranch="master"
 # Maintainer: tuxnix <tuxnix@gmx.com>
 
-pkgver="1.9"
+pkgver="2.0"
 pkgrel="0"
 _name="tvb-recorder"
 pkgname="$_name"

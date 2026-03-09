@@ -1,6 +1,6 @@
 pkgbase = tvb-recorder
 	pkgdesc = TV-Browser plugins for switching and recording
-	pkgver = 1.9
+	pkgver = 2.0
 	pkgrel = 0
 	url = https://codeberg.org/tuxnix/tvb-recorder
 	install = tvb-recorder.install
