@@ -1,11 +1,10 @@
 pkgbase = ironclaw-git
 	pkgdesc = OpenClaw-inspired Rust personal AI assistant focused on privacy and security
-	pkgver = 0.0.0.r0.gd73e35c
+	pkgver = 0.16.1.r50.gd73e35c
 	pkgrel = 1
 	url = https://github.com/nearai/ironclaw
 	arch = x86_64
 	arch = aarch64
-	arch = loong64
 	license = Apache-2.0 OR MIT
 	makedepends = cargo
 	makedepends = git
