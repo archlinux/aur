@@ -14,7 +14,7 @@ source=("https://github.com/RockinChaos/Shiru/releases/download/v${pkgver}/linux
         "shiru.desktop")
 sha256sums=("87183bcb8c43d9ade6ce31790aa8ffd381de4fd46baaa47f925c7c3f50091c15"
             "2bbe68a752d1a96e4a4c97201cf2d15aef90284493f17619f528ab50f5729a60"
-            "a2e60380f01e375762a7002ffd04b1b710d404ea240e413abe9747c4dd075c9f")
+            "bcbf6d336a50196ed73a17e5acd36f66a5e813d7004a1d947f542a6919f3aebd")
 
 package() {
   install -Dm755 "$srcdir/linux-Shiru-v${pkgver}.AppImage" "$pkgdir/usr/bin/shiru"
