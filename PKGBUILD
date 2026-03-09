@@ -3,7 +3,7 @@
 
 pkgname=kapowarr
 _pkgname=Kapowarr
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Software to build and manage a comic book library, fitting in the *arr suite of software.'
 arch=('x86_64')
@@ -28,7 +28,7 @@ source=(
   kapowarr.tmpfiles
   kapowarr.sysusers
 )
-sha256sums=('1e5ca132143c48c25316d7386e62207245bf153e5bdba7520f9fce1de6a1dcb9'
+sha256sums=('65a1199c80bd8d0c56369caa8d01ae15fc305d8030944a616139bccef230436f'
             '18213fb9bae7cd9004edfc99ec50832bc507b4a2614139afa81e0954a823f709'
             'ab76fd7e9d2ea854d596615b8a6c4ab984df107d8a96bb6a15cc9f711a0d5dcb'
             '72e466d84c18ed326ede2a5fddae36bbd9c44a1bac6199c73b98639d0796f7dd')
