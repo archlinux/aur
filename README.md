@@ -1,3 +1,20 @@
+<!-- 
+(Best practice: if you have a logo, place it here centered)
+<p align="center">
+  <img src="images/musoq-logo.png" alt="Musoq Logo" width="200"/>
+</p> 
+-->
+
+```text
+  ███╗   ███╗██╗   ██╗███████╗ ██████╗  ██████╗ 
+  ████╗ ████║██║   ██║██╔════╝██╔═══██╗██╔═══██╗
+  ██╔████╔██║██║   ██║███████╗██║   ██║██║   ██║
+  ██║╚██╔╝██║██║   ██║╚════██║██║   ██║██║▄▄ ██║
+  ██║ ╚═╝ ██║╚██████╔╝███████║╚██████╔╝╚██████╔╝
+  ╚═╝     ╚═╝ ╚═════╝ ╚══════╝ ╚═════╝  ╚══▀▀═╝ 
+        SQL Superpowers for Developers
+```
+
 # Musoq: SQL Superpowers for Developers
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -5,718 +22,301 @@
 [![Nuget](https://img.shields.io/badge/Nuget%3F-yes-green.svg)](https://www.nuget.org/packages?q=musoq)
 ![Tests](https://raw.githubusercontent.com/puchaczov/musoq/badges/docs/assets/tests-badge.svg)
 
-**Stop writing throwaway scripts.** Use SQL instead.
 
-Every developer has been there: you need to process some files, check git history, or transform data. Do you write a bash one-liner that breaks on edge cases? A Python script you'll delete in 5 minutes? 
+**Ad-hoc SQL queries against files, logs, processes, and more — with zero data ingestion or intermediate storage.**
 
-With Musoq, just write a query.
+<p align="center">
+  <img src="images/musoq-demo.gif" alt="Musoq CLI animated demo showing querying OS files, CSV data, and Git history" width="800"/>
+</p>
 
-## 🚀 Quick Start
+Musoq is built for **ad-hoc querying and investigation** — the moments when you want to ask a quick question about data that isn't already in a database: a log file, a git history, a binary dump, a CSV, a running process. The kind of question where writing a script feels like too much overhead, but `grep` alone isn't enough.
 
-```bash
-# Install CLI
-# Follow instructions in [CLI repository](https://github.com/Puchaczov/Musoq.CLI)
+Instead of a script, you write a query.
 
-# Generate some GUIDs
-Musoq run "select NewId() from system.range(1, 5)"
+*Musoq extends standard SQL with declarative inline **text parsing**, **binary decoding**, and cross-source data joins — defined directly inside the query.*
 
-# Find your largest files  
-Musoq run "select Name, Length from os.files('/home/user', true) where Length > 1000000 order by Length desc take 10"
+📚 **[Read the Full Documentation](https://github.com/Puchaczov/Musoq/wiki)** *(Or run `Musoq --help` in your terminal)*
 
-# Check git commits this month
-Musoq run "select Count(1) from git.repository('.') r cross apply r.Commits c where c.CommittedWhen > '2024-11-01'"
-```
+## Table of Contents
 
-## Why SQL for Scripting?
+- [The Motivation: Bash vs. SQL](#-the-motivation-bash-vs-sql)
+- [Quick Start & Installation](#-quick-start--installation)
+- [Beyond Standard SQL](#-beyond-standard-sql)
+  - [Inline Binary Decoding](#1-inline-binary-decoding)
+  - [Declarative Text Log Parsing](#2-declarative-text-log-parsing)
+  - [Strong Typing for Dynamic Data](#3-strong-typing-for-dynamic-data-table--couple)
+- [The Developer Toolbox](#-the-developer-toolbox-beyond-ad-hoc-queries)
+- [How Musoq Fits in the Ecosystem](#-how-does-musoq-fit-into-the-sql-tooling-ecosystem)
+- [A Universe of Data Sources](#-available-data-sources)
+- [Ecosystem Architecture](#-the-musoq-ecosystem)
 
-**Instead of this bash nightmare:**
+---
+
+## 💡 The Motivation: Bash vs. SQL
+
+Instead of maintaining a fragile chain of Bash commands:
 ```bash
 find . -name "*.js" -exec wc -l {} \; | awk '{sum+=$1} END {print sum}'
 ```
 
-**Write this:**
+Write declarative, readable SQL:
 ```sql
-select Sum(Length(f.GetFileContent())) as TotalLines 
-from os.files('.', true) f 
+select Sum(Length(f.GetFileContent())) as TotalLines
+from os.files('.', true) f
 where f.Extension = '.js'
 ```
 
-**Instead of throwaway Python:**
-```python
-import os, subprocess, re
-# 15 lines of file handling, regex, and loops
+---
+
+## 🚀 Quick Start & Installation
+
+To actually execute Musoq queries locally, you need the CLI application. Since Musoq by itself is just the engine, the CLI and Server handles compiling your query and returning formatted results (in tables, JSON, CSV, Yaml, etc.).
+
+### 1. Install CLI
+*(no additional dependencies required)*
+
+**Powershell (Windows)**
+```powershell
+irm https://raw.githubusercontent.com/Puchaczov/Musoq.CLI/refs/heads/main/scripts/powershell/install.ps1 | iex
 ```
 
-**Write this:**
-```sql
-select f.Name, f.Directory 
-from os.files('/project', true) f 
-where f.GetFileContent() rlike 'TODO.*urgent'
+**Shell using curl (Linux / macOS)**
+```shell
+curl -fsSL https://raw.githubusercontent.com/Puchaczov/Musoq.CLI/refs/heads/main/scripts/bash/install.sh | sudo bash
 ```
 
-## Perfect For Daily Developer Tasks
+*(Prefer a manual install? Download the standalone binary from our [Releases](https://github.com/Puchaczov/Musoq.CLI/releases) page.)*
 
-- **Huge standard library**: Nearly 1000 standard library methods
-- **Quick utilities**: Generate data, check file sizes, count lines
-- **File system queries**: Find files, compare directories, analyze disk usage  
-- **Git insights**: Who changed what, commit patterns, file history
-- **Code analysis**: Search patterns, extract metrics, find dependencies
-- **Data transformation**: Convert between formats, clean up data
-- **System administration**: Process queries, log analysis, monitoring
+### 2. Install Data Sources
+Musoq is highly modular. You install data sources via the built-in registry to unlock new tables and schemas.
 
-All with the declarative power of SQL instead of imperative loops and conditionals.
-
-## What Columns And Methods Are Available
-Just run `desc` on schema or computed table
-
-```sql
--- what tables does this schema has?
-desc schema 
-
--- what constructors are available from this particular table?
-desc schema.table
-
--- what columns does this table has?
-desc schema.table(param1, param2, ..., paramN)
+```bash
+Musoq datasource install os --registry
+Musoq datasource install git --registry
+Musoq datasource install separatedvalues --registry
 ```
 
-```sql
--- what functions are available within that data source?
-desc functions schema
-```
+### 3. Run your first queries
+Open a terminal, start a background server, and fire away!
+```bash
+# 1. Start the local agent server
+Musoq serve
 
-## What You Can Query
+# 2. Who is consuming all the space?
+Musoq run "select Name, Length from os.files('/home', true) order by Length desc take 10"
 
-### Git Repository Queries (`git`)
+# 3. Look at recent commits
+Musoq run "select c.Sha, c.Message, c.Author from git.repository('.') r cross apply r.Commits c"
 
-#### List Recent Commits
-Query commit history with author information.
-
-```sql
-select 
-    c.Sha,
-    c.MessageShort,
-    c.Author,
-    c.CommittedWhen
-from git.repository('./repo') r 
-cross apply r.Commits c
-```
-
-#### Query Commits Directly
-Faster access to commits without full repository context.
-
-```sql
-select
-    c.Sha,
-    c.Author,
-    c.Message
-from git.commits('./repo') c
-where c.Author = 'john.doe'
-```
-
-#### List All Branches
-Query all branches with their tip commit.
-
-```sql
-select
-    b.FriendlyName,
-    b.IsRemote,
-    b.Tip.Sha
-from git.branches('./repo') b
-```
-
-#### Compare Branches
-Find differences between two branches.
-
-```sql
-select 
-    Difference.Path,
-    Difference.ChangeKind
-from git.repository('./repo') repository 
-cross apply repository.DifferenceBetween(
-    repository.BranchFrom('main'), 
-    repository.BranchFrom('feature/my-feature')
-) as Difference
-```
-
-#### List Tags with Annotations
-Query all tags in a repository with their metadata.
-
-```sql
-select
-    t.FriendlyName,
-    t.Message,
-    t.IsAnnotated,
-    t.Commit.Sha
-from git.tags('./repo') t
-```
-
-#### Track File History
-See all changes to a specific file over time.
-
-```sql
-select
-    h.CommitSha,
-    h.Author,
-    h.FilePath,
-    h.ChangeType
-from git.filehistory('./repo', 'README.md') h
-```
-
-#### Analyze Branch-Specific Commits
-Find commits that are specific to a feature branch.
-
-```sql
-with BranchInfo as (
-    select
-        c.Sha as CommitSha,
-        c.Message as CommitMessage,
-        c.Author as CommitAuthor
-    from git.repository('./repo') r 
-    cross apply r.SearchForBranches('feature/my-feature') b
-    cross apply b.GetBranchSpecificCommits(r.Self, b.Self, true) c
-)
-select CommitSha, CommitMessage, CommitAuthor from BranchInfo
-```
-
-#### Query Commit Parents
-Analyze commit relationships for merge analysis.
-
-```sql
-select 
-    c.Sha, 
-    p.Sha as ParentSha
-from git.commits('./repo') c 
-cross apply c.Parents as p
+# 4. Stop the server when done
+Musoq quit
 ```
 
 ---
 
-### Photo Analysis
+## ✨ Beyond Standard SQL
 
-#### Generate hashtags using LLM
-Generate descriptions of photos by local offline model, then pass the description to more powerfull model to generate hash tags from the descriptions. Avoiding leaking the photos to external model provider.
+Musoq doesn't just read tables; it **understands raw data formats inline**. You don't need a custom plugin to query weird file formats if you can describe them.
 
-```sql
-with PhotosDescription as (
-    select 
-        f.Name as Name, 
-        l.AskImage('this is the photo of my little child I want you to describe. Be conscise, use only single statement.', f.Base64File()) as Description 
-    from os.files('/some/folder/with/photos', false) f 
-    cross apply ollama.llm('llama3.2-vision:11b-instruct-q4_K_M') l
-)
-select
-    p.Name,
-    p.Description,
-    l.LlmPerform('this is the description of the photo I want you generate hashtags for. It comes from my child photo album. Return only hashtags separated with comma (#something, #somethingElse). Comma is very important to separate hashtags. Dont forget about it. No description or explanation.', p.Description) as HashTags
-from PhotosDescription p cross apply openai.gpt('gpt-4o', 4096, 0.0) l
-```
+*Querying standard CSVs and JSON is easy, but Musoq's real power is understanding raw data formats...*
 
-### Structured extraction from unstructured data
-Pass image of receipt, receive shop, product name and price.
+### 1. Inline Binary Decoding (`binary` schemas)
+Reading a custom binary file usually means opening a hex editor or writing a C# `BinaryReader` wrapper. With Musoq, you declare the binary layout right above your query:
 
 ```sql
---image passed to stdin by command: ./Musoq.exe image encode "D:/Some/Receipt.jpg"
+-- Declare your binary struct right in the script!
+binary GameSaveHeader {
+    Magic:    int le,
+    Version:  short le,
+    PlayerId: byte[16],
+    Score:    int le
+}
 
-select s.Shop, s.ProductName, s.Price from stdin.LlmExtractFromImage() s
+-- Query the raw bytes from the file using the declaration
+select 
+    h.Version, 
+    ToHex(h.PlayerId) as UID, 
+    h.Score 
+from os.file('/saves/save1.dat') f
+cross apply Interpret(f.GetBytes(), GameSaveHeader) h
+where h.Magic = 0x4D414745 -- 'GAME'
 ```
 
-Same story but this time we are expecting specific types
+### 2. Declarative Text Log Parsing (`text` schemas)
+Parsing a badly formatted application log without Musoq usually means chaining regex patterns that are hard to read and harder to maintain. Musoq lets you describe the structure inline instead:
+
+```sql
+-- Describe what the log looks like inline
+text LogEntry {
+    Timestamp: between '[' ']',
+    _:         literal ' ',
+    Level:     until ':',
+    _:         literal ': ',
+    Message:   rest
+}
+
+-- Stream it, parse it, query it!
+select log.Timestamp, log.Level, log.Message
+from os.file('/var/logs/app.log') f
+cross apply Lines(f.GetContent()) line
+cross apply Parse(line.Value, LogEntry) log
+where log.Level = 'ERROR'
+```
+
+### 3. Strong Typing for Dynamic Data (`table` & `couple`)
+CSV, JSON, and LLMs often return untyped string data. Musoq lets you define strong types and "couple" them with dynamic datasources to enforce sanity:
+
 ```sql
 table Receipt {
-    Shop 'System.String',
-    ProductName 'System.String',
-    Price 'System.Decimal'
+    Shop: string,
+    ProductName: string,
+    Price: decimal
 };
+
+-- Bind untyped AI-vision extraction output to strict SQL Types
 couple stdin.LlmExtractFromImage() with table Receipt as SourceOfReceipts;
-select s.Shop, s.ProductName, s.Price from SourceOfReceipts('OpenAi', 'gpt-4o') s
+
+select s.Shop, s.ProductName, s.Price 
+from SourceOfReceipts('OpenAi', 'gpt-4o') s
+where s.Price > 100.00
 ```
 
 ---
 
-### C# Code Analysis (`csharp`)
+## 🧰 The Developer Toolbox: Supporting Ad-Hoc Workflows
 
-#### List All Classes in Solution
-Find all classes across a C# solution with their metrics.
+The CLI is designed around the ad-hoc investigation workflow — quickly reaching for data, shaping it, and moving on. Beyond one-liners, it also supports saving frequent queries as tools and exposing them to AI agents.
 
-```sql
-select 
-    c.Name,
-    c.Namespace,
-    c.MethodsCount,
-    c.PropertiesCount,
-    c.LinesOfCode
-from csharp.solution('./MySolution.sln') s 
-cross apply s.Projects p 
-cross apply p.Documents d 
-cross apply d.Classes c
+### 1. First-Class `stdin` Piping
+You don't always want to query files on disk. Musoq has native support for intercepting streamed `stdin` data and structuring it on the fly using zero-copy memory-mapped buffers:
+
+```bash
+# Query JSON output from other CLI tools instantly
+kubectl get pods -o json | musoq run "select * from stdin.JsonFlat() where path like '%status.phase' and value = 'Running'"
+
+# Apply regex directly to a live command stream
+cat app.log | musoq run "select * from stdin.Regex('(?<timestamp>.*?)\\s+(?<level>.*?)\\s+(?<message>.*)') where level = 'ERROR'"
 ```
 
-#### Query All Types in a Project
-Quick access to all types (classes, interfaces, enums) in a project.
+### 2. Parameterized Tools
+Instead of retyping complex queries, you can save them as **Tools** using YAML and Scriban templates. 
 
-```sql
-select 
-    t.Name,
-    t.IsClass,
-    t.IsInterface,
-    t.IsEnum
-from csharp.solution('./MySolution.sln') s 
-cross apply s.Projects p 
-cross apply p.Types t
+```bash
+# Execute a saved tool with dynamic arguments
+Musoq tool execute search_commits --author "John Doe" --since "2024-01-01"
 ```
 
-#### Find Methods with High Complexity
-Identify methods that may need refactoring based on cyclomatic complexity.
+### 3. Native Model Context Protocol (MCP) Server
+By enabling the built-in MCP server (`musoq set mcp-enabled true`), Musoq exposes your parameterized tools as callable functions to AI agents like Claude, Cursor, or GitHub Copilot. 
 
-```sql
-select
-    c.Name as ClassName,
-    m.Name as MethodName,
-    m.CyclomaticComplexity,
-    m.LinesOfCode
-from csharp.solution('./MySolution.sln') s 
-cross apply s.GetClassesByNames('MyClass') c
-cross apply c.Methods m
-where m.CyclomaticComplexity > 5
-```
-
-#### Analyze Method Body Structure
-Check for empty methods, stub implementations, and statement counts.
-
-```sql
-select
-    m.Name,
-    m.HasBody,
-    m.IsEmpty,
-    m.StatementsCount,
-    m.BodyContainsOnlyTrivia
-from csharp.solution('./MySolution.sln') s 
-cross apply s.Projects p 
-cross apply p.Documents d 
-cross apply d.Classes c
-cross apply c.Methods m
-where c.Name = 'MyClass'
-```
-
-#### Analyze Property Accessors
-Find auto-properties, init-only setters, and property patterns.
-
-```sql
-select
-    p.Name,
-    p.Type,
-    p.IsAutoProperty,
-    p.HasGetter,
-    p.HasSetter,
-    p.HasInitSetter
-from csharp.solution('./MySolution.sln') s 
-cross apply s.Projects p 
-cross apply p.Documents d 
-cross apply d.Classes c
-cross apply c.Properties p
-where c.Name = 'MyClass'
-```
-
-#### Find References to a Class
-Locate all usages of a specific class across the solution.
-
-```sql
-select 
-    r.Name,
-    rd.StartLine,
-    rd.StartColumn,
-    rd.EndLine,
-    rd.EndColumn
-from csharp.solution('./MySolution.sln') s
-cross apply s.GetClassesByNames('MyClass') c
-cross apply s.FindReferences(c.Self) rd
-cross apply rd.ReferencedClasses r
-```
-
-#### Query Interface Definitions
-List interfaces with their methods and properties.
-
-```sql
-select
-    i.Name,
-    i.FullName,
-    i.Namespace,
-    i.BaseInterfaces,
-    i.Methods,
-    i.Properties
-from csharp.solution('./MySolution.sln') s 
-cross apply s.Projects pr 
-cross apply pr.Documents d 
-cross apply d.Interfaces i
-```
-
-#### Analyze Enums
-List enums with their members.
-
-```sql
-select
-    e.Name,
-    e.FullName,
-    e.Namespace,
-    e.Members
-from csharp.solution('./MySolution.sln') s 
-cross apply s.Projects pr 
-cross apply pr.Documents d 
-cross apply d.Enums e
-```
-
-#### Query Project References
-List all project-to-project references.
-
-```sql
-select
-    p.Name as ProjectName,
-    ref.Name as ReferencedProject
-from csharp.solution('./MySolution.sln') s 
-cross apply s.Projects p 
-cross apply p.ProjectReferences ref
-```
-
-#### Query Library References
-List all library/assembly references in projects.
-
-```sql
-select
-    p.Name as ProjectName,
-    lib.Name as LibraryName,
-    lib.Version,
-    lib.Location
-from csharp.solution('./MySolution.sln') s 
-cross apply s.Projects p 
-cross apply p.LibraryReferences lib
-```
-
-#### Query NuGet Packages
-List all NuGet packages with license information.
-
-```sql
-select 
-    p.Name as ProjectName,
-    np.Id as PackageId,
-    np.Version,
-    np.License,
-    np.Authors,
-    np.IsTransitive
-from csharp.solution('./MySolution.sln') s 
-cross apply s.Projects p 
-cross apply p.GetNugetPackages(false) np
-```
-
-#### Analyze Class Attributes
-Find classes decorated with specific attributes.
-
-```sql
-select
-    c.Name,
-    a.Name as AttributeName,
-    a.ConstructorArguments
-from csharp.solution('./MySolution.sln') s 
-cross apply s.Projects pr 
-cross apply pr.Documents d 
-cross apply d.Classes c
-cross apply c.Attributes a
-```
-
-#### Query Method Parameters
-Analyze method parameters with their modifiers.
-
-```sql
-select
-    m.Name as MethodName,
-    p.Name as ParamName,
-    p.Type,
-    p.IsOptional,
-    p.IsParams,
-    p.IsRef,
-    p.IsOut
-from csharp.solution('./MySolution.sln') s 
-cross apply s.Projects pr 
-cross apply pr.Documents d 
-cross apply d.Classes c
-cross apply c.Methods m
-cross apply m.Parameters p
-```
-
-#### Calculate Lack of Cohesion
-Analyze class design metrics.
-
-```sql
-select 
-    c.Name,
-    c.MethodsCount,
-    c.FieldsCount,
-    c.LackOfCohesion,
-    c.InheritanceDepth
-from csharp.solution('./MySolution.sln') s 
-cross apply s.Projects p 
-cross apply p.Documents d 
-cross apply d.Classes c
-where c.MethodsCount > 2
-```
+You can create isolated "Contexts" so your AI assistant can safely query your active git history, search local file hierarchies, or parse your API responses using SQL, without writing any integration code.
 
 ---
 
-### Combined Data Source Queries
+## 🆚 How does Musoq fit into the SQL tooling ecosystem?
 
-#### Analyze Git Repositories from File System
-Discover and analyze multiple Git repositories.
+There are several excellent tools that allow you to use SQL outside of traditional databases. While they share a similar syntax, they are fundamentally designed to solve different classes of problems:
 
-```sql
-with GitRepos as (
-    select 
-        dir.Parent.Name as RepoName,
-        dir.FullName as GitPath
-    from os.directories('./projects', true) dir
-    where dir.Name = '.git'
-)
-select 
-    r.RepoName,
-    Count(c.Sha) as CommitCount
-from GitRepos r 
-cross apply git.repository(r.GitPath) repo 
-cross apply repo.Commits c
-group by r.RepoName
-order by CommitCount desc
-```
+| Tool | Primary Focus | Best Suited For |
+|---|---|---|
+| **DuckDB** | Analytical Workloads (OLAP) | Aggregating and analyzing large, structured datasets (Parquet, CSV, JSON) at extremely high speeds. |
+| **Steampipe** | Cloud Infrastructure | Querying cloud APIs (AWS, Azure, GitHub) as foreign tables for compliance, auditing, and DevSecOps. |
+| **osquery** | Endpoint Monitoring | Tracking the state, metrics, and security configurations across fleets of operating systems. |
+| **Musoq** | Ad-hoc Querying & Investigation | One-off queries, debugging sessions, and local investigations against files, logs, binary data, and `stdin` — without importing or storing anything. |
 
-#### Diff Files with Hash Comparison
-Compare directories using file hashes to detect modifications.
+While tools like DuckDB and Steampipe excel when data is already naturally structured or API-driven, Musoq is built for the investigative, exploratory side of development — when you don't know the shape of the data yet and you want to ask questions first. It gives you the primitives (inline `text` matchers, `binary` schemas, and AI `couple` statements) to define structure *during* the query, not before it.
 
-```sql
-with SourceFiles as (
-    select GetRelativePath('./source') as RelPath, Sha256File() as Hash 
-    from os.files('./source', true)
-), 
-TargetFiles as (
-    select GetRelativePath('./target') as RelPath, Sha256File() as Hash 
-    from os.files('./target', true)
-)
-select 
-    s.RelPath,
-    (case when s.Hash <> t.Hash then 'modified' else 'same' end) as Status
-from SourceFiles s 
-inner join TargetFiles t on s.RelPath = t.RelPath
-```
+Importantly, **Musoq does not use an underlying database engine** (like SQLite or Postgres FDWs). There is no "import" step, no data ingestion, and no intermediate storage. Musoq is a pure runtime that streams and transforms data exactly where it resides—whether that's a file on disk, an API response, or `stdin`—and outputs the result directly.
 
 ---
 
-### File System Queries (`os`)
+## 🔌 Available Data Sources
 
-#### List Files with Size Information
-Find all files in a directory with their sizes formatted in human-readable format.
+You can query APIs, files, and services as logical tables using our growing library of [Musoq Data Sources](https://github.com/Puchaczov/Musoq.DataSources):
 
-```sql
-select 
-    Name, 
-    ToDecimal(Length) / 1024 as SizeInKB
-from os.files('./directory', true)
-where Extension = '.txt'
-```
+- **Development**: C# Code Analysis (Roslyn), Git (tags, diffs, line history)
+- **Infrastructure**: Docker (containers, images, logs), Kubernetes, System OS
+- **Files**: JSON, CSV, Archives (Zip/Tar), Flat files
+- **AI & Integrations**: OpenAI/Ollama (Unstructured extractions!), Airtable, CANBus
+- **Databases**: Postgres, SQLite
 
-#### Calculate SHA256 Hash of Files
-Compute cryptographic hashes for file integrity verification.
-
-```sql
-select 
-    Name, 
-    Sha256File() as Hash
-from os.files('./directory', false)
-where Extension = '.dll'
-```
-
-#### Compare Two Directories
-Find differences between two directories (added, removed, modified files).
-
-```sql
-select 
-    SourceFileRelative,
-    DestinationFileRelative,
-    State
-from os.dirscompare('./source', './destination')
-where State <> 'TheSame'
-```
+*(Tip: Just run `desc schema` or `desc schema.table(args)` inside Musoq to explore what is queryable.)*
 
 ---
 
-### CSV/Separated Values (`separatedvalues`)
+## 🧩 The Musoq Ecosystem
 
-#### Basic CSV Query with Aggregation
-Analyze banking transactions and calculate monthly income/outcome.
+Musoq is highly modular and built with extensibility at its core. Here is how the components interact:
 
-```sql
-select 
-    ExtractFromDate(OperationDate, 'month') as Month,
-    SumIncome(ToDecimal(Money)) as Income,
-    SumOutcome(ToDecimal(Money)) as Outcome,
-    SumIncome(ToDecimal(Money)) + SumOutcome(ToDecimal(Money)) as Balance
-from separatedvalues.comma('./transactions.csv', true, 0)
-group by ExtractFromDate(OperationDate, 'month')
+```mermaid
+flowchart TD
+    User([User / Terminal]) --> CLI
+    
+    subgraph Musoq.AgentLocal [Musoq Server & CLI ecosystem]
+        CLI[Musoq CLI]
+        LocalHost[(Local Server)]
+        CLI <-->|JSON / Pipes| LocalHost
+    end
+
+    subgraph Core [Engine]
+        Engine[Musoq Engine]
+        LocalHost -->|Compiles Query| Engine
+    end
+    
+    subgraph Plugins [Musoq.DataSources]
+        DS_OS[OS Files]
+        DS_Git[Git Repos]
+        DS_AI[OpenAI / LLMs]
+        Engine -->|Requests Data| DS_OS
+        Engine -->|Requests Data| DS_Git
+        Engine -->|Requests Data| DS_AI
+    end
 ```
 
-#### Join Two CSV Files
-Join persons with their grades from separate CSV files.
+It is divided into 3 key projects:
 
-```sql
-select 
-    persons.Name, 
-    persons.Surname, 
-    grades.Subject, 
-    grades.Grade
-from separatedvalues.comma('./Persons.csv', true, 0) persons 
-inner join separatedvalues.comma('./Gradebook.csv', true, 0) grades 
-    on persons.Id = grades.PersonId
+1. **[Musoq](https://github.com/Puchaczov/Musoq)** (You are here): The core MIT-licensed SQL engine language and AST runtime. Designed to be extended with new data sources.
+2. **[Musoq.DataSources](https://github.com/Puchaczov/Musoq.DataSources)**: The MIT-licensed repository containing all the plugins (Git, OS, Postgres, OpenAI, Archives).
+3. **[Musoq.CLI & Musoq.AgentLocal](https://github.com/Puchaczov/Musoq.CLI)**: A lightweight background server & CLI that executes the Musoq query language locally. Not yet open sourced, but free to use.
+
+### Deep Dive: Engine Architecture
+
+When a query enters the core **Musoq Engine**, it goes through the following pipeline:
+
+```mermaid
+flowchart TD
+    SQL[/SQL Query String/] --> Parser
+    
+    subgraph Engine [Core Engine Internal Pipeline]
+        direction TB
+        Parser[Lexer & Parser] --> AST[Abstract Syntax Tree]
+        AST --> Visitors[AST Visitors & Rewriters]
+        Visitors --> Semantic[Type Inference & Semantic Analysis]
+        Semantic --> Compiler[C# Code Generator & Compiler]
+        Compiler --> Runtime[Execution Runtime VM]
+    end
+    
+    Registry[(Plugin / Schema Registry)] -.->|Injects types & methods| Semantic
+    Runtime <-->|Streams Data Row-by-Row| DataSource[(Data Source Plugin)]
+    Runtime ===> Results[/Tabular Result Set/]
 ```
 
-#### Typed CSV Query
-Read CSV with explicit column types for proper data handling.
+## 🤖 Extensibility & AI-Driven Agent Plugins
+You can write C# or Python plugins manually, or point an AI agent at the plugin development guide and have it build one for you.
 
-```sql
-table Employees {
-   Id 'System.Int32',
-   Name 'System.String',
-   Salary 'System.Decimal'
-};
-couple separatedvalues.comma with table Employees as SourceOfEmployees;
-select Id, Name, Salary from SourceOfEmployees('./employees.csv', true, 0)
-where Salary > 50000
-```
+We provide a dedicated, self-contained guide designed explicitly for Autonomous Coding Agents (like GitHub Copilot, Cursor, or Claude) to build, test, package, and deploy complete .NET plugins without human intervention. Just point your agent at the docs and tell it what data source you want!
+
+Check out the [🤖 Autonomous Plugin Development Guide (in Musoq.DataSources)](https://github.com/Puchaczov/Musoq.DataSources/blob/main/MusoqAutonomousPluginDevelopment.md) to bootstrap your first AI-generated plugin.
 
 ---
 
-### JSON Queries (`json`)
-
-#### Query JSON Array
-Extract data from a JSON file using a schema definition.
-
-```sql
-select 
-    Name, 
-    Age, 
-    Length(Books) as BookCount
-from json.file('./data.json', './data.schema.json')
-where Age > 18
-```
+*"Why write loops, when you can write queries?"*
 
 ---
 
-### Archive Queries (`archives`)
+## 📜 License
 
-#### List Archive Contents
-Read contents of ZIP or TAR archives and extract text content.
-
-```sql
-select 
-    Key as FileName, 
-    IsDirectory,
-    (case when IsDirectory = false then GetTextContent() else '' end) as Content
-from archives.file('./archive.zip')
-where Key like '%.txt'
-```
-
----
-
-### Time Queries (`time`)
-
-#### Generate Date Range
-Create a sequence of dates for reporting or analysis.
-
-```sql
-select 
-    Day, 
-    Month, 
-    Year, 
-    DayOfWeek
-from time.interval('2024-01-01 00:00:00', '2024-12-31 00:00:00', 'days')
-```
-
-#### Filter Weekend Days
-Find only weekend days (Saturday=6, Sunday=0 in DayOfWeek).
-
-```sql
-select Day, DayOfWeek
-from time.interval('2024-01-01 00:00:00', '2024-01-31 00:00:00', 'days')
-where DayOfWeek = 0 or DayOfWeek = 6
-```
-
----
-
-### System Utilities (`system`)
-
-#### Number Range Generation
-Generate a sequence of numbers for various purposes.
-
-```sql
-select Value 
-from system.range(1, 100)
-where Value % 2 = 0
-```
-
-#### Dual Table for Calculations
-Use dual table for single-row calculations.
-
-```sql
-select 
-    2 + 2 as Sum,
-    10 * 5 as Product,
-    ToDecimal(7) / 3 as Division
-from system.dual()
-```
-
----
-
-## Resources
-
-- **[Documentation](https://puchaczov.github.io/Musoq/)** - Guide and examples
-- **[Data Sources](https://github.com/Puchaczov/Musoq.DataSources)** - All available plugins
-- **[CLI Tool](https://github.com/Puchaczov/Musoq.CLI)** - Command-line interface
-
-## Advanced Features
-
-SQL power including:
-- Common Table Expressions (CTEs)
-- JOINs across different data sources  
-- Set operations (UNION, EXCEPT, INTERSECT)
-- Regular expressions and pattern matching
-- Aggregations
-- Custom data type handling through plugins
-
-## When to Use Musoq
-
-**Perfect for:**
-- One-off data tasks that would need a script
-- Combining data from multiple sources  
-- Quick analysis and reporting
-- File system operations beyond basic commands
-- Git repository insights
-- Code pattern searches
-
-**Not ideal for:**
-- Large-scale data processing (>memory size)
-- Real-time/streaming data
-- Production ETL pipelines  
-- Applications requiring millisecond performance
-
-## Philosophy
-
-Musoq is designed around one principle: **eliminate developer friction**.
-
-Stop deciding whether a task is "worth writing a script for." Stop context-switching between tools. Stop debugging bash pipes.
-
-Just write a query.
-
----
-
-*"Why write loops when you can write queries?"*
-
-## 📄 License
-
-MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. This means Musoq is free for both non-commercial and commercial use.
 
 # Musoq.DataSources
 
