@@ -1,0 +1,25 @@
+pkgbase = shelly-bin
+	pkgdesc = Shelly: A Modern Arch Package Manager (prebuilt binary)
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/ZoeyErinBauer/Shelly-ALPM
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = pacman
+	depends = gtk4
+	depends = glib2
+	depends = sudo
+	depends = tar
+	depends = bash
+	depends = git
+	depends = hicolor-icon-theme
+	depends = dbus
+	depends = glibc
+	optdepends = flatpak: For supporting flatpak implementation.
+	provides = shelly
+	conflicts = shelly
+	conflicts = shelly-git
+	source = Shelly-ALPM-linux-x64-2.0.0.tar.gz::https://github.com/ZoeyErinBauer/Shelly-ALPM/releases/download/v2.0.0/Shelly-ALPM-linux-x64.tar.gz
+	sha256sums = 72680013a37bd1ad70ac86bc5af44a2033c31126e469e59e04884820e123191f
+
+pkgname = shelly-bin

@@ -1,0 +1,60 @@
+# Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
+# Maintainer: Caroline Snyder <hirpeng@gmail.com>
+pkgname=shelly-bin
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Shelly: A Modern Arch Package Manager (prebuilt binary)"
+arch=('x86_64')
+url="https://github.com/ZoeyErinBauer/Shelly-ALPM"
+license=('GPL-3.0-only')
+provides=('shelly')
+conflicts=('shelly' 'shelly-git')
+depends=(
+    'pacman'
+    'gtk4'
+    'glib2'
+    'sudo'
+    'tar'
+    'bash'
+    'git'
+    'hicolor-icon-theme'
+    'dbus'
+    'glibc'
+)
+optdepends=(
+    'flatpak: For supporting flatpak implementation.'
+)
+
+source=(
+    "Shelly-ALPM-linux-x64-${pkgver}.tar.gz::https://github.com/ZoeyErinBauer/Shelly-ALPM/releases/download/v${pkgver}/Shelly-ALPM-linux-x64.tar.gz"
+)
+
+sha256sums=('72680013a37bd1ad70ac86bc5af44a2033c31126e469e59e04884820e123191f')
+
+package() {
+  # Install Shelly.Gtk binary
+  install -Dm755 "$srcdir/shelly-ui" "$pkgdir/usr/bin/shelly-ui"
+
+  # Install Shelly-Notifications binary
+  install -Dm755 "$srcdir/shelly-notifications" "$pkgdir/usr/bin/shelly-notifications"
+
+  # Install Shelly-CLI binary
+  install -Dm755 "$srcdir/shelly" "$pkgdir/usr/bin/shelly"
+
+  # Install desktop entry
+  cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/shelly.desktop"
+[Desktop Entry]
+Name=Shelly
+Comment=A Modern Arch Package Manager
+Exec=/usr/bin/shelly-ui
+Icon=shelly
+Type=Application
+Categories=System;Utility;
+Terminal=false
+EOF
+
+  # Install icon
+  install -Dm644 "$srcdir/shellylogo.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly.png"
+  install -Dm644 "$srcdir/flatpak-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/flatpak-symbolic.svg"
+  install -Dm644 "$srcdir/arch-symbolic.svg" "$pkgdir/usr/share/icons/hicolor/symbolic/apps/arch-symbolic.svg"
+}
