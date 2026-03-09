@@ -1,0 +1,29 @@
+pkgbase = linux-wallpaperengine-core-git
+	pkgdesc = linux-wallpaperengine backend code, handles rendering of wallpapers for the various frontends out there
+	pkgver = r600.c2e3f89
+	pkgrel = 1
+	url = https://github.com/Almamu/linux-wallpaperengine-core
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = git
+	makedepends = cmake
+	makedepends = sdl2
+	makedepends = glm
+	depends = lz4
+	depends = ffmpeg
+	depends = mpv
+	depends = glfw
+	depends = glew
+	depends = freeglut
+	depends = libpulse
+	depends = libcups
+	depends = at-spi2-core
+	depends = nss
+	depends = libxcomposite
+	depends = libxdamage
+	depends = nspr
+	provides = linux-wallpaperengine-core
+	source = linux-wallpaperengine-core-git::git+https://github.com/Almamu/linux-wallpaperengine-core.git#branch=main
+	sha512sums = SKIP
+
+pkgname = linux-wallpaperengine-core-git
