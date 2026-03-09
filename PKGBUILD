@@ -2,14 +2,14 @@
 
 _pkgbase=8192eu
 pkgname=8192eu-dkms-git
-pkgver=r293.f2fc8af
+pkgver=r315.d53a23d
 pkgrel=1
 pkgdesc="Driver for the Realtek 8192eu chipset (DKMS)"
 arch=('x86_64' 'i686' 'armv7h')
 url="https://github.com/Mange/rtl8192eu-linux-driver"
 license=('GPL')
 depends=('dkms')
-makedepends=('git')
+makedepends=('git' 'curl')
 provides=('rtl8192eu' '8192eu-dkms')
 conflicts=('8192eu-dkms')
 source=("$_pkgbase::git+https://github.com/Mange/rtl8192eu-linux-driver.git#branch=realtek-4.4.x")
@@ -28,6 +28,9 @@ prepare() {
     -e "s/(make'? )/\1${MAKEFLAGS} /g" \
     -e "s/^REMAKE_INITRD=.*$//" \
     -i dkms.conf
+
+  #Patch for linux 7.0, see https://github.com/Mange/rtl8192eu-linux-driver/pull/359
+  curl -s https://github.com/Mange/rtl8192eu-linux-driver/pull/359/commits/e3e894ed58e0099ed94684575b8a9818d7144ecc.patch | patch -p1
 }
 
 package() {
