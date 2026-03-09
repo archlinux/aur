@@ -1,0 +1,6 @@
+pkg
+src
+*.patch
+*.sign
+*.tar.xz
+patch_order*
