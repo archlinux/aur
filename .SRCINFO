@@ -1,7 +1,7 @@
 pkgbase = bwlog
-	pkgdesc = Lightweight Linux system logger for per-core CPU, NIC throughput, and interrupt rates
+	pkgdesc = Lightweight logger for network throughput, CPU utilization, and interrupt rates
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.kit.edu/kit/tm/telematics/congestion-control/logging/bwlog
 	arch = x86_64
 	license = MIT
