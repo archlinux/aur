@@ -1,7 +1,7 @@
 # Maintainer: mmaher88 <narmer88@gmail.com>
 pkgname=fcitx5-laren
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Arabizi to Arabic transliteration engine for Fcitx5"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mmaher88/laren"
