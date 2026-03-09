@@ -1,16 +1,18 @@
 pkgbase = hostman
 	pkgdesc = A simple file host manager for various image hosting services
-	pkgver = 1.2.3
-	pkgrel = 3
+	pkgver = 1.2.4
+	pkgrel = 1
 	url = https://github.com/keircn/hostman
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = pkgconf
 	depends = curl
 	depends = sqlite
 	depends = openssl
 	depends = cjson
-	source = hostman-1.2.3.tar.gz::https://github.com/keircn/hostman/archive/refs/tags/v1.2.3.tar.gz
-	sha256sums = 23f72d88308fad5ff69b95680062e28aa16bd2c18a2b5de5e61d942357d53362
+	depends = ncurses
+	source = hostman-1.2.4.tar.gz::https://github.com/keircn/hostman/archive/refs/tags/v1.2.4.tar.gz
+	sha256sums = b53a6274cdacc6b30c4420a775e82ff4b43c016ebcc0c017da5f69c9b5240326
 
 pkgname = hostman
