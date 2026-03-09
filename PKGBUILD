@@ -1,3 +1,4 @@
+# Maintainer: arimxyer <https://github.com/arimxyer>
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=arimxyer
