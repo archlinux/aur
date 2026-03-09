@@ -1,4 +1,4 @@
-# Maintainer: Aman Verma <amanraoverma at gmail dot com>
+# Maintainer: Aman Verma <https://averms.org/contact.html>
 pkgname=ap-rename
 pkgver=1.601
 pkgrel=1
