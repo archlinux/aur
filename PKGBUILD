@@ -5,7 +5,7 @@ _pkgname="${pkgname//-bin/""}"
 __pkgname=konform
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-pkgver=140.8.0_106
+pkgver=140.8.0_107
 _konformver="${pkgver%_*}"
 _konformrel="${pkgver#*_}"
 pkgrel=1
@@ -61,7 +61,6 @@ optdepends=(
   'firefox-ublock-origin: Content filter extension'
   'firefox-noscript: Selectively enable javascript on pages'
   'firefox-decentraleyes: Local emulation of Content Delivery Networks'
-  'konform-multi-account-containers-lite: First-class multi-account-containers integration'
 )
 validpgpkeys=('9511FD9BD64CCF171F0B28A72B6FD58B41A0E262') # konform release keys (./konform-cb-release.asc)
 backup=('usr/lib/konform/librewolf.cfg'
@@ -83,12 +82,12 @@ source=(
 )
 source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
-sha256sums=('c8629ba3767d8aef36826a81fb28bbd76030e1a5f1b1a85c83b4e19d46488441'
+sha256sums=('d813844eabd273c9abbc201ec856f50abf42fb97c37dd0d21f3757b49d7366bc'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4')
-sha256sums_x86_64=('1cadbea72eacc4658d984d774ede2f6b78cf27eeb82027c8da43f6560206b3aa'
+sha256sums_x86_64=('4cb650b7b91421f8ce98b7d604b7dac933e093d536021c9651660fd823fdd2b5'
                    'SKIP')
-sha256sums_aarch64=('1ed3cfc369561e85376b4137d7bc6fb2fbbcb1cf1278831664cb643cf0722b4a'
+sha256sums_aarch64=('498d47e596ffab443b2bff5c5e55113f019188d43fd314696e079e9340642433'
                     'SKIP')
 
 package() {
