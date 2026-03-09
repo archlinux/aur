@@ -1,7 +1,7 @@
 # Maintainer: KylerianHD (aka ToxicByte) <contact@kylerianhd.com>
 pkgname=replay-bin
 pkgver=8.7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Replay - UI for generating songs with AI singers, RVC training and speech conversion. Offline, local, and free."
 arch=('x86_64')
 url="https://github.com/KylerianHD/replay-bin"
@@ -36,8 +36,8 @@ prepare() {
   # unpack the .deb
   ar x "Replay-${pkgver}.deb"
 
-  # now extract "control.tar.gz" and "data.tar.xz"
-  tar -xzf control.tar.gz
+  # now extract "control.tar.xz" and "data.tar.xz"
+  tar -xJf control.tar.xz
   tar -xJf data.tar.xz
 }
 
@@ -70,8 +70,8 @@ EOF
      "$pkgdir/usr/share/icons/hicolor/"
 
   # 5) Bundle the control archive for reference
-  install -Dm644 control.tar.gz \
-    "$pkgdir/usr/share/doc/$pkgname/control.tar.gz"
-  install -Dm644 control.tar.gz \
-    "$pkgdir/usr/share/licenses/$pkgname/control.tar.gz"
+  install -Dm644 control.tar.xz \
+    "$pkgdir/usr/share/doc/$pkgname/control.tar.xz"
+  install -Dm644 control.tar.xz \
+    "$pkgdir/usr/share/licenses/$pkgname/control.tar.xz"
 }
