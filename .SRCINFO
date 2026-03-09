@@ -1,6 +1,6 @@
 pkgbase = goreleaser-pro-bin
 	pkgdesc = Release engineering, simplified.
-	pkgver = 2.14.2
+	pkgver = 2.14.3
 	pkgrel = 1
 	url = https://goreleaser.com
 	license = Copyright Becker Software LTDA
@@ -9,13 +9,13 @@ pkgbase = goreleaser-pro-bin
 	provides = goreleaser
 	provides = goreleaser-pro
 	arch = aarch64
-	source_aarch64 = https://github.com/goreleaser/goreleaser-pro/releases/download/v2.14.2/goreleaser-pro_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 2c524ada8eaf03d9545330fadd94750b5a9ad5ef63b4c2749efce842bb76d20f
+	source_aarch64 = https://github.com/goreleaser/goreleaser-pro/releases/download/v2.14.3/goreleaser-pro_Linux_arm64.tar.gz
+	sha256sums_aarch64 = ce7d578d4c8e7cbc775808a228741317c9406b5044bf4c022a6134e40a5fc2cc
 	arch = i686
-	source_i686 = https://github.com/goreleaser/goreleaser-pro/releases/download/v2.14.2/goreleaser-pro_Linux_i386.tar.gz
-	sha256sums_i686 = 2c5e0a1aab5881bc24b78480be365953cc157972c7d597d039125d1efbf0570a
+	source_i686 = https://github.com/goreleaser/goreleaser-pro/releases/download/v2.14.3/goreleaser-pro_Linux_i386.tar.gz
+	sha256sums_i686 = 3af281bd8be020f81a97259bf9a95ea8c156438ff2b5bf77407b89c6227ae8b7
 	arch = x86_64
-	source_x86_64 = https://github.com/goreleaser/goreleaser-pro/releases/download/v2.14.2/goreleaser-pro_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 46b977977ae62f3dcfe19ca560247a644a11993a83ffd2fcecb2bdf509a45c48
+	source_x86_64 = https://github.com/goreleaser/goreleaser-pro/releases/download/v2.14.3/goreleaser-pro_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = a6a7ba86950db98b1e7d18ac189bf43237645f9ef5ca89a66a56308c45f29b73
 	
 pkgname = goreleaser-pro-bin
