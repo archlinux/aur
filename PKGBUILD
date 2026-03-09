@@ -2,7 +2,7 @@
 
 _pkgname=iroh-ssh
 pkgname="${_pkgname}-git"
-pkgver=0.2.8.r4.g1ed53a9
+pkgver=0.2.9.r2.g9f73ca8
 pkgrel=1
 pkgdesc="SSH to any machine without ip, behind a NAT/firewall without port forwarding or VPN setup"
 arch=('x86_64' 'aarch64')
