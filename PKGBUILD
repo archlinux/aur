@@ -5,7 +5,7 @@
 org=zed-industries
 realname=claude-agent-acp
 pkgname=$realname
-pkgver=0.19.2
+pkgver=0.20.2
 pkgrel=1
 pkgdesc="Use Claude Agent from any ACP client such as Zed!"
 arch=('x86_64')
@@ -15,11 +15,17 @@ makedepends=('npm')
 depends=('nodejs')
 conflicts=('claude-code-acp')
 provides=('claude-code-acp')
-source=("https://registry.npmjs.org/@$org/$realname/-/$realname-$pkgver.tgz")
-sha256sums=('0f12911e763ffb63e40d904c4a66cba47a5b1a5d73a0f7b80a7a9ab0246cff95')
+source=("$realname-$pkgver.tar.gz::https://github.com/$org/$realname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('9c180e871b9b34fc519335c3dc2d1eff06bbf2d61d6f2b70631881a1f98ddea9')
 options=(!strip !debug)
 
+build() {
+  cd "$srcdir/$realname-$pkgver"
+  npm ci
+  npm run build
+}
+
 package() {
-  npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${realname}-${pkgver}.tgz"
+  npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${realname}-${pkgver}"
   ln -s claude-agent-acp "${pkgdir}/usr/bin/claude-code-acp"
 }
