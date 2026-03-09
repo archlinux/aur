@@ -1,6 +1,6 @@
 pkgbase = python-disnake
 	pkgdesc = An API wrapper for Discord written in Python.
-	pkgver = 2.9.2
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/DisnakeDev/disnake
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = python-disnake
 	optdepends = python-brotli: speed support
 	optdepends = python-cchardet=2.1.7: speed support
 	optdepends = python<3.10: speed support
-	source = disnake-2.9.2.tar.gz::https://github.com/DisnakeDev/disnake/archive/v2.9.2.tar.gz
-	sha256sums = 036c910684f2cf6ee30ae623c38c71f887597cc842615aaf5a98528887d29744
+	source = disnake-2.12.0.tar.gz::https://github.com/DisnakeDev/disnake/archive/v2.12.0.tar.gz
+	sha256sums = 38f127fa10618b630e7a1085c65e3c8d5280209699157f7e9e5285f88356f768
 
 pkgname = python-disnake

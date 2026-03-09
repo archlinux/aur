@@ -1,6 +1,6 @@
 # Maintainer: matt quintanilla <matt @ matt quintanilla . xyz>
 pkgname=python-disnake
-pkgver=2.9.2
+pkgver=2.12.0
 _tarname=disnake-$pkgver
 pkgrel=1
 pkgdesc="An API wrapper for Discord written in Python."
@@ -30,4 +30,4 @@ package() {
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	python -m installer -d "$pkgdir" dist/*.whl
 }
-sha256sums=('036c910684f2cf6ee30ae623c38c71f887597cc842615aaf5a98528887d29744')
+sha256sums=('38f127fa10618b630e7a1085c65e3c8d5280209699157f7e9e5285f88356f768')
