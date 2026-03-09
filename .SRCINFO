@@ -1,6 +1,6 @@
 pkgbase = cpx-copy
 	pkgdesc = A modern, fast file copy tool for Linux with progress bars, resume capability, and more.
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/11happy/cpx
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = cpx-copy
 	conflicts = cpx
 	conflicts = cpx-bin
 	options = !lto
-	source = cpx-copy-0.1.3.tar.gz::https://github.com/11happy/cpx/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = ca13056223142dba089df2698c47e225a1c1e3453ce5e1767d4870404998f9bf
+	source = cpx-copy-0.1.4.tar.gz::https://github.com/11happy/cpx/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = f7d8b7d1926c007d358780dbf82e4ef6b0a84cb44ea3f68732f29a83e78a0495
 
 pkgname = cpx-copy

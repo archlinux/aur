@@ -2,7 +2,7 @@
 
 pkgname=cpx-copy
 _pkgname=${pkgname%-copy}
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='A modern, fast file copy tool for Linux with progress bars, resume capability, and more.'
 arch=(x86_64)
@@ -17,7 +17,7 @@ checkdepends=(cargo)
 conflicts=(cpx cpx-bin)
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ca13056223142dba089df2698c47e225a1c1e3453ce5e1767d4870404998f9bf')
+sha256sums=('f7d8b7d1926c007d358780dbf82e4ef6b0a84cb44ea3f68732f29a83e78a0495')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
