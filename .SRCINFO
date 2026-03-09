@@ -1,0 +1,22 @@
+pkgbase = ahoy
+	pkgdesc = Ahoy — discover and play independent music and shows
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://ahoy.ooo
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	depends = glib2
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = libnotify
+	depends = libappindicator-gtk3
+	options = !strip
+	source_x86_64 = ahoy-indie-media-0.2.1-x86_64.AppImage::https://github.com/oooAHOYooo/ahoy-little-platform/releases/download/v0.2.1/ahoy-indie-media-0.2.1-x86_64.AppImage
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = ahoy-indie-media-0.2.1-arm64.AppImage::https://github.com/oooAHOYooo/ahoy-little-platform/releases/download/v0.2.1/ahoy-indie-media-0.2.1-arm64.AppImage
+	sha256sums_aarch64 = SKIP
+
+pkgname = ahoy
