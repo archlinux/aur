@@ -8,7 +8,7 @@ export ZVM_PATH
 _pkgname="river-classic"
 pkgname="$_pkgname-git"
 pkgver=0.3.14.r4.gbbdc477
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic tiling wayland compositor"
 url='https://codeberg.org/river/river-classic'
 license=('GPL-3.0-or-later')
@@ -57,6 +57,19 @@ _zig_setup() {
   export PATH="$_zigpath:$PATH"
 
   _target="$CARCH-linux.6.1-gnu.2.38"
+
+  _zig_options=(
+    --summary all
+    --prefix /usr
+    --search-prefix /usr
+    --global-cache-dir ../zig-global-cache
+    --system ../zig-global-cache/p
+    -Dtarget="${_target}"
+    -Dcpu=baseline
+    -Dpie
+    -Doptimize=ReleaseSafe
+    -Dxwayland
+  )
 }
 
 prepare() {
