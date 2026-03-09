@@ -1,0 +1,4 @@
+# downloaded tarbals
+*.tar.gz
+# built packages
+*.pkg.tar.zst
