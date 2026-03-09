@@ -1,39 +1,73 @@
 post_install() {
-    echo ""
-    echo "==> Laren (Arabizi to Arabic) has been installed."
-    echo ""
-
-    # Try to auto-configure KWin to use Fcitx5
     _user="${SUDO_USER:-$USER}"
     _uid=$(id -u "$_user" 2>/dev/null)
 
-    if [ -n "$_user" ] && [ "$_user" != "root" ] && [ -n "$_uid" ]; then
-        # Set Fcitx5 as the input method in KWin
-        su - "$_user" -c "kwriteconfig6 --file kwinrc --group Wayland --key 'InputMethod[\$e]' '/usr/share/applications/org.fcitx.Fcitx5.desktop'" 2>/dev/null
-        su - "$_user" -c "kwriteconfig6 --file kwinrc --group Wayland --key VirtualKeyboardEnabled true" 2>/dev/null
-
-        # Tell KWin to reload config (no logout needed)
-        _dbus="unix:path=/run/user/${_uid}/bus"
-        su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=${_dbus} qdbus6 org.kde.KWin /KWin reconfigure" 2>/dev/null
-
-        if [ $? -eq 0 ]; then
-            echo "    Fcitx5 has been configured and started automatically."
-            echo "    Toggle Arabic input with Ctrl+Space."
-        else
-            echo "    Could not auto-configure. Please:"
-            echo "    1. System Settings > Virtual Keyboard > Fcitx 5"
-            echo "    2. Log out and back in"
-            echo "    3. Toggle Arabic input with Ctrl+Space"
-        fi
-    else
-        echo "    To use Laren:"
-        echo "    1. System Settings > Virtual Keyboard > Fcitx 5"
-        echo "    2. Log out and back in"
-        echo "    3. Toggle Arabic input with Ctrl+Space"
+    if [ -z "$_user" ] || [ "$_user" = "root" ] || [ -z "$_uid" ]; then
+        _print_manual
+        return
     fi
 
+    _home=$(eval echo "~$_user")
+    _kwinrc="$_home/.config/kwinrc"
+    _dbus="unix:path=/run/user/${_uid}/bus"
+    _desktop="/usr/share/applications/org.fcitx.Fcitx5.desktop"
+
+    # Ensure .config exists
+    install -d -o "$_user" -g "$_user" "$_home/.config"
+
+    # Update or create kwinrc
+    if [ -f "$_kwinrc" ]; then
+        # Remove any existing InputMethod lines under [Wayland]
+        sed -i '/^\[Wayland\]/,/^\[/{/^InputMethod/d}' "$_kwinrc"
+        # Remove any mangled kwriteconfig6 lines
+        sed -i '/InputMethod.*x5b/d' "$_kwinrc"
+        # Update top-level InputMethod if present
+        sed -i "0,/^InputMethod=/{s|^InputMethod=.*|InputMethod=$_desktop|}" "$_kwinrc"
+
+        # Add InputMethod and VirtualKeyboardEnabled under [Wayland]
+        if grep -q '^\[Wayland\]' "$_kwinrc"; then
+            sed -i "/^\[Wayland\]/a InputMethod[\$e]=$_desktop" "$_kwinrc"
+            if ! grep -q '^VirtualKeyboardEnabled=true' "$_kwinrc"; then
+                sed -i '/^\[Wayland\]/a VirtualKeyboardEnabled=true' "$_kwinrc"
+            fi
+        else
+            printf '\n[Wayland]\nInputMethod[$e]=%s\nVirtualKeyboardEnabled=true\n' "$_desktop" >> "$_kwinrc"
+        fi
+    else
+        cat > "$_kwinrc" <<KWINEOF
+[Wayland]
+InputMethod[\$e]=$_desktop
+VirtualKeyboardEnabled=true
+KWINEOF
+        chown "$_user:$_user" "$_kwinrc"
+    fi
+
+    # Reconfigure KWin and toggle virtual keyboard to start fcitx5
+    _ok=0
+    su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /KWin reconfigure" 2>/dev/null && \
+    su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled false" 2>/dev/null && \
+    sleep 1 && \
+    su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled true" 2>/dev/null && \
+    _ok=1
+
     echo ""
+    if [ "$_ok" = "1" ]; then
+        echo "==> Laren is ready! Toggle Arabic input with Ctrl+Space."
+    else
+        echo "==> Laren installed. Log out and back in to activate."
+        echo "    Then toggle Arabic input with Ctrl+Space."
+    fi
     echo "    Use fcitx5-configtool to customize input methods."
+    echo ""
+}
+
+_print_manual() {
+    echo ""
+    echo "==> Laren (Arabizi to Arabic) has been installed."
+    echo ""
+    echo "    1. System Settings > Virtual Keyboard > Fcitx 5"
+    echo "    2. Log out and back in"
+    echo "    3. Toggle Arabic input with Ctrl+Space"
     echo ""
 }
 
