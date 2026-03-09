@@ -1,7 +1,7 @@
 # Contributor: Matthias Fulz < mfulz [at] olznet [dot] de >
 
 pkgname=openvas-scanner
-pkgver=23.40.2
+pkgver=23.40.5
 pkgrel=1
 pkgdesc='Vulnerability scanning Daemon'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         ${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-v${pkgver}.tar.gz.asc
         openvas-scanner.tmpfiles
         openvasd.service)
-sha512sums=('4c466c347786d8880ba45f570fbd21d5f12bf250885ac4c80aa4d465e5f71c0b6f515ac0a1cc3b15310d3e14298e0d51fb349c1f5e28e9fd6ac8c3ae3f296bb5'
+sha512sums=('10bccdb7f2d81969a2912dccff7f1b04c715cc6721ea48331ee4530f28916cc61a9492e03e170cab5edbfc7395b3eb200139370181f5dd0ecececbc07ab421cb'
             'SKIP'
             'c87d7890698368a6b8d569d9af73712676d0e0061de8e058cc6c7f609da1def99ebbf9b11d35d1dd0234538dbb07987ff18bbf186928ea39c33441f231eb8751'
             '476e0aaeb916959b93082bf2529774ff46db46e6e699c34ea0ac246c461d554c87d15c25a2bc6565c06f0cd39df5dd14609d99777608c1c8afb824b0a6de99ae')
