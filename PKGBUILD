@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nvm-desktop
 _pkgname=NVM-Desktop
-pkgver=4.2.0
+pkgver=4.2.1
 _nvmdver="${pkgver}"
-_nodeversion=20
+_nodeversion=22
 pkgrel=1
 pkgdesc="Node Version Manager Desktop - A desktop application to manage multiple active node.js versions."
 arch=(
@@ -24,7 +24,7 @@ makedepends=(
     'nvm'
     'pnpm'
     'curl'
-    'rust'
+    'rustup'
     'librsvg'
     'patchelf'
     'git'
@@ -34,9 +34,9 @@ source_x86_64=("nvmd-${_nvmdver}-x86_64::${_nvmdurl}/releases/download/v${_nvmdv
 source=(
     "${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}"
 )
-sha256sums=('8a171cfe1cd7b183c9992d9be975e1b73d004a47a2b7e7fb98278fe6cced94b2')
-sha256sums_aarch64=('032037664e02e0d1e65690fe1030c4d553f1e168a7156560805725eb21280997')
-sha256sums_x86_64=('4340d4ca26665b3b7c84b7283c323f5203a97ce6e1b7f7fb6d7263bca427479f')
+sha256sums=('5138263ce7549364eda64b4f856d29c537616a2c328538a4e9ed22e9eb2a7262')
+sha256sums_aarch64=('f8bd77d274c1ba3e6091a36805ed3793d953cd00b4c5928dbb2eaaabc5040b5f')
+sha256sums_x86_64=('20967479379598c0b118cef9141203a45868465f2a190ed5e27d108c06234974')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -44,14 +44,13 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 prepare() {
-    _ensure_local_nvm
+    cd "${srcdir}/${pkgname}-${pkgver}"
     gendesk -f -n -q \
         --pkgname="${pkgname}" \
         --pkgdesc="${pkgdesc}" \
         --categories="Development" \
         --name="${pkgname}" \
         --exec="${pkgname} %U"
-    cd "${srcdir}/${pkgname}-${pkgver}"
     install -Dm755 "${srcdir}/nvmd-${_nvmdver}-${CARCH}" "${srcdir}/${pkgname}-${pkgver}/src-tauri/resources/nvmd"
     HOME="${srcdir}/.electron-gyp"
     {
@@ -65,32 +64,28 @@ prepare() {
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static
         export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup
-        {
-            echo 'registry=https://registry.npmmirror.com'
-        } >> .npmrc
+        export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
     fi
+    _ensure_local_nvm
+    sed -i "s/\"active\"\: true\,/\"active\"\: false\,/g" src-tauri/tauri.conf.json
+    rustup default stable
+    cp "src-tauri/icons/128x128@2x.png" "src-tauri/icons/256x256.png"
     NODE_ENV=development    pnpm install
 }
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    sed -i "/plugin-updater/d" package.json
-    sed -i "/updater/d" src-tauri/capabilities/default.json
-    sed -i "/tauri_plugin_updater/d" src-tauri/src/main.rs
-    sed -i "/tauri-plugin-updater/d" src-tauri/Cargo.toml
-    sed -i -e "
-        53,60d
-        /createUpdaterArtifacts/d
-        s/versions\.\",/versions\.\"/g
-    " src-tauri/tauri.conf.json
-    sed -i "s/\"deb\", \"rpm\"/\"deb\"/g" src-tauri/tauri.linux.conf.json
+    _ensure_local_nvm
     NODE_ENV=production     pnpm run build
 }
 package() {
-    _sourcedir="${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb"
-    install -Dm755 "${_sourcedir}/${_pkgname//-/ }_${pkgver}_"*/data/usr/bin/"${pkgname}" -t "${pkgdir}/usr/bin"
-    install -Dm755 "${_sourcedir}/${_pkgname//-/ }_${pkgver}_"*/data/usr/lib/"${_pkgname//-/ }"/resources/nvmd -t "${pkgdir}/usr/lib/${_pkgname//-/ }/resources"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/src-tauri/target/release/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/nvmd-${_nvmdver}-${CARCH}" "${pkgdir}/usr/lib/${_pkgname//-/ }/resources/nvmd"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/icons/icon.png" -t "${pkgdir}/usr/lib/${_pkgname//-/ }/icons"
-    install -Dm644 "${_sourcedir}/${_pkgname//-/ }_${pkgver}_"*/data/usr/share/applications/"${_pkgname//-/ }".desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    _icon_sizes=(32x32 64x64 128x128 256x256)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/src-tauri/icons/${_icons}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons//@2/}/apps/${pkgname}.png"
+    done
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
