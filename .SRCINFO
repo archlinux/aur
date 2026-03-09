@@ -1,6 +1,6 @@
 pkgbase = work-tuimer
 	pkgdesc = Simple, keyboard-driven TUI for time-tracking
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/Kamyil/work-tuimer
 	arch = x86_64

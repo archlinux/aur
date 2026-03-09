@@ -1,7 +1,7 @@
 # Maintainer: Kamil <kamil@kamil.dev>
 
 pkgname=work-tuimer
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Simple, keyboard-driven TUI for time-tracking'
 url='https://github.com/Kamyil/work-tuimer'
