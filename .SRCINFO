@@ -1,6 +1,6 @@
 pkgbase = r-shinywidgets
 	pkgdesc = Custom Inputs Widgets for Shiny
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://cran.r-project.org/package=shinyWidgets
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-shinywidgets
 	optdepends = r-shinydashboard
 	optdepends = r-shinydashboardplus
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/shinyWidgets_0.9.0.tar.gz
-	sha256sums = 419bce351db8d7ddf9b0e397551162d4a27f3da11e3ac5824f5ab524475cd6d4
+	source = https://cran.r-project.org/src/contrib/shinyWidgets_0.9.1.tar.gz
+	sha256sums = ebfb0a0b919a233dce6761b359a3ae120eefe15ee459c57b0c8cda16a9c71e85
 
 pkgname = r-shinywidgets
