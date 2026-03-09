@@ -2,19 +2,25 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 pkgname=passwdqc-utils
 realpkgname=passwdqc
-pkgver=2.0.3
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="pwqcheck (password strength checker) and pwqgen (random passphrase generator) from passwdqc"
 arch=('any')
 url="http://www.openwall.com/passwdqc/"
 license=('BSD' 'custom:BSD Revised')
 optdepends=('pam_passwdqc: Enforce password strength rules')
 source=(http://www.openwall.com/passwdqc/$realpkgname-$pkgver.tar.gz)
-md5sums=('fd4d6fff2951256c3c0d013becef1298')
+md5sums=('8f89ff67b1eb8d41ea566a505f234765')
+
+pkgver() {
+  curl -sL https://openwall.com/passwdqc/ | grep -o '<a href="passwdqc-.*\.tar\.gz">.*</a>' | sed -n 's/.*>\(.*\)<.*/\1/p' |
+    grep -o '[0-9]\+\.[0-9]\+\.[0-9]\+'
+}
 
 build() {
   cd "$srcdir/$realpkgname-$pkgver"
 
+  sed "s#@VERSION@#${pkgver}#" $realpkgname.pc.in >$realpkgname.pc
   make -j1 utils
 }
 
