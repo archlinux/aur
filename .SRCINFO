@@ -1,6 +1,6 @@
 pkgbase = subs2srs-gtk3-git
 	pkgdesc = Generate Anki flashcards from media with subtitles (GTK3 port)
-	pkgver = r1.d896810
+	pkgver = r56.f9514df
 	pkgrel = 1
 	url = https://gitlab.com/fkzys/subs2srs-gtk3
 	arch = x86_64
