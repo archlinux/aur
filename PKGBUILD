@@ -1,7 +1,7 @@
 # Maintainer: Anton Reshetov
 pkgname=masscode-bin
 _pkgname=massCode
-pkgver=4.5.0
+pkgver=4.6.0
 _electronversion=34
 pkgrel=1
 pkgdesc="A free and open source code snippets manager for developers.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('f84763ac2b9600ac7b50917696512c9eed2bbaea292ecf292bacd098688b37c9'
+sha256sums=('91eefae7adf4cf804559b61bddef699c81161c93b709a09f281825f0bf5dfc42'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
