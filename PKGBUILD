@@ -3,8 +3,8 @@
 pkgname=next-ai-draw-io-bin-autoupdate
 _pkgname=next-ai-draw-io
 _dist_name="Next AI Draw.io"
-pkgver=0.4.12
-_pkgver=0.4.12
+pkgver=0.4.13
+_pkgver=0.4.13
 _electronversion=39
 pkgrel=1
 pkgdesc="Next AI Powered Draw.io (Desktop version) - Automated Latest Release"
@@ -17,12 +17,12 @@ conflicts=('next-ai-draw-io' 'next-ai-draw-io-bin')
 makedepends=('asar')
 options=('!strip' '!emptydirs')
 
-source_x86_64=("https://github.com/DayuanJiang/next-ai-draw-io/releases/download/v0.4.12/next-ai-draw-io_0.4.12_amd64.deb")
-source_aarch64=("https://github.com/DayuanJiang/next-ai-draw-io/releases/download/v0.4.12/next-ai-draw-io_0.4.12_arm64.deb")
+source_x86_64=("https://github.com/DayuanJiang/next-ai-draw-io/releases/download/v0.4.13/next-ai-draw-io_0.4.13_amd64.deb")
+source_aarch64=("https://github.com/DayuanJiang/next-ai-draw-io/releases/download/v0.4.13/next-ai-draw-io_0.4.13_arm64.deb")
 source=("${_pkgname}.sh")
 
-sha256sums_x86_64=('7d25dcc3c01daced0e3f10eac04a5321e6632c410143925c1a375c08f6eef8b7')
-sha256sums_aarch64=('600a4c77ef9974687a1bad4276ac8958c1ba80864063559b60caf7270f9f6f48')
+sha256sums_x86_64=('b529d6501745ecf63f67cc4801a04a1e04bf9c441450b62d15b03ca0614e8f0d')
+sha256sums_aarch64=('616e68d4ccab9ad2af03bc1f44db1c6a9ada40e6c179a0c607835d5fdcd38f91')
 sha256sums=('6dec33b7b4169f695f1ff02a9e55a6ce93b421b20177f051b29223911b8d0a8a')
 
 prepare() {
