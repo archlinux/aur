@@ -5,7 +5,7 @@
 # usage: extra-x86_64-build -- --bind-ro=/etc/resolv.conf
 
 pkgname=pgadmin4-desktop-native
-pkgver=9.12
+pkgver=9.13
 pkgrel=1
 pkgdesc="pgAdmin 4 desktop (System Electron 34 + Venv libs) built from source"
 arch=('x86_64')
@@ -15,9 +15,9 @@ options=(!strip !debug)
 
 depends=(
   'python'
-  'postgresql-libs' # For psycopg (pg_config)
-  'electron34'      # System Electron 34 
-  'libsecret'       # For python keyring
+  'postgresql-libs'
+  'electron34'
+  'libsecret'
 )
 makedepends=(
   'python'
@@ -33,35 +33,30 @@ source=(
   "pgadmin4.desktop"
   "pgadmin4-128x128.png"
 )
-sha256sums=('f72f5d688eed9f65d523046492ce868bcb4251c04f763cb6b834b13be0ad6744'
+sha256sums=('57b6c55a7725c5ea8fcbe35480b2dd8998db5d3f32248a6db6b448813384267b'
             '676447c4c91cb291f50a6ec219e2fd024a0eabdedeac2be5cebaa594bfc00595'
             '65414f475058a5cf6f784ccfdbedb812083d72f1fd98889525f68f08a148820f')
 
 build() {
   cd "${srcdir}/pgadmin4-${pkgver}"
 
-  # 1. Web Frontend Bundle
   sed -i '/"packageManager":/d' web/package.json
   cd web
   yarn install
   yarn run bundle
   cd ..
 
-  # 2. Python Environment
   _venvdir="${srcdir}/venv-build"
   python -m venv "${_venvdir}"
   "${_venvdir}/bin/pip" install --upgrade pip setuptools wheel
   "${_venvdir}/bin/pip" install -r requirements.txt
 
-  # 3. Electron Runtime Scripts
   cd runtime
   sed -i '/"packageManager":/d' package.json
-  
-  # Patch source code to use system python instead of venv
+
   grep -rl "/venv/bin/python3" . | xargs sed -i 's|/venv/bin/python3|/usr/bin/python3|g' || true
-  # Patch source code to use absolute path for pgAdmin4.py
   grep -rl "/web/pgAdmin4.py" . | xargs sed -i 's|/web/pgAdmin4.py|/opt/pgadmin4-native/web/pgAdmin4.py|g' || true
-  
+
   yarn install --ignore-engines
 }
 
@@ -72,11 +67,9 @@ package() {
 
   mkdir -p "${_optdir}"
 
-  # --- Python ---
   mkdir -p "${_optdir}/python-packages"
   cp -a "${srcdir}/venv-build/lib/python${_py_ver}/site-packages/"* "${_optdir}/python-packages/"
-  
-  # Clean up garbage
+
   find "${_optdir}/python-packages" -name '__pycache__' -type d -exec rm -rf '{}' + 2>/dev/null || true
   find "${_optdir}/python-packages" -name '*.py[co]' -delete 2>/dev/null || true
   rm -rf "${_optdir}/python-packages/pip"
@@ -85,20 +78,17 @@ package() {
   rm -rf "${_optdir}/python-packages/_distutils_hack"
   rm -rf "${_optdir}/python-packages/distutils-precedence.pth"
 
-  # --- Web ---
   cp -a web "${_optdir}/web"
   rm -rf "${_optdir}/web/node_modules"
   rm -rf "${_optdir}/web/.yarn"
   rm -rf "${_optdir}/web/.cache"
 
-  # --- Runtime ---
   cp -a runtime "${_optdir}/runtime"
   rm -rf "${_optdir}/runtime/node_modules/electron"
   rm -rf "${_optdir}/runtime/node_modules/.cache"
-  rm -rf "${_optdir}/runtime/node_modules/.bin" 
+  rm -rf "${_optdir}/runtime/node_modules/.bin"
 
-  # --- Configs ---
-  cat > "${_optdir}/runtime/config.json" << EOF
+  cat >"${_optdir}/runtime/config.json" <<EOF
 {
   "pythonPath": "/usr/bin/python3",
   "pgadminFile": "/opt/pgadmin4-native/web/pgAdmin4.py"
@@ -106,7 +96,7 @@ package() {
 EOF
   cp "${_optdir}/runtime/config.json" "${_optdir}/web/config.json"
 
-  cat > "${_optdir}/web/config_distro.py" << EOF
+  cat >"${_optdir}/web/config_distro.py" <<EOF
 import os
 import sys
 
@@ -120,17 +110,14 @@ if _PKG_PATH not in sys.path:
     sys.path.insert(0, _PKG_PATH)
 EOF
 
-  # --- Symlinks ---
-
   mkdir -p "${_optdir}/venv/bin"
   ln -s /usr/bin/python3 "${_optdir}/venv/bin/python3"
 
   mkdir -p "${pkgdir}/web"
   ln -s /opt/pgadmin4-native/web/pgAdmin4.py "${pkgdir}/web/pgAdmin4.py"
 
-  # --- Launcher ---
   mkdir -p "${pkgdir}/usr/bin"
-  cat > "${pkgdir}/usr/bin/pgadmin4" << 'LAUNCHER'
+  cat >"${pkgdir}/usr/bin/pgadmin4" <<'LAUNCHER'
 #!/bin/bash
 set -e
 export PYTHONPATH="/opt/pgadmin4-native/python-packages"
@@ -157,7 +144,6 @@ exec "$_ELECTRON" /opt/pgadmin4-native/runtime
 LAUNCHER
   chmod 755 "${pkgdir}/usr/bin/pgadmin4"
 
-  # --- Desktop Integration ---
   install -Dm644 "${srcdir}/pgadmin4.desktop" \
     "${pkgdir}/usr/share/applications/pgadmin4.desktop"
   sed -i 's|^Exec=.*|Exec=/usr/bin/pgadmin4|' \

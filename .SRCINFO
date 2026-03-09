@@ -1,6 +1,6 @@
 pkgbase = pgadmin4-desktop-native
 	pkgdesc = pgAdmin 4 desktop (System Electron 34 + Venv libs) built from source
-	pkgver = 9.12
+	pkgver = 9.13
 	pkgrel = 1
 	url = https://www.pgadmin.org/
 	arch = x86_64
@@ -17,10 +17,10 @@ pkgbase = pgadmin4-desktop-native
 	depends = libsecret
 	options = !strip
 	options = !debug
-	source = https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v9.12/source/pgadmin4-9.12.tar.gz
+	source = https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v9.13/source/pgadmin4-9.13.tar.gz
 	source = pgadmin4.desktop
 	source = pgadmin4-128x128.png
-	sha256sums = f72f5d688eed9f65d523046492ce868bcb4251c04f763cb6b834b13be0ad6744
+	sha256sums = 57b6c55a7725c5ea8fcbe35480b2dd8998db5d3f32248a6db6b448813384267b
 	sha256sums = 676447c4c91cb291f50a6ec219e2fd024a0eabdedeac2be5cebaa594bfc00595
 	sha256sums = 65414f475058a5cf6f784ccfdbedb812083d72f1fd98889525f68f08a148820f
 
