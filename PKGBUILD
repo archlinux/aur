@@ -2,7 +2,7 @@
 
 _zig=0.14
 pkgname="tigerbeetle"
-pkgver=0.16.75
+pkgver=0.16.76
 pkgrel=1
 pkgdesc="The financial transactions database designed for mission critical safety and performance"
 arch=(
@@ -25,8 +25,8 @@ source=(
   "${_url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
   "${_pkgsrc}.github.json::https://api.github.com/repos/${pkgname}/${pkgname}/git/ref/tags/${pkgver}"
 )
-b2sums=('9b3c0f64b317cdf09c1d81622f5510d2f96ed7f8c2397686d4b8102e2035d3ec0a714e0ad1fa571401c10cbf8cc80dfe9ba23deaf79d09cf75561f0b3f947b5a'
-        'bc3bdf9ce2279341e39c817b42636646913774954406f4c5257e0061f10e6539a0ead3541aaeaa82661232d9e926e389307689f1ed3f0c9b3768821fa9d87217')
+b2sums=('e653ec56437593a39d998962ec1a841e00d503513145f0501f1fd8fc09d8ca687df8bcb175520e77338965c95fd7dd49ce50457c9092b5ab2513a08563ea0aaf'
+        '65d99cfede3f18c0a37d21ba2ac12cec494cc1872c792e42c10f279b96716b5ae58de593554dd96be8a86b739291435094e753c1256ca74d0fc640a6affee92e')
 
 build() {
   cd "${srcdir}"
