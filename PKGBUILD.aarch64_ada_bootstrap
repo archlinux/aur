@@ -22,7 +22,6 @@ source=(https://ftp.fu-berlin.de/unix/languages/gcc/releases/gcc-${pkgver}/gcc-$
         https://gmplib.org/download/gmp/gmp-${_gmpver}.tar.xz{,.sig}
         https://ftp.gnu.org/gnu/mpc/mpc-${_mpcver}.tar.gz
         https://www.mpfr.org/mpfr-${_mpfrver}/mpfr-${_mpfrver}.tar.xz{,.asc}
-        0002-libgccjit-Remove-obsolete-texinfo-statements.patch
         c89
         c99
         gcc-ada-repro.patch)
@@ -67,7 +66,6 @@ prepare() {
   sed -i '/lp64=/s/lib64/lib/' gcc/config/aarch64/t-aarch64-linux
 
   patch -Np0 -i ${srcdir}/gcc-ada-repro.patch
-  patch -Np1 -i ${srcdir}/0002-libgccjit-Remove-obsolete-texinfo-statements.patch
 
   mkdir -p ${srcdir}/gcc-build
 }
