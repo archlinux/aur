@@ -1,6 +1,6 @@
 pkgbase = bssh-bin
 	pkgdesc = SSH client for the Bastion
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/adfinis/bssh
 	license = GPL3
@@ -8,10 +8,10 @@ pkgbase = bssh-bin
 	conflicts = bssh
 	provides = bssh
 	arch = aarch64
-	source_aarch64 = https://github.com/adfinis/bssh/releases/download/v0.1.2/bssh-v0.1.2-linux-arm64.tar.gz
-	sha256sums_aarch64 = d9d055935a819937fef81502acd467bf8d2775be25cbde99ef009550967a9448
+	source_aarch64 = https://github.com/adfinis/bssh/releases/download/v0.1.3/bssh-v0.1.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = c89f7f05f9c38e3c8b53d9cf85d6a731fad2cfd525ab01e288500c1bc6d1c99d
 	arch = x86_64
-	source_x86_64 = https://github.com/adfinis/bssh/releases/download/v0.1.2/bssh-v0.1.2-linux-amd64.tar.gz
-	sha256sums_x86_64 = 9b43472e1879cd2fd28d07a6c651b93efb3155539db855f0382c1bd20dd82097
+	source_x86_64 = https://github.com/adfinis/bssh/releases/download/v0.1.3/bssh-v0.1.3-linux-amd64.tar.gz
+	sha256sums_x86_64 = 53a74abc6f6ed207d69e2fcaeded763b5861d8ce171d08c03a8507700b5828a9
 	
 pkgname = bssh-bin
