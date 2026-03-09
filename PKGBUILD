@@ -6,15 +6,16 @@ _pkgname="thorium-browser"
 pkgname="$_pkgname-bin"
 pkgbase="$pkgname"
 pkgver=138.0.7204.303
-pkgrel=1
+pkgrel=2
 pkgdesc="Chromium fork focused on high performance and security"
 url="https://github.com/Alex313031/thorium"
 license=('BSD-3-Clause')
 arch=('x86_64')
 
-options=('!emptydirs' '!strip' '!debug')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 
-install="$_pkgname.install"
+options=('!emptydirs' '!strip' '!debug')
 
 _dl_url="$url/releases/download/M${pkgver}"
 _dl_filename="${_pkgname}_${pkgver}_SSE3.deb"
@@ -27,40 +28,28 @@ prepare() {
   install -Dm644 /dev/stdin "$_pkgname.sh" << END
 #!/usr/bin/env bash
 
-# check microprocessor architecture level
-if grep -qsE '\bpni\b' /proc/cpuinfo ; then
-  _message=''
-  _message+=\$'The fastest browser on Earth.'
-else
-  _message=''
-  _message+=\$'Your processor does not support SSE3 instructions.\n'
-  _message+=\$'thorium-browser may not work on your computer.'
+set -euo pipefail
+
+name=thorium
+flags_file="\${XDG_CONFIG_HOME:-\$HOME/.config}/\${name}-flags.conf"
+
+lines=()
+if [[ -f "\${flags_file}" ]]; then
+  mapfile -t lines < "\${flags_file}"
 fi
 
-# Allow users to override command-line options
-XDG_CONFIG_HOME=\${XDG_CONFIG_HOME:-~/.config}
-_FLAGS_FILE="\$XDG_CONFIG_HOME/thorium-flags.conf"
+flags=()
+for line in "\${lines[@]}"; do
+  if [[ ! "\${line}" =~ ^[[:space:]]*#.* ]] && [[ -n "\${line}" ]]; then
+    flags+=("\${line}")
+  fi
+done
 
-if [[ -f "\$_FLAGS_FILE" ]]; then
-  _USER_FLAGS="\$(cat "\$_FLAGS_FILE")"
-fi
-
-# display processor support message
-if tty -s ; then
-  echo "\$_message"
-else
-  [ ! -e "\$XDG_CONFIG_HOME/thorium" ] && notify-send -a "thorium-browser" -t 7500 "\$_message"
-fi
-
-# Launch
-exec /opt/thorium-browser/thorium-browser \$_USER_FLAGS "\$@"
+exec /opt/thorium-browser/thorium-browser "\${flags[@]}" "\$@"
 END
 }
 
 package() {
-  provides=("$_pkgname")
-  conflicts=("$_pkgname")
-
   depends+=(
     'alsa-lib'
     'at-spi2-core'
@@ -78,9 +67,8 @@ package() {
   )
 
   echo "  -> Extracting the archive..."
-  bsdtar -xf "$_dl_filename" data.tar.xz
-  bsdtar -xf data.tar.xz -C "$pkgdir/"
-  rm data.tar.xz
+  bsdtar -xf "$_dl_filename" data.tar.*
+  bsdtar -C "$pkgdir/" -xf data.tar.*
 
   echo "  -> Moving files in place..."
   mv "$pkgdir/opt/chromium.org/thorium" "$pkgdir/opt/$_pkgname"
@@ -108,7 +96,6 @@ package() {
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/thorium-shell.png"
 
   # clean-up
-  echo "  -> Removing Debian Cron job, duplicate product logos and menu directory..."
   rm -r -- \
     "$pkgdir/opt/chromium.org" \
     "$pkgdir/etc/cron.daily/" \
