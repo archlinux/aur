@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=NUI
+Comment=Free and Open Source NATS management GUI.
+Exec=nui
+Icon=nui
+Terminal=false
+Type=Application
+Categories=Development;Network;
+StartupWMClass=nui
+

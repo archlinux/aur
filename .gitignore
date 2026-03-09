@@ -1,0 +1,11 @@
+pkg/
+src/
+
+*.pkg.tar
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.tar
+*.tar.gz
+*.zip
+
+linux-amd64-gtk40-nui-app

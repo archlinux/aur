@@ -1,0 +1,17 @@
+pkgbase = nui-bin
+	pkgdesc = Free and Open Source NATS management GUI.
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://natsnui.app/
+	arch = x86_64
+	license = Unlicense
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	source = https://github.com/nats-nui/nui/releases/download/v0.9.2/linux-amd64-gtk40-nui-app
+	source = nui.desktop
+	source = appicon.png
+	sha256sums = 987abf8f211b20bd9ad13de49aa31d2647db9cd202cd8ccac7f6f19589c4e4e8
+	sha256sums = 07066302a59c1497d0d52fcafcf340b3d48f481a52c1e06a84fa328bc2945118
+	sha256sums = d6ad5ba8a51b0e180a39b1e2e7bb8c3fb6fca11859b11b8dbc68090d88440824
+
+pkgname = nui-bin
