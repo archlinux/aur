@@ -1,6 +1,6 @@
 # Maintainer: Christian Burkard <phantinuss at gmx dot com>
 pkgname=yara-x
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="A pure Rust implementation of YARA"
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=('rust')
 provides=(yara-x)
 options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/VirusTotal/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a1690ad36b08fe0acd33916d4446deebb9adb8577f9a3720fe8559ce09b4549a')
+sha256sums=('3a251473fc75673196b0acd678893f90478b83a6dd5ce255f53e2ac086a50254')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
