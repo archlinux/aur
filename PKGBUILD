@@ -1,7 +1,7 @@
 # Maintainer: Javad <ja7ad@live.com>
 
 pkgname=electerm-live-bin
-pkgver=2.13.0
+pkgver=2.13.6
 pkgrel=1
 pkgdesc="An electron-based SSH/SFTP Connection manager and terminal (Live version)"
 arch=('x86_64' 'aarch64' 'armv7h')
