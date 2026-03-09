@@ -1,7 +1,7 @@
 pkgbase = perl-math-prime-util-gmp
 	pkgdesc = Math::Prime::Util::GMP - utilities related to prime numbers and factoring, using GMP
-	pkgver = 0.52
-	pkgrel = 3
+	pkgver = 0.52.git
+	pkgrel = 4
 	url = https://metacpan.org/release/Math-Prime-Util-GMP
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = perl-math-prime-util-gmp
 	depends = gmp>=6.1.1
 	depends = perl>=5.6.2
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/D/DA/DANAJ/Math-Prime-Util-GMP-0.52.tar.gz
-	b2sums = 765dff6a9898abe60038a68288061c8395d11b954c5fa46a9e71a94c88cb48dd4c02eead5a1b945757215863e9b318bd362fcd088c83d77245d23b8730071877
+	source = https://github.com/danaj/Math-Prime-Util-GMP/archive/27bac50f34b6784e8d197cf0eefd0f44406d1fa8.zip
+	b2sums = 32c595b11efa6b06dfd2ea79d070cfda5e1753f8032b6d8c8d041b03eabdb036f0d9a8b0ecb09a5afb0a664c2cbcbc77e1ddbe251e17e2fa83bc7c12d41a9b22
 
 pkgname = perl-math-prime-util-gmp
