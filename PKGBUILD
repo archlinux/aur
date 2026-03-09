@@ -1,7 +1,7 @@
 # Maintainer: danieltetraquark
 
 pkgname=grocy
-pkgver=4.5.0
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="web-based self-hosted groceries & household management solution for your home"
 depends=('php-interpreter' 'php-sqlite' 'php-gd' 'php-intl')
@@ -12,7 +12,7 @@ url="https://grocy.info/"
 source=(
 https://github.com/grocy/grocy/archive/v${pkgver}.zip
 )
-sha512sums=('923887bf2df06f64d27eb12096db835029eb03fdb36be6ba2a17fb07aea3375984ad18055cbf6cf06de8b0a7ef471f375134774dd997d01c57c8e1d9415744c3')
+sha512sums=('bfaa51b3c121ffb4935f8eefbf0d8353615925169d4b264922db4303c4e5baf7317d9607b60fb3efaeb2f2c07d6ef0c60a061ae71b45ed88bf4613a5253aab49')
 
 backup=('etc/webapps/grocy/config.php')
 
@@ -21,7 +21,7 @@ build() {
 
     # composer need to have php-gd extension enabled, otherwise it will fail for a dependency of grocy.
     # note: you may need to adjust your php open_basedir setting, so that php can run!
-    php -n -dextension=gd.so -dextension=intl.so /usr/bin/composer install --no-interaction --no-dev --optimize-autoloader
+    php -n -dextension=gd.so -dextension=intl.so -dextension=iconv.so /usr/bin/composer install --no-interaction --no-dev --optimize-autoloader
     php /usr/bin/composer clear-cache
 
     yarn install --modules-folder public/packages --production
@@ -36,7 +36,7 @@ package() {
 
 
     # install license
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # copy files to install directory
     cp -ra . "$_instdir"/
