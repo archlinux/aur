@@ -3,7 +3,7 @@
 
 _pkgname="glaxnimate"
 pkgname="$_pkgname-git"
-pkgver=0.5.4.r640.ge878910
+pkgver=0.6.0.r313.g2ef1d58
 pkgrel=1
 pkgdesc="Simple vector animation program"
 url="https://invent.kde.org/graphics/glaxnimate"
@@ -19,13 +19,11 @@ depends=(
   'ki18n'
   'kwidgetsaddons'
   'kxmlgui'
-  'libarchive'
   'potrace'
   'python'
   'qt6-tools'
 )
 makedepends=(
-  'clang' # lupdate/translations
   'cmake'
   'extra-cmake-modules'
   'git'
@@ -46,9 +44,7 @@ prepare() {
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 \
-    --exclude='*.[0-9][0-9]' \
-    --exclude='*[a-zA-Z][a-zA-Z]*' \
+  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
     | sed -E 's/^[^0-9]+//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
