@@ -1,6 +1,6 @@
 pkgbase = rgsm-bin
 	pkgdesc = A simple game save manager.(Prebuilt version)一个简单的游戏存档管理器
-	pkgver = 1.6.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://help.sworld.club/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = rgsm-bin
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	depends = alsa-lib
-	provides = rgsm=1.6.0
+	provides = rgsm=1.8.0
 	conflicts = rgsm
-	source = rgsm-1.6.0.rpm::https://github.com/mcthesw/game-save-manager/releases/download/v1.6.0/RGSM-1.6.0-1.x86_64.rpm
-	sha256sums = 343b19e63615b787c0bc1c8e5855a301c7d55153d22ef307bf8fe111f09bf983
+	source = rgsm-1.8.0.rpm::https://github.com/mcthesw/game-save-manager/releases/download/v1.8.0/RGSM-1.8.0-1.x86_64.rpm
+	sha256sums = d0da7d5087d8778ba4ec249c6a5e4acf7955775be2b7c762f617984fa81deb70
 
 pkgname = rgsm-bin
