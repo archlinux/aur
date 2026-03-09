@@ -1,6 +1,6 @@
 pkgbase = mockery-bin
 	pkgdesc = A mock code autogenerator for golang.(Prebuilt version)
-	pkgver = 3.6.4
+	pkgver = 3.7.0
 	pkgrel = 1
 	url = https://github.com/vektra/mockery
 	arch = aarch64
@@ -8,12 +8,12 @@ pkgbase = mockery-bin
 	license = BSD-3-Clause
 	optdepends = zsh: for zsh completion
 	optdepends = fish: for fish completion
-	provides = mockery=3.6.4
+	provides = mockery=3.7.0
 	conflicts = mockery
 	conflicts = golang-mockery
-	source_aarch64 = mockery-3.6.4-aarch64.tar.gz::https://github.com/vektra/mockery/releases/download/v3.6.4/mockery_3.6.4_Linux_arm64.tar.gz
-	sha256sums_aarch64 = cc1f1bbf5709197f64171c907429f5920cd66b7594185948a2621a803b198758
-	source_x86_64 = mockery-3.6.4-x86_64.tar.gz::https://github.com/vektra/mockery/releases/download/v3.6.4/mockery_3.6.4_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 0702aae87aa6ff4b56628984112a01c3ba50e4eede1b09404171631e4dbea7b1
+	source_aarch64 = mockery-3.7.0-aarch64.tar.gz::https://github.com/vektra/mockery/releases/download/v3.7.0/mockery_3.7.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 94dab8c6d8421630da51fe950b4f0f1180e5bef6022a3a5b3fe537acace94741
+	source_x86_64 = mockery-3.7.0-x86_64.tar.gz::https://github.com/vektra/mockery/releases/download/v3.7.0/mockery_3.7.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 5e10597d9741d7b8cda699f044b24c9e8b51467dce413e79516d7cd9373c2896
 
 pkgname = mockery-bin
