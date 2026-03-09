@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=sokuji-bin
 _pkgname=Sokuji
-pkgver=0.15.1
+pkgver=0.15.4
 _electronversion=40
 pkgrel=1
 pkgdesc="Provide real-time simultaneous interpretation using OpenAI's Realtime API.(Prebuilt version.Use system-wide electron)"
@@ -17,7 +17,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('6e11e38e4457c6c744aac9fb385311b339b49bffa7faf40ed47636617c454e56'
+sha256sums=('73f19045e300d4004225ff85155fbfe391cdd632916edb49962411d0ed6b4d9b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/lib/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
