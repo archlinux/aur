@@ -1,0 +1,18 @@
+pkgbase = ionix-openconnect-tools
+	pkgdesc = CLI utility for managing and connecting to OpenConnect VPN servers
+	pkgver = r3.VERSION
+	pkgrel = 1
+	url = https://github.com/LucasionGS/openconnect-tools
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = openconnect
+	depends = iproute2
+	optdepends = openconnect-sso: Required for SSO-based VPN connections
+	provides = ionix-openconnect-tools
+	conflicts = ionix-openconnect-tools
+	source = ionix-openconnect-tools::git+https://github.com/LucasionGS/openconnect-tools.git
+	sha256sums = SKIP
+
+pkgname = ionix-openconnect-tools
