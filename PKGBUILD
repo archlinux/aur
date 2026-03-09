@@ -1,7 +1,7 @@
 # Maintainer: Javad <ja7ad@live.com>
 
 pkgname=drawio-live-bin
-pkgver=29.5.2
+pkgver=29.6.1
 pkgrel=1
 pkgdesc="Diagram drawing application desktop built on web technology (Live version)"
 arch=('x86_64' 'aarch64')
