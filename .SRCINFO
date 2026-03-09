@@ -1,0 +1,80 @@
+pkgbase = native-linux-cachyos
+	pkgdesc = Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements.
+	pkgver = 6.19.6
+	pkgrel = 1
+	url = https://github.com/CachyOS/linux-cachyos
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = bc
+	makedepends = cpio
+	makedepends = gettext
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = perl
+	makedepends = python
+	makedepends = rust
+	makedepends = rust-bindgen
+	makedepends = rust-src
+	makedepends = tar
+	makedepends = xz
+	makedepends = zstd
+	makedepends = clang
+	makedepends = llvm
+	makedepends = lld
+	options = !strip
+	options = !debug
+	options = !lto
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-6.19.6-1/cachyos-6.19.6-1.tar.gz
+	source = config
+	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.19/misc/dkms-clang.patch
+	source = https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-590.48.01.tar.xz
+	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.19/misc/nvidia/0001-Enable-atomic-kernel-modesetting-by-default.patch
+	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.19/misc/nvidia/0002-Add-IBT-support.patch
+	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.19/misc/nvidia/0003-Fix-compile-for-6.19.patch
+	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/6.19/sched/0001-bore-cachy.patch
+	b2sums = a0885a688e8ea83da755115a86926134f8795b93c7d2eb1c00baff521ed10ba0aeb2691ad26454da20f2cecb169b6d655705b7e11fa6d108428ca1d2c0e5d696
+	b2sums = 0c0cfb1e9ae31904cb86a194fa04d04336574a80a3559e6e295ca8ed3b226886d7dcd2cb45527382bec457b013984d6352b1900feb3a3d96ace0c7c5f5c5ffa7
+	b2sums = ea26c88950fc06b6ffab93b30e3beacc7d26571a70262334ca8b001dc7899bf96b47d703fbaa7f4e47765c3dafccc23c58a4d4da2169b8ee50012afcb7a1dd96
+	b2sums = eae57ceccc78f0730fc4962b20f08f270bd21960e84ad5985433590e5229403a74bfc2518540f9e2ef07d319d9cb2288edfbe0d5f7a27cc7e0903aa61fed388c
+	b2sums = 05a3cc4954a37897d08e93e8ea1726fc395a12cfb1509f09560bdcf0ae14ed4ca518fda566a618c92db0fb6573e3ed7d02172dd76a3b145982060e060525365b
+	b2sums = bccb4169c43e556f10cddaf8f101cc0b29209f984b9f681f266602a359bc6b4765b48d192006decd23667bd2b899fad9c1fd5b742251014dacc7c077ea023e0f
+	b2sums = ea69dc26bf4f55e984fb2f3c2c70ccf537307ab2a2c156077202410d7ac989d1552d780928866c177327b4260634ad04946e3ea1f04705d5549e65574bc3e8e2
+	b2sums = 226c64dd989ec0c4c444d048707e5d56be4a7ffa59ada31f197015c65a87e7935c8a0a1d6a9d35947e60f90505e5cffb3df9824aec71b2f188bcaa2e89403e0b
+
+pkgname = native-linux-cachyos
+	pkgdesc = The Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements. kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig
+	optdepends = scx-scheds: to use sched-ext schedulers
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = KSMBD-MODULE
+	provides = V4L2LOOPBACK-MODULE
+	provides = NTSYNC-MODULE
+	provides = VHBA-MODULE
+	provides = ADIOS-MODULE
+	provides = linux-cachyos-lto=6.19.6-1
+	replaces = linux-cachyos-lto
+
+pkgname = native-linux-cachyos-headers
+	pkgdesc = Headers and scripts for building modules for the Linux EEVDF + LTO + AutoFDO + Propeller Cachy Sauce Kernel by CachyOS with other patches and improvements. kernel
+	depends = pahole
+	depends = native-linux-cachyos
+	depends = clang
+	depends = llvm
+	depends = lld
+	provides = linux-cachyos-lto-headers=6.19.6-1
+	replaces = linux-cachyos-lto-headers
+
+pkgname = native-linux-cachyos-nvidia-open
+	pkgdesc = nvidia open modules of 590.48.01 driver for the native-linux-cachyos kernel
+	license = MIT AND GPL-2.0-only
+	depends = native-linux-cachyos=6.19.6-1
+	depends = nvidia-utils=590.48.01
+	depends = libglvnd
+	provides = NVIDIA-MODULE
+	conflicts = native-linux-cachyos-nvidia
