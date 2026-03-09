@@ -26,22 +26,60 @@ optdepends=(
 provides=('ssmt4-linux')
 conflicts=('ssmt4-linux-git')
 
-_github_repo='https://github.com/xiaobai14491-afk/SSMT4-Linux-bak.git'
+_github_repo='https://github.com/xiaobai14491-afk/SSMT4-Linux.git'
+_github_backup_repo='https://github.com/xiaobai14491-afk/SSMT4-Linux-bak.git'
 _gitee_repo='https://gitee.com/xiaobai01111/ssmt4-linux.git'
 _source_repo="${SSMT4_AUR_SOURCE_REPO:-}"
+_source_tag="${pkgver//_/-}"
+
+_probe_repo_tag() {
+  local repo_url="$1"
+  GIT_TERMINAL_PROMPT=0 git ls-remote --exit-code --refs "${repo_url}" "refs/tags/${_source_tag}" >/dev/null 2>&1
+}
+
+_select_first_available_repo() {
+  local repo_url
+  for repo_url in "${_github_repo}" "${_github_backup_repo}" "${_gitee_repo}"; do
+    if _probe_repo_tag "${repo_url}"; then
+      printf '%s\n' "${repo_url}"
+      return 0
+    fi
+  done
+
+  printf '%s\n' "${_gitee_repo}"
+}
+
+_select_github_repo() {
+  local repo_url
+  for repo_url in "${_github_repo}" "${_github_backup_repo}"; do
+    if _probe_repo_tag "${repo_url}"; then
+      printf '%s\n' "${repo_url}"
+      return 0
+    fi
+  done
+
+  printf '%s\n' "${_github_repo}"
+}
+
 if [[ -z "${_source_repo}" ]]; then
-  case "${SSMT4_AUR_SOURCE_MIRROR:-github}" in
+  case "${SSMT4_AUR_SOURCE_MIRROR:-auto}" in
+    auto|'')
+      _source_repo="$(_select_first_available_repo)"
+      ;;
     gitee)
       _source_repo="${_gitee_repo}"
       ;;
+    github)
+      _source_repo="$(_select_github_repo)"
+      ;;
     *)
-      _source_repo="${_github_repo}"
+      _source_repo="$(_select_first_available_repo)"
       ;;
   esac
 fi
 
 source=(
-  "git+${_source_repo}#tag=${pkgver//_/-}"
+  "git+${_source_repo}#tag=${_source_tag}"
 )
 sha256sums=('SKIP')
 
