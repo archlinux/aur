@@ -3,7 +3,7 @@
 
 pkgname=subfinder-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.12.0
+pkgver=2.13.0
 pkgrel=1
 pkgdesc="A subdomain discovery tool that discovers valid subdomains for websites"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -18,10 +18,10 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.zip::${url}/releases/download/v${pk
 source_armv7h=("${_pkgname}-${pkgver}-armv7h.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm.zip")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.zip")
 b2sums=('c699be7ccfc40564b59bfa217e254c9553678f343466becebad5017d81310d7b7519837a9a25df2e09e16b6e1bd5a209d7aeb039662a206dd8966b9697c02ede')
-b2sums_i686=('fc54ecfc9422f205da673b174dfd0ebf3254e2f68f40fffad6136051639487c23c4b19a6c23a25f8bf397e2f70dc601ddd0092e2e0a719c853f8564382c6ac80')
-b2sums_x86_64=('821f93f916fc28c682c77b378e7f16c7836f455e8c8a507c828b6a56dc587800d37946e387e5f0918914af990031f2d8d526332f277138cc065770c1fcbd6c51')
-b2sums_armv7h=('7efb9a90a93db9920cdac565be679d9d5f14b90df5b3dabe733bfe4e6fc135b6d63d5f2cdfc364e8ab924857802f2417264d09263f2d552aa98625d5e98d16bb')
-b2sums_aarch64=('32a2fd8806664b04f7f37b0655dd0acd82a0e6c58cc5980b54ea6a14212cb6ae3c9177bef7994ed2a672d77368e801e1c6739112901b1f3a09ca405f25e42509')
+b2sums_i686=('adcd6aefc723f0655a0340f8e5d16c3fd1da184dced35b8147ab5cc468e1e9f4062ec2ac73127cdea90cba14eadbf9f8a6f32d1b7f38f26d4e5e0337539599f9')
+b2sums_x86_64=('c971689ed7a8e1be5869170a514b71196501baa16b9f02e66688ab17c1ad2b0c84cfeebd8b886c656990e7fd340744ef851f07540ea6f7211e1530dee77d81f2')
+b2sums_armv7h=('f7b59840de8c31185353a2a1a6e63909598fac3c416ef9086bc9f78272d833935a807b6d497d09a3b3a890d2c130dac886cbd83f570ee05cd810a060dea9000d')
+b2sums_aarch64=('9dcb5da81397b16e543d7cca8e469415c5c06ee3bf4167ec88f08ed50d3bbd61324e1bbddeea39638808cd5f3d2a55a4b3cffa26fc19553d86f7f9fc6c81aa63')
 
 package() {
   install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.md
