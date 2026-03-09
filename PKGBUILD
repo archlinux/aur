@@ -7,7 +7,7 @@
 _pkgname=emerald
 pkgname=emerald-gtk3
 pkgver=0.8.18
-pkgrel=4
+pkgrel=5
 pkgdesc="Emerald window decorator"
 arch=(x86_64)
 url="https://gitlab.com/compiz/${_pkgname}/"
