@@ -7,7 +7,7 @@ _nodeversion=24
 pkgrel=1
 pkgdesc="GitHub Issue/Pull Request/Release viewer.(Use system-wide electron)"
 arch=('any')
-url="https://ghfast.top/https://github.com/ytakahashi/miru"
+url="https://github.com/ytakahashi/miru"
 license=('MIT')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
