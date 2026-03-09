@@ -1,7 +1,7 @@
 pkgbase = linux-cachyos-rc-native
 	pkgdesc = Linux BORE + LTO + AutoFDO + Propeller + Cachy Sauce Kernel by CachyOS with other patches and improvements - Release Candidate
-	pkgver = 7.0.rc1
-	pkgrel = 1.4
+	pkgver = 7.0.rc3
+	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
 	license = GPL-2.0-only
@@ -24,7 +24,7 @@ pkgbase = linux-cachyos-rc-native
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0-rc1-2/cachyos-7.0-rc1-2.tar.gz
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-7.0-rc3-1/cachyos-7.0-rc3-1.tar.gz
 	source = config
 	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/misc/dkms-clang.patch
 	source = https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/NVIDIA-kernel-module-source-590.48.01.tar.xz
@@ -33,8 +33,8 @@ pkgbase = linux-cachyos-rc-native
 	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/misc/nvidia/0003-Fix-compile-for-6.19.patch
 	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/misc/nvidia/0004-HACK-kernel-open-Makefile-Remove-PAHOLE_VARIABLE.patch
 	source = https://raw.githubusercontent.com/cachyos/kernel-patches/master/7.0/sched/0001-bore-cachy.patch
-	b2sums = 4481052eed14653ef91df56644fdaf87f7a121fc496bc20c3a375e9e3d7e24914555fa2d1cd8a10916c5052b087a1b35bb42d3108b37d15a12d2e625992a5c9a
-	b2sums = e437102e72e5822db50498926edb6b4d156a7d53fa33a3d34063c60824034014285c54a470b60cf8f9e0792c62b7f0e60ca86a67cef1ba94fba3564db8e2955e
+	b2sums = 45420084bee62fe4021572732249886bfb55b3e6614b755aa3b4163b04fba60f5edabae6c72a854aa6197b1f0655a9653a6d8a9cdea8e49fe1b6277b482be774
+	b2sums = 4fe1c43c013275094a84b032addbb5327e0338fe2340d7c06b491c1ff81a743961bde86ec05421257807d34c4685d6d629d9f32ea5a55f6c03981690bc0ea9ce
 	b2sums = c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e
 	b2sums = eae57ceccc78f0730fc4962b20f08f270bd21960e84ad5985433590e5229403a74bfc2518540f9e2ef07d319d9cb2288edfbe0d5f7a27cc7e0903aa61fed388c
 	b2sums = 05a3cc4954a37897d08e93e8ea1726fc395a12cfb1509f09560bdcf0ae14ed4ca518fda566a618c92db0fb6573e3ed7d02172dd76a3b145982060e060525365b
@@ -71,7 +71,7 @@ pkgname = linux-cachyos-rc-native-headers
 pkgname = linux-cachyos-rc-native-nvidia-open
 	pkgdesc = nvidia open modules of 590.48.01 driver for the linux-cachyos-rc-native kernel
 	license = MIT AND GPL-2.0-only
-	depends = linux-cachyos-rc-native=7.0.rc1-1.4
+	depends = linux-cachyos-rc-native=7.0.rc3-1
 	depends = nvidia-utils=590.48.01
 	depends = libglvnd
 	provides = NVIDIA-MODULE

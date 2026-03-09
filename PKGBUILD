@@ -1,4 +1,4 @@
-# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-03-09 06:21:17
+# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-03-09 09:16:33
 
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Maintainer: Piotr Gorski <piotrgorski@cachyos.org>
@@ -18,7 +18,7 @@
 # 'bore' - select 'Burst-Oriented Response Enhancer'
 # 'bmq' - select 'BMQ Scheduler'
 # 'hardened' - select 'BORE Scheduler hardened' ## kernel with hardened config and hardening patches with the bore scheduler
-# 'cachyos' - select 'CachyOS Default Scheduler (BORE)'
+# 'cachyos' - select 'CachyOS Default Scheduler (EEVDF)'
 # 'eevdf' - select 'EEVDF Scheduler'
 # 'rt' - select EEVDF, but includes a series of realtime patches
 # 'rt-bore' - select Burst-Oriented Response Enhancer, but includes a series of realtime patches
@@ -172,12 +172,12 @@ fi
 
 pkgbase="linux-cachyos-rc-native"
 _major=7.0
-_minor=rc1
+_minor=rc3
 #_minorc=$((_minor+1))
-_rcver=rc1
+_rcver=rc3
 pkgver=${_major}.${_rcver}
-_tagrel=2
-pkgrel=1.4
+_tagrel=1
+pkgrel=1
 #_stable=${_major}.${_minor}
 #_stable=${_major}
 _stable=${_major}-${_rcver}
@@ -267,7 +267,7 @@ fi
 
 ## List of CachyOS schedulers
 case "$_cpusched" in
-    cachyos|bore|rt-bore|hardened) # CachyOS Scheduler (BORE)
+    bore|rt-bore|hardened) # CachyOS Scheduler (BORE)
         source+=("${_patchsource}/sched/0001-bore-cachy.patch");;&
     bmq) ## Project C Scheduler
         source+=("${_patchsource}/sched/0001-prjc-cachy.patch");;
@@ -805,8 +805,8 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('4481052eed14653ef91df56644fdaf87f7a121fc496bc20c3a375e9e3d7e24914555fa2d1cd8a10916c5052b087a1b35bb42d3108b37d15a12d2e625992a5c9a'
-        'e437102e72e5822db50498926edb6b4d156a7d53fa33a3d34063c60824034014285c54a470b60cf8f9e0792c62b7f0e60ca86a67cef1ba94fba3564db8e2955e'
+b2sums=('45420084bee62fe4021572732249886bfb55b3e6614b755aa3b4163b04fba60f5edabae6c72a854aa6197b1f0655a9653a6d8a9cdea8e49fe1b6277b482be774'
+        '4fe1c43c013275094a84b032addbb5327e0338fe2340d7c06b491c1ff81a743961bde86ec05421257807d34c4685d6d629d9f32ea5a55f6c03981690bc0ea9ce'
         'c992567bd7dd8553432be496ffa1c17e2f5ebe9c7edb51945cf977e1b742dd6517c210d8843bb82744ca705efd07f8027cd7dde41b50215ebd707a34aa81462e'
         'eae57ceccc78f0730fc4962b20f08f270bd21960e84ad5985433590e5229403a74bfc2518540f9e2ef07d319d9cb2288edfbe0d5f7a27cc7e0903aa61fed388c'
         '05a3cc4954a37897d08e93e8ea1726fc395a12cfb1509f09560bdcf0ae14ed4ca518fda566a618c92db0fb6573e3ed7d02172dd76a3b145982060e060525365b'
