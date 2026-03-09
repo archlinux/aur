@@ -1,5 +1,5 @@
 pkgname=batctl-tui
-pkgver=2026.3.8
+pkgver=2026.3.9
 pkgrel=1
 pkgdesc="TUI and CLI tool for managing battery charge thresholds on Linux laptops"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('go')
 options=(!debug)
 backup=('etc/batctl.conf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('87ff5f5bfefa1aea1663a77ebba48c1cd8f486415b0c86240a5373b3886f2cef')
+sha256sums=('a8d806565b939be20cbe211c20e4a7db6ce84c44ea34b6e931ea2f50d3fe3aff')
 
 build() {
     cd "${srcdir}/batctl-${pkgver}"
