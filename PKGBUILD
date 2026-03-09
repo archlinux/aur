@@ -4,7 +4,7 @@
 pkgname=refind-r
 _pkgname=refind
 _reponame=refind-code
-_tag=v.0.14.2R3
+_tag=v.0.14.2R4
 pkgver=${_tag#v.}
 pkgrel=1
 pkgdesc="An EFI boot manager fork with Screen Rotation Support"
@@ -46,8 +46,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 source=("$url/archive/refs/tags/${_tag}.tar.gz")
-sha512sums=('29435429aa9c62679663f8507d9206a240028a6ee450f2ff3328177f5892f15a89bf4c95908dbd73f1db27f43f66e81f1ee0a0c74e361a74fe5df55cd76d9ec1')
-b2sums=('915a4028e8cc938719699089d1c14370b68fb2f2eb235058d127ff2d2cf0f6e43e4085d21411fb59087b927484d03d0365d4616e37dd8f0ff938359ee146272e')
+sha256sums=('74c9cd52d7116212b373db11e138cd842dc69ff1d3919561bc6fe9fd969bf9ac')
 _arch='x64'
 
 prepare() {
