@@ -41,5 +41,5 @@ build() {
 
 package() {
     cd "$srcdir/lektra"
-	DESTDIR="$pkgdir/" cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }
