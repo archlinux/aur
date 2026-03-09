@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-getdist
 _name=${pkgname#python-}
-pkgver=1.7.2
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="MCMC sample analysis, kernel densities, plotting, and GUI"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('1045b0fbc603207cf1cd6febadff796316cbb05542a42b2985d471dff85dd692')
+sha256sums=('b0295c10e861db3ed9439eac88d8dc452e93d67173b5723756b0658b9694f98c')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
