@@ -1,0 +1,69 @@
+_check_portal() {
+  local portals=(
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-kde
+    xdg-desktop-portal-gnome
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-lxqt
+    xdg-desktop-portal-cosmic
+    xdg-desktop-portal-xapp
+  )
+
+  for portal in "${portals[@]}"; do
+    if pacman -Qq "$portal" &>/dev/null; then
+      return 0
+    fi
+  done
+
+  echo ""
+  echo "WARNING: No xdg-desktop-portal backend detected."
+  echo "The GUI file picker (walt gui) requires one to open folder dialogs."
+  echo "For Hyprland, install the recommended backend:"
+  echo "  sudo pacman -S xdg-desktop-portal-hyprland"
+  echo ""
+}
+
+post_install() {
+  echo ""
+  echo "Walt has been installed to /usr/bin/walt."
+  echo ""
+  echo "Add a keybind in ~/.config/hypr/hyprland.conf for your terminal:"
+  echo ""
+  echo "  # Ghostty"
+  echo "  bind = \$mainMod SHIFT, D, exec, ghostty --class=walt -e walt"
+  echo "  bind = \$mainMod CTRL, D, exec, walt gui"
+  echo "  bind = \$mainMod, D, exec, walt random"
+  echo ""
+  echo "  # WezTerm"
+  echo "  bind = \$mainMod SHIFT, D, exec, wezterm start --class walt -- walt"
+  echo "  bind = \$mainMod CTRL, D, exec, walt gui"
+  echo "  bind = \$mainMod, D, exec, walt random"
+  echo ""
+  echo "  # Kitty"
+  echo "  bind = \$mainMod SHIFT, D, exec, kitty --class walt -e walt"
+  echo "  bind = \$mainMod CTRL, D, exec, walt gui"
+  echo "  bind = \$mainMod, D, exec, walt random"
+  echo ""
+  echo "Optional floating window rules:"
+  echo ""
+  echo "  windowrulev2 = float, class:^(walt)$"
+  echo "  windowrulev2 = size 900 600, class:^(walt)$"
+  echo "  windowrulev2 = center, class:^(walt)$"
+  echo ""
+  echo "First run:"
+  echo "  1. Copy the path to your wallpaper directory."
+  echo "  2. Launch Walt with \`walt\` or \`walt gui\`."
+  echo "  3. Add the directory path inside the app."
+  echo ""
+  echo "Make sure you have:"
+  echo "  - hyprpaper installed and running"
+  echo "  - A terminal with image preview support"
+  echo ""
+
+  _check_portal
+}
+
+post_upgrade() {
+  post_install
+}
