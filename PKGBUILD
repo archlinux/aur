@@ -6,10 +6,10 @@
 pkgname=python-trezor
 _pkgname=${pkgname#python-}
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Python 3 library for communicating with the TREZOR Bitcoin hardware wallet'
 arch=('any')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-hatchling')
 depends=('protobuf'
          'python'
          'python-ecdsa'
