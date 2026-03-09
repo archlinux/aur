@@ -3,7 +3,7 @@
 
 pkgname=recyclarr
 _pkgname=Recyclarr
-pkgver=8.3.2
+pkgver=8.4.0
 pkgrel=1
 pkgdesc='Automatically synchronize recommended settings from the TRaSH guides to your Sonarr/Radarr instances.'
 arch=(x86_64 aarch64 armv7h)
@@ -29,12 +29,12 @@ source=(
   recyclarr.tmpfiles
   recyclarr.yml
 )
-sha256sums=('2db5e179ecf109aaf05110c1fe427e77bf8ca606f20ba2d1fa61627c2ac27d02'
-            '3e7bb0ca28665de77b939f6b8e316f6708c8e8a97a64ad589b217583dee0e74e'
+sha256sums=('4223860290060356a5076ad7af4aaea9000a61d438685f724a666604cfa948f9'
+            'e4f80919f14609d8aec9ebf3b8f219a3b43f1cf271a41d52c0d9e650df968e25'
             '3d2a1b3690d956a8f195c2cd1b28c28beecda354023e8de78471ca35610fb57d'
             'e8a2959e079a6a77c3eefaf77defd69e76944c2a1378257dcaf0286abde002a6'
             '458b7c0550f3c2e41f63bac197ce55a5699432ee24080f7917b001c0eec2c7ec'
-            'f0b6b437fad6072f55be0eb57c4eaf6a44eecda4588633edd5ad716ea3e41c7d')
+            'ed7f78e603f778e8a80aeb73d4e4781ff900fed8704d72ea7e2d48205f1cc0eb')
 
 case ${CARCH} in
   x86_64) _CARCH='x64' ;;

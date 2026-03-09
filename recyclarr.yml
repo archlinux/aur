@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/recyclarr/recyclarr/master/schemas/config-schema.json
+# yaml-language-server: $schema=https://schemas.recyclarr.dev/v8/config-schema.json
 
 # A starter config to use with Recyclarr. Most values are set to "reasonable defaults". Update the
 # values below as needed for your instance. You will be required to update the API Key and URL for
@@ -14,62 +14,152 @@
 # For more details on the configuration, see the Configuration Reference on the wiki here:
 # https://recyclarr.dev/wiki/yaml/config-reference/
 
-# Configuration specific to Sonarr
 sonarr:
-  series:
-    # Set the URL/API Key to your actual instance
-    base_url: http://localhost:8989
-    api_key: YOUR_KEY_HERE
+  web-1080p:
+    base_url: Put your Sonarr URL here
+    api_key: Put your API key here
 
-    # Quality definitions from the guide to sync to Sonarr. Choices: series, anime
     quality_definition:
       type: series
 
-    # Release profiles from the guide to sync to Sonarr v3 (Sonarr v4 does not use this!)
-    # Use `recyclarr list release-profiles` for values you can put here.
-    # https://trash-guides.info/Sonarr/Sonarr-Release-Profile-RegEx/
-    release_profiles:
-      # Series
-      - trash_ids:
-          - EBC725268D687D588A20CBC5F97E538B # Low Quality Groups
-          - 1B018E0C53EC825085DD911102E2CA36 # Release Sources (Streaming Service)
-          - 71899E6C303A07AF0E4746EFF9873532 # P2P Groups + Repack/Proper
-      # Anime (Uncomment below if you want it)
-      #- trash_ids:
-      #    - d428eda85af1df8904b4bbe4fc2f537c # Anime - First release profile
-      #    - 6cd9e10bb5bb4c63d2d7cd3279924c7b # Anime - Second release profile
+    quality_profiles:
+      - trash_id: 72dae194fc92bf828f32cde7744e51a1 # WEB-1080p
+        reset_unmatched_scores:
+          enabled: true
 
-# Configuration specific to Radarr.
+    custom_format_groups:
+      ################################################################################
+      ## These groups are NOT synced by default. Uncomment to enable. Use `select:` to
+      ## choose specific CFs within a group.
+      ##
+      ## To uncomment, remove `# ` (hash + space) so that indentation stays aligned.
+      ## Most editors do this automatically with toggle-comment (Ctrl+/).
+      ##
+      ## https://recyclarr.dev/guide/cf-groups/
+      ################################################################################
+      add:
+        - trash_id: 158188097a58d7687dee647e04af0da3 # [Required] Golden Rule HD
+          select:
+            - 47435ece6b99a0b477caf360e79ba0bb # x265 (HD)
+            # - 9b64dff695c2115facf1b6ea59c9bd07  # x265 (no HDR/DV)
+        # - trash_id: d920fd959d220306888f40b6f38e1578  # [Optional] Season Packs
+        # - trash_id: 35fb4585dcd9e2a5ac732e4309f5a45a  # [Streaming Services] Asian
+        # - trash_id: f60f4401ce880aad62e9d21c8bb6b91a  # [Streaming Services] Dutch
+        # - trash_id: 848fd356c200568fc5a6248150e7e7ea  # [Streaming Services] French
+        # - trash_id: ddab3095a5d2f436f369263840af34f9  # [Streaming Services] UK
+        # - trash_id: f4a0410a1df109a66d6e47dcadcce014  # [Optional] Miscellaneous
+        #   select:
+        #     - 32b367365729d530ca1c124a0b180c64  # Bad Dual Groups
+        #     - ef4963043b0987f8485bc9106f16db38  # DV (Disk)
+        #     - 1bd69272e23c5e6c5b1d6c8a36fce95e  # HFR
+        #     - 7ba05c6e0e14e793538174c679126996  # MULTi
+        #     - 82d40da2bc6923f41e14394075dd4b03  # No-RlsGroup
+        #     - e1a997ddb54e3ecbfe06341ad323c458  # Obfuscated
+        #     - 06d66ab109d4d2eddb2794d21526d140  # Retags
+        #     - 1b3994c551cbb92a2c781af061f4ab44  # Scene
+        #     - 7470a681e6205243983c4410ee4c920f  # VC-1
+        #     - 90501962793d580d011511155c97e4e5  # VP9
+        #     - cddfb4e32db826151d97352b8e37c648  # x264
+        #     - c9eafd50846d299b862ca9bb6ea91950  # x265
+        #     - 041d90b435ebd773271cea047a457a6a  # x266
+        # - trash_id: 7832db22b71ab669458c17a2850d6913  # [Streaming Services] Miscellaneous
+        #   select:
+        #     - e6e299075e22ac8f541f722254c8350a  # AUBC
+        #     - defb0b4c8b3f6a15927c0f14c6e69c94  # CBC
+        #     - 4e9a630db98d5391aec1368a0256e2fe  # CRAV
+        #     - dc5f2bb0e0262155b5fedd0f6c5d2b55  # DSCP
+        #     - fb1a91cdc0f26f7ca0696e0e95274645  # OViD
+        #     - fe4062eac43d4ea75955f8ae48adcf1e  # STRP
+        #     - c30d2958827d1867c73318a5a2957eb1  # RED
+        #     - 3ac5d84fce98bab1b531393e9c82f467  # QIBI
+
+      ################################################################################
+      ## These groups ARE synced by default. Uncomment to disable.
+      ##
+      ## https://recyclarr.dev/guide/cf-groups/
+      ################################################################################
+      skip:
+        # - abe720fab2d27682adc2a735136cec02  # [Streaming Services] General
+
+################################################################################
+## TRaSH Guides: HD Bluray + WEB
+##
+## https://trash-guides.info/Radarr/radarr-setup-quality-profiles/#hd-bluray-web
+################################################################################
+
 radarr:
-  movies:
-    # Set the URL/API Key to your actual instance
-    base_url: http://localhost:7878
-    api_key: YOUR_KEY_HERE
+  hd-bluray-web:
+    base_url: Put your Radarr URL here
+    api_key: Put your API key here
 
-    # Which quality definition in the guide to sync to Radarr. Only choice right now is 'movie'
     quality_definition:
       type: movie
 
-    # Set to 'true' to automatically remove custom formats from Radarr when they are removed from
-    # the guide or your configuration. This will NEVER delete custom formats you manually created!
-    delete_old_custom_formats: false
+    quality_profiles:
+      - trash_id: d1d67249d3890e49bc12e275d989a7e9 # HD Bluray + WEB
+        reset_unmatched_scores:
+          enabled: true
 
-    custom_formats:
-      # A list of custom formats to sync to Radarr.
-      # Use `recyclarr list custom-formats radarr` for values you can put here.
-      # https://trash-guides.info/Radarr/Radarr-collection-of-custom-formats/
-      - trash_ids:
-          - ed38b889b31be83fda192888e2286d83 # BR-DISK
-          - 90cedc1fea7ea5d11298bebd3d1d3223 # EVO (no WEBDL)
-          - 90a6f9a284dff5103f6346090e6280c8 # LQ
-          - dc98083864ea246d05a42df0d05f81cc # x265 (720/1080p)
-          - b8cd450cbfa689c0259a01d9e29ba3d6 # 3D
+    custom_format_groups:
+      ################################################################################
+      ## These groups are NOT synced by default. Uncomment to enable. Use `select:` to
+      ## choose specific CFs within a group.
+      ##
+      ## To uncomment, remove `# ` (hash + space) so that indentation stays aligned.
+      ## Most editors do this automatically with toggle-comment (Ctrl+/).
+      ##
+      ## https://recyclarr.dev/guide/cf-groups/
+      ################################################################################
+      add:
+        - trash_id: f8bf8eab4617f12dfdbd16303d8da245 # [Required] Golden Rule HD
+          select:
+            - dc98083864ea246d05a42df0d05f81cc # x265 (HD)
+            # - 839bea857ed2c0a8e084f3cbdbd65ecb  # x265 (no HDR/DV)
+        # - trash_id: 60f6d50cbd3cfc3e9a8c00e3a30c3114  # [Streaming Services] Anime
+        # - trash_id: b22449f789b16a4163b59f1b70cbc580  # [Streaming Services] Asian
+        # - trash_id: 088a792e0561c927fb396664b0db5c8f  # [Streaming Services] Dutch
+        # - trash_id: f737e18b5824d6ebb2d57b957ae2fd6c  # [Streaming Services] UK
+        # - trash_id: 9337080378236ce4c0b183e35790d2a7  # [Optional] Miscellaneous
+        #   select:
+        #     - b6832f586342ef70d9c128d40c07b872  # Bad Dual Groups
+        #     - cc444569854e9de0b084ab2b8b1532b2  # Black and White Editions
+        #     - f700d29429c023a5734505e77daeaea7  # DV (Disk)
+        #     - 73613461ac2cea99d52c4cd6e177ab82  # HFR
+        #     - 4b900e171accbfb172729b63323ea8ca  # Multi
+        #     - ae9b7c9ebde1f3bd336a8cbd1ec4c5e5  # No-RlsGroup
+        #     - 7357cf5161efbf8c4d5d0c30b4815ee2  # Obfuscated
+        #     - 5c44f52a8714fdd79bb4d98e2673be1f  # Retags
+        #     - f537cf427b64c38c8e36298f657e4828  # Scene
+        #     - 11cd1db7165d6a7ad9a83bc97b8b1060  # VC-1
+        #     - ae4cfaa9283a4f2150ac3da08e388723  # VP9
+        #     - 2899d84dc9372de3408e6d8cc18e9666  # x264
+        #     - 9170d55c319f4fe40da8711ba9d8050d  # x265
+        #     - 390455c22a9cac81a738f6cbad705c3c  # x266
+        # - trash_id: f4f1474b963b24cf983455743aa9906c  # [Optional] Movie Versions
+        #   select:
+        #     - 570bc9ebecd92723d2d21500f4be314c  # Remaster
+        #     - eca37840c13c6ef2dd0262b141a5482f  # 4K Remaster
+        #     - e0c07d59beb37348e975a930d5e50319  # Criterion Collection
+        #     - 9d27d9d2181838f76dee150882bdc58c  # Masters of Cinema
+        #     - 09d9dd29a0fc958f9796e65c2a8864b4  # Open Matte
+        #     - db9b4c4b53d312a3ca5f1378f6440fc9  # Vinegar Syndrome
+        #     - 957d0f44b592285f26449575e8b1167e  # Special Edition
+        #     - e9001909a4c88013a359d0b9920d7bea  # Theatrical Cut
+        #     - 0f12c086e289cf966fa5948eac571f44  # Hybrid
+        #     - eecf3a857724171f968a66cb5719e152  # IMAX
+        #     - 9f6cbff8cfe4ebbc1bde14c7b7bec0de  # IMAX Enhanced
+        # - trash_id: 9fc645b3cef52b149ec13ba3972245d1  # [Streaming Services] Miscellaneous
+        #   select:
+        #     - 3bf143ecd06f66ed88da4c704350af1d  # AUBC
+        #     - d9058beaae2e147183870304dd526761  # CBC
+        #     - f6ff65b3f4b464a79dcc75950fe20382  # CRAV
+        #     - fbca986396c5e695ef7b2def3c755d01  # OViD
+        #     - ab56ccdc473a1f2897c76187ea365be2  # STRP
 
-        # Uncomment the below properties to specify one or more quality profiles that should be
-        # updated with scores from the guide for each custom format. Without this, custom formats
-        # are synced to Radarr but no scores are set in any quality profiles.
-        #quality_profiles:
-        #  - name: Quality Profile 1
-        #  - name: Quality Profile 2
-        #    #score: -9999 # Optional score to assign to all CFs. Overrides scores in the guide.
-        #    #reset_unmatched_scores: true # Optionally set other scores to 0 if they are not listed in 'names' above.
+      ################################################################################
+      ## These groups ARE synced by default. Uncomment to disable.
+      ##
+      ## https://recyclarr.dev/guide/cf-groups/
+      ################################################################################
+      skip:
+        # - d9cc9a504e5ede6294c8b973aad4f028  # [Streaming Services] Generalher scores to 0 if they are not listed in 'names' above.

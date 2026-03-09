@@ -12,7 +12,8 @@ Type=oneshot
 User=recyclarr
 Group=recyclarr
 SyslogIdentifier=recyclarr
-ExecStart=/usr/lib/recyclarr/recyclarr sync --app-data /var/lib/recyclarr --config /etc/recyclarr/recyclarr.yml
+Environment=RECYCLARR_CONFIG_DIR=/var/lib/recyclarr
+ExecStart=/usr/lib/recyclarr/recyclarr sync --config /etc/recyclarr/recyclarr.yml
 Restart=on-failure
 RestartSec=5
 
