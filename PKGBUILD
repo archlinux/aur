@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-fgivenx
 _name=${pkgname#python-}
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.4.2
+pkgrel=1
 pkgdesc="Functional Posterior Plotter"
 arch=(any)
 url="https://github.com/williamjameshandley/fgivenx"
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=(c7111323fb98c6eef4efc44bade90961256b3068faf20f4c09f1678dc770d912)
+sha256sums=('df3c4593744b106ca28f9b43fe4038dcbea9240f249bc0b647e5d6ae3b7626ca')
 build() {
     cd "$srcdir/$_name-$pkgver"
     python -m build --wheel --no-isolation
