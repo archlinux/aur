@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=boxbuddy
 _app_id=io.github.dvlv.boxbuddyrs
-pkgver=2.5.6
+pkgver=2.5.7
 pkgrel=1
 pkgdesc="A Graphical Interface for Distrobox"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Dvlv/BoxBuddyRS/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('acd6a070d14c774715e70ae309b3ff4c88638d472d287dfbd9c26ee444defc1e')
+sha256sums=('614ad5fc36f730bcf75f0f9de16f20220e85e2ab60bfa3d6e6b11fe913b56c27')
 
 prepare() {
   cd "BoxBuddyRS-$pkgver"
@@ -23,7 +23,7 @@ prepare() {
 
   # Correct paths
   sed -i 's|{data_home}/locale|/usr/share/locale|g' src/utils.rs
-  sed -i 's|{data_home}/icons|/usr/share/icons|g' src/utils.rs
+  sed -i "s|{data_home}/icons/$pkgname|/usr/share/icons/hicolor/symbolic/actions|g" src/utils.rs
 }
 
 build() {
@@ -52,17 +52,14 @@ package() {
   install -Dm644 "${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "${_app_id}.gschema.xml" -t "$pkgdir/usr/share/glib-2.0/schemas/"
   install -Dm644 "${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
-  install -Dm644 icons/*.svg -t "$pkgdir/usr/share/icons/$pkgname/"
-  install -d "$pkgdir/usr/share/icons/hicolor/scalable/apps"
-  ln -s "/usr/share/icons/$pkgname/${_app_id}.svg" \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+  install -Dm644 "icons/${_app_id}.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
+  install -Dm644 icons/build-alt-{symbolic,symbolic-light}.svg -t \
+    "$pkgdir/usr/share/icons/hicolor/symbolic/actions/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-  pushd po
+  cd po
   for lang in $(ls -d */); do
     install -Dm644 "${lang%%/}/LC_MESSAGES/${pkgname}rs.mo" -t \
       "$pkgdir/usr/share/locale/${lang%%/}/LC_MESSAGES/"
   done
-  popd
-
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
