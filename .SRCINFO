@@ -1,7 +1,7 @@
 pkgbase = librevna-firmware
 	pkgdesc = Firmware files for LibreVNA hardware revision B
 	pkgver = 1.6.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jankae/LibreVNA
 	install = librevna-firmware.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = librevna-firmware
 	backup = etc/xdg/LibreVNA/LibreVNA-GUI.conf
 	source = https://github.com/jankae/LibreVNA/releases/download/v1.6.5/EmbeddedFirmware-hw-rev-B-v1.6.5.zip
 	source = LibreVNA-GUI.conf
-	source = README
+	source = README.arch.md
 	sha256sums = caadb7eebb2e8856316ce3044360c55dab84464aafa489705f55cc451451eaeb
 	sha256sums = 593615b27408ea8b0ad9dd18c709ff056206f3f2f0c16db99d5efe726b1f5f2b
 	sha256sums = c8e8bf86bdeb7f215a74fefceb60db0efff6d255fb656af2955651e5b3580a9a

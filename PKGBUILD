@@ -2,19 +2,19 @@
 
 pkgname=librevna-firmware
 pkgver=1.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Firmware files for LibreVNA hardware revision B"
 arch=('any')
 url="https://github.com/jankae/LibreVNA"
 license=('GPL-3.0-only')
 makedepends=('unzip')
-install=librevna-firmware.install
+install="${pkgname}.install"
 backup=('etc/xdg/LibreVNA/LibreVNA-GUI.conf')
 
 source=(
   "https://github.com/jankae/LibreVNA/releases/download/v${pkgver}/EmbeddedFirmware-hw-rev-B-v${pkgver}.zip"
   "LibreVNA-GUI.conf"
-  "README"
+  "README.arch.md"
 )
 sha256sums=('caadb7eebb2e8856316ce3044360c55dab84464aafa489705f55cc451451eaeb'
             '593615b27408ea8b0ad9dd18c709ff056206f3f2f0c16db99d5efe726b1f5f2b'
@@ -34,6 +34,6 @@ package() {
     "$pkgdir/etc/xdg/LibreVNA/LibreVNA-GUI.conf"
 
   install -Dm644 \
-    "$srcdir/README" \
-    "$pkgdir/usr/share/doc/$pkgname/README"
+    "$srcdir/README.arch.md" \
+    "$pkgdir/usr/share/doc/$pkgname/README.arch.md"
 }
