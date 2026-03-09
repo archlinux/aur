@@ -1,7 +1,7 @@
 # Contributor: CountMurphy <spartan1086@gmail.com>
 pkgname=kavita-bin
 pkgver=0.8.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Self hosted ebook and comic reader"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.kavitareader.com/"
@@ -32,7 +32,7 @@ kavita.sysusers
 kavita.tmpfiles
 )
 sha512sums_x86_64=(
-9846ab10688891c4fcc9882ad99b3616bac45bd5cbdce387e525a7aa4e9a93f74d137f24924598f75329d6ea6f1e16fb824c2276b5b5b1b647d48136507d1fac
+4c26679db4475114390f47af83a4927b37fe2f603479b498d6a843e455cc7a25920b0f4e4dc4fa0478872e0470bafb16f36ebb694e9090ded08ed60c50456376
 'SKIP'
 'SKIP'
 'SKIP'
