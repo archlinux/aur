@@ -1,0 +1,17 @@
+pkgbase = md4x-git
+	pkgdesc = Fast and small markdown parser and renderer
+	pkgver = v0.0.25.r0.g86c249f
+	pkgrel = 1
+	url = https://github.com/unjs/md4x
+	arch = any
+	license = MIT
+	makedepends = zig
+	makedepends = git
+	depends = glibc
+	provides = md4x
+	conflicts = md4x
+	conflicts = md4x-bin
+	source = git+https://github.com/unjs/md4x.git
+	sha256sums = SKIP
+
+pkgname = md4x-git
