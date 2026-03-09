@@ -1,6 +1,6 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiori-ebook-bin
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager (pre-compiled binary)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=(
 provides=('shiori-ebook')
 conflicts=('shiori-ebook' 'shiori-ebook-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/shiori-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('fe2fa4c37b361eac1bada71fc3d467d6470fcc94f5cba6cfd150bd64d7a39a27')
+sha256sums=('d8088ec24c5a02f489c9a073e57ec65db1667070a1cb17dd5cf1af29ac5094f2')
 
 package() {
     # Install the binary
@@ -47,6 +47,7 @@ MimeType=application/epub+zip;application/pdf;application/x-mobipocket-ebook;app
 EOF
     
     # Install license
+    install -Dm644 "${srcdir}/shiori-release-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
     # Install documentation
     install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"

@@ -1,6 +1,6 @@
 pkgbase = shiori-ebook-bin
 	pkgdesc = Modern offline-first eBook library manager (pre-compiled binary)
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/vinayydv3695/Shiori
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = shiori-ebook-bin
 	provides = shiori-ebook
 	conflicts = shiori-ebook
 	conflicts = shiori-ebook-git
-	source = shiori-ebook-bin-0.1.5.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v0.1.5/shiori-0.1.5-linux-x86_64.tar.gz
-	sha256sums = fe2fa4c37b361eac1bada71fc3d467d6470fcc94f5cba6cfd150bd64d7a39a27
+	source = shiori-ebook-bin-0.1.6.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v0.1.6/shiori-0.1.6-linux-x86_64.tar.gz
+	sha256sums = d8088ec24c5a02f489c9a073e57ec65db1667070a1cb17dd5cf1af29ac5094f2
 
 pkgname = shiori-ebook-bin
