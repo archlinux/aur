@@ -1,0 +1,5 @@
+[pixelterm-c-bin]
+source = "github"
+github = "zouyonghe/PixelTerm-C"
+use_latest_release = true
+prefix = "v"
