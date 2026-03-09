@@ -1,7 +1,7 @@
 # Contributor: Lex Black <autumn-wind@web.de>
 
 pkgname=pg-gvm
-pkgver=22.6.14
+pkgver=22.6.15
 pkgrel=1
 pkgdesc='Greenbone Library for helper functions in PostgreSQL'
 arch=('x86_64')
@@ -13,7 +13,7 @@ groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
         ${pkgname}-${pkgver}.tar.gz.asc::${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.asc
         0001_not-sbin.patch)
-sha512sums=('dd74c6c009d0c29390f2885d44cef96d26200586e8539534cd20436944cf7648545bb57a1f7f2a111ff280423ae4301f4b8d0402d70054c2fa7bc7701eee9895'
+sha512sums=('3d3b961cbdd12ffcc1f0da8f4c9a572439d6ca5bfd002e9a601a66eff45c656cece66a845cd93be9a193c87a4634a52989bc309f9b0a35bc2eaa222126fbe06c'
             'SKIP'
             '724ad7720f6ce75747b26478e27fad18b678af6361b4c1a5fe5bb6563265d7db78761b74995c04ea57ad78fb9fd0408d237440f04958bebc03bd6cddb2432481')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580') # GVM Transfer Integrity
