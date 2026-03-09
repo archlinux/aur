@@ -7,7 +7,7 @@
 pkgbase=nvidia-550xx-dkms
 pkgname=('nvidia-550xx-utils' 'opencl-nvidia-550xx' 'nvidia-550xx-dkms')
 pkgver=550.163.01
-pkgrel=3
+pkgrel=4
 pkgdesc="NVIDIA drivers for Linux, 550 branch"
 arch=('x86_64')
 url="http://www.nvidia.com/"
@@ -23,6 +23,7 @@ source=('nvidia-drm-outputclass.conf'
 		'0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch'
 		'0003-Workaround-nv_vm_flags_-calling-GPL-only-code.patch'
 		'0004-kernel-open-nvidia-Use-new-timer-functions-for-6.15.patch'
+		'0005-kernel-nvidia-Fulfill-6.17-fb_create-contract.patch'
 		"https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run")
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
 			'4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499'
@@ -32,6 +33,7 @@ sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc50677
 			'6814990f8046759d35f724ac9114d7fa284710fd1ad8cca7e1a861ea54a72fe4f67b5614f157a911f5ecfa0c964fa989edc61c85b1cfef6428e0cd7cdeea856e'
 			'21c964b4d0ceda23d543485cb285becf111849313da3ff9cc9c7bed241de83fd826d72f196d071e4f53790b8fd5d1e3dab9319c0ca08b37c9c841f45d3afd041'
 			'eb5cfdb4ccaea5aee8626009b66c9024929fd921784080fb34b6db0f222c2908ea7c4932e492c24afb570de79c78489d67e4e07312dc67ce6415ad0b5f38e008'
+			'0c724767bb4300d354dadca5f020f99958624c33dcaf54ec1ac7678832ae42608a0320d03d1c0efa3c0a386d79330f2b1902ca543e04e3a3efc7c6289edf9e47'
 			'676b1de35d21e80091528a49080c114e0870ea90b3f3721265ae8071abbc2183c851e6f11ba96a332c743fedfaf4ec9a014ad6ceed586fdbb03d94d33405e356')
 
 
@@ -50,13 +52,16 @@ prepare() {
 	cd "${_pkg}"
 	bsdtar -xf nvidia-persistenced-init.tar.bz2
 	
-    # GCC 15
-    patch -Np1 -i "${srcdir}/0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch" -d "${srcdir}/${_pkg}/kernel"
+	# GCC 15
+	patch -Np1 -i "${srcdir}/0002-CFLAGS-Set-std-gnu17-for-all-compilation-flags.patch" -d "${srcdir}/${_pkg}/kernel"
 
 	# Linux 6.15
 	sed -i 's/EXTRA_CFLAGS/ccflags-y/' ${srcdir}/${_pkg}/kernel{,-open}/Kbuild
-    patch -Np1 -i "${srcdir}/0003-Workaround-nv_vm_flags_-calling-GPL-only-code.patch" -d "${srcdir}/${_pkg}/kernel"
-    patch -Np2 -i "${srcdir}/0004-kernel-open-nvidia-Use-new-timer-functions-for-6.15.patch" -d "${srcdir}/${_pkg}/kernel"
+	patch -Np1 -i "${srcdir}/0003-Workaround-nv_vm_flags_-calling-GPL-only-code.patch" -d "${srcdir}/${_pkg}/kernel"
+	patch -Np2 -i "${srcdir}/0004-kernel-open-nvidia-Use-new-timer-functions-for-6.15.patch" -d "${srcdir}/${_pkg}/kernel"
+
+	# Linux 6.17
+	patch -Np1 -i "${srcdir}/0005-kernel-nvidia-Fulfill-6.17-fb_create-contract.patch" -d "${srcdir}/${_pkg}"
 
 	cd kernel
 
