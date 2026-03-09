@@ -17,16 +17,22 @@ pkgver() {
 
 package() {
   cd "$srcdir/rjumen"
-  
 
   install -d "$pkgdir/usr/lib/rjumen"
   install -d "$pkgdir/usr/bin"
+  install -d "$pkgdir/usr/share/applications"
+  install -d "$pkgdir/usr/share/pixmaps"
 
- 
   cp *.py "$pkgdir/usr/lib/rjumen/"
+
+  install -Dm644 "$srcdir/../rjumen.desktop" "$pkgdir/usr/share/applications/rjumen.desktop"
+  
+
+  install -Dm644 "money.png" "$pkgdir/usr/share/pixmaps/rjumen.png"
 
 
   echo '#!/bin/sh' > "$pkgdir/usr/bin/rjumen"
+  echo 'export PYTHONPATH=$PYTHONPATH:/usr/lib/rjumen' >> "$pkgdir/usr/bin/rjumen"
   echo 'cd /usr/lib/rjumen && python main.py "$@"' >> "$pkgdir/usr/bin/rjumen"
   
   chmod 755 "$pkgdir/usr/bin/rjumen"
