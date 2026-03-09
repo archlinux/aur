@@ -1,6 +1,6 @@
 # Maintainer: Denis Gordenin <support@yutovo.ru>
 pkgname=yutovo
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Arbitrary precision graphical WYSIWYG calculator inside a text editor"
 arch=(x86_64)
@@ -17,16 +17,16 @@ source=(
     "boost_1_83_0::https://archives.boost.io/release/1.83.0/source/boost_1_83_0.zip"
     "libgmp::https://ftp.gnu.org/gnu/gmp/gmp-6.3.0.tar.xz"
     "libmpfr::https://www.mpfr.org/mpfr-4.2.1/mpfr-4.2.1.tar.gz"
-    "yutovo-calculator::git+https://github.com/denprog/yutovo-calculator.git#commit=0103d6e65b9e6db0209ece2dfeba7989b2423f88"
+    "yutovo-calculator::git+https://github.com/denprog/yutovo-calculator.git#commit=32076d02dc87ee7a030aca28cf2bff011384ed52"
     "rapidjson::git+https://github.com/Tencent/rapidjson.git#commit=f54b0e47a08782a6131cc3d60f94d038fa6e0a51"
     "yutovo-solver::git+https://github.com/denprog/yutovo-solver.git#commit=d8545b9d156970e3f651abea70e1a34bffd35e2d"
     "mathgl-8.0.3.tar.gz::https://downloads.sourceforge.net/mathgl/mathgl-8.0.3.tar.gz"
     "libharu::git+https://github.com/libharu/libharu.git#commit=0c598becaadaef8e3d12b883f9fc2864a118c12d"
     "stb_image.h::https://raw.githubusercontent.com/nothings/stb/master/stb_image.h"
     "stb_image_write.h::https://raw.githubusercontent.com/nothings/stb/master/stb_image_write.h"
-    "yutovo-editor::git+https://github.com/denprog/yutovo-editor.git#commit=dfa4513dedc626df37e1a6eeabe2bcdd915c96f8"
-    "yutovo-server::git+https://github.com/denprog/yutovo-server.git#commit=4a9827649414124eeab91dcd94ff9b76680fb647"
-    "yutovo-desktop::git+https://github.com/denprog/yutovo-desktop.git#commit=53a5b6005d6d373ee69918704fb1ba1649c9b85e"
+    "yutovo-editor::git+https://github.com/denprog/yutovo-editor.git#commit=45677ad3be44f189b3aa2daa1f7bd5f56e0ae1d9"
+    "yutovo-library::git+https://github.com/denprog/yutovo-library.git#commit=4eed75ca5a845f4c978931af7a62e58a36894070"
+    "yutovo-desktop::git+https://github.com/denprog/yutovo-desktop.git#commit=f6139c122a1190e0b520cd838b2d273f1aa3ee5d"
 )
 
 sha256sums=(
@@ -136,7 +136,11 @@ build() {
     make -sj8 && make install
     cd ../..
 
-    echo $YUTOVO_DEPLOY
+    echo "Building yutovo-library"
+    cd yutovo-library
+    ./pack.sh
+    cd ..
+
     echo "Building yutovo-desktop"
     cd yutovo-desktop
     mkdir -p build && cd build
@@ -156,7 +160,7 @@ package() {
 
     cp $YUTOVO_DEPLOY/bin/yutovo-desktop $pkgdir/usr/bin/
     cp -r $srcdir/yutovo-desktop/build/src/*.qm $pkgdir/usr/share/yutovo/translations/
-    cp -r $srcdir/yutovo-server/library $pkgdir/usr/share/yutovo/
+    cp -r $srcdir/yutovo-library/library $pkgdir/usr/share/yutovo/
     cp $srcdir/yutovo-desktop/setup/Arch/run.sh $pkgdir/usr/bin/yutovo
     cp $srcdir/yutovo-desktop/src/images/mainicon.png $pkgdir/usr/share/icons/hicolor/256x256/apps/yutovo.png
     cp $srcdir/yutovo-desktop/src/images/mainicon.png $pkgdir/usr/share/icons/hicolor/256x256/mimetypes/application-x-yut.png
