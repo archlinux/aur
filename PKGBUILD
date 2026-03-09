@@ -24,13 +24,13 @@ package() {
     cd ugrd-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    install -Dm644 examples/example.toml "$pkgdir/etc/ugrd/config.toml"
-
+    install -Dm755 hooks/kernel-install/52-ugrd.install -t "$pkgdir/usr/lib/kernel/install.d"
     install -Dm755 hooks/alpm/ugrd-install.sh "$pkgdir/usr/share/libalpm/scripts/ugrd-install"
     install -Dm755 hooks/alpm/ugrd-remove.sh "$pkgdir/usr/share/libalpm/scripts/ugrd-remove"
     install -Dm644 hooks/alpm/91-ugrd-install.hook -t "$pkgdir/usr/share/libalpm/hooks"
     install -Dm644 hooks/alpm/60-ugrd-remove.hook -t "$pkgdir/usr/share/libalpm/hooks"
-    install -Dm755 hooks/kernel-install/52-ugrd.install -t "$pkgdir/usr/lib/kernel/install.d"
+
+    install -Dm644 examples/example.toml "$pkgdir/etc/ugrd/config.toml"
 
     install -Dm644 completion/ugrd -t "$pkgdir/usr/share/bash-completion/completions"
     install -Dm644 completion/_ugrd -t "$pkgdir/usr/share/zsh/site-functions"
