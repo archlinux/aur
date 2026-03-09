@@ -1,0 +1,25 @@
+pkgbase = sonami-gtk-bin
+	pkgdesc = A Tidal music player for GNOME, built with GTK4 and Adwaita
+	pkgver = 1.5.3
+	pkgrel = 1
+	url = https://github.com/RayZ3R0/sonami-gtk
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = libsecret
+	depends = hicolor-icon-theme
+	optdepends = gst-plugins-ugly: additional media codec support
+	optdepends = gst-libav: additional media codec support via FFmpeg
+	provides = sonami
+	conflicts = sonami
+	conflicts = sonami-git
+	source = sonami-gtk-bin-1.5.3.tar.gz::https://github.com/RayZ3R0/sonami-gtk/releases/download/v1.5.3/sonami-v1.5.3-linux-x86_64.tar.gz
+	sha256sums = 414d42d048ccceab1ca567a28ddf6e57b5b04b066a5213a544be22cb025b173b
+
+pkgname = sonami-gtk-bin
