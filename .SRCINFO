@@ -1,6 +1,6 @@
 pkgbase = gsa
 	pkgdesc = Greenbone Security Assistant - OpenVAS web frontend
-	pkgver = 26.12.1
+	pkgver = 26.14.0
 	pkgrel = 1
 	url = https://github.com/greenbone/gsa
 	install = gsa.install
@@ -9,10 +9,10 @@ pkgbase = gsa
 	license = AGPL-3.0-only
 	depends = gsad
 	depends = openvas-scanner
-	source = gsa-26.12.1.tar.gz::https://github.com/greenbone/gsa/releases/download/v26.12.1/gsa-dist-26.12.1.tar.gz
-	source = gsa-26.12.1.tar.gz.asc::https://github.com/greenbone/gsa/releases/download/v26.12.1/gsa-dist-26.12.1.tar.gz.asc
+	source = gsa-26.14.0.tar.gz::https://github.com/greenbone/gsa/releases/download/v26.14.0/gsa-dist-26.14.0.tar.gz
+	source = gsa-26.14.0.tar.gz.asc::https://github.com/greenbone/gsa/releases/download/v26.14.0/gsa-dist-26.14.0.tar.gz.asc
 	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
-	sha512sums = e680450d3e0e9a9dfc6e16d6f825d7080de8c1bccf3c15cce64af3bdab9eb65377d9080b33b054b29966f47db17e814c3b9dfc282448d18d68a16b4f00d742bc
+	sha512sums = 85e6af2f102bf227df4556751e1fbc3a8b22781b2cc247f0f477b72917d302c95a813ca8c46fca18feb3cc5598fccf1b395944f9c28151b9aaa62dc96081f17a
 	sha512sums = SKIP
 
 pkgname = gsa
