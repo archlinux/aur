@@ -1,14 +1,14 @@
 pkgname=dpibreak
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="fast and easy-to-use DPI circumvention tool in Rust."
 arch=('x86_64')
-url="https://github.com/Dilluti0n/DPIBreak"
+url="https://github.com/dilluti0n/dpibreak"
 license=('GPL-3.0-or-later')
 depends=('nftables')
 makedepends=('rust' 'cargo')
-source=("https://github.com/Dilluti0n/DPIBreak/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('59d94cc86f9003f076d321c59f2df182154a88d09a65acace123e102c37b5019')
+source=("https://github.com/dilluti0n/dpibreak/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('ac9e18b23fc9502576b34ded9f0347aab53499fca6fab1acc20500ed1ec45014')
 
 build() {
     cd "dpibreak-${pkgver}"
