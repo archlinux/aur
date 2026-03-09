@@ -1,7 +1,7 @@
 # Maintainer: aquova <mail at aquova dot net>
 
 pkgname="gearsystem"
-pkgver=3.8.6
+pkgver=3.9.0
 pkgrel=1
 pkgdesc="Sega Master System / Game Gear / SG-1000 Emulator"
 url="https://github.com/drhelius/Gearsystem"
@@ -13,7 +13,7 @@ source=(
     "gearsystem.desktop"
 )
 sha256sums=(
-    "95f1687744900b0cd322cc04e84324d6b730467a6105c1799874904b3aa77555"
+    "15e34dd24e47c61056c09107267587a2776781629142b79a5bedf00efa7bab78"
     "ca638acc5479345aa40fa2baae5e98ebbf97cf6080365e49e11c574dd690f4d1"
 )
 
@@ -26,7 +26,7 @@ package() {
     cd $srcdir/Gearsystem-${pkgver}/platforms
     mkdir -p $pkgdir/opt/gearsystem
     install -Dm755 linux/gearsystem $pkgdir/opt/gearsystem
-    install -Dm644 gamecontrollerdb.txt $pkgdir/opt/gearsystem
+    install -Dm644 shared/gamecontrollerdb.txt $pkgdir/opt/gearsystem
     mkdir -p $pkgdir/usr/bin
     ln -s /opt/gearsystem/gearsystem $pkgdir/usr/bin/gearsystem
     install -Dm644 $srcdir/gearsystem.desktop $pkgdir/usr/share/applications/gearsystem.desktop
