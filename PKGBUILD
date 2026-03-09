@@ -19,6 +19,7 @@ depends=(
 )
 makedepends=('git' 'python-build' 'python-installer' 'python-hatchling')
 optdepends=(
+    'python-anyascii: lyrics transliteration to ASCII'
     'python-dbus-next: MPRIS media key support'
     'python-pylast: Last.fm scrobbling'
     'python-pypresence: Discord Rich Presence'
