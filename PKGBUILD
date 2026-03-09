@@ -1,0 +1,75 @@
+# Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
+# Maintainer: Caroline Snyder <hirpeng@gmail.com>
+pkgname=shelly-git
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
+arch=('x86_64')
+url="https://github.com/ZoeyErinBauer/Shelly-ALPM"
+license=('GPL-3.0-only')
+provides=('shelly')
+conflicts=('shelly' 'shelly-bin')
+depends=(
+    'pacman'
+    'gtk4'
+    'glib2'
+    'sudo'
+    'tar'
+    'bash'
+    'git'
+    'hicolor-icon-theme'
+    'dbus'
+    'glibc'
+)
+optdepends=(
+    'flatpak: For supporting flatpak implementation.'
+)
+makedepends=('dotnet-sdk-10.0' 'git')
+
+source=("${pkgname}::git+https://github.com/ZoeyErinBauer/Shelly-ALPM.git")
+
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/${pkgname}"
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || \
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$srcdir/${pkgname}"
+
+  dotnet publish Shelly-CLI/Shelly-CLI.csproj -c Release -o out-cli --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
+  dotnet publish Shelly.Gtk/Shelly.Gtk.csproj -c Release -r linux-x64 -o out --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
+  dotnet publish Shelly-Notifications/Shelly-Notifications.csproj -c Release -r linux-x64 -o out-notify --nologo -p:InstructionSet=${INSTRUCTIONS:=x86-64}
+}
+
+package() {
+  cd "$srcdir/${pkgname}"
+
+  # Install Shelly.Gtk binary
+  install -Dm755 out/shelly-ui "$pkgdir/usr/bin/shelly-ui"
+
+  # Install Shelly-Notifications binary
+  install -Dm755 out-notify/Shelly-Notifications "$pkgdir/usr/bin/shelly-notifications"
+
+  # Install Shelly-CLI binary
+  install -Dm755 out-cli/shelly "$pkgdir/usr/bin/shelly"
+
+  # Install desktop entry
+  cat <<'EOF' | install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/shelly.desktop"
+[Desktop Entry]
+Name=Shelly
+Comment=A Modern Arch Package Manager
+Exec=/usr/bin/shelly-ui
+Icon=shelly
+Type=Application
+Categories=System;Utility;
+Terminal=false
+EOF
+
+  # Install icon
+  install -Dm644 Shelly.Gtk/Assets/shellylogo.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shelly.png"
+  install -Dm644 Shelly.Gtk/Assets/svg/flatpak-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/flatpak-symbolic.svg"
+  install -Dm644 Shelly.Gtk/Assets/svg/arch-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/arch-symbolic.svg"
+}
