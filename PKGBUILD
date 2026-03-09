@@ -3,7 +3,7 @@
 
 pkgname='sqlpage'
 _pkgname='SQLPage'
-pkgver=0.42.0
+pkgver=0.43.0
 pkgrel=1
 pkgdesc='Fast SQL-only data application builder. Automatically build a UI on top of SQL queries.'
 url='https://sql-page.com'
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::${_srcurl}/archive/v$pkgver.tar.gz")
-b2sums=('7e68abaaca967dfba3efefe4b71f2e05f6af93d39735922001ea6439117ce14120ac1f64fe2c72b3e428a86042f86706e18997d0a7931ad94f9a41ac41c43873')
+b2sums=('46ee8df38f5b9d46f3d0782e3a2554fa472a72f31d9f0e2afef9d261b5be2dea386aa58ad4fc632dd63c75169497f143f1a49b4bdb3bf6aa371ef5a934a4c2f6')
 options=(!lto)
 
 prepare() {
