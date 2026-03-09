@@ -27,32 +27,32 @@ optdepends=(
     'gst-libav: additional media codec support via FFmpeg'
 )
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/RayZ3R0/sonami-gtk/releases/download/v${pkgver}/sonami-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('414d42d048ccceab1ca567a28ddf6e57b5b04b066a5213a544be22cb025b173b')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/RayZ3R0/sonami-gtk/releases/download/v${pkgver}/sonami-gtk-v${pkgver}-linux-x86_64.tar.gz")
+sha256sums=('3e1fef082e2013d22cd3a4a79d582af2dca5a4a260b642407d9ffdc018779fca')
 
 package() {
-    cd "${srcdir}/sonami-v${pkgver}-linux-x86_64"
+    cd "${srcdir}/sonami-gtk-v${pkgver}-linux-x86_64"
 
     # Binary
     install -Dm755 sonami "${pkgdir}/usr/bin/sonami"
 
     # Desktop entry
-    install -Dm644 share/applications/dev.dergs.Sonami.desktop \
-        "${pkgdir}/usr/share/applications/dev.dergs.Sonami.desktop"
+    install -Dm644 share/applications/io.github.rayz3r0.SonamiGtk.desktop \
+        "${pkgdir}/usr/share/applications/io.github.rayz3r0.SonamiGtk.desktop"
 
     # AppStream metainfo
-    install -Dm644 share/metainfo/dev.dergs.Sonami.metainfo.xml \
-        "${pkgdir}/usr/share/metainfo/dev.dergs.Sonami.metainfo.xml"
+    install -Dm644 share/metainfo/io.github.rayz3r0.SonamiGtk.metainfo.xml \
+        "${pkgdir}/usr/share/metainfo/io.github.rayz3r0.SonamiGtk.metainfo.xml"
 
     # Icons
-    install -Dm644 share/icons/hicolor/scalable/apps/dev.dergs.Sonami.svg \
-        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/dev.dergs.Sonami.svg"
-    install -Dm644 share/icons/hicolor/128x128/apps/dev.dergs.Sonami.png \
-        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/dev.dergs.Sonami.png"
-    install -Dm644 share/icons/hicolor/symbolic/apps/dev.dergs.Sonami-symbolic.svg \
-        "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/dev.dergs.Sonami-symbolic.svg"
+    install -Dm644 share/icons/hicolor/scalable/apps/io.github.rayz3r0.SonamiGtk.svg \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/io.github.rayz3r0.SonamiGtk.svg"
+    install -Dm644 share/icons/hicolor/128x128/apps/io.github.rayz3r0.SonamiGtk.png \
+        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/io.github.rayz3r0.SonamiGtk.png"
+    install -Dm644 share/icons/hicolor/symbolic/apps/io.github.rayz3r0.SonamiGtk-symbolic.svg \
+        "${pkgdir}/usr/share/icons/hicolor/symbolic/apps/io.github.rayz3r0.SonamiGtk-symbolic.svg"
 
     # GSettings schema
-    install -Dm644 share/glib-2.0/schemas/dev.dergs.Sonami.gschema.xml \
-        "${pkgdir}/usr/share/glib-2.0/schemas/dev.dergs.Sonami.gschema.xml"
+    install -Dm644 share/glib-2.0/schemas/io.github.rayz3r0.SonamiGtk.gschema.xml \
+        "${pkgdir}/usr/share/glib-2.0/schemas/io.github.rayz3r0.SonamiGtk.gschema.xml"
 }

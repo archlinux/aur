@@ -19,7 +19,7 @@ pkgbase = sonami-gtk-bin
 	provides = sonami
 	conflicts = sonami
 	conflicts = sonami-git
-	source = sonami-gtk-bin-1.5.3.tar.gz::https://github.com/RayZ3R0/sonami-gtk/releases/download/v1.5.3/sonami-v1.5.3-linux-x86_64.tar.gz
-	sha256sums = 414d42d048ccceab1ca567a28ddf6e57b5b04b066a5213a544be22cb025b173b
+	source = sonami-gtk-bin-1.5.3.tar.gz::https://github.com/RayZ3R0/sonami-gtk/releases/download/v1.5.3/sonami-gtk-v1.5.3-linux-x86_64.tar.gz
+	sha256sums = 3e1fef082e2013d22cd3a4a79d582af2dca5a4a260b642407d9ffdc018779fca
 
 pkgname = sonami-gtk-bin
