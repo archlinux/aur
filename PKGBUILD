@@ -12,7 +12,7 @@ pkgname=(
  aspnet-targeting-pack-9.0
  dotnet-source-built-artifacts-9.0
 )
-pkgver=9.0.12.sdk113
+pkgver=9.0.13.sdk114
 pkgrel=1
 arch=(x86_64)
 url=https://dotnet.microsoft.com
@@ -42,9 +42,9 @@ options=(
   !lto
   staticlibs
 )
-_tag=46e42120674fdd5fe1239797df142f8f6e7943b0
+_tag=d37b3ddd6508a184d82996a5f8116fcb39f2bffa
 source=(git+https://github.com/dotnet/dotnet.git#tag=${_tag})
-b2sums=('aaa0f408a123fbfc67e94a2aa552a35c9fe6f10fd4266a362b8e2071e053c73e9286132418cc4ad892d5b374eb71967056bf57f35b48ef180abacc53586204ff')
+b2sums=('8b3ba76829a88bb163dc9fae748150bd1f0d7bec95eac1e1960afea8bdc8ff86d33ae094670666f824782c7d1fe6a43d04f720d977ec22ba0e6641e815a6654a')
 
 prepare() {
   cd dotnet
