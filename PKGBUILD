@@ -28,7 +28,7 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}.tar.gz")
 sha256sums=('ad16b1c16efaecd362f69e4b8749a8ad59424562af5cdc081a528d1551198072'
-  '515175e700aadba7b5436688d6daa0e06ea17bfb657e377e14138f65866082a3')
+            '515175e700aadba7b5436688d6daa0e06ea17bfb657e377e14138f65866082a3')
 sha256sums_x86_64=('3357f038929419d44ef1b0a4352652cdfc26bef5312a31fc2e25f315da73f173')
 sha256sums_aarch64=('bd1b85019a4057078413739308a93d4ca756870e82c7fdb504b319006dde8d59')
 
