@@ -1,7 +1,7 @@
 pkgbase = glpi-agent
 	pkgdesc = GLPI Agent
 	pkgver = 1.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.glpi-project.org
 	arch = any
 	license = GPL2
@@ -35,6 +35,7 @@ pkgbase = glpi-agent
 	depends = perl-xml-treepp
 	depends = perl-universal-require
 	depends = perl-xml-libxml
+	depends = unzip
 	backup = etc/glpi-agent/agent.cfg
 	backup = etc/glpi-agent/inventory-server-plugin.cfg
 	backup = etc/glpi-agent/server-test-plugin.cfg

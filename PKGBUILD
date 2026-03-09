@@ -2,7 +2,7 @@
 
 pkgname=glpi-agent
 pkgver=1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="GLPI Agent"
 arch=('any')
 url='https://www.glpi-project.org'
@@ -13,7 +13,7 @@ depends=( "perl-cpanel-json-xs" "perl-datetime" "perl-file-which" "perl-data-uui
           "perl-io-socket-ssl" "perl-xml-xpath" "perl-text-template" "perl-parallel-forkmanager" "perl-ipc-run" "perl-edid"
           "perl-net-snmp" "perl-net-ip" "perl-lwp-protocol-https" "perl-http-proxy" "perl-yaml-tiny"
           "perl-http-server-simple-authen" "perl-io-capture" "perl-xml-treepp" "perl-universal-require"
-          "perl-xml-libxml")
+          "perl-xml-libxml" "unzip")
 sha256sums=('f267522e85fe151c1777071ee652ca1e4b2cccca1ec74bb913b1aff907f954e4')
 backup=("etc/glpi-agent/agent.cfg"
         "etc/glpi-agent/inventory-server-plugin.cfg"
