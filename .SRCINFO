@@ -1,6 +1,6 @@
 pkgbase = python-ktransformers
-	pkgver = 0.5.1
-	pkgrel = 2
+	pkgver = 0.5.2.post1
+	pkgrel = 1
 	url = https://kvcache.ai
 	arch = x86_64
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = python-ktransformers
 	optdepends = python-flash-attn
 	optdepends = python-pytest
 	optdepends = python-psutil
-	source = ktransformers::git+https://github.com/kvcache-ai/ktransformers.git#tag=v0.5.1
+	source = ktransformers::git+https://github.com/kvcache-ai/ktransformers.git#tag=v0.5.2.post1
 	source = setup-with-glog.patch
 	sha256sums = SKIP
 	sha256sums = 538620faa124510cf8fee9a5b4944cce0a80cfd73d8ff92bc8abe75e116cdad5

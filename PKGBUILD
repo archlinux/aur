@@ -5,8 +5,8 @@ _CUDA_ARCH_LIST="8.0;8.6;8.9;9.0;10.0;10.0+PTX"
 pkgbase=python-ktransformers
 pkgname=('python-ktransformers' 'python-kt-kernel')
 _pkgname=ktransformers
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.5.2.post1
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://kvcache.ai"
 license=('Apache-2.0')
@@ -63,7 +63,7 @@ build() {
 
 	cd ../kt-sft
 	python -m build --wheel --no-isolation -x
-	
+#	sed -i 's/nv_bfloat/hip_bfloat/g' csrc/custom_marlin/gptq_marlin/*hip*
 }
 
 package_python-ktransformers() {
@@ -83,7 +83,7 @@ package_python-ktransformers() {
 		python-torchviz
 	)
 	cd "${srcdir}/${_pkgname}/kt-sft"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+	python -m installer --destdir="$pkgdir" dist/*.whl 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/python-ktransformers/LICENSE"
 
 	# remove unused dirs and files
