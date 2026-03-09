@@ -1,6 +1,6 @@
 pkgbase = rclient
 	pkgdesc = Yet another fork of TaterClient for DDNet
-	pkgver = 2.2.1
+	pkgver = 2.2.3
 	pkgrel = 1
 	url = https://rushie-client.ru/
 	install = rclient.install
@@ -22,7 +22,7 @@ pkgbase = rclient
 	backup = usr/share/ddnet/data/autoexec_server.cfg
 	source = https://github.com/RushieClient/RushieClient-ddnet/releases/download/V2.2.1/RClient-ubuntu.tar.xz
 	source = rclient.png
-	sha256sums = 09aab619a8be8e794a10d429572a9fdb3378e7e438d1693c6368d193b2cf18d3
+	sha256sums = a24a16cf89fa0e106c9f16eecb21b615abb73694d56bed4db1d8b5900735d3da
 	sha256sums = af258dd9345943c5024efa534ebbf5cc14340741f393f36375b8f3c89ca736ab
 
 pkgname = rclient
