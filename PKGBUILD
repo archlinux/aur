@@ -2,7 +2,7 @@
 # Contributor: Sergey A <murlakatamenka@disroot.org>
 pkgname=falcond
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Advanced Linux gaming performance daemon"
 arch=('x86_64')
 url="https://git.pika-os.com/general-packages/falcond"
@@ -35,10 +35,8 @@ build() {
   export ZIG_GLOBAL_CACHE_DIR="$srcdir/zig-global-cache"
   DESTDIR=build zig build \
     --summary all \
-    --global-cache-dir "$srcdir/zig-global-cache" \
     --prefix /usr \
-    --search-prefix /usr \
-    --release=safe
+    -Doptimize=ReleaseFast
 }
 
 package() {
