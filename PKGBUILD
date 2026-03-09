@@ -12,7 +12,6 @@ groups=('async-profiler')
 depends=('java-environment')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/async-profiler/async-profiler/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('cf65460dae5adc093b98eee689a5fff4c639c7ff3d107566511a5fa2244e3e31')
-install=async-profiler.install
 
 build() {
   cd "$pkgname-$pkgver"
@@ -28,4 +27,7 @@ package() {
   install -d "$pkgdir/opt/async-profiler/bin"
   install build/bin/asprof "$pkgdir/opt/async-profiler/bin"
   install build/bin/jfrconv "$pkgdir/opt/async-profiler/bin"
+  install -d "$pkgdir/usr/bin"
+  ln -s /opt/async-profiler/bin/asprof "$pkgdir/usr/bin/asprof"
+  ln -s /opt/async-profiler/bin/jfrconv "$pkgdir/usr/bin/jfrconv"
 }
