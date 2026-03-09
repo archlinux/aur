@@ -11,7 +11,7 @@ _nodeversion=25         # As of 2025-05-26, the minimum version of `nodejs` is 2
 _pkgname="schildichat-desktop"
 pkgname="${_pkgname}-git"
 pkgver=1.11.112.sc.0.test.0.r547.20250917.4d4dcf1
-pkgrel=5
+pkgrel=6
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience. Build of the latest git checkout."
 arch=(
   "x86_64"
@@ -52,8 +52,8 @@ optdepends=(
   "nodejs: For some utilities."
 )
 source=(
-  "${_pkgname}::git+https://github.com/SchildiChat/schildichat-desktop.git#branch=lite"
-  "git+https://github.com/SchildiChat/compound-web.git#branch=sc"
+  "${_pkgname}::git+https://github.com/SchildiChat/schildichat-desktop.git#commit=4d4dcf1f7baf4cfaa1784940e479fd432d7e9af1" # The last code change, update to element 1.12.0, does not build anymore. And after that, the repository was archived. So `4d4dcf1f7baf4cfaa1784940e479fd432d7e9af1` is the last working commit. #branch=lite
+  "git+https://github.com/SchildiChat/compound-web.git"
   "git+https://github.com/SchildiChat/matrix-js-sdk.git"
   # "git+https://github.com/SchildiChat/matrix-react-sdk.git"
   "git+https://github.com/SchildiChat/element-web.git"
