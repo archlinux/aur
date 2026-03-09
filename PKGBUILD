@@ -1,0 +1,43 @@
+# Maintainer: Gentrit Biba <gentritbiba@gmail.com>
+pkgname=cogpit-server
+pkgver=0.2.0
+pkgrel=1
+pkgdesc="Headless web server for Cogpit — Claude Code session dashboard"
+arch=('x86_64' 'aarch64')
+url="https://github.com/gentritbiba/cogpit"
+license=('MIT')
+depends=('bun')
+makedepends=('git')
+conflicts=()
+source=("git+${url}.git#tag=v${pkgver}")
+sha256sums=('SKIP')
+
+build() {
+  cd cogpit
+  bun install --frozen-lockfile
+  bun run build
+}
+
+package() {
+  cd cogpit
+
+  # Install application files
+  install -dm755 "${pkgdir}/opt/${pkgname}"
+
+  # Copy built frontend
+  cp -r dist "${pkgdir}/opt/${pkgname}/"
+
+  # Copy server + electron/server.ts (reused by standalone entry point)
+  cp -r server "${pkgdir}/opt/${pkgname}/"
+  cp -r electron "${pkgdir}/opt/${pkgname}/"
+  cp package.json "${pkgdir}/opt/${pkgname}/"
+  cp tsconfig.json "${pkgdir}/opt/${pkgname}/" 2>/dev/null || true
+  cp -r node_modules "${pkgdir}/opt/${pkgname}/"
+
+  # Install systemd user unit
+  install -Dm644 aur/cogpit-server.service \
+    "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
+
+  # Install license
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

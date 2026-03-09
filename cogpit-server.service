@@ -1,0 +1,15 @@
+[Unit]
+Description=Cogpit Server - Claude Code Dashboard
+Documentation=https://github.com/gentritbiba/cogpit
+After=network.target
+
+[Service]
+Type=simple
+Environment=COGPIT_HOST=127.0.0.1
+Environment=COGPIT_PORT=19384
+ExecStart=/usr/bin/bun /opt/cogpit-server/server/standalone.ts
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
