@@ -1,0 +1,17 @@
+pkgbase = linkermapviz
+	pkgdesc = GNU ld linker map visualization
+	pkgver = r8.8ee5a6d
+	pkgrel = 1
+	url = https://github.com/PromyLOPh/linkermapviz
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-bokeh
+	depends = python-squarify
+	provides = linkermapviz
+	source = git+https://github.com/PromyLOPh/linkermapviz
+	sha512sums = SKIP
+
+pkgname = linkermapviz
