@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-cobaya
 _name=${pkgname#python-}
-pkgver=3.5.7
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="Code for Bayesian Analysis in Cosmology"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('2400b89e88adc2a915ef97baf0fb999f305f210873f65e154aa85654737bfa4d')
+sha256sums=('9fb404903e8e221b73879f296e8d5b27c8ae5879d03ad7e86f05c9d3ce42a4c5')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
