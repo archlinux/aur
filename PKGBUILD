@@ -13,7 +13,7 @@ _ffsrcver=140.8.0
 _ffbuild=2
 _l10n_commit=e4f894a4eef5c492c83a860a4ff16c8ed361445c
 _moz_build_id=20260106170501
-_lwrelver=106
+_lwrelver=107
 pkgver="${_ffsrcver}.${_lwrelver}"
 pkgrel=1
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
@@ -105,7 +105,6 @@ optdepends=(
   'firefox-ublock-origin: Content filter extension'
   'firefox-noscript: Selectively enable javascript on pages'
   'firefox-decentraleyes: Local emulation of Content Delivery Networks'
-  'konform-multi-account-containers-lite: First-class multi-account-containers integration'
 )
 
 if [[ "${_build_profiled}" == "true" ]]; then
@@ -143,7 +142,7 @@ source=(
   "default192x192.png"
   "0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch"
 )
-sha256sums=('c8629ba3767d8aef36826a81fb28bbd76030e1a5f1b1a85c83b4e19d46488441'
+sha256sums=('d813844eabd273c9abbc201ec856f50abf42fb97c37dd0d21f3757b49d7366bc'
             '57a7f339ef68273f6597d8074a841fa053f63a21d1f609ab0074a26c063282e6'
             'SKIP'
             '52d638394dcc3254c70b550340bffb0ade63bd35f155eaee12e0000a51ef939b'
