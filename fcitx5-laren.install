@@ -14,7 +14,10 @@ post_install() {
     # Detect desktop environment
     _de=$(su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus printenv XDG_CURRENT_DESKTOP 2>/dev/null" | tr '[:upper:]' '[:lower:]')
 
-    # 1. Desktop-specific configuration
+    # 1. Ensure tray icon is in the active icon theme (KDE doesn't reliably fall back to hicolor)
+    _install_tray_icon "$_user" "$_dbus"
+
+    # 2. Desktop-specific configuration
     case "$_de" in
         *kde*|*plasma*)
             # KDE Wayland: KWin manages Fcitx5 directly, no env vars needed
@@ -51,6 +54,43 @@ post_install() {
     fi
     echo "    Use fcitx5-configtool to customize input methods."
     echo ""
+}
+
+_install_tray_icon() {
+    _user="$1"
+    _dbus="$2"
+    _src="/usr/share/icons/hicolor/scalable/apps/fcitx-laren.svg"
+
+    [ -f "$_src" ] || return
+
+    # Copy icon into Breeze status dirs (where KDE tray looks for fcitx icons)
+    for _theme in /usr/share/icons/breeze /usr/share/icons/breeze-dark; do
+        if [ -d "$_theme/status/22" ]; then
+            cp "$_src" "$_theme/status/22/fcitx-laren.svg" 2>/dev/null
+            cp "$_src" "$_theme/status/24/fcitx-laren.svg" 2>/dev/null
+            gtk-update-icon-cache -f -q "$_theme" 2>/dev/null
+        fi
+    done
+
+    # Also copy into the user's active icon theme if it's not Breeze/hicolor
+    _icon_theme=$(su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus kreadconfig6 --group Icons --key Theme" 2>/dev/null)
+    case "$_icon_theme" in
+        ""|breeze|breeze-dark|hicolor) ;;  # already handled
+        *)
+            for _dir in "/home/$(id -un "$_user" 2>/dev/null)/.local/share/icons/$_icon_theme" "/usr/share/icons/$_icon_theme"; do
+                if [ -d "$_dir" ] && [ -f "$_dir/index.theme" ]; then
+                    # Detect directory structure: apps/scalable/ or scalable/apps/
+                    if [ -d "$_dir/apps/scalable" ]; then
+                        cp "$_src" "$_dir/apps/scalable/fcitx-laren.svg" 2>/dev/null
+                    elif [ -d "$_dir/scalable/apps" ]; then
+                        cp "$_src" "$_dir/scalable/apps/fcitx-laren.svg" 2>/dev/null
+                    fi
+                    gtk-update-icon-cache -f -q "$_dir" 2>/dev/null
+                    break
+                fi
+            done
+            ;;
+    esac
 }
 
 _activate_kde() {
