@@ -1,0 +1,5 @@
+[tirith-bin]
+source = "github"
+github = "sheeki03/tirith"
+use_latest_release = true
+prefix = "v"
