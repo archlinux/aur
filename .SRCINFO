@@ -1,0 +1,24 @@
+pkgbase = python-torii-usb
+	pkgdesc = A Torii HDL framework for USB
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/shrine-maiden-heavy-industries/torii-usb
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pip
+	makedepends = python-setuptools-scm
+	makedepends = python-setuptools>=66
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = python<4.0
+	depends = python-torii>=0.8.1
+	depends = python-usb-construct>=0.2.1
+	provides = python-torii-usb=0.8.1
+	conflicts = python-torii-usb-git
+	conflicts = python-torii-usb-nightly
+	source = torii-usb-0.8.1.tar.gz::https://files.pythonhosted.org/packages/source/t/torii_usb/torii_usb-0.8.1.tar.gz
+	sha256sums = fad3a28bc95aba1eb413abd6f97b89ac55324a352a51535565905c8dbd11a720
+
+pkgname = python-torii-usb
