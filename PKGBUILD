@@ -2,9 +2,9 @@
 # Contributor: fabillo <fabillo@archlinux.org>
 
 pkgauthor=nik012003
-pkgname="ripdrag"
-pkgver="0.4.11"
-pkgrel='1'
+pkgname=ripdrag
+pkgver=0.4.11
+pkgrel=1
 pkgdesc="Drag and drop files to and from the terminal"
 arch=('x86_64')
 url="https://github.com/${pkgauthor}/${pkgname}"
