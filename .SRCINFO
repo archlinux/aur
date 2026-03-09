@@ -1,6 +1,6 @@
 pkgbase = coolercontrold-bin
 	pkgdesc = A program to monitor and control your cooling devices: daemon (binary release)
-	pkgver = 3.1.1
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://gitlab.com/coolercontrol/coolercontrol
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = coolercontrold-bin
 	provides = coolercontrold
 	conflicts = coolercontrold
 	conflicts = coolercontrol-liqctld
-	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/3.1.1/downloads/packages/coolercontrold_3.1.1
-	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/3.1.1/downloads/packages/coolercontrol-3.1.1.tar.gz
-	sha256sums = 5404b9e0379edf10b4ea307b3a62bf53b4edd7456d5b68bdf6b32706948afb57
-	sha256sums = eb3ae3d4ba8b260ba2650b8188ee7f525bd486901f8566c30517340ae462a9dc
+	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/4.0.1/downloads/packages/coolercontrold_4.0.1
+	source = https://gitlab.com/coolercontrol/coolercontrol/-/releases/4.0.1/downloads/packages/coolercontrol-4.0.1.tar.gz
+	sha256sums = 87f3517848aae1ec9ae78d4e149f981f9ee16fad40ef43079d43f0516b952bec
+	sha256sums = e2c1cd232bce4774db8969e08241ad577f2a5254bdc964127382cbc12655c38d
 
 pkgname = coolercontrold-bin
