@@ -3,4 +3,5 @@ src
 *.patch
 *.sign
 *.tar.xz
+*.tar.zst
 patch_order*
