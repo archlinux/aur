@@ -1,24 +1,24 @@
 # Maintainer: Hugh Whelan <brickhousedevelopers@gmail.com>
 pkgname=scidcommunity
-pkgver=5.1.2.41
-pkgrel=66
+pkgver=5.1.2.44
+pkgrel=67
 pkgdesc="Enhanced fork of Scid chess database with Chess.com/Lichess integration, tablebase lookup, improved search, and additional training features"
 arch=('x86_64')
 url="https://github.com/whelanh/scidCommunity"
 license=('GPL2')
 depends=('tcl' 'tk')
 makedepends=('gcc' 'make' 'git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/whelanh/scidCommunity/archive/1f9e5dc6c16069e084793e65f2d53e768c542c43.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/whelanh/scidCommunity/archive/a05338b393e2dcda370617be36c89e521e93675c.tar.gz")
 sha256sums=('SKIP')  # Safe to skip: integrity verified by commit hash
 
 build() {
-  cd "${srcdir}/scidCommunity-1f9e5dc6c16069e084793e65f2d53e768c542c43"
+  cd "${srcdir}/scidCommunity-a05338b393e2dcda370617be36c89e521e93675c"
   ./configure --prefix=/usr
   make all
 }
 
 package() {
-  cd "${srcdir}/scidCommunity-1f9e5dc6c16069e084793e65f2d53e768c542c43"
+  cd "${srcdir}/scidCommunity-a05338b393e2dcda370617be36c89e521e93675c"
   # Install under /usr so desktop/icon files land in standard system paths
   make install DESTDIR="${pkgdir}" SHAREDIR="${pkgdir}/usr/share/scid" BINDIR="${pkgdir}/usr/bin"
 
