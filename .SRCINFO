@@ -1,6 +1,6 @@
 pkgbase = jotpad
 	pkgdesc = Minimal single-note editor with live markdown formatting
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/maxDTM/jotpad
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = jotpad
 	makedepends = python-wheel
 	depends = python>=3.9
 	depends = pyside6
-	source = jotpad-1.1.1.tar.gz::https://github.com/maxDTM/jotpad/archive/v1.1.1.tar.gz
-	sha256sums = 7431f61bf2851f5b9b70005fe287f141b8c036753ea4cb36fc232251dc00f599
+	source = jotpad-1.1.2.tar.gz::https://github.com/maxDTM/jotpad/archive/v1.1.2.tar.gz
+	sha256sums = c6310ead43779dda27f0f0a4dc3f099b686e8fc94767165f2c7d816ad9ed4980
 
 pkgname = jotpad

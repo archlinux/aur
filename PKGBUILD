@@ -1,6 +1,6 @@
 # Maintainer: Max Altshuler
 pkgname=jotpad
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Minimal single-note editor with live markdown formatting"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('python>=3.9' 'pyside6')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('7431f61bf2851f5b9b70005fe287f141b8c036753ea4cb36fc232251dc00f599')
+sha256sums=('c6310ead43779dda27f0f0a4dc3f099b686e8fc94767165f2c7d816ad9ed4980')
 
 build() {
     cd "${pkgname}-${pkgver}"
