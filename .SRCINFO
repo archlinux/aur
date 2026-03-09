@@ -1,7 +1,7 @@
 pkgbase = ssmt4-linux
 	pkgdesc = SSMT4 - Super Simple Linux Game Tools 4th
 	pkgver = 0.0.8_beta
-	pkgrel = 5
+	pkgrel = 6
 	url = https://gitee.com/xiaobai01111/ssmt4-linux
 	arch = x86_64
 	license = GPL-3.0-or-later

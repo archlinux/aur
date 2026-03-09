@@ -1,6 +1,6 @@
 pkgname=ssmt4-linux
 pkgver=0.0.8_beta
-pkgrel=5
+pkgrel=6
 pkgdesc="SSMT4 - Super Simple Linux Game Tools 4th"
 arch=('x86_64')
 url='https://gitee.com/xiaobai01111/ssmt4-linux'
@@ -101,7 +101,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_source_name}"
-  pnpm run build
   env \
     -u CPPFLAGS \
     -u CFLAGS \
@@ -114,7 +113,7 @@ build() {
     CC=gcc \
     CXX=g++ \
     CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=gcc \
-    cargo build --manifest-path src-tauri/Cargo.toml --release
+    pnpm run tauri build --no-bundle
 }
 
 package() {
