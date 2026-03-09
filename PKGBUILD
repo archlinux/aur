@@ -38,7 +38,7 @@ build() {
   pip install -r requirements.txt
 
   # Build the executable using PyInstaller directly (no AppImage)
-  pyinstaller --noconfirm --onedir --windowed --name "Vial" --add-data "src/main/resources:src/main/resources" --add-data "src/main/python:src/main/python" src/main/python/main.py
+  pyinstaller --noconfirm --onedir --windowed --name "Vial" --add-data "src/main/resources:resources" --add-data "src/main/python/resources:resources" --add-data "src/main/python:." src/main/python/main.py
 
   deactivate
 }
