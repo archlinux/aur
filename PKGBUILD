@@ -3,7 +3,7 @@ pkgver=0.0.8_beta
 pkgrel=1
 pkgdesc="SSMT4 - Super Simple Linux Game Tools 4th"
 arch=('x86_64')
-url='https://github.com/xiaobai14491-afk/SSMT4-Linux'
+url='https://gitee.com/xiaobai01111/ssmt4-linux'
 license=('GPL-3.0-or-later')
 makedepends=('git' 'nodejs' 'pnpm' 'cargo' 'rust')
 depends=('gtk3' 'webkit2gtk-4.1' 'libsoup3' 'xdg-utils')
@@ -26,8 +26,22 @@ optdepends=(
 provides=('ssmt4-linux')
 conflicts=('ssmt4-linux-git')
 
+_github_repo='https://github.com/xiaobai14491-afk/SSMT4-Linux-bak.git'
+_gitee_repo='https://gitee.com/xiaobai01111/ssmt4-linux.git'
+_source_repo="${SSMT4_AUR_SOURCE_REPO:-}"
+if [[ -z "${_source_repo}" ]]; then
+  case "${SSMT4_AUR_SOURCE_MIRROR:-github}" in
+    gitee)
+      _source_repo="${_gitee_repo}"
+      ;;
+    *)
+      _source_repo="${_github_repo}"
+      ;;
+  esac
+fi
+
 source=(
-  "git+https://github.com/xiaobai14491-afk/SSMT4-Linux.git#tag=${pkgver//_/-}"
+  "git+${_source_repo}#tag=${pkgver//_/-}"
 )
 sha256sums=('SKIP')
 
