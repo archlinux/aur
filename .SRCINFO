@@ -1,6 +1,6 @@
 pkgbase = ugrd-git
 	pkgdesc = Minimalistic POSIX initramfs generator, designed for encrypted systems
-	pkgver = 2.1.0.r4.g6e136ba
+	pkgver = 2.2.0.r0.gdd2a615
 	pkgrel = 1
 	url = https://github.com/desultory/ugrd
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = ugrd-git
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = bash
 	depends = bc
 	depends = pax-utils
 	depends = python
