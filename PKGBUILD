@@ -1,6 +1,6 @@
 # Maintainer: Sergey Ovanesyan <sergey@ovanesyan.com>
 pkgname=calendarchy
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Terminal calendar app for Google Calendar and iCloud'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cargo')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6128e47c12ea0658a8d8a0c5f55faec4db5e5619ecd6fa13f8d0946d8f460d38')
+sha256sums=('94aa6949ed90d93064d50355d03cdd98d253efe8ce420411702a0f6402d154c6')
 
 prepare() {
   cd "$pkgname-$pkgver"
