@@ -1,0 +1,3 @@
+[aweber-rs]
+source = "git"
+git = "https://github.com/andrewrabert/aweber-rs.git"
