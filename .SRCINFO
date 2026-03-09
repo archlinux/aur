@@ -1,6 +1,6 @@
 pkgbase = mmdr
 	pkgdesc = Fast Mermaid diagram renderer written in Rust
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/1jehuang/mermaid-rs-renderer
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = mmdr
 	depends = gcc-libs
 	depends = glibc
 	options = !debug
-	source = mmdr-0.2.0.tar.gz::https://github.com/1jehuang/mermaid-rs-renderer/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = b512e5e7f259a9efe1ba968a28acbbcf144adc6f0f1423758401636de64e807e
+	source = mmdr-0.2.1.tar.gz::https://github.com/1jehuang/mermaid-rs-renderer/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 14a57bdb7ffc6be9eeb875db25b1f8071327d9e37e4c23832bf73e07c27dd718
 
 pkgname = mmdr

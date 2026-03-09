@@ -1,7 +1,7 @@
 # Maintainer: Duncan Mac-Vicar P. <duncan@mac-vicar.eu>
 
 pkgname=mmdr
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Fast Mermaid diagram renderer written in Rust'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'rust')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/1jehuang/mermaid-rs-renderer/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b512e5e7f259a9efe1ba968a28acbbcf144adc6f0f1423758401636de64e807e')
+sha256sums=('14a57bdb7ffc6be9eeb875db25b1f8071327d9e37e4c23832bf73e07c27dd718')
 
 prepare() {
   cd "mermaid-rs-renderer-$pkgver"
