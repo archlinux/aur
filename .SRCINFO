@@ -14,8 +14,9 @@ pkgbase = cheatsheet-app-bin
 	depends = libsoup3
 	depends = pango
 	depends = webkit2gtk-4.1
-	options = !strip
-	options = !debug
+	options = \!strip
+	options = \!debug
 	source_x86_64 = https://github.com/MagnusPladsen/my-cheatsheet/releases/download/v1.1.0/cheatsheet_1.1.0_amd64.deb
+	sha256sums_x86_64 = 0560e7286d45b31572c2e71393c153efb401202dcd2b98f652f4f24481cae24a
 
 pkgname = cheatsheet-app-bin

@@ -19,7 +19,7 @@ depends=(
 )
 options=('!strip' '!debug')
 source_x86_64=("${url}/releases/download/v${pkgver}/cheatsheet_${pkgver}_amd64.deb")
-sha256sums_x86_64=('')
+sha256sums_x86_64=('0560e7286d45b31572c2e71393c153efb401202dcd2b98f652f4f24481cae24a')
 
 package() {
   tar -xz -f data.tar.gz -C "${pkgdir}"
