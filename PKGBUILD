@@ -1,6 +1,7 @@
-# Maintainer: Wuxxin <wuxxin@gmail.com>
+# Maintainer: Emir-Eins <emir-eins@outlook.com>
+# Contributor: Wuxxin <wuxxin@gmail.com>
 pkgname=openclaw-git
-pkgver=2026.2.22.r94.gddc67aa4ef
+pkgver=2026.3.8.r5.gf6d0712f50
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices"
 arch=('x86_64')
