@@ -1,6 +1,6 @@
 # Maintainer: Petr Spacek <pspacek@isc.org>
 pkgname=dnscap-git
-pkgver=v2.4.0.r1.dd36d11
+pkgver=v2.5.2.r1.9a3b3e3d94
 pkgrel=1
 pkgdesc="Network capture utility designed specifically for DNS traffic"
 arch=(x86_64)
@@ -10,7 +10,7 @@ depends=(glibc ldns libpcap lz4 openssl perl-yaml xz zlib zstd)
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/DNS-OARC/dnscap.git')
+source=('git+https://codeberg.org/DNS-OARC/dnscap.git')
 md5sums=('SKIP')
 
 pkgver() {
