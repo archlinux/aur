@@ -4,8 +4,8 @@
 pkgbase=mounriverstudio-bin
 pkgname=(${pkgbase})
 pkgdesc="MounRiver Studio Ⅱ(MRS2)为MounRiver Studio的换代版本，从V2.1.0开始，框架更换至更现代的VSCode，并深度定制开发。在工程管理、代码编辑、编译、调试等方面均兼容之前版本，并在效率和功能等方面进行提升，着力将MRS打造为更加轻量化、智能化、高效化的RISC-V IDE。同时，提供Windows/Linux/macOS 以及国产操作系统版本"
-pkgver=230
-pkgrel=5
+pkgver=240
+pkgrel=1
 arch=('x86_64')
 url='http://www.mounriver.com/'
 license=('LicenseRef-commercial')
@@ -71,11 +71,11 @@ options=('!strip' '!debug')
 # automatic version detection & download via MounRiver API
 prepare() {
     msg "Querying MounRiver API for the latest Linux version..."
-    local _info_json=$(curl -s "https://api.mounriver.com/mountriver/api/version/fetchRecent?swType=2&osType=LINUX&lang=en")
+    local _info_json=$(curl -s "https://api.mounriver.com/mountriver/api/version/fetchRecent2?swType=2&osType=LINUX&lang=en")
 
-    local _soft_id=$(echo "${_info_json}" | jq -r '.result.softId')
-    local _filename=$(echo "${_info_json}" | jq -r '.result.softFileName')
-    local _api_version=$(echo "${_info_json}" | jq -r '.result.version')
+    local _soft_id=$(echo "${_info_json}" | jq -r '.result[0].upgradeRelationBoList[] | select(.softFileType == 1) | .softReId')
+    local _filename=$(echo "${_info_json}" | jq -r '.result[0].upgradeRelationBoList[] | select(.softFileType == 1) | .softFileName')
+    local _api_version=$(echo "${_info_json}" | jq -r '.result[0].version')
 
     if [[ "${_soft_id}" == "null" || -z "${_soft_id}" ]]; then
         error "Failed to retrieve software ID from API."
