@@ -50,5 +50,5 @@ EOF
     install -Dm644 "${srcdir}/shiori-release-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
     # Install documentation
-    install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 "${srcdir}/shiori-release-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
