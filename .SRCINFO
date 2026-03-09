@@ -1,7 +1,7 @@
 pkgbase = prek
 	pkgdesc = ⚡ Better 'pre-commit', re-engineered in Rust
-	pkgver = 0.3.4
-	pkgrel = 3
+	pkgver = 0.3.5
+	pkgrel = 1
 	url = https://github.com/j178/prek
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = prek
 	makedepends = libxml2
 	depends = gcc-libs
 	options = !lto
-	source = prek::git+https://github.com/j178/prek.git#commit=04b1308c98552cbba104e91480b8810453a22e7e
+	source = prek::git+https://github.com/j178/prek.git#commit=46cb7bad137e570945bbe1f3e9b84756757633e2
 	md5sums = SKIP
 
 pkgname = prek
