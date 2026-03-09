@@ -1,6 +1,6 @@
 # Maintainer: ERSocalypse <ERSocalypse at gmail dot com>
 pkgname=hypr-dock
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 options=('!debug')
 pkgdesc="Interactive Dock Panel for Hyprland"
@@ -12,7 +12,7 @@ makedepends=('go' 'git' 'make')
 provides=('hypr-dock')
 conflicts=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lotos-linux/hypr-dock/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7542e765b15e9a33e5b3ee626bd825bca6e7fb783bda367a942fdae54b733664')
+sha256sums=('a9090b5b616e348096e528637e616e1110ebf7764f20e3d03864bbf712e4b047')
 install="${pkgname}.install"
 
 build() {
