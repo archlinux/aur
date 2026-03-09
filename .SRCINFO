@@ -1,0 +1,23 @@
+pkgbase = qlip
+	pkgdesc = Lightweight screenshot utility for linux
+	pkgver = v1.0.0
+	pkgrel = 1
+	url = https://github.com/maxDTM/qlip
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = tk
+	optdepends = maim: X11 screenshot capture
+	optdepends = slop: X11 region selection (used by maim)
+	optdepends = xdotool: X11 window/monitor detection
+	optdepends = xorg-xrandr: X11 monitor enumeration
+	optdepends = wmctrl: X11 improved window listing
+	optdepends = grim: Wayland screenshot capture
+	optdepends = slurp: Wayland region selection
+	optdepends = sway: Wayland monitor/window info (sway)
+	optdepends = hyprland: Wayland monitor/window info (Hyprland)
+	optdepends = wlr-randr: Wayland monitor enumeration (generic wlroots)
+	source = qlip-v1.0.0.tar.gz::https://github.com/maxDTM/qlip/archive/vv1.0.0.tar.gz
+	sha256sums = e9d4039987ba899523af1c9775a65de87c7c4d96166d7a65f0cc0816e675bf3d
+
+pkgname = qlip
