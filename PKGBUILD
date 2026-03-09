@@ -2,7 +2,7 @@
 # Maintainer: Guy Boldon <gb@guyboldon.com>
 
 pkgname=coolercontrold
-pkgver=3.1.1
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices. This package contains the CoolerControl service daemon."
 arch=('x86_64')
@@ -39,8 +39,8 @@ source=(
 	"https://gitlab.com/coolercontrol/coolercontrol/-/releases/$pkgver/downloads/packages/$pkgname-vendor.tar.gz"
 )
 sha256sums=(
-  'eb3ae3d4ba8b260ba2650b8188ee7f525bd486901f8566c30517340ae462a9dc'
-  '3d6d35e7833b839b9095ba70fdf5747b29999c48103fdb4095d17aabe917c3fa'
+  'e2c1cd232bce4774db8969e08241ad577f2a5254bdc964127382cbc12655c38d'
+  '59e2ad3b8e19c62bd880fca2bb95c18a58929db8591b338d63681d9b0009efd2'
 )
 
 build() {
