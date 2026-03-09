@@ -1,0 +1,17 @@
+pkgbase = grimatrix-git
+	pkgdesc = Warhammer CLI App screen waster inspired by cmatrix
+	pkgver = r4.591a755
+	pkgrel = 1
+	url = https://git.hanusvalenta.com/hans/grimatrix
+	arch = x86_64
+	license = EUPL1.2
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	depends = ncurses
+	provides = grimatrix
+	conflicts = grimatrix
+	source = git+https://git.hanusvalenta.com/hans/grimatrix.git
+	md5sums = SKIP
+
+pkgname = grimatrix-git
