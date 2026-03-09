@@ -2,7 +2,7 @@
 # Maintainer: Gabe Cook <gabe565@gmail.com>
 
 pkgname='ansi2txt-bin'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Convert text containing ANSI control codes into plain ASCII text.'
 url='https://github.com/gabe565/ansi2txt'
@@ -11,14 +11,14 @@ license=('MIT')
 provides=('ansi2txt')
 conflicts=('ansi2txt')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/ansi2txt/releases/download/v0.1.1/ansi2txt_0.1.1_linux_arm64.tar.gz")
-sha256sums_aarch64=('02239772c1b08d1fdf7ffb919f9f693cbcb58f00c697eb44c87cca75854652f1')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/gabe565/ansi2txt/releases/download/v${pkgver}/ansi2txt_${pkgver}_linux_arm64.tar.gz")
+sha256sums_aarch64=('dedb05a33ff3ee47fd16ed65d37f456d75a6538a518f86db4184a70bcf15e742')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/ansi2txt/releases/download/v0.1.1/ansi2txt_0.1.1_linux_armv7.tar.gz")
-sha256sums_armv7h=('535b75d2a7d5b71590c42bf99f533fa7159f27f8f557b9e32bc94bc6def68a42')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/gabe565/ansi2txt/releases/download/v${pkgver}/ansi2txt_${pkgver}_linux_armv7.tar.gz")
+sha256sums_armv7h=('b4743356db4e92c9a65b9cbe95f494084ed72849cd5fa265711b8a003366c7e8')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/ansi2txt/releases/download/v0.1.1/ansi2txt_0.1.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('cdd6e5f75b6e297ba809236f95ad0fea7108a0a8ca8b2d067463d10982e40d20')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/gabe565/ansi2txt/releases/download/v${pkgver}/ansi2txt_${pkgver}_linux_amd64.tar.gz")
+sha256sums_x86_64=('46c9bfcc96c69dafb98d92715b4bcb0334e3a92551c4cfb2bbe265f89f1e8f3e')
 
 package() {
   # bin
