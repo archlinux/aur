@@ -1,7 +1,7 @@
 pkgbase = glaxnimate
 	pkgdesc = Simple vector animation program
-	pkgver = 0.5.4
-	pkgrel = 7
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://invent.kde.org/graphics/glaxnimate
 	arch = x86_64
 	arch = i686
@@ -10,20 +10,22 @@ pkgbase = glaxnimate
 	arch = riscv32
 	arch = riscv64
 	license = GPL-3.0-or-later
-	makedepends = clang
 	makedepends = cmake
+	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = ninja
-	makedepends = qt6-declarative
 	depends = ffmpeg
-	depends = libarchive
+	depends = karchive
+	depends = kcompletion
+	depends = kcoreaddons
+	depends = kcrash
+	depends = ki18n
+	depends = kwidgetsaddons
+	depends = kxmlgui
 	depends = potrace
 	depends = python
-	depends = qt6-base
-	depends = qt6-imageformats
-	depends = qt6-svg
 	depends = qt6-tools
-	source = kde.glaxnimate::git+https://invent.kde.org/graphics/glaxnimate.git#tag=0.5.4
-	sha256sums = f17f3cce6978932b88c80c9a0db3ee86992bc193014c315af12df825fa5ef2cb
+	source = kde.glaxnimate::git+https://invent.kde.org/graphics/glaxnimate.git#tag=v0.6.0
+	sha256sums = c630047572502237a3633d64d63e5b88869b8d7aeb3bf0732a8e376da15d3013
 
 pkgname = glaxnimate
