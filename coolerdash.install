@@ -34,26 +34,23 @@ pre_install() {
 }
 
 post_install() {
-    # Reload udev rules
-    if command -v udevadm >/dev/null 2>&1; then
-        udevadm control --reload-rules
-        udevadm trigger --subsystem-match=usb
-    fi
-
-    # Migrate helperd from /etc to /usr/lib
+    # Remove legacy files
     rm -f /etc/systemd/system/multi-user.target.wants/coolerdash-helperd.service
     rm -f /etc/systemd/system/coolerdash-helperd.service
+    rm -f /usr/lib/systemd/system/coolerdash-helperd.service
+    rm -rf /etc/systemd/system/cc-plugin-coolerdash.service.d
+    rm -f /usr/lib/udev/rules.d/99-coolerdash.rules
 
     systemctl daemon-reload
 
-    # Enable helperd
-    if systemctl list-unit-files coolerdash-helperd.service | grep -q coolerdash-helperd; then
-        systemctl enable --now coolerdash-helperd.service || echo "Note: coolerdash-helperd.service failed. Enable manually."
-    fi
-
-    # Restart CoolerControl
-    if systemctl list-unit-files coolercontrold.service | grep -q coolercontrold; then
-        systemctl restart coolercontrold.service || echo "Note: CoolerControl restart failed."
+    # Restart plugin service directly if it already exists (reinstall case)
+    if systemctl list-unit-files cc-plugin-coolerdash.service | grep -q cc-plugin-coolerdash; then
+        systemctl restart cc-plugin-coolerdash.service || echo "Note: Plugin restart failed."
+    else
+        # Fresh install: restart CoolerControl so it discovers and starts the plugin service
+        if systemctl list-unit-files coolercontrold.service | grep -q coolercontrold; then
+            systemctl restart coolercontrold.service || echo "Note: CoolerControl restart failed."
+        fi
     fi
 
     echo "================================================================"
@@ -62,16 +59,14 @@ post_install() {
 }
 
 post_upgrade() {
-    # Migrate helperd from /etc to /usr/lib
+    # Remove legacy files
     rm -f /etc/systemd/system/multi-user.target.wants/coolerdash-helperd.service
     rm -f /etc/systemd/system/coolerdash-helperd.service
+    rm -f /usr/lib/systemd/system/coolerdash-helperd.service
+    rm -rf /etc/systemd/system/cc-plugin-coolerdash.service.d
+    rm -f /usr/lib/udev/rules.d/99-coolerdash.rules
 
     systemctl daemon-reload
-
-    # Enable helperd
-    if systemctl list-unit-files coolerdash-helperd.service | grep -q coolerdash-helperd; then
-        systemctl enable --now coolerdash-helperd.service || echo "Note: coolerdash-helperd.service failed. Enable manually."
-    fi
 
     # Restart plugin
     if systemctl list-unit-files cc-plugin-coolerdash.service | grep -q cc-plugin-coolerdash; then

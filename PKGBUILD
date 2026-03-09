@@ -1,17 +1,16 @@
 # Maintainer: damachin3 (damachine3 at proton dot me)
 # Website: https://github.com/damachine/coolerdash
-
 pkgname=coolerdash-git
 pkgver=2.2.6.r0.g1193c8a
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
 conflicts=('coolerdash')
-pkgdesc="Monitor telemetry data on an AIO liquid cooler with an integrated LCD display"
+pkgdesc="Plug-in for CoolerControl that extends the LCD functionality with additional features"
 arch=('x86_64')
 url="https://github.com/damachine/coolerdash"
 license=('MIT')
-depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'ttf-roboto')
+depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'libsodium' 'ttf-roboto')
 makedepends=('gcc' 'make' 'pkg-config' 'git')
 backup=('etc/coolercontrol/plugins/coolerdash/config.json')
 install=coolerdash.install
@@ -75,10 +74,6 @@ package() {
 
     install -Dm644 "${srcdir}/${pkgname}/man/coolerdash.1" "${pkgdir}/usr/share/man/man1/coolerdash.1"
     install -Dm644 "${srcdir}/${pkgname}/etc/applications/coolerdash.desktop" "${pkgdir}/usr/share/applications/coolerdash.desktop"
-    install -Dm644 "${srcdir}/${pkgname}/etc/udev/rules.d/99-coolerdash.rules" "${pkgdir}/usr/lib/udev/rules.d/99-coolerdash.rules"
     install -Dm644 "${srcdir}/${pkgname}/etc/icons/coolerdash.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/coolerdash.svg"
-    install -Dm644 "${srcdir}/${pkgname}/etc/systemd/coolerdash-helperd.service" "${pkgdir}/usr/lib/systemd/system/coolerdash-helperd.service"
-    install -Dm644 "${srcdir}/${pkgname}/etc/systemd/cc-plugin-coolerdash.service.d/startup-delay.conf" "${pkgdir}/etc/systemd/system/cc-plugin-coolerdash.service.d/startup-delay.conf"
-
     install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
