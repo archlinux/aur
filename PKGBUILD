@@ -1,6 +1,6 @@
 # Maintainer: Max Alt m@adine.design
 pkgname=qlip
-pkgver=v1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Lightweight screenshot utility for linux"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('maim: X11 screenshot capture'
             'hyprland: Wayland monitor/window info (Hyprland)'
             'wlr-randr: Wayland monitor enumeration (generic wlroots)')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e9d4039987ba899523af1c9775a65de87c7c4d96166d7a65f0cc0816e675bf3d')
+sha256sums=('a0a9aa22bc6155667695ba03c76ab6a295c8828c684948824abfc2f46b12a029')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
