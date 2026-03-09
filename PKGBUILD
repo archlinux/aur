@@ -4,7 +4,7 @@
 # Contributor: Bruce Zhang
 pkgname=picgo-electron
 _pkgname=PicGo
-pkgver=2.5.2
+pkgver=2.5.3
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -31,7 +31,7 @@ source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 	"${pkgname}.sh"
 )
-sha256sums=('a5ba9d8a68a90d2e16e5ae6463c9dd1afa387289838c546df0f2cd12f9d88d1c'
+sha256sums=('5f801f6af34fd96ed1ec17a963c1bc75be23c84b0220d943a254c31bfde20899'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -101,8 +101,15 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/dist/linux-"*/resources/*.asar -t "${pkgdir}/usr/lib/${pkgname}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${_pkgname}-${pkgver}/dist/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+	find "${srcdir}/${_pkgname}-${pkgver}/dist/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" {} +
+    if find "${srcdir}/${_pkgname}-${pkgver}/dist/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${_pkgname}-${pkgver}/dist/linux-"*"/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname}"
+            fi
+        done
+    fi
     _icon_sizes=(256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/build/icons/${_icons}.png" \
