@@ -1,16 +1,16 @@
 pkgbase = fontastic-bin
 	pkgdesc = A stunning font management and cataloging application.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.2.0
-	pkgrel = 5
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/tomshaw/fontastic
 	arch = x86_64
 	license = MIT
-	depends = electron25
-	source = fontastic-0.2.0.rpm::https://github.com/tomshaw/fontastic/releases/download/v0.2.0/Fontastic-0.2.0-x86_64.rpm
-	source = LICENSE-0.2.0::https://raw.githubusercontent.com/tomshaw/fontastic/v0.2.0/LICENSE
+	depends = electron40
+	source = fontastic-1.0.0-x86_64.AppImage::https://github.com/tomshaw/fontastic/releases/download/1.0.0/Fontastic-1.0.0.AppImage
+	source = LICENSE-1.0.0.md::https://raw.githubusercontent.com/tomshaw/fontastic/1.0.0/LICENSE.md
 	source = fontastic.sh
-	sha256sums = b151f172ad321d94357a675843aa98f1b370e9bacb2ca2764125110281a595cc
-	sha256sums = d461d5796257402081b89cae64365068a66d193696f7c64cb7e6fd307b4a48d9
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 0390607f6bfa05af94e4cee7f53e79e7ab0fd595e240f168518e89dce92cd7c6
+	sha256sums = 00df8834a94ab4d44c7c7d6557cce6af143ed0019a80c682b5a03d0cea8187b4
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = fontastic-bin
