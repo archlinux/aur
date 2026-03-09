@@ -2,7 +2,7 @@
 
 pkgname=footermilter
 _gitname=FooterMilter
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='FooterMilter insert a footer/disclaimer at the end of the body of an email'
 arch=('any')
