@@ -4,12 +4,12 @@ pkgname=ttf-paktype
 pkgdesc='PakType fonts for Pakistani typography'
 url='https://paktype.sourceforge.net/'
 license=('custom')
-pkgver='2022_04_01'
+pkgver='2026_02_27'
 pkgver_=${pkgver//_/-}
 pkgrel=1
 arch=('any')
 source=("https://master.dl.sourceforge.net/project/paktype/PakType-Release-${pkgver_}.zip")
-sha256sums=('5398cfaf99296d866b4eaba45dd7b83374d3229ee7dee10b85fc93a2c9a06677')
+sha256sums=('c74278d0e98d74b854897bafca6831f71a95421295ac70ba1e2009d8e2b2488b')
 
 package() {
     install -d "${pkgdir}/usr/share/fonts/TTF"
