@@ -1,7 +1,7 @@
 pkgbase = perl-math-gmpz
 	pkgdesc = Math::GMPz - perl interface to the GMP library's integer (mpz) functions.
-	pkgver = 0.67
-	pkgrel = 2
+	pkgver = 0.68
+	pkgrel = 1
 	url = https://metacpan.org/release/Math-GMPz
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = perl-math-gmpz
 	depends = perl>=5.10.1
 	depends = gmp>=6.1.0
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-GMPz-0.67.tar.gz
-	b2sums = 6df5772d3c1138fdfd9c7bcbd8c4cd04273ba98a692c0923c30602595d06d484ab7ea485a18e64992758b21421a466a151b5da9405a7aac697b0de2b7a1092cc
+	source = https://cpan.metacpan.org/authors/id/S/SI/SISYPHUS/Math-GMPz-0.68.tar.gz
+	b2sums = 7604a21a4782b912cdca182617d7fbd1602968adb4b05114f03c7a5fe77622d52484550b02ab22f01f3e45a3dc8e14e8cd1af170e24b5f5ccba3976e8a769eca
 
 pkgname = perl-math-gmpz
