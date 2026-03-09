@@ -2,7 +2,7 @@
 
 pkgname=python-blackjax
 _pkgname=${pkgname#python-}
-pkgver=1.2.5
+pkgver=1.3
 pkgrel=1
 pkgdesc='Bayesian Inference library designed for ease of use, speed and modularity.'
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools'
              'python-setuptools-scm' 'python-wheel')
 optdepends=()
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('8fedfc8de2ad33e4c170de4648d8301374e386fd68d8db91bf03f1bd2d0f5e97')
+sha256sums=('6814d09aa963b821c961844a61ac5b9925f21d19ad2ebc741320ceae0d4dbcb5')
 
 build() {
     python -m build -nw $_pkgname-$pkgver
