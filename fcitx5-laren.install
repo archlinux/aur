@@ -60,8 +60,8 @@ _activate_session() {
         GTK_IM_MODULE QT_IM_MODULE XMODIFIERS SDL_IM_MODULE" 2>/dev/null
 
     # Kill any stale fcitx5 and start fresh
-    su - "$_user" -c "killall fcitx5 2>/dev/null; DBUS_SESSION_BUS_ADDRESS=$_dbus fcitx5 -d" 2>/dev/null
-    return $?
+    su - "$_user" -c "killall fcitx5 2>/dev/null; DBUS_SESSION_BUS_ADDRESS=$_dbus nohup fcitx5 -d >/dev/null 2>&1 &" 2>/dev/null
+    return 0
 }
 
 _setup_env_vars() {
