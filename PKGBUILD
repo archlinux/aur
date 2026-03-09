@@ -19,6 +19,7 @@ makedepends=(
     base-devel
     clang
     cmake
+    git
     lld
     llvm
     ninja
