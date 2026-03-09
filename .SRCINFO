@@ -1,23 +1,23 @@
 pkgbase = p3x-redis-ui-bin
 	pkgdesc = A very functional handy database GUI and works in your pocket on the responsive web or as a desktop app.(Prebuilt version.Use system-wide electron)
-	pkgver = 2025.10.110
+	pkgver = 2026.4.101
 	pkgrel = 1
 	url = https://www.corifeus.com/redis-ui
 	arch = aarch64
 	arch = armv7h
 	arch = x86_64
 	license = MIT
-	depends = electron39
-	conflicts = p3x-redis-ui=2025.10.110
-	source = LICENSE-2025.10.110::https://raw.githubusercontent.com/patrikx3/redis-ui/v2025.10.110/LICENSE
+	depends = electron40
+	conflicts = p3x-redis-ui=2026.4.101
+	source = LICENSE-2026.4.101::https://raw.githubusercontent.com/patrikx3/redis-ui/v2026.4.101/LICENSE
 	source = p3x-redis-ui.sh
 	sha256sums = 1847e0e0698142ed4347c1441a9fa81c8fbddd44b1d8bbcd5e3647f991759d7f
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = p3x-redis-ui-2025.10.110-aarch64.rpm::https://github.com/patrikx3/redis-ui/releases/download/v2025.10.110/p3x-redis-ui-2025.10.110.aarch64.rpm
-	sha256sums_aarch64 = 7a7bca252eb4ba07d88a7a059e3ae39c1ce66fd2bcb51e886b3e444be5a5dd31
-	source_armv7h = p3x-redis-ui-2025.10.110-armv7h.rpm::https://github.com/patrikx3/redis-ui/releases/download/v2025.10.110/p3x-redis-ui-2025.10.110.armv7l.rpm
-	sha256sums_armv7h = 994f3315b1a0f797182f58b1652ea1062e0cd68fcff1d1c87b2b6afd36b9ee05
-	source_x86_64 = p3x-redis-ui-2025.10.110-x86_64.rpm::https://github.com/patrikx3/redis-ui/releases/download/v2025.10.110/p3x-redis-ui-2025.10.110.x86_64.rpm
-	sha256sums_x86_64 = 7d2050724c64cdfd1809587eaf1788ab62d9742e5289e3701998abb1629c9706
+	source_aarch64 = p3x-redis-ui-2026.4.101-aarch64.rpm::https://github.com/patrikx3/redis-ui/releases/download/v2026.4.101/p3x-redis-ui-2026.4.101.aarch64.rpm
+	sha256sums_aarch64 = 5ed70c896957855ecef8376eaadd8cf267c4b2b0c10a6ae1a3939272ff4d0015
+	source_armv7h = p3x-redis-ui-2026.4.101-armv7h.rpm::https://github.com/patrikx3/redis-ui/releases/download/v2026.4.101/p3x-redis-ui-2026.4.101.armv7l.rpm
+	sha256sums_armv7h = 5a1748c7bffc2fff9237c0aa15c7052af5039fd9e1bd6f7630d0fff2cc350436
+	source_x86_64 = p3x-redis-ui-2026.4.101-x86_64.rpm::https://github.com/patrikx3/redis-ui/releases/download/v2026.4.101/p3x-redis-ui-2026.4.101.x86_64.rpm
+	sha256sums_x86_64 = def873648d2799ee4a8f784dc05e2da42ec2be1793f2b6a36b9012c2e75b34c3
 
 pkgname = p3x-redis-ui-bin
