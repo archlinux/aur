@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Shiru
-Comment=Manage your personal media library, organize your collection, and stream your content in real time, no waiting required!
+Comment=A personal anime library manager for watching and tracking your collection in real time. Lightweight, powerful, and paws-itively fast. No waiting required!
 Exec=/usr/bin/shiru
 Icon=shiru
 Terminal=false

@@ -1,9 +1,9 @@
 # Maintainer: RockinChaos
 
 pkgname=shiru
-pkgver=6.5.0
+pkgver=6.5.1
 pkgrel=1
-pkgdesc="Manage your personal media library, organize your collection, and stream your content in real time, no waiting required!"
+pkgdesc="A personal anime library manager for watching and tracking your collection in real time. Lightweight, powerful, and paws-itively fast. No waiting required!"
 arch=("x86_64")
 url="https://github.com/RockinChaos/Shiru"
 license=("GPL-3.0")
@@ -12,9 +12,9 @@ options=("!strip")
 source=("https://github.com/RockinChaos/Shiru/releases/download/v${pkgver}/linux-Shiru-v${pkgver}.AppImage"
         "shiru.png"
         "shiru.desktop")
-sha256sums=("0586d6766c2d95c3446898e8ec851457c9b0b68fca460f32a4c6a8590c63bc11"
+sha256sums=("87183bcb8c43d9ade6ce31790aa8ffd381de4fd46baaa47f925c7c3f50091c15"
             "2bbe68a752d1a96e4a4c97201cf2d15aef90284493f17619f528ab50f5729a60"
-            "7e2b124d5e0ec388c8a5288339eeddda848c3e206ebe67377c32c49da2b17063")
+            "a2e60380f01e375762a7002ffd04b1b710d404ea240e413abe9747c4dd075c9f")
 
 package() {
   install -Dm755 "$srcdir/linux-Shiru-v${pkgver}.AppImage" "$pkgdir/usr/bin/shiru"
