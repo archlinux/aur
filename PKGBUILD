@@ -1,7 +1,7 @@
 # Maintainer: Haotian Li <lilinzta@gmail.com>
 pkgname=oneanime-appimage
 pkgdesc="一款简洁清爽无广告的看番软件。一款带弹幕的 anime1 第三方客户端，界面符合 Material You 规范。"
-pkgver=1.4.1
+pkgver=1.4.5
 pkgrel=1
 _pkgname=oneAnime_linux_${pkgver}.AppImage
 arch=("x86_64")
