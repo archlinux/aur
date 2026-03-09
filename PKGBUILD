@@ -1,6 +1,6 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=boostchanger-bin
-pkgver=5.1.0
+pkgver=5.2.0
 _electronversion=40
 pkgrel=1
 pkgdesc="With this app you can control CPU turbo boost and the settings of the cpu speed in order to consuming less battery voltage on Linux.(Prebuilt version.Use system-wide electron)"
@@ -17,7 +17,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/nbebaw/boostchanger/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('18f2431daa38dc09fd60acd63e43730003458fc1dde4f7b7fe6374fc91cfce86'
+sha256sums=('3c226208bd7bc85d5099aecda1994f07f207a91150d6f5e8a071073733320b47'
             'af8aec94b8f5c88f4c4e4435570b94d143970c621048db7e25f27403fa4ec02e'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
