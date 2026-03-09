@@ -1,6 +1,6 @@
 # Maintainer: Jon Tsiros <jon@brightblock.ai>
 pkgname=hyprlayer-bin
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="CLI for managing thoughts for AI coding agents"
 arch=('x86_64' 'aarch64')
