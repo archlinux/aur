@@ -3,8 +3,8 @@
 
 _target=riscv-none-elf
 pkgname=$_target-newlib
-pkgver=4.5.0.20241231
-pkgrel=4
+pkgver=4.6.0.20260123
+pkgrel=1
 _upstream_ver=$pkgver
 pkgdesc='A C standard library implementation intended for use on embedded systems (RISC-V bare metal)'
 arch=(any)
@@ -13,7 +13,7 @@ license=(BSD)
 makedepends=($_target-gcc-stage1)
 options=(!emptydirs !strip)
 source=(https://sourceware.org/pub/newlib/newlib-$_upstream_ver.tar.gz)
-sha512sums=('d391ea3ac68ddb722909ef790f81ba4d6c35d9b2e0fcdb029f91a6c47db9ee94a686a2bdff211fb84025e1a317e257acfa59abda3fd2bc6609966798e1c604dc')
+sha512sums=('ffa16d6465c0b429264c46395fa760fbcf072d3ff86e87330ba1f483efcfe66393ef83b03932759444a0ebeaef94d3ca58a59e91ab7b97b2a6ac6be2e7589657')
 
 build() {
   rm -rf build-{newlib,nano}
