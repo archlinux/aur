@@ -1,7 +1,7 @@
 # Maintainer: mmaher88 <narmer88@gmail.com>
 pkgname=fcitx5-laren
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Arabizi to Arabic transliteration engine for Fcitx5"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mmaher88/laren"
@@ -20,9 +20,11 @@ build() {
 }
 
 check() {
-    cmake -B build -S "laren-$pkgver" -DBUILD_TESTS=ON
-    cmake --build build
-    cd build && ctest --output-on-failure
+    cmake -B build-test -S "laren-$pkgver" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DBUILD_TESTS=ON
+    cmake --build build-test
+    cd build-test && ctest --output-on-failure
 }
 
 package() {
