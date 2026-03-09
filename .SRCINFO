@@ -1,7 +1,7 @@
 pkgbase = veeamblksnap-6-dkms
 	pkgdesc = Veeam Agent for Linux kernel modules (v6, DKMS)
 	pkgver = 6.3.2.1207
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.veeam.com/products/downloads.html
 	arch = x86_64
 	license = LicenseRef-GPL-2.0
