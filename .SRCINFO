@@ -1,6 +1,6 @@
 pkgbase = amphitheatre-desktop-bin
 	pkgdesc = Open source GUI application that enables you to interact with Amphitheatre.(Prebuilt version)
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://github.com/amphitheatre-app/desktop
 	arch = aarch64
@@ -8,13 +8,13 @@ pkgbase = amphitheatre-desktop-bin
 	arch = x86_64
 	license = Apache-2.0
 	depends = glibc>=2.38
-	provides = amphitheatre-desktop=0.11.1
+	provides = amphitheatre-desktop=0.11.2
 	conflicts = amphitheatre-desktop
-	source_aarch64 = amphitheatre-desktop-0.11.1-aarch64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.1/amphitheatre-desktop-linux-arm64.rpm
-	sha256sums_aarch64 = e466343068659447cb61f874c52d26acfcc41e7686f3b7c024c85a107ac015c7
-	source_i686 = amphitheatre-desktop-0.11.1-i686.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.1/amphitheatre-desktop-linux-i386.rpm
-	sha256sums_i686 = 196348eebddcdce90b2f8417042674cc0e4e83c286143e41e0b50d9a74858050
-	source_x86_64 = amphitheatre-desktop-0.11.1-x86_64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.1/amphitheatre-desktop-linux-amd64.rpm
-	sha256sums_x86_64 = 62d647e3cf3b0665015c6e28f6a22aa44ab699e4cd5518b92e6ecb8525dc9b22
+	source_aarch64 = amphitheatre-desktop-0.11.2-aarch64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.2/amphitheatre-desktop-linux-arm64.rpm
+	sha256sums_aarch64 = 041735e6f322eefc82884a0944bc0a5b99fdeec5d87daa6205fcd1aed442a489
+	source_i686 = amphitheatre-desktop-0.11.2-i686.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.2/amphitheatre-desktop-linux-i386.rpm
+	sha256sums_i686 = 969144891508afbfc6715ad30f2a6dabd55c4acbfa385a37be61b659acc05550
+	source_x86_64 = amphitheatre-desktop-0.11.2-x86_64.rpm::https://github.com/amphitheatre-app/desktop/releases/download/v0.11.2/amphitheatre-desktop-linux-amd64.rpm
+	sha256sums_x86_64 = 1250db9f2b6b76f6453d24a9ebaeef1100111aabaeb7650f99c8592b3d89e734
 
 pkgname = amphitheatre-desktop-bin
