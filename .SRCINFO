@@ -1,0 +1,26 @@
+pkgbase = winbox43
+	pkgdesc = Mikrotik RouterOS GUI Configurator (version 4.3 because winbox is shit and new versions don't work)
+	pkgver = 4.3
+	pkgrel = 1
+	url = https://mikrotik.com/download
+	arch = x86_64
+	license = custom
+	depends = fontconfig
+	depends = freetype2
+	depends = glibc
+	depends = libglvnd
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = xcb-util-image
+	depends = xcb-util-keysyms
+	depends = xcb-util-renderutil
+	depends = xcb-util-wm
+	depends = zlib
+	options = !debug
+	source = WinBox-4.3.zip::https://download.mikrotik.com/routeros/winbox/4.3/WinBox_Linux.zip
+	source = winbox43.desktop
+	sha256sums = 573600ac24df38a7a06ea4318b12754247eec4b54c6c90b0a57100d676787a4c
+	sha256sums = 87f114bb57cd57efda4d2600fdce31f9c1229965f3cd049f6c85e7471cdcc2a2
+
+pkgname = winbox43

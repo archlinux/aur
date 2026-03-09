@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=WinBox 4.3
+Comment=GUI administration for Mikrotik RouterOS
+Exec=/usr/bin/env --unset=QT_QPA_PLATFORM /usr/bin/WinBox43
+Icon=winbox43
+Terminal=false
+Categories=Utility
+StartupWMClass=winbox
