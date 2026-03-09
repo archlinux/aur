@@ -1,7 +1,7 @@
 pkgbase = turnon
 	pkgdesc = Turn on devices in your local network
 	pkgver = 2.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/swsnr/turnon
 	arch = x86_64
 	arch = aarch64

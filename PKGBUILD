@@ -6,13 +6,14 @@ url="https://codeberg.org/swsnr/turnon"
 license=("EUPL-1.2")
 arch=("x86_64" "aarch64")
 pkgver=2.9.6
-pkgrel=1
+pkgrel=2
 makedepends=("rust" "cargo" "git" "blueprint-compiler" "just")
 depends=(libadwaita gtk4 hicolor-icon-theme graphene dconf gcc-libs glib2 glibc)
 source=("git+https://codeberg.org/swsnr/turnon.git#tag=v${pkgver}")
 md5sums=('a0b947230aa3293b8198b2ae5a9a25d6')
 
 function prepare() {
+	export _app_id=de.swsnr.turnon
 	cd "${srcdir}/turnon"
 	export RUSTUP_TOOLCHAIN=stable
 	cargo fetch --target "$CARCH-unknown-linux-gnu"
@@ -21,6 +22,7 @@ function prepare() {
 }
 
 function build() {
+	export _app_id=de.swsnr.turnon
 	cd "${srcdir}/turnon"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
@@ -30,12 +32,14 @@ function build() {
 }
 
 function check() {
+	export _app_id=de.swsnr.turnon
 	cd "${srcdir}/turnon"
 	export RUSTUP_TOOLCHAIN=stable
 	env cargo test --frozen --all-features
 }
 
 function package() {
+	export _app_id=de.swsnr.turnon
 	cd "${srcdir}/turnon"
 	#make DESTPREFIX="${pkgdir}/usr" install
 	just APPID=de.swsnr.turnon DESTPREFIX="$pkgdir/usr" install
