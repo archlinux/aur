@@ -1,6 +1,6 @@
 pkgname=ssmt4-linux
 pkgver=0.0.8_beta
-pkgrel=2
+pkgrel=3
 pkgdesc="SSMT4 - Super Simple Linux Game Tools 4th"
 arch=('x86_64')
 url='https://gitee.com/xiaobai01111/ssmt4-linux'
@@ -35,7 +35,14 @@ _source_name="${pkgname}"
 
 _probe_repo_tag() {
   local repo_url="$1"
-  GIT_TERMINAL_PROMPT=0 git ls-remote --exit-code --refs "${repo_url}" "refs/tags/${_source_tag}" >/dev/null 2>&1
+  env \
+    GIT_TERMINAL_PROMPT=0 \
+    GIT_CONFIG_GLOBAL=/dev/null \
+    GIT_CONFIG_NOSYSTEM=1 \
+    git \
+      -c credential.helper= \
+      -c core.askPass=true \
+      ls-remote --exit-code --refs "${repo_url}" "refs/tags/${_source_tag}" >/dev/null 2>&1
 }
 
 _select_first_available_repo() {
@@ -86,6 +93,8 @@ sha256sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${_source_name}"
+  # ring currently fails to link on Arch-family release builds when LTO is enabled.
+  sed -i 's/^lto = true$/lto = false/' src-tauri/Cargo.toml
   pnpm install --frozen-lockfile
 }
 
