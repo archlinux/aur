@@ -10,7 +10,7 @@ depends=('polkit')
 provides=('bigsnatch')
 conflicts=('bigsnatch')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/bigsnatch-${pkgver}-x86_64.tar.gz")
-sha256sums=('efb098facf31b2f30b6a0afdead8e98d7ff7f31d32f0914c75c1ca8242fb3bd3')
+sha256sums=('d12118f8561af11c8c8e7847ccb90235c0ea0f135f48cbc8ede5bd8079ee6f97')
 
 package() {
   cd "bigsnatch-${pkgver}-x86_64"
