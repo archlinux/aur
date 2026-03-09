@@ -2,6 +2,7 @@
 # Contributor: krnlsoft <krnlsoft 4t hotmail d0t it>
 
 _pkgbase=blksnap
+_pkgname_nover=veeam${_pkgbase}
 _pkgname=veeam${_pkgbase}-6
 pkgname=${_pkgname}-dkms
 pkgver=6.3.2.1207
@@ -24,7 +25,7 @@ prepare() {
 }
 
 package() {
-  local target="${pkgdir}/usr/src/${_pkgname}-${pkgver}"
+  local target="${pkgdir}/usr/src/${_pkgname_nover}-${pkgver}"
   mkdir -p "${target}"
 
   # Copy sources (including Makefile)
@@ -34,7 +35,7 @@ package() {
   install -Dm644 dkms.conf "${target}/dkms.conf"
 
   # Set name and version
-  sed -e "s/@_PKGBASE@/${_pkgname}/" \
+  sed -e "s/@_PKGBASE@/${_pkgname_nover}/" \
       -e "s/@PKGVER@/${pkgver}/" \
       -i "${target}/dkms.conf"
 }
