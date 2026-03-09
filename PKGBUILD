@@ -1,4 +1,4 @@
-# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-03-06 10:41:31
+# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-03-09 06:21:17
 
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Maintainer: Piotr Gorski <piotrgorski@cachyos.org>
@@ -177,7 +177,7 @@ _minor=rc1
 _rcver=rc1
 pkgver=${_major}.${_rcver}
 _tagrel=2
-pkgrel=1.3
+pkgrel=1.4
 #_stable=${_major}.${_minor}
 #_stable=${_major}
 _stable=${_major}-${_rcver}
@@ -813,4 +813,4 @@ b2sums=('4481052eed14653ef91df56644fdaf87f7a121fc496bc20c3a375e9e3d7e24914555fa2
         'bccb4169c43e556f10cddaf8f101cc0b29209f984b9f681f266602a359bc6b4765b48d192006decd23667bd2b899fad9c1fd5b742251014dacc7c077ea023e0f'
         'ea69dc26bf4f55e984fb2f3c2c70ccf537307ab2a2c156077202410d7ac989d1552d780928866c177327b4260634ad04946e3ea1f04705d5549e65574bc3e8e2'
         '66636d34cada5ed99e7ea590873ba1557178a3a53875a5dff4c11b27a843534986fec7d87524c6d148a795b37e2ae461d46f3fa889c35750833f708a63598497'
-        '4abee3fe78bcfee79751396c9c8a4826b7831a0136a95778a416b1450f503de9ae6fb69de9331959368c522dc0dcfe37332c9042606ef50799658a4b3e29075f')
+        '4a462857cd596fd578e274a476622d6c8cd5b12d2fe07a94579a3a642ae20aae0da91a8d9827c1a54239df6ef37dba794a17a500d5edfa1de9f6bcd7675531e0')
