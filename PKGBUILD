@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=picgo-git
 _pkgname=PicGo
-pkgver=2.4.2.r1.gdfe92d4
+pkgver=2.5.3.r2.g43a21de
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -20,6 +20,7 @@ makedepends=(
     'gendesk'
     'pnpm'
     'curl'
+    'jq'
 )
 source=(
     "${pkgname//-/.}::git+${_ghurl}.git"
@@ -96,7 +97,15 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/dist_electron/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+	find "${srcdir}/${pkgname//-/.}/dist_electron/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-git}" {} +
+    if find "${srcdir}/${pkgname//-/.}/dist_electron/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${pkgname//-/.}/dist_electron/linux-"*"/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-git}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/${pkgname//-/.}/dist_electron/linux-"*/swiftshader/* -t "${pkgdir}/usr/lib/${pkgname%-git}/swiftshader"
     install -Dm644 "${srcdir}/${pkgname//-/.}/public/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
