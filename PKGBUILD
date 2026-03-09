@@ -5,52 +5,69 @@
 
 pkgname=advanced-ssh-config
 _name=assh
-pkgver=2.17.0
-_vcsref=31b5ced
+pkgver=2.17.1
+_vcsref=69451d3
 pkgrel=1
 pkgdesc='ssh wrapper using ProxyCommand that adds regex, aliases, gateways, includes, dynamic hostnames to SSH and ssh-config'
 arch=('x86_64')
 url='https://github.com/moul/assh'
 license=('MIT')
-depends=('glibc')
+depends=('glibc' 'openssh')
 makedepends=('go')
 optdepends=(
   'bash-completion: for shell auto-completion'
   'zsh-completions: for shell auto-completion'
+  'openbsd-netcat: for gateway proxycommand support (nc)'
+  'socat: alternative proxycommand helper'
+  'graphviz: render dot output'
 )
-conflicts=('assh-git')
+conflicts=('assh' 'assh-bin' 'assh-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/moul/assh/archive/v${pkgver}.tar.gz")
-sha256sums=('7640558e6ce57a2c90b628cedd2f639647e4845538e3aa261870098dfdf95445')
+sha256sums=('9571e3424dcfa5d52e32f3f7dd19995e3d1f30c9d80420e77d47681d4a201744')
 
 build() {
+  export GOPATH="${srcdir}/gopath"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+
   cd "$_name-$pkgver"
   go build \
-     -trimpath \
-     -buildmode=pie \
-     -modcacherw \
-     -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X 'moul.io/assh/v2/pkg/version.Version=${pkgver}' -X 'moul.io/assh/v2/pkg/version.VcsRef=${_vcsref}'" \
-     -o assh \
-     .
+    -trimpath \
+    -buildvcs=false \
+    -buildmode=pie \
+    -mod=readonly \
+    -ldflags "-linkmode external -extldflags '${LDFLAGS}' \
+      -X 'moul.io/assh/v2/pkg/version.Version=${pkgver}' \
+      -X 'moul.io/assh/v2/pkg/version.VcsRef=${_vcsref}'" \
+    -o assh \
+    .
 }
 
 check() {
+  export GOPATH="${srcdir}/gopath"
   cd "$_name-$pkgver"
-  go test ./...
+  go test -buildvcs=false ./...
 }
 
 package() {
   cd "$_name-$pkgver"
-  install -Dm755 assh "${pkgdir}/usr/bin/assh"
-  install -Dm755 contrib/completion/zsh_autocomplete "${pkgdir}/usr/share/zsh/site-functions/_assh"
-  install -Dm755 contrib/completion/bash_autocomplete "${pkgdir}/usr/share/bash-completion/completions/assh"
-  for _dir_name in examples/*
-  do
-    install -Dm755 -t "${pkgdir}/usr/share/doc/advanced-ssh-config/$_dir_name" "${_dir_name}/"*
+
+  install -Dm755 assh "$pkgdir/usr/bin/assh"
+
+  # completions
+  install -Dm644 contrib/completion/zsh_autocomplete "$pkgdir/usr/share/zsh/site-functions/_assh"
+  install -Dm644 contrib/completion/bash_autocomplete "$pkgdir/usr/share/bash-completion/completions/assh"
+
+  # examples
+  for _dir in examples/*; do
+    [[ -d "$_dir" ]] || continue
+    install -d "$pkgdir/usr/share/doc/$pkgname/$(basename "$_dir")"
+    install -m644 "$_dir"/* "$pkgdir/usr/share/doc/$pkgname/$(basename "$_dir")/"
   done
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:

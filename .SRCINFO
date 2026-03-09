@@ -1,16 +1,22 @@
 pkgbase = advanced-ssh-config
 	pkgdesc = ssh wrapper using ProxyCommand that adds regex, aliases, gateways, includes, dynamic hostnames to SSH and ssh-config
-	pkgver = 2.17.0
+	pkgver = 2.17.1
 	pkgrel = 1
 	url = https://github.com/moul/assh
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
+	depends = openssh
 	optdepends = bash-completion: for shell auto-completion
 	optdepends = zsh-completions: for shell auto-completion
+	optdepends = openbsd-netcat: for gateway proxycommand support (nc)
+	optdepends = socat: alternative proxycommand helper
+	optdepends = graphviz: render dot output
+	conflicts = assh
+	conflicts = assh-bin
 	conflicts = assh-git
-	source = advanced-ssh-config-2.17.0.tar.gz::https://github.com/moul/assh/archive/v2.17.0.tar.gz
-	sha256sums = 7640558e6ce57a2c90b628cedd2f639647e4845538e3aa261870098dfdf95445
+	source = advanced-ssh-config-2.17.1.tar.gz::https://github.com/moul/assh/archive/v2.17.1.tar.gz
+	sha256sums = 9571e3424dcfa5d52e32f3f7dd19995e3d1f30c9d80420e77d47681d4a201744
 
 pkgname = advanced-ssh-config
