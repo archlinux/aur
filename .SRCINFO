@@ -1,6 +1,6 @@
 pkgbase = pgschema-bin
 	pkgdesc = Declarative schema migration CLI for Postgres (Terraform-style)
-	pkgver = 1.7.3
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://github.com/pgplex/pgschema
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = pgschema-bin
 	depends = glibc
 	provides = pgschema
 	conflicts = pgschema
-	source_x86_64 = pgschema-bin-1.7.3-x86_64::https://github.com/pgplex/pgschema/releases/download/v1.7.3/pgschema-1.7.3-linux-amd64
-	sha256sums_x86_64 = 7b2eeef218e2da804f2d3f22dbc12b7b29160ae86b562f9d0389658308dd768e
-	source_aarch64 = pgschema-bin-1.7.3-aarch64::https://github.com/pgplex/pgschema/releases/download/v1.7.3/pgschema-1.7.3-linux-arm64
-	sha256sums_aarch64 = e73f25b016c7c9bb5601b9f7132c0f94bc1762a3309e96ea17ad79f67767d8a5
+	source_x86_64 = pgschema-bin-1.7.4-x86_64::https://github.com/pgplex/pgschema/releases/download/v1.7.4/pgschema-1.7.4-linux-amd64
+	sha256sums_x86_64 = 682691a2d18699b633bec904e6526e94c3df56b4b366daf125546b7ac69de4c8
+	source_aarch64 = pgschema-bin-1.7.4-aarch64::https://github.com/pgplex/pgschema/releases/download/v1.7.4/pgschema-1.7.4-linux-arm64
+	sha256sums_aarch64 = 2d8c15f3b6f11dcd60d2f84857cad65374da1761281e972aad21d7df64a340ac
 
 pkgname = pgschema-bin
