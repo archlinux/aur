@@ -2,7 +2,7 @@
 
 pkgbase=sftool-gui
 pkgname=sftool-gui
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 epoch=
 pkgdesc="A user-friendly graphical serial port operation tool for SIFLI series SoC chips."
@@ -49,7 +49,7 @@ checkdepends=()
 options=(!lto !debug)
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('412684979de9b075bec713d52144fae991d3b4c8710dd296dca1aa1310dc207d')
+sha256sums=('992bcf96bf863733e3ad676181200685872d80713939c9335ac3187535d7a661')
 
 prepare() {
     cd "${srcdir}/${pkgname}/src-tauri"
