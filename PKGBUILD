@@ -1,6 +1,6 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=polychord
-pkgver='1.18.2'
+pkgver=1.22.2
 pkgrel=1
 pkgdesc="Next generation nested sampling"
 arch=(any)
@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/PolyChord/PolyChordLite/archive/${pkgver}.tar.gz")
-sha256sums=('d6dac54c88aea585adbc13b1a120a2c447967f6c1fae86da0ba7e9a9c17f871c')
+sha256sums=('f7407a3ad24cba9f0f0fef41e1f3646d72d1c308355e20b21abc222c17cb3509')
 package() {
     cd "${srcdir}/PolyChordLite-${pkgver}"
     install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
