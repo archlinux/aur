@@ -1,6 +1,6 @@
 pkgbase = modelsdev-bin
 	pkgdesc = Browse AI models, benchmarks, and coding agents from the terminal
-	pkgver = 0.9.8
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/arimxyer/models
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = modelsdev-bin
 	provides = models
 	conflicts = modelsdev
 	conflicts = modelsdev-git
-	source = LICENSE::https://raw.githubusercontent.com/arimxyer/models/v0.9.8/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/arimxyer/models/v0.10.0/LICENSE
 	sha256sums = 515175e700aadba7b5436688d6daa0e06ea17bfb657e377e14138f65866082a3
-	source_x86_64 = https://github.com/arimxyer/models/releases/download/v0.9.8/models-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 1315dfed3957bb510cf6205ed7de7010f75fc21367471920fea2ed750c9e65f0
-	source_aarch64 = https://github.com/arimxyer/models/releases/download/v0.9.8/models-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 039fa60a08d26f2761d89abf887b208ab27f90297a6a975d91eb9e5f452e161a
+	source_x86_64 = https://github.com/arimxyer/models/releases/download/v0.10.0/models-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 27b7be7b01f01a1b474fcbcc62601941931c2cf4cc3b2d6f6cff267306dde7b5
+	source_aarch64 = https://github.com/arimxyer/models/releases/download/v0.10.0/models-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3f4bf773bec8e193fad8e2e5b429da8a0716ac9fde5c28d375fcd6bb1b89a260
 
 pkgname = modelsdev-bin
