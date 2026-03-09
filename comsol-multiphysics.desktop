@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=COMSOL Multiphysics
+GenericName=COMSOL Multiphysics
+Comment=Launch COMSOL Multiphysics
+Exec=/opt/comsol/multiphysics/bin/glnxa64/comsol
+Icon=/opt/comsol/multiphysics/bin/glnxa64/comsol.png
+Terminal=false
+Type=Application
+Categories=Engineering;Science;
+StartupNotify=true

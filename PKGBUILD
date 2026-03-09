@@ -30,36 +30,46 @@
 #           tar -cpf - opt usr | xz -T0 -c - > comsol-multiphysics.tar.xz
 # 6.    that's all. just delete junk file to release disk space.
 
-pkgname=comsol-multiphysics
+pkgbase=comsol-multiphysics
+pkgname=(
+    comsol-multiphysics
+    #comsol-multiphysics-acdc
+)
 _installername=COMSOL64_lnx
 pkgver=6.4.0.293
 _pkgver_major=6.4
-pkgrel=4
+pkgrel=5
 pkgdesc='A general-purpose simulation software for modeling designs, devices, and processes in all fields of engineering, manufacturing, and scientific research'
 arch=('x86_64')
 url='https://www.comsol.com/comsol-multiphysics'
 license=('LicenseRef-Comsol')
-depends=(base base-devel)
+depends=(base base-devel jre21-openjdk graphicsmagick)
 optdepends=(
     'matlab: LiveLink™ for MATLAB®'
     'tcsh: Required for interoperability with MATLAB®'
-    'cuda: NVIDIA CUDA® Toolkit'
+    'cuda: COMSOL CUDA Runtime. Required for GPU Compute'
+    'cudss: COMSOL CUDSS Runtime Components'
 )
 makedepends=(
-    'podman' # For rootless containerized installation pre-packaging
     'coreutils'
     'grep'
-    'bash'
+    'sed'
+    'unzip'
+    'sh'
     'man-pages' # For readlink
 )
 source=(
     # Download URL is https://nonusdownload.comsol.com/product/$pkgver/full/$_installername.zip?__gda__=$_gda&fileExt=.zip but $_gda changes dynamically. Automatic download not possible.
     "file://$_installername.zip" # Go to www.comsol.com, login and activate your license, then download the online installer for Linux from https://www.comsol.com/product-download manually. Place the zip in this directory together with this PKGBUILD
     "file://LICENSE"
+    "file://setupconfig.ini"
+    "file://comsol-multiphysics.desktop"
 )
 sha256sums=(
     f4da49ce99f6351dd96df856894755f334d499cd02588bee9b005ba3437f6a04
     55a674c9c763b04fa313cda80998c4fbaf923b3166b2c91d242b0d3a4ae1843c
+    3e87aeb02ee58364c75f6979fc05be42d189f2653fa3394951844bc5363cd283
+    fda96a349398e5d49598f3186f242dd8d673fb18aa73719c1dcad066ea9b1afa
 )
 #OPTIONS=(!strip docs libtool staticlibs)
 _installdir='/opt/comsol/multiphysics'
@@ -70,10 +80,87 @@ _installdir='/opt/comsol/multiphysics'
 _license_agree=0
 # License file or port@host or passcode
 _license=
+_addons=(
+    acdc
+    aco
+    battery
+    cfd
+    mixer
+    chem
+    compmat
+    corr
+    echem
+    edecm
+    edis
+    fce
+    granular
+    ht
+    mems
+    metproc
+    mfl
+    molec
+    particle
+    pipe
+    plasma
+    polymer
+    porus
+    roptics
+    rf
+    semicond
+    sme
+    fatigue
+    geomech
+    mbd
+    nsm
+    rotor
+    ssf
+    lgp
+    uq
+    woptics
+    cad
+    catia5
+    design
+    ecad
+    llac
+    llexcel
+    llinv
+    llmatlab
+    llcreop
+    llrevit
+    llsimulink
+    llse
+    llsw
+    opt
+    matlib
+    modelmanager
+    cluster
+    chatbot
+    cudaruntime
+    cudssruntime
+    cudadnn
+    compiler
+)
 
 function _hostof
 {
     echo "$1:$(ping $1 -c 1 -q 2>&1 | grep -Po "(\d{1,3}\.){3}\d{1,3}")"
+}
+
+function _get_conf
+{
+    if grep -q "$1 = " "${srcdir}/setupconfig.ini"; then
+        grep "$1 = " "${srcdir}/setupconfig.ini" | tail | sed "s/$1 = //g"
+    fi
+}
+function _set_conf
+{
+    if grep -q "$1 =" "${srcdir}/setupconfig.ini"; then
+        sed -i "s#^$1 =.*\$#$1 = $2#g" "${srcdir}/setupconfig.ini"
+    else
+        echo "Warning: new configuration '$1'"
+        echo "$1 = $2" >> "${srcdir}/setupconfig.ini"
+    fi
+    echo "$1 = $2"
 }
 
 prepare()
@@ -83,8 +170,13 @@ prepare()
     #license agreement
     local _license_agreement="LICENSE"
     local _read=0
+    if [[ $_license_agree != 1 && "$(_get_conf 'agree')" == "1" ]]; then
+        _license_agree=1
+    elif [[ -f "${srcdir}/agree.cache" ]]; then
+        _license_agree=1
+    fi
     while [[ $_license_agree != 1 ]]; do
-        if [ "${_read}" = "1" ]; then
+        if [ "${_read}" == "1" ]; then
             less -E "${_license_agreement}"
             _read=0
         fi
@@ -100,12 +192,19 @@ prepare()
             * ) ;;
         esac
     done
+    touch "${srcdir}/agree"
+    _set_conf agree 1
 
     _vpn_interface=$(ip addr show | grep -o 'tun[0-9]*' | head -1)
     if [[ ! -n "$_vpn_interface" ]]; then
         echo "Warning: you may need to connect to a corporate VPN in order to activate your product license."
     fi
 
+    if [[ "$_license" == "" ]] && grep -q "license = " "$srcdir/setupconfig.ini"; then
+        _license="$(_get_conf license)"
+    elif [[ -f "${srcdir}/license.cache" ]]; then
+        _license="$(cat "${srcdir}/licence.cache")"
+    fi
     while true; do
         if [[ "$_license" == "" ]]; then
             cat << EOF
@@ -133,60 +232,42 @@ EOF
         else
             local _is_port_at_host=$(echo $ans | grep -c @)
             if [ "${_is_port_at_host}" != "0" ]; then
-                _license_file='/dev/null'
                 _license="${ans}"
-                _license_mnt='/root/none'
-                _license_server="$(echo "$_license" | awk -F '@' '{print $2}')"
                 break
             elif [ -e "${ans}" ]; then
-                _license_file="$(readlink -m "${ans}")"
-                _license='/root/COMSOL_LICENSE.dat'
-                _license_mnt="$_license"
-                _license_server="$(cat "$_license_file" | grep -e ^SERVER | awk '{print $2}')"
+                _license="$(readlink -m "${ans}")"
                 break
             elif [[ "$ans" == ?????????????????-????-??????-???????-????????? ]]; then
-                _license_file='/dev/null'
                 _license="${ans}"
-                _license_mnt='/root/none'
-                _license_server='comsol.com' # This could be wrong. It has not been tested. Just a guess.
             else
                 _license=
                 echo "$ans does not exist."
             fi
         fi
     done
+    _set_conf license "$_license"
+    echo "$_license" > "${srcdir}/license.cache"
 
-    # Prepare setupconfig.ini
-    sed -i "s/agree =.*\$/agree = 1/g" "$_installername/setupconfig.ini"
-    sed -i "s@installdir =.*\$@installdir = $_installdir@g" "$_installername/setupconfig.ini"
-    sed -i "s/showgui =.*\$/showgui = 0/g" "$_installername/setupconfig.ini"
-    sed -i "s/autofinish =.*\$/autofinish = always/g" "$_installername/setupconfig.ini"
-    sed -i "s#license =.*\$#license = $_license#g" "$_installername/setupconfig.ini"
+    for _addon in $_addons; do
+        if grep -q "comsol.$_addon = 0" "${srcdir}/setupconfig.ini"; then
+            echo "+$_addon"
+            _set_conf "comsol.$_addon" 1
+        fi
+    done
 
-    _tcsh=
-    if command -v csh; then
-        _tcsh='tcsh'
-    fi
-
-    # Prepare dockerfile
-    cat > "Dockerfile" << EOF
-FROM archlinux:latest
-
-RUN pacman -Syu --noconfirm
-RUN pacman -S --needed --noconfirm base base-devel unzip $_tcsh
-RUN chmod +x /root/comsol/setup
-RUN /root/comsol/setup -s /root/comsol/setupconfig.ini
-EOF
-
+    _set_conf installdir "${srcdir}/install"
     mkdir -p install
-    mkdir -p applications
+    mkdir -p home
+    mkdir -p tmp
 }
 
 build()
 {
     cd "${srcdir}"
-  
-    if test -f log.txt \
+ 
+    if test -f setupconfig.ini.cache \
+        && cmp --silent setupconfig.ini setupconfig.ini.cache \
+        && test -f log.txt \
         && grep -q 'Installation complete' log.txt \
         && grep -q '0 ERRORS' log.txt \
         && grep -q '0 FATAL ERRORS' log.txt \
@@ -195,32 +276,27 @@ build()
     else
         echo "" > log.txt
 
-        podman rmi --ignore localhost/install_comsol:latest
-
-        echo 'Building inside rootless container'
-        podman build \
-            --network=host \
-            --device=/dev/net/tun \
-            --add-host=$(_hostof fastly.mirror.pkgbuild.com) \
-            --add-host=$(_hostof geo.mirror.pkgbuild.com) \
-            --add-host=$(_hostof archlinux.org) \
-            --add-host=$(_hostof "$_license_server") \
-            --add-host=$(_hostof nonusdownload.comsol.com) \
-            --add-host=$(_hostof update.comsol.com) \
-            --add-host=$(_hostof comsol.com) \
-            -v "$_license_file":"$_license_mnt":ro \
-            -v "$srcdir/applications":/usr/share/applications:rw \
-            -v "$srcdir/install":"$_installdir":rw \
-            -v "$srcdir/$_installername":"/root/comsol":rw \
-            --force-rm=true \
-            --rm=true \
-            -t install_comsol . \
+        cp "${srcdir}/setupconfig.ini" "${srcdir}/setupconfig.ini.cache"
+        HOME="${srcdir}/home" \
+            XDG_DESKTOP_DIR="${srcdir}/home/Desktop" \
+            XDG_DOCUMENTS_DIR="${srcdir}/home/Documents" \
+            XDG_DOWNLOAD_DIR="${srcdir}/home/Downloads" \
+            XDG_MUSIC_DIR="${srcdir}/home/Music" \
+            XDG_PICTURES_DIR="${srcdir}/home/Pictures" \
+            XDG_PUBLICSHARE_DIR="${srcdir}/home/Public" \
+            XDG_TEMPLATES_DIR="${srcdir}/home/Templates" \
+            XDG_VIDEOS_DIR="${srcdir}/home/Videos" \
+            XDG_CONFIG_HOME="${srcdir}/home/.config" \
+            XDG_CACHE_HOME="${srcdir}/home/.cache" \
+            XDG_DATA_HOME="${srcdir}/home/.local/share" \
+            XDG_STATE_HOME="${srcdir}/home/.local/state" \
+            TMPDIR="${srcdir}/tmp" \
+            /usr/bin/sh "${srcdir}/$_installername/setup" -s "${srcdir}/setupconfig.ini" \
             2> /dev/null \
             | while read -r _line; do 
-                echo "[container] $_line"
+                echo "[COMSOL] $_line"
                 echo "$_line" >> log.txt
-            done
-        podman rmi --ignore localhost/install_comsol:latest
+            done 
 
         # For some reason the install script always returns an error code, so i have to handle errors manually
         if ! grep -q 'Installation complete' log.txt; then
@@ -236,6 +312,14 @@ build()
             exit 1
         fi
     fi
+
+    sed -i "s@GRAPHICS_MAGICK_PATH=.*\$@GRAPHICS_MAGICK_PATH='/usr/lib'@g" "${srcdir}/install/bin/comsol"
+    sed -i "s@^CUDAROOT=.*\$@CUDAROOT='/opt/cuda'@g" "${srcdir}/install/bin/comsol"
+    sed -i "s@^CUDSSROOT=.*\$@CUDSSROOT='/usr'@g" "${srcdir}/install/bin/comsol"
+    sed -i "s@^JRE=.*\$@JRE='/usr/lib/jvm/java-21-openjdk/lib/server/libjvm.so'@g" "${srcdir}/install/bin/comsol"
+    sed -i "s@^JREROOT=.*\$@JREROOT='/usr/lib/jvm/java-21-openjdk'@g" "${srcdir}/install/bin/comsol"
+    rm -f "${srcdir}/install/comsolsetup.log"
+    rm -f "${srcdir}/install/comsolsetup.log.old"
 }
 
 package()
@@ -246,12 +330,13 @@ package()
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # Install desktop entry
-    install -Dm644 "${srcdir}/applications/comsol-multiphysics-$_pkgver_major.desktop" "${pkgdir}/usr/share/applications/comsol-multiphysics.desktop"
+    install -Dm644 "${srcdir}/comsol-multiphysics.desktop" "${pkgdir}/usr/share/applications/comsol-multiphysics.desktop"
 
     install -Dm755 -d "${pkgdir}${_installdir}"
-    cp -rv "$srcdir/install"/* "${pkgdir}${_installdir}/"
+    cp -r "${srcdir}/install"/* "${pkgdir}${_installdir}/"
+    chmod -R o-w "${pkgdir}${_installdir}"
 
     # Install bin symlinks
-    mkdir -p "${pkgdir}/usr/local/bin"
-    ln -fsv "${_installdir}/bin/comsol" "${pkgdir}/usr/local/bin/comsol"
+    install -vd "${pkgdir}/usr/bin"
+    ln -vsf "${_installdir}/bin/comsol" "${pkgdir}/usr/bin/comsol"
 }
