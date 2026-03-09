@@ -10,34 +10,50 @@ url='https://github.com/ChrisDKN/Amethyst-Mod-Manager'
 license=('GPL-3.0-only')
 depends=(
     'python-customtkinter'
-    'python-py7zr'
+    'python-gobject'
+    'python-importlib-metadata'
+    'python-keyring'
     'python-libarchive-c'
-    'python-pillow'
+    'python-libloot'
     'python-lz4'
-    'python-zstandard'
+    'python-msgpack'
+    'python-pillow'
+    'python-py7zr'
     'python-requests'
     'python-websocket-client'
-    'python-keyring'
-    'python-importlib-metadata'
-    'python-msgpack'
-    'python-gobject'
+    'python-zstandard'
     'zenity'
-#     'libloot'
-#     'python-libloot'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('1d188b7bad2b08c9a15aca5535e09aef484cdafb57b964e809c4ffe65ee03326')
 
+build() {
+    cd "${_pkgname}-${pkgver}"
+
+    sed -i 's/import LOOT.loot as loot/import loot/' 'src/LOOT/loot_sorter.py'
+}
+
 package() {
-    cd "${_pkgname}-${pkgver}/src"
+    cd "${_pkgname}-${pkgver}"
 
-    install -d "$pkgdir/usr/share/${pkgname}"
-
+    pushd src > /dev/null
     find . -path "./appimage" -prune -o \
         -not -name "requirements*.txt" \
         -not -name "rebuild_libloot.sh" \
-        -not -name "loot.cpython*.so" \
         -not -name "run.sh" \
+        -not -name "loot.cpython*.so" \
         -type f \
         -exec install -Dm 755 '{}' "$pkgdir/usr/share/${pkgname}/{}" \;
+    popd > /dev/null
+
+    install -d "$pkgdir/usr/bin/"
+    echo '#!/bin/sh' > "$pkgdir/usr/bin/${pkgname}"
+    echo 'python /usr/share/'"${pkgname}"'/gui.py "$@"' >> "$pkgdir/usr/bin/${pkgname}"
+    chmod +x "$pkgdir/usr/bin/${pkgname}"
+
+    install -Dm644 "flatpak/io.github.Amethyst.ModManager.desktop" "$pkgdir/usr/share/applications/io.github.Amethyst.ModManager.desktop"
+    install -Dm644 "src/appimage/mod-manager.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/io.github.Amethyst.ModManager.png"
+
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
