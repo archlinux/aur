@@ -2,7 +2,7 @@
 
 pkgname=ugrd
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalistic POSIX initramfs generator, designed for encrypted systems'
 arch=(any)
 url='https://github.com/desultory/ugrd'
@@ -30,6 +30,7 @@ package() {
     install -Dm755 hooks/alpm/ugrd-remove.sh "$pkgdir/usr/share/libalpm/scripts/ugrd-remove"
     install -Dm644 hooks/alpm/91-ugrd-install.hook -t "$pkgdir/usr/share/libalpm/hooks"
     install -Dm644 hooks/alpm/60-ugrd-remove.hook -t "$pkgdir/usr/share/libalpm/hooks"
+    install -Dm755 hooks/kernel-install/52-ugrd.install -t "$pkgdir/usr/lib/kernel/install.d"
 
     install -Dm644 completion/ugrd -t "$pkgdir/usr/share/bash-completion/completions"
     install -Dm644 completion/_ugrd -t "$pkgdir/usr/share/zsh/site-functions"
