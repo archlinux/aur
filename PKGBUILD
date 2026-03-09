@@ -1,7 +1,7 @@
 # Maintainer: Vincent Schult <viboschu@gmail.com>
 
 pkgname=voe-dl-git
-pkgver=1.8.0.r0.g5f397ef
+pkgver=1.8.0.r3.gbdd21d2
 pkgrel=1
 pkgdesc="A Python-based downloader for videos hosted on voe.sx."
 arch=('any')
