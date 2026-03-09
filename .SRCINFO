@@ -1,7 +1,7 @@
 pkgbase = cutieascii
 	pkgdesc = Display random cute ASCII art emojis
 	pkgver = 0.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Josehpequeno/cutieascii
 	arch = x86_64
 	license = MIT
