@@ -2,19 +2,38 @@ post_install() {
     echo ""
     echo "==> Laren (Arabizi to Arabic) has been installed."
     echo ""
-    echo "    To use it:"
-    echo "    1. KDE Wayland: System Settings > Virtual Keyboard > Fcitx 5"
-    echo "       X11: Add these to your environment:"
-    echo "         export GTK_IM_MODULE=fcitx"
-    echo "         export QT_IM_MODULE=fcitx"
-    echo "         export XMODIFIERS=@im=fcitx"
+
+    # Try to auto-configure KWin to use Fcitx5
+    _user="${SUDO_USER:-$USER}"
+    _uid=$(id -u "$_user" 2>/dev/null)
+
+    if [ -n "$_user" ] && [ "$_user" != "root" ] && [ -n "$_uid" ]; then
+        # Set Fcitx5 as the input method in KWin
+        su - "$_user" -c "kwriteconfig6 --file kwinrc --group Wayland --key 'InputMethod[\$e]' '/usr/share/applications/org.fcitx.Fcitx5.desktop'" 2>/dev/null
+        su - "$_user" -c "kwriteconfig6 --file kwinrc --group Wayland --key VirtualKeyboardEnabled true" 2>/dev/null
+
+        # Tell KWin to reload config (no logout needed)
+        _dbus="unix:path=/run/user/${_uid}/bus"
+        su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=${_dbus} qdbus6 org.kde.KWin /KWin reconfigure" 2>/dev/null
+
+        if [ $? -eq 0 ]; then
+            echo "    Fcitx5 has been configured and started automatically."
+            echo "    Toggle Arabic input with Ctrl+Space."
+        else
+            echo "    Could not auto-configure. Please:"
+            echo "    1. System Settings > Virtual Keyboard > Fcitx 5"
+            echo "    2. Log out and back in"
+            echo "    3. Toggle Arabic input with Ctrl+Space"
+        fi
+    else
+        echo "    To use Laren:"
+        echo "    1. System Settings > Virtual Keyboard > Fcitx 5"
+        echo "    2. Log out and back in"
+        echo "    3. Toggle Arabic input with Ctrl+Space"
+    fi
+
     echo ""
-    echo "    2. Log out and back in."
-    echo ""
-    echo "    3. Toggle Arabic input with Ctrl+Space."
-    echo ""
-    echo "    Laren is pre-configured as the default input method."
-    echo "    Use fcitx5-configtool to customize."
+    echo "    Use fcitx5-configtool to customize input methods."
     echo ""
 }
 
