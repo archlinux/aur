@@ -1,6 +1,6 @@
 # Maintainer: Romain Chardiny <romain.chardiny@gmail.com>
 pkgname=license-generator
-pkgver=1.0.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A command line tool that generates LICENSE file"
 arch=("x86_64")
@@ -9,8 +9,8 @@ license=('MIT')
 makedepends=('rust')
 provides=('license-generator')
 conflicts=('license-generator')
-source=("https://github.com/azu/license-generator/archive/refs/tags/v1.0.0.tar.gz")
-sha256sums=("3665dd609bf303359c612db5aa81d98469f7e78f46a788c490178e78ac5c72e8")
+source=("https://github.com/azu/license-generator/archive/refs/tags/v1.3.0.tar.gz")
+sha256sums=("4a3d0c6c5131654703dc31faedf1d9eba02ce7fe7b59ea1028caa0b2a62c4243")
 
 prepare() {
   cd "$pkgname-$pkgver"
