@@ -1,7 +1,7 @@
 # Maintainer: lludol <little dot corn3620 at fastmail dot com>
 
 pkgname=perry
-pkgver=0.2.97
+pkgver=0.2.173
 pkgrel=1
 pkgdesc="Compile TypeScript to native executables (source build)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust')
 source=("https://github.com/PerryTS/perry/archive/v${pkgver}.tar.gz")
-sha256sums=('d28749d1b766c1c75554992936cfac37d7522db13182e65d7133328b03e1f68e')
+sha256sums=('a5b7065dda15d5bea14a03e9f3db76d09a9834bf7aa1d0c6303535dec4bc6826')
 
 build() {
   cd "perry-${pkgver}"
