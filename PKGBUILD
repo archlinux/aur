@@ -20,5 +20,7 @@ package() {
   install -Dm644 bigsnatch-daemon.service "$pkgdir/usr/lib/systemd/system/bigsnatch-daemon.service"
   install -Dm644 bigsnatch.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/bigsnatch.svg"
   install -Dm644 bigsnatch.desktop "$pkgdir/usr/share/applications/bigsnatch.desktop"
-  [[ -f LICENSE ]] && install -Dm644 LICENSE "$pkgdir/usr/share/licenses/bigsnatch/LICENSE"
+  if [[ -f LICENSE ]]; then
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/bigsnatch/LICENSE"
+  fi
 }
