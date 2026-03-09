@@ -2,9 +2,9 @@
 # Maintainer: Elliott Fournier-Robert <elliott1447@gmail.com>
 
 pkgname=octoberctl-bin
-pkgver=1.1
-pkgrel=2
-sha256sums=('5ed45e928e7cfb293275c806d35d3a211fda29129568fad4ee3800a242b3ba3d')
+pkgver=1.2
+pkgrel=1
+sha256sums=('bc6be16420c345a68603e20e10f60b4b3cb6c02ac79e9160aed17d349c2d3a55')
 depends=(
     'git'
 )
