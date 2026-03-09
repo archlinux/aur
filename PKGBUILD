@@ -4,7 +4,7 @@
 _pkgname="torii-usb"
 pkgname="python-${_pkgname}"
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Torii HDL framework for USB"
 arch=("any")
 url="https://github.com/shrine-maiden-heavy-industries/torii-usb"
@@ -13,7 +13,7 @@ provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git" "${pkgname}-nightly")
 depends=(
 	"python>=3.11" "python<4.0"
-	"python-torii>=${pkgver}"
+	"python-torii>=${pkgver}" "python-torii<1.0"
 	"python-usb-construct>=0.2.1"
 )
 makedepends=(
