@@ -8,7 +8,7 @@ pkgdesc="Turn your Android device into a high-quality wireless microphone for yo
 arch=('x86_64')
 url="https://github.com/LanRhyme/MicYou"
 license=('MIT')
-depends=('alsa-lib' 'adb' 'fontconfig' 'freetype2' 'glibc' 'libappindicator' 'libgl' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst' 'zlib')
+depends=('alsa-lib' 'android-tools' 'fontconfig' 'freetype2' 'glibc' 'libappindicator' 'libgl' 'libx11' 'libxext' 'libxi' 'libxrender' 'libxtst' 'zlib')
 optdepends=(
     'bluez-libs: Bluetooth connectivity support'
     'xdg-utils: Open URLs in default browser'
