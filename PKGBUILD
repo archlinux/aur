@@ -1,6 +1,6 @@
 # Maintainer: Gryt Chat <sivert@gryt.chat>
 pkgname=gryt-chat-bin
-pkgver=1.1.15
+pkgver=1.1.16
 pkgrel=1
 pkgdesc='Gryt Chat — real-time voice chat desktop client'
 arch=('x86_64')
