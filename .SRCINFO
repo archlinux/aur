@@ -1,6 +1,6 @@
 pkgbase = elephant-snippets
 	pkgdesc = snippets provider for elephant
-	pkgver = 2.20.1
+	pkgver = 2.20.2
 	pkgrel = 1
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = elephant-snippets
 	depends = wtype
 	provides = elephant-snippets
 	conflicts = elephant-snippets
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.20.1.tar.gz
-	sha256sums = 7d13c79cb9b57245ffb8a6272af953829e9ce91a4d82f45d534f029d15dcc628
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.20.2.tar.gz
+	sha256sums = f801cfdbdccf014a8237effc4ab90fe4f1d603bc507428cf80287e77e008dc52
 
 pkgname = elephant-snippets
