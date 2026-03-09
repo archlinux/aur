@@ -10,7 +10,7 @@ pkgbase = vanta-bin
 	depends = libayatana-appindicator
 	provides = vanta
 	conflicts = vanta
-	source = vanta_2.2.0_amd64.deb::https://github.com/Misiix9/Vanta/releases/download/v2.2.0/Vanta_2.2.0_amd64.deb
-	sha256sums = ef2b6884adab2b3250abfe5726509229ba742bbb9b01d2dddb2845692335082e
+	source = vanta_2.5.0_amd64.deb::https://github.com/Misiix9/Vanta/releases/download/v2.5.0/Vanta_2.5.0_amd64.deb
+	sha256sums = f57e0a97544ec8fb27d9f165dc18e78c6a139f3f17e18852fd6567301ddb3609
 
 pkgname = vanta-bin
