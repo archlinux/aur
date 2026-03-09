@@ -1,6 +1,6 @@
 # Maintainer: fa5e4658010be730
 pkgname=subs2srs-git
-pkgver=29.7.r27.796a422
+pkgver=29.7.r28.fd7643e
 pkgrel=1
 pkgdesc="Create Anki import files from movies and TV shows for language learning"
 arch=('any')
