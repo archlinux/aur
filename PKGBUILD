@@ -34,8 +34,10 @@ if [ -z ${_use_tracers+x} ]; then
 fi
 
 # Unique compiler supported upstream is GCC
-## Choose between GCC and CLANG config (default is GCC)
-## Use the environment variable "_compiler=clang"
+## Choose between GCC and CLANG config (default is CLANG)
+## Use the environment variable "_compiler=clang" if you wanted to use CLANG compiler
+## Remove the below line if you wanted to use GCC
+_compiler=clang
 if [ "${_compiler}" = "clang" ]; then
   _compiler_flags="CC=clang HOSTCC=clang LLVM=1 LLVM_IAS=1"
 fi
@@ -92,8 +94,8 @@ fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-xanmod-bore
-_major=6.18
-pkgver=${_major}.10
+_major=6.19
+pkgver=${_major}.6
 _branch=6.x
 xanmod=1
 _revision=
@@ -138,14 +140,14 @@ _patches=()
 for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
-sha256sums=('9106a4605da9e31ff17659d958782b815f9591ab308d03b0ee21aad6c7dced4b' # kernel
+sha256sums=('303079a8250b8f381f82b03f90463d12ac98d4f6b149b761ea75af1323521357' # kernel
             'SKIP'                                                             # kernel signature
-            '32ca27b4e18271cebf734c2c9e760a3abe3af746cbde95900beeee8294367fb7' # xanmod patch
+            '0a9d2a39f5709f5e749e3f74af522576e1764b83ec603a16e38a1739adf95dec' # xanmod patch
             'a8b38eb482eb685944757182c4886404abc12703e5e56ec39c7d61298d17d71f' # choose-gcc-optimization.sh
-            '0cf969633b22e309617754fa17efb2754b90c64a989dd261b87dee59bddb75a6' # 0001-bore.patch
+            '5ab943440a223ac4debd4ad430897540a90d78e27fce58cdbed9193e401d843b' # 0001-bore.patch
             '1f3258ce1842156fcc35ca4775f6ba50f08f8f339b8cfbc3395949bb0e368872' # 0002-glitched-cfs.patch
-            '27b01429b372c00ba40bda4c9cdfaf45ec192f3a5018011bc5061ebbc28ee717' # 0003-glitched-eevdf-additions.patch
-            '88d7ad910a8dbf2158bb48bd286a0b2feb25d68c27f2f86353ef2b98abe49f4d' # 0004-o3-optimization.patch
+            'f7aa5e7f23c56ecafd416ddb5fcf723c404a80f220be45168ccd3e43b3f14f84' # 0003-glitched-eevdf-additions.patch
+            '4053d3b5a2a76e769073a4cf8edc81b0a8d581044d9351833293d2f2e7f821a4' # 0004-o3-optimization.patch
 )
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
