@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gopeed-bin
 _pkgname=Gopeed
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="High speed downloader that supports all platforms.(Prebuilt version)"
 arch=(
@@ -25,8 +25,8 @@ source=("${pkgname%-bin}.sh")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.rpm")
 sha256sums=('3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745')
-sha256sums_aarch64=('d9af46390d6fc9f6533fce0f3df8d79ac66dd8e67ed46f1eb1d0b304549986dd')
-sha256sums_x86_64=('0a550fc14817530cd174cb812b0ea7b16dbbd1705b88af39112db46368e93076')
+sha256sums_aarch64=('3ecb73c33a5bcd3ee1728fa47394ab6bcece5482683715d37a2165c10a0e53ae')
+sha256sums_x86_64=('279d11bfac29a2ed99eb3d062c63be2a479e64f5a1a0628c84119cfaf43975a9')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
