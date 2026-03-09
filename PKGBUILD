@@ -2,7 +2,7 @@
 pkgname=falcond-gui
 _app_id=com.pikaos.falcondgui
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A GTK4/LibAdwaita application to control and monitor the Falcond gaming optimization daemon."
 arch=('x86_64')
 url="https://git.pika-os.com/custom-gui-packages/falcond-gui"
@@ -46,5 +46,6 @@ package() {
   install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
   install -Dm644 "res/${_app_id}.png" -t "$pkgdir/usr/share/pixmaps/"
   install -Dm644 "res/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
+  install -Dm644 ../README.md -t "$pkgdir/usr/share/doc/$pkgname/"
   install -Dm644 ../LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
