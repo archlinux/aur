@@ -11,7 +11,9 @@ pkgbase = greetd-tuigreet-soupy-boy-git
 	conflicts = greetd-tuigreet
 	conflicts = greetd-tuigreet-git
 	source = git+https://github.com/soupy-boy/tuigreet
+	source = tuigreet.conf
 	sha256sums = SKIP
+	sha256sums = 8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3
 
 pkgname = greetd-tuigreet-soupy-boy-git
 	depends = gcc-libs

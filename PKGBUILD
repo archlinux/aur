@@ -13,8 +13,10 @@ conflicts=(greetd-tuigreet greetd-tuigreet-git)
 arch=(x86_64)
 makedepends=(git rust scdoc)
 
-source=("git+${url}")
-sha256sums=('SKIP')
+source=("git+${url}"
+        'tuigreet.conf')
+sha256sums=('SKIP'
+            '8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3')
 
 pkgver() {
   cd tuigreet
