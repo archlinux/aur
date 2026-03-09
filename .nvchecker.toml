@@ -1,0 +1,4 @@
+[river-classic]
+source = "git"
+git = "https://codeberg.org/river/river-classic.git"
+prefix = "v"
