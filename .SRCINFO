@@ -1,7 +1,7 @@
 pkgbase = ssmt4-linux
 	pkgdesc = SSMT4 - Super Simple Linux Game Tools 4th
 	pkgver = 0.0.8_beta
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitee.com/xiaobai01111/ssmt4-linux
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -30,6 +30,8 @@ pkgbase = ssmt4-linux
 	optdepends = wayland: Wayland support
 	provides = ssmt4-linux
 	conflicts = ssmt4-linux-git
+	options = !buildflags
+	options = !debug
 	source = ssmt4-linux::git+https://gitee.com/xiaobai01111/ssmt4-linux.git#tag=0.0.8-beta
 	sha256sums = SKIP
 

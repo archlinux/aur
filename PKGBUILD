@@ -1,12 +1,13 @@
 pkgname=ssmt4-linux
 pkgver=0.0.8_beta
-pkgrel=3
+pkgrel=4
 pkgdesc="SSMT4 - Super Simple Linux Game Tools 4th"
 arch=('x86_64')
 url='https://gitee.com/xiaobai01111/ssmt4-linux'
 license=('GPL-3.0-or-later')
 makedepends=('git' 'nodejs' 'pnpm' 'cargo' 'rust')
 depends=('gtk3' 'webkit2gtk-4.1' 'libsoup3' 'xdg-utils')
+options=('!buildflags' '!debug')
 optdepends=(
   'xorg-xwayland: XWayland support'
   'wine: Windows game compatibility'
@@ -101,7 +102,19 @@ prepare() {
 build() {
   cd "${srcdir}/${_source_name}"
   pnpm run build
-  cargo build --manifest-path src-tauri/Cargo.toml --release
+  env \
+    -u CPPFLAGS \
+    -u CFLAGS \
+    -u CXXFLAGS \
+    -u LDFLAGS \
+    -u RUSTFLAGS \
+    -u DEBUG_RUSTFLAGS \
+    -u CARGO_ENCODED_RUSTFLAGS \
+    RUSTFLAGS="--remap-path-prefix=${srcdir}=." \
+    CC=gcc \
+    CXX=g++ \
+    CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=gcc \
+    cargo build --manifest-path src-tauri/Cargo.toml --release
 }
 
 package() {
