@@ -1,7 +1,7 @@
 From a46be3b746c804a555fe40918fc2d10caf90dd21 Mon Sep 17 00:00:00 2001
 From: kraftnix <kraftnix@protonmail.com>
 Date: Tue, 23 Sep 2025 05:18:10 +0200
-Subject: [PATCH] Fix usage with radicale >= 3.5.1
+Subject: [PATCH 1/4] Fix usage with radicale >= 3.5.1
 
 ---
  etesync_dav/radicale/storage.py | 2 +-
@@ -21,5 +21,5 @@ index 7ec992b..d6312b1 100644
  
          ``mode`` must either be "r" for shared access or "w" for exclusive
 -- 
-2.52.0
+2.53.0
 

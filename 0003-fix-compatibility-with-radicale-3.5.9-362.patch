@@ -1,0 +1,32 @@
+From 6f9505238bbfa669d5b5834e6f6aec17d449dbcd Mon Sep 17 00:00:00 2001
+From: aktaboot <120214979+aktaboot@users.noreply.github.com>
+Date: Thu, 1 Jan 2026 22:40:37 +0100
+Subject: [PATCH 3/4] fix compatibility with radicale >= 3.5.9 (#362)
+
+---
+ etesync_dav/radicale_main/server.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/etesync_dav/radicale_main/server.py b/etesync_dav/radicale_main/server.py
+index 862cb20..937d614 100644
+--- a/etesync_dav/radicale_main/server.py
++++ b/etesync_dav/radicale_main/server.py
+@@ -53,13 +53,13 @@ elif os.name == "nt":
+ 
+ 
+ class MyApplication(Application):
+-    def do_POST(self, environ, base_prefix, path, user):
++    def do_POST(self, environ, base_prefix, path, user, remote_host="", user_agent=""):
+         """Manage POST request."""
+         # Dispatch .web URL to web module
+         if path == "/.web" or path.startswith("/.web/"):
+             return self._web.post(environ, base_prefix, path, user)
+ 
+-        return super().do_POST(environ, base_prefix, path, user)
++        return super().do_POST(environ, base_prefix, path, user, remote_host, user_agent)
+ 
+ 
+ def format_address(address):
+-- 
+2.53.0
+

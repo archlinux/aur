@@ -1,7 +1,7 @@
-From 582b516ac1cd108ab6d06d2533d27fa762618694 Mon Sep 17 00:00:00 2001
+From 872b4c499a07021128bb79498bcc5715f099fd92 Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Wed, 19 Nov 2025 17:05:06 +0000
-Subject: [PATCH] Fix compatibility with radicale >= 3.5.5
+Subject: [PATCH 2/4] Fix compatibility with radicale >= 3.5.5
 
 https://github.com/Kozea/Radicale/commit/80dc4995cf60e375e00969d41e073dbfb59cbdf9
 ---
@@ -10,7 +10,7 @@ https://github.com/Kozea/Radicale/commit/80dc4995cf60e375e00969d41e073dbfb59cbdf
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/etesync_dav/radicale/storage.py b/etesync_dav/radicale/storage.py
-index 7ec992b..c5acee9 100644
+index d6312b1..077db01 100644
 --- a/etesync_dav/radicale/storage.py
 +++ b/etesync_dav/radicale/storage.py
 @@ -421,7 +421,7 @@ class Collection(BaseCollection):
@@ -36,5 +36,5 @@ index 1ccc6dd..af3434a 100644
      def delete(self, href=None):
          """Delete an item.
 -- 
-2.52.0
+2.53.0
 

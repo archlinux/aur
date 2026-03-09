@@ -1,0 +1,34 @@
+From a2a6c24f94a5f530bcf4df09ef6bb3d5ffb7f640 Mon Sep 17 00:00:00 2001
+From: phaer <phaer@phaer.org>
+Date: Thu, 26 Feb 2026 20:21:28 +0100
+Subject: [PATCH 4/4] Fix WSGIResponse for Radicale >= 3.5.10
+
+---
+ etesync_dav/radicale/web.py | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/etesync_dav/radicale/web.py b/etesync_dav/radicale/web.py
+index 869624f..6b4c515 100644
+--- a/etesync_dav/radicale/web.py
++++ b/etesync_dav/radicale/web.py
+@@ -12,6 +12,8 @@
+ # You should have received a copy of the GNU General Public License
+ # along with this program. If not, see <http://www.gnu.org/licenses/>.
+ 
++import radicale
++from packaging.version import Version
+ from radicale import web
+ 
+ from etesync_dav.mac_helpers import has_ssl
+@@ -31,6 +33,8 @@ class Web(web.BaseWeb):
+             environ["wsgi.url_scheme"] = "https"
+         body = list(app(environ, start_response))[0]
+         ret_response.append(body)
++        if Version(radicale.VERSION) >= Version("3.5.10"):
++            ret_response.append(None)  # xml_request field
+         return tuple(ret_response)
+ 
+     def get(self, environ, base_prefix, path, user):
+-- 
+2.53.0
+
