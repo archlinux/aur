@@ -8,10 +8,10 @@
 
 pkgname=archi
 _pkgver_major=5
-_pkgver_minor=7
+_pkgver_minor=8
 _pkgver_patch=0
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_patch}
-pkgrel=4
+pkgrel=1
 pkgdesc="Free, open source, cross-platform tool and editor to create ArchiMate models."
 arch=('x86_64')
 url="http://www.archimatetool.com/"
@@ -25,7 +25,7 @@ provides=('archi')
 source=("https://github.com/andToxa/archi/releases/download/${pkgver}/Archi-Linux64-${pkgver}.tgz"
         "${pkgname}.desktop"
         "LICENSE")
-sha1sums=('d4757c33e019e8da3522aa89807634644a309c25'
+sha1sums=('7e3e000f89841c346e99228b1395098287c516dc'
           '9db2f9482f32c316c97a14a3345cb417f57945c2'
           '99c2483de8ee9bd65693caab97d5ad16455ec835')
 
