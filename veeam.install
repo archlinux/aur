@@ -1,0 +1,39 @@
+pre_install() {
+    echo "pre install"
+    if ! getent group veeam >/dev/null; then
+        groupadd --system veeam
+    fi
+    mkdir -p /var/log/veeam/
+    mkdir -m 2775 /var/log/veeam/config
+    chgrp veeam /var/log/veeam/config
+    echo "."
+}
+
+post_install() {
+    echo "post install"
+    systemctl daemon-reload
+    systemctl enable veeamservice.service
+    systemctl restart veeamservice.service
+    echo "."
+}
+
+post_upgrade() {
+    echo "post upgrade"
+    systemctl daemon-reload
+    systemctl restart veeamservice.service
+    echo "."
+}
+
+pre_remove() {
+    echo "pre remove"
+    systemctl stop veeamservice.service
+    systemctl disable veeamservice.service
+    /usr/sbin/veeamservice --uninstall || true
+    echo "."
+}
+
+post_remove() {
+    echo "post remove"
+    rm -rf /var/lib/veeam /var/log/veeam
+    echo "."
+}
