@@ -1,7 +1,7 @@
 pkgbase = emerald-gtk3
 	pkgdesc = Emerald window decorator
 	pkgver = 0.8.18
-	pkgrel = 3
+	pkgrel = 4
 	url = https://gitlab.com/compiz/emerald/
 	arch = x86_64
 	groups = compiz-fusion
@@ -22,6 +22,8 @@ pkgbase = emerald-gtk3
 	conflicts = emerald
 	options = !libtool
 	source = https://gitlab.com/compiz/emerald/-/archive/v0.8.18/emerald-v0.8.18.tar.bz2
+	source = tar-arg-fix.patch
 	sha256sums = fef4ce5675f79840b811e42006063a2f21d1f3cc721c9a6d37e1a123dc6f0c54
+	sha256sums = 56c1516d7004cabde0e232baac4b0794fd61316585b83cb30272ffa16ba1cd38
 
 pkgname = emerald-gtk3

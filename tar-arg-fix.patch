@@ -1,0 +1,12 @@
+https://gitlab.com/compiz/emerald/-/commit/ddc504ea11ee9f16202be0aa5fb104bae1273643
+--- ./themer/main.c	2026-03-09 00:43:33.689646446 -0700
++++ ./themer/main.c	2026-03-09 00:44:08.877677376 -0700
+@@ -512,7 +512,7 @@
+     at = g_shell_quote(fn);
+     g_free(fn);
+     fn = g_shell_quote(file);
+-    ot = g_strdup_printf("tar -czf %s -C %s ./ --exclude=*~",fn,at);
++    ot = g_strdup_printf("tar -czf %s -C %s --exclude=*~ ./",fn,at);
+     if (!g_spawn_command_line_sync(ot,NULL,NULL,&ex,NULL) ||
+             (WIFEXITED(ex)&&WEXITSTATUS(ex)))
+     {

@@ -7,7 +7,7 @@
 _pkgname=emerald
 pkgname=emerald-gtk3
 pkgver=0.8.18
-pkgrel=3
+pkgrel=4
 pkgdesc="Emerald window decorator"
 arch=(x86_64)
 url="https://gitlab.com/compiz/${_pkgname}/"
@@ -34,9 +34,18 @@ groups=(
 options=(!libtool)
 conflicts=(emerald)
 provides=(emerald)
-source=("${url}-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.bz2")
+source=(
+  "${url}-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.bz2"
+  tar-arg-fix.patch
+)
 
-sha256sums=('fef4ce5675f79840b811e42006063a2f21d1f3cc721c9a6d37e1a123dc6f0c54')
+sha256sums=('fef4ce5675f79840b811e42006063a2f21d1f3cc721c9a6d37e1a123dc6f0c54'
+            '56c1516d7004cabde0e232baac4b0794fd61316585b83cb30272ffa16ba1cd38')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-v${pkgver}"
+  patch -p0 < ../tar-arg-fix.patch
+}
 
 build() {
   cd "${srcdir}/${_pkgname}-v${pkgver}"
