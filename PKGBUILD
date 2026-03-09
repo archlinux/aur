@@ -12,6 +12,7 @@ depends=('jdk8-openjdk' 'java8-openjfx-bin')
 provides=('xdat-editor')
 conflicts=('xdat-editor')
 options=('!strip')
+keywords=('xdat' 'xdat-editor' 'lineage2' 'lineage-2')
 
 source=(
     "xdat-editor-jars-${pkgver}.tar.gz::https://github.com/guglovich/xdat-editor-linux-bin/releases/download/v${pkgver}/xdat-editor-jars-${pkgver}.tar.gz"
