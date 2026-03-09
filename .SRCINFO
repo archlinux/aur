@@ -1,14 +1,13 @@
 pkgbase = kimi-cli
 	pkgdesc = Kimi Code CLI is your next CLI agent.
-	pkgver = 1.16.0
+	pkgver = 1.18.0
 	pkgrel = 1
-	url = https://moonshotai.github.io
-	arch = any
+	url = https://github.com/MoonshotAI/kimi-cli
+	arch = x86_64
 	license = Apache-2.0
-	depends = uv
-	depends = python>=3.13
-	provides = kimi
-	conflicts = kimi
-	options = !strip
+	makedepends = uv
+	depends = python>=3.12
+	source = https://github.com/MoonshotAI/kimi-cli/archive/refs/tags/1.18.0.tar.gz
+	sha256sums = d62958675df71a7870e24dbf6e7f80bc4c1646d27d7f4973fc70e82591b6b2ab
 
 pkgname = kimi-cli

@@ -1,38 +1,52 @@
-# Maintainer: Wimpy <vvinn.py[AT]@gmail.com>
+# Maintainer: Sherlock Holo <sherlock ya at gmail.com>
+# Contributor Wimpy <vvinn.py[AT]@gmail.com>
+
 pkgname=kimi-cli
-_pkgname=kimi-cli
-pkgver=1.16.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="Kimi Code CLI is your next CLI agent."
-provides=('kimi')
-conflicts=('kimi')
-arch=('any')
-url="https://moonshotai.github.io"
+arch=('x86_64')
+url="https://github.com/MoonshotAI/kimi-cli"
 license=('Apache-2.0')
-depends=('uv' 'python>=3.13')
-options=('!strip')
 
+source=("https://github.com/MoonshotAI/kimi-cli/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('d62958675df71a7870e24dbf6e7f80bc4c1646d27d7f4973fc70e82591b6b2ab')
+
+makedepends=(
+  uv
+)
+
+depends=(
+  'python>=3.12'
+)
 
 build() {
-    # 在构建目录创建虚拟环境，避免污染系统
-    uv venv "${srcdir}/venv" --python 3.13
-    # 联网下载最新版
-    VIRTUAL_ENV="${srcdir}/venv" uv pip install "${_pkgname}==${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Use uv to create an isolated virtual environment and install the current source code and all its dependencies
+  uv venv "${srcdir}/venv"
+  VIRTUAL_ENV="${srcdir}/venv" uv pip install .
+
+  # Ensure pykaos (which provides the kaos module) is installed in the virtual environment
+  VIRTUAL_ENV="${srcdir}/venv" uv pip install pykaos
 }
 
 package() {
-    local _target="/opt/${_pkgname}"
-    mkdir -p "${pkgdir}${_target}"
+  local _target="/usr/lib/${pkgname}"
 
-    # 将 build 好的环境拷贝到安装目录
-    cp -a "${srcdir}/venv/." "${pkgdir}${_target}/"
+  mkdir -p "${pkgdir}${_target}"
+  cp -a "${srcdir}/venv/." "${pkgdir}${_target}/"
 
-    # 创建系统软链接
-    mkdir -p "${pkgdir}/usr/bin"
-    ln -rs "${pkgdir}${_target}/bin/kimi" "${pkgdir}/usr/bin/kimi"
+  # Fix absolute paths in virtual environment scripts to point to the final installation location
+  find "${pkgdir}${_target}/bin" -type f -executable -exec \
+    sed -i "s|${srcdir}/venv|${_target}|g" {} +
 
-    # 关键：修复虚拟环境脚本中的硬编码路径
-    # 将构建路径 ${srcdir}/venv 替换为实际安装路径 /opt/kimi-cli
-    find "${pkgdir}${_target}/bin" -type f -executable -exec \
-        sed -i "s|${srcdir}/venv|${_target}|g" {} +
+  # Provide executable entry points
+  install -d "${pkgdir}/usr/bin"
+  ln -s "${_target}/bin/kimi" "${pkgdir}/usr/bin/kimi"
+  ln -s "${_target}/bin/kimi-cli" "${pkgdir}/usr/bin/kimi-cli"
+
+  # Install license
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
