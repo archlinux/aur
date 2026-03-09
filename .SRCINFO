@@ -1,6 +1,6 @@
 pkgbase = miru-viewer-git
 	pkgdesc = GitHub Issue/Pull Request/Release viewer.(Use system-wide electron)
-	pkgver = 1.4.2.r0.g8059737
+	pkgver = 1.5.0.r0.g91e8aae
 	pkgrel = 1
 	url = https://ghfast.top/https://github.com/ytakahashi/miru
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = miru-viewer-git
 	makedepends = curl
 	makedepends = jq
 	depends = electron40
-	provides = miru-viewer=1.4.2
+	provides = miru-viewer=1.5.0
 	conflicts = miru-viewer
 	source = miru-viewer.git::git+https://ghfast.top/https://github.com/ytakahashi/miru.git
 	source = miru-viewer.sh
