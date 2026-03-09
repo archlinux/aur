@@ -1,0 +1,13 @@
+pkgbase = calendarchy
+	pkgdesc = Terminal calendar app for Google Calendar and iCloud
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/sovanesyan/calendarchy
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	options = !lto
+	source = calendarchy-0.1.1.tar.gz::https://github.com/sovanesyan/calendarchy/archive/v0.1.1.tar.gz
+	sha256sums = 6128e47c12ea0658a8d8a0c5f55faec4db5e5619ecd6fa13f8d0946d8f460d38
+
+pkgname = calendarchy
