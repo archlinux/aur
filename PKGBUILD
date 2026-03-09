@@ -5,7 +5,7 @@ _Pkgname=Vial
 
 pkgname="${_pkgname}-bin"
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time, similar to VIA. Keychron branch."
 arch=('x86_64')
 url="https://github.com/Tymon3310/vial-gui"
