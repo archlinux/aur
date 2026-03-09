@@ -3,7 +3,7 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
-pkgver=1.16.0
+pkgver=1.18.0
 _nodeversion=24
 pkgrel=1
 pkgdesc="Streaming music player that finds free music for you."
@@ -23,7 +23,7 @@ makedepends=(
     'rustup'
 )
 source=("${pkgname}-${pkgver}::git+${_ghurl}#tag=player@${pkgver}")
-sha256sums=('d8adefb052c7cff32bc133be4bc70fe32af7570651233cf26e6b733a730d95bd')
+sha256sums=('9e82fe528e9fd07773f772c37b81d143cf0cf15e1eee7fe0896fb628567ba44a')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -32,12 +32,6 @@ _ensure_local_nvm() {
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    gendesk -q -f -n \
-        --pkgname="${pkgname}" \
-        --pkgdesc="${pkgdesc}" \
-        --categories="AudioVideo" \
-        --name="${_pkgname}" \
-        --exec="${pkgname} %U"
     export CARGO_HOME="${srcdir}/.cargo"
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export RUSTUP_DIST_SERVER="https://rsproxy.cn"
