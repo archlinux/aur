@@ -1,0 +1,37 @@
+pkgbase = sftool-gui
+	pkgdesc = A user-friendly graphical serial port operation tool for SIFLI series SoC chips.
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://github.com/OpenSiFli/sftool-gui
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = hidapi
+	makedepends = npm
+	makedepends = pnpm
+	makedepends = rust
+	makedepends = cargo-tauri
+	makedepends = nodejs
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = libgcc
+	depends = libstdc++
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = openssl
+	depends = systemd-libs
+	depends = webkit2gtk-4.1
+	optdepends = sftool: A command-line serial port operation tool for SIFLI series SoC chips.
+	provides = sftool-gui
+	provides = sftool-gui-bin
+	conflicts = sftool-gui
+	conflicts = sftool-gui-bin
+	options = !lto
+	options = !debug
+	source = sftool-gui::git+https://github.com/OpenSiFli/sftool-gui.git#tag=v1.1.2
+	sha256sums = 412684979de9b075bec713d52144fae991d3b4c8710dd296dca1aa1310dc207d
+
+pkgname = sftool-gui
