@@ -1,6 +1,6 @@
 pkgbase = wireview-linux
 	pkgdesc = Unofficial Linux port of the Thermal Grizzly WireView Pro II desktop application
-	pkgver = 1.0.3.5
+	pkgver = 1.0.4.0
 	pkgrel = 1
 	url = https://github.com/emaspa/wireview-linux
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = wireview-linux
 	depends = freetype2
 	depends = libx11
 	options = !strip
-	source = git+https://github.com/emaspa/wireview-linux.git#tag=v1.0.3.5
+	source = git+https://github.com/emaspa/wireview-linux.git#tag=v1.0.4.0
 	source = wireview-linux.desktop
-	sha256sums = 5e4ac32f6bc0c6ea177eaba63103d1353a13cee14b9ecabb108fd6b5b55801d2
+	sha256sums = e11af56350809bfcaa7e62594b20ac991d0df1309e62477a32e03449bf8c5e06
 	sha256sums = f9336a2a0dc5f6b959ef2ae83d228f68d269f4a84d9651b318d669888d73f646
 
 pkgname = wireview-linux
