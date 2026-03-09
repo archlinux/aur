@@ -1,0 +1,5 @@
+["firemark"]
+source = "github"
+github = "Vitruves/firemark"
+use_latest_release = true
+prefix = "v"

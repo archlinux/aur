@@ -1,0 +1,15 @@
+pkgbase = firemark
+	pkgdesc = A fast, single-binary watermarking tool for images and PDFs
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/Vitruves/firemark
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = firemark
+	source = firemark-0.1.2.tgz::https://github.com/Vitruves/firemark/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = 1b703c09ea709bc27e47fdd33bfc085cf6b290dbe668cf3192ac9eba151f5b8c
+
+pkgname = firemark
