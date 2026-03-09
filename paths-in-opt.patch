@@ -1,17 +1,20 @@
 diff --git a/hydrus/core/HydrusConstants.py b/hydrus/core/HydrusConstants.py
-index 7acfc915..6d77815a 100644
+index 7f6fa602..b5575b4b 100644
 --- a/hydrus/core/HydrusConstants.py
 +++ b/hydrus/core/HydrusConstants.py
-@@ -81,7 +81,7 @@ BIN_DIR = os.path.join( BASE_DIR, 'bin' )
- HELP_DIR = os.path.join( BASE_DIR, 'help' )
- INCLUDE_DIR = os.path.join( BASE_DIR, 'include' )
+@@ -53,9 +53,9 @@ if BASE_DIR == '':
+ BIN_DIR = os.path.join( CONTENT_BASE_DIR, 'bin' )
+ HELP_DIR = os.path.join( CONTENT_BASE_DIR, 'help' )
+ 
+-LICENSE_PATH = os.path.join( CONTENT_BASE_DIR, 'license.txt' )
++LICENSE_PATH = '/usr/share/licenses/hydrus/license.txt'
  
 -DEFAULT_DB_DIR = os.path.join( BASE_DIR, 'db' )
 +DEFAULT_DB_DIR = os.path.expanduser( '~/.local/share/hydrus/db' )
+ CONTENT_DB_DIR = os.path.join( CONTENT_BASE_DIR, 'db' )
  
- if PLATFORM_MACOS:
-     
-@@ -92,7 +92,7 @@ else:
+ #
+@@ -108,7 +108,7 @@ else:
      desired_userpath_db_dir = os.path.join( '~', 'Hydrus' )
      
  
@@ -20,12 +23,3 @@ index 7acfc915..6d77815a 100644
  
  if USERPATH_DB_DIR == desired_userpath_db_dir:
      
-@@ -103,7 +103,7 @@ if USERPATH_DB_DIR == desired_userpath_db_dir:
- 
- WE_SWITCHED_TO_USERPATH = False
- 
--LICENSE_PATH = os.path.join( BASE_DIR, 'license.txt' )
-+LICENSE_PATH = '/usr/share/licenses/hydrus/license.txt'
- 
- #
- 
