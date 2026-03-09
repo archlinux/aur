@@ -1,6 +1,6 @@
 pkgbase = python-linearmodels
 	pkgdesc = Linear models in Python.
-	pkgver = 6.1
+	pkgver = 7.0
 	pkgrel = 1
 	url = https://bashtage.github.io/linearmodels
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = python-linearmodels
 	depends = python-scipy
 	depends = python-statsmodels
 	optdepends = python-xarray
-	source = python-linearmodels-6.1.tar.gz::https://files.pythonhosted.org/packages/source/l/linearmodels/linearmodels-6.1.tar.gz
-	sha256sums = 74ead48a054bc1b3ebec8e8d7187f17504058891b70c2e090372b4759eeb3e89
+	source = python-linearmodels-7.0.tar.gz::https://files.pythonhosted.org/packages/source/l/linearmodels/linearmodels-7.0.tar.gz
+	sha256sums = 15b50271068d8ad7ef58924fea6ca3fced055f8439f9e17d2ce62ba91c64ed24
 
 pkgname = python-linearmodels
