@@ -1,7 +1,7 @@
 _name=scheduler
 pkgname=python-$_name-git
-pkgver=0.0.1.rc1.r12.gd211d2c
-pkgrel=2
+pkgver=0.1.2.r0.g2ba52bd
+pkgrel=1
 pkgdesc="Uses data from taskwarrior and timewarrior to indicate which task should be done next"
 arch=('any')
 url="https://github.com/ftapajos/scheduler"
