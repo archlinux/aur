@@ -4,7 +4,7 @@
 pkgname=disig-web-signer
 pkgver=2.5.3
 _upstream_pkgrel=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Slovak eID Web Signer by Disig"
 arch=('i686' 'x86_64')
 license=('LicenseRef-custom')
@@ -22,7 +22,6 @@ _upstream_arch=
 
 package() {
 	depends=(
-		bash
 		glibc
 		libgcc_s.so
 		libstdc++.so
@@ -30,6 +29,7 @@ package() {
 		qt5-base
 		qt5-websockets
 		qt5-xmlpatterns
+		sh
 	)
 
 	ar p "${srcdir}/disig-web-signer_${pkgver}-${_upstream_pkgrel}_${_upstream_arch}.deb" data.tar.xz | tar -xJ -C "${pkgdir}"
