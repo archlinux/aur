@@ -1,0 +1,13 @@
+pkgbase = rjumen-git
+	pkgdesc = Simple python script from github
+	pkgver = r4.ca41d20
+	pkgrel = 1
+	url = https://github.com/rjumen-git/rjumen
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	source = git+https://github.com/rjumen-git/rjumen.git
+	md5sums = SKIP
+
+pkgname = rjumen-git
