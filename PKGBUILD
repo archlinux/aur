@@ -1,6 +1,6 @@
 # Maintainer: Aster O'Connor <archlinux.anatomist477 at passmail dot net>
 pkgname=hylo-llvm-bin
-pkgver=20260302_194515
+pkgver=20260308_220457
 _llvm_ver=20.1.6
 pkgrel=1
 pkgdesc="LLVM library and binaries compatible with Swift and Hylo"
