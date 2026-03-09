@@ -8,23 +8,95 @@ post_install() {
     fi
 
     _home=$(eval echo "~$_user")
-    _kwinrc="$_home/.config/kwinrc"
     _dbus="unix:path=/run/user/${_uid}/bus"
     _desktop="/usr/share/applications/org.fcitx.Fcitx5.desktop"
+    _ok=0
 
-    # Ensure .config exists
+    # Detect desktop environment
+    _de=$(su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus printenv XDG_CURRENT_DESKTOP 2>/dev/null" | tr '[:upper:]' '[:lower:]')
+
+    # 1. Set up environment variables for all desktops
+    _setup_env_vars "$_home" "$_user"
+
+    # 2. Desktop-specific configuration
+    case "$_de" in
+        *kde*|*plasma*)
+            _setup_kde "$_home" "$_user" "$_uid" "$_dbus" "$_desktop"
+            _ok=$?
+            ;;
+        *gnome*)
+            _setup_gnome "$_home" "$_user" "$_uid" "$_dbus"
+            _ok=$?
+            ;;
+        *sway*)
+            _setup_sway "$_home" "$_user"
+            _ok=$?
+            ;;
+        *hyprland*)
+            _setup_hyprland "$_home" "$_user"
+            _ok=$?
+            ;;
+        *)
+            _setup_autostart "$_home" "$_user"
+            _ok=$?
+            ;;
+    esac
+
+    echo ""
+    if [ "$_ok" = "0" ]; then
+        echo "==> Laren is ready! Toggle Arabic input with Ctrl+Space."
+    else
+        echo "==> Laren installed. Log out and back in to activate."
+        echo "    Then toggle Arabic input with Ctrl+Space."
+    fi
+    echo "    Use fcitx5-configtool to customize input methods."
+    echo ""
+}
+
+_setup_env_vars() {
+    _home="$1"
+    _user="$2"
+    _envfile="$_home/.config/environment.d/fcitx5.conf"
+
+    # systemd environment.d (works for most modern desktops)
+    install -d -o "$_user" -g "$_user" "$_home/.config/environment.d"
+    if [ ! -f "$_envfile" ]; then
+        cat > "$_envfile" <<'ENVEOF'
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+SDL_IM_MODULE=fcitx
+ENVEOF
+        chown "$_user:$_user" "$_envfile"
+    fi
+
+    # Also write to .pam_environment for DMs that don't use systemd environment.d
+    _pamenv="$_home/.pam_environment"
+    if [ ! -f "$_pamenv" ] || ! grep -q 'GTK_IM_MODULE.*fcitx' "$_pamenv" 2>/dev/null; then
+        cat >> "$_pamenv" <<'PAMEOF'
+GTK_IM_MODULE DEFAULT=fcitx
+QT_IM_MODULE DEFAULT=fcitx
+XMODIFIERS DEFAULT=@im=fcitx
+PAMEOF
+        chown "$_user:$_user" "$_pamenv"
+    fi
+}
+
+_setup_kde() {
+    _home="$1"
+    _user="$2"
+    _uid="$3"
+    _dbus="$4"
+    _desktop="$5"
+    _kwinrc="$_home/.config/kwinrc"
+
     install -d -o "$_user" -g "$_user" "$_home/.config"
 
-    # Update or create kwinrc
     if [ -f "$_kwinrc" ]; then
-        # Remove any existing InputMethod lines under [Wayland]
         sed -i '/^\[Wayland\]/,/^\[/{/^InputMethod/d}' "$_kwinrc"
-        # Remove any mangled kwriteconfig6 lines
         sed -i '/InputMethod.*x5b/d' "$_kwinrc"
-        # Update top-level InputMethod if present
         sed -i "0,/^InputMethod=/{s|^InputMethod=.*|InputMethod=$_desktop|}" "$_kwinrc"
 
-        # Add InputMethod and VirtualKeyboardEnabled under [Wayland]
         if grep -q '^\[Wayland\]' "$_kwinrc"; then
             sed -i "/^\[Wayland\]/a InputMethod[\$e]=$_desktop" "$_kwinrc"
             if ! grep -q '^VirtualKeyboardEnabled=true' "$_kwinrc"; then
@@ -42,30 +114,94 @@ KWINEOF
         chown "$_user:$_user" "$_kwinrc"
     fi
 
-    # Reconfigure KWin and toggle virtual keyboard to start fcitx5
-    _ok=0
+    # Reconfigure KWin and toggle virtual keyboard
     su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /KWin reconfigure" 2>/dev/null && \
     su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled false" 2>/dev/null && \
     sleep 1 && \
-    su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled true" 2>/dev/null && \
-    _ok=1
+    su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled true" 2>/dev/null
+    return $?
+}
 
-    echo ""
-    if [ "$_ok" = "1" ]; then
-        echo "==> Laren is ready! Toggle Arabic input with Ctrl+Space."
-    else
-        echo "==> Laren installed. Log out and back in to activate."
-        echo "    Then toggle Arabic input with Ctrl+Space."
+_setup_gnome() {
+    _home="$1"
+    _user="$2"
+    _uid="$3"
+    _dbus="$4"
+
+    # GNOME uses gsettings for input sources but fcitx5 integrates via env vars + autostart
+    _setup_autostart "$_home" "$_user"
+
+    # Try to start fcitx5 now
+    su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus fcitx5 -d" 2>/dev/null
+    return $?
+}
+
+_setup_sway() {
+    _home="$1"
+    _user="$2"
+    _swayconf="$_home/.config/sway/config"
+
+    _setup_autostart "$_home" "$_user"
+
+    if [ -f "$_swayconf" ]; then
+        if ! grep -q 'exec.*fcitx5' "$_swayconf" 2>/dev/null; then
+            echo 'exec_always fcitx5 -d --replace' >> "$_swayconf"
+            chown "$_user:$_user" "$_swayconf"
+        fi
     fi
-    echo "    Use fcitx5-configtool to customize input methods."
-    echo ""
+    return 1  # needs restart of sway
+}
+
+_setup_hyprland() {
+    _home="$1"
+    _user="$2"
+    _hyprconf="$_home/.config/hypr/hyprland.conf"
+
+    _setup_autostart "$_home" "$_user"
+
+    if [ -f "$_hyprconf" ]; then
+        if ! grep -q 'exec.*fcitx5' "$_hyprconf" 2>/dev/null; then
+            echo 'exec-once = fcitx5 -d' >> "$_hyprconf"
+            chown "$_user:$_user" "$_hyprconf"
+        fi
+    fi
+    return 1  # needs restart of hyprland
+}
+
+_setup_autostart() {
+    _home="$1"
+    _user="$2"
+    _autostart="$_home/.config/autostart/org.fcitx.Fcitx5.desktop"
+
+    install -d -o "$_user" -g "$_user" "$_home/.config/autostart"
+    if [ ! -f "$_autostart" ]; then
+        cat > "$_autostart" <<'AUTOEOF'
+[Desktop Entry]
+Name=Fcitx 5
+Comment=Start Input Method
+Exec=fcitx5 -d
+Type=Application
+Categories=System;Utility;
+X-GNOME-Autostart-enabled=true
+AUTOEOF
+        chown "$_user:$_user" "$_autostart"
+    fi
+    return 1  # needs logout/login
 }
 
 _print_manual() {
     echo ""
     echo "==> Laren (Arabizi to Arabic) has been installed."
     echo ""
-    echo "    1. System Settings > Virtual Keyboard > Fcitx 5"
+    echo "    1. Set up Fcitx5 for your desktop:"
+    echo "       KDE Wayland: System Settings > Virtual Keyboard > Fcitx 5"
+    echo "       GNOME/X11: Add to ~/.bashrc or environment:"
+    echo "         export GTK_IM_MODULE=fcitx"
+    echo "         export QT_IM_MODULE=fcitx"
+    echo "         export XMODIFIERS=@im=fcitx"
+    echo "       Sway: Add 'exec_always fcitx5 -d --replace' to config"
+    echo "       Hyprland: Add 'exec-once = fcitx5 -d' to config"
+    echo ""
     echo "    2. Log out and back in"
     echo "    3. Toggle Arabic input with Ctrl+Space"
     echo ""

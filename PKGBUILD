@@ -12,7 +12,7 @@ optdepends=('fcitx5-gtk: GTK input module'
             'fcitx5-qt: Qt input module')
 makedepends=('cmake' 'extra-cmake-modules' 'fcitx5')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('385decf82e8fcae999b4f72446cfd29c0e03b314e1b8101f995d88ac10cd9282')
+sha256sums=('7d094ad2e0310e3b78eb2e0efa798fce4de71e0406d1e0d5baace1634d726c19')
 
 build() {
     cmake -B build -S "laren-$pkgver" \
