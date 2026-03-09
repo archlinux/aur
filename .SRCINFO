@@ -1,6 +1,6 @@
 pkgbase = python-ipydatagrid
 	pkgdesc = Fast Datagrid widget for the Jupyter Notebook and JupyterLab
-	pkgver = 1.3.2
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/bloomberg/ipydatagrid
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-ipydatagrid
 	depends = python
 	depends = python-bqplot
 	depends = python-py2vega
-	source = https://files.pythonhosted.org/packages/py3/i/ipydatagrid/ipydatagrid-1.3.2-py3-none-any.whl
-	sha256sums = d557e1f037d6d46f2d4df899b57de8045aa1e1950e150e9e0146a8add90e6c2f
+	source = https://files.pythonhosted.org/packages/py3/i/ipydatagrid/ipydatagrid-1.4.0-py3-none-any.whl
+	sha256sums = 1d1d1804df8ca6f07dea8e8f5e0fd9f0010af1d91f1705778f19f4d94c110fcf
 
 pkgname = python-ipydatagrid
