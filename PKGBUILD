@@ -3,7 +3,7 @@
 # Maintainer: ApertureUA <alekseipesorin@outlook.com>
 
 pkgname=f-client-git
-pkgver=0.7.5_3.4.1
+pkgver=0.7.5_3.4.1.5947.295ac756
 pkgrel=1
 pkgdesc='A QoL mod for TeeWorlds: a fast-paced multiplayer 2D shooter game'
 arch=('x86_64' 'pentium4' 'riscv64' 'ppc64') # ALARM is dead :(
