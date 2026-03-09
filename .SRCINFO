@@ -1,6 +1,6 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox ESR browser
-	pkgver = 140.7.1
+	pkgver = 140.8.0
 	pkgrel = 1
 	url = https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git
 	arch = x86_64
@@ -55,14 +55,14 @@ pkgbase = icecat
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = xdg-desktop-portal: Screensharing with Wayland
-	noextract = firefox-140.7.1esr.source.tar.xz
+	noextract = firefox-140.8.0esr.source.tar.xz
 	options = !debug
 	options = !emptydirs
 	options = !lto
 	options = !makeflags
 	options = !strip
-	source = gnuzilla::git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=99b530e0e474acb69372a1efbf6139d2c976a1be
-	source = https://archive.mozilla.org/pub/firefox/releases/140.7.1esr/source/firefox-140.7.1esr.source.tar.xz
+	source = gnuzilla::git+https://https.git.savannah.gnu.org/git/gnuzilla.git#commit=e2809896cda6560800040c638982dba7945fe43a
+	source = https://archive.mozilla.org/pub/firefox/releases/140.8.0esr/source/firefox-140.8.0esr.source.tar.xz
 	source = 5fcff175718cd308bc6d6f2996de14eb8a93e2a2.patch
 	source = 23efd75219786d71acff0b4e7c1b0de297b84c4e.patch
 	source = b68b1f93a6e31188486458f32fbe37811257604f.patch
@@ -71,7 +71,7 @@ pkgbase = icecat
 	source = 0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
 	source = 0002-Fix-sandbox-to-build-with-glibc-2.43.patch
 	sha256sums = SKIP
-	sha256sums = e42d26aeabd17ab1e642656c7b1bc8cadf705ce2ac6751b103dd407f5af32827
+	sha256sums = 57a7f339ef68273f6597d8074a841fa053f63a21d1f609ab0074a26c063282e6
 	sha256sums = 10e928127276c934a51c053d3f7ceb247344afd2e82186e12c4f188dd743bc49
 	sha256sums = 6479aa1df3fda931d0e261edaffdcac2d162c0166c5cfd6adf6f45ccf632b852
 	sha256sums = 7b6f7c2906a4fb4b83c5f8e6be2cd873c3d99b1f1c4e6b98887364d26fee88de
