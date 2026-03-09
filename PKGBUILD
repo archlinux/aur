@@ -12,7 +12,7 @@ export CARGO_HOME CARGO_TARGET_DIR RUSTUP_TOOLCHAIN
 _pkgname="gyroflow"
 pkgname="$_pkgname"
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Video stabilization using gyroscope data"
 url="https://github.com/gyroflow/gyroflow"
 license=("GPL-3.0-or-later")
@@ -31,11 +31,12 @@ makedepends=(
   'clang'
   'git'
   'opencl-headers'
+  'zlib-static'
 )
 optdepends=(
-  'opencl-driver: OpenCL driver for GPU accelerated stabilization'
-  'libva-mesa-driver: VAAPI video acceleration for NVIDIA and AMD GPU'
   'intel-media-driver: VAAPI video acceleration for Intel GPU'
+  'libva-mesa-driver: VAAPI video acceleration for NVIDIA and AMD GPU'
+  'opencl-driver: OpenCL driver for GPU accelerated stabilization'
 )
 
 options=('!lto')
@@ -51,6 +52,9 @@ prepare() (
 )
 
 build() (
+  local _units=$(OMP_NUM_THREADS=16 nproc --all)
+  export RUSTFLAGS="-C opt-level=2 -C codegen-units=$_units -C lto=off"
+
   export QMAKE="/usr/bin/qmake6"
 
   # Use system libraries
