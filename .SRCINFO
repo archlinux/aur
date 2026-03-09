@@ -1,0 +1,17 @@
+pkgbase = greetd-tuigreet-soupy-boy-git
+	pkgdesc = A console UI greeter for greetd
+	pkgver = 1.0.0.r0.g20f5feb
+	pkgrel = 0
+	url = https://github.com/soupy-boy/tuigreet
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	makedepends = scdoc
+	conflicts = greetd-tuigreet
+	conflicts = greetd-tuigreet-git
+	source = git+https://github.com/soupy-boy/tuigreet
+	sha256sums = SKIP
+
+pkgname = greetd-tuigreet-soupy-boy-git
+	depends = gcc-libs
