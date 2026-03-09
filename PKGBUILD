@@ -1,6 +1,6 @@
 # Maintainer: Rongbo Wu <wurongbo2012@hotmail.com>
 pkgname=nocodb
-pkgver=0.301.2
+pkgver=0.301.3
 pkgrel=1
 pkgdesc="A no-code database platform that allows teams to collaborate and build processes with ease of a familiar and intuitive spreadsheet interface."
 arch=('x86_64' 'aarch64')
