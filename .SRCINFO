@@ -1,0 +1,23 @@
+pkgbase = python-usb-construct
+	pkgdesc = A Python library providing utilities, data structures, constants, parsers, and tools for working with USB data
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/shrine-maiden-heavy-industries/usb-construct
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pip
+	makedepends = python-setuptools-scm
+	makedepends = python-setuptools>=66
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = python<4.0
+	depends = python-construct
+	provides = python-usb-construct=0.2.1
+	conflicts = python-usb-construct-git
+	conflicts = python-usb-construct-nightly
+	source = usb-construct-0.2.1.tar.gz::https://files.pythonhosted.org/packages/source/u/usb_construct/usb_construct-0.2.1.tar.gz
+	sha256sums = b90d62daf6bbf070936029267e7c26d2ce11e88c546baeb0da4ce02bdcb2684b
+
+pkgname = python-usb-construct
