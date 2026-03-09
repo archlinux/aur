@@ -3,7 +3,7 @@
 _pkgauthor=keircn
 _pkgname=hostman
 pkgname=${_pkgname}-bin
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A simple file host manager for various image hosting services"
 arch=('x86_64')
@@ -13,15 +13,15 @@ license=('MIT')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('cjson' 'sqlite' 'openssl' 'curl' 'glibc')
+depends=('cjson' 'sqlite' 'openssl' 'curl' 'glibc' 'ncurses')
 
 changelog="changelog.md"
 
-source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-${arch[0]}.tar.gz")
-sha256sums_x86_64=('0d5ff88625c98770101228aa94b89e5b450e97c1c91432abd61ad56bdafeed4f')
+source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64.tar.gz")
+sha256sums_x86_64=('bb7163caea112f42727cd968329ef00a8d1c46ea415b879f5e7ec0152ebc5fc6')
 
 package() {
-    cd "${srcdir}/" || exit
+    cd "${srcdir}/${_pkgname}-linux-x64" || exit
 
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
