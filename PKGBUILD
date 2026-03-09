@@ -1,7 +1,7 @@
 # Maintainer: KylerianHD (aka ToxicByte) <contact@kylerianhd.com>
 pkgname=replay-bin
 pkgver=8.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Replay - UI for generating songs with AI singers, RVC training and speech conversion. Offline, local, and free."
 arch=('x86_64')
 url="https://github.com/KylerianHD/replay-bin"
@@ -48,9 +48,17 @@ package() {
   tar -xJf data.tar.xz -C "$pkgdir"
 
   # 2) Launcher stub in /usr/bin
-  install -Dm755 /dev/stdin "$pkgdir/usr/bin/replay" <<EOF
+  # Pass --gtk-version=3 on GNOME to avoid GTK 2/3 vs GTK 4 symbol conflict
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/replay" <<'EOF'
 #!/bin/sh
-exec /opt/Replay/replay "\$@"
+case "$XDG_CURRENT_DESKTOP" in
+  *GNOME*)
+    exec /opt/Replay/replay --gtk-version=3 "$@"
+    ;;
+  *)
+    exec /opt/Replay/replay "$@"
+    ;;
+esac
 EOF
 
   # 3) .desktop file

@@ -1,7 +1,7 @@
 pkgbase = replay-bin
 	pkgdesc = Replay - UI for generating songs with AI singers, RVC training and speech conversion. Offline, local, and free.
 	pkgver = 8.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/KylerianHD/replay-bin
 	arch = x86_64
 	license = GPL3 OR unknown
