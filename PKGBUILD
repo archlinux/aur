@@ -2,7 +2,7 @@
 
 pkgbase=gcopy
 pkgname=("${pkgbase}" "${pkgbase}-web")
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="A clipboard synchronization service for different devices that can synchronize text, screenshots, and files"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64' 'riscv64')
@@ -15,7 +15,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgbase}.env"
         "${pkgbase}.service"
         "${pkgbase}.sysusers")
-sha256sums=('926fb97ecf1d3bb1cabc5a55ff179424b32a4c38e90dc825f3690dceed796c6b'
+sha256sums=('a46cafb72b271678ffeeddba653fc08713fc9b25e8bc9671b70313d4236b48a9'
             '1b47cd9ba854ec53df8de892c906cf74a687f237ca141b200aada620316200ee'
             '1ffd97492315c562f075b14cf1d5a6cbda1806f635ef57868ef10fa39fec3cbb'
             '23c84de94b2e853efcef0f3ae07cccf6c1600d4fea9354b4a0e3f136a14479a2'
@@ -25,14 +25,16 @@ options=("!strip")
 
 build() {
     cd "${pkgbase}-${pkgver}"
-    echo 'SERVER_URL="http://localhost:3376"' > frontend/.env.production
-    npm --prefix=frontend install
-    npm --prefix=frontend run build
-    rm frontend/.env.production frontend/.next/standalone/.env.production
-    grep -rl "${srcdir}/${pkgbase}-${pkgver}/frontend" frontend/.next | xargs -I {} sed -i "s|${srcdir}/${pkgbase}-${pkgver}/frontend|/usr/share/${pkgbase}-web|g" {}
+    go build -trimpath -ldflags="-s -w -X ${url//https:\/\//}/pkg/version.version=${pkgver}" -o "${pkgbase}" ./cmd
     sed -i "s|3375|3000|g" deploy/nginx-example.conf
 
-    go build -trimpath -ldflags="-s -w -X ${url//https:\/\//}/pkg/version.version=${pkgver}" -o "${pkgbase}" ./cmd
+    cd frontend
+    echo 'SERVER_URL="http://localhost:3376"' > .env.production
+    npm ci
+    npx update-browserslist-db@latest --force
+    npm run build
+    rm .env.production .next/standalone/.env.production
+    grep -rl "${srcdir}/${pkgbase}-${pkgver}/frontend" .next | xargs -I {} sed -i "s|${srcdir}/${pkgbase}-${pkgver}/frontend|/usr/share/${pkgbase}-web|g" {}
 }
 
 package_gcopy() {
