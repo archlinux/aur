@@ -1,0 +1,15 @@
+pkgbase = rdn-git
+	pkgdesc = Rusty Dos Navigator
+	pkgver = r5.c43cd78
+	pkgrel = 1
+	url = https://github.com/apatrushev/rdn
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = rdn
+	conflicts = rdn
+	options = !lto
+	source = rdn::git+https://github.com/apatrushev/rdn.git#branch=main
+	sha256sums = SKIP
+
+pkgname = rdn-git
