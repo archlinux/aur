@@ -50,7 +50,7 @@ package() {
   install -dm755 "$pkgdir/opt/${_pkgname}"
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/applications"
-  install -dm755 "$pkgdir/usr/share/icons/hicolor/1024x1024/apps"
+  install -dm755 "$pkgdir/usr/share/pixmaps"
   install -dm755 "$pkgdir/usr/lib/udev/rules.d"
 
   # Copy built application
@@ -66,8 +66,8 @@ package() {
   sed -i "s|Exec=Vial|Exec=/usr/bin/${_pkgname}|" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 
   # Icon
-  install -Dm644 "src/main/icons/linux/1024.png" "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/Vial.png"
-  sed -i "s|Icon=Vial|Icon=Vial|" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 "src/main/icons/linux/1024.png" "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
+  sed -i "s|Icon=Vial|Icon=${_pkgname}|" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
 
   # Symlink executable
   ln -s "/opt/${_pkgname}/Vial" "$pkgdir/usr/bin/${_pkgname}"
