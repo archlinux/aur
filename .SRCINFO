@@ -1,0 +1,23 @@
+pkgbase = pbpctrl-plasmoid-git
+	pkgdesc = KDE Plasma 6 system tray plasmoid for controlling Google Pixel Buds Pro via pbpctrl (git)
+	pkgver = r4.204ac76
+	pkgrel = 1
+	url = https://github.com/ciarancoffey/pbpctrl-plasmoid
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = plasma-workspace
+	depends = plasma5support
+	depends = pbpctrl
+	depends = libpulse
+	optdepends = libfdk-aac: AAC codec support
+	optdepends = liblc3: LC3/LC3-SWB codec support (best headset mode quality)
+	optdepends = libfreeaptx: aptX/aptX HD codec support
+	optdepends = libldac: LDAC codec support
+	optdepends = opus: Opus codec support (best playback quality)
+	provides = pbpctrl-plasmoid
+	conflicts = pbpctrl-plasmoid
+	source = pbpctrl-plasmoid::git+https://github.com/ciarancoffey/pbpctrl-plasmoid.git#branch=main
+	sha256sums = SKIP
+
+pkgname = pbpctrl-plasmoid-git
