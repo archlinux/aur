@@ -3,8 +3,8 @@
 _Name="Lerc"
 _pkgname="${_Name,,}"
 pkgname="${_pkgname}-bin"
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="Limited Error Raster Compression library"
 arch=(
   'x86_64'
@@ -28,8 +28,10 @@ conflicts=(
 _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+  "${_pkgsrc}-all.zip::${url}/releases/download/v${pkgver}/bin.zip"
 )
-sha256sums=('91431c2b16d0e3de6cbaea188603359f87caed08259a645fd5a3805784ee30a0')
+sha256sums=('f05b24d2368becab9144873878655bb718910631550d4f786262378c16ab94a7'
+            'c91f50d574411e75d1f472a2f8ff688aae3c56baa31f4602b0f0d67adaca1b74')
 
 prepare() {
   cd "${srcdir}/${_pkgsrc}"
@@ -45,18 +47,18 @@ prepare() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgsrc}"
+  cd "${srcdir}"
+  find "bin/linux" -type f -name 'lib*.so*' -execdir \
+    install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
+
+  cd "${_pkgsrc}"
   install -vDm644 "NOTICE"    "${pkgdir}/usr/share/doc/${_pkgname}/NOTICE"
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
   install -vDm644 "${_Name}.pc" "${pkgdir}/usr/lib/pkgconfig/${_Name}.pc"
 
-  cd "${srcdir}/${_pkgsrc}/bin/linux"
-  find . -type f -name 'lib*.so*' -exec \
-    install -vDm644 "{}" "${pkgdir}/usr/lib/{}" \;
-
-  cd "${srcdir}/${_pkgsrc}/src/LercLib"
+  cd "src/LercLib"
   find "include" -type f -name '*.h' -exec \
     install -vDm644 "{}" "${pkgdir}/usr/{}" \;
 

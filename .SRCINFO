@@ -1,7 +1,7 @@
 pkgbase = lerc-bin
 	pkgdesc = Limited Error Raster Compression library
-	pkgver = 4.0.0
-	pkgrel = 2
+	pkgver = 4.1.0
+	pkgrel = 1
 	url = https://github.com/Esri/lerc
 	arch = x86_64
 	license = Apache-2.0
@@ -11,7 +11,9 @@ pkgbase = lerc-bin
 	provides = lerc
 	provides = libLerc.so
 	conflicts = lerc
-	source = https://github.com/Esri/lerc/archive/refs/tags/v4.0.0/lerc-4.0.0.tar.gz
-	sha256sums = 91431c2b16d0e3de6cbaea188603359f87caed08259a645fd5a3805784ee30a0
+	source = https://github.com/Esri/lerc/archive/refs/tags/v4.1.0/lerc-4.1.0.tar.gz
+	source = lerc-4.1.0-all.zip::https://github.com/Esri/lerc/releases/download/v4.1.0/bin.zip
+	sha256sums = f05b24d2368becab9144873878655bb718910631550d4f786262378c16ab94a7
+	sha256sums = c91f50d574411e75d1f472a2f8ff688aae3c56baa31f4602b0f0d67adaca1b74
 
 pkgname = lerc-bin
