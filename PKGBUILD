@@ -1,4 +1,5 @@
-# Maintainer: Thor77 <thor77 at thor77 dot org>
+# Maintainer: Cosmo Guerini <cosmo@cosmo.red>
+# Contributor: Thor77 <thor77 at thor77 dot org>
 # Contributor: Cody Ramaker <cramaker@linux.com>
 # Contributor: Andreas Nüßlein <nutz@noova.de>
 # Contributor: Ben Edwards <ben@artfuldodge.io>
@@ -6,7 +7,7 @@
 # Contributor: Scott Lawrence <bytbox@gmail.com>
 # Contributor: Guillaume ALAUX <guillaume at alaux dot net>
 pkgname=zookeeper
-pkgver=3.9.3
+pkgver=3.9.4
 pkgrel=1
 pkgdesc='Open-source server which enables highly reliable distributed coordination'
 arch=('any')
@@ -14,21 +15,19 @@ url='https://zookeeper.apache.org/'
 license=('Apache')
 depends=('java-runtime')
 backup=(etc/zookeeper/configuration.xsl
-        etc/zookeeper/zoo.cfg)
+        etc/zookeeper/zoo.cfg
+        etc/zookeeper/logback.xml)
 install=install_zookeeper.sh
 
-_apache_cgi="https://www.apache.org/dyn/closer.cgi"
-_closest=$(curl "${_apache_cgi}?asjson=1" | tr -d '\n ' | sed -r 's/.*"preferred":"(.+)".*/\1/')
-_app_path="/${pkgname}/${pkgname}-${pkgver}/apache-${pkgname}-${pkgver}-bin.tar.gz"
-source=(${_closest}/${_app_path}
+source=("https://archive.apache.org/dist/zookeeper/zookeeper-${pkgver}/apache-zookeeper-${pkgver}-bin.tar.gz"
         systemd_zookeeper.service
         systemd_zookeeper@.service
         systemd_sysusers.d_zookeeper.conf
         systemd_tmpfiles.d_zookeeper.conf)
 
-sha256sums=('19aa2811d5a80c7ae36208ccd61091b5c77812e784c29ffac68b3792ab648f1c'
-            'b59e0641de1951ad149ca39df5b5ec37dc6229f1aa987b0ed9d7e82e570be9ed'
-            'a3fd2566648f57c0cdd75cd48b7b60fa55eb59ee67dd716de1e1aa6a57823b88'
+sha256sums=('c5b7cbda0b1b59d724e552d33775983f8a366bf651ba484937d0559d97bf0ae9'
+            '58de7a5bf6fddc2b86d5d56269c970f8c5b60316a4d45b6e030cb970871669ba'
+            '4b18f321cdd3944115a5b87f9b14f5b564280045e01a3e9d704cc5cccd47ee57'
             'e863b63650c15a8823cfb2b507c375c999a71cda24805062de36af0250de5daa'
             '99fff5b04623889b0010c74c2dc3a4be29e7770fe2c7e15da51f7442a28c6580')
 
