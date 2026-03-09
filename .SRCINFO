@@ -1,0 +1,24 @@
+pkgbase = amethyst-mod-manager
+	pkgdesc = A Linux native mod manager for a variety of games
+	pkgver = 0.7.8
+	pkgrel = 1
+	url = https://github.com/ChrisDKN/Amethyst-Mod-Manager
+	arch = any
+	license = GPL-3.0-only
+	depends = python-customtkinter
+	depends = python-py7zr
+	depends = python-libarchive-c
+	depends = python-pillow
+	depends = python-lz4
+	depends = python-zstandard
+	depends = python-requests
+	depends = python-websocket-client
+	depends = python-keyring
+	depends = python-importlib-metadata
+	depends = python-msgpack
+	depends = python-gobject
+	depends = zenity
+	source = amethyst-mod-manager-0.7.8.tar.gz::https://github.com/ChrisDKN/Amethyst-Mod-Manager/archive/refs/tags/v0.7.8.tar.gz
+	sha256sums = 1d188b7bad2b08c9a15aca5535e09aef484cdafb57b964e809c4ffe65ee03326
+
+pkgname = amethyst-mod-manager
