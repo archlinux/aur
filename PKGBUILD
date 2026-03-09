@@ -26,6 +26,15 @@ prepare() {
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_HOME="$srcdir/.cargo-home"
     cargo fetch --locked
+
+    # Workaround for rustc 1.94.0 regression (matrix-rust-sdk#6254, zeroclaw#2905):
+    # matrix-sdk v0.16.0 is missing #![recursion_limit="256"] which overflows the
+    # default query depth limit introduced in rustc 1.94.0.
+    local msdk_lib
+    msdk_lib=$(find "$srcdir/.cargo-home/registry/src" -path '*/matrix-sdk-0.16.*/src/lib.rs' 2>/dev/null | head -1)
+    if [[ -n "$msdk_lib" ]] && ! grep -q 'recursion_limit' "$msdk_lib"; then
+        sed -i '1s/^/#![recursion_limit = "256"]\n/' "$msdk_lib"
+    fi
 }
 
 build() {
