@@ -1,8 +1,8 @@
 # Maintainer: notfire <luke@notfire.cc>
 
 pkgname=sharkey
-pkgver=2025.4.5
-pkgrel=4
+pkgver=2025.4.6
+pkgrel=1
 pkgdesc='A Sharkish microblogging platform'
 url='https://activitypub.software/TransFem-org/Sharkey'
 license=('AGPL')
