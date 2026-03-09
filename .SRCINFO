@@ -1,6 +1,6 @@
 pkgbase = stelliberty-bin
 	pkgdesc = Modern Clash/Mihomo 客户端的二进制发行版
-	pkgver = 1.2.265
+	pkgver = 1.2.266
 	pkgrel = 1
 	url = https://github.com/Kindness-Kismet/Stelliberty
 	arch = x86_64
@@ -16,20 +16,20 @@ pkgbase = stelliberty-bin
 	depends = libdbusmenu-gtk3
 	depends = rsync
 	optdepends = xdg-utils: for xdg-open support
-	provides = stelliberty=1.2.265
+	provides = stelliberty=1.2.266
 	conflicts = stelliberty
-	noextract = Stelliberty-v1.2.265-linux-x64.zip
-	noextract = Stelliberty-v1.2.265-linux-arm64.zip
+	noextract = Stelliberty-v1.2.266-linux-x64.zip
+	noextract = Stelliberty-v1.2.266-linux-arm64.zip
 	options = !strip
-	source = app_icon.png::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v1.2.265/linux/runner/resources/app_icon.png
-	source = stelliberty.desktop::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v1.2.265/linux/stelliberty.desktop
-	source = LICENSE-v1.2.265::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v1.2.265/LICENSE
+	source = app_icon.png::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v1.2.266/linux/runner/resources/app_icon.png
+	source = stelliberty.desktop::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v1.2.266/linux/stelliberty.desktop
+	source = LICENSE-v1.2.266::https://raw.githubusercontent.com/Kindness-Kismet/Stelliberty/v1.2.266/LICENSE
 	sha256sums = fa89e84a3090b5a566b0ddf4d8e11adec3785b66d660746774fb6197173bf9d8
 	sha256sums = ca2f07aef3208f38d47eee1bdc163b2699362432e050e0127b744163d6dc9eca
 	sha256sums = 6f6fc60debd655040216a90ce3a87071ede50c392f6eba3642f169891c638e10
-	source_x86_64 = Stelliberty-v1.2.265-linux-x64.zip::https://github.com/Kindness-Kismet/Stelliberty/releases/download/v1.2.265/Stelliberty-v1.2.265-linux-x64.zip
-	sha256sums_x86_64 = 2919a92b2ad04aa8842ca1782f35c2622531373c9a5993ed7a909dd974f66de8
-	source_aarch64 = Stelliberty-v1.2.265-linux-arm64.zip::https://github.com/Kindness-Kismet/Stelliberty/releases/download/v1.2.265/Stelliberty-v1.2.265-linux-arm64.zip
-	sha256sums_aarch64 = f13dd8bcceb5bba19b43e5a48b8f88b3180609da7b5b9b37d7830c38b308b750
+	source_x86_64 = Stelliberty-v1.2.266-linux-x64.zip::https://github.com/Kindness-Kismet/Stelliberty/releases/download/v1.2.266/Stelliberty-v1.2.266-linux-x64.zip
+	sha256sums_x86_64 = 5b4cc69cd6a5f3170bf8c29cb382df9b7969d3d35b124f33b23ddfdcf6f1c1ad
+	source_aarch64 = Stelliberty-v1.2.266-linux-arm64.zip::https://github.com/Kindness-Kismet/Stelliberty/releases/download/v1.2.266/Stelliberty-v1.2.266-linux-arm64.zip
+	sha256sums_aarch64 = f74d00cc38f9a47b57d5ca90c7c5856fdfc74fafea675a6079b6900580aad804
 
 pkgname = stelliberty-bin
