@@ -25,7 +25,7 @@ prepare() {
     cd "$pkgname-$pkgver"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_HOME="$srcdir/.cargo-home"
-    cargo fetch --locked
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 
     # Workaround for rustc 1.94.0 regression (matrix-rust-sdk#6254, zeroclaw#2905):
     # matrix-sdk v0.16.0 is missing #![recursion_limit="256"] which overflows the
