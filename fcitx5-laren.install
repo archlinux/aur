@@ -14,25 +14,31 @@ post_install() {
     # Detect desktop environment
     _de=$(su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus printenv XDG_CURRENT_DESKTOP 2>/dev/null" | tr '[:upper:]' '[:lower:]')
 
-    # 1. Persist env vars and autostart for future sessions
-    _setup_env_vars "$_home" "$_user"
-    _setup_autostart "$_home" "$_user"
-
-    # 2. Desktop-specific configuration
+    # 1. Desktop-specific configuration
     case "$_de" in
         *kde*|*plasma*)
+            # KDE Wayland: KWin manages Fcitx5 directly, no env vars needed
             _setup_kde "$_home" "$_user" "$_uid" "$_dbus" "$_desktop"
+            _activate_kde "$_user" "$_dbus"
             ;;
         *sway*)
+            _setup_env_vars "$_home" "$_user"
+            _setup_autostart "$_home" "$_user"
             _setup_sway "$_home" "$_user"
+            _activate_generic "$_user" "$_uid" "$_dbus"
             ;;
         *hyprland*)
+            _setup_env_vars "$_home" "$_user"
+            _setup_autostart "$_home" "$_user"
             _setup_hyprland "$_home" "$_user"
+            _activate_generic "$_user" "$_uid" "$_dbus"
+            ;;
+        *)
+            _setup_env_vars "$_home" "$_user"
+            _setup_autostart "$_home" "$_user"
+            _activate_generic "$_user" "$_uid" "$_dbus"
             ;;
     esac
-
-    # 3. Activate in the current session (all desktops)
-    _activate_session "$_user" "$_uid" "$_dbus"
     _ok=$?
 
     echo ""
@@ -47,7 +53,18 @@ post_install() {
     echo ""
 }
 
-_activate_session() {
+_activate_kde() {
+    _user="$1"
+    _dbus="$2"
+
+    # Toggle KWin virtual keyboard to restart Fcitx5 (preserves Wayland IM connection)
+    su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled false" 2>/dev/null
+    sleep 1
+    su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled true" 2>/dev/null
+    return 0
+}
+
+_activate_generic() {
     _user="$1"
     _uid="$2"
     _dbus="$3"
@@ -59,14 +76,8 @@ _activate_session() {
     su - "$_user" -c "systemctl --user import-environment \
         GTK_IM_MODULE QT_IM_MODULE XMODIFIERS SDL_IM_MODULE" 2>/dev/null
 
-    # Restart fcitx5 — on KDE Wayland, toggle via KWin to preserve IM connection
-    if su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled" 2>/dev/null | grep -qi true; then
-        su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled false" 2>/dev/null
-        sleep 1
-        su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled true" 2>/dev/null
-    else
-        su - "$_user" -c "killall fcitx5 2>/dev/null; DBUS_SESSION_BUS_ADDRESS=$_dbus nohup fcitx5 -d >/dev/null 2>&1 &" 2>/dev/null
-    fi
+    # Restart fcitx5
+    su - "$_user" -c "killall fcitx5 2>/dev/null; DBUS_SESSION_BUS_ADDRESS=$_dbus nohup fcitx5 -d >/dev/null 2>&1 &" 2>/dev/null
     return 0
 }
 
@@ -149,11 +160,8 @@ KWINEOF
         chown "$_user:$_user" "$_kwinrc"
     fi
 
-    # Reconfigure KWin and toggle virtual keyboard
+    # Reconfigure KWin
     su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /KWin reconfigure" 2>/dev/null
-    su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled false" 2>/dev/null
-    sleep 1
-    su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled true" 2>/dev/null
 }
 
 _setup_sway() {
