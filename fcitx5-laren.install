@@ -59,8 +59,14 @@ _activate_session() {
     su - "$_user" -c "systemctl --user import-environment \
         GTK_IM_MODULE QT_IM_MODULE XMODIFIERS SDL_IM_MODULE" 2>/dev/null
 
-    # Kill any stale fcitx5 and start fresh
-    su - "$_user" -c "killall fcitx5 2>/dev/null; DBUS_SESSION_BUS_ADDRESS=$_dbus nohup fcitx5 -d >/dev/null 2>&1 &" 2>/dev/null
+    # Restart fcitx5 — on KDE Wayland, toggle via KWin to preserve IM connection
+    if su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled" 2>/dev/null | grep -qi true; then
+        su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled false" 2>/dev/null
+        sleep 1
+        su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled true" 2>/dev/null
+    else
+        su - "$_user" -c "killall fcitx5 2>/dev/null; DBUS_SESSION_BUS_ADDRESS=$_dbus nohup fcitx5 -d >/dev/null 2>&1 &" 2>/dev/null
+    fi
     return 0
 }
 
@@ -124,15 +130,13 @@ _setup_kde() {
     install -d -o "$_user" -g "$_user" "$_home/.config"
 
     if [ -f "$_kwinrc" ]; then
+        # Remove any existing InputMethod lines from [Wayland] section
         sed -i '/^\[Wayland\]/,/^\[/{/^InputMethod/d}' "$_kwinrc"
-        sed -i '/InputMethod.*x5b/d' "$_kwinrc"
-        sed -i "0,/^InputMethod=/{s|^InputMethod=.*|InputMethod=$_desktop|}" "$_kwinrc"
+        sed -i '/^\[Wayland\]/,/^\[/{/^VirtualKeyboardEnabled/d}' "$_kwinrc"
 
         if grep -q '^\[Wayland\]' "$_kwinrc"; then
+            sed -i "/^\[Wayland\]/a VirtualKeyboardEnabled=true" "$_kwinrc"
             sed -i "/^\[Wayland\]/a InputMethod[\$e]=$_desktop" "$_kwinrc"
-            if ! grep -q '^VirtualKeyboardEnabled=true' "$_kwinrc"; then
-                sed -i '/^\[Wayland\]/a VirtualKeyboardEnabled=true' "$_kwinrc"
-            fi
         else
             printf '\n[Wayland]\nInputMethod[$e]=%s\nVirtualKeyboardEnabled=true\n' "$_desktop" >> "$_kwinrc"
         fi
