@@ -2,7 +2,7 @@
 # Automatically updated by GitHub Actions
 
 pkgname=zerx-lab-fluxdown-bin
-pkgver=0.1.26
+pkgver=0.1.27
 pkgrel=1
 pkgdesc="FluxDown - Rust 驱动的多协议下载管理器（HTTP/FTP/BitTorrent）"
 arch=('x86_64')
@@ -24,7 +24,7 @@ conflicts=('fluxdown')
 options=('!strip')
 
 source_x86_64=("FluxDown-${pkgver}-linux-x64.tar.gz::https://fluxdown.zerx.dev/api/download/FluxDown-${pkgver}-linux-x64.tar.gz")
-sha256sums_x86_64=('a2d300efdb7f66adcd2a2c97dd7e44d2119332ba6f6685c0d7759d7be677f5cd')
+sha256sums_x86_64=('fcc652efd22824056d46cab1dc068aea663b9fa8849c9c266b7975623e5e1a16')
 
 package() {
     cd "$srcdir/FluxDown-${pkgver}-linux-x64"
