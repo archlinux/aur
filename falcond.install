@@ -10,7 +10,7 @@ post_install() {
   echo "sudo groupadd --system falcond"
   # Set ownership and permissions
   # make that group own /usr/share/falcond/profiles/user
-  echo "sudo chown :falcond /usr/share/falcond/profiles/user"
+  echo "sudo chown root:falcond /usr/share/falcond/profiles/user"
   # chmod to 2775 (rwxrwsr-x) to allow group write and setgid for inheritance, 
   # ensuring access for authorized users while maintaining security
   echo "sudo chmod 2775 /usr/share/falcond/profiles/user"
