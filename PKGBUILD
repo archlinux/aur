@@ -4,8 +4,8 @@
 # Contributor: Evgeniy <evgfilim1 at gmail dot com>
 
 pkgname=trackma
-pkgver=0.10.1
-pkgrel=2
+pkgver=0.10.3
+pkgrel=1
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 url="https://z411.github.io/trackma/"
 arch=('any')
@@ -36,7 +36,7 @@ source=("${pkgname}-${pkgver}::git+https://github.com/z411/${pkgname}.git#tag=v$
         "${pkgname}-gtk.desktop"
         "${pkgname}-qt.desktop")
 
-sha256sums=('1aee05dea1d60be27721700a487d3e5d278bf8d01947932db29c7a3f95c4b576'
+sha256sums=('fe4b729ab28bf4fd617b2fe5b80fa271210dad7b27496e2b688064ad09a2d019'
             'SKIP'
             '80be9ffc3eb66456004a438a3da8950ed8382faa00a3fe61c5ef3980090c4dce'
             'a737f0fd38af4c472dfbca8503f57763bbec7c91568221298db317421a6c5604'
