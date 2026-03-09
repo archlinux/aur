@@ -1,16 +1,16 @@
 pkgbase = mdview-bin
 	pkgdesc = Standalone Markdown viewer.
-	pkgver = 4.0.0
+	pkgver = 4.0.1
 	pkgrel = 1
 	url = https://github.com/c3er/mdview
 	arch = x86_64
 	license = MIT
-	depends = electron39
-	provides = mdview=4.0.0
+	depends = electron40
+	provides = mdview=4.0.1
 	conflicts = mdview
-	source = mdview-4.0.0-x86_64.AppImage::https://github.com/c3er/mdview/releases/download/v4.0.0/mdview-4.0.0-x86_64.AppImage
-	source = LICENSE-4.0.0::https://raw.githubusercontent.com/c3er/mdview/v4.0.0/LICENSE
-	sha256sums = cdafd72d86d2f5dc6b5a54483c5187993e4b21171b974d9309e707d4ed84a814
+	source = mdview-4.0.1-x86_64.AppImage::https://github.com/c3er/mdview/releases/download/v4.0.1/mdview-4.0.1-x86_64.AppImage
+	source = LICENSE-4.0.1::https://raw.githubusercontent.com/c3er/mdview/v4.0.1/LICENSE
+	sha256sums = e1afc9beb317f1ca8b63cede40355be5e2f933919c53d307617570990223265b
 	sha256sums = 4014420ba4b48c5f19ac8645ebeec93b9a0ccd41359700efc8b4d83738d16eeb
 
 pkgname = mdview-bin

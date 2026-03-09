@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mdview-bin
-pkgver=4.0.0
-_electronversion=39
+pkgver=4.0.1
+_electronversion=40
 pkgrel=1
 pkgdesc="Standalone Markdown viewer."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-${CARCH}.AppImage"
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/c3er/mdview/v${pkgver}/LICENSE"
 )
-sha256sums=('cdafd72d86d2f5dc6b5a54483c5187993e4b21171b974d9309e707d4ed84a814'
+sha256sums=('e1afc9beb317f1ca8b63cede40355be5e2f933919c53d307617570990223265b'
             '4014420ba4b48c5f19ac8645ebeec93b9a0ccd41359700efc8b4d83738d16eeb')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
