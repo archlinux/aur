@@ -1,7 +1,7 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk> (aur.archlinux.org/account/wjhandley)
 pkgname=python-montepython
 _name=${pkgname#python-}
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="The Monte Carlo code for class in Python"
 arch=(any)
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('4bcd795e7e9476a5a63fd193caf16c53e4c38686afd2a215df2e4d51a21f2f46')
+sha256sums=('f540ec29b1230a540d553c9e7162841f4eaa281ea20570ab9f34c60035b3d94d')
 
 build() {
     cd "$srcdir/montepython_public-$pkgver"
