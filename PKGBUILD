@@ -47,7 +47,6 @@ MimeType=application/epub+zip;application/pdf;application/x-mobipocket-ebook;app
 EOF
     
     # Install license
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     
     # Install documentation
     install -Dm644 "${srcdir}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
