@@ -1,7 +1,7 @@
 # Maintainer: Andrej Benz <hello[at]benz[dot]dev>
 
 pkgname=elephant-all
-pkgver=2.20.1
+pkgver=2.20.2
 pkgrel=1
 pkgdesc='elephant + all official elephant providers'
 url='https://github.com/abenz1267/elephant'
@@ -12,7 +12,7 @@ makedepends=('go')
 conflicts=('elephant' 'elephant-wireplumber' 'elephant-bitwarden' 'elephant-dnfpackages' 'elephant-1password' 'elephant-bookmarks' 'elephant-nirisessions' 'elephant-niriactions' 'elephant-archlinuxpkgs' 'elephant-bluetooth' 'elephant-calc' 'elephant-clipboard' 'elephant-desktopapplications' 'elephant-files' 'elephant-menus' 'elephant-providerlist' 'elephant-runner' 'elephant-snippets' 'elephant-symbols' 'elephant-todo' 'elephant-unicode' 'elephant-websearch' 'elephant-windows')
 provides=('elephant' 'elephant-wireplumber' 'elephant-nirisessions' 'elephant-niriactions' 'elephant-archlinuxpkgs' 'elephant-bluetooth' 'elephant-calc' 'elephant-clipboard' 'elephant-desktopapplications' 'elephant-files' 'elephant-menus' 'elephant-providerlist' 'elephant-runner' 'elephant-snippets' 'elephant-symbols' 'elephant-todo' 'elephant-unicode' 'elephant-websearch' 'elephant-windows')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7d13c79cb9b57245ffb8a6272af953829e9ce91a4d82f45d534f029d15dcc628')
+sha256sums=('f801cfdbdccf014a8237effc4ab90fe4f1d603bc507428cf80287e77e008dc52')
 
 build() {
     # Build main elephant binary
