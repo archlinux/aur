@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=taratormusic-bin
 _pkgname=TaratorMusic
-pkgver=1.8.2
+pkgver=1.8.3
 _electronversion=31
 pkgrel=1
 pkgdesc="A music player application with playlist support and Discord integration.(Prebuilt version.Use system-wide electron)"
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2c6fccfcf7c439f2216235ae9f89dc49422b4ce35b35e0d75df9aa08e3aadee6'
+sha256sums=('0560301cfa4c7594342b94ffb8695da14acec23fdfe72cad15f59217cc006bb4'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -53,14 +53,12 @@ prepare() {
     find "${srcdir}/squashfs-root/resources/" -type d -exec chmod 755 {} +
     ln -sf "/usr/bin/ffmpeg" "${srcdir}/squashfs-root/resources/app/node_modules/@ffmpeg-installer/linux-x64/ffmpeg"
     ln -sf "/usr/bin/ffprobe" "${srcdir}/squashfs-root/resources/app/node_modules/ffprobe-static/bin/linux/x64/ffprobe"
-    ln -sf "/usr/bin/python" "${srcdir}/squashfs-root/resources/app/node_modules/better-sqlite3/build/node_gyp_bins/python3"
-    ln -sf "/usr/bin/python" "${srcdir}/squashfs-root/resources/app/node_modules/register-scheme/build/node_gyp_bins/python3"
-    ln -sf "/usr/bin/python" "${srcdir}/squashfs-root/resources/app/node_modules/abstract-socket/build/node_gyp_bins/python3"
     ln -sf "/usr/bin/yt-dlp" "${srcdir}/squashfs-root/resources/bin/yt-dlp_linux"
     rm -rf \
         "${srcdir}/squashfs-root/resources/app/node_modules/ffprobe-static/bin/"{darwin,linux/ia32} \
         "${srcdir}/squashfs-root/resources/app/node_modules/bare-fs/prebuilds/"{android-*,darwin-*,ios-*,win32-*,linux-arm64} \
-        "${srcdir}/squashfs-root/resources/app/node_modules/bare-os/prebuilds/"{android-*,darwin-*,ios-*,win32-*,linux-arm64}
+        "${srcdir}/squashfs-root/resources/app/node_modules/bare-os/prebuilds/"{android-*,darwin-*,ios-*,win32-*,linux-arm64} \
+        "${srcdir}/squashfs-root/resources/app/node_modules/bare-url/prebuilds/"{android-*,darwin-*,ios-*,win32-*,linux-arm64}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
@@ -75,5 +73,5 @@ package() {
     fi
     install -Dm644 "${srcdir}/squashfs-root/LICENSE"* -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
-    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/0x0/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/512x512/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
 }

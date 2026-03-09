@@ -1,6 +1,6 @@
 pkgbase = taratormusic-bin
 	pkgdesc = A music player application with playlist support and Discord integration.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://github.com/Victiniiiii/TaratorMusic
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = taratormusic-bin
 	depends = ffmpeg
 	depends = python
 	depends = yt-dlp
-	provides = taratormusic=1.8.2
+	provides = taratormusic=1.8.3
 	conflicts = taratormusic
 	options = !emptydirs
 	options = !strip
-	source = taratormusic-1.8.2-x86_64.AppImage::https://github.com/Victiniiiii/TaratorMusic/releases/download/1.8.2/TaratorMusic-1.8.2.AppImage
+	source = taratormusic-1.8.3-x86_64.AppImage::https://github.com/Victiniiiii/TaratorMusic/releases/download/1.8.3/TaratorMusic-1.8.3.AppImage
 	source = taratormusic.sh
-	sha256sums = 2c6fccfcf7c439f2216235ae9f89dc49422b4ce35b35e0d75df9aa08e3aadee6
+	sha256sums = 0560301cfa4c7594342b94ffb8695da14acec23fdfe72cad15f59217cc006bb4
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = taratormusic-bin
