@@ -31,6 +31,6 @@ pkgbase = ssmt4-linux
 	provides = ssmt4-linux
 	conflicts = ssmt4-linux-git
 	source = ssmt4-linux::git+https://github.com/xiaobai14491-afk/SSMT4-Linux.git#tag=0.0.8-beta
-	sha256sums = d2dff8e585635de06f71b63e53a84ab92dcfa5ad53082365ceaacdb7eab47407
+	sha256sums = SKIP
 
 pkgname = ssmt4-linux

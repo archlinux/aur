@@ -82,7 +82,7 @@ fi
 source=(
   "${_source_name}::git+${_source_repo}#tag=${_source_tag}"
 )
-sha256sums=('d2dff8e585635de06f71b63e53a84ab92dcfa5ad53082365ceaacdb7eab47407')
+sha256sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${_source_name}"
