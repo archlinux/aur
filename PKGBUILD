@@ -1,8 +1,8 @@
 # Maintainer: Michael König <m.koenig@kit.edu>
 pkgname=bwlog
 pkgver=0.4.1
-pkgrel=1
-pkgdesc="Lightweight Linux system logger for per-core CPU, NIC throughput, and interrupt rates"
+pkgrel=2
+pkgdesc="Lightweight logger for network throughput, CPU utilization, and interrupt rates"
 arch=('x86_64')
 url="https://gitlab.kit.edu/kit/tm/telematics/congestion-control/logging/bwlog"
 license=('MIT')
