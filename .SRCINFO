@@ -1,0 +1,29 @@
+pkgbase = python-torii-ila
+	pkgdesc = Integrated Logic Analyzer core for Torii based designs
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/shrine-maiden-heavy-industries/torii-ila
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pip
+	makedepends = python-setuptools-scm
+	makedepends = python-setuptools>=66
+	makedepends = python-wheel
+	depends = python>=3.11
+	depends = python<4.0
+	depends = python-torii>=0.2.0
+	depends = python-torii<1.0
+	depends = python-pyvcd>=0.4.0
+	depends = python-pyvcd<0.5.0
+	optdepends = gtkwave: Simulation trace viewing
+	optdepends = surfer-waveform: Simulation trace viewing
+	optdepends = python-torii-usb: USB ILA support
+	provides = python-torii-ila=0.2.0
+	conflicts = python-torii-ila-git
+	conflicts = python-torii-ila-nightly
+	source = torii-ila-0.2.0.tar.gz::https://files.pythonhosted.org/packages/source/t/torii_ila/torii_ila-0.2.0.tar.gz
+	sha256sums = f1c1456c3fe923c038ff65f50449e8728f3da10a53176a70f6f3ea72d6e65c4d
+
+pkgname = python-torii-ila
