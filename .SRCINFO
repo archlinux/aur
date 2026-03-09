@@ -1,14 +1,14 @@
 pkgbase = cosmosdb-server
 	pkgdesc = A Cosmos DB server implementation for testing your applications locally.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 2
 	url = https://github.com/vercel/cosmosdb-server
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = @vercel/cosmosdb-server-1.0.0.tgz
-	source = https://registry.npmjs.org/@vercel/cosmosdb-server/-/cosmosdb-server-1.0.0.tgz
-	b2sums = b5c83fbd3a2ce67732bb3da29d63551ac13d2ca439e43102d6ba1adef8462d94c5760edf1d35d7bf1593c6c33a92076eb3b97d51c2907e753dd15201628c53d6
+	noextract = @vercel/cosmosdb-server-1.0.1.tgz
+	source = https://registry.npmjs.org/@vercel/cosmosdb-server/-/cosmosdb-server-1.0.1.tgz
+	b2sums = 6b90536fb90e8d80ef2c32c147aa38db14d4f103ea2f411b70cdc8638fa1a052b219d17fdba856e8c7936f02a347c40826c68202a6d4f44459c15ec808ace0a0
 
 pkgname = cosmosdb-server
