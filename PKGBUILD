@@ -1,6 +1,6 @@
 pkgname=ssmt4-linux
 pkgver=0.0.8_beta
-pkgrel=4
+pkgrel=5
 pkgdesc="SSMT4 - Super Simple Linux Game Tools 4th"
 arch=('x86_64')
 url='https://gitee.com/xiaobai01111/ssmt4-linux'
@@ -122,12 +122,15 @@ package() {
 
   install -Dm755 "src-tauri/target/release/SSMT4-linux" "${pkgdir}/usr/bin/SSMT4-linux"
 
-  install -dm755 "${pkgdir}/usr/lib/ssmt4/resources"
+  install -dm755 "${pkgdir}/usr/lib/SSMT4-Linux/resources"
   if [[ -d "src-tauri/resources" ]]; then
-    cp -r src-tauri/resources/* "${pkgdir}/usr/lib/ssmt4/resources/" 2>/dev/null || true
+    cp -r src-tauri/resources/* "${pkgdir}/usr/lib/SSMT4-Linux/resources/" 2>/dev/null || true
   fi
-  install -Dm644 "version" "${pkgdir}/usr/lib/ssmt4/resources/version"
-  install -Dm644 "version-log" "${pkgdir}/usr/lib/ssmt4/resources/version-log"
+  install -Dm644 "version" "${pkgdir}/usr/lib/SSMT4-Linux/resources/version"
+  install -Dm644 "version-log" "${pkgdir}/usr/lib/SSMT4-Linux/resources/version-log"
+
+  install -dm755 "${pkgdir}/usr/lib/ssmt4"
+  ln -sfn ../SSMT4-Linux/resources "${pkgdir}/usr/lib/ssmt4/resources"
 
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/ssmt4-linux.desktop" <<'DESKTOP'
 [Desktop Entry]
