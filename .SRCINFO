@@ -4,6 +4,7 @@ pkgbase = kokovp
 	pkgrel = 1
 	url = https://github.com/brainrom/kokovp
 	arch = x86_64
+	arch = aarch64
 	license = GPL-2.0
 	makedepends = git
 	makedepends = cmake
