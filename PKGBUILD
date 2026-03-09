@@ -1,7 +1,7 @@
 # Maintainer: RayZ3R0
 
 pkgname=sonami-gtk-bin
-pkgver=1.5.3
+pkgver=1.5.5
 pkgrel=1
 pkgdesc="A Tidal music player for GNOME, built with GTK4 and Adwaita"
 arch=('x86_64')
@@ -28,7 +28,7 @@ optdepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/RayZ3R0/sonami-gtk/releases/download/v${pkgver}/sonami-gtk-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('3e1fef082e2013d22cd3a4a79d582af2dca5a4a260b642407d9ffdc018779fca')
+sha256sums=('8a4b45a575f63e738522cac1f5b2034a51acf499344f0b3da8df44cae3ab29e5')
 
 package() {
     cd "${srcdir}/sonami-gtk-v${pkgver}-linux-x86_64"
