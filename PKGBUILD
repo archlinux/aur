@@ -1,6 +1,6 @@
 pkgname=ssmt4-linux
 pkgver=0.0.8_beta
-pkgrel=1
+pkgrel=2
 pkgdesc="SSMT4 - Super Simple Linux Game Tools 4th"
 arch=('x86_64')
 url='https://gitee.com/xiaobai01111/ssmt4-linux'
