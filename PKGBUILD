@@ -18,16 +18,16 @@ depends=(
 provides=('shiori-ebook')
 conflicts=('shiori-ebook' 'shiori-ebook-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/shiori-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('fe2fa4c37b361eac1bada71fc3d467d6470fcc94f5cba6cfd150bd64d7a39a27')
 
 package() {
     # Install the binary
-    install -Dm755 "${srcdir}/shiori" "${pkgdir}/usr/bin/shiori"
+    install -Dm755 "${srcdir}/shiori-release-${pkgver}/shiori" "${pkgdir}/usr/bin/shiori"
     
     # Install icons
-    install -Dm644 "${srcdir}/icons/128x128.png" \
+    install -Dm644 "${srcdir}/shiori-release-${pkgver}/icons/128x128.png" \
         "${pkgdir}/usr/share/icons/hicolor/128x128/apps/shiori.png"
-    install -Dm644 "${srcdir}/icons/32x32.png" \
+    install -Dm644 "${srcdir}/shiori-release-${pkgver}/icons/32x32.png" \
         "${pkgdir}/usr/share/icons/hicolor/32x32/apps/shiori.png"
     
     # Create desktop entry
