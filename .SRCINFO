@@ -1,0 +1,15 @@
+pkgbase = rigami-cli-bin
+	pkgdesc = CLI for the Rigami quest platform (pre-built)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://rigami.xyz
+	arch = x86_64
+	license = MIT
+	provides = rigami-cli
+	conflicts = rigami-cli
+	source = rigami-cli-bin-0.1.0.tar.gz::https://github.com/rigamixyz/rigami-cli/releases/download/v0.1.0/rigami-x86_64-unknown-linux-gnu.tar.gz
+	source = rigami-cli-bin-0.1.0-LICENSE::https://raw.githubusercontent.com/rigamixyz/rigami-cli/v0.1.0/LICENSE.md
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = rigami-cli-bin
