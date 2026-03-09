@@ -1,0 +1,21 @@
+pkgbase = anvil
+	pkgdesc = Build, sign, and manage Linux kernels for Firecracker and Kata Containers
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Work-Fort/Anvil
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = go
+	depends = glibc
+	depends = libguestfs
+	optdepends = flex: kernel compilation
+	optdepends = bison: kernel compilation
+	optdepends = bc: kernel compilation
+	optdepends = perl: kernel compilation
+	optdepends = xz: kernel compression
+	optdepends = libelf: kernel compilation
+	source = anvil-0.0.1.tar.gz::https://github.com/Work-Fort/Anvil/archive/refs/tags/cli-v0.0.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = anvil
