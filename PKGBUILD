@@ -7,7 +7,7 @@
 # Based on https://gitlab.archlinux.org/archlinux/packaging/packages/electrum/-/blob/6d9acc129748edcd352f41f33e98c0cee8637fc5/PKGBUILD by Santiago Torres-Arias <santiago@archlinux.org>
 
 pkgname=electrum-git
-pkgver=4.6.2.r193.g30d34238e
+pkgver=4.7.1.r132.g3695e00f4
 pkgrel=1
 pkgdesc="Lightweight Bitcoin wallet"
 arch=('any')
@@ -32,6 +32,8 @@ depends=(
          'python-cryptography'
          'python-requests'
          'python-six'
+         'python-polib'
+         'python-unidiff'
          'protobuf'
          'python-protobuf'
          'python-pyaes'
@@ -133,7 +135,7 @@ build() {
 
 check() {
   cd ${pkgname%-git}
-  pytest
+  pytest --ignore=electrum/locale/llm_proofreader/test_llm_proofreader.py #Ignore LLM dependent test
 }
 
 package() {
