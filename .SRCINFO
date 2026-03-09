@@ -1,0 +1,14 @@
+pkgbase = usign
+	pkgdesc = Lightweight signify-compatible ed25519 signing and verification tool used in OpenWrt
+	pkgver = r15.gc4c72b1
+	pkgrel = 1
+	url = https://git.openwrt.org/project/usign.git
+	arch = x86_64
+	arch = aarch64
+	license = ISC
+	makedepends = git
+	makedepends = cmake
+	source = usign::git+https://git.openwrt.org/project/usign.git#commit=c4c72b1b07945ee192361dc751291a7c98d6adcd
+	b2sums = SKIP
+
+pkgname = usign
