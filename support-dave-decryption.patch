@@ -1,0 +1,55 @@
+From b8b3d1d05a36b8999b847ebac32f63525a8b1f20 Mon Sep 17 00:00:00 2001
+From: rdphillips7 <110197609+rdphillips7@users.noreply.github.com>
+Date: Sat, 7 Mar 2026 01:16:19 -0500
+Subject: [PATCH] Update opus.py
+
+Added support for DAVE decryption
+---
+ discord/ext/voice_recv/opus.py | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/discord/ext/voice_recv/opus.py b/discord/ext/voice_recv/opus.py
+index a435b19..c5b20ec 100644
+--- a/discord/ext/voice_recv/opus.py
++++ b/discord/ext/voice_recv/opus.py
+@@ -11,6 +11,7 @@
+ from .utils import add_wrapped
+ 
+ from discord.opus import Decoder
++from davey import MediaType
+ 
+ if TYPE_CHECKING:
+     from typing import Optional, Tuple, Dict, Callable, Any
+@@ -54,6 +55,9 @@ def __init__(self, router: PacketRouter, ssrc: int):
+         self._buffer: JitterBuffer = JitterBuffer()
+         self._cached_id: Optional[int] = None
+ 
++        self.vc: VoiceRecvClient = self.sink.voice_client
++        self.vc._connection.dave_session.set_passthrough_mode(True, 10)
++
+         self._last_seq: int = -1
+         self._last_ts: int = -1
+ 
+@@ -131,15 +135,19 @@ def _make_fakepacket(self) -> FakePacket:
+ 
+     def _process_packet(self, packet: AudioPacket) -> VoiceData:
+         pcm = None
+-        if not self.sink.wants_opus():
+-            packet, pcm = self._decode_packet(packet)
+-
++        
+         member = self._get_cached_member()
+ 
+         if member is None:
+             self._cached_id = self.sink.voice_client._get_id_from_ssrc(self.ssrc)  # type: ignore
+             member = self._get_cached_member()
+ 
++        #DAVE Decrypt
++        packet.decrypted_data = self.vc._connection.dave_session.decrypt(member.id, MediaType.audio, bytes(packet.decrypted_data))
++
++        if not self.sink.wants_opus():
++            packet, pcm = self._decode_packet(packet)
++
+         data = VoiceData(packet, member, pcm=pcm)
+         self._last_seq = packet.sequence
+         self._last_ts = packet.timestamp

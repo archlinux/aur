@@ -2,7 +2,7 @@
 _pkgname=discord-ext-voice-recv
 pkgname=python-discord-ext-voice-recv-git
 pkgver=r180.ac04ea7 # This is a placeholder, pkgver() will update it
-pkgrel=1
+pkgrel=2
 pkgdesc="Experimental voice receive extension for discord.py (Git version)"
 arch=('any')
 url="https://github.com/imayhaveborkedit/discord-ext-voice-recv"
@@ -12,9 +12,11 @@ makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setu
 provides=("python-discord-ext-voice-recv")
 conflicts=("python-discord-ext-voice-recv")
 source=("git+https://github.com/imayhaveborkedit/discord-ext-voice-recv.git"
-        "fix-OpusError.patch")
+        "fix-OpusError.patch"
+        "support-dave-decryption.patch")
 sha256sums=('SKIP'
-            '5e30bc15ef31a184eaef08861585b32c1107a21a3cf13bc32710489572bab06f')
+            '5e30bc15ef31a184eaef08861585b32c1107a21a3cf13bc32710489572bab06f'
+            '5c98787e3f61bd3bf1ae3a64d1db0fe933bfd1c8ff20cf343b731e4258471e1b')
 
 pkgver() {
     cd "$_pkgname"
@@ -31,6 +33,7 @@ prepare() {
     cd "$_pkgname"
     # Apply patch to fix OpusError
     patch -p1 -i "$srcdir/fix-OpusError.patch"
+    patch -p1 -i "$srcdir/support-dave-decryption.patch"
 }
 
 build() {
