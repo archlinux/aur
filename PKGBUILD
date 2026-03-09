@@ -2,7 +2,7 @@
 pkgname=falcond-gui
 _app_id=com.pikaos.falcondgui
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK4/LibAdwaita application to control and monitor the Falcond gaming optimization daemon."
 arch=('x86_64')
 url="https://git.pika-os.com/general-packages/falcond-gui"
@@ -38,7 +38,7 @@ check() {
   export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen
 
-  desktop-file-validate "res/$pkgname.desktop"
+  desktop-file-validate "res/${_app_id}.desktop"
 }
 
 package() {
