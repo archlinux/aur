@@ -1,6 +1,6 @@
 pkgbase = coolerdash-git
 	pkgdesc = Plug-in for CoolerControl that extends the LCD functionality with additional features
-	pkgver = 2.2.6.r0.g1193c8a
+	pkgver = 3.0.1.r0.g23272ff
 	pkgrel = 1
 	url = https://github.com/damachine/coolerdash
 	install = coolerdash.install
@@ -14,13 +14,12 @@ pkgbase = coolerdash-git
 	depends = coolercontrol
 	depends = jansson
 	depends = libcurl-gnutls
-	depends = libsodium
 	depends = ttf-roboto
 	provides = coolerdash
 	conflicts = coolerdash
 	replaces = coolerdash
 	backup = etc/coolercontrol/plugins/coolerdash/config.json
-	source = coolerdash-git::git+https://github.com/damachine/coolerdash.git#commit=1193c8a5f9de6a8e92b6b77986693d4a64c084c5
+	source = coolerdash-git::git+https://github.com/damachine/coolerdash.git#commit=23272ffac376be829580fe723c8227eb191cfbd4
 	sha256sums = SKIP
 
 pkgname = coolerdash-git

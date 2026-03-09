@@ -1,7 +1,7 @@
 # Maintainer: damachin3 (damachine3 at proton dot me)
 # Website: https://github.com/damachine/coolerdash
 pkgname=coolerdash-git
-pkgver=2.2.6.r0.g1193c8a
+pkgver=3.0.1.r0.g23272ff
 pkgrel=1
 provides=('coolerdash')
 replaces=('coolerdash')
@@ -10,11 +10,11 @@ pkgdesc="Plug-in for CoolerControl that extends the LCD functionality with addit
 arch=('x86_64')
 url="https://github.com/damachine/coolerdash"
 license=('MIT')
-depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'libsodium' 'ttf-roboto')
+depends=('cairo' 'coolercontrol' 'jansson' 'libcurl-gnutls' 'ttf-roboto')
 makedepends=('gcc' 'make' 'pkg-config' 'git')
 backup=('etc/coolercontrol/plugins/coolerdash/config.json')
 install=coolerdash.install
-_commit=1193c8a5f9de6a8e92b6b77986693d4a64c084c5
+_commit=23272ffac376be829580fe723c8227eb191cfbd4
 source=("coolerdash-git::git+https://github.com/damachine/coolerdash.git#commit=${_commit}")
 sha256sums=('SKIP') # SKIP for git repo source builds
 
