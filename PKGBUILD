@@ -1,7 +1,7 @@
 # Maintainer: Alexis Maiquez <aur@almamu.com>
 pkgname=linux-wallpaperengine-core-git
 _pkgname=linux-wallpaperengine
-pkgver=r600.c2e3f89
+pkgver=r598.0b1a3ee
 pkgrel=1
 pkgdesc="linux-wallpaperengine backend code, handles rendering of wallpapers for the various frontends out there"
 arch=('x86_64')
@@ -30,7 +30,7 @@ prepare() {
 build() {
     cmake -B build -S "$pkgname" \
         -DCMAKE_BUILD_TYPE='Release' \
-        -DCMAKE_INSTALL_PREFIX="/opt/${_pkgname}" \
+        -DCMAKE_INSTALL_PREFIX="/usr" \
         -Wno-dev \
         -DCMAKE_CXX_FLAGS="-ffat-lto-objects -Wno-builtin-macro-redefined" \
         -DCMAKE_C_FLAGS="-Wno-builtin-macro-redefined"
