@@ -11,12 +11,12 @@ pkgbase = bab-bin
 	provides = bab
 	arch = aarch64
 	source_aarch64 = https://github.com/bab-sh/bab/releases/download/v0.7.9/bab_0.7.9_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 7ce334e232cded2a939381c716ad470c1dc05e0096b03b262df78125c8414f8f
+	sha256sums_aarch64 = e35ef31c2b153a430d6fc720d0631f45900b6373c3b6ccbe84c95676c9f3e8da
 	arch = armv7h
 	source_armv7h = https://github.com/bab-sh/bab/releases/download/v0.7.9/bab_0.7.9_Linux_armv7.tar.gz
-	sha256sums_armv7h = e406cdc3f0b76f048dd58d8b3f2dddf197836f4153bda5f995677598a1b01589
+	sha256sums_armv7h = 95f58a66fe5ce970b2987dd1684204ca5defcc31b44ac1a5c34a9ad22261fc70
 	arch = x86_64
 	source_x86_64 = https://github.com/bab-sh/bab/releases/download/v0.7.9/bab_0.7.9_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 7913361f0d4aea8e187784e1ea36c38e8e9e0d97b995aba3caa44ab7a35a3169
+	sha256sums_x86_64 = c0faa0adaf229f6887322014697056ec27ec70622461d8e7d6aeafa06002ffc5
 	
 pkgname = bab-bin
