@@ -1,6 +1,6 @@
 pkgbase = plasmazones-bin
 	pkgdesc = FancyZones-style window tiling for KDE Plasma (binary)
-	pkgver = 1.15.13
+	pkgver = 1.15.14
 	pkgrel = 1
 	url = https://github.com/fuddlesworth/PlasmaZones
 	install = plasmazones.install
@@ -24,7 +24,7 @@ pkgbase = plasmazones-bin
 	provides = plasmazones
 	conflicts = plasmazones
 	conflicts = plasmazones-git
-	source = plasmazones-bin-1.15.13.pkg.tar.zst::https://github.com/fuddlesworth/PlasmaZones/releases/download/v1.15.13/plasmazones-1.15.13-1-x86_64.pkg.tar.zst
-	sha256sums = 26a033b6444a238158263acff800f8dc406c1ad137b88210f473337c9139e561
+	source = plasmazones-bin-1.15.14.pkg.tar.zst::https://github.com/fuddlesworth/PlasmaZones/releases/download/v1.15.14/plasmazones-1.15.14-1-x86_64.pkg.tar.zst
+	sha256sums = 789b1e89564a9fd9a90dcd5425b0a9a3b876e63fd071775f7f638c5182ec9af2
 
 pkgname = plasmazones-bin
