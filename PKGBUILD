@@ -1,6 +1,6 @@
 # Maintainer: mmaher88 <narmer88@gmail.com>
 pkgname=fcitx5-laren
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Arabizi to Arabic transliteration engine for Fcitx5"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt')
 makedepends=('cmake' 'extra-cmake-modules' 'fcitx5')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b0bc6347b1ac46be9eae971626ca6ffece1c550a154d99344395176277e65fb1')
+sha256sums=('2957fb43f5f573719f1e114d1b96e44493b92c83396deea6086cc9821c8e587c')
 
 build() {
     cmake -B build -S "laren-$pkgver" \
