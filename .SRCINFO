@@ -1,0 +1,16 @@
+pkgbase = rivulet-bin
+	pkgdesc = A terminal RSS reader with 3-panel layout, categories, rich preview, and OPML support
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/elpeix/rivulet
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	provides = rivulet
+	conflicts = rivulet
+	source_x86_64 = https://github.com/elpeix/rivulet/releases/download/v1.0.1/rivulet-v1.0.1-x86_64-linux-gnu.tar.gz
+	sha256sums_x86_64 = 6907a1222a35a003669883a3e4b53b608481dc9e0e9f9bed3beedd2e177ba2ed
+	source_aarch64 = https://github.com/elpeix/rivulet/releases/download/v1.0.1/rivulet-v1.0.1-aarch64-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7a0642bfda20cc3f6f544a24fe937caf2c1adc3084c56b9df7c227c2f0b80b4d
+
+pkgname = rivulet-bin
