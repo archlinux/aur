@@ -1,7 +1,7 @@
 pkgbase = native-linux-cachyos-deckify
 	pkgdesc = Linux BORE + Cachy Sauce + Handheld Kernel by CachyOS with other patches and improvements.
 	pkgver = 6.19.6
-	pkgrel = 1
+	pkgrel = 1.1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
 	license = GPL-2.0-only

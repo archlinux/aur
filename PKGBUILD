@@ -1,4 +1,4 @@
-# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-03-09 12:45:17
+# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-03-09 13:08:46
 
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Maintainer: Piotr Gorski <piotrgorski@cachyos.org>
@@ -38,7 +38,7 @@
 # This PKGBUILD read the database kept if it exists
 #
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
-: "${_localmodcfg:=no}"
+: "${_localmodcfg:=yes}"
 
 # Path to the list of used modules
 : "${_localmodcfg_path:="$HOME/.config/modprobed.db"}"
@@ -151,7 +151,7 @@ _minor=6
 #_rcver=rc8
 pkgver=${_major}.${_minor}
 _tagrel=1
-pkgrel=1
+pkgrel=1.1
 #_stable=${_major}.${_minor}
 _stable=${_major}
 #_stablerc=${_major}-${_rcver}
