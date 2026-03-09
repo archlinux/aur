@@ -1,8 +1,8 @@
   # Maintainer: Nauris Steins <me@naurissteins.com>
   pkgname=matuwall
-  pkgver=0.1.5
+  pkgver=0.1.6
   pkgrel=1
-  pkgdesc="GTK4 + libadwaita wallpaper switcher"
+  pkgdesc="A minimal GTK4 + libadwaita wallpaper switcher for Wayland"
   arch=('x86_64')
   url="https://github.com/naurissteins/Matuwall"
   license=('GPL-3.0-or-later')

@@ -1,6 +1,6 @@
 pkgbase = matuwall
-	pkgdesc = GTK4 + libadwaita wallpaper switcher
-	pkgver = 0.1.5
+	pkgdesc = A minimal GTK4 + libadwaita wallpaper switcher for Wayland
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/naurissteins/Matuwall
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = matuwall
 	depends = gtk4-layer-shell
 	optdepends = matugen: apply colors
 	optdepends = awww: apply wallpapers
-	source = matuwall-0.1.5.tar.gz::https://github.com/naurissteins/Matuwall/archive/refs/tags/0.1.5.tar.gz
+	source = matuwall-0.1.6.tar.gz::https://github.com/naurissteins/Matuwall/archive/refs/tags/0.1.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = matuwall
