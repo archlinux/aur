@@ -1,0 +1,17 @@
+pkgbase = salatui-git
+	pkgdesc = Islamic prayer times TUI clock for the terminal
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ramialosmann/salatui
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	optdepends = libnotify: desktop notifications via notify-send
+	provides = salatui
+	conflicts = salatui
+	source = git+https://github.com/ramialosmann/salatui.git
+	sha256sums = SKIP
+
+pkgname = salatui-git
