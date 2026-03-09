@@ -2,14 +2,14 @@
 pkgname=python-google-ai-generativelanguage
 _name=${pkgname#python-}
 _name=${_name//-/_}
-pkgver=0.6.18
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Google Ai Generativelanguage API client library"
 arch=(any)
 url="https://github.com/googleapis/google-cloud-python/tree/main/packages/google-ai-generativelanguage"
 license=(Apache-2.0)
 groups=()
-depends=(python-google-api-core python-google-auth python-proto-plus python-protobuf)
+depends=(python-google-api-core python-google-auth python-grpcio python-proto-plus python-protobuf)
 makedepends=(python-build python-installer python-setuptools)
 provides=()
 conflicts=()
@@ -19,7 +19,7 @@ options=(!emptydirs)
 install=
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz)
 
-sha256sums=('274ba9fcf69466ff64e971d565884434388e523300afd468fc8e3033cd8e606e')
+sha256sums=('17e998094003a566e0fa52249fdd49e8f4c030cebe7fe0c521b40d605aba783e')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
