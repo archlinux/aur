@@ -1,7 +1,7 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=synapse-admin
-pkgver=0.11.2
+pkgver=0.11.4
 pkgrel=1
 pkgdesc="A Matrix administration panel using react-admin"
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=('nginx: reverse-proxy')
 url="https://github.com/Awesome-Technologies/synapse-admin"
 #source=("$pkgname-$pkgver.tar.gz::https://github.com/Awesome-Technologies/synapse-admin/archive/refs/tags/${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}::git+https://github.com/Awesome-Technologies/synapse-admin.git#tag=$pkgver")
-sha512sums=('f362f5e746890ca87f407d5aa0140c86bfcd9fd333672f50d74f6460f890fd65e18915bcb48bcecea113846f933d8e498b9d2a282c35132e16bde49170bab64b')
+sha512sums=('99fe6677a7f774cf3df674bc5dc0082340e94ee64114fef2d5102f42509e5ec3cd0b41aec549586e60436165576c40c009423e6d9c2f6b46a80fe7877ebaf61a')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
