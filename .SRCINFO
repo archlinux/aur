@@ -1,6 +1,6 @@
 pkgbase = relagit-bin
 	pkgdesc = Take back control over your git workflow.
-	pkgver = 0.16.9
+	pkgver = 0.16.10
 	pkgrel = 1
 	url = https://github.com/relagit/relagit
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = relagit-bin
 	depends = libsecret
 	optdepends = libappindicator-gtk3
 	provides = RelaGit
-	source_x86_64 = relagit-bin-0.16.9.deb::https://github.com/relagit/relagit/releases/download/v0.16.9/RelaGit-linux.deb
-	sha256sums_x86_64 = 1fb4324aed3abc06e63a2e5f0f496d760b58daa3205e17a6ba9ba75b46128e51
+	source_x86_64 = relagit-bin-0.16.10.deb::https://github.com/relagit/relagit/releases/download/v0.16.10/RelaGit-linux.deb
+	sha256sums_x86_64 = d1cf86d2bb92abfddf8149102af2a2a5d1c1efa9c12b32457d3fbcd65379b1b3
 
 pkgname = relagit-bin

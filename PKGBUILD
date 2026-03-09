@@ -1,6 +1,6 @@
 # Maintainer: eltonff <https://github.com/eltonfabricio10/>
 pkgname=relagit-bin
-pkgver=0.16.9
+pkgver=0.16.10
 pkgrel=1
 pkgdesc="Take back control over your git workflow."
 arch=("x86_64")
@@ -18,7 +18,7 @@ depends=("gtk3"
          "libsecret")
 optdepends=("libappindicator-gtk3")
 source_x86_64=("$pkgname-$pkgver.deb::$url/releases/download/v${pkgver}/${provides}-linux.deb")
-sha256sums_x86_64=('1fb4324aed3abc06e63a2e5f0f496d760b58daa3205e17a6ba9ba75b46128e51')
+sha256sums_x86_64=('d1cf86d2bb92abfddf8149102af2a2a5d1c1efa9c12b32457d3fbcd65379b1b3')
 
 prepare() {
   bsdtar xf data.tar.xz
