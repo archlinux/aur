@@ -1,12 +1,13 @@
 pkgbase = rjumen-git
-	pkgdesc = Simple python script from github
-	pkgver = r4.ca41d20
+	pkgdesc = GUI currency converter
+	pkgver = r5.c2b157f
 	pkgrel = 1
 	url = https://github.com/rjumen-git/rjumen
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = python
+	depends = python-pyqt5
 	source = git+https://github.com/rjumen-git/rjumen.git
 	md5sums = SKIP
 
