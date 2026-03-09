@@ -1,8 +1,8 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=poutine
-pkgver=1.0.7
-pkgrel=3
+pkgver=1.0.8
+pkgrel=1
 pkgdesc="boostsecurityio/poutine"
 arch=('x86_64' 'aarch64')
 url="https://github.com/boostsecurityio/poutine"
