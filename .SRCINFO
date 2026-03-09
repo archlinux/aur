@@ -1,6 +1,6 @@
 pkgbase = nvm-desktop-git
 	pkgdesc = A version management desktop client for the Nodejs.
-	pkgver = alpha.r1.g6c671d1
+	pkgver = alpha.r0.g8ad318b
 	pkgrel = 1
 	url = https://github.com/1111mp/nvm-desktop
 	arch = any
