@@ -1,21 +1,21 @@
 pkgbase = pdf-over
 	pkgdesc = Graphical tool for creating PAdES conforming PDF signatures
-	pkgver = 4.4.7
-	pkgrel = 2
+	pkgver = 4.4.8
+	pkgrel = 1
 	url = https://technology.a-sit.at/en/pdf-over/
 	arch = x86_64
 	license = custom:EUPL-1.2
 	depends = jre21-openjdk
 	depends = bash
 	optdepends = libfido2: FIDO2 support
-	noextract = pdf-over-4.4.7.jar
+	noextract = pdf-over-4.4.8.jar
 	source = LICENSE
 	source = pdf-over
 	source = PDF-Over.desktop
-	source = pdf-over-4.4.7.jar::https://technology.a-sit.at/wp-content/uploads/2025/10/PDF-Over-4.4.7.jar
+	source = pdf-over-4.4.8.jar::https://technology.a-sit.at/wp-content/uploads/2026/03/PDF-Over-4.4.8.jar
 	sha256sums = 6fc9e709ccbfe0d77fbffa2427a983282be2eb88e47b1cdb49f21a83b4d1e665
 	sha256sums = 9e410f7c97ea480d018f35d96f69ea91e97ce73a79f2a5bb99eaa65846789f70
 	sha256sums = 022c3020d228f843231469cef3fb0272fca875c2545f319dcdc97ee8001188fd
-	sha256sums = af66472d7e9d879687da298ea6006c2ce28dfae12196e0e4f3a61b116cf0d48e
+	sha256sums = fda2465b531ddd0def93261d8eea5fc79db9660ba4d53cfd71d7d3ca1fb2a290
 
 pkgname = pdf-over
