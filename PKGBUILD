@@ -1,27 +1,31 @@
+# Maintainer: Hugh Whelan <brickhousedevelopers@gmail.com>
 pkgname=scidcommunity
 pkgver=5.1.2.44
-pkgrel=69
+pkgrel=70
 pkgdesc="Enhanced fork of Scid chess database with Chess.com/Lichess integration, tablebase lookup, improved search, and additional training features"
 arch=('x86_64')
 url="https://github.com/whelanh/scidCommunity"
 license=('GPL2')
 depends=('tcl' 'tk')
 makedepends=('gcc' 'make' 'git')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/whelanh/scidCommunity/archive/a05338b393e2dcda370617be36c89e521e93675c.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/whelanh/scidCommunity/archive/3696c46722013f52c3f4f418c28a04f9da5046fb .tar.gz")
 sha256sums=('SKIP')  # Safe to skip: integrity verified by commit hash
 
 build() {
-  cd "${srcdir}/scidCommunity-a05338b393e2dcda370617be36c89e521e93675c"
+  cd "${srcdir}/scidCommunity-3696c46722013f52c3f4f418c28a04f9da5046fb "
+  # Configure with runtime paths (will be re-configured in package() for staging)
   ./configure --prefix=/usr
   make all
 }
 
 package() {
-  cd "${srcdir}/scidCommunity-a05338b393e2dcda370617be36c89e521e93675c"
+  cd "${srcdir}/scidCommunity-3696c46722013f52c3f4f418c28a04f9da5046fb "
 
-  # Install data files to staging directory
-  # Note: SHAREDIR/BINDIR include pkgdir for staging, but runtime paths are what matter
-  make install_shared SHAREDIR="${pkgdir}/usr/share/scid"
+  # Re-run configure with staging paths so Makefile uses correct directories
+  ./configure SHAREDIR="${pkgdir}/usr/share/scid" BINDIR="${pkgdir}/usr/bin"
+
+  # Install data files
+  make install_shared
 
   # Copy binary directly to /usr/bin (avoid broken symlink from make install)
   install -Dm755 scidCommunity "${pkgdir}/usr/bin/scidCommunity"
