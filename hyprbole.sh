@@ -2,7 +2,7 @@
 # hyprbole - a Hyprland config manager
 # hi there
 
-FIXES=5 # add +1 whenever you've successfully found a bug and fxed it
+FIXES=7 # add +1 whenever you've successfully found a bug and fxed it
 for _arg in "$@"; do
     [[ "$_arg" == "--fixes" ]] && { printf "successful bug fixes: %d\n" "$FIXES"; exit 0; }
 done
@@ -59,7 +59,7 @@ draw_header() {
 
 draw_footer() {
     printf "\n${MUTED}"; printf '─%.0s' $(seq 1 "$COLS"); printf "${R}\n"
-    printf "${MUTED}  ↑↓ move  enter select  n add  d del  q back${R}\n"
+    printf "${MUTED}  ↑↓ move  enter edit  n add  d del  q back${R}\n"
 }
 
 # config
@@ -353,6 +353,154 @@ edit_line() {
     msg_ok "Updated."
 }
 
+declare -A FIELD_RESULTS
+declare -A FIELD_DRAFTS
+FIELDS_SAVED=0
+
+edit_fields_tui() {
+    local section="$1" title="$2"
+    local -n _fnames="$3"
+    local -n _fdefs="$4"
+    local count=${#_fnames[@]}
+    local sel=0
+    FIELDS_SAVED=0
+
+    local i
+    for (( i=0; i<count; i++ )); do
+        FIELD_DRAFTS["${_fnames[$i]}"]="${_fdefs[$i]}"
+    done
+
+    _draw_field_editor() {
+        draw_header "$title" "edit fields"
+        printf "  ${MUTED}q save  ctrl+q discard  ↑↓ navigate  enter edit${R}\n\n"
+        local j
+        for (( j=0; j<count; j++ )); do
+            local fname="${_fnames[$j]}"
+            local fval="${FIELD_DRAFTS[$fname]}"
+            if (( j == sel )); then
+                printf "${BG_SEL}${ACC}${BOLD}  ❯  ${WHITE}%-25s${MUTED} = ${ACC}%s${R}\n" "$fname" "$fval"
+            else
+                printf "${MUTED}     ${WHITE}%-25s${MUTED} = ${WHITE}%s${R}\n" "$fname" "$fval"
+            fi
+        done
+        printf "\n${MUTED}"; printf '─%.0s' $(seq 1 "$COLS"); printf "${R}\n"
+        printf "${MUTED}  q save  ctrl+q discard${R}\n"
+    }
+
+    _hide_cursor
+    while true; do
+        _draw_field_editor
+        local k1="" k2="" k3=""
+        IFS= read -rsn1 k1 < /dev/tty
+        local k1hex; k1hex=$(printf '%s' "$k1" | od -An -tx1 | tr -d ' \n')
+
+        if [[ "$k1hex" == "03" || "$k1hex" == "11" ]]; then
+            flush_stdin; _show_cursor; FIELDS_SAVED=0; return
+        fi
+
+        if [[ "$k1" == $'\x1b' ]]; then
+            IFS= read -rsn1 -t 0.15 k2 < /dev/tty || k2=""
+            if [[ "$k2" == "[" ]]; then
+                IFS= read -rsn1 -t 0.15 k3 < /dev/tty || k3=""
+                case "$k3" in
+                    A) (( sel > 0 )) && (( sel-- )) ;;
+                    B) (( sel < count-1 )) && (( sel++ )) ;;
+                esac
+            elif [[ -z "$k2" ]]; then
+                flush_stdin; _show_cursor; FIELDS_SAVED=0; return
+            fi
+            continue
+        fi
+
+        case "$k1" in
+            k|K) (( sel > 0 )) && (( sel-- )) ;;
+            j|J) (( sel < count-1 )) && (( sel++ )) ;;
+            q|Q)
+                flush_stdin; _show_cursor; FIELDS_SAVED=1
+                for (( i=0; i<count; i++ )); do
+                    FIELD_RESULTS["${_fnames[$i]}"]="${FIELD_DRAFTS[${_fnames[$i]}]}"
+                done
+                return ;;
+            ""|" ")
+                local fname="${_fnames[$sel]}"
+                _show_cursor
+                draw_header "$title" "edit / $fname"
+                printf "\n"
+                prompt_input "$fname" "${FIELD_DRAFTS[$fname]}"; printf "\n"
+                if ! cancelled; then
+                    FIELD_DRAFTS["$fname"]="$INPUT_RESULT"
+                fi
+                _hide_cursor
+                ;;
+        esac
+    done
+}
+
+section_add_custom() {
+    local -a sections=("KEYBINDS" "MONITORS" "WORKSPACES" "WINDOWRULES" "GENERAL" "DECORATION" "ANIMATIONS" "INPUT" "MISC" "EXEC" "ENV")
+    draw_header "add custom line" "pick section"
+    printf "\n"
+    prompt_select "Section" "${sections[@]}"
+    cancelled && { msg_cancel; return; }
+    local sec="$PSEL_RESULT"; printf "\n\n"
+
+    draw_header "add custom line" "$sec"
+    printf "\n  ${MUTED}raw line will be added as-is${R}\n\n"
+    prompt_input "line"; printf "\n"
+    cancelled && { msg_cancel; return; }
+    local line="$INPUT_RESULT"
+    [[ -z "$line" ]] && { msg_err "line cannot be empty."; return; }
+    make_backup
+    append_to_section "$sec" "$line"
+    msg_ok "Added to $sec."
+}
+
+open_files_menu() {
+    local editor=""
+    if command -v yazi &>/dev/null; then editor="yazi"
+    elif command -v nvim &>/dev/null; then editor="nvim"
+    elif command -v vim &>/dev/null; then editor="vim"
+    elif command -v nano &>/dev/null; then editor="nano"
+    fi
+
+    while true; do
+        local -a menu=("view hyprland.conf" "view hyprbole-managed.conf")
+        [[ -n "$editor" ]] && menu+=("open hyprland.conf in $editor" "open hyprbole-managed.conf in $editor")
+        menu+=("back")
+
+        pick_list "FILES" "$HYPR_DIR" "${menu[@]}"
+        case "$PICK_ACTION" in
+            quit) return ;;
+            select)
+                case "$PICKED_VAL" in
+                    "view hyprland.conf")           _view_file "$HYPR_CONF" "hyprland.conf" ;;
+                    "view hyprbole-managed.conf")   _view_file "$MANAGED_CONF" "hyprbole-managed.conf" ;;
+                    "open hyprland.conf in $editor")
+                        _rmcup; _show_cursor
+                        $editor "$HYPR_CONF"
+                        _smcup; _hide_cursor ;;
+                    "open hyprbole-managed.conf in $editor")
+                        _rmcup; _show_cursor
+                        $editor "$MANAGED_CONF"
+                        _smcup; _hide_cursor ;;
+                    "back") return ;;
+                esac ;;
+        esac
+    done
+}
+
+_view_file() {
+    local path="$1" name="$2"
+    draw_header "view" "$name"
+    printf "\n"
+    local n=1
+    while IFS= read -r line; do
+        printf "  ${MUTED}%3d${R}  ${WHITE}%s${R}\n" $n "$line"; (( n++ ))
+    done < "$path"
+    printf "\n${MUTED}  press any key...${R}"; IFS= read -rsn1 < /dev/tty
+}
+
+
 # keybinds
 
 section_keybinds() {
@@ -395,13 +543,25 @@ add_keybind() {
 }
 
 edit_keybind() {
-    draw_header "KEYBINDS" "edit"
-    printf "\n  ${MUTED}%s${R}\n\n" "$1"
-    prompt_input "new bind line" "$1"; printf "\n"
-    cancelled && { msg_cancel; return; }
-    local new="$INPUT_RESULT"
-    [[ -z "$new" || "$new" == "$1" ]] && return
-    make_backup; delete_from_section "KEYBINDS" "$1"; append_to_section "KEYBINDS" "$new"
+    local old="$1"
+    # parse: bind = MOD, KEY, DISPATCHER, ARGS
+    local rest="${old#*= }"
+    local mod;        mod=$(cut -d',' -f1 <<< "$rest" | xargs)
+    local key;        key=$(cut -d',' -f2 <<< "$rest" | xargs)
+    local dispatcher; dispatcher=$(cut -d',' -f3 <<< "$rest" | xargs)
+    local args;       args=$(cut -d',' -f4- <<< "$rest" | xargs)
+
+    local -a fnames=(modifier key dispatcher args)
+    local -a fdefs=("$mod" "$key" "$dispatcher" "$args")
+
+    edit_fields_tui "KEYBINDS" "KEYBINDS" fnames fdefs
+    [[ $FIELDS_SAVED -eq 0 ]] && { msg_cancel; return; }
+
+    local new="bind = ${FIELD_RESULTS[modifier]}, ${FIELD_RESULTS[key]}, ${FIELD_RESULTS[dispatcher]}, ${FIELD_RESULTS[args]}"
+    [[ "$new" == "$old" ]] && return
+    make_backup
+    delete_from_section "KEYBINDS" "$old"
+    append_to_section "KEYBINDS" "$new"
     msg_ok "Updated."
 }
 
@@ -415,9 +575,31 @@ section_monitors() {
             quit)   return ;;
             new)    add_monitor ;;
             delete) make_backup; delete_from_section "MONITORS" "$PICKED_VAL"; msg_ok "Removed." ;;
-            select) edit_line "MONITORS" "$PICKED_VAL" ;;
+            select) edit_monitor "$PICKED_VAL" ;;
         esac
     done
+}
+
+edit_monitor() {
+    local old="$1"
+    local rest="${old#*= }"
+    local name; name=$(cut -d',' -f1 <<< "$rest" | xargs)
+    local res;  res=$(cut -d',' -f2 <<< "$rest" | xargs)
+    local pos;  pos=$(cut -d',' -f3 <<< "$rest" | xargs)
+    local scale; scale=$(cut -d',' -f4 <<< "$rest" | xargs)
+
+    local -a fnames=(name resolution position scale)
+    local -a fdefs=("$name" "$res" "$pos" "$scale")
+
+    edit_fields_tui "MONITORS" "MONITORS" fnames fdefs
+    [[ $FIELDS_SAVED -eq 0 ]] && { msg_cancel; return; }
+
+    local new="monitor = ${FIELD_RESULTS[name]}, ${FIELD_RESULTS[resolution]}, ${FIELD_RESULTS[position]}, ${FIELD_RESULTS[scale]}"
+    [[ "$new" == "$old" ]] && return
+    make_backup
+    delete_from_section "MONITORS" "$old"
+    append_to_section "MONITORS" "$new"
+    msg_ok "Updated."
 }
 
 add_monitor() {
@@ -455,9 +637,35 @@ section_workspaces() {
             quit)   return ;;
             new)    add_workspace ;;
             delete) make_backup; delete_from_section "WORKSPACES" "$PICKED_VAL"; msg_ok "Removed." ;;
-            select) edit_line "WORKSPACES" "$PICKED_VAL" ;;
+            select) edit_workspace "$PICKED_VAL" ;;
         esac
     done
+}
+
+edit_workspace() {
+    local old="$1"
+    # workspace = NUM, rules...  or  workspace = special:NAME
+    local rest="${old#*= }"
+    local num;   num=$(cut -d',' -f1 <<< "$rest" | xargs)
+    local rules; rules=$(cut -d',' -f2- <<< "$rest" | xargs)
+
+    local -a fnames=(workspace rules)
+    local -a fdefs=("$num" "$rules")
+
+    edit_fields_tui "WORKSPACES" "WORKSPACES" fnames fdefs
+    [[ $FIELDS_SAVED -eq 0 ]] && { msg_cancel; return; }
+
+    local new
+    if [[ -n "${FIELD_RESULTS[rules]}" ]]; then
+        new="workspace = ${FIELD_RESULTS[workspace]}, ${FIELD_RESULTS[rules]}"
+    else
+        new="workspace = ${FIELD_RESULTS[workspace]}"
+    fi
+    [[ "$new" == "$old" ]] && return
+    make_backup
+    delete_from_section "WORKSPACES" "$old"
+    append_to_section "WORKSPACES" "$new"
+    msg_ok "Updated."
 }
 
 add_workspace() {
@@ -515,8 +723,7 @@ add_workspace() {
     msg_ok "Added: $line"
 }
 
-# ── window rules ──────────────────────────────────────────
-
+# window rules
 section_windowrules() {
     while true; do
         local -a items; mapfile -t items < <(read_section "WINDOWRULES")
@@ -525,9 +732,30 @@ section_windowrules() {
             quit)   return ;;
             new)    add_windowrule ;;
             delete) make_backup; delete_from_section "WINDOWRULES" "$PICKED_VAL"; msg_ok "Removed." ;;
-            select) edit_line "WINDOWRULES" "$PICKED_VAL" ;;
+            select) edit_windowrule "$PICKED_VAL" ;;
         esac
     done
+}
+
+edit_windowrule() {
+    local old="$1"
+    # windowrulev2 = RULE, MATCHER
+    local rest="${old#*= }"
+    local rule;    rule=$(cut -d',' -f1 <<< "$rest" | xargs)
+    local matcher; matcher=$(cut -d',' -f2- <<< "$rest" | xargs)
+
+    local -a fnames=(rule matcher)
+    local -a fdefs=("$rule" "$matcher")
+
+    edit_fields_tui "WINDOWRULES" "WINDOWRULES" fnames fdefs
+    [[ $FIELDS_SAVED -eq 0 ]] && { msg_cancel; return; }
+
+    local new="windowrulev2 = ${FIELD_RESULTS[rule]}, ${FIELD_RESULTS[matcher]}"
+    [[ "$new" == "$old" ]] && return
+    make_backup
+    delete_from_section "WINDOWRULES" "$old"
+    append_to_section "WINDOWRULES" "$new"
+    msg_ok "Updated."
 }
 
 add_windowrule() {
@@ -561,67 +789,64 @@ add_windowrule() {
 # general
 
 section_general() {
-    draw_header "GENERAL" "gaps, borders, layout"
-    printf "\n"
     local cur; cur=$(read_section "GENERAL")
-    if [[ -n "$cur" ]]; then
-        while IFS= read -r l; do printf "  ${MUTED}%s${R}\n" "$l"; done <<< "$cur"
-        printf "\n"
-    fi
+    local -a fnames=(gaps_in gaps_out border_size col.active_border col.inactive_border layout)
+    local -a fdefs=(5 10 2 "0xff89b4fa" "0xff313244" "dwindle")
 
-    prompt_input "gaps_in"            "5";          printf "\n"; cancelled && { msg_cancel; return; }; local gaps_in="$INPUT_RESULT"
-    prompt_input "gaps_out"           "10";         printf "\n"; cancelled && { msg_cancel; return; }; local gaps_out="$INPUT_RESULT"
-    prompt_input "border_size"        "2";          printf "\n"; cancelled && { msg_cancel; return; }; local border_size="$INPUT_RESULT"
-    prompt_input "col.active_border"  "0xff89b4fa"; printf "\n"; cancelled && { msg_cancel; return; }; local col_active="$INPUT_RESULT"
-    prompt_input "col.inactive_border" "0xff313244"; printf "\n"; cancelled && { msg_cancel; return; }; local col_inactive="$INPUT_RESULT"
-    prompt_select "layout" "dwindle" "master"; cancelled && { msg_cancel; return; }
-    local layout="$PSEL_RESULT"; printf "\n\n"
+    # seed defaults from current config
+    local i
+    for (( i=0; i<${#fnames[@]}; i++ )); do
+        local k="${fnames[$i]}"
+        local v; v=$(printf '%s\n' "$cur" | grep -E "^[[:space:]]*${k}[[:space:]]*=" | head -1 | sed 's/.*=[[:space:]]*//' | xargs)
+        [[ -n "$v" ]] && fdefs[$i]="$v"
+    done
+
+    edit_fields_tui "GENERAL" "GENERAL" fnames fdefs
+    [[ $FIELDS_SAVED -eq 0 ]] && { msg_cancel; return; }
 
     make_backup
     write_section "GENERAL" "general {
-    gaps_in = $gaps_in
-    gaps_out = $gaps_out
-    border_size = $border_size
-    col.active_border = $col_active
-    col.inactive_border = $col_inactive
-    layout = $layout
+    gaps_in = ${FIELD_RESULTS[gaps_in]}
+    gaps_out = ${FIELD_RESULTS[gaps_out]}
+    border_size = ${FIELD_RESULTS[border_size]}
+    col.active_border = ${FIELD_RESULTS[col.active_border]}
+    col.inactive_border = ${FIELD_RESULTS[col.inactive_border]}
+    layout = ${FIELD_RESULTS[layout]}
 }"
     msg_ok "Saved."
 }
 
-# ── decoration ────────────────────────────────────────────
-
+# decoration
 section_decoration() {
-    draw_header "DECORATION" "rounding, blur, shadows, opacity"
-    printf "\n"
+    local cur; cur=$(read_section "DECORATION")
+    local -a fnames=(rounding active_opacity inactive_opacity drop_shadow shadow_range col.shadow blur.enabled blur.size blur.passes dim_inactive dim_strength)
+    local -a fdefs=(10 1.0 0.95 true 12 "0xee1a1a2e" true 6 3 false 0.5)
 
-    prompt_input "rounding"         "10";         printf "\n"; cancelled && { msg_cancel; return; }; local rounding="$INPUT_RESULT"
-    prompt_input "active_opacity"   "1.0";        printf "\n"; cancelled && { msg_cancel; return; }; local active_op="$INPUT_RESULT"
-    prompt_input "inactive_opacity" "0.95";       printf "\n"; cancelled && { msg_cancel; return; }; local inactive_op="$INPUT_RESULT"
-    prompt_select "drop_shadow" "true" "false";   cancelled && { msg_cancel; return; }; local shadow="$PSEL_RESULT"; printf "\n\n"
-    prompt_input "shadow_range"     "12";         printf "\n"; cancelled && { msg_cancel; return; }; local shadow_range="$INPUT_RESULT"
-    prompt_input "col.shadow"       "0xee1a1a2e"; printf "\n"; cancelled && { msg_cancel; return; }; local shadow_color="$INPUT_RESULT"
-    prompt_select "blur.enabled" "true" "false";  cancelled && { msg_cancel; return; }; local blur="$PSEL_RESULT"; printf "\n\n"
-    prompt_input "blur.size"        "6";          printf "\n"; cancelled && { msg_cancel; return; }; local blur_size="$INPUT_RESULT"
-    prompt_input "blur.passes"      "3";          printf "\n"; cancelled && { msg_cancel; return; }; local blur_passes="$INPUT_RESULT"
-    prompt_select "dim_inactive" "false" "true";  cancelled && { msg_cancel; return; }; local dim="$PSEL_RESULT"; printf "\n\n"
-    prompt_input "dim_strength"     "0.5";        printf "\n"; cancelled && { msg_cancel; return; }; local dim_str="$INPUT_RESULT"
+    local i
+    for (( i=0; i<${#fnames[@]}; i++ )); do
+        local k="${fnames[$i]}"
+        local v; v=$(printf '%s\n' "$cur" | grep -E "^[[:space:]]*${k//./\.}[[:space:]]*=" | head -1 | sed 's/.*=[[:space:]]*//' | xargs)
+        [[ -n "$v" ]] && fdefs[$i]="$v"
+    done
+
+    edit_fields_tui "DECORATION" "DECORATION" fnames fdefs
+    [[ $FIELDS_SAVED -eq 0 ]] && { msg_cancel; return; }
 
     make_backup
     write_section "DECORATION" "decoration {
-    rounding = $rounding
-    active_opacity = $active_op
-    inactive_opacity = $inactive_op
-    drop_shadow = $shadow
-    shadow_range = $shadow_range
-    col.shadow = $shadow_color
-    dim_inactive = $dim
-    dim_strength = $dim_str
+    rounding = ${FIELD_RESULTS[rounding]}
+    active_opacity = ${FIELD_RESULTS[active_opacity]}
+    inactive_opacity = ${FIELD_RESULTS[inactive_opacity]}
+    drop_shadow = ${FIELD_RESULTS[drop_shadow]}
+    shadow_range = ${FIELD_RESULTS[shadow_range]}
+    col.shadow = ${FIELD_RESULTS[col.shadow]}
+    dim_inactive = ${FIELD_RESULTS[dim_inactive]}
+    dim_strength = ${FIELD_RESULTS[dim_strength]}
 
     blur {
-        enabled = $blur
-        size = $blur_size
-        passes = $blur_passes
+        enabled = ${FIELD_RESULTS[blur.enabled]}
+        size = ${FIELD_RESULTS[blur.size]}
+        passes = ${FIELD_RESULTS[blur.passes]}
         new_optimizations = true
     }
 }"
@@ -685,34 +910,34 @@ $inner
 # input
 
 section_input() {
-    draw_header "INPUT" "keyboard, mouse, touchpad"
-    printf "\n"
+    local cur; cur=$(read_section "INPUT")
+    local -a fnames=(kb_layout kb_variant kb_options repeat_rate repeat_delay sensitivity accel_profile follow_mouse natural_scroll tap-to-click)
+    local -a fdefs=(us "" "" 50 300 0 flat 1 false true)
 
-    prompt_input "kb_layout"    "us";  printf "\n"; cancelled && { msg_cancel; return; }; local kb_layout="$INPUT_RESULT"
-    prompt_input "kb_variant"   "";    printf "\n"; cancelled && { msg_cancel; return; }; local kb_variant="$INPUT_RESULT"
-    prompt_input "kb_options"   "";    printf "\n"; cancelled && { msg_cancel; return; }; local kb_options="$INPUT_RESULT"
-    prompt_input "repeat_rate"  "50";  printf "\n"; cancelled && { msg_cancel; return; }; local repeat_rate="$INPUT_RESULT"
-    prompt_input "repeat_delay" "300"; printf "\n"; cancelled && { msg_cancel; return; }; local repeat_delay="$INPUT_RESULT"
-    prompt_input "sensitivity"  "0";   printf "\n"; cancelled && { msg_cancel; return; }; local sensitivity="$INPUT_RESULT"
-    prompt_select "accel_profile" "flat" "adaptive";          cancelled && { msg_cancel; return; }; local accel="$PSEL_RESULT";  printf "\n\n"
-    prompt_select "follow_mouse" "1" "0" "2";                 cancelled && { msg_cancel; return; }; local follow="$PSEL_RESULT"; printf "\n\n"
-    prompt_select "natural_scroll (touchpad)" "false" "true"; cancelled && { msg_cancel; return; }; local nat="$PSEL_RESULT";   printf "\n\n"
-    prompt_select "tap-to-click (touchpad)" "true" "false";   cancelled && { msg_cancel; return; }; local tap="$PSEL_RESULT";   printf "\n\n"
+    local i
+    for (( i=0; i<${#fnames[@]}; i++ )); do
+        local k="${fnames[$i]}"
+        local v; v=$(printf '%s\n' "$cur" | grep -E "^[[:space:]]*${k}[[:space:]]*=" | head -1 | sed 's/.*=[[:space:]]*//' | xargs)
+        [[ -n "$v" ]] && fdefs[$i]="$v"
+    done
+
+    edit_fields_tui "INPUT" "INPUT" fnames fdefs
+    [[ $FIELDS_SAVED -eq 0 ]] && { msg_cancel; return; }
 
     make_backup
     write_section "INPUT" "input {
-    kb_layout = $kb_layout
-    kb_variant = $kb_variant
-    kb_options = $kb_options
-    repeat_rate = $repeat_rate
-    repeat_delay = $repeat_delay
-    sensitivity = $sensitivity
-    accel_profile = $accel
-    follow_mouse = $follow
+    kb_layout = ${FIELD_RESULTS[kb_layout]}
+    kb_variant = ${FIELD_RESULTS[kb_variant]}
+    kb_options = ${FIELD_RESULTS[kb_options]}
+    repeat_rate = ${FIELD_RESULTS[repeat_rate]}
+    repeat_delay = ${FIELD_RESULTS[repeat_delay]}
+    sensitivity = ${FIELD_RESULTS[sensitivity]}
+    accel_profile = ${FIELD_RESULTS[accel_profile]}
+    follow_mouse = ${FIELD_RESULTS[follow_mouse]}
 
     touchpad {
-        natural_scroll = $nat
-        tap-to-click = $tap
+        natural_scroll = ${FIELD_RESULTS[natural_scroll]}
+        tap-to-click = ${FIELD_RESULTS[tap-to-click]}
         drag_lock = false
     }
 }"
@@ -722,21 +947,27 @@ section_input() {
 # misc
 
 section_misc() {
-    draw_header "MISC" "vrr, dpms, logo, splash"
-    printf "\n"
-    prompt_select "disable_hyprland_logo"    "true" "false"; cancelled && { msg_cancel; return; }; local logo="$PSEL_RESULT";   printf "\n\n"
-    prompt_select "disable_splash_rendering" "true" "false"; cancelled && { msg_cancel; return; }; local splash="$PSEL_RESULT"; printf "\n\n"
-    prompt_select "vrr" "0 (off)" "1 (on)" "2 (fullscreen only)";
-    cancelled && { msg_cancel; return; }; local vrr="${PSEL_RESULT%% *}"; printf "\n\n"
-    prompt_select "mouse_moves_enables_dpms" "true" "false"; cancelled && { msg_cancel; return; }; local dpms="$PSEL_RESULT";   printf "\n\n"
-    prompt_select "animate_manual_resizes"   "false" "true"; cancelled && { msg_cancel; return; }; local amr="$PSEL_RESULT";    printf "\n\n"
+    local cur; cur=$(read_section "MISC")
+    local -a fnames=(disable_hyprland_logo disable_splash_rendering vrr mouse_moves_enables_dpms animate_manual_resizes)
+    local -a fdefs=(true true 0 true false)
+
+    local i
+    for (( i=0; i<${#fnames[@]}; i++ )); do
+        local k="${fnames[$i]}"
+        local v; v=$(printf '%s\n' "$cur" | grep -E "^[[:space:]]*${k}[[:space:]]*=" | head -1 | sed 's/.*=[[:space:]]*//' | xargs)
+        [[ -n "$v" ]] && fdefs[$i]="$v"
+    done
+
+    edit_fields_tui "MISC" "MISC" fnames fdefs
+    [[ $FIELDS_SAVED -eq 0 ]] && { msg_cancel; return; }
+
     make_backup
     write_section "MISC" "misc {
-    disable_hyprland_logo = $logo
-    disable_splash_rendering = $splash
-    vrr = $vrr
-    mouse_moves_enables_dpms = $dpms
-    animate_manual_resizes = $amr
+    disable_hyprland_logo = ${FIELD_RESULTS[disable_hyprland_logo]}
+    disable_splash_rendering = ${FIELD_RESULTS[disable_splash_rendering]}
+    vrr = ${FIELD_RESULTS[vrr]}
+    mouse_moves_enables_dpms = ${FIELD_RESULTS[mouse_moves_enables_dpms]}
+    animate_manual_resizes = ${FIELD_RESULTS[animate_manual_resizes]}
 }"
     msg_ok "Saved."
 }
@@ -761,7 +992,7 @@ section_exec() {
                 make_backup; append_to_section "EXEC" "$etype = $cmd"
                 msg_ok "Added: $etype = $cmd" ;;
             delete) make_backup; delete_from_section "EXEC" "$PICKED_VAL"; msg_ok "Removed." ;;
-            select) edit_line "EXEC" "$PICKED_VAL" ;;
+            select) edit_exec "$PICKED_VAL" ;;
         esac
     done
 }
@@ -787,9 +1018,50 @@ section_env() {
                 make_backup; append_to_section "ENV" "env = $var, $val"
                 msg_ok "Added: env = $var, $val" ;;
             delete) make_backup; delete_from_section "ENV" "$PICKED_VAL"; msg_ok "Removed." ;;
-            select) edit_line "ENV" "$PICKED_VAL" ;;
+            select) edit_env "$PICKED_VAL" ;;
         esac
     done
+}
+
+edit_exec() {
+    local old="$1"
+    # exec-once = CMD  or  exec = CMD
+    local etype; etype=$(cut -d'=' -f1 <<< "$old" | xargs)
+    local cmd;   cmd=$(cut -d'=' -f2- <<< "$old" | xargs)
+
+    local -a fnames=(type command)
+    local -a fdefs=("$etype" "$cmd")
+
+    edit_fields_tui "AUTOSTART" "AUTOSTART" fnames fdefs
+    [[ $FIELDS_SAVED -eq 0 ]] && { msg_cancel; return; }
+
+    local new="${FIELD_RESULTS[type]} = ${FIELD_RESULTS[command]}"
+    [[ "$new" == "$old" ]] && return
+    make_backup
+    delete_from_section "EXEC" "$old"
+    append_to_section "EXEC" "$new"
+    msg_ok "Updated."
+}
+
+edit_env() {
+    local old="$1"
+    # env = VAR, VALUE
+    local rest="${old#*= }"
+    local var;   var=$(cut -d',' -f1 <<< "$rest" | xargs)
+    local val;   val=$(cut -d',' -f2- <<< "$rest" | xargs)
+
+    local -a fnames=(variable value)
+    local -a fdefs=("$var" "$val")
+
+    edit_fields_tui "ENV VARS" "ENV VARS" fnames fdefs
+    [[ $FIELDS_SAVED -eq 0 ]] && { msg_cancel; return; }
+
+    local new="env = ${FIELD_RESULTS[variable]}, ${FIELD_RESULTS[value]}"
+    [[ "$new" == "$old" ]] && return
+    make_backup
+    delete_from_section "ENV" "$old"
+    append_to_section "ENV" "$new"
+    msg_ok "Updated."
 }
 
 # reload / view
@@ -830,8 +1102,9 @@ main_menu() {
         "autostart"
         "env vars"
         "──────────────"
+        "add custom line"
+        "open files"
         "reload hyprland"
-        "view raw config"
         "quit"
     )
     while true; do
@@ -852,9 +1125,10 @@ main_menu() {
                     9)  section_exec ;;
                     10) section_env ;;
                     11) : ;;
-                    12) do_reload ;;
-                    13) view_raw ;;
-                    14) return ;;
+                    12) section_add_custom ;;
+                    13) open_files_menu ;;
+                    14) do_reload ;;
+                    15) return ;;
                 esac ;;
             new|delete) : ;;
         esac
