@@ -5,7 +5,7 @@
 
 pkgname=argo-bin
 pkgver=4.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Argo Workflows: Get stuff done with Kubernetes"
 arch=('x86_64' 'aarch64')
 url="https://github.com/argoproj/argo-workflows"
@@ -19,7 +19,7 @@ sha256sums_x86_64=('c8ec914070849be972da10f8843fefab4dc0a44055a78108c2ddd3983aa2
 sha256sums_aarch64=('73fdd8c0eaf5416005b2e0c89f8da4f90532d57d889ff21ba474c33367af14ad')
 
 latestver() {
-  curl -s https://api.github.com/repos/argoproj/argo-workflows/releases/latest | grep -Po '"tag_name":\s*"v?\K[^"]*'
+  curl -fsSL 'https://api.github.com/repos/argoproj/argo-workflows/releases/latest' | jq -r 'select(any(.assets[]?; .name == "argo-linux-amd64.gz") and any(.assets[]?; .name == "argo-linux-arm64.gz")) | .tag_name' | sed -E 's/^v//'
 }
 
 build() {
@@ -43,4 +43,3 @@ Apache License 2.0
 https://github.com/argoproj/argo-workflows/blob/main/LICENSE
 EOF
 }
-
