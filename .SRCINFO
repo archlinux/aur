@@ -1,0 +1,18 @@
+pkgbase = deadbranch-bin
+	pkgdesc = Clean up stale git branches safely
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/armgabrielyan/deadbranch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = deadbranch
+	conflicts = deadbranch
+	source_x86_64 = deadbranch-x86_64-0.2.0.tgz::https://github.com/armgabrielyan/deadbranch/releases/download/v0.2.0/deadbranch-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d6168a1d49f6523caa1438d9b419ae1ad344acb2b91d299d77b8da427ba2ee86
+	source_aarch64 = deadbranch-aarch64-0.2.0.tgz::https://github.com/armgabrielyan/deadbranch/releases/download/v0.2.0/deadbranch-0.2.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 746529f77b0ceb7a7a011d151dae31565baf4b558e45cbd6cb1702661b418daa
+
+pkgname = deadbranch-bin

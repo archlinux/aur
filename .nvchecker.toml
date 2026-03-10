@@ -1,0 +1,5 @@
+[deadbranch-bin]
+source = "github"
+github = "armgabrielyan/deadbranch"
+use_latest_release = true
+prefix = "v"
