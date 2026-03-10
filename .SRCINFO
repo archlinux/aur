@@ -1,6 +1,6 @@
 pkgbase = webcatalog-bin
 	pkgdesc = Turn Any Websites into Real Desktop Apps
-	pkgver = 73.11.0
+	pkgver = 73.12.0
 	pkgrel = 1
 	url = https://webcatalog.io/webcatalog/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = webcatalog-bin
 	options = !debug
 	source = webcatalog.patch
 	sha256sums = 8e13556f9eab7880fbc586d625147e7602d8d99cf0f23a6a130e0eb821a9a7fd
-	source_x86_64 = WebCatalog-73.11.0.AppImage::https://cdn-2.webcatalog.io/webcatalog/WebCatalog-73.11.0.AppImage
-	sha256sums_x86_64 = 43ee61c8aecb949c0ef2abccbd876bae83ecf5af4d33dc18057f1bf315fce932
-	source_aarch64 = WebCatalog-73.11.0.AppImage::https://cdn-2.webcatalog.io/webcatalog/WebCatalog-73.11.0-arm64.AppImage
-	sha256sums_aarch64 = 740fc722bd3c5310211692b64ed18d20e2e57b4480be039e475059e06b582888
+	source_x86_64 = WebCatalog-73.12.0.AppImage::https://cdn-2.webcatalog.io/webcatalog/WebCatalog-73.12.0.AppImage
+	sha256sums_x86_64 = 3d7e430dfff0bf608cbdfa22ea0ab13cae46ecc3b2b582723f18b3ab6b7671da
+	source_aarch64 = WebCatalog-73.12.0.AppImage::https://cdn-2.webcatalog.io/webcatalog/WebCatalog-73.12.0-arm64.AppImage
+	sha256sums_aarch64 = 4b621ed39c71a58bf94c374cf4e5191565a8a4acb2b19c0105c85be7d80a7f64
 
 pkgname = webcatalog-bin
