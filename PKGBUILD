@@ -2,22 +2,19 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=opencode-openai-codex-auth
 pkgver=4.4.0
-pkgrel=2
+pkgrel=4
 pkgdesc="OpenAI ChatGPT OAuth Plugin for opencode"
 arch=('any')
 url="https://github.com/numman-ali/opencode-openai-codex-auth"
 license=('MIT')
 depends=('opencode' 'npm')
-options=('!strip' '!debug')
+options=('!debug')
 conflicts=("${pkgname}-debug")
 install=$pkgname.install
 
 latestver() {
-    local latest
-    latest=$(curl -fsSL "https://api.github.com/repos/numman-ali/opencode-openai-codex-auth/releases/latest" \
-        | grep -Po '"tag_name": "v\K[^"]+' \
-        | head -n1 || true)
-    printf '%s\n' "${latest:-$pkgver}"
+    curl -fsSL 'https://api.github.com/repos/numman-ali/opencode-openai-codex-auth/tags?per_page=100' | jq -r '.[].name' |
+        sed -nE 's/^v([0-9]+(\.[0-9]+)*)$/\1/p' | sort -V | tail -1
 }
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
