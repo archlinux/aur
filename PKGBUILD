@@ -16,7 +16,7 @@ conflicts=('nuicat')
 install=nuicat-bin.install
 source=("nuicat_amd64.deb::https://packages.nui.cat/releases/v0.1.4-alpha/nuicat_amd64.deb")
 noextract=('nuicat_amd64.deb')
-sha256sums=('156fbb23fb7ec1c045874083bfc86f4a5fa23ba5b9a4868e8b2c01b91fee52ce')
+sha256sums=('6eb4d0e5c96192dab985ec2d37d99bc0d7042502870b96eb4a9e80e6d1dc2ac9')
 
 prepare() {
     cd "$srcdir"
