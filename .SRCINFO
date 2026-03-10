@@ -1,6 +1,6 @@
 pkgbase = coursefin
 	pkgdesc = Desktop application for managing and watching offline course content
-	pkgver = 0.4.10
+	pkgver = 0.4.11
 	pkgrel = 1
 	url = https://github.com/vasujain275/coursefin
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = coursefin
 	depends = gst-plugins-base
 	depends = gst-plugins-good
 	depends = gst-libav
-	source = coursefin-0.4.10.tar.gz::https://github.com/vasujain275/coursefin/archive/refs/tags/v0.4.10.tar.gz
+	source = coursefin-0.4.11.tar.gz::https://github.com/vasujain275/coursefin/archive/refs/tags/v0.4.11.tar.gz
 	sha256sums = SKIP
 
 pkgname = coursefin
