@@ -14,7 +14,7 @@ pkgname=(
     'lib32-nvidia-vulkan-utils'
     'lib32-opencl-nvidia-vulkan'
 )
-pkgver=580.94.18
+pkgver=595.44.02
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
@@ -32,7 +32,6 @@ source=(
     'nvidia-sleep.conf'
     "${_pkg}.run::https://developer.nvidia.com/downloads/vulkan-beta-${pkgver//./}-linux"
     "$pkgname-$pkgver.tar.gz::https://github.com/NVIDIA/open-gpu-kernel-modules/archive/refs/tags/${pkgver}.tar.gz"
-    0001-Enable-atomic-kernel-modesetting-by-default.patch
     0003-Add-IBT-support.patch
 )
 
@@ -43,9 +42,8 @@ sha512sums=(
     'a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8'
     '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
     'c7fea39d11565f05a507d3aded4e9ea506ef9dbebf313e0fc8d6ebc526af3f9d6dec78af9d6c4456c056310f98911c638706bccdd9926d07f492615569430455'
-    'b1141f13cf2160e25004c9147328e60afb48b17866c907adfe1db6730ed50163fe5b8ff641d180c4b0420c0f47c0928585e52bf23c196d43a375d7a9466f8fe7'
-    '71fb699c57061d226ddfc1e8974c9c3f50d68af651e0d56afb425482b35c8892c67f60f9a41bde86e3f6d93b15bb8661d1f57b55b0fc18c84a6b8775ca5328c4'
-    '0bb89b9037f0baa9aae1ff8e70c9c93896f03fd0cc380eea4b0dc094a6991c3ad6738c9fbbaa42d8b5a544f77dc91c0e6401b1501c5970c576d5efbc0de8dd34'
+    '79799602343f95b59474f616df90c21e0494e00a698d82a79567b9eb14b44ab8eedc85c87d978a82b46743de705489ae27759046750cd5c6c0568a66b5b5ac91'
+    '125d5079927553c7104bb6cabf7f5582d73095b283a08f00604f02e87d8b0ecf23478b667a40208c66e396f0e3b15c90e1459ae97d41f5e2ab7161aec1ebb6b7'
     '42f621179d4fd9bf608f0d84b9019f5a5fdf5d92d68d22ce9b9a9add1cad1c90dcb3764db68e0b9bc7e902bb6b955c59563ea6d4f39f2e39a340387e4d5deb82'
 )
 
@@ -63,12 +61,6 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
     bsdtar -xf nvidia-persistenced-init.tar.bz2
-
-    # Enable modeset by default
-    # This avoids various issue, when Simplefb is used
-    # https://gitlab.archlinux.org/archlinux/packaging/packages/nvidia-utils/-/issues/14
-    # https://github.com/rpmfusion/nvidia-kmod/blob/master/make_modeset_default.patch
-    patch -Np1 -d "${srcdir}/${_pkg}/kernel" -i "$srcdir"/0001-Enable-atomic-kernel-modesetting-by-default.patch
 
     cd kernel
 
@@ -90,12 +82,6 @@ DEST_MODULE_LOCATION[4]="/kernel/drivers/video"' dkms.conf
     sed -i 's/NV_EXCLUDE_BUILD_MODULES/IGNORE_PREEMPT_RT_PRESENCE=1 NV_EXCLUDE_BUILD_MODULES/' dkms.conf
 
     cd "$srcdir"/open-gpu-kernel-modules-${pkgver}
-
-    # Enable modeset and fbdev as default
-    # This avoids various issue, when Simplefb is used
-    # https://gitlab.archlinux.org/archlinux/packaging/packages/nvidia-utils/-/issues/14
-    # https://github.com/rpmfusion/nvidia-kmod/blob/master/make_modeset_default.patch
-    patch -Np1 -i "$srcdir"/0001-Enable-atomic-kernel-modesetting-by-default.patch -d "${srcdir}/open-gpu-kernel-modules-${pkgver}/kernel-open"
 
     # Fix for https://bugs.archlinux.org/task/74886
     patch -Np1 --no-backup-if-mismatch -i "$srcdir"/0003-Add-IBT-support.patch
@@ -438,6 +424,9 @@ package_lib32-nvidia-vulkan-utils() {
     # CUDA
     install -D -m755 "libcuda.so.${pkgver}" "${pkgdir}/usr/lib32/libcuda.so.${pkgver}"
     install -D -m755 "libnvcuvid.so.${pkgver}" "${pkgdir}/usr/lib32/libnvcuvid.so.${pkgver}"
+
+    # NVVM Compiler library loaded by the CUDA driver to do JIT link-time-optimization
+    install -D -m644 "libnvidia-nvvm.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-nvvm.so.${pkgver}"
 
     # PTX JIT Compiler (Parallel Thread Execution (PTX) is a pseudo-assembly language for CUDA)
     install -D -m755 "libnvidia-ptxjitcompiler.so.${pkgver}" "${pkgdir}/usr/lib32/libnvidia-ptxjitcompiler.so.${pkgver}"
