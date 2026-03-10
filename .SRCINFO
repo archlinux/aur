@@ -1,13 +1,13 @@
 pkgbase = sbars
 	pkgdesc = A Sims-style needs tracker TUI for your terminal
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/maxh213/sbars
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = sbars-0.1.2.tar.gz::https://github.com/maxh213/sbars/archive/v0.1.2.tar.gz
-	sha256sums = fc6e8eb0b1bb5a783e3fecd401c0f4e829076d04f5acdd65cd63fe7bb0e65233
+	source = sbars-0.2.0.tar.gz::https://github.com/maxh213/sbars/archive/v0.2.0.tar.gz
+	sha256sums = ebd1ca612481489896a3299300e84627669122af96a06fc659e5ee9b3723396b
 
 pkgname = sbars
