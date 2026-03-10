@@ -2,7 +2,7 @@
 # Contributor: Maciej Dems <macdems@gmail.com>
 pkgname=unmined-gui
 pkgver=0.19.57.20260222
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy to use and fast Minecraft world viewer and mapper tool"
 arch=('x86_64')
 url="https://unmined.net/"
@@ -15,16 +15,23 @@ source=("unmined-gui-dev_amd64.deb::https://unmined.net/download/unmined-gui-lin
 sha256sums=('9badbb3c6c44870c40cf38e096fd5a87b52a4b30b2a733631acadea0a7505a2d')
 
 latestver() {
-    local page
-    page=$(curl -fsSL "https://unmined.net/downloads/")
-    local ver
-    ver=$(echo "$page" | grep -oP 'title="uNmINeD CLI.*\([0-9]+\.[0-9]+\.[0-9]+\)"' | \
-        head -n1 | sed -E 's/.*\(([0-9]+\.[0-9]+\.[0-9]+)\).*/\1/')
-    local tmstv
-    tmstv=$(echo "$page" | grep -oP 'tmstv=\K\d+' | head -n1)
-    local stamp
-    stamp=$(date -d "@$tmstv" +%Y%m%d 2>/dev/null)
-    echo "${ver}.${stamp}"
+    local page tmstv tmp ver stamp
+
+    page=$(curl -fsSL 'https://unmined.net/downloads/') || return 1
+    tmstv=$(printf '%s\n' "$page" |
+        sed -nE 's#.*href="https://unmined.net/download/unmined-gui-linuxdeb-x64-dev/\?tmstv=([0-9]+)".*#\1#p' |
+        head -1)
+    [[ -n ${tmstv} ]] || return 1
+
+    tmp=$(mktemp) || return 1
+    trap 'rm -f "$tmp"' RETURN
+    curl -fsSL 'https://unmined.net/download/unmined-gui-linuxdeb-x64-dev/' -o "$tmp" || return 1
+    ver=$(bsdtar -xOf "$tmp" control.tar.zst | tar --zstd -xOf - ./control |
+        sed -nE 's/^Version: ([0-9.]+)-dev$/\1/p')
+    [[ -n ${ver} ]] || return 1
+
+    stamp=$(date -u -d "@${tmstv}" +%Y%m%d 2>/dev/null) || return 1
+    printf '%s\n' "${ver}.${stamp}"
 }
 
 prepare() {
