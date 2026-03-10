@@ -1,19 +1,19 @@
 pkgbase = perl-poe-component-curl-multi
 	pkgdesc = a fast HTTP POE component
 	pkgver = 1.02
-	pkgrel = 2
-	url = https://metacpan.org/dist/POE-Component-Curl-Multi
+	pkgrel = 3
+	url = https://metacpan.org/release/BINGOS/POE-Component-Curl-Multi-1.02
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-io
 	checkdepends = perl-pathtools
 	checkdepends = perl-test-simple
 	makedepends = perl-extutils-makemaker
+	depends = perl
 	depends = perl-http-message>=5.810
 	depends = perl-net-curl>=0.47
-	depends = perl-poe>=1.312
+	depends = perl-poe
 	depends = perl-uri>=1.37
-	depends = perl>=5.8.1
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/B/BI/BINGOS/POE-Component-Curl-Multi-1.02.tar.gz
 	sha256sums = 9206a0eda9b06c88bd8514c3e296a1ccec3b71432922208c95e8e7a9adeb0961
