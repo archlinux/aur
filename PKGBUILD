@@ -2,7 +2,7 @@
 
 pkgname=badger
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="BadgerDB is an embeddable, persistent and fast key-value (KV) database written in pure Go"
 arch=('x86_64')
 url='https://blog.dgraph.io/post/badger'
