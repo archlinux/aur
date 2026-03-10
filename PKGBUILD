@@ -1,7 +1,6 @@
-# Maintainer: Hugh Whelan <brickhousedevelopers@gmail.com>
 pkgname=scidcommunity
 pkgver=5.1.2.44
-pkgrel=68
+pkgrel=69
 pkgdesc="Enhanced fork of Scid chess database with Chess.com/Lichess integration, tablebase lookup, improved search, and additional training features"
 arch=('x86_64')
 url="https://github.com/whelanh/scidCommunity"
@@ -20,9 +19,9 @@ build() {
 package() {
   cd "${srcdir}/scidCommunity-a05338b393e2dcda370617be36c89e521e93675c"
 
-  # Install data files to /usr/share/scid
-  # Use runtime paths (not staging paths) so the Makefile creates correct paths internally
-  make install_shared DESTDIR="${pkgdir}" SHAREDIR="/usr/share/scid"
+  # Install data files to staging directory
+  # Note: SHAREDIR/BINDIR include pkgdir for staging, but runtime paths are what matter
+  make install_shared SHAREDIR="${pkgdir}/usr/share/scid"
 
   # Copy binary directly to /usr/bin (avoid broken symlink from make install)
   install -Dm755 scidCommunity "${pkgdir}/usr/bin/scidCommunity"
@@ -42,3 +41,4 @@ package() {
   # Install appdata/metainfo file
   install -Dm644 -t "${pkgdir}/usr/share/metainfo" "flatpak/io.github.whelanh.scidCommunity.appdata.xml"
 }
+
