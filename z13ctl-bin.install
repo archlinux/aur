@@ -1,10 +1,16 @@
 post_install() {
     z13ctl setup
     systemctl --global enable z13ctl.socket z13ctl.service || true
+    echo ""
+    echo ">>> z13ctl installed. To start the daemon now (without logging out):"
+    echo ">>>   systemctl --user start z13ctl.socket"
+    echo ">>> Or log out and back in — socket activation starts automatically."
 }
 
 post_upgrade() {
-    udevadm control --reload-rules
-    udevadm trigger
-    systemctl daemon-reload || true
+    z13ctl setup
+    echo ""
+    echo ">>> z13ctl upgraded. Reload the user daemon and restart the service:"
+    echo ">>>   systemctl --user daemon-reload"
+    echo ">>>   systemctl --user restart z13ctl.service"
 }
