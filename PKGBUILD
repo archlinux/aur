@@ -1,7 +1,7 @@
 # Maintainer: Rain Xelelo <rxelelo@outlook.com>
 
 pkgname=tclient-ddnet
-pkgver=10.8.5
+pkgver=10.8.7
 pkgrel=1
 pkgdesc="Extended DDNet Teeworlds client."
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
 backup=('usr/share/ddnet/data/autoexec_server.cfg')
 install="tclient.install"
 source=("https://github.com/TaterClient/TClient/releases/download/V$pkgver/TClient-ubuntu.tar.xz" "tclient.png")
-sha256sums=('4111a378e90174fdb7a62d7990a1bad1717ffdb49d2ba5136cab85448ccf795b'
+sha256sums=('426281134f29ecd82d536a6a8c0d78a92e22b359560b84de9ca2079138109f2b'
             '29ecb3376c3fe0a56af495f71754c72c54f3e7f97031446e23a355833b954b65')
 
 prepare() {
