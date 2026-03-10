@@ -1,6 +1,6 @@
 pkgbase = subs2srs-gtk3-git
 	pkgdesc = Generate Anki flashcards from media with subtitles (GTK3 port)
-	pkgver = r56.f9514df
+	pkgver = r57.956e836
 	pkgrel = 1
 	url = https://gitlab.com/fkzys/subs2srs-gtk3
 	arch = x86_64
@@ -13,9 +13,11 @@ pkgbase = subs2srs-gtk3-git
 	depends = mp3gain
 	depends = mkvtoolnix-cli
 	optdepends = noto-fonts-cjk: CJK font support
+	provides = subs2srs-gtk3
 	provides = subs2srs
+	conflicts = subs2srs-gtk3
 	conflicts = subs2srs
-	source = git+https://gitlab.com/fkzys/subs2srs-gtk3.git
+	source = subs2srs-gtk3-git::git+https://gitlab.com/fkzys/subs2srs-gtk3.git
 	sha256sums = SKIP
 
 pkgname = subs2srs-gtk3-git
