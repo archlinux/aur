@@ -1,12 +1,12 @@
 # Maintainer: Grisshink <grisshink@mail.ru>
 pkgname=scrap-git
-pkgver=0.6.r20.ga1d6046
+pkgver=0.6.1.r1.g2139e7e
 pkgrel=1
 pkgdesc="New advanced block based programming language, built from ground up in C"
 arch=(x86_64)
 url="https://github.com/Grisshink/scrap"
 license=(Zlib)
-depends=(libx11 libxrandr libxcursor libxinerama libxi)
+depends=(libx11 libxrandr libxcursor libxinerama libxi zenity)
 makedepends=('git' gettext)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
