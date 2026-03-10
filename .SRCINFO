@@ -1,13 +1,13 @@
 pkgbase = hyprflow
 	pkgdesc = Save and restore Hyprland window sessions
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/isorensen/hyprflow
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = hyprland
-	source = hyprflow-0.1.0.tar.gz::https://github.com/isorensen/hyprflow/archive/v0.1.0.tar.gz
-	sha256sums = ec2e52fed7cb6af217301ac514fa949630814dfa0428d087c8ea79674b098eb7
+	source = hyprflow-0.2.0.tar.gz::https://github.com/isorensen/hyprflow/archive/v0.2.0.tar.gz
+	sha256sums = 7e80c96f255fa378f483eea3f166499e690f0f7b74453e61036c5f62357fff4f
 
 pkgname = hyprflow

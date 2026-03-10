@@ -1,6 +1,6 @@
 # Maintainer: iSorensen
 pkgname=hyprflow
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Save and restore Hyprland window sessions"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('hyprland')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ec2e52fed7cb6af217301ac514fa949630814dfa0428d087c8ea79674b098eb7')
+sha256sums=('7e80c96f255fa378f483eea3f166499e690f0f7b74453e61036c5f62357fff4f')
 
 prepare() {
     cd "$pkgname-$pkgver"
