@@ -1,6 +1,6 @@
 # Maintainer: tpkee
 pkgname=foolhammer-mod-manager-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A straightforward mod manager for Total War games."
 arch=('x86_64')
