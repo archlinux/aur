@@ -1,6 +1,6 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-nano
-pkgver=6.6.1
+pkgver=6.6.2
 pkgrel=1
 pkgdesc="A minimal plasma shell package intended for embedded devices."
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=('cmake' 'extra-cmake-modules')
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('d815d6405e6a081c22dd6f0c32653b70da8c97c5abca58ec0b09f0314ac15776')
+sha256sums=('105379700a1a19464c704a3a782e95d705660eb5aae148a268f8d9675ba0b706')
 
 prepare() {
   mkdir -p build
