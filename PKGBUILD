@@ -1,7 +1,7 @@
 # Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=hister
-pkgver=0.5.0
-pkgrel=3
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
 url="https://github.com/asciimoo/hister"
@@ -12,25 +12,19 @@ install=hister.install
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "hister.service")
-sha256sums=('e734e8ae924bdfa6b67bc055fd4dc70c6a43241a283eb337b6c707f6c2287d39'
+sha256sums=('8f74be88b8b49f00b6aa2ef46badf943fa79310b3d68c4e3210bec4f5abb4abb'
             'c1f3851a79baf1eab7d5d40ee9aaffa53fef4a2938e5a293c542f73134e645da')
 
-# Optional: GitHub repo for automatic version checking
 _ghrepo="asciimoo/hister"
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
     export GOPATH="$srcdir"
     go mod download
+    go generate
 }
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-
-    # Build JS frontend assets (required for Go embed)
-    cd server/static/js
-    npm install
-    npm run build
     cd "$srcdir/$pkgname-$pkgver"
 
     export CGO_ENABLED=1
