@@ -1,6 +1,6 @@
 pkgbase = kahip
 	pkgdesc = Karlsruhe HIGH Quality Partitioning
-	pkgver = 3.22
+	pkgver = 3.23
 	pkgrel = 1
 	url = https://github.com/KaHIP/KaHIP
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = kahip
 	depends = python
 	optdepends = gurobi: for ILP solver in ilp_improve
 	options = !emptydirs
-	source = KaHIP-3.22.tar.gz::https://github.com/KaHIP/KaHIP/archive/v3.22.tar.gz
-	sha512sums = b61fc043f81233dc5e6f1d2db2b955a8e801c8da6a0bb5c6adf250b59061cdba7fde53059a830dd8da33a88a289759835033ef3fb5340b2007032f566bca8e18
+	source = KaHIP-3.23.tar.gz::https://github.com/KaHIP/KaHIP/archive/v3.23.tar.gz
+	sha512sums = a4739e78154c9210c542bbb93a375059ff7113885ddba885820e3bb2fd82b383f58467bca9a6d78f4d9cc2a0b1719c7c303ac40400b6e31c53828a9e41d17475
 
 pkgname = kahip
