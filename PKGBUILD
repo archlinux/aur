@@ -4,7 +4,7 @@
 pkgname=python-normality
 _pkg="${pkgname#python-}"
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Micro-library for normalizing text strings'
 license=('MIT')
 arch=('any')
@@ -16,7 +16,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('9d2d3705ec5458b36986d5a0ec32b07f4805780c74700c6fd6cb998017d1091f')
 
 latestver() {
-	curl -fsSL "https://pypi.org/pypi/${_pkg}/json" | jq -r '.info.version'
+	curl -fsSL 'https://api.github.com/repos/pudo/normality/tags?per_page=100' | jq -r '.[].name' |
+	    sed -nE '/^[0-9]+(\.[0-9]+)*$/p' | sort -V | tail -1
 }
 
 build() {
