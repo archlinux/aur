@@ -3,7 +3,7 @@ pkgname=fff-bun
 _npmname=@ff-labs/fff-bun
 pkgver=0.1.0_nightly.044314f
 _npmver=${pkgver//_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="High-performance fuzzy file finder for Bun, powered by a Rust native library"
 arch=('x86_64' 'aarch64')
 url="https://github.com/dmtrKovalenko/fff.nvim"
@@ -22,7 +22,9 @@ sha256sums_x86_64=('4abeccbbfbf82f753cc445dcf472418471589b34db7bf008f6f448550328
 sha256sums_aarch64=('bed88ad910fe34166551fde98379d827f31f85c4bc281b90b4df7a3ee53e63f9')
 
 latestver() {
-    curl -s "https://registry.npmjs.org/${_npmname}/latest" | jq -r '.version' | tr '-' '_'
+    curl -fsSL "https://registry.npmjs.org/${_npmname}/latest" |
+        jq -r 'select(.optionalDependencies["@ff-labs/fff-bun-linux-x64-gnu"] == .version and .optionalDependencies["@ff-labs/fff-bun-linux-arm64-gnu"] == .version) | .optionalDependencies["@ff-labs/fff-bun-linux-x64-gnu"]' |
+        tr '-' '_'
 }
 
 prepare() {
