@@ -19,7 +19,7 @@ pkgver=0.7.0.r1.gd8b83bb
 pkgrel=1
 
 # Short description shown by pacman and AUR helpers.
-pkgdesc="A fast terminal wallpaper picker for Hyprland with in-place previews, keyboard-first navigation, and instant theme-aware background switching"
+pkgdesc="A fast terminal wallpaper picker for Hyprland with in-place previews, keyboard-first navigation, and auto-rotation"
 
 # Architectures this package supports. 'any' would mean architecture-independent
 # (scripts, fonts, etc.). Since we compile a Rust binary we list explicitly.
