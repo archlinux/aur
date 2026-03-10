@@ -75,10 +75,10 @@ b2sums=('SKIP'
 pkgver() {
   cd "${_pkgname}"
 
-  _ver="$(git describe --tags | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
-  _rev="$(git rev-list --count HEAD)"
-  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
-  _hash="$(git rev-parse --short HEAD)"
+  _ver="$(git describe --tags origin/master | sed -E -e 's|^[vV]||' -e 's|\-g[0-9a-f]*$||' | tr '-' '+')"
+  _rev="$(git rev-list --count origin/master)"
+  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad" origin/master)"
+  _hash="$(git rev-parse --short origin/master)"
 
   if [ -z "${_ver}" ]; then
     error "Version could not be determined."
@@ -90,6 +90,7 @@ pkgver() {
 
 prepare() {
   pushd "sigfm" > /dev/null
+  git fetch --all
   git config user.email >&- || git config user.email "makepkg@local.com"
   git config user.name >&- || git config user.name "makepkg"
   git reset --hard origin/sigfm && git clean -fdd
@@ -99,6 +100,7 @@ prepare() {
   popd
 
   pushd "${_pkgname}" > /dev/null
+  git fetch --all
   git config remote.sigfm.url >&- || git remote add sigfm $srcdir/sigfm
   git config user.email >&- || git config user.email "makepkg@local.com"
   git config user.name >&- || git config user.name "makepkg"
