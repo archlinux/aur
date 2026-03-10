@@ -2,7 +2,7 @@
 # Contributor: Antoine POPINEAU <antoine at popineau dot eu>
 
 pkgname=greetd-tuigreet-soupy-boy-git
-pkgver=1.0.0.r0.g20f5feb
+pkgver=1.0.1.r0.gb99246c
 pkgrel=1
 
 pkgdesc='A console UI greeter for greetd'
@@ -10,7 +10,7 @@ url='https://github.com/soupy-boy/tuigreet'
 license=(GPL3)
 conflicts=(greetd-tuigreet greetd-tuigreet-git greetd-tuigreet-soupy-boy-bin)
 
-arch=(x86_64)
+arch=(x86_64 i686 armv7 aarch64)
 makedepends=(git rust scdoc)
 
 source=("git+${url}"
