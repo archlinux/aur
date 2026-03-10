@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=alicorn-git
 _pkgname='Alicorn Launcher'
-pkgver=3.0.4.r3.g4efa1a6
-_electronversion=39
-_nodeversion=22
+pkgver=3.0.4.r4.gaef8897
+_electronversion=40
+_nodeversion=23
 pkgrel=1
 pkgdesc="A high performance custom Minecraft launcher.(Use system-wide electron)"
 arch=(
@@ -95,16 +95,15 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}/app"
-    case "${CARCH}" in
-        aarch64)
-            _OS_ARCH=arm64
-            ;;
-        x86_64)
-            _OS_ARCH=x64
-            ;;
-    esac
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname//-/.}/dist/${_pkgname}-linux-${_OS_ARCH}/resources/app" "${pkgdir}/usr/lib/${pkgname%-git}/app"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+	find "${srcdir}/${pkgname//-/.}/dist/${_pkgname}-linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-git}" {} +
+    if find "${srcdir}/${pkgname//-/.}/dist/${_pkgname}-linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${pkgname//-/.}/dist/${_pkgname}-linux-"*"/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-git}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/${pkgname//-/.}/resources/icons/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
