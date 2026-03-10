@@ -2,7 +2,7 @@
 
 _pkgname="systemctl-mqtt"
 pkgname=python-${_pkgname}
-pkgver=1.2.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="MQTT client triggering & reporting shutdown on systemd-based systems"
 arch=(any)
@@ -14,7 +14,7 @@ source=(
 	"https://github.com/fphammerle/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-	'c75620a3b86b74a321594ef01cc3587f36e312ba94360b45513bffaf45c216b7'
+	'120653c1584de4588559f94c8100173ce1fc2a4800537889e8e0a3c94e656a7f'
 )
 
 build() {
