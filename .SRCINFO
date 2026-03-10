@@ -1,7 +1,7 @@
 pkgbase = cuda-pascal
 	pkgdesc = NVIDIA CUDA toolkit for Pascal GPUs (latest CUDA version still supporting Pascal)
 	pkgver = 12.9.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developer.nvidia.com/cuda-zone
 	install = cuda.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = cuda-pascal
 	depends = opencl-nvidia
 	depends = python
 	options = !strip
+	options = !debug
 	options = staticlibs
 	source = https://developer.download.nvidia.com/compute/cuda/12.9.1/local_installers/cuda_12.9.1_575.57.08_linux.run
 	source = cuda.sh
