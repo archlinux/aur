@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
-pkgver=0.9.12
+pkgver=0.9.13
 pkgrel=1
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
@@ -35,7 +35,7 @@ optdepends=(
   'krdc: VNC client option'
   'kubectl: Shell access to Kubernetes pods'
   'libappindicator: Display icon in system tray'
-  'libsecret: Fallback password storage method'
+  'libsecret: Password storage method fallback'
   'mc: SFTP via Midnight Commander FISH VFS'
   'oci-cli: OCI CLI'
   'pass: Password storage method option'
@@ -50,7 +50,7 @@ optdepends=(
   'waypipe: Wayland application forwarding for SSH connections'
 )
 source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d7c2641221c344c372ab23b425d486460bc4d82b3af119a39c8048086f8f3cca')
+sha256sums=('282132f23ad6cebeb84dbe9801da1ac4fcd237908d952499ec64687ea74cd128')
 
 prepare() {
   cd "RustConn-$pkgver"
