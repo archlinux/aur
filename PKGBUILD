@@ -1,7 +1,7 @@
 # Maintainer: Sayan Pal <sayan12428 at gmail dot com>
 
 pkgname=phub-cli
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Terminal-based video browser inspired by ani-cli, streaming directly from pornhub.com"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('bash' 'mpv' 'fzf' 'yt-dlp' 'python' 'python-beautifulsoup4')
 
 source=("https://github.com/curtosis-org/phub-cli/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('235cad5b9de38672a1a36022d8b4170a7a3bc383f0ba737a0b33a21c00fe1818')
 
 package() {
     cd "$srcdir/phub-cli-$pkgver"
