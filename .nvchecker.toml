@@ -1,0 +1,5 @@
+[bsky-cli-bin]
+source = "github"
+github = "harveyrandall/bsky-cli"
+use_latest_release = true
+prefix = "v"
