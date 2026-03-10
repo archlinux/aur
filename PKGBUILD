@@ -1,5 +1,5 @@
 pkgname=oh-my-pi-git
-pkgver=v0.7.8.r2962b6a5146
+pkgver=v13.10.0.r0186a0d8
 pkgrel=1
 pkgdesc="AI Coding agent for the terminal — hash-anchored edits, optimized tool harness, LSP, Python, browser, subagents, and more (git build)"
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "oh-my-pi"
-  git describe --long --abbrev=7 | sed 's/\([^--]*\)-g/r\1/;s/-/./g'
+  git describe --tags --long --abbrev=7 | sed 's/\([^--]*\)-g/r\1/;s/-/./g'
 }
 
 prepare() {
