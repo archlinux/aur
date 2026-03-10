@@ -1,7 +1,7 @@
 pkgbase = vice-clipper
 	pkgdesc = Medal.tv-style game clip recorder for Linux — instant replay, session recording, and one-click sharing
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eklonofficial/Vice
 	arch = x86_64
 	license = GPL-3.0-or-later
