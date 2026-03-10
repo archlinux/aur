@@ -1,7 +1,7 @@
 # Maintainer: gimletlove
 
 pkgname=imagecompare-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Image Comparison Program with various helpful features and tools.'
 arch=('x86_64')
@@ -35,4 +35,7 @@ package() {
 
   install -Dm644 "$_extractdir/share/icons/hicolor/scalable/apps/io.github.gimletlove.imagecompare.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/io.github.gimletlove.imagecompare.svg"
+
+  install -Dm644 "$_extractdir/share/metainfo/io.github.gimletlove.imagecompare.metainfo.xml" \
+    "$pkgdir/usr/share/metainfo/io.github.gimletlove.imagecompare.metainfo.xml"
 }
