@@ -19,22 +19,19 @@ source=("https://github.com/qelectrotech/qelectrotech-source-mirror/releases/dow
 sha512sums=('26b775262ae9dcc25166d6f57c11851fd0152a9f269f1cc4fd4897d11aa17621d895e49fd0d85a92149a7f653f8a42295ba2938db1a85dee8b643854ba720736'
             '5731b050c2f92ec5c3d0374ffc6eeec27d1e816d06bd292b060d69bce799e33f251daee6cf744285b10531d52f72e9725d697ef14d0b20572a059c4e7b9f80b8')
 
-_tarname="$pkgname-$pkgver"
-
 
 prepare() {
-  cd "$srcdir/$_tarname"
-  patch -p1 < "$srcdir/install-dir.patch"
-  sed -i 's/gzip \-9n/gzip -9nf/' "man/compress_man_pages.sh"
+  cd "$pkgname-$pkgver"
+  patch -Np1 -i ../install-dir.patch
 }
 
 build() {
-  cd "$srcdir/$_tarname"
+  cd "$pkgname-$pkgver"
   qmake-qt5
   make
 }
 
 package() {
-  cd "$srcdir/$_tarname"
+  cd "$pkgname-$pkgver"
   make INSTALL_ROOT="$pkgdir" install
 }
