@@ -1,21 +1,23 @@
 pkgbase = localgo-bin
 	pkgdesc = LocalSend v2.1 protocol implementation — LAN file transfer CLI
-	pkgver = 0.3.7_SNAPSHOT_cd05b97
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://github.com/bethropolis/localgo
+	arch = aarch64
+	arch = x86_64
 	license = MIT
+	optdepends = bash: bash shell completions
+	optdepends = zsh: zsh shell completions
+	optdepends = fish: fish shell completions
 	optdepends = xclip: clipboard support on X11
 	optdepends = xsel: clipboard support on X11 (alternative)
 	optdepends = wl-clipboard: clipboard support on Wayland
-	depends = glibc
+	provides = localgo
 	conflicts = localgo
 	conflicts = localgo-git
-	provides = localgo
-	arch = aarch64
-	source_aarch64 = https://github.com/bethropolis/localgo/releases/download/v0.3.7/localgo_0.3.7-SNAPSHOT-cd05b97_linux_arm64.tar.gz
-	sha256sums_aarch64 = 8bf25b1bd14a97695d970878e3ba9e1f063c5ae55a2376755ec8a4260c2379ef
-	arch = x86_64
-	source_x86_64 = https://github.com/bethropolis/localgo/releases/download/v0.3.7/localgo_0.3.7-SNAPSHOT-cd05b97_linux_amd64.tar.gz
-	sha256sums_x86_64 = 11c52bfdce95a04e48e05f6b9fcb6667781d44f9ad431722ede20de3e53b1bb2
-	
+	source_aarch64 = localgo-bin_0.3.7_aarch64.tar.gz::https://github.com/bethropolis/localgo/releases/download/v0.3.7/localgo_0.3.7_linux_arm64.tar.gz
+	sha256sums_aarch64 = 928606885e2578231f249df8d475d42ea5ac4e8a4bd2d132f9203bb4634f5aa1
+	source_x86_64 = localgo-bin_0.3.7_x86_64.tar.gz::https://github.com/bethropolis/localgo/releases/download/v0.3.7/localgo_0.3.7_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9d1a7893308f2cbf0b182ad6dd1c3af785ac33f0badeb7734ffb80f094819427
+
 pkgname = localgo-bin
