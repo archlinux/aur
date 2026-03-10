@@ -1,15 +1,15 @@
 pkgbase = tcmux
 	pkgdesc = tcmux is a terminal and coding agent mux viewer
-	pkgver = 0.3.2
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/k1LoW/tcmux
 	arch = aarch64
 	arch = x86_64
 	license = MIT
 	depends = tmux
-	source_aarch64 = https://github.com/k1LoW/tcmux/releases/download/v0.3.2/tcmux_v0.3.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6688333761609d1f5848122332fae6956cc33d70f589e6afc2db1b663413d9f7
-	source_x86_64 = https://github.com/k1LoW/tcmux/releases/download/v0.3.2/tcmux_v0.3.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 421ddeaff1b0f6ed40e43da6d2019a5d97b38a5b0e60877e91c50e8091014bd7
+	source_aarch64 = https://github.com/k1LoW/tcmux/releases/download/v0.4.0/tcmux_v0.4.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 14f3aea409a445cc6a11a7900d17a59f6f7b0f39f7c1402b73fa50536167a754
+	source_x86_64 = https://github.com/k1LoW/tcmux/releases/download/v0.4.0/tcmux_v0.4.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9870f9939818c503b1d679eb6731fe113544ed0164f5328f7f57883a1f1dcbb4
 
 pkgname = tcmux

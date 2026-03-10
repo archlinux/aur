@@ -1,7 +1,7 @@
 # Maintainer: Kazuya Yokogawa <mapk0y at gmail.com>
 
 pkgname='tcmux'
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='tcmux is a terminal and coding agent mux viewer'
 url='https://github.com/k1LoW/tcmux'
@@ -12,8 +12,8 @@ depends=('tmux')
 conflicts=()
 source_aarch64=("${url}/releases/download/v${pkgver}/${pkgname}_v${pkgver}_linux_arm64.tar.gz")
 source_x86_64=("${url}/releases/download/v${pkgver}/${pkgname}_v${pkgver}_linux_amd64.tar.gz")
-sha256sums_aarch64=('6688333761609d1f5848122332fae6956cc33d70f589e6afc2db1b663413d9f7')
-sha256sums_x86_64=('421ddeaff1b0f6ed40e43da6d2019a5d97b38a5b0e60877e91c50e8091014bd7')
+sha256sums_aarch64=('14f3aea409a445cc6a11a7900d17a59f6f7b0f39f7c1402b73fa50536167a754')
+sha256sums_x86_64=('9870f9939818c503b1d679eb6731fe113544ed0164f5328f7f57883a1f1dcbb4')
 
 package() {
   install -Dm644 ${srcdir}/README.md "$pkgdir/usr/share/doc/${pkgname}/README.md"
