@@ -2,7 +2,7 @@
 
 pkgauthor=Vitruves
 pkgname=firemark
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A fast, single-binary watermarking tool for images and PDFs"
 
@@ -15,7 +15,7 @@ provides=("${pkgname}")
 makedepends=('cargo')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1b703c09ea709bc27e47fdd33bfc085cf6b290dbe668cf3192ac9eba151f5b8c')
+sha256sums=('423f815606e8e9d1d76c4042fb1aa61f392df9d5210f868da43d80432f20fab8')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
