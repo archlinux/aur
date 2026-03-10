@@ -13,16 +13,36 @@ webview_dir="${appdir}/content/webview"
 }
 
 export CODEX_CLI_PATH="${CODEX_CLI_PATH:-$(command -v codex || true)}"
+export BUILD_FLAVOR="${BUILD_FLAVOR:-prod}"
+export NODE_ENV="${NODE_ENV:-production}"
+export ELECTRON_RENDERER_URL="${ELECTRON_RENDERER_URL:-http://localhost:5175/}"
 
 http_pid=""
+electron_pid=""
 tmpdir=""
 
 cleanup() {
+  [[ -n "${electron_pid}" ]] && wait "${electron_pid}" 2>/dev/null || true
   [[ -n "${http_pid}" ]] && kill "${http_pid}" 2>/dev/null || true
   [[ -n "${http_pid}" ]] && wait "${http_pid}" 2>/dev/null || true
   [[ -n "${tmpdir}" ]] && rm -rf "${tmpdir}"
 }
-trap cleanup EXIT INT TERM
+
+forward_signal() {
+  local sig="$1"
+
+  if [[ -n "${electron_pid}" ]] && kill -0 "${electron_pid}" 2>/dev/null; then
+    kill -"${sig}" "${electron_pid}" 2>/dev/null || true
+    wait "${electron_pid}" 2>/dev/null || true
+  fi
+
+  exit 0
+}
+
+trap cleanup EXIT
+trap 'forward_signal HUP' HUP
+trap 'forward_signal INT' INT
+trap 'forward_signal TERM' TERM
 
 if [[ -d "${webview_dir}" ]] && find "${webview_dir}" -mindepth 1 -maxdepth 1 -print -quit | grep -q .; then
   tmpdir="$(mktemp -d)"
@@ -85,4 +105,6 @@ fi
   --enable-sandbox \
   --ozone-platform-hint=auto \
   "${appdir}/resources/app.asar" \
-  "$@"
+  "$@" &
+electron_pid=$!
+wait "${electron_pid}"
