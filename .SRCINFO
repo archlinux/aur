@@ -1,0 +1,14 @@
+pkgbase = xdat-editor-next-bin
+	pkgdesc = XDAT Editor - edit interface.xdat Lineage 2 client file, modern fork with Java 21+ (prebuilt)
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/nascimentolh/XDAT_NEW
+	arch = x86_64
+	license = MIT
+	depends = java-runtime>=21
+	depends = java-openjfx
+	options = !strip
+	source = xdat-editor-1.6.0.zip::https://github.com/nascimentolh/XDAT_NEW/releases/download/v1.6.0/xdat-editor-1.6.0.zip
+	b2sums = 39cb55ef4493c786d884bb193bcc99e5e8a4d8d4e7e6ec25574aa45a40300fcf6640016f603176b9e6543b898833f70bc26ac010efee50e094f1ecf0391da3dc
+
+pkgname = xdat-editor-next-bin
