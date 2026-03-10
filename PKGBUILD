@@ -3,8 +3,8 @@
 # Contributor: Thomas Eizinger <thomas@eizinger.io>
 
 pkgname=photoprism
-pkgver=251130
-_commit=b3068414c
+pkgver=260305
+_commit=fad9d5395
 _pkgver="${pkgver}-${_commit}"
 pkgrel=1
 pkgdesc="AI-Powered Photos App for the Decentralized Web"
@@ -32,7 +32,7 @@ source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/${_pkgver}.tar.g
 backup=("etc/${pkgname}/defaults.yml")
 conflicts=('photoprism-facenet' 'photoprism-nasnet' 'photoprism-nsfw')
 replaces=('photoprism-facenet' 'photoprism-nasnet' 'photoprism-nsfw')
-b2sums=('31c4bdb968b48e5bd02cc7216db30eb3894fc1197000b76f4611b3a59febadb6c7480faae0d7be79839a0b2b49b22b855920f03ccbf1770581ff5d76738ed669'
+b2sums=('aafc65293f863fe0501373d29084fa7a4d75a7c4d0b4d9b81fef55aa81772875031c2849a5d0aba73713d4bde5ef886ee55315b2fe60abdfb5e604005a8d68c5'
         'ae3fe8162773ca9c84be2ea49dbc33e8a381d25cbbb51660c9f7a0764b89128eb8b40aceb10272e2579f277f76b8622d1f366e38e7c290266280c1db268365c5'
         '846cc4ce2d8c170c6442cf1f3a235d49744ff704300b619947bd425861ac4312d5465c749fd1179e4c25163d3a3428cd31359b7ea1521fa6edab81dba88074a0'
         'ca264c8ba2f999490c1335767286ddfe42a92d8606c371f17b5aa3f333bda3ade9c4f2451f7df7489946c9ae503f82351879a9876cd80e036a7991945e1242ec'
