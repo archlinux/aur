@@ -1,17 +1,17 @@
 # Maintainer: myuki <mioki dot cinnamon650 at 8shield dot net>
-# Reference: sillytavern-git by Seth Hoong <hoong seth at gmail dot com>
 
 pkgname=sillytavern
 _pkgname=SillyTavern
 pkgver=1.16.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Locally installed user interface for LLMs, image generation, and TTS voice models"
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/SillyTavern/$_pkgname"
 license=('AGPL-3.0-only')
-depends=('nodejs' 'perl')
+depends=('nodejs')
 makedepends=('npm' 'jq')
 conflicts=('sillytavern-git')
+options=('!strip' '!debug')
 backup=('usr/share/sillytavern/config.yaml')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('fd88cb8ecc918fb2bed1e392833e9c1819814a76be6a83f6c9a5ab3ab9a73437')
@@ -53,7 +53,7 @@ package() {
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<-EOF
-		#!/usr/bin/sh
+		#!/bin/sh
 		mkdir -p "\$HOME/.local/share/$pkgname"
 		cd /usr/share/$pkgname && exec node /usr/share/$pkgname/server.js --dataRoot "\$HOME/.local/share/$pkgname" "\$@"
 	EOF
