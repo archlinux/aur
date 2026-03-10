@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 # Contributor: Xiaozhu1337 <nihaoaheheda@gmail.com>
 pkgname=siyuan
-pkgver=3.5.7
+pkgver=3.5.10
 _electronversion=39
 _nodeversion=22
 pkgrel=1
