@@ -18,7 +18,7 @@ depends=(
 provides=('shiori-ebook')
 conflicts=('shiori-ebook' 'shiori-ebook-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/shiori-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('5921f76ff0354db89f4b8209398b77abc94582a0599b2884419290973802d273')
+sha256sums=('c7fcebcf3cef8c62152f616e9821c88b6af3379004bf96b0fee0b739644f36c6')
 
 package() {
     # Install the binary
