@@ -1,4 +1,4 @@
-# Maintainer: Serge Ovanesyan <sergey@ovanesyan.com>
+# Maintainer: Serge Ovanesyan
 pkgname=calendarchy-bin
 pkgver=0.1.3
 pkgrel=1
