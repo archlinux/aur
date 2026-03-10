@@ -1,0 +1,12 @@
+post_install() {
+  echo ":: To start hister, enable the user service:"
+  echo "   systemctl --user enable --now hister"
+  echo ""
+  echo ":: Generate a default config file:"
+  echo "   hister create-config ~/.config/hister/config.yml"
+}
+
+post_upgrade() {
+  echo ":: Restart the hister service if running:"
+  echo "   systemctl --user restart hister"
+}
