@@ -1,5 +1,5 @@
-pkgbase = scrt-sfx-opt-bin
-	pkgdesc = SecureCRT + SecureFX 9.0 Bundle
+pkgbase = scrt-opt-bin
+	pkgdesc = SecureCRT
 	pkgver = 9.7.1
 	pkgrel = 3815
 	url = https://www.vandyke.com/
@@ -11,8 +11,7 @@ pkgbase = scrt-sfx-opt-bin
 	depends = qt6-multimedia
 	depends = qt6-5compat
 	provides = SecureCRT
-	provides = SecureFX
-	source = file://scrt-sfx-9.7.1-3815.ubuntu24-64.x86_64.deb
-	sha512sums = f2bc66634b4c88cfd2a76e27c008360224e4d4e3a00ea36218b3d734eee8fea05a954a4f7cd068d8a7ac3209ac15eba9d51891bc3c7fe744175775ebd2e58219
+	source = file://scrt-9.7.1-3815.ubuntu24-64.x86_64.deb
+	sha512sums = 67b7c6e8095de0ffb846c03023698e07dde0ae34bfd6486c61a418e90ab230334ccf37d669674d286ef1e0d01e75707935e54535ca4770679ac9b8beab53e1f5
 
-pkgname = scrt-sfx-opt-bin
+pkgname = scrt-opt-bin

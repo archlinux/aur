@@ -6,3 +6,5 @@ src/
 *.tar.gz
 *.tgz
 *.zst
+*.tar
+*.deb
