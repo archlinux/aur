@@ -2,7 +2,7 @@
 
 pkgname=mpls-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.20.0
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="Markdown Preview Language Server"
 provides=("$_pkgname")
@@ -12,7 +12,7 @@ url="https://github.com/mhersson/mpls"
 license=('Apache-2.0')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mhersson/mpls/releases/download/v${pkgver}/mpls_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('39ef78454fea00b36efd062f15b33c5807a0db8674d32c8c1e1c62f71c6b8374')
+sha256sums=('ccd0f30ea59fc1ddb831aaa269fa419d627d855298f2d9181d53b5994e503f6e')
 
 package() {
     install -Dm 755 "$srcdir/mpls" "$pkgdir/usr/bin/mpls"
