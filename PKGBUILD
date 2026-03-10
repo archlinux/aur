@@ -17,11 +17,13 @@ source=(
     )
 arch=('x86_64')
 depends=('cnspec''mql')
+conflicts=('cnquery')
+replaces=('cnquery')
 sha256sums=(
             '280941eab28ec977cb8f3d4c640331351e21128195eaee05e0101c39fef98891'
             'cd99e204a986af5a91f46c43478b28f556a4f50fd9721844d0b600d45ac43cb8'
             'b770c0e4c38aec2b9abd67e452cd0e76833fd83d9dd3690fcbad613d08a02f9c'
-            '63b502366204dd5fa011866ea85e7236a82b0504e193a2b3f2235520a47790d0'
+            '8503fc904ee6209ca10b43fe72f57eb22ec344e6d81b0c148a9d11315bf46867'
             )
 
 
