@@ -3,7 +3,7 @@
 
 pkgname=plotjuggler
 pkgver='3.16.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
 url="https://github.com/facontidavide/PlotJuggler"
@@ -30,7 +30,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz"
 )
-sha256sums=('abe9ca652773918c4aa30abc952ff3311e81357b4ee5956c8898cb7f04ab3964')
+sha256sums=('cc7a14649acfba629b111118a4f0b8b509603365ad6945c2b598efab7c160388')
 
 build() {
     cd "PlotJuggler-${pkgver}"
