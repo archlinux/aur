@@ -1,0 +1,20 @@
+pkgbase = x86_64-elf-gcc43
+	pkgdesc = GCC 4.3 cross compiler for x86_64-elf target
+	pkgver = 4.3.6
+	pkgrel = 1
+	url = https://gcc.gnu.org
+	arch = x86_64
+	license = GPL
+	makedepends = flex
+	makedepends = bison
+	depends = x86_64-elf-binutils
+	depends = gmp
+	depends = mpfr
+	depends = zlib
+	options = !emptydirs
+	source = https://ftp.gnu.org/gnu/gcc/gcc-4.3.6/gcc-core-4.3.6.tar.bz2
+	source = https://ftp.gnu.org/gnu/gcc/gcc-4.3.6/gcc-g++-4.3.6.tar.bz2
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = x86_64-elf-gcc43
