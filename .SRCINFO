@@ -1,7 +1,7 @@
 pkgbase = cheese
 	pkgdesc = Take photos and videos with your webcam, with fun graphical effects
 	pkgver = 44.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://wiki.gnome.org/Apps/Cheese
 	arch = x86_64
 	license = GPL-2.0-or-later AND CC-BY-SA-3.0
@@ -26,8 +26,7 @@ pkgbase = cheese
 	depends = libcanberra
 	depends = libgudev
 	depends = librsvg
-	source = git+https://gitlab.gnome.org/GNOME/cheese.git?signed#tag=44.1
-	validpgpkeys = 4D0BE12F0E4776D8AACE9696E66C775AEBFE6C7D
+	source = git+https://gitlab.gnome.org/Archive/cheese.git#tag=44.1
 	b2sums = 8cd3406d53fa41311f1cab7b91b686e8de7c4b72109748a3604f9706c76c115adc1c09e180a9793bae146b5c0765bed49ca99d7ad955d322fce33ddebecf28bb
 
 pkgname = cheese
@@ -44,7 +43,7 @@ pkgname = cheese
 	depends = libcanberra
 	depends = libgudev
 	depends = librsvg
-	depends = libcheese=44.1-5
+	depends = libcheese=44.1-6
 
 pkgname = libcheese
 	pkgdesc = Webcam widget for Clutter and GTK
