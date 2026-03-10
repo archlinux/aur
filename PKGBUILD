@@ -19,8 +19,9 @@ optdepends=(
     'pipewire: sound on timer completion'
     'pulseaudio: sound on timer completion (alternative)'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/verityOGrichard/focus-os/archive/refs/heads/master.tar.gz")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/verityOGrichard/focus-os/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5')
+install=focus-os.install
 
 package() {
     cd "$srcdir/focus-os-master"
@@ -28,7 +29,7 @@ package() {
     # Install Python source files
     install -dm755 "$pkgdir/usr/lib/focus-os"
     install -m644 main.py models.py storage.py hotkey.py \
-                  ui_todo.py ui_settings.py focus_bar.py todo_bar.py add_bar.py \
+                  ui_todo.py ui_settings.py focus_bar.py todo_bar.py add_bar.py recurring_popup.py \
                   "$pkgdir/usr/lib/focus-os/"
 
     # Install the toggle script

@@ -3,6 +3,7 @@ pkgbase = focus-os
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/verityOGrichard/focus-os
+	install = focus-os.install
 	arch = any
 	license = MIT
 	depends = python
@@ -14,7 +15,7 @@ pkgbase = focus-os
 	depends = libnotify
 	optdepends = pipewire: sound on timer completion
 	optdepends = pulseaudio: sound on timer completion (alternative)
-	source = focus-os-1.0.0.tar.gz::https://github.com/verityOGrichard/focus-os/archive/refs/heads/master.tar.gz
-	sha256sums = SKIP
+	source = focus-os-1.0.0.tar.gz::https://github.com/verityOGrichard/focus-os/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5
 
 pkgname = focus-os
