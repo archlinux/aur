@@ -2,7 +2,7 @@
 
 pkgname=openai-codex-desktop
 pkgver=26.305.950
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenAI Codex desktop app"
 arch=('x86_64')
 url="https://developers.openai.com/codex/app/"
