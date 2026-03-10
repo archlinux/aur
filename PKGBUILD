@@ -1,56 +1,54 @@
 # Maintainer: nosduco <nosduco at gmail dot com>
 pkgname=streamcontroller
-_pkgname=${pkgname%-git}
-_reponame=StreamController
-pkgver=r1856.0967bb2a
-pkgrel=2
+pkgver=1.5.0beta14
+pkgrel=1
+_pkgver=1.5.0-beta.14
+_reponame=StreamController-$_pkgver
+_pkgname=${pkgname}
 pkgdesc="An elegant Linux app for the Elgato Stream Deck with support for plugins"
 arch=('any')
 url="https://github.com/StreamController/StreamController"
 license=('GPL-3')
-depends=('python' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk' 'libportal' 'libportal-gtk4' 'libadwaita')
-makedepends=('git' 'python-pip')
-source=("git+https://github.com/StreamController/StreamController.git")
-sha256sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/$_reponame"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-build() {
-    cd "$srcdir/$_reponame"
-
-    # Install dependencies isolated
-    pip install --target="$srcdir/deps" --no-warn-script-location -r requirements.txt
-}
+depends=('python' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk' 'libportal' 'libportal-gtk4' 'libadwaita' 'gobject-introspection')
+makedepends=('python-pip')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/StreamController/StreamController/archive/refs/tags/$_pkgver.tar.gz")
+sha256sums=('4656486b7474fa91c775ed2551c6a28bce5a67a6ef90bead9718c20367546e7a')
+provides=('streamcontroller')
+conflicts=('streamcontroller-git')
 
 package() {
-    cd "$srcdir"
+  # Create virtualenv with dependencies
+  mkdir -p "$pkgdir/usr/local/lib/$_pkgname"
+  python -m venv "$pkgdir/usr/local/lib/$_pkgname"
+  source "$pkgdir/usr/local/lib/$_pkgname/bin/activate"
+  cd "$srcdir/$_reponame"
+  pip install -r requirements.txt
+  deactivate
 
-    # Copy/install repository files and dependencies
-    mkdir -p "$pkgdir/usr/lib/$pkgname"
-    install -d "$_reponame" "$pkgdir/usr/lib/$pkgname/"
-    cp -r "$_reponame"/* "$pkgdir/usr/lib/$pkgname/"
-    cp -r "deps"/* "$pkgdir/usr/lib/$pkgname"
+  # Ensure correct venv is used after install
+  cd "$pkgdir/usr/local/lib/$_pkgname/bin"
+  sed -i "s|$pkgdir||g" *
+  cd "$srcdir/$_reponame"
 
-    # Install launch script to /usr/bin
-    mkdir -p "$pkgdir/usr/bin"
-    echo "#!/bin/bash" > "$pkgdir/usr/bin/$pkgname"
-    echo "cd /usr/lib/$pkgname" >> "$pkgdir/usr/bin/$pkgname"
-    echo "python3 main.py \$@" >> "$pkgdir/usr/bin/$pkgname"
-    chmod +x "$pkgdir/usr/bin/$pkgname"
+  # Install source files
+  mkdir -p "$pkgdir/usr/lib/$_pkgname"
+  cp -r "$srcdir/$_reponame"/* "$pkgdir/usr/lib/$_pkgname/"
 
-    # Install application entry (use upstream desktop file with corrected Exec and StartupWMClass)
-    sed 's|Exec=.*|Exec=streamcontroller|' "$srcdir/$_reponame/flatpak/launch.desktop" > /tmp/sc.desktop
-    echo "StartupWMClass=com.core447.StreamController" >> /tmp/sc.desktop
-    install -Dm644 /tmp/sc.desktop "$pkgdir/usr/share/applications/com.core447.StreamController.desktop"
+  # Install launch script to /usr/bin
+  mkdir -p "$pkgdir/usr/bin"
+  cat <<EOF > "$pkgdir/usr/bin/$_pkgname"
+#!/bin/bash
+cd /usr/lib/$_pkgname
+source /usr/local/lib/$_pkgname/bin/activate
+exec python main.py "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/$_pkgname"
 
-    # Install icon under reverse-domain name matching the app's GApplication ID
-    install -Dm644 "$srcdir/$_reponame/flatpak/icon_256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.core447.StreamController.png"
-}
+  # Install application entry (use upstream desktop file with corrected Exec and StartupWMClass)
+  sed 's|Exec=.*|Exec=streamcontroller|' "$srcdir/$_reponame/flatpak/launch.desktop" > /tmp/sc.desktop
+  echo "StartupWMClass=com.core447.StreamController" >> /tmp/sc.desktop
+  install -Dm644 /tmp/sc.desktop "$pkgdir/usr/share/applications/com.core447.StreamController.desktop"
 
-clean() {
-  cd "$srcdir"
-  rm -rf "$_reponame" "deps"
+  # Install icon under reverse-domain name matching the app's GApplication ID
+  install -Dm644 "$srcdir/$_reponame/flatpak/icon_256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.core447.StreamController.png"
 }
