@@ -1,8 +1,8 @@
 # Maintainer: nosduco <nosduco at gmail dot com>
 pkgname=streamcontroller
-pkgver=1.5.0beta13
+pkgver=1.5.0beta14
 pkgrel=1
-_pkgver=1.5.0-beta.13
+_pkgver=1.5.0-beta.14
 _reponame=StreamController-$_pkgver
 _pkgname=${pkgname}
 pkgdesc="An elegant Linux app for the Elgato Stream Deck with support for plugins"
@@ -11,9 +11,8 @@ url="https://github.com/StreamController/StreamController"
 license=('GPL-3')
 depends=('python' 'xdg-desktop-portal' 'xdg-desktop-portal-gtk' 'libportal' 'libportal-gtk4' 'libadwaita' 'gobject-introspection')
 makedepends=('python-pip')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/StreamController/StreamController/archive/refs/tags/$_pkgver.tar.gz" "streamcontroller.desktop")
-sha256sums=('d671ca178682e3c4b0cf4be88b0d850b21c6db6e7c79f4b9873473e819061cc9'
-            'b671ce8638922fca5ea05bf12852886d983b9cae33aaf226a57c8bcc51a39760')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/StreamController/StreamController/archive/refs/tags/$_pkgver.tar.gz")
+sha256sums=('4656486b7474fa91c775ed2551c6a28bce5a67a6ef90bead9718c20367546e7a')
 provides=('streamcontroller')
 conflicts=('streamcontroller-git')
 
@@ -45,9 +44,11 @@ exec python main.py "\$@"
 EOF
   chmod +x "$pkgdir/usr/bin/$_pkgname"
 
-  # Install application entry
-  install -Dm644 "$startdir/streamcontroller.desktop" "$pkgdir/usr/share/applications/streamcontroller.desktop"
+  # Install application entry (use upstream desktop file with corrected Exec and StartupWMClass)
+  sed 's|Exec=.*|Exec=streamcontroller|' "$srcdir/$_reponame/flatpak/launch.desktop" > /tmp/sc.desktop
+  echo "StartupWMClass=com.core447.StreamController" >> /tmp/sc.desktop
+  install -Dm644 /tmp/sc.desktop "$pkgdir/usr/share/applications/com.core447.StreamController.desktop"
 
-  # Install icon
-  install -Dm644 "$srcdir/$_reponame/flatpak/icon_256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/streamcontroller.png"
+  # Install icon under reverse-domain name matching the app's GApplication ID
+  install -Dm644 "$srcdir/$_reponame/flatpak/icon_256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.core447.StreamController.png"
 }
