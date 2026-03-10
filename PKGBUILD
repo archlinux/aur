@@ -1,7 +1,7 @@
 # Maintainer: Hugh Whelan <brickhousedevelopers@gmail.com>
 pkgname=scidcommunity
 pkgver=5.1.2.44
-pkgrel=73
+pkgrel=74
 pkgdesc="Enhanced fork of Scid chess database with Chess.com/Lichess integration, tablebase lookup, improved search, and additional training features"
 arch=('x86_64')
 url="https://github.com/whelanh/scidCommunity"
@@ -15,7 +15,7 @@ sha256sums=('SKIP')  # Safe to skip: integrity verified by commit hash
 
 build() {
   cd "${srcdir}/scidCommunity-${_commit}"
-  # Configure once with final runtime paths
+  # Configure with final runtime paths (not staging paths)
   ./configure --prefix=/usr SHAREDIR=/usr/share/scid
   make all
 }
@@ -27,8 +27,13 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/scid"
   
-  # Install data files using DESTDIR
-  make DESTDIR="${pkgdir}" install_shared
+  # Install data files manually (avoids permission issues with make install_shared)
+  # Copy all data directories that exist
+  for dir in tcl books bases html bitmaps sounds; do
+    if [ -d "$dir" ]; then
+      cp -r "$dir" "${pkgdir}/usr/share/scid/"
+    fi
+  done
   
   # Copy binary directly to /usr/bin
   install -Dm755 scidCommunity "${pkgdir}/usr/bin/scidCommunity"
