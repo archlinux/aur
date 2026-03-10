@@ -8,7 +8,7 @@ url="https://github.com/lxp731/leolock"
 license=('MIT')
 depends=('glibc')
 makedepends=('cargo' 'git')
-source=("v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz")
 sha256sums=('d3bb4f34896027e5477c97ebcc026a72297c7bd64ab4cbda416262a7d33677dc')
 
 prepare() {
