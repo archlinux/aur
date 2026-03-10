@@ -1,12 +1,13 @@
 pkgbase = vineflower-bin
 	pkgdesc = Vineflower Java decompiler (prebuilt jar)
 	pkgver = 1.11.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://vineflower.org/
 	arch = any
 	license = Apache-2.0
 	depends = java-runtime>=17
 	noextract = vineflower-1.11.2.jar
+	options = !debug
 	source = vineflower-1.11.2.jar::https://github.com/Vineflower/vineflower/releases/download/1.11.2/vineflower-1.11.2.jar
 	sha256sums = e1e2415e7f78b34960402c4beddfc88e033d7842a23ecd132a8ec2eadd54f6bf
 
