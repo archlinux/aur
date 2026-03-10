@@ -18,6 +18,7 @@ index 1d29f62..e19f4a5 100644
  #ifdef WITH_LIBXML2
  #include <libxml/xmlschemas.h>
  #include <libxml/xpath.h>
+ #include <libxml/SAX2.h>
 +#include <libxml/parser.h>
  #endif
  
