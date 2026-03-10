@@ -1,6 +1,8 @@
 fileignoreconfig:
 - filename: .SRCINFO
-  checksum: 5fa0fd1c15fbbdc8b6288013fc1933f34f4a0c45cccf1711afe98a460c98de33
+  ignore_detectors:
+    - filecontent
 - filename: PKGBUILD
-  checksum: 042b4f9a558db358fe918568907ff824721a47e024511ee6d7d8f899eb8f19f9
+  ignore_detectors:
+    - filecontent
 version: "1.0"
