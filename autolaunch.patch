@@ -1,0 +1,11 @@
+diff --git a/src/electron-main.ts b/src/electron-main.ts
+--- a/src/electron-main.ts
++++ b/src/electron-main.ts
+@@ -226,6 +226,7 @@ async function setupGlobals() {
+     global.launcher = new AutoLaunch({
+         name: global.vectorConfig.brand || 'SchildiChat',
+         isHidden: true,
++        path: "/usr/bin/schildichat-desktop",
+         mac: {
+             useLaunchAgent: true,
+         },

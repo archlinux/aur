@@ -40,16 +40,20 @@ makedepends=(
   # "nodejs>=${_nodeversion}" # Do not use this, since build process downloads and uses a manually specified node version.
   "nvm"
   "libxcrypt-compat"
+  "libgcc"
+  "libstdc++"
   "asar"
   "imagemagick" # To generate PNG icons from SVG.
   "inkscape" # To generate PNG icons from SVG.
   'pngcrush' # To generate PNG icons from SVG.
 )
 depends=(
-  "gcc-libs"
   "glib2"
+  "glibc"
   "${_electron}"
   "libsecret"
+  "libgcc_s.so"
+  "libstdc++.so"
   "sh"
 )
 optdepends=(
@@ -186,6 +190,7 @@ package() {
 
   # Icons
   install -Dvm0644 graphics/ic_launcher_sc.svg "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
+  install -Dvm0644 element-desktop/build/icon.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 
   install -Dvm644 -t "${pkgdir}/usr/share/doc/${_pkgname}" git.log RELEASE.md README.md FEATURES.md
 
