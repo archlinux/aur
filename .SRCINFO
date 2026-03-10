@@ -1,0 +1,22 @@
+pkgbase = coursefin
+	pkgdesc = Desktop application for managing and watching offline course content
+	pkgver = 0.4.10
+	pkgrel = 1
+	url = https://github.com/vasujain275/coursefin
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.24
+	makedepends = pnpm
+	makedepends = nodejs
+	makedepends = pkgconf
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-libav
+	source = coursefin-0.4.10.tar.gz::https://github.com/vasujain275/coursefin/archive/refs/tags/v0.4.10.tar.gz
+	sha256sums = SKIP
+
+pkgname = coursefin
