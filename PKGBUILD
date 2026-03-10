@@ -3,7 +3,7 @@
 # Co-Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="gizmosql-bin"
-pkgver=1.19.1
+pkgver=1.19.2
 pkgrel=1
 pkgdesc="A Flight SQL Server implementation with DuckDB and SQLite back-ends"
 
@@ -17,8 +17,8 @@ options=("!strip")
 
 source_x86_64=("gizmosql-${pkgver}-amd64.zip::https://github.com/gizmodata/gizmosql/releases/download/v${pkgver}/gizmosql_cli_linux_amd64.zip")
 source_aarch64=("gizmosql-${pkgver}-arm64.zip::https://github.com/gizmodata/gizmosql/releases/download/v${pkgver}/gizmosql_cli_linux_arm64.zip")
-b2sums_x86_64=('36e87085e52825a31947a0f1369d0399b62f8a54fc4a2181adff4874066adabe03183d0773d71500a5bad7a1a6b45ae5bfbb25b77efe445ec7d633cdd06818d2')
-b2sums_aarch64=('246746f5396171028c0feb9f7eec400b3b1a54ad4fa2f0989f7e0d7bf5b61c26667fa3fbfa9490de01ae15b1d5029dace0249e63f6ff1fd17962bc6383c4e446')
+b2sums_x86_64=('c3f5ae5ea148174b500a26de252a77d69e042ee20bafe90afcd1e7c1ae7477fe30c825d705db9066ab010ce4c325fa546b5541cb0e180c80c309c62165736d01')
+b2sums_aarch64=('6dd7d52df2e088746e4e1bfcd79c7f04e407235594d5aa696a0780079a6879e2e296c2c656422eabec2d952631dd2548c893fcbead7935fd182ab60b890e5d57')
 
 package(){
     install -D -m 755 "gizmosql_server" -t "${pkgdir}/usr/bin"
