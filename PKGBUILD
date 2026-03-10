@@ -8,6 +8,7 @@ pkgdesc="SMP relay server for SimpleX Chat - private messaging without user iden
 arch=('x86_64' 'aarch64')
 url="https://simplex.chat/docs/server.html"
 license=('AGPL-3.0-only')
+keywords=('simplex' 'simplex-chat' 'simplex-server')
 
 depends=('glibc' 'openssl')
 
