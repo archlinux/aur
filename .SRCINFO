@@ -1,0 +1,20 @@
+pkgbase = lazyff-bin
+	pkgdesc = Interactive TUI wrapper around ffmpeg for media operations
+	pkgver = 0.1.3_test
+	pkgrel = 1
+	url = https://github.com/Manas-Kenge/lazyff
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = ffmpeg
+	depends = glibc
+	provides = lazyff
+	conflicts = lazyff
+	source = LICENSE::https://raw.githubusercontent.com/Manas-Kenge/lazyff/v0.1.3-test/LICENSE
+	sha256sums = 997473d4ea92fed39e3bf27fc10eb9ac55ad49a2e2ddf4eb5d0b6ce93aa12b33
+	source_x86_64 = lazyff-0.1.3-test-x86_64.tar.gz::https://github.com/Manas-Kenge/lazyff/releases/download/v0.1.3-test/lazyff-linux-x64.tar.gz
+	sha256sums_x86_64 = 40b505b268ba3c0b8a9f1bb565ab498ca15dbc45a29ed183af8fc95bb85e6441
+	source_aarch64 = lazyff-0.1.3-test-aarch64.tar.gz::https://github.com/Manas-Kenge/lazyff/releases/download/v0.1.3-test/lazyff-linux-arm64.tar.gz
+	sha256sums_aarch64 = 964fa74b480b93ea61a592108970122c84993e6bda5d0b2a4630d4477fe2a8be
+
+pkgname = lazyff-bin
