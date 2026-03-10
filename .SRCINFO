@@ -1,12 +1,10 @@
 pkgbase = greetd-tuigreet-soupy-boy-bin
 	pkgdesc = A console UI greeter for greetd
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/soupy-boy/tuigreet
 	arch = x86_64
 	license = GPL3
-	depends = gcc-libs
-	depends = greetd
 	conflicts = greetd-tuigreet
 	conflicts = greetd-tuigreet-git
 	conflicts = greetd-tuigreet-soupy-boy-git
@@ -16,3 +14,5 @@ pkgbase = greetd-tuigreet-soupy-boy-bin
 	sha256sums = 8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3
 
 pkgname = greetd-tuigreet-soupy-boy-bin
+	depends = gcc-libs
+	depends = greetd
