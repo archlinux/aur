@@ -1,14 +1,13 @@
 pkgbase = morphe-cli
 	pkgdesc = Command-line tool for patching Android apps using Morphe Patcher
 	pkgver = 1.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://morphe.software
 	arch = any
 	license = GPL-3.0-or-later
 	depends = java-runtime>=11
 	optdepends = android-tools: for installing patched APKs via ADB
 	noextract = morphe-cli-1.5.0.jar
-	options = !strip
 	options = !debug
 	source = morphe-cli-1.5.0.jar::https://github.com/MorpheApp/morphe-cli/releases/download/v1.5.0/morphe-cli-1.5.0-all.jar
 	source = https://raw.githubusercontent.com/MorpheApp/morphe-cli/v1.5.0/LICENSE
