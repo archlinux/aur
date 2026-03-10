@@ -1,0 +1,5 @@
+[rep-bin]
+source = "github"
+github = "baalimago/repeater"
+use_latest_release = true
+prefix = "v"

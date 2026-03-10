@@ -1,0 +1,23 @@
+pkgbase = rep-bin
+	pkgdesc = xargs, but different..! Better at some things (repeating stuff), worse at others (not repeating stuff).
+	pkgver = 1.2.6
+	pkgrel = 1
+	url = https://github.com/baalimago/repeater
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	license = MIT
+	provides = rep
+	conflicts = rep
+	source = README-1.2.6.md::https://raw.githubusercontent.com/baalimago/repeater/v1.2.6/README.md
+	source = LICENSE-1.2.6::https://raw.githubusercontent.com/baalimago/repeater/v1.2.6/LICENSE
+	sha256sums = 0a490de6d4d5353a98d84ed640cf5e0c50605f170e2e618c9d62a983aa844314
+	sha256sums = bc5378230a80daace8ac9ea68f538fb33997fd2abf0fa5d91905365b6b8924dc
+	source_x86_64 = rep-x86_64-1.2.6::https://github.com/baalimago/repeater/releases/download/v1.2.6/repeater_linux-amd64_v1.2.6
+	sha256sums_x86_64 = 5a6f68f6c2f131790b198d8729fb46aa37cc35bcdf09dd2d67beba5973e37d7c
+	source_i686 = rep-i686-1.2.6::https://github.com/baalimago/repeater/releases/download/v1.2.6/repeater_linux-386_v1.2.6
+	sha256sums_i686 = e72981654010681342eca2417427dfd2494c6efe38e55fe69658e9c2a01059f8
+	source_aarch64 = rep-aarch64-1.2.6::https://github.com/baalimago/repeater/releases/download/v1.2.6/repeater_linux-arm64_v1.2.6
+	sha256sums_aarch64 = 4a6c1c85b80661789cbb17a8d93a0e659ccfc069ec3a8f701fcd2e55888c46b2
+
+pkgname = rep-bin
