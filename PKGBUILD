@@ -52,7 +52,7 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    make DESTDIR="${pkgdir}/" install
+    make DESTDIR="${pkgdir}" install
     install -Dm644 "${srcdir}/apache.example.conf" "${pkgdir}/${_docdir}/apache.example.conf"
 
     cd "${pkgdir}"
