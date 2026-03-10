@@ -1,6 +1,6 @@
 pkgbase = tidgi-desktop-git
 	pkgdesc = An privatcy-in-mind, automated, auto-git-backup, freely-deployed Tiddlywiki knowledge management Desktop note app, with local REST API.(Use system-wide electron)
-	pkgver = 0.12.1.update.r1.g29a9e45
+	pkgver = 0.13.0.prerelease19.r39.g64cc965
 	pkgrel = 1
 	url = https://tidgi.fun/
 	arch = aarch64
@@ -12,7 +12,10 @@ pkgbase = tidgi-desktop-git
 	makedepends = pnpm
 	makedepends = nvm
 	makedepends = curl
-	depends = electron34
+	makedepends = jq
+	depends = electron39
+	depends = perl
+	depends = libcurl-gnutls
 	provides = tidgi
 	provides = tidgi-desktop
 	conflicts = tidgi-desktop
@@ -20,6 +23,6 @@ pkgbase = tidgi-desktop-git
 	source = tidgi-desktop.git::git+https://github.com/tiddly-gittly/TidGi-Desktop.git
 	source = tidgi-desktop.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = tidgi-desktop-git
