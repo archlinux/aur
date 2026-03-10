@@ -1,0 +1,18 @@
+pkgbase = unwind-baremetal-compiler-rt
+	pkgdesc = libunwind for bare-metal ARM Cortex-M targets (armv7m, armv7em, armv8m.main, armv8.1m.main)
+	pkgver = 21.1.8
+	pkgrel = 1
+	url = https://github.com/llvm/llvm-project
+	arch = x86_64
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = clang
+	makedepends = llvm
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = arm-none-eabi-newlib
+	options = !strip
+	options = !debug
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.8/llvm-project-21.1.8.src.tar.xz
+	sha256sums = 4633a23617fa31a3ea51242586ea7fb1da7140e426bd62fc164261fe036aa142
+
+pkgname = unwind-baremetal-compiler-rt
