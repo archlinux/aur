@@ -1,9 +1,9 @@
 # Maintainer: Starry Wang <starry.wang@suse.com>
 pkgname=hangar
-pkgver=1.9.3
+pkgver=1.9.4
 pkgrel=1
 epoch=
-pkgdesc="Command line utility for container images"
+pkgdesc="Command line utility for container images (with CGO disabled)"
 arch=("x86_64" "aarch64")
 url="https://github.com/cnrancher/hangar"
 license=("Apache-2.0")
@@ -12,6 +12,7 @@ depends=(
     "gpgme"
     "device-mapper"
     "containers-common"
+    "sqlite"
 )
 makedepends=(
     "go"
@@ -45,7 +46,7 @@ build() {
         -buildmode=pie \
         -mod=readonly \
         -modcacherw \
-        -tags "containers_image_openpgp exclude_graphdriver_btrfs exclude_graphdriver_devicemapper" \
+        -tags "containers_image_openpgp exclude_graphdriver_btrfs exclude_graphdriver_devicemapper libsqlite3" \
         -ldflags "${GO_LDFLAGS}" \
         -o ${pkgname} \
         .

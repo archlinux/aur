@@ -1,6 +1,6 @@
 pkgbase = hangar
 	pkgdesc = Command line utility for container images
-	pkgver = 1.9.3
+	pkgver = 1.9.4
 	pkgrel = 1
 	url = https://github.com/cnrancher/hangar
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = hangar
 	conflicts = hangar-git
 	conflicts = hangar-bin-debug
 	conflicts = hangar-git-debug
-	source = git+https://github.com/cnrancher/hangar#tag=v1.9.3
+	source = git+https://github.com/cnrancher/hangar#tag=v1.9.4
 	sha256sums = SKIP
 
 pkgname = hangar
