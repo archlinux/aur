@@ -16,7 +16,7 @@ depends=(
 provides=('shiori-ebook')
 conflicts=('shiori-ebook' 'shiori-ebook-git')
 source_x86_64=("${url}/releases/download/v${pkgver}/Shiori_${pkgver}_amd64.deb")
-sha256sums_x86_64=('SKIP')
+sha256sums_x86_64=('7709d1928e3dac9fd0cb21d60cb0cb1c369dd7ffcf095cc7872313e481a5a346')
 
 package() {
     # Extract .deb package

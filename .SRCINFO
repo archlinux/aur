@@ -14,6 +14,6 @@ pkgbase = shiori-ebook-bin
 	conflicts = shiori-ebook
 	conflicts = shiori-ebook-git
 	source_x86_64 = https://github.com/vinayydv3695/Shiori/releases/download/v0.1.8/Shiori_0.1.8_amd64.deb
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 7709d1928e3dac9fd0cb21d60cb0cb1c369dd7ffcf095cc7872313e481a5a346
 
 pkgname = shiori-ebook-bin
