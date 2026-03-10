@@ -1,13 +1,13 @@
 # Maintainer: Gentrit Biba <gentritbiba@gmail.com>
 pkgname=cogpit-server
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Headless web server for Cogpit — Claude Code session dashboard"
 arch=('x86_64' 'aarch64')
 url="https://github.com/gentritbiba/cogpit"
 license=('MIT')
 depends=('bun')
-makedepends=('git')
+makedepends=('git' 'python' 'nodejs')
 conflicts=()
 source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
@@ -30,6 +30,7 @@ package() {
   # Copy server + electron/server.ts (reused by standalone entry point)
   cp -r server "${pkgdir}/opt/${pkgname}/"
   cp -r electron "${pkgdir}/opt/${pkgname}/"
+  cp -r src "${pkgdir}/opt/${pkgname}/"
   cp package.json "${pkgdir}/opt/${pkgname}/"
   cp tsconfig.json "${pkgdir}/opt/${pkgname}/" 2>/dev/null || true
   cp -r node_modules "${pkgdir}/opt/${pkgname}/"
@@ -38,6 +39,8 @@ package() {
   install -Dm644 aur/cogpit-server.service \
     "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
 
-  # Install license
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Install license (if present)
+  if [ -f LICENSE ]; then
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  fi
 }
