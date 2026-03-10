@@ -6,7 +6,7 @@ pkgbase = netbird-tui
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	depends = netbird
+	optdepends = netbird: NetBird daemon (required at runtime)
 	source = netbird-tui-1.0.0.tar.gz::https://github.com/n0pashkov/netbird-tui/archive/v1.0.0.tar.gz
 	sha256sums = 92d7d06934a26815c4bd509c196ed2833b2c0251bacba800b28460570d05c4df
 
