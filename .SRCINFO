@@ -1,7 +1,7 @@
 pkgbase = ralphex-bin
 	pkgdesc = CLI tool that orchestrates Claude Code to execute implementation plans autonomously
 	pkgver = 0.20.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ralphex.com
 	arch = x86_64
 	arch = aarch64

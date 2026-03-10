@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=ralphex-bin
 pkgver=0.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool that orchestrates Claude Code to execute implementation plans autonomously"
 arch=('x86_64' 'aarch64')
 url="https://ralphex.com"
@@ -23,8 +23,8 @@ sha256sums_x86_64=('287dd3fb0a77ee140260466e1d8f14a6e36e47fd406a20298f4205c45a06
 sha256sums_aarch64=('c3fd1d4392f2c24b8e81a4cd3aefd1f40386b00308284c78af0578faf0128840')
 
 latestver() {
-    curl -fsSL "https://api.github.com/repos/umputun/ralphex/releases/latest" |
-    jq -r '.tag_name // empty' | sed 's/^v//'
+    curl -fsSL 'https://api.github.com/repos/umputun/ralphex/releases/latest' | jq -r 'select(any(.assets[]?; .name | test("^ralphex_[0-9.]+_linux_amd64\\.tar\\.gz$")) and any(.assets[]?; .name | test("^ralphex_[0-9.]+_linux_arm64\\.tar\\.gz$"))) | .tag_name' |
+    sed -E 's/^v//'
 }
 
 package() {
