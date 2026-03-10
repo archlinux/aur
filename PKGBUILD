@@ -10,6 +10,9 @@ pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
 url="https://github.com/Tautulli/Tautulli"
 license=('GPL')
+depends=(
+  'python-pkg_resources'
+)
 makedepends=(
   'curl'
   'python-setuptools'
