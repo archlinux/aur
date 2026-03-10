@@ -1,0 +1,20 @@
+pkgbase = imagecompare-bin
+	pkgdesc = Image Comparison Program with various helpful features and tools.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/gimletlove/image-compare
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = libvips
+	depends = hicolor-icon-theme
+	optdepends = libjxl: JPEG XL image support
+	optdepends = libheif: HEIF and HEIC image support
+	provides = imagecompare
+	conflicts = imagecompare
+	noextract = imagecompare-bin-1.0.0-x86_64.zip
+	source = imagecompare-bin-1.0.0-x86_64.zip::https://github.com/gimletlove/image-compare/releases/download/1.0.0/imagecompare-linux-1.0.0.zip
+	sha256sums = 9f5a1c5c1d8c464f1fdbc2d16d17de7dae8fbb7e7d4b6f858fe3422b5691c864
+
+pkgname = imagecompare-bin
