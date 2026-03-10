@@ -1,5 +1,5 @@
 pkgname=embuer
-pkgver=0.2.19
+pkgver=0.2.23
 pkgrel=1
 pkgdesc="A small session runner an systemd user slice replacement for embedded systems"
 arch=('x86_64')
@@ -7,11 +7,12 @@ url="https://github.com/NeroReflex/embuer"
 license=('GPL')
 depends=(
     'btrfs-progs'
+    'xz'
 )
 optdepends=()
 makedepends=('cargo')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('332665d9651bab8952c95e141b32ee15c3ab07f6d426c23ecddcd1e915fdc38d')
+sha256sums=('07175b940d02cb51981e8dabe4cc9b74841bd3f1f55970a08550278b10e41630')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

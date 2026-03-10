@@ -1,13 +1,14 @@
 pkgbase = embuer
 	pkgdesc = A small session runner an systemd user slice replacement for embedded systems
-	pkgver = 0.2.19
+	pkgver = 0.2.23
 	pkgrel = 1
 	url = https://github.com/NeroReflex/embuer
 	arch = x86_64
 	license = GPL
 	makedepends = cargo
 	depends = btrfs-progs
-	source = https://github.com/NeroReflex/embuer/archive/refs/tags/0.2.19.tar.gz
-	sha256sums = 332665d9651bab8952c95e141b32ee15c3ab07f6d426c23ecddcd1e915fdc38d
+	depends = xz
+	source = https://github.com/NeroReflex/embuer/archive/refs/tags/0.2.23.tar.gz
+	sha256sums = 07175b940d02cb51981e8dabe4cc9b74841bd3f1f55970a08550278b10e41630
 
 pkgname = embuer
