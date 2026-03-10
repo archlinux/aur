@@ -1,0 +1,19 @@
+pkgbase = optimathsat
+	pkgdesc = An efficient Optimization Modulo Theories (OMT) tool
+	pkgver = 1.7.4
+	pkgrel = 1
+	url = https://optimathsat.disi.unitn.it
+	arch = x86_64
+	license = custom:MathSAT5-non-commercial
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	conflicts = mathsat
+	conflicts = mathsat-5
+	options = !debug
+	options = staticlibs
+	source_x86_64 = optimathsat-1.7.4.tar.gz::https://optimathsat.disi.unitn.it/releases/optimathsat-1.7.4/optimathsat-1.7.4-linux-64-bit.tar.gz
+	b2sums_x86_64 = 521ed29091d339327e8203f61cce6b75e45aaf9f41f30765bab0d0042dca4176d95c8d81f118a9c737b56c1aa355fa6a2b16a963890b9ce85b1100d54e3420a0
+
+pkgname = optimathsat
