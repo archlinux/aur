@@ -1,0 +1,5 @@
+[secfesc]
+source = "github"
+github = "ake13-art/secfesc"
+use_latest_release = true
+prefix = "v"
