@@ -1,14 +1,14 @@
-# Maintaniner: Soupy Boy <aur@bonking.im>
+# Maintainer: Soupy Boy <aur@bonking.im>
 # Contributor: Antoine POPINEAU <antoine at popineau dot eu>
 
 pkgname=greetd-tuigreet-soupy-boy-git
 pkgver=1.0.0.r0.g20f5feb
-pkgrel=0
+pkgrel=1
 
 pkgdesc='A console UI greeter for greetd'
 url='https://github.com/soupy-boy/tuigreet'
 license=(GPL3)
-conflicts=(greetd-tuigreet greetd-tuigreet-git)
+conflicts=(greetd-tuigreet greetd-tuigreet-git greetd-tuigreet-soupy-boy-bin)
 
 arch=(x86_64)
 makedepends=(git rust scdoc)
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-  depends=(gcc-libs)
+  depends=(gcc-libs greetd)
 
   install -Dm755 "${srcdir}/tuigreet/target/release/tuigreet" "${pkgdir}/usr/bin/tuigreet"
   install -Dm755 "${srcdir}/tuigreet/contrib/man/tuigreet-1.roff" "${pkgdir}/usr/share/man/man1/tuigreet.1"
