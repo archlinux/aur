@@ -2,7 +2,7 @@
 
 pkgname=python-guardpost
 _name=${pkgname#python-}
-pkgver=1.0.4
+pkgver=1.1.0
 pkgrel=1
 epoch=
 pkgdesc="Framework to handle authentication and authorization."
@@ -29,7 +29,7 @@ makedepends=(
 options=('!strip' '!debug')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('0e3461d3303c7aecdaa65a05e39ef6d8b26ce1a4ebe4b9724b573b562487960c')
+sha256sums=('17f200cca570484e18e23a2aadcc9b6ded31c51672b52999f278901d4f6fe56c')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
