@@ -1,6 +1,6 @@
 pkgbase = lx-bin
 	pkgdesc = A small CLI tool that converts selected files into clean, consistent Markdown-fenced blocks, making it easy to provide precise, repeatable context to LLMs
-	pkgver = 1.1.4
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/rasros/lx
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = lx-bin
 	license = MIT
 	provides = lx
 	conflicts = lx
-	source_x86_64 = lx-x86_64-1.1.4.tgz::https://github.com/rasros/lx/releases/download/v1.1.4/lx_1.1.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = fa22ead651c8184c5707408371b78d99d4b4da1ea1d43d5d36051b017403303f
-	source_aarch64 = lx-aarch64-1.1.4.tgz::https://github.com/rasros/lx/releases/download/v1.1.4/lx_1.1.4_linux_arm64.tar.gz
-	sha256sums_aarch64 = bf8ad541a9071e63a855625a1e0164daf8507d94acbd37b2d34e2f40ff68c252
+	source_x86_64 = lx-x86_64-1.1.5.tgz::https://github.com/rasros/lx/releases/download/v1.1.5/lx_1.1.5_linux_amd64.tar.gz
+	sha256sums_x86_64 = 951491c57cd86c6806d38f467a5b994ea9a5222f742f848e5183f543a4ad1eef
+	source_aarch64 = lx-aarch64-1.1.5.tgz::https://github.com/rasros/lx/releases/download/v1.1.5/lx_1.1.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = 64ab29e763ea347e5cf3074d065224fc261d08e3edf5010edd7ebbb718a969fc
 
 pkgname = lx-bin
