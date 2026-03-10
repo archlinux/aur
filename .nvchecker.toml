@@ -1,0 +1,5 @@
+[localias-bin]
+source = "github"
+github = "thirukguru/localias"
+use_latest_release = true
+prefix = "v"

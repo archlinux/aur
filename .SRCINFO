@@ -1,0 +1,18 @@
+pkgbase = localias-bin
+	pkgdesc = Local reverse proxy -- stable '.localhost' URLs for development
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/thirukguru/localias
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = localias
+	conflicts = localias
+	source = README-1.0.0.md::https://raw.githubusercontent.com/thirukguru/localias/v1.0.0/README.md
+	sha256sums = b1910f81b5a37284a5a8b5dacc1ad0221c4b0739e09f02a18c45b152ff9fe12c
+	source_x86_64 = localias-x86_64-1.0.0.tgz::https://github.com/thirukguru/localias/releases/download/v1.0.0/localias_1.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = c3af569739422bdfa61803328ea06aa016d25f112361b422a403358a4cbda943
+	source_aarch64 = localias-aarch64-1.0.0.tgz::https://github.com/thirukguru/localias/releases/download/v1.0.0/localias_1.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 728b5f83f2d251e48ed6697bf6e90e94569d05f3bf1bd47382edd0c9b77a849e
+
+pkgname = localias-bin
