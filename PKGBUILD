@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgbase=openfang
 pkgname=('openfang-cli' 'openfang-gui' 'openfang-whatsapp-gateway')
-pkgver=0.3.34
+pkgver=0.3.42
 pkgrel=1
 pkgdesc='Open-source Agent Operating System built in Rust'
 arch=('x86_64' 'aarch64')
@@ -16,7 +16,7 @@ source=(
     "openfang-desktop.desktop"
     "openfang-whatsapp-gateway.service"
 )
-b2sums=('9c007980ea2b4abefe06a789315e2cfcab37bcaa848ce92ae1105eafc119f85bff7785c31a54c669134446be79d1d7bb5e4f465c7f37f86bc969f8785fe82ad7'
+b2sums=('9df8ba8c9d94a50c00f9dd84a6c2a413b56747783c7d4b2dac6d56bba602dad82519fb3f5df4d80b3305f7fa3522a3da1ec8fd9441f3ab3c02f4697b60a9f71a'
         '0672ef1dd58e435156c01674d2e7ad6182d1f4fd7d94b50cd572f194977238765cf9bcf85076aac08b384df85e0b519b748f3a43a39f9250540d5444b3877033'
         '3857bf85c9486bb42f0c5c5efbb61b0f7ab64d25e88decf1cdb39114f5c3b6ba3ef38a9f12f67f8e6445768c4e6406baf4245bb25ecd850020ca425e1b63e1ac'
         'ee111fbee9536979f7f42acc28f11bf74fdeaea41eea2510de8d2d0cd851bbcf69d53238a373918d79d552e1bedba22a7b78408b42048ab5411b75ec13fce78b'
@@ -26,13 +26,18 @@ b2sums=('9c007980ea2b4abefe06a789315e2cfcab37bcaa848ce92ae1105eafc119f85bff7785c
 prepare() {
     cd "${pkgbase}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "${pkgbase}-${pkgver}"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # Remap source paths so binaries don't embed $srcdir, cargo registry, or rustup paths.
+    # Three separate flags: PKGBUILD src dir, Cargo registry cache, rustup toolchain stdlib.
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${srcdir}=/build"
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${CARGO_HOME:-${HOME}/.cargo}=/vendor"
+    export RUSTFLAGS="${RUSTFLAGS} --remap-path-prefix=${RUSTUP_HOME:-${HOME}/.rustup}=/rustup"
     # Remove -flto flags: GCC LTO bitcode in bundled sqlite3.c is
     # incompatible with rust-lld. Strip -flto=auto first, then bare -flto.
     CFLAGS="${CFLAGS//-flto=auto/}"
@@ -68,7 +73,7 @@ check() {
 
 package_openfang-cli() {
     pkgdesc='openfang CLI — terminal interface for the openfang Agent OS'
-    depends=('glibc' 'openssl')
+    depends=('glibc' 'openssl' 'libgcc')
     optdepends=(
         'chromium: Browser Hand support'
         'yt-dlp: Clip Hand support'
@@ -96,7 +101,7 @@ package_openfang-cli() {
 
 package_openfang-gui() {
     pkgdesc='openfang GUI — desktop application for the openfang Agent OS'
-    depends=('glibc' 'openssl' 'webkit2gtk-4.1' 'gtk3' 'cairo' 'gdk-pixbuf2' 'glib2' 'libsoup3' 'hicolor-icon-theme')
+    depends=('glibc' 'openssl' 'libgcc' 'webkit2gtk-4.1' 'gtk3' 'cairo' 'gdk-pixbuf2' 'glib2' 'libsoup3' 'hicolor-icon-theme')
     optdepends=(
         'openfang-cli: CLI companion tool'
         'chromium: Browser Hand support'
@@ -126,9 +131,8 @@ package_openfang-gui() {
 
 package_openfang-whatsapp-gateway() {
     pkgdesc='openfang WhatsApp gateway — QR login and bidirectional messaging via Baileys'
-    depends=('nodejs' 'libvips' 'glibc' 'glib2' 'bash' 'libstdc++')
+    depends=('nodejs' 'libvips' 'glibc' 'glib2' 'bash' 'libstdc++' 'libgcc')
     optdepends=('openfang-cli: connect gateway to the local openfang agent')
-    provides=('openfang-whatsapp-gateway')
 
     local _gatewaydir="${pkgdir}/usr/lib/openfang-whatsapp-gateway"
 
@@ -138,13 +142,17 @@ package_openfang-whatsapp-gateway() {
     install -dm755 "${_gatewaydir}"
     cp -r index.js package.json node_modules "${_gatewaydir}/"
 
-    # Remove build artifacts from sharp (keep only the final .node binary)
+    # Remove ALL build artifacts from sharp — keep only the compiled .node binary
+    # Save .node, nuke build dir, restore it at the required path
     local _sharpbuild="${_gatewaydir}/node_modules/sharp/src/build"
-    rm -rf "${_sharpbuild}/Release/obj.target"
-    rm -rf "${_sharpbuild}/Release/.deps"
-    rm -rf "${_sharpbuild}/Release/node-addon-api"
-    find "${_sharpbuild}/Release" -maxdepth 1 ! -name '*.node' -not -type d -delete 2>/dev/null || true
-    find "${_sharpbuild}" -type d -empty -delete 2>/dev/null || true
+    local _nodebin
+    _nodebin=$(find "${_sharpbuild}/Release" -maxdepth 1 -name '*.node' 2>/dev/null | head -1)
+    if [[ -n "${_nodebin}" ]]; then
+        cp "${_nodebin}" "${srcdir}/_sharp_node_tmp.node"
+        rm -rf "${_sharpbuild}"
+        install -dm755 "${_sharpbuild}/Release"
+        mv "${srcdir}/_sharp_node_tmp.node" "${_sharpbuild}/Release/$(basename "${_nodebin}")"
+    fi
 
     # Remove @img prebuilt packages — we built sharp against system libvips
     rm -rf "${_gatewaydir}/node_modules/@img"
