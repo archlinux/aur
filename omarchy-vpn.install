@@ -1,0 +1,47 @@
+_get_user_home() {
+    local real_user="${SUDO_USER:-$(logname 2>/dev/null)}"
+    [ -z "$real_user" ] && return 1
+    eval echo "~$real_user"
+}
+
+_reload_waybar() {
+    # If waybar is running, just signal it to reload config
+    if pgrep -x waybar >/dev/null 2>&1; then
+        pkill -SIGUSR2 -x waybar
+        return
+    fi
+
+    # Waybar was killed (e.g. by older package version) — relaunch via Hyprland
+    local real_user="${SUDO_USER:-$(logname 2>/dev/null)}"
+    [ -z "$real_user" ] && return
+    local uid
+    uid=$(id -u "$real_user") || return
+    local run_dir="/run/user/$uid"
+    local hypr_dir
+    hypr_dir=$(find "$run_dir/hypr/" -maxdepth 1 -mindepth 1 -type d -print -quit 2>/dev/null) || return
+    [ -z "$hypr_dir" ] && return
+    XDG_RUNTIME_DIR="$run_dir" HYPRLAND_INSTANCE_SIGNATURE="$(basename "$hypr_dir")" \
+        hyprctl dispatch exec waybar
+}
+
+post_install() {
+    local home
+    home=$(_get_user_home) || return
+    HOME="$home" omarchy-vpn --setup-waybar 2>/dev/null
+    _reload_waybar
+}
+
+post_upgrade() {
+    local home
+    home=$(_get_user_home) || return
+    HOME="$home" omarchy-vpn --remove-waybar 2>/dev/null
+    HOME="$home" omarchy-vpn --setup-waybar 2>/dev/null
+    _reload_waybar
+}
+
+pre_remove() {
+    local home
+    home=$(_get_user_home) || return
+    HOME="$home" omarchy-vpn --remove-waybar 2>/dev/null
+    _reload_waybar
+}
