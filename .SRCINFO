@@ -1,0 +1,33 @@
+pkgbase = ytm-player
+	pkgdesc = A full-featured YouTube Music TUI client with vim-style navigation
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/peternaame-boop/ytm-player
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = mpv
+	depends = python
+	depends = python-aiosqlite
+	depends = python-click
+	depends = python-mpv
+	depends = python-pillow
+	depends = python-textual>=7.0
+	depends = python-ytmusicapi
+	depends = yt-dlp
+	optdepends = python-anyascii: lyrics transliteration to ASCII
+	optdepends = python-dbus-next: MPRIS media key support
+	optdepends = python-pylast: Last.fm scrobbling
+	optdepends = python-pypresence: Discord Rich Presence
+	optdepends = python-spotipy: Spotify playlist import (AUR)
+	optdepends = python-thefuzz: Spotify import fuzzy matching (AUR)
+	provides = ytm
+	conflicts = ytm-player-git
+	conflicts = ytm-player-bin
+	source = git+https://github.com/peternaame-boop/ytm-player.git#tag=v1.5.0
+	sha256sums = 2b33c934d7b2bf39f98f8705604f4fc6b980dc4223b99d039afd383ceb091451
+
+pkgname = ytm-player

@@ -1,0 +1,5 @@
+[ytm-player]
+source = "github"
+github = "peternaame-boop/ytm-player"
+use_latest_release = true
+prefix = "v"
