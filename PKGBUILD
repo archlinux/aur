@@ -2,7 +2,7 @@
 pkgname=streamcontroller
 _pkgname=${pkgname%-git}
 _reponame=StreamController
-pkgver=r1620.2b5e328
+pkgver=r1856.0967bb2a
 pkgrel=1
 pkgdesc="An elegant Linux app for the Elgato Stream Deck with support for plugins"
 arch=('any')
@@ -41,11 +41,13 @@ package() {
     echo "python3 main.py \$@" >> "$pkgdir/usr/bin/$pkgname"
     chmod +x "$pkgdir/usr/bin/$pkgname"
 
-    # Install application entry
-    install -Dm644 "$startdir/streamcontroller.desktop" "$pkgdir/usr/share/applications/streamcontroller.desktop"
+    # Install application entry (use upstream desktop file with corrected Exec and StartupWMClass)
+    sed 's|Exec=.*|Exec=streamcontroller|' "$srcdir/$_reponame/flatpak/launch.desktop" > /tmp/sc.desktop
+    echo "StartupWMClass=com.core447.StreamController" >> /tmp/sc.desktop
+    install -Dm644 /tmp/sc.desktop "$pkgdir/usr/share/applications/com.core447.StreamController.desktop"
 
-    # Install icon
-    install -Dm644 "$srcdir/$_reponame/flatpak/icon_256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/streamcontroller.png"
+    # Install icon under reverse-domain name matching the app's GApplication ID
+    install -Dm644 "$srcdir/$_reponame/flatpak/icon_256.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/com.core447.StreamController.png"
 }
 
 clean() {
