@@ -1,0 +1,21 @@
+pkgbase = localgo-bin
+	pkgdesc = LocalSend v2.1 protocol implementation — LAN file transfer CLI
+	pkgver = 0.3.7_SNAPSHOT_cd05b97
+	pkgrel = 1
+	url = https://github.com/bethropolis/localgo
+	license = MIT
+	optdepends = xclip: clipboard support on X11
+	optdepends = xsel: clipboard support on X11 (alternative)
+	optdepends = wl-clipboard: clipboard support on Wayland
+	depends = glibc
+	conflicts = localgo
+	conflicts = localgo-git
+	provides = localgo
+	arch = aarch64
+	source_aarch64 = https://github.com/bethropolis/localgo/releases/download/v0.3.7/localgo_0.3.7-SNAPSHOT-cd05b97_linux_arm64.tar.gz
+	sha256sums_aarch64 = 8bf25b1bd14a97695d970878e3ba9e1f063c5ae55a2376755ec8a4260c2379ef
+	arch = x86_64
+	source_x86_64 = https://github.com/bethropolis/localgo/releases/download/v0.3.7/localgo_0.3.7-SNAPSHOT-cd05b97_linux_amd64.tar.gz
+	sha256sums_x86_64 = 11c52bfdce95a04e48e05f6b9fcb6667781d44f9ad431722ede20de3e53b1bb2
+	
+pkgname = localgo-bin
