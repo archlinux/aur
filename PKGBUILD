@@ -27,8 +27,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_reponame}"
-  patch -Np1 -i "../${_reponame}-paths.patch"
+  patch -Np1 -i "../${_reponame}-paths.patch" -d "${_reponame}"
 }
 
 build() {
@@ -52,13 +51,13 @@ package() {
   cd "${_reponame}"
 
   install -Dm755 "bin/Release/${_reponame}" -t \
-    "${pkgdir}/usr/bin/"
+    "${pkgdir}/usr/bin"
 
   install -Dm644 "bin/ignore_${_reponame}.txt" -t \
-    "${pkgdir}/usr/share/${_reponame}/"
+    "${pkgdir}/usr/share/${_reponame}"
 
   install -Dm644 "LICENSE" -t \
-    "${pkgdir}/usr/share/licenses/${pkgname}/"
+    "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
