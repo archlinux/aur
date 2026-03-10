@@ -1,9 +1,9 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=mailspring-bin
 _pkgname=Mailspring
-pkgver=1.18.0
+pkgver=1.19.0
 _electronversion=39
-pkgrel=2
+pkgrel=1
 pkgdesc="A beautiful, fast and fully open source mail client.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://getmailspring.com/"
@@ -21,7 +21,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.rpm::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}-${pkgver}-0.1.${CARCH}.rpm"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('06b89e897612eeeeae5f9a10af766522e541172f19aa5fc4bc8b517e0e1b17ef'
+sha256sums=('a700a412358ddeea92870a3b450600a260027555413aa30cf291b5dacd4a731a'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -37,7 +37,7 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     _get_electron_version
     sed -i "s/${_pkgname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
-    sed -i "s/Exec=mailspring/Exec=mailspring --password-store=\"gnome-libsecret\"/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    sed -i "s/Exec=${pkgname%-bin}/Exec=${pkgname%-bin} --password-store=\"gnome-libsecret\"/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
