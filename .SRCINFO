@@ -1,9 +1,9 @@
 pkgbase = perl-crypt-idea
 	pkgdesc = Perl interface to IDEA block cipher
 	pkgver = 1.10
-	pkgrel = 1
-	url = https://metacpan.org/dist/Crypt-IDEA
-	arch = any
+	pkgrel = 2
+	url = https://metacpan.org/release/DPARIS/Crypt-IDEA-1.10
+	arch = x86_64
 	license = custom
 	checkdepends = perl-test-simple
 	makedepends = perl-extutils-makemaker
