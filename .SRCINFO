@@ -1,6 +1,6 @@
 pkgbase = zulu-jre-fx-bin
 	pkgdesc = Azul Zulu builds of OpenJDK are open source, TCK-tested and certified builds of OpenJDK.
-	pkgver = 21.0.7
+	pkgver = 25.0.2
 	pkgrel = 1
 	url = https://www.azul.com/downloads/
 	install = zulu-jre-fx-bin.install
@@ -8,13 +8,13 @@ pkgbase = zulu-jre-fx-bin
 	license = custom
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
-	provides = java-runtime-headless=21
-	provides = java-runtime-headless-openjdk=21
-	provides = java-runtime=21
-	provides = java-runtime-openjdk=21
-	provides = java-openjfx=21
-	provides = jre-openjdk=21
-	source = https://cdn.azul.com/zulu/bin/zulu21.42.19-ca-fx-jre21.0.7-linux_x64.tar.gz
-	sha256sums = cba69f843e39d457a0085a6d9feb392d31f19e1a5d9eb2fde5b60968e9035f07
+	provides = java-runtime-headless=25
+	provides = java-runtime-headless-openjdk=25
+	provides = java-runtime=25
+	provides = java-runtime-openjdk=25
+	provides = java-openjfx=25
+	provides = jre-openjdk=25
+	source = https://cdn.azul.com/zulu/bin/zulu25.32.21-ca-fx-jre25.0.2-linux_x64.tar.gz
+	sha256sums = 946ad9766d98fc6ab495a1a120072197db54997f6925fb96680f1ecd5591db4e
 
 pkgname = zulu-jre-fx-bin
