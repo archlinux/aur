@@ -11,6 +11,8 @@ license=('Apache-2.0')
 depends=('glibc' 'libguestfs')
 makedepends=('go')
 optdepends=(
+    'make: kernel compilation'
+    'gcc: kernel compilation'
     'flex: kernel compilation'
     'bison: kernel compilation'
     'bc: kernel compilation'
@@ -19,7 +21,7 @@ optdepends=(
     'libelf: kernel compilation'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/cli-v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('eab28d017bd72ab487b9c44fcd47909c4e43f4beb17ac15a67a422e55713a89b')
 
 build() {
     cd "Anvil-cli-v${pkgver}"

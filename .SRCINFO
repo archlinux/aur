@@ -9,6 +9,8 @@ pkgbase = anvil
 	makedepends = go
 	depends = glibc
 	depends = libguestfs
+	optdepends = make: kernel compilation
+	optdepends = gcc: kernel compilation
 	optdepends = flex: kernel compilation
 	optdepends = bison: kernel compilation
 	optdepends = bc: kernel compilation
@@ -16,6 +18,6 @@ pkgbase = anvil
 	optdepends = xz: kernel compression
 	optdepends = libelf: kernel compilation
 	source = anvil-0.0.1.tar.gz::https://github.com/Work-Fort/Anvil/archive/refs/tags/cli-v0.0.1.tar.gz
-	sha256sums = SKIP
+	sha256sums = eab28d017bd72ab487b9c44fcd47909c4e43f4beb17ac15a67a422e55713a89b
 
 pkgname = anvil
