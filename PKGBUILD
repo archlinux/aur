@@ -6,7 +6,7 @@
 
 pkgbase=nvidia-580xx-settings
 pkgname=('nvidia-580xx-settings' 'libxnvctrl-580xx')
-pkgver=580.126.18
+pkgver=580.142
 pkgrel=1
 pkgdesc='Tool for configuring the NVIDIA graphics driver (580xx)'
 url='https://github.com/NVIDIA/nvidia-settings'
@@ -16,7 +16,7 @@ makedepends=('jansson' 'gtk3' 'libxv' 'libvdpau' 'nvidia-580xx-utils' 'libxext' 
 options=('staticlibs')
 source=(${pkgbase}-${pkgver}.tar.gz::https://github.com/NVIDIA/nvidia-settings/archive/${pkgver}.tar.gz
         nvidia-settings-libxnvctrl_so.patch)
-sha512sums=('6270a851c61a6e57fcfda167d5da26d2da17167df40b584d2512494d30435633f99d5c15e01724868e3946bb3c6c2a2818bd4589a997e838c99895800e3ad1c3'
+sha512sums=('39e245a8ef60cc27b5d7610051cfe71640e9fe50173c0f47fcad4dc5c5756a6ac5f7dffc16537652df7a59339af5b93a3624b3db4748a5671ce6686100f3c0f5'
             '0303fe615d6ef4e14112998c531a17613b94776f9a6a027ddb81e400fddd5f2ff15583da8b8631c2306aca854edf2f54a8007eb36f1732b4c064c857aaf268ae')
 
 prepare() {
