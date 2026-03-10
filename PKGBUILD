@@ -1,7 +1,7 @@
 # Maintainer: Finn Coffey <aur@soxfox.me>
 pkgname=codecrafters
-pkgver=52
-pkgrel=2
+pkgver=53
+pkgrel=1
 pkgdesc="CLI to interact with codecrafters.io"
 arch=("x86_64" "aarch64")
 url="https://github.com/codecrafters-io/cli"
@@ -9,7 +9,7 @@ license=("MIT")
 depends=("git" "glibc")
 makedepends=("go")
 source=("${pkgname}-${pkgver}::git+https://github.com/codecrafters-io/cli#tag=v${pkgver}")
-sha256sums=('ca071f21303955527f15bb7c751c1203ee186410ba106a56c55a44b9c14dfb98')
+sha256sums=('402d82d6fa084d83488cd73c24550f7eac8780f882c787f45dc3a680f300fbba')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"

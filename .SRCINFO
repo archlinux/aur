@@ -1,7 +1,7 @@
 pkgbase = codecrafters
 	pkgdesc = CLI to interact with codecrafters.io
-	pkgver = 52
-	pkgrel = 2
+	pkgver = 53
+	pkgrel = 1
 	url = https://github.com/codecrafters-io/cli
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = codecrafters
 	makedepends = go
 	depends = git
 	depends = glibc
-	source = codecrafters-52::git+https://github.com/codecrafters-io/cli#tag=v52
-	sha256sums = ca071f21303955527f15bb7c751c1203ee186410ba106a56c55a44b9c14dfb98
+	source = codecrafters-53::git+https://github.com/codecrafters-io/cli#tag=v53
+	sha256sums = 402d82d6fa084d83488cd73c24550f7eac8780f882c787f45dc3a680f300fbba
 
 pkgname = codecrafters
