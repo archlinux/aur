@@ -2,7 +2,7 @@
 pkgname=beetcamp
 pkgdesc='Plugin for beets to use Bandcamp as an autotagger source'
 pkgver=0.24.0
-pkgrel=1
+pkgrel=2
 url=https://github.com/snejus/beetcamp
 arch=(any)
 license=(GPL2)
@@ -13,9 +13,6 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 b2sums=('bbece441bf943da343ed7cc8a85c5444be8f8d20841893d9f561f826861996a55edb1246145a04d3d60d2235d6bcdda5385c1250d87589db6da7c6cad6da7288')
 
 prepare () {
-	# FIXME: Tests currently need Python <3.14
-	return
-
 	cd "$pkgname-$pkgver"
 
 	# The tests assume that we are using a Git checkout, but they don't
@@ -34,9 +31,6 @@ build () {
 }
 
 check () {
-	# FIXME: Tests currently need Python <3.14
-	return
-
 	cd "$pkgname-$pkgver"
 	poetry run pytest -k 'not need_connection' --ignore-glob='*test_lib*'
 }
