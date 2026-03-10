@@ -1,6 +1,6 @@
 # Maintainer: Andrew Marin <andrewmarin367@gmail.com>
 pkgname=vice-clipper
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Medal.tv-style game clip recorder for Linux — instant replay, session recording, and one-click sharing"
 arch=('x86_64')
@@ -29,7 +29,7 @@ makedepends=(
     'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/eklonofficial/Vice/archive/refs/tags/v1.0.0.tar.gz")
-sha256sums=('c39a5597746609e5824e89b6fbeb881d1608f48f25e5e00b75a62c1b1eb39429')
+sha256sums=('de44b6439448ecf443e87f64d4e73f0cf848ec6b1aae740bdaf0dfdf2839e724')
 
 build() {
     cd "$srcdir/Vice-$pkgver"
