@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=diamond-dragon
 pkgver=20250707
-pkgrel=2
+pkgrel=3
 pkgdesc="Catgirl cyberpunk action GZDoom gameplay mod"
 arch=('any')
 url="https://www.doomworld.com/forum/topic/153613-diamond-dragon-catgirl-cyberpunk-action-updated-7725/"
@@ -16,6 +16,15 @@ _gdrive_main="1WgEfXcawz38fKKag1ADZdf-OCocWFmDb"        # DiamondDragon.pk3
 _gdrive_augzen="1zGOJmaAjPBOVCDwFXxHe3sQJzJWBtE16"      # AugZen Addon.pk3
 _gdrive_hacx="1FLWE-HtaNX1cZv7JT_nhwArJMBeOMvar"        # Hacx2.0 Addon.pk3
 _gdrive_neonover="1bGV0IZgL57eW8bgaAotXArKKn_ETf6LU"    # NeonOver Addon.pk3
+
+latestver() {
+    curl -fsSL "$url" | python3 -c 'import re, sys
+m = re.search(r"Updated ([0-9]{1,2})/([0-9]{1,2})/([0-9]{2})", sys.stdin.read())
+if not m:
+    raise SystemExit(1)
+month, day, year = map(int, m.groups())
+print(f"20{year:02d}{month:02d}{day:02d}")'
+}
 
 _gdrive_fetch() {
     local id=$1 output=$2

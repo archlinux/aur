@@ -1,7 +1,7 @@
 pkgbase = diamond-dragon
 	pkgdesc = Catgirl cyberpunk action GZDoom gameplay mod
 	pkgver = 20250707
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.doomworld.com/forum/topic/153613-diamond-dragon-catgirl-cyberpunk-action-updated-7725/
 	arch = any
 	license = custom
