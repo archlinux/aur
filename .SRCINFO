@@ -1,7 +1,7 @@
 pkgbase = square1-wad
 	pkgdesc = The Adventures of Square, Episode 1 game data
 	pkgver = 2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://adventuresofsquare.com/
 	arch = any
 	license = CCPL:by-nc
