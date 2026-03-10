@@ -1,0 +1,4 @@
+# Creates required directories with correct ownership for the smp user.
+# Type  Path                  Mode  User  Group  Age  Argument
+d       /var/opt/simplex      0750  smp   smp    -    -
+d       /etc/opt/simplex      0750  smp   smp    -    -

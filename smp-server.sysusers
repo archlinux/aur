@@ -1,0 +1,4 @@
+# Creates system user 'smp' for the SMP server daemon.
+# Arch Linux: sysusers.d is the correct way — no useradd in .install scripts.
+# Type  Name  ID   GECOS                  Home dir          Shell
+u       smp   -    "SimpleX SMP server"   /var/opt/simplex  /usr/bin/nologin

@@ -1,0 +1,44 @@
+[Unit]
+Description=SimpleX SMP relay server
+Documentation=https://simplex.chat/docs/server.html
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=smp
+Group=smp
+
+# smp-server listens on ports 443 and 8443 — privileged ports require this cap.
+# AmbientCapabilities is the correct Arch Linux approach for unprivileged service users.
+# Do NOT run as root.
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+ExecStart=/usr/bin/smp-server start +RTS -N -RTS
+
+# CRITICAL: smp-server saves undelivered messages only on SIGINT, not SIGTERM.
+# Without this override, systemctl stop would silently lose pending messages.
+KillSignal=SIGINT
+TimeoutStopSec=infinity
+
+# Backup store log on shutdown (contains messages pending delivery)
+ExecStopPost=/bin/sh -c \
+    'test -f /var/opt/simplex/smp-server-store.log && \
+     cp /var/opt/simplex/smp-server-store.log \
+        /var/opt/simplex/smp-server-store.log.bak'
+
+# SMP server handles many concurrent connections
+LimitNOFILE=65535
+
+# Security hardening
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/opt/simplex /etc/opt/simplex
+ProtectHome=true
+NoNewPrivileges=true
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+[Install]
+WantedBy=multi-user.target

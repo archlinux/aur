@@ -1,0 +1,68 @@
+post_install() {
+    systemd-sysusers smp-server.conf 2>/dev/null || true
+    systemd-tmpfiles --create smp-server.conf 2>/dev/null || true
+    chown smp:smp /etc/opt/simplex/smp-server.ini 2>/dev/null || true
+
+    echo ""
+    echo "======================================================================"
+    echo " smp-server installed."
+    echo "======================================================================"
+    echo ""
+    echo " MIGRATING FROM A MANUAL INSTALLATION?"
+    echo " If you already have a running server with existing keys — DO NOT run"
+    echo " smp-server init. Instead, restore your backup:"
+    echo ""
+    echo "    cp ca.crt ca.key ca.srl fingerprint /etc/opt/simplex/"
+    echo "    cp server.crt server.csr /etc/opt/simplex/"
+    echo "    cp openssl_ca.conf openssl_server.conf /etc/opt/simplex/"
+    echo "    cp smp-server.ini /etc/opt/simplex/"
+    echo "    chown -R smp:smp /etc/opt/simplex/"
+    echo ""
+    echo " Then start: systemctl enable --now smp-server"
+    echo " Your server address (fingerprint) will remain the same."
+    echo ""
+    echo " ------------------------------------------------------------------"
+    echo ""
+    echo " FRESH INSTALLATION? Initialize first (replace with your domain):"
+    echo ""
+    echo "    sudo -u smp smp-server init -y --store-log \\"
+    echo "        --fqdn=smp.example.com"
+    echo ""
+    echo "    With queue-creation password:"
+    echo "    sudo -u smp smp-server init -y --store-log \\"
+    echo "        --password='your-password' --fqdn=smp.example.com"
+    echo ""
+    echo " 1. Edit config:  /etc/opt/simplex/smp-server.ini"
+    echo "    - [TRANSPORT] host: your domain"
+    echo "    - [INFORMATION] fields for the server info page (optional)"
+    echo ""
+    echo " 2. Open firewall ports: 443/tcp and 8443/tcp"
+    echo ""
+    echo " 3. Start: systemctl enable --now smp-server"
+    echo ""
+    echo " 4. Get your server address:"
+    echo "    journalctl -u smp-server | grep 'Server address'"
+    echo ""
+    echo " !! Back up and delete the CA key after init:"
+    echo "    cp /etc/opt/simplex/ca.key ~/ca.key.backup"
+    echo "    rm /etc/opt/simplex/ca.key"
+    echo "======================================================================"
+}
+
+post_upgrade() {
+    chown smp:smp /etc/opt/simplex/smp-server.ini 2>/dev/null || true
+    echo ""
+    echo " smp-server upgraded — restart to apply: systemctl restart smp-server"
+}
+
+pre_remove() {
+    systemctl stop smp-server.service 2>/dev/null || true
+    systemctl disable smp-server.service 2>/dev/null || true
+}
+
+post_remove() {
+    echo ""
+    echo " Data preserved in /etc/opt/simplex/ and /var/opt/simplex/"
+    echo " Remove manually if no longer needed."
+    echo " To remove the 'smp' user: userdel smp"
+}
