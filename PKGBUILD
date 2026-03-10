@@ -8,7 +8,7 @@ pkgdesc="A webfrontend for managing entries stored in an LDAP directory"
 arch=('any')
 url="https://www.ldap-account-manager.org/"
 license=('GPL')
-depends=('php' 'openldap')
+depends=('php' 'php-gd' 'openldap')
 optdepends=('perl'
             'perl-quota: Quota module limits disk storage per user'
             'php-apache: Run LDAP Account Manager on Apache'

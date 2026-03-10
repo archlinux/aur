@@ -6,6 +6,7 @@ pkgbase = ldap-account-manager
 	arch = any
 	license = GPL
 	depends = php
+	depends = php-gd
 	depends = openldap
 	optdepends = perl
 	optdepends = perl-quota: Quota module limits disk storage per user
