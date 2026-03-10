@@ -22,6 +22,8 @@ depends=('glibc')
 provides=("${_appname}")
 conflicts=("${_pkgname}")
 
+options=(!strip)
+
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}.tar.gz")

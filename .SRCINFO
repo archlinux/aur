@@ -9,6 +9,7 @@ pkgbase = bsky-cli-bin
 	depends = glibc
 	provides = bsky
 	conflicts = bsky-cli
+	options = !strip
 	source = README-1.3.0.md::https://raw.githubusercontent.com/harveyrandall/bsky-cli/v1.3.0/README.md
 	source = LICENSE-1.3.0::https://raw.githubusercontent.com/harveyrandall/bsky-cli/v1.3.0/LICENSE.md
 	sha256sums = fcff885150a5287332baa57d0dbc9876b694488d2e90c2743cb85575abc0947c
