@@ -2,7 +2,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 pkgname="handy-bin"
-pkgver=0.7.9
+pkgver=0.7.10
 pkgrel=1
 pkgdesc="A free, open source, and extensible speech-to-text application that works completely offline"
 url="https://handy.computer/"
@@ -27,7 +27,7 @@ depends=(
 )
 source=("${pkgname}-${pkgver}.deb::https://github.com/cjpais/Handy/releases/download/v${pkgver}/Handy_${pkgver}_amd64.deb"
         "https://raw.githubusercontent.com/cjpais/Handy/refs/heads/main/LICENSE")
-b2sums=('8c272e5d67c3ffe231c3d519309524451dd662f6cf1ed22c63511cf5964fd3b2eb19a30b7870dc3aa7ae1bb2099cb3f913544a8aacdcfe2971b0a3ca56493deb'
+b2sums=('a1d0d0527491b3ce68d65b94ed43e5774cc9c44fe1a4e352c18989a6e82f9b8479b8e56c8a1506d29996f0039cb9320f1917968e87d1117c8745f98b1fa067e1'
         '48678eca5b87a0b59038c8b343d84073207bca4390ad40ac81f2f96dc553cc66453f0f6331749d4686aa7153875bdaf2e08b2adf2bef023ee6044518955a7950')
 
 package(){
