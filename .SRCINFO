@@ -1,5 +1,5 @@
-pkgbase = arubasign-bin
-	pkgdesc = Suite di Firma Digitale Aruba per firmare e verificare documenti con certificati X.509
+pkgbase = arubasign-rolling-bin
+	pkgdesc = Aruba Digital Signature Suite for signing and verifying documents
 	pkgver = 25.0.17
 	pkgrel = 1
 	url = https://www.pec.it/Download.aspx
@@ -33,8 +33,8 @@ pkgbase = arubasign-bin
 	source = ArubaSign-25.0.17.tar.bz2::https://updatesfirma.aruba.it/downloads/ArubaSign-latest-LINUX.tar.bz2
 	source = arubasign.sh
 	source = arubasign.desktop
-	sha256sums = 6011b8193fd8039d8bb13b5d01f9108f6dec6a0aeed460a6c815e9f532e39d68
+	sha256sums = SKIP
 	sha256sums = 44d5a13f18d60851de6c71d4a336a54a90f9a1f2b82813e52e685c22e46ac6d2
 	sha256sums = 4faa020d89f19c5f9f5c3cc5301c8a6f00cf12a769f0e4a4cd1f0cec73c864f9
 
-pkgname = arubasign-bin
+pkgname = arubasign-rolling-bin
