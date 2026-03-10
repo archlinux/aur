@@ -1,7 +1,7 @@
 # Maintainer: Nikita Goncarenko <myftr12394 at gmail dot com>
 # Co-maintainer: holaguz <agustin dot catellani at gmail dot com>
 pkgname=tlescope-bin
-pkgver=3.7.7
+pkgver=3.7.8
 pkgrel=0
 pkgdesc="TLEscope is a satellite visualization tool designed to transform Two-Line Element (TLE) sets into intuitive, interactive data."
 arch=(x86_64)
@@ -9,16 +9,16 @@ url="https://github.com/aweeri/TLEscope"
 license=('AGPL-3.0-only')
 groups=()
 depends=(base-devel git alsa-lib libx11 libxrandr libxi mesa glu libxcursor libxinerama wayland libxkbcommon curl)
-makedepends=(unzip)
+makedepends=()
 conflicts=(tlescope-git)
-source=("https://github.com/aweeri/TLEscope/releases/latest/download/TLEscope-Linux.zip")
+source=("https://github.com/aweeri/TLEscope/releases/latest/download/TLEscope-Linux-Portable.zip")
 sha256sums=('SKIP')
 
 package() {
 	cd "$srcdir"
     
 	install -d "$pkgdir/opt/TLEscope"
-	cp -r TLEscope-Linux/* "$pkgdir/opt/TLEscope/"
+	cp -r TLEscope-Linux-Portable/* "$pkgdir/opt/TLEscope/"
 	chmod 755 "$pkgdir/opt/TLEscope/TLEscope"
 	install -d "$pkgdir/usr/local/bin"
 	echo '#!/bin/sh' > "$pkgdir/usr/local/bin/TLEscope"
