@@ -1,0 +1,29 @@
+_print_message() {
+  cat <<'EOF'
+    IMPORTANT INFORMATION:
+
+    This package installs libmodsecurity in the v3.xx line.
+
+    It only functions alongside a connecter for the specific
+    webserver you intend to use. This could, in theory, be either
+
+    - https://github.com/SpiderLabs/ModSecurity-nginx
+      => Extra package nginx-mod-modsecurity
+    or
+    - https://github.com/SpiderLabs/ModSecurity-apache
+      => AUR package apache-modsecurity-git 
+
+    WARNING: the apache connector is not production ready, and is 
+             in fact BROKEN
+             (see https://github.com/owasp-modsecurity/ModSecurity-apache/issues/89 )
+
+EOF
+}
+
+post_install() {
+  _print_message
+}
+
+post_upgrade() {
+  _print_message
+}
