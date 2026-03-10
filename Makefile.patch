@@ -1,16 +1,16 @@
---- Makefile.orig	2024-08-27 04:55:21.000000000 +0200
-+++ Makefile	2025-06-20 19:03:30.136513216 +0200
-@@ -30,18 +30,18 @@
+diff --git a/makefile.gcc b/makefile.gcc
+index 787652e..a1d0ecd 100644
+--- a/makefile.gcc
++++ b/makefile.gcc
+@@ -29,17 +29,16 @@ MV = mv
  RM = rm -f
  
  # flags
--CFLAGS = $(DEFINES) $(TFLAG) $(CDEBUG) -c -Wall
-+CFLAGS += $(DEFINES) $(TFLAG) $(CDEBUG) -c -Wall
- GZIPFLAGS = -9
+-CFLAGS = $(DEFINES) $(TFLAG) $(CDEBUG) -c -Wall -Wextra
++CFLAGS += $(DEFINES) -c -Wall -Wextra
  INSTALLBINFLAGS = -m 755
  INSTALLDATAFLAGS = -m 644
 -LDFLAGS = $(LDEBUG)
-+LDFLAGS += $(LDEBUG)
  LNFLAGS = -sf
  RMRECURFLAGS = -rf
  
@@ -22,7 +22,7 @@
  
  # filenames
  FROMDOS = fromdos
-@@ -70,12 +70,12 @@
+@@ -67,12 +66,12 @@ clobber: clean
  	$(RM) $(FROMDOS) $(TODOS)
  
  install: installman

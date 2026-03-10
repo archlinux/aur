@@ -1,4 +1,4 @@
 [tofrodos]
-source = "regex"
-url = "https://www.thefreecountry.com/tofrodos/"
-regex = "tofrodos-([0-9.]+)"
+source = "github"
+github = "ChristopherHeng/tofrodos"
+use_latest_release = true

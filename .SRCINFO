@@ -1,14 +1,15 @@
 pkgbase = tofrodos
 	pkgdesc = Convert ASCII files between the MS-DOS/Windows format and the UNIX format
-	pkgver = 1.8.4
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://www.thefreecountry.com/tofrodos/
 	arch = x86_64
 	license = GPL-2.0-only
+	license = GPL-3.0-or-later
 	depends = glibc
-	source = https://www.thefreecountry.com/tofrodos/tofrodos-1.8.4.zip
+	source = tofrodos-1.9.0.tar.gz::https://github.com/ChristopherHeng/tofrodos/archive/1.9.0.tar.gz
 	source = Makefile.patch
-	sha512sums = c535bfe036fb6a7f3518adc1da9fcb371e823d0315c714b224e2dcead356216aa660b92cf52e8f877d8d10756216fdae12a6c09f758ceeb09ecc14eb95cb83f1
-	sha512sums = 815eda271724b19800a010a189feb55696f3170e6df29cfddd81f4a9502b35fb758fe33983e5df65bb0799393c60566ea58d6c647bed0b86a402db088cfc4848
+	sha512sums = 0ae149efa7a8901f48c809bd491c18813ea4d8c0c087865ec6ac8adf042e00875cc0d6361a024ce220caa216294255b9297fb145c5260285880cdec0ebb69647
+	sha512sums = 196d32582796e3cde31b3e34832949763a4987c76041a0f7fb8e2f70b19583aa2bbc17d2975af0be04d66f635318989da1d60b79fdab99a849d0f1e1f1bd69ba
 
 pkgname = tofrodos
