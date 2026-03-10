@@ -1,6 +1,6 @@
 pkgbase = heidisql
 	pkgdesc = HeidiSQL Shared files: wrapper script, locale/ini files, documentation (install a provider of your choice for heidisql-client to use it)
-	pkgver = 12.15.1.1
+	pkgver = 12.16
 	pkgrel = 1
 	epoch = 1
 	url = http://www.heidisql.com/
@@ -8,12 +8,12 @@ pkgbase = heidisql
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = curl
-	makedepends = jq
+	makedepends = unzip
 	optdepends = heidisql-qt6: Qt6 variant
 	optdepends = heidisql-gtk2: GTK2 variant
-	source = https://github.com/HeidiSQL/HeidiSQL/archive/v12.15.1.1.tar.gz
+	source = https://github.com/HeidiSQL/HeidiSQL/archive/v12.16.tar.gz
 	source = heidisql
-	sha256sums = a231ae7c0f441845b41fe59acb36211dadf337b4b4fa69efd9d2284800388c3b
+	sha256sums = 02ce3792ddbe2efaecaed0214fbf584d3d28a20e1996127cc17a21cf02989465
 	sha256sums = cb084209a5ce3270a2888bf93c8a5adb6f714eda487ad13a50512ac538b3fc87
 
 pkgname = heidisql
