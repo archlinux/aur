@@ -1,0 +1,22 @@
+pkgbase = vulpecula-loom-git
+	pkgdesc = Desktop AI chat app with Obsidian integration, OpenRouter support, and more.(Use system-wide electron)
+	pkgver = 0.0.3.r10.g9c86aa8
+	pkgrel = 1
+	url = https://ejfox.github.io/vulpecula-loom/
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = npm
+	makedepends = nvm
+	makedepends = git
+	makedepends = curl
+	makedepends = jq
+	depends = electron33
+	provides = vulpecula-loom=0.0.3
+	conflicts = vulpecula-loom
+	source = vulpecula-loom.git::git+https://github.com/ejfox/vulpecula-loom
+	source = vulpecula-loom.sh
+	sha256sums = SKIP
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = vulpecula-loom-git
