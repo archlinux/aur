@@ -3,7 +3,7 @@
 
 _pkgname="calamares"
 pkgname="$_pkgname"
-pkgver=3.4.0
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="Distribution-independent installer framework"
 url="https://codeberg.org/Calamares/calamares"
@@ -20,6 +20,7 @@ depends=(
 )
 makedepends=(
   'extra-cmake-modules'
+  'libglvnd'
   'ninja'
   'qt6-tools'
   'qt6-translations'
@@ -28,7 +29,7 @@ makedepends=(
 _pkgsrc="$_pkgname"
 _pkgext="tar.gz"
 source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/v$pkgver.$_pkgext")
-sha256sums=('45de0214f4a16095374e2ed3982032c34f0f2c2104987089152e4b928dd0548f')
+sha256sums=('7b8d0ee09645ad9d625baaebe0ba9ffd5baedbe92153347fd4d0a003a2d7639c')
 
 build() {
   local _skip_modules=(
