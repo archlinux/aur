@@ -1,6 +1,6 @@
 # Maintainer: loooph <loooph@gmx.de>
 pkgname=obs-shaderfilter-git
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="enables custom shaders for OBS sources"
 arch=('x86_64')
@@ -11,12 +11,17 @@ makedepends=(git cmake)
 _basename=${pkgname%-git}
 provides=("$_basename")
 conflicts=("$_basename")
-source=("git+${url}")
-sha256sums=('SKIP')
+source=("git+${url}" 00_ignore_discarded_qualifies.patch)
+sha256sums=('SKIP' 7e8fc38dc6a740a8730b5dc501c42bd2575d750b8155da23852b93d00a96b050)
 
 pkgver() {
     cd "$srcdir/$_basename"
     git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $_basename
+    patch -p1 -i ../00_ignore_discarded_qualifies.patch
 }
 
 build() {

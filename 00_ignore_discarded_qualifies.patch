@@ -1,0 +1,14 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 53319ad..b23f3e3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -26,6 +26,8 @@ if(BUILD_OUT_OF_TREE)
+   include(cmake/ObsPluginHelpers.cmake)
+ endif()
+ 
++target_compile_options(${PROJECT_NAME} PRIVATE -Wno-error=discarded-qualifiers)
++
+ if(OS_WINDOWS)
+ 	get_filename_component(ISS_FILES_DIR "${CMAKE_BINARY_DIR}\\..\\package" ABSOLUTE)
+ 	file(TO_NATIVE_PATH "${ISS_FILES_DIR}" ISS_FILES_DIR)
+
