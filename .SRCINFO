@@ -1,6 +1,6 @@
 pkgbase = iotas-notepad-git
 	pkgdesc = A simple note-taking application built with Electron. It allows you to create, edit, and delete notes with a user-friendly interface.(Use system-wide electron)
-	pkgver = 1.2.1.r1.g6609fcc
+	pkgver = 1.2.2.r2.gadba695
 	pkgrel = 1
 	url = https://github.com/vorlie/iotas-notepad
 	arch = any
@@ -11,13 +11,14 @@ pkgbase = iotas-notepad-git
 	makedepends = git
 	makedepends = curl
 	makedepends = icoutils
-	depends = electron34
-	provides = iotas-notepad=1.2.1
+	makedepends = jq
+	depends = electron39
+	provides = iotas-notepad=1.2.2
 	conflicts = iotas-notepad
 	options = !emptydirs
 	source = iotas-notepad.git::git+https://github.com/vorlie/iotas-notepad
 	source = iotas-notepad.sh
 	sha256sums = SKIP
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = iotas-notepad-git
