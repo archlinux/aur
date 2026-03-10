@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://github.com/${pkgauthor}/${pkgname}"
 license=('Apache-2.0' 'MIT')
 
-depends=('glibc' 'libgcc')
+depends=('glibc' 'libgcc' 'libgit2' 'openssl')
 provides=("${_appname}")
 makedepends=('cargo')
 
