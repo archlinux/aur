@@ -2,7 +2,7 @@
 
 pkgname=sigil-wad
 pkgver=1.23
-pkgrel=2
+pkgrel=3
 
 url="https://romero.com/sigil"
 pkgdesc="SIGIL, the unofficial 5th episode of the original 1993 DOOM by John Romero. Requires DOOM.WAD"
@@ -19,6 +19,11 @@ sha256sums=('57c35a6bcd722433fc97344314e52c06c91fdfde33b18c6d1c14a4d29e229105'
             '0e577afac4cd598a501e445d2abe58285b01f9f2c8fbdad99cb83ab880306c61'
             '37ea66ee77f07b64ec8646ee6ca761be6c1d63719ec3e7106abc902c97391abd'
             '7d5c26f36b43a90abf76d22da762303aff166bd85d5e3d141dcaa09bbc348523')
+
+latestver() {
+    curl -fsSL "$url" |
+        sed -nE 's#.*href="/s/SIGIL_V([0-9]+)_([0-9]+)-[^"]+\.zip".*#\1.\2#p' | head -1
+}
 
 package() {
     mkdir -p "$pkgdir/usr/share/doom"
