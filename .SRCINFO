@@ -1,6 +1,6 @@
 pkgbase = flyprint-git
 	pkgdesc = Local print agent for FlyPush label printing (system tray + headless)
-	pkgver = 0.1.0.r4.g43eb4fb
+	pkgver = 0.1.0.r14.gde27361
 	pkgrel = 1
 	url = https://github.com/ggilestro/flyPrint
 	arch = any

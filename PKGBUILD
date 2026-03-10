@@ -1,6 +1,6 @@
 # Maintainer: Giorgio Gilestro <giorgio@gilest.ro>
 pkgname=flyprint-git
-pkgver=0.1.0.r4.g43eb4fb
+pkgver=0.1.0.r14.gde27361
 pkgrel=1
 pkgdesc="Local print agent for FlyPush label printing (system tray + headless)"
 arch=('any')
@@ -28,8 +28,8 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    if git describe --long --tags 2>/dev/null; then
-        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    if git describe --long --tags >/dev/null 2>&1; then
+        git describe --long --tags | sed 's/^v//;s/-\([0-9]*\)-g/.r\1.g/;s/-/./g'
     else
         printf "0.1.0.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     fi
