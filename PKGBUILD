@@ -1,6 +1,6 @@
 # Maintainer: LucasionGS <ion@ionnet.dev>
 pkgname=ionix-shell
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="GTK overlay shell for Hyprland — SSH, VPN, Docker, command palette, and automation panels"
 arch=('x86_64')
@@ -41,7 +41,7 @@ package() {
     cd "$srcdir/$pkgname"
 
     # Install the AGS bundle
-    install -Dm644 ionix-shell "$pkgdir/usr/share/$pkgname/ionix-shell"
+    install -Dm755 ionix-shell "$pkgdir/usr/share/$pkgname/ionix-shell"
 
     # Link the executable
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" << EOF
