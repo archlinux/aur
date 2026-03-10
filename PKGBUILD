@@ -1,6 +1,6 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner-git
-pkgver=4.13.2.r11
+pkgver=4.13.2.r15
 pkgrel=1
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
@@ -11,7 +11,7 @@ license=(
   'GPL2'
 )
 source=(
-  "git+$url.git#commit=3d6a79de"
+  "git+$url.git#commit=861deff4"
 )
 sha256sums=(
   'SKIP'
@@ -30,7 +30,6 @@ depends=(
   'hidapi'
   'konsole'
   'libusb'
-  'mangohud-git'
   'nlohmann-json'
   'power-profiles-daemon'
   'python'
@@ -41,9 +40,7 @@ depends=(
   'qt6-svg'
   'qtermwidget'
   'qtkeychain-qt6'
-  'scx-scheds'
   'openssl'
-  'switcheroo-control'
   'upower'
 )
 makedepends=(
@@ -59,16 +56,23 @@ makedepends=(
   'unzip'
   'zip'
 )
+optdepends=(
+  'mangohud-git: Monitoring FPS, temperatures, CPU/GPU load and more'
+  'scx-scheds: Use sched-ext schedulers'
+  'switcheroo-control: Allow GPU selector for games'
+  'steam: Define and apply automatically performance configurations for games'
+)
+
 install=rog-perf-tuner-git.install
 
 prepare() {
+    cd "$srcdir/RogPerfTuner"
+    git submodule update --init --recursive
+
     if [[ ! -d "${HOME}/.local/share/pnpm" ]]; then
         echo "Setup for pnpm..."
         SHELL=/bin/bash pnpm setup
     fi
-
-    cd "$srcdir/RogPerfTuner"
-    git submodule update --init --recursive
 }
 
 build() {
