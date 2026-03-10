@@ -1,9 +1,9 @@
 # Maintainer: João Freitas <joaj.freitas at gmail dot com>
-# Contributor: Sven Karsten Greiner <sven@sammyshp.de>
+# Co-maintainer: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=plotjuggler
-pkgver='3.15.0'
-pkgrel=2
+pkgver='3.16.0'
+pkgrel=1
 pkgdesc="The Time Series Visualization Tool that you deserve. Without ROS dependencies."
 arch=('x86_64')
 url="https://github.com/facontidavide/PlotJuggler"
@@ -30,7 +30,7 @@ makedepends=(
 source=(
     "${pkgname}-${pkgver}.tar.gz"::"https://github.com/facontidavide/PlotJuggler/archive/${pkgver}.tar.gz"
 )
-sha256sums=('0570a06975079c4ade46f77894091bf9b7d2ecd09c01669c5fc6394d135d24b2')
+sha256sums=('abe9ca652773918c4aa30abc952ff3311e81357b4ee5956c8898cb7f04ab3964')
 
 build() {
     cd "PlotJuggler-${pkgver}"
