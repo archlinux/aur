@@ -1,7 +1,7 @@
 pkgbase = ironclad-rivet-bin
 	pkgdesc = IDE for creating complex AI agents and prompt chaining
 	pkgver = 1.11.3
-	pkgrel = 6
+	pkgrel = 8
 	url = https://github.com/Ironclad/rivet
 	arch = x86_64
 	license = MIT
@@ -13,7 +13,6 @@ pkgbase = ironclad-rivet-bin
 	depends = webkit2gtk
 	provides = ironclad-rivet
 	conflicts = ironclad-rivet
-	options = !strip
 	options = !debug
 	source = LICENSE-1.11.3::https://raw.githubusercontent.com/Ironclad/rivet/main/LICENSE
 	sha256sums = d15b6086fd49f82079be457e0c6ee07c8ea1fcfc2ea97ad42e53710e3096960c

@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=ironclad-rivet-bin
 pkgver=1.11.3
-pkgrel=6
+pkgrel=8
 pkgdesc="IDE for creating complex AI agents and prompt chaining"
 arch=('x86_64')
 url="https://github.com/Ironclad/rivet"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'webkit2gtk')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-options=('!strip' '!debug')
+options=('!debug')
 
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/Ironclad/rivet/main/LICENSE")
 sha256sums=('d15b6086fd49f82079be457e0c6ee07c8ea1fcfc2ea97ad42e53710e3096960c')
@@ -17,8 +17,8 @@ source_x86_64=("${pkgname}-${pkgver}.deb::https://github.com/Ironclad/rivet/rele
 sha256sums_x86_64=('f631a75af5507fdb8c41efc288a8a7331d71cedda44bb086aec4b12f471bba45')
 
 latestver() {
-	curl -fsSL "https://api.github.com/repos/Ironclad/rivet/releases/latest" |
-	jq -r '.tag_name // empty' | sed 's/^app-v//'
+	curl -fsSL 'https://api.github.com/repos/Ironclad/rivet/releases/latest' | jq -r '.assets[]?.name' |
+	sed -nE '/^rivet_[0-9.]+_amd64\.deb$/{s/^rivet_//; s/_amd64\.deb$//; p;}'
 }
 
 package() {
