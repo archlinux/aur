@@ -1,67 +1,60 @@
-# Maintainer: yobson <contact@yobson.xyz>
+# Maintainer: stormix <hello@stormix.co>
 pkgname=deadlock-modmanager
 pkgdesc='A mod manager for the Valve game Deadlock'
-_pkgver=0.15.0
-pkgver=${_pkgver//-/_}
+_pkgver=0.16.0
+pkgver=${_pkgver}
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/deadlock-mod-manager/deadlock-mod-manager'
-license=('GPL-3.0-or-later')
-makedepends=('git' 'cargo' 'cargo-tauri' 'pnpm' 'lld' 'gcc')
-depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libsoup3' 'pango' 'openssl' 'bzip2' 'hicolor-icon-theme' 'mesa-utils' 'gst-plugins-good')
-source=("$pkgname::git+$url.git#tag=v$_pkgver"
-	'deadlock-modmanager.desktop'
-	'nvidia-webkit-wrapper.sh')
-sha256sums=('6aa12fa60b671b6cb7894d0918795b3872ee748563082a92060d314d23311ef6'
-            '2fdd1840a620ea0a22fec3c3dab5acea4e64f03a3518fe48e96b122dac5d6e01'
-            'db8eb404d073aca83fb6a587989c67e062f3c29d03e966fbdc567fdc133440e9')
-provides=("$pkgname")
-conflicts=("$pkgname-git")
+license=('GPL-3.0-only')
+makedepends=('cargo' 'cargo-tauri' 'pnpm' 'lld' 'gcc')
+depends=('webkit2gtk-4.1' 'cairo' 'desktop-file-utils' 'xdg-utils' 'gdk-pixbuf2'
+         'glib2' 'gtk3' 'libsoup3' 'pango' 'openssl' 'bzip2' 'hicolor-icon-theme'
+         'gst-plugins-good')
+conflicts=('deadlock-modmanager-bin' 'deadlock-modmanager-git')
 options=('!lto')
+source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/deadlock-mod-manager/deadlock-mod-manager/archive/refs/tags/v${_pkgver}.tar.gz")
+sha256sums=('3423dff1bba1936c2a50012835719af83eddea81b2c7ee5057469dea2092edb7')
 
 prepare() {
-	export RUSTUP_TOOLCHAIN=stable
+    cd "${srcdir}/deadlock-mod-manager-${_pkgver}/apps/desktop"
+    pnpm install
 
-	cd "$srcdir/$pkgname/apps/desktop"
-	pnpm install
-
-	cd "src-tauri"
-	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cd src-tauri
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=lld"
-	export CC=gcc
-	export CXX=g++
-	export RUSTUP_TOOLCHAIN=stable
-	export CARGO_TARGET_DIR=target
-	export VITE_API_URL="https://api.deadlockmods.app"
+    export RUSTFLAGS="${RUSTFLAGS} -C link-arg=-fuse-ld=lld"
+    export CC=gcc
+    export CXX=g++
+    export CARGO_TARGET_DIR=target
+    export VITE_API_URL="https://api.deadlockmods.app"
+    export VITE_WEB_URL="https://deadlockmods.app"
+    export VITE_AUTH_URL="https://auth.deadlockmods.app"
 
-	cd "$srcdir/$pkgname/apps/desktop"
-	cargo tauri build --no-bundle -- --frozen
+    cd "${srcdir}/deadlock-mod-manager-${_pkgver}/apps/desktop"
+    cargo tauri build --no-bundle -- --frozen
 }
 
 package() {
-	install -Dm644 "$srcdir/$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	install -Dm755 "$srcdir/nvidia-webkit-wrapper.sh" "$pkgdir/usr/bin/$pkgname"
+    local _srcroot="${srcdir}/deadlock-mod-manager-${_pkgver}"
+    local _tauri="${_srcroot}/apps/desktop/src-tauri"
 
-	cd "$srcdir/$pkgname/apps/desktop/src-tauri"
+    install -Dm644 "${_srcroot}/distribution/aur/deadlock-modmanager.desktop" \
+        "${pkgdir}/usr/share/applications/deadlock-modmanager.desktop"
 
-	install -Dm755 "target/release/deadlock-mod-manager" "$pkgdir/usr/bin/$pkgname-bin"
-	install -Dm644 "icons/32x32.png" "$pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png"
-	install -Dm644 "icons/128x128.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/$pkgname.png"
-	install -Dm644 "icons/128x128@2x.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
-}
+    install -Dm755 "${_tauri}/target/release/deadlock-mod-manager" \
+        "${pkgdir}/usr/bin/deadlock-modmanager"
+    install -Dm644 "${_tauri}/icons/32x32.png" \
+        "${pkgdir}/usr/share/icons/hicolor/32x32/apps/deadlock-modmanager.png"
+    install -Dm644 "${_tauri}/icons/128x128.png" \
+        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/deadlock-modmanager.png"
+    install -Dm644 "${_tauri}/icons/128x128@2x.png" \
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/deadlock-modmanager.png"
+    install -Dm644 "${_tauri}/icons/icon.png" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/deadlock-modmanager.png"
 
-post_install() {
-	gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
-	update-desktop-database -q
-}
-
-post_upgrade() {
-	post_install
-}
-
-post_remove() {
-	post_install
+    install -Dm644 "${_tauri}/dev.stormix.deadlock-mod-manager.metainfo.xml" \
+        "${pkgdir}/usr/share/metainfo/dev.stormix.deadlock-mod-manager.metainfo.xml"
 }
