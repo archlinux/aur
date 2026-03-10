@@ -1,15 +1,13 @@
 pkgbase = codemachine-cli
 	pkgdesc = Multi-agent workflow orchestration CLI
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/moazbuilds/CodeMachine-CLI
 	arch = x86_64
 	license = MIT
 	makedepends = bun
 	makedepends = npm
 	depends = nodejs>=20
-	options = !strip
-	options = !debug
 	source = codemachine-cli-0.8.0.tar.gz::https://github.com/moazbuilds/CodeMachine-CLI/archive/refs/tags/v0.8.0.tar.gz
 	sha256sums = 2ac13dacf669ff5001ef6101ffae5b4e2f66470b5f95ea5fefeaabd365b2704c
 
