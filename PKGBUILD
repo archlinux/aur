@@ -11,7 +11,7 @@ _svcname=vanta-agent
 pkgname=vanta-agent
 # https://app.vanta.com/downloads
 pkgver=2.16.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Vanta agent"
 arch=('x86_64')
 url="https://www.vanta.com/"
@@ -19,7 +19,7 @@ depends=('systemd')
 license=('custom:vanta')
 install=$pkgname.install
 source=(
-    "https://agent-downloads.vanta.com/targets/versions/${pkgver}/${_binname}-amd64.deb"
+    "${pkgver}-${_binname}.deb::https://agent-downloads.vanta.com/targets/versions/${pkgver}/${_binname}-amd64.deb"
     "${_svcname}.conf"
     "vanta-setup.sh"
 )
