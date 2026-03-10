@@ -28,8 +28,8 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/eklonofficial/Vice/archive/refs/tags/v1.0.0.tar.gz")
-sha256sums=('de44b6439448ecf443e87f64d4e73f0cf848ec6b1aae740bdaf0dfdf2839e724')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/eklonofficial/Vice/archive/71f3e6d7298a955779b5759d4137df026940a4c0.tar.gz")
+sha256sums=('160c8fd6d7b540acc2c202888d4e2f271ea696e210d5be2e1d5100f352c8bdca')
 
 build() {
     cd "$srcdir/Vice-$pkgver"
