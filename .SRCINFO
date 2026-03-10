@@ -1,6 +1,6 @@
 pkgbase = sweep-rs-git
 	pkgdesc = Sweep is a tool for interactive search through a list of entries.
-	pkgver = r306.392555d
+	pkgver = r498.552e010
 	pkgrel = 1
 	url = https://github.com/aslpavel/sweep-rs
 	arch = x86_64
