@@ -1,7 +1,7 @@
 # Maintainer: gimletlove
 
 pkgname=imagecompare-bin
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Image Comparison Program with various helpful features and tools.'
 arch=('x86_64')
@@ -16,7 +16,7 @@ provides=('imagecompare')
 conflicts=('imagecompare')
 source=("$pkgname-$pkgver-x86_64.zip::$url/releases/download/$pkgver/imagecompare-linux-$pkgver.zip")
 noextract=("$pkgname-$pkgver-x86_64.zip")
-sha256sums=('755e11714ac6ac255a215a46b29f56d63a97b48e8cdfd8bd75b8f3cba68e5f09')
+sha256sums=('2f4e5ab30a4561f5693ec1663479b5c8f6888de848555590a459b6aa33031d00')
 
 package() {
   local _archive="$srcdir/$pkgname-$pkgver-x86_64.zip"
