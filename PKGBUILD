@@ -10,7 +10,7 @@ pkgbase="${_pkgbase}-bin"
 pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="OOB interaction gathering server and client library"
 arch=(
@@ -39,14 +39,14 @@ source_x86_64=(
   "${url}/releases/download/v${pkgver}/${_pkgbase}-client_${pkgver}_linux_amd64.zip"
   "${url}/releases/download/v${pkgver}/${_pkgbase}-server_${pkgver}_linux_amd64.zip"  
 )
-sha256sums_aarch64=('b88a72d7a610e85a8b732e21bdb0257638e4428af2f8b9eeb0a249785db214e6'
-                    'fa4ecbb5c79be29fbaaeee84822f69318f3e08e9b3151f300d8457daa0f62439')
-sha256sums_armv7h=('1ce346df7ffd4fb5f516fe6c37a6c21cf29fcd92222d3bedec78a10bb788f0f6'
-                   '219ba350690574ef5cde1c8a8ff99a27703782825c7310e69debd468a7baf136')
-sha256sums_i686=('0fc0cd4dda120ee557e60f7eb0b74e5a08a2e78a2ddaaffba98c0b8ba7dadc28'
-                 '7d1fcdf3f744c173c0885275ab0e42ccae2bfe3b76d6ab79f9d822c9aca7f36e')
-sha256sums_x86_64=('1167093863ce7458e37ab962439a5c6769f915af646e7bfc73c6e5f79032f2c4'
-                   'c64fb9616f889b6a119fe1fc6ec77e76145f5881c694818571f39dac4588933a')
+sha256sums_aarch64=('475aa78c59afad115149a5b0d6d9c99d2410a4f12d0c6f5a24c32e7338fc6adb'
+                    'ddd73fc2bc4a526705b442001f88832da328c18e8b6e6480f8784552b5b934bd')
+sha256sums_armv7h=('5d1ec9c4c2b1cf4f2c9ec9f19d3ed5933a3934dfbbc6622582ca6ae69990d736'
+                   '48c42b417f762b6e9602a28efaa60077ee5c22e205d1d2bbb1606ecfe542cefe')
+sha256sums_i686=('bc6d0e1dc9201886cb0393e9c30bc414babe73a3b18606f996d4dd69fbb34d1c'
+                 '057ddbad8a8e2960877059759366844e99b90c8ef36afc9bbb65e8a2ac898443')
+sha256sums_x86_64=('d553fb3dd4c2684c953aedeb555f13f0d1ca94bd75112c949a5fd975d385a903'
+                   'cb59d094df7e8d9ecb0b8d368551e0e9af6ab555dbfc0655e8f9e4b56ec5cb19')
 
 package_interactsh-common-bin() {
   pkgdesc+=" (common files)"
