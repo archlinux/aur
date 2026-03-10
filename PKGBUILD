@@ -1,7 +1,7 @@
 # Maintainer: Louis Cornell <lpcornel@gmail.com>
 pkgname=musiclib-cli
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=1
 pkgdesc="Command line application for organizing and managing a music library. Requires Audacious player, Kid3 Audio Tagger, and kdeconnect for mobile sync"
 arch=('x86_64')
 url="https://github.com/Harpo3/musiclib"
@@ -33,7 +33,7 @@ conflicts=('musiclib')
 # After tagging on GitHub, compute the hash with: makepkg -g >> PKGBUILD
 # and replace SKIP below with the printed sha256sum line.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cf35c0e8ba1f5c843ec4bc8905be4503d854dbbfa4988be6be43422be55c161a')
+sha256sums=('e73179e13ea1c5c382ede1f4665bbe7b12ed4e0f6ac6162c605b28545e543549')
 
 build() {
     # GitHub extracts the tarball as musiclib-<version>/, not musiclib-cli-<version>/
