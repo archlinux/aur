@@ -1,7 +1,7 @@
 # Maintainer: Hugh Whelan <brickhousedevelopers@gmail.com>
 pkgname=scidcommunity
 pkgver=5.1.2.44
-pkgrel=74
+pkgrel=78
 pkgdesc="Enhanced fork of Scid chess database with Chess.com/Lichess integration, tablebase lookup, improved search, and additional training features"
 arch=('x86_64')
 url="https://github.com/whelanh/scidCommunity"
@@ -15,8 +15,15 @@ sha256sums=('SKIP')  # Safe to skip: integrity verified by commit hash
 
 build() {
   cd "${srcdir}/scidCommunity-${_commit}"
-  # Configure with final runtime paths (not staging paths)
-  ./configure --prefix=/usr SHAREDIR=/usr/share/scid
+  
+  # Set version via environment variable (configure script checks this)
+  # The version must match what's in tcl/start.tcl (scidVersionExpected = "5.1.1")
+  export SCIDCOMMUNITY_VERSION="5.1.1"
+  
+  # Configure with runtime paths
+  ./configure BINDIR=/usr/bin SHAREDIR=/usr/share/scid
+  
+  # Build
   make all
 }
 
@@ -39,7 +46,9 @@ package() {
   install -Dm755 scidCommunity "${pkgdir}/usr/bin/scidCommunity"
   
   # Install engine
-  install -Dm755 engines/phalanx-scid/phalanx-scid "${pkgdir}/usr/bin/phalanx-scid"
+  if [ -f "engines/phalanx-scid/phalanx-scid" ]; then
+    install -Dm755 engines/phalanx-scid/phalanx-scid "${pkgdir}/usr/bin/phalanx-scid"
+  fi
   
   # Install desktop entry with corrected Exec path
   install -Dm644 -t "${pkgdir}/usr/share/applications" "flatpak/io.github.whelanh.scidCommunity.desktop"
