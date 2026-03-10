@@ -2,7 +2,7 @@
 
 pkgname=ansible-builder
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An Ansible execution environment builder"
 arch=('any')
 url="https://github.com/ansible/ansible-builder"
@@ -27,7 +27,7 @@ optdepends=(
     'podman: To use podman as a container runtime'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('af563f71b697e2294fc787a632351f3516ca3e11a33422254bd283082bfae8625629c4744a3f9de450453c77ed866ea2de21dd14b8c242b2f49ce3e4f8083d41')
+b2sums=('e0246b44815cf9429111320276098626719a86ed2873fdd23bf573952e7c3c10ed88d8d3b1db20dfaa328e7d5e6b72cc0235198308c7c6a0ff3e6cc1f8429784')
 
 build() {
     cd "${pkgname}-${pkgver}"
