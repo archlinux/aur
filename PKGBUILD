@@ -5,22 +5,26 @@
 pkgbase=snes9x-git
 _pkgbase=snes9x
 pkgname=(snes9x-git snes9x-gtk-git snes9x-qt-git)
-pkgver=1.63.r134.g83ebd9d9
+pkgver=1.63.r146.g5110899f
 pkgrel=1
 pkgdesc="Portable Super Nintendo Entertainment System (TM) emulator - git version"
 arch=('x86_64')
 url="http://www.snes9x.com/"
 license=('custom')
 makedepends=(
-  alsa-lib cairo cmake gdk-pixbuf2 git glib2
+  alsa-lib cairo cmake gdk-pixbuf2 git glib2 
   gtk3 gtkmm3 intltool libepoxy libpng libpulse libx11 libxext libxml2
   libxrandr libxv meson minizip nasm portaudio sdl2 zlib
   cmake qt6-base
 )
 source=(
-  git+https://github.com/snes9xgit/snes9x.git
+    git+https://github.com/snes9xgit/snes9x.git
+    fix_jma_defines.patch
+    snes9x-qt.desktop
 )
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '2e299aeb22c696a6150132b9b756026c9be133423c068383789a5df6448c7249'
+            '5df0093883173c8a22cc99349fe5b4f4367d386990ddfa193ee138d430ef2c8e')
 
 pkgver() {
   cd "${_pkgbase}"
@@ -33,6 +37,9 @@ prepare() {
 
   cd unix
   autoreconf -fiv
+
+  cd ${srcdir}/${_pkgbase}
+  patch -p1 -i ${srcdir}/fix_jma_defines.patch
 }
 
 build() {
@@ -128,5 +135,8 @@ package_snes9x-qt-git() {
   # shellcheck disable=SC2128
   install -vDm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   rm "${pkgdir}/usr/share/snes9x/cheats.bml"
+
+  # Install custom desktop file.
+  install -vDm644 "${srcdir}/snes9x-qt.desktop" -t "${pkgdir}/usr/share/applications/"
 
 }

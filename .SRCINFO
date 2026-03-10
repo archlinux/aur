@@ -1,6 +1,6 @@
 pkgbase = snes9x-git
 	pkgdesc = Portable Super Nintendo Entertainment System (TM) emulator - git version
-	pkgver = 1.63.r134.g83ebd9d9
+	pkgver = 1.63.r146.g5110899f
 	pkgrel = 1
 	url = http://www.snes9x.com/
 	arch = x86_64
@@ -31,7 +31,11 @@ pkgbase = snes9x-git
 	makedepends = cmake
 	makedepends = qt6-base
 	source = git+https://github.com/snes9xgit/snes9x.git
+	source = fix_jma_defines.patch
+	source = snes9x-qt.desktop
 	sha256sums = SKIP
+	sha256sums = 2e299aeb22c696a6150132b9b756026c9be133423c068383789a5df6448c7249
+	sha256sums = 5df0093883173c8a22cc99349fe5b4f4367d386990ddfa193ee138d430ef2c8e
 
 pkgname = snes9x-git
 	pkgdesc = Portable Emulator for the Super Nintendo Entertainment System - git version
