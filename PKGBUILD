@@ -5,37 +5,40 @@ pkgrel=1
 pkgdesc="Create Anki import files from movies and TV shows for language learning"
 arch=('any')
 url="https://gitlab.com/fkzys/subs2srs"
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('mono' 'ffmpeg' 'mp3gain' 'mkvtoolnix-cli')
-optdepends=('anki' 'noto-fonts-cjk: display japanese characters')
-makedepends=('git' 'mono' 'p7zip' 'icoutils')
-provides=('subs2srs')
-conflicts=('subs2srs')
-source=("git+${url}.git")
+optdepends=(
+    'anki: flashcard application'
+    'noto-fonts-cjk: display japanese characters'
+)
+makedepends=('git' 'p7zip' 'icoutils')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd subs2srs
-    printf "%s.r%s.%s" "29.7" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$pkgname"
+    printf '29.7.r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd subs2srs
+    cd "$pkgname"
     make build
 }
 
 package() {
-    cd subs2srs
+    cd "$pkgname"
     make DESTDIR="$pkgdir" install
 
     # Icons from exe
     cd subs2srs
-    
+
     7z -y e subs2srs.exe '3.ico' '4.ico' -r 1>/dev/null
     icotool -x 3.ico 4.ico
     install -Dm644 4_1_32x32x24.png \
         "$pkgdir/usr/share/icons/hicolor/32x32/apps/subs2srs.png"
-    
+
     7z -y e 'Utils/SubsReTimer/SubsReTimer.exe' '*.ico' -r 1>/dev/null
     icotool -x ./*.ico
     install -Dm644 1_1_16x16x32.png \
