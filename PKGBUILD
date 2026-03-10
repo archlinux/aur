@@ -2,7 +2,7 @@
 
 _pkgname="aiomqtt"
 pkgname=python-${_pkgname}
-pkgver=2.3.2
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="The idiomatic asyncio MQTT client"
 arch=(x86_64)
