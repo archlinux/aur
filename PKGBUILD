@@ -1,7 +1,7 @@
 # Maintainer: Maud Spierings <maud_spierings@hotmail.com>
 
 pkgname=python-libuuu
-pkgver=1.5.233
+pkgver=1.5.243
 pkgrel=1
 pkgdesc='A python wrapper for libuuu'
 arch=('x86_64' 'aarch64')
@@ -11,11 +11,17 @@ depends=('bzip2' 'zlib' 'libusb' 'libzip' 'openssl' 'tinyxml2' 'python-setuptool
 makedepends=('meson' 'git' 'cmake' 'python-build' 'python-installer' 'python-wheel' 'zip' 'unzip')
 changelog=History.md
 source=(
-	"git+$url#commit=79ce7d2b2e7459e7b7c94f902d172c30b08884ab" # 1.5.233
+	"git+$url#commit=230f1b150eb7f9ea906a0138c0e28240a8e2df8f" # 1.5.243
 	"git+https://github.com/microsoft/vcpkg.git"
+	"git_version.patch"
 )
-sha256sums=('8902c79ea91e30a91bb28bda2b4b34cb19f3a7e90ff2183623ad1acec3e3310f'
-            'SKIP')
+sha256sums=('cc634b159871d6442143f8d0eb2760155344f4e337039cb703dd4434baebd9d7'
+            'SKIP'
+            '4f60aa6025bdc9feb2dca432ee94c12e9750f7f52891f0dee383e0372be8fa77')
+
+prepare() {
+  patch --directory="mfgtools" --forward --strip=1 --input="${srcdir}/git_version.patch"
+}
 
 build() {
 	export VCPKG_FORCE_SYSTEM_BINARIES=1
