@@ -1,7 +1,7 @@
 pkgbase = formula-vst3
-	pkgdesc = Formula is an open-source VST & AU plugin to create custom audio effects inside your DAW.
+	pkgdesc = Open-source audio effects as code editor VST3 plugin and standalone application.
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/soundspear/formula
 	arch = x86_64
 	groups = pro-audio
@@ -23,6 +23,8 @@ pkgbase = formula-vst3
 	depends = zlib
 	optdepends = vst3-host
 	source = https://github.com/soundspear/formula/releases/download/1.2.2/formula-linux.tgz
+	source = formulavst.png::https://github.com/soundspear/formula/blob/1.2.2/assets/formula_icon.png?raw=true
 	sha256sums = d7bfd2ebcc8b64a6bc6a07bf1125c24c190a607c849d2fb68171c1c8a3e2fd87
+	sha256sums = bdfad41978c0470f80a85753f53cc426ec48e40a5aa77fa6c80f469b93111a71
 
 pkgname = formula-vst3
