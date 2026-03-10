@@ -1,6 +1,6 @@
 # Maintainer: Andrew Marin <andrewmarin367@gmail.com>
 pkgname=vice-clipper
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Medal.tv-style game clip recorder for Linux — instant replay, session recording, and one-click sharing"
 arch=('x86_64')
@@ -8,6 +8,7 @@ url="https://github.com/eklonofficial/Vice"
 license=('GPL-3.0-or-later')
 depends=(
     'python'
+    'systemd'
     'python-evdev'
     'python-aiohttp'
     'python-click'
@@ -29,7 +30,7 @@ makedepends=(
     'python-wheel'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/eklonofficial/Vice/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('411e99cce5f502b65709614f532f8543b75e77824c720f053dd2c77f69c2b3e9')
+sha256sums=('968c82a37fdf5f7e6697f48790458e3384018cf86cdaa489e941abf87f2b453b')
 
 build() {
     cd "$srcdir/Vice-$pkgver"
@@ -52,10 +53,6 @@ package() {
     install -Dm644 assets/vice.svg \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/vice.svg"
 
-    install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/doc/vice-clipper/README" <<'DOC'
-Vice requires the user to be in the 'input' group for global hotkeys:
-  sudo usermod -aG input $USER
-Then log out and back in.
-DOC
+    install -Dm644 packaging/vice.rules \
+        "$pkgdir/usr/lib/udev/rules.d/70-vice-input.rules"
 }
