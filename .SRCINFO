@@ -1,6 +1,6 @@
 pkgbase = kpa
 	pkgdesc = KevinCrrl Python AUR Helper
-	pkgver = 2.2.1
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/KevinCrrl/kpa
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = kpa
 	depends = base-devel
 	optdepends = sudo: ejecutar comandos como root
 	conflicts = kpa-bin
-	source = https://github.com/KevinCrrl/kpa/archive/refs/tags/2.2.1/2.2.1.tar.gz
-	sha512sums = 1311f539fc13ea033f107b71566c4c337b9d43021897c416cb82e52625fd11513fb1cd90063fc73049f2ad496cd14298f7341153afad95527c363fc58d394b0c
+	source = https://github.com/KevinCrrl/kpa/archive/refs/tags/2.3.0/2.3.0.tar.gz
+	sha512sums = cc95061886b0c02857a960c8a71a4592d0674108eeeb57abae22f2e3ab82fb918c665bf2d1095f179e5fe5843e06478e00ebbf95be95c3671598c55f92ffee20
 
 pkgname = kpa
