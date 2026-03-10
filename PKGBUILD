@@ -7,7 +7,7 @@
 pkgbase=keybase
 pkgname=(keybase kbfs keybase-gui)
 pkgdesc='CLI tool for GPG with keybase.io'
-pkgver=6.5.2
+pkgver=6.6.0
 pkgrel=1
 arch=(x86_64)
 url=https://keybase.io
@@ -24,7 +24,7 @@ _archive="$pkgbase-v$pkgver"
 source=("$_url/releases/download/v$pkgver/$_archive.tar.xz"{,.sig}
         keybase-gui.in
         0001-Don-t-use-electron-to-build.patch)
-sha256sums=('29900fa15db387e744ca5f58306fe54f2e6a3969d376c76ec0187e2049b9615c'
+sha256sums=('849bd4b60c9c39554f6f41df828cb8573493476416cf96756e208e79873d3573'
             'SKIP'
             'f5377a5b154c9ffa3f4da82f8746306660195a4b4fb0cd80664777023bd81b66'
             'd805398390b5f7dfb5056462e3ba5bd4568c6aa3b9e40fd63158f15adc3fc8cd')
