@@ -1,0 +1,25 @@
+pkgbase = coursefin-bin
+	pkgdesc = Desktop application for managing and watching offline course content (pre-built binary)
+	pkgver = 0.4.10
+	pkgrel = 1
+	url = https://github.com/vasujain275/coursefin
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-libav
+	provides = coursefin
+	conflicts = coursefin
+	source = coursefin-0.4.10::https://github.com/vasujain275/coursefin/releases/download/v0.4.10/coursefin-0.4.10-linux-amd64
+	source = coursefin.desktop::https://raw.githubusercontent.com/vasujain275/coursefin/v0.4.10/packaging/coursefin.desktop
+	source = coursefin.png::https://raw.githubusercontent.com/vasujain275/coursefin/v0.4.10/build/appicon.png
+	source = LICENSE::https://raw.githubusercontent.com/vasujain275/coursefin/v0.4.10/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = coursefin-bin
