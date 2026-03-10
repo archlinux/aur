@@ -9,6 +9,6 @@ pkgbase = vi-mongo
 	depends = glibc
 	options = !debug
 	source = vi-mongo-0.2.0.tar.gz::https://github.com/kopecmaciej/vi-mongo/archive/v0.2.0.tar.gz
-	sha256sums = cd78d9b7efa7f03b358bd7689d633a39a520db8385854e042e8a2648e1f2912f
+	sha256sums = 298b6553a576716086def2828588552cfd11c4ca783b53b5c35659c5e73fb06c
 
 pkgname = vi-mongo

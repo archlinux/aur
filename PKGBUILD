@@ -9,7 +9,7 @@ license=("Apache-2.0")
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cd78d9b7efa7f03b358bd7689d633a39a520db8385854e042e8a2648e1f2912f')
+sha256sums=('298b6553a576716086def2828588552cfd11c4ca783b53b5c35659c5e73fb06c')
 options=('!debug')
 
 prepare() {
