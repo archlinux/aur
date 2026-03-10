@@ -36,7 +36,7 @@ options=('!strip')
 source=("ArubaSign-${pkgver}.tar.bz2::https://updatesfirma.aruba.it/downloads/ArubaSign-latest-LINUX.tar.bz2"
   "${pkgname%-bin}.sh"
   "${pkgname%-bin}.desktop")
-sha256sums=('6011b8193fd8039d8bb13b5d01f9108f6dec6a0aeed460a6c815e9f532e39d68'
+sha256sums=('fa4994fc0ba01ed9231979372979d3735b24cea22a8dddd3841639b7f85f82ad'
   '44d5a13f18d60851de6c71d4a336a54a90f9a1f2b82813e52e685c22e46ac6d2'
   '4faa020d89f19c5f9f5c3cc5301c8a6f00cf12a769f0e4a4cd1f0cec73c864f9')
 
