@@ -1,0 +1,19 @@
+pkgbase = btrfs-file-history-git
+	pkgdesc = Track file and directory lifecycle across btrfs snapshots
+	pkgver = r1.f8aec3a
+	pkgrel = 1
+	url = https://gitlab.com/fkzys/btrfs-file-history
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = python
+	depends = btrfs-progs
+	depends = util-linux
+	optdepends = e2fsprogs: extent analysis via filefrag
+	optdepends = python-graphviz: Graphviz dot export
+	provides = btrfs-file-history
+	conflicts = btrfs-file-history
+	source = btrfs-file-history-git::git+https://gitlab.com/fkzys/btrfs-file-history.git
+	sha256sums = SKIP
+
+pkgname = btrfs-file-history-git
