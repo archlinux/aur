@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=AccessGram
+Comment=An accessible Telegram client for Linux
+Exec=accessgram
+Terminal=false
+Categories=Network;InstantMessaging;GTK;
+StartupNotify=true
