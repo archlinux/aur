@@ -1,7 +1,7 @@
 pkgname=accessgram-git
 _pkgname=accessgram
 pkgver=r23.0f86022
-pkgrel=1
+pkgrel=2
 pkgdesc='An accessible Telegram client for Linux'
 arch=('any')
 url='https://github.com/destructatron/AccessGram'
@@ -10,11 +10,13 @@ depends=(
   'python'
   'python-telethon'
   'python-gobject'
-  'python-cryptg'
   'gtk4'
   'gst-plugins-base'
   'gst-plugins-good'
   'gst-plugins-bad'
+)
+optdepends=(
+  'python-cryptg: optional Telegram crypto acceleration'
 )
 makedepends=(
   'git'
