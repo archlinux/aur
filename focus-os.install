@@ -1,0 +1,23 @@
+post_install() {
+    echo ""
+    echo "  ╔══════════════════════════════════════════════╗"
+    echo "  ║           focus.os installed                 ║"
+    echo "  ╚══════════════════════════════════════════════╝"
+    echo ""
+    echo "  Run now:"
+    echo "    focus-os"
+    echo ""
+    echo "  Enable autostart (starts with your desktop session):"
+    echo "    systemctl --user enable --now focus-os"
+    echo ""
+    echo "  Disable autostart:"
+    echo "    systemctl --user disable --now focus-os"
+    echo ""
+    echo "  The default toggle shortcut is Ctrl+Shift+Space."
+    echo "  Change it via Ctrl+S inside the bar."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
