@@ -1,6 +1,6 @@
 pkgbase = rgbpc
 	pkgdesc = A TUI to manage OpenRGB lights, with optional Omarchy theme sync
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/Zeus-Deus/rgbpc
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rgbpc
 	makedepends = cargo
 	depends = openrgb
 	depends = xdg-terminal-exec
-	source = rgbpc-1.0.2.tar.gz::https://github.com/Zeus-Deus/rgbpc/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 31f832e4a1eb100c96bfec66a6f71a0261e3e5398bdd8d07e55f41a3942564e5
+	source = rgbpc-1.0.3.tar.gz::https://github.com/Zeus-Deus/rgbpc/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = beef1b2c4297f929c4b5685a69c6b7d64cce6ea8ca04f3a1e4f8c3db3e198479
 
 pkgname = rgbpc
