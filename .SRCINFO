@@ -1,13 +1,13 @@
 pkgbase = mausam
 	pkgdesc = Beautiful weather in your terminal
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/codeptor/mausam
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
-	source = mausam-1.0.2.tar.gz::https://github.com/codeptor/mausam/archive/refs/tags/v1.0.2.tar.gz
+	source = mausam-1.0.3.tar.gz::https://github.com/codeptor/mausam/archive/refs/tags/v1.0.3.tar.gz
 	sha256sums = SKIP
 
 pkgname = mausam
