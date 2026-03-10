@@ -2,7 +2,7 @@
 
 _base=chisel
 pkgname=chisel-jpillora
-pkgver=v1.11.4
+pkgver=v1.11.5
 pkgrel=1
 pkgdesc="Chisel is a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server."
 arch=(any)
