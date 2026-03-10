@@ -10,7 +10,7 @@ declare -Ag _arch=(
 _pkgname="vsearch"
 pkgname="${_pkgname}-bin"
 pkgver=2.30.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Versatile open-source tool for microbiome analysis. https://doi.org/10.7717/peerj.2584"
 arch=(
   "${!_arch[@]}"
@@ -20,8 +20,9 @@ license=(
   'BSD-2-Clause OR GPL-3.0-only'
 )
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
+  'libstdc++'
 )
 provides=(
   "${_pkgname}"
