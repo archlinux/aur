@@ -1,0 +1,5 @@
+[headson]
+source = "github"
+github = "kantord/headson"
+use_latest_release = true
+prefix = "headson-v"
