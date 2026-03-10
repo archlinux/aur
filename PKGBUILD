@@ -1,6 +1,6 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=mmm
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Markdown Mixed Media - A powerful terminal markdown viewer with image support, Mermaid diagrams, and PDF/ODT export"
 arch=('any')
@@ -15,12 +15,12 @@ optdepends=(
 makedepends=('npm' 'git')
 options=('!strip')  # Don't strip binaries to avoid fakeroot issues
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aaronsb/markdown-mixed-media/archive/v$pkgver.tar.gz")
-sha256sums=('6cff62f64820f67c0ca00e8c49c39018a08d3a06e06b245e9ad9fc3a32f86dca')
+sha256sums=('a67e617f916e53039e8760a9f2d9e62566b0d2ba0cae7a25e89713e78e88fd86')
 
 build() {
     cd "$srcdir/markdown-mixed-media-$pkgver"
 
-    # Install dependencies
+    # Install dependencies (.npmrc sets legacy-peer-deps for marked-emoji compat)
     npm install --production=false
 
     # Build the project

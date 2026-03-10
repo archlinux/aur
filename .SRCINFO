@@ -1,6 +1,6 @@
 pkgbase = mmm
 	pkgdesc = Markdown Mixed Media - A powerful terminal markdown viewer with image support, Mermaid diagrams, and PDF/ODT export
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/aaronsb/markdown-mixed-media
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mmm
 	optdepends = mermaid-cli: Mermaid diagram rendering
 	optdepends = chromium: PDF generation support
 	options = !strip
-	source = mmm-1.0.7.tar.gz::https://github.com/aaronsb/markdown-mixed-media/archive/v1.0.7.tar.gz
-	sha256sums = 6cff62f64820f67c0ca00e8c49c39018a08d3a06e06b245e9ad9fc3a32f86dca
+	source = mmm-1.0.8.tar.gz::https://github.com/aaronsb/markdown-mixed-media/archive/v1.0.8.tar.gz
+	sha256sums = a67e617f916e53039e8760a9f2d9e62566b0d2ba0cae7a25e89713e78e88fd86
 
 pkgname = mmm
