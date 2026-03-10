@@ -2,7 +2,7 @@
 
 pkgname=odiff-bin
 pkgver=4.3.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Blazing fast SIMD-optimized image comparison CLI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/dmtrKovalenko/odiff"
@@ -23,8 +23,8 @@ source_aarch64=("odiff-linux-arm64::https://github.com/dmtrKovalenko/odiff/relea
 noextract=('odiff-linux-x64' 'odiff-linux-arm64')
 
 latestver() {
-	curl -fsSL "https://api.github.com/repos/dmtrKovalenko/odiff/releases/latest" \
-		| jq -r '.tag_name // empty' | sed 's/^v//'
+	curl -fsSL 'https://api.github.com/repos/dmtrKovalenko/odiff/releases/latest' | jq -r 'select(any(.assets[]?; .name == "odiff-linux-x64") and any(.assets[]?; .name == "odiff-linux-arm64")) | .tag_name' |
+	sed -E 's/^v//'
 }
 
 package() {
