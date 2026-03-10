@@ -3,7 +3,7 @@
 _pkgauthor=mcandre
 _pkgname=tuco
 pkgname=${_pkgname}-bin
-pkgver=0.0.20
+pkgver=0.0.21
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Go port multiplexer"
@@ -20,10 +20,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tgz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tgz")
-sha256sums=('11c252fdca2126c55b3e3ded0e7f6f7bc0a2a7ec05605f672097542d40f55e45'
+sha256sums=('ed39c95f02275a8b34385613d9c44d193c1c01b0617a9dfe0cb3fa73e02e44b5'
             '8022f1ac4622ba48ec7f2b06cdf8480fc7193abb71de1b67a5dc07823d1af64f')
-sha256sums_x86_64=('e3a8080678f1bdaf721c004bb323ef7e10258b718892b059f46321b6b5031ffd')
-sha256sums_aarch64=('4b9649fad326218fa60fbdb6421560ed5d74206199bf0ae977c837fc0674aa8e')
+sha256sums_x86_64=('1028db38f5ccc4d82f99c834705453a9f4c6cb16858c78ee61e8e1ff16b1ad3e')
+sha256sums_aarch64=('9bdda64b86d81fb7f77530d5d6131d52ed956e5c0613c5dd072959a1486959b8')
 
 package() {
 	cd "${srcdir}/" || exit
