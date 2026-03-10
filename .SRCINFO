@@ -1,0 +1,23 @@
+pkgbase = tuco-bin
+	pkgdesc = Go port multiplexer
+	pkgver = 0.0.20
+	pkgrel = 1
+	url = https://github.com/mcandre/tuco
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	depends = glibc
+	depends = gcc-libs
+	provides = tuco
+	conflicts = tuco
+	conflicts = tuco-git
+	source = README-0.0.20.md::https://raw.githubusercontent.com/mcandre/tuco/v0.0.20/README.md
+	source = LICENSE-0.0.20::https://raw.githubusercontent.com/mcandre/tuco/v0.0.20/LICENSE.md
+	sha256sums = 11c252fdca2126c55b3e3ded0e7f6f7bc0a2a7ec05605f672097542d40f55e45
+	sha256sums = 8022f1ac4622ba48ec7f2b06cdf8480fc7193abb71de1b67a5dc07823d1af64f
+	source_x86_64 = tuco-x86_64-0.0.20.tgz::https://github.com/mcandre/tuco/releases/download/v0.0.20/tuco-linux-amd64.tgz
+	sha256sums_x86_64 = e3a8080678f1bdaf721c004bb323ef7e10258b718892b059f46321b6b5031ffd
+	source_aarch64 = tuco-aarch64-0.0.20.tgz::https://github.com/mcandre/tuco/releases/download/v0.0.20/tuco-linux-arm64.tgz
+	sha256sums_aarch64 = 4b9649fad326218fa60fbdb6421560ed5d74206199bf0ae977c837fc0674aa8e
+
+pkgname = tuco-bin

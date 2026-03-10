@@ -1,0 +1,5 @@
+["tuco-bin"]
+source = "github"
+github = "mcandre/tuco"
+use_latest_release = true
+prefix = "v"
