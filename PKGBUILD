@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=muffon-git
-pkgver=2.4.0.r1.g625431f
-_electronversion=39
-_nodeversion=24
+pkgver=2.4.0.r21.g1c9282d
+_electronversion=40
+_nodeversion=25
 pkgrel=1
 pkgdesc="Music streaming browser,retrieves audio, video and metadata from various Internet sources.(Use system-wide electron)"
 arch=('any')
@@ -81,10 +81,10 @@ prepare() {
     } >> .npmrc
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-        echo 'registry=https://registry.npmmirror.com'
-        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
-        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
-        } >> .npmrc
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export NPM_CONFIG_ELECTRON_MIRROR="https://registry.npmmirror.com/-/binary/electron/"
+            export NPM_CONFIG_ELECTRON_BUILDER_BINARIES_MIRROR="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
+        }
     fi
     _ensure_local_nvm
     cp public/logo.png public/icons/icon.png
@@ -101,8 +101,15 @@ build() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname//-/.}/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -r "${srcdir}/${pkgname//-/.}/release/linux-"*/resources/app.asar.unpacked "${pkgdir}/usr/lib/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname}"
+	find "${srcdir}/${pkgname//-/.}/release/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" {} +
+    if find "${srcdir}/${pkgname//-/.}/release/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${pkgname//-/.}/release/linux-"*"/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/${pkgname//-/.}/build/logo.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname//-/.}/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname//-/.}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"

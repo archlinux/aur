@@ -1,6 +1,6 @@
 pkgbase = muffon-git
 	pkgdesc = Music streaming browser,retrieves audio, video and metadata from various Internet sources.(Use system-wide electron)
-	pkgver = 2.4.0.r1.g625431f
+	pkgver = 2.4.0.r21.g1c9282d
 	pkgrel = 1
 	url = https://muffon.netlify.app/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = muffon-git
 	makedepends = gendesk
 	makedepends = curl
 	makedepends = jq
-	depends = electron39
+	depends = electron40
 	depends = python
 	provides = muffon=2.4.0
 	conflicts = muffon
