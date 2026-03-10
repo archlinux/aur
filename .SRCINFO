@@ -1,6 +1,6 @@
 pkgbase = hylo-llvm-bin
 	pkgdesc = LLVM library and binaries compatible with Swift and Hylo
-	pkgver = 20260308_220457
+	pkgver = 20260309_221030
 	pkgrel = 1
 	url = https://github.com/hylo-lang/llvm-build
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = hylo-llvm-bin
 	options = !debug
 	options = !strip
 	options = staticlibs
-	source = https://github.com/hylo-lang/llvm-build/releases/download/20260308-220457/llvm-20.1.6-x86_64-unknown-linux-gnu-MinSizeRel.tar.zst
+	source = https://github.com/hylo-lang/llvm-build/releases/download/20260309-221030/llvm-20.1.6-x86_64-unknown-linux-gnu-MinSizeRel.tar.zst
 	sha256sums = 226e241a1697b57fd7402c6bb00ebcf5c2d980e499aa9d4782fa80c61d09559f
 
 pkgname = hylo-llvm-bin
