@@ -5,7 +5,7 @@
 # Maintainer: tee < teeaur at duck dot com >
 
 pkgname=dgraph-bin
-pkgver=25.2.0
+pkgver=25.3.0
 pkgrel=1
 #pkgdesc='Fast, transactional, distributed graph database'
 pkgdesc='Dgraph is a horizontally scalable and distributed GraphQL database with a graph backend'
@@ -23,8 +23,8 @@ source=("dgraph-$pkgver.tar.gz::$url/releases/download/v$pkgver/dgraph-linux-amd
         "$url/raw/v$pkgver/contrib/systemd/centos/dgraph-alpha.service"
         "$url/raw/v$pkgver/contrib/systemd/centos/dgraph-zero.service"
         "$url/raw/v$pkgver/contrib/systemd/centos/add_dgraph_account.sh")
-sha256sums=('2bbd0929cb8720f9aa83ffdaa717cf8d74f5c8a13d461776862728aee3c11c31'
-            '7dde4282286dc9a4e25e90b92b878a2b68d38993778599f01670ca9449533e5e'
+sha256sums=('6f396b03c216af4b61a709c6ae6bb447ab125de29bf6e365693f23320efc0b8a'
+            'fe9aa024cff2ec4a11f5ada231a4df7c59159b69009487a227fe57f33ac38678'
             '56bac56de02dc9e6f8da0f93cedbae0356d50af17e97748d97aca76338518eee'
             'a3206be0d02663940f7bc1dec13f4dfc5a6a64a1549a645755320c439c4434f6'
             '5f245e21547ee20c65bde76a0b1db995a7dbfdd30f99de861036672cdebfb395'
