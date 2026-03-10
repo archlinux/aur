@@ -2,7 +2,7 @@
 _pkgauthor=chojs23
 _pkgname=ec
 pkgname=easy-conflict
-pkgver=0.2.3
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Terminal-native Git mergetool with 3-pane IntelliJ-like conflict resolver'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('git')
 makedepends=('go')
 provides=('ec')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('9093607b10bf080f4d1ab92898e1b3b9af8bfb67049775ce3d4daaae3fd28d27')
+sha256sums=('43b810c771d9d71d66fb252620ec1a8d255b4738493b767b2329a248cf39b4c7')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
