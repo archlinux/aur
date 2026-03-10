@@ -1,0 +1,5 @@
+[secfetch]
+source = "github"
+github = "ake13-art/secfetch"
+use_latest_release = true
+prefix = "v"
