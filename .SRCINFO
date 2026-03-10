@@ -1,13 +1,13 @@
 pkgbase = tbreakout-bin
 	pkgdesc = Retro terminal Breakout game written in Go using tcell
-	pkgver = 0.1.8
+	pkgver = 0.1.82
 	pkgrel = 1
 	url = https://github.com/Geralt-Of-Rivia-Witcher/tbreakout
 	arch = x86_64
 	license = MIT
 	depends = glibc
 	options = !debug
-	source = tbreakout::https://github.com/Geralt-Of-Rivia-Witcher/tbreakout/releases/download/v0.1.8/tbreakout-linux-amd64
-	sha256sums = a5c2fba4d2e64c90eba1b35912cd078454a051ef8092a751029c4499104c08c2
+	source = tbreakout::https://github.com/Geralt-Of-Rivia-Witcher/tbreakout/releases/download/v0.1.82/tbreakout-linux-amd64
+	sha256sums = 3ce5249453c128625b25e871434c2499e4d971fe731f6482c431a9705249a1b9
 
 pkgname = tbreakout-bin
