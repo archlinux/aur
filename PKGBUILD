@@ -1,6 +1,6 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiori-ebook
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager built with Tauri, React, and Rust"
 arch=('x86_64')
@@ -60,7 +60,7 @@ package() {
         "${pkgdir}/usr/share/icons/hicolor/32x32/apps/shiori-ebook.png"
     
     # Create desktop entry
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/shiori-ebook.desktop" <<EOF
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/shiori-ebook.desktop" <<DESKTOP
 [Desktop Entry]
 Name=Shiori eBook Manager
 GenericName=eBook Library Manager
@@ -73,7 +73,7 @@ Keywords=ebook;reader;library;epub;pdf;mobi;
 Terminal=false
 StartupNotify=true
 MimeType=application/epub+zip;application/pdf;application/x-mobipocket-ebook;application/vnd.amazon.ebook;
-EOF
+DESKTOP
     
     # Install license
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
