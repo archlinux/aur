@@ -1,7 +1,7 @@
 # Maintainer: jim3692 <jim3692 at gmail.com>
 pkgname="pipewire-screenaudio"
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension to passthrough pipewire audio to WebRTC Screenshare"
 arch=('x86_64')
 url="https://github.com/IceDBorn/pipewire-screenaudio"
@@ -21,26 +21,27 @@ options=(!lto)
 conflicts=()
 provides=('pipewire-screenaudio')
 source=(
-  'git+https://github.com/IceDBorn/pipewire-screenaudio.git#commit=3c0b272e24757d3392620585466dd32721450434'
+  "${url}/archive/refs/tags/${pkgver}.tar.gz"
   )
 sha256sums=(
   'SKIP'
   )
 
 prepare() {
-  cd $srcdir/pipewire-screenaudio/native/connector-rs
+  cd $srcdir/${pkgname}-${pkgver}/native/connector-rs
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-  cd $srcdir/pipewire-screenaudio/native/connector-rs
+   cd $srcdir/${pkgname}-${pkgver}/native/connector-rs
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --release --frozen --all-features
 }
 
 package() {
-  install -Dm644 "$srcdir/pipewire-screenaudio/native/native-messaging-hosts/firefox.json" "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.icedborn.pipewirescreenaudioconnector.json"
-  install -Dm755 "$srcdir/pipewire-screenaudio/native/connector-rs/target/release/connector-rs" "$pkgdir/usr/lib/pipewire-screenaudio/connector-rs/target/release/connector-rs"
+  cd $srcdir/${pkgname}-${pkgver}/native
+  install -Dm644 'native-messaging-hosts/firefox.json' "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.icedborn.pipewirescreenaudioconnector.json"
+  install -Dm755 'connector-rs/target/release/connector-rs' "$pkgdir/usr/lib/pipewire-screenaudio/connector-rs/target/release/connector-rs"
 }
