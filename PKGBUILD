@@ -1,7 +1,7 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiori-ebook-bin
-pkgver=0.1.7
-pkgrel=2
+pkgver=0.1.8
+pkgrel=1
 pkgdesc="Modern offline-first eBook library manager (pre-compiled binary)"
 arch=('x86_64')
 url="https://github.com/vinayydv3695/Shiori"
