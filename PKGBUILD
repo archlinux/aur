@@ -5,7 +5,7 @@ pkgname=(
     "$pkgbase"
     "$pkgbase-docs"
 )
-pkgver=6.6.110
+pkgver=6.12.75
 pkgrel=1
 pkgdesc='The Linux kernel for Purism Librem 5'
 url='https://source.puri.sm/Librem5/linux'
@@ -34,12 +34,12 @@ options=(
     !strip
 )
 
-_purismver=6.6.110pureos1
+_purismver=6.12.75pureos1
 source=(
     https://source.puri.sm/Librem5/linux/-/archive/pureos/$_purismver/linux-pureos-$_purismver.tar.gz
     config
 )
-b2sums=('e7ce634d4fa3609ac1db016e88846eb21d9c9824767d2132900088a5fc0898e76169043a15683b57f73a3087ba01d8bbce3430d635ae75944dcfcbfbdd116831'
+b2sums=('6fbc0d9f09c4b2658a5eef51ff0bc1cbf43b5c08e49fd352a4a1ede61e1068bf6eb77b9b13ed2d39284bf9e27a8e8cc8467ce88906bd4b20c88e3dc8d29f3e7d'
         'SKIP')
 
 export ARCH=arm64
