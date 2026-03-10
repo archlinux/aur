@@ -1,0 +1,19 @@
+pkgbase = pg_clickhouse
+	pkgdesc = PostgreSQL extension to query ClickHouse databases from PostgreSQL
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/ClickHouse/pg_clickhouse
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = openssl
+	depends = postgresql
+	depends = curl
+	depends = util-linux-libs
+	source = pg_clickhouse::git+https://github.com/ClickHouse/pg_clickhouse.git#tag=v0.1.4
+	sha256sums = SKIP
+
+pkgname = pg_clickhouse
