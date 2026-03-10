@@ -5,7 +5,7 @@
 
 _pkgname=baidunetdisk
 pkgname=baidunetdisk-bin
-pkgver=4.17.7
+pkgver=4.17.8
 pkgrel=1
 #_mainver=${pkgver%.*}
 pkgdesc="Baidu Net Disk - a cloud storage client (Linux Version)."
@@ -25,10 +25,10 @@ source_x86_64=("${pkgname}-${pkgver}.deb::http://wppkg.baidupcs.com/issue/netdis
 
 sha256sums=('1e0d9616c58d3b772b42d4790625cf2c34ab671f586b8534a2c544c2117bb5d0'
             'c0035e038344a154421301b7855c274049ad432a5b06b52efc74831daa73e02e')
-sha256sums_x86_64=('50ec18f05626a13f57ef034630416d481682bc1018539f33397d5c71bc653b3d')
+sha256sums_x86_64=('ad3a4ce3fdbdbb44d3e157fa072f692c0629be7e6e94e9151cfc3408c0d5ba23')
 
 prepare() {
-    bsdtar -xpf "data.tar.xz"
+    bsdtar -xpf "data.tar.bz2"
 
     patch -d "usr" -p1 <"0001-baidunetdisk-bin-desktop-file.patch"
     sed -i '/Name/a Name[zh_CN]=百度网盘' usr/share/applications/${_pkgname}.desktop
