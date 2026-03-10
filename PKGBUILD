@@ -1,7 +1,7 @@
 # Maintainer: Vasu Jain <vasujain275@gmail.com>
 
 pkgname=coursefin
-pkgver=0.4.11
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Desktop application for managing and watching offline course content'
 arch=('x86_64')
