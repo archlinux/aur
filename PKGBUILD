@@ -2,7 +2,7 @@
 # Maintainer: Marco Realacci <marco@marcorealacci.me>
 
 pkgname='conservation-daemon-bin'
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='Battery conservation mode daemon for Lenovo Yoga/IdeaPad'
 url='https://git.marcorealacci.me/marcorealacci/conservation-daemon'
@@ -14,7 +14,7 @@ depends=('upower' 'gtk3' 'libayatana-appindicator' 'zenity')
 install=conservation-daemon.install
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://git.marcorealacci.me/marcorealacci/conservation-daemon/releases/download/v${pkgver}/conservation-daemon_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('11a4217632def457b159954ee2b1a08e3dc73e19e6c6abee8d8364f55b3ce547')
+sha256sums_x86_64=('f72c6af2b13d2b07bca2cbf8b438bc0238d29e11c1a1b523ea7b2a40ddd86270')
 
 package() {
   install -Dm755 "./conservationd" "${pkgdir}/usr/bin/conservationd"
