@@ -1,0 +1,5 @@
+[vimalender-bin]
+source = "github"
+github = "Sadoaz/vimalender"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,18 @@
+pkgbase = vimalender-bin
+	pkgdesc = A calendar with vim keybindings
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Sadoaz/vimalender
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = vimalender
+	conflicts = vimalender
+	source = README-1.0.0.md::https://raw.githubusercontent.com/Sadoaz/vimalender/v1.0.0/README.md
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/Sadoaz/vimalender/v1.0.0/LICENSE
+	sha256sums = 25ca3ccf2e059092aa7651fde606125a45f26609ea7746b609fdea28d71b7780
+	sha256sums = e744fab298a55e291cb494d25a96ae70eadd4861dde0f6d64e89112e1ca128fb
+	source_x86_64 = vimalender-x86_64-1.0.0::https://github.com/Sadoaz/vimalender/releases/download/v1.0.0/vimalender
+	sha256sums_x86_64 = ae868a3f61954c8efce2c07e19e74075d2ad3e5cd97d6dc1bfb3c35bac35c1fb
+
+pkgname = vimalender-bin
