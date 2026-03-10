@@ -1,7 +1,7 @@
 # Contributer: mzwing <mzwing@mzwing.eu.org>
 
 pkgname='deepin-wine10-stable'
-_pkgver=10.7deepin5
+_pkgver=10.14deepin7
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="Deepin wine10 stable"
@@ -10,27 +10,27 @@ url="http://www.deepin.org"
 license=('Proprietary')
 makedepends=('tar')
 source=(
-    "https://com-store-packages.uniontech.com/appstorev23/pool/appstore/d/deepin-wine10-stable/deepin-wine10-stable_${_pkgver}_amd64.deb"
+    "https://pro-store-packages.uniontech.com/appstore/pool/eagle-pro/d/deepin-wine10-stable/deepin-wine10-stable_${_pkgver}_amd64.deb"
 )
 noextract=(
     "deepin-wine10-stable_${_pkgver}_amd64.deb"
 )
-sha256sums=('9fbc92dfb2123aa6cff7caf43c412c67dc92dc170674bd87c11e2aa6e2256e4d')
+sha256sums=('4387fadb1e5ba8ad39c6a6e04a2fcde7c0afd85b3871c346cfe1461eb1dbf4f9')
 DLAGENTS=("https::/usr/bin/curl -A 'apt' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 depends=(
-    alsa-lib                   # libasound2 (>= 1.0.16)
+    alsa-lib                    # libasound2 (>= 1.0.16)
     glibc                       # libc6 (>= 2.38)
-    #libcapi                     # libcapi20-3
+    #libcapi                    # libcapi20-3
     dbus                        # libdbus-1-3 (>= 1.9.16)
     gcc-libs                    # libgcc-s1 (>= 3.0)
-    #glib2                       # libglib2.0-0 (>= 2.37.3)
+    #glib2                      # libglib2.0-0 (>= 2.37.3)
     libgphoto2                  # libgphoto2-6 (>= 2.5.10),  libgphoto2-port12 (>= 2.5.10)
-    #gst-plugins-base            # libgstreamer-plugins-base1.0-0 (>= 1.0.0)
-    #gstreamer                   # libgstreamer1.0-0 (>= 1.4.0)
+    #gst-plugins-base           # libgstreamer-plugins-base1.0-0 (>= 1.0.0)
+    #gstreamer                  # libgstreamer1.0-0 (>= 1.4.0)
     libpulse                    # libpulse0 (>= 0.99.1)
     sane                        # libsane (>= 1.0.27)
     systemd-libs                # libudev1 (>= 183)
-    #libusb                      # libusb-1.0-0 (>= 2:1.0.21)
+    #libusb                     # libusb-1.0-0 (>= 2:1.0.21)
     wayland                     # libwayland-client0 (>= 1.20.0)
     libx11                      # libx11-6
     libxext                     # libxext6
@@ -44,7 +44,7 @@ optdepends=(
     cups                        # libcups2
     nss                         # libnss-myhostname
     fontconfig                  # libfontconfig1
-    freetype2                    # libfreetype6
+    freetype2                   # libfreetype6
     mesa                        # libglu1-mesa | libglu1
     gnutls                      # libgnutls30 | libgnutls28 | libgnutls26
     libjpeg-turbo               # libjpeg62-turbo | libjpeg8

@@ -1,6 +1,6 @@
 pkgbase = deepin-wine10-stable
 	pkgdesc = Deepin wine10 stable
-	pkgver = 10.7deepin5
+	pkgver = 10.14deepin7
 	pkgrel = 1
 	url = http://www.deepin.org
 	arch = x86_64
@@ -41,8 +41,8 @@ pkgbase = deepin-wine10-stable
 	optdepends = libxrandr
 	optdepends = libxrender
 	optdepends = libxxf86vm
-	noextract = deepin-wine10-stable_10.7deepin5_amd64.deb
-	source = https://com-store-packages.uniontech.com/appstorev23/pool/appstore/d/deepin-wine10-stable/deepin-wine10-stable_10.7deepin5_amd64.deb
-	sha256sums = 9fbc92dfb2123aa6cff7caf43c412c67dc92dc170674bd87c11e2aa6e2256e4d
+	noextract = deepin-wine10-stable_10.14deepin7_amd64.deb
+	source = https://pro-store-packages.uniontech.com/appstore/pool/eagle-pro/d/deepin-wine10-stable/deepin-wine10-stable_10.14deepin7_amd64.deb
+	sha256sums = 4387fadb1e5ba8ad39c6a6e04a2fcde7c0afd85b3871c346cfe1461eb1dbf4f9
 
 pkgname = deepin-wine10-stable
