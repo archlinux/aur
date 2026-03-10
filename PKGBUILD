@@ -3,7 +3,7 @@
 pkgname=cudnn-pascal
 pkgver=9.10.2.21
 _cudaver=12
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA cuDNN library for Pascal GPUs (CUDA 12.x; pinned to latest Pascal-supported cuDNN)"
 arch=("x86_64")
 url="https://developer.nvidia.com/cuDNN"
@@ -17,7 +17,7 @@ depends=(
 )
 provides=("cudnn")
 conflicts=("cudnn")
-options=(!strip)
+options=(!strip !debug)
 source=("https://developer.download.nvidia.com/compute/cudnn/redist/cudnn/linux-x86_64/cudnn-linux-x86_64-${pkgver}_cuda${_cudaver}-archive.tar.xz")
 b2sums=('17d56a2e459df88a7ae6c27c1edc093c3b58e6732e49d001d277e159ff90face0b722db9edd089bf36383dd4f48e225582583e2fbf52fae134787349bfda19c6')
 
