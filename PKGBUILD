@@ -3,8 +3,8 @@
 
 _pkgname=django-rest-knox
 pkgname=python-django-rest-knox
-pkgver=5.0.2
-pkgrel=2
+pkgver=5.0.4
+pkgrel=1
 pkgdesc="Authentication Module for django rest auth"
 arch=('any')
 url="https://github.com/James1345/django-rest-knox"
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python-cryptography' 'python-django' 'python-django-rest-framework')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/James1345/django-rest-knox/archive/$pkgver.tar.gz")
-sha512sums=('4bc4020435152ee75d00df44e1b546fcf262c6a75d2d5172c9fbb31f29319d332ba5191b50b99bfc01280c8d76a84604e9b4e0fe5a438b98e9e466bd70f13c99')
+sha512sums=('d384ad009814cf8e594957206131e093e6b31e1e806f69b99fd15e12b51195c8eef4ac28db3715a64c039ba0fd16fb2dbe267df06165eb89a2550e6e5bc67d24')
 
 build() {
   cd "$_pkgname-$pkgver"
