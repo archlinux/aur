@@ -3,7 +3,7 @@
 pkgbase=python-mocpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.19.1
+pkgver=0.20.0
 pkgrel=1
 pkgdesc="MOC parsing and manipulation in Python"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ makedepends=('python-maturin'
              'python-cdshealpix'
              'python-networkx'
              'python-toml'
-             'pandoc')
+             'pandoc')  # mocpy/moc/boundaries.py
 checkdepends=('python-pytest-mock'
 #             'python-pytest-xdist'
               'python-regions')   # cdshealpix, matplotlib, requests <- scipy <- networkx already in makedepends
@@ -32,7 +32,7 @@ source=("https://github.com/cds-astro/mocpy/archive/refs/tags/v${pkgver}.tar.gz"
 #       "cutout-CDS_P_2MASS_K.fits::http://alasky.u-strasbg.fr/hips-image-services/hips2fits?hips=CDS%2FP%2F2MASS%2FK&width=1200&height=700&fov=30&projection=TAN&coordsys=galactic&rotation_angle=0.0&object=gal%20center&format=fits"
 #       "http://skies.esac.esa.int/Spitzer/IRAC1_bright_ISM/Moc.fits"
 #       'doc-use-local-fits.patch')
-md5sums=('eb59113127f8756e08b89d970311b787')
+md5sums=('428d25b7f8352d430aeddd36e255936b')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"

@@ -1,6 +1,6 @@
 pkgbase = python-mocpy
 	pkgdesc = MOC parsing and manipulation in Python
-	pkgver = 0.19.1
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://cds-astro.github.io/mocpy
 	arch = i686
@@ -22,8 +22,8 @@ pkgbase = python-mocpy
 	makedepends = python-networkx
 	makedepends = python-toml
 	makedepends = pandoc
-	source = https://github.com/cds-astro/mocpy/archive/refs/tags/v0.19.1.tar.gz
-	md5sums = eb59113127f8756e08b89d970311b787
+	source = https://github.com/cds-astro/mocpy/archive/refs/tags/v0.20.0.tar.gz
+	md5sums = 428d25b7f8352d430aeddd36e255936b
 
 pkgname = python-mocpy
 	depends = python>=3.9
