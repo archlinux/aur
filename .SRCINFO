@@ -1,0 +1,19 @@
+pkgbase = python-model-hosting-container-standards
+	pkgdesc = Python toolkit for standardized model hosting container implementations with Amazon SageMaker integration
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/aws/model-hosting-container-standards
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-fastapi
+	depends = python-pydantic
+	source = python-model-hosting-container-standards::git+https://github.com/aws/model-hosting-container-standards.git#tag=v0.1.13
+	sha256sums = SKIP
+
+pkgname = python-model-hosting-container-standards
