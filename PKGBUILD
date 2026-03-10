@@ -2,7 +2,7 @@
 # Co-Maintainer: lapsus <yakov.till@gmail.com>
 pkgname=ccusage
 pkgver=18.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A CLI tool for analyzing Claude Code token usage and costs from local JSONL files"
 arch=('any')
 url="https://github.com/ryoppippi/ccusage"
@@ -14,8 +14,7 @@ source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$p
 sha256sums=('60c27c2b62e64b4bf41dea11b247d42d9ecfeeb541a606094650e66639dd462c')
 
 latestver() {
-    curl -fsSL "https://api.github.com/repos/ryoppippi/ccusage/releases/latest" |
-    jq -r '.tag_name // empty' | sed 's/^v//'
+    curl -fsSL 'https://registry.npmjs.org/ccusage/latest' | jq -r '.version'
 }
 
 build() {
