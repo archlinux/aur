@@ -1,17 +1,17 @@
 pkgbase = recode-converter-bin
 	pkgdesc = A simple, modern audio codec converter for video files.Prebuilt version.Use system-wide electron.
-	pkgver = 2.0.12
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/murgatt/recode-converter
 	arch = x86_64
 	license = GPL-3.0-or-later
-	depends = electron38
+	depends = electron40
 	depends = ffmpeg
-	provides = recode-converter=2.0.12
+	provides = recode-converter=2.1.1
 	conflicts = recode-converter
-	source = recode-converter-2.0.12-x86_64.AppImage::https://github.com/murgatt/recode-converter/releases/download/v2.0.12/Recode-Converter-Linux-2.0.12.AppImage
+	source = recode-converter-2.1.1-x86_64.AppImage::https://github.com/murgatt/recode-converter/releases/download/v2.1.1/Recode-Converter-Linux-2.1.1.AppImage
 	source = recode-converter.sh
-	sha256sums = 6944c27696fc55785c2d72b592d1b43cb9ab85699a6cd75d5d158f6eba96604b
+	sha256sums = af219b30f1558628e848c530be51a3b5d395fc23abdbfbe46a09a85203ef696f
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = recode-converter-bin
