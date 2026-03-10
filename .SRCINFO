@@ -2,7 +2,7 @@ pkgbase = imagecompare-bin
 	pkgdesc = Image Comparison Program with various helpful features and tools.
 	pkgver = 1.0.1
 	pkgrel = 1
-	url = https://github.com/gimletlove/image-compare
+	url = https://github.com/gimletlove/imagecompare
 	arch = x86_64
 	license = GPL-3.0-or-later
 	depends = qt6-base
@@ -14,7 +14,7 @@ pkgbase = imagecompare-bin
 	provides = imagecompare
 	conflicts = imagecompare
 	noextract = imagecompare-bin-1.0.1-x86_64.zip
-	source = imagecompare-bin-1.0.1-x86_64.zip::https://github.com/gimletlove/image-compare/releases/download/1.0.1/imagecompare-linux-1.0.1.zip
+	source = imagecompare-bin-1.0.1-x86_64.zip::https://github.com/gimletlove/imagecompare/releases/download/1.0.1/imagecompare-linux-1.0.1.zip
 	sha256sums = 755e11714ac6ac255a215a46b29f56d63a97b48e8cdfd8bd75b8f3cba68e5f09
 
 pkgname = imagecompare-bin
