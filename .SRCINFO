@@ -1,5 +1,5 @@
 pkgbase = loongson-browser-bin
-	pkgdesc = Loongson Chromium-based browser
+	pkgdesc = 龙芯浏览器 (Loongson Chromium-based browser) x64版本
 	pkgver = 3.4.2082.1
 	pkgrel = 1
 	url = https://www.loongson.cn
