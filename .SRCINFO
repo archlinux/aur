@@ -1,0 +1,20 @@
+pkgbase = focus-os
+	pkgdesc = Keyboard-first focus timer and task manager for Hyprland
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/verityOGrichard/focus-os
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pyqt5
+	depends = python-gobject
+	depends = webkit2gtk-4.1
+	depends = gtk-layer-shell
+	depends = python-xlib
+	depends = libnotify
+	optdepends = pipewire: sound on timer completion
+	optdepends = pulseaudio: sound on timer completion (alternative)
+	source = focus-os-1.0.0.tar.gz::https://github.com/verityOGrichard/focus-os/archive/refs/heads/master.tar.gz
+	sha256sums = SKIP
+
+pkgname = focus-os
