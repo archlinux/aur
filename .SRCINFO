@@ -1,14 +1,14 @@
 pkgbase = terminal-love-git
 	pkgdesc = A terminal-based wave heart CPU/Memory monitor
-	pkgver = r3.e01b624
+	pkgver = r1.1234567
 	pkgrel = 1
 	url = https://github.com/kokorodonguri/terminal-love
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = python
-	provides = terminal-love
-	conflicts = terminal-love
+	provides = love
+	conflicts = love
 	source = git+https://github.com/kokorodonguri/terminal-love.git
 	sha256sums = SKIP
 
