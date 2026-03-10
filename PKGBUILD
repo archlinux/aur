@@ -32,13 +32,13 @@
 
 pkgbase=comsol-multiphysics
 pkgname=(
-    comsol-multiphysics
-    #comsol-multiphysics-acdc
+    "$pkgbase"
+    #"$pkgbase-acdc"
 )
 _installername=COMSOL64_lnx
-pkgver=6.4.0.293
+pkgver=6.4.0.343
 _pkgver_major=6.4
-pkgrel=5
+pkgrel=1
 pkgdesc='A general-purpose simulation software for modeling designs, devices, and processes in all fields of engineering, manufacturing, and scientific research'
 arch=('x86_64')
 url='https://www.comsol.com/comsol-multiphysics'
@@ -60,13 +60,15 @@ makedepends=(
 )
 source=(
     # Download URL is https://nonusdownload.comsol.com/product/$pkgver/full/$_installername.zip?__gda__=$_gda&fileExt=.zip but $_gda changes dynamically. Automatic download not possible.
-    "file://$_installername.zip" # Go to www.comsol.com, login and activate your license, then download the online installer for Linux from https://www.comsol.com/product-download manually. Place the zip in this directory together with this PKGBUILD
+    # Go to www.comsol.com, login and activate your license, then download the online installer for Linux from https://www.comsol.com/product-download manually. Place the zip in this directory together with this PKGBUILD
+    # Note: if you don't have an exactly matching version, there's still a good chance everything should work if you just change the sha256sum for the installer zip, or 'SKIP' it.
+    "file://$_installername.zip"
     "file://LICENSE"
     "file://setupconfig.ini"
     "file://comsol-multiphysics.desktop"
 )
 sha256sums=(
-    f4da49ce99f6351dd96df856894755f334d499cd02588bee9b005ba3437f6a04
+    d3608ff8bfef0c351f93f5a5c27e14f15922e4284092d378dafa09bb20f9d964
     55a674c9c763b04fa313cda80998c4fbaf923b3166b2c91d242b0d3a4ae1843c
     3e87aeb02ee58364c75f6979fc05be42d189f2653fa3394951844bc5363cd283
     fda96a349398e5d49598f3186f242dd8d673fb18aa73719c1dcad066ea9b1afa
@@ -80,70 +82,10 @@ _installdir='/opt/comsol/multiphysics'
 _license_agree=0
 # License file or port@host or passcode
 _license=
-_addons=(
-    acdc
-    aco
-    battery
-    cfd
-    mixer
-    chem
-    compmat
-    corr
-    echem
-    edecm
-    edis
-    fce
-    granular
-    ht
-    mems
-    metproc
-    mfl
-    molec
-    particle
-    pipe
-    plasma
-    polymer
-    porus
-    roptics
-    rf
-    semicond
-    sme
-    fatigue
-    geomech
-    mbd
-    nsm
-    rotor
-    ssf
-    lgp
-    uq
-    woptics
-    cad
-    catia5
-    design
-    ecad
-    llac
-    llexcel
-    llinv
-    llmatlab
-    llcreop
-    llrevit
-    llsimulink
-    llse
-    llsw
-    opt
-    matlib
-    modelmanager
-    cluster
-    chatbot
-    cudaruntime
-    cudssruntime
-    cudadnn
-    compiler
-)
 
 function _hostof
 {
-    echo "$1:$(ping $1 -c 1 -q 2>&1 | grep -Po "(\d{1,3}\.){3}\d{1,3}")"
+    echo "$1:$(ping "$1" -c 1 -q 2>&1 | grep -Po "(\d{1,3}\.){3}\d{1,3}")"
 }
 
 function _get_conf
@@ -157,7 +99,7 @@ function _set_conf
     if grep -q "$1 =" "${srcdir}/setupconfig.ini"; then
         sed -i "s#^$1 =.*\$#$1 = $2#g" "${srcdir}/setupconfig.ini"
     else
-        echo "Warning: new configuration '$1'"
+        echo "[Warning]: new configuration '$1'"
         echo "$1 = $2" >> "${srcdir}/setupconfig.ini"
     fi
     echo "$1 = $2"
@@ -170,7 +112,9 @@ prepare()
     #license agreement
     local _license_agreement="LICENSE"
     local _read=0
-    if [[ $_license_agree != 1 && "$(_get_conf 'agree')" == "1" ]]; then
+    if [[ $_license_agree != 1 && ${COMSOL_MULTIPHYSICS_LICENSE_AGREE} == 1 ]]; then
+        _license_agree=1
+    elif [[ $_license_agree != 1 && "$(_get_conf 'agree')" == "1" ]]; then
         _license_agree=1
     elif [[ -f "${srcdir}/agree.cache" ]]; then
         _license_agree=1
@@ -183,7 +127,7 @@ prepare()
 
         echo  "Do you accept the license agreement? ([y]es to agree, q to quit, r to read)"
         read -r ans
-        case $(echo $ans | tr '[A-Z]' '[a-z]') in
+        case $(echo "$ans" | tr '[:upper:]' '[:lower:]') in
             [Yy]|yes|yeS|yEs|yES|Yes|YeS|YEs|YES ) 
                 _license_agree=1
             ;;
@@ -192,17 +136,19 @@ prepare()
             * ) ;;
         esac
     done
+    if [[ ${COMSOL_MULTIPHYSICS_LICENSE_AGREE} != 1 ]]; then
+        echo "[Info]: You can set COMSOL_MULTIPHYSICS_LICENSE_AGREE=1 in /etc/makepkg.conf to make your agreement permanent."
+    fi
     touch "${srcdir}/agree"
     _set_conf agree 1
 
-    _vpn_interface=$(ip addr show | grep -o 'tun[0-9]*' | head -1)
-    if [[ ! -n "$_vpn_interface" ]]; then
-        echo "Warning: you may need to connect to a corporate VPN in order to activate your product license."
+    if [[ "$_license" == "" && "${COMSOL_MULTIPHYSICS_LICENSE}" != "" ]]; then
+        _license="${COMSOL_MULTIPHYSICS_LICENSE}"
     fi
-
     if [[ "$_license" == "" ]] && grep -q "license = " "$srcdir/setupconfig.ini"; then
         _license="$(_get_conf license)"
-    elif [[ -f "${srcdir}/license.cache" ]]; then
+    fi
+    if [[ "$_license" == "" && -f "${srcdir}/license.cache" ]]; then
         _license="$(cat "${srcdir}/licence.cache")"
     fi
     while true; do
@@ -219,19 +165,19 @@ COMSOL Multiphysics is commercially licensed software. Please enter one of the f
          (example: license = 1718@licsvr1 1718@licsvr2 1718@licsvr3)
 Press enter for default (1718@localhost), q to quit.
 EOF
-            read -e ans
+            read -re ans
         else
             ans=$_license
         fi
-
+        
         if [ -z "${ans}" ]; then
             ans=1718@localhost
         fi
-        if [ "${ans}" = q ]; then
+        if [ "${ans}" == 'q' ]; then
+            echo "Quitting..."
             exit 1        
         else
-            local _is_port_at_host=$(echo $ans | grep -c @)
-            if [ "${_is_port_at_host}" != "0" ]; then
+            if [[ $(echo "$ans" | grep -c @) != 0 ]]; then
                 _license="${ans}"
                 break
             elif [ -e "${ans}" ]; then
@@ -247,13 +193,30 @@ EOF
     done
     _set_conf license "$_license"
     echo "$_license" > "${srcdir}/license.cache"
+    if [[ "${COMSOL_MULTIPHYSICS_LICENSE}" == "" ]]; then
+        echo "[Info]: You can set COMSOL_MULTIPHYSICS_LICENSE=$_license in /etc/makepkg.conf to make your license permanent."
+    fi
 
-    for _addon in $_addons; do
-        if grep -q "comsol.$_addon = 0" "${srcdir}/setupconfig.ini"; then
-            echo "+$_addon"
-            _set_conf "comsol.$_addon" 1
+    _show_addins_info=1
+    _show_addins_help=0
+    read -ra _addins <<< "${COMSOL_MULTIPHYSICS_ADDIN_MODULES[@]}"
+    for _addin in "${_addins[@]}"; do
+        if grep -q "comsol.$_addin = 0" "${srcdir}/setupconfig.ini"; then
+            _set_conf "comsol.$_addin" 1
+        else
+            echo "[Warning]: Add-in module '$_addin' does not exist."
+            _show_addins_help=1
         fi
+        _show_addins_info=0
     done
+    if [[ $_show_addins_info == 1 ]]; then
+        echo "[Info]: You can specify add-in modules by setting the COMSOL_MULTIPHYSICS_ADDIN_MODULES variable in /etc/makepkg.conf."
+        echo "[Example]: COMSOL_MULTIPHYSICS_ADDIN_MODULES=(acdc mems)"
+        _show_addins_help=1
+    fi
+    if [[ $_show_addins_help == 1 ]]; then
+        echo "[Info]: Valid add-in modules are: $(grep "^comsol\." setupconfig.ini | sed 's/^comsol\.//g' | sed 's/ .*$//g' | sed -e ':x /$/ { N; s/\n/ /g ; bx }')"
+    fi
 
     _set_conf installdir "${srcdir}/install"
     mkdir -p install
@@ -276,6 +239,11 @@ build()
     else
         echo "" > log.txt
 
+        _vpn_interface=$(ip addr show | grep -o 'tun[0-9]*' | head -1)
+        if [[ ! -n "$_vpn_interface" ]]; then
+            echo "[Warning]: you may need to connect to a corporate VPN in order to activate your product license."
+        fi
+
         cp "${srcdir}/setupconfig.ini" "${srcdir}/setupconfig.ini.cache"
         HOME="${srcdir}/home" \
             XDG_DESKTOP_DIR="${srcdir}/home/Desktop" \
@@ -294,7 +262,7 @@ build()
             /usr/bin/sh "${srcdir}/$_installername/setup" -s "${srcdir}/setupconfig.ini" \
             2> /dev/null \
             | while read -r _line; do 
-                echo "[COMSOL] $_line"
+                echo "$_line"
                 echo "$_line" >> log.txt
             done 
 
@@ -327,7 +295,7 @@ package()
     cd "${srcdir}"
 
     # Install License
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
 
     # Install desktop entry
     install -Dm644 "${srcdir}/comsol-multiphysics.desktop" "${pkgdir}/usr/share/applications/comsol-multiphysics.desktop"
