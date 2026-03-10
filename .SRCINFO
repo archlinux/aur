@@ -1,21 +1,19 @@
 pkgbase = shiori-ebook-bin
 	pkgdesc = Modern offline-first eBook library manager (pre-compiled binary)
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vinayydv3695/Shiori
 	arch = x86_64
 	license = MIT
-	depends = webkit2gtk
+	depends = webkit2gtk-4.1
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = librsvg
-	depends = speech-dispatcher
 	depends = sqlite
-	depends = zstd
 	provides = shiori-ebook
 	conflicts = shiori-ebook
 	conflicts = shiori-ebook-git
-	source = shiori-ebook-bin-0.1.7.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v0.1.7/shiori-0.1.7-linux-x86_64.tar.gz
-	sha256sums = c7fcebcf3cef8c62152f616e9821c88b6af3379004bf96b0fee0b739644f36c6
+	source_x86_64 = https://github.com/vinayydv3695/Shiori/releases/download/v0.1.7/Shiori_0.1.7_amd64.deb
+	sha256sums_x86_64 = SKIP
 
 pkgname = shiori-ebook-bin
