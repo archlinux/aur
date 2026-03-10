@@ -1,6 +1,6 @@
 pkgbase = gizmosql-bin
 	pkgdesc = A Flight SQL Server implementation with DuckDB and SQLite back-ends
-	pkgver = 1.19.0
+	pkgver = 1.19.1
 	pkgrel = 1
 	url = https://gizmodata.com/gizmosql
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = gizmosql-bin
 	license = Apache-2.0
 	depends = gflags
 	options = !strip
-	source_x86_64 = gizmosql-1.19.0-amd64.zip::https://github.com/gizmodata/gizmosql/releases/download/v1.19.0/gizmosql_cli_linux_amd64.zip
-	b2sums_x86_64 = 0831f06581ae807d0f89d53be7cf893bc2122c815cd542fef8d14ede278b57cad0a438e2277b91c36f0be123750d140978df6474063823c943995197be651b09
-	source_aarch64 = gizmosql-1.19.0-arm64.zip::https://github.com/gizmodata/gizmosql/releases/download/v1.19.0/gizmosql_cli_linux_arm64.zip
-	b2sums_aarch64 = 676e13bdf91350c3346d264e2477130897de6ef40e2a8819747bfa8a7329266e916d105396b1964823b7018eef4aef586701c36a5060d120edf9304a1575a5d8
+	source_x86_64 = gizmosql-1.19.1-amd64.zip::https://github.com/gizmodata/gizmosql/releases/download/v1.19.1/gizmosql_cli_linux_amd64.zip
+	b2sums_x86_64 = 36e87085e52825a31947a0f1369d0399b62f8a54fc4a2181adff4874066adabe03183d0773d71500a5bad7a1a6b45ae5bfbb25b77efe445ec7d633cdd06818d2
+	source_aarch64 = gizmosql-1.19.1-arm64.zip::https://github.com/gizmodata/gizmosql/releases/download/v1.19.1/gizmosql_cli_linux_arm64.zip
+	b2sums_aarch64 = 246746f5396171028c0feb9f7eec400b3b1a54ad4fa2f0989f7e0d7bf5b61c26667fa3fbfa9490de01ae15b1d5029dace0249e63f6ff1fd17962bc6383c4e446
 
 pkgname = gizmosql-bin
