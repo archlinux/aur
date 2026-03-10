@@ -1,7 +1,7 @@
 # Maintainer: Olaf Wriggers <olaf at olwig dot xyz>
 pkgname=cosmic-ext-applet-privacy-indicator
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Privacy indicator for the COSMIC Desktop"
 arch=('x86_64')
 url="https://github.com/D-Brox/cosmic-ext-applet-privacy-indicator"
@@ -18,9 +18,11 @@ makedepends=(
   'clang'
   'llvm'
 )
+provides=("$pkgname")
+conflicts=("$pkgname" "${pkgname}-git")
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8080dc05291d655cef9278dd82e37758e325d40e2a5319add1796a33659d5b2d')
+sha256sums=('22d3b29c594112dfa1a0f0b5d223f8d19c2901c23f9286b1b92509c34b656d39')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -40,4 +42,6 @@ package() {
   cd "$pkgname-$pkgver"
 
   just rootdir="$pkgdir" install
+
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
