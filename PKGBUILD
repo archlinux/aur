@@ -2,22 +2,19 @@
 
 pkgname=beads-bin
 pkgver=0.59.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Graph-based memory + issue tracker for coding agents (binary release)"
 arch=('x86_64')
 url="https://github.com/steveyegge/beads"
 license=('MIT')
 depends=()
-options=('!strip')
+options=('!strip' '!debug')
 provides=("bd=${pkgver}" "beads=${pkgver}")
 conflicts=('beads')
 
 latestver() {
-    local latest
-    latest=$(curl -fsSL "https://api.github.com/repos/steveyegge/beads/releases/latest" \
-        | grep -Po '"tag_name": "v\K[^"]+' \
-        | head -n1 || true)
-    printf '%s\n' "${latest:-$pkgver}"
+    curl -fsSL 'https://api.github.com/repos/steveyegge/beads/releases/latest' | jq -r '.assets[]?.name' |
+    sed -nE '/^beads_[0-9.]+_linux_amd64\.tar\.gz$/{s/^beads_//; s/_linux_amd64\.tar\.gz$//; p;}'
 }
 
 source_x86_64=("beads-${pkgver}-linux-amd64.tar.gz::https://github.com/steveyegge/beads/releases/download/v${pkgver}/beads_${pkgver}_linux_amd64.tar.gz")
