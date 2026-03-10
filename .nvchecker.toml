@@ -1,0 +1,5 @@
+[logmonster-bin]
+source = "github"
+github = "thirukguru/logmonster"
+use_latest_release = true
+prefix = "v"

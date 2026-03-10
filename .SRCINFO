@@ -1,0 +1,18 @@
+pkgbase = logmonster-bin
+	pkgdesc = A lightweight CLI utility for Linux/MacOS that detects processes and services writing excessively to log files and consuming disk space
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/thirukguru/logmonster
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = logmonster
+	conflicts = logmonster
+	source = README-0.1.0.md::https://raw.githubusercontent.com/thirukguru/logmonster/v0.1.0/README.md
+	sha256sums = 32080aa7efc619678c7d0247f795ab7719400a0a487eafc840ee7c66f0eb57f2
+	source_x86_64 = logmonster-x86_64-0.1.0::https://github.com/thirukguru/logmonster/releases/download/v0.1.0/logmonster-linux-amd64
+	sha256sums_x86_64 = ed03ab425d2f185454fb14dfb6d2b1b74949256b89ad38b168c4de1f92c7842e
+	source_aarch64 = logmonster-aarch64-0.1.0::https://github.com/thirukguru/logmonster/releases/download/v0.1.0/logmonster-linux-arm64
+	sha256sums_aarch64 = dc0063d30ce3233146f62b6428ae4b4ad6fe754cdf2ccddbd9ce30024b317469
+
+pkgname = logmonster-bin
