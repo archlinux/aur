@@ -29,7 +29,7 @@ build() {
   local ld_flags=" \
     -compressdwarf=false \
     -linkmode=external \
-    -X github.com/kopecmaciej/vi-mongo/cmd.version=v$pkgver"
+    -X github.com/kopecmaciej/vi-mongo/internal/build.Version=v$pkgver"
 
   go build -ldflags="$ld_flags" -o "$pkgname"
 }
