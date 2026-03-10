@@ -1,19 +1,19 @@
 pkgbase = sst-bin
 	pkgdesc = Deploy anything
-	pkgver = 4.2.4
+	pkgver = 4.2.5
 	pkgrel = 1
 	url = https://github.com/sst/sst
 	license = MIT
 	conflicts = sst
 	provides = sst
 	arch = aarch64
-	source_aarch64 = https://github.com/anomalyco/sst/releases/download/v4.2.4/sst-linux-arm64.tar.gz
-	sha256sums_aarch64 = 35b878045be1975ebb20ba2579be10d87002a0eb90e86bfd184ab9808cfc2d1b
+	source_aarch64 = https://github.com/anomalyco/sst/releases/download/v4.2.5/sst-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9e118457469062f4bf9e205e407fb96404505c6ac1125d5cdaa48bb4eae07718
 	arch = i686
-	source_i686 = https://github.com/anomalyco/sst/releases/download/v4.2.4/sst-linux-386.tar.gz
-	sha256sums_i686 = b41aae341575f0411bc5f331f776573d8169df18b287b889c523b3ff0c33a8c3
+	source_i686 = https://github.com/anomalyco/sst/releases/download/v4.2.5/sst-linux-386.tar.gz
+	sha256sums_i686 = 6c1df6803206dd3ba8bfc039f14f1d3b2381c8033198b979d53830eda381e588
 	arch = x86_64
-	source_x86_64 = https://github.com/anomalyco/sst/releases/download/v4.2.4/sst-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 55c6b8deff353f7f2d5febef9551fb4e6aca480204c23a227e3685a12982f6a7
+	source_x86_64 = https://github.com/anomalyco/sst/releases/download/v4.2.5/sst-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f45e70a2873ffa71395c5a4f74377e97fc9ef994b11bf48f6ea73adc1b0525b5
 	
 pkgname = sst-bin
