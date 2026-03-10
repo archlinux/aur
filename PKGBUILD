@@ -1,8 +1,8 @@
 # Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
 pkgname=nodejs-ramadan-cli
 _pkgname=${pkgname#nodejs-}
-pkgver=6.1.0
-pkgrel=2
+pkgver=6.2.0
+pkgrel=1
 pkgdesc="CLI to check Sehar and Iftar times in Ramadan"
 arch=('any')
 url="https://github.com/ahmadawais/ramadan-cli"
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
 #noextract=("${_pkgname}-${pkgver}.tgz")
-sha256sums=('08902ca02663d65151df86f910f5e83d59cb2b8a16d9579c1d5cf7dce8ae9051')
+sha256sums=('2060333888e65f0273cfbc713469f787f9d2b2d5b33cbf8314de3e6156d66bd7')
 
 package() {
 	npm install -g --prefix "${pkgdir}/usr" "${srcdir}/${_pkgname}-${pkgver}.tgz"
