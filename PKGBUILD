@@ -1,6 +1,6 @@
 # Maintainer: Gentrit Biba <gentritbiba@gmail.com>
 pkgname=cogpit
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Dashboard for browsing and inspecting Claude Code agent sessions"
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/gentritbiba/cogpit"
 license=('MIT')
 depends=('c-ares' 'gcc-libs' 'glibc' 'gtk3' 'libcups' 'libdrm' 'libnotify' 'libxcrypt-compat' 'libxss' 'mesa' 'nss' 'alsa-lib')
 source=("${pkgname}-${pkgver}.pacman::https://github.com/gentritbiba/cogpit/releases/download/v${pkgver}/cogpit-${pkgver}.pacman")
-sha256sums=('a8ba27bce02bb7d54f708c1c871bc50124bf10fc3174424df43fa5aa6d008b4b')
+sha256sums=('7be5fa4c6cc2abb32515ef9fd68707e4a453ca361b61f210bd5a9884aa2b7e1b')
 
 package() {
     cd "${srcdir}"
