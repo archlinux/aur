@@ -1,0 +1,16 @@
+pkgbase = adguard-home-toggle
+	pkgdesc = CLI and system tray tool to control AdGuard Home protection on Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/subsy/adguard-home-toggle
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = dbus
+	source = adguard-home-toggle-0.1.0.tar.gz::https://github.com/subsy/adguard-home-toggle/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = adguard-home-toggle
