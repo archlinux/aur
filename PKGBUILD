@@ -5,7 +5,7 @@
 pkgname=smatch
 pkgver=1.74
 _fedora_spec_url="https://src.fedoraproject.org/rpms/smatch/raw/rawhide/f/smatch.spec"
-pkgrel=1
+pkgrel=2
 pkgdesc="Static analysis tool for C programs that performs semantic analysis to detect bugs and vulnerabilities."
 arch=(x86_64)
 url="https://github.com/error27/smatch"
@@ -20,9 +20,9 @@ sha256sums=('0c3ee7214e81c6ba506c1886a110d5406ee080d49a17c1e7e673b62b28b213d6'
             '74a71a0317407ef54a839f429c2fbe1b103c415954a08a34cef34ade694874f1'
             '199db07678e7b099f3ea5c4eb38d9aac199d7829ed832b042b7f4bcedef44e55')
 
-# Query Fedora's spec to discover the current packaged version.
 latestver() {
-    curl -sf "${_fedora_spec_url}" | grep -Po '^Version:\s*\K[0-9]+(\.[0-9]+)*' | head -n1
+    curl -fsSL 'https://api.github.com/repos/error27/smatch/tags?per_page=100' | jq -r '.[].name' |
+        sed -nE '/^[0-9]+(\.[0-9]+)*$/p' | sort -V | tail -1
 }
 
 prepare() {

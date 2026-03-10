@@ -1,7 +1,7 @@
 pkgbase = smatch
 	pkgdesc = Static analysis tool for C programs that performs semantic analysis to detect bugs and vulnerabilities.
 	pkgver = 1.74
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/error27/smatch
 	arch = x86_64
 	license = GPL-2.0-or-later
