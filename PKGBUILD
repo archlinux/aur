@@ -3,7 +3,7 @@
 # Maintainer: Patrick Münch <patrick@mondoo.com>
 #
 pkgname=cnspec
-orignalVersion="12.23.1"
+orignalVersion="13.0.0"
 pkgver="${orignalVersion/-/_}"
 pkgrel=1
 pkgdesc="Cloud-Native Security and Policy Framework "
@@ -12,15 +12,17 @@ license=('BUSL-1.1')
 source=("https://releases.mondoo.com/cnspec/${orignalVersion}/cnspec_${orignalVersion}_linux_amd64.tar.gz"
     )
 arch=('x86_64')
-depends=('cnquery')
-
-sha256sums=('af2bb5c8a2ff0a170a207b85267022ea80bbf1c45b23c9d6f66986827b33060e'
+depends=('mql')
+conflicts=('cnquery')
+replaces=('cnquery')
+sha256sums=('83c7249b584bab9b802c934630455a5a7e3de24179e18dcb484ce075d717b403'
             )
 
 
 package() {
   install -dm755 ${pkgdir}/usr/bin
   cp ${srcdir}/$pkgname ${pkgdir}/usr/bin/.
+  ln -s /usr/bin/cnspec "${pkgdir}/usr/bin/cnquery"
 
   
 }
