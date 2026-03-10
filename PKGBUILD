@@ -4,7 +4,7 @@
 # his PKGBUILD that served as a base for this one
 
 pkgname=virt-backup
-pkgver=0.5.5
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="Automatic backups for Libvirt"
 arch=(any)
@@ -15,21 +15,26 @@ makedepends=(
 )
 depends=(
   libvirt-python
-  python-appdirs
   python-arrow
   python-lxml
   python-yaml
+  python-platformdirs
 )
 optdepends=(
   'python-zstandard: zstd packager support'
 )
 options=(!emptydirs)
 source=("https://github.com/Anthony25/virt-backup/archive/v${pkgver}.tar.gz")
-sha256sums=('fc243507d3e6393e92e40a31913a020751872e284f5e56993c48ee98d7feecfb')
+sha256sums=('152c9213eac89d45531954eb650f0d48f34c36e4e791c8c8a8c3abcb0f141f6e')
+
+build() {
+  cd "virt-backup-${pkgver}"
+  python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "${srcdir}/virt-backup-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  cd "virt-backup-${pkgver}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -D -m644 example/virt-backup-clean.service "$pkgdir/usr/lib/systemd/system/virt-backup-clean.service"
 }
