@@ -1,0 +1,50 @@
+pkgbase = schildichat-desktop-eol
+	pkgdesc = A Matrix client based on Element with a more traditional instant messaging experience. End-of-Life: Latest upstream commit before deprecation/ archival.
+	pkgver = 1.11.112.sc.0.test.0.r551.20260222.cd6a795
+	pkgrel = 1
+	url = https://schildi.chat
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = npm
+	makedepends = git
+	makedepends = yarn
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = rust
+	makedepends = tcl
+	makedepends = nvm
+	makedepends = libxcrypt-compat
+	makedepends = asar
+	makedepends = imagemagick
+	makedepends = inkscape
+	makedepends = pngcrush
+	depends = gcc-libs
+	depends = glib2
+	depends = electron38
+	depends = libsecret
+	depends = sh
+	optdepends = nodejs: For some utilities.
+	provides = schildichat-desktop=1.11.112.sc.0.test.0.r551.20260222.cd6a795
+	provides = schildichat-desktop-git=1.11.112.sc.0.test.0.r551.20260222.cd6a795
+	conflicts = schildichat-desktop
+	conflicts = schildichat-desktop-bin
+	conflicts = schildichat-desktop-git
+	replaces = schildichat-desktop-git<=1.11.112.sc.0.test.0.r551.20260222.cd6a795
+	source = schildichat-desktop::git+https://github.com/SchildiChat/schildichat-desktop.git#commit=cd6a7958e231bcff5d09dbb8d50d2a5b91535c0f
+	source = git+https://github.com/SchildiChat/compound-web.git#commit=70cc4f218a32186cd3f06b136f5fb223128deafc
+	source = git+https://github.com/SchildiChat/matrix-js-sdk.git#commit=4a9006aea68f9d4d7fad3965e754e89b03fb286f
+	source = git+https://github.com/SchildiChat/element-web.git#commit=86076c05ce70fdb3705ae01260068be316108711
+	source = git+https://github.com/SchildiChat/element-desktop.git#commit=4970f98fa2a99b779238fabb545ef0fd4fca92f9
+	source = autolaunch.patch
+	source = schildichat-desktop.desktop
+	source = schildichat-desktop.sh
+	sha256sums = 7365ef6ace3392e6e54e7a07e7ceac622bb2a239d0b01a8598625a5bfd668b82
+	sha256sums = 1bd747510d899a6d1c65f11b486332bd86f32ae18f68ddadd7f06b444b2bdc23
+	sha256sums = 7f8460a9ba00492ede8fd7d16a4117d7231fa49eef5f7431a1625d2600608a18
+	sha256sums = 9007c62cf32da575f2fdc45a249818ef71569a3aa8d8d6be3eb733bfab7f058b
+	sha256sums = 3784a0882a01a95feeb06b3699aa495831a6986cbedb987e797bc10cbcfbdefa
+	sha256sums = 7c876d06fd69279441069560699e6dfc91a9434b558279213ababda24e39380b
+	sha256sums = 6450af411fea039cb76357ff4ea7f1ef336601315de4d27b848a75d7960cef17
+	sha256sums = 8084211fe11ba23be956ef4b8bb0fffaa6aaa721b79f9753ecc3574666ef95ce
+
+pkgname = schildichat-desktop-eol
