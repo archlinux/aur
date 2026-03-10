@@ -1,4 +1,4 @@
-# Maintainer: Sayan Pal <sayan12428 at gmail dot com>
+# Maintainer: Sayan Pal <spcodr at gmail dot com>
 
 pkgname=phub-cli
 pkgver=0.4.0
