@@ -1,6 +1,6 @@
 # Maintainer: Andrew Marin <andrewmarin367@gmail.com>
 pkgname=vice-clipper
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Medal.tv-style game clip recorder for Linux — instant replay, session recording, and one-click sharing"
 arch=('x86_64')
@@ -28,12 +28,17 @@ makedepends=(
     'python-setuptools'
     'python-wheel'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/eklonofficial/Vice/archive/71f3e6d7298a955779b5759d4137df026940a4c0.tar.gz")
-sha256sums=('160c8fd6d7b540acc2c202888d4e2f271ea696e210d5be2e1d5100f352c8bdca')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/eklonofficial/Vice/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('d768f6bc9727f0850c21835b3c4cbe7234b2f6c1aeb50568721ade8bec7529d4')
 
 build() {
     cd "$srcdir/Vice-$pkgver"
     python -m build --wheel --no-isolation
+}
+
+check() {
+    cd "$srcdir/Vice-$pkgver"
+    python -m compileall vice
 }
 
 package() {
@@ -48,9 +53,9 @@ package() {
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/vice.svg"
 
     install -Dm644 /dev/stdin \
-        "$pkgdir/usr/share/doc/vice-clipper/README" <<EOF
+        "$pkgdir/usr/share/doc/vice-clipper/README" <<'DOC'
 Vice requires the user to be in the 'input' group for global hotkeys:
-  sudo usermod -aG input \$USER
+  sudo usermod -aG input $USER
 Then log out and back in.
-EOF
+DOC
 }
