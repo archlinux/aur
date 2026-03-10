@@ -1,11 +1,12 @@
 # Maintainer: Tim van Leuverden <tvanleuverden at gmail dot com>
+# Maintainer: FichteFoll <fichtefoll2 at gmail dot com>
 # Contributor: Joost Bremmer
 # Contributor: Mubashshir <ahmubashshir at gmail dot com>
 # Contributor: Evgeniy <evgfilim1 at gmail dot com>
 
 pkgname=trackma
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 url="https://z411.github.io/trackma/"
 arch=('any')
@@ -19,16 +20,17 @@ makedepends=('git'
              'python-poetry-core'
              'python-wheel'
              'desktop-file-utils')
-			 
-optdepends=('python-gobject:     GTK frontend'
+
+optdepends=('lsof:               polling tracker/pyinotify alternative'
+            'python-anitopy-git: anitopy title parser'
             'python-cairo:       GTK frontend'
-            'python-pyqt6:       Qt frontend'
-            'python-urwid:       ncurses frontend'
+            'python-gobject:     GTK frontend'
+            'python-jeepney:     MPRIS media recognition tracker'
             'python-pillow:      thumbnail images for GUI frontends (required for Qt)'
             'python-pyinotify:   instant media recognition tracker'
-            'python-pydbus:      MPRIS media recognition tracker'
-            'python-anitopy-git: anitopy title parser'
-            'lsof:               polling tracker/pyinotify alternative')
+            'python-pypresence:  discord rich presence integration'
+            'python-pyqt6:       Qt frontend'
+            'python-urwid:       ncurses frontend')
 
 source=("${pkgname}-${pkgver}::git+https://github.com/z411/${pkgname}.git#tag=v${pkgver}"
         "anime-relations::git+https://github.com/erengy/anime-relations.git"
