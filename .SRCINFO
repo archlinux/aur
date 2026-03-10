@@ -1,7 +1,7 @@
 pkgbase = simplify
 	pkgdesc = Generic Android deobfuscator
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CalebFenton/simplify
 	arch = any
 	license = GPL-3.0-or-later
