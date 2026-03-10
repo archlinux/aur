@@ -1,8 +1,8 @@
 pkgbase = java-openjdk-ea-bin
-	pkgdesc = Java OpenJDK 26 Early-Access Build
-	pkgver = 26b35
+	pkgdesc = Java OpenJDK 27 Early-Access Build
+	pkgver = 27b12
 	pkgrel = 1
-	url = https://jdk.java.net/26
+	url = https://jdk.java.net/27
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
@@ -14,13 +14,13 @@ pkgbase = java-openjdk-ea-bin
 	depends = libxtst
 	depends = alsa-lib
 	depends = freetype2
-	provides = java-environment=26
-	provides = java-environment-openjdk=26
-	provides = java-runtime=26
-	provides = java-runtime-openjdk=26
-	provides = java-runtime-headless=26
-	provides = java-runtime-headless-openjdk=26
-	source = https://download.java.net/java/GA/jdk26/c3cc523845074aa0af4f5e1e1ed4151d/35/GPL/openjdk-26_linux-x64_bin.tar.gz
-	sha256sums = 83c78367f8c81257beef72aca4bbbf8e6dac8ca2b3a4546a85879a09e6e4e128
+	provides = java-environment=27
+	provides = java-environment-openjdk=27
+	provides = java-runtime=27
+	provides = java-runtime-openjdk=27
+	provides = java-runtime-headless=27
+	provides = java-runtime-headless-openjdk=27
+	source = https://download.java.net/java/early_access/jdk27/12/GPL/openjdk-27-ea+12_linux-x64_bin.tar.gz
+	sha256sums = 952af4c17b753724c0f1e7ac4cd90f73568c2121ac60a1ae05ff804481e2ae48
 
 pkgname = java-openjdk-ea-bin
