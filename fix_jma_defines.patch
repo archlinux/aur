@@ -1,0 +1,10 @@
+idiff -aur snes9x/gtk/CMakeLists.txt snes9x.new/gtk/CMakeLists.txt
+--- snes9x/gtk/CMakeLists.txt	2026-03-08 13:16:38.103915594 -0400
++++ snes9x.new/gtk/CMakeLists.txt	2026-03-08 14:16:42.769473866 -0400
+@@ -366,6 +366,7 @@
+ 
+ add_library(jma ${LIBJMA_SOURCES})
+ target_include_directories(jma PRIVATE ${INCLUDES})
++target_compile_definitions(jma PRIVATE ${DEFINES})
+ target_compile_options(jma PUBLIC ${ARGS})
+ list(APPEND LIBS jma)
