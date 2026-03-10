@@ -1,18 +1,20 @@
 pkgbase = mingw-w64-lpsolve
 	pkgdesc = a Mixed Integer Linear Programming (MILP) solver (mingw-w64)
-	pkgver = 5.5.2.11
+	pkgver = 5.5.2.14
 	pkgrel = 1
-	url = http://lpsolve.sourceforge.net/
+	url = https://lp-solve.github.io/
 	arch = any
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
+	license = GPL-2.0-or-later WITH Bison-exception-2.2
+	license = BSD-3-Clause
 	makedepends = mingw-w64-cmake
 	depends = mingw-w64-crt
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = http://downloads.sourceforge.net/project/lpsolve/lpsolve/5.5.2.11/lp_solve_5.5.2.11_source.tar.gz
+	source = https://github.com/lp-solve/lp_solve/releases/download/5.5.2.14/lp_solve_5.5.2.14_source.tar.gz
 	source = lpsolve-CMakeLists.txt
-	sha256sums = 6d4abff5cc6aaa933ae8e6c17a226df0fc0b671c438f69715d41d09fe81f902f
+	sha256sums = a4bbdc881128bdbe920a38e134c9add5db47f9aa814a0a018ba940b0f3c278c3
 	sha256sums = SKIP
 
 pkgname = mingw-w64-lpsolve
