@@ -2,11 +2,11 @@
 
 _pkgname="fchat-horizon"
 pkgname="fchat-horizon-bin"
-pkgver=1.35.7
+pkgver=1.36.0
 pkgrel=1
 pkgdesc="Horizon is a modern, community-driven fork of the F-Chat 3.0 client with expanded customization."
 url="https://github.com/Fchat-Horizon/Horizon"
-license=('GPL-3.0')
+license=('MPL-2.0')
 arch=('x86_64')
 
 depends=(
@@ -23,13 +23,13 @@ source=(
   "$_pkgname.sh"
   "$_pkgname.desktop"
   "$_pkgname-v$pkgver.png::https://raw.githubusercontent.com/Fchat-Horizon/Horizon/refs/heads/main/electron/build/icon.png"
-  "$_pkgname-v$pkgver-LICENSE::https://raw.githubusercontent.com/Fchat-Horizon/Horizon/refs/heads/main/LICENSE"
+  "$_pkgname-v$pkgver-LICENSE::https://raw.githubusercontent.com/Fchat-Horizon/Horizon/refs/heads/main/LICENSE.md"
 )
-sha256sums=('a46546fafa18a7d086216af4b4f074fe25fabb25df2e38a91f2b5ed405bf96c0'
+sha256sums=('04d81dc87a951fe905507960821d1a7aebb05a8fc3db6ba42fba92a1b173e76e'
             '6853b8e9d7ce674b063fe277c98fc9dcec4be4949731e6134a5f134d48892be5'
             'a1d0de75cc59576b1ae47eb592b10abe181f2cc6f605f4b1fffa03c818587d72'
             '79c24919dcaa51f2907af9beb3fdf3ec0703e662ae2434d8e7fe28e15ae29b02'
-            'd4a32ce6914b6ab0bd2112076688870a66da29cb83576223bf6d3a911512929f')
+            'a73c8a62214b4adc0fa41abe88eb5c36639d4adea7a73130ab54103b7620a4d1')
 
 package() {
   cd "$srcdir"
