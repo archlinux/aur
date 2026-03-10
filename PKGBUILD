@@ -7,6 +7,7 @@ arch=('x86_64' 'aarch64')
 url='https://github.com/Manas-Kenge/lazyff'
 license=('MIT')
 depends=('ffmpeg' 'glibc')
+options=('!strip')
 provides=('lazyff')
 conflicts=('lazyff')
 source=("LICENSE::https://raw.githubusercontent.com/Manas-Kenge/lazyff/v${_pkgver}/LICENSE")
