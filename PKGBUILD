@@ -31,16 +31,20 @@ build() {
           -DLIBUNWIND_INCLUDE_TESTS=OFF \
           -DLIBUNWIND_INCLUDE_DOCS=OFF \
           -DLIBUNWIND_INSTALL_HEADERS=OFF \
+          -DLIBUNWIND_ENABLE_ASSERTIONS=OFF \
           -DCMAKE_SYSROOT=/usr/arm-none-eabi \
           -DCMAKE_C_COMPILER=clang \
           -DCMAKE_CXX_COMPILER=clang++ \
+          -DCMAKE_ASM_COMPILER=clang \
           -DCMAKE_C_COMPILER_TARGET="${_arch}-none-eabi" \
           -DCMAKE_CXX_COMPILER_TARGET="${_arch}-none-eabi" \
+          -DCMAKE_ASM_COMPILER_TARGET="${_arch}-none-eabi" \
           -DCMAKE_AR=/usr/bin/llvm-ar \
           -DCMAKE_NM=/usr/bin/llvm-nm \
           -DCMAKE_RANLIB=/usr/bin/llvm-ranlib \
           -DCMAKE_C_FLAGS="-march=${_arch} -mthumb -mfpu=none -mfloat-abi=soft -ffile-prefix-map=${srcdir}=" \
           -DCMAKE_CXX_FLAGS="-march=${_arch} -mthumb -mfpu=none -mfloat-abi=soft -fno-exceptions -fno-rtti -ffile-prefix-map=${srcdir}=" \
+          -DCMAKE_ASM_FLAGS="-march=${_arch} -mthumb -mfpu=none -mfloat-abi=soft -ffile-prefix-map=${srcdir}=" \
           -DCMAKE_BUILD_TYPE=MinSizeRel
 
     ninja -C "${srcdir}/build-${_arch}" unwind_static
