@@ -34,18 +34,20 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname"
-    ags bundle . ion
+    ags bundle . ionix-shell
 }
 
 package() {
     cd "$srcdir/$pkgname"
 
     # Install the AGS bundle
-    install -Dm644 ion "$pkgdir/usr/share/$pkgname/ion"
+    install -Dm644 ionix-shell "$pkgdir/usr/share/$pkgname/ionix-shell"
 
-    # Wrapper script
-    printf '#!/bin/sh\nexec ags run /usr/share/%s/ion "$@"\n' "$pkgname" \
-        | install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname"
+    # Link the executable
+    install -Dm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/bash
+exec /usr/share/$pkgname/ionix-shell "\$@"
+EOF
 
     # Systemd user service
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/systemd/user/$pkgname.service" << EOF
