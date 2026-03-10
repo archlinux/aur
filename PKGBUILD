@@ -5,7 +5,7 @@
 # Contributor : Bryce Nordgren <bnordgren at gmail dot com>
 pkgname=hdfview-bin
 _pkgname=HDFView
-pkgver=3.3.2
+pkgver=3.4.1
 pkgrel=2
 pkgdesc="a GUI browser for reading hdf5 files - prebuilt binaries from the HDF group"
 arch=('x86_64')
@@ -14,12 +14,10 @@ license=('custom')
 provides=('hdfview')
 replaces=('hdfview-beta')
 conflicts=('hdfview-beta' 'hdfview')
-source=("https://github.com/HDFGroup/hdfview/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux-x86_64.tar.gz")
-sha512sums=('444101f4cb77a1b94477852dab52163c08fc3f6be23cbfd46efdf0f2572a5df3067b9db91b4afdd90d95eb42526c6491d23d9c1859a088c17132834965ba2924')
+source=("https://github.com/HDFGroup/hdfview/releases/download/v${pkgver}/${_pkgname}-${pkgver}-Linux.deb")
+sha512sums=('f36e15e3cd709a9b090b0f27f974e67859943fa9fa35b9f91dff6d85493557448bbd20cb994ac9b65e30b9806df742574c89f14216cdf8dafccfc12de4c8100f')
 
 package() {
-
-  bsdtar -xf "${srcdir}/hdfview_${pkgver}_amd64.deb" -C "${srcdir}"
   bsdtar -xf "${srcdir}/data.tar.zst" -C ${pkgdir}
 
   mkdir -p "${pkgdir}/usr/bin"
@@ -30,6 +28,4 @@ package() {
   
   mkdir -p "${pkgdir}/usr/share/mime/application"
   ln -s "/opt/hdfview/lib/hdfview-HDFView-MimeInfo.xml" "${pkgdir}/usr/share/mime/application/"
-
-  install -D -m 644 "${srcdir}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
