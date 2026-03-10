@@ -1,6 +1,6 @@
 pkgbase = mini-benchmarker
 	pkgdesc = A simple benchmarking script using stress-ng, perf, blender etc.
-	pkgver = 2.1.r22.g9dc753e
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://gitlab.com/torvic9/mini-benchmarker
 	arch = x86_64
@@ -25,7 +25,8 @@ pkgbase = mini-benchmarker
 	depends = python
 	depends = primesieve
 	depends = p7zip
-	source = git+https://gitlab.com/torvic9/mini-benchmarker.git
+	source = git+https://gitlab.com/torvic9/mini-benchmarker.git?signed#tag=v2.3
+	validpgpkeys = 4671AD7FB662DF5397303D3E639389191B4D896A
 	sha512sums = SKIP
 
 pkgname = mini-benchmarker
