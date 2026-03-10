@@ -9,7 +9,7 @@
 pkgname=libmodsecurity-git
 _name=modsecurity
 pkgver=v3.0.14.r191.gc3e31de
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross platform web application firewall engine for Apache, IIS and Nginx, git HEAD'
 arch=('x86_64')
 url='https://github.com/SpiderLabs/ModSecurity'
