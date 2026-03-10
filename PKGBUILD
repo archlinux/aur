@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=usb-link-speed-tray-git
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Tray app showing link speed of attached USB storage (e.g. 480 Mbps vs 5 Gbps) and mount points"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python>=3.10' 'python-pillow' 'python-gobject' 'python-cairosvg' 'libappindicator-gtk3' 'gtk3')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('f74eae0a29bf810e3c5bc3f931f4e74328dced8c877d6d3ab7583c9da08b97ca')
+sha256sums=('5dad237d4e0f23bde46c0d9688fcb61ed99d15a12868d25a9744f752f2720926')
 
 build() {
   cd "$srcdir/usb-link-speed-tray-$pkgver"
