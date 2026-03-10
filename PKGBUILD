@@ -1,6 +1,6 @@
 # Maintainer: Zeus <zeus@example.com>
 pkgname=rgbpc
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A TUI to manage OpenRGB lights, with optional Omarchy theme sync"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3') # Or whatever license they use, I will use MIT or GPL3. Let's o
 depends=('openrgb' 'xdg-terminal-exec')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Zeus-Deus/rgbpc/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('beef1b2c4297f929c4b5685a69c6b7d64cce6ea8ca04f3a1e4f8c3db3e198479')
+sha256sums=('c875979385508f4abcff8fa057708a4ae0fe81de033aa5ddd32dd817dbd9d214')
 
 prepare() {
   cd "$pkgname-$pkgver"
