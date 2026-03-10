@@ -1,0 +1,13 @@
+pkgbase = netbird-tui
+	pkgdesc = Terminal UI for NetBird WireGuard mesh VPN
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/n0pashkov/netbird-tui
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = netbird
+	source = netbird-tui-1.0.0.tar.gz::https://github.com/n0pashkov/netbird-tui/archive/v1.0.0.tar.gz
+	sha256sums = 92d7d06934a26815c4bd509c196ed2833b2c0251bacba800b28460570d05c4df
+
+pkgname = netbird-tui
