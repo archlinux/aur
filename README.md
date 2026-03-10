@@ -240,7 +240,7 @@ You can query APIs, files, and services as logical tables using our growing libr
 - **AI & Integrations**: OpenAI/Ollama (Unstructured extractions!), Airtable, CANBus
 - **Databases**: Postgres, SQLite
 
-*(Tip: Just run `desc schema` or `desc schema.table(args)` inside Musoq to explore what is queryable.)*
+*(Tip: Just run `desc schema`, `desc functions schema`, `desc schema.table(args) column Column` or `desc schema.table(args)` inside Musoq to explore what is queryable.)*
 
 ---
 
@@ -293,7 +293,7 @@ flowchart TD
         AST --> Visitors[AST Visitors & Rewriters]
         Visitors --> Semantic[Type Inference & Semantic Analysis]
         Semantic --> Compiler[C# Code Generator & Compiler]
-        Compiler --> Runtime[Execution Runtime VM]
+        Compiler --> Runtime[Execution Runtime]
     end
     
     Registry[(Plugin / Schema Registry)] -.->|Injects types & methods| Semantic
