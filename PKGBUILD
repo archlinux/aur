@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/LucasionGS/ionix-shell-ags"
 license=('MIT')
 depends=(
-    'ags'
+    'aylurs-gtk-shell-git'
     'hyprland'
     'kitty'
     'socat'
@@ -23,7 +23,7 @@ optdepends=(
     'ionix-openconnect-tools: OpenConnect VPN panel'
     'openconnect: VPN panel (requires oc wrapper CLI)'
 )
-makedepends=('git' 'ags')
+makedepends=('git' 'aylurs-gtk-shell-git')
 source=("$pkgname::git+https://github.com/LucasionGS/ionix-shell-ags.git")
 sha256sums=('SKIP')
 
