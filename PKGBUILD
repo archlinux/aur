@@ -6,7 +6,7 @@ pkgname=(
   "${pkgbase}-client"
   "${pkgbase}-server"
 )
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="OOB interaction gathering server and client library"
 arch=(
@@ -27,15 +27,13 @@ _pkgsrc="${url##*/}"
 source=(
   "${_pkgsrc}::git+${url}.git#tag=v${pkgver}"
 )
-b2sums=('a8d7587c698e514b56570f4eea58033082e063411926a8e0294be64ffb528a1f97e455aab9b42672a283b1434b90002b7a51bded9a1446d187c17d6472616e27')
+b2sums=('6a856b98dd6c7716168b7bed76f8aa98d45e044f5f3e9c4775610d5a363a014590c31d7d317f1bc479b88d61bd603f15f8709b4a7c25f35a5645748c4d5a27a0')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
   go mod download -modcacherw -x
-
-  mkdir -p "build"
 }
 
 build() {
