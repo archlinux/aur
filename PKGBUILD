@@ -1,7 +1,7 @@
 # Maintainer: Hugh Whelan <brickhousedevelopers@gmail.com>
 pkgname=scidcommunity
 pkgver=5.1.2.44
-pkgrel=78
+pkgrel=79
 pkgdesc="Enhanced fork of Scid chess database with Chess.com/Lichess integration, tablebase lookup, improved search, and additional training features"
 arch=('x86_64')
 url="https://github.com/whelanh/scidCommunity"
@@ -36,7 +36,7 @@ package() {
   
   # Install data files manually (avoids permission issues with make install_shared)
   # Copy all data directories that exist
-  for dir in tcl books bases html bitmaps sounds; do
+  for dir in tcl books bases html bitmaps bitmaps2 img sounds scripts; do
     if [ -d "$dir" ]; then
       cp -r "$dir" "${pkgdir}/usr/share/scid/"
     fi
