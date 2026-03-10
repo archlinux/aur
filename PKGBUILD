@@ -1,6 +1,6 @@
 # Maintainer: jim3692 <jim3692 at gmail.com>
 pkgname="pipewire-screenaudio-git"
-pkgver=0.3.4.r11.gbd404d0
+pkgver=0.4.0.r0.g3c0b272
 pkgver() {
   cd "pipewire-screenaudio"
   git describe --tags --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -12,6 +12,8 @@ url="https://github.com/IceDBorn/pipewire-screenaudio"
 license=('GPL3')
 makedepends=(
   'cargo'
+  'clang'
+  'pkgconf'
   )
 depends=(
   'pipewire'
@@ -39,10 +41,10 @@ build() {
   cd $srcdir/pipewire-screenaudio/native/connector-rs
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --all-features
+  cargo build --release --frozen --all-features
 }
 
 package() {
   install -Dm644 "$srcdir/pipewire-screenaudio/native/native-messaging-hosts/firefox.json" "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.icedborn.pipewirescreenaudioconnector.json"
-  install -Dm755 "$srcdir/pipewire-screenaudio/native/connector-rs/target/debug/connector-rs" "$pkgdir/usr/lib/pipewire-screenaudio/connector-rs/target/debug/connector-rs"
+  install -Dm755 "$srcdir/pipewire-screenaudio/native/connector-rs/target/release/connector-rs" "$pkgdir/usr/lib/pipewire-screenaudio/connector-rs/target/release/connector-rs"
 }
