@@ -36,7 +36,7 @@ build() {
 
 help() {
     cat <<HELPEOF
-This hook installs a systemd password agent [1] based on unl0kr. This allows to enter passwords for encrypted volumes or tokens with an on-screen keyboard.
+This hook installs a systemd password agent [1] based on unl0kr. This allows to enter passwords for encrypted volumes or tokens with an on-screen keyboard or a regular hardware keyboard.
 
 [1] https://systemd.io/PASSWORD_AGENTS
 HELPEOF

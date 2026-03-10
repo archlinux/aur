@@ -25,6 +25,8 @@ build() {
     # cryptsetup loads the legacy provider which is required for whirlpool
     add_binary '/usr/lib/ossl-modules/legacy.so'
 
+    add_checked_modules '/input/touchscreen/'
+
     add_binary '/usr/bin/unl0kr'
     add_file '/etc/unl0kr.conf'
 
@@ -61,7 +63,7 @@ the absolute path of the keyfile within the device.
 
 Without specifying a keyfile, you will be prompted for the password at runtime
 using a GUI program called unl0kr. unl0kr allows to enter the password with
-an on-screen keyboard, a mouse, a touchpad or a regular hardware keyboard.
+an on-screen keyboard or a regular hardware keyboard.
 HELPEOF
 }
 
