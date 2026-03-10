@@ -2,7 +2,7 @@
 
 _pkgbase=akvcam
 pkgname=${_pkgbase}-dkms
-pkgver=1.2.7
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Virtual camera for Linux"
 url="https://github.com/webcamoid/akvcam"
@@ -10,7 +10,7 @@ arch=('any')
 license=('GPL2')
 depends=('dkms')
 source=("https://github.com/webcamoid/${_pkgbase}/archive/${pkgver}.tar.gz")
-md5sums=('dcdf63ed3210b1a1f52df4885b14c97a')
+md5sums=('0b3c61587d7d926c48fb64b1b68e9155')
 
 package() {
     cd "${srcdir}/${_pkgbase}-${pkgver}/src"
