@@ -2,7 +2,7 @@
 
 _reponame="Solian"
 pkgname=solian
-pkgver=3.6.0+178
+pkgver=3.6.0+179
 pkgrel=1
 pkgdesc="Next Generation Network Center"
 arch=('x86_64')
@@ -34,7 +34,7 @@ makedepends=(
 conflicts=('solian-git' 'solian-bin' 'solian-bin-git')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Solsynth/${_reponame}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('d8494100dc1c821e84499cd635b1678d206b57c3ec59a0ab637499f932e71893')
+sha256sums=('dce7d3398f345efb0994021a7a670ae610cb118d9301f28859a1733338db5c99')
 
 options=('!debug')
 
