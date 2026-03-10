@@ -1,6 +1,6 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=codename-goose
-pkgver=1.25.2
+pkgver=1.27.2
 pkgrel=1
 pkgdesc="An open-source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64' 'aarch64')
@@ -9,6 +9,8 @@ license=('Apache-2.0')
 depends=()
 makedepends=(
 	'cargo'
+	'clang'
+	'cmake'
 	'libxcb'
 	'protobuf'
 )
@@ -30,7 +32,7 @@ optdepends=(
 # LTO is broken for dependency ring https://github.com/briansmith/ring/issues/1444
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/block/goose/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('6c44f4d2e93f2d31b2a8affe16d167be0fd722f6e04adcb575cd648171a9f127579a1f4e9f33177275c409b646b0520edc6eb8e95842a616f6228c221b4be9c6')
+b2sums=('82614318ada08e4ec886acd833105ced8287b781d047dcc9b9ffda873055913689d53ccb248e20be37b365aa75b9ef9328d4d62b7cb727d2a57c28f1da8f6b80')
 
 prepare() {
 	cd "goose-$pkgver"
@@ -44,7 +46,7 @@ build() {
 	cd "goose-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release -p goose-cli --all-features
+	cargo build --frozen --release -p goose-cli --features disable-update
 }
 
 check() {
