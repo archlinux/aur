@@ -1,0 +1,14 @@
+post_install() {
+    groupadd -f nuicat 2>/dev/null || true
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger --subsystem-match=input 2>/dev/null || true
+    echo "==> To start nuicat, run: systemctl --user enable --now nuicat.service"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "==> To stop nuicat, run: systemctl --user disable --now nuicat.service"
+}

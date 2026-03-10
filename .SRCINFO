@@ -1,0 +1,21 @@
+pkgbase = nuicat-bin
+	pkgdesc = Speech-to-text dictation for Linux desktop
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://nui.cat
+	install = nuicat-bin.install
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = glibc
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = openssl
+	optdepends = vulkan-icd-loader: GPU-accelerated local transcription
+	optdepends = wl-clipboard: Wayland clipboard support
+	provides = nuicat
+	conflicts = nuicat
+	noextract = nuicat_amd64.deb
+	source = nuicat_amd64.deb::https://packages.nui.cat/releases/0.1.0/nuicat_amd64.deb
+	sha256sums = PLACEHOLDER
+
+pkgname = nuicat-bin
