@@ -1,17 +1,16 @@
 pkgbase = recall-bin
 	pkgdesc = A CLI tool to find commands by describing what you want to do when you forget them
-	pkgver = 1.0.1
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/spider-hand/recall
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	provides = recall
 	conflicts = recall
-	source = README-1.0.1.md::https://raw.githubusercontent.com/spider-hand/recall/v1.0.1/README.md
-	source = LICENSE-1.0.1::https://raw.githubusercontent.com/spider-hand/recall/v1.0.1/LICENSE
-	sha256sums = e6ff500468e1e0f2fac5c583891fba89a42dc9eaf77a2a08844996ee5c044a0e
-	sha256sums = 0809f5aba87d64f15153c4210ddb825508a73931af737be314ff49a4749e687d
-	source_x86_64 = recall-x86_64-1.0.1::https://github.com/spider-hand/recall/releases/download/v1.0.1/recall_linux_amd64
-	sha256sums_x86_64 = e6b9bd455c733d5c3d9d16b06b44465609f2feff2043d4588ec1521e04af9a81
+	source_x86_64 = recall-x86_64-1.0.3.tgz::https://github.com/spider-hand/recall/releases/download/v1.0.3/recall_1.0.3_linux_amd64.tar.gz
+	sha256sums_x86_64 = 592b465fe241c3e7110db8f7a4f7552d6b956b42e3a9ca3609a114f1a49413ed
+	source_aarch64 = recall-aarch64-1.0.3.tgz::https://github.com/spider-hand/recall/releases/download/v1.0.3/recall_1.0.3_linux_arm64.tar.gz
+	sha256sums_aarch64 = 01bf120269641be0fa3f425104d26a17e397060982bd12eb0fd1fa8119046d75
 
 pkgname = recall-bin
