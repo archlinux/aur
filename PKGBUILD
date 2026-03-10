@@ -2,17 +2,22 @@
 
 pkgname=websitino-bin
 pkgver=0.2.8
-pkgrel=3
+pkgrel=4
 pkgdesc="A lightweight static file server for local development"
 arch=('x86_64')
 url="https://github.com/trikko/websitino"
 license=('MIT')
 provides=('websitino')
 conflicts=('websitino')
-options=('!strip')
+options=('!strip' '!debug')
 
 latestver() {
-  curl -fsSL "https://api.github.com/repos/trikko/websitino/releases/latest" | grep -Po '"tag_name": "v\K[^"]*'
+  local tmp
+  tmp=$(mktemp) || return 1
+  trap 'rm -f "$tmp"' RETURN
+  curl -fsSL 'https://trikko.github.io/websitino/linux/websitino' -o "$tmp" || return 1
+  chmod +x "$tmp" || return 1
+  "$tmp" --version | sed -nE 's/.*\(v([0-9]+\.[0-9]+\.[0-9]+)\).*/\1/p'
 }
 
 source=("websitino-${pkgver}::https://trikko.github.io/websitino/linux/websitino")
