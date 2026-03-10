@@ -5,7 +5,7 @@
 _pkgname=sonarqube
 pkgname=sonarqube-bin
 pkgver=26.3.0.120487
-pkgrel=1
+pkgrel=3
 pkgdesc="An open source platform for continuous inspection of code quality (Community Build)"
 arch=('x86_64')
 url="https://www.sonarsource.com/products/sonarqube/"
@@ -16,7 +16,7 @@ optdepends=(
 backup=("etc/webapps/${_pkgname}/sonar.properties")
 conflicts=("${_pkgname}" "${_pkgname}-lts")
 provides=("${_pkgname}")
-options=('!strip')
+options=('!strip' '!debug')
 source=("https://binaries.sonarsource.com/Distribution/${_pkgname}/${_pkgname}-${pkgver}.zip"
         "${_pkgname}.service"
         "${_pkgname}.tmpfiles"
@@ -30,8 +30,8 @@ sha256sums=('2910d25702323ca1c05a19c05e7f3d71a311531de576547c261ba1c53b4b74f4'
             '682b3ab19eee18b39453fa2e99af89ba7e4ecb0f63dcebf137e65aa225a42e68')
 
 latestver() {
-    curl -s "https://www.sonarsource.com/products/sonarqube/downloads/" | 
-    grep -oP 'Release \K[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | head -1
+    curl -fsSL 'https://binaries.sonarsource.com/s3api?delimiter=/&prefix=Distribution/sonarqube/' |
+    grep -oP 'Distribution/sonarqube/sonarqube-\K[0-9.]+(?=\.zip</Key>)' | sort -Vu | tail -1
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = sonarqube-bin
 	pkgdesc = An open source platform for continuous inspection of code quality (Community Build)
 	pkgver = 26.3.0.120487
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.sonarsource.com/products/sonarqube/
 	install = sonarqube-bin.install
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = sonarqube-bin
 	conflicts = sonarqube
 	conflicts = sonarqube-lts
 	options = !strip
+	options = !debug
 	backup = etc/webapps/sonarqube/sonar.properties
 	source = https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-26.3.0.120487.zip
 	source = sonarqube.service
