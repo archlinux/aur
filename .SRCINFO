@@ -1,0 +1,20 @@
+pkgbase = heidisql-qt6-bin
+	pkgdesc = A lightweight GUI for managing MySQL, PostgreSQL, Microsoft SQL and SQLite databases. (Qt6)
+	pkgver = 12.16
+	pkgrel = 1
+	url = https://github.com/HeidiSQL/HeidiSQL
+	arch = x86_64
+	license = GPL-2.0-or-later
+	depends = qt6pas
+	depends = libperconaserverclient
+	depends = mariadb-libs
+	depends = postgresql-libs
+	depends = sqlite
+	depends = freetds
+	provides = heidisql
+	conflicts = heidisql
+	conflicts = heidisql-client
+	source = heidisql_12.16_x86_64.deb::https://github.com/HeidiSQL/HeidiSQL/releases/download/v12.16/heidisql_12.16_amd64.deb
+	sha256sums = 89d4ea3685ceab035d40f902eb3594e4a97ff06db08fb52da13f8563b963c4b7
+
+pkgname = heidisql-qt6-bin
