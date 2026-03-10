@@ -8,7 +8,7 @@ url="https://github.com/limehawk/lazyreno"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/limehawk/lazyreno/archive/v$pkgver.tar.gz")
-sha256sums=('395d30b41e452d818749ec1e46a43cfbc380ec72b032ae28efd7d74b4aef2546')
+sha256sums=('b9cd0d9820de76ceda37158aaff036ea8cebe249046d358a68546bfc836f3059')
 
 build() {
     cd "$pkgname-$pkgver"
