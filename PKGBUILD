@@ -9,27 +9,30 @@ pkgname=(
   "${pkgbase}-common"
   "${_modules[@]}"
 )
-pkgver=1.2.7
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="GRPC for low-memory environments"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://github.com/containerd/${pkgbase}"
-license=('Apache-2.0')
+license=(
+  'Apache-2.0'
+)
 makedepends=(
   'go'
 )
 _pkgsrc="${url##*/}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('647c74fa44cc19ccb2f89d01283f4488c7cac7578b14b3d537fbd19b92146abf')
+source=(
+  "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+)
+sha256sums=('8bcf96d6932971747dcfbc97993121fcf0d31cf5b530aefc653dc852651e4ae8')
 
 prepare() {
   export GOMODCACHE="${srcdir}/go-mod-cache"
 
   cd "${srcdir}/${_pkgsrc}"
-  go mod download -x
-  chmod -R ug+Xwr "${GOMODCACHE}"
-
-  mkdir -p "build"
+  go mod download -modcacherw -x
 }
 
 build() {
@@ -63,7 +66,7 @@ package_ttrpc-common() {
 
 package_protoc-gen-go-ttrpc() {
   depends+=(
-    "${pkgbase}-common=${pkgver}"
+    "${pkgbase}-common>=${pkgver}"
     'glibc'
     'protobuf'
     'protoc-gen-go'
@@ -79,7 +82,7 @@ package_protoc-gen-go-ttrpc() {
 
 package_protoc-gen-gogottrpc() {
   depends+=(
-    "${pkgbase}-common=${pkgver}"
+    "${pkgbase}-common>=${pkgver}"
     'glibc'
     'protobuf'
   )
