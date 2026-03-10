@@ -19,9 +19,7 @@ b2sums=('cd250c0c9d1c203c61e3696e75f0776b704ee9826eb3d0cc8cf337a8ddc5053de9a78b4
   '226f75f5154d849aec1816064aa5d87db0e41c07d02edb85df5b2b397172a30b32603bccfdfa09a5431f9fbc12fcbbd9a5baccf6d82523d9253a430af0432108')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
-  patch -Np1 -i "../${pkgname}-paths.patch" ||
-    echo "Patch is probably already applied, continuing script execution..."
+  patch -Np1 -i "../${pkgname}-paths.patch" -d "${pkgname}-${pkgver}" || :
 }
 
 build() {
@@ -46,13 +44,13 @@ package() {
   cd "${pkgname}-${pkgver}"
 
   install -Dm755 "bin/Release/${pkgname}" -t \
-    "${pkgdir}/usr/bin/"
+    "${pkgdir}/usr/bin"
 
   install -Dm644 "bin/ignore_${pkgname}.txt" -t \
-    "${pkgdir}/usr/share/${pkgname}/"
+    "${pkgdir}/usr/share/${pkgname}"
 
   install -Dm644 "LICENSE" -t \
-    "${pkgdir}/usr/share/licenses/${pkgname}/"
+    "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
