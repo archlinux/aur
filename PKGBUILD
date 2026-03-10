@@ -38,6 +38,6 @@ package() {
   ln -s /usr/share/dxvk/setup_dxvk.sh "$pkgdir/usr/bin/setup_dxvk"
   ln -s /usr/share/dxvk/setup_dxvk_proton.sh "$pkgdir/usr/bin/setup_dxvk_proton"
 
-  install -dm755 "$pkgdir/etc/environment.d"
-  install -Dm644 "$srcdir/$_pkgname-env.conf" "$pkgdir/etc/environment.d/$_pkgname-env.conf"
+  install -dm755 "$pkgdir/usr/lib/environment.d"
+  install -Dm644 "$srcdir/$_pkgname-env.conf" "$pkgdir/usr/lib/environment.d/50-$_pkgname-env.conf"
 }
