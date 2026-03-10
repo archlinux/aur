@@ -1,4 +1,4 @@
-["bkmr"]
+[bkmr]
 source = "github"
 github = "sysid/bkmr"
 use_latest_release = true
