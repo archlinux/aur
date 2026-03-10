@@ -1,11 +1,16 @@
 [Desktop Entry]
 Type=Application
-Version=4.2.6                   
 Name=PLECS Standalone
+GenericName=Power Electronics Circuit Simulator
+Comment=Simulate power electronic circuits and control systems
 Icon=plecs
-Comment=Circuit Simulator for Power Electronics   
-Path=/opt/plecs
 Exec=/usr/bin/plecs %U
-Terminal=false                       
-Categories=Development      
+Path=/opt/plecs
+Terminal=false
+StartupNotify=true
+StartupWMClass=plecs
 
+Categories=Development;Engineering;Electronics;
+Keywords=simulation;power electronics;circuit simulator;control systems;
+
+MimeType=application/x-plecs;application/x-plecs-model;
