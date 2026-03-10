@@ -1,0 +1,23 @@
+pkgbase = loongson-browser-bin
+	pkgdesc = Loongson Chromium-based browser
+	pkgver = 3.4.2082.1
+	pkgrel = 1
+	url = https://www.loongson.cn
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = gtk2
+	depends = nss
+	depends = nspr
+	depends = libx11
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxrandr
+	depends = libxext
+	depends = libxfixes
+	depends = alsa-lib
+	depends = dbus
+	source = lbrowser.deb::https://ftp.loongnix.cn/browser/lbrowser/3.4.2082.1/amd64/lbrowser_3.4.2082.1-1.stable.amd64.deb
+	sha256sums = 851090a0d7ca4fab14521969d12a774307e5e9243c88e341e21fe30bad9dc4eb
+
+pkgname = loongson-browser-bin
