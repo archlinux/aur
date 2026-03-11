@@ -1,7 +1,7 @@
 pkgbase = plugdata-bin
 	pkgdesc = Plugin wrapper around Pure Data with a new JUCE GUI, allowing patching in DAWs
 	pkgver = 0.9.3_2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/plugdata-team/plugdata
 	arch = x86_64
 	arch = aarch64
@@ -27,9 +27,9 @@ pkgbase = plugdata-bin
 	source = plugdata.png
 	sha256sums = 22cdffc139b070f9c1ada241068eef8d88c5b25fc16c4a2cd67582660c98e922
 	sha256sums = 6e583e7cf952a3b5a587ff85567406c9f3cb0d3516494368b89bc7af6871f869
-	source_x86_64 = plugdata-0.9.3_2-x86_64.tar.gz::https://github.com/plugdata-team/plugdata/releases/download/v0.9.3-2/plugdata-Arch-x64.tar.xz
+	source_x86_64 = plugdata-0.9.3_2-x86_64.tar.xz::https://github.com/plugdata-team/plugdata/releases/download/v0.9.3-2/plugdata-Arch-x64.tar.xz
 	sha256sums_x86_64 = 8d8a635f00bb1abf0b8403ec9e969e3c134317fda40a9ad0af5c1dd3fe7a8e08
-	source_aarch64 = plugdata-0.9.3_2-aarch64.tar.gz::https://github.com/plugdata-team/plugdata/releases/download/v0.9.3-2/plugdata-Arch-aarch64.tar.xz
+	source_aarch64 = plugdata-0.9.3_2-aarch64.tar.xz::https://github.com/plugdata-team/plugdata/releases/download/v0.9.3-2/plugdata-Arch-aarch64.tar.xz
 	sha256sums_aarch64 = b8d0ca7300a5aeedd01140fe42db4a0fb3d29c07cfc32bd21d4a2e38f4ce21fe
 
 pkgname = plugdata-bin
