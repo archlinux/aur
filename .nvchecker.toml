@@ -1,0 +1,5 @@
+[mdterm-bin]
+source = "github"
+github = "bahdotsh/mdterm"
+use_latest_release = true
+prefix = "v"

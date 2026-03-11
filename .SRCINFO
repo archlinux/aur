@@ -1,0 +1,22 @@
+pkgbase = mdterm-bin
+	pkgdesc = A terminal-based Markdown viewer written in Rust. Renders Markdown files with syntax highlighting, styled formatting, and interactive navigation
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/bahdotsh/mdterm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = mdterm
+	conflicts = mdterm
+	source = README-1.0.0.md::https://raw.githubusercontent.com/bahdotsh/mdterm/v1.0.0/README.md
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/bahdotsh/mdterm/v1.0.0/LICENSE
+	sha256sums = 3804af05344dc421dccdb99641b99e95b886055e5659f92839dc0b856371cbb1
+	sha256sums = e2d8bb4e653bd3868b02a3265b104952401722d688adedac5e4c1d4d1f2794ec
+	source_x86_64 = mdterm-x86_64-1.0.0.tgz::https://github.com/bahdotsh/mdterm/releases/download/v1.0.0/mdterm-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 103a624236d902370d5224e4b16d24e5d9418f8caec8c74a829b425c51573ffd
+	source_aarch64 = mdterm-aarch64-1.0.0.tgz::https://github.com/bahdotsh/mdterm/releases/download/v1.0.0/mdterm-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = f40c38f6517bc4f7bafc39828683adc46df8000ee92b7646990764ff8a9366c3
+
+pkgname = mdterm-bin
