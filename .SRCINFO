@@ -1,0 +1,15 @@
+pkgbase = sysclean-bin
+	pkgdesc = System maintenance and package dependency manager for Linux (GTK4 + Rust)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/DonutsDelivery/Smart-Cleaner
+	arch = x86_64
+	license = MIT
+	depends = gtk4
+	depends = libadwaita
+	provides = sysclean
+	conflicts = sysclean
+	source = sysclean-bin-0.1.0.tar.gz::https://github.com/DonutsDelivery/Smart-Cleaner/releases/download/v0.1.0/sysclean-x86_64.tar.gz
+	sha256sums = 3b2467ee7d32f89136d64ff18056b37bb88b4085323e6f967e1d36e8e58b16f1
+
+pkgname = sysclean-bin
