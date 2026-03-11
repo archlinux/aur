@@ -4,7 +4,7 @@
 
 pkgname=open-android-backup
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A complete, easy to use script that lets you locally backup and restore your Android device.'
 arch=(i686 x86_64)
 license=(GPL-3.0-only)
@@ -16,10 +16,10 @@ depends=(
   libnewt
   p7zip
   pv
-  zenity
 )
 optdepends=(
   'srm: securely delete data in the temporary folder'
+  'zenity: display graphical dialogs'
 )
 source=("${pkgname}-${pkgver}.zip::https://github.com/mrrfv/${pkgname}/releases/download/v${pkgver}/Open_Android_Backup_v${pkgver}_Bundle.zip")
 sha512sums=('d526316ddf1e21d96f7ef8102f769ce396fb6026e29d4ab28af76d3f0a9d5ea3f3aa47732b701a545f3eb51623e525a4f2f801cbac83b923fff5ac62804fca92')
