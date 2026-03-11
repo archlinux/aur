@@ -1,15 +1,15 @@
 # Maintainer: lod <aur@cyber-anlage.de>
 
 pkgname=edgetx-companion
-pkgver=2.11.4
+pkgver=2.11.5
 pkgrel=1
 pkgdesc="EEPROM Editor and Simulator for EdgeTX RC radio transmitter firmwares"
 arch=('x86_64')
 url='https://edgetx.org/'
 license=('GPL-2.0-only')
-depends=('dfu-util' 'gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt5-base' 'qt5-multimedia' 'qt5-serialport' 'sdl2')
+depends=('dfu-util' 'glibc' 'hicolor-icon-theme' 'libgcc' 'libstdc++' 'qt5-base' 'qt5-multimedia' 'qt5-serialport' 'sdl2')
 makedepends=('arm-none-eabi-binutils' 'arm-none-eabi-gcc' 'arm-none-eabi-newlib' 'avr-gcc' 'avr-libc' 'bc' 'clang'
-             'cmake' 'doxygen' 'fox' 'gcc' 'git' 'graphviz' 'icu' 'ninja' 'openssl-1.1' 'python' 'python-jinja'
+             'cmake' 'doxygen' 'fox' 'gcc' 'git' 'graphviz' 'icu' 'ninja' 'openssl' 'python' 'python-jinja'
              'python-lz4' 'python-pillow' 'python-pyqt5' 'qt5-svg' 'qt5-tools' 'qt5-translations' 'sed' 'xsd')
 options=('!debug')
 provides=('companion')
@@ -24,7 +24,7 @@ source=("git+https://github.com/EdgeTX/edgetx.git#tag=v$pkgver"
         "git+https://github.com/nothings/stb.git"
         "git+https://github.com/microsoft/uf2"
         "git+https://github.com/signal11/hidapi")
-b2sums=('867f5768a6d227470eb3806526265e116f16807ca7deab9864186da57c8ec0075a9ae0b1fc0d8b9b6a4964ddbcfd0fd216fc6220632e139e492160e290463b03'
+b2sums=('82f7616fb75e37d4357d3f3080ccf42ee88364a7a09ea15459af933784d6ec56a0a054f1834646c2ab0f0cf81abaa91af78779730b2101d07de0ecc3c051efa1'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -75,15 +75,15 @@ build() {
   cd build
 
   declare -a simulator_plugins=(x9lite x9lites
-                                x7 x7access
-                                t8 t12 t12max tx12 tx12mk2
-                                zorro commando8 boxer pocket mt12 gx12
-                                tlite tpro tprov2 tpros bumblebee lr3pro t14
-                                x9d x9dp x9dp2019 x9e
-                                xlite xlites
-                                nv14 el18 pl18 pl18ev st16
-                                x10 x10express x12s
-                                t15 t16 t18 t20 t20v2 tx16s f16 v16)
+                              x7 x7access
+                              t8 t12 t12max tx12 tx12mk2
+                              zorro commando8 boxer pocket mt12 gx12
+                              tlite tpro tprov2 tpros bumblebee lr3pro t14
+                              x9d x9dp x9dp2019 x9e
+                              xlite xlites
+                              nv14 el18 pa01 pl18 pl18ev pl18u st16
+                              x10 x10express x12s
+                              t15 t16 t18 t20 t20v2 tx16s f16 v14 v16)
 
   for plugin in "${simulator_plugins[@]}"
   do
