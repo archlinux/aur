@@ -1,46 +1,60 @@
-# Maintainer: Florian Pritz <bluewind@archlinux.org>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Florian Pritz <bluewind@archlinux.org>
 
-pkgname=perl-function-parameters
-pkgver=2.002005
+_dist=Function-Parameters
+_ver=2.002006
+pkgname=perl-${_dist,,}
+pkgver=${_ver#v}
 pkgrel=1
 pkgdesc='define functions and methods with parameter lists ("subroutine signatures")'
-arch=(x86_64)
-license=(PerlArtistic GPL)
-options=(!emptydirs)
-depends=('perl>=5.14.0')
-makedepends=('perl-extutils-makemaker>=7.0')
-checkdepends=(perl-test-fatal)
-url=https://metacpan.org/release/Function-Parameters
-source=("https://cpan.metacpan.org/authors/id/M/MA/MAUKE/Function-Parameters-$pkgver.tar.gz")
-md5sums=('207124613068af76732a3c1f7afb8e47')
-sha512sums=('97528791291378f9be226a0f7182dd182966019b37d668983ee9b3d911a61011c40356441465cb9482e6bcb403d7214d84506751fabcf0a0ed9bd55fe5fd1bfe')
-_ddir="Function-Parameters-$pkgver"
+arch=('x86_64')
+url=https://metacpan.org/release/MAUKE/$_dist-$_ver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-carp'
+    'perl-scalar-list-utils'
+    'perl-xsloader'
+    'perl>=5.14.0'
+)
+makedepends=(
+    'perl-extutils-makemaker>=7.0'
+    'perl-pathtools'
+)
+checkdepends=(
+    'perl-constant'
+    'perl-findbin'
+    'perl-test-fatal'
+    'perl-test-simple'
+)
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/M/MA/MAUKE/$_dist-$_ver.tar.gz")
+sha256sums=('ec36c5d891f31a90a6b6d6198d983a5974603ad5eb4f9376af807ac37493f9a2')
 
 build()
-(
-  cd "$srcdir/$_ddir"
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-  unset PERL5LIB PERL_MM_OPT
-  /usr/bin/perl Makefile.PL
-  make
-)
+{
+    cd "$_dist-$_ver"
+
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
+}
 
 check()
-(
-  cd "$srcdir/$_ddir"
-  export PERL_MM_USE_DEFAULT=1
-  unset PERL5LIB
-  make test
-)
+{
+    cd "$_dist-$_ver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
+}
 
 package()
-(
-  cd "$srcdir/$_ddir"
-  make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
-)
+{
+    cd "$_dist-$_ver"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
