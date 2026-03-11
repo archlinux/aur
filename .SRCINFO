@@ -1,6 +1,6 @@
 pkgbase = python-speechrecognition
 	pkgdesc = Speech recognition module for Python, supporting several engines and APIs
-	pkgver = 3.15.0
+	pkgver = 3.15.1
 	pkgrel = 1
 	url = https://github.com/Uberi/speech_recognition
 	arch = any
@@ -41,9 +41,9 @@ pkgbase = python-speechrecognition
 	optdepends = python-requests: AssemblyAI Speech-to-Text backend
 	optdepends = python-boto3: Amazon Lex and Amazon Transcribe backends
 	optdepends = python-botocore: required for Amazon Transcribe
-	source = python-speechrecognition-3.15.0.tgz::https://github.com/Uberi/speech_recognition/archive/refs/tags/3.15.0.tar.gz
+	source = python-speechrecognition-3.15.1.tgz::https://github.com/Uberi/speech_recognition/archive/refs/tags/3.15.1.tar.gz
 	source = https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip
-	b2sums = 37bc88f9d8dd137f69d40c43bd329b4ee763b16c18421dc28cedb373566443fa38b3ac6725641ca70c1467979762b2939572af81d34bc10fccd93d4bd5838773
+	b2sums = eb77ea4994b29611b72e977dec0a14c4864daae93236caf7fb683d7aea3725c099f5895a0c2f83982bc522172b66e2b34efc00792ddb7913589f861da3c83583
 	b2sums = a0b871f1598d933d613d26e7a09c1c7f2e26af7ef83cbb58b6eb06581fe61ed7fab248a8e892a68470e217082bf705865ebae9118f85e0c136fb43aa310f2841
 
 pkgname = python-speechrecognition
