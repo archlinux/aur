@@ -1,6 +1,6 @@
 # Maintainer: Elizabeth Vatten Veiga <parajogapaladins@gmail.com>
 pkgname=icebg-git
-pkgver=r3.g313bbef
+pkgver=r4.g4b3c42f
 pkgrel=1
 pkgdesc="Lightweight Wayland Wallpaper Setter"
 url="https://github.com/HaruNashii/Icebg"
@@ -12,7 +12,7 @@ source=("git+https://github.com/HaruNashii/Icebg.git")
 options=('!debug')
 sha256sums=('SKIP')
 provides=('icebg')
-conflicts=('icebg')
+conflicts=('icebg-git')
 
 pkgver() {
   cd "$srcdir/Icebg"

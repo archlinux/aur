@@ -1,6 +1,6 @@
 pkgbase = icebg-git
 	pkgdesc = Lightweight Wayland Wallpaper Setter
-	pkgver = r3.g313bbef
+	pkgver = r4.g4b3c42f
 	pkgrel = 1
 	url = https://github.com/HaruNashii/Icebg
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = icebg-git
 	makedepends = cargo
 	depends = libgcc
 	provides = icebg
-	conflicts = icebg
+	conflicts = icebg-git
 	options = !debug
 	source = git+https://github.com/HaruNashii/Icebg.git
 	sha256sums = SKIP
