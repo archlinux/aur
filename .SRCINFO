@@ -1,7 +1,7 @@
 pkgbase = lyricspot
 	pkgdesc = Live synced lyrics in your terminal, pulled from Spotify
 	pkgver = 1.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vlensys/lyricspot
 	arch = any
 	license = MIT
