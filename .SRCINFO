@@ -30,6 +30,7 @@ pkgbase = kiwi-shell
 	optdepends = power-profiles-daemon: power profile switching
 	optdepends = wireplumber: audio control
 	optdepends = pipewire: audio support
+	optdepends = upower: battery status
 	source = kiwi-shell-0.2.0.tar.gz::https://github.com/selimbucher/kiwi-shell/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = c093b959afdeee133f54fd3106270244912aece933e993fbb129b711f5d13dde
 

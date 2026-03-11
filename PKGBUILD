@@ -1,30 +1,15 @@
 # Maintainer: Selim Bucher <your@email>
 pkgname=kiwi-shell
-<<<<<<< HEAD
-pkgver=0.2
-=======
 pkgver=0.2.0
->>>>>>> 90c236e (build: add PKGBUILD for arch)
 pkgrel=1
 pkgdesc="Desktop shell for Hyprland built with AGS and Astal"
 arch=('x86_64')
 url="https://github.com/selimbucher/kiwi-shell"
-<<<<<<< HEAD
-license=('MIT')
-depends=(
-    'gjs'
-    'gtk4'
-    'gtk4-layer-shell'
-    'libadwaita'
-    'gobject-introspection'
-    'wayland'
-=======
 license=('GPL-3.0-or-later')
 depends=(
     'gjs'
     'gtk4'
     'libadwaita'
->>>>>>> 90c236e (build: add PKGBUILD for arch)
     'swww'
     'hyprsunset'
     'brightnessctl'
@@ -32,38 +17,13 @@ depends=(
     'imagemagick'
     'sox'
     'psmisc'
-<<<<<<< HEAD
-    'ttf-quicksand'
-    'whitesur-icon-theme'
-    'whitesur-gtk-theme'
-    # Astal libs from AUR:
-    'astal-io'
-    'astal4'
-    'astal-battery'
-    'astal-network'
-    'astal-hyprland'
-    'astal-wireplumber'
-    'astal-mpris'
-    'astal-power-profiles'
-    'astal-bluetooth'
-    'astal-tray'
-    'astal-apps'
-=======
     'libastal-meta'
->>>>>>> 90c236e (build: add PKGBUILD for arch)
 )
 makedepends=(
     'aylurs-gtk-shell'
     'meson'
     'ninja'
     'pkg-config'
-<<<<<<< HEAD
-    'wayland-protocols'
-    'gobject-introspection'
-)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/selimbucher/kiwi-shell/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
-=======
     'wayland'
     'wayland-protocols'
     'gobject-introspection'
@@ -76,10 +36,10 @@ optdepends=(
     'power-profiles-daemon: power profile switching'
     'wireplumber: audio control'
     'pipewire: audio support'
+    'upower: battery status'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/selimbucher/kiwi-shell/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('c093b959afdeee133f54fd3106270244912aece933e993fbb129b711f5d13dde')
->>>>>>> 90c236e (build: add PKGBUILD for arch)
 
 build() {
     cd "$pkgname-$pkgver"
@@ -125,9 +85,5 @@ EOF
     chmod +x "$pkgdir/usr/bin/kiwictl"
 
     # License
-<<<<<<< HEAD
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-=======
     install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
->>>>>>> 90c236e (build: add PKGBUILD for arch)
 }
