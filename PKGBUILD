@@ -1,7 +1,7 @@
 # Maintainer: Burgess Leo <liuxiaopeng731@gmail.com>
 pkgname=leolock
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="LeoLock - 安全的文件加密解密工具"
 arch=('x86_64')
 url="https://github.com/lxp731/leolock"
@@ -24,9 +24,9 @@ build() {
   
   # 生成 shell 补全文件
   mkdir -p completions
-  ./target/release/leolock completions bash > completions/leolock.bash 2>/dev/null || true
-  ./target/release/leolock completions zsh > completions/_leolock 2>/dev/null || true
-  ./target/release/leolock completions fish > completions/leolock.fish 2>/dev/null || true
+  ./target/release/leolock complete bash > completions/leolock.bash 2>/dev/null || true
+  ./target/release/leolock complete zsh > completions/_leolock 2>/dev/null || true
+  ./target/release/leolock complete fish > completions/leolock.fish 2>/dev/null || true
 }
 
 check() {
