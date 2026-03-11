@@ -1,5 +1,5 @@
 [Unit]
-Description=Hentai@Home but Rusty
+Description=The unofficial Hentai@Home client written in Rust
 Documentation=https://github.com/james58899/hath-rust/wiki
 Wants=network-online.target
 After=network-online.target
@@ -8,26 +8,50 @@ After=network-online.target
 Type=simple
 DynamicUser=yes
 User=hath-rust
-EnvironmentFile=-/etc/hath-rust.conf
-ExecStart=hath-rust $HATH_EXTRA_ARGS \
-    --cache-dir=/var/lib/hath-rust/cache \
-    --data-dir=/var/lib/hath-rust/data \
-    --download-dir=/var/lib/hath-rust/download \
-    --log-dir=/var/log/hath-rust \
-    --temp-dir=/var/lib/hath-rust/temp
+EnvironmentFile=-%E/hath-rust.conf
+ExecStart=/usr/bin/hath-rust $HATH_EXTRA_ARGS \
+    --cache-dir=%C/hath-rust \
+    --data-dir=%d \
+    --log-dir=%L/hath-rust
+# Credentials
+LoadCredential=client_login:%E/hath-rust/client_login
 # Isolation
-WorkingDirectory=/var/lib/hath-rust
+WorkingDirectory=%S/hath-rust
+ProtectProc=noaccess
+AmbientCapabilities=CAP_NET_BIND_SERVICE
 CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 NoNewPrivileges=yes
 # Sandboxing
 StateDirectory=hath-rust
+CacheDirectory=hath-rust
 LogsDirectory=hath-rust
+ConfigurationDirectory=hath-rust
 ProtectSystem=strict
 ProtectHome=yes
 PrivateTmp=yes
+PrivateDevices=yes
+PrivateIPC=yes
 PrivateUsers=yes
+ProtectHostname=yes
+ProtectClock=yes
+ProtectKernelTunables=yes
 ProtectKernelModules=yes
+ProtectKernelLogs=yes
 ProtectControlGroups=yes
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=yes
+PrivateBPF=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RemoveIPC=yes
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+SystemCallFilter=~@mount
+SystemCallFilter=~@module
+SystemCallFilter=~@resources
+SystemCallArchitectures=native
 
 [Install]
 WantedBy=multi-user.target

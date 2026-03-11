@@ -1,28 +1,35 @@
 pkgname=hath-rust
-pkgdesc="Hentai@Home but rusty"
-pkgver=1.14.1
+pkgdesc="The unofficial Hentai@Home client written in Rust"
+pkgver=1.14.2
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/james58899/hath-rust"
-license=("GPL-3.0-only")
+license=("GPL-3.0-or-later")
 options=("!lto") # https://github.com/briansmith/ring/issues/1444
-depends=("gcc-libs" "glibc")
+depends=("libgcc" "glibc" "jemalloc")
 makedepends=("cargo" "git")
 source=("git+$url.git#tag=v$pkgver"
         "hath-rust.service")
-sha256sums=('4a7e1243d69e6a7c8a64cb376db86b8e1358217e2cb9db1bffbdb3a65e154f77'
-            '20a8a8f2d6f9895fb983125e58ad17a9e6509a1e616b58cabab7efbfde4a356c')
+sha256sums=('337033aba41e9a47cac81fc8ed79fb568295b1a592b5985d5450540d37405be7'
+            '8e918cb227da548a9c4b184c487f4cf416b7d6fe5e191e7fc34985acb8044275')
 
 prepare() {
     cd "$srcdir/hath-rust"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target host-tuple
 }
 build() {
     cd "$srcdir/hath-rust"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export JEMALLOC_OVERRIDE=/usr/lib/libjemalloc.so
     cargo build --frozen --release --all-features
+}
+check() {
+    cd "$srcdir/hath-rust"
+    export RUSTUP_TOOLCHAIN=stable
+    export JEMALLOC_OVERRIDE=/usr/lib/libjemalloc.so
+    cargo test --frozen --all-features
 }
 package() {
     cd "$srcdir/hath-rust"
