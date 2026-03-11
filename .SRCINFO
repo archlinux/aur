@@ -1,0 +1,19 @@
+pkgbase = weeb-gui
+	pkgdesc = Tauri GUI for Weeb CLI
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/ewgsta/weeb-gui
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = rust
+	makedepends = cargo
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = openssl
+	depends = librsvg
+	source = weeb-gui-0.1.1.tar.gz::https://github.com/ewgsta/weeb-gui/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = weeb-gui
