@@ -2,7 +2,7 @@
 # Contributor: wszqkzqk
 
 pkgname=wechat-bin
-pkgver=4.1.0.16
+pkgver=4.1.1.4
 pkgrel=1
 epoch=
 pkgdesc="微信是一种生活方式. This is a repackage of WeChat."
@@ -82,9 +82,9 @@ source_loong64=(
 )
 
 
-md5sums_x86_64=('SKIP')
-md5sums_aarch64=('SKIP')
-md5sums_loong64=('SKIP')
+md5sums_x86_64=('31c066fb28f18523e81edb019b9f787f')
+md5sums_aarch64=('eaf19cbd3ba510434ff25b5a3bc1ea78')
+md5sums_loong64=('e23a3d9f5fb3c90f3708ac4b75bebc52')
 
 function pkgver() {
 	tar -xf control.tar.xz ./control
