@@ -9,8 +9,8 @@ url="https://github.com/evalf/${_base}"
 license=(MIT)
 depends=(python-typing_extensions)
 makedepends=(python-build python-installer python-setuptools python-wheel)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('316a5784f23165b10383e354b9f798bbec4cdc532c49db068af5c418df865e2ddb64a51e87216f0389e66118d58e34d7c583b6ff4a5b95a8c03e4c6b0f71a845')
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('ea392dcaef51156743b46a0cef712b65da37a20891a1a3a8b26625511d95849fa9aeea2652601ff48522cfdc11dc7fc3d84aa4f2a60758035b218e2cf4f3c18d')
 
 build() {
   cd ${_base}-${pkgver}

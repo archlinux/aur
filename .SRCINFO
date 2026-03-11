@@ -10,7 +10,7 @@ pkgbase = python-treelog
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python-typing_extensions
-	source = treelog-1.0.tar.gz::https://github.com/evalf/treelog/archive/v1.0.tar.gz
-	sha512sums = 316a5784f23165b10383e354b9f798bbec4cdc532c49db068af5c418df865e2ddb64a51e87216f0389e66118d58e34d7c583b6ff4a5b95a8c03e4c6b0f71a845
+	source = https://pypi.org/packages/source/t/treelog/treelog-1.0.tar.gz
+	sha512sums = ea392dcaef51156743b46a0cef712b65da37a20891a1a3a8b26625511d95849fa9aeea2652601ff48522cfdc11dc7fc3d84aa4f2a60758035b218e2cf4f3c18d
 
 pkgname = python-treelog
