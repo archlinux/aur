@@ -14,19 +14,20 @@ pkgdesc="GitHub Copilot CLI brings the power of Copilot coding agent directly to
 url="https://github.com/github/copilot-cli"
 _urlraw="https://raw.githubusercontent.com/github/copilot-cli/v${pkgver}"
 
+arch=("x86_64")
+
+license=("LicenseRef-GitHub-Copilot")
+
 conflicts=("${pkgname%%-cli}" "${pkgname}-legacy")
 depends=("glibc" "gcc-libs" "nodejs" "glib2" "libsecret")
 replaces=("${pkgname%%-cli}")
 makedepends=("npm" "jq")
 provides=("${_pkgexec}")
 
-arch=("x86_64")
 options=(!strip emptydirs staticlibs zipman)
 
-license=("LicenseRef-GitHub-Copilot")
-
 source=("https://registry.npmjs.org/${_npmmodule}/-/copilot-${pkgver}.tgz"
-				"copilot-${pkgver}-changelog.md::https://raw.githubusercontent.com/github/copilot-cli/refs/tags/v${pkgver}/changelog.md")
+		"CHANGELOG-${pkgver}.md::${_urlraw}/changelog.md")
 noextract=("copilot-${pkgver}.tgz")
 
 b2sums=('93e09ba159e8f7bf7ada4464f14868aa8d3c78faf453c206d6ff7a51a7918dfa17330c759da9cb8b499dbba00e8650669139d84b346183ab583e6d55bbb7a69f'
@@ -66,8 +67,8 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
 	ln -sf "/usr/lib/node_modules/${_npmmodule}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	
-	msg2 "Install changelog file"
-	install -Dm755 "$srcdir/copilot-${pkgver}-changelog.md" "${pkgdir}/usr/share/doc/${pkgname}/changelog.md"
+	msg2 "Install CHANGELOG file"
+	install -Dm755 "$srcdir/copilot-${pkgver}-changelog.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 
 	msg2 "Install LICENSE file"
 	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"

@@ -22,7 +22,7 @@ pkgbase = github-copilot-cli
 	options = staticlibs
 	options = zipman
 	source = https://registry.npmjs.org/@github/copilot/-/copilot-1.0.4.tgz
-	source = copilot-1.0.4-changelog.md::https://raw.githubusercontent.com/github/copilot-cli/refs/tags/v1.0.4/changelog.md
+	source = CHANGELOG-1.0.4.md::https://raw.githubusercontent.com/github/copilot-cli/v1.0.4/changelog.md
 	b2sums = 93e09ba159e8f7bf7ada4464f14868aa8d3c78faf453c206d6ff7a51a7918dfa17330c759da9cb8b499dbba00e8650669139d84b346183ab583e6d55bbb7a69f
 	b2sums = c69de730d10faa8d77110ca45dda1afbb9bfedac615a16554b0f36e8b3aa4c759312b5f2aba0052f1d2b67b39661b05bcd026472d3171637560860cab1efefd6
 
