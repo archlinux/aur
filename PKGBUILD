@@ -1,5 +1,5 @@
 pkgname=codex-monitor-autoup-git
-pkgver=0.7.61.r1.ga70b91a
+pkgver=0.7.62.r1.gff552b7
 pkgrel=1
 pkgdesc="Tauri desktop app for orchestrating Codex agents across local workspaces"
 arch=('x86_64')
