@@ -1,0 +1,4 @@
+pkg
+src
+hermes-agent-git-*
+*.tar.zst
