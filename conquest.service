@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/usr/share/conquest/bin/server -p /etc/conquest/default.toml
+WorkingDirectory=/usr/share/conquest/
 Restart=always
 RestartSec=5s
 User=root
