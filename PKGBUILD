@@ -83,8 +83,8 @@ check() {
 
 package_hyperqueue-git() {
   depends=(
-    gcc-libs
     glibc
+    libgcc
   )
   conflicts=(hyperqueue)
   provides=(hyperqueue)
@@ -106,9 +106,9 @@ package_hyperqueue-git() {
 package_python-hyperqueue-git() {
   pkgdesc+=" - Python bindings"
   depends=(
-    gcc-libs
     glibc
     hyperqueue
+    libgcc
     # https://github.com/It4innovations/hyperqueue/blob/main/crates/pyhq/pyproject.toml
     python
     python-cloudpickle

@@ -26,16 +26,16 @@ pkgbase = hyperqueue-git
 	b2sums = SKIP
 
 pkgname = hyperqueue-git
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	provides = hyperqueue
 	conflicts = hyperqueue
 
 pkgname = python-hyperqueue-git
 	pkgdesc = Scheduler for sub-node tasks for HPC systems with batch scheduling - Python bindings
-	depends = gcc-libs
 	depends = glibc
 	depends = hyperqueue
+	depends = libgcc
 	depends = python
 	depends = python-cloudpickle
 	depends = python-tqdm
