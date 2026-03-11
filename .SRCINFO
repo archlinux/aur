@@ -1,9 +1,10 @@
 pkgbase = mendingwall
 	pkgdesc = Fix issues when hopping between multiple desktop environments
 	pkgver = 0.3.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mendingwall.indii.org
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = blueprint-compiler
 	makedepends = meson

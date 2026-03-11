@@ -1,9 +1,9 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mendingwall
 pkgver=0.3.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Fix issues when hopping between multiple desktop environments"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://mendingwall.indii.org"
 license=('GPL-3.0-or-later')
 depends=(
