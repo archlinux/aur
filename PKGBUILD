@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Aburady <accounts@aburady.com>
 pkgname=plezy
-pkgver=1.25.1
+pkgver=1.26.1
 pkgrel=1
 pkgdesc="A beautiful Plex media server client built with Flutter"
 arch=('x86_64' 'aarch64')
@@ -26,7 +26,7 @@ makedepends=(
   'unzip'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/edde746/plezy/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('4eb5e15687b57590081a4ce2319db18dcc5f1d5a3b065a2f127af8405c39b962')
+sha256sums=('b59811c37080b935f643222ebdab74f4158e547d632295b97e9fc1e7210a09a4')
 
 prepare() {
   cd "$pkgname-$pkgver"
