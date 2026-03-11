@@ -1,6 +1,6 @@
 pkgbase = sonami-gtk-bin
 	pkgdesc = A Tidal music player for GNOME, built with GTK4 and Adwaita
-	pkgver = 1.5.6
+	pkgver = 1.5.7
 	pkgrel = 1
 	url = https://github.com/RayZ3R0/sonami-gtk
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = sonami-gtk-bin
 	provides = sonami
 	conflicts = sonami
 	conflicts = sonami-git
-	source = sonami-gtk-bin-1.5.6.tar.gz::https://github.com/RayZ3R0/sonami-gtk/releases/download/v1.5.6/sonami-gtk-v1.5.6-linux-x86_64.tar.gz
-	sha256sums = 6cd53dab6e429fbd5afae35ab88d4510f190e60f022434cf3cdd481b1f47a261
+	source = sonami-gtk-bin-1.5.7.tar.gz::https://github.com/RayZ3R0/sonami-gtk/releases/download/v1.5.7/sonami-gtk-v1.5.7-linux-x86_64.tar.gz
+	sha256sums = 7569a1b8aafe65ebb396bbb3bf4cb36f208c4264a4965a445a0045229a99eda0
 
 pkgname = sonami-gtk-bin
