@@ -1,16 +1,17 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=acceptarium-git
-pkgver=0.0.0.r69.ge236535
+pkgver=0.0.0.r108.g5fbffcd
 pkgrel=1
 pkgdesc='CLI tool to facilitate digitized receipt handling in plain text accounting workflows'
 arch=(x86_64)
 url="https://codeberg.org/plaintextaccounting/${pkgname%-git}"
 license=(AGPL-3.0-only)
-depends=(gcc-libs # libgcc_s.so
-         git
+depends=(git
          git-annex
          glibc # libc.so libm.so
+         libgcc libgcc_s.so
+         libgit2 libgit2.so
          zlib libz.so
          zsh)
 makedepends=(cargo
@@ -44,6 +45,7 @@ _srcenv() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	export CARGO_FEATURE_FLAGS==--offline
+	export LIBGIT2_NO_VENDOR=1
 	CFLAGS+=' -ffat-lto-objects'
 }
 
