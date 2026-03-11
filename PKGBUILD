@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs')
 provides=("foolhammer-mod-manager-bin")
 source_x86_64=("${url}/releases/download/v${pkgver}/Foolhammer.Mod.Manager_${pkgver}_amd64.deb")
-sha256sums_x86_64=('91713818de9a228cf653267435b05b69e2690406754dd7a31cd5c0fa7a6fa091')
+sha256sums_x86_64=('923089869eb35280c78b3c5f5b3e76367f06d45d70d94245770578cafe8229fb')
 
 package() {
   tar -xvf data.tar.gz -C "${pkgdir}"
