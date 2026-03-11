@@ -1,25 +1,38 @@
 pkgbase = perl-app-cmd
 	pkgdesc = write command line apps with less suffering
-	pkgver = 0.337
+	pkgver = 0.339
 	pkgrel = 1
-	url = https://metacpan.org/release/App-Cmd
+	url = https://metacpan.org/release/RJBS/App-Cmd-0.339
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	checkdepends = perl-test-fatal>=0
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-data-dumper
+	checkdepends = perl-extutils-makemaker
+	checkdepends = perl-ipc-cmd
+	checkdepends = perl-lib
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker>=6.78
 	depends = perl-capture-tiny>=0.13
+	depends = perl-carp
 	depends = perl-class-load>=0.06
-	depends = perl-data-optlist>=0
+	depends = perl-constant
+	depends = perl-data-optlist
+	depends = perl-experimental
 	depends = perl-getopt-long-descriptive>=0.116
-	depends = perl-io-tiecombine>=0
-	depends = perl-module-pluggable>=0
-	depends = perl-string-rewriteprefix>=0
-	depends = perl-sub-exporter>=0
-	depends = perl-sub-install>=0
-	depends = perl>=5.006
+	depends = perl-getopt-long>=2.39
+	depends = perl-io-tiecombine
+	depends = perl-module-pluggable
+	depends = perl-parent
+	depends = perl-pod-usage>=1.61
+	depends = perl-string-rewriteprefix
+	depends = perl-sub-exporter
+	depends = perl-sub-install
+	depends = perl-text-abbrev
+	depends = perl>=5.20.0
+	optdepends = perl-cpan-meta
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/App-Cmd-0.337.tar.gz
-	md5sums = a9944e8d2f4c57c4c8ee1eaa9507065c
-	sha512sums = e06171aca8a3d318927e0ecbba97e6376c1ecd1c756686fc1a882305f4fd74f251ae8c585596ee12c3adf76160059184c4f765da4b9389b3f092dd3088a178b2
+	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/App-Cmd-0.339.tar.gz
+	sha256sums = 4508c7e533a1fd8a222261461834c1f87b6331c6b2f9932756a22bd2c3ecda51
 
 pkgname = perl-app-cmd

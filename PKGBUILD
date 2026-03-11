@@ -1,52 +1,74 @@
-# CPAN Name  : App-Cmd
-# Maintainer : camb
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: camb
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-app-cmd'
-pkgver='0.337'
-pkgrel='1'
-pkgdesc="write command line apps with less suffering"
+_dist=App-Cmd
+_ver=0.339
+pkgname=perl-${_dist,,}
+pkgver=${_ver#v}
+pkgrel=1
+pkgdesc='write command line apps with less suffering'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/RJBS/$_dist-$_ver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-capture-tiny>=0.13'
+    'perl-carp'
+    'perl-class-load>=0.06'
+    'perl-constant'
+    'perl-data-optlist'
+    'perl-experimental'
+    'perl-getopt-long-descriptive>=0.116'
+    'perl-getopt-long>=2.39'
+    'perl-io-tiecombine'
+    'perl-module-pluggable'
+    'perl-parent'
+    'perl-pod-usage>=1.61'
+    'perl-string-rewriteprefix'
+    'perl-sub-exporter'
+    'perl-sub-install'
+    'perl-text-abbrev'
+    'perl>=5.20.0'
+)
+makedepends=('perl-extutils-makemaker>=6.78')
+checkdepends=(
+    'perl-data-dumper'
+    'perl-extutils-makemaker'
+    'perl-ipc-cmd'
+    'perl-lib'
+    'perl-pathtools'
+    'perl-test-fatal'
+    'perl-test-simple'
+)
+optdepends=('perl-cpan-meta')
 options=('!emptydirs')
-depends=('perl-capture-tiny>=0.13' 'perl-class-load>=0.06' 'perl-data-optlist>=0' 'perl-getopt-long-descriptive>=0.116' 'perl-io-tiecombine>=0' 'perl-module-pluggable>=0' 'perl-string-rewriteprefix>=0' 'perl-sub-exporter>=0' 'perl-sub-install>=0' 'perl>=5.006')
-makedepends=()
-checkdepends=('perl-test-fatal>=0')
-url='https://metacpan.org/release/App-Cmd'
-source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/App-Cmd-$pkgver.tar.gz")
-md5sums=('a9944e8d2f4c57c4c8ee1eaa9507065c')
-sha512sums=('e06171aca8a3d318927e0ecbba97e6376c1ecd1c756686fc1a882305f4fd74f251ae8c585596ee12c3adf76160059184c4f765da4b9389b3f092dd3088a178b2')
-_distdir="App-Cmd-$pkgver"
+source=("https://cpan.metacpan.org/authors/id/R/RJ/RJBS/$_dist-$_ver.tar.gz")
+sha256sums=('4508c7e533a1fd8a222261461834c1f87b6331c6b2f9932756a22bd2c3ecda51')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$_ver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$_ver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
-}
+package()
+{
+    cd "$_dist-$_ver"
 
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}
