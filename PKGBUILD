@@ -9,6 +9,7 @@ url="https://github.com/neosubhamoy/neodlp"
 license=('MIT')
 depends=('aria2' 'deno' 'yt-dlp' 'cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon-theme' 'libsoup' 'pango' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'ffmpeg')
 makedepends=('curl' 'jq')
+conflicts=('neodlp')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 
