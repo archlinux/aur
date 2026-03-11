@@ -1,6 +1,6 @@
 pkgbase = niri-autostart
 	pkgdesc = Declarative autostart and layout restoration for the niri Wayland compositor
-	pkgver = 0.1.0
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/partanskiy/niri-autostart
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = niri-autostart
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	optdepends = niri: run niri-autostart inside the niri compositor
-	source = niri-autostart-0.1.0.tar.gz::https://github.com/partanskiy/niri-autostart/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = b455f7b6316286e58e307d952789a964117c465a8ca2dbd43cbd4763f2a5ad9b
+	source = niri-autostart-0.1.10.tar.gz::https://github.com/partanskiy/niri-autostart/archive/refs/tags/v0.1.10.tar.gz
+	sha256sums = c1cd94e631e59178d2134334885172e7224421bcb1c1637d23361a36828cc4ab
 
 pkgname = niri-autostart
