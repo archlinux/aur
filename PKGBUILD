@@ -1,5 +1,5 @@
 pkgname=msvc-wine-git
-pkgver=17.14.r22
+pkgver=18.4.0
 pkgrel=1
 pkgdesc='MSVC compiler with CMake toolchains. Compiler work in Wine64'
 arch=('x86_64')
@@ -10,7 +10,7 @@ makedepends=(git sed python python-simplejson python-six msitools)
 optdepends=(
 	'samba: Need to generate debug symbols (Debug and RelWithDebInfo build types)'
 )
-provides=(msvc-x86-cmake msvc-x64-cmake msvc-arm-cmake msvc-arm64-cmake)
+provides=(msvc-x86-cmake msvc-x64-cmake msvc-arm64-cmake)
 conflicts=(msvc-wine)
 source=('git+https://github.com/mstorsjo/msvc-wine.git'
 		'msvc-cmake.sh'
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
 			'c7a10eda1db4b6ef346d64e5e102b3a62e96b5641b79a19e6e27cd8536f79307')
 options=('!strip' 'libtool' 'staticlibs' 'emptydirs')
 
-_architectures="x86 x64 arm arm64"
+_architectures="x86 x64 arm64"
 
 pkgver() {
 	VS_VERSION=`python msvc-wine/vsdownload.py --print-version | grep "Loaded installer manifest for "`
@@ -39,7 +39,6 @@ prepare() {
 	declare -A _cmake_architectures
 	_cmake_architectures["x86"]="i686"
 	_cmake_architectures["x64"]="x86_64"
-	_cmake_architectures["arm"]="armv7a"
 	_cmake_architectures["arm64"]="aarch64"
 
 	for _arch in ${_architectures}; do
