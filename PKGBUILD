@@ -10,7 +10,7 @@ depends=(
     'python'
     'python-pyqt6'
     'libnotify'
-    'adguard-cli'
+    'adguard-cli-bin'
 )
 optdepends=(
     'qt6-svg: SVG icon theme support'
