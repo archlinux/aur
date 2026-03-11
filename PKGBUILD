@@ -12,7 +12,7 @@ source=("git+https://github.com/HaruNashii/Icebar.git")
 options=('!debug')
 sha256sums=('SKIP')
 provides=('icebar')
-conflicts=('icebar')
+conflicts=('icebar-git')
 
 pkgver() {
   cd "$srcdir/Icebar"
