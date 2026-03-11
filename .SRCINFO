@@ -1,9 +1,9 @@
 pkgbase = perl-math-gmp
 	pkgdesc = High speed arbitrary size integer math
 	pkgver = 2.25
-	pkgrel = 1
-	url = https://metacpan.org/dist/Math-GMP
-	arch = any
+	pkgrel = 2
+	url = https://metacpan.org/release/SHLOMIF/Math-GMP-2.25
+	arch = x86_64
 	license = LGPL-2.0-or-later
 	checkdepends = perl-data-dumper
 	checkdepends = perl-file-temp
