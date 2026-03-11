@@ -1,9 +1,9 @@
 pkgbase = perl-net-ssh-perl
-	pkgdesc = Perl client interface to SSH
+	pkgdesc = Perl client Interface to SSH
 	pkgver = 2.144
-	pkgrel = 1
-	url = https://metacpan.org/dist/Net-SSH-Perl
-	arch = any
+	pkgrel = 2
+	url = https://metacpan.org/release/BDFOY/Net-SSH-Perl-2.144
+	arch = x86_64
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-test-simple
 	makedepends = perl-extutils-makemaker>=6.64
