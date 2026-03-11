@@ -3,7 +3,7 @@ Description=Mouse button debounce service
 After=systemd-udevd.service
 
 [Service]
-ExecStart=/usr/local/bin/mouse-debounce --config /etc/mouse-debounce/config.toml
+ExecStart=/usr/bin/mouse-debounce --config /etc/mouse-debounce/config.toml
 Restart=on-failure
 RestartSec=2
 
