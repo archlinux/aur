@@ -2,7 +2,7 @@
 
 _pkgname="vdens"
 pkgname="$_pkgname-git"
-pkgver=0.2.r9.bd3228a
+pkgver=0.3.r0.1031604
 pkgrel=1
 
 pkgdesc="Create User Namespaces connected to VDE networks."
