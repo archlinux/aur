@@ -12,9 +12,9 @@ pkgbase = fafarunner-bin
 	provides = fafarunner
 	conflicts = fafarunner
 	options = !debug
-	source_x86_64 = https://github.com/fafarunner/fafarunner/releases/download/v2.6.1/fafarunner-2.7.0-linux-amd64.deb
+	source_x86_64 = https://github.com/fafarunner/fafarunner/releases/download/v2.7.0/fafarunner-2.7.0-linux-amd64.deb
 	sha256sums_x86_64 = ced82a26c5802345e3e038d56300638f242c91794a01065764d1208c2958a3ea
-	source_aarch64 = https://github.com/fafarunner/fafarunner/releases/download/v2.6.1/fafarunner-2.7.0-linux-aarch64.deb
+	source_aarch64 = https://github.com/fafarunner/fafarunner/releases/download/v2.7.0/fafarunner-2.7.0-linux-aarch64.deb
 	sha256sums_aarch64 = 913a43be2efdb0da2c26bd4d4abe4db50b29b75c0ca94c324597df9cbce3f354
 
 pkgname = fafarunner-bin
