@@ -1,6 +1,6 @@
 pkgbase = walker
 	pkgdesc = wayland application runner
-	pkgver = 2.15.1
+	pkgver = 2.15.2
 	pkgrel = 1
 	url = https://github.com/abenz1267/walker
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = walker
 	depends = cairo
 	provides = walker
 	conflicts = walker
-	source = https://github.com/abenz1267/walker/archive/refs/tags/v2.15.1.tar.gz
-	sha256sums = f8ef402ecda7ebed17628f21da8b2a738d7f3b18c2e0215ce54fb0f82a1cbb70
+	source = https://github.com/abenz1267/walker/archive/refs/tags/v2.15.2.tar.gz
+	sha256sums = 2d7ea53691d48b60ef7386373a8ea51987117de9eba7d317d5682aad0932dbaa
 
 pkgname = walker
