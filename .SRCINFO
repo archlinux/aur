@@ -1,6 +1,6 @@
 pkgbase = python-ext4
 	pkgdesc = Library for read only interactions with an ext4 filesystem
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://github.com/Eeems/python-ext4
 	arch = any
@@ -10,13 +10,13 @@ pkgbase = python-ext4
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/e/ext4/ext4-1.2.3.tar.gz
-	source = 1.2.3-test-image.sh::https://github.com/Eeems/python-ext4/raw/refs/tags/v1.2.3/_test_image.sh
-	source = 1.2.3-test.py::https://github.com/Eeems/python-ext4/raw/refs/tags/v1.2.3/test.py
+	source = https://files.pythonhosted.org/packages/source/e/ext4/ext4-1.2.4.tar.gz
+	source = 1.2.4-test-image.sh::https://github.com/Eeems/python-ext4/raw/refs/tags/v1.2.4/_test_image.sh
+	source = 1.2.4-test.py::https://github.com/Eeems/python-ext4/raw/refs/tags/v1.2.4/test.py
 	source = test.txt
-	md5sums = 98c1f1b55a924768dd5bf2dba27dcacd
-	md5sums = 8760a73d1a26816dd22f12721ea3a343
-	md5sums = a2c7e615fe57ba765d9b46b91581110a
+	md5sums = 8b0ca208417e567a8d85fb46d2a13b51
+	md5sums = 59d6ffdbf4443985e64e47b2a86b66c7
+	md5sums = 6920bea7d9a491a0a554c14f05c10be2
 	md5sums = 8f7fa83c2cc8ea6e90fe94b1efd1a83a
 
 pkgname = python-ext4
