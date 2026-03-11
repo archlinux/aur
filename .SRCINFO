@@ -3,6 +3,7 @@ pkgbase = fcitx5-laren
 	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/mmaher88/laren
+	install = fcitx5-laren.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later

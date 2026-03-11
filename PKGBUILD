@@ -7,6 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/mmaher88/laren"
 license=('GPL-3.0-or-later')
 depends=('fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt')
+install=fcitx5-laren.install
 makedepends=('cmake' 'extra-cmake-modules' 'fcitx5')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('6cb4ec1f339411293c0002f0bfa59a379bd9eb244a300bcf472d578d71360272')
