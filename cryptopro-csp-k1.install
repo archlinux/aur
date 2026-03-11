@@ -274,7 +274,7 @@ post_install() {
             fi;
         done
         if test ! -z "$search_dirs"; then
-            folder=`find -L $search_dirs -name "*ccid.bundle"`
+            folder=`find -L $search_dirs -name "*-ccid.bundle"`
             if test ! -z "$folder"; then
                 pList_files=`find -L $folder -name "Info.plist"`
                 if test ! -z "$pList_files"; then
@@ -622,24 +622,6 @@ post_install() {
     [ -d /usr/lib/browser-plugins ] && cp -rvf /opt/cprocsp/lib/amd64/libnpcades.so.2.0.0 /usr/lib/browser-plugins/libnpcades.so
     [ -d /usr/lib64/browser-plugins ] && cp -rvf /opt/cprocsp/lib/amd64/libnpcades.so.2.0.0 /usr/lib64/browser-plugins/libnpcades.so
     [ -d /usr/lib64 ] && mkdir -p /usr/lib64/mozilla/native-messaging-hosts/ && cp /usr/lib/mozilla/native-messaging-hosts/ru.cryptopro.nmcades.json /usr/lib64/mozilla/native-messaging-hosts/
-
-    #if we have clean CSP install, users will not have my.sto. Plugin can open only existed stores. Create empty stores for all users with id above 1000
-    USERNAMES=( `cat /etc/passwd | cut -d ":" -f 1` )
-    USERIDS=( `cat /etc/passwd | cut -d ":" -f 3` )
-    USERGROUPS=( `cat /etc/passwd | cut -d ":" -f 4` )
-    total=${#USERNAMES[*]}
-    for (( i=0; i<=$(( $total -1 )); i++ ))
-    do
-        if (( ${USERIDS[$i]}>=1000 )) && (( ${USERIDS[$i]}<65000 )) ; then
-            if [[ ! -f /var/opt/cprocsp/users/${USERNAMES[$i]}/stores/my.sto ]]; then
-                mkdir -p /var/opt/cprocsp/users/${USERNAMES[$i]}/stores
-                touch /var/opt/cprocsp/users/${USERNAMES[$i]}/stores/my.sto
-                chmod -R 744 /var/opt/cprocsp/users/${USERNAMES[$i]}
-                chown -R ${USERNAMES[$i]} /var/opt/cprocsp/users/${USERNAMES[$i]}
-                chgrp -R ${USERGROUPS[$i]} /var/opt/cprocsp/users/${USERNAMES[$i]}
-            fi
-        fi
-    done
 
     echo "Enable pcscd daemon for smart card support (for example etoken or rutoken):"
     echo systemctl enable --now pcscd
