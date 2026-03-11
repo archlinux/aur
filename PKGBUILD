@@ -9,23 +9,28 @@ pkgdesc="GitHub Copilot CLI brings the power of Copilot coding agent directly to
 
 pkgver=1.0.4
 pkgrel=1
+
 arch=('x86_64' 'aarch64')
+
+license=("LicenseRef-GitHub-Copilot")
+
 url="https://github.com/github/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/github/${_pkgname}/v${pkgver}"
 
-license=("LicenseRef-GitHub-Copilot")
 provides=("${_appname}")
 conflicts=("${pkgname%%-bin}" "${pkgname%%-cli-bin}")
 depends=('glibc' 'libgcc' 'nodejs' 'glib2' 'libsecret')
+
 options=(!strip)
+
 source=("README-${pkgver}.md::${_urlraw}/README.md"
-		"LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
-		"copilot-${pkgver}-changelog.md::${_urlraw}/changelog.md")
+		"CHANGELOG-${pkgver}.md::${_urlraw}/changelog.md"
+		"LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_appname}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/v${pkgver}/${_appname}-${_barch[1]}.tar.gz")
 sha256sums=('33657f2e7383f2167b47d5f8c549a6071905a5c93d5d67d17e5c5399f126f07b'
-            '1fbd0dcc55c66738b1b591632132c927de20c8443dff1d55b4851e378883e402'
-            '7773e5499aab1fef564b8fccb7c33222bb8b7f8542c3e33e796e880ea48308b2')
+            '7773e5499aab1fef564b8fccb7c33222bb8b7f8542c3e33e796e880ea48308b2'
+            '1fbd0dcc55c66738b1b591632132c927de20c8443dff1d55b4851e378883e402')
 sha256sums_x86_64=('c5990f9b02ae6a40c1f3cee1702741645deec10221ae5f5aa3813a10e8382670')
 sha256sums_aarch64=('b2cc3c86a70f5a436c1d3ad8824199ac4f1fb79354eabba438489d63ad0539f9')
 
@@ -36,7 +41,8 @@ package() {
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "copilot-${pkgver}-changelog.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+
 	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "copilot-${pkgver}-changelog.md" "${pkgdir}/usr/share/doc/${pkgname}/changelog.md"
 }
 
