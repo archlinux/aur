@@ -1,0 +1,17 @@
+pkgbase = xback
+	pkgdesc = An X11 wallpaper utility that just sucks less
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/kantiankant/Xback
+	arch = x86_64
+	license = GPL3
+	makedepends = pkgconf
+	depends = libx11
+	depends = libxrandr
+	depends = libpng
+	depends = libjpeg
+	depends = libwebp
+	source = main.c::https://raw.githubusercontent.com/kantiankant/Xback/main/main.c
+	sha256sums = 043efe75851838f61b819d1e0d9cacd6e09fba1222d79e59fbb64db07ced508c
+
+pkgname = xback
