@@ -6,7 +6,7 @@ _pkgauthor=Mjoyufull
 _pkgname=fsel
 
 pkgname=${_pkgname,,}
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 pkgdesc="Fast TUI app launcher and fuzzy finder for GNU/Linux and *BSD"
 
@@ -19,7 +19,7 @@ provides=("${_execname}")
 makedepends=('rust')
 
 source=("${pkgname}-${pkgver}.tgz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b7318cd099dbf62c705b24c50f5bd8b79319c5c417ad38d71dbabf0cf3c3243f')
+sha256sums=('5a71449e89a0612d940e325fb26023bb298c82ff12685ce83f695ed54e7a9a16')
 
 build() {
 	cd ${srcdir}/${_pkgname}-${pkgver}/ || exit 1
