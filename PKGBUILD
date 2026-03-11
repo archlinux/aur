@@ -1,5 +1,5 @@
 pkgname=niri-autostart
-pkgver=0.0.0
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Declarative autostart and layout restoration for the niri Wayland compositor'
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ license=('GPL-3.0-or-later')
 optdepends=('niri: run niri-autostart inside the niri compositor')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('b455f7b6316286e58e307d952789a964117c465a8ca2dbd43cbd4763f2a5ad9b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
