@@ -7,7 +7,7 @@ pkgname=(
   libcheese
 )
 pkgver=44.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Take photos and videos with your webcam, with fun graphical effects"
 url="https://wiki.gnome.org/Apps/Cheese"
 arch=(x86_64)
@@ -57,11 +57,7 @@ prepare() {
 }
 
 build() {
-  local meson_options=(
-    -D tests=true
-  )
-
-  arch-meson cheese build "${meson_options[@]}"
+  arch-meson cheese build
   meson compile -C build
 }
 
