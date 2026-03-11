@@ -4,8 +4,8 @@
 #https://comate-ide.bj.bcebos.com/updates/stable/linux/x64/latest.json
 pkgname=comate-bin
 _pkgname=Comate
-pkgver=1.0.1
-_version=9c53ee7c10c1b1de42be91ec3f56eb3ea1c2c42d-242830984
+pkgver=1.1.0
+_version=6cabb4975e6929072733811281e2dba47f448ebe-243780021
 _electronversion=39
 pkgrel=1
 pkgdesc="Code as you like, one step ahead, and understand your intelligent code assistant better.(Prebuilt version)"
@@ -42,12 +42,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::https://comate-ide.cdn.bcebos.com/download/stable/${_version}/${_pkgname}-linux-x64.tar.gz")
-sha256sums=('e82e3daf8a2e7c064662de62562afdc1a5a8e0c102fc22b1ad5e5d1b357241fa'
+sha256sums=('93abb9d0a92e17aa39161ef93d83caa68581e771986f9f0b04a6a3f6a1afa39a'
             '14807b90c15a2757d9713664db6a69aa4fab3568e53d84f27de2ab7c8ae85446'
             '0c8fee636da036e57fcde0385bdc698126c4b179de663ad315e8299d483abc9d'
             '787bf0078b80c66fa5b8191991700afd6e32e9f285cdb32f69791b8894c86fd5'
             'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
-sha256sums_x86_64=('eb522af5f0fb43adab2c25e142f094f117f30640d876d3088dc26134b122b6dc')
+sha256sums_x86_64=('f43e72bac32983e276dce81573757354e654922b98fd67fbfbf946e6caffd95b')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/${_pkgname}-linux-x64/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
@@ -66,6 +66,7 @@ prepare() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
     install -Dm755 "${srcdir}/${pkgname%-bin}.js" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    find "${srcdir}/${_pkgname}-linux-x64/resources/app" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
     if find "${srcdir}/${_pkgname}-linux-x64/resources/app" -mindepth 1 -maxdepth 1 -type d | read; then
         for _subdir in "${srcdir}/${_pkgname}-linux-x64/resources/app/"*; do
             if [ -d "${_subdir}" ]; then
