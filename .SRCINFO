@@ -1,0 +1,14 @@
+pkgbase = gosh-dl-cli
+	pkgdesc = Fast download manager with HTTP and BitTorrent support
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/goshitsarch-eng/gosh-dl-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = gosh-dl-cli-0.3.2.tar.gz::https://github.com/goshitsarch-eng/gosh-dl-cli/archive/refs/tags/v0.3.2.tar.gz
+	sha256sums = e16d4c7c2fbd695f2730785645164797a69b3f7d78a98339e67979a89c3072f6
+
+pkgname = gosh-dl-cli
