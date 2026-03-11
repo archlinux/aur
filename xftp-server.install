@@ -2,12 +2,12 @@ post_install() {
     systemd-sysusers xftp-server.conf 2>/dev/null || true
     systemd-tmpfiles --create xftp-server.conf 2>/dev/null || true
 
-    # Не перезаписываем конфиг если он уже существует (миграция с ручной установки)
+    # Не перезаписываем конфиг если он уже существует
     if [[ ! -f /etc/opt/simplex-xftp/file-server.ini ]]; then
-        mv /etc/opt/simplex-xftp/file-server.ini.pacnew \
+        mv /etc/opt/simplex-xftp/file-server.ini.new \
            /etc/opt/simplex-xftp/file-server.ini 2>/dev/null || true
     else
-        rm -f /etc/opt/simplex-xftp/file-server.ini.pacnew
+        rm -f /etc/opt/simplex-xftp/file-server.ini.new
     fi
 
     chown -R xftp:xftp /etc/opt/simplex-xftp/ 2>/dev/null || true

@@ -15,7 +15,6 @@ pkgbase = xftp-server
 	depends = openssl
 	optdepends = tor: Tor/onion address support
 	options = !debug
-	backup = etc/opt/simplex-xftp/file-server.ini
 	source = simplexmq-6.4.5.tar.gz::https://github.com/simplex-chat/simplexmq/archive/refs/tags/v6.4.5.tar.gz
 	source = xftp-server.service
 	source = xftp-server.sysusers

@@ -22,10 +22,9 @@ optdepends=(
     'tor: Tor/onion address support'
 )
 
-keywords=('simplex' 'simplex-chat' 'simplex-server' 'xftp' 'xftp-server')
+keywords=('simplex' 'simplex-chat' 'simplex-server' 'xftp' 'file-transfer' 'privacy')
 
 options=('!debug')
-backup=('etc/opt/simplex-xftp/file-server.ini')
 install=xftp-server.install
 
 source=(
@@ -83,6 +82,7 @@ package() {
     install -Dm644 "${srcdir}/xftp-server.tmpfiles" \
         "${pkgdir}/usr/lib/tmpfiles.d/xftp-server.conf"
 
+    # ini устанавливается в post_install только если файла ещё нет
     install -Dm640 "${srcdir}/xftp-server.ini" \
-        "${pkgdir}/etc/opt/simplex-xftp/file-server.ini"
+        "${pkgdir}/etc/opt/simplex-xftp/file-server.ini.new"
 }
