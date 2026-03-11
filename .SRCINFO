@@ -1,8 +1,9 @@
 pkgbase = breezy-desktop-gnome-git
 	pkgdesc = Breezy GNOME - XR desktop
 	pkgver = 2.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wheaney/breezy-desktop
+	install = hooks.install
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0

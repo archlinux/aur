@@ -3,11 +3,12 @@
 _pkgbase=breezy-desktop
 pkgname="${_pkgbase}"-gnome-git
 pkgver=2.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Breezy GNOME - XR desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/wheaney/breezy-desktop"
 license=('GPL-3.0')
+install=hooks.install
 makedepends=('ninja' 'meson' 'librsvg')
 depends=('gtk4' 'python' 'python-pydbus' 'python-yaml' 'python-gobject' 'gnome-shell>=45.0' 'xr-driver-git>=2.0.0' 'libadwaita' 'gst-python' 'gst-plugin-pipewire')
 source=("git+${url}#commit=0d53d10a43e0a8c307dadba5f18327bd75e2bdfb")
@@ -83,9 +84,10 @@ package() {
     install -Dm755 ${_pkgbase}/ui/build/data/com.xronlinux.BreezyDesktop.desktop "${pkgdir}"/usr/share/applications/com.xronlinux.BreezyDesktop.desktop
     sed -i '/Exec/c\Exec=env APPDIR=/usr/local/share BINDIR=/usr/bin breezydesktop --skip-verification' "${pkgdir}"/usr/share/applications/com.xronlinux.BreezyDesktop.desktop
 
-    install -Dm755 ${_pkgbase}/ui/data/icons/hicolor/com.xronlinux.BreezyDesktop_64.png "${pkgdir}"/usr/share/icons/hicolor/64x64/apps/com.xronlinux.BreezyDesktop.png
-    install -Dm755 ${_pkgbase}/ui/data/icons/hicolor/com.xronlinux.BreezyDesktop_128.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/com.xronlinux.BreezyDesktop.png
-    install -Dm755 ${_pkgbase}/ui/data/icons/hicolor/com.xronlinux.BreezyDesktop_256.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/com.xronlinux.BreezyDesktop.png
-    install -Dm755 ${_pkgbase}/ui/data/icons/hicolor/com.xronlinux.BreezyDesktop_1024.png "${pkgdir}"/usr/share/icons/hicolor/1024x1024/apps/com.xronlinux.BreezyDesktop.png
+    install -Dm644 ${_pkgbase}/ui/data/icons/hicolor/com.xronlinux.BreezyDesktop_64.png "${pkgdir}"/usr/share/icons/hicolor/64x64/apps/com.xronlinux.BreezyDesktop.png
+    install -Dm644 ${_pkgbase}/ui/data/icons/hicolor/com.xronlinux.BreezyDesktop_128.png "${pkgdir}"/usr/share/icons/hicolor/128x128/apps/com.xronlinux.BreezyDesktop.png
+    install -Dm644 ${_pkgbase}/ui/data/icons/hicolor/com.xronlinux.BreezyDesktop_256.png "${pkgdir}"/usr/share/icons/hicolor/256x256/apps/com.xronlinux.BreezyDesktop.png
+    install -Dm644 ${_pkgbase}/ui/data/icons/hicolor/com.xronlinux.BreezyDesktop_1024.png "${pkgdir}"/usr/share/icons/hicolor/1024x1024/apps/com.xronlinux.BreezyDesktop.png
+    install -Dm644 ${_pkgbase}/ui/data/icons/hicolor/scalable/apps/com.xronlinux.BreezyDesktop.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/com.xronlinux.BreezyDesktop.svg
 }
 
