@@ -1,6 +1,6 @@
 pkgbase = rtk
 	pkgdesc = CLI proxy that reduces LLM token consumption by 60-90% on common dev commands
-	pkgver = 0.28.0
+	pkgver = 0.28.2
 	pkgrel = 1
 	url = https://github.com/rtk-ai/rtk
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = rtk
 	provides = rtk
 	conflicts = rtk-bin
 	options = !lto
-	source = https://github.com/rtk-ai/rtk/archive/v0.28.0.tar.gz
-	sha256sums = ac6ccce24d5a6db952478a3cdc82098dfc0a208960233e883db7f4aae662d099
+	source = https://github.com/rtk-ai/rtk/archive/v0.28.2.tar.gz
+	sha256sums = ca19772378422756c5ed2212e228986cfc5e791695c5025317b58fa475d4c427
 
 pkgname = rtk
