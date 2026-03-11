@@ -3,24 +3,21 @@
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Contributor: Caleb Cushing <xenoterracide@gmail.com>
 
-_dist='Data-Dump-Streamer'
-pkgname='perl-data-dump-streamer'
-pkgver=2.42
-pkgrel=3
-pkgdesc='Accurately serialize a data structure as Perl code'
-arch=('any')
-url="https://metacpan.org/dist/$_dist"
+_dist=Data-Dump-Streamer
+_ver=2.42
+pkgname=perl-${_dist,,}
+pkgver=${_ver#v}
+pkgrel=4
+pkgdesc='Accurately serialize a data structure as Perl code.'
+arch=('x86_64')  # XS modules might depend on external libs, so manual inspection is advised.
+url=https://metacpan.org/release/YVES/$_dist-$_ver
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
-    'perl-algorithm-diff'
+    'perl'
     'perl-b-utils'
-    'perl-cpanel-json-xs'
     'perl-data-dumper'
     'perl-exporter'
     'perl-io'
-    'perl-io-compress'
-    'perl-mime-base64'
-    'perl-padwalker>=0.99'
     'perl-text-abbrev'
     'perl-text-balanced'
 )
@@ -35,13 +32,20 @@ makedepends=(
     'perl-text-abbrev'
     'perl>=5.6.0'
 )
+optdepends=(
+    'perl-algorithm-diff'
+    'perl-cpanel-json-xs'
+    'perl-io-compress'
+    'perl-mime-base64'
+    'perl-padwalker'
+)
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/Y/YV/YVES/$_dist-$pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/Y/YV/YVES/$_dist-$_ver.tar.gz")
 sha256sums=('47f6e51fb45ce7be561e01481add0c2e1c0cd85df4b9e212f3923cd3064d1cad')
 
 build()
 {
-    cd $_dist-$pkgver
+    cd "$_dist-$_ver"
 
     unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
     export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
@@ -52,7 +56,7 @@ build()
 
 check()
 {
-    cd $_dist-$pkgver
+    cd "$_dist-$_ver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
@@ -61,7 +65,7 @@ check()
 
 package()
 {
-    cd $_dist-$pkgver
+    cd "$_dist-$_ver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 

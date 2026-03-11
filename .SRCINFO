@@ -1,9 +1,9 @@
 pkgbase = perl-data-dump-streamer
-	pkgdesc = Accurately serialize a data structure as Perl code
+	pkgdesc = Accurately serialize a data structure as Perl code.
 	pkgver = 2.42
-	pkgrel = 3
-	url = https://metacpan.org/dist/Data-Dump-Streamer
-	arch = any
+	pkgrel = 4
+	url = https://metacpan.org/release/YVES/Data-Dump-Streamer-2.42
+	arch = x86_64
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	makedepends = perl-base
 	makedepends = perl-carp
@@ -14,17 +14,18 @@ pkgbase = perl-data-dump-streamer
 	makedepends = perl-test-simple
 	makedepends = perl-text-abbrev
 	makedepends = perl>=5.6.0
-	depends = perl-algorithm-diff
+	depends = perl
 	depends = perl-b-utils
-	depends = perl-cpanel-json-xs
 	depends = perl-data-dumper
 	depends = perl-exporter
 	depends = perl-io
-	depends = perl-io-compress
-	depends = perl-mime-base64
-	depends = perl-padwalker>=0.99
 	depends = perl-text-abbrev
 	depends = perl-text-balanced
+	optdepends = perl-algorithm-diff
+	optdepends = perl-cpanel-json-xs
+	optdepends = perl-io-compress
+	optdepends = perl-mime-base64
+	optdepends = perl-padwalker
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/Y/YV/YVES/Data-Dump-Streamer-2.42.tar.gz
 	sha256sums = 47f6e51fb45ce7be561e01481add0c2e1c0cd85df4b9e212f3923cd3064d1cad
