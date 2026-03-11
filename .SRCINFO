@@ -9,6 +9,6 @@ pkgbase = joy-browser
 	makedepends = nodejs
 	depends = electron
 	source = joy-browser-0.0.13.tar.gz::https://github.com/drpt78/joy-browser/archive/refs/tags/v0.0.13.tar.gz
-	sha256sums = b101971a8a598c2e0ffefef30421e39df3c49bcda00a3fd18c9de40c554d8614
+	sha256sums = 0ae8f458e5be578c7e00f5a2b2cd7c72827f97398cc6398e4b324efdbbfbb435
 
 pkgname = joy-browser
