@@ -1,8 +1,8 @@
 # Maintainer: RgeditV1 <angelmiguelparedes@gmail.com>
 
 pkgname=yt-dlp-linux-gui
-pkgver=1.0.3
-pkgrel=1
+pkgver=1.0.4
+pkgrel=2
 pkgdesc="A GUI for yt-dlp written in Python with CustomTkinter"
 arch=("x86_64")
 url="https://github.com/RgeditV1/yt-dlp-linux-gui"

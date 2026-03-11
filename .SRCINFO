@@ -1,12 +1,12 @@
 pkgbase = yt-dlp-linux-gui
 	pkgdesc = A GUI for yt-dlp written in Python with CustomTkinter
-	pkgver = 1.0.3
-	pkgrel = 1
+	pkgver = 1.0.4
+	pkgrel = 2
 	url = https://github.com/RgeditV1/yt-dlp-linux-gui
 	arch = x86_64
 	license = MIT
 	depends = tk
-	source = YTDLP-GUI-linux.zip::https://github.com/RgeditV1/yt-dlp-linux-gui/releases/download/v1.0.3/YTDLP-GUI-linux.zip
+	source = YTDLP-GUI-linux.zip::https://github.com/RgeditV1/yt-dlp-linux-gui/releases/download/v1.0.4/YTDLP-GUI-linux.zip
 	source = yt-dlp-linux-gui.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
