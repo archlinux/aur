@@ -11,10 +11,10 @@ index 09cfe02..d99428e 100644
 +recursive-include cecli/prompts *.yml
 +recursive-include cecli/tui *.tcss
 diff --git a/cecli/help.py b/cecli/help.py
-index d87e6aa..ba507ff 100755
+index 22ae6b0..5a93c2b 100755
 --- a/cecli/help.py
 +++ b/cecli/help.py
-@@ -15,16 +15,10 @@ warnings.simplefilter("ignore", category=FutureWarning)
+@@ -20,16 +20,10 @@ os.environ["TOKENIZERS_PARALLELISM"] = "true"
  
  
  async def install_help_extra(io):
@@ -34,10 +34,10 @@ index d87e6aa..ba507ff 100755
      return res
  
 diff --git a/cecli/models.py b/cecli/models.py
-index 3334776..e58dd84 100644
+index d680d7e..cd81430 100644
 --- a/cecli/models.py
 +++ b/cecli/models.py
-@@ -25,7 +25,7 @@ from cecli.helpers.model_providers import ModelProviderManager
+@@ -26,7 +26,7 @@ from cecli.helpers.nested import deep_merge
  from cecli.helpers.requests import model_request_parser
  from cecli.llm import litellm
  from cecli.sendchat import sanity_check_messages
@@ -46,7 +46,24 @@ index 3334776..e58dd84 100644
  
  RETRY_TIMEOUT = 60
  COPY_PASTE_PREFIX = "cp:"
-@@ -1232,16 +1232,9 @@ async def check_for_dependencies(io, model_name):
+@@ -956,7 +956,6 @@ class Model(ModelSettings):
+         max_tokens=None,
+         min_wait=0,
+         max_wait=2,
+-        override_kwargs={},
+     ):
+         if os.environ.get("CECLI_SANITY_CHECK_TURNS"):
+             sanity_check_messages(messages)
+@@ -1055,8 +1054,6 @@ class Model(ModelSettings):
+                     if random.random() < 0.25:
+                         await asyncio.sleep(random.uniform(min_wait, max_wait))
+ 
+-                if override_kwargs:
+-                    kwargs = deep_merge(kwargs, override_kwargs)
+                 res = await litellm.acompletion(**kwargs)
+                 return hash_object, res
+             except litellm.ContextWindowExceededError as err:
+@@ -1279,16 +1276,9 @@ async def check_for_dependencies(io, model_name):
          model_name: The name of the model to check dependencies for
      """
      if model_name.startswith("bedrock/"):
@@ -66,7 +83,7 @@ index 3334776..e58dd84 100644
  
  def get_chat_model_names():
 diff --git a/cecli/scrape.py b/cecli/scrape.py
-index 2e16c90..22963ec 100755
+index 0722e11..adb4790 100755
 --- a/cecli/scrape.py
 +++ b/cecli/scrape.py
 @@ -34,7 +34,7 @@ async def check_chromium():
@@ -83,7 +100,7 @@ index 2e16c90..22963ec 100755
      if has_playwright and has_chromium:
          return True
 -
--    pip_cmd = utils.get_pip_install(["cecli[playwright]"])
+-    pip_cmd = utils.get_pip_install(["cecli-dev[playwright]"])
 -    chromium_cmd = "-m playwright install --with-deps chromium"
 -    chromium_cmd = [sys.executable] + chromium_cmd.split()
 -
@@ -109,7 +126,7 @@ index 2e16c90..22963ec 100755
  
      io.tool_output(text)
 -    if not await io.confirm_ask("Install playwright?", default="y"):
-+    if not io.confirm_ask(f"Install {" and ".join(packages)}?", default="y"):
++    if not await io.confirm_ask(f"Install {" and ".join(packages)}?", default="y"):
          return
 -
 -    if not has_playwright:
@@ -139,10 +156,10 @@ index 2e16c90..22963ec 100755
                  self.playwright_available = False
                  self.print_error(str(e))
 diff --git a/cecli/utils.py b/cecli/utils.py
-index c0f8adf..f0753bb 100644
+index aac9b20..b4f2c50 100644
 --- a/cecli/utils.py
 +++ b/cecli/utils.py
-@@ -285,31 +285,10 @@ def split_chat_history_markdown(text, include_tool=False):
+@@ -286,31 +286,10 @@ def split_chat_history_markdown(text, include_tool=False):
      return messages
  
  
@@ -174,7 +191,7 @@ index c0f8adf..f0753bb 100644
      try:
          output = []
          process = subprocess.Popen(
-@@ -384,7 +363,7 @@ def touch_file(fname):
+@@ -385,7 +364,7 @@ def touch_file(fname):
          return False
  
  
@@ -183,7 +200,7 @@ index c0f8adf..f0753bb 100644
      if module:
          try:
              __import__(module)
-@@ -392,20 +371,24 @@ async def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_upda
+@@ -393,20 +372,24 @@ async def check_pip_install_extra(io, module, prompt, pip_install_cmd, self_upda
          except (ImportError, ModuleNotFoundError, RuntimeError):
              pass
  
@@ -220,16 +237,10 @@ index c0f8adf..f0753bb 100644
  
      success, output = run_install(cmd)
 diff --git a/cecli/versioncheck.py b/cecli/versioncheck.py
-index 05d13fe..1e29278 100644
+index 05d13fe..372b33b 100644
 --- a/cecli/versioncheck.py
 +++ b/cecli/versioncheck.py
-@@ -1,5 +1,4 @@
- import os
--import sys
- import time
- from pathlib import Path
- 
-@@ -17,12 +16,10 @@ async def install_from_main_branch(io):
+@@ -17,12 +17,10 @@ async def install_from_main_branch(io):
      """
      Install the latest version of cecli from the main branch of the GitHub repository.
      """
@@ -244,7 +255,7 @@ index 05d13fe..1e29278 100644
      )
  
  
-@@ -34,18 +31,12 @@ async def install_upgrade(io, latest_version=None):
+@@ -34,18 +32,12 @@ async def install_upgrade(io, latest_version=None):
          new_ver_text = f"Newer cecli version v{latest_version} is available."
      else:
          new_ver_text = "Install latest version of cecli?"
