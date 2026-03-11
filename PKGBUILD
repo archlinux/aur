@@ -10,7 +10,7 @@ _vlcver=3.0.21
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=$_vlcver${_vlcfixupver//-/.r}
-pkgrel=24
+pkgrel=25
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url=https://www.videolan.org/vlc/
 arch=('x86_64' 'aarch64')
@@ -125,7 +125,6 @@ makedepends=(
   zlib
   zvbi
   luajit
-  lua51
   vlc
   libvlc libvlccore.so
 )
@@ -153,6 +152,8 @@ prepare() {
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
+  # Replace luac with luajit, credits to LG for the fix
+  sed 's|\$(luac_verbose)\$(LUAC) -o \$@ \$<|\$(luac_verbose)\$(LUAC) -b $< $@|g' -i share/Makefile.am
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
@@ -275,9 +276,9 @@ build() {
   export CXXFLAGS+=" -std=c++17"
   export PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig"
   # OBS Studio use luajit which is a drop-in for lua5.1
-  # So lets build VLC with luajit and luac5.1 rather than lua5.2 and luac5.2
+  # So lets build VLC with luajit rather than lua5.2 and luac5.2
   # Which will make OBS not crash when loading a VLC (Video) Source
-  export LUAC=/usr/bin/luac5.1
+  export LUAC=/usr/bin/luajit
   export LUA_LIBS="$(pkg-config --libs luajit)"
   export LUA_CFLAGS="$(pkg-config --cflags luajit)"
   export RCC=/usr/bin/rcc-qt5
