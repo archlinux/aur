@@ -1,6 +1,6 @@
 pkgbase = visual-studio-code-electron-bin
 	pkgdesc = Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications.(Prebuilt and System-wide Electron edition)
-	pkgver = 1.110.1
+	pkgver = 1.111.0
 	pkgrel = 1
 	url = https://code.visualstudio.com/
 	arch = aarch64
@@ -29,11 +29,11 @@ pkgbase = visual-studio-code-electron-bin
 	source = visual-studio-code-electron.sh
 	sha256sums = dc5406ddd35ed5e3be39fe0a5a460f061aff3d296dc70124fd3eface8444c947
 	sha256sums = c418b7c5c17b3771f53541b46ed1eff461de5871e2c7c177546e2577d480594f
-	source_aarch64 = visual-studio-code-electron-1.110.1-aarch64.rpm::https://packages.microsoft.com/yumrepos/vscode/Packages/c/code-1.110.1-1772839602.el8.aarch64.rpm
-	sha256sums_aarch64 = a2456ffb42144c542c93c49f1bdbba14cc0ded4e8db7713ed3b74b5a23fc576c
-	source_armv7h = visual-studio-code-electron-1.110.1-armv7h.rpm::https://packages.microsoft.com/yumrepos/vscode/Packages/c/code-1.110.1-1772839519.el8.armv7hl.rpm
-	sha256sums_armv7h = d46ef75c13af9674d7cf577f079b73d6234f9194a5eea3d933f635ff27b6899a
-	source_x86_64 = visual-studio-code-electron-1.110.1-x86_64.rpm::https://packages.microsoft.com/yumrepos/vscode/Packages/c/code-1.110.1-1772839413.el8.x86_64.rpm
-	sha256sums_x86_64 = 5babb7f2e35c62c7b8a18ec27a218dcebd1105bbe1cead334e197a708956a841
+	source_aarch64 = visual-studio-code-electron-1.111.0-aarch64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-arm64
+	sha256sums_aarch64 = 5ca904ff713c24e4510a80150ab440873c54d5903af7524a3d36d04d9d81282f
+	source_armv7h = visual-studio-code-electron-1.111.0-armv7h.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-armhf
+	sha256sums_armv7h = c732a7c0762d9185eeec9d6037b9ae6a7918dd4c154df4e124ee7790118948a5
+	source_x86_64 = visual-studio-code-electron-1.111.0-x86_64.rpm::https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64
+	sha256sums_x86_64 = c64f744ce4091b940c800dda8ba19d3c56c495bde6a100b2d19ae564d0c81bf2
 
 pkgname = visual-studio-code-electron-bin
