@@ -12,7 +12,7 @@ license=('GPL3 with name use or association addition')
 makedepends=('go' 'git' 'mold')
 provides=("$_pkgname")
 
-source=("$_pkgname::git+https://github.com/reF1nd/sing-box.git#branch=reF1nd-dev")
+source=("$_pkgname::git+https://github.com/reF1nd/sing-box.git#branch=reF1nd-stable-next")
 sha256sums=('SKIP')
 
 conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$_pkgname-ref1nd")
