@@ -1,6 +1,6 @@
 pkgbase = eact
 	pkgdesc = A toolkit for building your electron applications with Electron-packager and electron-build for non DRM and DRM applications and then zip them up ready for you to be distributed.
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/libelectron
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = eact
 	depends = npm
 	depends = wine
 	depends = zip
-	source = https://gitlab.com/linuxbombay/libelectron/eact/-/archive/2.0.2/application-2.0.2.tar.bz2
-	sha256sums = 99d55f3c16046f06489569a446de6c2f32b8c5639f4e7005ed5273de9cb72343
+	source = https://gitlab.com/linuxbombay/libelectron/eact/-/archive/2.0.3/application-2.0.3.tar.bz2
+	sha256sums = ea525e7e0e593c7133dd90400aeb96fc204b2fcc6a1697b2c738668341e787fa
 
 pkgname = eact
