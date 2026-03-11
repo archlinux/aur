@@ -1,0 +1,5 @@
+[scalapack-static]
+source = "github"
+github = "Reference-ScaLAPACK/scalapack"
+use_max_tag = true
+prefix = "v"
