@@ -1,6 +1,6 @@
 pkgbase = mouse-debounce
 	pkgdesc = Software mouse button debounce daemon for worn switches
-	pkgver = 0.1.0
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/mishl-dev/mouse-debounce
 	install = mouse-debounce.install
@@ -9,10 +9,10 @@ pkgbase = mouse-debounce
 	makedepends = rust
 	makedepends = cargo
 	depends = libevdev
-	source = mouse-debounce-0.1.0.tar.gz::https://github.com/mishl-dev/mouse-debounce/archive/v0.1.0.tar.gz
+	source = mouse-debounce-0.1.3.tar.gz::https://github.com/mishl-dev/mouse-debounce/archive/v0.1.3.tar.gz
 	source = mouse-debounce.install::https://github.com/mishl-dev/mouse-debounce/raw/main/mouse-debounce.install
 	source = mouse-debounce.service::https://github.com/mishl-dev/mouse-debounce/raw/main/mouse-debounce.service
-	sha256sums = 976c2b5f0655f30b2d84ddf7ab17c127ffedbd2528d75a9e100a0a6269d1129d
+	sha256sums = 3f2048ab935f2141af273c78cfeee44a801a3c092b1072b12a13d40a6fbe8c7a
 	sha256sums = 1e74ab9bbf6eef0bac57840329200a49eee0eb990a92d4d22ff21796e7ee592b
 	sha256sums = b76d8338e535bc42fce6e07408d072ad9e7a6902127c4367a4dfcc5faf839b82
 
