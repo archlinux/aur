@@ -2,7 +2,7 @@
 
 pkgname=rofimoji-git
 _name=${pkgname%-git}
-pkgver=6.6.0.r0.gfbc5045
+pkgver=6.7.0.r6.g28bfdf9
 pkgrel=1
 pkgdesc='Emoji, unicode and general character picker for rofi and rofi-likes'
 arch=(any)
@@ -30,10 +30,12 @@ optdepends=(
   'xdotool: for the X.Org typer'
 
   'fuzzel: for one of the Wayland selectors'
+  'hyprlauncher: for one of the Wayland selectors'
   'tofi: for one of the Wayland selectors'
   'wmenu: for one of the Wayland selectors'
   'wofi: for one of the Wayland selectors'
   'wl-clipboard: for the Wayland clipboarder'
+  'wl-ime-type: for one of the Wayland typers'
   'wtype: for one of the Wayland typers'
   'ydotool: for one of the Wayland typers'
 )
