@@ -1,0 +1,18 @@
+pkgbase = nashmic-git
+	pkgdesc = The first Franco-Arab programming language - transpiles to C
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/Ziadstr/nashmic
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	depends = glibc
+	depends = readline
+	provides = nashmic
+	conflicts = nashmic
+	source = git+https://github.com/Ziadstr/nashmic.git
+	sha256sums = SKIP
+
+pkgname = nashmic-git
