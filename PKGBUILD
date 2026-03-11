@@ -21,6 +21,7 @@ package() {
 
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 swhook.1.gz "$pkgdir/usr/share/man/man1/swhook.1.gz"
 
   mkdir -p "$pkgdir/usr/share/bash-completion/completions"
   mkdir -p "$pkgdir/usr/share/zsh/site-functions"
@@ -33,4 +34,5 @@ package() {
   install -Dm755 "etc/hello_world" "$pkgdir/usr/share/swhook/methods/hello_world"
   install -Dm644 "etc/swhook.conf" "$pkgdir/etc/swhook.conf"
   install -Dm644 "etc/swhook.service" "$pkgdir/usr/lib/systemd/system/swhook.service"
+
 }
