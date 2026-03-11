@@ -1,15 +1,15 @@
 pkgbase = fallout2-ce-git
 	pkgdesc = Fallout 2 for modern operating systems
-	pkgver = r879.e97087b
+	pkgver = r1556.404236c
 	pkgrel = 1
-	url = https://github.com/alexbatalov/fallout2-ce
+	url = https://github.com/fallout2-ce/fallout2-ce
 	arch = any
 	license = custom:SUL
 	makedepends = sdl2
 	makedepends = cmake
 	makedepends = git
 	depends = sdl2
-	source = fallout2-ce::git+https://github.com/alexbatalov/fallout2-ce.git
+	source = fallout2-ce::git+https://github.com/fallout2-ce/fallout2-ce.git
 	sha256sums = SKIP
 
 pkgname = fallout2-ce-git

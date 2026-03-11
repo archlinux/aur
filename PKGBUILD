@@ -3,11 +3,11 @@
 
 _basename=fallout2-ce
 pkgname=$_basename-git
-pkgver=r879.e97087b
+pkgver=r1556.404236c
 pkgrel=1
 pkgdesc='Fallout 2 for modern operating systems'
 arch=('any')
-url="https://github.com/alexbatalov/$_basename"
+url="https://github.com/$_basename/$_basename"
 license=('custom:SUL')
 depends=('sdl2')
 makedepends=('sdl2' 'cmake' 'git')
