@@ -22,6 +22,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=("waterfox=${pkgver}")
 source=("waterfox-${pkgver}-${pkgrel}.tar.bz2::https://cdn.waterfox.com/waterfox/releases/${pkgver}/Linux_x86_64/waterfox-${pkgver}.tar.bz2"
   "waterfox.desktop")
+conflicts=('waterfox')
 
 package() {
   # Create the necessary directories.
