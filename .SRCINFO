@@ -12,6 +12,6 @@ pkgbase = xback
 	depends = libjpeg
 	depends = libwebp
 	source = main.c::https://raw.githubusercontent.com/kantiankant/Xback/main/main.c
-	sha256sums = 043efe75851838f61b819d1e0d9cacd6e09fba1222d79e59fbb64db07ced508c
+	sha256sums = a806662000c9e03ab3e90f03d8331322c9907feeeee130c499f87d416a84c83
 
 pkgname = xback
