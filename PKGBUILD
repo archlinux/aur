@@ -4,7 +4,7 @@ pkgname=tcpreen
 pkgver=1.4.4
 pkgrel=1
 
-pkgdesc='TCPreen is a simple tool to monitor and analyze data transmitted between clients and servers through connection-oriented streams data such as a TCP sessions'
+pkgdesc='A simple tool to monitor and analyze data transmitted between clients and servers through connection-oriented streams data such as a TCP sessions'
 arch=('x86_64')
 url='https://www.remlab.net/tcpreen/'
 license=('GPL-2.0')
