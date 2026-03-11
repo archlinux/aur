@@ -3,11 +3,11 @@
 
 _name=traces
 pkgname=python-traces
-pkgver=0.6.4
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Python library for unevenly-spaced time series analysis"
 url="https://pypi.org/project/${_name}/"
-depends=(python-sortedcontainers)
+depends=(python)
 makedepends=(python-build python-installer python-wheel python-poetry-core)
 optdepends=(
     'python-pandas: sample_interval support'
@@ -15,8 +15,8 @@ optdepends=(
 )
 license=(MIT)
 arch=(any)
-source=("${_name}-${pkgver}.tar.gz::https://github.com/stringertheory/traces/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('0ad4f6f6267a4a2b96488b987663bae758be401c47273846e6bff11def4af0be')
+source=("${_name}-${pkgver}.tar.gz::https://github.com/stringertheory/traces/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('843c6c36313c71ff0d0519a47cf9ddb4f059e0d3dd8ab24425f3f7df71f7203e')
 
 build() {
     cd "${_name}-${pkgver}"
