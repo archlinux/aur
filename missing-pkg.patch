@@ -1,16 +1,13 @@
 --- python/cuopt/CMakeLists.txt	2025-12-12 03:28:18.000000000 +0800
 +++ python/cuopt/CMakeLists.txt.new	2025-12-24 18:54:54.288630013 +0800
-@@ -18,7 +18,13 @@
+@@ -18,7 +18,10 @@
              # that is fixed we need to keep C.
              C CXX CUDA)
  
 -
 +find_package(nvtx3 REQUIRED)
 +find_package(rapids_logger REQUIRED)
-+find_package(CCCL REQUIRED)
 +find_package(rmm REQUIRED)
-+find_package(NvidiaCutlass REQUIRED)
-+find_package(cuco REQUIRED)
 +find_package(raft REQUIRED)
  find_package(cuopt "${RAPIDS_VERSION}")
  find_package(mps_parser "${RAPIDS_VERSION}")

@@ -2,7 +2,7 @@
 
 pkgbase=cuopt
 pkgname=(cuopt python-cuopt)
-pkgver=25.12.00
+pkgver=26.02.00
 pkgrel=1
 pkgdesc="NVIDIA cuOpt is an open-source GPU-accelerated optimization engine delivering near real-time solutions for complex decision-making challenges."
 url="https://github.com/NVIDIA/cuopt"
@@ -16,9 +16,9 @@ source=(
     "missing-pkg.patch"
 )
 sha256sums=(
-    'f2a5a26ce349fff4da0608a5ebce836620db16e14a88462984fae7cae763f467'
-    '30a0152c5e7ea633260154cb00964013bca28042f029ab356d0c039be9ab1edb'
-    '7a1084085c7fbbae7a29bb542c69d0d1a4dd9b7fe00f003726e2051819a20791'
+    '4dd647cddf0c674548a0ffd4598ab3684a609f173f2defa325cceb67beeffa1c'
+    'bc77344200404f4e139a64a611412fa9c8aa69354c4fac46173257dc245a37bf'
+    '0d7efedb556324377fd1f5a6d8508ae1a168e67139fcc4c8af91f2af1aedb93b'
 )
 
 prepare() {
@@ -30,6 +30,8 @@ prepare() {
 
 build() {
     cd "$srcdir/$pkgbase-$pkgver"
+    export CXXFLAGS+=" -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER"
+    export CUDAFLAGS+=" -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER"
     cmake -B build -S cpp \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \

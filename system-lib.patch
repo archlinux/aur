@@ -9,10 +9,11 @@
  endif(CMAKE_COMPILER_IS_GNUCXX)
  
  # To use sanitizer with cuda runtime, one must follow a few steps:
-@@ -179,6 +179,9 @@
+@@ -179,7 +179,9 @@
+   include(cmake/thirdparty/get_rmm.cmake)
    include(cmake/thirdparty/get_raft.cmake)
  else()
-   find_package(CCCL REQUIRED)
+-  find_package(CCCL REQUIRED)
 +  find_package(nvtx3 REQUIRED)
 +  find_package(rapids_logger REQUIRED)
 +  find_package(cuco REQUIRED)
