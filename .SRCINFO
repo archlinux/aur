@@ -16,8 +16,6 @@ pkgbase = mpvpaper-stop-git
 	provides = mpvpaper-stop
 	conflicts = mpvpaper-stop
 	source = git+https://github.com/pvtoari/mpvpaper-stop.git
-	source = mpvpaper-stop@.service
 	sha256sums = SKIP
-	sha256sums = 43812d95656612b104f2cb3289dcab61049b45fe384d9b7b498703493112554b
 
 pkgname = mpvpaper-stop-git
