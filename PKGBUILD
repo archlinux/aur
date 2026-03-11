@@ -2,7 +2,7 @@
 
 pkgname=mcjoin
 pkgver=2.12
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A simple and easy-to-use tool to test IPv4 and IPv6 multicast"
 arch=('x86_64')
@@ -19,7 +19,10 @@ build() {
 }
 
 package() {
- cd "${pkgname}-${pkgver}"
- make DESTDIR="${pkgdir}" install-strip
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install-strip
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  ln -s "../../doc/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
+# vim:set ts=2 sw=2 et
