@@ -1,0 +1,4 @@
+[autofs]
+source = "git"
+git = "https://git.kernel.org/pub/scm/linux/storage/autofs/autofs.git"
+prefix = "release_"
