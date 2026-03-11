@@ -1,5 +1,5 @@
 [Desktop Entry]
-Exec=/usr/bin/dbeaver-le
+Exec=/opt/dbeaver-le/dbeaver
 Type=Application
 Terminal=false
 Icon=dbeaver-le
