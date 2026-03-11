@@ -6,7 +6,7 @@
 
 pkgname=python-speechrecognition
 pkgver=3.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Speech recognition module for Python, supporting several engines and APIs'
 arch=('any')
 url='https://github.com/Uberi/speech_recognition'
@@ -48,17 +48,14 @@ checkdepends=(
   'python-numpy'
   'python-pytest-httpserver'
   'python-pocketsphinx' # test_recognition.py
-  'python-vosk' # test_vosk.py
   'python-httpx' # whisper_api/ tests
   'python-openai' # test_openai.py
   'python-groq' # test_groq.py
   'python-google-cloud-speech' # test_google_cloud.py
   'python-cryptography' # test_google_cloud.py
 )
-source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-        'https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip')
-b2sums=('eb77ea4994b29611b72e977dec0a14c4864daae93236caf7fb683d7aea3725c099f5895a0c2f83982bc522172b66e2b34efc00792ddb7913589f861da3c83583'
-        'a0b871f1598d933d613d26e7a09c1c7f2e26af7ef83cbb58b6eb06581fe61ed7fab248a8e892a68470e217082bf705865ebae9118f85e0c136fb43aa310f2841')
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${pkgver}.tar.gz")
+b2sums=('eb77ea4994b29611b72e977dec0a14c4864daae93236caf7fb683d7aea3725c099f5895a0c2f83982bc522172b66e2b34efc00792ddb7913589f861da3c83583')
 
 build() {
   cd "${srcdir}/speech_recognition-${pkgver}"
@@ -66,17 +63,16 @@ build() {
   # Remove packaged FLAC binaries in favor of the Arch Linux package.
   rm speech_recognition/flac-* LICENSE-FLAC.txt
 
-  # 'sprc download vosk' will not work in /usr/lib, so this package provides
-  # the default model for basic functionality with the Vosk backend.
-  mv "${srcdir}/vosk-model-small-en-us-0.15" speech_recognition/models/vosk
-
   python -m build --wheel --no-isolation
 }
 
 check() {
   cd "${srcdir}/speech_recognition-${pkgver}"
 
-  python -m pytest --doctest-modules speech_recognition/recognizers/ tests/
+  python -m pytest \
+    --doctest-modules speech_recognition/recognizers/ \
+    --ignore tests/recognizers/test_vosk.py \
+    tests/
 }
 
 package() {
