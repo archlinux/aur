@@ -1,0 +1,6 @@
+[pv-migrate-bin]
+source = "github"
+github = "utkuozdemir/pv-migrate"
+host = "github.com"
+use_max_tag = true
+prefix = "v"

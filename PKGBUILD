@@ -2,7 +2,7 @@
 
 pkgname=pv-migrate-bin
 _pkgname=pv-migrate
-pkgver=1.0.1
+pkgver=3.0.0
 pkgrel=1
 pkgdesc='CLI tool to easily migrate Kubernetes persistent volumes'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='https://github.com/utkuozdemir/pv-migrate'
 provides=('pv-migrate')
 license=('Apache')
 source=("https://github.com/utkuozdemir/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_v${pkgver}_linux_x86_64.tar.gz")
-sha256sums=('8203687e6bef11477eb0bda6fb11fd7bc4278b66fc16d0a58014fc93af33b71c')
+sha256sums=('dbc4185678e9781c12172cf67637d2904334c5f5626faf1e6bdaa9af50a9a668')
 
 package() {
   install -Dm 755 "$srcdir/${_pkgname}" -t "$pkgdir/usr/bin"
