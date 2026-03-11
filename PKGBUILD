@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('any')
@@ -50,10 +50,8 @@ optdepends=(
   'spectacle: Screenshot support on KDE Plasma'
   'wl-clipboard: Clipboard support on Wayland'
 )
-source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz"
-         "$pkgname.1")
-sha256sums=('ce80d9ec26e071fdced66a94a4a6d26761273aa4297cf22ca122b1765bddf1eb'
-            '00f81445d181770676ceac2d1de3abad4e55e2df7339b4c9410b7e5c90b4cb33')
+source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('023dc9b8eda975705ab13bd22e9753c75394a9ff6b09acf8df3251993723a8b7')
 
 build() {
   cd "PCLink-$pkgver"
@@ -74,6 +72,6 @@ package() {
   install -Dm644 "assets/${pkgname}_icon.svg" \
     "$pkgdir/usr/share/icons/hicolor/scalable/apps/${_app_id}.svg"
   install -Dm644 "${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 "$srcdir/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 "scripts/linux/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }

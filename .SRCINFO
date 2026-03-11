@@ -1,6 +1,6 @@
 pkgbase = pclink
 	pkgdesc = Desktop app for secure remote PC control and management
-	pkgver = 3.5.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://bytedz.xyz/products/pclink
 	arch = any
@@ -42,9 +42,7 @@ pkgbase = pclink
 	optdepends = python-pystray: Fallback for system tray
 	optdepends = spectacle: Screenshot support on KDE Plasma
 	optdepends = wl-clipboard: Clipboard support on Wayland
-	source = PCLink-3.5.0.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v3.5.0.tar.gz
-	source = pclink.1
-	sha256sums = ce80d9ec26e071fdced66a94a4a6d26761273aa4297cf22ca122b1765bddf1eb
-	sha256sums = 00f81445d181770676ceac2d1de3abad4e55e2df7339b4c9410b7e5c90b4cb33
+	source = PCLink-3.6.0.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v3.6.0.tar.gz
+	sha256sums = 023dc9b8eda975705ab13bd22e9753c75394a9ff6b09acf8df3251993723a8b7
 
 pkgname = pclink
