@@ -17,6 +17,6 @@ build() {
 }
 
 package() {
-    install -Dm755 "$srcdir/../xback" "$pkgdir/usr/bin/xback"
+    install -Dm755 "$srcdir/xback" "$pkgdir/usr/bin/xback"
     install -Dm644 /dev/null "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
