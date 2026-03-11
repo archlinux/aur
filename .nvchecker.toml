@@ -1,0 +1,3 @@
+[perl-time-duration-parse]
+source = "cpan"
+cpan = "Time-Duration-Parse"
