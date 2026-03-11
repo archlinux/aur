@@ -1,7 +1,7 @@
 pkgbase = recyclarr
 	pkgdesc = Automatically synchronize recommended settings from the TRaSH guides to your Sonarr/Radarr instances.
 	pkgver = 8.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://recyclarr.dev
 	arch = x86_64
 	arch = aarch64

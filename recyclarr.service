@@ -16,6 +16,8 @@ Environment=RECYCLARR_CONFIG_DIR=/var/lib/recyclarr
 ExecStart=/usr/lib/recyclarr/recyclarr sync --config /etc/recyclarr/recyclarr.yml
 Restart=on-failure
 RestartSec=5
+StartLimitIntervalSec=1h
+StartLimitBurst=5
 
 [Install]
 WantedBy=multi-user.target
