@@ -8,7 +8,7 @@
 _pkgbase=wireshark
 pkgbase=wireshark-oqs
 pkgname=(wireshark-oqs-cli wireshark-oqs-qt)
-pkgver=4.6.3
+pkgver=4.6.4
 pkgrel=1
 _pkgver_oqs=0.11.0
 _commit_oqs_demos=29d4dccbd547a62e8ba77d3fef1af5d6f8625d60
@@ -24,7 +24,6 @@ makedepends=(
   cmake
   desktop-file-utils
   doxygen
-  gcc-libs
   git
   glib2
   glibc
@@ -32,13 +31,14 @@ makedepends=(
   hicolor-icon-theme
   krb5
   libcap
+  libgcc
   libgcrypt
   libmaxminddb
   libnghttp2
   libnghttp3
-  libnl
   libpcap
   libssh
+  libstdc++
   libxml2
   libxslt
   lua
@@ -76,7 +76,7 @@ source=(
   https://raw.githubusercontent.com/open-quantum-safe/oqs-demos/$_commit_oqs_demos/wireshark/generate_qsc_header.py
   wireshark.sysusers
 )
-b2sums=('06360cd4307169e57852e75f533aa703aab495f154428749fb149ce6b59b12b5d824d51d22a273c8c40d4f297411d0d45d3f85d2d2c40511c5f78d481563eea8'
+b2sums=('2532c052b9f97e939ac5d7384b50fe5a4375709c2907bdca80cffdf73da46a76388f56de60a5e13102a1582eb0d09c68596b76b83a2586ea2e3e6c311fad9655'
         'df5b81c3c4852de30878d4ea2fa0d9cec6d64a7527bd82523e1196d2df3952c05981d334f7472a369ab52f240f0321fb95130320de030d6c5846133fc49c76de'
         '8061cdb5ddce084be6566b57bf21f9281ff9cb7ffd986c1968d60e46624afb1a6e9aff02bf0cf065a89b868bc6ab5ceb5c222c1a7913d06db79ee778593a2997'
         '15e4cfa9626dc6f4b0dff7096f7610791ba9b186fa21855a5203bbeb03c27afbe86e876f3dd0a7f7b6f79cb221c896beec344de0701b6ecd86ad40f318bf9019'
@@ -126,7 +126,6 @@ package_wireshark-oqs-cli() {
     bcg729
     brotli
     c-ares
-    gcc-libs
     glib2
     glibc
     gnutls
@@ -135,6 +134,7 @@ package_wireshark-oqs-cli() {
     libcap
     libcap.so
     libcares.so
+    libgcc
     libgcrypt
     libk5crypto.so
     libkrb5.so
@@ -162,7 +162,7 @@ package_wireshark-oqs-cli() {
   )
   install=wireshark.install
   conflicts=(wireshark-cli)
-  provides=(libwireshark.so libwiretap.so libwsutil.so)
+  provides=(wireshark-cli)
 
   cd ${_pkgbase}
   DESTDIR="${pkgdir}" ninja -C build install
@@ -187,14 +187,15 @@ package_wireshark-oqs-qt() {
   pkgdesc+=' - Qt GUI'
   depends=(
     desktop-file-utils
-    gcc-libs
     glib2
     glibc
     hicolor-icon-theme
+    libgcc
     libgcrypt
     libnl
     libpcap
     libpcap.so
+    libstdc++
     libwireshark.so
     libwiretap.so
     libwsutil.so
