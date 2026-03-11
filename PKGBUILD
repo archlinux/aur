@@ -1,7 +1,7 @@
 # Maintainer: Wendy Labs Inc. <support@wendy.sh>
 pkgname=wendy
-_pkgver=2026.03.11-135134
-_pkgtag=2026.03.11-135134
+_pkgver=2026.03.11-144804
+_pkgtag=2026.03.11-144804
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc="Wendy CLI - Remote device debugging and deployment for Raspberry Pi, NVIDIA Jetson, and other Linux devices"
@@ -16,8 +16,8 @@ source_x86_64=("${pkgname}-${_pkgver}-x86_64.tar.gz::https://github.com/wendylab
 source_aarch64=("${pkgname}-${_pkgver}-aarch64.tar.gz::https://github.com/wendylabsinc/wendy-agent/releases/download/${_pkgtag}/wendy-cli-linux-arm64-${_pkgver}.tar.gz")
 
 # Checksums will be updated by CI
-sha256sums_x86_64=('c65e402d68c8b187a23503fec6ccb01959004ca7b1d2bb175f35a33b89dd40ff')
-sha256sums_aarch64=('a35661484b18f47b1ab0f9749e88255fc5e5865abd880d12fd9d12b78be94650')
+sha256sums_x86_64=('23e26832cd864ba2fca6d4eef379931385cc87b410f538991734af720c27e765')
+sha256sums_aarch64=('a4cd79660cf7f298daac8dce1e41fb00e501b43adf09177688debcf91d40e19c')
 
 package() {
     cd "${srcdir}"
