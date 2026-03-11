@@ -8,8 +8,11 @@ url="https://github.com/mishl-dev/mouse-debounce"
 license=('MIT')
 depends=('libevdev')
 makedepends=('rust' 'cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('976c2b5f0655f30b2d84ddf7ab17c127ffedbd2528d75a9e100a0a6269d1129d')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
+        "mouse-debounce.install::$url/raw/main/mouse-debounce.install")
+sha256sums=('976c2b5f0655f30b2d84ddf7ab17c127ffedbd2528d75a9e100a0a6269d1129d'
+            '1e74ab9bbf6eef0bac57840329200a49eee0eb990a92d4d22ff21796e7ee592b')
+install=mouse-debounce.install
 
 build() {
   cd "$pkgname-$pkgver"

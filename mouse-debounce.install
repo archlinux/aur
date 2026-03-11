@@ -1,0 +1,9 @@
+post_install() {
+  echo "To start mouse-debounce and enable it on boot:"
+  echo "  sudo systemctl enable --now mouse-debounce"
+}
+
+post_upgrade() {
+  echo "Restarting mouse-debounce..."
+  systemctl restart mouse-debounce || true
+}
