@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=80.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pytricia"
+version = "1.3.0" # Update accordingly
+description = "An efficient IP address storage and lookup module for Python."
+readme = "README.md"
+requires-python = ">=3.14"
+authors = [
+  { name="Joel Sommers", email="jsommers@acm.org" },
+]
+license = "LGPL-3.0-or-later"
+keywords = ["patricia tree", "IP network", "IP address"]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Developers",
+]
+# dependencies = []
+
+[tool.setuptools]
+    # C extension modules
+    ext-modules = [
+    { name = "pytricia", sources = ["pytricia.c", "patricia.c"] }
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+#where = ["src"]
+#where = ["pytricai"]
+include = ["*.[ch]"]
+
+# [tool.setuptools.packages.find]
+# where = ["src"]
+
