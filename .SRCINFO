@@ -19,7 +19,7 @@ pkgbase = s3man-bin
 	options = !strip
 	options = !emptydirs
 	source_x86_64 = https://github.com/sarrietav-dev/s3man/releases/download/v0.1.1/s3man_0.1.1_amd64.deb
-	sha256sums_x86_64 = 69a9f603468c0aaee09c70b2494bc475a87612d188f82870dee1c1cd6da02707
+	sha256sums_x86_64 = 2dd335fad5401e593e053d520deb405f56064efb17442aaa9009839802bcdb61
 	source_aarch64 = https://github.com/sarrietav-dev/s3man/releases/download/v0.1.1/s3man_0.1.1_arm64.deb
 	sha256sums_aarch64 = REPLACE_WITH_ARM64_SHA256
 
