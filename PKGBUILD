@@ -4,7 +4,7 @@
 _name=octave_kernel
 pkgname=jupyter-${_name}
 pkgver=0.39.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Jupyter kernel for Octave"
 arch=(any)
 url=https://github.com/Calysto/octave_kernel
@@ -13,7 +13,7 @@ depends=(
     jupyter-metakernel
     octave
     python-ipykernel
-    python-jupyter_client
+    python-jupyter-client
 )
 makedepends=(
     python-build
