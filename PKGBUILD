@@ -1,7 +1,7 @@
 # Maintainer: sim0n <aur.direction446@aleeas.com>
 pkgname=sing-box-ref1nd
 _pkgname=sing-box
-pkgver=1.13.0
+pkgver=1.13.2
 pkgrel=1
 
 pkgdesc='The universal proxy platform.'
@@ -14,7 +14,7 @@ provides=("$_pkgname")
 options=('!debug')
 
 source=("$_pkgname-$pkgver-reF1nd.tar.gz::https://github.com/reF1nd/sing-box/archive/refs/tags/v$pkgver-reF1nd.tar.gz")
-sha256sums=('e9375201dbcc3b4f0094489e70288cc5ea707cebab39bb675803ed2eb6739333')
+sha256sums=('2f40e2245731c5c097eed1ceeced341f82c36218ef6f24167242ad30e97f024a')
 
 conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$pkgname-git")
 
