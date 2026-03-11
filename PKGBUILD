@@ -2,7 +2,7 @@
 _pkgauthor=FrogSnot
 _pkgname=Sunder
 pkgname=sunder-bin
-pkgver=1.1.6
+pkgver=1.1.7
 pkgrel=1
 pkgdesc="A desktop YouTube music client that doesn't spy on you (prebuilt binary)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('sunder')
 source=("LICENSE-$pkgver::https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}/LICENSE"
         "README-$pkgver.md::https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}/README.md"
         "${pkgname%-bin}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
-sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0' '833b9aa1fa781ec08ce0544685ee9f1b419219c8dad8397141e393ff3a5fd3a7' '280e20aa0c4dc826647aee98d3ae2f63bee2664ba08278f25da46358caadfa7f')
+sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0' '61d33598746e68647c1833dde52ae1ba8e2b70ec112b14be2e08b30b39d9560c' 'ae5a568850d24baebfb4ae35d7de9483454ebf7c76df01864a3ea31cacc24cdb')
 
 package() {
     cd "$srcdir"
