@@ -1,19 +1,19 @@
 # Maintainer: sim0n <aur.direction446@aleeas.com>
 pkgname=sing-box-ref1nd-git
 _pkgname=sing-box
-pkgver=1.13.0.reF1nd.r0.g7536a830
+pkgver=1.14.0.alpha.1.reF1nd.r46.g7536a830
 pkgrel=1
 
 pkgdesc='The universal proxy platform.'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
-url='https://github.com/reF1nd/sing-box/tree/reF1nd-dev'
+url='https://github.com/reF1nd/sing-box/tree/reF1nd-testing-next'
 license=('GPL3 with name use or association addition')
 
 makedepends=('go' 'git' 'mold')
 provides=("$_pkgname")
 
 source=("$_pkgname::git+https://github.com/reF1nd/sing-box.git#branch=reF1nd-dev")
-sha256sums=(SKIP)
+sha256sums=('SKIP')
 
 conflicts=("$_pkgname-git" "$_pkgname-alpha" "$_pkgname-beta" "$_pkgname-ref1nd")
 
