@@ -1,6 +1,6 @@
---- cpp/CMakeLists.txt	2025-10-09 01:49:47.000000000 +0800
-+++ cpp/CMakeLists.txt.new	2025-10-09 16:10:06.927131467 +0800
-@@ -166,17 +166,15 @@
+--- cpp/CMakeLists.txt	2026-02-05 05:15:37.000000000 +0800
++++ cpp/CMakeLists.txt.new	2026-03-11 15:48:16.029590625 +0800
+@@ -160,13 +160,11 @@
  # add third party dependencies using CPM
  rapids_cpm_init()
  
@@ -9,16 +9,10 @@
 +find_package(rapids_logger REQUIRED)
  create_logger_macros(RAFT "raft::default_logger()" include/raft/core)
  
- # CCCL before rmm/cuco so we get the right version of CCCL
+ # CCCL before rmm so we get the right version of CCCL
 -include(cmake/thirdparty/get_cccl.cmake)
 -include(cmake/thirdparty/get_rmm.cmake)
-+find_package(CCCL REQUIRED)
 +find_package(rmm REQUIRED)
- include(cmake/thirdparty/get_cutlass.cmake)
- 
--include(${rapids-cmake-dir}/cpm/cuco.cmake)
--rapids_cpm_cuco(BUILD_EXPORT_SET raft-exports INSTALL_EXPORT_SET raft-exports)
-+find_package(cuco REQUIRED)
  
  if(BUILD_TESTS)
    include(${rapids-cmake-dir}/cpm/gtest.cmake)

@@ -1,6 +1,6 @@
 --- python/raft-dask/CMakeLists.txt	2025-10-09 01:49:47.000000000 +0800
 +++ python/raft-dask/CMakeLists.txt.new	2025-10-09 16:15:12.137115515 +0800
-@@ -26,7 +26,12 @@
+@@ -26,7 +26,11 @@
  )
  
  rapids_cpm_init()
@@ -8,7 +8,6 @@
 +find_package(rapids_logger REQUIRED)
 +find_package(rmm REQUIRED)
 +find_package(ucxx REQUIRED)
-+find_package(CCCL REQUIRED)
 +find_package(cuco REQUIRED)
 +find_package(nvtx3 REQUIRED)
  
