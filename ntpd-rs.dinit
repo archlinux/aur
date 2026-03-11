@@ -1,0 +1,14 @@
+# ntpd-rs
+type            = process
+command         = /usr/bin/ntp-daemon
+start-timeout   = 60
+smooth-recovery = true
+socket-listen   = /var/run/ntpd-rs/observe
+# run-as          = ntpd-rs
+# capabilities    = ^CAP_SYS_TIME
+log-type        = file
+logfile         = /var/log/dinit/ntpd-rs.log
+depends-on      = network.target
+before          = time-sync.target
+load-options    = export-service-name
+depends-ms      = ntpd-rs-pre

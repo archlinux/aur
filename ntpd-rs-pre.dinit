@@ -1,0 +1,4 @@
+type        = scripted
+command     = /usr/bin/mkdir -p /run/ntpd-rs/
+depends-on  = local.target
+before      = ntpd-rs

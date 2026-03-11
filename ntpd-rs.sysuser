@@ -1,0 +1,9 @@
+# Create the service user
+# Type Name   ID     GECOS                     Home Directory               Shell
+u ntpd-rs     -      "ntpd-rs server user"     /ntpd-rs                     /usr/bin/nologin
+
+# Create additional groups if they don't exist
+g ntpd-rs     -
+
+# Add user to multiple groups (supplementary)
+m ntpd-rs ntpd-rs
