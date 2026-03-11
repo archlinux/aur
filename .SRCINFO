@@ -1,0 +1,18 @@
+pkgbase = dune-cli-git
+	pkgdesc = Dune Analytics CLI
+	pkgver = v0.1.4.r0.ga5637f4
+	pkgrel = 1
+	url = https://github.com/duneanalytics/cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = glibc
+	provides = dune-cli
+	conflicts = dune-cli
+	conflicts = dune-cli-git
+	conflicts = dune-cli-bin
+	source = dune-cli::git+https://github.com/duneanalytics/cli.git
+	sha256sums = SKIP
+
+pkgname = dune-cli-git
