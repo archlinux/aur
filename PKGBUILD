@@ -1,16 +1,16 @@
 # Maintainer: Mohamad Obeid <mobeid nine nine nine nine at gmail dot com>
 pkgname=mixtapes-git
-pkgver=r108.af61aaa
+pkgver=r109.bfdccb3
 pkgrel=1
-pkgdesc="A modern, Linux-first YouTube Music player (formerly Muse)"
+pkgdesc="A modern, Linux-first YouTube Music player"
 arch=('any')
-url="https://github.com/m-obeid/Muse"
+url="https://github.com/m-obeid/Mixtapes"
 license=('GPL3')
 depends=('python' 'python-gobject' 'gtk4' 'libadwaita' 'webkitgtk-6.0' 'nodejs' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'yt-dlp' 'yt-dlp-ejs' 'python-requests' 'python-ytmusicapi' 'python-mprisify')
 makedepends=('git')
 provides=("mixtapes")
 conflicts=("mixtapes")
-source=("${pkgname}::git+https://github.com/m-obeid/Muse.git")
+source=("${pkgname}::git+https://github.com/m-obeid/Mixtapes.git")
 sha256sums=('SKIP')
 
 pkgver() {
