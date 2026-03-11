@@ -1,5 +1,13 @@
 post_install() {
-    groupadd -f nuicat 2>/dev/null || true
+    groupadd -f input 2>/dev/null || true
+    if [ -n "$SUDO_USER" ]; then
+        usermod -aG input "$SUDO_USER" 2>/dev/null || true
+        # Immediate device access via ACLs (group takes effect on next login)
+        setfacl -m u:"$SUDO_USER":rw /dev/uinput 2>/dev/null || true
+        for dev in /dev/input/event*; do
+            setfacl -m u:"$SUDO_USER":rw "$dev" 2>/dev/null || true
+        done
+    fi
     udevadm control --reload-rules 2>/dev/null || true
     udevadm trigger --subsystem-match=input 2>/dev/null || true
     echo "==> To start nuicat, run: systemctl --user enable --now nuicat.service"
