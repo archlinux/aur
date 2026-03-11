@@ -1,0 +1,15 @@
+pkgbase = lyricspot
+	pkgdesc = Live synced lyrics in your terminal, pulled from Spotify
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/vlensys/lyricspot
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-spotipy
+	depends = python-pillow
+	depends = python-colorthief
+	source = lyricspot-1.1.1.tar.gz::https://github.com/vlensys/lyricspot/archive/refs/tags/v1.1.1.tar.gz
+	sha256sums = 342ec482ba2a468451e600f3e18ed9c61d35f3d4fa046920afa383a28a1546a4
+
+pkgname = lyricspot
