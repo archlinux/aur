@@ -1,6 +1,15 @@
---- src/cugraph-25.06.00/cpp/CMakeLists.txt	2025-06-06 04:20:22.000000000 +0800
-+++ src/cugraph-25.06.00/cpp/CMakeLists.txt.new	2025-07-02 16:49:41.464862949 +0800
-@@ -123,12 +123,13 @@
+--- cpp/CMakeLists.txt	2026-02-05 05:49:40.000000000 +0800
++++ cpp/CMakeLists.txt.new	2026-03-11 22:22:53.815616471 +0800
+@@ -72,7 +72,7 @@
+ set(CUGRAPH_CUDA_FLAGS "")
+ 
+ if(CMAKE_COMPILER_IS_GNUCXX)
+-    list(APPEND CUGRAPH_CXX_FLAGS -Werror -Wno-error=deprecated-declarations -Wno-deprecated-declarations -DRAFT_HIDE_DEPRECATION_WARNINGS)
++    list(APPEND CUGRAPH_CXX_FLAGS -Wno-error=deprecated-declarations -Wno-deprecated-declarations -DRAFT_HIDE_DEPRECATION_WARNINGS)
+ endif(CMAKE_COMPILER_IS_GNUCXX)
+ 
+ 
+@@ -117,12 +117,11 @@
  
  # Need CCCL, then rmm, then cuCollections, then RAFT.
  # This ensures that libraries can be overridden for testing.
@@ -8,26 +17,24 @@
 -include(${rapids-cmake-dir}/cpm/rmm.cmake)
 -rapids_cpm_rmm(BUILD_EXPORT_SET cugraph-exports)
 -include(${rapids-cmake-dir}/cpm/cuco.cmake)
--rapids_cpm_cuco(BUILD_EXPORT_SET cugraph-exports INSTALL_EXPORT_SET cugraph-exports)
+-rapids_cpm_cuco(BUILD_EXPORT_SET cugraph-exports)
 -include(cmake/thirdparty/get_raft.cmake)
 +find_package(rapids_logger REQUIRED)
-+find_package(CCCL REQUIRED)
-+find_package(cuco REQUIRED)
 +find_package(nvtx3 REQUIRED)
 +find_package(rmm REQUIRED)
-+find_package(cuco REQUIRED)
 +find_package(raft REQUIRED)
++find_package(cuco REQUIRED)
  
- if (BUILD_CUGRAPH_MTMG_TESTS)
-     if(NOT TARGET ucx::ucp)
-@@ -497,6 +497,10 @@
+ # Always include cuVS for spectral clustering enhancements
+ include(cmake/thirdparty/get_cuvs.cmake)
+@@ -501,6 +499,10 @@
          rmm::rmm
          raft::raft
          $<BUILD_LOCAL_INTERFACE:CUDA::toolkit>
 +	CUDA::cublas
-+	CUDA::curand
-+	CUDA::cusolver
-+	CUDA::cusparse
++  	CUDA::curand
++  	CUDA::cusolver
++  	CUDA::cusparse
      PRIVATE
          ${COMPILED_RAFT_LIB}
-         cuco::cuco
+         ${CUVS_LIB}
