@@ -1,6 +1,6 @@
 pkgbase = python-ddddocr
 	pkgdesc = Universal verification code recognition OCR
-	pkgver = 1.6.0
+	pkgver = 1.6.1
 	pkgrel = 1
 	url = https://github.com/sml2h3/ddddocr
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-ddddocr
 	depends = python-onnxruntime
 	depends = python-opencv
 	depends = python-pillow
-	source = ddddocr-1.6.0.tar.gz::https://files.pythonhosted.org/packages/source/d/ddddocr/ddddocr-1.6.0.tar.gz
-	sha256sums = 5e7d741158d9242ab200c3d24be40797ccb84151a85151ffea10b4adf1fd8386
+	source = ddddocr-1.6.1.tar.gz::https://files.pythonhosted.org/packages/source/d/ddddocr/ddddocr-1.6.1.tar.gz
+	sha256sums = 1c59d84d63d8703c6c486465a32389c9e41dd92852c794c5e4c0181a5f82d43a
 
 pkgname = python-ddddocr
