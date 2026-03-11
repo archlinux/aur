@@ -26,6 +26,6 @@ pkgbase = foolhammer-mod-manager-bin
 	options = !strip
 	options = !debug
 	source_x86_64 = https://github.com/tpkee/foolhammer-mod-manager/releases/download/v0.1.2/Foolhammer.Mod.Manager_0.1.2_amd64.deb
-	sha256sums_x86_64 = 91713818de9a228cf653267435b05b69e2690406754dd7a31cd5c0fa7a6fa091
+	sha256sums_x86_64 = 923089869eb35280c78b3c5f5b3e76367f06d45d70d94245770578cafe8229fb
 
 pkgname = foolhammer-mod-manager-bin
