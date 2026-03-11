@@ -9,7 +9,7 @@ license=('MIT')
 depends=('electron')
 makedepends=('npm' 'nodejs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/drpt78/joy-browser/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("221775c36e3a89f4fe4be128447c01daf2b012927eb75052111b4153ba99d618")
+sha256sums=("b101971a8a598c2e0ffefef30421e39df3c49bcda00a3fd18c9de40c554d8614")
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
