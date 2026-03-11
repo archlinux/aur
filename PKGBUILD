@@ -1,6 +1,6 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
-pkgver=9.0.13.sdk311
+pkgver=9.0.14.sdk312
 _runtimever="${pkgver%.sdk*}"
 _dotnetver="${_runtimever%.*}"
 _sdkver="${_dotnetver}.${pkgver##"${_runtimever}.sdk"}"
@@ -48,9 +48,9 @@ done
 #     | select(.rid == ("linux-" + $arch))
 #     | .hash
 #   '
-sha512sums_aarch64=('58ce76d1cce856eb64a284b3b4a4d1675578be0d6ece4c54987c5531f3ade7096084d9d85ca1af2ee28361918e8dba24f230fecce9145a4ea67ecfb66e436d3c')
-sha512sums_x86_64=('ef6239f4b56a08bfd1eda82f877b9350d8b98d248a693c1ec4af85a2f09db19556f7cc4d4b2d3a8ff0cf9e0fcaebb3ec8daabe1774aff346740aacf4bb1e136f')
-sha512sums_armv7h=('80eb02ca92b200e9f801c7a344bd9de9abb262cb71332e406671edcdc7a9dd81fa97d629ba0db2d11f3a72d3fbb6da719ee330811feef611b9386df34a48957b')
+sha512sums_aarch64=('e52a99348d5097ae263049c14c74c93d9affbe0c38620c8ede2d1120faa0ede2f1347525ef409eedc95485da07704ddaad5857ea954e1451920f0373f787a817')
+sha512sums_x86_64=('430aac61d509b020adc17f0adb7e81b5be85046d49784ab2ff927ca9108625c5cdf64a0e185a09df234c2ac1ecfeadb5b10714f0d9b5e0c1f72b5b20fbed7440')
+sha512sums_armv7h=('c76bdcb0b489446685b708597756fa461dd5ccb5ac4ad7bfae0f55abd0897116af3e7a8baaf78a33d97f1109c4083945b0c19f789e25cd8392501d0c52b0c7de')
 
 # pkgver() {
 #   cd "${srcdir}"
