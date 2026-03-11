@@ -1,0 +1,18 @@
+pkgbase = kde-display-profiles
+	pkgdesc = GUI to save and load display profiles using kscreen-doctor
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Dawsani/kde-display-profiles
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = pyside6
+	depends = kscreen
+	source = kde-display-profiles-1.0.0.tar.gz::https://github.com/Dawsani/kde-display-profiles/archive/v1.0.0.tar.gz
+	sha256sums = e161775a605ee74426645b35d686ceb29ac2f700f2833efd5a98602e3d540089
+
+pkgname = kde-display-profiles
