@@ -1,4 +1,5 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Co-maintainer: edu4rdshl <edu4rdshl at protonmail dot com>
 
 _npmmodule=@github/copilot
 
@@ -6,7 +7,7 @@ pkgname=github-copilot-cli
 _pkgexec=copilot
 
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc="GitHub Copilot CLI brings the power of Copilot coding agent directly to your terminal."
 
@@ -22,13 +23,14 @@ provides=("${_pkgexec}")
 arch=("x86_64")
 options=(!strip emptydirs staticlibs zipman)
 
-license=("LicenseRef-GitHub")
+license=("LicenseRef-GitHub-Copilot")
 
-source=("https://registry.npmjs.org/${_npmmodule}/-/copilot-${pkgver}.tgz")
+source=("https://registry.npmjs.org/${_npmmodule}/-/copilot-${pkgver}.tgz"
+				"copilot-${pkgver}-changelog.md::https://raw.githubusercontent.com/github/copilot-cli/refs/tags/v${pkgver}/changelog.md")
 noextract=("copilot-${pkgver}.tgz")
-changelog="changelog.md"
 
-b2sums=('9a254c718f453a11280a217efb03b1a15585dc6014e9ceaab736e08c92ebe239af917e301cdbabe2a4a37eac6abd88db338829206167fd357533000b61d31c44')
+b2sums=('9a254c718f453a11280a217efb03b1a15585dc6014e9ceaab736e08c92ebe239af917e301cdbabe2a4a37eac6abd88db338829206167fd357533000b61d31c44'
+        '8bc908a28fc023a159ba4c92f9b48d268a409f3f3239e65749a0c5c7cfc43f78e074445eed7566aab0a4222dedfddd288f039412901277d6aa9a285860400e8a')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
@@ -63,8 +65,13 @@ package() {
 	msg2 "Install README file"
 	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/"
 	ln -sf "/usr/lib/node_modules/${_npmmodule}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	
+	msg2 "Install changelog file"
+	install -Dm755 "$srcdir/copilot-${pkgver}-changelog.md" "${pkgdir}/usr/share/doc/${pkgname}/changelog.md"
 
 	msg2 "Install LICENSE file"
 	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
 	ln -sf "/usr/lib/node_modules/${_npmmodule}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
 }
+
