@@ -1,6 +1,6 @@
 pkgbase = mayaflux
 	pkgdesc = Modern C++23 framework for real-time graphics and audio with JIT live coding
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/MayaFlux/MayaFlux
 	arch = x86_64
@@ -27,6 +27,8 @@ pkgbase = mayaflux
 	depends = vulkan-utility-libraries
 	depends = vulkan-validation-layers
 	depends = ffmpeg
+	depends = hidapi
+	depends = rtmidi
 	depends = stb
 	depends = magic_enum
 	optdepends = doxygen: for documentation generation
@@ -35,7 +37,7 @@ pkgbase = mayaflux
 	provides = mayaflux
 	conflicts = mayaflux-bin
 	conflicts = mayaflux-dev-bin
-	source = mayaflux-0.1.2.tar.gz::https://github.com/MayaFlux/MayaFlux/archive/refs/tags/v0.1.2.tar.gz
-	sha256sums = cda36d4b9148bbcb654cd68731323e3580d03589e72659da6ee5d0ba1e0a82fa
+	source = mayaflux-0.2.0.tar.gz::https://github.com/MayaFlux/MayaFlux/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 43d22fdf46461fe2bceb0aebc9bb000370aae5dd3f82c46caa335ffc2d94d8c0
 
 pkgname = mayaflux
