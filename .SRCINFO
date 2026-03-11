@@ -1,0 +1,16 @@
+pkgbase = kewt-git
+	pkgdesc = A minimalist, 100% POSIX, static site generator inspired by werc and kew
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://git.krzak.org/N0VA/kewt
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = sh
+	provides = kewt
+	conflicts = kewt
+	conflicts = kewt-bin
+	source = kewt-git::git+https://git.krzak.org/N0VA/kewt.git
+	sha256sums = SKIP
+
+pkgname = kewt-git
