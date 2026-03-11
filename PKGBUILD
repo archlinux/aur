@@ -1,0 +1,61 @@
+# Maintainer: Toorero <julius+git@jrueberg.de>
+
+pkgname=gnome-webapps-git
+pkgver=0.6.0.r0.g7482f2c
+pkgrel=1
+pkgdesc="Install websites as desktop applications on the GNOME desktop."
+arch=("any")
+
+url="https://codeberg.org/eyekay/webapps"
+license=("GPL-3.0-or-later")
+
+depends=(
+    "python"
+    "python-gobject"
+    "gtk4"
+    "dconf"
+    "libadwaita"
+    "libportal"
+    "libportal-gtk4"
+    "glib2"
+    "gdk-pixbuf2"
+    "libsoup3"
+    "webkitgtk-6.0"
+    "hicolor-icon-theme"
+)
+makedepends=(
+    "meson"
+    "git"
+    "gtk-update-icon-cache"
+    "desktop-file-utils"
+    "blueprint-compiler"
+    "appstream-glib"
+)
+
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}")
+
+source=("${pkgname%-git}::git+https://codeberg.org/eyekay/webapps.git")
+sha512sums=('SKIP')
+b2sums=('SKIP')
+
+build() {
+    arch-meson ${pkgname%-git} build
+    meson compile -C build
+}
+
+check() {
+    meson test -C build --print-errorlogs
+}
+
+package() {
+    meson install -C build --destdir "$pkgdir"
+
+    # fix permissions
+    chmod 755 "$pkgdir/usr/bin/webapps"
+}
+
+pkgver() {
+    cd "${pkgname%-git}"
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
