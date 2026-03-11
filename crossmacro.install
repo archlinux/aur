@@ -1,37 +1,108 @@
+_crossmacro_load_uinput() {
+    # Best effort: make uinput available immediately for the daemon.
+    # Persistent boot-time loading is handled by /usr/lib/modules-load.d/crossmacro.conf.
+    if command -v modprobe >/dev/null 2>&1; then
+        modprobe uinput >/dev/null 2>&1 || true
+    fi
+}
+
+_crossmacro_has_cmd() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+_crossmacro_has_systemd_runtime() {
+    [ -d /run/systemd/system ] && _crossmacro_has_cmd systemctl
+}
+
+_crossmacro_reload_udev() {
+    if _crossmacro_has_cmd udevadm; then
+        udevadm control --reload-rules >/dev/null 2>&1 || true
+        udevadm settle >/dev/null 2>&1 || true
+    fi
+}
+
 post_install() {
-    echo "Reloading systemd daemon..."
-    systemctl daemon-reload
-    udevadm control --reload-rules && udevadm trigger || true
+    if _crossmacro_has_systemd_runtime; then
+        echo "Reloading systemd daemon..."
+        systemctl daemon-reload >/dev/null 2>&1 || true
+    fi
+
+    _crossmacro_reload_udev
+    _crossmacro_load_uinput
+    if _crossmacro_has_cmd udevadm; then
+        udevadm trigger >/dev/null 2>&1 || true
+        udevadm settle >/dev/null 2>&1 || true
+    fi
+
+    auto_service_status="systemd runtime not detected; skipped auto enable/start"
+    if _crossmacro_has_systemd_runtime; then
+        if systemctl enable --now crossmacro.service >/dev/null 2>&1; then
+            auto_service_status="crossmacro.service enabled and started automatically"
+        else
+            auto_service_status="auto enable/start failed; run: sudo systemctl enable --now crossmacro.service"
+        fi
+    fi
+
+    installer_user=""
+    if [ -n "${SUDO_USER:-}" ] && [ "${SUDO_USER}" != "root" ]; then
+        installer_user="${SUDO_USER}"
+    elif [ -n "${PKEXEC_UID:-}" ] && [ "${PKEXEC_UID}" != "0" ]; then
+        installer_user="$(getent passwd "${PKEXEC_UID}" | cut -d: -f1)"
+    fi
+
+    if [ -n "$installer_user" ] && getent passwd "$installer_user" >/dev/null 2>&1; then
+        usermod -aG crossmacro "$installer_user" >/dev/null 2>&1 || true
+    fi
+
     echo "------------------------------------------------------------------------"
     echo "CrossMacro Daemon installed."
+    echo "Service: $auto_service_status"
     echo ""
-    echo "1. Enable and start the service:"
-    echo "   sudo systemctl enable --now crossmacro.service"
+    if [ -n "$installer_user" ]; then
+        echo "1. '$installer_user' was added to 'crossmacro' group (best effort)."
+        echo "   If needed, run: sudo usermod -aG crossmacro \$USER"
+    else
+        echo "1. Add yourself to the 'crossmacro' group to communicate with the daemon:"
+        echo "   sudo usermod -aG crossmacro \$USER"
+    fi
     echo ""
-    echo "2. Add yourself to the 'crossmacro' group to communicate with the daemon:"
-    echo "   sudo usermod -aG crossmacro \$USER"
-    echo ""
-    echo "3. Log out and log back in for group changes to take effect."
+    echo "2. Log out and log back in for group changes to take effect."
     echo "------------------------------------------------------------------------"
 }
 
 post_upgrade() {
-    systemctl daemon-reload
+    if _crossmacro_has_systemd_runtime; then
+        systemctl daemon-reload >/dev/null 2>&1 || true
+    fi
+
+    _crossmacro_reload_udev
+    _crossmacro_load_uinput
+    if _crossmacro_has_cmd udevadm; then
+        udevadm trigger >/dev/null 2>&1 || true
+        udevadm settle >/dev/null 2>&1 || true
+    fi
+
     # Only restart if service is active
-    if systemctl is-active --quiet crossmacro.service 2>/dev/null; then
-        systemctl try-restart crossmacro.service || true
+    if _crossmacro_has_systemd_runtime && systemctl is-active --quiet crossmacro.service 2>/dev/null; then
+        systemctl try-restart crossmacro.service >/dev/null 2>&1 || true
     fi
 }
 
 pre_remove() {
+    if ! _crossmacro_has_systemd_runtime; then
+        return 0
+    fi
+
     # Only disable if service exists and is enabled/active
     if systemctl is-enabled --quiet crossmacro.service 2>/dev/null || \
        systemctl is-active --quiet crossmacro.service 2>/dev/null; then
-        systemctl disable --now crossmacro.service || true
+        systemctl disable --now crossmacro.service >/dev/null 2>&1 || true
     fi
 }
 
 post_remove() {
-    systemctl daemon-reload
-    udevadm control --reload-rules && udevadm trigger || true
+    if _crossmacro_has_systemd_runtime; then
+        systemctl daemon-reload >/dev/null 2>&1 || true
+    fi
+    _crossmacro_reload_udev
 }

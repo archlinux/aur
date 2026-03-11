@@ -1,32 +1,45 @@
 # Maintainer: Zynix <crossmacro@zynix.net>
 pkgname=crossmacro
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="Cross-platform mouse and keyboard macro automation tool"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/alper-han/CrossMacro"
-license=('GPL-3.0')
-depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr' 'polkit' 'libxtst' 'systemd-libs')
+license=('GPL-3.0-only')
+depends=('glibc' 'gcc-libs' 'zlib' 'openssl' 'fontconfig' 'libx11' 'libxcursor' 'libxrandr' 'polkit' 'libxtst' 'systemd-libs' 'libxkbcommon')
 makedepends=('dotnet-sdk>=10.0' 'clang' 'zlib')
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v0.9.8.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/alper-han/CrossMacro/archive/v0.9.9.tar.gz"
         "crossmacro.sysusers"
         "crossmacro-modules.conf")
-sha256sums=('a7d477ebd717350354ff20331a0597ba6788376a37eecc7ba9d9ab45c58a590d'
+sha256sums=('6db0655aa63b1d610d6b8e72655a1c5b87f001d7cd7b3f06ebbd0ff971ab0950'
             'SKIP'
             'SKIP')  # sysusers and modules config checksums (local files)
 install=crossmacro.install
 
 build() {
-    cd "CrossMacro-0.9.8"
+    cd "CrossMacro-0.9.9"
+    local target_rid
+    case "${CARCH}" in
+        x86_64)
+            target_rid="linux-x64"
+            ;;
+        aarch64)
+            target_rid="linux-arm64"
+            ;;
+        *)
+            echo "Unsupported architecture: ${CARCH}" >&2
+            return 1
+            ;;
+    esac
     
     export DOTNET_SKIP_WORKLOAD_INTEGRITY_CHECK=1
-    dotnet restore -r linux-x64
+    dotnet restore -r "$target_rid"
     
     # Build UI
     dotnet publish src/CrossMacro.UI.Linux/CrossMacro.UI.Linux.csproj \
         -c Release \
-        -r linux-x64 \
+        -r "$target_rid" \
         --self-contained true \
         -p:PublishSingleFile=true \
         -p:PublishTrimmed=true \
@@ -39,12 +52,12 @@ build() {
     # Build Daemon
     dotnet publish src/CrossMacro.Daemon/CrossMacro.Daemon.csproj \
         -c Release \
-        -r linux-x64 \
+        -r "$target_rid" \
         -o publish-daemon/
 }
 
 package() {
-    cd "CrossMacro-0.9.8"
+    cd "CrossMacro-0.9.9"
     
     # Install UI files
     install -dm755 "$pkgdir/usr/lib/$pkgname"

@@ -1,11 +1,12 @@
 pkgbase = crossmacro
 	pkgdesc = Cross-platform mouse and keyboard macro automation tool
-	pkgver = 0.9.8
+	pkgver = 0.9.9
 	pkgrel = 1
 	url = https://github.com/alper-han/CrossMacro
 	install = crossmacro.install
 	arch = x86_64
-	license = GPL-3.0
+	arch = aarch64
+	license = GPL-3.0-only
 	makedepends = dotnet-sdk>=10.0
 	makedepends = clang
 	makedepends = zlib
@@ -20,11 +21,12 @@ pkgbase = crossmacro
 	depends = polkit
 	depends = libxtst
 	depends = systemd-libs
+	depends = libxkbcommon
 	options = !strip
-	source = crossmacro-0.9.8.tar.gz::https://github.com/alper-han/CrossMacro/archive/v0.9.8.tar.gz
+	source = crossmacro-0.9.9.tar.gz::https://github.com/alper-han/CrossMacro/archive/v0.9.9.tar.gz
 	source = crossmacro.sysusers
 	source = crossmacro-modules.conf
-	sha256sums = a7d477ebd717350354ff20331a0597ba6788376a37eecc7ba9d9ab45c58a590d
+	sha256sums = 6db0655aa63b1d610d6b8e72655a1c5b87f001d7cd7b3f06ebbd0ff971ab0950
 	sha256sums = SKIP
 	sha256sums = SKIP
 

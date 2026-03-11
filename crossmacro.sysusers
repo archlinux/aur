@@ -1,3 +1,5 @@
 g crossmacro -
+g uinput -
 u crossmacro - "CrossMacro Daemon User" / /usr/bin/nologin
 m crossmacro input
+m crossmacro uinput
