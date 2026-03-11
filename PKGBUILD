@@ -4,17 +4,21 @@ _pkgname=eden
 _pkgver=0.2.0-rc1
 pkgname="eden-opt"
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Eden Nintendo Switch emulator Clang PGO version (with additional patches for SteamOS)."
 arch=('x86_64' 'aarch64')
 url="https://git.eden-emu.dev/eden-emu/eden"
-license=('GPL3' AND 'BSD')
-depends=('zlib' 'qt6-base' 'mbedtls' 'spirv-tools'
-    'libfmt.so=12'
+license=('GPL-3.0-only AND BSL-1.0')
+depends=('zlib' 'qt6-base' 'mbedtls'
+    'opus'
+    'spirv-tools'
+    'libfmt.so=12-64'
     'libusb'
 )
-optdepends=('shared-mime-info'
-	'libsm'
+makedepends=(patchelf)
+optdepends=(
+    'shared-mime-info'
+    'libsm'
 )
 options=(!strip)
 _appimage="${_pkgname}-${pkgver}"
@@ -36,29 +40,24 @@ prepare() {
 # Fix .desktop file executable
 build() {
   sed -i \
-    -e "13a Path=/opt/${_pkgname}" \
     -e "s|^Exec=.*|Exec=/opt/${_pkgname}/bin/eden %f|" \
     -e "s|^TryExec=.*||" \
     -e "s|^Name=.*|Name=Eden Opt|" \
     squashfs-root/dev.eden_emu.eden.desktop
+  patchelf --set-rpath /opt/${_pkgname}/lib squashfs-root/shared/bin/eden*
 }
 
 package() {
     # file associations
     install -Dm644 dev.eden_emu.eden.xml "${pkgdir}/usr/share/mime/packages/dev.eden_emu.eden.xml"
     install -Dm755 squashfs-root/shared/bin/eden ${pkgdir}/opt/${_pkgname}/bin/eden
-    install -Dm755 squashfs-root/shared/bin/eden-cli ${pkgdir}/opt/${_pkgname}/bin/eden-cli
+    install -Dm755 squashfs-root/shared/bin/eden-cli ${pkgdir}/usr/bin/eden-cli
 
-    install -Dm755 /dev/stdin ${pkgdir}/usr/bin/eden-cli <<EOF
-#! /usr/bin/bash
-cd "/opt/${_pkgname}"
-./bin/eden-cli "\$@"
-EOF
     install -D squashfs-root/dev.eden_emu.eden.desktop \
-    	"${pkgdir}/usr/share/applications/${pkgname}.desktop"
+        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
     install -Dm644 squashfs-root/dev.eden_emu.eden.svg \
-    	"${pkgdir}/usr/share/icons/hicolor/scalable/apps/dev.eden_emu.eden.svg"
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/dev.eden_emu.eden.svg"
     install -d ${pkgdir}/opt/${_pkgname}/lib
     cp -a squashfs-root/shared/lib/libenet.so* ${pkgdir}/opt/${_pkgname}/lib/
     cp -a squashfs-root/shared/lib/libboost* ${pkgdir}/opt/${_pkgname}/lib/
@@ -66,5 +65,5 @@ EOF
 
 # Update mime database for file associations
 post_install() {
-  update-mime-database /usr/share/mime
+    update-mime-database /usr/share/mime
 }
