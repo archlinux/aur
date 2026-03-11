@@ -1,6 +1,6 @@
 pkgbase = s3man-bin
 	pkgdesc = Cross-platform S3 desktop manager
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/sarrietav-dev/s3man
 	install = s3man.install
@@ -18,9 +18,9 @@ pkgbase = s3man-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://github.com/sarrietav-dev/s3man/releases/download/v0.1.0/s3man_0.1.0_amd64.deb
+	source_x86_64 = https://github.com/sarrietav-dev/s3man/releases/download/v0.1.1/s3man_0.1.1_amd64.deb
 	sha256sums_x86_64 = 69a9f603468c0aaee09c70b2494bc475a87612d188f82870dee1c1cd6da02707
-	source_aarch64 = https://github.com/sarrietav-dev/s3man/releases/download/v0.1.0/s3man_0.1.0_arm64.deb
+	source_aarch64 = https://github.com/sarrietav-dev/s3man/releases/download/v0.1.1/s3man_0.1.1_arm64.deb
 	sha256sums_aarch64 = REPLACE_WITH_ARM64_SHA256
 
 pkgname = s3man-bin

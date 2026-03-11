@@ -1,5 +1,5 @@
 pkgname=s3man-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Cross-platform S3 desktop manager"
 arch=('x86_64' 'aarch64')
