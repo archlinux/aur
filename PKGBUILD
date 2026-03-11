@@ -16,4 +16,7 @@ sha256sums_x86_64=('a96fcf8a74867f250f3e287f83d4bf37c8e1bc946e635211bc131f7e38b0
 
 package() {
   bsdtar -xf "${srcdir}/data.tar.gz" -C "${pkgdir}"
+
+  # create a nicer command name
+  ln -s /usr/bin/prevu-desktop "${pkgdir}/usr/bin/prevu"
 }
