@@ -6,7 +6,7 @@
  [Service]
 +User=iocaine
  Type=notify
- ExecStart=/usr/bin/iocaine --config-path /etc/iocaine/config.kdl start
+ ExecStart=/usr/bin/iocaine --config-path /etc/iocaine/config.kdl --config-path /etc/iocaine/config.d/ start
  Restart=on-failure
 -DynamicUser=true
  UMask=0077
