@@ -1,6 +1,6 @@
 pkgbase = thrive-bin
 	pkgdesc = Game about evolution, in which the player guides a species from their origin as a microbe to the space age and beyond.
-	pkgver = 1.0.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://revolutionarygamesstudio.com
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = thrive-bin
 	provides = thrive
 	conflicts = thrive
 	options = !strip
-	source_x86_64 = https://github.com/Revolutionary-Games/Thrive/releases/download/v1.0.0/Thrive_1.0.0.0_linux_x11.7z
-	sha256sums_x86_64 = 95940af33b54a82ec3af63cc3c8dda863a5464d0ae8890927b4e32df1730d68b
+	source_x86_64 = https://github.com/Revolutionary-Games/Thrive/releases/download/v1.0.1/Thrive_1.0.1.0_linux_x11.7z
+	sha256sums_x86_64 = dae78bca5a4de9c68c24d8c74be3cca38785e3378aba56188f1e50bacca6d908
 
 pkgname = thrive-bin
