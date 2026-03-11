@@ -1,21 +1,21 @@
 pkgbase = pods
 	pkgdesc = Manage your Podman containers
-	pkgver = 2.2.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/marhkb/pods
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
 	checkdepends = appstream-glib
+	makedepends = blueprint-compiler
 	makedepends = cargo
 	makedepends = meson
+	depends = gtk4
 	depends = gtksourceview5
 	depends = libadwaita
 	depends = podman
 	depends = vte4
-	source = pods-2.2.0.tar.gz::https://github.com/marhkb/pods/archive/v2.2.0.tar.gz
-	source = disable-clippy-test.patch
-	sha256sums = ccd81545152637f1789eeb817226929ea43dbc83188450c90e7043c9f8878bae
-	sha256sums = 2f95097a625041cafb85f4f7f837539131ce2c212819e8030ed9623afb172030
+	source = pods-2.3.0.tar.gz::https://github.com/marhkb/pods/archive/v2.3.0.tar.gz
+	sha256sums = 4756243903db3de04712250b9ca0d964bf95fb906e7b7e9893db676780070dc2
 
 pkgname = pods
