@@ -2,7 +2,7 @@
 
 pkgname=pict-rs
 pkgver=0.5.19
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple image hosting service'
 arch=('x86_64')
 url='https://git.asonix.dog/asonix/pict-rs'
@@ -36,13 +36,13 @@ prepare() {
 build() {
   cd "$pkgname"
 
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 check() {
   cd "$pkgname"
 
-  cargo test --frozen --all-features
+  cargo test --frozen
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = pict-rs
 	pkgdesc = A simple image hosting service
 	pkgver = 0.5.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.asonix.dog/asonix/pict-rs
 	arch = x86_64
 	license = AGPL3
