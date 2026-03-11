@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('cargo' 'git')
 source=(https://github.com/lxp731/leolock/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('4864f2f7002f7e61ef7949c7c4e13d2693440baba59b6d69e2a047eb9ac28ff9')
+sha256sums=('a2e8d56750bd2d686157a955e17528bfa435382d695a5ed107e30ba39e718b46')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
