@@ -34,7 +34,7 @@ index 22ae6b0..5a93c2b 100755
      return res
  
 diff --git a/cecli/models.py b/cecli/models.py
-index d680d7e..cd81430 100644
+index d680d7e..c875617 100644
 --- a/cecli/models.py
 +++ b/cecli/models.py
 @@ -26,7 +26,7 @@ from cecli.helpers.nested import deep_merge
@@ -46,24 +46,7 @@ index d680d7e..cd81430 100644
  
  RETRY_TIMEOUT = 60
  COPY_PASTE_PREFIX = "cp:"
-@@ -956,7 +956,6 @@ class Model(ModelSettings):
-         max_tokens=None,
-         min_wait=0,
-         max_wait=2,
--        override_kwargs={},
-     ):
-         if os.environ.get("CECLI_SANITY_CHECK_TURNS"):
-             sanity_check_messages(messages)
-@@ -1055,8 +1054,6 @@ class Model(ModelSettings):
-                     if random.random() < 0.25:
-                         await asyncio.sleep(random.uniform(min_wait, max_wait))
- 
--                if override_kwargs:
--                    kwargs = deep_merge(kwargs, override_kwargs)
-                 res = await litellm.acompletion(**kwargs)
-                 return hash_object, res
-             except litellm.ContextWindowExceededError as err:
-@@ -1279,16 +1276,9 @@ async def check_for_dependencies(io, model_name):
+@@ -1279,16 +1279,9 @@ async def check_for_dependencies(io, model_name):
          model_name: The name of the model to check dependencies for
      """
      if model_name.startswith("bedrock/"):
