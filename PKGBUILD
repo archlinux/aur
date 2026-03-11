@@ -12,7 +12,7 @@ pkgname='py-cidr'
 pkgdesc='python module providing network / CIDR tools'
 _gitname='py-cidr'
 
-pkgver="3.12.0"
+pkgver="3.13.0"
 pkgrel=1
 url="https://github.com/gene-git/py-cidr"
 
@@ -21,8 +21,9 @@ license=(GPL-2.0-or-later)
 
 # To build docs uncommont sphinx/texlive
 depends=(
-    'python>=3.13' 
+    'python>=3.14' 
     'lockmgr'
+    'python-pytricia'
 )
 makedepends=(
     'git'
