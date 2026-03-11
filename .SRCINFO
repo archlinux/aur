@@ -1,6 +1,6 @@
 pkgbase = tcg-lightning-bin
 	pkgdesc = Magic: The Gathering deck building app with Scryfall, EDHREC, Archidekt, Commander Spellbook support and AI-powered suggestions
-	pkgver = 0.1.32
+	pkgver = 0.1.33
 	pkgrel = 1
 	url = https://github.com/Dimfred/tcg-lightning
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tcg-lightning-bin
 	depends = gtk3
 	provides = tcg-lightning
 	conflicts = tcg-lightning
-	source = tcg-lightning-bin-0.1.32.deb::https://github.com/Dimfred/tcg-lightning/releases/download/v0.1.32/linux-tcg-lightning_0.1.32_amd64.deb
-	sha256sums = 882191144a299c5d0138e2b2e3194d184a2b98fa0c078981b1c9a9a4e0a17090
+	source = tcg-lightning-bin-0.1.33.deb::https://github.com/Dimfred/tcg-lightning/releases/download/v0.1.33/linux-tcg-lightning_0.1.33_amd64.deb
+	sha256sums = d51d3e1a4a8227d94d803c2d3a4d463a6b23e98d979e2f63aa04699ef31a4855
 
 pkgname = tcg-lightning-bin
