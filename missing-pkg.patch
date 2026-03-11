@@ -1,18 +1,16 @@
---- src/cuvs-25.06.00/python/cuvs/CMakeLists.txt	2025-06-06 04:15:39.000000000 +0800
-+++ src/cuvs-25.06.00/python/cuvs/CMakeLists.txt.new	2025-06-23 22:50:34.755872655 +0800
-@@ -43,10 +43,18 @@
+--- python/cuvs/CMakeLists.txt	2026-02-05 05:46:31.000000000 +0800
++++ python/cuvs/CMakeLists.txt.new	2026-03-11 16:22:30.546984430 +0800
+@@ -36,10 +36,16 @@
  rapids_cpm_init()
  
  # --- cuVS ---#
 +find_package(nvtx3 REQUIRED)
 +find_package(rapids_logger REQUIRED)
-+find_package(CCCL REQUIRED)
 +find_package(cuco REQUIRED)
-+find_package(NvidiaCutlass REQUIRED)
 +find_package(rmm REQUIRED)
 +find_package(cuco REQUIRED)
 +find_package(raft REQUIRED)
- find_package(cuvs "${RAPIDS_VERSION}" REQUIRED COMPONENTS c_api)
+ find_package(cuvs "${RAPIDS_VERSION}" REQUIRED COMPONENTS cuvs_cpp_headers cuvs cuvs_shared c_api)
  
  # --- dlpack ---#
 -include(../../cpp/cmake/thirdparty/get_dlpack.cmake)

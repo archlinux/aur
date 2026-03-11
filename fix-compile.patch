@@ -1,0 +1,50 @@
+--- cpp/src/preprocessing/quantize/detail/pq.cuh	2026-02-05 05:46:31.000000000 +0800
++++ cpp/src/preprocessing/quantize/detail/pq.cuh.new	2026-03-11 17:24:50.281069832 +0800
+@@ -266,32 +266,22 @@
+   constexpr IdxT kBlockSize  = 256;
+   const IdxT threads_per_vec = std::min<IdxT>(raft::WarpSize, pq_n_centers);
+   dim3 threads(kBlockSize, 1, 1);
+-  auto kernel = [](uint32_t pq_bits) {
+-    if (pq_bits == 4) {
+-      return reconstruct_vectors_kernel<kBlockSize, 16, uint8_t, DataT, MathT, IdxT, LabelT>;
+-    } else if (pq_bits <= 8) {
+-      return reconstruct_vectors_kernel<kBlockSize,
+-                                        raft::WarpSize,
+-                                        uint8_t,
+-                                        DataT,
+-                                        MathT,
+-                                        IdxT,
+-                                        LabelT>;
+-    } else if (pq_bits <= 16) {
+-      return reconstruct_vectors_kernel<kBlockSize,
+-                                        raft::WarpSize,
+-                                        uint16_t,
+-                                        DataT,
+-                                        MathT,
+-                                        IdxT,
+-                                        LabelT>;
+-    } else {
+-      RAFT_FAIL("Invalid pq_bits (%u), the value must be within [4, 16]", pq_bits);
+-    }
+-  }(pq_bits);
+   dim3 blocks(raft::div_rounding_up_safe<IdxT>(n_rows, kBlockSize / threads_per_vec), 1, 1);
+-  kernel<<<blocks, threads, 0, stream>>>(
+-    codes, out_vectors, pq_centers, vq_centers, vq_labels, pq_bits, use_subspaces);
++  if (pq_bits == 4) {
++    reconstruct_vectors_kernel<kBlockSize, 16, uint8_t, DataT, MathT, IdxT, LabelT>
++        <<<blocks, threads, 0, stream>>>(
++            codes, out_vectors, pq_centers, vq_centers, vq_labels, pq_bits, use_subspaces);
++  } else if (pq_bits <= 8) {
++    reconstruct_vectors_kernel<kBlockSize, raft::WarpSize, uint8_t, DataT, MathT, IdxT, LabelT>
++        <<<blocks, threads, 0, stream>>>(
++            codes, out_vectors, pq_centers, vq_centers, vq_labels, pq_bits, use_subspaces);
++  } else if (pq_bits <= 16) {
++    reconstruct_vectors_kernel<kBlockSize, raft::WarpSize, uint16_t, DataT, MathT, IdxT, LabelT>
++        <<<blocks, threads, 0, stream>>>(
++            codes, out_vectors, pq_centers, vq_centers, vq_labels, pq_bits, use_subspaces);
++  } else {
++    RAFT_FAIL("Invalid pq_bits (%u), the value must be within [4, 16]", pq_bits);
++  }
+   RAFT_CUDA_TRY(cudaPeekAtLastError());
+ 
+   return codes;

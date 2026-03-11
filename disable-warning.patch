@@ -1,0 +1,12 @@
+--- cpp/cmake/modules/ConfigureCUDA.cmake	2026-02-05 05:46:31.000000000 +0800
++++ cpp/cmake/modules/ConfigureCUDA.cmake.new	2026-03-11 16:47:17.662108903 +0800
+@@ -12,6 +12,9 @@
+   )
+ endif()
+ 
++list(APPEND CUVS_CXX_FLAGS -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER)
++list(APPEND CUVS_CUDA_FLAGS -DCCCL_IGNORE_DEPRECATED_STREAM_REF_HEADER)
++
+ if(DISABLE_OPENMP)
+   list(APPEND CUVS_CXX_FLAGS -Wno-unknown-pragmas)
+   list(APPEND CUVS_CUDA_FLAGS -Xcompiler=-Wno-unknown-pragmas)

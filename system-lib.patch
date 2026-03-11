@@ -1,19 +1,20 @@
 --- cpp/CMakeLists.txt	2025-12-11 08:51:28.000000000 +0800
 +++ cpp/CMakeLists.txt.new	2025-12-24 15:34:18.535882660 +0800
-@@ -184,11 +184,13 @@
+@@ -184,13 +184,12 @@
  rapids_cpm_init()
  
  if(NOT BUILD_CPU_ONLY)
 -  # We must find CCCL ourselves before raft so that we get the right version.
 -  include(${rapids-cmake-dir}/cpm/cccl.cmake)
--  rapids_cpm_cccl(BUILD_EXPORT_SET cuvs-exports INSTALL_EXPORT_SET cuvs-exports)
+-  rapids_cpm_cccl()
 -  include(cmake/thirdparty/get_raft.cmake)
 -  include(cmake/thirdparty/get_cutlass.cmake)
-+  find_package(CCCL REQUIRED)
-+  find_package(NvidiaCutlass REQUIRED)
+-  include(${rapids-cmake-dir}/cpm/cuco.cmake)
+-  rapids_cpm_cuco()
 +  find_package(rapids_logger REQUIRED)
 +  find_package(rmm REQUIRED)
 +  find_package(nvtx3 REQUIRED)
++  include(cmake/thirdparty/get_cutlass.cmake)
 +  find_package(cuco REQUIRED)
 +  find_package(raft REQUIRED)
  endif()
