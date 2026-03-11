@@ -2,7 +2,7 @@
 
 pkgname=cvmfs-config-eessi
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="CernVM-FS configuration for the EESSI project (European Environment for Scientific Software Installations)"
 arch=('any')
 url="https://github.com/EESSI/filesystem-layer"
@@ -16,5 +16,5 @@ package() {
   cd "$srcdir"
   cp -a etc "$pkgdir/"
   install -dm644 "$pkgdir/etc/cvmfs/config.d/"
-  echo CVMFS_HTTP_PROXY="DIRECT" > "$pkgdir/etc/cvmfs/config.d/software.eessi.io.conf"
+  echo 'CVMFS_HTTP_PROXY="${CVMFS_HTTP_PROXY:=DIRECT}"' > "$pkgdir/etc/cvmfs/config.d/software.eessi.io.conf"
 }
