@@ -2,7 +2,7 @@
 
 pkgname="hyprqt6engine"
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="QT6 Theme Provider for Hyprland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/hyprwm/hyprqt6engine"
@@ -12,6 +12,12 @@ depends=(
 	hyprlang
 	hyprutils
 	qt6-base
+	# Provides KSharedConfig to parse KDE's .colors config file format
+	kconfig
+	# Uses KColorScheme::createApplicationPalette() to load .colors files as a QPalette
+	kcolorscheme
+	# Overrides createIconEngine() to use KIconEngine/KIconLoader for native KDE icon theme support
+	kiconthemes
 )
 makedepends=(
 	cmake
