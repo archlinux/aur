@@ -1,0 +1,5 @@
+*.zip
+*.md
+*.pkg.tar.zst
+src/
+pkg/

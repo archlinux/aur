@@ -4,7 +4,7 @@ _pkgname=filecxx
 pkgname=filecentipede-bin
 _zhsname='文件蜈蚣'
 pkgver=2.82
-pkgrel=14
+pkgrel=15
 pkgdesc="Cross-platform internet upload/download manager for HTTP(S), FTP(S), SSH, magnet-link, BitTorrent, m3u8, ed2k, and online videos. WebDAV client, FTP client, SSH client.(Prebuilt version)"
 arch=('x86_64')
 url="http://www.filecxx.com/"
@@ -38,7 +38,7 @@ sha256sums=('41932ebba913ed1de840ac32653d69fac67e44cf366b0fe7c58a4b50c1d9804d'
             '6aa65fae66d46a54e4c21d98b7fa1dd2c5c1375a9b8a685c3eb3045c98e3f64e'
             'd874c3921adda7ffdc222fe549775ff96c63906cf99d4f5b6483edbc34d56117'
             '791e8e5a033418e66fbc2e43da648636d4887fca34e580dddc5b59ad470d8605'
-            '1ac2e7785ff0fb97039ef0df0251ae667be87ea591438b80dbfe17b30e67c3d0')
+            'f1c1e0639087309987782abd238ecc3c08d6a258651ea39f472c0454eec45411')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
