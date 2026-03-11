@@ -1,0 +1,3 @@
+[perl-app-cmd]
+source = "cpan"
+cpan = "App-Cmd"
