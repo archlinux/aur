@@ -1,0 +1,14 @@
+pkgbase = minimalist-mp3-player
+	pkgdesc = A minimalist TUI MP3 player with FFT spectrum visualizer and BPM detection
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ardet696/MinimalistMP3Player
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	depends = sdl2
+	source = minimalist-mp3-player-1.0.0::git+https://github.com/ardet696/MinimalistMP3Player.git
+	sha256sums = SKIP
+
+pkgname = minimalist-mp3-player
