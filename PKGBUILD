@@ -2,7 +2,7 @@
 
 _name=llama-index-instrumentation
 pkgname=python-${_name}
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="This project provides the instrumentation hooks for observability in LlamaIndex"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-deprecated' 'python-pydantic')
 makedepends=('python-hatchling' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=()
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-$pkgver.tar.gz")
-sha256sums=('dc4957b64da0922060690e85a6be9698ac08e34e0f69e90b01364ddec4f3de7f')
+sha256sums=('6a8bd34b0c2fb9485971f952f3e5d63341eb87f8c55c82f2819a37e174494eb9')
 
 build() {
     cd "${srcdir}"/${_name//-/_}-${pkgver}
