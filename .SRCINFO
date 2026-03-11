@@ -1,0 +1,17 @@
+pkgbase = yt-transcriber
+	pkgdesc = CLI tool to extract YouTube video transcripts with timestamps
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/Faeziix/yt-transcriber
+	install = yt-transcriber.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = yt-dlp
+	options = !debug
+	source = yt-transcriber-0.0.2.tar.gz::https://github.com/Faeziix/yt-transcriber/archive/v0.0.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = yt-transcriber

@@ -1,0 +1,21 @@
+post_install() {
+    echo ""
+    echo "==> yt-transcriber installed successfully!"
+    echo ""
+    echo "==> Usage:"
+    echo "    yt-transcriber <URL>                    # Extract transcript to stdout"
+    echo "    yt-transcriber <URL> -o output.txt     # Save to file"
+    echo "    yt-transcriber <URL> -f srt            # Output as SRT subtitles"
+    echo "    yt-transcriber <URL> -f json           # Output as JSON"
+    echo "    yt-transcriber <URL> -l es             # Extract Spanish transcript"
+    echo "    yt-transcriber <URL> --no-timestamps   # Exclude timestamps"
+    echo ""
+    echo "==> For more info: yt-transcriber --help"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> yt-transcriber upgraded successfully!"
+    echo ""
+}
