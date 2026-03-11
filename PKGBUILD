@@ -1,7 +1,7 @@
 # Maintainer: Frédéric Logier <fredix@nomad.wf>
 _name=uncloud
 pkgname=uncloud
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 epoch=
 pkgdesc="A lightweight tool for deploying and managing containerised applications across a network of Docker hosts. Bridging the gap between Docker and Kubernetes ✨"
