@@ -2,12 +2,12 @@ post_install() {
     systemd-sysusers smp-server.conf 2>/dev/null || true
     systemd-tmpfiles --create smp-server.conf 2>/dev/null || true
 
-    # Не перезаписываем конфиг если он уже существует (миграция с ручной установки)
+    # Не перезаписываем конфиг если он уже существует
     if [[ ! -f /etc/opt/simplex/smp-server.ini ]]; then
-        mv /etc/opt/simplex/smp-server.ini.pacnew \
+        mv /etc/opt/simplex/smp-server.ini.new \
            /etc/opt/simplex/smp-server.ini 2>/dev/null || true
     else
-        rm -f /etc/opt/simplex/smp-server.ini.pacnew
+        rm -f /etc/opt/simplex/smp-server.ini.new
     fi
 
     chown smp:smp /etc/opt/simplex/smp-server.ini 2>/dev/null || true

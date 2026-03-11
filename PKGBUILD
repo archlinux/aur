@@ -8,7 +8,6 @@ pkgdesc="SMP relay server for SimpleX Chat - private messaging without user iden
 arch=('x86_64' 'aarch64')
 url="https://simplex.chat/docs/server.html"
 license=('AGPL-3.0-only')
-keywords=('simplex' 'simplex-chat' 'simplex-server')
 
 depends=('glibc' 'openssl')
 
@@ -24,7 +23,6 @@ optdepends=(
     'tor: Tor/onion address support and SOCKS proxy for .onion SMP servers'
 )
 
-backup=('etc/opt/simplex/smp-server.ini')
 install=smp-server.install
 
 source=(
@@ -84,6 +82,7 @@ package() {
     install -Dm644 "${srcdir}/smp-server.tmpfiles" \
         "${pkgdir}/usr/lib/tmpfiles.d/smp-server.conf"
 
+    # ini устанавливается в post_install только если файла ещё нет
     install -Dm640 "${srcdir}/smp-server.ini" \
-        "${pkgdir}/etc/opt/simplex/smp-server.ini"
+        "${pkgdir}/etc/opt/simplex/smp-server.ini.new"
 }

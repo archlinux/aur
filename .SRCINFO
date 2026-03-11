@@ -15,7 +15,6 @@ pkgbase = smp-server
 	depends = openssl
 	optdepends = caddy: reverse proxy for automated Let's Encrypt TLS certificates
 	optdepends = tor: Tor/onion address support and SOCKS proxy for .onion SMP servers
-	backup = etc/opt/simplex/smp-server.ini
 	source = simplexmq-6.4.5.tar.gz::https://github.com/simplex-chat/simplexmq/archive/refs/tags/v6.4.5.tar.gz
 	source = smp-server.service
 	source = smp-server.sysusers
