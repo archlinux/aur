@@ -12,16 +12,16 @@ provides=('tailor')
 conflicts=('tailor')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/wimpysworld/tailor/releases/download/v${pkgver}/tailor-linux-arm64")
-sha256sums_aarch64=('4e8ebb0ada0ffe1f17e68838f4a1d831ef4ada45fface6343eded90449e82030')
+sha256sums_aarch64=('6559cb30fb0084b78033a1af474b2d8453722a3477ab96ffaad787a5bc535042')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/wimpysworld/tailor/releases/download/v${pkgver}/tailor_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('360ac4ea7da331e15b2383fe4d7870c679905f5b80110ccb87be8a3f0370de95')
+sha256sums_aarch64=('188b724589ad32c6dcd2238214fb8d96918fc7688792444a95d4acb7a991d641')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/wimpysworld/tailor/releases/download/v${pkgver}/tailor-linux-amd64")
-sha256sums_x86_64=('45edaab6c0a503b69835ec26be89e19d928dfd767d131258561eb0580ea4628d')
+sha256sums_x86_64=('33851e1e98acf6369a172ce31f31532cfc32cb38471e2166a62fa549412ca337')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/wimpysworld/tailor/releases/download/v${pkgver}/tailor_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('04c0f81c8921e38c61c1a234a92824896f7701e76310a0d63202d2a385b85924')
+sha256sums_x86_64=('d2be15e1de2bf75ed03a52e6d029de9d96871f5fc7ba752a1fc1aae92c7bb856')
 
 package() {
   install -Dm755 tailor "${pkgdir}/usr/bin/tailor"
