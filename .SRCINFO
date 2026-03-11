@@ -1,13 +1,14 @@
 pkgbase = githubfetch-fuan
 	pkgdesc = A Neofetch-like CLI tool that displays github information on kitty
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Fuan200/githubfetch
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = kitty
-	source = githubfetch-fuan-0.1.0.tar.gz::https://github.com/Fuan200/githubfetch/archive/refs/tags/0.1.0.tar.gz
+	options = !lto
+	source = githubfetch-0.1.0.tar.gz::https://github.com/Fuan200/githubfetch/archive/refs/tags/0.1.0.tar.gz
 	sha256sums = d735fe0df5d10791fa7e9f5ce708661cdd4f63014462f2b913bd9368c5df3b3e
 
 pkgname = githubfetch-fuan
