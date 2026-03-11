@@ -21,7 +21,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/ECRomaneli/Handbook/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('26af5bc1648aa44cc05b2759aef0dadd3426239b84c185ffbf6092f62be49a88'
+sha256sums=('f7976e299204d9633bc8d8938df7a17a7429817fe06c22a55916b469b24f3002'
             'f0cf8bd391f773dca303159de1b19dbb8626d86f4aae45a548320031f113283b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
