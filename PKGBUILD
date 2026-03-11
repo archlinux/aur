@@ -47,6 +47,10 @@ prepare() {
 
   # run Python tests with the release binary
   sed -i 's|"target", directory, "hq"|"target", "release", "hq"|' tests/conftest.py
+
+  # avoid test failure due to slow domain resolution of non-existing hostname
+  # see https://github.com/It4innovations/hyperqueue/issues/963
+  sed -i 's|"nonexistingx:1"|"localhost:1"|' crates/tako/src/internal/datasrv/tests.rs
 }
 
 build() {
