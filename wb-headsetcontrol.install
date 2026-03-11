@@ -1,0 +1,17 @@
+post_install() {
+    echo "=== wb-headsetcontrol installed ==="
+    echo ""
+    echo "Configuring Waybar..."
+    bash /usr/share/wb-headsetcontrol/install-waybar-config.sh
+    echo ""
+    echo "✓ Installation complete!"
+    echo ""
+    echo "Default configuration created at ~/.config/wb-headsetcontrol/config.toml"
+    echo "Press 'c' in the TUI to configure keybindings and default sidetone."
+    echo ""
+    echo "Usage: wb-headsetcontrol"
+}
+
+post_upgrade() {
+    post_install
+}
