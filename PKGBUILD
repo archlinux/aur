@@ -1,13 +1,15 @@
 # Maintainer: Enbeon <actuallyenbeon at gmail dot com>
 pkgname=megadot
 pkgver=4.5.1_m.8
-pkgrel=2
+pkgrel=3
 pkgdesc="MegaCrit fork of Godot Engine"
 arch=('any')
 url="https://megadot.megacrit.com/"
 license=('custom')
-provides=("godot")
-conflicts=("godot")
+depends=(brotli ca-certificates embree freetype2 graphite libglvnd libspeechd libsquish libtheora libvorbis
+         libwebp libwslay libxcursor libxi libxinerama libxrandr miniupnpc openxr pcre2 dotnet-sdk-9.0)
+optdepends=('pipewire-alsa: for audio support'
+            'pulse-native-provider: for audio support')
 source=(
 	"$pkgname-$pkgver.zip::https://megadot.megacrit.com/${pkgver//_/-}/megadot-${pkgver//_/-}-linux-x86_64-editor-csharp.zip"
 	"megadot"
