@@ -1,18 +1,17 @@
 pkgbase = blender-benchmark-cli
 	pkgdesc = Benchmark based on Blender to perform hardware and software performance tests
-	pkgver = 3.1.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://opendata.blender.org/
 	arch = x86_64
 	license = GPL-3.0-or-later
 	license = CC0-1.0
 	depends = glibc
-	depends = gcc-libs
 	optdepends = rocm-hip-runtime: HIP renderer AMD support
 	optdepends = cuda: Cycles renderer Nvidia support
 	optdepends = intel-compute-runtime: Cycles renderer Intel support
 	options = !strip
-	source = https://download.blender.org/release/BlenderBenchmark2.0/launcher/benchmark-launcher-cli-3.1.0-linux.tar.gz
-	sha256sums = b1b616a12d3f5a3a39ee1322b6489cfb7c4f921f5eadda01d1ef9af422b7520f
+	source = https://download.blender.org/release/BlenderBenchmark2.0/launcher/benchmark-launcher-cli-3.3.0-linux.tar.gz
+	sha256sums = a15e062179e7bf5cd20d58081f3c84cf87d56df3f596ffb0a11383638139324a
 
 pkgname = blender-benchmark-cli
