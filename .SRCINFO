@@ -1,0 +1,17 @@
+pkgbase = modloader
+	pkgdesc = An alternative to modprobe with probing for non-exported symbols. Taken from KernelSU source code.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/shadichy/modloader
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	options = !strip
+	options = !emptydirs
+	source = modloader::git+https://github.com/shadichy/modloader
+	sha256sums = SKIP
+
+pkgname = modloader

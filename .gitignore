@@ -1,0 +1,9 @@
+# source code
+modloader
+
+# generated
+src
+pkg
+
+# artifacts
+/*.pkg.*
