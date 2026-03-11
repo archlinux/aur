@@ -1,7 +1,7 @@
 pkgbase = subminer-bin
 	pkgdesc = All-in-one sentence mining overlay with AnkiConnect and dictionary integration
 	pkgver = 0.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ksyasuda/SubMiner
 	arch = x86_64
 	license = GPL-3.0-or-later

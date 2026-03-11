@@ -2,7 +2,7 @@
 
 pkgname=subminer-bin
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc='All-in-one sentence mining overlay with AnkiConnect and dictionary integration'
 arch=('x86_64')
 url='https://github.com/ksyasuda/SubMiner'
@@ -46,19 +46,19 @@ package() {
 	install -dm755 "${pkgdir}/usr/bin"
 
 	install -Dm755 "${srcdir}/SubMiner-${pkgver}.AppImage" \
-		"${pkgdir}/usr/lib/subminer/SubMiner.AppImage"
-	install -dm755 "${pkgdir}/usr/lib/subminer"
-	ln -s '/usr/lib/subminer/SubMiner.AppImage' "${pkgdir}/usr/bin/SubMiner.AppImage"
+		"${pkgdir}/usr/lib/SubMiner/SubMiner.AppImage"
+	install -dm755 "${pkgdir}/usr/lib/SubMiner"
+	ln -s '/usr/lib/SubMiner/SubMiner.AppImage' "${pkgdir}/usr/bin/SubMiner.AppImage"
 
 	install -Dm755 "${srcdir}/subminer" "${pkgdir}/usr/bin/subminer"
 
 	install -Dm644 "${srcdir}/config.example.jsonc" \
-		"${pkgdir}/usr/share/subminer/config.example.jsonc"
+		"${pkgdir}/usr/share/SubMiner/config.example.jsonc"
 	install -Dm644 "${srcdir}/plugin/subminer.conf" \
-		"${pkgdir}/usr/share/subminer/plugin/subminer.conf"
+		"${pkgdir}/usr/share/SubMiner/plugin/subminer.conf"
 	install -Dm644 "${srcdir}/assets/themes/subminer.rasi" \
-		"${pkgdir}/usr/share/subminer/assets/themes/subminer.rasi"
+		"${pkgdir}/usr/share/SubMiner/themes/subminer.rasi"
 
-	install -dm755 "${pkgdir}/usr/share/subminer/plugin/subminer"
-	cp -a "${srcdir}/plugin/subminer/." "${pkgdir}/usr/share/subminer/plugin/subminer/"
+	install -dm755 "${pkgdir}/usr/share/SubMiner/plugin/subminer"
+	cp -a "${srcdir}/plugin/subminer/." "${pkgdir}/usr/share/SubMiner/plugin/subminer/"
 }
