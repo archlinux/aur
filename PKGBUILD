@@ -3,8 +3,8 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 pkgname=basilisk
-pkgver=2025.07.04
-platform=RB_20250703
+pkgver=2026.03.09
+platform=RB_20260301
 pkgrel=1
 pkgdesc="A XUL-based web-browser demonstrating the Unified XUL Platform (UXP)"
 arch=('x86_64')
@@ -16,8 +16,8 @@ options=('!emptydirs')
 source=("https://repo.palemoon.org/Basilisk-Dev/Basilisk/archive/v${pkgver}.tar.gz"
         "https://repo.palemoon.org/MoonchildProductions/UXP/archive/${platform}.tar.gz"
         "https://repo.palemoon.org/mcp-graveyard/Pale-Moon/raw/commit/54aeb54828aba7ab47d6ec4a2ee432589efa2b4f/palemoon/branding/unofficial/browser.desktop")
-sha256sums=('5c2edac0b2bc67ac9ef8a3b7a0a0d747bcb98faaa6ece3f7b44a11d9624dfc7c'
-            '7956766102fa20eab017a53a776d15be1611340d2167a92d05fd347c14f86792'
+sha256sums=('d01c6ae8570ae18a3315f231801d40a1644c8628073160237b31a99be4acbf48'
+            'eb100c1fba98fbbd39867efcee789eb81568ee9a95040a40f60b909ddb0dadb6'
             '9ffbaa46c277e3c9addc2ce61b17e8eccffd3860706ca75d4fd70eeaa6f5e380')
 
 prepare() {
@@ -69,8 +69,6 @@ ac_add_options --disable-debug
 ac_add_options --disable-debug-symbols
 ac_add_options --disable-tests
 ac_add_options --disable-dbus
-ac_add_options --disable-gconf
-ac_add_options --disable-gio
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-startup-notification
 ac_add_options --disable-updater
