@@ -5,7 +5,7 @@ _appprefix="/opt"
 _appdataprefix="/var/opt"
 
 pkgname=open-webui
-pkgver=0.8.9
+pkgver=0.8.10
 pkgrel=1
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
@@ -20,7 +20,7 @@ source=("git+https://github.com/open-webui/open-webui.git#tag=v$pkgver"
     "open-webui.conf")
 
 install="${pkgname}.install"
-b2sums=('8bcc5721ae3af02305e7849130a50f764e3f02688eb08e49b75ca586343c0a747148de821380b4a1f93b6cebc23724267fd902b1494f8bc58d9d67b6d0fcc335'
+b2sums=('de0b33a30a6630fcc783d9927aa049d400e7c5149f5bed134af01d73db445789ddfb2f29d6a408e5885aac3fcdf60f4f1c08c177ef513b6f20b554d4342bab3a'
         '1438948b9e31ccbcfe7eab5965de71b0fb23bc205579c6668cd91f805a17d5a0b2379afeac3148fb0701125e210eebb81f4bdd5496bc9b0d080766ecf71d32bf'
         '1538695adbe92507ef8c319f4aba22bd9c8843ecaebfaf8860485316564708809c92becc0d0634467b068e8d6b17992c2f210f1bdb344d72b0e01db243ac24ca')
 options=(!strip !debug)
