@@ -1,16 +1,16 @@
 # Maintainer: Ewout van Mansom <ewout@vanmansom.name>
 pkgname=siomon
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Hardware information and real-time sensor monitoring tool"
 arch=(any)
 url="https://github.com/level1techs/siomon"
 license=('MIT')
 optdepends=('nvidia-utils: GPU name, VRAM, clocks, temp, power, utilization'
             'dmidecode: Per-DIMM memory details'
-            'msr: CPU TDP, turbo ratios, C-states, perf limiters'
-            'i2c-dev: SPD/XMP memory timing data'
-            'drivetemp: SATA drive temperatures via hwmon')
+            'msr-tools: CPU TDP, turbo ratios, C-states, perf limiters'
+            'i2c-tools: SPD/XMP memory timing data'
+            'hddtemp: SATA drive temperatures via hwmon')
 makedepends=('git'
              'cargo')
 options=()
