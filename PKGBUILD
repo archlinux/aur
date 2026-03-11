@@ -1,4 +1,4 @@
-pkgname=linux-wallpaper-engine
+pkgname=linux-wallpaper-engine-git
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="Yet another linux wallpaper engine"
@@ -13,18 +13,18 @@ sha256sums=("SKIP")
 options=(!strip)
 
 prepare() {
-    cd "$pkgname"
+    cd "linux-wallpaperengine"
 
     rustup default stable
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/linux-wallpaperengine"
 
     cargo build --release
 }
 
 package() {
     cd "$srcdir/$pkgname"
-    install -Dm0755 "target/release/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm0755 "target/release/linux-wallpaper-engine" "${pkgdir}/usr/bin/linux-wallpaper-engine"
 }
