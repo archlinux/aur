@@ -1,6 +1,6 @@
 pkgbase = hypr_steam_watcher-git
 	pkgdesc = Automatically tags newly launched Steam games in Hyprland.
-	pkgver = 1.0.0.r12.g7559ae1
+	pkgver = 1.1.0.r0.gf6ed712
 	pkgrel = 1
 	url = https://github.com/LennardKittner/hypr_steam_watcher
 	arch = x86_64
