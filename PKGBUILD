@@ -4,7 +4,7 @@
 # Contributor: BlackCatDevel0per
 pkgname=solana
 epoch=1
-pkgver=3.1.9
+pkgver=3.1.10
 # https://github.com/anza-xyz/agave/blob/v$pkgver/scripts/spl-token-cli-version.sh
 _splTokenCliVersion=5.5.0
 pkgrel=1
@@ -20,7 +20,7 @@ source=(git+https://github.com/anza-xyz/agave.git#tag=v$pkgver
         $pkgname.sysusers
         $pkgname.tmpfiles
         $pkgname-sbf_sdk-path.patch)
-sha256sums=('743f7ef6f9abdb51aeb01936b58cf9608a72479a01cca087465feeae1f657eff'
+sha256sums=('613e6e7f5af5f2870e7ed6994d593ebfc394d78bbe3140b3fbf858cbab2b3f7c'
             'a9a0f6e495f68a77e61ce44a39bed42608bd3afd6aa5ddf09e124b50e17d41a6'
             'bf7e015436e3d15e70fc67f323bbd04163f79a4de7d06a254a5409bd031227b0'
             'a0f9ee2a24ab97da977eed1dd68a92165c2f2e6d5467462fe83c762031f4e02b'
