@@ -10,6 +10,7 @@ pkgbase = slacky-git
 	makedepends = nvm
 	makedepends = gendesk
 	makedepends = curl
+	makedepends = jq
 	depends = electron39
 	provides = slacky=0.0.8
 	conflicts = slacky
