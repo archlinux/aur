@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=at-link-console-bin
-pkgver=3.0.17
+pkgver=3.0.18
 pkgrel=1
 pkgdesc="Artery AT LINK Console 是一款基于 MCU Bootloader 的命令行应用程序。支持AT32 MCU「在电路编程」Console工具"
 arch=('x86_64')
@@ -28,7 +28,7 @@ options=('!strip' '!debug' '!lto')
 install=${pkgname}.install
 _pkg_file_name=Artery_ATLINK_Console_V${pkgver}.zip
 source=("${_pkg_file_name}::https://www.arterytek.com/download/Program%20and%20Debug/Artery_ATLINK_Console_Linux-${arch}_V${pkgver}.zip")
-sha256sums=('4fd8e395cfce4f9cbceff9482c11b04765231db7392ebcd72fd1a1a5253c5217')
+sha256sums=('173e25bfed9298dcb4c6b9eee9c1d361a86b8bac405c91bb54b9b6b8e91e219f')
 noextract=(${_pkg_file_name})
 
 package() {
