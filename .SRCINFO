@@ -1,6 +1,6 @@
 pkgbase = photon-geocoder
 	pkgdesc = Open source geocoder for openstreetmap data
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/komoot/photon
 	install = photon.install
@@ -11,7 +11,7 @@ pkgbase = photon-geocoder
 	depends = curl
 	depends = tar
 	depends = bzip2
-	source = git+https://github.com/komoot/photon.git#tag=1.0.0
+	source = git+https://github.com/komoot/photon.git#tag=1.0.1
 	source = photon.sh
 	source = photon.service
 	source = photon.sysusers
@@ -20,7 +20,7 @@ pkgbase = photon-geocoder
 	source = photon-update.sh
 	source = photon-update.service
 	source = photon-update.timer
-	sha256sums = b5fbd4ed55e1d18e61ca792e7c66c6cf3a9c56a4fee50c7a662b4da62a107359
+	sha256sums = 985d9fbb088c120ce78b831d1ac9b4a86aba1c1f0f6ecb2a89a56861267f8fb1
 	sha256sums = 77406e3a566fbde059272ccf0c15c4757729c11d5287848c2fb4d702c78cd8cc
 	sha256sums = dd8a0d46f3a71104a2d1b55d5a01d5d9ef9a35556a7daa3a531e28f011c67598
 	sha256sums = d51830a965f3136ffac27d91aed0f5364b9cd1e999e4fb88c7a625b8c4951fa4

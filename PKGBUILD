@@ -2,7 +2,7 @@
 
 _pkgname=photon
 pkgname=${_pkgname}-geocoder
-pkgver=1.0.0
+pkgver=1.0.1
 _minorpkgver=${pkgver%.*}
 pkgrel=1
 _jdkver=21 # https://github.com/komoot/photon/blob/master/.github/workflows/ci.yml#L13
@@ -22,7 +22,7 @@ source=("git+${url}.git#tag=${pkgver}"
         "photon-update.sh"
         "photon-update.service"
         "photon-update.timer")
-sha256sums=('b5fbd4ed55e1d18e61ca792e7c66c6cf3a9c56a4fee50c7a662b4da62a107359'
+sha256sums=('985d9fbb088c120ce78b831d1ac9b4a86aba1c1f0f6ecb2a89a56861267f8fb1'
             '77406e3a566fbde059272ccf0c15c4757729c11d5287848c2fb4d702c78cd8cc'
             'dd8a0d46f3a71104a2d1b55d5a01d5d9ef9a35556a7daa3a531e28f011c67598'
             'd51830a965f3136ffac27d91aed0f5364b9cd1e999e4fb88c7a625b8c4951fa4'

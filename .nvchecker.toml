@@ -1,3 +1,4 @@
 [photon-geocoder]
 source = "git"
 git = "https://github.com/komoot/photon.git"
+exclude_regex = '3\.3\.3'
