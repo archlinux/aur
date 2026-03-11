@@ -1,7 +1,7 @@
 # Maintainer: Olivier Le Moal <mail@olivierlemoal.fr>
 
 pkgname=yabridge-tui
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='A terminal user interface for managing yabridge (Windows VST/VST3/CLAP plugin bridge for Linux)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 optdepends=('yabridge-bin: required for actual plugin bridging and yabridgectl')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a7994fce332a5c85ca8ad461d97de109b1209425552eb7bfa7570f5ca1bdae77')
+sha256sums=('9c6a3f8e0c95d962de5b22d86585cecfb8392e48ae9cb48429517759f03bb18c')
 
 prepare() {
   cd "${pkgname}"
