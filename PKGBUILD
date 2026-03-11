@@ -1,7 +1,7 @@
 # Maintainer: Burgess Leo <liuxiaopeng731@gmail.com>
 pkgname=leolock
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="LeoLock - 安全的文件加密解密工具"
 arch=('x86_64')
 url="https://github.com/lxp731/leolock"
