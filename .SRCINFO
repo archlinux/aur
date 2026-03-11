@@ -1,6 +1,6 @@
 pkgbase = python-json_repair
 	pkgdesc = A python module to repair invalid JSON, commonly used to parse the output of LLMs
-	pkgver = 0.58.4
+	pkgver = 0.58.5
 	pkgrel = 1
 	url = https://github.com/mangiucugna/json_repair
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = python-json_repair
 	depends = python
 	optdepends = python-jsonschema: jsonschema support
 	optdepends = python-pydantic: pydantic support
-	source = json_repair-0.58.4.tar.gz::https://github.com/mangiucugna/json_repair/archive/refs/tags/v0.58.4.tar.gz
-	b2sums = 3c50212f04d233aed6c8226c4e88f3233c68faf6a5632fdd717387b758f452a3485ebd124a15e898af1fb412dbe3cb721eae1df84b3f3b00f1fe91f944706d56
+	source = json_repair-0.58.5.tar.gz::https://github.com/mangiucugna/json_repair/archive/refs/tags/v0.58.5.tar.gz
+	b2sums = e589d22d692f6131ea1c75aa9b6d186629304bd08c906902da3b8975e674ddbf81c990eb78e8f1ac0c2331ef78e25842aba6f9d2f8cd73b73e6b9889b715b5b4
 
 pkgname = python-json_repair
