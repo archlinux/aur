@@ -1,7 +1,7 @@
 # # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=musicfetch
 _app_id="net.fhannenheim.$pkgname"
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Download and tag music from YouTube"
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ checkdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=("$pkgname-$pkgver.tar.gz")
-sha256sums=('ef5855540de825e1f1fef9e42a0fa27ccdc3d50d89ae4f79f84977e8009c06a1')
+sha256sums=('f9d712264732340224ab71af94a9a0a54065eea53bd27e59f4e7d81cd7971781')
 
 prepare() {
   mkdir -p "$pkgname-$pkgver"
