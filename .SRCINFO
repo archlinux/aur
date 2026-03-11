@@ -8,6 +8,6 @@ pkgbase = cmdchamp
 	depends = bash
 	depends = bubblewrap
 	source = cmdchamp-1.0.tar.gz::https://github.com/mellen9999/cmdchamp/archive/refs/tags/v1.0.tar.gz
-	sha256sums = b72bef52ec67c99df8e788818bff6e590dc91416b186fe9c4a325db087edb34b
+	sha256sums = c8a883546793f637bbc23327ca4b424d5ccfcc6e7f4fb2bbed22c9acd08fb41b
 
 pkgname = cmdchamp
