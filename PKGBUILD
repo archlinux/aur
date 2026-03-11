@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=joy-browser
-pkgver=0.0.2
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="A custom Electron-based web browser for Linux"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('electron')
 makedepends=('npm' 'nodejs')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/drpt78/joy-browser/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('87477762101e1c0ca9005599737ebc2298a8a148d70528ce09a8ef2c798203fb')
+sha256sums=("d5558cd419c8d46bdc958064cb97f963d1ea793866414c025906ec15033512ed")
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
