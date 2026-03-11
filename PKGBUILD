@@ -12,7 +12,7 @@ source=("git+https://github.com/HaruNashii/Icebg.git")
 options=('!debug')
 sha256sums=('SKIP')
 provides=('icebg')
-conflicts=('icebg-git')
+conflicts=('icebg-git' 'icebg')
 
 pkgver() {
   cd "$srcdir/Icebg"

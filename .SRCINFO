@@ -11,6 +11,7 @@ pkgbase = icebg-git
 	depends = libgcc
 	provides = icebg
 	conflicts = icebg-git
+	conflicts = icebg
 	options = !debug
 	source = git+https://github.com/HaruNashii/Icebg.git
 	sha256sums = SKIP
