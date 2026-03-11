@@ -1,0 +1,14 @@
+pkgbase = portless
+	pkgdesc = Replace port numbers with stable, named .localhost URLs for local development. For humans and agents.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://port1355.dev
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = npm
+	depends = nodejs
+	options = !strip
+	source = https://registry.npmjs.org/portless/-/portless-0.6.0.tgz
+	sha256sums = 9e1b72333020075c5e54909e97d050d6dfa185ca3f8209999f829ce69db5db2d
+
+pkgname = portless
