@@ -1,6 +1,6 @@
 pkgbase = compresso-bin
 	pkgdesc = A free and open-sourced cross-platform video compression app powered by FFmpeg.(Prebuilt version)
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/codeforreal1/compressO
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = compresso-bin
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
 	depends = ffmpeg
-	provides = compresso=2.1.0
+	provides = compresso=2.1.1
 	conflicts = compresso
-	source = compresso-2.1.0.deb::https://github.com/codeforreal1/compressO/releases/download/2.1.0/CompressO_2.1.0_amd64.deb
-	sha256sums = cbe0c442ed1c967d59c188a5cdf52c80556eb02ea4beea93e704af0bed228e0d
+	source = compresso-2.1.1.deb::https://github.com/codeforreal1/compressO/releases/download/2.1.1/CompressO_2.1.1_amd64.deb
+	sha256sums = 5594e5818b83fe3f1e7aa4bb0ec2ca2bf92e362f2fc74fd16c47c0d9450f80ae
 
 pkgname = compresso-bin
