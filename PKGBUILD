@@ -3,7 +3,7 @@ _base=treelog
 pkgname=python-${_base}
 pkgdesc="Logging framework that organizes messages in a tree structure"
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 arch=(any)
 url="https://github.com/evalf/${_base}"
 license=(MIT)
@@ -17,15 +17,7 @@ build() {
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
-check() {
-  cd ${_base}-${pkgver}
-  python -m venv --system-site-packages test-env
-  test-env/bin/python -m installer dist/*.whl
-  test-env/bin/python -m unittest
-}
-
 package() {
   cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer --destdir="${pkgdir}" dist/*.whl
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

@@ -1,7 +1,7 @@
 pkgbase = python-treelog
 	pkgdesc = Logging framework that organizes messages in a tree structure
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/evalf/treelog
 	arch = any
 	license = MIT
