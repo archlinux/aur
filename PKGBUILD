@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 
 pkgname=plasma6-runners-markdown-bookmarks
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A Krunner plugin to open web links listed in a Markdown file"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=(krunner)
 makedepends=(cmake extra-cmake-modules kcmutils)
 source=("krunner-markdown-bookmarks.tar.gz")
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('328d5c202ae42ca1b73763021bb89895b11551845c60f62db55bdb79403f61d9')
+sha256sums=('7cad86c88d5d8f79de355de3edf10dbde9857e8d0da912ca1116d65cd8c15234')
 install=plasma6-runners-markdown-bookmarks.install
 
 build() {
