@@ -1,3 +1,4 @@
+# Maintainer: Ralph Torres <mail at ralphptorr dot es>
 # Maintainer: Aseem Athale <athaleaseem@gmail.com>
 
 _appprefix="/opt"
