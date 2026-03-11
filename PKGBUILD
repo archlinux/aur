@@ -76,6 +76,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         increase-fortify-level.patch
         enable-widevine-arm64.patch
         use-oauth2-client-switches-as-default.patch
+        glibc-2.42-baud-rate-fix.patch
         # ungoogled-chromium-xdg patches
         no-omnibox-suggestion-autocomplete.patch)
 sha256sums=('180d7db4217eb8b8291426cadd4926a448368f69a0253b1377c9f2cdd1aaffd8'
@@ -89,6 +90,7 @@ sha256sums=('180d7db4217eb8b8291426cadd4926a448368f69a0253b1377c9f2cdd1aaffd8'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '9c766b82d1143cb3413fe2057361bd2655e46287eacc2c6d6f8504b4c255647a'
             '9343afa1a4308a7cfb3317229f5aff7778688debcc03c4a74a85908aa1d0cc3a'
+            '1c1898f263eaacbc069a8e1a3e732852350350d1dad4cb1a6bba430e3b796cd0'
             'f4a93437b3e45518fc307606a98e5b4b1fb3471f44ce36a8ef83d57e5c90ca72')
 
 if (( _manual_clone )); then
@@ -183,6 +185,9 @@ prepare() {
 
   # enable widevine for arm64
   patch -Np1 -i ../enable-widevine-arm64.patch
+
+  # https://crbug.com/456677057
+  patch -Np1 -i ../glibc-2.42-baud-rate-fix.patch
 
   # Custom Patches
 
