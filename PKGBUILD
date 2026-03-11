@@ -1,7 +1,7 @@
 # Maintainer: Quadsam <sam@quadsam.com>
 pkgname='dmenustatus-git'
 pkgver=0.11.0.r0.33d41a7
-pkgrel=1
+pkgrel=2
 pkgdesc="A statusbar for dmenu written in C."
 arch=('x86_64')
 url="https://github.com/Quadsam/${pkgname%-git}"
@@ -22,10 +22,10 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	make MODE="release"
+	make MODE=release
 }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make PREFIX="/usr" DESTDIR="$pkgdir" MODE="release" install
+	make PREFIX="/usr" DESTDIR="$pkgdir" MODE=release install
 }
