@@ -1,4 +1,8 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: T.J. Townsend <blakkheim@archlinux.org>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Evangelos Foutras <foutrelis@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Florian Pritz <bluewind@archlinux.org>
 
 _dist=Function-Parameters
