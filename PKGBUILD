@@ -1,4 +1,4 @@
-# Maintainer:
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Heavysink <winstonwu91 at gmail>
 _base=csa
 pkgname=lib${_base}-git
