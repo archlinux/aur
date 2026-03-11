@@ -1,4 +1,4 @@
-pkgbase = linux-wallpaper-engine
+pkgbase = linux-wallpaper-engine-git
 	pkgdesc = Yet another linux wallpaper engine
 	pkgver = 0.1.0
 	pkgrel = 1
@@ -11,7 +11,7 @@ pkgbase = linux-wallpaper-engine
 	depends = lz4
 	provides = linux-wallpaper-engine
 	options = !strip
-	source = linux-wallpaper-engine::git+https://github.com/wqLouis/linux-wallpaperengine.git
+	source = linux-wallpaper-engine-git::git+https://github.com/wqLouis/linux-wallpaperengine.git
 	sha256sums = SKIP
 
-pkgname = linux-wallpaper-engine
+pkgname = linux-wallpaper-engine-git
