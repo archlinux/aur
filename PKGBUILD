@@ -1,6 +1,6 @@
 # Maintainer: Sink <mikaandjobb@gmail.com>
 pkgname=downpour
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A terminal UI for torrent clients (Transmission, qBittorrent, and internal librqbit engine)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'openssl')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5cbde70665049fb27ed6cf72c277fd666de3b70c2211e7a18dc2bb22da44b384')
+sha256sums=('7ea288b6060e637dde41eb0c32f4cc269b9fc2e074da8add2b978a156d3a5a0f')
 
 prepare() {
   cd "$pkgname"
