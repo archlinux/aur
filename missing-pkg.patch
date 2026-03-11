@@ -1,6 +1,6 @@
 --- src/ucxx-0.44.00/python/ucxx/CMakeLists.txt	2025-06-06 01:35:01.000000000 +0800
 +++ src/ucxx-0.44.00/python/ucxx/CMakeLists.txt.new	2025-07-02 19:01:04.135627107 +0800
-@@ -25,10 +25,16 @@
+@@ -25,10 +25,15 @@
  )
  
  option(FIND_UCXX_PYTHON
@@ -10,7 +10,6 @@
  option(UCXX_BUILD_TESTS "Configure CMake to build Cython tests" OFF)
  
 +
-+find_package(CCCL REQUIRED)
 +find_package(nvtx3 REQUIRED)
 +find_package(rapids_logger REQUIRED)
 +find_package(rmm REQUIRED)

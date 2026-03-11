@@ -2,7 +2,7 @@
 
 pkgbase=ucxx
 pkgname=(ucxx python-ucxx)
-pkgver=0.47.00
+pkgver=0.48.00
 pkgrel=1
 pkgdesc="UCXX is an object-oriented C++ interface for UCX, with native support for Python bindings."
 url="https://github.com/rapidsai/ucxx"
@@ -17,10 +17,10 @@ source=(
     "missing-pkg-py.patch"
 )
 sha256sums=(
-    'd11a987cf503e1c7c4af68c4d8189502088ecd7a9915f6e47558a70a2bbd7604'
-    'efc9079c1463270d0c4b1ec2b0b2c24a9c77ade14dccbbe528017ed07ec52c09'
-    'ea0613fc6785021571f0f10363e6bf72b6afdfd7d603cb20ca9d8868c9971ec5'
-    'aff4c0a03dd50e2edf41a6a39119857772904e1c34f0f898c2b0b8bef7141517'
+    '64b06d55a2f30024954729467b5e9e1c1244ea59b285c57eebc0269a5a996101'
+    'e09d4dbfe20d6aff2ea962ce22d403326b137a983bc41155f9523959555bfd62'
+    'c67de52077f6c9e5be639bf39f3a10d7e3f91acbc275cdf0df47b00261d41044'
+    '033dcabf8fca36c7658a375688182d6ce157327f4075c16e61679cd89d68a09e'
 )
 
 prepare() {
