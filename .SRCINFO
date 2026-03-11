@@ -1,0 +1,20 @@
+pkgbase = lazy-tmux
+	pkgdesc = Fast tmux session manager
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/alchemmist/lazy-tmux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	source_x86_64 = lazy-tmux_0.1.0_linux_amd64.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.1.0/lazy-tmux_0.1.0_linux_amd64.tar.gz
+	source_x86_64 = lazy-tmux_0.1.0_linux_amd64_fzf.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.1.0/lazy-tmux_0.1.0_linux_amd64_fzf.tar.gz
+	source_aarch64 = lazy-tmux_0.1.0_linux_arm64.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.1.0/lazy-tmux_0.1.0_linux_arm64.tar.gz
+	source_aarch64 = lazy-tmux_0.1.0_linux_arm64_fzf.tar.gz::https://github.com/alchemmist/lazy-tmux/releases/download/v0.1.0/lazy-tmux_0.1.0_linux_arm64_fzf.tar.gz
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
+
+pkgname = lazy-tmux
+
+pkgname = lazy-tmux-fzf
