@@ -10,7 +10,7 @@
 #     specify the library and include paths explicitly during configuration.
 
 pkgname=aws-lc
-pkgver=1.69.0
+pkgver=1.70.0
 pkgrel=1
 pkgdesc='General-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
@@ -34,7 +34,7 @@ optdepends=(
 )
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('5782436bdb6dbf4c7f9f46a9b87d7ff1409e6635c3684d65da2079600abc9df561de7b8c37ae145891c29b6f852ee029c9985c384eaf849a001829d334a97332')
+b2sums=('bf5c182c135e0ae5d2b6332474366b3749110203a76c2726b6a17fc5057bf52700c058116566d0f48613af2fdae727a38865f0f0fa39094b75865acde33222d4')
 options=('!lto' 'staticlibs')
 
 # Temporary: testing with Clang/LLVM toolchain
