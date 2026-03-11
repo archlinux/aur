@@ -1,0 +1,27 @@
+--- a/src-tauri/tauri.conf.json	2026-03-11 17:54:41.491088978 +0100
++++ b/src-tauri/tauri.conf.json	2026-03-11 17:54:52.112090987 +0100
+@@ -36,8 +36,7 @@
+       "deb": {
+         "depends": []
+       }
+-    },
+-    "createUpdaterArtifacts": "v1Compatible"
++    }
+   },
+   "build": {
+     "beforeBuildCommand": "cd cinny && npm run build",
+@@ -49,14 +48,6 @@
+   "mainBinaryName": "cinny",
+   "version": "4.11.2",
+   "identifier": "in.cinny.app",
+-  "plugins": {
+-    "updater": {
+-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDE2NDc3NDBGMTAzNTk1NUYKUldSZmxUVVFEM1JIRnRuMjVRTkFOQ21lUFI5KzRMU0s4OWtBS1RNRUVCNE9LcE9GcExNZ2M2NHoK",
+-      "endpoints": [
+-        "https://github.com/cinnyapp/cinny-desktop/releases/download/tauri/release.json"
+-      ]
+-    }
+-  },
+   "app": {
+     "security": {
+       "csp": "default-src 'self' blob: data: filesystem: ws: wss: http: https: tauri:; script-src 'self' 'unsafe-eval' 'unsafe-inline' blob: data: filesystem: ws: wss: http: https: tauri:; img-src 'self' data: blob: filesystem: http: https:; connect-src 'self' ipc: ws: wss: http: https: http://ipc.localhost"
