@@ -2,7 +2,7 @@
 # Maintainer: Pierre-Luc Rigaux 
 # Contributor: Pierre-Luc Rigaux 
 pkgname=sysd-manager
-pkgver=2.14.2
+pkgver=2.14.3
 pkgrel=1
 pkgdesc="A systemd GUI to manage service, timer, socket and other units."
 arch=("x86_64" "aarch64")
@@ -11,10 +11,10 @@ license=("GPL-3.0-or-later")
 depends=("gtk4" "libadwaita" "systemd-libs" "gtksourceview5" "gettext")
 makedepends=("cargo" "git")
 changelog=CHANGELOG.md
-_commit=24858e529cd09c251c8234ce860234fd87d8bbf7
+_commit=c42947470c7423da60b0bdd3f76aea4fd072306b
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/plrigaux/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 _pkgsrcdir=$pkgname-$pkgver
-sha256sums=('01362e9400a7c2bd8a24c492f8582a99d4defadc62d7afc07f2a1bb89c71f4d5')
+sha256sums=('418da82891eaf1159c8bdd51beb9cf77e30450a9bfa5969844721261f75c0813')
 
 prepare() {
 	cd $_pkgsrcdir
@@ -60,7 +60,7 @@ package() {
 
 	install -vDm644 "./sysd-manager-proxy/data/io.github.plrigaux.SysDManager.conf" -T  "$pkgdir/usr/share/dbus-1/system.d/io.github.plrigaux.SysDManager.conf"
 	sed -i -e s/{BUS_NAME}/io.github.plrigaux.SysDManager/ -e s/{DESTINATION}/io.github.plrigaux.SysDManager/ -e s/{ENVIRONMENT}// -e s/{INTERFACE}/io.github.plrigaux.SysDManager/ "$pkgdir/usr/share/dbus-1/system.d/io.github.plrigaux.SysDManager.conf"
-	install -vDm644 "./sysd-manager-proxy/data/io.github.plrigaux.SysDManager.policy" -t "$pkgdir/usr/share/polkit-1/actions"
+	install -vDm644 "./target/loc/io.github.plrigaux.SysDManager.policy" -t "$pkgdir/usr/share/polkit-1/actions"
 	install -vDm644 "./sysd-manager-proxy/data/50-io.github.plrigaux.SysDManager.rules" -t "$pkgdir/usr/share/polkit-1/rules.d"
 	install -vDm644 "./sysd-manager-proxy/data/sysd-manager-proxy.service" -T "$pkgdir/usr/lib/systemd/system/sysd-manager-proxy.service"
 	sed -i -e s/{BUS_NAME}/io.github.plrigaux.SysDManager/ -e s/{DESTINATION}/io.github.plrigaux.SysDManager/ -e s/{ENVIRONMENT}// -e s/{EXECUTABLE}/\\/usr\\/bin\\/sysd-manager-proxy/ -e s/{INTERFACE}/io.github.plrigaux.SysDManager/ -e s/{SERVICE_ID}/sysd-manager-proxy/ "$pkgdir/usr/lib/systemd/system/sysd-manager-proxy.service"
