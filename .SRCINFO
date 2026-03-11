@@ -1,0 +1,19 @@
+pkgbase = prevu
+	pkgdesc = Local-first preview social link cards instantly before deployment
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/dhanushk-offl/prevu
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	options = !strip
+	source_x86_64 = https://github.com/dhanushk-offl/prevu/releases/download/v0.1.5/PREVU_0.1.5_amd64.deb
+	sha256sums_x86_64 = a96fcf8a74867f250f3e287f83d4bf37c8e1bc946e635211bc131f7e38b0ac47
+
+pkgname = prevu
