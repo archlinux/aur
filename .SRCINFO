@@ -1,6 +1,6 @@
 pkgbase = karing-bin
 	pkgdesc = Simple & Powerful proxy utility, Support routing rules for clash/sing-box
-	pkgver = 1.2.14.1701
+	pkgver = 1.2.15.1806
 	pkgrel = 1
 	url = https://github.com/KaringX/karing
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = karing-bin
 	provides = karing
 	conflicts = karing
 	conflicts = karing-git
-	noextract = karing-bin-1.2.14.1701.deb
-	source = karing-bin-1.2.14.1701.deb::https://github.com/KaringX/karing/releases/download/v1.2.14.1701/karing_1.2.14.1701_linux_amd64.deb
-	sha256sums = 0996b71b9fdac393ee5a6a86a6ab528f2980c4be661d99d54554ed975c8850f1
+	noextract = karing-bin-1.2.15.1806.deb
+	source = karing-bin-1.2.15.1806.deb::https://github.com/KaringX/karing/releases/download/v1.2.15.1806/karing_1.2.15.1806_linux_amd64.deb
+	sha256sums = 34416f16833f32bb234f791c2996f10482b018472f8e45bc099757ed3ac3a477
 
 pkgname = karing-bin
