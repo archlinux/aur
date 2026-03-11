@@ -1,0 +1,18 @@
+pkgbase = siomon
+	pkgdesc = Hardware information and real-time sensor monitoring tool
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/level1techs/siomon
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	optdepends = nvidia-utils: GPU name, VRAM, clocks, temp, power, utilization
+	optdepends = dmidecode: Per-DIMM memory details
+	optdepends = msr: CPU TDP, turbo ratios, C-states, perf limiters
+	optdepends = i2c-dev: SPD/XMP memory timing data
+	optdepends = drivetemp: SATA drive temperatures via hwmon
+	source = siomon::git+https://github.com/level1techs/siomon.git#tag=50d3aaf788e2a54f33791193080c1297929f65f8
+	b2sums = a8e0488ba2302e7b40aed5a54dd1334c1dc2302622129f7307c8474608807e4932b376fb570aaa1df4303514b2c0bbe22d47eb56d0b154078f77f0038025abcf
+
+pkgname = siomon

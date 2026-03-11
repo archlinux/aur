@@ -1,0 +1,7 @@
+*.xz
+*.zst
+*.zip
+*.7z
+/pkg
+/src
+/siomon
