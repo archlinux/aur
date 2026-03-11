@@ -3,7 +3,7 @@
 _pkgauthor=bahdotsh
 _pkgname=mdterm
 pkgname=${_pkgname}-bin
-pkgdesc="A terminal-based Markdown viewer written in Rust. Renders Markdown files with syntax highlighting, styled formatting, and interactive navigation"
+pkgdesc="A terminal-based Markdown viewer written in Rust"
 
 pkgver=1.0.0
 pkgrel=1
