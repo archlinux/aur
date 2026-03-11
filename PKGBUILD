@@ -3,7 +3,7 @@
 _name=hyperqueue
 pkgbase=$_name-git
 pkgname=($pkgbase python-$pkgbase)
-pkgver=0.23.0.r69.g49bab80
+pkgver=0.25.0.r7.g50cd7b5
 pkgrel=1
 pkgdesc="Scheduler for sub-node tasks for HPC systems with batch scheduling"
 arch=(x86_64)
@@ -29,12 +29,18 @@ checkdepends=(
   python-requests
   python-aiohttp
   python-inline-snapshot
+  python-typing_extensions
   python-ruff
 )
 source=(
   git+$url
 )
 b2sums=('SKIP')
+
+# deselect highs from default features
+# https://github.com/It4innovations/hyperqueue/issues/1066#issuecomment-3968989734
+_cargo_features_flags=(--no-default-features --features dashboard,jemalloc,microlp)
+_maturin_features_flags=(--no-default-features --features microlp)
 
 pkgver() {
   cd $_name
@@ -58,16 +64,16 @@ build() {
   CFLAGS+=' -ffat-lto-objects'
 
   cd $_name
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release "${_cargo_features_flags[@]}"
 
   # build Python bindings
   cd crates/pyhq
-  maturin build --locked --release --target "$(rustc -vV | sed -n 's/host: //p')" --strip
+  maturin build --locked --release --target "$(rustc --print host-tuple)" --strip "${_maturin_features_flags[@]}"
 }
 
 check() {
   cd $_name
-  cargo test --frozen --release --all-features
+  cargo test --frozen --release "${_cargo_features_flags[@]}"
 
   # test Python bindings
   local pytest_options=(
