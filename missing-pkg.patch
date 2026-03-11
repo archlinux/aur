@@ -1,6 +1,6 @@
 --- src/cudf-25.08.00/python/pylibcudf/CMakeLists.txt.new	2025-08-07 13:29:20.031536268 +0800
 +++ src/cudf-25.08.00/python/pylibcudf/CMakeLists.txt	2025-08-07 13:29:54.404029932 +0800
-@@ -27,6 +27,12 @@
+@@ -27,6 +27,10 @@
  set(CMAKE_CXX_STANDARD_REQUIRED ON)
  
  find_package(cudf "${RAPIDS_VERSION}" REQUIRED)
@@ -8,8 +8,6 @@
 +find_package(nvtx3 REQUIRED)
 +find_package(rapids_logger REQUIRED)
 +find_package(kvikio REQUIRED)
-+find_package(CCCL REQUIRED)
-+find_package(cuco REQUIRED)
  
  # an installed version of libcudf doesn't provide the dlpack headers so we need to download dlpack
  # for the interop.pyx
