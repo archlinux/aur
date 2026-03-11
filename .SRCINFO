@@ -1,7 +1,7 @@
 pkgbase = nativmix
 	pkgdesc = Hardware-assisted volume mixer for PipeWire/PulseAudio with Arduino support
 	pkgver = 1.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/knoelliX/NativMix
 	install = nativmix.install
 	arch = any

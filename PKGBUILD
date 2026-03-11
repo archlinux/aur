@@ -1,7 +1,7 @@
 # Maintainer: Christian Möllmann (knoelliX) <moellix@knoellix.net>
 pkgname=nativmix
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Hardware-assisted volume mixer for PipeWire/PulseAudio with Arduino support"
 arch=('any')
 url="https://github.com/knoelliX/NativMix"
