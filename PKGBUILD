@@ -1,7 +1,7 @@
 # Maintainer: aarto <aarto@aur.archlinux.org>
 _pkgname=turso
 pkgname=$_pkgname-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='Turso Database is an in-process SQL database, compatible with SQLite.'
 url='https://github.com/tursodatabase/turso'
@@ -16,3 +16,4 @@ package() {
     install -Dm755 -t "$pkgdir/usr/bin/" ./**/${_pkgname}db
     install -Dm644 ./**/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums_x86_64=('7b0f8f60f8016a89689138d4ac846bb5a84f981a724166ad4a15ac77c7b45b0c')
