@@ -1,0 +1,5 @@
+pkg/
+src/
+autofs/
+*.zst
+*.log
