@@ -1,0 +1,19 @@
+# Sources
+/linux.part/
+/linux/
+ntfsplus-dkms/
+ntfsplus-dkms-git/
+*.gz
+
+# Download agent
+DLAGENTS
+
+# Build directories
+/src/
+/pkg/
+
+# Build artifacts
+*.pkg.tar*
+
+# Editor
+/.vscode/
