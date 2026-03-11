@@ -1,0 +1,28 @@
+pkgbase = fastflowlm
+	pkgdesc = Run LLMs on AMD Ryzen AI NPUs in minutes
+	pkgver = 0.9.35
+	pkgrel = 1
+	url = https://github.com/FastFlowLM/FastFlowLM
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = xrt
+	makedepends = boost
+	depends = xrt-plugin-amdxdna
+	depends = fftw
+	depends = curl
+	depends = ffmpeg
+	provides = fastflowlm=0.9.35
+	conflicts = fastflowlm-git
+	source = fastflowlm-0.9.35::git+https://github.com/FastFlowLM/FastFlowLM.git#commit=e85693a
+	source = git+https://github.com/mlc-ai/tokenizers-cpp.git#commit=34885cf
+	source = git+https://github.com/google/sentencepiece.git#commit=11051e3
+	source = git+https://github.com/msgpack/msgpack-c.git#commit=092bc69
+	b2sums = SKIP
+	b2sums = 0a0dcda55b15bc7851779e735e5dd205cf7711bec02819f4c5aa8d4088135461a09af00e9a38058afe26608ed34a12d254b7497f5e7abc5b916fade2be4f14d3
+	b2sums = 7b4077d327de3cd0d6214339ff052df3492926dc00440b8d1ed044a542af7866346794c62c45017a3463ba4d43bfcfe6b56c8da48b93be9b16d847052bf642c8
+	b2sums = 7f13c65354be3268d41a86436bc4242ccc41573646a883f50ab466a9115ba448b93b7dd028a0e74d20e0dd8fea8b47cff261ec34f3bc9d5b003d239c7966d053
+
+pkgname = fastflowlm
