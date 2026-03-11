@@ -1,7 +1,7 @@
 # Maintainer: Christian Möllmann (knoelliX) <moellix@knoellix.net>
 pkgname=nativmix
 pkgver=1.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Hardware-assisted volume mixer for PipeWire/PulseAudio with Arduino support"
 arch=('any')
 url="https://github.com/knoelliX/NativMix"
@@ -33,7 +33,7 @@ install=nativmix.install
 # This URL is dynamic for AUR/Actions. 
 # For local building, you can still use your local files.
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/knoelliX/NativMix/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d80e1afe8cd5ac22b10ffec77eb3f5a75b227c19eee2fdede6f878caf23b42cc')
+sha256sums=('78a513256a6d12c74f2876ec1f7c1479b3d796e065c6ca543909f06629a37007')
 
 _enter_source() {
     if [ -d "$srcdir/NativMix-${pkgver}" ]; then
@@ -90,3 +90,4 @@ package() {
     # 6. License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+sha256sums=('78a513256a6d12c74f2876ec1f7c1479b3d796e065c6ca543909f06629a37007')
