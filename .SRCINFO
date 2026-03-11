@@ -1,13 +1,13 @@
 pkgbase = ap-bin
 	pkgdesc = CLI tool that packs C assignment submissions for Canvas upload
-	pkgver = 0.1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/cat-forgor/AssignmentPacker
 	arch = x86_64
 	license = MIT
 	provides = ap
 	conflicts = ap
-	source = https://github.com/cat-forgor/AssignmentPacker/releases/download/v0.1.0/ap-linux-x64
-	sha256sums = 340655f5fb337fd998d199419da212dfe5883b95ec0c6ecb61c2b14ab3b1591b
+	source = https://github.com/cat-forgor/AssignmentPacker/releases/download/v1.0.1/ap-linux-x64
+	sha256sums = 47df19c257e59037217bdb84955d3ae1d4bf3ec42db3147382c82065fc569dc2
 
 pkgname = ap-bin
