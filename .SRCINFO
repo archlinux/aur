@@ -1,0 +1,15 @@
+pkgbase = php-legacy-pdo_sqlsrv
+	pkgdesc = Microsoft SQL Server PDO driver for PHP (php-legacy).
+	pkgver = 5.13.0
+	pkgrel = 1
+	url = https://pecl.php.net/package/pdo_sqlsrv/
+	arch = x86_64
+	license = MIT
+	makedepends = php-legacy
+	depends = php-legacy
+	depends = msodbcsql
+	backup = etc/php-legacy/conf.d/pdo_sqlsrv.ini
+	source = https://pecl.php.net/get/pdo_sqlsrv-5.13.0.tgz
+	sha256sums = efa859bcc48d97f25268dbdebf1db25f25610d7fa36b3ee91073c1c99411e24c
+
+pkgname = php-legacy-pdo_sqlsrv
