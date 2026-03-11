@@ -1,4 +1,4 @@
-pkgbase = python-apollo
+pkgbase = python-apollo-fpga
 	pkgdesc = Microcontroller-based FPGA/JTAG programmer
 	pkgver = 1.1.1
 	pkgrel = 2
@@ -24,4 +24,4 @@ pkgbase = python-apollo
 	source = apollo-1.1.1.tar.gz::https://github.com/greatscottgadgets/apollo/archive/v1.1.1.tar.gz
 	sha512sums = 67475167f379a988543b5e2740f7de6fdc6dc86daa6f2cf4687224609bae5db7555a26d75b5d7bff721c3809476962a0c3bc084f0e96e437188e123c3d2226d8
 
-pkgname = python-apollo
+pkgname = python-apollo-fpga

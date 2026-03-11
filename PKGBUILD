@@ -1,6 +1,6 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
-pkgname=python-apollo
+pkgname=python-apollo-fpga
 _gitpkgname=apollo
 pkgver=1.1.1
 pkgrel=2

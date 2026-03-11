@@ -1,4 +1,4 @@
-[python-apollo]
+[python-apollo-fpga]
 source = "github"
 github = "greatscottgadgets/apollo"
 prefix = "v"
