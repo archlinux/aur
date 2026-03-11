@@ -20,6 +20,61 @@ index 4a659770..4f9c421b 100644
      /*!
       * Grab ownership of device, ownership is required to do modeset.
       *
+diff --git a/kernel-open/conftest.sh b/kernel-open/conftest.sh
+index 59f3624d..fda89c18 100755
+--- a/kernel-open/conftest.sh
++++ b/kernel-open/conftest.sh
+@@ -1307,6 +1307,21 @@ compile_test() {
+             compile_check_conftest "$CODE" "NV_GET_DEV_PAGEMAP_HAS_PGMAP_ARG" "" "types"
+         ;;
+ 
++        dev_pagemap_ops_have_folio_free)
++            #
++            # Determine if struct dev_pagemap_ops has a folio_free() callback.
++            #
++            CODE="
++            #include <linux/memremap.h>
++
++            static const struct dev_pagemap_ops conftest_dev_pagemap_ops = {
++                .folio_free = NULL,
++            };
++            "
++
++            compile_check_conftest "$CODE" "NV_DEV_PAGEMAP_OPS_HAVE_FOLIO_FREE" "" "types"
++        ;;
++
+         drm_sysfs_connector_property_event)
+             #
+             # Determine if drm_sysfs_connector_property_event() is present.
+@@ -3341,6 +3356,28 @@ compile_test() {
+             fi
+         ;;
+ 
++        zone_device_page_init)
++            #
++            # Determine how many arguments zone_device_page_init() takes.
++            #
++
++            echo "$CONFTEST_PREAMBLE
++            #include <linux/memremap.h>
++            void conftest_zone_device_page_init(void) {
++                zone_device_page_init(NULL, NULL, 0);
++            }" > conftest$$.c
++
++            $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
++            rm -f conftest$$.c
++
++            if [ -f conftest$$.o ]; then
++                rm -f conftest$$.o
++                echo "#define NV_ZONE_DEVICE_PAGE_INIT_ARGUMENT_COUNT 3" | append_conftest "functions"
++            else
++                echo "#define NV_ZONE_DEVICE_PAGE_INIT_ARGUMENT_COUNT 1" | append_conftest "functions"
++            fi
++        ;;
++
+         icc_get)
+             #
+             # Determine if icc_get() function is present
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-drv.c b/kernel-open/nvidia-drm/nvidia-drm-drv.c
 index e9ef77c9..3b3e39fe 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-drv.c
@@ -306,6 +361,25 @@ index d350ef75..668fa8c2 100644
  void nvKmsGetProcFiles(const nvkms_procfs_file_t **ppProcFiles);
  
  NvBool nvKmsReadConf(const char *buff, size_t size,
+diff --git a/kernel-open/nvidia-uvm/nvidia-uvm.Kbuild b/kernel-open/nvidia-uvm/nvidia-uvm.Kbuild
+index c33f5c2f..d5c7fba2 100644
+--- a/kernel-open/nvidia-uvm/nvidia-uvm.Kbuild
++++ b/kernel-open/nvidia-uvm/nvidia-uvm.Kbuild
+@@ -56,12 +56,14 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += iommu_is_dma_domain
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += for_each_sgtable_dma_page
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += folio_test_swapcache
+ NV_CONFTEST_FUNCTION_COMPILE_TESTS += page_pgmap
++NV_CONFTEST_FUNCTION_COMPILE_TESTS += zone_device_page_init
+ 
+ NV_CONFTEST_TYPE_COMPILE_TESTS += mmu_notifier_ops_arch_invalidate_secondary_tlbs
+ NV_CONFTEST_TYPE_COMPILE_TESTS += migrate_vma_added_flags
+ NV_CONFTEST_TYPE_COMPILE_TESTS += migrate_device_range
+ NV_CONFTEST_TYPE_COMPILE_TESTS += handle_mm_fault_has_pt_regs_arg
+ NV_CONFTEST_TYPE_COMPILE_TESTS += get_dev_pagemap_has_pgmap_arg
++NV_CONFTEST_TYPE_COMPILE_TESTS += dev_pagemap_ops_have_folio_free
+ NV_CONFTEST_TYPE_COMPILE_TESTS += mempolicy_has_unified_nodes
+ NV_CONFTEST_TYPE_COMPILE_TESTS += mempolicy_has_home_node
+ NV_CONFTEST_TYPE_COMPILE_TESTS += mpol_preferred_many_present
 diff --git a/kernel-open/nvidia-uvm/uvm_channel.c b/kernel-open/nvidia-uvm/uvm_channel.c
 index 93eed89f..e7e71e05 100644
 --- a/kernel-open/nvidia-uvm/uvm_channel.c
@@ -711,8 +785,44 @@ index 478c1aaf..dae09f31 100644
      if (completed >= value) {
          // atomic64_read() doesn't imply any memory barriers and we need all
          // subsequent memory accesses in this thread to be ordered after the
+diff --git a/kernel-open/nvidia-uvm/uvm_hmm.c b/kernel-open/nvidia-uvm/uvm_hmm.c
+index 9b676f97..a63991d1 100644
+--- a/kernel-open/nvidia-uvm/uvm_hmm.c
++++ b/kernel-open/nvidia-uvm/uvm_hmm.c
+@@ -2140,7 +2140,7 @@ static void fill_dst_pfn(uvm_va_block_t *va_block,
+ 
+         UVM_ASSERT(!page_count(dpage));
+         UVM_ASSERT(!dpage->zone_device_data);
+-        zone_device_page_init(dpage);
++        uvm_zone_device_page_init(dpage, page_pgmap(dpage));
+         dpage->zone_device_data = gpu_chunk;
+         atomic64_inc(&va_block->hmm.va_space->hmm.allocated_page_count);
+     }
+diff --git a/kernel-open/nvidia-uvm/uvm_linux.h b/kernel-open/nvidia-uvm/uvm_linux.h
+index a841b91e..729a34fd 100644
+--- a/kernel-open/nvidia-uvm/uvm_linux.h
++++ b/kernel-open/nvidia-uvm/uvm_linux.h
+@@ -121,6 +121,18 @@
+     #define NV_GET_DEV_PAGEMAP get_dev_pagemap
+ #endif
+ 
++#if NV_ZONE_DEVICE_PAGE_INIT_ARGUMENT_COUNT > 1
++static inline void uvm_zone_device_page_init(struct page *page, struct dev_pagemap *pgmap)
++{
++    zone_device_page_init(page, pgmap, 0);
++}
++#else
++static inline void uvm_zone_device_page_init(struct page *page, struct dev_pagemap *pgmap)
++{
++    zone_device_page_init(page);
++}
++#endif
++
+ /* Return a nanosecond-precise value */
+ static inline NvU64 NV_GETTIME(void)
+ {
 diff --git a/kernel-open/nvidia-uvm/uvm_pmm_gpu.c b/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
-index 97ff13dc..ab63e3f9 100644
+index 97ff13dc..2f6a968e 100644
 --- a/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
 +++ b/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
 @@ -166,6 +166,7 @@
@@ -738,7 +848,80 @@ index 97ff13dc..ab63e3f9 100644
      nvUvmInterfacePmaFreePages(pmm->pma, &chunk->address, 1, UVM_CHUNK_SIZE_MAX, flags);
  
      uvm_up_read(&pmm->pma_lock);
-@@ -3360,7 +3369,9 @@ void uvm_pmm_gpu_device_p2p_init(uvm_parent_gpu_t *parent_gpu)
+@@ -3042,6 +3051,13 @@ static void devmem_page_free(struct page *page)
+                                  &gpu->pmm.root_chunks.va_block_lazy_free_q_item);
+ }
+ 
++#if defined(NV_DEV_PAGEMAP_OPS_HAVE_FOLIO_FREE)
++static void devmem_folio_free(struct folio *folio)
++{
++    devmem_page_free(&folio->page);
++}
++#endif
++
+ // This is called by HMM when the CPU faults on a ZONE_DEVICE private entry.
+ static vm_fault_t devmem_fault(struct vm_fault *vmf)
+ {
+@@ -3060,7 +3076,11 @@ static vm_fault_t devmem_fault_entry(struct vm_fault *vmf)
+ 
+ static const struct dev_pagemap_ops uvm_pmm_devmem_ops =
+ {
++#if defined(NV_DEV_PAGEMAP_OPS_HAVE_FOLIO_FREE)
++    .folio_free = devmem_folio_free,
++#else
+     .page_free = devmem_page_free,
++#endif
+     .migrate_to_ram = devmem_fault_entry,
+ };
+ 
+@@ -3155,6 +3175,13 @@ static void device_p2p_page_free(struct page *page)
+     page->zone_device_data = NULL;
+     nv_kref_put(&p2p_mem->refcount, device_p2p_page_free_wake);
+ }
++
++#if defined(NV_DEV_PAGEMAP_OPS_HAVE_FOLIO_FREE)
++static void device_p2p_folio_free(struct folio *folio)
++{
++    device_p2p_page_free(&folio->page);
++}
++#endif
+ #endif
+ 
+ #if UVM_CDMM_PAGES_SUPPORTED()
+@@ -3163,9 +3190,20 @@ static void device_coherent_page_free(struct page *page)
+     device_p2p_page_free(page);
+ }
+ 
++#if defined(NV_DEV_PAGEMAP_OPS_HAVE_FOLIO_FREE)
++static void device_coherent_folio_free(struct folio *folio)
++{
++    device_coherent_page_free(&folio->page);
++}
++#endif
++
+ static const struct dev_pagemap_ops uvm_device_coherent_pgmap_ops =
+ {
++#if defined(NV_DEV_PAGEMAP_OPS_HAVE_FOLIO_FREE)
++    .folio_free = device_coherent_folio_free,
++#else
+     .page_free = device_coherent_page_free,
++#endif
+ };
+ 
+ static NV_STATUS uvm_pmm_cdmm_init(uvm_parent_gpu_t *parent_gpu)
+@@ -3302,7 +3340,11 @@ static bool uvm_pmm_gpu_check_orphan_pages(uvm_pmm_gpu_t *pmm)
+ 
+ static const struct dev_pagemap_ops uvm_device_p2p_pgmap_ops =
+ {
++#if defined(NV_DEV_PAGEMAP_OPS_HAVE_FOLIO_FREE)
++    .folio_free = device_p2p_folio_free,
++#else
+     .page_free = device_p2p_page_free,
++#endif
+ };
+ 
+ void uvm_pmm_gpu_device_p2p_init(uvm_parent_gpu_t *parent_gpu)
+@@ -3360,7 +3402,9 @@ void uvm_pmm_gpu_device_p2p_init(uvm_parent_gpu_t *parent_gpu)
  
  void uvm_pmm_gpu_device_p2p_deinit(uvm_parent_gpu_t *parent_gpu)
  {
@@ -749,7 +932,7 @@ index 97ff13dc..ab63e3f9 100644
          struct page *p2p_page = pfn_to_page(pci_resource_start(parent_gpu->pci_dev,
                                              uvm_device_p2p_static_bar(parent_gpu)) >> PAGE_SHIFT);
  
-@@ -3565,7 +3576,10 @@ void uvm_pmm_gpu_deinit(uvm_pmm_gpu_t *pmm)
+@@ -3565,7 +3609,10 @@ void uvm_pmm_gpu_deinit(uvm_pmm_gpu_t *pmm)
      UVM_ASSERT(uvm_pmm_gpu_check_orphan_pages(pmm));
      release_free_root_chunks(pmm);
  
