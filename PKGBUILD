@@ -1,11 +1,12 @@
-# Maintainer: Estela ad Astra <i at estela dot cn>
+# Maintainer: Estela ad Astra <i at estela dot moe>
 
 pkgname=xcursor-mizuki
 pkgver=1.0
 pkgrel=1
 pkgdesc="Cursor theme of Akiyama Mizuki from Project Sekai Colorful Stage."
 arch=('any')
-license=('GPL')
+url="https://l9525.booth.pm/items/3905447"
+license=('custom:free-of-charge')
 depends=('libxcursor')
 source=("xcursor-mizuki.tar.gz")
 
