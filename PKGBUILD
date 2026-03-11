@@ -1,6 +1,6 @@
 # Maintainer: Roberto Alsina <roberto.alsina@gmail.com>
 pkgname=crycco
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A literate programming tool"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('crystal' 'shards')
 options=()
 install=install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ralsina/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('37b6d4e37bfb54f677298240727e98152f21db39114e25a541924ff33269a1cd')
+sha256sums=('6acc4699117c98675d996b4588b9d1e47ec299feef2c65b9072ad46f4701f7a1')
 
 prepare() {
 	cd "$pkgname-$pkgver"
