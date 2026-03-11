@@ -4,7 +4,7 @@
 pkgname=feishin-bin
 pkgdesc='A player for your self-hosted music server'
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url='https://github.com/jeffvli/feishin'
 license=('GPL3')

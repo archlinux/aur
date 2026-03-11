@@ -1,7 +1,7 @@
 pkgbase = feishin-bin
 	pkgdesc = A player for your self-hosted music server
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jeffvli/feishin
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = feishin-bin
 	sha256sums = 818f9700176bc3fbb3a00a1e6e41c933114f2a6029c8143a88239c5b9fc5c194
 	source_x86_64 = feishin-bin-1.8.0-x86_64.tar.xz::https://github.com/jeffvli/feishin/releases/download/v1.8.0/Feishin-linux-x64.tar.xz
 	sha256sums_x86_64 = f0161c47d6e429cabc53349f3e4d690c7e6a63e44537fe785813140f1c6c28fc
-	source_aarch64 = feishin-bin-1.8.0-x86_64.tar.xz::https://github.com/jeffvli/feishin/releases/download/v1.8.0/Feishin-linux-arm64.tar.xz
+	source_aarch64 = feishin-bin-1.8.0-aarch64.tar.xz::https://github.com/jeffvli/feishin/releases/download/v1.8.0/Feishin-linux-arm64.tar.xz
 	sha256sums_aarch64 = 283176e2ee7d3d777bcacc2873be575ac94782e5291bb82c7bb4ba8e5e6af0e5
 
 pkgname = feishin-bin
