@@ -2,9 +2,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 pkgname=plasmazones-bin
-pkgver=1.15.15
+pkgver=2.0.0
 pkgrel=1
-pkgdesc='FancyZones-style window tiling for KDE Plasma (binary)'
+pkgdesc='Window tiling and autotiling for KDE Plasma (binary)'
 arch=('x86_64')
 url='https://github.com/fuddlesworth/PlasmaZones'
 license=('GPL-3.0-or-later')
