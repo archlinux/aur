@@ -1,6 +1,6 @@
 # Maintainer: czyt <czytcn@gmail.com>
 pkgname=emdash-app
-pkgver=0.4.27
+pkgver=0.4.29
 pkgrel=1
 pkgdesc="Run multiple coding agents in parallel"
 arch=('x86_64')
@@ -24,7 +24,7 @@ provides=('emdash')
 conflicts=('emdash' 'emdash-bin')
 options=('!strip' '!debug')
 source=("${pkgname}-${pkgver}.deb::https://github.com/generalaction/emdash/releases/download/v${pkgver}/emdash-amd64.deb")
-sha256sums=('ba34a4210baba3fd30a65424904b1fe1a5c2f6d51baa32b192229318fb32017e')
+sha256sums=('bd2d4986b25ed0eacd3f92840d25a72dde7a9eb1f9e4cd17541561883acf6e92')
 
 package() {
   # Extract files from the .deb package.
