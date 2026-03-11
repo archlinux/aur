@@ -1,6 +1,6 @@
 pkgbase = audiveris
 	pkgdesc = Music score OMR engine
-	pkgver = 5.9.0
+	pkgver = 5.10.0
 	pkgrel = 1
 	url = https://github.com/Audiveris/audiveris
 	arch = any
@@ -13,10 +13,10 @@ pkgbase = audiveris
 	depends = hicolor-icon-theme
 	optdepends = tesseract-data: For languages other than english
 	optdepends = audiveris-doc: Documentation for Audiveris
-	source = audiveris-5.9.0.tar.gz::https://github.com/Audiveris/audiveris/archive/refs/tags/5.9.0.tar.gz
+	source = audiveris-5.10.0.tar.gz::https://github.com/Audiveris/audiveris/archive/refs/tags/5.10.0.tar.gz
 	source = audiveris
 	source = audiveris.desktop
-	sha256sums = eb310fd87be8c5f1b226317c1a6a40178852febe6b1ba00e058f8f27d3c8d5f8
+	sha256sums = e33cee6379472aad81b6693a7287988d3267148b8c055a5169b7aa965bbae404
 	sha256sums = 3f5f7b788f32f74f3ae97b4c0e43d66a7664a94e2fcf262ea2b049c03265403a
 	sha256sums = a3c48eeac63cfdf0b0e3fdf788d48d51d4bc32291fdeb159c2244178604a28aa
 
