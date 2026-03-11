@@ -2,18 +2,32 @@
 
 pkgname="mcut"
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for detecting and resolving intersections between two surface meshes"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://cutdigital.github.io/mcut.site/"
 _url="https://github.com/cutdigital/${pkgname}"
-license=('LGPL-3.0-or-later')
-depends=('gcc-libs' 'glibc')
-makedepends=('cmake>=3.13')
-provides=("lib${pkgname}.so")
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "${pkgname}_gcc15_cstdint.patch")
+license=(
+  'LGPL-3.0-or-later'
+)
+depends=(
+  'glibc'
+  'libgcc'
+  'libstdc++'
+)
+makedepends=(
+  'cmake>=3.13'
+)
+provides=(
+  "lib${pkgname}.so"
+)
+_pkgsrc="${_url##*/}-${pkgver}"
+source=(
+  "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+  "${pkgname}_gcc15_cstdint.patch"
+)
 b2sums=('35cbe68e36489b720fcfbee98d2b9d5f41cbf37313f170300c6ef27b3dc49f25370429a2517f01b6d605f4a46d9e809d7f8ec076f30756359b9941316ebea52d'
         '859e0153c3ee6c44812d7db27b1e57699bfa63f6ad9eb67c09fd3ec8d81de54a3a30956f26a3719b0c3df4d3a40c766f486b83b7048dab0c022cf534d2e20821')
 
@@ -23,35 +37,32 @@ prepare() {
 }
 
 build() {
-  local cmake_options=(
+  local cmake_arguments=(
     -G 'Unix Makefiles'
-    -B "${_pkgsrc}/build"
-    -S "${_pkgsrc}"
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
-    -D MCUT_BUILD_AS_SHARED_LIB=ON
-    -D MCUT_BUILD_DOCUMENTATION=OFF
-    -D MCUT_BUILD_TESTS=OFF
-    -D MCUT_BUILD_TUTORIALS=OFF
+    -D MCUT_BUILD_AS_SHARED_LIB:BOOL=ON
+    -D MCUT_BUILD_DOCUMENTATION:BOOL=OFF
+    -D MCUT_BUILD_TESTS:BOOL=OFF
+    -D MCUT_BUILD_TUTORIALS:BOOL=OFF
   )
 
   cd "${srcdir}"
-  cmake "${cmake_options[@]}"
+  cmake -B "${_pkgsrc}/build" -S "${_pkgsrc}" "${cmake_arguments[@]}"
   cmake --build "${_pkgsrc}/build"
 }
 
 # check() {
-#   local excluded_tests=""
-#   local ctest_flags=(
-#     --test-dir "${_pkgsrc}/build"
+#   local ctest_exclude_regex=""
+#   local ctest_arguments=(
 #     --output-on-failure
 #     --parallel $(nproc)
 #     --exclude-regex "${excluded_tests}"
 #   )
 # 
 #   cd "${srcdir}"
-#   ctest "${ctest_flags[@]}"
+#   ctest --test-dir "${_pkgsrc}/build" "${ctest_arguments[@]}"
 # 
 
 package() {
