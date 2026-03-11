@@ -1,7 +1,7 @@
 pkgbase = curl-c-ares
 	pkgdesc = command line tool and library for transferring data with URLs (built with c-ares)
-	pkgver = 8.18.0
-	pkgrel = 2
+	pkgver = 8.19.0
+	pkgrel = 1
 	url = https://curl.se/
 	arch = x86_64
 	license = MIT
@@ -38,8 +38,8 @@ pkgbase = curl-c-ares
 	conflicts = curl
 	conflicts = wcurl
 	replaces = wcurl
-	source = git+https://github.com/curl/curl.git#tag=curl-8_18_0?signed
+	source = git+https://github.com/curl/curl.git#tag=curl-8_19_0?signed
 	validpgpkeys = 27EDEAF22F3ABCEB50DB9A125CC908FDB71E12C2
-	sha512sums = 304ddac52ee589f6e6e168747d720ea1ecc6f66adb469b70e0a1ee7c9f0bf5ed12e2538647bb746b8a6aaa1e3860e9b00ed29cd2079ca2e4c25a2afc972f0e6a
+	sha512sums = a10e4408f1e89462880646a29b4f947d6b8eaf81d323a86046fe5eb8622005e4499684609f7c352729f5f88933275b650e7285cf2e8299ff966df03f70a33637
 
 pkgname = curl-c-ares
