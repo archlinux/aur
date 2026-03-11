@@ -2,19 +2,22 @@
 pkgname=dpsprep-git
 _pkgbasename="${pkgname%-git}"
 pkgver=2.4.2.r149.de66b41
-pkgrel=1.314
+pkgrel=2.314
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
 license=('GPL-3.0-only')
 provides=("$_pkgbasename")
 conflicts=("$_pkgbasename")
-checkdepends=(python ruff mypy python-types-pillow python-types-fpdf2 python-pytest python-pytest-image-diff)
+checkdepends=(ruff mypy python-types-pillow python-types-fpdf2 python-pytest python-pytest-image-diff)
 makedepends=(git python-uv-build python-build python-installer python-wheel)
 depends=(python python-djvulibre-python
          python-click python-loguru python-pillow
          python-fpdf2 python-pdfrw)
-optdepends=('ocrmypdf: Optional OCR and advanced PDF optimization')
+optdepends=(
+ 'ocrmypdf: Optional OCR and advanced PDF optimization'
+ 'jbig2enc: Advanced compression of bitonal images'
+)
 source=("git+https://github.com/kcroker/dpsprep.git")
 md5sums=('SKIP')
 
