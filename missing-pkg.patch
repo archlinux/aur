@@ -1,12 +1,11 @@
 --- src/rmm-25.06.00/python/rmm/CMakeLists.txt	2025-06-05 23:28:03.000000000 +0800
 +++ src/rmm-25.06.00/python/rmm/CMakeLists.txt.new	2025-06-23 01:10:11.257352727 +0800
-@@ -22,6 +22,9 @@
+@@ -22,6 +22,8 @@
    LANGUAGES CXX)
  
  find_package(rmm "${RAPIDS_VERSION}" REQUIRED)
 +find_package(rapids_logger REQUIRED)
 +find_package(nvtx3 REQUIRED)
-+find_package(CCCL REQUIRED)
  
  include(rapids-cython-core)
  rapids_cython_init()
