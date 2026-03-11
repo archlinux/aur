@@ -2,17 +2,16 @@
 _base=scikit-fem
 pkgname=python-${_base}
 pkgdesc="Simple finite element assemblers"
-pkgver=12.0.0
+pkgver=12.0.1
 pkgrel=1
 arch=(x86_64)
 url="https://github.com/kinnala/${_base}"
 license=(BSD-3-Clause)
 depends=(python-scipy)
-makedepends=(python-build python-installer python-setuptools python-wheel)
-checkdepends=(python-pytest python-matplotlib python-meshio
-  python-h5py-openmpi python-jax python-pyamg python-shapely)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz)
-sha512sums=('b267149fcc004d1e0c86f2b4f8efaf955e43ddad82977712b59a736e0002e09c3f1f366611f344ec97da09487e6fee6d52db2e30b00fd9e22cd133d1c55fc550')
+makedepends=(python-build python-installer python-flit-core)
+checkdepends=(python-pytest python-matplotlib python-meshio python-jax python-shapely)
+source=(https://pypi.org/packages/source/${_base::1}/${_base//-/_}/${_base//-/_}-${pkgver}.tar.gz)
+sha512sums=('e0840763e57e097e249ceb2156218f090902c4e8588251d979458136b72d26559d82a3833430f06a9c80f82ecdfcce863af45fdff2fb83a7044ab8dc73348c05')
 
 build() {
   cd ${_base}-${pkgver}
