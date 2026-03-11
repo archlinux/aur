@@ -1,0 +1,14 @@
+pkgbase = yabridge-tui
+	pkgdesc = A terminal user interface for managing yabridge (Windows VST/VST3/CLAP plugin bridge for Linux)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://codeberg.org/olivierlm/yabridge-tui
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	depends = gcc-libs
+	optdepends = yabridge-bin: required for actual plugin bridging and yabridgectl
+	source = yabridge-tui-0.1.tar.gz::https://codeberg.org/olivierlm/yabridge-tui/archive/v0.1.tar.gz
+	sha256sums = a7994fce332a5c85ca8ad461d97de109b1209425552eb7bfa7570f5ca1bdae77
+
+pkgname = yabridge-tui
