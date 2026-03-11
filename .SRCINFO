@@ -1,10 +1,10 @@
 pkgbase = python-wd-fw-update-git
 	pkgdesc = Updates the firmware of Western Digital SSDs
 	pkgver = 2.3.0.r0.gf36c723
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/not-a-feature/wd_fw_update
 	arch = any
-	license = GPL3
+	license = GPL-3.0-only
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
@@ -15,11 +15,12 @@ pkgbase = python-wd-fw-update-git
 	depends = python
 	depends = python-inquirer
 	depends = python-requests
+	depends = python-urllib3
 	depends = sudo
 	provides = python-wd-fw-update
-	provides = wd_fw_update
+	provides = wd-fw-update
 	conflicts = python-wd-fw-update
-	conflicts = wd_fw_update
+	conflicts = wd-fw-update
 	source = wd_fw_update::git+https://github.com/not-a-feature/wd_fw_update.git
 	sha256sums = SKIP
 
