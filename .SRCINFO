@@ -1,7 +1,7 @@
 pkgbase = claude-code
 	pkgdesc = An agentic coding tool that lives in your terminal
 	pkgver = 2.1.73
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/anthropics/claude-code
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = claude-code
 	optdepends = ripgrep: enhanced file search
 	optdepends = tmux: agent team split panes
 	options = !strip
-	source = LICENSE::https://code.claude.com/docs/en/legal-and-compliance.md
+	source = cc-legal-20260311::https://code.claude.com/docs/en/legal-and-compliance.md
 	sha256sums = 2ef1dd8d49a9d3f2b4a027e40524f30c92597cf0488d7df1368f798767a7dc9c
 	source_x86_64 = claude-2.1.73-x86_64::https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.73/linux-x64/claude
 	sha256sums_x86_64 = 960cd0d71a225f3b946bb49dd5c19624c558077d9cf3da4eb570380b43135b7d
