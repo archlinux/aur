@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=Cleaner Advanced
-Comment=An advanced system cleaning program
-Exec=cleaner_advanced
-Icon=icons8-clean-48
-Terminal=false
-Type=Application
-Categories=System;
