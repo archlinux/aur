@@ -1,28 +1,37 @@
 post_install() {
-  cat << 'EOF'
-
-********************************************************************
-*        Hooray! ksteamtrayicon was installed successfully.        *
-********************************************************************
-*                                                                  *
-* To start it immediately, run the following command:              *
-*     kioclient exec /etc/xdg/autostart/ksteamtrayicon.desktop     *
-*                                                                  *
-* Or simply log out of KDE Plasma and log back in.                 *
-*                                                                  *
-********************************************************************
-
-EOF
+    print_msg false
 }
 
 post_upgrade() {
-  cat << 'EOF'
+    print_msg true
+}
+
+print_msg() {
+    UPGRADING=$1
+
+    cat << 'EOF'
 
 ********************************************************************
-*        Hooray! ksteamtrayicon was upgraded successfully.         *
+EOF
+
+    if $UPGRADING; then
+        echo "*        Hooray! ksteamtrayicon was upgraded successfully.         *"
+    else
+        echo "*        Hooray! ksteamtrayicon was installed successfully.        *"
+    fi
+
+    cat << 'EOF'
 ********************************************************************
 *                                                                  *
-* To start the new version immediately, run the following command: *
+EOF
+
+    if $UPGRADING; then
+	echo "* To start the new version immediately, run the following command: *"
+    else
+	echo "* To start it immediately, run the following command:              *"
+    fi
+
+    cat << 'EOF'
 *     kioclient exec /etc/xdg/autostart/ksteamtrayicon.desktop     *
 *                                                                  *
 * Or simply log out of KDE Plasma and log back in.                 *
