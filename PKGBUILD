@@ -8,7 +8,7 @@ pkgname=(
 pkgbase=mullvad-vpn-beta
 _pkgver=2026.1
 _channel=beta
-_rel=1
+_rel=2
 pkgver=${_pkgver}.${_channel}${_rel}  # beta
 #pkgver=${_pkgver}.${_channel}  # stable
 pkgrel=1
@@ -43,7 +43,7 @@ source=(
   'no-publish.diff'
   "${pkgbase%-beta}.sh"
 )
-sha256sums=('fdf8023772e445aa311e8f34f52189cadb33bf740b377098fd6caefa12b4a745'
+sha256sums=('1ca8d61127047f5ac67a463f8bb68d5e6a80922aa5d8e1f6dfcac7ca6911ab93'
             'SKIP'
             'SKIP'
             '5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499'
