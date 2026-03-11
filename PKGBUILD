@@ -1,7 +1,7 @@
 # Maintainer: 30p87 <30p87@30p87.de>
 
 pkgname=iocaine-git
-pkgver=r601.59e336c
+pkgver=r718.4f213a8
 pkgrel=1
 pkgdesc='The deadliest poison known to AI'
 arch=('any')
@@ -24,7 +24,7 @@ sha256sums=('SKIP'
             '3ba1d429be28b8291861aca9b91564ab4db4f83aa7d955ed102d090259d46b5b'
             'd98c03791baff0fbd59261de5f0e38e592e3a4f2014d3dbf135567771ccf8193'
             '7761fab52173f5f0cfeb8678bcbf9e4c297fcb6282acb13c604b6cba4f760f9b'
-            '17daf94524947c173e2d18d6090cf372e40dfce7e4e610bced6bfd88b43c37de')
+            'ca7d951fffab50ea84e064a2a36782fd5b628b6fe6a508e5945f36ac0c3f1263')
 
 pkgver() {
 	cd "${pkgname%-git}"
@@ -51,12 +51,12 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/webapps/iocaine"
 
 	# Docs/Example configs
-	install -Dm644 "data/defaults/config.kdl" "${pkgdir}/etc/iocaine/config.kdl"
+	install -Dm644 "iocaine-powder/embeds/defaults/config.kdl" "${pkgdir}/etc/iocaine/config.kdl"
 	install -Dm644 "${srcdir}/nginx_filter.conf" "${pkgdir}/usr/share/doc/${pkgname}/nginx/iocaine_filter.conf"
 	install -Dm644 "${srcdir}/nginx_component.conf" "${pkgdir}/usr/share/doc/${pkgname}/nginx/iocaine.component"
 
 	# Systemd/Arch integration
-	install -Dm644 "data/iocaine.service" "${pkgdir}/usr/lib/systemd/system/iocaine.service"
+	install -Dm644 "iocaine-powder/embeds/iocaine.service" "${pkgdir}/usr/lib/systemd/system/iocaine.service"
 	install -Dm644 "${srcdir}/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/iocaine.conf"
 	install -Dm644 "${srcdir}/tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/iocaine.conf"
 
