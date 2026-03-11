@@ -4,7 +4,7 @@
 pkgname=recyclarr-bin
 _pkgname="${pkgname%-bin}"
 pkgver=8.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Automatically synchronize recommended settings from the TRaSH guides to your Sonarr/Radarr instances'
 arch=(x86_64 aarch64 armv7h)
 url='https://recyclarr.dev'
@@ -35,7 +35,7 @@ source_x86_64=("${_pkgname}-${pkgver}.linux-x64.tar.xz::https://github.com/recyc
 source_aarch64=("${_pkgname}-${pkgver}.linux-arm64.tar.xz::https://github.com/recyclarr/recyclarr/releases/download/v${pkgver}/recyclarr-linux-arm64.tar.xz")
 source_armv7h=("${_pkgname}-${pkgver}.linux-arm.tar.xz::https://github.com/recyclarr/recyclarr/releases/download/v${pkgver}/recyclarr-linux-arm.tar.xz")
 sha256sums=('0dde0ee4db0e535bad3b4f20a2a30736c4656f8987f2d5dc70e53fbee4c34c41'
-            'e4f80919f14609d8aec9ebf3b8f219a3b43f1cf271a41d52c0d9e650df968e25'
+            '7e45ab478a9e51684aac716c50be7f3283ad478509532a0f60469e2f2c76970d'
             '3d2a1b3690d956a8f195c2cd1b28c28beecda354023e8de78471ca35610fb57d'
             'e8a2959e079a6a77c3eefaf77defd69e76944c2a1378257dcaf0286abde002a6'
             '458b7c0550f3c2e41f63bac197ce55a5699432ee24080f7917b001c0eec2c7ec'
