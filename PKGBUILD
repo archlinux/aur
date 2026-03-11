@@ -3,7 +3,7 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
-pkgver=1.18.0
+pkgver=1.19.0
 _nodeversion=24
 pkgrel=1
 pkgdesc="Streaming music player that finds free music for you."
@@ -23,7 +23,7 @@ makedepends=(
     'rustup'
 )
 source=("${pkgname}-${pkgver}::git+${_ghurl}#tag=player@${pkgver}")
-sha256sums=('9e82fe528e9fd07773f772c37b81d143cf0cf15e1eee7fe0896fb628567ba44a')
+sha256sums=('0efc8300efcbafc5c36d7effc8a1e6f0dc762a44c36b348d354d8dffcc2f99cc')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -33,6 +33,15 @@ _ensure_local_nvm() {
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     export CARGO_HOME="${srcdir}/.cargo"
+    export PNPM_LINK_WORKSPACE_PACKAGES=true
+	export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+	export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+	export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+	export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+	export PNPM_SHAMEFULLY_HOIST=true
+	export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+	export PNPM_NODE_LINKER=hoisted
+	export PNPM_NETWORK_CONCURRENCY=32
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         export RUSTUP_DIST_SERVER="https://rsproxy.cn"
         export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
@@ -45,7 +54,8 @@ prepare() {
     " packages/player/src-tauri/resources/com.nuclearplayer.Nuclear.desktop
     sed -i "s/com.nuclearplayer.Nuclear/${pkgname}/g" packages/player/src-tauri/resources/com.nuclearplayer.Nuclear.metainfo.xml
     sed -i "s/\"active\"\: true\,/\"active\"\: false\,/g" packages/player/src-tauri/tauri.conf.json
-    NODE_ENV=development    pnpm install --frozen-lockfile
+    sed -i "s/\"react-icons\"\: \"\^5.6.0\"\,/\"react-icons\"\: \"\^5.5.0\"\,/g" packages/player/package.json
+    NODE_ENV=development    pnpm install --no-frozen-lockfile
     rustup default stable
 }
 build() {
@@ -57,9 +67,9 @@ build() {
     NODE_ENV=production     pnpm run build
     cd "${srcdir}/${pkgname}-${pkgver}/packages/i18n"
     NODE_ENV=production     pnpm run build
-    cd "${srcdir}/${pkgname}-${pkgver}/packages/hifi"
-    NODE_ENV=production     pnpm run build
     cd "${srcdir}/${pkgname}-${pkgver}/packages/themes"
+    NODE_ENV=production     pnpm run build
+    cd "${srcdir}/${pkgname}-${pkgver}/packages/hifi"
     NODE_ENV=production     pnpm run build
     cd "${srcdir}/${pkgname}-${pkgver}/packages/ui"
     NODE_ENV=production     pnpm run build
