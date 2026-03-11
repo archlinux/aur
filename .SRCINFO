@@ -1,7 +1,7 @@
 pkgbase = gtasks
 	pkgdesc = A CLI client for Google Tasks, written in Go
-	pkgver = 0.12.0
-	pkgrel = 3
+	pkgver = 0.13.0
+	pkgrel = 1
 	url = https://github.com/BRO3886/gtasks
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = gtasks
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/BRO3886/gtasks.git#tag=v0.12.0
+	source = git+https://github.com/BRO3886/gtasks.git#tag=v0.13.0
 	sha256sums = SKIP
 
 pkgname = gtasks
