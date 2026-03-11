@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fontastic-bin
 _pkgname=Fontastic
-pkgver=1.0.0
+pkgver=1.0.1
 _electronversion=40
 pkgrel=1
 pkgdesc="A stunning font management and cataloging application.(Prebuilt version.Use system-wide electron)"
@@ -17,7 +17,7 @@ source=(
     "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/tomshaw/fontastic/${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0390607f6bfa05af94e4cee7f53e79e7ab0fd595e240f168518e89dce92cd7c6'
+sha256sums=('077116dd67271eb8bfa54082de36cec1c648dab6255fce0487431b1d97ef8117'
             '00df8834a94ab4d44c7c7d6557cce6af143ed0019a80c682b5a03d0cea8187b4'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
