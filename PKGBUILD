@@ -8,7 +8,7 @@
 
 _name="libbluray"
 pkgname="lib32-${_name}"
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Library to access Blu-Ray disks for video playback (32-bit)"
 url="https://www.videolan.org/developers/libbluray.html"
@@ -37,7 +37,8 @@ _pkgsrc="${_name}-${pkgver}"
 source=(
   "https://download.videolan.org/pub/videolan/${_name}/${pkgver}/${_pkgsrc}.tar.xz"
 )
-sha512sums=('7284169b32624e5ca4fd71b260a4cc2921efafb1f63143a562568be45e373bfcbfeac63895d5659ccdcb11d7dbd0236cc46ccb15c12eff855703010e46991f27')
+sha256sums=('76b5dc40097f28dca4ebb009c98ed51321b2927453f75cc72cf74acd09b9f449')
+sha512sums=('76d686260b7cceb9e9e0272e4b9c4a815511925240dc4b69107c0816131728912f5cf3d08d5eab769024e024377f6591d1bbd51a459039a521639d569473cec6')
 
 build() {
   export CFLAGS+=" -m32"
