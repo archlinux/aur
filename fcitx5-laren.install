@@ -9,39 +9,25 @@ post_install() {
 
     _home=$(eval echo "~$_user")
     _dbus="unix:path=/run/user/${_uid}/bus"
-    _desktop="/usr/share/applications/org.fcitx.Fcitx5.desktop"
 
-    # Detect desktop environment
+    # Source shared post-install logic (installed by the package)
+    . /usr/share/laren/postinstall-common.sh
+
+    # Detect desktop environment from user's live session
     _de=$(su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus printenv XDG_CURRENT_DESKTOP 2>/dev/null" | tr '[:upper:]' '[:lower:]')
 
-    # 1. Add Laren to Fcitx5 profile (all DEs)
-    _add_to_fcitx_profile "$_home" "$_user"
+    # Configure files (profile, kwinrc, env vars, autostart, compositor config)
+    configure_user "$_home" "$_user" "$_de"
 
-    # 2. Ensure tray icon is in the active icon theme (KDE doesn't reliably fall back to hicolor)
+    # AUR-specific: ensure tray icon is in the active icon theme
     _install_tray_icon "$_user" "$_dbus"
 
-    # 3. Desktop-specific configuration
+    # AUR-specific: live activation (restart Fcitx5 without requiring logout)
     case "$_de" in
         *kde*|*plasma*)
-            # KDE Wayland: KWin manages Fcitx5 directly, no env vars needed
-            _setup_kde "$_home" "$_user" "$_uid" "$_dbus" "$_desktop"
             _activate_kde "$_user" "$_dbus"
             ;;
-        *sway*)
-            _setup_env_vars "$_home" "$_user"
-            _setup_autostart "$_home" "$_user"
-            _setup_sway "$_home" "$_user"
-            _activate_generic "$_user" "$_uid" "$_dbus"
-            ;;
-        *hyprland*)
-            _setup_env_vars "$_home" "$_user"
-            _setup_autostart "$_home" "$_user"
-            _setup_hyprland "$_home" "$_user"
-            _activate_generic "$_user" "$_uid" "$_dbus"
-            ;;
         *)
-            _setup_env_vars "$_home" "$_user"
-            _setup_autostart "$_home" "$_user"
             _activate_generic "$_user" "$_uid" "$_dbus"
             ;;
     esac
@@ -59,43 +45,9 @@ post_install() {
     echo ""
 }
 
-_add_to_fcitx_profile() {
-    _home="$1"
-    _user="$2"
-    _profile="$_home/.config/fcitx5/profile"
-
-    if [ -f "$_profile" ] && ! grep -q 'Name=laren' "$_profile"; then
-        _last=$(grep -c '^\[Groups/0/Items/' "$_profile" 2>/dev/null || echo 0)
-        cat >> "$_profile" << EOF
-
-[Groups/0/Items/$_last]
-Name=laren
-Layout=
-EOF
-        chown "$_user":"$_user" "$_profile" 2>/dev/null || true
-    elif [ ! -f "$_profile" ]; then
-        # No profile yet — create one with keyboard + laren
-        install -d -o "$_user" -g "$_user" "$_home/.config/fcitx5"
-        cat > "$_profile" << 'EOF'
-[Groups/0]
-Name=Default
-Default Layout=us
-DefaultIM=laren
-
-[Groups/0/Items/0]
-Name=keyboard-us
-Layout=
-
-[Groups/0/Items/1]
-Name=laren
-Layout=
-
-[GroupOrder]
-0=Default
-EOF
-        chown "$_user":"$_user" "$_profile"
-    fi
-}
+# ---------------------------------------------------------------------------
+# AUR-specific helpers (live activation — not in shared postinstall-common.sh)
+# ---------------------------------------------------------------------------
 
 _install_tray_icon() {
     _user="$1"
@@ -120,7 +72,6 @@ _install_tray_icon() {
         *)
             for _dir in "/home/$(id -un "$_user" 2>/dev/null)/.local/share/icons/$_icon_theme" "/usr/share/icons/$_icon_theme"; do
                 if [ -d "$_dir" ] && [ -f "$_dir/index.theme" ]; then
-                    # Detect directory structure: apps/scalable/ or scalable/apps/
                     if [ -d "$_dir/apps/scalable" ]; then
                         cp "$_src" "$_dir/apps/scalable/fcitx-laren.svg" 2>/dev/null
                     elif [ -d "$_dir/scalable/apps" ]; then
@@ -160,115 +111,6 @@ _activate_generic() {
     # Restart fcitx5
     su - "$_user" -c "killall fcitx5 2>/dev/null; DBUS_SESSION_BUS_ADDRESS=$_dbus nohup fcitx5 -d >/dev/null 2>&1 &" 2>/dev/null
     return 0
-}
-
-_setup_env_vars() {
-    _home="$1"
-    _user="$2"
-    _envfile="$_home/.config/environment.d/fcitx5.conf"
-
-    # systemd environment.d (works for most modern desktops)
-    install -d -o "$_user" -g "$_user" "$_home/.config/environment.d"
-    if [ ! -f "$_envfile" ]; then
-        cat > "$_envfile" <<'ENVEOF'
-GTK_IM_MODULE=fcitx
-QT_IM_MODULE=fcitx
-XMODIFIERS=@im=fcitx
-SDL_IM_MODULE=fcitx
-ENVEOF
-        chown "$_user:$_user" "$_envfile"
-    fi
-
-    # Also write to .pam_environment for DMs that don't use systemd environment.d
-    _pamenv="$_home/.pam_environment"
-    if [ ! -f "$_pamenv" ] || ! grep -q 'GTK_IM_MODULE.*fcitx' "$_pamenv" 2>/dev/null; then
-        cat >> "$_pamenv" <<'PAMEOF'
-GTK_IM_MODULE DEFAULT=fcitx
-QT_IM_MODULE DEFAULT=fcitx
-XMODIFIERS DEFAULT=@im=fcitx
-PAMEOF
-        chown "$_user:$_user" "$_pamenv"
-    fi
-}
-
-_setup_autostart() {
-    _home="$1"
-    _user="$2"
-    _autostart="$_home/.config/autostart/org.fcitx.Fcitx5.desktop"
-
-    install -d -o "$_user" -g "$_user" "$_home/.config/autostart"
-    if [ ! -f "$_autostart" ]; then
-        cat > "$_autostart" <<'AUTOEOF'
-[Desktop Entry]
-Name=Fcitx 5
-Comment=Start Input Method
-Exec=fcitx5 -d
-Type=Application
-Categories=System;Utility;
-X-GNOME-Autostart-enabled=true
-AUTOEOF
-        chown "$_user:$_user" "$_autostart"
-    fi
-}
-
-_setup_kde() {
-    _home="$1"
-    _user="$2"
-    _uid="$3"
-    _dbus="$4"
-    _desktop="$5"
-    _kwinrc="$_home/.config/kwinrc"
-
-    install -d -o "$_user" -g "$_user" "$_home/.config"
-
-    if [ -f "$_kwinrc" ]; then
-        # Remove any existing InputMethod lines from [Wayland] section
-        sed -i '/^\[Wayland\]/,/^\[/{/^InputMethod/d}' "$_kwinrc"
-        sed -i '/^\[Wayland\]/,/^\[/{/^VirtualKeyboardEnabled/d}' "$_kwinrc"
-
-        if grep -q '^\[Wayland\]' "$_kwinrc"; then
-            sed -i "/^\[Wayland\]/a VirtualKeyboardEnabled=true" "$_kwinrc"
-            sed -i "/^\[Wayland\]/a InputMethod[\$e]=$_desktop" "$_kwinrc"
-        else
-            printf '\n[Wayland]\nInputMethod[$e]=%s\nVirtualKeyboardEnabled=true\n' "$_desktop" >> "$_kwinrc"
-        fi
-    else
-        cat > "$_kwinrc" <<KWINEOF
-[Wayland]
-InputMethod[\$e]=$_desktop
-VirtualKeyboardEnabled=true
-KWINEOF
-        chown "$_user:$_user" "$_kwinrc"
-    fi
-
-    # Reconfigure KWin
-    su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /KWin reconfigure" 2>/dev/null
-}
-
-_setup_sway() {
-    _home="$1"
-    _user="$2"
-    _swayconf="$_home/.config/sway/config"
-
-    if [ -f "$_swayconf" ]; then
-        if ! grep -q 'exec.*fcitx5' "$_swayconf" 2>/dev/null; then
-            echo 'exec_always fcitx5 -d --replace' >> "$_swayconf"
-            chown "$_user:$_user" "$_swayconf"
-        fi
-    fi
-}
-
-_setup_hyprland() {
-    _home="$1"
-    _user="$2"
-    _hyprconf="$_home/.config/hypr/hyprland.conf"
-
-    if [ -f "$_hyprconf" ]; then
-        if ! grep -q 'exec.*fcitx5' "$_hyprconf" 2>/dev/null; then
-            echo 'exec-once = fcitx5 -d' >> "$_hyprconf"
-            chown "$_user:$_user" "$_hyprconf"
-        fi
-    fi
 }
 
 _print_manual() {
