@@ -1,7 +1,7 @@
 pkgname=lifeos-udf-bin
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="LifeOS UDF ↔ DOCX Çevirici. UYAP UDF dosyalarinizi hizli sekilde word belgelerine donusturun."
+pkgdesc="Profesyonel UYAP UDF ↔ DOCX Çevirici. Belgelerinizi hızlı, güvenli ve kayıpsız bir şekilde dönüştürün. (Binary sürüm)"
 arch=('x86_64')
 url="https://github.com/07erkanoz/LifeOS-Udf-Cevirici"
 license=('custom')
