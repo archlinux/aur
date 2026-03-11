@@ -20,7 +20,7 @@ options=(!strip)
 source=("bitwig-studio-${_pkgver}.deb::https://www.bitwig.com/dl/Bitwig%20Studio/${_pkgver}/installer_linux/")
 
 
-sha256sums=('81ad854bbdb57a9beef1a729ad05675d255cd6cd12a9feaead4202c421351977')
+sha256sums=('8eb09381ac5f79685f2b02de28b9aa4d0592ed155b5671ea2742270a2a669bc9')
 
 package() {
   # Unpack package contents
