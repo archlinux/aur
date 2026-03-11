@@ -1,6 +1,6 @@
 pkgbase = lemonade-server-git
-	pkgdesc = Lemonade: Local LLM Serving with GPU and NPU acceleration (Server) - nightly
-	pkgver = 260310.cf680c26
+	pkgdesc = Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)
+	pkgver = 260311.3c951e52
 	pkgrel = 1
 	url = https://github.com/lemonade-sdk/lemonade/
 	arch = x86_64
@@ -17,15 +17,15 @@ pkgbase = lemonade-server-git
 	conflicts = lemonade-server
 	backup = etc/lemonade/lemonade.conf
 	backup = etc/lemonade/secrets.conf
-	source = lemonade-cf680c265fec7d5a8110a295e7c9d12cf48fdd19.tar.gz::https://github.com/lemonade-sdk/lemonade/archive/cf680c265fec7d5a8110a295e7c9d12cf48fdd19.tar.gz
+	source = lemonade-3c951e5242f395ebb37a70904020a1b4595f7692.tar.gz::https://github.com/lemonade-sdk/lemonade/archive/3c951e5242f395ebb37a70904020a1b4595f7692.tar.gz
 	source = httplib-0.34.0.tar.gz::https://github.com/yhirose/cpp-httplib/archive/refs/tags/v0.34.0.tar.gz
 	source = ixwebsocket-11.4.6.tar.gz::https://github.com/machinezone/IXWebSocket/archive/refs/tags/v11.4.6.tar.gz
 	source = sysusers.conf
 	source = tmpfiles.conf
-	sha256sums = fccd37071d0316bb29223b306f82e351b37bb00d10e8a81ad970cfa845e19017
+	sha256sums = 17de528a38b1e17f3d1ebe4b730442999a185535ca68b71b84985aaf74ca4dee
 	sha256sums = cb8e41c4b270f4fc520df71097089b71896c652927d61a94a11cd59689a0515b
 	sha256sums = c024334f8e45980836c67008979a884d6dcc5ef067dd2eb1fa7241f4c17ddc32
 	sha256sums = 069d5612d570e83128d7eed7ffe4525943d75d22b9c84537d861833157e74b26
-	sha256sums = 6fbbdf843a4c74811e304d666b99b887c1b5bf94d04d924cf5c2136c0b3cc691
+	sha256sums = f7353d20f265fbdda9121e8587443cef95ba5fb89e1704a87920876ce966804b
 
 pkgname = lemonade-server-git
