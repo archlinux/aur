@@ -13,13 +13,13 @@ sha256sums=("SKIP")
 options=(!strip)
 
 prepare() {
-    cd "linux-wallpaperengine"
+    cd "$pkgname"
 
     rustup default stable
 }
 
 build() {
-    cd "$srcdir/linux-wallpaperengine"
+    cd "$srcdir/$pkgname"
 
     cargo build --release
 }
