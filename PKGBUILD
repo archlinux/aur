@@ -2,8 +2,8 @@
 
 pkgname=releng-tool
 _pkgpyname=releng_tool
-pkgver=2.10.0
-_pkgtarget=v2.10
+pkgver=2.11.0
+_pkgtarget=v2.11
 pkgrel=1
 pkgdesc='A tool to create packages for select runtime environments
  (e.g. embedded targets)'
@@ -58,8 +58,8 @@ source=(
   $_base_url/$_pkgtarget/$_pkgpyname-$pkgver.tar.gz.asc
 )
 sha512sums=(
-  e719502afa4ba4c32fa702a59f0a2f5fb0fc3e4432f9a0393e55184c5cdfebfd84385896f93052c0f52d5080ee60df3da7c99c92503b4353eea9dc45a5761f9c
-  159c40278feb022695e632d0d7e5c8f68d1340ffea50b2393eda12f2a2f45d4aa820cb0d12dcb6bffc3a2a51c57f648810730149d366aff995ddafde15b9062e
+  ea746e9eaf28d5908a7fd8c677d8b0f387a1c76debfdc613fb2348ceb0e00c728fec994bab59e74b73f9dd2c2ffabcf0741c7fdd36d1bdfd06cb7485e90f24c3
+  9502ff0b169160e93f5c2e981e1445564d30a43cd41d28e85a956c1bf05671f3587485230e7887900563daa3727e491dcaa1f941ad54efedfae7ea0f4dee7a53
 )
 validpgpkeys=(D04A27BA9305DBBD354E653902D3C27B922CCC13)
 
