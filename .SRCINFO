@@ -1,6 +1,6 @@
 pkgbase = zig-git
 	pkgdesc = General-purpose programming language and toolchain
-	pkgver = 0.16.0.r2653.g784e89fd4b08
+	pkgver = 0.16.0.r2848.gb4ffb402c082
 	pkgrel = 1
 	url = https://ziglang.org/
 	arch = aarch64

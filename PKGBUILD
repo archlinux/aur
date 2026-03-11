@@ -1,5 +1,5 @@
 pkgname=zig-git
-pkgver=0.16.0.r2653.g784e89fd4b08
+pkgver=0.16.0.r2848.gb4ffb402c082
 pkgrel=1
 pkgdesc='General-purpose programming language and toolchain'
 arch=('aarch64' 'x86_64')
