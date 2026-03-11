@@ -1,6 +1,6 @@
 pkgbase = fcitx5-laren
 	pkgdesc = Arabizi to Arabic transliteration engine for Fcitx5
-	pkgver = 0.2.7
+	pkgver = 0.2.8
 	pkgrel = 1
 	url = https://github.com/mmaher88/laren
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = fcitx5-laren
 	depends = fcitx5-configtool
 	depends = fcitx5-gtk
 	depends = fcitx5-qt
-	source = fcitx5-laren-0.2.7.tar.gz::https://github.com/mmaher88/laren/archive/v0.2.7.tar.gz
-	sha256sums = 131848eed55e9254b195e8fae459f51359d0ee0f049f46cc693065d8f5140e4e
+	source = fcitx5-laren-0.2.8.tar.gz::https://github.com/mmaher88/laren/archive/v0.2.8.tar.gz
+	sha256sums = b3beaeeb1520973170385798546e3ff77c2ff02935f626e35ade1624c7d439f9
 
 pkgname = fcitx5-laren
