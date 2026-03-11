@@ -1,8 +1,8 @@
 pkgbase = cheatsheet-app-bin
 	pkgdesc = Developer keybinding cheatsheet for neovim, tmux, aerospace, and more
-	pkgver = 1.1.0
+	pkgver = 1.1.2
 	pkgrel = 1
-	url = https://github.com/MagnusPladsen/my-cheatsheet
+	url = https://github.com/MagnusPladsen/cheatsheet-app
 	arch = x86_64
 	license = MIT
 	depends = cairo
@@ -16,7 +16,7 @@ pkgbase = cheatsheet-app-bin
 	depends = webkit2gtk-4.1
 	options = \!strip
 	options = \!debug
-	source_x86_64 = https://github.com/MagnusPladsen/my-cheatsheet/releases/download/v1.1.0/cheatsheet_1.1.0_amd64.deb
-	sha256sums_x86_64 = 0560e7286d45b31572c2e71393c153efb401202dcd2b98f652f4f24481cae24a
+	source_x86_64 = https://github.com/MagnusPladsen/cheatsheet-app/releases/download/v1.1.2/cheatsheet_1.1.2_amd64.deb
+	sha256sums_x86_64 = c7414445184c4f08a987efca12101870b7f01f2de4ce4fb770e01ce7e24c362c
 
 pkgname = cheatsheet-app-bin
