@@ -1,6 +1,6 @@
 pkgbase = r-systempiperdata
 	pkgdesc = systemPipeRdata: Workflow templates and sample data
-	pkgver = 2.14.5
+	pkgver = 2.14.6
 	pkgrel = 1
 	url = https://bioconductor.org/packages/systemPipeRdata
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = r-systempiperdata
 	optdepends = r-runit
 	optdepends = r-shortread
 	optdepends = r-systempiper
-	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/systemPipeRdata_2.14.5.tar.gz
-	sha256sums = eb1e73b177c35bf0d6777d2df287622c2bba956e9b0561761cb75ec0fc0e38fb
+	source = https://bioconductor.org/packages/release/data/experiment/src/contrib/systemPipeRdata_2.14.6.tar.gz
+	sha256sums = 4d8a541d8a92f197ede5388561715699d7d6065a74d3482b54fe81ca2020f0c8
 
 pkgname = r-systempiperdata
