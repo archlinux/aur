@@ -1,14 +1,16 @@
 pkgbase = libcsa-git
 	pkgdesc = Bivariate Cubic Spline approximation library + standalone utility
-	pkgver = 20191025.917fa3c
+	pkgver = 1.22.0.r9.g7b48134
 	pkgrel = 1
 	url = https://github.com/sakov/csa-c
 	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = BSD-2-Clause
 	makedepends = git
 	depends = glibc
-	source = libcsa-git::git+https://github.com/sakov/csa-c.git
-	md5sums = SKIP
+	provides = libcsa
+	conflicts = libcsa
+	source = git+https://github.com/sakov/csa-c.git
+	sha512sums = SKIP
 
 pkgname = libcsa-git
