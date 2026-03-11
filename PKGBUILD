@@ -1,6 +1,6 @@
 # Maintainer: Limehawk <limehawk@users.noreply.github.com>
 pkgname=lazyreno
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="TUI dashboard for self-hosted Renovate CE"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/limehawk/lazyreno"
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/limehawk/lazyreno/archive/v$pkgver.tar.gz")
-sha256sums=('b37347e6d843352d76e18feb7b83628596367474d26a2fd63ae328eabc0c6027')
+sha256sums=('a927f7e9a69d1366926e43bc63bba669ffea26fdf5e2c1b3adb9f6ace6be6508')
 
 build() {
     cd "$pkgname-$pkgver"
