@@ -1,0 +1,11 @@
+[Unit]
+Description=Mouse button debounce service
+After=systemd-udevd.service
+
+[Service]
+ExecStart=/usr/local/bin/mouse-debounce --config /etc/mouse-debounce/config.toml
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
