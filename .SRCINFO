@@ -1,0 +1,14 @@
+pkgbase = file-lock-pea
+	pkgdesc = File and Folder Encryption
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://eck.cologne/peafactory/en/html/file_pea.html
+	arch = x86_64
+	license = GPL-2.0
+	depends = java-runtime
+	source = https://eck.cologne/peafactory/src/downloads/filePEA/Dragonfly-Threefish-Blake2b/file-lock-pea-1.6.zip?
+	source = https://eck.cologne/peafactory/src/img/peafactory_images/pea-lock.png
+	sha256sums = 9109583ef714fba8ba3546323e9cdf60bd4d2fcb5279e96363ae7376615b7dbc
+	sha256sums = SKIP
+
+pkgname = file-lock-pea
