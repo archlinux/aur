@@ -1,0 +1,2 @@
+# Type  Name  ID   GECOS                   Home dir               Shell
+u       xftp  -    "SimpleX XFTP server"   /var/opt/simplex-xftp  /usr/bin/nologin

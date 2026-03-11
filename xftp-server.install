@@ -1,0 +1,82 @@
+post_install() {
+    systemd-sysusers xftp-server.conf 2>/dev/null || true
+    systemd-tmpfiles --create xftp-server.conf 2>/dev/null || true
+
+    # Не перезаписываем конфиг если он уже существует (миграция с ручной установки)
+    if [[ ! -f /etc/opt/simplex-xftp/file-server.ini ]]; then
+        mv /etc/opt/simplex-xftp/file-server.ini.pacnew \
+           /etc/opt/simplex-xftp/file-server.ini 2>/dev/null || true
+    else
+        rm -f /etc/opt/simplex-xftp/file-server.ini.pacnew
+    fi
+
+    chown -R xftp:xftp /etc/opt/simplex-xftp/ 2>/dev/null || true
+    chown -R xftp:xftp /var/opt/simplex-xftp/ 2>/dev/null || true
+    chown -R xftp:xftp /srv/xftp/ 2>/dev/null || true
+
+    echo ""
+    echo "======================================================================"
+    echo " xftp-server installed."
+    echo "======================================================================"
+    echo ""
+    echo " MIGRATING FROM A MANUAL INSTALLATION?"
+    echo " If you already have a running server with existing keys — DO NOT run"
+    echo " xftp-server init. Instead, restore your backup:"
+    echo ""
+    echo "    cp ca.crt ca.key ca.srl fingerprint /etc/opt/simplex-xftp/"
+    echo "    cp server.crt server.csr /etc/opt/simplex-xftp/"
+    echo "    cp file-server.ini /etc/opt/simplex-xftp/"
+    echo "    chown -R xftp:xftp /etc/opt/simplex-xftp/"
+    echo "    chown -R xftp:xftp /var/opt/simplex-xftp/ /srv/xftp/"
+    echo ""
+    echo " Then start: systemctl enable --now xftp-server"
+    echo " Your server address (fingerprint) will remain the same."
+    echo ""
+    echo " ------------------------------------------------------------------"
+    echo ""
+    echo " FRESH INSTALLATION? Initialize first (replace with your domain):"
+    echo ""
+    echo "    sudo -u xftp xftp-server init -l --fqdn=xftp.example.com \\"
+    echo "        -q 20gb -p /srv/xftp/"
+    echo ""
+    echo "    With upload password:"
+    echo "    sudo -u xftp xftp-server init -l --fqdn=xftp.example.com \\"
+    echo "        -q 20gb -p /srv/xftp/"
+    echo "    Then set create_password in /etc/opt/simplex-xftp/file-server.ini"
+    echo ""
+    echo " 1. Edit config:  /etc/opt/simplex-xftp/file-server.ini"
+    echo "    - [TRANSPORT] host: your domain"
+    echo "    - [TRANSPORT] port: 5244 (default)"
+    echo ""
+    echo " 2. Open firewall port: 5244/tcp"
+    echo ""
+    echo " 3. Start: systemctl enable --now xftp-server"
+    echo ""
+    echo " 4. Get your server address:"
+    echo "    journalctl -u xftp-server | grep 'Server address'"
+    echo ""
+    echo " !! Back up and optionally delete the CA key after init:"
+    echo "    cp /etc/opt/simplex-xftp/ca.key ~/ca.key.backup"
+    echo "    rm /etc/opt/simplex-xftp/ca.key"
+    echo "======================================================================"
+}
+
+post_upgrade() {
+    chown -R xftp:xftp /etc/opt/simplex-xftp/ 2>/dev/null || true
+    chown -R xftp:xftp /var/opt/simplex-xftp/ 2>/dev/null || true
+    chown -R xftp:xftp /srv/xftp/ 2>/dev/null || true
+    echo ""
+    echo " xftp-server upgraded — restart to apply: systemctl restart xftp-server"
+}
+
+pre_remove() {
+    systemctl stop xftp-server.service 2>/dev/null || true
+    systemctl disable xftp-server.service 2>/dev/null || true
+}
+
+post_remove() {
+    echo ""
+    echo " Data preserved in /etc/opt/simplex-xftp/, /var/opt/simplex-xftp/, /srv/xftp/"
+    echo " Remove manually if no longer needed."
+    echo " To remove the 'xftp' user: userdel xftp"
+}

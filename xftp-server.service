@@ -1,0 +1,41 @@
+[Unit]
+Description=SimpleX XFTP file transfer server
+Documentation=https://simplex.chat/docs/xftp-server.html
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=xftp
+Group=xftp
+
+# xftp-server listens on port 5244 — below 1024 would need this cap,
+# but we keep it for flexibility if port is changed to 443.
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+
+ExecStart=/usr/bin/xftp-server start +RTS -N -RTS
+
+# CRITICAL: xftp-server saves state only on SIGINT, not SIGTERM.
+KillSignal=SIGINT
+TimeoutStopSec=infinity
+
+# Backup store log on shutdown
+ExecStopPost=/bin/sh -c \
+    'test -f /var/opt/simplex-xftp/file-server-store.log && \
+     cp /var/opt/simplex-xftp/file-server-store.log \
+        /var/opt/simplex-xftp/file-server-store.log.bak'
+
+LimitNOFILE=65535
+
+# Security hardening
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/opt/simplex-xftp /etc/opt/simplex-xftp /srv/xftp
+ProtectHome=true
+NoNewPrivileges=true
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+[Install]
+WantedBy=multi-user.target
