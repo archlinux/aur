@@ -9,8 +9,8 @@ pkgname=(
   ppsspp
   ppsspp-assets
 )
-pkgver=1.19.3
-pkgrel=3
+pkgver=1.20.2
+pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=(x86_64)
 url=https://www.ppsspp.org/
@@ -36,19 +36,22 @@ makedepends=(
   snappy
   zlib
 )
-_tag=a0cd10949c4c3738c47adce9f673700c13f08645
+_tag=1b454a2008100276824c08cae65c29bbde0c6e35
 source=(
   git+https://github.com/hrydgard/ppsspp.git#tag=${_tag}
+  git+https://github.com/Kethen/aemu_postoffice.git
   git+https://github.com/Kingcom/armips.git
   git+https://github.com/google/cpu_features.git
   git+https://github.com/discordapp/discord-rpc.git
   git+https://github.com/hrydgard/ppsspp-ffmpeg.git
   armips-filesystem::git+https://github.com/Kingcom/filesystem.git
+  ppsspp-freetype::git+https://github.com/hrydgard/freetype.git
   ppsspp-glslang::git+https://github.com/hrydgard/glslang.git
   git+https://github.com/hrydgard/ppsspp-lang.git
   git+https://github.com/rtissera/libchdr.git
   git+https://github.com/hrydgard/ppsspp-lua.git
   git+https://github.com/miniupnp/miniupnp.git
+  git+https://github.com/hrydgard/nanosvg.git
   git+https://github.com/KhronosGroup/OpenXR-SDK.git
   git+https://github.com/Tencent/rapidjson.git
   git+https://github.com/RetroAchievements/rcheevos.git
@@ -56,7 +59,10 @@ source=(
   PPSSPPSDL.desktop
   PPSSPPQt.desktop
 )
-b2sums=('8154539137174d017efc2e17f7ecba5e8c7c350dfc909379b8928037e6f71820854580b6c7a6e6ff576ba34fc4d3a050fbf9df3244e16150bf4e2f80802fc7d6'
+b2sums=('9ad95a02d9635a6cabfef65f3892758e9defad0afdd7016f70df43338dfce63ab3557e941d1ef524c2d21a1ad2aee5fd05b943e7dc6ba1eca016b2d3a5e84853'
+        'SKIP'
+        'SKIP'
+        'SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -82,12 +88,12 @@ pkgver() {
 prepare() {
   cd ppsspp
   sed 's|miniupnpc/include/|miniupnpc/|g' -i Core/Util/PortManager.h
-  for submodule in ffmpeg assets/lang ext/glslang ext/lua; do
+  for submodule in ffmpeg assets/lang ext/freetype ext/glslang ext/lua; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../ppsspp-${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
   done
-  for submodule in ext/{armips,cpu_features,discord-rpc,libchdr,miniupnp,OpenXR-SDK,rapidjson,rcheevos,SPIRV-Cross}; do
+  for submodule in ext/{aemu_postoffice,armips,cpu_features,discord-rpc,libchdr,miniupnp,nanosvg,OpenXR-SDK,rapidjson,rcheevos,SPIRV-Cross}; do
     git submodule init ${submodule}
     git config submodule.${submodule}.url ../${submodule#*/}
     git -c protocol.file.allow=always submodule update ${submodule}
