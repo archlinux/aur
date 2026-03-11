@@ -2,7 +2,7 @@
 # Contributor: Gabriel Guldner <gabriel at guldner.eu>
 _pkgname=git-credential-manager
 pkgname=git-credential-manager-bin
-pkgver=2.7.0
+pkgver=2.7.3
 pkgrel=1
 pkgdesc="Secure, cross-platform Git credential storage with authentication to GitHub, Azure Repos, and other popular Git hosting services."
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("https://github.com/git-ecosystem/git-credential-manager/releases/downlo
 		"$_pkgname.install"
 		'https://raw.githubusercontent.com/git-ecosystem/git-credential-manager/main/LICENSE')
 noextract=("gcm-linux-x64-$pkgver.tar.gz")
-sha256sums=('61b7370ba82525fc812e0c86f3d41cc0dc0cb7388fe9e78e53af941d5c94c28f'
+sha256sums=('c7935c3e1b22681d56011b580086aeb6d60f3f0aaf6ef9c581480356988ff804'
             '9c4dd73ab2e074a4fb828299c32600dd9409a873e064a1208567070dcc41a899'
             'b47f1a8a744ecdc7a3da35804f88552805d33f51a726b87a2105acdfae406b07')
 
