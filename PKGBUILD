@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url='https://github.com/goshitsarch-eng/gosh-dl-cli'
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('cargo')
+makedepends=('cargo' 'cmake' 'perl')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('e16d4c7c2fbd695f2730785645164797a69b3f7d78a98339e67979a89c3072f6')
 
