@@ -1,0 +1,17 @@
+pkgbase = python-pyborgeous
+	pkgdesc = Pyborgeous is an implementation of Jorge Luis Borges' Library of Babel
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = github.com/Spacehug-zz/pyborgeous
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-markovify
+	source = https://files.pythonhosted.org/packages/source/p/pyborgeous/pyborgeous-0.5.0.tar.gz
+	sha256sums = 8f8fd1956c24a8cf00b0bb891079cf989ad119faeaba476df192b617422cb7f3
+
+pkgname = python-pyborgeous
