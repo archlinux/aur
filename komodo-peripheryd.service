@@ -1,0 +1,13 @@
+[Unit]
+Description=Komodo Periphery
+After=local-fs.target network.target multi-user.target
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/komodo-periphery \
+    --config-path /etc/komodo-periphery.toml
+User=komodo
+Group=komodo
+
+[Install]
+WantedBy=multi-user.target

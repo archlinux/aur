@@ -1,0 +1,5 @@
+src/
+pkg/
+komodo/
+*.pkg.tar*
+*.log
