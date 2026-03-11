@@ -2,17 +2,17 @@
 
 pkgbase=kvikio
 pkgname=(kvikio python-kvikio)
-pkgver=25.12.00
+pkgver=26.02.00
 pkgrel=1
 pkgdesc="KvikIO - High Performance File IO"
 url="https://github.com/rapidsai/kvikio"
 arch=('x86_64')
 license=('Apache-2.0')
-depends=('gcc-libs' 'cuda' 'nvtx3' 'bs-thread-pool')
+depends=('libgcc' 'libstdc++' 'cuda' 'nvtx3' 'bs-thread-pool')
 makedepends=('cmake' 'ninja')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz" "system-lib.patch")
 sha256sums=(
-    'a6f3180b5456494518290e770a8e2188c2a480ed557cfe2227bf1c690a2eecf5'
+    'a375e8131cc0c7695582169d907b8ba6b4a23d82b329b597d0dd060f92ac349c'
     '5378e3fddc94fe0685554595b349fda8d5659eefa55ce41780fe2ed813b75298'
 )
 
@@ -27,7 +27,6 @@ build() {
     cmake -B build -S cpp \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
-        -DBUILD_TESTS=OFF \
         -DKvikIO_BUILD_EXAMPLES=OFF \
         -DKvikIO_BUILD_BENCHMARKS=OFF \
         -DKvikIO_BUILD_TESTS=OFF \
@@ -47,6 +46,7 @@ package_kvikio() {
 }
 
 package_python-kvikio() {
+    depends+=(kvikio)
     cd "$srcdir/$pkgbase-$pkgver/python/kvikio"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
