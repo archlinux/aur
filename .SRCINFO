@@ -1,0 +1,16 @@
+pkgbase = bterminal
+	pkgdesc = GTK4/VTE terminal emulator
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Banaxi-Tech/BTerminal
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = pkg-config
+	depends = gtk4
+	depends = vte4
+	depends = zsh
+	source = bterminal::git+https://github.com/Banaxi-Tech/BTerminal.git
+	sha256sums = SKIP
+
+pkgname = bterminal
