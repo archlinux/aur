@@ -1,6 +1,6 @@
 pkgbase = nnn-icons
 	pkgdesc = The fastest terminal file manager ever written. (with icon support)
-	pkgver = 5.1
+	pkgver = 5.2
 	pkgrel = 1
 	url = https://github.com/jarun/nnn
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = nnn-icons
 	optdepends = xdg-utils: desktop opener
 	provides = nnn
 	conflicts = nnn
-	source = nnn-5.1.tar.gz::https://github.com/jarun/nnn/archive/v5.1.tar.gz
-	sha256sums = 9faaff1e3f5a2fd3ed570a83f6fb3baf0bfc6ebd6a9abac16203d057ac3fffe3
+	source = nnn-5.2.tar.gz::https://github.com/jarun/nnn/archive/v5.2.tar.gz
+	sha256sums = f166eda5093ac8dcf8cbbc6224123a32c53cf37b82c5c1cb48e2e23352754030
 
 pkgname = nnn-icons
