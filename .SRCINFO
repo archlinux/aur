@@ -1,6 +1,6 @@
 pkgbase = dmenustatus-git
 	pkgdesc = A statusbar for dmenu written in C.
-	pkgver = 0.10.6.r2.fe8e5c5
+	pkgver = 0.11.0.r0.33d41a7
 	pkgrel = 1
 	url = https://github.com/Quadsam/dmenustatus
 	arch = x86_64
