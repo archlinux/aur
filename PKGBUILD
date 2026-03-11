@@ -24,9 +24,9 @@ optdepends=(
 	'yt-dlp: YouTube playback and subtitle extraction'
 	'mecab: optional Japanese metadata enrichment'
 	'mecab-ipadic: dictionary for MeCab metadata enrichment'
-	'guessit: improved AniSkip title and episode inference'
+	'python-guessit: improved AniSkip title and episode inference'
 	'alass-git: preferred subtitle synchronization engine'
-	'ffsubsync: fallback subtitle synchronization engine'
+	'python-ffsubsync: fallback subtitle synchronization engine'
 )
 provides=('subminer')
 conflicts=('subminer')
