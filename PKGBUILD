@@ -6,7 +6,7 @@
 pkgbase=nvidia-utils-beta
 pkgname=('nvidia-utils-beta' 'opencl-nvidia-beta' 'nvidia-settings-beta')
 pkgver=595.45.04
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA drivers utilities (beta version)'
 arch=('x86_64')
 url='https://www.nvidia.com/'
@@ -25,7 +25,7 @@ source=("https://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}
         '120-nvidia-settings-change-desktop-paths.patch')
 sha256sums=('cd496549246cba2a3b75291c6c14eec45f9d375d9dea310f1345a01af54e8f5e'
             'be99ff3def641bb900c2486cce96530394c5dc60548fc4642f19d3a4c784134d'
-            '9c60bfe357cd1faf20f9167a6d42bfa724747805c1f12a1b603eb5ff57a523df'
+            '19800e91ab96a8be828af1383cbbadeda9f65f709e52f1217b54d5f3f1282318'
             'f77a5247a3ba63e9fad3a3b2822d0fcfa51e0f79b5a90bd79bf08ea34b64ab07'
             '0e54249a7754b668b436f0f7aa7e95fff68edbb12a93dbee4660e09a8c695f84'
             'c5aa7b8abe69e72bfdc6b9ee8afbfd350bcc557e894558f2e6e4087fa9aa0dd8'
@@ -93,9 +93,7 @@ package_nvidia-settings-beta() {
 package_opencl-nvidia-beta() {
     pkgdesc='OpenCL implemention for NVIDIA (beta version)'
     depends=(
-        'glibc'
-        "nvidia-utils-beta>=${pkgver}"
-        'zlib')
+        'glibc')
     optdepends=(
         'opencl-headers: headers necessary for OpenCL development')
     provides=("opencl-nvidia=${pkgver}" 'opencl-driver')
@@ -118,9 +116,10 @@ package_nvidia-utils-beta() {
         'bash'
         'egl-gbm'
         'egl-wayland'
+        'egl-wayland2'
         'egl-x11'
-        'gcc-libs'
         'glibc'
+        'libgcc'
         'libglvnd'
         'libx11'
         'libxext'
@@ -287,8 +286,7 @@ package_nvidia-utils-beta() {
     install -D -m644 <(printf '%s\n%s\n%s\n' 'blacklist nouveau' 'blacklist nova_core' 'blacklist nova_drm') "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf"
     install -D -m644 <(printf '%s\n' 'nvidia-uvm') "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
     
-    # enable PreserveVideoMemoryAllocations and TemporaryFilePath
-    # fixes Wayland Sleep, when restoring the session
+    # enable NVreg_UseKernelSuspendNotifiers and TemporaryFilePath
     install -D -m644 "${srcdir}/nvidia-sleep.conf" -t "${pkgdir}/usr/lib/modprobe.d"
     
     # Vulkan GTK renderer crash fix
