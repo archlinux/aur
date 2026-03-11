@@ -1,7 +1,7 @@
 # Maintainer: crl <crl18039102576@126.com>
 
 pkgname=python-nx-cugraph
-pkgver=25.12.00
+pkgver=26.02.00
 pkgrel=1
 pkgdesc="GPU Accelerated Backend for NetworkX"
 url="https://github.com/rapidsai/nx-cugraph"
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('python' 'python-pylibcugraph' 'python-cupy' 'python-numpy' 'python-networkx')
 makedepends=('python-setuptools')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b10a3a64dcff93f01176feab75badadfaa731945493356e99237c6d1b9682495')
+sha256sums=('419be0443c6f660767d09d63b85b8ef839270ebf8acfcfd9a20d089824fe4899')
 
 
 build() {
