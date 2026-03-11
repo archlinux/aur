@@ -1,0 +1,3 @@
+[perl-net-cidr]
+source = "cpan"
+cpan = "Net-CIDR"
