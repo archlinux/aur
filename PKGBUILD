@@ -37,5 +37,11 @@ package() {
     --root="$pkgdir" \
     --ignore-installed \
     --no-deps \
+    --no-warn-script-location \
+    --root-user-action=ignore \
     "nbtlib>=2.0.4"
+
+  # Remove "$pkgdir references from pip's RECORD file
+  find "$pkgdir" -name "RECORD" -exec \
+    sed -i "s|$pkgdir||g" {} +
 }
