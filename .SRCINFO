@@ -1,0 +1,14 @@
+pkgbase = letterboxd-tui
+	pkgdesc = Letterboxd in your terminal
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/solean/letterboxd-tui
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	makedepends = go
+	depends = glibc
+	source = letterboxd-tui-0.0.2.tar.gz::https://github.com/solean/letterboxd-tui/archive/refs/tags/v0.0.2.tar.gz
+	sha256sums = 0018e3812da13cfa69971b64041451b1c7a25da9ad02a1c101434b54e896fb4f
+
+pkgname = letterboxd-tui
