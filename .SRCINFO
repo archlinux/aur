@@ -1,14 +1,14 @@
 pkgbase = leolock
 	pkgdesc = LeoLock - 安全的文件加密解密工具
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lxp731/leolock
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
 	depends = glibc
-	source = https://github.com/lxp731/leolock/archive/refs/tags/v1.0.2.tar.gz
+	source = leolock-1.0.2-3.tar.gz::https://github.com/lxp731/leolock/archive/refs/tags/v1.0.2.tar.gz
 	sha256sums = a2e8d56750bd2d686157a955e17528bfa435382d695a5ed107e30ba39e718b46
 
 pkgname = leolock

@@ -1,14 +1,14 @@
 # Maintainer: Burgess Leo <liuxiaopeng731@gmail.com>
 pkgname=leolock
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="LeoLock - 安全的文件加密解密工具"
 arch=('x86_64')
 url="https://github.com/lxp731/leolock"
 license=('MIT')
 depends=('glibc')
 makedepends=('cargo' 'git')
-source=(https://github.com/lxp731/leolock/archive/refs/tags/v$pkgver.tar.gz)
+source=($pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/lxp731/leolock/archive/refs/tags/v$pkgver.tar.gz)
 sha256sums=('a2e8d56750bd2d686157a955e17528bfa435382d695a5ed107e30ba39e718b46')
 
 prepare() {
