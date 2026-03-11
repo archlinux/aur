@@ -1,5 +1,14 @@
-post_install(){
- cat <<INFO
-Adjust '/etc/conf.d/reitti' and enable 'reitti.service'.
-INFO
+post_install() {
+  echo ""
+  echo "Adjust the default configuration in '/etc/conf.d/reitti' and enable 'reitti.service'."
+  echo "If you want to use nginx, an example config is available in '/usr/share/doc/reitti/examples/nginx.conf'."
+  echo ""
+}
+
+post_upgrade() {
+  if (( $(vercmp $2 3.4.1-2) < 0 )); then
+    echo ""
+    echo "reitti now expects users to provide a TILE_CACHE environment variable, see /usr/share/doc/reitti/examples/nginx.conf"
+    echo ""
+  fi
 }
