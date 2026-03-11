@@ -1,6 +1,6 @@
 # Maintainer: Gentrit Biba <gentritbiba@gmail.com>
 pkgname=cogpit-server
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Headless web server for Cogpit — Claude Code session dashboard"
 arch=('x86_64' 'aarch64')
@@ -31,6 +31,11 @@ package() {
   cp -r server "${pkgdir}/opt/${pkgname}/"
   cp -r electron "${pkgdir}/opt/${pkgname}/"
   cp -r src "${pkgdir}/opt/${pkgname}/"
+
+  # Copy cogpit-memory CLI source (used by /api/cogpit-search route)
+  install -dm755 "${pkgdir}/opt/${pkgname}/packages/cogpit-memory"
+  cp -r packages/cogpit-memory/src "${pkgdir}/opt/${pkgname}/packages/cogpit-memory/"
+  cp packages/cogpit-memory/package.json "${pkgdir}/opt/${pkgname}/packages/cogpit-memory/"
   cp package.json "${pkgdir}/opt/${pkgname}/"
   cp tsconfig.json "${pkgdir}/opt/${pkgname}/" 2>/dev/null || true
   cp -r node_modules "${pkgdir}/opt/${pkgname}/"
