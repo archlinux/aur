@@ -1,0 +1,23 @@
+post_install() {
+    # Reload udev rules to apply permissions immediately
+    if type -P udevadm >/dev/null; then
+        udevadm control --reload-rules && udevadm trigger
+    fi
+
+    echo "==> NATIVMIX INSTALLATION NOTES:"
+    echo " "
+    echo "  HARDWARE ACCESS:"
+    echo "     Permissions have been configured via udev (uaccess tag)."
+    echo "     Your user should have access to the Arduino without manual group changes."
+    echo " "
+    echo "  GLOBAL HOTKEYS:"
+    echo "     To toggle mute via a shortcut (e.g., in KDE Plasma), use:"
+    echo "     sh -c '/usr/bin/nativmix --toggle-mute [index]'"
+    echo " "
+    echo "     Replace [index] with the number of the fader (e.g., 0, 1, 2...)"
+    echo " "
+}
+
+post_upgrade() {
+    post_install
+}

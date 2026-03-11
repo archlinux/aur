@@ -1,10 +1,10 @@
 # Maintainer: Christian Möllmann (knoelliX) <moellix@knoellix.net>
 pkgname=nativmix
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Hardware-assisted volume mixer for PipeWire/PulseAudio with Arduino support"
 arch=('any')
-url="https://github.com/knoellix/NativMix"
+url="https://github.com/knoelliX/NativMix"
 license=('GPL-3.0-or-later')
 
 depends=(
@@ -28,44 +28,65 @@ optdepends=(
     'kvantum: Plasma transparency and blur engine support'
 )
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/knoellix/NativMix/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1e4486318d8125219067be42818181f76065d32755401c38a4c3f618dc6382a6')
+install=nativmix.install
+
+# This URL is dynamic for AUR/Actions. 
+# For local building, you can still use your local files.
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/knoelliX/NativMix/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('d80e1afe8cd5ac22b10ffec77eb3f5a75b227c19eee2fdede6f878caf23b42cc')
+
+_enter_source() {
+    if [ -d "$srcdir/NativMix-${pkgver}" ]; then
+        cd "$srcdir/NativMix-${pkgver}"
+    elif [ -d "$srcdir/nativmix-${pkgver}" ]; then
+        cd "$srcdir/nativmix-${pkgver}"
+    elif [ -f "$startdir/../../pyproject.toml" ]; then
+        cd "$startdir/../.."
+    else
+        cd "$srcdir/.."
+    fi
+}
 
 prepare() {
-    cd "${srcdir}/NativMix-${pkgver}"
+    _enter_source
 
-    # Aufräumen von alten Build-Resten im Source-Ordner
-    rm -rf dist build lib/*.egg-info
+    # Clean previous build artifacts
+    rm -rf dist/ build/ lib/*.egg-info .eggs/
     find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
 }
 
 build() {
-    cd "${srcdir}/NativMix-${pkgver}"
+    _enter_source
+
     export PIP_NO_CACHE_DIR=1
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/NativMix-${pkgver}"
+    _enter_source
 
-    # 1. Installiere das Python Wheel
+    # 1. Install the Python wheel
     python -m installer --destdir="$pkgdir" dist/*.whl
 
-    # 2. Desktop Eintrag (liegt in deinem 'data' Ordner)
+    # 2. Desktop entry
     install -Dm644 data/nativmix.desktop \
         "$pkgdir/usr/share/applications/nativmix.desktop"
 
-    # 3. System-Icons (SVG & PNG)
+    # 3. Hardware Access (udev rules)
+    install -Dm644 data/udev/99-nativmix-arduino.rules \
+        "$pkgdir/usr/lib/udev/rules.d/99-nativmix-arduino.rules"
+
+    # 4. System Icons
     install -Dm644 assets/icon.svg \
         "$pkgdir/usr/share/icons/hicolor/scalable/apps/nativmix.svg"
     install -Dm644 assets/icon.png \
         "$pkgdir/usr/share/icons/hicolor/256x256/apps/nativmix.png"
 
-    # 4. App-Assets für die Laufzeit (falls dein Code dort sucht)
+    # 5. Application assets for runtime
     install -d "$pkgdir/usr/share/nativmix/assets"
     install -m644 assets/icon.png "$pkgdir/usr/share/nativmix/assets/icon.png"
     install -m644 assets/icon.svg "$pkgdir/usr/share/nativmix/assets/icon.svg"
 
-    # 5. Lizenz
+    # 6. License
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

@@ -1,8 +1,9 @@
 pkgbase = nativmix
 	pkgdesc = Hardware-assisted volume mixer for PipeWire/PulseAudio with Arduino support
-	pkgver = 1.0.2
-	pkgrel = 3
-	url = https://github.com/knoellix/NativMix
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/knoelliX/NativMix
+	install = nativmix.install
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python-build
@@ -17,7 +18,7 @@ pkgbase = nativmix
 	depends = python-mido
 	depends = python-rtmidi
 	optdepends = kvantum: Plasma transparency and blur engine support
-	source = nativmix-1.0.2.tar.gz::https://github.com/knoellix/NativMix/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 1e4486318d8125219067be42818181f76065d32755401c38a4c3f618dc6382a6
+	source = nativmix-1.0.3.tar.gz::https://github.com/knoelliX/NativMix/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = d80e1afe8cd5ac22b10ffec77eb3f5a75b227c19eee2fdede6f878caf23b42cc
 
 pkgname = nativmix
