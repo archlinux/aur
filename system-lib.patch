@@ -10,18 +10,15 @@
  create_logger_macros(CUML "ML::default_logger()" include/cuml/common)
  
  if(BUILD_CUML_TESTS OR BUILD_PRIMS_TESTS)
-@@ -272,15 +271,18 @@
+@@ -272,15 +271,15 @@
  endif()
  
  # CCCL before RMM, and RMM before RAFT
 -include(cmake/thirdparty/get_cccl.cmake)
 -include(cmake/thirdparty/get_rmm.cmake)
 -include(cmake/thirdparty/get_raft.cmake)
-+find_package(CCCL REQUIRED)
 +find_package(nvtx3 REQUIRED)
-+find_package(NvidiaCutlass REQUIRED)
 +find_package(rmm REQUIRED)
-+find_package(cuco REQUIRED)
 +find_package(raft REQUIRED)
  if(LINK_CUVS)
 -  include(cmake/thirdparty/get_cuvs.cmake)
@@ -34,12 +31,3 @@
  endif()
  
  if(all_algo OR treeshap_algo)
-@@ -293,7 +295,7 @@
- endif()
- 
- if(ENABLE_CUMLPRIMS_MG)
--  include(cmake/thirdparty/get_cumlprims_mg.cmake)
-+  find_package(cumlprims_mg REQUIRED)
- endif()
- 
- if(BUILD_CUML_TESTS OR BUILD_PRIMS_TESTS)
