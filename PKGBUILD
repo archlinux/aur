@@ -68,7 +68,7 @@ package() {
 	ln -sf "/usr/lib/node_modules/${_npmmodule}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	
 	msg2 "Install CHANGELOG file"
-	install -Dm755 "$srcdir/copilot-${pkgver}-changelog.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+	install -Dm755 "${srcdir}/CHANGELOG-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
 
 	msg2 "Install LICENSE file"
 	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
