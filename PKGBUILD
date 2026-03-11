@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=shinyBS
-_pkgver=0.63.0
+_pkgver=0.64.0
 pkgname=r-${_pkgname,,}
-pkgver=0.63.0
+pkgver=0.64.0
 pkgrel=1
 pkgdesc='Twitter Bootstrap Components for Shiny'
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
   r-shiny
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('710024cdacd5054e6c0cc4657f4d38d1afd1ce7315bccdd02e1df79176047b00')
+sha256sums=('f23725b53a4a7bd3a7f3ccba0b395c38328f1b8ca77fff0e6931ebd91752c9d0')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
