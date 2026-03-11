@@ -1,0 +1,16 @@
+[Unit]
+Description=pCloud console client for %i
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=%h/.pcloud/data.db
+
+[Service]
+Type=forking
+EnvironmentFile=%h/.pcloud/pcloud.env
+ExecStart=/usr/bin/pcloudcc -u ${PCLOUD_USER} -d
+ExecStop=/bin/sh -c 'echo "finalize" | /usr/bin/pcloudcc -k'
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
