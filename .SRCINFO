@@ -4,6 +4,7 @@ pkgbase = goshapps-notepad
 	pkgrel = 1
 	url = https://github.com/goshitsarch-eng/Goshapps-Notepad
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = meson
 	makedepends = ninja
