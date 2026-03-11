@@ -1,8 +1,8 @@
 pkgbase = cairo-clock
 	pkgdesc = An analog clock displaying the system-time
 	pkgver = 0.3.4
-	pkgrel = 5
-	url = https://macslow.org
+	pkgrel = 6
+	url = https://launchpad.net/cairo-clock
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -10,8 +10,6 @@ pkgbase = cairo-clock
 	depends = libglade
 	depends = librsvg
 	source = https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/cairo-clock/0.3.4-2ubuntu2/cairo-clock_0.3.4.orig.tar.gz
-	source = cairo-clock.patch
 	md5sums = 78e5b3aa3492aa6c182eaacae63a7c03
-	md5sums = a2ec378bf79dfb9a1b1418d7b2d341ff
 
 pkgname = cairo-clock
