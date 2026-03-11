@@ -2,7 +2,7 @@
 
 pkgname=varicad-view
 _pkgver_year=2026
-_pkgver_majmin=1.01
+_pkgver_majmin=2.01
 _pkgver_rel=1
 pkgver=${_pkgver_year}.${_pkgver_majmin}
 pkgrel=1
@@ -14,7 +14,7 @@ depends=(libx11 libxcomposite libxdamage libxext libxfixes libxrender mime-types
 provides=(varicad-view)
 source=("https://www.varicad.com/userdata/files/release/VariCAD_View-${_pkgver_year}.${_pkgver_majmin}-${_pkgver_rel}.$CARCH.rpm")
 url="https://www.varicad.com/"
-sha256sums=('8d987f213420be5dac7f1ab7b359b1e92dd9e65f05c10900ec5b34e5f4ec332f')
+sha256sums=('c408220944aa4c4247cdb4d15677eaee1a9e0980f53c4fab24e1f7a4b57f9ffe')
 
 package() {
   # Contents of this function are inspired by the install script located at:
