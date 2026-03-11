@@ -4,8 +4,8 @@
 
 pkgname=anytype-alpha-bin
 _pkgname=anytype
-pkgver=0.54.13_alpha
-pkgrel=2
+pkgver=0.54.14_alpha
+pkgrel=1
 pkgdesc="Operating environment for the new internet (Anytype)"
 arch=('x86_64')
 url="https://anytype.io"
@@ -23,7 +23,7 @@ source=(
 	"anytype-${pkgver//_/-}.deb::https://github.com/anyproto/anytype-ts/releases/download/v${pkgver//_/-}/anytype_${pkgver//_/-}_amd64.deb"
 	"LICENSE-${pkgver//_/-}.md::https://raw.githubusercontent.com/anyproto/anytype-ts/refs/tags/v${pkgver//_/-}/LICENSE.md"
 )
-sha256sums=('3c446363e574ef4fcd3252c1bbaf5fccb24e145b8aa8babe2e86899702ae0d6a'
+sha256sums=('23957286400a978517e941e44a48ef24406891ef5a1323662912cf39794c5dad'
             'daad9eb95adc6262b07115ba2cf87cd4c64acaca4b45d48e0fd3b15a72a31dc1')
 
 latestver() {
