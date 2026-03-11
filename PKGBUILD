@@ -4,13 +4,13 @@
 # Release notes https://github.com/FastFlowLM/FastFlowLM/releases/tag/v0.9.35
 pkgname=fastflowlm
 pkgver=0.9.35
-pkgrel=2
+pkgrel=3
 pkgdesc="Run LLMs on AMD Ryzen AI NPUs in minutes"
 arch=('x86_64')
 url="https://github.com/FastFlowLM/FastFlowLM"
 license=('MIT')
 depends=('xrt-plugin-amdxdna' 'fftw' 'curl' 'ffmpeg')
-makedepends=('cmake' 'git' 'ninja' 'xrt' 'boost')
+makedepends=('cmake' 'git' 'ninja' 'xrt' 'boost' 'rust')
 conflicts=('fastflowlm-git')
 provides=("fastflowlm=${pkgver}")
 
@@ -28,7 +28,7 @@ b2sums=(
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     git submodule init
-    git config submodule.third_party/tokenizers-cpp.url "$srcdir/tokenizers-cpp"
+    git config submodule.third_party/tokenizers-cpp.url "${srcdir}/tokenizers-cpp"
     git -c protocol.file.allow=always submodule update
 
     rm -rf "${srcdir}/${pkgname}-${pkgver}/third_party/tokenizers-cpp/sentencepiece"
@@ -52,5 +52,7 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}/src"
-    DESTDIR="$pkgdir" cmake --install build
+    DESTDIR="${pkgdir}" cmake --install build
+    rm -rf "${pkgdir}/usr/include"
+    rm -rf "${pkgdir}/usr/lib/cmake"
 }

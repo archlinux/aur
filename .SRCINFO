@@ -1,7 +1,7 @@
 pkgbase = fastflowlm
 	pkgdesc = Run LLMs on AMD Ryzen AI NPUs in minutes
 	pkgver = 0.9.35
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/FastFlowLM/FastFlowLM
 	arch = x86_64
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = fastflowlm
 	makedepends = ninja
 	makedepends = xrt
 	makedepends = boost
+	makedepends = rust
 	depends = xrt-plugin-amdxdna
 	depends = fftw
 	depends = curl
