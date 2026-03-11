@@ -1,9 +1,9 @@
 pkgbase = perl-unicode-checkutf8
 	pkgdesc = checks if scalar is valid UTF-8
 	pkgver = 1.03
-	pkgrel = 2
-	url = https://metacpan.org/dist/Unicode-CheckUTF8
-	arch = any
+	pkgrel = 3
+	url = https://metacpan.org/release/BRADFITZ/Unicode-CheckUTF8-1.03
+	arch = x86_64
 	license = custom
 	checkdepends = perl-test-simple
 	makedepends = perl-extutils-makemaker
