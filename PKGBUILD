@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/Veridian-Zenith/Voix"
 license=('OSL-3.0')
 depends=('pam')
-makedepends=('cmake>=3.18' 'ninja' 'clang' 'pkgconf' 'git')
+makedepends=('cmake>=3.18' 'clang' 'pkgconf' 'git')
 backup=('etc/pam.d/voix' 'etc/voix.conf')
 source=("git+https://github.com/Veridian-Zenith/Voix.git")
 sha256sums=('SKIP')
@@ -22,10 +22,9 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-    cmake -B build CC=clang CXX=clang++ -Wnodev \
+    CC=clang CXX=clang++ cmake -B build -Wno-dev \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -G Ninja
+        -DCMAKE_INSTALL_PREFIX=/usr
     cmake --build build
 }
 

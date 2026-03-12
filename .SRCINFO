@@ -6,7 +6,6 @@ pkgbase = voix
 	arch = x86_64
 	license = OSL-3.0
 	makedepends = cmake>=3.18
-	makedepends = ninja
 	makedepends = clang
 	makedepends = pkgconf
 	makedepends = git
