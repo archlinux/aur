@@ -28,10 +28,6 @@ checkdepends=(
     'perl-test-output'
     'perl-test-simple'
 )
-optdepends=(
-    'perl-moose'
-    'perl-test-output'
-)
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$_ver.tar.gz")
 sha256sums=('56ddacbb663cf542673aa65525ef50980b53f207770e743a1d18614bd8268178')
