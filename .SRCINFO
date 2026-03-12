@@ -9,6 +9,6 @@ pkgbase = yasos-bin
 	provides = yasos
 	conflicts = yasos-git
 	source = https://github.com/DameChocolateYa/yasos/releases/download/v20260312-1/yasos-linux-20260312-x86_64.tar.xz
-	sha256sums = d9cfe682fcccd46ae18818a4cb2d3e42e05c72219e50ceee8755b8c018a41e9d
+	sha256sums = sha256:d11ed6bf3b7898cc61c40eb3ada0d477c3c9c0060a3edf170a6c934dfc93055e
 
 pkgname = yasos-bin
