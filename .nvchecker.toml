@@ -1,0 +1,4 @@
+[fsel-bin]
+source = "github"
+github = "Mjoyufull/fsel"
+use_latest_release = true
