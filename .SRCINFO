@@ -1,11 +1,12 @@
 pkgbase = soundcloud-tui
 	pkgdesc = A SoundCloud client for the terminal written in Rust
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/7ito/soundcloud-tui
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = clang
 	makedepends = pkgconf
 	depends = alsa-lib
 	depends = dbus
