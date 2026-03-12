@@ -4,7 +4,7 @@
 pkgname=vscodium
 # Make sure the pkgver matches the git tags in vscodium and vscode git repo's!
 pkgver=1.110.11631
-pkgrel=1
+pkgrel=2
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest release)."
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/VSCodium/vscodium.git'
@@ -46,10 +46,12 @@ source=(
     "${pkgname}-uri-handler.desktop"
     "https://github.com/VSCodium/vscodium/releases/download/${pkgver}/VSCodium-${pkgver}-src.tar.gz"
 )
-sha256sums=('3a5bc109974fcf408855c13965f6d6be0997655c5b359de0bfd19a678c00844e'
-            'ef5759114cb0bada639bf89b778679bc7cf4d829151dc5fbf95eb33df4addcd6'
-            '121f2db8a65cfc74c10d3e7c3135b62b66297cf27f8f7f00c3ad29d412e968b7'
-            '6f9b0faf38579ee0c7f331c0bc78e0a6a7cd8e0d17ce5a2e6ecc709475daf96e')
+sha256sums=(
+    '7df6401e98536224f05014fc5a8134ee09dd5a390b1158d221337a9a9ddf93d0'
+    '07f0314b1869e3666f1ba52cd02dd40c841beef11a1ab9ae3246cafd01ef6caa'
+    '121f2db8a65cfc74c10d3e7c3135b62b66297cf27f8f7f00c3ad29d412e968b7'
+    '6f9b0faf38579ee0c7f331c0bc78e0a6a7cd8e0d17ce5a2e6ecc709475daf96e'
+)
 provides=(
     'codium'
     'vscodium'
@@ -130,6 +132,7 @@ build() {
     rm -rf patches/cleanup-archive.patch
     # Same for ppc64le-support.patch since that is not a supported architecture
     rm -rf patches/ppc64le-support.patch
+
     . get_repo.sh
     . build.sh
 }
@@ -141,14 +144,15 @@ package() {
 
     cp -r ${srcdir}/VSCode-linux-${_vscode_arch}/* ${pkgdir}/usr/share/${pkgname}
     cp -r ${srcdir}/VSCode-linux-${_vscode_arch}/resources/app/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}
-    
+
     ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/codium
     ln -s /usr/share/${pkgname}/bin/codium ${pkgdir}/usr/bin/vscodium
-    
+
     install -D -m644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
     install -D -m644 ${pkgname}-wayland.desktop ${pkgdir}/usr/share/applications/${pkgname}-wayland.desktop
     install -D -m644 ${pkgname}-uri-handler.desktop ${pkgdir}/usr/share/applications/${pkgname}-uri-handler.desktop
     install -D -m644 ${srcdir}/VSCode-linux-${_vscode_arch}/resources/app/resources/linux/code.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+    install -D -m644 ${srcdir}/src/stable/resources/linux/code.svg ${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg
 
     # Symlink shell completions
     install -d -m755 ${pkgdir}/usr/share/zsh/site-functions
