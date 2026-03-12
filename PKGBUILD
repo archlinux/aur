@@ -1,10 +1,10 @@
 # Maintainer: badcast <lmecomposer@gmail.com> or <support@imister.kz>
 # Contributor: Artem Izmaylov <support@aimp.ru>
 
-_pkver=(6.00 3044)
+_pkver=(6.00 3048)
 pkgname=aimp
 pkgver=${_pkver[0]}.${_pkver[1]}
-pkgrel=2
+pkgrel=1
 url="https://www.aimp.ru"
 pkgdesc="Powerful free audio player, converter and tag editor (v6 Alpha, Unstable)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ optdepends=('libappindicator: extend app-menu support')
 source=(
    "https://imister.kz/linux/aimp-nightly-x86_64.pkg.tar.zst"
 )
-sha256sums=('27ab1db453905e25b9de7c9760d31db43f1ef1746b7f8b2c0ee15f4c9011d722')
+sha256sums=('b563df17665f9a4e1a67a0c53019706048f59f0d3cd31abe740cf907a5d5f54b')
 
 package(){
    rm -fr "${srcdir}/usr/share/lintian"
