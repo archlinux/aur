@@ -1,0 +1,27 @@
+_check_optdep() {
+    pacman -Qq "$1" &>/dev/null
+}
+_warn() {
+    echo "  [!] $*"
+}
+post_install() {
+    echo ""
+    echo "══════════════════════════════════════════════════════════"
+    echo "  musiclib — Recommended Companion Packages"
+    echo "══════════════════════════════════════════════════════════"
+    echo "  The following packages unlock major musiclib features."
+    echo "  Without them, significant functionality is unavailable."
+    echo ""
+    _check_optdep rsgain   || _warn "rsgain   — ReplayGain normalization DISABLED"
+    _check_optdep conky    || _warn "conky    — Desktop telemetry display DISABLED"
+    _check_optdep kid3     || _warn "kid3     — Full KDE ID3 tag editor GUI DISABLED"
+    _check_optdep k3b      || _warn "k3b      — CD ripping/burning DISABLED"
+    echo ""
+    echo "  Install all at once:"
+    echo "    sudo pacman -S rsgain conky kid3 k3b"
+    echo "══════════════════════════════════════════════════════════"
+    echo ""
+}
+post_upgrade() {
+    post_install
+}
