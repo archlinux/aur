@@ -12,39 +12,39 @@ license=('custom')
 makedepends=('rsync')
 depends=('libxcrypt-compat' 'asymptote' 'psutils' 't1utils')
 provides=(git-latexdiff
-texlive-basic texlive-bibtexextra texlive-bin texlive-binextra
-texlive-context texlive-core texlive-doc
-texlive-fontsextra texlive-fontsrecommended texlive-fontutils texlive-formatsextra
-texlive-games texlive-htmlxml texlive-humanities
-texlive-langarabic texlive-langchinese texlive-langcjk texlive-langcyrillic
-texlive-langczechslovak texlive-langenglish
-texlive-langeuropean texlive-langfrench texlive-langgerman texlive-langgreek
-texlive-langitalian texlive-langjapanese texlive-langkorean texlive-langother
-texlive-langpolish texlive-langportuguese texlive-langspanish
-texlive-latex texlive-latexextra texlive-latexrecommended texlive-luatex
-texlive-mathscience texlive-metapost texlive-music
-texlive-pictures texlive-plaingeneric texlive-pstricks texlive-publishers
-texlive-science texlive-xetex
+    texlive-basic texlive-bibtexextra texlive-bin texlive-binextra
+    texlive-context texlive-core texlive-doc
+    texlive-fontsextra texlive-fontsrecommended texlive-fontutils texlive-formatsextra
+    texlive-games texlive-htmlxml texlive-humanities
+    texlive-langarabic texlive-langchinese texlive-langcjk texlive-langcyrillic
+    texlive-langczechslovak texlive-langenglish
+    texlive-langeuropean texlive-langfrench texlive-langgerman texlive-langgreek
+    texlive-langitalian texlive-langjapanese texlive-langkorean texlive-langother
+    texlive-langpolish texlive-langportuguese texlive-langspanish
+    texlive-latex texlive-latexextra texlive-latexrecommended texlive-luatex
+    texlive-mathscience texlive-metapost texlive-music
+    texlive-pictures texlive-plaingeneric texlive-pstricks texlive-publishers
+    texlive-science texlive-xetex
 )
 conflicts=(git-latexdiff
-texlive-basic texlive-bibtexextra texlive-bin texlive-binextra
-texlive-context texlive-core texlive-doc
-texlive-fontsextra texlive-fontsrecommended texlive-fontutils texlive-formatsextra
-texlive-games texlive-htmlxml texlive-humanities
-texlive-langarabic texlive-langchinese texlive-langcjk texlive-langcyrillic
-texlive-langczechslovak texlive-langenglish
-texlive-langeuropean texlive-langfrench texlive-langgerman texlive-langgreek
-texlive-langitalian texlive-langjapanese texlive-langkorean texlive-langother
-texlive-langpolish texlive-langportuguese texlive-langspanish
-texlive-latex texlive-latexextra texlive-latexrecommended texlive-luatex
-texlive-mathscience texlive-metapost texlive-music
-texlive-pictures texlive-plaingeneric texlive-pstricks texlive-publishers
-texlive-science texlive-xetex
+    texlive-basic texlive-bibtexextra texlive-bin texlive-binextra
+    texlive-context texlive-core texlive-doc
+    texlive-fontsextra texlive-fontsrecommended texlive-fontutils texlive-formatsextra
+    texlive-games texlive-htmlxml texlive-humanities
+    texlive-langarabic texlive-langchinese texlive-langcjk texlive-langcyrillic
+    texlive-langczechslovak texlive-langenglish
+    texlive-langeuropean texlive-langfrench texlive-langgerman texlive-langgreek
+    texlive-langitalian texlive-langjapanese texlive-langkorean texlive-langother
+    texlive-langpolish texlive-langportuguese texlive-langspanish
+    texlive-latex texlive-latexextra texlive-latexrecommended texlive-luatex
+    texlive-mathscience texlive-metapost texlive-music
+    texlive-pictures texlive-plaingeneric texlive-pstricks texlive-publishers
+    texlive-science texlive-xetex
 )
 source=("install-tl-unx-${pkgver}.tar.gz::https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
     "LICENSE.TL::https://tug.org/texlive/LICENSE.TL")
 sha256sums=('SKIP'
-            '8147ff504e6d7d89a7c42d5c3dfbaa8705ad17f72c82a5c1bce5f4f0ee8b2fb7')
+    '8147ff504e6d7d89a7c42d5c3dfbaa8705ad17f72c82a5c1bce5f4f0ee8b2fb7')
 #PKGEXT='.pkg.tar'
 options=(!strip)
 
@@ -56,33 +56,33 @@ options=(!strip)
 _mirror='rsync.dante.ctan.org/CTAN/systems/texlive/tlnet/'
 _syncdir="CTAN/tlnet"
 
-pkgver(){
-    local _tldate=$(ls  | grep -E '[0-9]+' -o | sort -r | head -1)
-    local _year=$(cat ${srcdir}/install-tl-${_tldate}/release-texlive.txt| grep -E '[0-9]+' -o)
+pkgver() {
+    local _tldate=$(ls | grep -E '[0-9]+' -o | sort -r | head -1)
+    local _year=$(cat ${srcdir}/install-tl-${_tldate}/release-texlive.txt | grep -E '[0-9]+' -o)
     echo "${_year}.${_tldate}"
 }
-prepare(){
+prepare() {
     # TeXLive release year
-    local _tldate=$(ls  | grep -E '[0-9]+' -o | sort -r | head -1)
-    local _year=$(cat ${srcdir}/install-tl-${_tldate}/release-texlive.txt| grep -E '[0-9]+' -o)
+    local _tldate=$(ls | grep -E '[0-9]+' -o | sort -r | head -1)
+    local _year=$(cat ${srcdir}/install-tl-${_tldate}/release-texlive.txt | grep -E '[0-9]+' -o)
     # creating a profile for unattened installation
-    echo "selected_scheme scheme-full" > "${srcdir}/texlive.profile"
-    echo "TEXDIR ${pkgdir}/opt/texlive/${_year}" >> "${srcdir}/texlive.profile"
-    echo "TEXMFLOCAL ${pkgdir}/opt/texlive/texmf-local" >> "${srcdir}/texlive.profile"
-    echo "TEXMFSYSCONFIG ${pkgdir}/opt/texlive/${_year}/texmf-config" >> "${srcdir}/texlive.profile"
-    echo "TEXMFSYSVAR ${pkgdir}/opt/texlive/${_year}/texmf-var" >> "${srcdir}/texlive.profile"
-    echo "TEXMFHOME ~/.config/texlive/texmf" >> "${srcdir}/texlive.profile"
-    echo "TEXMFCONFIG ~/.config/texlive/${_year}/texmf-config" >> "${srcdir}/texlive.profile"
-    echo "TEXMFVAR ~/.config/texlive/${_year}/texmf-var" >> "${srcdir}/texlive.profile"
+    echo "selected_scheme scheme-full" >"${srcdir}/texlive.profile"
+    echo "TEXDIR ${pkgdir}/opt/texlive/${_year}" >>"${srcdir}/texlive.profile"
+    echo "TEXMFLOCAL ${pkgdir}/opt/texlive/texmf-local" >>"${srcdir}/texlive.profile"
+    echo "TEXMFSYSCONFIG ${pkgdir}/opt/texlive/${_year}/texmf-config" >>"${srcdir}/texlive.profile"
+    echo "TEXMFSYSVAR ${pkgdir}/opt/texlive/${_year}/texmf-var" >>"${srcdir}/texlive.profile"
+    echo "TEXMFHOME ~/.config/texlive/texmf" >>"${srcdir}/texlive.profile"
+    echo "TEXMFCONFIG ~/.config/texlive/${_year}/texmf-config" >>"${srcdir}/texlive.profile"
+    echo "TEXMFVAR ~/.config/texlive/${_year}/texmf-var" >>"${srcdir}/texlive.profile"
 
     # syncing repository
     mkdir -p ${_syncdir}
     msg2 "Syncing local mirror"
-    rsync -av --delete --info=progress2 --info=name0 rsync://${_mirror}  ${_syncdir}
+    rsync -av --delete --info=progress2 --info=name0 rsync://${_mirror} ${_syncdir}
 
 }
 
-_postfix(){
+_postfix() {
     # remove files provided by other packages
     # we do not link the executables from the depends to /opt/texlive/bin
     # as it's too complicated.
@@ -103,8 +103,8 @@ _postfix(){
 }
 
 package() {
-    local _tldate=$(ls  | grep -E '[0-9]+' -o | sort -r | head -1)
-    local _year=$(cat ${srcdir}/install-tl-${_tldate}/release-texlive.txt| grep -E '[0-9]+' -o)
+    local _tldate=$(ls | grep -E '[0-9]+' -o | sort -r | head -1)
+    local _year=$(cat ${srcdir}/install-tl-${_tldate}/release-texlive.txt | grep -E '[0-9]+' -o)
     # find installer path automatically.
     local _installer_dir=install-tl-${_tldate}
 
@@ -121,29 +121,25 @@ package() {
 
     msg2 "Linking manpage"
     mkdir -p ${pkgdir}/usr/share/man/{man1,man5}
-    for mann in {1,5}
-    do
+    for mann in {1,5}; do
         cd ${pkgdir}/opt/texlive/${_year}/texmf-dist/doc/man/man${mann}
         #  only link .1 and .5 files, not pdf
-        find . -type f,l -name "*.${mann}" -print0 |sed "s|\./||g"| while read -d $'\0' man
-        do
-            ln -s "/opt/texlive/${_year}/texmf-dist/doc/man/man${mann}/${man}"  "${pkgdir}/usr/share/man/man${mann}/"
+        find . -type f,l -name "*.${mann}" -print0 | sed "s|\./||g" | while read -d $'\0' man; do
+            ln -s "/opt/texlive/${_year}/texmf-dist/doc/man/man${mann}/${man}" "${pkgdir}/usr/share/man/man${mann}/"
         done
     done
 
     msg2 "Linking info"
     cd ${pkgdir}/opt/texlive/${_year}/texmf-dist/doc/info/
     mkdir -p ${pkgdir}/usr/share/info
-    find . -type f,l  -print0 |sed "s|\./||g"| while read -d $'\0' info
-    do
+    find . -type f,l -print0 | sed "s|\./||g" | while read -d $'\0' info; do
         ln -s "/opt/texlive/${_year}/texmf-dist/doc/info/${info}" "${pkgdir}/usr/share/info/"
     done
 
     msg2 "Linking binary"
     cd ${pkgdir}/opt/texlive/${_year}/bin/${arch}-linux/
     mkdir -p ${pkgdir}/usr/bin
-    find . -type f,l  -print0 |sed "s|\./||g"| while read -d $'\0' bin
-    do
+    find . -type f,l -print0 | sed "s|\./||g" | while read -d $'\0' bin; do
         ln -s "/opt/texlive/${_year}/bin/${arch}-linux/${bin}" "${pkgdir}/usr/bin/"
     done
 
