@@ -1,6 +1,6 @@
 pkgbase = dealers-choice
 	pkgdesc = Online Multiplayer Stud and Draw Poker
-	pkgver = 0.0.8
+	pkgver = 0.0.9
 	pkgrel = 1
 	url = https://github.com/Dealer-s-Choice/dealers_choice
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = dealers-choice
 	depends = sdl2_net
 	depends = protobuf-c
 	depends = hicolor-icon-theme
-	source = https://github.com/Dealer-s-Choice/dealers_choice/releases/download/v0.0.8/dealers-choice-0.0.8.tar.xz
-	sha256sums = 1946976cd3176091d4b16f5ebdc575bab285051808a8b5e49600c32bb6314eb4
+	source = https://github.com/Dealer-s-Choice/dealers_choice/releases/download/v0.0.9/dealers-choice-0.0.9.tar.xz
+	sha256sums = c57c77155b8e17c68561d5306a7d2e26df8cab87c37d31e4fcff66b3e1aa8e18
 
 pkgname = dealers-choice
