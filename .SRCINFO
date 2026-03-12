@@ -1,6 +1,6 @@
 pkgbase = linux-cachyos-lts
 	pkgdesc = Linux BORE + Cachy Sauce Kernel by CachyOS with other patches and improvements - Long Term Service
-	pkgver = 6.18.16
+	pkgver = 6.18.17
 	pkgrel = 1
 	url = https://github.com/CachyOS/linux-cachyos
 	arch = x86_64
@@ -21,9 +21,9 @@ pkgbase = linux-cachyos-lts
 	options = !strip
 	options = !debug
 	options = !lto
-	source = https://github.com/CachyOS/linux/releases/download/cachyos-6.18.16-1/cachyos-6.18.16-1.tar.gz
+	source = https://github.com/CachyOS/linux/releases/download/cachyos-6.18.17-1/cachyos-6.18.17-1.tar.gz
 	source = config
-	b2sums = fb5b0488b71a7ca03fbf33218c20f3aaf73fb4504927a0011f0980613927680c2ddf99e6f878976e4791fa0d2792880b10a33c8e4b524b0506099e577f2a59e7
+	b2sums = e1e26f6100b5b02d894f3cd8dd6ec55ae99ba66080d34ab876c540aa9971affbb5c459785dbe60b6afc565cd79eba9981afe6d3052c34aca6b5bfa23c1b021d7
 	b2sums = 81fafd3adcaf3b690d8d4791693e68c7ae921d103ebfd70e8d0ae15cd05ecde5e6672ae43c3a7875686d883c1f5b82d2c8b37b40aee8dcb0563913f9dd6469b6
 
 pkgname = linux-cachyos-lts
