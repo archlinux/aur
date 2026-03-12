@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 # It will look like: 2.2.0.r<commit_count>.<short_commit_hash>
 pkgver() {
   cd "$_pkgname"
-  printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "2.3.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
