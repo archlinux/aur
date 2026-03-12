@@ -1,7 +1,7 @@
 # Maintainer: Thomas J Faughnan Jr <thomas@faughnan.net>
 
 pkgname=imessage-exporter
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc='Export iMessage data and run diagnostics'
 arch=(x86_64)
@@ -13,7 +13,7 @@ optdepends=('imagemagick: image conversion support'
             'ffmpeg: audio and video conversion support')
 options=(!lto)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('dec866858987ee55393955ca77c533b404f84b8326baae8ec8a28f9d4de32a791e57658f325971a488f8d84133d0faaf44bd90192502356630380b2189ad8ea8')
+sha512sums=('098b754fb287ece422fc929c61975e7b1bc8811256508e5b2ebf7efa63ec3ab1d082b9df8c5abeb981111e155ebf11f2b4d91e4edcf7533f5d244d1f4b52b357')
 
 prepare() {
     cd "$pkgname-$pkgver"
