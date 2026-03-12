@@ -1,12 +1,12 @@
 pkgbase = checkpoint
 	pkgdesc = Debug TypeScript/JavaScript via TUI. Checkpoint functions, edit state, skip execution.
-	pkgver = 0.1.2
-	pkgrel = 1
+	pkgver = 0.2.0
+	pkgrel = 0.1
 	url = https://github.com/ErenayDev/checkpoint-ts
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = checkpoint-0.1.2.tar.gz::https://github.com/ErenayDev/checkpoint-ts/archive/v0.1.2.tar.gz
-	sha256sums = 35809ee87614c01f2f47cc6cb7ee6c014da89fd45d310502838f76a804f116ba
+	source = checkpoint-ts-0.2.0-beta.1.tar.gz::https://github.com/ErenayDev/checkpoint-ts/archive/v0.2.0-beta.1.tar.gz
+	sha256sums = 30bcbe75fe136c62cd84c262dbb2f5314e5b2b0c48f1f231e0ad6ee6b9f959a4
 
 pkgname = checkpoint
