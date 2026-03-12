@@ -4,7 +4,7 @@
 pkgname=vivaldi-snapshot
 _rpmversion=7.9.3970.24-1
 pkgver=7.9.3970.24
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. Snapshot'
 url="https://vivaldi.com"
 options=(!strip !zipman)
@@ -72,6 +72,8 @@ package() {
         install -d "$pkgdir/usr/share/icons/hicolor/${_res}x${_res}/apps"
         magick "$pkgdir/opt/$pkgname/product_logo_256.png" \
             -resize ${_res}x${_res} \
+            "$pkgdir/usr/share/icons/hicolor/${_res}x${_res}/apps/$pkgname.png"
+        chmod 0644 \
             "$pkgdir/usr/share/icons/hicolor/${_res}x${_res}/apps/$pkgname.png"
     done
     install -d "$pkgdir/usr/share/pixmaps"
