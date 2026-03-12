@@ -17,12 +17,12 @@ sha256sums=('SKIP')
 # It will look like: 2.2.0.r<commit_count>.<short_commit_hash>
 pkgver() {
   cd "$_pkgname"
-  printf "2.2.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "$pkgver.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
     cd "$_pkgname"
-    cmake -B build \
+    cmake -B build CC=clang CXX=clang++ -Wnodev \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -G Ninja
