@@ -3,20 +3,19 @@
 pkgbase=python-spherical_geometry
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.3.5
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Python based tools for spherical geometry"
 arch=('i686' 'x86_64')
 url="http://www.stsci.edu/resources/software_hardware/stsci_python"
 license=('BSD-3-Clause')
-makedepends=('python-setuptools-scm'
+makedepends=('python-setuptools-scm>=3.6'
              'python-build'
              'python-installer'
              'qd>=2.3.24'
              'python-numpy>=2.0.0'
              'python-sphinx-automodapi'
-             'python-numpydoc'
-             'python-astropy')  # wheel required by new setuptools
+             'python-numpydoc')  # wheel required by new setuptools
 # conftest.py
 checkdepends=('python-pytest-astropy-header'
 #             'python-pytest-xdist'
@@ -25,7 +24,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         'fix_typo.patch'
         'fix_doc_warning.patch'
         'revert-inside-png-path.patch')
-md5sums=('e62e462e4b61ff239ba67c493a9f7453'
+md5sums=('7c2b1b9968218df419838b156252e97c'
          '376f76ebdf3c52048a113c386c091210'
          'fed5395d45a2275ccd5e0d63956ecddf'
          'ad61482f989d4df861753edc5af0f920')
@@ -61,7 +60,8 @@ check() {
 
 package_python-spherical_geometry() {
     depends=('python>=3.11' 'python-numpy>=1.25' 'qd>=2.3.24' 'python-astropy>=5.2.0')
-    optdepends=('python-spherical_geometry-doc: Documentation for Spherical Geometry Toolkit')
+    optdepends=('python-astropy>=5.2.0: wcs'
+                'python-spherical_geometry-doc: Documentation for Spherical Geometry Toolkit')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}/"
