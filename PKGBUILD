@@ -119,7 +119,7 @@ package_opencl-nvidia-bsb() {
 }
 
 package_nvidia-utils-bsb() {
-    pkgdesc="NVIDIA drivers utilities foru se with BSB related patch for nvidia-open-dkms"
+    pkgdesc="NVIDIA drivers utilities for use with BSB related patch for nvidia-open-dkms"
     depends=('libglvnd' 'egl-wayland' 'egl-wayland2' 'egl-gbm' 'egl-x11')
     optdepends=('nvidia-settings: configuration tool'
                 'xorg-server: Xorg support'

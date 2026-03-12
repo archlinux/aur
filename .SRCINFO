@@ -34,7 +34,7 @@ pkgbase = nvidia-utils-bsb
 	sha512sums_x86_64 = 31fd82af707dbe9a6d3848766925386f5e91c5fae0a605819450eb8e5a5a52eaab3ae5cff50b4dd36bc5c32fe1aabc29a6a79438d6614988c7b08f509ef0da6d
 
 pkgname = nvidia-utils-bsb
-	pkgdesc = NVIDIA drivers utilities foru se with BSB related patch for nvidia-open-dkms
+	pkgdesc = NVIDIA drivers utilities for use with BSB related patch for nvidia-open-dkms
 	install = nvidia-utils.install
 	depends = libglvnd
 	depends = egl-wayland
