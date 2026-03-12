@@ -1,6 +1,6 @@
 # Maintainer: Daniël Nazarkin <aur.danicatgames@pm.me>
 pkgname=tiddl
-pkgver=3.2.0
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Download tracks and videos from Tidal with max quality!"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python-build'
   'python-wheel')
 checkdepends=("python-pytest" "python-pytest-mock")
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e6e98b70aca6c646c65d1442be171e35772c7dfa25031293c5119b448b9ec35f')
+sha256sums=('2d3fafa44889ab2db5377c44008b505bdbe5603815b8d2c0b96428d18d8dcd9f')
 
 build() {
   cd "$pkgname-$pkgver"
