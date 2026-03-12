@@ -1,6 +1,6 @@
 pkgbase = firedragon-alpha-bin
 	pkgdesc = Floorp fork built with custom branding and settings - testing version for the upcoming FireDragon 13 (technically *beta* now, not *alpha*, but i'm not making a new pkgbase lolol)
-	pkgver = 13.0.0_beta.2
+	pkgver = 13.0.0_beta.3
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.com/garuda-linux/firedragon/firedragon13
@@ -36,12 +36,12 @@ pkgbase = firedragon-alpha-bin
 	backup = usr/lib/firedragon/firedragon.cfg
 	backup = usr/lib/firedragon/distribution/policies.json
 	source = firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
-	source = https://gitlab.com/garuda-linux/firedragon/firedragon13/-/raw/v13.0.0-beta.2/assets/firedragon.desktop
+	source = https://gitlab.com/garuda-linux/firedragon/firedragon13/-/raw/v13.0.0-beta.3/assets/firedragon.desktop
 	b2sums = a042cac06a3c2f424df86298775b9441ef6e1d181c065349c2c33740c15da57ee16c7114d84f006603e13e232891a3c635df630b22926ebca4a252204a2db281
 	b2sums = 77fb65365470533628c12389cfc210b4ac7cb37ef6fb946d10c4a5514b652e4969f63097a76e1e94ac53146b954a17ce84ebd61c73f7b07ac9b65446c6ff6b09
-	source_x86_64 = firedragon-v13.0.0-beta.2-linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.2/downloads/firedragon.linux-x64.tar.xz
-	b2sums_x86_64 = bbe31826df3c9c7163c7e5cbd6a3da8c37953c7eff1c6df092de795896084f7d48c3e30ffc0191005b59a4b1e0a5a7cae85dc4972b21c6966200b618f376610a
-	source_aarch64 = firedragon-v13.0.0-beta.2-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.2/downloads/firedragon.linux-arm64.tar.xz
-	b2sums_aarch64 = b8aeb4eca2f91022310470bbb0a3edc47811962969885437add610515c991287a9195c61c2600618c7dbe7337ddead7600b2748c98506bf981342efac85731a0
+	source_x86_64 = firedragon-v13.0.0-beta.3-linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.3/downloads/firedragon.linux-x64.tar.xz
+	b2sums_x86_64 = bc9083a36cd0905e88faac86d7ea30bfbb6e8dee85255dbd6442a14d226b7b05ad5c7c750be8a5163f726fa32c12a279172762ff3460cbb3ca684a8d612ca104
+	source_aarch64 = firedragon-v13.0.0-beta.3-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.3/downloads/firedragon.linux-arm64.tar.xz
+	b2sums_aarch64 = b8d4b28c33ec05c6b37084bb99efb358c110710eaf44ab77e1a4190a86a5ecde1f3b3e840070c7a208ebd21a9a52bac41bcf835bf3babb3b74e9984e403e8766
 
 pkgname = firedragon-alpha-bin
