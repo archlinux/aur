@@ -27,7 +27,7 @@ build() {
 }
 
 package_lib32-opencl-nvidia-bsb() {
-    pkgdesc="OpenCL implemention for NVIDIA (32-bit)"
+    pkgdesc="OpenCL implemention for NVIDIA (32-bit) for use with BSB Related patch for nvidia-open-dkms"
     depends=('lib32-zlib' 'lib32-gcc-libs')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
     provides=('lib32-opencl-driver')
@@ -44,7 +44,7 @@ package_lib32-opencl-nvidia-bsb() {
 }
 
 package_lib32-nvidia-utils-bsb() {
-    pkgdesc="NVIDIA drivers utilities (32-bit)"
+    pkgdesc="NVIDIA drivers utilities (32-bit) for use with BSB related patch for nvidia-open-dkms"
     depends=('lib32-zlib' 'lib32-gcc-libs' 'lib32-libglvnd' "nvidia-utils=${pkgver}")
     optdepends=('lib32-opencl-nvidia')
     conflicts=('lib32-nvidia-libgl')
