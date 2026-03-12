@@ -6,7 +6,7 @@
 
 _pkgname="crossonic"
 pkgname="$_pkgname"
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="An OpenSubsonic compatible cross-platform music client"
 arch=('x86_64')
@@ -43,7 +43,7 @@ source=(
 	"$_pkgsrc.$_pkgext"::"$url/archive/refs/tags/v$pkgver.$_pkgext"
 )
 sha256sums=(
-	'e0a7eeeea6dc6bf3b2d801fcd620bce97826f261906dfc3ff27b85ec8ec26db7'
+	'c9dcd575b41a08d90ed3e68031f8f482a0f398c69755c38bcbb96c6e774178d1'
 )
 
 prepare() {
