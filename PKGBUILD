@@ -9,7 +9,7 @@ license=('MIT')
 depends=('dotnet-runtime-8.0' 'chromium')
 makedepends=('dotnet-sdk-8.0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('75c2ef16c62105959e8c96e5f582805212f3978bacf3dfbb0b34cebcf8561071')
+sha256sums=('2644cc399b47745beb00958c8a1aa74f28f56fcfad5d622d68bee91d43f30b1e')
 
 build() {
   cd "NamozVaqtlariCLI-$pkgver"
