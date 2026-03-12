@@ -34,7 +34,7 @@ pkgbase = nvidia-utils-bsb
 	sha512sums_x86_64 = 31fd82af707dbe9a6d3848766925386f5e91c5fae0a605819450eb8e5a5a52eaab3ae5cff50b4dd36bc5c32fe1aabc29a6a79438d6614988c7b08f509ef0da6d
 
 pkgname = nvidia-utils-bsb
-	pkgdesc = NVIDIA drivers utilities
+	pkgdesc = NVIDIA drivers utilities foru se with BSB related patch for nvidia-open-dkms
 	install = nvidia-utils.install
 	depends = libglvnd
 	depends = egl-wayland
@@ -52,13 +52,13 @@ pkgname = nvidia-utils-bsb
 	replaces = nvidia-libgl
 
 pkgname = opencl-nvidia-bsb
-	pkgdesc = OpenCL implemention for NVIDIA
+	pkgdesc = OpenCL implemention for NVIDIA for use with BSB related patch for nvidia-open-dkms
 	depends = zlib
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-driver
 
 pkgname = nvidia-open-dkms-bsb
-	pkgdesc = NVIDIA open kernel modules - module sources
+	pkgdesc = NVIDIA open kernel modules - module sources patched with DSC patch to make the Bigscreen Beyond Headset work
 	license = MIT AND GPL-2.0-only
 	depends = dkms
 	depends = nvidia-utils-bsb=590.48.01
