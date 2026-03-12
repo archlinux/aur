@@ -3,49 +3,50 @@
 _binname=xenia_canary
 _branchname=canary_experimental
 pkgname=xenia-canary-git
-pkgver=r8033.605bfd0e7
+pkgver=r8354.3b8debcf5
 pkgrel=1
 pkgdesc='An experimental emulator for the Xbox 360.'
 arch=('x86_64')
 url='https://github.com/xenia-canary/xenia-canary'
 license=('BSD-3-Clause')
-checkdepends=('catch2-v2')
 makedepends=('clang'
              'cmake'
              'cxxopts'
              'git'
-             'premake'
              'rapidjson'
              'tomlplusplus'
              'vulkan-headers')
-depends=('capstone'
-         'fmt'
+depends=('alsa-lib'
          'gtk3'
          'hicolor-icon-theme'
-         'pugixml'
-         'sdl2'
-         'snappy'
-         'zarchive'
-         'zlib-ng')
+         'sdl2')
 conflicts=('xenia' 'xenia-git')
 provides=('xenia')
 # TODO: Use system installed deps for non-forked libs
 source=("${pkgname}::git+https://github.com/xenia-canary/xenia-canary.git#branch=${_branchname}"
-        'FFmpeg::git+https://github.com/xenia-canary/FFmpeg_radixsplit.git'
+        'FFmpeg::git+https://github.com/has207/FFmpeg.git#branch=xmaframes'
         'FidelityFX-CAS::git+https://github.com/GPUOpen-Effects/FidelityFX-CAS.git'
         'FidelityFX-FSR::git+https://github.com/GPUOpen-Effects/FidelityFX-FSR.git'
         'VulkanMemoryAllocator::git+https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git'
         'aes_128::git+https://github.com/openluopworld/aes_128.git'
+        'capstone::git+https://github.com/capstone-engine/capstone.git'
+        'catch::git+https://github.com/catchorg/Catch2.git'
         'date::git+https://github.com/HowardHinnant/date.git'
         'discord-rpc::git+https://github.com/discordapp/discord-rpc.git'
         'disruptorplus::git+https://github.com/xenia-canary/disruptorplus.git'
+        'fmt::git+https://github.com/fmtlib/fmt.git'
         'glslang::git+https://github.com/KhronosGroup/glslang.git'
         'imgui::git+https://github.com/ocornut/imgui.git'
-        'premake-cmake::git+https://github.com/JoelLinn/premake-cmake.git'
+        'pugixml::git+https://github.com/zeux/pugixml.git'
         'rapidcsv::git+https://github.com/d99kris/rapidcsv.git'
+        'snappy::git+https://github.com/google/snappy.git'
         'tabulate::git+https://github.com/p-ranav/tabulate.git'
         'utfcpp::git+https://github.com/nemtrif/utfcpp.git'
         'xbyak::git+https://github.com/herumi/xbyak.git'
+        'xxhash::git+https://github.com/Cyan4973/xxHash.git'
+        'zarchive::git+https://github.com/exzap/ZArchive.git'
+        'zlib-ng::git+https://github.com/zlib-ng/zlib-ng.git'
+        'zstd::git+https://github.com/facebook/zstd.git'
         "${pkgname}.desktop"
         '0001-Use-system-dependencies.patch')
 sha256sums=('SKIP'
@@ -64,18 +65,22 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             '6df34559e1bb42e1c0a67152a8f1ebd8c59bd890f6d7625f711ae80859165822'
-            'ae84bddfa376a5e85e305fb5767836863ed38fe3cd71c7b1ccfc6031c723438d')
+            '6e102c77e1fd2e4816c6d1a21dc027ca90c24293e96669f096fa0e1db0022ea5')
 
 pkgver() {
   printf 'r%s.%s' "$(git -C ${pkgname} rev-list --count HEAD)" "$(git -C ${pkgname} rev-parse --short HEAD)"
 }
 
 prepare() {
-  sed --in-place \
-    --expression '/fatalwarnings("All")/d' \
-    "${pkgname}"/premake5.lua
-
   # Initialize Submodules
   for submodule in $(git -C "${pkgname}" submodule | awk '{print $2}')
   do
@@ -91,16 +96,14 @@ prepare() {
   # Use System Dependencies
   git -C "${pkgname}" apply --verbose "${srcdir}"/0001-Use-system-dependencies.patch
 
+  CXXFLAGS="${CXXFLAGS} -Wno-unused-result"
   export CXXFLAGS CFLAGS LDFLAGS
-  premake5 \
-    --file="${pkgname}"/premake5.lua \
-    cmake
   cmake \
     -B "${pkgname}"-build \
     -D CMAKE_BUILD_TYPE:STRING=Release \
     -D CMAKE_CXX_COMPILER:STRING=clang++ \
     -D CMAKE_C_COMPILER:STRING=clang \
-    -S "${pkgname}"/build
+    -S "${pkgname}"
   echo "#ifndef GENERATED_VERSION_H_" > "${pkgname}"/build/version.h
   echo "#define GENERATED_VERSION_H_" >> "${pkgname}"/build/version.h
   echo "#define XE_BUILD_BRANCH \"${_branchname}\"" >> "${pkgname}"/build/version.h
@@ -118,28 +121,23 @@ build() {
 }
 
 check() {
-  sed --in-place \
-    --expression 's/enableTests = false/enableTests = true/g' \
-    "${pkgname}"/premake5.lua
-
-  premake5 \
-    --file="${pkgname}"/premake5.lua \
-    cmake
   cmake \
     -B "${pkgname}"-build \
     -D CMAKE_BUILD_TYPE:STRING=Release \
     -D CMAKE_CXX_COMPILER:STRING=clang++ \
     -D CMAKE_C_COMPILER:STRING=clang \
-    -S "${pkgname}"/build
+    -D XENIA_BUILD_TESTS:BOOL=ON \
+    -S "${pkgname}"
   cmake \
     --build "${pkgname}"-build \
     --target xenia-base-tests
 
-  "${pkgname}"/build/bin/Linux/Release/xenia-base-tests
+  "${pkgname}"/build/bin/Linux/xenia-base-tests \
+    '~Test Suspending Thread'
 }
 
 package() {
-  install -Dm755 "${pkgname}"/build/bin/Linux/Release/"${_binname}" "${pkgdir}"/usr/bin/xenia
+  install -Dm755 "${pkgname}"/build/bin/Linux/"${_binname}" "${pkgdir}"/usr/bin/xenia
   install -Dm644 "${pkgname}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   # Desktop file

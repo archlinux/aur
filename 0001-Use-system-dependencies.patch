@@ -1,111 +1,49 @@
-From 027aba6008ce7f5068cc9d813ba512e77f5f0024 Mon Sep 17 00:00:00 2001
+From f72e7b1cccdeaec9ff472f45df06bd91b8b419ec Mon Sep 17 00:00:00 2001
 From: David Hummel <hummeltech@sherpaguru.com>
 Date: Wed, 21 May 2025 22:47:10 +0200
 Subject: [PATCH] Use system dependencies
 
 ---
- .gitmodules                                   | 43 +--------------
- premake5.lua                                  | 52 +++++++++++++------
- src/xenia/apu/sdl/premake5.lua                |  2 +-
- src/xenia/emulator.cc                         |  2 +-
- src/xenia/helper/sdl/premake5.lua             |  2 +-
- src/xenia/hid/sdl/premake5.lua                |  2 +-
- src/xenia/kernel/premake5.lua                 |  1 -
- src/xenia/ui/premake5.lua                     |  2 +-
- third_party/DirectXShaderCompiler             |  2 +-
- third_party/SDL2                              |  1 -
- third_party/SDL2/include                      |  1 +
- third_party/SPIRV-Tools                       |  1 -
- third_party/SPIRV-Tools/include               |  1 +
- third_party/Vulkan-Headers                    |  1 -
- third_party/Vulkan-Headers/include/vulkan     |  1 +
- third_party/VulkanMemoryAllocator             |  2 +-
- third_party/capstone                          |  1 -
- third_party/capstone/include                  |  1 +
- third_party/catch                             |  1 -
- third_party/catch/include/catch.hpp           |  1 +
- .../catch/single_include/catch2/catch.hpp     |  1 +
- third_party/cxxopts                           |  1 -
- third_party/cxxopts/include/cxxopts.hpp       |  1 +
- third_party/date                              |  2 +-
- third_party/fmt                               |  1 -
- third_party/fmt/include                       |  1 +
- third_party/glslang                           |  2 +-
- third_party/imgui                             |  2 +-
- third_party/libusb                            |  2 +-
- third_party/premake-cmake                     |  2 +-
- third_party/premake-core                      |  2 +-
- third_party/pugixml                           |  1 -
- third_party/pugixml/src/pugixml.hpp           |  1 +
- third_party/rapidcsv                          |  2 +-
- third_party/rapidjson                         |  2 +-
- third_party/snappy                            |  2 +-
- third_party/tabulate                          |  2 +-
- third_party/tomlplusplus                      |  1 -
- third_party/tomlplusplus/impl                 |  1 +
- third_party/tomlplusplus/include              |  1 +
- third_party/tomlplusplus/toml.hpp             |  1 +
- third_party/utfcpp                            |  2 +-
- third_party/xbyak                             |  2 +-
- third_party/xxhash                            |  1 -
- third_party/xxhash/xxhash.h                   |  1 +
- third_party/zarchive                          |  1 -
- third_party/zarchive/include                  |  1 +
- third_party/zlib-ng                           |  1 -
- third_party/zlib-ng/zlib-ng.h                 |  1 +
- third_party/zstd                              |  2 +-
- 50 files changed, 73 insertions(+), 90 deletions(-)
+ .gitmodules                               | 34 -----------------------
+ src/xenia/emulator.cc                     |  2 +-
+ third_party/SDL2                          |  1 -
+ third_party/SDL2/include                  |  1 +
+ third_party/SPIRV-Tools                   |  1 -
+ third_party/SPIRV-Tools/include           |  1 +
+ third_party/Vulkan-Headers                |  1 -
+ third_party/Vulkan-Headers/include/vulkan |  1 +
+ third_party/cxxopts                       |  1 -
+ third_party/cxxopts/include/cxxopts.hpp   |  1 +
+ third_party/date                          |  2 +-
+ third_party/imgui                         |  2 +-
+ third_party/libusb                        |  2 +-
+ third_party/rapidcsv                      |  2 +-
+ third_party/tabulate                      |  2 +-
+ third_party/tomlplusplus                  |  1 -
+ third_party/tomlplusplus/impl             |  1 +
+ third_party/tomlplusplus/include          |  1 +
+ third_party/tomlplusplus/toml.hpp         |  1 +
+ third_party/utfcpp                        |  2 +-
+ third_party/xbyak                         |  2 +-
+ 21 files changed, 15 insertions(+), 47 deletions(-)
  delete mode 160000 third_party/SDL2
  create mode 120000 third_party/SDL2/include
  delete mode 160000 third_party/SPIRV-Tools
  create mode 120000 third_party/SPIRV-Tools/include
  delete mode 160000 third_party/Vulkan-Headers
  create mode 120000 third_party/Vulkan-Headers/include/vulkan
- delete mode 160000 third_party/capstone
- create mode 120000 third_party/capstone/include
- delete mode 160000 third_party/catch
- create mode 120000 third_party/catch/include/catch.hpp
- create mode 120000 third_party/catch/single_include/catch2/catch.hpp
  delete mode 160000 third_party/cxxopts
  create mode 120000 third_party/cxxopts/include/cxxopts.hpp
- delete mode 160000 third_party/fmt
- create mode 120000 third_party/fmt/include
- delete mode 160000 third_party/pugixml
- create mode 120000 third_party/pugixml/src/pugixml.hpp
- mode change 160000 => 120000 third_party/snappy
  delete mode 160000 third_party/tomlplusplus
  create mode 120000 third_party/tomlplusplus/impl
  create mode 120000 third_party/tomlplusplus/include
  create mode 120000 third_party/tomlplusplus/toml.hpp
- delete mode 160000 third_party/xxhash
- create mode 120000 third_party/xxhash/xxhash.h
- delete mode 160000 third_party/zarchive
- create mode 120000 third_party/zarchive/include
- delete mode 160000 third_party/zlib-ng
- create mode 120000 third_party/zlib-ng/zlib-ng.h
 
 diff --git a/.gitmodules b/.gitmodules
-index 2502770d6..1560702ae 100644
+index 0ee64ac52..b2b50a188 100644
 --- a/.gitmodules
 +++ b/.gitmodules
-@@ -7,16 +7,9 @@
- [submodule "third_party/binutils-ppc-cygwin"]
- 	path = third_party/binutils-ppc-cygwin
- 	url = https://github.com/benvanik/binutils-ppc-cygwin.git
--[submodule "third_party/catch"]
--	path = third_party/catch
--	url = https://github.com/catchorg/Catch2.git
- [submodule "third_party/premake-core"]
- 	path = third_party/premake-core
- 	url = https://github.com/premake/premake-core.git
--[submodule "third_party/snappy"]
--	path = third_party/snappy
--	url = https://github.com/google/snappy.git
--	ignore = dirty
- [submodule "third_party/premake-export-compile-commands"]
- 	path = third_party/premake-export-compile-commands
- 	url = https://github.com/xenia-project/premake-export-compile-commands.git
-@@ -29,24 +22,9 @@
+@@ -20,24 +20,9 @@
  [submodule "third_party/aes_128"]
  	path = third_party/aes_128
  	url = https://github.com/openluopworld/aes_128.git
@@ -130,12 +68,7 @@ index 2502770d6..1560702ae 100644
  [submodule "third_party/disruptorplus"]
  	path = third_party/disruptorplus
  	url = https://github.com/xenia-canary/disruptorplus.git
-@@ -55,13 +33,10 @@
- 	url = https://github.com/microsoft/DirectXShaderCompiler.git
- [submodule "third_party/premake-cmake"]
- 	path = third_party/premake-cmake
--	url = https://github.com/JoelLinn/premake-cmake.git
-+       url = https://github.com/Jarod42/premake-cmake.git
+@@ -47,9 +32,6 @@
  [submodule "third_party/date"]
  	path = third_party/date
  	url = https://github.com/HowardHinnant/date.git
@@ -144,8 +77,8 @@ index 2502770d6..1560702ae 100644
 -	url = https://github.com/Cyan4973/xxHash.git
  [submodule "third_party/FFmpeg"]
  	path = third_party/FFmpeg
- 	url = https://github.com/xenia-canary/FFmpeg_radixsplit.git
-@@ -74,37 +49,21 @@
+ 	url = https://github.com/has207/FFmpeg.git
+@@ -60,37 +42,21 @@
  [submodule "third_party/FidelityFX-FSR"]
  	path = third_party/FidelityFX-FSR
  	url = https://github.com/GPUOpen-Effects/FidelityFX-FSR.git
@@ -183,132 +116,11 @@ index 2502770d6..1560702ae 100644
  [submodule "third_party/libusb"]
  	path = third_party/libusb
  	url = https://github.com/libusb/libusb.git
-diff --git a/premake5.lua b/premake5.lua
-index b3b2d9c16..76d57d937 100644
---- a/premake5.lua
-+++ b/premake5.lua
-@@ -1,9 +1,9 @@
- include("tools/build")
- if _ACTION == "export-compile-commands" then
--  require("third_party/premake-export-compile-commands/export-compile-commands")
-+  -- require("third_party/premake-export-compile-commands/export-compile-commands")
- end
- if os.istarget("android") then
--  require("third_party/premake-androidndk/androidndk")
-+  -- require("third_party/premake-androidndk/androidndk")
- end
- if _ACTION == "cmake" then
-   require("third_party/premake-cmake/cmake")
-@@ -128,13 +128,35 @@ filter("platforms:Linux")
-   --buildoptions({
-   --    "-mlzcnt",   -- (don't) Assume lzcnt is supported.
-   --})
-+  pkg_config.all("RapidJSON")
-+  pkg_config.all("SPIRV-Tools")
-+  pkg_config.all("capstone")
-+  pkg_config.all("cxxopts")
-+  pkg_config.all("fmt")
-   pkg_config.all("gtk+-x11-3.0")
-+  pkg_config.all("libxxhash")
-+  pkg_config.all("libzstd")
-+  pkg_config.all("pugixml")
-+  pkg_config.all("sdl2")
-+  pkg_config.all("snappy")
-+  pkg_config.all("zarchive")
-+  pkg_config.all("zlib-ng")
-   links({
--    "stdc++fs",
-+    "SDL2",
-+    "SPIRV-Tools",
-+    "capstone",
-     "dl",
-+    "fmt",
-     "lz4",
-     "pthread",
-+    "pugixml",
-     "rt",
-+    "snappy",
-+    "stdc++fs",
-+    "xxhash",
-+    "z",
-+    "zarchive",
-+    "zstd"
-   })
- 
- filter({"platforms:Linux", "kind:*App"})
-@@ -201,7 +223,7 @@ if os.istarget("android") then
-   filter("platforms:Android-*")
-     system("android")
-     systemversion("24")
--    cppstl("c++")
-+    -- cppstl("c++")
-     staticruntime("On")
-     -- Hidden visibility is needed to prevent dynamic relocations in FFmpeg
-     -- AArch64 Neon libavcodec assembly with PIC (accesses extern lookup tables
-@@ -294,22 +316,22 @@ workspace("xenia")
-   configurations({"Checked", "Debug", "Release"})
- 
-   include("third_party/aes_128.lua")
--  include("third_party/capstone.lua")
-+  -- include("third_party/capstone.lua")
-   include("third_party/dxbc.lua")
-   include("third_party/discord-rpc.lua")
--  include("third_party/cxxopts.lua")
--  include("third_party/tomlplusplus.lua")
-+  -- include("third_party/cxxopts.lua")
-+  -- include("third_party/tomlplusplus.lua")
-   include("third_party/FFmpeg/premake5.lua")
--  include("third_party/fmt.lua")
-+  -- include("third_party/fmt.lua")
-   include("third_party/glslang-spirv.lua")
-   include("third_party/imgui.lua")
-   include("third_party/mspack.lua")
--  include("third_party/snappy.lua")
--  include("third_party/xxhash.lua")
--  include("third_party/zarchive.lua")
--  include("third_party/zstd.lua")
--  include("third_party/zlib-ng.lua")
--  include("third_party/pugixml.lua")
-+  -- include("third_party/snappy.lua")
-+  -- include("third_party/xxhash.lua")
-+  -- include("third_party/zarchive.lua")
-+  -- include("third_party/zstd.lua")
-+  -- include("third_party/zlib-ng.lua")
-+  -- include("third_party/pugixml.lua")
- 
-   if os.istarget("windows") then
-     include("third_party/libusb.lua")
-@@ -322,7 +344,7 @@ workspace("xenia")
-     -- one controller (Nvidia Shield) being supported, digital triggers are also
-     -- not supported; lifecycle management (especially surface loss) is also
-     -- complicated.
--    include("third_party/SDL2.lua")
-+    -- include("third_party/SDL2.lua")
-   end
- 
-   -- Disable treating warnings as fatal errors for all third party projects, as
-diff --git a/src/xenia/apu/sdl/premake5.lua b/src/xenia/apu/sdl/premake5.lua
-index 77bf00131..208b109ef 100644
---- a/src/xenia/apu/sdl/premake5.lua
-+++ b/src/xenia/apu/sdl/premake5.lua
-@@ -6,6 +6,7 @@ project("xenia-apu-sdl")
-   uuid("153b4e8b-813a-40e6-9366-4b51abc73c45")
-   kind("StaticLib")
-   language("C++")
-+  pkg_config.all("sdl2")
-   links({
-     "xenia-apu",
-     "xenia-base",
-@@ -13,4 +14,3 @@ project("xenia-apu-sdl")
-     "SDL2",
-   })
-   local_platform_files()
--  sdl2_include()
 diff --git a/src/xenia/emulator.cc b/src/xenia/emulator.cc
-index 3ad0c6958..2ce3e9647 100644
+index b0acd0feb..75e8455a0 100644
 --- a/src/xenia/emulator.cc
 +++ b/src/xenia/emulator.cc
-@@ -14,7 +14,7 @@
+@@ -16,7 +16,7 @@
  #include "third_party/tabulate/single_include/tabulate/tabulate.hpp"
  #include "third_party/zarchive/include/zarchive/zarchivecommon.h"
  #include "third_party/zarchive/include/zarchive/zarchivewriter.h"
@@ -317,69 +129,6 @@ index 3ad0c6958..2ce3e9647 100644
  #include "xenia/apu/audio_system.h"
  #include "xenia/base/assert.h"
  #include "xenia/base/byte_stream.h"
-diff --git a/src/xenia/helper/sdl/premake5.lua b/src/xenia/helper/sdl/premake5.lua
-index 26058f713..c538827eb 100644
---- a/src/xenia/helper/sdl/premake5.lua
-+++ b/src/xenia/helper/sdl/premake5.lua
-@@ -6,8 +6,8 @@ project("xenia-helper-sdl")
-   uuid("84b00ad3-fba3-4561-96c9-1f9993b14c9c")
-   kind("StaticLib")
-   language("C++")
-+  pkg_config.all("sdl2")
-   links({
-     "SDL2",
-   })
-   local_platform_files()
--  sdl2_include()
-diff --git a/src/xenia/hid/sdl/premake5.lua b/src/xenia/hid/sdl/premake5.lua
-index 15bcf4fca..9d011902c 100644
---- a/src/xenia/hid/sdl/premake5.lua
-+++ b/src/xenia/hid/sdl/premake5.lua
-@@ -6,6 +6,7 @@ project("xenia-hid-sdl")
-   uuid("44f5b9a1-00f8-4825-acf1-5c93f26eba9b")
-   kind("StaticLib")
-   language("C++")
-+  pkg_config.all("sdl2")
-   links({
-     "xenia-base",
-     "xenia-hid",
-@@ -13,4 +14,3 @@ project("xenia-hid-sdl")
-     "SDL2",
-   })
-   local_platform_files()
--  sdl2_include()
-diff --git a/src/xenia/kernel/premake5.lua b/src/xenia/kernel/premake5.lua
-index f478c9f22..0aa3a02b2 100644
---- a/src/xenia/kernel/premake5.lua
-+++ b/src/xenia/kernel/premake5.lua
-@@ -9,7 +9,6 @@ project("xenia-kernel")
-   links({
-     "aes_128",
-     "fmt",
--    "zlib-ng",
-     "pugixml",
-     "xenia-apu",
-     "xenia-base",
-diff --git a/src/xenia/ui/premake5.lua b/src/xenia/ui/premake5.lua
-index 0188c1118..05fda1004 100644
---- a/src/xenia/ui/premake5.lua
-+++ b/src/xenia/ui/premake5.lua
-@@ -17,7 +17,7 @@ project("xenia-ui")
-   if os.istarget("android") then
-     filter("platforms:Android-*")
-       -- Exports JNI functions.
--      wholelib("On")
-+      -- wholelib("On")
-   end
- 
-   filter("platforms:Windows")
-diff --git a/third_party/DirectXShaderCompiler b/third_party/DirectXShaderCompiler
-index 69e54e290..d751c827e 160000
---- a/third_party/DirectXShaderCompiler
-+++ b/third_party/DirectXShaderCompiler
-@@ -1 +1 @@
--Subproject commit 69e54e29086b7035acffb304cec57a350225f8b0
-+Subproject commit d751c827ed3b61e87fdf57d0f424cb2d7af30cd0
 diff --git a/third_party/SDL2 b/third_party/SDL2
 deleted file mode 160000
 index e11183ea6..000000000
@@ -397,11 +146,11 @@ index 000000000..38776340f
 \ No newline at end of file
 diff --git a/third_party/SPIRV-Tools b/third_party/SPIRV-Tools
 deleted file mode 160000
-index 4451f6ab1..000000000
+index 33e025681..000000000
 --- a/third_party/SPIRV-Tools
 +++ /dev/null
 @@ -1 +0,0 @@
--Subproject commit 4451f6ab13dda98bf255a7cd7b4d120132dc0dfd
+-Subproject commit 33e02568181e3312f49a3cf33df470bf96ef293a
 diff --git a/third_party/SPIRV-Tools/include b/third_party/SPIRV-Tools/include
 new file mode 120000
 index 000000000..408ea0f82
@@ -412,11 +161,11 @@ index 000000000..408ea0f82
 \ No newline at end of file
 diff --git a/third_party/Vulkan-Headers b/third_party/Vulkan-Headers
 deleted file mode 160000
-index 409c16be5..000000000
+index 2cd90f9d2..000000000
 --- a/third_party/Vulkan-Headers
 +++ /dev/null
 @@ -1 +0,0 @@
--Subproject commit 409c16be502e39fe70dd6fe2d9ad4842ef2c9a53
+-Subproject commit 2cd90f9d20df57eac214c148f3aed885372ddcfe
 diff --git a/third_party/Vulkan-Headers/include/vulkan b/third_party/Vulkan-Headers/include/vulkan
 new file mode 120000
 index 000000000..b1548a777
@@ -424,51 +173,6 @@ index 000000000..b1548a777
 +++ b/third_party/Vulkan-Headers/include/vulkan
 @@ -0,0 +1 @@
 +/usr/include/vulkan
-\ No newline at end of file
-diff --git a/third_party/VulkanMemoryAllocator b/third_party/VulkanMemoryAllocator
-index c788c5215..6ec8481c8 160000
---- a/third_party/VulkanMemoryAllocator
-+++ b/third_party/VulkanMemoryAllocator
-@@ -1 +1 @@
--Subproject commit c788c52156f3ef7bc7ab769cb03c110a53ac8fcb
-+Subproject commit 6ec8481c8a13db586d7b3ba58f4eb9bbf017edf0
-diff --git a/third_party/capstone b/third_party/capstone
-deleted file mode 160000
-index 66b08439a..000000000
---- a/third_party/capstone
-+++ /dev/null
-@@ -1 +0,0 @@
--Subproject commit 66b08439abd988e87b4542389b4937ce13bd0063
-diff --git a/third_party/capstone/include b/third_party/capstone/include
-new file mode 120000
-index 000000000..408ea0f82
---- /dev/null
-+++ b/third_party/capstone/include
-@@ -0,0 +1 @@
-+/usr/include
-\ No newline at end of file
-diff --git a/third_party/catch b/third_party/catch
-deleted file mode 160000
-index ee1450f26..000000000
---- a/third_party/catch
-+++ /dev/null
-@@ -1 +0,0 @@
--Subproject commit ee1450f268dfd5c13aa8670ba97e93cabaf2e15d
-diff --git a/third_party/catch/include/catch.hpp b/third_party/catch/include/catch.hpp
-new file mode 120000
-index 000000000..52ec8c5b8
---- /dev/null
-+++ b/third_party/catch/include/catch.hpp
-@@ -0,0 +1 @@
-+/usr/include/catch2/catch.hpp
-\ No newline at end of file
-diff --git a/third_party/catch/single_include/catch2/catch.hpp b/third_party/catch/single_include/catch2/catch.hpp
-new file mode 120000
-index 000000000..52ec8c5b8
---- /dev/null
-+++ b/third_party/catch/single_include/catch2/catch.hpp
-@@ -0,0 +1 @@
-+/usr/include/catch2/catch.hpp
 \ No newline at end of file
 diff --git a/third_party/cxxopts b/third_party/cxxopts
 deleted file mode 160000
@@ -492,28 +196,6 @@ index f94b8f36c..e32a0d809 160000
 @@ -1 +1 @@
 -Subproject commit f94b8f36c6180be0021876c4a397a054fe50c6f2
 +Subproject commit e32a0d809c3d3c4797826825dc2d0b287281e3b2
-diff --git a/third_party/fmt b/third_party/fmt
-deleted file mode 160000
-index e3ddede6c..000000000
---- a/third_party/fmt
-+++ /dev/null
-@@ -1 +0,0 @@
--Subproject commit e3ddede6c4ee818825c4e5a6dfa1d384860c27d9
-diff --git a/third_party/fmt/include b/third_party/fmt/include
-new file mode 120000
-index 000000000..408ea0f82
---- /dev/null
-+++ b/third_party/fmt/include
-@@ -0,0 +1 @@
-+/usr/include
-\ No newline at end of file
-diff --git a/third_party/glslang b/third_party/glslang
-index ae2a56293..a45e175a4 160000
---- a/third_party/glslang
-+++ b/third_party/glslang
-@@ -1 +1 @@
--Subproject commit ae2a562936cc8504c9ef2757cceaff163147834f
-+Subproject commit a45e175a45fe2792bf62e3acebcc817fecfc8422
 diff --git a/third_party/imgui b/third_party/imgui
 index 4806a1924..c0d02e5ae 160000
 --- a/third_party/imgui
@@ -528,35 +210,6 @@ index a61afe5f7..3dbfa16f0 160000
 @@ -1 +1 @@
 -Subproject commit a61afe5f75d969c4561a1d0ad753aa23cee6329a
 +Subproject commit 3dbfa16f0cd9e8ed4fec916c6c00f41c738cb8f4
-diff --git a/third_party/premake-cmake b/third_party/premake-cmake
-index 91c646f63..8e02bb91a 160000
---- a/third_party/premake-cmake
-+++ b/third_party/premake-cmake
-@@ -1 +1 @@
--Subproject commit 91c646f638a6fbff20f0ea90769df8dcf62bc5e4
-+Subproject commit 8e02bb91a4d0f29d7540de7357574cf3b7c454f9
-diff --git a/third_party/premake-core b/third_party/premake-core
-index ba2c383c0..5b3497937 160000
---- a/third_party/premake-core
-+++ b/third_party/premake-core
-@@ -1 +1 @@
--Subproject commit ba2c383c0456aa75d1b93faf62f4aec2691f23b2
-+Subproject commit 5b3497937b81e135001ac5cfe9b41cdcefa57531
-diff --git a/third_party/pugixml b/third_party/pugixml
-deleted file mode 160000
-index b2b466403..000000000
---- a/third_party/pugixml
-+++ /dev/null
-@@ -1 +0,0 @@
--Subproject commit b2b466403084667c90a0f0cc4e960405cfc8117a
-diff --git a/third_party/pugixml/src/pugixml.hpp b/third_party/pugixml/src/pugixml.hpp
-new file mode 120000
-index 000000000..2dc728a92
---- /dev/null
-+++ b/third_party/pugixml/src/pugixml.hpp
-@@ -0,0 +1 @@
-+/usr/include/pugixml.hpp
-\ No newline at end of file
 diff --git a/third_party/rapidcsv b/third_party/rapidcsv
 index a98b85e66..d76cf1c08 160000
 --- a/third_party/rapidcsv
@@ -564,28 +217,6 @@ index a98b85e66..d76cf1c08 160000
 @@ -1 +1 @@
 -Subproject commit a98b85e663114b8fdc9c0dc03abf22c296f38241
 +Subproject commit d76cf1c08e79be1eb04c9d4d8eb7893221127991
-diff --git a/third_party/rapidjson b/third_party/rapidjson
-index 7c73dd7de..24b5e7a8b 160000
---- a/third_party/rapidjson
-+++ b/third_party/rapidjson
-@@ -1 +1 @@
--Subproject commit 7c73dd7de7c4f14379b781418c6e947ad464c818
-+Subproject commit 24b5e7a8b27f42fa16b96fc70aade9106cf7102f
-diff --git a/third_party/snappy b/third_party/snappy
-deleted file mode 160000
-index 6af9287fb..000000000
---- a/third_party/snappy
-+++ /dev/null
-@@ -1 +0,0 @@
--Subproject commit 6af9287fbdb913f0794d0148c6aa43b58e63c8e3
-diff --git a/third_party/snappy b/third_party/snappy
-new file mode 120000
-index 000000000..408ea0f82
---- /dev/null
-+++ b/third_party/snappy
-@@ -0,0 +1 @@
-+/usr/include
-\ No newline at end of file
 diff --git a/third_party/tabulate b/third_party/tabulate
 index 3a5830106..b9026bf1e 160000
 --- a/third_party/tabulate
@@ -638,58 +269,6 @@ index 4e44f4614..e09816e75 160000
 @@ -1 +1 @@
 -Subproject commit 4e44f4614ddbf038f2a6296f5b906d5c72691e0f
 +Subproject commit e09816e752b0c9d93a4abc4fd045d89c8a3a825d
-diff --git a/third_party/xxhash b/third_party/xxhash
-deleted file mode 160000
-index e626a72bc..000000000
---- a/third_party/xxhash
-+++ /dev/null
-@@ -1 +0,0 @@
--Subproject commit e626a72bc2321cd320e953a0ccf1584cad60f363
-diff --git a/third_party/xxhash/xxhash.h b/third_party/xxhash/xxhash.h
-new file mode 120000
-index 000000000..ce079552f
---- /dev/null
-+++ b/third_party/xxhash/xxhash.h
-@@ -0,0 +1 @@
-+/usr/include/xxhash.h
-\ No newline at end of file
-diff --git a/third_party/zarchive b/third_party/zarchive
-deleted file mode 160000
-index b467f7aa3..000000000
---- a/third_party/zarchive
-+++ /dev/null
-@@ -1 +0,0 @@
--Subproject commit b467f7aa342895e66a1a003377ed63b3c1be3de3
-diff --git a/third_party/zarchive/include b/third_party/zarchive/include
-new file mode 120000
-index 000000000..408ea0f82
---- /dev/null
-+++ b/third_party/zarchive/include
-@@ -0,0 +1 @@
-+/usr/include
-\ No newline at end of file
-diff --git a/third_party/zlib-ng b/third_party/zlib-ng
-deleted file mode 160000
-index 860e4cff7..000000000
---- a/third_party/zlib-ng
-+++ /dev/null
-@@ -1 +0,0 @@
--Subproject commit 860e4cff7917d93f54f5d7f0bc1d0e8b1a3cb988
-diff --git a/third_party/zlib-ng/zlib-ng.h b/third_party/zlib-ng/zlib-ng.h
-new file mode 120000
-index 000000000..0199e157c
---- /dev/null
-+++ b/third_party/zlib-ng/zlib-ng.h
-@@ -0,0 +1 @@
-+/usr/include/zlib-ng.h
-\ No newline at end of file
-diff --git a/third_party/zstd b/third_party/zstd
-index 20707e371..1dbc2e090 160000
---- a/third_party/zstd
-+++ b/third_party/zstd
-@@ -1 +1 @@
--Subproject commit 20707e3718ee14250fb8a44b3bf023ea36bd88df
-+Subproject commit 1dbc2e09084e843f6c0dcc2d0791610015c50979
 -- 
-2.51.0
+2.53.0
 
