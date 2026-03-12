@@ -7,9 +7,9 @@
 
 _suffix=browser
 pkgname="obs-studio-${_suffix}"
-_pkgver=32.0.4
+_pkgver=32.1.0
 pkgver="${_pkgver//-/_}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Free and open source software for video recording and live streaming. With everything except service integration"
 arch=("x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -107,7 +107,6 @@ source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$_pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
-  "12328-Cleanup_Qt_Gui_Private_linkage.patch" # https://github.com/obsproject/obs-studio/pull/12328
 )
 source_x86_64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v6.tar.xz")
 source_aarch64=("https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_aarch64_v6.tar.xz")
@@ -115,7 +114,6 @@ sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
-  "25322c692cf5cc88fc7d17cbb40a61b7e32d5ea675da647dd1a1996474ec2c8e"
 )
 sha256sums_x86_64=("7963335519a19ccdc5233f7334c5ab023026e2f3e9a0cc417007c09d86608146")
 sha256sums_aarch64=("642514469eaa29a5c887891084d2e73f7dc2d7405f7dfa7726b2dbc24b309999")
@@ -135,9 +133,6 @@ prepare() {
 
   # Keep sentinel file functional without messing with compile flags
   sed -i "s|#ifndef NDEBUG|#if 0|" frontend/utility/CrashHandler.cpp
-
-  ## frontend: Cleanup Qt GuiPrivate linkage (https://github.com/obsproject/obs-studio/pull/12328)
-  patch -Np1 -i "$srcdir/12328-Cleanup_Qt_Gui_Private_linkage.patch"
 }
 
 build() {
