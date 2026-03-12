@@ -2,7 +2,7 @@
 # Maintainer: Martin Wimpress <code@wimpress.io>
 
 pkgname='tailor-bin'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='Ready-to-wear project templates for GitHub repositories.'
 url='https://github.com/wimpysworld/tailor'
@@ -12,16 +12,16 @@ provides=('tailor')
 conflicts=('tailor')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/wimpysworld/tailor/releases/download/v${pkgver}/tailor-linux-arm64")
-sha256sums_aarch64=('6559cb30fb0084b78033a1af474b2d8453722a3477ab96ffaad787a5bc535042')
+sha256sums_aarch64=('5fa55314cbf370708877a5af82cd05923635619cb29ff46c1e142ac680a39eeb')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/wimpysworld/tailor/releases/download/v${pkgver}/tailor_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('188b724589ad32c6dcd2238214fb8d96918fc7688792444a95d4acb7a991d641')
+sha256sums_aarch64=('6e49638888cd39edbe57227020e7a9a8005ea22ffd4cb4a781d5e6ff674df65f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/wimpysworld/tailor/releases/download/v${pkgver}/tailor-linux-amd64")
-sha256sums_x86_64=('33851e1e98acf6369a172ce31f31532cfc32cb38471e2166a62fa549412ca337')
+sha256sums_x86_64=('85d17b31236a5563502f8178d4aaca0e1cbd9e7889c4f6291839288a71c5fcdf')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/wimpysworld/tailor/releases/download/v${pkgver}/tailor_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('d2be15e1de2bf75ed03a52e6d029de9d96871f5fc7ba752a1fc1aae92c7bb856')
+sha256sums_x86_64=('2a766196c635546e27524ee4bea3b5d6d795f7eb0e2c2fa59dc38dce8c154fc7')
 
 package() {
   install -Dm755 tailor "${pkgdir}/usr/bin/tailor"
