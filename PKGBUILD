@@ -4,7 +4,8 @@
 
 pkgname=lemonade-server-git
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)"
-pkgver=260312.b21ea7f9
+epoch=1
+pkgver=r751.b21ea7f9
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
