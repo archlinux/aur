@@ -2,7 +2,7 @@
 
 pkgname=gnome-webapps-git
 pkgver=0.6.0.r0.g7482f2c
-pkgrel=1
+pkgrel=2
 pkgdesc="Install websites as desktop applications on the GNOME desktop."
 arch=("any")
 

@@ -1,7 +1,7 @@
 pkgbase = gnome-webapps-git
 	pkgdesc = Install websites as desktop applications on the GNOME desktop.
 	pkgver = 0.6.0.r0.g7482f2c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/eyekay/webapps
 	arch = any
 	license = GPL-3.0-or-later
@@ -26,7 +26,8 @@ pkgbase = gnome-webapps-git
 	provides = gnome-webapps
 	conflicts = gnome-webapps
 	source = gnome-webapps::git+https://codeberg.org/eyekay/webapps.git
-	sha512sums = SKIP
-	b2sums = SKIP
+	source = fix-desktop-exec.patch
+	sha256sums = SKIP
+	sha256sums = 92137185036f77bcaeccce2948b382843b1e6a7d0fe7ab583117db4520995da9
 
 pkgname = gnome-webapps-git
