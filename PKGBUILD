@@ -133,7 +133,7 @@ check() {
     --target xenia-base-tests
 
   "${pkgname}"/build/bin/Linux/xenia-base-tests \
-    '~Test Suspending Thread'
+    'exclude:Test Suspending Thread'
 }
 
 package() {
