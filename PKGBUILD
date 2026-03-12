@@ -1,37 +1,56 @@
-# Maintainer: Berto Gomez <csberto at gmail dot com>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Berto Gomez <csberto at gmail dot com>
 # Contributor: Jan Tojnar <jtojnar@gmail.com>
-pkgname=perl-config-gitlike
-pkgver=1.17
+
+_author=ALEXMV
+_dist=Config-GitLike
+_ver=1.18
+pkgname=perl-${_dist@L}
+pkgver=${_ver#v}
 pkgrel=1
 pkgdesc='git-compatible config file parsing'
-_dist=Config-GitLike
 arch=('any')
-url="https://metacpan.org/release/$_dist"
-license=('perl_5')
-depends=('perl-moo' 'perl-moox-types-mooselike' 'perl' 'perl-module-install')
-checkdepends=('perl-test-exception')
+url=https://metacpan.org/release/$_author/$_dist-$_ver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-moo'
+    'perl-moox-types-mooselike'
+    'perl>=5.8.0'
+)
+makedepends=('perl-extutils-makemaker>=6.59')
+checkdepends=(
+    'perl-test-exception'
+    'perl-test-simple'
+)
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$_ver.tar.gz")
+sha256sums=('f7ae7440f3adab5b9ff9aa57216d84fd4a681009b9584e32da42f8bb71e332c5')
 
-options=('!emptydirs' purge)
-source=("http://search.cpan.org/CPAN/authors/id/A/AL/ALEXMV/$_dist-$pkgver.tar.gz")
-sha512sums=('22f63681753b38e881170a605697cbf62b46d074dfeacc00549d25a043254f15ba18e8c73f57dc6d0255702ae3b1078af969b51c9663636375990a86664f18b8')
+build()
+{
+    cd "$_dist-$_ver"
 
-build() {
-	cd "$srcdir/$_dist-$pkgver"
-	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
-	/usr/bin/perl Makefile.PL
-	make
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
-check() {
-	cd "$srcdir/$_dist-$pkgver"
-	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-	export PERL_MM_USE_DEFAULT=1
-	make test
+check()
+{
+    cd "$_dist-$_ver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
 }
 
-package() {
-	cd "$srcdir/$_dist-$pkgver"
-	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
-	make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+package()
+{
+    cd "$_dist-$_ver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
