@@ -13,7 +13,7 @@ pkgname = lib32-nvidia-utils-bsb
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
 	depends = lib32-libglvnd
-	depends = nvidia-utils=590.48.01
+	depends = nvidia-utils-bsb=590.48.01
 	optdepends = lib32-opencl-nvidia
 	provides = lib32-vulkan-driver
 	provides = lib32-opengl-driver

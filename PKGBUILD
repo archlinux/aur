@@ -45,7 +45,7 @@ package_lib32-opencl-nvidia-bsb() {
 
 package_lib32-nvidia-utils-bsb() {
     pkgdesc="NVIDIA drivers utilities (32-bit) for use with BSB related patch for nvidia-open-dkms"
-    depends=('lib32-zlib' 'lib32-gcc-libs' 'lib32-libglvnd' "nvidia-utils=${pkgver}")
+    depends=('lib32-zlib' 'lib32-gcc-libs' 'lib32-libglvnd' "nvidia-utils-bsb=${pkgver}")
     optdepends=('lib32-opencl-nvidia')
     conflicts=('lib32-nvidia-libgl')
     provides=('lib32-vulkan-driver' 'lib32-opengl-driver' 'lib32-nvidia-libgl')
