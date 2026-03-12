@@ -1,0 +1,14 @@
+pkgbase = tg-ws-proxy-git
+	pkgdesc = Local SOCKS5 proxy server for partial bypassing of Telegram loading
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/Flowseal/tg-ws-proxy
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = python-pip
+	depends = python
+	source = https://raw.githubusercontent.com/Flowseal/tg-ws-proxy/refs/heads/main/proxy/tg_ws_proxy.py
+	sha256sums = SKIP
+
+pkgname = tg-ws-proxy-git
