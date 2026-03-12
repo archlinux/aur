@@ -1,13 +1,14 @@
-pkgbase = namoz-vaqtlari
-	pkgdesc = Namoz vaqtlari CLI vositasi - Islom.uz ma'lumotlari va sahifalangan hududlar ro'yxati
-	pkgver = 1.0.2
+pkgbase = namoz-vaqtlari-cli
+	pkgdesc = Islom.uz ma'lumotlari asosida namoz vaqtlari CLI vositasi
+	pkgver = 1.0.3
 	pkgrel = 1
-	url = local-build
+	url = https://github.com/OneWay2Go/NamozVaqtlariCLI.git
 	arch = x86_64
 	license = MIT
 	makedepends = dotnet-sdk-8.0
 	depends = dotnet-runtime-8.0
-	source = namoz-vaqtlari::git+https://github.com/OneWay2Go/PrayerTimesFromMuslim.Uz.git
+	depends = chromium
+	source = namoz-vaqtlari-cli-1.0.3.tar.gz::https://github.com/OneWay2Go/NamozVaqtlariCLI.git/archive/refs/tags/v1.0.3.tar.gz
 	sha256sums = SKIP
 
-pkgname = namoz-vaqtlari
+pkgname = namoz-vaqtlari-cli

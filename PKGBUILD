@@ -1,24 +1,27 @@
+# Maintainer: uchqunov <2xotin123456@gmail.com>
 pkgname=namoz-vaqtlari
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
-pkgdesc="Namoz vaqtlari CLI vositasi - Islom.uz ma'lumotlari va sahifalangan hududlar ro'yxati"
+pkgdesc="Islom.uz ma'lumotlari asosida namoz vaqtlari CLI vositasi"
 arch=('x86_64')
-url="local-build"
+url="https://github.com/OneWay2Go/NamozVaqtlariCLI"
 license=('MIT')
-depends=('dotnet-runtime-8.0')
+depends=('dotnet-runtime-8.0' 'chromium')
 makedepends=('dotnet-sdk-8.0')
-
-source=("${pkgname}::git+https://github.com/OneWay2Go/PrayerTimesFromMuslim.Uz.git")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP') # Keyinchalik haqiqiy hashni qo'yamiz
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  dotnet publish -c Release -r linux-x64 --self-contained false -o out
+  cd "NamozVaqtlariCLI-$pkgver"
+  dotnet publish -c Release -r linux-x64 --self-contained false
 }
 
 package() {
-  # 'out' papkasida PrayerTimesFromMuslim.Uz fayli hosil bo'ladi
-  # Uni usr/bin ichiga 'namoz-vaqtlari' nomi bilan ko'chiramiz
-  install -Dm755 "${srcdir}/${pkgname}/out/PrayerTimesFromMuslim.Uz" "$pkgdir/usr/bin/namoz-vaqtlari"
-  install -Dm644 "${srcdir}/${pkgname}/regions.json" "$pkgdir/usr/share/namoz-vaqtlari/regions.json"
+  cd "NamozVaqtlariCLI-$pkgver"
+
+  # Binarlarni o'rnatish
+  install -Dm755 "bin/Release/net8.0/linux-x64/publish/NamozTaqvimCli" "$pkgdir/usr/bin/namoz"
+
+  # regions.json ni o'rnatish
+  install -Dm644 "bin/Release/net8.0/linux-x64/publish/regions.json" "$pkgdir/usr/bin/regions.json"
 }
