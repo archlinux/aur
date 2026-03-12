@@ -7,7 +7,7 @@ pkgname=(
   lib32-libsoup3
 )
 pkgver=3.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP client/server library for GNOME (32-bit)"
 url="https://wiki.gnome.org/Projects/libsoup"
 arch=(x86_64)
@@ -40,6 +40,13 @@ b2sums=('2578d5f18b5bb633dfa593fc098053f720623cbc98e572539d19109442076f4bd3cb9d8
 
 prepare() {
   cd libsoup
+
+  # CVE fixes
+  git cherry-pick -n 2e8fd6739b275ae9bc17ccecdab2a970b1ecc081 \
+                     85b1411595e50c2cb816fdf71a70430fb0544efa
+
+  # Fix Rygel
+  git cherry-pick -n 26c647ae5e3d8fcf137b9524bfbfca73cc7dedc8
 }
 
 build() {
