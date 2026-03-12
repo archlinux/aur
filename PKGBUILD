@@ -16,7 +16,7 @@ conflicts=(
     'millennium'
 )
 source=(
-    "git+$url.git#branch=main"
+    "git+${url}.git#branch=main"
 )
 sha256sums=('SKIP')
 options=(!debug)
