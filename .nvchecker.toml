@@ -1,0 +1,3 @@
+[perl-test-vars]
+source = "cpan"
+cpan = "Test-Vars"
