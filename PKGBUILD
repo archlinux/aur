@@ -1,9 +1,9 @@
 # Maintainer: MihaiStreames <72852703+MihaiStreames@users.noreply.github.com>
 pkgname=python-ghlang
 _pypiname=ghlang
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
-pkgdesc="Generate language statistics and visualizations from GitHub repositories or local files"
+pkgdesc="Generate pretty charts showing language statistics from GitHub repos or local code using Python"
 arch=(any)
 url="https://github.com/MihaiStreames/ghlang"
 license=(MIT)
@@ -29,7 +29,7 @@ optdepends=(
 	'tokount: local directory analysis with ghlang local'
 )
 source=("https://files.pythonhosted.org/packages/source/${_pypiname::1}/${_pypiname}/${_pypiname}-$pkgver.tar.gz")
-sha256sums=('b7819fba519ca2d977a42f97c4b9b92d7b698330e4d218e3bd2e4b6ff8b6de43')
+sha256sums=('4ac11e72179ee71144830389b1fe524d4fd321ab37e46b4b10f0607976aac771')
 
 build() {
 	cd "$srcdir/$_pypiname-$pkgver"
