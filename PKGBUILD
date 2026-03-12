@@ -1,14 +1,14 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-boot-options
 pkgver=26.03
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for managing boot options and UEFI settings"
 arch=('x86_64' 'i686')
 url="https://mxlinux.org"
 license=('GPL3')
-depends=('qt6-base' 'polkit' 'xdg-utils')
+depends=('qt6-base' 'polkit')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-optdepends=('grub: GRUB configuration support' 'plymouth: bootsplash themes')
+optdepends=('grub: GRUB configuration support' 'plymouth: bootsplash themes' 'uefi-manager: UEFI manager integration')
 source=("https://github.com/MX-Linux/mx-boot-options/archive/refs/tags/26.03.tar.gz")
 sha256sums=('aa339d588d2a425cf1a9f7dc64382800ff41401443fcf771d7ace6f240d7b547')
 
@@ -37,9 +37,9 @@ package() {
     install -dm755 "${pkgdir}/usr/share/mx-boot-options/locale"
     install -Dm644 build/*.qm "${pkgdir}/usr/share/mx-boot-options/locale/" 2>/dev/null || true
 
-    # Install helper scripts
+    # Install helper binary
     install -dm755 "${pkgdir}/usr/lib/mx-boot-options"
-    install -Dm755 scripts/helper "${pkgdir}/usr/lib/mx-boot-options/helper"
+    install -Dm755 build/helper "${pkgdir}/usr/lib/mx-boot-options/helper"
 
     # Install PolicyKit policy
     install -Dm644 scripts/org.mxlinux.pkexec.mxbo-helper.policy \
