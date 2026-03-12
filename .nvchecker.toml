@@ -1,0 +1,5 @@
+[tennis-bin]
+source = "github"
+github = "gurgeous/tennis"
+use_latest_release = true
+prefix = "v"
