@@ -1,6 +1,6 @@
 pkgbase = nuicat-bin
 	pkgdesc = Speech-to-text dictation for Linux desktop
-	pkgver = 0.1.5.alpha
+	pkgver = 0.1.6.alpha
 	pkgrel = 1
 	url = https://nui.cat
 	install = nuicat-bin.install
@@ -15,7 +15,7 @@ pkgbase = nuicat-bin
 	provides = nuicat
 	conflicts = nuicat
 	noextract = nuicat_amd64.deb
-	source = nuicat_amd64.deb::https://packages.nui.cat/releases/v0.1.5-alpha/nuicat_amd64.deb
-	sha256sums = fbf61f5a698d532cc49ca0093ad85355b9f7d087c9b8338486eaa286ea69d43f
+	source = nuicat_amd64.deb::https://packages.nui.cat/releases/v0.1.6-alpha/nuicat_amd64.deb
+	sha256sums = c30d35c3174b95021b0ecfe8ac35584f2bda3c2c0155b900140c83a23edc37e7
 
 pkgname = nuicat-bin
