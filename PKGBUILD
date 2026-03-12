@@ -2,7 +2,7 @@
 
 pkgname=termf1
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal UI: Dashboard for Formula-1"
 arch=('x86_64')
 url="https://github.com/dk-a-dev/termf1"
@@ -16,6 +16,7 @@ sha256sums=('672f73e7fc75292bfe2a66be4c10506a5b3e8584050d6627a6cffd5845c9f9a7')
 prepare() {
   cd "$pkgname-$pkgver"
   export GOPATH="$srcdir/gopath"
+  export GOFLAGS="-modcacherw"
   go mod download
 }
 
