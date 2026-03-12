@@ -1,0 +1,15 @@
+pkgbase = qrc
+	pkgdesc = A CLI tool to create QR Codes and output them as PNG/PPM/SVG or as ASCII/Dense art to the terminal
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/trikko/qr
+	arch = x86_64
+	license = MIT
+	makedepends = ldc
+	makedepends = dub
+	options = !debug
+	options = strip
+	source = qrc-1.0.6.tar.gz::https://github.com/trikko/qr/archive/v1.0.6.tar.gz
+	sha256sums = 55dac81aa959c033b8589668411959be9e07289f008c25205d1fc2095c0965c7
+
+pkgname = qrc
