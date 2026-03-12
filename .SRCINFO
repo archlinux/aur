@@ -8,6 +8,7 @@ pkgbase = plasma6-runners-markdown-bookmarks
 	license = GLP3
 	makedepends = cmake
 	makedepends = extra-cmake-modules
+	makedepends = ninja
 	makedepends = kcmutils
 	depends = krunner
 	source = https://github.com/andrewrabert/krunner-markdown-bookmarks/archive/0.2.0.tar.gz

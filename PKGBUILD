@@ -8,14 +8,17 @@ arch=('x86_64')
 url=https://github.com/andrewrabert/krunner-markdown-bookmarks
 license=(GLP3)
 depends=(krunner)
-makedepends=(cmake extra-cmake-modules kcmutils)
+makedepends=(cmake extra-cmake-modules ninja kcmutils)
 source=("krunner-markdown-bookmarks.tar.gz")
 source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('7cad86c88d5d8f79de355de3edf10dbde9857e8d0da912ca1116d65cd8c15234')
 install=plasma6-runners-markdown-bookmarks.install
 
 build() {
-	cmake -B build -S "krunner-markdown-bookmarks-${pkgver}" \
+	cmake \
+        -B build \
+        -G Ninja \
+        -S "krunner-markdown-bookmarks-${pkgver}" \
 		-Wno-dev \
 		-DCMAKE_SKIP_RPATH=YES \
 		-DCMAKE_BUILD_TYPE=None
