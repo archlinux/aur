@@ -1,7 +1,7 @@
 # Maintainer: goshitsarch <goshitsarch@proton.me>
 pkgname=gosh-fetch-bin
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern download manager with HTTP and BitTorrent support, built with Electron and a native Rust engine'
 arch=('x86_64' 'aarch64')
 url='https://github.com/goshitsarch-eng/Gosh-Fetch'
@@ -34,8 +34,12 @@ package() {
   install -d "${pkgdir}/opt/${pkgname}"
   cp -a squashfs-root/. "${pkgdir}/opt/${pkgname}/"
 
-  # Fix permissions
-  chmod -R g-w "${pkgdir}/opt/${pkgname}"
+  # Fix permissions — squashfs-root extracts as 700, need world-readable
+  find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} +
+  find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} +
+  find "${pkgdir}/opt/${pkgname}" -type f -name "*.so*" -exec chmod 755 {} +
+  chmod 755 "${pkgdir}/opt/${pkgname}/gosh-fetch"
+  chmod 755 "${pkgdir}/opt/${pkgname}/chrome_crashpad_handler"
   chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox" 2>/dev/null || true
 
   # Symlink binary

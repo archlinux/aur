@@ -1,7 +1,7 @@
 pkgbase = gosh-fetch-bin
 	pkgdesc = Modern download manager with HTTP and BitTorrent support, built with Electron and a native Rust engine
 	pkgver = 2.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/goshitsarch-eng/Gosh-Fetch
 	arch = x86_64
 	arch = aarch64
