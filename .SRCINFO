@@ -33,7 +33,6 @@ pkgbase = firedragon-alpha-bin
 	options = !lto
 	options = !makeflags
 	options = !strip
-	backup = usr/lib/firedragon/firedragon.cfg
 	backup = usr/lib/firedragon/distribution/policies.json
 	source = firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
 	source = https://gitlab.com/garuda-linux/firedragon/firedragon13/-/raw/v13.0.0-beta.3/assets/firedragon.desktop

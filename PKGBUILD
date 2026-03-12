@@ -43,8 +43,7 @@ options=(!debug
          !lto
          !makeflags
          !strip)
-backup=("usr/lib/${_pkgname}/${_pkgname}.cfg"
-        "usr/lib/${_pkgname}/distribution/policies.json")
+backup=("usr/lib/${_pkgname}/distribution/policies.json")
 source=(firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
         https://gitlab.com/garuda-linux/firedragon/firedragon13/-/raw/v"$_pkgver"/assets/firedragon.desktop)
 source_x86_64=(firedragon-v"$_pkgver"-linux-x64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v"$_pkgver"/downloads/firedragon.linux-x64.tar.xz)
