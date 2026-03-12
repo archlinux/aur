@@ -2,7 +2,7 @@
 pkgname=opencode-quota
 _npmname=@slkiser/opencode-quota
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenCode plugin for quota & token usage tracking with zero context window pollution"
 arch=('any')
 url="https://github.com/slkiser/opencode-quota"
@@ -31,7 +31,9 @@ for name, version in json.load(open('package.json')).get('peerDependencies', {})
 PY
     )
     if ((${#_peerdeps[@]})); then
-        npm install --no-save --ignore-scripts "${_peerdeps[@]}"
+        rm -rf "$srcdir/peer-root"
+        npm install --prefix "$srcdir/peer-root" --omit=dev --ignore-scripts "${_peerdeps[@]}"
+        cp -a "$srcdir/peer-root/node_modules/." node_modules/
     fi
 
     # Remove build tools pulled in by npm resolution (not needed at runtime)
