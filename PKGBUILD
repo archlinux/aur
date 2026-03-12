@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgbase=protonmail-bridge-free
 pkgname=(protonmail-bridge-free protonmail-bridge-free-core)
-pkgver=3.23.0
+pkgver=3.23.1
 pkgrel=1
 pkgdesc="Integrate ProtonMail account with any program that supports IMAP and SMTP"
 arch=(x86_64)
@@ -20,7 +20,7 @@ source=("$pkgbase::git+$url#tag=v$pkgver"
 	"5.patch::https://github.com/mnixry/proton-bridge/commit/e1f61f262548c50b2ca9bd88f9c2e54160bf5bc3.diff"
 )
 noextract=()
-sha256sums=('3ecf9eece60e721213f4c23429bec937874d34a5c11dca266a76b9160e1b5c09'
+sha256sums=('1fd8980cc4fefabf8dee791ca923ee458ee4854d1c4e7fbc14a99f7ccc7d012a'
             '5d273f1245fec8549a3daa3fe76e22bb6c23957cf5bcb51c24f878e19c7a5692'
             '87c01adf8bfc3d3f4ee346d0bc83997a8b8e83104a7d5e53b91de58e3b13b3d7'
             '869bcdb550e2899de1fffec8288fffea8c5ce1949322982d6c22f744814aed9c'
