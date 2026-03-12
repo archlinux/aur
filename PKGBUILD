@@ -13,7 +13,7 @@
 
 pkgname=nodejs-fast-cli
 _npmname=${pkgname/nodejs-/}
-pkgver=5.1.0
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Test your download and upload speed using fast.com from Netflix"
 arch=(any)
@@ -75,4 +75,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-sha256sums=('5bb4b946dd387089be225a31156a2a8cea968b6a91d14cf59f0e63057705d95a')
+sha256sums=('05e8cd8259e60631c280efb8e0d8c985aef402c76e8953f234bc4c3028b8fed5')
