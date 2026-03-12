@@ -4,7 +4,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-globalmenu
-pkgver=147.0.1
+pkgver=148.0
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser"
 url="https://www.mozilla.org/firefox/"
@@ -19,13 +19,14 @@ depends=(
   ffmpeg
   fontconfig
   freetype2
-  gcc-libs
   gdk-pixbuf2
   glib2
   glibc
   gtk3
   hicolor-icon-theme
+  libgcc
   libpulse
+  libstdc++
   libx11
   libxcb
   libxcomposite
@@ -77,31 +78,40 @@ options=(
   !lto
   !makeflags
 )
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/60e276e37d6c01170968472304c6c36b83581e83
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/fdd14cc14c10c23980b7d707e8f98af4a6d17577
 source=(
   https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
   $commit/firefox-symbolic.svg
   $commit/firefox.desktop
   $commit/org.mozilla.firefox.metainfo.xml
   $commit/0001-Install-under-remoting-name.patch
+  $commit/0002-Bug-2012006-WebRTC-backport-PipeWire-capture-clear-e.patch
+  $commit/0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  $commit/0004-Fix-sandbox-to-build-with-glibc-2.43.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
   # https://blog.mozilla.org/security/2025/04/01/updated-gpg-key-for-signing-firefox-releases-2/
   14F26682D0916CDD81E37B6D61B7B526D98F0353
 )
-sha256sums=('09e8274ac3772fd492c4f4995cdf33cca1d8856423cbb6640aca593202067dcb'
+sha256sums=('ec93e5040a23b7dbe9ec77eb4a7ccda9820856d7851bf2f617f3673b6354cb6f'
             'SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '2a51d57d98fbda86f094bc991e1ad4dd6e8a9d32fd0836b1183bf70ec4b68915'
             '23f557fa7989adcae03cc9458d94716981dbcf0e9d6d52a289a2426e50b4b785'
-            'ef63a12975f108f30b00bb3290d9ca76f311d8af9c1d5dfc0d8335ad57e8f77c')
-b2sums=('5683731ebac32f61a312e56eeae82b064dd714e75ba8d028fd084371f0baaf4228109dae5ef87eb14d6665dc3bbba8277f925e2e831ed6a9dbf2fa73d68d156e'
+            'ef63a12975f108f30b00bb3290d9ca76f311d8af9c1d5dfc0d8335ad57e8f77c'
+            'eaa1e9c177f83ae9f20009b77eab8f97a8ad7ed5e4502999211d4eab57835774'
+            '83857f3531688885b62be0b06583f6815f236edbc43a942830395ec3cbdc7934'
+            '8d2182ae8660474ac567482fe6658af77f3b402314e361c846528ae171586245')
+b2sums=('642dba7a20578a346e2b87286b8c8d2cd1fb674c116d8ada0697ad33ebcd009d4f74b81ae8ee142ce3b767628e69ad3099106afbfce7b055cf9f9aa2bbae9807'
         'SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '63c62c85ee70e22b02e9ea34e69f04f50403b7634b99fb0e996a83c963916dc4224041a0b265e54f6c224bd1777ddfdeb255037e3e30fec288695f3050278b05'
         '1a7fc030b1051df00df1b2f5b247b8c658de6cdfba0788041c830da3aaaa6ac974ab684e05feb80672aa2d2c22294cacfa93a71dc664b3e60becdd65e879fcee'
-        'ff0ba11844e99ab1b1fed91d70c6f45837198ba43e77313c8b9c48a621e40c459953fc35283b6b6eafb5641510a5ce1e18ebda4d7d076f8212810391c0a9234b')
+        'ff0ba11844e99ab1b1fed91d70c6f45837198ba43e77313c8b9c48a621e40c459953fc35283b6b6eafb5641510a5ce1e18ebda4d7d076f8212810391c0a9234b'
+        '512a387e28b64743f9086019860c649d7b08cf69aa10f256b39790fb9ab403ddad7693900684dfeb59206036940f7a273cede822b1395c947dd482f617f13729'
+        'd6b74848d04f9719946dd2a1a301412ffee1ec9c8561542ad3f9f7c691da135b7978a19ddd1d6f7f4b47654f4b2494673e4a3b000211f94cca51adf90d7ef73b'
+        '87e514cb3d5045489176a6d335f23ef82fa7b2805f689d8e4d9090dccf426c432e862a5dd537d91ceab6cc0a531fef9aa31fa2526666926224fcfdbd86c991a9')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -114,6 +124,17 @@ prepare() {
 
   # Make different channels installable in parallel
   patch -Np1 -i ../0001-Install-under-remoting-name.patch
+
+  # Prevent WebRTC crash
+  # https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/issues/27
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=2012006
+  patch -Np1 -i ../0002-Bug-2012006-WebRTC-backport-PipeWire-capture-clear-e.patch
+
+  # Fix build with glibc 2.43
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
+  patch -Np1 -i ../0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=2016618
+  patch -Np1 -i ../0004-Fix-sandbox-to-build-with-glibc-2.43.patch
 
   # Appmenu patches
   patch -Np1 -i ../unity-menubar.patch
@@ -264,8 +285,8 @@ Version=2
 END
 }
 
-source+=('https://github.com/Lexi-Ewald/unity-menubar/raw/e455977a6200e1b21afbc63f42f5ff21159c28bb/unity-menubar.patch')
-sha256sums+=('d9c9afc49693cfde86a82496e921204cde8224b444189f12ce78ab90bdbb3eec')
-b2sums+=('0dd9aa5b0390fc79e01076cce050574d53774f7748255cf162d3f3191946bd66b24d49b85ec919d9b61e1433d7b10dcc4e155dcd95fef9e83e194cbf058ccac2')
+source+=('https://github.com/Lexi-Ewald/unity-menubar/raw/a4ee19d6d7c10875e0f1831481a836262de2cadb/unity-menubar.patch')
+sha256sums+=('1d2fa1153ba155e5463c57968102829b0c0318ee377f50b064a3bebbba96be7a')
+b2sums+=('744cf8f57ef73f56e4106b806c7c837cbb09b8feee8ca802592a1208bd5c913973f943d922dcf507f13e9416fbd97064c2b86cdfc2edf86eb5c6cb282411a257')
 provides=(firefox)
 conflicts=(firefox)
