@@ -1,7 +1,7 @@
 # Maintainer: Corey Mwamba <contact.me@coreymwamba.co.uk>
 pkgname=bash-fuzzy-clock-git
 _pkgname=bash-fuzzy-clock
-pkgver=r19.265393d
+pkgver=r23.e66578e
 pkgrel=1
 pkgbase=bash-fuzzy-clock-git
 pkgdesc="Script to display the time in natural language. Translated to six languages"
