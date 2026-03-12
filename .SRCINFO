@@ -1,0 +1,24 @@
+pkgbase = dynamic-hibernate-git
+	pkgdesc = Dynamically creates a btrfs swapfile before hibernation, circumventing the need for a static swap partition or swapfile
+	pkgver = r1.0.1.0
+	pkgrel = 1
+	url = https://invent.kde.org/tduck/dynamic-hibernate
+	install = dynamic-hibernate.install
+	arch = any
+	license = GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = rust
+	makedepends = cargo
+	makedepends = ki18n
+	makedepends = git
+	depends = btrfs-progs
+	depends = systemd
+	depends = dbus
+	optdepends = systemd-boot: automatic bootloader menu hiding during hibernation
+	provides = dynamic-hibernate
+	conflicts = dynamic-hibernate
+	source = dynamic-hibernate-git::git+https://invent.kde.org/tduck/dynamic-hibernate.git
+	sha256sums = SKIP
+
+pkgname = dynamic-hibernate-git

@@ -1,0 +1,36 @@
+# SPDX-License-Identifier: GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL
+# SPDX-FileCopyrightText: 2025 Thomas Duckworth <tduck@filotimoproject.org>
+
+post_install() {
+    echo ""
+    echo "==> dynamic-hibernate installed. Before enabling, ensure:"
+    echo "      - Static 'resume=' and 'resume_offset=' kernel params are removed"
+    echo "      - Any existing swap is deactivated: swapoff <your-swap-device-or-file>"
+    echo ""
+    echo "==> Then enable the system services:"
+    echo "      systemctl enable dynamic-hibernate-prepare.service"
+    echo "      systemctl enable dynamic-hibernate-cleanup.service"
+    echo ""
+    echo "==> And the user-session notifier:"
+    echo "      systemctl enable --user dynamic-hibernate-notifier.service"
+    echo ""
+    echo "==> Reboot to activate."
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> dynamic-hibernate upgraded. Reboot recommended."
+    echo ""
+}
+
+pre_remove() {
+    echo ""
+    echo "==> dynamic-hibernate: disabling system services..."
+    systemctl disable --now dynamic-hibernate-prepare.service 2>/dev/null || true
+    systemctl disable --now dynamic-hibernate-cleanup.service 2>/dev/null || true
+    echo ""
+    echo "==> To disable the user-session notifier, run:"
+    echo "      systemctl disable --user --now dynamic-hibernate-notifier.service"
+    echo ""
+}
