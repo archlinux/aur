@@ -2,8 +2,8 @@
 # QT5_BUILD= makepkg -si
 
 pkgname=torrent-file-editor
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Qt based GUI tool designed to create and edit .torrent files'
 arch=('x86_64')
 url="https://${pkgname}.github.io/"
@@ -30,8 +30,8 @@ else
 fi
 
 _snapshot="${pkgname}-${pkgver}"
-source=("https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${_snapshot}.tar.gz")
-sha256sums=('47162b34fd9969aaf2afd43d1a5ee4a641f2e482dbfbbc8e8257a8c05d8fd42e')
+source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}/${_snapshot}.tar.gz")
+sha256sums=('60633357d25c3a9bfd2a2db9c7fcffe7093082049383f013861fc8f4bdba4b33')
 
 build() {
     cmake -B 'build' -S "${_snapshot}" \
