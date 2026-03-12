@@ -1,6 +1,6 @@
 # Maintainer: DJZeroAction <your-email@example.com>
 pkgname=bitwig-theme-manager-bin
-pkgver=0.2.12
+pkgver=0.2.29
 pkgrel=1
 pkgdesc="A cross-platform desktop application for managing and editing Bitwig Studio themes"
 arch=('x86_64')
