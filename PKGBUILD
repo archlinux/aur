@@ -7,8 +7,8 @@
 # Contributor: Anders Bostrom <anders.bostrom@home.se>
 
 pkgname=thunderbird-globalmenu
-pkgver=147.0
-pkgrel=1
+pkgver=148.0
+pkgrel=4
 pkgdesc='Standalone mail and news reader from mozilla.org'
 url='https://www.thunderbird.net/'
 arch=(x86_64)
@@ -51,7 +51,7 @@ depends=(
   json-c
   libcanberra
   ffmpeg
-  # icu libicui18n.so libicuuc.so TOTO find icu 78+ patch
+  # icu libicui18n.so libicuuc.so
 )
 makedepends=(
   unzip zip diffutils python nasm mesa libpulse libice libsm
@@ -59,10 +59,10 @@ makedepends=(
   gawk perl findutils libotr wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi
 )
 options=(!emptydirs !makeflags !lto)
-commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/b87aecad669f0db4fa39379b2b028985e7a756d2
+commit=https://gitlab.archlinux.org/archlinux/packaging/packages/thunderbird/-/raw/baade618ed414ac56965bfd4d408e9fe95694307
 source=(https://archive.mozilla.org/pub/thunderbird/releases/${pkgver}/source/thunderbird-${pkgver}.source.tar.xz{,.asc}
-        # https://bugzilla.mozilla.org/show_bug.cgi?id=2006630
-        $commit/fix-cargo-.gitmodules.patch
+        $commit/0023-bmo-2006630-remove-gitmodules-and-gitattributes-from-cargo-checksum-files.patch
+        $commit/0024-bgo-969412-glibc-2.43.patch
         $commit/vendor-prefs.js
         $commit/distribution.ini
         $commit/mozconfig.cfg
@@ -107,6 +107,11 @@ prepare() {
   # Make icon transparent
   sed -i '/^<rect/d' comm/mail/branding/thunderbird/TB-symbolic.svg
 
+  # Set BOTAN_VERSION from system-botan
+  _botan_ver=$(pkg-config --modversion botan-3)
+  sed -i "s|crypto_backend_version = CONFIG\[\"BOTAN_VERSION\"\]|crypto_backend_version = CONFIG[\"BOTAN_VERSION\"] or \"${_botan_ver}\"|" \
+    comm/third_party/rnp/moz.build
+
   printf "%s" "$_google_api_key" >google-api-key
   printf "%s" "$_mozilla_api_key" >mozilla-api-key
   cp ../mozconfig.cfg .mozconfig
@@ -120,6 +125,7 @@ build() {
   fi
   export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
   export MOZBUILD_STATE_PATH="${srcdir}/mozbuild"
+  export MOZ_NOSPAM=1
 
   # Set remoting name to fix the missing wayland icon
   export MOZ_APP_REMOTINGNAME=org.mozilla.Thunderbird
@@ -132,7 +138,6 @@ build() {
 
   ./mach configure
   ./mach build
-  ./mach buildsymbols
 }
 
 package() {
@@ -174,12 +179,13 @@ END
     "$pkgdir/usr/lib/thunderbird/thunderbird-bin"
 }
 
-sha512sums=('d04a135f23572123d5cca41c2611704aa06cb81e0226c89c267dc527f59fb0d9d5d8b8a49cd126626c2fd934624c9d2420ae71dd10a912b3011f3342fbaf7511'
+sha512sums=('ec5e586206ef217f37eb6985356994e7e7c9db6090f57d5b4c43a3a5dc0e1f5a56c0e7080d86fb895446845f9c9b948284f7417afebcf6e6120eca0e1ed238f3'
             'SKIP'
-            'c438a6fde1ceeac1400cc242f25c6957e059291601129fcdeb119c5486e99fec51ae1558dd03abf476527a923be70295702b54d57c1228a3ad5a7c1227494c59'
+            '0c21ea237ed8386f6152fc4902ef230e975c389c08f2c3eb1b6c8c3942ac9e8c20ab5448dd2680825a86cb39628e968d6c50c36569b89140ccb55294ae8e3435'
+            '470f37b6401c9a031d11b56ed94dacc3f3e36e86c27931c5924ec8c3ad8f9676970d7d29af8f288ac88081a2a785b088365412128076559e1ba4df1546026dc8'
             '6918c0de63deeddc6f53b9ba331390556c12e0d649cf54587dfaabb98b32d6a597b63cf02809c7c58b15501720455a724d527375a8fb9d757ccca57460320734'
             '5cd3ac4c94ef6dcce72fba02bc18b771a2f67906ff795e0e3d71ce7db6d8a41165bd5443908470915bdbdb98dddd9cf3f837c4ba3a36413f55ec570e6efdbb9f'
-            '8c315b8744f91ad762ad4887dc757e1b282fa3bc084c60422de93695a98804a0a7bb8e091e94ca6aa057b65587dc5c91db309fa87295b47dee43becf06e126fb'
+            'f528f2645c44648a8a42015923e51b8626616e2c66cc3ff870c27223002c802c15616e570d639f9c79b3affa4b7f9e9f2c42c780bbcb42a55bd87edafa8352c5'
             '7e43b1f25827ddae615ad43fc1e11c6ba439d6c2049477dfe60e00188a70c0a76160c59a97cc01d1fd99c476f261c7cecb57628b5be48874be7cf991c22db290'
             'fffeb73e2055408c5598439b0214b3cb3bb4e53dac3090b880a55f64afcbc56ba5d32d1187829a08ef06d592513d158ced1fde2f20e2f01e967b5fbd3b2fafd4'
             )
@@ -187,5 +193,5 @@ sha512sums=('d04a135f23572123d5cca41c2611704aa06cb81e0226c89c267dc527f59fb0d9d5d
 provides=(thunderbird)
 conflicts=(thunderbird)
 
-source+=(https://github.com/Lexi-Ewald/unity-menubar/raw/e455977a6200e1b21afbc63f42f5ff21159c28bb/unity-menubar.patch)
-sha512sums+=(ce7a8d19bbdd5f471d8e63d90554d67ae717fedf7a936a2913ed46a7714b571d20875b76e52ee880be12e728e35667de1579871090353aaae49d1a8bc8a86226)
+source+=(https://github.com/Lexi-Ewald/unity-menubar/raw/a4ee19d6d7c10875e0f1831481a836262de2cadb/unity-menubar.patch)
+sha512sums+=(1a0e1be20d43ce91babb36df6b33401237adda3fa582d24fba39a94bacde6f09859a9ec5c9ee35d76fe6fa14a0476ea364d533d62ddac9a73c1563db6d794876)
