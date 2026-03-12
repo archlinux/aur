@@ -1,4 +1,2 @@
-2.40.5-1 [2026-03-04]
-- [Desktop][UI] Hide the initiator URL from download items on the Downloads page.
-- Upgraded the Accounts SDK to the latest version to support 16 KB page-size devices.
-- Updated with the latest security patches and performance enhancements. Chromium engine updated to 145.0.7632.160.
+2.41.0-1 [2026-03-12]
+- Updated with the latest security patches and performance enhancements. Chromium engine updated to 146.0.7680.111.
