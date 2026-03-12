@@ -5,6 +5,7 @@ pkgbase = secrets-dispatcher
 	url = https://github.com/nikicat/secrets-dispatcher
 	install = secrets-dispatcher.install
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = go
 	makedepends = deno
