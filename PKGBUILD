@@ -6,7 +6,7 @@
 # Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-beta.3
+_pkgver=13.0.0-beta.4
 
 pkgname=${_pkgname}-alpha-bin
 pkgver="${_pkgver/-/_}"
@@ -50,8 +50,8 @@ source_x86_64=(firedragon-v"$_pkgver"-linux-x64.tar.xz::https://gitlab.com/garud
 source_aarch64=(firedragon-v"$_pkgver"-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v"$_pkgver"/downloads/firedragon.linux-arm64.tar.xz)
 b2sums=('a042cac06a3c2f424df86298775b9441ef6e1d181c065349c2c33740c15da57ee16c7114d84f006603e13e232891a3c635df630b22926ebca4a252204a2db281'
         '77fb65365470533628c12389cfc210b4ac7cb37ef6fb946d10c4a5514b652e4969f63097a76e1e94ac53146b954a17ce84ebd61c73f7b07ac9b65446c6ff6b09')
-b2sums_x86_64=('bc9083a36cd0905e88faac86d7ea30bfbb6e8dee85255dbd6442a14d226b7b05ad5c7c750be8a5163f726fa32c12a279172762ff3460cbb3ca684a8d612ca104')
-b2sums_aarch64=('b8d4b28c33ec05c6b37084bb99efb358c110710eaf44ab77e1a4190a86a5ecde1f3b3e840070c7a208ebd21a9a52bac41bcf835bf3babb3b74e9984e403e8766')
+b2sums_x86_64=('cc80246023ccd7cd62f145a8f845c26c299d29d4d8a92428efef18436d4b9ae4ae7e7a0629036e00e439c9e28a538b5d9cc7792f9753e5cdcee5f8704291e3aa')
+b2sums_aarch64=('e2ccfa6b38745b50e1197ea6a5e60bdef04725c55aaa69344bfefd8ba6c357ccccc9634a5e5a97abef105088cb9fc54df048ac66eb5382e05b6ea57371b1f97d')
 
 
 package() {
