@@ -1,0 +1,12 @@
+pkgbase = obs-branch-output-bin
+	pkgdesc = OBS Studio plugin: Branch Output filter
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/OPENSPHERE-Inc/branch-output
+	arch = x86_64
+	license = GPL2
+	depends = obs-studio>=30.1.0
+	source = https://github.com/OPENSPHERE-Inc/branch-output/releases/download/1.0.8/osi-branch-output-1.0.8-x86_64-linux-gnu.deb
+	sha512sums = de378f1865cd4618f70df4ebbf07751ca83fad1aef3814f8031a866c323e487fbcb215be4434ad6ebfa8e7896e8fa2a35b21cedf0bcf5e0a685879e473593e31
+
+pkgname = obs-branch-output-bin
