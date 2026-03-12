@@ -1,7 +1,7 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-live-usb-maker
 pkgver=26.03arch
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical utility for creating bootable live USB drives"
 arch=('x86_64' 'i686')
 url="https://mxlinux.org"
@@ -20,6 +20,7 @@ depends=(
     'grub'
     'cryptsetup'
     'util-linux'
+    'libarchive'
 )
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("https://github.com/MX-Linux/mx-live-usb-maker/archive/refs/tags/26.03arch.tar.gz")
@@ -45,12 +46,12 @@ package() {
 
     install -Dm755 build/mx-live-usb-maker "${pkgdir}/usr/bin/mx-live-usb-maker"
     install -Dm755 build/mx-live-usb-maker-backend "${pkgdir}/usr/lib/mx-live-usb-maker/mx-live-usb-maker-backend"
+    install -Dm755 build/helper "${pkgdir}/usr/lib/mx-live-usb-maker/helper"
 
     install -dm755 "${pkgdir}/usr/share/mx-live-usb-maker/locale"
     install -Dm644 build/*.qm "${pkgdir}/usr/share/mx-live-usb-maker/locale/" 2>/dev/null || true
 
     install -dm755 "${pkgdir}/usr/lib/mx-live-usb-maker"
-    install -Dm755 scripts/helper "${pkgdir}/usr/lib/mx-live-usb-maker/helper"
 
     install -dm755 "${pkgdir}/usr/lib/mx-live-usb-maker/arch-live-usb-storage"
     install -Dm755 scripts/arch-live-usb-storage/inject-live-usb-storage.sh \
@@ -73,9 +74,7 @@ package() {
 
     install -dm755 "${pkgdir}/usr/share/doc/mx-live-usb-maker"
     install -Dm644 authors.txt "${pkgdir}/usr/share/doc/mx-live-usb-maker/authors.txt"
-    if [ -f debian/changelog ]; then
-        gzip -c debian/changelog > "${pkgdir}/usr/share/doc/mx-live-usb-maker/changelog.gz"
-    fi
+    gzip -c debian/changelog > "${pkgdir}/usr/share/doc/mx-live-usb-maker/changelog.gz"
     if [ -d help ]; then
         cp -r help/* "${pkgdir}/usr/share/doc/mx-live-usb-maker/" 2>/dev/null || true
     fi
