@@ -3,7 +3,7 @@
 pkgbase=python-stsynphot
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Synthetic photometry using Astropy for HST and JWST"
 arch=('any')
@@ -24,7 +24,7 @@ checkdepends=('python-pytest-astropy-header'
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://ssb.stsci.edu/cdbs/calspec/alpha_lyr_stis_011.fits")
 #       "https://ssb.stsci.edu/trds/tarfiles/synphot1.tar.gz") # test data too large
-md5sums=('acaac5f35f342c5f4e791d925a89cc04'
+md5sums=('48c2dee066bff6084d30a37e6d721e2c'
          '20d7fa5941ae02f9948b671ee75709d1')
 
 get_pyver() {

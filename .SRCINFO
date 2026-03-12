@@ -1,6 +1,6 @@
 pkgbase = python-stsynphot
 	pkgdesc = Synthetic photometry using Astropy for HST and JWST
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://stsynphot.readthedocs.io
 	arch = any
@@ -15,9 +15,9 @@ pkgbase = python-stsynphot
 	makedepends = python-matplotlib
 	makedepends = python-synphot
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/s/stsynphot/stsynphot-1.5.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/stsynphot/stsynphot-1.5.1.tar.gz
 	source = https://ssb.stsci.edu/cdbs/calspec/alpha_lyr_stis_011.fits
-	md5sums = acaac5f35f342c5f4e791d925a89cc04
+	md5sums = 48c2dee066bff6084d30a37e6d721e2c
 	md5sums = 20d7fa5941ae02f9948b671ee75709d1
 
 pkgname = python-stsynphot
