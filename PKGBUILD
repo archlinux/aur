@@ -3,7 +3,7 @@
 pkgname=crave
 _pkgver=0.2-7208
 pkgver="${_pkgver/-/.}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Crave CLI - Binary Version"
 arch=('x86_64' 'aarch64')
 url="https://github.com/accupara/crave"
@@ -21,6 +21,6 @@ sha256sums_aarch64=('49eeaf174b1bf17cece8e7b1059e3aa9332599f24047565228bfbd5bccb
 package() {
 
 	install -dm755 "${pkgdir}/usr/bin"
-	install -Dm755 "${srcdir}/crave-${_pkgver}" "${pkgdir}/usr/bin/crave"
+	install -Dm755 "${srcdir}/crave-${_pkgver}-${CARCH}" "${pkgdir}/usr/bin/crave"
 
 }

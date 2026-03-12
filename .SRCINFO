@@ -1,7 +1,7 @@
 pkgbase = crave
 	pkgdesc = Crave CLI - Binary Version
 	pkgver = 0.2.7208
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/accupara/crave
 	arch = x86_64
 	arch = aarch64
