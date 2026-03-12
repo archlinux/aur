@@ -8,7 +8,7 @@ url='https://github.com/mellen9999/cmdchamp'
 license=('MIT')
 depends=('bash' 'bubblewrap')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3e3dbf37fa6341dab09c369bb3fc88715fe257104f580c86c30bdd2dbd003318')
+sha256sums=('00f621b3aa17daff042a822aafbd3ed1d374c461bc454e439c20386218947315')
 
 package() {
   cd "$pkgname-$pkgver"
