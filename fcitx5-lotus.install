@@ -23,17 +23,17 @@ post_install() {
 }
 
 post_upgrade() {
-    post_install
-}
-
-pre_remove() {
-    echo -e "${blue}--- Đang gỡ bỏ Lotus Services ---${all_off}"
-}
-
-post_remove() {
-    if id "uinput_proxy" &>/dev/null; then
-        userdel uinput_proxy
-        echo -e "${green}  -> Đã xóa user uinput_proxy.${all_off}"
-    fi
-    echo -e "${blue}Fcitx5-Lotus đã được gỡ bỏ sạch sẽ.${all_off}"
+    echo -e "${blue}--- Cấu hình Bộ gõ Lotus ---${all_off}"
+    
+    modprobe uinput
+    udevadm control --reload-rules
+    udevadm trigger
+    
+    echo -e "${bold}Hướng dẫn sau cập nhật:${all_off}"
+    echo -e "1. Khởi động lại Server cho user của bạn:"
+    echo -e "   ${blue}sudo systemctl restart fcitx5-lotus-server@\$(whoami).service${all_off}"
+    echo ""
+    echo -e "2. Cấu hình Fcitx5:"
+    echo -e "   - Mở 'Fcitx5 Configuration', nhấn restart để khởi động lại fcitx5."
+    echo "------------------------------------------------"
 }
