@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=hyperglot
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='A database and tools for detecting language support in fonts'
 arch=(any)
@@ -18,7 +18,7 @@ makedepends=(python-{build,installer,wheel}
              python-setuptools)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('0839e65ddd10b547e855d6a8a074d147238b0b10dfe25c57c4d6cbde3c540561')
+sha256sums=('7b9c166664b351d63aa9c8789bea41896c965e5120d9763eff181fa144775d3c')
 
 build() {
 	cd "$_archive"
