@@ -64,6 +64,7 @@ prepare() {
     patch -Np1 -i "${srcdir}/0001-Enable-atomic-kernel-modesetting-by-default.patch" -d "${srcdir}/${_pkg_open}"
     patch -Np1 -i "${srcdir}/0002-Add-IBT-support.patch" -d "${srcdir}/${_pkg_open}"
     patch -Np1 -i "${srcdir}/kernel-6.19.patch" -d "${srcdir}/${_pkg_open}"
+    patch -Np1 -i "${srcdir}/nvidia-bsb-dsc-fix.patch" -d "${srcdir}/${_pkg_open}"
 
     # Attempt to make builds reproducible
     sed -i "s/^  HOSTNAME.*/  HOSTNAME = echo archlinux/" "${srcdir}/${_pkg_open}/utils.mk"
