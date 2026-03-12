@@ -1,0 +1,13 @@
+pkgbase = facedetect
+	pkgdesc = Simple face detector for batch processing
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://www.thregr.org/wavexx/software/facedetect/
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = python-fissix
+	depends = python-opencv
+	source = https://gitlab.com/wavexx/facedetect/-/archive/v0.1/facedetect-v0.1.tar.bz2
+	sha256sums = 828ace5be21e1e098bc9a3bf15c158481ea5db828abc1204cc65d0179a25aee1
+
+pkgname = facedetect
