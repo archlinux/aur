@@ -1,0 +1,5 @@
+[rescached]
+source = "git"
+git = "https://git.sr.ht/~shulhan/rescached"
+prefix = "v"
+
