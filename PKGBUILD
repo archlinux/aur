@@ -1,7 +1,7 @@
 # Maintainer: jim3692 <jim3692 at gmail.com>
 pkgname="pipewire-screenaudio"
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Extension to passthrough pipewire audio to WebRTC Screenshare"
 arch=('x86_64')
 url="https://github.com/IceDBorn/pipewire-screenaudio"
