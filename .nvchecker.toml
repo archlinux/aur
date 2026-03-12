@@ -1,0 +1,5 @@
+[tp_smapi-dkms]
+source = "github"
+github = "linux-thinkpad/tp_smapi"
+
+use_latest_release = true
