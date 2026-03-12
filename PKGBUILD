@@ -4,9 +4,9 @@ pkgver=26.03.1
 pkgrel=1
 pkgdesc="GUI for system cleanup and maintenance"
 arch=('x86_64' 'i686')
-url="https://github.com/MX-Linux/mx-cleanup"
+url="https://github.com/mxlinux/mx-cleanup"
 license=('GPL3')
-depends=('xdg-utils' 'qt6-base' 'polkit')
+depends=('qt6-base' 'polkit')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("https://github.com/MX-Linux/mx-cleanup/archive/refs/tags/26.03.1.tar.gz")
 sha256sums=('3ae1693421641b0738b7c10bd6522f85b7b5ec3394ad3717b2b7d7a04a43e1f0')
@@ -18,7 +18,7 @@ build() {
 
     cmake -G Ninja \
         -B build \
-        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
         -DPROJECT_VERSION_OVERRIDE="${pkgver}"
@@ -35,7 +35,7 @@ package() {
     install -Dm644 build/*.qm "${pkgdir}/usr/share/mx-cleanup/locale/" 2>/dev/null || true
 
     install -dm755 "${pkgdir}/usr/lib/mx-cleanup"
-    install -Dm755 scripts/helper "${pkgdir}/usr/lib/mx-cleanup/helper"
+    install -Dm755 build/helper "${pkgdir}/usr/lib/mx-cleanup/helper"
     install -Dm755 scripts/helper-terminal-keep-open "${pkgdir}/usr/lib/mx-cleanup/helper-terminal-keep-open"
 
     install -Dm644 scripts/org.mxlinux.pkexec.mx-cleanup-helper.policy \
