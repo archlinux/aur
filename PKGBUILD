@@ -3,7 +3,7 @@
 _pkgauthor=mcandre
 _pkgname=buttery
 pkgname=${_pkgname}-bin
-pkgver=0.0.23
+pkgver=0.0.24
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A video editor with manual motion smoothing"
@@ -24,10 +24,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tgz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tgz")
-sha256sums=('7b4966094bbd08fca9e1501f67c343cf8acf21bb4f464ca096b79c02962da403'
+sha256sums=('48141e87f999b67c7d1af8f98bd8b712b6d4c86c263fb84cd28065a49a4de306'
             '9f2df22a75788fa52a08051d56dc8b4f0faa590d4df9213731bb383dd25c165d')
-sha256sums_x86_64=('1b996ba95a242a2b528a93ef7f235634fc4ccea1a0c63c0de43953a3685e6302')
-sha256sums_aarch64=('efae4382531713d38a17b694de555260d85e52ff3847a81f4381db34b0e621e1')
+sha256sums_x86_64=('3014a054387e6191580507a0be989ad448397c35880b6fd8167410d1602e8a48')
+sha256sums_aarch64=('1cd87ede10044df3d219a3b5161e8098d0334d154e841f3c06119349a68a3a40')
 
 
 package() {
