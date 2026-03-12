@@ -1,7 +1,7 @@
 # Maintainer: dawsers <dawser at gmx dot com>
 pkgname=sway-scroll-git
 pkgver=1.13.r7546.c33803e
-pkgrel=8
+pkgrel=9
 pkgdesc='Fork of the sway Wayland compositor with a scrolling layout like PaperWM or niri (git development version)'
 arch=('x86_64')
 url="https://github.com/dawsers/scroll"
@@ -56,8 +56,8 @@ optdepends=(
 	'xdg-desktop-portal-wlr: Portal used for screen sharing'
 	'xorg-xwayland: Enable X11 support'
 )
-provides=("sway-scroll-git" "wayland-compositor")
-conflicts=("sway-scroll-stable")
+provides=("${pkgname%-git}" "wayland-compositor")
+conflicts=("${pkgname%-git}")
 install="${pkgname}.install"
 source=("${pkgname}::git+${url}.git"
 	"50-systemd-user.conf"
