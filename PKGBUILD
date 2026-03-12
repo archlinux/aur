@@ -3,14 +3,14 @@
 # Based on PKGBUILD by Kevin S <aur@eldenring.mozmail.com>
 
 pkgname=audiobookshelf
-pkgver=2.32.1
+pkgver=2.33.0
 pkgrel=1
 epoch=1
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=("x86_64" "aarch64")
 url="https://github.com/advplyr/${pkgname}"
 license=('GPL-3.0-only')
-depends=("ffmpeg" "libnusqlite3" "nodejs-lts-iron")
+depends=("ffmpeg" "libnusqlite3" "nodejs")
 makedepends=("npm")
 backup=("etc/conf.d/${pkgname}")
 options=("!debug")
@@ -20,7 +20,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
-sha256sums=('c718a9e23f7c94bf91c374564191ec4e030f638ec2cde379b8db71aee70b092a'
+sha256sums=('b22f03e6cc0f7ac0395cda72617b1d416fe5f47b87027e1730778b4a1378b398'
             '50a42f0de1da9f780da11fa8413539fbb0a77857205b7ae25bb5bd35f51ad335'
             '91d00bbc9800f80cde439fd9b5343cf031b6a09557f03172c92d40f2f0775c2b'
             '4f37d8e407eda555231dc23d1cd35d329075ae6686acbb89d0b4612a824d594d'
