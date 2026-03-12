@@ -1,6 +1,6 @@
 # Maintainer: Louis Cornell <lpcornel@gmail.com>
 pkgname=musiclib-cli
-pkgver=1.31
+pkgver=1.4
 pkgrel=1
 pkgdesc="Command line application for organizing and managing a music library. Requires Audacious player, Kid3 Audio Tagger, and kdeconnect for mobile sync"
 arch=('x86_64')
@@ -21,8 +21,8 @@ makedepends=(
 )
 
 optdepends=(
-    'rsgain: ReplayGain loudness normalization (boost subcommand)'
-    'conky: Desktop telemetry display (Conky integration)'
+    'rsgain: ReplayGain loudness normalization (volume adjustment integration)'
+    'conky: Desktop data elements display (audio data output for use by Conky or similar)'
 )
 
 # musiclib (the KDE GUI package) is a full superset of musiclib-cli.
@@ -33,7 +33,7 @@ conflicts=('musiclib')
 # After tagging on GitHub, compute the hash with: makepkg -g >> PKGBUILD
 # and replace SKIP below with the printed sha256sum line.
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('726925e1028aadba5a73da8bff7ba747d1cb30ade482de27b25938fdb8de9df1')
+sha256sums=('9b5ae907a50be4c53d7c8bcfa5f0c1801629b8d2c5fd1fab9db7ee909e97537d')
 
 build() {
     # GitHub extracts the tarball as musiclib-<version>/, not musiclib-cli-<version>/
