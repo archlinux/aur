@@ -1,7 +1,7 @@
 # Maintainer: Serge K <arch@phnx47.net>
 
 pkgname=fastmail
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Email made better'
 license=('custom:fastmail')
@@ -10,10 +10,10 @@ arch=('x86_64')
 options=('!strip')
 depends=('gtk3' 'nss' 'alsa-lib')
 makedepends=('desktop-file-utils')
-_appimg="Fastmail-${pkgver}.AppImage"
+_appimg="com.fastmail.Fastmail-${pkgver}.AppImage"
 source=("${_appimg}::https://dl.fastmailcdn.com/desktop/production/linux/x64/${_appimg}"
         "LICENSE.md") # https://www.fastmail.com/policies/terms-of-service/
-sha512sums=('957be067ad4cd44c7b8c9cc58df0bdad82e8746a23adb71afede0839a43b93f0832380f21510e4006aa41a2a2aec4c336e8a12f734ceddf6dd6266cec8e0c54d'
+sha512sums=('c5d0d350d49a5ad30f83b1f004052674d3ae070cbd83262814a5a240cd526c64c111fe4c971396370552a4564b5519b095cfef7e689df34beccbba6610b70cde'
             'c544bd5496ec83a0b2475eb12070951ac92da66a6314357165ba517f986412f2c54b303186efc2c068562ac345108eeef56e7926a920cbbd820e700607d8b220')
 
 prepare() {
@@ -24,10 +24,10 @@ prepare() {
   desktop-file-edit \
     --set-key=Exec \
     --set-value="${pkgname} %U" \
-    --set-icon="${pkgname}" \
-    --add-category=Network \
+    --set-key=Name \
+    --set-value="Fastmail" \
     --remove-key=X-AppImage-Version \
-    production.desktop
+    ${pkgname}.desktop
 
   rm "AppRun" "resources/app-update.yml"
 }
@@ -37,14 +37,14 @@ package() {
   cp -a "squashfs-root/." "${pkgdir}/opt/${pkgname}/"
 
   install -d "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/production" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
   install -d "${pkgdir}/usr/share/applications"
-  ln -s "/opt/${pkgname}/production.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  ln -s "/opt/${pkgname}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   for i in 16 24 32 48 64 128 256 512 1024; do
     install -d "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps"
-    ln -s "/opt/${pkgname}/usr/share/icons/hicolor/${i}x${i}/apps/production.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
+    ln -s "/opt/${pkgname}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
   done
 
   find "${pkgdir}" -type d -exec chmod 755 {} +
