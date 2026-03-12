@@ -1,7 +1,7 @@
 pkgbase = nativmix
 	pkgdesc = Hardware-based PipeWire volume & MIDI mixer for Wayland. Controls physical inputs, virtual sinks, and MIDI devices. (Modern deej alternative)
 	pkgver = 1.0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/knoelliX/NativMix
 	install = nativmix.install
 	arch = any
@@ -20,6 +20,6 @@ pkgbase = nativmix
 	depends = python-rtmidi
 	optdepends = kvantum: Plasma transparency and blur engine support
 	source = nativmix-1.0.4.tar.gz::https://github.com/knoelliX/NativMix/archive/refs/tags/v1.0.4.tar.gz
-	sha256sums = bf0e90466d6cdd918946c531cc9280be8d2c445b16e2bb9a6c0a4a4af3680de6
+	sha256sums = d4d316ba751a9e0701cd6fce5cd4797038d17eedf4bed0243fc5cb77e8b3a121
 
 pkgname = nativmix
