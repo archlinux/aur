@@ -1,0 +1,14 @@
+[Unit]
+Description=Niri Auto-select ScreenCast Portal Backend
+PartOf=graphical-session.target
+After=graphical-session.target
+Before=xdg-desktop-portal.service
+
+[Service]
+Type=dbus
+BusName=org.freedesktop.impl.portal.desktop.niri-autoselect
+ExecStart=/usr/bin/niri-autoselect-portal
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

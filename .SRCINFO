@@ -1,0 +1,22 @@
+pkgbase = niri-autoselect-portal-git
+	pkgdesc = Always auto select the niri dynamic cast target without any prompts
+	pkgver = r3.f181322
+	pkgrel = 1
+	url = https://codeberg.org/debugloop/niri-autoselect-portal
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = go
+	makedepends = git
+	depends = xdg-desktop-portal
+	depends = pipewire
+	depends = glibc
+	source = niri-autoselect-portal::git+https://codeberg.org/debugloop/niri-autoselect-portal.git
+	source = niri-autoselect.portal
+	source = org.freedesktop.impl.portal.desktop.niri-autoselect.service
+	source = niri-autoselect-portal.service
+	sha256sums = SKIP
+	sha256sums = 7abff751a37ff49ad5d6ea8209812bcfb4e84b15aa69223ae119cbee208ce85f
+	sha256sums = 36a6ae03f240698c5c35f7458544e3514118dc7698fa18467e4f5a3f07f19e2f
+	sha256sums = 39166afa082d00e793d326ba46603d8f1b33eb0260156ffc499b54b70f8165e8
+
+pkgname = niri-autoselect-portal-git

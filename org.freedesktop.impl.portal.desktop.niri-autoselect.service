@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.freedesktop.impl.portal.desktop.niri-autoselect
+Exec=/usr/bin/niri-autoselect-portal
+SystemdService=niri-autoselect-portal.service
