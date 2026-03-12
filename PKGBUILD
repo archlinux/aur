@@ -3,7 +3,7 @@
 pkgname=coppelia-bin
 pkgver=0.0.11.alpha
 _pkgver=v0.0.11-alpha
-pkgrel=1
+pkgrel=2
 pkgdesc="A refined, cross-platform Jellyfin-focused music player"
 arch=('x86_64')
 url="https://github.com/j6k4m8/coppelia"

@@ -1,7 +1,7 @@
 pkgbase = coppelia-bin
 	pkgdesc = A refined, cross-platform Jellyfin-focused music player
 	pkgver = 0.0.11.alpha
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/j6k4m8/coppelia
 	arch = x86_64
 	license = Apache
