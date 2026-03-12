@@ -5,8 +5,8 @@
 # basic info
 pkgname="transistor-git"
 _pkgname="transistor"
-pkgver=r21.fa9a7df
-pkgrel=2
+pkgver=r132.2f96281
+pkgrel=1
 pkgdesc="Internet radio player that provides access to a station database with over 50,000 stations."
 url="https://invent.kde.org/saurov/transistor"
 arch=('x86_64' 'aarch64')
