@@ -30,6 +30,7 @@ echo "Updating to new version: $newver"
 
 # Replace the old pkg version with the new version in PKGBUILD
 sed "s/^_pkgver.*/_pkgver=$newver/" -i PKGBUILD
+sed "s/^pkgrel.*/pkgrel=1/" -i PKGBUILD
 
 # Update checksums and .SRCINFO
 updpkgsums
