@@ -10,7 +10,7 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 
 options=('!strip')
 source=("Chatty-${pkgver}.AppImage::https://github.com/KevinEightSeven/Chatty/releases/download/v${pkgver}/Chatty.AppImage"
         "chatty-twitch.png::https://raw.githubusercontent.com/KevinEightSeven/Chatty/v${pkgver}/assets/icon.png")
-sha256sums=('c46d9345f6bd17452f4c82188a3237cd543bf0da8f732211e2c400d887bac256'
+sha256sums=('8770256f1fbb7954b707a492edba737482332d133d4f52efead4f8445bb3e534'
             'SKIP')
 noextract=("Chatty-${pkgver}.AppImage")
 
