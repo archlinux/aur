@@ -1,0 +1,24 @@
+pkgbase = pear-desktop-noads-git
+	pkgdesc = Extension for music player - tweaked to ruin required submission to our capitalist overseers in exchange for pleasant noises.
+	pkgver = 3.11.0.r357.g73f08fd
+	pkgrel = 1
+	url = https://github.com/pear-devs/pear-desktop
+	install = pear-desktop.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = nodejs
+	makedepends = pnpm
+	depends = electron
+	depends = libsecret
+	provides = pear-desktop
+	conflicts = pear-desktop
+	conflicts = youtube-music
+	source = git+https://github.com/pear-devs/pear-desktop.git
+	source = pear-desktop.sh
+	source = com.github.th_ch.youtube_music.desktop
+	sha256sums = SKIP
+	sha256sums = e9ec2e31c47dfb7be5127ca803e423e3e0b41df7fbfb0ed791932f89791e7470
+	sha256sums = 19a3c15cb705d56c205bdcd3d473545226b641952ed87677afd5b6c70a5573b4
+
+pkgname = pear-desktop-noads-git
