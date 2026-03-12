@@ -1,6 +1,6 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Felix Golatofski <contact@xdfr.de>
-# Contributor: Anonymous
+# Contributor: Milo Mirate <mmirate@gatech.edu>
 
 _author=ARISTOTLE
 _dist=Lingua-EN-Titlecase-Simple
