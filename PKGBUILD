@@ -3,11 +3,11 @@
 
 _pkgname=cryptmount
 pkgname=("${_pkgname}-git")
-pkgver=6.3.0
-pkgrel=2
+pkgver=6.3.5.r0.g8281ab9
+pkgrel=1
 depends=('libgcrypt' 'device-mapper' 'util-linux' 'autoconf')
 makedepends=('git')
-pkgdesc='Simplified management of Linux encrypted filesystems (git vcs)'
+pkgdesc='Simplified management of Linux encrypted filesystems (git vcs).'
 arch=('i686' 'x86_64')
 url="https://github.com/rwpenney/${_pkgname}"
 license=('GPL')
@@ -24,8 +24,10 @@ pkgver() {
 
 prepare() {
     cd          "${srcdir}/${_pkgname}"
+    echo        -e "\033[31;1mFATAL BUG: \033[0mBROKEN AS OF CURRENTLY, DO NOT INSTALL. THE --with-systemd OPTION ATTEMPTS TO OVERWRITE /lib DUE TO INVALID RULES UPSTREAM."
+    exit        1
     autoreconf  -vi
-    ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-systemd
+    ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin --sysconfdir=/etc --datarootdir=/usr/share --with-systemd
 }
 
 build() {

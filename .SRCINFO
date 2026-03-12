@@ -1,7 +1,7 @@
 pkgbase = cryptmount-git
-	pkgdesc = Simplified management of Linux encrypted filesystems (git vcs)
-	pkgver = 6.3.0
-	pkgrel = 2
+	pkgdesc = Simplified management of Linux encrypted filesystems (git vcs).
+	pkgver = 6.3.5.r0.g8281ab9
+	pkgrel = 1
 	url = https://github.com/rwpenney/cryptmount
 	arch = i686
 	arch = x86_64
