@@ -1,0 +1,4 @@
+[christ-cli]
+source = "git"
+git = "https://github.com/whoisyurii/christ-cli.git"
+prefix = "v"
