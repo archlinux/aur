@@ -49,7 +49,7 @@ pkg_update_files() {
 	local checksum="$5"
 	local pkgbuild="${PKG_DIR}/PKGBUILD"
 
-	# Update PKGBUILD
+	# Update version fields
 	sed -i "s/^pkgver=.*/pkgver=${pkgver}/" "${pkgbuild}"
 	sed -i "s/^pkgrel=.*/pkgrel=1/" "${pkgbuild}"
 	sed -i "s/^${hash_algo}sums_x86_64=.*/${hash_algo}sums_x86_64=('${checksum}')/" "${pkgbuild}"

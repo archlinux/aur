@@ -1,34 +1,9 @@
-_model_name="sherpa-onnx-paraformer-zh-small-2024-03-09"
-_sys_model_dir="/usr/share/fcitx5-vinput/models/${_model_name}"
-
-_deploy_model() {
-	local user="${SUDO_USER:-$USER}"
-	local home
-	home="$(eval echo "~${user}")"
-	[ -d "${home}" ] || return 0
-
-	local target="${home}/.local/share/fcitx5-vinput/models/${_model_name}"
-	if [ ! -d "${target}" ]; then
-		install -dm755 -o "${user}" -g "${user}" "${home}/.local/share/fcitx5-vinput/models"
-		cp -r "${_sys_model_dir}" "${target}"
-		chown -R "${user}:${user}" "${target}"
-	fi
-}
-
 post_install() {
-	_deploy_model
-	echo "==> Model '${_model_name}' deployed to ~/.local/share/fcitx5-vinput/models/"
-	echo "==> Set ModelName=${_model_name} in Fcitx5 vinput config, then restart vinput-daemon."
+	echo "==> To enable vinput-daemon as a user service:"
+	echo "    systemctl --user enable --now vinput-daemon.service"
 }
 
 post_upgrade() {
-	_deploy_model
-}
-
-pre_remove() {
-	local user="${SUDO_USER:-$USER}"
-	local home
-	home="$(eval echo "~${user}")"
-	local target="${home}/.local/share/fcitx5-vinput/models/${_model_name}"
-	[ -d "${target}" ] && rm -rf "${target}"
+	echo "==> vinput-daemon updated. Restart the service if running:"
+	echo "    systemctl --user restart vinput-daemon.service"
 }

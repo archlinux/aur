@@ -1,6 +1,6 @@
 pkgbase = fcitx5-vinput-bin
 	pkgdesc = Offline voice input addon for Fcitx5 with optional OpenAI-compatible postprocess
-	pkgver = 0.1.6
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/xifan2333/fcitx5-vinput
 	install = fcitx5-vinput-bin.install
@@ -13,9 +13,7 @@ pkgbase = fcitx5-vinput-bin
 	provides = fcitx5-vinput
 	conflicts = fcitx5-vinput
 	options = !strip
-	source_x86_64 = fcitx5-vinput-0.1.6-1-archlinux-x86_64.pkg.tar.zst::https://github.com/xifan2333/fcitx5-vinput/releases/download/v0.1.6/fcitx5-vinput-0.1.6-1-archlinux-x86_64.pkg.tar.zst
-	source_x86_64 = sherpa-onnx-paraformer-zh-small-2024-03-09.tar.bz2::https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-paraformer-zh-small-2024-03-09.tar.bz2
-	sha256sums_x86_64 = b56354d6c81b8b09882a34d74413880a90f0544e879621ad54c7aacc4ca871f4
-	sha256sums_x86_64 = da92b3db5218c5be53aad53e57d1b6e63e7fc98a0e054fbdd6dbe18e9c6b1450
+	source_x86_64 = fcitx5-vinput-1.0.8-1-archlinux-x86_64.pkg.tar.zst::https://github.com/xifan2333/fcitx5-vinput/releases/download/v1.0.8/fcitx5-vinput-1.0.8-1-archlinux-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 9c49989b1d8b34b577dada82fef427cace364f8acb1af689df5681b8e60c1df6
 
 pkgname = fcitx5-vinput-bin
