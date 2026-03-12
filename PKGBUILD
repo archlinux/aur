@@ -1,4 +1,4 @@
-# Maintainer: Atte Lautanala <atte@lautana.la>
+# Contributor: Atte Lautanala <atte@lautana.la>
 
 pkgname=python-poetry-plugin-dotenv
 _pkgname=poetry_plugin_dotenv
