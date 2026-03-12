@@ -1,7 +1,7 @@
 pkgbase = watt-toolkit-bin
 	pkgdesc = 一个开源跨平台的多功能Steam工具箱。
 	pkgver = 3.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://steampp.net/
 	arch = x86_64
 	license = GPL-3.0-only
@@ -15,7 +15,7 @@ pkgbase = watt-toolkit-bin
 	source = set-cap.hook
 	source = watt-toolkit
 	source = environment_check.sh
-	sha256sums = 7fc1323d4a8f6512494624ad84fdb8433ddc56da39a91add825d1adcabaebf89
+	sha256sums = 50cfc2d50271e97d818004f1777826cedd666a16014bd08b288cdd35e3d47fb1
 	sha256sums = 2dbf57bb3cfbc45f3307f2db63ae86907364044b81137f2592363cd120da4f3e
 	sha256sums = 822897eafe72886f06e2d6b0911d323a5716da8f2acbeca630f36382f38b64ec
 	sha256sums = da96b337ef8f79f170fb5976dffee4c52ecf5bc842e3dac9d8479a198887b8b1
