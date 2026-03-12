@@ -1,6 +1,6 @@
 pkgbase = fcitx5-laren
 	pkgdesc = Arabizi to Arabic transliteration engine for Fcitx5
-	pkgver = 0.2.10
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/mmaher88/laren
 	install = fcitx5-laren.install
@@ -9,12 +9,13 @@ pkgbase = fcitx5-laren
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = extra-cmake-modules
+	makedepends = gettext
 	makedepends = fcitx5
 	depends = fcitx5
 	depends = fcitx5-configtool
 	depends = fcitx5-gtk
 	depends = fcitx5-qt
-	source = fcitx5-laren-0.2.10.tar.gz::https://github.com/mmaher88/laren/archive/v0.2.10.tar.gz
-	sha256sums = 3227c7e2f0fbea0c23eacbf12cbf99e222bd1ca669eb7d373be0f0ae58d53faa
+	source = fcitx5-laren-0.3.0.tar.gz::https://github.com/mmaher88/laren/archive/v0.3.0.tar.gz
+	sha256sums = d6cb625de42546f87806b169ae4f1dd3a31b5d85c67c1d39923ea0cab4b95520
 
 pkgname = fcitx5-laren
