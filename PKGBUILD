@@ -1,11 +1,12 @@
 # Maintainer: Louis Cornell <lpcornel@gmail.com>
 pkgname=musiclib
-pkgver=1.31
+pkgver=1.4
 pkgrel=1
-pkgdesc="KDE application for organizing and managing a music library. Requires Audacious player, Kid3 Audio Tagger, and kdeconnect for mobile sync"
+pkgdesc="KDE-based music library management. Integration with Audacious player, Kid3 Tagger, K3b CD Ripper, kdeconnect and RSGain."
 arch=('x86_64')
 url="https://github.com/Harpo3/musiclib"
 license=('GPL-3.0-or-later')
+install=musiclib.install
 
 depends=(
     # ── CLI runtime ───────────────────────────────────────────────────────────
@@ -33,9 +34,10 @@ makedepends=(
 )
 
 optdepends=(
-    'rsgain: ReplayGain loudness normalization (boost subcommand)'
-    'conky: Desktop telemetry display (Conky integration)'
-    'kid3: Full KDE ID3 tag editor GUI (optional companion app)'
+    'rsgain: ReplayGain loudness normalization (volume adjustment integration)'
+    'conky: Desktop data elements display (audio data output for use by Conky or similar)'
+    'kid3: Full KDE ID3 tag editor GUI (GUI tag editor integration)'
+    'k3b: KDE CD Ripper and Burner Tool (CD ripping integration)'
 )
 
 # This package installs everything musiclib-cli provides, plus the GUI.
@@ -44,7 +46,7 @@ provides=('musiclib-cli')
 conflicts=('musiclib-cli')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('726925e1028aadba5a73da8bff7ba747d1cb30ade482de27b25938fdb8de9df1')
+sha256sums=('9b5ae907a50be4c53d7c8bcfa5f0c1801629b8d2c5fd1fab9db7ee909e97537d')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
