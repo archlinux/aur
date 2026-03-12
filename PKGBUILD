@@ -3,7 +3,7 @@ pkgname=mailspring-bin
 _pkgname=Mailspring
 pkgver=1.19.0
 _electronversion=39
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful, fast and fully open source mail client.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
 url="https://getmailspring.com/"
@@ -27,6 +27,21 @@ _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
+_get_display_server() {
+    if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
+        echo "wayland"
+    elif [ "${XDG_SESSION_TYPE}" = "x11" ]; then
+        echo "x11"
+    else
+        if pgrep -x Xorg >/dev/null; then
+            echo "x11"
+        elif pgrep -f wayland-server >/dev/null; then
+            echo "wayland"
+        else
+            echo "unknown"
+        fi
+    fi
+}
 prepare() {
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -37,7 +52,10 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     _get_electron_version
     sed -i "s/${_pkgname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
-    sed -i "s/Exec=${pkgname%-bin}/Exec=${pkgname%-bin} --password-store=\"gnome-libsecret\"/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    _display_server="$(get_display_server)"
+    if [ "${_display_server}" = "x11" ];then
+        sed -i "s/Exec=${pkgname%-bin}/Exec=${pkgname%-bin} --password-store=\"gnome-libsecret\"/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
+    fi
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
