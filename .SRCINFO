@@ -1,7 +1,7 @@
 pkgbase = esearch-electron-bin
 	pkgdesc = Screenshot OCR search translate search for picture paste the picture on the screen screen recorder. (with system electron)
 	pkgver = 15.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://esearch-app.netlify.app/
 	arch = x86_64
 	license = GPL3

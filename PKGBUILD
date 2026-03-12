@@ -3,7 +3,7 @@
 _pkgname=esearch
 pkgname="${_pkgname}-electron-bin"
 pkgver=15.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Screenshot OCR search translate search for picture paste the picture on the screen screen recorder. (with system electron)"
 arch=("x86_64")
 url="https://esearch-app.netlify.app/"
@@ -27,7 +27,7 @@ package() {
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     cd "eSearch-${pkgver}-linux-x64"
     ln -s "/usr/lib/esearch/assets/e-search.desktop" "${pkgdir}/usr/share/applications/"
-    ln -s "/usr/lib/esearch/assets/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/e-search.svg"
+    ln -s "/usr/lib/esearch/assets/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/esearch.svg"
     cp -r --no-preserve=ownership "./resources/app" "${pkgdir}/usr/lib/esearch"
     export LC_ALL="$LANG"
 }
