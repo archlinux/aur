@@ -2,7 +2,7 @@
 # Contributer: MadPhysicist <jfoxrabinovitz at gmail dot com>
 pkgname=panoply
 pkgver=5.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='NetCDF, HDF and GRIB Data Viewer by NASA GISS'
 arch=('any')
 url='http://www.giss.nasa.gov/tools/panoply/'
