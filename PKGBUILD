@@ -1,6 +1,6 @@
 # Maintainer: uchqunov <2xotin123456@gmail.com>
 pkgname=namoz-vaqtlari
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=2  # Versiyani 2 ga ko'taramiz
 pkgdesc="Islom.uz ma'lumotlari asosida namoz vaqtlari CLI vositasi"
 arch=('x86_64')
