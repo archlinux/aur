@@ -2,11 +2,11 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 _subproject_name='chcase'
-_subproject_commit='e1c664fdd8bded036fa1ce60747e1f92f889c2c4' # <-- NB: update on new version
+_subproject_commit='0ce179bd1766309514a2495b01ad0fec69586ef8' # <-- NB: update on new version
 
 pkgname=konbucase
-pkgver=4.4.0
-pkgrel=2
+pkgver=4.5.0
+pkgrel=1
 pkgdesc='Convert case of your text'
 arch=('x86_64' 'aarch64')
 url='https://github.com/ryonakano/konbucase'
@@ -15,8 +15,8 @@ depends=('gtksourceview5' 'libhandy' 'sassc' 'libadwaita')
 makedepends=('git' 'meson' 'vala' 'blueprint-compiler')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "git+${url%/*}/${_subproject_name}#commit=${_subproject_commit}")
-sha256sums=('f4b4d962b998157bba85da8500062c6d9426a934762c40da1e931a86de85222d'
-            '4b0b9e8133ee94c9bc3941b65e9b6a46f887bdb32e6ed2922ae72f9a80513073')
+sha256sums=('0d6d1414f9be9e93918bd1ca3a9289d67e69294ba0122cdfc883302cf522a13f'
+            'c13da7bb68933f72c7ca1adc1c3a4fc55dee4466d2f6507097ca6656bbcff299')
 
 prepare() {
   rm -rf "${pkgname}-${pkgver}/subprojects/${_subproject_name}"
