@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-datetime
-pkgver=26.02arch
+pkgver=26.03.1
 pkgrel=1
 pkgdesc="Date and time configuration tool for MX Linux"
 arch=('x86_64' 'i686')
@@ -8,8 +8,8 @@ url="https://mxlinux.org"
 license=('Apache')
 depends=('chrony' 'util-linux' 'xdg-utils' 'qt6-base' 'polkit')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/mx-datetime/archive/refs/tags/26.02arch.tar.gz")
-sha256sums=('0cc38f7adb02bd6a205e19a259c8906b73816dbcbd6ee0abdfca520735372d51')
+source=("https://github.com/MX-Linux/mx-datetime/archive/refs/tags/26.03.1.tar.gz")
+sha256sums=('1609eba10926fb3e674c254858ecc67d7794a2640b1a663f0c77a33ddf2dc0e9')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
