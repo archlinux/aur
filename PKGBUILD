@@ -1,4 +1,4 @@
-# Maintainer: Corey Watson <cw@limehawk.io>
+# Maintainer: Limehawk <128890849+limehawk@users.noreply.github.com>
 pkgname=omarchy-vpn
 pkgver=0.1.3
 pkgrel=1
