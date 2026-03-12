@@ -1,6 +1,6 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=mpd_info_screen2
-pkgver=1.16
+pkgver=1.17
 pkgrel=1
 pkgdesc="Views graphical info on MPD, the successor to mpd_info_screen, in C++"
 arch=(x86_64)
@@ -20,6 +20,8 @@ sha256sums=(SKIP SKIP)
 
 prepare() {
     mkdir -p "${srcdir}/${pkgname}/third_party/"
+
+    # Use git provided "Raylib" to prevent re-downloading it when building.
     cd "${srcdir}"
     ln -s raylib "raylib-${_raylib_ver}"
     tar -chf "${srcdir}/${pkgname}/third_party/raylib-${_raylib_ver}.tar.gz" --exclude='*.git*' "raylib-${_raylib_ver}"
