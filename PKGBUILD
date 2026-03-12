@@ -20,6 +20,8 @@ depends=(
     'libastal-meta'
 )
 makedepends=(
+    'python-distutils-extra'
+    'python-setuptools'
     'aylurs-gtk-shell'
     'meson'
     'ninja'
