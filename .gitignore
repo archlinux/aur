@@ -1,0 +1,19 @@
+# build artifacts
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.pkg.tar.xz
+
+# debug packages
+*-debug-*.pkg.tar.*
+
+# source downloads
+*.tar.gz
+*.tar.xz
+*.zip
+
+# build directories
+src/
+pkg/
+
+# makepkg leftovers
+*.log
