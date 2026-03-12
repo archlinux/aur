@@ -5,7 +5,7 @@ _pkgver=0.9.4
 _image_url="https://github.com/skevetter/devpod/releases/download/v${_pkgver}/DevPod_linux_amd64.AppImage"
 
 pkgname="${_pkgname}-community-appimage"
-pkgver=0.16.1
+pkgver=0.16.2
 pkgrel=1
 pkgdesc="Codespaces but open-source, client-only, and unopinionated - community fork (AppImage version)"
 arch=('x86_64')
