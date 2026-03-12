@@ -19,8 +19,6 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 
 license=('MIT')
 
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 depends=('glibc' 'libgcc')
 
 source=("README-${pkgver}.md::${_urlraw}/README.md"
@@ -48,6 +46,9 @@ sha256sums_aarch64=('c9532931813eef7adbe7da2cad52e8b176359841ca9247afca3fdc76f43
 
 
 package_taskbook-bin() {
+	provides+=("${_appname}")
+	conflicts=("${_pkgname}")
+
 	cd "${srcdir}/" || exit
 
 	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
@@ -61,6 +62,9 @@ package_taskbook-bin() {
 }
 
 package_taskbook-server-bin() {
+	provides+=("${_appname}-server")
+	conflicts=("${_pkgname}-server")
+
 	cd "${srcdir}/" || exit
 
 	install -Dm755 "${_appname}-server" "${pkgdir}/usr/bin/${_appname}-server"

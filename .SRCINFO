@@ -8,8 +8,6 @@ pkgbase = taskbook-bin
 	license = MIT
 	depends = glibc
 	depends = libgcc
-	provides = taskbook
-	conflicts = taskbook
 	source = README-1.3.1.md::https://raw.githubusercontent.com/taskbook-sh/taskbook/v1.3.1/README.md
 	source = QUICK_START-1.3.1.md::https://raw.githubusercontent.com/taskbook-sh/taskbook/v1.3.1/docs/README.md
 	source = CLI_REFERENCE-1.3.1.md::https://raw.githubusercontent.com/taskbook-sh/taskbook/v1.3.1/docs/cli-reference.md
@@ -34,5 +32,9 @@ pkgbase = taskbook-bin
 	sha256sums_aarch64 = 732fe2200d83de9c1be42c1c8247d2e518b0cfc28dabb0de71a1abbd106e9c83
 
 pkgname = taskbook-bin
+	provides = tb
+	conflicts = taskbook
 
 pkgname = taskbook-server-bin
+	provides = tb-server
+	conflicts = taskbook-server
