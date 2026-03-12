@@ -2,7 +2,7 @@
 
 pkgname="vmlinux-to-elf"
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Recover a fully analyzable .ELF from a raw kernel, through extracting the kernel symbol table (kallsyms)"
 arch=(
   'any'
@@ -58,6 +58,6 @@ package() {
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
-  ln -vsf "${site_packages}/${pkgname//-/_}-1.0.dist-info/licenses/LICENSE" \
+  ln -vsf "${site_packages}/${pkgname//-/_}-${pkgver}.dist-info/licenses/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
