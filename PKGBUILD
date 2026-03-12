@@ -3,45 +3,37 @@
 _pkgauthor=mcandre
 _pkgname=buttery
 pkgname=${_pkgname}-bin
-pkgver=0.0.22
+pkgver=0.0.23
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A video editor with manual motion smoothing"
-arch=('x86_64' 'i686' 'aarch64')
-_barch=('amd64' '386' 'arm64')
+
+arch=('x86_64' 'aarch64')
+_barch=('linux-amd64' 'linux-arm64')
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+
 license=('BSD-2-Clause')
 
 provides=("${_pkgname}")
 depends=('glibc' 'gcc-libs')
 conflicts=("${_pkgname}"{,-git})
 
-source=("${_pkgname}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}.tgz"
-        "README-${pkgver}.md::${_urlraw}/README.md"
+source=("README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
-sha256sums=('e0f0b465d245a6f345f7afa2c874fc9504811bc402bb178b82059563885f103d'
-            '9cc917e5374c2b0373bcadcfed4095da2c7d10578a3e6bae972a9764a08496c8'
-            '57f53599a9a2272ea3ac34a2ca701bb512fec522b905ef5fc06671cd1636eeec')
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tgz")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tgz")
+sha256sums=('7b4966094bbd08fca9e1501f67c343cf8acf21bb4f464ca096b79c02962da403'
+            '9f2df22a75788fa52a08051d56dc8b4f0faa590d4df9213731bb383dd25c165d')
+sha256sums_x86_64=('1b996ba95a242a2b528a93ef7f235634fc4ccea1a0c63c0de43953a3685e6302')
+sha256sums_aarch64=('efae4382531713d38a17b694de555260d85e52ff3847a81f4381db34b0e621e1')
 
-case ${CARCH} in
-        ${arch[0]})
-                _CARCH="${_barch[0]}"
-                ;;
-        ${arch[1]})
-                _CARCH="${_barch[1]}"
-                ;;
-        ${arch[2]})
-                _CARCH="${_barch[2]}"
-                ;;
-esac
-
-BIN_FOLDER="${_pkgname}-${pkgver}/linux/${_CARCH}"
 
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${BIN_FOLDER}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
