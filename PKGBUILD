@@ -1,22 +1,23 @@
-# Maintainer: Limehawk <limehawk@users.noreply.github.com>
+# Maintainer: Limehawk <128890849+limehawk@users.noreply.github.com>
 pkgname=lazyreno
-pkgver=0.1.4
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="TUI dashboard for self-hosted Renovate CE"
 arch=('x86_64' 'aarch64')
 url="https://github.com/limehawk/lazyreno"
 license=('MIT')
-makedepends=('go')
+makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/limehawk/lazyreno/archive/v$pkgver.tar.gz")
-sha256sums=('2c68040066a549f60c21a9acb074432d5ac819a29254fa0ef1b5468533a2a961')
+sha256sums=('c146d9ef33daed3dff5fa6d4c888a6ea52056a103eeb1870b1cf88c02797a70e')
 
 build() {
     cd "$pkgname-$pkgver"
-    CGO_ENABLED=0 go build -trimpath -ldflags="-s -w -X main.version=v$pkgver" -o "$pkgname" ./cmd/lazyreno
+    export RUSTFLAGS="-C strip=symbols"
+    cargo build --release --locked
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
