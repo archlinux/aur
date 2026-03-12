@@ -4,7 +4,7 @@
 _pkgname=cryptmount
 pkgname=("${_pkgname}-git")
 pkgver=6.3.0
-pkgrel=1
+pkgrel=2
 depends=('libgcrypt' 'device-mapper' 'util-linux' 'autoconf')
 makedepends=('git')
 pkgdesc='Simplified management of Linux encrypted filesystems (git vcs)'
@@ -25,11 +25,12 @@ pkgver() {
 prepare() {
     cd          "${srcdir}/${_pkgname}"
     autoreconf  -vi
+    ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-systemd
 }
 
 build() {
     cd          "${srcdir}/${_pkgname}"
-    make        --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --with-systemd
+    make
 }
 
 package() {
