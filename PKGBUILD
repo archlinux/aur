@@ -15,7 +15,6 @@ depends=(
     'brightnessctl'
     'zenity'
     'imagemagick'
-    'sox'
     'psmisc'
     'libastal-meta'
 )

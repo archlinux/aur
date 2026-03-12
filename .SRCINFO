@@ -24,7 +24,6 @@ pkgbase = kiwi-shell
         depends = brightnessctl
         depends = zenity
         depends = imagemagick
-        depends = sox
         depends = psmisc
         depends = libastal-meta
         optdepends = networkmanager: network status
