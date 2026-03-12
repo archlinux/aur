@@ -1,14 +1,24 @@
 pkgbase = perl-app-find2perl
+	pkgdesc = translate find command lines to Perl code
 	pkgver = 1.005
-	pkgrel = 1
-	url = https://metacpan.org/release/App-find2perl
+	pkgrel = 2
+	url = https://metacpan.org/release/LEONT/App-find2perl-1.005
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	depends = perl-devel-findperl>=0.009
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-constant
+	checkdepends = perl-devel-findperl>=0.009
+	checkdepends = perl-file-path
+	checkdepends = perl-file-temp
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-perl-ostype
+	checkdepends = perl-test-simple
+	checkdepends = perl>=5.6.0
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-pathtools
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/App-find2perl-1.005.tar.gz
-	md5sums = 0adc6256c08f593c5eda1cc795b3e4fd
-	sha512sums = 5bd08eb3431a423b1eaf3bb79e11c3650c8212b8f222e16fbc613bbef86cd843d0ff1afb36b3513bb608e769bfe2966fc9325fa1b2c39c3594257d74c66d5255
+	source = https://cpan.metacpan.org/authors/id/L/LE/LEONT/App-find2perl-1.005.tar.gz
+	sha256sums = d72ce76f796c4b61f7fc1a22a39aceab08347aa45de10b0d7c08d468822bc94b
 
 pkgname = perl-app-find2perl

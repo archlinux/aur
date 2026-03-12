@@ -1,50 +1,61 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-app-find2perl'
-pkgver='1.005'
-pkgrel='1'
-pkgdesc=""
+_author=LEONT
+_dist=App-find2perl
+_ver=1.005
+pkgname=perl-${_dist@L}
+pkgver=${_ver#v}
+pkgrel=2
+pkgdesc='translate find command lines to Perl code'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$_ver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-pathtools'
+)
+makedepends=('perl-extutils-makemaker')
+checkdepends=(
+    'perl-constant'
+    'perl-devel-findperl>=0.009'
+    'perl-file-path'
+    'perl-file-temp'
+    'perl-io'
+    'perl-pathtools'
+    'perl-perl-ostype'
+    'perl-test-simple'
+    'perl>=5.6.0'
+)
 options=('!emptydirs')
-depends=('perl-devel-findperl>=0.009')
-makedepends=()
-url='https://metacpan.org/release/App-find2perl'
-source=('http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/App-find2perl-1.005.tar.gz')
-md5sums=('0adc6256c08f593c5eda1cc795b3e4fd')
-sha512sums=('5bd08eb3431a423b1eaf3bb79e11c3650c8212b8f222e16fbc613bbef86cd843d0ff1afb36b3513bb608e769bfe2966fc9325fa1b2c39c3594257d74c66d5255')
-_distdir="App-find2perl-1.005"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$_ver.tar.gz")
+sha256sums=('d72ce76f796c4b61f7fc1a22a39aceab08347aa45de10b0d7c08d468822bc94b')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$_ver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$_ver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$_ver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
