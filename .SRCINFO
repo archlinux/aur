@@ -1,6 +1,6 @@
 pkgbase = monochrome-git
 	pkgdesc = Lossless music streaming
-	pkgver = r1027.f967d29
+	pkgver = r1244.3b088d1
 	pkgrel = 1
 	url = https://github.com/monochrome-music/monochrome
 	arch = x86_64

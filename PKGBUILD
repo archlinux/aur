@@ -3,7 +3,7 @@
 # shellcheck disable=SC2034,SC2148,SC2154
 
 pkgname='monochrome-git'
-pkgver=r1027.f967d29
+pkgver=r1244.3b088d1
 pkgrel=1
 pkgdesc="Lossless music streaming"
 arch=('x86_64')
