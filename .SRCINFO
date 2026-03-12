@@ -1,12 +1,13 @@
 pkgbase = gopanda
 	pkgdesc = Client for the Pandanet-IGS go Server
-	pkgver = 2.8.2
+	pkgver = 2.8.3
 	pkgrel = 1
 	url = http://pandanet-igs.com/communities/gopanda2
 	arch = x86_64
 	license = custom
+	depends = fuse2
 	options = !strip
 	source_x86_64 = https://pandanet-igs.com/gopanda2/download/GoPanda2.AppImage
-	md5sums_x86_64 = 261ffa296a6fc5899217b3193aa2c251
+	md5sums_x86_64 = 133aaa6cf74acc5715efd3c3cd8bb322
 
 pkgname = gopanda
