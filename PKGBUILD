@@ -14,9 +14,10 @@ provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
 package() {
-    cd "${srcdir}"
+  # Extract the contents of the downloaded zst into the pkgdir
+  # This works because makepkg automatically extracts the source to $srcdir
+  cp -ra "$srcdir"/* "$pkgdir/"
 
-    # Copy opt and usr directories from the extracted Arch package
-    cp -r opt "${pkgdir}/"
-    cp -r usr "${pkgdir}/"
+  # Clean up: remove the original source archive if it was extracted into $pkgdir
+  rm -rf "${pkgdir}/${pkgname%-bin}-${pkgver}.pkg.tar.zst"
 }
