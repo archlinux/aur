@@ -3,7 +3,7 @@
 # Contributor: Dagmawi Ali <xdagizjr2112 at gmail dot com>
 
 pkgname='xytz-bin'
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc='a beautiful TUI YouTube Downloader'
 url='https://github.com/xdagiz/xytz'
@@ -15,10 +15,10 @@ depends=('yt-dlp' 'ffmpeg')
 optdepends=('mpv: for playing videos')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/xdagiz/xytz/releases/download/v${pkgver}/xytz-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('f425ccceba09c36862a031f712418bdccdd74e73c922dd60337148b0db9723cc')
+sha256sums_aarch64=('916acf739276d01533eb451eb389f2f4d2950ef0c8e2395eaadf03ac44951d50')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/xdagiz/xytz/releases/download/v${pkgver}/xytz-v${pkgver}-linux-amd64.tar.gz")
-sha256sums_x86_64=('8a2013545ab7c8fe324d4a3235d1f5cd463f1901c00e9b6aaf70e950a9eea88c')
+sha256sums_x86_64=('f56bd87c44b886b05f37c97998af4b21ca48b3a522e1841789d8c7d13f493d00')
 
 package() {
   install -Dm755 "./xytz" "${pkgdir}/usr/bin/xytz"
