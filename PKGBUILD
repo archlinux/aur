@@ -1,7 +1,7 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-boot-repair
 pkgver=26.03
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI tool for repairing GRUB bootloader"
 arch=('x86_64' 'i686')
 url="https://mxlinux.org"
@@ -16,19 +16,16 @@ sha256sums=('8cdbd2f43a5c714e73152116616473a42bea47aec4330b467b4d57349a8cfaa1')
 build() {
     cd "$srcdir/mx-bootrepair-$pkgver"
 
-    # Get version from pkgver
-    _version="${pkgver}"
-
     # Clean any previous build artifacts
     rm -rf build
 
-    # Configure with CMake, passing version override (Arch uses git tags, not debian/changelog)
+    # Arch packages build from release tarballs, so pass pkgver explicitly.
     cmake -G Ninja \
         -B build \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
-        -DPROJECT_VERSION_OVERRIDE="$_version"
+        -DPROJECT_VERSION_OVERRIDE="${pkgver}"
 
     # Build
     cmake --build build --parallel
@@ -44,10 +41,9 @@ package() {
     install -dm755 "${pkgdir}/usr/share/mx-bootrepair/locale"
     install -Dm644 build/*.qm "${pkgdir}/usr/share/mx-bootrepair/locale/" 2>/dev/null || true
 
-    # Install helper scripts
+    # Install helper components
     install -dm755 "${pkgdir}/usr/lib/mx-boot-repair"
-    install -Dm755 scripts/helper "${pkgdir}/usr/lib/mx-boot-repair/helper"
-    install -Dm755 scripts/mxbr-lib "${pkgdir}/usr/lib/mx-boot-repair/mxbr-lib"
+    install -Dm755 build/helper "${pkgdir}/usr/lib/mx-boot-repair/helper"
 
     # Install PolicyKit policy
     install -Dm644 scripts/org.mxlinux.pkexec.mxbr-helper.policy \

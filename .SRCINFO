@@ -1,7 +1,7 @@
 pkgbase = mx-boot-repair
 	pkgdesc = GUI tool for repairing GRUB bootloader
 	pkgver = 26.03
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mxlinux.org
 	arch = x86_64
 	arch = i686
