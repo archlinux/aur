@@ -1,0 +1,25 @@
+diff --git a/src/web_app_window.py b/src/web_app_window.py
+index 071036a..b11184e 100644
+--- a/src/web_app_window.py
++++ b/src/web_app_window.py
+@@ -26,7 +26,7 @@ import gi
+ gi.require_version("Adw", "1")
+ gi.require_version("WebKit", "6.0")
+ 
+-from gi.repository import Adw, Gtk, WebKit
++from gi.repository import Adw, GLib, Gtk, WebKit
+ 
+ 
+ @Gtk.Template(resource_path="/net/codelogistics/webapps/web_app_window.ui")
+@@ -44,7 +44,10 @@ class WebAppWindow(Adw.ApplicationWindow):
+ 
+     def __init__(self, application, state, **kwargs):
+         super().__init__(application=application)
+-        self.set_title(state["name"])
++        name = state["name"]
++        self.set_title(name)
++        GLib.set_prgname(name)
++        GLib.set_application_name(name)
+         
+         self.set_default_icon_name("net.codelogistics.webapps")
+         self.connect("close-request", self.on_close, state)
