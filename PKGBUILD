@@ -1,6 +1,6 @@
 # Maintainer: mishl <meow@mishl.dev>
 pkgname=mouse-debounce
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc="Software mouse button debounce daemon for worn switches"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "mouse-debounce.install::$url/raw/main/mouse-debounce.install"
         "mouse-debounce.service::$url/raw/main/mouse-debounce.service")
-sha256sums=('7b1268aa8412e69ca6a4cd91c90a7f9afdb5eed5c8b8449b6eaa12be13329983'
+sha256sums=('6bfd3eb68568e0681dce6abfb10a4ba84eb5f3ef2a47ec2ac3d36a7d601cb743'
             '1e74ab9bbf6eef0bac57840329200a49eee0eb990a92d4d22ff21796e7ee592b'
             '13fbb3cf94063d39e2d14a3a94d66ec1730521731e0145b9e96eedf67bfcbdd9')
 install=mouse-debounce.install
