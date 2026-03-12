@@ -2,7 +2,7 @@
 
 pkgname=secrets-dispatcher
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Per-operation approval and audit logging for secret access and git commit signing on Linux"
 arch=('x86_64')
 url="https://github.com/nikicat/secrets-dispatcher"
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go' 'deno' 'git' 'make')
 install=secrets-dispatcher.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('7796b4b50f4e18ded9fb42f1220dd80c4bc57cc241dfbe76bc09fca4d3f9f13b')
+sha256sums=('6bfb20461b2b922a2931449c691b79807d3f170c3ca0e5ab9ebc4264755c02bf')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -19,8 +19,8 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  make build VERSION="v${pkgver}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  make build VERSION="v${pkgver}" GO_LDFLAGS="-linkmode=external -s -w"
 }
 
 package() {
