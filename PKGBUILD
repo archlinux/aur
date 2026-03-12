@@ -3,7 +3,7 @@
 # Contributor: Alexandre `Zopieux` Macabies <web+aur@zopieux.com>
 pkgname=ffdec-bin
 pkgver=25.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source Flash SWF decompiler and editor"
 arch=('any')
 url="https://github.com/jindrapetrik/jpexs-decompiler/releases"

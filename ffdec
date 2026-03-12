@@ -1,7 +1,35 @@
 #!/bin/sh
 
 # Since version 4.1.1 onawards FFDec requires Java 8+
+ffdec_error_exit() {
+	echo "--------------------------------------------------------"
+	echo "$1"
+	echo "--------------------------------------------------------"
+	echo "FFDec requires a full JRE to run the graphical interface."
+	echo ""
+	echo "Please manually configure your Java environment:"
+	echo "1. Install the full JRE: sudo pacman -S jre-openjdk"
+	echo "2. Switch environment:   sudo archlinux-java set <full-jre-name>"
+	echo "--------------------------------------------------------"
+	exit 1
+}
+
+INSTALLED_JAVAS=$(archlinux-java status | grep -v "Available Java" | awk '{print $1}')
+FULL_JRE=""
+TARGET_JAVA="java"
+find_jre() {
+	for jvm in $INSTALLED_JAVAS; do
+		LIB_PATH="/usr/lib/jvm/$jvm/lib/libawt_xawt.so"
+		if [[ -f "$LIB_PATH" ]]; then
+			FULL_JRE="$jvm"
+			break
+		fi
+	done
+
+	[[ -n "$FULL_JRE" ]] && TARGET_JAVA="/usr/lib/jvm/$FULL_JRE/bin/java" || ffdec_error_exit
+}
+[[ -f $(readlink -f $(which java) | sed 's|bin/java|lib/libawt_xawt.so|') ]] || [[ -n "$(command -v archlinux-java)" ]] && find_jre
 
 DEFAULT_JVM_OPTS='-Xms128M -XX:MaxRAMPercentage=70.0 -XX:+UseG1GC -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true'
 
-exec java $DEFAULT_JVM_OPTS  -Djava.net.preferIPv4Stack=true  -cp '/usr/share/java/ffdec/lib' -jar '/usr/share/java/ffdec/ffdec.jar' "$@"
+exec $TARGET_JAVA $DEFAULT_JVM_OPTS -Djava.net.preferIPv4Stack=true -cp '/usr/share/java/ffdec/lib' -jar '/usr/share/java/ffdec/ffdec.jar' "$@"
