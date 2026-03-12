@@ -1,6 +1,6 @@
 pkgbase = omarchy-kali-vm
 	pkgdesc = Standalone Kali Linux VM launcher with optional Omarchy integration
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/reg1z/omarchy-kali-vm
 	install = omarchy-kali-vm.install
@@ -17,7 +17,7 @@ pkgbase = omarchy-kali-vm
 	depends = libnotify
 	depends = sudo
 	depends = virt-viewer
-	source = omarchy-kali-vm-0.1.1.tar.gz::https://github.com/reg1z/omarchy-kali-vm/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 0cd0d73b712517a8b845cc5b5dca7e71deaab0f61288d5eda947a707d20e86af
+	source = omarchy-kali-vm-0.1.2.tar.gz::https://github.com/reg1z/omarchy-kali-vm/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = bd51e69f24c49d5be46c5c85c77ae23f3a898eb2d47129bc74e6988d024db3de
 
 pkgname = omarchy-kali-vm
