@@ -27,15 +27,15 @@ depends=(
 optdepends=('jsonnet: experimental jsonnet support')
 provides=("${_name}")
 
-_b2sum="175dfba312fc4572757a9626265a29dd510a18aab60648703df5529739ad5062"
-_whl="${_name}-${pkgver}-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-musllinux_1_0_${CARCH}.whl"
+_b2sum="99b51005571a8bb47e1fc39150c00fb6c24adba8613e81e05d4954ad18dc571a"
+_whl="${_name}-${pkgver}-cp310.cp311.cp312.cp313.cp314.py310.py311.py312.py313.py314-none-manylinux2014_${CARCH}.whl"
 
 options=('!strip')
 noextract=("${_whl}")
 source=("https://files.pythonhosted.org/packages/${_b2sum:0:2}/${_b2sum:2:2}/${_b2sum:4}/${_whl}"
         "README-${pkgver}.md::${_urlraw}/README.md"
         "LICENSE-${pkgver}::${_urlraw}/LICENSE")
-sha512sums=('b84c498b342bd2d1566e36c678ef7225beee5b3b3ec4b11d5a5b6a9bc2bc4afc1937bc0a85fd062484b07f03f1c3cd98a4c64e6d97160dce4ebbc87e248c6f85'
+sha512sums=('11a75321d8aad3473d21109377864c14d2f60cd3ad5606bcfc4c43d323d6c6d045f5a41e6c6ebd7d53801d7e43b3f915c4726d65aa8375fc23a10c25a91256fe'
             'd7f9da3fc18b50c4e5b8aa0dd4967c8ddfb97d7567988c700093afbb395fce7f2a3097cdf454a17e20a5fc4cb1898d00521604175e61ec96ec56044cfced1470'
             'dec798f85edac11b3a3f4bb1f309397719dd4de04f66357a5520b23e758cba757c9c7bee87bdbae2a5f936368cab0670bbd3395030393c029d68d0e72fcfba1e')
 
