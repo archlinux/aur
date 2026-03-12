@@ -1,0 +1,17 @@
+pkgbase = gecol
+	pkgdesc = A perception-aware accent color extractor and dynamic theme generator.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Martan03/gecol
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	source = gecol-0.1.0.tar.gz::https://github.com/Martan03/gecol/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = e767ef79687196957425f8633b0b3bf87f9871eaed3f20be79f2b8005fd39914
+
+pkgname = gecol
