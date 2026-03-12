@@ -1,6 +1,6 @@
 pkgbase = coppelia-bin
 	pkgdesc = A refined, cross-platform Jellyfin-focused music player
-	pkgver = 0.0.10.alpha
+	pkgver = 0.0.11.alpha
 	pkgrel = 1
 	url = https://github.com/j6k4m8/coppelia
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = coppelia-bin
 	provides = coppelia
 	conflicts = coppelia
 	conflicts = coppelia-git
-	source = coppelia-0.0.10.alpha.tar.gz::https://github.com/j6k4m8/coppelia/releases/download/v0.0.10-alpha/Coppelia-linux.tar.gz
+	source = coppelia-0.0.11.alpha.tar.gz::https://github.com/j6k4m8/coppelia/releases/download/v0.0.11-alpha/Coppelia-linux.tar.gz
 	source = coppelia.desktop
 	sha256sums = a5c551668cc36e6a651379960002c105bd71e595225d34a9c88f2c530822e147
 	sha256sums = 4a1a33933eb046150ccdfda3f5f0b76f9af54956b945c4f0d4dc4d06fa0afea5
