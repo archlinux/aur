@@ -13,7 +13,7 @@ provides=("coppelia")
 conflicts=("coppelia" "coppelia-git")
 source=("coppelia-${pkgver}.tar.gz::https://github.com/j6k4m8/coppelia/releases/download/${_pkgver}/Coppelia-linux.tar.gz"
         "coppelia.desktop")
-sha256sums=('a5c551668cc36e6a651379960002c105bd71e595225d34a9c88f2c530822e147'
+sha256sums=('0622c749a0d7f185296de9df9057d3eb37b06a88e5752201c49545c23b82386d'
             '4a1a33933eb046150ccdfda3f5f0b76f9af54956b945c4f0d4dc4d06fa0afea5')
 
 package() {
