@@ -1,6 +1,6 @@
 pkgbase = soundcloud-tui
 	pkgdesc = A SoundCloud client for the terminal written in Rust
-	pkgver = 0.1.5
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/7ito/soundcloud-tui
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = soundcloud-tui
 	optdepends = gnome-keyring: Secret Service provider for credential storage
 	options = !debug
 	options = !lto
-	source = soundcloud-tui-0.1.5.tar.gz::https://github.com/7ito/soundcloud-tui/archive/refs/tags/v0.1.5.tar.gz
-	sha256sums = 313ba272828a94d4c5c1df11a97b35aa7054190f19ffc7256d2c58359a71ae00
+	source = soundcloud-tui-0.1.8.tar.gz::https://github.com/7ito/soundcloud-tui/archive/refs/tags/v0.1.8.tar.gz
+	sha256sums = 8cbe7f6d001ca38abbe112c735fde807f7e1d814d2d674a0fe4791c887937911
 
 pkgname = soundcloud-tui
