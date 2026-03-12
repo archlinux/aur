@@ -4,18 +4,19 @@
 _name="QCEngine"
 _pkgname="${_name,,}"
 pkgname="python-${_pkgname}"
-pkgver=0.33.0
-pkgrel=4
+pkgver=0.50.0
+pkgrel=1
 pkgdesc='Quantum chemistry program executor and IO standardizer (QCSchema) for quantum chemistry'
 arch=('any')
 url='https://molssi.github.io/QCEngine/'
 license=('BSD-3-Clause')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools-scm')
 depends=(
   'python'
   'python-numpy'
   'python-psutil'
   'python-py-cpuinfo'
+  'python-pydantic'
   'python-yaml'
   # AUR
   'python-qcelemental'
@@ -39,22 +40,22 @@ optdepends=(
   'python-pyberny'
   'xtb'
 )
-checkdepends=('python-msgpack' 'python-pytest')
-source=("${_name}-v${pkgver}.tar.gz::https://github.com/MolSSI/${_name}/archive/v${pkgver}.tar.gz")
-sha256sums=('7d9317355294b2118b9e959e57394eb3f2205db004d9ebe7441cd5026a7fc6c4')
+checkdepends=('python-pydantic-settings' 'python-pytest')
+source=("git+https://github.com/MolSSI/${_name}.git#tag=v${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${srcdir}/${_name}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${srcdir}/${_name}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
 
 check() {
-  cd "${srcdir}/${_name}-${pkgver}"
+  cd "${srcdir}/${_name}"
   python -m pytest -v
 }
