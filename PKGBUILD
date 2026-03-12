@@ -10,7 +10,7 @@ depends=('fcitx5' 'fcitx5-configtool' 'fcitx5-gtk' 'fcitx5-qt')
 install=fcitx5-laren.install
 makedepends=('cmake' 'extra-cmake-modules' 'gettext' 'fcitx5')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('599f6931de351cb54994afea70fe7084c765829251ed510eeb9c907389c997fc')
+sha256sums=('980fc24369bc60ef17acf853011f4d2305b974e0807d051bc1171e2fd4413c00')
 
 build() {
     cmake -B build -S "laren-$pkgver" \
