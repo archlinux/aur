@@ -1,7 +1,7 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=codename-goose
 pkgver=1.27.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64' 'aarch64')
 url="https://github.com/block/goose"
@@ -46,7 +46,7 @@ build() {
 	cd "goose-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	cargo build --frozen --release -p goose-cli --features disable-update
+	cargo build --frozen --release -p goose-cli --all-features
 }
 
 check() {
