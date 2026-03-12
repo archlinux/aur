@@ -1,6 +1,6 @@
 pkgbase = gonzales-git
-	pkgdesc = High-performance Swift path tracer (Release Build)
-	pkgver = 0.2.0.r1100.g5e4d3c2
+	pkgdesc = High-performance Swift path tracer
+	pkgver = v0.2.r70.gd25c8e9
 	pkgrel = 1
 	url = https://github.com/gonsolo/gonzales
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = gonzales-git
 	depends = openimageio
 	depends = ptex
 	depends = zlib
+	provides = gonzales
+	conflicts = gonzales
 	source = git+https://github.com/gonsolo/gonzales.git
 	md5sums = SKIP
 
