@@ -2,7 +2,7 @@
 
 _pkgname=yakuake
 pkgname=yakuake-wayland-fixes
-pkgver=25.12.2
+pkgver=25.12.3
 pkgrel=1
 pkgdesc='Drop-down terminal for KDE with Wayland fixes: toggle performance, KeepAbove, security hardening'
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=("https://download.kde.org/stable/release-service/$pkgver/src/$_pkgname-$
         0001-optimize-Wayland-toggle-cache-DBus-rect-keep-PlasmaS.patch
         0002-add-KeepAbove-support-on-Wayland.patch
         0003-use-update-instead-of-repaint-for-async-coalesced-re.patch)
-sha256sums=('c2497891ccc2f59f2a1c73fc4e8b193a56b41ff82bf87baabaf1aa8684648fb2'
+sha256sums=('362c9d376c4ff451d42777f8f8f9f21f2042cecb117f1b5cf2da77b10a43c9df'
             'a5c8d90936514aa47832d2e6028c8ddd128e482d7a8d06c2ecd87997a324fa40'
             'e36bc5c968d3937f986ff28394ee3f3b4085cce01bc777eebfa46c40ed5e60c4'
             '38a6cc546f0576dad865d568f7f7eef71c3b99dcf998384d561c7747bb1ad1cd')
