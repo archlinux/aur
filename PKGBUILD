@@ -6,8 +6,8 @@
 
 pkgname="vstax"
 _year="2025"
-pkgver="${_year}_1.0.0"
-pkgrel="136"
+pkgver="${_year}_1.0.2"
+pkgrel="138"
 pkgdesc="Software to fill the tax forms of the canton of Valais, Switzerland"
 url="http://www.vs.ch/vstax"
 license=('unknown')
@@ -17,9 +17,8 @@ install="vstax.install"
 changelog="ChangeLog"
 source=("https://sftp.vs.ch/${pkgname}/${_year}/${pkgname}${pkgver}-${pkgrel}_amd64.deb"
         "archlinux.patch")
-sha256sums=('252bbc96d41400e909938586a79be6b15dbf2ed70d9fc846f57b6169557b46c2'
+sha256sums=('ef3a66c68e933e6934f32e7aa4ef30293cef4fe9d76383808ee6849651e8a1d3'
             '2cc8127d6ffc83f82c04b77dc607ab2b5e4a15eda6041abcba2f1186a77ef8cb')
-
 
 prepare() {
     cd "${srcdir}/"
