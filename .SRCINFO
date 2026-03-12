@@ -1,0 +1,29 @@
+pkgbase = lib32-nvidia-utils-bsb
+	pkgver = 590.48.01
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/590.48.01/NVIDIA-Linux-x86_64-590.48.01.run
+	sha512sums = 31fd82af707dbe9a6d3848766925386f5e91c5fae0a605819450eb8e5a5a52eaab3ae5cff50b4dd36bc5c32fe1aabc29a6a79438d6614988c7b08f509ef0da6d
+
+pkgname = lib32-nvidia-utils-bsb
+	pkgdesc = NVIDIA drivers utilities (32-bit)
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	depends = lib32-libglvnd
+	depends = nvidia-utils=590.48.01
+	optdepends = lib32-opencl-nvidia
+	provides = lib32-vulkan-driver
+	provides = lib32-opengl-driver
+	provides = lib32-nvidia-libgl
+	conflicts = lib32-nvidia-libgl
+	replaces = lib32-nvidia-libgl
+
+pkgname = lib32-opencl-nvidia-bsb
+	pkgdesc = OpenCL implemention for NVIDIA (32-bit)
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	optdepends = opencl-headers: headers necessary for OpenCL development
+	provides = lib32-opencl-driver
