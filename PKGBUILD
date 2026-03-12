@@ -2,7 +2,7 @@
 pkgname=opencode-quota
 _npmname=@slkiser/opencode-quota
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenCode plugin for quota & token usage tracking with zero context window pollution"
 arch=('any')
 url="https://github.com/slkiser/opencode-quota"
@@ -21,7 +21,7 @@ latestver() {
 
 package() {
     cd "$srcdir/package"
-    npm install --omit=dev --omit=peer --ignore-scripts
+    npm install --omit=dev --ignore-scripts
 
     # Remove build tools pulled in by npm resolution (not needed at runtime)
     rm -rf node_modules/typescript node_modules/.bin
