@@ -12,8 +12,6 @@ post_install() {
       /usr/bin/rodecaster-duo-set-pro-audio 2>/dev/null || true
     runuser -u "$u" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
       /usr/bin/rodecaster-duo-pipewire-install 2>/dev/null || true
-    runuser -u "$u" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
-      systemctl --user restart pipewire pipewire-pulse 2>/dev/null || true
   }
   if [ -n "$SUDO_USER" ]; then
     _run_for_user "$SUDO_USER"
@@ -27,7 +25,6 @@ post_install() {
   echo "Rodecaster Duo PipeWire: virtual devices (Game, System, Chat, Music) were set up if the device was connected."
   echo "If the Duo was not connected, run after plugging it in:"
   echo "  rodecaster-duo-set-pro-audio && rodecaster-duo-pipewire-install"
-  echo "  systemctl --user restart pipewire pipewire-pulse"
   echo ""
 }
 
@@ -35,15 +32,28 @@ post_remove() {
   _run_for_user() {
     local u="$1"
     local uid
+    local home
     local conf_d
+    local state_file
+    local saved_sink
     uid=$(getent passwd "$u" 2>/dev/null | cut -d: -f3)
     [ -z "$uid" ] && return 0
-    conf_d=$(getent passwd "$u" 2>/dev/null | cut -d: -f6)/.config/pipewire/pipewire.conf.d
+    home=$(getent passwd "$u" 2>/dev/null | cut -d: -f6)
+    conf_d="$home/.config/pipewire/pipewire.conf.d"
+    state_file="$home/.config/rodecaster-duo-pipewire/state.conf"
+    saved_sink=""
+    [ -f "$state_file" ] && saved_sink=$(grep '^previous_default_sink=' "$state_file" 2>/dev/null | cut -d= -f2-)
     rm -f "$conf_d/99-rodecaster-duo-virtual-sinks.conf" \
           "$conf_d/99-rodecaster-duo-virtual-sources.conf" 2>/dev/null || true
+    rm -f "$state_file" 2>/dev/null || true
     [ -d "/run/user/$uid" ] || return 0
     runuser -u "$u" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
-      systemctl --user restart pipewire pipewire-pulse 2>/dev/null || true
+      systemctl --user restart pipewire pipewire-pulse wireplumber 2>/dev/null || true
+    if [ -n "$saved_sink" ]; then
+      sleep 3
+      runuser -u "$u" -- env XDG_RUNTIME_DIR="/run/user/$uid" \
+        pactl set-default-sink "$saved_sink" 2>/dev/null || true
+    fi
   }
   if [ -n "$SUDO_USER" ]; then
     _run_for_user "$SUDO_USER"
