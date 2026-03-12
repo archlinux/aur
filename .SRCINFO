@@ -1,0 +1,17 @@
+pkgbase = amf-amdgpu-pro-25.10
+	pkgdesc = AMDGPU Pro Advanced Multimedia Framework for RDNA1 & RDNA2
+	pkgver = 25.10.2203192
+	pkgrel = 1
+	url = https://github.com/GPUOpen-LibrariesAndSDKs/AMF/wiki/Driver%20Linux
+	arch = x86_64
+	groups = Radeon_Software_for_Linux
+	license = custom: AMDGPU-PRO EULA
+	depends = vulkan-icd-loader
+	depends = vulkan-radeon
+	provides = amf-amdgpu-pro
+	source = https://repo.radeon.com/amdgpu/6.4.4/ubuntu/pool/proprietary/a/amf-amdgpu-pro/amf-amdgpu-pro_1.4.37-2203192.24.04_amd64.deb
+	source = https://repo.radeon.com/amdgpu/6.4.4/ubuntu/pool/proprietary/liba/libamdenc-amdgpu-pro/libamdenc-amdgpu-pro_25.10-2203192.24.04_amd64.deb
+	sha256sums = a6496929a58badc0a5451698f632611592dbc855cf518f47e54a66011ae014f5
+	sha256sums = 8c4bc76714f337c4f3649ba8b9868e1b0f7169120d03fcc483ee7ab3fd77aeec
+
+pkgname = amf-amdgpu-pro-25.10
