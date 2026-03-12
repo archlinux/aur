@@ -1,7 +1,7 @@
 # Maintainer: Ewout van Mansom <ewout@vanmansom.name>
 pkgname=siomon
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.1.3
+pkgrel=1
 pkgdesc="Hardware information and real-time sensor monitoring tool"
 arch=(any)
 url="https://github.com/level1techs/siomon"
@@ -14,9 +14,9 @@ optdepends=('nvidia-utils: GPU name, VRAM, clocks, temp, power, utilization'
 makedepends=('git'
              'cargo')
 options=()
-_tag=50d3aaf788e2a54f33791193080c1297929f65f8 # git rev-parse "v$pkgver"
+_tag=3d8a0a62fe69e0c348e94bd1d00010bbb69ac053 # git rev-parse "v$pkgver"
 source=("siomon::git+https://github.com/level1techs/siomon.git#tag=$_tag")
-b2sums=('a8e0488ba2302e7b40aed5a54dd1334c1dc2302622129f7307c8474608807e4932b376fb570aaa1df4303514b2c0bbe22d47eb56d0b154078f77f0038025abcf')
+b2sums=('59e74e032b294ea7bed3fad7dc104cb50169cef9e1e582417de03c0501b1d970ab6992338b53042b5e6b36f089c7681a23c25bca989636d6bbdc77b9dff59bb1')
 
 prepare() {
     cd "$srcdir/$pkgname"
