@@ -8,7 +8,7 @@ license=('MIT')
 depends=('python' 'python-psutil' 'tk')
 makedepends=('python-setuptools' 'python-pip' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tomasmckenna/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1a68af2bc0a3ef9d7c14ffec84a85cc96dd4bd0d59fd228067b27c4b9d21699c')
+sha256sums=('c3228af4e189275956c4615aab662bf1b27780650c66e3bed20016005083eb3a')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
