@@ -1,0 +1,3 @@
+[perl-parallel-pipes]
+source = "cpan"
+cpan = "Parallel-Pipes"
