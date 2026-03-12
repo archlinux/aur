@@ -1,7 +1,7 @@
 pkgbase = mozc
 	pkgdesc = The Open Source edition of Google Japanese Input
-	pkgver = 3.33.6089
-	pkgrel = 2
+	pkgver = 3.33.6133
+	pkgrel = 1
 	url = https://github.com/google/mozc
 	install = mozc.install
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = mozc
 	noextract = 2025-01-25.zip
 	noextract = jigyosyo.zip
 	noextract = ken_all.zip
-	source = git+https://github.com/google/mozc.git#commit=a99841e37b7459d08e5736c3613a6bcd393c9e92
+	source = git+https://github.com/google/mozc.git#commit=cc288ecf425b98bf71e757defb34d9f1f5bc2733
 	source = git+https://github.com/abseil/abseil-cpp.git#commit=987c57f325f7fa8472fa84e1f885f7534d391b0d
 	source = git+https://github.com/google/breakpad.git#commit=216cea7bca53fa441a3ee0d0f5fd339a3a894224
 	source = git+https://github.com/google/googletest.git#commit=52eb8108c5bdec04579160ae17225d66034bd723
@@ -66,7 +66,7 @@ pkgbase = mozc
 	source = https://github.com/hiroyuki-komatsu/japanese-usage-dictionary/archive/refs/tags/2025-01-25.zip
 	source = https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/33524763837473258e7ba2f14b17fc3a70519831/jigyosyo.zip
 	source = https://github.com/hiroyuki-komatsu/japanpost_zipcode/raw/33524763837473258e7ba2f14b17fc3a70519831/ken_all.zip
-	b2sums = 374862cb26ac2e866c6bce13e4dc43cd061f4bf641a03745a832240e38fa9557458451edb665d163c29f241dbe7c8a4ad83ba77ffe925d18e165ab180ee1c7ac
+	b2sums = c0bb232f4d9414f703f85772d24b64fca683b100d040df032a82a234f7d76631e5631dcdafb42bd2f306d08db7ea4c38c2751391ecaebee70498999f652a1fbd
 	b2sums = cccfb46ba1e756948036ffdca21187d5cd8c095357e45f305a88c96b32084ded297717e5c44cf34971bd2fe6e7ea37099dadf564aa775ef0a55a7fbab965270c
 	b2sums = eb54c87947561d6d985b3a244860a247a6ae41e5667ed6f4687dc864a3f02bc0b52d111c5b16025e06f44a1db31d7731c42eb38725521512b4c102475aebf585
 	b2sums = e8779958a717e8581a0952ea01728852d37b95713b9e92ce3fb4f5bf03e3fe02083c51daa042c231d708c2b775729000b7355f573069c09e1242bbd6f277145d
