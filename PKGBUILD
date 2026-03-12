@@ -2,13 +2,13 @@
 
 pkgname=polytrack-bin
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A competitive Racing Game Called PolyTrack"
 arch=('x86_64')
 url="https://github.com/SoupcanUBG/polytrack-bin"
 license=('unknown')
 source=("https://github.com/SoupcanUBG/$pkgname/releases/download/0.6.0/PolyTrack-linux-x64.tar.gz")
-sha256sums=('cf6e77f3c67f074761df7f105667179d08170b94246eb171096f01d46217bab3')
+sha256sums=('a9a32edb2eacef04d4be980a56fc27c22859a0394ac422865d66d107601cc386')
 
 
 
