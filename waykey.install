@@ -1,0 +1,18 @@
+post_install() {
+    echo "Reloading udev rules..."
+    udevadm control --reload-rules && udevadm trigger
+    
+    echo "---------------------------------------------------------"
+    echo "WayKey has been installed successfully!"
+    echo "To start the automation engine in the background, run:"
+    echo "  systemctl --user enable --now waykey"
+    echo ""
+    echo "Make sure your user is in the 'input' group to read /dev/input and /dev/uinput:"
+    echo "  sudo usermod -aG input \$USER"
+    echo "Then log out and log back in for changes to take effect."
+    echo "---------------------------------------------------------"
+}
+
+post_upgrade() {
+    post_install
+}
