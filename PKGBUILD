@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.3.618
+pkgver=8.3.619
 pkgrel=1
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
@@ -37,7 +37,7 @@ source=(
    "0001-fixup-magsgtty.patch"
 )
 
-b2sums=('d3f796438b69cf428eeb10d757534f9c3d78d28830c89038b1ba94d4f6735a85780d4b73e289789417fda44ba089b493505f1d7a820cf33f9d2a1e886f4216ab'
+b2sums=('87347e3bdaf7f4fd5c15daa39a55bbd15bded26a706eac1203c0cc04823b9e8d52d9e0169cf925d71ee1ca57903fd65d2deb5cb07f8dc5a950ed8777cca9ab53'
         '72d1a9742c72041204c05aca45639251ab49768c43b1829bc40e6f0857fd93c0a7e32e433a0090996e17af1fc588e26677c24487bf04d5a14a86c8f5e4a2402c')
 
 
