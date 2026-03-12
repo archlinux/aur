@@ -1,14 +1,15 @@
 pkgbase = lyricspot
-	pkgdesc = Live synced lyrics in your terminal, pulled from Spotify
-	pkgver = 1.1.4
-	pkgrel = 2
+	pkgdesc = Live synced lyrics in your terminal, pulled from Spotify or any MPRIS player
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/vlensys/lyricspot
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
 	depends = python
-	depends = python-pipx
-	source = lyricspot-1.1.4.tar.gz::https://github.com/vlensys/lyricspot/archive/refs/tags/v1.1.4.tar.gz
-	sha256sums = f912d6c2e7fd6e2916345165f28eaebaa87b8f7c474e8afe8169e573f3765235
+	depends = python-spotipy
+	depends = playerctl
+	optdepends = python-pillow: for dynamic album art colors
+	source = lyricspot-1.2.0.tar.gz::https://github.com/vlensys/lyricspot/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = ee90f5967925aff6d1b8edc034502a5dd140dd44b9c739e42b414392f1afc503
 
 pkgname = lyricspot

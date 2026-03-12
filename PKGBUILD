@@ -1,24 +1,22 @@
 # Maintainer: vlensys (contact me on github for wtv reason)
 pkgname=lyricspot
-pkgver=1.1.4
-pkgrel=2
-pkgdesc="Live synced lyrics in your terminal, pulled from Spotify"
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="Live synced lyrics in your terminal, pulled from Spotify or any MPRIS player"
 arch=('any')
 url="https://github.com/vlensys/lyricspot"
 license=('MIT')
-depends=('python' 'python-pipx')
-makedepends=('python-setuptools')
+depends=('python' 'python-spotipy' 'playerctl')
+optdepends=('python-pillow: for dynamic album art colors')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vlensys/lyricspot/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f912d6c2e7fd6e2916345165f28eaebaa87b8f7c474e8afe8169e573f3765235')
+sha256sums=('ee90f5967925aff6d1b8edc034502a5dd140dd44b9c739e42b414392f1afc503')
 
 package() {
   cd "${pkgname}-${pkgver}"
-
-  PIPX_HOME="$pkgdir/opt/lyricspot" \
-  PIPX_BIN_DIR="$pkgdir/usr/bin" \
-    pipx install . --python python3
-
-  # Strip pkgdir from paths so they resolve correctly on the installed system
-  find "$pkgdir" -type f \( -name "*.py" -o -name "pyvenv.cfg" -o -name "lyricspot" \) \
-    -exec sed -i "s|$pkgdir||g" {} \; 2>/dev/null || true
+  install -Dm644 lyricspot.py "$pkgdir/usr/lib/lyricspot/lyricspot.py"
+  install -Dm644 colorthief.py "$pkgdir/usr/lib/lyricspot/colorthief.py"
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/lyricspot" <<'LAUNCHER'
+#!/bin/bash
+exec python /usr/lib/lyricspot/lyricspot.py "$@"
+LAUNCHER
 }
