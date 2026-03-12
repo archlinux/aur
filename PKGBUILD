@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'python-spotipy' 'playerctl')
 optdepends=('python-pillow: for dynamic album art colors')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vlensys/lyricspot/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ee90f5967925aff6d1b8edc034502a5dd140dd44b9c739e42b414392f1afc503')
+sha256sums=('ac128d1c8f32c117cfd16b66e555cce1ae863ffb8097919e183f62f93355a03e')
 
 package() {
   cd "${pkgname}-${pkgver}"
