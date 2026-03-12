@@ -1,0 +1,20 @@
+post_install() {
+  echo "=========================================================================="
+  echo "  OpenCode Quota Plugin Installed"
+  echo "=========================================================================="
+  echo ""
+  echo "To enable this plugin, add it to your opencode configuration file"
+  echo "(e.g., ~/.config/opencode/opencode.json):"
+  echo ""
+  echo "  {"
+  echo "    \"plugin\": [\"file:///usr/lib/opencode/plugins/opencode-quota\"]"
+  echo "  }"
+  echo ""
+  echo "Commands: /quota, /quota_status, /tokens_today, /tokens_session, etc."
+  echo "Supports: GitHub Copilot, OpenAI, Qwen, Chutes, Firmware, Antigravity, Z.ai"
+  echo "=========================================================================="
+}
+
+post_upgrade() {
+  post_install
+}
