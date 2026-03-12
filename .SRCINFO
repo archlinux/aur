@@ -16,6 +16,6 @@ pkgbase = fcitx5-laren
 	depends = fcitx5-gtk
 	depends = fcitx5-qt
 	source = fcitx5-laren-0.3.0.tar.gz::https://github.com/mmaher88/laren/archive/v0.3.0.tar.gz
-	sha256sums = d6cb625de42546f87806b169ae4f1dd3a31b5d85c67c1d39923ea0cab4b95520
+	sha256sums = c2e2aaa365555615d63dd1840575c083c015b977e92b66bc07f4b8ff99d3c689
 
 pkgname = fcitx5-laren
