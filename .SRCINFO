@@ -1,0 +1,12 @@
+pkgbase = pystatic
+	pkgdesc = Uma linguagem de programação estilo Python que gera binários estáticos via transpilação para C
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/pedrodev2026/pystatic
+	arch = any
+	license = BSD-3-Clause
+	depends = python
+	source = https://github.com/pedrodev2026/pystatic/releases/download/0.1/pystatic-0.1.tar.gz
+	sha256sums = 0e44684f1ecc5feac2823a677e6920f305527155b78261cfd320950b6a568899
+
+pkgname = pystatic
