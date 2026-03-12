@@ -1,6 +1,6 @@
 pkgbase = vice-clipper
 	pkgdesc = Medal.tv-style game clip recorder for Linux — instant replay, session recording, and one-click sharing
-	pkgver = 1.0.9
+	pkgver = 1.0.10
 	pkgrel = 1
 	url = https://github.com/eklonofficial/Vice
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = vice-clipper
 	optdepends = gpu-screen-recorder: best performance recording backend (recommended)
 	optdepends = wf-recorder: Wayland fallback recording backend
 	optdepends = cloudflared: public share links that work outside your LAN
-	source = vice-clipper-1.0.9.tar.gz::https://github.com/eklonofficial/Vice/archive/refs/tags/v1.0.9.tar.gz
-	sha256sums = 08399cc2c7f54711818d2c7d3ed874018b590f7a80cfa7ccb42053cf1c196285
+	source = vice-clipper-1.0.10.tar.gz::https://github.com/eklonofficial/Vice/archive/refs/tags/v1.0.10.tar.gz
+	sha256sums = 03dc0618234a4bd8677c8e210f958d50a58edb3e86763b161940f3807bf24133
 
 pkgname = vice-clipper
