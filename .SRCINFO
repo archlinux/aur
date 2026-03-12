@@ -1,0 +1,18 @@
+pkgbase = presshold
+	pkgdesc = macOS-style accent character selector for Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jalovisko/presshold
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = libx11
+	optdepends = wtype: character injection on Wayland
+	optdepends = xdotool: character injection on X11
+	source = presshold-0.1.0.tar.gz::https://github.com/jalovisko/presshold/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = f94d3edcfad8f23299420c459407df03cab6ef0c8d81b08fd347323e5d59e204
+
+pkgname = presshold
