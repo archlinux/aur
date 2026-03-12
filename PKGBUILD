@@ -6,8 +6,8 @@ pkgname=${pkgbase}-bin
 pkgver=20.0.0
 pkgrel=1
 pkgdesc="LLVM's C language family frontend for compiling Android components, prebuilt by Google for Android NDK."
-arch=('x86_64')
-url="https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86"
+arch=('x86_64' 'aarch64')
+url="https://android.googlesource.com/platform/prebuilts/clang/host"
 license=('custom:Apache 2.0 with LLVM Exception')
 depends=()
 provides=('clang-android')
@@ -18,7 +18,18 @@ source=("clang::shallowclone+${url}")
 # Using custom download agent to shallow clone the repo
 cat <<'EOF' >"DLAGENTS"
 #!/bin/sh
-git clone --depth 1 --branch main --single-branch --no-tags "${1#shallowclone+}" "${2}"
+case "$(uname -m)" in
+x86_64) 
+	BRANCH=main
+	SUFFIX=x86
+	;;
+aarch64) 
+	BRANCH=mirror-goog-llvm-r596125-release
+	SUFFIX=arm64
+	;;
+esac
+
+git clone --depth 1 --branch main --single-branch --no-tags "${1#shallowclone+}/linux-${SUFFIX}" "${2}"
 EOF
 chmod +x "DLAGENTS"
 export DLAGENTS="shallowclone::$(realpath "./DLAGENTS") %u %o"
