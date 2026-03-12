@@ -1,0 +1,21 @@
+diff --git a/systemd/avahi2dns.service b/systemd/avahi2dns.service
+index db8653b..ec32080 100644
+--- a/systemd/avahi2dns.service
++++ b/systemd/avahi2dns.service
+@@ -1,13 +1,13 @@
+ [Unit]
+ Description=Avahi DNS Resolver
+ After=network.target
+-Requires=dbus-org.freedesktop.Avahi.service
+-Wants=dbus-org.freedesktop.Avahi.service
++Requires=avahi-daemon.service
++Wants=avahi-daemon.service
+ 
+ [Service]
+ Type=simple
+ User=avahi2dns
+-ExecStart=/usr/bin/avahi2dns --port 5354 --timeout 2.5s
++ExecStart=/usr/bin/avahi2dns --addr '127.0.0.1' --port 5354 --timeout 2.5s
+ Restart=on-failure
+ 
+ [Install]
