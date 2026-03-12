@@ -1,15 +1,15 @@
 pkgbase = perl-lingua-en-titlecase-simple
-	pkgdesc = Automatically title-case headlines and title-texts.
-	pkgver = 1.004
+	pkgdesc = John Gruber's headline capitalization script
+	pkgver = 1.015
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Lingua-EN-Titlecase-Simple
+	url = https://metacpan.org/release/ARISTOTLE/Lingua-EN-Titlecase-Simple-1.015
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	depends = perl
+	license = MIT
+	checkdepends = perl-data-dumper
+	checkdepends = perl-test-simple
+	depends = perl>=5.8.1
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/Lingua-EN-Titlecase-Simple-1.004.tar.gz
-	sha512sums = eec2bec0f27631b403441e39dea2d5d2c7fd521ca6b3e81c0f27567379af90f094832687be930d860ff8abd84097ebbff129eb8a13ca1e9c2049290919bea2fe
+	source = https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/Lingua-EN-Titlecase-Simple-1.015.tar.gz
+	sha256sums = 74555c28d16a2dc81d87cda5a82a0f7bec69f402959177b6a18fe6e91fa1f692
 
 pkgname = perl-lingua-en-titlecase-simple
-
