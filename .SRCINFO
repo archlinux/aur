@@ -1,7 +1,7 @@
 pkgbase = snazzgit-git
 	pkgdesc = A snazzy cross-platform Git GUI client (built from source)
 	pkgver = 0.2.7
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/tr0llslay3r/SnazzGit
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,8 @@ pkgbase = snazzgit-git
 	makedepends = cargo
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = cmake
+	makedepends = pkgconf
 	makedepends = patchelf
 	makedepends = librsvg
 	makedepends = libappindicator-gtk3

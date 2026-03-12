@@ -1,13 +1,13 @@
 # Maintainer: tr0llslay3r <https://github.com/tr0llslay3r>
 pkgname=snazzgit-git
 pkgver=0.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc="A snazzy cross-platform Git GUI client (built from source)"
 arch=('x86_64')
 url="https://github.com/tr0llslay3r/SnazzGit"
 license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'glib2' 'openssl')
-makedepends=('rust' 'cargo' 'nodejs' 'npm' 'patchelf' 'librsvg' 'libappindicator-gtk3')
+makedepends=('rust' 'cargo' 'nodejs' 'npm' 'cmake' 'pkgconf' 'patchelf' 'librsvg' 'libappindicator-gtk3')
 provides=('snazzgit')
 conflicts=('snazzgit' 'snazzgit-bin')
 source=("git+${url}.git")
