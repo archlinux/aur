@@ -1,14 +1,14 @@
-pkgbase = namoz-vaqtlari-cli
+pkgbase = namoz-vaqtlari
 	pkgdesc = Islom.uz ma'lumotlari asosida namoz vaqtlari CLI vositasi
 	pkgver = 1.0.3
 	pkgrel = 1
-	url = https://github.com/OneWay2Go/NamozVaqtlariCLI.git
+	url = https://github.com/OneWay2Go/NamozVaqtlariCLI
 	arch = x86_64
 	license = MIT
 	makedepends = dotnet-sdk-8.0
 	depends = dotnet-runtime-8.0
 	depends = chromium
-	source = namoz-vaqtlari-cli-1.0.3.tar.gz::https://github.com/OneWay2Go/NamozVaqtlariCLI.git/archive/refs/tags/v1.0.3.tar.gz
+	source = namoz-vaqtlari-1.0.3.tar.gz::https://github.com/OneWay2Go/NamozVaqtlariCLI/archive/refs/tags/v1.0.3.tar.gz
 	sha256sums = SKIP
 
-pkgname = namoz-vaqtlari-cli
+pkgname = namoz-vaqtlari
