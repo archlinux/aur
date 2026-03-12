@@ -20,7 +20,7 @@ sha256sums=('SKIP'
             '7cfc71c3373b1046af469e4857f0061eb62416f2bb38805ebf5bab5fb21c9a1d')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
 
   # Git, tags available
   # printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
@@ -30,12 +30,12 @@ pkgver() {
 }
 
 prepare () {
-	cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
   patch -p1 -i "$srcdir/01-avahi2dns.service.patch"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
 
   go build \
     -trimpath \
