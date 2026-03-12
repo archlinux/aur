@@ -1,7 +1,7 @@
 pkgbase = vmlinux-to-elf
 	pkgdesc = Recover a fully analyzable .ELF from a raw kernel, through extracting the kernel symbol table (kallsyms)
 	pkgver = 1.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/marin-m/vmlinux-to-elf
 	arch = any
 	license = GPL-3.0-or-later
