@@ -2,7 +2,7 @@
 
 pkgname=darklua
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Transform Lua 5.1 and Roblox Luau code using configurable rules.'
 url='https://github.com/seaofvoices/darklua'
 license=('MIT')
