@@ -24,9 +24,9 @@ pkgname = nvidia-settings-bsb
 	depends = libxv
 	depends = libvdpau
 	depends = nvidia-utils-bsb
-	depends = libxnvctrl
+	depends = libxnvctrl-bsb
 
-pkgname = libxnvctrl
+pkgname = libxnvctrl-bsb
 	pkgdesc = NVIDIA NV-CONTROL X extension
 	depends = libxext
 	provides = libXNVCtrl.so

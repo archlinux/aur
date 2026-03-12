@@ -1,7 +1,7 @@
 # Maintainer: NotFranko_ <notfranko@techlab.cloud>
 
 pkgbase=nvidia-settings-bsb
-pkgname=('nvidia-settings-bsb' 'libxnvctrl')
+pkgname=('nvidia-settings-bsb' 'libxnvctrl-bsb')
 pkgver=590.48.01
 pkgrel=1
 pkgdesc='Tool for configuring the NVIDIA graphics driver'
@@ -31,7 +31,7 @@ build() {
 }
 
 package_nvidia-settings-bsb() {
-  depends=('jansson' 'gtk3' 'libxv' 'libvdpau' 'nvidia-utils-bsb' 'libxnvctrl')
+  depends=('jansson' 'gtk3' 'libxv' 'libvdpau' 'nvidia-utils-bsb' 'libxnvctrl-bsb')
 
   cd ${pkgbase}-${pkgver}
   DESTDIR="${pkgdir}" make install
@@ -46,7 +46,7 @@ package_nvidia-settings-bsb() {
     -i "${pkgdir}/usr/share/applications/nvidia-settings.desktop"
 }
 
-package_libxnvctrl() {
+package_libxnvctrl-bsb() {
   depends=('libxext')
   pkgdesc='NVIDIA NV-CONTROL X extension'
   provides=('libXNVCtrl.so')
