@@ -1,10 +1,10 @@
 # Maintainer: rilian-la-te <ria.freelander@gmail.com>
-makedepends=('meson' 'gobject-introspection' 'vala' 'glib2' 'git' 'glib2-devel')
+makedepends=('meson' 'gobject-introspection' 'vala' 'glib2' 'git' 'glib2-devel' 'python-setuptools')
 
 _pkgbase=vala-panel-appmenu
 pkgname=appmenu-glib-translator-git
 _path=subprojects/appmenu-glib-translator
-pkgver=24.05.r2.g7631683
+pkgver=25.04.r8.gaea4ea3
 pkgrel=1
 pkgdesc="GLib-based library for translating DBusMenu-exported menus into GMenuModels. Used for vala-panel's system tray and all variants of vala-panel-appmenu. Can be used with GTK3 or GTK4."
 depends=('glib2')
