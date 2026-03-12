@@ -1,6 +1,6 @@
 pkgbase = stdexec-git
 	pkgdesc = Senders - A Standard Model for Asynchronous Execution in C++
-	pkgver = 25.09.r147.g970dbac
+	pkgver = gtc.2026.r5.gb6f8a0e
 	pkgrel = 1
 	url = https://github.com/NVIDIA/stdexec
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=stdexec-git
-pkgver=25.09.r147.g970dbac
+pkgver=gtc.2026.r5.gb6f8a0e
 pkgrel=1
 pkgdesc="Senders - A Standard Model for Asynchronous Execution in C++"
 url="https://github.com/NVIDIA/stdexec"
@@ -28,7 +28,7 @@ pkgver() {
     cd "${srcdir}/${pkgname}"
     (
         set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^nvhpc-//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
