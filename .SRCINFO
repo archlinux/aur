@@ -1,6 +1,6 @@
 pkgbase = electron-nightly-bin
 	pkgdesc = Build cross platform desktop apps with web technologies — prebuilt nightly binary
-	pkgver = 42.0.0nightly.20260303
+	pkgver = 42.0.0nightly.20260311
 	pkgrel = 1
 	url = https://electronjs.org
 	arch = aarch64
@@ -20,10 +20,10 @@ pkgbase = electron-nightly-bin
 	provides = electron42
 	conflicts = electron
 	conflicts = electron42
-	noextract = electron-42.0.0-nightly.20260303-x86_64.zip
-	source_x86_64 = electron-42.0.0-nightly.20260303-x86_64.zip::https://github.com/electron/nightlies/releases/download/v42.0.0-nightly.20260303/electron-v42.0.0-nightly.20260303-linux-x64.zip
+	noextract = electron-42.0.0-nightly.20260311-x86_64.zip
+	source_x86_64 = electron-42.0.0-nightly.20260311-x86_64.zip::https://github.com/electron/nightlies/releases/download/v42.0.0-nightly.20260311/electron-v42.0.0-nightly.20260311-linux-x64.zip
 	source_x86_64 = electron
-	sha256sums_x86_64 = 7b450b6e96611b27d4fc8a3bb3d5730f81d8b838509076a8ca48257380d1448c
+	sha256sums_x86_64 = 2892bfdbe52c6944c9dff11d209520c70cedba17d1d41e7a8a680284e14700ed
 	sha256sums_x86_64 = 8140c9dbc76f387b16c0bedc6e5d05462b3f0c3aa241ab9f0d88db021564600e
 
 pkgname = electron-nightly-bin
