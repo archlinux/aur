@@ -1,6 +1,20 @@
 # Maintainer: jalovisko <https://github.com/jalovisko>
+#
+# RELEASING A NEW VERSION
+# ───────────────────────
+# 1. Bump version in Cargo.toml
+# 2. Commit, push, and tag:
+#      git tag v0.X.0 && git push origin v0.X.0
+# 3. Update pkgver below and regenerate sha256sums:
+#      makepkg -g
+# 4. Paste the new sha256sums value below, then in aur-presshold/:
+#      cp ~/dev/accentd/presshold/PKGBUILD .
+#      makepkg --printsrcinfo > .SRCINFO
+#      git add PKGBUILD .SRCINFO
+#      git commit -m "Release v0.X.0"
+#      git push origin master
 pkgname=presshold
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="macOS-style accent character selector for Linux"
 arch=('x86_64')
@@ -13,7 +27,7 @@ optdepends=(
     'xdotool: character injection on X11'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f94d3edcfad8f23299420c459407df03cab6ef0c8d81b08fd347323e5d59e204')
+sha256sums=('d70148b70dd9052531166ed4e9196d5b45ae1c382e5217b144727d8c7991c492')
 
 prepare() {
     cd "$pkgname-$pkgver"
