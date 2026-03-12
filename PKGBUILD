@@ -16,7 +16,7 @@
 
 pkgname=hnefatafl-copenhagen
 pkgver=5.3.0
-pkgrel=4
+pkgrel=5
 real_pkgrel=2
 pkgdesc="Copenhagen Hnefatafl client. Discord: https://discord.gg/h56CAHEBXd"
 url="https://hnefatafl.org"
