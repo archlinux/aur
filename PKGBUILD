@@ -1,7 +1,7 @@
 # Maintainer: Daniël Nazarkin <aur.danicatgames@pm.me>
 
 pkgname=darklua-bin
-pkgver=0.17.3
+pkgver=0.18.0
 pkgrel=1
 pkgdesc='Transform Lua 5.1 and Roblox Luau code using configurable rules.'
 url='https://github.com/seaofvoices/darklua'
@@ -11,8 +11,8 @@ arch=('x86_64' 'aarch64')
 provides=("${pkgname%-bin}")
 source_x86_64=("$url/releases/download/v$pkgver/darklua-linux-x86_64.zip")
 source_aarch64=("$url/releases/download/v$pkgver/darklua-linux-aarch64.zip")
-sha256sums_x86_64=('389d131279d87e2970b57a26e35276babd78dd16273a730a4370d3646b6f3198')
-sha256sums_aarch64=('2cb1f0948d04f76068bd26d096a0f6a583d9531548a7c5a10360c7b510f4792f')
+sha256sums_x86_64=('3826cd216ec1e1e055dbb6e546cff1e3f35a3a6203279d3fa462229182d85957')
+sha256sums_aarch64=('a068a1d092871594756ef8f416a995dc71100b6bd5392a6347dc17113f9af9d9')
 
 package() {
   install -Dm755 darklua "$pkgdir/usr/bin/darklua"
