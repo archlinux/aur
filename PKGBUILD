@@ -5,7 +5,7 @@ _pkgname=go-mitmproxy
 pkgname=${_pkgname}-bin
 pkgdesc="Golang implementation of mitmproxy that supports man-in-the-middle attacks and parsing, monitoring, and tampering with HTTP/HTTPS traffic"
 
-pkgver=1.8.8
+pkgver=1.8.9
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,9 +24,9 @@ conflicts=("${_pkgname}"{,-git})
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('2539ba87a8a99ec24d403ad19cf6e82022514bf9ceb332bcae938db6dbecdc56')
-sha256sums_i686=('d6b6c48b526905e33f4a05aaab0dff50f3e8d3553abc09ed42b48eb1c2b34aa1')
-sha256sums_aarch64=('a8732c7d3d5addf03db9c8d1c72ac166d05cdfd9aaf34381ac4b7fd4c4618146')
+sha256sums_x86_64=('2fdaa51cdb72c4cd86c1bb148df068b2253057886316a5b4b58c8350c4ed2c85')
+sha256sums_i686=('fef14e854aec1895f7e6bde523c38be468129f43adcc8da620aba29e56d49f04')
+sha256sums_aarch64=('fc602a5d42abab1b3a3b18fdf20267adb096adb0f87ab195fe3ef6005ec425c5')
 
 package() {
 	cd "${srcdir}/" || exit
