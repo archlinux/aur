@@ -1,0 +1,24 @@
+pkgbase = gosh-fetch-bin
+	pkgdesc = Modern download manager with HTTP and BitTorrent support, built with Electron and a native Rust engine
+	pkgver = 2.0.6
+	pkgrel = 1
+	url = https://github.com/goshitsarch-eng/Gosh-Fetch
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	optdepends = libnotify: desktop notifications
+	optdepends = libappindicator-gtk3: system tray support
+	provides = gosh-fetch
+	conflicts = gosh-fetch
+	options = !strip
+	options = !debug
+	source_x86_64 = Gosh-Fetch-2.0.6.AppImage::https://github.com/goshitsarch-eng/Gosh-Fetch/releases/download/v2.0.6/Gosh-Fetch-2.0.6.AppImage
+	sha256sums_x86_64 = 377add76fb69c025aeb92f6684186b0a5a1d1b1bf7f02cfd4efab89cc68204e2
+	source_aarch64 = Gosh-Fetch-2.0.6-arm64.AppImage::https://github.com/goshitsarch-eng/Gosh-Fetch/releases/download/v2.0.6/Gosh-Fetch-2.0.6-arm64.AppImage
+	sha256sums_aarch64 = 764c0d2e150db5119c1678d5b887f9cbb5fcb5561dcef440385fa458fe4bd564
+
+pkgname = gosh-fetch-bin
