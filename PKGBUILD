@@ -1,19 +1,20 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=yt-dlp-git
-pkgver=2025.12.08.r64.gc8680b6
-pkgrel=2
+pkgver=2026.03.03.r6.g3e36cf9
+pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes (git)'
 arch=(any)
 url=https://github.com/yt-dlp/yt-dlp
 license=(Unlicense)
-depends=(python python-certifi python-requests python-urllib3)
+depends=(python python-certifi python-requests python-urllib3 yt-dlp-ejs)
 makedepends=(pandoc python-build python-hatchling python-installer git)
 checkdepends=(python-pytest)
 optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
             'atomicparsley: for embedding thumbnails into m4a files'
             'aria2: for using aria2 as external downloader'
+            'python-curl_cffi: support for impersonating browser requests'
             'python-mutagen: for embedding thumbnail in certain formats'
             'python-pycryptodome: for decrypting AES-128 HLS streams and various other data'
             'python-pycryptodomex: for decrypting AES-128 HLS streams and various other data'
@@ -23,9 +24,7 @@ optdepends=('ffmpeg: for video post-processing'
             'python-xattr: for writing xattr metadata'
             'python-pyxattr: for writing xattr metadata (alternative option)'
             'phantomjs: for extractors with javascript code'
-            'python-secretstorage: For -cookies-from-browser to access the GNOME keyring while decrypting cookies of Chromium-based browsers'
-            'yt-dlp-ejs: non-deprecated YouTube support'
-            'python-curl_cffi: for impersonating browsers')
+            'python-secretstorage: For -cookies-from-browser to access the GNOME keyring while decrypting cookies of Chromium-based browsers')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+"${url}".git)
