@@ -26,7 +26,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}" || exit
-  bun install --frozen-lockfile
+  bun install
   bun x neu update
 }
 
