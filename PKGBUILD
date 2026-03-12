@@ -1,7 +1,7 @@
 # Maintainer: João Freitas <joaj.freitas@gmail.com>
 pkgname=numbat
 _pkgname=numbat-cli
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="A statically typed programming language for scientific computations with first class support for physical dimensions and units"
 arch=('x86_64' 'aarch64' 'i686' 'armv7h')
@@ -53,5 +53,5 @@ package() {
       install -Dm644 "$icon" "$pkgdir/usr/share/icons/hicolor/$icon_size/apps/numbat.png"
     done
 }
-sha256sums=('ec6d013275e4fd8addc74c2942dbe114b70e302cc8fff59c310dc159401f53aa'
-            '68a004c145c87510f484a8d7f0b08c36439cec24e419bc79b24f259677ea1b0d')
+sha256sums=('eb4849c6017a5d78c731cc292dffb6b23d47654c03f426d309815a5355c09b7f'
+            'db5d9c2c0ec113f6773c22e7c09c51c08a62a196ca28a2008ff11546c77297bb')
