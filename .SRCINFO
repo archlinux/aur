@@ -1,0 +1,20 @@
+pkgbase = lattice-net-git
+	pkgdesc = Peer-to-peer web protocol CLI and daemon
+	pkgver = 0.1.0.r67.g6bfb4d1
+	pkgrel = 1
+	url = https://github.com/fordz0/lattice
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = systemd
+	provides = lattice-net
+	conflicts = lattice-net
+	conflicts = lattice-net-bin
+	options = !lto
+	source = git+https://github.com/fordz0/lattice.git
+	sha256sums = SKIP
+
+pkgname = lattice-net-git

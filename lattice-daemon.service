@@ -1,0 +1,12 @@
+[Unit]
+Description=Lattice daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/lattice-daemon
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
