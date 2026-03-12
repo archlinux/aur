@@ -2,7 +2,7 @@
 
 pkgname=bigtube
 _pkgname=python-bigtube
-pkgver=1.0.2
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Universal Multimedia Downloader"
 arch=('any')
@@ -37,6 +37,8 @@ sha256sums=('SKIP')
 
 build() {
     cd "${_pkgname}-${pkgver}"
+
+    sed -i "s/^version = .*/version = \"${pkgver}\"/" pyproject.toml
 
     for po_file in po/*.po; do
         if [[ -f "$po_file" ]]; then
