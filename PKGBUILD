@@ -1,12 +1,12 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-datetime
 pkgver=26.03.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Date and time configuration tool for MX Linux"
 arch=('x86_64' 'i686')
-url="https://mxlinux.org"
+url="https://github.com/MX-Linux/mx-datetime"
 license=('Apache')
-depends=('chrony' 'util-linux' 'xdg-utils' 'qt6-base' 'polkit')
+depends=('chrony' 'util-linux' 'qt6-base' 'polkit')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("https://github.com/MX-Linux/mx-datetime/archive/refs/tags/26.03.1.tar.gz")
 sha256sums=('1609eba10926fb3e674c254858ecc67d7794a2640b1a663f0c77a33ddf2dc0e9')
@@ -35,7 +35,7 @@ package() {
     install -Dm644 build/*.qm "${pkgdir}/usr/share/mx-datetime/locale/" 2>/dev/null || true
 
     install -dm755 "${pkgdir}/usr/lib/mx-datetime"
-    install -Dm755 scripts/helper "${pkgdir}/usr/lib/mx-datetime/helper"
+    install -Dm755 build/helper "${pkgdir}/usr/lib/mx-datetime/helper"
 
     install -Dm644 scripts/org.mxlinux.pkexec.mx-datetime-helper.policy \
         "${pkgdir}/usr/share/polkit-1/actions/org.mxlinux.pkexec.mx-datetime-helper.policy"
