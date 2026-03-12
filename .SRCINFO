@@ -1,10 +1,11 @@
 pkgbase = nssdefinitions-bin
 	pkgdesc = Finding NWScript function definitions made with VSC integration in mind
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://gitlab.com/Taro94/nwscript-definitions
 	arch = any
 	license = GPL
+	depends = openssl-1.1
 	options = !strip
 	source = https://gitlab.com/Taro94/nwscript-definitions/uploads/70c7181e3eb10d2f4b5c63a85b69035f/nssdefinitions.tar.7z
 	md5sums = 7a0ccec446401ef95aef28e0a32c4961
