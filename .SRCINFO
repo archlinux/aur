@@ -1,0 +1,13 @@
+pkgbase = termf1
+	pkgdesc = Terminal UI: Dashboard for Formula-1
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/dk-a-dev/termf1
+	arch = x86_64
+	license = LicenseRef-Unknown
+	makedepends = go
+	depends = glibc
+	source = termf1-2.1.1.tar.gz::https://github.com/dk-a-dev/termf1/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = 672f73e7fc75292bfe2a66be4c10506a5b3e8584050d6627a6cffd5845c9f9a7
+
+pkgname = termf1
