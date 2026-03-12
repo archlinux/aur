@@ -5,10 +5,10 @@
 
 pkgname=pdfcpu
 pkgver=0.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A PDF processor written in Go.'
 arch=(x86_64)
-url='https://github.com/hhrutter/pdfcpu'
+url='https://github.com/pdfcpu/pdfcpu'
 license=('Apache-2.0')
 makedepends=(go)
 source=($url/archive/v$pkgver.tar.gz)
