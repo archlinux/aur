@@ -1,6 +1,6 @@
 --- a/src/vpux_driver_compiler/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/CMakeLists.txt
-@@ -18,7 +18,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+@@ -30,7 +30,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
  add_subdirectory(src)
  add_subdirectory(test)
  
@@ -8,33 +8,34 @@
 +#[[install(
      FILES
          "${PROJECT_SOURCE_DIR}/src/vpux_driver_compiler/CHANGES.txt"
-     DESTINATION cid
-@@ -28,4 +28,4 @@ install(
+     DESTINATION ${INSTALL_DESTINATION}
+@@ -40,4 +40,4 @@ install(
      FILES
          "${PROJECT_SOURCE_DIR}/src/vpux_driver_compiler/README.md"
-     DESTINATION cid
--    COMPONENT ${CID_COMPONENT})
-+    COMPONENT ${CID_COMPONENT})]]
+     DESTINATION ${INSTALL_DESTINATION}
+-    COMPONENT ${INSTALL_COMPONENT})
++    COMPONENT ${INSTALL_COMPONENT})]]
 --- a/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/src/vpux_compiler_l0/CMakeLists.txt
-@@ -92,12 +92,12 @@ if(WIN32)
-             COMPONENT ${CID_COMPONENT})
- else()
-     install(TARGETS ${TARGET_NAME}
--            LIBRARY DESTINATION cid/lib
-+            LIBRARY DESTINATION lib
-             COMPONENT ${CID_COMPONENT})
- endif()
+@@ -92,13 +92,13 @@ add_dependencies(${TARGET_NAME} VPUXLoader)
+ ov_add_api_validator_post_build_step(TARGET ${TARGET_NAME})
  
+ # Install library related files to component
+-install_target_with_debug_files(${TARGET_NAME} ${INSTALL_DESTINATION}/lib ${INSTALL_COMPONENT})
++install_target_with_debug_files(${TARGET_NAME} lib ${INSTALL_COMPONENT})
+ 
+ # Install library header
  install(
          FILES
              "${PROJECT_SOURCE_DIR}/src/vpux_driver_compiler/include/npu_driver_compiler.h"
--        DESTINATION cid
+-        DESTINATION ${INSTALL_DESTINATION}
 +        DESTINATION include
-         COMPONENT ${CID_COMPONENT})
+         COMPONENT ${INSTALL_COMPONENT})
+ 
+ # Install library for plugin if building for plugin and not for driver
 --- a/src/vpux_driver_compiler/test/functional/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/test/functional/CMakeLists.txt
-@@ -45,7 +45,7 @@ endif()
+@@ -41,7 +41,7 @@ endif()
  if(ENABLE_PREBUILT_LLVM_MLIR_LIBS)
      find_package(MLIR REQUIRED CONFIG)
  endif()
@@ -43,15 +44,12 @@
  target_include_directories(${FUNCTIONAL_TARGET}
      SYSTEM PRIVATE
          $<BUILD_INTERFACE:${LLVM_SOURCE_DIR}/include>
-@@ -67,7 +67,7 @@ ov_link_system_libraries(${FUNCTIONAL_TARGET}
+@@ -63,4 +63,4 @@ ov_link_system_libraries(${FUNCTIONAL_TARGET}
  ov_add_api_validator_post_build_step(TARGET vpuxCompilerL0Test)
  
- install(TARGETS vpuxCompilerL0Test
--        RUNTIME DESTINATION cid
-+        RUNTIME DESTINATION bin
-         COMPONENT ${CID_COMPONENT})
- 
- if(WIN32)
+ # Install functional test to component
+-install_target_with_debug_files(vpuxCompilerL0Test ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
++install(TARGETS ${FUNCTIONAL_TARGET} RUNTIME DESTINATION bin COMPONENT ${INSTALL_COMPONENT})
 --- a/src/vpux_driver_compiler/test/smoke/CMakeLists.txt
 +++ b/src/vpux_driver_compiler/test/smoke/CMakeLists.txt
 @@ -12,6 +12,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -61,13 +59,13 @@
 +set_target_properties(compilerTest PROPERTIES OUTPUT_NAME intel-npu-compilerTest)
  target_link_libraries(compilerTest
      PUBLIC
-         npu_driver_compiler # VCL function
-@@ -23,17 +24,19 @@ ov_add_api_validator_post_build_step(TARGET compilerTest)
+         ${LINK_COMPILER_LIBRARY} # VCL function
+@@ -23,15 +24,17 @@ ov_add_api_validator_post_build_step(TARGET compilerTest)
  
  # profilingTest to check profiling API
  add_executable(profilingTest profilingTest.c)
 +set_target_properties(profilingTest PROPERTIES OUTPUT_NAME intel-npu-profilingTest)
- target_link_libraries(profilingTest PUBLIC npu_driver_compiler)
+ target_link_libraries(profilingTest PUBLIC ${LINK_COMPILER_LIBRARY})
  ov_add_api_validator_post_build_step(TARGET profilingTest)
  
  # loaderTest to check npu_elf
@@ -76,10 +74,10 @@
  target_link_libraries(loaderTest PUBLIC npu_elf npu_llvm_utils npu_ov_utils LLVMSupport)
  ov_add_api_validator_post_build_step(TARGET loaderTest)
  
- # install tests to CID component
- install(TARGETS compilerTest profilingTest loaderTest
--        RUNTIME DESTINATION cid
-+        RUNTIME DESTINATION bin
-         COMPONENT ${CID_COMPONENT})
- 
- if(WIN32)
+ # Install smoke tests to component
+-install_target_with_debug_files(compilerTest ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
+-install_target_with_debug_files(profilingTest ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
+-install_target_with_debug_files(loaderTest ${INSTALL_DESTINATION} ${INSTALL_COMPONENT})
++install(TARGETS compilerTest RUNTIME DESTINATION bin COMPONENT ${INSTALL_COMPONENT})
++install(TARGETS profilingTest RUNTIME DESTINATION bin COMPONENT ${INSTALL_COMPONENT})
++install(TARGETS loaderTest RUNTIME DESTINATION bin COMPONENT ${INSTALL_COMPONENT})
