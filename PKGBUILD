@@ -20,7 +20,7 @@ prepare() {
 build() {
   cd "$pkgname"
   export RUSTUP_TOOLCHAIN=stable
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release
 }
 
 check() {
