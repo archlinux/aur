@@ -9,12 +9,11 @@ license=('MIT')
 depends=('kscreen' 'libpipewire')
 makedepends=('dotnet-sdk>=9')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5dd6024c7f780cbf8e24b0e3800ae68a9ae13de8a04af3a24806b624eaba6db6')
+sha256sums=('670ecd54ac624c2dc29cb82dda55537bd65a44a60e84ba1b341294b4d91a0460')
 
 build() {
     cd "TupiScreen-$pkgver"
     dotnet publish -c Release -r linux-x64 \
-        --no-self-contained false \
         -o "$srcdir/publish"
 }
 

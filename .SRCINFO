@@ -9,6 +9,6 @@ pkgbase = tupiscreen
 	depends = kscreen
 	depends = libpipewire
 	source = tupiscreen-1.0.0.tar.gz::https://github.com/evozniak/TupiScreen/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 5dd6024c7f780cbf8e24b0e3800ae68a9ae13de8a04af3a24806b624eaba6db6
+	sha256sums = 670ecd54ac624c2dc29cb82dda55537bd65a44a60e84ba1b341294b4d91a0460
 
 pkgname = tupiscreen
