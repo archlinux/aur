@@ -1,0 +1,5 @@
+[replication-manager-bin]
+source = "github"
+github = "signal18/replication-manager"
+prefix = "v"
+use_latest_release = true
