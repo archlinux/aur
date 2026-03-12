@@ -1,5 +1,5 @@
 pkgname=namoz-vaqtlari
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Namoz vaqtlari CLI vositasi - Islom.uz ma'lumotlari va sahifalangan hududlar ro'yxati"
 arch=('x86_64')
