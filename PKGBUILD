@@ -8,17 +8,18 @@
 # end of the cmake build command.
 
 pkgname=intel-npu-compiler
-pkgver=2025.48rc1
+pkgver=2026.08rc2
 pkgrel=1
-_npu_compiler_tag=npu_ud_2025_48_rc1
-_openvino_commit=5fb69ea158126752aa9d8aa5ee4d6f65a5b409b5
+_npu_compiler_tag=npu_ud_2026_08_rc2
+_openvino_commit=4922c4955f9d5c457cf9d4ebbbc8bf6502167ada
 pkgdesc='Intel Neural Processing Unit (NPU) compiler'
 arch=('x86_64')
 url='https://github.com/openvinotoolkit/npu_compiler/'
 license=('Apache-2.0')
 depends=(
-    'gcc-libs'
     'glibc'
+    'libgcc'
+    'libstdc++'
     'onetbb'
     'pugixml'
     'zlib'
@@ -33,7 +34,7 @@ source=("git+https://github.com/openvinotoolkit/npu_compiler.git#tag=${_npu_comp
         "git+https://github.com/openvinotoolkit/openvino.git#commit=${_openvino_commit}"
         # npu-compiler git submodules
         'git+https://github.com/openvinotoolkit/npu_plugin_elf.git'
-        'git+https://github.com/intel/npu-plugin-llvm.git'
+        'git+https://github.com/intel-staging/npu-compiler-llvm.git'
         'git+https://github.com/intel/npu-nn-cost-model.git'
         'git+https://github.com/google/gtest-parallel.git'
         # openvino git submodules
@@ -70,8 +71,8 @@ source=("git+https://github.com/openvinotoolkit/npu_compiler.git#tag=${_npu_comp
         '040-intel-npu-compiler-npu-plugin-elf-fix-install.patch'
         '010-openvino-disable-werror.patch'
         '020-openvino-gtest-gcc15-fix.patch')
-sha256sums=('1ea864024e9e32e13ddf4832a47a9fdb7eb04d954cb41293a38e005ff6c514c0'
-            '477ee9e61adc438dd34f8b786095763f414604ef9360b4bf3ea4eff7dd9f43cb'
+sha256sums=('05f91295dff1a359f39e34969f6b0f912d12af43357f619dda6bcecbf0bfb7b5'
+            'e1bd4449e1990932455b328acd8e66753288bb3c9320bedef3458c296f48d415'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -102,10 +103,10 @@ sha256sums=('1ea864024e9e32e13ddf4832a47a9fdb7eb04d954cb41293a38e005ff6c514c0'
             'SKIP'
             'SKIP'
             'SKIP'
-            'ef3e2fec8ac0e63756350e6b33b1bf64909b6221b9a9f29248e2933143fda61c'
+            '6aea796acf3bbd3091dfeecbebfdbed1bd6023d343f49834c1d83fbb4a1d3eb8'
             'a26a2f4646e7725c50344346abd31a18d0799db094d29ff095d37ede3224ca53'
-            'c5ded4dfcb2eaba91a49ba7a629155025f85ea781a40033412baa51d76189041'
-            '10a20af32917aef812be816474cfe51c5ef65217a6eeadfda2c2c4fcfc4f2f60'
+            '3fedc92a36f03eaa87f9603bb400efccc493f6aec4f8464d00d136b197f24394'
+            'e4734603808ad0402819eb36578f1eabb80524f4f82aed45f31736c5d184b2ef'
             'ba2d8b40b8921acc70e0212138eb2b5db2b7311058b1092236356cf0dfe725f9'
             'e7ec20d4fb173ae29b5b1f682e7b85efa3f5359ee355b959a7f51148c84ecc7f')
 
@@ -121,7 +122,7 @@ prepare() {
     git -C npu_compiler submodule init
     git -C npu_compiler config --local submodule.thirdparty/flatbuffers.url "${srcdir}/flatbuffers"
     git -C npu_compiler config --local submodule.thirdparty/elf.url "${srcdir}/npu_plugin_elf"
-    git -C npu_compiler config --local submodule.thirdparty/llvm-project.url "${srcdir}/npu-plugin-llvm"
+    git -C npu_compiler config --local submodule.thirdparty/llvm-project.url "${srcdir}/npu-compiler-llvm"
     git -C npu_compiler config --local submodule.thirdparty/vpucostmodel.url "${srcdir}/npu-nn-cost-model"
     git -C npu_compiler config --local submodule.thirdparty/gtest-parallel.url "${srcdir}/gtest-parallel"
     git -C npu_compiler -c protocol.file.allow='always' submodule update
@@ -187,7 +188,7 @@ build() {
     export OPENVINO_HOME="${srcdir}/openvino"
     
     cmake -B build -S openvino \
-        --preset npuCidLinux \
+        --preset cid-linux \
         -G 'Ninja' \
         -DCMAKE_C_COMPILER_LAUNCHER:STRING='' \
         -DCMAKE_CXX_COMPILER_LAUNCHER:STRING='' \

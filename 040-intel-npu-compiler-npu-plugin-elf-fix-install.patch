@@ -9,7 +9,7 @@
          DESTINATION cid/vpux_elf/loader/include/
          COMPONENT ${CID_COMPONENT})
  
-@@ -217,4 +217,4 @@ install(TARGETS npu_elf
+@@ -221,4 +221,4 @@ install(TARGETS npu_elf
          CONFIGURATIONS RelWithDebInfo
          LIBRARY DESTINATION cid/vpux_elf/lib/RelWithDebInfo COMPONENT ${CID_COMPONENT}
          ARCHIVE DESTINATION cid/vpux_elf/lib/RelWithDebInfo COMPONENT ${CID_COMPONENT}
