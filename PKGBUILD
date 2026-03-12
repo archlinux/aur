@@ -1,7 +1,7 @@
 # Maintainer: r3g1s <21206554+reg1z (at) user (dot) noreply (dot) github (dot) com>
 pkgname=omarchy-kali-vm
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone Kali Linux VM launcher with optional Omarchy integration"
 arch=('x86_64')
 url="https://github.com/reg1z/omarchy-kali-vm"
@@ -27,13 +27,9 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -Dm755 "bin/omarchy-kali-vm" "${pkgdir}/usr/bin/omarchy-kali-vm"
-  install -Dm755 "bin/omarchy-kali-vm-desktop-launch" "${pkgdir}/usr/bin/omarchy-kali-vm-desktop-launch"
   install -Dm755 "bin/omarchy-kali-vm-integrate-os" "${pkgdir}/usr/bin/omarchy-kali-vm-integrate-os"
   install -Dm755 "bin/omarchy-kali-vm-unintegrate-os" "${pkgdir}/usr/bin/omarchy-kali-vm-unintegrate-os"
 
-  install -Dm644 "share/applications/omarchy-kali-vm.desktop" "${pkgdir}/usr/share/applications/omarchy-kali-vm.desktop"
-  install -Dm644 "share/applications/omarchy-kali-vm-install.desktop" "${pkgdir}/usr/share/applications/omarchy-kali-vm-install.desktop"
-  install -Dm644 "share/applications/omarchy-kali-vm-remove.desktop" "${pkgdir}/usr/share/applications/omarchy-kali-vm-remove.desktop"
   install -Dm644 "assets/icons/kali.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/omarchy-kali-vm.png"
 
   install -Dm644 "share/hypr/omarchy-kali-vm.conf" "${pkgdir}/usr/share/omarchy-kali-vm/hypr/omarchy-kali-vm.conf"
