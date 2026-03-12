@@ -134,6 +134,15 @@ sha256sums=(
   ab4be9fc1db0291118b492f24d75bb0d88fa7e3822d9cfdf57e3c6bf126eacb2
 )
 
+build() {
+  cd "$srcdir/../$_pkg"
+
+  git fetch --no-tags --unshallow
+
+  # Apply patches
+  git apply "$srcdir/0001-Kbuild-for-DKMS.patch"
+}
+
 package() {
   local dest="$pkgdir/usr/src/kernelsu-${pkgver}"
   mkdir -p "$dest"
