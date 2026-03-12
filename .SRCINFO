@@ -22,7 +22,7 @@ pkgname = nmstate
 	depends = libnmstate=2.2.59-1
 	depends = networkmanager
 	optdepends = python-libnmstate: Python bindings
-	optdepends = networkmanager-ovs: Open vSwitch support
+	optdepends = openvswitch: Open vSwitch support
 
 pkgname = libnmstate
 	pkgdesc = Declarative network manager API - C library

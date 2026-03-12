@@ -76,7 +76,7 @@ package_nmstate() {
     )
     optdepends=(
         'python-libnmstate: Python bindings'
-        'networkmanager-ovs: Open vSwitch support'
+        'openvswitch: Open vSwitch support'
     )
 
     cd "$pkgbase-$pkgver"
