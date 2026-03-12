@@ -1,7 +1,7 @@
 pkgbase = pyrefly-bin
 	pkgdesc = A faster Python type checker written in Rust
 	pkgver = 0.56.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pyrefly.org/
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,6 @@ pkgbase = pyrefly-bin
 	source_i686 = pyrefly-0.56.0-i686.tar.gz::https://github.com/facebook/pyrefly/releases/download/0.56.0/pyrefly-linux-i686.tar.gz
 	sha256sums_i686 = b2461436d52a86bc8b3e23fb6009baee826d8e67229fc1db49498af178dfdceb
 	source_x86_64 = pyrefly-0.56.0-x86_64.tar.gz::https://github.com/facebook/pyrefly/releases/download/0.56.0/pyrefly-linux-x86_64.tar.gz
-	sha256sums_x86_64 = b2461436d52a86bc8b3e23fb6009baee826d8e67229fc1db49498af178dfdceb
+	sha256sums_x86_64 = e55a12436961c906d3be677f8b631f9fe2600bfd0647ea419a513016adfbe73e
 
 pkgname = pyrefly-bin
