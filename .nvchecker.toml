@@ -1,0 +1,3 @@
+[perl-app-find2perl]
+source = "cpan"
+cpan = "App-find2perl"
