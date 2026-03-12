@@ -2,8 +2,8 @@
 
 pkgname=masterpdfeditor-qt_include
 _pkgname=${pkgname%-qt_include}
-pkgver=5.9.96
-pkgrel=2
+pkgver=5.9.97
+pkgrel=1
 pkgdesc='A complete solution for viewing, creating and editing PDF files. Built upstream with qt libraries included!'
 url='https://code-industry.net/free-pdf-editor/'
 _checksum="$(curl https://code-industry.net/checksum-information/ | grep master-pdf-editor-${pkgver}-qt5.x86_64-qt_include.tar.gz)"
