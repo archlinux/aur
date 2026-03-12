@@ -1,6 +1,6 @@
 pkgbase = lattice-net-git
 	pkgdesc = Peer-to-peer web protocol CLI and daemon
-	pkgver = 0.1.0.r67.g6bfb4d1
+	pkgver = 0.1.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/fordz0/lattice
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = lattice-net-git
 	conflicts = lattice-net
 	conflicts = lattice-net-bin
 	options = !lto
+	options = !debug
 	source = git+https://github.com/fordz0/lattice.git
 	sha256sums = SKIP
 
