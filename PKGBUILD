@@ -9,7 +9,7 @@ _pkgbase=wireshark
 pkgbase=wireshark-oqs
 pkgname=(wireshark-oqs-cli wireshark-oqs-qt)
 pkgver=4.6.4
-pkgrel=1
+pkgrel=2
 _pkgver_oqs=0.11.0
 _commit_oqs_demos=29d4dccbd547a62e8ba77d3fef1af5d6f8625d60
 pkgdesc='Network traffic and protocol analyzer/sniffer'
@@ -196,9 +196,6 @@ package_wireshark-oqs-qt() {
     libpcap
     libpcap.so
     libstdc++
-    libwireshark.so
-    libwiretap.so
-    libwsutil.so
     minizip
     qt6-5compat
     qt6-base
@@ -210,6 +207,7 @@ package_wireshark-oqs-qt() {
     xdg-utils
   )
   conflicts=(wireshark-qt)
+  provides=(wireshark-qt)
 
   cd ${_pkgbase}
   install -d "${srcdir}/staging"
