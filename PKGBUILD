@@ -1,4 +1,3 @@
-# Maintainer: Muhammadamin <sizning@emailingiz.com>
 pkgname=namoz-vaqtlari
 pkgver=1.0.0
 pkgrel=1
@@ -8,7 +7,7 @@ url="local-build"
 license=('MIT')
 depends=('dotnet-runtime-8.0')
 makedepends=('dotnet-sdk-8.0')
-# Mahalliy fayllardan foydalanish uchun source qismini bo'sh qoldiramiz yoki nuqta qo'yamiz
+
 source=("${pkgname}::git+https://github.com/OneWay2Go/PrayerTimesFromMuslim.Uz.git")
 sha256sums=('SKIP')
 
