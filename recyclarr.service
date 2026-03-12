@@ -13,7 +13,7 @@ User=recyclarr
 Group=recyclarr
 SyslogIdentifier=recyclarr
 Environment=RECYCLARR_CONFIG_DIR=/var/lib/recyclarr
-ExecStart=/usr/lib/recyclarr/recyclarr sync --config /etc/recyclarr/recyclarr.yml
+ExecStart=/usr/bin/recyclarr sync --config /etc/recyclarr/recyclarr.yml
 Restart=on-failure
 RestartSec=5
 StartLimitIntervalSec=1h
