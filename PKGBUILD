@@ -1,7 +1,7 @@
 # Maintainer: Toby Heath <heath-toby on GitHub>
 pkgname=wl-screen-curtain
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Screen curtain for Wayland — blanks all displays with a black overlay for accessibility'
 arch=('any')
 url='https://github.com/heath-toby/wl-screen-curtain'
@@ -12,7 +12,7 @@ optdepends=(
     'speech-dispatcher: speech announcements via spd-say fallback'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cd71ab4b379f68248cb44997da283f6b0d93deb68e147a8d96af8bd3e97edf6f')
+sha256sums=('ebb79f5136f5107267db0bde006233cc9a3d0bcf4b3edc436479a4f34aba4d19')
 
 package() {
     cd "$pkgname-$pkgver"

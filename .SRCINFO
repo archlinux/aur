@@ -1,7 +1,7 @@
 pkgbase = wl-screen-curtain
 	pkgdesc = Screen curtain for Wayland — blanks all displays with a black overlay for accessibility
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/heath-toby/wl-screen-curtain
 	arch = any
 	license = MIT
@@ -11,6 +11,6 @@ pkgbase = wl-screen-curtain
 	optdepends = orca: speech announcements via Orca screen reader
 	optdepends = speech-dispatcher: speech announcements via spd-say fallback
 	source = wl-screen-curtain-1.0.0.tar.gz::https://github.com/heath-toby/wl-screen-curtain/archive/v1.0.0.tar.gz
-	sha256sums = cd71ab4b379f68248cb44997da283f6b0d93deb68e147a8d96af8bd3e97edf6f
+	sha256sums = ebb79f5136f5107267db0bde006233cc9a3d0bcf4b3edc436479a4f34aba4d19
 
 pkgname = wl-screen-curtain
