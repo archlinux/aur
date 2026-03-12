@@ -1,13 +1,13 @@
 pkgbase = lyse
 	pkgdesc = Realtime TUI lyrics for your favorite songs, directly in the terminal.
-	pkgver = 1.3.2
+	pkgver = 2.0.0
 	pkgrel = 1
-	url = https://github.com/snoowfall/lyricspot-pcse
+	url = https://github.com/snoowfall/lyse
 	arch = any
-	license = MIT
+	license = AGPLv3
 	depends = python
 	depends = playerctl
 	source = https://raw.githubusercontent.com/snoowfall/lyse/main/lyse.py
-	sha256sums = 5ce33e48c70efcd92ba03df253f3ec9b7b9e1002833d0ca809b4c2306ba700ef
+	sha256sums = df553c82387a0d49476904e78703402d807833ce63b0b4c0c6e068ba9277fe50
 
 pkgname = lyse
