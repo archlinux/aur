@@ -1,8 +1,8 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=sql-tap-bin
-pkgver=0.2.7
-pkgrel=2
+pkgver=0.2.8
+pkgrel=1
 pkgdesc="Watch SQL traffic in real-time with a TUI"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mickamy/sql-tap"
@@ -16,8 +16,8 @@ source_x86_64=(
 source_aarch64=(
 	${pkgname%-bin}-arm64-$pkgver.tar.gz::$url/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}_linux_arm64.tar.gz
 )
-sha256sums_x86_64=('6d507f83800aaf70c0ef3dd3518734772111c60ae7defe2afb5bfb994b425839')
-sha256sums_aarch64=('b4a1f538438983bc8e8ec52c8b3f1329b28996e372821dcae1cc9999ce552082')
+sha256sums_x86_64=('93dab522219fc802c6eab2aef71c251e696e945933feb1ac0a822a7069008f52')
+sha256sums_aarch64=('4a50ff610d1d67e05e423ef0434226d580ea009cd01b7c55937c3f7724f79241')
 
 package() {
   install -Dm755 "${pkgname%-bin}" "${pkgdir}/usr/bin/${pkgname%-bin}"
