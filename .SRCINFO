@@ -1,0 +1,17 @@
+pkgbase = lektra-bin
+	pkgdesc = High-performance PDF reader that prioritizes screen space and control
+	pkgver = 0.6.7
+	pkgrel = 1
+	url = https://codeberg.org/lektra/lektra
+	arch = x86_64
+	license = AGPL-3.0
+	depends = qt6-base
+	depends = djvulibre
+	depends = libsynctex
+	provides = lektra
+	conflicts = lektra
+	conflicts = lektra-git
+	source = lektra-0.6.7-x86_64.tar.gz::https://codeberg.org/lektra/lektra/releases/download/v0.6.7/lektra-0.6.7-x86_64.tar.gz
+	sha256sums = SKIP
+
+pkgname = lektra-bin
