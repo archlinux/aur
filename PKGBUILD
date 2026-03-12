@@ -5,12 +5,17 @@ pkgname=baballonia
 pkgver=v1.1.1.0rc6
 _trainerver=1.3.8-linux-paths
 _calibrationver=v1.0.7rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform, hardware-agnostic VR eye and face tracking application."
 arch=('x86_64')
 url="https://github.com/Project-Babble/Baballonia"
 _trainerurl="https://github.com/Project-Babble/BabbleTrainer"
 license=('LicenseRef-Babble Software Distribution License 1.0')
+
+pkgver() {
+    cd "$pkgname"
+    git describe --tags --abbrev=0 main
+}
 
 makedepends=(
     dotnet-sdk-10.0
@@ -69,7 +74,7 @@ source=(
 noextract=(
     "BabbleCalibration_${_calibrationver}.zip"
 )
-sha256sums=('8b91ae22735f32999480db5f49d21cfdfad60210a0b075aaec9ed77f9030d5be'
+sha256sums=('SKIP'
             '5b3cd1a2a4be0021ee74ca3bb836dd8bc2e9fe23b2f16cf746da564d36362f2d'
             '5ba6642d7500a23ec0783143a0072da0cbdb744795c9abbaa0f8238ecda40aff'
             'f14601e1bca1b90fa4a83198fe7982cc4503efd83d2f5094fdfafc9abb66d760'
