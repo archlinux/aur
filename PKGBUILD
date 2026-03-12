@@ -1,7 +1,7 @@
 # Maintainer: tr0llslay3r <https://github.com/tr0llslay3r>
 pkgname=snazzgit-git
 pkgver=0.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A snazzy cross-platform Git GUI client (built from source)"
 arch=('x86_64')
 url="https://github.com/tr0llslay3r/SnazzGit"
@@ -21,7 +21,9 @@ pkgver() {
 build() {
   cd SnazzGit
   npm ci
-  npx tauri build --bundles none
+  npm run build
+  cd src-tauri
+  cargo build --release
 }
 
 package() {
