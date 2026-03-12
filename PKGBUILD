@@ -1,7 +1,7 @@
 # Maintainer: tr0llslay3r <https://github.com/tr0llslay3r>
 pkgname=snazzgit-git
-pkgver=0.2.7
-pkgrel=3
+pkgver=0.2.8
+pkgrel=1
 pkgdesc="A snazzy cross-platform Git GUI client (built from source)"
 arch=('x86_64')
 url="https://github.com/tr0llslay3r/SnazzGit"
@@ -23,6 +23,12 @@ build() {
   npm ci
   npm run build
   cd src-tauri
+  # Reset C build flags from makepkg.conf that break vendored cmake builds
+  # (e.g. -Werror=format-security, -D_FORTIFY_SOURCE=3)
+  # Rust compilation is unaffected — it uses RUSTFLAGS, not CFLAGS
+  export CFLAGS="-march=native -O2 -pipe"
+  export CXXFLAGS="$CFLAGS"
+  unset LDFLAGS
   cargo build --release
 }
 
