@@ -1,6 +1,6 @@
 # Maintainer: PaloMiku <palomiku@outlook.com>
 pkgname=moekey-bin
-pkgver=null
+pkgver=0.9.0+59
 pkgrel=1
 pkgdesc="MoeKey is a cross-platform misskey client made by Flutter."
 arch=('x86_64')
