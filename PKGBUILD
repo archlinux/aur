@@ -1,0 +1,46 @@
+# Maintainer: r3g1s <21206554+reg1z (at) user (dot) noreply (dot) github (dot) com>
+pkgname=omarchy-kali-vm
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Standalone Kali Linux VM launcher with optional Omarchy integration"
+arch=('x86_64')
+url="https://github.com/reg1z/omarchy-kali-vm"
+license=('MIT')
+depends=(
+  'bash'
+  'coreutils'
+  'curl'
+  'docker'
+  'e2fsprogs'
+  'gnupg'
+  'gum'
+  'libnotify'
+  'sudo'
+  'virt-viewer'
+)
+makedepends=('git')
+install="${pkgname}.install"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('dab724e990ceb18ae41186a0671a44cb0a5d58ab951440ae27fa4e12e7ca4198')
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  install -Dm755 "bin/omarchy-kali-vm" "${pkgdir}/usr/bin/omarchy-kali-vm"
+  install -Dm755 "bin/omarchy-kali-vm-desktop-launch" "${pkgdir}/usr/bin/omarchy-kali-vm-desktop-launch"
+  install -Dm755 "bin/omarchy-kali-vm-integrate-os" "${pkgdir}/usr/bin/omarchy-kali-vm-integrate-os"
+  install -Dm755 "bin/omarchy-kali-vm-unintegrate-os" "${pkgdir}/usr/bin/omarchy-kali-vm-unintegrate-os"
+
+  install -Dm644 "share/applications/omarchy-kali-vm.desktop" "${pkgdir}/usr/share/applications/omarchy-kali-vm.desktop"
+  install -Dm644 "share/applications/omarchy-kali-vm-install.desktop" "${pkgdir}/usr/share/applications/omarchy-kali-vm-install.desktop"
+  install -Dm644 "share/applications/omarchy-kali-vm-remove.desktop" "${pkgdir}/usr/share/applications/omarchy-kali-vm-remove.desktop"
+  install -Dm644 "assets/icons/kali.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/omarchy-kali-vm.png"
+
+  install -Dm644 "share/hypr/omarchy-kali-vm.conf" "${pkgdir}/usr/share/omarchy-kali-vm/hypr/omarchy-kali-vm.conf"
+  install -Dm644 "share/omarchy-menu.sh" "${pkgdir}/usr/share/omarchy-kali-vm/omarchy-menu.sh"
+
+  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "docs/cleanup.md" "${pkgdir}/usr/share/doc/${pkgname}/cleanup.md"
+  install -Dm644 "docs/integration.md" "${pkgdir}/usr/share/doc/${pkgname}/integration.md"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

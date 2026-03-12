@@ -1,0 +1,31 @@
+post_install() {
+  cat <<'EOF'
+omarchy-kali-vm installs package-owned launchers, icons, documentation, and optional Omarchy integration helpers.
+
+Optional Omarchy integration:
+  - omarchy-kali-vm-integrate-os
+    Adds Hyprland window rules for a smoother remote-viewer experience
+    and installs fuller Omarchy menu integration for install/remove.
+  - omarchy-kali-vm-unintegrate-os
+    Removes only the user-level integration added by this package.
+
+Cleanup is intentionally split:
+  - Remove the package: pacman -R omarchy-kali-vm
+  - Remove Kali VM data: omarchy-kali-vm remove
+  - Remove Omarchy integration: omarchy-kali-vm-unintegrate-os
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  cat <<'EOF'
+omarchy-kali-vm removes package-owned files only.
+
+Before this package is removed, run these if you want full cleanup:
+  - Remove Kali VM data: omarchy-kali-vm remove
+  - Remove Omarchy integration: omarchy-kali-vm-unintegrate-os
+EOF
+}
