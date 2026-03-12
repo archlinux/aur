@@ -4,7 +4,7 @@
 pkgname=vscodium
 # Make sure the pkgver matches the git tags in vscodium and vscode git repo's!
 pkgver=1.110.11631
-pkgrel=2
+pkgrel=3
 pkgdesc="Free/Libre Open Source Software Binaries of VSCode (git build from latest release)."
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/VSCodium/vscodium.git'
@@ -47,9 +47,9 @@ source=(
     "https://github.com/VSCodium/vscodium/releases/download/${pkgver}/VSCodium-${pkgver}-src.tar.gz"
 )
 sha256sums=(
-    '7df6401e98536224f05014fc5a8134ee09dd5a390b1158d221337a9a9ddf93d0'
-    '07f0314b1869e3666f1ba52cd02dd40c841beef11a1ab9ae3246cafd01ef6caa'
-    '121f2db8a65cfc74c10d3e7c3135b62b66297cf27f8f7f00c3ad29d412e968b7'
+    '7c6864be64a7cb698340c45b4cfc0091a1d9bb78b0e73d7e3a25d8a0b438beec'
+    '74509d8ccb685a6d55e8bba8f4231963b766e1e3e38443bc1e72238519dcdeac'
+    '3ad1e6bbd7cdc8833eff9afaa9f6ae39350d738678cafbe3437106f0cfe3d985'
     '6f9b0faf38579ee0c7f331c0bc78e0a6a7cd8e0d17ce5a2e6ecc709475daf96e'
 )
 provides=(
@@ -120,6 +120,7 @@ build() {
     # Export necessary environment variables
     export SHOULD_BUILD="yes"
     export SHOULD_BUILD_REH="no"
+    export SHOULD_BUILD_REH_WEB="no"
     export CI_BUILD="no"
     export OS_NAME="linux"
     export VSCODE_ARCH="${_vscode_arch}"
@@ -127,11 +128,6 @@ build() {
     export RELEASE_VERSION="${pkgver}"
     # the app will be updated with pacman
     export DISABLE_UPDATE="yes"
-
-    # Disabling this patch, since it is for win32 and does not apply here
-    rm -rf patches/cleanup-archive.patch
-    # Same for ppc64le-support.patch since that is not a supported architecture
-    rm -rf patches/ppc64le-support.patch
 
     . get_repo.sh
     . build.sh
