@@ -11,7 +11,7 @@ pkgbase = clang-android
 	replaces = clang-android
 	options = !strip
 	options = !debug
-	source = clang::shallowclone+https://android.googlesource.com/platform/prebuilts/clang/host
+	source = clang::shallowclone+https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86?branch=main-kernel
 	sha256sums = SKIP
 
 pkgname = clang-android-bin
