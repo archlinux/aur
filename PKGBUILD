@@ -3,7 +3,7 @@
 
 _pkgname="pyinfra"
 pkgname="$_pkgname"
-pkgver=3.6.1
+pkgver=3.7
 pkgrel=1
 pkgdesc="Automate infrastructure super fast at massive scale"
 url="https://github.com/pyinfra-dev/pyinfra"
@@ -19,6 +19,7 @@ depends=(
   'python-jinja'
   'python-packaging'
   'python-paramiko'
+  'python-pydantic'
   'python-typeguard'
   'python-typing_extensions'
 )
@@ -36,7 +37,7 @@ source=(
   '1525_remove_dsskey.patch'
 )
 sha256sums=(
-  '359ed8170ae1110bb3f8baf77cd6d765847c87d56118d6449d17e786eb8b16f5'
+  '0cddc5ce4e8ff371883c03c15659327f825d3e37f569a81ec0667610b3147ac5'
   '6e83a040153db0762e4ae632fa06b82e1af21addf6c1deed98f8f8a8c0ca49e3'
 )
 
