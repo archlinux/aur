@@ -1,8 +1,8 @@
 # Maintainer: Nikolay Bryskin <nikicat@users.noreply.github.com>
 
 pkgname=secrets-dispatcher
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Per-operation approval and audit logging for secret access and git commit signing on Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nikicat/secrets-dispatcher"
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go' 'deno' 'git' 'make')
 install=secrets-dispatcher.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6bfb20461b2b922a2931449c691b79807d3f170c3ca0e5ab9ebc4264755c02bf')
+sha256sums=('fe6ea2fa18e1ac822cde80d3aa44e3c3d0f34821dd52d08ebba4abadffe7936d')
 
 build() {
   cd "${pkgname}-${pkgver}"
