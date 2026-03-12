@@ -1,11 +1,12 @@
 pkgbase = fff-bun
 	pkgdesc = High-performance fuzzy file finder for Bun, powered by a Rust native library
 	pkgver = 0.1.0_nightly.044314f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dmtrKovalenko/fff.nvim
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = bash
 	depends = bun
 	depends = glibc
 	noextract = fff-bun-linux-x64-gnu-0.1.0-nightly.044314f.tgz

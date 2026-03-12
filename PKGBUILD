@@ -3,12 +3,12 @@ pkgname=fff-bun
 _npmname=@ff-labs/fff-bun
 pkgver=0.1.0_nightly.044314f
 _npmver=${pkgver//_/-}
-pkgrel=2
+pkgrel=3
 pkgdesc="High-performance fuzzy file finder for Bun, powered by a Rust native library"
 arch=('x86_64' 'aarch64')
 url="https://github.com/dmtrKovalenko/fff.nvim"
 license=('MIT')
-depends=('bun' 'glibc')
+depends=('bash' 'bun' 'glibc')
 options=('!debug')
 source=("${pkgname}-${_npmver}.tgz::https://registry.npmjs.org/${_npmname}/-/fff-bun-${_npmver}.tgz"
         "LICENSE::https://raw.githubusercontent.com/dmtrKovalenko/fff.nvim/main/LICENSE")
@@ -39,17 +39,28 @@ prepare() {
 package() {
     cd "${srcdir}/package"
 
-    # Install main package files
+    _install_wrapper() {
+        local name=$1
+        local target=$2
+
+        cat > "${pkgdir}/usr/bin/${name}" <<EOF
+#!/bin/sh
+script_dir=\$(CDPATH= cd -- "\$(dirname -- "\$0")" && pwd)
+exec bun "\${script_dir}/../lib/${pkgname}/${target}" "\$@"
+EOF
+        chmod 755 "${pkgdir}/usr/bin/${name}"
+    }
+
     install -dm755 "${pkgdir}/usr/lib/${pkgname}"
     cp -r src scripts examples package.json README.md "${pkgdir}/usr/lib/${pkgname}/"
 
-    # Install native binary where findBinary() expects it
     install -Dm755 "${srcdir}/platform/libfff_c.so" "${pkgdir}/usr/lib/${pkgname}/bin/libfff_c.so"
 
-    # Wrapper script (named fff-bun to avoid conflict with AUR fff file manager)
-    printf '#!/bin/sh\nexec bun /usr/lib/%s/scripts/cli.ts "$@"\n' "${pkgname}" |
-        install -Dm755 /dev/stdin "${pkgdir}/usr/bin/${pkgname}"
+    install -dm755 "${pkgdir}/usr/bin"
+    _install_wrapper "${pkgname}" "scripts/cli.ts"
+    _install_wrapper "fff-demo" "examples/search.ts"
+    _install_wrapper "fff-search" "examples/search.ts"
+    _install_wrapper "fff-grep" "examples/grep.ts"
 
-    # License
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
