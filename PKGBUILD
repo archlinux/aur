@@ -1,6 +1,6 @@
 # Maintainer: mellen <mellen@heatsync.org>
 pkgname=cmdchamp
-pkgver=1.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='CLI command trainer with spaced repetition, boss fights, and sandbox execution'
 arch=('any')
@@ -8,7 +8,7 @@ url='https://github.com/mellen9999/cmdchamp'
 license=('MIT')
 depends=('bash' 'bubblewrap')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c8a883546793f637bbc23327ca4b424d5ccfcc6e7f4fb2bbed22c9acd08fb41b')
+sha256sums=('626a8ca3cea57f88f1e6aeec1c877cf3a8dd2ed8787c9f9eb26845145cec5058')
 
 package() {
   cd "$pkgname-$pkgver"
