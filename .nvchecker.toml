@@ -1,0 +1,5 @@
+[fpm]
+source = "github"
+github = "jordansissel/fpm"
+prefix = "v"
+use_latest_release = true
