@@ -102,7 +102,7 @@ EOF
 }
 
 package_opencl-nvidia-bsb() {
-    pkgdesc="OpenCL implemention for NVIDIA"
+    pkgdesc="OpenCL implemention for NVIDIA for use with BSB related patch for nvidia-open-dkms"
     depends=('zlib')
     optdepends=('opencl-headers: headers necessary for OpenCL development')
     provides=('opencl-driver')
@@ -119,7 +119,7 @@ package_opencl-nvidia-bsb() {
 }
 
 package_nvidia-utils-bsb() {
-    pkgdesc="NVIDIA drivers utilities"
+    pkgdesc="NVIDIA drivers utilities foru se with BSB related patch for nvidia-open-dkms"
     depends=('libglvnd' 'egl-wayland' 'egl-wayland2' 'egl-gbm' 'egl-x11')
     optdepends=('nvidia-settings: configuration tool'
                 'xorg-server: Xorg support'
@@ -313,7 +313,7 @@ END
 }
 
 package_nvidia-open-dkms-bsb() {
-  pkgdesc="NVIDIA open kernel modules - module sources"
+  pkgdesc="NVIDIA open kernel modules - module sources patched with DSC patch to make the Bigscreen Beyond Headset work"
   depends+=('dkms' "nvidia-utils-bsb=$pkgver")
   license=('MIT AND GPL-2.0-only')
   conflicts=('nvidia-open' 'NVIDIA-MODULE')
