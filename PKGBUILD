@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=claude-squad
-pkgver=1.0.16
+pkgver=1.0.17
 pkgrel=1
 pkgdesc='Manage multiple AI terminal agents like Claude Code, Aider, Codex, OpenCode and Amp'
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ makedepends=('go')
 provides=('claude-squad')
 conflicts=('claude-squad-bin')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f663667a65dd4e456e49caa67f6998feab4ad56c804ecea024af90afd899084c')
+sha256sums=('e93da50a14e671b0177403a253c707fe96137f282a1bd01a470bb7b01ce7d5c8')
 
 build() {
     cd "${pkgname}-${pkgver}"
