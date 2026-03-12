@@ -1,6 +1,6 @@
 # Maintainer: noctalia-dev <team@noctalia.dev>
 pkgname=noctalia-qs
-pkgver=0.0.7
+pkgver=0.0.8
 pkgrel=1
 pkgdesc='Custom fork of Quickshell powering Noctalia Shell'
 arch=(x86_64 aarch64)
@@ -44,7 +44,7 @@ conflicts=(
 options=(!debug)
 _archive="$pkgname-$pkgver"
 source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('17da91b89ce62f48f0a7d6734b28d5d400357a580a3fa746450402c39d5a60a4')
+sha256sums=('5b5cd150ec5c194828d29cd72ea0004cb070fb93e79ff5edcef9567b145fa3ee')
 
 build() {
     cd "$_archive"
