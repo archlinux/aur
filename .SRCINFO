@@ -1,6 +1,6 @@
 pkgbase = rclone-manager-git
 	pkgdesc = User-friendly GUI for Rclone
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/Zarestia-Dev/rclone-manager
 	arch = x86_64
@@ -30,7 +30,8 @@ pkgbase = rclone-manager-git
 	depends = libsoup
 	depends = pango
 	depends = webkit2gtk-4.1
-	optdepends = rclone
+	optdepends = rclone: for cloud storage operations,
+	optdepends = fuse3: for mounting remote filesystems
 	provides = rclone-manager
 	conflicts = rclone-manager
 	options = !strip
