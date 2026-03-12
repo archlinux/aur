@@ -5,7 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.2.2] - 2025-12-21
+## 1.2.4 - 2026-03-09
+
+### Added
+
+- Add wl-copy --foreground flag to prevent silent failures on some wl compositors
+- Add better error logging for clipboard failures
+
+### Fixed
+
+- Replace system() with access() + PATH parsing (no longer spawns a dedicated shell which is kinda stupid) for clipboard detection
+- Validate boolean values for config (e.g. copy_to_clipboard)
+
+## 1.2.3 - 2026-02-21
+
+### Added
+
+- CI/CD pipeline
+- Nix flake for reproducible builds
+- Clipboard copy option to config/cli
+
+### Fixed
+
+- Clang-format is now more strict
+- Refactored help command to be more readable
+
+## 1.2.2 - 2025-12-21
 
 ### Added
 
@@ -22,7 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add debug logging to upload process
 - Increase buffer for API token string to account for null terminator
 
-## [1.2.1] - 2025-12-20
+## 1.2.1 - 2025-12-20
 
 ### Added
 
@@ -41,7 +66,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Build output redirection in bump.sh for proper tarball creation
 - Pedantic compiler warnings
 
-## [1.2.0] - 2025-12-08
+## 1.2.0 - 2025-12-08
 
 ### Added
 
@@ -61,7 +86,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Enable stricter compiler warnings
 
-## [1.1.5] - 2025-11-05
+## 1.1.5 - 2025-11-05
 
 ### Fixed
 
@@ -69,7 +94,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Improve input validation with null checks and length limits
 - Add bounds checking to string operations
 
-## [1.1.4] - 2025-04-30
+## 1.1.4 - 2025-04-30
 
 ### Fixed
 
@@ -77,13 +102,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Config set command functionality restored
 - Support for hosts without authentication
 
-## [1.1.3] - 2025-04-26
+## 1.1.3 - 2025-04-26
 
 ### Changed
 
 - Major source code refactoring (no API changes)
 
-## [1.1.2] - 2025-04-26
+## 1.1.2 - 2025-04-26
 
 ### Fixed
 
@@ -94,14 +119,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Network code refactored for better performance
 
-## [1.1.1] - 2025-04-23
+## 1.1.1 - 2025-04-23
 
 ### Fixed
 
 - Display upload IDs in list-uploads command
 - Consistent output formatting
 
-## [1.1.0] - 2025-04-23
+## 1.1.0 - 2025-04-23
 
 ### Added
 
@@ -114,8 +139,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Network operation error handling
 
-## [1.0.0] - 2025-04-22
+## 1.0.0 - 2025-04-22
 
 ### Added
 
 - Initial release
+
