@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'openssl')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7ea288b6060e637dde41eb0c32f4cc269b9fc2e074da8add2b978a156d3a5a0f')
+sha256sums=('04ab023d5c41677934283ba8b0d1a08545452a3a610f605bc4a4953efe9c2e66')
 
 prepare() {
   cd "$pkgname"
