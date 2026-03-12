@@ -1,6 +1,6 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner-git
-pkgver=4.13.4.r15
+pkgver=4.13.4.r16
 pkgrel=1
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
@@ -11,7 +11,7 @@ license=(
   'GPL2'
 )
 source=(
-  "git+$url.git#commit=5ea880e8"
+  "git+$url.git#commit=570a5e35"
 )
 sha256sums=(
   'SKIP'
@@ -110,4 +110,8 @@ package() {
     rm "$pkgdir/usr/share/rog-perf-tuner/suggestions.yaml"
 
     install -Dm755 resources/RogPerfTuner.desktop "$pkgdir/usr/share/applications/rog-perf-tuner.desktop"
+
+    python resources/scripts/completion.py
+    install -Dm644 dist/completion-bash \
+        "$pkgdir/usr/share/bash-completion/completions/rog-perf-tuner"
 }
