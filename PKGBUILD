@@ -12,7 +12,7 @@
 # binary version of this package (-bin): github.com/noahvogt/ungoogled-chromium-xdg-bin-aur
 
 pkgname=ungoogled-chromium-xdg
-pkgver=145.0.7632.159
+pkgver=146.0.7680.71
 pkgrel=1
 _launcher_ver=8
 _manual_clone=0
@@ -23,12 +23,40 @@ pkgdesc="A lightweight approach to removing Google web service dependency - with
 arch=('x86_64')
 url="https://github.com/ungoogled-software/ungoogled-chromium"
 license=('BSD-3-Clause')
-depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
-         'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
-         'libffi' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
-             'rust' 'rust-bindgen' 'qt6-base' 'java-runtime-headless'
-             'git' 'compiler-rt')
+depends=(
+  'alsa-lib'
+  'dbus'
+  'desktop-file-utils'
+  'gtk3'
+  'hicolor-icon-theme'
+  'libcups'
+  'libffi'
+  'libgcrypt'
+  'libpulse'
+  'libva'
+  'libxss'
+  'nss'
+  'pciutils'
+  'systemd'
+  'ttf-liberation'
+  'xdg-utils'
+)
+makedepends=(
+  'clang'
+  'compiler-rt'
+  'git'
+  'gn'
+  'gperf'
+  'java-runtime-headless'
+  'lld'
+  'ninja'
+  'nodejs'
+  'pipewire'
+  'python'
+  'qt6-base'
+  'rust-bindgen'
+  'rust'
+)
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)'
@@ -42,23 +70,25 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         chromium-138-nodejs-version-check.patch
         chromium-145-fix-SYS_SECCOMP.patch
+        chromium-146-drop-unknown-clang-flag.patch
+        chromium-146-apply-upstream-libmuck-fix.patch
         compiler-rt-adjust-paths.patch
         increase-fortify-level.patch
         enable-widevine-arm64.patch
         use-oauth2-client-switches-as-default.patch
         # ungoogled-chromium-xdg patches
-        xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch)
-sha256sums=('12e53b149f7621ee0741d25005a8d7e79cf95ce13efc4063fda04b4db6c882f1'
-            '18b6d5528433f0e5cf3c639629e897bc096a82a9fe62efed6f705e99f893fa8a'
+sha256sums=('094a80801d0a3573c5654cf004f4fc34e2219069380652916235794fc0f94414'
+            'f394934222898f43c74cfc4360d008754c0917f0d4155efe37999d7f3f000790'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e'
             '4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e'
+            '24535c314c7e70c52bcf409aaf604728bfc5b5c97e60087e630e1f7233b9e12d'
+            '06299959918481caf2c27bcb1841088967d9855acc22970ffcaa75e0cb218f0e'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '9c766b82d1143cb3413fe2057361bd2655e46287eacc2c6d6f8504b4c255647a'
             '9343afa1a4308a7cfb3317229f5aff7778688debcc03c4a74a85908aa1d0cc3a'
-            '2848ccca54ec4a118471b833d20cf3a32fff7775d5b0fc881f9e1660dcd6ca23'
             'ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8')
 
 if (( _manual_clone )); then
@@ -134,11 +164,19 @@ prepare() {
 
   # Fixes from Gentoo
   patch -Np1 -i ../chromium-138-nodejs-version-check.patch
+
   # Allow libclang_rt.builtins from compiler-rt >= 16 to be used
   patch -Np1 -i ../compiler-rt-adjust-paths.patch
 
   # Increase _FORTIFY_SOURCE level to match Arch's default flags
   patch -Np1 -i ../increase-fortify-level.patch
+
+  # Fix issue about missing compiler flag, can be dropped when arch has LLVM 23
+  # clang++: error: unknown argument: '-fsanitize-ignore-for-ubsan-feature=array-bounds'
+  patch -Np1 -i ../chromium-146-drop-unknown-clang-flag.patch
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/7487414
+  patch -Np1 -i ../chromium-146-apply-upstream-libmuck-fix.patch
 
   # https://crbug.com/456218403
   patch -Np1 -i ../chromium-145-fix-SYS_SECCOMP.patch
@@ -147,9 +185,6 @@ prepare() {
   patch -Np1 -i ../enable-widevine-arm64.patch
 
   # Custom Patches
-
-  # move ~/.pki directory to ${XDG_DATA_HOME:-$HOME/.local}/share/pki
-  patch -p1 -i ../xdg-basedir.patch
 
   # You can now set '1' in the flag #omnibox-ui-max-autocomplete-matches to
   # effectively disable autocompletion in the url bar (and therefore the so-
