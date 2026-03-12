@@ -3,12 +3,15 @@
 # 'omnibox' in chromium internally). This is way easier than diabling all
 # history internally, but still allowing to get rid of shoulder surfing.
 
+diff --git a/chrome/browser/about_flags.cc b/chrome/browser/about_flags.cc
+index 6f414a3dd8..cb6d5720fe 100644
 --- a/chrome/browser/about_flags.cc
 +++ b/chrome/browser/about_flags.cc
-@@ -1254,6 +1254,10 @@
-     {"15", kMaxZeroSuggestMatches15, base::size(kMaxZeroSuggestMatches15),
-      nullptr}};
- 
+@@ -2047,7 +2047,10 @@ const FeatureEntry::FeatureVariation kMaxZeroSuggestMatchesVariations[] = {
+     {"13", kMaxZeroSuggestMatches13, nullptr},
+     {"14", kMaxZeroSuggestMatches14, nullptr},
+     {"15", kMaxZeroSuggestMatches15, nullptr}};
+-
 +const FeatureEntry::FeatureParam kOmniboxUIMaxAutocompleteMatches1[] = {
 +    {OmniboxFieldTrial::kUIMaxAutocompleteMatchesParam, "1"}};
 +const FeatureEntry::FeatureParam kOmniboxUIMaxAutocompleteMatches2[] = {
@@ -16,14 +19,12 @@
  const FeatureEntry::FeatureParam kOmniboxUIMaxAutocompleteMatches3[] = {
      {OmniboxFieldTrial::kUIMaxAutocompleteMatchesParam, "3"}};
  const FeatureEntry::FeatureParam kOmniboxUIMaxAutocompleteMatches4[] = {
-@@ -1275,6 +1279,10 @@
+@@ -2069,6 +2072,8 @@ const FeatureEntry::FeatureParam kOmniboxUIMaxAutocompleteMatches12[] = {
  
  const FeatureEntry::FeatureVariation
      kOmniboxUIMaxAutocompleteMatchesVariations[] = {
-+        {"1 matches", kOmniboxUIMaxAutocompleteMatches1,
-+         std::size(kOmniboxUIMaxAutocompleteMatches1), nullptr},
-+        {"2 matches", kOmniboxUIMaxAutocompleteMatches2,
-+         std::size(kOmniboxUIMaxAutocompleteMatches2), nullptr},
-         {"3 matches", kOmniboxUIMaxAutocompleteMatches3,
-          std::size(kOmniboxUIMaxAutocompleteMatches3), nullptr},
-         {"4 matches", kOmniboxUIMaxAutocompleteMatches4,
++        {"1 matches", kOmniboxUIMaxAutocompleteMatches1, nullptr},
++        {"2 matches", kOmniboxUIMaxAutocompleteMatches2, nullptr},
+         {"3 matches", kOmniboxUIMaxAutocompleteMatches3, nullptr},
+         {"4 matches", kOmniboxUIMaxAutocompleteMatches4, nullptr},
+         {"5 matches", kOmniboxUIMaxAutocompleteMatches5, nullptr},

@@ -89,7 +89,7 @@ sha256sums=('094a80801d0a3573c5654cf004f4fc34e2219069380652916235794fc0f94414'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             '9c766b82d1143cb3413fe2057361bd2655e46287eacc2c6d6f8504b4c255647a'
             '9343afa1a4308a7cfb3317229f5aff7778688debcc03c4a74a85908aa1d0cc3a'
-            'ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8')
+            'f4a93437b3e45518fc307606a98e5b4b1fb3471f44ce36a8ef83d57e5c90ca72')
 
 if (( _manual_clone )); then
   source[0]=fetch-chromium-release
