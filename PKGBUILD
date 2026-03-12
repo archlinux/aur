@@ -2,7 +2,7 @@
 shopt -s extglob
 
 pkgname=seal
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="A simple, user-friendly, and useful runtime for Luau "
 url="https://github.com/seal-runtime/seal"
@@ -12,7 +12,7 @@ makedepends=('cargo')
 arch=('x86_64')
 options=('!lto')
 source=("$pkgname.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ac13797af9ef14612b416cfa2da317fbf886ce3f2d09842e0377b4c69dde6377')
+sha256sums=('830a6cd90c18c87c5a3c88cb13946eecdb335403a5000bd51c1f4fe857b8ebfc')
 
 prepare() {
   cd "$pkgname-$pkgver"
