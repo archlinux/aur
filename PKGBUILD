@@ -2,20 +2,22 @@
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org>
 
 pkgname=intel-npu-driver-git
-pkgver=1.28.0.r0.g33ea218
+pkgver=1.30.0.r0.g3897263
 pkgrel=1
 pkgdesc='Intel Neural Processing Unit (NPU) driver (git version)'
 arch=('x86_64')
 url='https://github.com/intel/linux-npu-driver/'
 license=('BSD-3-Clause AND MIT')
 depends=(
-    'gcc-libs'
     'glibc'
     'gtest'
     'level-zero-loader'
+    'libgcc'
+    'libstdc++'
     'opencv'
     'yaml-cpp')
-optdepends=('intel-npu-compiler: for compiling OpenVINO IR models')
+optdepends=(
+    'intel-npu-compiler: for compiling OpenVINO IR models')
 makedepends=(
     'cmake'
     'git'
@@ -38,7 +40,7 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             '592a2f5575ecce93a03c66987573fe675d41a63b49cee11d2553645d9e5624fe'
-            '97dbb45e871d108a7996428963dda81546b8c26e698d54f4743b878ef9ea3408'
+            '9eaa858cb35f5320ae3bb89edc1e2c0e3131f73d34ac4e036fa3929173a3a076'
             '861c3872934357048746d308732dd28b880c442702470d0191c9fc01a2aab1b8'
             'c378987c3da52988402d93f396d4084c86c2ddce9c0e2af3284631e6f1796825'
             'a257456a61d5ec670c26b2c6d23f23f03b68ff6e64f74539c17b2c7e1b074f25')
