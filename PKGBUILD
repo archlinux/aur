@@ -4,15 +4,15 @@
 # Contributor: ponsfoot <cabezon dot hashimoto at gmail dot com>
 
 pkgname=emacs-mozc
-pkgver=3.33.6089
+pkgver=3.33.6133
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input (Emacs module)'
 arch=('x86_64')
 url='https://github.com/google/mozc'
 license=('Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND NAIST-2003 AND Unicode-3.0 AND LicenseRef-Okinawa-Dictionary')
-depends=('emacs' 'mozc>=3.33.6089')
+depends=('emacs' 'mozc>=3.33.6133')
 makedepends=('git' 'mold' 'python')
-source=('git+https://github.com/google/mozc.git#commit=a99841e37b7459d08e5736c3613a6bcd393c9e92'
+source=('git+https://github.com/google/mozc.git#commit=cc288ecf425b98bf71e757defb34d9f1f5bc2733'
         'git+https://github.com/abseil/abseil-cpp.git#commit=987c57f325f7fa8472fa84e1f885f7534d391b0d'
         'git+https://github.com/google/breakpad.git#commit=216cea7bca53fa441a3ee0d0f5fd339a3a894224'
         'git+https://github.com/google/googletest.git#commit=52eb8108c5bdec04579160ae17225d66034bd723'
@@ -20,11 +20,11 @@ source=('git+https://github.com/google/mozc.git#commit=a99841e37b7459d08e5736c36
         'git+https://github.com/hiroyuki-komatsu/japanese-usage-dictionary.git#commit=e5b3425575734c323e1d947009dd74709437b684'
         'git+https://github.com/protocolbuffers/protobuf.git#commit=4fbd1111a292d04746c732573025e3251de0bb9c'
         'git+https://github.com/microsoft/wil.git#commit=fc5dbf55989fe20351c71d038a8d12de4b397a6d'
-        # Use a local copy of Bazel's module repo (https://bcr.bazel.build/)
+        # Bazel module repo (copy of https://bcr.bazel.build/)
         'git+https://github.com/bazelbuild/bazel-central-registry.git#commit=b340ca17233d8a3452184a0bf5f593000cdad9e4'
-        # Prefetch Bazel 8.4.1
+        # Bazel binary
         'https://github.com/bazelbuild/bazel/releases/download/8.4.1/bazel-8.4.1-linux-x86_64'
-        # Prefetch build dependencies
+        # Bazel dependencies
         'https://github.com/abseil/abseil-cpp/releases/download/20250814.0/abseil-cpp-20250814.0.tar.gz'
         'https://github.com/bazelbuild/apple_support/releases/download/1.23.1/apple_support.1.23.1.tar.gz'
         'https://github.com/bazel-contrib/bazel_features/releases/download/v1.30.0/bazel_features-v1.30.0.tar.gz'
@@ -61,7 +61,7 @@ noextract=('abseil-cpp-20250814.0.tar.gz'
            'rules_shell-v0.3.0.tar.gz'
            'rules_swift.3.1.2.tar.gz'
            'zlib-1.3.1.tar.gz')
-b2sums=('374862cb26ac2e866c6bce13e4dc43cd061f4bf641a03745a832240e38fa9557458451edb665d163c29f241dbe7c8a4ad83ba77ffe925d18e165ab180ee1c7ac'
+b2sums=('c0bb232f4d9414f703f85772d24b64fca683b100d040df032a82a234f7d76631e5631dcdafb42bd2f306d08db7ea4c38c2751391ecaebee70498999f652a1fbd'
         'cccfb46ba1e756948036ffdca21187d5cd8c095357e45f305a88c96b32084ded297717e5c44cf34971bd2fe6e7ea37099dadf564aa775ef0a55a7fbab965270c'
         'eb54c87947561d6d985b3a244860a247a6ae41e5667ed6f4687dc864a3f02bc0b52d111c5b16025e06f44a1db31d7731c42eb38725521512b4c102475aebf585'
         'e8779958a717e8581a0952ea01728852d37b95713b9e92ce3fb4f5bf03e3fe02083c51daa042c231d708c2b775729000b7355f573069c09e1242bbd6f277145d'
@@ -144,10 +144,10 @@ build() {
         --config stable_channel \
         --config release_build \
         --copt '-U_FORTIFY_SOURCE' \
-        $(echo "${CFLAGS}"|xargs -n1 echo "--conlyopt") \
-        $(echo "${CXXFLAGS}"|xargs -n1 echo "--cxxopt") \
+        $(echo "${CFLAGS}" | xargs -n1 echo "--conlyopt") \
+        $(echo "${CXXFLAGS}" | xargs -n1 echo "--cxxopt") \
         --linkopt '-fuse-ld=mold' \
-        $(echo "${LDFLAGS}"|xargs -n1 echo "--linkopt") \
+        $(echo "${LDFLAGS}" | xargs -n1 echo "--linkopt") \
         --subcommands \
         --verbose_failures
 }
