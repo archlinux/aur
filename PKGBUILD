@@ -2,13 +2,13 @@
 _base=mole
 pkgname=lib${_base}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mimetic Operators Library Enhanced"
 url="https://github.com/csrc-sdsu/${_base}"
 license=(GPL-3.0-only)
 arch=(x86_64)
 depends=(armadillo octave)
-makedepends=(cmake doxygen eigen graphviz openblas git)
+makedepends=(cmake doxygen eigen3 graphviz openblas git)
 checkdepends=(gtest)
 optdepends=('eigen: for the sparse LU factorization')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz
