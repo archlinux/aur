@@ -1,6 +1,6 @@
 
 pkgname=yasos-git
-pkgver=20260225
+pkgver=20260312
 pkgrel=1
 pkgdesc="Compiler for the Yasos programming language (git version)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('BSD')
 depends=('llvm')
 makedepends=('git' 'cmake' 'make')
 provides=('yasos')
-conflicts=('yasos')
+conflicts=('yasos-bin')
 
 source=("git+https://github.com/DameChocolateYa/yasos.git")
 sha256sums=('SKIP')
