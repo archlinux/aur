@@ -21,13 +21,10 @@ makedepends=(
     'cmake'
     'extra-cmake-modules'
     'rust'
-    'cargo'
     'ki18n'
     'git'
 )
-optdepends=(
-    'systemd-boot: automatic bootloader menu hiding during hibernation'
-)
+
 provides=('dynamic-hibernate')
 conflicts=('dynamic-hibernate')
 install=dynamic-hibernate.install
