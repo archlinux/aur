@@ -6,7 +6,7 @@ _appdataprefix="/var/opt"
 
 pkgname=open-webui
 pkgver=0.8.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Web UI and OpenAI API for various LLM runners, including Ollama"
 arch=('any')
 url="https://github.com/open-webui/open-webui"
@@ -16,11 +16,13 @@ makedepends=('npm' 'nvm' 'git')
 optdepends=('ollama' 'tika-server')
 conflicts=('open-webui-git' 'open-webui-no-venv')
 source=("git+https://github.com/open-webui/open-webui.git#tag=v$pkgver"
+    0001-bump-ddgs-ver.patch
     "open-webui.service"
     "open-webui.conf")
 
 install="${pkgname}.install"
 b2sums=('de0b33a30a6630fcc783d9927aa049d400e7c5149f5bed134af01d73db445789ddfb2f29d6a408e5885aac3fcdf60f4f1c08c177ef513b6f20b554d4342bab3a'
+        'ec66e2e084dcf752c80a072d80dbe9329ddfd8416e87a1b5728441364c73867485794e954be9e28b9c7dd89e0f180fe2b8cdeb9701dfbb4390e2a24d4a2a2ac4'
         '1438948b9e31ccbcfe7eab5965de71b0fb23bc205579c6668cd91f805a17d5a0b2379afeac3148fb0701125e210eebb81f4bdd5496bc9b0d080766ecf71d32bf'
         '1538695adbe92507ef8c319f4aba22bd9c8843ecaebfaf8860485316564708809c92becc0d0634467b068e8d6b17992c2f210f1bdb344d72b0e01db243ac24ca')
 options=(!strip !debug)
@@ -39,6 +41,9 @@ _ensure_local_nvm() {
 prepare() {
     _ensure_local_nvm
     nvm install lts/jod
+
+    cd "$srcdir"/$pkgname
+    patch --forward --strip=1 --input="$srcdir"/0001-bump-ddgs-ver.patch
 }
 
 build() {

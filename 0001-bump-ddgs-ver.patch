@@ -1,0 +1,39 @@
+From b84d64ad3929f6f607bf5a88b7b2daec0bf86e5d Mon Sep 17 00:00:00 2001
+From: Ralph Torres <mail@ralphptorr.es>
+Date: Thu, 12 Mar 2026 07:13:53 +0000
+Subject: [PATCH] fix: bump ddgs ver
+
+---
+ backend/requirements.txt | 2 +-
+ pyproject.toml           | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/backend/requirements.txt b/backend/requirements.txt
+index 295b6cfa8968..db3e616a3a59 100644
+--- a/backend/requirements.txt
++++ b/backend/requirements.txt
+@@ -97,7 +97,7 @@ youtube-transcript-api==1.2.4
+ pytube==15.0.0
+ 
+ pydub
+-ddgs==9.11.2
++ddgs==9.11.3
+ 
+ azure-ai-documentintelligence==1.0.2
+ azure-identity==1.25.2
+diff --git a/pyproject.toml b/pyproject.toml
+index 2ec9d033b979..489bba872532 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -105,7 +105,7 @@ dependencies = [
+     "pytube==15.0.0",
+ 
+     "pydub",
+-    "ddgs==9.11.2",
++    "ddgs==9.11.3",
+ 
+     "google-api-python-client",
+     "google-auth-httplib2",
+-- 
+2.53.0
+
