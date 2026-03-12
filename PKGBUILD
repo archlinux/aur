@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=python-logboth
 _name=${pkgname#python-}
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Python library for logging to stdout and a file"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=(
   'python-wheel'
 )
 source=("https://gitlab.com/zehkira/logboth/-/archive/v$pkgver/$_name-v$pkgver.tar.gz")
-sha256sums=('f54a500f1c4678beab566c96495d8a8c544622921832423ab11d67bdb8a71bfa')
+sha256sums=('42546fb9693aaa15baaf0ab6a755c9df457f53261433c6a70dec5587b4df1ece')
 
 build() {
   cd "$_name-v$pkgver"
