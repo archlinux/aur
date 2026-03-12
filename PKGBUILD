@@ -17,12 +17,12 @@ sha256sums=('f94d3edcfad8f23299420c459407df03cab6ef0c8d81b08fd347323e5d59e204')
 
 prepare() {
     cd "$pkgname-$pkgver"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname-$pkgver"
-    cargo build --frozen --release
+    cargo build --release
 }
 
 package() {
