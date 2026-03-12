@@ -27,18 +27,14 @@ _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/usr/share/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
-_get_display_server() {
-    if [ "${XDG_SESSION_TYPE}" = "wayland" ]; then
-        echo "wayland"
-    elif [ "${XDG_SESSION_TYPE}" = "x11" ]; then
-        echo "x11"
-    else
-        if pgrep -x Xorg >/dev/null; then
-            echo "x11"
-        elif pgrep -f wayland-server >/dev/null; then
-            echo "wayland"
-        else
-            echo "unknown"
+_get_current_desktop_env() {
+    if [ -n "$XDG_CURRENT_DESKTOP" ]; then
+        if echo "$XDG_CURRENT_DESKTOP" | grep -i gnome > /dev/null; then
+            echo "gnome"
+            return 0
+        elif echo "$XDG_CURRENT_DESKTOP" | grep -i kde > /dev/null || echo "$XDG_CURRENT_DESKTOP" | grep -i plasma > /dev/null; then
+            echo "plasma"
+            return 0
         fi
     fi
 }
@@ -52,8 +48,8 @@ prepare() {
     " "${srcdir}/${pkgname%-bin}.sh"
     _get_electron_version
     sed -i "s/${_pkgname}.desktop/${pkgname%-bin}.desktop/g" "${srcdir}/usr/share/appdata/${pkgname%-bin}.appdata.xml"
-    _display_server="$(get_display_server)"
-    if [ "${_display_server}" = "x11" ];then
+    _desktop_env="$(_get_current_desktop_env)"
+    if [ "${_desktop_env}" = "gnome" ];then
         sed -i "s/Exec=${pkgname%-bin}/Exec=${pkgname%-bin} --password-store=\"gnome-libsecret\"/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
     fi
 }
