@@ -1,0 +1,3 @@
+[perl-config-gitlike]
+source = "cpan"
+cpan = "Config-GitLike"
