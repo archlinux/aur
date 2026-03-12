@@ -1,5 +1,5 @@
 pkgname=namoz-vaqtlari
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Namoz vaqtlari CLI vositasi - Islom.uz ma'lumotlari va sahifalangan hududlar ro'yxati"
 arch=('x86_64')
@@ -17,6 +17,8 @@ build() {
 }
 
 package() {
-  install -Dm755 "${srcdir}/${pkgname}/out/namoz-vaqtlari" "$pkgdir/usr/bin/namoz-vaqtlari"
+  # 'out' papkasida PrayerTimesFromMuslim.Uz fayli hosil bo'ladi
+  # Uni usr/bin ichiga 'namoz-vaqtlari' nomi bilan ko'chiramiz
+  install -Dm755 "${srcdir}/${pkgname}/out/PrayerTimesFromMuslim.Uz" "$pkgdir/usr/bin/namoz-vaqtlari"
   install -Dm644 "${srcdir}/${pkgname}/regions.json" "$pkgdir/usr/share/namoz-vaqtlari/regions.json"
 }
