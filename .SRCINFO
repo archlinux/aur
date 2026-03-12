@@ -1,0 +1,39 @@
+pkgbase = nmstate
+	pkgdesc = Declarative network manager API for Linux hosts
+	pkgver = 2.2.59
+	pkgrel = 1
+	url = https://nmstate.io
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = networkmanager
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-pyyaml
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	source = nmstate-2.2.59.tar.gz::https://github.com/nmstate/nmstate/releases/download/v2.2.59/nmstate-2.2.59.tar.gz
+	source = nmstate-vendor-2.2.59.tar.xz::https://github.com/nmstate/nmstate/releases/download/v2.2.59/nmstate-vendor-2.2.59.tar.xz
+	sha256sums = 16ebda604f576c1cb9344dae46045048613339e88af99ae7b49e48237938ea4a
+	sha256sums = 69495b049ae7e88ec04375a557e47c9883b49f6309ec91c95c71ea26e5e296f4
+
+pkgname = nmstate
+	pkgdesc = Declarative network manager API - CLI tools and service
+	depends = libnmstate=2.2.59-1
+	depends = networkmanager
+	optdepends = python-libnmstate: Python bindings
+	optdepends = networkmanager-ovs: Open vSwitch support
+
+pkgname = libnmstate
+	pkgdesc = Declarative network manager API - C library
+	depends = gcc-libs
+	depends = glibc
+	optdepends = networkmanager: required for most operations
+	provides = libnmstate.so
+
+pkgname = python-libnmstate
+	pkgdesc = Declarative network manager API - Python bindings
+	arch = any
+	depends = libnmstate=2.2.59-1
+	depends = python
+	depends = python-pyyaml
