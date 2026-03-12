@@ -1,6 +1,6 @@
 pkgbase = fcitx5-mozc-ut
 	pkgdesc = The Open Source edition of Google Japanese Input (Fcitx5 module)
-	pkgver = 3.33.6089
+	pkgver = 3.33.6133
 	pkgrel = 1
 	url = https://github.com/fcitx/mozc
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = fcitx5-mozc-ut
 	makedepends = mold
 	makedepends = python
 	depends = fcitx5
-	depends = mozc>=3.33.6089
+	depends = mozc>=3.33.6133
 	depends = qt6-base
 	optdepends = fcitx5-configtool
-	provides = fcitx5-mozc=3.33.6089
+	provides = fcitx5-mozc=3.33.6133
 	conflicts = fcitx5-mozc
 	noextract = abseil-cpp-20250814.0.tar.gz
 	noextract = apple_support.1.23.1.tar.gz
@@ -32,7 +32,7 @@ pkgbase = fcitx5-mozc-ut
 	noextract = rules_shell-v0.3.0.tar.gz
 	noextract = rules_swift.3.1.2.tar.gz
 	noextract = zlib-1.3.1.tar.gz
-	source = mozc-fcitx::git+https://github.com/fcitx/mozc.git#commit=e99761585263feec635b26e0dea1025ae12b25b7
+	source = mozc-fcitx::git+https://github.com/fcitx/mozc.git#commit=da1065bf3b03a825cdca462b8588e387d85549e4
 	source = git+https://github.com/abseil/abseil-cpp.git#commit=987c57f325f7fa8472fa84e1f885f7534d391b0d
 	source = git+https://github.com/google/breakpad.git#commit=216cea7bca53fa441a3ee0d0f5fd339a3a894224
 	source = git+https://github.com/google/googletest.git#commit=52eb8108c5bdec04579160ae17225d66034bd723
@@ -66,7 +66,7 @@ pkgbase = fcitx5-mozc-ut
 	source = properties.svg::https://raw.githubusercontent.com/google/material-design-icons/4.0.0/src/action/settings/materialiconsround/24px.svg
 	source = tool.png::https://raw.githubusercontent.com/google/material-design-icons/4.0.0/png/action/build/materialicons/48dp/1x/baseline_build_black_48dp.png
 	source = tool.svg::https://raw.githubusercontent.com/google/material-design-icons/4.0.0/src/action/build/materialicons/24px.svg
-	b2sums = cacc7ca4f8ba12d418295f25e828723113c1b0448226a28f3100451d3127efd9158ac4208c7cda75a421c095d8268a35804709920d313608dbb91e959f685804
+	b2sums = b69ab0e28df07de0a8e89df86c565354e76f0f685daa1d69f5e03b8a884a148837c182f4b3265b7585a7f833f989663616d5e3086aaf471f9da687ce48c609c4
 	b2sums = cccfb46ba1e756948036ffdca21187d5cd8c095357e45f305a88c96b32084ded297717e5c44cf34971bd2fe6e7ea37099dadf564aa775ef0a55a7fbab965270c
 	b2sums = eb54c87947561d6d985b3a244860a247a6ae41e5667ed6f4687dc864a3f02bc0b52d111c5b16025e06f44a1db31d7731c42eb38725521512b4c102475aebf585
 	b2sums = e8779958a717e8581a0952ea01728852d37b95713b9e92ce3fb4f5bf03e3fe02083c51daa042c231d708c2b775729000b7355f573069c09e1242bbd6f277145d
