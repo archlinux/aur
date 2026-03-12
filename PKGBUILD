@@ -1,11 +1,7 @@
-# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: Peter Jung <ptr1337@archlinux.org>
 # Maintainer: NotFranko_ <notfranko@techlab.cloud>
 
 pkgbase=nvidia-settings-bsb
-pkgname=('nvidia-settings' 'libxnvctrl')
+pkgname=('nvidia-settings-bsb' 'libxnvctrl')
 pkgver=590.48.01
 pkgrel=1
 pkgdesc='Tool for configuring the NVIDIA graphics driver'
@@ -34,7 +30,7 @@ build() {
   make
 }
 
-package_nvidia-settings() {
+package_nvidia-settings-bsb() {
   depends=('jansson' 'gtk3' 'libxv' 'libvdpau' 'nvidia-utils-bsb' 'libxnvctrl')
 
   cd ${pkgbase}-${pkgver}

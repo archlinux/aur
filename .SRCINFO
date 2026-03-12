@@ -18,7 +18,7 @@ pkgbase = nvidia-settings-bsb
 	sha512sums = fdabed2f5f887f91c1a5bd49362f184ec602bcf0b098aa0af2f39c1cfaf9d050dfa7a22b5ad2afdb54e22f5169f75c2829619cf1f1bfc838a1c5d705dce0a23f
 	sha512sums = 0303fe615d6ef4e14112998c531a17613b94776f9a6a027ddb81e400fddd5f2ff15583da8b8631c2306aca854edf2f54a8007eb36f1732b4c064c857aaf268ae
 
-pkgname = nvidia-settings
+pkgname = nvidia-settings-bsb
 	depends = jansson
 	depends = gtk3
 	depends = libxv
