@@ -1,12 +1,12 @@
-# Maintainer: Mark Weiman <mark dot weiman at markzz dot com>
+# Maintainer: Julien Virey <julien.virey+aur@gmail.com>
+# Contributor: Mark Weiman <mark dot weiman at markzz dot com>
 
-_gemname=fpm
-pkgname=$_gemname
+pkgname=fpm
 pkgver=1.17.0
 pkgrel=1
 pkgdesc='Effing package management! Build packages for multiple platforms (deb, rpm, etc) with great ease and sanity.'
 arch=(any)
-url="https://github.com/jordansissel/${_gemname}"
+url="https://github.com/jordansissel/fpm"
 license=('MIT')
 depends=(ruby
          ruby-cabin
@@ -22,13 +22,13 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/jordansissel/fpm/archive/v$
 sha256sums=('006abf20b88261a96a64adf473d78f1bd4361265d909b2357cb506629258dd06')
 
 build() {
-  cd $srcdir/$_gemname-$pkgver
+  cd $srcdir/$pkgname-$pkgver
   make gem
 }
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install --no-document -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $srcdir/$_gemname-$pkgver/$_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  gem install --ignore-dependencies --no-user-install --no-document -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $srcdir/$pkgname-$pkgver/$pkgname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$pkgname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
