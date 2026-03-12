@@ -1,6 +1,6 @@
 threshold: medium
 fileignoreconfig:
   - filename: .SRCINFO
-    checksum: 7f5fc08cee6f32d748337e4fa1e0cb1aeeba9ee5b64f15b9654389540fd79c2c
+    checksum: c42f57814b348a443327c611bdea0a644a319f7c12c91d7d10faec39f86735f0
   - filename: PKGBUILD
-    checksum: b8ee0195af9b2491568a0f8aa03ca146036b7847c4c4f8c3beec7f936d8664c4
+    checksum: e68fac08f46eeb47655b018c85d022013ed94d19aafcfb48a375b3d5a4f8d509

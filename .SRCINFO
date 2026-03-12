@@ -1,6 +1,6 @@
 pkgbase = lazyreno
 	pkgdesc = TUI dashboard for self-hosted Renovate CE
-	pkgver = 0.2.3
+	pkgver = 0.2.4
 	pkgrel = 1
 	url = https://github.com/limehawk/lazyreno
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = lazyreno
 	license = MIT
 	makedepends = cargo
 	depends = openssl
-	source = lazyreno-0.2.3.tar.gz::https://github.com/limehawk/lazyreno/archive/v0.2.3.tar.gz
-	sha256sums = 17508f97e0e9c44d458245814559dd8e8221faebf7f4885e9dc61b6bc1467b22
+	source = lazyreno-0.2.4.tar.gz::https://github.com/limehawk/lazyreno/archive/v0.2.4.tar.gz
+	sha256sums = 05205686bc5dd66d3a91dbb12358ea6ca2d3d8dd046edebacf3c9e99163c61cb
 
 pkgname = lazyreno
