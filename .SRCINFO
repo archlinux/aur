@@ -1,7 +1,7 @@
 pkgbase = alice-vision
 	pkgdesc = Photogrammetric Computer Vision Framework which provides 3D Reconstruction and Camera Tracking algorithms
 	pkgver = 3.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://alicevision.org/
 	arch = x86_64
 	license = MPL-2.0

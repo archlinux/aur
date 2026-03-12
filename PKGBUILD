@@ -4,7 +4,7 @@
 
 pkgname='alice-vision'
 pkgver=3.3.1
-pkgrel=3
+pkgrel=4
 options=('!debug') # debug package is kinda big -- needs investigation!
 pkgdesc="Photogrammetric Computer Vision Framework which provides 3D Reconstruction and Camera Tracking algorithms"
 arch=('x86_64')
@@ -84,6 +84,8 @@ prepare() {
 build() {
   local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
   cd ${srcdir}/AliceVision
+
+  local CXXFLAGS="${CXXFLAGS//-Wp,-D_GLIBCXX_ASSERTIONS/}" # causes issues
 
   cmake \
    	-Bbuild \
