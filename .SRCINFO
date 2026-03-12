@@ -1,13 +1,16 @@
 pkgbase = perl-parallel-pipes
 	pkgdesc = parallel processing using pipe(2) for communication and synchronization
-	pkgver = 0.102
+	pkgver = 0.201
 	pkgrel = 1
-	url = http://search.cpan.org/dist/Parallel-Pipes/
+	url = https://metacpan.org/release/SKAJI/Parallel-Pipes-0.201
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	depends = perl
-	source = http://search.cpan.org/CPAN/authors/id/S/SK/SKAJI/Parallel-Pipes-0.102.tar.gz
-	sha256sums = 26365f8105dc606b140bd1d45f8d70d5c3054390f75e4fdb7484a3e591cbfa97
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test-simple
+	makedepends = perl-module-build-tiny>=0.052
+	makedepends = perl>=5.8.1
+	depends = perl>=5.8.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/S/SK/SKAJI/Parallel-Pipes-0.201.tar.gz
+	sha256sums = b73cbdd4202b29eab97e0c08dcd59d9273633610e8721cf449078656bd591a7c
 
 pkgname = perl-parallel-pipes
