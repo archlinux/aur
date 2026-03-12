@@ -4,7 +4,7 @@
 # Contributor: Joakim Nylen (jnylen) <joakim at nylen dot nu> 
 
 pkgname=jotta-cli
-pkgver='0.17.158308'
+pkgver='0.17.159692'
 pkgrel=1
 pkgdesc='Jottacloud backup and sync. Whether you are an individual, family or business, Jottacloud lets you store, share and be productive wherever you are.'
 url='https://www.jottacloud.com/'
@@ -17,12 +17,12 @@ source_i686=("https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_${pkg
 source_armv7h=("https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_${pkgver}_armhf.deb")
 source_aarch64=("https://repo.jotta.us/debian/pool/main/j/jotta-cli/jotta-cli_${pkgver}_arm64.deb")
 
-sha256sums_x86_64=('75e4083384fc65c585028a7a7b10a1860eaa3a637e8b5c8e126cc6bcf9fcb3d3')
-sha256sums_i686=('08b314ed19f48a21fddb77e772ffe6a31cba4331b8b2e56d7fc49694ce1d78e7')
-sha256sums_armv7h=('9018e5dfd536e5510b4beab631a213a1811c4e5a0924805628780ced57c33ed7')
-sha256sums_aarch64=('74caa15ff8a2eb3fca7e9b478035133b34359489402446637e925346a730c694')
+sha256sums_x86_64=('ae7174df2d7cbcfb5a68baefc74564f75d41ef1ea9050da269ee72b22a90510c')
+sha256sums_i686=('b4bca3f9effc4be121053fe4d349babf6ea886478dfd2ca872e94ad3f1a32a63')
+sha256sums_armv7h=('4208a009f24f6aedd4095d3c473d1f195ef77c35fafdad7cf113203942450f69')
+sha256sums_aarch64=('9b7a8443a2fff600500331db0ac05662596a3989c65d54b09b02fd5c07839074')
 
 package() {
-  bsdtar -xf data.tar.xz -C "$pkgdir/"
+  bsdtar -xf data.tar.* -C "$pkgdir/"
 }
 
