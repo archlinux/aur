@@ -1,8 +1,8 @@
 # code Maintainer:  j6k4m8
 # package Maintainer:  XmoncocoX <xmoncocox@gmail.com>
 pkgname=coppelia-bin
-pkgver=0.0.10.alpha
-_pkgver=v0.0.10-alpha
+pkgver=0.0.11.alpha
+_pkgver=v0.0.11-alpha
 pkgrel=1
 pkgdesc="A refined, cross-platform Jellyfin-focused music player"
 arch=('x86_64')
