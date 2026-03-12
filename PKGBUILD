@@ -1,7 +1,7 @@
 # Maintainer: Christian Möllmann (knoelliX) <moellix@knoellix.net>
 pkgname=nativmix
 pkgver=1.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Hardware-based PipeWire volume & MIDI mixer for Wayland. Controls physical inputs, virtual sinks, and MIDI devices. (Modern deej alternative)"
 arch=('any')
 url="https://github.com/knoelliX/NativMix"
@@ -32,51 +32,39 @@ optdepends=(
 # Removed auto-build logic
 install=nativmix.install
 
-# Hybride Source-Logik
-if [ "$LOCAL_BUILD" = "1" ]; then
-    # We skip source fetching and use the current worktree files directly in prepare()
-    source=()
-sha256sums=('4674a15e93ef3424c45cf5c975d02d944ad5975740033ec3605acefc7ada8e24')
-else
-    source=("${pkgname}-${pkgver}.tar.gz::https://github.com/knoelliX/NativMix/archive/refs/tags/v${pkgver}.tar.gz")
-fi
-
-_enter_source() {
-    if [ "$LOCAL_BUILD" = "1" ]; then
-        cd "${srcdir}/local_code"
-    elif [ -d "${srcdir}/NativMix-${pkgver}" ]; then
-        cd "${srcdir}/NativMix-${pkgver}"
-    elif [ -d "${srcdir}/nativmix-${pkgver}" ]; then
-        cd "${srcdir}/nativmix-${pkgver}"
-    else
-        echo "FEHLER: Source-Verzeichnis nicht gefunden!"
-        exit 1
-    fi
-}
+# Hybride Source-Logik entfernt - Dies ist nun das offizielle PKGBUILD
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/knoelliX/NativMix/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('bf0e90466d6cdd918946c531cc9280be8d2c445b16e2bb9a6c0a4a4af3680de6')
 
 prepare() {
-    if [ "$LOCAL_BUILD" = "1" ]; then
-        echo "Lokal-Modus: Kopiere aktuelles Verzeichnis (inkl. uncommitted changes)..."
-        mkdir -p "${srcdir}/local_code"
-        # Sync all project files, excluding build artifacts and .git
-        rsync -a --exclude=".git" --exclude=".venv" --exclude="packaging/aur/src" --exclude="packaging/aur/pkg" \
-              --exclude="build" --exclude="dist" --exclude="*.egg-info" \
-              "${startdir}/../../" "${srcdir}/local_code/"
+    # Find extracted directory (GitHub tags prepends 'NativMix-' or 'nativmix-')
+    if [ -d "${srcdir}/NativMix-${pkgver}" ]; then
+        cd "${srcdir}/NativMix-${pkgver}"
+    else
+        cd "${srcdir}/nativmix-${pkgver}"
     fi
 
-    _enter_source
     rm -rf dist/ build/ *.egg-info .eggs/
     find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
 }
 
 build() {
-    _enter_source
+    if [ -d "${srcdir}/NativMix-${pkgver}" ]; then
+        cd "${srcdir}/NativMix-${pkgver}"
+    else
+        cd "${srcdir}/nativmix-${pkgver}"
+    fi
+
     export PIP_NO_CACHE_DIR=1
     python -m build --wheel --no-isolation
 }
 
 package() {
-    _enter_source
+    if [ -d "${srcdir}/NativMix-${pkgver}" ]; then
+        cd "${srcdir}/NativMix-${pkgver}"
+    else
+        cd "${srcdir}/nativmix-${pkgver}"
+    fi
 
     # 1. Install Python wheel
     python -m installer --destdir="$pkgdir" dist/*.whl
