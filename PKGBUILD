@@ -35,9 +35,20 @@ makedepends=(
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
-source=("${pkgname%-git}::git+https://codeberg.org/eyekay/webapps.git")
-sha512sums=('SKIP')
-b2sums=('SKIP')
+source=(
+    "${pkgname%-git}::git+https://codeberg.org/eyekay/webapps.git"
+    "fix-desktop-exec.patch"
+)
+sha256sums=(
+    'SKIP'
+    '92137185036f77bcaeccce2948b382843b1e6a7d0fe7ab583117db4520995da9'
+)
+
+prepare() {
+    cd "${srcdir}/${pkgname%-git}"
+
+    patch -Np1 -i "${srcdir}/fix-desktop-exec.patch"
+}
 
 build() {
     arch-meson ${pkgname%-git} build

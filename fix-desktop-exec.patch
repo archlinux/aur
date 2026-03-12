@@ -1,0 +1,14 @@
+diff --git a/src/create_desktop_file.py b/src/create_desktop_file.py
+index 6e61c3c..47f37ab 100644
+--- a/src/create_desktop_file.py
++++ b/src/create_desktop_file.py
+@@ -36,8 +36,7 @@ def write_desktop_file(parent, app_id, name, icon_path):
+         try:
+             variant = portal.dynamic_launcher_prepare_install_finish(result)
+             token = variant["token"]
+-            # we will replace true with webapps later : https://github.com/flatpak/xdg-desktop-portal/issues/1674
+-            desktop_file = "[Desktop Entry]\nExec = true {}\nTerminal=false\nType=Application\nCategories=Network;".format(
++            desktop_file = "[Desktop Entry]\nExec = webapps {}\nTerminal=false\nType=Application\nCategories=Network;".format(
+                 app_id
+             )
+ 
