@@ -1,0 +1,23 @@
+pkgbase = savebutton
+	pkgdesc = Simple bookmark and notes manager
+	pkgver = 0.2.10
+	pkgrel = 1
+	url = https://github.com/lofimx/kaya-gtk
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = meson
+	makedepends = ninja
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = typescript
+	makedepends = gettext
+	makedepends = glib2
+	makedepends = desktop-file-utils
+	depends = gjs
+	depends = gtk4
+	depends = libadwaita
+	depends = libsecret
+	source = savebutton-0.2.10.tar.gz::https://github.com/lofimx/kaya-gtk/archive/refs/tags/v0.2.10.tar.gz
+	sha256sums = afcea54add95b1dd5f47f3bc2f5613f5217c33c89d53d18d9471730a106d34cf
+
+pkgname = savebutton
