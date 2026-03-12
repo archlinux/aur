@@ -1,0 +1,6 @@
+*.run
+*.zst
+pkg/
+src/
+*.xz
+*.gz
