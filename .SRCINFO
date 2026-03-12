@@ -1,0 +1,18 @@
+pkgbase = rust-android
+	pkgdesc = Rust collection of toolchains for compiling Android components, prebuilt by Google for Android NDK.
+	pkgver = 1.93.1
+	pkgrel = 1
+	url = https://android.googlesource.com/platform/prebuilts/rust-toolchain
+	arch = x86_64
+	license = Apache-2/MIT
+	license = custom:MIT and Apache-2.0 with LLVM-Exception and NCSO
+	license = BSD-2-Clause
+	provides = rust-android
+	conflicts = rust-android
+	replaces = rust-android
+	options = !strip
+	options = !debug
+	source = rust::shallowclone+https://android.googlesource.com/platform/prebuilts/rust-toolchain/linux-x86?branch=main-kernel
+	sha256sums = SKIP
+
+pkgname = rust-android-bin
