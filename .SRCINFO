@@ -1,6 +1,6 @@
 pkgbase = ggc-bin
 	pkgdesc = A modern Git CLI tool with both traditional command-line and interactive incremental-search UI
-	pkgver = 8.2.0
+	pkgver = 8.2.1
 	pkgrel = 1
 	url = https://github.com/bmf-san/ggc
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = ggc-bin
 	depends = glibc
 	provides = ggc
 	conflicts = ggc
-	source_x86_64 = ggc-x86_64-8.2.0.tgz::https://github.com/bmf-san/ggc/releases/download/v8.2.0/ggc_8.2.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = b60ce7c1c4b9a68fbdd8e013419c7324932868076a0539f0fcdc2c4f2607486f
-	source_i686 = ggc-i686-8.2.0.tgz::https://github.com/bmf-san/ggc/releases/download/v8.2.0/ggc_8.2.0_linux_386.tar.gz
-	sha256sums_i686 = 04cadc10c3e582f7eeff79e709200245b2d234036e0ba50ec0832c5aa2e89c1b
-	source_aarch64 = ggc-aarch64-8.2.0.tgz::https://github.com/bmf-san/ggc/releases/download/v8.2.0/ggc_8.2.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = db210cb1dac49888eabfa23241f44e9e8f2359b7039d4c0c3d95f29ba6f9c2d1
+	source_x86_64 = ggc-x86_64-8.2.1.tgz::https://github.com/bmf-san/ggc/releases/download/v8.2.1/ggc_8.2.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = d219aab89d7d10f93e6c9742619dd2b3d92e99332438c81c013f47dfb5cd5cf7
+	source_i686 = ggc-i686-8.2.1.tgz::https://github.com/bmf-san/ggc/releases/download/v8.2.1/ggc_8.2.1_linux_386.tar.gz
+	sha256sums_i686 = 1529d53cb3ed7c4d7c5ea3e56cefac5dc58b463fc1b870930bb41bf4da3a8ce3
+	source_aarch64 = ggc-aarch64-8.2.1.tgz::https://github.com/bmf-san/ggc/releases/download/v8.2.1/ggc_8.2.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 79c582652a58818e612ef19d60668e8923d1e2526f4854112b549322331d52e7
 
 pkgname = ggc-bin
