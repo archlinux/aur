@@ -1,0 +1,3 @@
+[perl-lingua-en-titlecase-simple]
+source = "cpan"
+cpan = "Lingua-EN-Titlecase-Simple"
