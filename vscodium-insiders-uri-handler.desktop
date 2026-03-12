@@ -2,11 +2,11 @@
 Name=VSCodium Insiders - URL Handler
 Comment=Code Editing. Redefined.
 GenericName=Text Editor
-Exec=/opt/vscodium-insiders/bin/codium-insiders --open-url %U
+Exec=/usr/bin/codium-insiders --open-url %U
 Icon=vscodium-insiders
 Type=Application
 NoDisplay=true
-StartupNotify=true
+StartupNotify=false
 Categories=Utility;TextEditor;Development;IDE;
 MimeType=x-scheme-handler/vscodium-insiders;
-Keywords=vscode;
+Keywords=vscodium;codium;vscode;
