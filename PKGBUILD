@@ -1,6 +1,6 @@
 # Maintainer: r3g1s <21206554+reg1z (at) user (dot) noreply (dot) github (dot) com>
 pkgname=omarchy-kali-vm
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Standalone Kali Linux VM launcher with optional Omarchy integration"
 arch=('x86_64')
@@ -21,7 +21,7 @@ depends=(
 makedepends=('git')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dab724e990ceb18ae41186a0671a44cb0a5d58ab951440ae27fa4e12e7ca4198')
+sha256sums=('0cd0d73b712517a8b845cc5b5dca7e71deaab0f61288d5eda947a707d20e86af')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
