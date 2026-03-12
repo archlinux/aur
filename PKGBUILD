@@ -1,6 +1,6 @@
 # Maintainer: camtisocial <thompsonca99@gmail.com>
 pkgname=pacfetch
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="A neofetch-style pacman stats display and -Syu wrapper"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('pacman')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/camtisocial/pacfetch/archive/v$pkgver.tar.gz")
-sha256sums=('19fd3ada0850d33d3b274edeb77a451d84bda62e7bbc5a867fee92d7eabb2a50')
+sha256sums=('1c5e8864f20256510126f0071a838d466fca89425a24e93d038e9f3f910676a2')
 
 build() {
     cd "$pkgname-$pkgver"
