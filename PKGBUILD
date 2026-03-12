@@ -1,6 +1,6 @@
 # Maintainer: Eduardo Vozniak <evozniak@users.noreply.github.com>
 pkgname=tupiscreen
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Auto-switch display layout and audio output when a game controller is connected"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('kscreen' 'libpipewire')
 makedepends=('dotnet-sdk>=9')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('670ecd54ac624c2dc29cb82dda55537bd65a44a60e84ba1b341294b4d91a0460')
+sha256sums=('817bc3cb00685fdc22a2c513f984b3c3531093d3ec994c31a6eb95b5f4b3f0d7')
 
 build() {
     cd "TupiScreen-$pkgver"
