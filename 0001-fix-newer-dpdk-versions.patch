@@ -1,0 +1,44 @@
+diff -Naur a/src/fd-net-device/model/dpdk-net-device.cc b/src/fd-net-device/model/dpdk-net-device.cc
+--- a/src/fd-net-device/model/dpdk-net-device.cc	2026-02-17 01:08:49.601230000 +0100
++++ b/src/fd-net-device/model/dpdk-net-device.cc	2026-03-12 00:18:24.912566118 +0100
+@@ -141,7 +141,7 @@
+             continue;
+         }
+         /* clear allPortsUp flag if any link down */
+-        if (link.link_status == ETH_LINK_DOWN)
++        if (link.link_status == RTE_ETH_LINK_DOWN)
+         {
+             allPortsUp = 0;
+             break;
+@@ -301,9 +301,8 @@
+     NS_LOG_INFO("Initialize port");
+     static struct rte_eth_conf portConf = {};
+     portConf.rxmode = {};
+-    portConf.rxmode.split_hdr_size = 0;
+     portConf.txmode = {};
+-    portConf.txmode.mq_mode = ETH_MQ_TX_NONE;
++    portConf.txmode.mq_mode = RTE_ETH_MQ_TX_NONE;
+ 
+     struct rte_eth_rxconf reqConf;
+     struct rte_eth_txconf txqConf;
+@@ -312,9 +311,9 @@
+ 
+     fflush(stdout);
+     rte_eth_dev_info_get(m_portId, &devInfo);
+-    if (devInfo.tx_offload_capa & DEV_TX_OFFLOAD_MBUF_FAST_FREE)
++    if (devInfo.tx_offload_capa & RTE_ETH_TX_OFFLOAD_MBUF_FAST_FREE)
+     {
+-        localPortConf.txmode.offloads |= DEV_TX_OFFLOAD_MBUF_FAST_FREE;
++        localPortConf.txmode.offloads |= RTE_ETH_TX_OFFLOAD_MBUF_FAST_FREE;
+     }
+     ret = rte_eth_dev_configure(m_portId, 1, 1, &localPortConf);
+     if (ret < 0)
+@@ -387,7 +386,7 @@
+     CheckAllPortsLinkStatus();
+ 
+     NS_LOG_INFO("Launching core threads");
+-    rte_eal_mp_remote_launch(LaunchCore, this, CALL_MASTER);
++    rte_eal_mp_remote_launch(LaunchCore, this, CALL_MAIN);
+ }
+ 
+ uint8_t*
