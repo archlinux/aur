@@ -1,51 +1,65 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-test-vars'
-pkgver='0.015'
+_author=JKEENAN
+_dist=Test-Vars
+_ver=0.017
+pkgname=perl-${_dist@L}
+pkgver=${_ver#v}
 pkgrel=1
-pkgdesc="Detects unused variables"
+pkgdesc='Detects unused variables in perl modules'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$_ver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-extutils-manifest'
+    'perl-io'
+    'perl-parent'
+    'perl-scalar-list-utils>=1.33'
+    'perl-storable'
+    'perl>=5.10.0'
+)
+makedepends=('perl-extutils-makemaker>=6.17')
+checkdepends=(
+    'perl-moose'
+    'perl-pathtools'
+    'perl-test-output'
+    'perl-test-simple'
+)
+optdepends=(
+    'perl-moose'
+    'perl-test-output'
+)
 options=('!emptydirs')
-depends=('perl')
-makedepends=('perl-module-build-tiny')
-url='https://metacpan.org/pod/Test::Vars'
-source=("https://cpan.metacpan.org/authors/id/G/GF/GFUJI/Test-Vars-$pkgver.tar.gz")
-sha256sums=('e18dd158272e4ec9939e1dfb33c7431ab4e75c6b40b280c38b5e804fda471a54')
-_distdir="Test-Vars-$pkgver"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$_ver.tar.gz")
+sha256sums=('56ddacbb663cf542673aa65525ef50980b53f207770e743a1d18614bd8268178')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$_ver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Build.PL
-    /usr/bin/perl Build
-  )
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  rm t/03_warned.t  # due to https://github.com/houseabsolute/p5-Test-Vars/issues/37
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    /usr/bin/perl Build test
-  )
+check()
+{
+    cd "$_dist-$_ver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  /usr/bin/perl Build install
+package()
+{
+    cd "$_dist-$_ver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:

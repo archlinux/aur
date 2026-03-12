@@ -13,4 +13,3 @@ pkgbase = perl-test-vars
 	sha256sums = e18dd158272e4ec9939e1dfb33c7431ab4e75c6b40b280c38b5e804fda471a54
 
 pkgname = perl-test-vars
-
