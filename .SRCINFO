@@ -8,6 +8,7 @@ pkgbase = goose-desktop
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = nodejs
+	makedepends = pnpm
 	makedepends = just
 	provides = goose-desktop
 	conflicts = goose-desktop-bin

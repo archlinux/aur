@@ -13,6 +13,7 @@ makedepends=(
   "cargo"
   "cmake"
   "nodejs"
+  "pnpm"
   "just"
 )
 
@@ -40,8 +41,7 @@ build() {
 
   cd ui/desktop
 
-  # Ignore husky prepare script
-  npm install --quiet --ignore-scripts --no-audit
+  pnpm install
 
   npx electron-forge package
 }
