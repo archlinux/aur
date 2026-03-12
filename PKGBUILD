@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vmlinux-to-elf"
-pkgver=1.0.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Recover a fully analyzable .ELF from a raw kernel, through extracting the kernel symbol table (kallsyms)"
 arch=(
@@ -15,12 +15,19 @@ depends=(
   'python>=3.9'
   'python-lz4>=4.4.5'
   'python-minilzo>=1.2'
+  'python-peewee>=3.17'
   'python-zstandard>=0.25.0'
 )
 makedepends=(
   'python-build'
   'python-installer'
-  'python-uv-build'
+  'python-setuptools>=69'
+)
+optdepends=(
+  # 'glib2: GUI'
+  # 'gtk4: GUI'
+  'python-gobject: GUI'
+  'libadwaita: GUI'
 )
 provides=(
   "python-${pkgname}=${pkgver}"
@@ -35,7 +42,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('40a73f683a3f45b6b617716e1d2bffd26fc60c0e654bf458b3c057633cb673d0')
+sha256sums=('09df39ee1cf6694b4f29a1578c451588b7afc63b9435aaee35c2ebd93fd5e072')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
