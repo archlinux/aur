@@ -2,7 +2,7 @@
 # Contributor: Peter <your@email.com>
 
 pkgname=ytm-player
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="A full-featured YouTube Music TUI client with vim-style navigation"
 
@@ -39,18 +39,18 @@ optdepends=(
 provides=("${pkgname%%-player}")
 conflicts=("${pkgname}"{-git,-bin})
 
-source=("git+${url}.git#tag=v${pkgver}")
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
 
-sha256sums=('2b33c934d7b2bf39f98f8705604f4fc6b980dc4223b99d039afd383ceb091451')
+sha256sums=('d4b095dd3cac5187d01b94164a73c58f693f246ca79071120b70759eef6e8006')
 
 build() {
-    cd ${pkgname} || exit
+    cd "${pkgname}-${pkgver}" || exit
 
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd ${pkgname} || exit
+    cd "${pkgname}-${pkgver}" || exit
 
     python -m installer --destdir="${pkgdir}" dist/*.whl
 
