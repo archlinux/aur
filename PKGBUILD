@@ -30,7 +30,7 @@ pkgver=1.26.3.1
 # Click the "DOWNLOAD" button under the section for the stable/non-preview "Ubuntu (Linux)" version.
 # To get the sha256 hashsum, run the following on the downloaded file:
 # sha256sum <bedrock-server-vX.YY.Z>.zip
-_pkghash='aa68bfb0ae87ddaa4316df2a69c48af9438d3cbe893cbcd8dda843079d2ab7df'
+_pkghash='1b03ac717d239d47a3f374dba673125d3f2a6a05968b5933f9e87affceb6b9c8'
 
 # Version of the AUR package, (not the underlying vendor's release version).
 # This is only higher than "1" if another AUR package release is cut
