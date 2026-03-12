@@ -6,9 +6,7 @@ green='\e[1;32m'
 post_install() {
     echo -e "${blue}--- Cấu hình Bộ gõ Lotus ---${all_off}"
     
-    modprobe uinput
-    udevadm control --reload-rules
-    udevadm trigger
+    modprobe uinput || true
     
     echo -e "${bold}Hướng dẫn sau cài đặt:${all_off}"
     echo -e "1. Kích hoạt Server cho user của bạn:"
@@ -24,10 +22,6 @@ post_install() {
 
 post_upgrade() {
     echo -e "${blue}--- Cấu hình Bộ gõ Lotus ---${all_off}"
-    
-    modprobe uinput
-    udevadm control --reload-rules
-    udevadm trigger
     
     echo -e "${bold}Hướng dẫn sau cập nhật:${all_off}"
     echo -e "1. Khởi động lại Server cho user của bạn:"
