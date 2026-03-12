@@ -1,0 +1,5 @@
+[parrot-tts]
+source = "github"
+github = "rishiskhare/parrot"
+prefix = 'v'
+use_latest_release = true

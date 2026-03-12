@@ -1,0 +1,28 @@
+From 8ce31099def80f90c02f9f96a7073fd24bcdcd8a Mon Sep 17 00:00:00 2001
+From: Rishi Khare <rishiskhare@gmail.com>
+Date: Tue, 24 Feb 2026 21:11:42 -0500
+Subject: [PATCH] fix: add missing setModelUnloadTimeout binding
+
+---
+ src/bindings.ts | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/src/bindings.ts b/src/bindings.ts
+index 855916c..b0f410d 100644
+--- a/src/bindings.ts
++++ b/src/bindings.ts
+@@ -378,6 +378,14 @@ async setActiveModel(modelId: string) : Promise<Result<null, string>> {
+     else return { status: "error", error: e  as any };
+ }
+ },
++async setModelUnloadTimeout(timeout: ModelUnloadTimeout) : Promise<Result<null, string>> {
++    try {
++    return { status: "ok", data: await TAURI_INVOKE("set_model_unload_timeout", { timeout }) };
++} catch (e) {
++    if(e instanceof Error) throw e;
++    else return { status: "error", error: e  as any };
++}
++},
+ async getCurrentModel() : Promise<Result<string, string>> {
+     try {
+     return { status: "ok", data: await TAURI_INVOKE("get_current_model") };
