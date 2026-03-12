@@ -4,41 +4,39 @@ pkgbase='zl-compressor'
 pkgname=('zl-compressor-vst3' 'zl-compressor-lv2' 'zl-compressor')
 groups=('zl-audio' 'pro-audio')
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 options=()
 pkgdesc="Sidechain and oversample capable compressor plugin by ZL Audio"
 arch=('x86_64')
 url="https://zl-audio.github.io/plugins/zlcompressor/"
 license=('AGPL-3.0')
-depends=('alsa-lib' 'libx11' 'libxinerama' 'libxext' 'freetype2' 'fontconfig' 'webkit2gtk' 'glu' 'libc++')
-makedepends=('git' 'cmake' 'clang')
+depends=('alsa-lib' 'libx11' 'libxinerama' 'libxext' 'freetype2' 'fontconfig' 'webkit2gtk' 'glu')
+makedepends=('git' 'cmake')
 
 source=("git+https://github.com/ZL-Audio/ZLCompressor#tag=${pkgver}"
-		"git+https://github.com/ZL-Audio/kfr#tag=9a35250"
 		"git+https://github.com/ZL-Audio/JUCE#tag=6bd3353")
 sha256sums=('721bbbe371c81e73698976c7304e4c5486bb010686dd92a1b745a26165386b48'
-            '7aaa927395bce6845b844e775786859e79b2e41dd857a0adee923b93dd183213'
             '2adccbf0b7e52a90a16956955dbbef14924af56086157cfbef7607ac83faf4e5')
 
 prepare() {
 	cd ZLCompressor
 	
 	git submodule init
-	git config submodule."kfr".url "${srcdir}/kfr"
 	git config submodule."JUCE".url "${srcdir}/JUCE"
-	git -c protocol.file.allow=always submodule update JUCE kfr
+	git -c protocol.file.allow=always submodule update JUCE #kfr
 
 
-    # Use system kfr (broken due to libc++/libstdc++ symbol in
-    #sed 's|add_subdirectory(kfr)|find_package(KFR CONFIG REQUIRED)|' -i CMakeLists.txt
+    # Use system kfr
+    sed 's|add_subdirectory(kfr)|find_package(KFR CONFIG REQUIRED)|' -i CMakeLists.txt
 }
 
 build () {
 	cd ZLCompressor
 
+	local CXXFLAGS="${CXXFLAGS//-Wp,-D_GLIBCXX_ASSERTIONS/}" # causes issues
+
 	cmake -B Builds \
-		 -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
-	     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_CXX_FLAGS="$CXXFLAGS -stdlib=libc++ -lc++abi" -DCMAKE_SKIP_INSTALL_RPATH=YES \
+	     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_FLAGS="$CFLAGS" -DCMAKE_CXX_FLAGS="$CXXFLAGS" -DCMAKE_SKIP_INSTALL_RPATH=YES \
 	     -DZL_JUCE_COPY_PLUGIN=FALSE -DZL_JUCE_FORMATS="VST3;LV2" .
 	make -C Builds
 }
