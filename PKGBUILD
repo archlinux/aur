@@ -3,7 +3,7 @@
 # Contributor: éclairevoyant
 
 pkgname=perl-test-future-io-impl
-pkgver=0.20
+pkgver=0.21
 pkgrel=1
 pkgdesc='Acceptance tests for Future::IO implementations'
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(
 )
 options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Test-Future-IO-Impl-${pkgver}.tar.gz")
-b2sums=('e329ffa8a6b0fe40fabdb95375e5de9308ad893a4d21423a77746be821c4d1ce78b9435ab31d1a4a87b4f34f005eb8f72d5e1d673757db750e87eda59eb2e4a5')
+b2sums=('736cc8944a90582dac80f1ba7b2edfddc4867b959d9d70835dfb2ae7a6309161bccf97d9970069e5072ef266507e77dd6efcb8aef7936791f76ed3b06ae7e5d5')
 
 build() {
   cd "${srcdir}/Test-Future-IO-Impl-${pkgver}"
