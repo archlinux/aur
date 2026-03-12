@@ -1,0 +1,9 @@
+post_install() {
+    echo ":: The Appgate service name has changed in recent versions."
+    echo ":: To allow the client to connect, you must enable and start the driver:"
+    echo "   sudo systemctl enable --now appgatedriver.service"
+}
+
+post_upgrade() {
+    post_install
+}

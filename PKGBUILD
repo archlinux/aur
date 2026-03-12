@@ -2,7 +2,7 @@
 # Contributor: Pawel Mosakowski <pawel at mosakowski dot net>
 
 pkgname=appgate-sdp
-pkgver=6.4.2
+pkgver=6.5.4
 pkgrel=1
 pkgdesc="Appgate SDP (Software Defined Perimeter) desktop client"
 arch=("x86_64")
@@ -15,14 +15,13 @@ optdepends=(
 )
 provides=("${pkgname}")
 options=(staticlibs !strip !emptydirs)
+install="${pkgname}.install"
 source=(
-  "https://bin.${pkgname}.com/${pkgver%.*}/client/${pkgname}_${pkgver}_amd64.deb"
+  "https://bin.${pkgname}.com/6.5/client/${pkgname}_${pkgver}_amd64.deb"
   "10-appgate-tun.network"
 )
-sha256sums=(
-  "c45a410ba5fde42d35c147f32776b490ccfcf7c93a048b64a492dc5267ddee86"
-  "2eb0daa10429e67d703cceccd34069da3044d99c5652658ec73c7a01c88b64e9"
-)
+sha256sums=('b551c600ff740b8271cfe52bd619a50a6436b4eb5a4ae22f014400aaee81291c'
+            '2eb0daa10429e67d703cceccd34069da3044d99c5652658ec73c7a01c88b64e9')
 
 prepare() {
   mkdir "${srcdir}/${pkgname}"
