@@ -2,7 +2,7 @@
 
 pkgname=plezy-bin
 pkgver=1.26.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A beautiful Plex media server client built with Flutter"
 arch=('x86_64')
 url="https://github.com/edde746/plezy"
