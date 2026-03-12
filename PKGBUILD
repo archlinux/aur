@@ -1,6 +1,6 @@
 # Maintainer: uchqunov <2xotin123456@gmail.com>
 pkgname=namoz-vaqtlari
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=2  # Versiyani 2 ga ko'taramiz
 pkgdesc="Islom.uz ma'lumotlari asosida namoz vaqtlari CLI vositasi"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('dotnet-runtime-8.0' 'chromium')
 makedepends=('dotnet-sdk-8.0')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('75c2ef16c62105959e8c96e5f582805212f3978bacf3dfbb0b34cebcf8561071')
 
 build() {
   cd "NamozVaqtlariCLI-$pkgver"
