@@ -1,7 +1,7 @@
 pkgbase = rescached
 	pkgdesc = Resolver/DNS cache daemon
-	pkgver = 4.4.4
-	pkgrel = 2
+	pkgver = 4.5.0
+	pkgrel = 1
 	url = https://git.sr.ht/~shulhan/rescached
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = rescached
 	backup = etc/rescached/rescached.cfg
 	backup = etc/rescached/localhost.pem
 	backup = etc/rescached/localhost.pem.key
-	source = rescached-v4.4.4.tar.gz::https://git.sr.ht/~shulhan/rescached/archive/v4.4.4.tar.gz
-	sha256sums = 0d7d98e7e711a1fcb059c4cc714d783c2c06d87466f5d83289258f325f0204a4
+	source = rescached-v4.5.0.tar.gz::https://git.sr.ht/~shulhan/rescached/archive/v4.5.0.tar.gz
+	sha256sums = a1b59454d1c3d5c7ca981d0248b2f1cdd6ac1d1f692befd725ce8560fe98c0ee
 
 pkgname = rescached

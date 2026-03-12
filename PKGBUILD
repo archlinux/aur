@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 pkgname=rescached
-pkgver=4.4.4
-pkgrel=2
+pkgver=4.5.0
+pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://git.sr.ht/~shulhan/rescached"
@@ -13,7 +13,7 @@ makedepends=('git' 'go>=1.20')
 source=(
 	"$pkgname-v$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('0d7d98e7e711a1fcb059c4cc714d783c2c06d87466f5d83289258f325f0204a4')
+sha256sums=('a1b59454d1c3d5c7ca981d0248b2f1cdd6ac1d1f692befd725ce8560fe98c0ee')
 
 backup=(
 	'etc/rescached/block.d/.pgl.yoyo.org'
