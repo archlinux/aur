@@ -21,7 +21,7 @@ pkgbase = conquest-git
 	depends = libxi
 	depends = gtk2
 	backup = etc/conquest/default.toml
-	source = git+https://github.com/jakobfriedl/conquest#branch=smb
+	source = git+https://github.com/jakobfriedl/conquest
 	source = conquest.service
 	sha1sums = SKIP
 	sha1sums = 712aca37272746ea97f31e82f0b40f7ad9e9aa69

@@ -7,12 +7,11 @@ url="https://github.com/jakobfriedl/conquest.git"
 backup=('etc/conquest/default.toml')
 license=("BSD 3-Clause License")
 depends=('nim' 'nimble' 'git' 'curl' 'base-devel' 'xz' 'glfw-x11' 'mesa' 'glu' 'libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxi' 'gtk2')
-source=("git+https://github.com/jakobfriedl/conquest#branch=smb" 'conquest.service')
+source=("git+https://github.com/jakobfriedl/conquest" 'conquest.service')
 sha1sums=('SKIP' '712aca37272746ea97f31e82f0b40f7ad9e9aa69')
 
 prepare(){
 	cd "$srcdir/${pkgname%-git}"
-	git checkout smb
 	git submodule update --init --recursive
 }
 
