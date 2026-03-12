@@ -1,7 +1,7 @@
 # Maintainer: ThatOneCalculator (Kainoa Kanter) <kainoa@t1c.dev>
 _pkgname="dune-cli"
 pkgname="${_pkgname}"
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Dune Analytics CLI"
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ conflicts=(
     "${_pkgname}-bin"
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('60272935fed54970124c61278308e4f95a4045a79a84fdb8d617c83b62aa691e')
+sha256sums=('daf00047141a4ab0cfd82d41f48ba5cd444928d46dbce214fae0c023bf0559b5')
 
 build() {
     cd "${srcdir}/cli-${pkgver}" || exit
