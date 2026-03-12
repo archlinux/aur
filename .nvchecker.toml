@@ -1,0 +1,5 @@
+[pacfetch-bin]
+source = "github"
+github = "camtisocial/pacfetch"
+use_latest_release = true
+prefix = "v"

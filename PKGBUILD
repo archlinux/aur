@@ -1,25 +1,41 @@
-# Maintainer: Auteiy <dmitry@auteiy.me>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-pkgname=pacfetch-bin
-pkgver=0.1.7
+_pkgauthor=camtisocial
+_pkgname=pacfetch
+pkgname=${_pkgname}-bin
+pkgdesc="A neofetch-style pacman stats display and -Syu wrapper"
+
+pkgver=1.1.3
 pkgrel=1
-pkgdesc="Simple fetch script for pacman based distros. Written in Rust."
-url="https://git.auteiy.me/dmitry/pacFetch"
-license=('GPL3')
-provides=('pacfetch')
-conflicts=('pacfetch-git')
-depends=(
-    gcc-libs
-    wmctrl
-)
-
-source=("pacfetch-v$pkgver::https://github.com/auteiy/pacfetch/releases/download/v$pkgver/pacfetch-v$pkgver-linux-x64")
-
-# Checksums automatically set in CI, see: /.gitlab-ci.yml
-sha512sums=('7f9ae482ea851fa344d1b6ce0ace443c23a54f964057d4a30aebb310b2be31b3ab4aace970430de06b3a20d7ff0d56120b721979419a99422429d6cfd3963265')
+_pkgvername=v${pkgver}
 
 arch=('x86_64')
+_barch=('x86_64-linux')
+
+url="https://github.com/${_pkgauthor}/${_pkgname}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+
+license=('GPL-3.0-or-later')
+
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+depends=('glibc' 'libgcc' 'openssl' 'pacman')
+
+source=("README-${pkgver}.md::${_urlraw}/README.md"
+		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
+source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[0]}.tar.gz")
+source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
+sha256sums=('b701f41c85677d2b65e7c2ee2695b6160619c71d98e64fb95650d4e7fcbc267d'
+            '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
+sha256sums_x86_64=('b8125c3115445f10e2c9ba5f6c279291be4d514685dce5ee5947d9005b184c02')
+
 
 package() {
-    install -D "$srcdir/pacfetch-v$pkgver" "$pkgdir/usr/bin/pacfetch"
+	cd "${srcdir}/" || exit
+
+	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+
+	install -Dm644 "LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
