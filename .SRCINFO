@@ -1,7 +1,7 @@
 pkgbase = abyssal-gtk-theme
 	pkgdesc = Abyssal GTK theme (multiple palettes)
-	pkgver = 1.0.4
-	pkgrel = 3
+	pkgver = 1.0.5
+	pkgrel = 1
 	url = https://github.com/zen0x00/abyssal-gtk-theme
 	arch = any
 	license = GPL-3.0-or-later
@@ -10,7 +10,7 @@ pkgbase = abyssal-gtk-theme
 	depends = gtk4
 	depends = libadwaita
 	options = !strip
-	source = abyssal-gtk-theme-1.0.4.tar.gz::https://github.com/zen0x00/abyssal-gtk-theme/archive/refs/tags/v1.0.4.tar.gz
+	source = abyssal-gtk-theme-1.0.5.tar.gz::https://github.com/zen0x00/abyssal-gtk-theme/archive/refs/tags/v1.0.5.tar.gz
 	sha256sums = SKIP
 
 pkgname = abyssal-gtk-theme

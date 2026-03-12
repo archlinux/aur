@@ -1,8 +1,8 @@
 # Maintainer: zen0x (amanchaitany@proton.me)
 
 pkgname=abyssal-gtk-theme
-pkgver=1.0.4
-pkgrel=3
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="Abyssal GTK theme (multiple palettes)"
 arch=(any)
 url="https://github.com/zen0x00/abyssal-gtk-theme"
@@ -15,16 +15,16 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/zen0x00/abyssal-gtk-theme/a
 sha256sums=('SKIP')
 
 _palettes=(
+  black
+  e-ink
   dark
   nord
   everforest
   gruvbox
   tokyonight
   dracula
-  catppuccin-frappe
+  catppuccin
   catppuccin-latte
-  catppuccin-macchiato
-  catppuccin-mocha
 )
 
 build() {
