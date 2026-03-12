@@ -1,6 +1,6 @@
 # Maintainer: pkg_maintainer <archlinuxpackagemaintainer@gmail.com>
 pkgname=tplay-git
-pkgver=v0.6.2.r0.g77205a6
+pkgver=v0.8.1.r0.g44a9adb
 pkgrel=1
 epoch=
 pkgdesc="A terminal ASCII media player. View images, gifs, videos, webcam, YouTube, etc.. directly in the terminal as ASCII art."
@@ -8,10 +8,10 @@ arch=('x86_64')
 url="https://github.com/maxcurzi/tplay.git"
 license=('MIT')
 groups=()
-depends=(yt-dlp opencv clang mpv ffmpeg mold)
+depends=(clang mpv ffmpeg mold)
 makedepends=(git)
 checkdepends=()
-optdepends=()
+optdepends=(yt-dlp)
 provides=(tplay-git)
 conflicts=()
 replaces=()
@@ -32,15 +32,9 @@ pkgver() {
 build() {
 	cd tplay
 	# Improve the app performance by building it against the current cpu architecture.
-	export RUSTFLAGS="-C target-cpu=native"
+	export RUSTFLAGS="-C target-cpu=native -C opt-level=3"
 
-	if [[ $(mpv --version | grep "mpv" | cut -d " " -f2 | cut -d "-" -f1 | cut -b 1-4) = '0.35' ]]; then
-		mold -run cargo build -r --features="mpv_0_35" --no-default-features
-	elif [[ $(mpv --version | grep "mpv" | cut -d " " -f2 | cut -d "-" -f1 | cut -b 1-4) = '0.34' ]]; then
-		mold -run cargo build -r --features="mpv_0_34" --no-default-features
-	else
-		mold -run cargo build -r --features="rodio_audio" --no-default-features
-	fi
+	mold -run cargo build -r --features="rodio_audio" --no-default-features
 }
 
 package() {
