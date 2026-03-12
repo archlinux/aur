@@ -3,7 +3,7 @@
 
 _gemname=mdless
 pkgname=ruby-$_gemname
-pkgver=2.1.62
+pkgver=2.1.64
 pkgrel=1
 pkgdesc='A pager like less, but for Markdown files'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby ruby-redcarpet ruby-rouge ruby-tty-screen ruby-tty-spinner ruby-tt
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('61b5bef09d27a0f7e5a318b12c1293ce3d829eb5')
+sha1sums=('0be86a37618bb52be605452ad938b34a21640fd8')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

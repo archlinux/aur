@@ -1,14 +1,19 @@
 pkgbase = ruby-mdless
 	pkgdesc = A pager like less, but for Markdown files
-	pkgver = 2.1.62
+	pkgver = 2.1.64
 	pkgrel = 1
 	url = http://brettterpstra.com/project/mdless/
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = mdless-2.1.62.gem
+	depends = ruby-redcarpet
+	depends = ruby-rouge
+	depends = ruby-tty-screen
+	depends = ruby-tty-spinner
+	depends = ruby-tty-which
+	noextract = mdless-2.1.64.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/mdless-2.1.62.gem
-	sha1sums = 61b5bef09d27a0f7e5a318b12c1293ce3d829eb5
+	source = https://rubygems.org/downloads/mdless-2.1.64.gem
+	sha1sums = 0be86a37618bb52be605452ad938b34a21640fd8
 
 pkgname = ruby-mdless
