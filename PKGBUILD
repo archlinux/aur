@@ -10,7 +10,7 @@ options=('!strip' '!emptydirs')
 provides=('lifeos-udf')
 conflicts=('lifeos-udf')
 source=("https://github.com/07erkanoz/LifeOS-Udf-Cevirici/releases/download/v${pkgver}/lifeos-udf_${pkgver}_amd64.deb")
-sha256sums=('175f6574e12ac4627f5a04609ab1e7cf6b89eddd400b91fd8fcd14391d1b245f')
+sha256sums=('3f308c923c1a37aa27f165a3e41ede30e2776ce33e0cbd3f446853ead899a082')
 
 package() {
     # .deb dosyasi icindeki contents ve metadata dizinlerini ac
