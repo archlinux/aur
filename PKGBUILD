@@ -8,7 +8,7 @@ url="https://github.com/Gunther-Schulz/display-mode-switcher"
 license=('MIT')
 depends=('ddcutil' 'mutter')
 source=("https://github.com/Gunther-Schulz/display-mode-switcher/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('2030f6c1f8f35eebc32dddbc3b7cc5dad7a97e44f726bd84e09fcf7b87dae6b1')
+sha256sums=('42b877450959907045fe68fd8cf01df95bf9a990eca39c6d9a74fcf273893e5d')
 
 package() {
   cd "$srcdir/display-mode-switcher-${pkgver}"

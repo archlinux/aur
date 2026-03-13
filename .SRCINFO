@@ -8,6 +8,6 @@ pkgbase = ddc-mode-switcher
 	depends = ddcutil
 	depends = mutter
 	source = https://github.com/Gunther-Schulz/display-mode-switcher/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 2030f6c1f8f35eebc32dddbc3b7cc5dad7a97e44f726bd84e09fcf7b87dae6b1
+	sha256sums = 42b877450959907045fe68fd8cf01df95bf9a990eca39c6d9a74fcf273893e5d
 
 pkgname = ddc-mode-switcher
