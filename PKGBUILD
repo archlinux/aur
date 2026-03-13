@@ -1,7 +1,7 @@
 # Maintainer: Denis Benato <benato.denis96@gmail.com>
 
 pkgname=sbctl-dracut-conf
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Dracut-specific configuration for sbctl"
 arch=('any')
@@ -29,6 +29,7 @@ source=(
     "dracut-remove.sh"
     "00-base.conf"
     "01-cmdline.conf"
+    "02-nvidia.conf"
     "10-fstab.conf"
     "20-plymouth.conf"
     "30-filesystems.conf"
@@ -48,12 +49,13 @@ sha256sums=(
     '060027ce9c482dce8ba65816932936994e4663e5b4d732144d1d0b63966278d3' # dracut-remove.sh
     '704aafe8b5194dc653543febbee8eb13afc52cf353fb0010722ed31409136d9e' # 00-base.conf
     '399fa1a896df221a9bf544b5437a901684f8876cae9c24fa16a3d44652f832cd' # 01-cmdline.conf
+    'b104fd7c6adb46c81c2bc9730ae35f013072f6fe5e9fa460ab9b8932ee0fe125' # 02-nvidia.conf
     '7886062a7293d2e6bd6e975c4a8aaae63342af366479db8adf1b75860081cf53' # 10-fstab.conf
     '103cf3322954202c3f0f740cd9079546d059f919c8b1b07ac703ec6f94cf17fb' # 20-plymouth.conf
     '676b4a216cd3787882edf2e5bdaebce4577a11dbae176f81bab1c1b72917fc09' # 30-filesystems.conf
     'e68879e7993bab99e13f6696fc47e4f2f6ae9d458ebf576cf4d5f0dc38fbc23a' # 40-resume_from_hibernate.conf
     'fc326305712dde6930ff7186480bd724ecb0922e6eabcf7a9677285b9818ec0a' # 50-brltty.conf
-    'e1f9caf3878e65ca28951642ad02c1b167eacba777b4ccc893f6b8702a6d474e' # 60-networking.conf
+    '59861ed2f4fd236b90773385c4969e6cc72761e6e801085f5f5705e39c2166fc' # 60-networking.conf
     '5822aa5a698577937820ab2565a203492b6af81434bf1423664ef68bba8c1617' # 70-nvdimm.conf
     'b126149ca9f79bb1deb7ec640f4452dd61f4214558f954b7bc9196c5e9ca6ef0' # 80-qemu.conf
     'e983493fe3e7d9395dd8d1c8949150144c8d4318ff17ff2aca004235734c8299' # 90-bluetooth.conf
@@ -76,6 +78,7 @@ package() {
 
     install -m 644 "$srcdir/00-base.conf" "$pkgdir/etc/dracut.conf.d"
     install -m 644 "$srcdir/01-cmdline.conf" "$pkgdir/etc/dracut.conf.d"
+    install -m 644 "$srcdir/02-nvidia.conf" "$pkgdir/etc/dracut.conf.d"
     install -m 644 "$srcdir/10-fstab.conf" "$pkgdir/etc/dracut.conf.d"
     install -m 644 "$srcdir/20-plymouth.conf" "$pkgdir/etc/dracut.conf.d"
     install -m 644 "$srcdir/30-filesystems.conf" "$pkgdir/etc/dracut.conf.d"
