@@ -1,17 +1,18 @@
 # Maintainer: Hein Puth (Warky Devs)
 pkgname=wkmailsync
 _pkgsrc="WkMailSync"
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
-pkgdesc="Mail synchronization and backup tool - IMAP/Maildir sync and export"
-arch=('x86_64')
+pkgdesc="IMAP/Maildir mail sync and backup tool with EML/ZIP export and Virtualmin support"
+arch=('x86_64' 'aarch64')
 url="https://github.com/Warky-Devs/WkMailSync"
 license=('GPL-3.0-only')
 depends=('glibc')
 options=('!debug')
-makedepends=('go>=1.22.0')
+makedepends=('go')
+keywords=('mail' 'imap' 'maildir' 'sync' 'backup' 'email' 'virtualmin')
 source=("$_pkgsrc-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ebf7c583bac8084b041b0bdfbfd7dba4d4e260dbd2796820b087d799b6d9d6da')
+sha256sums=('119621ed5a58fd6a2af9639151013e2ed0b39223359dc93ef59c31fb792f4135')
 
 build() {
     cd "$_pkgsrc-$pkgver"
