@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Pencil
+Comment=Design on canvas. Land in code.
+Exec=pencil-dev %U
+Terminal=false
+Type=Application
+Icon=pencil
+Categories=Development;
+StartupWMClass=Pencil
