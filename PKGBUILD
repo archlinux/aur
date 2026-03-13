@@ -5,7 +5,7 @@ _pkgname=bluekeys
 pkgname=${_pkgname}-bin
 pkgdesc="Monkeytype for your terminal"
 
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -29,8 +29,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.gz")
 sha256sums=('44d5dcde4a486ecbada81c96ec4e477bfd2a742b7b23997321f188ae01a299bf'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986')
-sha256sums_x86_64=('73f6363ab3074557b2aa2c598150e79608a17e8d53047522f6c59d05449848e1')
-sha256sums_aarch64=('374045ba2d5b9050f45cc471c6abb4f45650fe2f2dae58ac2a265893944493f6')
+sha256sums_x86_64=('99e6619f53e534ff73e9cae98bc8e0f85d6902e4c302dc88cb0865ec89ddfe01')
+sha256sums_aarch64=('d1da3dbe2398a7c9970dec9918ca617a092c0a39032f6b2b3774da9250b0dd12')
 
 
 package() {
