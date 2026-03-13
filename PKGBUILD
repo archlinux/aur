@@ -26,11 +26,10 @@ depends=(openmpi blas boost-libs hdf5)
 ((ENABLE_OPENCRG)) && depends+=(opencrg)
 makedepends+=(cmake eigen git boost glm glew glfw irrlicht glut openmpi gcc-fortran)
 makedepends+=(python swig) # MODULE_PYTHON
-makedepends+=('cuda')        # MODULE_GRANULAR
-                           # MODULE_PARALLEL optional
+makedepends+=('cuda')      # MODULE_GRANULAR
 makedepends+=(blaze)       # MODULE_PARALLEL required
 #makedepends+=(thrust)      # MODULE_PARALLEL required (included in cuda)
-makedepends+=(opencascade) # MODULE_CASCADE
+makedepends+=(opencascade) # MODULE_CASCADE (version<=7.2)
 makedepends+=(splashsurf)  # MODULE_FSI (mesh SPH sim)
 makedepends+=(mumps)       # MODULE_MUMPS
 makedepends+=(blas)        # MODULE_MUMPS required
