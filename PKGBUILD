@@ -3,11 +3,14 @@
 pkgname=plex-htpc
 pkgver=1.71.1.346
 _pkghash=f62ce923
+_snapid=81OP06hEXlwmMrpMAhe5hyLy5bQ9q6Kz
+_snaprev=73
 pkgrel=1
 pkgdesc="Plex HTPC client for linux"
 arch=('x86_64')
 url='http://plex.tv'
 license=('custom')
+makedepends=(squashfs-tools)
 depends=(libgl
   hicolor-icon-theme
   alsa-lib
@@ -57,35 +60,40 @@ depends=(libgl
   wayland
   qt6-base
 )
-source=("https://artifacts.plex.tv/plex-htpc-stable/$pkgver-$_pkghash/linux/PlexHTPC-$pkgver-$_pkghash-linux-x86_64.tar.bz2"
-  "http://ftp.us.debian.org/debian/pool/main/libw/libwebp/libwebp6_0.6.1-2.1+deb11u2_amd64.deb"
+source=("${pkgname}_${_snaprev}.snap::https://api.snapcraft.io/api/v1/snaps/download/${_snapid}_${_snaprev}.snap"
   "https://github.com/flathub/tv.plex.PlexHTPC/raw/master/tv.plex.PlexHTPC.desktop"
   "https://github.com/flathub/tv.plex.PlexHTPC/raw/master/tv.plex.PlexHTPC.png"
 )
-sha256sums=('ea1baab13c406272ace83e9407c59f647b8367b6067ef3bf2983470b67a9eb9d'
-            '8abc2b1ca77a458bbbcdeb6af5d85316260977370fa2518d017222b3584d9653'
+sha256sums=('e94d19e92fc2a51f01714874d0af9cc7decc8314cd7db35b69cddb1ff9727660'
             'b98d1ba9191e346a256f1c838051b2d547f638558d79898df8b1707c7cabe487'
             '069cdf95608a46af4313bdffb281df37819e77c4e371c1e1667af889f0f325a2')
-noextract=('Plex-$pkgver-$_pkghash-linux-x86_64.tar.bz2')
+noextract=("${pkgname}_${_snaprev}.snap")
 
 package() {
-  cd $srcdir
+  local _snapdir="${srcdir}/snap-extract"
+
+  rm -rf "${_snapdir}"
+  unsquashfs -d "${_snapdir}" "${srcdir}/${pkgname}_${_snaprev}.snap"
 
   install -d "${pkgdir}/opt/${pkgname}"
-  tar --no-same-owner -xvf $srcdir/PlexHTPC-$pkgver-$_pkghash-linux-x86_64.tar.bz2 -C $pkgdir/opt/${pkgname}
-  tar -xvf $srcdir/data.tar.xz ./usr/lib/x86_64-linux-gnu/libwebp.so.6.0.2
-  install -Dm644 usr/lib/x86_64-linux-gnu/libwebp.so.6.0.2 ${pkgdir}/opt/${pkgname}/lib/libwebp.so.6
+  for _dir in bin lib plugins qml resources data-dir; do
+    [[ -d "${_snapdir}/${_dir}" ]] && cp -a "${_snapdir}/${_dir}" "${pkgdir}/opt/${pkgname}/"
+  done
+  install -Dm755 "${_snapdir}/Plex.sh" "${pkgdir}/opt/${pkgname}/Plex.sh"
 
-  rm -rf $pkgdir/opt/${pkgname}/lib/dri
-  rm -rf $pkgdir/opt/${pkgname}/lib/libEGL.so*
-  rm -rf $pkgdir/opt/${pkgname}/lib/libdrm.so*
-  rm -rf $pkgdir/opt/${pkgname}/lib/libdrm_*.so*
-  rm -rf $pkgdir/opt/${pkgname}/lib/libpciaccess.so*
-  rm -rf $pkgdir/opt/${pkgname}/lib/libva.so*
-  rm -rf $pkgdir/opt/${pkgname}/lib/libva-*.so*
+  install -Dm644 "${_snapdir}/usr/lib/x86_64-linux-gnu/libwebp.so.6.0.2" \
+    "${pkgdir}/opt/${pkgname}/lib/libwebp.so.6"
 
-  install -d ${pkgdir}/usr/bin
-  ln -s /opt/${pkgname}/Plex.sh ${pkgdir}/usr/bin/Plex
+  rm -rf "${pkgdir}/opt/${pkgname}/lib/dri"
+  rm -rf "${pkgdir}/opt/${pkgname}/lib/libEGL.so"*
+  rm -rf "${pkgdir}/opt/${pkgname}/lib/libdrm.so"*
+  rm -rf "${pkgdir}/opt/${pkgname}/lib/libdrm_"*.so*
+  rm -rf "${pkgdir}/opt/${pkgname}/lib/libpciaccess.so"*
+  rm -rf "${pkgdir}/opt/${pkgname}/lib/libva.so"*
+  rm -rf "${pkgdir}/opt/${pkgname}/lib/libva-"*.so*
+
+  install -d "${pkgdir}/usr/bin"
+  ln -s /opt/${pkgname}/Plex.sh "${pkgdir}/usr/bin/Plex"
 
   install -Dm644 "${srcdir}/tv.plex.PlexHTPC.desktop" -t "${pkgdir}/usr/share/applications"
   install -Dm644 "${srcdir}/tv.plex.PlexHTPC.png" -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"

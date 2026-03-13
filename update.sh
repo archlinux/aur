@@ -96,23 +96,11 @@ fi
 
 echo "Version: $full_version"
 echo "Hash: $pkg_hash"
-
-plex_url="https://artifacts.plex.tv/plex-htpc-stable/$full_version-$pkg_hash/linux/PlexHTPC-$full_version-$pkg_hash-linux-x86_64.tar.bz2"
-echo "Checking: $plex_url"
-
-if curl --head --silent --fail "$plex_url" >/dev/null 2>&1; then
-  echo "✓ URL is valid"
-else
-  echo "✗ URL does not exist!"
-  read -r -p "Continue anyway? (y/N): " continue_choice
-  case "$continue_choice" in
-    y | Y) echo "Continuing..." ;;
-    *) echo "Aborting."; exit 1 ;;
-  esac
-fi
+echo "Snap revision: $new_revision"
 
 sed -i "s|^\(pkgver=\).*|\\1$full_version|g" PKGBUILD
 sed -i "s|^\(_pkghash=\).*|\\1$pkg_hash|g" PKGBUILD
+sed -i "s|^\(_snaprev=\).*|\\1$new_revision|g" PKGBUILD
 sed -i "s|^\(pkgrel=\).*|\\11|g" PKGBUILD
 
 updpkgsums
