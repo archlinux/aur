@@ -1,6 +1,6 @@
 pkgbase = linux-zenith
-	pkgdesc = Android™ Generic Project's Zenith linux kernel - 6.15 branch
-	pkgver = 6.15.11
+	pkgdesc = Android™ Generic Project's Zenith linux kernel - 6.18 branch
+	pkgver = 6.18.15
 	pkgrel = 1
 	url = https://github.com/android-generic/kernel-zenith.git
 	arch = x86
@@ -26,15 +26,13 @@ pkgbase = linux-zenith
 	options = !strip
 	options = !debug
 	options = !lto
-	source = linux-zenith::git+https://github.com/android-generic/kernel-zenith.git#branch=6.15&depth=1&single-branch=6.15
-	source = https://raw.githubusercontent.com/BlissOS/device_generic_common/refs/heads/voyager-x86/selinux_diffconfig
-	source = nftables_diffconfig
+	source = linux-zenith::shallowclone+https://github.com/android-generic/kernel-zenith.git?branch=6.18&depth=1
+	source = zenith_linux-x86_64_defconfig
 	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = 139ef50f80f0903cdf4fa7696716f4b302fa70e56a6bc90744897942163223af
+	sha256sums = 0ac0c2f35795d05ec6de41d818e668e1f1589378ec64dcc41724ce59c331ab61
 
 pkgname = linux-zenith-git
-	pkgdesc = The Android™ Generic Project's Zenith linux kernel - 6.15 branch kernel and modules
+	pkgdesc = The Android™ Generic Project's Zenith linux kernel - 6.18 branch kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -51,6 +49,6 @@ pkgname = linux-zenith-git
 	provides = ADIOS-MODULE
 
 pkgname = linux-zenith-git-headers
-	pkgdesc = Headers and scripts for building modules for the Android™ Generic Project's Zenith linux kernel - 6.15 branch kernel
+	pkgdesc = Headers and scripts for building modules for the Android™ Generic Project's Zenith linux kernel - 6.18 branch kernel
 	depends = pahole
 	depends = linux-zenith-git

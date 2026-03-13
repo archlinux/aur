@@ -5,11 +5,17 @@
 # Set these variables to ANYTHING that is not null or choose proper variable to enable them
 
 # Kernel branch
-: "${_default_branch:=6.15}"
-: "${_branch:=6.15}"
+: "${_default_branch:=6.18}"
+: "${_BRANCH:=6.18}"
 
 # Build a debug package with non-stripped vmlinux
 : "${_build_debug:=no}"
+
+# Use android defconfig
+: "${_use_android_defconfig:=no}"
+
+# Use sccache over ccache
+: "${_use_sccache:=no}"
 
 ### LLVM
 TARGET_CLANG_PATH=/opt/android/clang/bin
@@ -28,7 +34,22 @@ export \
 	HOSTCXX=${TARGET_CLANG_PATH}/clang++ \
 	HOSTLD=${TARGET_CLANG_PATH}/ld.lld \
 	HOSTLDFLAGS=-fuse-ld=lld \
-	HOSTAR=${TARGET_CLANG_PATH}/llvm-ar
+	HOSTAR=${TARGET_CLANG_PATH}/llvm-ar \
+	LIBCLANG_PATH=$(realpath ${TARGET_CLANG_PATH}/../lib)
+
+CCACHE=$(command -v ccache)
+if [ "$CCACHE" ]; then
+	export \
+		CC="$CCACHE $CC"
+fi
+
+SCCACHE=$(command -v sccache)
+if [ "$SCCACHE" ]; then
+	if [ "$_use_sccache" = "yes" ] || [ ! "$CCACHE" ]; then
+		export \
+			CC="$SCCACHE $CC"
+	fi
+fi
 
 ### Toolchain
 export \
@@ -38,18 +59,42 @@ export \
 	DEPMOD="$(realpath "$(command -v depmod)")" \
 	PERL="$(realpath "$(command -v perl)")"
 
-if [ "$_default_branch" != "$_branch" ]; then
-	_pkgsuffix=-$_branch
+### Rust
+if [ -d "/opt/android/rust" ]; then
+	: "${RUST_BIN_DIR:=/opt/android/rust/bin}"
+elif [ "$(command -v rustup)" ]; then
+	: "${RUST_BIN_DIR:=~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin}"
+else
+	: "${RUST_BIN_DIR:=/usr/bin}"
+fi
+
+export \
+	RUSTC=${RUST_BIN_DIR}/rustc \
+	HOSTRUSTC=${RUST_BIN_DIR}/rustc \
+	RUSTFMT=${RUST_BIN_DIR}/rustfmt \
+	CLIPPY=${RUST_BIN_DIR}/clippy-driver
+
+if [ "$SCCACHE" ]; then
+	# Since we can only use rust with sccache
+	export \
+		RUSTC="$SCCACHE $RUSTC"
+fi
+
+OLD_PATH=$PATH
+export PATH=$TARGET_CLANG_PATH:$RUST_BIN_DIR:$PATH
+
+if [ "$_default_branch" != "$_BRANCH" ]; then
+	_pkgsuffix=-$_BRANCH
 fi
 
 _kernel_name=zenith
 pkgbase=linux-$_kernel_name
 _pkgname="${pkgbase}${_pkgsuffix}-git"
 
-_ver=${_branch%-*}
-_ver=${_branch%_*}
-pkgver=6.15.11
-pkgdesc="Android™ Generic Project's Zenith linux kernel - ${_branch} branch"
+_ver=${_BRANCH%-*}
+_ver=${_BRANCH%_*}
+pkgver=6.18.15
+pkgdesc="Android™ Generic Project's Zenith linux kernel - ${_BRANCH} branch"
 pkgrel=1
 _kernver="$pkgver-$pkgrel"
 _kernuname="${pkgbase}-${_pkgsuffix}"
@@ -76,17 +121,122 @@ makedepends=(
 	xz
 	zstd
 )
+makeoptdepends=(
+	rust-android-bin
+	ccache
+	sccache
+)
+
+# Using custom download agent to shallow clone the repo
+cat <<'EOF' >DLAGENTS
+#!/bin/sh
+
+PWD=$(pwd)
+
+ORIGIN=${1#shallowclone+}
+ORG_URL=${ORIGIN%%'?'*}
+ORG_ARGS=${ORIGIN#*'?'}
+
+DEST=${2}
+REAL_DEST=${DEST%.part}
+
+### Parse url parameters
+
+arg_parser() {
+  local args=$1
+  shift
+
+  IFS='&'
+  set -- ${args}
+  unset IFS
+
+  BRANCH=
+  COMMIT=
+  TAG=
+  RECURSE_SUBMODULES=
+  DEPTH=1
+
+  while [ $# -gt 0 ]; do
+    case $1 in
+      branch=*) BRANCH=${1#branch=} ;;
+      commit=*) COMMIT=${1#commit=} ;;
+      tag=*) TAG=${1#tag=} ;;
+      recurse=true) RECURSE_SUBMODULES=1 ;;
+      depth=*) DEPTH=${1#depth=} ;;
+      *) : ;;
+    esac
+    shift
+  done
+
+  export BRANCH COMMIT TAG RECURSE_SUBMODULES DEPTH
+}
+
+arg_parser "${ORG_ARGS}"
+
+update_src() {
+  git fetch \
+    --depth 1 \
+    ${RECURSE_SUBMODULES:+'--recurse-submodules'} \
+    origin "${COMMIT:-${BRANCH:-${TAG}}}"
+}
+
+### Verify if destination already exists and is a valid git repository with the correct remote URL
+
+verify_dest() {
+  local dest=$1 current_url
+  [ -d "${dest}/.git" ] || return
+  echo "Source dest exists, updating..."
+
+  cd "${dest}"
+  git remote set-url origin "${ORG_URL}"
+  
+  { # Abort any in-progress tasks
+    git merge --abort ||
+      git rebase --abort ||
+      git cherry-pick --abort || :
+  } 2>/dev/null
+
+  # Update the existing shallow clone
+  update_src
+  git reset --hard FETCH_HEAD
+  cd "${PWD}"
+
+  ln -s "../${dest}" "../src/${dest}"
+  echo ${dest}
+  exit 0
+}
+
+verify_dest "${DEST}"
+verify_dest "${REAL_DEST}"
+
+### If not, perform a fresh shallow clone
+
+rm -rf "${DEST}"
+mkdir -p "${DEST}"
+
+cd "${DEST}"
+git init --quiet
+git remote add origin "${ORG_URL}"
+
+update_src
+git reset --hard FETCH_HEAD
+
+cd "${PWD}"
+
+ln -s "../${REAL_DEST}" "../src/${REAL_DEST}"
+echo ${REAL_DEST}
+EOF
+chmod +x DLAGENTS
+export DLAGENTS="shallowclone::$(realpath "./DLAGENTS") %u %o"
 
 source=(
-	"${pkgbase}::git+${url}#branch=${_branch}&depth=1&single-branch=${_branch}"
-	"https://raw.githubusercontent.com/BlissOS/device_generic_common/refs/heads/voyager-x86/selinux_diffconfig" # Curently taking selinux_diffconfig from voyager-x86
-	"nftables_diffconfig"
+	"${pkgbase}::shallowclone+${url}?branch=${_BRANCH}&depth=1"
+	"zenith_linux-x86_64_defconfig"
 )
 
 sha256sums=(
 	'SKIP'
-	'SKIP'
-	'139ef50f80f0903cdf4fa7696716f4b302fa70e56a6bc90744897942163223af'
+	'0ac0c2f35795d05ec6de41d818e668e1f1589378ec64dcc41724ce59c331ab61'
 )
 
 export KBUILD_BUILD_HOST=blisslabs
@@ -141,7 +291,7 @@ _die() {
 }
 
 pkgver() {
-	cd "${srcdir}/${pkgbase}"
+	cd "${srcdir}/../${pkgbase}"
 
 	# get VERSION, PATCHLEVEL and SUBLEVEL from makefile
 	local ver pat sub
@@ -151,24 +301,25 @@ pkgver() {
 }
 
 prepare() {
-	SELINUX_DIFFCONFIG=$(realpath "${srcdir}/selinux_diffconfig")
-	NFTABLES_DIFFCONFIG=$(realpath "${srcdir}/nftables_diffconfig")
-	KCONFIG="${KERNEL_CONFIG_DIR}/${TARGET_KERNEL_CONFIG}"
+	# SELINUX_DIFFCONFIG=$(realpath "${srcdir}/selinux_diffconfig")
+	# NFTABLES_DIFFCONFIG=$(realpath "${srcdir}/nftables_diffconfig")
+	# KCONFIG="${KERNEL_CONFIG_DIR}/${TARGET_KERNEL_CONFIG}"
 
-	cd "${srcdir}/${pkgbase}"
+	cd "${srcdir}/../${pkgbase}"
 
 	git submodule update --init --recursive ||
 		_die "Failed to update git submodules"
 
 	mkdir -p "$KBUILD_OUTPUT"
 
-	# Merge defconfig and diffconfigs
-	./scripts/kconfig/merge_config.sh -m "$KCONFIG" \
-		"$SELINUX_DIFFCONFIG" \
-		"$NFTABLES_DIFFCONFIG" ||
-		_die "Failed to merge config files"
+	if [ "$_use_android_defconfig" = yes ]; then
+		CONFIG=arch/x86/configs/android-x86_64_defconfig
+	else
+		CONFIG=${srcdir}/zenith_linux-x86_64_defconfig
+	fi
 
-	mv .config "$KBUILD_OUTPUT"/.config
+	mv "$CONFIG" "$KBUILD_OUTPUT"/.config
+	"${MAKE_CMD[@]}" olddefconfig
 
 	### Prepared version
 	"${MAKE_CMD[@]}" -s kernelrelease >"$KBUILD_OUTPUT/version"
@@ -178,25 +329,30 @@ prepare() {
 	echo "" >"$KBUILD_OUTPUT/localversion.10-pkgrel"
 	echo "" >"$KBUILD_OUTPUT/localversion.20-pkgname"
 
-	"${MAKE_CMD[@]}" olddefconfig
+}
+
+clean() {
+	cd "${srcdir}/../${pkgbase}"
+	"${MAKE_CMD[@]}" clean
+	"${MAKE_CMD[@]}" mrproper
 }
 
 _sign_modules() {
 	msg2 "Signing modules in $1"
-	local sign_script="${srcdir}/${pkgbase}/scripts/sign-file"
-	local sign_key="$(grep -Po 'CONFIG_MODULE_SIG_KEY="\K[^"]*' "${srcdir}/${pkgbase}/.config")"
+	local sign_script="${pkgbase}/scripts/sign-file"
+	local sign_key="$(grep -Po 'CONFIG_MODULE_SIG_KEY="\K[^"]*' "${pkgbase}/.config")"
 	if [[ ! "$sign_key" =~ ^/ ]]; then
-		sign_key="${srcdir}/${pkgbase}/${sign_key}"
+		sign_key="${pkgbase}/${sign_key}"
 	fi
-	local sign_cert="${srcdir}/${pkgbase}/certs/signing_key.x509"
-	local hash_algo="$(grep -Po 'CONFIG_MODULE_SIG_HASH="\K[^"]*' "${srcdir}/${pkgbase}/.config")"
+	local sign_cert="${pkgbase}/certs/signing_key.x509"
+	local hash_algo="$(grep -Po 'CONFIG_MODULE_SIG_HASH="\K[^"]*' "${pkgbase}/.config")"
 
 	find "$1" -type f -name '*.ko' -print -exec \
 		"${sign_script}" "${hash_algo}" "${sign_key}" "${sign_cert}" '{}' \;
 }
 
 build() {
-	cd "${srcdir}/${pkgbase}"
+	cd "${srcdir}/../${pkgbase}"
 
 	"${MAKE_CMD[@]}" $KERNEL_TARGET modules
 }
@@ -210,7 +366,7 @@ _package() {
 		'scx-scheds: to use sched-ext schedulers')
 	provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE KSMBD-MODULE V4L2LOOPBACK-MODULE NTSYNC-MODULE VHBA-MODULE ADIOS-MODULE)
 
-	cd "${srcdir}/${pkgbase}"
+	cd "${srcdir}/../${pkgbase}"
 	local modulesdir="$pkgdir/usr/lib/modules/$(<"$KBUILD_OUTPUT/version")"
 
 	echo "Installing boot image..."
@@ -233,7 +389,7 @@ _package-headers() {
 	pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
 	depends=('pahole' "${_pkgname}")
 
-	cd "${srcdir}/${pkgbase}"
+	cd "${srcdir}/../${pkgbase}"
 	local builddir="$pkgdir/usr/lib/modules/$(<"$KBUILD_OUTPUT/version")/build"
 
 	echo "Installing build files..."
@@ -242,7 +398,7 @@ _package-headers() {
 	install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
 		localversion.* version vmlinux # tools/bpf/bpftool/vmlinux.h
 
-	cd "${srcdir}/${pkgbase}"
+	cd "${srcdir}/../${pkgbase}"
 	install -Dt "$builddir/kernel" -m644 tools/perf/util/bpf_skel/vmlinux/vmlinux.h
 	install -Dt "$builddir/kernel" -m644 kernel/Makefile
 	install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
@@ -254,7 +410,7 @@ _package-headers() {
 	install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
 	# required when DEBUG_INFO_BTF_MODULES is enabled
-	cd "${srcdir}/${pkgbase}"
+	cd "${srcdir}/../${pkgbase}"
 	if [ -f tools/bpf/resolve_btfids/resolve_btfids ]; then
 		install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 	fi
@@ -266,7 +422,7 @@ _package-headers() {
 	cd "$KBUILD_OUTPUT"
 	install -Dt "$builddir/arch/x86/kernel" -m644 arch/x86/kernel/asm-offsets.s
 
-	cd "${srcdir}/${pkgbase}"
+	cd "${srcdir}/../${pkgbase}"
 	install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
 	install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
@@ -283,6 +439,11 @@ _package-headers() {
 
 	# KernelSU headers
 	install -Dt "$builddir/drivers/kernelsu" -m644 drivers/kernelsu/*.h
+
+	# Selinux headers
+	install -Dt "$builddir/security/selinux" -m644 $KBUILD_OUTPUT/security/selinux/*.h
+	install -Dt "$builddir/security/selinux/include" -m644 security/selinux/include/*.h
+	install -Dt "$builddir/security/selinux/ss" -m644 security/selinux/ss/*.h
 
 	echo "Installing KConfig files..."
 	find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -345,7 +506,7 @@ _package-dbg() {
 	pkgdesc="Non-stripped vmlinux file for the $pkgdesc kernel"
 	depends=("${_pkgname}-headers")
 
-	cd "${srcdir}/${pkgbase}"
+	cd "${srcdir}/../${pkgbase}"
 	mkdir -p "$pkgdir/usr/src/debug/${_pkgname}"
 	install -Dt "$pkgdir/usr/src/debug/${_pkgname}" -m644 vmlinux
 }
