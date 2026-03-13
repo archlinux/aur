@@ -1,6 +1,6 @@
 # Maintainer: lone-cloud <lonecloud604@proton.me>
 pkgname=gerbil
-pkgver=1.20.2
+pkgver=1.20.3
 pkgrel=1
 pkgdesc="Run Large Language Models locally"
 arch=('x86_64')
@@ -11,11 +11,11 @@ optdepends=('nodejs: Required for SillyTavern integration'
            'uv: Required for OpenWebUI integration')
 provides=('gerbil')
 conflicts=('gerbil-git')
-source=("gerbil-${pkgver}.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.20.2/Gerbil-1.20.2.AppImage"
-        "gerbil.desktop::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.20.2/assets/gerbil.desktop"
-        "gerbil.metainfo.xml::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.20.2/assets/gerbil.metainfo.xml"
-        "LICENSE::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.20.2/LICENSE")
-sha256sums=('162c03d9d75cbd4429ce0407b9b486ab7ec44c2d66580c399afa9ed10859ff94'
+source=("gerbil-${pkgver}.AppImage::https://github.com/lone-cloud/gerbil/releases/download/v1.20.3/Gerbil-1.20.3.AppImage"
+        "gerbil.desktop::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.20.3/assets/gerbil.desktop"
+        "gerbil.metainfo.xml::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.20.3/assets/gerbil.metainfo.xml"
+        "LICENSE::https://raw.githubusercontent.com/lone-cloud/gerbil/v1.20.3/LICENSE")
+sha256sums=('6adafb16a18ade0b5b1f248d95e116b9e526b6817437128ea3bda2836b0d25e6'
            'fa1c8b5029edf44857b517c8a4da95a6900a48b6e2674d1511ee40e292ab6f42'
            '95cfa91e09f17a013503a182fb054be04b27f08f97c73fed6848ee0bc78307a5'
            '0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0')
