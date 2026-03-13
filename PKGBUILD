@@ -12,7 +12,7 @@ makedepends=('go' 'make' 'nodejs' 'npm')
 provides=("bf" "bifrost-server")
 conflicts=("bf" "bifrost-server" "bifrost-go-git")
 
-backup=('etc/bifrost/bifrost.env')
+backup=('etc/bifrost/server.yaml')
 
 source=("bifrost-$pkgver.tar.gz::https://github.com/devzeebo/bifrost/archive/v$pkgver.tar.gz")
 sha256sums=('SKIP')
@@ -34,7 +34,7 @@ package() {
   install -Dm755 bin/bifrost-server "$pkgdir/usr/bin/bifrost-server"
 
   install -Dm644 pkg/arch/bifrost.service "$pkgdir/usr/lib/systemd/system/bifrost.service"
-  install -Dm640 pkg/arch/bifrost.env "$pkgdir/etc/bifrost/bifrost.env"
+  install -Dm644 pkg/arch/server.yaml "$pkgdir/etc/bifrost/server.yaml"
   install -Dm644 pkg/arch/bifrost.sysusers "$pkgdir/usr/lib/sysusers.d/bifrost.conf"
   install -Dm644 pkg/arch/bifrost.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/bifrost.conf"
 
