@@ -1,7 +1,7 @@
 # Maintainer: Josh W <info@soundspan.io>
 
 pkgname=soundspan-bin
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Native desktop client for soundspan"
 arch=('x86_64' 'aarch64')

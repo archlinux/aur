@@ -1,6 +1,6 @@
 pkgbase = soundspan-bin
 	pkgdesc = Native desktop client for soundspan
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/soundspan/soundspan-app
 	install = soundspan-bin.install
@@ -13,9 +13,9 @@ pkgbase = soundspan-bin
 	depends = webkit2gtk-4.1
 	options = !strip
 	options = !debug
-	source_x86_64 = soundspan-bin-1.0.0-x86_64.deb::https://github.com/soundspan/soundspan-app/releases/download/1.0.0/soundspan_1.0.0_amd64.deb
+	source_x86_64 = soundspan-bin-1.0.1-x86_64.deb::https://github.com/soundspan/soundspan-app/releases/download/1.0.1/soundspan_1.0.1_amd64.deb
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = soundspan-bin-1.0.0-aarch64.deb::https://github.com/soundspan/soundspan-app/releases/download/1.0.0/soundspan_1.0.0_arm64.deb
+	source_aarch64 = soundspan-bin-1.0.1-aarch64.deb::https://github.com/soundspan/soundspan-app/releases/download/1.0.1/soundspan_1.0.1_arm64.deb
 	sha256sums_aarch64 = SKIP
 
 pkgname = soundspan-bin
