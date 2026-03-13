@@ -23,7 +23,7 @@ source=("${_appname}::git+${host}/Grayjay.Desktop.git#tag=${pkgver}"
         "grayjay.sh"
         "Grayjay.Desktop.CEF.csproj.user"
         "FUTO.MDNS.csproj.user")
-sha256sums=('SKIP'
+sha256sums=('2dbe4f19fde42da67fdc70b985caf051b50281ab028db1e58a012166785a7037'
             '3d37aacfe2c23495448da3d7202abfa2e28db5a10cb69453f9b00b1e80a70f5d'
             '3a1f43abacc62ad257edbb6c7744c132f5a50d64d0725aa79e251ddc19b6e489'
             'bc13ae396e2fcd2849e4564db67fad6e1461cedebb2abdafece81fc4c00f38dd'
@@ -40,7 +40,7 @@ prepare() {
         git config submodule.${_sub}.url "${_futo_gitlab_base}/${_sub}.git"
     done
 
-    git lfs install
+    git lfs install --local
 
     GIT_LFS_SKIP_SMUDGE=0 git checkout -- .
     git submodule update --init --recursive
