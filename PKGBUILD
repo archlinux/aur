@@ -2,16 +2,30 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=mangareader
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Manga Reader for local files'
 arch=('x86_64')
 url='https://github.com/g-fb/mangareader'
-license=('GPL3')
-depends=('hicolor-icon-theme' 'qt6-base' 'kconfig' 'kcoreaddons' 'ki18n' 'kxmlgui' 'kio' 'kconfigwidgets' 'karchive' 'gettext')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja')
-source=("https://github.com/g-fb/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('e7804ce8360a478060d8daf0b6389390f7b16140000f2efae56c1b16c6092314')
+license=('GPL-3.0-or-later')
+depends=('hicolor-icon-theme'
+         'qt6-base'
+         'kcolorscheme'
+         'kconfig'
+         'kconfigwidgets'
+         'kcoreaddons'
+         'ki18n'
+         'kio'
+         'kxmlgui'
+         'gettext')
+# 'kimageformats' is not listed as a dependency by the upstream,
+# but if present is loaded by KF automatically
+optdepdens=('kimageformats: extra image formats support (jxl, avif, heif, ...)'
+            'karchive: archive support (zip, 7zip, xz, bzip2, ...)'
+            'vulkan-headers: (unclear)')
+makedepends=('cmake' 'extra-cmake-modules' 'ninja')
+source=("https://github.com/g-fb/mangareader/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('a15b1677ebb3f537bd069fd9ebf9c9011dc3e82a4a1071d501da231ea2fbc8a8')
 
 build() {
   cmake -S $pkgname-$pkgver -B build -G Ninja -DCMAKE_INSTALL_PREFIX='/usr'
