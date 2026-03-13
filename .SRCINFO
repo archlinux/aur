@@ -1,16 +1,16 @@
 pkgbase = p4
 	pkgdesc = Perforce's Helix command-line client
-	pkgver = 2025.2.2882317
-	pkgrel = 2
+	pkgver = 2025.2.2907753
+	pkgrel = 1
 	url = https://www.perforce.com
 	arch = x86_64
 	license = custom:p4
 	depends = glibc
 	source = LICENSE
-	source = p4-2025.2.2882317.tgz::https://cdist2.perforce.com/perforce/r25.2/bin.linux26x86_64/helix-core-server.tgz
+	source = p4-2025.2.2907753.tgz::https://cdist2.perforce.com/perforce/r25.2/bin.linux26x86_64/helix-core-server.tgz
 	validpgpkeys = 7123CB760FF18869
 	validpgpkeys = E58131C0AEA7B082C6DC4C937123CB760FF18869
 	sha256sums = c4ed3aef62b1bbf2d16ce4cceb65dc49ab9635b38e2fed0a595fe259283a9f32
-	sha256sums = 73c798190ceff8c9ba5c80543ef52488c517d8b7e736e1238d90823485650e99
+	sha256sums = f811a905912b7c766d19558e7169c3ec7455b3f23ef2daf08b35372159106c53
 
 pkgname = p4
