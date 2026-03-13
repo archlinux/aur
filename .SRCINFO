@@ -1,6 +1,6 @@
 pkgbase = bspwm-layout-manager
 	pkgdesc = Save and restore bspwm desktop layouts with a rofi menu
-	pkgver = 0.8.1
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/SamuelHenriqueDeMoraisVitrio/bspwm-layout-manager
 	arch = any
@@ -10,7 +10,9 @@ pkgbase = bspwm-layout-manager
 	depends = bspwm
 	depends = rofi
 	depends = xorg-xprop
-	source = bspwm-layout-manager-0.8.1.tar.gz::https://github.com/SamuelHenriqueDeMoraisVitrio/bspwm-layout-manager/archive/0.8.1.tar.gz
-	sha256sums = 0729f99964cdfcdb7e2016842bbe52ebce2f18914f3ba938b5188e2285704d9d
+	depends = wmctrl
+	depends = xdotool
+	source = bspwm-layout-manager-0.9.0.tar.gz::https://github.com/SamuelHenriqueDeMoraisVitrio/bspwm-layout-manager/archive/0.9.0.tar.gz
+	sha256sums = b1e465030049ec6c1897ed36ba5dd0ce14e3e502e2aa106643cc6e5af6b17b00
 
 pkgname = bspwm-layout-manager
