@@ -1,6 +1,6 @@
 pkgbase = cinny-desktop-bin
 	pkgdesc = Matrix client focusing primarily on a simple, elegant and secure interface (binary release)
-	pkgver = 4.10.5
+	pkgver = 4.11.2
 	pkgrel = 1
 	url = https://cinny.in/
 	install = cinny-desktop-bin.install
@@ -18,7 +18,7 @@ pkgbase = cinny-desktop-bin
 	depends = libsecret
 	provides = cinny-desktop
 	conflicts = cinny-desktop
-	source_x86_64 = cinny-desktop-bin-4.10.5-x86_64.deb::https://github.com/cinnyapp/cinny-desktop/releases/download/v4.10.5/Cinny_desktop-x86_64.deb
-	sha256sums_x86_64 = a1fa5d7483cd067fb1133988794b3d0bf459d87925ed4551ead727a47ded2894
+	source_x86_64 = cinny-desktop-bin-4.11.2-x86_64.deb::https://github.com/cinnyapp/cinny-desktop/releases/download/v4.11.2/Cinny_desktop-x86_64.deb
+	sha256sums_x86_64 = 71f405ac1b7a30709feeda3b90fa611849a1a8c29f13a39b9efdc973124cc394
 
 pkgname = cinny-desktop-bin
