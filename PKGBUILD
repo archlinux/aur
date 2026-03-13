@@ -85,7 +85,11 @@ prepare() {
 }
 
 pkgver() {
-  git -C ${pkgname} describe --long --tag| sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+# shellcheck disable=SC2183,SC2046
+  printf "%sr%s.%s" \
+     $(grep -zoP 'set\(CHRONO_VERSION_(MAJOR|MINOR|PATCH) \K\d+' $pkgname/CMakeLists.txt|tr '\0' '.') \
+    "$(git -C $pkgname rev-list "$(git -C $pkgname describe --tags --abbrev=0)"..HEAD --count)" \
+    "$(git -C $pkgname log --pretty=format:'%h' -n 1)"
 }
 
 build() {
