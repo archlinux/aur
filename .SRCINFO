@@ -1,6 +1,6 @@
 pkgbase = kamaleon-git
-	pkgdesc = Universal wrapper for: yay, paru, pacman, apt, dnf, zypper, apk (Alpine) and xbps (Void). Written in Go.
-	pkgver = 2.6.1
+	pkgdesc = Universal wrapper for: yay, paru, pacman, apt, dnf, zypper, apk (Alpine), flatpak and xbps (Void). Written in Go.
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://github.com/AnabasaSoft/Kamaleon
 	arch = x86_64
