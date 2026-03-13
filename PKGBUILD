@@ -1,7 +1,7 @@
 # Maintainer: Aethar <elliott.ashby88@gmail.com>
 
 pkgname=timerrs
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="A simple timer for the terminal"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

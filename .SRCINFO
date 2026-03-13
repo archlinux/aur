@@ -1,6 +1,6 @@
 pkgbase = timerrs
 	pkgdesc = A simple timer for the terminal
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/Aethar01/timerrs
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = timerrs
 	optdepends = dunst: notifications with progress bars
 	optdepends = libnotify: for sending notifications
 	provides = timerrs
-	source = timerrs-v0.1.5.tar.gz::https://github.com/Aethar01/timerrs/archive/refs/tags/v0.1.5.tar.gz
+	source = timerrs-v0.1.6.tar.gz::https://github.com/Aethar01/timerrs/archive/refs/tags/v0.1.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = timerrs
