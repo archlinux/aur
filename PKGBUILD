@@ -12,10 +12,10 @@ options=('!strip' '!debug')
 install="${pkgname}.install"
 
 source_x86_64=(
-  "${pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/v${pkgver}/soundspan_${pkgver}_amd64.deb"
+  "${pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/${pkgver}/soundspan_${pkgver}_amd64.deb"
 )
 source_aarch64=(
-  "${pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/v${pkgver}/soundspan_${pkgver}_arm64.deb"
+  "${pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/soundspan_${pkgver}_arm64.deb"
 )
 sha256sums_x86_64=('SKIP')
 sha256sums_aarch64=('SKIP')
