@@ -1,6 +1,6 @@
 pkgbase = wkmailsync
 	pkgdesc = IMAP/Maildir mail sync and backup tool with EML/ZIP export and Virtualmin support
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://github.com/Warky-Devs/WkMailSync
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = wkmailsync
 	keywords = backup
 	keywords = email
 	keywords = virtualmin
-	source = WkMailSync-1.0.4.tar.gz::https://github.com/Warky-Devs/WkMailSync/archive/v1.0.4.tar.gz
-	sha256sums = 119621ed5a58fd6a2af9639151013e2ed0b39223359dc93ef59c31fb792f4135
+	source = WkMailSync-1.0.5.tar.gz::https://github.com/Warky-Devs/WkMailSync/archive/v1.0.5.tar.gz
+	sha256sums = 5a31e8d33025ba6736225cdf19d28e5b3e24345e4a54424fcadb3123fe4a7273
 
 pkgname = wkmailsync
