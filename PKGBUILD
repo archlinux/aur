@@ -2,7 +2,7 @@
 # Contributor: drakkan <nicola.murino at gmail dot com>
 pkgname=sftpgo-bin
 _pkgname=sftpgo
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc='Full-featured and highly configurable SFTP, HTTP/S, FTP/S and WebDAV server - S3, Google Cloud Storage, Azure Blob'
 arch=('x86_64')
@@ -25,8 +25,8 @@ install=${pkgname}.install
 source=("https://github.com/drakkan/sftpgo/releases/download/v${pkgver}/sftpgo_v${pkgver}_linux_x86_64.tar.xz"
   "sftpgo.json"
   "sftpgo.sysusers")
-sha256sums=('cf0a09a59891ebf3aaffc285819438074614c79809700b1739279adc00b27cbb'
-  '37f357dc8c2fab8aea6ce9f29900433b38818db81d82770a468bb4eec698d8c2'
+sha256sums=('9453f09afdd66566e397aeedc83024a6dc00dcd8e784e2b65875a3380466c73c'
+  '3f42c027c8d33a28758ba9b5e4efc88bd07273b501df72692efde03fb1fcce99'
   '44658210043f805057c2e4b473653637a91204e4da17954b08081292c72edcb8')
 
 _uid_sftpgo=315
