@@ -24,9 +24,9 @@ source=(
   "${_appimage}::https://github.com/${_owner}/${_repo}/releases/download/${_tag}/${_appimage}"
 )
 
-# Replace with a real checksum before AUR publish:
-#   makepkg -g
-sha256sums=('f9d8375f60ae2a2c3b67f3f0f14fe9dd0ea5a53ade58d8529265fa49feb49c9f')
+sha256sums=(
+  'f9d8375f60ae2a2c3b67f3f0f14fe9dd0ea5a53ade58d8529265fa49feb49c9f'
+)
 
 package() {
   install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/aurivo/aurivo.AppImage"
