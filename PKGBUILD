@@ -2,8 +2,8 @@
 
 pkgname=('verovio' 'python-verovio')
 pkgbase=verovio
-pkgver=6.0.1
-pkgrel=2
+pkgver=6.1.1
+pkgrel=1
 pkgdesc="A music notation engraving library"
 arch=(x86_64)
 url="https://www.verovio.org"
@@ -13,7 +13,7 @@ makedepends=('cmake' 'python-build' 'python-installer' 'python-setuptools' 'pyth
 source=("https://github.com/rism-digital/verovio/archive/version-$pkgver/$pkgname-$pkgver.tar.gz"
   no-assert.patch
   resource-path.patch)
-sha256sums=('e2025eb4ea4462db8a71d79e10ea5bd3ebc4c148e8f95d711505c52a73ad76e9'
+sha256sums=('4ac970d31d984f397d40cd8ed35ff1731b694594d93e323f98584135df256560'
             'd7f93d7f995541ebd94cae6a972bf13db92d43680aa56018ebe7270400f52677'
             '9e753f91b2da85dc7fb6e1fe36d8d3de85957ed91d331a1e4b65af121415b50f')
 
@@ -36,7 +36,7 @@ build() {
     -Wno-dev \
     -DBUILD_AS_LIBRARY='On'
 
-  make -C build-lib
+  make -C build-lib --output-sync
 
   # (b) Build cli
   cmake -B build-cli -S ./cmake \
@@ -45,7 +45,7 @@ build() {
     -Wno-dev \
     -UBUILD_AS_LIBRARY
 
-  make -C build-cli
+  make -C build-cli --output-sync
 
   # (c) Build python bindings
   #
