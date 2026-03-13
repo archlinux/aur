@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.20.r0.gc45a98a
+pkgver=0.5.22.r102.g03da7ba
 pkgrel=1
 pkgdesc="Open Gaming Platform"
 arch=('any')
@@ -109,7 +109,7 @@ check() {
   # Python tests: Disabled because either they're querying hardware 
   # or trying to spawn processes
   pytest \
-    --ignore=tests/test_{api,dialogs,installer}.py \
+    --ignore=tests/test_{api,dialogs,gog_cloud_hooks,installer}.py \
     -k "not GetNvidiaDriverInfo and not GetNvidiaGpuInfo and not import_module and not options"
 }
 
