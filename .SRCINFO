@@ -1,0 +1,14 @@
+pkgbase = sleex-bibata-modern-classic-bin
+	pkgdesc = Material Based Cursor Theme, installed for Sleex
+	pkgver = 2.0.6
+	pkgrel = 3
+	url = https://github.com/ful1e5/Bibata_Cursor
+	arch = any
+	license = GPL-3.0-or-later
+	conflicts = bibata-cursor-theme
+	conflicts = bibata-cursor-theme-bin
+	options = !strip
+	source = sleex-bibata-modern-classic-2.0.6.tar.xz::https://github.com/ful1e5/Bibata_Cursor/releases/download/v2.0.6/Bibata-Modern-Classic.tar.xz
+	sha256sums = SKIP
+
+pkgname = sleex-bibata-modern-classic-bin
