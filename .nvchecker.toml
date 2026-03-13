@@ -1,0 +1,3 @@
+[perl-html-tiny]
+source = "cpan"
+cpan = "HTML-Tiny"
