@@ -1,0 +1,17 @@
+pkgbase = happier-cli
+	pkgdesc = Open-source companion for AI coding agents (Claude Code, Codex, OpenCode, etc.)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/happier-dev/happier
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	optdepends = ripgrep: file search (bundled fallback included)
+	optdepends = difftastic: structural diff (bundled fallback included)
+	noextract = cli-0.1.0.tgz
+	source = https://registry.npmjs.org/@happier-dev/cli/-/cli-0.1.0.tgz
+	sha256sums = d906d15a02455a689328090f2127a4da2cfc5a69e6a5255d800d4f01412ffe95
+
+pkgname = happier-cli
