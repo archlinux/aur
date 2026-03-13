@@ -1,0 +1,5 @@
+[kaval-bin]
+source = "github"
+github = "AppachiTech/kaval"
+use_latest_release = true
+prefix = "v"

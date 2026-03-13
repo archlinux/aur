@@ -1,0 +1,18 @@
+pkgbase = kaval-bin
+	pkgdesc = A developer-focused port and process manager TUI
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/AppachiTech/kaval
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = kaval
+	provides = kav
+	conflicts = kaval
+	source = README-0.0.6.md::https://raw.githubusercontent.com/AppachiTech/kaval/v0.0.6/README.md
+	sha256sums = 956e27d9558fe3efb9c8e078241ec51e08aa25c3f072031d01b76a48009661ad
+	source_x86_64 = kaval-x86_64-0.0.6.tgz::https://github.com/AppachiTech/kaval/releases/download/v0.0.6/kav-linux-v0.0.6.tar.gz
+	sha256sums_x86_64 = 515d6ca1c0132f11647936692481e16d4713d451740ed0999809df0c726c2875
+
+pkgname = kaval-bin
