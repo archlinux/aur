@@ -32,8 +32,9 @@ sha256sums=('SKIP')
 build() {
     cd "$srcdir/lava-$pkgver"
 
-    # Force gcc linker — rust-lld fails with C/asm crates (ring, rusqlite)
-    export RUSTFLAGS="${RUSTFLAGS:-} -C linker=gcc"
+    # Force gcc linker with relaxed DSO linking — rust-lld fails with C/asm
+    # crates, and gcc needs --copy-dt-needed-entries for transitive deps
+    export RUSTFLAGS="${RUSTFLAGS:-} -C linker=gcc -C link-arg=-Wl,--copy-dt-needed-entries"
 
     # Install frontend dependencies
     pnpm install
