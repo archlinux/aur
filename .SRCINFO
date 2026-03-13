@@ -1,12 +1,12 @@
 pkgbase = luna-ai
-	pkgdesc = Luna AI - Hacker-style voice AI assistant for Arch Linux + Hyprland (YouTube, brightness, volume, live crypto/weather)
+	pkgdesc = Hacker-style voice AI assistant for Arch Linux + Hyprland (YouTube, brightness, volume, crypto prices)
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/Arunachalam-gojosaturo/Luna-ai
 	arch = any
 	license = MIT
 	makedepends = python-pip
-	depends = python>=3.10
+	depends = python
 	depends = python-pyqt6
 	depends = firefox
 	depends = brightnessctl
@@ -17,11 +17,10 @@ pkgbase = luna-ai
 	depends = xdotool
 	depends = python-requests
 	depends = python-psutil
-	optdepends = ydotool: Wayland native input control
-	optdepends = python-speechrecognition: Microphone voice input
-	optdepends = python-pyaudio: Microphone hardware support
-	provides = luna-ai
+	optdepends = ydotool: Wayland input control
+	optdepends = python-speechrecognition: Voice input
+	optdepends = python-pyaudio: Microphone support
 	source = luna-ai-1.0.0.tar.gz::https://github.com/Arunachalam-gojosaturo/Luna-ai/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 1cef2fe95aceac02d5908fa31eb1e300a87a91f7f898803be6eb6e6d3baa084d
+	sha256sums = SKIP
 
 pkgname = luna-ai
