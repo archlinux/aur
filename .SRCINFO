@@ -1,11 +1,11 @@
 pkgbase = tux
 	pkgdesc = Simple TUI application launcher written in C
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/JulB3y/tux
 	arch = x86_64
 	license = MIT
-	source = https://github.com/JulB3y/tux/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/JulB3y/tux/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 72a4cfa8cbec19a90a5745bac60dc74e2c81ba6ea259be93e170d959ea268ab7
 
 pkgname = tux
