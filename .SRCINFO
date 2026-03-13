@@ -1,6 +1,6 @@
 pkgbase = openttd-jgrpp
 	pkgdesc = Engine for running Transport Tycoon Deluxe with JGR's patch pack
-	pkgver = 0.70.2
+	pkgver = 0.71.0
 	pkgrel = 1
 	url = https://github.com/JGRennison/OpenTTD-patches
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = openttd-jgrpp
 	optdepends = openttd-jgrpp-openmsx: free music set
 	provides = openttd-jgrpp
 	conflicts = openttd-jgrpp
-	source = https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-0.70.2.tar.gz
-	b2sums = e8a0ca77593defef7556fd4f17c5543846e68f6eef2ae9a04753a540cbf9da8a890f4b09a52959b208e50138ed17fb7e8e3b029e38bebd050f6696639cba7dda
+	source = https://github.com/JGRennison/OpenTTD-patches/archive/jgrpp-0.71.0.tar.gz
+	b2sums = a5f7a14861d85ebcb3e679ea46973354849b250af9d12ef9458d28d54801d1f8bf5878ca68d72a87f066d90738eb902968a5ae0e6349047e7eef362d26403835
 
 pkgname = openttd-jgrpp
