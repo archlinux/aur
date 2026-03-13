@@ -4,9 +4,9 @@
 pkgname=eclipse-java-bin
 _pkgname=${pkgname%-bin}
 epoch=2
-pkgver=4.38
+pkgver=4.39
 pkgrel=1
-_release=2025-12/R
+_release=2026-03/R
 pkgdesc="Highly extensible IDE (Java version)"
 arch=('x86_64' 'aarch64')
 url="https://www.eclipse.org/"
@@ -24,8 +24,8 @@ _srcfilename_aarch64="$_pkgname-${_release//\//-}-linux-gtk-aarch64.tar.gz"
 source_x86_64=("$_srcfilename_x86_64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_x86_64&r=1")
 source_aarch64=("$_srcfilename_aarch64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_aarch64&r=1")
 
-sha512sums_x86_64=('c67d2d68755ff5bcf798c516eefd9f2baa847776adb8844699eb9791f626fc99f2c531c0a6a2a3a6c2c914377112417791d4e1bffd66345a351290f98d1432d6')
-sha512sums_aarch64=('aaf240781c3cc76016a3b7bedd7907905b4419cc0cdea980ddbb301453731eb885c65f99294ee0b31803779e34b2324b1c4d19f0b3a2717932108b7210226701')
+sha512sums_x86_64=('8769589e4867f7a347b25c3e930178a000ed1003f9cefa05755e60d77be777f21d1ae50dbec5611c2c781a091eb77d0ce42b8bf8ca19cd7efc9b55e56c8285d0')
+sha512sums_aarch64=('26b680ee0d6229361b1459db81b1aae17959cab4666714be71790897f8ffc80d052ae61f21520ebf7a2d425cc62698329e29ed35242dd7d96440c90a32e21383')
 
 source=("eclipse.desktop")
 sha512sums=('676d79e18ef847fc27efc68d85e5f3c3af3eaaa9946acc98161998a3a0771d2a72c7197bdb6d8c180e1b59c2a0bb591150d15114b416c1a0a0f5dbdb06bdb13e')
