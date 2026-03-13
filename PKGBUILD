@@ -1,6 +1,6 @@
 pkgname=tomat-bin
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Pomodoro timer for status bars"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jolars/tomat"
