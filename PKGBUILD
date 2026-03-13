@@ -13,7 +13,7 @@ _gitroot='https://gitlab.com/beelzy/kame-tools.git'
 _gitname='kame-tools'
 
 source=("git+${_gitroot}"
-        "git+https://github.com/lifehackerhansol/buildtools.git")
+        "git+https://github.com/Steveice10/buildtools.git")
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {

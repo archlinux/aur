@@ -11,7 +11,7 @@ pkgbase = kame-tools-git
 	makedepends = zip
 	depends = gcc-libs
 	source = git+https://gitlab.com/beelzy/kame-tools.git
-	source = git+https://github.com/lifehackerhansol/buildtools.git
+	source = git+https://github.com/Steveice10/buildtools.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
