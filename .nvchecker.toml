@@ -1,0 +1,5 @@
+[ezshare-bin]
+source = "github"
+github = "mifi/ezshare"
+use_latest_release = true
+prefix = "v"

@@ -3,7 +3,7 @@
 _pkgauthor=mifi
 _pkgname=ezshare
 pkgname=${_pkgname}-bin
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Easily share files, folders and clipboard over LAN - Like Google Drive but without internet'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -24,8 +24,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${_pkgname}-linux-x64-${pkgver}.zip")
 sha256sums=('45f0b58ab7c3ea2b8f2be6e31656d4327a5e35d5116ff8e92457c7d672c92321'
-            '20ce34cc376a72815bfd2e7e82042e52b791aefdf66886a7ce9b7dbfc445ff7d')
-sha256sums_x86_64=('fd3028c5af914cabd56f269b737a65e67bba79f6d507aa004d054affd997f915')
+            'b5efed39009124b94c3cf34414632d20cedbca1e07e7aa559652b1b9bb083195')
+sha256sums_x86_64=('d703ccc7eab9d87b80640c067dafe50b22d28e3745c31a8900d35455a79567d3')
 
 
 package() {
