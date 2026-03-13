@@ -1,50 +1,47 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-html-tiny'
-pkgver='1.05'
-pkgrel='1'
-pkgdesc="Lightweight, dependency free HTML/XML generation"
+_author=ARISTOTLE
+_dist=HTML-Tiny
+_ver=1.08
+pkgname=perl-${_dist@L}
+pkgver=${_ver#v}
+pkgrel=1
+pkgdesc='Lightweight, dependency free HTML/XML generation'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$_ver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=('perl>=5.6.0')
+checkdepends=('perl-test-simple')
 options=('!emptydirs')
-depends=('perl')
-makedepends=()
-url='http://search.cpan.org/dist/HTML-Tiny'
-source=('http://search.cpan.org/CPAN/authors/id/A/AN/ANDYA/HTML-Tiny-1.05.tar.gz')
-md5sums=('f683dbc8e4570ba08d0fcb1f50c1b6dc')
-sha512sums=('3b2da589502981fc91afc5e650fc113dfb5abc53bcda24435cd47f313cafc98e64d53fb60f16232ebabb56a34f10752b29640a444df3238888e32a96915f669a')
-_distdir="HTML-Tiny-1.05"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$_ver.tar.gz")
+sha256sums=('0f01df0c9fc80b3d9da288baabf8c0a53747444f7ae1eb9600e7afc4a3dcfeb5')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$_ver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$_ver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$_ver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
