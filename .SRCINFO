@@ -1,6 +1,6 @@
 pkgbase = libefex-git
 	pkgdesc = library and cli for embedded firmware exchange protocol, support fel and fes protocol
-	pkgver = r48.98db4cf
+	pkgver = r89.83819c6
 	pkgrel = 1
 	url = https://github.com/YuzukiTsuru/libefex
 	arch = x86_64
@@ -15,6 +15,8 @@ pkgbase = libefex-git
 	provides = libefex
 	conflicts = libefex
 	source = libefex-git::git+https://github.com/YuzukiTsuru/libefex.git
+	source = libusb-cmake::git+https://github.com/libusb/libusb-cmake.git
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = libefex-git
