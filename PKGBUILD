@@ -2,7 +2,7 @@
 # Contributor: Phillip Schichtel <phillip@schich.tel>
 pkgname=grayjay
 _appname=Grayjay
-pkgver=17
+pkgver=18
 pkgrel=1
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ host="${_futo_gitlab_base}"
 license=('custom:Source-First-License-1.1')
 depends=('ffmpeg' 'libsodium')
 makedepends=('dotnet-sdk>=9' 'git' 'git-lfs' 'npm' 'libappindicator-gtk3')
-source=("${_appname}::git+${host}/Grayjay.Desktop.git"
+source=("${_appname}::git+${host}/Grayjay.Desktop.git#tag=${pkgver}"
         "grayjay.desktop"
         "grayjay.sh"
         "Grayjay.Desktop.CEF.csproj.user"
