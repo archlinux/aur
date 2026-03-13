@@ -11,6 +11,7 @@ depends=(
     'webkit2gtk-4.1'
     'gtk-layer-shell'
     'wireplumber'
+    'sqlite'
 )
 optdepends=(
     'brightnessctl: brightness control via scroll gestures'
