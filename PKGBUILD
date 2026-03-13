@@ -2,17 +2,17 @@
 pkgname=duckstation-preview-latest-bin
 _pkgname="duckstation-qt"
 _pkgid=org.duckstation.DuckStation
-pkgver=0.1.10915
+pkgver=0.1.10965
 pkgrel=1
 pkgdesc="Fast PlayStation 1 emulator for PC and Android"
 arch=('x86_64')
 url='https://github.com/stenzek/duckstation'
-license=('CC BY-NC-ND 4.0')
-depends=('glibc' 'gcc-libs' 'gmp' 'bash' 'e2fsprogs' 'libgpg-error')
+license=('CC-BY-NC-4.0')
+depends=('glibc' 'gmp' 'e2fsprogs' 'libgpg-error' 'libstdc++' 'libgcc')
 makedepends=('yq')
 provides=("$_pkgname" 'duckstation')
 conflicts=("$_pkgname" 'duckstation')
-options=('!strip')
+options=('!strip' '!emptydirs')
 _appimage="DuckStation-x64.AppImage"
 noextract=("${_appimage}")
 source=("https://github.com/stenzek/duckstation/releases/download/preview/${_appimage}")
@@ -26,11 +26,7 @@ prepare() {
     msg2 "Extracting AppImage content..."
     ./"${_appimage}" --appimage-extract
 
-	# Patch AppRun to point to the fixed installation directory in /opt
-	# and adjust the Icon path in the .desktop
-	sed -Ei \
-    's@^this_dir=".*\breadlink\b.*\bdirname\b.*"$@this_dir="/opt/duckstation-qt"@' \
-    "${srcdir}/squashfs-root/AppRun"
+	# Adjust the Icon path in the .desktop file
     sed -i "s|Icon=${_pkgid}|Icon=${_pkgname}|" "${srcdir}/squashfs-root/${_pkgid}.desktop"
 }
 
