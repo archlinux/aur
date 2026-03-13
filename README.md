@@ -17,13 +17,11 @@ Since this package is now published on the AUR, you can install it using your fa
 yay -S pencil-dev-bin
 ```
 
-
 ### Using paru
 
 ```bash
 paru -S pencil-dev-bin
 ```
-
 
 ### Manual Installation (makepkg)
 
@@ -32,9 +30,6 @@ git clone https://aur.archlinux.org/pencil-dev-bin.git
 cd pencil-dev-bin
 makepkg -si
 ```
-
-
----
 
 ## 🛠️ Maintainer Guide: How to Update
 
@@ -47,30 +42,26 @@ This repository includes a convenient `update.sh` script to automate updating th
    cd pencil-dev-bin
    ```
 
-
 2. Run the update script:
 
    ```bash
    ./update.sh
    ```
 
-
 **What `update.sh` does automatically:**
+
 - Downloads the latest tarball release from `pencil.dev`.
 - Extracts the new version number dynamically.
 - Updates the `pkgver` and cryptographic hashes inside `PKGBUILD`.
 - Generates a new `.SRCINFO` metadata file.
 
-3. Commit and push the changes:
+1. Commit and push the changes:
 
    ```bash
    git add PKGBUILD .SRCINFO
    git commit -m "Update to <new_version>"
    git push origin master
    ```
-
-
----
 
 ## 🐛 Issues
 
