@@ -1,6 +1,6 @@
 # Maintainer: SamuelHenrique
 pkgname=bspwm-layout-manager
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Save and restore bspwm desktop layouts with a rofi menu"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python' 'bspwm' 'rofi' 'xorg-xprop')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('f43635279049c39b262f4d56e43a200cf6c1d489b812f8b48406f55376588bca')
+sha256sums=('02e17435635a175ba736dd5c93819d57a93450a1e5450c3f99f57c807775ae99')
 
 build() {
     cd "$pkgname-$pkgver"
