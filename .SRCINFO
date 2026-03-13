@@ -10,7 +10,6 @@ pkgbase = dpsprep
 	checkdepends = python-types-pillow
 	checkdepends = python-types-fpdf2
 	checkdepends = python-pytest
-	checkdepends = python-pytest-image-diff
 	makedepends = git
 	makedepends = python-uv-build
 	makedepends = python-build
