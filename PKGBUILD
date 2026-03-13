@@ -1,6 +1,6 @@
 # Maintainer: Nick Lozon <nicklozon@gmail.com>
 pkgname=spr-bin
-pkgver=0.16.1
+pkgver=0.17.1
 pkgrel=1
 pkgdesc="Stacked Pull Requests on GitHub"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('git')
 provides=('spr')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ejoffe/spr/releases/download/v${pkgver}/spr_linux_x86_64.tar.gz")
-sha256sums=('d7c364ab3b90e82eef6db8428709112a2ce3b9ca599e74284f04812163638a57')
+sha256sums=('33e0c04e39b89380ee84d36924594761137a65dd4e150f6136a943c7da24058e')
 
 package() {
     cd "$srcdir"
