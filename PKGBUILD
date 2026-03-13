@@ -2,7 +2,7 @@
 
 pkgname=dealers-choice
 pkgver=0.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Online Multiplayer Stud and Draw Poker"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Dealer-s-Choice/dealers_choice"
@@ -20,6 +20,7 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" meson install -C build
+  rm -f "$pkgdir/usr/lib"/libminiaudio*.a
   install -Dm 644 "${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
   rm -f "${pkgdir}/usr/share/doc/${pkgname}/LICENSE"
 }

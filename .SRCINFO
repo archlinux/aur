@@ -1,7 +1,7 @@
 pkgbase = dealers-choice
 	pkgdesc = Online Multiplayer Stud and Draw Poker
 	pkgver = 0.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Dealer-s-Choice/dealers_choice
 	arch = x86_64
 	arch = aarch64
