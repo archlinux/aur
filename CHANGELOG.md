@@ -1,3 +1,10 @@
+## 0.4.0 (10 March 2026)
+
+* `[18e8cd3](https://github.com/opentofu/tofu-ls/commit/18e8cd33b02efa991e88f83cbca64e3b7c19d889)` Add underscore as a completion trigger character
+* `[7d619d4](https://github.com/opentofu/tofu-ls/commit/7d619d42de488309394d9dcf5de9b1728d34557f)` Bump to 0.4.0
+* `[5dfedb9](https://github.com/opentofu/tofu-ls/commit/5dfedb90d4722711b98f6189f11f3b4d015d61a1)` Ensure correct usage of language IDs ([#147](https://github.com/opentofu/tofu-ls/pull/147))
+* `[58a2db2](https://github.com/opentofu/tofu-ls/commit/58a2db2c05e2d21d44dae73018871626d5c3301f)` Ensure that submodule documentation links are correct ([#152](https://github.com/opentofu/tofu-ls/pull/152))
+
 ## 0.34.3 (03 September 2024)
 
 ENHANCEMENTS:
