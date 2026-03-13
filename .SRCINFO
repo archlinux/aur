@@ -1,0 +1,25 @@
+pkgbase = lib32-nvidia-575xx-utils
+	pkgdesc = NVIDIA drivers utilities (32-bit) (575xx)
+	pkgver = 575.64.05
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	depends = lib32-zlib
+	depends = lib32-gcc-libs
+	depends = lib32-libglvnd
+	depends = nvidia-575xx-utils=575.64.05
+	optdepends = steam: 32-bit Vulkan/OpenGL consumers
+	provides = lib32-nvidia-utils=575.64.05
+	provides = lib32-vulkan-driver
+	provides = lib32-opengl-driver
+	provides = lib32-nvidia-libgl
+	conflicts = lib32-nvidia-utils
+	conflicts = lib32-nvidia-libgl
+	replaces = lib32-nvidia-libgl
+	noextract = NVIDIA-Linux-x86_64-575.64.05.run
+	options = !strip
+	source = NVIDIA-Linux-x86_64-575.64.05.run::https://us.download.nvidia.com/XFree86/Linux-x86_64/575.64.05/NVIDIA-Linux-x86_64-575.64.05.run
+	sha256sums = 85f2b50f912261c1917a0b2cf7e1f9743affd008fdc0f209f4d5563f774d502d
+
+pkgname = lib32-nvidia-575xx-utils
