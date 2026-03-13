@@ -1,11 +1,11 @@
 # Maintainer: fa5e4658010be730
 pkgname=btrfs-file-history-git
-pkgver=r1.f8aec3a
+pkgver=r4.004054a
 pkgrel=1
 pkgdesc="Track file and directory lifecycle across btrfs snapshots"
 arch=('any')
 url="https://gitlab.com/fkzys/btrfs-file-history"
-license=('GPL-3.0-or-later')
+license=('AGPL-3.0-or-later')
 depends=('python' 'btrfs-progs' 'util-linux')
 optdepends=(
     'e2fsprogs: extent analysis via filefrag'
