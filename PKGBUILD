@@ -2,7 +2,7 @@
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 pkgname=claude-code
 pkgver=2.1.75
-pkgrel=2
+pkgrel=3
 pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/anthropics/claude-code"
@@ -21,7 +21,8 @@ optdepends=(
 # This bucket is used in the official install script at https://claude.ai/install.sh
 # curl -fsSL https://claude.ai/install.sh | grep GCS_BUCKET
 _gcs_bucket="https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases"
-source=("cc-legal-20260313::https://code.claude.com/docs/en/legal-and-compliance.md")
+_license_update_ts=20260313
+source=("cc-legal-${_license_update_ts}::https://code.claude.com/docs/en/legal-and-compliance.md")
 source_x86_64=("claude-${pkgver}-x86_64::${_gcs_bucket}/${pkgver}/linux-x64/claude")
 source_aarch64=("claude-${pkgver}-aarch64::${_gcs_bucket}/${pkgver}/linux-arm64/claude")
 
@@ -41,5 +42,5 @@ exec /opt/claude-code/bin/claude "$@"
 EOF
 	chmod 755 "${pkgdir}/usr/bin/claude"
 
-	install -Dm644 "${srcdir}/cc-legal-20260311" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/cc-legal-${_license_update_ts}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
