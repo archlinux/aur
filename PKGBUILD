@@ -1,5 +1,5 @@
 # Maintainer: Hein Puth (Warky Devs)
-pkgname=WKMailSync
+pkgname=wkmailsync
 _pkgsrc="WkMailSync"
 pkgver=1.0.3
 pkgrel=1
@@ -24,7 +24,7 @@ build() {
         -buildmode=pie \
         -mod=readonly \
         -ldflags "-s -w -linkmode external -extldflags \"${LDFLAGS}\"" \
-        -o "$pkgname" ./cmd/WKMailSync
+        -o "$pkgname" ./cmd/wkmailsync
 }
 
 package() {
