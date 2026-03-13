@@ -2,7 +2,7 @@
 
 pkgname=lefdef-viewer
 pkgver=0.2.1
-pkgrel=1
+pkgrel=3
 pkgdesc="A Rust-based LEF (Library Exchange Format) and DEF (Design Exchange Format) file viewer with a modern GUI built using egui"
 arch=($CARCH)
 url="https://github.com/vowstar/lefdef-viewer"
@@ -28,7 +28,7 @@ prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target host-tuple
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
