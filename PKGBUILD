@@ -9,7 +9,7 @@ url="https://github.com/nirenjan/${pkgname}"
 license=('GPL2')
 depends=('libusb' 'hidapi' 'libevdev' 'inih')
 makedepends=('autoconf' 'automake' 'libtool' 'pkg-config' 'python'
-         'gettext' 'libusb' 'hidapi' 'libevdev' 'inih' 'doxygen' 'cmocka' 'git')
+         'gettext' 'libusb' 'hidapi' 'libevdev' 'libinih' 'doxygen' 'cmocka' 'git')
 install="${pkgname}.install"
 backup=('etc/x52d/x52d.conf')
 source=("https://github.com/nirenjan/libx52/releases/download/v${pkgver}/${pkgname}_${pkgver}.orig.tar.xz")
