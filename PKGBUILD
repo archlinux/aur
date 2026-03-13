@@ -5,7 +5,7 @@
 
 pkgname=ratarmount
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Mount tar files via fusepy. Supports Recursive Mounting, Compressed Files, Read-Only Bind Mounting, Union Mounting and Write Overlays. A fast random access alternative to archivemount."
 arch=(any)
 url="https://github.com/mxmlnkn/$pkgname"
@@ -41,8 +41,6 @@ optdepends=(
 makedepends=(
     'python-build'
     'python-installer'
-    'python-wheel'
-    'python-setuptools'
 )
 
 _pkg_ext='.tar.gz'
@@ -51,9 +49,9 @@ b2sums=('dca409aa246de4081cd05f139d073050ed8530b65338885abf418e3b309b0466941d12f
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}/core"
-    python -m build --wheel --no-isolation
+    python -m build --wheel
     cd "$srcdir/${pkgname}-${pkgver}"
-    python -m build --wheel --no-isolation
+    python -m build --wheel
 }
 
 package() {
