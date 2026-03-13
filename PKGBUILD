@@ -3,7 +3,7 @@
 pkgname=rendercv-bin
 _pkgname=rendercv
 pkgdesc="Binary version of renderCV. A CV/resume generator for academics and engineers, YAML to PDF"
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/rendercv/rendercv/"
@@ -16,7 +16,7 @@ makedepends=('unzip')
 depends=('glibc')
 
 sha256sums=(
-	'be1254f82696f94b08c6678eb1a5b88dff9594f367e613037c6a23a3741974ad'
+	'ce498c6a2f55ed42c635065bc537e6e38f258a690760b9a2290e58248767e7ee'
 	'9b7a082e203987b6df516af8b055e8ccaacbdf5522724e5e82a62f07ccc0b812'
 )
 

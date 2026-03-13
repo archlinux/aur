@@ -1,6 +1,6 @@
 pkgbase = rendercv-bin
 	pkgdesc = Binary version of renderCV. A CV/resume generator for academics and engineers, YAML to PDF
-	pkgver = 2.6
+	pkgver = 2.7
 	pkgrel = 1
 	url = https://github.com/rendercv/rendercv/
 	arch = x86_64
