@@ -1,6 +1,6 @@
 pkgbase = oxfuse-gdc
 	pkgdesc = High-level binding to libfuse3 for the D programming language
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 0
 	url = https://gitlab.com/os-18/oxfuse
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = oxfuse-gdc
 	makedepends = gcc-d
 	depends = fuse3
 	depends = gcc-d
-	source = oxfuse-gdc-0.6.2.tar.gz::https://gitlab.com/os-18/oxfuse/-/archive/v0.6.2/oxfuse-v0.6.2.tar.gz
-	sha256sums = 620c934bb9ac0186dfad43dc5cec612929903f834c1581c9ddbc0a465002c338
+	source = oxfuse-gdc-0.7.0.tar.gz::https://gitlab.com/os-18/oxfuse/-/archive/v0.7.0/oxfuse-v0.7.0.tar.gz
+	sha256sums = 237139cedc3a288cefb48ce1f86a34a1aed7abfa6782ea50e4fa79c658f63f5a
 
 pkgname = oxfuse-gdc
