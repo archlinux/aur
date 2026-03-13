@@ -7,8 +7,7 @@ pkgrel=1
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
 url="https://grayjay.app/desktop/"
-conflicts=('grayjay-bin')
-conflicts=('grayjay-git')
+conflicts=('grayjay-bin' 'grayjay-git')
 options=('!strip' 'staticlibs')
 # Even though GitLab is the official Futo repo and Github is just a mirror, for some reason they are a lot
 # lazier with tagging their Gitlab releases. Use Gitlab where possible, but to keep up with latest release it will
@@ -77,7 +76,7 @@ build() {
 
 package() {
     # Create necessary directories
-    install -dm755 "${pkgdir}/opt/${_appname}"
+    install -dm755 "${pkgdir}/opt/${pkgname}"
     install -dm755 "${pkgdir}/usr/bin"
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
@@ -94,5 +93,5 @@ package() {
     install -Dm755 "${srcdir}/grayjay.sh" "${pkgdir}/usr/bin/grayjay"
     install -Dm644 "${srcdir}/grayjay.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 "${srcdir}/${_appname}/Grayjay.Desktop.CEF/grayjay.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${_appname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${_appname}/LICENSE"
+    install -Dm644 "${srcdir}/${_appname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
