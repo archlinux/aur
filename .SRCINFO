@@ -32,9 +32,11 @@ pkgbase = taskbook-bin
 	sha256sums_aarch64 = 21bf8352b856e3967cd8964a7854d6d7fa6fb2ba5dd355ef2d6befef1be9b680
 
 pkgname = taskbook-bin
+	pkgdesc = Tasks, boards & notes for the command-line habitat (Client)
 	provides = tb
 	conflicts = taskbook
 
 pkgname = taskbook-server-bin
+	pkgdesc = Tasks, boards & notes for the command-line habitat (Server)
 	provides = tb-server
 	conflicts = taskbook-server

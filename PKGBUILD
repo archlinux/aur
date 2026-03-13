@@ -46,6 +46,8 @@ sha256sums_aarch64=('c3ff56cd7d9871c90af23b21394da858a88e02b40efbedf81dbcccd9a15
 
 
 package_taskbook-bin() {
+	pkgdesc+=" (Client)"
+
 	provides+=("${_appname}")
 	conflicts=("${_pkgname}")
 
@@ -62,6 +64,8 @@ package_taskbook-bin() {
 }
 
 package_taskbook-server-bin() {
+	pkgdesc+=" (Server)"
+
 	provides+=("${_appname}-server")
 	conflicts=("${_pkgname}-server")
 
