@@ -1,35 +1,68 @@
-# Maintainer: 3ED <krzysztof1987 at gmail dot com>
-#
-pkgname=perl-time-out
-_lastauthor=P/PA/PATL
-_pkgname=Time-Out
-pkgver=0.11
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: 3ED <krzysztof1987 at gmail dot com>
+
+_author=SVW
+_dist=Time-Out
+_ver=1.0.0
+pkgname=perl-${_dist@L}
+pkgver=${_ver#v}
 pkgrel=1
 pkgdesc='Easily timeout long running operations'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$_ver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-carp>=1.32'
+    'perl-exporter'
+    'perl-scalar-list-utils'
+    'perl-try-tiny'
+    'perl-version>=0.9915'
+    'perl>=5.8.0'
+)
+makedepends=(
+    'perl-extutils-makemaker'
+    'perl-extutils-makemaker-cpanfile>=0.09'
+    'perl-lib'
+    'perl-pathtools'
+    'perl-version>=0.9915'
+)
+checkdepends=(
+    'perl-io'
+    'perl-test-fatal'
+    'perl-test-harness>=3.50'
+    'perl-test-needs'
+    'perl-test-simple'
+)
+optdepends=('perl-time-hires')
 options=('!emptydirs')
-depends=('perl')
-url="https://metacpan.org/release/${_pkgname}"
-source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('707f113bf3d6c607f8e945d0bd89e9b035eebd7df79e3d8f62eea9e344bebfdce7d9165bfaf20c6267e68e3503c673077cec0823a7b2f139c24effd2e6cecd0a')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$_ver.tar.gz")
+sha256sums=('514993f5516c16499bb918f377a07a7988bc4c8771f916dafd3014a2f24a1a06')
 
-build() {
-  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-    MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$_ver"
 
-  cd ${_pkgname}-${pkgver}
-  perl Makefile.PL
-  make
-}
-check() {
-  cd ${_pkgname}-${pkgver}
-  make test
-}
-package() {
-  cd ${_pkgname}-${pkgver}
-  make install
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
+    make
 }
 
+check()
+{
+    cd "$_dist-$_ver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make test
+}
+
+package()
+{
+    cd "$_dist-$_ver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
+}

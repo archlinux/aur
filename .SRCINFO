@@ -1,15 +1,29 @@
 pkgbase = perl-time-out
 	pkgdesc = Easily timeout long running operations
-	pkgver = 0.11
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://metacpan.org/release/Time-Out
+	url = https://metacpan.org/release/SVW/Time-Out-1.0.0
 	arch = any
-	license = PerlArtistic
-	license = GPL
-	depends = perl
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-io
+	checkdepends = perl-test-fatal
+	checkdepends = perl-test-harness>=3.50
+	checkdepends = perl-test-needs
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	makedepends = perl-extutils-makemaker-cpanfile>=0.09
+	makedepends = perl-lib
+	makedepends = perl-pathtools
+	makedepends = perl-version>=0.9915
+	depends = perl-carp>=1.32
+	depends = perl-exporter
+	depends = perl-scalar-list-utils
+	depends = perl-try-tiny
+	depends = perl-version>=0.9915
+	depends = perl>=5.8.0
+	optdepends = perl-time-hires
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/P/PA/PATL/Time-Out-0.11.tar.gz
-	sha512sums = 707f113bf3d6c607f8e945d0bd89e9b035eebd7df79e3d8f62eea9e344bebfdce7d9165bfaf20c6267e68e3503c673077cec0823a7b2f139c24effd2e6cecd0a
+	source = https://cpan.metacpan.org/authors/id/S/SV/SVW/Time-Out-1.0.0.tar.gz
+	sha256sums = 514993f5516c16499bb918f377a07a7988bc4c8771f916dafd3014a2f24a1a06
 
 pkgname = perl-time-out
-
