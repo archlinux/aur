@@ -1,0 +1,3 @@
+[perl-hijk]
+source = "cpan"
+cpan = "Hijk"
