@@ -1,0 +1,13 @@
+pkgbase = ddc-mode-switcher
+	pkgdesc = Switch dual-mode monitor display modes (5K↔2K) via DDC/CI — toggle or Steam wrapper
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Gunther-Schulz/display-mode-switcher
+	arch = any
+	license = MIT
+	depends = ddcutil
+	depends = mutter
+	source = https://github.com/Gunther-Schulz/display-mode-switcher/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 980017165d43151341c361c769fa4dead8da562713c34e35a0f5863e6583cbd9
+
+pkgname = ddc-mode-switcher
