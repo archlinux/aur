@@ -4,7 +4,6 @@ pkgname=pear-desktop-noads-git
 _app_id=com.github.th_ch.youtube_music
 pkgver=3.11.0.r357.g73f08fd
 pkgrel=1
-_nodeversion=25
 _electronversion=42
 pkgdesc="Extension for music player - tweaked to ruin required submission to our capitalist overseers in exchange for pleasant noises."
 arch=('x86_64')
