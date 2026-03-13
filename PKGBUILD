@@ -3,7 +3,7 @@
 
 pkgname=mindomo-bin
 _pkgname=mindomo
-pkgver=11.1.6
+pkgver=11.1.7
 pkgrel=1
 pkgdesc="Mindomo is an online collaborative mind mapping, concept mapping and outlining software for visualizing and organizing information"
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('mindomo')
 depends=('fuse2')
 _app_image="Mindomo_v.${pkgver}_x64.AppImage"
 source_x86_64=("$url/download/${pkgver%.*}/${_app_image}")
-sha256sums_x86_64=('d8caa6eaa2461fd711287041f7739cb7281d2b63c978e199a4a4c262f3e352ab')
+b2sums_x86_64=('cc8e719aee0b2b071ef7a253151bae9261e86af4a8df64b36e58a3e494b0c1be235484bccac85f3ea2b89fa430a1497a37245ad27ffd60c8a655b1fcc91d6585')
 options=(!strip)
 
 prepare() {
@@ -28,20 +28,11 @@ build() {
     chmod -R a-x+rX squashfs-root/usr
 }
 package() {
-    install -dm755 "${pkgdir}/opt/${pkgname}/"
+    install -dm755 "${pkgdir}/opt/${pkgname}"
     install -Dm755 "${srcdir}/${_app_image}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-
-    # Desktop file
-    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop"\
-            "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-
-    # Icon images
-    install -dm755 "${pkgdir}/usr/share/"
+    install -Dm644 "${srcdir}/squashfs-root/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -dm755 "${pkgdir}/usr/share"
     cp -a "${srcdir}/squashfs-root/usr/share/icons" "${pkgdir}/usr/share/"
-
-    # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 }
-
-# vim:set noet sts=0 sw=4 ts=4:
