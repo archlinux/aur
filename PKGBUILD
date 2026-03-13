@@ -3,7 +3,7 @@
 
 pkgbase=clang-android
 pkgname=${pkgbase}-bin
-pkgver=20.0.0
+pkgver=22.0.0
 pkgrel=1
 pkgdesc="LLVM's C language family frontend for compiling Android components, prebuilt by Google for Android NDK."
 arch=('x86_64' 'aarch64')
