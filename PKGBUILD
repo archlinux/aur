@@ -1,7 +1,7 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 # Contributor: Phillip Schichtel <phillip@schich.tel>
 pkgname=grayjay
-_appname=Grayjay
+_appname=grayjay
 pkgver=18
 pkgrel=1
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
@@ -91,7 +91,7 @@ package() {
     find "${_appdir}" -type f -name '*.so' -o -name '*.so.*' -o -name 'dotcefnative' -exec chmod a+x "{}" \;
 
     install -Dm755 "${srcdir}/grayjay.sh" "${pkgdir}/usr/bin/grayjay"
-    install -Dm644 "${srcdir}/grayjay.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "${srcdir}/${_appname}/Grayjay.Desktop.CEF/grayjay.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
-    install -Dm644 "${srcdir}/${_appname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/grayjay.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
+    install -Dm644 "${srcdir}/${_appname}/Grayjay.Desktop.CEF/grayjay.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_appname}.png"
+    install -Dm644 "${srcdir}/${_appname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${_appname}/LICENSE"
 }
