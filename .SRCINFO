@@ -1,6 +1,6 @@
 pkgbase = livebook
 	pkgdesc = Automate code & data workflows with interactive Elixir notebooks
-	pkgver = 0.18.5
+	pkgver = 0.19.3
 	pkgrel = 1
 	url = https://livebook.dev
 	arch = any
