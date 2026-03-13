@@ -31,6 +31,7 @@ makedepends+=('cuda')        # MODULE_GRANULAR
 makedepends+=(blaze)       # MODULE_PARALLEL required
 #makedepends+=(thrust)      # MODULE_PARALLEL required (included in cuda)
 makedepends+=(opencascade) # MODULE_CASCADE
+makedepends+=(splashsurf)  # MODULE_FSI (mesh SPH sim)
 makedepends+=(mumps)       # MODULE_MUMPS
 makedepends+=(blas)        # MODULE_MUMPS required
 makedepends+=(intel-mkl)   # MODULE_MKL
@@ -41,6 +42,7 @@ optdepends+=(	"irrlicht: Runtime visualization with Irrlicht."
 		"python: Python bindings"
 		"nvidia-utils: CUDA support in PARALLEL module"
 		"opencascade: add 3D CAD file support (STEP format)"
+		"splashsurf: mesh SPH sim in FSI module"
 		"intel-mkl: This library is currently used in Chrono for its parallel direct solver (Pardiso)"
 		)
 source=("${pkgname}::git+https://github.com/projectchrono/chrono.git${_fragment}"

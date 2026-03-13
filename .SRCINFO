@@ -22,6 +22,7 @@ pkgbase = chronoengine-git
 	makedepends = cuda
 	makedepends = blaze
 	makedepends = opencascade
+	makedepends = splashsurf
 	makedepends = mumps
 	makedepends = blas
 	makedepends = intel-mkl
@@ -36,6 +37,7 @@ pkgbase = chronoengine-git
 	optdepends = python: Python bindings
 	optdepends = nvidia-utils: CUDA support in PARALLEL module
 	optdepends = opencascade: add 3D CAD file support (STEP format)
+	optdepends = splashsurf: mesh SPH sim in FSI module
 	optdepends = intel-mkl: This library is currently used in Chrono for its parallel direct solver (Pardiso)
 	source = chronoengine-git::git+https://github.com/projectchrono/chrono.git#branch=main
 	source = git+https://github.com/google/benchmark.git
