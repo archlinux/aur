@@ -1,6 +1,6 @@
 pkgbase = powerline-go
 	pkgdesc = A beautiful, useful and fast prompt for your shell
-	pkgver = 1.25
+	pkgver = 1.26
 	pkgrel = 1
 	url = https://github.com/justjanne/powerline-go
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = powerline-go
 	makedepends = go-pie
 	makedepends = git
 	optdepends = powerline-fonts
-	source = powerline-go-1.25.tar.gz::https://github.com/justjanne/powerline-go/archive/v1.25.tar.gz
-	sha256sums = 64cb194bbf08536320d0f4c24ef9524fdf486f579147cacdb0b6dc0afc1134e2
+	source = powerline-go-1.26.tar.gz::https://github.com/justjanne/powerline-go/archive/v1.26.tar.gz
+	sha256sums = 65aa911d50f3695b37da92a53ed417b6cf263a9e4091552b77921a6057dbb320
 
 pkgname = powerline-go
