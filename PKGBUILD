@@ -14,7 +14,7 @@
 #      git commit -m "Release v0.X.0"
 #      git push origin master
 pkgname=presshold
-pkgver=0.2.6
+pkgver=0.2.9
 pkgrel=1
 pkgdesc="macOS-style accent character selector for Linux"
 arch=('x86_64')
@@ -27,7 +27,7 @@ optdepends=(
     'xdotool: character injection on X11'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e46a5b8eb9a2ba6d347f4f8039cc71369a4a2013bfc3ea62254a5f18b779978c')
+sha256sums=('422027fea158cc8556d71a5c1a83204dc5f4937ab0c8ac43e21a16bc5cc05969')
 
 prepare() {
     cd "$pkgname-$pkgver"
