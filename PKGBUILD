@@ -3,8 +3,8 @@
 
 _pkgname="mtkclient"
 pkgname="$_pkgname-git"
-pkgver=2.1.2.r17.gd14d139
-pkgrel=1
+pkgver=2.1.3.r18.g0fdbe49
+pkgrel=2
 pkgdesc="Unofficial MTK reverse engineering and flash tool"
 url="https://github.com/bkerler/mtkclient"
 license=('GPL-3.0-only')
@@ -27,6 +27,9 @@ makedepends=(
   'python-hatchling'
   'python-installer'
   'python-wheel'
+)
+optdepends=(
+  'android-udev: ADB/Fastboot support'
 )
 
 provides=("$_pkgname")
@@ -52,20 +55,9 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   # udev rules
-  install -Dm644 /dev/stdin "$pkgdir"/usr/lib/udev/rules.d/52-mtk-edl.rules << END
-# Qualcomm EDL
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="9008", MODE="0660", GROUP="adbusers", TAG+="uaccess"
+  local _plugdev_regex='s&GROUP="plugdev"&TAG+="uaccess"&g'
 
-# Qualcomm Memory Debug
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="9006", MODE="0660", GROUP="adbusers", TAG+="uaccess"
+  install -Dm644 /dev/stdin "$pkgdir"/usr/lib/udev/rules.d/51-mtkclient-edl.rules <<< "$(sed -e "$_plugdev_regex" Setup/Linux/51-edl.rules)"
 
-# Qualcomm Memory Debug
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="05c6", ATTRS{idProduct}=="900E", MODE="0660", GROUP="adbusers", TAG+="uaccess"
-
-# LG Memory Debug
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1004", ATTRS{idProduct}=="61a1", MODE="0660", GROUP="adbusers", TAG+="uaccess"
-
-# Sierra Wireless
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="1199", ATTRS{idProduct}=="9071", MODE="0660", GROUP="adbusers", TAG+="uaccess"
-END
+  install -Dm644 Setup/Linux/52-mtk.rules "$pkgdir"/usr/lib/udev/rules.d/52-mtkclient.rules
 }

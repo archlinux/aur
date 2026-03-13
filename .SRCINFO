@@ -1,7 +1,7 @@
 pkgbase = mtkclient-git
 	pkgdesc = Unofficial MTK reverse engineering and flash tool
-	pkgver = 2.1.2.r17.gd14d139
-	pkgrel = 1
+	pkgver = 2.1.3.r18.g0fdbe49
+	pkgrel = 2
 	url = https://github.com/bkerler/mtkclient
 	arch = any
 	license = GPL-3.0-only
@@ -19,6 +19,7 @@ pkgbase = mtkclient-git
 	depends = python-pycryptodomex
 	depends = python-pyserial
 	depends = python-pyusb
+	optdepends = android-udev: ADB/Fastboot support
 	provides = mtkclient
 	conflicts = mtkclient
 	source = mtkclient::git+https://github.com/bkerler/mtkclient.git
