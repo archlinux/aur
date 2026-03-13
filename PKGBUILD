@@ -3,9 +3,9 @@
 pkgname=eclipse-cpp-bin
 _pkgname=${pkgname%-bin}
 epoch=2
-pkgver=4.38
+pkgver=4.39
 pkgrel=1
-_release=2025-12/R
+_release=2026-03/R
 pkgdesc="Highly extensible IDE (C/C++ version)"
 arch=('x86_64' 'aarch64')
 url="https://www.eclipse.org/"
@@ -22,8 +22,8 @@ _srcfilename_aarch64="$_pkgname-${_release//\//-}-linux-gtk-aarch64.tar.gz"
 source_x86_64=("$_srcfilename_x86_64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_x86_64&r=1")
 source_aarch64=("$_srcfilename_aarch64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_aarch64&r=1")
 
-sha512sums_x86_64=('1ffc665ea62ec017b34675a7e45b8cf55aa31e0f9158349e275a8593f5f653b8a1526ff585e91fad3ba9faf337e5d736323f937a1e96316125c5198ace64024b')
-sha512sums_aarch64=('851a428f8604acbed82f9bb27805f06df6ec1b7b6bc8cf44fec48c0427000ca06201e2db1fe99b61e5b7400d1a5194c53835aeea89a41866067f374dce4973a2')
+sha512sums_x86_64=('100081ade0d77ffd8dfe500f922e07477adeaf1d1f4df042878a75c374cd9a453712e78c652648b4b571901d3df4934a9825c0ed690af92332542a493b223125')
+sha512sums_aarch64=('dbf27ef5a02a9674c7240087bbc5b551e46b92d196e5c2a63e2284e4bbe934d294795b1b03b4035fbd01ce0bcf76d1a50c06a640b9588763b90c632810e68e23')
 
 source=("eclipse.desktop")
 sha512sums=('96a532509459056c470e18bc5fde639cd9725b831ff69864a444ed8282dd87aefe71b23be92280f22a480f2321794c4e3f7b8026925fb03625f0bb954a06e139')
