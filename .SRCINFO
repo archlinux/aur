@@ -1,6 +1,6 @@
 pkgbase = hypnos-git
 	pkgdesc = A Wayland idle time based action daemon (git version)
-	pkgver = 1.0.0.r12.gabc123
+	pkgver = 1.0.0.r94.cd413f1
 	pkgrel = 1
 	url = https://github.com/axos-project/hypnos
 	install = hypnos-git.install
