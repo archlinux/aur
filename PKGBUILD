@@ -1,7 +1,7 @@
 # Maintainer: Christian Möllmann (knoelliX) <moellix@knoellix.net>
 pkgname=nativmix
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Hardware-based PipeWire volume & MIDI mixer for Wayland. Controls physical inputs, virtual sinks, and MIDI devices. (Modern deej alternative)"
 arch=('any')
 url="https://github.com/knoelliX/NativMix"
@@ -34,7 +34,7 @@ install=nativmix.install
 
 # Hybride Source-Logik entfernt - Dies ist nun das offizielle PKGBUILD
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/knoelliX/NativMix/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f747c8b78791d5c8c8ab685f8bedbede1a4ead5d7ee4fd9ca9b742137d30bbb4')
+sha256sums=('8db75e19cc8212969ee2d2a67fd09581063b67424ff8a225cc2f77b491d0d4df')
 
 prepare() {
     # Find extracted directory (GitHub tags prepends 'NativMix-' or 'nativmix-')
