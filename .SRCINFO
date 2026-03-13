@@ -1,10 +1,10 @@
 pkgbase = btrfs-file-history-git
 	pkgdesc = Track file and directory lifecycle across btrfs snapshots
-	pkgver = r1.f8aec3a
+	pkgver = r4.004054a
 	pkgrel = 1
 	url = https://gitlab.com/fkzys/btrfs-file-history
 	arch = any
-	license = GPL-3.0-or-later
+	license = AGPL-3.0-or-later
 	makedepends = git
 	depends = python
 	depends = btrfs-progs
