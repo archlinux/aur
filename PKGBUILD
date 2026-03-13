@@ -1,6 +1,6 @@
 pkgname=lattice-net-git
 pkgver=0.1.0.r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="Peer-to-peer web protocol CLI and daemon"
 arch=('x86_64')
 url="https://github.com/fordz0/lattice"
@@ -10,6 +10,7 @@ makedepends=('cargo' 'git')
 options=(!lto !debug)
 provides=('lattice-net')
 conflicts=('lattice-net' 'lattice-net-bin')
+install=lattice-net-git.install
 source=("git+https://github.com/fordz0/lattice.git")
 sha256sums=('SKIP')
 
@@ -35,6 +36,8 @@ package() {
 
   install -Dm755 "target/release/lattice" "$pkgdir/usr/bin/lattice"
   install -Dm755 "target/release/lattice-daemon" "$pkgdir/usr/bin/lattice-daemon"
+  install -Dm755 "packaging/shared/restart-daemon-if-active.sh" \
+    "$pkgdir/usr/lib/lattice/restart-daemon-if-active.sh"
   install -Dm644 "$startdir/lattice-daemon.service" \
     "$pkgdir/usr/lib/systemd/user/lattice-daemon.service"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
