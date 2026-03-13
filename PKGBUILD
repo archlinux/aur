@@ -1,6 +1,6 @@
 # Maintainer: Christopher Sieh (stelzo) <stelzo@steado.de>
 pkgname=marina
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A dataset manager for robotics to organize, share, and discover datasets and metadata across storage backends."
 arch=('x86_64' 'aarch64')
@@ -20,6 +20,8 @@ build() {
   cargo build --release --locked
 
   mkdir -p "$srcdir/completions"
+  export MARINA_CONFIG_DIR=$(mktemp -d)
+  export MARINA_CACHE_DIR=$(mktemp -d)
   "$CARGO_TARGET_DIR/release/marina" completions bash > "$srcdir/completions/bash"
   "$CARGO_TARGET_DIR/release/marina" completions zsh  > "$srcdir/completions/_zsh"
   "$CARGO_TARGET_DIR/release/marina" completions fish > "$srcdir/completions/fish"
