@@ -1,7 +1,7 @@
 pkgbase = wifiman-desktop
 	pkgdesc = Network analysis and WiFi speed testing tool by Ubiquiti
 	pkgver = 1.2.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ui.com
 	install = wifiman-desktop.install
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = wifiman-desktop
 	depends = webkit2gtk-4.1
 	depends = wireless_tools
 	depends = systemd
+	optdepends = wireguard-tools: required for using Teleport VPN
 	source = https://desktop.wifiman.com/wifiman-desktop-1.2.8-amd64.deb
 	sha256sums = 47e31bc317e7055f5571859e33534cd3c2d7d4ccfdf9fcb8afab9920bc9d964b
 
