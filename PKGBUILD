@@ -1,3 +1,4 @@
+# Maintainer: Ardox <ardox@axos-project.com>
 pkgname="sleex-artworks-git"
 _pkgname="sleex-artworks"
 pkgver=1.0.r5.cb4a05e
