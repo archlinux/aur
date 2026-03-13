@@ -5,8 +5,8 @@ conflicts=('signal-desktop')
 provides=('signal-desktop')
 _parent_pkgname=signal-desktop
 _pkgname=Signal-Desktop
-pkgver=8.0.0
-pkgrel=2
+pkgver=8.2.1
+pkgrel=1
 pkgdesc="Signal Private Messenger for Linux (uses system Electron)"
 license=('AGPL-3.0-only')
 arch=('x86_64')
@@ -46,9 +46,9 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/signalapp/${_pkgname}/archive/v${pkgver}.tar.gz"
   "${_parent_pkgname}.desktop"
 )
-sha256sums=('f0232d07b6d253b35e02e389d2b4cc5d25d699b609d086f18fd52f696a24dca3'
+sha256sums=('e72d44e93ee579ab99b3f308c07a10ac2eecf14dd86197ac7efca6855f3facc4'
             'bf388df4b5bbcab5559ebbf220ed4748ed21b057f24b5ff46684e3fe6e88ccce')
-b2sums=('2569bbcb514befbee2f7ac2a509858f622c8f6bca40af089469fca7ded23a683cc4f2ef91bfa3cd1f569e13426c792849183c62343d41f9accc092cdc2f1072f'
+b2sums=('5e617baa9c111f356772b56687c3c1bae324fb3e0ba9b03ea680a23222968cd5029190697d88138dcd0c3b503b98f4c80b551adf5f8647b6a05a1a8af3d34ac0'
         'ffb8f7bab4fd84aacf13e7b6d2835daf449b6650b4b3fa723456792ba7fb6cae352928fea11cb030510d558ce30036ff5a1513444f067b94c7fff0158b4f2265')
 
 prepare() {
