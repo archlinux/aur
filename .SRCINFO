@@ -1,8 +1,8 @@
 pkgbase = ssmt4-linux
 	pkgdesc = SSMT4 - Super Simple Linux Game Tools 4th
-	pkgver = 0.0.8_beta
+	pkgver = 0.0.9_beta
 	pkgrel = 6
-	url = https://gitee.com/xiaobai01111/ssmt4-linux
+	url = https://github.com/peachycommit/ssmt4-linux
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = git
@@ -23,7 +23,7 @@ pkgbase = ssmt4-linux
 	optdepends = pciutils: GPU detection (lspci)
 	optdepends = 7zip: split archive extraction
 	optdepends = unzip: Proton archive extraction
-	optdepends = git: Data-parameters repository sync
+	optdepends = git: data-linux repository sync
 	optdepends = polkit: privileged telemetry host edits (pkexec)
 	optdepends = procps-ng: process monitoring (ps/pgrep)
 	optdepends = libayatana-appindicator: tray icon support
@@ -32,7 +32,7 @@ pkgbase = ssmt4-linux
 	conflicts = ssmt4-linux-git
 	options = !buildflags
 	options = !debug
-	source = ssmt4-linux::git+https://gitee.com/xiaobai01111/ssmt4-linux.git#tag=0.0.8-beta
+	source = ssmt4-linux::git+https://github.com/peachycommit/ssmt4-linux.git#tag=0.0.9-beta
 	sha256sums = SKIP
 
 pkgname = ssmt4-linux

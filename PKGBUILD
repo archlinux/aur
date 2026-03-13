@@ -1,9 +1,9 @@
 pkgname=ssmt4-linux
-pkgver=0.0.8_beta
+pkgver=0.0.9_beta
 pkgrel=6
 pkgdesc="SSMT4 - Super Simple Linux Game Tools 4th"
 arch=('x86_64')
-url='https://gitee.com/xiaobai01111/ssmt4-linux'
+url='https://github.com/peachycommit/ssmt4-linux'
 license=('GPL-3.0-or-later')
 makedepends=('git' 'nodejs' 'pnpm' 'cargo' 'rust')
 depends=('gtk3' 'webkit2gtk-4.1' 'libsoup3' 'xdg-utils')
@@ -18,7 +18,7 @@ optdepends=(
   'pciutils: GPU detection (lspci)'
   '7zip: split archive extraction'
   'unzip: Proton archive extraction'
-  'git: Data-parameters repository sync'
+  'git: data-linux repository sync'
   'polkit: privileged telemetry host edits (pkexec)'
   'procps-ng: process monitoring (ps/pgrep)'
   'libayatana-appindicator: tray icon support'
@@ -27,8 +27,7 @@ optdepends=(
 provides=('ssmt4-linux')
 conflicts=('ssmt4-linux-git')
 
-_github_repo='https://github.com/xiaobai14491-afk/SSMT4-Linux.git'
-_github_backup_repo='https://github.com/xiaobai14491-afk/SSMT4-Linux-bak.git'
+_github_repo='https://github.com/peachycommit/ssmt4-linux.git'
 _gitee_repo='https://gitee.com/xiaobai01111/ssmt4-linux.git'
 _source_repo="${SSMT4_AUR_SOURCE_REPO:-}"
 _source_tag="${pkgver//_/-}"
@@ -48,7 +47,7 @@ _probe_repo_tag() {
 
 _select_first_available_repo() {
   local repo_url
-  for repo_url in "${_github_repo}" "${_github_backup_repo}" "${_gitee_repo}"; do
+  for repo_url in "${_github_repo}" "${_gitee_repo}"; do
     if _probe_repo_tag "${repo_url}"; then
       printf '%s\n' "${repo_url}"
       return 0
@@ -60,7 +59,7 @@ _select_first_available_repo() {
 
 _select_github_repo() {
   local repo_url
-  for repo_url in "${_github_repo}" "${_github_backup_repo}"; do
+  for repo_url in "${_github_repo}"; do
     if _probe_repo_tag "${repo_url}"; then
       printf '%s\n' "${repo_url}"
       return 0
