@@ -1,6 +1,6 @@
 pkgname=ssmt4-linux
 pkgver=0.0.9_beta
-pkgrel=6
+pkgrel=7
 pkgdesc="SSMT4 - Super Simple Linux Game Tools 4th"
 arch=('x86_64')
 url='https://github.com/peachycommit/ssmt4-linux'

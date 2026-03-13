@@ -1,7 +1,7 @@
 pkgbase = ssmt4-linux
 	pkgdesc = SSMT4 - Super Simple Linux Game Tools 4th
 	pkgver = 0.0.9_beta
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/peachycommit/ssmt4-linux
 	arch = x86_64
 	license = GPL-3.0-or-later
