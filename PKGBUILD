@@ -16,8 +16,8 @@ _futo_gitlab_base="https://gitlab.futo.org/videostreaming"
 _futo_github_base="https://github.com/futo-org"
 host="${_futo_gitlab_base}"
 license=('custom:Source-First-License-1.1')
-depends=('ffmpeg' 'libsodium')
-makedepends=('dotnet-sdk>=9' 'git' 'git-lfs' 'npm' 'libappindicator-gtk3')
+depends=('ffmpeg' 'libsodium' 'libappindicator-gtk3')
+makedepends=('dotnet-sdk>=9' 'git' 'git-lfs' 'npm')
 source=("${_appname}::git+${host}/Grayjay.Desktop.git#tag=${pkgver}"
         "grayjay.desktop"
         "grayjay.sh"
@@ -65,7 +65,7 @@ build() {
 
     # Publish CEF
     local _targetdir="Grayjay.Desktop.CEF/bin/${_configuration}/net9.0/${_target}"
-    rm -R "${_targetdir}" 2> /dev/null || true
+    rm -r "${_targetdir}" 2> /dev/null || true
     mkdir -p "${_targetdir}/publish/wwwroot"
     cp -a "Grayjay.Desktop.Web/dist" "${_targetdir}/publish/wwwroot/web"
 
