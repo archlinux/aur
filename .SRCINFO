@@ -1,0 +1,13 @@
+pkgbase = sshw
+	pkgdesc = SSH client wrapper for automatic login
+	pkgver = 1.5.2.r2
+	pkgrel = 1
+	url = https://github.com/lixvbnet/sshw
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = sshw-1.5.2.r2.tar.gz::https://github.com/lixvbnet/sshw/archive/47efde86bf40094c79413cbe58efd3506460e823.tar.gz
+	sha256sums = SKIP
+
+pkgname = sshw
