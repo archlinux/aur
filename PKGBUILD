@@ -2,7 +2,7 @@
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 pkgname=claude-code
 pkgver=2.1.75
-pkgrel=1
+pkgrel=2
 pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/anthropics/claude-code"
@@ -21,11 +21,11 @@ optdepends=(
 # This bucket is used in the official install script at https://claude.ai/install.sh
 # curl -fsSL https://claude.ai/install.sh | grep GCS_BUCKET
 _gcs_bucket="https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases"
-source=("cc-legal-20260311::https://code.claude.com/docs/en/legal-and-compliance.md")
+source=("cc-legal-20260313::https://code.claude.com/docs/en/legal-and-compliance.md")
 source_x86_64=("claude-${pkgver}-x86_64::${_gcs_bucket}/${pkgver}/linux-x64/claude")
 source_aarch64=("claude-${pkgver}-aarch64::${_gcs_bucket}/${pkgver}/linux-arm64/claude")
 
-sha256sums=('2ef1dd8d49a9d3f2b4a027e40524f30c92597cf0488d7df1368f798767a7dc9c')
+sha256sums=('1e34536633a1b259f36724aa11bd73e6675c1fe3a5072ce57383558278611cba')
 sha256sums_x86_64=('328b0a429c05a04f911157d886be5123cf1824a19ba8ca1f9d594c004eac32c9')
 sha256sums_aarch64=('ec8f4f7f7bb50611dae70c109a76ee1da6a3ab45511c65f117df215848ecc905')
 
