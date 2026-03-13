@@ -5,27 +5,25 @@
 pkgname=cachyos-ananicy-rules
 _gitname=ananicy-rules
 pkgver=1.1.28
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=(cachyos)
 arch=('any')
-url='https://github.com/CachyOS/ananicy-rules'
-license=(GPL-1.0-only)
+url="https://github.com/CachyOS/${_gitname}"
+license=(GPL-3.0-only)
 pkgdesc='CachyOS - ananicy-rules'
-source=(git+https://github.com/CachyOS/ananicy-rules#tag=${pkgver})
-sha256sums=('aa648e3cc9aa61cb1907bf9ba7d84c9bd90721007e880fc60d53d7e2798e000f')
-makedepends=(git)
+source=("${pkgname}-${pkgver}::${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('78188f229bf23eaf8cc35e80b9f40be35531cbb6613b29b4cc0e45aa7931155c')
 replaces=(ananicy-rules-git)
-provides=(ananicy-rules-git)
-conflicts=(ananicy-rules-git)
 
 prepare() {
-  cd "${_gitname}"
+  cd "${_gitname}-${pkgver}"
   rm -f README.md
 }
 
 package() {
-  cd "${_gitname}"
-  install -d $pkgdir/etc/ananicy.d
-  cp -rf $srcdir/$_gitname/* $pkgdir/etc/ananicy.d
+  cd "${_gitname}-${pkgver}"
+  install -d "$pkgdir/etc/ananicy.d"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
+  cp -rf "$srcdir/$_gitname-$pkgver/"* "$pkgdir/etc/ananicy.d"
 }
