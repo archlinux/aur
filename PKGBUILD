@@ -4,7 +4,7 @@
 # Installs the prebuilt AppImage from GitHub Releases.
 
 pkgname=aurivo-bin
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=2
 pkgdesc="Aurivo Media Player (prebuilt AppImage)"
 arch=('x86_64')
@@ -22,11 +22,12 @@ _appimage="Aurivo-${pkgver}-linux-x86_64.AppImage"
 
 source=(
   "${_appimage}::https://github.com/${_owner}/${_repo}/releases/download/${_tag}/${_appimage}"
+  "com.aurivo.mediaplayer.png::https://raw.githubusercontent.com/${_owner}/${_repo}/main/icons/aurivo_512.png"
 )
 
-sha256sums=(
-  'f9d8375f60ae2a2c3b67f3f0f14fe9dd0ea5a53ade58d8529265fa49feb49c9f'
-)
+# Replace with a real checksum after v2.0.3 release asset is published:
+#   makepkg -g
+sha256sums=('SKIP' 'SKIP')
 
 package() {
   install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/aurivo/aurivo.AppImage"
@@ -45,9 +46,12 @@ Exec=aurivo %U
 Terminal=false
 Categories=AudioVideo;Player;
 MimeType=audio/mpeg;audio/flac;audio/x-wav;audio/ogg;video/mp4;video/x-matroska;
-Icon=multimedia-player
+Icon=com.aurivo.mediaplayer
 StartupNotify=true
 EOF
+
+  install -Dm644 "${srcdir}/com.aurivo.mediaplayer.png" \
+    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/com.aurivo.mediaplayer.png"
 
   install -Dm644 /dev/stdin "${pkgdir}/usr/share/metainfo/com.aurivo.mediaplayer.metainfo.xml" <<'EOF'
 <?xml version="1.0" encoding="UTF-8"?>

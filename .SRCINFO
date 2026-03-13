@@ -1,6 +1,6 @@
 pkgbase = aurivo-bin
 	pkgdesc = Aurivo Media Player (prebuilt AppImage)
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 2
 	url = https://aurivo.app
 	arch = x86_64
@@ -12,7 +12,9 @@ pkgbase = aurivo-bin
 	conflicts = aurivo
 	options = !strip
 	options = !debug
-	source = Aurivo-2.0.2-linux-x86_64.AppImage::https://github.com/muhammed-aurivo-dev/Aurivo-Medya-Player-Linux/releases/download/v2.0.2/Aurivo-2.0.2-linux-x86_64.AppImage
-	sha256sums = f9d8375f60ae2a2c3b67f3f0f14fe9dd0ea5a53ade58d8529265fa49feb49c9f
+	source = Aurivo-2.0.3-linux-x86_64.AppImage::https://github.com/muhammed-aurivo-dev/Aurivo-Medya-Player-Linux/releases/download/v2.0.3/Aurivo-2.0.3-linux-x86_64.AppImage
+	source = com.aurivo.mediaplayer.png::https://raw.githubusercontent.com/muhammed-aurivo-dev/Aurivo-Medya-Player-Linux/main/icons/aurivo_512.png
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = aurivo-bin
