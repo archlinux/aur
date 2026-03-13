@@ -1,4 +1,4 @@
-pkgbase = cmplayer-git
+pkgbase = cmplayer
 	pkgdesc = A terminal-based music player with spectrum visualizer, lyrics support, and MPRIS integration.
 	pkgver = 0.1.0.r0.g1234567
 	pkgrel = 1
@@ -16,7 +16,7 @@ pkgbase = cmplayer-git
 	depends = fftw
 	provides = cmplayer
 	conflicts = cmplayer
-	source = cmplayer-git::git+https://github.com/professor-lee/cli-music-player.git
+	source = cmplayer::git+https://github.com/professor-lee/cli-music-player.git
 	sha256sums = SKIP
 
-pkgname = cmplayer-git
+pkgname = cmplayer
