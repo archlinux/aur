@@ -1,7 +1,7 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-cleanup
 pkgver=26.03.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for system cleanup and maintenance"
 arch=('x86_64' 'i686')
 url="https://github.com/mxlinux/mx-cleanup"
