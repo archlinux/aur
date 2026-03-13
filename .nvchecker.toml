@@ -1,0 +1,3 @@
+[perl-unix-statgrab]
+source = "cpan"
+cpan = "Unix-Statgrab"
