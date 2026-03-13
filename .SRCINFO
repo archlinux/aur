@@ -1,0 +1,22 @@
+pkgbase = bluekeys-bin
+	pkgdesc = Monkeytype for your terminal
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/anirban12d/bluekeys
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0
+	depends = glibc
+	provides = bluekeys
+	conflicts = bluekeys
+	options = !strip
+	source = README-1.1.1.md::https://raw.githubusercontent.com/anirban12d/bluekeys/v1.1.1/README.md
+	source = LICENSE-1.1.1::https://raw.githubusercontent.com/anirban12d/bluekeys/v1.1.1/LICENSE
+	sha256sums = 1cb7c7c2ded25c5f7f05bf6412f464790bdf85c359bbcb3bf979d7b8cb89804b
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = bluekeys-x86_64-1.1.1.tgz::https://github.com/anirban12d/bluekeys/releases/download/v1.1.1/bluekeys-linux-x64.tar.gz
+	sha256sums_x86_64 = 56ae3e0e2eee93d38f4b8eb447cffc7cabfe8bdd81e18a6ba6b2e7ef072ce8f8
+	source_aarch64 = bluekeys-aarch64-1.1.1.tgz::https://github.com/anirban12d/bluekeys/releases/download/v1.1.1/bluekeys-linux-arm64.tar.gz
+	sha256sums_aarch64 = 618661c4cc88cc265e394b4210dcc231bc131fd9634420bf3a06585b3636698c
+
+pkgname = bluekeys-bin

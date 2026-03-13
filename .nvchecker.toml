@@ -1,0 +1,5 @@
+[bluekeys-bin]
+source = "github"
+github = "anirban12d/bluekeys"
+use_latest_release = true
+prefix = "v"
