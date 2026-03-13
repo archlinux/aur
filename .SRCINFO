@@ -1,6 +1,6 @@
 pkgbase = gosqlapi
 	pkgdesc = Turns any SQL database into a RESTful API
-	pkgver = 0.0.47
+	pkgver = 0.0.48
 	pkgrel = 1
 	url = https://github.com/elgs/gosqlapi
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gosqlapi
 	license = MIT
 	makedepends = go
 	makedepends = git
-	source = gosqlapi-0.0.47.tar.gz::https://github.com/elgs/gosqlapi/archive/refs/tags/v0.0.47.tar.gz
+	source = gosqlapi-0.0.48.tar.gz::https://github.com/elgs/gosqlapi/archive/refs/tags/v0.0.48.tar.gz
 	sha256sums = SKIP
 
 pkgname = gosqlapi

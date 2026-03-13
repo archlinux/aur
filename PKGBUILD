@@ -1,6 +1,6 @@
 # Maintainer: Qian Chen <qc@az.ht>
 pkgname=gosqlapi
-pkgver=0.0.47
+pkgver=0.0.48
 pkgrel=1
 pkgdesc="Turns any SQL database into a RESTful API"
 arch=('x86_64' 'aarch64')
