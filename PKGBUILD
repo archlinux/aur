@@ -3,7 +3,7 @@
 pkgname='lrc-socat-git'
 pkgver=r25.dc92563
 pkgrel=1
-pkgdesc="Rice Transfer Protocol"
+pkgdesc="C Socket Wrapper"
 arch=('x86_64')
 url="https://codeberg.org/labricecat/socat"
 license=('Apache-2.0')

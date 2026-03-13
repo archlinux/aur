@@ -1,5 +1,5 @@
 pkgbase = lrc-socat-git
-	pkgdesc = Rice Transfer Protocol
+	pkgdesc = C Socket Wrapper
 	pkgver = r25.dc92563
 	pkgrel = 1
 	url = https://codeberg.org/labricecat/socat
