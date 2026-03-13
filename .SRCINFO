@@ -11,6 +11,6 @@ pkgbase = bspwm-layout-manager
 	depends = rofi
 	depends = xorg-xprop
 	source = bspwm-layout-manager-0.3.0.tar.gz::https://github.com/SamuelHenriqueDeMoraisVitrio/bspwm-layout-manager/archive/0.3.0.tar.gz
-	sha256sums = 137d0dca8e8ed83a7d8c23bae9f35d4d8ab057491cd2b100851d13af955a6f6f
+	sha256sums = 7b7694793c02a756ee13d4fedff7b24e1088f39344da8f8ce5d490ab997a158f
 
 pkgname = bspwm-layout-manager
