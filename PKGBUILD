@@ -1,7 +1,7 @@
 # Maintainer: jim3692 <jim3692 at gmail.com>
 pkgname="pipewire-screenaudio"
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension to passthrough pipewire audio to WebRTC Screenshare"
 arch=('x86_64')
 url="https://github.com/IceDBorn/pipewire-screenaudio"
@@ -43,5 +43,6 @@ build() {
 package() {
   cd $srcdir/${pkgname}-${pkgver}/native
   install -Dm644 'native-messaging-hosts/firefox.json' "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.icedborn.pipewirescreenaudioconnector.json"
+  sed -i 's|target/debug|target/release|g' "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.icedborn.pipewirescreenaudioconnector.json"
   install -Dm755 'connector-rs/target/release/connector-rs' "$pkgdir/usr/lib/pipewire-screenaudio/connector-rs/target/release/connector-rs"
 }
