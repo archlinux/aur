@@ -1,16 +1,16 @@
 pkgbase = nacrypt
 	pkgdesc = A simple & secure file encryption utility
-	pkgver = 1.2.6
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://github.com/basicallygit/nacrypt
 	arch = x86_64
 	license = Apache-2.0
-	makedepends = clang
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkg-config
 	depends = libsodium
-	depends = libseccomp
-	depends = libcap
-	source = nacrypt-1.2.6.tar.gz::https://github.com/basicallygit/nacrypt/archive/1.2.6.tar.gz
-	sha256sums = 4a838c33130e6a3a3c443f95c3b3971c229744417715d24bcb13f759148a06f3
-	b2sums = b369cf5f7c750ad52c79e3b9adf6b850fb81a67fa006a1f7c218664eedadb63b3afa86ff18a8fa73813fffb92ae1deb1bb8cec58294444e7c60fc849a145c1cc
+	source = nacrypt-1.2.7.tar.gz::https://github.com/basicallygit/nacrypt/archive/1.2.7.tar.gz
+	sha256sums = d9fc6866d27e7576d24f57e3a7d3fe1e6051f28e82801e4ad45900dd5e0846b3
+	b2sums = 3f452a1c26c616baa2a0e34ca30597b92d7b31b519f2beeb4b685e970a956c20edb708bed25698e4f4299e317423a4676c3e22e39ba8f707280db1a6586ca3f6
 
 pkgname = nacrypt
