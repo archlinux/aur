@@ -1,15 +1,15 @@
 pkgbase = wordplay
 	pkgdesc = Wordplay generates anagrams of words or phrases. For example, Debian GNU/Linux = laud benign unix, nubian lug index, dang nubile unix, or I debug in lax nun.
-	pkgver = 8
-	pkgrel = 2
+	pkgver = 9.0.1
+	pkgrel = 1
 	url = https://github.com/mendelmunkis/wordplay
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = words
-	source = wordplay-8.zip::https://github.com/mendelmunkis/wordplay/archive/refs/heads/master.zip
-	source = wordplay_8-1.diff
-	md5sums = bec24fb9bcc24e11732402d49728705e
-	md5sums = f30b3f8f40cd787d2011476857f1fb8d
+	source = wordplay-9.0.1.zip::https://github.com/mendelmunkis/wordplay/archive/refs/heads/master.zip
+	source = wordplay-manpage.diff
+	md5sums = 22a60ec1ec8c1ac8b2e5183f2ecdb09f
+	md5sums = efab941d04f63738ee60d86c49ab8bf9
 
 pkgname = wordplay
