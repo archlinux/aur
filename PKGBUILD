@@ -3,7 +3,7 @@
 pkgname=grayjay
 _appname=grayjay
 pkgver=18
-pkgrel=1
+pkgrel=2
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
 url="https://grayjay.app/desktop/"
@@ -76,11 +76,11 @@ build() {
 
 package() {
     # Create necessary directories
-    install -dm755 "${pkgdir}/opt/${pkgname}"
+    install -dm755 "${pkgdir}/opt/${_appname}"
     install -dm755 "${pkgdir}/usr/bin"
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -dm755 "${pkgdir}/usr/share/licenses/${_appname}"
 
     # Copy application files
     local _appdir="${pkgdir}/opt/${pkgname}"
