@@ -9,8 +9,8 @@ license=('MIT')
 depends=('glibc')
 source_x86_64=("${url}/releases/download/v${pkgver}/usectl_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/usectl_${pkgver}_linux_arm64.tar.gz")
-sha256sums_x86_64=('568e9a330196d057b96c74b86cfd1127007f7a060f3818fa33683814ee9d2efb')
-sha256sums_aarch64=('0a7c9a85968a6d563cab53f06dbae8414a52e91da3eb8322433520e1e85619f9')
+sha256sums_x86_64=('f450b86f85a1972d6ad90af82311b6ee6e3bee2615ea6968f810b642a55509dc')
+sha256sums_aarch64=('2dbff862519c8d6e2cf250aeaedea79cd77e89207415f06af69f7c72cd2976af')
 package() {
   install -Dm755 usectl "$pkgdir/usr/bin/usectl"
 }
