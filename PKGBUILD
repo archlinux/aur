@@ -29,10 +29,6 @@ build() {
 	export CARGO_NET_OFFLINE=true
 	export CFLAGS="${CFLAGS//-flto=auto/}"
 	
-	# Respect MAKEFLAGS for parallel compilation
-	export CARGO_BUILD_JOBS="${MAKEFLAGS:-j$(nproc)}"
-	export CARGO_BUILD_JOBS="${CARGO_BUILD_JOBS#-j}"
-
 	cargo build --bin reth --frozen --release --features jemalloc,asm-keccak
 }
 
