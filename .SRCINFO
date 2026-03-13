@@ -1,0 +1,17 @@
+pkgbase = lrc-socat-git
+	pkgdesc = Rice Transfer Protocol
+	pkgver = r25.dc92563
+	pkgrel = 1
+	url = https://codeberg.org/labricecat/socat
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	depends = glibc
+	depends = libcrypto.so
+	depends = libssl.so
+	provides = lrc-socat
+	conflicts = lrc-socat
+	source = git+https://codeberg.org/labricecat/socat.git
+	sha256sums = SKIP
+
+pkgname = lrc-socat-git
