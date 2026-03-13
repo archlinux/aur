@@ -14,7 +14,7 @@
 
 _pkgname=chronoengine
 pkgname=${_pkgname}-git
-pkgver=6.0.0.r2217.g866c9980b
+pkgver=9.0.1.r323.7007afec56
 #_fragment="#tag=${pkgver}"
 _fragment="#branch=main"
 pkgrel=1
