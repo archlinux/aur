@@ -2,7 +2,7 @@
 
 _pkgname=clienteafirma
 pkgname=autofirma-git
-pkgver=r7062.d3d039512
+pkgver=r7224.3d73a3073
 pkgrel=1
 pkgdesc='Cliente de firma electrónica ofrecido por la Administración Pública'
 arch=('any')
@@ -12,9 +12,9 @@ depends=('java-runtime=17')
 makedepends=('git' 'java-environment=17' 'maven')
 conflicts=('autofirma' 'autofirma-bin')
 provides=('autofirma')
-source=("${_pkgname}::git+https://github.com/ctt-gob-es/${_pkgname}.git"
+source=("${_pkgname}::git+https://github.com/ctt-gob-es/${_pkgname}.git#branch=develop"
         "${_pkgname}-external::git+https://github.com/ctt-gob-es/${_pkgname}-external.git"
-        "jmulticard::git+https://github.com/ctt-gob-es/jmulticard.git"
+        "jmulticard::git+https://github.com/ctt-gob-es/jmulticard.git#branch=develop"
         "Java-WebSocket::git+https://github.com/TooTallNate/Java-WebSocket.git"
         "autofirma"
         "autofirma.desktop"
@@ -45,12 +45,15 @@ prepare() {
   # FIX: https://github.com/ctt-gob-es/clienteafirma/issues/320
   export PATH="/usr/lib/jvm/java-17-openjdk/bin/:$PATH"
   # Build external libraries
+  msg2 "Building ${_pkgname}-external..."
   cd "${_pkgname}-external"
   mvn clean install -Dmaven.test.skip=true
   cd ..
+  msg2 "Building jmulticard..."
   cd "jmulticard"
   mvn clean install -Dmaven.test.skip=true
   cd ..
+  msg2 "Building Java-WebSocket..."
   cd "Java-WebSocket"
   mvn clean install -Dmaven.test.skip=true
   # FIX: end 320
