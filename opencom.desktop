@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenCom
+Comment=Desktop wrapper for OpenCom frontend
+Exec=opencom %U
+Terminal=false
+Type=Application
+Icon=opencom
+Categories=Network;InstantMessaging;Chat;
+StartupWMClass=OpenCom
