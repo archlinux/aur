@@ -30,9 +30,7 @@ makedepends+=('cuda')        # MODULE_GRANULAR
                            # MODULE_PARALLEL optional
 makedepends+=(blaze)       # MODULE_PARALLEL required
 #makedepends+=(thrust)      # MODULE_PARALLEL required (included in cuda)
-#makedepends+=(opencascade)# MODULE_CASCADE (version<=7.2)
-                           # use oce (opencascade comunitiy edition)
-makedepends+=(oce)         # MODULE_CASCADE
+makedepends+=(opencascade) # MODULE_CASCADE
 makedepends+=(mumps)       # MODULE_MUMPS
 makedepends+=(blas)        # MODULE_MUMPS required
 makedepends+=(intel-mkl)   # MODULE_MKL
@@ -66,8 +64,6 @@ CMAKE_FLAGS=(	-DCH_ENABLE_MODULE_POSTPROCESS=ON
 		-DCH_ENABLE_MODULE_PYTHON=ON
 		-DCH_ENABLE_MODULE_IRRLICHT=ON
 		-DCH_ENABLE_MODULE_CASCADE=ON
-		-DCASCADE_ROOT=/opt/oce
-		-DCASCADE_INCLUDE_DIR=/opt/oce/include/oce
 		-DCH_ENABLE_MODULE_OPENGL=ON
 		-DCH_ENABLE_MODULE_PARALLEL=ON
 		-DTHRUST_INCLUDE_DIR=/opt/cuda/targets/x86_64-linux/include
