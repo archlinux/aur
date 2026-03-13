@@ -1,7 +1,7 @@
 # Maintainer: fortime <palfortime@gmail.com>
 
 pkgname=plasma-nm-qtkeychain
-pkgver=6.5.0_1
+pkgver=6.6.2_1
 _pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc='Plasma applet written in QML for managing network connections. This fork replaces kwallet with qtkeychain. All secrets should be enrolled again.'
@@ -48,7 +48,7 @@ optdepends=('openconnect: Cisco AnyConnect VPN plugin'
 provides=(plasma-nm)
 conflicts=(plasma-nm)
 source=(https://invent.kde.org/jaminfan/plasma-nm/-/archive/v$_pkgver/plasma-nm-v$_pkgver.tar.gz)
-sha256sums=('614c826477d2a5b6f91e04751b8d13dea2812d9711b60c2e74ad567a76eccc06')
+sha256sums=('f7574dff16938208e64d206171fe313fd1821e63570f5d1b4edd7be9bdc3ba91')
 
 build() {
   [ -d build ] && rm -r build
