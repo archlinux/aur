@@ -15,7 +15,7 @@ __pkgname=firedragon
 pkgname=$__pkgname-catppuccin
 _pkgname=FireDragon
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Floorp fork build using custom branding and settings"
 url='https://firedragon.garudalinux.org'
@@ -23,7 +23,7 @@ arch=('x86_64' 'aarch64')
 license=('MPL2')
 depends=(dbus
          dbus-glib
-         ffmpeg4.4
+         ffmpeg
          gtk3
          libpulse
          libxss
