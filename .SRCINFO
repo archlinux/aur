@@ -1,0 +1,12 @@
+pkgbase = splashsurf
+	pkgdesc = Surface reconstruction for particle data from SPH simulations
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/InteractiveComputerGraphics/splashsurf
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = splashsurf-0.14.0.tar.gz::https://github.com/InteractiveComputerGraphics/splashsurf/archive/refs/tags/v0.14.0.tar.gz
+	sha256sums = aa4a9f523ec963599365867df25fc450ecf3787eb3bd31c1307cc0e9b2c3a818
+
+pkgname = splashsurf
