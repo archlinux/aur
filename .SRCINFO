@@ -1,13 +1,12 @@
 pkgbase = vpinfe-git
 	pkgdesc = A vpinball frontend for Linux, Mac, and Windows
-	pkgver = r313.eb50f80
+	pkgver = r537.947932b
 	pkgrel = 1
 	url = https://github.com/superhac/vpinfe
 	arch = any
 	depends = git
 	depends = python-pip
-	depends = gtk4
-	depends = webkit2gtk
+	depends = chromium
 	provides = vpinfe
 	conflicts = vpinfe
 	source = git+https://github.com/superhac/vpinfe.git

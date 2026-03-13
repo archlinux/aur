@@ -2,12 +2,12 @@
 pkgname=vpinfe-git
 _pkgname=${pkgname%-git}
 _reponame=vpinfe
-pkgver=r313.eb50f80
+pkgver=r537.947932b
 pkgrel=1
 pkgdesc="A vpinball frontend for Linux, Mac, and Windows"
 arch=('any')
 url="https://github.com/superhac/vpinfe"
-depends=('git' 'python-pip' 'gtk4' 'webkit2gtk')
+depends=('git' 'python-pip' 'chromium')
 provides=('vpinfe')
 conflicts=('vpinfe')
 source=('git+https://github.com/superhac/vpinfe.git' 'vpinfe.desktop')
@@ -25,7 +25,6 @@ package() {
   source "$pkgdir/opt/$_pkgname/venv/bin/activate"
   cd "$srcdir/$_reponame"
   pip install -r requirements.txt
-  pip install pywebview[gtk]
   deactivate
 
   # Install source files
@@ -37,7 +36,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   echo "#!/bin/bash" > "$pkgdir/usr/bin/$_pkgname"
   echo "cd ~" >> "$pkgdir/usr/bin/$_pkgname"
-  echo "WEBKIT_DISABLE_DMABUF_RENDERER=1 GDK_BACKEND=x11 /opt/$_pkgname/venv/bin/python /opt/$_pkgname/main.py \$@" >> "$pkgdir/usr/bin/$_pkgname"
+  echo "/opt/$_pkgname/venv/bin/python /opt/$_pkgname/main.py \$@" >> "$pkgdir/usr/bin/$_pkgname"
   chmod +x "$pkgdir/usr/bin/$_pkgname"
 
   # Install application entry
