@@ -1,0 +1,24 @@
+pkgbase = picoclaw
+	pkgdesc = Ultra-Efficient AI Assistant in Go
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/sipeed/picoclaw
+	install = picoclaw.install
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = riscv64
+	arch = loong64
+	license = MIT
+	makedepends = go>=1.25
+	makedepends = nodejs
+	makedepends = pnpm
+	depends = glibc
+	depends = ca-certificates
+	options = !debug
+	source = picoclaw-0.2.2.tar.gz::https://github.com/sipeed/picoclaw/archive/refs/tags/v0.2.2.tar.gz
+	source = picoclaw.service
+	sha256sums = 67696e0d13d22f33ed00b603ce889616e504e2b03adb3e9f75d1ea212f2f0e73
+	sha256sums = 91430fbf2b30369c7665fb4be1a3b8979de3b3c7b48b4c9fbdfe36996802b56c
+
+pkgname = picoclaw
