@@ -1,6 +1,6 @@
 pkgbase = prometheus-opnsense-exporter
 	pkgdesc = OPNsense Exporter for Prometheus
-	pkgver = 0.0.13
+	pkgver = 0.0.14
 	pkgrel = 1
 	url = https://github.com/AthennaMind/opnsense-exporter
 	arch = x86_64
@@ -9,10 +9,10 @@ pkgbase = prometheus-opnsense-exporter
 	makedepends = git
 	depends = glibc
 	backup = etc/conf.d/prometheus-opnsense-exporter.opnsense
-	source = prometheus-opnsense-exporter-0.0.13.tar.gz::https://github.com/AthennaMind/opnsense-exporter/archive/refs/tags/v0.0.13.tar.gz
+	source = prometheus-opnsense-exporter-0.0.14.tar.gz::https://github.com/AthennaMind/opnsense-exporter/archive/refs/tags/v0.0.14.tar.gz
 	source = prometheus-opnsense-exporter.conf
 	source = prometheus-opnsense-exporter@.service
-	sha256sums = 8624f8fe6f6be6e26b3aeb96edcb94944de868ce77d626a8bff9e1fdb367bd23
+	sha256sums = 2c57c27a30ecc694c5ceb2c8c9ffe048ce9b175ed447503f52c43fe0ea408bcd
 	sha256sums = c5b527fe6a6a8c9aec49a4a84093fa29c978cbce8378dd9dd16cf4223adb8683
 	sha256sums = 20b4e2f14955549f29f53eff5b58a3d8d5613b93cce27ee1e6ef7354d6da06d1
 
