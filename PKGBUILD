@@ -2,7 +2,7 @@
 
 pkgname=libx52
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Application to control the MFD and LEDs of a Saitek X52/X52Pro HOTAS"
 arch=('x86_64')
 url="https://github.com/nirenjan/${pkgname}"
@@ -17,7 +17,8 @@ sha256sums=('fe28079b92d9d14f81ec7407617be2bc604999bfc84d3986c785a18064e1d652')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  mkdir build
+  ./autogen.sh
+  mkdir -p build
   cd build
   ../configure --prefix=/usr --localstatedir=/var --sysconfdir=/etc \
     --disable-silent-rules --disable-maintainer-mode
