@@ -16,8 +16,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  # Usamos la variable $pkgver definida arriba y le añadimos el contador de Git
-  printf "%s.r%s.g%s" "$pkgver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # Extraemos la versión base limpia (ej: 2.6.2) ignorando cualquier ".r..." anterior
+  local _basever="${pkgver%%.r*}"
+
+  # Generamos la versión correcta sin duplicidades
+  printf "%s.r%s.g%s" "$_basever" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
