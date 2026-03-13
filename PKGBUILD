@@ -2,20 +2,23 @@
 _name=ScanHeadsman
 _name_lc=$(echo "${_name}" | tr '[:upper:]' '[:lower:]')
 pkgname="${_name_lc}-bin"
-pkgver=1.3.20220905
+provides=("${_name_lc}")
+conflicts=("${_name_lc}")
+pkgver=1.4.20260310
 pkgrel=1
 epoch=
 pkgdesc="A tool to extract scan data and methods from Thermo RAW file into a text-based format"
 arch=('any')
 url="https://bitbucket.org/caetera/scanheadsman"
 license=('MIT')
-depends=('mono')
+depends=('dotnet-runtime-8.0' 'aspnet-runtime-8.0')
+makedepends=('unzip')
 options=('!strip')
 source=("${url}/downloads/${_name}-${pkgver}.zip"
         "${_name}")
 noextract=("${_name}-${pkgver}.zip")
-md5sums=('238fc4674d022d76d85ffe2de4a38d2f'
-         '1bff258fa44eb24eb939e8fbddd5c45d')
+md5sums=('2f90263dd1f9000a6b08098a3e0d594a'
+         '6160a546e635d36a2234825c579df33d')
 
 prepare() {
     mkdir -pv "${srcdir}/${_name}-${pkgver}"

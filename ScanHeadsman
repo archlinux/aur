@@ -1,2 +1,2 @@
 #!/bin/sh
-mono /usr/share/ScanHeadsman/ScanHeadsman.exe "$@"
+dotnet /usr/share/ScanHeadsman/ScanHeadsman.dll "$@"
