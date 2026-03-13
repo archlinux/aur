@@ -1,7 +1,7 @@
 pkgbase = florence
 	pkgdesc = A configurable on-screen virtual keyboard
 	pkgver = 0.6.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sourceforge.net/projects/florence/
 	arch = i686
 	arch = x86_64

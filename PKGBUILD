@@ -2,10 +2,11 @@
 # Contributor: UshakovVasilii <UshakovVasilii@yahoo.com>
 # Contributor: Charon77 <evans.jahja@yahoo.com>
 # Contributor: debdj <debd92@gmail.com>
+# Contributor: Vitaly Chesnokov <vchesn@gmail.com>
 
 pkgname=florence
 pkgver=0.6.3
-pkgrel=3
+pkgrel=4
 pkgdesc='A configurable on-screen virtual keyboard'
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/${pkgname}/"
@@ -17,6 +18,10 @@ sha512sums=('c527e8c40c9a594106420a6187945d79dfa7ddb4f628805cd188c8a37f79f42cbc1
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
+
+	# modern gcc14 compatibility
+	export CFLAGS+=" -Wno-error=incompatible-pointer-types -Wno-error=implicit-function-declaration -std=gnu11"
+	export CPPFLAGS="$CFLAGS"
 
 	./configure --prefix=/usr \
 		--without-notification \
