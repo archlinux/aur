@@ -1,18 +1,31 @@
 [Unit]
 Description=Prometheus S3 exporter
-After=network.target network-online.target basic.target
-Wants=network-online.target
-StartLimitIntervalSec=30
-StartLimitBurst=3
+Documentation=https://github.com/qaoru/s3_exporter
+Requires=network-online.target
+After=network-online.target nss-lookup.target basic.target
+Wants=network-online.target nss-lookup.target
 
 [Service]
-EnvironmentFile=-/etc/conf.d/prometheus-s3-exporter
-ExecStart=/usr/bin/prometheus-s3-exporter $OPTIONS
-Type=simple
-Restart=on-failure
-RestartSec=30
 User=prometheus-s3-exporter
 Group=prometheus-s3-exporter
+EnvironmentFile=-/etc/conf.d/prometheus-s3-exporter
+ExecStart=/usr/bin/prometheus-s3-exporter $S3_EXPORTER_ARGS
+ExecStop=/bin/kill -s SIGTERM $MAINPID
+ExecReload=/bin/kill -HUP $MAINPID
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+ProtectHostname=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+LockPersonality=true
+RestrictRealtime=true
+RestrictNamespaces=true
+MemoryDenyWriteExecute=true
+PrivateDevices=true
+CapabilityBoundingSet=
 
 [Install]
 WantedBy=multi-user.target

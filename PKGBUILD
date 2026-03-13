@@ -3,27 +3,30 @@
 
 pkgbase='s3_exporter'
 pkgname='prometheus-s3-exporter'
-pkgver='0.6.1'
-pkgrel='5'
+pkgver='0.7.0'
+pkgrel='1'
 pkgdesc='Exports Prometheus metrics about S3 buckets and objects'
 arch=('x86_64' 'aarch64')
 _uri='github.com/qaoru'
 url="https://${_uri}/${pkgbase}"
 license=('Apache 2.0')
 makedepends=('go')
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${pkgbase}-${pkgver}.tar.gz::https://codeload.${_uri}/${pkgbase}/tar.gz/refs/tags/v${pkgver}"
 	"${pkgname}"
 	"${pkgname}.service"
 	"${pkgname}.sysusers")
-sha256sums=('af6ea5aaa50834e5895f680f4964f92c20e4b0c8944205bb1b49373f85488215'
-            '843215c4f5035d1a168ec418743661d5f7763deda5b52316531e50bdc8f1f48c'
-            '953587ceeebe37042ad6f88ffcaf7bcf2adfe5397e02ca6ec7ee79543c0f5050'
+sha256sums=('9f5031803dc53a126fd5e75fc8e74eb4468205aa653fdcb9602860d4bd442e41'
+            'ac3bdd890acd17959373368b31285d14bede2390fd4a09f97a613a50537b8629'
+            '836f21de06fc5d2db6b71d33450d8b2ab66e5e94aee1efa12ac45edae6bbba3b'
             'f0ce7020311240c6ee1ca7cf3168944c5883b3bd6f86f8fe39089ff3d9ed2dba')
 backup=("etc/conf.d/${pkgname}")
 
 prepare() {
   export GOPATH="${srcdir}/gopath"
   export GOBIN="${GOPATH}/bin"
+  export GOCACHE="${srcdir}/cache/go-cache"
+  export GOMODCACHE="${srcdir}/cache/go"
+  export GOTMPDIR="${srcdir}"
   mkdir -p "${GOPATH}/src/${_uri}"
   ln -snf "${srcdir}/${pkgbase}-${pkgver}" "${GOPATH}/src/${_uri}/${pkgbase}"
 }
@@ -31,8 +34,9 @@ prepare() {
 build() {
   cd "${GOPATH}/src/${_uri}/${pkgbase}"
   eval "$(go env | grep -e "GOHOSTOS" -e "GOHOSTARCH")"
-  GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" BUILDTAGS="netgo static_build" \
+  GOOS="${GOHOSTOS}" GOARCH="${GOHOSTARCH}" \
   go build -x \
+    -tags="netgo" \
     -buildmode="pie" \
     -trimpath \
     -mod="readonly" \
@@ -47,8 +51,8 @@ build() {
 
 package() {
   install -Dm0755 "${GOPATH}/src/${_uri}/${pkgbase}/${pkgbase}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm0644 "${GOPATH}/src/${_uri}/${pkgbase}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm0644 "${GOPATH}/src/${_uri}/${pkgbase}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm0644 "${pkgname}" -t "${pkgdir}/etc/conf.d"
-  install -Dm0644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -Dm0644 "${pkgname}.service" -t "${pkgdir}/usr/lib/systemd/system"
   install -Dm0644 "${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }
