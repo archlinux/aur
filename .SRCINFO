@@ -1,0 +1,21 @@
+pkgbase = legacylauncher-git
+	pkgdesc = A custom launcher for Minecraft Legacy Console Edition
+	pkgver = 3.5.0.r0.g1c1fbc3
+	pkgrel = 1
+	url = https://github.com/gradenGnostic/LegacyLauncher
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	depends = nss
+	depends = gtk3
+	depends = alsa-lib
+	depends = libxss
+	provides = legacylauncher
+	conflicts = legacylauncher
+	options = !debug
+	options = !strip
+	source = git+https://github.com/gradenGnostic/LegacyLauncher.git
+	sha256sums = SKIP
+
+pkgname = legacylauncher-git
