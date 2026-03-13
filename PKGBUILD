@@ -2,7 +2,7 @@
 # Contributor: yjun <jerrysteve1101 at gmail dot com>
 
 pkgbase=gowin-eda
-pkgver=1.9.12.01
+pkgver=1.9.12.02
 pkgrel=1
 epoch=1
 _desc="Gowin EDA, an easy to use integrated design environment provides design engineers one-stop solution from design entry to verification."
@@ -18,7 +18,7 @@ source=("http://cdn.gowinsemi.com.cn/Gowin_V${pkgver/_/-}_linux.tar.gz"
         "${pkgbase}-ide-project.xml"
         "${pkgbase}-ide.desktop"
         "${pkgbase}-programmer.desktop")
-sha256sums=('8f45641641549df915ebb8d0f20750251651388d9fc91f2eab44d1ecfa61760b'
+sha256sums=('1b6472eb2974eaed05b86f8209c2f746149b0349a8693bdfc4c927fa5ea5889c'
             '2d0366a0f172cf1cf8a076d21085237919277c815920dc0ebf16f607eb439ffc'
             '21abbbb6f609eb8f5878386a61636de7ba35a42b03a56180e0bb4cc8ea424790'
             '9a87376bf3b204e7c83cfd7e4f242ee66b7f08d0662a897937ded74884c9348d'
@@ -48,7 +48,7 @@ _package-ide() {
   provides=("gowin-eda-ide" "gowin-ide")
   backup=("opt/${pkgname}/bin/gwlicense.ini")
   
-  cd ${srcdir}/Gowin_V${pkgver/_/-}_linux/IDE
+  cd ${srcdir}/IDE
   
   _install 644 doc/
   _install 644 lib/
@@ -104,7 +104,7 @@ _package-programmer() {
   provides=("gowin-eda-programmer" "gowin-programmer")
   options=('emptydirs')
 
-  cd ${srcdir}/Gowin_V${pkgver/_/-}_linux/Programmer
+  cd ${srcdir}/Programmer
 
   _install 644 doc/
   _install 644 bin/PyQt5
@@ -118,7 +118,6 @@ _package-programmer() {
   # empty dir
   install -dm755 ${pkgdir}/opt/${pkgname}/bin/data/output
   install -dm755 ${pkgdir}/opt/${pkgname}/bin/data/lang
-  install -dm755 ${pkgdir}/opt/${pkgname}/bin/data/devices
 
   # desktop entry
   install -Dm644 ${srcdir}/${pkgname}.desktop -t ${pkgdir}/usr/share/applications
@@ -127,6 +126,8 @@ _package-programmer() {
   install -Dm644 ${srcdir}/${pkgbase}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
 
   chmod 755 ${pkgdir}/opt/${pkgname}/bin/programmer{,_cli}
+  chmod 755 ${pkgdir}/opt/${pkgname}/bin/jtagserver{,_lpt}
+  chmod 755 ${pkgdir}/opt/${pkgname}/bin/JTAGLoading
 }
 
 pkgname=("${pkgbase}-ide" "${pkgbase}-programmer")
