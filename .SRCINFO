@@ -1,6 +1,6 @@
 pkgbase = dinox
 	pkgdesc = Modern XMPP Chat Client with Video Calls, Voice Messages & OMEMO 1 + 2 Encryption & API Botmother and AI API DTMF MQTT Support
-	pkgver = 1.1.6.4
+	pkgver = lyrebird-0.8.1
 	pkgrel = 1
 	url = https://github.com/rallep71/dinox
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = dinox
 	depends = webrtc-audio-processing
 	depends = gdk-pixbuf2
 	depends = mosquitto
-	source = https://github.com/rallep71/dinox/archive/refs/tags/v1.1.6.4.tar.gz
-	sha256sums = 0edfd474cdaf3b8b517c0aa4df9465220a213d8c41a0e42648b0df25a5f49f3f
+	source = https://github.com/rallep71/dinox/archive/refs/tags/lyrebird-0.8.1.tar.gz
+	sha256sums = adf848eac990074dcbb3540feab29ab031d4b1cc27f02c48b9aa2a3993647c17
 
 pkgname = dinox

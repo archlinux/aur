@@ -1,6 +1,6 @@
 # Maintainer: nerdyslacker <karyan40024@gmail.com>
 pkgname=dinox
-pkgver=1.1.6.4
+pkgver=lyrebird-0.8.1
 pkgrel=1
 pkgdesc="Modern XMPP Chat Client with Video Calls, Voice Messages & OMEMO 1 + 2 Encryption & API Botmother and AI API DTMF MQTT Support"
 url="https://github.com/rallep71/dinox"
@@ -17,7 +17,7 @@ depends=('glib2' 'glib-networking' 'gtk4' 'libadwaita' 'gpgme' 'libgee' 'libgcry
 makedepends=('git' 'meson' 'vala' 'ninja')
 
 source=("https://github.com/rallep71/dinox/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0edfd474cdaf3b8b517c0aa4df9465220a213d8c41a0e42648b0df25a5f49f3f')
+sha256sums=('adf848eac990074dcbb3540feab29ab031d4b1cc27f02c48b9aa2a3993647c17')
 
 build() {
 	arch-meson "${pkgname}-${pkgver}" build
