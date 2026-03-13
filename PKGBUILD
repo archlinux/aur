@@ -1,7 +1,7 @@
 # Maintainer: italoghost <eduprodive at posteo dot me>
 pkgname=ppsspp-bin
 _pkgname=ppsspp
-pkgver=1.20.1
+pkgver=1.20.2
 pkgrel=1
 pkgdesc="A PSP emulator for Android, Windows, Mac and Linux, written in C++"
 arch=('x86_64')
@@ -11,12 +11,12 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('libgcc' 'dbus' 'glibc' 'pcre2' 'systemd-libs' 'libgomp' 'util-linux-libs'
 		'zstd' 'libelf' 'libffi' 'zlib' 'bzip2' 'libusb' 'bash'
-		'expat' 'libstdc++' 'brotli' 'glib2' 'libtool')
-options=('!strip')
+		'expat' 'libstdc++' 'brotli' 'glib2' 'libtool' 'xz')
+options=('!strip' '!emptydirs')
 _appimage=PPSSPP-v${pkgver}-anylinux-x86_64.AppImage
 noextract=("${_appimage}")
 source=("https://github.com/hrydgard/ppsspp/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('cd5bd9e07073eecf4a7aa28e51a053a9b3df245c75bcd2dc0fdfcb76dd2e7922')
+sha256sums=('cdf9cd3484358034bdb8a3a1fdaee203c1c3be4268df7d1e8a27ce2201f09173')
 
 prepare() {
 	# Extract AppImage
