@@ -1,0 +1,15 @@
+pkgbase = lrc-ricetp-git
+	pkgdesc = Rice Transfer Protocol
+	pkgver = r28.5f3a408
+	pkgrel = 1
+	url = https://codeberg.org/labricecat/ricetp
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	depends = glibc
+	provides = lrc-ricetp
+	conflicts = lrc-ricetp
+	source = git+https://codeberg.org/labricecat/ricetp.git
+	sha256sums = SKIP
+
+pkgname = lrc-ricetp-git
