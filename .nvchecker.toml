@@ -1,5 +1,5 @@
 [grml-full-systemd-boot]
 source = "regex"
-url = "https://mirrors.rit.edu/grml/"
+url = "https://download.grml.org/index.en.html"
 regex = 'grml-full-(20\d{2}.\d{2})-amd64.iso'
 
