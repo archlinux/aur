@@ -1,0 +1,24 @@
+pkgbase = python-calgebra-git
+	pkgdesc = Python set() operations for calendar intervals (development version)
+	pkgver = 0.10.8.r0.gbea36e1
+	pkgrel = 1
+	url = https://github.com/ashenfad/calgebra
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-dateutil
+	depends = python-sortedcontainers
+	depends = python-typing_extensions
+	optdepends = python-gcsa: for working with Google Calendar
+	optdepends = python-icalendar: for working with iCalendar
+	optdepends = python-pandas: for converting iterables of Intervals into pandas DataFrames
+	provides = python-calgebra
+	conflicts = python-calgebra
+	source = git+https://github.com/ashenfad/calgebra.git
+	sha256sums = SKIP
+
+pkgname = python-calgebra-git
