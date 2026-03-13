@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=VpinFE
+Comment=A vpinball frontend for Linux, Mac, and Windows
+Path=/
+Exec=vpinfe
+Icon=vpinfe
+Terminal=true
+Categories=Games
