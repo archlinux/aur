@@ -1,7 +1,7 @@
 pkgbase = exam-env
 	pkgdesc = The freeCodeCamp Exam Environment desktop application
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freecodecamp.org
 	arch = x86_64
 	license = BSD-3-Clause

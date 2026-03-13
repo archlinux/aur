@@ -2,7 +2,7 @@
 
 pkgname=exam-env
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc='The freeCodeCamp Exam Environment desktop application'
 arch=(x86_64)
 url=https://freecodecamp.org
@@ -26,6 +26,12 @@ package() {
 
     chmod +x $pkgname-$pkgver.AppImage
     ./$pkgname-$pkgver.AppImage --appimage-extract
+
+    # NOTE: tauri has issues in wayland envs, use temp workaround.
+    # should be fine since exam-env runs in x11 anyway
+    # refer: https://github.com/freeCodeCamp/exam-env/issues/107
+    # refer: https://github.com/tauri-apps/tauri/issues/8541
+    rm squashfs-root/usr/lib/*wayland*so*
 
     install -Dm755 -d "$pkgdir"/opt/$pkgname
     cp -r squashfs-root/* "$pkgdir"/opt/$pkgname/
