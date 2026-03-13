@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="Project Finder CLI"
 
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tzst::${url}/releases/download/${_pkgvername}/${_appname}_${pkgver}_${_barch[0]}.pkg.tar.zst")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tzst::${url}/releases/download/${_pkgvername}/${_appname}_${pkgver}_${_barch[1]}.pkg.tar.zst")
-sha256sums_x86_64=('0d3c82a36d82f27d6ebb4284ed649ca0868fba0071316abdeba05984b77438c7')
-sha256sums_aarch64=('4aa3d7228e391cc2d1c592e560cfd1bb441e60943448cd78cb3fab3d5f800dea')
+sha256sums_x86_64=('5b4da34ca17b7cac456106486246957b7e0b1c35fa4ada4037577b08aa5caef4')
+sha256sums_aarch64=('447d20ec852331311711cbaac9545c04e45d7641e868ee848ee2639ff48121fb')
 
 
 package() {
