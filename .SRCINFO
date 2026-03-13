@@ -1,6 +1,6 @@
 pkgbase = wofimoji
 	pkgdesc = the wofi emoji picker
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/kenshaw/wofimoji
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = wofimoji
 	arch = aarch64
 	license = MIT
 	makedepends = go
-	source = wofimoji-0.4.0.tar.gz::https://github.com/kenshaw/wofimoji/archive/v0.4.0.tar.gz
-	sha256sums = 95eb24b7301c60ddcbce596c0627b5780980c3d919beec6ed25a382cedad2352
+	source = wofimoji-0.5.0.tar.gz::https://github.com/kenshaw/wofimoji/archive/v0.5.0.tar.gz
+	sha256sums = 2f9f48f27c60023231107af20a9eb8fb4043850dc96fc0c7a71a16d2533885dd
 
 pkgname = wofimoji
