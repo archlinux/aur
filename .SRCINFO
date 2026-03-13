@@ -1,6 +1,6 @@
 pkgbase = waypai
-	pkgdesc = Keyboard-driven Wayland overlay for drawing on your screen
-	pkgver = 0.1.0
+	pkgdesc = Minimal Wayland overlay for drawing on your screen
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://codeberg.org/nari/waypai
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = waypai
 	makedepends = cargo
 	depends = wayland
 	conflicts = waypai-git
-	source = waypai-0.1.0.tar.gz::https://codeberg.org/nari/waypai/archive/v0.1.0.tar.gz
-	sha256sums = 967af622128311a5873e9dc6ed3525d5764de11d563e1da8fc32ce798bba65a7
+	source = waypai-0.2.0.tar.gz::https://codeberg.org/nari/waypai/archive/v0.2.0.tar.gz
+	sha256sums = 148870f34b85a9eec408782f418b3dc6beaad49a6580f909065d2aa5c608591b
 
 pkgname = waypai
