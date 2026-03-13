@@ -3,9 +3,9 @@
 pkgname=eclipse-php-bin
 _pkgname=${pkgname%-bin}
 epoch=2
-pkgver=4.38
+pkgver=4.39
 pkgrel=1
-_release=2025-12/R
+_release=2026-03/R
 pkgdesc="Highly extensible IDE (PHP version)"
 arch=('x86_64' 'aarch64')
 url="https://www.eclipse.org/"
@@ -22,8 +22,8 @@ _srcfilename_aarch64="$_pkgname-${_release//\//-}-linux-gtk-aarch64.tar.gz"
 source_x86_64=("$_srcfilename_x86_64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_x86_64&r=1")
 source_aarch64=("$_srcfilename_aarch64::https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/$_release/$_srcfilename_aarch64&r=1")
 
-sha512sums_x86_64=('2b407e758ee8bef90e09a23ce385557c6f2e3c58c5997982e970fe205c53b28f3f1bdbd395b428cf57c02fbfbc7fa9e0d384131648147f77cb4198cad34314c2')
-sha512sums_aarch64=('8ab0dd908092c45442bce5bc2d0ef20ca91c585dc512ddd16688439113cb96c5835057e0135f721d07597492b081f684bf99c835fb61c5c0d67edfe47fce12b8')
+sha512sums_x86_64=('f04a938f85e1d6f6a332f032ea70e1f572392448d1f29fd2a8c8193d37af4e75fd0316f0b09cb85f18763258cd59f3fd02f165d7b7da25c5ecdf1075af5ca694')
+sha512sums_aarch64=('dee7c71bc00a7e8979477442af25e4844be210cfcae4eeff19a9424fe6048f4f1f885766ec24ffd65301ab98dfe4271c5f9b7519197772812dbfef6a74ec6c43')
 
 source=("eclipse.desktop")
 sha512sums=('910d235d1b170b850d91598af1949db5109671236d76f62ea51f9505a285b4b10fcdacae0bc60dc209ab57fbb44d98223fb4b584b31e220253396a933bc98a78')
