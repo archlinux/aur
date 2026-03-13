@@ -1,7 +1,7 @@
 # Maintainer: Nick Nizovtsev <nizovtsevnv@gmail.com>
 
 pkgname=termide-bin
-pkgver=0.15.2
+pkgver=0.15.3
 pkgrel=1
 pkgdesc="Cross-platform terminal IDE, file manager and virtual terminal (binary release)"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ provides=('termide')
 conflicts=('termide')
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://github.com/termide/termide/releases/download/$pkgver/termide-$pkgver-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$pkgname-$pkgver-aarch64.tar.gz::https://github.com/termide/termide/releases/download/$pkgver/termide-$pkgver-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('c2c5757077c02064d9863d436a3b947380e2c82ca1338d4a6a1ca9ff48586d39')
-sha256sums_aarch64=('732229cd9b865710d2ea824adf6b1266315784bb0483851021f9b71f0679b55c')
+sha256sums_x86_64=('2860e5e1ceac73304e392ffde4d6d085b276b9ede5e776cfe0ef8eaa1b93c5a7')
+sha256sums_aarch64=('7c65604bdc088b5cb62b7c9290fe3fce1e221044ea4fda20979477fe3d5e6c42')
 
 package() {
     # Install binary
