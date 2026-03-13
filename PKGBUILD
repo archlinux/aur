@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=ampcode
-pkgver=0.0.1773376232_g868261
+pkgver=0.0.1773389256_ga2bc61
 pkgrel=1
 pkgdesc="Amp CLI (Sourcegraph's agentic coding tool) packaged from npm releases"
 arch=('any')
@@ -14,7 +14,7 @@ provides=('amp')
 conflicts=('amp' 'ampcode-bin')
 replaces=('sourcegraph-amp')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/@sourcegraph/amp/-/amp-${pkgver//_/-}.tgz")
-sha256sums=('982b4c44760c4fd54335469ed6dc50958beb7b3f01d3e110b44ff540c8593cc9')
+sha256sums=('ae4857eaec04feef45cafa1737f67c4427d2dfb72280d65a59043fb8b6e2f197')
 
 latestver() {
     if [[ ${0##*/} == makepkg ]]; then
