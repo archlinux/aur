@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=POTACAT
+Comment=POTA/SOTA/DX spot hunter with 1-click CAT tuning
+Exec=potacat
+Icon=/usr/lib/potacat/potacat-logo.jpg
+Terminal=false
+Type=Application
+Categories=HamRadio;Network;
+Keywords=ham;radio;POTA;SOTA;DX;CAT;amateur;
+StartupWMClass=potacat
