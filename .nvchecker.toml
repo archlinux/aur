@@ -1,0 +1,3 @@
+[python-rich-inquirer]
+source = "pypi"
+pypi = "rich-inquirer"
