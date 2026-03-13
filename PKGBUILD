@@ -9,8 +9,8 @@ arch=('x86_64')
 url="https://github.com/paradigmxyz/reth"
 license=('MIT' 'APACHE')
 makedepends=('git' 'cargo' 'clang')
-source=("git+https://github.com/paradigmxyz/reth.git#tag=${pkgver}")
-b2sums=('beb38fbf19dd9f14788587b9f7a1014e4ffe5d81f9d9a2ac16e8d4a1ab69a591bdff6e46aa758a8f4bc75eaaff8ca41437de29899c2135157c70ab49462d584e')
+source=("git+https://github.com/paradigmxyz/reth.git#tag=v${pkgver}")
+b2sums=('e9bc650ba060009dfb01fc1bd86b8f64a6e8962e0cb9778fbea4b3c01dfa7231159de06c015afd7c5808aec9cc1b3a7aed6f85bfa4f7bc343ad8bd8361861507')
 
 prepare() {
 	cd "${srcdir}/${pkgname}"
