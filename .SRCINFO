@@ -1,13 +1,13 @@
 pkgbase = osdctl
 	pkgdesc = CLI for the OSD utilities
-	pkgver = 0.52.0
+	pkgver = 0.54.0
 	pkgrel = 0
 	url = https://github.com/openshift/osdctl
 	arch = any
 	license = Apache
 	makedepends = go
 	makedepends = goreleaser
-	source = osdctl-0.52.0::git+https://github.com/openshift/osdctl#tag=v0.52.0
-	sha256sums = 29f5d75121b27154bc40ef068dfdac9135828416c451d7c7bd5a381078fdee57
+	source = osdctl-0.54.0::git+https://github.com/openshift/osdctl#tag=v0.54.0
+	sha256sums = 235ccb5ae99038d43d85d8c773c6d5643058e2475aa31d544231cf2ed51887b1
 
 pkgname = osdctl
