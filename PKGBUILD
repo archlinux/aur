@@ -4,7 +4,7 @@ pkgbase=python-mfusepy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Ctypes bindings for the high-level API in libfuse 2 and 3"
 arch=('any')
@@ -25,7 +25,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
         "${pkgver}-readdir_returning_offsets.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v${pkgver}/examples/readdir_returning_offsets.py"
         "${pkgver}-readdir_with_offset.py::https://github.com/mxmlnkn/mfusepy/raw/refs/tags/v${pkgver}/examples/readdir_with_offset.py"
     )
-md5sums=('8ca5dc0545ba467aaf368163b51b2526'
+md5sums=('7d812fd614d61baa4c1aad7ef8e9ee36'
          '1ece541bd275b431df282627f3fff5cd'
          '287bd1be09476006e285c365648fcfd1'
          '043b00e7cd70920df66de35fe6da0a93'
@@ -36,6 +36,7 @@ prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
 #   sed -i "s/fusermount/fusermount3/g" tests/test_examples.py
+#   sed -i 's:"fuse", "fuse3":"fuse3", "fuse":' tests/test_struct_layout.py
     for tps in ${srcdir}/${pkgver}-*.py; do ln -rs ${tps} ${tps##*-}; done
 }
 
