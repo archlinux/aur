@@ -1,0 +1,24 @@
+pkgbase = kafkio-bin
+	pkgdesc = A GUI application for managing and using Apache Kafka clusters
+	pkgver = 2.1.14
+	pkgrel = 1
+	url = https://kafkio.com
+	arch = x86_64
+	license = custom
+	depends = java-runtime>=17
+	depends = gtk3
+	depends = libxtst
+	depends = libxrender
+	depends = alsa-lib
+	optdepends = libxrandr: for multi-monitor support
+	provides = kafkio
+	conflicts = kafkio
+	noextract = kafkio-bin-2.1.14.tar.gz
+	source = kafkio-bin-2.1.14.tar.gz::https://kafkio.com/download/kafkio/2.1.14/KafkIO-linux-2.1.14-x64.tar.gz
+	source = kafkio.desktop
+	source = kafkio.install
+	sha256sums = d8a242913fd2666763f8b22eed4a272dca2ae40a694bde52e2f95502f9357275
+	sha256sums = 1801ab5d78e86b0c2efded3466fd9054e89df4e50a6bed7d2cedc152c688ff76
+	sha256sums = 5a76c0ef634149fa2ca7ac9e44b0d296affecde78921b10210c2f36e76a7c18e
+
+pkgname = kafkio-bin

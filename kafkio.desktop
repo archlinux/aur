@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=KafkIO
+Comment=GUI application for managing Apache Kafka clusters
+Exec=kafkio
+Icon=kafkio
+Terminal=false
+Type=Application
+Categories=Development;Database;
+StartupWMClass=KafkIO

@@ -1,0 +1,22 @@
+post_install() {
+    echo ""
+    echo "KafkIO has been installed successfully!"
+    echo ""
+    echo "You can start it from the application menu or by running 'kafkio' in terminal."
+    echo ""
+    echo "The application is installed in /opt/kafkio"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo ""
+    echo "KafkIO has been removed."
+    echo ""
+    echo "Configuration files in your home directory are preserved."
+    echo "To remove them, run: rm -rf ~/.kafkio"
+    echo ""
+}
