@@ -6,7 +6,7 @@ pkgdesc="A terminal-based music player with spectrum visualizer, lyrics support,
 arch=('x86_64' 'aarch64')
 url="https://github.com/professor-lee/TMPlayer.git"
 license=('AGPL3')
-depends=('alsa-lib' 'dbus' 'chromaprint' 'fftw')
+depends=('alsa-lib' 'dbus' 'chromaprint' 'fftw' 'cava')
 optdepends=(
   'ttf-nerd-fonts-symbols: For icons and spectrum visualizer'
   'ttf-jetbrains-mono-nerd: Recommended monospace font'

@@ -13,6 +13,7 @@ pkgbase = tmplayer
 	depends = dbus
 	depends = chromaprint
 	depends = fftw
+	depends = cava
 	optdepends = ttf-nerd-fonts-symbols: For icons and spectrum visualizer
 	optdepends = ttf-jetbrains-mono-nerd: Recommended monospace font
 	provides = tmplayer
