@@ -5,7 +5,7 @@
 # the upstream generated binary version.
 
 pkgname=mattermost-plugin-gitlab
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc='a GitLab plugin for Mattermost'
 arch=(x86_64)
@@ -16,7 +16,7 @@ options=(!strip)
 _plugin="com.github.manland.$pkgname"
 _archive="$pkgname-v$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.gz"{,.asc})
-sha256sums=('a4dd6c6c084abd3c80612b5adb23c170c9d7a2b556c94efcf1808a5158be6603'
+sha256sums=('162a0c48f98380053ac4577f4a196c330c597b6c6099e2a17cfe45f23696b339'
             'SKIP')
 validpgpkeys=(C55881B80F69E863B85AD5D1D1B54B47A5CEFEC4) # Mattermost, Inc. <support@mattermost.com>
 
