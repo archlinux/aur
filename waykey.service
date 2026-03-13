@@ -1,13 +1,10 @@
 [Unit]
 Description=WayKey Automation Engine (AutoHotkey alternative for Wayland)
-BindsTo=graphical-session.target
+PartOf=graphical-session.target
 After=graphical-session.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/node /opt/waykey/run.js
+ExecStart=uwsm app -- /usr/bin/node /opt/waykey/run.js
 Restart=on-failure
 RestartSec=5
-
-[Install]
-WantedBy=default.target

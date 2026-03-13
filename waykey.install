@@ -4,8 +4,9 @@ post_install() {
     
     echo "---------------------------------------------------------"
     echo "WayKey has been installed successfully!"
-    echo "To start the automation engine in the background, run:"
-    echo "  systemctl --user enable --now waykey"
+    echo "To start the automation engine, DO NOT enable it via systemctl."
+    echo "Instead, add the following line to your hyprland.conf:"
+    echo "  exec-once = uwsm app -- /usr/bin/node /opt/waykey/run.js"
     echo ""
     echo "Make sure your user is in the 'input' group to read /dev/input and /dev/uinput:"
     echo "  sudo usermod -aG input \$USER"
