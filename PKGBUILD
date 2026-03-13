@@ -1,7 +1,7 @@
 # Maintainer: Ardox <ardox@axos-project.com>
 pkgname=sleex-user-config-git
 _pkgname=sleex
-pkgver=1.12.r50.gabc123
+pkgver=1.12.r594.1161d3d
 pkgrel=1
 pkgdesc="User configuration for Sleex desktop environment (git version)"
 arch=("x86_64")
