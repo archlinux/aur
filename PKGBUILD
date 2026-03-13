@@ -3,7 +3,7 @@
 
 pkgname=lan-mouse-git
 _pkgname=lan-mouse
-pkgver=0.10.0.r42.ge46fe60b3e
+pkgver=0.10.0.r79.g27225ed564
 pkgrel=1
 pkgdesc="Software KVM Switch / mouse & keyboard sharing software for Local Area Networks"
 url="https://github.com/feschber/lan-mouse"
@@ -11,7 +11,7 @@ license=("GPL-3.0-only")
 arch=(any)
 provides=("$_pkgname=${pkgver/\.r*/}")
 conflicts=("$_pkgname")
-source=("$_pkgname"::"git+https://github.com/ferdinandschober/$_pkgname.git")
+source=("$_pkgname"::"git+https://github.com/feschber/$_pkgname.git")
 sha256sums=('SKIP')
 depends=(libadwaita gtk4 libx11 libxtst glib2 glibc gcc-libs hicolor-icon-theme)
 makedepends=(git cargo rust desktop-file-utils)
