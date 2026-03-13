@@ -85,8 +85,11 @@ build() {
                         # (I assume Python is better for consumer-grade
                         # hardware or development on NS-3)
     ./ns3 build
-    # Build docs
-    ./ns3 docs doxygen-no-build
+    # Build docs (if enabled)
+    for has_docs in "${pkgname[@]}"; do if [ "$has_docs" == "ns3-docs" ]; then
+        ./ns3 docs doxygen-no-build
+        break
+    fi; done;
 }
 
 # FIXME: add tests
@@ -114,11 +117,7 @@ package_ns3() {
         dpdk
         # 9. Netmap emulation FdNetDevice
         # netmap # NEEDS AUR PACKAGE FIX FOR CUSTOM KERNELS!
-        # 10. NetAnim support
-        # qt5-base qt5-tools # = base+qtchooser+qmake
-        # ^ needed in separate software (FIXME!)
-        # ^ native lib does not need them = not a direct deps
-        # 11. MPI (distributed computing) support
+        # 10. MPI (distributed computing) support
         ### disabled due to conflicts with python bindings
         ### (possible future FIXME? compile twice and
         ### package-level conflicts?)
@@ -131,6 +130,8 @@ package_ns3() {
         {lxc,iproute2,iptables}': virtual machines in network'
         # Recommend Python bindings
         'python-ns3: Python bindings (broken)'
+        # Recommend Network animator
+        'netanim: Animator for XML simulation data'
     )
     cd "${srcdir}/ns-${pkgver}"
     DESTDIR="$pkgdir" ./ns3 install
@@ -157,8 +158,6 @@ package_ns3-examples-src() {
     cd "${srcdir}/ns-${pkgver}"
     install -dm755 "$pkgdir"/usr/src/ns3
     mv -Tv examples "$pkgdir"/usr/src/ns3/examples
-    echo "Removing unnecesary files..."
-    find -n
 }
 
 # [FIXME]: srcdir references in navbar
