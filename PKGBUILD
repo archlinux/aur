@@ -1,7 +1,7 @@
 # Maintainer: Gunther Schulz <https://github.com/Gunther-Schulz>
 pkgname=ddc-mode-switcher
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Switch dual-mode monitor display modes (5K↔2K) via DDC/CI — toggle or Steam wrapper"
 arch=('any')
 url="https://github.com/Gunther-Schulz/display-mode-switcher"
