@@ -6,19 +6,19 @@ provides=('signal-desktop')
 _parent_pkgname=signal-desktop
 _pkgname=Signal-Desktop
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Signal Private Messenger for Linux (uses system Electron)"
 license=('AGPL-3.0-only')
 arch=('x86_64')
 url="https://signal.org"
 depends=(
   'electron'
-  'gcc-libs'
   'glibc'
   'gtk3'
   'hicolor-icon-theme'
   'libcups'
   'libdrm'
+  'libgcc'
   'libnotify'
   'libpulse'
   'libx11'
