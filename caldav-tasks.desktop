@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=caldav-tasks
+GenericName=CalDAV Task Manager
+Comment=A cross-platform CalDAV task management app
+Exec=caldav-tasks
+Icon=caldav-tasks
+Terminal=false
+Categories=Office;Calendar;GTK;
+Keywords=caldav;tasks;todo;calendar;
+StartupWMClass=caldav-tasks
+StartupNotify=true
