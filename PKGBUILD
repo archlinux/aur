@@ -7,14 +7,13 @@
 
 pkgbase=nvidia-vulkan
 pkgname=(
-    'nvidia-vulkan-dkms'
     'nvidia-vulkan-open-dkms'
     'nvidia-vulkan-utils'
     'opencl-nvidia-vulkan'
     'lib32-nvidia-vulkan-utils'
     'lib32-opencl-nvidia-vulkan'
 )
-pkgver=595.44.02
+pkgver=595.44.03
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
@@ -41,9 +40,9 @@ sha512sums=(
     'f8f071f5a46c1a5ce5188e104b017808d752e61c0c20de1466feb5d693c0b55a5586314411e78cc2ab9c0e16e2c67afdd358da94c0c75df1f8233f54c280762c'
     'a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8'
     '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
-    'c7fea39d11565f05a507d3aded4e9ea506ef9dbebf313e0fc8d6ebc526af3f9d6dec78af9d6c4456c056310f98911c638706bccdd9926d07f492615569430455'
-    '79799602343f95b59474f616df90c21e0494e00a698d82a79567b9eb14b44ab8eedc85c87d978a82b46743de705489ae27759046750cd5c6c0568a66b5b5ac91'
-    '125d5079927553c7104bb6cabf7f5582d73095b283a08f00604f02e87d8b0ecf23478b667a40208c66e396f0e3b15c90e1459ae97d41f5e2ab7161aec1ebb6b7'
+    'f51515f2f509a96175f7b32b0cfe74e253f0352b509782bbbd15663fce085448734c6d2730b5553254490cea2905285eee998dff55876c295a29b1b22813c4ef'
+    'd1e0189c480faf19a75ca7a1f6d31a7ba147d4d9d056c64823bf9ddb950e9754c3ae66914e921e8dddc447309d39e7009f5cc2c04fc04114784f36a2cfd27609'
+    '61e4155e176e41e2ce69edcf2bea1e5c43dfed10f259e130b7d390a880677fcb6a332ba45a87b6a685ca748693958b0afca97220e9ecd7bc999abe52d1c7bfc5'
     '42f621179d4fd9bf608f0d84b9019f5a5fdf5d92d68d22ce9b9a9add1cad1c90dcb3764db68e0b9bc7e902bb6b955c59563ea6d4f39f2e39a340387e4d5deb82'
 )
 
@@ -119,26 +118,13 @@ DEST_MODULE_LOCATION[4]="/kernel/drivers/video"' kernel-open/dkms.conf
     cp -r ../open-gpu-kernel-modules-${pkgver} "$srcdir"/open-gpu-kernel-modules-dkms
 }
 
-package_nvidia-vulkan-dkms() {
-    pkgdesc="NVIDIA kernel modules - module sources (vulkan developer branch)"
-    depends=('dkms' "nvidia-vulkan-utils=$pkgver")
-    provides=('NVIDIA-MODULE' 'nvidia')
-    conflicts=('NVIDIA-MODULE' 'nvidia')
-
-    cd ${_pkg}
-
-    install -dm 755 "${pkgdir}"/usr/src
-    cp -dr --no-preserve='ownership' kernel "${pkgdir}/usr/src/nvidia-${pkgver}"
-
-    install -Dm644 "${srcdir}/${_pkg}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
 package_nvidia-vulkan-open-dkms() {
     pkgdesc="NVIDIA open kernel modules - module sources (vulkan developer branch)"
     depends+=('dkms')
     license=('MIT AND GPL-2.0-only')
     conflicts=('nvidia-open' 'NVIDIA-MODULE')
-    provides=('nvidia-open' 'NVIDIA-MODULE')
+    provides=('nvidia-open' 'NVIDIA-MODULE' 'nvidia-vulkan-dkms')
+    replaces=('nvidia-vulkan-dkms')
 
     install -dm 755 "${pkgdir}"/usr/src
     cp -dr --no-preserve='ownership' open-gpu-kernel-modules-dkms "${pkgdir}/usr/src/nvidia-$pkgver"
@@ -334,8 +320,7 @@ END
 
     echo "nvidia-uvm" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
 
-    # Enable PreserveVideoMemoryAllocations and TemporaryFilePath
-    # Fixes Wayland Sleep, when restoring the session
+    # Enable kernel suspend notifiers for open modules
     install -Dm644 "${srcdir}/nvidia-sleep.conf" "${pkgdir}/usr/lib/modprobe.d/nvidia-sleep.conf"
 
     # Lists NVIDIA driver files for container runtimes like nvidia-container-toolkit
