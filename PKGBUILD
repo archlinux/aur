@@ -36,14 +36,13 @@ build() {
     # crates, and gcc needs --copy-dt-needed-entries for transitive deps
     export RUSTFLAGS="${RUSTFLAGS:-} -C linker=gcc -C link-arg=-Wl,--copy-dt-needed-entries"
 
-    # Install frontend dependencies
+    # Install frontend dependencies and build dist
     pnpm install
+    pnpm build
 
-    # Build the wallpaper helper binary
+    # Build both binaries directly (avoids tauri CLI RUSTFLAGS issues)
     cargo build -p lava-wallpaper --release
-
-    # Build the main Tauri app (frontend + Rust backend)
-    npx tauri build --no-bundle
+    cargo build -p lava --release
 }
 
 package() {
