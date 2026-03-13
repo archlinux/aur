@@ -46,14 +46,15 @@ optdepends+=(	"irrlicht: Runtime visualization with Irrlicht."
 		"intel-mkl: This library is currently used in Chrono for its parallel direct solver (Pardiso)"
 		)
 source=("${pkgname}::git+https://github.com/projectchrono/chrono.git${_fragment}"
-	"git+https://github.com/google/benchmark.git"
-	"git+https://github.com/google/googletest.git"
 	"chronoengine.sh"
 	)
 sha256sums=('SKIP'
+            '0fe883cfcc1db869d08235482a3801fa458db15360e0eefac9084c7f2993af4a'
             'SKIP'
             'SKIP'
-            '0fe883cfcc1db869d08235482a3801fa458db15360e0eefac9084c7f2993af4a')
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 CMAKE_FLAGS=(	-DCH_ENABLE_MODULE_POSTPROCESS=ON
 		-DCH_ENABLE_OPENCRG="$_opencrg"
@@ -75,11 +76,8 @@ CMAKE_FLAGS=(	-DCH_ENABLE_MODULE_POSTPROCESS=ON
 		)
 
 prepare() {
+  prepare_submodule
   cd ${pkgname}
-  git submodule init
-  git config submodule.src/chrono_thirdparty/googlebenchmark.url "${srcdir}"/benchmark
-  git config submodule.src/chrono_thirdparty/googletest.url "${srcdir}"/googletest
-  git -c protocol.file.allow=always submodule update
   mapfile -t files < <(find . -name CMakeLists.txt)
   mapfile -t -O ${#files[@]} files < <(find . -name \*.cmake\*)
   sed -i 's/lib64/lib/' "${files[@]}"
@@ -104,3 +102,22 @@ package() {
   install -D -m644 "${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m644 "chronoengine.sh" "${pkgdir}/etc/profile.d/chronoengine.sh"
 }
+
+# Generated with git_submodule_PKGBUILD_conf.sh ( https://gist.github.com/bartoszek/41a3bfb707f1b258de061f75b109042b )
+# Call prepare_submodule in prepare() function
+
+prepare_submodule() {
+  git -C "$srcdir/chronoengine-git" config submodule.src/chrono_thirdparty/googletest.url "$srcdir/googletest"
+  git -C "$srcdir/chronoengine-git" config submodule.src/chrono_thirdparty/googlebenchmark.url "$srcdir/benchmark"
+  git -C "$srcdir/chronoengine-git" config submodule.src/chrono_thirdparty/flatbuffers.url "$srcdir/flatbuffers"
+  git -C "$srcdir/chronoengine-git" config submodule.src/chrono_thirdparty/fmu-forge.url "$srcdir/fmu-forge"
+  git -C "$srcdir/chronoengine-git" config submodule.src/chrono_thirdparty/HydroChrono.url "$srcdir/HydroChrono"
+  git -C "$srcdir/chronoengine-git" -c protocol.file.allow=always submodule update --init
+}
+source+=(
+  "googletest::git+https://github.com/google/googletest"
+  "benchmark::git+https://github.com/google/benchmark"
+  "flatbuffers::git+https://github.com/google/flatbuffers"
+  "fmu-forge::git+https://github.com/projectchrono/fmu-forge"
+  "HydroChrono::git+https://github.com/Project-SEA-Stack/HydroChrono"
+)
