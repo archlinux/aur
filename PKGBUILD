@@ -1,6 +1,6 @@
 # Maintainer: Professor Lee <https://github.com/professor-lee>
 pkgname=cmplayer
-pkgver=0.1.0.r0.g1234567
+pkgver=v0.2.0.r3.gae6c912
 pkgrel=1
 pkgdesc="A terminal-based music player with spectrum visualizer, lyrics support, and MPRIS integration."
 arch=('x86_64' 'aarch64')
@@ -10,6 +10,7 @@ depends=('alsa-lib' 'dbus' 'chromaprint' 'fftw')
 makedepends=('cargo' 'git' 'cmake' 'pkg-config')
 provides=("cmplayer")
 conflicts=("cmplayer")
+options=(!lto)
 source=("${pkgname}::git+https://github.com/professor-lee/cli-music-player.git")
 sha256sums=('SKIP')
 
