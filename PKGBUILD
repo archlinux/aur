@@ -1,10 +1,11 @@
 pkgname=sshw
 pkgver=1.5.2.r2
-pkgrel=1
+pkgrel=2
 pkgdesc="SSH client wrapper for automatic login"
 arch=('x86_64')
 url="https://github.com/lixvbnet/sshw"
 license=('MIT')
+options=('!debug')
 depends=('glibc')
 makedepends=('go')
 _commit=47efde86bf40094c79413cbe58efd3506460e823
