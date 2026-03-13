@@ -1,0 +1,23 @@
+pkgbase = opencode-desktop-electron-bin
+	pkgdesc = OpenCode desktop client (Electron)
+	pkgver = 1.2.25
+	pkgrel = 1
+	url = https://github.com/anomalyco/opencode
+	arch = x86_64
+	license = MIT
+	depends = nss
+	depends = libnotify
+	depends = libxss
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	depends = gtk3
+	provides = opencode-desktop-electron
+	conflicts = opencode-desktop-electron
+	options = !strip
+	options = !debug
+	source = LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v1.2.25/LICENSE
+	source = opencode-electron-1.2.25-linux-amd64.deb::https://github.com/anomalyco/opencode/releases/download/v1.2.25/opencode-electron-linux-amd64.deb
+	sha256sums = SKIP
+	sha256sums = e672a7aab9c003d597c7174b4c6b01fba2d8a468cfb28cdf6b92dcc49405b621
+
+pkgname = opencode-desktop-electron-bin
