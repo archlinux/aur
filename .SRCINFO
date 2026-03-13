@@ -1,6 +1,6 @@
 pkgbase = pyradio-git
 	pkgdesc = Internet radio player for the command line
-	pkgver = 0.9.3.11.8
+	pkgver = 0.9.3.11.28
 	pkgrel = 1
 	url = https://github.com/coderholic/pyradio
 	arch = any
@@ -22,6 +22,7 @@ pkgbase = pyradio-git
 	optdepends = mpv: as backend
 	optdepends = vlc: as backend
 	optdepends = mkvtoolnix-cli: fix mplayer recordings, add chapters to recordings
+    optdepends = python-dbus-next: required for MPRIS support
 	provides = pyradio
 	conflicts = pyradio
 	source = pyradio-git::git+https://github.com/coderholic/pyradio.git
