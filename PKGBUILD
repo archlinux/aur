@@ -6,7 +6,7 @@ _download_dotnet_version="$_dotnet_version"
 
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=3.0.0.rc16.r21.gc96c30fa4
+pkgver=3.1.0.r0.g86122510b
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://steampp.net/"
@@ -29,6 +29,7 @@ source=(
     'set-cap.hook'
     '0001-fix-MsgPack.diff'
     '0002-fix-X509CertificatePackable-to-byte[].diff'
+    'environment_check.sh'
     # Submodules
     'git+https://github.com/BeyondDimension/DirectoryPackages.git'
     'git+https://github.com/BeyondDimension/ArchiSteamFarm.git'
@@ -58,6 +59,7 @@ sha256sums=('SKIP'
             'ee4c5a20eb3a44f9af37b67cc6b5f91e646ac8a35bb1b8be784413dad2ed34ea'
             '382f314cebeba3346c5d59344f72b0e05db6293e3a10185e3f5ceee0c73cbe81'
             'a822f7fb11aa94e7aed682f8f85272a820e20b3169c3856c9ddba6782e514743'
+            'da96b337ef8f79f170fb5976dffee4c52ecf5bc842e3dac9d8479a198887b8b1'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -123,7 +125,9 @@ prepare(){
     then
         dotnet-install --channel ${_dotnet_version} --install-dir "${DOTNET_ROOT}" --no-path --runtime dotnet
     fi
-    dotnet --info | grep RID | cut -d : -f 2 | xargs | tee _platform
+    dotnet --info | grep RID | cut -d : -f 2 | sed 's/arch/linux/' | xargs > _platform
+    local _platform
+    _platform="$(< _platform)"
     cd "${srcdir}/SteamTools"
     # SteamTools/src/BD.WTTS.Client.Plugins.GameAccount/Models/PlatformSettings.cs(4,22): error MsgPack003: Type must be marked with MessagePackObjectAttribute: global::BD.WTTS.Models.PlatformSettings (https://github.com/MessagePack-CSharp/MessagePack-CSharp/blob/master/doc/analyzers/MsgPack003.md)
     # SteamTools/src/BD.WTTS.Client.Plugins.Accelerator/Settings/GameAcceleratorSettings.cs(34,49): error MsgPack004: Properties and fields of MessagePackObject-attributed types require either KeyAttribute or IgnoreMemberAttribute: global::BD.WTTS.Settings.GameAcceleratorSettings_.MyGames (https://github.com/MessagePack-CSharp/MessagePack-CSharp/blob/master/doc/analyzers/MsgPack004.md)
@@ -132,7 +136,13 @@ prepare(){
     patch -Np1 -i ../0002-fix-X509CertificatePackable-to-byte[].diff
     dotnet workload restore src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
         -p:EnableWindowsTargeting=true
-
+    dotnet restore src/BD.WTTS.Client.Avalonia.App/BD.WTTS.Client.Avalonia.App.csproj \
+        --runtime="$_platform"
+    local _id
+    for _id in "${!_plugins[@]}"
+    do
+        dotnet restore "src/${_id}/${_id}.csproj" --runtime="$_platform"
+    done
 }
 pkgver(){
     cd "${srcdir}/SteamTools"
@@ -154,12 +164,12 @@ build(){
         echo "Building plugin ${_id}..."
         case "${_id}" in
             "BD.WTTS.Client.Plugins.Accelerator.ReverseProxy")
-                dotnet publish "src/${_id}/${_id}.csproj" -c Release --nologo -v q -p:WarningLevel=1 \
+                dotnet publish "src/${_id}/${_id}.csproj" --no-restore -c Release --nologo -v q -p:WarningLevel=1 \
                     -p:PublishSingleFile=true --self-contained  --framework "net${_dotnet_version}" --runtime "${_platform}" \
                     -p:EnableWindowsTargeting=true -p:NoWarn=NU1605 -p:WarningsNotAsErrors=CS8604
                 ;;
             *)
-                dotnet publish "src/${_id}/${_id}.csproj" -c Release --nologo -v q -p:WarningLevel=1 \
+                dotnet publish "src/${_id}/${_id}.csproj" --no-restore -c Release --nologo -v q -p:WarningLevel=1 \
                     --framework "net${_dotnet_version}" --runtime "${_platform}" \
                     -p:EnableWindowsTargeting=true
                 ;;
@@ -168,7 +178,7 @@ build(){
 }
 package(){
     depends+=(
-        'libcap' "aspnet-runtime-${_dotnet_version}" "dotnet-runtime-${_dotnet_version}" 'nss' 'sh' 'hicolor-icon-theme'
+        'libcap' "aspnet-runtime-${_dotnet_version}" "dotnet-runtime-${_dotnet_version}" 'nss' 'bash' 'hicolor-icon-theme'
         # Steam++.Accelerator
         'gcc-libs'
     )
@@ -207,11 +217,9 @@ package(){
     install -Dvm644 "./res/icons/app/v3/Icon_Logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${appid}.svg"
     install -Dvm644 "${srcdir}/watt-toolkit.desktop" "${pkgdir}/usr/share/applications/${appid}.desktop"
     install -Dvm644 "${srcdir}/set-cap.hook" "${pkgdir}/usr/share/libalpm/hooks/watt-toolkit-set-cap.hook"
-    install -Dvm755 "./build/linux/environment_check.sh" "${pkgdir}/usr/lib/watt-toolkit/script/environment_check.sh"
+    install -Dvm755 "${srcdir}/environment_check.sh" "${pkgdir}/usr/lib/watt-toolkit/script/environment_check.sh"
     ln -sf /usr/lib/watt-toolkit/Steam++ "${pkgdir}/usr/bin/watt-toolkit"
     echo "Stripping binaries..."
-    find "${pkgdir}/usr/lib/watt-toolkit" -type f -name '*.dll' -printf "Stripping dll %f...\n" \
-        -exec strip $STRIP_STATIC {} \;
     find "${pkgdir}/usr/lib/watt-toolkit" -type f -name '*.so' -printf "Stripping shared object %f...\n" \
         -exec strip $STRIP_SHARED {} \;
     # Fix https://github.com/BeyondDimension/SteamTools/issues/3403

@@ -5,3 +5,4 @@
 !*.diff
 !set-cap.hook
 !watt-toolkit.desktop
+!environment_check.sh
