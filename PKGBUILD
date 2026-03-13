@@ -1,6 +1,6 @@
 # Maintainer: vlensys (contact me on github for wtv reason)
 pkgname=lyricspot
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Live synced lyrics in your terminal"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python' 'playerctl')
 optdepends=('python-pillow: for dynamic album art colors')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/vlensys/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('069bcbf0252a8202adc1aa472377ac66dbc001abf0d6553a5eda5e63f92149f0')
+sha256sums=('5fca2034939d8eec005191f2e84ff61c0999b57751191921824c7b92a9897e43')
 
 package() {
   cd "$pkgname-$pkgver"
