@@ -1,4 +1,6 @@
 post_install() {
+    # Resolve the real installing user (sudo -i / polkit won't set SUDO_USER)
+    SUDO_USER="${SUDO_USER:-$(logname 2>/dev/null || true)}"
     groupadd -f input 2>/dev/null || true
     if [ -n "$SUDO_USER" ]; then
         usermod -aG input "$SUDO_USER" 2>/dev/null || true
