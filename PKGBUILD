@@ -1,7 +1,7 @@
 # Maintainer: tr0llslay3r <https://github.com/tr0llslay3r>
 pkgname=snazzgit-git
-pkgver=0.2.8
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="A snazzy cross-platform Git GUI client (built from source)"
 arch=('x86_64')
 url="https://github.com/tr0llslay3r/SnazzGit"
