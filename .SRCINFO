@@ -8,8 +8,8 @@ pkgbase = usectl
 	license = MIT
 	depends = glibc
 	source_x86_64 = https://github.com/syst3mctl/usectl-cli/releases/download/v1.0.4/usectl_1.0.4_linux_amd64.tar.gz
-	sha256sums_x86_64 = acaa2ce5adee7c0bed9b3a7204476bdb7230d6761cad14b36ad502f4320306bc
+	sha256sums_x86_64 = 568e9a330196d057b96c74b86cfd1127007f7a060f3818fa33683814ee9d2efb
 	source_aarch64 = https://github.com/syst3mctl/usectl-cli/releases/download/v1.0.4/usectl_1.0.4_linux_arm64.tar.gz
-	sha256sums_aarch64 = 54dfcff23d184362563e50a99452cac4da1a82947b6322134eb027cbe4a36339
+	sha256sums_aarch64 = 0a7c9a85968a6d563cab53f06dbae8414a52e91da3eb8322433520e1e85619f9
 
 pkgname = usectl
