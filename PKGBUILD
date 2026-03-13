@@ -13,7 +13,7 @@ makedepends=('autoconf' 'automake' 'libtool' 'pkg-config' 'python'
 install="${pkgname}.install"
 backup=('etc/x52d/x52d.conf')
 source=("https://github.com/nirenjan/libx52/releases/download/v${pkgver}/${pkgname}_${pkgver}.orig.tar.xz")
-sha256sums=('c4d4cdce7f2fce85871f3b1a4bf0f8122eb2969e62ee0d381984c9d26e0a8e25')
+sha256sums=('fe28079b92d9d14f81ec7407617be2bc604999bfc84d3986c785a18064e1d652')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
