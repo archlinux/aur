@@ -1,0 +1,5 @@
+[logana-bin]
+source = "github"
+github = "pauloremoli/logana"
+use_latest_release = true
+prefix = "v"
