@@ -1,0 +1,3 @@
+[perl-time-out]
+source = "cpan"
+cpan = "Time-Out"
