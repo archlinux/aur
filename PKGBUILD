@@ -3,7 +3,7 @@
 
 pkgname=reth
 pkgver=1.11.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast implementation of the Ethereum protocol in Rust"
 arch=('x86_64')
 url="https://github.com/paradigmxyz/reth"
