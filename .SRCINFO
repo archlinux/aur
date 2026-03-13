@@ -1,7 +1,7 @@
 pkgbase = python-calgebra-git
 	pkgdesc = Python set() operations for calendar intervals (development version)
 	pkgver = 0.10.8.r0.gbea36e1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ashenfad/calgebra
 	arch = any
 	license = MIT

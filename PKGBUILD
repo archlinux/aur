@@ -9,7 +9,7 @@ _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname}"
 pkgdesc='Python set() operations for calendar intervals (development version)'
 pkgver=0.10.8.r0.gbea36e1
-pkgrel=2
+pkgrel=3
 url="https://github.com/ashenfad/$_srcname"
 arch=('any')
 license=('MIT')  # SPDX-License-Identifier: MIT
@@ -56,13 +56,7 @@ package() {
 
   local _site_packages='<VOID>'
   _site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
-
-  _dupes=(
-    "$pkgdir$_site_packages/docs"
-    "$pkgdir$_site_packages/$_srcname/docs"
-    "$pkgdir$_site_packages/$_srcname/skills"
-  )
-  rm -rf "${_dupes[@]}"
+  rm -rf "$pkgdir$_site_packages/docs"
 
   install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     ./*.md docs/*.md
