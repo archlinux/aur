@@ -1,6 +1,6 @@
 # Maintainer: sockeye-d (me@fishies.dev)
 pkgname=godl
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Godot project and version manager"
 arch=('x86_64')
