@@ -4,7 +4,7 @@
 _pkgauthor=screenpipe
 _pkgname=screenpipe
 pkgname=${_pkgname}-bin
-pkgver=0.3.135
+pkgver=app-v2.2.115
 pkgrel=1
 pkgdesc="24/7 Screen and Audio Capture with AI-powered tools"
 arch=('x86_64')
