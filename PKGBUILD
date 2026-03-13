@@ -2,19 +2,18 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-math-prime-util-gmp'
-pkgver='0.52.git'
-pkgrel='4'
+pkgver='0.53'
+pkgrel='1'
 pkgdesc="Math::Prime::Util::GMP - utilities related to prime numbers and factoring, using GMP"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('glibc>=2.24' 'gmp>=6.1.1' 'perl>=5.6.2')
 makedepends=()
-_githash="27bac50f34b6784e8d197cf0eefd0f44406d1fa8"
 url='https://metacpan.org/release/Math-Prime-Util-GMP'
-source=("https://github.com/danaj/Math-Prime-Util-GMP/archive/$_githash.zip")
-b2sums=('32c595b11efa6b06dfd2ea79d070cfda5e1753f8032b6d8c8d041b03eabdb036f0d9a8b0ecb09a5afb0a664c2cbcbc77e1ddbe251e17e2fa83bc7c12d41a9b22')
-_distdir="Math-Prime-Util-GMP-$_githash"
+source=("https://cpan.metacpan.org/authors/id/D/DA/DANAJ/Math-Prime-Util-GMP-$pkgver.tar.gz")
+b2sums=('1edd6d03d4d1b71a9a70b7a1c158bb2f11da8a66ca8a2c9c4b1a077b8bb8c9da0c39dec55cfc0ab6e01dd9dd0c8f96ad2980ce048e329d243a14f9bb17ee1105')
+_distdir="Math-Prime-Util-GMP-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
