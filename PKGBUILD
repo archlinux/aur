@@ -21,7 +21,7 @@ depends=(
   'sleex-microtex-git' 'xdg-desktop-portal'
   'clang' 'uv' 'gtk4' 'libadwaita' 'libsoup3' 'libportal-gtk4' 'gobject-introspection' 'sassc' 'python-setproctitle' 'python-pywayland'
   'hyprshot' 'ksnip' 'wf-recorder' 'slurp' 'grim' 'tesseract' 'tesseract-data-eng'
-  'kdialog' 'qt6-5compat' 'qt6-avif-image-plugin' 'qt6-base' 'qt6-declarative' 'qt6-imageformats' 'qt6-multimedia' 'qt6-positioning' 'qt6-quicktimeline' 'qt6-sensors' 'qt6-svg' 'qt6-tools' 'qt6-translations' 'qt6-virtualkeyboard' 'qt6-wayland' 'syntax-highlighting' 'upower' 'wtype' 'ydotool' 'fprintd' 'khal' 'vdirsyncer' 'python-aiohttp-oauthlib' 'swappy' 'hypnos' 'bluez-utils'
+  'kdialog' 'qt6-5compat' 'qt6-avif-image-plugin' 'qt6-base' 'qt6-declarative' 'qt6-imageformats' 'qt6-multimedia' 'qt6-positioning' 'qt6-quicktimeline' 'qt6-sensors' 'qt6-svg' 'qt6-tools' 'qt6-translations' 'qt6-virtualkeyboard' 'qt6-wayland' 'syntax-highlighting' 'upower' 'wtype' 'ydotool' 'fprintd' 'khal' 'vdirsyncer' 'python-aiohttp-oauthlib' 'swappy' 'hypnos-git' 'bluez-utils'
   'fuzzel' 'nm-connection-editor' 'quickshell-git' 'swww' 'translate-shell' 'wlogout'
   'sleex-user-config' 'sleex-artworks'
 )
