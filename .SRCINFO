@@ -1,0 +1,35 @@
+pkgbase = caldav-tasks
+        pkgdesc = A cross-platform CalDAV task management app
+        pkgver = 0.7.1
+        pkgrel = 1
+        url = https://github.com/SapphoSys/caldav-tasks
+        install = caldav-tasks.install
+        arch = x86_64
+        arch = aarch64
+        license = Zlib
+        makedepends = git
+        makedepends = cargo
+        makedepends = nodejs
+        makedepends = pnpm
+        makedepends = pkg-config
+        makedepends = openssl
+        makedepends = sqlite
+        makedepends = libappindicator-gtk3
+        makedepends = librsvg
+        depends = cairo
+        depends = desktop-file-utils
+        depends = gdk-pixbuf2
+        depends = glib2
+        depends = gtk3
+        depends = hicolor-icon-theme
+        depends = libsoup
+        depends = pango
+        depends = webkit2gtk-4.1
+        options = !strip
+        options = !emptydirs
+        source = git+https://github.com/SapphoSys/caldav-tasks.git#tag=app-v0.7.1
+        source = caldav-tasks.desktop
+        sha256sums = SKIP
+        sha256sums = SKIP
+
+pkgname = caldav-tasks
