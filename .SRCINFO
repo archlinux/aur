@@ -1,0 +1,25 @@
+pkgbase = just-ask-bin
+	pkgdesc = Just Ask desktop shell rebuilt from lazy-llm architecture
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/2725244134/just-ask
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = gtk3
+	depends = libdrm
+	depends = libnotify
+	depends = mesa
+	depends = nss
+	depends = xdg-utils
+	optdepends = kde-cli-tools: file deletion support via KIO
+	optdepends = trash-cli: file deletion support via trash-put
+	optdepends = gvfs: file deletion support via GVFS
+	provides = just-ask
+	conflicts = just-ask
+	options = !strip
+	source_x86_64 = just-ask_0.1.0_amd64.deb::https://github.com/2725244134/just-ask/releases/download/v0.1.0/just-ask_0.1.0_amd64.deb
+	sha256sums_x86_64 = 8b431cd1f7329fcdf0bc9edbc8d0a764e51245a074734d23d389390061c0ea45
+
+pkgname = just-ask-bin
