@@ -1,5 +1,5 @@
 # Maintainer: Professor Lee <https://github.com/professor-lee>
-pkgname=cmplayer-git
+pkgname=cmplayer
 pkgver=0.1.0.r0.g1234567
 pkgrel=1
 pkgdesc="A terminal-based music player with spectrum visualizer, lyrics support, and MPRIS integration."
