@@ -1,13 +1,13 @@
 pkgbase = dns-robot-cli
 	pkgdesc = DNS lookups, WHOIS, SSL checks, and 50+ network tools — powered by dnsrobot.net
-	pkgver = 0.1.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://dnsrobot.net
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = https://registry.npmjs.org/dnsrobot/-/dnsrobot-0.1.0.tgz
+	source = https://registry.npmjs.org/dns-robot-cli/-/dns-robot-cli-1.0.0.tgz
 	sha256sums = SKIP
 
 pkgname = dns-robot-cli
