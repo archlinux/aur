@@ -1,0 +1,11 @@
+pkgbase = codeql-cli-bin
+	pkgdesc = The GitHub CodeQL CLI (Command Line Interface)
+	pkgver = 2.24.3
+	pkgrel = 1
+	url = https://github.com/github/codeql-cli-binaries
+	arch = x86_64
+	license = custom
+	source = https://github.com/github/codeql-cli-binaries/releases/download/v2.24.3/codeql-linux64.zip
+	sha256sums = d6df2de5da773d5f67864d0850126572028ebdf76591a8e0d5131c216738c613
+
+pkgname = codeql-cli-bin
