@@ -1,0 +1,19 @@
+pkgbase = helix-editor-git
+	pkgdesc = A text editor written in rust
+	pkgver = 25.07.r532.g78b999f11
+	pkgrel = 1
+	url = https://helix-editor.com
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = cargo
+	makedepends = rustup
+	provides = hx
+	conflicts = helix
+	conflicts = helix-git
+	options = !lto
+	options = !debug
+	source = helix::git+https://github.com/helix-editor/helix.git
+	sha256sums = SKIP
+
+pkgname = helix-editor-git
