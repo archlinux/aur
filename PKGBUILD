@@ -1,8 +1,8 @@
 # Maintainer: Rain Xelelo <rxelelo@outlook.com>
 
 pkgname=rclient
-pkgver=2.2.3
-pkgrel=1
+pkgver=2.2.4
+pkgrel=0
 pkgdesc="Yet another fork of TaterClient for DDNet"
 arch=('x86_64')
 url="https://rushie-client.ru/"
@@ -14,7 +14,7 @@ optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
 backup=('usr/share/ddnet/data/autoexec_server.cfg')
 install="rclient.install"
 source=("https://github.com/RushieClient/RushieClient-ddnet/releases/download/V$pkgver/RClient-ubuntu.tar.xz" "rclient.png")
-sha256sums=('a24a16cf89fa0e106c9f16eecb21b615abb73694d56bed4db1d8b5900735d3da'
+sha256sums=('16b797562fbdb08b35a66339819029cadaa8bdbc3da1b790baec9f9fed3065a8'
 	'af258dd9345943c5024efa534ebbf5cc14340741f393f36375b8f3c89ca736ab')
 
 prepare() {
