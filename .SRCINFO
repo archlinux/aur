@@ -1,0 +1,16 @@
+pkgbase = sleex-user-config-git
+	pkgdesc = User configuration for Sleex desktop environment (git version)
+	pkgver = 1.12.r50.gabc123
+	pkgrel = 1
+	url = https://github.com/axos-project/sleex
+	arch = x86_64
+	license = GPL3
+	depends = sleex
+	provides = sleex-user-config
+	provides = axskel-hypr
+	conflicts = sleex-user-config
+	conflicts = axskel-hypr
+	source = git+https://github.com/axos-project/sleex.git
+	sha256sums = SKIP
+
+pkgname = sleex-user-config-git
