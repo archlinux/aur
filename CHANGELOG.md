@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.14.5] - 2026-03-13
+
+### Changed
+
+- Security: limit the directories where a file can be created or modified
+
+### Fixed
+
+- Deamon reload on proxy
+- Create drop-in UX
+
 ## [2.14.4] - 2026-03-11
 
 ### Fixed
