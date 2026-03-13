@@ -1,7 +1,7 @@
 # Maintainer: Campbell Barton <ideasman42@gmail.com>
 _pkgname=ionwl
 _version=git
-pkgver=0.1.0.r3.gb8c2f88
+pkgver=0.1.0.r1.gcb2735b
 pkgname=${_pkgname}-${_version}
 pkgrel=1
 pkgdesc="Manual tiling Wayland compositor."
@@ -54,5 +54,5 @@ build() {
 
 package() {
   cd $_pkgname
-  make DESTDIR="$pkgdir" PREFIX=/usr install
+  make DESTDIR="$pkgdir" PREFIX=/usr install_only
 }
