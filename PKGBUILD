@@ -2,7 +2,7 @@
 pkgname=waypai-git
 pkgver=r13.edc13d1
 pkgrel=1
-pkgdesc='Keyboard-driven Wayland overlay for drawing on your screen'
+pkgdesc='Minimal Wayland overlay for drawing on your screen'
 arch=('x86_64')
 url='https://codeberg.org/nari/waypai'
 license=('MIT')

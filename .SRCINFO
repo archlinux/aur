@@ -1,5 +1,5 @@
 pkgbase = waypai-git
-	pkgdesc = Keyboard-driven Wayland overlay for drawing on your screen
+	pkgdesc = Minimal Wayland overlay for drawing on your screen
 	pkgver = r13.edc13d1
 	pkgrel = 1
 	url = https://codeberg.org/nari/waypai
