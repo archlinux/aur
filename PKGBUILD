@@ -3,8 +3,8 @@
 
 pkgbase=python-getdevinfo
 pkgname=('python-getdevinfo')
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="A device information gatherer for Linux and macOS."
 arch=('any')
 url="https://www.hamishmb.com/html/downloads.php?program_name=getdevinfo"
@@ -31,4 +31,5 @@ package() {
   cd getdevinfo-$pkgver
   python setup.py install --root="$pkgdir"
 }
-sha256sums=('4ec4f6829f4d915cfed9d352b8794a89aa01c526e9e794663c03ef6261ab6113')
+
+sha256sums=('61a103aa6703c3f2cb36dc0fa4e6156bdd732e4466a771f07da27a4c03c2c173')
