@@ -11,7 +11,6 @@ depends=(
     'webkit2gtk-4.1'
     'gtk-layer-shell'
     'wireplumber'
-    'sqlite'
 )
 optdepends=(
     'brightnessctl: brightness control via scroll gestures'
@@ -31,6 +30,9 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/lava-$pkgver"
+
+    # Force gcc linker — rust-lld fails with C/asm crates (ring, rusqlite)
+    export RUSTFLAGS="${RUSTFLAGS:-} -C linker=gcc"
 
     # Install frontend dependencies
     pnpm install

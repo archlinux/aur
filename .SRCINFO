@@ -14,7 +14,6 @@ pkgbase = lava-desktop
 	depends = webkit2gtk-4.1
 	depends = gtk-layer-shell
 	depends = wireplumber
-	depends = sqlite
 	optdepends = brightnessctl: brightness control via scroll gestures
 	optdepends = hyprland: primary compositor support (Wayland)
 	optdepends = sway: basic compositor support (Wayland)
