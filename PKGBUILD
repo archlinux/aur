@@ -1,51 +1,58 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
 
-pkgname='perl-hijk'
-pkgver='0.20'
-pkgrel='1'
-pkgdesc="Fast & minimal low-level HTTP client"
+_author=GUGOD
+_dist=Hijk
+_ver=0.28
+pkgname=perl-${_dist@L}
+pkgver=${_ver#v}
+pkgrel=1
+pkgdesc='Fast & minimal low-level HTTP client'
 arch=('any')
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$_ver
+license=('MIT')
+depends=(
+    'perl'
+    'perl-time-hires'
+)
+makedepends=('perl-module-build-tiny')
+checkdepends=(
+    'perl-http-server-simple-psgi'
+    'perl-net-ping>=2.41'
+    'perl-net-server'
+    'perl-plack'
+    'perl-test-exception'
+    'perl-test-simple'
+)
 options=('!emptydirs')
-depends=('perl-plack')
-makedepends=()
-checkdepends=('perl-test-exception')
-url='https://metacpan.org/release/Hijk'
-source=('http://search.cpan.org/CPAN/authors/id/A/AV/AVAR/Hijk-0.20.tar.gz')
-md5sums=('a990eacd2f8ebd009630dbaa57f07dfe')
-sha512sums=('4e442f898fc4f557bf80f5263a11ac9cbc04da56bb78ac48ce97324b305e1525790abb5d8af267bf55d28d2ef1155f15b5fd97a85fad1ba1536d33966277d201')
-_distdir="Hijk-0.20"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$_ver.tar.gz")
+sha256sums=('62f72c191b2b5ee55842a926fdec8c630ee663b32f0195644c45e435699bf03b')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$_ver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
-    make
-  )
+    unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    /usr/bin/perl Build.PL --create_packlist=0
+    ./Build
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
-  )
+check()
+{
+    cd "$_dist-$_ver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build test
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$_ver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
