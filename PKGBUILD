@@ -14,7 +14,7 @@ pkgname=(
     'lib32-opencl-nvidia-vulkan'
 )
 pkgver=595.44.03
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux (vulkan developer branch)"
 arch=('x86_64')
 url="https://developer.nvidia.com/vulkan-driver"
