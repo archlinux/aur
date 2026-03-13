@@ -1,13 +1,13 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=grayjay-git
 _appname=grayjay
-pkgver=11.r8.g0dc9daa
-pkgrel=4
+pkgver=18.r1.ge6cdf0d
+pkgrel=1
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
 url="https://grayjay.app/desktop/"
 provides=('grayjay')
-conflicts=('grayjay-bin')
+conflicts=('grayjay' 'grayjay-bin')
 options=('!strip' 'staticlibs')
 # Even though GitLab is the official Futo repo and Github is just a mirror, for some reason they are a lot
 # lazier with tagging their Gitlab releases. Use Gitlab where possible, but to keep up with latest release it will
@@ -46,7 +46,7 @@ prepare() {
         git config submodule.${_sub}.url "${_futo_gitlab_base}/${_sub}.git"
     done
 
-    git lfs install
+    git lfs install --local
 
     GIT_LFS_SKIP_SMUDGE=0 git checkout -- .
     git submodule update --init --recursive
@@ -71,7 +71,7 @@ build() {
 
     # Publish CEF
     local _targetdir="Grayjay.Desktop.CEF/bin/${_configuration}/net9.0/${_target}"
-    rm -R "${_targetdir}" 2> /dev/null || true
+    rm -r "${_targetdir}" 2> /dev/null || true
     mkdir -p "${_targetdir}/publish/wwwroot"
     cp -a "Grayjay.Desktop.Web/dist" "${_targetdir}/publish/wwwroot/web"
 
@@ -86,18 +86,18 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-    install -dm755 "${pkgdir}/usr/share/licenses/grayjay"
+    install -dm755 "${pkgdir}/usr/share/licenses/${_appname}"
 
     # Copy application files
-    local _appdir="${pkgdir}/opt/grayjay"
+    local _appdir="${pkgdir}/opt/${_appname}"
     cp -va "${srcdir}/${_appname}/Grayjay.Desktop.CEF/bin/${_configuration}/net9.0/${_target}/publish/." "${_appdir}"
     rm -v "${_appdir}/ffmpeg" || true
     rm -v "${_appdir}/Portable" || true
     rm -v "${_appdir}/libsodium.so" || true
     find "${_appdir}" -type f -name '*.so' -o -name '*.so.*' -o -name 'dotcefnative' -exec chmod a+x "{}" \;
 
-    install -Dm755 "${srcdir}/grayjay.sh" "${pkgdir}/usr/bin/${_appname}"
-    install -Dm644 "${srcdir}/grayjay.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
+    install -Dm755 "${srcdir}/grayjay.sh" "${pkgdir}/usr/bin/grayjay"
+    install -Dm644 "${srcdir}/grayjay.desktop" "${pkgdir}/usr/share/applications/grayjay.desktop"
     install -Dm644 "${srcdir}/${_appname}/Grayjay.Desktop.CEF/grayjay.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_appname}.png"
     install -Dm644 "${srcdir}/${_appname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${_appname}/LICENSE"
 }

@@ -1,6 +1,6 @@
 pkgbase = grayjay-git
 	pkgdesc = Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)
-	pkgver = 11.r8.g0dc9daa
+	pkgver = 18.r4
 	pkgrel = 4
 	url = https://grayjay.app/desktop/
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = grayjay-git
 	depends = libsodium
 	depends = libappindicator-gtk3
 	provides = grayjay
+	conflicts = grayjay
 	conflicts = grayjay-bin
 	options = !strip
 	options = staticlibs
