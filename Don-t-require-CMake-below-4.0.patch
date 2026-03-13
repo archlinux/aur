@@ -1,0 +1,24 @@
+From ef7a81f5b323c7ea0a1fad359566163707062d49 Mon Sep 17 00:00:00 2001
+From: Lubosz Sarnecki <lubosz@gmail.com>
+Date: Sat, 14 Mar 2026 07:49:03 +0100
+Subject: [PATCH] pyproject: Don't require CMake below 4.0.
+
+---
+ pyproject.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index b88aace93f..d7840e7832 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,6 +1,6 @@
+ [build-system]
+ requires = [
+-  "cmake>=3.29,<4.0.0",  # For building binary targets in the wheel. 4.0.0 breaks third-party CMake build so temporarily pin the version.
++  "cmake>=3.29",  # For building binary targets in the wheel. 4.0.0 breaks third-party CMake build so temporarily pin the version.
+   "packaging>=24.2", # Lower bound required by setuptools
+   "pip>=23",  # For building the pip package.
+   "pyyaml",  # Imported by the kernel codegen tools.
+-- 
+2.53.0
+

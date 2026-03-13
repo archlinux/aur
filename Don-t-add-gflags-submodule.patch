@@ -1,0 +1,44 @@
+From e5f2094d8fe7a2a071dc66306b1cd3ce1b2d65ed Mon Sep 17 00:00:00 2001
+From: Lubosz Sarnecki <lubosz@gmail.com>
+Date: Sat, 14 Mar 2026 09:04:23 +0100
+Subject: [PATCH 2/2] third-party: Don't add gflags submodule.
+
+The dependency is pulled in later, in a different configuration, by find_package_torch.
+
+Fixes following CMake Error:
+```
+CMake Error at /usr/lib/cmake/gflags/gflags-nonamespace-targets.cmake:42 (message):
+  Some (but not all) targets in this export set were already defined.
+
+  Targets Defined: gflags_nothreads_static
+
+  Targets not yet defined: gflags_shared, gflags_nothreads_shared,
+  gflags_static
+
+Call Stack (most recent call first):
+  /usr/lib/cmake/gflags/gflags-config.cmake:17 (include)
+  /usr/lib/cmake/Caffe2/public/gflags.cmake:4 (find_package)
+  /usr/lib/cmake/Caffe2/Caffe2Config.cmake:14 (include)
+  /usr/lib/cmake/Torch/TorchConfig.cmake:68 (find_package)
+  tools/cmake/Utils.cmake:143 (find_package)
+  CMakeLists.txt:798 (find_package_torch)
+```
+---
+ third-party/CMakeLists.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/third-party/CMakeLists.txt b/third-party/CMakeLists.txt
+index 767ac367e1..ea6d929953 100644
+--- a/third-party/CMakeLists.txt
++++ b/third-party/CMakeLists.txt
+@@ -6,7 +6,6 @@
+ 
+ set(CMAKE_POLICY_VERSION_MINIMUM 3.5)
+ add_subdirectory(json)
+-add_subdirectory(gflags)
+ 
+ if(EXECUTORCH_BUILD_PYBIND)
+   add_subdirectory(pybind11)
+-- 
+2.53.0
+

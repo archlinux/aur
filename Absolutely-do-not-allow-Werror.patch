@@ -1,0 +1,32 @@
+From bffdb635f3390d20131797c467e98264b726069e Mon Sep 17 00:00:00 2001
+From: Lubosz Sarnecki <lubosz@gmail.com>
+Date: Sat, 14 Mar 2026 09:16:35 +0100
+Subject: [PATCH 3/3] third-party/flatcc: Absolutely do not allow -Werror.
+
+---
+ third-party/CMakeLists.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/third-party/CMakeLists.txt b/third-party/CMakeLists.txt
+index ea6d929953..966d449369 100644
+--- a/third-party/CMakeLists.txt
++++ b/third-party/CMakeLists.txt
+@@ -88,6 +88,7 @@ ExternalProject_Add(
+              -DFLATCC_REFLECTION=OFF
+              -DFLATCC_DEBUG_CLANG_SANITIZE=OFF
+              -DFLATCC_INSTALL=ON
++             -DFLATCC_ALLOW_WERROR=OFF
+              -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+              -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
+              -DCMAKE_POSITION_INDEPENDENT_CODE=ON
+@@ -113,6 +114,7 @@ set(FLATCC_TEST OFF CACHE BOOL "")
+ set(FLATCC_REFLECTION OFF CACHE BOOL "")
+ set(FLATCC_DEBUG_CLANG_SANITIZE OFF CACHE BOOL "")
+ set(FLATCC_INSTALL OFF CACHE BOOL "")
++set(FLATCC_ALLOW_WERROR OFF CACHE BOOL "")
+ add_subdirectory(flatcc)
+ # Unfortunately flatcc writes libs directly in to the source tree [1]. So to
+ # ensure the target lib is created last, force flatcc_cli to build first.
+-- 
+2.53.0
+
