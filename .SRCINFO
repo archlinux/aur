@@ -1,0 +1,19 @@
+pkgbase = meta-rules-dat-lite
+	pkgdesc = lite version of rules dat files by MetaCubeX
+	pkgver = 20260312
+	pkgrel = 1
+	url = https://github.com/MetaCubeX/meta-rules-dat
+	arch = any
+	license = CC-BY-SA-4.0
+	license = GPL-2.0-or-later
+	license = GPL-3.0-or-later
+	source = https://github.com/MetaCubeX/meta-rules-dat/raw/release/geoip-lite.dat
+	source = https://github.com/MetaCubeX/meta-rules-dat/raw/release/geosite-lite.dat
+	source = https://github.com/MetaCubeX/meta-rules-dat/raw/release/geoip-lite.dat.sha256sum
+	source = https://github.com/MetaCubeX/meta-rules-dat/raw/release/geosite-lite.dat.sha256sum
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = meta-rules-dat-lite
