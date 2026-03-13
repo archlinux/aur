@@ -1,6 +1,6 @@
 pkgbase = waykey
 	pkgdesc = Next-generation Wayland-compatible automation engine (AutoHotkey alternative)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/gkhanC/Waykey
 	install = waykey.install
@@ -14,13 +14,13 @@ pkgbase = waykey
 	depends = hyprland
 	depends = libevdev
 	depends = polkit
-	source = waykey-1.0.0.tar.gz::https://github.com/gkhanC/Waykey/archive/v1.0.0.tar.gz
+	source = waykey-1.0.1.tar.gz::https://github.com/gkhanC/Waykey/archive/v1.0.1.tar.gz
 	source = waykey.service
 	source = waykey.sh
 	source = 99-waykey-uinput.rules
-	sha256sums = dbd6364d33c0176a83a38faeb74cda6602f5da9d0dab5f961c0f320d54b08059
+	sha256sums = 7d97306da5f1b7d3460f95777fb758cb72f79022e2dac57802ac54a9b25be97e
 	sha256sums = 4169b8f01c999106cf7ef52ec411c8a2b49dd37cb80f1f3fa914a35d6be75dd3
 	sha256sums = 61623bca691d4a81407c401bd29ebd791d377a33f75eb2c5f2921c376956c516
-	sha256sums = 1536c6b31c712927bb493685323939b1c096fc378f341432dd99c9b2f7c5fbc4
+	sha256sums = 7ebfb37b30ee3863184e2b636268f4a5d2a62221504eff652000258781d74277
 
 pkgname = waykey
