@@ -2,64 +2,24 @@
 # Contributor: Kuan-Yen Chou <kychou2 at illinois dot edu>
 # Contributor: Yunhui Fu <yhfudev@gmail.com>
 
-pkgname=ns3 # Note: please do ns3-allinone for "allinone" source variant
-# FIXME: make it split package: ns3 python-ns3 (others???)
+pkgbase=ns3
+pkgname=(ns3 python-ns3 ns3-examples{,-src}) #FIXME: ns3-docs (Doxygen is damn large!)
 pkgver=3.47
-pkgrel=1
+pkgrel=2
 pkgdesc='Discrete-event network simulator for Internet systems'
 arch=('x86_64')
 url='https://www.nsnam.org/'
 license=('GPL-2.0-only')
-depends=(
-    ### Required, definitely for runtime
-    python
-    ### Optional (most likely needed after/during compiling, allow more features)
-    # 1. Database support
-    sqlite3
-    # 2. NetAnim support
-    qt5-base qt5-tools # = base+qtchooser+qmake
-    # 3. MPI (distributed computing) support
-    #openmpi # disabled due to conflicts with python bindings (possible future FIXME? compile twice and package-level conflicts?)
-    # 4. GNU Scientific Library
-    gsl
-    # 5. XML config store
-    libxml2
-    # 6. GTK configuration
-    gtk3
-    # 7. Eigen3 (vector math lib)
-    eigen3
-    # 8. Virtual machines (optdeps???)
-    lxc iproute2 iptables
-    # 9. Openflow (FIXME!)
-    # openflow boost-libs
-    # 10. PyViz visualizer
-    goocanvas python-cairo python-pygraphviz ipython
-    # 11. Brite
-    brite
-    # 12. Click (FIXME!)
-    # clickrouter
-    # 13. DPDK
-    dpdk
-    # 14. Netmap emulation FdNetDevice
-    # netmap # NEEDS AUR PACKAGE FIX FOR CUSTOM KERNELS!
-)
 makedepends=(
     ### Required, according to docs
-    gcc cmake ninja git
+    python gcc cmake ninja git
     ### Optional, seems to be build deps
-    # 1. Doxygen documentation
-    doxygen graphviz imagemagick
-    # 2. Sphinx documentation
-    # TODO!
-    # 3. Openflow (devel)
+    # Openflow (devel) [FIXME!]
     # boost
-    # 4. Python bindings
-    python-cppyy python-cxxfilt
-)
-optdepends=(
-    # FIXME: Some deps may land there safely
-    {tcpdump,wireshark-{cli,qt}}': PCAP file reader'
-
+    # Eigen3 (vector math lib, header-only)
+    eigen3
+    # Sphinx documentation
+    # TODO!
 )
 conflicts=()
 source=(
@@ -89,6 +49,17 @@ prepare() {
     fi; done
 }
 
+# This is taken from mesa package
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv -v "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
+}
+
 build() {
     cd "${srcdir}/ns-${pkgver}"
     ./ns3 configure \
@@ -97,6 +68,7 @@ build() {
         --enable-dpdk \
         --enable-eigen \
         --enable-examples \
+        --enable-tests \
         --enable-gsl \
         --enable-gtk \
         --enable-logs \
@@ -104,10 +76,8 @@ build() {
         --enable-python-bindings \
         --prefix=/usr \
         -- \
-        -DNS3_BINDINGS_INSTALL_DIR="/usr/lib/python$(_pver)/site-packages" \
-        -DNS3_PIP_PACKAGING:BOOL=ON
+        -DNS3_BINDINGS_INSTALL_DIR="/usr/lib/python$(_pver)/site-packages"
         # FIXME!:
-        #--enable-tests \
         #--with-click="$srcdir/click-git/install" \
         #--with-openflow="$openflow_dir" \
         # Disabled:
@@ -115,18 +85,105 @@ build() {
                         # (I assume Python is better for consumer-grade
                         # hardware or development on NS-3)
     ./ns3 build
+    # Build docs
+    ./ns3 docs doxygen-no-build
 }
 
 # FIXME: add tests
 # (not the most important thing, but still)
 #check() {}
 
-package() {
-    # Try to lock to python version due to bindings
-    [ -n "$pkgdir" ] && depends+=("python>=$(_pver).0" "python<$(_pver_next).0")
+package_ns3() {
+    depends=(
+        ### Optional (most likely needed after/during compiling, allow more features)
+        # 1. Database support
+        sqlite3
+        # 2. GNU Scientific Library
+        gsl
+        # 3. XML config store
+        libxml2
+        # 4. GTK configuration store
+        gtk3
+        # 5. Openflow [FIXME]
+        # openflow boost-libs
+        # 6. Brite
+        brite
+        # 7. Click [FIXME]
+        # clickrouter
+        # 8. DPDK
+        dpdk
+        # 9. Netmap emulation FdNetDevice
+        # netmap # NEEDS AUR PACKAGE FIX FOR CUSTOM KERNELS!
+        # 10. NetAnim support
+        # qt5-base qt5-tools # = base+qtchooser+qmake
+        # ^ needed in separate software (FIXME!)
+        # ^ native lib does not need them = not a direct deps
+        # 11. MPI (distributed computing) support
+        ### disabled due to conflicts with python bindings
+        ### (possible future FIXME? compile twice and
+        ### package-level conflicts?)
+        #openmpi
+    )
+    optdepends=(
+        # PCAP readers
+        {tcpdump,wireshark-{cli,qt}}': PCAP file reader'
+        # Virtual machines
+        {lxc,iproute2,iptables}': virtual machines in network'
+        # Recommend Python bindings
+        'python-ns3: Python bindings (broken)'
+    )
     cd "${srcdir}/ns-${pkgver}"
     DESTDIR="$pkgdir" ./ns3 install
-    # FIXME: package split, e.g. python bindings in its own package.
+    cd "$pkgdir"
+
+    # Comply with Arch Package Guideliness
+    mv -Tv usr/lib{exec,}/"$pkgname"
+
+    # Python bindings
+    _pick python usr/lib/python$(_pver)
+}
+
+package_ns3-examples() {
+    pkgdesc+=" (prebuilt example applications)"
+    optdepends=('ns3-examples-src: See source code for examples')
+    cd "${srcdir}/ns-${pkgver}/build"
+    install -dm755 "$pkgdir"/usr/lib/ns3
+    mv -Tv examples "$pkgdir"/usr/lib/ns3/examples
+}
+
+package_ns3-examples-src() {
+    pkgdesc+=" (prebuilt example sources)"
+    optdepends=('ns3-examples: Run prebuilt examples')
+    cd "${srcdir}/ns-${pkgver}"
+    install -dm755 "$pkgdir"/usr/src/ns3
+    mv -Tv examples "$pkgdir"/usr/src/ns3/examples
+    echo "Removing unnecesary files..."
+    find -n
+}
+
+# [FIXME]: srcdir references in navbar
+package_ns3-docs() {
+    pkgdesc+=" (Doxygen documentation)"
+    makedepends=(doxygen graphviz imagemagick dia)
+
+    cd "${srcdir}/ns-${pkgver}"
+    install -dm755 "$pkgdir/usr/share/doc/$pkgbase"
+    # HTML Doxygen docs
+    mv -Tv doc/html "$pkgdir/usr/share/doc/$pkgbase/html"
+    # FIXME: optimize docs so they don't take like 1GB of disk space
+}
+
+package_python-ns3() {
+    pkgdesc+=" (Python bindings)"
+    depends=(ns3 python-cppyy)
+    # PyViz visualizer
+    depends+=(python-cairo python-pygraphviz ipython)
+    # Note: `root` package is not enough to satisfy deps
+    #       (libcppyy is missing)
+    conflicts=(root)
+    # Try to lock to python version due to bindings
+    [ -n "$pkgdir" ] && depends+=("python>=$(_pver).0" "python<$(_pver_next).0")
+    mv python/* "$pkgdir"
 }
 
 # vim: set ts=4 sw=4 et :
