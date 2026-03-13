@@ -1,0 +1,19 @@
+pkgbase = lrc-lrc-git
+	pkgdesc = Labricecat Relay Chat
+	pkgver = r60.4a26285
+	pkgrel = 1
+	url = https://codeberg.org/labricecat/lrcclient
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	depends = glibc
+	depends = lrc-socat
+	depends = lrc-ricetp
+	depends = ncurses
+	depends = lua
+	provides = lrc
+	conflicts = lrc
+	source = git+https://codeberg.org/labricecat/lrcclient.git
+	sha256sums = SKIP
+
+pkgname = lrc-lrc-git
