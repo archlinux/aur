@@ -1,8 +1,8 @@
 # Maintainer: Hauke Stieler <mail@hauke-stieler.d>
 
 pkgname=wiki2book
-pkgver=0.6.0
-pkgrel=2
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="Wiki2book is a CLI tool to convert one or multiple Wikipedia articles into an eBook."
 arch=("any")
 url="https://github.com/hauke96/wiki2book"
