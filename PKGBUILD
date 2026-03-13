@@ -1,7 +1,7 @@
 # Maintainer: Ardox <ardox@axos-project.com>
 pkgname=hypnos-git
 _pkgname=hypnos
-pkgver=1.0.0.r12.gabc123
+pkgver=1.0.0.r94.cd413f1
 pkgrel=1
 pkgdesc="A Wayland idle time based action daemon (git version)"
 arch=('x86_64')
@@ -16,23 +16,22 @@ source=("git+https://github.com/axos-project/hypnos.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname/src/"
   printf "1.0.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname/src/"
   export CARGO_HOME="$srcdir/cargo-home"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$_pkgname"
-  export CARGO_HOME="$srcdir/cargo-home"
-  cargo build --release --frozen
+  cd "$srcdir/$_pkgname/src/"
+  cargo build --release
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname/src/"
   install -Dm755 "target/release/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 }
