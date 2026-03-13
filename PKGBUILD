@@ -1,7 +1,7 @@
 # Maintainer: Marco Russo <tray-kebab-uneven@duck.com>
 # Maintainer: Matthew Johnston <warmwaffles@gmail.com>
 pkgname=expert-git
-pkgver=r948.44a43e2d
+pkgver=r962.7a4e3334
 pkgrel=1
 pkgdesc="Official Elixir Language Server Protocol implementation"
 arch=('x86_64')
