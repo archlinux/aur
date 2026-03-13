@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Throne
+Comment=Cross-platform GUI proxy utility (Empowered by sing-box)
+Exec=throne
+Icon=Throne
+Terminal=false
+StartupNotify=false
+StartupWMClass=Throne
+Categories=Network;
