@@ -15,6 +15,6 @@ sha256sums=('defd151b6bcd3b53e3b941853bb31ca869360e3d697f1ddbdceda34f1de42857')
 package() {
   cd "$srcdir"
   cp -a etc "$pkgdir/"
-  install -dm644 "$pkgdir/etc/cvmfs/config.d/"
+  install -dm755 "$pkgdir/etc/cvmfs/config.d/"
   echo 'CVMFS_HTTP_PROXY="${CVMFS_HTTP_PROXY:=DIRECT}"' > "$pkgdir/etc/cvmfs/config.d/software.eessi.io.conf"
 }
