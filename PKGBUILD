@@ -1,15 +1,15 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep-git
 _pkgbasename="${pkgname%-git}"
-pkgver=2.4.2.r149.de66b41
-pkgrel=2.314
+pkgver=2.5.0.r157.afc652e
+pkgrel=1
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
 arch=('any')
 license=('GPL-3.0-only')
 provides=("$_pkgbasename")
 conflicts=("$_pkgbasename")
-checkdepends=(ruff mypy python-types-pillow python-types-fpdf2 python-pytest python-pytest-image-diff)
+checkdepends=(ruff mypy python-types-pillow python-types-fpdf2 python-pytest)
 makedepends=(git python-uv-build python-build python-installer python-wheel)
 depends=(python python-djvulibre-python
          python-click python-loguru python-pillow
