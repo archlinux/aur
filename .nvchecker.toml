@@ -1,0 +1,3 @@
+[perl-string-tokenizer]
+source = "cpan"
+cpan = "String-Tokenizer"
