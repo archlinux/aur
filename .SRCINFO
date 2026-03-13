@@ -1,6 +1,6 @@
 pkgbase = rustledger-bin
 	pkgdesc = Fast, pure Rust implementation of Beancount double-entry accounting (pre-built binary)
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/rustledger/rustledger
 	arch = x86_64
@@ -8,16 +8,16 @@ pkgbase = rustledger-bin
 	license = GPL-3.0-only
 	depends = glibc
 	depends = libgcc
-	source = LICENSE-0.10.0::https://raw.githubusercontent.com/rustledger/rustledger/v0.10.0/LICENSE
+	source = LICENSE-0.10.1::https://raw.githubusercontent.com/rustledger/rustledger/v0.10.1/LICENSE
 	sha256sums = SKIP
-	source_x86_64 = rustledger-bin-0.10.0-x86_64.tar.gz::https://github.com/rustledger/rustledger/releases/download/v0.10.0/rustledger-v0.10.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = f0beaf017638d24312dd2a18984e74fdd98a56af2d04927090034d8b42255739
-	source_aarch64 = rustledger-bin-0.10.0-aarch64.tar.gz::https://github.com/rustledger/rustledger/releases/download/v0.10.0/rustledger-v0.10.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 8843560bcdfd7079060330ecf0866240a0901070f81f632641d8f2de34fdc3c7
+	source_x86_64 = rustledger-bin-0.10.1-x86_64.tar.gz::https://github.com/rustledger/rustledger/releases/download/v0.10.1/rustledger-v0.10.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 04cb93596dcf98bb4eff2968b8776a11cee7a064b790126699e71d50cc426e23
+	source_aarch64 = rustledger-bin-0.10.1-aarch64.tar.gz::https://github.com/rustledger/rustledger/releases/download/v0.10.1/rustledger-v0.10.1-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 229d7ca0e334dbd0fce08ffc0486e8ce98a31d5c785a923a6f615d785781370f
 
 pkgname = rustledger-bin
 	pkgdesc = Fast, pure Rust implementation of Beancount double-entry accounting (pre-built binary)
-	provides = rustledger=0.10.0
+	provides = rustledger=0.10.1
 	conflicts = rustledger
 
 pkgname = rustledger-bin-bean-compat
