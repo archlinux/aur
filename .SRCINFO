@@ -1,0 +1,13 @@
+pkgbase = ugh
+	pkgdesc = Pipe any error message. Get a human explanation. Offline, zero deps.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/0xD8C4A475/ugh
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	makedepends = go
+	source = ugh-0.1.0.tar.gz::https://github.com/0xD8C4A475/ugh/archive/v0.1.0.tar.gz
+	sha256sums = aef6f9ad836a5d2188d1962f5d37c0a71b6ab9c70019893b66f5283c7302ed7f
+
+pkgname = ugh
