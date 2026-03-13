@@ -34,13 +34,8 @@ post_install() {
     _ok=$?
 
     echo ""
-    if [ "$_ok" = "0" ]; then
-        echo "==> Laren is ready! Toggle Arabic input with Ctrl+Space."
-        echo "    Already-running apps may need to be restarted."
-    else
-        echo "==> Laren installed. Log out and back in to activate."
-        echo "    Then toggle Arabic input with Ctrl+Space."
-    fi
+    echo "==> Laren installed! Log out and back in for best results."
+    echo "    Toggle Arabic input with Ctrl+Space."
     echo "    Use fcitx5-configtool to customize input methods."
     echo ""
 }
