@@ -1,4 +1,4 @@
-# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-03-12 17:18:50
+# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-03-13 09:33:27
 
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Maintainer: Piotr Gorski <piotrgorski@cachyos.org>
@@ -172,12 +172,12 @@ fi
 
 pkgbase="linux-cachyos-native"
 _major=6.19
-_minor=7
+_minor=6
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
 _tagrel=1
-pkgrel=1
+pkgrel=2
 #_stable=${_major}.${_minor}
 _stable=${_major}
 #_stablerc=${_major}-${_rcver}
@@ -217,7 +217,7 @@ source=(
 # LLVM makedepends
 if _is_lto_kernel; then
     makedepends+=(clang llvm lld)
-    source+=("${_patchsource}/misc/dkms-clang.patch")
+    source+=("dkms-clang.patch")
     BUILD_FLAGS=(
         CC=clang
         LD=ld.lld
@@ -240,7 +240,7 @@ fi
 
 if [ "$_build_nvidia_open" = "yes" ]; then
     source+=("https://download.nvidia.com/XFree86/${_nv_open_pkg%"-$_nv_ver"}/${_nv_open_pkg}.tar.xz"
-             "${_patchsource}/misc/nvidia/0002-Add-IBT-support.patch")
+             "0002-Add-IBT-support.patch")
 fi
 
 # Use generated AutoFDO Profile
@@ -265,7 +265,7 @@ fi
 ## List of CachyOS schedulers
 case "$_cpusched" in
     bore|rt-bore|hardened) # CachyOS Scheduler (BORE)
-        source+=("${_patchsource}/sched/0001-bore-cachy.patch");;&
+        source+=("0001-bore-cachy.patch");;&
     bmq) ## Project C Scheduler
         source+=("${_patchsource}/sched/0001-prjc-cachy.patch");;
     hardened) ## Hardened Patches
@@ -317,7 +317,7 @@ prepare() {
     fi
 
     ### Selecting CachyOS config
-    if [ "$_cachy_config" = "yes" ]; then
+    if [ "config" = "yes" ]; then
         echo "Enabling CachyOS config..."
         scripts/config -e CACHY
     fi
@@ -504,30 +504,30 @@ prepare() {
     echo "Prepared $pkgbase version $(<version)"
 
     ### Running make nconfig
-    [ "$_makenconfig" = "yes" ] && make "${BUILD_FLAGS[@]}" nconfig
+    [ "config" = "yes" ] && make "${BUILD_FLAGS[@]}" nconfig
 
     ### Running make xconfig
-    [ "$_makexconfig" = "yes" ] &&  make "${BUILD_FLAGS[@]}" xconfig
+    [ "config" = "yes" ] &&  make "${BUILD_FLAGS[@]}" xconfig
 
     ### Save configuration for later reuse
     echo "Save configuration for later reuse..."
-    local basedir="$(dirname "$(readlink "${srcdir}/config")")"
+    local basedir="$(dirname "$(readlink "config")")"
     cat .config > "${basedir}/config-${pkgver}-${pkgrel}${pkgbase#linux}"
 
     if [ "$_build_nvidia_open" = "yes" ]; then
-        patch -Np1 -i "${srcdir}/0002-Add-IBT-support.patch" -d "${srcdir}/${_nv_open_pkg}/"
+        patch -Np1 -i "0002-Add-IBT-support.patch" -d "${srcdir}/${_nv_open_pkg}/"
     fi
 }
 
 _sign_modules() {
     msg2 "Signing modules in $1"
     local sign_script="${srcdir}/${_srcname}/scripts/sign-file"
-    local sign_key="$(grep -Po 'CONFIG_MODULE_SIG_KEY="\K[^"]*' "${srcdir}/${_srcname}/.config")"
+    local sign_key="$(grep -Po 'CONFIG_MODULE_SIG_KEY="\K[^"]*' "config")"
     if [[ ! "$sign_key" =~ ^/ ]]; then
         sign_key="${srcdir}/${_srcname}/${sign_key}"
     fi
     local sign_cert="${srcdir}/${_srcname}/certs/signing_key.x509"
-    local hash_algo="$(grep -Po 'CONFIG_MODULE_SIG_HASH="\K[^"]*' "${srcdir}/${_srcname}/.config")"
+    local hash_algo="$(grep -Po 'CONFIG_MODULE_SIG_HASH="\K[^"]*' "config")"
 
     if [ "$_use_llvm_lto" != "none" ]; then
         local strip_bin="llvm-strip"
@@ -806,7 +806,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('682d5d710fe2d06f97fe2062afead540a49607aabb0a9da740defa2054ac1bd1dbf7c5fa90c154b78b2a9eee0204e2a059e6fc97af1051e60f03f4c7b3ebb754'
+b2sums=('a0885a688e8ea83da755115a86926134f8795b93c7d2eb1c00baff521ed10ba0aeb2691ad26454da20f2cecb169b6d655705b7e11fa6d108428ca1d2c0e5d696'
         '0c0cfb1e9ae31904cb86a194fa04d04336574a80a3559e6e295ca8ed3b226886d7dcd2cb45527382bec457b013984d6352b1900feb3a3d96ace0c7c5f5c5ffa7'
         'ea26c88950fc06b6ffab93b30e3beacc7d26571a70262334ca8b001dc7899bf96b47d703fbaa7f4e47765c3dafccc23c58a4d4da2169b8ee50012afcb7a1dd96'
         '604dbf06c03ac2002efbebb0581711f2a4e698353bde84a3fc78b5fbb5b0b1bd358a6c0bd418ca91b0d7e7d4d44f23ec7e47844b357675584b31e47c8b96b05c'
