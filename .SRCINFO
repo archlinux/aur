@@ -1,0 +1,15 @@
+pkgbase = netanim
+	pkgdesc = Offline animator for ns-3
+	pkgver = 3.110
+	pkgrel = 1
+	url = https://www.nsnam.org/wiki/NetAnim
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = qt6-base
+	optdepends = ns3: Network simulator
+	source = https://gitlab.com/nsnam/netanim/-/archive/netanim-3.110/netanim-netanim-3.110.tar.gz
+	sha256sums = 3a5b8760cc537096842cd98a2a2c638a5cb7a51516c54a593825a642f1daa9a8
+	sha512sums = 40a98c45bdb8a1f6adfafd03dfaeb23ef795ab16f68617b2ef2a3502d6ea28bf190bc60bb7260ac16f1311dec637a9cc256b667b86d254a61818c8a1ee8110b4
+	b2sums = 1027f4b5b94eac7b9774f6a3e8bffa41c3afb1792a6c18f136c183bb41f32cb9556633aa66a33273cbaa9bc7a9c10aa5047f0f419fae1a932f2e922dce9a4590
+
+pkgname = netanim
