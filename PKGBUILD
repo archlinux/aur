@@ -2,7 +2,7 @@
 pkgname=vpinfe-git
 _pkgname=${pkgname%-git}
 _reponame=vpinfe
-pkgver=r537.947932b
+pkgver=r538.6d5f172
 pkgrel=1
 pkgdesc="A vpinball frontend for Linux, Mac, and Windows"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://github.com/superhac/vpinfe"
 depends=('git' 'python-pip' 'chromium')
 provides=('vpinfe')
 conflicts=('vpinfe')
-source=('git+https://github.com/superhac/vpinfe.git' 'vpinfe.desktop')
-sha256sums=('SKIP' 'd0c22bc258c3fbee04a31378454246f25a3360cf48e870fcb374559de6b4a072')
+source=('git+https://github.com/superhac/vpinfe.git' 'vpinfe.desktop' 'vpinfe.png')
+sha256sums=('SKIP' 'd0c22bc258c3fbee04a31378454246f25a3360cf48e870fcb374559de6b4a072' '7e7e1b0854ffcf745d9cf5a643cb005bb3c1c21f58ef50dc9c889eef5e9b92bd')
 
 pkgver() {
   cd "$srcdir/$_reponame"
@@ -40,6 +40,7 @@ package() {
   chmod +x "$pkgdir/usr/bin/$_pkgname"
 
   # Install application entry
+  install -Dm 644 "${srcdir}/vpinfe.png"  "${pkgdir}/usr/share/icons/hicolor/512x512/apps/vpinfe.png"
   install -Dm644 "$srcdir/vpinfe.desktop" "$pkgdir/usr/share/applications/vpinfe.desktop"
 }
 

@@ -1,6 +1,6 @@
 pkgbase = vpinfe-git
 	pkgdesc = A vpinball frontend for Linux, Mac, and Windows
-	pkgver = r537.947932b
+	pkgver = r538.6d5f172
 	pkgrel = 1
 	url = https://github.com/superhac/vpinfe
 	arch = any
@@ -11,7 +11,9 @@ pkgbase = vpinfe-git
 	conflicts = vpinfe
 	source = git+https://github.com/superhac/vpinfe.git
 	source = vpinfe.desktop
+	source = vpinfe.png
 	sha256sums = SKIP
 	sha256sums = d0c22bc258c3fbee04a31378454246f25a3360cf48e870fcb374559de6b4a072
+	sha256sums = 7e7e1b0854ffcf745d9cf5a643cb005bb3c1c21f58ef50dc9c889eef5e9b92bd
 
 pkgname = vpinfe-git
