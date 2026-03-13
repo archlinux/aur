@@ -1,0 +1,9 @@
+# hypnos-git.install
+post_upgrade() {
+    echo -e "\e[1;33m>>> IMPORTANT: We recommend updating the Hypnos service file.\e[0m"
+    echo -e "\e[1;33m>>> To update your local user service file, please run: hypnos install\e[0m"
+}
+
+post_install() {
+    post_upgrade
+}
