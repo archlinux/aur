@@ -1,0 +1,13 @@
+post_install() {
+  local helper="/usr/lib/lattice/restart-daemon-if-active.sh"
+  if [[ -x "$helper" ]]; then
+    "$helper" || true
+  fi
+}
+
+post_upgrade() {
+  local helper="/usr/lib/lattice/restart-daemon-if-active.sh"
+  if [[ -x "$helper" ]]; then
+    "$helper" || true
+  fi
+}
