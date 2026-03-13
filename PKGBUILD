@@ -3,7 +3,7 @@
 pkgname=python-apollo-fpga
 _gitpkgname=apollo
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Microcontroller-based FPGA/JTAG programmer'
 arch=('any')
 url='https://github.com/greatscottgadgets/apollo'
@@ -32,6 +32,8 @@ optdepends=(
   'python-pyserial: to connect to an integrated logic analyzer'
   'python-usb-protocol: for flashing'
 )
+conflicts=('python-apollo<=1.1.1')
+replaces=('python-apollo<=1.1.1')
 
 source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/greatscottgadgets/apollo/archive/v${pkgver}.tar.gz"
