@@ -2,14 +2,14 @@
 
 pkgname=python-sphinx-markdown-builder
 _pkgname="${pkgname##python-}"
-pkgver=0.6.9
-pkgrel=3
+pkgver=0.6.10
+pkgrel=1
 pkgdesc="A Sphinx extension to add markdown generation support."
 arch=('any')
 url="https://github.com/liran-funaro/sphinx-markdown-builder"
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('3db94918c25955eed834037140a4f012e8f01919331e86344b2bb2b164d51915')
+sha256sums=('cbae24373d4bae88e480bbb6e55280601a48c9a85393b39e09169b08d06d793f')
 
 depends=(
   'python'
