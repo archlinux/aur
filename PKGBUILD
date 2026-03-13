@@ -7,11 +7,11 @@ pkgname='python-calgebra-git'
 _pkgname="${pkgname/-git/}"
 _srcname="${_pkgname/python-/}"
 _srcdir="${_srcname}"
-pkgver=0.10.8.r0.gbea36e1
-pkgrel=1
 pkgdesc='Python set() operations for calendar intervals (development version)'
-arch=('any')
+pkgver=0.10.8.r0.gbea36e1
+pkgrel=2
 url="https://github.com/ashenfad/$_srcname"
+arch=('any')
 license=('MIT')  # SPDX-License-Identifier: MIT
 makedepends=(
   'git'
@@ -30,9 +30,10 @@ optdepends=(
   'python-icalendar: for working with iCalendar'
   'python-pandas: for converting iterables of Intervals into pandas DataFrames'
 )
-source=("git+$url.git")
 provides=("$_pkgname")
 conflicts=("${provides[@]}")
+options=('!strip')
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
