@@ -5,7 +5,7 @@
 _pkgname=fchat
 
 pkgname="${_pkgname}"-horizon-appimage
-pkgver=1.36.0
+pkgver=1.36.2
 pkgrel=1
 pkgdesc="Horizon is a modern, community-driven fork of the F-Chat 3.0 client with expanded customization. (Appimge release)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source_x86_64=("${_appimage}::https://github.com/Fchat-Horizon/Horizon/releases/
                "https://raw.githubusercontent.com/Fchat-Horizon/Horizon/v${pkgver}/LICENSE"
               )
 noextract=("${_appimage}")
-sha256sums_x86_64=('ad72f01f2d677d95e87954e2875a77ad0e27c8a4c0bab6b693cdafa70cf2f979'
+sha256sums_x86_64=('e4e7698dd20437944ab88e2d0dc8a4e04d60c3f915d9a86b86c9401d21aa3831'
                    'SKIP')
 
 prepare() {
