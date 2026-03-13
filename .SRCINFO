@@ -1,0 +1,21 @@
+pkgbase = suvadu-bin
+	pkgdesc = A database-backed shell history replacement with fuzzy search, AI agent monitoring, and interactive TUI
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/AppachiTech/suvadu
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = suvadu
+	provides = suv
+	conflicts = suvadu
+	source = README-0.1.1.md::https://raw.githubusercontent.com/AppachiTech/suvadu/v0.1.1/README.md
+	sha256sums = db7e5ba8e6572cd5a64ae63c10d018c39ec6dcb8f90be8cc37fa4a83de8f0cf8
+	source_x86_64 = suvadu-x86_64-0.1.1.tgz::https://github.com/AppachiTech/suvadu/releases/download/v0.1.1/suv-linux-v0.1.1.tar.gz
+	sha256sums_x86_64 = 7bb7e8c6dd8273c35afdb3dc7cbd78146f218308e1c713161b4da2f2dfc230ab
+	source_aarch64 = suvadu-aarch64-0.1.1.tgz::https://github.com/AppachiTech/suvadu/releases/download/v0.1.1/suv-linux-aarch64-v0.1.1.tar.gz
+	sha256sums_aarch64 = 4786c6f012c27eb34b5aa4a9ffd03bbfa9fc641f965daa3ee52a0bbf837511bd
+
+pkgname = suvadu-bin

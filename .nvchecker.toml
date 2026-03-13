@@ -1,0 +1,5 @@
+[suvadu-bin]
+source = "github"
+github = "AppachiTech/suvadu"
+use_latest_release = true
+prefix = "v"
