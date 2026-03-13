@@ -7,7 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/devzeebo/bifrost"
 license=('MIT')
 depends=('glibc')
-makedepends=('go' 'git' 'make')
+makedepends=('go' 'git' 'make' 'nodejs' 'npm')
 provides=("bf" "bifrost-server" "bifrost-go")
 conflicts=("bf" "bifrost-server" "bifrost-go")
 
