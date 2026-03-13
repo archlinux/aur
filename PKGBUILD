@@ -2,7 +2,7 @@
 pkgname=wkmailsync
 _pkgsrc="WkMailSync"
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="IMAP/Maildir mail sync and backup tool with EML/ZIP export and Virtualmin support"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Warky-Devs/WkMailSync"
@@ -26,6 +26,7 @@ build() {
         -mod=readonly \
         -ldflags "-s -w -linkmode external -extldflags \"${LDFLAGS}\"" \
         -o "$pkgname" ./cmd/wkmailsync
+    chmod -R u+w "$srcdir/go/pkg/mod" 2>/dev/null || true
 }
 
 package() {
