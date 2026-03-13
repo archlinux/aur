@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=opencode-desktop-electron-bin
-pkgver=1.2.25
+pkgver=1.2.26
 pkgrel=1
 pkgdesc="OpenCode desktop client (Electron)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("LICENSE::https://raw.githubusercontent.com/anomalyco/opencode/v${pkgver
         "opencode-electron-${pkgver}-linux-amd64.deb::https://github.com/anomalyco/opencode/releases/download/v${pkgver}/opencode-electron-linux-amd64.deb")
 
 sha256sums=('SKIP'
-            'e672a7aab9c003d597c7174b4c6b01fba2d8a468cfb28cdf6b92dcc49405b621')
+            'ffffeb24e3a6d52662fd76e5e39fd50a36f342ff1541cfdd0a1618ce13c235c2')
 
 package() {
   bsdtar -xf "${srcdir}/opencode-electron-${pkgver}-linux-amd64.deb" -C "${srcdir}"
@@ -26,41 +26,26 @@ package() {
 
   bsdtar -xf "$data_tar" -C "${pkgdir}"
 
-  # Symlink /usr/bin/opencode-desktop-electron -> actual Electron binary in /opt/OpenCode
-  local binary
-  for candidate in \
-      "${pkgdir}/opt/OpenCode/opencode" \
-      "${pkgdir}/opt/OpenCode/OpenCode"; do
-    [[ -f "$candidate" ]] && binary="$candidate" && break
-  done
+  # Symlink the actual Electron binary to a clean name in /usr/bin
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -sf "/opt/OpenCode/@opencode-aidesktop-electron" "${pkgdir}/usr/bin/opencode-desktop-electron"
 
-  if [[ -n "$binary" ]]; then
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -sf "/opt/OpenCode/$(basename "$binary")" "${pkgdir}/usr/bin/opencode-desktop-electron"
-  else
-    echo "WARNING: could not find Electron binary in /opt/OpenCode/"
-  fi
-
-  # Fix icons: strip @scopedname. prefix -> opencode-desktop-electron.
-  find "${pkgdir}/usr/share/icons" -type f 2>/dev/null | while read -r ico; do
-    local dir base new
+  # Rename icons from @opencode-aidesktop-electron.png -> opencode-desktop-electron.png
+  find "${pkgdir}/usr/share/icons" -type f -name "@opencode-aidesktop-electron*" 2>/dev/null | while read -r ico; do
+    local dir ext new
     dir="$(dirname "$ico")"
-    base="$(basename "$ico")"
-    new="$(echo "$base" | sed 's/@[^.]*\./opencode-desktop-electron./')"
-    [[ "$base" != "$new" ]] && mv "$ico" "$dir/$new"
+    ext="${ico##*.}"
+    mv "$ico" "$dir/opencode-desktop-electron.$ext"
   done
 
-  # Fix .desktop: Exec, Name, Icon
-  local desktop found_desktop
-  desktop="${pkgdir}/usr/share/applications/opencode-desktop-electron.desktop"
-  found_desktop="$(find "${pkgdir}/usr/share/applications" -name "*.desktop" 2>/dev/null | head -1)"
-  if [[ -n "$found_desktop" ]]; then
+  # Fix .desktop file
+  local desktop="${pkgdir}/usr/share/applications/opencode-desktop-electron.desktop"
+  if [[ -f "$desktop" ]]; then
     sed -i \
       -e 's|^Exec=.*|Exec=opencode-desktop-electron %U|' \
       -e 's|^Name=.*|Name=Opencode (Electron)|' \
       -e 's|^Icon=.*|Icon=opencode-desktop-electron|' \
-      "$found_desktop"
-    [[ "$found_desktop" != "$desktop" ]] && mv "$found_desktop" "$desktop"
+      "$desktop"
   else
     install -Dm644 /dev/stdin "$desktop" <<DESKTOP
 [Desktop Entry]
@@ -71,7 +56,8 @@ Icon=opencode-desktop-electron
 Type=Application
 Categories=Development;
 StartupNotify=true
-StartupWMClass=opencode
+StartupWMClass=OpenCode
+MimeType=x-scheme-handler/opencode;
 DESKTOP
   fi
 
