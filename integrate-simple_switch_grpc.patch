@@ -1,0 +1,33 @@
+diff --git a/configure.ac b/configure.ac
+index 670e65218..49017f009 100755
+--- a/configure.ac
++++ b/configure.ac
+@@ -305,6 +305,10 @@ AC_CONFIG_FILES([Makefile
+                 pdfixed/include/Makefile
+                 PI/Makefile])
+
++AS_IF([test "$want_pi" = yes], [
++  AC_CONFIG_SUBDIRS([targets/simple_switch_grpc])
++])
++
+ # Generate other files
+ AC_CONFIG_FILES([tests/utils.cpp
+                  src/bm_sim/version.cpp
+diff --git a/targets/Makefile.am b/targets/Makefile.am
+index 9cf910630..45ead49ad 100644
+--- a/targets/Makefile.am
++++ b/targets/Makefile.am
+@@ -1,5 +1,11 @@
++MAYBE_SECONDARY_TARGETS =
++
+ if COND_THRIFT
+-MAYBE_SECONDARY_TARGETS = simple_router l2_switch
++MAYBE_SECONDARY_TARGETS += simple_router l2_switch
++endif
++
++if COND_PI
++MAYBE_SECONDARY_TARGETS += simple_switch_grpc
+ endif
+
+-SUBDIRS = $(MAYBE_SECONDARY_TARGETS) simple_switch psa_switch
++SUBDIRS = simple_switch psa_switch $(MAYBE_SECONDARY_TARGETS)
