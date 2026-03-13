@@ -1,6 +1,6 @@
 # Maintainer: tr0llslay3r <https://github.com/tr0llslay3r>
 pkgname=snazzgit-git
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A snazzy cross-platform Git GUI client (built from source)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd SnazzGit
-  npm ci
+  npm ci --loglevel=error
   # Reset C build flags from makepkg.conf that break vendored cmake builds
   # (e.g. -Werror=format-security, -D_FORTIFY_SOURCE=3)
   # Rust compilation is unaffected — it uses RUSTFLAGS, not CFLAGS
