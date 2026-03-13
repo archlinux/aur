@@ -1,8 +1,8 @@
 # Maintainer: Nathan Chere <aur@nathanchere.com.au>
 pkgname=grayjay-git
-_appname=Grayjay
+_appname=grayjay
 pkgver=11.r8.g0dc9daa
-pkgrel=3
+pkgrel=4
 pkgdesc="Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)"
 arch=('x86_64')
 url="https://grayjay.app/desktop/"
@@ -16,8 +16,8 @@ _futo_gitlab_base="https://gitlab.futo.org/videostreaming"
 _futo_github_base="https://github.com/futo-org"
 host="${_futo_gitlab_base}"
 license=('custom:Source-First-License-1.1')
-depends=('ffmpeg' 'libsodium')
-makedepends=('dotnet-sdk>=9' 'git' 'git-lfs' 'npm' 'libappindicator-gtk3')
+depends=('ffmpeg' 'libsodium' 'libappindicator-gtk3')
+makedepends=('dotnet-sdk>=9' 'git' 'git-lfs' 'npm')
 source=("${_appname}::git+${host}/Grayjay.Desktop.git"
         "grayjay.desktop"
         "grayjay.sh"
@@ -96,8 +96,8 @@ package() {
     rm -v "${_appdir}/libsodium.so" || true
     find "${_appdir}" -type f -name '*.so' -o -name '*.so.*' -o -name 'dotcefnative' -exec chmod a+x "{}" \;
 
-    install -Dm755 "${srcdir}/grayjay.sh" "${pkgdir}/usr/bin/grayjay"
+    install -Dm755 "${srcdir}/grayjay.sh" "${pkgdir}/usr/bin/${_appname}"
     install -Dm644 "${srcdir}/grayjay.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
-    install -Dm644 "${srcdir}/${_appname}/Grayjay.Desktop.CEF/grayjay.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/grayjay.png"
+    install -Dm644 "${srcdir}/${_appname}/Grayjay.Desktop.CEF/grayjay.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_appname}.png"
     install -Dm644 "${srcdir}/${_appname}/LICENSE.md" "${pkgdir}/usr/share/licenses/${_appname}/LICENSE"
 }
