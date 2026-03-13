@@ -199,11 +199,11 @@ _package-headers() {
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
-  # echo "Installing Rust files..."
-  # if [[ $(scripts/config -s CONFIG_RUST) = y ]]; then
-  # install -Dt "$builddir/rust" -m644 rust/*.rmeta
-  # install -Dt "$builddir/rust" rust/*.so
-  # fi
+  echo "Installing Rust files..."
+  if [[ $(scripts/config -s CONFIG_RUST) = y ]]; then
+    install -Dt "$builddir/rust" -m644 rust/*.rmeta
+    install -Dt "$builddir/rust" rust/*.so
+  fi
 
   echo "Installing unstripped VDSO..."
   make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
