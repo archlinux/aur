@@ -1,7 +1,7 @@
 pkgbase = python-cynthion
 	pkgdesc = Python package and utilities for the Great Scott Gadgets Cynthion USB Test Instrument
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/greatscottgadgets/cynthion
 	arch = any
 	license = BSD-3-Clause
@@ -16,10 +16,11 @@ pkgbase = python-cynthion
 	makedepends = python-wheel
 	depends = cynthion-firmware=0.2.4
 	depends = python
-	depends = python-amaranth>=0.5
-	depends = python-apollo
-	depends = python-luna-usb>=0.2
-	depends = python-luna-soc>=0.3
+	depends = python-amaranth>=0.5.8
+	depends = python-amaranth<0.6
+	depends = python-apollo-fpga
+	depends = python-luna-usb
+	depends = python-luna-soc
 	depends = python-pyfwup
 	depends = python-pygreat
 	depends = python-pyusb
