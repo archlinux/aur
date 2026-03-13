@@ -11,7 +11,7 @@
 # ─────────────────────────────────────────────────────────────────────────────
 
 pkgname=steam-grunge-editor
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Grunge-style Steam artwork editor — create distressed covers, heroes, logos and icons for your Steam library"
 arch=('any')
@@ -28,7 +28,7 @@ optdepends=(
     'steam: sync artwork directly to Steam'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Huzzama/Steam-Grunge/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ac61cc2a7c82e47f2e3a075b4c781751e83a71a9c4d85149ebe723de47c8e5b8 ')   # replace with actual sha256 after tagging a release
+sha256sums=('a1919daeed890f14b2fa3425d9cfaaa058710334a34b5689468c67498a76f415  v2.0.0.tar.gz')
 
 prepare() {
     cd "Steam-Grunge-${pkgver}"
