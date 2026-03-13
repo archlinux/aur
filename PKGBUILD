@@ -2,7 +2,7 @@
 
 pkgname=pngphoon
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Create monochromatic image displaying the current phase of the moon"
 arch=('x86_64')
 url="https://git.h8u.de/svolli/pngphoon"
@@ -11,7 +11,7 @@ depends=('glibc' 'libpng')
 source=("$url/archive/release_$pkgver.tar.gz" 
         "Fix-incorrect-pointer-and-change-to-time_t.patch"
         "Fix-FTBFS-using-GCC-15.patch")
-sha256sums=('dca51d3f21a2817bd24b79be652a3a4d3b7533c5dc11ffd1805787eaa789912f'
+sha256sums=('9fd6259cfe8b045014bd18432e2033900867c6d614c5d6eff430cd8150337285'
             '20d693fa2da31cc8994305693870ea4f27cb8f36800e32487619b965fb53c7d6'
             '467f3f9324fddcea8734f824d71f32df2bf2290e511790e0f46796b4df315d5a')
 
