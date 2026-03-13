@@ -1,6 +1,6 @@
 pkgbase = proton-vpn-qt-app
 	pkgdesc = A Qt GUI frontend for the ProtonVPN CLI
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://github.com/wheat32/proton-vpn-qt-app
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = proton-vpn-qt-app
 	optdepends = networkmanager: display active server name
 	optdepends = curl: display public IP address
 	optdepends = systemd: have the app auto-start
-	source = git+https://github.com/wheat32/proton-vpn-qt-app.git#tag=v1.3.0
+	source = git+https://github.com/wheat32/proton-vpn-qt-app.git#tag=v1.3.1
 	source = proton-vpn-qt-app.desktop
 	source = proton-vpn-sign.svg
 	sha256sums = SKIP

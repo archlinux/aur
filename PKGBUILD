@@ -1,5 +1,5 @@
 pkgname=proton-vpn-qt-app
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A Qt GUI frontend for the ProtonVPN CLI"
 arch=('x86_64')
