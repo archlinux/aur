@@ -1,13 +1,13 @@
 pkgbase = claude-desktop-bin
 	pkgdesc = Claude Desktop - Linux (unofficial, from official binary)
-	pkgver = 1.1.6041
-	pkgrel = 2
+	pkgver = 1.1.6452
+	pkgrel = 1
 	url = https://github.com/patrickjaja/claude-desktop-bin
 	arch = x86_64
 	license = custom:Claude
 	depends = electron
 	depends = nodejs
-	source_x86_64 = claude-desktop-1.1.6041-2-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.6041-2/claude-desktop-1.1.6041-linux.tar.gz
-	sha256sums_x86_64 = 4ee93974e16409431adab2f487985f2db37c344d5f954faecfeeb1b21a255a24
+	source_x86_64 = claude-desktop-1.1.6452-1-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.6452/claude-desktop-1.1.6452-linux.tar.gz
+	sha256sums_x86_64 = 82ba4b6b8d33c563f74eb70b4816dbe10c8f0bd2436411d49d882c8fe5cff5a5
 
 pkgname = claude-desktop-bin
