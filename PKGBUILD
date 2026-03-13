@@ -1,7 +1,7 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=fantascene-dynamic-wallpaper
-pkgver=2.0.5
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="dynamic wallpaper. A very nice animated wallpaper on X11 systems.Support Movie and Web animated wallpaper."
 arch=($CARCH)
@@ -9,35 +9,43 @@ url="https://github.com/dependon/fantascene-dynamic-wallpaper"
 license=('GPL-3.0-only')
 provides=(${pkgname})
 conflicts=(${pkgname} ${pkgname}-git)
+_qt=qt6
 depends=(
-    gcc-libs
     glib2
     glibc
+    libstdc++
+    libgcc
+    libglvnd
     libx11
     libxcb
     libxext
     xcb-util-wm
     mpv
-    qt5-charts
-    qt5-base
-    qt5-multimedia
-    qt5-webengine
+    ${_qt}-charts
+    ${_qt}-base
+    ${_qt}-multimedia
 )
 makedepends=(
+    git
+    ${_qt}-tools
+    ${_qt}-webengine
     pkgconfig
-    qt5-tools
     make
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('3b4fd7ed4c47dbbeeff6b2f16d3bd853d189bc802d1bc655122854be77701f3e')
+source=("${pkgname}::git+${url}.git#tag=${pkgver}")
+sha256sums=('24aaa147cf9d2ab3e43c97565b9aad8804affa0fe4113bf786d59d4770ba19f8')
+
+prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
+}
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    qmake ./${pkgname}.pro -spec linux-g++ CONFIG+=qtquickcompiler -o build/
+    cd "${srcdir}/${pkgname}"
+    qmake6 ./${pkgname}.pro -spec linux-g++ CONFIG+=qtquickcompiler -o build/
     make -C ./build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     make INSTALL_ROOT="$pkgdir" -C ./build install
 }
