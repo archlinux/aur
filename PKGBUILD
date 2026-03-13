@@ -5,7 +5,7 @@
 pkgname=lemonade-server-git
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)"
 epoch=1
-pkgver=r759.f537445e
+pkgver=r763.0b4e77cd
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
@@ -16,7 +16,7 @@ provides=('lemonade-server')
 conflicts=('lemonade-server')
 backup=('etc/lemonade/lemonade.conf' 'etc/lemonade/secrets.conf')
 
-_commit=f537445ec147bf60f8a88d6a512bea2b4571756d
+_commit=0b4e77cdd5f9bcce8ab81db85c7b596b7ed70638
 _httplibver=0.34.0
 _ixwebsocketver=11.4.6
 
@@ -29,7 +29,7 @@ source=(
 )
 
 sha256sums=(
-  '149e1da6bd6d61f1d467fae443ccf07cf12c3c42c8ccb1de3e02bb2f489b0ad5'
+  '5fd8d2d7195affec97cf361fa787f56cf96118faa5f804b41a602573c74ee4f1'
   'cb8e41c4b270f4fc520df71097089b71896c652927d61a94a11cd59689a0515b'
   'c024334f8e45980836c67008979a884d6dcc5ef067dd2eb1fa7241f4c17ddc32'
   '069d5612d570e83128d7eed7ffe4525943d75d22b9c84537d861833157e74b26'
