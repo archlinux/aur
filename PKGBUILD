@@ -5,7 +5,7 @@
 
 pkgname=aurivo-bin
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Aurivo Media Player (prebuilt AppImage)"
 arch=('x86_64')
 url="https://aurivo.app"
@@ -13,6 +13,7 @@ license=('MIT')
 depends=('fuse2' 'glibc' 'zlib')
 provides=('aurivo')
 conflicts=('aurivo')
+options=(!strip !debug)
 
 _owner="muhammed-aurivo-dev"
 _repo="Aurivo-Medya-Player-Linux"
