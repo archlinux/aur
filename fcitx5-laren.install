@@ -89,10 +89,12 @@ _activate_kde() {
     _user="$1"
     _dbus="$2"
 
-    # Toggle KWin virtual keyboard to restart Fcitx5 (preserves Wayland IM connection)
-    su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled false" 2>/dev/null
-    sleep 1
-    su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /VirtualKeyboard org.kde.kwin.VirtualKeyboard.enabled true" 2>/dev/null
+    # Restart Fcitx5 so it reloads the updated laren.so
+    su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.fcitx.Fcitx5 /controller org.fcitx.Fcitx.Controller1.Restart" 2>/dev/null
+    sleep 2
+
+    # Tell KWin to reconfigure so it reconnects to the restarted Fcitx5
+    su - "$_user" -c "DBUS_SESSION_BUS_ADDRESS=$_dbus qdbus6 org.kde.KWin /KWin reconfigure" 2>/dev/null
     return 0
 }
 
