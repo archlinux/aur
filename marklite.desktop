@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=MarkLite
-GenericName=MarkLite
+GenericName=Markdown Editor
 Comment=A lightweight Markdown viewer and editor
 Exec=marklite %U
 Icon=marklite
