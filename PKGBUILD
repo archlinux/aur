@@ -36,7 +36,7 @@ package() {
 
   install -Dm755 "target/release/lattice" "$pkgdir/usr/bin/lattice"
   install -Dm755 "target/release/lattice-daemon" "$pkgdir/usr/bin/lattice-daemon"
-  install -Dm755 "packaging/shared/restart-daemon-if-active.sh" \
+  install -Dm755 "$startdir/restart-daemon-if-active.sh" \
     "$pkgdir/usr/lib/lattice/restart-daemon-if-active.sh"
   install -Dm644 "$startdir/lattice-daemon.service" \
     "$pkgdir/usr/lib/systemd/user/lattice-daemon.service"

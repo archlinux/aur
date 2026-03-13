@@ -3,6 +3,7 @@ pkgbase = lattice-net-git
 	pkgver = 0.1.0.r0.g0000000
 	pkgrel = 2
 	url = https://github.com/fordz0/lattice
+	install = lattice-net-git.install
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
@@ -15,7 +16,6 @@ pkgbase = lattice-net-git
 	conflicts = lattice-net-bin
 	options = !lto
 	options = !debug
-	install = lattice-net-git.install
 	source = git+https://github.com/fordz0/lattice.git
 	sha256sums = SKIP
 
