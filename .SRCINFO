@@ -1,6 +1,6 @@
 pkgbase = ionix-shell
 	pkgdesc = GTK overlay shell for Hyprland — SSH, VPN, Docker, command palette, and automation panels
-	pkgver = 1.0.5
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://github.com/LucasionGS/ionix-shell-ags
 	arch = x86_64
