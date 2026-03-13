@@ -1,50 +1,64 @@
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
 
-pkgname='perl-unix-statgrab'
-pkgver='0.04'
-pkgrel='2'
-pkgdesc="Perl extension for collecting information about the machine"
-arch=('i686' 'x86_64')
-license=('PerlArtistic' 'GPL')
+_author=REHSACK
+_dist=Unix-Statgrab
+_ver=0.112
+pkgname=perl-${_dist@L}
+pkgver=${_ver#v}
+pkgrel=1
+pkgdesc='Perl extension for collecting information about the machine'
+arch=('x86_64')
+url=https://metacpan.org/release/$_author/$_dist-$_ver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later OR LGPL-2.1-or-later')
+depends=(
+    'libstatgrab>=0.90'
+    'perl'
+    'perl-carp'
+    'perl-file-path>=2.00'
+    'perl-pathtools'
+)
+makedepends=(
+    'perl-capture-tiny>=0.06'
+    'perl-config-autoconf>=0.317'
+    'perl-extutils-cbuilder>=0.27'
+    'perl-extutils-constant>=0.21'
+    'perl-extutils-makemaker'
+    'perl-parent'
+    'perl-pathtools'
+    'perl-text-parsewords'
+)
+checkdepends=('perl-test-simple')
+optdepends=('perl-test-leaktrace')
 options=('!emptydirs')
-depends=('libstatgrab>=0.17' 'perl')
-makedepends=()
-url='http://search.cpan.org/dist/Unix-Statgrab'
-source=('http://search.cpan.org/CPAN/authors/id/V/VP/VPARSEVAL/Unix-Statgrab-0.04.tar.gz')
-md5sums=('94787010e27183ce5cf354c58c465d0d')
-sha512sums=('8e02f1424b8657568a310766630f8a2ea94c0abef4d6ebf84d4e605e21e685797bc44823ccde81b46bb97681b95b3dd6fff805035aba7a571cb136b216aa42a6')
-_distdir="Unix-Statgrab-0.04"
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$_ver.tar.gz")
+sha256sums=('16a29f7acaeec081bf0e7303ba5ee24fda1d21a1104669b837745f3ea61d6afa')
 
-build() {
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
-      PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
-      MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$_ver"
 
-    cd "$srcdir/$_distdir"
-    /usr/bin/perl Makefile.PL
+    unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1
+
+    /usr/bin/perl Makefile.PL NO_PACKLIST=1 NO_PERLLOCAL=1
     make
-  )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+check()
+{
+    cd "$_dist-$_ver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
     make test
-  )
 }
 
-package() {
-  cd "$srcdir/$_distdir"
-  make install
+package()
+{
+    cd "$_dist-$_ver"
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    make install INSTALLDIRS=vendor DESTDIR="$pkgdir"
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:

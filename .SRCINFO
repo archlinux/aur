@@ -1,18 +1,27 @@
 pkgbase = perl-unix-statgrab
 	pkgdesc = Perl extension for collecting information about the machine
-	pkgver = 0.04
-	pkgrel = 2
-	url = http://search.cpan.org/dist/Unix-Statgrab
-	arch = i686
+	pkgver = 0.112
+	pkgrel = 1
+	url = https://metacpan.org/release/REHSACK/Unix-Statgrab-0.112
 	arch = x86_64
-	license = PerlArtistic
-	license = GPL
-	depends = libstatgrab>=0.17
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later OR LGPL-2.1-or-later
+	checkdepends = perl-test-simple
+	makedepends = perl-capture-tiny>=0.06
+	makedepends = perl-config-autoconf>=0.317
+	makedepends = perl-extutils-cbuilder>=0.27
+	makedepends = perl-extutils-constant>=0.21
+	makedepends = perl-extutils-makemaker
+	makedepends = perl-parent
+	makedepends = perl-pathtools
+	makedepends = perl-text-parsewords
+	depends = libstatgrab>=0.90
 	depends = perl
+	depends = perl-carp
+	depends = perl-file-path>=2.00
+	depends = perl-pathtools
+	optdepends = perl-test-leaktrace
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/V/VP/VPARSEVAL/Unix-Statgrab-0.04.tar.gz
-	md5sums = 94787010e27183ce5cf354c58c465d0d
-	sha512sums = 8e02f1424b8657568a310766630f8a2ea94c0abef4d6ebf84d4e605e21e685797bc44823ccde81b46bb97681b95b3dd6fff805035aba7a571cb136b216aa42a6
+	source = https://cpan.metacpan.org/authors/id/R/RE/REHSACK/Unix-Statgrab-0.112.tar.gz
+	sha256sums = 16a29f7acaeec081bf0e7303ba5ee24fda1d21a1104669b837745f3ea61d6afa
 
 pkgname = perl-unix-statgrab
-
