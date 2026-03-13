@@ -1,6 +1,6 @@
 pkgbase = snazzgit-bin
 	pkgdesc = A snazzy cross-platform Git GUI client
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/tr0llslay3r/SnazzGit
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = snazzgit-bin
 	provides = snazzgit
 	conflicts = snazzgit
 	conflicts = snazzgit-git
-	source = https://github.com/tr0llslay3r/SnazzGit/releases/download/v0.3.0/snazzgit_0.3.0_amd64.deb
+	source = https://github.com/tr0llslay3r/SnazzGit/releases/download/v0.3.1/snazzgit_0.3.1_amd64.deb
 	sha256sums = SKIP
 
 pkgname = snazzgit-bin
