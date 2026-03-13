@@ -2,7 +2,7 @@
 
 pkgname=libefex-git
 pkgver=r89.83819c6
-pkgrel=1
+pkgrel=2
 pkgdesc="library and cli for embedded firmware exchange protocol, support fel and fes protocol"
 arch=($CARCH)
 url="https://github.com/YuzukiTsuru/libefex"
@@ -12,6 +12,7 @@ conflicts=(${pkgname%-git})
 depends=(
     glibc
     libusb
+    systemd-libs
 )
 makedepends=(
     #clang
@@ -56,6 +57,7 @@ build() {
         -DCMAKE_BUILD_TYPE=None \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DLIBEFEX_USE_SHARED_LIBUSB=ON \
+        -DBUILD_SHARED_LIBS=ON \
         -Wno-dev \
         -B build
 
