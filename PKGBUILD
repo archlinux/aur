@@ -1,6 +1,6 @@
 # Maintainer: noahra
 pkgname=diz-bin
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="Share SSH public keys between machines via a compact passphrase"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 provides=('diz')
 conflicts=('diz')
 source_x86_64=("${url}/releases/download/v${pkgver}/diz-linux-x64")
-sha256sums_x86_64=('643f84ea1eaf7a535e83c6736fc14790682165d055c15b2a39602fb4bd10c952')
+sha256sums_x86_64=('b7571965743a30be06b9fb229040794f841fe84b94b594c79f2906870e20a28f')
 
 package() {
     install -Dm755 "${srcdir}/diz-linux-x64" "${pkgdir}/usr/bin/diz"

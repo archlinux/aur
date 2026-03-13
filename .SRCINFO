@@ -1,6 +1,6 @@
 pkgbase = diz-bin
 	pkgdesc = Share SSH public keys between machines via a compact passphrase
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://github.com/noahra/diz
 	arch = x86_64
@@ -9,5 +9,5 @@ pkgbase = diz-bin
 	conflicts = diz
 
 pkgname = diz-bin
-	source_x86_64 = https://github.com/noahra/diz/releases/download/v0.2.5/diz-linux-x64
-	sha256sums_x86_64 = 643f84ea1eaf7a535e83c6736fc14790682165d055c15b2a39602fb4bd10c952
+	source_x86_64 = https://github.com/noahra/diz/releases/download/v0.2.6/diz-linux-x64
+	sha256sums_x86_64 = b7571965743a30be06b9fb229040794f841fe84b94b594c79f2906870e20a28f
