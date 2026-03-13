@@ -1,0 +1,22 @@
+pkgbase = subtui-bin
+	pkgdesc = Lightweight TUI music player for Subsonic-compatible servers
+	pkgver = 2.11.1
+	pkgrel = 1
+	url = https://github.com/MattiaPun/SubTUI
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = mpv
+	provides = subtui
+	conflicts = subtui
+	conflicts = subtui-git
+	source_x86_64 = SubTUI_2.11.1_linux_amd64.deb::https://github.com/MattiaPun/SubTUI/releases/download/v2.11.1/SubTUI_2.11.1_linux_amd64.deb
+	source_x86_64 = LICENSE-2.11.1::https://raw.githubusercontent.com/MattiaPun/SubTUI/v2.11.1/LICENSE
+	sha256sums_x86_64 = 8ab85f0e8ad2067390738a0e920957b942b421e32cd3b1582263abc5060113ea
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = SubTUI_2.11.1_linux_arm64.deb::https://github.com/MattiaPun/SubTUI/releases/download/v2.11.1/SubTUI_2.11.1_linux_arm64.deb
+	source_aarch64 = LICENSE-2.11.1::https://raw.githubusercontent.com/MattiaPun/SubTUI/v2.11.1/LICENSE
+	sha256sums_aarch64 = 1f1f61ac5f5ac91bfd5cf1edf5ade5b9d0cc9ec41dfa60fe0f394416577af22c
+	sha256sums_aarch64 = SKIP
+
+pkgname = subtui-bin
