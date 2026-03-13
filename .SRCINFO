@@ -1,12 +1,13 @@
 pkgbase = ma35d1-nuwriter-git
 	pkgdesc = MA35D1 NuWriter
-	pkgver = 1.01.r0.g67de851
-	pkgrel = 1
+	pkgver = 1.08.r4.g6a3051a
+	pkgrel = 2
 	url = https://gitee.com/OpenNuvoton/MA35D1_NuWriter
 	install = ma35d1-nuwriter-git.install
 	arch = x86_64
-	license = GPL3-Only
+	license = GPL-3.0-only
 	makedepends = git
+	depends = sh
 	depends = python-pyusb
 	depends = python
 	depends = python-crcmod

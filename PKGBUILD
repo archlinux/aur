@@ -1,15 +1,20 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ma35d1-nuwriter-git
-pkgver=1.01.r0.g67de851
-pkgrel=1
+pkgver=1.08.r4.g6a3051a
+pkgrel=2
 epoch=
 pkgdesc="MA35D1 NuWriter"
 arch=($CARCH)
 url="https://gitee.com/OpenNuvoton/MA35D1_NuWriter"
-license=('GPL3-Only')
+license=('GPL-3.0-only')
 groups=()
-depends=('python-pyusb' 'python' 'python-crcmod' 'python-pyqt5')
+depends=(
+    'sh'
+    'python-pyusb' 
+    'python' 
+    'python-crcmod' 
+    'python-pyqt5')
 makedepends=("git")
 checkdepends=()
 optdepends=()
