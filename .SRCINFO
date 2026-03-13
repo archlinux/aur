@@ -1,0 +1,18 @@
+pkgbase = munus
+	pkgdesc = Arch Linux için modern grafik arayüzlü paket yöneticisi (Pacman · AUR · Flatpak · AppImage)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/fatih-bucaklioglu/arch-store
+	arch = x86_64
+	license = GNU
+	makedepends = python
+	depends = python>=3.11
+	depends = python-pyqt6
+	depends = python-psutil
+	optdepends = yay: AUR desteği için
+	optdepends = paru: AUR desteği için (alternatif)
+	optdepends = flatpak: Flatpak paket desteği için
+	source = munus-1.0.0.tar.gz::https://github.com/fatih-bucaklioglu/arch-store/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = e449dc8b0b7d146c8603460f670c1a7ba4ab946339bc59f23059d3025a98e035
+
+pkgname = munus
