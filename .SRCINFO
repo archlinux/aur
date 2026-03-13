@@ -1,6 +1,6 @@
 pkgbase = gonavi-bin
 	pkgdesc = A Modern Lightweight Database Client built with Wails (Go) and React
-	pkgver = 0.5.6
+	pkgver = 0.5.7
 	pkgrel = 1
 	url = https://github.com/Syngnat/GoNavi
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = gonavi-bin
 	depends = webkit2gtk-4.1
 	provides = gonavi
 	conflicts = gonavi
-	source = https://github.com/Syngnat/GoNavi/releases/download/v0.5.6/GoNavi-0.5.6-Linux-Amd64-WebKit41.tar.gz
+	source = https://github.com/Syngnat/GoNavi/releases/download/v0.5.7/GoNavi-0.5.7-Linux-Amd64-WebKit41.tar.gz
 	source = gonavi.svg::https://cdn.jsdelivr.net/gh/Syngnat/GoNavi@dev/logo.svg
-	sha256sums = 3e7cd920aa3ce2267a474c3e20b0cdf0edfdf3b6bae9a40b205580475bc7658d
+	sha256sums = ee5045816cebccdb2d93ba94c6f5aafb6f2fc509c26cbac5c1f04ef69b317a8a
 	sha256sums = e3a90ddc5ebd2e43239206308f13452ea59c6bc89aa461a61c3c1d84d856d04d
 
 pkgname = gonavi-bin
