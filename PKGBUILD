@@ -2,7 +2,7 @@
 
 # Maintainer: fkzys
 pkgname=gitpkg
-pkgver=0.7.0
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Minimal package manager for git + make projects"
 arch=('any')
@@ -16,13 +16,14 @@ depends=(
     'gawk'
     'coreutils'
     'bubblewrap'
+    'verify-lib'
 )
 optdepends=(
     'bash-completion: bash tab completions'
     'zsh: zsh tab completions'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('6bb366164c4e88a0c2d80ce51a881423933b4f8e758ee8bc04763b383421c724')
+sha256sums=('40607b49f73c12dfab7ecf4b16706bf29d4b8ed877d2dbc0637da9bc83dcc598')
 
 package() {
     cd "${pkgname}-v${pkgver}"
