@@ -23,15 +23,15 @@ prepare() {
   cd lian-li-linux
   git submodule update --init --recursive
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  /usr/bin/cargo fetch --locked --target "$(/usr/bin/rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd lian-li-linux
   export CARGO_PROFILE_RELEASE_STRIP=symbols
-  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+  export SLINT_NO_QT=1
+  RUSTC=/usr/bin/rustc /usr/bin/cargo build --frozen --release
 }
 
 package() {
