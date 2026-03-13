@@ -1,4 +1,5 @@
-# Maintainer: swweetp <swweetp@outlook.com>
+# Maintainer: Afdsfaj <addart0845@outlook.com>
+# Contributor: swweetp <swweetp@outlook.com>
 # Contributor: Emanuele 'Lele aka eldios' Calo' <xeldiosx@gmail.com>
 # Contributor: Fabien Devaux <fdev31@gmail.com>
 
