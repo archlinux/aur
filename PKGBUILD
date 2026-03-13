@@ -9,6 +9,7 @@ url="https://pencil.dev"
 license=('custom')
 provides=('pencil-dev')
 conflicts=('pencil-dev')
+options=('!strip' '!debug')
 depends=('alsa-lib' 'at-spi2-core' 'cairo' 'dbus' 'expat' 'glib2' 'libcups' 'libdrm' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'mesa' 'nspr' 'nss' 'pango')
 source=("${pkgname}-${pkgver}.tar.gz::https://www.pencil.dev/download/Pencil-linux-x64.tar.gz"
         "pencil-dev.desktop")
