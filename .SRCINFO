@@ -1,6 +1,6 @@
 pkgbase = murmure
 	pkgdesc = Privacy-first and free Speech-to-Text
-	pkgver = 1.6.0
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://murmure.al1x-ai.com/
 	arch = x86_64
@@ -19,9 +19,9 @@ pkgbase = murmure
 	depends = webkit2gtk-4.1
 	depends = xdotool
 	provides = murmure
-	source = murmure-1.6.0.tar.gz::https://github.com/Kieirra/murmure/archive/refs/tags/1.6.0.tar.gz
+	source = murmure-1.7.0.tar.gz::https://github.com/Kieirra/murmure/archive/refs/tags/1.7.0.tar.gz
 	source = parakeet-tdt-0.6b-v3-int8.zip::https://github.com/Kieirra/murmure-model/releases/download/1.0.0/parakeet-tdt-0.6b-v3-int8.zip
-	sha512sums = 241a9c7ccecef8dec165c36cc5d506e4a2c35e4eb70f3413c8df24dc4ecf1ee316abc33fbb173ab49cc321dc0e5d22c6bf7260137a9678796a65793da3a42c4a
+	sha512sums = 406e859095543f8bf73885fc75d65f6b83013964879808102b788e38beaa3f3dcd76fd0ab3465bc342e8bda0366bfc726a026a8917fa0bb5b2754fa4466fba3c
 	sha512sums = 888f6ae3e8f4f985852d57072b32c45466e081389884827f4d7a3467bac9691cded67eb4e760f900d7aeb8dfcdc1932d6c3d20e0b0e3064e63f1f9ac9d7e5d0d
 
 pkgname = murmure
