@@ -1,7 +1,7 @@
 pkgbase = ydrive
 	pkgdesc = A Yazi-inspired TUI file manager for Google Drive
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/guilherme1628/ydrive
 	arch = x86_64
 	arch = aarch64
