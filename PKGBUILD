@@ -7,7 +7,7 @@ _dotnet_ver=9.0
 
 pkgname='vrcx-nightly-bin'
 pkgdesc='Friendship management tool for VRChat (extracted AppImage version)'
-_pkgver='2026-03-08T14.41-7ce3394'
+_pkgver='2026-03-14T13.24-6907cbb'
 pkgver=${_pkgver//-/.}
 pkgrel='1'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("https://github.com/Natsumi-sama/VRCX/releases/download/${_pkgver}/VRCX_
   "LICENSE-v$_pkgver::https://raw.githubusercontent.com/Natsumi-sama/VRCX/refs/tags/$_pkgver/LICENSE"
   'vrcx'
   'VRCX.desktop')
-sha256sums=('c37c1aa2b46ccd1d86c57e12c3214222ad1618b75356f6306866d9cd5b29c671'
+sha256sums=('3695913a4f3d5673ff480c749e74dd2ad45b1ec4511585a46bcf94c746f0565d'
   'e51564d05fd8f98bba289b476815150c78d3bf8f4acd248d78986e0061bb7427'
   'f7b1a299fe162337a9a3b066478b38a1cb524dae7a7e55669d3c6f02dc5f361b'
   '7582adf143859d66d1b75fd13f4d5be6041fb99bc949764f247ba8c3d790e76c')
