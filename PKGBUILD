@@ -4,14 +4,12 @@
 ## options
 : ${_build_arch_patch:=true}
 
-: ${_build_clang:=false}
-
 : ${_build_vfio:=true}
 : ${_build_lts:=true}
 
 : ${_build_level:=1}
 
-: ${_cksum:=4f21c01f4d04c1d1b3ed794153f8900802c92497be620b07c4869530f2d28ee3}
+: ${_cksum:=f4855f382c1b735c84072bdef36db5bcd5dc7b0c37e42f5104317149a0a486ef}
 
 unset _pkgtype
 [[ ${_build_vfio::1} == "t" ]] && _pkgtype+="-vfio"
@@ -23,7 +21,7 @@ unset _pkgtype
 _gitname="linux"
 _pkgname="$_gitname${_pkgtype:-}"
 pkgbase="$_pkgname"
-pkgver=6.18.16
+pkgver=6.18.18
 pkgrel=1
 pkgdesc='LTS Linux'
 url='https://www.kernel.org'
@@ -34,11 +32,13 @@ makedepends=(
   bc
   cpio
   gettext
-  git
   libelf
   pahole
   perl
   python
+  rust
+  rust-bindgen
+  rust-src
   tar
   xz
 
@@ -114,13 +114,6 @@ case "$CARCH" in
     ;;
 esac
 
-if [[ ${_build_clang::1} == "t" ]]; then
-  makedepends+=(clang llvm lld)
-
-  export LLVM=1
-  export LLVM_IAS=1
-fi
-
 if [[ ${_build_level::1} =~ ^[2-4]$ ]]; then
   export KCFLAGS="-march=x86-64-v${_build_level::1} -O3"
 fi
@@ -132,11 +125,6 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 _prepare_extra() {
   # remove extra version suffix
   sed -E 's&^(EXTRAVERSION =).*$&\1&' -i Makefile
-
-  if [[ ${_build_clang::1} == "t" ]]; then
-    scripts/config --disable LTO_CLANG_FULL
-    scripts/config --enable LTO_CLANG_THIN
-  fi
 }
 
 prepare() {
@@ -174,7 +162,7 @@ build() {
   cd $_srcname
   make all
   make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
-  #make htmldocs
+  #make htmldocs SPHINXOPTS=-QT
 }
 
 _package() {
@@ -217,6 +205,7 @@ _package() {
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel (ACS override and i915 VGA arbiter patches)"
   depends=(pahole)
+  provides=(LINUX-HEADERS)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(< version)/build"
@@ -256,6 +245,14 @@ _package-headers() {
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
+
+  echo "Installing Rust files..."
+  install -Dt "$builddir/rust" -m644 rust/*.rmeta
+  install -Dt "$builddir/rust" rust/*.so
+
+  echo "Installing unstripped VDSO..."
+  make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
+    link= # Suppress build-id symlinks
 
   echo "Removing unneeded architectures..."
   local arch
