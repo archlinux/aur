@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=AB Download Manager
+Comment=Manage and organize your download files better than before
+GenericName=Download Manager
+Exec=/opt/abdownloadmanager/bin/ABDownloadManager
+Icon=abdownloadmanager
+Terminal=false
+Type=Application
+Categories=Network;Utility;
+StartupWMClass=com-abdownloadmanager-desktop-AppKt

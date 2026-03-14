@@ -1,0 +1,26 @@
+pkgbase = ab-download-manager-wayland-git
+	pkgdesc = A Download Manager that speeds up your downloads (with Wayland fractional scaling fix)
+	pkgver = 1.8.7.r1.g48a6951
+	pkgrel = 1
+	url = https://abdownloadmanager.com
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = java-environment>=21
+	makedepends = gradle
+	depends = libxrender
+	depends = libxtst
+	depends = harfbuzz
+	depends = fontconfig
+	optdepends = libappindicator-gtk3: tray icon support
+	provides = ab-download-manager
+	conflicts = ab-download-manager
+	conflicts = ab-download-manager-bin
+	conflicts = ab-download-manager-git
+	conflicts = abdownloadmanager-bin
+	source = ab-download-manager::git+https://github.com/mmaher88/ab-download-manager.git#branch=fix/wayland-fractional-scaling
+	source = abdownloadmanager.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ab-download-manager-wayland-git
