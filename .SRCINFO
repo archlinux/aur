@@ -1,0 +1,16 @@
+pkgbase = gittop-tui-bin
+	pkgdesc = A beautiful terminal UI for visualizing Git repository statistics, inspired by htop/btop
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/hjr265/gittop
+	arch = x86_64
+	arch = aarch64
+	license = BSD-3-Clause
+	provides = gittop-tui
+	conflicts = gittop-tui
+	source_x86_64 = gittop-x86_64-0.1.0.tgz::https://github.com/hjr265/gittop/releases/download/v0.1.0/gittop_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = fcfad5f9590456714c1e65630d523a66d341773c14193fccc8b36de069ae2c2d
+	source_aarch64 = gittop-aarch64-0.1.0.tgz::https://github.com/hjr265/gittop/releases/download/v0.1.0/gittop_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 327b8b557882acfbb8e4d9b4d2d8e1cbcbc1e2c19ab5c233b3b4ac14964af5b9
+
+pkgname = gittop-tui-bin

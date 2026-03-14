@@ -1,0 +1,5 @@
+[gittop-tui-bin]
+source = "github"
+github = "hjr265/gittop"
+use_latest_release = true
+prefix = "v"
