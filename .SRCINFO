@@ -1,0 +1,24 @@
+pkgbase = wasi-compiler-rt21
+	pkgdesc = WASI LLVM compiler runtime (LLVM 21)
+	pkgver = 21.1.6
+	pkgrel = 1
+	url = https://compiler-rt.llvm.org/
+	arch = any
+	license = Apache-2.0 WITH LLVM-exception
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = llvm21
+	makedepends = clang21
+	makedepends = lld21
+	depends = wasi-libc
+	options = staticlibs
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.6/compiler-rt-21.1.6.src.tar.xz
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.6/cmake-21.1.6.src.tar.xz
+	source = WASI.cmake
+	source = wasi-sdk.cmake
+	b2sums = e2b4037f2b237b331ebb018a65e474eb06a6737cd703a3a76822842a00adf600cd11f1d8b5473038c2f237a8743a55b1e5c52575d3cbe8a4207068507cde17a7
+	b2sums = 98034c262f6b63d0c0feec5a2915e569fe251456108d3f263348914f1cf8f293e16207cd47dfbab9da319310b256989afc7068421080b316331b8b5b6d2165c5
+	b2sums = c829d807c257921fddb8c4d3752ad2291a2beb116d414dd31e34b7f6b01599d8c4807db87ef9930456ed8c9f30e8648e77028fa0b903c3a5ea840514f6022cf4
+	b2sums = 9f20eaa64069d20510a5ba6acdedfa4bbf723e1da13792bbbdfc57cc20d232962f5603a56c9723879624ab65e18f3770fda509dc76e3f099c3744acbfeabafc2
+
+pkgname = wasi-compiler-rt21
