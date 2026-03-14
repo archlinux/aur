@@ -35,7 +35,8 @@ build() {
     # compiling bundled SQLite and Ring assembly
     unset CFLAGS CXXFLAGS LDFLAGS
     npm install
-    npm run tauri build -- --bundles deb
+    npm run build
+    cd src-tauri && cargo build --release
 }
 
 package() {
