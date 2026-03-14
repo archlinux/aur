@@ -1,13 +1,12 @@
 pkgbase = kio-s3
-	pkgdesc = KIO worker for Amazon S3
-	pkgver = r359.8c62883
+	pkgdesc = KIO worker for Amazon S3 and compatible storage
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://invent.kde.org/network/kio-s3
 	arch = x86_64
 	license = BSD-3-Clause
 	license = CC0-1.0
 	license = GPL-2.0-or-later
-	makedepends = git
 	makedepends = extra-cmake-modules
 	makedepends = cmake
 	makedepends = kdoctools
@@ -16,7 +15,8 @@ pkgbase = kio-s3
 	depends = ki18n
 	depends = aws-sdk-cpp
 	depends = kirigami-addons
-	source = git+https://invent.kde.org/network/kio-s3.git
-	sha256sums = SKIP
+	conflicts = kio-s3-git
+	source = https://download.kde.org/stable/kio-s3/kio-s3-1.0.0.tar.xz
+	sha256sums = 1149f9a0677b2b626d716a369762542c831c0d6b512357f22d5a43ba3f325625
 
 pkgname = kio-s3
