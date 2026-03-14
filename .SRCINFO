@@ -1,6 +1,6 @@
 pkgbase = r-jaspdistributions
 	pkgdesc = Distributions Module for JASP
-	pkgver = 0.95.3
+	pkgver = 0.96.0
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspDistributions
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = r-jaspdistributions
 	depends = r-nortest
 	depends = r-sgt
 	depends = r-sn
-	source = jaspDistributions_0.95.3.tar.gz::https://github.com/jasp-stats/jaspDistributions/archive/refs/tags/v0.95.3.tar.gz
-	sha256sums = 786c07e0a2a4d4365f173cb1d9cd97ee4380f95ef9f6ce843d4b925db08782a4
+	source = jaspDistributions_0.96.0.tar.gz::https://github.com/jasp-stats/jaspDistributions/archive/refs/tags/v0.96.0.tar.gz
+	sha256sums = c6f44141adf62d62dd97b83f72061966b75df230271ec6d0f3a577926c7e9d21
 
 pkgname = r-jaspdistributions
