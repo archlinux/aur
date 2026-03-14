@@ -1,0 +1,15 @@
+pkgbase = s3sync
+	pkgdesc = Reliable, flexible, and fast synchronization tool for S3
+	pkgver = 1.56.1
+	pkgrel = 1
+	url = https://github.com/nidor1998/s3sync
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	source_x86_64 = s3sync-1.56.1-x86_64.tar.gz::https://github.com/nidor1998/s3sync/releases/download/v1.56.1/s3sync-1.56.1-linux-glibc2.28-x86_64.tar.gz
+	sha256sums_x86_64 = 6540376ab3566ad57b963c97274bd42381a66603f62b3e0c07c6504bddb4359d
+	source_aarch64 = s3sync-1.56.1-aarch64.tar.gz::https://github.com/nidor1998/s3sync/releases/download/v1.56.1/s3sync-1.56.1-linux-glibc2.28-aarch64.tar.gz
+	sha256sums_aarch64 = cb139d617070bc0ef693a9df882d0e52685189253bec35712beaa41508e639b5
+
+pkgname = s3sync
