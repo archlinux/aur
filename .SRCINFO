@@ -1,9 +1,11 @@
 pkgbase = dir2atr
+	pkgdesc = Create an ATARI disk image from a directory.
 	pkgver = 221009
-	pkgrel = 1
+	pkgrel = 2
+	url = https://www.horus.com/~hias/atari/#atarisio
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0
 	provides = dir2atr
 	conflicts = dir2atr
 	source = https://www.horus.com/~hias/atari/atarisio/atarisio-221009.tar.gz

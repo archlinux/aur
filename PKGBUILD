@@ -1,25 +1,25 @@
-# Maintainer: Thomas Scheller <amiga@amiga-dt-01>
+# Maintainer: Thomas Scheller <t.scheller@email.de>
 pkgname=dir2atr
 pkgver=221009
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc=""
+pkgdesc='Create an ATARI disk image from a directory.'
 arch=('i686' 'x86_64')
-url=""
-license=('GPL')
+url="https://www.horus.com/~hias/atari/#atarisio"
+license=('GPL-2.0')
 groups=()
 depends=()
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=("dir2atr")
-conflicts=("dir2atr")
+provides=('dir2atr')
+conflicts=('dir2atr')
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=(https://www.horus.com/~hias/atari/atarisio/atarisio-221009.tar.gz)
+source=('https://www.horus.com/~hias/atari/atarisio/atarisio-221009.tar.gz')
 sha256sums=('d3dfcc966b782fd5c23b46a0363648e7604670c0506b759553266f29a08f243c')
 
 
