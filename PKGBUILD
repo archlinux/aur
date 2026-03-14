@@ -1,26 +1,26 @@
 # Maintainer: Bjarne Øverli <bjarne@oever.li>
 pkgname=aether
-pkgver=2.20.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Omarchy theming application"
 arch=('any')
 url="https://github.com/bjarneo/aether"
 license=('MIT')
-depends=('gjs' 'gtk4' 'libadwaita' 'libsoup3' 'imagemagick' 'hyprshade' 'gtk4-layer-shell')
+depends=('gjs' 'gtk4' 'libadwaita' 'libsoup3' 'imagemagick' 'gtk4-layer-shell')
 optdepends=('omarchy: Theme application backend')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9f4918a0012dcbd68e3ecaf4bebc0123ef54b6635b20fe5c72e44dea84c3ba01')  # Replace with actual checksum after creating GitHub release
+sha256sums=('7c8f98f8a8326ed28ecd0867eb857680739bf224050c27806c590d9d8d1c3130') # Replace with actual checksum after creating GitHub release
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
 
-    # Install source files
-    install -dm755 "$pkgdir/usr/share/$pkgname"
-    cp -r src templates shaders "$pkgdir/usr/share/$pkgname/"
+  # Install source files
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp -r src templates "$pkgdir/usr/share/$pkgname/"
 
-    # Create launcher script
-    install -dm755 "$pkgdir/usr/bin"
-    cat > "$pkgdir/usr/bin/aether" << 'EOF'
+  # Create launcher script
+  install -dm755 "$pkgdir/usr/bin"
+  cat >"$pkgdir/usr/bin/aether" <<'EOF'
 #!/bin/bash
 cd /usr/share/aether || exit
 
@@ -30,14 +30,14 @@ export LD_PRELOAD=/usr/lib/libgtk4-layer-shell.so
 
 exec gjs -m src/main.js "$@"
 EOF
-    chmod 755 "$pkgdir/usr/bin/aether"
+  chmod 755 "$pkgdir/usr/bin/aether"
 
-    # Install desktop entry
-    install -Dm644 li.oever.aether.desktop "$pkgdir/usr/share/applications/li.oever.aether.desktop"
+  # Install desktop entry
+  install -Dm644 li.oever.aether.desktop "$pkgdir/usr/share/applications/li.oever.aether.desktop"
 
-    # Install icon
-    install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/aether.png"
+  # Install icon
+  install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/aether.png"
 
-    # Install license
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  # Install license
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
