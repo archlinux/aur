@@ -1,12 +1,11 @@
 # Maintainer: Brody <archfan at brodix dot de>
 
-_pyname=google_cloud_core
 pkgname=python-google-cloud-core
+_pkgname=python-${pkgname##*python-google-}
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Google Cloud API client core library'
-url=https://github.com/googleapis/python-cloud-core
-_phurl=https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}
+url=https://github.com/googleapis/${_pkgname}
 arch=(any)
 license=(Apache-2.0)
 depends=(
@@ -22,11 +21,11 @@ makedepends=(
 )
 optdepends=('python-grpcio: for grpc support')
 changelog=CHANGELOG.md
-source=(${pkgname}-${pkgver}.tar.gz::${_phurl}/${_pyname}-${pkgver}.tar.gz)
-b2sums=('f9588c4febd3c51cc71fa96827787fcc2a1990a306921debd119a891fcde74b2a1b45a4a5732cf11f50d14780f2d9344e42ac2b8f21260fe4b2c966161d6530e')
+source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz)
+b2sums=('15ea36bcf0c7a92bee3a1cb8696da51f3a45e2f3f393ef15defa4d5bc3e2c3dc616f13c76ba7ab2bb7876688ddf612f12f4870be830dbf96a025233990e77388')
 
 build() {
-  cd ${_pyname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
 
   python -m build \
     --wheel \
@@ -34,7 +33,7 @@ build() {
 }
 
 package() {
-  cd ${_pyname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
 
   python -m installer \
     --destdir="${pkgdir}" \
