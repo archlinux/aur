@@ -1,0 +1,13 @@
+pkgbase = xr-chaperone-git
+	pkgdesc = A VR Chaperone System for OpenXR
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/FrostyCoolSlug/xr-chaperone
+	arch = x86_64
+	license = MIT
+	source = xr-chaperone::git+https://github.com/FrostyCoolSlug/xr-chaperone.git
+	source = xr-chaperone.desktop
+	sha256sums = SKIP
+	sha256sums = 55a221929963410774e9428e51b869a95962fa34d9fb1d5b64528276505521d5
+
+pkgname = xr-chaperone-git

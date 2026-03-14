@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=XR Chaperone
+Comment=A VR Chaperone System for OpenXR
+Exec=xr-chaperone
+Icon=xr-chaperone
+Terminal=false
+Categories=Utility;X-WiVRn-VR;
+X-XR-Plugin=true
+X-XR-Plugin-Exec=xr-chaperone
