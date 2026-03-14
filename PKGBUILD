@@ -22,7 +22,7 @@ build() {
 	cd "${srcdir}"
 	cd "${_pkgname}-${pkgver}"
 
-	GRADLE_USER_HOME="${srcdir}/.gradle" gradle --no-daemon nativeCompile -Plibsignal_client_path="/usr/share/java/libsignal-client/libsignal-client.jar"
+	GRAALVM_HOME="/usr/lib/jvm/java-25-graalvm" GRADLE_USER_HOME="${srcdir}/.gradle" gradle --no-daemon nativeCompile -Plibsignal_client_path="/usr/share/java/libsignal-client/libsignal-client.jar"
 
 	cd man
 	sed -i 's/\[source\]/[source,bash/g' signal-cli-dbus.5.adoc
