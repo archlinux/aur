@@ -2,7 +2,7 @@
 pkgname=fedistar-bin
 _name="${pkgname%-bin}"
 
-pkgver=1.12.6
+pkgver=1.12.7
 pkgrel=1
 pkgdesc="Multi-column Fediverse client for desktop"
 arch=('x86_64')
@@ -10,10 +10,11 @@ url="https://github.com/h3poteto/fedistar"
 license=('GPL-3.0')
 depends=('webkit2gtk-4.1' 'openssl' 'appmenu-gtk-module' 'gtk3' 'libappindicator-gtk3' 'librsvg' 'libvips' 'libxml2-legacy')
 makedepends=('curl' 'wget' 'tar')
+optdepends=('xorg-xwayland: Required for Wayland environments')
 provides=("$_name")
 conflicts=("$_name")
 source=("https://github.com/h3poteto/fedistar/releases/download/v${pkgver}/${_name}_${pkgver}_amd64.deb")
-md5sums=('ec436ec67ab7bc8d3f3e032743966c26')
+md5sums=('466107fede8e90194310c0ab0b8c9add')
 
 prepare() {
     ar x "${_name}_${pkgver}_amd64.deb"
