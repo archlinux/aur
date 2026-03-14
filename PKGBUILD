@@ -1,8 +1,9 @@
-# Maintainer: Robin Broda <robin at broda dot me>
+# Maintainer: Andreas Baumann <mail at andreasbaumann dot cc>
+# Contributor: Robin Broda <robin at broda dot me>
 
 pkgname=hq
 pkgver=3.2
-pkgrel=2
+pkgrel=3
 pkgdesc='HTML processor inspired by jq'
 arch=('x86_64')
 url='https://github.com/coderobe/hq'

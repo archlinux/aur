@@ -1,7 +1,7 @@
 pkgbase = hq
 	pkgdesc = HTML processor inspired by jq
 	pkgver = 3.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/coderobe/hq
 	arch = x86_64
 	license = AGPL3
