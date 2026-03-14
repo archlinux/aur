@@ -1,8 +1,8 @@
 pkgbase = loom
 	pkgdesc = AI image generation desktop client for GNOME
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://forge.jacquin.app/charles/loom
+	url = https://forge.jacquin.app/cjacquin/loom
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -14,7 +14,7 @@ pkgbase = loom
 	depends = libadwaita
 	depends = gettext
 	depends = openssl
-	source = loom-1.0.0.tar.gz::https://forge.jacquin.app/charles/loom/archive/v1.0.0.tar.gz
-	sha256sums = 730325d00f3449e4792017e12ce1163a3287a9b1fe68d12374149aa2efb9aee1
+	source = loom-1.1.0.tar.gz::https://forge.jacquin.app/cjacquin/loom/archive/v1.1.0.tar.gz
+	sha256sums = 9ee3acf3139db375f79f1ce19f97386ba017a4ed24f3bb6be9b90dc5a2c10bb4
 
 pkgname = loom
