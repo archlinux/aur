@@ -1,13 +1,13 @@
 pkgbase = workfort
-	pkgdesc = Scope — WorkFort team collaboration CLI
-	pkgver = 0.0.0
+	pkgdesc = WorkFort web and TUI frontend
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/Work-Fort/Scope
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-or-later
+	license = Apache-2.0
 	makedepends = go
-	source = https://github.com/Work-Fort/Scope/archive/refs/tags/v0.0.0.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/Work-Fort/Scope/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = b767b7bc1af5910eafe089ebbc0517f992595136c1a0714eaad71cf49cea2593
 
 pkgname = workfort
