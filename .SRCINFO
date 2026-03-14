@@ -1,6 +1,6 @@
 pkgbase = tuxtuner
 	pkgdesc = System performance control for Linux - CPU threads, GPU modes, and display refresh rates
-	pkgver = 2.2.0
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/Xavrir/tuxtuner
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tuxtuner
 	depends = polkit
 	optdepends = hyprland: For display refresh rate control
 	optdepends = supergfxctl: For GPU mode switching on ASUS laptops
-	source = tuxtuner-2.2.0.tar.gz::https://github.com/Xavrir/tuxtuner/archive/v2.2.0.tar.gz
-	sha256sums = 3b7af914a91f72aab529f20dd77c46d497619dcc5bf9a452fd1f99a7f6f04ef1
+	source = tuxtuner-2.2.1.tar.gz::https://github.com/Xavrir/tuxtuner/archive/v2.2.1.tar.gz
+	sha256sums = 8c8a5ee1728d44b9d9b121bb2ae77862c0067a37ffa639c7292e6c6b3a8f1fd3
 
 pkgname = tuxtuner

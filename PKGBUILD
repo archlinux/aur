@@ -1,6 +1,6 @@
 # Maintainer: Xavrir <xavrir@github.com>
 pkgname=tuxtuner
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="System performance control for Linux - CPU threads, GPU modes, and display refresh rates"
 arch=('x86_64')
@@ -22,7 +22,7 @@ makedepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Xavrir/$pkgname/archive/v$pkgver.tar.gz"
 )
-sha256sums=('3b7af914a91f72aab529f20dd77c46d497619dcc5bf9a452fd1f99a7f6f04ef1')
+sha256sums=('8c8a5ee1728d44b9d9b121bb2ae77862c0067a37ffa639c7292e6c6b3a8f1fd3')
 
 build() {
     cd "$pkgname-$pkgver/rust"
