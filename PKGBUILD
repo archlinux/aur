@@ -6,13 +6,13 @@
 
 pkgname=ratpoison
 pkgver=1.4.9
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple keystroke-driven window manager"
 arch=('x86_64')
-license=('GPL')
+license=('GPL-2.0-or-later')
 depends=('libxinerama' 'readline' 'bash' 'perl' 'libxtst' 'libxft' 'texinfo' 'libxrandr' 'ttf-font')
 url="https://www.nongnu.org/ratpoison/"
-source=("https://savannah.nongnu.org/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.sig}
+source=("https://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.sig}
         "${pkgname}.desktop")
 md5sums=('912b01564d24734e1a68d36e2d85faa4'
          'SKIP'
