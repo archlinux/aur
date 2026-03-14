@@ -1,10 +1,10 @@
 diff --unified --recursive --text a/Cargo.toml b/Cargo.toml
---- a/Cargo.toml	2026-01-20 13:38:51.731933630 -0700
-+++ b/Cargo.toml	2026-01-20 13:41:26.529798747 -0700
-@@ -52,3 +52,6 @@
- # libcosmic = { path = "../../cosmic/libcosmic" }
- # cosmic-config = { path = "../../cosmic/libcosmic/cosmic-config" }
- # cosmic-theme = { path = "../../cosmic/libcosmic/cosmic-theme" }
+--- a/Cargo.toml	2026-03-14 13:16:22.287281968 -0600
++++ b/Cargo.toml	2026-03-14 13:17:11.477912943 -0600
+@@ -56,3 +56,6 @@
+ # libcosmic = { path = "../libcosmic" }
+ # cosmic-config = { path = "../libcosmic/cosmic-config" }
+ # cosmic-theme = { path = "../libcosmic/cosmic-theme" }
 +
 +[profile.release]
 +lto = "thin"
