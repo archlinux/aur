@@ -1,0 +1,16 @@
+pkgbase = zq-bin
+	pkgdesc = A drop-in replacement for jq, 25x faster, written in Zig
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Enriquefft/zq
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = zq
+	conflicts = zq
+	source_x86_64 = https://github.com/Enriquefft/zq/releases/download/v0.1.0/zq-0.1.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = PLACEHOLDER
+	source_aarch64 = https://github.com/Enriquefft/zq/releases/download/v0.1.0/zq-0.1.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = PLACEHOLDER
+
+pkgname = zq-bin
