@@ -121,7 +121,7 @@ pkgbase = plasma-workspace-povd
 	sha256sums = 26302234542ae2c8286727895997c8e22652e90e92febb60e3ce975194e0cacd
 	sha256sums = SKIP
 	sha256sums = 40d0aa1d4691ae8f59772d9014bd6f8650f9f18c74cbffdc50e7ec2e02313412
-	sha256sums = 3bf3ee57b2ba3be457a4a420bb1962eed062078ebf5c7a734e177d93f6a197f0
+	sha256sums = fc27ea08b72682c1904dc9dc37a28f8358f9dd32e982dd7abd204d5cfff9d1a6
 
 pkgname = plasma-workspace-povd
 	depends = accountsservice

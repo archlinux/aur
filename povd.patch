@@ -69,7 +69,7 @@ index 2e204d6cea..62ffee88d8 100644
          const QVariantList &desktopIds = m_virtualDesktopInfo->desktopIds();
          const QStringList &desktopNames = m_virtualDesktopInfo->desktopNames();
 diff --git a/libtaskmanager/taskfilterproxymodel.cpp b/libtaskmanager/taskfilterproxymodel.cpp
-index 8430fc33fe..b3b89b8ff1 100644
+index 8430fc33fe..52ab9fd2d2 100644
 --- a/libtaskmanager/taskfilterproxymodel.cpp
 +++ b/libtaskmanager/taskfilterproxymodel.cpp
 @@ -6,14 +6,16 @@
@@ -181,7 +181,7 @@ index 8430fc33fe..b3b89b8ff1 100644
 +            const QRect &screenGeometry = sourceIdx.data(AbstractTasksModel::ScreenGeometry).toRect();
 +
 +            if (!virtualDesktops.isEmpty() && virtualDesktopInfo != nullptr && screenGeometry.isValid()) {
-+                for (QScreen *screen : qGuiApp->screens()) {
++                for (auto screen : qGuiApp->screens()) {
 +                    if (screen->geometry() != screenGeometry) {
 +                        continue;
 +                    }
@@ -411,7 +411,7 @@ index e933b3da03..b8e8709be5 100644
      void filterByActivityChanged() const;
      void filterByRegionChanged();
 diff --git a/libtaskmanager/virtualdesktopinfo.cpp b/libtaskmanager/virtualdesktopinfo.cpp
-index 60c5f5a8ae..871ef3b329 100644
+index 60c5f5a8ae..1652621f1d 100644
 --- a/libtaskmanager/virtualdesktopinfo.cpp
 +++ b/libtaskmanager/virtualdesktopinfo.cpp
 @@ -18,6 +18,7 @@
@@ -422,7 +422,7 @@ index 60c5f5a8ae..871ef3b329 100644
  #include <QWaylandClientExtension>
  #include <algorithm>
  
-@@ -53,6 +54,7 @@ public:
+@@ -53,17 +54,20 @@ public:
  
      virtual void init() = 0;
      virtual QVariant currentDesktop() const = 0;
@@ -430,7 +430,12 @@ index 60c5f5a8ae..871ef3b329 100644
      virtual int numberOfDesktops() const = 0;
      virtual QVariantList desktopIds() const = 0;
      virtual QStringList desktopNames() const = 0;
-@@ -64,6 +66,7 @@ public:
+     virtual quint32 position(const QVariant &desktop) const = 0;
+     virtual int desktopLayoutRows() const = 0;
+     virtual void requestActivate(const QVariant &desktop) = 0;
++    virtual void requestActivateOnScreen(const QVariant &desktop, const QString &screenName) = 0;
+     virtual void requestCreateDesktop(quint32 position) = 0;
+     virtual void requestRemoveDesktop(quint32 position) = 0;
  
  Q_SIGNALS:
      void currentDesktopChanged() const;
@@ -438,7 +443,7 @@ index 60c5f5a8ae..871ef3b329 100644
      void numberOfDesktopsChanged() const;
      void desktopIdsChanged() const;
      void desktopNamesChanged() const;
-@@ -126,6 +129,7 @@ public:
+@@ -126,12 +130,14 @@ public:
  
      void init() override;
      QVariant currentDesktop() const override;
@@ -446,13 +451,20 @@ index 60c5f5a8ae..871ef3b329 100644
      int numberOfDesktops() const override;
      QVariantList desktopIds() const override;
      QStringList desktopNames() const override;
-@@ -144,7 +148,13 @@ VirtualDesktopInfo::XWindowPrivate::XWindowPrivate()
+     quint32 position(const QVariant &desktop) const override;
+     int desktopLayoutRows() const override;
+     void requestActivate(const QVariant &desktop) override;
++    void requestActivateOnScreen(const QVariant &desktop, const QString &screenName) override;
+     void requestCreateDesktop(quint32 position) override;
+     void requestRemoveDesktop(quint32 position) override;
+ };
+@@ -144,7 +150,13 @@ VirtualDesktopInfo::XWindowPrivate::XWindowPrivate()
  
  void VirtualDesktopInfo::XWindowPrivate::init()
  {
 -    connect(KX11Extras::self(), &KX11Extras::currentDesktopChanged, this, &VirtualDesktopInfo::XWindowPrivate::currentDesktopChanged);
 +    connect(KX11Extras::self(), &KX11Extras::currentDesktopChanged, this, [this]() {
-+        for (const QScreen *screen : qGuiApp->screens()) {
++        for (auto screen : qGuiApp->screens()) {
 +            Q_EMIT currentDesktopForScreenChanged(screen->name());
 +        }
 +
@@ -461,7 +473,7 @@ index 60c5f5a8ae..871ef3b329 100644
  
      connect(KX11Extras::self(), &KX11Extras::numberOfDesktopsChanged, this, &VirtualDesktopInfo::XWindowPrivate::numberOfDesktopsChanged);
  
-@@ -164,6 +174,12 @@ QVariant VirtualDesktopInfo::XWindowPrivate::currentDesktop() const
+@@ -164,6 +176,12 @@ QVariant VirtualDesktopInfo::XWindowPrivate::currentDesktop() const
      return KX11Extras::currentDesktop();
  }
  
@@ -474,56 +486,44 @@ index 60c5f5a8ae..871ef3b329 100644
  int VirtualDesktopInfo::XWindowPrivate::numberOfDesktops() const
  {
      return KX11Extras::numberOfDesktops();
-@@ -281,13 +297,56 @@ protected:
+@@ -222,6 +240,12 @@ void VirtualDesktopInfo::XWindowPrivate::requestActivate(const QVariant &desktop
      }
+ }
+ 
++void VirtualDesktopInfo::XWindowPrivate::requestActivateOnScreen(const QVariant &desktop, const QString &)
++{
++    // Per-screen virtual desktops are not supported on X11.
++    requestActivate(desktop);
++}
++
+ void VirtualDesktopInfo::XWindowPrivate::requestCreateDesktop(quint32 position)
+ {
+     Q_UNUSED(position)
+@@ -261,6 +285,8 @@ public:
+ Q_SIGNALS:
+     void done();
+     void activated();
++    void outputEntered(const QString &outputName);
++    void outputLeft(const QString &outputName);
+ 
+ protected:
+     void org_kde_plasma_virtual_desktop_name(const QString &name) override
+@@ -279,6 +305,14 @@ protected:
+     {
+         Q_EMIT activated();
+     }
++    void org_kde_plasma_virtual_desktop_output_entered(const QString &output_name) override
++    {
++        Q_EMIT outputEntered(output_name);
++    }
++    void org_kde_plasma_virtual_desktop_output_left(const QString &output_name) override
++    {
++        Q_EMIT outputLeft(output_name);
++    }
  };
  
-+class PlasmaOutputVirtualDesktop : public QObject, public QtWayland::org_kde_plasma_output_virtual_desktop
-+{
-+    Q_OBJECT
-+public:
-+    PlasmaOutputVirtualDesktop(struct ::org_kde_plasma_output_virtual_desktop *object)
-+        : org_kde_plasma_output_virtual_desktop(object)
-+    {
-+    }
-+    ~PlasmaOutputVirtualDesktop()
-+    {
-+        wl_proxy_destroy(reinterpret_cast<wl_proxy *>(object()));
-+    }
-+    QString name;
-+    QString activeDesktopId;
-+Q_SIGNALS:
-+    void done();
-+    void removed();
-+    void activeDesktopChanged(QString activeDesktopId);
-+
-+protected:
-+    void org_kde_plasma_output_virtual_desktop_name(const QString &name) override
-+    {
-+        this->name = name;
-+    }
-+    void org_kde_plasma_output_virtual_desktop_active_desktop_id(const QString &desktop_id) override
-+    {
-+        if (activeDesktopId == desktop_id) {
-+            return;
-+        }
-+
-+        this->activeDesktopId = desktop_id;
-+        Q_EMIT activeDesktopChanged(desktop_id);
-+    }
-+    void org_kde_plasma_output_virtual_desktop_done() override
-+    {
-+        Q_EMIT done();
-+    }
-+    void org_kde_plasma_output_virtual_desktop_removed() override
-+    {
-+        Q_EMIT removed();
-+    }
-+};
-+
  class PlasmaVirtualDesktopManagement : public QWaylandClientExtensionTemplate<PlasmaVirtualDesktopManagement>,
-                                        public QtWayland::org_kde_plasma_virtual_desktop_management
- {
+@@ -287,7 +321,7 @@ class PlasmaVirtualDesktopManagement : public QWaylandClientExtensionTemplate<Pl
      Q_OBJECT
  public:
      PlasmaVirtualDesktopManagement()
@@ -532,12 +532,11 @@ index 60c5f5a8ae..871ef3b329 100644
      {
          connect(this, &QWaylandClientExtension::activeChanged, this, [this] {
              if (!isActive()) {
-@@ -301,10 +360,13 @@ public:
+@@ -301,10 +335,12 @@ public:
              wl_proxy_destroy(reinterpret_cast<wl_proxy *>(object()));
          }
      }
 +
-+    std::vector<std::unique_ptr<PlasmaOutputVirtualDesktop>> outputs;
  Q_SIGNALS:
      void desktopCreated(const QString &id, quint32 position);
      void desktopRemoved(const QString &id);
@@ -546,39 +545,14 @@ index 60c5f5a8ae..871ef3b329 100644
      void done();
  
  protected:
-@@ -324,6 +386,31 @@ protected:
-     {
-         Q_EMIT done();
-     }
-+    void org_kde_plasma_virtual_desktop_management_output_added(struct ::org_kde_plasma_output_virtual_desktop *output) override
-+    {
-+        auto outputVd = std::make_unique<PlasmaOutputVirtualDesktop>(output);
-+        auto *outputVdPtr = outputVd.get();
-+
-+        connect(outputVdPtr, &PlasmaOutputVirtualDesktop::activeDesktopChanged, this, [this, outputVdPtr]() {
-+            Q_EMIT currentDesktopForScreenChanged(outputVdPtr->name);
-+        });
-+
-+        connect(
-+            outputVd.get(),
-+            &PlasmaOutputVirtualDesktop::done,
-+            this,
-+            [this, outputVdPtr]() {
-+                QString name = outputVdPtr->name;
-+                connect(outputVdPtr, &PlasmaOutputVirtualDesktop::removed, this, [this, name]() {
-+                    std::erase_if(outputs, [name](const std::unique_ptr<PlasmaOutputVirtualDesktop> &outputVd) {
-+                        return outputVd->name == name;
-+                    });
-+                });
-+            },
-+            Qt::SingleShotConnection);
-+
-+        outputs.push_back(std::move(outputVd));
-+    }
- };
+@@ -336,18 +372,21 @@ public:
+     std::vector<std::unique_ptr<PlasmaVirtualDesktop>> virtualDesktops;
+     std::unique_ptr<PlasmaVirtualDesktopManagement> virtualDesktopManagement;
+     quint32 rows;
++    std::unordered_map<QString, QString> currentDesktops;
  
- class Q_DECL_HIDDEN VirtualDesktopInfo::WaylandPrivate : public VirtualDesktopInfo::Private
-@@ -342,6 +429,7 @@ public:
+     auto findDesktop(const QString &id) const;
+ 
      void init() override;
      void addDesktop(const QString &id, quint32 position);
      QVariant currentDesktop() const override;
@@ -586,19 +560,26 @@ index 60c5f5a8ae..871ef3b329 100644
      int numberOfDesktops() const override;
      QVariantList desktopIds() const override;
      QStringList desktopNames() const override;
-@@ -378,6 +466,11 @@ void VirtualDesktopInfo::WaylandPrivate::init()
+     quint32 position(const QVariant &desktop) const override;
+     int desktopLayoutRows() const override;
+     void requestActivate(const QVariant &desktop) override;
++    void requestActivateOnScreen(const QVariant &desktop, const QString &screenName) override;
+     void requestCreateDesktop(quint32 position) override;
+     void requestRemoveDesktop(quint32 position) override;
+ };
+@@ -378,6 +417,11 @@ void VirtualDesktopInfo::WaylandPrivate::init()
              rows = 0;
              virtualDesktops.clear();
              currentVirtualDesktop.clear();
 +
-+            for (const auto &output : virtualDesktopManagement->outputs) {
-+                Q_EMIT currentDesktopForScreenChanged(output->name);
++            for (auto screen : qGuiApp->screens()) {
++                Q_EMIT currentDesktopForScreenChanged(screen->name());
 +            }
 +
              Q_EMIT currentDesktopChanged();
              Q_EMIT numberOfDesktopsChanged();
              Q_EMIT navigationWrappingAroundChanged();
-@@ -428,6 +521,10 @@ void VirtualDesktopInfo::WaylandPrivate::init()
+@@ -428,6 +472,10 @@ void VirtualDesktopInfo::WaylandPrivate::init()
              Q_EMIT desktopPositionsChanged();
          }
      });
@@ -609,28 +590,61 @@ index 60c5f5a8ae..871ef3b329 100644
  }
  
  void VirtualDesktopInfo::WaylandPrivate::addDesktop(const QString &id, quint32 position)
-@@ -461,6 +558,20 @@ QVariant VirtualDesktopInfo::WaylandPrivate::currentDesktop() const
+@@ -448,6 +496,19 @@ void VirtualDesktopInfo::WaylandPrivate::addDesktop(const QString &id, quint32 p
+         Q_EMIT desktopNamesChanged();
+     });
+ 
++    auto desktopPtr = desktop.get();
++    connect(desktop.get(), &PlasmaVirtualDesktop::outputEntered, this, [this, desktopPtr](const QString &outputName) {
++        currentDesktops[outputName] = desktopPtr->id;
++        Q_EMIT currentDesktopForScreenChanged(outputName);
++    });
++    connect(desktop.get(), &PlasmaVirtualDesktop::outputLeft, this, [this, desktopPtr](const QString &outputName) {
++        // Handle removed output (only left, no enter).
++        auto it = currentDesktops.find(outputName);
++        if (it != currentDesktops.end() && it->second == desktopPtr->id) {
++            currentDesktops.erase(it);
++        }
++    });
++
+     virtualDesktops.insert(std::next(virtualDesktops.begin(), position), std::move(desktop));
+ 
+     Q_EMIT numberOfDesktopsChanged();
+@@ -461,6 +522,15 @@ QVariant VirtualDesktopInfo::WaylandPrivate::currentDesktop() const
      return currentVirtualDesktop;
  }
  
 +QVariant VirtualDesktopInfo::WaylandPrivate::currentDesktopByScreenName(const QString &screenName) const
 +{
-+    const auto &outputs = virtualDesktopManagement->outputs;
-+    auto result = std::ranges::find_if(outputs, [screenName](const std::unique_ptr<PlasmaOutputVirtualDesktop> &outputVd) {
-+        return outputVd->name == screenName;
-+    });
-+
-+    if (result == outputs.cend()) {
++    auto result = currentDesktops.find(screenName);
++    if (result == currentDesktops.end()) {
 +        return currentDesktop();
 +    }
-+
-+    return (*result)->activeDesktopId;
++    return result->second;
 +}
 +
  int VirtualDesktopInfo::WaylandPrivate::numberOfDesktops() const
  {
      return virtualDesktops.size();
-@@ -562,6 +673,7 @@ VirtualDesktopInfo::VirtualDesktopInfo(QObject *parent)
+@@ -519,6 +589,17 @@ void VirtualDesktopInfo::WaylandPrivate::requestActivate(const QVariant &desktop
+     }
+ }
+ 
++void VirtualDesktopInfo::WaylandPrivate::requestActivateOnScreen(const QVariant &desktop, const QString &screenName)
++{
++    if (!virtualDesktopManagement->isActive()) {
++        return;
++    }
++
++    if (auto it = findDesktop(desktop.toString()); it != virtualDesktops.end()) {
++        (*it)->request_enter_output(screenName);
++    }
++}
++
+ void VirtualDesktopInfo::WaylandPrivate::requestCreateDesktop(quint32 position)
+ {
+     if (!virtualDesktopManagement->isActive()) {
+@@ -562,6 +643,7 @@ VirtualDesktopInfo::VirtualDesktopInfo(QObject *parent)
      }
  
      connect(d, &VirtualDesktopInfo::Private::currentDesktopChanged, this, &VirtualDesktopInfo::currentDesktopChanged);
@@ -638,7 +652,7 @@ index 60c5f5a8ae..871ef3b329 100644
      connect(d, &VirtualDesktopInfo::Private::numberOfDesktopsChanged, this, &VirtualDesktopInfo::numberOfDesktopsChanged);
      connect(d, &VirtualDesktopInfo::Private::desktopIdsChanged, this, &VirtualDesktopInfo::desktopIdsChanged);
      connect(d, &VirtualDesktopInfo::Private::desktopNamesChanged, this, &VirtualDesktopInfo::desktopNamesChanged);
-@@ -583,6 +695,23 @@ QVariant VirtualDesktopInfo::currentDesktop() const
+@@ -583,6 +665,23 @@ QVariant VirtualDesktopInfo::currentDesktop() const
      return d->currentDesktop();
  }
  
@@ -649,7 +663,7 @@ index 60c5f5a8ae..871ef3b329 100644
 +
 +QVariant VirtualDesktopInfo::currentDesktopByScreenGeometry(const QRect &screenGeometry) const
 +{
-+    for (QScreen *screen : qGuiApp->screens()) {
++    for (auto screen : qGuiApp->screens()) {
 +        const QRect geometry = screen->geometry();
 +
 +        if (geometry == screenGeometry) {
@@ -662,8 +676,20 @@ index 60c5f5a8ae..871ef3b329 100644
  int VirtualDesktopInfo::numberOfDesktops() const
  {
      return d->numberOfDesktops();
+@@ -613,6 +712,11 @@ void VirtualDesktopInfo::requestActivate(const QVariant &desktop)
+     d->requestActivate(desktop);
+ }
+ 
++void VirtualDesktopInfo::requestActivateOnScreen(const QVariant &desktop, const QString &screenName)
++{
++    d->requestActivateOnScreen(desktop, screenName);
++}
++
+ void VirtualDesktopInfo::requestCreateDesktop(quint32 position)
+ {
+     return d->requestCreateDesktop(position);
 diff --git a/libtaskmanager/virtualdesktopinfo.h b/libtaskmanager/virtualdesktopinfo.h
-index 867463816e..45a340ebb9 100644
+index 867463816e..2f7720d8b4 100644
 --- a/libtaskmanager/virtualdesktopinfo.h
 +++ b/libtaskmanager/virtualdesktopinfo.h
 @@ -40,13 +40,29 @@ public:
@@ -697,7 +723,28 @@ index 867463816e..45a340ebb9 100644
      /**
       * The number of virtual desktops present in the session.
       *
-@@ -126,6 +142,7 @@ public:
+@@ -91,12 +107,19 @@ public:
+     int desktopLayoutRows() const;
+ 
+     /**
+-     * Request activating the passed-in virtual desktop.
++     * Request activating the passed-in virtual desktop on active screen.
+      *
+      * @param desktop A virtual desktop id (QString on Wayland; uint >0 on X11).
+      **/
+     void requestActivate(const QVariant &desktop);
+ 
++    /**
++     * Request activating the passed-in virtual desktop on given screen.
++     *
++     * @param desktop A virtual desktop id (QString on Wayland; uint >0 on X11).
++     **/
++    void requestActivateOnScreen(const QVariant &desktop, const QString &screenName);
++
+     /**
+      * Request adding a new virtual desktop at the specified position.
+      *
+@@ -126,6 +149,7 @@ public:
  
  Q_SIGNALS:
      void currentDesktopChanged() const;
