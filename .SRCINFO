@@ -1,6 +1,6 @@
 pkgbase = dinox
 	pkgdesc = Modern XMPP Chat Client with Video Calls, Voice Messages & OMEMO 1 + 2 Encryption & API Botmother and AI API DTMF MQTT Support
-	pkgver = 1.1.6.5
+	pkgver = 1.1.6.9
 	pkgrel = 1
 	url = https://github.com/rallep71/dinox
 	arch = x86_64
@@ -35,7 +35,7 @@ pkgbase = dinox
 	depends = webrtc-audio-processing
 	depends = gdk-pixbuf2
 	depends = mosquitto
-	source = https://github.com/rallep71/dinox/archive/refs/tags/v1.1.6.5.tar.gz
-	sha256sums = fb1339169986a62a30f5be126785d033e8a8176e07039f074470cbfcd91c0350
+	source = https://github.com/rallep71/dinox/archive/refs/tags/v1.1.6.9.tar.gz
+	sha256sums = 6547a46d3ab694244ce33397de50c30dad93e18d8b73f1714886e62855a3a645
 
 pkgname = dinox

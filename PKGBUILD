@@ -1,6 +1,6 @@
 # Maintainer: nerdyslacker <karyan40024@gmail.com>
 pkgname=dinox
-pkgver=1.1.6.5
+pkgver=1.1.6.9
 pkgrel=1
 pkgdesc="Modern XMPP Chat Client with Video Calls, Voice Messages & OMEMO 1 + 2 Encryption & API Botmother and AI API DTMF MQTT Support"
 url="https://github.com/rallep71/dinox"
@@ -17,7 +17,7 @@ depends=('glib2' 'glib-networking' 'gtk4' 'libadwaita' 'gpgme' 'libgee' 'libgcry
 makedepends=('git' 'meson' 'vala' 'ninja')
 
 source=("https://github.com/rallep71/dinox/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fb1339169986a62a30f5be126785d033e8a8176e07039f074470cbfcd91c0350')
+sha256sums=('6547a46d3ab694244ce33397de50c30dad93e18d8b73f1714886e62855a3a645')
 
 build() {
 	arch-meson "${pkgname}-${pkgver}" build
