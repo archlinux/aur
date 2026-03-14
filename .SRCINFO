@@ -1,8 +1,9 @@
 pkgbase = companion-satellite
 	pkgdesc = Bitfocus Companion Satellite - connects local Stream Decks to a remote Companion instance
 	pkgver = 2.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bitfocus/companion-satellite
+	install = companion-satellite.install
 	arch = x86_64
 	license = MIT
 	makedepends = nodejs>=24

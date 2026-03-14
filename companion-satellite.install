@@ -1,0 +1,17 @@
+post_install() {
+    systemd-sysusers
+    udevadm control --reload-rules || true
+    udevadm trigger || true
+    echo "==> Add your user to the 'satellite' group for device access:"
+    echo "    sudo usermod -aG satellite \$USER"
+    echo "    Then log out and back in for the change to take effect."
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    udevadm control --reload-rules || true
+    udevadm trigger || true
+}

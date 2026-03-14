@@ -1,12 +1,13 @@
 pkgname=companion-satellite
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Bitfocus Companion Satellite - connects local Stream Decks to a remote Companion instance'
 arch=('x86_64')
 url='https://github.com/bitfocus/companion-satellite'
 license=('MIT')
 depends=('nodejs' 'libusb' 'hidapi')
 makedepends=('nodejs>=24' 'corepack' 'python' 'gcc' 'make' 'pkg-config')
+install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitfocus/companion-satellite/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
@@ -57,8 +58,11 @@ RestartSec=5
 WantedBy=default.target
 EOF
 
-    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/50-${pkgname}.rules" << 'EOF'
-SUBSYSTEM=="usb", ATTR{idVendor}=="0fd9", MODE="0666"
+    install -Dm644 satellite/assets/linux/50-satellite.rules \
+        "${pkgdir}/usr/lib/udev/rules.d/50-${pkgname}.rules"
+
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf" << 'EOF'
+g satellite - -
 EOF
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
