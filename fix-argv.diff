@@ -1,3 +1,16 @@
+diff --git a/apps/studio/src/background/WindowBuilder.ts b/apps/studio/src/background/WindowBuilder.ts
+index bbad8a03f..6fb9184ad 100644
+--- a/apps/studio/src/background/WindowBuilder.ts
++++ b/apps/studio/src/background/WindowBuilder.ts
+@@ -20,7 +20,7 @@ export interface OpenOptions {
+ }
+ 
+ function getIcon() {
+-  return path.resolve(path.join(__dirname, '..', `public/icons/png/512x512.png`))
++  return path.resolve(path.join(platformInfo.resourcesPath, `public/icons/png/512x512.png`))
+ }
+ 
+ class BeekeeperWindow {
 diff --git a/apps/studio/src/common/bksConfig/mainBksConfig.ts b/apps/studio/src/common/bksConfig/mainBksConfig.ts
 index 0a34f4c7a..4544389fe 100644
 --- a/apps/studio/src/common/bksConfig/mainBksConfig.ts

@@ -1,8 +1,8 @@
 diff --git a/apps/studio/electron-builder-config.js b/apps/studio/electron-builder-config.js
-index a475cf5f3..e581eafee 100644
+index 4b4c9b5f8..07147cc8e 100644
 --- a/apps/studio/electron-builder-config.js
 +++ b/apps/studio/electron-builder-config.js
-@@ -33,6 +33,8 @@ module.exports = {
+@@ -36,6 +36,8 @@ module.exports = {
    asarUnpack: [
      'package.json'
    ],
@@ -10,8 +10,8 @@ index a475cf5f3..e581eafee 100644
 +  electronVersion: "%%ELECTRON_VERSION%%",
    extraResources: [
      {
-       from: "node_modules/@beekeeperstudio/bks-ai-shell",
-@@ -141,24 +143,11 @@ module.exports = {
+       from: bksAiShellPath,
+@@ -144,24 +146,11 @@ module.exports = {
        role: "Editor"
      }
    ],
@@ -37,7 +37,7 @@ index a475cf5f3..e581eafee 100644
        'pacman'
      ],
      desktop: {
-@@ -169,66 +158,9 @@ module.exports = {
+@@ -172,66 +161,9 @@ module.exports = {
      publish: ['github']
    },
    pacman: {

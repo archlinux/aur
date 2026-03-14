@@ -1,6 +1,6 @@
 pkgbase = beekeeper-studio
 	pkgdesc = Modern and easy to use SQL client for MySQL, Postgres, SQLite, SQL Server, and more
-	pkgver = 5.6.0
+	pkgver = 5.6.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/beekeeper-studio/beekeeper-studio
@@ -14,19 +14,19 @@ pkgbase = beekeeper-studio
 	makedepends = python
 	makedepends = yarn
 	depends = electron39
-	provides = beekeeper-studio-ultimate=5.6.0
+	provides = beekeeper-studio-ultimate=5.6.2
 	conflicts = beekeeper-studio-ultimate
-	source = beekeeper-studio-5.6.0.tar.gz::https://github.com/beekeeper-studio/beekeeper-studio/archive/v5.6.0.tar.gz
+	source = beekeeper-studio-5.6.2.tar.gz::https://github.com/beekeeper-studio/beekeeper-studio/archive/v5.6.2.tar.gz
 	source = electron-launcher.sh
 	source = electron-builder-config.diff
 	source = fix-argv.diff
 	source = disable-update-checking.diff
 	source = missing-log-app-name.diff
 	source = LICENSE.md
-	b2sums = a4e2fcf5356a1b0f165c25071fa57d03552deb14d0494e0089d128a3460b261c7f9152ce227fe9b032596f79c62e66617799923617057f17aafe7f8a2baab5af
+	b2sums = 66b85f66876794e53df1f9aa628c41f502e2eb6b2919ae736225668ac033ff6cf98236db1f6eb89e5ee7046685bcd5e7eb88d2e7efdc250266450119d5fe0283
 	b2sums = 54b46275a83a6099b22bc511a6293178abccccad6d1cc36bf812166f93f75b1379a3201dac9ee85e05cf7c3b0de7e94829fd3fb619ccca513924ebf3101850f0
-	b2sums = 90163bb36201dfbf603c759768dba22451c9ec977b0402dfc183c54340abc4a20dc3823ff5e35a84359376551fde7200942bd67f26c9922a7da80c88797e3070
-	b2sums = 0e4a1f426ed0f69804461cdf5dad9edec67a4245db6a2075e5d2a921e7e6a047904800b343e87434ac0b268359861e0d93d3f62d69a772b3788ccb33c630e65c
+	b2sums = 20b600b5b223ab99ff9a0d984eeef659d88a6d85f1456c8fdbfc3c72ba646569faf29699ecaa87e800b6d13a3474698569e7faae086b31fe98f5778528b410db
+	b2sums = 248cf727e04a6aced66d6b51cbecc1d4ed9472f0ba7e096ddcb0cb7160b98c3b396d74b5eadc249d1425d404ab825599335a2aaec0917706e8d317d4d0c5babd
 	b2sums = beb73ad1b69f98fd565cdafbc1fad9604f0c1994b38398960537a60f2e3c74bd5705a0e522e68627a29b25d1f7b738aa94c543928ffdbe198c61b7258103a662
 	b2sums = 36e0dab7e6e489a19cb6709a39a0f38f2f9a34200c7af297b94b8aa5e24ecdc3ec9451a0791d79ba72b7c51ad156d9abdb2b52deee7c3b3da3a5faa637480ebc
 	b2sums = e3c500691772f577a9f96b7672ba2f823eae58b9a22bd92bc1d9d0da73620d92a9c503b5d8850b59c6e8bf7126dfb0c23e6e2a738fb10865fc85a4a2a572fbdd
