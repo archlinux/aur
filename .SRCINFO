@@ -1,17 +1,17 @@
 pkgbase = bcmr-bin
 	pkgdesc = cp with progress bar
-	pkgver = 0.4.4
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/Bengerthelorf/bcmr
 	arch = x86_64
 	license = MIT
 	provides = bcmr
 	conflicts = bcmr
-	source = LICENSE-0.4.4::https://raw.githubusercontent.com/Bengerthelorf/bcmr/v0.4.4/LICENSE
-	source = README-0.4.4.md::https://raw.githubusercontent.com/Bengerthelorf/bcmr/v0.4.4/README.md
+	source = LICENSE-0.4.6::https://raw.githubusercontent.com/Bengerthelorf/bcmr/v0.4.6/LICENSE
+	source = README-0.4.6.md::https://raw.githubusercontent.com/Bengerthelorf/bcmr/v0.4.6/README.md
 	sha256sums = 1a1600e7355b11cc1e69a6a361269e3c9a64f73d6c0b5958fe48f4861053bfd7
-	sha256sums = f700b4e64fb36c34e95be22e012b3337fa8bcf5ae771ff8c91690e8107fefe4d
-	source_x86_64 = bcmr-x86_64-0.4.4.tgz::https://github.com/Bengerthelorf/bcmr/releases/download/v0.4.4/bcmr-x86_64-linux.tar.gz
-	sha256sums_x86_64 = ebb8bf84928911582053e96035971b8b86a2af7975552f5fcb246ed0e0e042fe
+	sha256sums = 32a54d8557e732ffda9893e56667fea837714b1654d363ded30d421c9e963a7a
+	source_x86_64 = bcmr-x86_64-0.4.6.tgz::https://github.com/Bengerthelorf/bcmr/releases/download/v0.4.6/bcmr-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 6d6ac744321cd3aaa1864fa7d99b402a35503a9ca3520b434cca92a3a797ccfa
 
 pkgname = bcmr-bin
