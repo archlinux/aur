@@ -1,0 +1,16 @@
+Subject: nak: fix max_warps_per_sm for MR !37898 ABI
+
+MR !37898 (nvk_cubin / DLSS) calls nak_max_warps_per_sm() with a
+signature that expects the computation to live here rather than
+forwarding to crate::ir::max_warps_per_sm.  Inline the formula directly.
+
+diff --git a/src/nouveau/compiler/nak/api.rs b/src/nouveau/compiler/nak/api.rs
+--- a/src/nouveau/compiler/nak/api.rs
++++ b/src/nouveau/compiler/nak/api.rs
+@@ -1,3 +1,5 @@
+ pub extern "C" fn nak_max_warps_per_sm(num_gprs: u32) -> u32 {
+-    crate::ir::max_warps_per_sm(num_gprs)
++    let total_regs: u32 = 65536;
++    let gprs = num_gprs.max(1).next_multiple_of(8);
++    crate::ir::prev_multiple_of((total_regs / 32) / gprs, 4)
+ }
