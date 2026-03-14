@@ -1,0 +1,3 @@
+[perl-pass-otp]
+source = "cpan"
+cpan = "Pass-OTP"
