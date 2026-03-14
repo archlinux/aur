@@ -1,0 +1,48 @@
+# Maintainer: etonedemid <etonedemid@proton.me>
+pkgname=cold-start
+pkgver=1.5.0
+pkgrel=1
+pkgdesc="Top-down twin-stick shooter with wave-based combat — Nintendo Switch homebrew, also playable on PC"
+arch=('x86_64')
+url="https://github.com/etonedemid/cold-start-nx"
+license=('MIT')
+depends=('sdl2' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'libenet')
+makedepends=('cmake' 'ninja' 'pkgconf')
+optdepends=('miniupnpc: UPnP support for hosting servers')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/etonedemid/cold-start-nx/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('6880cd77f8bc0195f75c17a98b4f90288759359cff4a916762af0b67e392c872')
+
+build() {
+    cmake -S "cold-start-nx-$pkgver" \
+          -B build \
+          -G Ninja \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_INSTALL_PREFIX=/usr \
+          -DPLATFORM_PC=1
+    cmake --build build
+}
+
+package() {
+    # Binary
+    install -Dm755 build/cold_start "$pkgdir/opt/cold-start/cold_start"
+
+    # Assets (romfs — loaded relative to working directory)
+    cp -r "cold-start-nx-$pkgver/romfs" "$pkgdir/opt/cold-start/romfs"
+
+    # Default config
+    install -Dm644 "cold-start-nx-$pkgver/build-pc/config.txt" \
+        "$pkgdir/opt/cold-start/config.txt" 2>/dev/null || true
+
+    # Wrapper script
+    install -dm755 "$pkgdir/usr/bin"
+    cat > "$pkgdir/usr/bin/cold-start" << 'EOF'
+#!/bin/sh
+cd /opt/cold-start
+exec ./cold_start "$@"
+EOF
+    chmod 755 "$pkgdir/usr/bin/cold-start"
+
+    # License
+    install -Dm644 "cold-start-nx-$pkgver/LICENSE" \
+        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
