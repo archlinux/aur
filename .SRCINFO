@@ -1,6 +1,6 @@
 pkgbase = taskwire-bin
 	pkgdesc = Modern Linux System Monitor
-	pkgver = 1.53.1
+	pkgver = 1.54
 	pkgrel = 1
 	url = https://github.com/majoraexp/Taskwire
 	arch = x86_64
@@ -11,14 +11,14 @@ pkgbase = taskwire-bin
 	conflicts = taskwire
 	options = !strip
 	source = taskwire.desktop
-	source = LICENSE-1.53.1::https://raw.githubusercontent.com/majoraexp/Taskwire/v1.53.1/LICENSE
-	source = README-1.53.1.md::https://raw.githubusercontent.com/majoraexp/Taskwire/v1.53.1/README.md
-	source = taskwire-1.53.1.png::https://raw.githubusercontent.com/majoraexp/Taskwire/v1.53.1/Taskwire/app_icon.png
+	source = LICENSE-1.54::https://raw.githubusercontent.com/majoraexp/Taskwire/v1.54/LICENSE
+	source = README-1.54.md::https://raw.githubusercontent.com/majoraexp/Taskwire/v1.54/README.md
+	source = taskwire-1.54.png::https://raw.githubusercontent.com/majoraexp/Taskwire/v1.54/Taskwire/app_icon.png
 	sha256sums = 99afca95edd7d783972c0c9ba84a0bd8dc06327c066b5abc738b987e75f36ae3
 	sha256sums = ab57324b3ea51d1c3ecc4706fa8783f06994d2fa4581a6d27b7cc7e57048c71c
 	sha256sums = c90b00ac7733225b535030cb98bc4154afdf901b66a63b639045f99ff09c5a45
 	sha256sums = 3e797e8cc15333328259c2d675c7feededb7c16710ace0f6ba4727643e634b83
-	source_x86_64 = taskwire-x86_64-1.53.1::https://github.com/majoraexp/Taskwire/releases/download/v1.53.1/Taskwire
-	sha256sums_x86_64 = 3bc18f2e96a98d596c2562b6f5379621177a32f757b67b1316f0a49901b629c1
+	source_x86_64 = taskwire-x86_64-1.54::https://github.com/majoraexp/Taskwire/releases/download/v1.54/Taskwire
+	sha256sums_x86_64 = f99bfbdf375294152ff603ddf2ab21ca50ab638e616163e532253232bfe7fb99
 
 pkgname = taskwire-bin
