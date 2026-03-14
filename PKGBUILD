@@ -4,12 +4,13 @@
 _pkgauthor=screenpipe
 _pkgname=screenpipe
 pkgname=${_pkgname}-bin
-pkgver=app-v2.2.115
+pkgver=2.2.140
+_tag=vapp-v2.2.140
 pkgrel=1
 pkgdesc="24/7 Screen and Audio Capture with AI-powered tools"
 arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${_pkgname}"
-_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
+_urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_tag}"
 license=('MIT')
 
 provides=("${_pkgname}")
@@ -25,7 +26,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
         "README-${pkgver}::${_urlraw}/README.md"
         "TESTING-${pkgver}::${_urlraw}/TESTING.md"
         "CONTRIBUTING-${pkgver}::${_urlraw}/CONTRIBUTING.md")
-source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-${arch[0]}-unknown-linux-gnu.tar.gz")
+source_x86_64=("${url}/releases/download/${_tag}/${_pkgname}-${_tag}-${arch[0]}-unknown-linux-gnu.tar.gz")
 sha256sums=('7c8870ce4a6920da8c667759f25f7d99cdbbd45a40ea32978b34ab06e39c2f1f'
             '15ca362ae6423bb449f10cfca13c32e1b646b21210c11795bb499e8bfe5d75fc'
             '02766e711d85be26d155df569e2c4642e9fedd51d8974bdb67e895f94b7c4ada'
