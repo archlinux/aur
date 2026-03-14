@@ -12,6 +12,7 @@ pkgbase = aeroshell-workspace-git
 	depends = kconfig
 	depends = kcmutils
 	depends = aeroshell-libplasma
+	depends = sddm
 	depends = libksysguard
 	depends = plasma-workspace
 	depends = qt6-declarative

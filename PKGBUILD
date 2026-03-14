@@ -12,6 +12,7 @@ depends=(gcc-libs
          kconfig
          kcmutils
          aeroshell-libplasma
+         sddm
          libksysguard
          plasma-workspace
          qt6-declarative
