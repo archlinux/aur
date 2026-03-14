@@ -11,7 +11,7 @@ pkgname="python-${_pypi_package}"
 pkgver="${_upstreamver}"
 pkgrel=1
 pkgdesc="Interactive CLI prompts using Rich and readchar, inspired by python-inquirer"
-url='https://github.com/chosey0/rich-inquirer'
+url="https://github.com/${_author}/${_pypi_package}"
 
 arch=('any')
 license=('MIT')
