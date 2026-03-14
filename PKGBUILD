@@ -5,7 +5,7 @@
 pkgbase=ns3
 pkgname=(ns3 python-ns3 ns3-examples{,-src}) #FIXME: ns3-docs (Doxygen is damn large!)
 pkgver=3.47
-pkgrel=2
+pkgrel=3
 pkgdesc='Discrete-event network simulator for Internet systems'
 arch=('x86_64')
 url='https://www.nsnam.org/'
@@ -76,7 +76,8 @@ build() {
         --enable-python-bindings \
         --prefix=/usr \
         -- \
-        -DNS3_BINDINGS_INSTALL_DIR="/usr/lib/python$(_pver)/site-packages"
+        -DNS3_BINDINGS_INSTALL_DIR="/usr/lib/python$(_pver)/site-packages" \
+        -DCMAKE_INSTALL_LIBEXECDIR="lib/$pkgname/"
         # FIXME!:
         #--with-click="$srcdir/click-git/install" \
         #--with-openflow="$openflow_dir" \
@@ -136,9 +137,6 @@ package_ns3() {
     cd "${srcdir}/ns-${pkgver}"
     DESTDIR="$pkgdir" ./ns3 install
     cd "$pkgdir"
-
-    # Comply with Arch Package Guideliness
-    mv -Tv usr/lib{exec,}/"$pkgname"
 
     # Python bindings
     _pick python usr/lib/python$(_pver)
