@@ -1,0 +1,21 @@
+pkgbase = m33mu-git
+	pkgdesc = A Cortex-M33 emulator with TrustZone awareness
+	pkgver = r138.0ad1f71
+	pkgrel = 1
+	url = https://github.com/danielinux/m33mu
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	depends = capstone
+	depends = libtpms
+	depends = wolfssl-all
+	depends = vde2
+	depends = ncurses
+	depends = libelf
+	provides = m33mu
+	conflicts = m33mu
+	source = m33mu::git+https://github.com/danielinux/m33mu.git
+	sha256sums = SKIP
+
+pkgname = m33mu-git

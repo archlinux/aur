@@ -1,0 +1,7 @@
+*.tar.gz
+*.part
+*.asc
+*.pkg.*
+pkg
+src
+m33mu
