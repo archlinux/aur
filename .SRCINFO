@@ -1,0 +1,26 @@
+pkgbase = creamlinux-bin
+	pkgdesc = DLC Fetcher and installer for Steam games on Linux
+	pkgver = 1.4.2
+	pkgrel = 2
+	url = https://github.com/Novattz/creamlinux-installer
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = openssl
+	depends = glib2
+	depends = glibc
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = libgcc
+	depends = hicolor-icon-theme
+	provides = creamlinux
+	conflicts = creamlinux
+	options = !debug
+	source = https://github.com/Novattz/creamlinux-installer/releases/download/v1.4.2/Creamlinux_1.4.2_amd64.deb
+	source = https://raw.githubusercontent.com/Novattz/creamlinux-installer/main/LICENSE.md
+	sha256sums = a1ac7253229b1c6665d4ff9592a799fdf65a1697f19c3feb683cff4fc70d071c
+	sha256sums = 3acdaff189f797ae7b160a1e1d32081ba141599afc5a4210eba78ff182003977
+
+pkgname = creamlinux-bin
