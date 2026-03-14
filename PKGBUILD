@@ -1,11 +1,13 @@
 # Maintainer: mc_klatz
 pkgname=sone
 pkgver=0.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Native Linux TIDAL client — lossless streaming with bit-perfect ALSA output"
 arch=('x86_64')
 url="https://github.com/lullabyX/sone"
 license=('GPL-3.0-only')
+provides=('sone')
+conflicts=('sone-bin')
 depends=(
     'webkit2gtk-4.1'
     'gtk3'
@@ -31,11 +33,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/lullabyX/sone/archive/refs/
 sha256sums=('6eb8afacf2b399e33c3429cf01741737d6cd680b578768a759af520ac54c4bc2')
 
 prepare() {
-       cd "$srcdir/sone-$pkgver"
-       npm ci
-       sed -i 's/"active": true/"active": false/' src-tauri/tauri.conf.json
+    cd "$srcdir/sone-$pkgver"
+    npm ci
+    sed -i 's/"active": true/"active": false/' src-tauri/tauri.conf.json
+    sed -i 's/^Exec=.*/Exec=sone/' data/io.github.lullabyX.sone.desktop
 }
-
 
 build() {
     cd "$srcdir/sone-$pkgver"
