@@ -1,4 +1,4 @@
-# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-03-13 09:33:27
+# Updated by Emilio Pulido <ojosdeserbio@gmail.com> on 2026-03-14 08:07:01
 
 # Maintainer: Peter Jung ptr1337 <admin@ptr1337.dev>
 # Maintainer: Piotr Gorski <piotrgorski@cachyos.org>
@@ -172,12 +172,12 @@ fi
 
 pkgbase="linux-cachyos-native"
 _major=6.19
-_minor=6
+_minor=7
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
 _tagrel=1
-pkgrel=2
+pkgrel=1
 #_stable=${_major}.${_minor}
 _stable=${_major}
 #_stablerc=${_major}-${_rcver}
@@ -620,6 +620,7 @@ _package() {
 _package-headers() {
     pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
     depends=('pahole' "${pkgbase}")
+    provides=(LINUX-HEADERS)
 
     if _is_lto_kernel; then
         provides+=(linux-cachyos-lto-headers=$_kernver)
@@ -806,7 +807,7 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-b2sums=('a0885a688e8ea83da755115a86926134f8795b93c7d2eb1c00baff521ed10ba0aeb2691ad26454da20f2cecb169b6d655705b7e11fa6d108428ca1d2c0e5d696'
+b2sums=('682d5d710fe2d06f97fe2062afead540a49607aabb0a9da740defa2054ac1bd1dbf7c5fa90c154b78b2a9eee0204e2a059e6fc97af1051e60f03f4c7b3ebb754'
         '0c0cfb1e9ae31904cb86a194fa04d04336574a80a3559e6e295ca8ed3b226886d7dcd2cb45527382bec457b013984d6352b1900feb3a3d96ace0c7c5f5c5ffa7'
         'ea26c88950fc06b6ffab93b30e3beacc7d26571a70262334ca8b001dc7899bf96b47d703fbaa7f4e47765c3dafccc23c58a4d4da2169b8ee50012afcb7a1dd96'
         '604dbf06c03ac2002efbebb0581711f2a4e698353bde84a3fc78b5fbb5b0b1bd358a6c0bd418ca91b0d7e7d4d44f23ec7e47844b357675584b31e47c8b96b05c'
