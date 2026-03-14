@@ -1,19 +1,11 @@
-_stop_service() {
-    systemctl stop tuxedo-power-profiles-adapter.service >/dev/null 2>&1 || true
-}
-
-_restart_service() {
-    systemctl try-restart tuxedo-power-profiles-adapter.service >/dev/null 2>&1 || true
-}
-
 post_install() {
-    _restart_service
+    systemctl start tuxedo-power-profiles-adapter.service >/dev/null 2>&1 || true
 }
 
 post_upgrade() {
-    _restart_service
+    stemctl try-restart tuxedo-power-profiles-adapter.service >/dev/null 2>&1 || true
 }
 
 pre_remove() {
-    _stop_service
+    systemctl stop tuxedo-power-profiles-adapter.service >/dev/null 2>&1 || true
 }

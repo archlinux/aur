@@ -3,7 +3,7 @@
 pkgname=tuxedo-power-profiles-adapter-git
 _pkgname=${pkgname%-git}
 pkgver=r1.9d184f2
-pkgrel=1
+pkgrel=2
 pkgdesc='DBus adapter enabling desktop environments to control TUXEDO power profiles via the freedesktop power-profiles dbus interface'
 arch=('x86_64')
 url="https://github.com/olwig/tuxedo-power-profiles-adapter"
