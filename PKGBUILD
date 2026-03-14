@@ -5,7 +5,7 @@ _pkgname=logana
 pkgname=${_pkgname}-bin
 pkgdesc="A TUI log analyzer built for speed - handles files with millions of lines with instant filtering and navigation"
 
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ depends=('glibc' 'libgcc')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('cb0dea00cf6e5297394d91842d0c7776a3b529911677d08d96011a99d45bdb0a')
-sha256sums_aarch64=('e2cf3fe178826ff373256ab86648043cd56d0f60f1845a41e3c0c021a8d22cf6')
+sha256sums_x86_64=('d53ccaa5fb9b29d75b22c2fa768f566d6749b281dcb8a6b7f0c7bbf7ef327d65')
+sha256sums_aarch64=('3d184ac83ee1058e5fc5dcba3694bf5010f32aeb613462c97ae25d5953b065ce')
 
 
 case ${CARCH} in
