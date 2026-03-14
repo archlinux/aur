@@ -20,20 +20,20 @@ depends=(
 )
 makedepends=(
   'cmake'
-	'yasm'
+  'yasm'
 )
 provides=(
   "lib${_name}.so"
 )
 _pkgsrc="lib${_name}-${pkgver}"
 source=(
-	"https://storage.googleapis.com/aom-releases/${_pkgsrc}.tar.gz"
-	"https://storage.googleapis.com/aom-releases/${_pkgsrc}.tar.gz.asc"
+  "https://storage.googleapis.com/aom-releases/${_pkgsrc}.tar.gz"
+  "https://storage.googleapis.com/aom-releases/${_pkgsrc}.tar.gz.asc"
 )
 b2sums=('6b72e4f6155bff1a31c99cf13da11517efc90b9997dace5e3036920c0198237de39339530ca555e0a23c5029fe7d928855fe4bcb9018de7adf79738584565d55'
         'SKIP')
 validpgpkeys=(
-	'B002F08B74A148DAA01F7123A48E86DB0B830498' # AOMedia release signing key <av1-discuss@aomedia.org>
+  'B002F08B74A148DAA01F7123A48E86DB0B830498' # AOMedia release signing key <av1-discuss@aomedia.org>
 )
 
 prepare() {
@@ -59,7 +59,7 @@ build() {
     -D ENABLE_EXAMPLES:BOOL=OFF
     -D ENABLE_TOOLS:BOOL=OFF
     -D ENABLE_TESTS:BOOL=OFF
-		-D ENABLE_DOCS:BOOL=OFF
+    -D ENABLE_DOCS:BOOL=OFF
   )
   
   cd "${srcdir}"
