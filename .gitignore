@@ -1,0 +1,6 @@
+pkg
+roseate
+roseate.desktop
+roseate.png
+src
+*.pkg.tar.zst
