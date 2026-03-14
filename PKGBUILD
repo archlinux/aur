@@ -4,7 +4,7 @@
 
 pkgname=lib32-apitrace
 _name="${pkgname//lib32-/}"
-pkgver=13.0
+pkgver=14.0
 pkgrel=1
 pkgdesc="Graphics API Tracing (32-bit)"
 arch=('x86_64')
@@ -13,7 +13,6 @@ license=(MIT)
 depends=(
   $_name=$pkgver
   lib32-brotli
-  lib32-gcc-libs
   lib32-glibc
   lib32-libpng
   lib32-libprocps
@@ -38,7 +37,7 @@ source=(
   git+https://github.com/madler/zlib.git
   git+https://github.com/microsoft/DirectXMath.git
 )
-sha256sums=('1fd43b5d3d82b51364bc414bdf81233cc1d32135f1507205fbe6eb68c3eb2f43'
+sha256sums=('ae711c7a2152b2ada5e319f96c58aabdd531370ed12acd32fc9f3153c82d3149'
             'SKIP'
             'SKIP'
             'SKIP'
