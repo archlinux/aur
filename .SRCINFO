@@ -1,0 +1,16 @@
+pkgbase = androidmigrate
+	pkgdesc = Checkpointed Android folder backup and sync over ADB
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MachineLearning-Nerd/AndroidMigrate
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python>=3.12
+	depends = android-tools
+	source = androidmigrate-0.1.0.tar.gz::https://github.com/MachineLearning-Nerd/AndroidMigrate/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = androidmigrate
