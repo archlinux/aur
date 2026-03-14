@@ -3,7 +3,7 @@
 
 pkgname=python-fastcore
 _pkgname=fastcore
-pkgver=1.12.16
+pkgver=1.12.24
 pkgrel=1
 pkgdesc='Python supercharged for the fastai library'
 arch=('any')
@@ -21,7 +21,6 @@ makedepends=(
   python-setuptools
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/fastai/fastcore/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('39582999f9430eaa6ab45830a1e9737772de388d1f1cd2bdfc326dcada0e585a3b7d209398a1e9dac94af6a7c5f605fe655e6f1f6b10ff294057b6529a8a4112')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -33,3 +32,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+sha512sums=('f389da10a2cc2ad7c90b178d1522695f9d43ae8dcd3f5d2666ade1ba37613fb0f30bc6d78d93f0cc9584dacda038051868b932c83db6180863a4d005a676fac5')
