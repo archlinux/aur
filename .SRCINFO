@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium
 	pkgdesc = A lightweight approach to removing Google web service dependency
-	pkgver = 146.0.7680.75
+	pkgver = 146.0.7680.80
 	pkgrel = 2
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -57,13 +57,13 @@ pkgbase = ungoogled-chromium
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
-	provides = chromium=146.0.7680.75
-	provides = chromedriver=146.0.7680.75
+	provides = chromium=146.0.7680.80
+	provides = chromedriver=146.0.7680.80
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
 	source = fetch-chromium-release
-	source = ungoogled-chromium-146.0.7680.75-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/146.0.7680.75-1.tar.gz
+	source = ungoogled-chromium-146.0.7680.80-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/146.0.7680.80-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = chromium-138-nodejs-version-check.patch
 	source = chromium-145-fix-SYS_SECCOMP.patch
@@ -73,8 +73,9 @@ pkgbase = ungoogled-chromium
 	source = increase-fortify-level.patch
 	source = enable-widevine-arm64.patch
 	source = use-oauth2-client-switches-as-default.patch
+	source = glibc-2.42-baud-rate-fix.patch
 	sha256sums = 2e2f36e3cd1ebc4ad57fd310774a5e5e9db77883d5f9374fedeaabd3c103b819
-	sha256sums = 916e108adf53b8d966eebfe26de5f525bcd08355092b3c741474f9354ce1dfdb
+	sha256sums = 00d3d8f6d01e082fc08399332dd5e966d89188ac316bca1010d20fdefb0cd240
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
 	sha256sums = 4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e
@@ -84,5 +85,6 @@ pkgbase = ungoogled-chromium
 	sha256sums = d634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342
 	sha256sums = 9c766b82d1143cb3413fe2057361bd2655e46287eacc2c6d6f8504b4c255647a
 	sha256sums = 9343afa1a4308a7cfb3317229f5aff7778688debcc03c4a74a85908aa1d0cc3a
+	sha256sums = 1c1898f263eaacbc069a8e1a3e732852350350d1dad4cb1a6bba430e3b796cd0
 
 pkgname = ungoogled-chromium
