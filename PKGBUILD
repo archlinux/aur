@@ -101,7 +101,7 @@ source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz
         povd.patch)
 sha256sums=('1a0f4c57786008c81bcc64b3ac1bb81e75afbcdb591c0af54e0c23dd390d6b61'
             'SKIP'
-            'ff724b7d4ef0c33ad5cb0fff2422fdfa112dcb7dffe336bace567bdfea0ea925')
+            '592e39f85cd20a3ac85e44a3b42a5f4d2ab20e0c335674d580ed9b5ab34391df')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
               'D07BD8662C56CB291B316EB2F5675605C74E02CF'  # David Edmundson <davidedmundson@kde.org>

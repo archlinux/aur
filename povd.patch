@@ -1,5 +1,5 @@
 diff --git a/applets/pager/pagermodel.cpp b/applets/pager/pagermodel.cpp
-index 5685b38d21..d959c07fc2 100644
+index 5685b38d21..a88bbfe6b7 100644
 --- a/applets/pager/pagermodel.cpp
 +++ b/applets/pager/pagermodel.cpp
 @@ -20,6 +20,7 @@
@@ -92,7 +92,22 @@ index 5685b38d21..d959c07fc2 100644
      } else {
          return d->activityInfo->runningActivities().indexOf(d->activityInfo->currentActivity());
      }
-@@ -613,4 +625,25 @@ void PagerModel::computePagerItemSize()
+@@ -493,7 +505,13 @@ void PagerModel::changePage(int page)
+         }
+     } else {
+         if (d->pagerType == VirtualDesktops) {
+-            d->virtualDesktopInfo->requestActivate(d->virtualDesktopInfo->desktopIds().at(page));
++            QVariant desktopId = d->virtualDesktopInfo->desktopIds().at(page);
++
++            if (d->screen) {
++                d->virtualDesktopInfo->requestActivateOnScreen(desktopId, d->screen->name());
++            } else {
++                d->virtualDesktopInfo->requestActivate(desktopId);
++            }
+         } else {
+             const QStringList &runningActivities = d->activityInfo->runningActivities();
+             if (page < runningActivities.length()) {
+@@ -613,4 +631,25 @@ void PagerModel::computePagerItemSize()
      }
  }
  
