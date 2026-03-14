@@ -4,8 +4,8 @@
 # Contributor: Juan Francisco Miranda <jfmiranda at gmail dot com>
 
 pkgname=postman-bin
-pkgver=cc
-pkgrel=1
+pkgver=12.1.4
+pkgrel=2
 pkgdesc="Build, test, and document your APIs faster"
 provides=('postman')
 conflicts=('postman')
