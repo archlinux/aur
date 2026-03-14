@@ -2,7 +2,7 @@
 
 pkgname='netsleuth'
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple utility for calculating and analyzing IP subnet values'
 arch=('any')
 url='https://github.com/vmkspv/netsleuth'
@@ -14,6 +14,7 @@ depends=(
   'python-gobject'
 )
 makedepends=(
+  'blueprint-compiler'
   'meson'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
