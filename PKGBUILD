@@ -2,7 +2,7 @@
 # Contributor: Philipp A. <flying-sheep@web.de>
 _name=yte
 pkgname=python-$_name
-pkgver=1.9.0
+pkgver=1.9.4
 pkgrel=1
 pkgdesc='YAML template engine with Python expressions'
 arch=(any)
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(python-argparse_dataclass python-dpath python-pyyaml)
 makedepends=(python-uv-build python-build python-installer python-wheel)
 source=($_name-$pkgver.tar.gz::$url/yte/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('6b47483eab733bdecab4938c5d8bc745098d9b31f3b7d2d8d074453cb526f717')
+sha256sums=('b55072f942bfbaa37bcf67455201c14be0ff9f3f85c267bb95c39a9515cc3647')
 
 build() {
 	cd $_name-$pkgver
