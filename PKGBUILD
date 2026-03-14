@@ -3,8 +3,8 @@
 
 _pkgname="redot"
 pkgname=${_pkgname}-git
-pkgver=4.4.r68037.01acc791d7
-pkgrel=2
+pkgver=26.2.r77413.7ff80936be
+pkgrel=1
 pkgdesc="A multi-platform 2D and 3D game engine"
 arch=('i686' 'x86_64')
 _arch=''
@@ -17,12 +17,10 @@ url="https://github.com/Redot-Engine/redot-engine"
 license=('MIT')
 provides=('redot')
 conflicts=('redot-bin')
-depends=(embree3 freetype2 graphite harfbuzz harfbuzz-icu libglvnd libspeechd
-    libsquish libtheora libvorbis libwebp libwslay libxcursor libxi
-    libxinerama libxrandr mbedtls2 miniupnpc pcre2)
+depends=()
 optdepends=('pipewire-alsa: for audio support'
     'pipewire-pulse: for audio support')
-makedepends=(git alsa-lib scons wayland yasm)
+makedepends=(scons)
 options=('!debug')
 source=(
     "${_pkgname}::git+https://github.com/Redot-Engine/redot-engine.git"
