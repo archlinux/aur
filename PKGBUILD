@@ -1,13 +1,13 @@
 # Maintainer: Soupy Boy <aur@bonking.im>
 # Contributor: Antoine POPINEAU <antoine at popineau dot eu>
 
-pkgname=greetd-tuigreet-soupy-boy-git
-pkgver=1.0.1.r0.gb99246c
+pkgname=greetd-tuigreet-fork-git
+pkgver=0.10.0.r0.gb9ead11
 pkgrel=1
 
-pkgdesc='A console UI greeter for greetd'
-url='https://github.com/soupy-boy/tuigreet'
-license=(GPL3)
+pkgdesc='Stylish graphical console greeter for greetd, built with Ratatui'
+url='https://github.com/NotAShelf/tuigreet'
+license=('GPL-3.0-only')
 conflicts=(greetd-tuigreet greetd-tuigreet-git greetd-tuigreet-soupy-boy-bin)
 
 arch=(x86_64 i686 armv7 aarch64)
