@@ -3,7 +3,7 @@
 
 pkgname=kcm-fcitx
 pkgver=0.5.6
-pkgrel=3
+pkgrel=4
 pkgdesc="KDE Config Module for Fcitx"
 arch=('x86_64')
 url="https://github.com/fcitx/kcm-fcitx"
@@ -23,6 +23,7 @@ build() {
   cd build
 
   cmake ../$pkgname-$pkgver \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_LIBDIR=lib \
