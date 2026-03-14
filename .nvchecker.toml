@@ -1,5 +1,5 @@
 [python-tree-sitter-language-pack]
 source = "github"
-github = "Goldziher/tree-sitter-language-pack"
+github = "kreuzberg-dev/tree-sitter-language-pack"
 prefix = "v"
 use_latest_release = true

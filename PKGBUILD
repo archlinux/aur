@@ -6,7 +6,7 @@ pkgver=0.13.0
 pkgrel=1
 pkgdesc='Comprehensive collection of tree-sitter languages'
 arch=('x86_64')
-url='https://github.com/Goldziher/tree-sitter-language-pack'
+url='https://github.com/kreuzberg-dev/tree-sitter-language-pack'
 license=(
   'Apache-2.0'
   'BSD-2-Clause'
@@ -45,7 +45,7 @@ checkdepends=(
 )
 
 source=(
-  "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/Goldziher/tree-sitter-language-pack/archive/v${pkgver}.tar.gz"
+  "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/kreuzberg-dev/tree-sitter-language-pack/archive/v${pkgver}.tar.gz"
 )
 
 sha512sums=('d01338ef291eb34d72e8290916c094712e2e128c3340a3fa95ee141415f0d5937d500de1a96bfcade1533bf4d70df00652a585fc3e115bcca0513454d323d086')
