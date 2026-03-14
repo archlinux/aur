@@ -1,6 +1,6 @@
 # Maintainer: blackflame007 <https://github.com/blackflame007>
 pkgname=mehshell-bin
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc="Fast, parallelized zsh prompt engine written in Go"
 arch=('x86_64' 'aarch64')
