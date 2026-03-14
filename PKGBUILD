@@ -2,14 +2,14 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 # Contributor: Antoine POPINEAU <antoine at popineau dot eu>
 
-pkgname=greetd-tuigreet-soupy-boy-bin
-pkgver=1.0.1
-pkgrel=2
+pkgname=greetd-tuigreet-fork-bin
+pkgver=0.10.0
+pkgrel=1
 
-pkgdesc='A console UI greeter for greetd'
-url="https://github.com/soupy-boy/tuigreet"
-license=(GPL3)
-conflicts=(greetd-tuigreet greetd-tuigreet-git greetd-tuigreet-soupy-boy-git)
+pkgdesc='Stylish graphical console greeter for greetd, built with Ratatui'
+url="https://github.com/NotAShelf/tuigreet"
+license=('GPL-3.0-only')
+conflicts=(greetd-tuigreet greetd-tuigreet-git greetd-tuigreet-fork-git)
 
 arch=(x86_64 i686 armv7 aarch64)
 
@@ -18,10 +18,10 @@ source=("$url/releases/download/$pkgver/tuigreet-$pkgver-x86_64"
 	"$url/releases/download/$pkgver/tuigreet-$pkgver-armv7"
 	"$url/releases/download/$pkgver/tuigreet-$pkgver-aarch64"
         'tuigreet.conf')
-sha256sums=('1239acdeacad6eb55eb9a1c7cec0c40ae6da5e465ee1f576b60df7bd9e0f69d1'
-            '93b490a7cd89aa246a60042d55ca454063525964dfca62f7d22c8562a5d400cc'
-            'd6078e4f1f95bcf73ed99b5f4c328eb214692dec7efdba1150d5cb158a2e426b'
-            'cac7abbbc2937426621d093b27eb94c2b346de3dc11e5c2e1bceb4518ef7dcb7'
+sha256sums=('6771f743995d6290a4e7ca788a9ca098a4c29f1461f69a9d8b9c8b08a0739fe9'
+            '8a95bb3461148613e9a9537e6287b5069de4c3fcc3368050dd6f49a2fe0f72b4'
+            '36a08677eead337495be11393afc82f289f450c60902ed76c9a82d1ee2eab20a'
+            '39d9d826545d0648795c6cab5145da5ffbb324e4991d43449710021e0f421431'
             '8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3')
 
 package() {
