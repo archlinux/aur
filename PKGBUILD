@@ -1,8 +1,9 @@
-# Maintainer: Jared Van Bortel <cebtenzzre (at) gmail (dot) com>
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: Jared Van Bortel <cebtenzzre (at) gmail (dot) com>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts612
-pkgver=6.12.76
+pkgver=6.12.77
 pkgrel=1
 pkgdesc="LTS ${pkgver%.*} Linux"
 url='https://www.kernel.org'
@@ -25,36 +26,36 @@ makedepends=(
   python-yaml
   texlive-latexextra
 )
-options=(
-  !debug
-  !strip
-)
-_srcname=linux-$pkgver
-_srctag=v$pkgver
+options=('!debug' '!strip')
+_srcname="linux-$pkgver"
+_srctag="v$pkgver"
 source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-Default-to-maximum-amount-of-ASLR-bits.patch
-  0003-skip-simpledrm-if-nvidia-drm.modeset\=1-is.patch
+  0003-skip-simpledrm-if-nvidia-drm.modeset=1-is.patch
+  '0004-perl-5.41-precedence-warning-kernel-doc.patch'
   config  # the main kernel config file
 )
 validpgpkeys=(
-  ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
-  647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
+  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('bbb43e834c46e6bd49a5c28f22e679a937443404e1f653204d4b24929f3ad896'
+md5sums=('8355d0274edc19b453ef3a5cc8d13f1a'
+         'SKIP'
+         '6e12aeef82de5db1f202eede9ace645e'
+         '0ec6fa86283fd967c86e22c5f84616d2'
+         '8dc9cab39152a3c147c353ae6c2680c4'
+         '5942163730c4ccde467e29a9cd4b4002'
+         '030378d63753e2d818f01e0c53fb8e17')
+sha256sums=('358836ebe5caef41e7ae9492e7fbcdf5be6e53ee43c99752aebda81e1b2cff67'
             'SKIP'
             '3cf389ced2b40e6457421cb27892bf126b73032fbf1de895ecc37b13d981a17c'
             '423b2c6fbc8d6df79997550bef1b1e4f6f402b668007d150013623a83a12b49e'
             '596f8e0aef1df72a84685e8f2b8a9dde7e33b513de555fae6069ba652cbd00c1'
+            '93c42d3278164a2eaef767a43bc1fd71b452090eb361ca09b52b849338f7e3f3'
             'd117688f056c8e01d2a0fc853b77e9640036e4c2ccbedea4e14004e4e0f16f85')
-b2sums=('6692cdf6da60a3140a22ea350a1a037af4e3af0137620e3a49059b0c0ccdf886dd3d86b91ad0999a091f855410f9830a78805069fe05980e02e9be58c434a7c1'
-        'SKIP'
-        'b2e1f3544470a0ded336a8d9097b879060530d795a9b60ef5d617d16c165f3ca27424529a7c464d249ab72abcaf48d65d66d96508a7b49622ab404739ae0a918'
-        '01f1a8249983b1a52437843ce3566242b3ed1df03fcab98ec092982be9a4dc947ab0f932a6bc9ac84f85248dca479ebe193a6032cfd2b574dc6f5ca31a0190c5'
-        '410dc8911051905c5c01b47890eeff817fc180434372864cfa9ee0d77e0ff43571b9fcc3c193d562c4dcd49511edf7c6c01dde12dd0778845d1868dc435531ea'
-        'ac5c72567b9e4d5e1bcdcaeb699e82d5f01408b2bfd9feea7ee72a0b6dc939e141a02bbc1f53d8cfdbf336a0f877ee42762ae2cdeeb8c4c849d377fad58c72a2')
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
 export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
@@ -66,15 +67,25 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
-  local src
-  for src in "${source[@]}"; do
-    src="${src%%::*}"
-    src="${src##*/}"
-    src="${src%.zst}"
-    [[ $src = *.patch ]] || continue
-    echo "Applying patch $src..."
-    patch -Np1 < "../$src"
+  local _src
+  for _src in "${source[@]}"; do
+    _src="${_src%%::*}"
+    _src="${_src##*/}"
+    case "${_src}" in
+    *.patch)
+      msg2 "Applying patch $_src..."
+      patch -Np1 < "../$_src"
+      ;;
+    patch-*)
+      _src="${_src%.*}"
+      msg2 "Applying patch $_src..."
+      patch -Np1 -s < "../$_src"
+      ;;
+    esac
   done
+
+  #cd '..'; cp -pr "${_srcname}" 'a'; ln -s "${_srcname}" 'b'; cd "${_srcname}"; false
+  # diff -pNaru5 'a' 'b' > 0000-$RANDOM.patch
 
   echo "Setting config..."
   cp ../config .config
@@ -88,11 +99,11 @@ prepare() {
 build() {
   cd $_srcname
 
-  make htmldocs &
-  local pid_docs=$!
-  make all
+  nice -n1 make -j1 htmldocs < /dev/null & # SPHINXOPTS='--keep-going'
+  local _pid_docs="$!"
+  nice -n2 make all
   make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
-  wait "${pid_docs}"
+  wait "${_pid_docs}"
 }
 
 _package() {
@@ -141,24 +152,14 @@ _package() {
     X11
     Zlib
   )
-  depends=(
-    coreutils
-    initramfs
-    kmod
-  )
+  depends=(coreutils kmod initramfs)
   optdepends=(
     'wireless-regdb: to set the correct wireless channels of your country'
     'linux-firmware: firmware images needed for some devices'
     'scx-scheds: to use sched-ext schedulers'
   )
-  provides=(
-    KSMBD-MODULE
-    VIRTUALBOX-GUEST-MODULES
-    WIREGUARD-MODULE
-  )
-  replaces=(
-    wireguard-lts
-  )
+  provides=(KSMBD-MODULE VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=(wireguard-lts)
 
   cd $_srcname
   local modulesdir="$pkgdir/usr/lib/modules/$(<version)"
@@ -370,11 +371,7 @@ _package-docs() {
   install -vDm 644 LICENSES/preferred/{BSD*,MIT} -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-pkgname=(
-  "$pkgbase"
-  "$pkgbase-headers"
-  "$pkgbase-docs"
-)
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
     $(declare -f "_package${_p#$pkgbase}")
