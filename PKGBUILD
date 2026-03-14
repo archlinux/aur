@@ -5,7 +5,7 @@ pkgbase="stm32cubeclt"
 pkgname="stm32cubeclt"
 # pkgname=("stm32cubeclt" "stlink-server" "stlink-udev-rules")
 _pkgname="STM32CubeCLT"
-pkgver=1.20.0
+pkgver=1.21.0
 pkgrel=1
 _pkgdesc="A toolset for third-party integrated development environment (IDE) providers, allowing the use \
 of STMicroelectronics proprietary tools within their own IDE frameworks."
@@ -16,37 +16,41 @@ makedepends=('tar'
              'bash')
 options=('!strip')
 
-_prefix="26822"
-_date="20251117"
-_suffix="1245"
+_prefix="27995"
+_date="20260219"
+_suffix="1804"
 _pkg_name=${pkgbase}_${pkgver}
 _pkg_license_name="SLA0048_${_pkgname}.pdf"
 _pkg_sh_name="st-${_pkg_name}_${_prefix}_${_date}_${_suffix}_amd64.sh"
 _pkg_tar_name="st-${_pkg_name}_${_prefix}_${_date}_${_suffix}_amd64.tar.gz"
-_pkg_zip_name="en.${_pkg_sh_name}.zip"
+_pkg_zip_name="${_pkg_sh_name}.zip"
 
-# sync from stm32cubeide, thanks to @kumencz!
-# Download file with list of URLs to files
-_curl_req_url="https://www.st.com/content/st_com_cx/en/products/development-tools/software-development-to\
-ols/stm32-software-development-tools/stm32-ides/stm32cubeclt/_jcr_content/get-software/getsw-table-nli.no\
-cache.html/st-site-cx/components/containers/product/get-software-table-body.html"
-_curl_req="$(curl -s --compressed --cookie-jar "${srcdir}http_cookies" -H "@${srcdir}http_headers" "$_curl_req_url")"
+if [[ "$(ps -o args=$PID 2>/dev/null)" != *"--printsrcinfo"* ]]; then
+  if [ ! -f "${SRCDEST:-$startdir}/${_pkg_zip_name}" ] && [ ! -f "${startdir}/${_pkg_zip_name}" ]; then
+    xdg-open "$url" &>/dev/null &
+    notify-send -i "web-browser" "STM32CubeCLT" \
+      "Log in to st.com, download ${_pkg_zip_name} and save it to ${startdir}" 2>/dev/null || true
+    echo ""
+    echo "==> Package file not found: ${_pkg_zip_name}"
+    echo "==> Browser opened: $url"
+    echo "==> Log in, download ${_pkg_zip_name} (The Part Number is STM32CubeCLT-Lnx), save it to: ${startdir}"
+    echo "==> Press Enter once the file is saved..."
+    read -r _
+  fi
+fi
 
-# Extract actual download link to the desired file
-_pkg_url="$(grep -m 1 "${_pkg_zip_name}" <<< "$_curl_req")"
-_pkg_url="$(awk -F'"' '{print $4}' <<< "$_pkg_url")"
-_download_path="https://www.st.com""$_pkg_url"
-# echo $_download_path
+# Download cookies for fetching the license PDF
+curl -s --compressed --cookie-jar "${srcdir}http_cookies" -H "@${srcdir}http_headers" "$url" > /dev/null
 
 DLAGENTS=("https::/usr/bin/curl \
               -gqb '' --retry 3 --retry-delay 3 \
               --cookie "${srcdir}http_cookies" \
               -H "@${srcdir}http_headers" \
-              -o %o --compressed %u")
-source=("${_pkg_zip_name}"::"$_download_path"
+              -o %o -L --compressed %u")
+source=("local://${_pkg_zip_name}"
         'http_headers'
         "https://www.st.com/resource/en/license/${_pkg_license_name}")
-sha256sums=('9a10c06dc2fe5d846c8b3f876c02b9f19916bb9c2b2c5db5b24bb71c9367168a'
+sha256sums=('c9aa0d3c366278685217437675120904b2f9f58f53f79214424031efc3951358'
             '12e85339c74dc80c054062432dfc6f0eb1be3214fcb4f1fab427193f4e6f0d22'
             'SKIP')
 
@@ -54,7 +58,7 @@ sha256sums=('9a10c06dc2fe5d846c8b3f876c02b9f19916bb9c2b2c5db5b24bb71c9367168a'
 _pkgname_stlink_server="stlink-server"
 _pkgname_stlink_udev_rules="stlink-udev-rules"
 _pkgver_stlink_server="2.1.1-1"
-_pkgver_stlink_udev_rules="1.0.3-2"
+_pkgver_stlink_udev_rules="1.0.3-3"
 
 # not used, reserved.
 _pkg_stlink_server_name="${_pkgname_stlink_server}.${_pkgver_stlink_server}"

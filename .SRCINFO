@@ -1,5 +1,5 @@
 pkgbase = stm32cubeclt
-	pkgver = 1.20.0
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://www.st.com/en/development-tools/stm32cubeclt.html
 	arch = x86_64
@@ -7,10 +7,10 @@ pkgbase = stm32cubeclt
 	makedepends = tar
 	makedepends = bash
 	options = !strip
-	source = en.st-stm32cubeclt_1.20.0_26822_20251117_1245_amd64.sh.zip::https://www.st.com/bin/st/s3-software-download?s3url=publish/STM32CubeCLT-Lnx/1.20.0/en/st-stm32cubeclt_1.20.0_26822_20251117_1245_amd64.sh.zip
+	source = local://st-stm32cubeclt_1.21.0_27995_20260219_1804_amd64.sh.zip
 	source = http_headers
 	source = https://www.st.com/resource/en/license/SLA0048_STM32CubeCLT.pdf
-	sha256sums = b4eb64d33aee816091c3829602a7847b42583a3bcf59c51512d060555e66c0ed
+	sha256sums = c9aa0d3c366278685217437675120904b2f9f58f53f79214424031efc3951358
 	sha256sums = 12e85339c74dc80c054062432dfc6f0eb1be3214fcb4f1fab427193f4e6f0d22
 	sha256sums = SKIP
 
