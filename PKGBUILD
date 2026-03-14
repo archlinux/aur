@@ -4,7 +4,7 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.1.6679
-pkgrel=1
+pkgrel=2
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -16,8 +16,8 @@ optdepends=('claude-code: Claude Code CLI for agentic coding features (npm i -g 
             'scrot: Computer Use screenshots (X11, fallback: imagemagick)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.6679/claude-desktop-1.1.6679-linux.tar.gz")
-sha256sums_x86_64=('48986a84fb512ceb48fb718e29e261a6bce69312cfe76ffb00b5b7f1cba36a51')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.6679-2/claude-desktop-1.1.6679-linux.tar.gz")
+sha256sums_x86_64=('cb46a1fa9f01fa75a47c050c925cc401d124335dd90d98922faad6ea6b0bd9fd')
 options=('!strip')
 
 package() {
