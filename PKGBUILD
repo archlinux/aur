@@ -22,7 +22,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/lazybios-$pkgver/build"
+  cd "$srcdir/lazybios/build"
   make DESTDIR="$pkgdir" install
 
   install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
