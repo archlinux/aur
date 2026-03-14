@@ -7,29 +7,30 @@
 
 pkgname=roomeqwizard-beta
 _pkgname=roomeqwizard
-pkgver=5.40.beta.112
-_pkgver=5_40_beta_112-api
+pkgver=5.40.beta.118
+_pkgver=5_40_beta_118-api
 pkgrel=2
 pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses"
 arch=('x86_64' 'aarch64')
+options=('!debug')
 url="https://www.roomeqwizard.com"
 license=('custom')
-depends=('xdg-utils' 'bash' 'glibc' 'java-runtime>=8' 'alsa-lib')
+depends=('xdg-utils' 'bash' 'glibc' 'java-runtime>=11' 'alsa-lib' 'xorg-xwayland')
 makedepends=('java-environment' 'fontconfig' 'freetype2')
+conflicts=('roomeqwizard')
 source=(
     "http://www.roomeqwizard.com/installers/REW_linux_no_jre_$_pkgver.sh"
     "https://www.roomeqwizard.com/Sampledata.mdat"
 )
 sha512sums=(
-#   '921872ff4be2cd09b3ee11a7bdca8f7e838c683e450c6886530a99861b9dd877441498bf2fc671e1e0414464b78ffdc15cca7fc7ee6da01a7aa63e181e2766ad'
-    'b8225028dc65cb745f69f0e5295ede79f7c01e4c89f980e019ed8a8783bb26a199b124f01563850a1b511c0e961c380044b992f1f0f07b84607292312a40e039'
+    '90351f4427cc5c375c88d8bdd70bd28f1a1d1a5a3a7ad075aeecc99ef4e5688e4b9c39fa933b76d56335ab4fa6eb3d8fb846c6e1bb3ef015e85cb68cde90870f' 
     '79214c2c9e35dc2dfbc926b37c058ed8a67edc156823c25b353492379aa542534997b0ca94676921252d6152bfe4fb1196c7c6df16645f14ce9ffbd8e9859770'
 )
 
 package() {
   export INSTALL4J_JAVA_HOME_OVERRIDE=/usr/lib/jvm/default
 
-  sh REW_linux_no_jre_$_pkgver.sh -q -dir "$pkgdir/usr/share/java/$pkgname"  -J-Djava.util.prefs.userRoot=$srcdir/java.uprefs -J-Djava.util.prefs.systemRoot=$srcdir/java.sprefs
+  sh REW_linux_no_jre_$_pkgver.sh -q -dir "$pkgdir/usr/share/java/$pkgname"  -J-Djava.util.prefs.userRoot=$srcdir/java.uprefs -J-Djava.util.prefs.systemRoot=$srcdir/java.sprefs -J-Duser.home=${HOME}
 
   mkdir -p "$pkgdir/usr/bin" \
            "$pkgdir/usr/share/icons" \
@@ -38,7 +39,7 @@ package() {
            "$pkgdir/usr/share/applications/$pkgname"
 
 
-  ln -s "/usr/share/java/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/usr/share/java/$pkgname/$_pkgname" "$pkgdir/usr/bin/$pkgname"
   mv "$pkgdir/usr/share/java/$pkgname/EULA.html" "$pkgdir/usr/share/licenses/$pkgname/"
   cp -L "$pkgdir/usr/share/java/$pkgname/REW.desktop" "$pkgdir/usr/share/applications/$pkgname/$pkgname.desktop"
   rm "$pkgdir/usr/share/java/$pkgname/REW.desktop"
