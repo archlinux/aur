@@ -10,6 +10,13 @@ url="https://github.com/joshuar/go-hass-agent"
 license=('MIT')
 depends=('dbus' 'libcap')
 makedepends=('git' 'go')
+optdepends=('fwupd: firmware security probe'
+            'geoclue: location tracker'
+            'networkmanager: network connections and activity monitoring'
+            'pipewire: volume control and cam/mic monitoring'
+            'power-profiles-daemon: power state monitoring'
+            'upower: battery sensors'
+            'xdg-desktop-portal: running apps list and desktop settings')
 source=("go-hass-agent::git+${url}.git#commit=${_commit}?signed")
 validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194')
 b2sums=('953cdfec1db23322de555ef13a2724a46da7a67530e9087d422c803b4270acf81f49ddbb01f2e7f7202861446f0a09cc97cc1db4fbc97a5ed0df97443a651e5b')

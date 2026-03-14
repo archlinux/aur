@@ -9,6 +9,13 @@ pkgbase = go-hass-agent
 	makedepends = go
 	depends = dbus
 	depends = libcap
+	optdepends = fwupd: firmware security probe
+	optdepends = geoclue: location tracker
+	optdepends = networkmanager: network connections and activity monitoring
+	optdepends = pipewire: volume control and cam/mic monitoring
+	optdepends = power-profiles-daemon: power state monitoring
+	optdepends = upower: battery sensors
+	optdepends = xdg-desktop-portal: running apps list and desktop settings
 	source = go-hass-agent::git+https://github.com/joshuar/go-hass-agent.git#commit=75b792b?signed
 	validpgpkeys = 968479A1AFF927E37D1A566BB5690EEEBB952194
 	b2sums = 953cdfec1db23322de555ef13a2724a46da7a67530e9087d422c803b4270acf81f49ddbb01f2e7f7202861446f0a09cc97cc1db4fbc97a5ed0df97443a651e5b
