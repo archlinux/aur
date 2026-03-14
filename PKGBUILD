@@ -1,10 +1,10 @@
 # Maintainer: r3g1s <21206554+reg1z (at) user (dot) noreply (dot) github (dot) com>
 pkgname=omarchy-kali-vm
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone Kali Linux VM launcher with optional Omarchy integration"
 arch=('x86_64')
-url="https://github.com/reg1z/omarchy-kali-vm"
+url="https://github.com/r3b1s/omarchy-kali-vm"
 license=('MIT')
 depends=(
   'bash'
