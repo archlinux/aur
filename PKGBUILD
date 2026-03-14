@@ -1,17 +1,17 @@
 # Maintainer: Randall Winkhart <idgr at tutanota dot com>
 
 pkgname=lyricsfinder
-pkgver=1.6.3
-pkgrel=3
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="A cross-platform lyrics fetcher by Mediahuman"
 arch=('x86_64')
 options=('!emptydirs')
 url="https://www.mediahuman.com/lyrics-finder"
 license=('custom')
-depends=( taglib1 qt5-quickcontrols2 qt5-multimedia qt5-declarative qt5-base )
+depends=( taglib qt5-quickcontrols2 qt5-multimedia qt5-declarative qt5-base )
 
 source=('https://www.mediahuman.com/download/LyricsFinder.amd64.deb')
-sha512sums=('e2b508d90e8e1f3c4be4cccf17c34fedde9f7149bc43b673987639cb384ac219a52f9310d44ce29291c7c8f912c5e9cc2e3bdc005ebc0f831a4a966676091723')
+sha512sums=('654c1f305716581f8882833f46658a5e29ca73b892c1275057a6357cc0475fb1f41d21d4c69e3c63af2ff59ba13b18036b36b47ccb67ffabf766f0bdd9434ede')
 
 package() {
 	tar xf data.tar.zst -C "${pkgdir}"
