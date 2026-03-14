@@ -1,6 +1,6 @@
 pkgbase = clickup
 	pkgdesc = Desktop app for clickup.com
-	pkgver = 3.5.176
+	pkgver = 3.5.185
 	pkgrel = 1
 	url = https://clickup.com
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = clickup
 	depends = libxkbfile
 	depends = nss
 	options = !strip
-	source = clickup-desktop-3.5.176-x86_64.AppImage::https://desktop.clickup.com/linux
+	source = clickup-desktop-3.5.185-x86_64.AppImage::https://desktop.clickup.com/linux
 	source = terms.html::https://clickup.com/terms
-	sha256sums = cf871bd58a140afc6663afbeb0401835c0873bdf22ec18c69b9ce722bb2dcf7e
+	sha256sums = b333db858d6fb041b466ae130f623da954dae3001461fa150363b6c4fe0719e1
 	sha256sums = SKIP
 
 pkgname = clickup
