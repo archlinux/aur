@@ -1,4 +1,3 @@
-# Maintainer: VCalV
 pkgname="gourou"
 pkgver=0.8.8
 _updfcommit="6060d123441a06df699eb275ae5ffdd50409b8f3"
