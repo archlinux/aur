@@ -31,6 +31,9 @@ pkgver() {
 
 build() {
     cd "$pkgname"
+    # Reset makepkg flags — they interfere with Rust cc crate
+    # compiling bundled SQLite and Ring assembly
+    unset CFLAGS CXXFLAGS LDFLAGS
     npm install
     npm run tauri build -- --bundles deb
 }
