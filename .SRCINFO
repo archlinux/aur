@@ -1,0 +1,16 @@
+pkgbase = nirimon-bin
+	pkgdesc = Terminal-based monitor configuration TUI for the Niri Wayland compositor
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/rickycbanks/nirimon
+	arch = x86_64
+	license = MIT
+	depends = niri
+	provides = nirimon
+	conflicts = nirimon
+	source = nirimon-linux-amd64::https://github.com/rickycbanks/nirimon/releases/download/v0.4.0/nirimon-linux-amd64
+	source = nirimon-linux-amd64.sha256::https://github.com/rickycbanks/nirimon/releases/download/v0.4.0/nirimon-linux-amd64.sha256
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nirimon-bin
