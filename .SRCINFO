@@ -1,6 +1,6 @@
 pkgbase = cutlass-headers
 	pkgdesc = CUDA Templates for Linear Algebra Subroutines (headers only)
-	pkgver = 4.3.5
+	pkgver = 4.4.1
 	pkgrel = 1
 	url = https://github.com/NVIDIA/cutlass
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cutlass-headers
 	makedepends = ninja
 	depends = cuda
 	conflicts = cutlass
-	source = cutlass-headers-4.3.5.tar.gz::https://github.com/NVIDIA/cutlass/archive/refs/tags/v4.3.5.tar.gz
-	b2sums = 81e5b355199e414f8ea1a5e18fd706dbc56c85a8c203f90a6b40ff1aa398a32cfdb6d29636ac1e726be93095520226df3ebace030aae88980ac949c7f6824461
+	source = cutlass-headers-4.4.1.tar.gz::https://github.com/NVIDIA/cutlass/archive/refs/tags/v4.4.1.tar.gz
+	b2sums = 34b207f9fa2adb33b3dddf963a18fb7195e75390391b6394331c5a4be4cf4247e7868b4da1bf1e3eb2950ace6a3bfc353cb0692b21ff030ec3e324d18f7407bb
 
 pkgname = cutlass-headers
