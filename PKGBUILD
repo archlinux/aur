@@ -22,18 +22,19 @@ validpgpkeys=(
 )
 
 build() {
-	cd "$_pkgname-$pkgver-stable"
+    cd "$_pkgname-$pkgver-stable"
     ./autogen.sh
-	./configure --prefix=/usr --enable-all --enable-reproducible-build --enable-static
-	make
+    ./configure --prefix=/usr --enable-all --enable-reproducible-build
+    make
 }
 
 check() {
-	cd "$_pkgname-$pkgver-stable"
-	WOLFSSL_EXTERNAL_TEST=0 make check
+    cd "$_pkgname-$pkgver-stable"
+    WOLFSSL_EXTERNAL_TEST=0 make check
 }
 
 package() {
-	cd "$_pkgname-$pkgver-stable"
-	make DESTDIR="$pkgdir/" install
+    cd "$_pkgname-$pkgver-stable"
+    make DESTDIR="$pkgdir/" install
+    install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
