@@ -6,7 +6,7 @@ _appname=${_pkgname,,}
 pkgname=${_pkgname,,}-bin
 pkgdesc="From git log to SemVer in no time"
 
-pkgver=6.6.0
+pkgver=6.6.1
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -30,8 +30,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}-${_pkgvername}.tar.gz")
 sha256sums=('c21bbcc4afa98279e9b2be94944781d8465689c1f80dbc93c9b3cf8a2373067b'
             '3bdeb88619a256f8b8615599a67db3195028d969490c0e87a8cb4b5917bf340c')
-sha256sums_x86_64=('08bea791767eaad9dce6ec9a4b1099785fe45bd54f2fce1e63ce5889f4c3cb9f')
-sha256sums_aarch64=('07851f5277442ccf63b417fa3ac7f5f6b0447133b967024efff7523409d20705')
+sha256sums_x86_64=('613b1247794aaf541b3060d5d5d6ef53e6b7a5779b0bf446f7549ebf935a1d38')
+sha256sums_aarch64=('abd80a77ebb3f4750255378f222076bef6884be46b07ee5bb35d84a5c2d5b6fb')
 
 
 package() {
