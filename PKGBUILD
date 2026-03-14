@@ -1,6 +1,6 @@
 pkgname=lyse
-pkgver=r11.efe764e
-pkgrel=2
+pkgver=latest
+pkgrel=1
 pkgdesc="Realtime TUI lyrics for your favorite songs, directly in the terminal."
 arch=('any')
 url="https://github.com/snoowfall/lyse"
