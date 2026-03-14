@@ -3,10 +3,10 @@ _pkgname=voiden
 
 pkgname=${_pkgname}-appimage
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Voiden API Client"
 arch=('x86_64')
-url="https://www.voiden.md"
+url="https://voiden.md"
 license=('Apache-2.0')
 options=('!strip' '!debug') # will not function if makepkg is allowed to strip chars from binary
 _appimage=Voiden-${pkgver}.AppImage
