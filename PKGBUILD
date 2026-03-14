@@ -42,6 +42,10 @@ exec ./cold_start "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/cold-start"
 
+    # Icon
+    install -Dm644 "cold-start-nx-$pkgver/icon.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/cold-start.png"
+
     # Desktop entry
     install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/cold-start.desktop" << 'DESKTOP'
 [Desktop Entry]
