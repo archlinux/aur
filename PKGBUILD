@@ -19,6 +19,8 @@ sha256sums=('SKIP')
 
 build() {
   cd "bifrost-$pkgver"
+  make deps
+
   make build
 }
 
