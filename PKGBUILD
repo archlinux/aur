@@ -1,7 +1,7 @@
 # Maintainer: tuanapi <tuanapi@proton.me>
 _pkgname=openanime
 pkgname="${_pkgname}-bin"
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc="Unofficial OpenAnime Linux istemcisi - WebGPU/Vulkan destekli"
 arch=('x86_64')
@@ -32,11 +32,13 @@ Version=1.0
 Type=Application
 Name=OpenAnime
 Comment=WebGPU destekli anime izleme uygulaması
-Exec=${_pkgname}
+Exec=${_pkgname} %u
 Icon=${_pkgname}
 Terminal=false
 Categories=AudioVideo;Video;Player;
+MimeType=x-scheme-handler/openanime;
 StartupWMClass=OpenAnime
+PrefersNonDefaultGPU=true
 EOF
 
     # 4. Extract and install icon from AppImage
