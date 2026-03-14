@@ -1,13 +1,14 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _name=qiskit-addon-utils
 pkgname=python-${_name}
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Utilities to support workflows leveraging Qiskit addons"
 arch=(any)
 url=https://github.com/Qiskit/qiskit-addon-utils/
 license=(Apache-2.0)
 depends=(
+    blas-openblas
     python-numpy
     python-qiskit
     python-rustworkx
@@ -20,9 +21,10 @@ makedepends=(
 checkdepends=(
     python-pytest
     python-qiskit-qasm3-import
+    python-samplomatic
 )
 source=($_name-$pkgver.tar.gz::https://github.com/Qiskit/$_name/archive/refs/tags/$pkgver.tar.gz)
-b2sums=('d9f85dbb1e19ed017289ccee59f465afb38cad9afd4317de47a0735b6e0d796c03fc4ffa33da0c005c918cbbb605003e2320d220890c367f31d0033c8003153f')
+b2sums=('e173b6499e7aeda17bc69d64eb42498e062db0c182d049936169e137390b02f6b6e895889b8e42c4bf5ac12eedba0613bed98213c410fb7e5ba49685c4ad4fe1')
 
 build() {
     cd $_name-$pkgver
@@ -31,10 +33,10 @@ build() {
 
 check() {
     cd $_name-$pkgver
-    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-    python -m installer --destdir=../test_dir dist/*.whl
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
     rm -rf ${_name//-/_}
-    PYTHONPATH="$PWD/../test_dir/usr/lib/python$python_version/site-packages" pytest test
+    test-env/bin/python -P -m pytest -o addopts="" test
 }
 
 package() {
