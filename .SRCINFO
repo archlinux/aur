@@ -1,13 +1,13 @@
 pkgbase = ddc-mode-switcher
 	pkgdesc = Switch dual-mode monitor display modes via DDC/CI — toggle or Steam wrapper
-	pkgver = 2.1.0
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/Gunther-Schulz/display-mode-switcher
 	arch = any
 	license = MIT
 	depends = ddcutil
 	optdepends = mutter: gdctl for res/scale restore on GNOME
-	source = https://github.com/Gunther-Schulz/display-mode-switcher/archive/refs/tags/v2.1.0.tar.gz
-	sha256sums = 75bda330c9ee32f03f4cb37f1947502944ad7ff42900c1f4bf006a83aaf948f7
+	source = https://github.com/Gunther-Schulz/display-mode-switcher/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = b7d2ec73a0d4bd7304be88bf1f854ad05a111b784c14ea319eac5c3086c71409
 
 pkgname = ddc-mode-switcher
