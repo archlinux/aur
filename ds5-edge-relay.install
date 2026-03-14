@@ -1,0 +1,11 @@
+post_install() {
+    udevadm control --reload-rules
+    udevadm trigger
+    echo "Add your user to input group: sudo usermod -aG input $USER"
+    echo "Enable autostart: systemctl enable --now ds5-edge-relay"
+}
+post_upgrade() { post_install; }
+pre_remove() {
+    systemctl stop ds5-edge-relay 2>/dev/null || true
+    systemctl disable ds5-edge-relay 2>/dev/null || true
+}
