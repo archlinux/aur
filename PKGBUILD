@@ -1,7 +1,7 @@
 # Maintainer: exu <aur _a_ frm01 _d_ net>
 
 pkgname=streamrip
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='A scriptable stream downloader for Qobuz, Tidal, Deezer and SoundCloud.'
 arch=(any)
@@ -32,7 +32,7 @@ makedepends=(git
   python-poetry)
 optdepends=('ffmpeg: Additional functionality')
 source=(git+https://github.com/nathom/streamrip.git#tag=v$pkgver)
-sha256sums=('SKIP')
+sha256sums=('c1832be3d74bb67068f61874b5c015447259305c6b7c9a70940217573a70f18d')
 
 pkgver() {
   cd streamrip
