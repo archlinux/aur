@@ -1,6 +1,6 @@
 pkgbase = btrfs-file-history-git
 	pkgdesc = Track file and directory lifecycle across btrfs snapshots
-	pkgver = r4.004054a
+	pkgver = r9.98db6f2
 	pkgrel = 1
 	url = https://gitlab.com/fkzys/btrfs-file-history
 	arch = any

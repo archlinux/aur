@@ -1,6 +1,6 @@
 # Maintainer: fa5e4658010be730
 pkgname=btrfs-file-history-git
-pkgver=r4.004054a
+pkgver=r9.98db6f2
 pkgrel=1
 pkgdesc="Track file and directory lifecycle across btrfs snapshots"
 arch=('any')
