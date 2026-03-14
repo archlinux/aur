@@ -3,7 +3,7 @@
 _pkgauthor=dd86k
 _pkgname=ddhx
 pkgname=${_pkgname}-bin
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Console hexadecimal file viewer"
@@ -20,8 +20,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}.tar.gz")
 sha256sums=('6c1491e43ffaa71c230ffc0adfe9cf31b3c9b38bf41dfd02143f8901b976af2a'
-            'b15c1f4f73c4202b111aa49669bf69c15c5045a985ec89d2dc83feaddbd52595')
-sha256sums_x86_64=('63c17f7abaac6da8254a89c56a16a3d4860cd5b7662efebff61f0d9a94e583df')
+            'f41fe66f8e1921e921d292fbb07c401040f5c76bf81691f2fc47bd0a5506cc63')
+sha256sums_x86_64=('d975c8e736a64564aad913f93ba6bdee9a67ddcb466e3a21b6802913401b6b4a')
 
 
 package() {
