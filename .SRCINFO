@@ -1,0 +1,10 @@
+pkgbase = mvjpngn
+	pkgdesc = Prints Something
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	source = mvjpngn
+	sha256sums = SKIP
+
+pkgname = mvjpngn
