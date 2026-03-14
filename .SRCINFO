@@ -1,7 +1,7 @@
 pkgbase = falcond
 	pkgdesc = Advanced Linux gaming performance daemon
-	pkgver = 2.0.0
-	pkgrel = 3
+	pkgver = 2.0.1
+	pkgrel = 1
 	url = https://git.pika-os.com/general-packages/falcond
 	install = falcond.install
 	arch = x86_64
@@ -13,8 +13,8 @@ pkgbase = falcond
 	depends = sudo
 	optdepends = scx-scheds: SCX Scheduler Integration
 	conflicts = gamemode
-	noextract = falcond-2.0.0.tar.gz
-	source = falcond-2.0.0.tar.gz::https://git.pika-os.com/general-packages/falcond/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = d2f9e21b680e485d69a8b8fa962f8b2d4590d259083f0df17b831c7b71f26894
+	noextract = falcond-2.0.1.tar.gz
+	source = falcond-2.0.1.tar.gz::https://git.pika-os.com/general-packages/falcond/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = 62a4f183e4bdcfe3980e42e77e8d48f04269a422bb51f220f15a002a4301095b
 
 pkgname = falcond
