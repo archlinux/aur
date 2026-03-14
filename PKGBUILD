@@ -3,7 +3,7 @@
 
 _pkgname="rbspy"
 pkgname="${_pkgname}-bin"
-pkgver=0.42.1
+pkgver=0.43.0
 pkgrel=1
 pkgdesc="Sampling profiler for Ruby"
 arch=(
@@ -39,8 +39,8 @@ source_x86_64=(
 )
 sha256sums=('efd80fe8f170fd99b66d575ee1c4de9b3914b2ceff6bb607c1156fe7c88a90d6'
             '5705baf37fec97f83ce5e9624118a3479c4b1ed15f56e168c7f020700331a5df')
-sha256sums_aarch64=('8fecd9b7a59d97a5a0a9b3feba85e5d28d64432985efc42978b899cc9ce69e97')
-sha256sums_x86_64=('2983936cef96390cb2dc7b058a27ac559adb4e8c17a4a81a39ca6be88c8b16b8')
+sha256sums_aarch64=('c903a4930a2d4942766092f42769b96123b7d941d7eb53a755a10f88cd04314e')
+sha256sums_x86_64=('fdef65dad320c261daba338b06b3ffff2a27c6362eca804b3ae4be02da626604')
 
 package() {
   cd "${srcdir}"
