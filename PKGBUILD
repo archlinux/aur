@@ -12,7 +12,7 @@ source=("https://github.com/LazySeldi/lazybios/releases/download/v$pkgver/lazybi
 sha256sums=('fe0f4b54a8834061638cf77ce70f3faeaa49f77436b8c08951b72f24d1a9e26d')
 
 build() {
-  cd "$srcdir/lazybios-$pkgver"
+  cd "$srcdir/lazybios"
   mkdir -p build && cd build
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
