@@ -3,7 +3,7 @@
 pkgname=wonderwall
 pkgver=8.1.0
 pkgrel=1
-pkgdesc="WonderWall - Wallpaper browser and downloader for Wallhaven.cc"
+pkgdesc="WonderWall - Wallpaper browser and downloader for Linux and Windows Desktop"
 arch=('x86_64')
 url="https://snapcraft.io/wonderwall"
 license=('LicenseRef-proprietary')
