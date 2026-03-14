@@ -1,0 +1,15 @@
+pkgbase = 8fetch
+	pkgdesc = A minimal system information fetch tool
+	pkgver = 2
+	pkgrel = 1
+	url = https://github.com/quinnyfoco-design/8fetch
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = gcc
+	depends = bash
+	source = git+https://github.com/quinnyfoco-design/8fetch.git
+	sha256sums = SKIP
+
+pkgname = 8fetch
