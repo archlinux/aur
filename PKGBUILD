@@ -1,8 +1,8 @@
 # Maintainer: pcrab <pcrab at pcrab dot xyz>
 
 pkgname=alire-bin
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Command-line tool from the Alire project and supporting library "
 url="https://github.com/alire-project/alire"
 arch=("x86_64")
@@ -12,7 +12,7 @@ source=(
     "${pkgname}_${pkgver}.zip::https://github.com/alire-project/alire/releases/download/v${pkgver}/alr-${pkgver}-bin-x86_64-linux.zip"
 )
 sha256sums=(
-    "579de127341a1a684e07410b8b7a15ea7c2b39c47fd1a21179202203afe4be23"
+    "e3b32cb0afe981b23d1a68da77452cf81ee1d82de8ebaf01c5e233be8b463fbe"
 )
 
 package() {
