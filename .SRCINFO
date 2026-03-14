@@ -1,7 +1,7 @@
 pkgbase = cmdcreate
 	pkgdesc = Allows you to create custom commands for your custom scripts
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/owen-debiasio/cmdcreate
 	arch = any
 	license = GPL3
