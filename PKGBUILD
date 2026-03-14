@@ -1,6 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=libsbml
-pkgver=5.20.5
+pkgver=5.21.0
 pkgrel=1
 pkgdesc="XML-based description language for computational models in systems biology"
 url="https://github.com/sbmlteam/libsbml"
@@ -10,15 +10,8 @@ depends=('libxml2')
 optdepends=('bzip2' 'python' 'perl' 'ruby' 'java-runtime') # 'octave' 'mono'
 makedepends=('cmake' 'swig' 'python' 'perl' 'ruby' 'java-environment') # 'octave', 'mono'
 options=('!libtool')
-source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz
-  fix-gcc15.patch::https://github.com/tim-gromeyer/html2md/commit/b77a8a8516dc4112a9c7f16bc7af04fcca7bda65.patch)
-sha256sums=('21c88c753a4a031f157a033de3810488b86f003e684c6ca7aa3d6e26e7e0acfc'
-            'aa23cb077e1bd98ba87a9dfc89fd3b837d8819ba466ed93e8ba306de5f31b3a4')
-
-prepare() {
-  cd $pkgname-$pkgver/src/sbml/html2md
-  patch -p2 < "$srcdir"/fix-gcc15.patch
-}
+source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
+sha256sums=('95236a4c6f9f117b8692d4c0721c592c6e3f726cd1ca4f3d8c2af5ab047ddcb7')
 
 build() {
   cd $pkgname-$pkgver
