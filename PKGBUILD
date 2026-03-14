@@ -1,7 +1,7 @@
 # Maintainer: Nauris Steins <me@naurissteins.com>
 pkgname=kwybars-git
 _repo=Kwybars
-pkgver=0.1.2.r0.g0000000
+pkgver=0.1.3.r0.g0000000
 pkgrel=1
 pkgdesc="Desktop audio visualizer for Wayland that renders real-time audio bars on screen (latest git)"
 arch=('x86_64')
