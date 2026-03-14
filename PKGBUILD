@@ -1,5 +1,5 @@
 pkgname=tux
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Simple TUI application launcher written in C"
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/JulB3y/tux"
 license=('MIT')
 depends=()
 source=("https://github.com/JulB3y/tux/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('be9135b0a8126c24643a3ef8a1d615994f0098ceb810c04ce5712238c16782d3')
+sha256sums=('d1dc958dc833ed47b6c004ee9574564e16fd0f3905a220fa316f41094ac52e6d')
 
 build() {
     cd "$srcdir/tux-$pkgver"
