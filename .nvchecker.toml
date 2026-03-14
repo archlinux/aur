@@ -1,0 +1,5 @@
+[ghgrab-bin]
+source = "github"
+github = "abhixdd/ghgrab"
+use_latest_release = true
+prefix = "v"

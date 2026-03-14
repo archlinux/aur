@@ -1,0 +1,22 @@
+pkgbase = ghgrab-bin
+	pkgdesc = A simple, pretty terminal tool that lets you search and download files from GitHub without leaving your CLI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/abhixdd/ghgrab
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ghgrab
+	conflicts = ghgrab
+	source = README-1.0.0.md::https://raw.githubusercontent.com/abhixdd/ghgrab/v1.0.0/README.md
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/abhixdd/ghgrab/v1.0.0/LICENSE
+	sha256sums = 9124fa5a70fbc0b7077f7afe530572705deef5666ba2d646a9f5d7cfbcaa8949
+	sha256sums = 2447d1e56a881a12855aa080ed2fcb491b5c23a4dfb72a90c5e591df811615b0
+	source_x86_64 = ghgrab-x86_64-1.0.0::https://github.com/abhixdd/ghgrab/releases/download/v1.0.0/ghgrab-linux
+	sha256sums_x86_64 = 9f3f625c2cd60e8e3d9083aa2735caca99df44a528bb33c159e47cb86c89e7fb
+	source_aarch64 = ghgrab-aarch64-1.0.0::https://github.com/abhixdd/ghgrab/releases/download/v1.0.0/ghgrab-linux-arm64
+	sha256sums_aarch64 = ea937ff1dde6018936ab0b9182dbf265b87ea6f3dd4df04e8687f64368cf481b
+
+pkgname = ghgrab-bin
