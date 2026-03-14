@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=zip-password-finder
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="Find the password of protected ZIP files"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Apache-2.0')
 depends=('bzip2')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('4f11579a6a54208d4fd1955ac9cd291f44035ecbaf2bbeecfd79265b6fa59ea5ceecf5974a63509391ee8bab39ccf2c7588cae24734daa4075d98dce83cec3e0')
+sha512sums=('78ec95812077cad2d63c99327cc9a7f3c7814d6b7ff947f04e9e747abb0770c344721faf1331aa48876375208086730a46802c6c9c7be16925fe4492716aa873')
 options=('!lto')
 
 prepare() {
