@@ -3,15 +3,14 @@
 # Contributor: Denis A. Altoé Falqueto <denisfalqueto@gmail.com>
 pkgname=safesignidentityclient
 pkgver=4.0.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Smart card PKCS#11 provider and token manager"
 arch=('x86_64')
 url="https://certificaat.kpn.com/installatie-en-gebruik/installatie/pas-usb-stick/linux/"
 license=('custom:copyright')
-conflicts=('safesign-lib')
 options=(!debug)
 depends=('gcc-libs' 'glib2' 'glibc' 'hicolor-icon-theme' 'pcsclite' 'libsm' 'libx11' 'cairo' 'pango'
-         'gdk-pixbuf2' 'at-spi2-core' 'gtk3' 'libxxf86vm' 'openssl-1.1' 'gdbm')
+         'gdk-pixbuf2' 'at-spi2-core' 'gtk3' 'libxxf86vm' 'openssl' 'gdbm')
 optdepends=('ccid: Generic support for CCID devices',
             'acsccid: ACS CCID PC/SC driver',
             'scmccid: binary driver for the SCM Smart Card Readers')
