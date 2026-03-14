@@ -1,0 +1,23 @@
+pkgbase = tuxedo-power-profiles-adapter-git
+	pkgdesc = DBus adapter enabling desktop environments to control TUXEDO power profiles via the freedesktop power-profiles dbus interface
+	pkgver = r1.5f448ad
+	pkgrel = 1
+	url = https://github.com/olwig/tuxedo-power-profiles-adapter
+	install = pkg.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python-dbus-next
+	depends = python-toml
+	depends = tuxedo-control-center
+	provides = tuxedo-power-profiles-adapter
+	provides = power-profiles-daemon
+	conflicts = tuxedo-power-profiles-adapter
+	conflicts = power-profiles-daemon
+	backup = etc/tuxedo-power-profiles-adapter/config.toml
+	source = git+https://github.com/olwig/tuxedo-power-profiles-adapter.git#branch=main
+	source = https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/archive/0.30/power-profiles-daemon-0.30.tar.bz2
+	sha256sums = SKIP
+	sha256sums = 528ee5b8ca0a27d8d66128ebf850e23be9571dc130cf2a82dd2463dac7d3a92f
+
+pkgname = tuxedo-power-profiles-adapter-git
