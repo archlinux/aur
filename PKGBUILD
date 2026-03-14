@@ -3,7 +3,7 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 _distname=CPAN-Uploader
 pkgname=perl-cpan-uploader
-pkgver=0.103018
+pkgver=0.103019
 pkgrel=1
 pkgdesc="upload things to the CPAN"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('perl-getopt-long-descriptive'
          'perl-term-readkey')
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/R/RJ/RJBS/$_distname-$pkgver.tar.gz")
-md5sums=('685e54e770aedaaca38c333212709e4c')
+md5sums=('6315c744112143c056f99be9b3ebba2a')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
