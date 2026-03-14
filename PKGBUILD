@@ -6,24 +6,21 @@
 
 pkgname=albion-online-launcher-bin
 pkgver=1.0.34.551
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="The first true cross-platform Sandbox MMO -- launcher client"
 url="https://albiononline.com/"
 arch=('x86_64')
 license=('custom')
 groups=('albion')
+# Use bundled launcher libs (Qt/SDL/XCB stack) to avoid ABI mismatches
+# with system Qt that caused runtime symbol lookup errors.
 depends=(
   'libgl'
   'alsa-lib'
-  'libxcb'
-  'libxkbcommon'
-  'sdl2'
-  'qt5-webengine'
-  'xdelta3'
   'zenity'
 )
-makedepends=(chrpath)
+makedepends=()
 #checkdepends=()
 #optdepends=()
 source=($pkgname-$pkgver::"https://live.albiononline.com/clients/20260311101310/albion-online-setup"
@@ -36,14 +33,7 @@ sha256sums=('ca723d460951a1f1036cd42db4176cc41a8c183cc749a4d04d97f92a26030a9b'
             '7ffa01077d3ebbd80cefd3e3f185e39400540b2d38d2c1598eb87046d572774e')
 
 prepare() {
-  chrpath -d "${srcdir}/data/launcher/Albion-Online"
-
   pushd "${srcdir}/data/launcher"
-  rm libQt5* qt.conf xdelta3 QtWebEngineProcess libicu* \
-     libSDL2-2.0.so.0 libSDL2-2.0.so \
-     libcrypto.so libssl.so libxkbcommon* libxcb*
-
-  rm -r resources plugins translations
   chmod 775 ./*
   chmod 664 version.txt
   popd
