@@ -1,13 +1,13 @@
 pkgbase = rbspy-bin
 	pkgdesc = Sampling profiler for Ruby
 	pkgver = 0.43.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rbspy.github.io
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	depends = ruby>=1.9.3
 	provides = rbspy
 	conflicts = rbspy

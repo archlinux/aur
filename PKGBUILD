@@ -4,7 +4,7 @@
 _pkgname="rbspy"
 pkgname="${_pkgname}-bin"
 pkgver=0.43.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sampling profiler for Ruby"
 arch=(
   'aarch64'
@@ -16,8 +16,8 @@ license=(
   'MIT'
 )
 depends=(
-  'gcc-libs'
   'glibc'
+  'libgcc'
   'ruby>=1.9.3'
 )
 provides=(
