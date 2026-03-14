@@ -10,9 +10,9 @@ pkgbase = miru-go-bin
 	provides = miru
 	arch = aarch64
 	source_aarch64 = https://github.com/ka2n/miru/releases/download/v0.0.22/miru_v0.0.22_linux_arm64.tar.gz
-	sha256sums_aarch64 = 3bc6d682059119f39227dfd4476aac13dd50e25b7ba2379b561db3c3ff135aae
+	sha256sums_aarch64 = f5ac6528faf737951c7923d7e5ddef66f17bce4b4418dd74bf024203264adcc1
 	arch = x86_64
 	source_x86_64 = https://github.com/ka2n/miru/releases/download/v0.0.22/miru_v0.0.22_linux_amd64.tar.gz
-	sha256sums_x86_64 = 0038eceb9af41f442a24d425cf7e233802f4bf5737e8ad0d286e2c71bcdfd393
+	sha256sums_x86_64 = 6327a2d685ba481c829a7a6d1b4591d8d84d70858315c353079f32408e7025e5
 	
 pkgname = miru-go-bin
