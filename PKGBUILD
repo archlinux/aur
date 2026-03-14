@@ -14,13 +14,13 @@ depends=(
 )
 makedepends=(
     'rust'
-    'cargo'
     'nodejs'
     'npm'
     'git'
 )
 provides=('wrystr')
 conflicts=('wrystr')
+options=('!debug')
 source=("$pkgname::git+https://github.com/hoornet/wrystr.git")
 sha256sums=('SKIP')
 
@@ -44,9 +44,18 @@ package() {
     install -Dm755 "src-tauri/target/release/wrystr" \
         "$pkgdir/usr/bin/wrystr"
 
+    # Strip build paths from binary (fixes $srcdir reference warning)
+    strip --strip-unneeded "$pkgdir/usr/bin/wrystr"
+
+    # Icons
+    install -Dm644 "src-tauri/icons/32x32.png" \
+        "$pkgdir/usr/share/icons/hicolor/32x32/apps/wrystr.png"
     install -Dm644 "src-tauri/icons/128x128.png" \
         "$pkgdir/usr/share/icons/hicolor/128x128/apps/wrystr.png"
+    install -Dm644 "src-tauri/icons/128x128@2x.png" \
+        "$pkgdir/usr/share/icons/hicolor/256x256/apps/wrystr.png"
 
+    # Desktop entry
     install -Dm644 /dev/stdin \
         "$pkgdir/usr/share/applications/wrystr.desktop" << 'EOF'
 [Desktop Entry]
