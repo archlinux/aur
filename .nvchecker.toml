@@ -2,3 +2,4 @@
 source = "git"
 git = "https://github.com/jupyterhub/nbgitpuller.git"
 prefix = "v"
+exclude_regex = ".*(a|b).*"
