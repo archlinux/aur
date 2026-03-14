@@ -1,0 +1,15 @@
+pkgbase = ydrive
+	pkgdesc = A Yazi-inspired TUI file manager for Google Drive
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/guilherme1628/ydrive
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = cmake
+	depends = gcc-libs
+	source = ydrive-1.0.0.tar.gz::https://github.com/guilherme1628/ydrive/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ydrive
