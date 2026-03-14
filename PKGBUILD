@@ -1,7 +1,7 @@
 # Maintainer: labricecat <labricecat@duck.com>
 
 pkgname='lrc-lrc-git'
-pkgver=r60.4a26285
+pkgver=r64.aa604c2
 pkgrel=1
 pkgdesc="Labricecat Relay Chat"
 arch=('x86_64')
@@ -29,4 +29,7 @@ package() {
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 
 	install -Dm755 build/lrc "$pkgdir/usr/bin/lrc" 
+	
+    install -Dm644 src/*.h -t "$pkgdir/usr/include/lrc"
+    install -Dm644 src/api/*.h -t "$pkgdir/usr/include/lrc/api"
 }
