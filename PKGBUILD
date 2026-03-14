@@ -1,11 +1,11 @@
 # Maintainer: Sibren Vasse <arch@sibrenvasse.nl>
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
-pkgver=7.1.90
+pkgver=7.1.110
 pkgrel=1
 _mpris_ver=2.1.5
 # Commit hash for aunetx/deezer-linux for patches
-_patch_commit=74e5c3e2638c00039242d10d466480fb835f0cd4
+_patch_commit=9cbe22284685c09d0c41f7f4d68fdb64fb4382aa
 pkgdesc="A proprietary music streaming service"
 arch=('any')
 url="https://www.deezer.com/"
@@ -36,25 +36,25 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
     # Local patches
     "99-systray-icon.patch"
 )
-sha256sums=('ea89db25029a457bedaed77588fe6912be65e8fc89755ac18a1daf7e11b909bf'
+sha256sums=('a383432ef8e7a1ced5a952c01a5b58eb0637deaf4bcb13ab58877d30af244036'
             '41a32f7e595a52c260aa872e8273430d83e4c5fcc8e529e21afa4dab3d6b1d9c'
             '3da0c64c3d9216286601e0a28714e37a4bfaf9f56f35856da75986dfa2eba8fb'
             '951c80c9dc4848b31a5fcc9655b005f3a218b1ff735396168c13922ac658c83b'
             'fe9bab50ef433516105ed2f2c349736c0be87c2f75f8d18bf1f011b2115019c1'
             '181016c614fc62595d604d336cdb43c40645d7cc66a35acaf562c9af26177a6e'
-            '0d0034a367fb4e70849b604a2ab35d5ced0dccb67ad16c231783acfc9b8f64ee'
-            'a369f25a29b43112cb80873d8e1691a66ea1273fd13507d1e698223bb6233a2b'
-            '77eee637ad6f2571169a72f2dda125e004f4ed8471e4de71d7d0175772600cde'
+            '10f35e6f22e051203310dd98a821edbabf5dc4cc23af1d44146ea9be9496db80'
+            '171fd58d2eed2ea90ae0a50e867625203c9042e65ab9c9ce07c5e3ad3e6754bb'
+            'd0c246522cdf5c253f7a0583097337ef8c03c558b129f28d4fe29ee26eaacb01'
             'a5cda0227476a21f10cb98e6ccde1e53b8dbdfcfdf3a05eb0838f2562bbe4ace'
-            '693ead502f9a59ef907aa5a9bfd972069a521b9f3256ec9fe8bda4d46f6c5934'
-            'a95a35315d00c353be2aae8cacaab22283377bb0d3177a22c18c220b8f5ece69'
-            'd1fe858c87e1d8f36c16b8ce185052e182196e06174f27f9ce5112762282d3d8'
-            '81543bb13c0977890c634f8ac150a451a509fc5acecaf1ab6a2abfa50493617d'
-            '70daf38a2c14b13e7e1f374ff4ab9220f4e356148eeaf5d9b08b104aaaed0e91'
-            'ab25994396bc15cd375ee243c3adffee62202381f45808ceee8a67c149f82fb1'
-            '6681e628769fe2267a976d25f07036fe8e6dbc4f59b301d9d7533848fc53dc7b'
+            'd2bb57eb4ee458e6c310392a6dbb0fa2ca4d14b9011025968b2c52554de5f31f'
+            '44161a21b3aced9d4f6e78bbad0ecca48568fc083283dcffc63a4af050275741'
+            'f8af7fe9b406b945f23e3a52b68ac5e9d04ecfef99930c20c591daa01766c2b2'
+            'fdc2b1b89c8692608e5a824d29a59d96fda5900113c4fb86f692dfc2c12512fa'
+            '2ca84b1a545be3934e00f0432239b45550f1eb84770131be2d78d0d794fad99c'
+            '19bf25afb50807b3e5ce7ceb9b9fa93a0e0760c18a783788a9cb0cdd91f330d3'
+            '593eaa17fae1360ebd2ace36c4760ac7ef8bb6696db9e1d70983d916f5c69f6e'
             '3ffd80a16d5c30875a12093faec92881f2c004b0bf49e9ba79f70b0f199c7bbd'
-            'b061e0eae99322c15e55839c45d86783e64c9851f1ec4608810ade4280503ee5'
+            '02f8fb4b8101d7a856cdd82ef17a54bb4de02adcc1de89c5ec7d8bfd9293d65d'
             '2362c52147cf67759388ba6685e2add32c5bcfcdbdbca8e0990f58cafa0392de')
 
 prepare() {
