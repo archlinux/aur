@@ -1,0 +1,17 @@
+pkgbase = miru-go
+	pkgdesc = A command-line tool for viewing package documentation with a man-like interface
+	pkgver = 0.0.22
+	pkgrel = 1
+	url = https://github.com/ka2n/miru
+	changelog = CHANGELOG.md
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	optdepends = github-cli
+	optdepends = glab
+	source = miru-go-0.0.22.tar.gz::https://github.com/ka2n/miru/archive/v0.0.22.tar.gz
+	sha256sums = 6ec57ea7953e5928d4ff247043b2ef8fb0539fb52909e090b66816436ce785a4
+
+pkgname = miru-go
