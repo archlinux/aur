@@ -1,29 +1,18 @@
 pkgbase = wine-nine
-	pkgdesc = Wine nine libraries to be used with Wine 3.x
-	pkgver = 4.0.0.2
+	pkgdesc = Gallium Nine Standalone
+	pkgver = 0.10
 	pkgrel = 1
 	url = https://github.com/iXit/wine-nine-standalone
-	install = wine-nine.install
 	arch = x86_64
-	license = LGPL
-	makedepends = autoconf
-	makedepends = ncurses
-	makedepends = bison
-	makedepends = perl
-	makedepends = flex
-	makedepends = gcc
+	license = LGPL2
+	makedepends = git
+	makedepends = filesystem
+	makedepends = lib32-mesa
 	makedepends = wine
-	makedepends = libx11
-	makedepends = lib32-libx11
-	makedepends = libxext
-	makedepends = lib32-libxext
-	makedepends = libxcb
-	makedepends = lib32-libxcb
-	makedepends = mesa
-	depends = mesa
-	options = staticlibs
-	source = https://github.com/iXit/wine-nine-standalone/archive/v0.2.tar.gz
-	sha1sums = e1ef2e2f00ec84f6a4a4e7f5a38a9f2c92ffff4a
+	makedepends = meson
+	source = git+https://github.com/iXit/wine-nine-standalone.git#tag=v0.10
+	sha256sums = 9329efed6e8f8d2a73f12b9fb8ce3e65748c60dde0122cad2d4e2a3695948c36
 
 pkgname = wine-nine
-
+	depends = lib32-mesa
+	depends = wine
