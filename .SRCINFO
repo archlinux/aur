@@ -1,0 +1,18 @@
+pkgbase = python-dashscope
+	pkgdesc = Python sdk for dashscope
+	pkgver = 1.25.13
+	pkgrel = 1
+	url = https://github.com/dashscope/dashscope-sdk-python
+	arch = any
+	license = Apache 2.0
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-aiohttp
+	depends = python-requests
+	depends = python-websocket-client
+	depends = python-cryptography
+	depends = python-certifi
+	source = https://files.pythonhosted.org/packages/py3/d/dashscope/dashscope-1.25.13-py3-none-any.whl
+	sha256sums = 03e7ce41954bacc3786ec3f45d5dc01e1a8ccf2741503ce3dc9e4ce60866386e
+
+pkgname = python-dashscope
