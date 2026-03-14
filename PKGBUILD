@@ -1,7 +1,8 @@
-#Maintainer: Dråfølin <derg@drafolin.ch>
+#Maintainer: quinnri <qheath@bu.edu>
+#Contributor: Dråfølin <derg@drafolin.ch>
 
 pkgname=high-tide-git
-pkgver=1.1.0.r1.ga2095c9
+pkgver=1.2.0.r24.ga662d6c
 pkgrel=1
 pkgdesc="Linux client for TIDAL streaming service"
 url="https://github.com/Nokse22/high-tide"
@@ -25,10 +26,10 @@ depends=(
   python-gobject
   'python-tidalapi>=0.8.6'
   xdg-desktop-portal
+  python-pypresence
 )
 optdepends=(
   'alsa-utils: Advanced details in ALSA device picker'
-  'python-pypresence>=4.3.0.r27.gd6709d3: Discord Rich Presence support'
 )
 makedepends=(
   blueprint-compiler
@@ -41,7 +42,8 @@ b2sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  ( set -o pipefail
+  (
+    set -o pipefail
     git describe --tags --long --abbrev=7 2>/dev/null | sed 's/v//;s/\([^-]*-g\)/r\1/;s/-/./g'
   )
 }
@@ -56,7 +58,7 @@ build() {
 }
 
 check() {
-  meson test -C build --print-errorlogs ||:
+  meson test -C build --print-errorlogs || :
 }
 
 package() {
