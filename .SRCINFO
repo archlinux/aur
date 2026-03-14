@@ -1,6 +1,6 @@
 pkgbase = simple-code-gui-bin
 	pkgdesc = Multi-backend AI coding assistant GUI supporting Claude Code, Gemini CLI, Codex, OpenCode, and Aider
-	pkgver = 1.3.44
+	pkgver = 1.3.58
 	pkgrel = 1
 	url = https://github.com/DonutsDelivery/simple-code-gui
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = simple-code-gui-bin
 	provides = simple-code-gui
 	conflicts = simple-code-gui
 	options = !strip
-	source = simple-code-gui-bin-1.3.44.AppImage::https://github.com/DonutsDelivery/simple-code-gui/releases/download/v1.3.44/Simple-Claude-GUI-1.3.44.AppImage
+	source = simple-code-gui-bin-1.3.58.AppImage::https://github.com/DonutsDelivery/simple-code-gui/releases/download/v1.3.58/Simple-Claude-GUI-1.3.58.AppImage
 	sha256sums = SKIP
 
 pkgname = simple-code-gui-bin
