@@ -1,0 +1,4 @@
+[ergo-bin]
+source = "git"
+git = "https://github.com/beatlabs/ergo.git"
+prefix = "v"
