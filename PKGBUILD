@@ -3,28 +3,32 @@
 # Contributor: Gerard Ribugent <ribugent <at> gmail <dot> com>
 _projectname='azure-core'
 pkgname="python-$_projectname"
-pkgver='1.38.2'
+pkgver='1.38.3'
 pkgrel='1'
 pkgdesc='Microsoft Azure Core Shared Client Library for Python'
 arch=('any')
 url='https://github.com/Azure/azure-sdk-for-python'
 license=('MIT')
-depends=('python>=3.9.0' 'python-aiohttp>=3.0.0' 'python-requests>=2.21.0' 'python-typing_extensions>=4.6.0')
-makedepends=('python-setuptools')
+depends=('python>=3.9.0' 'python-requests>=2.21.0' 'python-typing_extensions>=4.6.0')
+makedepends=('python-build' 'python-setuptools' 'python-installer' 'python-wheel')
+optdepends=(
+	'python-aiohttp: aiohttp transport'
+	'python-opentelemetry-api: OpenTelemetry tracing support'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${_projectname}_$pkgver.tar.gz")
-b2sums=('7f5230fec63c364a660530904e5864b742a2f38f271f900022b90f0a34222ec70bce123ce2ee30ad6a1d6d504de0032e774b356eda88629d424ee951bd645c8b')
+b2sums=('c6a87678f593b853b13eb1795745f7160ae020d9a10d175ae364e65494424a1bfd6f966082391190129fb08bb5f13d92130db430ac195b2ab2f38ab3616886f1')
 
 _sourcedirectory="azure-sdk-for-python-${_projectname}_$pkgver/sdk/core/$_projectname"
 
 build() {
 	cd "$srcdir/$_sourcedirectory/"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 # Tests ignored, as the devtools_testutils package is not supposed to be released/published (see https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=261305)
 
 package() {
 	cd "$srcdir/$_sourcedirectory/"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" 'dist/'*'.whl'
 	install -Dm644 'LICENSE' "$pkgdir/usr/share/licenses/$pkgname/MIT"
 }
