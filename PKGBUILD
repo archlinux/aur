@@ -1,6 +1,6 @@
 # Maintainer: Eric Siebeneich <devzeebo>
 pkgname=bifrost-go-git
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A beads-like agent task list framework (Go implementation)"
 arch=('x86_64' 'aarch64')
