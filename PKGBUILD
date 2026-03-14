@@ -6,7 +6,7 @@ _appname=kav
 pkgname=${_pkgname}-bin
 pkgdesc="A developer-focused port and process manager TUI"
 
-pkgver=0.0.6
+pkgver=0.1.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,8 +25,8 @@ depends=('glibc' 'libgcc')
 
 source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}-${_pkgvername}.tar.gz")
-sha256sums=('956e27d9558fe3efb9c8e078241ec51e08aa25c3f072031d01b76a48009661ad')
-sha256sums_x86_64=('515d6ca1c0132f11647936692481e16d4713d451740ed0999809df0c726c2875')
+sha256sums=('713e620ca011ad4accc2dab889326b59aa6bc3cf9a00cb086959d36d9ae19859')
+sha256sums_x86_64=('ba11895c8b25a38aeca782e72cf53c74cd3a51d8df52f8ed50f5da4173d13d2f')
 
 
 package() {
