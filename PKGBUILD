@@ -1,7 +1,7 @@
 # Maintainer: Jamison Lahman <jamison+aur@lahman.dev>
 # Contributor:
 pkgname=dockerfilegraph
-pkgver=0.20.0
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="Visualize your multi-stage Dockerfiles"
 arch=('x86_64' 'aarch64')
