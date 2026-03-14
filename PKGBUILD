@@ -1,7 +1,7 @@
 # Maintainer: WackyIdeas <wackyideas@disroot.org>
 
 pkgname=('aeroshell-kwin-components-git')
-pkgver=6.6.2_33.r9d6c567
+pkgver=6.6.2_34.rf4a336a
 pkgrel=1
 pkgdesc='KWin effects, scripts, and other plugins for AeroShell-based desktops'
 arch=(x86_64)
