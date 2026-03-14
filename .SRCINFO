@@ -1,0 +1,19 @@
+pkgbase = colorsmith
+	pkgdesc = ColorSmith - Modern Color Picker for Linux and Windows Desktop
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://ktechpit.com/USS/public/product.php?slug=colorsmith
+	arch = x86_64
+	license = GPL-3.0+
+	makedepends = squashfs-tools
+	makedepends = curl
+	makedepends = jq
+	depends = qt6-base
+	options = !strip
+	options = !debug
+	source = colorsmith-1.1.0.snap::snap://api.snapcraft.io/v2/snaps/info/colorsmith
+	source = snap-dlagent.sh
+	sha256sums = SKIP
+	sha256sums = c880bdde94b5d41416f14303e50380442404e21596223516de32c32d3cc96357
+
+pkgname = colorsmith
