@@ -1,0 +1,35 @@
+[Unit]
+Description=PasteVault Service
+After=network.target
+Wants=network.target
+
+[Service]
+User=root
+Group=root
+Type=simple
+WorkingDirectory=/var/run/pastevault
+ExecStart=/usr/bin/pastevault up
+Restart=on-failure
+RestartSec=2s
+LockPersonality=true
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+PrivateUsers=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectProc=invisible
+ProtectSystem=strict
+RestrictAddressFamilies=AF_INET AF_INET6 AF_NETLINK AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallErrorNumber=EPERM
+
+[Install]
+WantedBy=multi-user.target

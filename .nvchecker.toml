@@ -1,0 +1,3 @@
+[pastevault]
+source = "npm"
+npm = "pastevault"
