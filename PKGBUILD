@@ -1,10 +1,10 @@
 # Maintainer: Brody <archfan at brodix dot de>
 
 _reponame=google-cloud-python
-_pkgname=google-cloud-bigquery-storage
 pkgname=python-google-cloud-bigquery-storage
+_pkgname=${pkgname##*python-}
 pkgver=2.36.2
-pkgrel=1
+pkgrel=2
 pkgdesc='BigQuery Storage API client library'
 arch=(any)
 url=https://github.com/googleapis/${_reponame}
@@ -72,10 +72,10 @@ package() {
   install -Dm644 -t "${pkgdir}"/usr/share/man/man1 \
     docs/_build/${_pkgname}.1
 
-  install -d "${pkgdir}"/usr/share/licenses/${pkgname}
-
   local _site_packages
   _site_packages=$(python -c 'import site; print(site.getsitepackages()[0])')
+
+  install -d "${pkgdir}"/usr/share/licenses/${pkgname}
   ln -sr -t "${pkgdir}"/usr/share/licenses/${pkgname} \
     "${pkgdir}"/${_site_packages}/${_pkgname/-/_}-${pkgver}.dist-info/LICENSE
 }
