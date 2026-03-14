@@ -1,6 +1,6 @@
 pkgbase = ytdl-sub
 	pkgdesc = Automate downloading and metadata generation with yt-dlp
-	pkgver = 2026.03.05
+	pkgver = 2026.03.13
 	pkgrel = 1
 	url = https://github.com/jmbannon/ytdl-sub
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = ytdl-sub
 	depends = python-mergedeep
 	depends = python-mediafile
 	depends = python-yaml
-	source = ytdl-sub-2026.03.05.tar.gz::https://github.com/jmbannon/ytdl-sub/archive/2026.03.05.tar.gz
-	sha512sums = a6e1848a10017657b8878dada3d030e2ccb2c3afef47114798eb4d45b2a40c1ecc15473f49fa67cfb0c1d8da3012818e02bb57151468f278b4d35d127c8fa6cd
+	source = ytdl-sub-2026.03.13.tar.gz::https://github.com/jmbannon/ytdl-sub/archive/2026.03.13.tar.gz
+	sha512sums = 68c35e08d9670a854ccbb316ead15d6ab20ba4e9af1997c3888b18be3e4865f30ae7a4bfa52fcaeca2171a88c653981bdcb97fbc52cfa08e0e7abcd14153fe14
 
 pkgname = ytdl-sub
