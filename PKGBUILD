@@ -1,7 +1,7 @@
 # Maintainer: WackyIdeas <wackyideas@disroot.org>
 
 pkgname=('aerothemeplasma-icons-git')
-pkgver=7.r867f54b
+pkgver=8.rb8d5ce1
 pkgrel=1
 pkgdesc="Icon theme designed for AeroThemePlasma"
 license=('AGPL-3.0-or-later')
