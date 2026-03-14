@@ -3,8 +3,8 @@
 
 _pkgname="libadwaita-without-adwaita"
 pkgname="$_pkgname-git"
-pkgver=1.8.2.r98.g46e78e5
-pkgrel=2
+pkgver=1.9.0.r4.g7352d8c
+pkgrel=1
 pkgdesc="Building blocks for modern adaptive GNOME applications - patched to respect system theme"
 url="https://gitlab.gnome.org/GNOME/libadwaita"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -33,15 +33,19 @@ _pkgsrc="libadwaita"
 source=(
   "$_pkgsrc"::"git+https://gitlab.gnome.org/GNOME/libadwaita.git"
   '0001-respect_system_theme.patch'
+  "ministream"::"git+https://gitlab.gnome.org/sp1rit/ministream.git"
 )
 sha256sums=(
   'SKIP'
   '74aaf5455f7b9990c53f68a968570a4555567d2c1a7fb58f79d71de6d74b3889'
+  'SKIP'
 )
 
 prepare() {
   cd "$_pkgsrc"
   patch -Np1 -F100 -i ../0001-respect_system_theme.patch
+
+  ln -sf "$srcdir/ministream" "subprojects/ministream"
 }
 
 pkgver() (

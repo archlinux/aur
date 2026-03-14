@@ -1,7 +1,7 @@
 pkgbase = libadwaita-without-adwaita-git
 	pkgdesc = Building blocks for modern adaptive GNOME applications - patched to respect system theme
-	pkgver = 1.8.2.r98.g46e78e5
-	pkgrel = 2
+	pkgver = 1.9.0.r4.g7352d8c
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/libadwaita
 	arch = i686
 	arch = x86_64
@@ -17,12 +17,14 @@ pkgbase = libadwaita-without-adwaita-git
 	makedepends = vala
 	depends = appstream
 	depends = gtk4-git
-	provides = libadwaita=1:1.8.2.r98.g46e78e5
+	provides = libadwaita=1:1.9.0.r4.g7352d8c
 	provides = libadwaita-1.so
 	conflicts = libadwaita
 	source = libadwaita::git+https://gitlab.gnome.org/GNOME/libadwaita.git
 	source = 0001-respect_system_theme.patch
+	source = ministream::git+https://gitlab.gnome.org/sp1rit/ministream.git
 	sha256sums = SKIP
 	sha256sums = 74aaf5455f7b9990c53f68a968570a4555567d2c1a7fb58f79d71de6d74b3889
+	sha256sums = SKIP
 
 pkgname = libadwaita-without-adwaita-git
