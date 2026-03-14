@@ -2,13 +2,13 @@
 
 pkgname=abracadabra
 _appname=AbracaDABra
-pkgver=3.3.2
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Abraca DAB radio: DAB/DAB+ Software Defined Radio (SDR)"
 arch=("x86_64" "aarch64")
 url="https://github.com/KejPi/${_appname}"
 license=("MIT")
-depends=("faad2" "mpg123" "portaudio" "qt6-multimedia" "qt6-svg" "qt6-imageformats" "qt6-location" "qt6-positioning" "rtl-sdr" "qcustomplot-qt6")
+depends=("faad2" "mpg123" "portaudio" "qt6-multimedia" "qt6-svg" "qt6-imageformats" "qt6-location" "qt6-positioning" "rtl-sdr")
 optdepends=("airspy: support for AirSpy devices"
 	    "libfdk-aac: support for Fraunhofer AAC codec library" 
             "soapysdr: support for SopaySDR vendor neutral and platform independent SDR support library" 
@@ -19,24 +19,21 @@ optdepends=("airspy: support for AirSpy devices"
 	    "soapyplutosdr: Soapy SDR plugin for Pluto SDR" 
 	    "soapyrtlsdr: Soapy SDR plugin for RTLSDR" 
 	    "soapysdrplay: Soapy SDR plugin for SDR Play")
-makedepends=("cmake" "gcc" "qt6-tools" "qt6-translations" "qcustomplot")
+makedepends=("cmake" "gcc" "qt6-tools" "qt6-translations")
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${_appname}-${pkgver}.tar.gz::https://github.com/KejPi/${_appname}/archive/refs/tags/v${pkgver}.tar.gz"
-	"qt_version.patch"
-	)
-sha256sums=("dc1a0d948504f9a9d2802379dddf21d57c045b099304ec6a014455fc5a3dcbf3"
-	    "c8df7dcc27ba829ff813e5f680bece1a3932bfdd643d776d8b209fb6be7b24e0")
+source=("${_appname}-${pkgver}.tar.gz::https://github.com/KejPi/${_appname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=("875964fc1e34a292007e034235077c745e3f94710c35373fed3045def9316c7e")
 
 
-prepare() {
-    patch -d $_appname-$pkgver -Np1 -i ../qt_version.patch
-}
+#prepare() {
+#    patch -d $_appname-$pkgver -Np1 -i ../qt_version.patch
+#}
 
 build() {
   mkdir -p "${srcdir}/${_appname}-${pkgver}/build"
   cd "${srcdir}/${_appname}-${pkgver}/build"
-  cmake "${srcdir}/${_appname}-${pkgver}" -DSOAPYSDR=ON -DAIRSPY=ON -DUSE_FDKAAC=ON -DUSE_SYSTEM_QCUSTOMPLOT=ON -DPROJECT_VERSION_RELEASE=ON 
+  cmake "${srcdir}/${_appname}-${pkgver}" -DSOAPYSDR=ON -DAIRSPY=ON -DUSE_FDKAAC=ON -DPROJECT_VERSION_RELEASE=ON 
   make
 }
 
