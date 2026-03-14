@@ -1,6 +1,6 @@
 # Maintainer: noahra
 pkgname=diz-bin
-pkgver=0.2.13
+pkgver=0.2.14
 pkgrel=1
 pkgdesc="Share SSH public keys between machines via a compact passphrase"
 arch=('x86_64')
