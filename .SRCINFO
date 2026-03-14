@@ -1,6 +1,6 @@
 pkgbase = tinct-plugin-zed-bin
 	pkgdesc = Zed editor theme plugin for Tinct
-	pkgver = 0.1.27
+	pkgver = 0.1.28
 	pkgrel = 1
 	url = https://github.com/jmylchreest/tinct
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = tinct-plugin-zed-bin
 	conflicts = tinct
 	provides = tinct
 	arch = aarch64
-	source_aarch64 = https://github.com/jmylchreest/tinct/releases/download/v0.1.27/tinct-plugin-zed_0.1.27_Linux_arm64.tar.gz
-	sha256sums_aarch64 = e92cab6ae2bc5314c18af46cc61b9390719f169f4e6e61563e054c77a822f063
+	source_aarch64 = https://github.com/jmylchreest/tinct/releases/download/v0.1.28/tinct-plugin-zed_0.1.28_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 3f7d4f4108df636f23ce96357360d24643e97ba110ab65dd0f7c240afd998427
 	arch = x86_64
-	source_x86_64 = https://github.com/jmylchreest/tinct/releases/download/v0.1.27/tinct-plugin-zed_0.1.27_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 6f815c82a1ecaeeb054ee11b3064a8b73dd3022a2a519add98920e8d60c1fa0f
+	source_x86_64 = https://github.com/jmylchreest/tinct/releases/download/v0.1.28/tinct-plugin-zed_0.1.28_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = d2e471b771014a9041832befa52fc1f737b96b064eeacdef0e90560e7044b8b9
 	
 pkgname = tinct-plugin-zed-bin
