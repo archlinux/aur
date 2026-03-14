@@ -2,7 +2,7 @@
 # Contributor: Markus Hovorka <m.hovorka@live.de>
 _base=netgen
 pkgname=${_base}-nogui
-pkgver=6.2.2601
+pkgver=6.2.2602
 pkgrel=1
 pkgdesc="Netgen mesh generator"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=(metis opencascade openmpi python-mpi4py cgns)
 makedepends=(cmake pybind11 git) # python-pybind11-stubgen
 # checkdepends=(python-pytest)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('9bcd62da4c1551b255b7165014615446b7d3ce1746668516b97ef7598e80c44857bf96d122efaad90a04bc7fe93be8895ae93560352eba9a4e1dfcb6647c5f30')
+sha512sums=('dd126e5501bdb928a60973f53b96618f151356ad889ce34794a193c88f469c93b1bcf144f5d2de750e8fce03347bfa17752fd0ea73c1f9b8446f177a8eaa6319')
 
 build() {
   cmake \
