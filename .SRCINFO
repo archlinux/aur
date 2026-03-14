@@ -1,7 +1,7 @@
 pkgbase = greetd-tuigreet-fork-git
 	pkgdesc = Stylish graphical console greeter for greetd, built with Ratatui
-	pkgver = 0.10.0.r0.gb9ead11
-	pkgrel = 2
+	pkgver = 0.10.0.r2.gf215b7b
+	pkgrel = 1
 	url = https://github.com/NotAShelf/tuigreet
 	arch = x86_64
 	arch = i686
