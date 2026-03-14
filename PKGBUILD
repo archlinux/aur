@@ -26,31 +26,31 @@ package() {
 
   bsdtar -xf "$data_tar" -C "${pkgdir}"
 
-  # ── Binary symlink ────────────────────────────────────────────────────────────
-  install -dm755 "${pkgdir}/usr/bin"
-  ln -sf "/opt/OpenCode/@opencode-aidesktop-electron" "${pkgdir}/usr/bin/opencode-desktop-electron"
+  # Remove every .desktop the .deb installed (find handles @ prefix safely)
+  find "${pkgdir}/usr/share/applications" -name "*.desktop" -delete
 
-  # ── Icons: rename to plain name ───────────────────────────────────────────────
-  find "${pkgdir}/usr/share/icons" -type f 2>/dev/null | while read -r ico; do
+  # Single clean desktop entry
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/opencode-desktop-electron.desktop" <<'DESKTOP'
+[Desktop Entry]
+Name=Opencode
+Comment=OpenCode desktop client
+Exec=/opt/OpenCode/@opencode-aidesktop-electron %U
+Icon=opencode-desktop-electron
+Type=Application
+Categories=Development;
+StartupNotify=true
+DESKTOP
+
+  # Icons: rename to match Icon=
+  find "${pkgdir}/usr/share/icons" -type f | while read -r ico; do
     dir="$(dirname "$ico")"
     ext="${ico##*.}"
     mv "$ico" "$dir/opencode-desktop-electron.$ext"
   done
 
-  # ── Desktop entry: remove whatever the .deb installed, write one clean one ───
-  rm -f "${pkgdir}"/usr/share/applications/*.desktop
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/opencode-desktop-electron.desktop" <<DESKTOP
-[Desktop Entry]
-Name=Opencode
-Comment=OpenCode desktop client
-Exec=opencode-desktop-electron %U
-Icon=opencode-desktop-electron
-Type=Application
-Categories=Development;
-StartupNotify=true
-StartupWMClass=@opencode-ai/desktop-electron
-MimeType=x-scheme-handler/opencode;
-DESKTOP
+  # Symlink binary
+  install -dm755 "${pkgdir}/usr/bin"
+  ln -sf "/opt/OpenCode/@opencode-aidesktop-electron" "${pkgdir}/usr/bin/opencode-desktop-electron"
 
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
