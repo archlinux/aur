@@ -1,6 +1,6 @@
 pkgbase = foomuuri
 	pkgdesc = Multizone bidirectional nftables firewall
-	pkgver = 0.31
+	pkgver = 0.32
 	pkgrel = 1
 	url = https://github.com/FoobarOy/foomuuri
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = foomuuri
 	optdepends = python-gobject: D-Bus mainloop
 	optdepends = python-lxml: HTML/XML parsing in iplist filters
 	optdepends = python-prometheus_client: foomuuri_exporter for Prometheus metrics
-	source = foomuuri-0.31.tar.gz::https://github.com/FoobarOy/foomuuri/archive/v0.31.tar.gz
-	sha256sums = 922cd472b0d3faa203e8ecbe02db2d946a7133190e9fb0a7c2e99a542ef56f14
+	source = foomuuri-0.32.tar.gz::https://github.com/FoobarOy/foomuuri/archive/v0.32.tar.gz
+	sha256sums = 7740026745ae1ba4a5dd90e71a06c324f31b53dda90e066d09aff308a233fab8
 
 pkgname = foomuuri
