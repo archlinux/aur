@@ -1,4 +1,5 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Agil Mammadov <mammadovagil@tutamail.com>
+# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: mdraw.gh at gmail dot com
 
