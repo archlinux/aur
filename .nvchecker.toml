@@ -1,0 +1,5 @@
+[ptsh-bin]
+source = "github"
+github = "jszczerbinsky/ptSh"
+use_latest_release = true
+prefix = "v"
