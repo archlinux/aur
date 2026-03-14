@@ -1,6 +1,6 @@
 pkgbase = plezy
 	pkgdesc = A beautiful Plex media server client built with Flutter
-	pkgver = 1.26.1
+	pkgver = 1.27.0
 	pkgrel = 1
 	url = https://plezy.app
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = plezy
 	depends = libevdev
 	depends = libkeybinder3
 	depends = mpv
-	source = plezy-1.26.1.tar.gz::https://github.com/edde746/plezy/archive/refs/tags/1.26.1.tar.gz
-	sha256sums = b59811c37080b935f643222ebdab74f4158e547d632295b97e9fc1e7210a09a4
+	source = plezy-1.27.0.tar.gz::https://github.com/edde746/plezy/archive/refs/tags/1.27.0.tar.gz
+	sha256sums = fe35a11a304f7ecbf95ae12610e360222e86b6ad02f372bcb59afbf0963aec6c
 
 pkgname = plezy
