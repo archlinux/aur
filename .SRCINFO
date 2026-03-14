@@ -1,6 +1,6 @@
 pkgbase = gamesync
 	pkgdesc = Sync game saves with a server
-	pkgver = 2.5.2
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://git.pabu.dev/PatrikBures/gamesync
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = gamesync
 	makedepends = go>=1.24
 	depends = rsync
 	depends = openssh
-	source = https://gitlab.com/PatrikBures/gamesync/-/archive/v2.5.2/gamesync-v2.5.2.tar.gz
-	sha256sums = 38aad1cbce9d36a465706bb59b22ebf332da09259ab7ea2685a4c5b2ec05f76f
+	source = https://gitlab.com/PatrikBures/gamesync/-/archive/v2.6.0/gamesync-v2.6.0.tar.gz
+	sha256sums = 7335810db30bba27cfda2ee5104c7d9717db646232509d355ff062aec03a628c
 
 pkgname = gamesync
