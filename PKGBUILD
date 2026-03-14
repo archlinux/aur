@@ -1,6 +1,6 @@
 # Maintainer: DonutsDelivery
 pkgname=simple-claude-gui
-pkgver=1.3.57
+pkgver=1.3.58
 pkgrel=1
 pkgdesc="Desktop app for managing multiple Claude Code sessions across projects"
 arch=('x86_64')
@@ -40,6 +40,7 @@ Terminal=false
 Type=Application
 Categories=Development;IDE;
 Keywords=claude;terminal;ai;code;
+StartupWMClass=simple-claude-gui
 EOF
 
     # Install launcher script
