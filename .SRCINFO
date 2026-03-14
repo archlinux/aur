@@ -1,13 +1,13 @@
 pkgbase = playport-bin
-  pkgdesc="Wireless virtual gamepad / game controller server for Linux using uinput — stream input from Android"
-	pkgver = 1.1
+	pkgdesc = Wireless virtual gamepad/ joypad / joystick / game controller server for Linux using uinput — stream input from Android
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/tygrisiq/PlayPort
 	arch = x86_64
 	license = MIT
 	optdepends = android-client: PlayPort Android app https://github.com/TygrisIQ/PlayPort_Client
-	source = playport-1.1::https://github.com/tygrisiq/PlayPort/releases/download/v1.1/playport
-	source = playport.1::https://github.com/tygrisiq/PlayPort/releases/download/v1.1/playport.1
+	source = playport-1.1.1::https://github.com/tygrisiq/PlayPort/releases/download/v1.1.1/playport
+	source = playport.1::https://github.com/tygrisiq/PlayPort/releases/download/v1.1.1/playport.1
 	sha256sums = SKIP
 	sha256sums = SKIP
 

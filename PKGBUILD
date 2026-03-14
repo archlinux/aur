@@ -2,7 +2,7 @@
 pkgname=playport-bin
 pkgver=1.1.1
 pkgrel=1
-pkgdesc="Wireless virtual gamepad / game controller server for Linux using uinput — stream input from Android"
+pkgdesc="Wireless virtual gamepad/ joypad / joystick / game controller server for Linux using uinput — stream input from Android"
 arch=('x86_64')
 url="https://github.com/tygrisiq/PlayPort"
 license=('MIT')
