@@ -4,10 +4,10 @@ _reponame=google-cloud-python
 pkgname=python-google-cloud-bigquery-storage
 _pkgname=${pkgname##*python-}
 pkgver=2.36.2
-pkgrel=2
+pkgrel=3
 pkgdesc='BigQuery Storage API client library'
 arch=(any)
-url=https://github.com/googleapis/${_reponame}
+url=https://github.com/googleapis/${_reponame}/tree/${_pkgname}-v${pkgver}/packages/${_pkgname}
 license=(Apache-2.0)
 depends=(
   python-google-api-core
