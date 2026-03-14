@@ -1,6 +1,6 @@
 pkgbase = supersonic-desktop-wayland
 	pkgdesc = A lightweight cross-platform desktop client for Subsonic and Jellyfin music servers.
-	pkgver = 0.20.1
+	pkgver = 0.21.0
 	pkgrel = 1
 	url = https://github.com/dweymouth/supersonic
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = supersonic-desktop-wayland
 	optdepends = org.freedesktop.secrets: Keyring password store support
 	provides = supersonic-desktop
 	conflicts = supersonic-desktop
-	source = supersonic-desktop-wayland-0.20.1.tar.gz::https://github.com/dweymouth/supersonic/archive/refs/tags/v0.20.1.tar.gz
-	sha256sums = 6a51404e2388959058a6d42c069c858f15c224f6543c7b2b3de60deb5e32da78
+	source = supersonic-desktop-wayland-0.21.0.tar.gz::https://github.com/dweymouth/supersonic/archive/refs/tags/v0.21.0.tar.gz
+	sha256sums = b532e5fb0c2e03949a704ac12576713a85eb1890012befd2f2479caa35723804
 
 pkgname = supersonic-desktop-wayland
