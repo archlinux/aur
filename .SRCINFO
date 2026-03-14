@@ -1,6 +1,6 @@
 pkgbase = dcr
 	pkgdesc = Cargo-like utility to manage C/C++ projects
-	pkgver = 0.2.8
+	pkgver = 0.2.9
 	pkgrel = 1
 	url = https://github.com/dexoron/dcr
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dcr
 	optdepends = gcc: build C/C++ projects with GCC
 	optdepends = clang: build C/C++ projects with Clang
   options = !lto
-	source = dcr-0.2.8.tar.gz::https://github.com/dexoron/dcr/archive/refs/tags/v0.2.8.tar.gz
-	sha256sums = 1ba33085d7d85ebc058b53d5206bcba179cb95990e4bb55f72c683c40f941cec
+	source = dcr-0.2.9.tar.gz::https://github.com/dexoron/dcr/archive/refs/tags/v0.2.9.tar.gz
+	sha256sums = 77baf0f5dd95495399c12e6c9b7d2492fbbf81ddb6d9a7244bb72c7df317346a
 
 pkgname = dcr
