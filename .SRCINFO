@@ -1,6 +1,6 @@
 pkgbase = pluto-photos-bin
 	pkgdesc = Desktop photo library manager with face detection, smart albums, map view, and cloud import
-	pkgver = 2.3.10
+	pkgver = 2.3.11
 	pkgrel = 1
 	url = https://plutophotos.com
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = pluto-photos-bin
 	conflicts = pluto-photos
 	options = !strip
 	options = !debug
-	source = pluto-photos-2.3.10.AppImage::https://plutophotos.com/downloads/pluto-photos-2.3.10.AppImage
+	source = pluto-photos-2.3.11.AppImage::https://plutophotos.com/downloads/pluto-photos-2.3.11.AppImage
 	source = pluto-photos.desktop
-	noextract = pluto-photos-2.3.10.AppImage
+	noextract = pluto-photos-2.3.11.AppImage
 	sha256sums = 43c7fad393f69f6da35fa9656e2daf8f6166a6e6978a428360d521c403341a39
 	sha256sums = 39dbd52edef2592f66dfb7fbbf471b62f547457288565e23759584f74606b46b
 
