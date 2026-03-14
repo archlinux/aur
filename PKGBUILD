@@ -1,6 +1,6 @@
 # Maintainer: Dinesh Jinjala
 pkgname=androidmigrate
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Checkpointed Android folder backup and sync over ADB"
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('python>=3.12' 'android-tools')
 makedepends=('python-build' 'python-installer' 'python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MachineLearning-Nerd/AndroidMigrate/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cb8e5728f3d279be6df40703aca02a75c55e4e6ed9c5a7e4f93ff2badab8c41c')
+sha256sums=('88e936918f637ba984f521eaf15386f27b5ec92dfcb4122c17314dec6d9a3a07')
 
 build() {
     cd "AndroidMigrate-${pkgver}"
