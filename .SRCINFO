@@ -18,6 +18,6 @@ pkgbase = plasma-wayland-protocols-povd
 	validpgpkeys = 0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D
 	sha256sums = 9818bb1462211ce5982e670abf0d964eb11fe1d0c02a1c26084db30695a79d6a
 	sha256sums = SKIP
-	sha256sums = 39d40456eccda58c1d606f9566472881c993b4b161842e1beaf0cb5225a759b4
+	sha256sums = b0f4d5ce232fe98c075107d9060233c6fb7e5b3f4473e8c7940ce2114f3b4d43
 
 pkgname = plasma-wayland-protocols-povd

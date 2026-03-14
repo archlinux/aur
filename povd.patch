@@ -1,5 +1,5 @@
 diff --git a/src/protocols/org-kde-plasma-virtual-desktop.xml b/src/protocols/org-kde-plasma-virtual-desktop.xml
-index 5d9f825..0e9b9c2 100644
+index 5d9f825..3072ec4 100644
 --- a/src/protocols/org-kde-plasma-virtual-desktop.xml
 +++ b/src/protocols/org-kde-plasma-virtual-desktop.xml
 @@ -6,7 +6,7 @@
@@ -11,77 +11,46 @@ index 5d9f825..0e9b9c2 100644
      <request name="get_virtual_desktop">
          <description summary="get the org_kde_plasma_virtual_desktop interface for a desktop">
              Given the id of a particular virtual desktop, get the corresponding org_kde_plasma_virtual_desktop which represents only the desktop with that id.
-@@ -51,20 +51,68 @@
-         <description summary="sent all information about desktops">
-             This event is sent after all other properties have been sent after
-             binding to the desktop manager global and after all changes to
--            org_kde_plasma_virtual_desktop_management and org_kde_plasma_virtual_desktop
--            properties have been sent.
-+            org_kde_plasma_virtual_desktop_management, org_kde_plasma_output_virtual_desktop
-+            and org_kde_plasma_virtual_desktop properties have been sent.
- 
--            This allows changes to org_kde_plasma_virtual_desktop_management and
--            org_kde_plasma_virtual_desktop properties to be seen as atomic, even
--            if they happen via multiple events.
-+            This allows changes to org_kde_plasma_virtual_desktop_management,
-+            org_kde_plasma_output_virtual_desktop and org_kde_plasma_virtual_desktop properties,
-+            to be seen as atomic, even if they happen via multiple events.
-         </description>
+@@ -65,8 +65,7 @@
      </event>
- 
-     <event name="rows" since="2">
-         <arg name="rows" type="uint" summary="Number of rows the virtual desktops are laid out into."/>
-     </event>
-+
-+    <event name="output_added" since="4">
-+        <description summary="A new output has been added"></description>
-+        <arg name="output" type="new_id" interface="org_kde_plasma_output_virtual_desktop" summary="added output" />
-+    </event>
  </interface>
  
-+<interface name="org_kde_plasma_output_virtual_desktop" version="4">
-+    <description summary="maps output to active virtual desktop">
-+        This interface maps an output to its active virtual desktop.
-+        The server may allow each output to have a different virtual desktop,
-+        or it may enforce all outputs to have the same desktop.
-+    </description>
-+
-+    <request name="request_activate_desktop">
-+        <description summary="Requests a desktop to be activated on the output">
-+            Request the server to activate a given desktop on this output.
-+            This may affect other outputs as well.
-+        </description>
-+        <arg name="desktop_id" type="string" summary="Id of desktop to activate"/>
-+    </request>
-+
-+    <event name="name">
-+        <description summary="Output's name">
-+            Name of the output, it's useful to cross-reference to an zxdg_output_v1 and ultimately QScreen
-+        </description>
-+        <arg name="name" type="string"/>
-+    </event>
-+
-+    <event name="active_desktop_id">
-+        <description summary="Output's active desktop">
-+            The id of the active virtual desktop on this output.
-+        </description>
-+        <arg name="desktop_id" type="string" summary="Unique id of the active desktop"/>
-+    </event>
-+
-+    <event name="done">
-+        <description summary="sent all information about output">
-+            This event is sent after all other properties have been
-+            sent on binding to the output object as well as after any
-+            other output property change have been applied later on.
-+            This allows to see changes to the output properties as atomic,
-+            even if multiple events successively announce them.
-+        </description>
-+    </event>
-+
-+    <event name="removed">
-+        <description summary="This output has been removed"></description>
-+    </event>
-+</interface>
- 
- <interface name="org_kde_plasma_virtual_desktop" version="3">
+-
+-<interface name="org_kde_plasma_virtual_desktop" version="3">
++<interface name="org_kde_plasma_virtual_desktop" version="4">
      <request name="request_activate">
+         <description summary="Requests this desktop to be activated">
+             Request the server to set the status of this desktop to active: The server is free to consent or deny the request. This will be the new "current" virtual desktop of the system.
+@@ -122,6 +121,32 @@
+         </description>
+         <arg name="index" type="uint" summary="virtual desktop position"/>
+     </event>
++
++    <event name="output_entered" since="4">
++        <description summary="This desktop became active on an output">
++            This event is sent when the desktop becomes active on an output. The desktop can be active on multiple
++            outputs simultaneously. Each output has exactly one active desktop at a time.
++        </description>
++        <arg name="output_name" type="string" summary="name of the output" />
++    </event>
++
++    <event name="output_left" since="4">
++        <description summary="This desktop stopped being active on an output">
++            This event is sent when the desktop stops being active on an output.
++            Each output has exactly one active desktop at a time.
++        </description>
++        <arg name="output_name" type="string" summary="name of the output" />
++    </event>
++
++    <request name="request_enter_output" since="4">
++        <description summary="Requests this desktop to be activated on an output">
++            Request the server to activate the desktop on a given output.
++            The server may deny the request.
++            If the request is granted, the server will deactivate the previous desktop on the output.
++            The server may activate the desktop on other outputs as well.
++        </description>
++        <arg name="output_name" type="string" summary="name of the output" />
++    </request>
+ </interface>
+ 
+ </protocol>
