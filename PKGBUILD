@@ -1,8 +1,8 @@
 # Maintainer: Youssif Al-Halawche <ymalhalawche@gmail.com>
 pkgname=playport-bin
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
-pkgdesc="Wireless virtual gamepad server for Linux using uinput"
+pkgdesc="Wireless virtual gamepad / game controller server for Linux using uinput — stream input from Android"
 arch=('x86_64')
 url="https://github.com/tygrisiq/PlayPort"
 license=('MIT')

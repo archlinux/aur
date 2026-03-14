@@ -1,0 +1,60 @@
+.TH PLAYPORT 1 "2025" "1.1.1" "PlayPort Manual"
+.SH NAME
+playport \- wireless virtual gamepad server for Linux
+.SH SYNOPSIS
+.B playport
+[\fIPORT\fR]
+.SH DESCRIPTION
+PlayPort creates a virtual uinput gamepad device on Linux and streams
+input from the PlayPort Android client over your local network.
+The Android app auto-discovers the server via UDP broadcast.
+.SH OPTIONS
+.TP
+.B PORT
+TCP port to listen on for input events. Defaults to \fB8007\fR.
+.SH SETUP
+The uinput kernel module must be loaded before running playport:
+.PP
+.nf
+.RS
+sudo modprobe uinput
+.RE
+.fi
+.PP
+Verify the device exists:
+.PP
+.nf
+.RS
+ls /dev/uinput
+.RE
+.fi
+.SH PORTS
+.TP
+.B 8005/UDP
+LAN server discovery broadcast
+.TP
+.B 8007/TCP
+Input event stream (default)
+.SH EXAMPLES
+Run with default port:
+.PP
+.nf
+.RS
+playport
+.RE
+.fi
+.PP
+Run on a custom port:
+.PP
+.nf
+.RS
+playport 9000
+.RE
+.fi
+.SH BUGS
+Report bugs at https://github.com/tygrisiq/PlayPort/issues
+.SH AUTHOR
+Youssif Al-Halawche <yhalawche@gmail.com>
+.SH SEE ALSO
+.BR evtest (1),
+.BR uinput (4)

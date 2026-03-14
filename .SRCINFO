@@ -1,5 +1,5 @@
 pkgbase = playport-bin
-	pkgdesc = Wireless virtual gamepad server for Linux using uinput
+  pkgdesc="Wireless virtual gamepad / game controller server for Linux using uinput — stream input from Android"
 	pkgver = 1.1
 	pkgrel = 1
 	url = https://github.com/tygrisiq/PlayPort
