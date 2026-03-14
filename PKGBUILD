@@ -27,7 +27,8 @@ source=(
 
 # Replace with a real checksum after v2.0.3 release asset is published:
 #   makepkg -g
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('8caab1a8b712c5d26d7d4db7702d499362a70d82ab98e109f6eda78d8ab2a094'
+            'da02e29b849870a9852e9020c0df9532a84ae81c53d3f073fa633d679d80b43f')
 
 package() {
   install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/aurivo/aurivo.AppImage"
