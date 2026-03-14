@@ -1,6 +1,6 @@
 pkgbase = vpinfe
 	pkgdesc = A vpinball frontend for Linux, Mac, and Windows
-	pkgver = 1.1.2
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/superhac/vpinfe
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = vpinfe
 	depends = chromium
 	provides = vpinfe
 	conflicts = vpinfe
-	source = vpinfe-1.1.2.zip::https://github.com/superhac/vpinfe/archive/refs/tags/v1.1.2.zip
+	source = vpinfe-1.1.5.zip::https://github.com/superhac/vpinfe/archive/refs/tags/v1.1.5.zip
 	source = vpinfe.desktop
 	source = vpinfe.png
-	sha256sums = e2f1946d20be315e3a4ccab4d2fe1f34e5dda6dc520dffd78d69e653b4c58e38
+	sha256sums = b6820eb631070b14be183dbfa743ab0d63f2260641d3318c655c138a33a22404
 	sha256sums = d0c22bc258c3fbee04a31378454246f25a3360cf48e870fcb374559de6b4a072
 	sha256sums = 7e7e1b0854ffcf745d9cf5a643cb005bb3c1c21f58ef50dc9c889eef5e9b92bd
 
