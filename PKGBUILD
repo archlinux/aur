@@ -5,7 +5,7 @@ _pkgname=ghgrab
 pkgname=${_pkgname}-bin
 pkgdesc="A simple, pretty terminal tool that lets you search and download files from GitHub without leaving your CLI"
 
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,10 +25,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}-${_barch[1]}")
-sha256sums=('9124fa5a70fbc0b7077f7afe530572705deef5666ba2d646a9f5d7cfbcaa8949'
+sha256sums=('b86c9152470bd58a9b37cbd1134ca83063725cf264ed2cbc254f7d17fdc6db07'
             '2447d1e56a881a12855aa080ed2fcb491b5c23a4dfb72a90c5e591df811615b0')
-sha256sums_x86_64=('9f3f625c2cd60e8e3d9083aa2735caca99df44a528bb33c159e47cb86c89e7fb')
-sha256sums_aarch64=('ea937ff1dde6018936ab0b9182dbf265b87ea6f3dd4df04e8687f64368cf481b')
+sha256sums_x86_64=('0a8032e0dfe02e59ef207721b184f3730b624036e699936305dbc34e480aa03c')
+sha256sums_aarch64=('4c504d0663e6ffbbec3bdff8cd7840a7c1298ee4775172d43787dab86498617a')
 
 
 package() {
