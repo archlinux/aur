@@ -1,6 +1,6 @@
 pkgbase = videocut
 	pkgdesc = Fast mp4/matroska/Av1/webm/mp2/mpts lossless Video cutter
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/kanehekili/VideoCut
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = videocut
 	depends = mpv
 	depends = ffmpeg<2:9.0
 	depends = python-pillow
-	source = https://github.com/kanehekili/VideoCut/releases/download/3.1.0/videocut3.1.0.tar
-	md5sums = fe56d53cc5bf400a41e83d97171aa253
+	source = https://github.com/kanehekili/VideoCut/releases/download/3.1.1/videocut3.1.1.tar
+	md5sums = d3d988e7317bb127ac71af9bbed1032c
 
 pkgname = videocut
