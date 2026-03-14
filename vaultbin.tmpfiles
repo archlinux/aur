@@ -1,0 +1,2 @@
+d /var/lib/vaultbin 0750 vaultbin vaultbin -
+d /etc/vaultbin 0755 vaultbin vaultbin -

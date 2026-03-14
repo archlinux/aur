@@ -1,0 +1,8 @@
+post_install() {
+  mkdir -p /var/lib/vaultbin/
+  ln -sf /etc/vaultbin/vaultbin.toml /var/lib/vaultbin/vaultbin.toml
+}
+
+post_upgrade() {
+  post_install
+}

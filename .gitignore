@@ -1,0 +1,12 @@
+*
+!.nvchecker.toml
+!changelog.md
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!*.install
+!*.env
+!*.toml
+!*.service
+!*.sysusers
+!*.tmpfiles

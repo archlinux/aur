@@ -1,0 +1,5 @@
+[vaultbin-bin]
+source = "github"
+github = "merlinfuchs/vaultbin"
+use_latest_release = true
+prefix = "v"

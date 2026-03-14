@@ -1,0 +1,13 @@
+port = "8080"
+host = "localhost"
+
+paste_max_size = 69420  # max size of pastes in bytes
+paste_ttl = 2592000     # seconds after a paste will be deleted
+
+[database]
+path = "/var/lib/vaultbin/vaultbin.db"  # path where data is stored
+
+[ratelimit]             # 5 request / 5 seconds
+burst_size = 5          # number of request before subsequent request are block
+per_second = 5          # seconds it takes to refill one request
+reverse_proxy = false   # if the backend is deployed behind a revers proxy -> this changes the way the peers IP is retrieved
