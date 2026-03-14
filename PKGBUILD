@@ -1,7 +1,7 @@
 # Maintainer: Nakildias <nakildiaspro@gmail.com>
 pkgname=sc0710-dkms-git
 _pkgname=sc0710
-pkgver=2026.03.12.2.r104.c58d5d6
+pkgver=2026.03.13.1.r108.ba2b2c9
 pkgrel=1
 pkgdesc="DKMS driver for Elgato 4K60 Pro MK.2 & 4K Pro (sc0710) capture cards"
 arch=('x86_64')
@@ -17,10 +17,10 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    
+
     # 1. Read the version directly from the 'version' file
     local _ver=$(cat version | tr - . | tr -d '[:alpha:]')
-    
+
     # 2. Append the git commit count and hash
     if [ -z "$_ver" ]; then
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -31,25 +31,25 @@ pkgver() {
 
 package() {
     cd "${srcdir}/${_pkgname}"
-    
+
     # Use pkgver for DKMS to ensure upgrades trigger a rebuild.
     local _dkms_ver="${pkgver}"
     local dest="${pkgdir}/usr/src/${_pkgname}-${_dkms_ver}"
-    
+
     install -d "${dest}"
-    
+
     # Copy source files
     cp -r ./* "${dest}/"
-    
+
     # Remove git directory, packaging files, and installer scripts
-    rm -rf "${dest}/.git" "${dest}/aur" "${dest}/install-sc0710.sh" "${dest}/sc0710.install"
-    
+    rm -rf "${dest}/.git" "${dest}/aur" "${dest}/install-sc0710.sh" "${dest}/atomic-install-sc0710.sh" "${dest}/extract-firmware.sh" "${dest}/atomic-extract-firmware.sh" "${dest}/sc0710.install"
+
     # Ensure dkms.conf is present
     install -Dm644 "dkms.conf" "${dest}/dkms.conf"
-    
+
     # Update dkms.conf version to match the dynamic pkgver
     sed -i "s/^PACKAGE_VERSION=.*/PACKAGE_VERSION=\"${_dkms_ver}\"/" "${dest}/dkms.conf"
-    
+
     # Install License
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
