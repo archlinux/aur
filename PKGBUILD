@@ -1,7 +1,8 @@
 # Maintainer: laserK <echo 'Y29udGFjdEBrYXJzdGVucHVmYWhsLmRlCg==' | base64 -d>
+# Maintainer: CloverGit <clovergit@hotmail.com>
 pkgname=stm32cubemx
 pkgver=6.17.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code"
 arch=(any)
@@ -11,7 +12,6 @@ groups=()
 depends=('java-runtime>=21'
   'archlinux-java-run>=10'
   'bash')
-makedepends=('imagemagick')
 checkdepends=()
 optdepends=()
 provides=()
@@ -35,6 +35,7 @@ package() {
   mkdir -p "${pkgdir}/opt/stm32cubemx"
   cp -r "${srcdir}/MX/." "${pkgdir}/opt/stm32cubemx"
   install -Dm 755 "${srcdir}/stm32cubemx.sh" "${pkgdir}/usr/bin/${pkgname}"
+  ln -sf "/usr/lib/jvm/default-runtime" "${pkgdir}/opt/stm32cubemx/jre"
 
   #icon and desktop file
   install -Dm 644 "${srcdir}/MX/help/STM32CubeMX.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
@@ -43,3 +44,4 @@ package() {
   #license
   install -Dm 644 "${srcdir}/MX/help/software_license_agreement.pdf" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.pdf"
 }
+# vim: set sw=2 ts=2 et:

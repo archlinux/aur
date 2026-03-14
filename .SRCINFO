@@ -1,11 +1,10 @@
 pkgbase = stm32cubemx
 	pkgdesc = graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code
 	pkgver = 6.17.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.st.com/en/development-tools/stm32cubemx.html
 	arch = any
 	license = custom
-	makedepends = imagemagick
 	depends = java-runtime>=21
 	depends = archlinux-java-run>=10
 	depends = bash
