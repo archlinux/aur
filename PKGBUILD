@@ -23,6 +23,8 @@ pkgver() {
 
 build() {
   cd "bifrost"
+  make deps
+
   make build
 }
 
