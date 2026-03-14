@@ -1,6 +1,6 @@
 pkgbase = aeroshell-workspace-git
 	pkgdesc = Various components required by AeroShell-based desktops
-	pkgver = 6.6.1_11.r761a22c
+	pkgver = 6.6.1_12.ra040a91
 	pkgrel = 1
 	url = https://gitgud.io/aeroshell/aeroshell-workspace
 	arch = x86_64
