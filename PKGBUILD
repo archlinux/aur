@@ -9,14 +9,15 @@ pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
 license=('MIT')
 arch=('x86_64')
-depends=(gcc-libs glibc oniguruma)
+depends=(libgcc glibc oniguruma)
 makedepends=(git rust)
 optdepends=("rust-src: optimize with RUSTC_BOOTSTRAP=1")
 provides=(coreutils)
 conflicts=({uutils-,}coreutils)
 source=("${pkgname%-git}::git+${url}.git"
 "${url}/releases/download/latest-commit/docs.tar.zst")
-b2sums=('SKIP' 'SKIP')
+b2sums=('SKIP'
+        'e9a762b79e3b1ff6c5a1cfe01fd74a622cb686952d2ad041ebf15e4653f0805832bdce2ad21c10341c73535b43a8e569381da7e730a5b2fee7774e8479f2707a')
 pkgver() {
   cd ${pkgname%-git}
   git describe --long --tags --abbrev=7 --match='[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
