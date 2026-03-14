@@ -1,3 +1,5 @@
+# Maintainer: John Schoenick <johns@valvesoftware.com>
+# Maintainer: Timothee 'TTimo' Besset <ttimo@ttimo.net>
 # Contributor: Julie Shapiro <jshapiro at nvidia dot com>
 
 pkgname=p4v
