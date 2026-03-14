@@ -1,0 +1,26 @@
+From e84f94dcdafe22c80055ddea9d46084c8f7f2aed Mon Sep 17 00:00:00 2001
+From: Dee HY <dongfengweixiao@hotmail.com>
+Date: Sat, 14 Mar 2026 18:56:11 +0800
+Subject: [PATCH] Use dynamic OpenSSL
+
+---
+ linux/CMakeLists.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/linux/CMakeLists.txt b/linux/CMakeLists.txt
+index b28f54a..2b5ead6 100644
+--- a/linux/CMakeLists.txt
++++ b/linux/CMakeLists.txt
+@@ -71,6 +71,9 @@ set_target_properties(${BINARY_NAME}
+ )
+ 
+ 
++# Use dynamic OpenSSL linking for sqlcipher_flutter_libs
++set(OPENSSL_USE_STATIC_LIBS OFF)
++
+ # Generated plugin build rules, which manage building the plugins and adding
+ # them to the application.
+ include(flutter/generated_plugins.cmake)
+-- 
+2.53.0
+
