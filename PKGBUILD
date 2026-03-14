@@ -1,6 +1,6 @@
 # Maintainer: blackflame007 <https://github.com/blackflame007>
 pkgname=mehshell-bin
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="Fast, parallelized zsh prompt engine written in Go"
 arch=('x86_64' 'aarch64')
@@ -14,8 +14,8 @@ conflicts=('mehshell')
 source_x86_64=("${url}/releases/download/v${pkgver}/mehshell_linux_amd64.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/mehshell_linux_arm64.tar.gz")
 source=("LICENSE::https://raw.githubusercontent.com/blackflame007/mehshell/master/LICENSE")
-sha256sums_x86_64=('SKIP')
-sha256sums_aarch64=('SKIP')
+sha256sums_x86_64=('2414e7c659a758c17597075ca85473be7a2d64643965ced09dca84e9f328267b')
+sha256sums_aarch64=('6083e19c4b482d95e137e70bb1cca28b7b4a8200b904896eb21ce369e3dfd32f')
 sha256sums=('SKIP')
 
 package() {
