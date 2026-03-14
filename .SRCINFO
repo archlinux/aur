@@ -1,6 +1,6 @@
 pkgbase = aerothemeplasma-desktop-git
 	pkgdesc = An alternative shell for KDE Plasma that aims to replicate the look and feel of Windows 7
-	pkgver = 6.6.1_680.rc790a33
+	pkgver = 6.6.1_689.r05315a9
 	pkgrel = 1
 	url = https://github.com/aeroshell-desktop/aerothemeplasma
 	arch = x86_64
