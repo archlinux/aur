@@ -5,7 +5,7 @@ _pkgname=deadbranch
 pkgname=${_pkgname}-bin
 pkgdesc="Clean up stale git branches safely"
 
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ depends=('glibc' 'libgcc')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('d6168a1d49f6523caa1438d9b419ae1ad344acb2b91d299d77b8da427ba2ee86')
-sha256sums_aarch64=('746529f77b0ceb7a7a011d151dae31565baf4b558e45cbd6cb1702661b418daa')
+sha256sums_x86_64=('7c0c267c6e907ecc6fac91c1b6de9c7155b06b94f0a8a010aaac78d622defa6e')
+sha256sums_aarch64=('0d69e2b7eb8ea39d475d3691dd96feb0e49c95e9245bdecec6b9f0ce9484aa31')
 
 
 package() {
