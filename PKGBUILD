@@ -6,7 +6,7 @@ pkgdesc="Simple user configuration tool"
 arch=('x86_64')
 url="https://github.com/MX-Linux/mx-user"
 license=('GPL3')
-depends=('qt6-base' 'polkit' 'rsync' 'shadow' 'xdg-utils')
+depends=('qt6-base' 'polkit' 'rsync' 'shadow')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 source=("https://github.com/MX-Linux/mx-user/archive/refs/tags/26.02.1arch.tar.gz")
 sha256sums=('5c68b7b53f029dae75bb05104794fbfdc3a42c7950b8242d34d89650d01cfef4')
@@ -37,7 +37,7 @@ package() {
     install -Dm644 build/*.qm "${pkgdir}/usr/share/mx-user/locale/" 2>/dev/null || true
 
     install -dm755 "${pkgdir}/usr/lib/mx-user"
-    install -Dm755 scripts/helper "${pkgdir}/usr/lib/mx-user/helper"
+    install -Dm755 build/helper "${pkgdir}/usr/lib/mx-user/helper"
 
     install -Dm644 scripts/org.mxlinux.pkexec.mx-user-helper.policy \
         "${pkgdir}/usr/share/polkit-1/actions/org.mxlinux.pkexec.mx-user-helper.policy"
