@@ -8,11 +8,11 @@ url="https://github.com/boussou/b3sumr"
 license=('custom')
 depends=('glibc')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz")
-sha256sums=()
+source=("git+$url.git#tag=v$pkgver")
+sha256sums=('SKIP')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   
   install -Dm755 b3sumr "$pkgdir/usr/bin/b3sumr"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

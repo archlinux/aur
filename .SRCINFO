@@ -12,6 +12,7 @@ pkgbase = b3sumr
 	license = custom
 	makedepends = go
 	depends = glibc
-	source = b3sumr-0.3.0.tar.gz
+	source = git+https://github.com/boussou/b3sumr.git#tag=v0.3.0
+	sha256sums = SKIP
 
 pkgname = b3sumr
