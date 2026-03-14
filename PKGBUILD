@@ -1,18 +1,18 @@
 # Maintainer: Elizabeth Vatten Veiga <parajogapaladins@gmail.com>
 pkgname=icebar-git
-pkgver=r130.gfd0aa54
+pkgver=r155.g9ed70de
 pkgrel=1
 pkgdesc="Lightweight Wayland status bar"
 url="https://github.com/HaruNashii/Icebar"
 license=('MIT')
 makedepends=('git' 'rust' 'cargo')
-depends=('libxcb' 'gcc-libs')
+depends=('libxcb' 'gcc-libs' 'libpulse' 'dbus' 'glibc')
 arch=('x86_64')
 source=("git+https://github.com/HaruNashii/Icebar.git")
 options=('!debug')
 sha256sums=('SKIP')
 provides=('icebar')
-conflicts=('icebar-git' 'icebar')
+conflicts=('icebar-git' 'icebar' 'icebar-bin')
 
 pkgver() {
   cd "$srcdir/Icebar"
