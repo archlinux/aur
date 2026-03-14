@@ -3,7 +3,7 @@
 _pkgauthor=flo-at
 _pkgname=minmon
 pkgname=${_pkgname}-bin
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc="An opinionated minimal monitoring and alarming tool."
 arch=('x86_64' 'aarch64')
@@ -24,8 +24,8 @@ sha256sums=('c04d770b0fa2d71bbb20e1ca60773321f9b0d3c1d6367caaa1c4ad2a383d6ca9'
             '827e04431ccf5cbe334a7a6f24c4dea4a5a3636c27d4d91afc0a7098971ac510'
             '1c245bcffc08d2989d9dbe43aca3f89a4b7f17ee22ba683c6df314cc2a4a857e'
             '2ab7eb9ad19dff3d524e08167b7b7a085e89bd66c3cbe1061b4182c86e0490da')
-sha256sums_x86_64=('5cea9b233781b7504ea3bc2b74e32d7c33308162cd2fc1d09a9efeca534416f4')
-sha256sums_aarch64=('8050d1fe3868a54644ca32351b8e810fabc354f36af57188f36e2c53d699fe70')
+sha256sums_x86_64=('a2adc2b5da6d5177a632a0d66235edbff01b9f907e8c35015ce5f4d270ecb581')
+sha256sums_aarch64=('09d10b257a4a01a8e94641d15e204f392b341c67233fe84ce4565afac35ccbbc')
 
 
 package() {
