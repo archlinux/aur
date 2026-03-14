@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-user
-pkgver=26.02.1arch
+pkgver=26.03
 pkgrel=1
 pkgdesc="Simple user configuration tool"
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/MX-Linux/mx-user"
 license=('GPL3')
 depends=('qt6-base' 'polkit' 'rsync' 'shadow')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/mx-user/archive/refs/tags/26.02.1arch.tar.gz")
-sha256sums=('5c68b7b53f029dae75bb05104794fbfdc3a42c7950b8242d34d89650d01cfef4')
+source=("https://github.com/MX-Linux/mx-user/archive/refs/tags/26.03.tar.gz")
+sha256sums=('d849967e0323f2fae1d4540988931ba27e3af62fd473d63ded121defe87a3ccc')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
