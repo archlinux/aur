@@ -1,0 +1,16 @@
+pkgbase = python-aiocqhttp
+	pkgdesc = A Python SDK with async I/O for CQHTTP (OneBot).
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://aiocqhttp.nonebot.dev/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-quart
+	depends = python-httpx
+	source = https://files.pythonhosted.org/packages/source/a/aiocqhttp/aiocqhttp-1.4.4.tar.gz
+	sha256sums = eb2b6996753cacee45bf615aba5db4625b495e7a184a2fd27d2e5408f472c03d
+
+pkgname = python-aiocqhttp
