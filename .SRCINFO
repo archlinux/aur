@@ -1,6 +1,6 @@
 pkgbase = lrc-lrc-git
 	pkgdesc = Labricecat Relay Chat
-	pkgver = r60.4a26285
+	pkgver = r64.aa604c2
 	pkgrel = 1
 	url = https://codeberg.org/labricecat/lrcclient
 	arch = x86_64
