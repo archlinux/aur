@@ -4,12 +4,12 @@ pkgver=1.1.0
 pkgrel=1
 pkgdesc="AI image generation desktop client for GNOME"
 arch=('x86_64' 'aarch64')
-url="https://forge.jacquin.app/cjacquin/loom"
+url="https://forge.jacquin.app/charles/loom"
 license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita' 'gettext' 'openssl')
 makedepends=('cargo' 'git' 'meson' 'desktop-file-utils')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('9ee3acf3139db375f79f1ce19f97386ba017a4ed24f3bb6be9b90dc5a2c10bb4')
+sha256sums=('ecad43d5e491ce422b55fcd00be56c53ea29b7d9fb9768231175fdb8efbe8ef1')
 
 prepare() {
   cd "$pkgname"
