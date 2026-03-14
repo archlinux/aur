@@ -5,7 +5,7 @@
 
 pkgname='wiki-go'
 pkgdesc='A modern, feature-rich, databaseless flat-file wiki platform'
-pkgver=1.8.6
+pkgver=1.8.7
 pkgrel=1
 url='https://github.com/leomoon-studios/wiki-go'
 arch=('aarch64' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL-3.0-or-later')  # SPDX-License-Identifier: GPL-3.0-or-later
 makedepends=('go')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('fb4ac9175b3673e6a603cde3bf0c720ac1e4dc53a758d0f993c2089e4467167c')
+sha256sums=('e2bcbc7aceaf6c9bbe26e74ec33d923a03c16bc247ebeaaa2f5bb1744561b66c')
 
 prepare() {
   cd "$pkgname-$pkgver"

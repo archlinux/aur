@@ -1,6 +1,6 @@
 pkgbase = wiki-go
 	pkgdesc = A modern, feature-rich, databaseless flat-file wiki platform
-	pkgver = 1.8.6
+	pkgver = 1.8.7
 	pkgrel = 1
 	url = https://github.com/leomoon-studios/wiki-go
 	arch = aarch64
@@ -8,7 +8,7 @@ pkgbase = wiki-go
 	license = GPL-3.0-or-later
 	makedepends = go
 	depends = glibc
-	source = wiki-go-1.8.6.tar.gz::https://github.com/leomoon-studios/wiki-go/archive/refs/tags/v1.8.6.tar.gz
-	sha256sums = fb4ac9175b3673e6a603cde3bf0c720ac1e4dc53a758d0f993c2089e4467167c
+	source = wiki-go-1.8.7.tar.gz::https://github.com/leomoon-studios/wiki-go/archive/refs/tags/v1.8.7.tar.gz
+	sha256sums = e2bcbc7aceaf6c9bbe26e74ec33d923a03c16bc247ebeaaa2f5bb1744561b66c
 
 pkgname = wiki-go
