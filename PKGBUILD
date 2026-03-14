@@ -3,9 +3,9 @@
 
 pkgname=openttd-jgrpp
 pkgver=0.71.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Engine for running Transport Tycoon Deluxe with JGR's patch pack"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/JGRennison/OpenTTD-patches'
 license=('GPL-2.0-only')
 provides=("$pkgname")
