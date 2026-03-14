@@ -2,7 +2,7 @@
 # Maintainer: devnullvoid <devnullvoid.space@gmail.com>
 
 pkgname='pvetui-bin'
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='A terminal user interface (TUI) for Proxmox VE'
 url='https://github.com/devnullvoid/pvetui'
@@ -14,13 +14,13 @@ depends=('glibc')
 optdepends=('kitty: Better terminal support' 'alacritty: Better terminal support')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/devnullvoid/pvetui/releases/download/v${pkgver}/pvetui_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('daaaf6251ec03d049733470fbc72b62166983d50576408929945651efa68da18')
+sha256sums_aarch64=('10f90585cb47d5b2776a44405fcbf6f412da9068edea5d77e06b19ab7c1d0843')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/devnullvoid/pvetui/releases/download/v${pkgver}/pvetui_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('6cf8e86d42c2ed43feaad7cdc91d3d3841141a07b618d4f3731434fe4ba3f943')
+sha256sums_i686=('912ec10e31c184883c9a120b64e781679849e112cee2209bfb4082e3c3b59128')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/devnullvoid/pvetui/releases/download/v${pkgver}/pvetui_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('489caadb7dcbfd22d53a9837ca923e09fcf28dde7e7c2cf1a90cf981357551e6')
+sha256sums_x86_64=('551bbc836f547897f664f4b7c8737fca92bffc67ceecf02da7b5deadcb657702')
 
 package() {
   # Install binary
