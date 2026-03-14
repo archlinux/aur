@@ -1,7 +1,7 @@
 # Maintainer: Melvin Redondo-Tanis <melvin@redondotanis.com>
 
 pkgname=intel-npu-driver-bin
-pkgver=1.28.0.20251218_20347000698
+pkgver=1.30.0.20260311_22963593310
 pkgrel=1
 _main_ver=$(echo $pkgver | cut -d'.' -f1-3)
 pkgdesc="Intel(R) NPU (Neural Processing Unit) Driver"
@@ -17,7 +17,7 @@ source=(
   "LICENSE.md::https://raw.githubusercontent.com/intel/linux-npu-driver/main/LICENSE.md"
 )
 sha256sums=(
-  '09cca227d7f1879c0a3785d63923f6c638fea206933d631fbe726237c08d03c2'
+  'f1a948c9345d9c6518110d67e115f1429ec955b23766a31a95c8adef5cfd939a'
   '451963b6682694730dbe4889fff2ef1c20def68992e2594880c15a28e6c87be5'
 )
 
@@ -30,10 +30,10 @@ prepare() {
   local _base="${pkgver//_/-}"
   local _deb_suffix="ubuntu24.04_amd64"
 
-  bsdtar -xf "intel-driver-compiler-npu_${_base}_${_deb_suffix}.deb" -C intel-driver-compiler-npu
-  bsdtar -xf "intel-fw-npu_${_base}_${_deb_suffix}.deb" -C intel-fw-npu
+  bsdtar -xf "intel-driver-compiler-npu_${_base}~${_deb_suffix}.deb" -C intel-driver-compiler-npu
+  bsdtar -xf "intel-fw-npu_${_base}~${_deb_suffix}.deb" -C intel-fw-npu
   chmod 755 -R intel-fw-npu
-  bsdtar -xf "intel-level-zero-npu_${_base}_${_deb_suffix}.deb" -C intel-level-zero-npu
+  bsdtar -xf "intel-level-zero-npu_${_base}~${_deb_suffix}.deb" -C intel-level-zero-npu
 }
 
 package() {
