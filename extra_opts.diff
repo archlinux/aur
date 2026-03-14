@@ -1,0 +1,127 @@
+diff --git a/man/man1/zoxide.1 b/man/man1/zoxide.1
+index ef1792b66..2c765af30 100644
+--- a/man/man1/zoxide.1
++++ b/man/man1/zoxide.1
+@@ -92,6 +92,10 @@ to use \fBzoxide-remove\fR(1) to remove any existing entries from the database.
+ Custom options to pass to \fBfzf\fR(1) during interactive selection. See the
+ manpage for the full list of options.
+ .TP
++.B_ZO_FZF_EXTRA_OPTS
++Custom options to pass to \fBfzf\fR(1) during interactive selection, appended to the default ones. 
++See the manpage for the full list of options.
++.TP
+ .B _ZO_MAXAGE
+ Configures the aging algorithm, which limits the maximum number of entries in
+ the database. By default, this is set to 10000.
+diff --git a/src/cmd/cmd.rs b/src/cmd/cmd.rs
+index cff7e790c..c5e6a82b4 100644
+--- a/src/cmd/cmd.rs
++++ b/src/cmd/cmd.rs
+@@ -26,6 +26,7 @@ https://github.com/ajeetdsouza/zoxide
+ {tab}<bold>_ZO_ECHO</bold>            {tab}Print the matched directory before navigating to it when set to 1
+ {tab}<bold>_ZO_EXCLUDE_DIRS</bold>    {tab}List of directory globs to be excluded
+ {tab}<bold>_ZO_FZF_OPTS</bold>        {tab}Custom flags to pass to fzf
++{tab}<bold>_ZO_FZF_EXTRA_OPTS</bold>  {tab}Custom flags added the the default fzf ones
+ {tab}<bold>_ZO_MAXAGE</bold>          {tab}Maximum total age after which entries start getting deleted
+ {tab}<bold>_ZO_RESOLVE_SYMLINKS</bold>{tab}Resolve symlinks when storing paths").into_resettable()
+     }
+diff --git a/src/cmd/query.rs b/src/cmd/query.rs
+index 362d80a37..24246b7a0 100644
+--- a/src/cmd/query.rs
++++ b/src/cmd/query.rs
+@@ -91,29 +91,35 @@ impl Query {
+ 
+     fn get_fzf() -> Result<FzfChild> {
+         let mut fzf = Fzf::new()?;
+-        if let Some(fzf_opts) = config::fzf_opts() {
+-            fzf.env("FZF_DEFAULT_OPTS", fzf_opts)
+-        } else {
+-            fzf.args([
+-                // Search mode
+-                "--exact",
+-                // Search result
+-                "--no-sort",
+-                // Interface
+-                "--bind=ctrl-z:ignore,btab:up,tab:down",
+-                "--cycle",
+-                "--keep-right",
+-                // Layout
+-                "--border=sharp", // rounded edges don't display correctly on some terminals
+-                "--height=45%",
+-                "--info=inline",
+-                "--layout=reverse",
+-                // Display
+-                "--tabstop=1",
+-                // Scripting
+-                "--exit-0",
+-            ])
+-            .enable_preview()
++
++        match config::fzf_opts() {
++            Some(mut fzf_opts) => {
++                if let Some(fzf_extra_opts) = config::fzf_extra_opts() {
++                    fzf_opts.push(" ");
++                    fzf_opts.push(fzf_extra_opts);
++                }
++
++                fzf.env("FZF_DEFAULT_OPTS", fzf_opts)
++            }
++            None => {
++                let default_args = config::fzf_default_args();
++
++                let args = match config::fzf_extra_opts() {
++                    Some(fzf_extra_opts) => {
++                        let extra_fzf_args_list: Vec<String> = fzf_extra_opts
++                            .to_str()
++                            .unwrap_or_default()
++                            .split_whitespace()
++                            .map(|arg| String::from(arg))
++                            .collect();
++
++                        vec![default_args, extra_fzf_args_list].concat()
++                    }
++                    None => default_args,
++                };
++
++                fzf.args(args).enable_preview()
++            }
+         }
+         .spawn()
+     }
+diff --git a/src/config.rs b/src/config.rs
+index 0aeda5c5c..b2cf9861f 100644
+--- a/src/config.rs
++++ b/src/config.rs
+@@ -47,6 +47,32 @@ pub fn fzf_opts() -> Option<OsString> {
+     env::var_os("_ZO_FZF_OPTS")
+ }
+ 
++pub fn fzf_extra_opts() -> Option<OsString> {
++    env::var_os("_ZO_FZF_EXTRA_OPTS")
++}
++
++pub fn fzf_default_args() -> Vec<String> {
++    vec![
++        // Search mode
++        String::from("--exact"),
++        // Search result
++        String::from("--no-sort"),
++        // Interface
++        String::from("--bind=ctrl-z:ignore,btab:up,tab:down"),
++        String::from("--cycle"),
++        String::from("--keep-right"),
++        // Layout
++        String::from("--border=sharp"), // rounded edges don't display correctly on some terminals
++        String::from("--height=45%"),
++        String::from("--info=inline"),
++        String::from("--layout=reverse"),
++        // Display
++        String::from("--tabstop=1"),
++        // Scripting
++        String::from("--exit-0"),
++    ]
++}
++
+ pub fn maxage() -> Result<Rank> {
+     env::var_os("_ZO_MAXAGE").map_or(Ok(10_000.0), |maxage| {
+         let maxage = maxage.to_str().context("invalid unicode in _ZO_MAXAGE")?;

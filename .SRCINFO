@@ -1,5 +1,5 @@
-pkgbase = zoxide
-	pkgdesc = A smarter cd command for your terminal
+pkgbase = zoxide-extra-opts
+	pkgdesc = A smarter cd command for your terminal - extra options patch
 	pkgver = 0.9.9
 	pkgrel = 2
 	url = https://github.com/ajeetdsouza/zoxide
@@ -11,8 +11,12 @@ pkgbase = zoxide
 	depends = libgcc
 	depends = libgcc_s.so
 	optdepends = fzf: for interactive selection
+	conflicts = zoxide
+	conflicts = zoxide-git
 	options = !lto
-	source = zoxide::git+https://github.com/ajeetdsouza/zoxide.git#tag=v0.9.9
+	source = zoxide-extra-opts::git+https://github.com/ajeetdsouza/zoxide.git#tag=v0.9.9
+	source = extra_opts.diff::https://github.com/ValJed/zoxide/compare/9cdc6aa3740b4d8a9d62406c99e84c5de49645e9...7936aa6f4ca74ce2c3d0ffaf04899215d65cdd21.diff
 	sha256sums = a43bd37528b841bdf160a8b3d5f72afd5ba5b1caa22948d5b33097012d1cf9c2
+	sha256sums = 9900cedb15b6a6c8566fc886141e347092a2dca007a522dc77a8ca49eac8859d
 
-pkgname = zoxide
+pkgname = zoxide-extra-opts
