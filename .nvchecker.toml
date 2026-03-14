@@ -1,0 +1,3 @@
+[perl-business-creditcard]
+source = "cpan"
+cpan = "Business-CreditCard"
