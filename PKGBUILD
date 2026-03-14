@@ -20,11 +20,11 @@
 : ${_install_path:=usr/lib}
 : ${_wmclass:=floorp}
 
-: ${_runtime_commit:=766fc44b704f8cb9d480d19456dc58964752f35a} # daily-785
+: ${_runtime_commit:=6c8b6fae36802bb65dbe7efa3813df41c45d077f} # daily-813
 
 _pkgname="floorp"
 pkgname="$_pkgname"
-pkgver=12.10.4
+pkgver=12.11.0
 pkgrel=1
 pkgdesc="Firefox-based web browser focused on performance and customizability"
 url="https://github.com/Floorp-Projects/Floorp"
@@ -117,7 +117,7 @@ source=(
   '0004-Fix-sandbox-to-build-with-glibc-2.43.patch'
 )
 sha256sums=(
-  '8b00ea771e50ddc68c013c6f99cc9707907c2294bf99e73fc872c0eb740e9c8c'
+  'aaf2a22c0ae7882354d20fa527eb70dd6660e01f931aad12626f5ca65325d5aa'
   'SKIP'
   'SKIP'
   '8b38d000950cddd5fa0e1598540590af21f1aae1d30212fb11197c8526662604'
