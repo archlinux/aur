@@ -1,7 +1,7 @@
 pkgbase = python-markovify
 	pkgdesc = Simple, extensible Markov chain generator
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jsvine/markovify
 	arch = any
 	license = MIT
