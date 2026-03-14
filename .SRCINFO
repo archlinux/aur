@@ -1,0 +1,12 @@
+pkgbase = oss-browser2
+	pkgdesc = ossbrowser 2是阿里云官方提供的OSS图形化管理工具，提供类似Windows资源管理器的功能
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/aliyun/oss-browser
+	arch = x86_64
+	license = Custom
+	depends = electron38
+	source = https://gosspublic.alicdn.com/oss-browser2-prod/2.1.1/oss-browser2-linux-x86_64-2.1.1.AppImage
+	sha256sums = 617069c3621b9b66ed04d6b370c1cdd1086786b5bc11058fad81896b23f4dd7a
+
+pkgname = oss-browser2
