@@ -11,9 +11,9 @@
 
 pkgname=ungoogled-chromium
 pkgver=146.0.7680.75
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
-_manual_clone=0
+_manual_clone=1
 _system_clang=1
 # ungoogled chromium variables
 _uc_usr=ungoogled-software
@@ -54,7 +54,7 @@ makedepends=(
   'python'
   'qt6-base'
   'rust-bindgen'
-  'rustup'
+  'rust'
 )
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
