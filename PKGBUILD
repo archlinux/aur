@@ -12,7 +12,7 @@ pkgname=walt-git
 # Placeholder set here, but pkgver() below overwrites this at build time
 # using `git describe`. It needs to exist as a variable for makepkg to parse
 # the file before any functions run.
-pkgver=0.8.0.r0.g1c21ae0
+pkgver=0.9.1.r0.g63c2efb
 
 # Increment this when the PKGBUILD itself changes but the upstream source
 # hasn't. Reset to 1 whenever pkgver changes.
