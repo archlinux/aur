@@ -12,7 +12,7 @@ optdepends=()
 provides=('doudou')
 conflicts=('doudou')
 options=('!strip')
-source=("doudou-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-71/doudou-16.1.0-2026-03-11-linux-x64.zip")
+source=("doudou-unstable-${pkgver}.zip::https://github.com/openlyst/builds/releases/download/build-72/doudou-16.1.0-2026-03-14-linux-x64.zip")
 sha256sums=('SKIP')
 
 package() {
