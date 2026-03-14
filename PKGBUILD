@@ -3,8 +3,8 @@
 pkgname=libastal-wl-git
 _pkgname=wl
 pkgver=r859.8b39f46
-pkgrel=1
-provides=(astal-wl libastal-wl libastal-wl.so=0-64)
+pkgrel=2
+provides=(libastal-wl libastal-wl.so=0-64)
 pkgdesc="Provides a central lib to manage wayland objects for other astal libs"
 arch=(x86_64)
 license=(LGPL-2.1-only)
