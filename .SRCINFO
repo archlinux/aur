@@ -1,0 +1,14 @@
+pkgbase = atari-tools
+	pkgdesc = Manipulate Atari 800 .ATR images. Convert between .ATR and .IMD (ImageDisk) formats.
+	pkgver = 835d5a6
+	pkgrel = 1
+	url = https://github.com/jhallen/atari-tools
+	arch = i686
+	arch = x86_64
+	license = UNKNOWN
+	provides = atari-tools
+	conflicts = atari-tools
+	source = git+https://github.com/jhallen/atari-tools#commit=835d5a6
+	sha256sums = SKIP
+
+pkgname = atari-tools

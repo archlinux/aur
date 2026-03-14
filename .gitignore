@@ -1,0 +1,6 @@
+src/
+pkg/
+atari-tools/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.tar.gz
