@@ -2,7 +2,7 @@
 _base=findiff
 pkgname=python-${_base}
 pkgdesc="Python package for finite difference derivatives in any number of dimensions"
-pkgver=0.12.2
+pkgver=0.13.1
 pkgrel=1
 arch=(any)
 url="https://github.com/maroba/${_base}"
@@ -10,8 +10,8 @@ license=(MIT)
 depends=(python-scipy python-sympy)
 makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
-source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('1c78ac27e6e8d394f36b97f9d288897abd651a84c9315cbfcf512ee08e8b123dba07d0b5bb1947bef1cddf9c652bb76868f51f920bcd2932638c2991f2430733')
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('deb951a016850876768a523995264f8ed4d191f6b39057c367eb46f537a78bf969eeb52d045fb23abe4fee7d6787b1360f64a854d5b12aefb6365d64166b27ac')
 
 build() {
   cd ${_base}-${pkgver}
