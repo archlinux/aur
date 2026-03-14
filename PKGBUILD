@@ -16,6 +16,8 @@ source=(
   openide.sh
 )
 
+install=openide.install
+
 source_x86_64=("https://download.openide.ru/${pkgver}/openIDE-${pkgver}.tar.gz")
 
 options=(!strip)

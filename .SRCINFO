@@ -3,6 +3,7 @@ pkgbase = openide-bin
 	pkgver = 252.27397.103.1
 	pkgrel = 1
 	url = https://openide.ru
+	install = openide.install
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	conflicts = openide
