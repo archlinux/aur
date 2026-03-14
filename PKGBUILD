@@ -1,15 +1,15 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
-# Contributor Michele Balistreri <michele at bitgamma dot com>
+# Contributor: Michele Balistreri <michele at bitgamma dot com>
 
 # Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v10.0.0
 pkgname=lemonade-server
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (Server)"
 pkgver=10.0.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
 license=('Apache-2.0')
-makedepends=('cmake' 'ninja' 'git' 'cli11' 'nlohmann-json' 'openssl')
+makedepends=('cmake' 'ninja' 'git' 'cli11' 'nlohmann-json' 'openssl' 'libdrm' 'nodejs' 'npm')
 depends=('zstd' 'unzip')
 provides=('lemonade-server')
 backup=('etc/lemonade/lemonade.conf' 'etc/lemonade/secrets.conf')
