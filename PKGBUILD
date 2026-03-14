@@ -1,6 +1,6 @@
 # Maintainer: ywxt <ywxt@ywxt.org>
 pkgname=dkitle-bin
-pkgver=0.1.alpha
+pkgver=0.1.beta
 pkgrel=2
 pkgdesc="A desktop application for dkitle"
 arch=('x86_64' 'aarch64')
@@ -19,12 +19,12 @@ optdepends=(
 )
 options=('!strip')
 
-_tag=v0.1-alpha
+_tag=v0.1-beta
 
 source_x86_64=("${url}/releases/download/${_tag}/dkitle-linux-x86_64.tar.gz")
 source_aarch64=("${url}/releases/download/${_tag}/dkitle-linux-aarch64.tar.gz")
-sha256sums_x86_64=('3fbfded66a7bace80ed6cf2b7d51cc374daefc5f4ea46e99c3110503a76b0dbe')
-sha256sums_aarch64=('a87eab7140848399df286581a03a09fb59e5ecd32924fbbe60d13f6393516a1a')
+sha256sums_x86_64=('e0e0ddce3f9a6a31239fd559d4024946710e626b6b470c384808f14ffdf84552')
+sha256sums_aarch64=('e92a0d31febbe410d9a70fcc9f29f17ada0019030515b9c85b8b71a8e556a6e6')
 
 package() {
     if [[ "$CARCH" == "x86_64" ]]; then
