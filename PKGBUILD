@@ -1,6 +1,6 @@
 pkgname=companion-satellite
 pkgver=2.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Bitfocus Companion Satellite - connects local Stream Decks to a remote Companion instance'
 arch=('x86_64')
 url='https://github.com/bitfocus/companion-satellite'
@@ -23,6 +23,7 @@ package() {
 
     install -dm755 "${pkgdir}/opt/${pkgname}"
     cp -a satellite/dist "${pkgdir}/opt/${pkgname}/dist"
+    cp -a satellite/assets "${pkgdir}/opt/${pkgname}/assets"
     cp satellite/package.json "${pkgdir}/opt/${pkgname}/package.json"
     cp -a node_modules "${pkgdir}/opt/${pkgname}/node_modules"
 
