@@ -8,6 +8,8 @@ pkgbase = primer3
 	license = GPL2
 	depends = gcc-libs
 	source = primer3-2.6.1.tar.gz::https://github.com/primer3-org/primer3/archive/v2.6.1.tar.gz
+	source = gcc15.patch
 	sha256sums = 805cef7ef39607cd40f0f5bb8b32e35e20007153a0a55131dd430ce644c8fb9e
+	sha256sums = 0b86b6a1b2f1dba22d213de3ca67adfa757e1d590987dd162f040ab766e120d5
 
 pkgname = primer3
