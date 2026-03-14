@@ -3,7 +3,6 @@ pkgbase = steamvr-linux-fixes-layer-git
 	pkgver = 0.1.3.r0.g04e43c9
 	pkgrel = 1
 	url = https://github.com/BnuuySolutions/SteamVRLinuxFixes
-	install = steamvr-linux-fixes-layer-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = git
