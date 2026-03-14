@@ -1,0 +1,19 @@
+pkgbase = inq
+	pkgdesc = CLI for user input
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/robvanderleek/inq
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-typer
+	depends = python-inquirer-textual
+	provides = inq
+	source = https://files.pythonhosted.org/packages/source/i/inq/inq-0.3.0.tar.gz
+	sha256sums = a69073d8aefd5c9702133345839abc0f9e194b1acbc38d7ee4ebb6fcb02878fd
+
+pkgname = inq
