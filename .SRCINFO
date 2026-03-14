@@ -1,0 +1,21 @@
+pkgbase = steamvr-linux-fixes-layer-git
+	pkgdesc = A Vulkan layer that patches SteamVR's vrcompositor to address issues for wired headsets
+	pkgver = 0.1.3.r0.g04e43c9
+	pkgrel = 1
+	url = https://github.com/BnuuySolutions/SteamVRLinuxFixes
+	install = steamvr-linux-fixes-layer-git.install
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = vulkan-headers
+	depends = vulkan-icd-loader
+	provides = steamvr-linux-fixes-layer
+	conflicts = steamvr-linux-fixes-layer
+	conflicts = steamvr-linux-fixes-layer-bin
+	source = git+https://github.com/BnuuySolutions/SteamVRLinuxFixes.git
+	source = git+https://github.com/kubo/funchook.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = steamvr-linux-fixes-layer-git

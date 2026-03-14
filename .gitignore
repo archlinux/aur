@@ -1,0 +1,6 @@
+SteamVRLinuxFixes/
+funchook/
+pkg/
+src/
+*.tar.zst
+*.log
