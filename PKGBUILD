@@ -9,8 +9,7 @@ pkgdesc='Additional components to increase the functionality of KIO'
 arch=(x86_64)
 url='https://www.kde.org/'
 license=(LGPL-2.0-or-later)
-depends=(gcc-libs
-         glibc
+depends=(glibc
          karchive5
          kconfig5
          kcoreaddons5
@@ -19,10 +18,12 @@ depends=(gcc-libs
          kdsoap-qt5
          ki18n5
          kio5
+         libgcc
          libimobiledevice
          libmtp
          libplist
          libssh
+         libstdc++
          libtirpc
          libxcursor
          qt5-base
