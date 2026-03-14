@@ -1,6 +1,6 @@
 pkgbase = web-ext
 	pkgdesc = A command line tool to help build, run, and test web extensions
-	pkgver = 9.4.0
+	pkgver = 10.0.0
 	pkgrel = 1
 	url = https://developer.mozilla.org/en-US/Add-ons/WebExtensions
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = web-ext
 	conflicts = nodejs-web-ext
 	replaces = nodejs-web-ext
 	options = !strip
-	source = https://github.com/mozilla/web-ext/archive/refs/tags/9.4.0.tar.gz
-	sha256sums = 8f43cbc2dc7c72d416bc17741989a1cde1bb623062380127fceaafe62c2913e3
+	source = https://github.com/mozilla/web-ext/archive/refs/tags/10.0.0.tar.gz
+	sha256sums = bddb101ac44ffc1c33f66b13f75075c3c320c973f7e9d7f96fffde1b9677b634
 
 pkgname = web-ext
