@@ -1,7 +1,7 @@
 # Maintainer: Adrian Siekierka <kontakt at asie dot pl>
 
 pkgname=zeta86
-pkgver=1.1.5
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Compact emulator for ZZT and Super ZZT"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -10,9 +10,9 @@ license=('MIT')
 depends=('sdl3' 'libpng')
 makedepends=('git' 'meson')
 options=('debug')
-_tag=445f231f0db88eb7023161ad886fab1f587ce835
+_tag=76ad151aa70fa62828a94d05af5a772ba9edee64
 source=("git+https://codeberg.org/asie/zeta.git#tag=$_tag")
-sha256sums=('5338521632910ad86602dc9083c6b8cfad45d124971df62e09e24ef78b1b94a4')
+sha256sums=('46df8dbe34f129f86ca629ad4291117cb6d90ac3833aa1d690104ae11c1da0b5')
 
 build() {
   cd zeta

@@ -1,6 +1,6 @@
 pkgbase = zeta86
 	pkgdesc = Compact emulator for ZZT and Super ZZT
-	pkgver = 1.1.5
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://zeta.asie.pl
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = zeta86
 	depends = sdl3
 	depends = libpng
 	options = debug
-	source = git+https://codeberg.org/asie/zeta.git#tag=445f231f0db88eb7023161ad886fab1f587ce835
-	sha256sums = 5338521632910ad86602dc9083c6b8cfad45d124971df62e09e24ef78b1b94a4
+	source = git+https://codeberg.org/asie/zeta.git#tag=76ad151aa70fa62828a94d05af5a772ba9edee64
+	sha256sums = 46df8dbe34f129f86ca629ad4291117cb6d90ac3833aa1d690104ae11c1da0b5
 
 pkgname = zeta86
