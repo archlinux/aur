@@ -1,48 +1,56 @@
 # Maintainer: Keshav Bhatt <keshavnrj@gmail.com>
 
 pkgname=wonderwall
-pkgver=7.0
-pkgrel=4
-pkgdesc="WonderWall is a Powerful Desktop Wallpaper manager for Linux and Windows Desktop"
+pkgver=8.1.0
+pkgrel=1
+pkgdesc="WonderWall - Wallpaper browser and downloader for Wallhaven.cc"
 arch=('x86_64')
 url="https://snapcraft.io/wonderwall"
-license=('PROPRIETARY')
-options=('!strip')
+license=('LicenseRef-proprietary')
+options=('!strip' '!debug')
 depends=(
-  'qt5-base'
-  'qt5-webkit'
+  'qt6-base'
+  'qt6-webengine'
 )
-
-makedepends=('squashfs-tools' 'jq')
-sha256sums=('SKIP'
-            'ca267d51f998533fad921b8f69e81a79f2383862dcb007cac6d3358db00d1a91'
-            'fb53d00bf9d57f00c644c81bae0f97fd921a6d387720461cff144918356965ab'
-            '073d9958368a1abe4385a8c63ce2f346e823a6772f4c8064b96561a7c1d8e04f')
+makedepends=(
+  'squashfs-tools'
+  'curl'
+  'jq'
+)
 
 DLAGENTS+=("snap::${BASH_SOURCE[0]%/*}/snap-dlagent.sh %u %o")
-source=("${pkgname}-${pkgver}.squashfs::snap://api.snapcraft.io/v2/snaps/info/wonderwall"
-  snap-dlagent.sh
-  "${pkgname}.desktop"
-  "${pkgname}.sh"
-)
+source=("${pkgname}-${pkgver}.snap::snap://api.snapcraft.io/v2/snaps/info/wonderwall"
+  snap-dlagent.sh)
+sha256sums=('SKIP'
+            'c880bdde94b5d41416f14303e50380442404e21596223516de32c32d3cc96357')
 
 prepare() {
   cd "${srcdir}"
-
-  msg2 "Extraction..."
-  unsquashfs ${pkgname}-${pkgver}.squashfs
+  unsquashfs -no-progress "${pkgname}-${pkgver}.snap"
 }
 
 package() {
   cd "${srcdir}"
 
-  install -Dm755 wonderwall.sh \
+  # Binary
+  install -Dm755 squashfs-root/usr/bin/wonderwall \
     "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 squashfs-root/meta/gui/icon.png \
-    "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 "${pkgname}.desktop" \
-    "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-  install -Dm755 "${srcdir}/squashfs-root/usr/bin/wonderwall" \
-    "${pkgdir}/usr/bin/${pkgname}"
-  rm -rf "${pkgdir}/opt/"
+
+  # Icon (hicolor 512x512)
+  install -Dm644 \
+    squashfs-root/usr/share/icons/hicolor/512x512/apps/com.ktechpit.wonderwall.png \
+    "${pkgdir}/usr/share/icons/hicolor/512x512/apps/com.ktechpit.wonderwall.png"
+
+  # Desktop file — the snap build rewrites Icon= to ${SNAP}/meta/gui/icon.png;
+  # restore it to a plain icon name for the system installation.
+  install -Dm644 \
+    squashfs-root/usr/share/applications/com.ktechpit.wonderwall.desktop \
+    "${pkgdir}/usr/share/applications/com.ktechpit.wonderwall.desktop"
+  sed -i 's|^Icon=.*|Icon=com.ktechpit.wonderwall|' \
+    "${pkgdir}/usr/share/applications/com.ktechpit.wonderwall.desktop"
+
+  # AppStream metainfo
+  install -Dm644 \
+    squashfs-root/usr/share/metainfo/com.ktechpit.wonderwall.metainfo.xml \
+    "${pkgdir}/usr/share/metainfo/com.ktechpit.wonderwall.metainfo.xml"
 }
