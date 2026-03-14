@@ -1,0 +1,14 @@
+pkgbase = zeppelin-git
+	pkgdesc = A free UCI chess engine with integrated NNUE, optimized for x86_64 and aarch64 CPUs
+	pkgver = 1.4.0.3
+	pkgrel = 1
+	url = https://github.org/jszczerbinsky/zeppelin
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	source = git+https://github.com/jszczerbinsky/zeppelin.git#branch=main
+	sha256sums = SKIP
+
+pkgname = zeppelin-git
