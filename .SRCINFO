@@ -7,7 +7,6 @@ pkgbase = xdg-desktop-portal-termfilechooser
 	license = MIT
 	makedepends = meson
 	makedepends = scdoc
-	makedepends = git
 	depends = xdg-desktop-portal
 	depends = libinih
 	optdepends = kitty: default terminal for launching wrappers

@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('MIT')
 provides=('xdg-desktop-portal-impl' 'xdg-desktop-portal-termfilechooser')
 depends=('xdg-desktop-portal' 'libinih')
-makedepends=('meson' 'scdoc' 'git')
+makedepends=('meson' 'scdoc')
 optdepends=(
   'kitty: default terminal for launching wrappers'
   'lf: wrapper included'
