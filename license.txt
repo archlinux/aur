@@ -1,0 +1,18 @@
+Copyright (c) 2026 Logw2
+
+All rights reserved.
+
+This software and associated documentation files (the "Software") are the
+proprietary property of the copyright holder.
+
+Permission is granted to download and use the Software for personal or
+internal use only. Redistribution, modification, sublicensing, or commercial
+distribution of the Software, in whole or in part, is prohibited without
+explicit written permission from the copyright holder.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE
+USE OR OTHER DEALINGS IN THE SOFTWARE.
