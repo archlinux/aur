@@ -1,0 +1,13 @@
+pkgbase = deezer-tui-bin
+	pkgdesc = Deezer for the terminal written in Rust, A Deezer TUI client with Discord RPC and MPRIS support
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Minuga-RC/deezer-tui
+	arch = x86_64
+	license = MIT
+	provides = deezer-tui
+	conflicts = deezer-tui
+	source = https://github.com/Minuga-RC/deezer-tui/releases/download/v1/deezer-tui
+	sha256sums = SKIP
+
+pkgname = deezer-tui-bin
