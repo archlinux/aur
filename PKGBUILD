@@ -46,6 +46,7 @@ SCRIPT
     # systemd service
     install -Dm644 config/archjh.service "$pkgdir/usr/lib/systemd/system/archjh.service"
 
-    # Desktop entry
+    # Icon and desktop entry
+    install -Dm644 assets/archjh.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/archjh.svg"
     install -Dm644 config/com.archjh.desktop "$pkgdir/usr/share/applications/com.archjh.desktop"
 }
