@@ -1,0 +1,19 @@
+pkgbase = python-inquirer-textual
+	pkgdesc = Versatile library for user input in Python
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/robvanderleek/inquirer-textual
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-rich
+	depends = python-textual
+	depends = python-typing_extensions
+	source = https://files.pythonhosted.org/packages/source/i/inquirer_textual/inquirer_textual-0.5.0.tar.gz
+	sha256sums = 4c3f57c96c242629e11b7883027f7a2f32f2d6753060750323bac0a0988f17e8
+
+pkgname = python-inquirer-textual
