@@ -42,6 +42,19 @@ exec ./cold_start "$@"
 EOF
     chmod 755 "$pkgdir/usr/bin/cold-start"
 
+    # Desktop entry
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/cold-start.desktop" << 'DESKTOP'
+[Desktop Entry]
+Name=Cold Start
+Comment=Top-down twin-stick shooter — wave survival
+Exec=/usr/bin/cold-start
+Icon=cold-start
+Terminal=false
+Type=Application
+Categories=Game;ActionGame;
+Keywords=shooter;arcade;waves;switch;homebrew;
+DESKTOP
+
     # License
     install -Dm644 "cold-start-nx-$pkgver/LICENSE" \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
