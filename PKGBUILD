@@ -1,6 +1,6 @@
 # Maintainer: Abdulrahman <abdualrhman6296@gmail.com>
 pkgname=servhub
-pkgver=1.0.1
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="ServHub - A fast Linux app store powered by Flathub"
 arch=('x86_64')
