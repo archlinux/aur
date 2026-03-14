@@ -1,0 +1,12 @@
+pkgbase = servhub
+	pkgdesc = ServHub - A fast Linux app store powered by Flathub
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/B5aaR/servhub-store
+	arch = x86_64
+	license = MIT
+	depends = flatpak
+	source = https://github.com/B5aaR/servhub-store/releases/download/v1.0.0/ServHub-1.0.0.AppImage
+	sha256sums = SKIP
+
+pkgname = servhub
