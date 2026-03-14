@@ -1,0 +1,18 @@
+[Desktop Entry]
+Name=Cursor
+Comment=The AI Code Editor.
+GenericName=Text Editor
+Exec=cursor %U
+Icon=cursor
+Type=Application
+StartupNotify=false
+StartupWMClass=Cursor
+Categories=TextEditor;Development;IDE;
+MimeType=application/x-cursor-workspace;
+Actions=new-empty-window;
+Keywords=cursor;vscode;editor;code;ide;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=cursor --new-window %U
+Icon=cursor
