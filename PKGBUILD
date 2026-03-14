@@ -2,7 +2,7 @@
 
 pkgname=iipython-feishin-bin
 pkgdesc='Fork of Feishin with additional features.'
-pkgver=26.02.26
+pkgver=26.03.14
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/iipythonx/feishin'
@@ -14,7 +14,7 @@ _filename=feishin-${pkgver//_/-}-linux
 source=("feishin.desktop")
 source_x86_64=("https://github.com/iipythonx/feishin/releases/download/${pkgver//_/-}-1.0/${_filename}-x64.tar.xz")
 sha256sums=('30c140178d7eaf8f7daf100ce73757b4ee521b47465b611263123d5228b81eaf')
-sha256sums_x86_64=('52c9afe0d2c15aa2e5b8f7edf6a3f92d5f136adb54f3fff87a900eb45513877d')
+sha256sums_x86_64=('967e08f46f3748d025e487585c72c9ba5f553948678118aa445bf6c9523baa22')
 
 package() {
     # create target file structure
