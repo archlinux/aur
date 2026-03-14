@@ -1,6 +1,6 @@
 pkgbase = reels-bin
 	pkgdesc = Instagram reels in the terminal
-	pkgver = 1.1.7
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/njyeung/reels
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = reels-bin
 	optdepends = brave-bin: browser backend
 	provides = reels
 	conflicts = reels
-	source = https://github.com/njyeung/reels/releases/download/v1.1.7/reels-linux-amd64
-	sha256sums = 52eb8072e94791982e7b8b3327bb877ab88cca6cd18e2882d031d4fca279ea2d
+	source = https://github.com/njyeung/reels/releases/download/v1.2.0/reels-linux-amd64
+	sha256sums = e59f4645d22b638c95cc4edceea9fe885661c583cc063a5e17ee2dd12c43a4cd
 
 pkgname = reels-bin
