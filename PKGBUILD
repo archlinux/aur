@@ -20,7 +20,7 @@ conflicts=('redot-bin')
 depends=()
 optdepends=('pipewire-alsa: for audio support'
     'pipewire-pulse: for audio support')
-makedepends=(scons)
+makedepends=(scons wayland)
 options=('!debug')
 source=(
     "${_pkgname}::git+https://github.com/Redot-Engine/redot-engine.git"
