@@ -1,6 +1,6 @@
 pkgbase = b3sumr
 	pkgdesc = Compare large folders recursively using BLAKE3 checksum and multithreaded per CPU core
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/boussou/b3sumr
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = b3sumr
 	license = custom
 	makedepends = go
 	depends = glibc
-	source = git+https://github.com/boussou/b3sumr.git#tag=v0.3.0
-	sha256sums = SKIP
+	source = git+https://github.com/boussou/b3sumr.git#tag=v0.3.1
+	sha256sums = 2307318b5b0548906d838ee3ca19c8ce886be415155a5b060c5cbc31093c857c
 
 pkgname = b3sumr

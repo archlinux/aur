@@ -1,6 +1,6 @@
 # Maintainer: Nadir Boussoukaia <nad4reg AT gmail DOT com>
 pkgname=b3sumr
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Compare large folders recursively using BLAKE3 checksum and multithreaded per CPU core"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -30,4 +30,4 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
-sha256sums=('2307318b5b0548906d838ee3ca19c8ce886be415155a5b060c5cbc31093c857c')
+sha256sums=('dfd03904caf18aada48746c3ac261db7a8d3d23bc46f7a47abb0bde4d55875a1')
