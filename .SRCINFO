@@ -1,6 +1,6 @@
 pkgbase = gam
 	pkgdesc = command line management for Google Workspace
-	pkgver = 7.34.00
+	pkgver = 7.36.01
 	pkgrel = 1
 	url = https://github.com/GAM-team/GAM
 	arch = any
@@ -11,9 +11,9 @@ pkgbase = gam
 	makedepends = python-hatchling
 	depends = python>=3.10
 	replaces = gamadv-xtd3
-	source = GAM-7.34.00.tar.gz::https://github.com/GAM-team/GAM/archive/refs/tags/v7.34.00.tar.gz
+	source = GAM-7.36.01.tar.gz::https://github.com/GAM-team/GAM/archive/refs/tags/v7.36.01.tar.gz
 	source = gam.sh
-	sha256sums = 3e84572434790937ff13d1d3038df961a6ae6b555f26cdd1d4440fc6ddd335aa
+	sha256sums = 39998dd7dadf56552ef0f124f494e4cd8851cc1a9c6dac398c0c39a90284ede0
 	sha256sums = f8613546b8d4a51f05342d3680553c20a2e0995c3be90e469f1da3bb83ca172e
 
 pkgname = gam
