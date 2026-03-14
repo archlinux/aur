@@ -3,12 +3,12 @@
 
 pkgname=greetd-tuigreet-fork-git
 pkgver=0.10.0.r0.gb9ead11
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Stylish graphical console greeter for greetd, built with Ratatui'
 url='https://github.com/NotAShelf/tuigreet'
 license=('GPL-3.0-only')
-conflicts=(greetd-tuigreet greetd-tuigreet-git greetd-tuigreet-soupy-boy-bin)
+conflicts=(greetd-tuigreet greetd-tuigreet-git greetd-tuigreet-fork-bin)
 
 arch=(x86_64 i686 armv7 aarch64)
 makedepends=(git rust scdoc)

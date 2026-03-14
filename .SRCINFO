@@ -1,7 +1,7 @@
 pkgbase = greetd-tuigreet-fork-git
 	pkgdesc = Stylish graphical console greeter for greetd, built with Ratatui
 	pkgver = 0.10.0.r0.gb9ead11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NotAShelf/tuigreet
 	arch = x86_64
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = greetd-tuigreet-fork-git
 	makedepends = scdoc
 	conflicts = greetd-tuigreet
 	conflicts = greetd-tuigreet-git
-	conflicts = greetd-tuigreet-soupy-boy-bin
+	conflicts = greetd-tuigreet-fork-bin
 	source = git+https://github.com/NotAShelf/tuigreet
 	source = tuigreet.conf
 	sha256sums = SKIP
