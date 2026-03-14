@@ -1,6 +1,6 @@
 pkgbase = gitpkg
 	pkgdesc = Minimal package manager for git + make projects
-	pkgver = 0.7.7
+	pkgver = 0.7.8
 	pkgrel = 1
 	url = https://gitlab.com/fkzys/gitpkg
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = gitpkg
 	depends = verify-lib
 	optdepends = bash-completion: bash tab completions
 	optdepends = zsh: zsh tab completions
-	source = gitpkg-0.7.7.tar.gz::https://gitlab.com/fkzys/gitpkg/-/archive/v0.7.7/gitpkg-v0.7.7.tar.gz
-	sha256sums = b801f0c8ee475dd652dcc14b969ad046657f0dab3f723d202d574dbf7bd05c2a
+	source = gitpkg-0.7.8.tar.gz::https://gitlab.com/fkzys/gitpkg/-/archive/v0.7.8/gitpkg-v0.7.8.tar.gz
+	sha256sums = 25d9d54b30811213c2c3ff1dc12c27d2ff3338370e309b4a93f1b181680e52bd
 
 pkgname = gitpkg
