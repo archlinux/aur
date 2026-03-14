@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=latex-pdfpages
 _name=${pkgname#latex-}
-pkgver=0.6f
+pkgver=0.6g
 pkgrel=1
 pkgdesc="Inclusion of external multi-page PDF documents in LATEX documents"
 arch=(any)
@@ -12,7 +12,7 @@ depends=(texlive-core)
 noextract=($_name.zip)
 source=($_name-$pkgver.zip::http://mirror.ctan.org/macros/latex/contrib/$_name.zip)
 install=$pkgname.install
-sha256sums=('528ff47a941e0dfb933271550508eb05c864f87ed6db4f2550e108c826e0f29e')
+sha256sums=('450645ad269559af9f3e2052c2e04413009fd8349c56814e90d4e73bd10bd519')
 
 package() {
   install -dm755 "$pkgdir"/usr/share/texmf
