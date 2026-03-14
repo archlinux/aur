@@ -1,0 +1,19 @@
+pkgbase = archjh
+	pkgdesc = Linux equivalent of HidHide - hide USB input devices from games using eBPF LSM
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/defconxt/ArchJoyHide
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = clang
+	makedepends = bpf
+	makedepends = git
+	depends = python
+	depends = python-yaml
+	depends = python-pyqt6
+	depends = libbpf
+	depends = bpf
+	source = git+https://github.com/defconxt/ArchJoyHide.git
+	sha256sums = SKIP
+
+pkgname = archjh
