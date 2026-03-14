@@ -3,19 +3,19 @@
 pkgname=cursor-ide-bin
 pkgver=2.6.19
 pkgrel=1
-pkgdesc='Cursor - AI-first coding environment (uses bundled Electron)'
+pkgdesc='Cursor - The AI Code Editor (uses bundled Electron)'
 arch=('x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor_EULA')
 provides=('cursor')
 conflicts=('cursor-bin')
+makedepends=('imagemagick')
 
 depends=(
   'alsa-lib'
   'dbus'
   'gcc-libs'
   'gtk3'
-  'hicolor-icon-theme'
   'libdrm'
   'libsecret'
   'libxkbfile'
@@ -57,11 +57,13 @@ package() {
   install -Dm644 "$srcdir/cursor.desktop" \
     "$pkgdir/usr/share/applications/cursor.desktop"
 
-  # Install icon to hicolor for KDE/GNOME
-  local _icon="$pkgdir/usr/share/pixmaps/co.anysphere.cursor.png"
-  if [[ -f "$_icon" ]]; then
-    install -Dm644 "$_icon" \
-      "$pkgdir/usr/share/icons/hicolor/512x512/apps/cursor.png"
+  # Rename pixmap icon and trim transparent padding to match other DE icons
+  if [[ -f "$pkgdir/usr/share/pixmaps/co.anysphere.cursor.png" ]]; then
+    magick "$pkgdir/usr/share/pixmaps/co.anysphere.cursor.png" \
+      -trim +repage -resize 1024x1024 \
+      "$pkgdir/usr/share/pixmaps/cursor.png"
+    chmod 644 "$pkgdir/usr/share/pixmaps/cursor.png"
+    rm "$pkgdir/usr/share/pixmaps/co.anysphere.cursor.png"
   fi
 
   # Install launcher
