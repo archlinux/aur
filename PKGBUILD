@@ -3,7 +3,7 @@ _pkgname=voiden
 
 pkgname=${_pkgname}-appimage
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Voiden API Client"
 arch=('x86_64')
 url="https://voiden.md"
@@ -44,7 +44,7 @@ package() {
 
   # Symlink executable - use pkgname so it doesn't conflict with voiden cli tool
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "${pkgdir}/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/${_appimage}" "${pkgdir}/usr/bin/${pkgname}"
 
   # Symlink license
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
