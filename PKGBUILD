@@ -1,7 +1,7 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep-git
 _pkgbasename="${pkgname%-git}"
-pkgver=2.5.0.r157.afc652e
+pkgver=2.5.1.r163.2547bf4
 pkgrel=1
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
