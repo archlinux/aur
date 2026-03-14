@@ -1,7 +1,7 @@
 # Maintainer: Mr.Zero88 <huesmann.mats+aur@gmail.com>
 
 pkgname=xr-chaperone-git
-pkgver=0.1.0
+pkgver=2dfd751
 pkgrel=1
 pkgdesc="A VR Chaperone System for OpenXR"
 arch=('x86_64')
@@ -15,6 +15,11 @@ sha256sums=(
   'SKIP'
   '55a221929963410774e9428e51b869a95962fa34d9fb1d5b64528276505521d5'
 )
+
+pkgver() {
+  cd "$srcdir/xr-chaperone"
+  git describe --long --tags --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
 
 build() {
   cd "$srcdir/xr-chaperone"

@@ -1,6 +1,6 @@
 pkgbase = xr-chaperone-git
 	pkgdesc = A VR Chaperone System for OpenXR
-	pkgver = 0.1.0
+	pkgver = 2dfd751
 	pkgrel = 1
 	url = https://github.com/FrostyCoolSlug/xr-chaperone
 	arch = x86_64
