@@ -5,7 +5,7 @@
 
 # Maintainer: seja-arcticfox <seja.czstudio@gmail.com>
 pkgname=vidcom
-pkgver=0.80
+pkgver=0.81
 pkgrel=1
 epoch=
 pkgdesc="Archive and compress videos easily"
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/seja-arctic-fox/vidcom/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-sha256sums=('73997fd96d28bea2e5e199aa7b60cf6a8f4320b290a1d7bff075f4f92c4ff6e9')
+sha256sums=('9a4f17208897d14d06c82339900ed2f34a980dd4e926f1838adffc686e044d71')
 validpgpkeys=()
 
 build() {
