@@ -1,6 +1,6 @@
 pkgbase = project-zomboid-server-unstable
 	pkgdesc = Dedicated server for the game Project Zomboid (Build 42 unstable)
-	pkgver = 42.14.1
+	pkgver = 42.15.2
 	pkgrel = 1
 	url = https://projectzomboid.com
 	install = project-zomboid-server.install
