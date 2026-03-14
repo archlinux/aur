@@ -1,7 +1,7 @@
 pkgbase = dkitle-bin
 	pkgdesc = A desktop application for dkitle
 	pkgver = 0.1.beta
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ywxt/dkitle
 	arch = x86_64
 	arch = aarch64
@@ -17,9 +17,9 @@ pkgbase = dkitle-bin
 	provides = dkitle
 	conflicts = dkitle
 	options = !strip
-	source_x86_64 = https://github.com/ywxt/dkitle/releases/download/v0.1-beta/dkitle-linux-x86_64.tar.gz
+	source_x86_64 = dkitle-0.1.beta-linux-x86_64.tar.gz::https://github.com/ywxt/dkitle/releases/download/v0.1-beta/dkitle-linux-x86_64.tar.gz
 	sha256sums_x86_64 = e0e0ddce3f9a6a31239fd559d4024946710e626b6b470c384808f14ffdf84552
-	source_aarch64 = https://github.com/ywxt/dkitle/releases/download/v0.1-beta/dkitle-linux-aarch64.tar.gz
+	source_aarch64 = dkitle-0.1.beta-linux-aarch64.tar.gz::https://github.com/ywxt/dkitle/releases/download/v0.1-beta/dkitle-linux-aarch64.tar.gz
 	sha256sums_aarch64 = e92a0d31febbe410d9a70fcc9f29f17ada0019030515b9c85b8b71a8e556a6e6
 
 pkgname = dkitle-bin
