@@ -35,8 +35,7 @@ makedepends=(extra-cmake-modules
              libappimage
              openexr
              taglib)
-optdepends=('icoutils: Windows executable thumbnails'
-            'kimageformats5: thumbnails for additional image formats'
+optdepends=('kimageformats5: thumbnails for additional image formats'
             'libappimage: AppImage thumbnails'
             'openexr: EXR format thumbnails'
             'perl: info kioslave'

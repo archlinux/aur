@@ -31,7 +31,6 @@ pkgbase = kio5-extras
 	depends = smbclient
 	depends = solid5
 	depends = syntax-highlighting5
-	optdepends = icoutils: Windows executable thumbnails
 	optdepends = kimageformats5: thumbnails for additional image formats
 	optdepends = libappimage: AppImage thumbnails
 	optdepends = openexr: EXR format thumbnails
