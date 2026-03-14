@@ -48,7 +48,7 @@ Icon=opencode-desktop-electron
 Type=Application
 Categories=Development;
 StartupNotify=true
-StartupWMClass=OpenCode
+StartupWMClass=@opencode-ai/desktop-electron
 MimeType=x-scheme-handler/opencode;
 DESKTOP
 
