@@ -1,6 +1,6 @@
 pkgbase = snotify
 	pkgdesc = Play sounds when receiving a notification.
-	pkgver = 0.1.2
+	pkgver = 1.0
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Kimiblock/snotify
@@ -10,11 +10,10 @@ pkgbase = snotify
 	makedepends = git
 	depends = dbus
 	depends = glibc
-	depends = pipewire
-	depends = pipewire-audio
-	depends = pipewire-pulse
-	depends = wireplumber
-	source = git+https://github.com/Kimiblock/snotify.git#tag=0.1.2
-	sha256sums = c610afe83a99c3d40984c87fca979c6a88904b23b20feff11c4db97f0b92337f
+	depends = libpulse
+	depends = coreutils
+	optdepends = glib2: Do not disturb support for GNOME
+	source = git+https://github.com/Kimiblock/snotify.git#tag=1.0
+	sha256sums = 56aeade5e4897d17f045ace8da807954abf0f95f015249ab604185af74605b81
 
 pkgname = snotify
