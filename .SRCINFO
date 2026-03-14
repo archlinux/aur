@@ -1,6 +1,6 @@
 pkgbase = tabularis-bin
 	pkgdesc = A lightweight, developer-focused database management tool
-	pkgver = 0.9.8
+	pkgver = 0.9.9
 	pkgrel = 1
 	url = https://github.com/debba/tabularis
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = tabularis-bin
 	depends = openssl
 	provides = tabularis
 	conflicts = tabularis
-	source = tabularis_0.9.8_amd64.deb::https://github.com/debba/tabularis/releases/download/v0.9.8/tabularis_0.9.8_amd64.deb
-	sha256sums = ce0d137c6c24a1e073f884bb2b9d53fe83b87f1db2a345728dc203adade03865
+	source = tabularis_0.9.9_amd64.deb::https://github.com/debba/tabularis/releases/download/v0.9.9/tabularis_0.9.9_amd64.deb
+	sha256sums = 4d72d6d655b5ff361fbc79e50689414eabad97cb22b573350833a3d8ae176c31
 
 pkgname = tabularis-bin
