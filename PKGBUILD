@@ -12,7 +12,7 @@ provides=('lianli-linux')
 conflicts=('lianli-linux')
 source=("git+${url}.git")
 sha256sums=('SKIP')
-options=('!debug' 'strip')
+options=('!debug' '!lto' 'strip')
 
 pkgver() {
   cd lian-li-linux
@@ -22,7 +22,6 @@ pkgver() {
 prepare() {
   cd lian-li-linux
   git submodule update --init --recursive
-  export RUSTUP_TOOLCHAIN=stable
   /usr/bin/cargo fetch --locked --target "$(/usr/bin/rustc -vV | sed -n 's/host: //p')"
 }
 
