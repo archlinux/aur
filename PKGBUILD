@@ -3,7 +3,7 @@ DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=pulse-secure
 pkgver=22.8r5_b41063
-pkgrel=1
+pkgrel=2
 pkgdesc='Ivanti Secure Access Client'
 arch=(x86_64)
 license=(custom)
@@ -16,6 +16,7 @@ md5sums=('261848a28201e5386ec4bf587473a48b')
 md5sums_x86_64=('93a073f8ff0f30d71bb603388dadb417')
 optdepends=('psmisc: for pulsesvc -K', 'gtkmm3: for pulseUi', 'webkit2gtk: for pulseUi')
 conflicts=(pulse-connect-secure)
+options=(!strip)
 
 package() {
     install -Dm644 EULA.txt "$pkgdir"/usr/share/licenses/$pkgname/EULA.txt
