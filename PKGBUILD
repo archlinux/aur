@@ -1,13 +1,13 @@
 # Maintainer: Brody <archfan at brodix dot de>
 
-_pyname=google_cloud_bigquery
+_reponame=google-cloud-python
 pkgname=python-google-cloud-bigquery
+_pkgname=${pkgname##*python-}
 pkgver=3.40.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Google BigQuery API client library'
 arch=(any)
-url=https://github.com/googleapis/python-bigquery
-_phurl=https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname}
+url=https://github.com/googleapis/${_reponame}/tree/${_pkgname}-v${pkgver}/packages/${_pkgname}
 license=(Apache-2.0)
 depends=(
   python-dateutil
@@ -37,12 +37,11 @@ optdepends=(
   'python-tqdm: tqdm support'
 )
 changelog=CHANGELOG.md
-# source=(${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-source=(${pkgname}-${pkgver}.tar.gz::${_phurl}/${_pyname}-${pkgver}.tar.gz)
-b2sums=('cf8db6b2470a61c687ea755132c5aaf9993c3648597ef58fa80c2a87c7fad43e22ed12ef2a4126dfd19b7786dfc1478792bf9fcd067154fbd0c5a1d887e63de1')
+source=(${pkgname}-${pkgver}.tar.gz::${url%/tree*}/archive/${_pkgname}-v${pkgver}.tar.gz)
+b2sums=('276b1bd4bd50420d0739e3dc8f8668d7c3f597033704e7008843a57351f66602a56c10ae10383e2615664c3b8619f548e01fe927f2c8a8a11606d5538cebf27f')
 
 build() {
-  cd ${_pyname}-${pkgver}
+  cd ${_reponame}-${_pkgname}-v${pkgver}/packages/${_pkgname}
 
   python -m build \
     --wheel \
@@ -52,7 +51,7 @@ build() {
 }
 
 package() {
-  cd ${_pyname}-${pkgver}
+  cd ${_reponame}-${_pkgname}-v${pkgver}/packages/${_pkgname}
 
   python -m installer \
     --destdir="${pkgdir}" \
