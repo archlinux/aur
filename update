@@ -25,6 +25,9 @@ if Gem::Version.new(last_tag) > Gem::Version.new(current)
 
   # Then don’t forget this !
   system "makepkg --printsrcinfo > .SRCINFO"
+  system "git add ."
+  system "git commit -m Bump to #{last_tag}"
+  echo "Check before `git push` !"
 else
   puts "Nothing to do !"
 end
