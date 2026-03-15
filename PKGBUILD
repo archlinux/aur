@@ -1,20 +1,20 @@
 pkgname=sfptool
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Desktop utility for reading and programming SFP and QSFP transceivers"
 arch=('x86_64' 'aarch64')
 url="https://jonasled.dev/jonasled/sfp-tool"
 license=('custom:unlicensed')
 depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator')
-makedepends=('cargo' 'cmake' 'desktop-file-utils' 'emscripten' 'fmt' 'git' 'javascriptcoregtk-4.1' 'ninja' 'nlohmann-json' 'nodejs' 'patchelf' 'pkgconf' 'python' 'rust' 'libsoup3' 'webkit2gtk-4.1' 'yarn')
+makedepends=('cargo' 'cmake' 'desktop-file-utils' 'emscripten' 'fmt' 'git' 'ninja' 'nlohmann-json' 'nodejs' 'patchelf' 'pkgconf' 'python' 'rust' 'libsoup3' 'webkit2gtk-4.1' 'yarn')
 provides=('sfptool')
 conflicts=('sfptool-bin')
 source=(
-  "sfp-tool-v${pkgver}.tar.gz::https://jonasled.dev/jonasled/sfp-tool/-/archive/v0.9.2/sfp-tool-v0.9.2.tar.gz"
+  "sfp-tool-v${pkgver}.tar.gz::https://jonasled.dev/jonasled/sfp-tool/-/archive/v0.9.3/sfp-tool-v0.9.3.tar.gz"
   "transceivertool-ae0163efc991402f1e0231078e69379471613ee4.tar.gz::https://github.com/robinchrist/TransceiverTool/archive/ae0163efc991402f1e0231078e69379471613ee4.tar.gz"
   "cppcodec-v0.2.tar.gz::https://github.com/tplgy/cppcodec/archive/refs/tags/v0.2.tar.gz"
 )
-sha256sums=('bbae9c70ab6586628bbde8622f98dc081fa569c93cc5733f81638c5ec54b3c95' '77b030fc853dbd3f94d31d99c66e3e2a7c81c7c1654ba5cae01581b0959018ac' '0edaea2a9d9709d456aa99a1c3e17812ed130f9ef2b5c2d152c230a5cbc5c482')
+sha256sums=('98b6cfe05f2bae1dedfc6c191136cb99f0abbac48decab57a334712ca755ac20' '77b030fc853dbd3f94d31d99c66e3e2a7c81c7c1654ba5cae01581b0959018ac' '0edaea2a9d9709d456aa99a1c3e17812ed130f9ef2b5c2d152c230a5cbc5c482')
 
 prepare() {
   cd "$srcdir/sfp-tool-v${pkgver}"
