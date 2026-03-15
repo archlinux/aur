@@ -1,7 +1,7 @@
 # Maintainer: Stipe Kotarac <stipe@kotarac.net>
 
 pkgname=jay-git
-pkgver=1.11.0.r233.gf16a95b
+pkgver=1.11.0.r450.gec74723
 pkgrel=1
 pkgdesc='A Wayland Compositor'
 arch=('x86_64')
@@ -33,7 +33,6 @@ makedepends=(
   cargo
   cmake
   git
-  shaderc
 )
 options=(!lto)
 source=('jay::git+https://github.com/mahkoh/jay.git#branch=master')
