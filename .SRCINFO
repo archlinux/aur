@@ -1,18 +1,21 @@
 pkgbase = oxmgr-bin
 	pkgdesc = Lightweight cross-platform process manager
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/Vladimir-Urik/OxMgr
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = gcc-libs
 	depends = glibc
 	optdepends = systemd: install and manage the oxmgr daemon as a systemd service
 	provides = oxmgr
 	conflicts = oxmgr
-	source = https://github.com/Vladimir-Urik/OxMgr/releases/download/v0.1.7/oxmgr-v0.1.7-x86_64-unknown-linux-gnu.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/Vladimir-Urik/OxMgr/v0.1.7/LICENSE
-	sha256sums = ef54c661f738a9030c3b8b982b18dd6e869e91a3348f6a205230bf93f6511c17
+	source = LICENSE::https://raw.githubusercontent.com/Vladimir-Urik/OxMgr/v0.1.8/LICENSE
 	sha256sums = aee235df1ebced77a16a1c5b18e341a89f688085001ccaf4932f9b0f48938282
+	source_x86_64 = https://github.com/Vladimir-Urik/OxMgr/releases/download/v0.1.8/oxmgr-v0.1.8-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 33918f1280098c744272c4f2e6f562eb0f44dab5785e724f8b9c9ef72541009c
+	source_aarch64 = https://github.com/Vladimir-Urik/OxMgr/releases/download/v0.1.8/oxmgr-v0.1.8-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 4e072a51f04cf0250b167b06901a03bb564f68e7e2e09e4281537354d58a93ff
 
 pkgname = oxmgr-bin
