@@ -5,7 +5,7 @@
 pkgname=rclone-beta-bin
 _srcname=rclone
 pkgrel=1
-pkgver=1.74.0_beta.9544.639bd8895
+pkgver=1.74.0_beta.9545.e987d4f35
 _upver=${pkgver//_/-}
 pkgdesc="Sync files to and from Google Drive, S3, Swift, Cloudfiles, Dropbox and Google Cloud Storage. (Beta version)"
 provides=('rclone')
@@ -26,25 +26,28 @@ source_armv6h=("rclone-v${_upver}-linux-arm.zip::https://beta.rclone.org/v${_upv
 source_armv7h=("rclone-v${_upver}-linux-arm-v7.zip::https://beta.rclone.org/v${_upver}/rclone-v${_upver}-linux-arm-v7.zip")
 source_aarch64=("rclone-v${_upver}-linux-arm64.zip::https://beta.rclone.org/v${_upver}/rclone-v${_upver}-linux-arm64.zip")
 
-b2sums_i686=('3f8a99f5bbd9ddb517ef15c9a649633d47e7339821c4180215216360255fdbbb2153db5954f1ef2a3bc878e92482df5d2b91c2d7f52b6b6adb6d1b42d36b9023')
-b2sums_x86_64=('0993ef656a678618b6e4142264507f7db5f2039c337f3a661e322d93b66870530d9839d9b9bf56f4be54373e8b482d6c4eb47d4ddbeb5ab4b897a66a11d178b2')
-b2sums_armv6h=('cd202313503f2f62b6263d19515f28c2e59e3eb6676cf755052e3b0791b28f5cec2cc3655b8fadcfc8faf6c0c03c0d1649f96b9d54efce9eea1816b3f1bebce4')
-b2sums_armv7h=('5d5a7d062853b1e72ab1f4ab3b2cc9b2999e5a1b4ff41df4fe7eab824dd81ec89ec2deb7135ba6a19e16de21c1671ad3e01c089d5d071cc333976df87ef7f7a9')
-b2sums_aarch64=('10570d174487411147377589902260486f73361b7a25b5f2dc695c225cdfe069e8bda31e76cbbb6acc2d6681b0ebb73329017250426924607fd73564fea6df62')
+b2sums_i686=('bb547bbc42202051ecc946aa4eb188acedc6ed04606a8655b11b2d128316529cec4ea6f2fdbbf5cba2b5bb8b2821d934b4711f645df1460fda1d1427ae29a5b0')
+b2sums_x86_64=('6fe721e870a872e5e1d24082ad7c66469624cc5b3e6b6371a1044cb296eb423674078981264ec562dba4e730a12203dd048a997bf0107e52ba57610c8994df8b')
+b2sums_armv6h=('00559b9d387759f5ec6d3f9ac4c9a2738dbfd99dd8b6534e33904a1ac14dee75c4bea396ce97e5a42bb47548c6ac85ac41c1f48ff45858c70cce1fabccf89c06')
+b2sums_armv7h=('2b9e008a1faceaab039ba0a858dc8eddd1e9a1ae41a21701d62f1904c5f2163efff375e1f618c54af1f4ed368195121239a5c9a418f4cd22f7b239427e699f1a')
+b2sums_aarch64=('ec6552f08f9add34a40642e86cbd42ce7f620d78fee3c04c43adbeec6d1c09c52df8b141e1cc3f0cd996e11ac1e49fc46b60a65f2bd7ac2b80f6774a9b65dfad')
 
 latestver() {
-    local ver listing
+    local candidates ver listing
 
-    ver=$(curl -fsSL 'https://beta.rclone.org/' |
+    mapfile -t candidates < <(curl -fsSL 'https://beta.rclone.org/' |
         sed -nE 's#.*href="\./v([0-9]+\.[0-9]+\.[0-9]+-beta\.[0-9]+\.[0-9a-f]+)/".*#\1#p' |
-        sort -V | tail -1) || return 1
-    [[ -n ${ver} ]] || return 1
+        sort -rV | head -5)
+    [[ ${#candidates[@]} -gt 0 ]] || return 1
 
-    listing=$(curl -fsSL "https://beta.rclone.org/v${ver}/") || return 1
-    grep -q "rclone-v${ver}-linux-amd64.zip" <<<"${listing}" || return 1
-    grep -q "rclone-v${ver}-linux-arm64.zip" <<<"${listing}" || return 1
-
-    printf '%s\n' "${ver}" | tr '-' '_'
+    for ver in "${candidates[@]}"; do
+        listing=$(curl -fsSL "https://beta.rclone.org/v${ver}/" 2>/dev/null) || continue
+        grep -q "rclone-v${ver}-linux-amd64.zip" <<<"${listing}" || continue
+        grep -q "rclone-v${ver}-linux-arm64.zip" <<<"${listing}" || continue
+        printf '%s\n' "${ver}" | tr '-' '_'
+        return 0
+    done
+    return 1
 }
 
 
