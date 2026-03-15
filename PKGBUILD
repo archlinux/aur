@@ -7,7 +7,7 @@
 
 _pkgname="pdfbox"
 pkgname="$_pkgname"
-pkgver=3.0.6
+pkgver=3.0.7
 pkgrel=1
 pkgdesc="Java tool for working with PDF documents"
 url="https://pdfbox.apache.org"
@@ -31,9 +31,9 @@ source=(
 )
 
 sha256sums=(
-  '28948291a7d6addb91a158292f2e9348d2143720e25a9c87c91bbdd4b088475f'
-  '33535b4335f7c0b99286f16da67a6a6153a2ef643d680902ff8e288623510f2b'
-  '99d1a0bb97b2f6dc92ec04a2788b21b5af135c36efb58f994f7b0a28238b7c9c'
+  'bf70b90aca964bda6f1438d7b87d6f99cfaa9912ba6fcebc0541d9d90ee5ef54'
+  '697254b7a6741eb241b18ac1075622eeedcb461a002fcf7eed9ec249c9b8507a'
+  '3765ae0580f280c3b7375488e4e3be98f17c4d81779bd7c4f3f59a9640dfe55e'
 )
 
 package() {
