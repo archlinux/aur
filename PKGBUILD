@@ -1,7 +1,7 @@
 # Maintainer: Relish0171 <aur.such581@aleeas.com>
 _basename=beets-filetote
 pkgname=${_basename}-bin
-pkgver=1.3.2
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="A plugin for beets that moves non-music files during import & other operations."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python>=3.8'
 makedepends=('python-installer')
 source=("${url}/releases/download/v${pkgver}/beets_filetote-${pkgver}-py3-none-any.whl")
 noextract=("${source[@]##*/}")
-sha256sums=('ce8ed9ebba272dcb175823900822742a216230ba73a336409ba36d550b7819ee')
+sha256sums=('839e3ff41f50b5560f8f65cfb41557f36f9bed81855702ed2dc5ac8395d1e90a')
 
 package() {
     python -m installer --destdir="${pkgdir}" "${srcdir}"/*.whl

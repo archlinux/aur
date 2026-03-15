@@ -1,6 +1,6 @@
 pkgbase = beets-filetote-bin
 	pkgdesc = A plugin for beets that moves non-music files during import & other operations.
-	pkgver = 1.3.2
+	pkgver = 1.3.3
 	pkgrel = 1
 	url = https://github.com/gtronset/beets-filetote
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = beets-filetote-bin
 	makedepends = python-installer
 	depends = python>=3.8
 	depends = beets
-	noextract = beets_filetote-1.3.2-py3-none-any.whl
-	source = https://github.com/gtronset/beets-filetote/releases/download/v1.3.2/beets_filetote-1.3.2-py3-none-any.whl
-	sha256sums = ce8ed9ebba272dcb175823900822742a216230ba73a336409ba36d550b7819ee
+	noextract = beets_filetote-1.3.3-py3-none-any.whl
+	source = https://github.com/gtronset/beets-filetote/releases/download/v1.3.3/beets_filetote-1.3.3-py3-none-any.whl
+	sha256sums = 839e3ff41f50b5560f8f65cfb41557f36f9bed81855702ed2dc5ac8395d1e90a
 
 pkgname = beets-filetote-bin
