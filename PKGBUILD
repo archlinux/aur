@@ -1,7 +1,7 @@
 # Maintainer: Nicolas Embriz <nbari at tequila dot io>
 
 pkgname=s3mon
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Monitor S3 buckets for missing files"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('BSD-3-Clause')
 makedepends=('cargo')
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://crates.io/api/v1/crates/${pkgname}/${pkgver}/download")
-sha256sums=('f2d8bfd6a0ef957b6968c49b9f6acf00c463eecab446ccf0699f6d2312cb65c8')
+sha256sums=('0d23c4cd7ecd08578a87ac6099584e88d4f2717702ce988becc0dcc39ac120a8')
 
 build() {
     cd "$pkgname-$pkgver"
