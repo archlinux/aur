@@ -1,7 +1,7 @@
 # Maintainer: Keshav Bhatt <keshavnrj@gmail.com>
 
 pkgname=torrhunt
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Torrhunt - Torrent Search Engine for Linux and Windows Desktop"
 arch=('x86_64')
