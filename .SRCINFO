@@ -1,6 +1,6 @@
 pkgbase = neovim-later
 	pkgdesc = Following Neovim dev branch at least monthly
-	pkgver = 0.12.0.xlater.2602
+	pkgver = 0.12.0.xlater.2603
 	pkgrel = 1
 	url = https://neovim.io
 	arch = i686
@@ -36,10 +36,10 @@ pkgbase = neovim-later
 	provides = vim-plugin-runtime
 	conflicts = neovim
 	backup = etc/xdg/nvim/sysinit.vim
-	source = https://github.com/neovim/neovim/archive/05bd4398c50706945577ea9d620d8611471b847c.zip
+	source = https://github.com/neovim/neovim/archive/8c2b6d6062cbfe01acd8cfc396dab56bac09253e.zip
 	source = nvimdoc
 	source = nvimdoc.hook
-	b2sums = 33598ba9d912b1eed716f1357c05d1bf9614c6a9a444aa97c6cbadedbd98a64c10330d22584fc7b9522d0e6856d7199563f47cf34c20af4a19fea60fdbd69696
+	b2sums = 35201ab098679d9062065df3a02b7b8542db665217d55804a7d476c6c77c5c5dce96b27ff1819af58349d7777031a2c69f8eb832c5f3cc14dc075997413cd6a1
 	b2sums = d31cf81659e238fada8092755eb9be16f77c00a466107eb5770c6c9c32e043c91e6efada7ddb51663716a0e38ffa6e3d0093b3e6833aa961d845c7451a95491e
 	b2sums = 26588b9da6459393076723bdfb8d2b16fed882070f2326bf7c35cd272dee9c18df603afb1ae2254cd0a59eff68189caf04828ef165d5de42c7a4222267604101
 
