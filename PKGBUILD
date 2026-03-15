@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://gitlab.com/arch1380517/commiefetch"
 license=('GPL3')
 depends=()
-makedepends=('git' 'gcc')
+makedepends=('git' 'gcc' 'make')
 source=("git+https://gitlab.com/arch1380517/commiefetch.git")
 md5sums=('SKIP')
 
@@ -19,12 +19,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/commiefetch"
-  gcc commiefetch.c -O2 -o commiefetch
+  make
 }
 
 package() {
   cd "$srcdir/commiefetch"
-  install -Dm755 commiefetch "$pkgdir/usr/bin/commiefetch"
+  make DESTDIR="$pkgdir" PREFIX=/usr install
   if [ -f LICENSE ]; then
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   fi

@@ -7,6 +7,7 @@ pkgbase = commiefetch-git
 	license = GPL3
 	makedepends = git
 	makedepends = gcc
+	makedepends = make
 	source = git+https://gitlab.com/arch1380517/commiefetch.git
 	md5sums = SKIP
 
