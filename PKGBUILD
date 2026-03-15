@@ -1,7 +1,7 @@
 # Maintainer: Zane Schepke <support@wgtunnel.com>
 pkgname=wgtunnel-bin
 # Update on release
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 install=wgtunnel-bin.install
 pkgdesc="WireGuard and AmneziaWG VPN client with auto-tunneling, lockdown and proxying"
@@ -31,7 +31,7 @@ source=(
 )
 
 # Update on release
-sha256sums=('8ded1f2d58ddfb7aea5c2a68691b8ab4b71692d731f21f28f464f1c691b9df2c')
+sha256sums=('6bec2d70cb2f6e25f513242d8e82b986ecb9757869c94f295ddab99c873f9028')
 
 package() {
   cd "$srcdir"

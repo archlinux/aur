@@ -1,8 +1,7 @@
 post_install() {
-    echo "Updating icon cache..."
-    gtk-update-icon-cache -f /usr/share/icons/hicolor
-    update-desktop-database /usr/share/applications 2>/dev/null || true
-  cat << 'EOF'
+    _update_desktop_icons
+
+    cat << 'EOF'
 
 === WG Tunnel Installed Successfully ===
 
@@ -15,6 +14,41 @@ Enable and start the daemon with:
 EOF
 }
 
+post_upgrade() {
+    _update_desktop_icons
+    systemctl daemon-reload 2>/dev/null || true
+
+    if systemctl is-active --quiet wgtunnel-daemon.service 2>/dev/null; then
+        cat << 'EOF'
+
+=== WG Tunnel Upgraded Successfully ===
+
+The daemon binary and/or service file have been updated.
+
+To bring the running daemon in sync (recommended):
+
+    sudo systemctl restart wgtunnel-daemon.service
+
+Note: This will briefly interrupt any active tunnels.
+EOF
+    else
+        cat << 'EOF'
+
+=== WG Tunnel Upgraded Successfully ===
+
+If you have the daemon enabled, restart it after the upgrade:
+
+    sudo systemctl restart wgtunnel-daemon.service
+EOF
+    fi
+}
+
+_update_desktop_icons() {
+    echo "Updating icon cache..."
+    gtk-update-icon-cache -f /usr/share/icons/hicolor
+    update-desktop-database /usr/share/applications 2>/dev/null || true
+}
+
 pre_remove() {
-  systemctl disable --now wgtunnel-daemon.service 2>/dev/null || true
+    systemctl disable --now wgtunnel-daemon.service 2>/dev/null || true
 }
