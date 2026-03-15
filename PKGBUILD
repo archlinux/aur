@@ -2,14 +2,14 @@
 # 🔋 slskdn - The batteries-included Soulseek web client (build from source)
 pkgname=slskdn
 _pkgname=slskd
-pkgver=0.24.5.slskdn.48
+pkgver=0.24.5.slskdn.49
 pkgrel=1
 pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening."
 arch=('x86_64' 'aarch64')
 url="https://github.com/snapetech/slskdn"
 license=('AGPL-3.0-or-later')
 depends=('dotnet-runtime-8.0' 'aspnet-runtime-8.0')
-makedepends=('dotnet-sdk-8.0' 'nodejs' 'npm')
+makedepends=('dotnet-sdk-8.0' 'dotnet-runtime-8.0' 'aspnet-runtime-8.0' 'nodejs' 'npm')
 optdepends=(
     'docker: for containerized deployment'
 )
