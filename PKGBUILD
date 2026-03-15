@@ -111,6 +111,8 @@ _ctags_pkg_ident="ac5c942b422ca6dc6cdbfd2a0c2d481af1f18f02"
 _ctags_pkg_name_ident="${_ctags_pkg_user}-${_ctags_pkg_name}-${_ctags_pkg_ident:0:7}"
 _ctags_pkg_src_res="${_ctags_pkg_name_ident}.tar.gz::https://github.com/${_ctags_pkg_user}/${_ctags_pkg_name}/tarball/${_ctags_pkg_ident}"
 
+# submodule doctest - ignore ????
+
 # doctest submodule: https://github.com/doctest/doctest
 _doctest_pkg_user="doctest"
 _doctest_pkg_name="doctest"
@@ -160,6 +162,8 @@ _yaml_pkg_ident="2f86d13775d119edbb69af52e5f566fd65c6953b"
 _yaml_pkg_name_ident="${_yaml_pkg_user}-${_yaml_pkg_name}-${_yaml_pkg_ident:0:7}"
 _yaml_pkg_src_res="${_yaml_pkg_name_ident}.tar.gz::https://github.com/${_yaml_pkg_user}/${_yaml_pkg_name}/tarball/${_yaml_pkg_ident}"
 
+# submodule zlib - ignore
+
 #
 # sub-sub-modules
 #
@@ -186,6 +190,7 @@ depends=(
     'wxwidgets-common'
     'libedit'
     'libssh'
+    'zlib'
     'mariadb-libs'
     'ncurses'
     'uchardet'
@@ -297,6 +302,7 @@ prepare()
   test -d ctags && rmdir ctags;
   ln -s -fn ../../${_ctags_pkg_name_ident} ctags;
 
+  # submodule doctest - ignore ???
   # submodule doctest
   test -d doctest && rmdir doctest;
   ln -s -fn ../../${_doctest_pkg_name_ident} doctest;
@@ -331,7 +337,7 @@ prepare()
   test -d yaml-cpp && rmdir yaml-cpp;
   ln -s -fn ../../${_yaml_pkg_name_ident} yaml-cpp;
 
-  # submodule zlip - ignore
+  # submodule zlib - ignore
 
   #
   # sub-submodules
