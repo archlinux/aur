@@ -4,7 +4,7 @@
 # Installs the prebuilt AppImage from GitHub Releases.
 
 pkgname=aurivo-bin
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="Aurivo Media Player (prebuilt AppImage)"
 arch=('x86_64')
@@ -25,9 +25,7 @@ source=(
   "com.aurivo.mediaplayer.png::https://raw.githubusercontent.com/${_owner}/${_repo}/main/icons/aurivo_512.png"
 )
 
-# Replace with a real checksum after v2.0.5 release asset is published:
-#   makepkg -g
-sha256sums=('81cad49256e88db963fcd1c7bf80034d258370fbdbee696d5a6c002edd5e61be'
+sha256sums=('dc87abac537b885330a8bff1269986f223ae8bc324bae8cd314e68a57592953b'
             'da02e29b849870a9852e9020c0df9532a84ae81c53d3f073fa633d679d80b43f')
 
 package() {
