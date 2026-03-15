@@ -3,7 +3,7 @@
 pkgname="helix-themes-cptpotato"
 description="A set of themes for the Helix text editor made by CptPotato."
 pkgver=latest.r11.g1fca5dc
-pkgrel=1
+pkgrel=2
 groups=()
 arch=('x86_64')
 pkgdesc=

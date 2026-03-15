@@ -1,6 +1,6 @@
 pkgbase = helix-themes-cptpotato
 	pkgver = latest.r11.g1fca5dc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CptPotato/helix-themes
 	arch = x86_64
 	makedepends = git
