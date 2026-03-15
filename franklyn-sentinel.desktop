@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Franklyn Sentinel
+GenericName=Screen Monitoring Client
+Comment=Streams student screen activity to the teacher during tests and exams
+Exec=/usr/bin/franklyn
+Icon=franklyn-sentinel
+Categories=Education;Network;
+Keywords=exam;monitor;screen;sentinel;franklyn;
+Terminal=false
+StartupNotify=true
