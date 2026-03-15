@@ -45,8 +45,8 @@ package() {
     | xargs -r0 chmod 0644
 
   install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-  mv -f "$pkgdir/usr/share/icons/pixora/README.md" \
-    "$pkgdir/usr/share/doc/$pkgname/"
+  mv -f "$srcdir/$_pkgname/README.md" \
+   "$pkgdir/usr/share/doc/$pkgname/"
   cd "$pkgdir/usr/share/doc" && ln -sr "$pkgname" "$_pkgname"
 }
 
