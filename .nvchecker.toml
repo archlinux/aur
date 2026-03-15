@@ -2,3 +2,6 @@
 source = "git"
 git = "https://github.com/confluentinc/confluent-kafka-python.git"
 prefix = "v"
+include_regex = 'v([\d.]+).([\d.]+).([\d.]+)'
+from_pattern = 'v([\d.]+).([\d.]+).([\d.]+)'
+to_pattern = 'v\1.\2.\3'
