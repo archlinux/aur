@@ -1,7 +1,7 @@
 # Maintainer: Damglador <damglador@gmail.com>
 
 pkgname=zerotier-qt
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A Qt front-end for ZeroTier"
 arch=('any')
