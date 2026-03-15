@@ -1,0 +1,14 @@
+--- i/src/oset/pyoset.py
++++ w/src/oset/pyoset.py
+@@ -12,8 +12,10 @@
+     from ._abc import MutableSet
+     def next(it):
+         return it.next()
+-else:
++elif sys.version_info < (3, 7):
+     from collections import MutableSet
++else:
++    from collections.abc import MutableSet
+ 
+ KEY, PREV, NEXT = range(3)
+ 
