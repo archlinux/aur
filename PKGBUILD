@@ -1,7 +1,7 @@
 # Maintainer: MangoChill Contributors
 
 pkgname=mangochill-git
-pkgver=r0.0000000
+pkgver=0.2.0.r8.gf66158a
 pkgrel=1
 pkgdesc='Input-based dynamic FPS limiter for Linux using MangoHud control socket'
 arch=('x86_64')
@@ -19,7 +19,10 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/mangochill"
-  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    git describe --long --abbrev=7 --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  )
 }
 
 prepare() {

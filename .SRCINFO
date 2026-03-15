@@ -1,6 +1,6 @@
 pkgbase = mangochill-git
 	pkgdesc = Input-based dynamic FPS limiter for Linux using MangoHud control socket
-	pkgver = r0.0000000
+	pkgver = 0.2.0.r8.gf66158a
 	pkgrel = 1
 	url = https://github.com/farnoy/mangochill
 	install = mangochill-git.install
