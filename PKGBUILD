@@ -2,7 +2,7 @@
 
 pkgname=vsview-fftspectrum
 _origpkgname=vsview_fftspectrum
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A vsview plugin displaying the Fast Fourier transform spectrum of a video clip"
 arch=("x86_64")
@@ -13,15 +13,15 @@ depends=(
     "vapoursynth-plugin-fftspectrum-rs"
 )
 makedepends=(
-	"python-build"
-	"python-installer"
-	"python-wheel"
-	"python-setuptools"
-	"python-hatchling"
+    "python-build"
+    "python-installer"
+    "python-wheel"
+    "python-setuptools"
+    "python-hatchling"
     "python-versioningit"
 )
-source=("https://files.pythonhosted.org/packages/40/14/67c0067e331159c457d88a50be321aee6c2f3c0a8e20539f6a5ff80aaae9/vsview_fftspectrum-0.1.1.tar.gz")
-sha256sums=("e5ca48e2ce22f832d1c081b4c87774817a5c4a8668d546b16a3336c0c9f45082")
+source=("https://files.pythonhosted.org/packages/9c/e8/5490d301685511a82e676b008ef6fc4b543e627c2217f87c6f2540c9311d/vsview_fftspectrum-0.1.2.tar.gz")
+sha256sums=("619b256905d2f3156a4595a4d8cb9b3ace3da9aa46594eea3e60abb59c445a0f")
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
