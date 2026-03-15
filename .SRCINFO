@@ -1,0 +1,13 @@
+pkgbase = otel-weaver-bin
+	pkgdesc = OpenTelemetry Weaver
+	pkgver = 0.22.1
+	pkgrel = 1
+	url = https://github.com/open-telemetry/weaver
+	arch = x86_64
+	license = Apache-2.0
+	provides = weaver
+	conflicts = weaver
+	source_x86_64 = otel-weaver-bin-0.22.1-x86_64.tar.xz::https://github.com/open-telemetry/weaver/releases/download/v0.22.1/weaver-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 011ae7c05022c294f24b0156dc28dc19e8487b8cdafefcd7ad317f32416e68b4
+
+pkgname = otel-weaver-bin
