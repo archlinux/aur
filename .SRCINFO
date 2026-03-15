@@ -1,0 +1,26 @@
+pkgbase = aio-coding-hub-bin
+	pkgdesc = 一个All In One的本地AI工具, 支持Win/Mac/Linux
+	pkgver = 0.32.0
+	pkgrel = 1
+	url = https://github.com/dyndynjyxa/aio-coding-hub
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	depends = glib2
+	depends = libsoup3
+	depends = cairo
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = hicolor-icon-theme
+	provides = aio-coding-hub
+	conflicts = aio-coding-hub
+	options = !strip
+	options = !debug
+	source = https://github.com/dyndynjyxa/aio-coding-hub/releases/download/aio-coding-hub-v0.32.0/aio-coding-hub-linux-amd64.deb
+	source = LICENSE::https://raw.githubusercontent.com/dyndynjyxa/aio-coding-hub/main/LICENSE
+	sha256sums = f50bc7135b01a7863de41c3bb7222e9e00bb99a8ca4f9ff573ce36378ca274ad
+	sha256sums = 90da602b3e6d5f01c42a2bf635376f3d874abc524d10651f27cb278d9a04aa73
+
+pkgname = aio-coding-hub-bin
