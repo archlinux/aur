@@ -4,7 +4,7 @@
 # Contributor: mutantmonkey <aur@mutantmonkey.in>
 
 pkgname=python-kombu
-pkgver=5.6.0
+pkgver=5.6.2
 pkgrel=1
 pkgdesc="A messaging library for Python"
 arch=(any)
@@ -14,12 +14,14 @@ depends=(
     'python'
     'python-amqp'
     'python-vine'
+    'python-packaging'
 )
 makedepends=(
     'python-build'
     'python-installer'
     'python-setuptools'
     'python-wheel'
+    'git'
 )
 checkdepends=(
     'python-boto3'
@@ -31,7 +33,6 @@ checkdepends=(
     'python-pyro'
     'python-pytest'
     'python-pytest-freezer'
-    'python-pytest-sugar'
     'python-pytz'
     'python-redis'
     'python-sqlalchemy'
@@ -50,16 +51,16 @@ optdepends=(
     'python-yaml: for YAML support'
     'python-zstandard: for zstd compression support'
 )
-source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('059d1b076d247b764fe587f4296bc711478380d3734fc32da9832a8fc2d58cea')
+source=("$pkgname-$pkgver::git+$url.git#tag=v$pkgver")
+b2sums=('96c9dcaf87cfe4654293b7a369136dd870a4bc67902401fd39a2f57e949ff6231c2cd32674b33bd745b7540a0b99626e06cfdf0677c4b23c5a960b0349ba43b2')
 
 build() {
-    cd ${pkgname#python-}-$pkgver || exit
+    cd $pkgname-$pkgver
     python -m build --wheel --no-isolation
 }
 
 check() {
-    cd ${pkgname#python-}-$pkgver || exit
+    cd $pkgname-$pkgver
     pytest -v \
       --ignore t/unit/transport/test_azureservicebus.py \
       --ignore t/unit/transport/test_azurestoragequeues.py \
@@ -68,7 +69,7 @@ check() {
 }
 
 package() {
-    cd ${pkgname#python-}-$pkgver || exit
+    cd $pkgname-$pkgver
     python -m installer --destdir="$pkgdir" dist/*.whl
-    install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
