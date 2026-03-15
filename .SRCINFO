@@ -1,6 +1,6 @@
 pkgbase = firefox-nightly-i18n-ko
 	pkgdesc = Korean language pack for Firefox Nightly
-	pkgver = 150.0a1.20260314.091516
+	pkgver = 150.0a1.20260314.212757
 	pkgrel = 1
 	url = https://www.mozilla.org/firefox/
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = firefox-nightly-i18n-ko
 	license = GPL
 	license = LGPL
 	depends = firefox-nightly
-	noextract = firefox-nightly-i18n-ko-150.0a1.20260314.091516.xpi
-	source = firefox-nightly-i18n-ko-150.0a1.20260314.091516.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-150.0a1.ko.langpack.xpi
-	sha256sums = 2a798d7345fa57919e819545161e2373233ab07e0d7b6fc2736e7867fe57bb02
+	noextract = firefox-nightly-i18n-ko-150.0a1.20260314.212757.xpi
+	source = firefox-nightly-i18n-ko-150.0a1.20260314.212757.xpi::https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/linux-x86_64/xpi/firefox-150.0a1.ko.langpack.xpi
+	sha256sums = 253aefcb460abef0957719b45feaee4af4375aab4d16c7b6b332eedf5f4991a2
 
 pkgname = firefox-nightly-i18n-ko
