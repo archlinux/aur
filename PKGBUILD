@@ -36,7 +36,7 @@ makedepends=(python-build
 #              python-pytest-ruff
 #              python-syrupy
 #              ...)
-optdepends=('xyz: for xyz')
+#optdepends=('xyz: for xyz')
 source=($pkgname-$pkgver.tar.gz::https://github.com/simonw/llm/archive/refs/tags/$pkgver.tar.gz)
 sha256sums=('7c95ab264f1b4ba612c696801bef5b33cb0c974203cd391f46e163dddd358335')
 
