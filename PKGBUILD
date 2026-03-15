@@ -1,7 +1,7 @@
 # Maintainer: b10n <b10n@dittes.nl>
 
 pkgname=gtetrinet-gtk3-git
-pkgver=0.7.11.r107.g09e8db1
+pkgver=0.7.11.r110.g6d816ee
 pkgrel=1
 pkgdesc="A fork of GTetrinet using GTK3"
 url="https://github.com/tatankat/gtetrinet"
@@ -21,6 +21,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/gtetrinet"
+  patch -Np2 -i ../../dialog-patch.patch
 }
 
 build() {

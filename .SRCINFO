@@ -1,6 +1,6 @@
 pkgbase = gtetrinet-gtk3-git
 	pkgdesc = A fork of GTetrinet using GTK3
-	pkgver = 0.7.11.r107.g09e8db1
+	pkgver = 0.7.11.r110.g6d816ee
 	pkgrel = 1
 	url = https://github.com/tatankat/gtetrinet
 	arch = x86_64
@@ -13,4 +13,3 @@ pkgbase = gtetrinet-gtk3-git
 	md5sums = SKIP
 
 pkgname = gtetrinet-gtk3-git
-
