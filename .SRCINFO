@@ -1,0 +1,17 @@
+pkgbase = opencl-vanity-gpg-bin
+	pkgdesc = Rusty GPU/OpenCL-powered vanity PGP keys generator (Binary from GitHub release)
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/TransparentLC/opencl_vanity_gpg
+	arch = x86_64
+	license = AGPL-3.0
+	depends = ocl-icd
+	optdepends = opencl-driver: OpenCL implementation
+	source = https://github.com/TransparentLC/opencl_vanity_gpg/releases/download/v1.0.1/opencl_vanity_gpg-x86_64-unknown-linux-gnu.zip
+	source = https://raw.githubusercontent.com/TransparentLC/opencl_vanity_gpg/refs/tags/v1.0.1/README.md
+	source = https://raw.githubusercontent.com/TransparentLC/opencl_vanity_gpg/refs/tags/v1.0.1/LICENSE
+	sha256sums = 6991e5a092fd6907fa6bbc8a0a98678acacf653c6ca5defcb99e59d539b4dfd2
+	sha256sums = d467f85861938f6a38174194d0ef6060a707a5d80683d54521d2a79016e812cb
+	sha256sums = 8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef
+
+pkgname = opencl-vanity-gpg-bin
