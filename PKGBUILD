@@ -3,12 +3,12 @@
 # Contributor: Alexey Yakovenko <waker@users.sourceforge.net>
 
 pkgname=deadbeef
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="Modular GTK audio player for GNU/Linux"
 arch=(x86_64 i686 pentium4 armv7h aarch64)
 url="https://deadbeef.sourceforge.io/"
-license=(GPL2 LGPL2.1 ZLIB)
+license=(GPL-2.0-or-later LGPL-2.1-or-later Zlib)
 depends=(gtk3 alsa-lib jansson libdispatch libFLAC.so)
 makedepends=(libvorbis libmad flac curl imlib2 wavpack libsndfile libcdio libcddb
              libx11 faad2 zlib intltool libpipewire libpulse libzip libsamplerate
@@ -40,8 +40,9 @@ optdepends=('alsa-oss: for OSS output plugin'
             'yasm: required to build assembly portions of ffap plugin'
             'zlib: for Audio Overload plugin (psf, psf2, etc), GME (for vgz)')
 conflicts=(deadbeef-pipewire-plugin-git)
-source=("https://sourceforge.net/projects/deadbeef/files/travis/linux/${pkgver}/deadbeef-${pkgver}.tar.bz2")
-sha512sums=('dc9afc4b1d0d0edbe1d2859b66a3e1be83dc01738ee84cb5e7980c2c2b66a665d816d1fe2335a556540a969b416d5b7baf344881d59f8c82a394267e0d2161aa')
+source=(#"https://sourceforge.net/projects/deadbeef/files/travis/linux/${pkgver}/deadbeef-${pkgver}.tar.bz2"
+        "https://sourceforge.net/projects/deadbeef/files/Builds/${pkgver}/linux/deadbeef-${pkgver}.tar.bz2")
+sha512sums=('533f413d26ed0fff3515c68a04a69db8225e67bb01d2f33794a378b398209ca2a8ceb71c24eab43fa4232c90405bccac57b3c46bd72849fec428d6b18f041251')
 
 build () {
   cd "${pkgname}-${pkgver}"
