@@ -1,13 +1,13 @@
 pkgbase = servhub
 	pkgdesc = ServHub — Custom Linux App Store
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/B5aaR/servhub-store
 	arch = x86_64
 	license = MIT
 	depends = flatpak
 	options = !strip
-	source = https://github.com/B5aaR/servhub-store/releases/download/v1.0.2/ServHub-1.0.2.AppImage
-	sha256sums = cd7fcc0671a5a3e26e88f840168eb68c52a9ea959d509878654262ff0112563b
+	source = https://github.com/B5aaR/servhub-store/releases/download/v1.0.3/ServHub-1.0.3.AppImage
+	sha256sums = a76acab749d7db052806dd593f69585184404b0ef4ff434a06050230f64a3f51
 
 pkgname = servhub
