@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <dario.ostuni@gmail.com>
 
 pkgname=simple-http-server
-pkgver=0.6.10
+pkgver=0.6.14
 pkgrel=1
 pkgdesc="Simple http server in Rust"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('cargo')
 options=()
 source=("https://crates.io/api/v1/crates/${pkgname}/${pkgver}/download")
-sha384sums=('b0fe953005e49a0c4ded299c96f2362d897ba9b2399bb54f633833ade1aaea859b838a38791cb2329fa3d9da8240b0bd')
+sha384sums=('02d8608d09c8c124601e53cf7766e2770985b90eaf58f54c45c30c848069c62e20c94e2b65c467e6393d9900c2e8ed2a')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
