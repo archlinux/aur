@@ -5,7 +5,7 @@
 
 pkgbase=bitbake
 pkgname=(bitbake bitbake-vim)
-pkgver=5.3
+pkgver=5.3.2
 pkgrel=3
 pkgdesc="Build tool executing tasks and managing metadata"
 url="https://www.openembedded.org/wiki/Main_Page"
@@ -14,7 +14,7 @@ arch=(any)
 depends=(python python-beautifulsoup4 python-ply python-codegen
          python-progressbar python-pyinotify python-simplediff chrpath diffstat inetutils rpcsvc-proto)
 source=("https://git.openembedded.org/bitbake/snapshot/bitbake-yocto-${pkgver}.tar.gz")
-sha256sums=('22754c09e296f964e7f5edfb75ead4121bdf29e3be616cb9b3ff3bb5cbc7ae81')
+sha256sums=('e9a2360f1a2e08f06966425ed2e6dd574211e5c4e81311b2c0b34130fa5af8da')
 
 package_bitbake() {
     install=bitbake.install
