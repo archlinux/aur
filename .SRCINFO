@@ -1,6 +1,6 @@
 pkgbase = uotantoolboxnt
 	pkgdesc = 现代化 Android & OpenHarmony 工具箱 | A Modern Toolbox for Android & OpenHarmony Devices
-	pkgver = 3.5.0
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/Uotan-Dev/UotanToolboxNT
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = uotantoolboxnt
 	conflicts = UotanToolboxNT
 	options = !strip
 	options = !debug
-	source = UotanToolboxNT-3.5.0.tar.gz::https://github.com/Uotan-Dev/UotanToolboxNT/archive/refs/tags/3.5.0.tar.gz
+	source = UotanToolboxNT-3.6.0.tar.gz::https://github.com/Uotan-Dev/UotanToolboxNT/archive/refs/tags/3.6.0.tar.gz
 	source = UotanToolboxNT.Binary::git+https://github.com/Uotan-Dev/UotanToolboxNT.Binary.git
-	sha256sums = 837118d09c492af3958e9df54659ed309d57fdca0e39c0a2a002a48cf0bb239e
+	sha256sums = 742067f9ed357cab73304d5d7da59dc641609829c50e6776fcb95f929e43a9a7
 	sha256sums = SKIP
 
 pkgname = uotantoolboxnt
