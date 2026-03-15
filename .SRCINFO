@@ -1,0 +1,48 @@
+pkgbase = ros2-humble-diagnostics
+	pkgdesc = Diagnostics packages for ROS 2
+	pkgver = 4.0.6
+	pkgrel = 1
+	url = https://github.com/ros/diagnostics
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = ros2-humble
+	makedepends = cmake
+	makedepends = gcc13
+	makedepends = python
+	depends = ros2-humble
+	source = https://github.com/ros/diagnostics/archive/refs/tags/4.0.6.tar.gz
+	sha256sums = 0bfde33160893104729188f5781db00cadd182af96ff10febfd5d2de0dd70f1c
+
+pkgname = ros2-humble-diagnostic-aggregator
+	pkgdesc = diagnostic_aggregator aggregates diagnostic messages
+	arch = x86_64
+	depends = ros2-humble
+
+pkgname = ros2-humble-diagnostic-common-diagnostics
+	pkgdesc = Predefined diagnostic nodes for monitoring Linux and ROS system
+	arch = any
+	depends = ros2-humble
+	depends = ros2-humble-diagnostic-updater
+	depends = lm-sensors
+	depends = python-psutil
+	depends = python-ntplib
+
+pkgname = ros2-humble-diagnostic-remote-logging
+	pkgdesc = Remote logging for diagnostics (InfluxDB)
+	arch = x86_64
+	depends = ros2-humble
+	depends = curl
+
+pkgname = ros2-humble-self-test
+	pkgdesc = Self test tools for diagnostics
+	arch = x86_64
+	depends = ros2-humble
+	depends = ros2-humble-diagnostic-updater
+
+pkgname = ros2-humble-diagnostics
+	pkgdesc = Meta-package for ROS 2 diagnostics suite
+	arch = any
+	depends = ros2-humble-diagnostic-updater
+	depends = ros2-humble-diagnostic-aggregator
+	depends = ros2-humble-diagnostic-common-diagnostics
+	depends = ros2-humble-self-test

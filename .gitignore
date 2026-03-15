@@ -1,0 +1,27 @@
+# Ignore source tarballs (managed by makepkg/submit-x86_64-build)
+*.tar.gz
+*.tar.xz
+*.zip
+
+# Ignore build logs (auto-incremented by submit-x86_64-build)
+build-v*.log
+
+# Ignore package artifacts
+*.pkg.tar.zst
+*.pkg.tar.xz
+
+# Ignore namcap logs
+*-namcap.log
+
+# Ignore PKGBUILD backups
+PKGBUILD.bak*
+
+# Ignore staging and build directories
+_staging/
+build-*/
+
+# Ignore distribution file (reference only, not for repo)
+distribution.yaml
+
+# Ignore other temporary files
+Building
