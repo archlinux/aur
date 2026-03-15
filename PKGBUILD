@@ -1,6 +1,6 @@
 pkgname=farmmod
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mod manager for Farming Simulator on Linux"
 arch=("any")
 url="https://github.com/henriquejsza/FarmMod"
@@ -43,6 +43,12 @@ package() {
 
   python -m installer --destdir="$pkgdir" dist/*.whl
 
+  _python_stdlib=$(python - <<'PY'
+import sysconfig
+print(sysconfig.get_path("stdlib"))
+PY
+)
+
   if [[ -x "$pkgdir/usr/bin/farmmod-hub" ]]; then
     ln -s "farmmod-hub" "$pkgdir/usr/bin/farmmod"
   fi
@@ -66,4 +72,11 @@ package() {
   install -Dm644 \
     "data/logo/io.github.henriquejsza.farmmod-hub.png" \
     "$pkgdir/usr/share/farmmod/data/logo/io.github.henriquejsza.farmmod-hub.png"
+
+  install -Dm644 \
+    "data/style.css" \
+    "$pkgdir$_python_stdlib/data/style.css"
+  install -Dm644 \
+    "data/logo/io.github.henriquejsza.farmmod-hub.png" \
+    "$pkgdir$_python_stdlib/data/logo/io.github.henriquejsza.farmmod-hub.png"
 }
