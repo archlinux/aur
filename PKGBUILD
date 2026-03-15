@@ -1,5 +1,5 @@
 pkgname=hyprspaces
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Paired workspace plugin and setup scripts for Hyprland"
 arch=('x86_64')
@@ -7,6 +7,7 @@ url='https://github.com/jtaw5649/hyprspaces'
 license=('MIT')
 depends=('bash' 'hyprland' 'python')
 makedepends=('cmake' 'pkgconf')
+install=hyprspaces.install
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
@@ -27,6 +28,7 @@ package() {
 
   install -Dm644 "build/hyprspaces.so" "${pkgdir}/usr/lib/hyprspaces/hyprspaces.so"
 
+  install -Dm755 "scripts/hyprspaces-load" "${pkgdir}/usr/lib/hyprspaces/scripts/hyprspaces-load"
   install -Dm755 "scripts/hyprspaces-install" "${pkgdir}/usr/lib/hyprspaces/scripts/hyprspaces-install"
   install -Dm755 "scripts/hyprspaces-uninstall" "${pkgdir}/usr/lib/hyprspaces/scripts/hyprspaces-uninstall"
   install -Dm755 "scripts/hyprspaces-waybar-restart" "${pkgdir}/usr/lib/hyprspaces/scripts/hyprspaces-waybar-restart"
@@ -39,6 +41,7 @@ package() {
   install -Dm644 "config/hyprspaces-bindings.conf" "${pkgdir}/usr/share/hyprspaces/config/hyprspaces-bindings.conf"
 
   install -dm755 "${pkgdir}/usr/bin"
+  ln -s "/usr/lib/hyprspaces/scripts/hyprspaces-load" "${pkgdir}/usr/bin/hyprspaces-load"
   ln -s "/usr/lib/hyprspaces/scripts/hyprspaces-install" "${pkgdir}/usr/bin/hyprspaces-install"
   ln -s "/usr/lib/hyprspaces/scripts/hyprspaces-uninstall" "${pkgdir}/usr/bin/hyprspaces-uninstall"
   ln -s "/usr/lib/hyprspaces/scripts/hyprspaces-waybar-restart" "${pkgdir}/usr/bin/hyprspaces-waybar-restart"

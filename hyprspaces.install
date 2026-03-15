@@ -1,8 +1,7 @@
 post_install() {
-	echo "Config auto-generates on first use"
-	echo "Optional: run 'hyprspaces setup install --waybar' for Waybar example files"
+	echo "Run 'hyprspaces-install' to wire the plugin into your Hyprland config."
 }
 
-pre_remove() {
-	hyprspaces setup uninstall 2>/dev/null || true
+post_upgrade() {
+	echo "If Hyprland was also updated, run 'hyprspaces-install' to reload the plugin."
 }
