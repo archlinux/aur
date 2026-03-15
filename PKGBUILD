@@ -1,7 +1,7 @@
 # Maintainer: Gunnar Bretthauer <taijian@posteo.de>
 
 pkgname=dynamic-dns-netcup-api
-pkgver=5.0
+pkgver=6.0
 pkgrel=1
 pkgdesc="A simple dynamic DNS client written in PHP for use with the netcup DNS API."
 arch=('any')
@@ -11,11 +11,11 @@ depends=('php-interpreter')
 makedepends=('git')
 optdepends=()
 backup=(etc/${pkgname}/config.php)
-_commit=a8a6327877f26ca097d1b932649d3126a28e9d3e
+_commit=94b724c92b5f3816a60c5ba410b387517e311b96
 source=("git+https://github.com/stecklars/${pkgname}.git#commit=$_commit"
         ${pkgname}.service
         ${pkgname}.timer)
-sha256sums=('SKIP'
+sha256sums=('bd085a8642ad82ea83041a31113945ba05e303ba13547a1060daeac271851593'
             '359db333e91a49c9a9413dc52f524ef47c2192186cb7edfbf5277cd54bb5cb7d'
             'e47b47ba368cbaf09cb63fdbeaef632f6fd358e6994440d8d3a682ee4510e648')
 
