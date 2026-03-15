@@ -1,0 +1,16 @@
+pkgbase = tuvpn-gui
+	pkgdesc = TUvpn GUI by the OpenTU community
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://gitlab.tuwien.ac.at/opentu/tuvpn-gui
+	arch = any
+	license = MIT-0
+	makedepends = git
+	makedepends = go
+	makedepends = rsync
+	depends = openconnect
+	provides = tuvpn-gui
+	source = git+https://gitlab.tuwien.ac.at/opentu/tuvpn-gui
+	sha256sums = SKIP
+
+pkgname = tuvpn-gui
