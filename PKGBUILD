@@ -1,6 +1,6 @@
 # Maintainer: multyfora <your@email.com>
 pkgname=let-me-animate
-pkgver=1.0
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Browse and run Wallpaper Engine wallpapers on Linux"
 arch=('x86_64')
@@ -20,8 +20,8 @@ options=('!strip')
 
 # ── Source ────────────────────────────────────────────────────────────────────
 # Replace the URL with your actual GitHub release URL after publishing
-source=("https://github.com/multyfora/let-me-animate/releases/download/1.0.2-early-alpha/LetMeAnimate-1.0-linux.tar.gz")
-sha256sums=('2afefd76222aae479912b42a21f560e673e5ec14848da4525f4e533e2a47e7b9') # Replace SKIP with actual sha256 after building: sha256sum LetMeAnimate-1.0-linux.tar.gz
+source=("https://github.com/multyfora/let-me-animate/releases/download/1.0.3-early-aplha/LetMeAnimate-1.0.3-linux.tar.gz")
+sha256sums=('948cb8100362e1b419683b5c5ebbe10184e70e1dbeb61179fde74e8c139ac338') # Replace SKIP with actual sha256 after building: sha256sum LetMeAnimate-1.0-linux.tar.gz
 
 package() {
     # Install the app to /opt
