@@ -1,6 +1,6 @@
 # Maintainer: Gur0v
 pkgname=zeptofetch
-pkgver=1.19
+pkgver=1.20
 pkgrel=1
 pkgdesc="Blazingly fast, ultra-minimal system information tool for Linux"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('gcc' 'make')
 source=("$pkgname-$pkgver.tar.gz::https://gitlab.archlinux.org/gurov/$pkgname/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-sha256sums=('9df1e931f5ffa7f58c99e279f9cf2d5c359dba7034da66a01fa49c411f426a51')
+sha256sums=('b8433e48d4381bf35410a7912dff06480d9f2bbbab307959cfda326313b1b180')
 options=('!strip')
 
 build() {
