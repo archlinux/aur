@@ -1,6 +1,6 @@
 pkgbase = jd-gui-duo
 	pkgdesc = A 2-in-1 JAVA decompiler based on JD-CORE v0 and v1
-	pkgver = 2.0.106
+	pkgver = 2.0.107
 	pkgrel = 1
 	url = https://github.com/nbauma109/jd-gui-duo
 	arch = any
@@ -8,12 +8,12 @@ pkgbase = jd-gui-duo
 	makedepends = maven
 	makedepends = jdk25-openjdk
 	depends = java-runtime>=25
-	source = jd-gui-duo-2.0.106.tar.gz::https://github.com/nbauma109/jd-gui-duo/archive/refs/tags/2.0.106.tar.gz
+	source = jd-gui-duo-2.0.107.tar.gz::https://github.com/nbauma109/jd-gui-duo/archive/refs/tags/2.0.107.tar.gz
 	source = jd-gui-duo
 	source = jd-gui-duo.desktop
 	source = jd_icon_128.png
 	source = assembler_pom.patch
-	sha256sums = c807842e4386d44d6058f8933af08532ac6465d926668fe20d653b078b9c2644
+	sha256sums = c05e932567ac13e621bd9b42d648d06047158a0b45ebf18945a3674537c68322
 	sha256sums = 7e3c81892a95aa411afe7a5dc93b5e7a891b1c52fcc65670a08b5b5618b8aafc
 	sha256sums = d40a09c9c228b55dcb54823b878cd180521386a11abffed478ce89439fd4e184
 	sha256sums = 62c763642af8cbfd1e00dc8763dcc92a66eefc7aceaa4069d29909bfc197240a
