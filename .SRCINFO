@@ -1,6 +1,6 @@
 pkgbase = klein-bin
 	pkgdesc = A terminal-based TUI text editor designed to bring the look and functionality of a modern IDE into the terminal
-	pkgver = 0.3.6
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/Adarsh-codesOP/Klein
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = klein-bin
 	depends = libgcc
 	provides = klein
 	conflicts = klein
-	source = README-0.3.6.md::https://raw.githubusercontent.com/Adarsh-codesOP/Klein/v0.3.6/README.md
-	source = LICENSE-0.3.6::https://raw.githubusercontent.com/Adarsh-codesOP/Klein/v0.3.6/LICENSE
+	source = README-0.5.0.md::https://raw.githubusercontent.com/Adarsh-codesOP/Klein/v0.5.0/README.md
+	source = LICENSE-0.5.0::https://raw.githubusercontent.com/Adarsh-codesOP/Klein/v0.5.0/LICENSE
 	sha256sums = f43de881baf252c016866dd8f207f933564fc8d2d2ff1e2da4437bf5741a9ebe
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
-	source_x86_64 = Klein-x86_64-0.3.6.tgz::https://github.com/Adarsh-codesOP/Klein/releases/download/v0.3.6/Klein-v0.3.6-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 1f91b0eced6203772de03e57562bb16ff1e44a331058ed7ada78c7625d057318
-	source_aarch64 = Klein-aarch64-0.3.6.tgz::https://github.com/Adarsh-codesOP/Klein/releases/download/v0.3.6/Klein-v0.3.6-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = a562a44bca4f0cc89930bcaf218a457cc30c6efc14ad15b1353df546235f750d
+	source_x86_64 = Klein-x86_64-0.5.0.tgz::https://github.com/Adarsh-codesOP/Klein/releases/download/v0.5.0/Klein-v0.5.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 206c0851d37639d3c113f5b5839cc2f80a7ab19c715541fecfa0cb99d8d381cc
+	source_aarch64 = Klein-aarch64-0.5.0.tgz::https://github.com/Adarsh-codesOP/Klein/releases/download/v0.5.0/Klein-v0.5.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 1a22271716a6dc742a8d036b05de70d421f97c53e2e2670f34507d97c3e6b8bc
 
 pkgname = klein-bin

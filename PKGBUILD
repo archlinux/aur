@@ -5,7 +5,7 @@ _pkgname=Klein
 pkgname=${_pkgname,,}-bin
 pkgdesc="A terminal-based TUI text editor designed to bring the look and functionality of a modern IDE into the terminal"
 
-pkgver=0.3.6
+pkgver=0.5.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -27,8 +27,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}.tar.gz")
 sha256sums=('f43de881baf252c016866dd8f207f933564fc8d2d2ff1e2da4437bf5741a9ebe'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('1f91b0eced6203772de03e57562bb16ff1e44a331058ed7ada78c7625d057318')
-sha256sums_aarch64=('a562a44bca4f0cc89930bcaf218a457cc30c6efc14ad15b1353df546235f750d')
+sha256sums_x86_64=('206c0851d37639d3c113f5b5839cc2f80a7ab19c715541fecfa0cb99d8d381cc')
+sha256sums_aarch64=('1a22271716a6dc742a8d036b05de70d421f97c53e2e2670f34507d97c3e6b8bc')
 
 
 package() {
