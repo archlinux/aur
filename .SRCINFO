@@ -1,14 +1,13 @@
-pkgbase = commiefetch-git
+pkgbase = commiefetch
 	pkgdesc = Systeminfo-Tool mit kommunistischem ASCII-Logo, Bash-Integration und versteckten Anzeigemodi
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://gitlab.com/arch1380517/commiefetch
 	arch = x86_64
 	license = CPL1
-	makedepends = git
 	makedepends = gcc
 	makedepends = make
-	source = git+https://gitlab.com/arch1380517/commiefetch.git
-	md5sums = SKIP
+	source = https://gitlab.com/arch1380517/commiefetch/-/archive/v1.0/commiefetch-v1.0.tar.gz
+	sha256sums = 363dc1d2991113ac68a7792c57f5567df378e2ab3b320494152d02b1a8a08181
 
-pkgname = commiefetch-git
+pkgname = commiefetch
