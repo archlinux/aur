@@ -1,6 +1,6 @@
 pkgbase = ddhx-git
 	pkgdesc = Console hexadecimal file viewer
-	pkgver = v0.9.0.r0.g5b87d78
+	pkgver = v0.9.1.r0.g878cb8d
 	pkgrel = 1
 	url = https://github.com/dd86k/ddhx
 	arch = x86_64
@@ -8,7 +8,8 @@ pkgbase = ddhx-git
 	makedepends = git
 	makedepends = dub
 	makedepends = dmd
-	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
 	provides = ddhx
 	conflicts = ddhx
 	source = git+https://github.com/dd86k/ddhx

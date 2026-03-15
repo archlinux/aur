@@ -7,13 +7,13 @@
 
 pkgname=ddhx-git
 _pkgname=ddhx
-pkgver=v0.9.0.r0.g5b87d78
+pkgver=v0.9.1.r0.g878cb8d
 pkgrel=1
 pkgdesc="Console hexadecimal file viewer"
 arch=('x86_64')
 url="https://github.com/dd86k/ddhx"
 license=('MIT')
-depends=('gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('git' 'dub' 'dmd')
 provides=("ddhx")
 conflicts=("ddhx")
@@ -29,12 +29,15 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  dub build -b release-nobounds
+  #dub build -b release-nobounds
+  make all
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  install -D ddhx "${pkgdir}/usr/bin/ddhx"
+  #install -D ddhx "${pkgdir}/usr/bin/ddhx"
+  make install DESTDIR="${pkgdir}" PREFIX="/usr"
+  install -D -m 0644 ddhx.1 "${pkgdir}/usr/share/man/man1/ddhx.1"
   install -D -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m 0644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
   #install -D -m 0644 docs/ddhx.1 "${pkgdir}/usr/share/man/man1/ddhx.1"
