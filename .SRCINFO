@@ -1,6 +1,6 @@
 pkgbase = dagger-git
 	pkgdesc = A portable devkit for CI/CD pipelines
-	pkgver = 0.19.11
+	pkgver = 0.20.1
 	pkgrel = 1
 	url = https://dagger.io
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = dagger-git
 	conflicts = dagger
 	options = !lto
 	options = !debug
-	source = dagger-git::git+https://github.com/dagger/dagger.git#tag=v0.19.11
+	source = dagger-git::git+https://github.com/dagger/dagger.git#tag=v0.20.1
 	sha512sums = SKIP
 	b2sums = SKIP
 
