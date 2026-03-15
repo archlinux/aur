@@ -1,12 +1,12 @@
 pkgbase = portago
 	pkgdesc = Portable, single-binary Go IDE built on Neovim
-	pkgver = 0.0.1
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/meerkat-b/portago
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = glibc
-	source = https://github.com/meerkat-b/portago/releases/download/v0.0.1/portago_0.0.1_linux_amd64.tar.gz
-	sha256sums = 002f3d73c6f2637ecdc03119554b59a5c13adcac8630ff7598fec7d77339cddc
+	source = https://github.com/meerkat-b/portago/releases/download/v0.0.2/portago_0.0.2_linux_amd64.tar.gz
+	sha256sums = d48cfded026fbff1c9c041eed59af900ae06bfc12dd2674e53b860d979bba803
 
 pkgname = portago
