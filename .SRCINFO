@@ -1,0 +1,16 @@
+pkgbase = rongta-label-printer-cups
+	pkgdesc = Rongta Label Printer CUPS PPD drivers
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://pt.rongtatech.com/category/downloads/1_2
+	arch = aarch64
+	arch = loongarch64
+	arch = x86
+	arch = x86_64
+	license = custom
+	depends = cups
+	depends = ghostscript
+	source = rtpd.zip::https://pt.rongtatech.com/uploadfile/downloads/Label%20Printer%20Driver%20(Linux&Chinese%20domestic%20system).zip
+	sha256sums = 303cce9ccf5ecb36c844947e6c16cd456a0040d561ed73d00198f4683de18654
+
+pkgname = rongta-label-printer-cups
