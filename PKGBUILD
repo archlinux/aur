@@ -3,7 +3,7 @@
 # vi: ft=sh
 
 pkgname=runme
-pkgver=3.15.4
+pkgver=3.16.5
 pkgrel=1
 pkgdesc="DevOps Notebooks Built with Markdown"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://github.com/runmedev/runme"
 license=('Apache-2.0')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('b10217526ea47b6c9e015e323f3e64b846dcca3ffc2cf14a9d44b4c0c4d8f3745f58bdda705c1684d9ca44aa240ecc9e005880ccf71804a35ad5ba66d964fe75')
+sha512sums=('a96662b8d24875d6991f07d8e8b5f8b7caf3577f2ec1b6ad4a1c60e5ee632e7f5ac986fd1a44902d040c5b5b9cbdfb6b518f2722178b19813174a2da92b30dce')
 
 build() {
   cd "${pkgname}-${pkgver}"
