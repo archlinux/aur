@@ -1,15 +1,15 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=cfspeedtest
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Unofficial CLI for speed.cloudflare.com"
 arch=('x86_64' 'aarch64')
 url="https://github.com/code-inflation/cfspeedtest"
 license=('MIT')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7d2f8e84bdef6e1cf4d2df42abbc85e419dadfce9a3485df11ff6ebf6c9cd369')
+sha256sums=('86c5365ebb150d5c015a8b6be52bb1275e68babd64b4980225faa7f0f1029f2c')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
