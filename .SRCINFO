@@ -1,6 +1,6 @@
 pkgbase = termix-bin
 	pkgdesc = Modern cross-platform SSH client built with Electron
-	pkgver = 1.11.2
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/Termix-SSH/Termix
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = termix-bin
 	depends = libxss
 	options = !strip
 	options = !debug
-	source = termix-linux-x64.tar.gz::https://github.com/Termix-SSH/Termix/releases/download/release-1.11.2-tag/termix_linux_x64_portable.tar.gz
+	source = termix-linux-x64.tar.gz::https://github.com/Termix-SSH/Termix/releases/download/release-2.0.0-tag/termix_linux_x64_portable.tar.gz
 	source = termix.desktop
 	source = termix.png
-	sha256sums = 6ad8daae3eabf68e5b063469961e7c9aa8256d2aca91b7e056de5ca260710789
+	sha256sums = f25dfb389acdfd87b45f97201e9cf841bf36d646c7d93179b03963b6939a3ef1
 	sha256sums = e7e212579407ecb581d2c22ef115fbbe4b2a0b07781515cd714a2499904e4623
 	sha256sums = 028538b18db920510c0f52887c897ca7f2d753be1bbe675e87cd9710c5081086
 
