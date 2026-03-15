@@ -1,6 +1,6 @@
 pkgbase = r-bma
 	pkgdesc = Bayesian Model Averaging
-	pkgver = 3.18.20
+	pkgver = 3.18.21
 	pkgrel = 1
 	url = https://cran.r-project.org/package=BMA
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = r-bma
 	depends = r-robustbase
 	depends = r-rrcov
 	optdepends = r-mass
-	source = https://cran.r-project.org/src/contrib/BMA_3.18.20.tar.gz
-	sha256sums = 2d72a96cbf2cbfa8b38453adc309e9e0596270e923c9c991bb8fb4e909f830a3
+	source = https://cran.r-project.org/src/contrib/BMA_3.18.21.tar.gz
+	sha256sums = d50b1b0c8f2595911cc3745e0f5ceff1faa5592d6df4543f075dba5a34684e60
 
 pkgname = r-bma
