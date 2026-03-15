@@ -7,9 +7,9 @@
 pkgname='offpunk-git'
 _pkgname='offpunk'
 pkgdesc='Command-line and offline-first smolnet browser/feed reader for Gemini, Gopher, Spartan and web (development version)'
-pkgver=3.0.r37.gddf44df
-pkgrel=2
-epoch=6
+pkgver=3.1.r20.gdd7be1e
+pkgrel=1
+epoch=7
 url='https://git.sr.ht/~lioploum/offpunk'
 install="$pkgname.install"
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
   'coreutils'
   'git'
   'python-build'
-  'python-hatch-requirements-txt'
+  'python-hatchling'
   'python-installer'
   'python-wheel'
 )
@@ -27,7 +27,7 @@ depends=(
   'less'
   'python'
   'python-beautifulsoup4'
-  'python-chardet'
+  'python-charset-normalizer'
   'python-cryptography'
   'python-feedparser'
   'python-readability-lxml'
