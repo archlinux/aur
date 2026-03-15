@@ -1,6 +1,6 @@
 # Maintainer: sgtaziz <sgtaziz013 at google dot com>
 pkgname=lianli-linux-git
-pkgver=r73.c978289
+pkgver=r74.ec8a512
 pkgrel=1
 pkgdesc="Open-source Linux replacement for L-Connect 3 - fan control, RGB, LCD streaming for Lian Li devices"
 arch=('x86_64')
