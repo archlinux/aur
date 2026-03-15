@@ -22,7 +22,6 @@ depends=(
 makedepends=(
     'ros2-humble'
     'cmake'
-    'gcc13'
     'python'
 )
 source=("https://github.com/ros/diagnostics/archive/refs/tags/${pkgver}.tar.gz")
@@ -55,7 +54,7 @@ _build_install_isolated() {
     msg2 "Building $1 ..."
     cd "$srcdir/diagnostics-$pkgver/$_subdir"
     source /opt/ros/humble/setup.bash
-    export CC=$(command -v gcc-13) CXX=$(command -v g++-13)
+    export CXXFLAGS="${CXXFLAGS} -include cstdint"
     if [ -n "$_extra_prefix" ]; then
         export CMAKE_PREFIX_PATH="${_extra_prefix}:${CMAKE_PREFIX_PATH}"
     fi
