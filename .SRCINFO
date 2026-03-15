@@ -1,7 +1,7 @@
 pkgbase = ldapvi
 	pkgdesc = Interactive LDAP client for Unix terminals
 	pkgver = 1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ldapvi/ldapvi
 	arch = x86_64
 	license = GPL-2.0-only
@@ -17,7 +17,7 @@ pkgbase = ldapvi
 	depends = openssl
 	depends = popt
 	depends = readline
-	source = ldapvi-1.8::git+https://github.com/ldapvi/ldapvi.git#tag=1.8
+	source = ldapvi::git+https://github.com/ldapvi/ldapvi.git#tag=1.8
 	b2sums = b67373792e84237fb4003603a641eef23cdc3f0fc2c081a8139a4d353d97458821386d968b2e6bd7dbcbe9c70f9b1fbc3898c69d3ed9ef861f258afb2432fc99
 
 pkgname = ldapvi
