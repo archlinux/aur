@@ -28,7 +28,13 @@ prepare() {
 
 build() {
 	cd "tuvpn-gui-v${pkgver}"
-	make tuvpn-elevator-amd64 tuvpn-gui-amd64
+	target_arch=amd64
+	if [[ "$(uname -m)" = "x86_64" ]]; then
+		target_arch=amd64
+	else
+		target_arch=arm64
+	fi
+	make "tuvpn-elevator-${target_arch}" "tuvpn-gui-${target_arch}"
 }
 
 package() {
