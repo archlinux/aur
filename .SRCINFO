@@ -1,6 +1,6 @@
 pkgbase = mlmmj
 	pkgdesc = Simple and slim mailing list manager (MLM) inspired by ezmlm
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://codeberg.org/mlmmj/mlmmj
 	install = mlmmj.install
@@ -14,10 +14,10 @@ pkgbase = mlmmj
 	depends = smtp-server
 	optdepends = perl: for running some of the contributed scripts
 	optdepends = python: for running some of the contributed scripts
-	source = https://codeberg.org/mlmmj/mlmmj/releases/download/RELEASE_1_7_1/mlmmj-1.7.1.tar.xz
+	source = https://codeberg.org/mlmmj/mlmmj/releases/download/RELEASE_1_8_0/mlmmj-1.8.0.tar.xz
 	source = sysuser.conf
 	source = tmpfile.conf
-	sha256sums = a692f6a8a1f05b4534ac8f8686c1b371fda618ae0b2fba1f238358d406517ff3
+	sha256sums = 1a096c8256b63a51717d71459987c9d739963a82ecf382779184794e93e32618
 	sha256sums = SKIP
 	sha256sums = SKIP
 

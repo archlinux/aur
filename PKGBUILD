@@ -8,26 +8,25 @@
 
 pkgname='mlmmj'
 pkgdesc='Simple and slim mailing list manager (MLM) inspired by ezmlm'
-pkgver=1.7.1
-_pkgver=1_7_1
+pkgver=1.8.0
+_pkgver=1_8_0
 pkgrel=1
 _url='http://mlmmj.org/'
 url='https://codeberg.org/mlmmj/mlmmj'
 install="$pkgname.install"
+arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('MIT')  # SPDX-License-Identifier: MIT
 depends=('bash' 'glibc' 'smtp-server')
 optdepends=(
-  'perl:	for running some of the contributed scripts'
-  'python:	for running some of the contributed scripts'
+  'perl: for running some of the contributed scripts'
+  'python: for running some of the contributed scripts'
 )
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 source=(
   "$url/releases/download/RELEASE_$_pkgver/$pkgname-$pkgver.tar.xz"
-  'sysuser.conf'
-  'tmpfile.conf'
+  'sysuser.conf' 'tmpfile.conf'
 )
 sha256sums=(
-  'a692f6a8a1f05b4534ac8f8686c1b371fda618ae0b2fba1f238358d406517ff3'
+  '1a096c8256b63a51717d71459987c9d739963a82ecf382779184794e93e32618'
   'SKIP' 'SKIP'  # Skip to my Lou
 )
 
@@ -45,12 +44,12 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/" \
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     ChangeLog FAQ README.* TODO TUNABLES.md UPGRADE
 
   cp -fa contrib "$pkgdir/usr/share/doc/$pkgname/"
 
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" \
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" \
     AUTHORS COPYING LICENSE
 
   cd "$srcdir"
