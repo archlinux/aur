@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspFrequencies
-_pkgver=0.95.3
+_pkgver=0.96.0
 pkgname=r-${_pkgname,,}
-pkgver=0.95.3
+pkgver=0.96.0
 pkgrel=1
 pkgdesc="Frequencies Module for JASP"
 arch=('any')
@@ -24,7 +24,7 @@ depends=(r
 )
 groups=(r-jasp r-jaspcommon)
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('0f20fc4a9c8ba793c3a911f7f7cb7f9b60a1141e7b9b8480684b98affeda4720')
+sha256sums=('fcc8fa894ac5e7b23ab921ab4bfa0bbbb7ae7d95587d921d36e791ab0027bff4')
 
 
 build() {
