@@ -1,0 +1,5 @@
+[snip-tui]
+source = "github"
+github = "phlx0/snip"
+use_latest_release = true
+prefix = "v"
