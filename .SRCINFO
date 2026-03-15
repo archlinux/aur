@@ -19,8 +19,6 @@ pkgbase = kwin-effects-glass-git
 	depends = kwin
 	provides = kwin-effects-glass
 	source = kwin-effects-glass-git::git+https://github.com/4v3ngR/kwin-effects-glass.git
-	source = disable-x11-kwin-x11-api-check.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = kwin-effects-glass-git

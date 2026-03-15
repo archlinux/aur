@@ -1,0 +1,13 @@
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.log
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+pkg/
+src/
+build/
+*.orig
+*.rej
+kwin-effects-glass-git/

@@ -14,10 +14,8 @@ provides=("${pkgname%-git}")
 makedepends=(git cmake extra-cmake-modules qt6-tools kwin)
 
 # Build from upstream git source.
-source=("${pkgname}::git+https://github.com/4v3ngR/kwin-effects-glass.git"
-        "disable-x11-kwin-x11-api-check.patch")
-sha256sums=("SKIP"
-            "SKIP")
+source=("${pkgname}::git+https://github.com/4v3ngR/kwin-effects-glass.git")
+sha256sums=("SKIP")
 
 pkgver() {
   cd "${startdir}/src/${pkgname}"
@@ -29,12 +27,9 @@ build() {
   cmake -B "$_build" -S "${startdir}/src/${pkgname}" \
     -W no-dev \
     -D CMAKE_BUILD_TYPE=None \
-    -D CMAKE_INSTALL_PREFIX=/usr
+    -D CMAKE_INSTALL_PREFIX=/usr \
+    -D GLASS_X11=OFF
   cmake --build "$_build"
-}
-
-prepare() {
-  patch -d "${startdir}/src/${pkgname}" -p1 -i "${startdir}/disable-x11-kwin-x11-api-check.patch"
 }
 
 package() {
