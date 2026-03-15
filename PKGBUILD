@@ -1,6 +1,6 @@
 # Maintainer: Tenchirox <tenchirox@github.com>
 pkgname=all4laser-git
-pkgver=0.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Open-source laser engraver controller built with Rust and egui"
 arch=('x86_64' 'aarch64')
