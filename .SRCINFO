@@ -1,17 +1,16 @@
 pkgbase = tomo-bin
 	pkgdesc = The Tomo programming language compiler
-	pkgver = 2025_12_21.5
+	pkgver = 2026_03_14
 	pkgrel = 1
 	url = https://tomo.bruce-hill.com
 	arch = x86_64
-	arch = aarch64
 	license = custom
 	depends = gcc
 	depends = binutils
 	depends = gmp
 	depends = libunistring
 	depends = gc
-	source = https://github.com/bruce-hill/tomo/releases/download/v2025-12-21.5/tomo-linux-x86_64.tar.gz
-	sha256sums = d0852f62e97950b55c84c2f9d6e3ee91ce86e0c5ce70dc346a98d3c226c1156b
+	source = https://tomo.bruce-hill.com/dist/tomo@2026-03-14_Linux-x86_64.tar.gz
+	sha256sums = e6389315da8342583666c8968b3407fa8915edfb44641ea7ead057ee20a40d9b
 
 pkgname = tomo-bin
