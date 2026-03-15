@@ -1,0 +1,14 @@
+pkgbase = let-me-animate
+	pkgdesc = Browse and run Wallpaper Engine wallpapers on Linux
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/multyfora/let-me-animate
+	arch = x86_64
+	license = MIT
+	depends = steamcmd
+	depends = linux-wallpaperengine
+	options = !strip
+	source = https://github.com/multyfora/let-me-animate/releases/download/1.0.2-early-alpha/LetMeAnimate-1.0-linux.tar.gz
+	sha256sums = 2afefd76222aae479912b42a21f560e673e5ec14848da4525f4e533e2a47e7b9
+
+pkgname = let-me-animate
