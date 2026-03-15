@@ -23,12 +23,25 @@ pkgver() {
 }
 
 package() {
-  install -dm755 "$pkgdir/usr/share/icons/Pixora"
-  cp -fa pixora-icons/* "$pkgdir/usr/share/icons/Pixora/"
-  find "$pkgdir/usr/share/icons/Pixora" -type d -print0 \
+  install -dm755 "$pkgdir/usr/share/icons/pixora"
+  cp -fa pixora-icons/pixora/* "$pkgdir/usr/share/icons/pixora/"
+  find "$pkgdir/usr/share/icons/pixora" -type d -print0 \
     | xargs -r0 chmod 0755
-  find "$pkgdir/usr/share/icons/Pixora" -type f -print0 \
+  find "$pkgdir/usr/share/icons/pixora" -type f -print0 \
     | xargs -r0 chmod 0644
+
+  cp -fa pixora-icons/pixelitos-light/* "$pkgdir/usr/share/icons/pixelitos-light/"
+  find "$pkgdir/usr/share/icons/pixelitos-light" -type d -print0 \
+    | xargs -r0 chmod 0755
+  find "$pkgdir/usr/share/icons/pixelitos-light" -type f -print0 \
+    | xargs -r0 chmod 0644
+
+  cp -fa pixora-icons/pixelitos-dark/* "$pkgdir/usr/share/icons/pixelitos-dark/"
+  find "$pkgdir/usr/share/icons/pixelitos-dark" -type d -print0 \
+    | xargs -r0 chmod 0755
+  find "$pkgdir/usr/share/icons/pixelitos-dark" -type f -print0 \
+    | xargs -r0 chmod 0644
+
   install -dm755 "$pkgdir/usr/share/doc/$pkgname"
   mv -f "$pkgdir/usr/share/icons/Pixora/README.md" \
     "$pkgdir/usr/share/doc/$pkgname/"
