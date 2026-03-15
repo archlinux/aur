@@ -2,13 +2,13 @@
 
 pkgname=tuvpn-gui
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="TUvpn GUI by the OpenTU community"
 arch=("any")
 url="https://gitlab.tuwien.ac.at/opentu/tuvpn-gui"
 license=("MIT-0")
 depends=("openconnect")
-makedepends=("go>=1.24" "rsync" "tar" "make")
+makedepends=("go>=1.24" "rsync" "tar" "make" "libx11" "libxcursor" "libxrandr" "libglvnd" "libxinerama" "libxi")
 optdepends=()
 provides=("tuvpn-gui")
 conflicts=()
