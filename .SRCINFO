@@ -1,14 +1,14 @@
 pkgbase = bdf2psf-latest
 	pkgdesc = Debian utility to convert BDF font files to PSF format
-	pkgver = 1.245
+	pkgver = 1.246
 	pkgrel = 1
 	epoch = 1
 	url = https://packages.debian.org/unstable/bdf2psf
 	arch = any
-	license = GPL2
+	license = GPL-2.0-or-later
 	depends = perl
 	depends = libbsd
-	source = https://deb.debian.org/debian/pool/main/c/console-setup/bdf2psf_1.245_all.deb
+	source = https://deb.debian.org/debian/pool/main/c/console-setup/bdf2psf_1.246_all.deb
 	source = 0001-print-help-when-no-args-provided.patch
 	b2sums = 2e76577054bdbf101d1c1605f35ee830ac2814cc18e436deeff4b82c697e42471c6f3c38a1e08f239320633e3adffaa5dddba145b16d18380eb8639cca658a85
 	b2sums = 332248177ed0f2caf12fe4d2ccc44d973b52ba9c6c47735976e281e5a05cf43ff375e7a68ec7fe07f0d7c7a7c363e0bd68f7b3a723ed1287063443ce456fe071
