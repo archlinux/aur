@@ -1,13 +1,13 @@
 pkgbase = pocketenv
-        pkgdesc = Manage your development environment with ease ✨
-        pkgver = 0.1.5
+        pkgdesc = open, interoperable sandbox platform for agents and humans 📦 ✨
+        pkgver = 0.2.2
         pkgrel = 1
         url = https://github.com/pocketenv-io/pocketenv
         arch = x86_64
         license = MPL-2.0
         depends = deno
         options = !strip
-        source = git+https://github.com/pocketenv-io/pocketenv.git#tag=v0.1.5
+        source = git+https://github.com/pocketenv-io/pocketenv.git#tag=v0.2.2
         sha256sums = SKIP
 
 pkgname = pocketenv

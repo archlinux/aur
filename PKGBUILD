@@ -1,9 +1,9 @@
 # Maintainer: Tsiry Sandratraina <tsiry.sndr@fluentci.io>
 
 pkgname=pocketenv
-pkgver=0.1.5
+pkgver=0.2.2
 pkgrel=1
-pkgdesc="Manage your development environment with ease ✨"
+pkgdesc="open, interoperable sandbox platform for agents and humans 📦 ✨"
 arch=('x86_64')
 url="https://github.com/pocketenv-io/pocketenv"
 license=('MPL-2.0')
