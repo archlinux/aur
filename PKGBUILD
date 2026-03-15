@@ -8,7 +8,7 @@ arch=("any")
 url="https://gitlab.tuwien.ac.at/opentu/tuvpn-gui"
 license=("MIT-0")
 depends=("openconnect")
-makedepends=("go" "rsync" "tar" "make")
+makedepends=("go>=1.24" "rsync" "tar" "make")
 optdepends=()
 provides=("tuvpn-gui")
 conflicts=()
