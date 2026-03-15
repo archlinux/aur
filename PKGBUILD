@@ -1,6 +1,6 @@
 # Maintainer: fengyifan <fengyifan@outlook.com>
 pkgname=netease-cloud-music-web-player
-pkgver='1.2.1'
+pkgver='1.3.0'
 pkgrel=1
 pkgdesc="基于网页播放器封装的网易云音乐客户端"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('electron')
 url="https://github.com/feng-yifan/Netease-Cloud-Music-Web-Player"
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('fb6739102ef782721e4f66ca64c9683af58cb9694b01ab3ecf4b4bd22684ca22')
+sha256sums=('3f17abd2d78e64dcdb7d6f16228828d47d728470b690523d6ea66a84d88ff894')
 package() {
 	cd "$srcdir"
 	tar -xzf "$pkgname-$pkgver.tar.gz"
