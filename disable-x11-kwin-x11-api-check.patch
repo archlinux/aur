@@ -1,0 +1,26 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 72a94ff..3e6cbd0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -34,6 +34,7 @@ include(FeatureSummary)
+ include(KDEInstallDirs)
+ include(KDECMakeSettings)
+ include(KDECompilerSettings NO_POLICY_SCOPE)
++include(CheckCXXSourceCompiles)
+ 
+ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
+     Gui
+@@ -89,6 +90,13 @@ if(GLASS_X11)
+     if (${KWinX11_FOUND})
+         find_package(KWinX11DBusInterface CONFIG REQUIRED)
+         set(KWin_VERSION ${KWinX11_VERSION})
++        set(CMAKE_REQUIRED_INCLUDES /usr/include/kwin-x11)
++        check_cxx_source_compiles("#include <kwin-x11/effect/effect.h>\n#if KWIN_EFFECT_API_VERSION < KWIN_EFFECT_API_MAKE_VERSION(0, 237)\n#error KWinX11 effect API too old\n#endif\nint main(){return 0;}" KWINX11_EFFECT_API_OK)
++        unset(CMAKE_REQUIRED_INCLUDES)
++        if (NOT KWINX11_EFFECT_API_OK)
++            message(STATUS "KWinX11 effect API is older than 0.237; disabling GLASS_X11 build.")
++            set(GLASS_X11 OFF)
++        endif()
+     else()
+         set(GLASS_X11 OFF)
+     endif()
