@@ -1,6 +1,6 @@
 pkgbase = gpu-t-git
 	pkgdesc = GPU-T is a modern desktop utility built with .NET and Avalonia UI designed to provide detailed information about your video card and GPU
-	pkgver = 0.1.1.r1.g2a0d5d7
+	pkgver = 0.1.2.r3.gf047522
 	pkgrel = 1
 	url = https://github.com/lseurttyuu/GPU-T
 	arch = x86_64
