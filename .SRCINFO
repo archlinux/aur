@@ -1,4 +1,4 @@
-pkgbase = searxng-uwsgi
+pkgbase = searxng-uwsgi-git
 	pkgdesc = A privacy-respecting, hackable metasearch engine
 	pkgver = r9209.b5bb27f
 	pkgrel = 3
@@ -14,6 +14,8 @@ pkgbase = searxng-uwsgi
 	conflicts = searx-git
 	conflicts = searxng-git
 	conflicts = searxng-uwsgi-novenv-git
+	conflicts = searxng-uwsgi
+	replaces = searxng-uwsgi
 	backup = etc/searxng/settings.yml
 	backup = etc/uwsgi/searxng.ini
 	source = git+https://github.com/searxng/searxng#branch=master
@@ -23,10 +25,10 @@ pkgbase = searxng-uwsgi
 	source = tmpfiles.conf
 	source = settings.yml
 	b2sums = SKIP
-	b2sums = 5cf35a3ac9607af203f8bb5e396012fd9bacf90becd3fffabc2a4985f10b020baf34bc403d8658779905db8ad53be2ef482b61a2680847bc032c6a707347a256
+	b2sums = 3cab48a25dc02f6bb861f32d2e33bd670b4447745c3c56b8bbd7f4183e38c2464c14b8257d9bebb332646ca892575b9090afdae771a9174517ac7d303cde7a69
 	b2sums = 0cea85bfd713b68da71da0651f80f1c2cdb9231d092684f95ca4bba572124e82f00dc8e666a45b76344f1b5dc67d216978a24850bf0a86e9a053514a1c030ed5
 	b2sums = 3487c220d6c538dba60671aaaf0927746d8ede4d47f901e01542efdf74dc067ade3d3ee30b500f08d3ef00c2ceba460961e0f4329a4afc32b83e42d8761d5e41
 	b2sums = 65f66920c96dfd8d68570fb48adb4f74894f188d2a71b1b9214372b43d4b34ab029404ea2eeb3709cce190276d375a2a816e5b7fc3b39210b447337c361bb8d9
 	b2sums = 99bb7a7dfdab65a8844beb7dd4924601e2f9e85aacacc526a18881dc53e1fa270ff2653c5ada2ce0f92ecebac8917afa974116c09b3e61977b21d70b0f6a4d37
 
-pkgname = searxng-uwsgi
+pkgname = searxng-uwsgi-git

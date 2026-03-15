@@ -1,7 +1,7 @@
 # Maintainer: 30p87 <aur@30p87.de>
 # Based on: HLFH <gaspard@dhautefeuille.eu>
 
-pkgname=searxng-uwsgi
+pkgname=searxng-uwsgi-git
 _pkgname=searxng
 pkgver=r9209.b5bb27f
 pkgrel=3
@@ -12,7 +12,8 @@ license=('AGPL-3.0-or-later')
 makedepends=('git')
 depends=('uwsgi' 'uwsgi-plugin-python' 'valkey')
 provides=('searxng')
-conflicts=('searx' 'searx-git' 'searxng-git' 'searxng-uwsgi-novenv-git')
+conflicts=('searx' 'searx-git' 'searxng-git' 'searxng-uwsgi-novenv-git' 'searxng-uwsgi')
+replaces=('searxng-uwsgi')
 backup=('etc/searxng/settings.yml' 'etc/uwsgi/searxng.ini')
 _giturl='https://github.com/searxng/searxng'
 _gitbranch='master'
@@ -23,7 +24,7 @@ source=("git+${_giturl}#branch=${_gitbranch}"
 		'tmpfiles.conf'
         'settings.yml')
 b2sums=('SKIP'
-        '5cf35a3ac9607af203f8bb5e396012fd9bacf90becd3fffabc2a4985f10b020baf34bc403d8658779905db8ad53be2ef482b61a2680847bc032c6a707347a256'
+        '3cab48a25dc02f6bb861f32d2e33bd670b4447745c3c56b8bbd7f4183e38c2464c14b8257d9bebb332646ca892575b9090afdae771a9174517ac7d303cde7a69'
         '0cea85bfd713b68da71da0651f80f1c2cdb9231d092684f95ca4bba572124e82f00dc8e666a45b76344f1b5dc67d216978a24850bf0a86e9a053514a1c030ed5'
         '3487c220d6c538dba60671aaaf0927746d8ede4d47f901e01542efdf74dc067ade3d3ee30b500f08d3ef00c2ceba460961e0f4329a4afc32b83e42d8761d5e41'
         '65f66920c96dfd8d68570fb48adb4f74894f188d2a71b1b9214372b43d4b34ab029404ea2eeb3709cce190276d375a2a816e5b7fc3b39210b447337c361bb8d9'
