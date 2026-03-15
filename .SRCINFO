@@ -1,5 +1,5 @@
 pkgbase = commiefetch-git
-	pkgdesc = Revolutionäres CLI-Tool zum Anzeigen von Systeminfos mit Hammer-und-Sichel-Logo und automatischer Bashrc-Integration
+	pkgdesc = Systeminfo-Tool mit kommunistischem ASCII-Logo, Bash-Integration und versteckten Anzeigemodi
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://gitlab.com/arch1380517/commiefetch

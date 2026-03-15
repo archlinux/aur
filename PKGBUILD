@@ -1,9 +1,9 @@
 # Maintainer: Finn <finn-ja@gmx.de>
 
 pkgname=commiefetch-git
-pkgver=1.0  # <- Platzhalter, echte Version kommt aus pkgver()
+pkgver=1.0
 pkgrel=1
-pkgdesc="Revolutionäres CLI-Tool zum Anzeigen von Systeminfos mit Hammer-und-Sichel-Logo und automatischer Bashrc-Integration"
+pkgdesc="Systeminfo-Tool mit kommunistischem ASCII-Logo, Bash-Integration und versteckten Anzeigemodi"
 arch=('x86_64')
 url="https://gitlab.com/arch1380517/commiefetch"
 license=('GPL3')
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/commiefetch"
-  gcc commiefetch.c -o commiefetch
+  gcc commiefetch.c -O2 -o commiefetch
 }
 
 package() {
