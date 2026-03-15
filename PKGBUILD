@@ -1,33 +1,44 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: mutantmonkey <aur@mutantmonkey.in>
 
 pkgname=python-amqp
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Low-level AMQP client for Python (fork of amqplib)"
 arch=('any')
 url="https://github.com/celery/py-amqp"
 license=('BSD-3-Clause')
-depends=('python-vine')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest-sugar')
-source=("https://github.com/celery/py-amqp/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('27d7e90398b56c980df2325905ab50c5d8d57a1ad315d61aaa65db81e7164359f2646a826982a026e47bfc2c2778282b2ecccd92989dcfb6dee3289d5e211ebc')
+depends=(
+    'python'
+    'python-vine'
+)
+makedepends=(
+    'python-setuptools'
+    'python-build'
+    'python-installer'
+    'python-wheel'
+    'git'
+)
+checkdepends=(
+    'python-pytest'
+    'python-pytest-sugar'
+)
+source=("$pkgname-$pkgver::git+$url.git#tag=v$pkgver")
+b2sums=('0eb3e97fdca83beb604b183190a7148efaf1359e7e45aedad2efa2aef42d190dc9973c5b1f81e7a6d15877f81260182a1b13d5b56679f89cac6a9bcd4b841ff3')
 
 build() {
-  cd py-amqp-$pkgver
-  python setup.py build
+    cd $pkgname-$pkgver
+    python -m build --wheel --no-isolation
 }
 
 check() {
-  cd py-amqp-$pkgver
-  pytest
+    cd $pkgname-$pkgver
+    pytest
 }
 
 package() {
-  cd py-amqp-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+    cd $pkgname-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
