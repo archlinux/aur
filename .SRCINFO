@@ -1,6 +1,6 @@
 pkgbase = antigravity-tools-bin
 	pkgdesc = Professional Antigravity Account Manager & Switcher (Binary from GitHub)
-	pkgver = 4.1.29
+	pkgver = 4.1.30
 	pkgrel = 1
 	url = https://github.com/lbjlaq/Antigravity-Manager
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = antigravity-tools-bin
 	provides = antigravity-tools
 	conflicts = antigravity-tools
 	options = !strip
-	source = antigravity-tools-bin-4.1.29.deb::https://github.com/lbjlaq/Antigravity-Manager/releases/download/v4.1.29/Antigravity.Tools_4.1.29_amd64.deb
+	source = antigravity-tools-bin-4.1.30.deb::https://github.com/lbjlaq/Antigravity-Manager/releases/download/v4.1.30/Antigravity.Tools_4.1.30_amd64.deb
 	source = LICENSE
-	sha256sums = c9e680f3c1dea7d907575124c4ad9642a8029c4c8b9590e7fe494bf768925466
+	sha256sums = 449a8652be7baf3462bd0c88b22cf1e49c7f09de3a8e5bbb251d79d4517660d0
 	sha256sums = 6f0afc78b16f446941c6201dcc0a53e1d19dcb96b9fc2ccb497b1bf029aa3512
 
 pkgname = antigravity-tools-bin
