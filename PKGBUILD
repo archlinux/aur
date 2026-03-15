@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=valent-git
-pkgver=1.0.0.alpha.49.r34.gd880881
+pkgver=1.0.0.alpha.49.r51.gdf82168
 pkgrel=1
 pkgdesc="Connect, control and sync devices"
 arch=('x86_64' 'aarch64')
@@ -21,6 +21,8 @@ depends=(
   'gtk4'
   'json-glib'
   'libadwaita'
+  'libdex'
+  'libei'
   'libpeas-2'
   'libpipewire'
   'libportal'
