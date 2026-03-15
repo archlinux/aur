@@ -43,6 +43,8 @@ build() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    # Prevent makepkg's CFLAGS/LDFLAGS from breaking C code in ring/aws-lc-sys
+    unset CFLAGS CXXFLAGS LDFLAGS
     cargo build --release
 }
 
