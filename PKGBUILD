@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=squidservers-bin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A tool to easily self-host Minecraft servers without port forwarding"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('squidservers')
 
 # Using ${pkgver} here makes it easy to update later
 source=("https://cdn.squidservers.com/squidservers_${pkgver}_amd64.deb")
-sha256sums=('SKIP') # Use 'SKIP' for testing; ideally replace with actual hash later
+sha256sums=('6e13c4030befcc3363790cbb49222f43a52007cf0f526ddea6b5fd51ac511675')
 
 package() {
     # 1. Extract the Debian data archive
