@@ -1,6 +1,6 @@
 pkgbase = 02engine-bin
-	pkgdesc = Mod of Scratch with a compiler and more features.02Engine.Better Scratch.Made from Turbowarp.
-	pkgver = 1.2.2
+	pkgdesc = Redefine the designing experience.
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/02engine/
 	arch = x86_64
@@ -39,6 +39,8 @@ pkgbase = 02engine-bin
 	depends = xdg-utils
 	provides = 02engine
 	source = .INSTALL::https://github.com/02engine/02engine-aur/releases/download/INSTALL/INSTALL
+	source = 02engine-1.2.3.deb::https://github.com/02engine/desktop/releases/download/v1.2.3-3315b4af/02Engine-linux-amd64-1.2.3.deb
 	sha256sums = 2565e60d233d653206f33fc25b35c7b31b42d45c5fb1de7b28be966fae959d58
+	sha256sums = DEBSSHA
 
 pkgname = 02engine-bin
