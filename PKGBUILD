@@ -1,9 +1,9 @@
 pkgname=farmmod-hub
-pkgver=0.1.3
-pkgrel=2
+pkgver=0.1.0
+pkgrel=1
 pkgdesc="Mod manager for Farming Simulator on Linux"
 arch=("any")
-url="https://github.com/henriquejsza/farmmod-hub"
+url="https://github.com/henriquejsza/FarmMod"
 license=("AGPL-3.0-or-later")
 depends=(
   "python"
@@ -21,7 +21,7 @@ checkdepends=(
   "python-pytest"
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("999a2d41c1f387bd74261184bf4c907e06bacf52029a984eb1642df917d0d5dd")
+sha256sums=("3bc60be4d1a05813a2490df866c1c1342fbc4685d89a52dbe802d7e33b7dcce0")
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"

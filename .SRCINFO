@@ -1,8 +1,8 @@
 pkgbase = farmmod-hub
 	pkgdesc = Mod manager for Farming Simulator on Linux
-	pkgver = 0.1.3
-	pkgrel = 2
-	url = https://github.com/henriquejsza/farmmod-hub
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/henriquejsza/FarmMod
 	arch = any
 	license = AGPL-3.0-or-later
 	checkdepends = python-pytest
@@ -14,7 +14,7 @@ pkgbase = farmmod-hub
 	depends = python-gobject
 	depends = gtk4
 	depends = libadwaita
-	source = farmmod-hub-0.1.3.tar.gz::https://github.com/henriquejsza/farmmod-hub/archive/refs/tags/v0.1.3.tar.gz
-	sha256sums = 999a2d41c1f387bd74261184bf4c907e06bacf52029a984eb1642df917d0d5dd
+	source = farmmod-hub-0.1.0.tar.gz::https://github.com/henriquejsza/FarmMod/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 3bc60be4d1a05813a2490df866c1c1342fbc4685d89a52dbe802d7e33b7dcce0
 
 pkgname = farmmod-hub
