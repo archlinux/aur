@@ -26,6 +26,7 @@ pkgbase = skwd-git
 	depends = libnotify
 	depends = awww
 	depends = mpvpaper
+	depends = imagemagick
 	optdepends = linux-wallpaperengine: Steam Wallpaper Engine support
 	optdepends = ollama: local LLM for wallpaper analysis and tagging
 	optdepends = grim: screenshot capture for window switcher

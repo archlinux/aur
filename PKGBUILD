@@ -26,6 +26,7 @@ depends=(
   'libnotify'
   'awww'
   'mpvpaper'
+  'imagemagick'
 )
 makedepends=('git')
 optdepends=(
