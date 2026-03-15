@@ -16,8 +16,6 @@ makedepends=(
     'cargo'
     'cmake'
     'clang'
-    'nasm'
-    'go'
 )
 optdepends=(
     'openh264: software H.264 encoding fallback'
@@ -38,14 +36,14 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+    cargo build --release
 }
 
 package() {
