@@ -1,7 +1,7 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 
 pkgname=pvetui
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='A terminal user interface (TUI) for Proxmox VE'
 url='https://github.com/devnullvoid/pvetui'
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 optdepends=('kitty: Better terminal support' 'alacritty: Better terminal support')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('962aae0860c2a6bcaf74453da5fdc0c21f9d3304eefc1f87b54a848cc3437500')
+sha256sums=('6c5f6d5c8721c6b5a11349539c95af778300d347cab533bf9a6272d9461ca977')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
