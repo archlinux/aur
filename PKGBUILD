@@ -1,6 +1,6 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgname=fcitx5-lotus
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     'git+https://github.com/LotusInputMethod/bamboo-core.git'
 )
 sha256sums=(
-    'c50ce1dd783e73847025a9a0d06571bd3a7b9510ba250adc68b9674f5f0b228b'
+    '23eec1a75dfdd509f2a119de17440e30ba0ebfdae2ba61e24a4c8f8aabfbd64e'
     'SKIP'
 )
 install='fcitx5-lotus.install'
