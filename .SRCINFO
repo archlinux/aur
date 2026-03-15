@@ -5,12 +5,13 @@ pkgbase = tuvpn-gui
 	url = https://gitlab.tuwien.ac.at/opentu/tuvpn-gui
 	arch = any
 	license = MIT-0
-	makedepends = git
 	makedepends = go
 	makedepends = rsync
+	makedepends = tar
+	makedepends = make
 	depends = openconnect
 	provides = tuvpn-gui
-	source = git+https://gitlab.tuwien.ac.at/opentu/tuvpn-gui
-	sha256sums = SKIP
+	source = https://gitlab.tuwien.ac.at/opentu/tuvpn-gui/-/archive/v0.2.1/tuvpn-gui-v0.2.1.tar.gz
+	sha256sums = 2cc7ee35ec17b15ddf874d203de2cf5feb212d76e6917ee59502f92f36668dfc
 
 pkgname = tuvpn-gui
