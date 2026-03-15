@@ -1,6 +1,6 @@
 pkgbase = nsight-graphics
 	pkgdesc = Standalone application for the debugging and profiling of graphics applications
-	pkgver = 2025.5.0
+	pkgver = 2026.1.0
 	pkgrel = 1
 	url = https://developer.nvidia.com/nsight-graphics
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = nsight-graphics
 	optdepends = libvulkan.so
 	optdepends = libzstd.so
 	options = !debug
-	source = NVIDIA_Nsight_Graphics_2025.5.0.run::https://developer.nvidia.com/downloads/assets/tools/secure/nsight-graphics/2025_5_0/linux/NVIDIA_Nsight_Graphics_2025.5.0.25335.run
+	source = NVIDIA_Nsight_Graphics_2026.1.0.run::https://developer.nvidia.com/downloads/assets/tools/secure/nsight-graphics/2026_1_0/linux_x64/NVIDIA_Nsight_Graphics_2026.1.0.26067-linux_x64.run
 	source = ngfx-ui.png::https://developer.download.nvidia.com/images/nvidia-nsight-graphics-icon-gbp-shaded-128.png
 	source = nsight-graphics.desktop
-	sha512sums = 1af75ba0dd88d016456fa9cd13dd75a21a1caee63c4bd5e075762d299d511813667a5551b357c6550eda0a2c51610076006d515a2ccef916b453597d5622fb3b
+	sha512sums = a2632503f84c44cb884e0b0e0ee7993a12018c4a80595f11cedcbc67df86053f6fe721b9062e94d72fd50c3615947a8c8885964606a8ff5f264a2e86ab513a68
 	sha512sums = 81d9682fb9b190698418fd110d02f6f32776a9b013600152b3241b9811194a7ec18bb3d8e823b1f3f857e7ff12a4b3a1801b8cd886f7677f4adf451440e52639
 	sha512sums = 5db24d90129e9c9998c2246c0848c91f0ae64333f536d90533b724a6053c2f1efcb8c862d470fac946ed72855eb5086e543e611f6445c68c1d95105bbcdc0c96
 

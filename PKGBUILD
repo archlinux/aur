@@ -3,8 +3,8 @@
 
 pkgname=nsight-graphics
 # version and "code" from https://developer.nvidia.com/tools-downloads#?search=NVIDIA%20Nsight%20Graphics
-pkgver=2025.5.0
-_vercode=25335
+pkgver=2026.1.0
+_vercode=26067
 _pkgver=${pkgver//\./_}
 pkgrel=1
 pkgdesc="Standalone application for the debugging and profiling of graphics applications"
@@ -20,10 +20,10 @@ depends=(
 optdepends=(
   "libvulkan.so" "libzstd.so" 
 )
-source=("NVIDIA_Nsight_Graphics_${pkgver}.run::https://developer.nvidia.com/downloads/assets/tools/secure/nsight-graphics/${_pkgver}/linux/NVIDIA_Nsight_Graphics_${pkgver}.${_vercode}.run"
+source=("NVIDIA_Nsight_Graphics_${pkgver}.run::https://developer.nvidia.com/downloads/assets/tools/secure/nsight-graphics/${_pkgver}/linux_x64/NVIDIA_Nsight_Graphics_${pkgver}.${_vercode}-linux_x64.run"
         "ngfx-ui.png::https://developer.download.nvidia.com/images/nvidia-nsight-graphics-icon-gbp-shaded-128.png"
         "${pkgname}.desktop")
-sha512sums=('1af75ba0dd88d016456fa9cd13dd75a21a1caee63c4bd5e075762d299d511813667a5551b357c6550eda0a2c51610076006d515a2ccef916b453597d5622fb3b'
+sha512sums=('a2632503f84c44cb884e0b0e0ee7993a12018c4a80595f11cedcbc67df86053f6fe721b9062e94d72fd50c3615947a8c8885964606a8ff5f264a2e86ab513a68'
             '81d9682fb9b190698418fd110d02f6f32776a9b013600152b3241b9811194a7ec18bb3d8e823b1f3f857e7ff12a4b3a1801b8cd886f7677f4adf451440e52639'
             '5db24d90129e9c9998c2246c0848c91f0ae64333f536d90533b724a6053c2f1efcb8c862d470fac946ed72855eb5086e543e611f6445c68c1d95105bbcdc0c96')
 options=('!debug')
