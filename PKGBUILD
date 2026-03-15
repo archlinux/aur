@@ -51,3 +51,4 @@ EOF
     fi
     rm -rf squashfs-root
 }
+# Triggering AUR refresh
