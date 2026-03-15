@@ -1,9 +1,10 @@
-# Maintainer: envolution
+# Maintainer: noureddinex
+# Contributor: envolution
 # Contributor: Jan Cholasta <grubber at grubber cz>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=slade
-pkgver=3.2.9
+pkgver=3.2.12
 pkgrel=1
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
@@ -37,7 +38,7 @@ makedepends=(
   'p7zip')
 
 source=("git+https://github.com/sirjuddington/SLADE.git#tag=${pkgver}")
-sha256sums=('444db5f34a4b7baff93dc3a22a42f734fcf67bc844309ed80d084df9a6d1acb8')
+sha256sums=('f6f55ce6d6f5249509bca79addd3b5ea488282d9502efa8c37af3c02582880ed')
 
 build() {
   cd SLADE
