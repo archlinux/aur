@@ -1,6 +1,6 @@
 pkgbase = azadi-bin
 	pkgdesc = azadi — literate programming toolchain
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/giannifer7/azadi
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = azadi-bin
 	conflicts = azadi
 	conflicts = azadi-git
 	options = !debug
-	source = azadi-x86_64-linux.tar.gz::https://github.com/giannifer7/azadi/releases/download/v0.1.1/azadi-x86_64-linux.tar.gz
-	sha256sums = 017e1e765406344a4fac4800f9b1b3bcf3bc3a08b83517bcc91e2f916dc7088f
+	source = azadi-x86_64-linux.tar.gz::https://github.com/giannifer7/azadi/releases/download/v0.2.0/azadi-x86_64-linux.tar.gz
+	sha256sums = b24f48935de6f176f496dfdac680337009067a01f189cedba418a1241f2c6a59
 
 pkgname = azadi-bin
