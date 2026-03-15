@@ -2,7 +2,7 @@
 
 pkgname=asm6
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 pkgdesc='A 6502 assembler'
 arch=('i486' 'i686' 'pentium4' 'x86_64')
 url="https://3dscapture.com/NES/"
