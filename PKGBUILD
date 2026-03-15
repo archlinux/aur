@@ -3,13 +3,12 @@
 
 _author=STEVAN
 _dist=String-Tokenizer
-_ver=0.06
 pkgname=perl-${_dist@L}
-pkgver=${_ver#v}
+pkgver=0.06
 pkgrel=1
 pkgdesc='A simple string tokenizer.'
 arch=('any')
-url=https://metacpan.org/release/$_author/$_dist-$_ver
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl-constant'
@@ -18,12 +17,12 @@ depends=(
 makedepends=('perl-extutils-makemaker')
 checkdepends=('perl-test-simple')
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$_ver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('a921507044b7db43a06abb96bc0aeedafdc68657dd21d3f5a8cfd37d2478e697')
 
 build()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
     export PERL_MM_USE_DEFAULT=1
@@ -34,7 +33,7 @@ build()
 
 check()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
@@ -43,7 +42,7 @@ check()
 
 package()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
