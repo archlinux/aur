@@ -1,7 +1,7 @@
 # Maintainer: Tenchirox <tenchirox@github.com>
 pkgname=all4laser-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source laser engraver controller built with Rust and egui (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Tenchirox/All4Laser"
@@ -35,6 +35,19 @@ package() {
 
     # Fix permissions
     chmod 755 "${pkgdir}/usr/bin/all4laser"
+
+    # Fix .desktop file (packager generates empty Categories)
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/all4laser.desktop" << 'EOF'
+[Desktop Entry]
+Name=All4Laser
+Comment=Open-source laser engraver controller
+Exec=all4laser
+Icon=all4laser
+Terminal=false
+Type=Application
+Categories=Graphics;Engineering;
+Keywords=laser;engraver;gcode;cnc;grbl;
+EOF
 
     # Install license from upstream repo
     install -Dm644 /dev/null "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

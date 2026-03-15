@@ -1,7 +1,7 @@
 pkgbase = all4laser-bin
 	pkgdesc = Open-source laser engraver controller built with Rust and egui (prebuilt binary)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tenchirox/All4Laser
 	arch = x86_64
 	arch = aarch64
