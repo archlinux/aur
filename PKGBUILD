@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Systeminfo-Tool mit kommunistischem ASCII-Logo, Bash-Integration und versteckten Anzeigemodi"
 arch=('x86_64')
 url="https://gitlab.com/arch1380517/commiefetch"
-license=('GPL3')
+license=('CPL1')
 depends=()
 makedepends=('git' 'gcc' 'make')
 source=("git+https://gitlab.com/arch1380517/commiefetch.git")
@@ -25,7 +25,7 @@ build() {
 package() {
   cd "$srcdir/commiefetch"
   make DESTDIR="$pkgdir" PREFIX=/usr install
-  if [ -f LICENSE ]; then
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  if [ -f LICENSE.md ]; then
+    install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
   fi
 }
