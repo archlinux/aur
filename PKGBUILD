@@ -1,27 +1,27 @@
-# Maintainer: Jakob Edlbacher <j.edlbacher@students.htl-leonding.ac.at>
+# Maintainer: Eldin Beganovic <eldinbegano@gmail.com>
 # Contributor: Franklyn Team <franklyn@htl-leonding.ac.at>
 
 pkgname=franklyn-bin-dev
 _pkgname=franklyn-sentinel
-pkgver=0.4.0.dev.2
+pkgver=0.4.0.dev.4
 pkgrel=1
 pkgdesc="Screen monitoring client for Franklyn (development channel) - streams student screen activity to teacher dashboard during exams"
 arch=('x86_64' 'aarch64')
-url="https://github.com/2324-4bhif-syp/2324-4bhif-syp-project-franklyn"
+url="https://github.com/2526-4ahitm-itp/2526-4ahitm-franklyn"
 license=('MIT')
-depends=('openssl' 'libxcb' 'pipewire' 'wayland' 'libglvnd' 'libgbm' 'libx11' 'libxcursor' 'libxrandr' 'libxi' 'libxinerama' 'libxext' 'libxrender' 'libxxf86vm')
+depends=('openssl' 'libxcb' 'pipewire' 'wayland' 'libglvnd' 'mesa' 'libx11' 'libxcursor' 'libxrandr' 'libxi' 'libxinerama' 'libxext' 'libxrender' 'libxxf86vm')
 provides=('franklyn' 'franklyn-sentinel')
 conflicts=('franklyn' 'franklyn-sentinel' 'franklyn-bin')
 options=('!strip')
 
-_base_url="https://github.com/2324-4bhif-syp/2324-4bhif-syp-project-franklyn/releases/download"
+_base_url="https://github.com/2526-4ahitm-itp/2526-4ahitm-franklyn/releases/download"
 
 source_x86_64=("${_pkgname}-${pkgver}-x86_64::${_base_url}/v${pkgver}/${_pkgname}-${pkgver}-x86_64-linux"
                "franklyn-sentinel.desktop"
-               "LICENSE::https://raw.githubusercontent.com/2324-4bhif-syp/2324-4bhif-syp-project-franklyn/main/LICENSE")
+               "LICENSE::https://raw.githubusercontent.com/2526-4ahitm-itp/2526-4ahitm-franklyn/main/LICENSE")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64::${_base_url}/v${pkgver}/${_pkgname}-${pkgver}-aarch64-linux"
                 "franklyn-sentinel.desktop"
-                "LICENSE::https://raw.githubusercontent.com/2324-4bhif-syp/2324-4bhif-syp-project-franklyn/main/LICENSE")
+                "LICENSE::https://raw.githubusercontent.com/2526-4ahitm-itp/2526-4ahitm-franklyn/main/LICENSE")
 
 sha256sums_x86_64=('SKIP'
                    'SKIP'
