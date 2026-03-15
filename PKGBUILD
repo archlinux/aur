@@ -1,13 +1,13 @@
 # Maintainer: lludol <little dot corn3620 at fastmail dot com>
 pkgname=perry
-pkgver=0.2.179
+pkgver=0.2.183
 pkgrel=1
 pkgdesc="Compile TypeScript to native executables (official binary)"
 arch=('x86_64')
 url="https://github.com/PerryTS/perry"
 license=('MIT')
 source=("https://github.com/PerryTS/perry/releases/download/v${pkgver}/perry-linux-x86_64.tar.gz")
-sha256sums=('3bd3e966d745f6b01cf96edee4693b84fb982e2b2346c746bca3293883aa5864')
+sha256sums=('1bb473608a4d86867f14835a0cca4a6364aa02085574647260e9c78a6d507bf6')
 
 package() {
   cd "${srcdir}"
