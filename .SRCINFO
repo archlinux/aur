@@ -2,14 +2,14 @@ pkgbase = hexatyping-git
 	pkgdesc = A minimalist, terminal-based typing tester (TUI) with 5 technical modes.
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://github.com/YourUsername/hexatyping
+	url = https://github.com/Hexa-Programmer/hexatyping
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = python
 	provides = hexatyping
 	conflicts = hexatyping
-	source = hexatyping::git+https://github.com/YourUsername/hexatyping.git
+	source = hexatyping::git+https://github.com/Hexa-Programmer/hexatyping.git
 	md5sums = SKIP
 
 pkgname = hexatyping-git
