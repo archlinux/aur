@@ -1,6 +1,6 @@
 pkgbase = dentry
 	pkgdesc = Minimal keyboard-driven file manager for Linux
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/Hugo-Fabresse/dentry
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dentry
 	makedepends = cmake
 	makedepends = qt6-tools
 	depends = qt6-base
-	source = dentry-1.0.0.tar.gz::https://github.com/Hugo-Fabresse/dentry/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = d5d1fa120d06abf9a811f7dd66a8cbad4b47b33c6950bea7a46551a44b4eb2f5
+	source = dentry-1.1.0.tar.gz::https://github.com/Hugo-Fabresse/dentry/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = f8f5fd448ecfbad40f57db5ce487b822cc352825315978cfc06655fa871c7052
 
 pkgname = dentry
