@@ -98,7 +98,6 @@ prepare() {
   cd "${srcdir}/executorch"
 
   git submodule init
-
   git config submodule."backends/arm/third-party/ethos-u-core-driver".url "${srcdir}/executorch-ethos-u-core-driver"
   git config submodule."backends/vulkan/third-party/Vulkan-Headers".url "${srcdir}/executorch-Vulkan-Headers"
   git config submodule."backends/vulkan/third-party/VulkanMemoryAllocator".url "${srcdir}/executorch-VulkanMemoryAllocator"
@@ -122,26 +121,40 @@ prepare() {
   git config submodule."third-party/pocketfft".url "${srcdir}/executorch-pocketfft"
   git config submodule."shim".url "${srcdir}/executorch-buck2-shims-meta"
   git config submodule."third-party/json".url "${srcdir}/executorch-json"
-  git config submodule."third-party/json".url "${srcdir}/executorch-json"
-  git config submodule."third_party/cutlass".url "${srcdir}/executorch-cutlass"
-  git config submodule."third-party/sentencepiece".url "${srcdir}/executorch-sentencepiece"
-  git config submodule."third-party/re2".url "${srcdir}/executorch-re2"
-  git config submodule."third-party/abseil-cpp".url "${srcdir}/executorch-abseil-cpp"
-  git config submodule."third-party/pcre2".url "${srcdir}/executorch-pcre2"
-  git config submodule."deps/sljit".url "${srcdir}/executorch-sljit"
+  git -c protocol.file.allow=always submodule update --init
 
-  git -c protocol.file.allow=always submodule update --init --recursive
+  pushd extension/llm/tokenizers
+    git submodule init
+    git config submodule."third-party/json".url "${srcdir}/executorch-json"
+    git config submodule."third-party/sentencepiece".url "${srcdir}/executorch-sentencepiece"
+    git config submodule."third-party/re2".url "${srcdir}/executorch-re2"
+    git config submodule."third-party/abseil-cpp".url "${srcdir}/executorch-abseil-cpp"
+    git config submodule."third-party/pcre2".url "${srcdir}/executorch-pcre2"
+    git -c protocol.file.allow=always submodule update --init
+
+    pushd third-party/pcre2
+      git submodule init
+      git config submodule."deps/sljit".url "${srcdir}/executorch-sljit"
+      git -c protocol.file.allow=always submodule update --init
+    popd
+  popd
+
+  pushd third-party/ao
+    git submodule init
+    git config submodule."third_party/cutlass".url "${srcdir}/executorch-cutlass"
+    git -c protocol.file.allow=always submodule update --init
+  popd
 
   patch -Np1 -i ../Don-t-require-CMake-below-4.0.patch
   patch -Np1 -i ../Don-t-add-gflags-submodule.patch
   patch -Np1 -i ../Absolutely-do-not-allow-Werror.patch
 
   # Grab cstdint include from main branch in sentencepiece
-  cd "${srcdir}/executorch/extension/llm/tokenizers/third-party/sentencepiece"
+  pushd "${srcdir}/executorch/extension/llm/tokenizers/third-party/sentencepiece"
   git cherry-pick -n c4221363d1f004f85f9cc4096e601d6b1fbfaa84
+  popd
 
   # Dereference symlink hack (done for editable installs), the build module does not follow them.
-  cd "${srcdir}/executorch"
   cp -rL src/executorch src/executorch_nolink
   rm -rf src/executorch
   mv src/executorch_nolink src/executorch
