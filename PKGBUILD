@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=damask-wallpaper
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Automatically set wallpaper images from Internet sources"
 arch=('x86_64')
@@ -20,9 +20,8 @@ makedepends=(
   'meson'
   'vala'
 )
-checkdepends=('appstream-glib')
 source=("$url/-/archive/v$pkgver/damask-v$pkgver.tar.gz")
-sha256sums=('9c6ddd907335703f72ee1ff38ef1bfdece7a56eb28038bf0446b347a063a6512')
+sha256sums=('7af05278c47d1e488be0a645a395e8b82a14953fac8ffa14f7db07bdfb7b2cde')
 
 build() {
   arch-meson "damask-v$pkgver" build
