@@ -19,21 +19,20 @@ depends=(
   'ttf-roboto'
   'ttf-roboto-mono'
   'ttf-nerd-fonts-symbols'
+  'ttf-material-design-icons-desktop-git'
+  'matugen'
+  'playerctl'
+  'cava'
+  'libnotify'
+  'awww'
+  'mpvpaper'
 )
 makedepends=('git')
 optdepends=(
-  'matugen-bin: Material You color scheme generation'
-  'playerctl: media player control'
-  'cava: audio visualizer for lyrics widget'
-  'libnotify: desktop notifications (notify-send)'
-  'awww: static wallpaper with transitions'
-  'mpvpaper: video wallpaper rendering'
   'linux-wallpaperengine: Steam Wallpaper Engine support'
   'ollama: local LLM for wallpaper analysis and tagging'
-  'python-syncedlyrics: synced lyrics fetching'
   'grim: screenshot capture for window switcher'
   'niri: recommended Wayland compositor'
-  'ttf-material-design-icons-desktop-git: Material Design icon font (AUR)'
 )
 install=skwd-git.install
 provides=('skwd')
