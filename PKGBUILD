@@ -1,8 +1,8 @@
 # Maintainer: Ricardo Urrea <ricardo.urrea@gmail.com>
 
 pkgname=open-vm-tools-git
-pkgver=13.0.5
-pkgrel=2
+pkgver=13.0.10
+pkgrel=1
 pkgdesc="Open VMware Tools for Linux guests (running Wayland only)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vmware/open-vm-tools"
@@ -11,6 +11,8 @@ install=open-vm-tools-git.install
 depends=(
     'fuse3'
     'glib2'
+    'gtk3'
+    'gtkmm3'
     'icu'
     'iproute2'
     'libdnet'
@@ -41,15 +43,23 @@ source=(
     "vmtoolsd.service"
     "vmware-vmblock-fuse.service"
     "vmware-mnt-hgfs.mount"
+    "fix-glib-stubs.patch"
+    "fix-const-qualifier.patch"
 )
-sha256sums=('9d4aa767c2b2acec2d56bb50546ef1bb59283e608444d50ef55c97afcd445457'
+sha256sums=('622777a30703226326248fc7d5e55b9ddc280368fc85539d2d1aa06c0531c613'
             'd188f0355c2b8e8b87320d7f1d99465cc40daa569bbdf2b49c0033ed9a89b30f'
             'f4daa3a8cf3ed0218fd2bf16d5d60408227938a2bf3cd8762f9ba6e9251fafdb'
-            '023469d60c873a76346ac9c2337cbc25f15c6bb6b2f0d7fc10c74d6faf8ecae1')
+            '023469d60c873a76346ac9c2337cbc25f15c6bb6b2f0d7fc10c74d6faf8ecae1'
+            '905f99ace28dcd68b2002149f3a3d69d83a58fd49c95df9d572eab958e30820c'
+            '2a7ac51fd78de80c67f920326421e8ee358bea9fa676c575bd28b4f4ba21a52b')
 
 prepare() {
     cd "open-vm-tools-stable-${pkgver}/open-vm-tools"
-    
+
+    # Apply patches
+    patch -p2 -i "${srcdir}/fix-glib-stubs.patch"
+    patch -p2 -i "${srcdir}/fix-const-qualifier.patch"
+
     # Run autoreconf to generate configure script from git tags
     autoreconf -vif
 }
@@ -61,7 +71,7 @@ build() {
     export ICU_CFLAGS="$(pkg-config --cflags icu-i18n icu-uc)"
     export ICU_LIBS="$(pkg-config --libs icu-i18n icu-uc)"
     export LDFLAGS="${LDFLAGS} $(pkg-config --libs icu-i18n icu-uc)"
-    
+
     ./configure \
         --prefix=/usr \
         --sbindir=/usr/bin \
@@ -73,11 +83,9 @@ build() {
         --with-udev-rules-dir=/usr/lib/udev/rules.d \
         --without-kernel-modules \
         --without-xmlsecurity \
-        --without-x \
-        --without-gtk2 \
-        --without-gtk3 \
-        --without-gtkmm
-    
+        --with-gtk3 \
+        --with-gtkmm3
+
     make
 }
 

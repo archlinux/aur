@@ -1,0 +1,14 @@
+--- a/open-vm-tools/lib/rpcChannel/glib_stubs.c
++++ b/open-vm-tools/lib/rpcChannel/glib_stubs.c
+@@ -25,7 +25,11 @@
+
+ #include <stdlib.h>
+ #include <string.h>
++
++#define GLIB_VERSION_MIN_REQUIRED GLIB_VERSION_2_26
++#define GLIB_VERSION_MAX_ALLOWED GLIB_VERSION_2_26
+ #include <glib.h>
++#undef g_free
+
+ #include "util.h"
+
