@@ -1,0 +1,18 @@
+pkgbase = cinetry-bin
+	pkgdesc = Cross-platform local media player client for Emby/Jellyfin/WebDAV/IPTV and more
+	pkgver = 0.7.11
+	pkgrel = 1
+	url = https://github.com/gstory0404/Cinetry
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = mpv
+	depends = libpulse
+	depends = libepoxy
+	depends = libayatana-appindicator
+	provides = cinetry
+	conflicts = cinetry
+	source = cinetry-bin-0.7.11.deb::https://github.com/gstory0404/Cinetry/releases/download/0.7.11/Cinetry_0.7.11+40_linux.deb
+	sha256sums = d1c15f35117d3a7d69f83f100a1fd3f2155244837b24c50150daf8894973b6af
+
+pkgname = cinetry-bin
