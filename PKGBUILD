@@ -2,7 +2,7 @@
 pkgname=skwd-git
 pkgver=r23.e485c2e
 pkgrel=1
-pkgdesc="A skewed take on desktop shells — Quickshell/QML desktop environment"
+pkgdesc="A skewed take on desktop shells - Quickshell/QML desktop environment"
 arch=('any')
 url="https://github.com/liixini/skwd"
 license=('MIT')

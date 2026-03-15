@@ -1,5 +1,5 @@
 pkgbase = skwd-git
-	pkgdesc = A skewed take on desktop shells — Quickshell/QML desktop environment
+	pkgdesc = A skewed take on desktop shells - Quickshell/QML desktop environment
 	pkgver = r23.e485c2e
 	pkgrel = 1
 	url = https://github.com/liixini/skwd
