@@ -3,8 +3,8 @@
 
 pkgname=franklyn-bin-dev
 _pkgname=franklyn-sentinel
-pkgver=0.4.0.dev.6
-_pkgver_orig=0.4.0+dev.6
+pkgver=0.4.0.dev.7
+_pkgver_orig=0.4.0+dev.7
 pkgrel=1
 pkgdesc="Screen monitoring client for Franklyn (development channel) - streams student screen activity to teacher dashboard during exams"
 arch=('x86_64' 'aarch64')
@@ -20,14 +20,15 @@ _base_url="https://github.com/2526-4ahitm-itp/2526-4ahitm-franklyn/releases/down
 source_x86_64=("${_pkgname}-${pkgver}-x86_64::${_base_url}/v${_pkgver_orig}/${_pkgname}-${_pkgver_orig}-x86_64-linux"
                "franklyn-sentinel.desktop"
                "LICENSE::https://raw.githubusercontent.com/2526-4ahitm-itp/2526-4ahitm-franklyn/main/LICENSE")
+
 source_aarch64=("${_pkgname}-${pkgver}-aarch64::${_base_url}/v${_pkgver_orig}/${_pkgname}-${_pkgver_orig}-aarch64-linux"
                 "franklyn-sentinel.desktop"
                 "LICENSE::https://raw.githubusercontent.com/2526-4ahitm-itp/2526-4ahitm-franklyn/main/LICENSE")
 
-sha256sums_x86_64=('SKIP'
+sha256sums_x86_64=('c9d23c99a5ba58fe2442cc6024c3803c94bfd36f379f56819c1b65acb50718e4'
                    'SKIP'
                    'SKIP')
-sha256sums_aarch64=('SKIP'
+sha256sums_aarch64=('1215b0b0455b9792ed96d6be695dc2d7d6e9ff1e02db5e7a9fe94edf39e0ede1'
                     'SKIP'
                     'SKIP')
 
