@@ -2,7 +2,7 @@
 
 pkgname=vsview-split-planes
 _origpkgname=vsview_split_planes
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A vsview plugin displaying video clips' constituent planes"
 arch=("x86_64")
@@ -19,8 +19,8 @@ makedepends=(
 	"python-setuptools"
 	"python-hatchling"
 )
-source=("https://files.pythonhosted.org/packages/72/eb/3f853666ac41691142443475fe846e9a8d70892e22b33d286d54e5092667/vsview_split_planes-0.1.1.tar.gz")
-sha256sums=("b3decb8f2f3f60683b8d05d3451645161e0e5d7f913dde5bdda7013bf2bd3148")
+source=("https://files.pythonhosted.org/packages/21/53/0984aed99bac4b755986f82048952940a54803db576cbc4626658c5d1dfb/vsview_split_planes-0.1.2.tar.gz")
+sha256sums=("accf32d2db2e45992d580da6ee95523f476b80c95066d6f71a1e5724dc6ced67")
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
