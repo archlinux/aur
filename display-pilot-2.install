@@ -1,0 +1,18 @@
+post_install() {
+    echo ":: Loading i2c-dev kernel module..."
+    modprobe i2c-dev 2>/dev/null || true
+
+    if ! getent group i2c > /dev/null 2>&1; then
+        groupadd i2c
+    fi
+
+    echo ""
+    echo "==> NOTE: Add your user to the i2c group for Display Pilot 2 to work:"
+    echo "    sudo usermod -aG i2c \$USER"
+    echo "    Then log out and back in."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

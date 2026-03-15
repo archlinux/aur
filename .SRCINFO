@@ -1,0 +1,17 @@
+pkgbase = display-pilot-2
+	pkgdesc = BenQ Display Pilot 2 - monitor control software for BenQ displays (DDC/CI)
+	pkgver = 1.1.0.0
+	pkgrel = 1
+	url = https://www.benq.com/en-us/monitor/software/display-pilot-2.html
+	install = display-pilot-2.install
+	arch = x86_64
+	license = LicenseRef-BenQ-EULA
+	depends = fuse2
+	depends = ddcutil
+	depends = hicolor-icon-theme
+	options = !strip
+	options = !debug
+	source = display-pilot-2-1.1.0.0.zip::https://esupportdownload.benq.com/esupport/VERTICAL%20&%20PROFESSIONAL%20DISPLAY/Software/Display%20Pilot%202/Display%20Pilot%202_Display%20Pilot%202%20for%20Linux_v1.1.0.0_Linux_251212162625.zip
+	sha256sums = c61e405bc4d509a4faab061e545afbd69667ecf6fc3235553acfbba634e20270
+
+pkgname = display-pilot-2
