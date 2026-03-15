@@ -1,0 +1,5 @@
+[glazepkg-bin]
+source = "github"
+github = "neur0map/glazepkg"
+use_latest_release = true
+prefix = "v"

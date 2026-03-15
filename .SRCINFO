@@ -1,0 +1,20 @@
+pkgbase = glazepkg-bin
+	pkgdesc = See all your installed packages in one place
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/neur0map/glazepkg
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = gpk
+	conflicts = glazepkg
+	source = README-0.1.6.md::https://raw.githubusercontent.com/neur0map/glazepkg/v0.1.6/README.md
+	sha256sums = 57ffe599d382ddcf0108529565428cde5c4a579828289f2c12f732894d422976
+	source_x86_64 = glazepkg-x86_64-0.1.6::https://github.com/neur0map/glazepkg/releases/download/v0.1.6/gpk-linux-amd64
+	sha256sums_x86_64 = 02c7031a4d9a5320ee6d729327aea620f3d3860414869afb47b90769f2edaf78
+	source_aarch64 = glazepkg-aarch64-0.1.6::https://github.com/neur0map/glazepkg/releases/download/v0.1.6/gpk-linux-arm64
+	sha256sums_aarch64 = 88c8efe7edff467ff7c6aa9e76d6678d842f2b0da62566e981c022a728f5c65b
+
+pkgname = glazepkg-bin
