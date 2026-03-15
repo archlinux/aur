@@ -1,6 +1,6 @@
 pkgbase = node-llama-cpp
 	pkgdesc = Run AI models locally on your machine with node.js bindings for llama.cpp
-	pkgver = 3.17.1
+	pkgver = 3.18.0
 	pkgrel = 1
 	url = https://github.com/withcatai/node-llama-cpp
 	arch = x86_64
@@ -17,12 +17,12 @@ pkgbase = node-llama-cpp
 	provides = node-llama-cpp
 	provides = nlc
 	replaces = nodejs-node-llama-cpp
-	noextract = node-llama-cpp-3.17.1.tgz
+	noextract = node-llama-cpp-3.18.0.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = node-llama-cpp-3.17.1.tgz::https://registry.npmjs.org/node-llama-cpp/-/node-llama-cpp-3.17.1.tgz
-	b2sums = 1fd2133be7c62e7cd4677b06672de4a9e53704de695fcc971df0b4e2478c97f7014acf481fe578cd84e458f04430036d85cc36baad704dcf3e222c60e6d76ae2
+	source = node-llama-cpp-3.18.0.tgz::https://registry.npmjs.org/node-llama-cpp/-/node-llama-cpp-3.18.0.tgz
+	b2sums = 65604a787df67df5c80f0651c826456af1a58add9c59640d857fbdb69e7b68c582501f8cbf09033a93427028b791fd33602f13d7d1797b2acd4f1e1a0c40c7b0
 
 pkgname = node-llama-cpp

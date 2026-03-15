@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=node-llama-cpp
-_npmver=3.17.1
+_npmver=3.18.0
 
 pkgname=${_npmname}
 pkgdesc="Run AI models locally on your machine with node.js bindings for llama.cpp"
@@ -20,7 +20,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('1fd2133be7c62e7cd4677b06672de4a9e53704de695fcc971df0b4e2478c97f7014acf481fe578cd84e458f04430036d85cc36baad704dcf3e222c60e6d76ae2')
+b2sums=('65604a787df67df5c80f0651c826456af1a58add9c59640d857fbdb69e7b68c582501f8cbf09033a93427028b791fd33602f13d7d1797b2acd4f1e1a0c40c7b0')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
