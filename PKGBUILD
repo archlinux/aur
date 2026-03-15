@@ -21,7 +21,7 @@ options=('!strip')
 # ── Source ────────────────────────────────────────────────────────────────────
 # Replace the URL with your actual GitHub release URL after publishing
 source=("let-me-animate-1.0.5.tar.gz::https://github.com/multyfora/let-me-animate/releases/download/v1.0.5/LetMeAnimate-1.0.5-linux.tar.gz")
-sha256sums=('79b3f6cc1ba24e5538e893c262192b1e2fd005776fdf50b9c70a447cb196cf14')
+sha256sums=('44c2d1dde3ecdba3cf1e8e4a17f00e79d1ad6152148159120a2eca51bb143d12')
 
 package() {
     # Install the app to /opt
