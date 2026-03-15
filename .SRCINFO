@@ -1,11 +1,21 @@
 pkgbase = ifrextractor-rs
 	pkgdesc = Rust utility to extract UEFI IFR data found in a binary file into human-readable text.
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LongSoft/IFRExtractor-RS
-	arch = any
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	arch = armv5tel
+	arch = mips
+	arch = mipsel
+	arch = mips64
+	arch = mips64el
+	arch = riscv64
 	license = BSD-2-Clause
-	makedepends = rust
+	makedepends = cargo
 	source = https://github.com/LongSoft/IFRExtractor-RS/archive/refs/tags/v1.6.1.tar.gz
 	sha256sums = 5c03533c057194bd93ad9b3adb0076ba0ca584156102e12040e875999283403c
 
