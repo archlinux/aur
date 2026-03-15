@@ -10,7 +10,7 @@ provides=('yasos')
 conflicts=('yasos-git')
 
 source=("https://github.com/DameChocolateYa/yasos/releases/download/v$pkgver-$pkgrel/yasos-linux-$pkgver-x86_64.tar.xz")
-sha256sums=('b93302646cc391a6384e484f6a69b163492365cc669999a8deebf9adb454229a')
+sha256sums=('1e7e7ae150f5da9a2cc95c796fbbecb4390daba5cf12e4d5f9829e2428c5579d')
 
 package() {
   cd "$srcdir/yasos"
