@@ -1,0 +1,17 @@
+pkgbase = arcfetch
+	pkgdesc = Blazing-fast Arch Linux sysinfo
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/tonycth7/arcfetch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = arcfetch
+	conflicts = arcfetch
+	source = arcfetch::git+https://github.com/tonycth7/arcfetch.git#tag=v0.7.0
+	sha256sums = SKIP
+
+pkgname = arcfetch
