@@ -1,8 +1,8 @@
 # Maintainer: Goldbro233 bowensun_06@outlook.com
 _pkgname=aio-coding-hub
 pkgname=${_pkgname}-bin
-pkgver=0.32.0
-pkgrel=2
+pkgver=0.32.1
+pkgrel=1
 pkgdesc="一个All In One的本地AI工具, 支持Win/Mac/Linux"
 arch=('x86_64')
 url="https://github.com/dyndynjyxa/aio-coding-hub"
