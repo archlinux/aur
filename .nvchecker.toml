@@ -1,4 +1,3 @@
 [perl-datetime-format-rfc3339]
 source = "cpan"
 cpan = "DateTime-Format-RFC3339"
-prefix = "v"
