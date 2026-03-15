@@ -2,7 +2,7 @@
 # Contributors: carstene1ns, jose riha, Christoph Zeiler, nut543 and Dany Martineau
 
 pkgname=cdogs
-pkgver=2.3.2
+pkgver=2.4.0
 sdl2_mixer_ver=2.8.1
 pkgrel=1
 pkgdesc='Enhanced SDL port of DOS arcade game C-Dogs (aka "Cyberdogs 2")'
@@ -16,7 +16,7 @@ source=(
     cdogs-$pkgver.tar.gz::"https://github.com/cxong/cdogs-sdl/archive/${pkgver}.tar.gz"
     "https://github.com/libsdl-org/SDL_mixer/releases/download/release-${sdl2_mixer_ver}/SDL2_mixer-${sdl2_mixer_ver}.tar.gz"
 )
-sha256sums=('e2f56262629b175d4a387f6491696edc0a5b9420c9be8e9aa12b60feaa4fefa1'
+sha256sums=('0fde6aaf07db2156e5d4c8e448f0ddb4608ed3b92b89aae1e2c87b20866e451c'
             'cb760211b056bfe44f4a1e180cc7cb201137e4d1572f2002cc1be728efd22660')
 
 prepare() {
