@@ -1,33 +1,21 @@
-# Maintainer: Bruno Luvizotto <brunoluvizotto@gmail.com>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
+# Contributor: Bruno Luvizotto <brunoluvizotto@gmail.com>
 pkgname=protoc-gen-js-bin
-_name="${pkgname%-bin}"
-pkgver=3.21.2
+pkgver=4.0.2
 pkgrel=1
-pkgdesc="Javascript support for Google's protocol buffers"
+pkgdesc="Protocol Buffers for JavaScript"
+arch=('x86_64' 'aarch64')
 url="https://github.com/protocolbuffers/protobuf-javascript"
-arch=("x86_64" "x86_32" "aarch64" "s390_64" "ppcle_64")
-license=("BSD 3-Clause")
-provides=("${_name}")
-conflicts=("${_name}")
-
-source_x86_64=("https://github.com/protocolbuffers/protobuf-javascript/releases/download/v${pkgver}/protobuf-javascript-${pkgver}-linux-x86_64.tar.gz")
-md5sums_x86_64=("2d938b8f12ef298bd19838e68ef55d4f")
-
-source_x86_32=("https://github.com/protocolbuffers/protobuf-javascript/releases/download/v${pkgver}/protobuf-javascript-${pkgver}-linux-x86_32.tar.gz")
-md5sums_x86_32=("f7c83d1cffb1b453a02a209305006565")
-
-source_aarch64=("https://github.com/protocolbuffers/protobuf-javascript/releases/download/v${pkgver}/protobuf-javascript-${pkgver}-linux-aarch_64.tar.gz")
-md5sums_aarch64=("f827c469ab2ed01aa49accb3739765cb")
-
-source_s390_64=("https://github.com/protocolbuffers/protobuf-javascript/releases/download/v${pkgver}/protobuf-javascript-${pkgver}-linux-s390_64.tar.gz")
-md5sums_s390_64=("ca1372b00ab936fba7f71a3ada160d8a")
-
-source_ppcle_64=("https://github.com/protocolbuffers/protobuf-javascript/releases/download/v${pkgver}/protobuf-javascript-${pkgver}-linux-ppcle_64.tar.gz")
-md5sums_ppcle_64=("f6a7db94b3b118326424c89b3febe566")
+license=('Apache-2.0 AND BSD-3-Clause')
+depends=('protobuf')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+source_x86_64=("$url/releases/download/v$pkgver/protobuf-javascript-$pkgver-linux-x86_64.tar.gz")
+source_aarch64=("$url/releases/download/v$pkgver/protobuf-javascript-$pkgver-linux-aarch_64.tar.gz")
+sha256sums_x86_64=('1dc945c36351d6a65f9afc1442394336e7ac325f7e1c27f86ca99daa7fea2917')
+sha256sums_aarch64=('18221cf669d03bbe5b5bfdd6c2184effbeddba9a8f3fdc6bd4511f980c1cd298')
 
 package() {
-  install -Dm755 "bin/${_name}" "${pkgdir}/usr/bin/${_name}"
-  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${_name}/LICENSE.md"
-  install -Dm644 "LICENSE-asserts.md" "${pkgdir}/usr/share/licenses/${_name}/LICENSE-asserts.md"
+  install -Dm755 "bin/${pkgname%-bin}" -t "$pkgdir/usr/bin/"
+  install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
