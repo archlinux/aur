@@ -1,0 +1,18 @@
+pkgbase = wliconrun
+	pkgdesc = A CLI utility for launching applications with custom icons in Wayland environments (KDE Plasma, GNOME, Sway, Hyprland).
+	pkgver = 2026.03.15.r3.g40c244b
+	pkgrel = 1
+	url = https://codeberg.org/b0nn133/wliconrun
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = make
+	makedepends = gcc
+	makedepends = pkg-config
+	makedepends = git
+	depends = desktop-file-utils
+	depends = glibc
+	source = wliconrun::git+https://codeberg.org/b0nn133/wliconrun.git
+	sha256sums = SKIP
+
+pkgname = wliconrun
