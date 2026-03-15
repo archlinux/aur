@@ -3,7 +3,7 @@
 
 pkgname=franklyn-bin-dev
 _pkgname=franklyn-sentinel
-pkgver=0.4.0.dev.4
+pkgver=0.4.0.dev.5
 pkgrel=1
 pkgdesc="Screen monitoring client for Franklyn (development channel) - streams student screen activity to teacher dashboard during exams"
 arch=('x86_64' 'aarch64')
