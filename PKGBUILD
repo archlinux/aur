@@ -8,7 +8,7 @@ license=('MIT')
 depends=('electron')
 url="https://github.com/feng-yifan/Netease-Cloud-Music-Web-Player"
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('bf5936750a50c4e7f3a1ccc7381f8b5478453b17f0a1e42bedc6d95c9321b407')
+sha256sums=('fb6739102ef782721e4f66ca64c9683af58cb9694b01ab3ecf4b4bd22684ca22')
 package() {
 	cd "$srcdir"
 	tar -xzf "$pkgname-$pkgver.tar.gz"
