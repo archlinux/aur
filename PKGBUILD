@@ -1,7 +1,7 @@
 # Maintainer: damachin3 (damachine3 at proton dot me)
 # website: https://github.com/damachine/tkginstaller
 pkgname=tkginstaller-git
-pkgver=0.30.5
+pkgver=0.30.6
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
@@ -19,7 +19,7 @@ optdepends=('bat: syntax highlighting'
             'wdiff: comparing config files')
 install=tkginstaller.install
 source=("tkginstaller::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller")
-sha256sums=('c3806a9cbcca866cf79b0222cda27edbcd07f89b3de08c1aa84fca1ea3a4ef88')
+sha256sums=('fc6c659382d36d62e05f57e1b7d54a8eff0d9ada578a706d1be419cb625993e4')
 
 package() {
     install -Dm755 "$srcdir/tkginstaller" "$pkgdir/usr/bin/tkginstaller"
