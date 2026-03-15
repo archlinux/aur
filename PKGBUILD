@@ -17,6 +17,7 @@ makedepends=(
     'cmake'
     'clang'
     'nasm'
+    'go'
 )
 optdepends=(
     'openh264: software H.264 encoding fallback'
