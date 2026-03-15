@@ -1,0 +1,25 @@
+pkgbase = unrot
+	pkgdesc = Find and interactively repair broken symlinks with fuzzy matching
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/cachebag/unrot
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	provides = unrot
+	conflicts = unrot
+	source = unrot-0.1.0.crate::https://crates.io/api/v1/crates/unrot/0.1.0/download
+	source = README-0.1.0.md::https://raw.githubusercontent.com/cachebag/unrot/main/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/cachebag/unrot/main/LICENSE
+	source = LICENSE-APACHE-0.1.0::https://raw.githubusercontent.com/cachebag/unrot/main/LICENSE-APACHE
+	sha256sums = dab833abd1793698c82476bcd2af96ad3efee564effc87f4ea290f37953c1d72
+	sha256sums = f265a39150567f96d909f03b95fad8c13e3c5b4751e46d4febf7e425342640a8
+	sha256sums = 5e066d90b93d7065d671c16c150d911e846887a2d1e9f0550f01009e744eb3b0
+	sha256sums = b586944a185a37ea9e8867c4f373a162891c28123a2dadac4ae7a5d500b4bff7
+
+pkgname = unrot
