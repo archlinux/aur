@@ -23,7 +23,6 @@ pkgbase = llm-git
 	depends = python-ulid
 	depends = python-puremagic
 	depends = python-httpx
-	optdepends = xyz: for xyz
 	provides = llm
 	conflicts = llm
 	conflicts = llm-bin

@@ -38,7 +38,7 @@ makedepends=(python-build
 #              python-pytest-ruff
 #              python-syrupy
 #              ...)
-optdepends=('xyz: for xyz')
+#optdepends=('xyz: for xyz')
 source=(git+https://github.com/simonw/llm)
 sha256sums=('SKIP')
 
