@@ -1,36 +1,50 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=python-vine
 pkgver=5.1.0
-pkgrel=6
-pkgdesc="Promises, promises, promises"
+pkgrel=7
+pkgdesc="Python promises"
 arch=('any')
 license=('BSD-3-Clause')
 url="https://github.com/celery/vine"
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
-checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/celery/vine/archive/v$pkgver.tar.gz"
-	"fix-removed-setup-method.patch")
-sha512sums=('9ed1f18fba76fb34ed1f083a29db5a90ccffef83dbb6c2c90f83e4136520d8a27fa8b12a7ea6923c8f73532bf174d6403484fd37e0ac26247f2108aa1faabf65'
-            '07b93be4a0030d96035b529d4188e03f33d431c2a941ce08e5620ee62e71b9868bc4b4932b0ea6dc3ecb7395166b6d21004db4aa9b240a8c46376a9f2cc08dcd')
+depends=(
+    'python'
+)
+makedepends=(
+    'python-setuptools'
+    'python-build'
+    'python-installer'
+    'python-wheel'
+    'git'
+)
+checkdepends=(
+    'python-pytest'
+)
+source=(
+    "$pkgname-$pkgver::git+$url.git#tag=v$pkgver"
+    "fix-removed-setup-method.patch"
+)
+b2sums=('72aca5038faf4158fe4f3669cc48d096f1477d905725ea08f16c7ce6a9f24df02adf1f21cb13389e6e6b621ff3d191a3a652d3e3275c675647c70316d0ab0934'
+        'cae703dc329a1bf4bbf10fb890509550aff10c8586eba6b3f8d82a6b5662e030ea7e10a872e6e2d8d015e8305b615ba8cd026377c255f3e3ebee0899409734e8')
 
 prepare() {
-  cd "$srcdir"/vine-$pkgver
-  patch -Np1 -i ${srcdir}/fix-removed-setup-method.patch
+    cd $pkgname-$pkgver
+    patch --forward --strip 1 --input ../fix-removed-setup-method.patch
 }
 
 build() {
-  cd "$srcdir"/vine-$pkgver
-  python -m build --wheel --no-isolation
+    cd $pkgname-$pkgver
+    python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "$srcdir"/vine-$pkgver
-  pytest
+    cd $pkgname-$pkgver
+    pytest
 }
 
 package() {
-  cd vine-$pkgver
-  python -m installer --destdir="$pkgdir" dist/*.whl
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+    cd $pkgname-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
