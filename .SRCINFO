@@ -1,6 +1,6 @@
 pkgbase = rosec-bin
 	pkgdesc = Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock
-	pkgver = 0.0.16
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/jmylchreest/rosec
 	install = rosec.install
@@ -18,9 +18,9 @@ pkgbase = rosec-bin
 	provides = rosec
 	provides = org.freedesktop.secrets
 	conflicts = rosec
-	source_x86_64 = rosec-0.0.16-x86_64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.16/rosec-0.0.16-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = ddd1fed00682af675049ba00201961a026419c6b0381f7f246b2066c45f010bd
-	source_aarch64 = rosec-0.0.16-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.16/rosec-0.0.16-aarch64-unknown-linux-gnu.tar.gz
+	source_x86_64 = rosec-0.0.17-x86_64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.17/rosec-0.0.17-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = eb7f001520576eb240aa409b6a92b4624b52fb5d0222fff57666c8161f850681
+	source_aarch64 = rosec-0.0.17-aarch64.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.17/rosec-0.0.17-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = @AARCH64_SHA256@
 
 pkgname = rosec-bin
