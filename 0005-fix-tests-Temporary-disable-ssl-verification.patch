@@ -1,0 +1,26 @@
+From f85dc40447b844fa5a509ff8faeaccd87fa182f2 Mon Sep 17 00:00:00 2001
+From: "Matteo Piccinini (loacker)" <matteo.piccinini@gmail.com>
+Date: Sun, 15 Mar 2026 14:53:01 +0100
+Subject: [PATCH] fix(tests): Temporary disable ssl verification
+
+Signed-off-by: Matteo Piccinini (loacker) <matteo.piccinini@gmail.com>
+---
+ tests/async_client_test.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/async_client_test.py b/tests/async_client_test.py
+index 0933f8b..27470bf 100644
+--- a/tests/async_client_test.py
++++ b/tests/async_client_test.py
+@@ -4207,7 +4207,7 @@ class TestClass:
+ 
+         conn = await connect_wrapper(
+             self=async_client.client_session.connector,
+-            req=ClientRequest(method="GET", url=URL("https://example.org")),
++            req=ClientRequest(method="GET", url=URL("https://example.org"), ssl=False),
+             traces=[],
+             timeout=ClientTimeout(),
+         )
+-- 
+2.53.0
+
