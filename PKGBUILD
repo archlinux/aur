@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=squidservers-bin
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to easily self-host Minecraft servers without port forwarding"
 arch=('x86_64')
 url="https://squidservers.com"
@@ -39,10 +39,10 @@ Categories=Network;Game;
 EOF
 
     msg2 "Installing icon..."
-    install -d "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps"
+    install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+    install -d "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
     ln -sf "/opt/SquidServers/resources/app.asar.unpacked/resources/icon.png" \
-        "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/squidservers.png"
-
-    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    echo "Proprietary license - see squidservers.com" > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/squidservers.png"
+    ln -sf "/opt/SquidServers/resources/app.asar.unpacked/resources/icon.png" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/squidservers.png"
 }
