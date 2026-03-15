@@ -118,3 +118,11 @@ package_ros2-humble-self-test() {
     mkdir -p "$pkgdir/opt/ros/humble"
     cp -r "$_staging_pkg/opt/ros/humble/." "$pkgdir/opt/ros/humble/"
 }
+package_ros2-humble-diagnostic-updater() {
+    pkgdesc="diagnostic_updater contains tools for easily updating diagnostics"
+    arch=('x86_64')
+    depends=('ros2-humble')
+    local _staging_pkg="$srcdir/_staging/diagnostic_updater"
+    mkdir -p "$pkgdir/opt/ros/humble"
+    cp -r "$_staging_pkg/opt/ros/humble/." "$pkgdir/opt/ros/humble/"
+}
