@@ -8,8 +8,8 @@
 pkgbase=mariadb-git
 pkgname=('mariadb-libs-git' 'mariadb-clients-git' 'mariadb-git' 'mytop-git')
 pkgdesc='Fast SQL database server, derived from MySQL'
-_pkgver=12.1
-pkgver=12.1.2.r0.g7011746
+_pkgver=12.2
+pkgver=12.2.2.r0.gd26a6f4
 pkgrel=1
 arch=('x86_64')
 license=('GPL-2.0-only')
