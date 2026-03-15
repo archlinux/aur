@@ -1,6 +1,6 @@
 pkgbase = kwin-effects-glass-git
 	pkgdesc = Fork of Plasma 6 blur effect with force blur, rounded corners, refraction (Wayland 6.6+)
-	pkgver = r526.b44f853
+	pkgver = r528.dc9fb85
 	pkgrel = 1
 	url = https://github.com/4v3ngR/kwin-effects-glass
 	arch = x86_64
