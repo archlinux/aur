@@ -1,5 +1,6 @@
+# Maintainer: aervxa <aervxa at gmail dot com>
 pkgname=hypr-dock-git
-pkgver=v1.1.1.r51.g09f7802
+pkgver=v1.2.1.r10.g468590b
 pkgrel=1
 pkgdesc="Interactive Dock Panel for Hyprland (does not provide hypr-alttab)"
 arch=('x86_64')
@@ -32,10 +33,11 @@ package() {
 	cd hypr-dock
 	install -Dm755 "bin/hypr-dock" "$pkgdir/usr/bin/hypr-dock"
 
-	# package configs so .install script can access them later
+	# Install config files 
 	install -d "$pkgdir/usr/share/hypr-dock/configs"
 	cp -r configs/* "$pkgdir/usr/share/hypr-dock/configs/"
 
+	# Install doc and license
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

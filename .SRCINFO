@@ -1,6 +1,6 @@
 pkgbase = hypr-dock-git
 	pkgdesc = Interactive Dock Panel for Hyprland (does not provide hypr-alttab)
-	pkgver = v1.1.1.r51.g09f7802
+	pkgver = v1.2.1.r10.g468590b
 	pkgrel = 1
 	url = https://github.com/lotos-linux/hypr-dock
 	install = hypr-dock-git.install
