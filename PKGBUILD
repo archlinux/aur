@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=squidservers-bin
-pkgver=0.6.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A tool to easily self-host Minecraft servers without port forwarding"
 arch=('x86_64')
