@@ -75,6 +75,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   cat > "$pkgdir/usr/bin/skwd" << 'EOF'
 #!/bin/sh
+export SKWD_INSTALL=/usr/share/skwd
 exec quickshell -p /usr/share/skwd "$@"
 EOF
   chmod 755 "$pkgdir/usr/bin/skwd"
