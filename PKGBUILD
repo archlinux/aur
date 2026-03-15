@@ -20,23 +20,29 @@ arch=('i686' 'x86_64' 'aarch64')
 url="https://codelite.org/"
 license=("GPL-2.0-or-later")
 
-makedepends=('cmake' 'ninja' 'clang' 'git')
+makedepends=('pkgconfig' 'cmake' 'ninja' 'clang' 'git')
 
 depends=(
     'wxwidgets-gtk3'
+    'wxwidgets-common'
     'libedit'
     'libssh'
     'zlib'
     'mariadb-libs'
     'ncurses'
-    'patch'
     'uchardet'
     'hunspell'
+    'glibc'
+    'libstdc++'
+    'libgcc'
+    'glib2'
+    'python'
+    'openssl'
+    'sqlite'
     #'ctags'
     #'xterm'
     #'wget'
     #'curl'
-    #'python'
 )
 
 optdepends=(
