@@ -10,7 +10,7 @@ depends=('docker')
 makedepends=('cargo' 'bun-bin')
 install=myground.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/backmeupplz/myground/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ebc39be421550ccdb90d161cc5272c6e82d433e4f3919d4533d6ea470aefed79')
+sha256sums=('a26b49387de58a1a08457330bcdfe57d9c1335b4d8802f6f19810e86191dfec5')
 
 prepare() {
   cd "$pkgname-$pkgver"
