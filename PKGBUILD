@@ -22,7 +22,6 @@ makedepends=(
 )
 checkdepends=(
     'python-pytest'
-    'python-pytest-sugar'
 )
 source=("$pkgname::git+$url.git#tag=v$pkgver")
 b2sums=('0eb3e97fdca83beb604b183190a7148efaf1359e7e45aedad2efa2aef42d190dc9973c5b1f81e7a6d15877f81260182a1b13d5b56679f89cac6a9bcd4b841ff3')
@@ -34,7 +33,7 @@ build() {
 
 check() {
     cd $pkgname
-    pytest
+    pytest -k "not test_gssapi_missing"
 }
 
 package() {

@@ -6,7 +6,6 @@ pkgbase = python-amqp
 	arch = any
 	license = BSD-3-Clause
 	checkdepends = python-pytest
-	checkdepends = python-pytest-sugar
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
