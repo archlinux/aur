@@ -13,7 +13,7 @@ provides=('assh')
 source=("LICENSE-$pkgver::https://raw.githubusercontent.com/moul/assh/v$pkgver/LICENSE")
 source_x86_64=("$url/releases/download/v${pkgver}/assh_${pkgver}_linux_amd64.tar.gz")
 source_i686=("$url/releases/download/v${pkgver}/assh_${pkgver}_linux_386.tar.gz")
-source_aarch64=("$url/assh/releases/download/v${pkgver}/assh_${pkgver}_linux_arm64.tar.gz")
+source_aarch64=("$url/releases/download/v${pkgver}/assh_${pkgver}_linux_arm64.tar.gz")
 
 sha256sums=('123a58223e5ac1d0ded53648643881130a8d1bea7faff755376a4e15b88055ce')
 sha256sums_x86_64=('8c1329f23d6a23e1e7318eda09510774512ed0b3fd9e0c7a5b9ee74c8af53572')
