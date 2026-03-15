@@ -4,13 +4,12 @@
 
 _author=ALEXMV
 _dist=Config-GitLike
-_ver=1.18
 pkgname=perl-${_dist@L}
-pkgver=${_ver#v}
+pkgver=1.18
 pkgrel=1
 pkgdesc='git-compatible config file parsing'
 arch=('any')
-url=https://metacpan.org/release/$_author/$_dist-$_ver
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl-moo'
@@ -23,12 +22,12 @@ checkdepends=(
     'perl-test-simple'
 )
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$_ver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('f7ae7440f3adab5b9ff9aa57216d84fd4a681009b9584e32da42f8bb71e332c5')
 
 build()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
     export PERL_MM_USE_DEFAULT=1
@@ -39,7 +38,7 @@ build()
 
 check()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
@@ -48,7 +47,7 @@ check()
 
 package()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
