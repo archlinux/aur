@@ -7,7 +7,7 @@ license=('GPL3')
 depends=("ffmpeg" "yt-dlp")
 makedepends=()
 url="https://github.com/bjn7/spotifydl"
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bjn7/spotifydl/releases/download/v$pkgver/passkeyd-x86_64-unknown-linux-gnu.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bjn7/spotifydl/releases/download/v$pkgver/spotifydl-x86_64-unknown-linux-gnu.tar.gz")
 sha256sums=('529b00673883e995b9e3aba33c63bc064cd9e4c47cf880580f2b924d98cb1bf9')
 options=('!debug')
 

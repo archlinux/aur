@@ -8,7 +8,7 @@ pkgbase = spotifydl
 	depends = ffmpeg
 	depends = yt-dlp
 	options = !debug
-	source = spotifydl-1.0.0.tar.gz::https://github.com/bjn7/spotifydl/releases/download/v1.0.0/passkeyd-x86_64-unknown-linux-gnu.tar.gz
+	source = spotifydl-1.0.0.tar.gz::https://github.com/bjn7/spotifydl/releases/download/v1.0.0/spotifydl-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums = 529b00673883e995b9e3aba33c63bc064cd9e4c47cf880580f2b924d98cb1bf9
 
 pkgname = spotifydl
