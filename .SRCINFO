@@ -1,0 +1,21 @@
+pkgbase = hypr-rdp-git
+	pkgdesc = Native RDP server for Hyprland
+	pkgver = 0.1.0.r0.g3d5c7b6
+	pkgrel = 1
+	url = https://github.com/MuNeNICK/hypr-rdp
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = libxkbcommon
+	depends = libva
+	depends = pipewire
+	optdepends = openh264: software H.264 encoding fallback
+	optdepends = intel-media-driver: VA-API hardware encoding for Intel GPUs
+	optdepends = libva-mesa-driver: VA-API hardware encoding for AMD GPUs
+	provides = hypr-rdp
+	conflicts = hypr-rdp
+	source = hypr-rdp-git::git+https://github.com/MuNeNICK/hypr-rdp.git
+	sha256sums = SKIP
+
+pkgname = hypr-rdp-git
