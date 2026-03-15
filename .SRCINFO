@@ -1,0 +1,16 @@
+pkgbase = fake-rs
+	pkgdesc = Command line tool for generating fake data in different languages
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/cksac/fake-rs
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	makedepends = cargo
+	depends = libgcc
+	depends = glibc
+	options = !debug
+	options = !lto
+	source = fake-rs-5.0.0.tar.gz::https://github.com/cksac/fake-rs/archive/v5.0.0.tar.gz
+	sha512sums = 5eaca199997c429b8417ac9bcbde9ebb3c48dd0e2a7d052fed366434e289f62fc713bb6785e2d37c978f0887a9146bb7e700cfd96cf7e142754bd665bedb5fa6
+
+pkgname = fake-rs
