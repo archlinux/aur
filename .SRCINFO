@@ -1,7 +1,7 @@
 pkgbase = aurivo-bin
 	pkgdesc = Aurivo Media Player (prebuilt AppImage)
 	pkgver = 2.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://aurivo.app
 	arch = x86_64
 	license = MIT
