@@ -1,8 +1,8 @@
 pkgbase = perl-app-cmd
 	pkgdesc = write command line apps with less suffering
-	pkgver = 0.339
+	pkgver = 0.340
 	pkgrel = 1
-	url = https://metacpan.org/release/RJBS/App-Cmd-0.339
+	url = https://metacpan.org/release/RJBS/App-Cmd-0.340
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
 	checkdepends = perl-data-dumper
@@ -19,7 +19,7 @@ pkgbase = perl-app-cmd
 	depends = perl-constant
 	depends = perl-data-optlist
 	depends = perl-experimental
-	depends = perl-getopt-long-descriptive>=0.116
+	depends = perl-getopt-long-descriptive>=0.117
 	depends = perl-getopt-long>=2.39
 	depends = perl-io-tiecombine
 	depends = perl-module-pluggable
@@ -32,7 +32,7 @@ pkgbase = perl-app-cmd
 	depends = perl>=5.20.0
 	optdepends = perl-cpan-meta
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/App-Cmd-0.339.tar.gz
-	sha256sums = 4508c7e533a1fd8a222261461834c1f87b6331c6b2f9932756a22bd2c3ecda51
+	source = https://cpan.metacpan.org/authors/id/R/RJ/RJBS/App-Cmd-0.340.tar.gz
+	sha256sums = bbee8cd6b31ee9c2a6e9a10f49416c438d343102f55c1b0e50d20e1bf5f4a82e
 
 pkgname = perl-app-cmd

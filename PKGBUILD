@@ -1,14 +1,14 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: camb
 
+_author=RJBS
 _dist=App-Cmd
-_ver=0.339
-pkgname=perl-${_dist,,}
-pkgver=${_ver#v}
+pkgname=perl-${_dist@L}
+pkgver=0.340
 pkgrel=1
 pkgdesc='write command line apps with less suffering'
 arch=('any')
-url=https://metacpan.org/release/RJBS/$_dist-$_ver
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl-capture-tiny>=0.13'
@@ -17,7 +17,7 @@ depends=(
     'perl-constant'
     'perl-data-optlist'
     'perl-experimental'
-    'perl-getopt-long-descriptive>=0.116'
+    'perl-getopt-long-descriptive>=0.117'
     'perl-getopt-long>=2.39'
     'perl-io-tiecombine'
     'perl-module-pluggable'
@@ -41,12 +41,12 @@ checkdepends=(
 )
 optdepends=('perl-cpan-meta')
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/R/RJ/RJBS/$_dist-$_ver.tar.gz")
-sha256sums=('4508c7e533a1fd8a222261461834c1f87b6331c6b2f9932756a22bd2c3ecda51')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('bbee8cd6b31ee9c2a6e9a10f49416c438d343102f55c1b0e50d20e1bf5f4a82e')
 
 build()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
     export PERL_MM_USE_DEFAULT=1
@@ -57,7 +57,7 @@ build()
 
 check()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
@@ -66,7 +66,7 @@ check()
 
 package()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
