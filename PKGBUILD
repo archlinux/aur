@@ -51,13 +51,6 @@ package() {
   install -Dm644 "AUTHORS" "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
 
   install -Dm644 \
-    "flatpak/io.github.henriquejsza.farmmod-hub.desktop" \
-    "$pkgdir/usr/share/applications/io.github.henriquejsza.farmmod-hub.desktop"
-  install -Dm644 \
-    "flatpak/io.github.henriquejsza.farmmod-hub.metainfo.xml" \
-    "$pkgdir/usr/share/metainfo/io.github.henriquejsza.farmmod-hub.metainfo.xml"
-
-  install -Dm644 \
     "data/logo/io.github.henriquejsza.farmmod-hub.png" \
     "$pkgdir/usr/share/icons/hicolor/512x512/apps/io.github.henriquejsza.farmmod-hub.png"
   install -Dm644 \
