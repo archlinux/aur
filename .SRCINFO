@@ -1,7 +1,7 @@
 pkgbase = uxplay-git
 	pkgdesc = AirPlay Unix mirroring server
-	pkgver = r1383.f767941
-	pkgrel = 3
+	pkgver = r1420.a3801c0
+	pkgrel = 2
 	url = https://github.com/FDH2/UxPlay
 	arch = any
 	license = GPL-3.0-or-later

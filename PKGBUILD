@@ -1,8 +1,8 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=uxplay-git
 _gitname=UxPlay
-pkgver=r1383.f767941
-pkgrel=3
+pkgver=r1420.a3801c0
+pkgrel=2
 pkgdesc="AirPlay Unix mirroring server"
 arch=('any')
 url="https://github.com/FDH2/$_gitname"
@@ -52,4 +52,13 @@ package() {
   install -Dm 755 "$srcdir/$_gitname/Bluetooth_LE_beacon/dbus/uxplay-beacon.py" "$pkgdir/usr/bin/uxplay-beacon.py"
   # install beacon script manpage
   install -Dm 644 "$srcdir/$_gitname/Bluetooth_LE_beacon/dbus/uxplay-beacon.1" "$pkgdir/usr/share/man/man1/uxplay-beacon.1"
+  
+  # install BlueToothLE beacon script
+  install -Dm 755 "$srcdir/$_gitname/Bluetooth_LE_beacon/uxplay-beacon.py" "$pkgdir/usr/bin/uxplay-beacon.py"
+  install -Dm 644 "$srcdir/$_gitname/Bluetooth_LE_beacon/uxplay-beacon.py" "$pkgdir/usr/bin/uxplay_beacon_module_BlueZ.py"
+  install -Dm 644 "$srcdir/$_gitname/Bluetooth_LE_beacon/uxplay-beacon.py" "$pkgdir/usr/bin/uxplay_beacon_module_BleuIO.py"
+  install -Dm 644 "$srcdir/$_gitname/Bluetooth_LE_beacon/uxplay-beacon.py" "$pkgdir/usr/bin/uxplay_beacon_module_HCI.py"
+  # install beacon script manpage
+  install -Dm 644 "$srcdir/$_gitname/Bluetooth_LE_beacon/uxplay-beacon.1" "$pkgdir/usr/share/man/man1/uxplay-beacon.1"
+
 }
