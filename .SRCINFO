@@ -1,6 +1,6 @@
 pkgbase = arcfetch
 	pkgdesc = A minimal and fast Rust-based system information fetch utility.
-	pkgver = 0.7.0
+	pkgver = 0.7.3
 	pkgrel = 1
 	url = https://github.com/tonycth7/arcfetch
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = arcfetch
 	depends = gcc-libs
 	provides = arcfetch
 	conflicts = arcfetch
-	source = arcfetch::git+https://github.com/tonycth7/arcfetch.git#tag=v0.7.0
+	source = arcfetch::git+https://github.com/tonycth7/arcfetch.git#tag=v0.7.3
 	sha256sums = SKIP
 
 pkgname = arcfetch
