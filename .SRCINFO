@@ -1,6 +1,6 @@
 pkgbase = stenmark
 	pkgdesc = A lightweight GTK4 Markdown organizer and editor
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/mkay/stenmark
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = stenmark
 	depends = webkitgtk-6.0
 	conflicts = marklite
 	replaces = marklite
-	source = stenmark-0.4.2.tar.gz::https://github.com/mkay/stenmark/archive/refs/tags/v0.4.2.tar.gz
-	sha256sums = fb1df92e87e5ae25fc2f8b7def6074be2d3f916d5f61d7a9298a693e9448374c
+	source = stenmark-0.4.3.tar.gz::https://github.com/mkay/stenmark/archive/refs/tags/v0.4.3.tar.gz
+	sha256sums = fed2a0f5d703a31fa58afff7cfcd48bb92c14fea5adda4eb371dc1f50c500d1f
 
 pkgname = stenmark
