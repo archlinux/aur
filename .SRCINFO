@@ -1,0 +1,15 @@
+pkgbase = plasma6-runners-translator
+	pkgdesc = Translates words and sentences into any language
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/naraesk/krunner-translator
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = krunner
+	depends = translate-shell
+	source = krunner-translator-2.0.tar.gz::https://github.com/naraesk/krunner-translator/archive/refs/tags/v2.0.tar.gz
+	sha256sums = 88bb19d37e4419d867832b7bf5a5435ceac14577a7eabb93d95dba07cc491712
+
+pkgname = plasma6-runners-translator
