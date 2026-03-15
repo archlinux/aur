@@ -11,3 +11,4 @@ ProtectHome=true
 NoNewPrivileges=true
 PrivateTmp=true
 PrivateDevices=true
+ReadWritePaths=/usr/share/dynamic-dns-netcup-api

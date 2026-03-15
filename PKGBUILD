@@ -2,7 +2,7 @@
 
 pkgname=dynamic-dns-netcup-api
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple dynamic DNS client written in PHP for use with the netcup DNS API."
 arch=('any')
 license=('MIT')
@@ -16,7 +16,7 @@ source=("git+https://github.com/stecklars/${pkgname}.git#commit=$_commit"
         ${pkgname}.service
         ${pkgname}.timer)
 sha256sums=('bd085a8642ad82ea83041a31113945ba05e303ba13547a1060daeac271851593'
-            '359db333e91a49c9a9413dc52f524ef47c2192186cb7edfbf5277cd54bb5cb7d'
+            'f8d030218d7ac033ba9ebc72ae6e5f25e5671e7ca69cb3c07bbb060a2426819a'
             'e47b47ba368cbaf09cb63fdbeaef632f6fd358e6994440d8d3a682ee4510e648')
 
 package() {
