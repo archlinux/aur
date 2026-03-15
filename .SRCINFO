@@ -1,0 +1,19 @@
+pkgbase = aero-audio
+	pkgdesc = A modern audio recorder with real-time waveform visualization
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/lainx86/aero
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-multimedia
+	depends = qt6-multimedia-ffmpeg
+	provides = aero
+	conflicts = aero
+	source = aero-audio-1.0.0.tar.gz::https://github.com/lainx86/aero/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 054e4d3de9a36aee6574bd9fac3713660d9fef37203ebf86521d07114aa2c6d6
+
+pkgname = aero-audio
