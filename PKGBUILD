@@ -2,8 +2,8 @@
 
 _pkgname=ironclaw
 pkgname="$_pkgname"-git
-pkgver=0.16.1.r50.gd73e35c
-pkgrel=1
+pkgver=0.16.1.r52.gab0a2e0
+pkgrel=2
 pkgdesc='OpenClaw-inspired Rust personal AI assistant focused on privacy and security'
 arch=('x86_64' 'aarch64')
 url='https://github.com/nearai/ironclaw'
@@ -17,6 +17,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git+https://github.com/nearai/ironclaw.git')
 sha256sums=('SKIP')
+options=('!lto')
 
 pkgver() {
   cd "$srcdir"/ironclaw
