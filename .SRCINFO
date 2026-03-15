@@ -1,6 +1,6 @@
 pkgbase = lazyactions-bin
 	pkgdesc = Lazygit-style TUI for GitHub Actions — monitor, trigger, and manage workflows from your terminal
-	pkgver = 0.0.12
+	pkgver = 0.0.13
 	pkgrel = 1
 	url = https://github.com/nnnkkk7/lazyactions
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = lazyactions-bin
 	license = MIT
 	provides = lazyactions
 	conflicts = lazyactions
-	source_x86_64 = lazyactions-x86_64-0.0.12.tgz::https://github.com/nnnkkk7/lazyactions/releases/download/v0.0.12/lazyactions_0.0.12_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = b177fecfba30d6d5c4262671d8edf2a9807c9f0068318c60bfc781cc2b7f46b4
-	source_aarch64 = lazyactions-aarch64-0.0.12.tgz::https://github.com/nnnkkk7/lazyactions/releases/download/v0.0.12/lazyactions_0.0.12_Linux_arm64.tar.gz
-	sha256sums_aarch64 = cb8cd36731222b14a45cd5a63451feb290ff2c73d117a414f76ef8cb362c5bb6
+	source_x86_64 = lazyactions-x86_64-0.0.13.tgz::https://github.com/nnnkkk7/lazyactions/releases/download/v0.0.13/lazyactions_0.0.13_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 867d51ab8e0c186ad0f52d54998cb3c4aa6435460346f54e7a59e7cb001b050d
+	source_aarch64 = lazyactions-aarch64-0.0.13.tgz::https://github.com/nnnkkk7/lazyactions/releases/download/v0.0.13/lazyactions_0.0.13_Linux_arm64.tar.gz
+	sha256sums_aarch64 = b8155792dc1d674e93bfd11289f5451c26a3d74d2093476e108d7f8964360959
 
 pkgname = lazyactions-bin

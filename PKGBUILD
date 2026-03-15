@@ -5,7 +5,7 @@ _pkgname=lazyactions
 pkgname=${_pkgname}-bin
 pkgdesc="Lazygit-style TUI for GitHub Actions — monitor, trigger, and manage workflows from your terminal"
 
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_Linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('b177fecfba30d6d5c4262671d8edf2a9807c9f0068318c60bfc781cc2b7f46b4')
-sha256sums_aarch64=('cb8cd36731222b14a45cd5a63451feb290ff2c73d117a414f76ef8cb362c5bb6')
+sha256sums_x86_64=('867d51ab8e0c186ad0f52d54998cb3c4aa6435460346f54e7a59e7cb001b050d')
+sha256sums_aarch64=('b8155792dc1d674e93bfd11289f5451c26a3d74d2093476e108d7f8964360959')
 
 
 package() {
