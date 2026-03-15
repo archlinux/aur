@@ -1,7 +1,7 @@
 pkgbase = gale-git
 	pkgdesc = A lightweight mod manager for Thunderstore
-	pkgver = 1.10.0.r12.g1b831e6
-	pkgrel = 2
+	pkgver = 1.13.0.r6.g75a4dcc
+	pkgrel = 1
 	url = https://github.com/Kesomannen/gale
 	arch = x86_64
 	license = GPL-3.0-or-later
