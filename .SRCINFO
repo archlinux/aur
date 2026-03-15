@@ -1,6 +1,6 @@
 pkgbase = opencom-bin
 	pkgdesc = Desktop wrapper for OpenCom frontend
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://opencom.online
 	arch = x86_64
