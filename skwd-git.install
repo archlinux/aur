@@ -1,0 +1,16 @@
+post_install() {
+  echo ""
+  echo "==> Run the setup script to generate user config and cache:"
+  echo "    /usr/share/skwd/scripts/bash/setup"
+  echo ""
+  echo "==> Then launch with:"
+  echo "    skwd"
+  echo ""
+}
+
+post_upgrade() {
+  echo ""
+  echo "==> If you encounter issues after upgrading, re-run setup:"
+  echo "    /usr/share/skwd/scripts/bash/setup"
+  echo ""
+}
