@@ -14,6 +14,8 @@ depends=(
 makedepends=(
     'git'
     'cargo'
+    'cmake'
+    'clang'
 )
 optdepends=(
     'openh264: software H.264 encoding fallback'
