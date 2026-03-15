@@ -1,0 +1,13 @@
+pkgbase = rbtr-git
+	pkgdesc = A simple scheduler for generating btrfs snapshots
+	pkgver = r2.d0c2325
+	pkgrel = 1
+	url = https://gitlab.com/vbarch/rbtr
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = btrfs-progs
+	source = rbtr-git::git+https://gitlab.com/vbarch/rbtr.git
+	sha256sums = SKIP
+
+pkgname = rbtr-git
