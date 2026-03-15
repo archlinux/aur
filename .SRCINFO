@@ -1,0 +1,16 @@
+pkgbase = kyp-gui-bin
+	pkgdesc = Keep Your Passwords — local-first GUI password manager with TOTP support
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/stickpro/kyp
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = kyp-gui
+	conflicts = kyp-gui
+	conflicts = kyp-gui-git
+	source_x86_64 = https://github.com/stickpro/kyp/releases/download/v0.1.0/kyp-gui_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = SKIP
+
+pkgname = kyp-gui-bin
