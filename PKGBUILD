@@ -3,7 +3,7 @@
 
 _base=pack
 pkgname=pack-cli-git
-pkgver=0.40.0
+pkgver=0.40.1
 pkgrel=1
 pkgdesc="CLI for building apps using Cloud Native Buildpacks"
 depends=('glibc')
