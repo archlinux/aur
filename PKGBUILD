@@ -27,6 +27,11 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare()
+{
+  cd "${srcdir}/${pkg_name_ver}"
+}
+
 build() {
   cd "${srcdir}/${_pkgname}"
   #dub build -b release-nobounds
@@ -40,8 +45,6 @@ package() {
   install -D -m 0644 ddhx.1 "${pkgdir}/usr/share/man/man1/ddhx.1"
   install -D -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -D -m 0644 README "${pkgdir}/usr/share/doc/${_pkgname}/README"
-  #install -D -m 0644 docs/ddhx.1 "${pkgdir}/usr/share/man/man1/ddhx.1"
-  #install -D -m 0644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
 
 #
