@@ -1,19 +1,19 @@
 pkgbase = kubewall-bin
 	pkgdesc = kubewall is a single binary to manage multiple clusters.
-	pkgver = 0.0.16
+	pkgver = 0.0.17
 	pkgrel = 1
 	url = https://github.com/kubewall/kubewall
 	license = Apache License 2.0
 	conflicts = kubewall
 	provides = kubewall
 	arch = aarch64
-	source_aarch64 = https://github.com/kubewall/kubewall/releases/download/v${pkgver}/kubewall_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 90d7becb37aeed7876a228451bd4f2cc1584cb693d79f0da38b68a50b9d68dad
+	source_aarch64 = https://github.com/kubewall/kubewall/releases/download/v0.0.17/kubewall_Linux_arm64.tar.gz
+	sha256sums_aarch64 = b6b51442c7e3660cb260bba60d2fc561a1980793f763f052ad56e00c0410c1b8
 	arch = i686
-	source_i686 = https://github.com/kubewall/kubewall/releases/download/v${pkgver}/kubewall_Linux_i386.tar.gz
-	sha256sums_i686 = d6805ea267f245219f5e03c92fe2f2e515dba66451d1d2c10c7ab71e99f4fe41
+	source_i686 = https://github.com/kubewall/kubewall/releases/download/v0.0.17/kubewall_Linux_i386.tar.gz
+	sha256sums_i686 = ebadba813994be4b70a294802d4d3dfc15884022e345b203fb95e4466bafc0f9
 	arch = x86_64
-	source_x86_64 = https://github.com/kubewall/kubewall/releases/download/v${pkgver}/kubewall_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = d640b1343b6e641988d4d327931381482f6a028e922b597e1b9e0f8e9f6f261f
+	source_x86_64 = https://github.com/kubewall/kubewall/releases/download/v0.0.17/kubewall_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = f6f2e72c15102a308e03b11cc854c5383cf59c7a7986b21765da7cab5d23ebc2
 	
 pkgname = kubewall-bin
