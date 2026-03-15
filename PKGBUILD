@@ -1,9 +1,9 @@
 # Maintainer: Brandon Mittman <brandonmittman@gmail.com>
 _npmname=playball
-_npmver=3.3.0
+_npmver=3.4.0
 pkgname=playball
-pkgver=3.3.0
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="Watch MLB games from the comfort of your terminal"
 arch=(any)
 url="https://github.com/paaatrick/playball"
@@ -12,7 +12,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(8bde04c7e9e76cd9cb21417d2cae193afdf7aac3)
+sha1sums=(583f169e360ae090481e2a08b94f6e063d5d9460)
 
 package() {
   cd $srcdir
