@@ -1,9 +1,9 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 
+_author=DPARIS
 _dist=Crypt-IDEA
-_ver=1.10
-pkgname=perl-${_dist,,}
-pkgver=${_ver#v}
+pkgname=perl-${_dist@L}
+pkgver=1.10
 pkgrel=2
 pkgdesc='Perl interface to IDEA block cipher'
 arch=('x86_64')
@@ -17,12 +17,12 @@ depends=(
 makedepends=('perl-extutils-makemaker')
 checkdepends=('perl-test-simple')
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/D/DP/DPARIS/$_dist-$_ver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('33bd78c11924a0fc1ff3eedde94078cbbf6b6ca9ede046d2b2f561e9e9a72019')
 
 build()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
     export PERL_MM_USE_DEFAULT=1
@@ -33,7 +33,7 @@ build()
 
 check()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
@@ -42,7 +42,7 @@ check()
 
 package()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
