@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=zerobrew
-pkgver=0.1.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A drop-in, 5-20x faster, experimental Homebrew alternative.'
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ conflicts=('zerobrew-git' 'zerobrew-bin')
 install=zerobrew.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
     'zerobrew.install')
-sha256sums=('efab8d6171751bdea6ef17b028d9dafccad45ff1252874ab2f1e6f87b4c2bdc1'
+sha256sums=('47e325a8de0b104fd9ee4a12062ba60b7edd225c951b3bea047603750dd760f1'
             '9092be5274ca2a0bf7193c58fb0cc63d7328bc8eb3d390db7aae3ab70ce02b39')
 
 prepare() {
