@@ -6,13 +6,12 @@
 
 _author=NEILB
 _dist=Time-Duration-Parse
-_ver=0.16
 pkgname=perl-${_dist@L}
-pkgver=${_ver#v}
+pkgver=0.16
 pkgrel=3
 pkgdesc='Parse string that represents time duration'
 arch=('any')
-url=https://metacpan.org/release/$_author/$_dist-$_ver
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl-carp'
@@ -25,12 +24,12 @@ checkdepends=(
     'perl-time-duration'
 )
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$_ver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('1084a6463ee2790f99215bd76b135ca45afe2bfa6998fa6fd5470b69e1babc12')
 
 build()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
     export PERL_MM_USE_DEFAULT=1
@@ -41,7 +40,7 @@ build()
 
 check()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
@@ -50,7 +49,7 @@ check()
 
 package()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
