@@ -1,7 +1,7 @@
 pkgbase = ssmt4-linux
 	pkgdesc = SSMT4 - Super Simple Linux Game Tools 4th
-	pkgver = 0.0.9_beta
-	pkgrel = 7
+	pkgver = 0.0.10_beta
+	pkgrel = 1
 	url = https://github.com/peachycommit/ssmt4-linux
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -32,7 +32,7 @@ pkgbase = ssmt4-linux
 	conflicts = ssmt4-linux-git
 	options = !buildflags
 	options = !debug
-	source = ssmt4-linux::git+https://github.com/peachycommit/ssmt4-linux.git#tag=0.0.9-beta
+	source = ssmt4-linux::git+https://github.com/peachycommit/ssmt4-linux.git#tag=0.0.10-beta
 	sha256sums = SKIP
 
 pkgname = ssmt4-linux

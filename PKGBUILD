@@ -1,6 +1,6 @@
 pkgname=ssmt4-linux
-pkgver=0.0.9_beta
-pkgrel=7
+pkgver=0.0.10_beta
+pkgrel=1
 pkgdesc="SSMT4 - Super Simple Linux Game Tools 4th"
 arch=('x86_64')
 url='https://github.com/peachycommit/ssmt4-linux'
@@ -28,63 +28,9 @@ provides=('ssmt4-linux')
 conflicts=('ssmt4-linux-git')
 
 _github_repo='https://github.com/peachycommit/ssmt4-linux.git'
-_gitee_repo='https://gitee.com/xiaobai01111/ssmt4-linux.git'
-_source_repo="${SSMT4_AUR_SOURCE_REPO:-}"
+_source_repo="${_github_repo}"
 _source_tag="${pkgver//_/-}"
 _source_name="${pkgname}"
-
-_probe_repo_tag() {
-  local repo_url="$1"
-  env \
-    GIT_TERMINAL_PROMPT=0 \
-    GIT_CONFIG_GLOBAL=/dev/null \
-    GIT_CONFIG_NOSYSTEM=1 \
-    git \
-      -c credential.helper= \
-      -c core.askPass=true \
-      ls-remote --exit-code --refs "${repo_url}" "refs/tags/${_source_tag}" >/dev/null 2>&1
-}
-
-_select_first_available_repo() {
-  local repo_url
-  for repo_url in "${_github_repo}" "${_gitee_repo}"; do
-    if _probe_repo_tag "${repo_url}"; then
-      printf '%s\n' "${repo_url}"
-      return 0
-    fi
-  done
-
-  printf '%s\n' "${_gitee_repo}"
-}
-
-_select_github_repo() {
-  local repo_url
-  for repo_url in "${_github_repo}"; do
-    if _probe_repo_tag "${repo_url}"; then
-      printf '%s\n' "${repo_url}"
-      return 0
-    fi
-  done
-
-  printf '%s\n' "${_github_repo}"
-}
-
-if [[ -z "${_source_repo}" ]]; then
-  case "${SSMT4_AUR_SOURCE_MIRROR:-auto}" in
-    auto|'')
-      _source_repo="$(_select_first_available_repo)"
-      ;;
-    gitee)
-      _source_repo="${_gitee_repo}"
-      ;;
-    github)
-      _source_repo="$(_select_github_repo)"
-      ;;
-    *)
-      _source_repo="$(_select_first_available_repo)"
-      ;;
-  esac
-fi
 
 source=(
   "${_source_name}::git+${_source_repo}#tag=${_source_tag}"
