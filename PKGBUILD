@@ -2,7 +2,7 @@
 
 pkgname=subtui-bin
 _pkgname=SubTUI
-pkgver=2.11.1
+pkgver=2.11.2
 pkgrel=1
 pkgdesc="Lightweight TUI music player for Subsonic-compatible servers"
 arch=('x86_64' 'aarch64')
@@ -20,11 +20,11 @@ source_aarch64=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/MattiaPun/SubTUI/v${pkgver}/LICENSE"
 )
 sha256sums_x86_64=(
-    '8ab85f0e8ad2067390738a0e920957b942b421e32cd3b1582263abc5060113ea'
+    'b7f7a96118c2ad1d3c9638b0e36699a6c961ec8bde20e2dbca851ab1131e79e1'
     'SKIP'
 )
 sha256sums_aarch64=(
-    '1f1f61ac5f5ac91bfd5cf1edf5ade5b9d0cc9ec41dfa60fe0f394416577af22c'
+    'a4f5322cb9a18a5682eb5bbd17dd33715d4dced97abd37a62efdaf2b3f92589f'
     'SKIP'
 )
 
