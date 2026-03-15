@@ -14,7 +14,11 @@ depends=(
 makedepends=(
   "python-build"
   "python-installer"
+  "python-setuptools"
   "python-wheel"
+)
+checkdepends=(
+  "python-pytest"
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("999a2d41c1f387bd74261184bf4c907e06bacf52029a984eb1642df917d0d5dd")
@@ -22,6 +26,11 @@ sha256sums=("999a2d41c1f387bd74261184bf4c907e06bacf52029a984eb1642df917d0d5dd")
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+  pytest
 }
 
 package() {
