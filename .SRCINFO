@@ -1,19 +1,19 @@
 pkgbase = python-croniter
 	pkgdesc = Parses cron schedules to iterate over datetime objects.
-	pkgver = 6.0.0
-	pkgrel = 2
+	pkgver = 6.2.2
+	pkgrel = 1
 	url = https://github.com/pallets-eco/croniter
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	makedepends = python-build
+	makedepends = python-hatchling
 	makedepends = python-installer
-	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	depends = python-dateutil
 	depends = python-pytz
-	source = https://github.com/pallets-eco/croniter/archive/refs/tags/6.0.0/python-croniter-6.0.0.tar.gz
-	sha256sums = 5b13012a70272e484f4644669ddae75e84a5597c41b44a5f628337e7c6acf329
+	source = https://github.com/pallets-eco/croniter/archive/refs/tags/6.2.2/python-croniter-6.2.2.tar.gz
+	sha256sums = d405ef6a395bc1340ee3c1ad4237493a4fdb24a5cfce63ee21cf1d5ab17cc377
 
 pkgname = python-croniter

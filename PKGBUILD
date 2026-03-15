@@ -3,8 +3,8 @@
 # Contributor: Thomas Andrejak <thomas.andrejak@gmail.com>
 pkgname=python-croniter
 _name=${pkgname#python-}
-pkgver=6.0.0
-pkgrel=2
+pkgver=6.2.2
+pkgrel=1
 pkgdesc="Parses cron schedules to iterate over datetime objects."
 arch=('any')
 url="https://github.com/pallets-eco/croniter"
@@ -16,13 +16,13 @@ depends=(
 )
 makedepends=(
   'python-build'
+  'python-hatchling'
   'python-installer'
-  'python-setuptools'
   'python-wheel'
 )
 checkdepends=('python-pytest')
 source=("https://github.com/pallets-eco/croniter/archive/refs/tags/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('5b13012a70272e484f4644669ddae75e84a5597c41b44a5f628337e7c6acf329')
+sha256sums=('d405ef6a395bc1340ee3c1ad4237493a4fdb24a5cfce63ee21cf1d5ab17cc377')
 
 build() {
   cd "$_name-$pkgver"
@@ -38,5 +38,9 @@ package() {
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  # Remove installed tests
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rm -rfv "${pkgdir}${site_packages}/$_name/tests/"
 }
