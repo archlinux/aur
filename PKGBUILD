@@ -4,7 +4,7 @@ pkgver=r488.7d1a6e4
 pkgrel=1
 pkgdesc="Wayland-based synchronized lyrics overlay with MPRIS integration"
 arch=('x86_64' 'aarch64')
-url="https://github.com/wshowlyrics/wshowlyrics"
+url="https://gitlab.com/wshowlyrics/wshowlyrics"
 license=('GPL-3.0-or-later')
 depends=(
     'cairo'
@@ -28,7 +28,7 @@ makedepends=(
 )
 provides=('wshowlyrics')
 conflicts=('wshowlyrics')
-source=("git+https://github.com/wshowlyrics/wshowlyrics.git")
+source=("git+https://gitlab.com/wshowlyrics/wshowlyrics.git")
 sha256sums=('SKIP')
 
 pkgver() {
