@@ -2,7 +2,7 @@
 
 pkgname=arcfetch
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal and fast Rust-based system information fetch utility. "
 arch=('x86_64' 'aarch64')
 url="https://github.com/tonycth7/arcfetch"
