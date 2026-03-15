@@ -1,6 +1,7 @@
 # Maintainer: username227 <gfrank227 [at] gmail [dot] com>
 # Contributor: Ludvig Hozman <ludvig.hozman@gmail.com>
 # Contributor: el-gazzle
+# Contributor: Adam Hellberg <sharparam@sharparam.com>
 
 pkgname=plex-desktop
 pkgver=1.112.0.359
