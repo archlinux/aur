@@ -7,6 +7,6 @@ pkgbase = portago
 	license = GPL-3.0-only
 	depends = glibc
 	source = https://github.com/meerkat-b/portago/releases/download/v0.0.1/portago_0.0.1_linux_amd64.tar.gz
-	sha256sums = SKIP
+	sha256sums = 002f3d73c6f2637ecdc03119554b59a5c13adcac8630ff7598fec7d77339cddc
 
 pkgname = portago

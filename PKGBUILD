@@ -8,7 +8,7 @@ url="https://github.com/meerkat-b/portago"
 license=('GPL-3.0-only')
 depends=('glibc')
 source=("https://github.com/meerkat-b/portago/releases/download/v${pkgver}/portago_${pkgver}_linux_amd64.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('002f3d73c6f2637ecdc03119554b59a5c13adcac8630ff7598fec7d77339cddc')
 
 package() {
   install -Dm755 portago "${pkgdir}/usr/bin/portago"
