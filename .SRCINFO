@@ -1,6 +1,6 @@
 pkgbase = yass-proxy
 	pkgdesc = lightweight http/socks proxy
-	pkgver = 1.20.4
+	pkgver = 1.22.2
 	pkgrel = 1
 	url = https://github.com/hukeyue/yass
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = yass-proxy
 	optdepends = gtk-update-icon-cache
 	provides = yass-proxy
 	conflicts = yass-proxy-git
-	source = https://github.com/hukeyue/yass/releases/download/1.20.4/yass-1.20.4.tar.zst
-	sha256sums = 45088bd4037d9450fc0f4b4d83a330b4fdb1c5ef6f3e2ac14515cbf21ca19fc2
+	source = https://github.com/hukeyue/yass/releases/download/1.22.2/yass-1.22.2.tar.zst
+	sha256sums = 72c3a4b3e71b1c2fbae3dca124318ca6eed0677ef9301b71c6a113023b64b27f
 
 pkgname = yass-proxy
