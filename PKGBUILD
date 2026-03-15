@@ -1,8 +1,8 @@
-# Maintainer: yobson <contact@yobson.xyz>
+# Maintainer: yobson <aur@yobson.xyz>
 _pkgname=GPU-T
 pkgname=${_pkgname,,}-git
 pkgdesc='GPU-T is a modern desktop utility built with .NET and Avalonia UI designed to provide detailed information about your video card and GPU'
-pkgver=0.1.1.r1.g2a0d5d7
+pkgver=0.1.2.r3.gf047522
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/lseurttyuu/${_pkgname}"
@@ -10,13 +10,13 @@ license=('MIT')
 makedepends=('git' 'dotnet-host' 'dotnet-sdk-9.0')
 depends=('dotnet-runtime-9.0' 'vulkan-tools' 'clinfo' 'mesa' 'mesa-utils' 'libva-utils' 'pciutils' 'desktop-file-utils' 'hicolor-icon-theme')
 optdepends=('rocm-opencl-runtime: OpenCL platform for clinfo to get details for AMD GPUs'
-            'rocm-hip-runtime: HIP support detection for AMD GPUs'
-            'intel-compute-runtime: OpenCL platform for clinfo to get details for Intel GPUs'
-            'opencl-nvidia: OpenCL platform for clinfo to get details for NVIDIA GPUs')
+    'rocm-hip-runtime: HIP support detection for AMD GPUs'
+    'intel-compute-runtime: OpenCL platform for clinfo to get details for Intel GPUs'
+    'opencl-nvidia: OpenCL platform for clinfo to get details for NVIDIA GPUs')
 source=("git+$url.git"
-        "gpu-t.desktop")
+    "gpu-t.desktop")
 sha256sums=('SKIP'
-            'ca8bc029dac44cd957b2f72d2acbb7381317968d0cde8ddbc6f0a677a05a63b5')
+    'ca8bc029dac44cd957b2f72d2acbb7381317968d0cde8ddbc6f0a677a05a63b5')
 provides=('gpu-t')
 conflicts=('gpu-t')
 
