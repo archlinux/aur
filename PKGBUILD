@@ -49,11 +49,6 @@ package() {
   # install systemd service
   install -Dm 644 "$srcdir/$_gitname/uxplay.service" "$pkgdir/usr/lib/systemd/user/uxplay.service"
   # install BlueToothLE beacon script
-  install -Dm 755 "$srcdir/$_gitname/Bluetooth_LE_beacon/dbus/uxplay-beacon.py" "$pkgdir/usr/bin/uxplay-beacon.py"
-  # install beacon script manpage
-  install -Dm 644 "$srcdir/$_gitname/Bluetooth_LE_beacon/dbus/uxplay-beacon.1" "$pkgdir/usr/share/man/man1/uxplay-beacon.1"
-  
-  # install BlueToothLE beacon script
   install -Dm 755 "$srcdir/$_gitname/Bluetooth_LE_beacon/uxplay-beacon.py" "$pkgdir/usr/bin/uxplay-beacon.py"
   install -Dm 644 "$srcdir/$_gitname/Bluetooth_LE_beacon/uxplay-beacon.py" "$pkgdir/usr/bin/uxplay_beacon_module_BlueZ.py"
   install -Dm 644 "$srcdir/$_gitname/Bluetooth_LE_beacon/uxplay-beacon.py" "$pkgdir/usr/bin/uxplay_beacon_module_BleuIO.py"
