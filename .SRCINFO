@@ -1,14 +1,18 @@
 pkgbase = basecamp-linux
 	pkgdesc = Unofficial Linux companion app for the Mountain Everest Max keyboard
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ramisotti13-eng/BaseCamp-Linux
 	arch = x86_64
 	license = GPL3
 	depends = fuse2
 	source = basecamp-linux-1.2.0.AppImage::https://github.com/ramisotti13-eng/BaseCamp-Linux/releases/download/v1.2.0/BaseCamp-Linux-x86_64-fedora.AppImage
 	source = 99-mountain-everest-max.rules::https://github.com/ramisotti13-eng/BaseCamp-Linux/releases/download/v1.2.0/99-mountain-everest-max.rules
+	source = app_icon_256.png::https://raw.githubusercontent.com/ramisotti13-eng/BaseCamp-Linux/main/resources/app_icon_256.png
+	source = basecamp-linux.desktop
 	sha256sums = f9f783c8dadd42f353a786416f59ea72fcedfbc12104c047703d37a2afd047cb
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = basecamp-linux
