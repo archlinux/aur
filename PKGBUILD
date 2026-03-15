@@ -1,6 +1,6 @@
 # Maintainer: okt4v
 pkgname=asat-bin
-pkgver=0.1.12
+pkgver=0.1.13
 pkgrel=1
 pkgdesc="Terminal spreadsheet editor for Vim users — modal editing, 40+ formulas, CSV/XLSX/ODS"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 provides=('asat')
 conflicts=('asat' 'asat-git')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/okt4v/ASAT/releases/download/v${pkgver}/asat-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('44406939b2c449be3cb0434e801f5f20c4b1b701fae69638106c56bd96267d20')
+sha256sums_x86_64=('7af8bfea23a68f386f0b21b9234d379dc0026fca93f2132b522fa25aa83d3d07')
 
 package() {
     install -Dm755 "asat-v${pkgver}-x86_64-unknown-linux-gnu/asat" "${pkgdir}/usr/bin/asat"
