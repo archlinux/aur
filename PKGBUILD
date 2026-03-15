@@ -4,7 +4,7 @@ pkgver=0.9.7
 pkgrel=1
 pkgdesc="Wayland-native lyrics display for MPD with online fallback"
 arch=('x86_64' 'aarch64')
-url="https://github.com/unstable-code/lyrics"
+url="https://github.com/wshowlyrics/wshowlyrics"
 license=('GPL-3.0-or-later')
 depends=('wayland' 'cairo' 'pango' 'curl' 'fontconfig' 'openssl' 'libappindicator-gtk3' 'gdk-pixbuf2')
 optdepends=(
@@ -16,13 +16,13 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('cca22cebb0fe65990de7d91e86cc8915b7c3a4b678bf04f6ce06d0a72b75ef57')
 
 build() {
-    cd "lyrics-$pkgver"
+    cd "wshowlyrics-$pkgver"
     arch-meson . build
     meson compile -C build
 }
 
 check() {
-    cd "lyrics-$pkgver"
+    cd "wshowlyrics-$pkgver"
     # Verify binary was built successfully
     test -f build/lyrics
     # Verify helper script exists
@@ -30,7 +30,7 @@ check() {
 }
 
 package() {
-    cd "lyrics-$pkgver"
+    cd "wshowlyrics-$pkgver"
     meson install -C build --destdir="$pkgdir"
 
     # Rename binary from lyrics to wshowlyrics
