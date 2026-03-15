@@ -6,4 +6,4 @@ build:
 	makepkg --printsrcinfo > .SRCINFO
 
 clean:
-	rm -rf pkg src tuvpn-gui *.pkg.tar.*
+	rm -rf pkg src tuvpn-gui *.pkg.tar.* tuvpn-gui-v*.tar.gz
