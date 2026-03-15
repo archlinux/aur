@@ -6,12 +6,12 @@
 pkgname=python-markovify
 _pkg="${pkgname#python-}"
 pkgver=0.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple, extensible Markov chain generator"
 arch=('any')
 url='https://github.com/jsvine/markovify'
 license=('MIT')
-depends=('python-unidecode')
+depends=('python' 'python-unidecode')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-nose')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -29,5 +29,6 @@ check() {
 
 package() {
 	cd "$_pkg-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

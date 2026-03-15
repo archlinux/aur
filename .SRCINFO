@@ -1,7 +1,7 @@
 pkgbase = python-markovify
 	pkgdesc = Simple, extensible Markov chain generator
 	pkgver = 0.9.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jsvine/markovify
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = python-markovify
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python
 	depends = python-unidecode
 	source = python-markovify-0.9.4.tar.gz::https://github.com/jsvine/markovify/archive/v0.9.4.tar.gz
 	sha256sums = c854b7a2600be322028a9f9deda58e54f3dd984f1828ee2dd19faaedbb79bb59
