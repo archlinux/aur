@@ -1,7 +1,7 @@
 pkgbase = python-vine
 	pkgdesc = Python promises
 	pkgver = 5.1.0
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/celery/vine
 	arch = any
 	license = BSD-3-Clause
@@ -12,7 +12,7 @@ pkgbase = python-vine
 	makedepends = python-wheel
 	makedepends = git
 	depends = python
-	source = python-vine-5.1.0::git+https://github.com/celery/vine.git#tag=v5.1.0
+	source = python-vine::git+https://github.com/celery/vine.git#tag=v5.1.0
 	source = fix-removed-setup-method.patch
 	b2sums = 72aca5038faf4158fe4f3669cc48d096f1477d905725ea08f16c7ce6a9f24df02adf1f21cb13389e6e6b621ff3d191a3a652d3e3275c675647c70316d0ab0934
 	b2sums = cae703dc329a1bf4bbf10fb890509550aff10c8586eba6b3f8d82a6b5662e030ea7e10a872e6e2d8d015e8305b615ba8cd026377c255f3e3ebee0899409734e8
