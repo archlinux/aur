@@ -9,6 +9,9 @@ pkgbase = mlir
 	makedepends = llvm>=22
 	makedepends = lld
 	depends = llvm-libs
+	depends = glibc
+	depends = libstdc++
+	depends = libgcc
 	options = !lto
 	options = !debug
 	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.1/llvm-project-22.1.1.src.tar.xz
