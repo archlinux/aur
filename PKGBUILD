@@ -3,7 +3,7 @@
 _pkgname='pixora-icons'
 pkgname="$_pkgname-git"
 pkgdesc='16-bit icons theme for Linux desktops. (GIT version)'
-pkgver=1.0.0.r261.ga5cad5d
+pkgver=1.0.0.r264.gf5604c1
 pkgrel=1
 url='https://github.com/tsora1603/pixora-icons'
 arch=('any')
@@ -24,26 +24,28 @@ pkgver() {
 
 package() {
   install -dm755 "$pkgdir/usr/share/icons/pixora"
-  cp -fa pixora-icons/pixora/* "$pkgdir/usr/share/icons/pixora/"
+  cp -fa "$srcdir/$_pkgname/pixora/"* "$pkgdir/usr/share/icons/pixora/"  
   find "$pkgdir/usr/share/icons/pixora" -type d -print0 \
     | xargs -r0 chmod 0755
   find "$pkgdir/usr/share/icons/pixora" -type f -print0 \
     | xargs -r0 chmod 0644
 
-  cp -fa pixora-icons/pixelitos-light/* "$pkgdir/usr/share/icons/pixelitos-light/"
+  install -dm755 "$pkgdir/usr/share/icons/pixelitos-light"
+  cp -fa "$srcdir/$_pkgname/pixelitos-light/"* "$pkgdir/usr/share/icons/pixelitos-light/"
   find "$pkgdir/usr/share/icons/pixelitos-light" -type d -print0 \
     | xargs -r0 chmod 0755
   find "$pkgdir/usr/share/icons/pixelitos-light" -type f -print0 \
     | xargs -r0 chmod 0644
 
-  cp -fa pixora-icons/pixelitos-dark/* "$pkgdir/usr/share/icons/pixelitos-dark/"
+  install -dm755 "$pkgdir/usr/share/icons/pixelitos-dark"
+  cp -fa "$srcdir/$_pkgname/pixelitos-dark/"* "$pkgdir/usr/share/icons/pixelitos-dark/"
   find "$pkgdir/usr/share/icons/pixelitos-dark" -type d -print0 \
     | xargs -r0 chmod 0755
   find "$pkgdir/usr/share/icons/pixelitos-dark" -type f -print0 \
     | xargs -r0 chmod 0644
 
   install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-  mv -f "$pkgdir/usr/share/icons/Pixora/README.md" \
+  mv -f "$pkgdir/usr/share/icons/pixora/README.md" \
     "$pkgdir/usr/share/doc/$pkgname/"
   cd "$pkgdir/usr/share/doc" && ln -sr "$pkgname" "$_pkgname"
 }
