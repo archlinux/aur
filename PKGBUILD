@@ -1,6 +1,6 @@
 # Maintainer: Snow Sky
 pkgname=gonob
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A simple AUR helper written in golang"
 url="https://github.com/SnowsSky/gonob"
@@ -10,7 +10,7 @@ depends=('pacman' 'git' 'fakeroot' 'debugedit' 'curl')
 optdepends=('sudo: privilege elevation')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('1d288c3966b7c8bf661e7bf3f028d5cb1e4bcdb04730715e5409e4f7897b7e86')
+sha256sums=('83255edba80120b2ddd18962bb60d6e6d42d69541349899265892d7bb7da2d55')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
