@@ -1,6 +1,6 @@
 pkgbase = r-jaspacceptancesampling
 	pkgdesc = Lot sampling for acceptance/rejection of lots
-	pkgver = 0.95.3
+	pkgver = 0.96.0
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspAcceptanceSampling
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = r-jaspacceptancesampling
 	depends = r-vcd
 	depends = r-vcdextra
 	depends = r-acceptancesampling
-	source = jaspAcceptanceSampling_0.95.3.tar.gz::https://github.com/jasp-stats/jaspAcceptanceSampling/archive/refs/tags/v0.95.3.tar.gz
-	sha256sums = a8be23c71464ff09ca6f6ba778336a03f165226f5882e0950fffa4e28225dd83
+	source = jaspAcceptanceSampling_0.96.0.tar.gz::https://github.com/jasp-stats/jaspAcceptanceSampling/archive/refs/tags/v0.96.0.tar.gz
+	sha256sums = 7aa65e17e95a76e42f4a072044acfeef8433908ba97865eef8c2eee6e7df8090
 
 pkgname = r-jaspacceptancesampling
