@@ -1,6 +1,6 @@
 # Maintainer: Tenchirox <tenchirox@github.com>
 pkgname=all4laser-bin
-pkgver=0.1.48
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Open-source laser engraver controller built with Rust and egui (prebuilt binary)"
 arch=('x86_64' 'aarch64')
@@ -22,11 +22,10 @@ depends=(
 )
 provides=("all4laser=${pkgver}")
 conflicts=('all4laser' 'all4laser-git')
-_deb_ver="0.1.0"
-source_x86_64=("${pkgname}-${pkgver}-amd64.deb::https://github.com/Tenchirox/All4Laser/releases/download/v${pkgver}/all4laser_${_deb_ver}_amd64.deb")
-source_aarch64=("${pkgname}-${pkgver}-arm64.deb::https://github.com/Tenchirox/All4Laser/releases/download/v${pkgver}/all4laser_${_deb_ver}_arm64.deb")
-sha256sums_x86_64=('056e64ad65d5e720f4c9bcd754a9eaf433903fc167ff36ce335cda7950740d3d')
-sha256sums_aarch64=('decb7e911e71b45669420ec51f0e250a1f3b8ca660919f2a223a1deb5a0ee7e9')
+source_x86_64=("${pkgname}-${pkgver}-amd64.deb::https://github.com/Tenchirox/All4Laser/releases/download/v${pkgver}/all4laser_${pkgver}_amd64.deb")
+source_aarch64=("${pkgname}-${pkgver}-arm64.deb::https://github.com/Tenchirox/All4Laser/releases/download/v${pkgver}/all4laser_${pkgver}_arm64.deb")
+sha256sums_x86_64=('d8485185b08cf90433cf66f86d8ba93e2a2a72a250d5005d1bc72bdef35ed6e8')
+sha256sums_aarch64=('1dab65dc018f29d332b2d0e16705eb26fd6b2dcba13d42084e16b8a87baa73b7')
 
 package() {
     cd "${srcdir}"
