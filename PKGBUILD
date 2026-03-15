@@ -1,7 +1,7 @@
 # Maintainer: WackyIdeas <wackyideas@disroot.org>
 
 pkgname=('aerothemeplasma-desktop-git')
-pkgver=6.6.1_689.r05315a9
+pkgver=6.6.1_696.r786c863
 pkgrel=1
 pkgdesc="An alternative shell for KDE Plasma that aims to replicate the look and feel of Windows 7"
 arch=(x86_64)
