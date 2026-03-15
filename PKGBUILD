@@ -1,6 +1,6 @@
 pkgname=farmmod
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mod manager for Farming Simulator on Linux"
 arch=("any")
 url="https://github.com/henriquejsza/FarmMod"
@@ -24,9 +24,9 @@ provides=("farmmod-hub")
 conflicts=("farmmod-hub")
 replaces=("farmmod-hub")
 
-_srcdir="FarmMod-$pkgver"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/henriquejsza/FarmMod/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("3bc60be4d1a05813a2490df866c1c1342fbc4685d89a52dbe802d7e33b7dcce0")
+_srcdir="FarmMod-main"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/henriquejsza/FarmMod/archive/refs/heads/main.tar.gz")
+sha256sums=("c5b9a6d43c5180dd463852ff91ed992f2f54e38b1ba369907b6b3c2c1b981c4d")
 
 build() {
   cd "$srcdir/$_srcdir"
