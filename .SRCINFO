@@ -1,7 +1,7 @@
 pkgbase = farmmod
 	pkgdesc = Mod manager for Farming Simulator on Linux
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/henriquejsza/FarmMod
 	arch = any
 	license = AGPL-3.0-or-later

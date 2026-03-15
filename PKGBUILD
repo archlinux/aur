@@ -1,6 +1,6 @@
 pkgname=farmmod
 pkgver=0.1.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Mod manager for Farming Simulator on Linux"
 arch=("any")
 url="https://github.com/henriquejsza/FarmMod"
