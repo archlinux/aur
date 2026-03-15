@@ -1,0 +1,19 @@
+pkgbase = pybar-bin
+	pkgdesc = Statusbar for Sway/Hyprland
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/thnikk/pybar
+	arch = x86_64
+	license = MIT
+	depends = gtk4-layer-shell
+	optdepends = libpulse: for volume control
+	optdepends = libvirt: for virtual machine control
+	optdepends = git: for git module
+	optdepends = docker: for docker module
+	optdepends = networkmanager: for network module
+	provides = pybar
+	conflicts = pybar
+	source = pybar-bin-2.0.0.zip::https://github.com/thnikk/pybar/releases/download/v2.0.0/pybar-arch.zip
+	sha256sums = fbc2a6be62750dced79db44c782c6b63ffded9aba4e51ecc83534757dfd494c2
+
+pkgname = pybar-bin
