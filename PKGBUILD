@@ -3,7 +3,7 @@
 
 pkgname=python-matrix-nio
 pkgver=0.25.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Python Matrix client library, designed according to sans I/O principles"
 arch=("any")
 url="https://github.com/matrix-nio/matrix-nio"
@@ -54,7 +54,7 @@ optdepends=(
     'python-olm: end-to-end encryption support'
 )
 source=(
-    "$pkgname-$pkgver::git+$url.git#tag=$pkgver"
+    "$pkgname::git+$url.git#tag=$pkgver"
     "0001-Fix-get_openid_token-the-endpoint-needs-an-empty-jso.patch"
     "0002-Add-unread_thread_notifications-to-SyncResponse-540.patch"
     "0003-Fix-print-for-FileResponse-when-download-is-saved-to.patch"
@@ -69,7 +69,7 @@ b2sums=('1b89406dbfc81c7b27fb4d651e48b1699c95ddc5993da65c364cf307b63b606c6cb7ebb
         '721e4f6f08e2151c2537623f94b8594ca90a6b92bbd58e5d8950e6d5aa0db9f6b481a7385fc6c237b88b57db34b73086bdf667ac9b551c208042300c5ebceccf')
 
 prepare() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     patch --forward --strip 1 --input ../0001-Fix-get_openid_token-the-endpoint-needs-an-empty-jso.patch
     patch --forward --strip 1 --input ../0002-Add-unread_thread_notifications-to-SyncResponse-540.patch
     patch --forward --strip 1 --input ../0003-Fix-print-for-FileResponse-when-download-is-saved-to.patch
@@ -78,17 +78,17 @@ prepare() {
 }
 
 build() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     PYTHONPATH="$PWD/src" pytest --benchmark-disable
 }
 
 package() {
-    cd "$pkgname-$pkgver"
+    cd "$pkgname"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -vDm644 README.md -t "$pkgdir/usr/share/$pkgname/"
     install -vDm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
