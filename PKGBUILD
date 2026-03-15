@@ -2,7 +2,7 @@
 
 pkgname=livekit
 pkgver=1.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc='LiveKit: Real-time video, audio and data for developers'
 arch=(x86_64)
 url='https://livekit.io/'
@@ -16,7 +16,7 @@ source=(
 )
 sha256sums=(
   '6e0d22cf782c2c91b731ec4a84f4ae7e63d59ea189bb41afc945fc124b753923'
-  '91d65dd3f144d11fb43b8526595dce76397185b818b84c8a1068a6944ceaa7b5'
+  'c23c7576f6ab9e94cde3501581a5732e3678bd51321903cff3171906456c40bf'
 )
 
 build() {
