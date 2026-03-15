@@ -1,13 +1,12 @@
 # Maintainer: damachin3 (damachine3 at proton dot me)
 # website: https://github.com/damachine/tkginstaller
-
 pkgname=tkginstaller-git
-pkgver=0.30.4
+pkgver=0.30.5
 pkgrel=1
 provides=('tkginstaller')
 replaces=('tkginstaller')
 conflicts=('tkginstaller')
-pkgdesc="AIO wrapper for installing TKG packages from the Frogging-Family repositories"
+pkgdesc="bash wrapper to build & install Frogging-Family stuff without the hassle"
 arch=('x86_64')
 url="https://github.com/damachine/tkginstaller"
 license=('MIT')
@@ -20,7 +19,7 @@ optdepends=('bat: syntax highlighting'
             'wdiff: comparing config files')
 install=tkginstaller.install
 source=("tkginstaller::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller")
-sha256sums=('7d1bbc1be462957e680cc49423b47670c4ca3d4ea6a76638047870a91504f678')
+sha256sums=('c3806a9cbcca866cf79b0222cda27edbcd07f89b3de08c1aa84fca1ea3a4ef88')
 
 package() {
     install -Dm755 "$srcdir/tkginstaller" "$pkgdir/usr/bin/tkginstaller"
