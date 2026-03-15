@@ -16,13 +16,13 @@ makedepends=(
     'p7zip'
     'npm'
     'curl'
-    'python'
 )
 optdepends=(
     'xdg-utils: for opening URLs'
     'bubblewrap: for sandbox isolation'
     'gnome-keyring: SecretService provider for secure credential storage'
     'kwallet: SecretService provider for KDE users'
+    'python: for enable-cowork.py patch script'
 )
 provides=('claude-cowork' 'claude-desktop')
 conflicts=(
@@ -34,30 +34,20 @@ conflicts=(
 )
 options=('!strip')
 
-_rnet_wheel="rnet-3.0.0rc14-cp311-abi3-manylinux_2_34_x86_64.whl"
-
 source=(
     "git+https://github.com/johnzfitch/claude-cowork-linux.git"
-    "https://github.com/johnzfitch/claude-cowork-linux/releases/download/v3.0.2/${_rnet_wheel}"
 )
 sha256sums=(
     'SKIP'
-    'SKIP'
 )
-noextract=("${_rnet_wheel}")
 
 pkgver() {
     cd "${srcdir}"
 
-    # Use rnet to query the DMG API (bypasses Cloudflare)
-    local venv_dir="${srcdir}/_rnet_venv"
-    python -m venv "$venv_dir" 2>/dev/null
-    "$venv_dir/bin/pip" install --quiet "${srcdir}/${_rnet_wheel}" 2>/dev/null
-
+    # Use Node.js to query the DMG API
     local version
-    version=$("$venv_dir/bin/python" "${srcdir}/claude-cowork-linux/fetch-dmg.py" 2>/dev/null \
+    version=$(node "${srcdir}/claude-cowork-linux/fetch-dmg.js" 2>/dev/null \
         | awk '{print $1}')
-    rm -rf "$venv_dir"
 
     echo "${version:-1.1.4010}"
 }
@@ -65,21 +55,12 @@ pkgver() {
 prepare() {
     cd "${srcdir}"
 
-    # Set up rnet venv for DMG URL fetch
-    local venv_dir="${srcdir}/_rnet_venv"
-    if [[ ! -d "$venv_dir" ]]; then
-        python -m venv "$venv_dir"
-        "$venv_dir/bin/pip" install --quiet "${srcdir}/${_rnet_wheel}"
-    fi
-
-    # Fetch latest DMG URL via rnet, download with curl
+    # Fetch latest DMG URL via Node.js, download with curl
     echo "Fetching latest Claude Desktop DMG URL..."
     local dmg_url
-    dmg_url=$("$venv_dir/bin/python" "${srcdir}/claude-cowork-linux/fetch-dmg.py" --url)
+    dmg_url=$(node "${srcdir}/claude-cowork-linux/fetch-dmg.js" --url)
     echo "Downloading DMG from CDN..."
     curl -fSL --progress-bar -o "${srcdir}/Claude.dmg" "$dmg_url"
-
-    rm -rf "$venv_dir"
 
     # Install asar tool locally
     npm install --prefix "${srcdir}" @electron/asar >/dev/null 2>&1
@@ -96,7 +77,7 @@ build() {
     local seven_z_exit=0
     7z x -y "${srcdir}/Claude.dmg" -o"${srcdir}/dmg-extracted" >/dev/null 2>&1 || seven_z_exit=$?
     # 7z exit 1 = warning (e.g. "Dangerous link path" for /Applications symlink)
-    if [[ $seven_z_exit -gt 1 ]]; then
+    if [[ $seven_z_exit -gt 2 ]]; then
         echo "Error: Failed to extract DMG (7z exit code: $seven_z_exit)"
         return 1
     fi
@@ -149,6 +130,11 @@ build() {
           "${srcdir}/linux-app-extracted/frame-fix-entry.js"
     cp -f "${_repo}/stubs/frame-fix/frame-fix-wrapper.js" \
           "${srcdir}/linux-app-extracted/frame-fix-wrapper.js"
+
+    # Copy cowork orchestration modules
+    mkdir -p "${srcdir}/linux-app-extracted/cowork"
+    cp -f "${_repo}"/stubs/cowork/*.js \
+          "${srcdir}/linux-app-extracted/cowork/"
 
     # Apply cowork patch
     echo "Applying cowork patch..."
