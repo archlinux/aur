@@ -1,6 +1,6 @@
 pkgbase = spm-arch
 	pkgdesc = Simple Package Manager - Interactive fzf tui for Arch package management
-	pkgver = 2.6
+	pkgver = 2.6.1
 	pkgrel = 1
 	url = https://github.com/adelmonte/Simple_Package_Manager
 	install = spm.install
@@ -10,7 +10,7 @@ pkgbase = spm-arch
 	depends = yay
 	provides = spm
 	conflicts = spm
-	source = spm-arch-2.6.tar.gz::https://github.com/adelmonte/Simple_Package_Manager/releases/download/v2.6/spm-2.6.tar.gz
-	sha256sums = 694a40d4226a7c473e5db7bd11a9eb54bfd85228db50cdebb77f997bb49bc4fe
+	source = spm-arch-2.6.1.tar.gz::https://github.com/adelmonte/Simple_Package_Manager/releases/download/v2.6.1/spm-2.6.1.tar.gz
+	sha256sums = 618c3773743fe4e8a17115c7bf4a6c4a05d63e0ceddc5693084127d66f1b9224
 
 pkgname = spm-arch
