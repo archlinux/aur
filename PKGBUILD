@@ -3,7 +3,7 @@
 
 pkgname=micyou-bin
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn your Android device into a high-quality wireless microphone for your PC"
 arch=('x86_64')
 url="https://github.com/LanRhyme/MicYou"
