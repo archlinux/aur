@@ -1,0 +1,13 @@
+pkgbase = s3mon
+	pkgdesc = Monitor S3 buckets for missing files
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/s3mon/s3mon
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cargo
+	options = !lto
+	source = s3mon-0.6.0.tar.gz::https://crates.io/api/v1/crates/s3mon/0.6.0/download
+	sha256sums = f2d8bfd6a0ef957b6968c49b9f6acf00c463eecab446ccf0699f6d2312cb65c8
+
+pkgname = s3mon
