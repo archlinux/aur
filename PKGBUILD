@@ -21,6 +21,7 @@ pkgver() {
 package() {
   cd "$pkgname"
   install -Dm755 ./getnf "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 ./man/${pkgname}.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
   install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
