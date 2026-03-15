@@ -1,7 +1,7 @@
 # Maintainer: WackyIdeas <wackyideas@disroot.org>
 
 pkgname=('uac-polkit-agent-git')
-pkgver=6.6.1_808.r7051dba
+pkgver=6.6.1_809.rd869426
 pkgrel=1
 pkgdesc="Polkit authenticator with a User Account Control interface for AeroShell desktops"
 arch=(x86_64)
