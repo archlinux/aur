@@ -1,0 +1,3 @@
+[repo-security-scanner]
+source = "git"
+git = "https://github.com/techjacker/repo-security-scanner.git"

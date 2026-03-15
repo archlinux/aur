@@ -1,0 +1,16 @@
+pkgbase = repo-security-scanner
+	pkgdesc = CLI tool that finds secrets accidentally committed to a git repo, eg passwords, private keys
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/techjacker/repo-security-scanner
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = repo-security-scanner::git+https://github.com/techjacker/repo-security-scanner.git#tag=0.4.1
+	sha256sums = 91f40a43ea1361c255a9d0de861ff911f2281b9acf9293eb1203f1818cab5e49
+
+pkgname = repo-security-scanner
