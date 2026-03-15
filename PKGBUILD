@@ -2,7 +2,7 @@
 _pkgname=aio-coding-hub
 pkgname=${_pkgname}-bin
 pkgver=0.32.0
-pkgrel=1
+pkgrel=2
 pkgdesc="一个All In One的本地AI工具, 支持Win/Mac/Linux"
 arch=('x86_64')
 url="https://github.com/dyndynjyxa/aio-coding-hub"
@@ -14,7 +14,7 @@ conflicts=("${_pkgname}")
 
 depends=(
     'glibc'
-    'gcc-libs'
+    'libgcc'
     'glib2'
     'libsoup3'
     'cairo'
@@ -39,13 +39,6 @@ package() {
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     rm -rf "${pkgdir}/usr/share/lintian"
-    rm -rf "${pkgdir}/usr/share/doc/${_pkgname}/changelog.Debian.gz"
-
     rm -rf "${pkgdir}/DEBIAN"
-
-    chown -R root:root "${pkgdir}/"
-
-    find "${pkgdir}" -type d -exec chmod 755 {} +
-
     rm -rf "${pkgdir}/usr/share/doc/${_pkgname}"
 }

@@ -1,12 +1,12 @@
 pkgbase = aio-coding-hub-bin
 	pkgdesc = 一个All In One的本地AI工具, 支持Win/Mac/Linux
 	pkgver = 0.32.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dyndynjyxa/aio-coding-hub
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
 	depends = glib2
 	depends = libsoup3
 	depends = cairo
