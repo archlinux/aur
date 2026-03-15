@@ -1,11 +1,20 @@
 pkgbase = fuck
-	pkgdesc = Makes sudo and the f-word one and the same
-	pkgver = 1.0.0
+	pkgdesc = Magnificent app which corrects your previous console command - with improved Arch Linux package prediction
+	pkgver = 3.32
 	pkgrel = 1
-	url = https://github.com/eshnd/f-bomb
+	url = https://github.com/RonanHevenor/fuck
 	arch = any
 	license = MIT
-	source = f-bomb-1.0.0.tar.gz::https://github.com/eshnd/f-bomb/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 3b991fdaf110eb731a94fc23430104d82e77053bcb7deb6f4331e07b65c4e370
+	depends = python
+	depends = python-colorama
+	depends = python-decorator
+	depends = python-psutil
+	depends = python-pyte
+	depends = python-six
+	optdepends = python-pkgfile: better binary-to-package lookup
+	provides = thefuck
+	conflicts = thefuck
+	source = fuck-3.32.tar.gz::https://github.com/RonanHevenor/fuck/archive/refs/heads/master.tar.gz
+	sha256sums = SKIP
 
 pkgname = fuck

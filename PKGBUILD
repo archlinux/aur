@@ -1,16 +1,34 @@
-# Maintainer: Eshaan Desh eshaan2031@icloud.com
+# Maintainer: spacechicken <spacechicken at aur>
 pkgname=fuck
-pkgver=1.0.0
+pkgver=3.32
 pkgrel=1
-pkgdesc="Makes sudo and the f-word one and the same"
+pkgdesc="Magnificent app which corrects your previous console command - with improved Arch Linux package prediction"
 arch=('any')
-url="https://github.com/eshnd/f-bomb"
+url="https://github.com/RonanHevenor/fuck"
 license=('MIT')
-depends=()
-source=("f-bomb-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('3b991fdaf110eb731a94fc23430104d82e77053bcb7deb6f4331e07b65c4e370')
-package() {
-  cd "$srcdir/f-bomb-$pkgver"
-  install -Dm755 fuck "$pkgdir/usr/bin/fuck"
+depends=(
+  'python'
+  'python-colorama'
+  'python-decorator'
+  'python-psutil'
+  'python-pyte'
+  'python-six'
+)
+optdepends=(
+  'python-pkgfile: better binary-to-package lookup'
+)
+provides=('thefuck')
+conflicts=('thefuck')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/RonanHevenor/fuck/archive/refs/heads/master.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+  cd "${srcdir}/fuck-master"
+  python setup.py build
 }
 
+package() {
+  cd "${srcdir}/fuck-master"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
