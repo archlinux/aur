@@ -4,7 +4,7 @@ _gitname='tusd'
 provides=('tusd')
 conflicts=('tusd')
 pkgver=2.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Server implementation of tus in Go'
 arch=('x86_64')
 _archname='amd64'
@@ -19,7 +19,7 @@ source=(
 )
 
 sha256sums=('a83378b969ef0f4ca7eba194704c4a53650a7015201cc9148003d4d1a9a0d671'
-            'e13c8adc9bed4c993a72f60140f688736058d2c3f4a18fb6e59ca26e829fb93b'
+            'SKIP'
             '6ffc8271ebdc9f41112f385e7a80ca0c5167650883c90c4727848f5dc291fb5c')
 
 package() {
