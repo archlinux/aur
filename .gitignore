@@ -3,3 +3,4 @@ src/
 *.tar.zst
 *.tar.gz
 clean.sh
+*.deb
