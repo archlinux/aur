@@ -1,0 +1,13 @@
+pkgbase = jasm-bin
+	pkgdesc = A JVM assembler for the modern age
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/roscopeco/jasm
+	arch = any
+	license = MIT
+	depends = java-runtime=11
+	depends = bash
+	source = https://github.com/roscopeco/jasm/releases/download/v0.7.0/jasm-0.7.0.tar.gz
+	sha256sums = 069c1b35b9e01046d77907cffed90220ed02ebc0a07dbe44b21f46e62fade990
+
+pkgname = jasm-bin
