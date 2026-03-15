@@ -1,0 +1,5 @@
+[godshell-bin]
+source = "github"
+github = "Raulgooo/godshell"
+use_latest_release = true
+prefix = "v"

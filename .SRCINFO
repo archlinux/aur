@@ -1,0 +1,22 @@
+pkgbase = godshell-bin
+	pkgdesc = A Tool to give your LLM access to your Kernel
+	pkgver = 0.9.7
+	pkgrel = 1
+	url = https://github.com/Raulgooo/godshell
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = godshell
+	conflicts = godshell
+	source = SYSTEMD-0.9.7.service::https://raw.githubusercontent.com/Raulgooo/godshell/v0.9.7/packaging/godshell.service
+	source = godshell.sysusers
+	source = godshell.tmpfiles
+	sha256sums = 59f2041c8a0b413768ef081182c778f998a662a538f7d3af9478af27790e95dc
+	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = b36b7f843e001b779f8e9fe939d6e19cce3701fac0c3323d27b63931f7f90187
+	source_x86_64 = godshell-x86_64-0.9.7.tgz::https://github.com/Raulgooo/godshell/releases/download/v0.9.7/godshell_linux_amd64.tar.gz
+	sha256sums_x86_64 = 0b5fcc4d10a10838bffa75309f264b89b868c62a197029885789325cb3011d01
+	source_aarch64 = godshell-aarch64-0.9.7.tgz::https://github.com/Raulgooo/godshell/releases/download/v0.9.7/godshell_linux_arm64.tar.gz
+	sha256sums_aarch64 = 537f7984321207be04d00400d726537338f228d7786832e271f917e804db3853
+
+pkgname = godshell-bin

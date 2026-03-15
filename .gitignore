@@ -1,0 +1,6 @@
+*
+!.nvchecker.toml
+!.gitignore
+!godshell*
+!PKGBUILD
+!.SRCINFO
