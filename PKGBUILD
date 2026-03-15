@@ -1,6 +1,6 @@
 pkgname=farmmod
 pkgver=0.1.0
-pkgrel=3
+pkgrel=1
 pkgdesc="Mod manager for Farming Simulator on Linux"
 arch=("any")
 url="https://github.com/henriquejsza/FarmMod"
@@ -25,7 +25,7 @@ conflicts=("farmmod-hub")
 replaces=("farmmod-hub")
 
 _srcdir="FarmMod-$pkgver"
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/henriquejsza/FarmMod/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=("3bc60be4d1a05813a2490df866c1c1342fbc4685d89a52dbe802d7e33b7dcce0")
 
 build() {
@@ -49,47 +49,22 @@ print(sysconfig.get_path("stdlib"))
 PY
 )
 
-  if [[ -x "$pkgdir/usr/bin/farmmod-hub" ]]; then
+  if [[ -x "$pkgdir/usr/bin/farmmod-hub" && ! -x "$pkgdir/usr/bin/farmmod" ]]; then
     ln -s "farmmod-hub" "$pkgdir/usr/bin/farmmod"
   fi
 
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "AUTHORS" "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
 
-  install -d "$pkgdir/usr/share/applications"
-  cat > "$pkgdir/usr/share/applications/io.github.henriquejsza.farmmod-hub.desktop" <<'EOF'
-[Desktop Entry]
-Type=Application
-Name=FarmMod
-Comment=Mod manager for Farming Simulator on Linux
-Exec=farmmod
-Icon=io.github.henriquejsza.farmmod-hub
-Terminal=false
-Categories=Utility;Game;
-StartupNotify=true
-EOF
+  install -Dm644     "packaging/io.github.henriquejsza.farmmod-hub.desktop"     "$pkgdir/usr/share/applications/io.github.henriquejsza.farmmod-hub.desktop"
 
-  install -Dm644 \
-    "data/logo/io.github.henriquejsza.farmmod-hub.png" \
-    "$pkgdir/usr/share/icons/hicolor/512x512/apps/io.github.henriquejsza.farmmod-hub.png"
-  install -Dm644 \
-    "data/logo/io.github.henriquejsza.farmmod-hub.png" \
-    "$pkgdir/usr/share/icons/hicolor/256x256/apps/io.github.henriquejsza.farmmod-hub.png"
-  install -Dm644 \
-    "data/logo/io.github.henriquejsza.farmmod-hub.png" \
-    "$pkgdir/usr/share/icons/hicolor/128x128/apps/io.github.henriquejsza.farmmod-hub.png"
+  install -Dm644     "data/logo/io.github.henriquejsza.farmmod-hub.png"     "$pkgdir/usr/share/icons/hicolor/512x512/apps/io.github.henriquejsza.farmmod-hub.png"
+  install -Dm644     "data/logo/io.github.henriquejsza.farmmod-hub.png"     "$pkgdir/usr/share/icons/hicolor/256x256/apps/io.github.henriquejsza.farmmod-hub.png"
+  install -Dm644     "data/logo/io.github.henriquejsza.farmmod-hub.png"     "$pkgdir/usr/share/icons/hicolor/128x128/apps/io.github.henriquejsza.farmmod-hub.png"
 
-  install -Dm644 \
-    "data/style.css" \
-    "$pkgdir/usr/share/farmmod/data/style.css"
-  install -Dm644 \
-    "data/logo/io.github.henriquejsza.farmmod-hub.png" \
-    "$pkgdir/usr/share/farmmod/data/logo/io.github.henriquejsza.farmmod-hub.png"
+  install -Dm644     "data/style.css"     "$pkgdir/usr/share/farmmod/data/style.css"
+  install -Dm644     "data/logo/io.github.henriquejsza.farmmod-hub.png"     "$pkgdir/usr/share/farmmod/data/logo/io.github.henriquejsza.farmmod-hub.png"
 
-  install -Dm644 \
-    "data/style.css" \
-    "$pkgdir$_python_stdlib/data/style.css"
-  install -Dm644 \
-    "data/logo/io.github.henriquejsza.farmmod-hub.png" \
-    "$pkgdir$_python_stdlib/data/logo/io.github.henriquejsza.farmmod-hub.png"
+  install -Dm644     "data/style.css"     "$pkgdir$_python_stdlib/data/style.css"
+  install -Dm644     "data/logo/io.github.henriquejsza.farmmod-hub.png"     "$pkgdir$_python_stdlib/data/logo/io.github.henriquejsza.farmmod-hub.png"
 }
