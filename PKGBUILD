@@ -3,7 +3,7 @@
 # Contributor: adament <adament@adament.net>
 # Contributor: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=stavekontrolden
-pkgver=2.9.081
+pkgver=2.9.082
 pkgrel=1
 pkgdesc='Danish dictionaries; for use with multiple programs'
 arch=('any')
@@ -25,7 +25,7 @@ provides=(
   'mythes-da')
 conflicts=("${provides[@]}")
 source=("https://stavekontrolden.dk/dictionaries/da_DK/da_DK-$pkgver.oxt")
-b2sums=('9a9cdcde278b9e8746914efefb315deee3bf3278eaf28048b5f996cecc72021e819061b2fac8113e86d289276784a037b02fdfdf68158181513ddd64926c5ba7')
+b2sums=('a5d16992e6dd65fb721ccb377398cc5cd41ec65e8f10a02f84c57f34b4c243509ca8fea936379cc3d5a6aff9716bc2f8cf9c4ae6e484c495af5687bf0ca0c855')
 
 package() {
   # LibreOffice extension
