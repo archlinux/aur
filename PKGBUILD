@@ -1,5 +1,5 @@
 pkgname=yasos-bin
-pkgver=20260312
+pkgver=20260315
 pkgrel=1
 pkgdesc="Compiler for the Yasos programming language (binary release)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('yasos')
 conflicts=('yasos-git')
 
 source=("https://github.com/DameChocolateYa/yasos/releases/download/v$pkgver-$pkgrel/yasos-linux-$pkgver-x86_64.tar.xz")
-sha256sums=('d11ed6bf3b7898cc61c40eb3ada0d477c3c9c0060a3edf170a6c934dfc93055e')
+sha256sums=('b93302646cc391a6384e484f6a69b163492365cc669999a8deebf9adb454229a')
 
 package() {
   cd "$srcdir/yasos"
