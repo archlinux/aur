@@ -1,0 +1,15 @@
+pkgbase = interpkit
+	pkgdesc = A fast, lightweight CLI helper tool to speed up data lookup from engineering tables (d/L function).
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/lainx86/InterpKit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	source = git+https://github.com/lainx86/InterpKit.git#tag=v2.0.0
+	sha256sums = SKIP
+
+pkgname = interpkit
