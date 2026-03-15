@@ -3,7 +3,7 @@
 pkgname=arcfetch
 pkgver=0.7.0
 pkgrel=1
-pkgdesc="Blazing-fast Arch Linux sysinfo "
+pkgdesc="A minimal and fast Rust-based system information fetch utility. "
 arch=('x86_64' 'aarch64')
 url="https://github.com/tonycth7/arcfetch"
 license=('MIT')

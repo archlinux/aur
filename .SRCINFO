@@ -1,5 +1,5 @@
 pkgbase = arcfetch
-	pkgdesc = Blazing-fast Arch Linux sysinfo
+	pkgdesc = A minimal and fast Rust-based system information fetch utility.
 	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/tonycth7/arcfetch
