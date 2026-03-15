@@ -10,6 +10,6 @@ pkgbase = myground
 	makedepends = bun-bin
 	depends = docker
 	source = myground-0.1.75.tar.gz::https://github.com/backmeupplz/myground/archive/refs/tags/v0.1.75.tar.gz
-	sha256sums = bb38a648ff3654ea50b98fd70c7697557ed2076b6b1a14f5dfe8565f29b509d2
+	sha256sums = 83e018e77f6fc482b9747831e5d2743e96320842ae5f19dd1e2bb258d800d88a
 
 pkgname = myground
