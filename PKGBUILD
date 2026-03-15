@@ -2,7 +2,7 @@
 pkgname=authelia-git
 _pkgname=authelia
 pkgver=4.39.16.r0.g42c98c8f3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Cloud ready multi-factor authentication portal for your Apps."
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/authelia/authelia"
@@ -31,7 +31,7 @@ pkgver() {
 }
 
 build() {
-  export GOPATH="$srcdir/gopath" PATH="$PATH:$srcdir/gopath/bin" CGO_CFLAGS="-O2 -pipe -fno-plt -fstack-protector-strong" CGO_CPPFLAGS="-D_FORTIFY_SOURCE=3" CGO_CXXFLAGS="-O2 -pipe -fno-plt" CGO_LDFLAGS="-Wl,-O1,-sort-common,-as-needed,-z,relro,-z,now" GOEXPERIMENT="nosynchashtriemap"
+  export GOPATH="$srcdir/gopath" PATH="$PATH:$srcdir/gopath/bin" CGO_CFLAGS="-O2 -pipe -fno-plt -fstack-protector-strong" CGO_CPPFLAGS="-D_FORTIFY_SOURCE=3" CGO_CXXFLAGS="-O2 -pipe -fno-plt" CGO_LDFLAGS="-Wl,-O1,-sort-common,-as-needed,-z,relro,-z,now"
   cd "$srcdir/$_pkgname/web"
 
   COMMIT=$(git rev-parse HEAD)
