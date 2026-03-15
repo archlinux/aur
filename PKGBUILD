@@ -2,7 +2,7 @@
 
 _pkgname=sslh
 pkgname=$_pkgname-git
-pkgver=2.3.0.r17.g9fadd60
+pkgver=2.3.0.r18.g70a776f
 pkgrel=1
 pkgdesc="SSL/SSH/OpenVPN/XMPP/tinc port multiplexer"
 arch=('i686' 'x86_64')
@@ -67,7 +67,7 @@ package() {
   install -dm 755 "$pkgdir"/usr/lib/systemd/{system,system-generators}
   install -Dm 755 systemd-sslh-generator -t "$pkgdir/usr/lib/systemd/system-generators/systemd-sslh-generator"
   cd "$pkgdir"
-  install -Dm 644 "$srcdir"/sslh{,-fork,-select}.service usr/lib/systemd/system
+  install -Dm 644 "$srcdir"/sslh{,-ev,-fork,-select}.service usr/lib/systemd/system
 }
 
 # vim:set ts=2 sw=2 et:
