@@ -1,0 +1,18 @@
+pkgbase = squidservers-bin
+	pkgdesc = A tool to easily self-host Minecraft servers without port forwarding
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://squidservers.com
+	arch = x86_64
+	license = custom:All Rights Reserved
+	depends = hicolor-icon-theme
+	depends = nss
+	depends = libxss
+	depends = gtk3
+	depends = libnotify
+	provides = squidservers
+	conflicts = squidservers
+	source = https://cdn.squidservers.com/squidservers_0.6.1_amd64.deb
+	sha256sums = SKIP
+
+pkgname = squidservers-bin
