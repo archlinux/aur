@@ -15,22 +15,16 @@ source=("https://cdn.squidservers.com/squidservers_${pkgver}_amd64.deb")
 sha256sums=('6e13c4030befcc3363790cbb49222f43a52007cf0f526ddea6b5fd51ac511675')
 
 package() {
-    # 1. Extract the Debian data archive
-    # Most modern .debs use data.tar.xz or data.tar.zst
     msg2 "Extracting data from .deb..."
     tar -xf data.tar.* -C "${pkgdir}/"
 
-    # 2. Create a symlink in /usr/bin/ so you can launch it via terminal
-    # This points to the location we found earlier in /opt/
     msg2 "Creating executable symlink..."
     install -d "${pkgdir}/usr/bin"
     ln -sf "/opt/SquidServers/squidservers" "${pkgdir}/usr/bin/squidservers"
 
-    # 3. Fix permissions for the main executable
+    msg2 "Fixing permissions..."
     chmod +x "${pkgdir}/opt/SquidServers/squidservers"
 
-    # 4. Generate the Desktop shortcut
-    # Since the .deb had the icon in /usr/share/icons, we just point to it.
     msg2 "Installing Desktop Entry..."
     install -d "${pkgdir}/usr/share/applications"
     cat > "${pkgdir}/usr/share/applications/squidservers.desktop" << 'EOF'
@@ -44,7 +38,11 @@ Terminal=false
 Categories=Network;Game;
 EOF
 
-    # 5. Handle the license
+    msg2 "Installing icon..."
+    install -d "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps"
+    ln -sf "/opt/SquidServers/resources/app.asar.unpacked/resources/icon.png" \
+        "${pkgdir}/usr/share/icons/hicolor/1024x1024/apps/squidservers.png"
+
     install -d "${pkgdir}/usr/share/licenses/${pkgname}"
     echo "Proprietary license - see squidservers.com" > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
