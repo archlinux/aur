@@ -2,7 +2,7 @@
 
 pkgname=fmlib
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A fortran multiple-precision arithmetic library"
 arch=('x86_64')
 url="https://dmsmith.lmu.build/"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libgfortran.so')
 makedepends=('gcc-fortran')
 source=("FM_files_${pkgver}_${pkgrel}.zip::https://dmsmith.lmu.build/FM${pkgver}/FM_files.zip")
-sha256sums=('3254a08d2f82c576a01c926889ff9f6b0f0fed28fd7ce8a12ca0699138e0d8fb') 
+sha256sums=('fba4ac76c212fca77c99a21d3772cd0843b2c18b4a6443838c6466491f1d5cca') 
 
 build() {
     cd "$srcdir/FM_files/"
