@@ -1,0 +1,15 @@
+pkgbase = antiafk-rbx-sober
+	pkgdesc = The best program for AntiAFK for Sober (roblox). Or just Sober Anti-AFK.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Agzes/AntiAFK-RBX-Sober
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = gtk4
+	source = antiafk-rbx-sober-0.1.0.tar.gz::https://github.com/Agzes/AntiAFK-RBX-Sober/archive/v.0.1.0.tar.gz
+	sha256sums = 05a8d1cf8c7b7c4c81ecc271466b97d36e632e3c69f5a76b0577c4ca0659b696
+
+pkgname = antiafk-rbx-sober
