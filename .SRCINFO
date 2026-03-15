@@ -1,6 +1,6 @@
 pkgbase = gittop-tui-bin
 	pkgdesc = A beautiful terminal UI for visualizing Git repository statistics, inspired by htop/btop
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/hjr265/gittop
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = gittop-tui-bin
 	license = BSD-3-Clause
 	provides = gittop-tui
 	conflicts = gittop-tui
-	source_x86_64 = gittop-x86_64-0.1.0.tgz::https://github.com/hjr265/gittop/releases/download/v0.1.0/gittop_0.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = fcfad5f9590456714c1e65630d523a66d341773c14193fccc8b36de069ae2c2d
-	source_aarch64 = gittop-aarch64-0.1.0.tgz::https://github.com/hjr265/gittop/releases/download/v0.1.0/gittop_0.1.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = 327b8b557882acfbb8e4d9b4d2d8e1cbcbc1e2c19ab5c233b3b4ac14964af5b9
+	source_x86_64 = gittop-x86_64-0.1.1.tgz::https://github.com/hjr265/gittop/releases/download/v0.1.1/gittop_0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = cda2f67659e2c309e36c0ad1d7838858a2c17aa676977bae0d6efe6e0bc31227
+	source_aarch64 = gittop-aarch64-0.1.1.tgz::https://github.com/hjr265/gittop/releases/download/v0.1.1/gittop_0.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 20a425f1f0f29682896918a444732c7175628ac43d36390664446658d92dee52
 
 pkgname = gittop-tui-bin
