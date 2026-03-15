@@ -1,7 +1,7 @@
 # Maintainer: Jakub Szczerbiński <jszczerbinsky@gmail.com>
 
 pkgname=zeppelin-git
-pkgver=1.4.0.3
+pkgver=1.4.1.3
 pkgrel=1
 pkgdesc="A free UCI chess engine with integrated NNUE, optimized for x86_64 and aarch64 CPUs"
 arch=('x86_64' 'aarch64')
