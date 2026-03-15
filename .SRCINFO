@@ -1,20 +1,21 @@
-pkgbase = yt-dlp-ejs
+pkgbase = yt-dlp-ejs-npm
 	pkgdesc = External JavaScript for yt-dlp supporting many runtimes
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yt-dlp/ejs
 	arch = any
 	license = Unlicense
 	checkdepends = python-pytest
 	makedepends = git
-	makedepends = nodejs
 	makedepends = python-build
 	makedepends = python-hatch-vcs
 	makedepends = python-hatchling
 	makedepends = python-installer
-	depends = deno
+	depends = npm
 	depends = python
+	provides = yt-dlp-ejs
+	conflicts = yt-dlp-ejs
 	source = git+https://github.com/yt-dlp/ejs#tag=0.7.0
 	sha256sums = 4be27774ed50bcd146239e62f73225c383291f8fb0b3a8829d37ceb1f501a074
 
-pkgname = yt-dlp-ejs
+pkgname = yt-dlp-ejs-npm
