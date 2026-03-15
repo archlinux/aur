@@ -9,6 +9,7 @@ pkgbase = hypr-rdp-git
 	makedepends = cargo
 	makedepends = cmake
 	makedepends = clang
+	makedepends = nasm
 	depends = libxkbcommon
 	depends = libva
 	depends = pipewire
