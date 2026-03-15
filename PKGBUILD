@@ -3,7 +3,8 @@
 
 pkgname=franklyn-bin-dev
 _pkgname=franklyn-sentinel
-pkgver=0.4.0.dev.5
+pkgver=0.4.0.dev.6
+_pkgver_orig=0.4.0+dev.6
 pkgrel=1
 pkgdesc="Screen monitoring client for Franklyn (development channel) - streams student screen activity to teacher dashboard during exams"
 arch=('x86_64' 'aarch64')
@@ -16,10 +17,10 @@ options=('!strip')
 
 _base_url="https://github.com/2526-4ahitm-itp/2526-4ahitm-franklyn/releases/download"
 
-source_x86_64=("${_pkgname}-${pkgver}-x86_64::${_base_url}/v${pkgver}/${_pkgname}-${pkgver}-x86_64-linux"
+source_x86_64=("${_pkgname}-${pkgver}-x86_64::${_base_url}/v${_pkgver_orig}/${_pkgname}-${_pkgver_orig}-x86_64-linux"
                "franklyn-sentinel.desktop"
                "LICENSE::https://raw.githubusercontent.com/2526-4ahitm-itp/2526-4ahitm-franklyn/main/LICENSE")
-source_aarch64=("${_pkgname}-${pkgver}-aarch64::${_base_url}/v${pkgver}/${_pkgname}-${pkgver}-aarch64-linux"
+source_aarch64=("${_pkgname}-${pkgver}-aarch64::${_base_url}/v${_pkgver_orig}/${_pkgname}-${_pkgver_orig}-aarch64-linux"
                 "franklyn-sentinel.desktop"
                 "LICENSE::https://raw.githubusercontent.com/2526-4ahitm-itp/2526-4ahitm-franklyn/main/LICENSE")
 
