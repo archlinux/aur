@@ -3,7 +3,7 @@ _pkgname=openanime
 pkgname="${_pkgname}-bin"
 pkgver=1.0.8
 pkgrel=1
-pkgdesc="Unofficial OpenAnime Linux istemcisi - WebGPU/Vulkan destekli masaüstü istemcisi"
+pkgdesc="Unofficial OpenAnime Linux istemcisi - WebGPU/Vulkan destekli"
 arch=('x86_64')
 url="https://github.com/tuanapi/OpenAnime-Linux"
 license=('MIT')
@@ -13,7 +13,7 @@ conflicts=("${_pkgname}")
 options=('!strip')
 _appimage="OpenAnime-${pkgver}.AppImage"
 source=("${_appimage}::https://github.com/tuanapi/OpenAnime-Linux/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('a1903d5134ffd150b3b41c0072435d15f5efbe194fa2dd7ecbe5de4a2062814c')
+sha256sums=('db4eca784234f0ed1a916c2163c7c14053908d1ac455375eb9079baec55744cb')
 noextract=("${_appimage}")
 
 package() {
@@ -51,4 +51,3 @@ EOF
     fi
     rm -rf squashfs-root
 }
-# Triggering AUR refresh
