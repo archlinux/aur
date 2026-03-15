@@ -1,53 +1,56 @@
-# Maintainer: Porous3247 <pqtb3v7t at jasonyip1 dot anonaddy dot me>
-# Contributor: Asuka Minato <asukaminato at nyan dot eu dot org>
+# Maintainer: Ido Rosen <ido@kernel.org>
 
-pkgname="llm"
-pkgver=0.1.1
-pkgrel=5
-epoch=
-pkgdesc="Run inference for Large Language Models on CPU, with Rust 🦀🚀🦙"
+pkgname=llm
+pkgver=0.28
+pkgrel=1
+pkgdesc='A CLI tool and Python library for interfacing with popular large language models.'
 arch=(any)
-url="https://github.com/rustformers/${pkgname}"
-license=('Apache-2.0 OR MIT')
-depends=(glibc gcc-libs)
-makedepends=(git cargo)
-provides=(llm)
-conflicts=(llm)
-source=("git+${url}#tag=v${pkgver}"
-        "git+https://github.com/ggerganov/ggml"
-        )
-sha256sums=('SKIP' 'SKIP')
-options+=('!lto')
-
-
-prepare() {
-    cd "${srcdir}/${pkgname}"
-    git submodule init
-    git config submodule.crates/ggml/sys/ggml.url "${srcdir}/ggml"
-    git -c protocol.file.allow=always submodule update
-
-    cat LICENSE-* > LICENSE
-
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
+url='https://github.com/simonw/llm'
+license=(Apache-2.0)
+depends=(python
+         python-numpy
+         python-click
+         python-condense-json
+         python-openai
+         python-click-default-group
+         sqlite-utils
+         python-sqlite-migrate
+         python-pydantic
+         python-pyyaml
+         python-pluggy
+         python-ulid
+         python-puremagic
+         python-httpx)
+makedepends=(python-build
+             python-setuptools
+             python-installer
+             python-wheel)
+#checkdepends=(python-pytest
+#              python-pytest-httpx
+#              python-pytest-asyncio
+#              python-cogapp
+#              mypy python-pytest-mypy
+#              python-black
+#              python-pytest-recording
+#              python-ruff
+#              python-pytest-ruff
+#              python-syrupy
+#              ...)
+optdepends=('xyz: for xyz')
+source=($pkgname-$pkgver.tar.gz::https://github.com/simonw/llm/archive/refs/tags/$pkgver.tar.gz)
+sha256sums=('7c95ab264f1b4ba612c696801bef5b33cb0c974203cd391f46e163dddd358335')
 
 build() {
-    cd "${srcdir}/${pkgname}"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+    cd $pkgname-$pkgver
+    python -m build --wheel --no-isolation
 }
 
-check() {
-    cd "${srcdir}/${pkgname}"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
-}
+#check() {
+#    cd $pkgname-$pkgver
+#    pytest -v
+#}
 
 package() {
-    cd "${srcdir}/${pkgname}"
-    install -Dm755 target/release/llm -t "${pkgdir}/usr/bin/"
-    install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    cd $pkgname-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
