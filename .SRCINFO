@@ -1,6 +1,6 @@
 pkgbase = iipython-feishin-electron-bin
 	pkgdesc = A modern self-hosted music player (iiPythonx build, prebuilt, system-wide electron, lite rolldown-vite build)
-	pkgver = 26.02.26_1.0
+	pkgver = 26.03.14_1.0
 	pkgrel = 1
 	url = https://github.com/iceyear/iipython-feishin-electron-bin
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = iipython-feishin-electron-bin
 	makedepends = asar
 	depends = electron39
 	optdepends = mpv: Alternative audio backend
-	provides = feishin=26.02.26_1.0
+	provides = feishin=26.03.14_1.0
 	conflicts = feishin
 	conflicts = feishin-bin
 	conflicts = feishin-electron-bin
 	source = iipython-feishin-electron.sh
 	sha256sums = 4497d4c2cfb24ca0665cbeabf377a6bc850a8cfd6dd17469b0dc937a9ed6bf65
-	source_x86_64 = iipython-feishin-electron-26.02.26_1.0-x86_64.deb::https://github.com/iceyear/iipython-feishin-electron-bin/releases/download/26.02.26-1.0/Feishin-linux-amd64.deb
-	sha256sums_x86_64 = e2eb7f33f023fac1dc2f879a35a9f42aea8f53d72f55d248d658e7e8085835dc
+	source_x86_64 = iipython-feishin-electron-26.03.14_1.0-x86_64.deb::https://github.com/iceyear/iipython-feishin-electron-bin/releases/download/26.03.14-1.0/Feishin-linux-amd64.deb
+	sha256sums_x86_64 = bf92341eac557c931746e2732aad43a657ecce1366e46649f2a6e1a3c85f991b
 
 pkgname = iipython-feishin-electron-bin
