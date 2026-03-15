@@ -1,6 +1,6 @@
 pkgbase = xfconf-devel
 	pkgdesc = A simple client-server configuration storage and query system
-	pkgver = 4.21.0
+	pkgver = 4.21.1
 	pkgrel = 1
 	url = https://docs.xfce.org/xfce/xfconf/start
 	arch = i686
@@ -16,9 +16,9 @@ pkgbase = xfconf-devel
 	makedepends = gobject-introspection
 	makedepends = glib2-devel
 	depends = libxfce4util
-	provides = xfconf=4.21.0
+	provides = xfconf=4.21.1
 	conflicts = xfconf
-	source = https://archive.xfce.org/src/xfce/xfconf/4.21/xfconf-4.21.0.tar.xz
-	sha256sums = 0c2d749cc9109e5c5f2b92687faa20b7136c38ff5873e3b5d3ee53fe4e7cf1d4
+	source = https://archive.xfce.org/src/xfce/xfconf/4.21/xfconf-4.21.1.tar.xz
+	sha256sums = 2955d9d5e53a0a7eb3304a500da0f85776a63dd69bff70b5201690bf3d42f5c0
 
 pkgname = xfconf-devel
