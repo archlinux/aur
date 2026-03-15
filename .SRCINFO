@@ -1,12 +1,12 @@
 pkgbase = netease-cloud-music-web-player
 	pkgdesc = 基于网页播放器封装的网易云音乐客户端
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/feng-yifan/Netease-Cloud-Music-Web-Player
 	arch = x86_64
 	license = MIT
 	depends = electron
-	source = netease-cloud-music-web-player-1.2.0.tar.gz::https://github.com/feng-yifan/Netease-Cloud-Music-Web-Player/releases/download/1.2.0/netease-cloud-music-web-player-1.2.0.tar.gz
-	sha256sums = 16b5c395cc14096a2fc2e0043d02522dd7e177e44f554235cb48fd598392e48a
+	source = netease-cloud-music-web-player-1.2.1.tar.gz::https://github.com/feng-yifan/Netease-Cloud-Music-Web-Player/releases/download/1.2.1/netease-cloud-music-web-player-1.2.1.tar.gz
+	sha256sums = bf5936750a50c4e7f3a1ccc7381f8b5478453b17f0a1e42bedc6d95c9321b407
 
 pkgname = netease-cloud-music-web-player
