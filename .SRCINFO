@@ -1,13 +1,14 @@
 pkgbase = jellyfin-desktop-cef-git
 	pkgdesc = Experimental rewrite of Jellyfin Desktop built on CEF
-	pkgver = 0.r176.b61d73a
-	pkgrel = 3
+	pkgver = 0.r272.21c63ec
+	pkgrel = 1
 	url = https://github.com/jellyfin-labs/jellyfin-desktop-cef
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = cmake
 	makedepends = git
 	makedepends = ninja
+	makedepends = plasma-wayland-protocols
 	makedepends = python
 	makedepends = vulkan-headers
 	makedepends = wayland-protocols

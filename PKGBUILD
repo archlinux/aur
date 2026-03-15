@@ -1,7 +1,7 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
 pkgname=jellyfin-desktop-cef-git
-pkgver=0.r176.b61d73a
-pkgrel=3
+pkgver=0.r272.21c63ec
+pkgrel=1
 license=('GPL-2.0-only')
 pkgdesc="Experimental rewrite of Jellyfin Desktop built on CEF"
 arch=('x86_64')
@@ -16,6 +16,7 @@ makedepends=(
     'cmake'
     'git'
     'ninja'
+    'plasma-wayland-protocols'
     'python'
     'vulkan-headers'
     'wayland-protocols'
