@@ -1,12 +1,12 @@
 pkgbase = ccline-bin
 	pkgdesc = A high-performance Claude Code statusline tool written in Rust with Git integration and real-time usage tracking.
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/Haleclipse/CCometixLine
 	install = ccline-bin.install
 	arch = x86_64
 	license = GPL3
-	source = ccline-linux-x64.tar.gz::https://github.com/Haleclipse/CCometixLine/releases/download/v1.1.1/ccline-linux-x64.tar.gz
+	source = ccline-linux-x64.tar.gz::https://github.com/Haleclipse/CCometixLine/releases/download/v1.1.2/ccline-linux-x64.tar.gz
 	sha256sums = SKIP
 
 pkgname = ccline-bin

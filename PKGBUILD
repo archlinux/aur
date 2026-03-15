@@ -1,12 +1,12 @@
 # Maintainer: Haoyuan Li <lihaoyuan0506@gmail.com>
 pkgname=ccline-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A high-performance Claude Code statusline tool written in Rust with Git integration and real-time usage tracking."
 arch=('x86_64')
 url="https://github.com/Haleclipse/CCometixLine"
 license=('GPL3')
-source=("ccline-linux-x64.tar.gz::https://github.com/Haleclipse/CCometixLine/releases/download/v1.1.1/ccline-linux-x64.tar.gz")
+source=("ccline-linux-x64.tar.gz::https://github.com/Haleclipse/CCometixLine/releases/download/v1.1.2/ccline-linux-x64.tar.gz")
 sha256sums=('SKIP')
 install=ccline-bin.install
 
