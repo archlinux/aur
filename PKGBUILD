@@ -1,7 +1,7 @@
 # Maintainer: kemal <kmal@cock.li>
 
 pkgname=trivalent-bin
-pkgver=146.0.7680.71
+pkgver=146.0.7680.80
 pkgrel=1
 pkgdesc="A hardened chromium for desktop Linux inspired by Vanadium."
 arch=('x86_64')
@@ -19,10 +19,10 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kwallet: support for storing passwords in KWallet on Plasma'
             'upower: Battery Status API support'
             'qt6-base: QT UI support')
-source=("https://repo.secureblue.dev/Packages/trivalent-146.0.7680.71-443298.x86_64.rpm"
-        "https://repo.secureblue.dev/Packages/trivalent-qt6-ui-146.0.7680.71-443298.x86_64.rpm")
-sha256sums=('cc965c3f5c179c01c2a909d1c75758ce453d605d62d83a386bf911fa1dc27a8d'
-            'dde8111970a1745143a8f5a78a3715d35a3f8836c99e5751bd7172885e2e0d14')
+source=("https://repo.secureblue.dev/Packages/trivalent-146.0.7680.80-443379.x86_64.rpm"
+        "https://repo.secureblue.dev/Packages/trivalent-qt6-ui-146.0.7680.80-443379.x86_64.rpm")
+sha256sums=('1fa40412c79503cb427214dc410df650f18ca276fb8f43a2d0d7e2c9585f3283'
+            '3c42e1a0cfdcf45a5dd803422b2050d30c3dd1bede2e7d5fddb8cc6db2327d78')
 
 prepare() {
 	mv "${srcdir}/usr/lib64" "${srcdir}/usr/lib"
