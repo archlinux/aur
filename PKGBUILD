@@ -1,5 +1,5 @@
 pkgname=spm-arch
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Simple Package Manager - Interactive fzf tui for Arch package management"
 arch=('any')
@@ -10,7 +10,7 @@ provides=('spm')
 conflicts=('spm')
 install=spm.install
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/spm-$pkgver.tar.gz")
-sha256sums=('618c3773743fe4e8a17115c7bf4a6c4a05d63e0ceddc5693084127d66f1b9224')
+sha256sums=('274d9bb1365a9793ab925db8c2a188434fc90da0825f216dd68430656d00b9f4')
 
 package() {
     cd "$srcdir/Simple_Package_Manager-$pkgver"
@@ -19,4 +19,5 @@ package() {
     install -Dm755 spm_updates.sh "$pkgdir/usr/bin/spm_updates"
     install -Dm644 spm_updates.timer "$pkgdir/usr/lib/systemd/system/spm_updates.timer"
     install -Dm644 spm_updates.service "$pkgdir/usr/lib/systemd/system/spm_updates.service"
+    install -Dm644 spm_header_cache.hook "$pkgdir/usr/share/libalpm/hooks/spm_header_cache.hook"
 }
