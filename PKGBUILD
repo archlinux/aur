@@ -1,6 +1,7 @@
-# Maintainer: ArchStrike <team@archstrike.org>
+# Maintainer: Stephen Power <simpilldev@gmail.com>
 
 pkgname="helix-themes-cptpotato"
+description="A set of themes for the Helix text editor made by CptPotato."
 pkgver=latest.r11.g1fca5dc
 pkgrel=1
 groups=()
