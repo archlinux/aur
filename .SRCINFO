@@ -9,6 +9,6 @@ pkgbase = spotifydl
 	depends = yt-dlp
 	options = !debug
 	source = spotifydl-1.0.0.tar.gz::https://github.com/bjn7/spotifydl/releases/download/v1.0.0/spotifydl-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = 529b00673883e995b9e3aba33c63bc064cd9e4c47cf880580f2b924d98cb1bf9
+	sha256sums = 72eb0214ae7e7ce66e815669ba3c94c269db68c7b43e8f64424084a0939f9770
 
 pkgname = spotifydl
