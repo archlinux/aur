@@ -1,15 +1,15 @@
 pkgbase = guile-gcrypt
 	pkgdesc = Guile bindings for libgcrypt
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
-	url = https://notabug.org/cwebber/guile-gcrypt
+	url = https://codeberg.org/guile-gcrypt/guile-gcrypt
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	license = GPL3
 	depends = guile
 	depends = libgcrypt
-	source = guile-gcrypt-0.4.0.tar.gz::https://notabug.org/cwebber/guile-gcrypt/archive/v0.4.0.tar.gz
-	sha256sums = 35f0681e01defab0aaa2a83227c0be836b0a1303dd1f7279497a76dd1255b17e
+	source = guile-gcrypt-0.5.0.tar.gz::https://codeberg.org/guile-gcrypt/guile-gcrypt/archive/v0.5.0.tar.gz
+	sha256sums = 79ea92185f5771ec90459cef2ee8a43ac04cf37ae571182c4c5ca37ac5626951
 
 pkgname = guile-gcrypt
