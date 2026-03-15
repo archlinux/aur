@@ -1,7 +1,7 @@
 # Maintainer: Aki-nyan <aur@catgirl.link>
 
 pkgname=mcy-nightly
-pkgver=20260314_v0.63
+pkgver=20260315_v0.63
 pkgrel=1
 epoch=1
 pkgdesc="Mutation Cover with Yosys"
