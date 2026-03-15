@@ -1,0 +1,11 @@
+pkgbase = godotjs-v8-bin
+	pkgdesc = Add TypeScript/JavaScript Support for Godot 4.x with v8 JS Engine
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://godotjs.github.io
+	arch = x86_64
+	license = MIT
+	source = https://github.com/ialex32x/GodotJS-Build/releases/download/GodotJS_v1.0.0_Godot_4.3_bundle_1/editor_linux_x64_v8.zip
+	sha256sums = b498849ccffaa5f4a130bad511eaacc1ee0d779ee5261c0ab3cd74573fbf93d9
+
+pkgname = godotjs-v8-bin
