@@ -1,12 +1,12 @@
 pkgbase = log4cpp
 	pkgdesc = A library of C++ classes for flexible logging to files, syslog, IDSA and other destinations
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = http://log4cpp.sourceforge.net/
 	arch = x86_64
 	license = LGPL-2.1-only
 	depends = libnsl
-	source = https://downloads.sourceforge.net/log4cpp/log4cpp-1.1.5.tar.gz
-	sha256sums = 6ae48cc0081b24270ec3398e71b68f77b45e93be15ff4d44c00259c9cdc5cc5a
+	source = https://downloads.sourceforge.net/log4cpp/log4cpp-1.1.6.tar.gz
+	sha256sums = a036bc6bd6044479e6c456de7edd042b060ea5c843e47beb75f59baea9b20e3a
 
 pkgname = log4cpp
