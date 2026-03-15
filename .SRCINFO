@@ -1,6 +1,6 @@
 pkgbase = r-jasplearnstats
 	pkgdesc = Learn Classical statistics with simple examples and supporting text
-	pkgver = 0.95.3
+	pkgver = 0.96.0
 	pkgrel = 1
 	url = https://github.com/jasp-stats/jaspLearnStats
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = r-jasplearnstats
 	depends = r-igraph
 	depends = r-hdinterval
 	depends = r-metafor
-	source = jaspLearnStats_0.95.3.tar.gz::https://github.com/jasp-stats/jaspLearnStats/archive/refs/tags/v0.95.3.tar.gz
-	sha256sums = 1d319b4fc15f7f647f916e5da2f2aac158edcde71b1eb19ecd531405452f8138
+	source = jaspLearnStats_0.96.0.tar.gz::https://github.com/jasp-stats/jaspLearnStats/archive/refs/tags/v0.96.0.tar.gz
+	sha256sums = 77a92b031ff17f938978267c09393a972d710cf5f4f7ef00e33e4d325e73de80
 
 pkgname = r-jasplearnstats
