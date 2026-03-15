@@ -1,4 +1,4 @@
-# Maintainer: yobson <contact@yobson.xyz>
+# Maintainer: yobson <aur@yobson.xyz>
 _reponame=SteamVRLinuxFixes
 _pkgname=steamvr-linux-fixes-layer
 pkgname=${_pkgname}-git
