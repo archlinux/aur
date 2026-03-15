@@ -3,14 +3,14 @@
 # Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 # Contributor: Caleb Cushing <xenoterracide@gmail.com>
 
+_author=YVES
 _dist=Data-Dump-Streamer
-_ver=2.42
-pkgname=perl-${_dist,,}
-pkgver=${_ver#v}
+pkgname=perl-${_dist@L}
+pkgver=2.42
 pkgrel=4
 pkgdesc='Accurately serialize a data structure as Perl code.'
 arch=('x86_64')
-url=https://metacpan.org/release/YVES/$_dist-$_ver
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl'
@@ -40,12 +40,12 @@ optdepends=(
     'perl-padwalker'
 )
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/Y/YV/YVES/$_dist-$_ver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('47f6e51fb45ce7be561e01481add0c2e1c0cd85df4b9e212f3923cd3064d1cad')
 
 build()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
     export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
@@ -56,7 +56,7 @@ build()
 
 check()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
@@ -65,7 +65,7 @@ check()
 
 package()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
