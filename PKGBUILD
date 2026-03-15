@@ -18,7 +18,7 @@ source=(
   "LICENSE::https://raw.githubusercontent.com/pinchtab/pinchtab/${_license_commit}/LICENSE"
 )
 
-sha256sums=('b8fe9699b5c1246144f0296b99bbf14d0480f2ccf0bf7542bffbc21edd1d33db'
+sha256sums=('9ea22bd92c93d3dfac6bba7619c86b5e02418871d6a7e5a79a489757f1d38b3d'
             '8e526b04f1f02203eebfd55aead0657a7ae87e0591cf8a44fbee19441aa0f116')
 
 
