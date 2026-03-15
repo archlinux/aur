@@ -1,0 +1,29 @@
+pkgbase = plasma6-applets-appgrid
+	pkgdesc = A modern fullscreen application launcher for KDE Plasma
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/xarbit/plasma6-applet-appgrid
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt6-base
+	makedepends = qt6-declarative
+	makedepends = libplasma
+	makedepends = kpackage
+	makedepends = kio
+	makedepends = kcoreaddons
+	makedepends = kwindowsystem
+	makedepends = gettext
+	makedepends = git
+	depends = plasma-workspace
+	depends = kservice
+	depends = ki18n
+	depends = layer-shell-qt
+	provides = appgrid
+	conflicts = appgrid
+	replaces = appgrid
+	source = plasma6-applets-appgrid-1.1.0::git+https://github.com/xarbit/plasma6-applet-appgrid.git#tag=v1.1.0
+	sha256sums = SKIP
+
+pkgname = plasma6-applets-appgrid
