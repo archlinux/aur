@@ -1,13 +1,12 @@
 pkgbase = python-manga-ocr
 	pkgdesc = A tool for extracting text from manga images using OCR
 	pkgver = 0.1.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kha-white/manga-ocr
-	arch = x86_64
+	arch = any
 	license = Apache-2.0
 	checkdepends = python-pytest
 	makedepends = python-build
-	makedepends = python-installer
 	makedepends = python-installer
 	depends = python>=3.6
 	depends = python-fire
@@ -20,11 +19,10 @@ pkgbase = python-manga-ocr
 	depends = python-pytorch>=1.0
 	depends = python-transformers>=4.25.0
 	depends = python-unidic-lite
-	optdepends = python-pytorch: GPU acceleration
 	optdepends = wl-clipboard: Read images from the clipboard in the command-line mode on Wayland
-	optdepends = xclip: Read images from the clipbaord in the command-line mode on X11
+	optdepends = xclip: Read images from the clipboard in the command-line mode on X11
 	conflicts = manga-ocr-git
-	source = https://github.com/kha-white/manga_ocr/archive/refs/tags/v0.1.14.tar.gz
+	source = python-manga-ocr-0.1.14.tar.gz::https://github.com/kha-white/manga_ocr/archive/refs/tags/v0.1.14.tar.gz
 	source = skip-example-run-on-boot.patch
 	sha256sums = f7d73bbf482cbefb6f91ff3c628a3131d6c7dc863612539fe5d03a4b7d640643
 	sha256sums = d287a2fbfa71d9753cdfd921ce67bd7bf1fcf1e36dd08fc00c8d142305d4da88
