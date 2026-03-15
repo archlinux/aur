@@ -1,6 +1,6 @@
 pkgbase = omniget-git
 	pkgdesc = Free,open source desktop app for downloading videos and media from the internet
-	pkgver = 0.3.5.r19.d855bde
+	pkgver = 0.3.6.r1.32c91a3
 	pkgrel = 1
 	url = discord.gg/jgdxyPy7Vn
 	arch = x86_64

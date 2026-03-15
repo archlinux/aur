@@ -1,7 +1,7 @@
 # Maintainer: Repeater <fakeroration@gmail.com>
 pkgname=omniget-git
 _pkgname=${pkgname%-git}
-pkgver=0.3.5.r19.d855bde
+pkgver=0.3.6.r1.32c91a3
 pkgrel=1
 options=('!buildflags')
 pkgdesc="Free,open source desktop app for downloading videos and media from the internet"
