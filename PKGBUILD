@@ -4,13 +4,12 @@
 
 _author=LEONT
 _dist=App-find2perl
-_ver=1.005
 pkgname=perl-${_dist@L}
-pkgver=${_ver#v}
+pkgver=1.005
 pkgrel=2
 pkgdesc='translate find command lines to Perl code'
 arch=('any')
-url=https://metacpan.org/release/$_author/$_dist-$_ver
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
     'perl'
@@ -29,12 +28,12 @@ checkdepends=(
     'perl>=5.6.0'
 )
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$_ver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('d72ce76f796c4b61f7fc1a22a39aceab08347aa45de10b0d7c08d468822bc94b')
 
 build()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
     export PERL_MM_USE_DEFAULT=1
@@ -45,7 +44,7 @@ build()
 
 check()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
@@ -54,7 +53,7 @@ check()
 
 package()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
