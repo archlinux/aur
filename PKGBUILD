@@ -1,19 +1,18 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 
 pkgname=hsh
-pkgver=0.0.3.1.g3fe7054
-_gitcommit=3fe7054e28d634ef853bfe7a0c1f42785e46db46
-pkgrel=2
+pkgver=0.0.3.31.gffa3c16
+_gitcommit=ffa3c16c02e3efc47108da6a2c88cb38ec52631b
+pkgrel=1
 pkgdesc="better shell"
 arch=('x86_64')
 url="https://github.com/GrayHatter/hsh"
 license=('BSD-2-Clause')
-# https://github.com/GrayHatter/hsh/issues/8
-makedepends=('zig0.14' 'git')
+makedepends=('zig' 'git')
 source=(
   "${pkgname}::git+$url#commit=$_gitcommit"
 )
-sha256sums=('9294bcef69eba48fcabe21a89eafbefba80f1d259268678922c4efd98b7e772b')
+sha256sums=('e415c898f7f12d222218bc93834cb4fcd88d9c27b59034219ada98ca6ec62e70')
 
 pkgver() {
   cd "$pkgname"
@@ -28,6 +27,7 @@ build() {
     -Dtarget=native-linux.6.6-gnu.2.40 \
     -Dcpu=baseline
 }
+# https://github.com/GrayHatter/hsh/issues/8
 # https://github.com/GrayHatter/hsh/issues/7
 _check() {
   cd "$pkgname"
