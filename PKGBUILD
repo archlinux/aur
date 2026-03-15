@@ -1,18 +1,18 @@
-# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: George Rawlinson <grawlinson@archlinux.org>
 # Maintainer: Umar Alfarouk <medrivia@gmail.com>
 
 pkgname=fnt
-pkgver=1.9
+pkgver=1.9.1.mdrv
 pkgrel=1
 pkgdesc='The missing font manager for Linux'
 arch=('any')
-url='https://github.com/alexmyczko/fnt'
+url='https://github.com/mdrv/fnt'
 license=('MIT')
 depends=('bash' 'curl' 'chafa' 'texlive-bin')
 makedepends=('git')
-_commit='932759a52546f70c1255258fbd6ee38f1694c302'
+_commit='b03824b56fe0cdc22446c46e401619935942c88e'
 source=("$pkgname::git+$url#commit=$_commit")
-sha256sums=('b4f3922af8a7123efde22a569fa3d16074bc53cd111183de492cb0c0ad3540e9')
+sha256sums=('4d29a81a638c7f1b4130fdbcd4245be540e0a34e84e7971d342a6f5c5956bf62')
 
 # pkgver() {
 #   cd "$pkgname"
