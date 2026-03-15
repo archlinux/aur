@@ -4,7 +4,7 @@ pkgver=r484.0cbcae5
 pkgrel=1
 pkgdesc="Wayland-based synchronized lyrics overlay with MPRIS integration"
 arch=('x86_64' 'aarch64')
-url="https://github.com/unstable-code/lyrics"
+url="https://github.com/wshowlyrics/wshowlyrics"
 license=('GPL-3.0-or-later')
 depends=(
     'cairo'
@@ -28,28 +28,28 @@ makedepends=(
 )
 provides=('wshowlyrics')
 conflicts=('wshowlyrics')
-source=("git+https://github.com/unstable-code/lyrics.git")
+source=("git+https://github.com/wshowlyrics/wshowlyrics.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/lyrics"
+    cd "$srcdir/wshowlyrics"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "$srcdir/lyrics"
+    cd "$srcdir/wshowlyrics"
     arch-meson . build
     meson compile -C build
 }
 
 check() {
-    cd "$srcdir/lyrics"
+    cd "$srcdir/wshowlyrics"
     # Verify binary was built successfully
     test -f build/lyrics
 }
 
 package() {
-    cd "$srcdir/lyrics"
+    cd "$srcdir/wshowlyrics"
 
     # Install binary
     install -Dm755 build/lyrics "$pkgdir/usr/bin/wshowlyrics"
