@@ -22,5 +22,5 @@ package_glrnvim() {
 	install -Dm755 "$srcdir/$_pkgname/target/release/glrnvim" "$pkgdir/usr/bin/glrnvim"
 	install -Dm644 $srcdir/$_pkgname/config.yml "$pkgdir/usr/share/doc/glrnvim/example/config.yml"
 	install -Dm644 $srcdir/$_pkgname/glrnvim.desktop "$pkgdir/usr/share/applications/glrnvim.desktop"
-	install -Dm644 $srcdir/$_pkgname/glrnvim.svg "$pkgdir/usr/share/icons/glrnvim.svg"
+	install -Dm644 $srcdir/$_pkgname/glrnvim.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/glrnvim.svg"
 }
