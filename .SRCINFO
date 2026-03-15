@@ -1,6 +1,6 @@
 pkgbase = wshowlyrics
 	pkgdesc = Wayland-native lyrics display for MPD with online fallback
-	pkgver = 0.9.9
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://gitlab.com/wshowlyrics/wshowlyrics
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = wshowlyrics
 	depends = gdk-pixbuf2
 	optdepends = snixembed: System tray support for Swaybar
 	optdepends = libexttextcat: Language detection for translation validation
-	source = wshowlyrics-0.9.9.tar.gz::https://gitlab.com/wshowlyrics/wshowlyrics/-/archive/v0.9.9/wshowlyrics-v0.9.9.tar.gz
-	sha256sums = c08f9b780b2800dfa830d9b4fd23af693432018c9e6da6fd0490f855c90368b7
+	source = wshowlyrics-0.10.0.tar.gz::https://gitlab.com/wshowlyrics/wshowlyrics/-/archive/v0.10.0/wshowlyrics-v0.10.0.tar.gz
+	sha256sums = f3c59b6393065aa03658b037ce9e58978845fea86bafe7315306868065353d5a
 
 pkgname = wshowlyrics
