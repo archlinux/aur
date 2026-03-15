@@ -9,12 +9,16 @@ license=('MIT')
 depends=(
   'quickshell-git'
   'qt6-multimedia'
+  'qt6-connectivity'
   'python'
   'python-requests'
   'python-pillow'
   'jq'
   'ffmpeg'
   'parallel'
+  'ttf-roboto'
+  'ttf-roboto-mono'
+  'ttf-nerd-fonts-symbols'
 )
 makedepends=('git')
 optdepends=(
@@ -29,6 +33,7 @@ optdepends=(
   'python-syncedlyrics: synced lyrics fetching'
   'grim: screenshot capture for window switcher'
   'niri: recommended Wayland compositor'
+  'ttf-material-design-icons-desktop-git: Material Design icon font (AUR)'
 )
 install=skwd-git.install
 provides=('skwd')
