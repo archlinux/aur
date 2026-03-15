@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgname=zeroclaw
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Zero overhead, fully autonomous AI assistant runtime (100% Rust)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/zeroclaw-labs/${pkgname}/ar
         "zeroclaw.service"
         "zeroclaw.sysusers"
         "zeroclaw.tmpfiles")
-sha256sums=('83cefb6ca0280e240c5009bf430029de0845ec26a11b6ce6265308dee98f6ec7'
+sha256sums=('929241d33d4cb21c462374aec0b6630ad3cc194d5367d5f0cee83136e1b59771'
             'de97ac176531d176ac627bd031e8a79f7adb5a440f321c9b9b0a492fda1154ee'
             '5e22a9f53bab669beab7058c8b7d1c2b090eb7900fb8c9bd94fd3ad609e7afbf'
             '07911d8ca762bc87daf58e7d72ad9067517baedaeccd65f2ae7609962af8216f')
