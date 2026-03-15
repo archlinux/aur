@@ -1,13 +1,13 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 
+_author=BRADFITZ
 _dist=Unicode-CheckUTF8
-_ver=1.03
-pkgname=perl-${_dist,,}
-pkgver=${_ver#v}
+pkgname=perl-${_dist@L}
+pkgver=1.03
 pkgrel=3
 pkgdesc='checks if scalar is valid UTF-8'
 arch=('x86_64')
-url=https://metacpan.org/release/BRADFITZ/$_dist-$_ver
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
 license=('custom')
 depends=(
     'perl'
@@ -28,7 +28,7 @@ sha256sums=(
 
 build()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL_MM_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
     export PERL_MM_USE_DEFAULT=1
@@ -39,7 +39,7 @@ build()
 
 check()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
@@ -48,7 +48,7 @@ check()
 
 package()
 {
-    cd "$_dist-$_ver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
