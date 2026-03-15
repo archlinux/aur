@@ -1,0 +1,15 @@
+pkgbase = mdnotes-bin
+	pkgdesc = A simple command-line/TUI application for taking notes and managing tasks
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/rellit/mdnotes
+	arch = x86_64
+	license = MIT
+	provides = mdnotes
+	conflicts = mdnotes
+	source = LICENSE::https://raw.githubusercontent.com/rellit/mdnotes/v0.2.2/LICENSE
+	sha256sums = 8d9eba11351d43d330745d0211cfa89669b61a4257befe5f07aa09676e647e62
+	source_x86_64 = mdnotes-0.2.2-linux-x86_64.tar.gz::https://github.com/rellit/mdnotes/releases/download/v0.2.2/mdnotes-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 5958c9e76b48ed1bb44c59cbfd90d2927c45a6ae8b58e09879cd66534178932f
+
+pkgname = mdnotes-bin
