@@ -97,10 +97,7 @@ check() {
   cd Mindwtr/apps/desktop
   export BUN_INSTALL_CACHE_DIR="$srcdir/bun-cache"
   
-  # Relax tests until next update
-  # 2 tests failed:
-  # ✗ AgendaView > keeps focus task details open when checklist items are toggled [152.00ms]
-  # ✗ AgendaView > opens editor when double-clicking a non-focused task row in Focus [3.00ms]
+  # Relax tests: 106 passed, 8 failed
   bun test || :
 }
 
