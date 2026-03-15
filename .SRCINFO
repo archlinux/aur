@@ -1,12 +1,14 @@
 pkgbase = ldapvi
 	pkgdesc = Interactive LDAP client for Unix terminals
-	pkgver = 1.7.r15.gf1d42ba
-	pkgrel = 2
-	url = http://www.lichteblau.com/ldapvi/
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://github.com/ldapvi/ldapvi
 	arch = x86_64
 	license = GPL-2.0-only
 	makedepends = make
 	makedepends = git
+	makedepends = autoconf
+	makedepends = pkgconf
 	depends = glib2
 	depends = libldap
 	depends = glibc
@@ -15,9 +17,7 @@ pkgbase = ldapvi
 	depends = openssl
 	depends = popt
 	depends = readline
-	source = git+http://www.lichteblau.com/git/ldapvi.git#commit=f1d42bad66cc4623d1ff21fbd5dddbf5009d3e40
-	source = 0001-fix-non-void-function-copy_sasl_output-should-return.patch
-	b2sums = SKIP
-	b2sums = a045f50d64d73ed21ad8213af9029f1209e3e368a0b10458e230ef2cca162d2ae89cf033fcb3cca0a23ddba1ce6a2b90eeb65a730247c9bc0696b50057cae124
+	source = ldapvi-1.8::git+https://github.com/ldapvi/ldapvi.git#tag=1.8
+	b2sums = b67373792e84237fb4003603a641eef23cdc3f0fc2c081a8139a4d353d97458821386d968b2e6bd7dbcbe9c70f9b1fbc3898c69d3ed9ef861f258afb2432fc99
 
 pkgname = ldapvi
