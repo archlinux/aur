@@ -13,16 +13,19 @@ declare -r -a ORIGIN_LINKS=(
     "https://colorfulstage.com/upload_images/media/Download/cur%20file-static-WxS.zip"
     "https://colorfulstage.com/upload_images/media/Download/ani%20file-animation-N25.zip"
     "https://colorfulstage.com/upload_images/media/Download/cur%20file-static-N25.zip"
+
+    # Updated on 2026-03-15, the following links are added.
+    "https://colorfulstage.com/upload_images/media/Download/Ichika%20Cursor%20animation.zip"
+    "https://colorfulstage.com/upload_images/media/Download/Ichika%20Cursor%20static.zip"
+    "https://colorfulstage.com/upload_images/media/Download/Minori%20Cursor%20animation.zip"
+    "https://colorfulstage.com/upload_images/media/Download/Minori%20Cursor%20static.zip"
+    "https://colorfulstage.com/upload_images/media/Download/Kohane%20Cursor%20animation.zip"
+    "https://colorfulstage.com/upload_images/media/Download/Kohane%20Cursor%20static.zip"
+    "https://colorfulstage.com/upload_images/media/Download/Tsukasa%20Cursor%20animation.zip"
+    "https://colorfulstage.com/upload_images/media/Download/Tsukasa%20Cursor%20static.zip"
+    "https://colorfulstage.com/upload_images/media/Download/Kanade%20Cursor%20animation.zip"
+    "https://colorfulstage.com/upload_images/media/Download/Kanade%20Cursor%20static.zip"
 )
-
-ANI_SUFFIX=".ani"
-CUR_SUFFIX=".cur"
-
-LINE1="[Icon Theme]"
-NAME_PREFIX="Name=PJSK"
-DESCRIPTION="Comment=Project Sekai Cursors, From https://colorfulstage.com/media/download/"
-ANIMATION_NAME_SUFFIX="Animation"
-STATIC_NAME_SUFFIX="Static"
 
 # https://github.com/SystemRage/Metamorphosis/blob/master/Metamorphosis.py#L111-L205
 # This map is used to convert PJSK cursor names to X cursor names.
@@ -83,11 +86,15 @@ convert_cursors() {
         theme=$(basename "$theme_dir")
         mkdir -p "output/$theme"
 
-        if [[ "$theme" == ani* ]]; then
+        if [[ "$theme" == ani* || "$theme" == *animation ]]; then
             files=("$theme_dir"/*.ani)
-        else
+        elif [[ "$theme" == cur* || "$theme" == *static ]]; then
             files=("$theme_dir"/*.cur)
+        else
+            echo "Unknown theme type: $theme" >&2
+            continue
         fi
+
         win2xcur "${files[@]}" -o "output/$theme/"
 
         for src in output/"$theme"/*; do
@@ -109,13 +116,30 @@ package_themes() {
         [ -d "$theme_dir" ] || continue
         dir=$(basename "$theme_dir")
 
-        base=${dir##*-}
+        lc_dir=$(printf '%s' "$dir" | tr '[:upper:]' '[:lower:]')
 
-        if [[ "$dir" == ani* ]]; then
+        if [[ "$lc_dir" == *ani* || "$lc_dir" == *animation* ]]; then
             suffix="Animated"
-        else
+        elif [[ "$lc_dir" == *cur* || "$lc_dir" == *cursor* || "$lc_dir" == *static* ]]; then
             suffix="Static"
+        else
+            echo "Unknown theme type: $dir" >&2
+            continue
         fi
+
+        base=$(printf '%s' "$dir" \
+            | awk -F- '{
+                out=""
+                for (i=1; i<=NF; i++) {
+                    t=tolower($i)
+                    if (t=="cur" || t=="cursor" || t=="file" || t=="static" || t=="ani" || t=="animation") continue
+                    out = (out=="" ? $i : out "-" $i)
+                }
+                print out
+            }')
+
+        [ -n "$base" ] || base="$dir"
+
         dest="packaged/PJSK $base $suffix"
         mkdir -p "$dest/cursors"
         cp "$theme_dir"/* "$dest/cursors/"
