@@ -14,7 +14,7 @@ depends=(
   'cava' 'pavucontrol-qt' 'wireplumber' 'libdbusmenu-gtk3' 'playerctl'
   'hyprsunset' 'geoclue' 'brightnessctl' 'ddcutil'
   'axel' 'bc' 'coreutils' 'cliphist' 'cmake' 'curl' 'rsync' 'wget' 'ripgrep' 'jq' 'meson' 'xdg-user-dirs' 'foot' 'power-profiles-daemon' 'mission-center' 'kvantum' 'inotify-tools' 'lm_sensors' 'qt5ct' 'qt6ct' 'sqlite'
-  'sleex-bibata-modern-classic-bin'
+  'bibata-cursor-theme-bin'
   'adw-gtk-theme' 'breeze-plus' 'eza' 'fish' 'fontconfig' 'kde-material-you-colors' 'kitty' 'matugen-bin' 'starship' 'ttf-gabarito-git' 'ttf-jetbrains-mono-nerd' 'ttf-material-design-icons-extended' 'ttf-material-symbols-variable' 'ttf-readex-pro' 'ttf-rubik-vf' 'ttf-twemoji'
   'hyprutils' 'hyprpicker' 'hyprlang' 'hyprland-qt-support' 'hyprland-guiutils' 'hyprcursor' 'hyprwayland-scanner' 'hyprland' 'xdg-desktop-portal-hyprland' 'wl-clipboard' 'hyprlock'
   'bluedevil' 'gnome-keyring' 'networkmanager' 'polkit-kde-agent' 'pcmanfm-qt' 'kwrite' 'libnm' 'gio-qt' 'qt6-connectivity'
