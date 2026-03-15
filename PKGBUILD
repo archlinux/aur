@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=girens
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="A Plex GTK client for playing movies, TV shows and music from your Plex library."
 arch=('any')
@@ -12,6 +12,7 @@ depends=(
   'fribidi'
   'libadwaita'
   'libass'
+  'libplacebo'
   'libsecret'
   'python-cairo'
   'python-certifi'
@@ -37,7 +38,7 @@ checkdepends=(
   'appstream-glib'
 )
 source=("git+https://gitlab.gnome.org/tijder/girens.git#tag=v$pkgver")
-sha256sums=('838792479631e7f243c0de8abd995a661fb5f22827d8e3a1fc8a69c196dcf203')
+sha256sums=('76291b95fca12086befce5a52f9ff06047537f6c0ff037e103e54264377a5186')
 
 build() {
   arch-meson "$pkgname" build --libdir=lib
