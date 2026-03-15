@@ -5,7 +5,7 @@ _pkgauthor=majoraexp
 _pkgname=taskwire
 
 pkgname=${_pkgname}-bin
-pkgver=1.54
+pkgver=1.55
 pkgrel=1
 pkgdesc="Modern Linux System Monitor"
 
@@ -28,9 +28,9 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/v${pk
 
 sha256sums=('99afca95edd7d783972c0c9ba84a0bd8dc06327c066b5abc738b987e75f36ae3'
             'ab57324b3ea51d1c3ecc4706fa8783f06994d2fa4581a6d27b7cc7e57048c71c'
-            'c90b00ac7733225b535030cb98bc4154afdf901b66a63b639045f99ff09c5a45'
+            '12bafa0b99f0d1c41adc9b946557eef64dfe997ec39da78cde1679752bdead95'
             '3e797e8cc15333328259c2d675c7feededb7c16710ace0f6ba4727643e634b83')
-sha256sums_x86_64=('f99bfbdf375294152ff603ddf2ab21ca50ab638e616163e532253232bfe7fb99')
+sha256sums_x86_64=('db5c37e427f6e11445da47dda5f2c5fc13e56cdbb6c370b1152cf0a11e7cde40')
 
 
 package() {
