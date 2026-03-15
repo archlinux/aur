@@ -1,7 +1,7 @@
 pkgbase = python-amqp
 	pkgdesc = Low-level AMQP client for Python (fork of amqplib)
 	pkgver = 5.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/celery/py-amqp
 	arch = any
 	license = BSD-3-Clause
@@ -14,7 +14,7 @@ pkgbase = python-amqp
 	makedepends = git
 	depends = python
 	depends = python-vine
-	source = python-amqp-5.3.1::git+https://github.com/celery/py-amqp.git#tag=v5.3.1
+	source = python-amqp::git+https://github.com/celery/py-amqp.git#tag=v5.3.1
 	b2sums = 0eb3e97fdca83beb604b183190a7148efaf1359e7e45aedad2efa2aef42d190dc9973c5b1f81e7a6d15877f81260182a1b13d5b56679f89cac6a9bcd4b841ff3
 
 pkgname = python-amqp
