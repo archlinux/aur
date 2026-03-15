@@ -1,6 +1,6 @@
 pkgbase = etr
 	pkgdesc = ETR - ECMP Traceroute
-	pkgver = 1.0.2
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/tkjaer/etr
 	install = etr.install
@@ -9,7 +9,7 @@ pkgbase = etr
 	makedepends = git
 	makedepends = go
 	depends = libpcap
-	source = git+https://github.com/tkjaer/etr#tag=v1.0.2
-	sha512sums = 008df84988314bec0d6761a7c272c164e7ea45aa4fb8679db0451927d9101d5f7e7cbbeb9d29952e9b98fa779e3d705084f8adbb6f8cc2ccdc93bab63fd98b5f
+	source = git+https://github.com/tkjaer/etr#tag=v1.1.1
+	sha512sums = 47d2c12dcfc5b6f0fde729139d5868019bd1661ae57e9d17429eabb639a1eab7ed4d0ccc8887aabb84b8ff34726117b28f33eef2448d7ad4a568f0d616c8a5d4
 
 pkgname = etr
