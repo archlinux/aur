@@ -1,8 +1,9 @@
+# Maintainer: Devel <Denislav08@proton.me>
 # Contributor: speps <speps at aur dot archlinux dot org>
-# Maintainer: aksr <aksr at t-com dot me>
+# Contributor: aksr <aksr at t-com dot me>
 pkgname=siren
-pkgver=0.10
-pkgrel=2
+pkgver=0.11
+pkgrel=1
 pkgdesc="A text-based audio player."
 arch=(i686 x86_64)
 url="http://www.kariliq.nl/siren/"
@@ -25,10 +26,7 @@ optdepends=('alsa-lib: alsa support'
             'sndio: sndio output plugin'
             'wavpack: WavPack audio format')
 source=("http://www.kariliq.nl/siren/dist/$pkgname-$pkgver.tar.gz")
-md5sums=('97959b9974732e64c7e117de6d2af2d6')
-sha1sums=('73f72f266fa8ea2a3e2ba978196926abb99086fe')
-sha256sums=('54b6af320e1cf223cf02ca9d56859a4f2f796105cd617efa5f37736a3f9719e4')
-
+sha256sums=('c9d80b81a90172a2140b1517122efc7ed8b876dadd88fcb582845d1b52b2edaf')
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	./configure prefix=/usr mandir=/usr/share/man
@@ -40,3 +38,4 @@ package() {
 	make DESTDIR="$pkgdir/" install
 	install -D -m644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
