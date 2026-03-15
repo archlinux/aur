@@ -1,0 +1,22 @@
+pkgbase = lingma-bin
+	pkgdesc = Lingma IDE 灵码编辑器 - Binary Version
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://lingma.aliyun.com/
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libxss
+	depends = libxtst
+	depends = mesa
+	provides = lingma
+	provides = lingma-ide
+	conflicts = lingma
+	conflicts = lingma-ide
+	options = !strip
+	source = lingma_0.4.0_amd64.deb::https://lingma-ide.oss-rg-china-mainland.aliyuncs.com/prerelease/0.4.0/b41a18709dd29e6b396c3284ef2e521e8b981f68/lingma_0.4.0_amd64.deb
+	sha256sums = 3e09faf4f25d25ffea2e6388969b95fc5d06f3f065338143749d90657d703148
+
+pkgname = lingma-bin
