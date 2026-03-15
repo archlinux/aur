@@ -22,7 +22,7 @@ prepare() {
 }
 
 build() {
-	$CC $CFLAGS $LDFLAGS -oasm6 asm6.c
+	${CC:-gcc} $CFLAGS $LDFLAGS -oasm6 asm6.c
 }
 
 package() {
