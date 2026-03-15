@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mindwtr
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 _nodeversion=20
 pkgdesc="Mind Like Water: A complete Getting Things Done (GTD) productivity system"
@@ -27,7 +27,7 @@ makedepends=(
 source=("git+https://github.com/dongdongbh/Mindwtr.git#tag=v$pkgver"
         "$pkgname.desktop"
 )
-sha256sums=('0f52acfc4328326e760540d34d9802c70f65f3db97ee2f98eeffb2ca3608a9b2'
+sha256sums=('267cbd2e09fd07dd00fec4d5c1a31bfbaac6ff34cfce3bfc3f84858e55b57794'
             'c283dc386b122df8db1157a2f74e7cfd780ab65133ab8fef6c74b2179f85161c')
 
 _ensure_local_nvm() {
@@ -47,6 +47,32 @@ prepare() {
 
   _ensure_local_nvm
   nvm install "${_nodeversion}"
+
+  # Backport whisper-rs 0.16 for Arch source builds.
+  # v0.7.3 fails with whisper-rs 0.15.1 / whisper-rs-sys 0.14.1 on current Arch.
+  if grep -q '^whisper-rs = "0.15.1"$' apps/desktop/src-tauri/Cargo.toml; then
+    sed -i 's/^whisper-rs = "0.15.1"$/whisper-rs = "0.16.0"/' apps/desktop/src-tauri/Cargo.toml
+    python - <<'EOF'
+from pathlib import Path
+path = Path("apps/desktop/src-tauri/src/lib.rs")
+text = path.read_text(encoding="utf-8")
+old = """    if spec.channels == 2 {
+        audio = whisper_rs::convert_stereo_to_mono_audio(&audio).map_err(|e| e.to_string())?;
+    }
+"""
+new = """    if spec.channels == 2 {
+        let mut mono_audio = vec![0.0f32; audio.len() / 2];
+        whisper_rs::convert_stereo_to_mono_audio(&audio, &mut mono_audio).map_err(|e| e.to_string())?;
+        audio = mono_audio;
+    }
+"""
+if old not in text:
+    raise SystemExit("mindwtr whisper backport target snippet not found")
+path.write_text(text.replace(old, new), encoding="utf-8")
+EOF
+    export RUSTUP_TOOLCHAIN=stable
+    cargo update --manifest-path apps/desktop/src-tauri/Cargo.toml -p whisper-rs --precise 0.16.0
+  fi
 
   cd apps/desktop/src-tauri
   export RUSTUP_TOOLCHAIN=stable
