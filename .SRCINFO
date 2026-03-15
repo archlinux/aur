@@ -1,6 +1,6 @@
 pkgbase = cornelli-bin
 	pkgdesc = Write to your future self
-	pkgver = 1.4.0
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/hitblast/cornelli
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = cornelli-bin
 	depends = gcc-libs
 	provides = nelli
 	conflicts = cornelli
-	source = LICENSE-1.4.0::https://raw.githubusercontent.com/hitblast/cornelli/v1.4.0/LICENSE
-	source = README-1.4.0.md::https://raw.githubusercontent.com/hitblast/cornelli/v1.4.0/README.md
+	source = LICENSE-1.4.1::https://raw.githubusercontent.com/hitblast/cornelli/v1.4.1/LICENSE
+	source = README-1.4.1.md::https://raw.githubusercontent.com/hitblast/cornelli/v1.4.1/README.md
 	sha256sums = cf69e70652912b5a51e787bb58b8d07ef2eeff0258ba4b89ff09e8090545fcfe
-	sha256sums = a8397f61fc5e389114386280e11c6bad7dd7fa2fc5304659e183be7435ecc124
-	source_x86_64 = cornelli-1.4.0.tgz::https://github.com/hitblast/cornelli/releases/download/v1.4.0/cornelli-ubuntu-latest.tar.gz
-	sha256sums_x86_64 = 0e2bea4838e27b6c8020e848d362b76e6c138ba0037b2d422f1967ce0d880a45
+	sha256sums = 900a1e91f22e88a2e9aa8f580ceff4013e96238dac9a36d5fb6b9c9706dc32bb
+	source_x86_64 = cornelli-1.4.1.tgz::https://github.com/hitblast/cornelli/releases/download/v1.4.1/cornelli-ubuntu-latest.tar.gz
+	sha256sums_x86_64 = 623848562ef3d4edb654dc2b1242b6cdf9bbefd19d29b3ad12820656ba55f611
 
 pkgname = cornelli-bin

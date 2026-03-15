@@ -5,7 +5,7 @@ _pkgname=cornelli
 pkgname=${_pkgname}-bin
 pkgdesc="Write to your future self"
 
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,8 +24,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-ubuntu-latest.tar.gz")
 sha256sums=('cf69e70652912b5a51e787bb58b8d07ef2eeff0258ba4b89ff09e8090545fcfe'
-            'a8397f61fc5e389114386280e11c6bad7dd7fa2fc5304659e183be7435ecc124')
-sha256sums_x86_64=('0e2bea4838e27b6c8020e848d362b76e6c138ba0037b2d422f1967ce0d880a45')
+            '900a1e91f22e88a2e9aa8f580ceff4013e96238dac9a36d5fb6b9c9706dc32bb')
+sha256sums_x86_64=('623848562ef3d4edb654dc2b1242b6cdf9bbefd19d29b3ad12820656ba55f611')
 
 
 package() {
