@@ -1,0 +1,20 @@
+pkgbase = whisrs-git
+	pkgdesc = Linux-first voice-to-text dictation tool, written in Rust
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/y0sif/whisrs
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = libxkbcommon
+	provides = whisrs
+	conflicts = whisrs
+	source = git+https://github.com/y0sif/whisrs.git
+	sha256sums = SKIP
+
+pkgname = whisrs-git
