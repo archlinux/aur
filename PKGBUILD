@@ -1,19 +1,19 @@
 # Maintainer: tuanapi <tuanapi@proton.me>
 _pkgname=openanime
 pkgname="${_pkgname}-bin"
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Unofficial OpenAnime Linux istemcisi - WebGPU/Vulkan destekli"
 arch=('x86_64')
-url="https://github.com/tuanapi/OpenAnime-Linux-Desktop-App"
+url="https://github.com/tuanapi/OpenAnime-Linux"
 license=('MIT')
 depends=('fuse2' 'gtk3' 'nss' 'libxss' 'alsa-lib')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
 _appimage="OpenAnime-${pkgver}.AppImage"
-source=("${_appimage}::https://github.com/tuanapi/OpenAnime-Linux-Desktop-App/releases/download/v${pkgver}/${_appimage}")
-sha256sums=('SKIP')
+source=("${_appimage}::https://github.com/tuanapi/OpenAnime-Linux/releases/download/v${pkgver}/${_appimage}")
+sha256sums=('a1903d5134ffd150b3b41c0072435d15f5efbe194fa2dd7ecbe5de4a2062814c')
 noextract=("${_appimage}")
 
 package() {
