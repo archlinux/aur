@@ -5,7 +5,7 @@
 
 pkgname=python-kombu
 pkgver=5.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A messaging library for Python"
 arch=(any)
 url="https://github.com/celery/kombu"
@@ -51,16 +51,16 @@ optdepends=(
     'python-yaml: for YAML support'
     'python-zstandard: for zstd compression support'
 )
-source=("$pkgname-$pkgver::git+$url.git#tag=v$pkgver")
+source=("$pkgname::git+$url.git#tag=v$pkgver")
 b2sums=('96c9dcaf87cfe4654293b7a369136dd870a4bc67902401fd39a2f57e949ff6231c2cd32674b33bd745b7540a0b99626e06cfdf0677c4b23c5a960b0349ba43b2')
 
 build() {
-    cd $pkgname-$pkgver
+    cd $pkgname
     python -m build --wheel --no-isolation
 }
 
 check() {
-    cd $pkgname-$pkgver
+    cd $pkgname
     pytest -v \
       --ignore t/unit/transport/test_azureservicebus.py \
       --ignore t/unit/transport/test_azurestoragequeues.py \
@@ -69,7 +69,7 @@ check() {
 }
 
 package() {
-    cd $pkgname-$pkgver
+    cd $pkgname
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
