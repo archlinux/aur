@@ -26,4 +26,9 @@ prepare() {
 package() {
     # Install binary
     install -Dm755 "$srcdir/cloudfleet" "$pkgdir/usr/bin/cloudfleet"
+
+    # Install shell completions
+    "$srcdir/cloudfleet" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/cloudfleet"
+    "$srcdir/cloudfleet" completion zsh | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_cloudfleet"
+    "$srcdir/cloudfleet" completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/cloudfleet.fish"
 }
