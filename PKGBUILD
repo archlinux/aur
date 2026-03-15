@@ -1,6 +1,6 @@
 pkgname=farmmod
 pkgver=0.1.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Mod manager for Farming Simulator on Linux"
 arch=("any")
 url="https://github.com/henriquejsza/FarmMod"
@@ -55,6 +55,19 @@ PY
 
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 "AUTHORS" "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
+
+  install -d "$pkgdir/usr/share/applications"
+  cat > "$pkgdir/usr/share/applications/io.github.henriquejsza.farmmod-hub.desktop" <<'EOF'
+[Desktop Entry]
+Type=Application
+Name=FarmMod
+Comment=Mod manager for Farming Simulator on Linux
+Exec=farmmod
+Icon=io.github.henriquejsza.farmmod-hub
+Terminal=false
+Categories=Utility;Game;
+StartupNotify=true
+EOF
 
   install -Dm644 \
     "data/logo/io.github.henriquejsza.farmmod-hub.png" \
