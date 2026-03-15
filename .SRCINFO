@@ -1,12 +1,13 @@
 pkgbase = lib32-sdl2_mixer
-	pkgdesc = A simple multi-channel audio mixer
-	pkgver = 2.8.0
+	pkgdesc = A simple multi-channel audio mixer (Version 2)
+	pkgver = 2.8.1
 	pkgrel = 1
 	url = https://github.com/libsdl-org/SDL_mixer
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = lib32-fluidsynth
+	depends = lib32-gcc-libs
 	depends = lib32-flac
 	depends = lib32-glibc
 	depends = lib32-libmodplug
@@ -15,7 +16,10 @@ pkgbase = lib32-sdl2_mixer
 	depends = lib32-sdl2
 	depends = sdl2_mixer
 	optdepends = lib32-fluidsynth: MIDI software synth, replaces built-in timidity
-	source = git+https://github.com/libsdl-org/SDL_mixer.git#tag=a37e09f85d321a13dfcf0d4432827ee09beeb623
-	b2sums = SKIP
+	source = https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.8.1/SDL2_mixer-2.8.1.tar.gz
+	source = https://github.com/libsdl-org/SDL_mixer/releases/download/release-2.8.1/SDL2_mixer-2.8.1.tar.gz.sig
+	validpgpkeys = 1528635D8053A57F77D1E08630A59377A7763BE6
+	sha512sums = 6148591404b2113bcdb54391821658548acfe380a9cba660113e55e6f2fb7da2a5a59a99fefe51a0d7f8b91160648f11f72750353da88d285a962e3a410aecd7
+	sha512sums = SKIP
 
 pkgname = lib32-sdl2_mixer
