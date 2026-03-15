@@ -1,60 +1,67 @@
-# Maintainer: Porous3247 <pqtb3v7t at jasonyip1 dot anonaddy dot me>
-# Contributor: Asuka Minato <asukaminato at nyan dot eu dot org>
+# Maintainer: Ido Rosen <ido@kernel.org>
 
-_pkgname="llm"
-pkgname="${_pkgname}-git"
-pkgver=0.1.1.r592.g9376078
+pkgname=llm-git
+provides=(llm)
+conflicts=(llm llm-bin python-llm)
+pkgver=0.28.r980.6b84a0d
 pkgrel=1
-pkgdesc="An ecosystem of Rust libraries for working with large language models"
+pkgdesc='A CLI tool and Python library for interfacing with popular large language models.'
 arch=(any)
-url="https://github.com/rustformers/${_pkgname}"
-license=('Apache-2.0 OR MIT')
-depends=(glibc gcc-libs)
-makedepends=(git cargo)
-provides=("$_pkgname")
-conflicts=("$_pkgname")
-replaces=(llama-cli)
-source=("git+${url}"
-        "git+https://github.com/ggerganov/llama.cpp"
-        )
-sha256sums=('SKIP' 'SKIP')
-options+=('!lto')
-
-
-prepare() {
-    cd "${srcdir}/${_pkgname}"
-    git submodule init
-    git config submodule.crates/ggml/sys/llama-cpp.url "${srcdir}/llama.cpp"
-    git -c protocol.file.allow=always submodule update
-
-    cat LICENSE-* > LICENSE
-
-    export RUSTUP_TOOLCHAIN=stable
-    cargo update
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
-}
+url='https://github.com/simonw/llm'
+license=(Apache-2.0)
+depends=(python
+         python-numpy
+         python-click
+         python-condense-json
+         python-openai
+         python-click-default-group
+         sqlite-utils
+         python-sqlite-migrate
+         python-pydantic
+         python-pyyaml
+         python-pluggy
+         python-ulid
+         python-puremagic
+         python-httpx)
+makedepends=(python-build
+             python-setuptools
+             python-installer
+             python-wheel)
+#checkdepends=(python-pytest
+#              python-pytest-httpx
+#              python-pytest-asyncio
+#              python-cogapp
+#              mypy python-pytest-mypy
+#              python-black
+#              python-pytest-recording
+#              python-ruff
+#              python-pytest-ruff
+#              python-syrupy
+#              ...)
+optdepends=('xyz: for xyz')
+source=(git+https://github.com/simonw/llm)
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd ${pkgname%%-git}
+    GITVER="$(git describe --long --tags | sed 's/^\([^-]*\)-.*$/\1/')"
+    printf "%s.r%s.%s" \
+        "${GITVER##v}" \
+        "$(git rev-list --count HEAD)" \
+        "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release
+    cd $pkgname-$pkgver
+    python -m build --wheel --no-isolation
 }
 
-check () {
-    cd "${srcdir}/${_pkgname}"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
-}
+#check() {
+#    cd $pkgname-$pkgver
+#    pytest -v
+#}
 
 package() {
-    cd "${srcdir}/${_pkgname}"
-    install -Dm755 "target/release/${_pkgname}" -t "${pkgdir}/usr/bin/"
-    install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${_pkgname}/"
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}/"
+    cd $pkgname-$pkgver
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
