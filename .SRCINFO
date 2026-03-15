@@ -1,0 +1,29 @@
+pkgbase = tx16wx-bin
+	pkgdesc = TX16Wx Software Sampler
+	pkgver = 3.7.0r7685.1421
+	pkgrel = 1
+	url = https://www.tx16wx.com
+	arch = x86_64
+	license = custom:CWITEC
+	makedepends = patchelf
+	depends = glibc>=2.34
+	depends = cairo>=1.14.0
+	depends = fontconfig>=2.12.6
+	depends = freetype2>=2.2.1
+	depends = libgcc>=4.0
+	depends = glib2>=2.16.0
+	depends = harfbuzz>=0.6.0
+	depends = pango>=1.50.3
+	depends = libsecret>=0.7
+	depends = libstdc++>=12
+	depends = liburing>=2.0
+	depends = libxcb>=1.6
+	depends = xcb-util-cursor>=0.0.99
+	depends = xcb-util-xrm>=0.0.0
+	depends = libxkbcommon-x11>=0.5.0
+	depends = libxkbcommon>=0.5.0
+	depends = libxml2>=2.7.4
+	source = https://www.tx16wx.com/download/tx16wx-software-sampler-3-linux-x64-debian-2/?wpdmdl=19516&refresh=69b42c003503c1773415424
+	sha256sums = 62398a8609a9625172c5740f7ad774a3fd31cb986c004e97048ad3d30d9c5a46
+
+pkgname = tx16wx-bin
