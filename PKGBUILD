@@ -2,7 +2,7 @@
 
 pkgname=hummingbird-player
 _pkgname=hummingbird
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Modern music player written in Rust using GPUI with a focus on design and performance"
 arch=(x86_64 aarch64)
