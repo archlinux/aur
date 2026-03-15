@@ -1,0 +1,19 @@
+pkgbase = innu-git
+	pkgdesc = A beautiful, minimal, and fast Wi-Fi manager for Linux built with Rust and egui.
+	pkgver = 0.1.2.r0.gc1428c4
+	pkgrel = 1
+	url = https://github.com/gitfudge0/innu
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = networkmanager
+	provides = innu
+	conflicts = innu
+	conflicts = innu-bin
+	source = git+https://github.com/gitfudge0/innu.git
+	source = innu.desktop
+	sha256sums = SKIP
+	sha256sums = 03e59187e530f73298f6636a38ee4d8731cac003118c511a445d715e9130eb94
+
+pkgname = innu-git

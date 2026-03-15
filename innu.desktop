@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Innu
+Exec=innu
+Terminal=false
+Categories=Network;Utility;
