@@ -8,9 +8,9 @@ url="https://github.com/lxp731/leolock"
 license=('MIT')
 depends=('glibc')
 makedepends=('binutils' 'tar' 'zstd')
-source=(leolock_${pkgver}_amd64.deb::https://github.com/lxp731/leolock/releases/download/v$pkgver/leolock_$pkgver_amd64.deb)
+source=(leolock_${pkgver}_amd64.deb::https://github.com/lxp731/leolock/releases/download/v${pkgver}/leolock_${pkgver}_amd64.deb)
 sha256sums=('86e2a469fdc293e85e87b949a1198428681cff4260794b5a83b1b6dedc62ad3b')
-
+# https://github.com/lxp731/leolock/releases/download/v1.0.3/leolock_1.0.3_amd64.deb
 prepare() {
   cd "$srcdir"
   # 解压 deb 包
