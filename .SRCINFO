@@ -1,7 +1,7 @@
 pkgbase = tuvpn-gui
 	pkgdesc = TUvpn GUI by the OpenTU community
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.tuwien.ac.at/opentu/tuvpn-gui
 	arch = any
 	license = MIT-0

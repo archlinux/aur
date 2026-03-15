@@ -2,7 +2,7 @@
 
 pkgname=tuvpn-gui
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="TUvpn GUI by the OpenTU community"
 arch=("any")
 url="https://gitlab.tuwien.ac.at/opentu/tuvpn-gui"
