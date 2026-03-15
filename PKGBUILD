@@ -1,13 +1,13 @@
 # Maintainer: ryoskzypu <ryoskzypu@proton.me>
 
+_author=DBOOK
 _dist=Perl-Critic-Community
-_pkgver=v1.0.4
-pkgname=perl-${_dist,,}
-pkgver=${_pkgver#v}
-pkgrel=3
+pkgname=perl-${_dist@L}
+pkgver=v1.0.4
+pkgrel=4
 pkgdesc='Community-inspired Perl::Critic policies'
 arch=('any')
-url=https://metacpan.org/dist/$_dist
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
 license=('Artistic-2.0')
 depends=(
     'perl-carp'
@@ -18,7 +18,8 @@ depends=(
     'perl-perl-critic-policy-variables-prohibitlooponhash>=0.005'
     'perl-perl-critic>=1.126'
     'perl-ppi>=1.254'
-    'perl-scalar-list-utils>=1.33'
+    'perl-scalar-list-utils'
+    'perl-version'
     'perl>=5.10.1'
 )
 makedepends=('perl-module-build-tiny>=0.034')
@@ -27,13 +28,14 @@ checkdepends=(
     'perl-pathtools'
     'perl-test-simple'
 )
+optdepends=('perl-cpan-meta')
 options=('!emptydirs')
-source=("https://cpan.metacpan.org/authors/id/D/DB/DBOOK/$_dist-$_pkgver.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('3b31624ea0cf4392b8f4397a529515248814a2166697f1a453d58ab6f112d209')
 
 build()
 {
-    cd "$_dist-$_pkgver"
+    cd "$_dist-$pkgver"
 
     unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
 
@@ -43,7 +45,7 @@ build()
 
 check()
 {
-    cd "$_dist-$_pkgver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
@@ -52,7 +54,7 @@ check()
 
 package()
 {
-    cd "$_dist-$_pkgver"
+    cd "$_dist-$pkgver"
 
     unset PERL5LIB PERL_LOCAL_LIB_ROOT
 
