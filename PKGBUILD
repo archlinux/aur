@@ -1,6 +1,6 @@
 # Maintainer: stickpro <your@email.com>
 pkgname=kyp-gui
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Keep Your Passwords — local-first GUI password manager with TOTP support"
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('kyp-gui-bin' 'kyp-gui-git')
 depends=('webkit2gtk-4.1' 'gtk3')
 makedepends=('go' 'npm' 'nodejs')
 source=("https://github.com/stickpro/kyp/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('e95da60458f0a3da091378429c7676b3d8cd119fc3ebddbc4c63a64be32bc35b')
 
 build() {
     cd "kyp-${pkgver}/cmd/kyp-gui/frontend"
