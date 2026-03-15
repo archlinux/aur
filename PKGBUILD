@@ -3,7 +3,7 @@
 # Contributor: Árni Dagur <arnidg at protonmail dot ch>
 
 pkgname=uutils-coreutils-git
-pkgver=0.5.0.r487.g038a08b
+pkgver=0.7.0.r46.gde5e4f5
 pkgrel=1
 pkgdesc="Rust rewrite of coreutils"
 url=https://github.com/uutils/coreutils
@@ -17,10 +17,10 @@ conflicts=({uutils-,}coreutils)
 source=("${pkgname%-git}::git+${url}.git"
 "${url}/releases/download/latest-commit/docs.tar.zst")
 b2sums=('SKIP'
-        'e9a762b79e3b1ff6c5a1cfe01fd74a622cb686952d2ad041ebf15e4653f0805832bdce2ad21c10341c73535b43a8e569381da7e730a5b2fee7774e8479f2707a')
+        'dc70e67e75acdd90763a296a770baea13f25c027d47f3f7d30b34a3c1958fbedc1e7c98159576e9883a2a9f6c28e1c5aab6e9afa1d85d62321acbb423603dc82')
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long --tags --abbrev=7 --match='[0-9]*' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 # Packaging guideline cause double build.
