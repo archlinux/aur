@@ -12,7 +12,7 @@ makedepends=('git' 'gcc' 'make')
 provides=('undr')
 conflicts=('undr')
 source=("$pkgname::git+$url.git#tag=$pkgver")
-sha256sums=('a3a873ff2a38c460727bb95ebe22194619b7043fcaa90380a8475bf6d6a2685d')
+sha256sums=('23e8530c28a18eeeade1245769e9301dce797285f70d00dbfcfe836ea41853e5')
 
 build() {
   cd "${pkgname}"
