@@ -1,7 +1,7 @@
 pkgbase = godotjs-v8-bin
 	pkgdesc = Add TypeScript/JavaScript Support for Godot 4.x with v8 JS Engine
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://godotjs.github.io
 	arch = x86_64
 	license = MIT

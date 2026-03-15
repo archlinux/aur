@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=godotjs-v8-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Add TypeScript/JavaScript Support for Godot 4.x with v8 JS Engine"
 arch=('x86_64')
 url="https://godotjs.github.io"
@@ -30,5 +30,5 @@ validpgpkeys=()
 
 package() {
 	mkdir -p "$pkgdir/usr/bin"
-	mv "$srcdir/godot/bin/godot.linuxbsd.template_release.x86_64" "$pkgdir/usr/bin/godotjs-v8"
+	mv "$srcdir/godot/bin/godot.linuxbsd.editor.dev.x86_64" "$pkgdir/usr/bin/godotjs-v8"
 }
