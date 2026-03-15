@@ -1,0 +1,3 @@
+[python-avro]
+source = "pypi"
+pypi = "avro"

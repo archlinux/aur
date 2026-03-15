@@ -12,6 +12,7 @@ pkgbase = python-avro
 	depends = python
 	depends = python-zstandard
 	depends = python-snappy
+	depends = python-typing_extensions
 	noextract = python-avro-1.12.1.tar.gz
 	source = python-avro-1.12.1.tar.gz::https://files.pythonhosted.org/packages/source/a/avro/avro-1.12.1.tar.gz
 	b2sums = 7dc2be339d3cb10e593f76e08f2b9bed761b133d4f759d58b6703f543996dae5ba80b3bee82e7ac8c4e7a3f7118d746e7ab3e65fb5e7da7d6d42a1ed25848c45
