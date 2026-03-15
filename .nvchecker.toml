@@ -1,0 +1,5 @@
+[repo-security-scanner-bin]
+source = "github"
+github = "techjacker/repo-security-scanner"
+use_latest_release = true
+prefix = "v"
