@@ -1,0 +1,20 @@
+pkgbase = switcharch-control-center
+	pkgdesc = Unified settings application for SwitchArch Desktop
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/switcharch/switcharch-control-center
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = gcc
+	makedepends = pkgconf
+	depends = gtk4
+	depends = libadwaita
+	depends = glib2
+	depends = dbus
+	depends = networkmanager
+	depends = bluez-utils
+	source = switcharch-control-center-0.1.0.tar.gz::https://github.com/switcharch/switcharch-control-center/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = switcharch-control-center
