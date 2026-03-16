@@ -1,0 +1,19 @@
+pkgbase = vsfetch-git
+	pkgdesc = Graphical GTK3 'About This Computer' panel for Linux
+	pkgver = r1.0
+	pkgrel = 1
+	url = https://github.com/victorsosaMx/vsFetch
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = papirus-icon-theme
+	depends = ttf-jetbrains-mono-nerd
+	provides = vsfetch
+	conflicts = vsfetch
+	source = vsfetch-git::git+https://github.com/victorsosaMx/vsFetch.git
+	sha256sums = SKIP
+
+pkgname = vsfetch-git
