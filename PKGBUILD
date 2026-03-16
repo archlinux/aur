@@ -58,7 +58,7 @@ sha256sums=('2e39dcb7cd97721e7425bb04d2bb4a1e0b7fd67ce2b87787b1dd020f00f1b354'
 
 prepare() {
   cd ${pkgname}
-  mkdir build
+  mkdir -p build
   # Remove curl submodule
   git rm third-party/curl
   # Fix curl lib name
