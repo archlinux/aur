@@ -1,6 +1,6 @@
 pkgbase = qt-heic-image-plugin
 	pkgdesc = Qt plug-in to allow Qt and KDE based applications to read/write HEIF/HEIC images.
-	pkgver = 0.6.2
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/novomesk/qt-heic-image-plugin
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = qt-heic-image-plugin
 	makedepends = qt5-base
 	makedepends = qt6-base
 	depends = libheif
-	source = https://github.com/novomesk/qt-heic-image-plugin/archive/refs/tags/v0.6.2.tar.gz
-	sha256sums = 43805c79cf10d8bdfff7586ac8dabdc5a606ece7592cd3a052df7212486a4d96
+	source = https://github.com/novomesk/qt-heic-image-plugin/archive/refs/tags/v0.7.0.tar.gz
+	sha256sums = 81dd6ad2a3ef969059f38ad84bceba33ff5f4e6875d92b3a63cad1a3f63cd023
 
 pkgname = qt5-heic-image-plugin
 	pkgdesc = Qt plug-in to allow Qt and KDE based applications to read/write HEIF/HEIC images. (QT5 version)
