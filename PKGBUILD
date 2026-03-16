@@ -37,6 +37,8 @@ makedepends=(
   python-wheel
   python-scikit-build-core
   python-trove-classifiers
+  rocm-toolchain
+  rocminfo
 )
 provides=("python-$_name")
 conflicts=("$pkgname-git")
@@ -46,7 +48,25 @@ sha512sums=("SKIP")
 build() {
   cd $pkgname
 
-  cmake -DCOMPUTE_BACKEND=hip -S .
+  # Determine GPU targets
+  GPU_TARGETS=$(rocm_agent_enumerator -t GPU)
+  if [[ -n "$GPU_TARGETS" ]]; then
+    echo "Building natively for enumerated GPU target: ${GPU_TARGETS}"
+  else
+    GPU_TARGETS="$(rocm-supported-gfx -e gfx950)"
+    echo "Building in container for all supported GPU targets: ${GPU_TARGETS}"
+  fi
+
+  local cmake_options=(
+    -S .
+    -D COMPUTE_BACKEND=hip
+    # This won't actually do anything, just set it to silence a warning
+    -D GPU_TARGETS=${GPU_TARGETS}
+    # Actually used GPU targets
+    -D CMAKE_HIP_ARCHITECTURES=${GPU_TARGETS}
+  )
+  cmake "${cmake_options[@]}"
+
   make
   python -m build --wheel --no-isolation
 }
