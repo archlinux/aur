@@ -2,7 +2,5 @@ post_install() {
 cat <<EOF
 In order to use this with River place "rill" inside your river configuration or launch
 river -c rill
-
-PLEASE MAKE SURE YOU HAVE BUILT RIVER FROM THE MAIN BRANCH
 EOF
 }

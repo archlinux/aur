@@ -1,7 +1,7 @@
 pkgbase = rill-git
 	pkgdesc = A minimalist scrolling window manager for River
 	pkgver = 1fe1ff9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/lzj15/rill
 	install = rill.install
 	arch = x86_64
