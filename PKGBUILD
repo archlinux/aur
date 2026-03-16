@@ -27,19 +27,20 @@ sha256sums=('4004d82ed327a3693b793362e4f1ee5723c6ad6931ace5f902af7dc764fd21f1'
 
 prepare() {
     cd "orbit-$pkgver"
-    # Fix for aws-lc-sys jitterentropy compilation error with default Arch CFLAGS (-O2)
-    export CFLAGS="${CFLAGS/-O2/}"
-    export CXXFLAGS="${CXXFLAGS/-O2/}"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
     cd "orbit-$pkgver"
-    # We use a completely clean environment for the build to avoid flag pollution
-    # that causes linking failures in aws-lc-sys (undefined symbols).
-    env -u CFLAGS -u CXXFLAGS -u LDFLAGS \
-        AWS_LC_SYS_CMAKE_BUILDER=1 \
-        cargo build --frozen --release
+    # The aws-lc-sys crate has a known conflict with standard Arch Linux CFLAGS/CXXFLAGS
+    # specifically around jitterentropy which must be compiled with -O0.
+    # We clear the environment flags to allow the crate's build script to manage its own optimizations.
+    unset CFLAGS
+    unset CXXFLAGS
+    unset LDFLAGS
+    
+    export AWS_LC_SYS_CMAKE_BUILDER=1
+    cargo build --frozen --release
 }
 
 package() {
