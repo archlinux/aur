@@ -4,7 +4,7 @@
 
 pkgname=mpd-sacd
 pkgver=0.25
-pkgrel=7
+pkgrel=8
 pkgdesc='MPD with patches for SACD and DVD-A ISO playback.'
 url='https://github.com/manisiutkin/MPD'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -40,7 +40,7 @@ prepare() {
 }
 
 build() {
-	cd "$srcdir/mpd/build"
+	cd "$srcdir/mpd-sacd/build"
 	_opts=(# in AUR, needs testing
 		   #'-Dadplug=disabled'
 		   # interferes with detection of alsa devices
@@ -59,7 +59,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/mpd/build"
+	cd "${srcdir}/mpd-sacd/build"
 	DESTDIR="${pkgdir}" ninja install
 	install -Dm644 ../doc/mpdconf.example "${pkgdir}"/usr/share/doc/mpd/mpdconf.example
 	install -Dm644 doc/mpd.conf.5 "${pkgdir}"/usr/share/man/man5/mpd.conf.5

@@ -1,7 +1,7 @@
 pkgbase = mpd-sacd
 	pkgdesc = MPD with patches for SACD and DVD-A ISO playback.
 	pkgver = 0.25
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/manisiutkin/MPD
 	arch = i686
 	arch = x86_64
