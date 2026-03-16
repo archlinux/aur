@@ -1,0 +1,20 @@
+pkgbase = correlation
+	pkgdesc = Analysis tool for liquid and amorphous solid structures
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = https://github.com/Isurwars/Correlation
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = rust
+	makedepends = pkgconf
+	depends = intel-oneapi-tbb
+	depends = hdf5
+	depends = fontconfig
+	depends = freetype2
+	depends = libxcb
+	source = correlation-2.1.1.tar.gz::https://github.com/Isurwars/Correlation/archive/refs/tags/v2.1.1.tar.gz
+	sha256sums = 90a974e8351263ba4070e9b02e9ce735b9dcaa021e43491558cb62efcbbc4432
+
+pkgname = correlation
