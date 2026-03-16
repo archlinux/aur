@@ -50,7 +50,7 @@ source=(
   'opencom.png'
 )
 sha256sums=(
-  '6143b502995a2250fc3f2e4c124edf021e195bee840e63bf87451b77da548973'
+  '988e4c271e34183c5d2178bd18ae778da9b23fda6fd0482fc4c9ec16a36c78f2'
   'SKIP'
   'SKIP'
 )

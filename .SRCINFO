@@ -33,7 +33,7 @@ pkgbase = opencom-bin
 	source = OpenCom.tar.gz::https://opencom.online/downloads/OpenCom.tar.gz
 	source = opencom.desktop
 	source = opencom.png
-	sha256sums = 6143b502995a2250fc3f2e4c124edf021e195bee840e63bf87451b77da548973
+	sha256sums = 988e4c271e34183c5d2178bd18ae778da9b23fda6fd0482fc4c9ec16a36c78f2
 	sha256sums = SKIP
 	sha256sums = SKIP
 
