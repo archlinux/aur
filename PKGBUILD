@@ -32,7 +32,7 @@ makedepends=(
     'extra-cmake-modules'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xarbit/plasma6-applet-appgrid/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('481700ac5d6b0418c73784e3f61da08f16f2d4941c86091e531a747767d15d43')
+sha256sums=('5a21da4d8c2b3b773a309a9f16bc8e75c106ab288b02954242a14542200cbd2c')
 
 build() {
     cmake -B build -S "plasma6-applet-appgrid-${pkgver}" \
