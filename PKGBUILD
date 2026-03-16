@@ -24,7 +24,7 @@ depends=(
 provides=('dotify')
 conflicts=('dotify')
 source=("https://dotify.fun/Dotify.deb")
-sha256sums=('22b45352ee9b3f245af51480ee9dc8a49e4d75eb630ff1f1529d047402b8ce74')
+sha256sums=('10c446a0756c5a4aa60a8941a1549b7cdd57a1f078095c80ba0812cf1471fb26')
 
 package() {
   cd "${srcdir}"
