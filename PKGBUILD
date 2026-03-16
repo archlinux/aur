@@ -19,7 +19,7 @@ conflicts=('azadi' 'azadi-git')
 depends=('gcc-libs' 'glibc')
 options=('!debug')
 source=("azadi-x86_64-linux.tar.gz::https://github.com/giannifer7/azadi/releases/download/v${pkgver}/azadi-x86_64-linux.tar.gz")
-sha256sums=('b24f48935de6f176f496dfdac680337009067a01f189cedba418a1241f2c6a59')
+sha256sums=('494f3e0653a72a6dc6f0d8902f1a05162f32d575915366acc35934bff765a538')
 
 package() {
     install -Dm755 azadi -t "${pkgdir}/usr/bin"
