@@ -1,0 +1,4 @@
+[gnome-shell-extension-adwaita-colors-home]
+source = "git"
+git = "https://github.com/dpejoh/Adwaita-Colors-Home.git"
+prefix = "v"

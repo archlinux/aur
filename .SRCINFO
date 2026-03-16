@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-adwaita-colors-home
+	pkgdesc = Official companion extension for the Adwaita Colors icon theme.
+	pkgver = 3
+	pkgrel = 1
+	url = https://github.com/dpejoh/Adwaita-Colors-Home
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = jq
+	depends = adwaita-colors-icon-theme
+	depends = gnome-shell
+	source = git+https://github.com/dpejoh/Adwaita-Colors-Home.git#tag=v3
+	sha256sums = 913d0e6b30c4d1d79d8a8c97dafa7ae7693790747a430c68937efd59be8c8e72
+
+pkgname = gnome-shell-extension-adwaita-colors-home
