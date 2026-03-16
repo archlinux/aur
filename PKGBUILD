@@ -4,7 +4,7 @@ _appname=ff
 _pkgauthor=RobertFlexx
 _pkgname=fastfind
 pkgname=${_pkgname}-bin
-pkgdesc="Git worktrees that actually work (zero-config dep sync, fleet mode for parallel agents)"
+pkgdesc="Fast, smart file search with fuzzy matching and natural language queries"
 
 pkgver=1.0.0
 pkgrel=1
