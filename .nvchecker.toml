@@ -1,0 +1,5 @@
+[fastfind-bin]
+source = "github"
+github = "RobertFlexx/fastfind"
+use_latest_release = true
+prefix = "v"

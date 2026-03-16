@@ -1,0 +1,21 @@
+pkgbase = fastfind-bin
+	pkgdesc = Git worktrees that actually work (zero-config dep sync, fleet mode for parallel agents)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/RobertFlexx/fastfind
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ff
+	conflicts = fastfind
+	source = MANPAGE-1.0.0.1::https://raw.githubusercontent.com/RobertFlexx/fastfind/v1.0.0/mandoc/ff.1
+	source = README-1.0.0.md::https://raw.githubusercontent.com/RobertFlexx/fastfind/v1.0.0/README.md
+	source = LICENSE-1.0.0::https://raw.githubusercontent.com/RobertFlexx/fastfind/v1.0.0/LICENSE
+	sha256sums = 2a764900700bdb1b95fda7de0a00912fd58cc9562c7780f3f4f9a752b6ead74c
+	sha256sums = 53bbecb1ef71da2b4f524dcd167cc007635b981872bb8c9e509b8866c85e795d
+	sha256sums = 03032f3a3b2cda5b47d8994ebcc63b6f39259eff117931f14640a3ba2649146c
+	source_x86_64 = fastfind-x86_64-1.0.0::https://github.com/RobertFlexx/fastfind/releases/download/v1.0.0/ff-linux-amd64
+	sha256sums_x86_64 = 563ecf414aebb35eec435af91506218d8027d4440279a1618d53ab3695e3b9e8
+
+pkgname = fastfind-bin
