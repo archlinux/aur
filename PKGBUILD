@@ -11,7 +11,8 @@ arch=('any')
 url="https://github.com/ake13-art/secfetch"
 
 provides=("${pkgname}")
-makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer')
+
+makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-pip')
 depends=('python')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")

@@ -9,6 +9,7 @@ pkgbase = secfetch
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-pip
 	depends = python
 	provides = secfetch
 	source = secfetch-1.4.tgz::https://github.com/ake13-art/secfetch/archive/v1.4.tar.gz
