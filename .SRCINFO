@@ -1,6 +1,6 @@
 pkgbase = rauncher-x11
 	pkgdesc = Application launcher for Linux X11 desktop
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/h3poteto/rauncher
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = rauncher-x11
 	depends = hicolor-icon-theme
 	provides = rauncher-x11
 	conflicts = rauncher-wayland
-	source = https://github.com/h3poteto/rauncher/archive/refs/tags/v0.1.0.tar.gz
-	md5sums = 55bfcea8f6137b120a2ee664cf6149e4
+	source = https://github.com/h3poteto/rauncher/archive/refs/tags/v0.1.1.tar.gz
+	md5sums = 48cab616da62ef90bfea192271268fb6
 
 pkgname = rauncher-x11
