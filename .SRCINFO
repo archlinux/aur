@@ -1,7 +1,7 @@
 pkgbase = sysadmin-vim
 	pkgdesc = Minimalistic yet powerful Vim configuration for sysadmins. Pre-configured with essential plugins and sane defaults.
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 5
 	url = https://github.com/rtXrtXrtX/sysadmin-vim
 	arch = any
 	license = MIT
