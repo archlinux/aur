@@ -1,6 +1,6 @@
 # Maintainer: Frederik Leonhardt <frederik at leonhardt dot co dot nz>
 pkgname='ssh2incus'
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 pkgdesc="SSH server for Incus instances"
 arch=(
@@ -22,9 +22,7 @@ install=ssh2incus.install
 source=(
   "git+https://github.com/mobydeck/ssh2incus.git#tag=${pkgver}"
 )
-sha256sums=(
-  '34314b820612cecceef04d1232484253b48c79faa1ff4f8d508b01f0bebb886c'
-)
+sha256sums=('6900cf45f593a835d65aa2ab16077a3ab072563333f220942d0d17bca50f5701')
 
 _buildarch="$CARCH"
 if [[ "$CARCH" == "x86_64" ]]; then
