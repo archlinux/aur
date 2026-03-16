@@ -1,6 +1,6 @@
 pkgbase = rosec-git
 	pkgdesc = Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock (git)
-	pkgver = 0.0.17
+	pkgver = 0.0.18
 	pkgrel = 1
 	url = https://github.com/jmylchreest/rosec
 	install = rosec.install
