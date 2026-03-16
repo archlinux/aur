@@ -1,7 +1,7 @@
 pkgname=muon_decoder
 pkgver=1.1.2
-pkgrel=1
-pkgdesc="Partical decoder"
+pkgrel=2
+pkgdesc="Particle decoder"
 arch=('x86_64')
 url="https://github.com/Dopple24/muon_decoder"
 license=('MIT')
