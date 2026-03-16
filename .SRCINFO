@@ -1,12 +1,12 @@
 pkgbase = lazytail
 	pkgdesc = A fast, universal terminal-based log viewer with live filtering and follow mode
-	pkgver = 0.8.2
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/raaymax/lazytail
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
-	source = lazytail-0.8.2.tar.gz::https://github.com/raaymax/lazytail/archive/v0.8.2.tar.gz
-	sha256sums = d0e30834f9441d37767d98adc6f8e9a6fe815fe749da32c56017509bde9b32ea
+	source = lazytail-0.9.0.tar.gz::https://github.com/raaymax/lazytail/archive/v0.9.0.tar.gz
+	sha256sums = 750d24bfc59eb0f7caa78a8846b7c68033f12df7feb582b07a90721b4e684bd4
 
 pkgname = lazytail
