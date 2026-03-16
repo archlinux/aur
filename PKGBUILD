@@ -2,7 +2,7 @@
 
 pkgname=zigmkhuman
 pkgver=1.3.0.r0.g0000000
-pkgrel=1
+pkgrel=2
 pkgdesc="MakeHuman 1 from upstream git bundled with the ZigMakeHuman aiohttp API"
 arch=('any')
 url="https://github.com/makehumancommunity/makehuman"
