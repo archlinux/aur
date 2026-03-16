@@ -1,6 +1,6 @@
 # Maintainers: SteamClientHomebrew <https://github.com/SteamClientHomebrew>
 
-pkgver=2.35.0
+pkgver=3.0.0_beta.2
 pkgname="millennium"
 _pkgdir="Millennium"
 pkgrel=5
@@ -9,35 +9,18 @@ arch=('x86_64')
 url="https://github.com/SteamClientHomebrew/Millennium"
 license=('MIT')
 depends=('git' 'steam')
-makedepends=('npm' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja' 'lib32-gcc-libs' 'pnpm')
-depends_x86_64=('lib32-python311-bin')
-conflicts=('python-i686-bin')
-source=("git+$url.git#commit=50fcda7794bf32c8edbd30222370e70ac511805c") # TODO: update to commit on main branch when we merge.
+makedepends=('bun-bin' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja' 'lib32-gcc-libs')
+source=("git+$url.git#commit=5d181568ae24cd129615dd1f28419ce82329bb54") # TODO: update to commit on main branch when we merge.
 sha256sums=('SKIP')
 options=(!debug)
 install=millennium.install
 
 build() {
     cd             $srcdir/$_pkgdir
-    export         NODE_NO_WARNINGS=1
-
-    echo -e        "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium assets...\e[0m"
-
-    # Build sdk
-    pnpm --dir     src/sdk           install
-    pnpm --dir     src/sdk           run build
-
-    # Copy shims
-    mkdir -p       shims/build/
-    cp -r          src/sdk/packages/loader/build "./shims/"
-
-    # Build frontend - has to be after sdk.
-    pnpm --dir     src/frontend      install
-    pnpm --dir     src/frontend      run build
 
     echo -e        "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium...\e[0m"
 
-    # Build Millennium!
+    # CMake handles the TypeScript frontend build automatically via bun.
     cmake -GNinja  . -DCMAKE_BUILD_TYPE=Release --preset linux-release -DDISTRO_ARCH=ON
     cmake --build  build
 }
@@ -49,15 +32,12 @@ package() {
 
     # Create final directory structure
     mkdir -p       $pkgdir/usr/lib/millennium
-    mkdir -p       $pkgdir/usr/share/millennium/shims
-    mkdir -p       $pkgdir/usr/share/millennium/assets
     mkdir -p       $pkgdir/usr/share/licenses/$pkgname
 
     # Finally, install files to package location
-    install -Dm755 build/src/libmillennium_x86.so                        "$pkgdir/usr/lib/millennium/"
-    install -Dm755 build/src/hhx64/libmillennium_hhx64.so                "$pkgdir/usr/lib/millennium/"
-    install -Dm755 build/src/boot/linux/libmillennium_bootstrap_86x.so   "$pkgdir/usr/lib/millennium/"
-    cp -r          src/pipx                                              "$pkgdir/usr/share/millennium/assets/"
-    cp -r          shims/build                                           "$pkgdir/usr/share/millennium/shims/"
-    install -Dm644 LICENSE.md                                            "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm755 build/libmillennium_x86.so              "$pkgdir/usr/lib/millennium/"
+    install -Dm755 build/libmillennium_hhx64.so            "$pkgdir/usr/lib/millennium/"
+    install -Dm755 build/libmillennium_bootstrap_86x.so    "$pkgdir/usr/lib/millennium/"
+    install -Dm755 build/millennium_luasb86                 "$pkgdir/usr/lib/millennium/"
+    install -Dm644 LICENSE.md                                                            "$pkgdir/usr/share/licenses/$pkgname/"
 }
