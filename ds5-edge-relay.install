@@ -1,11 +1,34 @@
 post_install() {
+    # Перезагружаем udev правила и применяем их сразу
     udevadm control --reload-rules
-    udevadm trigger
-    echo "Add your user to input group: sudo usermod -aG input $USER"
-    echo "Enable autostart: systemctl enable --now ds5-edge-relay"
+    udevadm trigger --subsystem-match=hidraw
+    udevadm trigger --subsystem-match=misc  # /dev/uhid
+
+    echo ""
+    echo "==> DS5 Edge Relay установлен."
+    echo ""
+    echo "==> Доступ к устройствам без sudo:"
+    echo "    Udev правила уже применены (TAG uaccess)."
+    echo "    Для надёжности добавьте себя в группу input:"
+    echo ""
+    echo "        sudo usermod -aG input \$USER"
+    echo ""
+    echo "    Затем перелогиньтесь или выполните: newgrp input"
+    echo ""
+    echo "==> Запуск приложения: ds5-edge-relay"
+    echo "==> Автозапуск как systemd user сервис (необязательно):"
+    echo "        systemctl --user enable --now ds5-edge-relay"
+    echo ""
 }
-post_upgrade() { post_install; }
+
+post_upgrade() {
+    udevadm control --reload-rules
+    udevadm trigger --subsystem-match=hidraw
+    udevadm trigger --subsystem-match=misc
+    echo "==> DS5 Edge Relay обновлён до $(pacman -Q ds5-edge-relay | awk '{print $2}')"
+}
+
 pre_remove() {
-    systemctl stop ds5-edge-relay 2>/dev/null || true
-    systemctl disable ds5-edge-relay 2>/dev/null || true
+    systemctl --user stop ds5-edge-relay 2>/dev/null || true
+    systemctl --user disable ds5-edge-relay 2>/dev/null || true
 }

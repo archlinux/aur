@@ -1,6 +1,6 @@
 pkgbase = ds5-edge-relay
-	pkgdesc = HID relay daemon for DualSense Edge to virtual DualSense, fixes Proton compatibility
-	pkgver = 1.0.1
+	pkgdesc = Qt GUI relay daemon for DualSense Edge — presents it as a standard DualSense to fix Proton/Steam compatibility
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/Follen22/ds5-edge-relay
 	install = ds5-edge-relay.install
@@ -9,7 +9,8 @@ pkgbase = ds5-edge-relay
 	makedepends = cmake
 	makedepends = ninja
 	depends = glibc
-	source = ds5-edge-relay-1.0.1.tar.gz::https://github.com/Follen22/ds5-edge-relay/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = a29b0045fc966d45380e87d3c2e1df5e35ff805cb176deef64c6b74c4175535a
+	depends = qt6-base
+	source = ds5-edge-relay-1.0.2.tar.gz::https://github.com/Follen22/ds5-edge-relay/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = SKIP
 
 pkgname = ds5-edge-relay
