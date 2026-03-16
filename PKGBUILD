@@ -16,8 +16,7 @@ provides=(coreutils)
 conflicts=({uutils-,}coreutils)
 source=("${pkgname%-git}::git+${url}.git"
 "${url}/releases/download/latest-commit/docs.tar.zst")
-b2sums=('SKIP'
-        'dc70e67e75acdd90763a296a770baea13f25c027d47f3f7d30b34a3c1958fbedc1e7c98159576e9883a2a9f6c28e1c5aab6e9afa1d85d62321acbb423603dc82')
+b2sums=('SKIP' 'SKIP')
 pkgver() {
   cd ${pkgname%-git}
   git describe --long --tags --abbrev=7 | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'

@@ -17,6 +17,6 @@ pkgbase = uutils-coreutils-git
 	source = uutils-coreutils::git+https://github.com/uutils/coreutils.git
 	source = https://github.com/uutils/coreutils/releases/download/latest-commit/docs.tar.zst
 	b2sums = SKIP
-	b2sums = dc70e67e75acdd90763a296a770baea13f25c027d47f3f7d30b34a3c1958fbedc1e7c98159576e9883a2a9f6c28e1c5aab6e9afa1d85d62321acbb423603dc82
+	b2sums = SKIP
 
 pkgname = uutils-coreutils-git
