@@ -5,7 +5,7 @@ _pkgname=bfree
 pkgname=${_pkgname}-bin
 pkgdesc="A better free, human by default"
 
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,7 +25,7 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}")
 sha256sums=('bbf859c58da1a2c1c07c25e82698ca64f0a444014bedc8b6e8a47d64fdb1da2d'
             '07ec7d6e8c4890362dd7b638725abc54dc6449edbfa2fbabae6692dfbcebafd5')
-sha256sums_x86_64=('0ac623d67ce64273d308e1815b9c58a12077b07b065b0ff7a2daeb8625b3a91c')
+sha256sums_x86_64=('6b6f55ec030e0a8651094856741c858bce4cec2b990ec0d1154ecf133664d1c6')
 
 
 package() {
