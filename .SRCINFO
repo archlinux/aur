@@ -1,6 +1,6 @@
 pkgbase = yet-another-electron-term
 	pkgdesc = A remote connection tool based on angular + electron supporting SSH Telnet WinRM, RDP VNC, SCP/SFTP FTP SAMBA.(Use system-wide electron)
-	pkgver = 3.1.0
+	pkgver = 3.1.1
 	pkgrel = 1
 	url = https://github.com/invince/YAET
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = yet-another-electron-term
 	depends = electron35
 	depends = python
 	depends = libsecret
-	source = yet-another-electron-term-3.1.0::git+https://github.com/invince/YAET#tag=v3.1.0
+	source = yet-another-electron-term-3.1.1::git+https://github.com/invince/YAET#tag=v3.1.1
 	source = yet-another-electron-term.sh
-	sha256sums = a606e199a0ad337fe3cf3b7a40fb2d383db5d5c4f5d107e6a6ab23e4132f88b5
+	sha256sums = a0fb8b2b4c18ddfb1d287474b0aa5b297f280168556e1eb68a3c7937ea5d18fb
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = yet-another-electron-term
