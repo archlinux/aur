@@ -1,3 +1,5 @@
+# Maintainer: Everything2067 <anand shaurya at proton dot me>
+
 pkgname=librewolf-extension-plasma-integration
 pkgver=2.1.1
 pkgrel=1
