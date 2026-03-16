@@ -1,0 +1,6 @@
+pkg
+src
+ownfoil
+*.pkg.*
+*.tar.gz
+
