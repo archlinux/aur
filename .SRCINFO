@@ -1,6 +1,6 @@
 pkgbase = unified-hifi-control-bin
 	pkgdesc = Source-agnostic hi-fi control bridge for Roon, LMS, HQPlayer, and hardware surfaces
-	pkgver = 3.3.1
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://github.com/open-horizon-labs/unified-hifi-control
 	install = unified-hifi-control.install
@@ -17,11 +17,11 @@ pkgbase = unified-hifi-control-bin
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	source_x86_64 = binary::https://github.com/open-horizon-labs/unified-hifi-control/releases/download/v3.3.1/unified-hifi-linux-x64
+	source_x86_64 = binary::https://github.com/open-horizon-labs/unified-hifi-control/releases/download/v3.3.2/unified-hifi-linux-x64
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = binary::https://github.com/open-horizon-labs/unified-hifi-control/releases/download/v3.3.1/unified-hifi-linux-arm64
+	source_aarch64 = binary::https://github.com/open-horizon-labs/unified-hifi-control/releases/download/v3.3.2/unified-hifi-linux-arm64
 	sha256sums_aarch64 = SKIP
-	source_armv7h = binary::https://github.com/open-horizon-labs/unified-hifi-control/releases/download/v3.3.1/unified-hifi-linux-armv7
+	source_armv7h = binary::https://github.com/open-horizon-labs/unified-hifi-control/releases/download/v3.3.2/unified-hifi-linux-armv7
 	sha256sums_armv7h = SKIP
 
 pkgname = unified-hifi-control-bin

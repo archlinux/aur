@@ -6,7 +6,7 @@
 
 pkgname=unified-hifi-control-bin
 _pkgname=unified-hifi-control
-pkgver=3.3.1
+pkgver=3.3.2
 pkgrel=1
 pkgdesc="Source-agnostic hi-fi control bridge for Roon, LMS, HQPlayer, and hardware surfaces"
 arch=('x86_64' 'aarch64' 'armv7h')
