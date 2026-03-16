@@ -1,7 +1,7 @@
 # Maintainer: LifeOfATitan <abdoul@designsunreal.com>
 pkgname=orbit-wifi
 pkgver=2.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A WiFi/Bluetooth manager for Wayland with glassmorphism UI"
 arch=('x86_64')
 url="https://github.com/LifeOfATitan/orbit"
