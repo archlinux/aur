@@ -3,7 +3,7 @@
 
 pkgname=hyper-headset-bin
 pkgver=1.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc='HyperX headset family utilities (bin)'
 arch=('x86_64')
 url='https://github.com/LennardKittner/HyperHeadset'
@@ -21,10 +21,9 @@ source=(
 )
 
 sha256sums=(
-  'e89ed91172324d3c2fcaa0f226c202a1a5eaf1cb45bdc23afc22f521da730eb8'
+  'e9a7f0d0724462c87e1a274a1b3396b319615dd8391824a12a1ad0315a638ba5'
   '9867046ffe25ee100ad49a5c51f1cdf94186035ad469c97ad3c7a96fbb892144'
-  '08e7ca1fdd0f6f62d50590afc7092e95ad9d71ebee75eacd604c5ea45462f706'
-)
+  '08e7ca1fdd0f6f62d50590afc7092e95ad9d71ebee75eacd604c5ea45462f706')
 
 package() {
   install -Dm755 hyper_headset "${pkgdir}/usr/bin/hyper_headset"
