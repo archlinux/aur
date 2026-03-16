@@ -1,6 +1,6 @@
 pkgbase = jasmin-compiler-bin
 	pkgdesc = Compiler for the Jasmin language for high-assurance and high-speed cryptography
-	pkgver = 2025.06.3
+	pkgver = 2026.03.0
 	pkgrel = 1
 	url = https://github.com/jasmin-lang/jasmin
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = jasmin-compiler-bin
 	depends = gmp
 	depends = mpfr
 	depends = ppl
-	source = jasmin-compiler_2025.06.3-1+trixie_amd64.deb::https://repo.formosa-crypto.org/debian/pool/main/j/jasmin-compiler/jasmin-compiler_2025.06.3-1+trixie_amd64.deb
-	source = libapron_0.9.15-1+trixie_amd64.deb::https://repo.formosa-crypto.org/debian/pool/main/a/apron/libapron_0.9.15-1+trixie_amd64.deb
-	sha256sums = 74f0c88b6c398c1527b691a68038cfc59812bd85def271be9d7e2e7fe1e34354
-	sha256sums = 3705a1761c289e690d0d9d408d10e0302da2f0d96fdbc7690db5eb27479e59f9
+	source = jasmin-compiler_2026.03.0-1_amd64.deb::https://repo.formosa-crypto.org/debian/pool/main/j/jasmin-compiler/jasmin-compiler_2026.03.0-1_amd64.deb
+	source = libapron_0.9.15-1_amd64.deb::https://repo.formosa-crypto.org/debian/pool/main/a/apron/libapron_0.9.15-1_amd64.deb
+	sha256sums = 419e0287e6ae4188552288e837ecd03e926a8cd19910778bacda40507e87b7a5
+	sha256sums = c32aa0507c4afa33063bc8bb7bf64c1782684b723301ae35061736363a4ee555
 
 pkgname = jasmin-compiler-bin
