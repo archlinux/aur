@@ -1,7 +1,7 @@
 # Maintainer: SwitchBros <switchbros@proton.me>
 pkgname=steam-library-manager
 _app_id=io.github.switch_bros.SteamLibraryManager
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A powerful Steam library organizer for Linux - the modern Depressurizer alternative"
 arch=('any')
@@ -37,7 +37,7 @@ optdepends=(
     'python-steamgriddb: artwork browsing via SteamGridDB'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ba69b387fa765fc6e2db7e71ea5f5daa2dc0616a28da03b7c23c1ab1227a07f6')
+sha256sums=('ebb7d8bd8c55bc43913c92e48c1312918548d90bdf42b28a936c155301502066')
 
 build() {
     cd "SteamLibraryManager-$pkgver"
