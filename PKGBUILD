@@ -4,7 +4,7 @@ _pkgname="psl1ght"
 _commit="eca3f990a6691c896129439b95ca1f7bdd6abaf0"
 pkgname="ps3-${_pkgname}"
 pkgver="20241020"
-pkgrel=2
+pkgrel=3
 pkgdesc="PSL1GHT lightweight PS3 GameOS SDK"
 arch=(x86_64 aarch64 powerpc64le powerpc64 powerpc riscv64)
 url='https://github.com/ps3dev'
@@ -15,6 +15,7 @@ depends=(
 	"ps3-ppu-gcc>=15.1.0"
 	"ps3-spu-binutils>=2.22"
 	"ps3-spu-gcc>=9.5.0"
+	"python-setuptools"
 )
 options=(!emptydirs !strip staticlibs)
 source=(
