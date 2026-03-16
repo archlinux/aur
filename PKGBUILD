@@ -10,7 +10,7 @@ url='https://github.com/geekgeekrun/geekgeekrun'
 
 options=('!strip')
 
-source=("${pkgname}-${pkgver}.deb::https://github.com/geekgeekrun/geekgeekrun/releases/download/${_pkgver}/geekgeekrun-${_pkgver//-/_}_amd64.deb")
+source=("${pkgname}-${pkgver}.deb::https://github.com/geekgeekrun/geekgeekrun/releases/download/${_pkgver}/geekgeekrun-ui_${pkgver}_amd64.deb")
 sha256sums=('a16d35c30a9a9a3f4ab5506fc6de7c6d37be23e93f8d05ece8fa44ad319bf988')
 
 prepare() {

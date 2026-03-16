@@ -5,7 +5,7 @@ pkgbase = geekgeekrun-bin
 	url = https://github.com/geekgeekrun/geekgeekrun
 	arch = x86_64
 	options = !strip
-	source = geekgeekrun-bin-0.17.1.deb::https://github.com/geekgeekrun/geekgeekrun/releases/download/ui-v0.17.1/geekgeekrun-ui_v0.17.1_amd64.deb
+	source = geekgeekrun-bin-0.17.1.deb::https://github.com/geekgeekrun/geekgeekrun/releases/download/ui-v0.17.1/geekgeekrun-ui_0.17.1_amd64.deb
 	sha256sums = a16d35c30a9a9a3f4ab5506fc6de7c6d37be23e93f8d05ece8fa44ad319bf988
 
 pkgname = geekgeekrun-bin
