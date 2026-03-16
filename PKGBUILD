@@ -2,7 +2,7 @@
 
 pkgname=python-vspackrgb
 _origpkgname=vspackrgb
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="RGB packing for VapourSynth frames"
 arch=("x86_64")
@@ -19,8 +19,8 @@ makedepends=(
 	"python-hatchling"
 	"python-versioningit"
 )
-source=("https://files.pythonhosted.org/packages/2d/db/936d4e4a55c39cf74ea622bbf2dd71cdaeab93e85611e26292430ff627ce/vspackrgb-1.1.0.tar.gz")
-sha256sums=("add0f2fc205772fb2148b73df9521d64a09c3ad503c6566ec62f72b5c6c83d50")
+source=("https://files.pythonhosted.org/packages/e1/65/d780917048c22ddc0f72c57aec18034ae9a67eed97f3a734514ff682e37e/vspackrgb-1.1.1-cp312-cp312-macosx_11_0_arm64.whl")
+sha256sums=("d0f8d0a8bb3b35b16260d841be8859276421dde8410c2e897527a4b1028b800d")
 package() {
     cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
