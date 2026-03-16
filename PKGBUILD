@@ -58,7 +58,13 @@ build() {
   fi
 
   local cmake_options=(
+    -W no-dev
     -S .
+    -B .
+    # Required to be picked up by python build
+    -G "Unix Makefiles"
+    -D CMAKE_BUILD_TYPE='Release'
+    -D CMAKE_INSTALL_PREFIX='/usr'
     -D COMPUTE_BACKEND=hip
     # This won't actually do anything, just set it to silence a warning
     -D GPU_TARGETS=${GPU_TARGETS}
@@ -66,8 +72,8 @@ build() {
     -D CMAKE_HIP_ARCHITECTURES=${GPU_TARGETS}
   )
   cmake "${cmake_options[@]}"
+  cmake --build .
 
-  make
   python -m build --wheel --no-isolation
 }
 
