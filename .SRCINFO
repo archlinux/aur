@@ -1,0 +1,31 @@
+pkgbase = vmpc2000xl-vst3-bin
+	pkgdesc = MPC2000XL sampler emulator (VST3)
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://www.izmar.nl/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = libx11
+	depends = jack
+	depends = alsa-lib>=1.0.16
+	depends = glibc>=2.35
+	depends = libgcc>=3.4
+	depends = glib2>=2.30.0
+	depends = libstdc++>=12
+	depends = udisks2>=2.0.0
+	depends = libxcb
+	depends = zlib
+	depends = util-linux-libs
+	depends = libffi
+	depends = pcre2
+	depends = libpipewire
+	depends = libxau
+	depends = libxdmcp
+	source = https://github.com/izzyreal/vmpc-juce/releases/download/v0.9.3/VMPC2000XL-Ubuntu20-x86_64-VST3.zip
+	source = https://github.com/izzyreal/vmpc-juce/raw/refs/tags/v0.9.3/README.md
+	source = https://github.com/izzyreal/vmpc-juce/raw/refs/tags/v0.9.3/LICENSE.txt
+	sha256sums = 74c65b8d78b394a46933997cc07af3c6492110c48b387ddac9584ea70e180a90
+	sha256sums = 8195bf5f0fa05983867b74afa8e0585fc6cff16f1ea0c840d42e700eef5e057a
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = vmpc2000xl-vst3-bin
