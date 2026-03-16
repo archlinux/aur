@@ -1,6 +1,6 @@
 pkgbase = plasma6-wallpapers-smart-video-wallpaper-reborn
 	pkgdesc = Smart KDE Plasma 6 Wallpaper plugin to play videos on your Desktop/Lock Screen
-	pkgver = 2.10.0
+	pkgver = 2.11.0
 	pkgrel = 1
 	url = https://github.com/luisbocanegra/plasma-smart-video-wallpaper-reborn
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = plasma6-wallpapers-smart-video-wallpaper-reborn
 	depends = plasma-workspace
 	depends = qt6-multimedia
 	depends = qt6-multimedia-ffmpeg
-	source = plasma-smart-video-wallpaper-reborn-2.10.0.tar.gz::https://github.com/luisbocanegra/plasma-smart-video-wallpaper-reborn/archive/v2.10.0/plasma-smart-video-wallpaper-reborn-2.10.0.tar.gz
-	sha256sums = f850f0a45c0ae2ebdfe4faf31e9fdb397c438138dcdd0c16da77ea0f7380f296
+	source = plasma-smart-video-wallpaper-reborn-2.11.0.tar.gz::https://github.com/luisbocanegra/plasma-smart-video-wallpaper-reborn/archive/v2.11.0/plasma-smart-video-wallpaper-reborn-2.11.0.tar.gz
+	sha256sums = 418066219f86cfcfe514ada2daf9b518126ef2a4abcf8181429f269c8d73f83e
 
 pkgname = plasma6-wallpapers-smart-video-wallpaper-reborn
