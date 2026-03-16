@@ -3,7 +3,7 @@
 pkgname=qmlmaterial-git
 _pkgname=${pkgname%-git}
 _srcname=QmlMaterial
-pkgver=0.1.3.r46.g0451915
+pkgver=0.1.5.r20.gcf6b3c4
 pkgrel=1
 pkgdesc="Material Design 3 for QML"
 arch=('x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${_srcname}/"
-	git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags --match="v[0-9]*" --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
