@@ -1,0 +1,18 @@
+pkgbase = rustpad
+	pkgdesc = A lightweight Notepad style editor built with Rust and Iced
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/goshitsarch-eng/RustPad
+	arch = x86_64
+	arch = aarch64
+	license = custom:none
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = gtk3
+	depends = hicolor-icon-theme
+	source = rustpad-0.1.3.tar.gz::https://github.com/goshitsarch-eng/RustPad/archive/refs/tags/v0.1.3.tar.gz
+	source = rustpad.desktop
+	sha256sums = 546adf39558c13fe937c8c4ed264a88ffa480197d21cc60eff9d3debd289c0ff
+	sha256sums = 1dbac82ec22c97895b3cb76fa7b335c4974c17c49f286294de35ec057f404f73
+
+pkgname = rustpad

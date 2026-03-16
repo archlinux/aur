@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=RustPad
+Comment=Lightweight Notepad style editor
+Exec=rustpad
+Icon=rustpad
+Terminal=false
+Categories=Utility;TextEditor;
