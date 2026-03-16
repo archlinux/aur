@@ -2,7 +2,7 @@
 
 pkgname=eilmeldung
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="a TUI RSS reader based on the news-flash library"
 arch=('x86_64')
 url="https://github.com/christo-auer/eilmeldung"
@@ -22,11 +22,13 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
+  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
   cargo build --frozen --release 
 }
 
 check() {
   cd "${pkgname}-${pkgver}"
+  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
   cargo test --frozen
 }
 
