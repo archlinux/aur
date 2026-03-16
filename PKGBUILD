@@ -5,7 +5,7 @@ _org=zed-industries
 _realname=claude-agent-acp
 _alias=claude-code-acp
 pkgname=${_realname}-bin
-pkgver=0.21.0
+pkgver=0.22.0
 pkgrel=1
 pkgdesc="Use Claude Agent from any ACP client such as Zed! (precompiled binary)"
 url="https://github.com/${_org}/${_realname}"
@@ -16,10 +16,10 @@ provides=("${_realname}" "${_alias}")
 options=(!strip)
 
 source_x86_64=("${_realname}-linux-x64.tar.gz::${url}/releases/download/v${pkgver}/${_realname}-linux-x64.tar.gz")
-sha256sums_x86_64=('dfbf051f93a233281791acdb61e06955ada49f51a1c6bb5ae800f4b74055a3d0')
+sha256sums_x86_64=('cc900f7899c2322d48eca7dff7d2d2e5dbda4362a4e754169226236bc5b1a5fd')
 
 source_aarch64=("${_realname}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/${_realname}-linux-arm64.tar.gz")
-sha256sums_aarch64=('11df5fc67e80b3d52d0c99ded85866bf9cb7849a73e08cf3dbf09ee6cadb8005')
+sha256sums_aarch64=('cc18ec09a2ca2b3149b4ede49023eee9096248578d53b95472ad0b69e57ac276')
 
 package() {
   install -Dm755 "${srcdir}/${_realname}" "${pkgdir}/usr/bin/${_realname}"
