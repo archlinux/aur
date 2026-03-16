@@ -1,0 +1,14 @@
+pkgbase = link-lang
+	pkgdesc = Link programming language compiler
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/Pilot0253/link-lang
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	depends = gcc-libs
+	source = https://github.com/Pilot0253/link-lang/archive/refs/tags/v0.4.tar.gz
+	sha256sums = 347119138e0b75975892a70fe7a38b12bb310cc733900f3238df9f3a49b1da16
+
+pkgname = link-lang
