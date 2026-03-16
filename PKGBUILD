@@ -2,7 +2,7 @@
 _name=spectra
 pkgname=python-$_name
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Easy color scales and color conversion for Python"
 arch=('any')
 url="https://github.com/jsvine/spectra"
