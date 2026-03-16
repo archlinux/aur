@@ -12,7 +12,7 @@ provides=('wayland-compositor' 'mangowc')
 conflicts=( 'mangowc')
 makedepends=('meson' 'ninja' 'wayland-protocols>=1.41')
 
-source=("$$pkgver.tar.gz::https://github.com/mangowm/mango/archive/refs/tags/$pkgver.tar.gz")
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/mangowm/mango/archive/refs/tags/$pkgver.tar.gz")
 md5sums=('ce94a7e27504aac05df479ebca592f94')
 
 build() {
