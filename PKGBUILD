@@ -1,11 +1,11 @@
 # Maintainer: Diego Fernández Menéndez <dfimium499 at proton dot me>
 pkgname=dnspyex-wine-bin
 pkgver=v6.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial continuation of dnSpy: debugger and .NET assembly editor."
 arch=('x86_64')
 url="https://github.com/dnSpyEx/dnSpy"
-license=('GPL-3.0-or-later AND MIT AND  BSD-3-Clause AND Apache-2.0')
+license=('GPL-3.0-or-later')
 depends=('wine' 'wine-mono' 'ttf-ms-fonts')
 makedepends=('unzip' 'icoutils')
 source=("https://github.com/dnSpyEx/dnSpy/releases/download/v6.5.1/dnSpy-net-win64.zip")
