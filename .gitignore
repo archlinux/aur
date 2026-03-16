@@ -1,0 +1,12 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!LICENSE
+!LICENSES/
+!LICENSES/**
+!REUSE.toml
+!.nvchecker.toml
+!README.md
+!scratch3.sh.in
+!scratch3.xml

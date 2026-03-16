@@ -1,33 +1,41 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-    <mime-type type="application/x-scratch3-project">
-        <comment>Scratch 3 project</comment>
-        <comment xml:lang="de">Scratch 3 Projekt</comment>
-        <comment xml:lang="es">proyecto de Scratch 3</comment>
-        <comment xml:lang="fr">projet Scratch 3</comment>
-        <comment xml:lang="gr">έργο Scratch 3</comment>
-        <comment xml:lang="hu">Scratch 3 projekt</comment>
-        <comment xml:lang="it">Progetto Scratch 3</comment>
-        <comment xml:lang="ru">проект Scratch 3</comment>
-        <comment xml:lang="sr">Скрач 3 пројекат</comment>
-        <comment xml:lang="sv">Scratch 3 projekt</comment>
-        <generic-icon name="scratch3"/>
-        <sub-class-of type="application/zip"/>
-        <glob pattern="*.sb3"/>
-    </mime-type>
-    <mime-type type="application/x-scratch3-sprite">
-        <comment>Scratch 3 sprite</comment>
-        <comment xml:lang="de">Scratch 3 Figur</comment>
-        <comment xml:lang="es">objeto Scratch 3</comment>
-        <comment xml:lang="fr">sprite Scratch 3</comment>
-        <comment xml:lang="hu">Scratch 3 szereplő</comment>
-        <comment xml:lang="it">Sprite Scratch 3</comment>
-        <comment xml:lang="ru">спрайт Scratch 3</comment>
-        <comment xml:lang="sr">Скрач 3 лик</comment>
-        <comment xml:lang="sv">Scratch 3 sprajt</comment>
-        <icon name="x-scratch3-sprite" />
-        <sub-class-of type="application/zip"/>
-        <glob-deleteall/>
-        <glob pattern="*.sprite3"/>
-    </mime-type>
+<!--
+Scratch file associations and mimetypes
+
+Only .sb3, .sprite3, .sb, and .sprite have documented mimetypes from the upstream.
+The .sb2 and .sprite2 does not have any mentioned mimetype but it is treated as x-scratch-project by the upstream.
+
+application/x.scratch.sb3
+https://github.com/scratchfoundation/scratch-editor/blob/441b69ed787cf223d7e240cfc7573875f8a9a2bd/packages/scratch-vm/src/virtual-machine.js#L405
+https://github.com/scratchfoundation/scratch-desktop/blob/dd3e8ef47a924f80a75e1e24396a0c0bdf3b54e4/src/main/index.js#L281
+
+application/x.scratch.sprite3
+https://github.com/scratchfoundation/scratch-editor/blob/441b69ed787cf223d7e240cfc7573875f8a9a2bd/packages/scratch-vm/src/virtual-machine.js#L454
+
+application/x-scratch-project (both .sb, .sprite, and Scratch 2 files customarily)
+https://github.com/scratchfoundation/Scratch_1.4/blob/d26f099e3d8358760d0129de4a57e792d97d146f/src/scratch.xml#L3
+https://github.com/scratchfoundation/Scratch_1.4/blob/d26f099e3d8358760d0129de4a57e792d97d146f/src/scratch.desktop#L9
+-->
+  <mime-type type="application/x-scratch-project">
+    <sub-class-of type="application/octet-stream"/>
+    <comment>Legacy Scratch File</comment>
+    <generic-icon name="scratch3"/>
+    <glob pattern="*.sb"/>
+    <glob pattern="*.sb2"/>
+    <glob pattern="*.sprite"/>
+    <glob pattern="*.sprite2"/>
+  </mime-type>
+  <mime-type type="application/x.scratch.sb3">
+    <sub-class-of type="application/zip"/>
+    <comment>Scratch 3 Project</comment>
+    <generic-icon name="scratch3"/>
+    <glob pattern="*.sb3"/>
+  </mime-type>
+  <mime-type type="application/x.scratch.sprite3">
+    <sub-class-of type="application/zip"/>
+    <comment>Scratch 3 Sprite</comment>
+    <generic-icon name="scratch3"/>
+    <glob pattern="*.sprite3"/>
+  </mime-type>
 </mime-info>

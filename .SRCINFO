@@ -1,7 +1,7 @@
 pkgbase = scratch3
 	pkgdesc = Scratch 3.0 as a self-contained desktop application
 	pkgver = 3.31.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/scratchfoundation/scratch-desktop
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,8 @@ pkgbase = scratch3
 	makedepends = git
 	makedepends = nodejs
 	makedepends = npm
-	depends = fuse2
+	depends = electron39
+	optdepends = xdg-utils: To open Scratch files from URLs
 	provides = scratch3
 	conflicts = scratch3-bin
 	conflicts = scratch-desktop
@@ -17,10 +18,10 @@ pkgbase = scratch3
 	options = !strip
 	options = !debug
 	source = git+https://github.com/scratchfoundation/scratch-desktop.git#tag=v3.31.1
-	source = scratch3.desktop
+	source = scratch3.sh.in
 	source = scratch3.xml
-	sha256sums = e38d5e8febfd61454d5d4f402177963deedc8350a37ee4dd327cd5079614d4eb
-	sha256sums = 0f4f25e55b988e45a2f240487c35b18c96bbbce0f6be60bbe204b33f6d77d6da
-	sha256sums = 86c8e16d9316dcbe21c19928381a498f5198708cae0ed25bfa3c09371d02deaf
+	b2sums = 03e7aca64a35417ceecf520d6453428e00bdf0dcfd0816b7f409a8c080034ed288815aec9a27bc1270a251f500dd2ddb3f18b22696b0aaf8e20da2d2348a4f1a
+	b2sums = dbf626b6f14d8053e76b0cc240f26e026105aaab40236be905e1549134ca47b5de47f4866e951db6c3b1b1c67b9fd9ff8c21210be80e52e832ee7e12faa5795e
+	b2sums = d8cc625a9448674762ab94317235a38fa4e7e5581bb058e7d00c8f5ff38eb9ba1bc4260b4a519028f24267ef0cd2e3a312a66acd21c49b8500fe342dd2be733a
 
 pkgname = scratch3
