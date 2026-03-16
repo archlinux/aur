@@ -29,6 +29,7 @@ makedepends=(
   cmake
 )
 provides=("python-$_name")
+conflicts=("$pkgname-git")
 source=("$pkgname::git+https://github.com/bitsandbytes-foundation/bitsandbytes.git#tag=${pkgver}")
 sha512sums=("SKIP")
 

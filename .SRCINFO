@@ -21,6 +21,7 @@ pkgbase = python-bitsandbytes-rocm
 	depends = python-pandas
 	depends = python-matplotlib
 	provides = python-bitsandbytes
+	conflicts = python-bitsandbytes-rocm-git
 	source = python-bitsandbytes-rocm::git+https://github.com/bitsandbytes-foundation/bitsandbytes.git#tag=0.49.2
 	sha512sums = SKIP
 
