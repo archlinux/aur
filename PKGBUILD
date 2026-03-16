@@ -1,7 +1,7 @@
 # Maintainer: Emiliopg91 <ojosdeserbio@gmail.com>
 pkgname=rog-perf-tuner
-pkgver=4.13.4
-pkgrel=2
+pkgver=4.13.5
+pkgrel=1
 pkgdesc="An utility to manage Asus Rog laptop performance and RGB lighting"
 arch=(
   'x86_64'
@@ -41,7 +41,6 @@ depends=(
   'qtermwidget'
   'qtkeychain-qt6'
   'openssl'
-  'upower'
 )
 makedepends=(
   'base-devel'
@@ -110,4 +109,8 @@ package() {
     rm "$pkgdir/usr/share/rog-perf-tuner/suggestions.yaml"
 
     install -Dm755 resources/RogPerfTuner.desktop "$pkgdir/usr/share/applications/rog-perf-tuner.desktop"
+
+    python resources/scripts/completion.py
+    install -Dm644 dist/completion-bash \
+        "$pkgdir/usr/share/bash-completion/completions/rog-perf-tuner"
 }
