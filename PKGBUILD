@@ -46,6 +46,8 @@ _pkg_src_res="${_pkg_name_ident}.tar.gz::https://github.com/${_pkg_user}/${_pkg_
 # submodules
 #
 
+# git submodule | sed -E 's/^ (.*) (.*) /\2  \t \1/g'
+
 # a78d4f1469890eb4e795709848ebf57b002ad369 submodules/LuaBridge (heads/master)
 # d2eb8e1e40c5a78909f698a2d12c4f146c2976ba submodules/assistant (remotes/origin/HEAD)
 # fd1ac4f1791b403af1f7350b1195ac114f9b792b submodules/cJSON (v0.0.0~50^2^2~16)
@@ -64,7 +66,7 @@ _pkg_src_res="${_pkg_name_ident}.tar.gz::https://github.com/${_pkg_user}/${_pkg_
 # 0f51fb4933fc9ce18199cb2554dacea8033e7fd3 submodules/zlib (v1.3.1-50-g0f51fb4)
 
 # NOTE: these submodules are currenly only used by macos builds - ignore them for now:
-#   submodules/hunspell,
+#   submodules/hunspell
 #   submodules/libssh
 #   submodules/openssl-cmake
 #   submodules/zlib
@@ -117,6 +119,8 @@ _dtl_pkg_ident="32567bb9ec704f09040fb1ed7431a3d967e3df03"
 _dtl_pkg_name_ident="${_dtl_pkg_user}-${_dtl_pkg_name}-${_dtl_pkg_ident:0:7}"
 _dtl_pkg_src_res="${_dtl_pkg_name_ident}.tar.gz::https://github.com/${_dtl_pkg_user}/${_dtl_pkg_name}/tarball/${_dtl_pkg_ident}"
 
+# submodule hunspell - ignored
+
 # lexilla submodule: https://github.com/eranif/lexilla.git
 _lexilla_pkg_user="eranif"
 _lexilla_pkg_name="lexilla"
@@ -124,12 +128,16 @@ _lexilla_pkg_ident="8502988a5eb83fcd281ee5a38533a9f170e6b2bf"
 _lexilla_pkg_name_ident="${_lexilla_pkg_user}-${_lexilla_pkg_name}-${_lexilla_pkg_ident:0:7}"
 _lexilla_pkg_src_res="${_lexilla_pkg_name_ident}.tar.gz::https://github.com/${_lexilla_pkg_user}/${_lexilla_pkg_name}/tarball/${_lexilla_pkg_ident}"
 
+# submodule libssh - ignored
+
 # lua submodule: https://github.com/eranif/lua.git
 _lua_pkg_user="${_pkg_user}"
 _lua_pkg_name="lua"
 _lua_pkg_ident="bb8dc5ff01cf725dff2a8dcfe08fb0b81a9a7729"
 _lua_pkg_name_ident="${_lua_pkg_user}-${_lua_pkg_name}-${_lua_pkg_ident:0:7}"
 _lua_pkg_src_res="${_lua_pkg_name_ident}.tar.gz::https://github.com/${_lua_pkg_user}/${_lua_pkg_name}/tarball/${_lua_pkg_ident}"
+
+# submodule openssl - ignored
 
 # wxcfg/wx-config-msys2s submodule: https://github.com/eranif/wx-config-msys2.git
 _wxcfg_pkg_user="${_pkg_user}"
@@ -152,8 +160,10 @@ _yaml_pkg_ident="2f86d13775d119edbb69af52e5f566fd65c6953b"
 _yaml_pkg_name_ident="${_yaml_pkg_user}-${_yaml_pkg_name}-${_yaml_pkg_ident:0:7}"
 _yaml_pkg_src_res="${_yaml_pkg_name_ident}.tar.gz::https://github.com/${_yaml_pkg_user}/${_yaml_pkg_name}/tarball/${_yaml_pkg_ident}"
 
+# submodule zlib - ignored
+
 #
-# sub-sub-modules
+# sub-sub submodules
 #
 
 # tinyjson (cc-wrapper) sub-submodule: https://github.com/eranif/tinyjson
@@ -178,8 +188,10 @@ depends=(
     'wxwidgets-common'
     'libedit'
     'libssh'
+    'zlib'
     'mariadb-libs'
     'ncurses'
+    'patch'
     'uchardet'
     'hunspell'
     'glibc'
@@ -323,7 +335,7 @@ prepare()
   test -d yaml-cpp && rmdir yaml-cpp;
   ln -s -fn ../../${_yaml_pkg_name_ident} yaml-cpp;
 
-  # submodule zlip - ignore
+  # submodule zlib - ignore
 
   #
   # sub-submodules
