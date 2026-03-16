@@ -1,26 +1,44 @@
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Diego Fernández Menéndez <dfimium499 at proton dot me>
+# Contributors below are credited from the original sherlock-git PKGBUILD
+# Contributor: iamawacko <iamawacko@protonmail.com>
+# Contributor: randomnobody <nobody "at" 420blaze "dot" it>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
+# Contributor: peeweep <peeweep at 0x0 dot ee>
 
-pkgname=sherlock
-pkgver=1.2.0
+_pkgname='sherlock'
+pkgname="${_pkgname}"
+pkgver=v0.16.0
 pkgrel=1
-pkgdesc='Find information about public IP addresses'
-arch=('x86_64')
-url='https://github.com/sergius02/Sherlock'
-license=('GPL3')
-depends=('glib2' 'gtk3' 'libsoup' 'json-glib')
-makedepends=('meson' 'vala')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('230c39448640cace1d9b27424f990f79be2278bb45752eb241cfe159cd3f33ae')
+pkgdesc='Hunt down social media accounts by username across social networks'
+arch=('any')
+url='https://github.com/sherlock-project/sherlock'
+license=('MIT')
+depends=('python'
+        'python-certifi'
+        'python-colorama'
+        'python-openpyxl'
+        'python-pandas'
+        'python-pysocks'
+        'python-requests'
+        'python-requests-futures'
+        'python-torrequest'
+        'python-stem'
+        'python-torrequest')
+makedepends=('git' 'python-setuptools' 'python-installer' 'python-wheel' 'python-build' 'python-poetry-core')
+conflicts=('sherlock-git')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('997a7c22ed5c179438c91c27e8430b43e1d0fceb79d345e478a390d599a4016f')
 
 build() {
-  arch-meson "Sherlock-$pkgver" build
-  meson compile -C build
+    cd "$srcdir"/sherlock-0.16.0
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" "Sherlock-$pkgver/README.md"
+  cd "$srcdir"/sherlock-0.16.0
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dvm644 'docs/removed-sites.md' 'docs/README.md' -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
 
 # vim: ts=2 sw=2 et:
