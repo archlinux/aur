@@ -1,6 +1,6 @@
 pkgbase = asap-chiptunes-player-git
 	pkgdesc = Player of Atari 8-bit chiptunes for modern computers. With plugins for MOC, XMMS2 and VLC.
-	pkgver = 7.0.0+7.r1694.20260103.d6d46b8
+	pkgver = 8.0.0+12.r1749.20260316.32cba42
 	pkgrel = 1
 	url = http://asap.sourceforge.net
 	arch = aarch64
@@ -30,17 +30,17 @@ pkgbase = asap-chiptunes-player-git
 	optdepends = moc>=2.4: For the moc plugin.
 	optdepends = xmms2: For the XMMS2 plugin.
 	optdepends = vlc: For the VLC plugin.
-	provides = asap=7.0.0+7.r1694.20260103.d6d46b8
-	provides = asap-chiptunes-player=7.0.0+7.r1694.20260103.d6d46b8
-	provides = asapconv=7.0.0+7.r1694.20260103.d6d46b8
-	provides = asap2wav=7.0.0+7.r1694.20260103.d6d46b8
-	provides = asap-sdl=7.0.0+7.r1694.20260103.d6d46b8
-	provides = asapscan=7.0.0+7.r1694.20260103.d6d46b8
-	provides = asapcl=7.0.0+7.r1694.20260103.d6d46b8
-	provides = asapweb=7.0.0+7.r1694.20260103.d6d46b8
-	provides = python-asap=7.0.0+7.r1694.20260103.d6d46b8
-	provides = vlc-asap=7.0.0+7.r1694.20260103.d6d46b8
-	provides = xmms2-asap=7.0.0+7.r1694.20260103.d6d46b8
+	provides = asap=8.0.0+12.r1749.20260316.32cba42
+	provides = asap-chiptunes-player=8.0.0+12.r1749.20260316.32cba42
+	provides = asapconv=8.0.0+12.r1749.20260316.32cba42
+	provides = asap2wav=8.0.0+12.r1749.20260316.32cba42
+	provides = asap-sdl=8.0.0+12.r1749.20260316.32cba42
+	provides = asapscan=8.0.0+12.r1749.20260316.32cba42
+	provides = asapcl=8.0.0+12.r1749.20260316.32cba42
+	provides = asapweb=8.0.0+12.r1749.20260316.32cba42
+	provides = python-asap=8.0.0+12.r1749.20260316.32cba42
+	provides = vlc-asap=8.0.0+12.r1749.20260316.32cba42
+	provides = xmms2-asap=8.0.0+12.r1749.20260316.32cba42
 	conflicts = asap-chiptunes-player
 	conflicts = asapconv
 	conflicts = asap2wav

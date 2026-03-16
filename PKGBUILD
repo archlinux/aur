@@ -5,7 +5,7 @@ _pyname="${_origname}"
 _nodename="${_origname}"
 _pkgname="${_origname}-chiptunes-player"
 pkgname="${_pkgname}-git"
-pkgver=7.0.0+7.r1694.20260103.d6d46b8
+pkgver=8.0.0+12.r1749.20260316.32cba42
 pkgrel=1
 pkgdesc="Player of Atari 8-bit chiptunes for modern computers. With plugins for MOC, XMMS2 and VLC."
 arch=(
@@ -119,20 +119,31 @@ build() {
   cd "${srcdir}/${_pkgname}"
 
   printf '%s\n' " --> building ..."
+  printf '%s\n' '     `-> make ...'
   make
+  printf '%s\n' '     `-> make lib ...'
   make lib
+  printf '%s\n' '     `-> make asapscan ...'
   make asapscan
+  printf '%s\n' '     `-> make asapconv ...'
   make asapconv
+  printf '%s\n' '     `-> make asap-sdl ...'
   make asap-sdl
+  printf '%s\n' '     `-> make asap-xmms2 ...'
   make asap-xmms2
+  printf '%s\n' '     `-> make asap-moc ...'
   make MOC_INCLUDE=/usr/include/moc asap-moc
+  printf '%s\n' '     `-> make asap-vlc ...'
   make asap-vlc
+  printf '%s\n' '     `-> make opencl ...'
   make opencl
+  printf '%s\n' '     `-> make python ...'
   make python
   ## No shabeng line is generated. Add one.
   if ! head -n1 python/asap2wav.py | grep -E '^#!/usr/bin/env python\>'; then
     sed -i '1s|^|#!/usr/bin/env python\n|' python/asap2wav.py
   fi
+  printf '%s\n' '     `-> make javascript ...'
   make javascript
   ## No shabeng line is generated. Add one.
   if ! head -n1 javascript/asap2wav.js | grep -E '^#!/usr/bin/env node\>'; then
@@ -152,22 +163,33 @@ package() {
   _pysitepackagesdir="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
   printf '%s\n' " --> installing ..."
+  printf '%s\n' '    `-> make install ...'
   make DESTDIR="${pkgdir}" prefix="/usr" install
+  printf '%s\n' '    `-> make install-lib ...'
   make DESTDIR="${pkgdir}" prefix="/usr" install-lib
+  printf '%s\n' '    `-> make install-asapconv ...'
   make DESTDIR="${pkgdir}" prefix="/usr" install-asapconv
+  printf '%s\n' '    `-> make install-sdl2 ...'
   make DESTDIR="${pkgdir}" prefix="/usr" install-sdl
+  printf '%s\n' '    `-> make install-xmms2 ...'
   make DESTDIR="${pkgdir}" prefix="/usr" install-xmms2
+  printf '%s\n' '    `-> make install-moc ...'
   make DESTDIR="${pkgdir}" prefix="/usr" MOC_PLUGIN_DIR=/usr/lib/moc/decoder_plugins install-moc
+  printf '%s\n' '    `-> make install-vlc ...'
   make DESTDIR="${pkgdir}" prefix="/usr" install-vlc
 
-
+  printf '%s\n' '    `-> install asapscan, opencl/asapcl ...'
   install -D -v -m755 -t "${pkgdir}/usr/bin"  asapscan opencl/asapcl
 
+  printf '%s\n' '    `-> install Python library ...'
   install -D -v -m644 "python/${_pyname}.py" "${pkgdir}/${_pysitepackagesdir}/${_pyname}/__init__.py"
+  printf '%s\n' '    `-> install asap2wav ...'
   install -D -v -m755 "python/asap2wav.py"   "${pkgdir}/usr/bin/asap2wav"
 
+  printf '%s\n' '    `-> install JavaScript library ...'
   install -D -v -m644 -t "${pkgdir}/usr/lib/node-modules/${_nodename}"  "javascript"/{asap.js,asapweb.js}
   install -D -v -m755 -t "${pkgdir}/usr/lib/node-modules/${_nodename}"  "javascript"/asap2wav.js
+  printf '%s\n' '    `-> install asap2wav.js ...'
   ln -svr "${pkgdir}/usr/lib/node-modules/${_nodename}/asap2wav.js"  "${pkgdir}/usr/bin/asap2wav.js"
 
   _docfiles=(
