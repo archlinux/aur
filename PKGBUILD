@@ -2,7 +2,7 @@
 
 _pkgname=xpad-noone
 pkgname="${_pkgname}-git"
-pkgver=r128.8e90367
+pkgver=r129.7b53614
 pkgrel=1
 pkgdesc='This is the original upstream xpad driver from the Linux kernel with support for Xbox One controllers removed.'
 arch=('x86_64' 'aarch64')
