@@ -2,7 +2,7 @@
 
 pkgname=sshconfig-lint-bin
 pkgdesc="Linter for OpenSSH client config files"
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/Noah4ever/sshconfig-lint"
