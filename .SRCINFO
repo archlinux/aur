@@ -1,14 +1,14 @@
 pkgbase = gnome-shell-extension-burn-my-windows
 	pkgdesc = Disintegrate your windows with style. A GNOME Shell extension.
-	pkgver = 47
-	pkgrel = 2
+	pkgver = 48
+	pkgrel = 1
 	url = https://github.com/Schneegans/Burn-My-Windows
 	arch = any
 	license = GPL3
 	makedepends = glib2
 	makedepends = zip
 	depends = gnome-shell
-	source = https://github.com/Schneegans/Burn-My-Windows/archive/v47.tar.gz
-	sha256sums = b0bcfaddef021470d0266f98344a8c924705fca82da7c0d9ae6fa4ace7f8f3b3
+	source = https://github.com/Schneegans/Burn-My-Windows/archive/v48.tar.gz
+	sha256sums = e25a91dcfd35a06a6f1acadce63ea5d92c975e9855e6d023b8f04d525d681e2d
 
 pkgname = gnome-shell-extension-burn-my-windows
