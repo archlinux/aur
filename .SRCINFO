@@ -1,5 +1,5 @@
 pkgbase = litgit-desktop-bin
-	pkgdesc = A fast, fluent, and minimal Git client designed for developers who demand speed and a clutter-free workflow.
+	pkgdesc = A fast, fluent, and minimal Git client designed for developers who demand speed and a clutter-free workflow
 	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/yourtoools/LitGit
