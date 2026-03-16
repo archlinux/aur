@@ -1,22 +1,31 @@
 # SPDX-License-Identifier: Apache-2.0
 # Maintainer: Kaz Walker <me@kazatron.com>
 pkgname=workfort
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='WorkFort web and TUI frontend'
 arch=('x86_64' 'aarch64')
 url='https://github.com/Work-Fort/Scope'
 license=('Apache-2.0')
 depends=()
-makedepends=('go')
+makedepends=('go' 'nodejs' 'pnpm')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('b767b7bc1af5910eafe089ebbc0517f992595136c1a0714eaad71cf49cea2593')
+sha256sums=('f61fe7f46d5b4d8b8fc135e14ff2401284cafa1b536f2af47f2b1baee5bd6dec')
 
 build() {
     cd "Scope-${pkgver}"
+
+    # Install and build all web packages (ui, adapters, shell)
+    (cd web && pnpm install --frozen-lockfile && pnpm build)
+
+    # Stage shell SPA for Go embed
+    rm -rf cmd/web/dist
+    cp -r web/shell/dist cmd/web/dist
+
+    # Build Go binary with embedded SPA
     export CGO_ENABLED=0
     _ver="${pkgver}-aur"
-    go build -trimpath -ldflags "-s -w -X github.com/Work-Fort/Scope/cmd.Version=${_ver}" -o workfort .
+    go build -tags spa -trimpath -ldflags "-s -w -X github.com/Work-Fort/Scope/cmd.Version=${_ver}" -o workfort .
 }
 
 check() {
