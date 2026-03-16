@@ -1,0 +1,22 @@
+pkgbase = kitsune
+	pkgdesc = AniLiberty player
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://altlinux.space/armatik/Kitsune
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = ninja
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = libadwaita
+	depends = gtk4
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = python-requests
+	source = git+https://altlinux.space/armatik/Kitsune.git
+	sha256sums = SKIP
+
+pkgname = kitsune
