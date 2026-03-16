@@ -1,6 +1,6 @@
 pkgbase = hyperfetch
 	pkgdesc = A high-performance system fetch tool written in Rust
-	pkgver = 0.1.0
+	pkgver = 0.2.0.next
 	pkgrel = 1
 	url = https://github.com/revanthnemtoor/hyperfetch
 	arch = x86_64

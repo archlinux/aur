@@ -1,6 +1,6 @@
 # Maintainer: revanthnemtoor <revanthnemtoor@github.com>
 pkgname=hyperfetch
-pkgver=0.1.0
+pkgver=0.2.0.next
 pkgrel=1
 pkgdesc="A high-performance system fetch tool written in Rust"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 provides=('fetch')
 conflicts=('hyperfetch-git')
-# Note: Pointing to a specific commit since v0.1.0 tag doesn't exist yet.
+# Note: Pointing to a specific commit since v0.2.0.next tag doesn't exist yet.
 _commit=fe940ceeaab5e22abf987936790546efacc72962
 source=("$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
 sha256sums=('SKIP')
