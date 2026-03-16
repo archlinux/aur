@@ -1,0 +1,30 @@
+pkgbase = linuxshot-git
+	pkgdesc = ShareX-inspired screenshot and upload tool for Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/TaintedAngel/linuxshot
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = git
+	depends = python>=3.10
+	depends = python-pillow
+	depends = python-requests
+	depends = python-gobject
+	depends = python-pyside6
+	depends = python-dbus
+	depends = libnotify
+	optdepends = spectacle: KDE Plasma screenshot backend
+	optdepends = grim: wlroots screenshot capture
+	optdepends = slurp: wlroots region selection
+	optdepends = wl-clipboard: Wayland clipboard support
+	optdepends = maim: X11 screenshot capture
+	optdepends = xdotool: X11 window detection
+	optdepends = xclip: X11 clipboard support
+	source = git+https://github.com/TaintedAngel/linuxshot.git
+	sha256sums = SKIP
+
+pkgname = linuxshot-git
