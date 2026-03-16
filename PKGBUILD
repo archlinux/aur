@@ -33,7 +33,7 @@ build() {
     -DMLIR_TABLEGEN_EXE=/usr/bin/mlir-tblgen \
     -DFLANG_INCLUDE_TESTS=OFF \
     -B build -S .
-  cmake --build build --parallel 1
+  cmake --build build --parallel 2
 
   # flang-rt standalone build
   cd "$srcdir"/llvm-project-${pkgver}.src/flang-rt
