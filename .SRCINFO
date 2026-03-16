@@ -1,7 +1,7 @@
 pkgbase = superharness-bin
 	pkgdesc = Autonomous multi-agent orchestrator for AI coding agents via tmux
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://superharness.dev
 	arch = x86_64
 	arch = aarch64

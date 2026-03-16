@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=superharness-bin
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Autonomous multi-agent orchestrator for AI coding agents via tmux"
 arch=('x86_64' 'aarch64')
 url="https://superharness.dev"
@@ -21,8 +21,9 @@ source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64::https://github.com/backmeupplz
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64::https://github.com/backmeupplz/superharness/releases/download/v${pkgver}/superharness-aarch64-unknown-linux-gnu")
 
 latestver() {
-    curl -fsSL "https://api.github.com/repos/backmeupplz/superharness/releases/latest" |
-    jq -r '.tag_name // empty' | sed 's/^v//'
+    gh api --paginate repos/backmeupplz/superharness/releases \
+        --jq '.[] | select(.assets[].name == "superharness-x86_64-unknown-linux-gnu") | .tag_name' |
+    head -1 | sed 's/^v//'
 }
 
 package() {
