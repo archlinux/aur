@@ -1,6 +1,6 @@
 pkgbase = flatbat
 	pkgdesc = Minimalist GTK layer-shell system monitor overlay (CPU, RAM, battery, and clock)
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/tomasmckenna/flatbat
 	arch = any
@@ -10,7 +10,8 @@ pkgbase = flatbat
 	depends = python-gobject
 	depends = python-yaml
 	depends = gtk-layer-shell
-	source = flatbat-1.7.tar.gz::https://github.com/tomasmckenna/flatbat/archive/refs/tags/v1.7.tar.gz
-	sha256sums = c3228af4e189275956c4615aab662bf1b27780650c66e3bed20016005083eb3a
+	depends = python-cairo
+	source = flatbat-1.8.tar.gz::https://github.com/tomasmckenna/flatbat/archive/refs/tags/v1.8.tar.gz
+	sha256sums = a38544400eb0eb77278c2ca93267484bd393007571278c26bf85b6f3df0e5c2e
 
 pkgname = flatbat
