@@ -29,9 +29,7 @@ package() {
   cd "$reponame"
 
   install -Dm755 "$reponame" -t "$pkgdir/usr/bin"
-
   install -Dm644 "$reponame.1" -t "$pkgdir/usr/share/man/man1"
-
   install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 # vim:set ts=2 sw=2 et:
