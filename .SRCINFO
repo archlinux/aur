@@ -1,6 +1,6 @@
 pkgbase = vsview-split-planes
 	pkgdesc = A vsview plugin displaying video clips' constituent planes
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://pypi.org/project/vsview-split-planes/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = vsview-split-planes
 	makedepends = python-hatchling
 	depends = vsview
 	depends = vapoursynth-plugin-vsakarin
-	source = https://files.pythonhosted.org/packages/21/53/0984aed99bac4b755986f82048952940a54803db576cbc4626658c5d1dfb/vsview_split_planes-0.1.2.tar.gz
-	sha256sums = accf32d2db2e45992d580da6ee95523f476b80c95066d6f71a1e5724dc6ced67
+	source = https://files.pythonhosted.org/packages/1b/c1/b7fad956f3e16afdb33f83dfecbfa331511f2de07f925f0c47f2f124f276/vsview_split_planes-0.1.3.tar.gz
+	sha256sums = 0dccd736e619b8dad53bf0a5e204cc46ef43089bb2f05147b3e711ef76a60257
 
 pkgname = vsview-split-planes
