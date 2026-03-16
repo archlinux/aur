@@ -1,0 +1,27 @@
+pkgbase = openssh-gui-nightly
+	pkgdesc = A GUI for OpenSSH configuration and management (Nightly build from develop)
+	pkgver = 1.0.0.20260316.abc1234
+	pkgrel = 1
+	url = https://github.com/frequency403/OpenSSH-GUI
+	arch = x86_64
+	license = MIT
+	depends = icu
+	depends = openssl
+	depends = zlib
+	depends = krb5
+	depends = libx11
+	provides = openssh-gui
+	conflicts = openssh-gui
+	conflicts = openssh-gui-bin
+	conflicts = openssh-gui-git
+	options = !strip
+	source = openssh-gui-nightly-1.0.0.20260316.abc1234::https://github.com/frequency403/OpenSSH-GUI/releases/download/nightly/OpenSSH-GUI-nightly-linux-x64
+	source = openssh-gui-nightly-icon-1.0.0.20260316.abc1234.png::https://github.com/frequency403/OpenSSH-GUI/raw/develop/OpenSSH_GUI/Assets/appicon.png
+	source = openssh-gui-nightly-desktop-1.0.0.20260316.abc1234.desktop::https://github.com/frequency403/OpenSSH-GUI/raw/develop/openssh-gui.desktop
+	source = openssh-gui-nightly-license-1.0.0.20260316.abc1234::https://github.com/frequency403/OpenSSH-GUI/raw/develop/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = openssh-gui-nightly
