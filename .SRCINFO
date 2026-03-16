@@ -1,0 +1,20 @@
+pkgbase = kobo2notion-bin
+	pkgdesc = Easily sync your Kobo highlights to Notion.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.1.3
+	pkgrel = 1
+	url = https://github.com/ghnmqdtg/Kobo2Notion
+	arch = x86_64
+	license = MIT
+	depends = electron41
+	provides = kobo2notion=1.1.3
+	conflicts = kobo2notion
+	options = !emptydirs
+	options = !strip
+	source = kobo2notion-1.1.3.deb::https://github.com/ghnmqdtg/Kobo2Notion/releases/download/v1.1.3/kobo2notion_1.1.3_amd64.deb
+	source = LICENSE-1.1.3::https://raw.githubusercontent.com/ghnmqdtg/Kobo2Notion/v1.1.3/LICENSE
+	source = kobo2notion.sh
+	sha256sums = fa70f9680746ad052fb4453ccd6b99db3882391a208ad64ea9bf64cd62820ef8
+	sha256sums = ab8260eafedded07fa6cd8309838859144fbdac9125c339081881eebde5d1aad
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = kobo2notion-bin
