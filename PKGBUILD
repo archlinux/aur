@@ -2,7 +2,7 @@
 
 _reponame=Starship
 pkgname=starship-sf64-git
-pkgver=v2.0.0.r36.g3d63f60f
+pkgver=v2.0.0.r74.g3d882079
 pkgrel=1
 pkgdesc="An unofficial native port of Star Fox 64 (git)"
 license=("CC0-1.0" "MIT")
@@ -47,6 +47,57 @@ _init_submodule() {
   git -c protocol.file.allow=always submodule update "${dir}"
 }
 
+# -- Print helpers
+_msg_info() {
+  echo "${BOLD}>> ${GREEN}$@${ALL_OFF}"
+}
+
+_msg_warn() {
+  echo "${BOLD}>> ${YELLOW}$@${ALL_OFF}"
+}
+
+_walk_submodules() {
+    absdir="$(pwd | sed "s|^${srcdir}/||")"
+    _msg_info "Entering directory <${absdir}>"
+
+    local submodules="$(git ls-tree -r HEAD | awk '$2 == "commit"')"
+
+    if [ -z "$submodules" ]; then
+      return
+    fi
+
+    local mode type hash dir
+    while ifs=" " read -r mode type hash dir; do
+        local basedir="$(basename "$dir")"
+        local submodule_url="$(git config -f .gitmodules "submodule.${dir}.url")"
+
+        if [ ! -e "${srcdir}/${basedir}" ]; then
+            _msg_warn "Local repository ${basedir} (${submodule_url}) is missing. ${dir} is ignored for init!"
+            continue
+        fi
+
+        _msg_info "Initializing submodule ${dir}"
+
+        # Check if this specific commit exists locally within the repo
+        (
+            cd "${srcdir}/${basedir}"
+            if ! git branch -a --contains "$hash" > /dev/null; then
+                _msg_warn "Commit ${hash} of repo ${basedir} didn't get pulled from remote (${submodule_url}). Fetching now..."
+                git fetch "$submodule_url" "$hash"
+            fi
+        )
+
+        # Initialize and update submodule
+        git submodule init "${dir}"
+        git config "submodule.${dir}.url" "${srcdir}/${basedir}"
+        git -c protocol.file.allow=always submodule update "${dir}"
+
+        ( cd "$dir"; _walk_submodules; )
+    done <<< "$submodules"
+
+    _msg_info "Leaving directory <${absdir}>"
+}
+
 pkgver() {
   cd "${srcdir}/${_reponame}"
 
@@ -56,9 +107,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_reponame}"
-
-  _init_submodule libultraship
-  _init_submodule tools/Torch Torch
+  _walk_submodules
 
   patch -Np1 -i "${srcdir}/starship-stack-underflow-guard.patch"
 }
