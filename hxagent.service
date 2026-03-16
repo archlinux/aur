@@ -1,0 +1,20 @@
+[Unit]
+Description=Hetrix Tools Server Monitor
+After=network.target
+Documentation=https://git.sr.ht/~statianzo/hxagent
+
+[Service]
+Type=exec
+User=hxagent
+Group=hxagent
+
+Environment=HXAGENT_INTERVAL=60s
+EnvironmentFile=/etc/conf.d/hxagent
+
+ExecStart=/usr/bin/hxagent --sid=${HXAGENT_SID} --interval=${HXAGENT_INTERVAL}
+
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
