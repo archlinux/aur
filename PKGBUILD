@@ -1,5 +1,5 @@
 pkgname=syncovery-bin
-pkgver=11.13.5
+pkgver=11.13.6
 pkgrel=1
 pkgdesc="Syncovery File Synchronization Tool"
 arch=('x86_64')

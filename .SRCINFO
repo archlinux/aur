@@ -1,6 +1,6 @@
 pkgbase = syncovery-bin
 	pkgdesc = Syncovery File Synchronization Tool
-	pkgver = 11.13.5
+	pkgver = 11.13.6
 	pkgrel = 1
 	url = https://www.syncovery.com
 	install = syncovery-bin.install
