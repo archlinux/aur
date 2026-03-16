@@ -1,0 +1,15 @@
+pkgbase = lenza-bin
+	pkgdesc = Lenza is a corporate messenger for team communication
+	pkgver = 1.0.52
+	pkgrel = 1
+	url = https://lenzaos.com/
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	noextract = Lenza-1.0.52.AppImage
+	options = !strip
+	options = !debug
+	source = https://software.lenzaos.com/app-chats/Lenza-1.0.52.AppImage
+	sha256sums = 8741a8c819104fe96c375bd5f835df214e4504e264710b0c5e3ba1ead0509fa5
+
+pkgname = lenza-bin
