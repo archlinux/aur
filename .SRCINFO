@@ -4,7 +4,6 @@ pkgbase = openwork
 	pkgrel = 1
 	url = https://github.com/different-ai/openwork
 	arch = x86_64
-	arch = aarch64
 	license = MIT
 	depends = gtk3
 	depends = glib2
@@ -17,7 +16,5 @@ pkgbase = openwork
 	noextract = openwork-0.11.160.deb
 	source_x86_64 = openwork-0.11.160.deb::https://github.com/different-ai/openwork/releases/download/v0.11.160/openwork-desktop-linux-amd64.deb
 	sha256sums_x86_64 = 1b1b412320c6c7ba26efafdee87b7412471ba1846f00da9874d94cb9ec94a2fd
-	source_aarch64 = openwork-0.11.160.deb::https://github.com/different-ai/openwork/releases/download/v0.11.160/openwork-desktop-linux-arm64.deb
-	sha256sums_aarch64 = d862cf45f3975256b509a4370c07626f087c4adee3ac91fe30fcd0a7b8748973
 
 pkgname = openwork
