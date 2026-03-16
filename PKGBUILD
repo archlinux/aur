@@ -1,7 +1,7 @@
 # Maintainer: Davide Carnemolla <herbrant@protonmail.com>
 
 pkgname=libjasmin-easycrypt-bin
-pkgver=2025.06.3
+pkgver=2026.03.0
 pkgrel=1
 pkgdesc="EasyCrypt libraries used for verifying Jasmin implementations"
 arch=('x86_64')
@@ -18,13 +18,13 @@ makedepends=('binutils' 'tar')
 _pkgname=libjasmin-easycrypt
 
 # Debian package version (may include dashes, unlike pkgver)
-_debver="${pkgver}-1+trixie"
+_debver="${pkgver}-1"
 
 source=(
   "${_pkgname}_${_debver}_amd64.deb::https://repo.formosa-crypto.org/debian/pool/main/j/jasmin-compiler/${_pkgname}_${_debver}_amd64.deb"
 )
 
-sha256sums=('cccbf27a7070c26e2dff230c10c6395743b40ef7b41cfa50770926ea38c4f22d')
+sha256sums=('2ba9378c3c4e3310732b72c9b7ff04ff73938196568ad2eaeae86b58a5d9adb0')
 
 package() {
   cd "$srcdir"
