@@ -1,4 +1,4 @@
-# Maintainer: Himalian <Voltage15312@outlook.com>
+# Maintainer: Himalian <Himalian9227@proton.me>
 pkgname=biopass-bin
 pkgver=0.3.0
 pkgrel=1
