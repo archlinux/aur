@@ -1,7 +1,7 @@
 # Maintainer: nicknb <nicknb at posteo dot com>
 _projectname=podman-tui
 pkgname=$_projectname-bin
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Podman Terminal UI"
 arch=("x86_64")
@@ -13,7 +13,7 @@ source=("$_projectname-$pkgver.zip::$url/releases/download/v$pkgver/${_projectna
         "$_projectname-LICENSE::https://raw.githubusercontent.com/containers/podman-tui/refs/tags/v$pkgver/LICENSE"
         "$_projectname-README::https://raw.githubusercontent.com/containers/podman-tui/refs/tags/v$pkgver/docs/README.md"
         "$_projectname-install::https://raw.githubusercontent.com/containers/podman-tui/refs/tags/v$pkgver/docs/install.md")
-sha256sums=('7c43f64fab50094a206a28c524ece5757c919e952fc29797b495c7743a89f20d'
+sha256sums=('b58a0df7fc12c3b71c09e9d30bb0809104313311e7a7efaec0cc0588719b7457'
             'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4'
             '7a76a87f2d275ec40c67eef6fc17e816d8852b3c625551b9885bd1f6d6491741'
             'e58fffb942f83a19cd1fd93838caa3f27fcef3fae1a08b032a635a474e341c5e')
