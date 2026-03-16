@@ -1,9 +1,9 @@
 # Maintainer: MGislv <mgislv at ceppo dot xyz>
-
+# Contributor: Keon Cachia <keonfarrugia at gmail dot com>
 pkgname=crispy-doom-git
 pkgdesc='Limit-removing enhanced-resolution Doom source port based on Chocolate Doom'
-pkgver=6.0.r122.ge69e50c9
-pkgrel=1
+pkgver=7.1.r32.gbfd3e930
+pkgrel=2
 arch=('x86_64_v3' 'x86_64' 'i686' 'pentium4' 'armv7h' 'aarch64')
 url='https://github.com/fabiangreffrath/crispy-doom'
 license=('GPL2')
@@ -31,6 +31,10 @@ build() {
 
 package() {
 	make DESTDIR="$pkgdir" -C crispy-doom install
-	cd "$pkgdir/usr/share/man/man5"
-	rm -f default.cfg.5 heretic.cfg.5 hexen.cfg.5
+	cd "$pkgdir"/usr
+	rm bin/crispy-{heretic,hexen,strife}-setup
+	mv bin/crispy-doom-setup bin/crispy-setup
+	for game in doom heretic hexen strife; do
+		ln -s crispy-setup bin/crispy-${game}-setup
+	done
 }

@@ -1,7 +1,7 @@
 pkgbase = crispy-doom-git
 	pkgdesc = Limit-removing enhanced-resolution Doom source port based on Chocolate Doom
-	pkgver = 6.0.r122.ge69e50c9
-	pkgrel = 1
+	pkgver = 7.1.r32.gbfd3e930
+	pkgrel = 2
 	url = https://github.com/fabiangreffrath/crispy-doom
 	install = crispy-doom.install
 	arch = x86_64_v3
