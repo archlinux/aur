@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=zyfun-bin
-pkgver=3.4.2
-_electronversion=38
+pkgver=3.4.3
+_electronversion=40
 pkgrel=1
 pkgdesc="Cross-platform desktop video resource player, free high value.(Prebuilt version.Use system-wide electron)跨平台桌面端视频资源播放器,免费高颜值"
 arch=(
@@ -32,8 +32,8 @@ source=(
 )
 sha256sums=('0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch=('9b53e83a4d488e2aae8a5522ef28174f81778f5be3979176411efda4c0cd9f68')
-sha256sums_x86_64=('0669622d157f8df17ad8b694c8155d70681ea8212bafc52318c387385f09f854')
+sha256sums_aarch=('986cb57852500fd761ba0ef26bb641420d47604c93cc797714840b2c28d2a37d')
+sha256sums_x86_64=('727e096fb790b4393bb8631b933784dbd90bb4be6c6f69e2449822f3016c3706')
 _get_electron_version() {
     _electronversion="$(strings "${srcdir}/opt/${pkgname%-bin}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_electronversion}\033[0m"
