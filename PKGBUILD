@@ -1,7 +1,7 @@
 # Maintainer: MangoChill Contributors
 
 pkgname=mangochill-git
-pkgver=0.2.0.r8.gf66158a
+pkgver=0.3.0.r0.gaea3635
 pkgrel=1
 pkgdesc='Input-based dynamic FPS limiter for Linux using MangoHud control socket'
 arch=('x86_64')
