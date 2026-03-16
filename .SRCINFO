@@ -1,0 +1,16 @@
+pkgbase = image-auditor-git
+	pkgdesc = TUI that finds & AI-fixes Lighthouse image issues (CLS, lazy loading, WebP, srcset) across your entire codebase in seconds.
+	pkgver = 0.2.0.r2.g67cf536
+	pkgrel = 1
+	url = https://github.com/0franco/image-auditor
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	provides = image-auditor
+	conflicts = image-auditor
+	options = !lto
+	source = image-auditor::git+https://github.com/0franco/image-auditor.git#branch=main
+	sha256sums = SKIP
+
+pkgname = image-auditor-git
