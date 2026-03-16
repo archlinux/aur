@@ -1,7 +1,7 @@
 pkgbase = pbtk-git
 	pkgdesc = A toolset for reverse engineering and fuzzing Protobuf-based apps
 	pkgver = 1.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/marin-m/pbtk
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = pbtk-git
 	depends = python-websocket-client
 	depends = qt6-webengine
 	depends = chromium
-	depends = java-runtime
+	depends = jre8-openjdk
 	source = git+https://github.com/marin-m/pbtk
 	sha512sums = SKIP
 
