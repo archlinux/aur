@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=fontastic-bin
 _pkgname=Fontastic
-pkgver=1.0.2
+pkgver=1.3.0
 _electronversion=40
 pkgrel=1
 pkgdesc="A stunning font management and cataloging application.(Prebuilt version.Use system-wide electron)"
@@ -13,11 +13,11 @@ depends=(
     "electron${_electronversion}"
 )
 source=(
-    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.AppImage"
-    "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/tomshaw/fontastic/${pkgver}/LICENSE.md"
+    "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/${pkgname%-bin}-v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+    "LICENSE-${pkgver}.md::https://raw.githubusercontent.com/tomshaw/fontastic/${pkgname%-bin}-v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('a723996dae220e8b7bde9a791fcc80b8c990fee2326d58e5d08c3f0f58dcfb15'
+sha256sums=('cc13395715c022358e8b76f8879de5034ddacbb0b671eb4b7b0e57d4b70a7d21'
             '00df8834a94ab4d44c7c7d6557cce6af143ed0019a80c682b5a03d0cea8187b4'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
