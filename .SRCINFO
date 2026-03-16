@@ -1,7 +1,7 @@
 pkgbase = lutris-git
 	pkgdesc = Open Gaming Platform
 	pkgver = 0.5.22.r115.g2a12577
-	pkgrel = 1
+	pkgrel = 2
 	url = https://lutris.net
 	arch = any
 	license = GPL-3.0-only
@@ -62,8 +62,6 @@ pkgbase = lutris-git
 	provides = lutris
 	conflicts = lutris
 	source = git+https://github.com/lutris/lutris.git
-	source = git+https://github.com/bartok765/galaxy_blizzard_plugin.git
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = lutris-git

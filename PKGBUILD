@@ -6,7 +6,7 @@
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
 pkgver=0.5.22.r115.g2a12577
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Gaming Platform"
 arch=('any')
 url="https://lutris.net"
@@ -75,10 +75,8 @@ optdepends=(
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/lutris/lutris.git'
-        'git+https://github.com/bartok765/galaxy_blizzard_plugin.git')
-sha256sums=('SKIP'
-            'SKIP')
+source=('git+https://github.com/lutris/lutris.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
