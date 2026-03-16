@@ -9,7 +9,7 @@ pkgbase = leolock
 	makedepends = tar
 	makedepends = zstd
 	depends = glibc
-	source = leolock_1.0.3_amd64.deb::https://github.com/lxp731/leolock/releases/download/v1.0.3/leolock_.deb
-	sha256sums = 86e2a469fdc293e85e87b949a1198428681cff4260794b5a83b1b6dedc62ad3b
+	source = leolock_1.0.3-2_amd64.deb::https://github.com/lxp731/leolock/releases/download/v1.0.3-2/leolock_1.0.3-2_amd64.deb
+	sha256sums = 961d0124c4831944d6107ec1d3bf92b8afc89e7a798097ee0e40bb66d8fd49f0
 
 pkgname = leolock
