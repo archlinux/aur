@@ -8,7 +8,7 @@ pkgbase = let-me-animate
 	depends = steamcmd
 	depends = linux-wallpaperengine
 	options = !strip
-	source = let-me-animate-1.0.6.tar.gz::https://github.com/multyfora/let-me-animate/releases/download/v1.0.6/LetMeAnimate-1.0.6-linux.tar.gz
-	sha256sums = d29c46b51c6e081b8e5911adba24683a59492e042c547c320f3b3e29c80ce235
+	source = let-me-animate-1.0.6.tar.gz::https://github.com/multyfora/let-me-animate/releases/latest/download/LetMeAnimate-linux.tar.gz
+	sha256sums = ab767f88fd616d0aee984acfce816954f0d7a4efaa9eb27b8dcca432570d7ceb
 
 pkgname = let-me-animate
