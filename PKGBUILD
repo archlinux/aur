@@ -2,14 +2,14 @@
 # Maintainer: Chandler Klüser <chandler.kluser@gmail.com>
 _pkgname=amiberry
 pkgname=${_pkgname}-git
-pkgver=v7.1.1.r121.gb0eff20
+pkgver=flatpak.v8.0.0.r3.g69fb341
 pkgrel=1
 pkgdesc="Optimized Amiga emulator for Linux/macOS"
 arch=('x86_64' 'aarch64')
 url="https://github.com/BlitterStudio/amiberry"
 license=('GPL-3.0-only')
-depends=('flac' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'mpg123' 'libmpeg2' 'libserialport' 'portmidi' 'hicolor-icon-theme' 'zlib' 'libpng' 'enet' 'gcc-libs' 'libpcap')
-makedepends=('git' 'cmake' 'ninja')
+depends=('flac' 'sdl3' 'sdl3_image' 'sdl3_ttf' 'mpg123' 'libmpeg2' 'libserialport' 'portmidi' 'hicolor-icon-theme' 'zlib' 'libpng' 'enet' 'gcc-libs' 'libpcap')
+makedepends=('git' 'cmake' 'ninja' 'nlohmann-json')
 conflicts=('amiberry' 'amiberry-lite')
 source=($'git+https://github.com/BlitterStudio/amiberry.git')
 sha256sums=('SKIP')
