@@ -1,5 +1,5 @@
 pkgname=szsol-rs
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A solitaire card game originating from SHENZHEN I/O, with tui/cli mode and solver"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('074eaf6106e37fd792c559dd9173bcee67384b16ca4683042164db049f7204af')
+sha256sums=('ff6340fa36165bd7b52325275d47994da9781c80a0d7d379ae8847ae88cfecaa')
 
 prepare() {
   cd "$pkgname-$pkgver"
