@@ -1,6 +1,6 @@
 pkgbase = workdir
 	pkgdesc = Work with multiple directories and run commands without navigating manually.
-	pkgver = 2026.03.16.beta1
+	pkgver = 2026.03.16.beta2
 	pkgrel = 1
 	url = https://github.com/dseichter/Workdir
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = workdir
 	depends = python-pyside6
 	depends = python-urllib3
 	depends = python-packaging
-	source = workdir-2026.03.16.beta1.tar.gz::https://github.com/dseichter/Workdir/archive/refs/tags/v2026-03-16-beta1.tar.gz
-	sha256sums = 64b14dd04e0793c6de721951d69e17b0a1c32e1b209b5d74df31242fb4442b99
+	source = workdir-2026.03.16.beta2.tar.gz::https://github.com/dseichter/Workdir/archive/refs/tags/v2026-03-16-beta2.tar.gz
+	sha256sums = 6c659c17fd81d90d25b8a66af8c338426b6d97263fe0d3b534956500e094d066
 
 pkgname = workdir
