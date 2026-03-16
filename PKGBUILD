@@ -2,7 +2,7 @@
 
 pkgname=lib32-sdl3_ttf
 pkgver=3.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Library that allows you to use TrueType fonts in your SDL applications (Version 3) (32-bit)'
 url='https://www.libsdl.org/projects/SDL_ttf'
 arch=('x86_64')
@@ -26,6 +26,7 @@ build() {
     -W no-dev
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
+    -D CMAKE_INSTALL_LIBDIR=lib32
   )
   cmake "${cmake_options[@]}"
   cmake --build build
