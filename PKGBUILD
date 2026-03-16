@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=altarik-launcher-bin
 _pkgname=Altarik-Launcher
-pkgver=2.2.1
+pkgver=2.3.2
 _electronversion=40
 pkgrel=1
 pkgdesc="A Minecraft custom launcher developped to launch the game with our own modpack.(Prebuilt version.Use system-wide electron)"
@@ -24,7 +24,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.ico::https://raw.githubusercontent.com/AltarikMC/Launcher/${pkgver}/icon.ico"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('791d9d8842232e3e0e3f652d1e73e0dd18af46116147ecd3b7f2b13922a2a855'
+sha256sums=('f50e023121a0550d2fc3b576d5ee6ae1403196737536d687b6af6a0ba6a28716'
             '3a3a7d8474ca58bf2620f0a95275445faf654df7d4061afc209458b5fc8f8a2c'
             '5dbc783060b213ca39548ace82bbc9a2ffa35031b70728027a7a8e14dad2260a'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
