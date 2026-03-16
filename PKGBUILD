@@ -1,6 +1,6 @@
 # Maintainer: fa5e4658010be730
 pkgname=atomic-upgrade
-pkgver=0.0.19
+pkgver=0.0.20
 pkgrel=1
 pkgdesc="Atomic system upgrades for Arch Linux (Btrfs + UKI + Secure Boot)"
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
 )
 backup=('etc/atomic.conf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('427b6d8bf1784e806a8c3c1779f109c1be97bf9ce05713496d79d1f3526d5971')
+sha256sums=('872e3fb0e90c4ba57266914bcff93483f8c058890a432ce34e593cac629bb70d')
 
 package() {
     cd "${pkgname}-v${pkgver}"
