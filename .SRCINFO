@@ -1,10 +1,10 @@
 pkgbase = hermes-dec
 	pkgdesc = A reverse engineering tool for decompiling and disassembling the React Native Hermes bytecode
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/P1sec/hermes-dec
 	arch = any
-	license = GPL-3.0-or-later
+	license = AGPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools>=69
