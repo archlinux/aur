@@ -1,7 +1,7 @@
 pkgbase = python-pylibssh
 	pkgdesc = Python bindings specific to Ansible use case for libssh
-	pkgver = 1.3.0
-	pkgrel = 2
+	pkgver = 1.4.0
+	pkgrel = 1
 	url = https://github.com/ansible/pylibssh
 	arch = x86_64
 	license = LGPL-2.1
@@ -14,7 +14,7 @@ pkgbase = python-pylibssh
 	makedepends = python-toml
 	makedepends = python-wheel
 	depends = libssh
-	source = pylibssh-1.3.0.tar.gz::https://github.com/ansible/pylibssh/archive/v1.3.0.tar.gz
-	sha512sums = c3bd313fcd25ccd02d7ef15213d8725a8db9a273f2096f2a68350fc9bbdc04cc3a31715fe3fef1b8d3b6281bbf02dfc489d18bb78d0fb33c0166af2aa9209918
+	source = pylibssh-1.4.0.tar.gz::https://github.com/ansible/pylibssh/archive/v1.4.0.tar.gz
+	sha512sums = 21b2a14d4b4f7d6aeb29c73a1cefda54d90f435376a65ca84b43d56c11a238d2049704868847abde75d29798e97891c830e8e476214f2dc4355573ef890d2949
 
 pkgname = python-pylibssh
