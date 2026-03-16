@@ -1,4 +1,5 @@
-# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Maintainer: Esteban Beltran <arch@academo.me>
+# Contributor: Claudia Pellegrino <aur ät cpellegrino.de>
 # Contributor: Christopher A. Williamson
 # Contributor: Moritz Poldrack <moritz at poldrack dot dev>
 # Contributor: Pascal Mathis <mail@pascalmathis.com>
@@ -6,7 +7,7 @@
 
 pkgname=rambox-pro-bin
 _pkgname=rambox
-pkgver=2.6.0
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='Workspace browser to manage many web applications in one place'
 arch=('x86_64')
@@ -31,7 +32,7 @@ sha256sums=(
   # eula sum
   '0c94e0c1690afe9414a7ead793bb63417da16b143209d3fed8999370a237d137'
   # deb file sum
-  '64d2669c77ff3ec255800151e558e1da448301917937d7631542b893c4ec3213'
+  'c0b85ecbf6e805fb528b6a75167955dcbd92d067a770566c401571ccbdc78d48'
 )
 
 build() {
