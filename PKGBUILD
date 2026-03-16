@@ -1,7 +1,7 @@
 # Maintainer: devome <evinedeng@hotmail.com>
 
 pkgname="nginx-ui"
-pkgver=2.3.4
+pkgver=2.3.5
 _pkgver=${pkgver//_/-}
 pkgrel=1
 epoch=1
@@ -13,7 +13,7 @@ license=("AGPL-3.0-or-later")
 depends=("nginx")
 makedepends=("pnpm" "go")
 source=("${pkgname}-${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('40ea260155a06ef8eee1d22c8f5618fc96c5d193a96be52ec8e54718c85cb7ed')
+sha256sums=('548d818819d020bad646fd3067aa92f4ddac387d9d2a5df32bb8be78b2e5b187')
 
 build() {
     export CGO_CFLAGS="${CFLAGS}"
@@ -23,7 +23,6 @@ build() {
     cd "${pkgname}-${_pkgver}"
     pnpm --prefix app install
     pnpm --prefix app build
-    tar -C app -cf - dist | xz -9 -c > app/dist.tar.xz
 
     local ldflags="
         -s -w \
@@ -49,5 +48,5 @@ package() {
     install -Dm755 "${pkgname}"         "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     install -Dm644 app.example.ini      "${pkgdir}/etc/${pkgname}/config.ini"
-    install -Dm644 *.md              -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -Dm644 {,resources/readme/}README*.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
