@@ -1,0 +1,27 @@
+pkgbase = fiak-bin
+	pkgdesc = Fast, offline and Git-friendly API client for HTTP, GraphQL, WebSockets, SSE, and gRPC based on Yaak (Pre-compiled version)
+	pkgver = 2026.3.1_fiak0
+	pkgrel = 1
+	url = https://github.com/Vexcited/Fiak
+	arch = x86_64
+	license = MIT
+	depends = cairo
+	depends = dbus
+	depends = fontconfig
+	depends = gcc-libs
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = webkit2gtk-4.1
+	depends = zlib
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = fiak-bin-2026.3.1_fiak0.deb::https://github.com/Vexcited/Fiak/releases/download/v2026.3.1-fiak0/fiak_2026.3.1-fiak0_amd64.deb
+	source_x86_64 = fiak-bin-2026.3.1_fiak0.LICENSE::https://raw.githubusercontent.com/Vexcited/Fiak/refs/tags/v2026.3.1-fiak0/LICENSE
+	sha256sums_x86_64 = a689ff141ce0b7694660d32a31b5b7b16f2a7a4e5517e181719bc1e2321276cc
+	sha256sums_x86_64 = b9954c6ea318dddb547e98dd8f5a8c0aad7117cf0ca12e7b31e55bd4d207164f
+
+pkgname = fiak-bin
