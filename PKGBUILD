@@ -8,10 +8,9 @@ url="https://github.com/revanthnemtoor/hyperfetch"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
-provides=('fetch')
 conflicts=('hyperfetch-git')
 # Note: Pointing to a specific commit since v0.2.0.next tag doesn't exist yet.
-_commit=fe940ceeaab5e22abf987936790546efacc72962
+_commit=00ec89a13c5c016529903f44db0ed2aa1aeabfd1
 source=("$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
 sha256sums=('SKIP')
 

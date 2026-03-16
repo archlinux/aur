@@ -7,9 +7,8 @@ pkgbase = hyperfetch
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	provides = fetch
 	conflicts = hyperfetch-git
-	source = hyperfetch-fe940ceeaab5e22abf987936790546efacc72962.tar.gz::https://github.com/revanthnemtoor/hyperfetch/archive/fe940ceeaab5e22abf987936790546efacc72962.tar.gz
+	source = hyperfetch-00ec89a13c5c016529903f44db0ed2aa1aeabfd1.tar.gz::https://github.com/revanthnemtoor/hyperfetch/archive/00ec89a13c5c016529903f44db0ed2aa1aeabfd1.tar.gz
 	sha256sums = SKIP
 
 pkgname = hyperfetch
