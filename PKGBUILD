@@ -2,17 +2,17 @@
 # Contributor: Artem Vorotnikov <artem@vorotnikov.me>
 
 pkgname=dumbpipe
-pkgver=0.34.0
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="Connect A to B. Send Data."
 arch=('x86_64')
 url="https://github.com/n0-computer/dumbpipe"
 license=('MIT' 'Apache-2.0')
-depends=('gcc-libs' 'glibc')
+depends=('glibc' 'libgcc')
 makedepends=('cargo')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('e121eea8bce86129f5a376d77025dca054074f33360e13fefd76b4c4dd1eddccac6b265c6caf9397d2c4205dfe6dae88f377b14368f416c817a4b639440fb84d')
+b2sums=('aafe6c563bf5c19fad48d31a524b0ff45c6bbf880c271677b5b62f1ec388dbc127df152576bfe4dbc47a62809d1cb3324b3d9112a1e0f1e1e17720b16684d622')
 
 prepare() {
     cd $pkgname-$pkgver
