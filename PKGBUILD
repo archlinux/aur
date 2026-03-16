@@ -1,7 +1,7 @@
 # Maintainer: Rezyys
 pkgname=ccraw
-pkgver=0.1.2
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="crows in the terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Jenyyk/ccraw"
