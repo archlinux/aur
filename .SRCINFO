@@ -1,0 +1,19 @@
+pkgbase = nanlang-git
+	pkgdesc = A high-performance, signal-driven system language for AVX2/ARM64 architectures.
+	pkgver = 3.0.r1.g9a96983
+	pkgrel = 1
+	url = https://github.com/p1rater/NanLang.git
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	depends = gcc-libs
+	depends = glibc
+	provides = nanlang
+	conflicts = nanlang
+	source = git+https://github.com/p1rater/NanLang.git
+	sha256sums = SKIP
+
+pkgname = nanlang-git
