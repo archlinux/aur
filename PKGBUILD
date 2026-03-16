@@ -30,7 +30,6 @@ sha512sums=(
 )
 
 PKGEXT=.pkg.tar
-DLAGENTS+=('hib::/usr/bin/hib-dlagent -u email -p password -o %o %u')
 
 prepare() {
   # Remove unneeded 32-bit executable
