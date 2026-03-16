@@ -1,6 +1,6 @@
 pkgbase = go-mitmproxy
 	pkgdesc = Golang implementation of mitmproxy that supports man-in-the-middle attacks and parsing, monitoring, and tampering with HTTP/HTTPS traffic
-	pkgver = 1.8.9
+	pkgver = 1.8.10
 	pkgrel = 1
 	url = https://github.com/lqqyt2423/go-mitmproxy
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = go-mitmproxy
 	provides = go-mitmproxy
 	conflicts = go-mitmproxy-bin
 	conflicts = go-mitmproxy-git
-	source = go-mitmproxy-1.8.9.tgz::https://github.com/lqqyt2423/go-mitmproxy/archive/refs/tags/v1.8.9.tar.gz
-	sha256sums = e0dc94ab627825ce03b9ae0da2ef75ae8978278b5d2f8d06eed8cf2ed8c635ec
+	source = go-mitmproxy-1.8.10.tgz::https://github.com/lqqyt2423/go-mitmproxy/archive/refs/tags/v1.8.10.tar.gz
+	sha256sums = 3559dc3c3d01a9b6c5e28bac5ec90ca0fe528015ffe45a0f3a7662374245de42
 
 pkgname = go-mitmproxy
