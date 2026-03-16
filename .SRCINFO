@@ -1,6 +1,6 @@
 pkgbase = git-cola
 	pkgdesc = The highly caffeinated Git GUI
-	pkgver = 4.18.1
+	pkgver = 4.18.2
 	pkgrel = 1
 	url = https://git-cola.gitlab.io
 	arch = any
@@ -27,8 +27,8 @@ pkgbase = git-cola
 	optdepends = python-send2trash: Enables "Send to Trash" functionality
 	optdepends = tk: Fallback built-in ssh-askpass handler
 	optdepends = x11-ssh-askpass: Default askpass credential helper
-	source = git+https://github.com/git-cola/git-cola.git#tag=v4.18.1?signed
+	source = git+https://github.com/git-cola/git-cola.git#tag=v4.18.2?signed
 	validpgpkeys = FA41BF59C1B48E8C5F3DA61C8CE26BF4A9F606B0
-	sha256sums = 9eb2b085b3cf4770540610cf84b68263cc68cd40b4c46eca777b28c276c61bfe
+	sha256sums = 062e513f7af35aaabdd4e92212794efc8a182442d94570a80e76fa3a2ba56b86
 
 pkgname = git-cola
