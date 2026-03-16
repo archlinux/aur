@@ -1,5 +1,5 @@
 pkgname=openmm
-pkgver=8.3.0
+pkgver=8.4.0
 pkgrel=1
 pkgdesc="Toolkit for molecular simulation using high performance GPU code"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('cuda: NVIDIA GPU support'
             'hip-runtime-amd: AMD GPU support'
             'rocm-cmake: AMD GPU support')
 source=("https://github.com/pandegroup/openmm/archive/${pkgver}.tar.gz")
-sha256sums=('120629fa0bbf43b0ebf048a78da27fd5aab9aefd1f5b7c4c33b9f674444435b2')
+sha256sums=('2fbc4171a7d15342260a4eef0f09bdd5f8e002994b403dddb9b2a5eeba16724a')
 
 #export CC=gcc-14
 #export CXX=g++-14
