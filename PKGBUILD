@@ -2,7 +2,7 @@
 
 pkgbase=zen-browser
 pkgname=("$pkgbase")
-pkgver=1.19.2b
+pkgver=1.19.3b
 _zen_version=${pkgver//_/-}
 _firefox_version=148.0.2
 pkgrel=1
