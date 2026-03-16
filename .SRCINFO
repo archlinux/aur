@@ -1,0 +1,27 @@
+pkgbase = queryark-bin
+	pkgdesc = Lightweight database IDE for 17 engines — SQL, NoSQL, graph, key-value, and analytics. One app for all your databases.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/berbicanes/queryark
+	arch = x86_64
+	license = MIT
+	makedepends = tar
+	depends = glibc
+	depends = libgcc
+	depends = gtk3
+	depends = glib2
+	depends = libsoup3
+	depends = cairo
+	depends = openssl
+	depends = gdk-pixbuf2
+	depends = hicolor-icon-theme
+	depends = webkit2gtk-4.1
+	depends = dbus
+	provides = queryark
+	conflicts = queryark
+	source = README-0.2.2.md::https://raw.githubusercontent.com/berbicanes/queryark/v0.2.2/README.md
+	sha256sums = 5e4a338879394b2d84e6b8caa080252e5fe6ef9acc4aea9653096789707d8386
+	source_x86_64 = https://github.com/berbicanes/queryark/releases/download/v0.2.2/queryark_0.2.2_amd64.deb
+	sha256sums_x86_64 = dd72da0e29b1e01f97b63269dd32dd4d14a0b63bd91afb83a35d2f0c28ddc506
+
+pkgname = queryark-bin

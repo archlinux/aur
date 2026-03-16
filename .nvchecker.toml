@@ -1,0 +1,5 @@
+[queryark-bin]
+source = "github"
+github = "berbicanes/queryark"
+use_latest_release = true
+prefix = "v"
