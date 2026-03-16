@@ -1,0 +1,15 @@
+pkgbase = ruby-whirly
+	pkgdesc = Simple, colorful terminal spinner library for Ruby
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/janlelis/whirly
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-unicode-display_width
+	noextract = whirly-0.4.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/whirly-0.4.0.gem
+	sha256sums = 3ffdf9097e711097442f6d83c91b8fc431d73224863f75b48f06fb850b3e596e
+
+pkgname = ruby-whirly
