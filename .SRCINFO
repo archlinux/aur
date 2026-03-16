@@ -1,0 +1,29 @@
+pkgbase = deepstream-sdk
+	pkgdesc = NVIDIA DeepStream SDK 8.0 - streaming analytics toolkit for AI video and image understanding (CUDA 13 compat)
+	pkgver = 8.0.0
+	pkgrel = 3
+	url = https://developer.nvidia.com/deepstream-sdk
+	arch = x86_64
+	license = LicenseRef-NvidiaDeepStream
+	depends = cuda
+	depends = nvidia-utils>=590
+	depends = tensorrt
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = cairo
+	depends = glib2
+	depends = pango
+	depends = libx11
+	depends = yaml-cpp
+	depends = mesa
+	noextract = deepstream-8.0_8.0.0-1_amd64.deb
+	noextract = cuda-cudart-12-8_12.8.90-1_amd64.deb
+	noextract = libnpp-12-8_12.3.3.100-1_amd64.deb
+	source = deepstream-8.0_8.0.0-1_amd64.deb::https://api.ngc.nvidia.com/v2/resources/nvidia/deepstream/versions/8.0/files/deepstream-8.0_8.0.0-1_amd64.deb
+	source = cuda-cudart-12-8_12.8.90-1_amd64.deb::https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-cudart-12-8_12.8.90-1_amd64.deb
+	source = libnpp-12-8_12.3.3.100-1_amd64.deb::https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/libnpp-12-8_12.3.3.100-1_amd64.deb
+	sha256sums = ae810a0b7cdc2918bd3480125c6a832a4696b33b3740742a329430a0cead0d8f
+	sha256sums = 929554bc2f0831eefec4e212897d0cbb0db70cab75c5eeadd2a4a43e7d7ffb68
+	sha256sums = 54febea3b7a793e65318647c0548c0fea2416ef0a7dc70c672c6877f3bcba992
+
+pkgname = deepstream-sdk
