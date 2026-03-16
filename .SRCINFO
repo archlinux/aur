@@ -1,16 +1,16 @@
 pkgbase = portless-bin
 	pkgdesc = Replace port numbers with stable, named .localhost URLs for local development.
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/acmacalister/portless
 	license = MIT
 	conflicts = portless
 	provides = portless
 	arch = aarch64
-	source_aarch64 = https://github.com/acmacalister/portless/releases/download/v0.1.1/portless_0.1.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = d54504e8d506ad40f68e053da24b035ffdab925f3261cf69e146d52f94c40e89
+	source_aarch64 = https://github.com/acmacalister/portless/releases/download/v0.2.0/portless_0.2.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = ddcd1a432b872e9a6a88f57a4b6fd7001ba6e2e57d87924de05e67ccfe386207
 	arch = x86_64
-	source_x86_64 = https://github.com/acmacalister/portless/releases/download/v0.1.1/portless_0.1.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 3ef1a829affc6be00d2cb91676e098d4f7f971482c2a89ff9459a9b508cc1555
+	source_x86_64 = https://github.com/acmacalister/portless/releases/download/v0.2.0/portless_0.2.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9bff6ac04cd3fabe16174fd98e853293e9f00a5ef4dd055be09adb2eb2187dba
 	
 pkgname = portless-bin
