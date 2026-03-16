@@ -13,9 +13,10 @@ sha256sums=('SKIP')
 package() {
   cd "$srcdir"
 
-  # 解包 deb
   bsdtar -xf EchoMusic-$pkgver-Linux.deb
-
-  # 解 data 部分
   bsdtar -xf data.tar.* -C "$pkgdir"
+
+  # 软链接
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s /usr/lib/echomusic/echomusic "$pkgdir/usr/bin/echomusic"
 }
