@@ -1,7 +1,7 @@
 pkgbase = sherlock
 	pkgdesc = Hunt down social media accounts by username across social networks
-	pkgver = v0.16.0
-	pkgrel = 2
+	pkgver = 0.16.0
+	pkgrel = 3
 	url = https://github.com/sherlock-project/sherlock
 	arch = any
 	license = MIT
@@ -22,7 +22,7 @@ pkgbase = sherlock
 	depends = python-stem
 	depends = python-torrequest
 	conflicts = sherlock-git
-	source = https://github.com/sherlock-project/sherlock/archive/refs/tags/v0.16.0.tar.gz
+	source = https://github.com/sherlock-project/sherlock/archive/refs/tags/0.16.0.tar.gz
 	sha256sums = 997a7c22ed5c179438c91c27e8430b43e1d0fceb79d345e478a390d599a4016f
 
 pkgname = sherlock
