@@ -4,8 +4,8 @@
 # dependencies will cover those
 
 pkgname=hyprquickframe-git
-pkgver=r40.g3cee77a
-pkgrel=3
+pkgver=r53.g8a924b6
+pkgrel=1
 pkgdesc="Quickshell-based screenshot utility for Hyprland"
 arch=('any')
 url="https://github.com/Ronin-CK/HyprQuickFrame"
@@ -47,28 +47,10 @@ backup=(
 )
 
 package() {
-    # Install license
-    install -Dm644 HyprQuickFrame/LICENSE \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
     # Install Quickshell config (system-wide XDG)
-    install -d "$pkgdir/etc/xdg/quickshell/HyprQuickFrame"
-
-    install -m644 HyprQuickFrame/dimming.frag.qsb \
-        "$pkgdir/etc/xdg/quickshell/HyprQuickFrame/"
-
-    install -m644 \
-        HyprQuickFrame/FreezeScreen.qml \
-        HyprQuickFrame/RegionSelector.qml \
-        HyprQuickFrame/WindowSelector.qml \
-        HyprQuickFrame/Theme.qml \
-        HyprQuickFrame/QuickToggle.qml \
-        HyprQuickFrame/shell.qml \
-        "$pkgdir/etc/xdg/quickshell/HyprQuickFrame/"
-
-    # Theme configuration
-    install -m644 HyprQuickFrame/theme.toml \
-        "$pkgdir/etc/xdg/quickshell/HyprQuickFrame/"
+    install -d "$pkgdir/etc/xdg/quickshell"
+    cp -r HyprQuickFrame "$pkgdir/etc/xdg/quickshell/HyprQuickFrame"
+    rm -f "$pkgdir/etc/xdg/quickshell/HyprQuickFrame/"{README.md,flake.nix,flake.lock}
 
     # Install wrapper script
     install -Dm755 hyprquickframe \
