@@ -9,8 +9,25 @@ url="https://github.com/TimDettmers/$_name"
 pkgver=0.49.2
 pkgrel=1
 arch=("x86_64")
-makedepends=("make" "cmake")
-depends=("hipblaslt" "hiprand" "hipsparse" "hipcub" "rocthrust" "python-setuptools" "python-pytest" "python-einops" "python-wheel" "python-scipy" "python-lion-pytorch" "python-pandas" "python-matplotlib")
+depends=(
+  hipblaslt
+  hiprand
+  hipsparse
+  hipcub
+  rocthrust
+  python-setuptools
+  python-pytest
+  python-einops
+  python-wheel
+  python-scipy
+  python-lion-pytorch
+  python-pandas
+  python-matplotlib
+)
+makedepends=(
+  make
+  cmake
+)
 provides=("python-$_name")
 source=("$pkgname::git+https://github.com/bitsandbytes-foundation/bitsandbytes.git#tag=${pkgver}")
 sha512sums=("SKIP")
