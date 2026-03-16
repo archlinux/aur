@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.14.6] - 2026-03-15
+
+### Added
+
+- Save the show line number context
+- Save find in text context
+
+### Changed
+
+- translation
+
+### Fixed
+
+- Safe degradation of some code part
+- Better text change detection for unit file editing
+
 ## [2.14.5] - 2026-03-13
 
 ### Changed
