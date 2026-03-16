@@ -1,6 +1,6 @@
 pkgbase = mullvad-vpn-beta
 	pkgdesc = The Mullvad VPN client app for desktop (beta channel)
-	pkgver = 2026.1.beta2
+	pkgver = 2026.1.stable
 	pkgrel = 1
 	url = https://www.mullvad.net
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = mullvad-vpn-beta
 	depends = libnftnl
 	depends = libnotify
 	depends = nss
-	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2026.1-beta2?signed
+	source = git+https://github.com/mullvad/mullvadvpn-app.git#tag=2026.1?signed
 	source = git+https://github.com/mullvad/mullvadvpn-app-binaries.git
 	source = git+https://github.com/mullvad/wireguard-go.git
 	source = no-rpm.diff
@@ -28,7 +28,7 @@ pkgbase = mullvad-vpn-beta
 	validpgpkeys = 7ED98188F8F9AFF15D49E41BEB8D8AD83E8DA7BC
 	validpgpkeys = 1D0026CBD1F1858DF8DB54DFCB87E2B919A6454C
 	validpgpkeys = 049F58CC80D9C78452151EE6EF0CCD68D0E5B9B1
-	sha256sums = 1ca8d61127047f5ac67a463f8bb68d5e6a80922aa5d8e1f6dfcac7ca6911ab93
+	sha256sums = b5c5c74c294966c87283e344d7b660f2544cc89e5a1052aef52ddf43afa068db
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 5773f4ea5b7e0db8340e0614d1b027237cb827a5db135ee633d491c271a7e499
