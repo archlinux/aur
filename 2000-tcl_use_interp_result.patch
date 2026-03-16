@@ -1,0 +1,67 @@
+diff -NaurBw a/animation.h b/animation.h
+--- a/animation.h	2026-03-15 23:29:31.606080718 +0100
++++ b/animation.h	2026-03-15 23:51:45.858290824 +0100
+@@ -36,6 +36,7 @@
+ #ifndef nam_animation_h
+ #define nam_animation_h
+ 
++#define USE_INTERP_RESULT
+ #include <tcl.h>
+ #include "state.h"
+ #include "paint.h"
+diff -NaurBw a/editview.h b/editview.h
+--- a/editview.h	2026-03-15 23:29:31.617409846 +0100
++++ b/editview.h	2026-03-15 23:51:49.915289943 +0100
+@@ -46,6 +46,7 @@
+ #define nam_EditView_h
+ 
+ extern "C" {
++#define USE_INTERP_RESULT
+ #include <tcl.h>
+ #include <tk.h>
+ }
+diff -NaurBw a/group.h b/group.h
+--- a/group.h	2026-03-15 23:29:31.628373161 +0100
++++ b/group.h	2026-03-15 23:51:52.546289365 +0100
+@@ -47,6 +47,7 @@
+ #ifndef nam_group_h
+ #define nam_group_h
+ 
++#define USE_INTERP_RESULT
+ #include <tcl.h>
+ #include "animation.h"
+ 
+diff -NaurBw a/netview.h b/netview.h
+--- a/netview.h	2026-03-15 23:29:31.605547336 +0100
++++ b/netview.h	2026-03-15 23:51:56.628288461 +0100
+@@ -37,6 +37,7 @@
+ #define nam_netview_h
+ 
+ extern "C" {
++#define USE_INTERP_RESULT
+ #include <tcl.h>
+ #include <tk.h>
+ }
+diff -NaurBw a/node.h b/node.h
+--- a/node.h	2026-03-15 23:29:31.615908539 +0100
++++ b/node.h	2026-03-15 23:52:00.603287572 +0100
+@@ -48,6 +48,7 @@
+ 
+ #include <math.h>
+ #include <string.h>
++#define USE_INTERP_RESULT
+ #include <tcl.h>
+ #include <tclcl.h>
+ 
+diff -NaurBw a/tag.h b/tag.h
+--- a/tag.h	2026-03-15 23:29:31.604135500 +0100
++++ b/tag.h	2026-03-15 23:52:02.243287202 +0100
+@@ -44,7 +44,7 @@
+ 
+ #ifndef nam_tag_h
+ #define nam_tag_h
+-
++#define USE_INTERP_RESULT
+ #include <tcl.h>
+ #include "animation.h"
+ 

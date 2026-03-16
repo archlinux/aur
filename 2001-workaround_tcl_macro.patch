@@ -1,0 +1,73 @@
+diff -NaurBw a/group.cc b/group.cc
+--- a/group.cc	2026-03-16 00:02:45.151809095 +0100
++++ b/group.cc	2026-03-16 00:02:22.247880122 +0100
+@@ -44,6 +44,8 @@
+
+ #include <string.h>
+ #include "group.h"
++// Workaround broken macro
++#define Tcl_SetHashValue(h, value) ((h)->clientData = (ClientData)(value))
+
+ Group::Group(const char *name, unsigned int addr) :
+ 	Animation(0, 0), size_(0), addr_(addr), name_(0)
+diff -NaurBw a/lan.cc b/lan.cc
+--- a/lan.cc	2026-03-15 23:54:36.035769103 +0100
++++ b/lan.cc	2026-03-15 23:56:55.596161558 +0100
+@@ -43,6 +43,9 @@
+ #include "netmodel.h"
+ #include "trace.h"
+
++// Workaround broken macro
++#define Tcl_SetHashValue(h, value) ((h)->clientData = (ClientData)(value))
++
+ LanLink::LanLink(Edge *e): edge_(e)
+ {
+   /*need to search through the destination node's links to find the link
+diff -NaurBw a/animation.cc b/animation.cc
+--- a/animation.cc	2003-10-12 00:56:49.000000000 +0200
++++ b/animation.cc	2026-03-15 23:37:08.894037447 +0100
+@@ -35,6 +35,8 @@
+ 
+ #include <memory.h>
+ #include <tcl.h>
++// Workaround broken macro
++#define Tcl_SetHashValue(h, value) ((h)->clientData = (ClientData)(value))
+ #include <math.h>
+ #include <string.h>
+ #include "animation.h"
+diff -NaurBw a/netmodel.cc b/netmodel.cc
+--- a/netmodel.cc	2026-03-15 23:28:21.254747765 +0100
++++ b/netmodel.cc	2026-03-15 23:37:21.330051775 +0100
+@@ -41,6 +41,8 @@
+ #include <ctype.h>
+ #include <math.h>
+ #include <tcl.h>
++// Workaround broken macro
++#define Tcl_SetHashValue(h, value) ((h)->clientData = (ClientData)(value))
+ #include <tclcl.h>
+ 
+ #include "config.h"
+diff -NaurBw a/node.cc b/node.cc
+--- a/node.cc	2026-03-15 23:28:21.263911426 +0100
++++ b/node.cc	2026-03-15 23:37:08.894037447 +0100
+@@ -38,6 +38,8 @@
+ #include <windows.h>
+ #endif
+ #include <tcl.h>
++// Workaround broken macro
++#define Tcl_SetHashValue(h, value) ((h)->clientData = (ClientData)(value))
+ 
+ #include "view.h"
+ #include "netview.h"
+diff -NaurBw a/tag.cc b/tag.cc
+--- a/tag.cc	2007-02-12 08:08:43.000000000 +0100
++++ b/tag.cc	2026-03-15 23:37:08.894037447 +0100
+@@ -47,6 +47,8 @@
+ #endif
+ #include <string.h>
+ #include <tcl.h>
++// Workaround broken macro
++#define Tcl_SetHashValue(h, value) ((h)->clientData = (ClientData)(value))
+ #include "animation.h"
+ #include "tag.h"
+ #include "view.h"
