@@ -1,6 +1,6 @@
 pkgbase = nordvpn-gui
 	pkgdesc = GUI for NordVPN
-	pkgver = 4.4.0
+	pkgver = 4.5.0
 	pkgrel = 1
 	url = https://nordvpn.com
 	install = daemon_restart.install
@@ -11,10 +11,10 @@ pkgbase = nordvpn-gui
 	depends = gtk3
 	depends = hicolor-icon-theme
 	options = !debug
-	source = https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/4.4.0.tar.gz
+	source = https://github.com/NordSecurity/nordvpn-linux/archive/refs/tags/4.5.0.tar.gz
 	source = nordvpn-gui.desktop
 	source = daemon_restart.install
-	sha256sums = e2f0f476bf0011154ca3193004cddc4b29167db32c5081d1b194f579cc335c6e
+	sha256sums = c06567edbba523eaba3e35949c617e529f26f7f84b70353136b09caa4d833ca3
 	sha256sums = bce0edf1b5130899b7621f0de8355f0c6fa07374957ef893a5f5065fd9c98952
 	sha256sums = b3bc3b4519769cc9c78258b16eb44765ddd8168951997d8bafdc7b8fcb73d868
 
