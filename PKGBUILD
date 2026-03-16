@@ -3,7 +3,7 @@
 # Maintainer: Vedran Miletic <vedran AT miletic DOT net>
 
 pkgname=gromacs
-pkgver=2025.4
+pkgver=2026.1
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of motion for systems with hundreds to millions of particles.'
 url='http://www.gromacs.org/'
@@ -17,7 +17,7 @@ makedepends=('cmake' 'ninja' 'gcc14')
 options=()
 source=(https://gitlab.com/gromacs/gromacs/-/archive/v${pkgver}/gromacs-v${pkgver}.tar.gz)
 
-sha256sums=('fbbf46a36c65c106cad002175c7e75b64fb2e544da6ff085d529e60c035f9b98')
+sha256sums=('736fc9a51c623c5b3d427f4aa1fdc654c5f573d6c2e4b6f42bad587bb37af910')
 
 # Build-time GPU toggle (OFF, CUDA, SYCL); override with: env _gpu=CUDA _cuda_sm=89 makepkg
 : "${_gpu:=OFF}"
@@ -47,22 +47,21 @@ _build_common_flags=(
 
 # 1) Extra CUDA GPU options
 if [[ ${_gpu} == "CUDA" ]]; then
-  # For CUDA (12+) support, compiling with GCC 14 is required.
-  # If you not need CUDA support, uncomment the next two lines
-  export CC=gcc-14
-  export CXX=g++-14
+  # For CUDA (13+) support, compiling with GCC 15 is possible.
+  # Uncomment the next two lines with the proper gcc version for newer gcc copilers
+  #export CC=gcc-15
+  #export CXX=g++-15
   # lto does not play well with CUDA. We need to disable it.
   # Local copies of your flags (already without -flto), check your makepkg.conf
   _local_CFLAGS="$CFLAGS"
   _local_CXXFLAGS="$CXXFLAGS"
 
   _build_common_flags+=(
-    -DGMX_USE_CCACHE=OFF          # safer with nvcc
     #override all compile/link flags CMake uses for Release so it can’t re-add -flto
     -DCMAKE_C_FLAGS="${_local_CFLAGS}"
     -DCMAKE_CXX_FLAGS="${_local_CXXFLAGS}"
     # Set target
-    -DGMX_CUDA_TARGET_SM=${_cuda_sm}
+    -DCMAKE_CUDA_ARCHITECTURES=${_cuda_sm}
   )
 fi
 
@@ -124,10 +123,11 @@ package() {
   msg2 "Installing /etc/profile.d/gromacs.sh"
   install -Dm644 /dev/stdin "$pkgdir/etc/profile.d/gromacs.sh" <<'EOF'
 # shellcheck shell=sh
-[ -r /usr/bin/GMXRC ] && . /usr/bin/GMXRC
+[ -r /usr/bin/GMXRC.bash ] && . /usr/bin/GMXRC.bash
 EOF
 
-install -Dm644 /dev/stdin "$pkgdir/etc/profile.d/gromacs.csh" <<'EOF'
+  msg2 "Installing /etc/profile.d/gromacs.csh"
+  install -Dm644 /dev/stdin "$pkgdir/etc/profile.d/gromacs.csh" <<'EOF'
 if ( -r /usr/bin/GMXRC.csh ) then
   source /usr/bin/GMXRC.csh
 endif
