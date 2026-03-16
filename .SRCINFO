@@ -1,6 +1,6 @@
 pkgbase = konform-browser
 	pkgdesc = Firefox ESR fork with increased security, privacy, and customizability
-	pkgver = 140.8.0.109
+	pkgver = 140.8.0.110
 	pkgrel = 1
 	epoch = 1
 	url = https://codeberg.org/konform-browser/source
@@ -90,7 +90,7 @@ pkgbase = konform-browser
 	options = !makeflags
 	backup = usr/lib/konform/librewolf.cfg
 	backup = usr/lib/konform/distribution/policies.json
-	source = src::git+https://codeberg.org/konform-browser/source.git#tag=140.8.0.109
+	source = src::git+https://codeberg.org/konform-browser/source.git#tag=140.8.0.110
 	source = firefox-140.8.0esr.source.tar.xz::https://archive.mozilla.org/pub/firefox/candidates/140.8.0esr-candidates/build2/source/firefox-140.8.0esr.source.tar.xz
 	source = firefox-140.8.0esr.source.tar.xz.asc::https://archive.mozilla.org/pub/firefox/candidates/140.8.0esr-candidates/build2/source/firefox-140.8.0esr.source.tar.xz.asc
 	source = firefox-l10n-e4f894a4eef5c492c83a860a4ff16c8ed361445c.tar.gz::https://github.com/mozilla-l10n/firefox-l10n/archive/e4f894a4eef5c492c83a860a4ff16c8ed361445c.tar.gz
@@ -98,7 +98,7 @@ pkgbase = konform-browser
 	source = default192x192.png
 	source = 0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 45306bf78bbe28062e012852c75165e4f731849302d42b8db90549331dac88c0
+	sha256sums = f601465d7e078fe329f6baaeaff61205ddfb8f67dbf99a6baaa359d9711d6b9a
 	sha256sums = 57a7f339ef68273f6597d8074a841fa053f63a21d1f609ab0074a26c063282e6
 	sha256sums = SKIP
 	sha256sums = 52d638394dcc3254c70b550340bffb0ade63bd35f155eaee12e0000a51ef939b

@@ -13,7 +13,7 @@ _ffsrcver=140.8.0
 _ffbuild=2
 _l10n_commit=e4f894a4eef5c492c83a860a4ff16c8ed361445c
 _moz_build_id=20260106170501
-_lwrelver=109
+_lwrelver=110
 pkgver="${_ffsrcver}.${_lwrelver}"
 pkgrel=1
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
@@ -142,7 +142,7 @@ source=(
   "default192x192.png"
   "0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch"
 )
-sha256sums=('45306bf78bbe28062e012852c75165e4f731849302d42b8db90549331dac88c0'
+sha256sums=('f601465d7e078fe329f6baaeaff61205ddfb8f67dbf99a6baaa359d9711d6b9a'
             '57a7f339ef68273f6597d8074a841fa053f63a21d1f609ab0074a26c063282e6'
             'SKIP'
             '52d638394dcc3254c70b550340bffb0ade63bd35f155eaee12e0000a51ef939b'
