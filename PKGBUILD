@@ -1,5 +1,5 @@
 pkgname=nmsurf
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Fast NetworkManager frontend supports rofi, wofi, walker and fuzzel"
 arch=('x86_64')
