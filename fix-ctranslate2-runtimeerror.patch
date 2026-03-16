@@ -1,11 +1,11 @@
---- a/whisperlivekit/simul_whisper/simul_whisper.py	2026-03-04 00:21:15.198490485 +0800
-+++ b/whisperlivekit/simul_whisper/simul_whisper.py	2026-03-04 00:21:15.199244426 +0800
-@@ -281,7 +281,7 @@
+--- a/whisperlivekit/simul_whisper/simul_whisper.py
++++ b/whisperlivekit/simul_whisper/simul_whisper.py
+@@ -276,7 +276,7 @@
                  encoder_feature_ctranslate = np.array(encoder_feature_ctranslate)
              try:
                  encoder_feature = torch.as_tensor(encoder_feature_ctranslate, device=self.device)
 -            except TypeError:
 +            except (TypeError, RuntimeError):
-                 # Some numpy/ctranslate2 versions produce object_ dtype arrays; force float32
-                 arr = np.array(encoder_feature_ctranslate)
-                 if arr.dtype == np.object_:
+                 try:
+                     arr = np.asarray(encoder_feature_ctranslate, dtype=np.float32)
+                 except (TypeError, ValueError):

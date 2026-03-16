@@ -2,7 +2,7 @@
 
 pkgname=whisperlivekit
 _pyname=WhisperLiveKit
-pkgver=0.2.19
+pkgver=0.2.20
 pkgrel=1
 pkgdesc='Real-time speech-to-text with speaker diarization using Whisper'
 arch=('x86_64')
@@ -55,6 +55,10 @@ optdepends=(
   'python-wtpsplit: Segment-then-tokenize sentence splitter (sentence_tokenizer extra, AUR)'
   # [translation] Multi-language translation (200 languages via NLLB)
   'python-nllw: NLLB-based translation support (translation extra, AUR)'
+  # [listen] Microphone input for wlk CLI
+  'python-sounddevice: Microphone input for wlk CLI (listen extra, AUR)'
+  # [openai] OpenAI-compatible API backend
+  'python-openai: OpenAI-compatible transcription backend'
   # [test] Test suite
   'python-pytest: Run test suite (test extra)'
 )
@@ -68,11 +72,11 @@ source=(
   "whisperlivekit.tmpfiles"
   "fix-ctranslate2-runtimeerror.patch"
 )
-sha256sums=('1eb76d3cff0677e5f7e8974f228befb6bc934e4b54ddba43fe740fc38c9ae0eb'
-            '8f395442dff271772d410d26153c2c78399f21d269817a5e4e6bc7a279c0e314'
+sha256sums=('6e5d9b6d554f822a63ee69b701f9430188c7fc3c3ffbd4ac467ac9d1934ac84c'
+            'aedba057513ec5e527c0ff677691e165d3c8fd4c9a6aa604e6350f4ccedaa30b'
             'e936f54d000a6f34fa727c990f4110c62709ed4d03a65e5d50ddebca08c4b3fb'
             'd2f966dc3213128bf66c94280e8156e566f999af182d0bcbefd0ef3fb541602b'
-            '35fd8dcb29e37b8534215e82bacdf0216173dbcbc813dd4b90fb842eaa54a9b4')
+            '4edbff7912870622a396804e1ca98ab0fa967414283484329c9fb36dd87ac684')
 
 build() {
   cd "$_pyname-$pkgver"

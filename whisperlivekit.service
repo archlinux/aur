@@ -54,5 +54,38 @@ ProtectHome=yes
 ExecPaths=/var/cache/whisperlivekit
 ReadWritePaths=/var/lib/whisperlivekit /var/cache/whisperlivekit /tmp /var/tmp
 
+# GPU device access
+# DevicePolicy=closed denies all devices by default; DeviceAllow then grants
+# exactly the nodes needed per GPU vendor:
+#
+#   AMD (ROCm/HIP): char-drm (/dev/dri/renderD*) + /dev/kfd
+#                   /dev/kfd is the Kernel Fusion Driver required for ROCm compute.
+#
+#   Intel (oneAPI/OpenCL): char-drm (/dev/dri/renderD*) only.
+#
+#   NVIDIA: /dev/nvidiaX per-GPU node, /dev/nvidiactl, /dev/nvidia-modeset,
+#           /dev/nvidia-uvm, /dev/nvidia-uvm-tools.
+#           systemd does not expand globs, so nodes are listed individually.
+#           Add /dev/nvidia4 etc. if you have more than 4 GPUs.
+#
+# The whisperlivekit user must be in the 'render' group for char-drm access.
+DevicePolicy=closed
+
+# DRM render nodes — covers AMD ROCm and Intel GPU compute
+DeviceAllow=char-drm rw
+
+# AMD ROCm: Kernel Fusion Driver (required for HIP/ROCm, used by PyTorch)
+DeviceAllow=/dev/kfd rw
+
+# NVIDIA: enumerate each device node (systemd does not expand globs here)
+DeviceAllow=/dev/nvidia0 rw
+DeviceAllow=/dev/nvidia1 rw
+DeviceAllow=/dev/nvidia2 rw
+DeviceAllow=/dev/nvidia3 rw
+DeviceAllow=/dev/nvidiactl rw
+DeviceAllow=/dev/nvidia-modeset rw
+DeviceAllow=/dev/nvidia-uvm rw
+DeviceAllow=/dev/nvidia-uvm-tools rw
+
 [Install]
 WantedBy=multi-user.target
