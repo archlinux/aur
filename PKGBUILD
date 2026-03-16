@@ -19,11 +19,10 @@ sha512sums=("SKIP")
 pkgver() {
   cd $pkgname
 
-  ( set -o pipefail
-    # cutting off 'v' prefix that presents in the git tag
-    git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  ver=$(grep __version__ bitsandbytes/__init__.py | grep -Po '(?<=").*(?=")')
+  revision=$(git rev-list --count HEAD)
+  hash=$(git rev-parse --short HEAD)
+  echo $ver.$revision.$hash
 }
 
 

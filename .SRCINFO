@@ -1,6 +1,6 @@
 pkgbase = python-bitsandbytes-rocm-git
 	pkgdesc = Lightweight wrapper around CUDA custom functions, in particular 8-bit optimizers, matrix multiplication (LLM.int8()), and quantization functions (official AMD ROCm branch)
-	pkgver = continuous.release_main
+	pkgver = 0.50.0.dev0.1115.925d83e4
 	pkgrel = 1
 	url = https://github.com/TimDettmers/bitsandbytes
 	arch = x86_64
