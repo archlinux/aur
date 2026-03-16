@@ -32,7 +32,8 @@ package() {
     # Копируем документацию
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/doc/$pkgname/LICENSE"
-    
+    install -Dm644 startpage.txt "$pkgdir/etc/sysadmin-vim/startpage.txt"
+
     # ---- УСТАНОВКА VIM-PLUG ----
     # Создаём директорию для autoload в системной папке Vim
     install -dm755 "$pkgdir/usr/share/vim/vimfiles/autoload"
