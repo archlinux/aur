@@ -1,14 +1,14 @@
 # Maintainer: Thomas Ludwig <business at tludwig dot dev>
 
 pkgname=teb-obs
-pkgver=32.0.4
+pkgver=32.1.0
 pkgrel=1
 pkgdesc="Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc."
 arch=('x86_64')
 url="https://github.com/amazon-contributing/upstreaming-to-obs-studio/wiki/TEB-Beta-Linux-Installation"
 license=('GPL-2.0-or-later')
-_obsversion="32.0.4-enhanced-broadcasting-v61"
-_obsversionbranch="release/v61"
+_obsversion="32.1.0-enhanced-broadcasting-v62"
+_obsversionbranch="release/v62"
 _qtver=6.10.0
 _libajantv2ver=17.5.0
 _libdatachannelver=0.24
@@ -94,14 +94,14 @@ source=(
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-websocket::git+https://github.com/obsproject/obs-websocket.git"
   "https://cdn-fastly.obsproject.com/downloads/$_cefver.tar.xz"
-  "qt_fix.patch"
+#  "qt_fix.patch"
 )
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
   "SKIP"
-  "SKIP"
+#  "SKIP"
 )
 
 prepare() {
@@ -111,7 +111,7 @@ prepare() {
 
   git -c protocol.file.allow=always submodule update
 
-  patch -Np1 -i $srcdir/qt_fix.patch
+#  patch -Np1 -i $srcdir/qt_fix.patch
 }
 
 build() {

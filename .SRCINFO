@@ -1,6 +1,6 @@
 pkgbase = teb-obs
 	pkgdesc = Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc.
-	pkgver = 32.0.4
+	pkgver = 32.1.0
 	pkgrel = 1
 	url = https://github.com/amazon-contributing/upstreaming-to-obs-studio/wiki/TEB-Beta-Linux-Installation
 	arch = x86_64
@@ -80,7 +80,7 @@ pkgbase = teb-obs
 	optdepends = v4l2loopback-dkms: V4L2 virtual camera output
 	optdepends = obs-source-profiler-bin: Profile the Usages of your Sources
 	optdepends = obs-vertical-canvas-bin: For Dual Format Beta
-	provides = obs-studio=32.0.4
+	provides = obs-studio=32.1.0
 	provides = obs-vst
 	provides = obs-websocket
 	provides = obs-browser
@@ -94,12 +94,10 @@ pkgbase = teb-obs
 	conflicts = obs-studio-browser
 	conflicts = obs-vst
 	conflicts = obs-studio-liberty
-	source = obs-studio::git+https://github.com/amazon-contributing/upstreaming-to-obs-studio#branch=release/v61
+	source = obs-studio::git+https://github.com/amazon-contributing/upstreaming-to-obs-studio#branch=release/v62
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-websocket::git+https://github.com/obsproject/obs-websocket.git
 	source = https://cdn-fastly.obsproject.com/downloads/cef_binary_6533_linux_x86_64_v6.tar.xz
-	source = qt_fix.patch
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
