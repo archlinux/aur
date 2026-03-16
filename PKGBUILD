@@ -1,4 +1,4 @@
-# Maintainer: Taylor <taylor@btxx.org>
+# Maintainer: Taylor <taylor.asplund@gmail.com>
 
 _gemname=whirly
 pkgname=ruby-whirly
