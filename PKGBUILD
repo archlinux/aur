@@ -1,6 +1,6 @@
 # Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=mermark-editor
-pkgver=0.1.57
+pkgver=0.1.63
 pkgrel=1
 pkgdesc="Elegant and simple Markdown, Mermaid editor"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'webkit2gtk-4.1')
 makedepends=('rust' 'pnpm' 'nodejs' 'clang')
 options=('!strip' '!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "mermark-editor.desktop")
-sha256sums=('918aa62d0813317a7f9f3cb8d24b4612028ad87c019824e4b7c7fe8657357a78'
+sha256sums=('c8362a6c52680ebc16c5a02e6e12ec6666f8453dbb941da83fc364d31e233815'
             'b53a303d9d44e96a7a371450aef5ee3002bb58abc8faf6346aa926aab2ec41ed')
 
 # ci/cd flag: gh repo for auto updates
