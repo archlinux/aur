@@ -2,7 +2,7 @@
 pkgname=muslimtify
 pkgver=0.1.5
 pkgrel=1
-pkgdesc="Prayer time notifier for the desktop"
+pkgdesc="A lightweight islamic prayer time notification daemon for Linux"
 arch=('x86_64')
 url="https://github.com/rizukirr/muslimtify"
 license=('MIT')
