@@ -8,6 +8,7 @@ url="https://github.com/5c0/metropolis"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
+options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP') # User should update this after tagging a release
 
