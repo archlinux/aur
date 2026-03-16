@@ -1,6 +1,6 @@
 # Maintainer: Steven Deobald <sdeobald@gnome.org>
 pkgname=savebutton
-pkgver=0.2.17
+pkgver=0.2.18
 pkgrel=1
 pkgdesc='Simple bookmark and notes manager'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('AGPL-3.0-only')
 depends=('gjs' 'gtk4' 'libadwaita' 'libsecret' 'poppler-glib')
 makedepends=('meson' 'ninja' 'nodejs' 'npm' 'typescript' 'gettext' 'glib2' 'desktop-file-utils')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/lofimx/kaya-gtk/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8f4e51b11cb0468750736e0bed2415137fc48b4c5390a00f93b640cb7700515d')
+sha256sums=('1730f750c8b4f7717684c1b07a713c30be824cc3075987e085f4f73e4092c495')
 
 build() {
   cd "kaya-gtk-${pkgver}"
