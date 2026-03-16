@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-camera
-pkgver=0.1.23
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Camera application for the COSMIC™ desktop environment"
 arch=('x86_64' 'aarch64')
@@ -13,6 +13,7 @@ depends=(
   'gst-plugins-good'
   'gst-plugins-ugly'
   'gstreamer'
+  'libcamera'
   'libinput'
   'libxkbcommon'
   'seatd'
@@ -20,10 +21,14 @@ depends=(
 )
 makedepends=(
   'cargo'
+  'clang'
+  'cmake'
   'just'
+  'nasm'
 )
+optdepends=('networkmanager: D-Bus access for WiFi connection from QR codes')
 source=("camera-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('995ba68c39613191842307ba316954c74b172b53f678158abf785086c0e2a0f9')
+sha256sums=('6a3f25193acc6ef22dad538bfaf6c62e3abc4f9c50dabd0a0060edce81a6f0f0')
 
 prepare() {
   cd "camera-$pkgver"
@@ -33,6 +38,8 @@ prepare() {
 
 build() {
   cd "camera-$pkgver"
+  CFLAGS+=" -ffat-lto-objects"
+  CXXFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   just build-release --frozen
 }
