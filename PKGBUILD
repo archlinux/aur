@@ -1,7 +1,8 @@
-# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
+# Maintainer: Emil Petersen <maintainer@hafnium.me>
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 pkgname=cdebootstrap-static
 pkgver=0.7.9+b10
-pkgrel=1
+pkgrel=2
 pkgdesc="Bootstrap a Debian system"
 arch=('i686' 'x86_64')
 url="http://packages.debian.org/search?keywords=cdebootstrap"
