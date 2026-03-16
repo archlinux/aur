@@ -1,14 +1,14 @@
 pkgbase = indicator-session
 	pkgdesc = Indicator showing session management, status and user switching
 	pkgver = 12.10.4
-	pkgrel = 5
+	pkgrel = 6
 	url = https://launchpad.net/indicator-session
 	install = indicator-session.install
 	arch = i686
 	arch = x86_64
 	groups = pantheon
 	groups = pantheon-unstable
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = intltool
 	depends = libdbusmenu-gtk3
 	depends = libindicator-gtk3
@@ -28,4 +28,3 @@ pkgbase = indicator-session
 	sha256sums = 98da140123c78e648311e6d2350a5405916e1b59f97694b4fc71af1f7df716eb
 
 pkgname = indicator-session
-

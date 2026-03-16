@@ -1,13 +1,13 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Balló György <ballogyor+arch@gmail.com>
 
 pkgname=indicator-session
 pkgver=12.10.4
-pkgrel=5
+pkgrel=6
 pkgdesc='Indicator showing session management, status and user switching'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/indicator-session'
-license=('GPL')
+license=('GPL-3.0-only')
 groups=('pantheon' 'pantheon-unstable')
 depends=('libdbusmenu-gtk3' 'libindicator-gtk3')
 makedepends=('intltool')
