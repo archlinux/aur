@@ -4,7 +4,7 @@
 
 pkgname=nam
 pkgver=1.15
-pkgrel=7
+pkgrel=8
 pkgdesc="Tcl/TK based animation tool for viewing network simulation traces and real world packet traces"
 url="https://www.isi.edu/nsnam/nam/"
 license=('GPL')
@@ -23,8 +23,7 @@ source=(
 	https://sources.debian.org/data/main/n/${pkgname}/${_debrel}/debian/patches/1050-gcc-14.patch
 	https://sources.debian.org/data/main/n/${pkgname}/${_debrel}/debian/patches/1060-const-string-literals.patch
 	# Also my own patches
-	2000-tcl_use_interp_result.patch
-	2001-workaround_tcl_macro.patch
+	2000-workaround_tcl_macro.patch
 )
 
 sha256sums=('12ed547b3a5f8903890889d40cfea4d9bd66bb9ba6be99a0c753a9763cad8882'
@@ -34,7 +33,6 @@ sha256sums=('12ed547b3a5f8903890889d40cfea4d9bd66bb9ba6be99a0c753a9763cad8882'
             'fae76b63bac3d287563347695ffdde44efa63774a67cf60ebc13de395dff03dd'
             '389d2801143fc224a08a861ba5390abb6d40809714bd60c51e12f08354177eff'
             '70f59974cc57645d884f25b652a9540b6204d5d808d7808e4827fd9097e9c828'
-            '25146be15bf358656c64d1ec8764370b30f53d3e97f98089a707c015a52d2ef2'
             'acdbf725019d81b7407192ab0323f9305881925d83304da1f77b5f6b770ba720')
 sha512sums=('a1c53c4117d913342f0714480e2d52cddf96107b541c995b5029c7cbd1eb708014cb59abb31723060384f52158727c3425e28ee9e6e0c73b828aed0029b6a15d'
             '78e32a9d74c98a6094e24f4155f899b384f98b74f53fac75dd13e16bd80a6fd0422f083036aed33910d256bac77076ba1ed38f7fd01dd320697c7f4a5b38a862'
@@ -43,7 +41,6 @@ sha512sums=('a1c53c4117d913342f0714480e2d52cddf96107b541c995b5029c7cbd1eb708014c
             'b5bfd074afccc2d25a48bb7e8b3b5f271806df0f35a289e9eff53c06187598ffc93c47baec3830bf6da99350bdf41f95a7ce0f09d73270dcddd368de7fc81073'
             '8d96d99d1818a2f83b951459c0897a1fc296b1d17878abbaf3eda135a4fe6b06a0d8b2696905e2584cb73fb275b5502f60a3a71161a4c3e69929a03f660e6950'
             'ce3ecbbcb33ff3eac6aa4fe4fac6f7dbc8cd36eb8176990c445d4f6dc3971f932f56c46efb01551796c7468e9bbb27f2edb761919e3dba3389023fa1d0c7074e'
-            '81c6a15f11c9e6096ae09f3c56a7af9cee053021ac6ee943bd352b1e1df27cce777f5d6bd987f52ee7e60436af4e9e083b283732f58e6bdbfa506fec0faa913f'
             'bad215f042b67041b6d8a2a8340ba922ff709d69417d7658f8b5dfe926dd3b2519f433235cc84893377282ffc7cc2544044d93fd3bed3dfe9390ba744d342ed2')
 b2sums=('01a04ea710cf564aca02806071d5334756c0ebdff7d27ababee1efa45038dd7fc451c620fb94ff8aed5cf0ab857e6b6d9267f1de9c55993f34d6a4931ab8306f'
         '7f7ef2dc664067598bf05d818e2f18800f8c085d265a7a9dbf67095fbd3935e4a35f155bd7d5cb398ee8caa826ccef290c758f003854694f30aef7f57767996e'
@@ -52,7 +49,6 @@ b2sums=('01a04ea710cf564aca02806071d5334756c0ebdff7d27ababee1efa45038dd7fc451c62
         '3d5ec2c896e2a20c3355dd6cf65543e713091483840dfbac69b2c1b60a12aa647efeb5c54c976e1490c1f5dd78d6cbad8a62f627b5ef6ea1703403ccf930d424'
         'ce05372c3e22972775a5acbf0e4276e951bd0ae6f257bfd4f4f7937303a4358f198c7b5ef7784b8d0bfe32cb6d349ad33e3b54ca6537b93c9429d8acbfa3998d'
         'dd208e38c49a7766d6ef5ca8889b6c737e06d2ba8182e9144edaee38c3227bd0d6121bd28a8951972c98c22475da061737e7d78c102931952ff36fd3da7d0e50'
-        'b2c4aaf344ed9bc73e64e1e8cd872d8656d68b6b99a4eb0ea0e99674afe5c9ca14daa2d282db5a6596e216712036ffda36870f332cfcb0a39a472d9a3007eeb2'
         '3071ce78ec2a8671e47f55f64bee82d6e6950e7869a6ab90017c04bd1e69b92dd05d3c3c75f3ea73762b62758dcaa063cabc31b0b48ed71c9c843993d1a1e99e')
 
 prepare() {
@@ -65,7 +61,7 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     ./configure --prefix=/usr --with-tclcl=/usr/lib/tclcl
-    env CXXFLAGS="$CXXFLAGS -fpermissive" make
+    make CCOPT="-Wall -Wno-write-strings -DUSE_INTERP_RESULT $CXXFLAGS"
 }
 
 package() {
