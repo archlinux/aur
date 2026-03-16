@@ -24,6 +24,10 @@ post_install() {
         sysctl -p /usr/lib/sysctl.d/apm.conf 2>/dev/null || true
     fi
 
+    /var/lib/apm/apm/files/feedback.sh &
+	amber-pm-dstore-patch
+
+
     echo "========================================================"
     echo -e "  APM Daily updates are enabled by default."
     echo -e "  You can disable them with the following command:"

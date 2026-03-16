@@ -1,6 +1,6 @@
 pkgbase = amber-package-manager
 	pkgdesc = bwrap wrapper for install and running debs inside a Amber-PM container
-	pkgver = 1.1.7
+	pkgver = 1.1.8
 	pkgrel = 1
 	url = https://gitee.com/amber-ce/amber-pm/
 	install = amber-package-manager.install
@@ -15,7 +15,7 @@ pkgbase = amber-package-manager
 	depends = fuse-overlayfs
 	optdepends = dpkg: Enable amber-pm-convert (A tool to convert Debian packages for Amber-PM)
 	conflicts = ace-host-integration
-	source = amber-package-manager-1.1.7.tar.gz::https://gitee.com/amber-ce/amber-pm/repository/archive/1.1.7.tar.gz
-	sha256sums = a7c4e465f31757d00c05727f87ff74247416f9282ff2c96c6c1bac642818aa79
+	source = amber-package-manager-1.1.8.tar.gz::https://gitee.com/amber-ce/amber-pm/repository/archive/1.1.8.tar.gz
+	sha256sums = 424a0a13026b46bbcbbf1f797b8eafa76b3e7f05aaff96e2bd2e8052591af6e0
 
 pkgname = amber-package-manager
