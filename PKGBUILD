@@ -6,7 +6,7 @@ pkgdesc="Deepin Wine Quark Browser (夸克浏览器) - Standalone portable brows
 arch=('x86_64')
 url="https://gitlab.com/Jason-summer/deepin-wine-quark"
 license=('custom')
-depends=('fuse2' 'zlib' 'hicolor-icon-theme')
+depends=()
 options=('!strip')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
