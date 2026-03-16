@@ -2,7 +2,7 @@
 _name=snakemake-interface-scheduler-plugins
 pkgname=python-$_name
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Stable interface for interactions between Snakemake and its scheduler plugins"
 arch=('any')
 url="https://github.com/snakemake/snakemake-interface-scheduler-plugins"

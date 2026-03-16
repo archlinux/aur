@@ -1,7 +1,7 @@
 pkgbase = python-snakemake-interface-scheduler-plugins
 	pkgdesc = Stable interface for interactions between Snakemake and its scheduler plugins
 	pkgver = 2.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/snakemake/snakemake-interface-scheduler-plugins
 	arch = any
 	license = MIT
