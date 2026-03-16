@@ -1,7 +1,7 @@
 # Maintainer: dr00tb <adam at dr00tb dot com>
 
 pkgname=tkey-ssh-agent
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A ssh-agent for the Tillitis TKey"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -16,7 +16,7 @@ source=("${url}/archive/v${pkgver}/${_archive}.tar.gz")
 b2sums=('SKIP')
 
 build() {
-  TKEY_SSH_AGENT_VERSION=
+  TKEY_SSH_AGENT_VERSION=${pkgver}
   TKEY_SIGNER_APP_NO_TOUCH=
   cd "${srcdir}/${_archive}"
   CGO_ENABLED=0 go build \
