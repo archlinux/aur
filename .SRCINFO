@@ -1,7 +1,7 @@
 pkgbase = orbit-wifi
 	pkgdesc = A WiFi/Bluetooth manager for Wayland with glassmorphism UI
 	pkgver = 2.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/LifeOfATitan/orbit
 	install = orbit.install
 	arch = x86_64
