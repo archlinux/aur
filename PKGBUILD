@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.22.r102.g03da7ba
+pkgver=0.5.22.r115.g2a12577
 pkgrel=1
 pkgdesc="Open Gaming Platform"
 arch=('any')
@@ -43,7 +43,6 @@ depends=(
 makedepends=(
   'git'
   'meson'
-  'protobuf'
 )
 checkdepends=(
   'appstream-glib'
@@ -66,7 +65,6 @@ optdepends=(
   "mangohud: Display the games' FPS + other information"
   'python-evdev: Controller support'
   'python-pefile: Extract icons from Windows executables'
-  'python-protobuf: BattleNet integration'
   'python-pypresence: Discord Rich Presence integration'
   'umu-launcher: For running games through Proton'
   'vkd3d: DirectX 12 support'
@@ -85,15 +83,6 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${pkgname%-git}"
   git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-
-  # Regenerate protos to fix BattleNet plugin
-  # https://gitlab.archlinux.org/archlinux/packaging/packages/lutris/-/issues/4
-  # https://github.com/lutris/lutris/issues/5659
-  protoc --proto_path=galaxy_blizzard_plugin/src --python_out=. product_db.proto
-  cp -f product_db_pb2.py "${pkgname%-git}/${pkgname%-git}/util/battlenet/product_db_pb2.py"
 }
 
 build() {
