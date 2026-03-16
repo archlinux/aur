@@ -4,32 +4,32 @@
 
 pkgname=mpd-sacd
 pkgver=0.25
-pkgrel=4
+pkgrel=5
 pkgdesc='MPD with patches for SACD and DVD-A ISO playback.'
-url='https://sourceforge.net/p/sacddecoder/mpd/MPD.git/ci/master/tree/'
+url='https://github.com/manisiutkin/MPD'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 license=('GPL-2.0-or-later')
-depends=('alsa-lib'			'audiofile'			'avahi' 		'bzip2'					'chromaprint'	'curl'
-		 'dbus'				'expat'				'faad2'			'ffmpeg'				'flac' 			'fluidsynth'
-		 'fmt'				'glibc'				'gcc-libs'		'hicolor-icon-theme'	'jack2' 		'icu'
-		 'lame'				'libao'				'libcdio' 		'libcdio-paranoia' 		'libgme'		'libid3tag'
-		 'libmad'			'libmms' 			'libmikmod'		'libmodplug' 			'libmpcdec'		'libmpdclient'
-		 'libnfs'			'libogg'			'libopenmpt' 	'nlohmann-json'			'libpulse' 		'libshout'
-		 'libsndfile'		'libsamplerate'		'libsoxr' 		'libupnp' 				'liburing' 		'libvorbis'
-		 'libpipewire'		'sqlite'			'mpg123' 		'openal' 				'opus' 			'pcre2'
-		 'systemd-libs'		'twolame'			'wavpack'		'wildmidi'				'yajl'			'zlib'
-		 'zziplib')
+depends=('adplug'			'alsa-lib'			'audiofile'			'avahi' 			'bzip2'					'chromaprint'
+		 'curl'				'dbus'				'expat'				'faad2'				'ffmpeg'				'flac'
+		 'fluidsynth'		'fmt'				'glibc'				'gcc-libs'			'hicolor-icon-theme'	'jack2'
+		 'icu'				'lame'				'libao'				'libcdio' 			'libcdio-paranoia' 		'libgme'
+		 'libid3tag'		'libmad'			'libmms' 			'libmikmod'			'libmodplug' 			'libmpcdec'
+		 'libmpdclient'		'libnfs'			'libogg'			'libopenmpt' 		'libsidplayfp'			'nlohmann-json'
+		 'libpulse' 		'libshout'			'libsndfile'		'libsamplerate'		'libsoxr' 				'libupnp'
+		 'liburing' 		'libvorbis'			'libpipewire'		'sqlite'			'mpg123' 				'openal'
+		 'opus' 			'pcre2'				'systemd-libs'		'twolame'			'vgmstream-git' 		'wavpack'
+		 'wildmidi'			'yajl'				'zlib'				'zziplib')
 makedepends=('boost' 'meson' 'cmake' 'git' 'llvm' 'python-sphinx_rtd_theme' 'clang' 'ninja')
 conflicts=('mpd')
 provides=("mpd=${pkgver}")
-source=('mpd::git+https://git.code.sf.net/p/sacddecoder/mpd/MPD.git'
+source=('mpd::git+https://github.com/manisiutkin/MPD.git'
 	'sysusers.d'
 	'tmpfiles.d'
 	'conf')
-sha1sums=('SKIP'
-          '7c7de7b30c6c8e1c705dd415692f6a08a3f62c82'
-          'd82864959d1a1a07bf75d87c7586dbb713892f3a'
-          '77d6ba1fb8cd2c7f39bd7f7ce174928b97a95e87')
+sha256sums=('SKIP'
+            '0b74c6e5db08daab3091dc15a6b0c75210ba2f9e98fa074f6cfd605a461056b6'
+            '2faa85c12449a5b3ca422ff1c1fa06d057c7e262a74bfa6298c914a92d6f2e7a'
+            'fafe3300ee01f7f42138fde9e24b9b546ebd193f2d8358f7af3f9f6fe1aed189')
 backup=('etc/mpd.conf')
 
 prepare() {
@@ -41,16 +41,17 @@ prepare() {
 
 build() {
 	cd "$srcdir/mpd/build"
-	_opts=(# not in an official repo
-		   '-Dadplug=disabled'
+	_opts=(# in AUR, needs testing
+		   #'-Dadplug=disabled'
 		   # interferes with detection of alsa devices
 		   '-Dsndio=disabled'
-		   # not in an official repo
-		   '-Dshine=disabled'
-		   # not in official repo
-		   '-Dtremor=disabled'
+		   # exists in AUR but needs testing
+		   #'-Dshine=disabled'
+		   # exists in AUR, won't build
+		   '-Dtremor=disabled')
 		   # not in official repo (and not libsidplayfp)
-		   '-Dsidplay=disabled')
+		   #'-Dsidplay=disabled'
+		   # they say libsidplayfp is supported....
 		   # DVD-Audio support re-enabled. "Worked on my machine" -Jay
 	# Use clang to match previous build environment; works with meson and avoids toolchain issues
 	env CC=clang CXX=clang++ arch-meson .. "${_opts[@]}"
