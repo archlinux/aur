@@ -1,6 +1,6 @@
 pkgbase = micasa-bin
 	pkgdesc = Modal TUI for tracking home projects, maintenance schedules and vendor quotes
-	pkgver = 2.0.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/cpcloud/micasa
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = micasa-bin
 	license = Apache-2.0
 	provides = micasa
 	conflicts = micasa
-	source_x86_64 = micasa-bin-2.0.0-x86_64.tar.gz::https://github.com/cpcloud/micasa/releases/download/v2.0.0/micasa_linux_amd64.tar.gz
-	sha256sums_x86_64 = fd68de249574041e09c77caba5511bdfdd26a29f82d975ab87ea6ddc7eadcf0e
-	source_aarch64 = micasa-bin-2.0.0-aarch64.tar.gz::https://github.com/cpcloud/micasa/releases/download/v2.0.0/micasa_linux_arm64.tar.gz
-	sha256sums_aarch64 = 8911d0faffc1f7339410523fbad1d016223d101527c02126bc8f1c4102c5d070
+	source_x86_64 = micasa-bin-2.2.0-x86_64.tar.gz::https://github.com/cpcloud/micasa/releases/download/v2.2.0/micasa_linux_amd64.tar.gz
+	sha256sums_x86_64 = 567555dc497b0fe65df84ba85b39a0749470cb846784072ed81142359742e34c
+	source_aarch64 = micasa-bin-2.2.0-aarch64.tar.gz::https://github.com/cpcloud/micasa/releases/download/v2.2.0/micasa_linux_arm64.tar.gz
+	sha256sums_aarch64 = 13902fc69d364d0b0e16e87626875db6311b3796786db973af288e174fa260c6
 
 pkgname = micasa-bin

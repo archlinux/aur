@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=micasa-bin
-pkgver=2.0.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Modal TUI for tracking home projects, maintenance schedules and vendor quotes'
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('micasa')
 conflicts=('micasa')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${url}/releases/download/v${pkgver}/micasa_linux_amd64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${url}/releases/download/v${pkgver}/micasa_linux_arm64.tar.gz")
-sha256sums_x86_64=('fd68de249574041e09c77caba5511bdfdd26a29f82d975ab87ea6ddc7eadcf0e')
-sha256sums_aarch64=('8911d0faffc1f7339410523fbad1d016223d101527c02126bc8f1c4102c5d070')
+sha256sums_x86_64=('567555dc497b0fe65df84ba85b39a0749470cb846784072ed81142359742e34c')
+sha256sums_aarch64=('13902fc69d364d0b0e16e87626875db6311b3796786db973af288e174fa260c6')
 
 package() {
     install -Dm755 micasa "${pkgdir}/usr/bin/micasa"
