@@ -11,17 +11,6 @@ if [[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/cursor-flags.conf" ]]; then
   done < "${XDG_CONFIG_HOME:-$HOME/.config}/cursor-flags.conf"
 fi
 
-# Wayland: auto-detect
-if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
-  WAYLAND_FLAGS=(
-    --ozone-platform-hint=auto
-    --enable-features=WaylandWindowDecorations
-  )
-else
-  WAYLAND_FLAGS=()
-fi
-
 exec /usr/share/cursor/cursor \
-  "${WAYLAND_FLAGS[@]}" \
   "${CURSOR_USER_FLAGS[@]}" \
   "$@"
