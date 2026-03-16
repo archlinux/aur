@@ -1,0 +1,16 @@
+pkgbase = lazytailscale-bin
+	pkgdesc = A terminal dashboard for your Tailscale network
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mogglemoss/lazytailscale
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lazytailscale
+	conflicts = lazytailscale
+	source_x86_64 = lazytailscale-bin-1.0.0-x86_64.tar.gz::https://github.com/mogglemoss/lazytailscale/releases/download/v1.0.0/lazytailscale_linux_amd64.tar.gz
+	sha256sums_x86_64 = d35b3bc3ebf340b471aa55110766b3bbbe0d1ef800ffa78a863442823791a966
+	source_aarch64 = lazytailscale-bin-1.0.0-aarch64.tar.gz::https://github.com/mogglemoss/lazytailscale/releases/download/v1.0.0/lazytailscale_linux_arm64.tar.gz
+	sha256sums_aarch64 = a82211e65ed19b4c387c5dc6966416a187d7ead40aec09473a445ed0b22162d0
+
+pkgname = lazytailscale-bin
