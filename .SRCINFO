@@ -1,0 +1,21 @@
+pkgbase = rockhopper-bin
+	pkgdesc = Metapackage generator
+	pkgver = 0.0.23
+	pkgrel = 1
+	url = https://github.com/mcandre/rockhopper
+	arch = x86_64
+	arch = aarch64
+	license = BSD-2-Clause
+	provides = rockhopper
+	conflicts = rockhopper
+	conflicts = rockhopper-git
+	source = README-0.0.23.md::https://raw.githubusercontent.com/mcandre/rockhopper/v0.0.23/README.md
+	source = LICENSE-0.0.23::https://raw.githubusercontent.com/mcandre/rockhopper/v0.0.23/LICENSE.md
+	sha256sums = db72c78a6b79c3434f488fd081a70b239a5bd837c2eaff85b9eaf2cea146def7
+	sha256sums = ac7572d3e960dd6554294a9b610f9495d263f0b09d7cf9043f29e5d58f6f05ee
+	source_x86_64 = rockhopper-x86_64-0.0.23.tgz::https://github.com/mcandre/rockhopper/releases/download/v0.0.23/rockhopper-x86_64-unknown-linux-musl.tgz
+	sha256sums_x86_64 = df76d849f1d509209ead30d7e98c69bb719988c53fd882f70fc4cb5fc5024f4e
+	source_aarch64 = rockhopper-aarch64-0.0.23.tgz::https://github.com/mcandre/rockhopper/releases/download/v0.0.23/rockhopper-aarch64-unknown-linux-musl.tgz
+	sha256sums_aarch64 = cb1f60bb427bc5f1685933cabb68296b39b16c34028a05b568367cf298188cf6
+
+pkgname = rockhopper-bin

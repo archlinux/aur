@@ -1,0 +1,5 @@
+["rockhopper-bin"]
+source = "github"
+github = "mcandre/rockhopper"
+use_latest_release = true
+prefix = "v"
