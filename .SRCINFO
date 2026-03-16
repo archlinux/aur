@@ -1,6 +1,6 @@
 pkgbase = amiberry
 	pkgdesc = Optimized Amiga emulator
-	pkgver = 7.1.1
+	pkgver = 8.0.0
 	pkgrel = 1
 	url = https://github.com/BlitterStudio/amiberry
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = amiberry
 	makedepends = cmake
 	makedepends = ninja
 	depends = flac
-	depends = sdl2
-	depends = sdl2_image
-	depends = sdl2_ttf
+	depends = sdl3
+	depends = sdl3_image
+	depends = sdl3_ttf
 	depends = mpg123
 	depends = libmpeg2
 	depends = libserialport
@@ -21,11 +21,12 @@ pkgbase = amiberry
 	depends = enet
 	depends = libpcap
 	depends = tinyxml2
-	provides = amiberry=7.1.1
+	depends = nlohmann-json
+	provides = amiberry=8.0.0
 	conflicts = amiberry-git
 	conflicts = amiberry-lite
 	options = !lto
-	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#commit=c53d6db770a5580732a7f2bb48abcbfcd95fd0f4
-	sha256sums = 9507d3139cad29320de1f0f45e56053c2d306de07141915dbb921435a3a7057c
+	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#commit=c206f446fefa820e41aa35b2160fd9dcc43a914f
+	sha256sums = 40727a878f20af859d1419137f49ef05c69016f8ba9e92d1ba026f9d63765222
 
 pkgname = amiberry

@@ -2,18 +2,18 @@
 # Maintainer: Chandler Klüser <chandler.kluser@gmail.com>
 # Maintainer: Christer Solskogen <christer.solskogen@gmail.com>
 pkgname=amiberry
-pkgver=7.1.1
+pkgver=8.0.0
 pkgrel=1
 pkgdesc="Optimized Amiga emulator"
 arch=('x86_64')
 url="https://github.com/BlitterStudio/amiberry"
 license=('GPL3')
-depends=('flac' 'sdl2' 'sdl2_image' 'sdl2_ttf' 'mpg123' 'libmpeg2' 'libserialport' 'portmidi' 'hicolor-icon-theme' 'enet' 'libpcap' 'tinyxml2')
+depends=('flac' 'sdl3' 'sdl3_image' 'sdl3_ttf' 'mpg123' 'libmpeg2' 'libserialport' 'portmidi' 'hicolor-icon-theme' 'enet' 'libpcap' 'tinyxml2' 'nlohmann-json')
 makedepends=('glibc' 'git' 'cmake' 'ninja')
 provides=("amiberry=${pkgver}")
 conflicts=('amiberry-git' 'amiberry-lite')
-source=(${pkgname%-git}::'git+https://github.com/BlitterStudio/amiberry.git#commit=c53d6db770a5580732a7f2bb48abcbfcd95fd0f4')
-sha256sums=('9507d3139cad29320de1f0f45e56053c2d306de07141915dbb921435a3a7057c')
+source=(${pkgname%-git}::'git+https://github.com/BlitterStudio/amiberry.git#commit=c206f446fefa820e41aa35b2160fd9dcc43a914f')
+sha256sums=('40727a878f20af859d1419137f49ef05c69016f8ba9e92d1ba026f9d63765222')
 options=('!lto')
 
 build() {
