@@ -1,12 +1,12 @@
 # Maintainer: Keon Cachia <keonfarrugia@gmail.com>
-# Contributer: Mike Swanson <mikeonthecomputer@gmail.com>
+# Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=crispy-doom
 pkgdesc="Vanilla-compatible enhanced Doom engine"
 pkgver=7.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
-url="http://fabiangreffrath.github.io/crispy-doom"
+url="https://fabiangreffrath.github.io/crispy-homepage"
 license=('GPL2')
 depends=('fluidsynth' 'hicolor-icon-theme' 'libpng' 'libsamplerate' 'sdl2_mixer' 'sdl2_net')
 makedepends=('python')
