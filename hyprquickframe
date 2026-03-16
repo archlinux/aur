@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+APP_NAME="HyprQuickFrame"
+
+usage() {
+    cat <<EOF
+Usage: hyprquickframe [OPTION]
+
+Options:
+  -h, --help    Show this help message
+
+Config:
+  For system-wide customization, edit /etc/xdg/quickshell/HyprQuickFrame/theme.toml.
+  For user-level customization, copy that file to $XDG_CONFIG_DIR/hyprquickframe/theme.toml and edit it there.
+EOF
+}
+
+case "${1:-}" in
+    -e|--edit)
+        echo -e "\e[33mDepracated:\e[0m option --edit is no longer supported. Edit feature has been moved to the Quickshell UI layer\n"
+        quickshell -c "$APP_NAME" -n
+        ;;
+    -h|--help)
+        usage
+        ;;
+    "")
+        quickshell -c "$APP_NAME" -n
+        ;;
+    *)
+        echo "Unknown option: $1"
+        usage
+        exit 1
+        ;;
+esac

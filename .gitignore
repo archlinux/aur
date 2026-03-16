@@ -1,0 +1,13 @@
+# makepkg build artifacts
+pkg/
+src/
+*.pkg.tar.*
+*.log
+
+# VCS sources
+HyprQuickFrame*
+
+# Editor / misc
+*.swp
+*.bak
+*~
