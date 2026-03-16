@@ -1,0 +1,17 @@
+pkgbase = metropolis-git
+	pkgdesc = A cinematic, retro-cyberpunk system monitor for the terminal powered by Rust.
+	pkgver = 0.1.0.r0.gfe6c284
+	pkgrel = 1
+	url = https://github.com/5c0/metropolis
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = metropolis
+	conflicts = metropolis
+	source = git+https://github.com/5c0/metropolis.git
+	sha256sums = SKIP
+
+pkgname = metropolis-git
