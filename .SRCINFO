@@ -1,0 +1,15 @@
+pkgbase = concurrently-bin
+	pkgdesc = Concurrent subagent workflow TUI — like Claude Code, but parallel
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/brianmatzelle/concurrently
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = openssl
+	provides = concurrently
+	conflicts = concurrently
+	source = https://github.com/brianmatzelle/concurrently/releases/download/v0.1.0/concurrently-v0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 4797766e56a017e6932fad8a5286abd6c00c56ce5a3c5622b0d790b8e1b57a6e
+
+pkgname = concurrently-bin
