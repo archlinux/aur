@@ -1,7 +1,7 @@
 pkgbase = vhdl-ls
 	pkgdesc = Language server for VHDL Written in rust
 	pkgver = 0.86.0
-	pkgrel = 2
+	pkgrel = 3
 	url = github.com/VHDL-LS/rust_hdl
 	arch = x86_64
 	license = MPL-2.0

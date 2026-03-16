@@ -2,7 +2,7 @@
 
 pkgname=vhdl-ls
 pkgver=0.86.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Language server for VHDL Written in rust"
 arch=(x86_64)
 url="github.com/VHDL-LS/rust_hdl"
@@ -21,7 +21,7 @@ build() {
 
 package() {
     cd "rust_hdl-$pkgver"
-    install -Dm755 target/release/vhdl_ls "$pkgdir/usr/bin/vhdl-ls"
-    install -dm755 "$pkgdir/usr/lib/rust_hdl"
-    cp -r vhdl_libraries "$pkgdir/usr/lib/rust_hdl/vhdl_libraries"
+    install -Dm755 target/release/vhdl_ls "$pkgdir/usr/bin/vhdl_ls"
+    install -dm755 "$pkgdir/usr/lib"
+    cp -r vhdl_libraries "$pkgdir/usr/lib/vhdl_libraries"
 }
