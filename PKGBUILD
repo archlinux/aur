@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=nerimity-desktop-bin
 _pkgname=Nerimity
-pkgver=2.1.0
+pkgver=2.1.1
 _electronversion=40
 pkgrel=1
 pkgdesc="A modern and sleek chat app.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2334f217aca5155720f952ebd6d165c4dc58bdc95c87a3966be873034411e136'
+sha256sums=('8ccc169ad1c7fbb35d0be54970813b71f93440cd71fc642b1a35ab25daeaf407'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
