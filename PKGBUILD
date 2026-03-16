@@ -3,7 +3,7 @@
 _pkgauthor=mcandre
 _pkgname=tuco
 pkgname=${_pkgname}-bin
-pkgver=0.0.21
+pkgver=0.0.22
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="Go port multiplexer"
