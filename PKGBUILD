@@ -2,7 +2,7 @@
 # Maintained at: https://github.com/matt-h/aur-pkgbuilds or https://codeberg.org/matt/aur-pkgbuilds
 
 pkgname=opodsync
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="minimalist GPodder-compatible server"
 arch=('any')
@@ -24,7 +24,7 @@ source=(
   'sysusers.conf'
   'tmpfiles.conf'
 )
-b2sums=('3b6b73958406da836d6e32354eaee72b48d419d9cc2b48db0d8f0e889332b5e88bbf27d953e73e63f3393d5dbf8ea446a967ab25c81d8be72151b22b1ac2caff'
+b2sums=('ad34679103a22bcefadaffa769c53efa05275ef6bc37d7162fe4db69976524222bd798fe88c1d48d5c5d38b06a39fa2ac373eb58695e683200e314961280f842'
         '500aa3dd73f3de17326da6bb90863b29b9487f22ccdd92597f0184db2eca85de8ac0e602a0e0b100e19ce9240ebd0d89e9393182d5cd2a11125d619bf485c085'
         '03a45ca033ade9679d9c1a52df7b67b3dea86189488cf15b6241f48d349e2e9a6a1eb7c6462b75cf5c0a325e021c70ae8fc7a9ad04ed7dda673b3420a9a11569')
 
