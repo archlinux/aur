@@ -2,7 +2,7 @@
 # Automatically updated by GitHub Actions
 
 pkgname=zerx-lab-pencil-bin
-pkgver=1.1.32
+pkgver=1.1.33
 pkgrel=1
 pkgdesc="Pencil - Full canvas design tool with native performance"
 arch=('x86_64')
@@ -38,7 +38,7 @@ conflicts=('pencil')
 options=('!strip')
 
 source_x86_64=("Pencil-${pkgver}-linux-x64.tar.gz::https://www.pencil.dev/download/Pencil-linux-x64.tar.gz")
-sha256sums_x86_64=('227c4f19a0ff87bd14c160eca3fb815d14a7f523550f4efb0f07832f23785158')
+sha256sums_x86_64=('755c1c343e27bb9478c363665c48a84bc9bc284fcca042a06b6a53f1720ee736')
 
 package() {
     local _srcdir="Pencil-${pkgver}-linux-x64"
