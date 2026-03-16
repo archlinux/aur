@@ -8,8 +8,8 @@ url="https://maplibre.org/martin/"
 
 _git_organisation=maplibre
 
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 _tag="martin-v${pkgver}"
 
 arch=("x86_64" "i686")
@@ -36,7 +36,7 @@ source=(
     "martin-config.yaml"
 )
 b2sums=(
-    "330020e6ccd4e09113534cc6910157a93846e92850677d1aa19c89a0d319b540aa62675f186963152ef5f5b8fcf4514547049d0f1be98975c48c4f814d505efc"
+    "40c75cb2560f4bd53966f88c03b6f6618156eac200bdf769285eef0ee3142ff1a5fd1402fbf9afe32213c59fd35a859392e85b835f4b2244b078abfd46dd25cf"
     "cb5ba44d3653218aa76bc8b1d7c1d26b3a72dd35da7490d430a5dda727e9750015c28206d8d7e7c29701dd0c3d24198ff159f2566aff72f9f6edb1f493c0a968"
     "fc19c34e958648930a8d8cc56542ffd8eabdea36954d61e9e2f8c6b7f48bef66a61233c5097a5b4f40b79321bfb16b8ef445de0460af115413f7fd3dea825bc9"
     "c3b79402f4ae27fd46915e5aab9efb7722ccc2c1d37155119c32e59fce695b784b98bf83aa46e80f6a83756850b8794ee0752eaebd9a9001d48b0f4d5ae791ca"
@@ -58,26 +58,11 @@ build() {
     cargo build --frozen --release --all-features --package martin
 }
 
-# check() {
-#     cd "${srcdir}"/${pkgbase}-${_tag}
-#     export RUSTUP_TOOLCHAIN=stable
-#     cargo test \
-#         --frozen \
-#         --all-features \
-#         --package martin \
-#         --no-fail-fast \
-#         -- \
-#             --skip function_source_ \
-#             --skip pg_server_test \
-#             --skip pg_table_source_test \
-#             --skip styles_server_test
-#             # --skip table_ \
-#             # --skip tables_ \
-#             # --skip pmt_ \
-#             # --skip "tiles::postgres" \
-#             # --skip "render_tests::" \
-#             # --skip "tiles::cog::source::tests::can_get_full_resolution"
-# }
+check() {
+    cd "${srcdir}"/${pkgbase}-${_tag}
+    export RUSTUP_TOOLCHAIN=stable
+    cargo test --frozen
+}
 
 package_martin() {
     cd "${srcdir}"/${pkgbase}-${_tag}
