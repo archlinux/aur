@@ -1,6 +1,6 @@
 # Maintainer: Mika Hyttinen <mika dot hyttinen+arch ät gmail dot com>
 pkgname="cellframe-wallet"
-pkgver=4.5.15
+pkgver=4.6.91
 pkgrel=1
 pkgdesc="Official Cellframe Wallet"
 arch=(x86_64 aarch64)
@@ -10,7 +10,7 @@ depends=(qt6-declarative qt6-base qt6-svg qt6-5compat)
 makedepends=(git cmake libxslt)
 optdepends=('cellframe-node: Support for local node management')
 options=(!debug)
-source=("git+https://gitlab.demlabs.net/cellframe/${pkgname}.git#commit=4f8937d1428a73f77c61da14318d6a7770cf38fc"
+source=("git+https://gitlab.demlabs.net/cellframe/${pkgname}.git#commit=8e2958579fb087920ca59515ee3c89814ccec873"
         "$pkgname-tmpfiles.conf")
 provides=("cellframe-wallet")
 install=$pkgname.install
@@ -26,7 +26,7 @@ build() {
 	cd "$srcdir/$pkgname"
 	cmake -B build -DCMAKE_BUILD_TYPE=None \
 	-DCMAKE_C_FLAGS="-Wno-error=incompatible-pointer-types"
-	cmake --build build
+	cmake --build build --parallel
 }
 
 package() {
