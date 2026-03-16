@@ -16,7 +16,7 @@ package() {
   bsdtar -xf EchoMusic-$pkgver-Linux.deb
   bsdtar -xf data.tar.* -C "$pkgdir"
 
-  # 软链接
-  install -dm755 "$pkgdir/usr/bin"
-  ln -s /usr/lib/echomusic/echomusic "$pkgdir/usr/bin/echomusic"
+  # 修复错误的 symlink
+  rm "$pkgdir/usr/bin/echomusic"
+  ln -s /usr/share/echomusic/EchoMusic "$pkgdir/usr/bin/echomusic"
 }
