@@ -1,4 +1,4 @@
-pkgbase = bdf2psf-latest
+pkgbase = bdf2psf-debian-unstable
 	pkgdesc = Debian utility to convert BDF font files to PSF format
 	pkgver = 1.246
 	pkgrel = 2
@@ -13,4 +13,4 @@ pkgbase = bdf2psf-latest
 	b2sums = 4693d83c0a848a3aed5936a12217cb1cdd936c3b43a32eb3fb8f32dac0ae78726eabc44cff192286378a273e1ae00d52bb61d72fe8fbc42772ae9fb982ffe1b7
 	b2sums = 332248177ed0f2caf12fe4d2ccc44d973b52ba9c6c47735976e281e5a05cf43ff375e7a68ec7fe07f0d7c7a7c363e0bd68f7b3a723ed1287063443ce456fe071
 
-pkgname = bdf2psf-latest
+pkgname = bdf2psf-debian-unstable
