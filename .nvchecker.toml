@@ -1,8 +1,13 @@
 [matlab]
 source = "regex"
+url = "https://raw.githubusercontent.com/mathworks-ref-arch/container-images/refs/heads/main/matlab-deps/README.md"
+regex = "r20\\d{2}[ab]"
+from_pattern = "r20(\\d{2}[ab])"
+to_pattern = "R20\\1+autoupdated"
+
 # url = "https://www.mathworks.com/products/new_products/latest_features.html"
-url = "https://www.mathworks.com/help/matlab/release-notes.html"
-regex = "R20\\d{2}[ab]"
-user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'
-from_pattern = '^(.*)$'
-to_pattern = '\1+autoupdated'
+# url = "https://www.mathworks.com/help/matlab/release-notes.html"
+# regex = "R20\\d{2}[ab]"
+# user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'
+# from_pattern = '^(.*)$'
+# to_pattern = '\1+autoupdated'

@@ -2,11 +2,6 @@ post_install() {
   # https://bbs.archlinux.org/viewtopic.php?pid=2244314#p2244314
   echo "  -> To start using MATLAB, you might need to activate it first, if you haven't already:"
   echo "     \$ MathWorksProductAuthorizer"
-
-  # https://gitlab.archlinux.org/archlinux/packaging/packages/glibc/-/issues/19
-  # https://bbs.archlinux.org/viewtopic.php?pid=2225028#p2225028
-  echo "  -> After activation, launch MATLAB and wait for it to crash. Then run:"
-  echo "     # patchelf --clear-execstack ~/.MathWorks/ServiceHost/-mw_shared_installs/v*/bin/glnxa64/libmwfoundation_crash_handling.so"
 }
 
 post_upgrade() {

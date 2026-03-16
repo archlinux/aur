@@ -4,7 +4,7 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 # disable package compression (optional but highly recommended)
-# PKGEXT='.pkg.tar'
+PKGEXT='.pkg.tar'
 # enable optional products
 declare -Ag _products=(
   # [5g_toolbox]="5G Toolbox"
@@ -134,23 +134,35 @@ pkgname=(
   "${pkgbase}-gcc"
   "${pkgbase}-gcc-fortran"
 )
-pkgver=R2025b+25.2.0.2998904
+pkgver=R2025b+25.2.0.3150157
 _release="${pkgver%+*}"
 _version="${pkgver##*+}"
-pkgrel=4
+pkgrel=1
 epoch=1
 pkgdesc="A high-level language for numerical computation and visualization"
-arch=('x86_64')
+arch=(
+  'x86_64' # glnxa64
+)
 url="https://www.mathworks.com/products/matlab.html"
-license=('custom:MATLAB EULA')
+license=(
+  'custom:MATLAB EULA'
+)
 makedepends=(
   'gendesk'
   'gnutls3.8.9'
   'inotify-tools'
   'matlab-mpm'
-  # 'patchelf'
 )
-source=("matlab_jenv.hook")
+options=(
+  '!strip'
+  '!debug'
+  '!zipman'
+  'staticlibs'
+  'libtool'
+)
+source=(
+  "matlab_jenv.hook" # TODO: move to matlab-jre-meta
+)
 sha256sums=('396187ed4f1a516327fbce96140114983a17d6e64988f0c5d95d036353c0fe51')
 
 for _product in "${!_products[@]}"; do
@@ -168,7 +180,7 @@ prepare() {
   cd "${srcdir}"
   echo "  -> Cleaning old directories..."
   rm -rf download install install-java tmp
-  mkdir -p download install install-java tmp
+  mkdir -p download install install-java tmp # TODO: mktemp
 
   echo "  -> Starting log watcher..."
   : > "tmp/mathworks_${USER}.log"
@@ -227,8 +239,7 @@ prepare() {
     --source="${srcdir}/download" \
     --destination="${srcdir}/install" \
     --products=${_product_list:+${_product_list} }MATLAB \
-    --no-jre \
-    --no-gpu # is this needed?
+    --no-jre # TODO: move into a split package
 
   if [[ ! -d install || -z $(ls -A install) ]]; then
     echo "  ==> ERROR: MPM install succeeded but install directory is empty!"
@@ -244,10 +255,10 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}/install"
-  local rel ver
-  rel="$(sed -n 's:.*<release>\(.*\)</release>.*:\1:p' VersionInfo.xml)"
-  ver="$(sed -n 's:.*<version>\(.*\)</version>.*:\1:p' VersionInfo.xml)"
-  echo "$rel+$ver"
+  local _release_new _version_new
+  _release_new="$(sed -n 's:.*<release>\(.*\)</release>.*:\1:p' VersionInfo.xml)"
+  _version_new="$(sed -n 's:.*<version>\(.*\)</version>.*:\1:p' VersionInfo.xml)"
+  echo "$_release_new+$_version_new"
 }
 
 build() {
@@ -284,16 +295,12 @@ package_matlab() {
   depends=(
     "${pkgname}-meta"
     'sh'
+    'gnutls3.8.9'
   )
   optdepends=(
-    'patchelf: clear the executable stack after the install'
-    'matlab-mpm: package manager'
-    'matlab-batch: start MATLAB non-interactively using a batch licensing token'
-    'python-matlabengine: Python bindings'
-
-    "java-${pkgbase}: required for certain products and features"
-    'matlab-gcc: GCC runtime dependency'
-    'matlab-gcc-fortran: GFortran runtime dependency'
+    "java-${pkgname}: required for certain products and features"
+    "${pkgname}-gcc: GCC runtime dependency"
+    "${pkgname}-gcc-fortran: GCC Fortran runtime dependency"
   )
   provides+=(
     "${pkgname}-release=${_release}"
@@ -302,7 +309,6 @@ package_matlab() {
   )
   conflicts+=(
     "${pkgname}-${_release,,}"
-    "${pkgname}-runtime"
   )
   install="${pkgname}.install"
 
@@ -343,8 +349,8 @@ package_matlab() {
 package_java-matlab() {
   pkgdesc+=" (Java components)"
   depends=(
-    "${pkgbase}=${epoch}:${pkgver}-${pkgrel}"
-    "${pkgname}-meta"
+    "${pkgbase}>=${epoch}:${pkgver}-${pkgrel}"
+    "matlab-jre-meta" # >=${_release}
   )
   provides=(
     "${pkgname}-release=${_release}"
@@ -353,7 +359,6 @@ package_java-matlab() {
   )
   conflicts=(
     "${pkgname}-${_release,,}"
-    "${pkgname}-runtime"
   )
   install="${pkgname}.install"
 
@@ -368,86 +373,40 @@ package_java-matlab() {
   install -vDm644 "matlab_jenv.hook" "${pkgdir}/usr/share/libalpm/hooks/matlab_jenv.hook"
 }
 
-# https://www.mathworks.com/support/requirements/supported-compilers-linux.html
-_gccs=(8 9 11 12 13)
-_gcc="10"
-for ver in "${_gccs[@]}"; do
-  pkgname+=(
-    "${pkgbase}-gcc${ver}"
-  )
-  
-  eval "
-package_${pkgbase}-gcc${ver}() {
-  pkgdesc+=' (GCC${ver} runtime dependency)'
-  arch=('any')
-  depends=(
-    '${pkgbase}=${epoch}:${pkgver}-${pkgrel}'
-    'gcc${ver}'
-  )
-  provides=(
-    'matlab-gcc=${ver}'
-    'matlab-gcc-release=${_release}'
-    'matlab-gcc-version=${_version}'
-    'matlab-${_release,,}-gcc=${_version}'
-  )
-  conflicts=(
-    'matlab-gcc'
-    'matlab-${_release,,}-gcc'
-  )
-
-  install -vdm755 \"\${pkgdir}/usr/bin\"
-  cd \"\${pkgdir}/usr/bin\"
-  ln -vsf 'gcc-${ver}' 'gcc-matlab'
-  ln -vsf 'gcc-${ver}' 'gcc-matlab-${_release}'
-  ln -vsf 'g++-${ver}' 'g++-matlab'
-  ln -vsf 'g++-${ver}' 'g++-matlab-${_release}'
-}"
-done
-
 package_matlab-gcc() {
-  pkgdesc+=" (GCC runtime dependency)"
-  arch=('any')
+  pkgdesc+=" (GCC)"
+  arch=(
+    'any'
+  )
   depends=(
-    "${pkgbase}=${epoch}:${pkgver}-${pkgrel}"
-    "gcc${_gcc}"
+    "${pkgbase}>=${epoch}:${pkgver}-${pkgrel}"
+    "${pkgname}-meta"
   )
   provides=(
-    "${pkgname}=${_gcc}"
     "${pkgname}-release=${_release}"
     "${pkgname}-version=${_version}"
-    "matlab-${_release,,}-gcc=${_version}"
+    "${pkgname/"${pkgbase}"/"${pkgbase}-${_release,,}"}=${_version}"
   )
   conflicts=(
-    "matlab-${_release,,}-gcc"
+    "${pkgname/"${pkgbase}"/"${pkgbase}-${_release,,}"}"
   )
-
-  install -vdm755 "${pkgdir}/usr/bin"
-  cd "${pkgdir}/usr/bin"
-  ln -vsf "gcc-${_gcc}" "gcc-matlab"
-  ln -vsf "gcc-${_gcc}" "gcc-matlab-${_release}"
-  ln -vsf "g++-${_gcc}" "g++-matlab"
-  ln -vsf "g++-${_gcc}" "g++-matlab-${_release}"
 }
 
 package_matlab-gcc-fortran() {
-  pkgdesc+=" (GFortran runtime dependency)"
-  arch=('any')
+  pkgdesc+=" (GCC Fortran)"
+  arch=(
+    'any'
+  )
   depends=(
-    "${pkgbase}=${epoch}:${pkgver}-${pkgrel}"
-    "gcc${_gcc}-fortran"
+    "${pkgbase}>=${epoch}:${pkgver}-${pkgrel}"
+    "${pkgname}-meta"
   )
   provides=(
-    "${pkgname}=${_gcc}"
     "${pkgname}-release=${_release}"
     "${pkgname}-version=${_version}"
-    "matlab-${_release,,}-gcc-fortran=${_version}"
+    "${pkgname/"${pkgbase}"/"${pkgbase}-${_release,,}"}=${_version}"
   )
   conflicts=(
-    "matlab-${_release,,}-gcc-fortran"
+    "${pkgname/"${pkgbase}"/"${pkgbase}-${_release,,}"}"
   )
-
-  install -vdm755 "${pkgdir}/usr/bin"
-  cd "${pkgdir}/usr/bin"
-  ln -vsf "gfortran-${_gcc}" "gfortran-matlab"
-  ln -vsf "gfortran-${_gcc}" "gfortran-matlab-${_release}"
 }
