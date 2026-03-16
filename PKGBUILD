@@ -1,7 +1,7 @@
 # Maintainer: TheFeelTrain <the@feeltra.in>
 
 pkgname=vsview
-pkgver=0.1.0b4
+pkgver=0.1.0b5
 pkgrel=1
 pkgdesc='The next-generation VapourSynth previewer'
 arch=('x86_64')
@@ -36,6 +36,7 @@ optdepends=(
     'vsview-frameprops-extended: Add more categories and formats to frameprops'
     "vsview-split-planes: Display video clips' constituent planes"
     'vsview-audio-convert: Convert and resample audio'
+    'vsview-nativeres: Analyze and determine native resolution'
     'vsview-plugins-all: Meta package for all plugins'
     'vsview-plugins-essential: Meta package for essential plugins'
 )
