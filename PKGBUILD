@@ -1,6 +1,6 @@
 # Maintainers: SteamClientHomebrew <https://github.com/SteamClientHomebrew>
 
-pkgver=3.0.0_beta.3
+pkgver=3.0.0_beta.4
 pkgname="millennium"
 _pkgdir="Millennium"
 pkgrel=5
@@ -9,8 +9,8 @@ arch=('x86_64')
 url="https://github.com/SteamClientHomebrew/Millennium"
 license=('MIT')
 depends=('git' 'steam')
-makedepends=('bun-bin' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja' 'lib32-gcc-libs')
-source=("git+$url.git#commit=ff5a6ca56f27143fcceb3230ed5568176eebfefb") # TODO: update to commit on main branch when we merge.
+makedepends=('bun' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja' 'lib32-gcc-libs')
+source=("git+$url.git#commit=6a8d04aa79cafc682207cd14e516fe5a7deac152") # TODO: update to commit on main branch when we merge.
 sha256sums=('SKIP')
 options=(!debug)
 install=millennium.install
