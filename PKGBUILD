@@ -2,7 +2,7 @@
 
 pkgname=eilmeldung-git
 pkgver=r283.01c760a
-pkgrel=3
+pkgrel=4
 pkgdesc="a TUI RSS reader based on the news-flash library"
 arch=('x86_64')
 url="https://github.com/christo-auer/eilmeldung"
@@ -27,11 +27,13 @@ prepare() {
 
 build() {
   cd "$srcdir/eilmeldung"
+  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
   cargo build --frozen --release 
 }
 
 check() {
   cd "$srcdir/eilmeldung"
+  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
   cargo test --frozen
 }
 
