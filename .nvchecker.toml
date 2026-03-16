@@ -1,0 +1,5 @@
+[treehouse-bin]
+source = "github"
+github = "kunchenguid/treehouse"
+use_latest_release = true
+prefix = "v"

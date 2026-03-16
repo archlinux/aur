@@ -1,0 +1,21 @@
+pkgbase = treehouse-bin
+	pkgdesc = Manage worktrees without managing worktrees
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/kunchenguid/treehouse
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = treehouse
+	conflicts = treehouse
+	source = README-1.1.5.md::https://raw.githubusercontent.com/kunchenguid/treehouse/v1.1.5/README.md
+	source = LICENSE-1.1.5::https://raw.githubusercontent.com/kunchenguid/treehouse/v1.1.5/LICENSE
+	sha256sums = 44ae5a8e025f2f876e9962fb40dface1977408f7ff3bc0f246933a32da8be94e
+	sha256sums = 1b962d20f826f6a758c737f8aa4e8e76dc719b8aa78fcfacdfb46681bb36c2f4
+	source_x86_64 = treehouse-x86_64-1.1.5.tgz::https://github.com/kunchenguid/treehouse/releases/download/v1.1.5/treehouse-v1.1.5-linux-amd64.tar.gz
+	sha256sums_x86_64 = 0f22e3570e68355e543991bc9c133e0e0b17b5ed0c27045afe5d6b72e29fa98f
+	source_aarch64 = treehouse-aarch64-1.1.5.tgz::https://github.com/kunchenguid/treehouse/releases/download/v1.1.5/treehouse-v1.1.5-linux-arm64.tar.gz
+	sha256sums_aarch64 = 24d8ad3bb01f94c7a47a573a7ca3c25c2b6b64247d9eca98eba1da5ab393595e
+
+pkgname = treehouse-bin
