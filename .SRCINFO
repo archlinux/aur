@@ -1,7 +1,7 @@
 pkgbase = deezer
 	pkgdesc = A proprietary music streaming service
 	pkgver = 7.1.110
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.deezer.com/
 	arch = any
 	license = custom
@@ -33,7 +33,7 @@ pkgbase = deezer
 	source = 13-disable-hardware-acceleration-9cbe22284685c09d0c41f7f4d68fdb64fb4382aa.patch::https://raw.githubusercontent.com/aunetx/deezer-linux/9cbe22284685c09d0c41f7f4d68fdb64fb4382aa/patches/13-disable-hardware-acceleration.patch
 	source = 99-systray-icon.patch
 	sha256sums = a383432ef8e7a1ced5a952c01a5b58eb0637deaf4bcb13ab58877d30af244036
-	sha256sums = 41a32f7e595a52c260aa872e8273430d83e4c5fcc8e529e21afa4dab3d6b1d9c
+	sha256sums = c33b398d8ae279a620cf2914c806f7ee00c47519e4f404874cfd90a68fc8d80f
 	sha256sums = 3da0c64c3d9216286601e0a28714e37a4bfaf9f56f35856da75986dfa2eba8fb
 	sha256sums = 951c80c9dc4848b31a5fcc9655b005f3a218b1ff735396168c13922ac658c83b
 	sha256sums = fe9bab50ef433516105ed2f2c349736c0be87c2f75f8d18bf1f011b2115019c1

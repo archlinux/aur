@@ -2,7 +2,7 @@
 # Contributor: Ilya Gulya <ilyagulya@gmail.com>
 pkgname="deezer"
 pkgver=7.1.110
-pkgrel=1
+pkgrel=2
 _mpris_ver=2.1.5
 # Commit hash for aunetx/deezer-linux for patches
 _patch_commit=9cbe22284685c09d0c41f7f4d68fdb64fb4382aa
@@ -37,7 +37,7 @@ source=("$pkgname-$pkgver-setup.exe::https://www.deezer.com/desktop/download/art
     "99-systray-icon.patch"
 )
 sha256sums=('a383432ef8e7a1ced5a952c01a5b58eb0637deaf4bcb13ab58877d30af244036'
-            '41a32f7e595a52c260aa872e8273430d83e4c5fcc8e529e21afa4dab3d6b1d9c'
+            'c33b398d8ae279a620cf2914c806f7ee00c47519e4f404874cfd90a68fc8d80f'
             '3da0c64c3d9216286601e0a28714e37a4bfaf9f56f35856da75986dfa2eba8fb'
             '951c80c9dc4848b31a5fcc9655b005f3a218b1ff735396168c13922ac658c83b'
             'fe9bab50ef433516105ed2f2c349736c0be87c2f75f8d18bf1f011b2115019c1'
@@ -108,6 +108,7 @@ package() {
         magick resources/win/deezer-8.png -resize "${size}x${size}" -strip \
             -define png:compression-filter=5 -define png:compression-level=9 \
             "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/deezer-desktop.png"
+        chmod 644 "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/deezer-desktop.png"
     done
 
     install -Dm644 resources/app.asar "$pkgdir/usr/share/deezer/"

@@ -10,5 +10,5 @@ Categories=AudioVideo;Player;Music;
 Keywords=Music;Player;Streaming;Online;
 MimeType=x-scheme-handler/deezer;
 StartupNotify=true
-StartupWMClass=Deezer
+StartupWMClass=deezer-desktop
 X-GNOME-UsesNotifications=true
