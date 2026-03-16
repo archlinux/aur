@@ -1,0 +1,37 @@
+pre_install() {
+	groupadd -r conquest || true
+	useradd -r -g conquest -s /sbin/nologin -d /usr/share/conquest -c "conquest C2 service account" conquest || true
+}
+
+post_install() {
+	chown -R conquest:conquest /usr/share/conquest/
+	chmod 755 /usr/share/conquest/
+	chown root:conquest /etc/conquest/default.toml
+	chmod 640 /etc/conquest/default.toml
+	chown root:conquest /etc/conquest/
+	chmod 750 /etc/conquest/
+	echo "==> Edit /etc/conquest/default.toml before starting"
+	echo "==> Run: systemctl enable --now conquest.service"
+	mandb -q
+}
+
+post_upgrade() {
+	chown -R conquest:conquest /usr/share/conquest/
+	chmod 755 /usr/share/conquest/
+	chmod 640 /etc/conquest/default.toml
+	chown root:conquest /etc/conquest/default.toml
+	chown root:conquest /etc/conquest/
+	chmod 750 /etc/conquest/
+	mandb -q
+}
+
+pre_remove() {
+	systemctl stop conquest.service
+	systemctl disable conquest.service
+}
+
+post_remove() {
+	userdel conquest
+	groupdel conquest
+	mandb -q
+}

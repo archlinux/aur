@@ -1,0 +1,61 @@
+.TH CONQUEST 1 "2026-03-16" "0.2.0" "Conquest C2"
+.SH NAME
+conquest \- Conquest C2
+
+.SH SYNOPSIS
+.B /usr/local/bin/conquest
+[\fICLIENT_OPTIONS\fR]
+
+.B /usr/share/conquest/bin/server
+[\fISERVER_OPTIONS\fR]
+
+.SH DESCRIPTION
+Conquest is a feature-rich, extensible and malleable command & control/post-exploitation framework developed for penetration testing and adversary simulation. Conquest's team server, operator client and agent have all been developed using the Nim programming language and are designed with modularity and flexibility in mind. It features an advanced malleable profile system for customizing network traffic, a multi-user client GUI developed using Dear ImGui and the Monarch agent, an extensible C2 implant aimed at Windows targets.
+
+.SH MANAGE SERVER
+.TP
+.B systemctl start conquest.service
+Start the conquest server.
+
+.TP
+.B systemctl stop conquest.service
+Stop the conquest server.
+
+.TP
+.B systemctl enable conquest.service
+Enable the conquest server on boot.
+
+.TP
+.B systemctl disable conquest.service
+Disable the conquest server on boot.
+
+.TP
+.B journalctl -u conquest.server
+View the logs of the conquest server
+
+.SH CLIENT_OPTIONS
+.TP
+.B \-h
+Show help message.
+.TP
+.B \-i= \-\-ip= \fIIP\fR
+Set the ip.
+.TP
+.B \-p= \-\-port= \fIPORT\fR
+Set the port.
+
+.SH SERVER_OPTIONS
+.TP
+.B \-h
+Show help message.
+.TP
+.B \-p= \-\-profilePath= \fIPATH\fR
+Set profilePath.
+
+.SH FILES
+.I /etc/conquest/default.toml
+.RS
+Main configuration file.
+.RE
+.SH AUTHOR
+p4p1 - jakobfriedl
