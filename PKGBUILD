@@ -48,10 +48,10 @@ optdepends=(
 )       # See https://wiki.archlinux.org/index.php/Hardware_video_acceleration
 provides=('chiaki')
 conflicts=('chiaki')
-# Commits are signed but the pulic GPG key doesn't appear to be available anywhere, disable sig checking for now
-#source=(git+"https://github.com/streetpea/${pkgname}.git?signed#commit=${_commit}")
-#validpgpkeys=('B0050C45E5804C8D')
-source=(git+"https://github.com/streetpea/${pkgname}.git#commit=${_commit}"
+# At time of writing, the dev's public key isn't available on keyservers, import from github using, e.g.
+# curl -o - https://github.com/streetpea.gpg | gpg --import
+validpgpkeys=('FCCF693D5A9081571B90DDA2B0050C45E5804C8D')
+source=(git+"https://github.com/streetpea/${pkgname}.git?signed#commit=${_commit}"
         Qt6GuiPrivate-fix.patch)
 sha256sums=('2e39dcb7cd97721e7425bb04d2bb4a1e0b7fd67ce2b87787b1dd020f00f1b354'
             '121199cce7692ac30d4353b36041004007665c92f9895175e6d0f09b86d60e0f')
@@ -73,7 +73,7 @@ build() {
   cd ${pkgname}/build
   export CFLAGS+=" -std=gnu17"
   cmake .. -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="None" \
-    -DCHIAKI_USE_SYSTEM_CURL="ON" -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DCHIAKI_USE_SYSTEM_CURL="ON"
   make
 }
 

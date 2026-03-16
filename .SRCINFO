@@ -39,8 +39,9 @@ pkgbase = chiaki-ng
 	optdepends = libva-mesa-driver: alternative vaapi backend for AMD GPUs
 	provides = chiaki
 	conflicts = chiaki
-	source = git+https://github.com/streetpea/chiaki-ng.git#commit=3f8fd712cbc0becd3a5ea588340d72bf451c12b5
+	source = git+https://github.com/streetpea/chiaki-ng.git?signed#commit=3f8fd712cbc0becd3a5ea588340d72bf451c12b5
 	source = Qt6GuiPrivate-fix.patch
+	validpgpkeys = FCCF693D5A9081571B90DDA2B0050C45E5804C8D
 	sha256sums = 2e39dcb7cd97721e7425bb04d2bb4a1e0b7fd67ce2b87787b1dd020f00f1b354
 	sha256sums = 121199cce7692ac30d4353b36041004007665c92f9895175e6d0f09b86d60e0f
 
