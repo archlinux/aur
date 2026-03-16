@@ -2,7 +2,7 @@
 
 _pkgname="hyprlax"
 pkgname="${_pkgname}-bin"
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Smooth parallax wallpaper animation for Hyprland and other Wayland compositors"
 arch=(
@@ -38,7 +38,7 @@ source_x86_64=(
 sha256sums=('6e6ed94b2d854d1f427f5a9500ea181d6c6fe7096ee2ce9eabc73587598bef86'
             'e06c07a47e2d429d3f8d53abd583e674b317636b4a41e3dbe3bda05d176daa9f'
             'b16d69c52429a8d8e94aae4b365d7b9618977a18eae187a4142c97f0170731e6')
-sha256sums_x86_64=('03f5aae47bdd0ced2fc6aa54143149027f777594f7171af9fcce65c23749c496')
+sha256sums_x86_64=('31925a1d6f24844084b2de3aa8dce36b79c2e638a0b3904803e36a83e326568f')
 
 package() {
   cd "${srcdir}"
