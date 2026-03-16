@@ -1,7 +1,7 @@
 # Maintainer: Lennard Kittner <lennard@kittner.dev>
 _sourceName="HyperHeadset"
 
-pkgname="hyperheadset-git"
+pkgname="hyper-headset-git"
 pkgver=1.5.1.r0.gf51f219
 pkgrel=2
 pkgdesc="A CLI and tray application for monitoring and managing HyperX headsets."
@@ -24,8 +24,9 @@ source=(
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 validpgpkeys=()
-provides=("hyperheadset")
-conflicts=("hyperheadset" "hyperheadset-bin")
+provides=("hyper-headset")
+conflicts=("hyper-headset" "hyper-headset-bin" "hyperheadset-git")
+replaces=('hyperheadset-git')
 
 pkgver() {
   cd "${_sourceName}"
