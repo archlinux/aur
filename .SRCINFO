@@ -1,7 +1,7 @@
 pkgbase = lzbench
 	pkgdesc = An in-memory benchmark of open-source compressors
 	pkgver = 2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/inikep/lzbench
 	arch = aarch64
 	arch = armv7h
@@ -31,8 +31,10 @@ pkgbase = lzbench
 	makedepends = cargo
 	makedepends = chrpath
 	makedepends = gcc
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
+	depends = libgomp
+	depends = libstdc++
 	source = lzbench-2.2.tar.gz::https://github.com/inikep/lzbench/archive/refs/tags/v2.2.tar.gz
 	b2sums = 69389958cb2016a1dbbd462fff603057339d772902b055b8299f6759f1f9a8cbadf31489254bb93f967ca6863e2db32e8da8bfe429cf5dfc4a4b61280164f4e5
 

@@ -3,9 +3,9 @@
 
 pkgname=lzbench
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='An in-memory benchmark of open-source compressors'
-arch=('aarch64' 'armv7h' 'riscv64' 'x86_64')
+arch=(aarch64 armv7h riscv64 x86_64)
 url='https://github.com/inikep/lzbench'
 license=(
     '0BSD'                                          # xz
@@ -30,8 +30,8 @@ license=(
     'Unlicense'                                     # csc, yalz77
     'Zlib'                                          # brieflz, liblzg, zlib, zlib-ng
 )
-depends=('gcc-libs' 'glibc')
-makedepends=('cargo' 'chrpath' 'gcc')
+depends=(glibc libgcc libgomp libstdc++)
+makedepends=(cargo chrpath gcc)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('69389958cb2016a1dbbd462fff603057339d772902b055b8299f6759f1f9a8cbadf31489254bb93f967ca6863e2db32e8da8bfe429cf5dfc4a4b61280164f4e5')
 
