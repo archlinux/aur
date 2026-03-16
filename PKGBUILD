@@ -4,7 +4,7 @@
 
 pkgname=mpd-sacd
 pkgver=0.25
-pkgrel=5
+pkgrel=6
 pkgdesc='MPD with patches for SACD and DVD-A ISO playback.'
 url='https://github.com/manisiutkin/MPD'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -16,13 +16,13 @@ depends=('adplug'			'alsa-lib'			'audiofile'			'avahi' 			'bzip2'					'chromapri
 		 'libid3tag'		'libmad'			'libmms' 			'libmikmod'			'libmodplug' 			'libmpcdec'
 		 'libmpdclient'		'libnfs'			'libogg'			'libopenmpt' 		'libsidplayfp'			'nlohmann-json'
 		 'libpulse' 		'libshout'			'libsndfile'		'libsamplerate'		'libsoxr' 				'libupnp'
-		 'liburing' 		'libvorbis'			'libpipewire'		'sqlite'			'mpg123' 				'openal'
-		 'opus' 			'pcre2'				'systemd-libs'		'twolame'			'vgmstream-git' 		'wavpack'
+		 'liburing' 		'libvorbis'			'libpipewire'		'sqlite'			'mpg123'				'openal'
+		 'opus' 			'pcre2'				'systemd-libs'		'twolame'			'vgmstream-git'			'wavpack'
 		 'wildmidi'			'yajl'				'zlib'				'zziplib')
 makedepends=('boost' 'meson' 'cmake' 'git' 'llvm' 'python-sphinx_rtd_theme' 'clang' 'ninja')
 conflicts=('mpd')
 provides=("mpd=${pkgver}")
-source=('mpd::git+https://github.com/manisiutkin/MPD.git'
+source=('mpd-sacd::git+https://github.com/manisiutkin/MPD.git'
 	'sysusers.d'
 	'tmpfiles.d'
 	'conf')
@@ -45,9 +45,9 @@ build() {
 		   #'-Dadplug=disabled'
 		   # interferes with detection of alsa devices
 		   '-Dsndio=disabled'
-		   # exists in AUR but needs testing
-		   #'-Dshine=disabled'
-		   # exists in AUR, won't build
+		   # exists in AUR, works, but we don't need it
+		   '-Dshine=disabled'
+		   # exists in AUR, won't build, don't need it
 		   '-Dtremor=disabled')
 		   # not in official repo (and not libsidplayfp)
 		   #'-Dsidplay=disabled'
