@@ -1,0 +1,18 @@
+pkgbase = jwtd
+	pkgdesc = Minimal TUI for decoding JWT
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/javiorfo/jwtd
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	depends = ncurses
+	depends = openssl
+	depends = undr
+	provides = jwtd
+	conflicts = jwtd
+	source = jwtd::git+https://github.com/javiorfo/jwtd.git#tag=0.1.0
+	sha512sums = 5ebc26f9ec24579906bc2821e8c372fa2f7d99a5e85b819f52a48a1b27b99ed5b01d78ce811910a3130b9d929e1889ac31198c4544d453d41865eaaf27da4860
+
+pkgname = jwtd
