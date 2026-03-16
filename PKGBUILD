@@ -2,7 +2,7 @@
 pkgname=pandora-launcher
 _pkgrustname=pandora_launcher
 _pkgtarname=PandoraLauncher
-pkgver=3.2.1
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="A modern Minecraft launcher that balances ease-of-use with powerful instance management features."
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/Moulberry/PandoraLauncher/archive/refs/tags/v$pkgver.tar.gz"
   "$pkgname.desktop"
 )
-sha256sums=('e03a4c820510c3944d356e77b4d776486c8daef5730cff62a1b9f0c6073ce98e'
+sha256sums=('823a55c88743af5ecb31adec2b859c3f0e27f96d0b04b4a62ca543e0d84718ff'
             'f9ab75791b696e27569c5bc44b8d325f356a6e36efe4eb9c2e227cb2ba95b6b3')
 
 export RUSTUP_TOOLCHAIN=stable
