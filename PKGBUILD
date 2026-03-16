@@ -17,18 +17,21 @@ prepare(){
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-	nimble install -d
-	CONQUEST_ROOT=/usr/share/conquest/ nimble client
-	CONQUEST_ROOT=/usr/share/conquest/ nimble server
+	mkdir -p vendor
+	nimble install -d --nimbleDir:./vendor
+	CONQUEST_ROOT=/usr/share/conquest/ nimble --nimbleDir:./vendor client
+	CONQUEST_ROOT=/usr/share/conquest/ nimble --nimbleDir:./vendor server
 }
 
 package() {
 	mkdir -p $pkgdir/usr/share/
 	mkdir -p $pkgdir/usr/local/bin
+	mkdir -p $pkgdir/root/.nimble
 	mkdir -p $pkgdir/etc/conquest/
 	mkdir -p $pkgdir/usr/lib/systemd/system/
 	install -D -m644 "$srcdir/conquest/data/profiles/profile.toml" "$pkgdir/etc/conquest/default.toml"
 	install -D -m644 "$srcdir/conquest.service" "$pkgdir/usr/lib/systemd/system/conquest.service"
 	ln -s /usr/share/conquest/bin/client "$pkgdir/usr/local/bin/conquest"
 	cp -ra $srcdir/* $pkgdir/usr/share/
+	cp -ra $srcdir/conquest/vendor/* $pkgdir/root/.nimble/
 }
