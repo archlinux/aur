@@ -1,7 +1,7 @@
 pkgbase = fuck
 	pkgdesc = Magnificent app which corrects your previous console command - with improved Arch Linux package prediction
 	pkgver = 3.32
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/RonanHevenor/fuck
 	arch = any
 	license = MIT
