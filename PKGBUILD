@@ -4,7 +4,7 @@
 
 pkgname=mpd-sacd
 pkgver=0.25
-pkgrel=6
+pkgrel=7
 pkgdesc='MPD with patches for SACD and DVD-A ISO playback.'
 url='https://github.com/manisiutkin/MPD'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -33,7 +33,7 @@ sha256sums=('SKIP'
 backup=('etc/mpd.conf')
 
 prepare() {
-	cd "${srcdir}/mpd"
+	cd "${srcdir}/mpd-sacd"
 	# Prepare build directory
 	rm -rf build
 	install -dm755 build
