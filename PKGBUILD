@@ -25,16 +25,19 @@ makedepends+=('glib2-devel' 'pkg-config')
 optdepends=('ctags: Show functions in the open document')
 _srcdir="${pkgname}-${pkgver}"
 source=(
-  "https://downloads.sourceforge.net/mooedit/${pkgname}-${pkgver}.tar.bz2"
+  "https://downloads.sourceforge.net/mooedit/${_srcdir}.tar.bz2"
+  "medit-1.2.92.tar.gz::https://github.com/abbat/medit/archive/refs/tags/v1.2.92.tar.gz"
   'medit-python3.diff' # https://sourceforge.net/p/mooedit/feature-requests/19/
   '0000-medit-python3.diff' # The above patch was incompatible with python2. I rewrote the lines to be compatible with both.
   'medit.appdata.xml'
 )
 md5sums=('8388a8e275d0e1fa6cd19f7bb081279a'
+         '7b082fb1bd051eafa1e40d2fd71ca93e'
          '26ac2f35877056e1430c66983ae81245'
          '17694882c86012294bc96c00f8cbded8'
          'd8443e6eab7addaa79f286cf4d6e8e82')
 sha256sums=('f0f7b3d9e3337907a5b27aa2ff3a084250d7517b38488c50872a621b4e1f3a4d'
+            '979ab22947387d68ab33b184983020667681845b891208835fa58afc18af0e0e'
             'cafdb2581e2f301756a8a38269e143b884b1a0191f30a92f39cf1ed3e3f7fbf4'
             '973efeec79866459584a14f8989ccfab048aed7d9a3ffbd4fccfa53340ccfffc'
             'dd83c9fcb5023563b7826ad6b796946a86947f886bdff773a8feb1a35b462618')
@@ -57,6 +60,27 @@ prepare() {
   #cd '..'; cp -pr "${_srcdir}" 'a'; ln -s "${_srcdir}" 'b'; false
   #diff -pNaru3 'a' 'b' > "0000-$RANDOM.patch"
   patch -Nup1 -i "${srcdir}/0000-medit-python3.diff"
+
+  local _p="${PWD}/moo/mooedit/langs"
+  if pushd "${srcdir}/medit-1.2.92/moo/mooedit/langs" > /dev/null; then
+    local _l _la=''
+    for _l in *.lang; do
+      if [ ! -s "${_p}/${_l}" ]; then
+        cp -p "${_l}" "${_p}/"
+        _la+=" mooedit/langs/${_l}"
+      fi
+    done
+    sed -e "s:^lang_files =:& ${_la}:g" -i "${_p}/../../Makefile.in"
+    _la=''
+    for _l in *.xml; do
+      if [ ! -s "${_p}/${_l}" ]; then
+        cp -p "${_l}" "${_p}/"
+        _la+=" mooedit/langs/${_l}"
+      fi
+    done
+    sed -e "s:^scheme_files =:& ${_la}:g" -i "${_p}/../../Makefile.in"
+    popd > /dev/null
+  fi
 }
 
 build() {
