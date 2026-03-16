@@ -1,7 +1,7 @@
 pkgbase = muon_decoder
-	pkgdesc = Partical decoder
+	pkgdesc = Particle decoder
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Dopple24/muon_decoder
 	arch = x86_64
 	license = MIT
