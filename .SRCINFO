@@ -1,12 +1,12 @@
-pkgbase = libreoffice-extension-writingtool
-	pkgdesc = WritingTool is a LibreOffice extension for LibreOffice that adds a writing assistant to text editing.
-	pkgver = 26.1
+pkgbase = libreoffice-extension-writingtool-noai-git
+	pkgdesc = WritingTool-NoAI is a LibreOffice extension for LibreOffice that adds a writing assistant to text editing with no “AI”.
+	pkgver = 26.1.r53.g4f3527c
 	pkgrel = 1
-	url = https://github.com/writingtool-org/writingtool/
-	install = libreoffice-extension-writingtool.install
+	url = https://codeberg.org/Freso/libreoffice-writingtool-noai
 	arch = any
 	groups = libreoffice-extensions
 	license = LGPL-2.1-only
+	makedepends = git
 	makedepends = maven
 	makedepends = java-environment=17
 	depends = java-runtime>=17
@@ -14,7 +14,9 @@ pkgbase = libreoffice-extension-writingtool
 	depends = python
 	depends = perl
 	depends = bash
-	source = https://github.com/writingtool-org/writingtool//archive/refs/tags/v26.1.tar.gz
-	sha256sums = e1068f603fb43616798db29168863b55797f37089e195132600131970df7281e
+	provides = libreoffice-extension-writingtool
+	conflicts = libreoffice-extension-writingtool
+	source = git+https://codeberg.org/Freso/libreoffice-writingtool-noai.git
+	b2sums = SKIP
 
-pkgname = libreoffice-extension-writingtool
+pkgname = libreoffice-extension-writingtool-noai-git

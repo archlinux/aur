@@ -19,5 +19,8 @@ path = [
     "*.desktop",
     "*.hook",
 ]
-SPDX-FileCopyrightText = "2026 HurricanePootis <hurricanepootis@protonmail.com>"
+SPDX-FileCopyrightText = [
+  "2026 HurricanePootis <hurricanepootis@protonmail.com>",
+  "2026 Freso <https://freso.dk/>",
+]
 SPDX-License-Identifier = "0BSD"
