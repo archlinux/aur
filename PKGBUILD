@@ -1,13 +1,14 @@
 # Maintainer:  Marin Moulinier <https://github.com/p1-mmr>
 
 pkgname="qcsuper"
+_pkgname="QCSuper"
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="QCSuper is a tool communicating with Qualcomm-based phones and modems, allowing to capture raw 2G/3G/4G radio frames, among other things"
 arch=(
   'any'
 )
-url="https://github.com/P1sec/${pkgname}"
+url="https://github.com/P1sec/${_pkgname}"
 license=(
   'GPL-3.0-or-later'
 )

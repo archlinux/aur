@@ -1,8 +1,8 @@
 pkgbase = qcsuper
 	pkgdesc = QCSuper is a tool communicating with Qualcomm-based phones and modems, allowing to capture raw 2G/3G/4G radio frames, among other things
 	pkgver = 2.1.0
-	pkgrel = 1
-	url = https://github.com/P1sec/qcsuper
+	pkgrel = 2
+	url = https://github.com/P1sec/QCSuper
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python-build
@@ -17,7 +17,7 @@ pkgbase = qcsuper
 	provides = python-qcsuper=2.1.0
 	conflicts = python-qcsuper
 	options = !strip
-	source = https://github.com/P1sec/qcsuper/archive/refs/tags/2.1.0/qcsuper-2.1.0.tar.gz
+	source = https://github.com/P1sec/QCSuper/archive/refs/tags/2.1.0/QCSuper-2.1.0.tar.gz
 	sha256sums = 909aea94fa04542262c82857d7c3a99656ccfc74c080b4ccf7cec47a6bc5e36b
 
 pkgname = qcsuper
