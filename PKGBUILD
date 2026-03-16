@@ -13,8 +13,9 @@ url="https://github.com/${pkgauthor}/${pkgname}"
 license=('MIT')
 
 depends=('glibc' 'libgcc' 'zlib')
-provides=("${_appname}")
 makedepends=('cargo')
+
+provides=("${_appname}")
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${_version}.tar.gz")
 sha256sums=('485c221b28b361c9de2b8223f7985401d37f2c75a2870be6f59af4d83f499db7')
