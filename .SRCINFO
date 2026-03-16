@@ -1,6 +1,6 @@
 pkgbase = chiaki-ng-git
 	pkgdesc = Free and Open Source PlayStation Remote Play Client
-	pkgver = 1923_2025.12.12
+	pkgver = 1950_2026.03.14
 	pkgrel = 1
 	url = https://streetpea.github.io/chiaki-ng/
 	arch = i686

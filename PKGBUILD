@@ -2,7 +2,7 @@
 
 pkgname=chiaki-ng-git
 _gitname=chiaki-ng
-pkgver=1923_2025.12.12
+pkgver=1950_2026.03.14
 pkgrel=1
 pkgdesc="Free and Open Source PlayStation Remote Play Client"
 arch=(i686 x86_64)
@@ -61,7 +61,7 @@ pkgver() {
 
 prepare() {
   cd ${_gitname}
-  mkdir build
+  mkdir -p build
   # Remove curl submodule
   git rm third-party/curl
   # Initialize remaining submodules
