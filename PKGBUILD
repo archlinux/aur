@@ -1,71 +1,108 @@
-# Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
+# AUR Maintainer: Adam Chovanec <git@adamchovanec.cz>
+# AUR Ex-Maintainer: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
-_pkgbase=ibus
-pkgbase=$_pkgbase-git
-pkgname=($pkgbase lib$pkgbase)
-pkgver=1.5.23+12+gef4c5c7e
+# Maintainer: Campbell Jones <serebit at archlinux dot org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+
+pkgbase=ibus-git
+pkgname=(ibus-git libibus-git)
+pkgver=1.5.34.beta1.r39.g29bc7de
 pkgrel=1
-pkgdesc="Next Generation Input Bus for Linux"
+pkgdesc="Intelligent input bus for Linux/Unix"
 arch=('x86_64')
-url="https://github.com/${_pkgbase}/${_pkgbase}/wiki"
-license=('LGPL')
-depends=('dconf' 'gtk3' 'hicolor-icon-theme' 'libnotify' 'python-dbus' 'python-gobject'
-         'iso-codes' 'librsvg')
-makedepends=('gobject-introspection' 'vala' 'intltool' 'gnome-common' 'gtk-doc' 'gtk2' 'qt5-base'
-             'unicode-cldr' 'unicode-character-database' 'unicode-emoji' 'git')
+url="https://github.com/ibus/ibus/wiki"
+license=('LGPL-2.1-or-later')
+depends=(
+    'at-spi2-core'
+    'cairo'
+    'dconf'
+    'gdk-pixbuf2'
+    'glib2'
+    'graphene'
+    'gtk3'
+    'gtk4'
+    'hicolor-icon-theme'
+    'libdbusmenu-glib'
+    'libdbusmenu-gtk3'
+    'libnotify'
+    'libx11'
+    'libxkbcommon'
+    'libxfixes'
+    'libxi'
+    'pango'
+    'python'
+    'python-gobject'
+    'wayland'
+)
+makedepends=(
+    'glib2-devel'
+    'gobject-introspection'
+    'gtk-doc'
+    'qt5-base'
+    'unicode-character-database'
+    'unicode-cldr'
+    'unicode-emoji'
+    'vala'
+    'wayland-protocols'
+    'git'
+)
 options=('!emptydirs')
-source=("${_pkgbase}::git+https://github.com/${_pkgbase}/${_pkgbase}")
-sha512sums=('SKIP')
+source=(
+  'git+https://github.com/fujiwarat/ibus.git'
+)
+b2sums=(
+  'SKIP'
+)
 
 pkgver() {
-  cd $_pkgbase
-  git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd $_pkgbase
-  sed -i 's|$(libibus) $(libibus_emoji_dialog)|$(libibus_emoji_dialog) $(libibus)|' ui/gtk3/Makefile.am
-  NOCONFIGURE=1 ./autogen.sh
+  cd ibus
+  git describe --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd $_pkgbase
-  ./configure \
-    --prefix=/usr \
-    --libexecdir=/usr/lib/$_pkgbase \
-    --sysconfdir=/etc \
-    --enable-dconf \
-    --enable-wayland \
-    --enable-gtk-doc \
-    --disable-memconf \
-    --enable-ui \
-    --disable-python2 \
-    --with-python=python3 \
-    --with-ucd-dir=/usr/share/unicode/
-  sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-  make
+    cd ibus
+    ./autogen.sh \
+        --prefix=/usr \
+        --libexecdir=/usr/lib/ibus \
+        --sysconfdir=/etc \
+        --enable-dconf \
+        --enable-wayland \
+        --enable-gtk-doc \
+        --disable-gtk2 \
+        --enable-gtk4 \
+        --disable-memconf \
+        --enable-ui \
+        --disable-python2 \
+        --with-python=python3 \
+        --with-ucd-dir=/usr/share/unicode/
+    sed -i 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+    make
 }
 
 package_ibus-git() {
-  depends+=("lib$pkgbase=$pkgver")
-  conflicts=($_pkgbase)
-  provides=($_pkgbase)
+    depends+=("libibus-git=$pkgver")
+    conflicts+=("ibus")
 
-  cd $_pkgbase
-  make DESTDIR="$pkgdir" install
-  make -C src DESTDIR="$pkgdir" uninstall
-  make -C bindings DESTDIR="$pkgdir" uninstall
-  make DESTDIR="$pkgdir" uninstall-pkgconfigDATA
+    cd ibus
+
+    make DESTDIR="$pkgdir" install
+    make -C src DESTDIR="$pkgdir" uninstall
+    make -C src DESTDIR="$pkgdir" install-dictDATA install-unicodeDATA
+    make -C bindings DESTDIR="$pkgdir" uninstall
+    make DESTDIR="$pkgdir" uninstall-pkgconfigDATA
 }
 
 package_libibus-git() {
-  pkgdesc="IBus support library"
-  depends=(libg{lib,object,io}-2.0.so)
-  provides=("lib$_pkgbase" "lib$_pkgbase-1.0.so")
-  conflicts=("lib$_pkgbase")
+    pkgdesc="IBus support library"
+    depends=(libg{lib,object,io}-2.0.so)
+    optdepends=('python-gobject: for Python integration')
+    provides=('libibus-1.0.so')
+    conflicts+=("libibus")
 
-  cd $_pkgbase
-  make -C src DESTDIR="$pkgdir" install
-  make -C bindings DESTDIR="$pkgdir" install
-  make DESTDIR="$pkgdir" install-pkgconfigDATA
+    cd ibus
+
+    make -C src DESTDIR="$pkgdir" install
+    make -C src DESTDIR="$pkgdir" uninstall-dictDATA uninstall-unicodeDATA
+    make -C bindings DESTDIR="$pkgdir" install
+    make DESTDIR="$pkgdir" install-pkgconfigDATA
 }
