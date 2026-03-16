@@ -24,6 +24,6 @@ pkgbase = conquest-git
 	source = git+https://github.com/jakobfriedl/conquest
 	source = conquest.service
 	sha1sums = SKIP
-	sha1sums = 712aca37272746ea97f31e82f0b40f7ad9e9aa69
+	sha1sums = 5945ddf07dbc3ec6c67d1340deeb16b03a6e9db4
 
 pkgname = conquest-git
