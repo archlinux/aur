@@ -2,7 +2,7 @@
 pkgname=python-snakemake-interface-report-plugins
 _name=${pkgname#python-}
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The interface for Snakemake report plugins"
 arch=('any')
 url="https://github.com/snakemake/snakemake-interface-report-plugins"
