@@ -27,10 +27,19 @@ path = [
     "aur-install-notice.patch",
     "fix-build-from-tarball.patch",
     "fix-litellm-exception-list.patch",
-    "github-pr-4369.patch",
-    "github-pr-4748.patch",
 ]
-SPDX-FileCopyrightText = """
-aider-chat contributors and Arch Linux contributors
-"""
+SPDX-FileCopyrightText = [
+    "Arch Linux contributors",
+    "aider-chat contributors",
+]
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = [
+    "github-pr-4832.patch",
+]
+SPDX-FileCopyrightText = [
+    "paipeng-quiver <pai@quiver.ai>",
+    "aider-chat contributors",
+]
 SPDX-License-Identifier = "Apache-2.0"

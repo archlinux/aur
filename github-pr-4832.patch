@@ -1,0 +1,73 @@
+From 3275a99b1eacef7dfd9bc6a691ab1e3365134509 Mon Sep 17 00:00:00 2001
+From: paipeng-quiver <pai@quiver.ai>
+Date: Sun, 15 Feb 2026 00:33:33 +0100
+Subject: [PATCH] fix: add missing PermissionDeniedError to litellm exceptions
+ list
+
+Fixes #4829
+
+litellm added PermissionDeniedError which was not in aider's EXCEPTIONS
+list, causing a ValueError crash during LiteLLMExceptions initialization:
+
+  ValueError: PermissionDeniedError is in litellm but not in aider's
+  exceptions list
+
+This is the same class of bug reported in #4829 (where BadGatewayError
+was missing in an older version). The root cause is that aider's
+exception list must be kept in sync with litellm's exception classes.
+
+Added PermissionDeniedError as non-retryable with a descriptive message,
+and added a corresponding test.
+---
+ aider/exceptions.py            |  5 +++++
+ tests/basic/test_exceptions.py | 21 +++++++++++++++++++++
+ 2 files changed, 26 insertions(+)
+
+diff --git a/aider/exceptions.py b/aider/exceptions.py
+index 5cbd023cc4b..c9f3cc2716b 100644
+--- a/aider/exceptions.py
++++ b/aider/exceptions.py
+@@ -35,6 +35,11 @@ class ExInfo:
+     ExInfo("JSONSchemaValidationError", True, None),
+     ExInfo("NotFoundError", False, None),
+     ExInfo("OpenAIError", True, None),
++    ExInfo(
++        "PermissionDeniedError",
++        False,
++        "The API provider denied access. Check your API key permissions.",
++    ),
+     ExInfo(
+         "RateLimitError",
+         True,
+diff --git a/tests/basic/test_exceptions.py b/tests/basic/test_exceptions.py
+index 5f9c095f8b6..b0ee481dd59 100644
+--- a/tests/basic/test_exceptions.py
++++ b/tests/basic/test_exceptions.py
+@@ -65,6 +65,27 @@ def test_context_window_error():
+     assert ex_info.retry is False
+ 
+ 
++def test_permission_denied_error():
++    """Test specific handling of PermissionDeniedError"""
++    ex = LiteLLMExceptions()
++    from litellm import PermissionDeniedError
++
++    import httpx
++
++    mock_request = httpx.Request("GET", "https://api.openai.com/v1/chat/completions")
++    mock_response = httpx.Response(status_code=403, request=mock_request)
++    perm_error = PermissionDeniedError(
++        message="Permission denied",
++        llm_provider="openai",
++        model="gpt-4",
++        response=mock_response,
++    )
++    ex_info = ex.get_ex_info(perm_error)
++    assert ex_info.name == "PermissionDeniedError"
++    assert ex_info.retry is False
++    assert "denied" in ex_info.description.lower()
++
++
+ def test_openrouter_error():
+     """Test specific handling of OpenRouter API errors"""
+     ex = LiteLLMExceptions()
