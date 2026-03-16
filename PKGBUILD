@@ -2,7 +2,7 @@
 
 pkgname=vsview-audio-convert
 _origpkgname=vsview_audio_convert
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A vsview plugin for converting audio sample types and resampling audio clips."
 arch=("x86_64")
@@ -20,8 +20,8 @@ makedepends=(
 	"python-hatchling"
 	"python-versioningit"
 )
-source=("https://files.pythonhosted.org/packages/44/4f/674549be01d1a4e5d64e52e7e35cbfc0cd98e2e752ef8422d9365fb4e57a/vsview_audio_convert-0.1.2.tar.gz")
-sha256sums=("b7af37c871ffb6b78ede19833efc40c5d8dadefb5123223ba5654b9a3efc981c")
+source=("https://files.pythonhosted.org/packages/f4/6f/cb03371ef19392e776e5a09dbe6733be9be8f23ff730e1ce0a9bd1b24f6e/vsview_audio_convert-0.1.3.tar.gz")
+sha256sums=("8727ffd90f328b4611604a1456fc26433a802d83025ac4727eb9c0770d202331")
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
