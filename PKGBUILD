@@ -25,6 +25,9 @@ sha256sums=('4004d82ed327a3693b793362e4f1ee5723c6ad6931ace5f902af7dc764fd21f1'
 
 prepare() {
     cd "orbit-$pkgver"
+    # Fix for aws-lc-sys jitterentropy compilation error with default Arch CFLAGS (-O2)
+    export CFLAGS="${CFLAGS/-O2/}"
+    export CXXFLAGS="${CXXFLAGS/-O2/}"
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
