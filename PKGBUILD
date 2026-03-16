@@ -1,7 +1,7 @@
 # Maintainer: Berke Enercan <berkeenercan@tutanota.com>
 
 pkgname=ytsub
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 
 pkgdesc='A subscriptions only TUI Youtube client'
@@ -14,18 +14,19 @@ makedepends=('cargo')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('a96c81a41ce1cb7f43570cedb07cee3bf2a9a7db16800d9c5a4b117bcb66f562')
+sha256sums=('e09854b2cb3a4b60f99ec342affe26a861f5d68a9d6384a5a1e5e476722605de')
 options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
   cargo build --frozen --release
 }
 
