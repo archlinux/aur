@@ -1,13 +1,13 @@
 pkgbase = vapoursynth-plugin-mlrt-ext-models-artcnn
 	pkgdesc = Plugin for VapourSynth: mlrt (external models for ArtCNN)
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://github.com/Artoriuz/ArtCNN
 	arch = any
 	license = MIT
 	depends = vapoursynth
 	depends = vapoursynth-plugin-mlrt
-	source = https://github.com/Artoriuz/ArtCNN/archive/refs/tags/v1.6.1.tar.gz
-	sha256sums = 36ef536ece6e8eebc2c9d0386f62df51e02dab15b9cd4147a883771fa59b83e9
+	source = https://github.com/Artoriuz/ArtCNN/archive/refs/tags/v1.6.2.tar.gz
+	sha256sums = 9408c6d06f9f0d54b77113a443f795104ef711b685e98bce49c23c6a819d891c
 
 pkgname = vapoursynth-plugin-mlrt-ext-models-artcnn
