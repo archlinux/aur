@@ -1,8 +1,8 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=rclone-bisync-manager-git
-pkgver=0.4.0b2
-pkgrel=2
+pkgver=0.4.0b3
+pkgrel=1
 pkgdesc="A daemon-based solution for automated, bidirectional synchronization of files using RClone (includes system tray)"
 arch=('any')
 url="https://github.com/Gunther-Schulz/rclone-bisync-manager"
@@ -11,7 +11,7 @@ depends=('python>=3.12' 'rclone' 'python-croniter-git' 'python-pydantic' 'python
 optdepends=('cpulimit: for limiting CPU usage of rclone processes')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('872b37adaeda0f20cd17b9e2d3510ecd5f0d2890390a65c2301a268c71a75f79')
+sha256sums=('405c73b216aa57805aa664165beb0669f4ed62d1de804d8e8cd867f6bba906e4')
 install=rclone-bisync-manager.install
 
 # Use system Python so venv in PATH does not break the build (python-build, python-installer from pacman).
