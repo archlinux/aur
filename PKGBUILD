@@ -1,5 +1,7 @@
 pkgname=python-ocp
-pkgver=7.9.3.0
+#_ocp_fragment="#tag=8.0.0.0RC3"
+_ocp_fragment='#tag=7.9.3.1'
+pkgver=7.9.3.1
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
@@ -10,14 +12,16 @@ depends=(
 python
 opencascade
 vtk
-gcc-libs
+libgcc
+libstdc++
 glibc
 )
 
 makedepends=(
 git
-clang
-llvm
+python-clang20
+clang20
+llvm20
 python-joblib
 python-click
 python-pandas
@@ -62,7 +66,6 @@ glew
 
 conflicts=(python-ocp-git)
 
-_ocp_fragment="#commit=5b151ff40aec7ee9460fc47138b21da5877262f4"
 #_forced_pywrap_commit="5e134c526b3bbd1758d8f63e518bc16c3d7ff352"  # comment this to use the expected commit
 source=(
   git+https://github.com/CadQuery/OCP.git${_ocp_fragment}
@@ -75,7 +78,7 @@ source=(
 
 options=(!lto)  # comment this line out if you've got better than 32 GB of ram to spare for the linking step
 
-sha256sums=('4f9a8bd0f814fd01195183832b2a83513f967b21b09f64938e07d06f1afbff3d'
+sha256sums=('6d3153d66e541ca1f6cbf0b3a6174828aa103d4235893b130054212d81d0aece'
             'SKIP'
             'b4c2585efd9c21c6351b6278098b4bcf7395e23b9721c391b3bcb72983b6ebf8'
             '73c64a8323df9a2b96955d0104f761ec3d9078813716164b9dd7b647d65bb2f0'
@@ -118,14 +121,21 @@ prepare(){
   rm -r opencascade
   ln -s "${_opencascade_install_prefix}"/include/opencascade .
 
-  cat ../../fix_rapidjson.patch | patch -p1
+  cat ../fix_rapidjson.patch | patch -p1
 
   cd pywrap
+
+  # use the clang20 python bindings
+  find . -type f -name '*.py' -exec sed -i -e 's/clang.cindex/clang20.cindex/g' {} \;
+
   cat ../../no_progress_bars.patch | patch -p1  # disable progress bars
   cat ../../mpi_cmake.patch | patch -p1  # fix mpi detection issue
 }
 
 build() {
+  # for clang20
+  export PATH="/usr/lib/llvm20/bin:$PATH"
+
   python -m venv --without-pip --system-site-packages --clear venv
   source venv/bin/activate
 
@@ -150,7 +160,6 @@ build() {
   cmake "${cmake_options[@]}"
   cmake --build build_dir --verbose -j${_n_parallel_build_jobs}
   msg2 "OCP prepared."
-
   deactivate
 
   # build the .whl
@@ -162,19 +171,6 @@ build() {
   CMAKE_GENERATOR=Ninja CMAKE_BUILD_PARALLEL_LEVEL=${_n_parallel_build_jobs} python -m build --wheel --no-isolation
   cd -
   msg2 "OCP built."
-
-  #local cmake_options2=(
-  #  -B build_dir2
-  #  -D CMAKE_BUILD_TYPE=Release
-  #  -S build_dir/OCP
-  #  -G Ninja
-  #  -W no-dev
-  #)
-
-  #msg2 "Building OCP..."
-  #cmake "${cmake_options2[@]}"
-  #cmake --build build_dir2 --verbose -j${_n_parallel_build_jobs}
-  #msg2 "OCP built."
 }
 
 check() {
