@@ -1,3 +1,3 @@
 [gnome-shell-extension-auto-accent-color]
 source = "git"
-git = "https://github.com/Wartybix/GNOME-Auto-Accent-Colour.git"
+git = "https://codeberg.org/Wartybix/GNOME-Auto-Accent-Colour.git"
