@@ -1,0 +1,23 @@
+pkgbase = novapad
+	pkgdesc = A modern C++23/Qt6 fork of Notepadqq - Native code editor for programmers
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/novik133/novapad
+	arch = x86_64
+	license = GPL-2.0-only
+	makedepends = cmake>=3.25
+	makedepends = ninja
+	makedepends = gcc>=13
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt6-tools
+	depends = qt6-5compat
+	depends = qt6-declarative
+	depends = hicolor-icon-theme
+	optdepends = qt6-webengine: For embedded web-based preview
+	provides = novapad
+	conflicts = novapad
+	source = novapad-1.0.0.tar.gz::https://github.com/novik133/novapad/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = novapad
