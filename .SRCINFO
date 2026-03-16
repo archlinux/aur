@@ -1,7 +1,7 @@
 pkgbase = dnspyex-wine-bin
 	pkgdesc = Unofficial continuation of dnSpy: debugger and .NET assembly editor.
-	pkgver = v6.5.1
-	pkgrel = 3
+	pkgver = 6.5.1
+	pkgrel = 4
 	url = https://github.com/dnSpyEx/dnSpy
 	arch = x86_64
 	license = GPL-3.0-or-later

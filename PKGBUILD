@@ -1,7 +1,7 @@
 # Maintainer: Diego Fernández Menéndez <dfimium499 at proton dot me>
 pkgname=dnspyex-wine-bin
-pkgver=v6.5.1
-pkgrel=3
+pkgver=6.5.1
+pkgrel=4
 pkgdesc="Unofficial continuation of dnSpy: debugger and .NET assembly editor."
 arch=('x86_64')
 url="https://github.com/dnSpyEx/dnSpy"
