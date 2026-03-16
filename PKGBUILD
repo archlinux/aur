@@ -17,6 +17,8 @@ depends=(
 makedepends=(
     'cargo'
     'rust'
+    'cmake'
+    'nasm'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "orbit.service")
@@ -33,7 +35,11 @@ prepare() {
 
 build() {
     cd "orbit-$pkgver"
-    cargo build --frozen --release
+    # We use a completely clean environment for the build to avoid flag pollution
+    # that causes linking failures in aws-lc-sys (undefined symbols).
+    env -u CFLAGS -u CXXFLAGS -u LDFLAGS \
+        AWS_LC_SYS_CMAKE_BUILDER=1 \
+        cargo build --frozen --release
 }
 
 package() {
