@@ -1,7 +1,7 @@
 # Maintainer: spacechicken <spacechicken at aur>
 pkgname=fuck
 pkgver=3.32
-pkgrel=5
+pkgrel=6
 pkgdesc="Magnificent app which corrects your previous console command - with improved Arch Linux package prediction"
 arch=('any')
 url="https://github.com/RonanHevenor/fuck"
