@@ -1,12 +1,13 @@
 pkgname=nettui
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Unified TUI for Wi-Fi and Ethernet"
 arch=("x86_64")
 url="https://github.com/skibidiandulka/nettui"
 license=("GPL-3.0-only")
 options=("!debug")
 depends=("glibc" "gcc-libs")
+conflicts=("nettui-bin" "nettui-git")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=("dc58d862d5edf1d712d2c31a4b0acb056e5342c5de8a1ca35e68caa260209e8b")
