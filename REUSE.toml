@@ -27,6 +27,7 @@ path = [
     "aur-install-notice.patch",
     "fix-build-from-tarball.patch",
     "fix-litellm-exception-list.patch",
+    "github-pr-4935.patch",
 ]
 SPDX-FileCopyrightText = [
     "Arch Linux contributors",

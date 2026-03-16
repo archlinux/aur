@@ -1,0 +1,95 @@
+From c0ab75371b683debb58636711a2768b9ca4ee45a Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 16 Mar 2026 22:31:35 +0100
+Subject: [PATCH 1/3] fix: remove deprecated gpt-4-32k model from test
+
+The model that this test uses is no longer available online. [1] [2]
+
+Per the upstream commit, the only known suitable replacement is
+gpt-4-0613, which the test already uses.
+
+Hence, remove gpt-4-32k from the test without any replacement.
+
+[1]: https://github.com/BerriAI/litellm/pull/20795
+
+[2]: https://github.com/BerriAI/litellm/commit/15075ef9ec881cd51831f9e40423fb2058f701f8
+---
+ tests/basic/test_models.py | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/tests/basic/test_models.py b/tests/basic/test_models.py
+index 025f93fca2a..aaa5f5c86df 100644
+--- a/tests/basic/test_models.py
++++ b/tests/basic/test_models.py
+@@ -43,9 +43,6 @@ def test_max_context_tokens(self):
+         model = Model("gpt-4")
+         self.assertEqual(model.info["max_input_tokens"], 8 * 1024)
+ 
+-        model = Model("gpt-4-32k")
+-        self.assertEqual(model.info["max_input_tokens"], 32 * 1024)
+-
+         model = Model("gpt-4-0613")
+         self.assertEqual(model.info["max_input_tokens"], 8 * 1024)
+ 
+
+From c0839cf36f6b9150e3280b6d2588a55a3443cb2d Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 16 Mar 2026 22:38:01 +0100
+Subject: [PATCH 2/3] fix: remove deprecated timestamped model from test
+
+The model that this test uses is no longer available online. [1] [2]
+
+Per the upstream commit, claude-sonnet-4-6 is a suitable replacement
+so use that instead.
+
+[1]: https://github.com/BerriAI/litellm/pull/23400
+
+[2]: https://github.com/BerriAI/litellm/commit/c9f7075690173165a3a4085bd52e2dee8449063d
+---
+ tests/basic/test_commands.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/basic/test_commands.py b/tests/basic/test_commands.py
+index 47b8832dc42..2e6bc4f0250 100644
+--- a/tests/basic/test_commands.py
++++ b/tests/basic/test_commands.py
+@@ -536,7 +536,7 @@ def test_cmd_tokens_output(self):
+             io = InputOutput(pretty=False, fancy_input=False, yes=False)
+             from aider.coders import Coder
+ 
+-            coder = Coder.create(Model("claude-3-5-sonnet-20240620"), None, io)
++            coder = Coder.create(Model("claude-sonnet-4-6"), None, io)
+             print(coder.get_announcements())
+             commands = Commands(io, coder)
+ 
+
+From 55164933dc152308b8aeb8f78afc461248470e5c Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Mon, 16 Mar 2026 22:39:35 +0100
+Subject: [PATCH 3/3] fix: remove deprecated vision model from test
+
+The model that this test uses is no longer available online. [1] [2]
+
+Per the upstream commit, gpt-4o would be the next best candidate for
+vision models, so use that instead.
+
+[1]: https://github.com/BerriAI/litellm/pull/23400
+
+[2]: https://github.com/BerriAI/litellm/commit/c9f7075690173165a3a4085bd52e2dee8449063d
+---
+ tests/basic/test_commands.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/basic/test_commands.py b/tests/basic/test_commands.py
+index 2e6bc4f0250..406e928ebf2 100644
+--- a/tests/basic/test_commands.py
++++ b/tests/basic/test_commands.py
+@@ -924,7 +924,7 @@ def test_cmd_read_only_with_image_file(self):
+             self.assertEqual(len(coder.abs_read_only_fnames), 0)
+ 
+             # Test with vision model
+-            vision_model = Model("gpt-4-vision-preview")
++            vision_model = Model("gpt-4o")
+             vision_coder = Coder.create(vision_model, None, io)
+             vision_commands = Commands(io, vision_coder)
+ 
