@@ -1,12 +1,14 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=ownfoil-git
-pkgver=r318.bf12df4
-pkgrel=1
+pkgver=r375.13da9c3
+pkgrel=2
 pkgdesc='Switch library manager, with a self-hosted Tinfoil Shop'
 arch=('any')
 url='https://github.com/a1ex4/ownfoil'
 license=('custom')
+provides=('ownfoil')
+conflicts=('ownfoil')
 depends=(
   'python'
   'python-croniter'
@@ -14,13 +16,14 @@ depends=(
   'python-flask-login'
   'python-flask-migrate'
   'python-flask-sqlalchemy'
-  'nsz'
   'python-yaml'
   'python-requests'
   'python-unzip-http'
   'python-watchdog'
   'python-werkzeug'
   'python-zstandard'
+  'nsz-git' # git version because #217 pull request is important
+            # latest 4.6.1 release does not include it
 )
 source=("git+https://github.com/a1ex4/ownfoil"
         'ownfoil.service'
