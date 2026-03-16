@@ -2,7 +2,7 @@
 
 pkgname=kanata-switcher
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Kanata layer switcher based on focused window for all Linux desktop environments'
 url='https://github.com/7mind/kanata-switcher'
 license=('MIT')

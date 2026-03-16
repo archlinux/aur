@@ -1,7 +1,7 @@
 pkgbase = kanata-switcher
 	pkgdesc = Kanata layer switcher based on focused window for all Linux desktop environments
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/7mind/kanata-switcher
 	install = kanata-switcher.install
 	arch = x86_64
