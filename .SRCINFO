@@ -1,6 +1,6 @@
 pkgbase = commitdog-bin
 	pkgdesc = Zero-dependency git workflow CLI — commit, branch, PR, release
-	pkgver = 0.2.2
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/aysdog/commitdog
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = commitdog-bin
 	license = MIT
 	provides = commitdog
 	conflicts = commitdog
-	source_x86_64 = commitdog-linux-amd64::https://github.com/aysdog/commitdog/releases/download/v0.2.2/commitdog-linux-amd64
-	sha256sums_x86_64 = 7b7a4f43eaf0ea1ee3a4890c6b08268a9d4d7f3ecba41c22fb781dbbc478d9df
-	source_aarch64 = commitdog-linux-arm64::https://github.com/aysdog/commitdog/releases/download/v0.2.2/commitdog-linux-arm64
-	sha256sums_aarch64 = 84f878f68f87d47d48c162c34c1c007242c6ed8d9217a318a45dde5efe16fd06
+	source_x86_64 = commitdog-linux-amd64::https://github.com/aysdog/commitdog/releases/download/v0.2.5/commitdog-linux-amd64
+	sha256sums_x86_64 = ac3df2e586025c683a234e4c3de2533e870395b279190e7aa3128813b65ba094
+	source_aarch64 = commitdog-linux-arm64::https://github.com/aysdog/commitdog/releases/download/v0.2.5/commitdog-linux-arm64
+	sha256sums_aarch64 = 0cd805ec36149d0cb12b28c8ab1ad712109818ac124f5be087635943eee81ca0
 
 pkgname = commitdog-bin
