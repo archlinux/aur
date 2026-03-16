@@ -2,7 +2,7 @@
 
 pkgname=derg-clock-popup
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="An animated popup window telling the current time"
 arch=('x86_64' 'aarch64')
 url="https://github.com/ZenithCrow/derg-clock-popup"
@@ -19,13 +19,12 @@ sha256sums=('4f66e1a1038f825ba323096f9b0c9a246dbead38cd43aad70bb718ce0858edc8')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    zig build -Doptimize=ReleaseSafe
+    DESTDIR=build zig build --release=safe --prefix "/usr"
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    zig build -Doptimize=ReleaseSafe
-    cp -r zig-out "$pkgdir/usr"
+    cp -a build/* "$pkgdir/usr"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
