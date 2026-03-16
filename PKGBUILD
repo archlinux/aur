@@ -93,4 +93,8 @@ package() {
         find "$install_dir" -name "aria2c-*" -delete
         ln -sf /usr/bin/aria2c "$install_dir/aria2c-${target_triple}"
     fi
+
+    # Fix empty Categories so KDE launcher can display the app
+sed -i 's/^Categories=$/Categories=Network;/' \
+    "$pkgdir/usr/share/applications/MotrixNext.desktop"
 }
