@@ -1,6 +1,6 @@
 # Maintainer: Dae Euhwa <daedaevibin@naver.com>
 
-pkgname=bdf2psf-latest
+pkgname=bdf2psf-debian-unstable
 pkgver=1.246
 pkgrel=2
 epoch=1
