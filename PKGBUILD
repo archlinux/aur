@@ -28,10 +28,8 @@ source=(
     "hyprquickframe"
 )
 
-sha256sums=(
-    '1d2ce9afc34194cb4ad8348a448f6554800fb949fdcd333fcf558d8060490919'
-    'c1e3e50cc42afdf4792ff2b290a41bf62c2422cc98c8ec43ab265bb8c7e09226'
-)
+sha256sums=('1d2ce9afc34194cb4ad8348a448f6554800fb949fdcd333fcf558d8060490919'
+            '6ecde2b0c6ead2a5f19be7029e75c398fbf834373f6ecf800f72aa99c6901582')
 
 backup=(
     etc/xdg/quickshell/HyprQuickFrame/theme.toml
