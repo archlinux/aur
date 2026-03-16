@@ -1,6 +1,6 @@
 pkgbase = baremetal-compiler-rt
 	pkgdesc = compiler-rt builtins for bare-metal ARM Cortex-M targets (armv7m, armv7em, armv8m.main, armv8.1m.main)
-	pkgver = 21.1.8
+	pkgver = 22.1.1
 	pkgrel = 1
 	url = https://github.com/llvm/llvm-project
 	arch = x86_64
@@ -13,11 +13,7 @@ pkgbase = baremetal-compiler-rt
 	makedepends = arm-none-eabi-newlib
 	options = !strip
 	options = !debug
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.8/compiler-rt-21.1.8.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.8/cmake-21.1.8.src.tar.xz
-	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.8/llvm-21.1.8.src.tar.xz
-	sha256sums = dd54ae21aee1780fac59445b51ebff601ad016b31ac3a7de3b21126fd3ccb229
-	sha256sums = 85735f20fd8c81ecb0a09abb0c267018475420e93b65050cc5b7634eab744de9
-	sha256sums = d9022ddadb40a15015f6b27e6549a7144704ded8828ba036ffe4b8165707de21
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-22.1.1/llvm-project-22.1.1.src.tar.xz
+	sha256sums = 9c6f37f6f5f68d38f435d25f770fc48c62d92b2412205767a16dac2c942f0c95
 
 pkgname = baremetal-compiler-rt

@@ -1,6 +1,6 @@
 # Maintainer: Clément Le Goffic <legoffic.clement@gmail.com>
 pkgname=baremetal-compiler-rt
-pkgver=21.1.8
+pkgver=22.1.1
 pkgrel=1
 pkgdesc="compiler-rt builtins for bare-metal ARM Cortex-M targets (armv7m, armv7em, armv8m.main, armv8.1m.main)"
 arch=('x86_64')
@@ -10,30 +10,21 @@ makedepends=('clang' 'llvm' 'cmake' 'ninja' 'python' 'arm-none-eabi-newlib')
 options=('!strip' '!debug')
 _arches=(armv7m armv7em armv8m.main armv8.1m.main)
 source=(
-  "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/compiler-rt-${pkgver}.src.tar.xz"
-  "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/cmake-${pkgver}.src.tar.xz"
-  "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-${pkgver}.src.tar.xz"
+  "https://github.com/llvm/llvm-project/releases/download/llvmorg-${pkgver}/llvm-project-${pkgver}.src.tar.xz"
 )
 
-sha256sums=('dd54ae21aee1780fac59445b51ebff601ad016b31ac3a7de3b21126fd3ccb229'
-            '85735f20fd8c81ecb0a09abb0c267018475420e93b65050cc5b7634eab744de9'
-            'd9022ddadb40a15015f6b27e6549a7144704ded8828ba036ffe4b8165707de21')
-
-prepare() {
-  # The compiler-rt CMake checks for a sibling llvm/ directory (monorepo
-  # layout). Create a symlink so the check finds our versioned llvm source.
-  ln -sf "llvm-${pkgver}.src" "${srcdir}/llvm"
-}
+sha256sums=('9c6f37f6f5f68d38f435d25f770fc48c62d92b2412205767a16dac2c942f0c95')
 
 build() {
   local _sysroot=/usr/arm-none-eabi
+  local _llvm_srcdir="${srcdir}/llvm-project-${pkgver}.src"
 
   for _arch in "${_arches[@]}"; do
-    cmake -S "${srcdir}/compiler-rt-${pkgver}.src" \
+    cmake -S "${_llvm_srcdir}/compiler-rt" \
           -B "${srcdir}/build-${_arch}" \
           -G Ninja \
-          -DLLVM_COMMON_CMAKE_UTILS="${srcdir}/cmake-${pkgver}.src" \
-          -DLLVM_MAIN_SRC_DIR="${srcdir}/llvm-${pkgver}.src" \
+          -DLLVM_COMMON_CMAKE_UTILS="${_llvm_srcdir}/cmake" \
+          -DLLVM_MAIN_SRC_DIR="${_llvm_srcdir}/llvm" \
           -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY \
           -DCOMPILER_RT_OS_DIR=baremetal \
           -DCOMPILER_RT_BUILD_BUILTINS=ON \
@@ -59,6 +50,7 @@ build() {
 
 package() {
   local _resourcedir
+  local _llvm_srcdir="${srcdir}/llvm-project-${pkgver}.src"
   _resourcedir=$(clang -print-resource-dir)
 
   for _arch in "${_arches[@]}"; do
@@ -67,6 +59,6 @@ package() {
       "${pkgdir}${_resourcedir}/lib/baremetal/libclang_rt.builtins-${_arch}.a"
   done
 
-  install -Dm644 "${srcdir}/compiler-rt-${pkgver}.src/LICENSE.TXT" \
+  install -Dm644 "${_llvm_srcdir}/compiler-rt/LICENSE.TXT" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
