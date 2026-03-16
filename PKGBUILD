@@ -1,6 +1,6 @@
 # Maintainer: sniper1720 (Djalel Oukid) <sniper1720@linuxtechmore.com>
 pkgname=ltmnight-sddm-theme
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A premium, modern SDDM theme with LTMNight styling and animated backgrounds"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/hyprltm/ltmnight-sddm-theme"
 license=('AGPL3')
 depends=('sddm' 'qt6-declarative' 'qt6-svg' 'qt6-virtualkeyboard' 'qt6-multimedia-ffmpeg' 'ttf-jetbrains-mono')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('886662b0ad0fc5fd4a8a850ecf5a5823ff4b0fb1badae72e4ce1a65499218a56')
+sha256sums=('ac07374f22a7a2cb017798c676ab6bd7e9dd9bea1d8edceeea0409d5a2b9fa3a')
 
 install=ltmnight-sddm-theme.install
 
