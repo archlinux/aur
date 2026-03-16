@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 conflicts=('hyperfetch-git')
 # Note: Pointing to a specific commit since v0.2.0.next tag doesn't exist yet.
-_commit=00ec89a13c5c016529903f44db0ed2aa1aeabfd1
+_commit=e4aa2daf366c6d757aafb3a5d487886ead4b7c0a
 source=("$pkgname-$_commit.tar.gz::$url/archive/$_commit.tar.gz")
 sha256sums=('SKIP')
 
@@ -28,9 +28,6 @@ build() {
   ./target/release/hyperfetch completions bash > completions/hyperfetch.bash
   ./target/release/hyperfetch completions fish > completions/hyperfetch.fish
   ./target/release/hyperfetch completions zsh > completions/_hyperfetch
-  
-  # Generate man page
-  ./target/release/hyperfetch man > hyperfetch.1
 }
 
 package() {
@@ -41,7 +38,4 @@ package() {
   install -Dm644 completions/hyperfetch.bash "$pkgdir/usr/share/bash-completion/completions/hyperfetch"
   install -Dm644 completions/hyperfetch.fish "$pkgdir/usr/share/fish/vendor_completions.d/hyperfetch.fish"
   install -Dm644 completions/_hyperfetch "$pkgdir/usr/share/zsh/site-functions/_hyperfetch"
-  
-  # Install man page
-  install -Dm644 hyperfetch.1 "$pkgdir/usr/share/man/man1/hyperfetch.1"
 }
