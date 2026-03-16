@@ -4,8 +4,8 @@
 _pkgnamefmt=LibreOffice
 
 # Package version
-pkgver=26.2.1.2
-_pkgver=26.2.1.2
+pkgver=26.2.2.1
+_pkgver=26.2.2.1
 
 #
 pkgrel=1
