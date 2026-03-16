@@ -18,7 +18,7 @@ makedepends=(
   'python-setuptools'
 )
 optdepends=(
-  'python-pkgfile: better binary-to-package lookup'
+  'pkgfile: better binary-to-package lookup'
 )
 provides=('thefuck')
 conflicts=('thefuck')
