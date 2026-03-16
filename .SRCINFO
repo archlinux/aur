@@ -1,7 +1,7 @@
 pkgbase = asap-chiptunes-player-git
 	pkgdesc = Player of Atari 8-bit chiptunes for modern computers. With plugins for MOC, XMMS2 and VLC.
 	pkgver = 8.0.0+12.r1749.20260316.32cba42
-	pkgrel = 2
+	pkgrel = 3
 	url = http://asap.sourceforge.net
 	arch = aarch64
 	arch = armv6h
