@@ -6,8 +6,8 @@ pkgname=(
   'mullvad-vpn-daemon-bin'
 )
 pkgbase=mullvad-vpn-bin
-pkgver=2025.14
-pkgrel=5
+pkgver=2026.1
+pkgrel=1
 pkgdesc="The Mullvad VPN client app for desktop"
 arch=('x86_64' 'aarch64')
 url="https://www.mullvad.net"
@@ -24,9 +24,9 @@ source=('mullvad-vpn.sh')
 source_x86_64=("https://github.com/mullvad/mullvadvpn-app/releases/download/$pkgver/MullvadVPN-${pkgver}_amd64.deb"{,.asc})
 source_aarch64=("https://github.com/mullvad/mullvadvpn-app/releases/download/$pkgver/MullvadVPN-${pkgver}_arm64.deb"{,.asc})
 sha256sums=('a59c29f07b4eab9af56f0e8be42bae0d83726f5185e88de0c5a48f4098c3c0a4')
-sha256sums_x86_64=('247b981e2e2e047ccca296b8e62a70b1dc7fdcec7f17137795884100240e0a41'
+sha256sums_x86_64=('1e579a8db11bc3967569bfc4e33491f86c43388baf7a03f837dc9115962fef3e'
                    'SKIP')
-sha256sums_aarch64=('9a20a1d71eac09c01b83d897ed227361cc49f0321054d76b83a6f7f61b7c813c'
+sha256sums_aarch64=('326d85e8f075e691e0469b30d5cd4f8e620072e19aaa17c07994b91d77685914'
                     'SKIP')
 validpgpkeys=('A1198702FC3E0A09A9AE5B75D5A1D4F266DE8DDF') # Mullvad (code signing) <admin@mullvad.net>
 
