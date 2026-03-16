@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=k3s
-pkgver=1.35.1+k3s1
+pkgver=1.35.2+k3s1
 pkgrel=1
 pkgdesc='Lightweight Kubernetes'
 arch=(x86_64)
@@ -29,17 +29,19 @@ source=(
   '0004-.service-update-systemd-service-files.patch'
   '0005-scripts-revert-to-docker-do-not-use-ctr.patch'
   '0006-scripts-moar-compression-drop-pigz-and-raw-tar.patch'
+  '0007-Dockerfile.dapper-bump-Trivy.patch'
 )
-sha256sums=('aa15aaf95115ae622b5458d89209485e42c2b069d82e32a0144aa81c1af3c4e6'
+sha256sums=('93708532231004583c3c57f7ad6d199f8675cc7fd22246ae5e9f06d38858c945'
             '94b0dd21fa4f075d4db7f6efe7a775de476b278de72f99773ee3de0bb54e7f68'
             '2f6964aed46deb38095801e124a6603f3a29e6886815d52c59c02883f7a37925'
             '6f0500a656ed78c0bb689c12264dbcd79f579edc3b9e17d512be742c1b2c43a4'
-            'b383842be511e3cbd927f3df49d98e3bfdc1bf8b1d61b882a0b21d6e455e61d7'
-            '78372838672ea7f17a19599de7c0474401e87536e9ec9f9886019a50149e8730'
-            'b18c23aa70e383ddff50694431e6bdcccb638dcdf8b2bed8ee6f80852157bde1'
-            'b734065dff44cd4865fcc150291e236ee069ef932ac97530d26ac3647d9292c6'
-            'be778293c28e2e11cd1ba0f0b60eb3c47c37d73122b693dd89fc31032f04e578'
-            '8976b3317f97b10ca9c66256f174c6b15d19c5f8d598759700995fa864bd3087')
+            '1ef2f7a5b272f7278857f25cf686a9a768c553d90e6fd41f6a6074fe5dd2d443'
+            '859f531b78297a38c371b6df7436676130f430d4aa468748d78aac8620764b58'
+            '7eccd71554a9c461bfd8cdf9f737620bea2dc06efece5c2919a14f69362afa06'
+            'd0b938a3310b79bd801c76b1b420b4992f20378131ca346ee0576be6571231b0'
+            '2ba4a16112673ec3cef77b5dcf5e7cb5977e49007a14f4cdb6a44b50e49d388d'
+            'a68083518d9320685afb4999163758bf9f73a6dd3c73b8885e65915f9f5cc1b8'
+            '10466dddb163392397149395059355acd4975a83762c9b9b50d6e49632f0b8a2')
 
 prepare() {
   cd k3s

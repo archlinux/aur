@@ -1,0 +1,26 @@
+From 2367ed04701eac88c3413cf9d5b3a1bf4bf59800 Mon Sep 17 00:00:00 2001
+From: Ivan Shapovalov <intelfx@intelfx.name>
+Date: Tue, 17 Mar 2026 00:38:52 +0100
+Subject: [PATCH 7/7] Dockerfile.dapper: bump Trivy
+
+Old releases got nuked from GitHub for whatever reason.
+---
+ Dockerfile.dapper | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Dockerfile.dapper b/Dockerfile.dapper
+index e2bff8fad6..1435327c37 100644
+--- a/Dockerfile.dapper
++++ b/Dockerfile.dapper
+@@ -15,7 +15,7 @@ RUN apk -U --no-cache add \
+ RUN PIPX_BIN_DIR=/usr/local/bin pipx install awscli
+ 
+ # Install Trivy
+-ENV TRIVY_VERSION="0.59.0"
++ENV TRIVY_VERSION="0.69.3"
+ RUN case "$(go env GOARCH)" in \
+     arm64) TRIVY_ARCH="ARM64" ;; \
+     amd64) TRIVY_ARCH="64bit" ;; \
+-- 
+2.53.0.8.g57fba0c4633
+

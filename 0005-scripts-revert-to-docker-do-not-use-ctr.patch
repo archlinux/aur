@@ -1,7 +1,7 @@
-From 9cd4d08359f64aa6775243c184a372715bc837e0 Mon Sep 17 00:00:00 2001
+From f3eb95eede2468b51098be026b473f2b661d23b1 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Tue, 16 Dec 2025 17:40:32 +0100
-Subject: [PATCH 5/6] scripts: revert to `docker`, do not use `ctr`
+Subject: [PATCH 5/7] scripts: revert to `docker`, do not use `ctr`
 
 We cannot emulate `ctr` with podman, and we do not need the advanced
 multiarch support present in `ctr`.
@@ -34,5 +34,5 @@ index 50727a49c8..d5588e904b 100755
  pigz -v -c dist/artifacts/k3s-airgap-images-${ARCH}.tar > dist/artifacts/k3s-airgap-images-${ARCH}.tar.gz
  sha256sum dist/artifacts/k3s-airgap-images-${ARCH}.tar* | sed 's|dist/artifacts/||' > dist/artifacts/k3s-airgap-images-${ARCH}.sha256sum
 -- 
-2.52.0.5.g6c3c29cc24e
+2.53.0.8.g57fba0c4633
 

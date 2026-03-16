@@ -1,7 +1,7 @@
-From fe954ebebfdd788fba6d4616273d3c77102e3823 Mon Sep 17 00:00:00 2001
+From e7ef4afd5f683adc57d6d29a7e737d719510a7d3 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 01:08:37 +0100
-Subject: [PATCH 3/6] Dockerfile.dapper: sanitize cache configuration
+Subject: [PATCH 3/7] Dockerfile.dapper: sanitize cache configuration
 
 - set $HOME to /root because there is no good reason to keep it in $PWD
 - mount volumes to /go/pkg to cache downloaded Go sources (we'd set it
@@ -23,10 +23,10 @@ index 36131d3744..c7418f3674 100644
  ./.trash-cache
 +./.dapper-cache
 diff --git a/Dockerfile.dapper b/Dockerfile.dapper
-index 92860facd0..960b83aa05 100644
+index d057258264..e2bff8fad6 100644
 --- a/Dockerfile.dapper
 +++ b/Dockerfile.dapper
-@@ -42,8 +42,13 @@ RUN if [ "$(go env GOARCH)" = "amd64" ]; then \
+@@ -43,8 +43,13 @@ RUN if [ "$(go env GOARCH)" = "amd64" ]; then \
  ARG SELINUX=true
  ENV SELINUX=${SELINUX}
  
@@ -41,7 +41,7 @@ index 92860facd0..960b83aa05 100644
      DAPPER_ENV="REPO TAG DRONE_TAG IMAGE_NAME SKIP_VALIDATE SKIP_IMAGE SKIP_AIRGAP AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID GITHUB_TOKEN GOLANG GOCOVER GOOS DEBUG" \
      DAPPER_SOURCE="/go/src/github.com/k3s-io/k3s/" \
      DAPPER_OUTPUT="./dist" \
-@@ -51,7 +56,7 @@ ENV DAPPER_RUN_ARGS="--privileged -v k3s-cache:/go/src/github.com/k3s-io/k3s/.ca
+@@ -52,7 +57,7 @@ ENV DAPPER_RUN_ARGS="--privileged -v k3s-cache:/go/src/github.com/k3s-io/k3s/.ca
      CROSS=true \
      STATIC_BUILD=true
  # Set $HOME separately because it refers to $DAPPER_SOURCE, set above
@@ -63,5 +63,5 @@ index b6e7752ff1..81531c79d5 100644
  
  .PHONY: deps
 -- 
-2.52.0.5.g6c3c29cc24e
+2.53.0.8.g57fba0c4633
 
