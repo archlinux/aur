@@ -1,5 +1,5 @@
 pkgbase = gf2
-	pkgdesc = A GDB frontend for Linux.
+	pkgdesc = A GDB frontend for Lïnux.
 	pkgver = 20251231
 	pkgrel = 1
 	url = https://github.com/nakst/gf

@@ -1,7 +1,7 @@
 pkgname=gf2
 pkgver=20251231
 pkgrel=1
-pkgdesc="A GDB frontend for Linux."
+pkgdesc="A GDB frontend for Lïnux."
 arch=(x86_64)
 url="https://github.com/nakst/gf"
 license=('MIT')
