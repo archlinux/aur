@@ -1,7 +1,7 @@
 pkgbase = claude-code
 	pkgdesc = An agentic coding tool that lives in your terminal
 	pkgver = 2.1.76
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/anthropics/claude-code
 	arch = x86_64
 	arch = aarch64
@@ -12,7 +12,7 @@ pkgbase = claude-code
 	optdepends = glab: interact with GitLab
 	optdepends = ripgrep: enhanced file search
 	optdepends = tmux: agent team split panes
-	optdepends = bublewrap: sandboxing
+	optdepends = bubblewrap: sandboxing
 	optdepends = socat: sandboxing
 	options = !strip
 	source = cc-legal-20260313::https://code.claude.com/docs/en/legal-and-compliance.md

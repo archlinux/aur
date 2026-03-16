@@ -2,7 +2,7 @@
 # Maintainer: Jérôme Poulin <jeromepoulin@gmail.com>
 pkgname=claude-code
 pkgver=2.1.76
-pkgrel=2
+pkgrel=3
 pkgdesc="An agentic coding tool that lives in your terminal"
 arch=('x86_64' 'aarch64')
 url="https://github.com/anthropics/claude-code"
@@ -16,7 +16,7 @@ optdepends=(
 	'glab: interact with GitLab'
 	'ripgrep: enhanced file search'
 	'tmux: agent team split panes'
-	'bublewrap: sandboxing'
+	'bubblewrap: sandboxing'
 	'socat: sandboxing'
 )
 
