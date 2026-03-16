@@ -2,7 +2,7 @@
 # Contributor: MidAutumnMoon <mid.autumn0moon@gmail.com>
 
 pkgname=assh-bin
-pkgver=2.16.0
+pkgver=2.17.1
 pkgrel=1
 pkgdesc='make your ssh client smarter'
 arch=('x86_64' 'i686' 'aarch64')
@@ -16,9 +16,9 @@ source_i686=("$url/releases/download/v${pkgver}/assh_${pkgver}_linux_386.tar.gz"
 source_aarch64=("$url/releases/download/v${pkgver}/assh_${pkgver}_linux_arm64.tar.gz")
 
 sha256sums=('123a58223e5ac1d0ded53648643881130a8d1bea7faff755376a4e15b88055ce')
-sha256sums_x86_64=('8c1329f23d6a23e1e7318eda09510774512ed0b3fd9e0c7a5b9ee74c8af53572')
-sha256sums_i686=('a99939f6a74eb15ca39b6b9ca69a9f41f51a40d2fee4ebe1c1f9ff6b3f47c15c')
-sha256sums_aarch64=('7bc8e8c1a14518b0c458c854787e5d106c4442c6fa85db10dfa690456a677498')
+sha256sums_x86_64=('55714b2c1ed289b260787fe86dca8e4265a5d2b404fbd9416140f3f6c6938088')
+sha256sums_i686=('c2deb35a3e07c256f1153e901a4c119e33d5a74908219db85b77c3f02074eb33')
+sha256sums_aarch64=('928cd8e56c7822f3bd25e1111c7bfffa7c7fb7ee79740d66d42bbd28dc08b93f')
 
 prepare() {
   for shell in bash fish zsh; do
