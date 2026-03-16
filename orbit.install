@@ -1,6 +1,6 @@
 post_install() {
     echo ""
-    echo "Orbit WiFi/Bluetooth Manager installed!"
+    echo "Orbit WiFi/Bluetooth/VPN Manager installed!"
     echo ""
     echo "Configuration:"
     echo "  Config file: ~/.config/orbit/config.toml"
@@ -10,12 +10,14 @@ post_install() {
     echo "  orbit           - Launch GUI"
     echo "  orbit daemon    - Run as background daemon"
     echo "  orbit toggle    - Toggle daemon visibility"
+    echo "  orbit toggle --tab [wifi|bluetooth|vpn]"
     echo "  orbit reload-config     - Reload config without restarting"
     echo "  orbit list      - List WiFi networks (CLI)"
+    echo "  orbit waybar-status     - JSON status for Waybar"
     echo ""
     echo "Theme customization (~/.config/orbit/theme.toml):"
-    echo "  accent_primary = \"#8B5CF6\"    # Violet"
-    echo "  accent_secondary = \"#D97706\"  # Gold"
+    echo "  accent_primary = \"#8B5CF6\"    # Primary Accent"
+    echo "  accent_secondary = \"#D97706\"  # Secondary Accent"
     echo ""
 }
 
