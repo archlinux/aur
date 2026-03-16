@@ -1,6 +1,6 @@
 pkgbase = rog-perf-tuner-git
 	pkgdesc = An utility to manage Asus Rog laptop performance and RGB lighting
-	pkgver = 4.13.4.r28
+	pkgver = 4.13.4.r30
 	pkgrel = 1
 	url = https://github.com/Emiliopg91/RogPerfTuner
 	install = rog-perf-tuner-git.install
@@ -34,7 +34,6 @@ pkgbase = rog-perf-tuner-git
 	depends = qtermwidget
 	depends = qtkeychain-qt6
 	depends = openssl
-	depends = upower
 	optdepends = mangohud-git: Monitoring FPS, temperatures, CPU/GPU load and more
 	optdepends = scx-scheds: Use sched-ext schedulers
 	optdepends = switcheroo-control: Allow GPU selector for games
@@ -44,7 +43,7 @@ pkgbase = rog-perf-tuner-git
 	replaces = rog-perf-tuner
 	options = !debug
 	options = !lto
-	source = git+https://github.com/Emiliopg91/RogPerfTuner.git#commit=fd00ed05
+	source = git+https://github.com/Emiliopg91/RogPerfTuner.git#commit=b74f5696
 	sha256sums = SKIP
 
 pkgname = rog-perf-tuner-git
