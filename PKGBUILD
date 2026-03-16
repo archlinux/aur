@@ -3,7 +3,7 @@
 _pkgname=futubull-desktop
 
 pkgname=${_pkgname}-bin
-pkgver=16.0.14508
+pkgver=16.7.15208
 pkgrel=1
 pkgdesc="One-Stop Trading Platform for Hong Kong, US and China Connect Stocks"
 arch=('x86_64')
@@ -28,7 +28,7 @@ options=('!strip' '!debug' '!emptydirs')
 _deb="${pkgname}-${pkgver}.deb"
 source_x86_64=("${_deb}::https://softwaredownload.futunn.com/FTNN_desktop_${pkgver}_amd64.deb"
                "futubull.desktop")
-sha256sums_x86_64=('adc4b67ca5d6829d3ab9f982bd142f50d2e58be227354cc66e80cb76041f5921'
+sha256sums_x86_64=('658ef1cbc015a37839bc30aaea9f5136ff893a58cfad6daf908aadd10737b51c'
                    'a08936d41b249848e7cb1b2339f9cff6db5f7698a76c23580267353ec68fc1f6')
 
 package() {
