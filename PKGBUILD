@@ -3,9 +3,9 @@
 
 _name=bitsandbytes
 pkgname=python-$_name-rocm
-pkgdesc="Lightweight wrapper around CUDA custom functions, in particular 8-bit optimizers, matrix multiplication (LLM.int8()), and quantization functions (official AMD ROCm branch)"
+pkgdesc="Accessible large language models via k-bit quantization for PyTorch (ROCm version)"
 license=("MIT")
-url="https://github.com/TimDettmers/$_name"
+url="https://github.com/bitsandbytes-foundation/$_name"
 pkgver=0.49.2
 pkgrel=1
 arch=("x86_64")
