@@ -1,0 +1,13 @@
+# Arch Linux packaging ignores
+/pkg/
+/src/
+/biopass-bin/
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.src.tar.gz
+*.log
+
+# Downloaded sources
+*.deb
+*.tar.gz
+*.tar.xz
