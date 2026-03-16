@@ -1,19 +1,20 @@
 pkgbase = hyper-headset-bin
 	pkgdesc = HyperX headset family utilities (bin)
 	pkgver = 1.5.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/LennardKittner/HyperHeadset
 	arch = x86_64
 	license = MIT
 	depends = dbus
 	depends = libusb
-	depends = hidapi
 	provides = hyper-headset
 	conflicts = hyper-headset
 	replaces = hyperx-cloud-ii-wireless-bin
-	source = hyper_headset_Linux.zip::https://github.com/LennardKittner/HyperHeadset/releases/download/v1.5.1/hyper_headset_Linux.zip
-	source = local://99-hyperheadset.rules
+	source = hyper_headset_Linux.zip::https://github.com/lennardkittner/hyperheadset/releases/download/v1.5.1/hyper_headset_Linux.zip
+	source = 99-HyperHeadset.rules::https://raw.githubusercontent.com/lennardkittner/hyperheadset/v1.5.1/99-HyperHeadset.rules
+	source = hyper-headset.desktop::https://raw.githubusercontent.com/lennardkittner/hyperheadset/v1.5.1/hyper-headset.desktop
 	sha256sums = c1cfaab46bd1b26df334dcf5e108a241987374d76e75d14a3802ed233cfd4aa5
-	sha256sums = 69c951af8edd1fcec7812462b5dc4514bd7bce86ef16eb9518334a0fc5d3eaef
+	sha256sums = e10de3a4762b661205de31d8970c33de9ffc4cc68c74bf4b7751469a6cd593c2
+	sha256sums = 08e7ca1fdd0f6f62d50590afc7092e95ad9d71ebee75eacd604c5ea45462f706
 
 pkgname = hyper-headset-bin
