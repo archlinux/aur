@@ -1,7 +1,7 @@
 pkgbase = python-snakemake-interface-logger-plugins
 	pkgdesc = Snakemake Logger Plugin Interface
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/snakemake/snakemake-interface-logger-plugins
 	arch = any
 	license = MIT

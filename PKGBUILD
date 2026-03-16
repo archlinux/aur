@@ -2,7 +2,7 @@
 _name=snakemake-interface-logger-plugins
 pkgname=python-$_name
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Snakemake Logger Plugin Interface"
 arch=('any')
 url=https://github.com/snakemake/snakemake-interface-logger-plugins
