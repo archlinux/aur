@@ -1,7 +1,7 @@
 pkgbase = picard3
 	pkgdesc = Official MusicBrainz tagger
 	pkgver = 3.0.0a3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/metabrainz/picard
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -22,6 +22,7 @@ pkgbase = picard3
 	depends = python-pyqt6
 	depends = python-yaml
 	optdepends = chromaprint: fingerprinting
+	optdepends = python-pygit2: plugin installation
 	optdepends = qt6-multimedia: media player toolbar
 	optdepends = qt6-translations: full UI translation
 	provides = picard

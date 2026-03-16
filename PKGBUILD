@@ -1,4 +1,5 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Sam Whited <sam@samwhited.com>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 # Contributor: sysrq
@@ -6,7 +7,7 @@
 _pkgname=picard
 pkgname="${_pkgname}3"
 pkgver=3.0.0a3
-pkgrel=1
+pkgrel=2
 pkgdesc="Official MusicBrainz tagger"
 arch=(x86_64)
 url="https://github.com/metabrainz/picard"
@@ -35,6 +36,7 @@ makedepends=(
 checkdepends=(python-pytest)
 optdepends=(
   'chromaprint: fingerprinting'
+  'python-pygit2: plugin installation'
   'qt6-multimedia: media player toolbar'
   'qt6-translations: full UI translation'
 )
@@ -51,3 +53,5 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 {AUTHORS.txt,{CONTRIBUTING,NEWS,README}.md} -t "$pkgdir/usr/share/doc/$pkgname/"
 }
+
+# vim:set ts=2 sw=2 et:
