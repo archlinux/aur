@@ -2,13 +2,13 @@
 
 pkgname=link-lang-git
 pkgver=0.4.r0
-pkgrel=2
+pkgrel=3
 pkgdesc="Link programming language compiler (latest git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Pilot0253/link-lang"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('git' 'gcc')
+makedepends=('git' 'gcc' 'raylib')
 source=("git+https://github.com/Pilot0253/link-lang.git")
 sha256sums=('SKIP')
 
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/link-lang"
-    g++ -std=c++17 -o link src/*.cpp -I include
+    g++ -std=c++17 -o link src/*.cpp -I include -lraylib
 }
 
 package() {
