@@ -1,5 +1,5 @@
 pkgname=bfree
-pkgver=0.1.11
+pkgver=0.1.12
 pkgrel=1
 pkgdesc="bfree - memory stats for humans"
 arch=('x86_64')
@@ -7,8 +7,8 @@ url="https://github.com/glexposito/bfree"
 license=('MIT')
 depends=('glibc')
 makedepends=('cargo')
-source=("https://github.com/glexposito/bfree/archive/refs/tags/v0.1.11.tar.gz")
-sha256sums=('b1d314c0873f573d10283142369eac1c77379d334b9b824bc52ab64388f40a62')
+source=("https://github.com/glexposito/bfree/archive/refs/tags/v0.1.12.tar.gz")
+sha256sums=('9baff66082e7ab24e5cb842bb64d955cf91752d0005a07b4b64b68b198c568df')
 
 build() {
   cd "${srcdir}/bfree-${pkgver}"
