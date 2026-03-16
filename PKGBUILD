@@ -3,7 +3,7 @@
 # Contributor: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=dprint-bin
-pkgver=0.52.0
+pkgver=0.53.0
 pkgrel=1
 pkgdesc='Pluggable and configurable code formatting platform'
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source=('LICENSE')
 source_x86_64=("$pkgname-$pkgver-x86_64.zip::$url/releases/download/$pkgver/dprint-x86_64-unknown-linux-gnu.zip")
 source_aarch64=("$pkgname-$pkgver-aarch64.zip::$url/releases/download/$pkgver/dprint-aarch64-unknown-linux-gnu.zip")
 sha256sums=('43f8cfbeca17eccd83fc98f27d211073eaee5574fc3162f345acc196d6190ce7')
-sha256sums_x86_64=('3172f1564e4984ab0b511d5872b128ac91429a9e32a2db95977f3611a524d224')
-sha256sums_aarch64=('8a4675df3db6498d1fef37c1da508fa28dbdd9e87cd3c8ac15f5f763d2fec863')
+sha256sums_x86_64=('987185f5f0db6205e5bca88aaab04a7b29bc18bf7a8c1a84f56eef08c9730df0')
+sha256sums_aarch64=('a2ee78eb991e9fa7fc3cb203a5a086cb5590003b1aa6ad1bf6730df68b4124a5')
 
 package() {
     # generate shell completions
