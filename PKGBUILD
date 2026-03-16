@@ -10,23 +10,33 @@ pkgver=0.49.2
 pkgrel=1
 arch=("x86_64")
 depends=(
+  libgcc
+  libstdc++
+  glibc
+  hipblas
+  libgomp
   hipblaslt
-  hiprand
   hipsparse
+  hiprand
   hipcub
-  rocthrust
-  python-setuptools
-  python-pytest
-  python-einops
-  python-wheel
+  python
+  python-triton
   python-scipy
-  python-lion-pytorch
-  python-pandas
-  python-matplotlib
+  python-pytorch
+  python-numpy
+  python-typing_extensions
+  python-packaging
 )
 makedepends=(
+  git
   make
   cmake
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+  python-scikit-build-core
+  python-trove-classifiers
 )
 provides=("python-$_name")
 conflicts=("$pkgname-git")
