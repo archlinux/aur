@@ -2,7 +2,7 @@
 
 pkgname=link-lang
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Link programming language compiler"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Pilot0253/link-lang"
