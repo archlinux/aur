@@ -1,0 +1,5 @@
+[hulak-bin]
+source = "github"
+github = "xaaha/hulak"
+use_latest_release = true
+prefix = "v"

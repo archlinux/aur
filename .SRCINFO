@@ -1,0 +1,20 @@
+pkgbase = hulak-bin
+	pkgdesc = Lightweight file-based API client for terminal nerds
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/xaaha/hulak
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = hulak
+	conflicts = hulak
+	source = README-0.2.1.md::https://raw.githubusercontent.com/xaaha/hulak/v0.2.1/README.md
+	source = LICENSE-0.2.1::https://raw.githubusercontent.com/xaaha/hulak/v0.2.1/LICENSE
+	sha256sums = 0d67853a909bb065154f5f150997c921777c031f3f1d8cf360ddee01f53c379e
+	sha256sums = ca4a47155ba71183302af8af5c2ec019a322c63dbdbcf104eb46c150f3d3d7ec
+	source_x86_64 = hulak-x86_64-0.2.1.tgz::https://github.com/xaaha/hulak/releases/download/v0.2.1/hulak_0.2.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 9d188142b15a2d01afe6e7098f118b70bca4fbef33fc369db875f5215656aba7
+	source_aarch64 = hulak-aarch64-0.2.1.tgz::https://github.com/xaaha/hulak/releases/download/v0.2.1/hulak_0.2.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 2e369a042b4404bed5e560518bbed34a89882d2dac812293ec11e8dcc0b2c671
+
+pkgname = hulak-bin
