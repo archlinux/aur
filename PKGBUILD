@@ -1,3 +1,4 @@
+# Maintainer: Johan Larsson <johan@jolars.co>
 pkgname=tomat-bin
 pkgver=2.11.0
 pkgrel=2
@@ -8,7 +9,7 @@ license=('MIT')
 depends=('alsa-lib' 'gcc-libs')
 provides=('tomat')
 conflicts=('tomat')
-options=(!strip)
+options=(!strip !debug)
 source_x86_64=("tomat-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/tomat-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("tomat-$pkgver-aarch64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/tomat-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums_x86_64=('60f42555ebf995bef2dadd8758923444e9dbeec6e6cb6183bb1aca457264f474')
