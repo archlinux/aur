@@ -3,6 +3,7 @@ pkgbase = electron39-v3-bin
 	pkgver = 39.5.2
 	pkgrel = 1
 	url = https://github.com/jobeto86/electron39-v3-cachyos
+	install = electron39-v3-bin.install
 	arch = x86_64
 	license = MIT
 	license = BSD-3-Clause
@@ -26,6 +27,6 @@ pkgbase = electron39-v3-bin
 	noextract = electron39-39.5.2-1-x86_64.pkg.tar.zst
 	options = !strip
 	source = https://github.com/jobeto86/electron39-v3-cachyos/releases/download/v39.5.2-v3/electron39-39.5.2-1-x86_64.pkg.tar.zst
-	sha256sums = SKIP
+	sha256sums = fa31b50ae625e9ae212329465361e9f7dbee4a1b5c70ac7232b2f2d5640553d7
 
 pkgname = electron39-v3-bin

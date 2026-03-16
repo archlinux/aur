@@ -25,9 +25,10 @@ optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'trash-cli: file deletion support (trash-put)'
             'xdg-utils: open URLs with desktop default')
 options=('!strip')
+install=electron39-v3-bin.install
 # Download the pre-built pacman package from GitHub Releases
 source=("https://github.com/jobeto86/electron39-v3-cachyos/releases/download/v${pkgver}-v3/electron39-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('SKIP')
+sha256sums=('fa31b50ae625e9ae212329465361e9f7dbee4a1b5c70ac7232b2f2d5640553d7')
 noextract=("electron39-${pkgver}-1-x86_64.pkg.tar.zst")
 
 package() {

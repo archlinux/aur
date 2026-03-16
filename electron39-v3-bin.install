@@ -1,0 +1,15 @@
+post_install() {
+  if ! grep -q 'avx2' /proc/cpuinfo 2>/dev/null; then
+    echo "============================================="
+    echo " WARNING: electron39-v3-bin requires a CPU"
+    echo " with x86-64-v3 support (AVX2, BMI2, FMA)."
+    echo " Your CPU does NOT appear to support AVX2."
+    echo " This package will likely crash at runtime."
+    echo " Consider using 'electron39' (source) instead."
+    echo "============================================="
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
