@@ -4,8 +4,8 @@ _pkgname=splayer
 _Pkgname=SPlayer
 
 pkgname=splayer-appimage
-_upstream_pkgver=3.0.0-beta.9
-pkgver=3.0.0_beta.9
+_upstream_pkgver=3.0.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="🎉 一个简约的音乐播放器，支持逐字歌词，下载歌曲，展示评论区，音乐云盘及歌单管理，音乐频谱，移动端基础适配 | 网易云音乐 | A minimalist music player"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=(
     "${_Pkgname}.AppImage::https://github.com/imsyy/SPlayer/releases/download/v$_upstream_pkgver/splayer-$_upstream_pkgver-x86_64.AppImage"
 )
 sha256sums=(
-    "baf25937efd1fc1fa3f341eeb4b66a509d48bae412244d76ffdc40db6d250ae1"
+    "8bd7a3a2e64457e558a73f6b117fb9b0e928d95577cad181734101e68c62a886"
 )
 
 _appimage="${_Pkgname}.AppImage"
