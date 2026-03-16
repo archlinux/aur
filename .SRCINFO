@@ -1,6 +1,6 @@
 pkgbase = cloudreve-bin
 	pkgdesc = 🌩 Self-hosted file management and sharing system, supports multiple storage providers.(Prebuilt version)支持多家云存储驱动的公有云文件系统
-	pkgver = 4.14.1
+	pkgver = 4.15.0
 	pkgrel = 1
 	url = https://cloudreve.org/
 	arch = aarch64
@@ -13,11 +13,11 @@ pkgbase = cloudreve-bin
 	source = config.ini
 	sha256sums = 5e78a6bc0624c39ca1fb5e7733ffa8472d41540dab2e009871504c82469d0384
 	sha256sums = 3145bf311d7ae94a1f00a8c78df08240fa95668d1a8eb3981ffd7fca3b70535a
-	source_aarch64 = cloudreve-4.14.1-aarch64.tar.gz::https://github.com/cloudreve/cloudreve/releases/download/4.14.1/cloudreve_4.14.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 6939f9ba55646372b30debafbb95235e77979db5b3a334ae919f0af273312ee7
-	source_armv7h = cloudreve-4.14.1-armv7h.tar.gz::https://github.com/cloudreve/cloudreve/releases/download/4.14.1/cloudreve_4.14.1_linux_armv7.tar.gz
-	sha256sums_armv7h = 72d9667bac124f84a84e441ac106c4da6821d6a54625b3dc6452c881c4537e46
-	source_x86_64 = cloudreve-4.14.1-x86_64.tar.gz::https://github.com/cloudreve/cloudreve/releases/download/4.14.1/cloudreve_4.14.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = f8060a8b81c5889cae26da971c4334950fac3b97bb6429936371259874eeab82
+	source_aarch64 = cloudreve-4.15.0-aarch64.tar.gz::https://github.com/cloudreve/cloudreve/releases/download/4.15.0/cloudreve_4.15.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7fcec42286a2ec40f5b6e231f71d8dd8dfc2f64a11ace0937738ed800ec4c365
+	source_armv7h = cloudreve-4.15.0-armv7h.tar.gz::https://github.com/cloudreve/cloudreve/releases/download/4.15.0/cloudreve_4.15.0_linux_armv7.tar.gz
+	sha256sums_armv7h = b9c6ee56216cb448f437d857081fc836370b440b945d648e781eed1732ef4780
+	source_x86_64 = cloudreve-4.15.0-x86_64.tar.gz::https://github.com/cloudreve/cloudreve/releases/download/4.15.0/cloudreve_4.15.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = a22d0ba44f7276fcbaacdf08dcb2bd0c783a5be6fa98d3d4a93a32b7cfda185a
 
 pkgname = cloudreve-bin
