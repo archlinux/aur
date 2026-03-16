@@ -9,10 +9,10 @@ license=('MIT')
 depends=('intel-oneapi-tbb' 'hdf5' 'fontconfig' 'freetype2' 'libxcb')
 makedepends=('cmake' 'ninja' 'rust' 'pkgconf')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dc81cbb9e48d861088900408a6430161c225dc94bea5201748369e0a184ee3c9')
+sha256sums=('d9857f253e3d2e3034682183753136ba87856291e4e06319dbb789a089f1c621')
 
 prepare() {
-  cmake -B build -S "${pkgname}-${pkgver}" \
+  cmake -B build -S "Correlation-${pkgver}" \
     -DCMAKE_BUILD_TYPE=Release \
     -G Ninja
 }
