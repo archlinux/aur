@@ -14,6 +14,9 @@ depends=(
   'python-pyte'
   'python-six'
 )
+makedepends=(
+  'python-setuptools'
+)
 optdepends=(
   'python-pkgfile: better binary-to-package lookup'
 )
@@ -24,6 +27,7 @@ sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/fuck-master"
+  sed -i '/import fastentrypoints/d' setup.py
   python setup.py build
 }
 
