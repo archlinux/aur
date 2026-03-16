@@ -1,21 +1,30 @@
 pkgbase = recaf-bin
-	pkgdesc = A modern Java bytecode editor
-	pkgver = 2.21.14
-	pkgrel = 6
+	pkgdesc = The modern Java bytecode editor
+	pkgver = 4.0.0alpha
+	pkgrel = 1
 	url = https://github.com/Col-E/Recaf
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
-	makedepends = jdk-openjdk
-	depends = java-environment-openjdk=21
+	depends = java-environment-openjdk=25
 	depends = ttf-font
 	provides = recaf
 	conflicts = recaf
 	conflicts = recaf-git
 	replaces = recaf
-	noextract = recaf-2.21.14-J8-jar-with-dependencies.jar
-	source = https://github.com/Col-E/Recaf/releases/download/2.21.14/recaf-2.21.14-J8-jar-with-dependencies.jar
-	source = https://raw.githubusercontent.com/Col-E/Recaf/2.21.14/LICENSE
-	sha256sums = 8d14fc007e2a90a0d2331e5170cfce0f899ad96631aa7565623dea997c6bcb84
-	sha256sums = a13cb1a246bc0986c7185510a7ea9880e9f8eaf6d3a0437e2f3f2e2e85e9abb5
+	noextract = recaf-4x-alpha-linux-86x64.jar
+	noextract = recaf-4x-alpha-linux-aarch64.jar
+	source_x86_64 = https://github.com/Col-E/Recaf/releases/download/4.0.0-alpha/recaf-4x-alpha-linux-86x64.jar
+	source_x86_64 = https://raw.githubusercontent.com/Col-E/Recaf/4.0.0-alpha/recaf-ui/src/main/resources/icons/logo-full.png
+	source_x86_64 = https://raw.githubusercontent.com/Col-E/Recaf/4.0.0-alpha/LICENSE
+	sha256sums_x86_64 = 85807fe811e5092d16217074a1a4c05189dd8fa6f82b360b5b2a8367fcaaa736
+	sha256sums_x86_64 = 901fbcfa7944e89f5c34e73a3637fd21dc7c8e34b5612a7e0a0a707a4b45be1d
+	sha256sums_x86_64 = a98659971ead7e75b30f8d4ef8c27d13338c6187a49fee181379e74b89d4a16f
+	source_aarch64 = https://github.com/Col-E/Recaf/releases/download/4.0.0-alpha/recaf-4x-alpha-linux-aarch64.jar
+	source_aarch64 = https://raw.githubusercontent.com/Col-E/Recaf/4.0.0-alpha/recaf-ui/src/main/resources/icons/logo-full.png
+	source_aarch64 = https://raw.githubusercontent.com/Col-E/Recaf/4.0.0-alpha/LICENSE
+	sha256sums_aarch64 = 3bf177007e7166b2c5154df341bb686993baf3197314bc671e9b2af80b60018b
+	sha256sums_aarch64 = 901fbcfa7944e89f5c34e73a3637fd21dc7c8e34b5612a7e0a0a707a4b45be1d
+	sha256sums_aarch64 = a98659971ead7e75b30f8d4ef8c27d13338c6187a49fee181379e74b89d4a16f
 
 pkgname = recaf-bin

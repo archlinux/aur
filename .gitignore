@@ -3,4 +3,5 @@ src/
 
 *.jar
 *.pkg*
+*.png
 LICENSE
