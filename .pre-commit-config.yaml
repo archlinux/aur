@@ -1,0 +1,67 @@
+# Copyright Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+---
+# `pre-{commit,push}` aren’t recognized stages pre-3.2.0
+minimum_pre_commit_version: 3.2.0
+default_install_hook_types:
+  - pre-commit
+  - pre-push
+default_stages:
+  - pre-commit
+  - pre-push
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # frozen: v6.0.0
+    hooks:
+      - id: check-added-large-files
+        args:
+          - --maxkb=100
+          - --enforce-all
+      - id: check-merge-conflict
+        args:
+          - --assume-in-merge
+      - id: check-symlinks
+      - id: check-toml
+      - id: check-yaml
+      - id: destroyed-symlinks
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: forbid-submodules
+      - id: mixed-line-ending
+        args:
+          - --fix=lf
+      - id: trailing-whitespace
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: 3a6eb0fadf60b3cccfd80bad9dbb6fae7e47b316  # frozen: v1.10.0
+    hooks:
+      - id: text-unicode-replacement-char
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: 745eface02aef23e168a8afb6b5737818efbea95  # frozen: v0.11.0.1
+    hooks:
+      - id: shellcheck
+        types: [file]
+        types_or: [shell, bash]
+  - repo: https://opendev.org/openstack/bashate
+    rev: 5798d24d571676fc407e81df574c1ef57b520f23  # frozen: 2.1.1
+    hooks:
+      - id: bashate
+        types: [file]
+        types_or: [shell, bash]
+        args:
+          - --ignore=E005,E006
+  - repo: https://gitlab.archlinux.org/freso/archlinux-pre-commit
+    rev: 60333d4d7d738c3237006ed4e890a99523aa0124
+    hooks:
+      - id: namcap
+      - id: makepkg-update-srcinfo
+  - repo: https://git.fsfe.org/reuse/tool
+    rev: 9fabf9eb815a57aac116b435e8346c200cdb8604  # frozen: v6.2.0
+    hooks:
+      - id: reuse-lint-file
+        stages:
+          - pre-commit
+      - id: reuse
+        stages:
+          - pre-push
+...
