@@ -1,6 +1,6 @@
 pkgbase = lith-git
 	pkgdesc = A multiplatform WeeChat relay client
-	pkgver = 1.7.29.r0.g53841b6
+	pkgver = 1.7.58.r0.gabb7df0
 	pkgrel = 1
 	url = https://github.com/LithApp/Lith
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = lith-git
 	depends = qt6-websockets
 	depends = qcoro-qt6
 	depends = qtkeychain-qt6
+	depends = vulkan-headers
 	provides = lith
 	conflicts = lith
 	source = lith::git+https://github.com/LithApp/Lith.git
