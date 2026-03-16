@@ -1,13 +1,12 @@
 pkgbase = nettui-bin
 	pkgdesc = Unified TUI for Wi-Fi and Ethernet
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/skibidiandulka/nettui
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = glibc
 	depends = gcc-libs
-	provides = nettui
 	conflicts = nettui
 	conflicts = nettui-git
 	options = !debug
