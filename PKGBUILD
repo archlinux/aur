@@ -2,7 +2,7 @@
 
 pkgname=vsview-plugins-all
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Meta package to install all vsview plugins'
 arch=(any)
 license=(None)
@@ -13,4 +13,5 @@ depends=(
     'vsview-frameprops-extended'
     'vsview-fftspectrum'
     'vsview-audio-convert'
+    'vsview-nativeres'
 )
