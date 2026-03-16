@@ -1,0 +1,25 @@
+pkgbase = litgit-desktop-bin
+	pkgdesc = A fast, fluent, and minimal Git client designed for developers who demand speed and a clutter-free workflow.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yourtoools/LitGit
+	install = litgit-desktop-bin.install
+	arch = x86_64
+	license = custom:proprietary
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup
+	depends = pango
+	depends = webkit2gtk-4.1
+	provides = litgit-desktop
+	conflicts = litgit-desktop
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = litgit-desktop-bin-0.1.0.deb::https://github.com/yourtoools/LitGit/releases/download/v0.1.0/LitGit.Desktop_0.1.0_amd64.deb
+	sha256sums_x86_64 = a99a3c1270b64ac1b36fc170d4f053f9b4dedbc04e61c2eab83098096fb9ed48
+
+pkgname = litgit-desktop-bin
