@@ -1,0 +1,26 @@
+From 9e0a29e950195ca674581362675a8d35e1f7dc51 Mon Sep 17 00:00:00 2001
+From: Jean Ghali <jghali@libertysurf.fr>
+Date: Sat, 7 Mar 2026 22:29:28 +0000
+Subject: [PATCH] #17782: Failure to build with poppler 26.03.0
+
+git-svn-id: svn://scribus.net/trunk/Scribus@27454 11d20701-8431-0410-a711-e3c959e3b870
+---
+ scribus/plugins/import/pdf/slaoutput.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/scribus/plugins/import/pdf/slaoutput.cpp b/scribus/plugins/import/pdf/slaoutput.cpp
+index 9921febde0..e16d31ff93 100644
+--- a/scribus/plugins/import/pdf/slaoutput.cpp
++++ b/scribus/plugins/import/pdf/slaoutput.cpp
+@@ -884,7 +884,11 @@ bool SlaOutputDev::handleWidgetAnnot(Annot* annota, double xCoor, double yCoor,
+ 					const Ref ref = childRef.getRef();
+ 					radList.append(ref.num);
+ 				}
++#if POPPLER_ENCODED_VERSION >= POPPLER_VERSION_ENCODE(26, 3, 0)
++				QString tmTxt = UnicodeParsedString(annota->getUniqueName());
++#else
+ 				QString tmTxt = UnicodeParsedString(annota->getName());
++#endif
+ 				m_radioMap.insert(tmTxt, radList);
+ 			}
+ 		}
