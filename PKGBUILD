@@ -3,7 +3,7 @@
 # Contributor: Philippe Proulx <eeppeliteloop@gmail.com>
 pkgname=python-colormath2
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module that abstracts common color math operations"
 arch=('any')
 url="https://github.com/bkmgit/python-colormath2"
