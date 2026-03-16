@@ -1,7 +1,7 @@
 pkgbase = matlab
 	pkgdesc = A high-level language for numerical computation and visualization
 	pkgver = R2025b+25.2.0.3150157
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://www.mathworks.com/products/matlab.html
 	arch = x86_64
@@ -34,8 +34,8 @@ pkgname = matlab
 pkgname = java-matlab
 	pkgdesc = A high-level language for numerical computation and visualization (Java components)
 	install = java-matlab.install
-	depends = matlab>=1:R2025b+25.2.0.3150157-1
-	depends = matlab-jre-meta
+	depends = matlab>=1:R2025b+25.2.0.3150157-2
+	depends = matlab-jre
 	provides = java-matlab-release=R2025b
 	provides = java-matlab-version=25.2.0.3150157
 	provides = java-matlab-r2025b=25.2.0.3150157
@@ -44,7 +44,7 @@ pkgname = java-matlab
 pkgname = matlab-gcc
 	pkgdesc = A high-level language for numerical computation and visualization (GCC)
 	arch = any
-	depends = matlab>=1:R2025b+25.2.0.3150157-1
+	depends = matlab>=1:R2025b+25.2.0.3150157-2
 	depends = matlab-gcc-meta
 	provides = matlab-gcc-release=R2025b
 	provides = matlab-gcc-version=25.2.0.3150157
@@ -54,7 +54,7 @@ pkgname = matlab-gcc
 pkgname = matlab-gcc-fortran
 	pkgdesc = A high-level language for numerical computation and visualization (GCC Fortran)
 	arch = any
-	depends = matlab>=1:R2025b+25.2.0.3150157-1
+	depends = matlab>=1:R2025b+25.2.0.3150157-2
 	depends = matlab-gcc-fortran-meta
 	provides = matlab-gcc-fortran-release=R2025b
 	provides = matlab-gcc-fortran-version=25.2.0.3150157

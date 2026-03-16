@@ -137,7 +137,7 @@ pkgname=(
 pkgver=R2025b+25.2.0.3150157
 _release="${pkgver%+*}"
 _version="${pkgver##*+}"
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=(
@@ -350,7 +350,7 @@ package_java-matlab() {
   pkgdesc+=" (Java components)"
   depends=(
     "${pkgbase}>=${epoch}:${pkgver}-${pkgrel}"
-    "matlab-jre-meta" # >=${_release}
+    "matlab-jre" # >=${_release}
   )
   provides=(
     "${pkgname}-release=${_release}"
