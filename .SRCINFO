@@ -1,0 +1,31 @@
+pkgbase = electron39-v3-bin
+	pkgdesc = Electron 39 optimized for x86-64-v3 with glibc 2.43 fix (prebuilt binary)
+	pkgver = 39.5.2
+	pkgrel = 1
+	url = https://github.com/jobeto86/electron39-v3-cachyos
+	arch = x86_64
+	license = MIT
+	license = BSD-3-Clause
+	depends = c-ares
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = libevent
+	depends = libffi
+	depends = libpulse
+	depends = nss
+	depends = zlib
+	optdepends = kde-cli-tools: file deletion support (kioclient5)
+	optdepends = pipewire: WebRTC desktop sharing under Wayland
+	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
+	optdepends = gtk4: for --gtk-version=4
+	optdepends = trash-cli: file deletion support (trash-put)
+	optdepends = xdg-utils: open URLs with desktop default
+	provides = electron39=39.5.2
+	conflicts = electron39
+	noextract = electron39-39.5.2-1-x86_64.pkg.tar.zst
+	options = !strip
+	source = https://github.com/jobeto86/electron39-v3-cachyos/releases/download/v39.5.2-v3/electron39-39.5.2-1-x86_64.pkg.tar.zst
+	sha256sums = SKIP
+
+pkgname = electron39-v3-bin
