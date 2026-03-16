@@ -1,7 +1,7 @@
-From a84de5de7b88020f8d6bca1395c320c9ae71d30b Mon Sep 17 00:00:00 2001
+From 5eba120264e68e3a45d8d9a9d5556f000fe9f9dd Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 01:11:52 +0100
-Subject: [PATCH 2/6] Dockerfile.dapper: sanitize $DAPPER_OUTPUT
+Subject: [PATCH 2/7] Dockerfile.dapper: sanitize $DAPPER_OUTPUT
 
 Existing $DAPPER_OUTPUT is not enough to be able to run build steps
 sequentially (i. e. `make download; make generate; make build;
@@ -16,10 +16,10 @@ extracting anything other than the final artifacts.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/Dockerfile.dapper b/Dockerfile.dapper
-index 498114f8dd..47d7a2b549 100644
+index 2b87603700..f8e7f58070 100644
 --- a/Dockerfile.dapper
 +++ b/Dockerfile.dapper
-@@ -46,7 +46,7 @@ ENV SELINUX=${SELINUX}
+@@ -47,7 +47,7 @@ ENV SELINUX=${SELINUX}
  ENV DAPPER_RUN_ARGS="--privileged -v k3s-cache:/go/src/github.com/k3s-io/k3s/.cache -v trivy-cache:/root/.cache/trivy" \
      DAPPER_ENV="REPO TAG DRONE_TAG IMAGE_NAME SKIP_VALIDATE SKIP_IMAGE SKIP_AIRGAP AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID GITHUB_TOKEN GOLANG GOCOVER GOOS DEBUG" \
      DAPPER_SOURCE="/go/src/github.com/k3s-io/k3s/" \
@@ -29,5 +29,5 @@ index 498114f8dd..47d7a2b549 100644
      CROSS=true \
      STATIC_BUILD=true
 -- 
-2.52.0.5.g6c3c29cc24e
+2.53.0.8.g57fba0c4633
 

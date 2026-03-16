@@ -1,7 +1,7 @@
-From 517386337d4690c37efca7951f566f8e89751889 Mon Sep 17 00:00:00 2001
+From e54b0e6e81f5dacf042bbee5158e5ff7c5818642 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Sat, 23 Dec 2023 02:12:21 +0100
-Subject: [PATCH 6/6] scripts: moar compression, drop pigz and raw tar
+Subject: [PATCH 6/7] scripts: moar compression, drop pigz and raw tar
 
 ---
  scripts/package-airgap | 20 ++++++++++++++------
@@ -59,5 +59,5 @@ index fbdc3463e6..6c89fec818 100755
  BIN_SUFFIX="-${ARCH}"
  if [ ${ARCH} = amd64 ]; then
 -- 
-2.52.0.5.g6c3c29cc24e
+2.53.0.8.g57fba0c4633
 
