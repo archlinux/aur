@@ -1,6 +1,6 @@
 pkgbase = savebutton
 	pkgdesc = Simple bookmark and notes manager
-	pkgver = 0.2.15
+	pkgver = 0.2.16
 	pkgrel = 1
 	url = https://github.com/lofimx/kaya-gtk
 	arch = x86_64
@@ -17,7 +17,8 @@ pkgbase = savebutton
 	depends = gtk4
 	depends = libadwaita
 	depends = libsecret
-	source = savebutton-0.2.15.tar.gz::https://github.com/lofimx/kaya-gtk/archive/refs/tags/v0.2.15.tar.gz
-	sha256sums = a6f8e8e574b9d9c664a95d15f2532a8539a3215a38c78fda27d4dfa98591818a
+	depends = poppler-glib
+	source = savebutton-0.2.16.tar.gz::https://github.com/lofimx/kaya-gtk/archive/refs/tags/v0.2.16.tar.gz
+	sha256sums = 911721d28df0e1c35ef60f4c77e1ebe6e2110e3694daaf50b0fd51cd369e3c6d
 
 pkgname = savebutton
