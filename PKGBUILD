@@ -80,6 +80,8 @@ package() {
     [[ -z "$data_tar" ]] && { echo "ERROR: data.tar not found in .deb"; return 1; }
     tar -xf "$data_tar" -C "$pkgdir"
 
+    rm -f "$pkgdir/usr/bin/aria2c"
+
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Replace the bundled aria2c sidecar copy with a symlink to the system package.
