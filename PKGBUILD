@@ -1,7 +1,7 @@
 # Maintainer: spacechicken <spacechicken at aur>
 pkgname=fuck
 pkgver=3.32
-pkgrel=3
+pkgrel=4
 pkgdesc="Magnificent app which corrects your previous console command - with improved Arch Linux package prediction"
 arch=('any')
 url="https://github.com/RonanHevenor/fuck"
@@ -22,12 +22,11 @@ optdepends=(
 )
 provides=('thefuck')
 conflicts=('thefuck')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/RonanHevenor/fuck/archive/refs/heads/master.tar.gz")
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/RonanHevenor/fuck/archive/refs/heads/master.tar.gz")
 sha256sums=('SKIP')
 
 build() {
   cd "${srcdir}/fuck-master"
-  sed -i '/import fastentrypoints/d' setup.py
   python setup.py build
 }
 
