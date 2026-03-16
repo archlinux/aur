@@ -1,7 +1,7 @@
 pkgbase = scratch3
 	pkgdesc = Scratch 3.0 as a self-contained desktop application
 	pkgver = 3.31.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/scratchfoundation/scratch-desktop
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,7 @@ pkgbase = scratch3
 	makedepends = nodejs
 	makedepends = npm
 	depends = electron39
+	depends = libxcrypt-compat
 	optdepends = xdg-utils: To open Scratch files from URLs
 	provides = scratch3
 	conflicts = scratch3-bin

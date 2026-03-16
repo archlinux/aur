@@ -4,13 +4,13 @@
 
 pkgname="scratch3"
 pkgver=3.31.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Scratch 3.0 as a self-contained desktop application'
 arch=('x86_64' 'aarch64')
 url='https://github.com/scratchfoundation/scratch-desktop'
 license=('AGPL-3.0-only')
 _electron='electron39'
-depends=("$_electron")
+depends=("$_electron" 'libxcrypt-compat')
 makedepends=('git' 'nodejs' 'npm')
 optdepends=('xdg-utils: To open Scratch files from URLs')
 provides=('scratch3')
