@@ -1,15 +1,14 @@
 pkgbase = concurrently-bin
-	pkgdesc = Concurrent subagent workflow TUI — like Claude Code, but parallel
-	pkgver = 0.1.1
+	pkgdesc = Parallel Claude Code agent TUI — spawn multiple agents, chat with all of them at once
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/brianmatzelle/concurrently-releases
+	url = https://github.com/brianmatzelle/concurrently
 	arch = x86_64
-	license = MIT
+	license = GPL-3.0-or-later
 	depends = gcc-libs
-	depends = openssl
 	provides = concurrently
 	conflicts = concurrently
-	source = https://github.com/brianmatzelle/concurrently-releases/releases/download/v0.1.1/concurrently-v0.1.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = b3f32509c1f4d3701265eee1ecac6d9a8e7fc3b4814b371adbf73d2fbbb97f6d
+	source = https://github.com/brianmatzelle/concurrently/releases/download/v0.2.0/concurrently-v0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 071ce7129d3f0787de1fd563dc2a44bf8303e8c990b9e4b3ec1f2981fd90d1ce
 
 pkgname = concurrently-bin
