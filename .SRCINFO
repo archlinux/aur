@@ -7,6 +7,7 @@ pkgbase = epson-inkjet-printer-filter
 	arch = x86_64
 	license = LGPL-2.1-or-later
 	license = custom:Epson End User Software License Agreement
+	makedepends = curl
 	depends = cups
 	depends = glibc
 	depends = libcups

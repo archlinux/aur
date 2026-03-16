@@ -25,6 +25,9 @@ depends=(
   'libjpeg'   # see below
   'libstdc++' # see below
 )
+makedepends=(
+  'curl'
+)
 options=(
   'emptydirs'
 )
@@ -42,11 +45,12 @@ source=(
 sha256sums=('ac757bb6d392b6662779228e518bb3e9b4de02d275235c4afd41465447d38b45'
             '94a18c4839ebb3bbd8224c02075fe3489dd7dfe873b683adf3149250c6a8ad16'
             '496ec60ac0d324bf9ebc652b0b1cbe73a98651d408f8903d41aa049bbc53807b')
-#  download.ebz.epson.net blocks some user-agents and returns 403
+# download.ebz.epson.net blocks some user-agents and returns 403
 # download3.ebz.epson.net works fine (for now)
-# DLAGENTS=(
-#   "https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u"
-# )
+# download-center.epson.com blocks some user-agents and returns 403
+DLAGENTS=(
+  "https::/usr/bin/curl -A 'Mozilla' -fLC - --retry 3 --retry-delay 3 -o %o %u"
+)
 
 prepare() {
   cd "${srcdir}"
