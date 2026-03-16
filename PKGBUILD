@@ -3,7 +3,7 @@
 
 pkgname=python-viztracer
 _pkgname=viztracer
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='VizTracer is a low-overhead logging/debugging/profiling tool that can trace and visualize your python code execution.'
 arch=('x86_64')
@@ -21,8 +21,8 @@ optdepends=(
   'chromium: browser to open html results'
 )
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/gaogaotiantian/viztracer/archive/$pkgver.tar.gz")
-sha512sums=('58629633254dc791bebdcc7be5b424c6f424526276c49f45557d0ebd16ba80386cd6566cce9e260ee8de407dfdb85f55ef63ee51d8f63a03ef9d12389fe6dc1f')
-b2sums=('f0cf48113d3c8d7b2a945af6b470561ac7bad6f02d0776fe70d885e8f329e58b3a7c27b61a9ba1d69c88a222125dd147a1b48ebd9b2b0a0e39d6fea65c1a45c3')
+sha512sums=('6ddaab573172f53f940bf2b66f8d384d63378baf4a0b2439e6a816e6aeae69ab44c423dcb1bac3ddd14092667ccfb5323abbc4562e239acbc7c50124726d6476')
+b2sums=('a0fc3aca12a93443f1449000c39348f4dae7be80cfeaf6a4829875cc48df515c25dccd102df96f9cfc82c9faf184dedf7d46fa7c76f4eb94a44edcac507dc420')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver" || exit
