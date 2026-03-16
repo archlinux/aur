@@ -1,12 +1,12 @@
 # Maintainer: sgtaziz <sgtaziz013 at google dot com>
 pkgname=lianli-linux-git
-pkgver=r74.ec8a512
+pkgver=r76.62a4a5a
 pkgrel=1
 pkgdesc="Open-source Linux replacement for L-Connect 3 - fan control, RGB, LCD streaming for Lian Li devices"
 arch=('x86_64')
 url="https://github.com/sgtaziz/lian-li-linux"
 license=('MIT')
-depends=('hidapi' 'libusb' 'ffmpeg' 'fontconfig' 'mesa' 'libxkbcommon' 'wayland' 'libx11' 'libinput' 'libdrm')
+depends=('libusb' 'ffmpeg' 'fontconfig' 'mesa' 'libxkbcommon' 'wayland' 'libx11' 'libinput' 'libdrm')
 makedepends=('git' 'rust' 'cargo' 'clang' 'cmake' 'pkg-config')
 provides=('lianli-linux')
 conflicts=('lianli-linux')
