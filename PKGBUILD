@@ -2,7 +2,7 @@
 
 pkgname=modrinth-app-appimage
 _pkgname=${pkgname%-appimage}
-pkgver=0.12.2
+pkgver=0.12.4
 pkgrel=1
 pkgdesc='An unique, open source launcher that allows you to play your favorite mods, and keep them up to date, all in one neat little package.'
 url='https://modrinth.com/app'
@@ -20,7 +20,7 @@ source=(
 )
 options=(!strip !debug)
 noextract=("Modrinth%20App_${pkgver}_amd64.AppImage")
-sha256sums=('455887a480f4d6bfd288f9b3257e9d54604691747fb50d4f1cfa5a5383bf46e5'
+sha256sums=('d9610102ba33d5ef2d0ba8ac7d0c372bc2e6e82184fc91902667e479b2359a6b'
             '5241eac73fafd6eb4b763ffedeb4d9bb4559ed3fa8fc0c31edd3c6ef62cbc375'
             'e0b3eab49465709ed5053dc1fa4206071ab32657d25bd1f9c01850d696715cff')
 
