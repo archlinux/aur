@@ -1,0 +1,15 @@
+pkgbase = vhdl-ls
+	pkgdesc = Language server for VHDL Written in rust
+	pkgver = 0.86.0
+	pkgrel = 1
+	url = github.com/VHDL-LS/rust_hdl
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = rust
+	makedepends = cargo
+	provides = vhdl-ls
+	conflicts = rust_hdl
+	source = vhdl-ls-0.86.0.tar.gz::https://github.com/VHDL-LS/rust_hdl/archive/refs/tags/v0.86.0.tar.gz
+	sha256sums = 975f2ee65792e4f6048f31fccb24821800ceb3f4cbdb873df448da468e907304
+
+pkgname = vhdl-ls
