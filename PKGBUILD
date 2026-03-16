@@ -2,20 +2,22 @@
 pkgname=meza-desktop-bin
 pkgver=0.0.8
 pkgrel=1
-pkgdesc='Meza desktop client — real-time encrypted chat'
+pkgdesc='Meza desktop client - real-time encrypted chat'
 arch=('x86_64')
 url='https://meza.chat'
 license=('AGPL-3.0-or-later')
 depends=(
+  'alsa-lib'
+  'at-spi2-core'
   'gtk3'
+  'libcups'
   'libnotify'
-  'nss'
+  'libsecret'
   'libxss'
   'libxtst'
-  'xdg-utils'
-  'at-spi2-core'
+  'nss'
   'util-linux-libs'
-  'libsecret'
+  'xdg-utils'
 )
 provides=('meza-desktop')
 conflicts=('meza-desktop')
@@ -39,7 +41,7 @@ package() {
   find "${pkgdir}/opt/meza" -type d -exec chmod 755 {} +
   find "${pkgdir}/opt/meza" -type f -exec chmod 644 {} +
   chmod 755 "${pkgdir}/opt/meza/meza"
-  chmod 755 "${pkgdir}/opt/meza/chrome-sandbox"
+  chmod 4755 "${pkgdir}/opt/meza/chrome-sandbox"
   chmod 755 "${pkgdir}/opt/meza/chrome_crashpad_handler"
 
   # Ensure icon is available for Electron window/tray
