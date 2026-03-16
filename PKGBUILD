@@ -3,7 +3,7 @@
 
 pkgname=hyper-headset-bin
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='HyperX headset family utilities (bin)'
 arch=('x86_64')
 url='https://github.com/LennardKittner/HyperHeadset'
@@ -18,11 +18,13 @@ source=(
   "hyper_headset_Linux.zip::https://github.com/lennardkittner/hyperheadset/releases/download/v${pkgver}/hyper_headset_Linux.zip"
   "99-HyperHeadset.rules::https://raw.githubusercontent.com/lennardkittner/hyperheadset/v$pkgver/99-HyperHeadset.rules"
   "hyper-headset.desktop::https://raw.githubusercontent.com/lennardkittner/hyperheadset/v$pkgver/hyper-headset.desktop"
-
 )
-sha256sums=('e89ed91172324d3c2fcaa0f226c202a1a5eaf1cb45bdc23afc22f521da730eb8'
-            '9867046ffe25ee100ad49a5c51f1cdf94186035ad469c97ad3c7a96fbb892144'
-            '08e7ca1fdd0f6f62d50590afc7092e95ad9d71ebee75eacd604c5ea45462f706')
+
+sha256sums=(
+  'e89ed91172324d3c2fcaa0f226c202a1a5eaf1cb45bdc23afc22f521da730eb8'
+  '9867046ffe25ee100ad49a5c51f1cdf94186035ad469c97ad3c7a96fbb892144'
+  '08e7ca1fdd0f6f62d50590afc7092e95ad9d71ebee75eacd604c5ea45462f706'
+)
 
 package() {
   install -Dm755 hyper_headset "${pkgdir}/usr/bin/hyper_headset"
@@ -31,7 +33,5 @@ package() {
   install -Dm644 99-HyperHeadset.rules "${pkgdir}/usr/lib/udev/rules.d/99-HyperHeadset.rules"
   
   install -Dm644 hyper-headset.desktop "${pkgdir}/usr/share/applications/hyper-headset.desktop"
-  
-
 }
 
