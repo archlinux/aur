@@ -1,6 +1,6 @@
 pkgbase = nmsurf
 	pkgdesc = Fast NetworkManager frontend supports rofi, wofi, walker and fuzzel
-    pkgver = 1.0.2
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/aayushkdev/nmsurf
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = nmsurf
 	provides = nmsurf
 	conflicts = nmsurf
 	options = !debug
-    source = nmsurf-1.0.2.tar.gz::https://github.com/aayushkdev/nmsurf/releases/download/v1.0.2/nmsurf-linux-amd64.tar.gz
-    sha256sums = SKIP
+	source = nmsurf-1.0.2.tar.gz::https://github.com/aayushkdev/nmsurf/releases/download/v1.0.2/nmsurf-linux-amd64.tar.gz
+	sha256sums = 1f57d8345cce11743dd6f72262a81e5a13152571a92b60eeb82cd0870a9cf8f5
 
 pkgname = nmsurf

@@ -24,7 +24,7 @@ source=(
   "$pkgname-$pkgver.tar.gz::https://github.com/aayushkdev/nmsurf/releases/download/v$pkgver/nmsurf-linux-amd64.tar.gz"
 )
 
-sha256sums=('SKIP')
+sha256sums=('1f57d8345cce11743dd6f72262a81e5a13152571a92b60eeb82cd0870a9cf8f5')
 
 package() {
   cd "$srcdir"
