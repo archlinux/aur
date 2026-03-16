@@ -1,0 +1,6 @@
+# AUR build artifacts
+/pkg/
+/src/
+/mould/
+*.pkg.tar.*
+*.log

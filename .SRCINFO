@@ -1,0 +1,17 @@
+pkgbase = mould-git
+	pkgdesc = A modern TUI tool for interactively generating and editing configuration files from templates
+	pkgver = 0.2.1.r17.g93c5c30
+	pkgrel = 1
+	url = https://git.narl.io/nvrl/mould-rs
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = mould
+	conflicts = mould
+	source = mould::git+https://git.narl.io/nvrl/mould-rs.git
+	sha256sums = SKIP
+
+pkgname = mould-git
