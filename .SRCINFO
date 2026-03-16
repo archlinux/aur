@@ -1,0 +1,13 @@
+pkgbase = zenity-bash-completion
+	pkgdesc = Bash completion for zenity
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/MaanooAk/zenity-bash-completion
+	arch = any
+	license = MIT
+	depends = zenity
+	depends = bash-completion
+	source = zenity-bash-completion-0.1.tar.gz::https://github.com/MaanooAk/zenity-bash-completion/archive/v0.1.tar.gz
+	sha1sums = c358ad36e4402611827753b1070e405fa02be454
+
+pkgname = zenity-bash-completion
