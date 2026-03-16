@@ -17,6 +17,8 @@ prepare() {
   cd symengine-$pkgver
   # install cmake config into lib/cmake
   sed -i "s|if(WIN32 AND NOT CYGWIN)|if(0)|g" CMakeLists.txt
+  # llvm 22
+  curl -L https://github.com/symengine/symengine/commit/ea9868e.patch | patch -p1 || echo
 }
 
 build() {
