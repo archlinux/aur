@@ -1,0 +1,216 @@
+diff --git a/makehuman/core/files3d.py b/makehuman/core/files3d.py
+index 106ef95a..9dbbe145 100644
+--- a/makehuman/core/files3d.py
++++ b/makehuman/core/files3d.py
+@@ -78,7 +78,7 @@ def packStringList(strings):
+     for string in strings:
+         index.append(len(text))
+         text += string
+-    text = np.fromstring(text, dtype='S1')
++    text = np.frombuffer(text.encode('utf-8'), dtype='S1')
+     index = np.array(index, dtype=np.uint32)
+     return text, index
+ 
+@@ -87,11 +87,11 @@ def unpackStringList(text, index):
+     last = None
+     for i in index:
+         if last is not None:
+-            name = str(text[last:i].tostring(), 'utf-8')
++            name = str(text[last:i].tobytes(), 'utf-8')
+             strings.append(name)
+         last = i
+     if last is not None:
+-        name = str(text[last:].tostring(), 'utf8')
++        name = str(text[last:].tobytes(), 'utf8')
+         strings.append(name)
+ 
+     return strings
+diff --git a/makehuman/lib/image.py b/makehuman/lib/image.py
+index 9df9d607..505da11e 100644
+--- a/makehuman/lib/image.py
++++ b/makehuman/lib/image.py
+@@ -198,7 +198,7 @@ class Image(object):
+             fmt = image_qt.QtGui.QImage.Format_ARGB32
+             data = self.data
+         return image_qt.QtGui.QImage(
+-            data.tostring(), data.shape[1], data.shape[0], fmt)
++            data.tobytes(), data.shape[1], data.shape[0], fmt)
+ 
+     def resized_(self, width, height, filter=FILTER_NEAREST):
+         if filter == FILTER_NEAREST:
+@@ -353,4 +353,3 @@ def _isQPixmap(img):
+         return isinstance(img, image_qt.QtGui.QPixmap)
+     else:
+         return False
+-
+diff --git a/makehuman/lib/image_qt.py b/makehuman/lib/image_qt.py
+index 82dce6da..cec68a31 100644
+--- a/makehuman/lib/image_qt.py
++++ b/makehuman/lib/image_qt.py
+@@ -61,7 +61,7 @@ def load(path):
+ 
+     pixels = im.bits().asstring(h * w * 4)
+ 
+-    pixels = np.fromstring(pixels, dtype=np.uint32).reshape((h, w))
++    pixels = np.frombuffer(pixels, dtype=np.uint32).reshape((h, w))
+     del im
+ 
+     a = (pixels >> 24).astype(np.uint8)
+@@ -102,7 +102,7 @@ def toQImage(data):
+         fmt = QtGui.QImage.Format_ARGB32
+         pixels = data[...,3] * 0x1000000 + data[...,0] * 0x10000 + data[...,1] * 0x100 + data[...,2]
+ 
+-    return QtGui.QImage(pixels.tostring(), w, h, w * 4, fmt)
++    return QtGui.QImage(pixels.tobytes(), w, h, w * 4, fmt)
+ 
+ def save(path, data):
+     """
+@@ -129,4 +129,3 @@ def resized(img, width, height, filter=0):
+     qi = qi.scaled(QtCore.QSize(int(width), int(height)), 
+                    transformMode=transform)
+     return load(qi)
+-
+diff --git a/makehuman/makehuman.py b/makehuman/makehuman.py
+index 7bffd00d..3efa02c9 100755
+--- a/makehuman/makehuman.py
++++ b/makehuman/makehuman.py
+@@ -401,7 +401,7 @@ Homepage: %s""" % (self.author, self.license, self.copyright, self.homepage)
+                 index.append(len(key))
+                 index.append(len(value))
+                 text += key + value
+-            text = np.fromstring(text, dtype='S1')
++            text = np.frombuffer(text.encode('utf-8'), dtype='S1')
+             index = np.array(index, dtype=np.uint32)
+             return np.array([text, index], dtype=object)
+ 
+@@ -415,8 +415,8 @@ Homepage: %s""" % (self.author, self.license, self.copyright, self.homepage)
+                 l_key = index[i]
+                 l_val = index[i+1]
+ 
+-                key = str(text[last:last+l_key].tostring(), 'utf8')
+-                val = str(text[last+l_key:last+l_key+l_val].tostring(), 'utf8')
++                key = str(text[last:last+l_key].tobytes(), 'utf8')
++                val = str(text[last+l_key:last+l_key+l_val].tobytes(), 'utf8')
+                 stringDict[key] = val
+ 
+                 last += (l_key + l_val)
+diff --git a/makehuman/shared/proxy.py b/makehuman/shared/proxy.py
+index ac98a196..c8b0797f 100644
+--- a/makehuman/shared/proxy.py
++++ b/makehuman/shared/proxy.py
+@@ -64,6 +64,10 @@ _A7converter = None
+ Unit3 = np.identity(3,float)
+ 
+ 
++def _numpy_bytes(value):
++    return np.frombuffer(value.encode('utf-8'), dtype='S1')
++
++
+ class Proxy:
+     def __init__(self, file, type, human):
+         log.debug("Loading proxy file: %s.", file)
+@@ -558,22 +562,22 @@ def saveBinaryProxy(proxy, path):
+ 
+         vars_ = dict(
+             #proxyType = np.fromstring(proxy.type, dtype='S1'),     # TODO store proxy type?
+-            name = np.fromstring(proxy.name, dtype='S1'),
+-            uuid = np.fromstring(proxy.uuid, dtype='S1'),
+-            description = np.fromstring(proxy.description, dtype='S1'),
+-            basemesh = np.fromstring(proxy.basemesh, dtype='S1'),
++            name = _numpy_bytes(proxy.name),
++            uuid = _numpy_bytes(proxy.uuid),
++            description = _numpy_bytes(proxy.description),
++            basemesh = _numpy_bytes(proxy.basemesh),
+             tags_str = tagStr,
+             tags_idx = tagIdx,
+             lic_str = licStr,
+             lic_idx = licIdx,
+             uvLayers_str = uvStr,
+             uvLayers_idx = uvIdx,
+-            obj_file = np.fromstring(_properPath(proxy.obj_file), dtype='S1'),
++            obj_file = _numpy_bytes(_properPath(proxy.obj_file)),
+             version = np.asarray(proxy.version, dtype=np.int32)
+         )
+ 
+         if proxy.material_file:
+-            vars_["material_file"] = np.fromstring(_properPath(proxy.material_file), dtype='S1')
++            vars_["material_file"] = _numpy_bytes(_properPath(proxy.material_file))
+ 
+         if np.any(proxy.deleteVerts):
+             vars_["deleteVerts"] = proxy.deleteVerts
+@@ -608,7 +612,7 @@ def saveBinaryProxy(proxy, path):
+         vars_['num_refverts'] = np.asarray(num_refverts, dtype=np.int32)
+ 
+         if proxy.vertexBoneWeights_file:
+-            vars_['vertexBoneWeights_file'] = np.fromstring(_properPath(proxy.vertexBoneWeights_file), dtype='S1')
++            vars_['vertexBoneWeights_file'] = _numpy_bytes(_properPath(proxy.vertexBoneWeights_file))
+ 
+         np.savez_compressed(fp, **vars_)
+     os.utime(path, None)  # Ensure modification time is updated
+@@ -624,12 +628,12 @@ def loadBinaryProxy(path, human, type):
+ 
+     proxy = Proxy(path, proxyType, human)
+ 
+-    proxy.name = str(npzfile['name'].tostring(), 'utf8')
+-    proxy.uuid = str(npzfile['uuid'].tostring(), 'utf8')
+-    proxy.basemesh = str(npzfile['basemesh'].tostring(), 'utf8')
++    proxy.name = str(npzfile['name'].tobytes(), 'utf8')
++    proxy.uuid = str(npzfile['uuid'].tobytes(), 'utf8')
++    proxy.basemesh = str(npzfile['basemesh'].tobytes(), 'utf8')
+ 
+     if 'description' in npzfile:
+-        proxy.description = str(npzfile['description'].tostring(), 'utf8')
++        proxy.description = str(npzfile['description'].tobytes(), 'utf8')
+ 
+     if 'version' in npzfile:
+         proxy.version = int(npzfile['version'])
+@@ -678,14 +682,14 @@ def loadBinaryProxy(path, human, type):
+ 
+     proxy.material = material.Material(proxy.name)
+     if 'material_file' in npzfile:
+-        proxy._material_file = str(npzfile['material_file'].tostring(), 'utf8')
++        proxy._material_file = str(npzfile['material_file'].tobytes(), 'utf8')
+     if proxy.material_file:
+         proxy.material.fromFile(proxy.material_file)
+ 
+-    proxy._obj_file = str(npzfile['obj_file'].tostring(), 'utf8')
++    proxy._obj_file = str(npzfile['obj_file'].tobytes(), 'utf8')
+ 
+     if 'vertexBoneWeights_file' in npzfile:
+-        proxy._vertexBoneWeights_file = str(npzfile['vertexBoneWeights_file'].tostring(), 'utf8')
++        proxy._vertexBoneWeights_file = str(npzfile['vertexBoneWeights_file'].tobytes(), 'utf8')
+         if proxy.vertexBoneWeights_file:
+             from animation import VertexBoneWeights
+             proxy.vertexBoneWeights = VertexBoneWeights.fromFile(proxy.vertexBoneWeights_file)
+@@ -1012,7 +1016,7 @@ def peekMetadata(proxyFilePath, proxyType=None):
+             # Binary proxy file
+             npzfile = np.load(proxyFilePath)
+ 
+-            uuid = str(npzfile['uuid'].tostring(), 'utf8')
++            uuid = str(npzfile['uuid'].tobytes(), 'utf8')
+             tags = set(_unpackStringList(npzfile['tags_str'], npzfile['tags_idx']))
+             return (uuid, tags)
+         except Exception as e:
+@@ -1043,7 +1047,7 @@ def _packStringList(strings):
+         asbytes = bytearray(text,'utf-8')
+         index.append(len(asbytes))
+         text += string
+-    text = np.fromstring(text, dtype='S1')
++    text = np.frombuffer(text.encode('utf-8'), dtype='S1')
+     index = np.array(index, dtype=np.uint32)
+     return text, index
+ 
+@@ -1052,11 +1056,11 @@ def _unpackStringList(text, index):
+     last = None
+     for i in index:
+         if last is not None:
+-            name = str(text[last:i].tostring(), 'utf8')
++            name = str(text[last:i].tobytes(), 'utf8')
+             strings.append(name)
+         last = i
+     if last is not None:
+-        name = str(text[last:].tostring(), 'utf8')
++        name = str(text[last:].tobytes(), 'utf8')
+         strings.append(name)
+ 
+     return strings

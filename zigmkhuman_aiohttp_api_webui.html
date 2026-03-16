@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ZigMakeHuman API</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2rem;
+      line-height: 1.4;
+      background: #f4f5f7;
+      color: #1d2430;
+    }
+    h1, h2 {
+      margin-bottom: 0.3rem;
+    }
+    .panel {
+      background: #fff;
+      border: 1px solid #d7dbe3;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+    input, button, select {
+      font: inherit;
+      padding: 0.5rem 0.65rem;
+      margin: 0.2rem 0.2rem 0.2rem 0;
+    }
+    button {
+      cursor: pointer;
+    }
+    pre {
+      background: #111827;
+      color: #e5edf7;
+      padding: 0.8rem;
+      border-radius: 8px;
+      overflow: auto;
+      min-height: 8rem;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>ZigMakeHuman API</h1>
+  <p>Minimal browser client served by the MakeHuman aiohttp plugin.</p>
+
+  <div class="panel">
+    <h2>Health</h2>
+    <button id="healthButton">Fetch health</button>
+    <pre id="healthOutput"></pre>
+  </div>
+
+  <div class="panel">
+    <h2>Modifiers</h2>
+    <div class="row">
+      <button id="modifiersButton">List modifiers</button>
+      <input id="modifierName" placeholder="modifier name" size="40">
+      <input id="modifierValue" type="number" step="0.01" min="0" max="1" value="0.5">
+      <button id="setModifierButton">Set modifier</button>
+    </div>
+    <pre id="modifiersOutput"></pre>
+  </div>
+
+  <div class="panel">
+    <h2>WebSocket</h2>
+    <button id="connectWsButton">Connect</button>
+    <pre id="wsOutput"></pre>
+  </div>
+
+  <script>
+    async function fetchJson(path, options = {}) {
+      const response = await fetch(path, {
+        headers: { "Content-Type": "application/json" },
+        ...options
+      });
+      return await response.json();
+    }
+
+    function render(outputId, data) {
+      document.getElementById(outputId).textContent = JSON.stringify(data, null, 2);
+    }
+
+    document.getElementById("healthButton").addEventListener("click", async () => {
+      render("healthOutput", await fetchJson("/api/v1/health"));
+    });
+
+    document.getElementById("modifiersButton").addEventListener("click", async () => {
+      render("modifiersOutput", await fetchJson("/api/v1/modifiers"));
+    });
+
+    document.getElementById("setModifierButton").addEventListener("click", async () => {
+      const modifier = document.getElementById("modifierName").value.trim();
+      const value = parseFloat(document.getElementById("modifierValue").value);
+      render("modifiersOutput", await fetchJson("/api/v1/modifiers/set", {
+        method: "POST",
+        body: JSON.stringify({ modifier, value })
+      }));
+    });
+
+    document.getElementById("connectWsButton").addEventListener("click", () => {
+      const ws = new WebSocket(`${location.protocol === "https:" ? "wss" : "ws"}://${location.host}/ws`);
+      ws.onmessage = (event) => {
+        try {
+          const payload = JSON.parse(event.data);
+          const output = document.getElementById("wsOutput");
+          output.textContent += JSON.stringify(payload, null, 2) + "\n";
+        } catch (error) {
+          console.error(error);
+        }
+      };
+    });
+  </script>
+</body>
+</html>
