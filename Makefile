@@ -44,10 +44,6 @@ clean:
 
 publish: clean update build lint srcinfo
 	$(MAKE) clean
-	@echo ""
-	@echo "Ready to commit and push. Review with:"
-	@echo "  git diff"
-	@echo "Then:"
-	@echo "  git add PKGBUILD .SRCINFO"
-	@echo "  git commit -m 'feat: update to $(LATEST_VER)'"
-	@echo "  git push"
+	git add PKGBUILD .SRCINFO
+	git commit --message "feat: update to $(LATEST_VER)"
+	git push
