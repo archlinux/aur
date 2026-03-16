@@ -1,7 +1,7 @@
 # Maintainer: Denys Sedchenko <aur@x1unix.dev>
 pkgname=codex-acp
 _realname=codex-acp
-pkgver='0.9.5'
+pkgver='0.10.0'
 pkgrel=1
 pkgdesc="ACP adapter for OpenAI Codex"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ optdepends=()
 source_x86_64=("${_realname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz::${url}/releases/download/v${pkgver}/${_realname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${_realname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz::${url}/releases/download/v${pkgver}/${_realname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 
-sha256sums_x86_64=('49ef481a78836384a4c0aa994acf39822c549ef0fa20d4d610ce002e3b9808e0')
-sha256sums_aarch64=('3dbf57dcec027a61c8f24e40e952e6405b1a0ee30bf728ad409c77d25bd05a71')
+sha256sums_x86_64=('f5d0c1bcbbb361a92c4f52168625fe5fbc845cc9e48ae1c3fd150115cd11b415')
+sha256sums_aarch64=('bb20efa584ad7f89cd0eaac09ec8fd1181cd8e818ad08ef22c2b0db3d1c736dd')
 
 package() {
   install -Dm755 "$srcdir/${_realname}" "${pkgdir}/usr/bin/${_realname}"
