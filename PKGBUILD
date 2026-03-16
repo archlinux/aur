@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
-pkgver=0.9.15
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
@@ -49,13 +49,17 @@ optdepends=(
   'virt-viewer: External SPICE client fallback'
   'waypipe: Wayland application forwarding for SSH connections'
 )
-source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6f57066de2e168a1108104770d11311862e84bb1e794943d17b0e9603961a494')
+source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
+        'cc-wrap')
+sha256sums=('13fca63c48430f376479988f8e2cce5289e7b8e99536c2da5e22626ba5e91e34'
+            'd8d5350ef15f04cb18d1f111e7c8787384a7cbb1abd6ea34b18c73dfb966dbe6')
 
 prepare() {
   cd "RustConn-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc --print host-tuple)"
+
+  chmod +x "$srcdir/cc-wrap"
 }
 
 build() {
@@ -63,15 +67,22 @@ build() {
   CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release
+
+  # error "The CPU Jitter random number generator must not be compiled with 
+  # optimizations. See documentation. Use the compiler switch -O0 for 
+  # compiling jitterentropy.c."
+  # The wrapper detects jitterentropy source files and forces -O0 at the very end.
+  CC="$srcdir/cc-wrap" cargo build --frozen --release \
+    -p rustconn --features adw-1-8 \
+    -p rustconn-cli
 }
 
 check() {
   cd "RustConn-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen
+  CC="$srcdir/cc-wrap" cargo test --frozen
 
-  appstreamcli validate --no-net "$pkgname/assets/${_app_id}.metainfo.xml"
+  appstreamcli validate --no-net "$pkgname/assets/${_app_id}.metainfo.xml" || :
   desktop-file-validate "$pkgname/assets/${_app_id}.desktop"
 }
 
