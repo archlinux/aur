@@ -1,0 +1,21 @@
+pkgbase = sonic-screen-library
+	pkgdesc = Screen management library for SonicDE Workspaces
+	pkgver = 6.6.2
+	pkgrel = 2
+	url = https://github.com/Sonic-DE/sonic-screen-library
+	arch = x86_64
+	groups = sonicde
+	license = LGPL-2.0-or-later
+	makedepends = extra-cmake-modules
+	makedepends = plasma-wayland-protocols
+	makedepends = qt6-tools
+	depends = gcc-libs
+	depends = glibc
+	depends = libxcb
+	depends = qt6-base
+	provides = libkscreen
+	conflicts = libkscreen
+	source = sonic-screen-library-6.6.2.tar.gz::https://github.com/Sonic-DE/sonic-screen-library/archive/refs/tags/v6.6.2.tar.gz
+	sha256sums = 95c87b29da0a73488c2e2c539d73cc07c9bd873635177514423ebd1326b09776
+
+pkgname = sonic-screen-library
