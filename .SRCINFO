@@ -1,7 +1,7 @@
 pkgbase = sysadmin-vim
 	pkgdesc = Minimalistic yet powerful Vim configuration for sysadmins. Pre-configured with essential plugins and sane defaults.
-	pkgver = 1.0.0
-	pkgrel = 5
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/rtXrtXrtX/sysadmin-vim
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = sysadmin-vim
 	optdepends = python: for YouCompleteMe Python support
 	optdepends = nodejs: for YouCompleteMe JavaScript support
 	optdepends = go: for YouCompleteMe Go support
-	source = sysadmin-vim-1.0.0.tar.gz::https://github.com/rtXrtXrtX/sysadmin-vim/archive/v1.0.0.tar.gz
-	sha256sums = 1dfaef668078fbbca504bb4cca1f96a4693d460916ed53c33ef8503fb965da99
+	source = sysadmin-vim-1.0.1.tar.gz::https://github.com/rtXrtXrtX/sysadmin-vim/archive/v1.0.1.tar.gz
+	sha256sums = deba6beeaf426420ab0ba86be334ef85a2506c0ffc9bafe61e9d5d9d161231a7
 
 pkgname = sysadmin-vim

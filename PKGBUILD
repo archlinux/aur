@@ -2,8 +2,8 @@
 # Contributor: rtXrtXrtX <goreshit9999@gmail.com>
 
 pkgname=sysadmin-vim
-pkgver=1.0.0
-pkgrel=5
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Minimalistic yet powerful Vim configuration for sysadmins. Pre-configured with essential plugins and sane defaults."
 arch=('any')
 url="https://github.com/rtXrtXrtX/sysadmin-vim"
@@ -16,7 +16,7 @@ optdepends=(
 )
 makedepends=('curl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rtXrtXrtX/sysadmin-vim/archive/v$pkgver.tar.gz")
-sha256sums=('1dfaef668078fbbca504bb4cca1f96a4693d460916ed53c33ef8503fb965da99')  # checksum
+sha256sums=('deba6beeaf426420ab0ba86be334ef85a2506c0ffc9bafe61e9d5d9d161231a7')  # checksum
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
