@@ -2,7 +2,7 @@
 
 _appname=snip
 pkgname=${_appname}-tui
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A terminal snippet manager to store, search, and copy code snippets without leaving your shell"
 
@@ -16,7 +16,7 @@ depends=('python' 'python-pyperclip' 'python-rich' 'python-textual' 'python-pygm
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-pip')
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('67b31eadf0f97ca71b5662f4aeff06c602eeaaaca7f76c48634a42531c8a6de8')
+sha256sums=('8c696b02f1745d27cfdff4e0b934f64564c59c5a298accdab4b563bf3c2fcd6b')
 
 
 package() {
