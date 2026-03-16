@@ -2,13 +2,18 @@
 
 pkgname=link-lang-git
 pkgver=0.4.r0
-pkgrel=4
+pkgrel=5
 pkgdesc="Link programming language compiler (latest git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Pilot0253/link-lang"
 license=('MIT')
+
 depends=('gcc-libs')
 makedepends=('git' 'gcc' 'raylib')
+
+conflicts=('link-lang' 'link-lang-bin')
+provides=('link-lang')
+
 source=("git+https://github.com/Pilot0253/link-lang.git")
 sha256sums=('SKIP')
 

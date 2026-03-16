@@ -1,7 +1,7 @@
 pkgbase = link-lang-git
 	pkgdesc = Link programming language compiler (latest git version)
 	pkgver = 0.4.r0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/Pilot0253/link-lang
 	arch = x86_64
 	arch = aarch64
@@ -10,6 +10,9 @@ pkgbase = link-lang-git
 	makedepends = gcc
 	makedepends = raylib
 	depends = gcc-libs
+	provides = link-lang
+	conflicts = link-lang
+	conflicts = link-lang-bin
 	source = git+https://github.com/Pilot0253/link-lang.git
 	sha256sums = SKIP
 
