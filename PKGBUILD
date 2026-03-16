@@ -25,7 +25,7 @@ install="${pkgname}.install"
 source_x86_64=(
   "${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/LitGit.Desktop_${pkgver}_amd64.deb"
 )
-sha256sums_x86_64=('a99a3c1270b64ac1b36fc170d4f053f9b4dedbc04e61c2eab83098096fb9ed48')
+sha256sums_x86_64=('9e99c7497a55313641f581f570097a65edc74489d3362503fb62297bad0272ff')
 
 package() {
   local deb_archive="${srcdir}/${pkgname}-${pkgver}.deb"
