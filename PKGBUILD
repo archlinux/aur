@@ -2,7 +2,7 @@
 # Co-Maintainer: Noctiro <noctiro@gmail.com>
 
 pkgname=keyguard
-pkgver=20260313.1
+pkgver=20260315
 pkgrel=1
 pkgdesc="Keyguard is an alternative client for the Bitwarden® platform & KeePass (KDBX), created to provide the best user experience possible."
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom')
 depends=()
 makedepends=('java-environment>=21')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AChep/keyguard-app/archive/refs/tags/r${pkgver}.tar.gz")
-sha256sums=('8a8311896abeffa16e892e76a384d6828804abe12010410b629cf3b1ec22197a')
+sha256sums=('bc4cb1bad1610462919b1cde8e50a386b5608de204fb47d07ffb03e7f04c9197')
 options=('!strip' '!debug')
 
 build() {
