@@ -1,6 +1,6 @@
 pkgbase = opencom-bin
 	pkgdesc = Desktop wrapper for OpenCom frontend
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://opencom.online
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = opencom-bin
 	source = OpenCom.tar.gz::https://opencom.online/downloads/OpenCom.tar.gz
 	source = opencom.desktop
 	source = opencom.png
-	sha256sums = 1b0e3d3423a9e2a52f72362a298ff81ad5d0cdee9eb4565223101fba58f99d46
+	sha256sums = 6143b502995a2250fc3f2e4c124edf021e195bee840e63bf87451b77da548973
 	sha256sums = SKIP
 	sha256sums = SKIP
 
