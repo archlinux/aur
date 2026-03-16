@@ -1,6 +1,6 @@
 # Maintainer: Víctor Hugo Sosa Esquivel <arch@victorsosa.com>
 pkgname=vsfetch-git
-pkgver=r1.0
+pkgver=r1
 pkgrel=1
 pkgdesc="Graphical GTK3 'About This Computer' panel for Linux"
 arch=('any')

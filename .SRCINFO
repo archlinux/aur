@@ -1,6 +1,6 @@
 pkgbase = vsfetch-git
 	pkgdesc = Graphical GTK3 'About This Computer' panel for Linux
-	pkgver = r1.0
+	pkgver = r1
 	pkgrel = 1
 	url = https://github.com/victorsosaMx/vsFetch
 	arch = any
