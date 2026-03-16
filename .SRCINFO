@@ -1,6 +1,6 @@
 pkgbase = vidbee-bin
 	pkgdesc = Download videos from almost any website worldwide.(Prebuilt version.Use system-wide electron)
-	pkgver = 1.3.0
+	pkgver = 1.3.4
 	pkgrel = 1
 	url = https://vidbee.org/
 	arch = x86_64
@@ -10,14 +10,14 @@ pkgbase = vidbee-bin
 	depends = ffmpeg
 	depends = yt-dlp
 	depends = deno
-	provides = vidbee=1.3.0
+	provides = vidbee=1.3.4
 	conflicts = vidbee
 	options = !emptydirs
 	options = !strip
-	source = vidbee-1.3.0.deb::https://github.com/nexmoe/VidBee/releases/download/v1.3.0/vidbee_1.3.0_amd64.deb
-	source = LICENSE-1.3.0::https://raw.githubusercontent.com/nexmoe/VidBee/v1.3.0/LICENSE
+	source = vidbee-1.3.4.deb::https://github.com/nexmoe/VidBee/releases/download/v1.3.4/vidbee_1.3.4_amd64.deb
+	source = LICENSE-1.3.4::https://raw.githubusercontent.com/nexmoe/VidBee/v1.3.4/LICENSE
 	source = vidbee.sh
-	sha256sums = 4ca055f6993a8495da5bbfb8e453ad3747e6f4fbd15752a7f5f53de29c2839cd
+	sha256sums = e7ae77538bee1626c3520654a2cf14a07631005775a5111aad7d9fd5d479ecc1
 	sha256sums = 5cde322cd1fd10c409c8597eed127a08baa6c73b9430312de1aeb05f1dbb4953
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 

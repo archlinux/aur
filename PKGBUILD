@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=vidbee-bin
 _pkgname=VidBee
-pkgver=1.3.0
+pkgver=1.3.4
 _electronversion=38
 pkgrel=1
 pkgdesc="Download videos from almost any website worldwide.(Prebuilt version.Use system-wide electron)"
@@ -29,7 +29,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/nexmoe/VidBee/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('4ca055f6993a8495da5bbfb8e453ad3747e6f4fbd15752a7f5f53de29c2839cd'
+sha256sums=('e7ae77538bee1626c3520654a2cf14a07631005775a5111aad7d9fd5d479ecc1'
             '5cde322cd1fd10c409c8597eed127a08baa6c73b9430312de1aeb05f1dbb4953'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -48,20 +48,18 @@ prepare() {
     _get_electron_version
     sed -i "s/\/opt\/${_pkgname}\///g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
-    ln -sf "/usr/bin/ffmpeg" "${srcdir}/app.asar.unpacked/resources/ffmpeg/ffmpeg"
-    ln -sf "/usr/bin/ffprobe" "${srcdir}/app.asar.unpacked/resources/ffmpeg/ffprobe"
-    ln -sf "/usr/bin/yt-dlp" "${srcdir}/app.asar.unpacked/resources/yt-dlp_linux"
-    ln -sf "/usr/bin/deno" "${srcdir}/app.asar.unpacked/resources/deno"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
-    ln -sf "/usr/bin/ffmpeg" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/resources/ffmpeg/ffmpeg"
-    ln -sf "/usr/bin/ffprobe" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/resources/ffmpeg/ffprobe"
-    ln -sf "/usr/bin/yt-dlp" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/resources/yt-dlp_linux"
-    ln -sf "/usr/bin/deno" "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/resources/deno"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/opt/${_pkgname}/resources/app.asar"
+    ln -sf "/usr/bin/ffmpeg" "${srcdir}/opt/${_pkgname}/resources/resources/ffmpeg/ffmpeg"
+    ln -sf "/usr/bin/ffprobe" "${srcdir}/opt/${_pkgname}/resources/resources/ffmpeg/ffprobe"
+    ln -sf "/usr/bin/yt-dlp" "${srcdir}/opt/${_pkgname}/resources/resources/yt-dlp_linux"
+    ln -sf "/usr/bin/deno" "${srcdir}/opt/${_pkgname}/resources/resources/deno"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+    find "${srcdir}/opt/${_pkgname}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
     if find "${srcdir}/opt/${_pkgname}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
         for subdir in "${srcdir}/opt/${_pkgname}/resources/"*; do
             if [ -d "${subdir}" ]; then
