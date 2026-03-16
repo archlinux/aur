@@ -4,15 +4,11 @@ pkgname=rill-git
 _pkgname=rill
 pkgdesc="A minimalist scrolling window manager for River"
 pkgver=1fe1ff9
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://codeberg.org/lzj15/rill"
 license=('MIT')
-depends=('wayland'
-	'river-git' # AUR
-	# Please build river-git on the main branch or else this package won't work
-	# You can do this by using "_branch=main" before "makepkg"
-)
+depends=('wayland' 'river')
 makedepends=('zig'
 	'wayland-protocols')
 install=rill.install
