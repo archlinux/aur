@@ -8,7 +8,7 @@ backup=('etc/conquest/default.toml')
 license=("BSD 3-Clause License")
 depends=('nim' 'nimble' 'git' 'curl' 'base-devel' 'xz' 'glfw-x11' 'mesa' 'glu' 'libx11' 'libxrandr' 'libxinerama' 'libxcursor' 'libxi' 'gtk2')
 source=("git+https://github.com/jakobfriedl/conquest" 'conquest.service')
-sha1sums=('SKIP' '712aca37272746ea97f31e82f0b40f7ad9e9aa69')
+sha1sums=('SKIP' '5945ddf07dbc3ec6c67d1340deeb16b03a6e9db4')
 
 prepare(){
 	cd "$srcdir/${pkgname%-git}"
@@ -26,12 +26,10 @@ build() {
 package() {
 	mkdir -p $pkgdir/usr/share/
 	mkdir -p $pkgdir/usr/local/bin
-	mkdir -p $pkgdir/root/.nimble
 	mkdir -p $pkgdir/etc/conquest/
 	mkdir -p $pkgdir/usr/lib/systemd/system/
 	install -D -m644 "$srcdir/conquest/data/profiles/profile.toml" "$pkgdir/etc/conquest/default.toml"
 	install -D -m644 "$srcdir/conquest.service" "$pkgdir/usr/lib/systemd/system/conquest.service"
 	ln -s /usr/share/conquest/bin/client "$pkgdir/usr/local/bin/conquest"
 	cp -ra $srcdir/* $pkgdir/usr/share/
-	cp -ra $srcdir/conquest/vendor/* $pkgdir/root/.nimble/
 }

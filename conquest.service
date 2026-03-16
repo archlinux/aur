@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
+Environment="NIMBLE_PATH=/usr/share/conquest/vendor/pkgs2/"
 ExecStart=/usr/share/conquest/bin/server -p /etc/conquest/default.toml
 WorkingDirectory=/usr/share/conquest/
 Restart=always
