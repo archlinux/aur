@@ -1,6 +1,6 @@
 pkgbase = lazytail-bin
 	pkgdesc = A fast, universal terminal-based log viewer with live filtering and follow mode
-	pkgver = 0.8.2
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/raaymax/lazytail
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = lazytail-bin
 	depends = libgcc
 	provides = lazytail
 	conflicts = lazytail
-	source = README-0.8.2.md::https://raw.githubusercontent.com/raaymax/lazytail/v0.8.2/README.md
-	source = LICENSE-0.8.2::https://raw.githubusercontent.com/raaymax/lazytail/v0.8.2/LICENSE
+	source = README-0.9.0.md::https://raw.githubusercontent.com/raaymax/lazytail/v0.9.0/README.md
+	source = LICENSE-0.9.0::https://raw.githubusercontent.com/raaymax/lazytail/v0.9.0/LICENSE
 	sha256sums = 37b74f10b5fb35ec654e98b60255198a91496f3945f81fade3ba44924137ab46
 	sha256sums = 5f79f5daf64447f6926cd82dbef4460d4155df60229050fc3e66ddbd9e368325
-	source_x86_64 = lazytail-x86_64-0.8.2.tgz::https://github.com/raaymax/lazytail/releases/download/v0.8.2/lazytail-linux-x86_64.tar.gz
-	sha256sums_x86_64 = f555006c95dfede3d365c443a54ee0c98f292c2057781e67627e8c85ce2cfd0b
+	source_x86_64 = lazytail-x86_64-0.9.0.tgz::https://github.com/raaymax/lazytail/releases/download/v0.9.0/lazytail-linux-x86_64.tar.gz
+	sha256sums_x86_64 = b652034030a0a04ee498d5773c36102c545c67a3dd1d99d43eb745d20f6accbb
 
 pkgname = lazytail-bin
