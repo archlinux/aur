@@ -1,0 +1,14 @@
+pkgbase = optix-dev-headers
+	pkgdesc = NVIDIA OptiX SDK development headers (runtime provided by nvidia-utils libnvoptix.so)
+	pkgver = 9.1.0
+	pkgrel = 1
+	url = https://github.com/NVIDIA/optix-dev
+	arch = any
+	license = LicenseRef-NvidiaOptiX
+	depends = nvidia-utils>=590
+	provides = optix
+	conflicts = optix
+	source = optix-dev-headers-v9.1.0.tar.gz::https://github.com/NVIDIA/optix-dev/archive/refs/tags/v9.1.0.tar.gz
+	sha256sums = 3a29b2254107fdfbb5e6bbad3ec154dd682149121f61e9c406607ac7b52a6ba6
+
+pkgname = optix-dev-headers
