@@ -2,7 +2,7 @@
 # https://github.com/AshBuk/speak-to-ai
 
 pkgname=speak-to-ai
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Offline speech-to-text desktop application using Whisper"
 arch=('x86_64')
@@ -44,7 +44,7 @@ source=(
     "whisper-cpp-${_whisper_version}.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v${_whisper_version}.tar.gz"
 )
 sha256sums=(
-    'c569b525347b09915c1a49c2bbde3f4608e723157f706d2bca062c6086ced1bf'
+    '99f8be820efdcf499c82ba584f15db2cd45e76246b3bbe067de2bb0ba9aeaaca'
     '870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a'
 )
 
@@ -98,7 +98,7 @@ build() {
 
     go build -v \
         -tags systray \
-        -ldflags "-s -w -X main.version=${pkgver} -linkmode=external -extldflags '-Wl,-rpath,/usr/lib/${pkgname}'" \
+        -ldflags "-s -w -X github.com/AshBuk/speak-to-ai/internal/version.Version=${pkgver} -linkmode=external -extldflags '-Wl,-rpath,/usr/lib/${pkgname}'" \
         -o "${pkgname}" \
         ./cmd/speak-to-ai
 }

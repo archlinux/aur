@@ -1,6 +1,6 @@
 pkgbase = speak-to-ai
 	pkgdesc = Offline speech-to-text desktop application using Whisper
-	pkgver = 1.7.1
+	pkgver = 1.7.2
 	pkgrel = 1
 	url = https://github.com/AshBuk/speak-to-ai
 	arch = x86_64
@@ -24,9 +24,9 @@ pkgbase = speak-to-ai
 	optdepends = ffmpeg: Alternative audio recording
 	optdepends = vulkan-icd-loader: GPU acceleration via Vulkan (falls back to CPU if unavailable)
 	options = !lto
-	source = speak-to-ai-1.7.1.tar.gz::https://github.com/AshBuk/speak-to-ai/archive/refs/tags/v1.7.1.tar.gz
+	source = speak-to-ai-1.7.2.tar.gz::https://github.com/AshBuk/speak-to-ai/archive/refs/tags/v1.7.2.tar.gz
 	source = whisper-cpp-1.8.3.tar.gz::https://github.com/ggml-org/whisper.cpp/archive/refs/tags/v1.8.3.tar.gz
-	sha256sums = c569b525347b09915c1a49c2bbde3f4608e723157f706d2bca062c6086ced1bf
+	sha256sums = 99f8be820efdcf499c82ba584f15db2cd45e76246b3bbe067de2bb0ba9aeaaca
 	sha256sums = 870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a
 
 pkgname = speak-to-ai
