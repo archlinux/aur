@@ -74,7 +74,6 @@ _pkg_src_res="${_pkg_name_ident}.tar.gz::https://github.com/${_pkg_user}/${_pkg_
 # 0f51fb4933fc9ce18199cb2554dacea8033e7fd3 submodules/zlib (v1.3.1-50-g0f51fb4)
 
 # NOTE: these submodules are currenly only used by macos builds - ignore them for now:
-#   submodules/doctest ???
 #   submodules/hunspell
 #   submodules/libssh
 #   submodules/openssl-cmake
@@ -113,8 +112,6 @@ _ctags_pkg_name="ctags"
 _ctags_pkg_ident="ac5c942b422ca6dc6cdbfd2a0c2d481af1f18f02"
 _ctags_pkg_name_ident="${_ctags_pkg_user}-${_ctags_pkg_name}-${_ctags_pkg_ident:0:7}"
 _ctags_pkg_src_res="${_ctags_pkg_name_ident}.tar.gz::https://github.com/${_ctags_pkg_user}/${_ctags_pkg_name}/tarball/${_ctags_pkg_ident}"
-
-# submodule doctest - ignore ????
 
 # doctest submodule: https://github.com/doctest/doctest
 _doctest_pkg_user="doctest"
@@ -174,7 +171,7 @@ _yaml_pkg_src_res="${_yaml_pkg_name_ident}.tar.gz::https://github.com/${_yaml_pk
 # submodule zlib - ignored
 
 #
-# sub-sub-modules
+# sub-sub submodules
 #
 
 # tinyjson (cc-wrapper) sub-submodule: https://github.com/eranif/tinyjson
@@ -312,7 +309,6 @@ prepare()
   test -d ctags && rmdir ctags;
   ln -s -fn ../../${_ctags_pkg_name_ident} ctags;
 
-  # submodule doctest - ignore ???
   # submodule doctest
   test -d doctest && rmdir doctest;
   ln -s -fn ../../${_doctest_pkg_name_ident} doctest;
