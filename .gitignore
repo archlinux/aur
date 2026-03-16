@@ -4,3 +4,5 @@
 !PKGBUILD
 !LICENSE
 !Makefile
+!kanata-switcher.install
+!kanata-switcher.service

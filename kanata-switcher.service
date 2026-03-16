@@ -1,0 +1,17 @@
+# Manual installation template for kanata-switcher systemd user service
+# Copy to ~/.config/systemd/user/kanata-switcher.service and adjust ExecStart with correct port (if it's not 10000)
+
+[Unit]
+Description=Kanata layer switcher daemon
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+# Adjust the port as needed (default 10000):
+ExecStart=/usr/bin/kanata-switcher --quiet-focus -p 10000
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target
