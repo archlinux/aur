@@ -2,7 +2,7 @@
 
 pkgname=link-lang-git
 pkgver=0.4.r0
-pkgrel=1
+pkgrel=2
 pkgdesc="Link programming language compiler (latest git version)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Pilot0253/link-lang"
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/link-lang"
-    ./compile-link.sh
+    g++ -std=c++17 -o link src/*.cpp -I include
 }
 
 package() {
