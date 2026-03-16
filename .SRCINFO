@@ -1,6 +1,6 @@
 pkgbase = ab-download-manager-wayland-git
-	pkgdesc = A Download Manager that speeds up your downloads (with Wayland fractional scaling fix)
-	pkgver = 1.8.7.r1.g48a6951
+	pkgdesc = A Download Manager that speeds up your downloads (with Wayland fractional scaling fix + YouTube download support)
+	pkgver = 1.8.7.r3.g48a6951
 	pkgrel = 1
 	url = https://abdownloadmanager.com
 	arch = any
@@ -13,6 +13,8 @@ pkgbase = ab-download-manager-wayland-git
 	depends = harfbuzz
 	depends = fontconfig
 	optdepends = libappindicator-gtk3: tray icon support
+	optdepends = yt-dlp: YouTube format discovery and URL extraction
+	optdepends = ffmpeg: merging YouTube video and audio streams
 	provides = ab-download-manager
 	conflicts = ab-download-manager
 	conflicts = ab-download-manager-bin

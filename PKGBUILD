@@ -2,9 +2,9 @@
 
 _pkgbase=ab-download-manager
 pkgname=${_pkgbase}-wayland-git
-pkgver=1.8.7.r1.g48a6951
+pkgver=1.8.7.r3.g48a6951
 pkgrel=1
-pkgdesc="A Download Manager that speeds up your downloads (with Wayland fractional scaling fix)"
+pkgdesc="A Download Manager that speeds up your downloads (with Wayland fractional scaling fix + YouTube download support)"
 arch=('any')
 url="https://abdownloadmanager.com"
 license=('Apache-2.0')
@@ -21,6 +21,8 @@ makedepends=(
 )
 optdepends=(
 	'libappindicator-gtk3: tray icon support'
+	'yt-dlp: YouTube format discovery and URL extraction'
+	'ffmpeg: merging YouTube video and audio streams'
 )
 provides=("$_pkgbase")
 conflicts=("$_pkgbase" "$_pkgbase-bin" "$_pkgbase-git" 'abdownloadmanager-bin')
