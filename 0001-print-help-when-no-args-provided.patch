@@ -1,0 +1,26 @@
+From aa9d7e1cac4261ccfd062ef675f7f276c0a3a08e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C3=A9clairevoyant?=
+ <848000+eclairevoyant@users.noreply.github.com>
+Date: Thu, 2 Feb 2023 07:26:42 -0500
+Subject: [PATCH] print help when no args provided
+
+---
+ usr/bin/bdf2psf | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/usr/bin/bdf2psf b/usr/bin/bdf2psf
+index 414c268..e08cb94 100755
+--- a/usr/bin/bdf2psf
++++ b/usr/bin/bdf2psf
+@@ -41,7 +41,7 @@ sub debug {
+ 
+ ########### ARGUMENTS ###############################################
+ 
+-if ($ARGV[0] eq "--help" || $ARGV[0] eq "-h") {
++if ($#ARGV < 0 || $ARGV[0] eq "--help" || $ARGV[0] eq "-h") {
+     print STDERR <<EOT;
+ Usage:
+ bdf2psf [--fb|--raw][--log LOG] BDF{+BDF} EQUIV{+EQUIV} SYMB{+[:]SYMB} SIZE PSF [SFM]
+-- 
+2.39.1
+
