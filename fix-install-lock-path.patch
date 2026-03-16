@@ -1,5 +1,5 @@
---- wavelog-2.3/install/index.php	2026-02-11 23:42:59.000000000 +0800
-+++ wavelog-2.3.patched/install/index.php	2026-02-15 03:10:51.385753395 +0800
+--- wavelog-2.3.1/install/index.php	2026-02-11 23:42:59.000000000 +0800
++++ wavelog-2.3.1.patched/install/index.php	2026-02-15 03:10:51.385753395 +0800
 @@ -15,7 +15,7 @@
  $directory = ltrim(str_replace('/install', '', dirname($_SERVER['SCRIPT_NAME'])), '/');
  $base_url = $http_scheme . '://' . $_SERVER['HTTP_HOST'] . ($directory !== '' ? '/' . $directory : '') . '/';
@@ -9,8 +9,8 @@
  
  	include 'includes/interface_assets/header.php';
  
---- wavelog-2.3/install/includes/interface_assets/triggers.php	2026-02-11 23:42:59.000000000 +0800
-+++ wavelog-2.3.patched/install/includes/interface_assets/triggers.php	2026-02-15 03:10:51.388587039 +0800
+--- wavelog-2.3.1/install/includes/interface_assets/triggers.php	2026-02-11 23:42:59.000000000 +0800
++++ wavelog-2.3.1.patched/install/includes/interface_assets/triggers.php	2026-02-15 03:10:51.388587039 +0800
 @@ -44,7 +44,7 @@
  
  if ($_POST['check_lockfile'] ?? false == true) {
