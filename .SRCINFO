@@ -1,13 +1,13 @@
 pkgbase = axiocnc-bin
 	pkgdesc = G-Code Sender Built for Stable, Predictable Runs.
 	pkgver = 0.0.89
-	pkgrel = 2
+	pkgrel = 3
 	url = https://axiocnc.com
 	arch = x86_64
 	provides = axiocnc
 	conflicts = axiocnc
 	options = !debug
-	source_x86_64 = axiocnc-0.0.89-2.deb::https://github.com/rsteckler/AxioCNC/releases/download/v0.0.89/axiocnc-desktop_0.0.89_amd64.deb
+	source_x86_64 = axiocnc-0.0.89-3.deb::https://github.com/rsteckler/AxioCNC/releases/download/v0.0.89/axiocnc-desktop_0.0.89_amd64.deb
 	sha256sums_x86_64 = 6358f613a76315003578316937c3419dc88167a795c522611e39ddac0969d0e8
 
 pkgname = axiocnc-bin

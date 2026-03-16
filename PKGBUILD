@@ -2,7 +2,7 @@
 pkgname=axiocnc-bin
 _pkgname=axiocnc
 pkgver=0.0.89
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="G-Code Sender Built for Stable, Predictable Runs."
 arch=(x86_64)
@@ -27,16 +27,16 @@ validpgpkeys=()
 
 prepare() {
     tar -xf ./data.tar.xz
-    mv ./opt/AxioCNC ./opt/${_pkgname}
+    # mv ./opt/AxioCNC ./opt/${_pkgname}
 }
 package() {
     install -dm755 "${pkgdir}/usr/bin"
-    install -dm755 "${pkgdir}/opt/${_pkgname}"
+    install -dm755 "${pkgdir}/opt/AxioCNC"
     install -dm755 "${pkgdir}/usr/share/applications"
     install -dm755 "${pkgdir}/usr/share/icons"
     install -dm755 "${pkgdir}/usr/share/doc/${_pkgname}"
 
-    cp -r ./opt/${_pkgname} "${pkgdir}/opt/"
+    cp -r ./opt/AxioCNC "${pkgdir}/opt/"
     cp ./usr/share/applications/${_pkgname}.desktop "${pkgdir}/usr/share/applications/"
     cp -ra ./usr/share "${pkgdir}/usr/"
 
