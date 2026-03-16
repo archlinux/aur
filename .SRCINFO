@@ -1,0 +1,11 @@
+pkgbase = litert-lm
+	pkgdesc = Google AI Edge LiteRT-LM on-device LLM inference CLI (installed as litert)
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/google-ai-edge/LiteRT-LM
+	arch = x86_64
+	license = Apache-2.0
+	source = lit-0.8.1::https://github.com/google-ai-edge/LiteRT-LM/releases/download/v0.8.1/lit.linux_x86_64
+	sha256sums = 2b4582cdf6cacf098092388855b33be625301065e2c10f1bbf0d3c783491ef47
+
+pkgname = litert-lm
