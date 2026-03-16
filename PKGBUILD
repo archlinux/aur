@@ -32,7 +32,7 @@ makedepends=(cargo
              cargo-cntp-bundle-git)
 options=(!debug)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/hummingbird-player/hummingbird/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=(9e7f4997d93f58357c769d1f46266589b4feedabf0664f81998ddfa672c5490f)
+sha256sums=(c78214b77bbd5c08024daadf477a268e6d4a046c851873c292689d944aa386ae)
 
 prepare() {
 	cd "$_pkgname-$pkgver"
@@ -55,5 +55,5 @@ build() {
 package() {
 	cd "$_pkgname-$pkgver"
 	cargo cntp-bundle --no-open
-	cp -r target/bundle/$(rustc -vV | grep 'host:' | cut -d' ' -f2)/release/appdir/*/ ${pkgdir}
+	cp -ra target/bundle/$(rustc -vV | grep 'host:' | cut -d' ' -f2)/release/appdir/*/ ${pkgdir}
 }

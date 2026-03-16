@@ -35,6 +35,6 @@ pkgbase = hummingbird-player
 	depends = libzstd.so
 	options = !debug
 	source = hummingbird-0.2.0.tar.gz::https://github.com/hummingbird-player/hummingbird/archive/refs/tags/0.2.0.tar.gz
-	sha256sums = 9e7f4997d93f58357c769d1f46266589b4feedabf0664f81998ddfa672c5490f
+	sha256sums = c78214b77bbd5c08024daadf477a268e6d4a046c851873c292689d944aa386ae
 
 pkgname = hummingbird-player
