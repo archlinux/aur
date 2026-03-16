@@ -1,0 +1,13 @@
+pkgbase = python-clang20
+	pkgdesc = Python bindings for clang version 20
+	pkgver = 20.1.8
+	pkgrel = 1
+	url = https://clang.llvm.org/
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	depends = clang20
+	depends = python
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-20.1.8/clang-20.1.8.src.tar.xz
+	sha256sums = b7a1b7b0af7b9c7596af6bd46e36d11321926eaa66a7a7dc957ab0a1375ee4b0
+
+pkgname = python-clang20
