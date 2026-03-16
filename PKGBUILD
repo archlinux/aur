@@ -1,17 +1,17 @@
 # Maintainer: Akira Fukushima <h3.poteto@gmail.com>
 pkgname=rauncher-wayland
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Application launcher for Linux Wayland desktop"
 arch=("x86_64")
 url="https://github.com/h3poteto/rauncher"
 license=("GPL-3.0")
-depends=("gtk4-layer-shell" "wayland")
+depends=("gtk4-layer-shell" "gtk4" "dbus" "hicolor-icon-theme")
 makedepends=("rust" "make")
 provides=("rauncher-wayland")
 conflicts=("rauncher-x11")
 source=("https://github.com/h3poteto/rauncher/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=("55bfcea8f6137b120a2ee664cf6149e4")
+md5sums=("48cab616da62ef90bfea192271268fb6")
 
 prepare() {
   cd "rauncher-${pkgver}"
