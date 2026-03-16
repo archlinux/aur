@@ -1,6 +1,6 @@
 pkgbase = tiki-bin
 	pkgdesc = Markdown-based git-versioned documentation and issue management
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/boolean-maybe/tiki
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = tiki-bin
 	license = Apache-2.0
 	provides = tiki
 	conflicts = tiki
-	source_x86_64 = tiki-x86_64-0.2.1.tgz::https://github.com/boolean-maybe/tiki/releases/download/v0.2.1/tiki_0.2.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 4667cc19390229798a8ddc3e6ec9775ff9a9de870f96427b286325f94823998b
-	source_aarch64 = tiki-aarch64-0.2.1.tgz::https://github.com/boolean-maybe/tiki/releases/download/v0.2.1/tiki_0.2.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = 774752fcd1ba475b8de82fa4f39d73985fb97b92ea36a9b2df7f5386156c28da
+	source_x86_64 = tiki-x86_64-0.3.0.tgz::https://github.com/boolean-maybe/tiki/releases/download/v0.3.0/tiki_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e4fb067b9a3df9698194aa804aa9a64765a7ffe3f6fdec5966e5aab952954847
+	source_aarch64 = tiki-aarch64-0.3.0.tgz::https://github.com/boolean-maybe/tiki/releases/download/v0.3.0/tiki_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4bd71d354502b27b328e4dcecb539e1bf2e6e3cdba665d4b9b8f200b25e2124b
 
 pkgname = tiki-bin
