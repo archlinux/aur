@@ -1,12 +1,12 @@
 pkgbase = stepreduce-git
 	pkgdesc = A deduplicating tool for step files
-	pkgver = r4.e89091c
+	pkgver = r13.63c8a10
 	pkgrel = 1
-	epoch = 0
 	url = https://gitlab.com/sethhillbrand/stepreduce
 	arch = x86_64
-	license = GPL3
-	source = git+https://gitlab.com/sethhillbrand/stepreduce.git
-	sha256sums = SKIP
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	source = git+https://gitlab.com/sethhillbrand/stepreduce.git#commit=63c8a10795fe6136607041642c0e07e97b32a518
+	sha256sums = f93676851ce822a0d8461d023278a426fbf45bdcaa1cd807caa6f49d317215f9
 
 pkgname = stepreduce-git
