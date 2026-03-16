@@ -16,11 +16,12 @@
 set -u
 _pkgname='cpdf'
 pkgname="${_pkgname}"
-pkgver='2.8.1'
+pkgver='2.9'
 pkgrel=1
 pkgdesc='manipulate PDF files including merge, encrypt, decrypt, scale, crop, rotate, bookmarks, stamp, logos, page numbers'
 arch=('x86_64' 'i686')
-url='http://community.coherentpdf.com'
+#url='http://community.coherentpdf.com'
+url='https://www.coherentpdf.com/'
 license=('AGPL-3.0-or-later')
 depends=('glibc' "camlpdf>=${pkgver}")
 makedepends=('ocaml' 'ocaml-findlib')
@@ -31,7 +32,7 @@ _srcfile="v${pkgver}"
 _srcdir="${_pkgname}-source-${_srcfile#v}"; _srcdirname="${_srcdir}"
 
 _giturl="https://github.com/johnwhitington/${_pkgname}-source"
-_verwatch=("${_giturl}/releases.atom" "\s\+<title>v\([^<]\+\)</title>.*" 'f') # RSS
+#_verwatch=("${_giturl}/releases.atom" "\s\+<title>v\([^<]\+\)</title>.*" 'f') # RSS
 source=(
   "${_srcdirname}.tar.gz::${_giturl}/archive/${_srcfile}.tar.gz"
 )
@@ -54,39 +55,37 @@ else
   pkgdesc="${pkgdesc//##/cpdf}"
 fi
 unset _srcfile _srcdirname
-md5sums=('45ba51aae6b5d3ea6cb421037f8f73bb')
-sha256sums=('bdd7caf1e5e55e65e4ece96eeeb3e5894c195ca5a9a274ddc27ac50a321d5c75')
+md5sums=('14ad4b9168a0d6caebe37697540520d9')
+sha256sums=('944e2e578fc9653ccf09df4cf0c0b60beb3fb702ddd5b76640624d7324ae3cdb')
 
 _pkgver_disabled() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
   git describe --long | sed -e 's:^v::g' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
-  set +u
 }
 
 _setvars() {
-  OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)"
-  OCAMLFIND_LDCONF="${pkgdir}/$(ocamlfind printconf ldconf)"
+  _OCAMLFIND_DESTDIR="${pkgdir}/$(ocamlfind printconf destdir)"
+  _OCAMLFIND_LDCONF="${pkgdir}/$(ocamlfind printconf ldconf)"
 }
 
 build() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
 
-  local OCAMLFIND_DESTDIR OCAMLFIND_LDCONF; _setvars
-  make -s OCAMLFIND_DESTDIR="${OCAMLFIND_DESTDIR}"
+  local _OCAMLFIND_DESTDIR _OCAMLFIND_LDCONF; _setvars
+  make -s OCAMLFIND_DESTDIR="${_OCAMLFIND_DESTDIR}"
   set +u; msg2 'A broken make, fixed by running it again.'; set -u
-  make -s OCAMLFIND_DESTDIR="${OCAMLFIND_DESTDIR}"
-  set +u
+  make -s OCAMLFIND_DESTDIR="${_OCAMLFIND_DESTDIR}"
 }
 
 package() {
-  set -u
+  local -; set -u
   cd "${_srcdir}"
 
-  local OCAMLFIND_DESTDIR OCAMLFIND_LDCONF; _setvars
-  install -d "${OCAMLFIND_DESTDIR}"
-  make -s install -d OCAMLFIND_DESTDIR="${OCAMLFIND_DESTDIR}" OCAMLFIND_LDCONF="${OCAMLFIND_LDCONF}"
+  local _OCAMLFIND_DESTDIR _OCAMLFIND_LDCONF; _setvars
+  install -d "${_OCAMLFIND_DESTDIR}"
+  make -s install -d OCAMLFIND_DESTDIR="${_OCAMLFIND_DESTDIR}" OCAMLFIND_LDCONF="${_OCAMLFIND_LDCONF}"
 
   if [ ! -z "${_srcdirmast:-}" ]; then
     declare -A _arch=([i686]='Linux32' [x86_64]='Linux64')
@@ -99,7 +98,5 @@ package() {
   install -Dpm644 'cpdf.1' -t "${pkgdir}/usr/share/man/man1/"
   sed -e "s:cpdfmanual.pdf:/usr/share/doc/${_pkgname}/&:g" -i "${pkgdir}/usr/share/man/man1/cpdf.1"
   install -Dpm644 'cpdfmanual.pdf' -t "${pkgdir}/usr/share/doc/${_pkgname}/"
-
-  set +u
 }
 set +u
