@@ -12,6 +12,6 @@ pkgbase = sysadmin-vim
 	optdepends = nodejs: for YouCompleteMe JavaScript support
 	optdepends = go: for YouCompleteMe Go support
 	source = sysadmin-vim-1.0.0.tar.gz::https://github.com/rtXrtXrtX/sysadmin-vim/archive/v1.0.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 1dfaef668078fbbca504bb4cca1f96a4693d460916ed53c33ef8503fb965da99
 
 pkgname = sysadmin-vim

@@ -16,7 +16,7 @@ optdepends=(
 )
 makedepends=()
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rtXrtXrtX/sysadmin-vim/archive/v$pkgver.tar.gz")
-sha256sums=('SKIP')  # После первого релиза заменишь на реальную сумму
+sha256sums=('1dfaef668078fbbca504bb4cca1f96a4693d460916ed53c33ef8503fb965da99')  # После первого релиза заменишь на реальную сумму
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
