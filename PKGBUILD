@@ -2,7 +2,7 @@
 
 pkgname=helium-widevine
 pkgdesc='A browser plugin designed for the viewing of premium video content (for Helium Browser)'
-pkgver=4.10.2891.0
+pkgver=4.10.2934.0
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -10,8 +10,8 @@ url='https://www.widevine.com/'
 license=('custom')
 options=('!strip')
 depends=('gcc-libs' 'glib2' 'glibc' 'nspr' 'nss' 'helium-browser-bin')
-source=(https://www.google.com/dl/release2/chrome_component/aclxnidwwkj5di3vduduj2gqpgpq_4.10.2891.0/oimompecagnajdejgnnjijobebaeigek_4.10.2891.0_linux_b4hin3q5s66ws2322cyyfp35lu.crx3)
-sha256sums=('c28ebc536851070d5ecefe023e5308aacfee71d18e5b0fc27d152964d1312836')
+source=(https://www.google.com/dl/release2/chrome_component/accssjtqfpf5qicscrptql4jyyxa_4.10.2934.0/oimompecagnajdejgnnjijobebaeigek_4.10.2934.0_linux_ph722a3wl2goebkpserszm6bde.crx3)
+sha256sums=('d36111684f13d2f76f181eb0117a873e12e4ee6f0f9a3027a9d022b787d74eb2')
 
 package() {
   install -Dm755 "${srcdir}/_platform_specific/linux_x64/libwidevinecdm.so" \
