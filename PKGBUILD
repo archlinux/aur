@@ -22,5 +22,7 @@ package() {
 	install -Dm755 rbtr-generate.sh "$pkgdir/usr/bin/rbtr-generate.sh"
 	install -Dm755 rbtr-clean.sh "$pkgdir/usr/bin/rbtr-clean.sh"
 	install -Dm755 rbtr-init.sh "$pkgdir/usr/bin/rbtr-init.sh"
+	install -Dm755 rbtr-restore.sh "$pkgdir/usr/bin/rbtr-restore.sh"
+	install -Dm755 rbtr "$pkgdir/usr/bin/rbtr"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
