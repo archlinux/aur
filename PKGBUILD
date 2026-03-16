@@ -2,7 +2,7 @@
 
 pkgname=vsview-frameprops-extended
 _origpkgname=vsview_frameprops_extended
-pkgver=0.1.2
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="A vsview plugin adding more categories and formatters to the built-in vsview frameprops tool"
 arch=("x86_64")
@@ -19,8 +19,8 @@ makedepends=(
 	"python-hatchling"
     "python-versioningit"
 )
-source=("https://files.pythonhosted.org/packages/0d/f6/ff012f52f629e2fe7f26256a346636e750d75f575db456061fda6fd5a632/vsview_frameprops_extended-0.1.2.tar.gz")
-sha256sums=("43c901726f92dd50e7f41c9d8f41b8004f6c1ca38ed542adfa62a87bda777831")
+source=("https://files.pythonhosted.org/packages/34/82/19daf9ec41efe64467364eabc8609b34b8f6d38cc2c3885ba3bc6be98539/vsview_frameprops_extended-0.1.4.tar.gz")
+sha256sums=("23c78cc7c491077718485b116d86ef482e587d82a3565346bc90dfa73d35d5b8")
 package() {
 	cd "${_origpkgname}-${pkgver}" || exit
 	python -m build --wheel --no-isolation
