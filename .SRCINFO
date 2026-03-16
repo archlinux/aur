@@ -1,13 +1,15 @@
 pkgbase = bdf2sfd
 	pkgdesc = BDF to SFD converter, allowing to vectorize bitmap fonts
-	pkgver = 1.1.8
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/fcambus/bdf2sfd
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = BSD-2-Clause
 	makedepends = cmake
-	source = https://github.com/fcambus/bdf2sfd/releases/download/1.1.8/bdf2sfd-1.1.8.tar.gz
-	sha256sums = f654cc5de15f7a290bcb6a1d945973f534e99aa19712a4476386e4271a790191
+	depends = glibc
+	source = https://github.com/fcambus/bdf2sfd/releases/download/1.2.0/bdf2sfd-1.2.0.tar.gz
+	sha256sums = 43ffe2034d1e064a4583c67bd228668742d3dec59d34d7270c5ffffb7ccc7196
 
 pkgname = bdf2sfd
