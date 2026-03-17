@@ -1,7 +1,7 @@
 # Maintainer: IsaacShoebottom (Isaac Shoebottom) <ir.shoebottom@gmail.com>
 pkgname=mpv-modernz-git
 _gitname=ModernZ
-pkgver=r1086.74b8c8b
+pkgver=r1294.cfb5722
 pkgrel=1
 pkgdesc='A sleek and modern OSC for mpv designed to enhance functionality by adding more features, all while preserving the core standards of the main mpv OSC'
 arch=(x86_64)
@@ -32,7 +32,6 @@ package() {
   cd "$srcdir/$_gitname"
   install -Dm 644 "modernz.lua" -t "${pkgdir}/etc/mpv/scripts/"
   install -Dm 644 "modernz.conf" -t "${pkgdir}/etc/mpv/script-opts/"
+  install -Dm 644 "modernz-icons.ttf" -t "${pkgdir}/etc/mpv/fonts/"
   install -Dm 644 "extras/locale/modernz-locale.json" -t "${pkgdir}/etc/mpv/script-opts/"
-  install -Dm 644 "fluent-system-icons.ttf" -t "${pkgdir}/etc/mpv/fonts/"
-  install -Dm 644 "material-design-icons.ttf" -t "${pkgdir}/etc/mpv/fonts/"
 }
