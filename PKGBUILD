@@ -2,7 +2,7 @@
 
 pkgname=python-bump-my-version
 _name=$( echo ${pkgname#python-} | tr '-' '_' )
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc='A small command line tool to simplify releasing software by updating all version strings'
 arch=(any)
@@ -33,7 +33,7 @@ checkdepends=(
     python-pytest-xdist
 )
 source=(https://github.com/callowayproject/bump-my-version/releases/download/${pkgver}/${_name}-${pkgver}.tar.gz)
-sha256sums=('1f2f0daa5d699904e9739be8efb51c4c945461bad83cd4da4c89d324d9a18343')
+sha256sums=('d915a10b41e0c9db5a2fa39bde9f45f92e1e4194242d819c9ceb9eca8831cd21')
 
 
 build() {
