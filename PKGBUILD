@@ -1,6 +1,6 @@
 # Maintainer: Michael König <m.koenig@kit.edu>
 pkgname=bwlog
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=2
 pkgdesc="Lightweight logger for network throughput, CPU utilization, and interrupt rates"
 arch=('x86_64')
@@ -9,8 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/v$pkgver/v$pkgver.tar.gz")
-sha256sums=('0ef092a2a2b022f44aaaf3695a2a6efcfa98c3db0841215b7ba0200ebbcd8f00')
-
+sha256sums=('1b444f3310a2125ce6fd3e90c8340b4f96e0360243f2ab16c7a4be7ba250b272')
 
 prepare() {
     cd "$pkgname-v$pkgver-"*
