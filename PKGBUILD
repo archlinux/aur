@@ -1,7 +1,7 @@
 # Maintainer: LuoTianyi_arm64 <2153585992@qq.com>
 pkgname=astraeditor-git
 _binname=astraeditor-desktop
-pkgver=1.1.3.1
+pkgver=1.1.4
 pkgrel=1
 pkgdesc='AstraEditor is a TurboWarp mod used to add more practical features to make your writing lightning fast.'
 arch=('x86_64' 'aarch64' 'armv7h')
