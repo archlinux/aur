@@ -1,6 +1,6 @@
 pkgbase = dotmatrix-git
 	pkgdesc = Dotfile management and versioning tool with TUI and GUI
-	pkgver = 0.4.2.r10.g02e7bd0
+	pkgver = 0.5.1.r0.ga6c067a
 	pkgrel = 1
 	url = https://github.com/Woofson/dotmatrix
 	arch = x86_64

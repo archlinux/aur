@@ -1,6 +1,6 @@
 # Maintainer: Woofson <https://github.com/Woofson>
 pkgname=dotmatrix-git
-pkgver=0.4.2.r10.g02e7bd0
+pkgver=0.5.1.r0.ga6c067a
 pkgrel=1
 pkgdesc="Dotfile management and versioning tool with TUI and GUI"
 arch=('x86_64')
