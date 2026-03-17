@@ -1,5 +1,5 @@
 pkgbase = matchmaker-bin
-	pkgdesc = A fuzzy searcher, powered by nucleo and written in rust
+	pkgdesc = A fast, configurable and intuitive fuzzy searcher
 	pkgver = 0.0.20
 	pkgrel = 1
 	url = https://github.com/Squirreljetpack/matchmaker

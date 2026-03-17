@@ -4,7 +4,7 @@ _pkgauthor=Squirreljetpack
 _pkgname=matchmaker
 _execname=mm
 pkgname=${_pkgname}-bin
-pkgdesc="A fuzzy searcher, powered by nucleo and written in rust"
+pkgdesc="A fast, configurable and intuitive fuzzy searcher"
 
 pkgver=0.0.20
 pkgrel=1
@@ -21,8 +21,8 @@ provides=("${_execname}")
 conflicts=("${_pkgname}")
 depends=('glibc' 'libgcc')
 
-source=("README-${pkgver}.md::${_urlraw}/matchmaker-cli/README.md"
-		"LICENSE-${pkgver}::${_urlraw}/matchmaker-lib/LICENSE")
+source=("README-${pkgver}.md::${_urlraw}/${_pkgname}-cli/README.md"
+		"LICENSE-${pkgver}::${_urlraw}/${_pkgname}-lib/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux.tar.gz")
 sha256sums=('a5a5598e8c4e739ddfa0bc2431f9eaedbc07bdd4f783f78d480e069d1988d400'
             'd0b72bc24eb472035c25af6eff3946409fe62609ce40cfd21746af992cf8a8d4')
