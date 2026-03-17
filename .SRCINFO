@@ -1,5 +1,5 @@
 pkgbase = bcachefs-tools-git
-	pkgdesc = Bcachefs userspace tools (Git version) with FUSE support enabled
+	pkgdesc = Bcachefs userspace tools (Git version)
 	pkgver = 1.37.2.r0.g82c7fba
 	pkgrel = 1
 	epoch = 1

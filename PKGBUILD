@@ -9,7 +9,7 @@ _pkgname=bcachefs-tools
 epoch=1
 pkgver=1.37.2.r0.g82c7fba
 pkgrel=1
-pkgdesc="Bcachefs userspace tools (Git version) with FUSE support enabled"
+pkgdesc="Bcachefs userspace tools (Git version)"
 arch=('x86_64')
 url="https://github.com/koverstreet/bcachefs-tools"
 license=('GPL-2.0-only')
@@ -41,7 +41,6 @@ source=("git+https://github.com/koverstreet/bcachefs-tools.git")
 sha256sums=('SKIP')
 
 _common_make_args=(
-    BCACHEFS_FUSE=1
     PREFIX=/usr
     ROOT_SBINDIR=/usr/bin
     LIBEXECDIR=/usr/lib
