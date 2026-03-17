@@ -1,6 +1,6 @@
 pkgbase = convertall
 	pkgdesc = Convert between units.
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/doug-101/ConvertAll
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = convertall
 	depends = gtk3
 	depends = gstreamer
 	depends = gst-plugins-base-libs
-	source = git+https://github.com/doug-101/ConvertAll.git#tag=v1.0.2
-	sha256sums = 7851fa79178731fd1affad0167772409780f719b8f8dcdc3ce0e6a9136465941
+	source = git+https://github.com/doug-101/ConvertAll.git#tag=v1.0.3
+	sha256sums = 1bdaa3c7cf7e4f882b8cc52b14a7a45499dff90bb5f1240356d785e992acf0c6
 
 pkgname = convertall
