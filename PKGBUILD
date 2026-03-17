@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=8.1.r122774.gcb0f4de1f5
+pkgver=8.2.r123522.gac4d50cb26
 pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
 _whispercpp_ver='1.8.3'
@@ -26,7 +26,6 @@ depends=(
     'freetype2'
     'frei0r-plugins' # loaded on-demand by dlopen()
     'fribidi'
-    'gcc-libs'
     'glib2'
     'glibc'
     'glslang'
@@ -51,8 +50,10 @@ depends=(
     'libdvdnav'
     'libdvdread'
     'libfdk-aac'
+    'libgcc'
     'libgcrypt'
     'libgme'
+    'libgomp'
     'libiec61883'
     'libilbc'
     'libjxl'
@@ -69,6 +70,7 @@ depends=(
     'librsvg'
     'libsoxr'
     'libssh'
+    'libstdc++'
     'libtheora'
     'libva'
     'libvdpau'
@@ -175,11 +177,11 @@ source=('git+https://git.ffmpeg.org/ffmpeg.git'
 sha256sums=('SKIP'
             'SKIP'
             '870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a'
-            '076259dca1f02256e33aa4e064f6e8faa73678bb2542430c8ff4b94599a6479f'
+            'a7b58f00258dd59ba2f5413815175c98befe5e06eb31b9bf5d5983fc9570c556'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '21f28e9bf2e7f4085131aee25e316508eb0a2aa1bb9957e8544878a470b8a6ef'
-            '1c4f328bfb0dfedf4478f7b3659bcd08c591823a389b9e9e4eb8c35b0b3e0356'
-            '9eacf8e863ff5266cc808dedb9a4945d4ecd7434b9b0dadcbf87c33870f50424'
+            '40fc1dd35c8f12e88b81522a99ade94ce25032917f669168711e3238585f5760'
+            '95223dda645c15b3daf79cd4d55df5d4ac46207f749973396bb761b743586ed6'
+            'd8e40a6b854640027b8ad089fe5c903587f0515db16719beb554571907350d88'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 

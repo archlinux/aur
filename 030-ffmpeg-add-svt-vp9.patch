@@ -8,7 +8,7 @@
    --enable-libvvenc        enable H.266/VVC encoding via vvenc [no]
    --enable-libwebp         enable WebP encoding via libwebp [no]
    --enable-libx264         enable H.264 encoding via x264 [no]
-@@ -2100,6 +2101,7 @@ EXTERNAL_LIBRARY_LIST="
+@@ -2105,6 +2106,7 @@ EXTERNAL_LIBRARY_LIST="
      libvmaf
      libvorbis
      libvpx
@@ -16,7 +16,7 @@
      libvvenc
      libwebp
      libxevd
-@@ -3811,6 +3813,7 @@ libvpx_vp8_decoder_deps="libvpx"
+@@ -3836,6 +3838,7 @@ libvpx_vp8_decoder_deps="libvpx"
  libvpx_vp8_encoder_deps="libvpx"
  libvpx_vp9_decoder_deps="libvpx"
  libvpx_vp9_encoder_deps="libvpx"
@@ -24,7 +24,7 @@
  libvvenc_encoder_deps="libvvenc"
  libwebp_encoder_deps="libwebp"
  libwebp_anim_encoder_deps="libwebp"
-@@ -7401,6 +7404,7 @@ enabled libvpx            && {
+@@ -7434,6 +7437,7 @@ enabled libvpx            && {
      fi
  }
  
@@ -34,7 +34,7 @@
      enabled libwebp_encoder      && require_pkg_config libwebp "libwebp >= 0.2.0" webp/encode.h WebPGetEncoderVersion
 --- a/libavcodec/Makefile
 +++ b/libavcodec/Makefile
-@@ -1219,6 +1219,7 @@ OBJS-$(CONFIG_LIBVPX_VP8_DECODER)         += libvpxdec.o
+@@ -1222,6 +1222,7 @@ OBJS-$(CONFIG_LIBVPX_VP8_DECODER)         += libvpxdec.o
  OBJS-$(CONFIG_LIBVPX_VP8_ENCODER)         += libvpxenc.o
  OBJS-$(CONFIG_LIBVPX_VP9_DECODER)         += libvpxdec.o
  OBJS-$(CONFIG_LIBVPX_VP9_ENCODER)         += libvpxenc.o
@@ -44,7 +44,7 @@
  OBJS-$(CONFIG_LIBWEBP_ANIM_ENCODER)       += libwebpenc_common.o libwebpenc_animencoder.o
 --- a/libavcodec/allcodecs.c
 +++ b/libavcodec/allcodecs.c
-@@ -827,6 +827,7 @@ extern const FFCodec ff_libvpx_vp8_encoder;
+@@ -830,6 +830,7 @@ extern const FFCodec ff_libvpx_vp8_encoder;
  extern const FFCodec ff_libvpx_vp8_decoder;
  extern FFCodec ff_libvpx_vp9_encoder;
  extern const FFCodec ff_libvpx_vp9_decoder;
