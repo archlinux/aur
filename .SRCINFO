@@ -12,6 +12,6 @@ pkgbase = pacselect
 	depends = sudo
 	depends = pacman-contrib
 	source = pacselect-0.3.0.tar.gz::https://github.com/ryansinn/pacselect/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 6ba59c1d610f31e6df0a1241c8e47729d127672a2e02f0dc60b03b0abf743775
+	sha256sums = 461f1c3cce8a2288746bf896f14ee55d6894ba2b4361eda66413542812d89ca7
 
 pkgname = pacselect
