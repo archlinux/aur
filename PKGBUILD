@@ -3,7 +3,7 @@
 _pkgauthor=blacknon
 _pkgname=hwatch
 pkgname=${_pkgname}-bin
-pkgver=0.3.19
+pkgver=0.3.20
 pkgrel=1
 pkgdesc='A modern alternative to the watch command'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -19,8 +19,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}-${pkgver}.${arch[0]}-unknown-linux-gnu.tar.gz")
 sha256sums=('83e4dd21429a91fb7cea67a476032a9641425e5355df2e0f589a738b6ec9fd2c'
-            '67b8f44e0bb9c0e33403a1270f6e26b59a27e784534fd14e92e3a9225173883d')
-sha256sums_x86_64=('5c90c79cfba35706ae78f73f59390e8d79fdeb61c7d7683515d504ba78aa53a3')
+            '6e9d90abf9406c3a9167b4a77dc097b7270691132961b6568c552377e2f02024')
+sha256sums_x86_64=('365aad6a92633499add754f8585a301c1ff6a5be9dffeef385d3ddc27302c74e')
 
 build() {
   cd "${srcdir}/" || exit
