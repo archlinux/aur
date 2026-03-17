@@ -3,14 +3,14 @@
 
 pkgname=castle-engine-git
 pkgver=v7.0.alpha.3.9a5133f
-pkgrel=1.1
+pkgrel=2
 pkgdesc="Cross-platform (desktop, mobile, console) 3D and 2D game engine using modern Object Pascal"
 arch=(x86_64)
 url="https://castle-engine.io/"
 license=('LGPL with static linking exception')
 depends=(gtk2 freetype2 openal libpng libvorbis mesa fpc lazarus)
 makedepends=(git make fpc lazarus)
-source=(git+https://github.com/castle-engine/castle-engine.git)
+source=(git+https://github.com/castle-engine/castle-engine)
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,7 +23,6 @@ build() {
           cd castle-engine
           make clean tools
           tools/build-tool/castle-engine --project tools/castle-editor compile
-          make clean
 }
 
 package() {
@@ -49,6 +48,7 @@ Keywords=editor;pascal;fpc;design;castle;engine;' > castle-editor.desktop
           install -Dm755 tools/to-data-uri/to-data-uri "${pkgdir}/usr/bin/to-data-uri"
           install -Dm755 castle-editor.desktop "${pkgdir}/usr/share/applications/castle-editor.desktop"
           # Cleanup
+          make clean
           rm -f tools/build-tool/castle-engine
           rm -f tools/castle-editor/castle-editor
           rm -f tools/castle-curves/castle-curves
