@@ -19,7 +19,7 @@ sha256sums=('a5cb759dd16794928e59bf38cd4648a39d938b578126850e9df808b25c0135ba'
 
 prepare() {
 	mkdir -p $pkgname/game
-	bsdtar -xf "$_pkgname-$pkgver-linux_x86_64.tar.xz" -C $pkgname
+	tar -xf "$_pkgname-$pkgver-linux_x86_64.tar.xz" -C $pkgname
 	cp -r $pkgname/$_pkgname-*-linux_x86_64/* $pkgname/game
 	rm -rf $pkgname/$_pkgname-*-linux_x86_64
 	chmod +x $pkgname/game/DDNet
