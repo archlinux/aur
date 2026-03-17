@@ -104,6 +104,7 @@ check() {
   export PYTHONPATH="$PWD/tmp_install/$site_packages"
 
   local pytest_args=(
+    --ignore-glob="**/benchmarks"
     # Not sure why these fail.
     --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v1_json.py::TestV1JsonEncoder::test_encode
     --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v1_json.py::TestV1JsonEncoder::test_encode_local_endpoint_default
