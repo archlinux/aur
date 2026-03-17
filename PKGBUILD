@@ -5,8 +5,8 @@ pkgdesc="ground-up implementation of a Fortran front end written in modern C++"
 arch=('x86_64')
 url="https://flang.llvm.org/"
 license=('Apache-2.0 WITH LLVM-exception')
-depends=("mlir>=${pkgver%%.*}" "clang" "llvm-libs" "glibc" "libgcc" "libstdc++" "libquadmath")
-makedepends=('cmake' 'python' 'llvm')
+depends=("clang" "llvm-libs" "glibc" "libgcc" "libstdc++" "libquadmath")
+makedepends=('cmake' 'python' 'llvm' "mlir>=${pkgver%%.*}")
 options=(staticlibs !emptydirs !lto !debug)
 _source_base=https://github.com/llvm/llvm-project/releases/download/llvmorg-$pkgver
 source=($_source_base/llvm-project-$pkgver.src.tar.xz{,.sig})

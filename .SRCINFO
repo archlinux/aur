@@ -8,7 +8,7 @@ pkgbase = flang
 	makedepends = cmake
 	makedepends = python
 	makedepends = llvm
-	depends = mlir>=22
+	makedepends = mlir>=22
 	depends = clang
 	depends = llvm-libs
 	depends = glibc
