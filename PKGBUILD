@@ -1,6 +1,6 @@
 # Maintainers: SteamClientHomebrew <https://github.com/SteamClientHomebrew>
 
-pkgver=3.0.0_beta.6
+pkgver=3.0.0_beta.7
 pkgname="millennium"
 _pkgdir="Millennium"
 pkgrel=5
@@ -10,7 +10,7 @@ url="https://github.com/SteamClientHomebrew/Millennium"
 license=('MIT')
 depends=('git' 'steam')
 makedepends=('bun' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja' 'lib32-gcc-libs' 'lib32-openssl' 'lib32-libidn2' 'lib32-xz' 'lib32-zstd' 'lib32-brotli' 'lib32-libnghttp2' 'lib32-libpsl' 'libx11' 'libxtst')
-source=("git+$url.git#commit=2df7fb546b2f38b2ba9a60aec1801006f61f3707") # TODO: update to commit on main branch when we merge.
+source=("git+$url.git#commit=7032b17a912aad61204322a5cfc855e34738d363") # TODO: update to commit on main branch when we merge.
 sha256sums=('SKIP')
 options=(!debug)
 install=millennium.install
@@ -20,7 +20,6 @@ build() {
 
     echo -e        "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium...\e[0m"
 
-    # CMake handles the TypeScript frontend build automatically via bun.
     cmake -GNinja  . -DCMAKE_BUILD_TYPE=Release --preset linux-release -DDISTRO_ARCH=ON
     cmake --build  build
 }
