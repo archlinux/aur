@@ -1,9 +1,9 @@
 pkgbase = lua-resty-string
 	pkgdesc = String utilities and common hash functions for ngx_lua and LuaJIT
 	pkgver = 0.16
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
-	url = https://github.com/openresty/lua-resty-core
+	url = https://github.com/openresty/lua-resty-string
 	arch = any
 	license = BSD-2-Clause
 	depends = luajit

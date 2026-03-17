@@ -5,13 +5,13 @@
 
 pkgname=lua-resty-string
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 epoch=1
 
 pkgdesc='String utilities and common hash functions for ngx_lua and LuaJIT'
 arch=('any')
 depends=('luajit' 'lua-resty-core' 'nginx')
-url="https://github.com/openresty/lua-resty-core"
+url="https://github.com/openresty/lua-resty-string"
 license=('BSD-2-Clause')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/openresty/$pkgname/archive/v$pkgver.tar.gz")
