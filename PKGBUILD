@@ -1,7 +1,7 @@
 # Maintainer: Andy Stewart <lazycat.manatee@gmail.com>
 
 pkgname=rime-ice-installer
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='TUI installer for Fcitx5, Rime Ice and Wanxiang on Arch Linux'
 arch=('x86_64')
@@ -10,13 +10,18 @@ license=('custom:unknown')
 depends=('curl' 'dbus' 'dialog' 'git' 'glib2' 'sudo' 'unzip')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dca78ec7c00f66bf3e6197d736628817ffd09b4cd7489b34b27e4c7b89f5bd08')
+sha256sums=('eac9c63cb6c14fd07e644768785886a2f9faddc0656aa040180a7a17d7e3416e')
+
+_setup_go_env() {
+  export GOPATH="$srcdir"
+  export GOMODCACHE="$srcdir/pkg/mod"
+  export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
+}
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  export GOPATH="$srcdir"
-  export GOMODCACHE="$srcdir/pkg/mod"
+  _setup_go_env
 
   go mod download
 }
@@ -24,13 +29,11 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  export GOPATH="$srcdir"
-  export GOMODCACHE="$srcdir/pkg/mod"
+  _setup_go_env
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS='-buildmode=pie -trimpath -mod=readonly -modcacherw'
 
   go build -o "$pkgname" .
 }
@@ -38,8 +41,7 @@ build() {
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  export GOPATH="$srcdir"
-  export GOMODCACHE="$srcdir/pkg/mod"
+  _setup_go_env
 
   go test ./...
 }
