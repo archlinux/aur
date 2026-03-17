@@ -1,25 +1,32 @@
 # Maintainer: aethstetic <aethstetic@users.noreply.github.com>
-pkgname=vex-shell
+pkgname=vex-shell-git
 _pkgname=vex
-pkgver=0.1.1
+pkgver=r1
 pkgrel=1
 pkgdesc='A typed shell with structured data pipelines, written in C'
 arch=('x86_64' 'aarch64')
 url='https://github.com/aethstetic/vex'
 license=('MIT')
 depends=('glibc')
-source=("$_pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+makedepends=('git')
+provides=('vex-shell')
+conflicts=('vex-shell')
+source=("git+$url.git")
 sha256sums=('SKIP')
 install=vex.install
 
+pkgver() {
+    cd "$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-    cd "$_pkgname-$pkgver"
+    cd "$_pkgname"
     make PREFIX=/usr
 }
 
-
 package() {
-    cd "$_pkgname-$pkgver"
+    cd "$_pkgname"
     make DESTDIR="$pkgdir" PREFIX=/usr install
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
