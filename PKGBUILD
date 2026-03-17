@@ -6,6 +6,7 @@ pkgdesc="Soundcard configuration tool for pro-audio use, made in Qt. Includes al
 arch=('x86_64')
 url="https://codeberg.org/zynskeyfolf/JaqalMixer"
 license=('GPL-3.0-or-later')
+groups=('pro-audio')
 depends=('qt6-base' 'alsa-lib')
 makedepends=('git' 'cmake' 'make' 'qt6-base' 'alsa-lib')
 optdepends=('alsa-utils: for saving settings persistently')

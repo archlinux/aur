@@ -4,6 +4,7 @@ pkgbase = jaqalmixer-git
 	pkgrel = 1
 	url = https://codeberg.org/zynskeyfolf/JaqalMixer
 	arch = x86_64
+	groups = pro-audio
 	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = cmake
