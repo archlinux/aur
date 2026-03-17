@@ -1,7 +1,7 @@
 # Maintainer: Marco Cadetg <cadetg@gmail.com>
 
 pkgname=rustnet-bin
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Real-time network monitoring TUI with process identification via eBPF and deep packet inspection"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ conflicts=('rustnet' 'rustnet-git')
 install=rustnet-bin.install
 source_x86_64=("rustnet-${pkgver}-x86_64.tar.gz::https://github.com/domcyrus/rustnet/releases/download/v${pkgver}/rustnet-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("rustnet-${pkgver}-aarch64.tar.gz::https://github.com/domcyrus/rustnet/releases/download/v${pkgver}/rustnet-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('9d09eadf97c08e5053324837c94b597fb6351c4d2ebcb0b1a443158fc1ba6781')
-sha256sums_aarch64=('7f2e636bf4e7843628713f2dec4adc09ec49508c039af460007e9b0321897082')
+sha256sums_x86_64=('fad2cfc5dcda48604a21a374a9dcf059d0342f966cfb01f28324e2a13d407660')
+sha256sums_aarch64=('3966fb9646626a5de998833c219da8ca6ec955319ff64d2f273033891308983f')
 
 package() {
     # Extract the archive
