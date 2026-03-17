@@ -1,6 +1,6 @@
 pkgbase = rosec-provider-gnome-keyring-bin
 	pkgdesc = GNOME Keyring read-only provider for rosec (prebuilt)
-	pkgver = 0.0.18
+	pkgver = 0.0.19
 	pkgrel = 1
 	url = https://github.com/jmylchreest/rosec
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = rosec-provider-gnome-keyring-bin
 	depends = rosec
 	provides = rosec-provider-gnome-keyring
 	conflicts = rosec-provider-gnome-keyring
-	source = rosec-provider-gnome-keyring-0.0.18.wasm.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.18/rosec-provider-gnome-keyring-0.0.18.wasm.tar.gz
-	sha256sums = a9fda01006e217a1a2da0f5053151818b27a6cb1a4f57098924e9a9011eeac0c
+	source = rosec-provider-gnome-keyring-0.0.19.wasm.tar.gz::https://github.com/jmylchreest/rosec/releases/download/v0.0.19/rosec-provider-gnome-keyring-0.0.19.wasm.tar.gz
+	sha256sums = f24ca97ca6d89902deb8eec288a1f6c3eccd6b32dc985cce823c6b010deed255
 
 pkgname = rosec-provider-gnome-keyring-bin
