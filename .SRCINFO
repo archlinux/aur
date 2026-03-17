@@ -1,7 +1,7 @@
 pkgbase = astraeditor-bin
 	pkgdesc = AstraEditor is a TurboWarp mod used to add more practical features to make your writing lightning fast.
-	pkgver = 1.1.3.1
-	pkgrel = 3
+	pkgver = 1.1.4
+	pkgrel = 1
 	url = https://github.com/AstraEditor/
 	arch = x86_64
 	arch = aarch64
@@ -17,11 +17,11 @@ pkgbase = astraeditor-bin
 	conflicts = astraeditor
 	options = !strip
 	options = !debug
-	source_x86_64 = astraeditor-1.1.3.1-x86_64.deb::https://github.com/AstraEditor/Desktop/releases/download/v1.1.3.1/AstraEditor-linux-amd64-1.1.3.deb
+	source_x86_64 = astraeditor-1.1.4-x86_64.deb::https://github.com/AstraEditor/Desktop/releases/download/v1.1.4/AstraEditor-linux-amd64-1.1.4.deb
 	sha256sums_x86_64 = SKIP
-	source_aarch64 = astraeditor-1.1.3.1-aarch64.deb::https://github.com/AstraEditor/Desktop/releases/download/v1.1.3.1/AstraEditor-linux-aarch64-1.1.3.deb
+	source_aarch64 = astraeditor-1.1.4-aarch64.deb::https://github.com/AstraEditor/Desktop/releases/download/v1.1.4/AstraEditor-linux-aarch64-1.1.4.deb
 	sha256sums_aarch64 = SKIP
-	source_armv7h = astraeditor-1.1.3.1-armv7h.deb::https://github.com/AstraEditor/Desktop/releases/download/v1.1.3.1/AstraEditor-linux-armv7l-1.1.3.deb
+	source_armv7h = astraeditor-1.1.4-armv7h.deb::https://github.com/AstraEditor/Desktop/releases/download/v1.1.4/AstraEditor-linux-armv7l-1.1.4.deb
 	sha256sums_armv7h = SKIP
 
 pkgname = astraeditor-bin
