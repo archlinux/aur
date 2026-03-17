@@ -30,6 +30,12 @@ post_install() {
     rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_32/libXtst.so.6"
     ln -s /usr/lib/millennium/libmillennium_bootstrap_86x.so "${USER_HOME}/.local/share/Steam/ubuntu12_32/libXtst.so.6"
 
+    rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_64/libXtst.so.6"
+    ln -s /usr/lib/millennium/libmillennium_bootstrap_hhx64.so "${USER_HOME}/.local/share/Steam/ubuntu12_64/libXtst.so.6"
+
+    rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_64/libmillennium_hhx64.so"
+    ln -s /usr/lib/millennium/libmillennium_hhx64.so "${USER_HOME}/.local/share/Steam/ubuntu12_64/libmillennium_hhx64.so"
+
     # Setup Steam remote debugging
     touch "${USER_HOME}/.steam/steam/.cef-enable-remote-debugging"
 }
@@ -45,8 +51,10 @@ post_remove() {
         USER_HOME="$HOME"
     fi
     
-    # Remove the symlink created during post_install
+    # Remove the symlinks created during post_install
     rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_32/libXtst.so.6"
+    rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_64/libXtst.so.6"
+    rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_64/libmillennium_hhx64.so"
 
     # Disable Steam remote debugging
     rm -f "${USER_HOME}/.steam/steam/.cef-enable-remote-debugging"
