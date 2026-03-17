@@ -1,6 +1,6 @@
 pkgbase = ppsspp-bin
 	pkgdesc = A PSP emulator for Android, Windows, Mac and Linux, written in C++
-	pkgver = 1.20.2
+	pkgver = 1.20.3
 	pkgrel = 1
 	url = https://www.ppsspp.org/
 	arch = x86_64
@@ -27,10 +27,10 @@ pkgbase = ppsspp-bin
 	depends = xz
 	provides = ppsspp
 	conflicts = ppsspp
-	noextract = PPSSPP-v1.20.2-anylinux-x86_64.AppImage
+	noextract = PPSSPP-v1.20.3-anylinux-x86_64.AppImage
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/hrydgard/ppsspp/releases/download/v1.20.2/PPSSPP-v1.20.2-anylinux-x86_64.AppImage
-	sha256sums = cdf9cd3484358034bdb8a3a1fdaee203c1c3be4268df7d1e8a27ce2201f09173
+	source = https://github.com/hrydgard/ppsspp/releases/download/v1.20.3/PPSSPP-v1.20.3-anylinux-x86_64.AppImage
+	sha256sums = f6c7c399adfad19476b0fd20216132046b84242c6679b6822d10d124bb1c5366
 
 pkgname = ppsspp-bin
