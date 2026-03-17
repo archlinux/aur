@@ -3,7 +3,7 @@
 # Contributor: Donald Webster <fryfrog@gmail.com>
 
 pkgname=jackett
-pkgver=0.24.1385
+pkgver=0.24.1392
 pkgrel=1
 pkgdesc='Use many torrent trackers with software that supports torznab/potato feeds.'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -23,7 +23,7 @@ source=(
   'jackett.tmpfiles'
 )
 
-sha256sums=('4d07192b8f5b60d4ae2ef8dc49c0768a10727e1123aa78ab3af151b42276b4b5'
+sha256sums=('38adb7ffc2ce71b19a6d2f5c07935efcb3aad9281f8bbbf3f69bd64eb181ce95'
             '41fbd667538c84662757f923b440d8b250ee3819cd333bd5dd561094d4ef5c3c'
             'f865c06ffd21a12d37bf05953d9b483819c0f4e43d243a56db33986113fc40e4'
             '64022e15565a609f449090f02d53ee90ef95cffec52ae14f99e4e2132b6cffe1')
