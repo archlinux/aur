@@ -2,16 +2,17 @@
 
 pkgbase=guile-dbd-sqlite3
 pkgname=guile-dbd-sqlite3
-pkgver=2.1.9
-pkgrel=2
+pkgver=3.1.1
+pkgrel=1
 pkgdesc='The dbd plugin connects to an actual SQLite3 database server'
 arch=('x86_64' 'aarch64')
 url='https://github.com/opencog/guile-dbi'
-license=('GPL2')
+license=('GPL-2.0-only')
 pkgdepend=guile-dbi
 depends=('guile' 'guile-dbi' 'sqlite')
+makedepends=('libtool')
 source=("${url}/archive/${pkgdepend}-${pkgver}.tar.gz")
-sha256sums=('25C38FE7E7176B4340951093FCBD13A9E6532D76399310CB6DF19E169EC19347')
+sha256sums=('66bcb1544a8757d02b2b856694bc864646b99a52a4b65102b1d259ba47135ff5')
 options=(!strip)
 
 build () {
