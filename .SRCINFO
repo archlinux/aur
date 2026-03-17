@@ -1,0 +1,21 @@
+pkgbase = openify-git
+	pkgdesc = A modern, lightweight, privacy-first music player powered by Tauri.
+	pkgver = 2.0.0.r0.g7cee2f7
+	pkgrel = 1
+	url = https://github.com/Arcioth/openify
+	arch = x86_64
+	license = ISC
+	makedepends = git
+	makedepends = nodejs>=18
+	makedepends = npm
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	optdepends = yt-dlp: YouTube Music streaming support
+	provides = openify
+	conflicts = openify
+	source = git+https://github.com/Arcioth/openify.git
+	sha256sums = SKIP
+
+pkgname = openify-git
