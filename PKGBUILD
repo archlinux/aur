@@ -1,6 +1,6 @@
 # Maintainer: Bjarne Øverli <bjarne@oever.li>
 pkgname=aether
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc='Omarchy theming application'
 arch=('any')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gjs' 'gtk4' 'libadwaita' 'libsoup3' 'imagemagick' 'gtk4-layer-shell')
 optdepends=('omarchy: Theme application backend')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bjarneo/aether/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('60be8bef5186014b51cd84f8921a6b5cfc6902f92031d6794da157cafdb2ea95')
+sha256sums=('4ad135cda8ae01f796c6b9221736b28c60394a73baacc4be7adf2ac46d48e233')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
