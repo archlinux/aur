@@ -16,6 +16,7 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 depends=('curl')
 source=("${_pkgname}::git+https://github.com/cblte/bash-script-wttr")
+sha256sums=("SKIP")
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"

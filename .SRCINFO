@@ -10,5 +10,6 @@ pkgbase = wttr-git
 	provides = wttr=1.55
 	conflicts = wttr
 	source = wttr::git+https://github.com/cblte/bash-script-wttr
+	sha256sums = SKIP
 
 pkgname = wttr-git
