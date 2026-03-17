@@ -14,8 +14,8 @@ arch=('x86_64' 'aarch64')
 options=('!debug')
 url="https://www.roomeqwizard.com"
 license=('custom')
-depends=('xdg-utils' 'bash' 'glibc' 'jre11-openjdk' 'alsa-lib' 'xorg-xwayland')
-makedepends=('java-environment' 'fontconfig' 'freetype2')
+depends=('xdg-utils' 'bash' 'glibc' 'java-runtime=11' 'alsa-lib' 'xorg-xwayland')
+makedepends=('java-runtime=11' 'fontconfig' 'freetype2')
 #conflicts=('roomeqwizard')
 source=(
     "http://www.roomeqwizard.com/installers/REW_linux_no_jre_${pkgver//./_}-api.sh"
