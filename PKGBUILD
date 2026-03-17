@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=acceptarium-git
-pkgver=0.0.0.r128.g7e183a3
+pkgver=0.0.0.r129.gad94099
 pkgrel=1
 pkgdesc='CLI tool to facilitate digitized receipt handling in plain text accounting workflows'
 arch=(x86_64)
@@ -47,7 +47,6 @@ _srcenv() {
 	export CARGO_FEATURE_FLAGS==--offline
 	export LIBGIT2_NO_VENDOR=1
 	CFLAGS+=' -ffat-lto-objects'
-	export AWS_LC_SYS_NO_JITTER_ENTROPY=1
 }
 
 build() {
