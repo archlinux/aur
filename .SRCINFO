@@ -1,6 +1,6 @@
 pkgbase = zenoh-cpp
 	pkgdesc = C++ API for Zenoh
-	pkgver = 1.7.2
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://zenoh.io/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = zenoh-cpp
 	makedepends = ninja
 	depends = zenoh-c
 	options = !debug
-	source = https://github.com/eclipse-zenoh/zenoh-cpp/archive/1.7.2.tar.gz
-	sha256sums = 0d41a2696527fabf6e401b9ffe5641d3861da99cd1180e7850069f15c1ebb24c
+	source = https://github.com/eclipse-zenoh/zenoh-cpp/archive/1.8.0.tar.gz
+	sha256sums = 19f6d29af3711561c4b9caffe64ef0a67602594e2e2f6615b43b9db7133d8313
 
 pkgname = zenoh-cpp
