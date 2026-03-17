@@ -1,27 +1,37 @@
-# Maintainer: Faule Socke <github@socker.lepus.uberspace.de>
+# Maintainer:
+# Contributor: Faule Socke <github@socker.lepus.uberspace.de>
 
 pkgname=python-pyassimp-git
-pkgver=git-1
+pkgver=6.0.4.r26.gfcb170216
 pkgrel=1
-pkgdesc="Portable Open Source library to import various well-known 3D model formats in an uniform manner. Python binding."
-arch=(i686 x86_64)
-url="http://assimp.sourceforge.net/"
-license=('BSD')
+pkgdesc="Python bindings for the Open Asset Import Library (ASSIMP)"
+arch=(any)
+url="https://www.assimp.org/"
+license=('ISC')
 depends=('python' 'assimp')
-makedepends=('git')
-conflicts=()
-options=()
-source=('git://github.com/assimp/assimp.git')
-md5sums=('SKIP')
-_gitname="assimp"
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+optdepends=(
+    'python-numpy: used internally for data arrays'
+    'python-opengl: to run examples'
+    'python-pygame: to run examples'
+)
+conflicts=(${pkgname-%git})
+provides=(${pkgname-%git})
+source=('git+https://github.com/assimp/assimp.git')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd $_gitname
-    git describe --always | sed 's|-|.|g'
+    cd assimp
+    git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
+}
+
+build() {
+    cd assimp/port/PyAssimp
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$_gitname/port/PyAssimp/"
-    python setup.py install --root="$pkgdir/" --optimize=1
+    cd assimp/port/PyAssimp
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
