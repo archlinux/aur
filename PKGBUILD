@@ -105,40 +105,22 @@ check() {
 
   local pytest_args=(
     --ignore-glob="**/benchmarks"
-    # Not sure why these fail.
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v1_json.py::TestV1JsonEncoder::test_encode
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v1_json.py::TestV1JsonEncoder::test_encode_local_endpoint_default
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v1_json.py::TestV1JsonEncoder::test_encode_local_endpoint_explicits
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v1_json.py::TestV1JsonEncoder::test_encode_max_tag_length_10
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v1_json.py::TestV1JsonEncoder::test_encode_max_tag_length_11
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v1_json.py::TestV1JsonEncoder::test_encode_max_tag_length_128
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v1_json.py::TestV1JsonEncoder::test_encode_max_tag_length_2
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v1_json.py::TestV1JsonEncoder::test_encode_max_tag_length_5
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v1_json.py::TestV1JsonEncoder::test_encode_max_tag_length_9
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v2_json.py::TestV2JsonEncoder::test_encode
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v2_json.py::TestV2JsonEncoder::test_encode_id_zero_padding
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v2_json.py::TestV2JsonEncoder::test_encode_local_endpoint_default
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v2_json.py::TestV2JsonEncoder::test_encode_local_endpoint_explicits
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v2_json.py::TestV2JsonEncoder::test_encode_max_tag_length_10
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v2_json.py::TestV2JsonEncoder::test_encode_max_tag_length_11
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v2_json.py::TestV2JsonEncoder::test_encode_max_tag_length_128
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v2_json.py::TestV2JsonEncoder::test_encode_max_tag_length_2
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v2_json.py::TestV2JsonEncoder::test_encode_max_tag_length_5
-    --deselect=exporter/opentelemetry-exporter-zipkin-json/tests/encoder/test_v2_json.py::TestV2JsonEncoder::test_encode_max_tag_length_9
-    --deselect=opentelemetry-sdk/tests/resources/test_resources.py::TestOTELResourceDetector::test_process_detector
-    --deselect=exporter/opentelemetry-exporter-otlp-proto-grpc/benchmarks/test_benchmark_trace_exporter.py::test_simple_span_processor
-    --deselect=exporter/opentelemetry-exporter-otlp-proto-grpc/benchmarks/test_benchmark_trace_exporter.py::test_batch_span_processor
-    --deselect=opentelemetry-sdk/tests/context/test_asyncio.py::TestAsyncio::test_with_asyncio
   )
 
   for path in "${_pkgpaths[@]}"; do
-#    [ "$path" = "tests/opentelemetry-test-utils" ] && continue
     # Fails due to protobuf version mismatch.
     [ "$path" = "exporter/opentelemetry-exporter-zipkin" ] && continue
     [ "$path" = "exporter/opentelemetry-exporter-zipkin-proto-http" ] && continue
     [ "$path" = "shim/opentelemetry-opentracing-shim" ] && continue
+
+    local env=()
+    # Encoder tests read service name from global tracer provider which
+    # defaults to "unknown_service" outside of upstream's tox isolation.
+    [ "$path" = "exporter/opentelemetry-exporter-zipkin-json" ] && \
+      env=(env OTEL_SERVICE_NAME=test_service)
+
     unshare -Urn sh -c 'ip link set lo up && exec "$@"' -- \
-      pytest "$path" -p no:randomly "${pytest_args[@]}"
+      "${env[@]}" pytest "$path" -p no:randomly "${pytest_args[@]}"
   done
 }
 
