@@ -1,0 +1,19 @@
+pkgbase = fist-bin
+	pkgdesc = A fast and intuitive search tool for the filesystem
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/Squirreljetpack/fist
+	arch = x86_64
+	license = CC-BY-NC-SA-4.0
+	depends = glibc
+	depends = libgcc
+	provides = fs
+	conflicts = fist
+	source = README-0.0.3.md::https://raw.githubusercontent.com/Squirreljetpack/fist/0.0.3/README.md
+	source = LICENSE-0.0.3::https://raw.githubusercontent.com/Squirreljetpack/fist/0.0.3/LICENSE
+	sha256sums = eb2b2358cc28ff629c013c2aeb34b02c0e8daba892aa087409325f66d82810f8
+	sha256sums = 34b241496ca507c10103af63471fd52081840cf79ebc104eba68bc3b6ad0d3ea
+	source_x86_64 = fist-x86_64-0.0.3.tgz::https://github.com/Squirreljetpack/fist/releases/download/0.0.3/fist-linux.tar.gz
+	sha256sums_x86_64 = f8b63b41e8d70f8bbe31634243fabcb4ae4ff7bf63b3f211dda5b6198f6ca7ef
+
+pkgname = fist-bin

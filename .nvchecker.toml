@@ -1,0 +1,4 @@
+[fist-bin]
+source = "github"
+github = "Squirreljetpack/fist"
+use_latest_release = true
