@@ -1,6 +1,6 @@
 pkgbase = colmap-git
 	pkgdesc = General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.
-	pkgver = 3.14.0.dev0.r300.ga6f539d4e
+	pkgver = 4.1.0.dev0.r9.g60512ed2f
 	pkgrel = 1
 	url = https://colmap.github.io/
 	arch = i686
