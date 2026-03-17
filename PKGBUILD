@@ -10,7 +10,7 @@ license=('custom')
 options=('!strip' '!debug')
 depends=('webkit2gtk-4.1' 'gtk3' 'gst-plugins-bad')
 source=("https://gamevox-release-prod.s3.amazonaws.com/launcher/linux/gamevox-launcher")
-sha256sums=('7a130bbe76658e95819dd87f4c984d7b534bf59bb7821a94684424d0cfefb404')
+sha256sums=('62b00d026c06c2d99abc7673fe873731b1f0675f7391f707b3f846f777519c51')
 install=$pkgname.install
 
 prepare() {
