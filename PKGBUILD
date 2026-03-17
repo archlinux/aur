@@ -1,7 +1,7 @@
 # Maintainer: Hexa-Programmer
 pkgname=hexatyping-git
 _pkgname=hexatyping
-pkgver=1.1.0
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="A minimalist, terminal-based typing tester (TUI) with specialized programming and symbol modes."
 arch=('any')

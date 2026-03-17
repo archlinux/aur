@@ -1,6 +1,6 @@
 pkgbase = hexatyping-git
 	pkgdesc = A minimalist, terminal-based typing tester (TUI) with specialized programming and symbol modes.
-	pkgver = 1.1.0
+	pkgver = 1.1.5
 	pkgrel = 1
 	url = https://github.com/Hexa-Programmer/hexatyping
 	arch = any
