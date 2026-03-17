@@ -1,6 +1,6 @@
 pkgbase = podman-desktop-git
 	pkgdesc = A graphical tool for developing on containers and Kubernetes.(Use system-wide electron)
-	pkgver = r9378.1537648
+	pkgver = r1.08307d1
 	pkgrel = 1
 	url = https://podman-desktop.io/
 	arch = any
@@ -11,11 +11,10 @@ pkgbase = podman-desktop-git
 	makedepends = curl
 	makedepends = pnpm
 	makedepends = jq
-	depends = electron40
+	depends = electron41
 	depends = docker-compose
 	depends = podman
 	depends = docker
-	depends = nodejs
 	depends = python
 	optdepends = crc: crc plugin
 	optdepends = lima: lima plugin
@@ -24,13 +23,11 @@ pkgbase = podman-desktop-git
 	optdepends = libappindicator-gtk3: StatusNotifierItem support
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = qt5-base: enable Qt5 with --enable-features=AllowQt
-	provides = podman-desktop=r9378.1537648
+	provides = podman-desktop=r1.08307d1
 	conflicts = podman-desktop
 	options = !strip
 	options = !emptydirs
-	source = podman-desktop.git::git+https://github.com/podman-desktop/podman-desktop
 	source = podman-desktop.sh
-	sha256sums = SKIP
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = podman-desktop-git

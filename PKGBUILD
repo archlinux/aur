@@ -1,10 +1,10 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=podman-desktop-git
-_pkgname="Podman Desktop"
+_pkgname='Podman Desktop'
 _flatpakname="io.podman_desktop.${_pkgname// /}"
-pkgver=r9378.1537648
-_electronversion=40
-_nodeversion=22
+pkgver=r1.08307d1
+_electronversion=41
+_nodeversion=24
 pkgrel=1
 pkgdesc="A graphical tool for developing on containers and Kubernetes.(Use system-wide electron)"
 arch=('any')
@@ -18,7 +18,6 @@ depends=(
     'docker-compose'
     'podman'
     'docker'
-    'nodejs'
     'python'
 )
 makedepends=(
@@ -42,12 +41,8 @@ options=(
     '!strip'
     '!emptydirs'
 )
-source=(
-    "${pkgname%-git}.git::git+${_ghurl}"
-    "${pkgname%-git}.sh"
-)
-sha256sums=('SKIP'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+source=("${pkgname%-git}.sh")
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
@@ -66,6 +61,11 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
+    cd "${srcdir}"
+    git clone \
+        --depth 1 \
+        "${_ghurl}" \
+        "${pkgname%-git}.git"
     cd "${srcdir}/${pkgname%-git}.git"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
@@ -75,7 +75,6 @@ prepare() {
         s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
     " "${srcdir}/${pkgname%-git}.sh"
     _get_electron_version
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
     {
@@ -110,6 +109,7 @@ prepare() {
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
     _ensure_local_nvm
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     local electronDist="/usr/lib/electron${_electronversion}"
     NODE_ENV=production     pnpm run build:main
     NODE_ENV=production     pnpm run build:preload
@@ -124,7 +124,14 @@ build() {
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
     install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
-    cp -Pr --no-preserve=ownership "${srcdir}/${pkgname%-git}.git/dist/linux-"*/resources/app "${pkgdir}/usr/lib/${pkgname%-git}"
+	find "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-git}" {} +
+    if find "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/${pkgname%-git}.git/dist/linux-"*"/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-git}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/${pkgname%-git}.git/.flatpak.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/buildResources/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/buildResources/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname%-git}.svg"
