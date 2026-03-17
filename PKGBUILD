@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=folo
 _pkgname=Folo
-pkgver=1.3.1
+pkgver=1.4.0
 _electronversion=38
 _nodeversion=22
 pkgrel=1
@@ -23,10 +23,7 @@ makedepends=(
     'git'
     'jq'
 )
-source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}#tag=desktop/v${pkgver}"
-    "${pkgname}.sh"
-)
+source=("${pkgname}.sh")
 sha256sums=('d9cccacd64706f1aeb17b3646dbb47dfb2ff2af409ffa25be42a6f88c51fe971'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
@@ -41,6 +38,12 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
+    cd "${srcdir}"
+    git clone \
+        --depth 1 \
+        --branch "v${pkgver}" \
+        "${_ghurl}" \
+        "${pkgname}-${pkgver}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
