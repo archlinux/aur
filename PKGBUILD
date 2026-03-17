@@ -3,7 +3,7 @@
 
 pkgname=poezio
 pkgver=0.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured command-line IRC-like XMPP (Jabber) client"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://poez.io"
