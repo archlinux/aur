@@ -1,0 +1,6 @@
+/*.log
+/*.tar.gz
+/*.tar.zst
+/pkg/
+/src/
+/music-assistant-desktop-git/
