@@ -1,0 +1,15 @@
+pkgbase = libpathrs
+	pkgdesc = C-friendly API to make path resolution safer on Linux
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/cyphar/libpathrs
+	arch = x86_64
+	license = MPL-2.0 OR LGPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	options = !lto
+	source = https://github.com/cyphar/libpathrs/releases/download/v0.2.4/libpathrs-0.2.4.tar.xz
+	sha256sums = 45aca68e698b844fae0cf7c459bc441519b0e7b48397caa7d3936cfc68d73f77
+
+pkgname = libpathrs
