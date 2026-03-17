@@ -3,7 +3,7 @@
 pkgname="hermes-dec"
 pkgver=0.1.0
 pkgrel=2
-pkgdesc=" A reverse engineering tool for decompiling and disassembling the React Native Hermes bytecode "
+pkgdesc="A reverse engineering tool for decompiling and disassembling the React Native Hermes bytecode"
 arch=(
   'any'
 )
