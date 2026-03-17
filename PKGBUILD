@@ -8,7 +8,7 @@
 # Contributor: Angel 'angvp' Velasquez <angvp@archlinux.com.ve>
 
 pkgname=mantisbt
-pkgver=2.28.0
+pkgver=2.28.1
 pkgrel=1
 pkgdesc="Web-based issue tracking system"
 arch=(any)
@@ -41,7 +41,7 @@ source=(
   "${pkgname}.tmpfiles"
   "${pkgname}.uwsgi"
 )
-sha512sums=('a5fe356a1cee3c5d9f5b8d421e5deff6f328da7e5f2cb1fe00c3451a4fb63775c196d9e77618e5434f5febc584ab2924972b751a7d73a5ce7441925e1acb7e86'
+sha512sums=('d33d0e120ff4cffe3d1ee910acfe555539d4f6bf6bff8124b7439066c0c77a22b7cb9f3443e380ca87edcd63e65ec6749c4887c354a37cffa77cd377254908e5'
   '3fd4e7faad7774892abfd20006ae3efcd7b0ba315447da9cea8d7352d5fd1e7f0c558d3855ad4e667a0bfe6ae0d95d12c848a78d53312521a7f551f2edca723e'
   '6f6c6ca7cafeb3f76ba0aa62af1a7adb39b87d7db201b30a52d57507b1333cdffd60ae787b15c97919380a7a133daef73bd22fde5cccda2d5b98f54b32049c5b'
   'c6033ab6bfe6c89c2918dde66b3ec912dc50d4c6ad34c413076e16ccb9c7374f5d65a637c2c8e935eabfbe354ff3f316cd1969bcc7b50dfec45628d8918aa07a')
