@@ -2,8 +2,8 @@
 # Contributor: Jan Koppe <post@jankoppe.de>
 
 pkgname=ffmpeg-decklink
-pkgver=8.0.1
-pkgrel=3
+pkgver=8.1
+pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (decklink enabled)'
 arch=('x86_64')
@@ -18,7 +18,6 @@ depends=(
   fontconfig
   freetype2
   fribidi
-  gcc-libs
   glib2
   glibc
   glslang
@@ -35,6 +34,7 @@ depends=(
   libdrm
   libdvdnav
   libdvdread
+  libgcc
   libiec61883
   libjxl
   libmodplug
@@ -45,6 +45,7 @@ depends=(
   librsvg
   libsoxr
   libssh
+  libstdc++
   libtheora
   libva
   libvdpau
@@ -110,24 +111,15 @@ provides=(
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
-        '110-ffmpeg-add-playback-support-to-decklink-sdk14.3-devices.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/0cd75dbfa0fc6c213cf9240b3c03c809070c5209'
-        '120-ffmpeg-add-decklink-sdk14.3-build-support.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/27e94281d1c880b4cae28738e35c0d6f9a58f06b'
-        '130-ffmpeg-svt-av1-4.0-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/a5d4c398b411a00ac09d8fe3b66117222323844c'
         'LICENSE')
-sha256sums=('05ee0b03119b45c0bdb4df654b96802e909e0a752f72e4fe3794f487229e5a41'
+sha256sums=('b072aed6871998cce9b36e7774033105ca29e33632be5b6347f3206898e0756a'
             'SKIP'
-            '5cb2475de410f5696072687af88e91461cdacd1bb636ac14a3b348e3383934f1'
-            'd1c4bdbcdd5a852f46639e0cb3dbf0b4a71884487c9fbcdb38139a1e5e96ddaf'
-            'ee89e0759f5233d390e3a23415e2664aae38bbe89e10d49ecda8a06c26bd21ee'
-            '1dbbc1a4cf9834b3902236abc27fefe982da03a14bcaa89fb90c7c8bd10a1664'
+            '95223dda645c15b3daf79cd4d55df5d4ac46207f749973396bb761b743586ed6'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/110-ffmpeg-add-playback-support-to-decklink-sdk14.3-devices.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/120-ffmpeg-add-decklink-sdk14.3-build-support.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/130-ffmpeg-svt-av1-4.0-fix.patch"
 }
 
 build() {
