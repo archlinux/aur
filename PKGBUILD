@@ -10,7 +10,7 @@ url="https://www.pgadmin.org/docs/pgadmin4/latest/pgagent.html"
 arch=('x86_64' 'i686' 'aarch64')
 license=('custom')
 depends=('postgresql-libs' 'boost')
-makedepends=('cmake')
+makedepends=('cmake3')
 source=(https://github.com/pgadmin-org/pgagent/archive/refs/tags/${pkgname}-${pkgver}.tar.gz
         ${pkgname}@localhost
         ${pkgname}@.service)
@@ -22,7 +22,8 @@ install=${pkgname}.install
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
-  cmake ./ -DCMAKE_INSTALL_PREFIX=/usr -DSTATIC_BUILD:BOOL=OFF -DCMAKE_CXX_FLAGS=-pthread
+  sed -i 's/thread system)/thread)/g' CMakeLists.txt
+  cmake3 ./ -DCMAKE_INSTALL_PREFIX=/usr -DSTATIC_BUILD:BOOL=OFF -DCMAKE_CXX_FLAGS=-pthread
   make
 }
 
