@@ -1,7 +1,7 @@
 #Maintainer: Shadowbee <shadowbee.contact@proton.me>
 pkgname=hister-bin
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
 conflicts=('hister' 'hister-git')
