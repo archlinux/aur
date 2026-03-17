@@ -1,7 +1,7 @@
 pkgbase = archy-st
 	pkgdesc = Simple terminal emulator for X with some patches applied
 	pkgver = 0.10.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/archy-linux/archy-st
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = archy-st
 	depends = fontconfig
 	depends = harfbuzz
 	provides = st
-	source = https://github.com/archy-linux/archy-st/archive/refs/tags/0.10.3.tar.gz
+	source = archy-st-0.10.3.tar.gz::https://github.com/archy-linux/archy-st/archive/refs/tags/0.10.3.tar.gz
 	sha256sums = f3d05c52c7dbdb6b39cf16d12ba5d5b9da5e19370045687041ad6d32c6757ca6
 
 pkgname = archy-st
