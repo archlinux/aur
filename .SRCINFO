@@ -1,0 +1,17 @@
+pkgbase = trx-bin
+	pkgdesc = Minimal git-backed issue tracker with TUI viewer
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/byteowlz/trx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = trx
+	conflicts = trx
+	conflicts = trx-git
+	source_x86_64 = trx-bin-0.3.0.tar.gz::https://github.com/byteowlz/trx/releases/download/v0.3.0/trx-v0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3c587ef35f17884a6aa6f49450dfffd23389ca402bba07790627e6916f14dea8
+	source_aarch64 = trx-bin-0.3.0.tar.gz::https://github.com/byteowlz/trx/releases/download/v0.3.0/trx-v0.3.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 3cbb92175a984b1e3160c720190ad98f9a7d68f401f7231f05ef7f7a7b3e5fee
+
+pkgname = trx-bin
