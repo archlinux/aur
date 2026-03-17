@@ -39,12 +39,8 @@ if [[ "$(ps -o args=$PID 2>/dev/null)" != *"--printsrcinfo"* ]]; then
   fi
 fi
 
-# Download cookies for fetching the license PDF
-curl -s --compressed --cookie-jar "${srcdir}http_cookies" -H "@${srcdir}http_headers" "$url" > /dev/null
-
 DLAGENTS=("https::/usr/bin/curl \
               -gqb '' --retry 3 --retry-delay 3 \
-              --cookie "${srcdir}http_cookies" \
               -H "@${srcdir}http_headers" \
               -o %o -L --compressed %u")
 source=("local://${_pkg_zip_name}"
@@ -52,7 +48,7 @@ source=("local://${_pkg_zip_name}"
         "https://www.st.com/resource/en/license/${_pkg_license_name}")
 sha256sums=('c9aa0d3c366278685217437675120904b2f9f58f53f79214424031efc3951358'
             '12e85339c74dc80c054062432dfc6f0eb1be3214fcb4f1fab427193f4e6f0d22'
-            'SKIP')
+            '0792ee061576afb2c9a11d80e7cdcd0ab2da6f223de6442c9bf1e0ebefd17bcd')
 
 # not used, reserved.
 _pkgname_stlink_server="stlink-server"
