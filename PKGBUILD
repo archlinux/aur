@@ -1,4 +1,5 @@
 # Maintainer: LS-Shandong <ls-shandong at outlook dot com>
+# Contributor: Fabian Brosda <fabi3141@gmx.de>
 # Contributor: Ting-Wei Lan <lantw44 at gmail dot com>
 # Contributor: Thomas Koller-Cherek <tk120 at protonmail dot com>
 # Contributor: holos
@@ -6,11 +7,11 @@
 
 pkgname=guile-json
 pkgver=4.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc='JSON module for Guile'
-arch=('x86_64' 'i686' 'armv7h')
+arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://savannah.nongnu.org/projects/guile-json'
-license=('GPL3')
+license=('GPL-3.0-only')
 depends=('guile')
 source=( https://download-mirror.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz{,.sig} )
 sha256sums=('38ba048ed29d12f05b32c5b2fb7a51795c448b41e403a2b1b72ff0035817f388'
