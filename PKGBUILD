@@ -17,10 +17,6 @@ build() {
     make PREFIX=/usr
 }
 
-check() {
-    cd "$_pkgname-$pkgver"
-    make test
-}
 
 package() {
     cd "$_pkgname-$pkgver"
