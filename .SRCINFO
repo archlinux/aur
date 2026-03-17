@@ -9,9 +9,9 @@ pkgbase = eden-opt
 	makedepends = patchelf
 	depends = zlib
 	depends = qt6-base
+	depends = qt6-charts
 	depends = opus
 	depends = spirv-tools
-	depends = openssl
 	depends = libfmt.so=12-64
 	depends = libusb
 	optdepends = shared-mime-info

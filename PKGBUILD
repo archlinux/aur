@@ -10,9 +10,9 @@ arch=('x86_64' 'aarch64')
 url="https://git.eden-emu.dev/eden-emu/eden"
 license=('GPL-3.0-only')
 depends=('zlib' 'qt6-base'
+    'qt6-charts'
     'opus'
     'spirv-tools'
-    'openssl'
     'libfmt.so=12-64'
     'libusb'
 )
