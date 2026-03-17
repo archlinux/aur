@@ -1,6 +1,6 @@
 # Maintainer: CPT_Dawn <dawnsp0456@gmail.com>
 pkgname=arch-sense
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Acer Predator PH16-71 control center for Arch Linux — thermal profiles, fan control, battery management, and keyboard RGB via a Rust TUI"
 arch=('x86_64')
@@ -13,30 +13,33 @@ optdepends=(
   'linuwu-sense-dkms: kernel module for sysfs hardware controls'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CPT-Dawn/Arch-Sense/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('61d06138ae9622aa877a20c6765f8dce864f55d9b34642b10195cfa264b0d309')
+sha256sums=('67043cfc1a51d6445dab84a7f3c6953b3075b31a2475f0b8658b81d7b02669bf')
 
 prepare() {
   cd "Arch-Sense-${pkgver}"
-  export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "Arch-Sense-${pkgver}"
-  export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --all-features
 }
 
 check() {
   cd "Arch-Sense-${pkgver}"
-  export RUSTUP_TOOLCHAIN=stable
   cargo test --frozen --all-features
 }
 
 package() {
   cd "Arch-Sense-${pkgver}"
+  
   install -Dm755 "target/release/arch-sense" "${pkgdir}/usr/bin/arch-sense"
   install -Dm644 "arch-sense.service" "${pkgdir}/usr/lib/systemd/system/arch-sense.service"
+
+  install -dm755 "${pkgdir}/var/lib/arch-sense"
+
+  echo "d /var/lib/arch-sense 0755 root root -" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/tmpfiles.d/arch-sense.conf"
+  
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,6 +1,6 @@
 pkgbase = arch-sense
 	pkgdesc = Acer Predator PH16-71 control center for Arch Linux — thermal profiles, fan control, battery management, and keyboard RGB via a Rust TUI
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/CPT-Dawn/Arch-Sense
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = arch-sense
 	depends = glibc
 	optdepends = nvidia-utils: GPU temperature monitoring via nvidia-smi
 	optdepends = linuwu-sense-dkms: kernel module for sysfs hardware controls
-	source = arch-sense-1.0.0.tar.gz::https://github.com/CPT-Dawn/Arch-Sense/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 61d06138ae9622aa877a20c6765f8dce864f55d9b34642b10195cfa264b0d309
+	source = arch-sense-1.1.0.tar.gz::https://github.com/CPT-Dawn/Arch-Sense/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 67043cfc1a51d6445dab84a7f3c6953b3075b31a2475f0b8658b81d7b02669bf
 
 pkgname = arch-sense
