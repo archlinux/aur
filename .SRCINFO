@@ -1,0 +1,18 @@
+pkgbase = steghide-bin
+	pkgdesc = A steganography program (binary version from Debian)
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://steghide.sourceforge.net
+	arch = x86_64
+	license = GPL-2.0-only
+	depends = libjpeg6-turbo-bin
+	depends = libmcrypt
+	depends = mhash
+	depends = zlib
+	depends = gcc-libs
+	provides = steghide
+	conflicts = steghide
+	source = https://deb.debian.org/debian/pool/main/s/steghide/steghide_0.5.1-15_amd64.deb
+	sha256sums = ae33e98a3a90e3ff968c4d0fe76627aeb8d5e9f0b6d48947c065fb1ebdb7db24
+
+pkgname = steghide-bin
