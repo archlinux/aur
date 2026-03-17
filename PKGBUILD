@@ -1,12 +1,12 @@
 # Maintainer: DeltaCopy <7x0bb03yq@mozmail.com>
 # Description: Builds Transistor from https://gitlab.com/driglu4it/transistor
-# PKGBUILD issues: https://github.com/DeltaCopy/transistor-git-aur
+# PKGBUILD issues: https://github.com/DeltaCopy/transistor-git-aur-ci
 
 # basic info
 pkgname="transistor-git"
 _pkgname="transistor"
-pkgver=r9.3fcfa21
-pkgrel=2
+pkgver=r10.a1eaf2d3
+pkgrel=1
 pkgdesc="Internet radio player that provides access to a station database with over 50,000 stations."
 url="https://gitlab.com/driglu4it/transistor"
 arch=('x86_64' 'aarch64')
@@ -41,15 +41,6 @@ depends=(
 )
 
 depends=("${depends[@]}")
-
-pkgver() {
-  cd "$srcdir/$_pkgname.git"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$srcdir/$_pkgname.git"
-}
 
 build() (
   local cmake_options=(
