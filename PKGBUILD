@@ -137,7 +137,8 @@ check() {
     [ "$path" = "exporter/opentelemetry-exporter-zipkin" ] && continue
     [ "$path" = "exporter/opentelemetry-exporter-zipkin-proto-http" ] && continue
     [ "$path" = "shim/opentelemetry-opentracing-shim" ] && continue
-    pytest "$path" "${pytest_args[@]}"
+    unshare -Urn sh -c 'ip link set lo up && exec "$@"' -- \
+      pytest "$path" -p no:randomly "${pytest_args[@]}"
   done
 }
 
