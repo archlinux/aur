@@ -1,0 +1,18 @@
+pkgbase = fredulator-git
+	pkgdesc = GTK calculator with vim motions, multi-tab support, and Elm-style architecture
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/fredrir/fredulator
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	makedepends = git
+	depends = gtk3
+	provides = fredulator
+	conflicts = fredulator
+	source = git+https://github.com/fredrir/fredulator.git
+	sha256sums = SKIP
+
+pkgname = fredulator-git
