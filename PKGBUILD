@@ -7,7 +7,7 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=6.1.1.0
+pkgver=6.2.0.5
 pkgrel=1
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
@@ -16,12 +16,13 @@ license=('LicenseRef-Mega-Limited-Code-License')
 depends=(
     'crypto++'
     'curl'
-    'gcc-libs'
     'glibc'
     'hicolor-icon-theme'
     'icu'
+    'libgcc'
     'libmediainfo'
     'libsodium'
+    'libstdc++'
     'libuv'
     'libxcb'
     'libzen'
@@ -39,28 +40,38 @@ makedepends=(
     'cmake'
     'git'
     'qt5-tools')
-source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Linux"
+source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_OSX"
         'meganz-sdk'::'git+https://github.com/meganz/sdk.git'
         '010-megasync-sdk-fix-cmake-dependencies-detection.patch'
         '020-megasync-app-fix-cmake-dependencies-detection.patch'
-        '030-megasync-app-disable-isolated-gfx-for-disabling-freeimage-in-sdk.patch')
-sha256sums=('1f42810b627267db213c0397576f1eac0ffc6f17aa37d2552250c0ae76d71231'
+        '030-megasync-app-disable-isolated-gfx-for-disabling-freeimage-in-sdk.patch'
+        '040-megasync-sdk-add-missing-icu-link-library.patch')
+sha256sums=('e00d65853daea700d7da59582b4ded9eca46a848a6aa10dbef06a837dfe77fe6'
             'SKIP'
             'ceedf9b236b3f65f796e389b2c6ef33d71348d8be3c517cc59c423f1f354d092'
             'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171'
-            '6a2b12ac8f210ece16216168aa699e57218577e7fea6e971d0e9b398ad78c89f')
+            '6a2b12ac8f210ece16216168aa699e57218577e7fea6e971d0e9b398ad78c89f'
+            '3c61fb8d266d2c12d9a30d6cc0884d3bdda33ed5dc5f9c32ada12ab8d56322bc')
 
 prepare() {
     # https://github.com/meganz/MEGAsync/issues/1010#issuecomment-2726028797
     git -C MEGAsync rm --cached src/DesignTokensImporter/megadesignassets
     
-    git -C MEGAsync submodule init
-    git -C MEGAsync config --local submodule.src/MEGASync/mega.url "${srcdir}/meganz-sdk"
-    git -C MEGAsync -c protocol.file.allow='always' submodule update
+    #git -C MEGAsync submodule init
+    #git -C MEGAsync config --local submodule.src/MEGASync/mega.url "${srcdir}/meganz-sdk"
+    #git -C MEGAsync -c protocol.file.allow='always' submodule update
+    # sdk is set to be at commit 613e7a03f76127b5bcb586eb690536a67d5729e9 (v10.6.1) but it does not exist, using sdk v10.6.0
+    # https://github.com/meganz/MEGAsync/commit/41bdbcb6612db10e46f352d89dfd099e32ce5256
+    # https://github.com/meganz/sdk/commit/052c6fae502f8fcb6e35343537da6143c688604d
+    git -C meganz-sdk config --local advice.detachedHead false
+    git -C meganz-sdk checkout 052c6fae502f8fcb6e35343537da6143c688604d
+    rm -r MEGAsync/src/MEGASync/mega
+    ln -sf ../../../meganz-sdk MEGAsync/src/MEGASync/mega
     
     patch -d MEGAsync/src/MEGASync/mega -Np1 -i "${srcdir}/010-megasync-sdk-fix-cmake-dependencies-detection.patch"
     patch -d MEGAsync -Np1 -i "${srcdir}/020-megasync-app-fix-cmake-dependencies-detection.patch"
     patch -d MEGAsync -Np1 -i "${srcdir}/030-megasync-app-disable-isolated-gfx-for-disabling-freeimage-in-sdk.patch"
+    patch -d MEGAsync/src/MEGASync/mega -Np1 -i "${srcdir}/040-megasync-sdk-add-missing-icu-link-library.patch"
 }
 
 build() {
