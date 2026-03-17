@@ -1,11 +1,12 @@
 pkgbase = guile-dbi
 	pkgdesc = A simple, generic, easy-to-use guile scheme interface to SQL databases, such as Postgres, MySQL or SQLite3
 	pkgver = 3.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/opencog/guile-dbi
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-only
+	makedepends = libtool
 	depends = guile
 	depends = texinfo
 	options = !strip

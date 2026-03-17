@@ -3,12 +3,13 @@
 
 pkgname=guile-dbi
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, generic, easy-to-use guile scheme interface to SQL databases, such as Postgres, MySQL or SQLite3'
 arch=('x86_64' 'aarch64')
 url='https://github.com/opencog/guile-dbi'
 license=('GPL-2.0-only')
 depends=('guile' 'texinfo')
+makedepends=('libtool')
 source=("${url}/archive/${pkgname}-${pkgver}.tar.gz")
 sha256sums=('66bcb1544a8757d02b2b856694bc864646b99a52a4b65102b1d259ba47135ff5')
 options=(!strip)
