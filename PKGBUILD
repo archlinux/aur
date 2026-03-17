@@ -1,27 +1,34 @@
+# shellcheck disable=SC2034,SC2086,SC2128,SC2148,SC2154,SC2164
+# Maintainer: Toria <ninetailedtori@uwu.gal>
+# Maintainer: Amirreza Firoozi <firoozi128.af@gmail.com>
 # Maintainer: Oleg Hahm <oleg+aur@riot-os.org>
-_pkgname="bash-script-wttr"
-pkgname=wttr-git
+
+_pkgname="wttr"
+pkgname="${_pkgname}-git"
 pkgver=1.55
-pkgrel=2
-pkgdesc="A simple script that helps you check weather condition using site: http://wttr.in (new repository version)"
+pkgrel=1
+pkgdesc="a simple script that checks the weather condition via http://wttr.in"
 arch=('any')
-url="https://github.com/cblte/${_pkgname}"
+url="https://github.com/cblte/bash-script-wttr"
 license=('MIT')
 makedepends=('git')
-provides=("wttr=${pkgver}")
-conflicts=("wttr")
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 depends=('curl')
-source=("git+https://github.com/cblte/${_pkgname}")
-md5sums=('SKIP')
+source=("${_pkgname}::git+https://github.com/cblte/bash-script-wttr")
 
 pkgver() {
-  cd ${_pkgname} 
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${srcdir}/${_pkgname}"
+
+    git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-    mkdir -p ${pkgdir}/usr/bin/
-        cd "${_pkgname}"
-        install -Dm0755 "wttr" ${pkgdir}/usr/bin/wttr
-        install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    cd "${srcdir}/${_pkgname}"
+
+    mkdir -p "${pkgdir}/usr/bin/"
+    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}/"
+
+    install -Dm0755 "wttr" "${pkgdir}/usr/bin/wttr"
+    install -Dm0644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
