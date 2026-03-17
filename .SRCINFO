@@ -1,17 +1,17 @@
 pkgbase = drawpen-bin
 	pkgdesc = A simple screen annotation.(Prebuild version.Use system-wide electron)
-	pkgver = 0.0.44
+	pkgver = 0.0.45
 	pkgrel = 1
 	url = https://github.com/DmytroVasin/DrawPen
 	arch = x86_64
 	license = MIT
 	depends = electron40
-	provides = drawpen=0.0.44
+	provides = drawpen=0.0.45
 	conflicts = drawpen
 	options = !emptydirs
-	source = drawpen-0.0.44.rpm::https://github.com/DmytroVasin/DrawPen/releases/download/v0.0.44/drawpen-0.0.44-1.x86_64.rpm
+	source = drawpen-0.0.45.rpm::https://github.com/DmytroVasin/DrawPen/releases/download/v0.0.45/drawpen-0.0.45-1.x86_64.rpm
 	source = drawpen.sh
-	sha256sums = cb0cd8520e0e0f91604a66b5088f6872f04cbf9769eaa67d9a10389184e1d86e
+	sha256sums = 3f5bfcb89fed8f1b24c6b6ad376c2620be1bd34c2057573ca1c5ba36669aebb7
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = drawpen-bin
