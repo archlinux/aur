@@ -1,0 +1,6 @@
+post_install() {
+cat <<EOF
+In order to use this with River place "kwm" inside your river configuration or launch
+river -c kwm
+EOF
+}
