@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 # Maintainer: Kaz Walker <me@kazatron.com>
 pkgname=sharkfin
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Messaging over MCP for agent/human development teams'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('AGPL-3.0-or-later')
 makedepends=('go' 'nodejs' 'pnpm')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('582ea9ed0e9dc00f51d1c3d0b548d497aabf5ad2084ab44b8cac161c29ca56e5')
+sha256sums=('c2a53a7f6aa871bc1bf6524adbaadd1fd49f9c070ae535c7ac5e806ec63262e4')
 
 build() {
     cd "Sharkfin-${pkgver}"
