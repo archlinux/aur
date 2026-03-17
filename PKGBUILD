@@ -9,7 +9,7 @@ _pkgname=bcachefs-tools
 # VCS pkgver scheme used in AUR history.
 epoch=1
 pkgver=1.37.2.r0.g82c7fba
-pkgrel=1
+pkgrel=2
 pkgdesc="Bcachefs userspace tools (Git version)"
 arch=('x86_64')
 url="https://github.com/koverstreet/bcachefs-tools"

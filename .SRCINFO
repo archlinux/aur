@@ -1,7 +1,7 @@
 pkgbase = bcachefs-tools-git
 	pkgdesc = Bcachefs userspace tools (Git version)
 	pkgver = 1.37.2.r0.g82c7fba
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/koverstreet/bcachefs-tools
 	arch = x86_64
