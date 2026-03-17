@@ -1,7 +1,7 @@
 # Maintainer: chaoticdev
 pkgname=magicpodscore
 pkgver=2.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line utility for managing AirPods, Beats, and Galaxy Buds."
 arch=('x86_64')
 url="https://github.com/steam3d/MagicPodsCore"
@@ -18,6 +18,7 @@ depends=(
 makedepends=(
   'cmake'
   'git'
+  'ninja'
 )
 checkdepends=()
 optdepends=()
@@ -28,7 +29,7 @@ sha256sums=('0d34f6f3d5c004f39b7860c8f79b2fe6c83faadc8cf8b306118e5d0f333e91da')
 
 build() {
   cd "$srcdir/MagicPodsCore-$pkgver"
-  cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
+  cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -G Ninja
   cmake --build build
 }
 
