@@ -1,6 +1,6 @@
 pkgbase = mould-git
 	pkgdesc = A modern TUI tool for interactively generating and editing configuration files from templates
-	pkgver = 0.2.1.r17.g93c5c30
+	pkgver = 0.4.0.r30.ge09cc3f
 	pkgrel = 1
 	url = https://git.narl.io/nvrl/mould-rs
 	arch = x86_64
