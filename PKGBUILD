@@ -1,12 +1,12 @@
-# Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=libxdiff
 pkgver=0.23
-pkgrel=2
+pkgrel=3
 pkgdesc="The LibXDiff library implements basic and yet complete functionalities to create file differences/patches"
 arch=(i686 x86_64)
 url="http://www.xmailserver.org/xdiff-lib.html"
-license=('GPL')
+license=('LGPL-2.1-or-later')
 source=(http://www.xmailserver.org/$pkgname-$pkgver.tar.gz)
 sha256sums=('e9af96174e83c02b13d452a4827bdf47cb579eafd580953a8cd2c98900309124')
 
