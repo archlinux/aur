@@ -9,13 +9,17 @@ arch=('x86_64')
 url="https://github.com/music-assistant/desktop-app"
 license=('Apache-2.0')
 depends=(
+    'alsa-lib'
     'cairo'
+    'dbus'
     'gdk-pixbuf2'
     'glib2'
+    'glibc'
     'gtk3'
     'hicolor-icon-theme'
+    'libgcc'
+    'libpulse'
     'libsoup3'
-    'openssl'
     'webkit2gtk-4.1'
 )
 optdepends=(
