@@ -1,7 +1,7 @@
 # Maintainer: aethstetic <aethstetic@users.noreply.github.com>
 pkgname=vex-shell
 _pkgname=vex
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A typed shell with structured data pipelines, written in C'
 arch=('x86_64' 'aarch64')
