@@ -1,7 +1,7 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=kimaki
 pkgver=0.4.78
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord bot - Iron Man's Jarvis for coding agents with OpenCode integration"
 arch=('x86_64')
 url="https://github.com/remorses/kimaki"
@@ -35,7 +35,6 @@ package() {
 
     find "${pkgdir}" -type f \( -name '*.so' -o -name '*.so.*' -o -name '*.node' \) -exec strip --strip-unneeded {} + 2>/dev/null || true
 
-    find "${pkgdir}/usr/lib/node_modules/${pkgname}" -type d -name 'build' -prune -exec rm -rf {} + 2>/dev/null || true
     find "${pkgdir}/usr/lib/node_modules/${pkgname}" -type f -name 'config.gypi' -delete 2>/dev/null || true
     find "${pkgdir}/usr/lib/node_modules/${pkgname}" -type f -name 'Makefile' -delete 2>/dev/null || true
     find "${pkgdir}/usr/lib/node_modules/${pkgname}" -type f -name '*.o' -delete 2>/dev/null || true
