@@ -1,7 +1,7 @@
 # Maintainer: Your Name <your.email@example.com>
 
 pkgname=rclone-bisync-manager-git
-pkgver=0.4.0b3
+pkgver=0.4.0b3.r2.g3a584c3
 pkgrel=1
 pkgdesc="A daemon-based solution for automated, bidirectional synchronization of files using RClone (includes system tray)"
 arch=('any')
@@ -9,19 +9,24 @@ url="https://github.com/Gunther-Schulz/rclone-bisync-manager"
 license=('MIT')
 depends=('python>=3.12' 'rclone' 'python-croniter-git' 'python-pydantic' 'python-daemon' 'python-yaml' 'python-psutil' 'python-pillow' 'python-gobject' 'python-cairosvg' 'gtk3' 'libappindicator-gtk3' 'libnotify')
 optdepends=('cpulimit: for limiting CPU usage of rclone processes')
-makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('405c73b216aa57805aa664165beb0669f4ed62d1de804d8e8cd867f6bba906e4')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 install=rclone-bisync-manager.install
+
+pkgver() {
+    cd "$srcdir/$pkgname"
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 # Use system Python so venv in PATH does not break the build (python-build, python-installer from pacman).
 build() {
-    cd "$srcdir/rclone-bisync-manager-$pkgver"
+    cd "$srcdir/$pkgname"
     /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "$srcdir/rclone-bisync-manager-$pkgver"
+    cd "$srcdir/$pkgname"
     /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
