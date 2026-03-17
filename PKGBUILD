@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Maintainer: Kaz Walker <me@kazatron.com>
 pkgname=nexus-virt
-pkgver=0.5.5
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Lightweight VM lifecycle daemon for containerd and Kata Containers'
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ source_aarch64=("https://github.com/prometheus/node_exporter/releases/download/v
               "https://github.com/Work-Fort/Anvil/releases/download/v${_anvil_kernel_ver}/Image-${_anvil_kernel_ver}-aarch64.xz")
 noextract=("vmlinux-${_anvil_kernel_ver}-x86_64.xz"
            "Image-${_anvil_kernel_ver}-aarch64.xz")
-sha256sums=('83738c0010a8dd4d3d4ad27af7a9cc4045261ae37b48b66322831181f031017d')
+sha256sums=('e69856ea15903684570ab89fa870d3354e427604352bc7504acdad04250ff334')
 sha256sums_x86_64=('c46e5b6f53948477ff3a19d97c58307394a29fe64a01905646f026ddc32cb65b'
                    '6f12bb335921fdc1334c288e52ad7cbf60c10ceabc6a0d0c8ad10f55d66eadef')
 sha256sums_aarch64=('de69ec8341c8068b7c8e4cfe3eb85065d24d984a3b33007f575d307d13eb89a6'
