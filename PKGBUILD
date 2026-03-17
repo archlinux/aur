@@ -2,7 +2,7 @@
 # Contributor:
 
 pkgname=ibazel-bin
-pkgver=0.28.0
+pkgver=0.28.1
 pkgrel=1
 pkgdesc='Tool for building Bazel targets when source files change.'
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ source_aarch64+=(
   "${pkgname}-aarch64-${pkgver}::${url}/releases/download/v${pkgver}/${pkgname%-bin}_linux_arm64"
 )
 sha256sums=('c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
-sha256sums_x86_64=('17d412c34afeba69f9d05b6d1ea44848ffd4fdc18ebcd1f524b3699d1de0630e')
-sha256sums_aarch64=('85ef4c7a9a1429e1b3d17ba4f6702e61acb24e5510d006e1fd99d0de4bcd07c0')
+sha256sums_x86_64=('5e55e1358b28f30248b4468ad34c4ae078cdbdd7c141a15757c44384409b0a18')
+sha256sums_aarch64=('8442657041a3b3a6a436584ed6edc1f8ae11ae4bb67436c7805eaa206fcf56d1')
 
 package() {
   cd "${srcdir}" || exit
