@@ -1,16 +1,17 @@
 pkgbase = guile-dbd-mysql
 	pkgdesc = The dbd plugin connects to an actual MySQL database server
-	pkgver = 2.1.9
-	pkgrel = 2
+	pkgver = 3.1.1
+	pkgrel = 1
 	url = https://github.com/opencog/guile-dbi
 	arch = x86_64
 	arch = aarch64
-	license = GPL2
+	license = GPL-2.0-only
+	makedepends = libtool
 	depends = guile
 	depends = guile-dbi
 	depends = mysql
 	options = !strip
-	source = https://github.com/opencog/guile-dbi/archive/guile-dbi-2.1.9.tar.gz
-	sha256sums = 25C38FE7E7176B4340951093FCBD13A9E6532D76399310CB6DF19E169EC19347
+	source = https://github.com/opencog/guile-dbi/archive/guile-dbi-3.1.1.tar.gz
+	sha256sums = 66bcb1544a8757d02b2b856694bc864646b99a52a4b65102b1d259ba47135ff5
 
 pkgname = guile-dbd-mysql
