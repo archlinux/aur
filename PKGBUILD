@@ -3,7 +3,7 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
-pkgver=1.19.0
+pkgver=1.23.2
 _nodeversion=24
 pkgrel=1
 pkgdesc="Streaming music player that finds free music for you."
@@ -23,7 +23,7 @@ makedepends=(
     'rustup'
 )
 source=("${pkgname}-${pkgver}::git+${_ghurl}#tag=player@${pkgver}")
-sha256sums=('0efc8300efcbafc5c36d7effc8a1e6f0dc762a44c36b348d354d8dffcc2f99cc')
+sha256sums=('c1e1d08db4c741e55bac22fea1a5ca74242ddcb93ae19ad4754981dd841e8388')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -53,7 +53,10 @@ prepare() {
         s/Icon=com.nuclearplayer.Nuclear/Icon=${pkgname}/g
     " packages/player/src-tauri/resources/com.nuclearplayer.Nuclear.desktop
     sed -i "s/com.nuclearplayer.Nuclear/${pkgname}/g" packages/player/src-tauri/resources/com.nuclearplayer.Nuclear.metainfo.xml
-    sed -i "s/\"active\"\: true\,/\"active\"\: false\,/g" packages/player/src-tauri/tauri.conf.json
+    sed -i -e "
+        s/\"active\"\: true\,/\"active\"\: false\,/g
+        s/${_appname}-music-player/${pkgname}/g
+    " packages/player/src-tauri/tauri.conf.json
     sed -i "s/\"react-icons\"\: \"\^5.6.0\"\,/\"react-icons\"\: \"\^5.5.0\"\,/g" packages/player/package.json
     NODE_ENV=development    pnpm install --no-frozen-lockfile
     rustup default stable
@@ -81,7 +84,7 @@ build() {
     NODE_ENV=production     pnpm run build
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/packages/player/src-tauri/target/release/player" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}-${pkgver}/packages/player/src-tauri/target/release/${pkgname}" -t "${pkgdir}/usr/bin"
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/packages/player/src-tauri/resources/com.nuclearplayer.Nuclear.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}/packages/player/src-tauri/resources/com.nuclearplayer.Nuclear.metainfo.xml" \
