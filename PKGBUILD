@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=jjui
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc='TUI designed for interacting with the Jujutsu version control system'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(glibc
 makedepends=(go)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('a6167021279bffab6915f19f133c01eb0cfa1800220e4368193e1b8e1ead4f44')
+sha256sums=('31cd605acc0cdacfb15ad00f5f78efaaa4f16b9aee38c13aeb532dd141f28590')
 
 prepare() {
 	cd "$_archive"
