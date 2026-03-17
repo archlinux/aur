@@ -1,8 +1,8 @@
 pkgbase = transistor-git
 	pkgdesc = Internet radio player that provides access to a station database with over 50,000 stations.
-	pkgver = r132.2f96281
-	pkgrel = 1
-	url = https://invent.kde.org/saurov/transistor
+	pkgver = r9.3fcfa21
+	pkgrel = 2
+	url = https://gitlab.com/driglu4it/transistor
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-or-later
@@ -24,7 +24,7 @@ pkgbase = transistor-git
 	depends = jack
 	provides = transistor-git
 	options = !emptydirs
-	source = transistor.git::git+https://invent.kde.org/saurov/transistor
+	source = transistor.git::git+https://gitlab.com/driglu4it/transistor
 	sha256sums = SKIP
 
 pkgname = transistor-git

@@ -1,14 +1,14 @@
 # Maintainer: DeltaCopy <7x0bb03yq@mozmail.com>
-# Description: Builds Transistor from https://invent.kde.org/saurov/transistor
+# Description: Builds Transistor from https://gitlab.com/driglu4it/transistor
 # PKGBUILD issues: https://github.com/DeltaCopy/transistor-git-aur
 
 # basic info
 pkgname="transistor-git"
 _pkgname="transistor"
-pkgver=r132.2f96281
-pkgrel=1
+pkgver=r9.3fcfa21
+pkgrel=2
 pkgdesc="Internet radio player that provides access to a station database with over 50,000 stations."
-url="https://invent.kde.org/saurov/transistor"
+url="https://gitlab.com/driglu4it/transistor"
 arch=('x86_64' 'aarch64')
 license=("GPL-3.0-or-later")
 pkgdir="$srcdir/fakeinstall_kf6"
