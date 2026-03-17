@@ -1,6 +1,6 @@
 # Maintainer: Kreuder <mk@singular.de>
 pkgname=stenmark
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='A lightweight GTK4 Markdown organizer and editor'
 arch=('any')
@@ -21,7 +21,7 @@ makedepends=(
   'meson'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mkay/stenmark/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('07c9f700410224e8b9ea34d719e4ddeedfc19000e88cdde367772b74e5086286')
+sha256sums=('c9190dd2bd2626e643337e72162ab766fb51128d13aebce297556924d28d31f3')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
