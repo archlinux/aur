@@ -1,27 +1,27 @@
 pkgbase = eden-opt
-	pkgdesc = The Eden Nintendo Switch emulator Clang PGO version (with additional patches for SteamOS).
-	pkgver = 0.2.0.rc1
+	pkgdesc = The Eden Nintendo Switch emulator Clang PGO version (for Zen2 +).
+	pkgver = 0.2.0.rc2
 	pkgrel = 2
 	url = https://git.eden-emu.dev/eden-emu/eden
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-only AND BSL-1.0
+	license = GPL-3.0-only
 	makedepends = patchelf
 	depends = zlib
 	depends = qt6-base
-	depends = mbedtls
 	depends = opus
 	depends = spirv-tools
+	depends = openssl
 	depends = libfmt.so=12-64
 	depends = libusb
 	optdepends = shared-mime-info
 	optdepends = libsm
 	options = !strip
 	source = https://git.eden-emu.dev/eden-emu/eden/raw/branch/master/dist/dev.eden_emu.eden.xml
-	b2sums = SKIP
-	source_x86_64 = eden-0.2.0.rc1-x86_64::https://git.eden-emu.dev/eden-emu/eden/releases/download/v0.2.0-rc1/Eden-Linux-v0.2.0-rc1-steamdeck-clang-pgo.AppImage
-	sha256sums_x86_64 = SKIP
-	source_aarch64 = eden-0.2.0.rc1-aarch64::https://git.eden-emu.dev/eden-emu/eden/releases/download/v0.2.0-rc1/Eden-Linux-v0.2.0-rc1-aarch64-clang-pgo.AppImage
-	sha256sums_aarch64 = SKIP
+	b2sums = 93ff8f217b74b140b27aba5c740e945bef37b5528ce865a4c83de7a0cbebc133d923633a7ef93fb24a696caa4003d55315f54a8ebfcd246dd4eebd306e7c7943
+	source_x86_64 = eden-0.2.0.rc2-x86_64::https://git.eden-emu.dev/eden-emu/eden/releases/download/v0.2.0-rc2/Eden-Linux-v0.2.0-rc2-steamdeck-clang-pgo.AppImage
+	sha256sums_x86_64 = cfcca06c46dbe87ea978bcdd33330b443f02d1f23edc0cfc21371368065f5f58
+	source_aarch64 = eden-0.2.0.rc2-aarch64::https://git.eden-emu.dev/eden-emu/eden/releases/download/v0.2.0-rc2/Eden-Linux-v0.2.0-rc2-aarch64-clang-pgo.AppImage
+	sha256sums_aarch64 = a9facd47e2f0b064a41dc1b48551348113ba9740dcc147fc5cf81b5c7d2420a1
 
 pkgname = eden-opt
