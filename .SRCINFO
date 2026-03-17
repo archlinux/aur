@@ -1,7 +1,7 @@
 pkgbase = stardust-xr-server
 	pkgdesc = Usable Linux display server that reinvents human-computer interaction for all kinds of XR
-	pkgver = 0.50.2
-	pkgrel = 1
+	pkgver = 0.51.1
+	pkgrel = 0
 	url = https://github.com/StardustXR/server
 	arch = x86_64
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = stardust-xr-server
 	options = !lto
 	options = !debug
 	options = !strip
-	source = git+https://github.com/StardustXR/server.git#tag=0.50.2
+	source = git+https://github.com/StardustXR/server.git#tag=0.51.1
 	sha256sums = SKIP
 
 pkgname = stardust-xr-server

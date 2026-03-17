@@ -1,8 +1,8 @@
 # Maintainer: Nova King <technobaboo@proton.me>
 
 pkgname="stardust-xr-server"
-pkgver="0.50.2"
-pkgrel="1"
+pkgver="0.51.1"
+pkgrel="0"
 pkgdesc="Usable Linux display server that reinvents human-computer interaction for all kinds of XR"
 arch=("x86_64" "aarch64")
 url="https://github.com/StardustXR/server"
