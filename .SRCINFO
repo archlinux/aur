@@ -1,7 +1,7 @@
 pkgbase = stardust-xr-telescope
 	pkgdesc = See the stars! Simple Stardust XR overlay setup.
-	pkgver = 0.50.1
-	pkgrel = 1
+	pkgver = 0.51.1
+	pkgrel = 0
 	url = https://github.com/StardustXR/telescope
 	arch = any
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = stardust-xr-telescope
 	depends = stardust-xr-non-spatial-input
 	depends = stardust-xr-solar-sailer
 	depends = xwayland-satellite
-	source = git+https://github.com/StardustXR/telescope.git#tag=0.50.1
+	source = git+https://github.com/StardustXR/telescope.git#tag=0.51.1
 	sha256sums = SKIP
 
 pkgname = stardust-xr-telescope

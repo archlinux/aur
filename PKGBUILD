@@ -1,8 +1,8 @@
 # Maintainer: Nova King <technobaboo@proton.me>
 
 pkgname="stardust-xr-telescope"
-pkgver="0.50.1"
-pkgrel="1"
+pkgver="0.51.1"
+pkgrel="0"
 pkgdesc="See the stars! Simple Stardust XR overlay setup."
 arch=("any")
 url="https://github.com/StardustXR/telescope"
