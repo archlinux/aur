@@ -1,7 +1,7 @@
 pkgbase = aggregate
 	pkgdesc = Tool for aggregating CIDR IPv4 networks
 	pkgver = 1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ftp.isc.org/isc/aggregate/
 	arch = i686
 	arch = x86_64
