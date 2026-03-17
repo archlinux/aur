@@ -10,7 +10,7 @@ url="https://www.pgadmin.org/docs/pgadmin4/latest/pgagent.html"
 arch=('x86_64' 'i686' 'aarch64')
 license=('custom')
 depends=('postgresql-libs' 'boost')
-makedepends=('cmake3')
+makedepends=('cmake3-bin')
 source=(https://github.com/pgadmin-org/pgagent/archive/refs/tags/${pkgname}-${pkgver}.tar.gz
         ${pkgname}@localhost
         ${pkgname}@.service)
