@@ -1,7 +1,7 @@
 # Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=superharness-bin
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Autonomous multi-agent orchestrator for AI coding agents via tmux"
 arch=('x86_64' 'aarch64')
 url="https://superharness.dev"
@@ -13,8 +13,8 @@ options=('!debug')
 
 source=("LICENSE-${pkgver}::https://raw.githubusercontent.com/backmeupplz/superharness/v${pkgver}/LICENSE")
 sha256sums=('fb0a10b0661523fb534263b83eeafe79ea2d9783f90a6ea20dbddb8d4a494031')
-sha256sums_x86_64=('7183b5a03c341f73265988466284517f82dd52e858887956028f95529966b407')
-sha256sums_aarch64=('17d4d30f9af0e95fdcd7efcde1b8ad18d49f3c1fb50f090c05f0b67269c02002')
+sha256sums_x86_64=('f4114e2d4f2c82641da2be08e6f518bc24b7965889b7cddc93dfc2a2d2e46b9b')
+sha256sums_aarch64=('1dfafa81d7c193846299563849f5aeed9ba71bde3561183beb97cffe05d2dfd1')
 
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64::https://github.com/backmeupplz/superharness/releases/download/v${pkgver}/superharness-x86_64-unknown-linux-gnu")
 
