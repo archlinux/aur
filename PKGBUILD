@@ -4,8 +4,8 @@
 _pkgauthor=screenpipe
 _pkgname=screenpipe
 pkgname=${_pkgname}-bin
-pkgver=2.2.140
-_tag=vapp-v2.2.140
+pkgver=2.2.165
+_tag=v2.2.165
 pkgrel=1
 pkgdesc="24/7 Screen and Audio Capture with AI-powered tools"
 arch=('x86_64')
