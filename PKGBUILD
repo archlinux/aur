@@ -2,7 +2,7 @@
 
 _pkgname=siun
 pkgname=$_pkgname
-pkgver=1.5.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="siun stands for, and tries to answer, the question Should I upgrade now?"
 arch=('any')
@@ -11,13 +11,16 @@ license=('MIT')
 depends=(
     'python-click'
     'python-pydantic'
+    'python-feedparser'
+    'python-dbus'
 )
 makedepends=(
     'uv'
+    'python-installer'
 )
 provides=($_pkgname)
 source=(https://github.com/t4k1t/siun/archive/refs/tags/v"${pkgver}".tar.gz)
-b2sums=('16442225e86f897003cc34ebe864fdd44858e88736a2d0c8ee10b3a249f6eac74ffb08f6103577b2326c7ed8ba649714c21d11de45cd29050bdc2af58efaabb2')
+b2sums=('f7b00edf1e6e80aa65dc0ca210c04686f2ebe9c79e391a0cc7746c3277f11940a3ac1d1932179c686e3c2ec46258ebbdb7403052a09bdcf7937ae4dc23a41ba1')
 
 
 build() {
