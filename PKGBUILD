@@ -3,13 +3,13 @@
 pkgname=poezio-git
 _pkgname=poezio
 pkgrel=1
-pkgver=20230706.58360005
+pkgver=20260316.cb122e90
 pkgdesc="A full-featured command-line irc-like (muc-centered) jabber client (git)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="http://poez.io"
 conflicts=('poezio')
 provides=('poezio')
-license=('zlib')
+license=('GPL-3.0-or-later')
 depends=('python' 'python-setuptools' 'python-slixmpp-git')
 makedepends=('git' 'python-sphinx')
 optdepends=('gnupg: GPG plugin'
@@ -27,10 +27,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  make
+  rm -f dist/*.whl
+  sphinx-build -b man doc/source doc/build/man
+  sphinx-build doc/source doc/build/html
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  make DESTDIR="$pkgdir/" prefix=/usr install
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

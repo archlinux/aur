@@ -1,11 +1,13 @@
 pkgbase = poezio-git
 	pkgdesc = A full-featured command-line irc-like (muc-centered) jabber client (git)
-	pkgver = 20230706.58360005
+	pkgver = 20260316.cb122e90
 	pkgrel = 1
 	url = http://poez.io
 	arch = i686
 	arch = x86_64
-	license = zlib
+	arch = armv7h
+	arch = aarch64
+	license = GPL-3.0-or-later
 	makedepends = git
 	makedepends = python-sphinx
 	depends = python
