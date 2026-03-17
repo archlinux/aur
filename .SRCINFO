@@ -1,6 +1,6 @@
 pkgbase = hister-bin
 	pkgdesc = Web history on steroids - blazing fast, content-based search for visited websites
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/asciimoo/hister
 	install = hister.install
@@ -14,13 +14,13 @@ pkgbase = hister-bin
 	source_x86_64 = hister-bin-0.8.0::https://github.com/asciimoo/hister/releases/download/v0.8.0/hister_0.8.0_linux_amd64
 	source_x86_64 = hister.service
 	source_x86_64 = LICENSE::https://raw.githubusercontent.com/asciimoo/hister/refs/heads/master/LICENSE
-	sha256sums_x86_64 = 8ceaf22c157ef40781b8f037e7b6705e5292558dc091911c71bddeed826cdae9
+	sha256sums_x86_64 = 8ae2e2600ffa6f9061e71ccf525e2ebc10150577a010f82c046978fa0a5e2a84
 	sha256sums_x86_64 = eb784ed318737413345da3db8d033854f7873fb59554cd06bc45ec0fa8b6ff3a
 	sha256sums_x86_64 = 57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6
 	source_aarch64 = hister-bin-0.8.0::https://github.com/asciimoo/hister/releases/download/v0.8.0/hister_0.8.0_linux_arm64
 	source_aarch64 = hister.service
 	source_aarch64 = LICENSE::https://raw.githubusercontent.com/asciimoo/hister/refs/heads/master/LICENSE
-	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = fa6e5dc87dede4766106a3b657dba196184f37080b7903edc05a9fd70df0ebd7
 	sha256sums_aarch64 = eb784ed318737413345da3db8d033854f7873fb59554cd06bc45ec0fa8b6ff3a
 	sha256sums_aarch64 = 57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6
 
