@@ -8,7 +8,7 @@
 
 _pkgname=krita
 pkgname=${_pkgname}-git
-pkgver=6.0.0.prealpha.r64810.a11121827f
+pkgver=6.1.0.prealpha.r65782.633bc1922b
 pkgrel=1
 pkgdesc='A full-featured free digital painting studio. Qt 6 git version.'
 arch=('x86_64')
@@ -20,11 +20,11 @@ depends=(
 	harfbuzz imath kcolorscheme kcompletion kconfig kcoreaddons kcrash kguiaddons
 	ki18n kitemviews kitemmodels kwidgetsaddons kwindowsystem lcms2 libjpeg-turbo
 	libkdcraw libpng libtiff libunibreak libwebp mlt sdl2 opencolorio openexr
-	openjpeg2 qt6-base qt6-svg quazip-qt6 zlib
+	openjpeg2 qt6-base qt6-svg quazip-qt6 zlib xsimd
 )
 makedepends=(
 	git ninja boost eigen extra-cmake-modules immer kdoctools kseexpr-qt6-git lager libheif
-	libjxl libmypaint poppler-qt6 python-pyqt6 qt6-tools sip xsimd zug vulkan-headers
+	libjxl libmypaint poppler-qt6 python-pyqt6 qt6-tools sip zug vulkan-headers
 )
 optdepends=(
 	'poppler-qt6: PDF filter'
@@ -42,12 +42,6 @@ conflicts=("${_pkgname}" "${_pkgname}-qt6-git")
 
 source=("git+https://invent.kde.org/graphics/${_pkgname}.git")
 sha512sums=('SKIP')
-
-prepare() {
-	cd "${_pkgname}"
-	# Fix for Eigen3 5
-	sed -Ei 's/(Eigen3)\s+3\.3/\1 5/i' CMakeLists.txt
-}
 
 pkgver() {
 	cd "${_pkgname}"
@@ -67,6 +61,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_INSTALL_LIBDIR=lib \
 		-DBUILD_WITH_QT6=ON \
+		-DALLOW_UNSTABLE=QT6 \
 		-DBUILD_TESTING=OFF \
 		-DBUILD_KRITA_QT_DESIGNER_PLUGINS=ON
 	cmake --build build --clean-first

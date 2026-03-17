@@ -1,6 +1,6 @@
 pkgbase = krita-git
 	pkgdesc = A full-featured free digital painting studio. Qt 6 git version.
-	pkgver = 6.0.0.prealpha.r64810.a11121827f
+	pkgver = 6.1.0.prealpha.r65782.633bc1922b
 	pkgrel = 1
 	url = https://krita.org
 	arch = x86_64
@@ -21,7 +21,6 @@ pkgbase = krita-git
 	makedepends = python-pyqt6
 	makedepends = qt6-tools
 	makedepends = sip
-	makedepends = xsimd
 	makedepends = zug
 	makedepends = vulkan-headers
 	depends = exiv2
@@ -63,6 +62,7 @@ pkgbase = krita-git
 	depends = qt6-svg
 	depends = quazip-qt6
 	depends = zlib
+	depends = xsimd
 	optdepends = poppler-qt6: PDF filter
 	optdepends = python-pyqt6: for the Python plugins
 	optdepends = python-legacy-cgi: for the Python plugins
@@ -72,7 +72,7 @@ pkgbase = krita-git
 	optdepends = libmypaint: support for MyPaint brushes
 	optdepends = krita-plugin-gmic: GMic plugin
 	optdepends = libjxl: JPEG-XL filter
-	provides = krita=6.0.0.prealpha.r64810.a11121827f
+	provides = krita=6.1.0.prealpha.r65782.633bc1922b
 	conflicts = krita
 	conflicts = krita-qt6-git
 	source = git+https://invent.kde.org/graphics/krita.git
