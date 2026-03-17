@@ -16,9 +16,12 @@ depends=()
 
 # Asset name uses a dot separator: lit.linux_x86_64
 # The '::' renames it locally so makepkg tracks it across pkgver bumps.
-source=("lit-${pkgver}::https://github.com/google-ai-edge/LiteRT-LM/releases/download/v${pkgver}/lit.linux_x86_64")
-sha256sums=('2b4582cdf6cacf098092388855b33be625301065e2c10f1bbf0d3c783491ef47')
+source=("lit-${pkgver}::https://github.com/google-ai-edge/LiteRT-LM/releases/download/v${pkgver}/lit.linux_x86_64"
+        "LICENSE::https://raw.githubusercontent.com/google-ai-edge/LiteRT-LM/main/LICENSE")
+sha256sums=('2b4582cdf6cacf098092388855b33be625301065e2c10f1bbf0d3c783491ef47'
+            'c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4')
 
 package() {
     install -Dm755 "${srcdir}/lit-${pkgver}" "${pkgdir}/usr/bin/litert"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

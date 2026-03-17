@@ -6,6 +6,8 @@ pkgbase = litert-lm
 	arch = x86_64
 	license = Apache-2.0
 	source = lit-0.8.1::https://github.com/google-ai-edge/LiteRT-LM/releases/download/v0.8.1/lit.linux_x86_64
+	source = LICENSE::https://raw.githubusercontent.com/google-ai-edge/LiteRT-LM/main/LICENSE
 	sha256sums = 2b4582cdf6cacf098092388855b33be625301065e2c10f1bbf0d3c783491ef47
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 
 pkgname = litert-lm
