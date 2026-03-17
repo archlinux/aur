@@ -3,11 +3,11 @@
 # Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 _pkgname=firedragon
-_pkgver=12.9.0
+_pkgver=12.9.1
 
 pkgname=${_pkgname}-bin
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="Floorp fork build using custom branding and settings"
 url='https://firedragon.garudalinux.org'
@@ -48,8 +48,8 @@ source_x86_64=(firedragon-v"$_pkgver"-linux-x64.tar.xz::https://gitlab.com/garud
 source_aarch64=(firedragon-v"$_pkgver"-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v"$_pkgver"/downloads/firedragon-linux-arm64.tar.xz)
 sha256sums=('61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
-sha256sums_x86_64=('f8c393a039074f4a3b91a18408c6af9af188c160c7d73d0afb3887334795de05')
-sha256sums_aarch64=('d8cf298fa9c2171e99f7aa75c1a8b9e41bdb62ba749cebc18c9d349ccbad6880')
+sha256sums_x86_64=('e57c60940913ac340bf67800e4b3f8bc6e27adce2feca481b848a562c2ea8ba5')
+sha256sums_aarch64=('26b01257ae0d2d4a932dfb498639551f4d2ba5623349237566b7dbbec3add84f')
 
 
 
