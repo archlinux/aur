@@ -97,9 +97,9 @@ package_bcachefs-tools-git() {
     "$pkgdir/usr/bin/bcachefs" completions bash \
         | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/bcachefs"
     "$pkgdir/usr/bin/bcachefs" completions fish \
-        | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_bcachefs"
-    "$pkgdir/usr/bin/bcachefs" completions zsh \
         | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/bcachefs.fish"
+    "$pkgdir/usr/bin/bcachefs" completions zsh \
+        | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_bcachefs"
 }
 
 package_bcachefs-dkms-git() {
