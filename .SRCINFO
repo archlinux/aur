@@ -14,6 +14,7 @@ pkgbase = hetrix
 	depends = zpaq
 	depends = p7zip
 	source = https://codeberg.org/Druid520/hetrix/archive/v1.3.tar.gz
+	source = hetrix.install
 	sha256sums = 6b307ea15aab814cb89aa28e2733198aa45f5bacee11f38859fe02ba0cd8e0a1
 
 pkgname = hetrix
