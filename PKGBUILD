@@ -39,7 +39,7 @@ sha256sums=(
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   printf "%s.r%s.g%s" \
-    "$(awk 'match($0,/"version":\\s*"([^"]+)"/,v) {print v[1]}' package.json)" \
+    "$(awk 'match($0,/"version":\s*"([^"]+)"/,v) {print v[1]}' package.json)" \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }

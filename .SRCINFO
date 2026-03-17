@@ -1,6 +1,6 @@
 pkgbase = void-git
 	pkgdesc = The Cursor alternative AI code editor
-	pkgver = .r2771.g17e7a5b1
+	pkgver = 1.99.3.r2771.g17e7a5b1
 	pkgrel = 1
 	url = https://github.com/voideditor/void
 	arch = x86_64
