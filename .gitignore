@@ -1,0 +1,6 @@
+/pkg
+/src
+/pkedit-qt
+/*.zst
+/*.tar.gz
+/*.log
