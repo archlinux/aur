@@ -1,7 +1,7 @@
 pkgbase = python-amulet-rocksdb
 	pkgdesc = A pybind11 wrapper for RocksDB.
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	url = https://github.com/Amulet-Team/Amulet-RocksDB
 	arch = any
 	license = custom
@@ -16,7 +16,7 @@ pkgbase = python-amulet-rocksdb
 	depends = python
 	depends = pybind11
 	depends = python-amulet_pybind11_extensions
-	source = source::git+https://github.com/Amulet-Team/Amulet-RocksDB.git#tag=1.0.1
-	md5sums = 2d3b7f1540f9ba15a52a7e81bffad369
+	source = source::git+https://github.com/Amulet-Team/Amulet-RocksDB.git#tag=1.0.2
+	md5sums = 47445626f84391bf82400b477781cddf
 
 pkgname = python-amulet-rocksdb
