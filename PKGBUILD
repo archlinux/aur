@@ -1,7 +1,7 @@
 # Maintainer: Justin Tom <justin@justintom.com>
 
 pkgname=soundcloud-tui
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='A SoundCloud client for the terminal written in Rust'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('alsa-lib' 'dbus' 'gcc-libs' 'glibc' 'mpv' 'pipewire' 'systemd-libs')
 makedepends=('cargo' 'clang' 'pkgconf')
 optdepends=('gnome-keyring: Secret Service provider for credential storage')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8cbe7f6d001ca38abbe112c735fde807f7e1d814d2d674a0fe4791c887937911')
+sha256sums=('838c010ce1e81ccf474e25be6b19ab3e4914c947808fd5c739df6743dfcf4816')
 
 prepare() {
   cd "$pkgname-$pkgver"
