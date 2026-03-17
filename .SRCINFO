@@ -1,0 +1,19 @@
+pkgbase = omarchy-screenshot-preview
+	pkgdesc = macOS-style screenshot preview with drag-and-drop for Wayland/Hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/rodrigo-sntg/omarchy-screenshot-preview
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = gtk4
+	makedepends = gtk4-layer-shell
+	depends = gtk4
+	depends = gtk4-layer-shell
+	optdepends = satty: default screenshot editor
+	optdepends = grim: screenshot capture
+	optdepends = wl-clipboard: clipboard support
+	source = omarchy-screenshot-preview-0.1.0.tar.gz::https://github.com/rodrigo-sntg/omarchy-screenshot-preview/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = omarchy-screenshot-preview
