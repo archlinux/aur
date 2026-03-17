@@ -1,7 +1,7 @@
 pkgbase = hys
 	pkgdesc = Terminal RSS Reader for Digital Minimalists in Zig.
 	pkgver = 0.1.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/superstarryeyes/hys
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,6 @@ pkgbase = hys
 	provides = hys
 	conflicts = hys-git
 	source = hys-0.1.2.tar.gz::https://github.com/superstarryeyes/hys/archive/refs/tags/v0.1.2.tar.gz
-	source = hys-0.1.2.tar.gz.asc
-	validpgpkeys = EF4B4CB5DFB8822216A473B1597AB12E66262898
 	sha256sums = 38340bf3bd5392b0944b23114719f7d5bf1420a0dcdab05e41c190aaa8a62bf4
-	sha256sums = SKIP
 
 pkgname = hys
