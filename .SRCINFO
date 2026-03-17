@@ -1,6 +1,6 @@
 pkgbase = stashpak-git
 	pkgdesc = Build Portable packages with ease.
-	pkgver = 0.1
+	pkgver = c646281
 	pkgrel = 1
 	url = https://github.com/Kimiblock/stashpak
 	arch = x86_64

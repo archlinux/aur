@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 
 pkgname=stashpak-git
-pkgver=0.1
+pkgver=c646281
 pkgrel=1
 pkgdesc="Build Portable packages with ease."
 arch=("x86_64")
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd source
-	git describe --long | sed -E 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
+	git describe --long --always | sed -E 's/^v//g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 function prepare() {
