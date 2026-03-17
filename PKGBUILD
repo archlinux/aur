@@ -15,8 +15,8 @@ optdepends=(
     'python-opengl: to run examples'
     'python-pygame: to run examples'
 )
-conflicts=(${pkgname-%git})
-provides=(${pkgname-%git})
+conflicts=(${pkgname%-git})
+provides=(${pkgname%-git})
 source=('git+https://github.com/assimp/assimp.git')
 sha256sums=('SKIP')
 

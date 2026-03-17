@@ -15,8 +15,8 @@ pkgbase = python-pyassimp-git
 	optdepends = python-numpy: used internally for data arrays
 	optdepends = python-opengl: to run examples
 	optdepends = python-pygame: to run examples
-	provides = python-pyassimp-git
-	conflicts = python-pyassimp-git
+	provides = python-pyassimp
+	conflicts = python-pyassimp
 	source = git+https://github.com/assimp/assimp.git
 	sha256sums = SKIP
 
