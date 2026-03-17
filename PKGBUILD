@@ -1,7 +1,7 @@
 # Maintainer: Arctic Latent
 
 pkgname=arctic-comfyui-helper-bin
-pkgver=0.1.8
+pkgver=0.1.9
 pkgrel=1
 pkgdesc='ComfyUI installer and model manager (prebuilt binary release)'
 arch=('x86_64')
@@ -15,10 +15,10 @@ depends=(
 provides=('arctic-comfyui-helper')
 conflicts=('arctic-comfyui-helper')
 
-_asset="arctic-comfyui-helper-0.1.8-1-x86_64.pkg.tar.zst"
+_asset="arctic-comfyui-helper-0.1.9-1-x86_64.pkg.tar.zst"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_asset}")
 noextract=("${_asset}")
-sha256sums_x86_64=('ada477e6ae8f452088d678dcdb3a524f1dbee055a275dae6101b6193a6057778')
+sha256sums_x86_64=('28597b075c89a4b2380bc83ed4dd6d7586fd72f59ef9f86cad229e2a3d741d98')
 
 package() {
   bsdtar -xpf "${srcdir}/${_asset}" -C "${pkgdir}"
