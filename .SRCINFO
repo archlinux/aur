@@ -1,19 +1,19 @@
 pkgbase = switchhosts-bin
 	pkgdesc = Switch hosts quickly!(Prebuilt version.Use system-wide electron)
-	pkgver = 4.2.0
-	pkgrel = 2
+	pkgver = 4.3.0
+	pkgrel = 1
 	url = https://swh.app/
 	arch = aarch64
 	arch = x86_64
 	license = Apache-2.0
-	depends = electron30
-	provides = switchhosts=4.2.0
+	depends = electron39
+	provides = switchhosts=4.3.0
 	conflicts = switchhosts
 	source = switchhosts.sh
-	sha256sums = 291f50480f5a61bc9c68db7d44cd0412071128706baa868a9cb854f8779a1980
-	source_aarch64 = switchhosts-4.2.0-aarch64.deb::https://github.com/oldj/SwitchHosts/releases/download/v4.2.0/SwitchHosts_linux_arm64_4.2.0.6119.deb
-	sha256sums_aarch64 = ade5ca7a51771c579772bf346b3a37b8226f3e640161c62ae681a295368475e7
-	source_x86_64 = switchhosts-4.2.0-x86_64.deb::https://github.com/oldj/SwitchHosts/releases/download/v4.2.0/SwitchHosts_linux_amd64_4.2.0.6119.deb
-	sha256sums_x86_64 = 42699d9d37e4fdb279a10cf0f34ac2b51000fe9661a1a6247d733021a738c6ce
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+	source_aarch64 = switchhosts-4.3.0-aarch64.deb::https://github.com/oldj/SwitchHosts/releases/download/v4.3.0/SwitchHosts-v4.3.0.6139-linux-arm64.deb
+	sha256sums_aarch64 = e4cba8a041df0100a124646ab1e194b1e955d33260c19d3389f9a130c2ba57ad
+	source_x86_64 = switchhosts-4.3.0-x86_64.deb::https://github.com/oldj/SwitchHosts/releases/download/v4.3.0/SwitchHosts-v4.3.0.6139-linux-amd64.deb
+	sha256sums_x86_64 = 87480a35855b9796164833019a188e2c5e4eaa66e290c4eb134fbe8740c838a5
 
 pkgname = switchhosts-bin
