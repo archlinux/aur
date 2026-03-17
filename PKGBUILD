@@ -23,9 +23,13 @@ package() {
     install -dm755 "${pkgdir}/opt/streamsquire"
     cp -ra "${srcdir}/squashfs-root/." "${pkgdir}/opt/streamsquire/"
 
-    # Symlink binary
+    # Launcher script (symlink breaks AppRun's dirname resolution)
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s /opt/streamsquire/AppRun "${pkgdir}/usr/bin/streamsquire"
+    cat > "${pkgdir}/usr/bin/streamsquire" <<'LAUNCHER'
+#!/bin/bash
+exec /opt/streamsquire/AppRun "$@"
+LAUNCHER
+    chmod 755 "${pkgdir}/usr/bin/streamsquire"
 
     # Desktop entry
     install -Dm644 "${srcdir}/squashfs-root/StreamSquire.desktop" \
