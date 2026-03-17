@@ -1,6 +1,6 @@
 pkgname=collapseloader-bin
 pkgver=0.2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A user-friendly loader for many minecraft clients"
 arch=('x86_64')
 url="https://github.com/dest4590/CollapseLoader"
@@ -12,6 +12,17 @@ conflicts=('collapseloader-git')
 source=("collapseloader__${pkgver}_HOTFIX_amd64.AppImage::https://github.com/dest4590/CollapseLoader/releases/download/0.2.9/CollapseLoader__0.2.9_HOTFIX_amd64.AppImage")
 sha256sums=('df7a746152a3c6f9a4ea8356db0e847f80f55bd381956ede5a3353e8239ccb90')
 noextract=("collapseloader__${pkgver}_HOTFIX_amd64.AppImage")
+
+prepare() {
+    cd "$srcdir"
+    chmod +x "collapseloader__${pkgver}_HOTFIX_amd64.AppImage"
+    ./"collapseloader__${pkgver}_HOTFIX_amd64.AppImage" --appimage-extract
+}
+
+package() {
+    install -Dm755 "${srcdir}/squashfs-root/usr/bin/collapseloader" "${pkgdir}/usr/bin/collapseloader"
+}
+
 
 package() {
     install -Dm755 "${srcdir}/squashfs-root/usr/bin/collapseloader" "${pkgdir}/usr/bin/collapseloader"
