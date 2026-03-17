@@ -8,14 +8,13 @@ arch=('x86_64')
 url="https://codeberg.org/Druid520/hetrix"
 license=('GPL3')
 depends=('gcc' 'make' 'git' 'curl' 'cmake' 'zpaq' 'p7zip')
-makedepends=()
-optdepends=()
+install='hetrix.install'  # 👈 Add this line!
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('6b307ea15aab814cb89aa28e2733198aa45f5bacee11f38859fe02ba0cd8e0a1')
 
 build() {
     cd "$srcdir/hetrix"
-    chmod +x hetrix.sh  # Add this line
+    chmod +x hetrix.sh
     ./hetrix.sh --no-seed
 }
 
