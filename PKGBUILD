@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgbase=azahar
 pkgname=({,libretro-}"$_pkgbase-git")
-pkgver=2125.0.alpha2.r16.g03d62ef
+pkgver=2125.0.rc1.r11.gab39df3
 pkgrel=1
 arch=('x86_64')
 url="https://azahar-emu.org/"
@@ -174,7 +174,7 @@ package_libretro-azahar-git() {
 		'libcrypto.so'
 		'libfmt.so'
 		'libgcc_s.so'
-		'libretro-core-info>=1.22.2.r3'
+		'libretro-core-info>=1.22'
 		'libssl.so'
 		'libstdc++.so'
 		'libZydis.so'
