@@ -7,7 +7,7 @@
 # Contributor: Christian Finnberg <christian@finnberg.net>
 pkgname=notesnook
 _pkgname=Notesnook
-pkgver=3.3.9
+pkgver=3.3.10
 _electronversion=37
 _nodeversion=22
 pkgrel=1
@@ -31,14 +31,13 @@ makedepends=(
     'curl'
     'yarn'
     'python-setuptools'
+    'jq'
 )
 source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
     "${pkgname}.desktop"
     "${pkgname}.sh"
 )
-sha256sums=('0b140dfb887db12cb08e4202b9358b64476ed436038740965f5c038757da80b0'
-            '102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
+sha256sums=('102a538ee9432310d854842a578cd3371df0431b4db617479de66aa45b5f2440'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
@@ -47,10 +46,17 @@ _ensure_local_nvm() {
     nvm use "${_nodeversion}"
 }
 _get_electron_version() {
-    _elec_ver="$(grep '"electron":' "${srcdir}/${pkgname}-${pkgver}/apps/desktop/package.json" | cut -d'"' -f4 | tr -d '^' | cut -d. -f1)"
-    echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
+    _elec_ver=$(jq -r '.devDependencies["electron"] // .dependencies["electron"]' "${srcdir}/${pkgname}-${pkgver}/package.json" | tr -d '^')
+    _main_ver=$(echo "${_elec_ver}" | cut -d. -f1)
+    echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
+    cd "${srcdir}"
+    git clone \
+        --depth 1 \
+        --branch "v${pkgver}" \
+        "${_ghurl}" \
+        "${pkgname}-${pkgver}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
