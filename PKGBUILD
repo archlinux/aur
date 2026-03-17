@@ -1,5 +1,5 @@
 pkgname=linux-bing-daily-wallpaper
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Bing daily wallpaper downloader for Linux"
 arch=('x86_64')
