@@ -1,6 +1,6 @@
 pkgbase = hytale-f2p-git
-	pkgdesc = Hytale-F2P - unofficial Hytale Launcher for free to play with multiplayer support
-	pkgver = 2.4.8.r511.g57056e5
+	pkgdesc = Hytale-F2P - unofficial Hytale Launcher for free to play with multiplayer support (This project has been superseded by F2P Evo. Download the new launcher: https://git.sanhost.net/sanasol/f2p-evo/releases/latest)
+	pkgver = 2.4.8.r516.ga2b60ba
 	pkgrel = 1
 	url = https://git.sanhost.net/sanasol/hytale-f2p
 	arch = x86_64

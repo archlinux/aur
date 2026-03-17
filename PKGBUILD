@@ -2,9 +2,9 @@
 # Maintainer: 00ein00 <ein420@proton.me>
 pkgname=hytale-f2p-git
 _pkgname=hytale-f2p
-pkgver=2.4.8.r511.g57056e5
+pkgver=2.4.8.r516.ga2b60ba
 pkgrel=1
-pkgdesc="Hytale-F2P - unofficial Hytale Launcher for free to play with multiplayer support"
+pkgdesc="Hytale-F2P - unofficial Hytale Launcher for free to play with multiplayer support (This project has been superseded by F2P Evo. Download the new launcher: https://git.sanhost.net/sanasol/f2p-evo/releases/latest)"
 arch=('x86_64')
 url="https://git.sanhost.net/sanasol/hytale-f2p"
 license=('custom')
@@ -15,7 +15,7 @@ conflicts=('Hytale-F2P-git')
 replaces=('Hytale-F2P-git')
 source=("git+$url.git" "Hytale-F2P.desktop")
 sha256sums=('SKIP'
-            'f1856d4d02f2c66b565e8980dae540c864d7b32d5a1d94c89dc785795b724797')
+  'f1856d4d02f2c66b565e8980dae540c864d7b32d5a1d94c89dc785795b724797')
 
 pkgver() {
   cd "$_pkgname"
