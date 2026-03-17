@@ -1,0 +1,22 @@
+pkgbase = easy-ocamlfuse
+	pkgdesc = Gestor gráfico (GUI) para google-drive-ocamlfuse
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/ayalarol/Easy-ocamlfuse
+	arch = any
+	license = GPL3
+	makedepends = gettext
+	depends = python
+	depends = tk
+	depends = python-pillow
+	depends = python-requests
+	depends = python-cryptography
+	depends = dbus-glib
+	optdepends = google-drive-ocamlfuse: Para poder montar unidades de Google Drive
+	optdepends = python-pystray: Para el icono en la bandeja del sistema
+	optdepends = python-notify2: Para las notificaciones de escritorio
+	optdepends = libappindicator-gtk3: Soporte de iconos en GNOME/KDE
+	source = https://github.com/ayalarol/Easy-ocamlfuse/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = b632543e301cf7435596f8c3eb95f7cd065aa42b4ff70dceacfa6ff23f7a55b7
+
+pkgname = easy-ocamlfuse
