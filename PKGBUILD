@@ -13,7 +13,7 @@ depends=(
   "nspr"
   "nss"
 )
-options=()
+conflicts=('balena-etcher')
 source=(
   "balenaEtcher-linux-x64-$pkgver.zip::https://github.com/balena-io/etcher/releases/download/v2.1.4/balenaEtcher-linux-x64-$pkgver.zip"
   "balenaEtcher.desktop"

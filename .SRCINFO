@@ -9,6 +9,7 @@ pkgbase = balena-etcher-bin
 	depends = alsa-lib
 	depends = nspr
 	depends = nss
+	conflicts = balena-etcher
 	source = balenaEtcher-linux-x64-2.1.4.zip::https://github.com/balena-io/etcher/releases/download/v2.1.4/balenaEtcher-linux-x64-2.1.4.zip
 	source = balenaEtcher.desktop
 	source = balena-etcher.png::https://raw.githubusercontent.com/balena-io/etcher/refs/heads/master/assets/icon.png
