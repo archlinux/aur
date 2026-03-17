@@ -2,7 +2,7 @@
 pkgbase="sherlock-launcher" 
 pkgname="sherlock-launcher-bin" 
 pkgver=0.1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Application launcher for Wayland."
 arch=('x86_64')
 url="https://github.com/skxxtz/sherlock"
