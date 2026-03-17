@@ -3,11 +3,11 @@
 # Co-Maintainer: stefanwimmer128 <info at stefanwimmer128 dot xyz>
 
 _pkgname=firedragon
-_pkgver=12.9.0
+_pkgver=12.9.1
 
 pkgname=${_pkgname}-catppuccin-bin
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="Floorp fork build using custom branding and settings"
 url='https://firedragon.garudalinux.org'
@@ -48,8 +48,8 @@ source_x86_64=(firedragon-catppuccin-v"$_pkgver"-linux-x64.tar.xz::https://gitla
 source_aarch64=(firedragon-catppuccin-v"$_pkgver"-linux-arm64.tar.xz::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v"$_pkgver"/downloads/firedragon-catppuccin-linux-arm64.tar.xz)
 sha256sums=('61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '53d3e743f3750522318a786befa196237892c93f20571443fdf82a480e7f0560')
-sha256sums_x86_64=('4c14365a2abd82541e9c80e5ccd77fc8e177e82a50f64ef3f8f014320c79cd13')
-sha256sums_aarch64=('8d3b5115e1d5bd4a6e56be5dc185dc452648c9fd7a6eb04c320746e1e2f9ec99')
+sha256sums_x86_64=('84b0be2abdcbe0d0ff31fa2c0f60d40fad4606e57f7debde0829ae9056190704')
+sha256sums_aarch64=('5158cc22758a8d9badb12eb4f2b5cf4446c1eedd67e9d9a94f4e3dd9400faf86')
 
 
 package() {
