@@ -1,37 +1,19 @@
-[1m[32m==>(B[m[1m 正在创建软件包：rime-ice-installer 0.0.0.r1.g807f822-1 (2026年03月17日 星期二 17时47分00秒)(B[m
-[1m[32m==>(B[m[1m 正在检查运行时依赖关系...(B[m
-[1m[32m==>(B[m[1m 正在检查编译时依赖关系(B[m
-[1m[32m==>(B[m[1m 获取源代码...(B[m
-[1m[34m  ->(B[m[1m 找到 rime-ice-installer-807f822f80d775866687d7baa443dc3c665793c0.tar.gz(B[m
-[1m[32m==>(B[m[1m 正在验证 source 文件，使用sha256sums...(B[m
-[1m[32m==>(B[m[1m 正在释放源码...(B[m
-[1m[34m  ->(B[m[1m 正在解压缩 rime-ice-installer-807f822f80d775866687d7baa443dc3c665793c0.tar.gz，使用 bsdtar(B[m
-[1m[32m==>(B[m[1m 正在开始 prepare()...(B[m
-[1m[32m==>(B[m[1m 正在开始 build()...(B[m
-[1m[32m==>(B[m[1m 正在开始 check()...(B[m
-?   	rime-ice-installer	[no test files]
-?   	rime-ice-installer/internal/app	[no test files]
-?   	rime-ice-installer/internal/config	[no test files]
-?   	rime-ice-installer/internal/download	[no test files]
-?   	rime-ice-installer/internal/env	[no test files]
-ok  	rime-ice-installer/internal/fcitx	(cached)
-ok  	rime-ice-installer/internal/rime	(cached)
-?   	rime-ice-installer/internal/system	[no test files]
-?   	rime-ice-installer/internal/ui	[no test files]
-ok  	rime-ice-installer/internal/wanxiang	(cached)
-[1m[32m==>(B[m[1m 正在进入 fakeroot 环境...(B[m
-[1m[32m==>(B[m[1m 正在开始 package()...(B[m
-[1m[32m==>(B[m[1m 正在清理安装...(B[m
-[1m[34m  ->(B[m[1m 正在删除 libtool 文件...(B[m
-[1m[34m  ->(B[m[1m 正在移除静态库文件...(B[m
-[1m[34m  ->(B[m[1m 正在清除不打算要的文件...(B[m
-[1m[34m  ->(B[m[1m 正在从二进制文件和库中清除不需要的系统符号...(B[m
-[1m[34m  ->(B[m[1m 正在压缩 man 及 info 文档...(B[m
-[1m[32m==>(B[m[1m 正在检查打包问题...(B[m
-[1m[32m==>(B[m[1m 正在构建软件包"rime-ice-installer"...(B[m
-[1m[34m  ->(B[m[1m 正在生成 .PKGINFO 文件...(B[m
-[1m[34m  ->(B[m[1m 正在生成 .BUILDINFO 文件...(B[m
-[1m[34m  ->(B[m[1m 正在生成 .MTREE 文件...(B[m
-[1m[34m  ->(B[m[1m 正在压缩软件包...(B[m
-[1m[32m==>(B[m[1m 正在离开 fakeroot 环境。(B[m
-[1m[32m==>(B[m[1m 完成创建：rime-ice-installer 0.0.0.r1.g807f822-1 (2026年03月17日 星期二 17时47分04秒)(B[m
+pkgbase = rime-ice-installer
+	pkgdesc = TUI installer for Fcitx5, Rime Ice and Wanxiang on Arch Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/manateelazycat/rime-ice-installer
+	arch = x86_64
+	license = custom:unknown
+	makedepends = go
+	depends = curl
+	depends = dbus
+	depends = dialog
+	depends = git
+	depends = glib2
+	depends = sudo
+	depends = unzip
+	source = rime-ice-installer-0.1.0.tar.gz::https://github.com/manateelazycat/rime-ice-installer/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 5e153815e566948d50ce65ae205c59da0915e731aaf9ef3c6375323eb59eff21
+
+pkgname = rime-ice-installer
