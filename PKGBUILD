@@ -2,7 +2,7 @@
 
 pkgname=aggregate
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for aggregating CIDR IPv4 networks"
 url="https://ftp.isc.org/isc/aggregate/"
 arch=('i686' 'x86_64')
@@ -13,6 +13,11 @@ build() {
   cd $srcdir/$pkgname-$pkgver
   sh ./configure --prefix=/usr --mandir=/usr/share/man
   make
+}
+
+prepare() {
+  cd $srcdir/$pkgname-$pkgver
+  autoreconf
 }
 
 package() {
