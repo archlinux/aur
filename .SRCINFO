@@ -1,6 +1,6 @@
 pkgbase = tinywiibackupmanager-bin
 	pkgdesc = A tiny game backup and homebrew app manager for the Wii
-	pkgver = 4.9.23
+	pkgver = 5.1.27
 	pkgrel = 1
 	url = https://github.com/mq1/TinyWiiBackupManager
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = tinywiibackupmanager-bin
 	depends = gcc-libs
 	depends = glibc
 	depends = hicolor-icon-theme
-	noextract = TinyWiiBackupManager-4.9.23-linux-x86_64.AppImage
-	noextract = TinyWiiBackupManager-4.9.23-linux-arm64.AppImage
+	noextract = TinyWiiBackupManager-5.1.27-linux-x86_64.AppImage
+	noextract = TinyWiiBackupManager-5.1.27-linux-arm64.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = TinyWiiBackupManager-4.9.23-linux-x86_64.AppImage::https://github.com/mq1/TinyWiiBackupManager/releases/download/v4.9.23/TinyWiiBackupManager-v4.9.23-linux-x86_64.AppImage
-	sha256sums_x86_64 = 1c2be5aedb1963aef62e8b54849bd34bf78105b26cb47042401f36e83b731213
-	source_aarch64 = TinyWiiBackupManager-4.9.23-linux-aarch64.AppImage::https://github.com/mq1/TinyWiiBackupManager/releases/download/v4.9.23/TinyWiiBackupManager-v4.9.23-linux-arm64.AppImage
-	sha256sums_aarch64 = 414e9c83ce55283b93d825aed23e30887fda10bafe8348c94bb51720031b61b6
+	source_x86_64 = TinyWiiBackupManager-5.1.27-linux-x86_64.AppImage::https://github.com/mq1/TinyWiiBackupManager/releases/download/v5.1.27/TinyWiiBackupManager-v5.1.27-linux-x86_64.AppImage
+	sha256sums_x86_64 = 928ca896214c44ab03e1d604512aae41d5bc708837b05773b957ba4fe97623a5
+	source_aarch64 = TinyWiiBackupManager-5.1.27-linux-aarch64.AppImage::https://github.com/mq1/TinyWiiBackupManager/releases/download/v5.1.27/TinyWiiBackupManager-v5.1.27-linux-arm64.AppImage
+	sha256sums_aarch64 = fa51061f2653803c56219467e4f8f3eb76d4f190ec77a9b69cb23653f42505ef
 
 pkgname = tinywiibackupmanager-bin
