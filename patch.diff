@@ -1,12 +1,3 @@
-diff --git a/debian/tuxedo-drivers.dkms b/debian/tuxedo-drivers.dkms
---- a/debian/tuxedo-drivers.dkms
-+++ b/debian/tuxedo-drivers.dkms
-@@ -1,4 +1,4 @@
--PACKAGE_NAME="tuxedo-drivers"
-+PACKAGE_NAME="mechrevo-drivers"
- PACKAGE_VERSION="#MODULE_VERSION#"
- AUTOINSTALL="yes"
- 
 diff --git a/src/tuxedo_compatibility_check/tuxedo_compatibility_check.c b/src/tuxedo_compatibility_check/tuxedo_compatibility_check.c
 --- a/src/tuxedo_compatibility_check/tuxedo_compatibility_check.c
 +++ b/src/tuxedo_compatibility_check/tuxedo_compatibility_check.c

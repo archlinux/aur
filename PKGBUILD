@@ -1,7 +1,7 @@
 # Maintainer: Shiina Rikka <rikka@rikka.im>
 _pkgname=mechrevo-drivers
 pkgname=mechrevo-drivers-dkms
-pkgver=4.20.1
+pkgver=4.21.2
 pkgrel=1
 pkgdesc='Kernel modules for MECHREVO devices. Drivers for several platform devices for MECHREVO notebooks meant for DKMS. Modified from TUXEDO drivers.'
 arch=('x86_64')
@@ -20,9 +20,10 @@ provides=('tuxedo-drivers-dkms'
             'ite_8297'
             'ite_829x')
 conflicts=('tuxedo-drivers-dkms' 'tuxedo-keyboard-dkms' 'tuxedo-keyboard-ite-dkms')
-source=($pkgname-$pkgver.tar.gz::https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers/-/archive/v$pkgver/tuxedo-drivers-v$pkgver.tar.gz patch.diff )
-sha256sums=('3e4640fd062f63d85d92b325ea568b8662b4bc210ac0154a43b3fb840152cd0b'
-            'cec9ca635762733b3a307f008df541c7eb0c02fb1107d427255d7f42023d5ee2')
+source=($pkgname-$pkgver.tar.gz::https://gitlab.com/tuxedocomputers/development/packages/tuxedo-drivers/-/archive/v$pkgver/tuxedo-drivers-v$pkgver.tar.gz dkms.conf patch.diff )
+sha256sums=('d76d0da7562cc027b7d5dbf482047931094dd991165ceea3b0e8935f7ded2c14'
+            'd955ba6609666364eb63b073fd7bd9f5397de523e39226eb1b1fe866b4567a4e'
+            '4a4c42bcc83bcd24deaa872faf63475faf6e49ee14d0ea20a0d1fe3c4d3901e9')
 
 prepare(){
   cd "${srcdir}/tuxedo-drivers-v$pkgver"
@@ -30,9 +31,13 @@ prepare(){
 }
 
 package() {
+  install -Dm644 "$srcdir"/dkms.conf "$pkgdir/usr/src/${pkgname%-dkms}-$pkgver/dkms.conf"
+  sed -i "s/#MODULE_VERSION#/$pkgver/g" "$pkgdir/usr/src/${pkgname%-dkms}-$pkgver/dkms.conf"
+
+  install -Dm644 "tuxedo-drivers-v$pkgver"/files/usr/lib/modprobe.d/*.conf -t "$pkgdir/usr/lib/modprobe.d/"
+  install -Dm644 "tuxedo-drivers-v$pkgver"/files/usr/lib/udev/rules.d/*.rules -t "$pkgdir/usr/lib/udev/rules.d/"
+  install -Dm644 "tuxedo-drivers-v$pkgver"/files/usr/lib/udev/hwdb.d/*.hwdb -t "$pkgdir/usr/lib/udev/hwdb.d/"
+
   mkdir -p "${pkgdir}/usr/src/${_pkgname}-${pkgver}"
-  mkdir -p "${pkgdir}/etc/udev/rules.d/"
-  install -Dm644 "tuxedo-drivers-v$pkgver"/debian/tuxedo-drivers.dkms "${pkgdir}/usr/src/${_pkgname%}-$pkgver/dkms.conf"
-  sed -i "s/#MODULE_VERSION#/${pkgver}/" "${pkgdir}/usr/src/${_pkgname%}-$pkgver/dkms.conf"
   cp -ar "tuxedo-drivers-v$pkgver"/src/* "$pkgdir/usr/src/${_pkgname%}-$pkgver/"
 }
