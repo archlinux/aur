@@ -1,15 +1,15 @@
-# Maintainer: Markus Otto <otto@fs.tum.de>
+# Contributor: Markus Otto <otto@fs.tum.de>
 
 pkgname=php-xdiff
-pkgver=2.0.1
-pkgrel=0
+pkgver=2.1.1
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A file differences/patches module for PHP'
 url='https://pecl.php.net/package/xdiff'
 depends=('php' 'libxdiff')
 license=('PHP')
 source=("https://pecl.php.net/get/xdiff-$pkgver.tgz")
-sha256sums=('b4ac96c33ec28a5471b6498d18c84a6ad0fe2e4e890c93df08e34061fba7d207')
+sha256sums=('c8d37e298ad317d89dd717d08093c9669fef97e511b119412ddbbe78189b6c7c')
 
 build() {
 	cd $srcdir/xdiff-$pkgver
