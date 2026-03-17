@@ -1,8 +1,8 @@
 # Maintainer: Follen22 <baffer2024@gmail.com>
 pkgname=ds5-edge-relay
-pkgver=1.0.2
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Qt GUI relay daemon for DualSense Edge — presents it as a standard DualSense to fix Proton/Steam compatibility"
+pkgdesc="Qt6 GUI relay daemon for DualSense Edge — presents it as standard DualSense to fix Proton/Steam compatibility, with a visual button-remapping editor"
 arch=("x86_64")
 url="https://github.com/Follen22/ds5-edge-relay"
 license=("MIT")
@@ -12,7 +12,7 @@ install="${pkgname}.install"
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/Follen22/ds5-edge-relay/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=("193a48cecf8f24e417c371bc4999250028cf7c00d17b6d2345b306327dc7d7a3")
+sha256sums=("e29641a4daee7995629e248a056f54ccaad32d9583ea226d00f1c770172e8f7e")
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -25,6 +25,7 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
     install -Dm755 "build/${pkgname}"             "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "1.png"                        "${pkgdir}/usr/share/${pkgname}/1.png"
     install -Dm644 "99-${pkgname}.rules"          "${pkgdir}/usr/lib/udev/rules.d/99-${pkgname}.rules"
     install -Dm644 "${pkgname}.service"           "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
     install -Dm644 "${pkgname}.desktop"           "${pkgdir}/usr/share/applications/${pkgname}.desktop"
