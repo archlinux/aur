@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=blender-bin
-pkgver=5.0.1
+pkgver=5.1.0
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite (with packaged libraries and python3.11)"
 arch=('x86_64')
@@ -32,28 +32,32 @@ license=(
   LicenseRef-TOST-1.0
 )
 depends=('glibc' 'bash' 'hicolor-icon-theme'
-'libxkbcommon'
-'libxi'
-'libglvnd'
-'libxt'
+'libx11'
+'libxrender'
 'libxfixes'
-'libxxf86vm'
+'libxi'
+'libxkbcommon'
+'libstdc++'
+'libgcc'
+'libxcb'
+'libxext'
 'libsm'
 'libice'
-'mesa'
-'libxcrypt-compat'
-'libxext'
-'zstd'
-'libxrender'
-'libxcb'
+'libglvnd'
+'libxau'
+'libxdmcp'
 'util-linux-libs'
+'ffmpeg'
+'mesa'
+'spirv-tools'
+'llvm'
+'systemd-libs'
 'libdrm'
-'ncurses'
-'libx11'
-'gcc-libs'
-'zlib'
-'opengl-driver'
-'vulkan-driver')
+'wayland'
+'pulse-native-provider'
+'icu'
+'vulkan-driver'
+'opengl-driver')
 optdepends=('cuda: Cycles renderer CUDA support'
             'intel-compute-runtime: Cycles renderer Intel OneAPI support'
 	    'level-zero-loader: Cycles renderer Intel OneAPI support'
@@ -64,7 +68,7 @@ provides=('blender')
 conflicts=('blender')
 source=("https://download.blender.org/release/Blender${pkgver:0:3}/blender-${pkgver}-linux-x64.tar.xz"
 	"x-blender.xml")
-sha256sums=('8019580ee1b7262e505f4196a00237ccf743c88d205b38d34201510676e60b09'
+sha256sums=('7f2475990613c8d4c7ac5697803fcf40d09541c1fd8c23936f4b07a169a920c7'
             '230fc11e49d647215f4735117761d887756823ee1c8fab08987218fd037de75c')
 validpgpkeys=()
 
