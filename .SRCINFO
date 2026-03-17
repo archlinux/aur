@@ -1,0 +1,17 @@
+pkgbase = streamsquire-bin
+	pkgdesc = AI streaming assistant — auto-clips, chat monitoring, transcription
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://streamsquire.app
+	arch = x86_64
+	license = custom
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	provides = streamsquire
+	conflicts = streamsquire
+	options = !strip
+	options = !debug
+	source = streamsquire-0.2.4.AppImage::https://releases.streamsquire.app/v0.2.4/streamsquire-linux-x64.AppImage
+	sha256sums = SKIP
+
+pkgname = streamsquire-bin
