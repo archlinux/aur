@@ -6,7 +6,7 @@
 # Contributor: gangelop
 pkgname=pureref
 _pkgname=PureRef
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Reference Image Viewer"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=(!debug !strip)
 
 key=$(curl -A 'AUR PKGBUILD/Please contact maintainer if there is an issue' -s https://www.pureref.com/download.php | awk '/setupPaymentSystem/,/);/' | grep -zoP '\s+"\K[A-z0-9%]+?",' | sed 's/...$//')
 source=("${pkgname}-${pkgver}.deb::https://www.pureref.com/files/build.php?build=LINUX64.deb&version=${pkgver}&downloadKey=$key")
-b2sums=('0c620f064dfbe81b0f7fba5b07308027af5e637ed63dd22d19b349c7ab7362d4e123eb5afed0bdb691d6c10d6d2e5e7500a85b36e225a7515b75da852ad58e3a')
+b2sums=('7e3a740e16dd65705b8fc17b9ae3cbb6fce667b0f4cec1b76dba0477ce43cd1fae24c5481c7c843ab56caa9892f7b126687243675844933011b4bf1e94bc916a')
 
 prepare(){
   ar x "${pkgname}-${pkgver}.deb"
