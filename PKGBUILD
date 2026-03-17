@@ -4,7 +4,7 @@
 _program_name=GalaxyBudsClient
 _pkgname="${_program_name,,}"
 pkgname="${_pkgname}-bin"
-pkgver=5.1.2
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="Unofficial manager for the Samsung Galaxy Buds, Buds+, Buds Live and Buds Pro"
 arch=('x86_64'
@@ -53,6 +53,6 @@ package() {
 }
 sha256sums=('88677692ff1d7202b9f7aedbb5ec6cc01684041b94220a8da8feb69d9a028f70'
             '17c7fa91678d1ba8cac08dcfda613735bfab97f4488909c8ac98a5aaa2c94214')
-sha256sums_x86_64=('13e6dee834cff02ff772b8eaebdd5631e1e3e6556b365e6dbb0184c7fa68da00')
-sha256sums_armv7h=('cb7c2b7b00a64886b9d04b4411cf47e2a531ccad718fe018fbd633ffe47aaa5a')
-sha256sums_aarch64=('51a1857faa24e52b2dc2b15e2839221bfac707826dac9e0235b9abd9d39d0abd')
+sha256sums_x86_64=('ca73f610710d04263067bf75bfe28f7809de771c0340f27a9573a48e9c4ab9f7')
+sha256sums_armv7h=('9e20224c55dfae9e4048af7a8361d383aff8000833338896736794420b48ebe7')
+sha256sums_aarch64=('faa70b021e1a559331fff22acf0ef4878c833f8f633ac8ae80636d31608bb32e')
