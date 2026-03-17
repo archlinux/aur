@@ -6,6 +6,8 @@ pkgdesc='Contains the Key Database for the AACS Library (Daily Updates)'
 arch=('any')
 url='http://fvonline-db.bplaced.net/'
 depends=('libaacs')
+provides=("${pkgname%-daily}")
+conflicts=("${pkgname%-daily}")
 source=("keydb_eng-${pkgver}.zip::https://web.archive.org/web/${pkgver}/http://fvonline-db.bplaced.net/export/keydb_eng.zip")
 sha256sums=('896caed81c65de871dbfc12da5afec010948db414ae75c2e21a5e62b6a8f21dd')
 

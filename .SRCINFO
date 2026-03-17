@@ -5,6 +5,8 @@ pkgbase = aacs-keydb-daily
 	url = http://fvonline-db.bplaced.net/
 	arch = any
 	depends = libaacs
+	provides = aacs-keydb
+	conflicts = aacs-keydb
 	source = keydb_eng-20260316002329.zip::https://web.archive.org/web/20260316002329/http://fvonline-db.bplaced.net/export/keydb_eng.zip
 	sha256sums = 896caed81c65de871dbfc12da5afec010948db414ae75c2e21a5e62b6a8f21dd
 
