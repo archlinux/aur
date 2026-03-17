@@ -1,0 +1,19 @@
+pkgbase = psysonic
+	pkgdesc = Desktop music player for Subsonic API-compatible servers (Navidrome, Gonic, etc.)
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://github.com/Psychotoxical/psysonic
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = npm
+	makedepends = rust
+	makedepends = cargo
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = openssl
+	depends = alsa-lib
+	source = psysonic-1.4.3.tar.gz::https://github.com/Psychotoxical/psysonic/archive/refs/tags/app-v1.4.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = psysonic
