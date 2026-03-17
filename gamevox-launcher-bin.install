@@ -1,0 +1,7 @@
+post_install() {
+	echo "Launcher install completed. Run gamevox-launcher to finish installation."
+}
+
+pre_remove() {
+	echo "Warning: Files left behind in ~/.gamevox."
+}
