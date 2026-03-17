@@ -12,6 +12,8 @@ post_install() {
     echo ""
     echo "For more information visit:"
     echo "https://codeberg.org/Druid520/hetrix"
+    echo "Visit the wiki at:"
+    echo "https://druid520.codeberg.page/"
     echo "=================================================="
 }
 
