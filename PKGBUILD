@@ -10,7 +10,7 @@ license=('AGPL-3.0-only')
 groups=()
 depends=(base-devel git alsa-lib libx11 libxrandr libxi mesa glu libxcursor libxinerama wayland libxkbcommon curl)
 makedepends=()
-conflicts=(tlescope-git)
+conflicts=('tlescope-git')
 source=("https://github.com/aweeri/TLEscope/releases/latest/download/TLEscope-Linux-Portable.zip")
 sha256sums=('SKIP')
 
