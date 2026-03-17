@@ -1,0 +1,22 @@
+pkgbase = peekoo-bin
+	pkgdesc = Desktop AI pet and productivity companion
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/feed-mob/peekoo-ai
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = libnotify
+	optdepends = xdg-utils: open external links
+	source = https://github.com/feed-mob/peekoo-ai/releases/download/v0.1.1/Peekoo_0.1.1_amd64.AppImage
+	source = peekoo.desktop
+	source = peekoo.sh
+	source = peekoo.png
+	sha256sums = 6b0a11e5a7938b493e88bfce4373cb152c7cee7154f5676bf7d8742a4389c828
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = peekoo-bin

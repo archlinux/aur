@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Peekoo
+Comment=Desktop AI pet and productivity companion
+Exec=peekoo
+Icon=peekoo
+Terminal=false
+Categories=Utility;Office;
+StartupNotify=true
