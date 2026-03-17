@@ -1,9 +1,0 @@
-#!/bin/sh
-case "$*" in
-  *jitterentropy*)
-    exec /usr/bin/cc "$@" -O0
-    ;;
-  *)
-    exec /usr/bin/cc "$@"
-    ;;
-esac

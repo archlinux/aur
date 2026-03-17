@@ -2,7 +2,7 @@
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
 url="https://github.com/totoshko88/RustConn"
@@ -49,17 +49,13 @@ optdepends=(
   'virt-viewer: External SPICE client fallback'
   'waypipe: Wayland application forwarding for SSH connections'
 )
-source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-        'cc-wrap')
-sha256sums=('13fca63c48430f376479988f8e2cce5289e7b8e99536c2da5e22626ba5e91e34'
-            'd8d5350ef15f04cb18d1f111e7c8787384a7cbb1abd6ea34b18c73dfb966dbe6')
+source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('13fca63c48430f376479988f8e2cce5289e7b8e99536c2da5e22626ba5e91e34')
 
 prepare() {
   cd "RustConn-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc --print host-tuple)"
-
-  chmod +x "$srcdir/cc-wrap"
 }
 
 build() {
@@ -68,11 +64,10 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  # error "The CPU Jitter random number generator must not be compiled with 
-  # optimizations. See documentation. Use the compiler switch -O0 for 
-  # compiling jitterentropy.c."
-  # The wrapper detects jitterentropy source files and forces -O0 at the very end.
-  CC="$srcdir/cc-wrap" cargo build --frozen --release \
+  # https://github.com/aws/aws-lc-rs/issues/1008#issuecomment-3774105038
+  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
+
+  cargo build --frozen --release \
     -p rustconn --features adw-1-8 \
     -p rustconn-cli
 }
@@ -80,7 +75,8 @@ build() {
 check() {
   cd "RustConn-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  CC="$srcdir/cc-wrap" cargo test --frozen
+  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
+  cargo test --frozen
 
   appstreamcli validate --no-net "$pkgname/assets/${_app_id}.metainfo.xml" || :
   desktop-file-validate "$pkgname/assets/${_app_id}.desktop"
