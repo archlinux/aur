@@ -1,0 +1,21 @@
+pkgbase = python-nixnet
+	pkgdesc = Communicate over CAN or LIN via NI-XNET hardware with Python
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ni/nixnet-python
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-poetry-core
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-six
+	provides = python-nixnet
+	conflicts = python-nixnet
+	source = nixnet::git+https://github.com/ni/nixnet-python.git#tag=v1.0.0
+	sha256sums = 7a5c95252d125ae09b2a14ef6fe285c4ec3fcabdf5b97a482cb57cbf002574ea
+
+pkgname = python-nixnet
