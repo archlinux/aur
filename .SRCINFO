@@ -1,13 +1,13 @@
 pkgbase = bashd
-	pkgdesc = Bulk data management toolkit for Linux CLI
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgdesc = Bulk data management toolkit for Linux CLI — single dispatcher, 49 commands (rename, organize, clipboard, cleanup)
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/terpinedream/Bashd
 	arch = any
-	license = custom
+	license = GPL3
 	depends = bash
 	optdepends = figlet: pretty headers for bashd --<command>
-	source = bashd-0.1.1.tar.gz::https://github.com/terpinedream/Bashd/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = b48b3dbcf7767400c174651c2d1ed630961535ea550e34501cc2ee8629b6aca1
+	source = bashd-2.0.0.tar.gz::https://github.com/terpinedream/Bashd/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 47d402fbf55e8e42f8367dbe172907daa4c597cdd68f6c41dcca41d0f6a74ddf
 
 pkgname = bashd
