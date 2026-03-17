@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://codeberg.org/Druid520/hetrix"
 license=('GPL3')
 depends=('gcc' 'make' 'git' 'curl' 'cmake' 'zpaq' 'p7zip')
-install='hetrix.install'  # 👈 Add this line!
+install='hetrix.install'
 source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('6b307ea15aab814cb89aa28e2733198aa45f5bacee11f38859fe02ba0cd8e0a1')
 
