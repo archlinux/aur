@@ -25,7 +25,7 @@ conflicts=("$_name")
 depends=('cgal' 'ceres-solver' 'gflags' 'metis' 'openimageio' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' 'qt5-base' 'flann')
 makedepends=('boost' 'cmake' 'eigen' 'git' 'ninja' 'python-sphinx' )
 if [ "$_BUILD_CUDA" == "ON" ] ; then 
-  makedepends+=('cuda<13')
+  makedepends+=('cuda')
   optdepends+=('libcudart.so: required for dense reconstruction')
 fi
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${_fragment}"

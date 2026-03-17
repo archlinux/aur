@@ -12,7 +12,6 @@ pkgbase = colmap-git
 	makedepends = git
 	makedepends = ninja
 	makedepends = python-sphinx
-	makedepends = cuda<13
 	depends = cgal
 	depends = ceres-solver
 	depends = gflags
@@ -27,7 +26,6 @@ pkgbase = colmap-git
 	depends = boost-libs
 	depends = qt5-base
 	depends = flann
-	optdepends = libcudart.so: required for dense reconstruction
 	provides = colmap
 	conflicts = colmap
 	source = colmap-git::git+https://github.com/colmap/colmap.git#branch=main
