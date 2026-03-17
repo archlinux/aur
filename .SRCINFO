@@ -1,11 +1,9 @@
 pkgbase = jpwd
-	pkgdesc = A modern alternative to GNU/pwd using Java 🥰☕
+	pkgdesc = A modern alternative to GNU/pwd using Java
 	pkgver = 0.0.5
-	pkgrel = 0
-	epoch = 0
+	pkgrel = 2
 	url = https://github.com/0x61nas/jpwd
 	arch = any
-	groups = java-utils
 	license = GPL3
 	depends = java-runtime>=17
 	optdepends = ttf-fira-code: for icons
