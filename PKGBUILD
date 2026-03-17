@@ -5,16 +5,16 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=vectoroids
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.1.2
+pkgrel=1
 pkgdesc='Clone of the classic arcade game "Asteroids" by Atari'
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://www.newbreedsoftware.com/vectoroids/"
-source=("ftp://ftp.tuxpaint.org/unix/x/$pkgname/src/$pkgname-$pkgver.tar.gz")
-depends=('sdl_mixer' 'sdl_image')
+source=("https://tuxpaint.org/ftp/unix/x/$pkgname/src/$pkgname-$pkgver.tar.gz")
+depends=('sdl2_mixer' 'sdl2_image')
 makedepends=('gendesk')
-sha256sums=('8d14dd281767e994108abd77c8e67d5a17718d0ad1e34d37e026911d14697b2e')
+sha256sums=('68b578aeb36e2ca3836060fed1404041e40a28236514e5f683909c8e39025b24')
 _categories="Game;ArcadeGame;"
 
 prepare() {
