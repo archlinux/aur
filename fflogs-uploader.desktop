@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=FF Logs Uploader
+GenericName=Combat Log Uploader
+Comment=Upload Final Fantasy XIV combat logs to fflogs.com
+Exec=fflogs-uploader
+Icon=fflogs
+Categories=Game;Utility;
+Terminal=false
+StartupNotify=true
+StartupWMClass=fflogs-uploader
