@@ -6,7 +6,7 @@ url="https://github.com/Amulet-Team/Amulet-pybind11-extensions"
 license=("LicenseRef-Amulet-Team-License")
 arch=(any)
 pkgver=1.0.0.1
-pkgrel=3
+pkgrel=4
 makedepends=(python-setuptools git python-wheel python-amulet-compiler-version python-packaging python-versioneer)
 optdepends+=(python-black)
 depends=(python pybind11)
@@ -29,4 +29,6 @@ function build() {
 function package() {
 	cd "${srcdir}/Amulet-pybind11-extensions"
 	python setup.py install --root="$pkgdir" --optimize=1
+	install -d "${pkgdir}/usr/include/amulet"
+	cp -r "${srcdir}/Amulet-pybind11-extensions/"src/amulet/pybind11_extensions "${pkgdir}/usr/include/amulet/pybind11_extensions"
 }

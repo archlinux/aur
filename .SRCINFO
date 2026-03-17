@@ -1,7 +1,7 @@
 pkgbase = python-amulet_pybind11_extensions
 	pkgdesc = Some useful extensions to pybind11
 	pkgver = 1.0.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/Amulet-Team/Amulet-pybind11-extensions
 	arch = any
 	license = LicenseRef-Amulet-Team-License
