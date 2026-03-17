@@ -6,13 +6,13 @@
 # Contributor: Iwan Timmer <irtimmer ат gmail.com>
 
 pkgname=runc-git
-pkgver=1.4.0rc.1.r40.g80486a207
+pkgver=1.5.0rc.1.r4.g496b68a30
 pkgrel=1
 pkgdesc="CLI tool for managing OCI compliant containers"
 arch=('x86_64')
 url="https://runc.io/"
 license=('Apache-2.0')
-depends=('libseccomp')
+depends=('libseccomp' 'libpathrs')
 makedepends=('git' 'go' 'go-md2man')
 optdepends=(
   'criu: checkpoint support'
