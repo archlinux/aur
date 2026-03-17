@@ -2,7 +2,7 @@
 # 🔋 slskdn - The batteries-included Soulseek web client
 pkgname=slskdn-bin
 _pkgname=slskd
-pkgver=0.24.5.slskdn.58
+pkgver=0.24.5.slskdn.59
 pkgrel=1
 pkgdesc="🔋 The batteries included fork of slskd with 24+ new features: decentralized pods, content validation, swarm downloads, DHT mesh networking, auto-replace, wishlist, security hardening."
 arch=('x86_64')
@@ -26,7 +26,7 @@ source=(
     "slskd.sysusers"
 )
 # Note: First hash is SKIP (zip changes each release), others are static file hashes
-sha256sums=('279ba3af54db2e97972352a5238750d9960f1ea420f8be2f81f920fc9271d62e' 'e86287085cd17a5db39c6498b6d25ebdc194bca552f678aa8c749b7c25293249' 'a170afada9ec8673ab696506756e1b5d971ee4f67560af795f359c9bd53645df' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056')
+sha256sums=('725e1cd2f5101d05ba5b086d749a7339d116689a890da8abdc6471a3d6f1fef9' 'e86287085cd17a5db39c6498b6d25ebdc194bca552f678aa8c749b7c25293249' 'a170afada9ec8673ab696506756e1b5d971ee4f67560af795f359c9bd53645df' '28b6c2c8d969a91bc8b5ae3e7289562928fff39ed07b92973e5b93fa45033056')
 
 package() {
     # Install application to /usr/lib/slskd (same location as original slskd)
