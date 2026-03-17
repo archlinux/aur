@@ -23,7 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/openify"
   npm install
-  npm run tauri build -- --bundles none
+  npm run tauri build -- --bundles deb
 }
 
 package() {
