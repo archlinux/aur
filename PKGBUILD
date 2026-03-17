@@ -97,7 +97,7 @@ check() {
   cd Mindwtr/apps/desktop
   export BUN_INSTALL_CACHE_DIR="$srcdir/bun-cache"
   
-  # Relax tests: 106 passed, 8 failed
+  # Relax tests: 116 passed, 15 failed
   bun test || :
 }
 
