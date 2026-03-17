@@ -2,14 +2,38 @@
 
 pkgname=lenza-bin
 pkgver=1.0.52
-pkgrel=1
+pkgrel=2
 pkgdesc="Lenza is a corporate messenger for team communication"
 arch=('x86_64')
 url="https://lenzaos.com/"
 license=('custom')
 options=('!strip' '!debug')
 _appimage="Lenza-${pkgver}.AppImage"
-depends=(fuse2)
+makedepends=('fuse2' 'squashfs-tools')
+depends=(
+    'alsa-lib'
+    'at-spi2-core'
+    'cairo'
+    'dbus'
+    'expat'
+    'glib2'
+    'gtk3'
+    'libcups'
+    'libdrm'
+    'libx11'
+    'libxcb'
+    'libxcomposite'
+    'libxdamage'
+    'libxext'
+    'libxfixes'
+    'libxkbcommon'
+    'libxrandr'
+    'libxtst'
+    'mesa'
+    'nss'
+    'pango'
+)
+noextract=("${_appimage}")
 source=("https://software.lenzaos.com/app-chats/Lenza-${pkgver}.AppImage")
 sha256sums=('8741a8c819104fe96c375bd5f835df214e4504e264710b0c5e3ba1ead0509fa5')
 
