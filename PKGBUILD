@@ -1,6 +1,6 @@
 pkgname=python-bd_warehouse
-_build_hash=354bcb3bc5a07cfb1981f2821a18da51832a51de
-pkgver=0.1.1
+_build_fragment="tag=v0.2.0"
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A build123d parametric part collection"
 arch=(x86_64)
@@ -23,9 +23,9 @@ python-wheel
 )
 
 
-source=("git+https://github.com/gumyr/bd_warehouse#commit=${_build_hash}")
+source=("git+https://github.com/gumyr/bd_warehouse#${_build_fragment}")
 
-sha256sums=('110028391649b28a3b4db27e60db1d75b378340477749ad0856b406ec03df99f')
+sha512sums=('0dd2837689fe3c65c891a1f9386afffb4c91fa5f40f78946956053a4526b76534c56eefdaabd038b02260f41203724661cfc043ebc91d4537b8a899374e7cd9d')
 
 pkgver() {
   cd bd_warehouse

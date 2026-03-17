@@ -1,6 +1,6 @@
 pkgbase = python-bd_warehouse
 	pkgdesc = A build123d parametric part collection
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/gumyr/bd_warehouse
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = python-bd_warehouse
 	makedepends = python-wheel
 	depends = python-build123d
 	depends = python-typing_extensions
-	source = git+https://github.com/gumyr/bd_warehouse#commit=354bcb3bc5a07cfb1981f2821a18da51832a51de
-	sha256sums = 110028391649b28a3b4db27e60db1d75b378340477749ad0856b406ec03df99f
+	source = git+https://github.com/gumyr/bd_warehouse#tag=v0.2.0
+	sha512sums = 0dd2837689fe3c65c891a1f9386afffb4c91fa5f40f78946956053a4526b76534c56eefdaabd038b02260f41203724661cfc043ebc91d4537b8a899374e7cd9d
 
 pkgname = python-bd_warehouse
