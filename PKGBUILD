@@ -1,15 +1,15 @@
-# Maintainer: Pavel Olizko <olizkopavel@proton.me>
+# Maintainer: Pavel Olizko <contact@nolight.dev>
 pkgname=mf-cli
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
-pkgdesc="CLI tool for Arturia MiniFuse 1"
+pkgdesc="CLI tool for Arturia MiniFuse 1/2"
 arch=('x86_64')
 url="https://github.com/nolight132/mf-cli"
 license=('MIT')
 depends=('glibc' 'gcc-libs' 'libusb' 'systemd-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e6c21bb99f56a817ed3686def8d6e2a0bdfcfe91ffe6ac8f1603d0b8d05c7c19')
+sha256sums=('ff0326f03bb21463e5c87f3d8dde6a7211cd32326f82cbfb40d73587bab0e4be')
 
 build() {
   cd "$pkgname-$pkgver"
