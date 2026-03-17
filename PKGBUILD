@@ -3,7 +3,7 @@
 
 pkgname=upwork
 pkgver=5.8.0.41
-pkgrel=4
+pkgrel=5
 _hashver='f0de03505cc349f2'
 pkgdesc='Track your time for Hourly Payment Protection. Stay connected.'
 arch=('x86_64')
@@ -25,6 +25,7 @@ optdepends=(
   'gnome-shell-extension-appindicator: To show tray icon in GNOME'
 )
 conflicts=('upwork-beta')
+options=(!debug !strip)
 source=(
   "https://upwork-usw2-desktopapp.upwork.com/binaries/v${pkgver//./_}_$_hashver/upwork_${pkgver}_amd64.deb"
   'upwork-team-software-license-agreement-1-1.pdf::https://upwork.pactsafe.io/versions/6887e5128f84f23a737bf6bb.pdf'

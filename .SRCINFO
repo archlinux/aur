@@ -1,7 +1,7 @@
 pkgbase = upwork
 	pkgdesc = Track your time for Hourly Payment Protection. Stay connected.
 	pkgver = 5.8.0.41
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.upwork.com/ab/downloads/?os=linux
 	arch = x86_64
 	license = LicenseRef-Upwork-EULA
@@ -17,6 +17,8 @@ pkgbase = upwork
 	optdepends = libappindicator: For system notifications
 	optdepends = gnome-shell-extension-appindicator: To show tray icon in GNOME
 	conflicts = upwork-beta
+	options = !debug
+	options = !strip
 	source = https://upwork-usw2-desktopapp.upwork.com/binaries/v5_8_0_41_f0de03505cc349f2/upwork_5.8.0.41_amd64.deb
 	source = upwork-team-software-license-agreement-1-1.pdf::https://upwork.pactsafe.io/versions/6887e5128f84f23a737bf6bb.pdf
 	source = upwork.sh.in
