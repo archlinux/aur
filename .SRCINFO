@@ -16,6 +16,6 @@ pkgbase = nuicat-bin
 	conflicts = nuicat
 	noextract = nuicat_amd64.deb
 	source = nuicat_amd64.deb::https://packages.nui.cat/releases/v0.1.17/nuicat_amd64.deb
-	sha256sums = 36d10d49a04863c2f175de796c70100743443d24164bf258f149b44b2f17bea5
+	sha256sums = c745fe68bb33e9b53d3642505d2da7b4c65270fbc8fd2a9bd04636f206e8e470
 
 pkgname = nuicat-bin
