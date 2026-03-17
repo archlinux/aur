@@ -1,0 +1,27 @@
+# hetrix.install
+# This file gets sourced by pacman during package operations
+
+post_install() {
+    echo "=================================================="
+    echo "hetrix has been successfully installed!"
+    echo ""
+    echo "To get started:"
+    echo "Run hetrix init to seed index and config"
+    echo "Check the README.md online in the link bellow"
+    echo ""
+    echo ""
+    echo "For more information visit:"
+    echo "https://codeberg.org/Druid520/hetrix"
+    echo "=================================================="
+}
+
+post_upgrade() {
+    echo "=================================================="
+    echo "hetrix has been updated!"
+    echo "=================================================="
+}
+
+# Optional: Display message on removal
+pre_remove() {
+    echo "Removing hetrix... sorry to see you go :("
+}
