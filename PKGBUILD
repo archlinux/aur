@@ -6,7 +6,7 @@ pkgdesc="A modern, lightweight, privacy-first music player powered by Tauri."
 arch=('x86_64')
 url="https://github.com/Arcioth/openify"
 license=('ISC')
-depends=('webkit2gtk-4.1' 'gtk3')
+depends=('webkit2gtk-4.1' 'gtk3' 'gst-plugins-good' 'gst-plugins-bad')
 optdepends=('yt-dlp: YouTube Music streaming support')
 makedepends=('git' 'nodejs>=18' 'npm' 'cargo' 'pkgconf')
 provides=('openify')
