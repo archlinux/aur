@@ -1,10 +1,10 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=gitswitcher
-pkgver=1.1.9
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Secure Git identity and SSH/GPG key management tool for seamless account switching'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/tenseleyFlow/gitswitchC'
 license=('GPL-3.0-or-later')
 depends=('git' 'openssh' 'openssl')

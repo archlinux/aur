@@ -1,16 +1,17 @@
 pkgbase = gitswitcher
 	pkgdesc = Secure Git identity and SSH/GPG key management tool for seamless account switching
-	pkgver = 1.1.9
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/tenseleyFlow/gitswitchC
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = gcc
 	makedepends = make
 	depends = git
 	depends = openssh
 	depends = openssl
-	source = git+https://github.com/tenseleyFlow/gitswitchC.git#tag=v1.1.9
+	source = git+https://github.com/tenseleyFlow/gitswitchC.git#tag=v1.2.0
 	md5sums = SKIP
 
 pkgname = gitswitcher
