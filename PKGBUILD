@@ -1,6 +1,7 @@
 pkgname=python-cadquery
-pkgver=v2.6.1.r16
-pkgrel=2
+_cq_fragment="tag=v2.7.0"
+pkgver=2.7.0
+pkgrel=1
 pkgdesc="A parametric CAD scripting framework based on PythonOCC"
 arch=(any)
 url="https://github.com/CadQuery/cadquery"
@@ -16,6 +17,8 @@ python-docutils
 python-pyparsing
 python-trame
 python-trame-vtk
+python-trame-components
+python-trame-vuetify
 python-runtype
 casadi
 openmpi
@@ -37,18 +40,17 @@ python-installer
 python-wheel
 )
 
-_fragment="#commit=fe53ca0c18bf6d4e2e2f0e1cc8720d18fb5158c1"
 source=(
-"git+https://github.com/CadQuery/cadquery#commit=${_fragment}"
+"git+https://github.com/CadQuery/cadquery#commit=#${_cq_fragment}"
 support-ocp-7.9.3.patch # curl https://github.com/CadQuery/cadquery/commit/7cf644e75d41bb4ba6667a6ec81befe22b9dd254.patch > support-ocp-7.9.3.patch
 )
 
-sha256sums=('bfbcc2810f0ecf7cc4df7c7f97a561da6feab5d8c341f08fa7f5075ea9239338'
+sha256sums=('46ef4f3867fe700f6ef34b09fad977278814fbc9d70abfd6451c96321361bc0d'
             '4d60cee6bf70d5eeaeb060e514d104969c1da7f30e7f4eb6d67c061e0debaa05')
 
 pkgver() {
   cd cadquery
-  git describe --tags | rev | cut -d- -f2- | rev | sed 's/-/.r/'
+  git describe --tags | rev | cut -d- -f2- | rev | sed 's/-/.r/' | sed 's/^v//'
 }
 
 prepare() {
@@ -59,7 +61,7 @@ prepare() {
   cat ../support-ocp-7.9.3.patch | patch -p1
   
   # address ast class deprecations
-  curl https://github.com/CadQuery/cadquery/commit/fc85e1d5ce26f85babd4755f7f22f565d1003e1b.patch | patch -p1
+  #curl https://github.com/CadQuery/cadquery/commit/fc85e1d5ce26f85babd4755f7f22f565d1003e1b.patch | patch -p1
 }
 
 build() {
