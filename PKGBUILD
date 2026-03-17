@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=meru-git
 _pkgname=meru
-pkgver=3.32.0.r0.g5811ad3
-_electronversion=40
+pkgver=3.37.1.r0.g87f6cc1
+_electronversion=41
 _nodeversion=22
 pkgrel=1
 pkgdesc="📮 Nifty Gmail desktop app for macOS, Linux & Windows (previously Gmail Desktop).(Use system-wide electron)"
@@ -61,35 +61,29 @@ prepare() {
         --categories="Network;Office" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
     HOME="${srcdir}/.electron-gyp"
-    if [ -f bunfig.toml ]; then
-        rm -rf bunfig.toml
-    fi
-        if [ -f bun.lockb ];then
-        rm -rf bun.lockb
-    fi
+    rm -rf bunfig.toml bun.lockb || true
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
-        export npm_config_electron_mirror="https://registry.npmmirror.com/-/binary/electron/"
-        export npm_config_electron_builder_binaries_mirror="https://registry.npmmirror.com/-/binary/electron-builder-binaries/"
-        export sqlite3_binary_site="https://registry.npmmirror.com/-/sqlite3/"
-        {
-            echo '[install]'
-            echo 'registry = "https://registry.npmmirror.com"'
-        } >> bunfig.toml
+        export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+        export BUN_REGISTRY_MIRROR="https://registry.npmmirror.com"
+        export BUN_BINARY_MIRROR_OVERRIDE="https://registry.npmmirror.com/-/binary/"
+        export BUN_INSTALL_REWRITE="https://registry.npmjs.org/*=https://registry.npmmirror.com/\$1"
+        export BUN_INSTALL_NO_CACHE=1
+        export BUN_INSTALL_DISABLE_DEFAULT_REGISTRY_FALLBACK=1
+        export BUN_CACHE_DIR="${srcdir}/.bun_cache"
     fi
     _ensure_local_nvm
-    sed -i "/build\:linux/a\		\"build\:local\"\: \"electron-builder --linux dir -c.electronDist=\${electronDist}\"\," package.json
     sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
     bun install
 }
 build() {
     cd "${srcdir}/${pkgname%-git}.git"
     _ensure_local_nvm
+    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     local electronDist="/usr/lib/electron${_electronversion}"
     bun run build:js
-    bun run build:local
+    bun x electron-builder --linux dir -c.electronDist="${electronDist}"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
@@ -102,7 +96,11 @@ package() {
             fi
         done
     fi
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/build/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
+    _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
+    for _icons in "${_icon_sizes[@]}";do
+        install -Dm644 "${srcdir}/${pkgname%-git}.git/build/icons/${_icon_sizes}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
+    done
     install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
