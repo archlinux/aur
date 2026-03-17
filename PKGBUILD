@@ -2,8 +2,8 @@
 
 _pkgname=qtcreator-spellchecker-plugin
 pkgname=${_pkgname}-bin
-pkgver=3.11.0
-_qtcreatorver=18.0.0
+pkgver=3.12.0
+_qtcreatorver=19.0.0
 pkgrel=1
 pkgdesc="Spell Checker plugin for the Qt Creator IDE"
 groups=('qt')
@@ -16,7 +16,7 @@ depends=(
 provides=('qtcreator-spellchecker-plugin')
 conflicts=('qtcreator-spellchecker-plugin')
 source=("${_pkgname}-$pkgver.tar.gz::${url}/releases/download/v${pkgver}/SpellChecker-Plugin_QtC${_qtcreatorver}_linux_x64.tar.gz")
-sha256sums=('90d7c546cf0d9569c064dea0acb5b634b2a639c02811cca72cbf8ce746c1ba84')
+sha256sums=('40df0964a755f9a643fff2570edf7bcca5f0ae374042ea035cd0a9f8261d4f2c')
 
 package() {
     install -D "${srcdir}/lib/qtcreator/plugins/libSpellChecker.so" "${pkgdir}/usr/lib/qtcreator/plugins/libSpellChecker.so"
