@@ -2,7 +2,7 @@
 # Contributor: Ikosse <andre.lofgren@mailbox.org>
 
 pkgname=harbour-amazfish
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Companion application for Huami Devices and the Pinetime Infinitime"
 arch=('x86_64' 'aarch64')
@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('git' 'cmake')
 source=("https://github.com/piggz/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('0040b3c59bdd912dd99340a5061f48ec9bc23d9eac06d030614a2d804f92b9246972f6e72984fddc2349dd03f3b5a68d41f4c8e4182cdb982e65ef2f00277dbf')
+sha512sums=('9a311aeb425039b05e19cc5686d0c56bb46d9bb599ce13dd8a1602206c21280ea56c453051eeb4bac4620273406ebae001cc1a3cbf9e7967219415bd7cd725f4')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -34,17 +34,26 @@ prepare() {
 	if [ ! -f "./qble/.git" ]; then
 		rm -rf qble
 		git submodule add https://github.com/piggz/qble.git qble
+		cd qble
+		git checkout eb6192b
+		cd ..
 	fi
 
 	if [ ! -f "./daemon/libwatchfish/.git" ]; then
 		rm -rf daemon/libwatchfish
 		git submodule add https://github.com/piggz/libwatchfish.git \
 			daemon/libwatchfish
+		cd daemon/libwatchfish
+		git checkout 41b885d
+		cd ../..
 	fi
 
 	if [ ! -f "./daemon/Qt-AES/.git" ]; then
 		rm -rf daemon/Qt-AES
 		git submodule add https://github.com/bricke/Qt-AES.git daemon/Qt-AES
+		cd daemon/Qt-AES
+		git checkout 04f16b2
+		cd ../..
 	fi
 
 	sed -zi \
