@@ -1,0 +1,14 @@
+pkgbase = rio
+	pkgdesc = Lua web framework with MVC architecture and RESTful API support
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/lvitals/rio
+	arch = any
+	license = MIT
+	makedepends = luarocks
+	makedepends = git
+	depends = lua
+	source = rio::git+https://github.com/lvitals/rio#tag=v0.1.13
+	sha256sums = ed666af0ccfca5a45e748782c67186f852dbc5f932649ed883bd7db278ef64c4
+
+pkgname = rio
