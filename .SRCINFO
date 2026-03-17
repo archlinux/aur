@@ -1,6 +1,6 @@
 pkgbase = pocketbase-bin
 	pkgdesc = Open Source realtime backend in 1 file
-	pkgver = 0.36.6
+	pkgver = 0.36.7
 	pkgrel = 1
 	url = https://pocketbase.io
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = pocketbase-bin
 	depends = glibc
 	provides = pocketbase
 	conflicts = pocketbase
-	source_x86_64 = https://github.com/pocketbase/pocketbase/releases/download/v0.36.6/pocketbase_0.36.6_linux_amd64.zip
-	sha256sums_x86_64 = bb7abf038374e557f09f6cf92b45a73b1d03049a2445daf75350ce52532c1c77
-	source_aarch64 = https://github.com/pocketbase/pocketbase/releases/download/v0.36.6/pocketbase_0.36.6_linux_arm64.zip
-	sha256sums_aarch64 = d90ba071bd71594bb8dbd31a3be52a956ffe918b8dfcf68781a1a075658acbe5
-	source_armv7h = https://github.com/pocketbase/pocketbase/releases/download/v0.36.6/pocketbase_0.36.6_linux_armv7.zip
-	sha256sums_armv7h = daee0c82b8e06c9553539d6257bb2909de523e691de296bcbeb14eb642f51501
+	source_x86_64 = https://github.com/pocketbase/pocketbase/releases/download/v0.36.7/pocketbase_0.36.7_linux_amd64.zip
+	sha256sums_x86_64 = 0e4f28b0447a964dc25d82af28e682097a80457f7bc89a83d29e243e17898ef8
+	source_aarch64 = https://github.com/pocketbase/pocketbase/releases/download/v0.36.7/pocketbase_0.36.7_linux_arm64.zip
+	sha256sums_aarch64 = 81d2720aedf7493d589d02c79928984700f5742071f5ed8427860c7d9fb7a818
+	source_armv7h = https://github.com/pocketbase/pocketbase/releases/download/v0.36.7/pocketbase_0.36.7_linux_armv7.zip
+	sha256sums_armv7h = 6c34d733b966b5fb8033a0c957cf70cb4601692af26b798f69d0dad394fdbe8f
 
 pkgname = pocketbase-bin
