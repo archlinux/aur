@@ -1,0 +1,16 @@
+pkgbase = music-cli
+	pkgdesc = A small tool to download youtube music.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/music-cli
+	arch = any
+	license = MIT
+	depends = python
+	depends = yt-dlp
+	depends = ffmpeg
+	depends = python-requests
+	optdepends = python-ua-generator: random user agent support
+	source = music-cli.py
+	sha256sums = SKIP
+
+pkgname = music-cli
