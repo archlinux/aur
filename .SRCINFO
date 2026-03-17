@@ -1,6 +1,6 @@
 pkgbase = moekoemusic
 	pkgdesc = An open-source, concise, and aesthetically pleasing third-party client for KuGou.(Use system-wide electron)一款开源简洁高颜值的酷狗第三方客户端
-	pkgver = 1.5.9
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://music.moekoe.cn/
 	arch = aarch64
@@ -14,9 +14,7 @@ pkgbase = moekoemusic
 	makedepends = gendesk
 	makedepends = jq
 	depends = electron39
-	source = moekoemusic-1.5.9::git+https://github.com/iAJue/MoeKoeMusic#tag=v1.5.9
 	source = moekoemusic.sh
-	sha256sums = 0254ce8be1886df6493487044fea7f1db06b47c39b9eb12f5d6ab9b1fd98b4d1
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = moekoemusic
