@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=10.0.0
+Name=Mass AV1 Encoder
+Comment=High-density AV1 encoding dashboard
+Exec=massav1encoder
+Icon=massav1encoder
+Terminal=false
+Categories=AudioVideo;Video;Recorder;
+Keywords=video;encoder;av1;archival;
+StartupNotify=true

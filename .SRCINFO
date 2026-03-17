@@ -1,0 +1,21 @@
+pkgbase = massav1encoder
+	pkgdesc = World-class, high-density AV1 encoding dashboard for high-efficiency archival.
+	pkgver = 10.0.0
+	pkgrel = 1
+	url = https://github.com/UnDadFeated/Mass_AV1_Encoder
+	arch = any
+	license = MIT
+	depends = pyside6
+	depends = python-psutil
+	depends = ffmpeg
+	optdepends = nvidia-utils: Hardware acceleration for NVIDIA GPUs
+	source = massav1encoder.desktop
+	source = massav1encoder.sh
+	source = massav1encoder.png
+	source = git+https://github.com/UnDadFeated/Mass_AV1_Encoder.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = massav1encoder
