@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gcc' 'make' 'git' 'curl' 'cmake' 'zpaq' 'p7zip' 'python')
 install='hetrix.install'
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('6b307ea15aab814cb89aa28e2733198aa45f5bacee11f38859fe02ba0cd8e0a1')
+sha256sums=('7973e0a53ecbcf0585c87f7f6e2ce3f28c89ae65cae3d4d5982a2d253e9f35f2')
 
 build() {
     cd "$srcdir/hetrix"
