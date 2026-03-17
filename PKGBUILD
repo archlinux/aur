@@ -1,5 +1,5 @@
 # Maintainer: Leandro Vitals <lvitals at github.com>
-pkgname=rio
+pkgname=lua-rio
 pkgver=0.1.13
 pkgrel=1
 pkgdesc="Lua web framework with MVC architecture and RESTful API support"
