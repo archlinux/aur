@@ -10,7 +10,6 @@ pkgbase = ansinews
 	depends = glibc
 	depends = nodejs
 	provides = ansinews
-	replaces = nodejs-ansinews
 	noextract = ansinews-0.3.0.tgz
 	options = !strip
 	options = emptydirs

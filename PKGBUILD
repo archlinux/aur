@@ -12,7 +12,6 @@ url="https://github.com/lelesrc/ansinews"
 _urlraw="https://raw.githubusercontent.com/lelesrc/${pkgname}/v${pkgver}"
 license=("MIT")
 
-replaces=("nodejs-${_npmname}")
 depends=("glibc" "nodejs")
 makedepends=("npm" "jq")
 provides=("${_npmname}")
