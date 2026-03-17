@@ -3,7 +3,7 @@
 
 pkgname=linux-arctis-manager
 _pkgname=Linux-Arctis-Manager
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="A replacement for SteelSeries GG software, to manage your Arctis device on Linux!"
 arch=('x86_64')
@@ -14,7 +14,7 @@ makedepends=(uv python-installer git)
 checkdepends=()
 source=("https://github.com/elegos/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
 install="linux-arctis-manager.install"
-sha256sums=('dc0c675f175dc043e43cf9894df16e7c55ca3f37f22646b3b921e98b4f232708')
+sha256sums=('31e18d7d0f637f0c7ac5b804c21270f7e76ca53a17dab1891fef454ed07b61a5')
 
 build() {
     cd "${_pkgname}-${pkgver}"
