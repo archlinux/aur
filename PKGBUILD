@@ -1,6 +1,6 @@
 # Maintainer: kaizen403 <kaizen403@proton.me>
 pkgname=openlinear-bin
-pkgver=0.1.36
+pkgver=0.1.41
 pkgrel=1
 pkgdesc="AI-powered project management that actually writes the code — desktop app"
 arch=('x86_64')
@@ -15,16 +15,20 @@ provides=('openlinear')
 conflicts=('openlinear')
 options=('!strip' '!debug')
 source=(
-  "openlinear-${pkgver}-x86_64.AppImage::https://github.com/kaizen403/openlinear/releases/download/v${pkgver}/openlinear-${pkgver}-x86_64.AppImage"
+  "openlinear-${pkgver}-x86_64-linux.tar.gz::https://github.com/kaizen403/openlinear/releases/download/v${pkgver}/openlinear-${pkgver}-x86_64-linux.tar.gz"
   "openlinear.desktop"
   "openlinear.png::https://raw.githubusercontent.com/kaizen403/openlinear/v${pkgver}/apps/desktop/src-tauri/icons/icon.png"
 )
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {
-  # Install AppImage
-  install -Dm755 "${srcdir}/openlinear-${pkgver}-x86_64.AppImage" \
-    "${pkgdir}/opt/openlinear/openlinear.AppImage"
+  install -dm755 "${pkgdir}/opt/openlinear"
+  cp -a "${srcdir}/openlinear-linux-x64/." "${pkgdir}/opt/openlinear/"
+  chmod 755 "${pkgdir}/opt/openlinear/openlinear-desktop" \
+    "${pkgdir}/opt/openlinear/openlinear-sidecar"
+  if [ -f "${pkgdir}/opt/openlinear/opencode-x86_64-unknown-linux-gnu" ]; then
+    chmod 755 "${pkgdir}/opt/openlinear/opencode-x86_64-unknown-linux-gnu"
+  fi
 
   # Install wrapper script
   install -dm755 "${pkgdir}/usr/bin"
@@ -33,13 +37,11 @@ package() {
 # Detect Wayland session and set appropriate flags
 if [ "${XDG_SESSION_TYPE}" = "wayland" ] || [ -n "${WAYLAND_DISPLAY}" ]; then
   export WEBKIT_DISABLE_DMABUF_RENDERER=1
-  export APPIMAGE_EXTRACT_AND_RUN=1
 else
   export WEBKIT_DISABLE_COMPOSITING_MODE=1
   export WEBKIT_DISABLE_DMABUF_RENDERER=1
-  export APPIMAGE_EXTRACT_AND_RUN=1
 fi
-nohup /opt/openlinear/openlinear.AppImage "$@" > /dev/null 2>&1 &
+nohup /opt/openlinear/openlinear-desktop "$@" > /dev/null 2>&1 &
 disown
 EOF
   chmod 755 "${pkgdir}/usr/bin/openlinear"
