@@ -1,0 +1,14 @@
+pkgbase = promrail-bin
+	pkgdesc = Git-native GitOps promotion tool
+	pkgver = 0.0.0
+	pkgrel = 1
+	url = https://github.com/forkline/promrail
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = promrail
+	conflicts = promrail
+	source = https://github.com/forkline/promrail/releases/download/v0.0.0/promrail-0.0.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 4db586c55d24a4e2106112fd97814838b4022312423c4d37745a7b7a78bf9c95
+
+pkgname = promrail-bin
