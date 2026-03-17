@@ -1,0 +1,20 @@
+pkgbase = cairn
+	pkgdesc = A simple GNOME task manager
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/tanji/cairn
+	arch = any
+	license = MIT
+	makedepends = meson
+	makedepends = ninja
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = libnotify
+	depends = hicolor-icon-theme
+	optdepends = libayatana-appindicator: system tray support
+	source = cairn-0.10.1.tar.gz::https://github.com/tanji/cairn/archive/refs/tags/v0.10.1.tar.gz
+	sha256sums = 589122542ba801a47e1a1eccbdb882bbc785e15192416b2892649bd60cf692d1
+
+pkgname = cairn
