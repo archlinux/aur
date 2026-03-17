@@ -1,6 +1,6 @@
 pkgbase = rime-ice-installer
 	pkgdesc = TUI installer for Fcitx5, Rime Ice and Wanxiang on Arch Linux
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/manateelazycat/rime-ice-installer
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = rime-ice-installer
 	depends = glib2
 	depends = sudo
 	depends = unzip
-	source = rime-ice-installer-0.1.0.tar.gz::https://github.com/manateelazycat/rime-ice-installer/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 5e153815e566948d50ce65ae205c59da0915e731aaf9ef3c6375323eb59eff21
+	source = rime-ice-installer-0.1.2.tar.gz::https://github.com/manateelazycat/rime-ice-installer/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = dca78ec7c00f66bf3e6197d736628817ffd09b4cd7489b34b27e4c7b89f5bd08
 
 pkgname = rime-ice-installer
