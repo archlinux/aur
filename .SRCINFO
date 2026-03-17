@@ -1,8 +1,9 @@
 pkgbase = kitsune
 	pkgdesc = AniLiberty player
 	pkgver = 0.7.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://altlinux.space/armatik/Kitsune
+	install = kitsune.install
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = meson
