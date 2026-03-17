@@ -1,7 +1,7 @@
 pkgbase = collapseloader-bin
-	pkgdesc = GUI utility for launching Minecraft clients
-	pkgver = 0.2.8
-	pkgrel = 2
+	pkgdesc = A user-friendly loader for many minecraft clients
+	pkgver = 0.2.9
+	pkgrel = 1
 	url = https://github.com/dest4590/CollapseLoader
 	arch = x86_64
 	license = GPL-3.0-only
@@ -21,8 +21,8 @@ pkgbase = collapseloader-bin
 	depends = gst-libav
 	provides = collapseloader
 	conflicts = collapseloader-git
-	noextract = collapseloader-0.2.8_amd64.AppImage
-	source = collapseloader-0.2.8_amd64.AppImage::https://github.com/dest4590/CollapseLoader/releases/download/prerelease-v0.2.8-c36dd27/collapseloader_0.2.8_amd64.AppImage
-	sha256sums = SKIP
+	noextract = collapseloader__0.2.9_HOTFIX_amd64.AppImage
+	source = collapseloader__0.2.9_HOTFIX_amd64.AppImage::https://github.com/dest4590/CollapseLoader/releases/download/0.2.9/CollapseLoader__0.2.9_HOTFIX_amd64.AppImage
+	sha256sums = df7a746152a3c6f9a4ea8356db0e847f80f55bd381956ede5a3353e8239ccb90
 
 pkgname = collapseloader-bin
