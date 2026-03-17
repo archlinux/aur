@@ -21,8 +21,8 @@ pkgbase = catclient
 	optdepends = discord-game-sdk: Enable rich presence in Discord desktop client.
 	backup = usr/share/ddnet/data/autoexec_server.cfg
 	source = https://github.com/quomy/CatClient/releases/download/1.0.1/CatClient-1.0.1-linux_x86_64.tar.gz
-	source = rclient.png
-	sha256sums = bb3793681d19a37ae50c27360c9fa497cbef466a8532178d9ecb347de19c495b
-	sha256sums = af258dd9345943c5024efa534ebbf5cc14340741f393f36375b8f3c89ca736ab
+	source = catclient.png
+	sha256sums = a5cb759dd16794928e59bf38cd4648a39d938b578126850e9df808b25c0135ba
+	sha256sums = ccdd296572e6d931e08ba6aca14f14791a045b1c1e0d3c18b91c3b105c9541f0
 
 pkgname = catclient
