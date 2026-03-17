@@ -1,6 +1,6 @@
 pkgbase = void-git
 	pkgdesc = The Cursor alternative AI code editor
-	pkgver = 1.99.3.r1.gda425ab
+	pkgver = .r2771.g17e7a5b1
 	pkgrel = 1
 	url = https://github.com/voideditor/void
 	arch = x86_64
@@ -30,5 +30,9 @@ pkgbase = void-git
 	provides = void
 	conflicts = void
 	options = !strip
+	source = git+https://github.com/voideditor/void.git
+	source = https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh
+	sha256sums = SKIP
+	sha256sums = 5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1
 
 pkgname = void-git

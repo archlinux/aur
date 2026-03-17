@@ -3,7 +3,7 @@
 
 pkgname=void-git
 _pkgname=void
-pkgver=1.99.3.r1.gda425ab
+pkgver=.r2771.g17e7a5b1
 pkgrel=1
 pkgdesc="The Cursor alternative AI code editor"
 url="https://github.com/voideditor/void"
@@ -14,7 +14,8 @@ conflicts=('void')
 options=(!strip) # for sign of ext
 _electron=electron
 depends=( ${_electron} ripgrep xdg-utils
- alsa-lib gnupg libnotify libsecret libxkbfile libxss shared-mime-info)
+	alsa-lib gnupg libnotify libsecret libxkbfile libxss shared-mime-info
+)
 optdepends=(
   'glib2: Move to trash functionality'
   'gvfs: Move to trash functionality'
@@ -26,32 +27,44 @@ makedepends=( nodejs-lts-iron # sync with .npmrc
   git npm python
   libarchive make pkgconf) # base base-devel
 
+source=(
+	"git+${url}.git"
+	"https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh"
+)
+sha256sums=(
+	'SKIP'
+	'5da1525b5fe804b9192c05e1cbf8d751d852e3717fb2787c7ffe98fd5d93e8c1'
+)
+
 pkgver() {
-  cd void
-  printf "%s.r%s.g%s" $(awk 'match($0,/"version":\s*"([^"]+)"/,v) {print v[1]}' package.json) \
-    $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
+  cd "${srcdir}/${_pkgname}"
+  printf "%s.r%s.g%s" \
+    "$(awk 'match($0,/"version":\\s*"([^"]+)"/,v) {print v[1]}' package.json)" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 prepare(){
-  rm -rf void
-  git clone --depth=1 ${url}.git void
-  cd void
+  cd "${srcdir}/${_pkgname}"
   # Drop this patch for electron35+ at code 1.101, app.dock is for macOS
   sed -i '/app\.dock\.setMenu/i\// @ts-ignore' src/vs/platform/menubar/electron-main/menubar.ts
+
+  # Fix upstream TS union mismatch (Electron adds 'memory-eviction' reason)
+  sed -i "s/'integrity-failure';/'integrity-failure' | 'memory-eviction';/" \
+  	src/vs/platform/utilityProcess/electron-main/utilityProcess.ts
 }
 
 build() {
   # Don't put broken files on user dir
   export XDG_CACHE_HOME="${srcdir}/xdgcache" TMPDIR="$srcdir"/tmp HOME="${srcdir}/home"
-  cd "${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
 
   # electron version
   _elver=$(npm pkg get devDependencies.electron)
-  echo Replacing electron $_elver
   _elver=$(cat /usr/lib/${_electron}/version)
   npm pkg set devDependencies.electron=${_elver} # needed ?
   sed -i "s/^target=.*/target=\"${_elver}\"/" .npmrc # native modules
-  echo with $(rg -N 'target' .npmrc)
+  rg -N 'target' .npmrc
 
   # Don't DL ripgrep
   _vsrgver=$(npm pkg get dependencies.@vscode/ripgrep | sed 's/[\"^]//g')
@@ -81,24 +94,29 @@ package() {
   _pkg=VSCode-linux-x64
   _app=/usr/share/void/resources/app
   # appdata and desktop files
-  install -Dm644 "${_pkg}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${_pkgname}.png"
-  #todo cleanup
-  install -Dm644 void/scripts/appimage/void.desktop "${pkgdir}/usr/share/applications/void.desktop"
-  install -Dm644 void/scripts/appimage/void-url-handler.desktop "${pkgdir}/usr/share/applications/void-url-handler.desktop"
+  install -Dm644 "${_pkg}/resources/app/resources/linux/code.png" \
+  	"${pkgdir}/usr/share/icons/hicolor/256x256/apps/void.png"
+  install -Dm644 "${srcdir}/${_pkgname}/scripts/appimage/void.desktop" "${pkgdir}/usr/share/applications/void.desktop"
+  install -Dm644 "${srcdir}/${_pkgname}/scripts/appimage/void-url-handler.desktop" "${pkgdir}/usr/share/applications/void-url-handler.desktop"
   mkdir -p "${pkgdir}/usr/share/mime/packages"
   sed -e s/@@NAME@@/void/ -e s/@@NAME_LONG@@/Void/g \
-  	void/resources/linux/code-workspace.xml > "${pkgdir}/usr/share/mime/packages/void-workspace.xml"
+  	"${srcdir}/${_pkgname}/resources/linux/code-workspace.xml" > "${pkgdir}/usr/share/mime/packages/void-workspace.xml"
   # shell completions
   install -Dm644 "${_pkg}/resources/completions/bash/${_pkgname}" "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
   install -Dm644 "${_pkg}/resources/completions/zsh/_${_pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_${_pkgname}"
-  # launcher
-  sed -e "s|exec /usr|ELECTRON_RUN_AS_NODE=1 exec /usr|" \
-      -e "s|flags=()|flags=(${_app}/out/cli.js --app=${_app})|" \
-      /usr/bin/${_electron} > run.sh # should be supported by electron$_elnum
+  # launcher (code-oss style): ~/.config/void-flags.conf
+  sed -e "s#code-flags#void-flags#" \
+  	-e "s#/usr/lib/code/out/cli.js#${_app}/out/cli.js#" \
+  	-e "s#/usr/lib/code/code.mjs#--app=${_app}#" code.sh > run.sh
   install -Dm755 run.sh "${pkgdir}/usr/bin/void"
   # Install editor on /usr/share for compability with void-bin
   install -d "${pkgdir}/usr/share/void"
   cp -r --reflink=auto "${_pkg}/resources" "${pkgdir}/usr/share/void/resources"
+  ln -sf /usr/bin/void "${pkgdir}/usr/share/void/void"
+
+  # Avoid packaging warnings: strip build path from bundled extension output
+  sed -i "s|${srcdir}|/usr/share/void/resources/app|g" \
+  	"${pkgdir}/usr/share/void/resources/app/extensions/microsoft-authentication/dist/extension.js"
   # system-wide tools
   ln -svf /usr/bin/rg "${pkgdir}${_app}"/node_modules/@vscode/ripgrep/bin/rg
   ln -svf /usr/bin/xdg-open "${pkgdir}${_app}"/node_modules/open/xdg-open
