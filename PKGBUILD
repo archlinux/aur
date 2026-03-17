@@ -1,6 +1,6 @@
 # Maintainer: Roland Rodriguez <roland@govcraft.ai>
 pkgname=emergent-bin
-pkgver=0.11.0
+pkgver=0.10.6
 pkgrel=1
 pkgdesc="Event-driven workflow engine using publish-subscribe primitives"
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source_x86_64=("${url}/releases/download/v${pkgver}/emergent-${pkgver}-x86_64-un
                "${url}/releases/download/v${pkgver}/emergent-${pkgver}-x86_64-unknown-linux-gnu.tar.gz.asc")
 source_aarch64=("${url}/releases/download/v${pkgver}/emergent-${pkgver}-aarch64-unknown-linux-gnu.tar.gz"
                 "${url}/releases/download/v${pkgver}/emergent-${pkgver}-aarch64-unknown-linux-gnu.tar.gz.asc")
-sha256sums_x86_64=('1fb458140e3a085c1aadc1c993a790876c5033334ff054ed7e0ff6689690c281' 'SKIP')
-sha256sums_aarch64=('10a9693aeee5ea29b26999c971c0b488e17f65c325b6483ad885df9e16b6e55d' 'SKIP')
+sha256sums_x86_64=('36754c26ef346c1309c552d0c10182e9b15994fcd144c480fbc8bab69c90e5cf' 'SKIP')
+sha256sums_aarch64=('a54ca76309ad24ebdc55290f2932e2e249992d114a385550e01915826058224f' 'SKIP')
 
 package() {
     install -Dm755 emergent "${pkgdir}/usr/bin/emergent"
