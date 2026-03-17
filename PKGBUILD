@@ -1,4 +1,5 @@
 # Maintainer: neycrol <330578697@qq.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: Kyle De'Vir (QuartzDragon) <kyle.devir.33@proton.me>
 
 pkgname=bcachefs-tools-git
