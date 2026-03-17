@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=EchoMusic
+Exec=echomusic
+Type=Application
+Categories=AudioVideo;Audio;Player;
+Terminal=false
