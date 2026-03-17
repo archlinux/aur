@@ -14,14 +14,14 @@ source=("$url/archive/v$pkgver.tar.gz")
 sha256sums=('6b307ea15aab814cb89aa28e2733198aa45f5bacee11f38859fe02ba0cd8e0a1')
 
 build() {
-    cd "$srcdir/${pkgname}-${pkgver}"
-    ./hetrix.sh
+    cd "$srcdir/hetrix"
+    ./hetrix.sh --no-seed
 }
 
 package() {
-    cd "$srcdir/${pkgname}-${pkgver}"
+    cd "$srcdir/hetrix"
     install -Dm755 hetrix "$pkgdir/usr/bin/hetrix"
     install -Dm755 configgy.sh "$pkgdir/usr/bin/hetrix-configgy"
     install -Dm644 README.md "$pkgdir/usr/share/doc/hetrix/README.md"
-    install -Dm644 index.json "$pkgdir/usr/share/hetrix/index.json"
+    install -Dm644 index.json "$pkgdir/usr/share/hetrix/index.json.example"
 }
