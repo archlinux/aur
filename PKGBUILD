@@ -12,7 +12,7 @@ install="${pkgname}.install"
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/Follen22/ds5-edge-relay/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=("8351d2b4a1baf93743fbd8af5b99ccdadb23ac712ccb94ed1160af7a9e8c3c6b")
+sha256sums=("90c1ee8132509691662ab75e0d8fdda0a4c4ee26854d6e8d522cdfaa509a6295")
 
 build() {
     cd "${pkgname}-${pkgver}"
