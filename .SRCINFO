@@ -1,0 +1,21 @@
+pkgbase = stashpak
+	pkgdesc = Build Portable packages with ease.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Kimiblock/stashpak
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	makedepends = git
+	depends = dbus
+	depends = glibc
+	depends = systemd
+	depends = coreutils
+	depends = pacman
+	depends = devtools
+	depends = git
+	optdepends = devtools-cn-git: Arch Linux CN build prefixes
+	source = source::git+https://github.com/Kimiblock/stashpak.git#tag=0.1
+	sha256sums = SKIP
+
+pkgname = stashpak
