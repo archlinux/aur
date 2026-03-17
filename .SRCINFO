@@ -1,12 +1,11 @@
 pkgbase = wrystr-git
 	pkgdesc = Cross-platform Nostr desktop client with Lightning integration
-	pkgver = 0.3.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/hoornet/wrystr
 	arch = x86_64
 	license = MIT
 	makedepends = rust
-	makedepends = cargo
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = git
@@ -16,6 +15,7 @@ pkgbase = wrystr-git
 	depends = openssl
 	provides = wrystr
 	conflicts = wrystr
+	options = !debug
 	source = wrystr-git::git+https://github.com/hoornet/wrystr.git
 	sha256sums = SKIP
 
