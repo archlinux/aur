@@ -1,6 +1,6 @@
 pkgbase = linyaps-store-minimalist-bin
 	pkgdesc = Linyaps Store Minimalist
-	pkgver = 1.2.7
+	pkgver = 1.2.8
 	pkgrel = 1
 	url = https://github.com/LFRon/Linyaps-Store-Minimalist
 	arch = x86_64
@@ -22,10 +22,10 @@ pkgbase = linyaps-store-minimalist-bin
 	optdepends = linyaps: Next-Gen Universal Package Manager for Linux (linglong)
 	provides = linyaps-store-minimalist
 	conflicts = linyaps-store-minimalist
-	noextract = linux-1.2.7-x86_64.deb
+	noextract = linux-1.2.8-x86_64.deb
 	options = !strip
 	options = !debug
-	source = https://github.com/LFRon/Linyaps-Store-Minimalist/releases/download/1.2.7/linux-1.2.7-x86_64.deb
-	sha256sums = c350affb07226e664d8ad2bacf8179a5278071d09b33c67b45a9378b0821f785
+	source = https://github.com/LFRon/Linyaps-Store-Minimalist/releases/download/1.2.8/linux-1.2.8-x86_64.deb
+	sha256sums = 10273c0f334c9e55241cf9986c9c6daec8663c908f3d26c6cff4be5f42c012f4
 
 pkgname = linyaps-store-minimalist-bin
