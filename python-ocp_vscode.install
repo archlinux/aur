@@ -1,6 +1,6 @@
 _tell_the_user() {
   echo "Install the vs-code extension like:"
-  echo '$ code --install-extenstion /usr/share/python-ocp_vscode/*.vsix'
+  echo '$ code --install-extension /usr/share/python-ocp_vscode/*.vsix'
   echo "Uninstall it like:"
   echo '$ code --uninstall-extension bernhard-42.ocp-cad-viewer'
   echo "You should uninstall, then install it after this package is updated"

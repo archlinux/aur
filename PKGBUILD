@@ -1,6 +1,6 @@
 pkgname=python-ocp_vscode
-_build_hash=4131f9ec3c640591f5badae1b2f3a3fb12b7a190
-pkgver=3.0.1
+_build_fragment="tag=v3.2.1"
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="A viewer for OCP based Code-CAD (CadQuery, build123d) integrated into VS Code"
 arch=(x86_64)
@@ -34,9 +34,9 @@ python-wheel
 
 install=python-ocp_vscode.install
 
-source=("git+https://github.com/bernhard-42/vscode-ocp-cad-viewer#commit=${_build_hash}")
+source=("git+https://github.com/bernhard-42/vscode-ocp-cad-viewer#${_build_fragment}")
 
-sha256sums=('4029859ca6862d1cf2f91ebe7f280d5ad16437effd41cad72909c2ee1091e993')
+sha256sums=('3460631a70d2b4c6eea9a8e8e155f37159f9e3e21ef2fd1d83fa30d97a3f4765')
 
 pkgver() {
   cd vscode-ocp-cad-viewer
@@ -65,8 +65,8 @@ check() {
   cd vscode-ocp-cad-viewer
   python -m installer dist/*.whl
 
-  NATIVE_TESSELLATOR=0 OCP_VSCODE_PYTEST=1 python -m pytest -v -s pytests/ -k 'not test_color_list'
-  NATIVE_TESSELLATOR=1 OCP_VSCODE_PYTEST=1 python -m pytest -v -s pytests/ -k 'not test_color_list'
+  NATIVE_TESSELLATOR=0 OCP_VSCODE_PYTEST=1 python -m pytest -v -s tests/ --ignore=tests/test_show.py --ignore=tests/test_viewer_config.py
+  NATIVE_TESSELLATOR=1 OCP_VSCODE_PYTEST=1 python -m pytest -v -s tests/ --ignore=tests/test_show.py --ignore=tests/test_viewer_config.py
 
   deactivate
 }

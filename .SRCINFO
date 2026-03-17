@@ -1,6 +1,6 @@
 pkgbase = python-ocp_vscode
 	pkgdesc = A viewer for OCP based Code-CAD (CadQuery, build123d) integrated into VS Code
-	pkgver = 3.0.1
+	pkgver = 3.2.1
 	pkgrel = 1
 	url = https://github.com/bernhard-42/vscode-ocp-cad-viewer
 	install = python-ocp_vscode.install
@@ -25,7 +25,7 @@ pkgbase = python-ocp_vscode
 	depends = python-pyperclip
 	depends = python-questionary
 	depends = python-flask-sock
-	source = git+https://github.com/bernhard-42/vscode-ocp-cad-viewer#commit=4131f9ec3c640591f5badae1b2f3a3fb12b7a190
-	sha256sums = 4029859ca6862d1cf2f91ebe7f280d5ad16437effd41cad72909c2ee1091e993
+	source = git+https://github.com/bernhard-42/vscode-ocp-cad-viewer#tag=v3.2.1
+	sha256sums = 3460631a70d2b4c6eea9a8e8e155f37159f9e3e21ef2fd1d83fa30d97a3f4765
 
 pkgname = python-ocp_vscode
