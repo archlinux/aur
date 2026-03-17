@@ -1,7 +1,7 @@
 pkgbase = ferrite-bin
 	pkgdesc = A fast, lightweight text editor for Markdown, JSON, YAML, and TOML files.
 	pkgver = 0.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OlaProeis/Ferrite
 	arch = x86_64
 	license = MIT
@@ -22,7 +22,7 @@ pkgbase = ferrite-bin
 	source = ferrite_128_0.2.7.png::https://raw.githubusercontent.com/OlaProeis/Ferrite/refs/tags/v0.2.7/assets/icons/linux/128x128/ferrite.png
 	source = ferrite_256_0.2.7.png::https://raw.githubusercontent.com/OlaProeis/Ferrite/refs/tags/v0.2.7/assets/icons/linux/256x256/ferrite.png
 	source = ferrite_512_0.2.7.png::https://raw.githubusercontent.com/OlaProeis/Ferrite/refs/tags/v0.2.7/assets/icons/linux/512x512/ferrite.png
-	sha256sums = cca7039583a2e5331afcccbac40492ab49e899cc6768dca6764a95cf932725bb
+	sha256sums = f1aea7ce420a2b35e988b29e90ee58ce4bce0179834255f8e27710e5a134d2bc
 	sha256sums = c94952dae4438b71667a129c1f7dd0e196e6d7dbf37db4525511c69536c27ac1
 	sha256sums = 79415739aa458c27bfb595d40ce73d81d81aae81fb53771d978209b6f193c7b2
 	sha256sums = 2e6a7b55e4bf576c3ba6619b66175dcd82df94852056a1ab3512d80ddb1e1532
