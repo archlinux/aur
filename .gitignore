@@ -8,4 +8,4 @@
 !LICENSES/**
 !REUSE.toml
 !.nvchecker.toml
-!upwork.sh
+!upwork.sh.in

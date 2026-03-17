@@ -3,16 +3,23 @@
 
 pkgname=upwork
 pkgver=5.8.0.41
-pkgrel=3
+pkgrel=4
 _hashver='f0de03505cc349f2'
 pkgdesc='Track your time for Hourly Payment Protection. Stay connected.'
 arch=('x86_64')
 url='https://www.upwork.com/ab/downloads/?os=linux'
 license=('LicenseRef-Upwork-EULA')
 _electron='electron36'
-depends=("$_electron")
+depends=(
+  "$_electron"
+  'libxcrypt-compat' # electron-builder needs libcrypt.so.1
+  'libxss' # Upwork's uta_native.node needs libXss.so.1
+)
 makedepends=('asar' 'curl')
 optdepends=(
+  'firefox: Upwork needs a web browser to login'
+  'epiphany: Upwork needs a web browser to login'
+  'konqueror: Upwork needs a web browser to login'
   'upwork-wayland: Allows screenshot to work in Wayland'
   'libappindicator: For system notifications'
   'gnome-shell-extension-appindicator: To show tray icon in GNOME'
@@ -21,7 +28,7 @@ conflicts=('upwork-beta')
 source=(
   "https://upwork-usw2-desktopapp.upwork.com/binaries/v${pkgver//./_}_$_hashver/upwork_${pkgver}_amd64.deb"
   'upwork-team-software-license-agreement-1-1.pdf::https://upwork.pactsafe.io/versions/6887e5128f84f23a737bf6bb.pdf'
-  'upwork.sh')
+  'upwork.sh.in')
 # See https://upwork-usw2-desktopapp.upwork.com/binaries/v5_8_0_41_f0de03505cc349f2/upwork_5.8.0.41_amd64.deb.sha256
 sha256sums=('b2ed1ff34cfcc09cfa9ff472e39443aa999dd773867a57aef6f50798fb257239'
             '1d2db24cd1364f79d11b8683c15274f4e5c7ed9a3e46a5938b55c6e9ca56937f'
@@ -44,17 +51,17 @@ _headers=(
 DLAGENTS=("https::/usr/bin/curl $(printf -- "-H %s " "${_headers[@]// /\\ }") -qfL -b '' -C - --retry 3 --retry-delay 3 -o %o %u")
 
 prepare() {
-  bsdtar -xf data.tar.xz -C "$srcdir"
+  bsdtar -xf data.tar.xz -C ./
 
   # Change Electron executable
-  sed -i "s|@ELECTRON@|$_electron|" upwork.sh
+  sed -i "s|@ELECTRON@|$_electron|" upwork.sh.in
 
   # Change the upwork wrapper path to /usr/bin/upwork
-  sed -i 's|Exec=/opt/Upwork/upwork|Exec=/usr/bin/upwork|' "$srcdir/usr/share/applications/upwork.desktop"
-  sed -i 's|/opt/Upwork/upwork|/usr/bin/upwork|' "$srcdir/opt/Upwork/resources/apparmor-profile"
+  sed -i 's|Exec=/opt/Upwork/upwork|Exec=/usr/bin/upwork|' ./usr/share/applications/upwork.desktop
+  sed -i 's|/opt/Upwork/upwork|/usr/bin/upwork|' ./opt/Upwork/resources/apparmor-profile
 
   # Extract app.asar so we can modify main.js
-  cd "$srcdir/opt/Upwork/resources"
+  cd ./opt/Upwork/resources
   asar e app.asar ./out
   cd ./out/out/main
 
@@ -75,15 +82,15 @@ prepare() {
 
 package() {
   # 1. COPY THE BINARIES
-  install -Dm755 upwork.sh "$pkgdir/usr/bin/upwork"
-  install -Dm755 -t "$pkgdir/usr/lib/upwork/" "$srcdir/opt/Upwork/"{cmon,uta_native.node}
-  install -Dm644 "$srcdir/opt/Upwork/resources/app.asar" "$pkgdir/usr/lib/upwork/app.asar"
+  install -Dm755 upwork.sh.in "$pkgdir/usr/bin/upwork"
+  install -Dm755 -t "$pkgdir/usr/lib/upwork/" ./opt/Upwork/{cmon,uta_native.node}
+  install -Dm644 -t "$pkgdir/usr/lib/upwork/" ./opt/Upwork/resources/app.asar
 
   # 2. COPY THE REST OF THE /usr/share/* from deb file
   mkdir -p "$pkgdir/usr/share"
-  cp -dr --no-preserve=ownership "$srcdir"/usr/share/* "$pkgdir/usr/share"
-  install -Dm644 upwork-team-software-license-agreement-1-1.pdf "$pkgdir/usr/share/licenses/upwork/upwork-team-software-license-agreement-1-1.pdf"
+  cp -dr --no-preserve=ownership ./usr/share/* "$pkgdir/usr/share"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/upwork/" upwork-team-software-license-agreement-1-1.pdf
 
   # 3. COPY APPARMOR PROFILE
-  install -Dm644 "$srcdir/opt/Upwork/resources/apparmor-profile" "$pkgdir/etc/apparmor.d/upwork"
+  install -Dm644 ./opt/Upwork/resources/apparmor-profile "$pkgdir/etc/apparmor.d/upwork"
 }
