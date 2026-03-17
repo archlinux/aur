@@ -22,6 +22,7 @@ package() {
     # Install app to /opt
     install -dm755 "${pkgdir}/opt/streamsquire"
     cp -ra "${srcdir}/squashfs-root/." "${pkgdir}/opt/streamsquire/"
+    chmod -R a+rX "${pkgdir}/opt/streamsquire/"
 
     # Launcher script (symlink breaks AppRun's dirname resolution)
     install -dm755 "${pkgdir}/usr/bin"
