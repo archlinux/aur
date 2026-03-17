@@ -18,18 +18,12 @@ md5sums=('SKIP')
 package() {
     cd "$srcdir/$_pkgname"
 
-    # 1. Install the Python script
+
     install -Dm755 hexatyping.py "$pkgdir/usr/share/hexatyping/hexatyping.py"
     
-    # 2. Copy the entire content folder (handles all your .txt files)
     cp -r content "$pkgdir/usr/share/hexatyping/"
-    
-    # 3. Create the binary link so 'hexatyping' works in terminal
     mkdir -p "$pkgdir/usr/bin"
-    ln -s /usr/share/hexatyping/hexatyping.py "$pkgdir/usr/bin/hexatyping"
-    
-    # 4. Install LICENSE if it exists
-    if [ -f LICENSE ]; then
-        install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    fi
+    echo "#!/bin/sh" > "$pkgdir/usr/bin/hexatyping"
+    echo "python3 /usr/share/hexatyping/hexatyping.py \"\$@\"" >> "$pkgdir/usr/bin/hexatyping"
+    chmod 755 "$pkgdir/usr/bin/hexatyping"
 }
