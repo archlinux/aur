@@ -7,8 +7,7 @@
 
 pkgname=roomeqwizard-beta
 pkgver=5.40.beta.119
-_pkgver=5_40_beta_119-api
-pkgrel=1
+pkgrel=2
 pkgdesc="A room acoustics analysis software for measuring and analysing room and loudspeaker responses"
 arch=('x86_64' 'aarch64')
 options=('!debug')
@@ -18,7 +17,7 @@ depends=('xdg-utils' 'bash' 'glibc' 'java-runtime=11' 'alsa-lib' 'xorg-xwayland'
 makedepends=('java-runtime=11' 'fontconfig' 'freetype2')
 #conflicts=('roomeqwizard')
 source=(
-    "http://www.roomeqwizard.com/installers/REW_linux_no_jre_${pkgver//./_}-api.sh"
+    "https://www.roomeqwizard.com/installers/REW_linux_no_jre_${pkgver//./_}-api.sh"
     "https://www.roomeqwizard.com/Sampledata.mdat"
 )
 sha512sums=(
@@ -45,6 +44,19 @@ package() {
   rm "$pkgdir/usr/share/java/$pkgname/REW.desktop"
 
   cp "$pkgdir/usr/share/java/$pkgname/.install4j/roomeqwizard.png" "$pkgdir/usr/share/icons/$pkgname.png"
+
+  #delete unfitting arch libs
+  case "$CARCH" in
+    x86_64)
+	rm "$pkgdir/usr/share/java/$pkgname/bin/libcsjsound_aarch64.so"
+	;;
+    aarch64)
+	rm "$pkgdir/usr/share/java/$pkgname/bin/libcsjsound_amd64.so"
+	;;
+    *)
+        # Commands for other architectures
+        ;;
+  esac
 
   cp Sampledata.mdat "$pkgdir/usr/share/doc/$pkgname/"
 
