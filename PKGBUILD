@@ -10,7 +10,7 @@ depends=('webkit2gtk-4.1' 'gtk3')
 provides=('glyph')
 conflicts=('glyph')
 source=("${url}/releases/download/v${pkgver}/Glyph_${pkgver}_amd64.deb")
-sha256sums=('a3ebe8f9be238cc1c99d93757b02b6ff3b15be9918429fafe4112aa764cdf84c')
+sha256sums=('0f62a7ce1831169417badd17c56b066a3f7b42351bf8d8f0d111327b197cd057')
 
 package() {
     bsdtar -xf data.tar.* -C "$pkgdir/"

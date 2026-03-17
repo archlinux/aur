@@ -10,6 +10,6 @@ pkgbase = glyph-md-bin
 	provides = glyph
 	conflicts = glyph
 	source = https://github.com/hamidfzm/glyph/releases/download/v0.1.3/Glyph_0.1.3_amd64.deb
-	sha256sums = a3ebe8f9be238cc1c99d93757b02b6ff3b15be9918429fafe4112aa764cdf84c
+	sha256sums = 0f62a7ce1831169417badd17c56b066a3f7b42351bf8d8f0d111327b197cd057
 
 pkgname = glyph-md-bin
