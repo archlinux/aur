@@ -1,6 +1,6 @@
 pkgbase = yahac
 	pkgdesc = Yet Another Home Assistant Client - Desktop tray application for Home Assistant
-	pkgver = 2026.03.16.beta5
+	pkgver = 2026.03.16.beta6
 	pkgrel = 1
 	url = https://github.com/dseichter/yahac
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = yahac
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	depends = python-pyside6
+	depends = pyside6
 	depends = python-urllib3
 	depends = python-paho-mqtt
 	optdepends = libnotify: Desktop notifications
 	options = !debug
-	source = yahac-2026.03.16.beta5.tar.gz::https://github.com/dseichter/yahac/archive/v2026-03-16-beta5.tar.gz
-	sha256sums = 493b2c2d05db588d98b67dcb97d360421136e1245b3ee79ec6efb2851d0cc049
+	source = yahac-2026.03.16.beta6.tar.gz::https://github.com/dseichter/yahac/archive/v2026-03-16-beta6.tar.gz
+	sha256sums = 7209d82325e226860aae815f517b687dce5f4d08a5e5e8cecf909d51091a926b
 
 pkgname = yahac
