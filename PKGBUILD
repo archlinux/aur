@@ -1,6 +1,6 @@
 # Maintainer: lostf1sh <lostf1sh@users.noreply.github.com>
 pkgname=pomo-cli
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Terminal-based pomodoro timer with TUI, session tracking, and statistics"
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('go')
 provides=('pomo')
 conflicts=('pomo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('96ba3ca44e988ebfe72ead34e87602b6e2769845ac0f6b2c3539ba81e0811cf7')
+sha256sums=('ec32a990dc6aeb6fb6da952daaa69ed98e082de8a92d3edcf5b2265ce06ab56b')
 
 build() {
     cd "pomo-$pkgver"
