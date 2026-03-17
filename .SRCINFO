@@ -1,6 +1,6 @@
 pkgbase = dyad-bin
 	pkgdesc = Free, local, open-source AI app builder
-	pkgver = 0.39.0
+	pkgver = 0.40.0
 	pkgrel = 1
 	url = https://github.com/dyad-sh/dyad
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = dyad-bin
 	depends = xdg-utils
 	depends = hicolor-icon-theme
 	optdepends = desktop-file-utils: for updating desktop database
-	source = https://github.com/dyad-sh/dyad/releases/download/v0.39.0/dyad_0.39.0_amd64.deb
-	sha256sums = fbc46467905c88302da04547ed4e526841ce18c9ff1417f1df6b4ddf03df35de
+	source = https://github.com/dyad-sh/dyad/releases/download/v0.40.0/dyad_0.40.0_amd64.deb
+	sha256sums = da73cb4bde8031c777f1d6002dc27343d0651b8dda30b7d6fb52795c56b13e40
 
 pkgname = dyad-bin
