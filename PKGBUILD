@@ -11,7 +11,7 @@ source=("${pkgname}-${pkgver}.AppImage::https://github.com/ramisotti13-eng/BaseC
         "99-mountain-everest-max.rules::https://github.com/ramisotti13-eng/BaseCamp-Linux/releases/download/v${pkgver}/99-mountain-everest-max.rules"
         "app_icon_256.png::https://raw.githubusercontent.com/ramisotti13-eng/BaseCamp-Linux/main/resources/app_icon_256.png"
         "basecamp-linux.desktop")
-sha256sums=('18900dd3aa8862691bfda60297160cbcb520912aacc582c9947283a117f7c2f8'
+sha256sums=('ae304f8d889a0c2098d75c633b8cb165f13907205ab3b6f597e2f5a7a92aa4dc'
             'SKIP'
             'SKIP'
             'SKIP')
