@@ -8,7 +8,7 @@ pkgdesc="Minimalistic yet powerful Vim configuration for sysadmins. Pre-configur
 arch=('any')
 url="https://github.com/rtXrtXrtX/sysadmin-vim"
 license=('MIT')
-depends=('gvim' 'git' 'curl')
+depends=('gvim' 'git' 'curl' 'python' 'cmake' 'gcc') 
 optdepends=(
     'python: for YouCompleteMe Python support'
     'nodejs: for YouCompleteMe JavaScript support'
