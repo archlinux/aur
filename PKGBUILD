@@ -7,6 +7,7 @@ url="https://github.com/feed-mob/peekoo-ai"
 license=('MIT')
 depends=('gtk3' 'webkit2gtk-4.1' 'libayatana-appindicator' 'libnotify')
 optdepends=('xdg-utils: open external links')
+options=('!strip')
 source=(
   "https://github.com/feed-mob/peekoo-ai/releases/download/v${pkgver}/Peekoo_${pkgver}_amd64.AppImage"
   'peekoo.desktop'

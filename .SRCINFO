@@ -10,6 +10,7 @@ pkgbase = peekoo-bin
 	depends = libayatana-appindicator
 	depends = libnotify
 	optdepends = xdg-utils: open external links
+	options = !strip
 	source = https://github.com/feed-mob/peekoo-ai/releases/download/v0.1.1/Peekoo_0.1.1_amd64.AppImage
 	source = peekoo.desktop
 	source = peekoo.sh
