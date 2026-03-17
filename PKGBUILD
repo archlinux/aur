@@ -2,7 +2,7 @@
 
 pkgname=tdns
 _pkgname=tdns
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 
 pkgdesc="A powerful, lightweight CLI to manage Technitium DNS server via HTTP API endpoint"
@@ -13,7 +13,7 @@ makedepends=('go' 'upx')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+${url}#tag=v${pkgver}")
-sha256sums=('0f194ce43ff0b06d9a1c1a6c03785f6015296919ea4149c593421d09ba15439c')
+sha256sums=('45eba64d52fa255782b050e50d2d399aa66e8588fd066fe37da30a185cb5d10e')
 
 build() {
   cd "${srcdir}/${_pkgname}"
