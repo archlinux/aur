@@ -1,0 +1,17 @@
+pkgbase = mount-windows
+	pkgdesc = Helper script to automagically determine the Windows system partition from UEFI in a dual-boot setup and mount it. Assumes GPT style partition scheme, NTFS formatting, and no Bitlocker
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/bcd-system-store-settings-for-uefi
+	arch = any
+	license = 0BSD
+	depends = chntpw
+	depends = ntfs-3g
+	depends = util-linux
+	depends = udisks2
+	options = !strip
+	options = !debug
+	source = mount-windows.sh
+	sha256sums = f716582f66aadbacc39dc569b41c2a9ec056368a6e70f887e3e617dc7f325409
+
+pkgname = mount-windows
