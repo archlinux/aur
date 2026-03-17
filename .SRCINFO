@@ -1,6 +1,6 @@
 pkgbase = thoughts-bin
 	pkgdesc = A relatively powerful web mind map.(Prebuilt version.Use system-wide electron)一个还算强大的Web思维导图.
-	pkgver = 0.18.2
+	pkgver = 0.18.3
 	pkgrel = 1
 	url = https://wanglin2.github.io/mind-map/#/index
 	arch = aarch64
@@ -9,17 +9,17 @@ pkgbase = thoughts-bin
 	license = MIT
 	makedepends = squashfs-tools
 	depends = electron23
-	provides = thoughts=0.18.2
+	provides = thoughts=0.18.3
 	conflicts = thoughts
-	source = LICENSE-0.18.2::https://raw.githubusercontent.com/wanglin2/mind-map/0.18.2/LICENSE
+	source = LICENSE-0.18.3::https://raw.githubusercontent.com/wanglin2/mind-map/0.18.3/LICENSE
 	source = thoughts.sh
 	sha256sums = 8a19b651678a6a644640524d984ed89d0b9a78c662545715218a05130c7329c7
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = thoughts-0.18.2-aarch64.deb::https://github.com/wanglin2/mind-map/releases/download/0.18.2/thoughts_0.18.2_arm64.deb
-	sha256sums_aarch64 = 9ed12f7d2677d3416997fd6793a096f61198f28b2e094fe7fc868bda02cdd73e
-	source_armv7h = thoughts-0.18.2-armv7h.deb::https://github.com/wanglin2/mind-map/releases/download/0.18.2/thoughts_0.18.2_armv7l.deb
-	sha256sums_armv7h = 46549c64779a146ec9a5189b8829110c0540b3b1c4e896d92e7ff34bda55a7a4
-	source_x86_64 = thoughts-0.18.2-x86_64.deb::https://github.com/wanglin2/mind-map/releases/download/0.18.2/thoughts_0.18.2_amd64.deb
-	sha256sums_x86_64 = bfb421422dc4121eb69349666174ff170710080ca223e023cfcfa94330d6bbdc
+	source_aarch64 = thoughts-0.18.3-aarch64.deb::https://github.com/wanglin2/mind-map/releases/download/0.18.3/thoughts_0.18.3_arm64.deb
+	sha256sums_aarch64 = d67e840b14edcadbd82d469f01239d7b4a217baf89ac880fed2dd2a38d65fea4
+	source_armv7h = thoughts-0.18.3-armv7h.deb::https://github.com/wanglin2/mind-map/releases/download/0.18.3/thoughts_0.18.3_armv7l.deb
+	sha256sums_armv7h = ebf501b53696075f652b333da278f472ba222e6dd15de969756935a83d94f2fa
+	source_x86_64 = thoughts-0.18.3-x86_64.deb::https://github.com/wanglin2/mind-map/releases/download/0.18.3/thoughts_0.18.3_amd64.deb
+	sha256sums_x86_64 = b8ebf7255e659bf4257a721b336ccf718703742f4079abc2594d539a9461031b
 
 pkgname = thoughts-bin
