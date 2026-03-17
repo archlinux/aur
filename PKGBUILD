@@ -1,4 +1,4 @@
-# Maintainer: lucial <lucial@equestriaos.org>
+# Maintainer: lucial <bordiyan20035@gmail.com>
 pkgname=steampipe-gui
 pkgver=1.1.0
 pkgrel=1
