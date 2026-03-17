@@ -1,0 +1,18 @@
+{
+    "file_format_version": "1.0.0",
+    "api_layer": {
+        "name": "XR_APILAYER_YX_passthrough",
+        "library_path": "libxr_passthrough_layer.so",
+        "api_version": "1.0",
+        "implementation_version": "1",
+        "description": "A OpenXR API layer adding camera passthrough support",
+        "disable_environment": "YX_passthrough_disabled",
+        "enable_environment": "YX_passthrough_enabled",
+        "instance_extensions": [
+            {
+                "name": "XR_HTC_passthrough",
+                "extension_version": "1"
+            }
+        ]
+    }
+}
