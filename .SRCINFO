@@ -1,7 +1,7 @@
 pkgbase = aarty
 	pkgdesc = Simple CLI tool to convert the images to ASCII art
 	pkgver = 0.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/0x61nas/aarty
 	arch = x86_64
 	arch = aarch64
@@ -14,15 +14,8 @@ pkgbase = aarty
 	source = aarty-0.8.2.tar.gz::https://static.crates.io/crates/aarty/aarty-0.8.2.crate
 	source = LICENSE::https://raw.githubusercontent.com/0x61nas/aarty/refs/tags/v0.8.2/LICENSE.txt
 	source = aarty.1::https://raw.githubusercontent.com/0x61nas/aarty/refs/tags/v0.8.2/man/aarty.1
-	source = aarty-0.8.2.tar.gz.asc
-	source = LICENSE.asc
-	source = aarty.1.asc
-	validpgpkeys = EF4B4CB5DFB8822216A473B1597AB12E66262898
 	sha256sums = 5e856c0c003cfbb158e1df931dfeaa15ab565654c77aca0a78a2e730e5a356cc
 	sha256sums = ddc49ced9f48c7402b323b4f379bf92973c44ae63f5ba047f828121efafcd319
 	sha256sums = ce82d7d52cd0042057c7d51a7834968853adfff4454207a01909197c31b4c667
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
 
 pkgname = aarty

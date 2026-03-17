@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=aarty
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple CLI tool to convert the images to ASCII art'
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 url='https://github.com/0x61nas/aarty'
@@ -11,17 +11,10 @@ provides=('aarty')
 conflicts=('aarty-git')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate"
     "LICENSE::https://raw.githubusercontent.com/0x61nas/aarty/refs/tags/v$pkgver/LICENSE.txt"
-    "aarty.1::https://raw.githubusercontent.com/0x61nas/aarty/refs/tags/v$pkgver/man/aarty.1"
-    "$pkgname-$pkgver.tar.gz.asc"
-    'LICENSE.asc'
-    'aarty.1.asc')
+    "aarty.1::https://raw.githubusercontent.com/0x61nas/aarty/refs/tags/v$pkgver/man/aarty.1")
 sha256sums=('5e856c0c003cfbb158e1df931dfeaa15ab565654c77aca0a78a2e730e5a356cc'
             'ddc49ced9f48c7402b323b4f379bf92973c44ae63f5ba047f828121efafcd319'
-            'ce82d7d52cd0042057c7d51a7834968853adfff4454207a01909197c31b4c667'
-            'SKIP'
-            'SKIP'
-            'SKIP')
-validpgpkeys=('EF4B4CB5DFB8822216A473B1597AB12E66262898')
+            'ce82d7d52cd0042057c7d51a7834968853adfff4454207a01909197c31b4c667')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -44,3 +37,4 @@ package() {
     # install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" README.md
 }
 
+# vim: ts=4 sw=4 et:
