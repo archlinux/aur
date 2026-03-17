@@ -1,6 +1,6 @@
 # Maintainer: judecale <security@nui.cat>
 pkgname=nuicat-bin
-pkgver=0.1.17
+pkgver=0.1.18
 pkgrel=1
 pkgdesc='Speech-to-text dictation for Linux desktop'
 arch=('x86_64')
@@ -14,9 +14,9 @@ optdepends=(
 provides=('nuicat')
 conflicts=('nuicat')
 install=nuicat-bin.install
-source=("nuicat_amd64.deb::https://packages.nui.cat/releases/v0.1.17/nuicat_amd64.deb")
+source=("nuicat_amd64.deb::https://packages.nui.cat/releases/v0.1.18/nuicat_amd64.deb")
 noextract=('nuicat_amd64.deb')
-sha256sums=('c745fe68bb33e9b53d3642505d2da7b4c65270fbc8fd2a9bd04636f206e8e470')
+sha256sums=('a5456f8461aa319ea54d56005f82308b1fc2ab216e2efbbb999aa7a7e66fd8a1')
 
 prepare() {
     cd "$srcdir"
