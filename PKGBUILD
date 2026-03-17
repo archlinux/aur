@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=gerbil-bin
 _pkgname=Gerbil
-pkgver=1.20.2
-_electronversion=40
+pkgver=1.20.3
+_electronversion=41
 pkgrel=1
 pkgdesc="A desktop app for running Large Language Models locally.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -12,7 +12,6 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
-    #'cloudflared'
 )
 makedepends=(
     'asar'
@@ -21,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('162c03d9d75cbd4429ce0407b9b486ab7ec44c2d66580c399afa9ed10859ff94'
+sha256sums=('6adafb16a18ade0b5b1f248d95e116b9e526b6817437128ea3bda2836b0d25e6'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/squashfs-root/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -49,8 +48,6 @@ prepare() {
     find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     find "${srcdir}/app.asar.unpacked/out" -type f -exec sed -i "s/\"\.\.\"\, \"assets\"\,/\"assets\"\,/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/squashfs-root/resources/app.asar"
-    #ln -sf "/usr/bin/cloudflared" "${srcdir}/squashfs-root/resources/app.asar.unpacked/node_modules/cloudflared/bin/cloudflared"
-    #find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
     chmod 755 "${srcdir}/squashfs-root/assets"
 }
 package() {
