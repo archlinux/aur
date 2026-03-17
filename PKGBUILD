@@ -19,7 +19,7 @@ optdepends=('poezio-omemo: OMEMO plugin'
 sha256sums=('d2919b76f3ee7f53ce871c795e91a749ca2fafbf77aeed8f0b9e5cc5f5bcae63')
 build() {
     cd "$pkgname"
-    rm -f dist/*.whel
+    rm -f dist/*.whl
     python -m build --wheel --no-isolation
 }
 
