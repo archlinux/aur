@@ -22,7 +22,7 @@ prepare() {
 	tar -xf "$_pkgname-$pkgver-linux_x86_64.tar.gz" -C $pkgname
 	cp -r $pkgname/$_pkgname-*-linux_x86_64/* $pkgname/game
 	rm -rf $pkgname/$_pkgname-*-linux_x86_64
-	chmod +x $pkgname/game/DDNet
+	chmod +x $pkgname/game/$_pkgname
 }
 
 package() {
