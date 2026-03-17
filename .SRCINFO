@@ -1,7 +1,7 @@
 pkgbase = bcachefs-tools-git
 	pkgdesc = Bcachefs userspace tools (Git version) with FUSE support enabled
-	pkgver = 1.36.1.r275.g8542892
-	pkgrel = 4
+	pkgver = 1.37.2.r0.g82c7fba
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/koverstreet/bcachefs-tools
 	arch = x86_64
@@ -37,11 +37,11 @@ pkgbase = bcachefs-tools-git
 	sha256sums = SKIP
 
 pkgname = bcachefs-tools-git
-	provides = bcachefs-tools=1.36.1
+	provides = bcachefs-tools=1.37.2
 	conflicts = bcachefs-tools
 
 pkgname = bcachefs-dkms-git
 	pkgdesc = Bcachefs out-of-tree module (Git version)
 	depends = dkms
-	provides = bcachefs-dkms=1.36.1
+	provides = bcachefs-dkms=1.37.2
 	conflicts = bcachefs-dkms
