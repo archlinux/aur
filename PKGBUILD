@@ -8,14 +8,14 @@
 pkgname=snapd-glib
 pkgdesc="Library to allow GLib/Qt based applications access to snapd, the daemon that controls Snaps"
 depends=('libsoup3' 'json-glib' 'qt6-declarative' 'glib2-devel' 'qt6-base')
-pkgver=1.70
+pkgver=1.71
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd-glib"
 license=('GPL3')
 makedepends=('git' 'gobject-introspection' 'gtk-doc' 'meson' 'qt6-tools' 'vala' 'gi-docgen')
 source=(snapd-glib-${pkgver}.tar.xz::"https://github.com/canonical/snapd-glib/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('022df48e519fe2e80f90eba2043aaa54f829f05c87ec38bc1ba794aec8e3c0a4')
+sha256sums=('27bbcc222c70b1f1ddf3b863961184b062957a8c1f4d26d8dd92db69c51f9972')
 optinos=(!lto)
 
 build() {
