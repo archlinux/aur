@@ -1,11 +1,11 @@
 pkgbase = latui
 	pkgdesc = A TUI-based multi-purpose launcher
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/Krishneshvar/latui
 	arch = x86_64
 	license = GPL-3.0-only
-	source = https://github.com/Krishneshvar/latui/releases/download/v1.0.0/latui-1.0.0-x86_64.tar.gz
-	sha256sums = 0a5e361a0b4184aae32b9b64d35dd69957d9a56b265663bdd1cca6dc5fcd18f1
+	source = https://github.com/Krishneshvar/latui/releases/download/v1.0.1/latui-1.0.1-x86_64.tar.gz
+	sha256sums = ad5e20363dfdf403355feea16fe887ef7685569613689aba041997e2d00b9003
 
 pkgname = latui
