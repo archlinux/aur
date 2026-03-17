@@ -1,6 +1,6 @@
 pkgbase = handy
 	pkgdesc = Open source and extensible speech-to-text application that works completely offline
-	pkgver = 0.7.10
+	pkgver = 0.7.11
 	pkgrel = 1
 	url = https://github.com/cjpais/Handy
 	arch = x86_64
@@ -35,9 +35,9 @@ pkgbase = handy
 	optdepends = xdotool: X11 support
 	conflicts = handy-bin
 	options = !lto
-	source = handy-0.7.10::git+https://github.com/cjpais/Handy.git#tag=426031a8d763c01acac5c8d5f4c995ebc29ec56f
+	source = handy-0.7.11::git+https://github.com/cjpais/Handy.git#tag=d1da935479b57529eecdc04345414fe055d42d0a
 	source = Handy.desktop
-	sha256sums = f71075e4b1e6076f04e349a548e1aa77accd7dc5480333f19ec031cb14ccd64a
+	sha256sums = 1af56389ffd7f1402f225cb1a81f40b2c9acae40ce37be7f09e828f8f93b5d5f
 	sha256sums = a0b1b93e21d18adcb6d5f58e3c818bd797cae57b865ae0d6769298876e7103dc
 
 pkgname = handy
