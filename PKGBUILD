@@ -2,7 +2,7 @@
 
 pkgname=ytsub-git
 _pkgname=ytsub
-pkgver=v0.5.0.r0.g6e7f08e
+pkgver=v0.8.0.r0.g7815f70
 pkgrel=1
 
 pkgdesc='A subscriptions only TUI Youtube client'
@@ -32,6 +32,7 @@ build() {
   cd "$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
   cargo build --frozen --release
 }
 
