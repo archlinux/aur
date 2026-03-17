@@ -1,0 +1,18 @@
+pkgbase = python-fmu_manipulation_toolbox
+	pkgdesc = modify or create Functional Mock-up Units (FMU) without recompilation
+	pkgver = 1.9.2.1
+	pkgrel = 1
+	url = https://grouperenault.github.io/fmu_manipulation_toolbox/
+	arch = any
+	license = BSD-2-Clause
+	makedepends = python-setuptools
+	depends = python
+	depends = python-fmpy
+	depends = pyside6
+	depends = python-colorama
+	depends = python-elementpath
+	depends = python-xmlschema
+	source = https://github.com/grouperenault/fmu_manipulation_toolbox/archive/refs/tags/V1.9.2.1.tar.gz
+	md5sums = 465320a6b488ad5eb890747316abebba
+
+pkgname = python-fmu_manipulation_toolbox
