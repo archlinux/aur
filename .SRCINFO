@@ -1,4 +1,4 @@
-pkgbase = ttf-arundina
+pkgbase = fonts-arundina
 	pkgdesc = Thai fonts aiming at Bitstream Vera and Dejavu compatibility
 	pkgver = 0.4.0
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = ttf-arundina
 	source = https://linux.thai.net/pub/thailinux/software/fonts-arundina/fonts-arundina-0.4.0.tar.xz
 	md5sums = de86bd769489e11b71324dd47272602a
 
-pkgname = ttf-arundina
+pkgname = fonts-arundina

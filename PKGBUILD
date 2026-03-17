@@ -1,6 +1,6 @@
 # Maintainer: Vee Satayamas <veerpub@pm.me>
 
-pkgname=('ttf-arundina')
+pkgname=('fonts-arundina')
 pkgver=0.4.0
 pkgrel=1
 pkgdesc='Thai fonts aiming at Bitstream Vera and Dejavu compatibility'
