@@ -1,7 +1,7 @@
 pkgbase = archy-screenshot
 	pkgdesc = Simple script helper to take screenshots with `lqth`
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/archy-linux/archy-screenshot
 	arch = any
 	groups = archy-utils
@@ -11,7 +11,7 @@ pkgbase = archy-screenshot
 	depends = xdo
 	depends = farbfeld
 	provides = screenshot
-	source = https://github.com/archy-linux/archy-screenshot/archive/refs/tags/1.0.0.tar.gz
+	source = archy-screenshot-1.0.0.tar.gz::https://github.com/archy-linux/archy-screenshot/archive/refs/tags/1.0.0.tar.gz
 	sha256sums = 9218e9e4a322492b023e01af91fd6c78442329c8c17c4ac57c0168e139218a49
 
 pkgname = archy-screenshot
