@@ -129,6 +129,7 @@ build() {
   meson compile -C build
 }
 
+# [HACK] Don't test as we can't pass test at all.
 # check() {
 #   meson test -C build --print-errorlogs
 # }
