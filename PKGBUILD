@@ -19,28 +19,25 @@ prepare() {
 }
 
 package() {
-    cd "${srcdir}/squashfs-root"
-
     # Install app to /opt
     install -dm755 "${pkgdir}/opt/streamsquire"
-    cp -r . "${pkgdir}/opt/streamsquire/"
+    cp -ra "${srcdir}/squashfs-root/." "${pkgdir}/opt/streamsquire/"
 
     # Symlink binary
     install -dm755 "${pkgdir}/usr/bin"
     ln -s /opt/streamsquire/AppRun "${pkgdir}/usr/bin/streamsquire"
 
     # Desktop entry
-    local desktop_file=$(find . -maxdepth 1 -name "*.desktop" | head -1)
-    if [ -n "$desktop_file" ]; then
-        install -Dm644 "$desktop_file" "${pkgdir}/usr/share/applications/streamsquire.desktop"
-        sed -i 's|Exec=.*|Exec=/usr/bin/streamsquire %U|' "${pkgdir}/usr/share/applications/streamsquire.desktop"
-        sed -i 's|Icon=.*|Icon=streamsquire|' "${pkgdir}/usr/share/applications/streamsquire.desktop"
-    fi
+    install -Dm644 "${srcdir}/squashfs-root/StreamSquire.desktop" \
+        "${pkgdir}/usr/share/applications/streamsquire.desktop"
+    sed -i 's|Exec=.*|Exec=/usr/bin/streamsquire %U|' \
+        "${pkgdir}/usr/share/applications/streamsquire.desktop"
+    sed -i 's|Icon=.*|Icon=streamsquire|' \
+        "${pkgdir}/usr/share/applications/streamsquire.desktop"
 
     # Icons
-    for size in 32x32 64x64 128x128 256x256; do
-        local icon=$(find . -path "*/hicolor/${size}/apps/*" -name "*.png" | head -1)
-        [ -n "$icon" ] && install -Dm644 "$icon" \
-            "${pkgdir}/usr/share/icons/hicolor/${size}/apps/streamsquire.png"
-    done
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/32x32/apps/streamsquire-shell.png" \
+        "${pkgdir}/usr/share/icons/hicolor/32x32/apps/streamsquire.png"
+    install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/128x128/apps/streamsquire-shell.png" \
+        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/streamsquire.png"
 }
