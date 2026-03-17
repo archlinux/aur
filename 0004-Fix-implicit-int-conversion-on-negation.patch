@@ -1,0 +1,27 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Sun, 15 Mar 2026 18:09:13 +0100
+Subject: [PATCH] Fix implicit-int-conversion-on-negation
+
+Broke with bug 2023214, perhaps only for newer Clang.
+
+    ServoStyleConsts.h: error: implicit conversion loses integer
+    precision: 'int' to 'int8_t' (aka 'signed char') on negation
+    [-Werror,-Wimplicit-int-conversion-on-negation]
+---
+ servo/ports/geckolib/cbindgen.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/servo/ports/geckolib/cbindgen.toml b/servo/ports/geckolib/cbindgen.toml
+index f5effd80c79f..1a2c51b73b7d 100644
+--- a/servo/ports/geckolib/cbindgen.toml
++++ b/servo/ports/geckolib/cbindgen.toml
+@@ -1277,7 +1277,7 @@ renaming_overrides_prefixing = true
+   inline int8_t ShadowCascadeOrder() const {
+     bool neg(*this & CASCADE_ORDER_SIGN);
+     uint8_t abs = (*this & CASCADE_ORDER_BITS)._0 >> CASCADE_ORDER_SHIFT;
+-    return neg ? -abs : abs;
++    return neg ? static_cast<int8_t>(-abs) : abs;
+   }
+ """
+ 

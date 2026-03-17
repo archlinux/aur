@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=150.0a1+20260310.1+h8b83431c417d
+pkgver=150.0a1+20260317.1+hd75d6fbafe8e
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -87,6 +87,8 @@ source=(
   org.mozilla.$pkgname.metainfo.xml
   0001-Install-under-remoting-name.patch
   0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  0003-Use-wasm32-wasip1-target.patch
+  0004-Fix-implicit-int-conversion-on-negation.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -98,13 +100,17 @@ sha256sums=('SKIP'
             '4304902899987928ea51b7020fb1298b01fa77e327ef66ab00b061f767042b9f'
             '9649563e8703b4f4b43469029fe20e3bd0c1209dbaa4c2d664c00e089abd7fa0'
             'd5380f8d8b908654d7816eaffa4ffa954f438cecac23fe650a399345904c9af7'
-            '029e449a82ad0059b51b47c052f43ddacc83013d9a339fe36369b2434a7b50f5')
+            '8e18a7c8976d40e7f2c9c7431e25ebc5aea8d6376f113cd7b38f53ea97a31345'
+            '28fab2f0b8c97db0775cbc7dee34b73d91c4d97492108319af4b933984984fb6'
+            '2824c5d01c795d4d2dc3be00ebc04e924dddd9009ab5a5c826b5e167641ca597')
 b2sums=('SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '9c748d4c330d37d10862c73b3092c0d4308030fb62ca80da56ba9b3c3350ba4d779570308d1dd8e2c7d873f269654b72030702c5abc772aabfdfe7f39320a8b9'
         '561d6fd3b394eee3242c1db12c0520e865488b3e5c1943a398994857b1fcad520ed4387ea93bc9402356649a0b3db6911bcd3a9f8d388bbe88a58a2efec0aa14'
         '09a880c88104c19c1efaa44716a4e03c5ae3adf5f573a6e2e7ae8f369f712c46f56432570fba52ba22c99f943da3278ffc1f8a5940c04917eace2db284526de4'
-        '2ec95fe43d1331afd0dfc68552f1c84d8116f757319eb170b36b43b025f19b7b7b48bcef5543ad5c36089a0be99f52788f94b631125661dee9463ac78b01f9ee')
+        'be5a8a42e3dd33becb33803d7d7c3483735c25e819284dad8728903ae35c6c41035b623a832b785ee3117180317800fc05790a67f93e9adfe033a6372cdd6b3e'
+        'acd0fb494923a708dd651aef480a7b8a7bff2f86a29d5320e202d3dd7c3eb4be0575f24dbdfbdf86008ae2a2cab524ee389ade5f25d7989ba09c87103b71889c'
+        '2793263f67251d7017761e30b04a0d1fc57380493b0b50989181404c8a87458786bf776b61f9efa22f4c356ce236adfb711abb100b90b45a08acb70510575df8')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -142,6 +148,10 @@ prepare() {
   # Fix build with glibc 2.43
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
   patch -Np1 -i ../0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+
+  # Fix build with Clang 22
+  patch -Np1 -i ../0003-Use-wasm32-wasip1-target.patch
+  patch -Np1 -i ../0004-Fix-implicit-int-conversion-on-negation.patch
 
   echo -n "$_google_api_key" >google-api-key
 
