@@ -1,17 +1,17 @@
-pkgbase = jprofiler
+pkgbase = jprofiler15
 	pkgdesc = The Award-Winning All-in-One Java Profiler
 	pkgver = 15.0.4
-	pkgrel = 2
+	pkgrel = 1
 	url = http://jprofiler.com
 	arch = any
 	license = custom
 	depends = java-environment
 	options = !strip
 	source = https://download-gcdn.ej-technologies.com/jprofiler/jprofiler_linux_15_0_4.tar.gz
-	source = jprofiler.desktop
-	source = jprofiler.sh
+	source = jprofiler15.desktop
+	source = jprofiler15.sh
 	sha256sums = fec741718854a11b2383bb278ca7103984e0ae659268ed53ea5a8b32077b86c9
 	sha256sums = be6fce730c9be07ca3574c1a390f93d54d8e9ab4a18233f97bc25273beacd33a
 	sha256sums = ccd3b8ffdefc25f5845263f087776153ec5269a68fe65970fe92e68e1dcf7e36
 
-pkgname = jprofiler
+pkgname = jprofiler15
