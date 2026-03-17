@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=protolite
-_pkgver=2.3.1
+_pkgver=2.4.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -26,8 +26,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('bd84a18a8a33a8c62aca78901bf66022')
-b2sums=('cdd7a5a6c6daef210c93987678c98b83a297da87e427ed54c87d31fd42a8527503a8591d37a320fd64a5097bd5dc8f44726cb19c16de0f796f4c6f6219c61803')
+md5sums=('53c1f0f90ba3223c6eb42064f6031481')
+b2sums=('6c9f2fee90bebcc8110e0f50a39bb0df8319cb59d6c174e645ae180855093e947286e9ccdd9f4a6adeb01c6323ff862d33cae51b2aa49e9445fa2ae417b7cf53')
 
 build() {
   mkdir build
