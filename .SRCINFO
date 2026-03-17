@@ -1,0 +1,17 @@
+pkgbase = pacselect
+	pkgdesc = Selective pacman updater — safely updates apps without touching system/core or KDE session packages
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ryansinn/pacselect
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	depends = pacman
+	depends = sudo
+	depends = pacman-contrib
+	source = pacselect-0.3.0.tar.gz::https://github.com/ryansinn/pacselect/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 6ba59c1d610f31e6df0a1241c8e47729d127672a2e02f0dc60b03b0abf743775
+
+pkgname = pacselect
