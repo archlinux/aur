@@ -2,13 +2,13 @@
 pkgname=workdir
 # Version is derived from the git tag: v2026-03-10 → 2026.03.10
 # Updated automatically by CI on each release tag.
-pkgver=2026.03.16.beta2
+pkgver=2026.03.16.beta3
 pkgrel=1
 pkgdesc="Work with multiple directories and run commands without navigating manually."
 arch=('any')
 url="https://github.com/dseichter/Workdir"
 license=('GPL-3.0-only')
-depends=('python>=3.12' 'python-pyside6' 'python-urllib3' 'python-packaging')
+depends=('python>=3.12' 'pyside6' 'python-urllib3' 'python-packaging')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 
 # The source tarball is fetched from the GitHub release tag.
@@ -17,7 +17,7 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver//./-}.tar.gz")
 
 # sha256sums is replaced by the CI workflow on each release.
-sha256sums=('6c659c17fd81d90d25b8a66af8c338426b6d97263fe0d3b534956500e094d066')
+sha256sums=('49bedaa9afadc5d8236b5c8554d830d4f8dabbe3b0322e31f6d842dd5ecef958')
 
 build() {
     cd "Workdir-${pkgver//./-}"
