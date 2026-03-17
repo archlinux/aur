@@ -1,18 +1,19 @@
-# Maintainer: csllbr
+# Maintainer: Lorenzo Cappelletti <lorenzo.cappelletti gmail.com>
+# Previous Maintainer: csllbr
 pkgname=ansi2html
-pkgver='0.23'
-pkgrel=15
+pkgver='0.28'
+pkgrel=1
 pkgdesc="Convert ANSI (terminal) colours and attributes to HTML"
 arch=('any')
 url="http://www.pixelbeat.org/docs/terminal_colours/"
 author='Pádraig Brady'
 license=('GPL')
 depends=('sh')
-source=('https://raw.github.com/pixelb/scripts/master/scripts/ansi2html.sh')
+source=('https://raw.githubusercontent.com/pixelb/scripts/refs/heads/master/scripts/ansi2html.sh')
 
 
 package() {
-    install -D $srcdir/ansi2html.sh $pkgdir/usr/bin/ansi2html
+    install -D $srcdir/ansi2html.sh $pkgdir/usr/bin/ansi2html.sh
 }
 
-sha256sums=('395be13d03adfccf30b8288555b91af0b2345925ed70b7a1eecca0fa72a9f538')
+sha256sums=('d410fdb3eefe16c4380a972cc97f52f755da7eae7097beb1952f55fb9431da7d')
