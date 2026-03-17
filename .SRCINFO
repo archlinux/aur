@@ -1,6 +1,6 @@
 pkgbase = texlive-full
 	pkgdesc = This package provides texlive-full in /opt. It also tricks Arch Linux into thinking it has its texlive packages installed.
-	pkgver = 2025.20250310
+	pkgver = 2026.20260312
 	pkgrel = 1
 	epoch = 1
 	url = http://www.tug.org/texlive/
@@ -102,7 +102,7 @@ pkgbase = texlive-full
 	conflicts = texlive-science
 	conflicts = texlive-xetex
 	options = !strip
-	source = install-tl-unx-2025.20250310.tar.gz::https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+	source = install-tl-unx-2026.20260312.tar.gz::https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 	source = LICENSE.TL::https://tug.org/texlive/LICENSE.TL
 	sha256sums = SKIP
 	sha256sums = 8147ff504e6d7d89a7c42d5c3dfbaa8705ad17f72c82a5c1bce5f4f0ee8b2fb7

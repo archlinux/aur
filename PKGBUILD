@@ -2,7 +2,7 @@
 # Contributor: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=texlive-full
-pkgver=2025.20250310
+pkgver=2026.20260312
 pkgrel=1
 epoch=1
 pkgdesc="This package provides texlive-full in /opt. It also tricks Arch Linux into thinking it has its texlive packages installed."
@@ -57,23 +57,27 @@ _mirror='rsync.dante.ctan.org/CTAN/systems/texlive/tlnet/'
 _syncdir="CTAN/tlnet"
 
 pkgver() {
-    local _tldate=$(ls | grep -E '[0-9]+' -o | sort -r | head -1)
-    local _year=$(cat ${srcdir}/install-tl-${_tldate}/release-texlive.txt | grep -E '[0-9]+' -o)
+    local _tldate _year
+    _tldate=$(ls | grep -E '[0-9]+' -o | sort -r | head -1)
+    _year=$(grep -E '[0-9]+' -o ${srcdir}/install-tl-${_tldate}/release-texlive.txt)
     echo "${_year}.${_tldate}"
 }
 prepare() {
     # TeXLive release year
-    local _tldate=$(ls | grep -E '[0-9]+' -o | sort -r | head -1)
-    local _year=$(cat ${srcdir}/install-tl-${_tldate}/release-texlive.txt | grep -E '[0-9]+' -o)
+    local _tldate _year
+    _tldate=$(ls | grep -E '[0-9]+' -o | sort -r | head -1)
+    _year=$(grep -E '[0-9]+' -o ${srcdir}/install-tl-${_tldate}/release-texlive.txt)
     # creating a profile for unattened installation
-    echo "selected_scheme scheme-full" >"${srcdir}/texlive.profile"
-    echo "TEXDIR ${pkgdir}/opt/texlive/${_year}" >>"${srcdir}/texlive.profile"
-    echo "TEXMFLOCAL ${pkgdir}/opt/texlive/texmf-local" >>"${srcdir}/texlive.profile"
-    echo "TEXMFSYSCONFIG ${pkgdir}/opt/texlive/${_year}/texmf-config" >>"${srcdir}/texlive.profile"
-    echo "TEXMFSYSVAR ${pkgdir}/opt/texlive/${_year}/texmf-var" >>"${srcdir}/texlive.profile"
-    echo "TEXMFHOME ~/.config/texlive/texmf" >>"${srcdir}/texlive.profile"
-    echo "TEXMFCONFIG ~/.config/texlive/${_year}/texmf-config" >>"${srcdir}/texlive.profile"
-    echo "TEXMFVAR ~/.config/texlive/${_year}/texmf-var" >>"${srcdir}/texlive.profile"
+    cat <<EOF >"${srcdir}/texlive.profile"
+selected_scheme scheme-full
+TEXDIR ${pkgdir}/opt/texlive/${_year}
+TEXMFLOCAL ${pkgdir}/opt/texlive/texmf-local
+TEXMFSYSCONFIG ${pkgdir}/opt/texlive/${_year}/texmf-config
+TEXMFSYSVAR ${pkgdir}/opt/texlive/${_year}/texmf-var
+TEXMFHOME ~/.config/texlive/texmf
+TEXMFCONFIG ~/.config/texlive/${_year}/texmf-config
+TEXMFVAR ~/.config/texlive/${_year}/texmf-var
+EOF
 
     # syncing repository
     mkdir -p ${_syncdir}
@@ -103,13 +107,14 @@ _postfix() {
 }
 
 package() {
-    local _tldate=$(ls | grep -E '[0-9]+' -o | sort -r | head -1)
-    local _year=$(cat ${srcdir}/install-tl-${_tldate}/release-texlive.txt | grep -E '[0-9]+' -o)
+    local _tldate _year _installer_dir _timestamp
+    _tldate=$(ls | grep -E '[0-9]+' -o | sort -r | head -1)
+    _year=$(grep -E '[0-9]+' -o ${srcdir}/install-tl-${_tldate}/release-texlive.txt)
     # find installer path automatically.
-    local _installer_dir=install-tl-${_tldate}
+    _installer_dir=install-tl-${_tldate}
 
     # start the installer and install
-    local _timestamp=$(date "+%m%d%H%M")
+    _timestamp=$(date "+%m%d%H%M")
     "${srcdir}/${_installer_dir}/install-tl" \
         -profile "${srcdir}/texlive.profile" -repository ${_syncdir} -logfile "/tmp/install-tl-${_timestamp}.log"
 
