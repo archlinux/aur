@@ -8,7 +8,7 @@
 _pkgname='sherlock'
 pkgname="${_pkgname}"
 pkgver=0.16.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Hunt down social media accounts by username across social networks'
 arch=('any')
 url='https://github.com/sherlock-project/sherlock'
@@ -24,6 +24,7 @@ depends=('python'
         'python-stem'
         'python-torrequest')
 makedepends=('python-installer' 'python-build' 'python-poetry-core')
+optdepends=('tor: enables routing requests through tor')
 conflicts=('sherlock-git')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('997a7c22ed5c179438c91c27e8430b43e1d0fceb79d345e478a390d599a4016f')
