@@ -118,6 +118,8 @@ prepare() {
 }
 
 build() {
+  rm -rf build
+
   local meson_options=(
     # Add virtual drivers for integration tests (e.g. in fprintd)
     # -D drivers=all
