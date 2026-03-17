@@ -4,8 +4,8 @@ _clientname="flatland"
 pkgdesc="3D window-manager like program for non-egocentric 2D app compaatibility"
 
 pkgname="stardust-xr-$_clientname"
-pkgver="0.50.1"
-pkgrel="1"
+pkgver="0.51.1"
+pkgrel="0"
 arch=("x86_64" "aarch64")
 url="https://github.com/StardustXR/$_clientname"
 license=("MIT")
