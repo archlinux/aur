@@ -1,10 +1,10 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-compute-runtime-bin
-pkgver=26.01.36711.4
+pkgver=26.09.37435.1
 _gmmver=22.9.0
 _gmmsover=12
-_igcver=2.27.10
+_igcver=2.30.1
 _lzsover=1
 _build=0
 pkgrel=1
@@ -13,9 +13,10 @@ arch=('x86_64')
 url='https://github.com/intel/compute-runtime/'
 license=('MIT')
 depends=(
-    'gcc-libs'
     'glibc'
-    "intel-graphics-compiler-bin=1:${_igcver}")
+    "intel-graphics-compiler-bin=1:${_igcver}"
+    'libgcc'
+    'libstdc++')
 optdepends=(
     'libdrm: for cl_intel_va_api_media_sharing'
     'libva: for cl_intel_va_api_media_sharing')
@@ -31,9 +32,9 @@ noextract=("intel-ocloc_${pkgver}-${_build}_amd64.deb"
            "intel-opencl-icd_${pkgver}-${_build}_amd64.deb"
            "${pkgname}-${pkgver}-level-zero-${_gmmver}_amd64.deb"
            "${pkgname}-${pkgver}-gmmlib-${_gmmver}_amd64.deb")
-sha256sums=('a52e5f82ceaeae23f54ff8a576d0ba79a8e89ee66d75b729f85c1af136a78f6d'
-            'e0338f5cbee1431a45324b88ce0cca9e11becac6e99de9143626e5f4d9ade1cc'
-            'a92fb35fd77ffac7fce1a335fb7dc9751223251fbf301428f032906e3343ba9e'
+sha256sums=('893185ee9df9656f1350d701bffc240a7ec04021879e0b8ac645dd1db419cd9e'
+            '611c758c169a81c91bfc0b089cb6a53949ec2b6aedbf892635a579c529c63e7a'
+            '9fb35fbccbb5f85a60283803de961398ec8ae7d23bfd07f1f272307f596972c9'
             '9d712f71c18baee076de9961dda71e8089291e1bd0deb5d649ab5ba5de114f97'
             '987a002c6c9eb75290d9937735641ef4f4b670591ee79e1ac8edebe16a81872e')
 
