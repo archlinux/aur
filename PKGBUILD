@@ -18,7 +18,7 @@ source_aarch64=("natfrp-service-${pkgver}_linux_arm64.tar.zst::https://nya.globa
 source_i686=("natfrp-service-${pkgver}_linux_386.tar.zst::https://nya.globalslb.net/natfrp/client/launcher-unix/${pkgver}/natfrp-service_linux_386.tar.zst")
 source=('natfrp.service')
 
-sha256sums=('ac53d785aa3111ec9dce74ff0ac0201f32c1704843cfbf5eb301564d6cffacca')
+sha256sums=('37de6651e7ce428cb9143cd3bd12b61ff0af59be0d32b15f58d06dbd657d6d04')
 sha256sums_x86_64=('980ab185ce4ea8b8bf2e4b67a1b4ae742877c4dd229f8260c80a5cf2ae20a291')
 sha256sums_armv7h=('d629cf08ed01f4858af1d9753ad6d1dc8002f6b7e7b0a9f3afbfe6f66f6a0642')
 sha256sums_aarch64=('494779a44d279f0c0dc0b706d6618496711e2bee63daeec5ab842ed26e807b78')
