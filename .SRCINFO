@@ -1,6 +1,6 @@
 pkgbase = r-dbi
 	pkgdesc = R Database Interface
-	pkgver = 1.2.3
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=DBI
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = r-dbi
 	depends = r
 	optdepends = r-arrow
 	optdepends = r-blob
+	optdepends = r-callr
 	optdepends = r-covr
 	optdepends = r-dbitest
 	optdepends = r-dbplyr
@@ -19,6 +20,8 @@ pkgbase = r-dbi
 	optdepends = r-knitr
 	optdepends = r-magrittr
 	optdepends = r-nanoarrow
+	optdepends = r-otel
+	optdepends = r-otelsdk
 	optdepends = r-rmariadb
 	optdepends = r-rmarkdown
 	optdepends = r-rprojroot
@@ -26,8 +29,8 @@ pkgbase = r-dbi
 	optdepends = r-testthat
 	optdepends = r-vctrs
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/DBI_1.2.3.tar.gz
-	md5sums = 062e1bf5ed04772ecb1623c076c2128c
-	b2sums = 620906bd0f6b5cdf4f5926bb0cee80480456e907f071e03142a252156339e3e24b3d801cb34ef4e67a5c89992e860fa354010b4975fcd88657110169f43c0aa7
+	source = https://cran.r-project.org/src/contrib/DBI_1.3.0.tar.gz
+	md5sums = ce5e3153cc7395a2aac452db1099d003
+	b2sums = 7dab9b801ef28a8a24c3c59823812f9061037604136d796d0920b5f479a871ca1b46f5c716e8514c10352d9cea5500ad08bc4b194f89807af19bc24f476fbadc
 
 pkgname = r-dbi
