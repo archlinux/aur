@@ -32,7 +32,7 @@ package() {
 	install -dm0755 "$pkgdir/usr/share/applications/"
 	cat >"$pkgdir/usr/bin/$pkgname" <<EOF
 #!/bin/bash
-exec /opt/$pkgname/game/DDNet
+exec /opt/$pkgname/game/$_pkgname
 EOF
 	chmod +x $pkgdir/usr/bin/$pkgname
 	cat >"$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
