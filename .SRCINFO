@@ -1,6 +1,6 @@
 pkgbase = compassonpremise
 	pkgdesc = A messaging app. A messenger for working with and managing teams
-	pkgver = 6.10.9
+	pkgver = 6.11.1
 	pkgrel = 1
 	url = https://getcompass.com
 	install = compassonpremise.install
@@ -34,7 +34,7 @@ pkgbase = compassonpremise
 	optdepends = libappindicator-gtk3
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://update.getcompass.ru/electron/onpremise-compass/30/6.10.9/compass_linux_amd64.deb
-	sha512sums_x86_64 = b7e7a1290f86dd4a3fd1085efd6147cc1fa001c825fe894fc88f912c41feb961913591fe7bc86ccd1ee11732577f4462c6c0a1c49015001df27ef0101be9817f
+	source_x86_64 = https://update.getcompass.ru/electron/onpremise-compass/30/6.11.1/compass_linux_amd64.deb
+	sha512sums_x86_64 = f8140ecda970bedb65c018d6d1ea05b62c62e8c83aa117917cb91fe0f193847cd44c64e031b92813c42b088e03c9b2476306f0cf8300ed6c2b26d717b4330ac6
 
 pkgname = compassonpremise
