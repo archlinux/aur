@@ -1,7 +1,7 @@
 pkgbase = python-pingouin
 	pkgdesc = Statistical package for Python
-	pkgver = 0.5.5
-	pkgrel = 3
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://pingouin-stats.org/build/html/index.html
 	arch = any
 	license = GPL3
@@ -21,7 +21,7 @@ pkgbase = python-pingouin
 	depends = python-pandas-flavor
 	depends = python-tabulate
 	depends = python-mpmath
-	source = https://files.pythonhosted.org/packages/source/p/pingouin/pingouin-0.5.5.tar.gz
-	sha256sums = 2aac834128e99a4df8cffd8151c21adc7c42fe493e389c6fc2581b84e436ddd9
+	source = https://files.pythonhosted.org/packages/source/p/pingouin/pingouin-0.6.0.tar.gz
+	sha256sums = f9a522ab1c13c72dcf74e4e040e1896a328aa06eeebf9c8b0276ea24dbf53c33
 
 pkgname = python-pingouin
