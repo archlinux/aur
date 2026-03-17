@@ -1,6 +1,6 @@
 pkgbase = dragengine
 	pkgdesc = Drag[en]gine game engine, launcher and editor
-	pkgver = 1.30.2
+	pkgver = 1.30.3
 	pkgrel = 1
 	url = https://dragondreams.ch/index.php/dragengine
 	arch = x86_64
@@ -39,10 +39,10 @@ pkgbase = dragengine
 	depends = soundtouch
 	depends = xdg-utils
 	depends = zlib
-	source = dragengine-1.30.2::git+https://github.com/LordOfDragons/dragengine.git#tag=v1.30.2
+	source = dragengine-1.30.3::git+https://github.com/LordOfDragons/dragengine.git#tag=v1.30.3
 	source = custom.py
 	validpgpkeys = E0ECD22F5F70777588450034446C9C667CFC1DF3
-	sha256sums = d8aaf37d58514f3b25f9d55dc6b44c2138452577db46cad898034d26f4a9307a
+	sha256sums = c15687bca47e8bb1844d3facc0d4bba4d559333301eb753749cfdcce4f1876e2
 	sha256sums = 56514317d7df3031b7fba92904d9e50904ec708b227b6e2041ea398403577d94
 
 pkgname = dragengine
