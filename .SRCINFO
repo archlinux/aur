@@ -1,13 +1,13 @@
 pkgbase = soundfont-generaluser
 	pkgdesc = A small and well balanced GM/GS soundbank for many styles of music.
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = http://www.schristiancollins.com/generaluser.php
 	arch = any
 	groups = soundfonts
 	license = custom
 	makedepends = gdown
-	source = GeneralUser_GS_v2.0.2--doc_r4.zip::https://drive.google.com/uc?export=download&id=1UJ1mrY2l_C_YbKeyywNUymBz7OTVzQLU
-	sha256sums = a1b17a4362558e91777bea878a1945419ae680b9e59a5ac0d1fd300bce4bdc2a
+	source = GeneralUser_GS_v2.0.3--doc_r6.zip::https://drive.google.com/uc?export=download&id=12ZzM70Nxnr4vqyUF0bbRKE_HXQgLRNid
+	sha256sums = afc96a8f1cda270db376f0e70d43ca8f1aad4b337185ba017fc58ce9d3ff61b4
 
 pkgname = soundfont-generaluser
