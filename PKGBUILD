@@ -1,16 +1,16 @@
 # Maintainer: George Hu <integral@archlinux.org>
 
 pkgname=agsh
-pkgver=0.1.2
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="An agentic shell where you speak human, not bash"
 arch=('x86_64' 'aarch64' 'riscv64')
 url="https://docs.${pkgname}.sh"
 license=('MIT')
-depends=('glibc' 'libgcc' 'openssl' 'sqlite')
+depends=('glibc' 'libgcc' 'sqlite')
 makedepends=('cargo')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/k4yt3x/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('4f8624a35ecbae578c2e1274c1579d82c51c8a8ec61a2068a19252a84221358e')
+sha256sums=('25e1a906f01f7d0b0a0371a3a701ef38acd7f0da30d519b45c95b4ed1ff38f4c')
 
 prepare() {
 	cd "${pkgname}-${pkgver}/"
@@ -23,6 +23,7 @@ build() {
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
 	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+	export CFLAGS+=" -ffat-lto-objects"
 	cargo build --frozen --release --all-features
 }
 
