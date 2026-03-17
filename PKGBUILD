@@ -1,24 +1,30 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=archy-dwm
 pkgver=1.0.0
-pkgrel=1
-pkgdesc="A dynamic window manager for X with some patches applied"
+pkgrel=2
+pkgdesc="Dynamic window manager for X with some patches applied"
 url="https://github.com/archy-linux/$pkgname"
 arch=('i686' 'x86_64')
 license=('MIT')
-options=()
-depends=('libx11' 'libxinerama' 'libxft' 'freetype2' 'archy-slstatus' 'archy-dmenu')
-install=
+depends=('libx11' 'libxinerama' 'libxft' 'freetype2')
+makedepends=('make' 'gzip' 'ncurses')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("https://github.com/archy-linux/$pkgname/archive/refs/tags/$pkgname_$pkgver.tar.gz")
-sha256sums=('4e56232bd78971e20a9e6fa7dda16f7047be086aa3a066f5c410c4e3ae5d7add')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('859018ae182326048e99e4ba500b9fae199e3e76359af17a9c98f735f118505e')
+
+build() {
+  cd "$pkgname-$pkgver"
+  make -j
+  gzip -9 archy-dwm.1
+}
 
 package() {
-  cd "$pkgname_$pkgver" || exit 1
-  # shellcheck disable=SC2154
-  install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/xsessions/$pkgname.desktop"
+    cd "$pkgname-$pkgver"
+    install -Dm755 -t ${pkgdir}/usr/bin 'build/archy-dwm'
+    install -Dm644 -t ${pkgdir}/usr/share/man/man1 archy-dwm.1.gz
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
+
+# vim: ts=4 sw=4 et:
