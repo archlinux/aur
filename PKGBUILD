@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="matlab-proxy"
-pkgver=0.30.1
+pkgver=0.31.0
 pkgrel=1
 pkgdesc="Open a MATLAB® desktop in a web browser tab"
 arch=(
@@ -56,7 +56,7 @@ source=(
   "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
   "${pkgname}_python3.14_event_loop.patch::${url}/pull/83.patch?full_index=1"
 )
-sha256sums=('324ca054ed51d9e110a0da936a979457159a1ab351dd37d2e3ea26cd97d16844'
+sha256sums=('ff4b98b637dff0a8d69344c3cc574b58512a8fae2325f3dc94d5bb24397f570e'
             '2aa24bda0a46e4b14d5f39fa1b8fa6abbb41d6871b786a358d707f25386054b4')
 
 prepare() {
