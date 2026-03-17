@@ -1,7 +1,7 @@
 # Maintainer: Nils Pukropp <nils@narl.io>
 pkgname=mould-git
 _pkgname=mould
-pkgver=0.2.1.r17.g93c5c30
+pkgver=0.4.0.r30.ge09cc3f
 pkgrel=1
 pkgdesc="A modern TUI tool for interactively generating and editing configuration files from templates"
 arch=('x86_64' 'aarch64')
