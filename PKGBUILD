@@ -1,30 +1,30 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=bfy
 pkgver=0.1.2
-pkgrel=5
-epoch=
-pkgdesc="brainfuc*k interpreter: a simple brainfuc*k interpreter and REPL writen in rust 🦀🤪"
+pkgrel=6
+pkgdesc='simple interpreter and REPL for the brainfuck language'
 arch=(x86_64)
-url="https://github.com/anas-elgarhy/$pkgname"
+url="https://github.com/0x61nas/$pkgname"
 license=('MIT')
-makedepends=(cargo)
-install=
-changelog=
+makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 sha256sums=('82412e7da16ccad263786df57e6c627f83d6cf81ec41857082d553d6631370ab')
+
 prepare() {
-  cd "$pkgname-$pkgver"
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cd "$pkgname-$pkgver"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
-  cd "$pkgname-$pkgver"
-	export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+    cd "$pkgname-$pkgver"
+    install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
 }
+
+# vim: ts=4 sw=4 et:

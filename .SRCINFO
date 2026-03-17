@@ -1,8 +1,8 @@
 pkgbase = bfy
-	pkgdesc = brainfuc*k interpreter: a simple brainfuc*k interpreter and REPL writen in rust 🦀🤪
+	pkgdesc = simple interpreter and REPL for the brainfuck language
 	pkgver = 0.1.2
-	pkgrel = 5
-	url = https://github.com/anas-elgarhy/bfy
+	pkgrel = 6
+	url = https://github.com/0x61nas/bfy
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
