@@ -1,0 +1,17 @@
+post_install() {
+    if ! grep -q '/usr/bin/vex' /etc/shells; then
+        echo '/usr/bin/vex' >> /etc/shells
+    fi
+    echo ""
+    echo "  To set vex as your default shell:"
+    echo "    chsh -s /usr/bin/vex"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    sed -i '/\/usr\/bin\/vex/d' /etc/shells
+}

@@ -1,0 +1,14 @@
+pkgbase = vex-shell
+	pkgdesc = A typed shell with structured data pipelines, written in C
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/aethstetic/vex
+	install = vex.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	source = vex-0.1.0.tar.gz::https://github.com/aethstetic/vex/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = vex-shell
