@@ -1,6 +1,6 @@
 pkgbase = sabiql-bin
 	pkgdesc = A fast, driver-less TUI to browse, query, and edit PostgreSQL databases
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/riii111/sabiql
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = sabiql-bin
 	depends = libgcc
 	provides = sabiql
 	conflicts = sabiql
-	source = README-1.8.1.md::https://raw.githubusercontent.com/riii111/sabiql/v1.8.1/README.md
-	source = LICENSE-1.8.1::https://raw.githubusercontent.com/riii111/sabiql/v1.8.1/LICENSE
+	source = README-1.8.2.md::https://raw.githubusercontent.com/riii111/sabiql/v1.8.2/README.md
+	source = LICENSE-1.8.2::https://raw.githubusercontent.com/riii111/sabiql/v1.8.2/LICENSE
 	sha256sums = 5fd9014954700f2877fd9c40908d4c090f64de80e1c1787818a331488925d6f6
 	sha256sums = 74812e48d7ae28605df88571cdcf5002bb1de19b89c8a05a07ccfecd9c1962e4
-	source_x86_64 = sabiql-x86_64-1.8.1.tgz::https://github.com/riii111/sabiql/releases/download/v1.8.1/sabiql-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 03b851949928bf4a31da88165f400a15cc64ccb7ae7a7fed0c68199db429100c
-	source_aarch64 = sabiql-aarch64-1.8.1.tgz::https://github.com/riii111/sabiql/releases/download/v1.8.1/sabiql-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = 4262c832b9b1d7f36471d9a262d98b8fc6a1bd3f062fd2dfc9ffc1ecc27468fa
+	source_x86_64 = sabiql-x86_64-1.8.2.tgz::https://github.com/riii111/sabiql/releases/download/v1.8.2/sabiql-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 46eaaab46d7fd7579e341691c2375bde9c435b2219b9e02940f16aa9297045bb
+	source_aarch64 = sabiql-aarch64-1.8.2.tgz::https://github.com/riii111/sabiql/releases/download/v1.8.2/sabiql-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 6886f44302de6a9c2d31e25d59a5d2475d40bdc8d852d18e8279f9b14bbe41cf
 
 pkgname = sabiql-bin
