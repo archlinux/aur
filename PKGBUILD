@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: Apache-2.0
 # Maintainer: Kaz Walker <me@kazatron.com>
 pkgname=workfort
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='WorkFort web and TUI frontend'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=()
 makedepends=('go' 'nodejs' 'pnpm')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8e9c11a1c17ba2d88440ac36d5d6f88cb2e1a234e2da483ed473a8f1efc03319')
+sha256sums=('7e9b26c06f7215bf6f990d7bddff4a351bf2ddcfb6ad0026ce23f8fc8daf8c59')
 
 build() {
     cd "Scope-${pkgver}"

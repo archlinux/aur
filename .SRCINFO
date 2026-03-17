@@ -1,6 +1,6 @@
 pkgbase = workfort
 	pkgdesc = WorkFort web and TUI frontend
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/Work-Fort/Scope
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = workfort
 	makedepends = go
 	makedepends = nodejs
 	makedepends = pnpm
-	source = https://github.com/Work-Fort/Scope/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 8e9c11a1c17ba2d88440ac36d5d6f88cb2e1a234e2da483ed473a8f1efc03319
+	source = https://github.com/Work-Fort/Scope/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 7e9b26c06f7215bf6f990d7bddff4a351bf2ddcfb6ad0026ce23f8fc8daf8c59
 
 pkgname = workfort
