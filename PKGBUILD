@@ -4,7 +4,7 @@
 pkgname=waveterm
 _pkgname=Wave
 _appname="${_pkgname} Terminal"
-pkgver=0.14.1
+pkgver=0.14.3
 _electronversion=40
 _nodeversion=22
 pkgrel=1
@@ -38,10 +38,7 @@ makedepends=(
     'git'
     'yarn'
 )
-source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
-    "${pkgname}.sh"
-)
+source=("${pkgname}.sh")
 sha256sums=('5cc6bf2a2d5d76e4b819f39e98d9f89138a61b8a0a07950912f8ebc8ba2988b6'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
@@ -55,6 +52,12 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
 }
 prepare() {
+    cd "${srcdir}"
+    git clone \
+        --depth 1 \
+        --branch "v${pkgver}" \
+        "${_ghurl}" \
+        "${pkgname}-${pkgver}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     sed -i -e "
         s/@electronversion@/${_electronversion}/g
