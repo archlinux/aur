@@ -1,6 +1,6 @@
 # Maintainer: Rodrigo Santiago <rodrigosntg@gmail.com>
 pkgname=omarchy-screenshot-preview
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="macOS-style screenshot preview with drag-and-drop for Wayland/Hyprland"
 arch=('x86_64')
