@@ -11,19 +11,21 @@ options=('!strip')
 source=(
   "https://github.com/feed-mob/peekoo-ai/releases/download/v${pkgver}/Peekoo_${pkgver}_amd64.AppImage"
   'peekoo.desktop'
-  'peekoo.sh'
   'peekoo.png'
 )
 sha256sums=(
   '6b0a11e5a7938b493e88bfce4373cb152c7cee7154f5676bf7d8742a4389c828'
   'SKIP'
   'SKIP'
-  'SKIP'
 )
 
+prepare() {
+  chmod +x "${srcdir}/Peekoo_${pkgver}_amd64.AppImage"
+  "${srcdir}/Peekoo_${pkgver}_amd64.AppImage" --appimage-extract
+}
+
 package() {
-  install -Dm755 "${srcdir}/Peekoo_${pkgver}_amd64.AppImage" "${pkgdir}/opt/peekoo/Peekoo.AppImage"
-  install -Dm755 "${srcdir}/peekoo.sh" "${pkgdir}/usr/bin/peekoo"
+  install -Dm755 "${srcdir}/squashfs-root/usr/bin/peekoo-desktop-tauri" "${pkgdir}/usr/bin/peekoo"
   install -Dm644 "${srcdir}/peekoo.desktop" "${pkgdir}/usr/share/applications/peekoo.desktop"
   install -Dm644 "${srcdir}/peekoo.png" "${pkgdir}/usr/share/pixmaps/peekoo.png"
 }

@@ -13,10 +13,8 @@ pkgbase = peekoo-bin
 	options = !strip
 	source = https://github.com/feed-mob/peekoo-ai/releases/download/v0.1.1/Peekoo_0.1.1_amd64.AppImage
 	source = peekoo.desktop
-	source = peekoo.sh
 	source = peekoo.png
 	sha256sums = 6b0a11e5a7938b493e88bfce4373cb152c7cee7154f5676bf7d8742a4389c828
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
