@@ -13,6 +13,7 @@ pkgbase = hetrix
 	depends = cmake
 	depends = zpaq
 	depends = p7zip
+	depends = python
 	source = https://codeberg.org/Druid520/hetrix/archive/v1.3.tar.gz
 	sha256sums = 6b307ea15aab814cb89aa28e2733198aa45f5bacee11f38859fe02ba0cd8e0a1
 
