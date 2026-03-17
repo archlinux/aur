@@ -1,0 +1,19 @@
+pkgbase = note-tui-bin
+	pkgdesc = A Vim-friendly terminal user interface (TUI) application for managing notes
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Pansther/note-tui
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	provides = note-tui
+	conflicts = note-tui
+	options = !strip
+	source = README-0.1.0.md::https://raw.githubusercontent.com/Pansther/note-tui/v0.1.0/readme.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/Pansther/note-tui/v0.1.0/LICENSE
+	sha256sums = e76356590b01f9a1d83a1cbe898e16c5725b9d45517405a2ce74a561782052e5
+	sha256sums = 81b43822f51cef51a8dbdf14371d0290fd8082050ab14a75157246c0ab8d90ea
+	source_x86_64 = note-tui-x86_64-0.1.0.tgz::https://github.com/Pansther/note-tui/releases/download/v0.1.0/note-tui-linux-x64.tar.gz
+	sha256sums_x86_64 = ea780399cb5d41c506040ea40a09e060545dd9e41c697a10b7bd87b8772938da
+
+pkgname = note-tui-bin

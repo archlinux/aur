@@ -1,0 +1,5 @@
+[note-tui-bin]
+source = "github"
+github = "Pansther/note-tui"
+use_latest_release = true
+prefix = "v"
