@@ -4,11 +4,11 @@
 _hkgname=adblock2privoxy
 pkgname=$_hkgname
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert adblock config files to privoxy format"
 arch=('x86_64')
 url="https://github.com/essandess/adblock2privoxy"
-license=('GPL')
+license=('GPL-3.0-only')
 depends=('ghc-libs' 'haskell-case-insensitive' 'haskell-http-conduit' 'haskell-missingh' 'haskell-network' 'haskell-network-uri' 'haskell-parsec-permutation' 'haskell-old-locale' 'haskell-strict')
 makedepends=('ghc')
 options=('!emptydirs')

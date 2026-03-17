@@ -1,10 +1,10 @@
 pkgbase = adblock2privoxy
 	pkgdesc = Convert adblock config files to privoxy format
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/essandess/adblock2privoxy
 	arch = x86_64
-	license = GPL
+	license = GPL-3.0-only
 	makedepends = ghc
 	depends = ghc-libs
 	depends = haskell-case-insensitive
