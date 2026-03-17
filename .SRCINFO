@@ -1,6 +1,6 @@
 pkgbase = mx-snapshot
 	pkgdesc = A tool for creating live ISO images from running systems
-	pkgver = 26.02.8arch
+	pkgver = 26.03.2arch
 	pkgrel = 1
 	url = https://mxlinux.org
 	arch = x86_64
