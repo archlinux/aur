@@ -20,3 +20,11 @@ path = [
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
+
+[[annotations]]
+path = [
+    "CVE-2024-50382.patch",
+    "CVE-2024-50383.patch",
+]
+SPDX-FileCopyrightText = "Fedora contributors"
+SPDX-License-Identifier = "TODO-Choose-a-license"

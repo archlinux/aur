@@ -1,0 +1,45 @@
+From 1eb0d14a7c110207479f40c8369faacc73d945c8 Mon Sep 17 00:00:00 2001
+From: Carlos Rodriguez-Fernandez <carlosrodrifernandez@gmail.com>
+Date: Wed, 23 Jul 2025 15:33:30 -0700
+Subject: [PATCH] fix: make additions be constant time
+
+Fixes vulnerability CVE-2024-50383
+
+Signed-off-by: Carlos Rodriguez-Fernandez <carlosrodrifernandez@gmail.com>
+---
+ src/lib/utils/donna128.h | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/lib/utils/donna128.h b/src/lib/utils/donna128.h
+index ff571906d..46e943dc6 100644
+--- a/src/lib/utils/donna128.h
++++ b/src/lib/utils/donna128.h
+@@ -9,6 +9,7 @@
+ #define BOTAN_CURVE25519_DONNA128_H_
+ 
+ #include <botan/mul128.h>
++#include <botan/internal/ct_utils.h>
+ 
+ namespace Botan {
+ 
+@@ -61,7 +62,7 @@ class donna128 final
+          l += x.l;
+          h += x.h;
+ 
+-         const uint64_t carry = (l < x.l);
++         const uint64_t carry = CT::Mask<uint64_t>::is_lt(l, x.l).if_set_return(1);
+          h += carry;
+          return *this;
+          }
+@@ -69,7 +70,7 @@ class donna128 final
+       donna128& operator+=(uint64_t x)
+          {
+          l += x;
+-         const uint64_t carry = (l < x);
++         const uint64_t carry = CT::Mask<uint64_t>::is_lt(l, x).if_set_return(1);
+          h += carry;
+          return *this;
+          }
+-- 
+2.50.0
+

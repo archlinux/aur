@@ -1,7 +1,7 @@
 pkgbase = botan2
 	pkgdesc = Crypto library written in C++ (legacy version)
 	pkgver = 2.19.5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://botan.randombit.net/
 	arch = x86_64
 	license = BSD
@@ -15,9 +15,13 @@ pkgbase = botan2
 	source = https://botan.randombit.net/releases/Botan-2.19.5.tar.xz
 	source = https://botan.randombit.net/releases/Botan-2.19.5.tar.xz.asc
 	source = boost-fixes.patch
+	source = CVE-2024-50382.patch
+	source = CVE-2024-50383.patch
 	validpgpkeys = 621DAF6411E1851C4CF9A2E16211EBF1EFBADFBC
 	sha256sums = dfeea0e0a6f26d6724c4af01da9a7b88487adb2d81ba7c72fcaf52db522c9ad4
 	sha256sums = SKIP
 	sha256sums = 4d6e04836b934671b893b7df207159b7a945191f25c134a8ab95ff43bd6ae536
+	sha256sums = 34a34279260487a5f62859ba5abddb0cdcfdf0b62b1c49acf60117a941df0e07
+	sha256sums = 4493316d4d04e152f3dd980b4710741bd620db404af59fba846f269ce2efeaa1
 
 pkgname = botan2
