@@ -1,6 +1,6 @@
 # Maintainer: Mike <miguelsilva5989@gmail.com>
 pkgname=streamsquire-bin
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="AI streaming assistant — auto-clips, chat monitoring, transcription"
 arch=('x86_64')
