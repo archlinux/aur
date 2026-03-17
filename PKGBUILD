@@ -2,8 +2,8 @@
 # Contributors: Seqularise, complexlogic
 
 pkgname=rsgain
-pkgver=3.6
-pkgrel=2
+pkgver=3.7
+pkgrel=1
 pkgdesc="ReplayGain 2.0 loudness normalizer"
 arch=('x86_64')
 url="https://github.com/complexlogic/rsgain"
@@ -14,12 +14,13 @@ depends=(
   'libavformat.so'
   'libavutil.so'
   'libswresample.so'
+  'fmt'
   'libinih'
   'taglib'
   )
 makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/complexlogic/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('375a9b7ffafa6e54c3ea390568b3b38fab5ac64e8d5449c16beaa5997a00e0be51ff7b83299986abc461ba43ccfac0c812d72ef5969b901a7461bf3d08f83219')
+sha512sums=('84786e2ecdc83d703a0c057fc60ba7b220d766fb61d1777586f911d546026729d3542497f3d494957d47b8c7f5de2c66873421c7bcc0bb8850ce0e588f21018d')
 
 build() {
   cmake -B build -S $pkgname-$pkgver \
