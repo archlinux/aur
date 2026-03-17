@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=8.1.r121357.g7896cc67c1
+pkgver=8.2.r123522.gac4d50cb26
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -19,7 +19,6 @@ depends=(
   fontconfig
   freetype2
   fribidi
-  gcc-libs
   glib2
   glibc
   glslang
@@ -36,6 +35,7 @@ depends=(
   libdrm
   libdvdnav
   libdvdread
+  libgcc
   libiec61883
   libjxl
   libmodplug
@@ -113,7 +113,7 @@ conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch')
 sha256sums=('SKIP'
-            '1c4f328bfb0dfedf4478f7b3659bcd08c591823a389b9e9e4eb8c35b0b3e0356')
+            '95223dda645c15b3daf79cd4d55df5d4ac46207f749973396bb761b743586ed6')
 
 prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
