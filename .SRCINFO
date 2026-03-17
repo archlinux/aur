@@ -1,7 +1,7 @@
 pkgbase = fish-tide
 	pkgdesc = 🌊 The ultimate Fish prompt.
 	pkgver = 6.2.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/IlanCosman/tide
 	install = fish-tide.install
 	arch = any
@@ -10,8 +10,10 @@ pkgbase = fish-tide
 	optdepends = ttf-meslo-nerd-font-powerlevel10k: recommended font, install this if you only want Meslo LGS Nerd Font variants
 	optdepends = ttf-meslo-nerd: recommended font, contains all Meslo Nerd Font variants
 	source = fish-tide-6.2.0.tar.gz::https://github.com/IlanCosman/tide/archive/refs/tags/v6.2.0.tar.gz
+	source = pr-619.patch::https://github.com/IlanCosman/tide/pull/619.patch
 	source = pr-625.patch::https://github.com/IlanCosman/tide/pull/625.patch
 	sha256sums = c5d229d9d918043739aac93581ac96f00b6f31185b7df1c9864401bcbb69f3bc
+	sha256sums = 8d3a38476848b48af2c2b7749b24b0129adb9acb9d635c663e688ac3e5b0cdd0
 	sha256sums = 5426d86cb803426cb26843933c676ef08d15947937217ce7f30075f859cd1315
 
 pkgname = fish-tide
