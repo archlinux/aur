@@ -4,8 +4,8 @@ _clientname="black-hole"
 pkgdesc="Minimize all your objects with 1 tap in Stardust XR"
 
 pkgname="stardust-xr-$_clientname"
-pkgver="0.50.0"
-pkgrel="2"
+pkgver="0.51.1"
+pkgrel="0"
 arch=("x86_64" "aarch64")
 url="https://github.com/StardustXR/$_clientname"
 license=("MIT")

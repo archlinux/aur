@@ -1,14 +1,14 @@
 pkgbase = stardust-xr-black-hole
 	pkgdesc = Minimize all your objects with 1 tap in Stardust XR
-	pkgver = 0.50.0
-	pkgrel = 2
+	pkgver = 0.51.1
+	pkgrel = 0
 	url = https://github.com/StardustXR/black-hole
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	source = git+https://github.com/StardustXR/black-hole.git#tag=0.50.0
+	source = git+https://github.com/StardustXR/black-hole.git#tag=0.51.1
 	sha256sums = SKIP
 
 pkgname = stardust-xr-black-hole
