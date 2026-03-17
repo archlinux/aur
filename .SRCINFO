@@ -1,0 +1,13 @@
+pkgbase = columbus
+	pkgdesc = A TUI file explorer written in RUST with Ratatui which can open files on enter
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/sivaprakashkrp/columbus
+	arch = x86_64
+	license = GPL-2.0-or-later
+	provides = columbus
+	conflicts = columbus
+	source = https://github.com/sivaprakashkrp/columbus/releases/download/v0.1.1/columbus-0.1.1-x86_64.tar.gz
+	sha256sums = 829bcc05e4e936ce209aed9f81dd89a69a3e90b1b98186ec6cc26780a09ee42f
+
+pkgname = columbus
