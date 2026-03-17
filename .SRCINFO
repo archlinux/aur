@@ -9,6 +9,6 @@ pkgbase = inkaur
 	depends = curl
 	depends = pacman
 	source = inkaur-0.1.0.tar.gz::https://github.com/lvitals/inkaur/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 614074f896cce91d51e4f7e87a7cd9549e3bf433e38d599dae4dbabd814cf4d4
 
 pkgname = inkaur
