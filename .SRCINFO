@@ -1,20 +1,18 @@
 pkgbase = archy-dwm
 	pkgdesc = Dynamic window manager for X with some patches applied
 	pkgver = 1.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/archy-linux/archy-dwm
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = make
 	makedepends = gzip
-	makedepends = ncurses
 	depends = libx11
 	depends = libxinerama
 	depends = libxft
 	depends = freetype2
 	provides = archy-dwm
-	conflicts = archy-dwm
 	source = archy-dwm-1.0.0.tar.gz::https://github.com/archy-linux/archy-dwm/archive/refs/tags/1.0.0.tar.gz
 	sha256sums = 859018ae182326048e99e4ba500b9fae199e3e76359af17a9c98f735f118505e
 

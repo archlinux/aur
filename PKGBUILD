@@ -1,22 +1,21 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=archy-dwm
 pkgver=1.0.0
-pkgrel=2
-pkgdesc="Dynamic window manager for X with some patches applied"
+pkgrel=3
+pkgdesc='Dynamic window manager for X with some patches applied'
 url="https://github.com/archy-linux/$pkgname"
 arch=('i686' 'x86_64')
 license=('MIT')
 depends=('libx11' 'libxinerama' 'libxft' 'freetype2')
-makedepends=('make' 'gzip' 'ncurses')
+makedepends=('make' 'gzip')
 provides=("$pkgname")
-conflicts=("$pkgname")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('859018ae182326048e99e4ba500b9fae199e3e76359af17a9c98f735f118505e')
 
 build() {
-  cd "$pkgname-$pkgver"
-  make -j
-  gzip -9 archy-dwm.1
+    cd "$pkgname-$pkgver"
+    make -j
+    gzip -9 archy-dwm.1
 }
 
 package() {
