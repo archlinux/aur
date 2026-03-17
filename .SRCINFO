@@ -1,6 +1,6 @@
 pkgbase = nvm-desktop
 	pkgdesc = Node Version Manager Desktop - A desktop application to manage multiple active node.js versions.
-	pkgver = 4.2.1
+	pkgver = 4.3.1
 	pkgrel = 1
 	url = https://github.com/1111mp/nvm-desktop
 	arch = aarch64
@@ -18,11 +18,11 @@ pkgbase = nvm-desktop
 	depends = webkit2gtk-4.1
 	depends = gtk3
 	conflicts = nvm-desktop
-	source = nvm-desktop-4.2.1::git+https://github.com/1111mp/nvm-desktop.git#tag=v4.2.1
-	sha256sums = 5138263ce7549364eda64b4f856d29c537616a2c328538a4e9ed22e9eb2a7262
-	source_aarch64 = nvmd-4.2.1-aarch64::https://github.com/1111mp/nvmd-command/releases/download/v4.2.1/nvmd_linux-arm64
-	sha256sums_aarch64 = f8bd77d274c1ba3e6091a36805ed3793d953cd00b4c5928dbb2eaaabc5040b5f
-	source_x86_64 = nvmd-4.2.1-x86_64::https://github.com/1111mp/nvmd-command/releases/download/v4.2.1/nvmd_linux-x64
-	sha256sums_x86_64 = 20967479379598c0b118cef9141203a45868465f2a190ed5e27d108c06234974
+	source = nvm-desktop-4.3.1::git+https://github.com/1111mp/nvm-desktop.git#tag=v4.3.1
+	sha256sums = 5f8f153b47964501371c044bfc66ba1557c37412662e07557b4fafaf741f1520
+	source_aarch64 = nvmd-4.3.1-aarch64::https://github.com/1111mp/nvmd-command/releases/download/v4.3.1/nvmd_linux-arm64
+	sha256sums_aarch64 = 6abbfa6dd9879a6b630a37665184e584539e0813d64633e1021dd38f7ba2d381
+	source_x86_64 = nvmd-4.3.1-x86_64::https://github.com/1111mp/nvmd-command/releases/download/v4.3.1/nvmd_linux-x64
+	sha256sums_x86_64 = 2db655c304670fcd95d2098ebd632b2c40498c818fabc1d222197b23dd2ffc84
 
 pkgname = nvm-desktop
