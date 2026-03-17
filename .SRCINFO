@@ -1,7 +1,7 @@
 pkgbase = zlob
 	pkgdesc = A fast SIMD-accelerated glob pattern matcher
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dmtrKovalenko/zlob
 	arch = x86_64
 	license = MIT
