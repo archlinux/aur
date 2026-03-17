@@ -16,7 +16,7 @@ sha256sums=('6b307ea15aab814cb89aa28e2733198aa45f5bacee11f38859fe02ba0cd8e0a1')
 build() {
     cd "$srcdir/hetrix"
     chmod +x hetrix.sh  # Add this line
-    ./hetrix.sh
+    ./hetrix.sh --no-seed
 }
 
 package() {
