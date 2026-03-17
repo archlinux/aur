@@ -1,0 +1,25 @@
+pkgbase = arr-trailer-dl-git
+	pkgdesc = Python script that downloads trailers from YouTube for Radarr/Sonarr libraries
+	pkgver = r48.9bb274a
+	pkgrel = 1
+	url = https://github.com/DamienDessagne/Arr-TrailerDownloader
+	install = arr-trailer-dl.install
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = yt-dlp
+	optdepends = ffmpeg: video re-encoding support
+	provides = arr-trailer-dl
+	conflicts = arr-trailer-dl
+	source = arr-trailer-dl-git::git+https://github.com/DamienDessagne/Arr-TrailerDownloader.git
+	source = arr-trailer-dl.sysusers
+	source = arr-trailer-dl.tmpfiles
+	source = patch_search.py
+	sha256sums = SKIP
+	sha256sums = d4cc1fb49471a475690e652799a1408e25324d068ca6ecd98b4e56590c3ce68c
+	sha256sums = 343f046b701d70467e38f906d8a072b721504259d547687369c30a896f78a338
+	sha256sums = d5e23a4b88f5f47837983f757ac41ce93f60ba3a2b3b5fc145cd103de419db6a
+
+pkgname = arr-trailer-dl-git

@@ -1,0 +1,2 @@
+# Create the shared group; no dedicated user since this is not a daemon
+g arr-trailer-dl -

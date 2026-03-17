@@ -1,0 +1,18 @@
+post_install() {
+  echo "  arr-trailer-dl configuration: /var/lib/arr-trailer-dl/config.ini"
+  echo "  Edit it to add your TMDB and YouTube API keys."
+  echo ""
+  echo "  To allow Radarr/Sonarr to read the config and write logs, add their"
+  echo "  service users to the arr-trailer-dl group. For example:"
+  echo ""
+  echo "    usermod -aG arr-trailer-dl radarr"
+  echo "    usermod -aG arr-trailer-dl sonarr"
+  echo ""
+  echo "  Then restart those services for the group change to take effect."
+  echo ""
+  echo \"  In Radarr/Sonarr, create a Custom Script connection pointing to:\"\n  echo \"    /usr/lib/arr-trailer-dl/TrailerDownloader.py\"
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,7 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/arr-trailer-dl      0750 root arr-trailer-dl -
+d /var/lib/arr-trailer-dl/logs 0770 root arr-trailer-dl -
+# Copy the default config if it doesn't exist, preserving user edits on package upgrades
+C /var/lib/arr-trailer-dl/config.ini 0640 root arr-trailer-dl - /usr/share/arr-trailer-dl/config.ini.example
+# Ensure permissions remain locked down even if modified
+z /var/lib/arr-trailer-dl/config.ini 0640 root arr-trailer-dl -
