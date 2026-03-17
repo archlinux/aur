@@ -3,7 +3,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=ggrepel
-_pkgver=0.9.7
+_pkgver=0.9.8
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -45,8 +45,8 @@ optdepends=(
   r-vdiffr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('c4ecd7127235addd35ac700d423b6673')
-b2sums=('b7769d14cd7b0a54d9c69c85a8df2daa1f53c4537dde9a210e5880b44cd6e9368a24f9f1b4a71cfd3b32995fa2f7859081cb53dfc91b9482b779a3da63696574')
+md5sums=('33e4c1f39e92d9e828203b10e12f831c')
+b2sums=('f95b2aa520c6fdf650508d94231fa603a2434000d924fa19111d3ee3595a06c46a6948b80af91f7e9604a232888118976c872bf2b0d69f6751a5db5d67d61b85')
 
 build() {
   mkdir build

@@ -1,6 +1,6 @@
 pkgbase = r-ggrepel
 	pkgdesc = Automatically Position Non-Overlapping Text Labels with 'ggplot2'
-	pkgver = 0.9.7
+	pkgver = 0.9.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ggrepel
 	arch = x86_64
@@ -32,8 +32,8 @@ pkgbase = r-ggrepel
 	optdepends = r-svglite
 	optdepends = r-testthat
 	optdepends = r-vdiffr
-	source = https://cran.r-project.org/src/contrib/ggrepel_0.9.7.tar.gz
-	md5sums = c4ecd7127235addd35ac700d423b6673
-	b2sums = b7769d14cd7b0a54d9c69c85a8df2daa1f53c4537dde9a210e5880b44cd6e9368a24f9f1b4a71cfd3b32995fa2f7859081cb53dfc91b9482b779a3da63696574
+	source = https://cran.r-project.org/src/contrib/ggrepel_0.9.8.tar.gz
+	md5sums = 33e4c1f39e92d9e828203b10e12f831c
+	b2sums = f95b2aa520c6fdf650508d94231fa603a2434000d924fa19111d3ee3595a06c46a6948b80af91f7e9604a232888118976c872bf2b0d69f6751a5db5d67d61b85
 
 pkgname = r-ggrepel
