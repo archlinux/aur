@@ -76,11 +76,13 @@ backup=("usr/lib/${__pkgname}/${__pkgname}.cfg"
         "usr/lib/${__pkgname}/distribution/policies.json")
 source=(firedragon-source-v"$_pkgver".tar.zst::https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v"$_pkgver"/downloads/firedragon-source.tar.zst
         firedragon.psd::https://github.com/stefanwimmer128/profile-sync-daemon/raw/refs/heads/firedragon/contrib/firedragon
+        fix-wasm32-wasi-target.patch
         0023-bgo-969412-glibc-2.43.patch)
 source_x86_64=(deno-x86_64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-x86_64-unknown-linux-gnu.zip)
 source_aarch64=(deno-aarch64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-aarch64-unknown-linux-gnu.zip)
 sha256sums=('2431a463d63d0c33fe765aab607cbf43ca5fbceeca3e5a64b2514bba6fd63955'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
+            'f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124'
             '25e8f2e706aa837f5b6e3c003a6c7f42b07f0a7366d10f9e0d5ad38053767aae')
 sha256sums_x86_64=('6f9d8115bb3df582c0c5674507e906323b680be0f0b15e735d0cd5ec6be44444')
 sha256sums_aarch64=('4e3e86739fe527c6891dbfa73799a5ec1b11f45898aaebf73bf3247c2e6a53dd')
@@ -108,6 +110,7 @@ prepare() {
 
   cd firedragon-source-v"${_pkgver}" || exit
 
+  patch -Nsp1 -i "$srcdir"/fix-wasm32-wasi-target.patch
   patch -Nsp1 -i "$srcdir"/0023-bgo-969412-glibc-2.43.patch
   sed -i -e 's/\("files":{\)[^}]*/\1/' third_party/rust/glslopt/.cargo-checksum.json
 
