@@ -1,21 +1,21 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-snapshot
-pkgver=26.02.8arch
+pkgver=26.03.2arch
 pkgrel=1
 pkgdesc="A tool for creating live ISO images from running systems"
 arch=('x86_64' 'i686')
 url="https://mxlinux.org"
 license=('GPL3')
-depends=('qt6-base' 'polkit' 'squashfs-tools' 'xorriso' 'mx-iso-template-arch')
+depends=('qt6-base' 'polkit' 'squashfs-tools' 'xorriso' 'mx-iso-template-arch' 'lsb-release')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 conflicts=('mx-remaster-live-files')
 replaces=('mx-remaster-live-files')
 provides=('mx-remaster-live-files=1.0.0')
-source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.02.8arch.tar.gz")
-sha256sums=('6bf228d62149d63befa60184e2046410f14fd476065181032f9ac9e68f8909fb')
+source=("https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.03.2arch.tar.gz")
+sha256sums=('4bddc71fb45d65c23c8ff5478b8305dc6f143773b421e8bd29a6e371bac205e6')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}"/mx-snapshot*-"${pkgver}"
 
     rm -rf build
 
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}"/mx-snapshot*-"${pkgver}"
 
     install -Dm755 build/mx-snapshot "${pkgdir}/usr/bin/mx-snapshot"
 
@@ -46,7 +46,7 @@ package() {
     cp -a scripts-arch/* "${pkgdir}/usr/share/iso-snapshot-cli/scripts/"
 
     install -dm755 "${pkgdir}/usr/lib/mx-snapshot"
-    install -Dm755 polkit/helper "${pkgdir}/usr/lib/mx-snapshot/helper"
+    install -Dm755 build/helper "${pkgdir}/usr/lib/mx-snapshot/helper"
     install -Dm755 polkit/snapshot-lib "${pkgdir}/usr/lib/mx-snapshot/snapshot-lib"
 
     install -dm755 "${pkgdir}/usr/share/polkit-1/actions"

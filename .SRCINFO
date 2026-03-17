@@ -14,10 +14,11 @@ pkgbase = mx-snapshot
 	depends = squashfs-tools
 	depends = xorriso
 	depends = mx-iso-template-arch
+	depends = lsb-release
 	provides = mx-remaster-live-files=1.0.0
 	conflicts = mx-remaster-live-files
 	replaces = mx-remaster-live-files
-	source = https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.02.8arch.tar.gz
-	sha256sums = 6bf228d62149d63befa60184e2046410f14fd476065181032f9ac9e68f8909fb
+	source = https://github.com/MX-Linux/mx-snapshot/archive/refs/tags/26.03.2arch.tar.gz
+	sha256sums = 4bddc71fb45d65c23c8ff5478b8305dc6f143773b421e8bd29a6e371bac205e6
 
 pkgname = mx-snapshot
