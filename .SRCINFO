@@ -1,0 +1,15 @@
+pkgbase = glyph-md-bin
+	pkgdesc = A modern, cross-platform markdown viewer
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/hamidfzm/glyph
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = glyph
+	conflicts = glyph
+	source = https://github.com/hamidfzm/glyph/releases/download/v0.1.2/Glyph_0.1.2_amd64.deb
+	sha256sums = 38a131a76b32123f7a6baa1f7d6a6b5925db89539a68dce14ecc0eeaf266b95d
+
+pkgname = glyph-md-bin
