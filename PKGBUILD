@@ -1,5 +1,5 @@
 pkgname=servhub
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="ServHub — Custom Linux App Store"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('flatpak')
 options=('!strip')
 source=("https://github.com/B5aaR/servhub-store/releases/download/v${pkgver}/ServHub-${pkgver}.AppImage")
-sha256sums=('312d99339d64a82c8689fc0ec6e7a79f62b5e20e343cd201e07e533e157e1aa7')
+sha256sums=('b36c161fb87255d0cb9742ad64c0a80c5f70cf1b5f495de181fc0acd3d9ad5be')
 
 package() {
     # Install the AppImage as a global system command
