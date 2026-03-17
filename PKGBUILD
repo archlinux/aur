@@ -6,6 +6,7 @@ pkgdesc="A few niche audio effects and synthesizers"
 arch=('x86_64')
 url="https://zynskey.nekoweb.org/paws"
 license=('GPL-3.0-or-later')
+groups=('lv2-plugins' 'pro-audio')Ã
 depends=('lv2')
 makedepends=('git' 'cmake' 'make' 'lv2')
 source=("git+https://codeberg.org/zynskeyfolf/paws-lv2")
