@@ -6,7 +6,7 @@
 pkgname="transistor-git"
 _pkgname="transistor"
 pkgver=r10.a1eaf2d3
-pkgrel=1
+pkgrel=2
 pkgdesc="Internet radio player that provides access to a station database with over 50,000 stations."
 url="https://gitlab.com/driglu4it/transistor"
 arch=('x86_64' 'aarch64')
@@ -23,7 +23,6 @@ makedepends=(
   'extra-cmake-modules'
   'git'
   'gcc'
-  'binutils'
   'ninja'
 )
 

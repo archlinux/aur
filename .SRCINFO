@@ -1,7 +1,7 @@
 pkgbase = transistor-git
 	pkgdesc = Internet radio player that provides access to a station database with over 50,000 stations.
 	pkgver = r10.a1eaf2d3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/driglu4it/transistor
 	arch = x86_64
 	arch = aarch64
@@ -10,7 +10,6 @@ pkgbase = transistor-git
 	makedepends = extra-cmake-modules
 	makedepends = git
 	makedepends = gcc
-	makedepends = binutils
 	makedepends = ninja
 	depends = qt6-base
 	depends = qt6-declarative
