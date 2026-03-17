@@ -1,0 +1,17 @@
+ build.rs | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/build.rs b/build.rs
+index 0e0cc2c..1fcd0bd 100644
+--- a/build.rs
++++ b/build.rs
+@@ -8,7 +8,8 @@ fn main() {
+ 
+     // Write to OUT_DIR so `cargo publish` verification passes (build scripts
+     // must not modify files outside OUT_DIR).
+-    let out_dir = PathBuf::from(std::env::var("OUT_DIR").unwrap());
++    let out_dir = PathBuf::from(std::env::var("MAN_OUT_DIR").unwrap());
++    std::fs::create_dir_all(&out_dir).unwrap();
+ 
+     let cmd = <cli::Cli as clap::CommandFactory>::command();
+     let man = clap_mangen::Man::new(cmd);

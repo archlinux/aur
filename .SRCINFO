@@ -1,0 +1,20 @@
+pkgbase = deadbranch-git
+	pkgdesc = Clean up stale git branches safely.
+	pkgver = 0.1.0.r55.g7749df2
+	pkgrel = 1
+	url = https://github.com/armgabrielyan/deadbranch
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = patch
+	provides = deadbranch
+	conflicts = deadbranch
+	conflicts = deadbranch-bin
+	options = !lto
+	source = deadbranch::git+https://github.com/armgabrielyan/deadbranch.git#branch=main
+	source = read-man-dir-from-env.patch
+	sha256sums = SKIP
+	sha256sums = 4018a4f5366bb8ef156d29ec73948b1b6ed5446da3e6847ade0f612d7744419c
+
+pkgname = deadbranch-git
