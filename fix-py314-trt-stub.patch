@@ -1,0 +1,119 @@
+--- a/py/torch_tensorrt/_TensorRTProxyModule.py
++++ b/py/torch_tensorrt/_TensorRTProxyModule.py
+@@ -159,6 +159,12 @@
+     # Import the appropriate package
+     try:
+         target_module = importlib.import_module(package_name)
++        # Validate it is a real TensorRT package, not a namespace package or stale stub
++        if not hasattr(target_module, "__version__"):
++            raise ImportError(
++                f"{package_name} imported but has no __version__; "
++                "likely a namespace package or broken install"
++            )
+         proxy = TensorRTProxyModule(target_module)
+         proxy._package_name = package_name
+         sys.modules["tensorrt"] = proxy
+@@ -226,5 +232,101 @@
+             for lib in LINUX_LIBS:
+                 ctypes.CDLL(_find_lib(lib, LINUX_PATHS))
+ 
++        # The Python tensorrt package is unavailable (cp313-only; running cp314).
++        # The C++ libnvinfer runtime was loaded above via ctypes.
++        # Install a deep-proxy stub in sys.modules so torch_tensorrt can be imported
++        # under Python 3.14 and used for runtime inference on pre-compiled TRT engines.
++        #
++        # The stub supports nested attribute access (trt.InterpolationMode.LINEAR, etc.)
++        # so that module-level code in dynamo/conversion/impl/*.py that builds lookup
++        # tables with TRT enum values can run without error at import time.
++        # Any attempt to INSTANTIATE a TRT API class raises RuntimeError with a clear
++        # message directing the user to python3.13 for compilation tasks.
++        import types as _types
+ 
+-alias_tensorrt()
++        if use_rtx:
++            from torch_tensorrt._version import __tensorrt_rtx_version__ as _trt_ver
++        else:
++            from torch_tensorrt._version import __tensorrt_version__ as _trt_ver
++
++        # Cache of placeholder classes keyed by canonical TRT path.
++        # Caching ensures trt.ITensor and trt.tensorrt.ITensor return the SAME
++        # class object, so identity checks in enforce_tensor_types pass correctly.
++        _trt_cache = {}
++
++        class _TRTPlaceholderMeta(type):
++            """Metaclass: intercept class-level attribute access for chained enum lookups."""
++            def __getattr__(cls, name):
++                key = f"{cls.__trt_path__}.{name}"
++                if key not in _trt_cache:
++                    _trt_cache[key] = type(name, (_TRTPlaceholder,), {
++                        "__trt_path__": key,
++                    })
++                return _trt_cache[key]
++
++        class _TRTPlaceholder(metaclass=_TRTPlaceholderMeta):
++            """Placeholder for any TensorRT Python API object when cp313 bindings unavailable."""
++            __trt_path__ = "trt.?"
++
++            def __init__(self, *args, **kwargs):
++                raise RuntimeError(
++                    f"TensorRT Python API ({self.__class__.__trt_path__!r}) requires "
++                    "Python 3.13 bindings (cp313-only wheel). "
++                    "Use python3.13 for TRT model compilation."
++                )
++
++            def __init_subclass__(cls, **kwargs):
++                pass
++
++            def __class_getitem__(cls, item):
++                return cls
++
++            def __getattr__(self, name):
++                key = f"{self.__class__.__trt_path__}.{name}"
++                if key not in _trt_cache:
++                    _trt_cache[key] = type(name, (_TRTPlaceholder,), {
++                        "__trt_path__": key,
++                    })
++                return _trt_cache[key]
++
++        class _TRTNestedProxy:
++            """Proxy for trt.tensorrt submodule: delegates to top-level __getattr__
++            so trt.tensorrt.ITensor returns the same cached class as trt.ITensor.
++            This makes enforce_tensor_types identity checks succeed."""
++            def __getattr__(self, name):
++                return _trt_module_getattr(name)
++
++        _trt_nested_proxy = _TRTNestedProxy()
++
++        def _trt_module_getattr(name):
++            # trt.tensorrt delegates to the top-level cache so trt.tensorrt.X == trt.X
++            if name == "tensorrt":
++                return _trt_nested_proxy
++            if name not in _trt_cache:
++                _trt_cache[name] = type(name, (_TRTPlaceholder,), {
++                    "__trt_path__": f"trt.{name}",
++                })
++            return _trt_cache[name]
++
++        import importlib.machinery as _im
++        _stub = _types.ModuleType("tensorrt")
++        _stub.__version__ = _trt_ver
++        _stub._package_name = package_name
++        _stub.__path__ = []    # required for find_spec("tensorrt.plugin") to return None
++        _stub.__file__ = None  # prevents inspect.getsourcefile from hitting __getattr__
++        _stub.__package__ = "tensorrt"
++        _stub.__doc__ = "TensorRT stub (cp313 bindings unavailable under Python 3.14)"
++        # Build a valid ModuleSpec so importlib.util.find_spec("tensorrt") doesn't
++        # raise ValueError("tensorrt.__spec__ is None").
++        # is_package=True sets submodule_search_locations=[] so sub-package
++        # lookups like find_spec("tensorrt.plugin") cleanly return None.
++        _stub_spec = _im.ModuleSpec("tensorrt", loader=None, is_package=True)
++        _stub_spec.submodule_search_locations = []
++        _stub.__spec__ = _stub_spec
++        _stub.__loader__ = None
++        _stub.__getattr__ = _trt_module_getattr
++        sys.modules["tensorrt"] = _stub
++        package_imported = True
++
++
++alias_tensorrt()
+\ No newline at end of file

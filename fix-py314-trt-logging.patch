@@ -1,0 +1,16 @@
+--- a/py/torch_tensorrt/logging.py
++++ b/py/torch_tensorrt/logging.py
+@@ -28,7 +28,12 @@
+             _LOGGER.debug(msg)
+ 
+ 
+-TRT_LOGGER = _TRTLogger()
++try:
++    TRT_LOGGER = _TRTLogger()
++except (RuntimeError, TypeError, AttributeError):
++    # TRT Python API unavailable (cp313-only bindings, running cp314).
++    # TRT_LOGGER is only needed for active model compilation, not runtime inference.
++    TRT_LOGGER = None  # type: ignore[assignment]
+ 
+ 
+ class internal_errors:

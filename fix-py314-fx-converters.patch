@@ -1,0 +1,15 @@
+--- a/py/torch_tensorrt/fx/converters/__init__.py
++++ b/py/torch_tensorrt/fx/converters/__init__.py
+@@ -14,5 +14,10 @@
+     from .aten_ops_converters import *  # noqa: F401 F403
+     from .nn_ops_converters import *  # noqa: F401 F403
+ 
+-    TRT_LOGGER = trt.Logger()
+-    trt.init_libnvinfer_plugins(TRT_LOGGER, "")
++    try:
++        TRT_LOGGER = trt.Logger()
++        trt.init_libnvinfer_plugins(TRT_LOGGER, "")
++    except (RuntimeError, AttributeError):
++        # TRT Python bindings unavailable (cp313-only); C++ runtime loaded via ctypes.
++        # FX-path compilation requires python3.13; runtime inference still works.
++        TRT_LOGGER = None

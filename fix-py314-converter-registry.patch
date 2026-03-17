@@ -1,0 +1,24 @@
+--- a/py/torch_tensorrt/dynamo/conversion/_ConverterRegistry.py
++++ b/py/torch_tensorrt/dynamo/conversion/_ConverterRegistry.py
+@@ -632,11 +632,17 @@
+     CallingConvention.CTX,
+ ]
+ if torch_tensorrt.ENABLED_FEATURES.fx_frontend:
+-    from torch_tensorrt.fx.converter_registry import CONVERTERS as FX_CONVERTERS
++    try:
++        from torch_tensorrt.fx.converter_registry import CONVERTERS as FX_CONVERTERS
+ 
+-    registries.append(FX_CONVERTERS)
+-    registry_names.append("FX Legacy ATen Converters Registry")
+-    registry_calling_conventions.append(CallingConvention.LEGACY)
++        registries.append(FX_CONVERTERS)
++        registry_names.append("FX Legacy ATen Converters Registry")
++        registry_calling_conventions.append(CallingConvention.LEGACY)
++    except Exception:
++        # FX frontend import failed (e.g. TRT Python bindings unavailable or
++        # sympy/mpmath version mismatch under Python 3.14). FX path is legacy;
++        # the dynamo frontend provides equivalent functionality.
++        pass
+ 
+ 
+ DYNAMO_CONVERTERS: ConverterRegistry = ConverterRegistry(
