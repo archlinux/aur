@@ -19,6 +19,12 @@ pkgver() {
     git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd "$srcdir/$pkgname"
+    # Remove invalid trove classifier that causes build failure with Python 3.14+
+    sed -i '/"Topic :: System :: Archiving :: Sync"/d' pyproject.toml
+}
+
 # Use system Python so venv in PATH does not break the build (python-build, python-installer from pacman).
 build() {
     cd "$srcdir/$pkgname"
