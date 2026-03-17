@@ -3,7 +3,7 @@
 
 pkgname=poezio
 pkgver=0.15.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A full-featured command-line IRC-like XMPP (Jabber) client"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://poez.io"
@@ -20,6 +20,10 @@ sha256sums=('d2919b76f3ee7f53ce871c795e91a749ca2fafbf77aeed8f0b9e5cc5f5bcae63')
 build() {
     cd "$pkgname"
     rm -f dist/*.whl
+    sphinx-build -b man doc/source build/sphinx/man
+    sphinx-build doc/source build/sphinx/html
+    # TODO: remove on next poezio release
+    sed -i '/sphinx/d' pyproject.toml
     python -m build --wheel --no-isolation
 }
 
