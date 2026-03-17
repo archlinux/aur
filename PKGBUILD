@@ -27,3 +27,5 @@ package() {
     echo "python3 /usr/share/hexatyping/hexatyping.py \"\$@\"" >> "$pkgdir/usr/bin/hexatyping"
     chmod 755 "$pkgdir/usr/bin/hexatyping"
 }
+echo "# Force Update 💀" >> PKGBUILD
+# Force Update 💀
