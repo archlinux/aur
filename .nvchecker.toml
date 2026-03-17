@@ -1,0 +1,3 @@
+[ansinews]
+source = "npm"
+npm = "ansinews"

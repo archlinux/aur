@@ -1,0 +1,22 @@
+pkgbase = ansinews
+	pkgdesc = A minimal RSS reader for terminal, web, and AI agents
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/lelesrc/ansinews
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = nodejs
+	provides = ansinews
+	replaces = nodejs-ansinews
+	noextract = ansinews-0.3.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = ansinews-0.3.0.tgz::https://registry.npmjs.org/ansinews/-/ansinews-0.3.0.tgz
+	b2sums = 3797749b786d27d9fea037d902d98823e2c94ef4d39c06041827b2f0585165e8077962f6bc118dde2e724e9d56b649e162609ed0d4f21202c8ce0da97d4e6947
+
+pkgname = ansinews
