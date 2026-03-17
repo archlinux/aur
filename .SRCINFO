@@ -1,17 +1,19 @@
 pkgbase = jupyter-matlab_kernel
 	pkgdesc = A Jupyter kernel for Matlab
 	pkgver = 0.17.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Calysto/matlab_kernel
 	arch = any
-	license = custom
-	makedepends = python-wurlitzer
-	depends = jupyter-metakernel
-	depends = python-jupyter_client
-	depends = ipython
-	optdepends = matlab: Runtime dependency on MATLAB
-	optdepends = python-matlabengine: Runtime dependency on python API for MATLAB
-	source = https://github.com/Calysto/matlab_kernel/archive/refs/tags/0.17.1.tar.gz
+	license = BSD-3-Clause
+	makedepends = python-wurlitzer>=1.0.2
+	depends = ipython>=4.0.0
+	depends = jupyter-metakernel>=0.23.0
+	depends = python
+	depends = python-jupyter-client>=4.4.0
+	depends = python-matlabengine
+	provides = python-matlab_kernel=0.17.1
+	conflicts = python-matlab_kernel
+	source = python-matlab_kernel-0.17.1.tar.gz::https://github.com/Calysto/matlab_kernel/archive/refs/tags/0.17.1/matlab_kernel-0.17.1.tar.gz
 	sha256sums = e40cfe65eb5e09cb6393a309400107c10ede3ae76fff02db737d52631a2938db
 
 pkgname = jupyter-matlab_kernel

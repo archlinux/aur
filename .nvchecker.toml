@@ -1,0 +1,4 @@
+[jupyter-matlab_kernel]
+source = "git"
+git = "https://github.com/Calysto/matlab_kernel.git"
+prefix = "v"
