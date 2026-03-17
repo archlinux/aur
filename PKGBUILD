@@ -8,14 +8,14 @@
 # Profile with xvfb-run, if possible
 : ${_build_pgo_xvfb:=false}
 
-_pkgver=12.9.0
+_pkgver=12.9.1
 _deno_ver=2.4.5
 
 __pkgname=firedragon
 pkgname=$__pkgname-catppuccin
 _pkgname=FireDragon
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc="Floorp fork build using custom branding and settings"
 url='https://firedragon.garudalinux.org'
@@ -79,7 +79,7 @@ source=(firedragon-source-v"$_pkgver".tar.zst::https://gitlab.com/garuda-linux/f
         0023-bgo-969412-glibc-2.43.patch)
 source_x86_64=(deno-x86_64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-x86_64-unknown-linux-gnu.zip)
 source_aarch64=(deno-aarch64-v$"$_deno_ver".zip::https://github.com/denoland/deno/releases/download/v"$_deno_ver"/deno-aarch64-unknown-linux-gnu.zip)
-sha256sums=('cd0d3d3f99116ddad2af59442ea5730790a89c4ae2de8c4a36712aedfeb38367'
+sha256sums=('2431a463d63d0c33fe765aab607cbf43ca5fbceeca3e5a64b2514bba6fd63955'
             '61355930cc59813e7e610ffdab8a01e32be980fffe1dfd8f9654b8f8f9f7fdc0'
             '25e8f2e706aa837f5b6e3c003a6c7f42b07f0a7366d10f9e0d5ad38053767aae')
 sha256sums_x86_64=('6f9d8115bb3df582c0c5674507e906323b680be0f0b15e735d0cd5ec6be44444')
