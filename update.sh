@@ -5,8 +5,18 @@ set -e
 ver=$(curl -sL https://api.github.com/repos/akiver/cs-demo-manager/releases/latest \
   | jq -r ".tag_name")
 ver=${ver:1}
+current=$(rg PKGBUILD -e 'pkgver=' | cut -d "=" -f 2)
 
-echo Found version $ver. Adjusting PGKBUILD.
+echo Latest: $ver. Current: $current
+if [ $ver = $current ]; then
+  echo Nothing to do
+  exit
+fi
+
+# make sure we don't have outdated tree
+git fetch
+git pull
+
 # adjust PKGBUILD
 sed -i.old "s/pkgver=\(.*\)/pkgver=$ver/" PKGBUILD
 updpkgsums
