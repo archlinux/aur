@@ -1,7 +1,7 @@
 # Maintainer: tobast <contact at tobast dot fr>
 
 pkgname=choria-cm
-pkgver=0.0.18
+pkgver=0.0.19
 pkgrel=1
 pkgdesc="Choria Configuration Management"
 arch=('any')
@@ -9,8 +9,8 @@ url="https://github.com/choria-io/ccm"
 license=('Apache-2.0')
 depends=()
 makedepends=('go')
-source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v0.0.18.tar.gz")
-sha256sums=('6dffe20a48f15e5f100ca969075da02624dc51b86072ba339ab7dc23c0a1ebae')
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
+sha256sums=('251ac9d05880317b53f78d893b300e282d1e44f3d489945a313255e1228b680c')
 
 _archive_name='ccm'
 
