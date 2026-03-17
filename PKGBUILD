@@ -14,7 +14,7 @@ _name=colmap
 #fragment="#commit=5bea89263bf5f3ed623b8e6e6a5f022a0ed9c1de"
 pkgname=${_name}-git
 pkgver=4.1.0.dev0.r9.g60512ed2f
-pkgrel=1
+pkgrel=2
 pkgdesc="General-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface."
 arch=('i686' 'x86_64')
 url="https://colmap.github.io/"
@@ -25,8 +25,11 @@ conflicts=("$_name")
 depends=('cgal' 'ceres-solver' 'gflags' 'metis' 'openimageio' 'suitesparse' 'freeglut' 'glew' 'google-glog' 'freeimage' 'libjpeg' 'boost-libs' 'qt5-base' 'flann')
 makedepends=('boost' 'cmake' 'eigen' 'git' 'ninja' 'python-sphinx' )
 if [ "$_BUILD_CUDA" == "ON" ] ; then 
+  depends+=('onnxruntime-cuda' 'protobuf')
   makedepends+=('cuda')
   optdepends+=('libcudart.so: required for dense reconstruction')
+else
+  depends+=('onnxruntime-cpu' 'protobuf')
 fi
 source=("${pkgname}::git+https://github.com/colmap/colmap.git${_fragment}"
         "vocabulary-tree-32K.bin::https://demuc.de/colmap/vocab_tree_flickr100K_words32K.bin"
@@ -69,6 +72,7 @@ build() {
 
   _CMAKE_FLAGS+=( -DTESTS_ENABLED=OFF
                   -DCMAKE_BUILD_TYPE=${BUILD_TYPE}
+                  -DFETCH_ONNX=OFF
                   -DCMAKE_INSTALL_PREFIX=/usr )
   cmake "${_CMAKE_FLAGS[@]}" -G Ninja -S "$pkgname" -B build
 # shellcheck disable=SC2046 # allow MAKEFLAGS to carry multiple flags.
