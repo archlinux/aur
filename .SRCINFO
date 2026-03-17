@@ -1,6 +1,6 @@
 pkgbase = python-amulet-core
 	pkgdesc = A Python library for reading and writing the Minecraft save formats. See Amulet for the actual editor.
-	pkgver = 1.9.37
+	pkgver = 1.9.38
 	pkgrel = 1
 	url = https://github.com/Amulet-Team/Amulet-Core
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-amulet-core
 	depends = python-portalocker
 	depends = python-leveldb
 	depends = python-amulet-leveldb
-	source = git+https://github.com/Amulet-Team/Amulet-Core.git#tag=1.9.37
-	md5sums = d3c6609f05ac6c55c16876c210e7584a
+	source = git+https://github.com/Amulet-Team/Amulet-Core.git#tag=1.9.38
+	md5sums = a349891af0f01e7a5306c734ce2823ed
 
 pkgname = python-amulet-core
