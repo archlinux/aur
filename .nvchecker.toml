@@ -1,0 +1,4 @@
+[rgx-cli]
+source = "git"
+git = "https://github.com/brevity1swos/rgx.git"
+prefix = "v"
