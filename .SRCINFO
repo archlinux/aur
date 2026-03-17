@@ -1,0 +1,23 @@
+pkgbase = seemux-bin
+	pkgdesc = A GTK4 terminal multiplexer for Linux with Claude Code integration
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/asermax/seemux
+	arch = x86_64
+	license = LicenseRef-unknown
+	depends = gtk4
+	depends = gtk4-layer-shell
+	depends = vte4
+	depends = glib2
+	depends = pango
+	depends = glibc
+	optdepends = socat: Claude Code hook communication
+	provides = seemux
+	conflicts = seemux
+	conflicts = seemux-git
+	source = seemux-0.4.0.tar.gz::https://github.com/asermax/seemux/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 6fd68eef41d068650c3e4d640be21a68da7bcaef578c9462e86c4421a587f50c
+	source_x86_64 = seemux-bin-0.4.0::https://github.com/asermax/seemux/releases/download/v0.4.0/seemux-linux-x86_64
+	sha256sums_x86_64 = 509d4e8da6e91ea9ab778a9d99d212568c8f23b44459f6dd770455e51c917031
+
+pkgname = seemux-bin
