@@ -1,0 +1,14 @@
+pkgbase = inkaur
+	pkgdesc = A simple, lightweight, and fast AUR helper written in C
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lvitals/inkaur
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = curl
+	depends = pacman
+	source = inkaur-0.1.0.tar.gz::https://github.com/lvitals/inkaur/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = inkaur
