@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgname=zeroclaw
-pkgver=0.3.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Zero overhead, fully autonomous AI assistant runtime (100% Rust)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/zeroclaw-labs/${pkgname}/ar
         "zeroclaw.service"
         "zeroclaw.sysusers"
         "zeroclaw.tmpfiles")
-sha256sums=('929241d33d4cb21c462374aec0b6630ad3cc194d5367d5f0cee83136e1b59771'
+sha256sums=('979d4caab3d5c830477ea34311acd910ca55158bfad29223a36c9cd8acfee7ac'
             'de97ac176531d176ac627bd031e8a79f7adb5a440f321c9b9b0a492fda1154ee'
             '5e22a9f53bab669beab7058c8b7d1c2b090eb7900fb8c9bd94fd3ad609e7afbf'
             '07911d8ca762bc87daf58e7d72ad9067517baedaeccd65f2ae7609962af8216f')
@@ -34,6 +34,18 @@ prepare() {
     msdk_lib=$(find "$srcdir/.cargo-home/registry/src" -path '*/matrix-sdk-0.16.*/src/lib.rs' 2>/dev/null | head -1)
     if [[ -n "$msdk_lib" ]] && ! grep -q 'recursion_limit' "$msdk_lib"; then
         sed -i '1s/^/#![recursion_limit = "256"]\n/' "$msdk_lib"
+    fi
+
+    # Workaround for upstream bug (zeroclaw 0.4.3): OtelObserver::record_event match
+    # is missing CacheHit and CacheMiss arms added in this release (otel.rs line ~431).
+    # Fix: insert no-op arms before the closing brace of the match block.
+    local otel_rs="src/observability/otel.rs"
+    if grep -q 'ObserverEvent::HandFailed' "$otel_rs" && ! grep -q 'ObserverEvent::CacheHit' "$otel_rs"; then
+        # Find the line number of the match-closing `        }` that is immediately
+        # followed by `    }` (closes record_event) then a blank line then `fn record_metric`.
+        local match_close
+        match_close=$(awk '/^        \}$/{l=NR} /fn record_metric/{print l; exit}' "$otel_rs")
+        sed -i "${match_close}s/^        }/            ObserverEvent::CacheHit { .. } | ObserverEvent::CacheMiss { .. } => {}\n        }/" "$otel_rs"
     fi
 }
 
