@@ -1,7 +1,7 @@
 pkgbase = hyper-headset-bin
-	pkgdesc = HyperX headset family utilities (bin)
+	pkgdesc = A CLI and tray application for monitoring and managing HyperX headsets. (bin)
 	pkgver = 1.5.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/LennardKittner/HyperHeadset
 	install = hyper-headset-bin.install
 	arch = x86_64
