@@ -19,8 +19,10 @@ LISTE=""
 if [ "$MODE" == "All-In (Tout installer)" ]; then
     LISTE="nvidia-dkms nvidia-utils lib32-nvidia-utils steam discord networkmanager nm-connection-editor bluez bluez-utils git base-devel lutris heroic-games-launcher-bin wine-staging winetricks gamemode lib32-gamemode mangohud lib32-mangohud giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap vulkan-icd-loader lib32-vulkan-icd-loader"
 else
-    CAT=$(gum choose --no-limit --header "Catégories (Espace pour cocher) :" "Gaming" "Système")
-
+    while true; do
+    CAT=$(gum choose --header "Catégories (Espace pour cocher) :" "Gaming" "Système")
+    if [ "$CAT" == "Annuler" ]; then exit 0; fi
+        if [ "$CAT" == "--- Terminer et Installer ---" ] || [ -z "$CAT" ]; then break; fi
     if [[ $CAT == *"Gaming"* ]]; then
         GAMING_CHOICE=$(gum choose --no-limit --header "Jeux :" "steam" "lutris" "heroic-games-launcher-bin" "wine-staging")
         LISTE="$LISTE $GAMING_CHOICE"
@@ -30,9 +32,11 @@ else
         SYSTEM_CHOICE=$(gum choose --no-limit --header "Système :" "nvidia-dkms" "discord" "bluez" "lib32-nvidia-utils" "networkmanager" "nm-connection-editor" "bluez-utils" "git" "base-devel" "giflib" "lib32-giflib" "libpng" "lib32-libpng" "libldap" "lib32-libldap" "vulkan-icd-loader" "lib32-vulkan-icd-loader")
         LISTE="$LISTE $SYSTEM_CHOICE"
     fi
+    echo "Sélection actuelle ajoutée. Tu peux choisir une autre catégorie ou terminer." | gum format
+    done
 fi
 
-FINAL_LIST=$(echo "$LISTE" | tr '\n' ' ' | xargs)
+FINAL_LIST=$(echo "$LISTE" | tr '\n' ' ' | xargs -n1 | sort -u |xargs)
 
 if [ -n "$FINAL_LIST" ]; then
     echo "## Préparation de l'installation de :" | gum format
