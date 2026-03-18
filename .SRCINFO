@@ -1,6 +1,6 @@
 pkgbase = dwarfs-git
 	pkgdesc = A fast high compression read-only file system
-	pkgver = 0.14.0.r0.g35dc3e1
+	pkgver = 0.15.0.r0.g95330ba
 	pkgrel = 1
 	url = https://github.com/mhx/dwarfs
 	arch = x86_64

@@ -7,7 +7,7 @@
 
 _pkgname="dwarfs"
 pkgname="$_pkgname-git"
-pkgver=0.14.0.r0.g35dc3e1
+pkgver=0.15.0.r0.g95330ba
 pkgrel=1
 pkgdesc="A fast high compression read-only file system"
 url="https://github.com/mhx/dwarfs"
@@ -115,5 +115,5 @@ package() {
   ln -sf dwarfs "$pkgdir/usr/bin/mount.dwarfs"
 
   # license
-  install -Dm644 "$_pkgsrc"/LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 "$_pkgsrc"/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
