@@ -1,0 +1,21 @@
+pkgbase = radii5-bin
+	pkgdesc = CLI music downloader powered by yt-dlp with parallel chunk downloading and automatic ID3 tagging
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/radii5/music
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = yt-dlp
+	provides = radii5
+	conflicts = radii5
+	source = README-0.3.2.md::https://raw.githubusercontent.com/radii5/music/v0.3.2/README.md
+	source = LICENSE-0.3.2::https://raw.githubusercontent.com/radii5/music/v0.3.2/LICENSE
+	sha256sums = 4a6260f06d441975156b1fef76b076f0825e27874509152490b92c28a9de571c
+	sha256sums = ecc5ba38ce439ae76319a651a9e4f84671fb2d2ed1ed3f4c0c10eccce8b491e6
+	source_x86_64 = radii5-x86_64-0.3.2::https://github.com/radii5/music/releases/download/v0.3.2/radii5-linux-amd64
+	sha256sums_x86_64 = f8d4ef14d4154396b739fc55415e487f8193127692bf96ff2408f421b7618603
+	source_aarch64 = radii5-aarch64-0.3.2::https://github.com/radii5/music/releases/download/v0.3.2/radii5-linux-arm64
+	sha256sums_aarch64 = 8779e969c7e720501b10a995214980ef2edffc56c67627ad4654a873d7e66fd8
+
+pkgname = radii5-bin

@@ -1,0 +1,5 @@
+[radii5-bin]
+source = "github"
+github = "radii5/music"
+use_latest_release = true
+prefix = "v"
