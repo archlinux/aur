@@ -10,15 +10,31 @@
 _music='sc55' # (sc55/opl3)
 
 pkgbase=dxx-rebirth-git
-pkgname=('d1x-rebirth-git' 'd2x-rebirth-git')
-pkgver=0.60.0.beta2.r3132.g5b8dc756f
+pkgname=(
+    'd1x-rebirth-git'
+    'd2x-rebirth-git')
+pkgver=0.60.0.beta2.r3919.gf40f9c006
 pkgrel=1
 pkgdesc='A source port of the Descent and Descent 2 engines (git version)'
 arch=('x86_64')
 url='https://www.dxx-rebirth.com/'
-license=('GPL-3.0-only' 'LicenseRef-Parallax-License')
-depends=('glu' 'libgl' 'libpng' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'physfs')
-makedepends=('git' 'scons')
+license=(
+    'GPL-3.0-only'
+    'LicenseRef-Parallax-License')
+depends=(
+    'glibc'
+    'glu'
+    'libgcc'
+    'libgl'
+    'libpng'
+    'libstdc++'
+    'sdl2'
+    'sdl2_image'
+    'sdl2_mixer'
+    'physfs')
+makedepends=(
+    'git'
+    'scons')
 source=('git+https://github.com/dxx-rebirth/dxx-rebirth.git'
         'https://www.dxx-rebirth.com/d1x-rebirth_addons.zip'
         'https://www.dxx-rebirth.com/d2x-rebirth_addons.zip')
