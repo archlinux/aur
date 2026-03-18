@@ -28,10 +28,8 @@ prepare() {
   cd "${srcdir}"
   git clone https://github.com/BRL-CAD/bext
   cd bext
-  # Apply patches from source array
-  for p in "${srcdir}"/*.patch; do
-    patch -Np1 -i "$p"
-  done
+  # Apply patches explicitly
+  patch -Np1 -i "${srcdir}/fix-utahrle-gcc15.patch"
 }
 
 build() {
