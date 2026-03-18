@@ -1,6 +1,6 @@
 pkgbase = python-ocp-vscode
 	pkgdesc = OCP CAD Viewer for VSCode (also for Jupyter and standalone)
-	pkgver = 3.0.1
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/bernhard-42/vscode-ocp-cad-viewer
 	arch = any
@@ -19,9 +19,9 @@ pkgbase = python-ocp-vscode
 	depends = python-click
 	depends = python-pyperclip
 	depends = python-questionary
-	source = https://files.pythonhosted.org/packages/source/o/ocp_vscode/ocp_vscode-3.0.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/o/ocp_vscode/ocp_vscode-3.1.2.tar.gz
 	source = ocp-vscode
-	sha256sums = 900811f4dd25af6d1c4496b0291ac6dec6e868f8ea6bfd7f9638a8fa52f365fd
+	sha256sums = 540f66f26c13249a698a0032eaa869f6675ec71ab34c293c5a084b4cf00ec376
 	sha256sums = 4fd564ab59d38072be61cfa5159a297e7222879265ffea94684296bfe550aa26
 
 pkgname = python-ocp-vscode
