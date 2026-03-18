@@ -9,7 +9,7 @@ pkgbase = mpdris
 	license = MIT
 	makedepends = cargo
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
 	optdepends = libsystemd: run mpdris as a service
 	provides = mpdris
 	conflicts = mpdris-bin
@@ -21,6 +21,6 @@ pkgbase = mpdris
 
 pkgname = mpdris
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
 	depends = dbus
 	depends = mpd
