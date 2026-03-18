@@ -1,6 +1,6 @@
 # Maintainer: User8395 <therealuser8395@proton.me>
 pkgname=plasma-dialer
-pkgver=6.6.0
+pkgver=6.6.1
 pkgrel=1
 pkgdesc="Dialer for Plasma Mobile"
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
@@ -21,7 +21,7 @@ depends=(
 )
 makedepends=(cmake extra-cmake-modules)
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('89ef98d20e76099b6f117f5fe49cb06a646dfbe10044d2083f959c5ceb48705a')
+sha256sums=('47c823747a484ef666780805592cbe74083551a281a1af51f0506836b803d8d8')
 
 prepare() {
   mkdir -p build

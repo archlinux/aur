@@ -24,7 +24,7 @@ pkgbase = plasma-dialer
 	depends = modemmanager-qt
 	depends = libphonenumber
 	depends = callaudiod
-	source = https://download.kde.org/stable/plasma/6.6.0/plasma-dialer-6.6.0.tar.xz
-	sha256sums = 89ef98d20e76099b6f117f5fe49cb06a646dfbe10044d2083f959c5ceb48705a
+	source = https://download.kde.org/stable/plasma/6.6.1/plasma-dialer-6.6.1.tar.xz
+	sha256sums = 47c823747a484ef666780805592cbe74083551a281a1af51f0506836b803d8d8
 
 pkgname = plasma-dialer
