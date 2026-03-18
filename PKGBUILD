@@ -7,7 +7,7 @@
 pkgname=librewolf
 _pkgname=LibreWolf
 epoch=1
-pkgver=148.0.2_2
+pkgver=148.0.2_3
 _fixedfirefoxver="${pkgver%_*}" # Version of Firefox this LibreWolf version is based on, but the Firefox patch number is always included
 _librewolfver="${pkgver#*_}"
 _firefoxver="${_fixedfirefoxver%.0}" # Removes ".0" from the end. For "136.0.0" this will result in "136.0" but for "136.0.1" won't do anything.
@@ -67,10 +67,10 @@ makedepends=(
   python-setuptools
   rust
   unzip
-  'wasi-compiler-rt'
-  'wasi-libc++'
-  'wasi-libc++abi'
-  'wasi-libc'
+  wasi-compiler-rt
+  wasi-libc++
+  wasi-libc++abi
+  wasi-libc
   yasm
   zip
   ) # pciutils: only to avoid some PGO warning(?)
@@ -109,14 +109,16 @@ source=(
   https://codeberg.org/api/packages/librewolf/generic/librewolf-source/$_firefoxver-$_librewolfver/librewolf-$_firefoxver-$_librewolfver.source.tar.gz{,.sig}
   https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/fdd14cc14c10c23980b7d707e8f98af4a6d17577/0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
   https://gitlab.archlinux.org/archlinux/packaging/packages/firefox/-/raw/d82490f5db9d55f3e5e61b640c6618ab209aa06b/0004-Fix-sandbox-to-build-with-glibc-2.43.patch
+  llvm22.1-wasi.patch
   $pkgname.desktop
   "default192x192.png"
 )
 
-sha256sums=('659e320b09ab5a71a05c3183e0f0592ea79d707f377fb8c301233e299183876c'
+sha256sums=('e00c0de9330b6655fbfa2e31540d5f02248f6b1959bbece384d4afb1a0d6efa7'
             'SKIP'
             '83857f3531688885b62be0b06583f6815f236edbc43a942830395ec3cbdc7934'
             '8d2182ae8660474ac567482fe6658af77f3b402314e361c846528ae171586245'
+            'a0f78d15c710917f4677842e4175694fb0dd470b51b4fe40bda96e1a9ea332a6'
             '3d6ac59ae9d5ba4c9fe15f95c1338fa68214dec6119f8432336403e3be50f8ae'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1')
 
@@ -198,6 +200,11 @@ fi
   patch -Np1 -i ../0003-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
   # https://bugzilla.mozilla.org/show_bug.cgi?id=2016618
   patch -Np1 -i ../0004-Fix-sandbox-to-build-with-glibc-2.43.patch
+
+  # fix building with llvm > 22.1
+  # this will probably break on manjaro, as they are behind with llvm versions
+  # so if you are on manjaro: comment this out? ^^
+  patch -Np1 -i ../llvm22.1-wasi.patch
 }
 
 
