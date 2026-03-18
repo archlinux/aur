@@ -14,7 +14,7 @@ optdepends=('libappindicator-gtk3: for system tray icon support')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
-source_x86_64=("KiroAccountManager_${pkgver}_amd64.deb::https://github.com/hj01857655/kiro-account-manager/releases/download/v${pkgver}/KiroAccountManager_${pkgver}_amd64.deb")
+source_x86_64=("KiroAccountManager_1.8.3_amd64.deb::https://github.com/hj01857655/kiro-account-manager/releases/download/v1.8.3/KiroAccountManager_1.8.3_amd64.deb")
 sha256sums_x86_64=('de5afed68e98a80a8da430365b4aa5c519e0aa8156218889f9bf9314ef8973be')
 
 package() {
