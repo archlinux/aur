@@ -1,7 +1,7 @@
 pkgbase = spacecal-for-monado
 	pkgdesc = VR Tracking Space Calibrator for Monado/WiVRn
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/99oblivius/spacecal-for-monado
 	arch = x86_64
 	arch = aarch64
@@ -14,6 +14,6 @@ pkgbase = spacecal-for-monado
 	depends = monado
 	optdepends = libcanberra: audio feedback during calibration
 	source = spacecal-for-monado-1.0.0.tar.gz::https://github.com/99oblivius/spacecal-for-monado/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = bb6950f184c4252830afb93068b2c90a09272829ddc796b13d74b3f73c58efb4
+	sha256sums = 41cf4076d2fb37ac12f0fdd9c27b4e86147ab326115f9c83cf7bad257cd05c8f
 
 pkgname = spacecal-for-monado
