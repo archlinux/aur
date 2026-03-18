@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-    cd "$pkgname"
+    cd "$srcdir/rofi-bitwarden"
     mkdir -p build
     cd build
     cmake ..
