@@ -1,0 +1,20 @@
+pkgbase = smartlog-bin
+	pkgdesc = A high-performance TUI for log tailing with JSON auto-detection and real-time filtering
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/felipemorandini/smartlog
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = smartlog
+	conflicts = smartlog
+	source_x86_64 = https://github.com/felipemorandini/smartlog/releases/download/v0.6.0/smartlog-x86_64-unknown-linux-musl.tar.gz
+	source_x86_64 = https://github.com/felipemorandini/smartlog/raw/v0.6.0/LICENSE
+	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = https://github.com/felipemorandini/smartlog/releases/download/v0.6.0/smartlog-aarch64-unknown-linux-musl.tar.gz
+	source_aarch64 = https://github.com/felipemorandini/smartlog/raw/v0.6.0/LICENSE
+	sha256sums_aarch64 = SKIP
+	sha256sums_aarch64 = SKIP
+
+pkgname = smartlog-bin
