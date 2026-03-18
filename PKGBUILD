@@ -2,7 +2,7 @@
 
 _pkgname=dwproton
 pkgname=${_pkgname}-bin
-_srcver=10.0-20
+_srcver=10.0-21
 pkgver=${_srcver//-/_}
 pkgrel=1
 epoch=1
@@ -14,7 +14,7 @@ options=(!strip emptydirs)
 provides=('proton' 'dwproton')
 _srcdir="${_pkgname}-${_srcver}-${CARCH}"
 source=("${url}/releases/download/${_pkgname}-${_srcver}/${_srcdir}.tar.xz")
-sha512sums=('a92b90b847f82d5a3971cd05aaa469819c127e317d2798207a8ec9278018acd9e140816cdcc54fb5c13a3cb8a759b98cdb7e5c1f93bcc75da3d9231761f1f790')
+sha512sums=('af54728b0e52674fc6b8bb37bba4fc8981b3872125aa229e696d633bd7445ab881ff1dd250f4668f763f6286acbf8644da2d854bdb0d6bae3b02e2d92050dca5')
 depends=(
   bash
   coreutils
