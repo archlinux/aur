@@ -1,0 +1,20 @@
+pkgbase = perl-io-async-ssl
+	pkgdesc = use SSL/TLS with IO::Async
+	pkgver = 0.25
+	pkgrel = 1
+	url = https://metacpan.org/release/PEVANS/IO-Async-SSL-0.25
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-io-async
+	checkdepends = perl-test-identity
+	checkdepends = perl-test-simple
+	makedepends = perl-module-build>=0.4004
+	depends = perl-future>=0.33
+	depends = perl-io-async
+	depends = perl-io-socket-ssl>=2.003
+	depends = perl>=5.14.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/IO-Async-SSL-0.25.tar.gz
+	sha256sums = 4def485db1eff4e139b4b5912202c0fd61c3aed2cec35bd5ab8bf7bbd83f5a75
+
+pkgname = perl-io-async-ssl
