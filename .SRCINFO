@@ -1,7 +1,7 @@
 pkgbase = termide-bin
 	pkgdesc = Cross-platform terminal IDE, file manager and virtual terminal (binary release)
 	pkgver = 0.16.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/termide/termide
 	arch = x86_64
 	arch = aarch64

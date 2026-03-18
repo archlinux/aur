@@ -2,7 +2,7 @@
 
 pkgname=termide-bin
 pkgver=0.16.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform terminal IDE, file manager and virtual terminal (binary release)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/termide/termide"
@@ -22,8 +22,4 @@ package() {
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/termide/README.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/termide/LICENSE"
-
-    # Install help files
-    install -Dm644 help/en.txt "$pkgdir/usr/share/termide/help/en.txt"
-    install -Dm644 help/ru.txt "$pkgdir/usr/share/termide/help/ru.txt"
 }
