@@ -1,4 +1,4 @@
-pkgbase = shellforge
+pkgbase = Shellforge
 	pkgdesc = Easy-to-use reverse shell generator
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -7,7 +7,7 @@ pkgbase = shellforge
 	license = GPL-3.0-only
 	makedepends = rust
 	makedepends = cargo
-	source = shellforge-1.0.0.tar.gz::https://github.com/minosariane/Shellforge/archive/refs/tags/1.0.0.tar.gz
+	source = Shellforge-1.0.0.tar.gz::https://github.com/minosariane/shellforge/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = shellforge
+pkgname = Shellforge

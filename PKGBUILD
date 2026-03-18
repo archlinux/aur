@@ -1,5 +1,5 @@
 #Maintainer: Mickael Guillerm <mickael.grm@gmail.com>
-pkgname=shellforge
+pkgname=Shellforge
 pkgdesc='Easy-to-use reverse shell generator'
 pkgver=1.0.0
 pkgrel=1
@@ -8,7 +8,7 @@ url=https://github.com/minosariane/Shellforge
 license=('GPL-3.0-only')
 depends=()
 makedepends=('rust' 'cargo')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/minosariane/Shellforge/archive/refs/tags/1.0.0.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/minosariane/shellforge/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
