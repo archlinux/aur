@@ -1,6 +1,6 @@
 # Maintainer: Enriquefft <https://github.com/Enriquefft>
 pkgname=zq-bin
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='A drop-in replacement for jq, 25x faster, written in Zig'
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('zq')
 
 source_x86_64=("https://github.com/Enriquefft/zq/releases/download/v${pkgver}/zq-${pkgver}-linux-amd64.tar.gz")
 source_aarch64=("https://github.com/Enriquefft/zq/releases/download/v${pkgver}/zq-${pkgver}-linux-arm64.tar.gz")
-sha256sums_x86_64=('a48afe7884a78e89ce6554a64b50068fcf22dba91038f855341b48b3a02a87a3')
-sha256sums_aarch64=('8e81242ca9358f6dd6e46a06e31ce0c1150d6a3d1717fabc411c74a8e2f401bb')
+sha256sums_x86_64=('3a5fc4ba359a284e0d1fb67fc628c44726dcdd872772c0c74ace86c003547c00')
+sha256sums_aarch64=('f418023e891c50ac4b5f0941e448be27843b9e6ed70b75a660bce6bf95139fae')
 
 package() {
     install -Dm755 zq "${pkgdir}/usr/bin/zq"
