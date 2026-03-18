@@ -10,7 +10,7 @@ depends=('gtk3' 'nss' 'libxss' 'libsecret')
 provides=('magicterm')
 conflicts=('magicterm')
 options=('!strip')
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/D3FVLT/MagicTerm/releases/download/v${pkgver}/MagicTerm-${pkgver}-x64.AppImage")
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/D3FVLT/MagicTerm/releases/download/v${pkgver}/MagicTerm-${pkgver}-x86_64.AppImage")
 sha256sums=('SKIP')
 prepare() {
     chmod +x "${pkgname}-${pkgver}.AppImage"
