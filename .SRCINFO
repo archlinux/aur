@@ -1,6 +1,6 @@
 pkgbase = lief
 	pkgdesc = Library to instrument executable formats
-	pkgver = 0.17.5
+	pkgver = 0.17.6
 	pkgrel = 1
 	url = https://github.com/lief-project/lief
 	arch = x86_64
@@ -24,10 +24,13 @@ pkgbase = lief
 	makedepends = python-pathspec
 	makedepends = tl-expected
 	depends = mbedtls
+	depends = libgcc
+	depends = libstdc++
+	depends = glibc
 	optdepends = python: python bindings
 	provides = libLIEF.so
 	conflicts = python-lief
-	source = lief-0.17.5.tar.gz::https://github.com/lief-project/lief/archive/refs/tags/0.17.5.tar.gz
-	sha256sums = 9c15587967d92767573c829a8b5cfe0cd9732db0c07ae78d47dd5baa44f9ab6e
+	source = lief-0.17.6.tar.gz::https://github.com/lief-project/lief/archive/refs/tags/0.17.6.tar.gz
+	b2sums = 5f06b8c35e245cf7a5fc1a394f30e060a939469120c2525bf83c7d9180cc165d11b08a43d5e0a71f7959adeabff4c7d76e52e80fe9ea47360598ff37a1729fad
 
 pkgname = lief
