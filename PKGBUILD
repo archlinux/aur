@@ -1,6 +1,6 @@
 # Maintainer: Jørgen Stråbø <aur@jorgen-10.no>
 pkgname='freeshow-git'
-pkgver='1.5.0.r0.gc8595b0'
+pkgver='1.6.0.beta.1.r0.ga973aac'
 pkgrel='1'
 pkgdesc="A software with a friendly interface and powerful features for making slideshows"
 arch=('x86_64')
