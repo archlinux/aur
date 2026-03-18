@@ -1,0 +1,41 @@
+# Maintainer: Felipe Pires Morandini <felipepiresmorandini@gmail.com>
+# https://github.com/felipemorandini/jwt-term
+
+pkgname=jwt-term-bin
+pkgver=1.1.0
+pkgrel=1
+pkgdesc="A blazing-fast, secure, and offline-first CLI for inspecting, validating, and manipulating JWTs"
+arch=('x86_64' 'aarch64')
+url="https://github.com/felipemorandini/jwt-term"
+license=('MIT')
+provides=('jwt-term')
+conflicts=('jwt-term')
+
+source_x86_64=("${url}/releases/download/v${pkgver}/jwt-term-x86_64-unknown-linux-musl.tar.gz"
+               "${url}/raw/v${pkgver}/LICENSE")
+source_aarch64=("${url}/releases/download/v${pkgver}/jwt-term-aarch64-unknown-linux-musl.tar.gz"
+                "${url}/raw/v${pkgver}/LICENSE")
+
+# Update these checksums with: updpkgsums
+sha256sums_x86_64=('SKIP' 'SKIP')
+sha256sums_aarch64=('SKIP' 'SKIP')
+
+package() {
+    install -Dm755 jwt-term "${pkgdir}/usr/bin/jwt-term"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    # Generate and install shell completions
+    "${srcdir}/jwt-term" completions bash > jwt-term.bash || echo "WARNING: bash completions generation failed"
+    "${srcdir}/jwt-term" completions zsh > _jwt-term || echo "WARNING: zsh completions generation failed"
+    "${srcdir}/jwt-term" completions fish > jwt-term.fish || echo "WARNING: fish completions generation failed"
+
+    if [ -s jwt-term.bash ]; then
+        install -Dm644 jwt-term.bash "${pkgdir}/usr/share/bash-completion/completions/jwt-term"
+    fi
+    if [ -s _jwt-term ]; then
+        install -Dm644 _jwt-term "${pkgdir}/usr/share/zsh/site-functions/_jwt-term"
+    fi
+    if [ -s jwt-term.fish ]; then
+        install -Dm644 jwt-term.fish "${pkgdir}/usr/share/fish/vendor_completions.d/jwt-term.fish"
+    fi
+}
