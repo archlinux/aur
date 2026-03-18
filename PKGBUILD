@@ -8,7 +8,7 @@ url="https://github.com/exceptionptr/tsm-app-linux"
 license=('MIT')
 depends=(
     'python>=3.11'
-    'python-pyside6'
+    'pyside6'
     'python-aiohttp'
     'python-pydantic'
     'python-aiosqlite'
@@ -26,7 +26,7 @@ makedepends=(
     'git'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d959e3840b96c53f0f2d0ee977f211c3fe7afee897e777abdc540921fb367a26')
+sha256sums=('becab77c07c70eaf3d21f44654c0b7c3f5bc8974d3383c29544e68932cc9edd1')
 
 build() {
     cd "$srcdir/tsm-app-linux-$pkgver"

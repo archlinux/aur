@@ -11,7 +11,7 @@ pkgbase = tsm-app
 	makedepends = python-hatch-vcs
 	makedepends = git
 	depends = python>=3.11
-	depends = python-pyside6
+	depends = pyside6
 	depends = python-aiohttp
 	depends = python-pydantic
 	depends = python-aiosqlite
@@ -21,6 +21,6 @@ pkgbase = tsm-app
 	depends = python-yaml
 	depends = python-apscheduler
 	source = tsm-app-1.0.0.tar.gz::https://github.com/exceptionptr/tsm-app-linux/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = d959e3840b96c53f0f2d0ee977f211c3fe7afee897e777abdc540921fb367a26
+	sha256sums = becab77c07c70eaf3d21f44654c0b7c3f5bc8974d3383c29544e68932cc9edd1
 
 pkgname = tsm-app
