@@ -1,7 +1,7 @@
 pkgbase = datafetch
 	pkgdesc = Live system information dashboard for Linux terminals
-	pkgver = 2.0
-	pkgrel = 3
+	pkgver = 2.1
+	pkgrel = 1
 	url = https://github.com/KlodCripta/Datafetch
 	arch = any
 	license = MIT
