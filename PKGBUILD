@@ -1,7 +1,7 @@
 # Maintainer: Jarod G. <skid+aur@gamindustri.fr>
 # Contributor: leonekmi <me+git@leonekmi.fr>
 pkgname=kolossus-launcher
-pkgver="171_5"
+pkgver="200_7"
 pkgrel=1
 pkgdesc="Kolossus Launcher, to download the latest version of the IFSCL."
 arch=(x86_64)
@@ -18,7 +18,7 @@ backup=()
 install="kolossus-launcher.install"
 source=(https://ifscl.b-cdn.net/kolossus/Kolossus_${pkgver}_Linux.zip Kolossus-Launcher.desktop install.sh kolossus-launcher.install)
 noextract=(Kolossus_${pkgver}_Linux.zip)
-md5sums=('a3d69b2dde4fb60bb88210477d3835d7'
+md5sums=('ec56f6b4fce7f859e8f50b9f0a7db61c'
          '51d205515237b6d61ed7ed3379ed6d5f'
          '9f1a0529669e271c87ce19325fcdb893'
          '6cbd8a292f3700ffe4a1150d607542cc')
