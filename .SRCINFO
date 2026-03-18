@@ -8,6 +8,7 @@ pkgbase = radii5-bin
 	license = MIT
 	depends = ffmpeg
 	depends = yt-dlp
+	depends = deno
 	provides = radii5
 	conflicts = radii5
 	source = README-0.3.2.md::https://raw.githubusercontent.com/radii5/music/v0.3.2/README.md

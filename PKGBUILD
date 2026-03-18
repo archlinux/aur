@@ -19,7 +19,7 @@ license=('MIT')
 
 provides=("${_pkgauthor}")
 conflicts=("${_pkgauthor}")
-depends=('ffmpeg' 'yt-dlp')
+depends=('ffmpeg' 'yt-dlp' 'deno')
 
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
