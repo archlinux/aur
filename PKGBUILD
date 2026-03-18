@@ -4,7 +4,7 @@
 _pkgname="millennium"
 pkgname="${_pkgname}-git"
 _Pkgname="Millennium"
-pkgver=v3.0.0
+pkgver=v2.35.0.r26.ge4229483
 pkgrel=1
 pkgdesc="${_Pkgname} is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead."
 arch=('x86_64')
@@ -49,16 +49,6 @@ build() {
     echo -e        "\e[1m\e[92m==>\e[0m \e[1mBuilding ${_Pkgname}...\e[0m"
 
     cmake -GNinja  . -DCMAKE_BUILD_TYPE=RelWithDebInfo --preset linux-release -DDISTRO_ARCH=ON
-    cmake --build  build
-}
-
-
-build() {
-    cd             "${srcdir}/${_Pkgname}"
-
-    echo -e        "\e[1m\e[92m==>\e[0m \e[1mBuilding ${_Pkgname}...\e[0m"
-
-    cmake -GNinja  . -DCMAKE_BUILD_TYPE=Release --preset linux-release -DDISTRO_ARCH=ON
     cmake --build  build
 }
 
