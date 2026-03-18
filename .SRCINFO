@@ -1,11 +1,11 @@
 pkgbase = thorium-browser-avx2-bin
 	pkgdesc = Thorium browser AVX2 build (RPM binary) – Chromium fork focused on performance and security
 	pkgver = 138.0.7204.303
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Alex313031/Thorium
 	arch = x86_64
 	license = BSD-3-Clause
-	makedepends = rpmextract
+	makedepends = rpm-tools
 	makedepends = cpio
 	depends = alsa-lib
 	depends = at-spi2-core
@@ -22,8 +22,8 @@ pkgbase = thorium-browser-avx2-bin
 	depends = pango
 	provides = thorium-browser
 	conflicts = thorium-browser
-	noextract = thorium-browser_138.0.7204.303_AVX2.rpm 
-	source = https://github.com/Alex313031/thorium/releases/download/M138.0.7204.300/thorium-browser_138.0.7204.300_AVX2.rpm
+	noextract = thorium-browser_138.0.7204.303_AVX2.rpm
+	source = https://github.com/Alex313031/thorium/releases/download/M138.0.7204.303/thorium-browser_138.0.7204.303_AVX2.rpm
 	sha256sums = 53943adc878f2244fe85c7e7096a53d5e82359fa4196a78702a12d101278237b
 
 pkgname = thorium-browser-avx2-bin
