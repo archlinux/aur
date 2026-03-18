@@ -6,7 +6,7 @@ _pkgname=${_appname}-cli
 pkgname=${_pkgname}-bin
 pkgdesc="A command-line client for Bluesky"
 
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -30,8 +30,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}.tar.gz")
 sha256sums=('bef1ca6360e72222f03f6d72864de96ecde1e9e1fc0c9b58912420d495c872db'
             '2020286678833933fcd6e55db50cc28d10a069284171b71b6ae95a301e5a82f2')
-sha256sums_x86_64=('cb53365fe3adc95c9b0567191b8fa8dba674b2e6dda100c5fc5cb0a5bec054e6')
-sha256sums_aarch64=('f43eae66d8b9a567506fa4006587fae0e2e8db4c3e68adf067c3a8f3f052c2a9')
+sha256sums_x86_64=('0267d8bc64881b7c7adc46b99eaf1bc9cd53490fc7e7dbc18cc6faf82146849f')
+sha256sums_aarch64=('be14ba95c76e62066bcce354e7bb8603232e66a3b01b78bd8da89740b50edf26')
 
 
 package() {
