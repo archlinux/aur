@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='A MPD client implementing the dbus MPRIS standard written in rust -- git version'
 url='https://github.com/jasger9000/mpdris'
 license=('MIT')
-arch=('any')
+arch=('x86_64' 'i686' 'aarch64')
 provides=("mpdris=${pkgver}")
 conflicts=('mpdris')
 depends=('glibc' 'gcc-libs')
