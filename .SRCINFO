@@ -1,0 +1,22 @@
+pkgbase = openapi-oathkeeper-bin
+	pkgdesc = Generate Ory Oathkeeper access rules from an OpenAPI 3 contract.
+	pkgver = 0.7.15
+	pkgrel = 1
+	url = https://github.com/cerberauth/openapi-oathkeeper
+	license = MIT
+	conflicts = openapi-oathkeeper
+	provides = openapi-oathkeeper
+	arch = aarch64
+	source_aarch64 = https://github.com/cerberauth/openapi-oathkeeper/releases/download/v0.7.15/openapi-oathkeeper_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 8c862b995632b6023b74c33c5408d637bc0523c3198a5951c53274d312b9dfc0
+	arch = armv7h
+	source_armv7h = https://github.com/cerberauth/openapi-oathkeeper/releases/download/v0.7.15/openapi-oathkeeper_Linux_armv7.tar.gz
+	sha256sums_armv7h = e04948d7e6ed48ffd3b7eca702bb392a4a28be8cefc61563f5c592c77b361717
+	arch = i686
+	source_i686 = https://github.com/cerberauth/openapi-oathkeeper/releases/download/v0.7.15/openapi-oathkeeper_Linux_i386.tar.gz
+	sha256sums_i686 = ab673b4415b131ba2e968ff4710bf24a59be5b5421c87bdd32dbf7f819ada256
+	arch = x86_64
+	source_x86_64 = https://github.com/cerberauth/openapi-oathkeeper/releases/download/v0.7.15/openapi-oathkeeper_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = ed4e04a2272d1cf0ca8e518ac942fde415c620a12b70d8cf4101a5d132a13c32
+	
+pkgname = openapi-oathkeeper-bin
