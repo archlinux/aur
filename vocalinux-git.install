@@ -1,0 +1,43 @@
+post_install() {
+    echo ""
+    echo "==> Vocalinux has been installed!"
+    echo ""
+    echo "==> IMPORTANT: Speech recognition models will be downloaded automatically"
+    echo "    on first run (~40-75MB depending on engine)."
+    echo ""
+    echo "==> To use keyboard shortcuts on Wayland, you may need to add yourself"
+    echo "    to the 'input' group:"
+    echo "      sudo usermod -aG input \$USER"
+    echo "    Then log out and back in for changes to take effect."
+    echo ""
+    echo "==> Launch from:"
+    echo "    - Application menu: Look for 'Vocalinux'"
+    echo "    - Terminal: Run 'vocalinux' command"
+    echo "    - Systemd: systemctl --user enable --now vocalinux"
+    echo ""
+    echo "==> Double-tap Ctrl to toggle recording anywhere."
+    echo ""
+
+    gtk-update-icon-cache -f /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database /usr/share/applications 2>/dev/null || true
+}
+
+post_upgrade() {
+    gtk-update-icon-cache -f /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database /usr/share/applications 2>/dev/null || true
+}
+
+post_remove() {
+    echo ""
+    echo "==> Vocalinux has been removed."
+    echo ""
+    echo "==> User data (models, config) remains in:"
+    echo "    ~/.config/vocalinux"
+    echo "    ~/.local/share/vocalinux"
+    echo ""
+    echo "==> Remove with: rm -rf ~/.config/vocalinux ~/.local/share/vocalinux"
+    echo ""
+
+    gtk-update-icon-cache -f /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database /usr/share/applications 2>/dev/null || true
+}
