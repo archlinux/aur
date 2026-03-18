@@ -1,25 +1,38 @@
-# Maintainer: E-Hern Lee <ehern.lee@gmail.com>
-_pkgname=kaiju
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: E-Hern Lee <ehern.lee@gmail.com>
 pkgname=ghidra-extension-kaiju-bin
-pkgdesc="Binary analysis improvements for Ghidra. Can import C++ symbols from OOAnalyer"
-pkgver=240327
-_pkgdate=240328
-_ghidraver=11.0.2
+_pkgname=kaiju
+pkgver=260309
+_ghidraver=$(pacman -Q ghidra 2>/dev/null | awk '{print $2}' | sed 's/-.*//')
 pkgrel=1
-arch=('any')
+pkgdesc="CERT Kaiju binary analysis improvements for Ghidra (OOAnalyzer, CERT function hashing, GhiHorn)"
+arch=('x86_64')
 url=https://github.com/CERTCC/kaiju
-license=('BSD')
-depends=("ghidra>=${_ghidraver}")
+license=('BSD-3-Clause')
+depends=('ghidra')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+options=('!debug')
 optdepends=(
-  'z3-java: To use the GhiHorn plugin for CFG analysis'
+  'z3-java: GhiHorn plugin for CFG analysis'
 )
-makedepends=('unzip')
-source=("kaiju-${pkgver}.zip::https://github.com/CERTCC/kaiju/releases/download/${_pkgdate}/ghidra_${_ghidraver}_PUBLIC_20${pkgver}_kaiju.zip")
-sha512sums=('f15a3e28a7205b061206dc7f00451a3521a8c1c0d3f3efa91e841ca1acbabb46abd3ec8aa4c0a85c0d72932bbbd9c9654f0a320ca050cf42215397c7ad84f4cb')
+source=("${_pkgname}-${pkgver}.zip::https://github.com/CERTCC/kaiju/releases/download/${pkgver}/ghidra_${_ghidraver}_PUBLIC_20${pkgver}_kaiju.zip")
+sha256sums=('f819a07559c87dae0cc48ddb5ed8aba75541055410a92c3f3054adb9276101ce')
+
+latestver() {
+  local ghidra_ver
+  ghidra_ver=$(pacman -Si ghidra 2>/dev/null | awk '/^Version/{print $3; exit}' | sed 's/-.*//')
+  [ -z "$ghidra_ver" ] && return 1
+  gh api repos/CERTCC/kaiju/releases/latest --jq \
+    ".assets[] | select(.name | test(\"ghidra_${ghidra_ver}_\")) | .name" |
+    head -1 | grep -oP '20\K[0-9]+(?=_kaiju)'
+}
 
 package() {
-  cd $srcdir
-  install -d $pkgdir/opt/ghidra/Ghidra/Extensions
-  unzip -u kaiju-${pkgver}.zip -d $pkgdir/opt/ghidra/Ghidra/Extensions/
-  install -Dm 644 $_pkgname/LICENSE.txt -t $pkgdir/usr/share/licenses/$pkgname
+  cd "$_pkgname"
+  rm -rf os/{mac_*,win_*} gradle
+  cd ..
+  install -d "$pkgdir/opt/ghidra/Ghidra/Extensions"
+  cp -a "$_pkgname" "$pkgdir/opt/ghidra/Ghidra/Extensions/"
+  install -Dm644 "$_pkgname/LICENSE.txt" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
