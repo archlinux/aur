@@ -20,6 +20,13 @@ sha256sums=('e5d6ddcb237b8d969eec82ad07300e113d23c1b3019ba1ca2fe874b7701ff582'
 	'29fb19d923984a0d58edf647be99f916d82c37b04e58abb40f793517c8e0a903')
 _hash='6b0652d'
 
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
 build() {
   cd $_pkgname-$pkgver
   GIT_HASH=$_hash cargo build --release --locked
