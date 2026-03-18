@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export JAVA_HOME=/usr/lib/jvm/java-26-openjdk
+
+/usr/share/kotlin/adt-cli/bin/adt-cli

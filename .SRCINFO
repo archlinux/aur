@@ -1,12 +1,14 @@
 pkgbase = adt-cli
 	pkgdesc = kotlin lsp workspace file generator
 	pkgver = 1.0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kotlin/kotlin-lsp
 	arch = any
 	license = LGPL-3.0
-	depends = java-runtime=21
+	depends = java-runtime=26
 	source = https://github.com/yamsergey/yamsergey.adt/releases/download/1.0.8/adt-cli-1.0.8.tar.gz
+	source = adt-cli
 	sha256sums = 803cdcb43073b77d3e8123719ad0ccea8af9aefa0cf0f07754c20bb873a04fec
+	sha256sums = 35070869fc7f99a5b1a5699b015caa56727b049ea7caaf461731685bed7c9761
 
 pkgname = adt-cli
