@@ -2,7 +2,7 @@
 
 pkgname=abyssal-gtk-theme
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Abyssal GTK theme (multiple palettes)"
 arch=(any)
 url="https://github.com/zen0x00/abyssal-gtk-theme"
