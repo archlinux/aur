@@ -1,13 +1,16 @@
-diff --git a/makefile.gcc b/makefile.gcc
-index 787652e..a1d0ecd 100644
+diff --git a/makefile.gcc b/Makefile
+similarity index 84%
+rename from makefile.gcc
+rename to Makefile
+index 58aff43..d9b162b 100644
 --- a/makefile.gcc
-+++ b/makefile.gcc
-@@ -29,17 +29,16 @@ MV = mv
++++ b/Makefile
+@@ -38,17 +38,16 @@ MV = mv
  RM = rm -f
  
  # flags
--CFLAGS = $(DEFINES) $(TFLAG) $(CDEBUG) -c -Wall -Wextra
-+CFLAGS += $(DEFINES) -c -Wall -Wextra
+-CFLAGS = $(DEFINES) $(TFLAG) $(CDEBUG) -I$(INCLUDE_PATH) -c -Wall -Wextra
++CFLAGS += $(DEFINES) $(TFLAG) -I$(INCLUDE_PATH) -c -Wall -Wextra
  INSTALLBINFLAGS = -m 755
  INSTALLDATAFLAGS = -m 644
 -LDFLAGS = $(LDEBUG)
@@ -22,20 +25,20 @@ index 787652e..a1d0ecd 100644
  
  # filenames
  FROMDOS = fromdos
-@@ -67,12 +66,12 @@ clobber: clean
+@@ -81,12 +80,12 @@ clobber: clean
  	$(RM) $(FROMDOS) $(TODOS)
  
  install: installman
 -	$(INSTALL) $(INSTALLBINFLAGS) $(FROMDOS) $(BINDIR)
 -	($(CD) $(BINDIR) ; $(LN) $(LNFLAGS) fromdos todos)
-+	$(INSTALL) -Dm755 $(FROMDOS) -t $(DESTDIR)$(BINDIR)
-+	($(CD) $(DESTDIR)$(BINDIR) ; $(LN) $(LNFLAGS) fromdos todos)
++	install -Dm755 fromdos -t $(DESTDIR)$(BINDIR)
++	ln -sf fromdos $(DESTDIR)$(BINDIR)/todos
  
  installman: $(FROMDOSMAN)
 -	$(INSTALL) $(INSTALLDATAFLAGS) $(FROMDOSMAN) $(MANDIR)
 -	($(CD) $(MANDIR) ; $(LN) $(LNFLAGS) fromdos.1 todos.1)
-+	$(INSTALL) -Dm644 $(FROMDOSMAN) -t $(DESTDIR)$(MANDIR)
-+	($(CD) $(DESTDIR)$(MANDIR) ; $(LN) $(LNFLAGS) fromdos.1 todos.1)
++	install -Dm644 fromdos.1 -t $(DESTDIR)$(MANDIR)
++	ln -sf fromdos.1 $(DESTDIR)$(MANDIR)/todos.1
  
  
  # real rules
