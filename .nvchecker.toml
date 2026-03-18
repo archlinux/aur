@@ -1,0 +1,5 @@
+[rgx-cli-bin]
+source = "github"
+github = "brevity1swos/rgx"
+use_latest_release = true
+prefix = "v"
