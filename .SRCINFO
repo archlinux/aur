@@ -1,6 +1,6 @@
 pkgbase = megacubo-bin
 	pkgdesc = 📺 A intuitive, multi-language and cross-platform IPTV player.(Prebuild version.Use system-wide electron)
-	pkgver = 17.6.2
+	pkgver = 17.6.5
 	pkgrel = 1
 	url = https://megacubo.tv/
 	arch = aarch64
@@ -9,15 +9,15 @@ pkgbase = megacubo-bin
 	makedepends = gendesk
 	depends = electron35
 	depends = ffmpeg
-	provides = megacubo=17.6.2
+	provides = megacubo=17.6.5
 	conflicts = megacubo
 	options = !strip
 	options = !emptydirs
 	source = megacubo.sh
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = megacubo-17.6.2-aarch64.tar.gz::https://github.com/EdenwareApps/Megacubo/releases/download/v17.6.2/Megacubo_17.6.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = f513560e81dc46dd37104c3a250378d0fa8b67e6e99ef79fdb682cf03dd2cb9b
-	source_x86_64 = megacubo-17.6.2-x86_64.tar.gz::https://github.com/EdenwareApps/Megacubo/releases/download/v17.6.2/Megacubo_17.6.2_linux_x64.tar.gz
-	sha256sums_x86_64 = 9beddca4abb284fdbf919dc0a0441cdd1bc352106e1f1f7994cf8e06052ba52b
+	source_aarch64 = megacubo-17.6.5-aarch64.tar.gz::https://github.com/EdenwareApps/Megacubo/releases/download/v17.6.5/Megacubo_17.6.5_linux_arm64.tar.gz
+	sha256sums_aarch64 = d93d1699fdca674c711d1de2789bb800c4c6efa50fc2a7bdd08ae28611d370b8
+	source_x86_64 = megacubo-17.6.5-x86_64.tar.gz::https://github.com/EdenwareApps/Megacubo/releases/download/v17.6.5/Megacubo_17.6.5_linux_x64.tar.gz
+	sha256sums_x86_64 = e10ee772a7174d2836965b8643aac14a7c51dcd57f2d99c0c8df6ab53e15195c
 
 pkgname = megacubo-bin
