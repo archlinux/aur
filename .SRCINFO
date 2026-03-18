@@ -1,6 +1,6 @@
 pkgbase = correlation
 	pkgdesc = Analysis tool for liquid and amorphous solid structures
-	pkgver = 2.1.1
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/Isurwars/Correlation
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = correlation
 	depends = fontconfig
 	depends = freetype2
 	depends = libxcb
-	source = correlation-2.1.1.tar.gz::https://github.com/Isurwars/Correlation/archive/refs/tags/v2.1.1.tar.gz
-	sha256sums = d9857f253e3d2e3034682183753136ba87856291e4e06319dbb789a089f1c621
+	source = correlation-2.1.2.tar.gz::https://github.com/Isurwars/Correlation/archive/refs/tags/v2.1.2.tar.gz
+	sha256sums = 324936d4eb657972b7e3ff180ceb98a54779dbb4f439bc9bfff6eb1fd47a07da
 
 pkgname = correlation
