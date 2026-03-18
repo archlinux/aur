@@ -1,0 +1,19 @@
+pkgbase = llmfit-git
+	pkgdesc = Hundreds of models & providers. One command to find what runs on your hardware.
+	pkgver = 0.7.5.r2.g9e7ac95
+	pkgrel = 1
+	url = https://github.com/AlexsJones/llmfit
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	provides = llmfit
+	conflicts = llmfit
+	conflicts = llmfit-bin
+	options = !lto
+	source = llmfit::git+https://github.com/AlexsJones/llmfit.git#branch=main
+	sha256sums = SKIP
+
+pkgname = llmfit-git
