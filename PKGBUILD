@@ -1,16 +1,16 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 # Note: Uses tags from the 'arch' branch
 pkgname=mx-packageinstaller
-pkgver=26.02.1arch
-pkgrel=2
+pkgver=26.03.4arch
+pkgrel=1
 pkgdesc="MX Package Installer - a tool for managing packages and Flatpak"
 arch=("x86_64")
 url="https://github.com/MX-Linux/mx-packageinstaller"
 license=("GPL")
-depends=("qt6-base" "xdg-utils" "sudo" "socat")
+depends=("qt6-base" "sudo")
 makedepends=("cmake" "ninja" "qt6-tools")
-source=("https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/26.02.1arch.tar.gz")
-sha256sums=('e6b56760f40b89b082fc2ed3d12f1dbd70bde8d52d6ad524a8db4bb4c7d32bae')
+source=("https://github.com/MX-Linux/mx-packageinstaller/archive/refs/tags/26.03.4arch.tar.gz")
+sha256sums=('6f4b2b221c8864bdabf2edad550bee1556449c9f2db4d6d83314f7839e34ac19')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -35,7 +35,7 @@ package() {
   install -Dm644 *.qm "${pkgdir}/usr/share/mx-packageinstaller/locale/" 2>/dev/null || true
 
   install -dm755 "${pkgdir}/usr/lib/mx-packageinstaller"
-  install -Dm755 ../scripts/helper "${pkgdir}/usr/lib/mx-packageinstaller/helper"
+  install -Dm755 helper "${pkgdir}/usr/lib/mx-packageinstaller/helper"
   install -Dm755 ../scripts/mxpi-lib "${pkgdir}/usr/lib/mx-packageinstaller/mxpi-lib"
 
   install -Dm644 ../scripts/org.mxlinux.pkexec.mxpi-helper.policy \
