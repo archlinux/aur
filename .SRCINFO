@@ -1,0 +1,18 @@
+pkgbase = cyx
+	pkgdesc = Fast cybersecurity command companion for penetration testers
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/neur0map/cyx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = pkgconf
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	provides = cyx
+	source = cyx-0.3.1.crate::https://crates.io/api/v1/crates/cyx/0.3.1/download
+	sha256sums = 2accabaeb2fab72b318910d1d644c82076a1cb69fb76fc7e1d3e047bc64e38b5
+
+pkgname = cyx
