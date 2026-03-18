@@ -1,0 +1,28 @@
+pkgbase = perl-net-async-http
+	pkgdesc = use HTTP with IO::Async
+	pkgver = 0.50
+	pkgrel = 1
+	url = https://metacpan.org/release/PEVANS/Net-Async-HTTP-0.50
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-http-cookies
+	checkdepends = perl-io-async
+	checkdepends = perl-test-metrics-any
+	checkdepends = perl-test-simple
+	makedepends = perl-module-build>=0.4004
+	depends = perl-future>=0.16
+	depends = perl-http-message
+	depends = perl-io-async
+	depends = perl-metrics-any>=0.05
+	depends = perl-scalar-list-utils>=1.29
+	depends = perl-socket>=2.010
+	depends = perl-struct-dumb>=0.07
+	depends = perl-time-hires
+	depends = perl-uri
+	depends = perl>=5.14.0
+	optdepends = perl-compress-raw-zlib
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Net-Async-HTTP-0.50.tar.gz
+	sha256sums = 92845b8ffdd2dc81decbe8a7b99203e4e34971de6624acb5c10aa9ff07885b87
+
+pkgname = perl-net-async-http
