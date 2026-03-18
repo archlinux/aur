@@ -4,6 +4,14 @@ post_install() {
         udevadm control --reload-rules && udevadm trigger
     fi
 
+    # Refresh launcher/app cache so Cosmic Launcher and other launchers pick up the entry
+    if type -P update-desktop-database >/dev/null; then
+        update-desktop-database -q /usr/share/applications
+    fi
+    if type -P gtk-update-icon-cache >/dev/null; then
+        gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+    fi
+
     echo "==> NATIVMIX INSTALLATION NOTES:"
     echo " "
     echo "  HARDWARE ACCESS:"
@@ -12,12 +20,16 @@ post_install() {
     echo " "
     echo "  GLOBAL HOTKEYS:"
     echo "     To toggle mute via a shortcut (e.g., in KDE Plasma), use:"
-    echo "     sh -c '/usr/bin/nativmix --toggle-mute [index]'"
+    echo "     sh -c '/usr/bin/nativmix --toggle-mute [channel]'"
     echo " "
-    echo "     Replace [index] with the number of the fader (e.g., 0, 1, 2...)"
+    echo "     Replace [channel] with the fader number (1-indexed: 1 = first channel, 2 = second...)"
     echo " "
 }
 
 post_upgrade() {
+    # Remove legacy system-wide XDG autostart entry if present.
+    # Autostart is now opt-in via KDE settings or systemd user service.
+    rm -f /etc/xdg/autostart/nativmix.desktop
+
     post_install
 }

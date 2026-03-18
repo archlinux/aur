@@ -1,7 +1,7 @@
 # Maintainer: Christian Möllmann (knoelliX) <moellix@knoellix.net>
 pkgname=nativmix
-pkgver=1.0.5
-pkgrel=6
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="Hardware-based PipeWire volume & MIDI mixer for Wayland. Controls physical inputs, virtual sinks, and MIDI devices. (Modern deej alternative)"
 arch=('any')
 url="https://github.com/knoelliX/NativMix"
@@ -34,7 +34,7 @@ install=nativmix.install
 
 # Hybride Source-Logik entfernt - Dies ist nun das offizielle PKGBUILD
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/knoelliX/NativMix/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('02f5b6580eb160728f16745570512b7c6e2660ded6adc5040c676b11c6073e56')
+sha256sums=('5419007501178c27c70ae864ee50d9e254bd8990e36961350c93b0983f6745af')
 
 prepare() {
     # Find extracted directory (GitHub tags prepends 'NativMix-' or 'nativmix-')
@@ -72,9 +72,8 @@ package() {
     # 2. Desktop entries
     install -Dm644 data/nativmix.desktop \
         "$pkgdir/usr/share/applications/nativmix.desktop"
-    
-    install -Dm644 data/nativmix.desktop \
-        "$pkgdir/etc/xdg/autostart/nativmix.desktop"
+    # NOTE: No /etc/xdg/autostart/ — autostart is opt-in via the settings panel
+    # (systemd user service or ~/.config/autostart/), not forced system-wide.
 
     # 3. Systemd User Unit
     if [ -f "packaging/nativmix.service" ]; then
