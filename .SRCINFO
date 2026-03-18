@@ -1,14 +1,14 @@
 pkgbase = sherlock-launcher
 	pkgdesc = Application launcher for Wayland.
-	pkgver = 0.1.15
-	pkgrel = 2
+	pkgver = 0.1.14
+	pkgrel = 3
 	url = https://github.com/skxxtz/sherlock
 	arch = x86_64
 	license = custom:CC-BY-NC-4.0
 	depends = gtk4
 	depends = gtk4-layer-shell
-	source = https://github.com/skxxtz/sherlock/releases/download/v0.1.15-2/sherlock-v0.1.15-2-bin-linux-x86_64.tar.gz
+	source = https://github.com/skxxtz/sherlock/releases/download/v0.1.14-3/sherlock-v0.1.14-3-bin-linux-x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = sherlock-launcher-bin
-conflicts = sherlock-launcher-git
+	conflicts = sherlock-launcher-git
