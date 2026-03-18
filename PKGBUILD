@@ -1,6 +1,6 @@
 # Maintainer: vcup <me@vcup.moe>
 pkgname=ani-rss
-pkgver=3.0.11
+pkgver=3.0.13
 pkgrel=1
 pkgdesc="自动追番、订阅、下载 蜜柑RSS动漫"
 arch=('any')
@@ -14,7 +14,7 @@ source=(
   'ani-rss.service'
   'LICENSE'
 )
-sha512sums=('ce70970faae127908abc0315486cf97b3d9142e3526acf4cde48e2f09b3fa7ddcf70f204541c20c8fa3001b3da8ad2e4511639cc092211c8e5099cf1cae3c868'
+sha512sums=('ee7465a4d1983c6885dce31714bac22e245100bf3543c72373308a86de195dec37e77ba4a9690fad909beba973024458a6ff509792ba49ec0aeb59b4ecfae308'
             '68b316811e619a1970993c98326f4a0c7296c323ec4d881077d060da1ce81bd255d06db1eccbfae6f936dc9e9bc7b0c6b7dd9256c6d9fa96911e7bdcf694cdeb'
             'aee80b1f9f7f4a8a00dcf6e6ce6c41988dcaedc4de19d9d04460cbfb05d99829ffe8f9d038468eabbfba4d65b38e8dbef5ecf5eb8a1b891d9839cda6c48ee957')
 
