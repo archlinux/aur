@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="rayforge"
-pkgver=1.1.2
+pkgver=1.2
 pkgrel=1
 pkgdesc="A software for laser cutters and engravers"
 arch=(
@@ -53,11 +53,11 @@ makedepends=(
   'python-setuptools>=40.9.0'
   'python-setuptools-git-versioning'
 )
-# checkdepends=(
-#   'python-pytest'
-#   'python-pytest-asyncio'
-#   'python-pytest-mock'
-# )
+checkdepends=(
+  'python-pytest'
+  'python-pytest-asyncio'
+  'python-pytest-mock'
+)
 provides=(
   "python-${pkgname}=${pkgver}"
 )
@@ -68,25 +68,23 @@ _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=${pkgver}"
 )
-sha256sums=('b06cc231a9367046197734bc690b1ad9779269f9564eab530ba35246e693c1de')
+sha256sums=('98717d55b0ed4b727d5b60990bfd78638fbe34f6a3f42c9b7fc66d878cbe9a33')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
   python -m build --wheel --no-isolation
 }
 
-# too many tests fail
-# check() {
-#   cd "${srcdir}/${_pkgsrc}"
-#   # segfaults
-#   pytest -k "not test_doceditor and not test_bmp and not test_jpg and not test_pdf"
-# }
+check() {
+  cd "${srcdir}/${_pkgsrc}"
+  pytest -k "not test_font_config and not test_pdf"
+}
 
 package() {
   local site_packages="$(python -c "import site; print(site.getsitepackages()[0])")"
 
   cd "${srcdir}/${_pkgsrc}"
-  python -m installer --destdir="${pkgdir}" dist/*"${pkgver}"*.whl
+  python -m installer --destdir="${pkgdir}" dist/"${pkgname}-${pkgver}"*.whl
 
   install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
