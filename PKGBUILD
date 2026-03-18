@@ -1,30 +1,37 @@
-pkgname=koala-clash-bin
-_pkgname=koala-clash
-pkgver=1.0.2
+# Maintainer: coolcoala
+# Publisher: prettyleaf
+pkgname="koala-clash-bin"
+pkgver="1.1.0"
 pkgrel=1
 pkgdesc="A geeked Mihomo client with features that improve the user experience."
-arch=('x86_64' 'aarch64')
+arch=("x86_64" "aarch64")
 url="https://github.com/coolcoala/koala-clash"
-license=('GPL3')
-conflicts=("sparkle-git" "sparkle" "sparkle-bin" "sparkle-electron" "sparkle-electron-bin" "sparkle-electron-git" "$_pkgname" "$_pkgname-git" "$_pkgname-electron" "$_pkgname-electron-bin" "$_pkgname-electron-git")
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 'util-linux-libs' 'libsecret')
-optdepends=('libappindicator-gtk3: Allow koala-clash to extend a menu via Ayatana indicators in Unity, KDE or Systray (GTK+ 3 library).')
-install=$_pkgname.install
-source=("${_pkgname}.sh")
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.deb::${url}/releases/download/${pkgver}/koala-clash_amd64.deb") # rename to Koala.Clash later
-source_aarch64=("${_pkgname}-${pkgver}-aarch64.deb::${url}/releases/download/${pkgver}/koala-clash_arm64.deb")
-sha256sums=('caade87cb247563180f7f8f9d32d8556552e8c1055b1cc6aea1ff10ffec36762')
-sha256sums_x86_64=('b63b9abc85632a414fdbd561f13aae60dbfda6b30263e26a0a262b075bbe0cc3')
-sha256sums_aarch64=('8cd7398b8fc1cd70d41e386af9995cbddc1043d9018391c29f056f1435712a10')
+makedepends=("binutils" "tar")
+depends=("libxrandr" "libxcb" "mesa" "libxdamage" "libcups"
+"dbus" "alsa-lib" "pango" "glibc" "gtk3" "nspr" "gcc-libs"
+"cairo" "at-spi2-core" "expat" "libxkbcommon" "glib2" "libxcomposite"
+"libxext" "libx11" "nss" "systemd-libs" "libxfixes")
+provides=("koala-clash=${pkgver}")
+conflicts=('koala-clash' 'koala-clash-git' 'koala-clash-electron-git')
+license=("GPL-3.0-only")
+source=("https://github.com/coolcoala/koala-clash/releases/download/${pkgver}/Koala.Clash_amd64.deb")
+sha256sums=('37e18e0ba5e1307e43d4f06961e6ca901823951274e747618f590ece494dab42')
+source_aarch64=("https://github.com/coolcoala/koala-clash/releases/download/${pkgver}/Koala.Clash_arm64.deb")
+sha256sums_aarch64=('ade0eec3c81479839c8ca3cb08c664e34a0b8afb6281b1ebef5298016c5df758')
+
+prepare() {
+        if [ "$CARCH" = "aarch64" ]; then
+                ar p Koala.Clash_arm64.deb data.tar.xz | tar --zstd -x
+        else
+                ar p Koala.Clash_amd64.deb data.tar.xz | tar --zstd -x
+        fi
+}
 
 package() {
-    bsdtar -xf data.tar.xz -C "${pkgdir}/"
-    chmod +x ${pkgdir}/opt/koala-clash/koala-clash
-    chmod +x ${pkgdir}/opt/koala-clash/resources/files/koala-clash-service
-    chmod +sx ${pkgdir}/opt/koala-clash/resources/sidecar/mihomo
-    chmod +sx ${pkgdir}/opt/koala-clash/resources/sidecar/mihomo-alpha
-    install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
-    sed -i '3s!/opt/koala-clash/koala-clash!koala-clash!' "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-
-    chown -R root:root ${pkgdir}
+        cd $srcdir
+        cp -R usr ${pkgdir}
+        cp -R opt ${pkgdir}
+        chmod +x ${pkgdir}/opt/Koala.Clash/resources/files/sparkle-service
+        chmod +sx ${pkgdir}/opt/Koala.Clash/resources/sidecar/mihomo
+        chmod +sx ${pkgdir}/opt/Koala.Clash/resources/sidecar/mihomo-alpha
 }
