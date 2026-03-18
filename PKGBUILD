@@ -34,6 +34,7 @@ sha256sums=('5905242df108f4b6be1784192e7a9d0504e6251872d497a61cfc1fac2410bbad')
 build() {
   cd "${pkgname}-${pkgver}/python"
   cp pyproject_other.toml pyproject.toml
+  rm -rf build dist *.egg-info
   export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
   python -m build --wheel --no-isolation
 }
