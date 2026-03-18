@@ -2,7 +2,7 @@
 
 pkgname=blender-lts-bin
 pkgdesc='LTS blender version'
-pkgver='4.5.7'
+pkgver='4.5.8'
 #Official Mirror(Direct Link)
 _mirror="https://download.blender.org"
 
@@ -19,7 +19,7 @@ license=('GPL')
 arch=('x86_64')
 url='https://www.blender.org'
 
-b2sums=('f177a671ab2b7f7ae9df4489f2d1df26dbce70c421a5e722bdae4cb52d8b2e6cd679d186ee019aa927d37dd2fc9583c228369a547b751bdb7c212de1182fdf79'
+b2sums=('bf10a20c282bb57bd84855d7bafff8d849c461afcc9d6bfa97078717261720d29e22887b821a1a50b406ea22096a8a059e643ad18c55b7c8203889cbe179bab6'
 '7009d16d3afe2c59d3b906b32fdb5540ad70b221e84f308959986d58e4a5391cdcc49f78651c5039ea94f1cf305e6cf39b01c105e05fb0e76f6c3cc068e06bf4')
 
 _setvars() {
@@ -28,7 +28,7 @@ _setvars() {
 
 build() {
   _setvars
-	sed -i "s/=Exec=blender/=blender-lts/" $_base_dir/blender.desktop
+	sed -i "s/Exec=blender/Exec=blender-lts/" $_base_dir/blender.desktop
 	sed -i "s/Name=Blender/Name=Blender LTS/" $_base_dir/blender.desktop
   #TODO MAKE SOME sed to .desktop to replace blender with blender-lts
 }
