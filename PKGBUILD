@@ -2,9 +2,9 @@
 pkgbase=plasma-workspace-povd
 _pkgname=(plasma-workspace plasma-x11-session)
 pkgname=(plasma-workspace-povd plasma-x11-session-povd)
-pkgver=6.6.2
+pkgver=6.6.3
 _dirver=$(echo $pkgver | cut -d. -f1-3)
-pkgrel=2
+pkgrel=1
 pkgdesc='KDE Plasma Workspace (patched for per-output virtual desktops)'
 arch=(x86_64)
 url='https://kde.org/plasma-desktop/'
@@ -115,11 +115,9 @@ makedepends=(baloo
              qcoro)
 groups=(plasma)
 source=(https://download.kde.org/stable/plasma/$_dirver/$_pkgname-$pkgver.tar.xz{,.sig}
-        https://invent.kde.org/plasma/plasma-workspace/-/commit/9114115f.patch
         povd.patch)
-sha256sums=('26302234542ae2c8286727895997c8e22652e90e92febb60e3ce975194e0cacd'
+sha256sums=('18001465a01ee29292a3c37e62205106ee9f79f18aaa42ae9654d160abf11790'
             'SKIP'
-            '40d0aa1d4691ae8f59772d9014bd6f8650f9f18c74cbffdc50e7ec2e02313412'
             'fc27ea08b72682c1904dc9dc37a28f8358f9dd32e982dd7abd204d5cfff9d1a6')
 validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell <jr@jriddell.org>
               '0AAC775BB6437A8D9AF7A3ACFE0784117FBCE11D'  # Bhushan Shah <bshah@kde.org>
@@ -127,7 +125,6 @@ validpgpkeys=('E0A3EB202F8E57528E13E72FD7574483BB57B18D'  # Jonathan Esk-Riddell
               '1FA881591C26B276D7A5518EEAAF29B42A678C20') # Marco Martin <notmart@gmail.com>
 
 prepare() {
-  patch -d $_pkgname-$pkgver -p1 < 9114115f.patch # Fix race
   sed -e 's/NotifyConfig//' -i $_pkgname-$pkgver/CMakeLists.txt
   cd "$_pkgname-$pkgver"
   patch -p1 < "$srcdir/povd.patch"
