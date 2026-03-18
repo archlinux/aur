@@ -1,6 +1,6 @@
 # Maintainer: MagicTerm <magicterm@users.noreply.github.com>
 pkgname=magicterm-bin
-pkgver=0.3.12
+pkgver=0.3.13
 pkgrel=1
 pkgdesc="Cross-platform SSH/SFTP client with E2E encryption"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('magicterm')
 conflicts=('magicterm')
 options=('!strip')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/D3FVLT/MagicTerm/releases/download/v${pkgver}/MagicTerm-${pkgver}-x86_64.AppImage")
-sha256sums=('c5a5f9bdcec7875e45b8d094ec4edccbd49db70293160472945782ed969c6854')
+sha256sums=('063020fbfa82e97d7ba3c3ec7ed47e1cce9d0f31f0c8e26021b08b71da47406d')
 
 prepare() {
     chmod +x "${pkgname}-${pkgver}.AppImage"
@@ -21,6 +21,13 @@ prepare() {
 package() {
     install -dm755 "${pkgdir}/opt/${pkgname}"
     cp -r squashfs-root/* "${pkgdir}/opt/${pkgname}/"
+    
+    find "${pkgdir}/opt/${pkgname}" -type d -exec chmod 755 {} \;
+    find "${pkgdir}/opt/${pkgname}" -type f -exec chmod 644 {} \;
+    chmod 755 "${pkgdir}/opt/${pkgname}/@magictermdesktop"
+    chmod 755 "${pkgdir}/opt/${pkgname}/chrome_crashpad_handler"
+    chmod 755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
+    chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
 
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/@magictermdesktop" "${pkgdir}/usr/bin/magicterm"
