@@ -1,6 +1,6 @@
 #Maintainer: Mickael Guillerm <mickael.grm@gmail.com>
 pkgname=shellforge
-pkgdesc='Terminal tool for generating reverse shells for CTF challenges and educational purposes. Easy to use, fast, and safe for practice environments. '
+pkgdesc='Terminal tool for generating reverse-shells for CTF challenges and educational purposes. Easy to use, fast, and safe for practice environments.'
 pkgver=1.0.0
 pkgrel=1
 arch=('x86_64')
