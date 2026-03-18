@@ -1,6 +1,6 @@
 # Maintainer: Winícius Cota <winicius.cota@gmail.com>
 pkgname=rofi-webapps-git
-pkgver=r1.0
+pkgver=r5.7a63590
 pkgrel=1
 pkgdesc="Rofi-based interface for managing web applications with icon search and CRUD operations"
 arch=('any')

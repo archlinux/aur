@@ -1,6 +1,6 @@
 pkgbase = rofi-webapps-git
 	pkgdesc = Rofi-based interface for managing web applications with icon search and CRUD operations
-	pkgver = r1.0
+	pkgver = r5.7a63590
 	pkgrel = 1
 	url = https://github.com/winiciuscota/rofi-webapps
 	arch = any
