@@ -1,0 +1,15 @@
+pkgbase = python-sgl-kernel
+	pkgdesc = Compiled CUDA kernels for the SGLang serving framework
+	pkgver = 0.3.21
+	pkgrel = 1
+	url = https://github.com/sgl-project/sglang/tree/main/sgl-kernel
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-installer
+	depends = python>=3.10
+	noextract = sgl_kernel-0.3.21-cp310-abi3-manylinux2014_x86_64.whl
+	options = !strip
+	source = sgl_kernel-0.3.21-cp310-abi3-manylinux2014_x86_64.whl::https://files.pythonhosted.org/packages/36/9f/f836e126002c7cfcfe35418f6cff5a63fe3f529c609b334ca4775354b4d5/sgl_kernel-0.3.21-cp310-abi3-manylinux2014_x86_64.whl
+	sha256sums = 57dfb3a2a3cd759f499c32e2bad5f6489b7c58f7f9a84ee00c53ec92d303aaab
+
+pkgname = python-sgl-kernel
