@@ -1,7 +1,7 @@
 pkgbase = purple
-	pkgdesc = Simple CLI tool to convert the images to ASCII art
+	pkgdesc = TUI to search, connect and manage SSH servers. Visual file transfer, cloud sync (10 providers), password management. Edits ~/.ssh/config directly.
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/erickochen/purple
 	arch = x86_64
 	arch = aarch64

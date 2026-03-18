@@ -1,8 +1,8 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=purple
 pkgver=2.3.0
-pkgrel=1
-pkgdesc='Simple CLI tool to convert the images to ASCII art'
+pkgrel=2
+pkgdesc='TUI to search, connect and manage SSH servers. Visual file transfer, cloud sync (10 providers), password management. Edits ~/.ssh/config directly.'
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 url='https://github.com/erickochen/purple'
 license=('MIT')
