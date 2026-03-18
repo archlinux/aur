@@ -9,13 +9,13 @@ pkgbase = python-sgl-kernel
 	makedepends = python-installer
 	makedepends = python-wheel
 	makedepends = python-scikit-build-core
-	makedepends = python-pytorch-cuda
+	makedepends = python-pytorch
 	makedepends = python-sympy
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = git
 	depends = python>=3.10
-	depends = python-pytorch-cuda
+	depends = python-pytorch
 	depends = cuda
 	options = !strip
 	source = sglang-0.5.9.tar.gz::https://github.com/sgl-project/sglang/archive/refs/tags/v0.5.9.tar.gz

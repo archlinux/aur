@@ -10,7 +10,7 @@ url='https://github.com/sgl-project/sglang/tree/main/sgl-kernel'
 license=('Apache-2.0')
 depends=(
   'python>=3.10'
-  'python-pytorch-cuda'
+  'python-pytorch'
   'cuda'
 )
 makedepends=(
@@ -18,7 +18,7 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-scikit-build-core'
-  'python-pytorch-cuda'
+  'python-pytorch'
   'python-sympy'
   'cmake'
   'ninja'
