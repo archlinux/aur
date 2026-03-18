@@ -1,6 +1,6 @@
 # Maintainer: jaslrobinson
 pkgname=lava-desktop
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="LAVA - Live Animated Visuals for Arch. Desktop live wallpaper engine with formula support, animations, and widget system."
 arch=('x86_64')
