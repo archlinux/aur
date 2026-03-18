@@ -10,7 +10,7 @@ pkgbase = mpdris-git
 	makedepends = cargo
 	makedepends = git
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
 	optdepends = libsystemd: run mpdris as a service
 	provides = mpdris=1.2.0.r49.g2e32af1
 	conflicts = mpdris
@@ -20,6 +20,6 @@ pkgbase = mpdris-git
 
 pkgname = mpdris-git
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
 	depends = dbus
 	depends = mpd
