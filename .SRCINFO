@@ -1,0 +1,16 @@
+pkgbase = tsenta-bin
+	pkgdesc = Tsenta - Automated job application assistant
+	pkgver = 3.5.33
+	pkgrel = 1
+	url = https://github.com/tsenta/tsenta-desktop-linux
+	arch = x86_64
+	license = custom:proprietary
+	depends = hicolor-icon-theme
+	depends = fuse2
+	provides = tsenta
+	conflicts = tsenta
+	options = !strip
+	source = https://github.com/tsenta/tsenta-desktop-linux/releases/download/v3.5.33/Tsenta-3.5.33-x64.AppImage
+	sha256sums = 00b776d31543eb068a861b3ba4056b77ec95d90c0935e524f5038b5637e1ee48
+
+pkgname = tsenta-bin
