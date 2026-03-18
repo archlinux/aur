@@ -1,7 +1,7 @@
 # Maintainer: UnDadFeated <undadfeated@users.noreply.github.com>
 pkgname=massav1encoder
 _pkgname=Mass_AV1_Encoder
-pkgver=11.0.1
+pkgver=11.0.2
 pkgrel=1
 pkgdesc="World-class, high-density AV1 encoding dashboard for high-efficiency archival."
 arch=('any')
