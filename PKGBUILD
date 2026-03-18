@@ -1,7 +1,7 @@
 # Maintainer: Nikolay Bryskin <nbryskin@gmail.com>
 pkgname=gopass-secret-service
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="D-Bus Secret Service provider using GoPass as backend"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nikicat/gopass-secret-service"
@@ -12,7 +12,7 @@ optdepends=(
     'libsecret: for secret-tool CLI'
     'python-secretstorage: for Python applications'
 )
-provides=('secret-service')
+provides=('secret-service' 'org.freedesktop.secrets')
 conflicts=('gnome-keyring')
 backup=('etc/gopass-secret-service/config.yaml')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nikicat/${pkgname}/archive/v${pkgver}.tar.gz")
