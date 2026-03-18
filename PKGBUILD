@@ -5,7 +5,7 @@ pkgdesc="Git made bro-ish"
 arch=('x86_64')
 url="https://github.com/grepTHEGOD/bro"
 license=('MIT')
-depends=('zlib' 'json-c' 'ncurses' 'libcurl')
+depends=('zlib' 'json-c' 'ncurses' 'curl')
 makedepends=('cmake' 'make')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/grepTHEGOD/bro/archive/refs/tags/v$pkgver.tar.gz")
