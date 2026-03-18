@@ -1,6 +1,6 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-mobile
-pkgver=6.6.2
+pkgver=6.6.3
 pkgrel=1
 pkgdesc='Plasma Mobile shell components'
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
@@ -33,14 +33,14 @@ depends=(
 optdepends=(
   'iio-sensor-proxy: IIO accelerometer proxy needed for screen rotation'
   'plasma-camera: The camera app for Plasma'
-  'plasma-dialer: Phone application'
+  'plasma-dialer: Dialer application'
   'plasma-mobile-sounds: Plasma Mobile sound theme'
   'plasma-workspace-wallpapers: A large wallpaper selection for Plasma'
 )
 conflicts=('plasma-mobile-git')
 makedepends=(cmake extra-cmake-modules plasma-wayland-protocols)
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('ed499ed91fdf02f2ba18ad5671e5794af73ac70f72fcb458f9c87acc3f713a2b')
+sha256sums=('98dd7262c995732875a475ecb8f61c515da0e5f442e769705071d9267dd82291')
 
 prepare() {
   mkdir -p build

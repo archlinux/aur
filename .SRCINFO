@@ -1,6 +1,6 @@
 pkgbase = plasma-mobile
 	pkgdesc = Plasma Mobile shell components
-	pkgver = 6.6.2
+	pkgver = 6.6.3
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/plasma-mobile
 	arch = x86_64
@@ -38,11 +38,11 @@ pkgbase = plasma-mobile
 	depends = xdg-desktop-portal-kde
 	optdepends = iio-sensor-proxy: IIO accelerometer proxy needed for screen rotation
 	optdepends = plasma-camera: The camera app for Plasma
-	optdepends = plasma-dialer: Phone application
+	optdepends = plasma-dialer: Dialer application
 	optdepends = plasma-mobile-sounds: Plasma Mobile sound theme
 	optdepends = plasma-workspace-wallpapers: A large wallpaper selection for Plasma
 	conflicts = plasma-mobile-git
-	source = https://download.kde.org/stable/plasma/6.6.2/plasma-mobile-6.6.2.tar.xz
-	sha256sums = ed499ed91fdf02f2ba18ad5671e5794af73ac70f72fcb458f9c87acc3f713a2b
+	source = https://download.kde.org/stable/plasma/6.6.3/plasma-mobile-6.6.3.tar.xz
+	sha256sums = 98dd7262c995732875a475ecb8f61c515da0e5f442e769705071d9267dd82291
 
 pkgname = plasma-mobile
