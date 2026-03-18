@@ -1,7 +1,7 @@
 pkgbase = imagefinish
 	pkgdesc = A PyQt6 image editor inspired by Photoshop
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/7Lucia7Lokidottir7/Linux-Photoshop
 	arch = any
 	license = MIT
