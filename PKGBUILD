@@ -1,7 +1,7 @@
 # Maintainer: Lev Babiev <harley at hosers dot org>
 
 pkgname=sfwbar
-pkgver=1.0_beta16.1
+pkgver=1.0_beta17
 pkgrel=1
 
 pkgdesc='S* Floating Window taskBar'
@@ -18,7 +18,7 @@ depends=(
 optdepends=(
     'alsa-lib: ALSA audio volume control',
     'libpulse: pulse audio volume control',
-    'libmpdclient: music player daemon control',
+    'pipewire: pipewire privacy monitor',
     'libxkbcommon: xkb layout conversion support'
     )
 makedepends=('meson')
