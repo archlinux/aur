@@ -8,7 +8,7 @@ url="https://github.com/VillageOfGamers/key-debouncer"
 license=('GPL3')
 depends=('libevdev' 'systemd')
 makedepends=('gcc' 'make')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v2.0.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
