@@ -1,0 +1,5 @@
+# .gitignore
+src/
+pkg/
+*.tar.*
+*.zip
