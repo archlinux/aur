@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+VALID_PALETTES=(black dark nord everforest gruvbox tokyonight dracula catppuccin catppuccin-latte e-ink)
+
+usage() {
+  echo "Usage: abyssal-theme <palette>"
+  echo ""
+  echo "Available palettes:"
+  printf '  %s\n' "${VALID_PALETTES[@]}"
+  exit 1
+}
+
+[[ $# -eq 1 ]] || usage
+
+palette="$1"
+
+valid=false
+for p in "${VALID_PALETTES[@]}"; do
+  [[ "$p" == "$palette" ]] && valid=true && break
+done
+$valid || { echo "Unknown palette: ${palette}"; echo ""; usage; }
+
+gtk4_dir="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-4.0"
+mkdir -p "${gtk4_dir}"
+ln -sf "/usr/share/themes/Abyssal-${palette}/gtk-4.0/gtk.css" "${gtk4_dir}/gtk.css"
+
+echo "Libadwaita theme set to Abyssal-${palette}"
+echo "Restart your apps for the change to take effect."

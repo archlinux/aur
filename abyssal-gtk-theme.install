@@ -1,0 +1,38 @@
+_setup_libadwaita() {
+  local palette="${1:-dark}"
+  local target_user="${SUDO_USER:-$USER}"
+  local home
+  home=$(getent passwd "$target_user" | cut -d: -f6)
+  local gtk4_dir="${home}/.config/gtk-4.0"
+
+  mkdir -p "${gtk4_dir}"
+  ln -sf "/usr/share/themes/Abyssal-${palette}/gtk-4.0/gtk.css" "${gtk4_dir}/gtk.css"
+  chown "${target_user}:" "${gtk4_dir}/gtk.css"
+}
+
+post_install() {
+  _setup_libadwaita dark
+  echo ""
+  echo "==> Abyssal GTK Theme: libadwaita set to Abyssal-dark"
+  echo "==> Switch palette anytime with: abyssal-theme <palette>"
+  echo ""
+}
+
+post_upgrade() {
+  # Re-apply whichever palette is currently active (follow the symlink target)
+  local target_user="${SUDO_USER:-$USER}"
+  local home
+  home=$(getent passwd "$target_user" | cut -d: -f6)
+  local current_link="${home}/.config/gtk-4.0/gtk.css"
+
+  if [[ -L "${current_link}" ]]; then
+    local current_palette
+    current_palette=$(readlink "${current_link}" | sed 's|.*/Abyssal-\(.*\)/gtk-4.0/gtk.css|\1|')
+    _setup_libadwaita "${current_palette}"
+    echo ""
+    echo "==> Abyssal GTK Theme: libadwaita re-applied for Abyssal-${current_palette}"
+    echo ""
+  else
+    post_install
+  fi
+}
