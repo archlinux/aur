@@ -1,6 +1,6 @@
 # Maintainer: KaptenSea <andreas@swetux.se>
 pkgname=bookstory-bin
-pkgver=1.1.1
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Native desktop client for Audiobookshelf"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('webkit2gtk-4.1' 'gtk3')
 provides=('bookstory')
 conflicts=('bookstory')
 source=("bookstory_${pkgver}_amd64.deb::https://github.com/kaptensea/bookstory/releases/download/v${pkgver}/bookstory_${pkgver}_amd64.deb")
-sha256sums=('a83f68eaa4ad54e6be09674d1efdafe71425a333f2e7012794ae6acfbc118519')
+sha256sums=('53be805815a1a460cda03bbaf1cb6169ae7d82111a811c09b1a5f81dba58d2d5')
 
 prepare() {
     cd "$srcdir"
