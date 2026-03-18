@@ -1,8 +1,8 @@
 # Maintainer: guglovich <https://github.com/guglovich>
 # Created with assistance from Claude (Anthropic).
 pkgname=transmission-remote-slint
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Lightweight Transmission BitTorrent GUI built with Slint (no GTK)"
 arch=('x86_64')
 url="https://github.com/guglovich/Transmission-Remote-Slint"
@@ -28,8 +28,10 @@ optdepends=(
     'snixembed: system tray support in XFCE/Openbox'
     'xfce4-statusnotifier-plugin: system tray support in XFCE'
 )
+provides=("$pkgname")
+conflicts=('transmission-remote-slint-bin')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/guglovich/Transmission-Remote-Slint/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('62502d9dc98dbfa668a9b7b39ebbf8b788e7ef6dfd261fdbb2b89f69fdb77243')
+sha256sums=('8e328bdd16dcd66288d5f6466d036dccc8a0eb3a3aaee7e991813a68a91715e4')
 
 prepare() {
     cd "Transmission-Remote-Slint-${pkgver}"

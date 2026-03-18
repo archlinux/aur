@@ -1,7 +1,7 @@
 pkgbase = transmission-remote-slint
 	pkgdesc = Lightweight Transmission BitTorrent GUI built with Slint (no GTK)
-	pkgver = 0.3.0
-	pkgrel = 2
+	pkgver = 0.3.1
+	pkgrel = 1
 	url = https://github.com/guglovich/Transmission-Remote-Slint
 	arch = x86_64
 	license = GPL-2.0-or-later
@@ -20,7 +20,9 @@ pkgbase = transmission-remote-slint
 	optdepends = libnotify: desktop notifications
 	optdepends = snixembed: system tray support in XFCE/Openbox
 	optdepends = xfce4-statusnotifier-plugin: system tray support in XFCE
-	source = transmission-remote-slint-0.3.0.tar.gz::https://github.com/guglovich/Transmission-Remote-Slint/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 62502d9dc98dbfa668a9b7b39ebbf8b788e7ef6dfd261fdbb2b89f69fdb77243
+	provides = transmission-remote-slint
+	conflicts = transmission-remote-slint-bin
+	source = transmission-remote-slint-0.3.1.tar.gz::https://github.com/guglovich/Transmission-Remote-Slint/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 8e328bdd16dcd66288d5f6466d036dccc8a0eb3a3aaee7e991813a68a91715e4
 
 pkgname = transmission-remote-slint
