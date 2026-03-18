@@ -1,0 +1,5 @@
+[nugget-doom]
+source = "github"
+github = "MrAlaux/Nugget-Doom"
+use_latest_release = true
+prefix = "nugget-doom-"
