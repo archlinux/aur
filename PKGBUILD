@@ -5,7 +5,7 @@ _pkgname=trolley
 pkgname=${_pkgname}-bin
 pkgdesc="Run terminal apps anywhere "
 
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,10 +24,10 @@ source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-cli-${_barch[0]}.tar.xz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_pkgname}-cli-${_barch[1]}.tar.xz")
-sha256sums=('4c18a9f725a329460cfac564616d9947864e88429531c02aa6314c39d9c8639d'
+sha256sums=('06228bd5a50c71fd881733cc6da4ac5553513ccd589a8b18332518392ba1c13b'
             '2bb07097d1c114203af61b79528e410ce5849546f42650edb4bfcdbe74b137ef')
-sha256sums_x86_64=('f8163a6a81a8db44326c887d92424d630828aff01acc6bd344fe15ebe1eb2def')
-sha256sums_aarch64=('68e367bb10eab0ebdaf9a878339e933b78998448852a9a9900fb639a50ed0dfd')
+sha256sums_x86_64=('6a3f002503f1faf87d5d3590d229424b7adc5841787ccc3370be51f4e5831817')
+sha256sums_aarch64=('3795208a81a38fe3a010e81eba3855fed263c194d52b6fd0cfd2721a2852c8ee')
 
 
 package() {
