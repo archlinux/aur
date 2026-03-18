@@ -11,7 +11,6 @@ depends=(
   'hicolor-icon-theme'
   'qt5-base'
   'qt5-svg'
-  'qt5-webengine'
 )
 makedepends=(
   'cmake'
@@ -22,6 +21,7 @@ makedepends=(
 )
 optdepends=(
   'python: scripting support and component generation'
+  'qt5-webengine: embedded HTML help browser (dropped from Arch repos; build from AUR if desired)'
 )
 # The git source is used (rather than a tarball) because several HopsanCore
 # dependencies (sundials, libnumhop, indexingcsvparser, DCPLib) are git
@@ -37,12 +37,26 @@ b2sums=('SKIP')
 prepare() {
   cd hopsan
 
+  # qt5-webengine was dropped from Arch repos and the installed version is
+  # linked against an older ICU. Strip WebEngine from the build entirely;
+  # WebviewWrapper.cpp falls back to a QLabel with a link when neither
+  # USEWEBENGINE nor USEWEBKIT is defined.
+  sed -i '/QT += webenginewidgets/d; /DEFINES \*= USEWEBENGINE/d' \
+    HopsanGUI/HopsanGUI.pro
+
   # Populate the submodules needed by HopsanCore and hopsandcp
   git submodule update --init \
     HopsanCore/dependencies/indexingcsvparser \
     HopsanCore/dependencies/libnumhop \
     HopsanCore/dependencies/sundials \
-    hopsandcp/dependencies/DCPLib
+    dependencies/tools
+
+  # GCC 15 no longer implicitly provides stdint types in system headers
+  sed -i '/#include <memory>/a #include <cstdint>' hopsandcp/include/dcpserver.h
+  # dcplib defines ipToString() in a header included by multiple TUs — add inline
+  # to avoid a multiple-definition link error when LTO is active
+  sed -i 's/^std::string ipToString(/inline std::string ipToString(/' \
+    dependencies/dcplib-code/include/core/dcp/model/pdu/IpToStr.hpp
 
   cd dependencies
 
@@ -52,6 +66,25 @@ prepare() {
   # Build and install each bundled dependency into its own directory so the
   # qmake .pri files can find headers and libs. setupAll.sh is not used
   # because it references a non-existent setupFMILibrary.sh.
+
+  # Some bundled deps declare cmake_minimum_required < 3.5, which CMake 4.x
+  # rejects. Patch each setup script to pass the policy minimum flag, and
+  # remove any stale build dirs so cmake always starts from a clean state.
+  # cmake 4.x no longer accepts cmake_minimum_required < 3.5
+  sed -i 's/cmake -Wno-dev/cmake -Wno-dev -DCMAKE_POLICY_VERSION_MINIMUM=3.5/g' setup*.sh
+  # zeromq passes cmake flags via a variable — patch the variable definition
+  # also disable tests which fail with GCC 15
+  sed -i 's/zmq_cmake_args="-Wno-dev/zmq_cmake_args="-Wno-dev -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DBUILD_TESTS=OFF/' setupZeroMQ.sh
+  # msgpack-c 3.1.1 tests conflict with system gtest requiring C++17
+  sed -i 's/\${codedir}/-DMSGPACK_BUILD_TESTS=OFF \${codedir}/' setupMsgpack.sh
+  # xerces-c 3.2.2 is incompatible with ICU 78 — use gnuiconv transcoder
+  sed -i 's/cmake -Wno-dev\(.*\) \${codedir}/cmake -Wno-dev\1 -Dtranscoder=gnuiconv \${codedir}/' setupXerces.sh
+  # discount 2.2.x: GCC 15 made -Wincompatible-pointer-types a hard error
+  sed -i 's|\./configure\.sh|CFLAGS="-Wno-incompatible-pointer-types" ./configure.sh|' setupDiscount.sh
+  for dep in asio discount fmi4c katex libzip msgpack-c qwt tclap xerces zeromq dcplib; do
+    rm -rf "${dep}-build"
+  done
+
   source setHopsanBuildPaths.sh
   for script in \
       setupAsio \
@@ -63,8 +96,7 @@ prepare() {
       setupQwt \
       setupTclap \
       setupXerces \
-      setupZeroMQ \
-      setupDCPLib; do
+      setupZeroMQ; do
     bash "${script}.sh"
   done
 }
