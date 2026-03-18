@@ -17,7 +17,7 @@ pkgbase="${_pkgbase}-bin"
 pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A configurable TUI clipboard manager for Unix"
 arch=(
@@ -39,12 +39,12 @@ source_${_carch}+=(
 )"
   done
 done
-sha256sums=('22598a6f62041ce88f00f889c20d04fb0cf269ad8b0d9758e8b9e509d8e71e3e'
+sha256sums=('4639cde7079d4d2c00bf215e47428c014e24f8f86d7e4a79d9d0532ff20998a8'
             '7a2e32b86e825be38f8d6582261c0d60617e1cc2b8171ff6e5fed1e03a788638')
-sha256sums_aarch64=('39908918c2f495e311f8791911710d04334d3cd17f5f8f91c6a52bf9a68f1070'
-                    'be0df2115a7580d5e2c6722ca7a282421a74c28c0e01411a0801805f3b364105')
-sha256sums_x86_64=('465411f22704d6cee852a12f5fe3903b9dba7279ecfd489dde658e6edb89569e'
-                   '41260fe521cbbfe1e94e5d449ea7b3af8e0e279d247bc22d73d97fef6a04dde1')
+sha256sums_aarch64=('57503488f61fe1505d0a8ef27470a3a3feb5cc7dc3336c4f898dfdf96644a998'
+                    '976b4d255c92a8e9ba4e2e4448069e128a74e98a3cd89a6814cdc9e2381991cc')
+sha256sums_x86_64=('b3c192c055fd847202c7806a9b3963b347b40b1f2dff0261ba63eb2601f8a847'
+                   '0853240cbfa8efc1a73baebf4e202f70dc14c832bb5a8b74c650ab410e294003')
 
 package_clipse-common-bin() {
   pkgdesc+=" (common files)"
@@ -72,7 +72,7 @@ for _backend in "${!_backends[@]}"; do
 package_${_pkgbase}-${_backend}-bin() {
   pkgdesc+=' (${_backend} backend)'
   depends=(
-    '${_pkgbase}-common>=${pkgver}'
+    '${_pkgbase}-common-bin>=${pkgver}-${pkgrel}'
     ${_backends[${_backend}]}
   )
   provides=(

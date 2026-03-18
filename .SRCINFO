@@ -1,45 +1,45 @@
 pkgbase = clipse-bin
 	pkgdesc = A configurable TUI clipboard manager for Unix
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/savedra1/clipse
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	source = clipse-1.2.0-README.md::https://github.com/savedra1/clipse/raw/refs/tags/v1.2.0/README.md
-	source = clipse-1.2.0-LICENSE::https://github.com/savedra1/clipse/raw/refs/tags/v1.2.0/LICENSE
-	sha256sums = 22598a6f62041ce88f00f889c20d04fb0cf269ad8b0d9758e8b9e509d8e71e3e
+	source = clipse-1.2.1-README.md::https://github.com/savedra1/clipse/raw/refs/tags/v1.2.1/README.md
+	source = clipse-1.2.1-LICENSE::https://github.com/savedra1/clipse/raw/refs/tags/v1.2.1/LICENSE
+	sha256sums = 4639cde7079d4d2c00bf215e47428c014e24f8f86d7e4a79d9d0532ff20998a8
 	sha256sums = 7a2e32b86e825be38f8d6582261c0d60617e1cc2b8171ff6e5fed1e03a788638
-	source_aarch64 = https://github.com/savedra1/clipse/releases/download/v1.2.0/clipse_v1.2.0_linux_x11_arm64.tar.gz
-	source_aarch64 = https://github.com/savedra1/clipse/releases/download/v1.2.0/clipse_v1.2.0_linux_wayland_arm64.tar.gz
-	sha256sums_aarch64 = 39908918c2f495e311f8791911710d04334d3cd17f5f8f91c6a52bf9a68f1070
-	sha256sums_aarch64 = be0df2115a7580d5e2c6722ca7a282421a74c28c0e01411a0801805f3b364105
-	source_x86_64 = https://github.com/savedra1/clipse/releases/download/v1.2.0/clipse_v1.2.0_linux_x11_amd64.tar.gz
-	source_x86_64 = https://github.com/savedra1/clipse/releases/download/v1.2.0/clipse_v1.2.0_linux_wayland_amd64.tar.gz
-	sha256sums_x86_64 = 465411f22704d6cee852a12f5fe3903b9dba7279ecfd489dde658e6edb89569e
-	sha256sums_x86_64 = 41260fe521cbbfe1e94e5d449ea7b3af8e0e279d247bc22d73d97fef6a04dde1
+	source_aarch64 = https://github.com/savedra1/clipse/releases/download/v1.2.1/clipse_v1.2.1_linux_x11_arm64.tar.gz
+	source_aarch64 = https://github.com/savedra1/clipse/releases/download/v1.2.1/clipse_v1.2.1_linux_wayland_arm64.tar.gz
+	sha256sums_aarch64 = 57503488f61fe1505d0a8ef27470a3a3feb5cc7dc3336c4f898dfdf96644a998
+	sha256sums_aarch64 = 976b4d255c92a8e9ba4e2e4448069e128a74e98a3cd89a6814cdc9e2381991cc
+	source_x86_64 = https://github.com/savedra1/clipse/releases/download/v1.2.1/clipse_v1.2.1_linux_x11_amd64.tar.gz
+	source_x86_64 = https://github.com/savedra1/clipse/releases/download/v1.2.1/clipse_v1.2.1_linux_wayland_amd64.tar.gz
+	sha256sums_x86_64 = b3c192c055fd847202c7806a9b3963b347b40b1f2dff0261ba63eb2601f8a847
+	sha256sums_x86_64 = 0853240cbfa8efc1a73baebf4e202f70dc14c832bb5a8b74c650ab410e294003
 
 pkgname = clipse-common-bin
 	pkgdesc = A configurable TUI clipboard manager for Unix (common files)
 	arch = any
-	provides = clipse-common=1.2.0
+	provides = clipse-common=1.2.1
 	conflicts = clipse-common
 
 pkgname = clipse-x11-bin
 	pkgdesc = A configurable TUI clipboard manager for Unix (x11 backend)
-	depends = clipse-common>=1.2.0
+	depends = clipse-common-bin>=1.2.1-1
 	depends = glibc
 	depends = libx11
 	depends = libxfixes
 	depends = libxtst
-	provides = clipse-x11=1.2.0
-	provides = clipse=1.2.0
+	provides = clipse-x11=1.2.1
+	provides = clipse=1.2.1
 	conflicts = clipse
 
 pkgname = clipse-wayland-bin
 	pkgdesc = A configurable TUI clipboard manager for Unix (wayland backend)
-	depends = clipse-common>=1.2.0
+	depends = clipse-common-bin>=1.2.1-1
 	depends = wl-clipboard
-	provides = clipse-wayland=1.2.0
-	provides = clipse=1.2.0
+	provides = clipse-wayland=1.2.1
+	provides = clipse=1.2.1
 	conflicts = clipse
