@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/LittleBigOwI/bonsai.git#branch=main"
 license=('GPL-3.0-or-later')
 depends=('glibc' 'gcc-libs')
-makedepends=('cmake' 'gcc' 'git' 'vim')
+makedepends=('cmake' 'gcc' 'git' 'xdd')
 source=(git+"$url")
 md5sums=('SKIP')
 

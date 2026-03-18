@@ -8,7 +8,7 @@ pkgbase = bonsai
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = git
-	makedepends = vim
+	makedepends = xdd
 	depends = glibc
 	depends = gcc-libs
 	source = git+https://github.com/LittleBigOwI/bonsai.git#branch=main
