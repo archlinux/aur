@@ -1,6 +1,6 @@
 pkgbase = bifrost-bin
 	pkgdesc = Samsung Firmware Downloader
-	pkgver = 1.20.5
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/zacharee/SamloaderKotlin
 	arch = x86_64
@@ -21,11 +21,11 @@ pkgbase = bifrost-bin
 	depends = freetype2
 	provides = bifrost
 	conflicts = bifrost
-	source = https://raw.githubusercontent.com/zacharee/SamloaderKotlin/refs/tags/1.20.5/LICENSE.txt
-	b2sums = 693b28ed14fb782eab4399104bb968fe613447c1f005495a5cd3791f3032e71dbb6b418cfa4b874562891deb60d4fb53ca1e7f965b571c35f6bdba0eb5d624d4
-	source_x86_64 = https://github.com/zacharee/SamloaderKotlin/releases/download/1.20.5/bifrost-1.20.5-linux-amd64.tar.gz
-	b2sums_x86_64 = 6e99dc35d52da6c2b40d70a1664a9c689f4d36241678b4e8beb2d41495444bc795778df84993a8cef6736a83ea66d32b8259f17bf4187b13e74dea7cd4ac11da
-	source_aarch64 = https://github.com/zacharee/SamloaderKotlin/releases/download/1.20.5/bifrost-1.20.5-linux-aarch64.tar.gz
-	b2sums_aarch64 = 0bb2c804c7d115db73929420294317d47c24897a1759e28815e645b7910520e6dd711adee6164c2cf52495f6ed2628ae080c943a73c0a0c9dd7f83f92d318cdb
+	source = https://raw.githubusercontent.com/zacharee/SamloaderKotlin/refs/tags/2.1.0/LICENSE.txt
+	sha256sums = 778075b8a5fb9c5bc6ea65da17ad6adb0b5c69bbebf52a965d285487dafcd316
+	source_x86_64 = https://github.com/zacharee/SamloaderKotlin/releases/download/2.1.0/bifrost-2.1.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 6b916e2ad7c73387f5496c123a055c152d46925f2bcdce6c6374fe7210ea37a4
+	source_aarch64 = https://github.com/zacharee/SamloaderKotlin/releases/download/2.1.0/bifrost-2.1.0-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 52064c5080f6fd541e540a45210f9f9b2bbe47316754010661c55e0a94eea0ae
 
 pkgname = bifrost-bin
