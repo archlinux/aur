@@ -12,6 +12,6 @@ pkgbase = niri_window_buttons
 	depends = gtk3
 	depends = libpulse
 	source = niri_window_buttons-0.4.0.tar.gz::https://github.com/adelmonte/niri_window_buttons/archive/refs/tags/v0.4.0.tar.gz
-	sha256sums = ae9715c81555b9054a0e2b114ec942b25f7fd1d704485e04cb47c8557826155c
+	sha256sums = 0f70bd27f0ff6bd847d84469b0afa72e2020edb659819ea61bfc51961a24ade8
 
 pkgname = niri_window_buttons
