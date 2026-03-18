@@ -18,13 +18,14 @@ depends=(
   ffmpeg
   fontconfig
   freetype2
-  gcc-libs
   gdk-pixbuf2
   glib2
   glibc
   gtk3
   hicolor-icon-theme
+  libgcc
   libpulse
+  libstdc++
   libx11
   libxcb
   libxcomposite
