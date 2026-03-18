@@ -9,10 +9,10 @@ wasm32-wasi is deprecated and causes an error from Clang 22.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/build/moz.configure/toolchain.configure b/build/moz.configure/toolchain.configure
-index ec9d2a48df3a..c7c54ccde261 100644
+index a37ed610cc43..a11e611fed25 100644
 --- a/build/moz.configure/toolchain.configure
 +++ b/build/moz.configure/toolchain.configure
-@@ -943,7 +943,7 @@ def compiler_wrapper(wrapper, ccache):
+@@ -941,7 +941,7 @@ def compiler_wrapper(wrapper, ccache):
  
  @dependable
  def wasm():

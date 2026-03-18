@@ -624,7 +624,7 @@ Subject: [PATCH] Patch glsl-optimizer to build with glibc 2.43
  rename {third_party => build}/rust/glslopt/wrapper.hpp (100%)
 
 diff --git a/Cargo.lock b/Cargo.lock
-index cad5f42fc4fb..933ca65ed1f9 100644
+index 595880d28ee6..b5fba220c66b 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -2893,8 +2893,6 @@ dependencies = [

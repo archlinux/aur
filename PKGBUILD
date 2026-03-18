@@ -3,7 +3,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-nightly
-pkgver=150.0a1+20260317.1+hd75d6fbafe8e
+pkgver=150.0a1+20260318.1+h97f49e2db85f
 pkgrel=1
 pkgdesc="Fast, Private & Safe Web Browser (Nightly version)"
 url="https://www.mozilla.org/firefox/channel/desktop/#nightly"
@@ -89,7 +89,7 @@ source=(
   0001-Install-under-remoting-name.patch
   0002-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
   0003-Use-wasm32-wasip1-target.patch
-  0004-Fix-implicit-int-conversion-on-negation.patch
+  0004-Revert-Bug-2023494-Wayland-Add-support-of-wl_fixes-r.patch
 )
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -100,18 +100,18 @@ sha256sums=('SKIP'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '4304902899987928ea51b7020fb1298b01fa77e327ef66ab00b061f767042b9f'
             '9649563e8703b4f4b43469029fe20e3bd0c1209dbaa4c2d664c00e089abd7fa0'
-            'd5380f8d8b908654d7816eaffa4ffa954f438cecac23fe650a399345904c9af7'
-            '8e18a7c8976d40e7f2c9c7431e25ebc5aea8d6376f113cd7b38f53ea97a31345'
-            '28fab2f0b8c97db0775cbc7dee34b73d91c4d97492108319af4b933984984fb6'
-            '2824c5d01c795d4d2dc3be00ebc04e924dddd9009ab5a5c826b5e167641ca597')
+            '2b7a7fda2324222618c23ecac31090462b66e9a4e6b438f62384e495dbac2284'
+            '1ba2a92c36a7e227cbc2a2b66dd2919651266687cae9706ed5c97d782e0e38db'
+            'baad79216200df4ea05a0e5ca26e0c56c4d4a3cd2149d32f15dc8b7c724376ba'
+            '7b4917f1bcda2c761f2b5eb1b672317fc0c4cec7d9774b6eb211f0807cb89ea1')
 b2sums=('SKIP'
         '63a8dd9d8910f9efb353bed452d8b4b2a2da435857ccee083fc0c557f8c4c1339ca593b463db320f70387a1b63f1a79e709e9d12c69520993e26d85a3d742e34'
         '9c748d4c330d37d10862c73b3092c0d4308030fb62ca80da56ba9b3c3350ba4d779570308d1dd8e2c7d873f269654b72030702c5abc772aabfdfe7f39320a8b9'
         '561d6fd3b394eee3242c1db12c0520e865488b3e5c1943a398994857b1fcad520ed4387ea93bc9402356649a0b3db6911bcd3a9f8d388bbe88a58a2efec0aa14'
-        '09a880c88104c19c1efaa44716a4e03c5ae3adf5f573a6e2e7ae8f369f712c46f56432570fba52ba22c99f943da3278ffc1f8a5940c04917eace2db284526de4'
-        'be5a8a42e3dd33becb33803d7d7c3483735c25e819284dad8728903ae35c6c41035b623a832b785ee3117180317800fc05790a67f93e9adfe033a6372cdd6b3e'
-        'acd0fb494923a708dd651aef480a7b8a7bff2f86a29d5320e202d3dd7c3eb4be0575f24dbdfbdf86008ae2a2cab524ee389ade5f25d7989ba09c87103b71889c'
-        '2793263f67251d7017761e30b04a0d1fc57380493b0b50989181404c8a87458786bf776b61f9efa22f4c356ce236adfb711abb100b90b45a08acb70510575df8')
+        '995726a90389c18ad342afeb44b010a3e54041b1f93e8487298f74b7ca907af347994337bdb2401db81c81b24c10ee7fb776df94731f6cae6607e4ae62ac77af'
+        '5e904f679cb7a99807c81b6de97ac73795f064052efc2c2bf8e1efde892610ae8388d8a2c8bea325f6b8ea9430d57b41d0ed4a54cf9d9d1bf7ede19931d6ce24'
+        '975db4df9c970b956b639b20957f6696ed41b8cb07452acc1b66317037430a3042ed34917d4ec0df7d31066b9137df139531c94549ad5c843d09de70e26a667e'
+        '069780bf6222654e37e8c36b11bc24a2b994fb761183d720360871b71fa0355202ea026cd9ee53004351c3bc7fb32799719fbc99146aa0ba79250fc628a5052b')
 
 # Google API keys (see https://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -152,7 +152,10 @@ prepare() {
 
   # Fix build with Clang 22
   patch -Np1 -i ../0003-Use-wasm32-wasip1-target.patch
-  patch -Np1 -i ../0004-Fix-implicit-int-conversion-on-negation.patch
+
+  # Fix build with wayland 1.24
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=2024157
+  patch -Np1 -i ../0004-Revert-Bug-2023494-Wayland-Add-support-of-wl_fixes-r.patch
 
   echo -n "$_google_api_key" >google-api-key
 
