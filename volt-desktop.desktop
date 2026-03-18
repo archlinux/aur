@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Volt
+Comment=VoltChat Desktop Application
+Exec=volt-desktop %U
+Icon=volt-desktop
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;Chat;
+MimeType=x-scheme-handler/voltchat;
+StartupWMClass=Volt
+Keywords=chat;messaging;voltchat;volt;
