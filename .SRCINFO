@@ -1,7 +1,7 @@
 pkgbase = quantumlauncher-bin
 	pkgdesc = A simple, powerful Minecraft launcher
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/Mrmayman/quantumlauncher
 	arch = x86_64
 	arch = aarch64
@@ -21,11 +21,11 @@ pkgbase = quantumlauncher-bin
 	sha256sums = 51e20ef1e0c37128523be60ae5007694efb0914b8f097a2be1bd24055768df9f
 	sha256sums = 1f94c842893f9527a08484b5c621f3557a4ac414aeb378fef14dc89931426a61
 	sha256sums = 71f7418e88aab8bc7f4da221fafa0a99e3b8058737eafa4bcbefec8f080bcc82
-	source_x86_64 = quantumlauncher-bin-0.5.0-x86_64.zip::https://github.com/Mrmayman/quantumlauncher/releases/download/v0.5.0/quantum_launcher_linux_x86_64.zip
-	sha256sums_x86_64 = 53c7bb83624bbdbbdfb3e227ed7139bb999fbc52693b10985b5cec26a79fdedd
-	source_aarch64 = quantumlauncher-bin-0.5.0-aarch64.zip::https://github.com/Mrmayman/quantumlauncher/releases/download/v0.5.0/quantum_launcher_linux_aarch64.zip
-	sha256sums_aarch64 = 3af7a3a25bb944d4412209599189a1b56f1ba47602824004a77f809097c073fb
-	source_armv7h = quantumlauncher-bin-0.5.0-armv7h.zip::https://github.com/Mrmayman/quantumlauncher/releases/download/v0.5.0/quantum_launcher_linux_arm32.zip
-	sha256sums_armv7h = 6ba20210d1dcfb765b8f57364daed3d117c48f48b9379de8cfc18735ea746a64
+	source_x86_64 = quantumlauncher-bin-0.5.1-x86_64.zip::https://github.com/Mrmayman/quantumlauncher/releases/download/v0.5.1/quantum_launcher_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 26b564795f9c8c67ca2bbda7156d5df8cdc2a5dfeb98730dbccf90465c60052a
+	source_aarch64 = quantumlauncher-bin-0.5.1-aarch64.zip::https://github.com/Mrmayman/quantumlauncher/releases/download/v0.5.1/quantum_launcher_linux_aarch64.tar.gz
+	sha256sums_aarch64 = 4e941ab860b8f84ab6cb17611bd8624ee67a3a04646c3ed3c2fed6352eb263ab
+	source_armv7h = quantumlauncher-bin-0.5.1-armv7h.zip::https://github.com/Mrmayman/quantumlauncher/releases/download/v0.5.1/quantum_launcher_linux_arm32.tar.gz
+	sha256sums_armv7h = 8495a83f5c27cc777318bd3380871bb65e000a6798a261a0a5cbc11d0abb8d00
 
 pkgname = quantumlauncher-bin
