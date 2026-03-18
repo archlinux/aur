@@ -8,15 +8,15 @@ url=https://github.com/minosariane/Shellforge
 license=('GPL-3.0-only')
 depends=()
 makedepends=('rust' 'cargo')
-source=("Shellforge${pkgver}.tar.gz::https://github.com/minosariane/shellforge/archive/refs/tags/v$pkgver.tar.gz")
+source=("shellforge${pkgver}.tar.gz::https://github.com/minosariane/shellforge/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/Shellforge-$pkgver"
+  cd "$srcdir/shellforge-$pkgver"
   cargo build -r
 }
 
 package() {
-  cd "$srcdir/Shellforge-$pkgver"
+  cd "$srcdir/shellforge-$pkgver"
   cargo install --path .
 }
