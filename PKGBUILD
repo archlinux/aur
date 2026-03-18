@@ -12,6 +12,7 @@ source=("Shellforge${pkgver}.tar.gz::https://github.com/minosariane/shellforge/a
 sha256sums=('SKIP')
 
 build() {
+  tar xf "shellforge-$pkgver"
   cd "Shellforge-$pkgver"
   cargo build -r
 }
