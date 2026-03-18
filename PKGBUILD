@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-conky
-pkgver=26.01
+pkgver=26.03
 pkgrel=1
 pkgdesc="MX Conky - Conky configuration tool, for MX, antiX, and Arch Linux"
 arch=('x86_64' 'i686')
@@ -8,8 +8,8 @@ url="https://mxlinux.org"
 license=('GPL3')
 depends=('conky' 'qt6-base')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/mx-conky/archive/refs/tags/26.01.tar.gz")
-sha256sums=('ac9cc78f41761db2f1385a57484ff45793334a1dadcbc5746312b57d85f9e2f0')
+source=("https://github.com/MX-Linux/mx-conky/archive/refs/tags/26.03.tar.gz")
+sha256sums=('95f67050b245ad3b6f7d8b3d711d6d30d03e648d0b155d2ab928feab1d2a6e20')
 install=mx-conky.install
 
 build() {
