@@ -3,7 +3,7 @@ pkgname=shellforge
 pkgver=1.0.0
 pkgrel=1
 arch=('x86_64')
-pkgdesc='Terminal tool for generating reverse-shells for CTF challenges and educational purposes.'
+pkgdesc='Terminal tool for generating reverse shells for CTF challenges and educational purposes.'
 url=https://github.com/minosariane/Shellforge
 license=('GPL-3.0-only')
 depends=()
@@ -18,5 +18,5 @@ build() {
 
 package() {
   cd "Shellforge-$pkgver"
-  cargo install --path . --root="$pkgdir" --force
+  cargo install --path .
 }
