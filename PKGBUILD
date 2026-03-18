@@ -1,22 +1,19 @@
-# Maintainer: Hexa-Programmer
 pkgname=hexamorse
 pkgver=1.1
-pkgrel=1
-pkgdesc="Terminal-based Morse code typing tool with real-time cheatsheet"
-arch=('x86_64' 'i686')
+pkgrel=3
+pkgdesc="Terminal-based Morse code typing tool"
+arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/Hexa-Programmer/HexaMorse"
 license=('MIT')
-depends=('python')
+depends=('python' 'ncurses')
 makedepends=('git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Hexa-Programmer/HexaMorse/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP') # replace with actual sha256sum after release
+source=("${pkgname}::git+https://github.com/Hexa-Programmer/HexaMorse.git")
+sha256sums=('SKIP')
 
 package() {
-    cd "$srcdir/HexaMorse-$pkgver"
+    cd "$srcdir/$pkgname"
     install -Dm755 main.py "$pkgdir/usr/bin/hexamorse"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/hexamorse/README.md"
-    # Optional: install assets if you have images/icons
-    if [ -d "assets" ]; then
-        cp -r assets "$pkgdir/usr/share/hexamorse/"
+    if [ -f "README.md" ]; then
+        install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     fi
 }
