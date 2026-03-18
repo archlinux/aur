@@ -3,7 +3,7 @@
 # Contributor: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=libation
-pkgver=13.2.1
+pkgver=13.3.2
 pkgrel=1
 pkgdesc="A free, open-source application for downloading and managing your Audible audiobooks"
 arch=('x86_64')
@@ -13,11 +13,11 @@ depends=('bash' 'dotnet-runtime' 'fontconfig' 'glibc' 'hicolor-icon-theme')
 makedepends=('dotnet-sdk>=10')
 options=(!strip)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rmcrackan/Libation/archive/v${pkgver}.tar.gz")
-sha256sums=('3e4cb193fae24dd8a5fe708cc2dc3f7a92f74c1623493a8aa5a3688d2853e865')
+sha256sums=('282e6e49b906778788565a1b9f77d2ae99ea65a0ae44a660975390f3b221b528')
 
 prepare() {
     cd "${pkgname^}-${pkgver}"
-    sed -i "s/\"version\":.*/\"version\": \"$(dotnet --list-sdks | awk 'END{print $1}')\"/" global.json
+    sed -i "s/\"version\":.*/\"version\": \"$(dotnet --list-sdks | awk 'END{print $1}')\",/" global.json
 }
 
 build() {
