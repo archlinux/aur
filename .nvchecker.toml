@@ -1,0 +1,3 @@
+[perl-future-asyncawait]
+source = "cpan"
+cpan = "Future-AsyncAwait"
