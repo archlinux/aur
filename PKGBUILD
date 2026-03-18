@@ -46,47 +46,12 @@ build() {
     -DBRLCAD_ENABLE_QT=OFF \
     -DBRLCAD_ENABLE_TCL=OFF \
     "-DBRLCAD_EXT_PARALLEL=$(nproc)" \
-    # System library locations
+    # Only specify paths for makedepends that are not found automatically
     -DPNG_PNG_INCLUDE_DIR=/usr/include \
     -DLMDB_LIBRARY=/usr/lib/liblmdb.so \
     -DLMDB_INCLUDE_DIR=/usr/include \
-    -DUTAHRLR_LIBRARY=/usr/lib/libutahrle.so \
-    -DUTAHRLR_INCLUDE_DIR=/usr/include \
-    -DSTEPCODE_DAI_DIR=/usr/include/stepcode \
-    -DSTEPCODE_EDITOR_DIR=/usr/lib/cmake/stepcode \
-    -DSTEPCODE_STEPCORE_DIR=/usr/lib/cmake/stepcode \
-    -DSTEPCODE_UTILS_DIR=/usr/lib/cmake/stepcode \
-    -DSTEPCODE_EXPPP_DIR=/usr/lib/cmake/stepcode \
-    -DSTEPCODE_EXPRESS_DIR=/usr/lib/cmake/stepcode \
-    -DSTEPCODE_INCLUDE_DIR=/usr/include/stepcode \
-    -DSTEPCODE_EXPRESS_LIBRARY=/usr/lib/libstepcode_express.so \
-    -DSTEPCODE_EXPPP_LIBRARY=/usr/lib/libstepcode_exppp.so \
-    -DSTEPCODE_CORE_LIBRARY=/usr/lib/libstepcode_core.so \
-    -DSTEPCODE_EDITOR_LIBRARY=/usr/lib/libstepcode_editor.so \
-    -DSTEPCODE_DAI_LIBRARY=/usr/lib/libstepcode_dai.so \
-    -DSTEPCODE_UTILS_LIBRARY=/usr/lib/libstepcode_utils.so \
-    -DEXPP2CXX_EXECUTABLE=/usr/bin/expp2cxx \
-    -DCLIPPER2_DIR=/usr/lib/cmake/Clipper2 \
-    -DGTE_INCLUDE_DIR=/usr/include/GTE \
-    -DMMESH_LIBRARY=/usr/lib/libmmesh.so \
-    -DMMESH_INCLUDE_DIR=/usr/include/mmesh \
-    -DOPENMESH_CORE_LIBRARY=/usr/lib/libOpenMeshCore.so \
-    -DOPENMESH_TOOLS_LIBRARY=/usr/lib/libOpenMeshTools.so \
-    -DOPENMESH_INCLUDE_DIR=/usr/include/OpenMesh \
     -DMANIFOLD_LIBRARY=/usr/lib/libmanifold.so \
-    -DMANIFOLD_INCLUDE_DIR=/usr/include/manifold \
-    -DOPENNURBS_LIBRARY=/usr/lib/libopennurbs.so \
-    -DOPENNURBS_INCLUDE_DIR=/usr/include/opennurbs \
-    -DOPENNURBS_X_INCLUDE_DIR=/usr/include/opennurbs/x \
-    -DPERPLEX_EXECUTABLE=/usr/bin/perplex \
-    -DPERPLEX_TEMPLATE=/usr/share/perplex/template \
-    -DREGEX_LIBRARY=/usr/lib/libregex.so \
-    -DSWIG_EXECUTABLE=/usr/bin/swig \
-    -DSWIG_DIR=/usr/share/swig \
-    -DDOXYGEN_EXECUTABLE=/usr/bin/doxygen \
-    -DMPI_C_LIB_NAMES=mpi \
-    -DMPI_C_HEADER_DIR=/usr/include \
-    -DMPI_C_WORKS=ON
+    -DMANIFOLD_INCLUDE_DIR=/usr/include/manifold
 
   cmake --build "${srcdir}/build" --config "${_build_config}"
 
