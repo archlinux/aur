@@ -1,0 +1,18 @@
+pkgbase = perl-syntax-keyword-match
+	pkgdesc = a match/case syntax for perl
+	pkgver = 0.15
+	pkgrel = 1
+	url = https://metacpan.org/release/PEVANS/Syntax-Keyword-Match-0.15
+	arch = x86_64
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-cbuilder
+	makedepends = perl-module-build>=0.4004
+	makedepends = perl-xs-parse-keyword
+	depends = perl-xs-parse-keyword>=0.36
+	depends = perl>=5.16.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Syntax-Keyword-Match-0.15.tar.gz
+	sha256sums = 9c428f2fb55dac4ec511f69e37ceb5f367034e475b079f59cf6abb82114f5ca3
+
+pkgname = perl-syntax-keyword-match
