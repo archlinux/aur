@@ -3,9 +3,9 @@
 
 pkgbase=jdk
 pkgname=('jre' 'jdk' 'jdk-doc')
-pkgver=25.0.2
-_build=10
-_hash=b1e0dfa218384cb9959bdcb897162d4e
+pkgver=26
+_build=35
+_hash=c3cc523845074aa0af4f5e1e1ed4151d
 _majver="${pkgver%%.*}"
 pkgrel=1
 pkgdesc='Oracle Java'
@@ -26,12 +26,12 @@ source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux
         'java_48.png'
         'LICENSE')
 noextract=("jdk-${pkgver}_doc-all.zip")
-sha256sums=('505fdcb1f172b4aad23415f0584912cff90b7d902adc5f1593894b4a8cbf7c39'
-            '3038c898c461c024622460a7a7c6c7fb281f04521916a8ed18ce909eb8f8807f'
-            '238ad31acf952842a3161837b70ddc1debb4a9d52f8248bcd7732bed5685976a'
-            '9a1bacc67380d4f91a7860d53e995d411e89362b7e941c48d68f069e078e6e2d'
-            '0fab4d9fd2a46ff731cbc49a200dede78725a0baea36a3b51719a37250ad36ad'
-            'aa1c6bc58056a7e0be8094e27b9fb2f0cf00b36fe4370963866e0b4baf64005a'
+sha256sums=('2613ca3691fc032ebd38894a42904141556e4f7f05b8f3bb5752d6b805eb4eea'
+            'd88a5803b60ebf91f69cbbec79a96b681f97965bb61f8c930587ebf8c7970a80'
+            '27984b214d135bc4f6fb04c2d2cb85de8b9ad55f7b5752bf128f58c62e11ddcc'
+            '0a0c33a4cebf59d365a95869f0513a8f2b54ed69db7c8b8220f364b4a3069726'
+            '25aa549dfc515ca177e416bc1635db85655db2d2e9c77ea153b8768e11953b16'
+            '3e59f0f2e134b87deedb10469a331f974d5b575d748633dcc1e3000f798a9c89'
             'd27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed'
             '7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176'
             '20becfcac0bdeaa29a76e6966d727f8cc79381354cbd5d530cdec823954df19f')
@@ -56,21 +56,20 @@ _jre_provides=("java-runtime=${_majver}" "java-runtime-jdk${_majver}"
                "jre${_majver}-jdk=${pkgver}-${pkgrel}"
                "java-runtime-headless=${_majver}" "java-runtime-headless-jdk=${_majver}"
                "jre${_majver}-jdk-headless=${pkgver}-${pkgrel}")
-_jre_backup=("etc/java-${pkgbase}/management/jmxremote.access"
+_jre_backup=("etc/java-${pkgbase}/jaxp.properties"
+             "etc/java-${pkgbase}/jaxp-strict.properties.template"
+             "etc/java-${pkgbase}/logging.properties"
+             "etc/java-${pkgbase}/management/jmxremote.access"
              "etc/java-${pkgbase}/management/jmxremote.password.template"
              "etc/java-${pkgbase}/management/management.properties"
-             "etc/java-${pkgbase}/sdp/sdp.conf.template"
+             "etc/java-${pkgbase}/net.properties"
+             "etc/java-${pkgbase}/security/java.security"
+             "etc/java-${pkgbase}/security/policy/README.txt"
              "etc/java-${pkgbase}/security/policy/limited/default_US_export.policy"
              "etc/java-${pkgbase}/security/policy/limited/default_local.policy"
              "etc/java-${pkgbase}/security/policy/limited/exempt_local.policy"
              "etc/java-${pkgbase}/security/policy/unlimited/default_US_export.policy"
              "etc/java-${pkgbase}/security/policy/unlimited/default_local.policy"
-             "etc/java-${pkgbase}/security/policy/README.txt"
-             "etc/java-${pkgbase}/security/java.security"
-             "etc/java-${pkgbase}/jaxp-strict.properties.template"
-             "etc/java-${pkgbase}/jaxp.properties"
-             "etc/java-${pkgbase}/logging.properties"
-             "etc/java-${pkgbase}/net.properties"
              "etc/java-${pkgbase}/sound.properties")
 
 prepare() {
@@ -92,8 +91,7 @@ _package_jre() {
     ln -s "../../../../etc/java-${pkgbase}" "${pkgdir}/${_jvmdir}/conf"
     
     # bin
-    install -D -m755 bin/{java,jfr,jrunscript,jwebserver} -t "${pkgdir}/${_jvmdir}/bin"
-    install -D -m755 bin/{keytool,rmiregistry} -t "${pkgdir}/${_jvmdir}/bin"
+    install -D -m755 bin/{java,jfr,jwebserver,keytool,rmiregistry} -t "${pkgdir}/${_jvmdir}/bin"
     
     # libs
     cp -a lib "${pkgdir}/${_jvmdir}"
@@ -101,7 +99,7 @@ _package_jre() {
     
     # man pages
     local _file
-    for _file in man/man1/{java,jfr,jrunscript,keytool,rmiregistry}.1
+    for _file in man/man1/{java,jfr,keytool,rmiregistry}.1
     do
         install -D -m644 "$_file" "${pkgdir}/usr/share/${_file%.1}-jdk${_majver}.1"
     done
