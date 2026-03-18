@@ -1,6 +1,6 @@
 # Maintainer: Tommy Falkowski <tommy@byteowlz.com>
 pkgname=sx-search
-pkgver=2.1.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Multi-engine web search from the command line"
 arch=('x86_64' 'aarch64')
