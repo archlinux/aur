@@ -1,0 +1,25 @@
+pkgbase = ntsc-rs
+	pkgdesc = Free, open-source VHS effect. Standalone application.
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/ntsc-rs/ntsc-rs
+	arch = x86_64
+	license = Apache-2.0 AND ISC AND MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = gendesk
+	depends = glibc
+	depends = gst-plugins-base-libs
+	depends = libwebp
+	depends = glib2
+	depends = libgcc
+	depends = gstreamer
+	depends = hicolor-icon-theme
+	provides = ntsc-rs-gui
+	conflicts = ntsc-rs-gui
+	source = git+https://github.com/ntsc-rs/ntsc-rs.git#tag=v0.9.3
+	source = git+https://github.com/AcademySoftwareFoundation/openfx.git
+	sha256sums = b55d3b4fac6d5465d223a7f79227f9c49a651c0fc7c8719a9825e5b008c4e747
+	sha256sums = SKIP
+
+pkgname = ntsc-rs

@@ -1,0 +1,5 @@
+[ntsc-rs]
+source = "github"
+github = "ntsc-rs/ntsc-rs"
+prefix = "v"
+use_max_tag = true
