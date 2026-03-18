@@ -1,7 +1,7 @@
 pkgbase = hexamorse
 	pkgdesc = Terminal-based Morse code typing tool
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 5
 	url = https://github.com/Hexa-Programmer/HexaMorse
 	arch = x86_64
 	arch = i686
