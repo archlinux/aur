@@ -1,20 +1,22 @@
+# shellcheck shell=bash
 # -*- sh -*-
 
 # Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
 
 pkgname='kanzi-git'
 _pkgname="${pkgname/-git}"
-pkgver=2.4.0.r82.g380ee037
-pkgrel=1
 pkgdesc='Modern, modular, portable and efficient lossless data compressor and decompressor (development version)'
-arch=('aarch64' 'x86_64')
+pkgver=2.5.1.r5.g7f41e418
+pkgrel=1
 url='https://github.com/flanglet/kanzi-cpp'
-source=("$_pkgname::git+$url.git")
+arch=('aarch64' 'x86_64')
 license=('Apache-2.0')  # SPDX-License-Identifier: Apache-2.0
+makedepends=('cmake' 'git')
+depends=('glibc' 'libgcc' 'libstdc++')
 provides=('kanzi' 'libkanzi.so')
 conflicts=("${provides[@]}")
-depends=('gcc-libs' 'glibc')
-makedepends=('cmake' 'git')
+source=("$_pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 prepare() {
   cd "$srcdir/$_pkgname/src"
@@ -44,29 +46,27 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
 
-  install -vDm0755 -t "$pkgdir/usr/bin" \
+  install -Dm0755 -t "$pkgdir/usr/bin" \
     build/kanzi
-  install -vDm0644 -t "$pkgdir/usr/share/man/man1" \
-    kanzi.1.gz
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
+  install -Dm0644 -t "$pkgdir/usr/share/man/man1" \
+    doc/kanzi.1
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname" \
     {README,SECURITY}.md
 
-  install -vDm0755 -t "$pkgdir/usr/lib" \
+  install -Dm0755 -t "$pkgdir/usr/lib" \
     build/libkanzi.so
 
-  install -vDm0644 -t "$pkgdir/usr/include/kanzi" \
+  install -Dm0644 -t "$pkgdir/usr/include/kanzi" \
     src/*.hpp
 
   _inc=(api bitstream entropy io transform util)
   for _dir in "${_inc[@]}"; do
-    install -vDm0644 -t "$pkgdir/usr/include/kanzi/$_dir" \
+    install -Dm0644 -t "$pkgdir/usr/include/kanzi/$_dir" \
       "src/$_dir"/*.hpp
   done
 
   cd "$pkgdir/usr/share/doc" \
-  && ln -vfs "$pkgname" "$_pkgname"
+  && ln -fs "$pkgname" "$_pkgname"
 }
-
-sha256sums=('SKIP')
 
 # eof
