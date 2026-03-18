@@ -1,0 +1,4 @@
+[spice-crypt]
+source = "git"
+git = "https://github.com/jtsylve/spice-crypt.git"
+prefix = "v"
