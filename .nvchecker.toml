@@ -1,0 +1,5 @@
+[zeroclaw-bin]
+source = "github"
+github = "zeroclaw-labs/zeroclaw"
+use_latest_release = true
+prefix = "v"
