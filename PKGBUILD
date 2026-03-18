@@ -1,37 +1,50 @@
-# Maintainer: éclairevoyant
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
+# Contributor: éclairevoyant
 
+_author=PEVANS
 _dist=Metrics-Any
-pkgname='perl-metrics-any'
-pkgver=0.09
+pkgname=perl-${_dist@L}
+pkgver=0.10
 pkgrel=1
-pkgdesc="Abstract collection of monitoring metrics"
+pkgdesc='abstract collection of monitoring metrics'
 arch=('any')
-url="https://metacpan.org/release/$_dist"
-license=('PerlArtistic' 'GPL')
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl-scalar-list-utils>=1.29'
+    'perl>=5.14.0'
+)
+makedepends=('perl-module-build>=0.4004')
+checkdepends=('perl-test-simple')
 options=('!emptydirs')
-depends=('perl>=5.014')
-makedepends=('perl-module-build')
-checkdepends=('perl-test-fatal>=0')
-source=("https://cpan.metacpan.org/authors/id/P/PE/PEVANS/$_dist-$pkgver.tar.gz")
-b2sums=('b1b40c48d0a6d405f73f1a78dcab1e59c79c5195665ebef96b85531c39ab2f0cd90a495881a4b6e6cbcb114c0bf88479e8ce68310e72496a86f78a268962c50d')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('a90eadf9c8af24a516bb9a1b67061f641853f90b8fee9ffc24d2bb9720e8b99b')
 
-build() {
-  cd $_dist-$pkgver
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
-  /usr/bin/perl Build.PL
-  ./Build
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+
+    /usr/bin/perl Build.PL --create_packlist=0
+    ./Build
 }
 
-check() {
-  cd $_dist-$pkgver
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  export PERL_MM_USE_DEFAULT=1
-  ./Build test
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build test
 }
 
-package() {
-  cd $_dist-$pkgver
-  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-  ./Build install --installdirs=vendor --destdir="$pkgdir"
+package()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
 }
