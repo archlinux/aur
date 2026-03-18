@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=ognibuild
-pkgver=0.2.8
+pkgver=0.2.9
 pkgrel=1
 epoch=1
 pkgdesc="Detect and invoke build systems"
@@ -16,7 +16,7 @@ depends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9f5cc2f96ace8a2d47c551ee0399bcc9bc93d652b96bff3f80c6df752f018c17')
+sha256sums=('33f9977d5c1117672d0040f622e09e05152be6c101efa001b9da21d24fa45c27')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -28,6 +28,10 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+
+  # https://github.com/aws/aws-lc-rs/issues/1008#issuecomment-3774105038
+  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
+
   cargo build --release
 }
 
