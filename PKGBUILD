@@ -1,7 +1,7 @@
 # Maintainer: Rain Xelelo <rxelelo@outlook.com>
 _pkgname=CatClient
 pkgname=catclient
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=0
 pkgdesc="Yet another fork of TaterClient for DDNet"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('ddnet-maps-git: All the maps used on the official DDNet Servers.'
 backup=('usr/share/ddnet/data/autoexec_server.cfg')
 install="$pkgname.install"
 source=("https://github.com/quomy/CatClient/releases/download/$pkgver/CatClient-$pkgver-linux_x86_64.tar.gz" "$pkgname.png")
-sha256sums=('ce11898e1895fc67d474d6551d726da31d71ef8204eece6436f6172c2bdfe76e'
+sha256sums=('7dc1b2c83b7ba24bf3bb0bb1a55af5dbaf8bbea14fd6de111fc3c4619799ba18'
             'ccdd296572e6d931e08ba6aca14f14791a045b1c1e0d3c18b91c3b105c9541f0')
 
 prepare() {
