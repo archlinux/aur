@@ -11,9 +11,6 @@ pkgbase = mpdris
 	depends = glibc
 	depends = libgcc
 	optdepends = libsystemd: run mpdris as a service
-	provides = mpdris
-	conflicts = mpdris-bin
-	conflicts = mpdris-git
 	source = mpdris-v1.3.0.tar.gz::https://github.com/jasger9000/mpdris/archive/refs/tags/v1.3.0.tar.gz
 	sha256sums = d78530965b10e448f9c25057ac49616a982ed8fa73501f3bb0b7db95a8ee6a88
 
