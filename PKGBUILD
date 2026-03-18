@@ -1,10 +1,11 @@
 # Maintainer: Wojtmic <mail at wojtmic dot dev>
+# Co-Maintainer: Tymon3310 <aur@tymon3310.dev>
 
 pkgname=prefixer
 pkgdesc="Modern Proton Prefix management tool"
 
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 
 arch=('any')
 

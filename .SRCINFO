@@ -1,7 +1,7 @@
 pkgbase = prefixer
 	pkgdesc = Modern Proton Prefix management tool
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wojtmic/prefixer
 	arch = any
 	license = GPL-3.0-only
