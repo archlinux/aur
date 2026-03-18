@@ -1,0 +1,24 @@
+CONF=/etc/bluetooth/main.conf
+DEVICE_ID="DeviceID = bluetooth:004C:0000:0000"
+
+_set_device_id() {
+  if grep -qE "^\s*DeviceID\s*=\s*bluetooth:004C:" "$CONF" 2>/dev/null; then
+    return
+  fi
+  if grep -q "^\[General\]" "$CONF" 2>/dev/null; then
+    sed -i "/^\[General\]/a $DEVICE_ID" "$CONF"
+  else
+    printf "\n[General]\n%s\n" "$DEVICE_ID" >> "$CONF"
+  fi
+  echo "  -> Set Apple DeviceID in $CONF"
+  echo "  -> Run: sudo systemctl restart bluetooth"
+  echo "  -> Then forget and re-pair your AirPods"
+}
+
+post_install() {
+  _set_device_id
+}
+
+post_upgrade() {
+  _set_device_id
+}
