@@ -1,13 +1,14 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: <mumei AT airmail DOT cc>
 
 _pkgname=Cynthiune
 pkgname=cynthiune.app
-pkgrel=4
+pkgrel=5
 pkgver=1.0.0
 pkgdesc='Free software and romantic music player for GNUstep'
 arch=('i686' 'x86_64')
 url='http://gap.nongnu.org/cynthiune/index.html'
-license=('GPL')
+license=('GPL-2.0-or-later')
 groups=('gnustep-apps')
 depends=('gnustep-base' 'gnustep-gui' 'gnustep-back' 'libmad' 'pulseaudio-alsa' 'libid3tag' 'audiofile' 'libmodplug' 'libao')
 optdepends=('libvorbis' 'libogg' 'libmpcdec' 'esound')
