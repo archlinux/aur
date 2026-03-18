@@ -1,0 +1,14 @@
+pkgbase = gpm-bin
+	pkgdesc = Track, sync, and reproduce your software environment across Linux, macOS, and WSL2.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/ks1686/gpm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	source_x86_64 = https://github.com/ks1686/gpm/releases/download/v0.1.0/gpm_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 519aeb4ece19fdd94043a345bee749f2522942d85f13a96de1b6a807f9d011de
+	source_aarch64 = https://github.com/ks1686/gpm/releases/download/v0.1.0/gpm_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 97afbb593b4b65e1fb1974bca1aeb6ccb44473ef39500fbcb7997316a26858b0
+
+pkgname = gpm-bin
