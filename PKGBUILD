@@ -3,7 +3,7 @@
 
 pkgname=mpdris-git
 _pkgname=mpdris
-pkgver=1.2.0.r49.g2e32af1
+pkgver=1.2.0.r55.g65e22f4
 pkgrel=1
 pkgdesc='A MPD client implementing the dbus MPRIS standard written in rust -- git version'
 url='https://github.com/jasger9000/mpdris'
@@ -32,14 +32,14 @@ build() {
   cd "$srcdir/$_pkgname"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo xtask build
+  cargo xtask build --arch "$CARCH"
 }
 
 package() {
   depends+=('dbus' 'mpd')
   cd "$srcdir/$_pkgname"
 
-  cargo xtask install "$pkgdir"
+  cargo xtask install --pkgname "$pkgname" --arch "$CARCH" "$pkgdir"
 }
 
 # vim:set ts=2 sts=2 sw=2 et: syntax=sh
