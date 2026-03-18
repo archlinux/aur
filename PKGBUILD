@@ -4,7 +4,7 @@ fetchMetadataValue() {
 	| sed "s/.*\"$1\": \"\(.*\)\".*/\1/"
 }
 
-pkgname="shaweelTimer"
+pkgname="shaweeltimer"
 pkgdesc=$(fetchMetadataValue "description")
 url=$(fetchMetadataValue "url")
 pkgver=$(fetchMetadataValue "version")

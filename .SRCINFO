@@ -1,4 +1,4 @@
-pkgbase = shaweelTimer
+pkgbase = shaweeltimer
 	pkgdesc = A highly customizable timer application written in Python with libadwaita
 	pkgver = 1.0.0
 	pkgrel = 1
@@ -9,7 +9,7 @@ pkgbase = shaweelTimer
 	depends = python-gobject
 	depends = gtk4
 	depends = libadwaita
-	source = shaweelTimer-1.0.0.tar.gz::https://github.com/shaweel/shaweelTimer/archive/refs/tags/v1.0.0.tar.gz
+	source = shaweeltimer-1.0.0.tar.gz::https://github.com/shaweel/shaweelTimer/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
-pkgname = shaweelTimer
+pkgname = shaweeltimer
