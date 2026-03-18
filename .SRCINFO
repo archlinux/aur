@@ -1,0 +1,27 @@
+pkgbase = sglang
+	pkgdesc = A fast serving framework for large language models and vision language models
+	pkgver = 0.5.9
+	pkgrel = 1
+	url = https://github.com/sgl-project/sglang
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python>=3.10
+	depends = python-aiohttp
+	depends = python-requests
+	depends = python-tqdm
+	depends = python-numpy
+	depends = ipython
+	depends = python-setproctitle
+	optdepends = python-pytorch: Model serving runtime
+	optdepends = python-transformers: Model loading and tokenization
+	optdepends = python-fastapi: API server
+	optdepends = python-uvicorn: ASGI server for FastAPI
+	source = sglang-0.5.9.tar.gz::https://github.com/sgl-project/sglang/archive/refs/tags/v0.5.9.tar.gz
+	sha256sums = 5905242df108f4b6be1784192e7a9d0504e6251872d497a61cfc1fac2410bbad
+
+pkgname = sglang
