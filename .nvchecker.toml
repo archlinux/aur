@@ -1,0 +1,5 @@
+[youtube-music-cli-bin]
+source = "github"
+github = "involvex/youtube-music-cli"
+use_latest_release = true
+prefix = "v"

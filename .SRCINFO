@@ -1,0 +1,24 @@
+pkgbase = youtube-music-cli-bin
+	pkgdesc = A powerful Terminal User Interface (TUI) music player for YouTube Music
+	pkgver = 0.0.58
+	pkgrel = 1
+	url = https://github.com/involvex/youtube-music-cli
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = mpv
+	depends = yt-dlp
+	provides = youtube-music-cli
+	conflicts = youtube-music-cli
+	source = FEATURE_STATUS-0.0.58.md::https://raw.githubusercontent.com/involvex/youtube-music-cli/v0.0.58/FEATURE_STATUS.md
+	source = SUGGESTIONS-0.0.58.md::https://raw.githubusercontent.com/involvex/youtube-music-cli/v0.0.58/SUGGESTIONS.md
+	source = README-0.0.58.md::https://raw.githubusercontent.com/involvex/youtube-music-cli/v0.0.58/readme.md
+	source = LICENSE-0.0.58::https://raw.githubusercontent.com/involvex/youtube-music-cli/v0.0.58/LICENSE
+	sha256sums = a250e755ce6352f5dd688ba960feddfd432215043ce7e3ce8bfa6f9f82c380af
+	sha256sums = 73f0787fbfdc8981adace5d6309dfa25a07744492f3688892eb9d4b7ee6aaef4
+	sha256sums = 82e0410f9eb702e675f37ec51edb59e0bd7892bd29a7da6eb1bbc6e480888155
+	sha256sums = 8e0fa698e1e37adc44d567345a8db5e099f99c78e13123d631416a3813c6832e
+	source_x86_64 = youtube-music-cli-x86_64-0.0.58::https://github.com/involvex/youtube-music-cli/releases/download/v0.0.58/youtube-music-cli
+	sha256sums_x86_64 = 4bfa27fd01ffa00431f4bc04b869a6e0f0bcc3b0a01506b4a736ba380fe31fec
+
+pkgname = youtube-music-cli-bin
