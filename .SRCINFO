@@ -8,7 +8,7 @@ pkgbase = pion-binder
 	license = MIT
 	makedepends = cargo
 	makedepends = git
-	source = git+https://github.com/Technobaboo/pion
+	source = git+https://github.com/Technobaboo/pion.git#tag=0.1.0
 	sha256sums = SKIP
 
 pkgname = pion-binder

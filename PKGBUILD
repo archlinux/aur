@@ -12,7 +12,7 @@ makedepends=(
 	"git"
 )
 source=(
-    "git+https://github.com/Technobaboo/pion"
+    "git+https://github.com/Technobaboo/pion.git#tag=$pkgver"
 )
 sha256sums=("SKIP")
 
