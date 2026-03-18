@@ -1,0 +1,17 @@
+pkgbase = nexus-nm
+	pkgdesc = A beautiful modern TUI WiFi manager for Arch Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/CPT-Dawn/Nexus
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = glibc
+	depends = networkmanager
+	depends = dbus
+	source = nexus-nm-1.0.0.tar.gz::https://github.com/CPT-Dawn/Nexus/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 7a236f41345374486bb7fd2abe75607cbc9e490914b12ef13a7c29ccd58c0d60
+
+pkgname = nexus-nm
