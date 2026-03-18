@@ -1,0 +1,26 @@
+pkgbase = perl-net-async-socks
+	pkgdesc = basic SOCKS5 connection support for IO::Async
+	pkgver = 0.003
+	pkgrel = 1
+	url = https://metacpan.org/release/PEVANS/Net-Async-SOCKS-0.003
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-checkdeps>=0.010
+	checkdepends = perl-test-fatal>=0.010
+	checkdepends = perl-test-hexstring
+	checkdepends = perl-test-refcount>=0.07
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-carp
+	depends = perl-future>=0.29
+	depends = perl-io-async>=0.62
+	depends = perl-parent
+	depends = perl-protocol-socks>=0.003
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Net-Async-SOCKS-0.003.tar.gz
+	sha256sums = 24721a94ccedd15b05003eb3099a0d83a03dcfbbe2f86a75895bec8fed28be3e
+
+pkgname = perl-net-async-socks
