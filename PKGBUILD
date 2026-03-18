@@ -3,9 +3,9 @@
 # Contributor: Adam Ehlers Nyholm Thomsen<adament@adament.net>
 
 pkgname=davix
-pkgver=0.8.5
+pkgver=0.8.6
 _pkgver="R_${pkgver//./_}"
-pkgrel=2
+pkgrel=1
 pkgdesc="A client for data and file management over the WebDav, Amazon S3, Microsoft Azure and HTTP protocols."
 arch=('x86_64')
 url="https://github.com/cern-fts/davix"
@@ -18,7 +18,7 @@ source=(
   "${pkgname}-curl::git+https://github.com/curl/curl"
   "${pkgname}-googletest::git+https://github.com/google/googletest"
 )
-b2sums=('cd5b5b70e3f322be9c6e01ee38e40093932496a4cbbbd28e979f8fd33ba639e035b2ba02cfe72287c64b4821788210985b5d176ba90a9b7ceac7d6688c264658'
+b2sums=('2862dfb0a5f370a1dec2c5c56c80ac1f02b0a815a4c553519135a4eff2f1afccdaf2597ddfca5fb57951236be213d4e9f4e5033e8f71cdacb184d1072c8e9b8c'
         'SKIP'
         'SKIP')
 
@@ -60,4 +60,3 @@ package() {
   cd "${srcdir}/${pkgname}"/build
   make DESTDIR="${pkgdir}/" install
 }
-

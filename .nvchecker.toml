@@ -1,3 +1,5 @@
 [davix]
 source = "git"
 git = "https://github.com/cern-fts/davix.git"
+prefix = "R_"
+exclude_regex = ".*-rc.*"
