@@ -1,7 +1,7 @@
 # Maintainer: <agustinballesteros04@gmail.com>
 pkgname=kew-git
 pkgrel=1
-pkgver=v3.7.3.4ef2489
+pkgver=v3.7.3.d3194b8
 pkgdesc="A command-line music player"
 arch=('x86_64')
 url="https://codeberg.org/ravachol/kew"
