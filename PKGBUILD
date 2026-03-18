@@ -1,6 +1,6 @@
 # Maintainer: qt-ami3
 pkgname=2048shell
-pkgver=1.3.26
+pkgver=1.3.27
 pkgrel=1
 pkgdesc="2048 game playable in the terminal"
 arch=('x86_64' 'aarch64')
