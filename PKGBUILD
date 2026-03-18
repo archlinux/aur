@@ -8,8 +8,8 @@
 pkgname=akkoma
 pkgver=3.18.0
 pkgrel=1
-_erlangver=28.0.1
-_elixirver=1.19.3
+_erlangver=28.4.1
+_elixirver=1.19.5
 pkgdesc='faster-paced fork of Pleroma'
 url='https://akkoma.dev/AkkomaGang/akkoma'
 license=('AGPL-3.0-or-later' 'CC-BY-4.0' 'CC-BY-SA-4.0')
