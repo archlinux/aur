@@ -1,7 +1,7 @@
 pkgname='python-bgutil-ytdlp-pot-provider'
 _module='bgutil-ytdlp-pot-provider'
-_src_folder='bgutil_ytdlp_pot_provider-1.2.2'
-pkgver='1.2.2'
+_src_folder='bgutil_ytdlp_pot_provider-1.3.1'
+pkgver='1.3.1'
 pkgrel=1
 pkgdesc="PO Token provider plugin for yt-dlp"
 url="https://github.com/Brainicism/bgutil-ytdlp-pot-provider"
@@ -9,10 +9,10 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 license=('custom:GNU General Public License v3 (GPLv3)')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/eb/2b/6ee7ce5eb7ec148ad43603f9ed6875c65f93668e62e41f3faae2abeeadca/bgutil_ytdlp_pot_provider-1.2.2.tar.gz")
-sha256sums=('f597d7f453a3ceee24251405a5d769e1e3f31f39d5760670f273630fddae417e')
+noextract=('bgutil_ytdlp_pot_provider-1.3.1.tar.gz')
+source=("https://files.pythonhosted.org/packages/ad/3f/fae025f0f4f4e8c40ca24a97f618abba82ad2a221d37ac3df7d6ff705df2/bgutil_ytdlp_pot_provider-1.3.1.tar.gz")
+sha256sums=('130635912e2450757438f72068b900076ac1a62d9f26a00afbe6f2ab258e8b25')
 
-noextract=(${_src_folder}.tar.gz)
 prepare() {
   bsdtar -xPf "${srcdir}/${_src_folder}.tar.gz" -C "$srcdir"
 }
@@ -29,17 +29,14 @@ package() {
 
 post_install() {
   cat <<EOF
-NOTICE: This package only installs the proof-of-orign token plugin for yt-dlp.
-        It doesn't set up the actual POT provider! Luckly, setting it up is easy
-        with docker:
+NOTE: This package only installs the POT client for yt-dlp. To start a POT
+      provider server once, run:
 
-            docker run \
-              --name bgutil-provider \
-              -d -p 4416:4416 \
-              --init brainicism/bgutil-ytdlp-pot-provider
+docker run -d --init --name bgutil-provider \
+  brainicism/bgutil-ytdlp-pot-provider [POT OPTIONS]
 
-        If you find yourself running the provider a lot, you might want to
-        consider passing "--restart always" to docker. You can read more about
-        the provider setup on the upstream URL.
+      If you find yourself running the provider a lot, you can start it
+      automatically with docker by passing "--restart always". You can read
+      more about the provider setup on the upstream URL.
 EOF
 }
