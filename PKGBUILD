@@ -1,4 +1,4 @@
-#Maintainer: Mickael Guillerm <mickael.grm@gmail.com>
+#Maintainer: minosariane
 pkgname=shellforge
 pkgdesc='Terminal tool for generating reverse shells for CTF challenges and educational purposes. Easy to use, fast, and safe for practice environments.'
 pkgver=1.0.0
@@ -8,16 +8,15 @@ url=https://github.com/minosariane/Shellforge
 license=('GPL-3.0-only')
 depends=()
 makedepends=('rust' 'cargo')
-source=("${pkgname}${pkgver}.tar.gz::https://github.com/minosariane/shellforge/archive/refs/tags/v$pkgver.tar.gz")
-srcdir='src'
+source=("$pkgname-$pkgver.tar.gz::https://github.com/minosariane/shellforge/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/Shellforge-$pkgver"
-  cargo build -r
+  cd "$srcdir/$pkgname-$pkgver"
+  cargo build --release
 }
 
 package() {
-  cd "$srcdir/Shellforge-$pkgver"
-  cargo install --path .
+  cd "$srcdir/$pkgname-$pkgver"
+  cargo install --path . --root="$pkgdir" --force
 }
