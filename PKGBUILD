@@ -1,13 +1,13 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgname=fcitx5-lotus-git
-pkgver=1.1.0.r282.ge85099f
+pkgver=1.5.0.r468.gf7fce1e
 pkgrel=1
 pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
 url="https://github.com/LotusInputMethod/fcitx5-lotus"
 license=('GPL-3.0-or-later')
-depends=('fcitx5' 'fcitx5-qt' 'qt6-base' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'systemd-libs')
-makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc' 'git' 'libx11')
+depends=('fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' 'systemd-libs' 'pyside6' 'python-dbus')
+makedepends=('cmake' 'go' 'extra-cmake-modules' 'gcc' 'git' 'libx11' 'python')
 provides=('fcitx5-lotus')
 conflicts=('fcitx5-lotus')
 source=(

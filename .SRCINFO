@@ -1,6 +1,6 @@
 pkgbase = fcitx5-lotus-git
 	pkgdesc = Vietnamese input method for fcitx5
-	pkgver = 1.1.0.r282.ge85099f
+	pkgver = 1.5.0.r468.gf7fce1e
 	pkgrel = 1
 	url = https://github.com/LotusInputMethod/fcitx5-lotus
 	install = fcitx5-lotus.install
@@ -12,15 +12,16 @@ pkgbase = fcitx5-lotus-git
 	makedepends = gcc
 	makedepends = git
 	makedepends = libx11
+	makedepends = python
 	depends = fcitx5
-	depends = fcitx5-qt
-	depends = qt6-base
 	depends = libinput
 	depends = hicolor-icon-theme
 	depends = glibc
 	depends = libstdc++
 	depends = libgcc
 	depends = systemd-libs
+	depends = pyside6
+	depends = python-dbus
 	provides = fcitx5-lotus
 	conflicts = fcitx5-lotus
 	source = git+https://github.com/LotusInputMethod/fcitx5-lotus.git#branch=dev
