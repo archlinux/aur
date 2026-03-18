@@ -1,6 +1,6 @@
 pkgbase = python-msmart-ng
 	pkgdesc = Client for interacting with Help Scout's API
-	pkgver = 2025.12.0
+	pkgver = 2026.3.0
 	pkgrel = 1
 	url = https://github.com/mill1000/midea-msmart
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-msmart-ng
 	depends = python
 	depends = python-httpx
 	depends = python-pycryptodome
-	source = python-msmart-ng-2025.12.0.tar.gz::https://github.com/mill1000/midea-msmart/archive/2025.12.0.tar.gz
-	sha256sums = de5d3a7f54c5c28dd69e27f937376fa898260d85b07928121f10232f00c68ea9
+	source = python-msmart-ng-2026.3.0.tar.gz::https://github.com/mill1000/midea-msmart/archive/2026.3.0.tar.gz
+	sha256sums = 4a1619c6dcadeb4110532099690c17e67fdff2574921980172ebd11597a295b3
 
 pkgname = python-msmart-ng
