@@ -31,7 +31,7 @@ source=(
     "${pkgname%-git}.sh"
 )
 sha256sums=('SKIP'
-            'f003b130010311751a619cae8188af15f003369d71c59f7b34bbc26c98e615d5')
+            'b0592310f06c0ad828c080f34159209e8bb04d2228faf8f3461502de0d4d41ff')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail

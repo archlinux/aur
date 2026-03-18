@@ -23,6 +23,6 @@ pkgbase = ghost-downloader-git
 	source = ghost-downloader.git::git+https://github.com/XiaoYouChR/Ghost-Downloader-3
 	source = ghost-downloader.sh
 	sha256sums = SKIP
-	sha256sums = f003b130010311751a619cae8188af15f003369d71c59f7b34bbc26c98e615d5
+	sha256sums = b0592310f06c0ad828c080f34159209e8bb04d2228faf8f3461502de0d4d41ff
 
 pkgname = ghost-downloader-git
