@@ -1,6 +1,6 @@
 pkgbase = niri_window_buttons-git
 	pkgdesc = A Waybar module for displaying and managing traditional window buttons in the Niri compositor (git version)
-	pkgver = 0.4.0.r0.gf653c51
+	pkgver = 0.4.0.r93.g96041df
 	pkgrel = 1
 	url = https://github.com/adelmonte/niri_window_buttons
 	arch = x86_64
