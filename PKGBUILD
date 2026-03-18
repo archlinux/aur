@@ -1,13 +1,13 @@
 # Maintainer: Jaroslav Bolek <jarris@post.cz>
 pkgname=lenovo-legion-linux-toolkit-release
 srcname=LenovoLegion
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Lenovo Legion Linux Toolkit - for Lenovo Legion laptops"
 arch=("x86_64")
 url="git+https://github.com/bolekjar/lenovo-legion-linux-toolkit.git#tag=release/${pkgver}"
 license=('GPL3')
-depends=("qt6-base" "qt6-5compat" "dkms" "make" "gcc" "qt6-charts" "protobuf" "cuda" "pkgconf")
+depends=("qt6-base" "qt6-5compat" "dkms" "make" "gcc" "qt6-charts" "protobuf" "cuda" "pkgconf" "rust")
 source=("$pkgname-$pkgver::$url")
 sha256sums=('SKIP')
 install=default.install
@@ -51,4 +51,9 @@ package() {
 
   #kde menu entry
   cp $srcdir/$pkgname-$pkgver/$srcname/$srcname-Application/LenovoLegion.desktop $pkgdir/usr/share/applications/
+
+  #command line interface
+  cargo build --manifest-path $srcdir/$pkgname-$pkgver/lenovo-legion-cli/Cargo.toml -r
+  cp $srcdir/$pkgname-$pkgver/lenovo-legion-cli/target/release/lenovo-legion-cli $pkgdir/opt/$pkgname-$pkgver
+
 }
