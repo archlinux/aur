@@ -1,5 +1,5 @@
 pkgname=gitcomet
-pkgver=0.1.3
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Fast, resource-efficient Git GUI written in Rust"
 arch=('x86_64')
