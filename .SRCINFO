@@ -1,6 +1,6 @@
 pkgbase = libmtdac
 	pkgdesc = Library to interface with the HMRC Make Tax Digital API
-	pkgver = 1.5.1
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://github.com/ac000/libmtdac
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = libmtdac
 	license = LGPL-2.1-only
 	depends = libcurl-gnutls
 	depends = jansson
-	source = https://github.com/ac000/libmtdac/archive/refs/tags/v1.5.1.tar.gz
-	sha256sums = c47b5893d9bd0d4779edede8b8d12f82f78395226836d66157a33abe28d404b3
+	source = https://github.com/ac000/libmtdac/archive/refs/tags/v1.5.3.tar.gz
+	sha256sums = dc567c20f1edaa26e92e57a433dbbbdbcafdef3b6751b52ea9cda1fb32fab7e1
 
 pkgname = libmtdac
