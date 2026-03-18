@@ -51,8 +51,8 @@ if [[ -z "$FFMPEG_OBS_VULKAN" ]]; then
 fi
 
 pkgname=ffmpeg-obs
-pkgver=8.0.1
-pkgrel=6
+pkgver=8.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -104,6 +104,7 @@ depends=(
   libdrm
   libdvdnav
   libdvdread
+  libgcc
   libgl
   libiec61883
   "libjxl>=$_libjxlver"
@@ -181,7 +182,7 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
-_tag=894da5ca7d742e4429ffb2af534fcda0103ef593
+_tag=9047fa1b084f76b1b4d065af2d743df1b40dfb56
 _deps_tag=2024-09-12
 source=(
   "ffmpeg-src::git+https://code.ffmpeg.org/FFmpeg/FFmpeg.git#tag=${_tag}"
@@ -351,21 +352,25 @@ if [[ $FFMPEG_OBS_LIBFDK_AAC == 'ON' ]]; then
 fi
 
 if [[ $FFMPEG_OBS_SVT == 'ON' ]]; then
-  depends+=(svt-hevc svt-vp9)
+  depends+=(svt-hevc svt-vp9 svt-jpeg-xs-git)
   makedepends+=(patchutils)
   _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
   _svt_vp9_ver='290fb8c3662ed76a8887b587a9b8201878ba71ed'
   source+=(
     "010-ffmpeg-add-svt-hevc.patch"
     "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-    "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
+    "030-ffmpeg-add-svt-vp9.patch"
   )
   sha256sums+=(
-    '4b1053cc01244c79e3b23dc696eaff1aeb0627a2098e1a720a025d4ad75b5c16'
+    'ff6dabc3cbef98d22cc8f081343d5c66b2564b3a898c2dbcc88baa5017d80232'
     'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-    '1f06dfcb78e43a6c732cbc4f6ae583ae19fb111b56d33c8c860d5b6566c04f99'
+    '73e516bd771024f100983d0b7a5d43b49fd1e992c83e6caec445b7338e79e8c2'
   )
-  _args+=(--enable-libsvthevc --enable-libsvtvp9)
+  _args+=(
+    --enable-libsvthevc
+    --enable-libsvtvp9
+    --enable-libsvtjpegxs
+  )
   provides+=(ffmpeg-svt-hevc ffmpeg-svt-vp9)
 fi
 
@@ -404,8 +409,10 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     libraw1394
     lilv
     lv2
+    'mpeghdec'
     openal
     'openapv'
+    opencolorio
     opencv
     openh264
     'openvino'
@@ -499,21 +506,9 @@ fi
 prepare() {
   cd ffmpeg-src
 
-  if [[ $FFMPEG_OBS_DECKLINK == 'ON' ]]; then
-    git cherry-pick -n 0cd75dbfa0fc6c213cf9240b3c03c809070c5209
-    git cherry-pick -n 27e94281d1c880b4cae28738e35c0d6f9a58f06b
-  fi
-
-  if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
-    git cherry-pick -n c4ce51ee62205c74604767f1b7dab6a036edac7f
-  fi
-
   ### ffmpeg-obs changes
 
   ### Arch Linux changes
-
-  ## avcodec/libsvtav1: rename aq_mode for v4.0.0
-  git cherry-pick -n a5d4c398b411a00ac09d8fe3b66117222323844c
 
   ## https://crbug.com/1251779
   patch -Np1 -i "${srcdir}"/0001-Add-av_stream_get_first_dts-for-Chromium.patch
@@ -535,12 +530,11 @@ prepare() {
     rm -f libavcodec/libsvt_{hevc,vp9}.c
     patch -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc.patch"
     patch -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    patch -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
   fi
 
   if [[ $FFMPEG_OBS_CUDA == 'ON' ]]; then
     sed -i 's/nvccflags -std=c++11/nvccflags -std=c++14/g' configure
-    sed -i 's/arch=compute_60,code=sm_60/arch=compute_75,code=sm_75/g' configure
   fi
 }
 
