@@ -1,7 +1,7 @@
 pkgbase = vex-shell-git
 	pkgdesc = A typed shell with structured data pipelines, written in C
 	pkgver = r1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/aethstetic/vex
 	install = vex.install
 	arch = x86_64
