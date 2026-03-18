@@ -27,8 +27,10 @@ prepare() {
   cd "${srcdir}/${pkgname}-${_tag_name}"
   sed -i 's/g_target/#g_target/' db/nist/CMakeLists.txt
 
-  # Apply patches to bext
+  # Initialize only utahrle submodule in bext
   cd "${srcdir}/bext"
+  git submodule update --init utahrle
+  # Apply patches
   patch -Np1 -i "${srcdir}/fix-utahrle-gcc15.patch"
 }
 
