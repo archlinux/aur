@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 # Contributor: Ranieri Althoff <ranisalt+aur at gmail dot com>
 pkgname=gnome-shell-extension-arch-update-git
-pkgver=65.r2.g24598cd
+pkgver=66.r0.gcabd7c3
 pkgrel=1
 pkgdesc="Update indicator for ArchLinux and GNOME Shell"
 arch=('any')
@@ -47,8 +47,7 @@ package() {
   rm -rfv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/schemas"
 
   cd locale
-  rm arch-update.pot
-  for lang in *; do
+  for lang in $(ls -d */); do
     install -Dm644 "${lang}/LC_MESSAGES/arch-update.mo" -t \
       "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/"
   done

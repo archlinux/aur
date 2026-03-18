@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-arch-update-git
 	pkgdesc = Update indicator for ArchLinux and GNOME Shell
-	pkgver = 65.r2.g24598cd
+	pkgver = 66.r0.gcabd7c3
 	pkgrel = 1
 	url = https://codeberg.org/RaphaelRochet/arch-update
 	arch = any
