@@ -2,7 +2,7 @@
 
 _pkgname=cboard-chess
 pkgname=cboard-chess-git
-pkgver=0.8.5.r0.gb639bfe
+pkgver=0.8.6.r3.g2256376
 pkgrel=1
 #pkgdesc="Interfaz de ajedrez cboard (Versión Portátil Auto-detectable)"
 pkgdesc="Interfaz TUI de ajedrez (Fork Avanzado): Plugins en C, Multimotor, Análisis Multivariación y Motor vs Motor. (Ruta a v1.0)"

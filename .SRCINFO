@@ -1,6 +1,6 @@
 pkgbase = cboard-chess-git
 	pkgdesc = Interfaz TUI de ajedrez (Fork Avanzado): Plugins en C, Multimotor, Análisis Multivariación y Motor vs Motor. (Ruta a v1.0)
-	pkgver = 0.8.5.r0.gb639bfe
+	pkgver = 0.8.6.r3.g2256376
 	pkgrel = 1
 	url = https://gitlab.com/ntlatempa/cboard-chess
 	arch = x86_64
