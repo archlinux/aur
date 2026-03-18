@@ -1,0 +1,45 @@
+Only in bitwuzla-0.9.0: build
+diff -ura bitwuzla-0.9.0.orig/src/meson.build bitwuzla-0.9.0/src/meson.build
+--- bitwuzla-0.9.0.orig/src/meson.build	2026-03-16 22:34:48.000000000 +0100
++++ bitwuzla-0.9.0/src/meson.build	2026-03-18 16:16:53.127163445 +0100
+@@ -28,24 +28,25 @@
+ endif
+
+ cms_dep = dependency('cryptominisat5',
+-                     version: '5.11.21',
+                      static: build_static,
+                      required: get_option('cryptominisat'))
+
+ # Kissat does not provide pkg-config to find dependency
+ kissat_dep = cpp_compiler.find_library('kissat',
+-                                        has_headers: 'kissat.h',
+-                                        static: build_static,
+-                                        required: false)
++                                        required: true)
++kissat_inc = include_directories('/usr/include/kissat')
+ if not kissat_dep.found()
+-  kissat_dep = dependency('kissat', required: get_option('kissat'))
++  kissat_dep = dependency(
++    include_directories: kissat_inc,
++    'kissat', required: get_option('kissat'))
+ endif
+
+ gimsatul_dep = dependency('gimsatul', required: get_option('gimsatul'))
+
+ # Using system include type suppresses compile warnings originating from the
+ # symfpu headers
+-symfpu_dep = dependency('symfpu', include_type: 'system', required: true)
++symfpu_inc = include_directories('/usr/include/symfpu')
++symfpu_dep = declare_dependency(include_directories: symfpu_inc)
+
+ dependencies = [
+   gmp_dep, mpfr_dep, symfpu_dep, cadical_dep, cms_dep, kissat_dep, gimsatul_dep]
+@@ -272,7 +273,7 @@
+ ])
+
+ # Public header include directory
+-bitwuzla_inc = include_directories('../include', 'lib')
++bitwuzla_inc = include_directories('../include', 'lib', '/usr/include/kissat')
+
+ bitwuzla_lib = library('bitwuzla',
+                       sources + config_h,

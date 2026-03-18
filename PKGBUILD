@@ -3,27 +3,26 @@
 pkgbase=bitwuzla
 pkgname=("${pkgbase}" #"${pkgbase}-docs"
 )
-pkgver=0.8.2
-pkgrel=3
+pkgver=0.9.0
+pkgrel=1
 pkgdesc='SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations'
 arch=('x86_64')
 url='https://bitwuzla.github.io'
 license=('MIT')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/bitwuzla/bitwuzla/archive/refs/tags/${pkgver}.tar.gz"
-    "0000-aiger-dynamic-build.patch::https://github.com/bitwuzla/bitwuzla/commit/929af621f6fe65c78236df70b8eb9343a5914d9f.patch"
-    "0001-Use-installed-libraries.patch"
-    "0002-Skip-Test-based-on-timeout.patch"
+    "0000-Use-installed-libraries.patch"
 )
 depends=(
     'cryptominisat'
-    'gcc-libs'
     'glibc'
     'gmp>=6.1'
     'kissat'
+    'libgcc'
+    'libstdc++'
+    'mpfr'
 )
 makedepends=(
-    'cadical>=1.5.0'
     'cmake'
     'cython'
     'doxygen'
@@ -42,6 +41,7 @@ makedepends=(
 )
 optdepends=(
     'aiger: Utilities for And-Inverter Graphs (AIGs)'
+    'cadical: CaDiCaL support'
     'python>=3.7: Python bindings'
 )
 provides=(
@@ -50,18 +50,14 @@ provides=(
     'libbitwuzlals.so'
     'libbitwuzla.so'
 )
-b2sums=('5bc5177930e073ae3d9dcbf5504f25f4af07f67fc03292a85ecc6e709f8e035086307f1aa54be4d2fd17e030049165a4b787e9b2f4270d06c27c27dfe34c1609'
-        'c9e43030ddb20ba1dce8491644c4589091a231f4f36c3c2ee17b5eaa1f9cbbabb06af9668bc726e6c9f1b799fbc89e76b332204badd75410ec777a9fd500df91'
-        '09f384aaa2ebbec1e70a5122bae2f2019b71a41f691312048dc59dd7c253c2eb07e669ab71decc492fdf58b933b55b0036da7bb54eb1afe0774ee28aca63f199'
-        'af3f5fd996fd2d478c99f4e9fdd9ff72a3e00351e168b09d0611429d0267b55f5dfa46b98e414039edbab35461c3dc377a3f590b4b90db16ebcf0872a4ee8bda')
+b2sums=('791bd5bb08161d5bc88208f167cdd88f630d523d6de4f5bf545c0b81bf1789a77c660d56a8da5c8c2ce556a7c6d705738a27f492c54bf3ebdb76ab9cbaefd984'
+        '96897dada985c929820c7285a4e968977786e58e18b632dff06414ed71572a9139c0dad7a20705c03ff462cc954e5ffccb331d1ead100cd085686a5fc1d79fa3')
 options=('!lto')
 
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    patch --forward --strip=1 --input=../0000-aiger-dynamic-build.patch
-    patch --forward --strip=1 --input=../0001-Use-installed-libraries.patch
-    patch --forward --strip=1 --input=../0002-Skip-Test-based-on-timeout.patch
+    patch --forward --strip=1 --input=../0000-Use-installed-libraries.patch
 }
 
 build() {
@@ -71,6 +67,8 @@ build() {
     # files during compilation. aiger is kept as meson subproject. Thus, there
     # are no aiger run-time dependencies.
 
+    # cadical only provides a static library and requires header files from the
+    # source. Thus we use cadical as a subproject
 
     ./configure.py \
 	--prefix /usr \
