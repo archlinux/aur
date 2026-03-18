@@ -1,0 +1,15 @@
+pkgbase = open-in-firefox
+	pkgdesc = Native messaging host for the 'Open in Firefox' Chrome extension (andy-portmen/native-client)
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://github.com/andy-portmen/native-client
+	install = open-in-firefox.install
+	arch = any
+	license = MPL-2.0
+	depends = nodejs
+	optdepends = google-chrome: Google Chrome (AUR) — extension auto-install
+	optdepends = chromium: Chromium browser — extension auto-install
+	source = native-client-1.0.8.tar.gz::https://github.com/andy-portmen/native-client/archive/refs/tags/v1.0.8.tar.gz
+	sha256sums = e13c679fb088fdad57edb94e91842a0feb782549df2ed92a64b3ea0cedeee278
+
+pkgname = open-in-firefox

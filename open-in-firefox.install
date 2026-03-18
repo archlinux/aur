@@ -1,0 +1,26 @@
+post_install() {
+    echo ""
+    echo "==> open-in-firefox: Native messaging host installed."
+    echo ""
+    echo "Next steps:"
+    echo "  1. Install the Chrome extension from the Web Store:"
+    echo "     https://chromewebstore.google.com/detail/open-in-firefox-browser/lmeddoobegbaiopohmpmmobpnpjifpii"
+    echo ""
+    echo "  2. If Chrome/Chromium was already running, restart it so it picks up"
+    echo "     the new native messaging host manifest."
+    echo ""
+    echo "  3. The extension should be auto-prompted for installation on next browser"
+    echo "     launch (Chrome/Chromium). If not, install it manually via the link above."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo ""
+    echo "==> open-in-firefox: Removing native messaging host."
+    echo "    Restart your browser after removal."
+    echo ""
+}
