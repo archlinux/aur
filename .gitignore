@@ -1,0 +1,13 @@
+.git/
+
+# AUR metadata to keep under version control.
+!.SRCINFO
+!PKGBUILD
+
+# Local makepkg output.
+pkg/
+src/
+*.pkg.tar.*
+*.src.tar.*
+gitcomet-v*-linux-x86_64.tar.gz
+gitcomet-source-v*.tar.gz
