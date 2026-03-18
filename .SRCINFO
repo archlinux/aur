@@ -1,6 +1,6 @@
 pkgbase = python-fastcore
 	pkgdesc = Python supercharged for the fastai library
-	pkgver = 1.12.24
+	pkgver = 1.12.26
 	pkgrel = 1
 	url = https://github.com/fastai/fastcore
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-fastcore
 	depends = python-matplotlib
 	depends = python-numpy
 	depends = python-pillow
-	source = fastcore-1.12.24.tar.gz::https://github.com/fastai/fastcore/archive/refs/tags/1.12.24.tar.gz
-	sha512sums = f389da10a2cc2ad7c90b178d1522695f9d43ae8dcd3f5d2666ade1ba37613fb0f30bc6d78d93f0cc9584dacda038051868b932c83db6180863a4d005a676fac5
+	source = fastcore-1.12.26.tar.gz::https://github.com/fastai/fastcore/archive/refs/tags/1.12.26.tar.gz
+	sha512sums = fe22e739fc67eedb006a6d20cfafc642b99dc08d3443481ec6a203c3ce91a762afe6f4957097d64d463582b51df9b9aa0be2cfcc022cf832a6a948c614d963fb
 
 pkgname = python-fastcore

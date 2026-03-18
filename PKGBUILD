@@ -1,9 +1,10 @@
-# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Maintainer: Marten Hoffmann <maa@mailbox.org>
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 # Contributor: Lam Duong <lamduongt94@gmail.com>
 
 pkgname=python-fastcore
 _pkgname=fastcore
-pkgver=1.12.24
+pkgver=1.12.26
 pkgrel=1
 pkgdesc='Python supercharged for the fastai library'
 arch=('any')
@@ -21,6 +22,7 @@ makedepends=(
   python-setuptools
 )
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/fastai/fastcore/archive/refs/tags/${pkgver}.tar.gz")
+sha512sums=('fe22e739fc67eedb006a6d20cfafc642b99dc08d3443481ec6a203c3ce91a762afe6f4957097d64d463582b51df9b9aa0be2cfcc022cf832a6a948c614d963fb')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -32,4 +34,4 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-sha512sums=('f389da10a2cc2ad7c90b178d1522695f9d43ae8dcd3f5d2666ade1ba37613fb0f30bc6d78d93f0cc9584dacda038051868b932c83db6180863a4d005a676fac5')
+
