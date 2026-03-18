@@ -1,7 +1,7 @@
 # Maintainer: Tomas <me+aur at wereii.cz>
 
 pkgname=hobbits
-pkgver=0.54.1
+pkgver=0.55.0
 pkgrel=2
 pkgdesc="A multi-platform GUI for bit-based analysis, processing, and visualization"
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
     "${_dist_filename}::https://github.com/Mahlet-Inc/hobbits/archive/refs/tags/v${pkgver}.tar.gz"
     "git+https://bitbucket.org/jpommier/pffft.git")
 
-sha256sums=('ed3d8aeeb58ca3b4b34bbd446cc2c5f72ba22988ab793557d0fec5f82296407a'
+sha256sums=('2159ebf76c609258258bd6cb3b0896587950da0114c3d7e8462485582ac9f91d'
             'SKIP')
 
 prepare() {
