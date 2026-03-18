@@ -11,10 +11,12 @@ install="${pkgname}.install"
 _tag_name="rel-${pkgver//./-}"
 source=(
   "${pkgname}-${_tag_name}.tar.gz::https://github.com/BRL-CAD/${pkgname}/archive/refs/tags/${_tag_name}.tar.gz"
+  "bext::git+https://github.com/BRL-CAD/bext.git"
   "fix-utahrle-gcc15.patch"
 )
 sha512sums=(
   '6f6d139e60c6adb4cf31894b8892e5ea5ab13e494e8a55843914bc7e1c5063c97f584f50a7edac9acf7493ec1493952dc6f5780cb5d839c8e0453fb400367bd4'
+  'SKIP'  # bext git repository, skip checksum
   '9a33f543bdccd6ce3e1cd111c15a5be4cae4bd62cf414b4e8671c91582687777'
 )
 
@@ -25,10 +27,8 @@ prepare() {
   cd "${srcdir}/${pkgname}-${_tag_name}"
   sed -i 's/g_target/#g_target/' db/nist/CMakeLists.txt
 
-  cd "${srcdir}"
-  git clone https://github.com/BRL-CAD/bext
-  cd bext
-  # Apply patches explicitly
+  # Apply patches to bext
+  cd "${srcdir}/bext"
   patch -Np1 -i "${srcdir}/fix-utahrle-gcc15.patch"
 }
 
