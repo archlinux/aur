@@ -1,0 +1,22 @@
+pkgbase = hopsan
+	pkgdesc = Multi-domain system simulation platform for fluid power and mechatronic systems
+	pkgver = 2.23.1
+	pkgrel = 1
+	url = https://github.com/Hopsan/hopsan
+	arch = x86_64
+	license = Apache-2.0
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = patchelf
+	makedepends = python
+	makedepends = qt5-tools
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	depends = qt5-svg
+	depends = qt5-webengine
+	optdepends = python: scripting support and component generation
+	source = hopsan-2.23.1.tar.gz::https://github.com/Hopsan/hopsan/archive/refs/tags/v2.23.1.tar.gz
+	b2sums = 7415da4027457912bd4174672f361d18a59e2030bf9100ad5684d7133731e556c781baa82aa80e21a8ebaae4da3a0d68e309290721fa715d280c7cbe4ba591b4
+
+pkgname = hopsan
