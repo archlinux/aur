@@ -1,5 +1,5 @@
 pkgname=hyprspaces
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Paired workspace plugin and setup scripts for Hyprland"
 arch=('x86_64')
