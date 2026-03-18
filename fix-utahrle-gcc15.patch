@@ -1,0 +1,11 @@
+--- a/bext/utahrle/utahrle/Runput.c
++++ b/bext/utahrle/utahrle/Runput.c
+@@ -155,7 +155,7 @@
+ /* 156 */   /* Function prototypes for the writer */
+ /* 157 */   /* The following forward declarations are needed because the */
+ /* 158 */   /* writer routines call the byte-swapping conversion routines */
+-extern char *vax_pshort();
++extern char *vax_pshort(char *, unsigned short);
+ extern char *vax_plong();
+ extern char *vax_pfloat();
+ extern char *vax_pdouble();
