@@ -1,0 +1,13 @@
+pkgbase = nf
+	pkgdesc = A tool to perform RA/RDNSS/NA spoofing
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/shadowy-pycoder/ndpspoof
+	arch = any
+	license = GPLv3
+	makedepends = go
+	makedepends = git
+	source = git+https://github.com/shadowy-pycoder/ndpspoof
+	sha256sums = SKIP
+
+pkgname = nf
