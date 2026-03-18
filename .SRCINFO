@@ -1,6 +1,6 @@
 pkgbase = tinct-plugin-opencode-bin
 	pkgdesc = OpenCode theme plugin for Tinct
-	pkgver = 0.1.28
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/jmylchreest/tinct
 	license = MIT
@@ -8,10 +8,10 @@ pkgbase = tinct-plugin-opencode-bin
 	conflicts = tinct
 	provides = tinct
 	arch = aarch64
-	source_aarch64 = https://github.com/jmylchreest/tinct/releases/download/v0.1.28/tinct-plugin-opencode_0.1.28_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 20fba6505793bcc03eb8647c8ade2c3dca4da19cd5029b209ff40736697499b7
+	source_aarch64 = https://github.com/jmylchreest/tinct/releases/download/v0.2.0/tinct-plugin-opencode_0.2.0_Linux_arm64.tar.gz
+	sha256sums_aarch64 = bc9fa3b1f82fd9e4fb1a944e5d2b00b1392b97e0fd609d7ebfb2c7d9466d4279
 	arch = x86_64
-	source_x86_64 = https://github.com/jmylchreest/tinct/releases/download/v0.1.28/tinct-plugin-opencode_0.1.28_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 7b40ecebcb6129063bc31b2cb390243a0cd91d3fb66a97779f0097bff05a69f2
+	source_x86_64 = https://github.com/jmylchreest/tinct/releases/download/v0.2.0/tinct-plugin-opencode_0.2.0_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 619238b370be413d7ec35df0c1d3f7599011d336e19340af061bdd87700fecad
 	
 pkgname = tinct-plugin-opencode-bin
