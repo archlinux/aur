@@ -25,10 +25,36 @@ makedepends=(
   'python-setuptools-scm'
 )
 optdepends=(
-  'python-pytorch: Model serving runtime'
-  'python-transformers: Model loading and tokenization'
+  # runtime_common (serving stack)
+  'python-anthropic: Anthropic API backend'
+  'python-compressed-tensors: Compressed tensor support'
+  'python-datasets: Dataset loading'
+  'python-einops: Tensor operations'
   'python-fastapi: API server'
-  'python-uvicorn: ASGI server for FastAPI'
+  'python-gguf: GGUF model format support'
+  'python-grpcio: gRPC support'
+  'python-huggingface-hub: Model hub access'
+  'python-modelscope: ModelScope model hub'
+  'python-msgspec: Fast serialization'
+  'ninja: Build system for JIT compilation'
+  'python-openai: OpenAI-compatible API'
+  'python-orjson: Fast JSON serialization'
+  'python-outlines: Structured generation'
+  'python-packaging: Version utilities'
+  'python-pillow: Image processing'
+  'python-psutil: Process monitoring'
+  'python-python-multipart: Multipart form parsing'
+  'python-pyzmq: ZeroMQ messaging'
+  'python-scipy: Scientific computing'
+  'python-sentencepiece: Tokenization'
+  'python-soundfile: Audio file support'
+  'python-tiktoken: OpenAI tokenizer'
+  'python-timm: Vision model library'
+  'python-transformers: Model loading and tokenization'
+  'uvicorn: ASGI server'
+  'python-uvloop: Fast event loop'
+  # GPU runtime
+  'python-pytorch: Model serving runtime'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('5905242df108f4b6be1784192e7a9d0504e6251872d497a61cfc1fac2410bbad')
