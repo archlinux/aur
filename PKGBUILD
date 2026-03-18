@@ -1,6 +1,6 @@
 pkgname=hexamorse
 pkgver=1.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Terminal-based Morse code typing tool"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/Hexa-Programmer/HexaMorse"
