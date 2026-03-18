@@ -6,6 +6,10 @@ pkgdesc="A speed cubing timer for the COSMIC™ desktop"
 arch=('x86_64' 'aarch64')
 url="https://github.com/cappsyco/tesseract"
 license=('GPL-3.0-or-later')
+depends=(
+  'hicolor-icon-theme'
+  'libxkbcommon'
+)
 makedepends=(
   'cargo'
   'git'

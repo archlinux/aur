@@ -1,6 +1,6 @@
 pkgbase = tesseract-timer-git
 	pkgdesc = A speed cubing timer for the COSMIC™ desktop
-	pkgver = 0.1.0
+	pkgver = v0.1.2.r7.ga229a69
 	pkgrel = 1
 	url = https://github.com/cappsyco/tesseract
 	arch = x86_64
@@ -9,6 +9,8 @@ pkgbase = tesseract-timer-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = just
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
 	provides = tesseract-timer
 	conflicts = tesseract-timer
 	source = git+https://github.com/cappsyco/tesseract.git
