@@ -1,6 +1,6 @@
 pkgbase = musiclib-cli
 	pkgdesc = Command line application for organizing and managing a music library. Requires Audacious player, Kid3 Audio Tagger, and kdeconnect for mobile sync
-	pkgver = 1.4
+	pkgver = 1.50
 	pkgrel = 1
 	url = https://github.com/Harpo3/musiclib
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = musiclib-cli
 	optdepends = rsgain: ReplayGain loudness normalization (volume adjustment integration)
 	optdepends = conky: Desktop data elements display (audio data output for use by Conky or similar)
 	conflicts = musiclib
-	source = musiclib-cli-1.4.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v1.4.tar.gz
-	sha256sums = 9b5ae907a50be4c53d7c8bcfa5f0c1801629b8d2c5fd1fab9db7ee909e97537d
+	source = musiclib-cli-1.50.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v1.50.tar.gz
+	sha256sums = 48eb0ea52bd8340d2c9f510f22376a8351b282b41aff7dd887762a8e423fc9ff
 
 pkgname = musiclib-cli
