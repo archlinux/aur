@@ -2,7 +2,7 @@
 
 pkgname="kaskade"
 pkgver=4.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A text user interface for Kafka. Interact and consume topics from your terminal in style!"
 arch=(
   'any'
@@ -51,7 +51,7 @@ package() {
   python -m installer --destdir="${pkgdir}" dist/*.whl
   rm -f "${pkgdir}${site_packages}/LICENSE"
 
-  install -vDm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+  # install -vDm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
   install -vDm644 "README.md"    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -vd "${pkgdir}/usr/share/licenses/${pkgname}"

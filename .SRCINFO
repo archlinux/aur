@@ -1,7 +1,7 @@
 pkgbase = kaskade
 	pkgdesc = A text user interface for Kafka. Interact and consume topics from your terminal in style!
 	pkgver = 4.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sauljabin/kaskade
 	arch = any
 	license = MIT
