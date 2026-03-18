@@ -2,7 +2,7 @@
 
 _name=pyecharts
 pkgname=python-pyecharts
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A Python Echarts Plotting Library"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-jinja>=2.11.3' 'python-prettytable' 'python-simplejson')
 makedepends=('python-setuptools')
 source=(https://github.com/pyecharts/pyecharts/archive/refs/tags/v$pkgver.tar.gz)
-sha512sums=('736dd7afda41aaf5a8328d33e6aaea59562c283e15e7722accdc3f27c25cd34ac1196e854819a406759d2d29209190df802ffde659546643fba2e81d39bc5a3f')
+sha512sums=('2296e3d29127539f14cd82bc50a323644762c693cf5acb893c812b849b6494ff6e0ba933adb84c30f523cb7916b41af572212b0f9bb660cbaf394ac8cfb10c9b')
 
 build() {
   cd "$srcdir"/$_name-$pkgver
