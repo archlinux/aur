@@ -1,7 +1,7 @@
 pkgbase = grayjay-bin
 	pkgdesc = Grayjay Desktop - follow creators, not platforms (privacy- and freedom-respecting client for YouTube, Rumble, Twitch, Spotify etc)
 	pkgver = 17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://grayjay.app/desktop/
 	arch = x86_64
 	license = Source First License 1.1
@@ -16,6 +16,7 @@ pkgbase = grayjay-bin
 	depends = libsecret
 	depends = libappindicator-gtk3
 	provides = grayjay
+	conflicts = grayjay
 	conflicts = grayjay-git
 	options = !strip
 	source = Grayjay.Desktop-linux-x64-v17.zip::https://updater.grayjay.app/Apps/Grayjay.Desktop/17/Grayjay.Desktop-linux-x64-v17.zip
