@@ -22,9 +22,5 @@ SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
 
 [[annotations]]
-path = [
-    "0001-unbreak-glslang-build.patch",
-    "0001-unbreak-svt-av1-4-build.patch",
-]
 SPDX-FileCopyrightText = "ffmpeg contributors"
 SPDX-License-Identifier = "GPL-3.0-only"
