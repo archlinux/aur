@@ -25,7 +25,7 @@ makedepends=('meson')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('98f3d77713a2e3a10fcb09c365c92fa96ab84bf157e59bd3f4d4d274ce0496e8')
+sha256sums=('a4915bc7dd0873c45d0d6b01b070e39a91fd16cfadf730d6a9e48db68a8cd09e')
 
 build() {
     cd "$pkgname-$pkgver"
