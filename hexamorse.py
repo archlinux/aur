@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # HexaMorse v1.1
 
 import curses
