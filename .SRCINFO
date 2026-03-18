@@ -1,0 +1,17 @@
+pkgbase = bro
+	pkgdesc = Git made bro-ish
+	pkgver = 1.16.63
+	pkgrel = 1
+	url = https://github.com/grepTHEGOD/bro
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	depends = zlib
+	depends = json-c
+	depends = ncurses
+	depends = libcurl
+	source = bro-1.16.63.tar.gz::https://github.com/grepTHEGOD/bro/archive/refs/tags/v1.16.63.tar.gz
+	sha256sums = SKIP
+
+pkgname = bro
