@@ -1,11 +1,10 @@
 pkgbase = fonts-arundina
 	pkgdesc = Thai fonts aiming at Bitstream Vera and Dejavu compatibility
 	pkgver = 0.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://linux.thai.net/projects/fonts-sipa-arundina
 	arch = any
-	license = GPL
-	license = custom
+	license = Bitstream-Vera
 	makedepends = fontforge
 	source = https://linux.thai.net/pub/thailinux/software/fonts-arundina/fonts-arundina-0.4.0.tar.xz
 	md5sums = de86bd769489e11b71324dd47272602a
