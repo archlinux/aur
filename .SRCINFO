@@ -41,3 +41,9 @@ pkgbase = bitwuzla
 	b2sums = 96897dada985c929820c7285a4e968977786e58e18b632dff06414ed71572a9139c0dad7a20705c03ff462cc954e5ffccb331d1ead100cd085686a5fc1d79fa3
 
 pkgname = bitwuzla
+
+pkgname = bitwuzla-docs
+	pkgdesc = Documentation for the Bitwuzla SMT solver
+	arch = any
+	depends = 
+	provides = 

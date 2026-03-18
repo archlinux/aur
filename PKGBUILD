@@ -1,8 +1,7 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 pkgbase=bitwuzla
-pkgname=("${pkgbase}" #"${pkgbase}-docs"
-)
+pkgname=("${pkgbase}" "${pkgbase}-docs")
 pkgver=0.9.0
 pkgrel=1
 pkgdesc='SMT solver for the theories of fixed-size bit-vectors, floating-point arithmetic, arrays and uninterpreted functions and their combinations'
@@ -75,7 +74,7 @@ build() {
 	--shared \
 	--python \
 	--testing \
-	--no-docs \
+	--docs \
 	--kissat \
 	--cryptominisat \
 	--aiger \
@@ -103,30 +102,30 @@ package_bitwuzla() {
     DESTDIR="${pkgdir}" ninja install
 }
 
-# package_bitwuzla-docs() {
-#     pkgdesc="Documentation for the Bitwuzla SMT solver"
-#     arch=('any')
-#     depends=()
-#     provides=()
+package_bitwuzla-docs() {
+    pkgdesc="Documentation for the Bitwuzla SMT solver"
+    arch=('any')
+    depends=()
+    provides=()
 
-#     cd "${srcdir}/${pkgbase}-${pkgver}"
+    cd "${srcdir}/${pkgbase}-${pkgver}"
 
-#     install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-#     install -Dm644 CONTRIBUTING.md "${pkgdir}/usr/share/doc/${pkgname}/CONTRIBUTING.md"
+    install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+    install -Dm644 CONTRIBUTING.md "${pkgdir}/usr/share/doc/${pkgname}/CONTRIBUTING.md"
 
-#     cd build/docs
+    cd build/docs
 
-#     # Do not copy documentation source files
-#     find . \
-# 	 -not -path "./.*" \
-# 	 -not -path "./_sources*" \
-# 	 -not -path "./conf.py" \
-# 	 -not -path "./cli_usage.txt" \
-# 	 -not -path "./c/xml*" \
-# 	 -not -path "./c/Doxyfile" \
-# 	 -not -path "./cpp/xml*" \
-# 	 -not -path "./cpp/Doxyfile" \
-# 	 -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgbase}/html/{}" \;
+    # Do not copy documentation source files
+    find . \
+	 -not -path "./.*" \
+	 -not -path "./_sources*" \
+	 -not -path "./conf.py" \
+	 -not -path "./cli_usage.txt" \
+	 -not -path "./c/xml*" \
+	 -not -path "./c/Doxyfile" \
+	 -not -path "./cpp/xml*" \
+	 -not -path "./cpp/Doxyfile" \
+	 -exec install -Dm644 {} "${pkgdir}/usr/share/doc/${pkgbase}/html/{}" \;
 
-#     install -Dm644 cli_usage.txt "${pkgdir}/usr/share/doc/${pkgbase}/cli_usage.txt"
-# }
+    install -Dm644 cli_usage.txt "${pkgdir}/usr/share/doc/${pkgbase}/cli_usage.txt"
+}
