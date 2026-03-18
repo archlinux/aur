@@ -1,0 +1,14 @@
+pkgbase = 2048shell
+	pkgdesc = 2048 game playable in the terminal
+	pkgver = 1.3.22
+	pkgrel = 1
+	url = https://github.com/qt-ami3/2048Shell
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = gcc
+	makedepends = make
+	source = 2048shell::git+https://github.com/qt-ami3/2048Shell.git
+	sha256sums = SKIP
+
+pkgname = 2048shell
