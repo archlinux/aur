@@ -1,7 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=custom-toolbox
 pkgver=26.03
-pkgver=26.02
 pkgrel=1
 pkgdesc="A customizable toolbox application built with Qt"
 arch=('x86_64')

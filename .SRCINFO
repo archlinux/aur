@@ -1,6 +1,6 @@
 pkgbase = custom-toolbox
 	pkgdesc = A customizable toolbox application built with Qt
-	pkgver = 26.02
+	pkgver = 26.03
 	pkgrel = 1
 	url = https://github.com/MX-Linux/custom-toolbox
 	arch = x86_64
