@@ -6,7 +6,7 @@
 
 _pkgname="shadps4"
 pkgname="$_pkgname"
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator"
 url="https://github.com/shadps4-emu/shadPS4"
@@ -26,6 +26,7 @@ depends=(
   'libuuid.so'       # util-linux-libs
   'libxxhash.so'     # xxhash
   'libz.so'          # zlib
+  'miniz'
   'pugixml'
 )
 makedepends=(
@@ -54,11 +55,11 @@ if [[ "${_use_clang::1}" == "t" ]]; then
   )
 fi
 
-options=('!lto')
+options=('!debug' '!lto' '!strip')
 
 _pkgsrc="$_pkgname"
 source=("$_pkgsrc"::"git+$url.git#tag=v.$pkgver")
-sha256sums=('c7c59ef5103dcc369940cb58ce2bd9b933a533a0d2f436a840f396724f6772d2')
+sha256sums=('28c7501ae300bb6d13367fcb5a79f860381b43510cd9fb554a4a09d268bda4f9')
 
 prepare() {
   cd "$_pkgsrc"
@@ -71,6 +72,7 @@ prepare() {
   git rm -r externals/half
   git rm -r externals/json
   git rm -r externals/libpng
+  git rm -r externals/miniz
   git rm -r externals/pugixml
   git rm -r externals/robin-map
   git rm -r externals/stb
@@ -105,6 +107,10 @@ build() {
     CXX=clang++
     LDFLAGS="$(sed -E -e 's&\S*fuse-ld\S*&&g' -e 's&\s+& &g' <<< "$LDFLAGS") -fuse-ld=lld"
   fi
+
+  # no longer buildable with v1
+  export CFLAGS+=" -march=x86-64-v2"
+  export CXXFLAGS+=" -march=x86-64-v2"
 
   local _cmake_options=(
     -B build
