@@ -25,7 +25,6 @@ prepare() {
   cd "${srcdir}/${pkgname}-${_tag_name}"
   sed -i 's/g_target/#g_target/' db/nist/CMakeLists.txt
 
-  # Clone bext and apply patches
   cd "${srcdir}"
   git clone https://github.com/BRL-CAD/bext
   cd bext
@@ -63,8 +62,9 @@ build() {
     -DLMDB_INCLUDE_DIR=/usr/include \
     -DMANIFOLD_LIBRARY=/usr/lib/libmanifold.so \
     -DMANIFOLD_INCLUDE_DIR=/usr/include/manifold \
-    -DSQLITE3_LIBRARY=/usr/lib/libsqlite3.so \
-    -DSQLITE3_INCLUDE_DIR=/usr/include
+    -DSQLite3_LIBRARY=/usr/lib/libsqlite3.so \
+    -DSQLite3_INCLUDE_DIR=/usr/include \
+    "-DBRLCAD_EXT_SOURCE_DIR=${srcdir}/bext"
 
   cmake --build "${srcdir}/build" --config "${_build_config}"
 
