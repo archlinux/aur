@@ -1,0 +1,7 @@
+pkg/
+*.tar.zst
+ge*.tar.gz
+src/
+.trunk/
+.vscode/
+.shellcheckrc
