@@ -18,6 +18,8 @@ makedepends=(
   'python-installer'
   'python-wheel'
   'python-scikit-build-core'
+  'python-pytorch-cuda'
+  'python-sympy'
   'cmake'
   'ninja'
   'git'
