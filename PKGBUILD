@@ -1,6 +1,6 @@
 # Maintainer: stelle <stelle@psychotoxical.dev>
 pkgname=psysonic
-pkgver=1.4.5
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Desktop music player for Subsonic API-compatible servers (Navidrome, Gonic, etc.)"
 arch=('x86_64')
@@ -18,11 +18,11 @@ makedepends=(
   'rust'
   'cargo'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Psychotoxical/psysonic/archive/refs/tags/app-v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Psychotoxical/psysonic/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "psysonic-app-v$pkgver"
+  cd "psysonic-$pkgver"
 
   export CARGO_HOME="$srcdir/cargo-home"
   export npm_config_cache="$srcdir/npm-cache"
@@ -32,7 +32,7 @@ build() {
 }
 
 package() {
-  cd "psysonic-app-v$pkgver"
+  cd "psysonic-$pkgver"
 
   # Binary (in /usr/lib to make room for the wrapper)
   install -Dm755 "src-tauri/target/release/psysonic" "$pkgdir/usr/lib/psysonic/psysonic"
