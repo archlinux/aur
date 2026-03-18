@@ -1,6 +1,6 @@
 pkgbase = ds5-edge-relay
-	pkgdesc = Qt6 GUI relay daemon for DualSense Edge — presents it as standard DualSense to fix Proton/Steam compatibility, with a visual button-remapping editor
-	pkgver = 2.0.0
+	pkgdesc = Qt6 GUI relay daemon for DualSense Edge — presents it as standard DualSense to fix Proton/Steam compatibility, with button remapping, macro recorder and quick-record
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/Follen22/ds5-edge-relay
 	install = ds5-edge-relay.install
@@ -10,7 +10,7 @@ pkgbase = ds5-edge-relay
 	makedepends = ninja
 	depends = glibc
 	depends = qt6-base
-	source = ds5-edge-relay-2.0.0.tar.gz::https://github.com/Follen22/ds5-edge-relay/archive/refs/tags/v2.0.0.tar.gz
-	sha256sums = 90c1ee8132509691662ab75e0d8fdda0a4c4ee26854d6e8d522cdfaa509a6295
+	source = ds5-edge-relay-2.1.0.tar.gz::https://github.com/Follen22/ds5-edge-relay/archive/refs/tags/v2.1.0.tar.gz
+	sha256sums = 422f10d92121c754d779365aab6f05f4064bf6d3fd11ada845a2dae895f6dce2
 
 pkgname = ds5-edge-relay
