@@ -2,7 +2,7 @@
 
 pkgname=subminer-bin
 pkgver=0.6.5
-pkgrel=1
+pkgrel=2
 pkgdesc='All-in-one sentence mining overlay with AnkiConnect and dictionary integration'
 arch=('x86_64')
 url='https://github.com/ksyasuda/SubMiner'
@@ -32,8 +32,8 @@ provides=("subminer=${pkgver}")
 conflicts=('subminer')
 source=(
 	"SubMiner-${pkgver}.AppImage::https://github.com/ksyasuda/SubMiner/releases/download/v${pkgver}/SubMiner-${pkgver}.AppImage"
-	"subminer::https://github.com/ksyasuda/SubMiner/releases/download/v${pkgver}/subminer"
-	"subminer-assets.tar.gz::https://github.com/ksyasuda/SubMiner/releases/download/v${pkgver}/subminer-assets.tar.gz"
+	"subminer-${pkgver}::https://github.com/ksyasuda/SubMiner/releases/download/v${pkgver}/subminer"
+	"subminer-assets-${pkgver}.tar.gz::https://github.com/ksyasuda/SubMiner/releases/download/v${pkgver}/subminer-assets.tar.gz"
 )
 sha256sums=(
 'a96531915ce7ede4633c5c893b40fb0ef3da53b04082471bcc962f1d477bcc35'
@@ -50,7 +50,7 @@ package() {
 	install -dm755 "${pkgdir}/opt/SubMiner"
 	ln -s '/opt/SubMiner/SubMiner.AppImage' "${pkgdir}/usr/bin/SubMiner.AppImage"
 
-	install -Dm755 "${srcdir}/subminer" "${pkgdir}/usr/bin/subminer"
+	install -Dm755 "${srcdir}/subminer-${pkgver}" "${pkgdir}/usr/bin/subminer"
 
 	install -Dm644 "${srcdir}/config.example.jsonc" \
 		"${pkgdir}/usr/share/SubMiner/config.example.jsonc"
