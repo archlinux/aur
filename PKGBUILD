@@ -1,6 +1,6 @@
 # Maintainer: skint007 <archlinux.repose742@passmail.net>
 pkgname=yay-sys-tray-git
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Arch Linux system tray update checker using yay"
 arch=('any')
