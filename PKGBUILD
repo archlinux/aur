@@ -1,40 +1,52 @@
-# CPAN Name  : Test::Identity
+# Maintainer: ryoskzypu <ryoskzypu@proton.me>
 # Contributor: Anton Leontiev <scileont /at/ gmail.com>
-# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname=perl-test-identity
+_author=PEVANS
+_dist=Test-Identity
+pkgname=perl-${_dist@L}
 pkgver=0.01
-pkgrel=2
-pkgdesc='Perl module to test the referential identity of a reference'
+pkgrel=3
+pkgdesc='assert the referential identity of a reference'
 arch=('any')
-url='https://metacpan.org/release/Test-Identity'
-license=('PerlArtistic' 'GPL')
-depends=('perl')
-source=(http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Test-Identity-0.01.tar.gz)
-options=(!emptydirs)
-md5sums=('ecef85c791cf5847e4c374983cf22a74')
+url=https://metacpan.org/release/$_author/$_dist-$pkgver
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
+depends=(
+    'perl'
+    'perl-scalar-list-utils'
+)
+makedepends=(
+    'perl-module-build>=0.36'
+    'perl-test-simple'
+)
+options=('!emptydirs')
+source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
+sha256sums=('2f0205009aed152668182aafa16357ab1f47b4cbc001e89871b67387ef8e5f23')
 
-sanitize() {
-	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
-	export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+build()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL_MB_OPT PERL5LIB PERL_LOCAL_LIB_ROOT
+    export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+
+    /usr/bin/perl Build.PL --create_packlist=0
+    ./Build
 }
 
-build() {
-	cd Test-Identity-0.01
-	sanitize
-	perl Build.PL --installdirs vendor --destdir "$pkgdir"
-	perl Build
+check()
+{
+    cd "$_dist-$pkgver"
+
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build test
 }
 
-check() {
-	cd Test-Identity-0.01
-	sanitize
-	perl Build test
-}
+package()
+{
+    cd "$_dist-$pkgver"
 
-package() {
-	cd Test-Identity-0.01
-	sanitize
-	perl Build install
-	find "$pkgdir" \( -name .packlist -o -name perllocal.pod \) -delete
+    unset PERL5LIB PERL_LOCAL_LIB_ROOT
+
+    ./Build install --installdirs=vendor --destdir="$pkgdir"
 }

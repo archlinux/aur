@@ -1,15 +1,16 @@
 pkgbase = perl-test-identity
-	pkgdesc = Perl module to test the referential identity of a reference
+	pkgdesc = assert the referential identity of a reference
 	pkgver = 0.01
-	pkgrel = 2
-	url = https://metacpan.org/release/Test-Identity
+	pkgrel = 3
+	url = https://metacpan.org/release/PEVANS/Test-Identity-0.01
 	arch = any
-	license = PerlArtistic
-	license = GPL
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-module-build>=0.36
+	makedepends = perl-test-simple
 	depends = perl
+	depends = perl-scalar-list-utils
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/Test-Identity-0.01.tar.gz
-	md5sums = ecef85c791cf5847e4c374983cf22a74
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Test-Identity-0.01.tar.gz
+	sha256sums = 2f0205009aed152668182aafa16357ab1f47b4cbc001e89871b67387ef8e5f23
 
 pkgname = perl-test-identity
-
