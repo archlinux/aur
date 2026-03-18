@@ -1,24 +1,27 @@
-# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-# Contributor: Adam Perkowski <adas1per@protonmail.com>
-# Contributor: Jonathan Engber
 pkgname=brlcad
 pkgver=7.42.2
 pkgrel=1
-pkgdesc="Extensive 3D solid modeling system"
-url="https://${pkgname}.org"
-license=(LGPL-2.1-only BSD-3-Clause LicenseRef-BDL)
+pkgdesc='Extensive 3D solid modeling system'
+url='https://brlcad.org'
+license=('LGPL-2.1-only' 'BSD-3-Clause' 'LicenseRef-BDL')
 arch=(i686 x86_64)
 depends=(gdal libgl libxft libxi)
-makedepends=(cmake ninja git)
-install="${pkgname}".install
+makedepends=(cmake ninja git lemon re2c astyle geogram zlib netpbm libpng lmdb eigen3 sqlite proj gdal pugixml assimp opencv manifold tcl tk itk)
+install="${pkgname}.install"
 _tag_name="rel-${pkgver//./-}"
-source=(${pkgname}-${_tag_name}.tar.gz::https://github.com/BRL-CAD/${pkgname}/archive/refs/tags/${_tag_name}.tar.gz)
-sha512sums=('ee470616631eca9aa529c3468f4647c6f1a21318b2c9e8945c1abbd4f09bbb41f68a175bb5b47db5cde817d9d5249c332e80501c1c79ac6b4255fcaacced49bc')
+source=(
+  "${pkgname}-${_tag_name}.tar.gz::https://github.com/BRL-CAD/${pkgname}/archive/refs/tags/${_tag_name}.tar.gz"
+)
+sha512sums=(
+  '6f6d139e60c6adb4cf31894b8892e5ea5ab13e494e8a55843914bc7e1c5063c97f584f50a7edac9acf7493ec1493952dc6f5780cb5d839c8e0453fb400367bd4'
+)
+
 _build_config='Release'
 _prefix="/opt/${pkgname}"
 
 prepare() {
-  sed -i 's/g_target/#g_target/' "${srcdir}/${pkgname}-${_tag_name}"/db/nist/CMakeLists.txt
+  cd "${srcdir}/${pkgname}-${_tag_name}"
+  sed -i 's/g_target/#g_target/' db/nist/CMakeLists.txt
 }
 
 build() {
@@ -33,19 +36,61 @@ build() {
     -DBRLCAD_ENABLE_COMPILER_WARNINGS=OFF \
     -DBRLCAD_ENABLE_STRICT=OFF \
     -DBRLCAD_FLAGS_DEBUG=OFF \
-    -DBRLCAD_BUNDLED_LIBS=BUNDLED \
+    -DBRLCAD_BUNDLED_LIBS=SYSTEM \
+    -DBRLCAD_ENABLE_MINIMAL=ON \
     -DBRLCAD_GDAL=OFF \
     -DBRLCAD_PNG=OFF \
     -DBRLCAD_REGEX=OFF \
     -DBRLCAD_ZLIB=OFF \
-    -DBRLCAD_ENABLE_OPENGL=ON \
-    -DBRLCAD_ENABLE_QT=OFF
+    -DBRLCAD_ENABLE_OPENGL=OFF \
+    -DBRLCAD_ENABLE_QT=OFF \
+    -DBRLCAD_ENABLE_TCL=OFF \
+    "-DBRLCAD_EXT_PARALLEL=$(nproc)" \
+    # System library locations
+    -DPNG_PNG_INCLUDE_DIR=/usr/include \
+    -DLMDB_LIBRARY=/usr/lib/liblmdb.so \
+    -DLMDB_INCLUDE_DIR=/usr/include \
+    -DUTAHRLR_LIBRARY=/usr/lib/libutahrle.so \
+    -DUTAHRLR_INCLUDE_DIR=/usr/include \
+    -DSTEPCODE_DAI_DIR=/usr/include/stepcode \
+    -DSTEPCODE_EDITOR_DIR=/usr/lib/cmake/stepcode \
+    -DSTEPCODE_STEPCORE_DIR=/usr/lib/cmake/stepcode \
+    -DSTEPCODE_UTILS_DIR=/usr/lib/cmake/stepcode \
+    -DSTEPCODE_EXPPP_DIR=/usr/lib/cmake/stepcode \
+    -DSTEPCODE_EXPRESS_DIR=/usr/lib/cmake/stepcode \
+    -DSTEPCODE_INCLUDE_DIR=/usr/include/stepcode \
+    -DSTEPCODE_EXPRESS_LIBRARY=/usr/lib/libstepcode_express.so \
+    -DSTEPCODE_EXPPP_LIBRARY=/usr/lib/libstepcode_exppp.so \
+    -DSTEPCODE_CORE_LIBRARY=/usr/lib/libstepcode_core.so \
+    -DSTEPCODE_EDITOR_LIBRARY=/usr/lib/libstepcode_editor.so \
+    -DSTEPCODE_DAI_LIBRARY=/usr/lib/libstepcode_dai.so \
+    -DSTEPCODE_UTILS_LIBRARY=/usr/lib/libstepcode_utils.so \
+    -DEXPP2CXX_EXECUTABLE=/usr/bin/expp2cxx \
+    -DCLIPPER2_DIR=/usr/lib/cmake/Clipper2 \
+    -DGTE_INCLUDE_DIR=/usr/include/GTE \
+    -DMMESH_LIBRARY=/usr/lib/libmmesh.so \
+    -DMMESH_INCLUDE_DIR=/usr/include/mmesh \
+    -DOPENMESH_CORE_LIBRARY=/usr/lib/libOpenMeshCore.so \
+    -DOPENMESH_TOOLS_LIBRARY=/usr/lib/libOpenMeshTools.so \
+    -DOPENMESH_INCLUDE_DIR=/usr/include/OpenMesh \
+    -DMANIFOLD_LIBRARY=/usr/lib/libmanifold.so \
+    -DMANIFOLD_INCLUDE_DIR=/usr/include/manifold \
+    -DOPENNURBS_LIBRARY=/usr/lib/libopennurbs.so \
+    -DOPENNURBS_INCLUDE_DIR=/usr/include/opennurbs \
+    -DOPENNURBS_X_INCLUDE_DIR=/usr/include/opennurbs/x \
+    -DPERPLEX_EXECUTABLE=/usr/bin/perplex \
+    -DPERPLEX_TEMPLATE=/usr/share/perplex/template \
+    -DREGEX_LIBRARY=/usr/lib/libregex.so \
+    -DSWIG_EXECUTABLE=/usr/bin/swig \
+    -DSWIG_DIR=/usr/share/swig \
+    -DDOXYGEN_EXECUTABLE=/usr/bin/doxygen \
+    -DMPI_C_LIB_NAMES=mpi \
+    -DMPI_C_HEADER_DIR=/usr/include \
+    -DMPI_C_WORKS=ON
 
   cmake --build "${srcdir}/build" --config "${_build_config}"
 
-  echo \
-    "export PATH=\"\$PATH:${_prefix}/bin\"" \
-    >"${srcdir}/build/${pkgname}.sh"
+  echo "export PATH=\"\$PATH:${_prefix}/bin\"" >"${srcdir}/build/${pkgname}.sh"
 }
 
 package() {
@@ -56,13 +101,13 @@ package() {
 
   install \
     -D \
-    --mode=u=rw,go=r \
-    "--target-directory=${pkgdir}/usr/share/licenses/${pkgname}" \
-    "${srcdir}/build/share/doc/legal/"{bdl,bsd}.txt
+    -m644 \
+    "${srcdir}/build/share/doc/legal/"{bdl,bsd}.txt \
+    -t "${pkgdir}/usr/share/licenses/${pkgname}"
 
   install \
     -D \
-    --mode=u=rw,go=r \
-    "--target-directory=${pkgdir}/etc/profile.d" \
-    "${srcdir}/build/${pkgname}.sh"
+    -m755 \
+    "${srcdir}/build/${pkgname}.sh" \
+    "${pkgdir}/etc/profile.d/${pkgname}.sh"
 }
