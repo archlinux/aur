@@ -2,7 +2,7 @@
 pkgname=vex-shell-git
 _pkgname=vex
 pkgver=r1
-pkgrel=3
+pkgrel=4
 pkgdesc='A typed shell with structured data pipelines, written in C'
 arch=('x86_64' 'aarch64')
 url='https://github.com/aethstetic/vex'
