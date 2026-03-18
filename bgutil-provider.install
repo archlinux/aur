@@ -1,0 +1,13 @@
+post_install() {
+  cat <<EOF
+NOTE: This package only installs the POT client for yt-dlp. To start a POT
+      provider server once, run:
+
+      docker run -d --init --name bgutil-provider \\
+        brainicism/bgutil-ytdlp-pot-provider [POT OPTIONS]
+
+      If you find yourself running the provider a lot, you can start it
+      automatically with docker by passing "--restart always". You can read
+      more about the provider setup on the upstream URL.
+EOF
+}
