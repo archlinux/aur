@@ -1,41 +1,58 @@
-# Maintainer: nukeop <aur@gumblert.tech>
+# Maintainer: nukeop
+
 pkgname=nuclear-player-git
-pkgver=v0.6.31
+_pkgname=nuclear-player
+pkgver=
 pkgrel=1
-pkgdesc="A free, multiplatform music player app that streams from multiple sources."
-url="https://nuclear.js.org"
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+pkgdesc='Nuclear is a free, open-source music player without ads or tracking.'
 arch=(x86_64)
-license=('GPL3')
-depends=('libnotify' 'libappindicator-gtk3' 'libxtst' 'nss')
-makedepends=('git' 'lerna' 'npm' 'nodejs-lts-iron')
-source=(
-    'git+https://github.com/nukeop/nuclear.git'
-	'nuclear.desktop'
+url='https://nuclearplayer.com'
+license=('AGPL-3.0-only')
+provides=('nuclear-player')
+conflicts=('nuclear-player' 'nuclear-player-bin')
+depends=('webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme' 'gst-plugins-base' 'gst-plugins-good')
+optdepends=(
+    'gst-plugins-bad: Additional media codec support'
+    'gst-plugins-ugly: Patented codec support'
+    'gst-libav: FFmpeg-based codec support'
 )
-md5sums=('SKIP'
-		'c7718ef25957c425b87dc4195d811955'
-)
+makedepends=('git' 'cargo' 'nodejs' 'openssl' 'libappindicator-gtk3' 'librsvg')
+source=("${pkgname}::git+https://github.com/nukeop/nuclear.git")
+sha256sums=('SKIP')
+
 pkgver() {
-  cd ${srcdir}/nuclear
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${pkgname}"
+    git describe --long --tags 2>/dev/null \
+        | sed 's/^player@//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+        || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-build(){
- cd nuclear
- npm install
- npm run build
+
+prepare() {
+    cd "${pkgname}"
+    corepack enable
+    corepack prepare pnpm@latest --activate
+    pnpm install
+    cd packages/player/src-tauri
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
-package(){
-  mkdir ${pkgdir}/usr
-  mkdir ${pkgdir}/usr/share
-  mkdir ${pkgdir}/usr/share/applications
-  mkdir ${pkgdir}/usr/bin
-  mkdir ${pkgdir}/usr/share/icons
-  mkdir ${pkgdir}/usr/share/icons/hicolor
-  mkdir ${pkgdir}/usr/share/icons/hicolor/0x0
-  mkdir ${pkgdir}/usr/share/icons/hicolor/0x0/apps/
-  cp ${srcdir}/nuclear/flatpak/org.js.nuclear.Nuclear.png ${pkgdir}/usr/share/icons/hicolor/0x0/apps/nuclear.png
-  cp --preserve=mode ${srcdir}/nuclear.desktop ${pkgdir}/usr/share/applications/
-  cp -r --preserve=mode ${srcdir}/nuclear/release/linux-unpacked/* ${pkgdir}/usr/bin/
+
+build() {
+    cd "${pkgname}"
+    export CFLAGS+=" -ffat-lto-objects"
+    export CXXFLAGS+=" -ffat-lto-objects"
+    pnpm --filter @nuclearplayer/player build:frontend
+    cd packages/player/src-tauri
+    cargo build --release
+}
+
+package() {
+    cd "${pkgname}"
+    install -Dm755 "packages/player/src-tauri/target/release/nuclear-music-player" \
+        "${pkgdir}/usr/bin/nuclear-music-player"
+    install -Dm644 "packages/player/src-tauri/resources/com.nuclearplayer.Nuclear.desktop" \
+        "${pkgdir}/usr/share/applications/com.nuclearplayer.Nuclear.desktop"
+    install -Dm644 "packages/player/src-tauri/icons/icon.png" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/com.nuclearplayer.Nuclear.png"
+    install -Dm644 LICENSE \
+        "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
