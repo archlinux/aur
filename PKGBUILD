@@ -25,7 +25,8 @@ package() {
 	install -Dm755 main.py "$pkgdir/usr/lib/shaweelTimer/main.py"
 	install -Dm755 status.py "$pkgdir/usr/lib/shaweelTimer/status.py"
 	install -Dm755 config.py "$pkgdir/usr/lib/shaweelTimer/config.py"
-	#install -Dm644 metadata.json "$pkgdir/usr/lib/shaweelTimer/metadata.json"
+	install -Dm644 metadata.json "$pkgdir/usr/lib/shaweelTimer/metadata.json"
+	install -Dm644 io.github.shaweel.shaweelTimer.metainfo.xml "$pkgdir/usr/share/metainfo/io.github.shaweel.shaweelTimer.metainfo.xml"
 	install -Dm644 assets/shaweelTimer.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/shaweeltimer.png"
 
 	install -Dm755 /dev/stdin "$pkgdir/usr/bin/shaweeltimer" << "EOF"
