@@ -1,0 +1,5 @@
+[vrc-get]
+source = "github"
+github = "anatawa12/vrc-get"
+use_latest_release = true
+prefix = "v"
