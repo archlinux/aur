@@ -2,7 +2,7 @@
 # Maintainer: John Mylchreest <jmylchreest@gmail.com>
 
 pkgname='tinct-plugin-opencode-bin'
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='OpenCode theme plugin for Tinct'
 url='https://github.com/jmylchreest/tinct'
@@ -14,10 +14,10 @@ depends=('tinct')
 install=tinct-plugin-opencode.install
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct-plugin-opencode_${pkgver}_Linux_arm64.tar.gz")
-sha256sums_aarch64=('bc9fa3b1f82fd9e4fb1a944e5d2b00b1392b97e0fd609d7ebfb2c7d9466d4279')
+sha256sums_aarch64=('b54016ec9c8e269f74f453efa61fc0202fdde98a58026787550e565410a3ae7f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jmylchreest/tinct/releases/download/v${pkgver}/tinct-plugin-opencode_${pkgver}_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('619238b370be413d7ec35df0c1d3f7599011d336e19340af061bdd87700fecad')
+sha256sums_x86_64=('7f8408e645d00f1e90185197b9fbb33487f9adbeac09906b92f7e536ceaef664')
 
 package() {
   # bin
