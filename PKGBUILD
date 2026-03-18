@@ -1,7 +1,7 @@
 # Maintainer: Christopher Cooper <christopher@cg505.com>
 pkgname=codename-goose
-pkgver=1.27.2
-pkgrel=2
+pkgver=1.28.0
+pkgrel=1
 pkgdesc="An open-source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64' 'aarch64')
 url="https://github.com/block/goose"
@@ -11,6 +11,7 @@ makedepends=(
 	'cargo'
 	'clang'
 	'cmake'
+	'cuda'
 	'libxcb'
 	'protobuf'
 )
@@ -28,11 +29,12 @@ optdepends=(
 	'xorg-xwininfo: computer controller extension on X'
 	'wtype: computer controller extension on Wayland'
 	'wl-clipboard: computer controller extension on Wayland'
+	'cuda: CUDA GPU acceleration for local inference and whisper'
 )
 # LTO is broken for dependency ring https://github.com/briansmith/ring/issues/1444
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/block/goose/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('82614318ada08e4ec886acd833105ced8287b781d047dcc9b9ffda873055913689d53ccb248e20be37b365aa75b9ef9328d4d62b7cb727d2a57c28f1da8f6b80')
+b2sums=('5302e8ab2dfc15fbc0ba482217b305837869ce71454206efe47c4924893fd7c16d76c924386941f1e6e7cbc0eafa8482e8d4a4bc838b2787790afc365ff04916')
 
 prepare() {
 	cd "goose-$pkgver"
@@ -46,6 +48,9 @@ build() {
 	cd "goose-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
+	# Ampere (sm_80) needed for bf16 WMMA; covers RTX 3000+ via forward compat
+	# Required because no GPU in build chroot for auto-detection
+	export CUDA_COMPUTE_CAP=80
 	cargo build --frozen --release -p goose-cli --all-features
 }
 
