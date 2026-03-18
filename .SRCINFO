@@ -1,5 +1,5 @@
 pkgbase = shellforge
-	pkgdesc = Terminal tool for generating reverse shells for CTF challenges and educational purposes.
+	pkgdesc = Terminal tool for generating reverse-shells for CTF challenges and educational purposes.
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/minosariane/Shellforge
