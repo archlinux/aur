@@ -15,6 +15,7 @@ depends=(
 )
 makedepends=(
   'cmake'
+  'git'
   'patchelf'
   'python'
   'qt5-tools'
@@ -22,34 +23,65 @@ makedepends=(
 optdepends=(
   'python: scripting support and component generation'
 )
-# Note: Hopsan's build system downloads several bundled dependencies (qwt, zeromq,
-# discount, libzip, xerces-c, etc.) during the prepare() step. Network access is
-# required at build time. Run 'updpkgsums' after cloning to populate the checksum.
+# The git source is used (rather than a tarball) because several HopsanCore
+# dependencies (sundials, libnumhop, indexingcsvparser, DCPLib) are git
+# submodules whose content is absent from GitHub archive tarballs.
+# Bundled deps (qwt, zeromq, msgpack-c, discount, etc.) are downloaded and
+# built during prepare() via the upstream setup scripts — network access is
+# required at build time.
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/Hopsan/hopsan/archive/refs/tags/v${pkgver}.tar.gz"
+  "git+https://github.com/Hopsan/hopsan.git#tag=v${pkgver}"
 )
-b2sums=('7415da4027457912bd4174672f361d18a59e2030bf9100ad5684d7133731e556c781baa82aa80e21a8ebaae4da3a0d68e309290721fa715d280c7cbe4ba591b4')
+b2sums=('SKIP')
 
 prepare() {
-  cd "${srcdir}/hopsan-${pkgver}/dependencies"
+  cd hopsan
+
+  # Populate the submodules needed by HopsanCore and hopsandcp
+  git submodule update --init \
+    HopsanCore/dependencies/indexingcsvparser \
+    HopsanCore/dependencies/libnumhop \
+    HopsanCore/dependencies/sundials \
+    hopsandcp/dependencies/DCPLib
+
+  cd dependencies
+
+  # Download and unpack all bundled dependency sources
   python3 download-dependencies.py --all
+
+  # Build and install each bundled dependency into its own directory so the
+  # qmake .pri files can find headers and libs. setupAll.sh is not used
+  # because it references a non-existent setupFMILibrary.sh.
+  source setHopsanBuildPaths.sh
+  for script in \
+      setupAsio \
+      setupDiscount \
+      setupFmi4c \
+      setupKatex \
+      setupLibzip \
+      setupMsgpack \
+      setupQwt \
+      setupTclap \
+      setupXerces \
+      setupZeroMQ \
+      setupDCPLib; do
+    bash "${script}.sh"
+  done
 }
 
 build() {
-  cd "hopsan-${pkgver}"
-
-  # setHopsanBuildPaths.sh sets PATH/env vars so bundled dep headers/libs are found
+  cd hopsan
   source ./dependencies/setHopsanBuildPaths.sh
 
   mkdir -p builddir
   cd builddir
-  # DESTDIR in the .pro files is $PWD/../bin, so executables land in hopsan-$pkgver/bin/
+  # DESTDIR in the .pro files is $PWD/../bin, so executables land in hopsan/bin/
   qmake ../HopsanNG.pro -r -spec linux-g++ CONFIG+=release
   make -j"$(nproc)"
 }
 
 package() {
-  local _srcdir="${srcdir}/hopsan-${pkgver}"
+  local _srcdir="${srcdir}/hopsan"
   local _installdir="${pkgdir}/opt/${pkgname}"
 
   install -d "${_installdir}"

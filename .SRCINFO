@@ -7,6 +7,7 @@ pkgbase = hopsan
 	license = Apache-2.0
 	license = GPL-3.0-or-later
 	makedepends = cmake
+	makedepends = git
 	makedepends = patchelf
 	makedepends = python
 	makedepends = qt5-tools
@@ -16,7 +17,7 @@ pkgbase = hopsan
 	depends = qt5-svg
 	depends = qt5-webengine
 	optdepends = python: scripting support and component generation
-	source = hopsan-2.23.1.tar.gz::https://github.com/Hopsan/hopsan/archive/refs/tags/v2.23.1.tar.gz
-	b2sums = 7415da4027457912bd4174672f361d18a59e2030bf9100ad5684d7133731e556c781baa82aa80e21a8ebaae4da3a0d68e309290721fa715d280c7cbe4ba591b4
+	source = git+https://github.com/Hopsan/hopsan.git#tag=v2.23.1
+	b2sums = SKIP
 
 pkgname = hopsan
