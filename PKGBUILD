@@ -40,6 +40,7 @@ depends=(
 	'cairo>=1.14.0'
 	'appstream>=0.16.1'
 	'gobject-introspection>=1.32.0'
+	'libbacktrace'
 	)
 makedepends+=('git' 'intltool>=0.40.1'
              'alsa-lib>=1.0.0' 'libxslt' 'glib-networking'

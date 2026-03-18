@@ -56,6 +56,7 @@ pkgbase = gimp-develop-git
 	depends = cairo>=1.14.0
 	depends = appstream>=0.16.1
 	depends = gobject-introspection>=1.32.0
+	depends = libbacktrace
 	optdepends = gutenprint: for sophisticated printing only as gimp has built-in cups print support
 	optdepends = alsa-lib: for MIDI event controller module
 	optdepends = curl: for URI support
