@@ -4,12 +4,13 @@ _pkgname=eden
 _pkgver=0.2.0-rc2
 pkgname="eden-opt"
 pkgver=${_pkgver//-/.}
-pkgrel=2
+pkgrel=2.1
 pkgdesc="The Eden Nintendo Switch emulator Clang PGO version (for Zen2 +)."
 arch=('x86_64' 'aarch64')
 url="https://git.eden-emu.dev/eden-emu/eden"
 license=('GPL-3.0-only')
-depends=('zlib' 'qt6-base'
+depends=('zlib' 'enet'
+    'qt6-base'
     'qt6-charts'
     'opus'
     'spirv-tools'
@@ -60,7 +61,6 @@ package() {
     install -Dm644 squashfs-root/dev.eden_emu.eden.svg \
         "${pkgdir}/usr/share/icons/hicolor/scalable/apps/dev.eden_emu.eden.svg"
     install -d ${pkgdir}/opt/${_pkgname}/lib
-    cp -a squashfs-root/shared/lib/libenet.so* ${pkgdir}/opt/${_pkgname}/lib/
     cp -a squashfs-root/shared/lib/libboost* ${pkgdir}/opt/${_pkgname}/lib/
 }
 

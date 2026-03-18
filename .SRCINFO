@@ -1,13 +1,14 @@
 pkgbase = eden-opt
 	pkgdesc = The Eden Nintendo Switch emulator Clang PGO version (for Zen2 +).
 	pkgver = 0.2.0.rc2
-	pkgrel = 2
+	pkgrel = 2.1
 	url = https://git.eden-emu.dev/eden-emu/eden
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = patchelf
 	depends = zlib
+	depends = enet
 	depends = qt6-base
 	depends = qt6-charts
 	depends = opus
