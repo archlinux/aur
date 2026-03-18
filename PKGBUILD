@@ -1,8 +1,9 @@
 # Maintainer: Vee Satayamas <veerpub@pm.me>
 
-pkgname=('fonts-arundina')
+pkgbase='fonts-arundina'
+pkgname=('ttf-arundina' 'otf-arundina')
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Thai fonts aiming at Bitstream Vera and Dejavu compatibility'
 arch=('any')
 license=('GPL' 'custom')
@@ -16,19 +17,18 @@ build() {
     ./configure \
 	--disable-latex \
 	--disable-pfb \
-	--disable-otf \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	--with-ttfdir=/usr/share/fonts/arundina
+	--enable-otf
     make
 }
 
-package() {
+package_ttf-arundina() {
     cd fonts-arundina-$pkgver
-    make DESTDIR="${pkgdir}" install
-    mkdir -p "${pkgdir}"/etc/fonts
-    mv "${pkgdir}"/usr/share/fontconfig/conf.avail "${pkgdir}"/etc/fonts
-    rm -r "${pkgdir}"/usr/share/fontconfig
+    install -Dm644 -t "$pkgdir/usr/share/$pkgname" arundina/*.ttf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING
+}
 
-    install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/COPYING
+package_otf-arundina() {
+    cd fonts-arundina-$pkgver
+    install -Dm644 -t "$pkgdir/usr/share/$pkgname" arundina/*.otf
+    install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" COPYING
 }
