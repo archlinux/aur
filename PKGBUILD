@@ -2,7 +2,7 @@
 # https://github.com/felipemorandini/jwt-term
 
 pkgname=jwt-term-bin
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A blazing-fast, secure, and offline-first CLI for inspecting, validating, and manipulating JWTs"
 arch=('x86_64' 'aarch64')
@@ -16,9 +16,8 @@ source_x86_64=("${url}/releases/download/v${pkgver}/jwt-term-x86_64-unknown-linu
 source_aarch64=("${url}/releases/download/v${pkgver}/jwt-term-aarch64-unknown-linux-musl.tar.gz"
                 "${url}/raw/v${pkgver}/LICENSE")
 
-# Update these checksums with: updpkgsums
-sha256sums_x86_64=('SKIP' 'SKIP')
-sha256sums_aarch64=('SKIP' 'SKIP')
+sha256sums_x86_64=('c64d9bf71bfcf05d8c81423aa76f3b7f2970185cd4dfe28ade87e5d7cff671f8' 'ef8af8e1acd4a78f0cc359dacd727fd7ce494f5590d9d527d4c06ea1e816f0b7')
+sha256sums_aarch64=('53bdaca099e2e28108de19d46098d2bc5acb65e1f046ac0b3537681f5bc703f3' 'ef8af8e1acd4a78f0cc359dacd727fd7ce494f5590d9d527d4c06ea1e816f0b7')
 
 package() {
     install -Dm755 jwt-term "${pkgdir}/usr/bin/jwt-term"
