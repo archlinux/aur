@@ -3,7 +3,7 @@
 
 _pkgname=rmw
 pkgname=${_pkgname}-git
-pkgver=0.9.4
+pkgver=0.9.4.r17.ga02b21e
 pkgrel=1
 pkgdesc="trash/recycle bin utility for the command line"
 arch=('i686' 'x86_64' 'aarch64')
@@ -23,13 +23,17 @@ pkgver() {
     sed                 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+    cd                  "${srcdir}/${_pkgname}"
+    arch-meson          build -Db_sanitize=none
+}
+
 build() {
     cd                  "${srcdir}/${_pkgname}"
-    arch-meson          $pkgname-$pkgver build -Db_sanitize=none
     meson               compile -v -C build
 }
 
 package() {
     cd                  "${srcdir}/${_pkgname}"
-    DESTDIR="${pkgdir}" meson install -C build
+    meson               install -C build --destdir="${pkgdir}"
 }
