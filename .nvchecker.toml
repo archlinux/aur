@@ -1,0 +1,3 @@
+[perl-syntax-keyword-match]
+source = "cpan"
+cpan = "Syntax-Keyword-Match"
