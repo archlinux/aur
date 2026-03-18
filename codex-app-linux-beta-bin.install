@@ -1,0 +1,10 @@
+post_install() {
+  cat <<'EOF'
+codex-app-linux-beta-bin expects an existing 'codex' binary on PATH.
+If Codex CLI is installed somewhere else, set CODEX_CLI_PATH before launch.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
