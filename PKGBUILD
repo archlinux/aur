@@ -11,8 +11,11 @@ source=("${pkgname}::git+https://github.com/Hexa-Programmer/HexaMorse.git")
 sha256sums=('SKIP')
 
 package() {
+
     cd "$srcdir/$pkgname"
+
     install -Dm755 main.py "$pkgdir/usr/bin/hexamorse"
+    
     if [ -f "README.md" ]; then
         install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     fi
