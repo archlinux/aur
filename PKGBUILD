@@ -7,12 +7,12 @@
 # Bitwarden (PM and SM), GNOME Keyring, and custom WASM plugins.  It includes
 # an SSH agent with FUSE-mounted key files and PAM auto-unlock support.
 #
-# The release workflow renders this file by substituting 0.0.19.
+# The release workflow renders this file by substituting 0.0.20.
 # At build time, pkgver() overrides the static version with the actual
 # git-derived version.
 
 pkgname=rosec-git
-pkgver=0.0.19
+pkgver=0.0.20
 pkgrel=1
 pkgdesc="Multi-provider Secret Service daemon with SSH agent, FUSE mount, and PAM unlock (git)"
 arch=('x86_64' 'aarch64')
