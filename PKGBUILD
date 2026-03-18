@@ -4,7 +4,7 @@
 # Contributor: Dave Kleinschmidt <dave.f.kleinschmidt at gmail dot com>
 
 pkgname=spaceship-prompt
-pkgver=4.21.1
+pkgver=4.22.0
 pkgrel=1
 pkgdesc="A Zsh prompt for Astronauts"
 arch=('any')
@@ -16,7 +16,7 @@ provides=('spaceship-zsh-theme' 'spaceship-prompt')
 install="${pkgname}.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz"
         "$pkgname.install")
-sha256sums=('d0b93fc5b8531cd393b533cde47d27d8bc7d0c45423d1ea3a5006e4ecbc78f9e'
+sha256sums=('3cffaa45a30210169a44c331936f23feb990ca1ecb7ba66adfc359616091e692'
             '9fb9218c6498c040461d8d7aa416b2eb9241317b5606e74d1ec1caed0709aaf4')
 
 package() {
