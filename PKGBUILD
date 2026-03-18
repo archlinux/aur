@@ -2,7 +2,7 @@
 # Upstream: https://github.com/webadderall/Recordly
 
 pkgname=recordly-bin
-pkgver=1.0.9
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Open-source screen recorder and editor with auto-zoom, cursor effects, and polished video export"
 arch=(x86_64)
@@ -12,10 +12,12 @@ depends=(fuse2)
 source=(
   "https://github.com/webadderall/Recordly/releases/download/v${pkgver}/Recordly-linux-x64.AppImage"
   "recordly.desktop"
+  "https://raw.githubusercontent.com/webadderall/Recordly/main/LICENSE"
 )
 sha256sums=(
-  SKIP
-  SKIP
+  'd1a058bfc4972029b28e5f989dc3c678c5c4e960f3d352d57dc2b00f1b19b6b5'  # AppImage v${pkgver}
+  'SKIP'
+  'd8824b8c038eba113227cc707ac22c7a497583ae6115b052729a1d104f692d82'  # Upstream MIT LICENSE
 )
 options=(!strip)
 
@@ -31,6 +33,7 @@ EOF
   chmod 755 "$pkgdir/usr/bin/recordly"
 
   install -Dm644 "$srcdir/recordly.desktop" "$pkgdir/usr/share/applications/dev.recordly.app.desktop"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Extract icons from AppImage so Icon=dev.recordly.app in the .desktop resolves
   cd "$srcdir"
