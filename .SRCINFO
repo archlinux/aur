@@ -1,12 +1,14 @@
 pkgbase = ghidra-extension-kaiju-bin
 	pkgdesc = CERT Kaiju binary analysis improvements for Ghidra (OOAnalyzer, CERT function hashing, GhiHorn)
-	pkgver = 260309
+	pkgver = 260309_12.0.4
 	pkgrel = 1
 	url = https://github.com/CERTCC/kaiju
 	arch = x86_64
 	license = BSD-3-Clause
 	depends = ghidra
 	optdepends = z3-java: GhiHorn plugin for CFG analysis
+	provides = ghidra-extension-kaiju
+	conflicts = ghidra-extension-kaiju
 	options = !debug
 	source = kaiju-260309.zip::https://github.com/CERTCC/kaiju/releases/download/260309/ghidra_12.0.4_PUBLIC_20260309_kaiju.zip
 	sha256sums = f819a07559c87dae0cc48ddb5ed8aba75541055410a92c3f3054adb9276101ce

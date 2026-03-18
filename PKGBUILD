@@ -2,8 +2,7 @@
 # Contributor: E-Hern Lee <ehern.lee@gmail.com>
 pkgname=ghidra-extension-kaiju-bin
 _pkgname=kaiju
-pkgver=260309
-_ghidraver=$(pacman -Q ghidra 2>/dev/null | awk '{print $2}' | sed 's/-.*//')
+pkgver=260309_12.0.4
 pkgrel=1
 pkgdesc="CERT Kaiju binary analysis improvements for Ghidra (OOAnalyzer, CERT function hashing, GhiHorn)"
 arch=('x86_64')
@@ -16,16 +15,18 @@ options=('!debug')
 optdepends=(
   'z3-java: GhiHorn plugin for CFG analysis'
 )
-source=("${_pkgname}-${pkgver}.zip::https://github.com/CERTCC/kaiju/releases/download/${pkgver}/ghidra_${_ghidraver}_PUBLIC_20${pkgver}_kaiju.zip")
+source=("${_pkgname}-${pkgver%%_*}.zip::https://github.com/CERTCC/kaiju/releases/download/${pkgver%%_*}/ghidra_${pkgver#*_}_PUBLIC_20${pkgver%%_*}_kaiju.zip")
 sha256sums=('f819a07559c87dae0cc48ddb5ed8aba75541055410a92c3f3054adb9276101ce')
 
 latestver() {
-  local ghidra_ver
-  ghidra_ver=$(pacman -Si ghidra 2>/dev/null | awk '/^Version/{print $3; exit}' | sed 's/-.*//')
-  [ -z "$ghidra_ver" ] && return 1
-  gh api repos/CERTCC/kaiju/releases/latest --jq \
-    ".assets[] | select(.name | test(\"ghidra_${ghidra_ver}_\")) | .name" |
-    head -1 | grep -oP '20\K[0-9]+(?=_kaiju)'
+  local gv kv
+  gv=$(pacman -Si ghidra 2>/dev/null | awk '/^Version/{print $3; exit}' | sed 's/-.*//')
+  [ -z "$gv" ] && return 1
+  kv=$(gh api repos/CERTCC/kaiju/releases/latest --jq \
+    ".assets[] | select(.name | test(\"ghidra_${gv}_\")) | .name" |
+    head -1 | grep -oP '20\K[0-9]+(?=_kaiju)')
+  [ -z "$kv" ] && return 1
+  echo "${kv}_${gv}"
 }
 
 package() {
