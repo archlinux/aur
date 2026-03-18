@@ -270,6 +270,9 @@ END
       patch -d "$_pkgsrc_runtime" -Np1 -F100 -f -i "${srcdir:?}/$src"
     fi
   done
+
+  # fix wasm triplet
+  sed -E -e '/split_triplet/s&"wasm32-wasi"&"wasm32-wasip1"&' -i "$_pkgsrc_runtime/build/moz.configure/toolchain.configure"
 )
 
 build() (
