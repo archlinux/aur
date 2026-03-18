@@ -1,9 +1,9 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgname=zeroclaw
-pkgver=0.4.3
+pkgver=0.5.0
 pkgrel=1
-pkgdesc="Zero overhead, fully autonomous AI assistant runtime (100% Rust)"
+pkgdesc="Fast, small, and fully autonomous AI assistant infrastructure — deploy anywhere, swap anything (Rust)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://github.com/zeroclaw-labs/zeroclaw"
 license=('MIT' 'Apache-2.0')
@@ -16,7 +16,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/zeroclaw-labs/${pkgname}/ar
         "zeroclaw.service"
         "zeroclaw.sysusers"
         "zeroclaw.tmpfiles")
-sha256sums=('979d4caab3d5c830477ea34311acd910ca55158bfad29223a36c9cd8acfee7ac'
+sha256sums=('970c2fcbbc3fd0566420183df317cf0441acd0c6ca3147e55bbccbb8ab142980'
             'de97ac176531d176ac627bd031e8a79f7adb5a440f321c9b9b0a492fda1154ee'
             '5e22a9f53bab669beab7058c8b7d1c2b090eb7900fb8c9bd94fd3ad609e7afbf'
             '07911d8ca762bc87daf58e7d72ad9067517baedaeccd65f2ae7609962af8216f')
@@ -36,7 +36,7 @@ prepare() {
         sed -i '1s/^/#![recursion_limit = "256"]\n/' "$msdk_lib"
     fi
 
-    # Workaround for upstream bug (zeroclaw 0.4.3): OtelObserver::record_event match
+    # Workaround for upstream bug (zeroclaw 0.4.3–0.5.0): OtelObserver::record_event match
     # is missing CacheHit and CacheMiss arms added in this release (otel.rs line ~431).
     # Fix: insert no-op arms before the closing brace of the match block.
     local otel_rs="src/observability/otel.rs"
@@ -62,7 +62,7 @@ build() {
     cargo build \
         --release \
         --frozen \
-        --features channel-lark,channel-matrix,channel-nostr,memory-postgres,observability-otel,observability-prometheus,browser-native,sandbox-landlock,sandbox-bubblewrap,rag-pdf,whatsapp-web
+        --features channel-lark,channel-matrix,channel-nostr,memory-postgres,observability-otel,observability-prometheus,browser-native,sandbox-landlock,sandbox-bubblewrap,rag-pdf,whatsapp-web,plugins-wasm
 }
 
 package() {
