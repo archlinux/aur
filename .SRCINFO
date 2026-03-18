@@ -1,7 +1,7 @@
 pkgbase = catclient
 	pkgdesc = Yet another fork of TaterClient for DDNet
 	pkgver = 1.0.3
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/quomy/CatClient/
 	install = catclient.install
 	arch = x86_64

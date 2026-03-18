@@ -2,7 +2,7 @@
 _pkgname=CatClient
 pkgname=catclient
 pkgver=1.0.3
-pkgrel=0
+pkgrel=1
 pkgdesc="Yet another fork of TaterClient for DDNet"
 arch=('x86_64')
 url="https://github.com/quomy/CatClient/"

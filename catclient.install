@@ -1,6 +1,6 @@
 post_install() {
-chmod -R 777 /opt/rclient
+chmod -R 777 /opt/catclient
 }
 post_upgrade() {
-chmod -R 777 /opt/rclient
+chmod -R 777 /opt/catclient
 }
