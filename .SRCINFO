@@ -8,7 +8,7 @@ pkgbase = hexamorse
 	license = MIT
 	makedepends = git
 	depends = python
-	source = hexamorse-1.1.tar.gz::https://github.com/HexaProgrammer/HexaMorse/archive/refs/tags/v1.1.tar.gz
+	source = hexamorse-1.1.tar.gz::https://github.com/Hexa-Programmer/HexaMorse/archive/refs/tags/v1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = hexamorse
