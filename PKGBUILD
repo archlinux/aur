@@ -1,5 +1,5 @@
 pkgname=panache-bin
-pkgver=2.21.0
+pkgver=2.23.0
 pkgrel=1
 pkgdesc="A language server, formatter, and linter for Pandoc, Quarto, and R Markdown"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('panache')
 options=(!strip)
 source_x86_64=("panache-$pkgver-x86_64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/panache-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("panache-$pkgver-aarch64-unknown-linux-gnu.tar.gz::$url/releases/download/v$pkgver/panache-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('2c9f5a0b580df00e62c84e33d06b3b59f2bf77d28f46cd588778261ffbbe3f9e')
-sha256sums_aarch64=('54f2a78b5a99d9b110618fc7f6c06e82cf556601f732f2267f559acf6a3287bd')
+sha256sums_x86_64=('da00d5bc1360ad1b625d865564a5297e75c32ada1d872efcc161877c03059ed4')
+sha256sums_aarch64=('0ba7009d1bf264172e613d73324f5c2b571f20059f0d827b1b62e04765d2e935')
 
 package() {
     # Binary
