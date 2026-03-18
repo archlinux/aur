@@ -8,7 +8,7 @@ license=('MIT')
 depends=('flatpak')
 options=('!strip')
 source=("https://github.com/B5aaR/servhub-store/releases/download/v${pkgver}/ServHub-${pkgver}.AppImage")
-sha256sums=('7173bb0c41254fa4a7dcabb5f8cadd88ecf62a91c0499c6de63fd59704495171')
+sha256sums=('10d9651a8d19d29b199b2db007b41e1b87a4212d21c2f163907b43527d14f952')
 
 package() {
     # Install the AppImage as a global system command
