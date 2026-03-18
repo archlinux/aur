@@ -1,0 +1,12 @@
+[Trigger]
+Type = Path
+Operation = Remove
+Target = usr/lib/booster/*
+Target = /boot/vmlinuz-*
+Target = /boot/booster-*.img
+
+[Action]
+Description = Removing Booster kernel and initrd from systemd-boot...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/kernel-install-booster-remove
+NeedsTargets

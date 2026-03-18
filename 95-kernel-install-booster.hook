@@ -1,0 +1,13 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modules/*/vmlinuz
+Target = boot/booster-*.img
+Target = /usr/bin/booster
+
+[Action]
+Description = Installing kernel entries for systemd-boot after Booster...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/kernel-install-booster
+NeedsTargets
