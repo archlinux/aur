@@ -1,10 +1,11 @@
+# Maintainer: shaweel <shaweel@proton.com>
 fetchMetadataValue() {
 	curl -s https://raw.githubusercontent.com/shaweel/shaweelTimer/refs/heads/stable/metadata.json \
 	| grep "$1" \
 	| sed "s/.*\"$1\": \"\(.*\)\".*/\1/"
 }
 
-pkgname="shaweeltimer"
+pkgname=$(fetchMetadataValue "packageName")
 pkgdesc=$(fetchMetadataValue "description")
 url=$(fetchMetadataValue "url")
 pkgver=$(fetchMetadataValue "version")
