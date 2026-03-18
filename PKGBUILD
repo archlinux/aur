@@ -14,7 +14,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install=etr.install
 source=("${_pkgname}::${url}/releases/download/v${pkgver}/${_pkgname}-linux-amd64")
-sha256sums=('82ca59cd38a69db882905a10d662618273f4d6d3b5372da18bf54b170521824d')
+sha256sums=('3aace2287c00111e70391a130424064ff84928b1694d44eb608b21e7e3a7cd67')
 
 options=(!debug)
 
