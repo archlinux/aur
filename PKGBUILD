@@ -1,6 +1,6 @@
 # Maintainer: Tommy Falkowski <tommy@byteowlz.com>
 pkgname=cmfy
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A flexible ComfyUI CLI"
 arch=('x86_64' 'aarch64')
