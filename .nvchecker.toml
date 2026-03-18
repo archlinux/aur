@@ -1,0 +1,5 @@
+[pacselect-bin]
+source = "github"
+github = "ryansinn/pacselect"
+use_latest_release = true
+prefix = "v"
