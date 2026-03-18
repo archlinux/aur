@@ -8,7 +8,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/martinellimarco/indexed_zstd"
 license=('MIT')
 depends=('python' 'zstd')
-makedepends=('cython' 'git')
+makedepends=('cython' 'git' 'python-setuptools')
 options=(!emptydirs)
 source=("${pkgname}-${pkgver}::git+https://github.com/martinellimarco/indexed_zstd.git#tag=v${pkgver}")
 provides=("indexed_zstd")
