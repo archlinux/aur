@@ -1,6 +1,6 @@
 pkgbase = sunder
 	pkgdesc = A desktop YouTube music client that doesn't spy on you
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/FrogSnot/Sunder
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = sunder
 	depends = sqlite
 	depends = yt-dlp
 	depends = ffmpeg
-	source = sunder-1.2.2.tar.gz::https://github.com/FrogSnot/Sunder/archive/v1.2.2.tar.gz
-	sha256sums = 65d4d80352643fa627b71dd1a66fa977473f12acc6b075edddf7e65250b7243c
+	source = sunder-1.2.3.tar.gz::https://github.com/FrogSnot/Sunder/archive/v1.2.3.tar.gz
+	sha256sums = 04457fea6c02113752c95bc21dc5f4936190e5c5c7aa788abd842fda7615d15b
 
 pkgname = sunder
