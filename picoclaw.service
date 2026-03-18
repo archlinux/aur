@@ -10,7 +10,7 @@ Environment=PICOCLAW_CONFIG=%h/.picoclaw/config.json
 Environment=PICOCLAW_BINARY=/usr/bin/picoclaw
 Environment=HOME=%h
 WorkingDirectory=%h
-ExecStart=/usr/bin/picoclaw-launcher --no-browser
+ExecStart=/usr/bin/picoclaw-launcher -no-browser
 Restart=on-failure
 RestartSec=5s
 

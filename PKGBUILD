@@ -1,6 +1,6 @@
 # Maintainer: @kjlsai <zhangjian@sipeed.com>
 pkgname=picoclaw
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Ultra-Efficient AI Assistant in Go"
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64' 'loong64')
@@ -15,8 +15,8 @@ source=(
     'picoclaw.service'
 )
 sha256sums=(
-    '67696e0d13d22f33ed00b603ce889616e504e2b03adb3e9f75d1ea212f2f0e73'
-    '91430fbf2b30369c7665fb4be1a3b8979de3b3c7b48b4c9fbdfe36996802b56c'
+    'bc77232bc11d385f5872114ed5807a080c7350998cfbffb0a44737a9a9e7c592'
+    '4a982c31b007b6c787b14d05f60b01aaf242d5dd73fa3e273df895c9115f0ec8'
 )
 
 build() {

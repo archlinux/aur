@@ -16,6 +16,14 @@ EOF
 
 post_upgrade() {
     post_install
+
+    cat <<'EOF'
+
+Upgrade notice:
+  - If picoclaw is running, please restart it manually:
+    systemctl --user daemon-reload
+    systemctl --user restart picoclaw
+EOF
 }
 
 pre_remove() {
