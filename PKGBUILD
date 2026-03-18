@@ -1,6 +1,6 @@
 # Maintainer: Scott Stavinoha <scottstavinoha@gmail.com>
 pkgname=aside
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="LLM assistant for Wayland desktops — overlay, voice, tools, any model"
 arch=('x86_64')
@@ -32,7 +32,7 @@ optdepends=(
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 )
-sha256sums=('6a39defa3416d94cf77e985529846c69ed41bd122eda153eb1ac358e62913c31')
+sha256sums=('22d363478b8cf7ad8003511224e697d926afaec395563fbb794bc94d3f254e34')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -58,7 +58,7 @@ package() {
 
     # ── wrapper scripts ──────────────────────────────────────────────────
     install -d "$pkgdir/usr/bin"
-    for cmd in aside aside-overlay aside-status; do
+    for cmd in aside aside-overlay; do
         [ -f "$pkgdir/opt/aside/bin/$cmd" ] || continue
         cat > "$pkgdir/usr/bin/$cmd" <<EOF
 #!/bin/sh
