@@ -1,7 +1,7 @@
 pkgbase = transmission-remote-slint
 	pkgdesc = Lightweight Transmission BitTorrent GUI built with Slint (no GTK)
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/guglovich/Transmission-Remote-Slint
 	arch = x86_64
 	license = GPL-2.0-or-later

@@ -2,7 +2,7 @@
 # Created with assistance from Claude (Anthropic).
 pkgname=transmission-remote-slint
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight Transmission BitTorrent GUI built with Slint (no GTK)"
 arch=('x86_64')
 url="https://github.com/guglovich/Transmission-Remote-Slint"
@@ -35,6 +35,7 @@ prepare() {
     cd "Transmission-Remote-Slint-${pkgver}"
     export CARGO_HOME="$srcdir/cargo-home"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    sed -i 's/slint        = "1.7"/slint        = { version = "1.7", features = ["backend-winit"] }/' Cargo.toml
 }
 
 build() {
