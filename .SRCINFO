@@ -1,6 +1,6 @@
 pkgbase = ceru-music-appimage
 	pkgdesc = Ceru Music 是一个跨平台音乐播放器，支持获取公开音乐信息和基于插件的播放功能。
-	pkgver = 1.9.2
+	pkgver = 1.9.6
 	pkgrel = 1
 	url = https://ceru.docs.shiqianjiang.cn/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = ceru-music-appimage
 	provides = ceru-music
 	conflicts = ceru-music
 	options = !strip
-	source_x86_64 = ceru-music-1.9.2-linux-x86_64.AppImage::https://github.com/timeshiftsauce/CeruMusic/releases/download/v1.9.2/ceru-music-1.9.2-linux-x86_64.AppImage
-	sha256sums_x86_64 = 2e8ffa5b27a599934e2623c1108c23f5722efd271adbcaaaaf774f8636e491a1
+	source_x86_64 = ceru-music-1.9.6-linux-x86_64.AppImage::https://github.com/timeshiftsauce/CeruMusic/releases/download/v1.9.6/ceru-music-1.9.6-linux-x86_64.AppImage
+	sha256sums_x86_64 = 7fca86c35cd23b6731f57e0fc29208a7464d75b3603552e994a3ee49777c4a20
 
 pkgname = ceru-music-appimage
