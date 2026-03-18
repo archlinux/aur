@@ -1,0 +1,33 @@
+pkgbase = vmpc2000xl-standalone-bin
+	pkgdesc = MPC2000XL sampler emulator (standalone)
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://www.izmar.nl/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = libx11
+	depends = jack
+	depends = alsa-lib>=1.0.16
+	depends = glibc>=2.35
+	depends = libgcc>=3.4
+	depends = glib2>=2.30.0
+	depends = libstdc++>=12
+	depends = udisks2>=2.0.0
+	depends = libxcb
+	depends = zlib
+	depends = util-linux-libs
+	depends = libffi
+	depends = pcre2
+	depends = libpipewire
+	depends = libxau
+	depends = libxdmcp
+	source = https://github.com/izzyreal/vmpc-juce/releases/download/v0.9.3/VMPC2000XL-Ubuntu20-x86_64-Standalone.zip
+	source = https://github.com/izzyreal/vmpc-juce/raw/refs/tags/v0.9.3/README.md
+	source = https://github.com/izzyreal/vmpc-juce/raw/refs/tags/v0.9.3/LICENSE.txt
+	source = https://vmpcdocs.izmar.nl/_static/vmpc-logo.png
+	sha256sums = 9a4184361ed679dd89f9b35ba015fbd9fca127d4f9766eeaf27356740a747857
+	sha256sums = 8195bf5f0fa05983867b74afa8e0585fc6cff16f1ea0c840d42e700eef5e057a
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = 28bf1de1984104bcc08ad34a52b27bde4e5989c17cf5d6b67d67160b838e5173
+
+pkgname = vmpc2000xl-standalone-bin
