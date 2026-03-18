@@ -3,7 +3,7 @@
 pkgname=steel-bin
 _pkgname=steel
 pkgver=0.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An embedded scheme interpreter in Rust'
 arch=('x86_64')
 url='https://github.com/mattwparas/steel'
@@ -11,8 +11,8 @@ license=('Apache-2.0 OR MIT')
 depends=('glibc')
 optdepends=()
 makedepends=('setconf')
-provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+provides=("${_pkgname}=${pkgver}")
 _source="https://github.com/mattwparas/${_pkgname}"
 _download="${_source}/releases/download"
 source=("${_download}/v${pkgver}/steel-interpreter-x86_64-unknown-linux-gnu.tar.xz"
