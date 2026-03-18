@@ -1,0 +1,3 @@
+[perl-io-async-ssl]
+source = "cpan"
+cpan = "IO-Async-SSL"
