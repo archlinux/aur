@@ -1,0 +1,15 @@
+pkgbase = ccd-nav
+	pkgdesc = Recursive cd - find and jump into nested directories instantly
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/doodek/ccd
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	provides = ccd
+	conflicts = ccd
+	source = ccd-0.1.0.tar.gz::https://github.com/doodek/ccd/archive/v0.1.0.tar.gz
+	sha256sums = 54ac4932ebb7c549fef340f0410dbd813acac83a4da4dc15f4dc9fdd6b6d88a0
+
+pkgname = ccd-nav
