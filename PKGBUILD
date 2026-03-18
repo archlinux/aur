@@ -10,7 +10,7 @@ depends=('gtk4' 'libadwaita' 'openxr' 'monado')
 makedepends=('cargo' 'git')
 optdepends=('libcanberra: audio feedback during calibration')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2d72cac56e61e5dbff592a092578fb30273dbc634a8cd77a5396c9b58ef4bd22')
+sha256sums=('ac5a7be7501eb1f4e9566bb5b257a17e28c16d83ca644af4b6e654a4d85c9d5d')
 
 prepare() {
   cd "$pkgname-$pkgver"
