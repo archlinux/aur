@@ -2,7 +2,7 @@
 # Maintainer: Dmytro Shteflyuk <kpumuk@kpumuk.info>
 
 pkgname='lazykiq-bin'
-pkgver=0.0.13
+pkgver=0.0.14
 pkgrel=1
 pkgdesc='A rich terminal UI for Sidekiq.'
 url='https://github.com/kpumuk/lazykiq'
@@ -12,10 +12,10 @@ provides=('lazykiq')
 conflicts=('lazykiq')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/kpumuk/lazykiq/releases/download/v${pkgver}/lazykiq-${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('d6a803de1253bb57f0250e0e5e421fc3333e793600d974213a69dda37db4cc22')
+sha256sums_aarch64=('9b0c0ad5cba7d3c95636256f6d40fb7926d748fab4807d8f5a7c6e26ad2d2d55')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/kpumuk/lazykiq/releases/download/v${pkgver}/lazykiq-${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('05f8c4dcd72e6c6cc00643c2a3b3d6eb8e3d00e5df86f24ffb4148b097cc3837')
+sha256sums_x86_64=('61cd3fe1c66432b586e67f16e94739e1fb1293b4d01c4e60123d96afa6a0e763')
 
 package() {
   install -Dm755 "./lazykiq" "${pkgdir}/usr/bin/lazykiq"
