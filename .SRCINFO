@@ -8,9 +8,9 @@ pkgbase = gpm-bin
 	provides = gpm
 	arch = aarch64
 	source_aarch64 = https://github.com/ks1686/gpm/releases/download/v0.1.0/gpm_0.1.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = b4ae95e71c724be46eba4215f660b3da58af4a394393e09de9fa9d647b592d11
+	sha256sums_aarch64 = 4f022e01eac7a5797b9003c574fc9212b78b11f62b22e586984c09a70049708a
 	arch = x86_64
 	source_x86_64 = https://github.com/ks1686/gpm/releases/download/v0.1.0/gpm_0.1.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 64cdd2cd52ac6d5ec4efc015697f537581e7b49cbbb92993614dd6e4c41581e8
+	sha256sums_x86_64 = 309ef3174563d13613c7fe79f121b2dc029b471490650c092571402d11dddac9
 	
 pkgname = gpm-bin

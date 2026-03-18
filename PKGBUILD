@@ -12,10 +12,10 @@ provides=('gpm')
 conflicts=('gpm')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ks1686/gpm/releases/download/v${pkgver}/gpm_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('b4ae95e71c724be46eba4215f660b3da58af4a394393e09de9fa9d647b592d11')
+sha256sums_aarch64=('4f022e01eac7a5797b9003c574fc9212b78b11f62b22e586984c09a70049708a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ks1686/gpm/releases/download/v${pkgver}/gpm_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('64cdd2cd52ac6d5ec4efc015697f537581e7b49cbbb92993614dd6e4c41581e8')
+sha256sums_x86_64=('309ef3174563d13613c7fe79f121b2dc029b471490650c092571402d11dddac9')
 
 package() {
   install -Dm755 "./gpm" "${pkgdir}/usr/bin/gpm"
