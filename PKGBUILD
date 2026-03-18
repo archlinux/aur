@@ -1,6 +1,6 @@
 # Maintainer: kaizen403 <kaizen403@proton.me>
 pkgname=openlinear-bin
-pkgver=0.1.48
+pkgver=0.1.49
 pkgrel=1
 pkgdesc="AI-powered project management that actually writes the code — desktop app"
 arch=('x86_64')
