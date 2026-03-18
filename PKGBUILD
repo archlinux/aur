@@ -4,11 +4,11 @@ pkgver=1.1
 pkgrel=1
 pkgdesc="Terminal-based Morse code typing tool with real-time cheatsheet"
 arch=('x86_64' 'i686')
-url="https://github.com/HexaProgrammer/HexaMorse"
+url="https://github.com/Hexa-Programmer/HexaMorse"
 license=('MIT')
 depends=('python')
 makedepends=('git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/HexaProgrammer/HexaMorse/archive/refs/tags/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Hexa-Programmer/HexaMorse/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP') # replace with actual sha256sum after release
 
 package() {
