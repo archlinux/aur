@@ -1,0 +1,24 @@
+pkgbase = perl-protocol-socks
+	pkgdesc = abstract SOCKS protocol support
+	pkgver = 0.003
+	pkgrel = 1
+	url = https://metacpan.org/release/TEAM/Protocol-SOCKS-0.003
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-io
+	checkdepends = perl-pathtools
+	checkdepends = perl-test-checkdeps>=0.010
+	checkdepends = perl-test-fatal>=0.010
+	checkdepends = perl-test-refcount>=0.07
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-makemaker>=6.48
+	makedepends = perl>=5.10.1
+	depends = perl
+	depends = perl-future>=0.29
+	depends = perl-parent
+	depends = perl-socket>=2.000
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/T/TE/TEAM/Protocol-SOCKS-0.003.tar.gz
+	sha256sums = f1a9e2e3807884db2c6bcfaa24b140d5ef45c4075f039abb915a471918fe3718
+
+pkgname = perl-protocol-socks
