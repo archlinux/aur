@@ -1,0 +1,13 @@
+pkgbase = fcitx5-theme-pt-cute-light
+	pkgdesc = Cute light themes for fcitx5 (Kagami, Konata, Minami, Misao) - horizontal candidate mode
+	pkgver = r4.7cd3c7f
+	pkgrel = 1
+	url = https://github.com/Passthem-desu/fcitx5-theme-pt-cute-light
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = fcitx5
+	source = fcitx5-theme-pt-cute-light::git+https://github.com/Passthem-desu/fcitx5-theme-pt-cute-light.git
+	sha256sums = SKIP
+
+pkgname = fcitx5-theme-pt-cute-light
