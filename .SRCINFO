@@ -6,6 +6,9 @@ pkgbase = gnome-shell-extension-all-in-one-clipboard-bin
 	arch = any
 	license = GPL-3.0-or-later
 	depends = gnome-shell
+	provides = gnome-shell-extension-all-in-one-clipboard
+	conflicts = gnome-shell-extension-all-in-one-clipboard
+	noextract = gnome-shell-extension-all-in-one-clipboard-bin-20.zip
 	source = gnome-shell-extension-all-in-one-clipboard-bin-20.zip::https://github.com/NiffirgkcaJ/all-in-one-clipboard/releases/download/v20/all-in-one-clipboard@NiffirgkcaJ.github.com.zip
 	sha256sums = be7ca15ca8cb42e5a85820c60ff5b2ed26747513409860d5315c859e2b85699c
 
