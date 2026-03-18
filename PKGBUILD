@@ -4,7 +4,7 @@ _author=PEVANS
 _dist=Net-Async-HTTP
 pkgname=perl-${_dist@L}
 pkgver=0.50
-pkgrel=1
+pkgrel=2
 pkgdesc='use HTTP with IO::Async'
 arch=('any')
 url=https://metacpan.org/release/$_author/$_dist-$pkgver
@@ -28,7 +28,11 @@ checkdepends=(
     'perl-test-metrics-any'
     'perl-test-simple'
 )
-optdepends=('perl-compress-raw-zlib')
+optdepends=(
+    'perl-compress-raw-zlib'
+    'perl-io-async-ssl: HTTPS support'
+    'perl-net-async-socks: SOCKS5 support'
+)
 options=('!emptydirs')
 source=("https://cpan.metacpan.org/authors/id/${_author::1}/${_author::2}/$_author/$_dist-$pkgver.tar.gz")
 sha256sums=('92845b8ffdd2dc81decbe8a7b99203e4e34971de6624acb5c10aa9ff07885b87')

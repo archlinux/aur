@@ -1,7 +1,7 @@
 pkgbase = perl-net-async-http
 	pkgdesc = use HTTP with IO::Async
 	pkgver = 0.50
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/PEVANS/Net-Async-HTTP-0.50
 	arch = any
 	license = Artistic-1.0-Perl OR GPL-1.0-or-later
@@ -21,6 +21,8 @@ pkgbase = perl-net-async-http
 	depends = perl-uri
 	depends = perl>=5.14.0
 	optdepends = perl-compress-raw-zlib
+	optdepends = perl-io-async-ssl: HTTPS support
+	optdepends = perl-net-async-socks: SOCKS5 support
 	options = !emptydirs
 	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Net-Async-HTTP-0.50.tar.gz
 	sha256sums = 92845b8ffdd2dc81decbe8a7b99203e4e34971de6624acb5c10aa9ff07885b87
