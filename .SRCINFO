@@ -1,8 +1,8 @@
 pkgbase = millennium-git
 	pkgdesc = Millennium is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead.
-	pkgver = v3.0.0
+	pkgver = v2.35.0.r26.ge4229483
 	pkgrel = 1
-	url = https://github.com/SteamClientHomebrew/Millennium
+	url = https://steambrew.app
 	install = millennium.install
 	arch = x86_64
 	license = MIT
@@ -17,7 +17,7 @@ pkgbase = millennium-git
 	makedepends = pnpm
 	depends = git
 	depends = steam
-	provides = millennium=v3.0.0
+	provides = millennium=v2.35.0.r26.ge4229483
 	conflicts = millennium
 	options = !debug
 	source = git+https://github.com/SteamClientHomebrew/Millennium.git#branch=main

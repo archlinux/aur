@@ -8,7 +8,7 @@ pkgver=v2.35.0.r26.ge4229483
 pkgrel=1
 pkgdesc="${_Pkgname} is an open-source low-code modding framework to create, manage and use themes/plugins for the desktop Steam Client without any low-level internal interaction or overhead."
 arch=('x86_64')
-url="https://github.com/SteamClientHomebrew/${_Pkgname}"
+url="https://steambrew.app"
 license=('MIT')
 depends=('git' 'steam')
 makedepends=('npm' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja' 'lib32-gcc-libs' 'pnpm')
@@ -18,7 +18,7 @@ conflicts=(
     "${_pkgname}"
 )
 source=(
-    "git+${url}.git#branch=main"
+    "git+https://github.com/SteamClientHomebrew/${_Pkgname}.git#branch=main"
 )
 sha256sums=('SKIP')
 options=(!debug)
