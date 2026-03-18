@@ -1,0 +1,20 @@
+pkgbase = purple
+	pkgdesc = Simple CLI tool to convert the images to ASCII art
+	pkgver = 2.3.0
+	pkgrel = 1
+	url = https://github.com/erickochen/purple
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	depends = openssh
+	provides = purple
+	conflicts = purple-git
+	conflicts = purple-bin
+	options = !lto
+	source = purple-2.3.0.tar.gz::https://github.com/erickochen/purple/archive/refs/tags/v2.3.0.tar.gz
+	sha256sums = b29f5562828a8123191f08800158e564c4705aad1358c08b453042382575131e
+
+pkgname = purple
