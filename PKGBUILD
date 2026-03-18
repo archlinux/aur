@@ -5,7 +5,7 @@ _pkgname=stax
 _cratename=${_pkgname}
 _appname=stax
 pkgname=${_cratename}
-pkgdesc="The fastest stacked-branch workflow for Git. Interactive TUI, smart PRs, safe undo"
+pkgdesc="The fastest stacked-branch workflow for Git"
 
 pkgver=0.32.0
 pkgrel=1
