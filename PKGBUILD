@@ -1,7 +1,7 @@
 # Maintainer: Peter Jackson <pete@peteonrails.com>
 pkgname=voxtype
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)"
 arch=('x86_64' 'aarch64')
 url="https://voxtype.io"
@@ -16,6 +16,7 @@ makedepends=(
     'cargo'
     'clang'
     'cmake'
+    'git'
     'pkgconf'
     'shaderc'
     'vulkan-headers'
@@ -88,6 +89,17 @@ build() {
     unset CFLAGS
     unset CXXFLAGS
     unset LDFLAGS
+
+    # Remap build paths so binaries don't contain $srcdir references
+    local _src="$srcdir/$pkgname-$pkgver"
+    export RUSTFLAGS="--remap-path-prefix=$_src/= --remap-path-prefix=${CARGO_HOME}/registry/src/=cargo/"
+    export CFLAGS="-ffile-prefix-map=$_src/="
+    export CXXFLAGS="-ffile-prefix-map=$_src/="
+
+    # Use clang for C/C++ - avoids whisper.cpp build failures with newer gcc
+    # (e.g. when [testing] repo is enabled)
+    export CC=clang
+    export CXX=clang++
 
     # Limit parallelism to prevent cmake deadlocks during whisper-rs build
     export CMAKE_BUILD_PARALLEL_LEVEL=4

@@ -1,7 +1,7 @@
 pkgbase = voxtype
 	pkgdesc = Push-to-talk voice-to-text for Linux (optimized for Wayland, works on X11)
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://voxtype.io
 	install = voxtype.install
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = voxtype
 	makedepends = cargo
 	makedepends = clang
 	makedepends = cmake
+	makedepends = git
 	makedepends = pkgconf
 	makedepends = shaderc
 	makedepends = vulkan-headers
