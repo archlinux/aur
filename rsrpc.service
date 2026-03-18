@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/rsrpc -d /opt/rsrpc/detectable.json
+ExecStart=/usr/bin/rsrpc-cli -d /opt/rsrpc/detectable.json
 Restart=on-failure
 
 [Install]
