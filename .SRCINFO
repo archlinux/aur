@@ -1,6 +1,6 @@
 pkgbase = tsenta-desktop-bin
 	pkgdesc = Tsenta - Automated job application assistant
-	pkgver = 3.4.0
+	pkgver = 3.5.33
 	pkgrel = 1
 	url = https://github.com/tsenta/tsenta-desktop-linux
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = tsenta-desktop-bin
 	provides = tsenta-desktop
 	conflicts = tsenta-desktop
 	options = !strip
-	source = https://github.com/tsenta/tsenta-desktop-linux/releases/download/v3.4.0/tsenta-desktop_3.4.0_amd64.deb
-	sha256sums = 91ffa41ebcf0a8f383247a321cdc58b8d77fce3f037b023381b3c364ff8cf951
+	source = https://github.com/tsenta/tsenta-desktop-linux/releases/download/v3.5.33/tsenta-desktop_3.5.33_amd64.deb
+	sha256sums = 899b455ac7495e8a69b8c1783eb4720b7c3aa18d945facfdd388cfbfc3e0d039
 
 pkgname = tsenta-desktop-bin
