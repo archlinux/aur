@@ -1,6 +1,6 @@
 pkgbase = sx-search-bin
 	pkgdesc = Multi-engine web search from the command line
-	pkgver = 2.1.0
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/byteowlz/sx
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = sx-search-bin
 	provides = sx
 	conflicts = sx
 	conflicts = sx-search
-	source = sx-2.1.0.tar.gz::https://github.com/byteowlz/sx/releases/download/v2.1.0/sx_Linux_x86_64.tar.gz
-	sha256sums = fbb749fb253a5919c30f986840b4a1e0ff5734d0c398270d4a51dcbc2f3924d4
+	source = sx-2.3.0.tar.gz::https://github.com/byteowlz/sx/releases/download/v2.3.0/sx_Linux_x86_64.tar.gz
+	sha256sums = e2438b0edb27e8de5a30c7b7b608ddbf3e5da57a5efa61f13288c83fdfc2b2cc
 
 pkgname = sx-search-bin
