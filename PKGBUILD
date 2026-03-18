@@ -6,7 +6,7 @@ pkgname=perl-${_dist@L}
 pkgver=0.71
 pkgrel=1
 pkgdesc='deferred subroutine syntax for futures'
-arch=('x86_64')  # XS modules might depend on external libs; manual inspection is advised.
+arch=('x86_64')
 url=https://metacpan.org/release/$_author/$_dist-$pkgver
 license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=(
@@ -14,7 +14,7 @@ depends=(
     'perl-future>=0.50'
     'perl-xs-parse-keyword>=0.13'
     'perl-xs-parse-sublike>=0.31'
-    'perl>=5.16.0'                 # Package is flagged out-of-date on 2026-03-09.
+    'perl>=5.16.0'
 )
 makedepends=(
     'perl-extutils-cbuilder'
