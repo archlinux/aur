@@ -37,7 +37,8 @@ build() {
     echo "@import \"../palettes/${palette}\";" > src/sass/_palette.scss
 
     sassc -M -t expanded src/main/gtk-3.0/gtk.scss        "gtk-3.0-${palette}.css"
-    sassc -M -t expanded src/main/libadwaita/libadwaita.scss "gtk-4.0-${palette}.css"
+    sassc -M -t expanded src/main/gtk-4.0/gtk.scss           "gtk-4.0-${palette}.css"
+    sassc -M -t expanded src/main/libadwaita/libadwaita.scss   "libadwaita-${palette}.css"
     sassc -M -t expanded src/main/gnome-shell/gnome-shell.scss "gnome-shell-${palette}.css"
 
     sed "s/^Name=.*/Name=Abyssal-${palette}/" index.theme > "index-${palette}.theme"
@@ -58,6 +59,7 @@ package() {
     install -m644 "gtk-3.0-${palette}.css"    "${theme_dir}/gtk-3.0/gtk.css"
     install -m644 "gtk-4.0-${palette}.css"    "${theme_dir}/gtk-4.0/gtk.css"
     install -m644 "gnome-shell-${palette}.css" "${theme_dir}/gnome-shell/gnome-shell.css"
+    install -m644 "libadwaita-${palette}.css" "${theme_dir}/gtk-4.0/libadwaita.css"
 
     # Assets (shared, not palette-specific)
     if [[ -d src/assets/gtk/assets ]]; then

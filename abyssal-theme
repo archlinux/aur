@@ -24,7 +24,7 @@ $valid || { echo "Unknown palette: ${palette}"; echo ""; usage; }
 
 gtk4_dir="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-4.0"
 mkdir -p "${gtk4_dir}"
-ln -sf "/usr/share/themes/Abyssal-${palette}/gtk-4.0/gtk.css" "${gtk4_dir}/gtk.css"
+ln -sf "/usr/share/themes/Abyssal-${palette}/gtk-4.0/libadwaita.css" "${gtk4_dir}/gtk.css"
 
 echo "Libadwaita theme set to Abyssal-${palette}"
 echo "Restart your apps for the change to take effect."

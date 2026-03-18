@@ -6,7 +6,7 @@ _setup_libadwaita() {
   local gtk4_dir="${home}/.config/gtk-4.0"
 
   mkdir -p "${gtk4_dir}"
-  ln -sf "/usr/share/themes/Abyssal-${palette}/gtk-4.0/gtk.css" "${gtk4_dir}/gtk.css"
+  ln -sf "/usr/share/themes/Abyssal-${palette}/gtk-4.0/libadwaita.css" "${gtk4_dir}/gtk.css"
   chown "${target_user}:" "${gtk4_dir}/gtk.css"
 }
 
