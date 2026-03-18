@@ -13,8 +13,8 @@ conflicts=('rustnet' 'rustnet-git')
 install=rustnet-bin.install
 source_x86_64=("rustnet-${pkgver}-x86_64.tar.gz::https://github.com/domcyrus/rustnet/releases/download/v${pkgver}/rustnet-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("rustnet-${pkgver}-aarch64.tar.gz::https://github.com/domcyrus/rustnet/releases/download/v${pkgver}/rustnet-v${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('fad2cfc5dcda48604a21a374a9dcf059d0342f966cfb01f28324e2a13d407660')
-sha256sums_aarch64=('3966fb9646626a5de998833c219da8ca6ec955319ff64d2f273033891308983f')
+sha256sums_x86_64=('3a6c1f1c12a1a08a90dd7e07d068d27a5b15455422f46c5306ad7d8140a5e874')
+sha256sums_aarch64=('3050173af4307f6a5255fe6e041f6cc5d20d6666a0b8ffe7633cdb8ab84a465d')
 
 package() {
     # Extract the archive
