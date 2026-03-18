@@ -1,6 +1,6 @@
 # Maintainer: Louis Cornell <lpcornel@gmail.com>
 pkgname=musiclib
-pkgver=1.4
+pkgver=1.50
 pkgrel=1
 pkgdesc="KDE-based music library management. Integration with Audacious player, Kid3 Tagger, K3b CD Ripper, kdeconnect and RSGain."
 arch=('x86_64')
@@ -46,7 +46,7 @@ provides=('musiclib-cli')
 conflicts=('musiclib-cli')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Harpo3/musiclib/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9b5ae907a50be4c53d7c8bcfa5f0c1801629b8d2c5fd1fab9db7ee909e97537d')
+sha256sums=('48eb0ea52bd8340d2c9f510f22376a8351b282b41aff7dd887762a8e423fc9ff')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
