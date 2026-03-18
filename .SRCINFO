@@ -1,6 +1,6 @@
 pkgbase = lrz-syncshare
 	pkgdesc = Sync client for the LRZ Sync+Share service
-	pkgver = 26.0.100
+	pkgver = 26.1.100
 	pkgrel = 1
 	url = https://syncandshare.lrz.de/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = lrz-syncshare
 	depends = java-runtime>=15
 	depends = xdg-utils
 	depends = archlinux-java-run
-	source = LRZ_Sync_Share_v26.0.100_Linux.tar.gz::https://tgz.sasrepo.nas.lrz.de/stable/LRZ_Sync_Share_v26.0.100_Linux.tar.gz
-	sha256sums = b60ac2f6f94aac184de402b488774affa719ad169a2f97d03d508343738ddac2
+	source = LRZ_Sync_Share_v26.1.100_Linux.tar.gz::https://tgz.sasrepo.nas.lrz.de/stable/LRZ_Sync_Share_v26.1.100_Linux.tar.gz
+	sha256sums = 02c39784f9f812cfbcf20cfb0e0de5c45b5c48a12e47b67d00ca0d7b31319b21
 
 pkgname = lrz-syncshare
