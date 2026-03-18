@@ -18,10 +18,6 @@ source=(
 )
 b2sums=('f351279e6ef3d834c703bca2b017f81a1b8905b91589056cc0ee5dea6d5b5437992fda8a5e3c236dd6eb6ff9f0fe38b68fbfe89b752e6edf40b438878967e19b')
 
-prepare() {
-  cd "${srcdir}/${_pkgsrc}"
-}
-
 check() {
   cd "${srcdir}/${_pkgsrc}"
   make test
