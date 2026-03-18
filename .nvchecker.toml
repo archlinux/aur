@@ -1,0 +1,3 @@
+[perl-protocol-socks]
+source = "cpan"
+cpan = "Protocol-SOCKS"
