@@ -2,16 +2,16 @@
 
 _name=testcontainers
 pkgname=python-${_name}
-pkgver=4.14.1
+pkgver=4.14.2
 pkgrel=1
 pkgdesc='Python library for throwaway instances of anything that can run in a Docker container.'
 arch=('any')
 url='https://github.com/testcontainers/testcontainers-python'
 license=('Apache-2.0')
 source=("${url}/archive/refs/tags/${_name//-/_}-v${pkgver}.tar.gz")
-sha256sums=('84c6f9ea892e32b696f248a45411882f0b746cf5f3eb4ddd3ad97ecee523971b')
+sha256sums=('cfbe6729edc7ddd2fd72d8cd82758035e1c4b4847c595609a5bc63fc2fd82658')
 depends=('python>=3.9' 'python-docker' 'python-urllib3' 'python-wrapt' 'python-typing_extensions' 'python-dotenv')
-makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('python-poetry-core' 'python-build' 'python-installer' 'python-wheel' 'python-hatchling')
 checkdepends=('python-pytest' 'python-pytest-cov' 'python-anyio' 'python-psycopg2' 'python-pg8000' 'python-sqlalchemy' 'python-psycopg' 'python-cassandra-driver' 'python-pytest-asyncio' 'python-kafka-ng' 'python-hvac' 'python-pymilvus' 'python-httpx' 'python-paho-mqtt' 'python-sqlalchemy-cockroachdb' 'python-paramiko' 'python-types-paramiko' 'python-pytest-mock' )
 optdepends=('python-arango: arangodb'
             'python-botto3: aws - localstack'
