@@ -1,6 +1,6 @@
 pkgbase = python-ngs
 	pkgdesc = python module for NCBI NGS Language Bindings
-	pkgver = 3.3.0
+	pkgver = 3.4.0
 	pkgrel = 1
 	url = https://github.com/ncbi/sra-tools
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-ngs
 	makedepends = python-installer
 	depends = python
 	options = !strip
-	source = sra-tools-3.3.0.tar.gz::https://github.com/ncbi/sra-tools/archive/refs/tags/3.3.0.tar.gz
-	sha256sums = 3bfa26c5499a94d3b2a98eb65113bbb902f51dadef767c7c7247fc0175885a9a
+	source = sra-tools-3.4.0.tar.gz::https://github.com/ncbi/sra-tools/archive/refs/tags/3.4.0.tar.gz
+	sha256sums = 6f60984a212d35b239244c23b9686e2a1131c76b92f0c41e8b56d3f5b6fff2d0
 
 pkgname = python-ngs
