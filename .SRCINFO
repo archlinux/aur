@@ -1,6 +1,6 @@
 pkgbase = ledger-live-git
 	pkgdesc = Maintain your Ledger devices (git-main)
-	pkgver = 2.137.0.r0.g647c11d
+	pkgver = 2.145.0.r0.g8db1653
 	pkgrel = 1
 	url = https://github.com/LedgerHQ/ledger-live
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ledger-live-git
 	makedepends = nvm
 	makedepends = desktop-file-utils
 	depends = ledger-udev
-	depends = electron39
+	depends = electron40
 	provides = ledger-live
 	conflicts = ledger-live
 	source = ledger-live-git::git+https://github.com/LedgerHQ/ledger-live#branch=main
