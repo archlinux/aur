@@ -1,6 +1,6 @@
 pkgbase = pyprland
 	pkgdesc = Enhance your Desktop with menus, easy monitor layout and other extensions (powerful hyprland scratchpads)
-	pkgver = 3.2.0
+	pkgver = 3.2.1
 	pkgrel = 0
 	url = https://github.com/hyprland-community/pyprland
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = pyprland
 	optdepends = python-questionary: for pypr-quickstart to work
 	provides = pyprland
 	conflicts = pyprland
-	source = pyprland-3.2.0.tar.gz::https://github.com/hyprland-community/pyprland/archive/refs/tags/3.2.0.tar.gz
-	sha256sums = 17d5282a62729e81d29eefb9eef34741bdf5494f990c00bbbe2f063459328abf
+	source = pyprland-3.2.1.tar.gz::https://github.com/hyprland-community/pyprland/archive/refs/tags/3.2.1.tar.gz
+	sha256sums = 5482a9174d49d5f301fb483f938331df2bb60e2ceb22e52be8c178001fc341f9
 
 pkgname = pyprland
