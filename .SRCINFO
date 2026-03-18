@@ -1,6 +1,6 @@
 pkgbase = codex-monitor-autoup-git
 	pkgdesc = Tauri desktop app for orchestrating Codex agents across local workspaces
-	pkgver = 0.7.62.r9.g898bc1f
+	pkgver = 0.7.63.r0.g6f69375
 	pkgrel = 1
 	url = https://github.com/Dimillian/CodexMonitor
 	arch = x86_64
