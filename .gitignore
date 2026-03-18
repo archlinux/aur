@@ -2,3 +2,5 @@ pkg/
 src/
 *.pkg.tar.*
 *.tar.gz
+LICENSE-MIT
+LICENSE-APACHE
