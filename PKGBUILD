@@ -1,15 +1,10 @@
-pkgname=gitcomet-bin
+pkgname=gitcomet
 pkgver=0.1.3
 pkgrel=1
 pkgdesc="Fast, resource-efficient Git GUI written in Rust"
 arch=('x86_64')
 url="https://gitcomet.dev/"
 license=('AGPL-3.0-only')
-provides=("${pkgname%-bin}")
-conflicts=(
-  "${pkgname%-bin}"
-  'gitcomet-git'
-)
 depends=(
   'fontconfig'
   'freetype2'
