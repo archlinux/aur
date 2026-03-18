@@ -1,0 +1,15 @@
+pkgbase = perl-test-hexstring
+	pkgdesc = test binary strings with hex dump diagnostics
+	pkgver = 0.03
+	pkgrel = 1
+	url = https://metacpan.org/release/PEVANS/Test-HexString-0.03
+	arch = any
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	makedepends = perl-extutils-makemaker
+	depends = perl
+	depends = perl-test-simple
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Test-HexString-0.03.tar.gz
+	sha256sums = 7d4c4cdc192f2594dc78ff75eb2cf4d0561f794b36ee0eacee8c4a1aa8a03f40
+
+pkgname = perl-test-hexstring
