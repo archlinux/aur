@@ -1,13 +1,13 @@
 pkgbase = cutieascii
 	pkgdesc = Display random cute ASCII art emojis
 	pkgver = 0.1.0
-	pkgrel = 5
+	pkgrel = 4
 	url = https://github.com/Josehpequeno/cutieascii
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
 	source = cutieascii-0.1.0.tar.gz::https://github.com/Josehpequeno/cutieascii/archive/v0.1.0.tar.gz
-	sha256sums = e4e5c63703770d02395a3b728b3930300f155cd56292cafb39c2fb46fa04d185
+	sha256sums = 1341c481ece702fc7197bb1324bd8d94a1fc069864bc0ccdd90cfad13b213353
 
 pkgname = cutieascii
