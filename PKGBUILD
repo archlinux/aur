@@ -11,7 +11,7 @@ _fragment="${FRAGMENT:-#branch=master}"
 pkgname=gimp-develop-git
 _pkgname=${pkgname%-develop-git}
 epoch=1
-pkgver=3.2.0.RC1.r120.ff8f06c17d
+pkgver=3.3.0.r44.fdda75deb8
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program (non-conflicting git version)"
 arch=('i686' 'x86_64')
@@ -88,6 +88,7 @@ prepare() {
   git -C "$srcdir/gimp" -c protocol.file.allow=always submodule update --init
   sed -E 's/^(api_version_minor =) 0$/\1 1/' -i "${srcdir}"/${_pkgname}/meson.build
   sed -E "s/(require_version\('Gimp(Ui)?',) '3.0'\)/\1 '3.1'\)/g" -i $(grep -Rl "require_version('Gimp', '3.0')" "${srcdir}"/${_pkgname})
+  sed -z "s/\(project('gimp',\n  'c', 'cpp',\n  version: \)'[0-9.]*'/\1'3.3.0'/g" -i "${srcdir}"/${_pkgname}/meson.build
 }
 
 build() {
