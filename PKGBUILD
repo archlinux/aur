@@ -10,7 +10,7 @@ depends=('wireguard-tools' 'systemd-resolvconf')
 makedepends=('go')
 install=omarchy-vpn.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/limehawk/omarchy-vpn/archive/v$pkgver.tar.gz")
-sha256sums=('848d74ba522ec1fd54ca2b2d181903de444c4521271466993d8921b46b7c47fd')
+sha256sums=('50345a32a48bdc1d2a76d185290af193e9e4f8ffe009baf3d7a3e6e702163d4b')
 
 build() {
     cd "$pkgname-$pkgver"
