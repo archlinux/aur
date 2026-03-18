@@ -1,29 +1,48 @@
 pkgname=bebz-essentials
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Packages de base pour la Bebzerie sur Arch"
+pkgdesc="La Bebzerie : Setup complet Gaming & Système (Nvidia, Steam, Lutris, Wine)"
 arch=('any')
-url="https://aur.archlinux.org"
+url="https://github.com/FlyXOwl/aur-bebz-essentials"
 license=('MIT')
 
-# Dépendances (jdois en ajouter d'autre, j'ai pensé qu'a celles la pour l'instant)
+# Dépendances
 depends=(
     'nvidia-dkms'
     'nvidia-utils'
-    'steam'                 # Ajouter Wine et proton exp (si pas inclus avec steam) plus tard
+    'lib32-nvidia-utils'
+    'steam'
     'discord'
     'networkmanager'
-    'nm-connection-editor'  # Interface config réseau
-    'bluez'                 # package bluetooth
+    'nm-connection-editor'
+    'bluez'
     'bluez-utils'
     'git'
-    'base-devel'            # outils pour compilation
+    'base-devel'
+    'lutris'
+    'heroic-games-launcher-bin'
+    'wine-staging'
+    'winetricks'
+    'gamemode'
+    'lib32-gamemode'
+    'mangohud'
+    'lib32-mangohud'
+    'giflib' 'lib32-giflib'
+    'libpng' 'lib32-libpng'
+    'libldap' 'lib32-libldap'
+    'vulkan-icd-loader'
+    'lib32-vulkan-icd-loader'
 )
 
+optdepends=(
+    'proton-ge-custom-bin: Version de Proton optimisée par GE'
+    'gamescope: Micro-compositeur pour optimiser le focus des jeux'
+    'goverlay: Interface graphique pour configurer MangoHud'
+)
 
 package() {
+    install -d "$pkgdir/usr/share/licenses/$pkgname"
 
-    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
-    echo "Metapackage personnel" > "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    echo "V0.1.0" >> PKGBUILD
+    echo "Copyright (c) 2026 FlyXOwl - MIT License" > "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    echo "Metapackage personnel pour l'installation automatisée de la Bebzerie." >> "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
