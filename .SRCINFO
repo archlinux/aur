@@ -1,5 +1,5 @@
 pkgbase = shellforge
-	pkgdesc = Terminal tool for generating reverse-shells for CTF challenges and educational purposes. Easy to use, fast, and safe for practice environments.
+	pkgdesc = Terminal tool for generating reverse-shells for CTF challenges and educational purposes.
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/minosariane/Shellforge
@@ -7,7 +7,7 @@ pkgbase = shellforge
 	license = GPL-3.0-only
 	makedepends = rust
 	makedepends = cargo
-	source = shellforge-1.0.0.tar.gz::https://github.com/minosariane/shellforge/archive/refs/tags/v1.0.0.tar.gz
+	source = shellforge-1.0.0.tar.gz::https://github.com/minosariane/Shellforge/archive/refs/tags/v1.0.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = shellforge
