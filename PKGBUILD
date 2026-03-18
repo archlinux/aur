@@ -1,30 +1,43 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="kaskade"
-pkgver=4.0.6
+pkgver=4.0.7
 pkgrel=1
 pkgdesc="A text user interface for Kafka. Interact and consume topics from your terminal in style!"
-arch=('any')
+arch=(
+  'any'
+)
 url="https://github.com/sauljabin/${pkgname}"
-license=('MIT')
+license=(
+  'MIT'
+)
 depends=(
   'python>=3.10'
   'python-click'
-  'python-cloup>=3'
-  'python-confluent-kafka>=2.12'
+  'python-cloup>=3.0'
+  'python-confluent-kafka>=2.13'
   'python-fastavro'
   'python-protobuf'
   'python-rich'
-  'python-textual>=6.5'
+  'python-textual>=8.0'
 )
 makedepends=(
   'python-build'
   'python-installer'
-  'python-poetry-core>=2'
+  'python-poetry-core>=2.0.0'
 )
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c8d11f759fe85c7921def0e6e2680e2f6e8a1f00d08a752dc03f358c392eae2a')
+provides=(
+  "python-${pkgname}=${pkgver}"
+)
+conflicts=(
+  "python-${pkgname}"
+)
+_pkgsrc="${url##*/}-${pkgver}"
+source=(
+  "${url}/releases/download/v${pkgver}/${_pkgsrc}.tar.gz"
+  # "${url}/releases/download/v${pkgver}/${_pkgsrc}.tar.gz.publish.attestation"
+)
+sha256sums=('cd907eb673d733ba27f4f89b649ad6bf19cd829745ae0dd8879989eb5a6bcc36')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
