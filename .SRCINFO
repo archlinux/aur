@@ -1,6 +1,6 @@
 pkgbase = stacer-bin
 	pkgdesc = Linux System Optimizer and Monitoring
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 1
 	url = https://github.com/QuentiumYT/Stacer
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = stacer-bin
 	conflicts = stacer
 	conflicts = stacer-git
 	options = !strip
-	source_x86_64 = https://github.com/QuentiumYT/Stacer/releases/download/v1.6.2/stacer_1.6.2-1_amd64.deb
-	sha512sums_x86_64 = eaa35e2cd9c458be5c2d40c11924dbc2a66f3cf58a762a94dcc83e0d6b42c4b27299dc95f2d969991dba47d89ae3dfaad4bb8b123ecd8d39640a5d24d7842ec8
+	source_x86_64 = https://github.com/QuentiumYT/Stacer/releases/download/v1.6.3/stacer_1.6.3-1_amd64.deb
+	sha512sums_x86_64 = 8651d590dbd5d794a625a6980849806dfdbee22ba05b0ba37eb63faa2ad30200d63db3bd43806fa157a1e4fb358033c577b2bc4ad12f67522c3ecbe78223703d
 
 pkgname = stacer-bin
