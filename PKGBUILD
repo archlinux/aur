@@ -1,4 +1,4 @@
-# Maintainer:  shtrophic <aur at shtrophic dot net>
+# Maintainer:  blacklight <aur@personally.tech>
 # Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 # Contributor: Guoyi Zhang <myname at malacology dot net>
 # Contributor: xerus <27f at pm dot me>
@@ -6,7 +6,7 @@
 # Contributor: Bjoern Franke <bjo+aur@schafweide.org>
 
 pkgname=akkoma
-pkgver=3.16.0
+pkgver=3.18.0
 pkgrel=1
 _erlangver=28.0.1
 _elixirver=1.19.3
