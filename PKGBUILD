@@ -2,7 +2,7 @@
 _appname=blink
 pkgname="${_appname}-player-bin"
 _pkgname=Blink
-pkgver=1.0.0_alpha03
+pkgver=1.0.0_alpha04
 pkgrel=1
 pkgdesc="Modern Desktop Jellyfin Client made with Tauri and React ⚛️.(Prebuilt version)"
 arch=('x86_64')
@@ -15,8 +15,8 @@ depends=(
     'gdk-pixbuf2'
     'webkit2gtk-4.1'
 )
-source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${_pkgname}_1.0.0-alpha.3_amd64.deb")
-sha256sums=('5a94e766a02776c0fd991d9148deb3abc148f3dfeec9aec4bd88265cd6e0581b')
+source=("${pkgname%-bin}-${pkgver}.deb::${url}/releases/download/v${pkgver//_/-}/${_pkgname}_1.0.0-alpha.4_amd64.deb")
+sha256sums=('9280d2b3314ab500102922ec0c2537f3d9ca52b2da4490f628a7a5211a8ff472')
 prepare() {
     bsdtar -xf "${srcdir}/data."*
     sed -e "
