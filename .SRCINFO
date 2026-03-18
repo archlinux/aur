@@ -1,7 +1,7 @@
 pkgbase = futhark-bin
 	pkgdesc = A data-parallel functional programming language.
-	pkgver = 0.25.35
-	pkgrel = 2
+	pkgver = 0.25.36
+	pkgrel = 1
 	url = https://futhark-lang.org/
 	arch = x86_64
 	license = LicenseRef-ISC
@@ -11,9 +11,9 @@ pkgbase = futhark-bin
 	provides = futhark
 	conflicts = futhark
 	options = !debug
-	source = https://github.com/diku-dk/futhark/releases/download/v0.25.35/futhark-0.25.35-linux-x86_64.tar.xz
-	source = LICENSE-futhark-bin-0.25.35::https://raw.githubusercontent.com/diku-dk/futhark/v0.25.35/LICENSE
-	sha256sums = 9ac448218e818c7bd0ee05fccb2bffa51f0c1bfaae9b1096c5449423601d8204
+	source = https://github.com/diku-dk/futhark/releases/download/v0.25.36/futhark-0.25.36-linux-x86_64.tar.xz
+	source = LICENSE-futhark-bin-0.25.36::https://raw.githubusercontent.com/diku-dk/futhark/v0.25.36/LICENSE
+	sha256sums = af1fb39d402ee52c150f3195f6f00c828224cc6cc333696046213a6d2e1a8e90
 	sha256sums = d029ffa271dcee84cc883fb9e83744f703401e2abb097b8ef084fff0674d935b
 
 pkgname = futhark-bin
