@@ -17,9 +17,9 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 
 license=('MIT')
 
-depends=('yt-dlp')
 provides=("${_pkgauthor}")
 conflicts=("${_pkgauthor}")
+depends=('ffmpeg' 'yt-dlp')
 
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")

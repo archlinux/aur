@@ -6,6 +6,7 @@ pkgbase = radii5-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	depends = ffmpeg
 	depends = yt-dlp
 	provides = radii5
 	conflicts = radii5
