@@ -1,5 +1,5 @@
 pkgname=zendrite
-pkgver=2.0.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="An opinionated fork of element-hq/dendrite"
 arch=(x86_64)
@@ -12,7 +12,7 @@ optdepends=("postgresql>=12: Recommended database"
 install="$pkgname.install"
 source=("git+https://codefloe.com/pat-s/zendrite.git#tag=v$pkgver"
         "$pkgname.service")
-sha256sums=('cec0b1829518e83fb13fdc6caa4d13d99a1734e02a2963f625353a719bc002ee'
+sha256sums=('586a9a2b23d8e6dc61d964bac363b7ddd990aca3b7593728c66ff5dcebf0da78'
             '6a0ab9d5818d533d408c0f0c3d9473f6969c9ee61ab5978b0ea6ca7ca03177ad')
 
 prepare() {
@@ -28,7 +28,7 @@ build() {
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -mod=readonly -modcacherw"
     export GOPATH="$srcdir"
-    go build -ldflags "-compressdwarf=false -linkmode external -X codefloe.com/pat-s/zendrite/internal.version=$pkgver" \
+    go build -ldflags "-compressdwarf=false -linkmode external -bindnow -X codefloe.com/pat-s/zendrite/internal.version=$pkgver" \
              -tags goolm -o bin/ ./cmd/...
 }
 package() {
