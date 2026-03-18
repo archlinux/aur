@@ -1,6 +1,6 @@
 # Maintainer: Dani Rodríguez <dani@danirod.es>
 pkgname=gitfourchette
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="The comfortable Git UI for Linux"
 arch=(any)
@@ -25,7 +25,7 @@ checkdepends=(
 	'python-pytest-xdist'
 	'python-ruff'
 )
-_tag=07a57f0df22b9498133ae0e0c5ef41fdea2a2fc0 # git rev-parse "v$pkgver"
+_tag=7293dc4e86cdb9eac690caba28b862210f34f2fb # git rev-parse "v$pkgver"
 source=("git+https://github.com/jorio/gitfourchette#tag=$_tag")
 sha256sums=("SKIP")
 
