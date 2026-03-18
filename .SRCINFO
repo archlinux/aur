@@ -1,0 +1,22 @@
+pkgbase = python-threejs_materials
+	pkgdesc = A db to maintain materialx definitions
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/bernhard-42/threejs-materials
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	makedepends = git
+	makedepends = make
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = materialx
+	depends = python-requests
+	depends = openexr
+	depends = python-pillow
+	depends = usd
+	source = git+https://github.com/bernhard-42/threejs-materials#tag=v0.3.0
+	sha512sums = dc96d416e225960d730be5d6a4c172d3e910a60eeec31005a2d9068b2fa8d2094b0b8bc04309a6da87b068108e2300814ac1ae9580c2865aaefe652ad0fb0f67
+
+pkgname = python-threejs_materials
