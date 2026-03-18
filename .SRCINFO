@@ -1,0 +1,18 @@
+pkgbase = wsconnect
+	pkgdesc = A fast fzf-based selector for Windscribe VPN
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Arnob90/wsconnect
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-typer
+	depends = fzf
+	depends = windscribe-cli-v2-bin
+	source = wsconnect-0.1.0.tar.gz::https://github.com/Arnob90/wsconnect/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ee72bc14c5a0c0eb8f3ef7f9601a10b4c0818ccfa19253dbf1b74e2bbb428acf
+
+pkgname = wsconnect
