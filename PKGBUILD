@@ -1,37 +1,31 @@
-# Maintainer: nukeop <nuclear at gumblert dot tech>
-# Contributor: neurognostic <neurognostic at protonmail dot com>
+# Maintainer: nukeop
 
 pkgname=nuclear-player-bin
-_pkgname=${pkgname%-bin}
-pkgver=0.6.48
+_pkgname=nuclear-player
+pkgver=1.23.3
 pkgrel=1
-pkgdesc='A free, multiplatform music player app that streams from multiple sources.'
+pkgdesc='Nuclear is a free, open-source music player without ads or tracking.'
 arch=(x86_64)
-url='http://nuclear.js.org'
-provides=($_pkgname)
+url='https://nuclearplayer.com'
 license=('AGPL-3.0-only')
-depends=(libnotify libappindicator-gtk3 libxtst nss)
-source=(
-    https://github.com/nukeop/nuclear/releases/download/v$pkgver/nuclear-v$pkgver-amd64.deb
-    https://raw.githubusercontent.com/nukeop/nuclear/v$pkgver/LICENSE
+provides=('nuclear-player')
+conflicts=('nuclear-player' 'nuclear-player-git')
+options=('!strip' '!debug')
+depends=('webkit2gtk-4.1' 'gtk3' 'hicolor-icon-theme' 'gst-plugins-base' 'gst-plugins-good')
+optdepends=(
+    'gst-plugins-bad: Additional media codec support'
+    'gst-plugins-ugly: Patented codec support'
+    'gst-libav: FFmpeg-based codec support'
 )
-sha256sums=(7de01c169e23887bb8d49e1fd96f97bb45dec7c7afe7e5f6d31b36a4a0b7d582
-            SKIP)
+source=(
+    "nuclear-player-1.23.3.deb::https://github.com/nukeop/nuclear/releases/download/player@1.23.3/Nuclear_1.23.3_amd64.deb"
+    "https://raw.githubusercontent.com/nukeop/nuclear/player@1.23.3/LICENSE"
+)
+noextract=("nuclear-player-1.23.3.deb")
+sha256sums=('b57f5262225bada1ce9a94a6575b0e42854dea160a5e10f0185b0f52a10845ce'
+            'SKIP')
 
-prepare() {
-    bsdtar -xJf data.tar.xz
-}
-
-package()   {
-    iconDir=usr/share/icons/hicolor
-    scalableDir="$iconDir/scalable/apps"
-    install -dm0755 "$pkgdir/"{opt,usr}
-    rm -rf "$iconDir"/*
-    mkdir -p "$scalableDir"
-    cp -a opt/nuclear/resources/media/presskit/icons/scalable/nuclear-icon.svg "$scalableDir"/nuclear.svg
-    cp -art "$pkgdir" opt
-    cp -art "$pkgdir" usr
-    install -Dm0644 -t "$pkgdir/usr/share/licenses/$_pkgname" LICENSE
-    mkdir -p "$pkgdir/usr/bin/"
-    ln -sf "/opt/nuclear/nuclear" "$pkgdir/usr/bin/nuclear"
+package() {
+    bsdtar -O -xf "${srcdir}/nuclear-player-${pkgver}.deb" 'data.tar*' | bsdtar -C "${pkgdir}" -xf -
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${_pkgname}" LICENSE
 }
