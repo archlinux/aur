@@ -1,9 +1,9 @@
-# Maintainer: tippfehlr <tippfehlr@tippfehlr.dev>
+# Maintainer: Jonathan Grotelüschen <tippfehlr@archlinux.org>
 
 pkgbase=radicle-bin
 pkgname=(radicle-bin radicle-{cli,node}-bin)
 epoch=1
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="open source, peer-to-peer code collaboration stack built on Git"
 arch=('x86_64' 'aarch64')
@@ -13,12 +13,12 @@ source=(
 	"$pkgbase-$pkgver-LICENSE-MIT::https://seed.radicle.xyz/raw/rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5/081af03362b5bd3d637ee22011a4e5b51a1f1498/LICENSE-MIT"
 	"radicle-node.service"
 )
-source_x86_64=("https://files.radicle.xyz/releases/$pkgver/radicle-$pkgver-x86_64-unknown-linux-musl.tar.xz")
-source_aarch64=("https://files.radicle.xyz/releases/$pkgver/radicle-$pkgver-aarch64-unknown-linux-musl.tar.xz")
+source_x86_64=("https://files.radicle.xyz/releases/$pkgver/radicle-x86_64-unknown-linux-musl.tar.xz")
+source_aarch64=("https://files.radicle.xyz/releases/$pkgver/radicle-aarch64-unknown-linux-musl.tar.xz")
 sha512sums=('76235a3247342b8531cb259a1a51c9789be81e5332f210949063e4444edc2659eebe0afb0c2aae9e9c6989599d29beca0ca57a7839156c92b195bdb54c7ca448'
             '66bd43b60b73fd832a23ad7a280f77d06398c55b4e8572200ad95acc42da84e6a44c7deeb1fec91d11e29678d1abd2f74c45099ae31141ee1b6945568501bceb')
-sha512sums_x86_64=('8c0fab052c0fc95ce8c58395bb589a0a8835185f89bc989a2ebad0ff52cda684fb398bc501aa6f1a75ee690c3312fa31e8b9d0ae093a5da95ec63d357c92bcd9')
-sha512sums_aarch64=('cb3078e04e7b11de7bfcfb0c1cf7874b66af265c207443e75371780ae57b32ad313db872a56295debe6fe786c18d6c9d0628dede96e412ddc386b6ec8d12f633')
+sha512sums_x86_64=('a4fd05ffb961474271fa7631172e81cca642c46ff2bc84bf55ad824b035a238dab77b37631eb343dc1b186aacbc7b343ed9e3ebc52df349e7d0bb3d6cd068735')
+sha512sums_aarch64=('a89ab14c3af07d5d094ea88cdb9ead074a59253e2855b4dd2e734187d2bcd32175b1439541499637c4e1523046c1a61a48ae865a5f66ed656a032dc86fef2c36')
 
 package_radicle-bin() {
 	provides=('radicle')
