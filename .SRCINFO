@@ -12,11 +12,13 @@ pkgbase = sglang
 	makedepends = python-setuptools-scm
 	depends = python>=3.10
 	depends = python-aiohttp
-	depends = python-requests
-	depends = python-tqdm
 	depends = python-numpy
-	depends = ipython
+	depends = python-pybase64
+	depends = python-pydantic
+	depends = python-requests
 	depends = python-setproctitle
+	depends = python-tqdm
+	depends = ipython
 	optdepends = python-pytorch: Model serving runtime
 	optdepends = python-transformers: Model loading and tokenization
 	optdepends = python-fastapi: API server

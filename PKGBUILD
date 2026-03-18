@@ -9,11 +9,13 @@ license=('Apache-2.0')
 depends=(
   'python>=3.10'
   'python-aiohttp'
-  'python-requests'
-  'python-tqdm'
   'python-numpy'
-  'ipython'
+  'python-pybase64'
+  'python-pydantic'
+  'python-requests'
   'python-setproctitle'
+  'python-tqdm'
+  'ipython'
 )
 makedepends=(
   'python-build'
