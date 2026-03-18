@@ -1,6 +1,6 @@
 pkgbase = manx-cli
 	pkgdesc = Blazing-fast CLI tool for developers to find documentation, code snippets, and answers instantly, online or offline with or without LLM and RAG integration
-	pkgver = 0.5.7
+	pkgver = 0.5.9
 	pkgrel = 1
 	url = https://github.com/neur0map/manx-cli
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = manx-cli
 	depends = libstdc++
 	depends = openssl
 	provides = manx
-	source = manx-cli-0.5.7.crate::https://crates.io/api/v1/crates/manx-cli/0.5.7/download
-	sha256sums = 2fe47cb8cdc65ffe6d4034ecb6d3adcc749425a6ab82650bc6efbfe6807357d4
+	source = manx-cli-0.5.9.crate::https://crates.io/api/v1/crates/manx-cli/0.5.9/download
+	sha256sums = c85073ffad9e0053741f5dc463c8d8f43c1b81a5be6e60346adb2f2761a51d3e
 
 pkgname = manx-cli

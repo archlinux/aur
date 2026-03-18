@@ -7,7 +7,7 @@ _appname=manx
 pkgname=${_cratename}
 pkgdesc="Blazing-fast CLI tool for developers to find documentation, code snippets, and answers instantly, online or offline with or without LLM and RAG integration"
 
-pkgver=0.5.7
+pkgver=0.5.9
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -24,7 +24,7 @@ depends=('glibc' 'libgcc' 'libstdc++' 'openssl')
 provides=("${_appname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
-sha256sums=('2fe47cb8cdc65ffe6d4034ecb6d3adcc749425a6ab82650bc6efbfe6807357d4')
+sha256sums=('c85073ffad9e0053741f5dc463c8d8f43c1b81a5be6e60346adb2f2761a51d3e')
 
 
 build() {
