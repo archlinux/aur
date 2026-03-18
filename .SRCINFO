@@ -2,13 +2,13 @@ pkgbase = hexamorse
 	pkgdesc = Terminal-based Morse code typing tool with real-time cheatsheet
 	pkgver = 1.1
 	pkgrel = 1
-	url = https://github.com/HexaProgrammer/HexaMorse
+	url = https://github.com/Hexa-Programmer/HexaMorse
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = git
 	depends = python
-	source = hexamorse-1.1.tar.gz::https://github.com/HexaProgrammer/HexaMorse/archive/refs/tags/v1.1.tar.gz
+	source = hexamorse-1.1.tar.gz::https://github.com/Hexa-Programmer/HexaMorse/archive/refs/tags/v1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = hexamorse
