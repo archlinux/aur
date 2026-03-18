@@ -9,7 +9,7 @@ depends=('squashfs-tools' 'libseccomp' 'libsystemd' 'libcap' 'apparmor')
 optdepends=('bash-completion: bash completion support'
             'xdg-desktop-portal: desktop integration')
 pkgver=2.74.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://github.com/snapcore/snapd"
 license=('GPL3')
@@ -18,10 +18,12 @@ conflicts=('snap-confine')
 options=('!strip' 'emptydirs' '!lto')
 install=snapd.install
 source=(
-  "$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
+    "$pkgname-$pkgver.tar.xz::https://github.com/snapcore/${pkgname}/releases/download/${pkgver}/${pkgname}_${pkgver}.vendor.tar.xz"
+    "0001-data-more-precise-prune-pattern-for-tmpfiles.patch"
 )
 
-sha256sums=('126f41aba651ec36c1d946b389687d937d3e96489b683cffdc4f37bd9deb1d46')
+sha256sums=('126f41aba651ec36c1d946b389687d937d3e96489b683cffdc4f37bd9deb1d46'
+            'e555871200973bf12e00fc88b6557554ff7e6777d24054660e9a14d2117aa6d9')
 
 
 prepare() {
