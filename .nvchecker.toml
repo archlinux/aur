@@ -1,0 +1,4 @@
+[pcg-cpp]
+source = "git"
+git = "https://github.com/imneme/pcg-cpp.git"
+prefix = "v"

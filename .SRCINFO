@@ -1,0 +1,11 @@
+pkgbase = pcg-cpp
+	pkgdesc = C++ implementation of the PCG family of random number generators
+	pkgver = 0.98.1
+	pkgrel = 1
+	url = http://www.pcg-random.org
+	arch = any
+	license = Apache-2.0 OR MIT
+	source = https://github.com/imneme/pcg-cpp/archive/refs/tags/v0.98.1/pcg-cpp-0.98.1.tar.gz
+	b2sums = f351279e6ef3d834c703bca2b017f81a1b8905b91589056cc0ee5dea6d5b5437992fda8a5e3c236dd6eb6ff9f0fe38b68fbfe89b752e6edf40b438878967e19b
+
+pkgname = pcg-cpp
