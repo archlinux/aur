@@ -1,8 +1,8 @@
 # Maintainer: kezuwoo <kezu15@proton.me>
 
 pkgname=kitsune
-pkgver=0.7.1
-pkgrel=2
+pkgver=0.8.3
+pkgrel=1
 pkgdesc="AniLiberty player"
 arch=('any')
 url="https://altlinux.space/armatik/Kitsune"
