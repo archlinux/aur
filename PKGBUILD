@@ -3,7 +3,7 @@
 pkgname=cinetry-bin
 pkgver=0.7.11
 _pkgbuild=40
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform local media player client for Emby/Jellyfin/WebDAV/IPTV and more"
 arch=('x86_64')
 url="https://github.com/gstory0404/Cinetry"
@@ -44,6 +44,7 @@ package() {
     cat > "${pkgdir}/usr/bin/cinetry" << 'EOF'
 #!/bin/bash
 export LD_LIBRARY_PATH="/opt/cinetry/lib:${LD_LIBRARY_PATH}"
+export LD_PRELOAD="/usr/lib/libappindicator3.so.1:${LD_PRELOAD}"
 exec /opt/cinetry/cinetry "$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/cinetry"

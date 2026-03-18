@@ -1,7 +1,7 @@
 pkgbase = cinetry-bin
 	pkgdesc = Cross-platform local media player client for Emby/Jellyfin/WebDAV/IPTV and more
 	pkgver = 0.7.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gstory0404/Cinetry
 	arch = x86_64
 	license = custom
