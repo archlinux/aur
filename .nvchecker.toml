@@ -1,0 +1,5 @@
+[ruby-dry-struct]
+source = "github"
+github = "dry-rb/dry-struct"
+prefix = "v"
+use_latest_release = true
