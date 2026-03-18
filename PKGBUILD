@@ -6,7 +6,7 @@ _appname=${_pkgname}-tui
 pkgname=${_appname}-bin
 pkgdesc="A beautiful terminal UI for visualizing Git repository statistics, inspired by htop/btop"
 
-pkgver=0.1.1
+pkgver=0.3.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ conflicts=("${_appname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('cda2f67659e2c309e36c0ad1d7838858a2c17aa676977bae0d6efe6e0bc31227')
-sha256sums_aarch64=('20a425f1f0f29682896918a444732c7175628ac43d36390664446658d92dee52')
+sha256sums_x86_64=('7a533e577c3023cd70daec0f9182d05e44359b7f4335c032e6cf2e6c5cc00cb4')
+sha256sums_aarch64=('260171a10622e42dd72dc47ab198bfa59465b75735424ed1572a9e16bd990ae1')
 
 
 package() {
