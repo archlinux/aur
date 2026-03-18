@@ -1,7 +1,7 @@
 # Maintainer: ramisotti13-eng
 pkgname=basecamp-linux
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Unofficial Linux companion app for the Mountain Everest Max keyboard"
 arch=('x86_64')
 url="https://github.com/ramisotti13-eng/BaseCamp-Linux"
@@ -11,7 +11,7 @@ source=("${pkgname}-${pkgver}.AppImage::https://github.com/ramisotti13-eng/BaseC
         "99-mountain-everest-max.rules::https://github.com/ramisotti13-eng/BaseCamp-Linux/releases/download/v${pkgver}/99-mountain-everest-max.rules"
         "app_icon_256.png::https://raw.githubusercontent.com/ramisotti13-eng/BaseCamp-Linux/main/resources/app_icon_256.png"
         "basecamp-linux.desktop")
-sha256sums=('f9ee45fa43539cc5ef183ba8858c13925516e5e172a83a56db45daffa27e9cd2'
+sha256sums=('c44dc95a88a108d06e5a3715c88887ecf2dc4c7456eb8551eaf2a3fbcc221948'
             'SKIP'
             'SKIP'
             'SKIP')
