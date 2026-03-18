@@ -1,0 +1,3 @@
+[perl-net-async-http]
+source = "cpan"
+cpan = "Net-Async-HTTP"
