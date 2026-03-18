@@ -1,0 +1,9 @@
+*.pkg.tar*
+*.tar.gz
+*.tar.zst
+pkg/
+src/
+fff-mcp-*
+LICENSE-*
+!PKGBUILD
+!.SRCINFO
