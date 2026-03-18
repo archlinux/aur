@@ -78,15 +78,15 @@ source=(
 
 options=(!lto)  # comment this line out if you've got better than 32 GB of ram to spare for the linking step
 
-sha256sums=('6d3153d66e541ca1f6cbf0b3a6174828aa103d4235893b130054212d81d0aece'
-            'SKIP'
-            'b4c2585efd9c21c6351b6278098b4bcf7395e23b9721c391b3bcb72983b6ebf8'
-            '73c64a8323df9a2b96955d0104f761ec3d9078813716164b9dd7b647d65bb2f0'
-            'c4e4a9c7991cd2dc657ddf8a38d7455c711d6929c238141b9544fefaf4db021c'
-            'd364dbb165848e0327a941390c1be0fdc6691e6f4952d8233368a563e2594843')
+b2sums=('b04312afc5483bc3e9bf2e984a66445f5bd2299ac68f465cfcfd917aa3bd5fde88613559aeab748e69674bad0c89cc7d1c370bba1d29590487bf10573c8ce24f'
+        'SKIP'
+        'a3f8c7cbf8592cb32715d3a43ee57852348b5370122fdf4ed69935b992cc23790e8cdad822afc600f4fe94a89f071104b875224ca68ae0ce34b2d4f36c45d4ea'
+        '8ffb8cefa00ade99ce2b43cb9913d6afa120563c91659f2def69d91238554ece53c2142b156a4e80734e1550a0721cfeb686f46742ee9d6e1d347cee6ea118d2'
+        'da68bed72b5d0a60c8b69691832ecf32494000c9a15bbe6af57cf346fc78f712fabcfb27bb94db26a276a4a897f0a7a6c5a6af3228e143d13a3b86d616520327'
+        '240fdbd739dbe9111cad8621d52d21eee811ffcdf527e65008cd23170ca8effe12096fcebaf551326edbe5beca2dc09e15646282ce357e5d23fea4e0af90a8c0')
 
 # needed to prevent memory exhaustion, 10 seems to consume about 14.5 GiB in the build step
-_n_parallel_build_jobs=1
+_n_parallel_build_jobs=4
 #_n_parallel_build_jobs=10  # consumes ~14.5 GiB of ram
 #_n_parallel_build_jobs=25  # consumes ~30 GiB of ram
 #_n_parallel_build_jobs=60  # consumes ~34 GiB of ram
