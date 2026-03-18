@@ -4,8 +4,8 @@
 #https://comate-ide.bj.bcebos.com/updates/stable/linux/x64/latest.json
 pkgname=comate-bin
 _pkgname=Comate
-pkgver=1.1.0
-_version=6cabb4975e6929072733811281e2dba47f448ebe-243780021
+pkgver=1.2.0
+_version=c916e89dc14d438a161030289ac0fdbf037ba784-244986363
 _electronversion=39
 pkgrel=1
 pkgdesc="Code as you like, one step ahead, and understand your intelligent code assistant better.(Prebuilt version)"
@@ -42,12 +42,12 @@ source=(
     "${pkgname%-bin}.sh"
 )
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.gz::https://comate-ide.cdn.bcebos.com/download/stable/${_version}/${_pkgname}-linux-x64.tar.gz")
-sha256sums=('93abb9d0a92e17aa39161ef93d83caa68581e771986f9f0b04a6a3f6a1afa39a'
+sha256sums=('3f3357026b508094734cf228531987c91e78062f06fccba5b5efd5f94136afef'
             '14807b90c15a2757d9713664db6a69aa4fab3568e53d84f27de2ab7c8ae85446'
             '0c8fee636da036e57fcde0385bdc698126c4b179de663ad315e8299d483abc9d'
             '787bf0078b80c66fa5b8191991700afd6e32e9f285cdb32f69791b8894c86fd5'
             'e0ab2fe87491fabd9c7886f22c6929169edb508be832036a02698760b721f207')
-sha256sums_x86_64=('f43e72bac32983e276dce81573757354e654922b98fd67fbfbf946e6caffd95b')
+sha256sums_x86_64=('a690af09dc3b1a2608434a0a0a2c71f0482bd2cfe667e946d5982690512c75b8')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/${_pkgname}-linux-x64/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
