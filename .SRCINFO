@@ -1,0 +1,16 @@
+pkgbase = lightpanda-nightly-bin
+	pkgdesc = The headless browser designed for AI and data scripting (Nightly Build)
+	pkgver = 20260318.bd2406f8
+	pkgrel = 1
+	url = https://github.com/lightpanda-io/browser
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0
+	provides = lightpanda
+	conflicts = lightpanda
+	source_x86_64 = lightpanda-nightly-bin-x86_64::https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux
+	sha256sums_x86_64 = SKIP
+	source_aarch64 = lightpanda-nightly-bin-aarch64::https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-aarch64-linux
+	sha256sums_aarch64 = SKIP
+
+pkgname = lightpanda-nightly-bin
