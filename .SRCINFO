@@ -1,0 +1,23 @@
+pkgbase = perl-future-asyncawait
+	pkgdesc = deferred subroutine syntax for futures
+	pkgver = 0.71
+	pkgrel = 1
+	url = https://metacpan.org/release/PEVANS/Future-AsyncAwait-0.71
+	arch = x86_64
+	license = Artistic-1.0-Perl OR GPL-1.0-or-later
+	checkdepends = perl-future
+	checkdepends = perl-test-simple
+	makedepends = perl-extutils-cbuilder
+	makedepends = perl-module-build>=0.4004
+	makedepends = perl-xs-parse-keyword>=0.13
+	makedepends = perl-xs-parse-sublike>=0.31
+	depends = perl-file-sharedir>=1.00
+	depends = perl-future>=0.50
+	depends = perl-xs-parse-keyword>=0.13
+	depends = perl-xs-parse-sublike>=0.31
+	depends = perl>=5.16.0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Future-AsyncAwait-0.71.tar.gz
+	sha256sums = 16caa557a3e7a95e0e6ff5fe39672aa8580047c75fa7748eb8b1cb183a7beb70
+
+pkgname = perl-future-asyncawait
