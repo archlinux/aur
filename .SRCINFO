@@ -1,0 +1,19 @@
+pkgbase = quire-git
+	pkgdesc = Desktop document scanning application — scan, crop, export JPEG
+	pkgver = r29.ge858189
+	pkgrel = 1
+	url = https://github.com/NebuPookins/quire
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = inkscape
+	makedepends = git
+	depends = libglvnd
+	depends = libx11
+	depends = sane
+	provides = quire
+	conflicts = quire
+	source = quire-git::git+https://github.com/NebuPookins/quire.git
+	sha256sums = SKIP
+
+pkgname = quire-git
