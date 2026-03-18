@@ -1,0 +1,39 @@
+# Maintainer: Butui Hu <hot123tea123@gmail.com>
+
+_pkgname=NumKong
+pkgname=python-numkong
+pkgver=7.0.0
+pkgrel=1
+pkgdesc='A Fast Dot Products & Similarity Metrics for Python using SIMD'
+arch=('x86_64')
+url='https://github.com/ashvardanian/numkong'
+license=('Apache-2.0')
+depends=(
+  gcc-libs
+  glibc
+)
+makedepends=(
+  python-build
+  python-installer
+  python-setuptools
+  python-wheel
+)
+provides=(
+  python-simsimd
+)
+replaces=(
+  python-simsimd
+)
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/ashvardanian/SimSIMD/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('0faef16ecbc2afc67d20d7f13be04970a8e8b82038256d8880da193fe848e67878e756eb5ffdce41aee7de43ff632ae58f5b48ab3580a80abe6b3fb385390b9f')
+
+build() {
+  cd "${_pkgname}-${pkgver}"
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "${_pkgname}-${pkgver}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+}
+# vim:set ts=2 sw=2 et:
