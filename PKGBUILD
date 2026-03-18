@@ -153,6 +153,16 @@ package() {
     install -Dm644 "${srcdir}/app.asar" \
                    "${pkgdir}/usr/lib/claude-cowork/app.asar"
 
+    # Install i18n locale JSON files to electron's resources directory.
+    # The app reads these via process.resourcesPath at startup, which resolves
+    # to the system electron's resources dir -- not inside the asar.
+    local _electron_name
+    _electron_name=$(basename "$(readlink -f /usr/bin/electron)")
+    local _electron_resources="/usr/lib/${_electron_name}/resources"
+    mkdir -p "${pkgdir}${_electron_resources}"
+    install -m644 "${srcdir}/linux-app-extracted/resources/"*.json \
+        "${pkgdir}${_electron_resources}/"
+
     # Install launcher script
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/claude-cowork" <<'EOF'
 #!/bin/bash
