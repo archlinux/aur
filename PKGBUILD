@@ -1,23 +1,23 @@
-# Maintainer: Umut Dag <umu7d9@gmail.com>
+# Maintainer: Umut Dag <me@umtdg.com>
+# Modified PKGBUILD of https://aur.archlinux.org/packages/waybar-git
 
-pkgname=waybar-temp-fan-power
-pkgver=0.14.0
-pkgrel=6
+## options
+: ${_use_sodeps:=false}
+
+: ${_with_cava:=false}
+: ${_with_gpsd:=false}
+
+_pkgname="waybar"
+pkgname="$_pkgname-temp-fan-power"
+pkgver=0.15.0
+pkgrel=1
 pkgdesc='Highly customizable Wayland bar for Sway and Wlroots based compositors (with temperature module fan and power support)'
 arch=('x86_64')
 url="https://github.com/umtdg/Waybar"
 license=('MIT')
 depends=(
-    'atkmm'
-    'cairomm'
     'fmt'
-    'gcc-libs'
-    'glib2'
-    'glibc'
-    'glibmm'
-    'gpsd'
     'gtk-layer-shell'
-    'gtk3'
     'gtkmm3'
     'jack'
     'jsoncpp'
@@ -26,7 +26,6 @@ depends=(
     'libinput'
     'libmpdclient'
     'libnl'
-    'libpipewire'
     'libpulse'
     'libsigc++'
     'libwireplumber'
@@ -34,65 +33,86 @@ depends=(
     'playerctl'
     'sndio'
     'spdlog'
-    'systemd-libs'
     'upower'
     'wayland'
 )
 makedepends=(
     'catch2'
     'cmake'
-    'meson'
-    'glib2-devel' # gdbus-codegen
-    'scdoc' # For generating manpages
-    'wayland-protocols'
     'git'
-)
-backup=(
-    etc/xdg/waybar/config.jsonc
-    etc/xdg/waybar/style.css
+    'glib2-devel' # gdbus-codegen
+    'meson'
+    'python-setuptools'
+    'scdoc' # to generate manpages
+    'wayland-protocols'
 )
 optdepends=(
     'otf-font-awesome: Icons in the default configuration'
 )
-conflicts=('waybar')
-provides=('waybar')
-source=("Waybar-$pkgver::git+https://github.com/umtdg/waybar#branch=temperature-fan-power")
-sha256sums=("SKIP")
+
+if [[ "${_with_cava::1}" == "t" ]]; then
+    depends+=('libcava')
+fi
+
+if [[ "${_with_gpsd::1}" == "t" ]]; then
+    depends+=('gpsd')
+fi
+
+conflicts=("$_pkgname" "$_pkgname-git")
+provides=("$pkgname=${pkgver%.g*}")
+
+backup=(
+    etc/xdg/waybar/config.jsonc
+    etc/xdg/waybar/style.css
+)
+
+_pkgsrc="$pkgname"
+source=("$_pkgsrc::git+$url#branch=temperature-fan-power")
+sha256sums=('SKIP')
 
 build() {
-    cd "Waybar-$pkgver"
-    meson --prefix=/usr \
-          --buildtype=plain \
-          --auto-features=enabled \
-          --wrap-mode=nodownload \
-          -Dcpp_std=c++20 \
-          -Dexperimental=true \
-          -Dcava=disabled \
-          -Dtests=enabled \
-          build
+    local _meson_args=(
+        -Dexperimental=true
+    )
+
+    if [[ "${_with_cava::1}" != "t" ]]; then
+        _meson_args+=(-Dcava=disabled)
+    fi
+
+    if [[ "${_with_gpsd::1}" != "t" ]]; then
+        _meson_args+=(-Dgps=disabled)
+    fi
+
+    if ((!CHECKFUNC)); then
+        _meson_args+=(-Dtests=disabled)
+    fi
+
+    arch-meson "${_meson_args[@]}" "$_pkgsrc" build
     meson compile -C build
 }
 
 check() {
-    cd "Waybar-$pkgver"
     meson test -C build --print-errorlogs --no-rebuild --suite waybar
 }
 
 package() {
-    depends+=(
-      'libatkmm-1.6.so'
-      'libcairomm-1.0.so'
-      'libgtk-3.so'
-      'libjack.so'
-      'libjsoncpp.so'
-      'libpipewire-0.3.so'
-      'libsndio.so'
-      'libspdlog.so'
-      'libudev.so'
-      'libupower-glib.so'
-    )
+    if [[ "${_use_sodeps::1}" == "t" ]]; then
+        eval "depends+=(
+            'libatkmm-1.6.so'
+            'libcairomm-1.0.so'
+            'libfmt.so'
+            'libgtk-3.so'
+            'libjack.so'
+            'libjsoncpp.so'
+            'libpipewire-0.3.so'
+            'libsndio.so'
+            'libspdlog.so'
+            'libudev.so'
+            'libupower-glib.so'
+        )"
+    fi
 
-    cd "Waybar-$pkgver"
+
     meson install -C build --destdir "$pkgdir"
-    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 "$_pkgsrc/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
