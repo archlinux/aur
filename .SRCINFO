@@ -1,6 +1,6 @@
 pkgbase = supaco-cli
 	pkgdesc = Terminal TUI para o SUAP do IFRN — aulas, frequência, notas e notificações no terminal
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/kellyson71/supaco-cli
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = supaco-cli
 	makedepends = go
 	provides = supaco
 	conflicts = supaco
-	source = supaco-cli-1.0.1.tar.gz::https://github.com/kellyson71/supaco-cli/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 940de0d7f2275e226aa9ae2818b2a5b37572bfb299742afeefaad7bcc7c3d9e2
+	source = supaco-cli-1.0.2.tar.gz::https://github.com/kellyson71/supaco-cli/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 710ee53c350916e5cfb0439112e5afd44213d48228b8d2fb5c1e27641e081420
 
 pkgname = supaco-cli

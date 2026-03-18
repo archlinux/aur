@@ -1,7 +1,7 @@
 # Maintainer: kellyson71 <https://github.com/kellyson71>
 
 pkgname=supaco-cli
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Terminal TUI para o SUAP do IFRN — aulas, frequência, notas e notificações no terminal"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('go')
 provides=('supaco')
 conflicts=('supaco')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/kellyson71/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('940de0d7f2275e226aa9ae2818b2a5b37572bfb299742afeefaad7bcc7c3d9e2')
+sha256sums=('710ee53c350916e5cfb0439112e5afd44213d48228b8d2fb5c1e27641e081420')
 
 build() {
     cd "$pkgname-$pkgver"
