@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Oracle Java 21 Shell
-Comment=Oracle Java 21 Shell
+Name=Oracle Java 25 Shell
+Comment=Oracle Java 25 Shell
 Keywords=java;shell
-Exec=/usr/lib/jvm/java-21-jdk/bin/jshell
+Exec=/usr/lib/jvm/java-25-jdk/bin/jshell
 Terminal=true
 Type=Application
-Icon=java21-jdk
+Icon=java25-jdk
 Categories=Application;System;

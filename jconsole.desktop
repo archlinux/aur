@@ -1,10 +1,10 @@
 [Desktop Entry]
-Name=Oracle Java 21 Console
-Comment=Oracle Java 21 Monitoring and Management Console
+Name=Oracle Java 25 Console
+Comment=Oracle Java 25 Monitoring and Management Console
 Keywords=java;console;monitoring
-Exec=/usr/lib/jvm/java-21-jdk/bin/jconsole
+Exec=/usr/lib/jvm/java-25-jdk/bin/jconsole
 Terminal=false
 Type=Application
-Icon=java21-jdk
+Icon=java25-jdk
 StartupWMClass=sun-tools-jconsole-JConsole
 Categories=Application;System;

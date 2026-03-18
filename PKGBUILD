@@ -2,9 +2,9 @@
 
 pkgbase=jdk-lts
 pkgname=('jre-lts' 'jdk-lts' 'jdk-lts-doc')
-pkgver=21.0.10
-_build=8
-_hash=c7cd7020f02e418d8008cdaefb15b4ba
+pkgver=25.0.2
+_build=10
+_hash=b1e0dfa218384cb9959bdcb897162d4e
 _majver="${pkgver%%.*}"
 pkgrel=1
 pkgdesc='Oracle Java'
@@ -25,12 +25,12 @@ source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux
         'java_48.png'
         'LICENSE')
 noextract=("jdk-${pkgver}_doc-all.zip")
-sha256sums=('773eff7191d996d3b6ce3a99c21ce69cf2d836fd07277106313732a098d4309a'
-            '118da93f4dc76d486490bc333a987b74c8ee86a573b31f022eececa18d8fe3dc'
-            '080b638b37434d08474ce95f3e31c006e655a3383c0cd8058d18e492299f9cbb'
-            '27787e721ff5ef02a4bfa13981f8fedbc5c6220213ed11854729fdb638964891'
-            '341394d1886716676bd6416c678779418c68429fad47f48324c0644773ae1c44'
-            '5bd69b0a47fea7fc0716df3097bc647a08d6aa757bf20cc8d36ed5aba14e0e8c'
+sha256sums=('505fdcb1f172b4aad23415f0584912cff90b7d902adc5f1593894b4a8cbf7c39'
+            '3038c898c461c024622460a7a7c6c7fb281f04521916a8ed18ce909eb8f8807f'
+            '238ad31acf952842a3161837b70ddc1debb4a9d52f8248bcd7732bed5685976a'
+            'fcfed2eb57f8c7948a84905827c2ec0b6ff0ff70b47a338b6329be2bf4905589'
+            '9e3a89d09f130fbbb92e1e997045ce0c268aee749ab415fa780cb3c156d22246'
+            'bd2aa445563299478cefe7e9a318165e4be550ac87739aa881d039fdea8084d6'
             'd27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed'
             '7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176'
             '20becfcac0bdeaa29a76e6966d727f8cc79381354cbd5d530cdec823954df19f')
@@ -38,10 +38,10 @@ sha256sums=('773eff7191d996d3b6ce3a99c21ce69cf2d836fd07277106313732a098d4309a'
 DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
 _jre_deps=(
-    'java-runtime-common'
     'ca-certificates-utils'
     'freetype2'
     'glibc'
+    'java-runtime-common'
     'libx11'
     'libxext'
     'libxi'
@@ -50,25 +50,26 @@ _jre_deps=(
     'zlib')
 _jre_optdeps=(
     'alsa-lib: for basic sound support'
-    'gtk2: for the Gtk+ 2 look and feel - desktop usage'
     'gtk3: for the Gtk+ 3 look and feel - desktop usage')
 _jre_provides=("java-runtime=${_majver}" "java-runtime-jdk${_majver}"
                "jre${_majver}-jdk=${pkgver}-${pkgrel}"
                "java-runtime-headless=${_majver}" "java-runtime-headless-jdk=${_majver}"
                "jre${_majver}-jdk-headless=${pkgver}-${pkgrel}")
-_jre_backup=("etc/java-${pkgbase}/management/jmxremote.access"
+_jre_backup=("etc/java-${pkgbase}/jaxp.properties"
+             "etc/java-${pkgbase}/jaxp-strict.properties.template"
+             "etc/java-${pkgbase}/logging.properties"
+             "etc/java-${pkgbase}/management/jmxremote.access"
              "etc/java-${pkgbase}/management/jmxremote.password.template"
              "etc/java-${pkgbase}/management/management.properties"
+             "etc/java-${pkgbase}/net.properties"
+             "etc/java-${pkgbase}/sdp/sdp.conf.template"
+             "etc/java-${pkgbase}/security/java.security"
+             "etc/java-${pkgbase}/security/policy/README.txt"
              "etc/java-${pkgbase}/security/policy/limited/default_US_export.policy"
              "etc/java-${pkgbase}/security/policy/limited/default_local.policy"
              "etc/java-${pkgbase}/security/policy/limited/exempt_local.policy"
              "etc/java-${pkgbase}/security/policy/unlimited/default_US_export.policy"
              "etc/java-${pkgbase}/security/policy/unlimited/default_local.policy"
-             "etc/java-${pkgbase}/security/policy/README.txt"
-             "etc/java-${pkgbase}/security/java.policy"
-             "etc/java-${pkgbase}/security/java.security"
-             "etc/java-${pkgbase}/logging.properties"
-             "etc/java-${pkgbase}/net.properties"
              "etc/java-${pkgbase}/sound.properties")
 
 prepare() {
@@ -163,7 +164,6 @@ package_jdk-lts() {
     install -D -m644 "${srcdir}/jshell.desktop"   "${pkgdir}/usr/share/applications/jshell-java${_majver}-jdk.desktop"
     install -D -m644 "${srcdir}/java_16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/java${_majver}-jdk.png"
     install -D -m644 "${srcdir}/java_48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/java${_majver}-jdk.png"
-
     
     # man pages
     local _file

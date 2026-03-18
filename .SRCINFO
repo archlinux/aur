@@ -1,28 +1,28 @@
 pkgbase = jdk-lts
 	pkgdesc = Oracle Java
-	pkgver = 21.0.10
+	pkgver = 25.0.2
 	pkgrel = 1
 	url = https://www.oracle.com/java/
 	arch = x86_64
 	license = LicenseRef-Custom
 	makedepends = python-html2text
 	makedepends = alsa-lib
-	noextract = jdk-21.0.10_doc-all.zip
-	source = https://download.oracle.com/java/21/archive/jdk-21.0.10_linux-x64_bin.tar.gz
-	source = https://download.oracle.com/otn_software/java/jdk/21.0.10+8/c7cd7020f02e418d8008cdaefb15b4ba/jdk-21.0.10_doc-all.zip
-	source = jdk-21_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-21-final-spec/license.html
+	noextract = jdk-25.0.2_doc-all.zip
+	source = https://download.oracle.com/java/25/archive/jdk-25.0.2_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/25.0.2+10/b1e0dfa218384cb9959bdcb897162d4e/jdk-25.0.2_doc-all.zip
+	source = jdk-25_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-25-final-spec/license.html
 	source = java.desktop
 	source = jconsole.desktop
 	source = jshell.desktop
 	source = java_16.png
 	source = java_48.png
 	source = LICENSE
-	sha256sums = 773eff7191d996d3b6ce3a99c21ce69cf2d836fd07277106313732a098d4309a
-	sha256sums = 118da93f4dc76d486490bc333a987b74c8ee86a573b31f022eececa18d8fe3dc
-	sha256sums = 080b638b37434d08474ce95f3e31c006e655a3383c0cd8058d18e492299f9cbb
-	sha256sums = 27787e721ff5ef02a4bfa13981f8fedbc5c6220213ed11854729fdb638964891
-	sha256sums = 341394d1886716676bd6416c678779418c68429fad47f48324c0644773ae1c44
-	sha256sums = 5bd69b0a47fea7fc0716df3097bc647a08d6aa757bf20cc8d36ed5aba14e0e8c
+	sha256sums = 505fdcb1f172b4aad23415f0584912cff90b7d902adc5f1593894b4a8cbf7c39
+	sha256sums = 3038c898c461c024622460a7a7c6c7fb281f04521916a8ed18ce909eb8f8807f
+	sha256sums = 238ad31acf952842a3161837b70ddc1debb4a9d52f8248bcd7732bed5685976a
+	sha256sums = fcfed2eb57f8c7948a84905827c2ec0b6ff0ff70b47a338b6329be2bf4905589
+	sha256sums = 9e3a89d09f130fbbb92e1e997045ce0c268aee749ab415fa780cb3c156d22246
+	sha256sums = bd2aa445563299478cefe7e9a318165e4be550ac87739aa881d039fdea8084d6
 	sha256sums = d27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed
 	sha256sums = 7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176
 	sha256sums = 20becfcac0bdeaa29a76e6966d727f8cc79381354cbd5d530cdec823954df19f
@@ -30,10 +30,10 @@ pkgbase = jdk-lts
 pkgname = jre-lts
 	pkgdesc = Oracle Java Runtime Environment (LTS release)
 	install = jre.install
-	depends = java-runtime-common
 	depends = ca-certificates-utils
 	depends = freetype2
 	depends = glibc
+	depends = java-runtime-common
 	depends = libx11
 	depends = libxext
 	depends = libxi
@@ -41,39 +41,40 @@ pkgname = jre-lts
 	depends = libxrender
 	depends = zlib
 	optdepends = alsa-lib: for basic sound support
-	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = jre=21
-	provides = java-runtime=21
-	provides = java-runtime-jdk21
-	provides = jre21-jdk=21.0.10-1
-	provides = java-runtime-headless=21
-	provides = java-runtime-headless-jdk=21
-	provides = jre21-jdk-headless=21.0.10-1
+	provides = jre=25
+	provides = java-runtime=25
+	provides = java-runtime-jdk25
+	provides = jre25-jdk=25.0.2-1
+	provides = java-runtime-headless=25
+	provides = java-runtime-headless-jdk=25
+	provides = jre25-jdk-headless=25.0.2-1
 	conflicts = jdk-lts
+	backup = etc/java-jdk-lts/jaxp.properties
+	backup = etc/java-jdk-lts/jaxp-strict.properties.template
+	backup = etc/java-jdk-lts/logging.properties
 	backup = etc/java-jdk-lts/management/jmxremote.access
 	backup = etc/java-jdk-lts/management/jmxremote.password.template
 	backup = etc/java-jdk-lts/management/management.properties
+	backup = etc/java-jdk-lts/net.properties
+	backup = etc/java-jdk-lts/sdp/sdp.conf.template
+	backup = etc/java-jdk-lts/security/java.security
+	backup = etc/java-jdk-lts/security/policy/README.txt
 	backup = etc/java-jdk-lts/security/policy/limited/default_US_export.policy
 	backup = etc/java-jdk-lts/security/policy/limited/default_local.policy
 	backup = etc/java-jdk-lts/security/policy/limited/exempt_local.policy
 	backup = etc/java-jdk-lts/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-jdk-lts/security/policy/unlimited/default_local.policy
-	backup = etc/java-jdk-lts/security/policy/README.txt
-	backup = etc/java-jdk-lts/security/java.policy
-	backup = etc/java-jdk-lts/security/java.security
-	backup = etc/java-jdk-lts/logging.properties
-	backup = etc/java-jdk-lts/net.properties
 	backup = etc/java-jdk-lts/sound.properties
 
 pkgname = jdk-lts
 	pkgdesc = Oracle Java Development Kit (LTS release)
 	install = jdk.install
 	depends = java-environment-common
-	depends = java-runtime-common
 	depends = ca-certificates-utils
 	depends = freetype2
 	depends = glibc
+	depends = java-runtime-common
 	depends = libx11
 	depends = libxext
 	depends = libxi
@@ -83,33 +84,34 @@ pkgname = jdk-lts
 	depends = zlib
 	depends = hicolor-icon-theme
 	optdepends = alsa-lib: for basic sound support
-	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = java-environment=21
-	provides = java-environment-jdk=21
-	provides = jdk21-jdk=21.0.10-1
-	provides = jre=21
+	provides = java-environment=25
+	provides = java-environment-jdk=25
+	provides = jdk25-jdk=25.0.2-1
+	provides = jre=25
 	provides = jre-lts
-	provides = java-runtime=21
-	provides = java-runtime-jdk21
-	provides = jre21-jdk=21.0.10-1
-	provides = java-runtime-headless=21
-	provides = java-runtime-headless-jdk=21
-	provides = jre21-jdk-headless=21.0.10-1
+	provides = java-runtime=25
+	provides = java-runtime-jdk25
+	provides = jre25-jdk=25.0.2-1
+	provides = java-runtime-headless=25
+	provides = java-runtime-headless-jdk=25
+	provides = jre25-jdk-headless=25.0.2-1
 	conflicts = jre-lts
+	backup = etc/java-jdk-lts/jaxp.properties
+	backup = etc/java-jdk-lts/jaxp-strict.properties.template
+	backup = etc/java-jdk-lts/logging.properties
 	backup = etc/java-jdk-lts/management/jmxremote.access
 	backup = etc/java-jdk-lts/management/jmxremote.password.template
 	backup = etc/java-jdk-lts/management/management.properties
+	backup = etc/java-jdk-lts/net.properties
+	backup = etc/java-jdk-lts/sdp/sdp.conf.template
+	backup = etc/java-jdk-lts/security/java.security
+	backup = etc/java-jdk-lts/security/policy/README.txt
 	backup = etc/java-jdk-lts/security/policy/limited/default_US_export.policy
 	backup = etc/java-jdk-lts/security/policy/limited/default_local.policy
 	backup = etc/java-jdk-lts/security/policy/limited/exempt_local.policy
 	backup = etc/java-jdk-lts/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-jdk-lts/security/policy/unlimited/default_local.policy
-	backup = etc/java-jdk-lts/security/policy/README.txt
-	backup = etc/java-jdk-lts/security/java.policy
-	backup = etc/java-jdk-lts/security/java.security
-	backup = etc/java-jdk-lts/logging.properties
-	backup = etc/java-jdk-lts/net.properties
 	backup = etc/java-jdk-lts/sound.properties
 
 pkgname = jdk-lts-doc
