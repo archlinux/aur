@@ -12,7 +12,7 @@ pkgver=20260201
 _pkgver=dev-${pkgver}
 _vboxver='7.2.6'
 _vboxsubver=''
-pkgrel=2
+pkgrel=3
 conflicts=('virtualbox' 'virtualbox-ose')
 depends=('curl' 'gcc-libs' 'glibc' 'liblzf' 'libpng' 'libtpms' 'libvpx' 'libx11' 'libxcursor'
             'libxext' 'libxinerama' 'libxml2' 'libxmu' 'libxt' 'openssl' 'procps-ng' 'python'
@@ -169,10 +169,11 @@ package() {
     install -d -m0755 "${pkgdir}/usr/lib/virtualbox/ExtensionPacks"
 
     # languages
-    install -d -m0755 "${pkgdir}/usr/share/virtualbox/nls"
-    install -m0755 nls/*.qm -t "${pkgdir}/usr/share/virtualbox/nls"
+    install -d -m0755 "${pkgdir}/usr/lib/virtualbox/nls"
+    install -m0644 nls/*.qm -t "${pkgdir}/usr/lib/virtualbox/nls"
 
     # scripts
+    install -d -m0755 "${pkgdir}/usr/share/virtualbox"
     install -m0755 VBoxCreateUSBNode.sh VBoxSysInfo.sh -t "${pkgdir}/usr/share/virtualbox"
 
     # icons
