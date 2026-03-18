@@ -1,7 +1,7 @@
 pkgbase = pkedit-qt
 	pkgdesc = QT GUI frontend utilizing libpkedit
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/ramenu/pkedit-qt
 	arch = x86_64
 	arch = i686
@@ -11,8 +11,6 @@ pkgbase = pkedit-qt
 	depends = glibc
 	depends = libpkedit
 	depends = qt6-base
-	provides = pkedit-qt
-	conflicts = pkedit-qt
 	source = pkedit-qt-0.5.2.tar.gz::https://codeberg.org/ramenu/pkedit-qt/archive/v0.5.2.tar.gz
 	source = pkedit-qt.desktop
 	b2sums = 48f6c955afba950a88506436a5ce9bcd70fefd5b36dd95cf526c33b3bf3233c7dc53c21aec7761bd1604eb1545956dabb2a4424537c342bde0979721ec789f37
