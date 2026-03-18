@@ -51,7 +51,9 @@ build() {
     -DLMDB_LIBRARY=/usr/lib/liblmdb.so \
     -DLMDB_INCLUDE_DIR=/usr/include \
     -DMANIFOLD_LIBRARY=/usr/lib/libmanifold.so \
-    -DMANIFOLD_INCLUDE_DIR=/usr/include/manifold
+    -DMANIFOLD_INCLUDE_DIR=/usr/include/manifold \
+    -DSQLITE3_LIBRARY=/usr/lib/libsqlite3.so \
+    -DSQLITE3_INCLUDE_DIR=/usr/include
 
   cmake --build "${srcdir}/build" --config "${_build_config}"
 
