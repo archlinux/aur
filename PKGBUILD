@@ -1,6 +1,6 @@
 # Maintainer: Ewout van Mansom <ewout@vanmansom.name>
 pkgname=siomon
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Hardware information and real-time sensor monitoring tool"
 arch=(any)
@@ -14,17 +14,14 @@ optdepends=('nvidia-utils: GPU name, VRAM, clocks, temp, power, utilization'
 makedepends=('git'
              'cargo')
 options=()
-_tag=70508291db88b1b20e2155ab61cf9a781210bbee # git rev-parse "v$pkgver"
+_tag=2f0b399085de511ff14d8a8a2b69c71f7a40558c # git rev-parse "v$pkgver"
 source=("siomon::git+https://github.com/level1techs/siomon.git#tag=$_tag")
-b2sums=('b162a62028e6549ce476cb603bd2633a6888b361a81f5fa32478e934369de6e6306496118e5c1287fea3aeda042a39790a284159fea413ce136f2f0814ce649b')
+b2sums=('745141ab3c7a789c271ffa4ed55fab1555ed312c3c2067b32be6b38cf03e0166bbb8aaebcff9957f9eff53dd2fccb91806df53a483752fcd66ce973af72d85a9')
 
 prepare() {
     cd "$srcdir/$pkgname"
-    # workaround for inconsistent lock file
-    rm Cargo.lock
     export RUSTUP_TOOLCHAIN=stable
-    #cargo fetch --locked --target host-tuple
-    cargo fetch --target host-tuple
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
