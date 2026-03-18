@@ -1,6 +1,6 @@
 pkgbase = snip-tui
 	pkgdesc = A terminal snippet manager to store, search, and copy code snippets without leaving your shell
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/phlx0/snip
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = snip-tui
 	depends = python-textual
 	depends = python-pygments
 	provides = snip
-	source = snip-tui-0.6.0.tgz::https://github.com/phlx0/snip/archive/v0.6.0.tar.gz
-	sha256sums = 8c696b02f1745d27cfdff4e0b934f64564c59c5a298accdab4b563bf3c2fcd6b
+	source = snip-tui-0.6.1.tgz::https://github.com/phlx0/snip/archive/v0.6.1.tar.gz
+	sha256sums = 225b09f9c3f7b36145e8cd792c0a1c8edf05479e73fd8209de6c23bde2c79b86
 
 pkgname = snip-tui
