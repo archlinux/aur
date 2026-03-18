@@ -2,7 +2,7 @@
 pkgname=ghost-downloader-bin
 _pkgname=Ghost-Downloader
 pkgver=3.7.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-threading async downloader with QThread based on PyQt/PySide (Prebuilt version)多线程下载器,协程下载器"
 arch=(
     'aarch64'
@@ -37,7 +37,7 @@ noextract=("${pkgname%-bin}-${pkgver}-${CARCH}.tar.xz")
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-Linux-arm64.tar.xz")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.tar.xz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-Linux-x86_64.tar.xz")
 sha256sums=('13382de9d9dbf7ff9bbff8f4476797fafc91f034311632a8eeedd9c9138abdad'
-            'f003b130010311751a619cae8188af15f003369d71c59f7b34bbc26c98e615d5')
+            'b0592310f06c0ad828c080f34159209e8bb04d2228faf8f3461502de0d4d41ff')
 sha256sums_aarch64=('33d3485d14e8de39e70adc59934ea111664109eaea4fd4b058f6dd243eb8f272')
 sha256sums_x86_64=('8339c7eb6db131e4bf41ad9a294ba35ead15329a26a7680305e8382fe793264b')
 prepare() {
