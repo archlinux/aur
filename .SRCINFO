@@ -1,6 +1,6 @@
 pkgbase = codex-monitor-bin
 	pkgdesc = Tauri desktop app for orchestrating Codex agents across local workspaces (prebuilt RPM)
-	pkgver = 0.7.62
+	pkgver = 0.7.63
 	pkgrel = 1
 	url = https://github.com/Dimillian/CodexMonitor
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = codex-monitor-bin
 	conflicts = codex-monitor-git
 	options = !strip
 	source = codex-monitor.desktop
-	source = LICENSE::https://raw.githubusercontent.com/Dimillian/CodexMonitor/v0.7.62/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/Dimillian/CodexMonitor/v0.7.63/LICENSE
 	sha256sums = a57166e03775a7e875c7f79f89635083b38e0deacae46861297e9ac269b33b4b
 	sha256sums = df17aae89ce4705d0a6e5f7b46eeea3b9023967ecad948f8779b47039eb55a8b
-	source_x86_64 = Codex.Monitor-0.7.62-1.x86_64.rpm::https://github.com/Dimillian/CodexMonitor/releases/download/v0.7.62/Codex.Monitor-0.7.62-1.x86_64.rpm
-	sha256sums_x86_64 = a7fba93dcbc403bc725e804e028d93381407bdfecadf78afe93cb2271a9d7262
-	source_aarch64 = Codex.Monitor-0.7.62-1.aarch64.rpm::https://github.com/Dimillian/CodexMonitor/releases/download/v0.7.62/Codex.Monitor-0.7.62-1.aarch64.rpm
-	sha256sums_aarch64 = 2bbab4d90d887928b49ecedb9c30fd6b0c3adf7bd62df264ac70155720065eca
+	source_x86_64 = Codex.Monitor-0.7.63-1.x86_64.rpm::https://github.com/Dimillian/CodexMonitor/releases/download/v0.7.63/Codex.Monitor-0.7.63-1.x86_64.rpm
+	sha256sums_x86_64 = 3f07d820ce2873c7199458875c1c852e3b396bfbc11b8b52d9e51807a953b9f1
+	source_aarch64 = Codex.Monitor-0.7.63-1.aarch64.rpm::https://github.com/Dimillian/CodexMonitor/releases/download/v0.7.63/Codex.Monitor-0.7.63-1.aarch64.rpm
+	sha256sums_aarch64 = 33eed0e18726559d287f9b6551e2507379fd9df519993bddf8131198d1a96579
 
 pkgname = codex-monitor-bin
