@@ -1,21 +1,19 @@
 # Maintainer: k1f0 <archlinux at k1f0.mozmail.com>
 
 pkgname=angryoxide
-pkgver=0.8.32
-pkgrel=2
+pkgver=0.9.2
+pkgrel=1
 pkgdesc='802.11 Attack Tool'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/Ragnt/AngryOxide'
 license=('GPL-3.0-only')
 makedepends=('cargo' 'git')
 options=('!debug' '!lto')
 source=("${pkgname}-${pkgver}::git+${url}.git#tag=v${pkgver}")
-sha256sums=('5c848e7fd2499e25dbb11728ea3d313e8cc6f097cf4e13cc4b3cd2f18e962e43')
+sha256sums=('f53b7addc812250a0136f317a2b7e857b3ed525775ff913b4246bc5cfc834a4d')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  # change submodule ssh to url
-  sed -i 's/git@github.com:/https:\/\/github.com\//g' .gitmodules
   git submodule update --init
   cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
