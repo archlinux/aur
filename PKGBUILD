@@ -1,6 +1,6 @@
 # Maintainer: Tal <talwat321@gmail.com>
 pkgname=lowfi
-pkgver=2.0.0
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="An extremely simple lofi player."
 arch=('any')
@@ -8,7 +8,8 @@ url="https://github.com/talwat/$pkgname"
 license=('MIT')
 makedepends=('cargo' 'alsa-lib' 'openssl')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('0769d42ea6dc1ec5ffc9e200fe310adda2b7548af2bcee7f4360c9b83c46514d526f894159b0b19cb5800b27a19931733ceb2649690cb39d9058738c3c19a1d8')
+sha512sums=('b53cb8b68055e8cf03b8b1e6c97207b24638c29aa8bc9e6bd561fdb478a23ce9fe8b722518ad6d825fab4db0f4f74b883135cd2e0b915e9dd1d709a8b3a4fc70')
+options=(!lto)
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -22,12 +23,12 @@ build() {
 
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build
 }
 
 package() {
   cd "$pkgname-$pkgver"
 
-  install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/$pkgname"
+  install -Dm0755 -t "$pkgdir/usr/bin/" "target/debug/$pkgname"
 }
 
