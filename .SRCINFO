@@ -1,14 +1,14 @@
 pkgbase = yasos-bin
 	pkgdesc = Compiler for the Yasos programming language (binary release)
-	pkgver = 20260315
+	pkgver = 20260318
 	pkgrel = 1
 	url = https://github.com/DameChocolateYa/yasos
 	arch = x86_64
-	license = BSD
+	license = BSD-3-Clause
 	depends = llvm
 	provides = yasos
 	conflicts = yasos-git
-	source = https://github.com/DameChocolateYa/yasos/releases/download/v20260315-1/yasos-linux-20260315-x86_64.tar.xz
-	sha256sums = 1e7e7ae150f5da9a2cc95c796fbbecb4390daba5cf12e4d5f9829e2428c5579d
+	source = https://github.com/DameChocolateYa/yasos/releases/download/v20260318-1/yasos-linux-20260318-x86_64.tar.xz
+	sha256sums = 018d0b4e2acba345c1325bc016650320d2c15d1cbc07f8d894544869f181dfd5
 
 pkgname = yasos-bin
