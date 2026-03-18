@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=gog-hollow-knight-silksong
-pkgver=1.0.29909
+pkgver=1.0.29926
 pkgrel=1
 pkgdesc='Action-adventure set in a kingdom ruled by silk and song. GOG version.'
 _shortname="${pkgname#gog-}"
@@ -29,7 +29,7 @@ source=(
   "${_shortname}.bash"
 )
 
-sha512sums=('b8e8d4ea72470cc3cb2f2070ddb1b91853ce34e32214712fbdc0fddd74bd78726b36623184116782ca0cde3594aa7eef34c58c16741dd280f457db65ae87259b'
+sha512sums=('c704cbcf6a6cb3c5003126d35418c26b2db4bce1711081d3403f26ffb54c88ac052395cf770e5817c98adce18d77918abe6033334bc3e83401e8dd4a80a25ad4'
             'c6791651a2d8e7ac9d5009f411def4554afce0701f917d3a79f64efd429f7dea07b22bea7caa265255c71ffb30f899ace2bf984aab6ab0c7b5a4fa9d86f625e4'
             '6e7e6ac1c0e141c8d681dc881472aa8b45379c250fd969b3475dcf19e8ddcceccc0cc64fdb80c6d584b00fa1069c89786d8a3784dba7448ed546aecf0c83ab2d')
 
