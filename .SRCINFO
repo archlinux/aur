@@ -5,11 +5,18 @@ pkgbase = python-sgl-kernel
 	url = https://github.com/sgl-project/sglang/tree/main/sgl-kernel
 	arch = x86_64
 	license = Apache-2.0
+	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-scikit-build-core
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
 	depends = python>=3.10
-	noextract = sgl_kernel-0.3.21-cp310-abi3-manylinux2014_x86_64.whl
+	depends = python-pytorch-cuda
+	depends = cuda
 	options = !strip
-	source = sgl_kernel-0.3.21-cp310-abi3-manylinux2014_x86_64.whl::https://files.pythonhosted.org/packages/36/9f/f836e126002c7cfcfe35418f6cff5a63fe3f529c609b334ca4775354b4d5/sgl_kernel-0.3.21-cp310-abi3-manylinux2014_x86_64.whl
-	sha256sums = 57dfb3a2a3cd759f499c32e2bad5f6489b7c58f7f9a84ee00c53ec92d303aaab
+	source = sgl-kernel-0.3.21.tar.gz::https://github.com/sgl-project/sglang/archive/refs/tags/v0.3.21.tar.gz
+	sha256sums = 5905242df108f4b6be1784192e7a9d0504e6251872d497a61cfc1fac2410bbad
 
 pkgname = python-sgl-kernel
