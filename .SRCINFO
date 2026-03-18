@@ -8,13 +8,12 @@ pkgbase = driftwm
 	makedepends = rust
 	makedepends = cargo
 	makedepends = pkg-config
-	makedepends = git
 	depends = libdisplay-info
 	depends = libinput
 	depends = seatd
 	depends = mesa
 	depends = libxkbcommon
-	source = git+https://github.com/malbiruk/driftwm.git#branch=main
+	source = driftwm-0.1.0.tar.gz::https://github.com/malbiruk/driftwm/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = driftwm

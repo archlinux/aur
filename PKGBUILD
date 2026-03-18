@@ -7,21 +7,16 @@ arch=('x86_64')
 url="https://github.com/malbiruk/driftwm"
 license=('GPL-3.0-or-later')
 depends=('libdisplay-info' 'libinput' 'seatd' 'mesa' 'libxkbcommon')
-makedepends=('rust' 'cargo' 'pkg-config' 'git')
-source=("git+$url.git#branch=main")
+makedepends=('rust' 'cargo' 'pkg-config')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "$pkgname"
-    git describe --tags --abbrev=0 | sed 's/^v//'
-}
-
 build() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     cargo build --release --locked
 }
 
 package() {
-    cd "$pkgname"
+    cd "$pkgname-$pkgver"
     make install DESTDIR="$pkgdir" PREFIX=/usr
 }
