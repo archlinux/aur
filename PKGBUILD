@@ -1,15 +1,15 @@
 # Maintainer: Bink
 pkgname=dmarc-report-viewer-bin
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone DMARC and SMTP TLS report viewer with embedded HTTP server"
 arch=('x86_64')
 url="https://github.com/cry-inc/dmarc-report-viewer"
 license=('MIT')
 depends=()
 source=("${url}/releases/download/${pkgver}/linux-x86_64.zip")
-sha256sums=('fa9774d35df6c1dfd554ff168a85b06a3fd3d7500fee7173ccf5c622d080c0de')
-b2sums=('d591509cc97db5151c600cf654b1d8559ab1b3f883f76a3b181b5f8463e8de03a6a30ab522dd79322e41ba7755e4905af6afedd17fabbeba95db8b4db2385174')
+sha256sums=('1df99a5dfb8719e37a5b530d8821070459b3dc231e3fa57773f3b9828323db97')
+b2sums=('9a5ef6b156c0b498f6d0c4456b28ed97fdf4d3a8b51eb29f117ab8af84d16b00403f2c3fcc573fc1735e2ea1be3e2556f557bd792cedd58e2c54a3e3054ac540')
 
 package() {
     install -Dm755 "${srcdir}/linux-x86_64/dmarc-report-viewer" "${pkgdir}/usr/bin/dmarc-report-viewer"
