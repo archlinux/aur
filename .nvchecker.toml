@@ -1,0 +1,3 @@
+[perl-net-async-socks]
+source = "cpan"
+cpan = "Net-Async-SOCKS"
