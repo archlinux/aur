@@ -1,7 +1,7 @@
 # Maintainer: tarball <bootctl@gmail.com>
 
 pkgname=sish
-pkgver=2.21.1
+pkgver=2.22.1
 pkgrel=1
 pkgdesc='HTTP(S)/WS(S)/TCP Tunnels to localhost using only SSH'
 arch=('i686' 'x86_64' 'aarch64' 'riscv64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc' 'openssh')
 makedepends=('go')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c69a7542ad4135cf5f408f533e4767e6a6e8e6ab4cdbd97e3dc004f7dec3b045')
+sha256sums=('f23def84d89d9ae0fd52dd997aaeb4311c4c36144b2435e68f8543fdc762bc3a')
 install="$pkgname.install"
 
 build() {
