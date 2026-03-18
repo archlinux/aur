@@ -3,7 +3,7 @@
 pkgname=prefixer
 pkgdesc="Modern Proton Prefix management tool"
 
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 
 arch=('any')
@@ -15,7 +15,7 @@ depends=('python>=3.13' 'python-vdf' 'python-json5' 'python-requests' 'python-cl
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/wojtmic/prefixer/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('4584a3cb4a408f98a66ada9620759895cb4beccf2ff1938ae6d6f60e44073997')
+sha256sums=('b13bf5c148a76acb044e834702b94924266075a59037d2103b54e017534a2059')
 
 build() {
   cd "$srcdir/prefixer-${pkgver}"
@@ -39,11 +39,11 @@ package() {
   export PYTHONPATH="$pkgdir$(python -c 'import sys; print(f"/usr/lib/python{sys.version_info.major}.{sys.version_info.minor}/site-packages")')"
 
   _PREFIXER_COMPLETE=zsh_source prefixer > \
-      "$pkgdir/usr/share/zsh/site-functions/_prefixer"
+    "$pkgdir/usr/share/zsh/site-functions/_prefixer"
 
   _PREFIXER_COMPLETE=bash_source prefixer > \
-      "$pkgdir/usr/share/bash-completion/completions/prefixer"
+    "$pkgdir/usr/share/bash-completion/completions/prefixer"
 
   _PREFIXER_COMPLETE=fish_source prefixer > \
-      "$pkgdir/usr/share/fish/vendor_completions.d/prefixer.fish"
+    "$pkgdir/usr/share/fish/vendor_completions.d/prefixer.fish"
 }
