@@ -1,7 +1,7 @@
 # Maintainer: scan
 pkgname=keepass-es
 pkgver=2.61
-pkgrel=1
+pkgrel=2
 pkgdesc="KeePass Español"
 license=('GPL2')
 depends=("keepass>=${pkgver}")

@@ -1,13 +1,13 @@
 pkgbase = keepass-es
 	pkgdesc = KeePass Español
-	pkgver = 2.57
-	pkgrel = 1
+	pkgver = 2.61
+	pkgrel = 2
 	url = http://keepass.info/translations.html
 	arch = any
 	license = GPL2
 	makedepends = unzip
-	depends = keepass>=2.57
-	source = http://downloads.sourceforge.net/keepass/KeePass-2.57-Spanish.zip
-	sha256sums = a95e199495b61d2ad14afa4c7e178045d561decc3d3ee6b19845fff41768d338
+	depends = keepass>=2.61
+	source = http://downloads.sourceforge.net/keepass/KeePass-2.61-Spanish.zip
+	sha256sums = 387b314238a6a59d86b17874cc9436956fa2e4054715d2df97b68ca7271c2f6c
 
 pkgname = keepass-es
