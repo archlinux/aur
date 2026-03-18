@@ -1,6 +1,6 @@
 pkgbase = r-forecast
 	pkgdesc = Forecasting Functions for Time Series and Linear Models
-	pkgver = 9.0.1
+	pkgver = 9.0.2
 	pkgrel = 1
 	url = https://cran.r-project.org/package=forecast
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = r-forecast
 	optdepends = r-seasonal
 	optdepends = r-testthat
 	optdepends = r-uroot
-	source = https://cran.r-project.org/src/contrib/forecast_9.0.1.tar.gz
-	sha256sums = d14113a5228c6aaaebed1d1800e2022364ad4c51779c99e5784c1b649cd54aaa
+	source = https://cran.r-project.org/src/contrib/forecast_9.0.2.tar.gz
+	sha256sums = 86dadffb846903b83fa6471d4e33d29e37435cc492641963a5b1daa925150653
 
 pkgname = r-forecast
