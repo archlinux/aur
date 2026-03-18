@@ -1,8 +1,8 @@
 # Maintainer: John Ramsden <johnramsden [at] riseup [dot] net>
 
 pkgname=zrepl
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.7.0
+pkgrel=1
 pkgdesc='One-stop ZFS backup & replication solution'
 arch=('x86_64')
 url='https://zrepl.github.io/'
@@ -11,7 +11,7 @@ provides=('zrepl')
 conflicts=('zrepl-bin')
 makedepends=('go')
 source=("https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('263c82501b75a1413f8a298c1d67d7e940c1b0cb967979790773237e2a30adbd')
+sha256sums=('d451ad1d05a0afdc752daf1dada9327aa338f691eca91e1c8fc9828eebd89757')
 
 zrepl_version="arch-${pkgver}"
 
@@ -41,7 +41,6 @@ package() {
 
     install -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -m644 "dist/systemd/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-    cp -r "config/samples" "${pkgdir}/usr/share/${pkgname}/samples"
 
     "${pkgdir}/usr/bin/${pkgname}" gencompletion zsh "${pkgdir}/usr/share/zsh/site-functions/_zrepl"
     "${pkgdir}/usr/bin/${pkgname}" gencompletion bash "${pkgdir}/usr/share/bash-completion/completions/zrepl"
