@@ -1,24 +1,24 @@
 pkgbase = pocket-casts-desktop-bin
 	pkgdesc = The Pocket Casts webapp, packaged for the Linux Desktop.(Prebuilt version.Use system-wide electron)
-	pkgver = 0.11.1
+	pkgver = 0.12.0
 	pkgrel = 1
 	url = https://github.com/felicianotech/pocket-casts-desktop-app
 	arch = aarch64
 	arch = x86_64
 	license = MIT
-	depends = electron38
-	provides = pocket-casts=0.11.1
+	depends = electron40
+	provides = pocket-casts=0.12.0
 	conflicts = pocket-casts-desktop
 	conflicts = pocket-casts
 	options = !strip
 	options = !emptydirs
-	source = LICENSE-0.11.1::https://raw.githubusercontent.com/felicianotech/pocket-casts-desktop-app/v0.11.1/LICENSE
+	source = LICENSE-0.12.0::https://raw.githubusercontent.com/felicianotech/pocket-casts-desktop-app/v0.12.0/LICENSE
 	source = pocket-casts-desktop.sh
 	sha256sums = 5478e5a98666c41de828fb7f50c3ea53b05755b7bda7d11211c6b1406d3046ba
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
-	source_aarch64 = pocket-casts-desktop-0.11.1-aarch64.rpm::https://github.com/felicianotech/pocket-casts-desktop-app/releases/download/v0.11.1/pocket-casts-0.11.1-1.arm64.rpm
-	sha256sums_aarch64 = 0feb5f16929d0a394b808c4502cb864aff24403c6db6f4d4b00abed4ebe585e2
-	source_x86_64 = pocket-casts-desktop-0.11.1-x86_64.rpm::https://github.com/felicianotech/pocket-casts-desktop-app/releases/download/v0.11.1/pocket-casts-0.11.1-1.x86_64.rpm
-	sha256sums_x86_64 = bddfce9f1491875511a7ea42a64fc7bbb68929fe117c5f4f48341389b9428b8e
+	source_aarch64 = pocket-casts-desktop-0.12.0-aarch64.rpm::https://github.com/felicianotech/pocket-casts-desktop-app/releases/download/v0.12.0/pocket-casts-0.12.0-1.arm64.rpm
+	sha256sums_aarch64 = c54f2313428ede218a7803710aedf5bf84e17b931e66c3b417b166d4925a414f
+	source_x86_64 = pocket-casts-desktop-0.12.0-x86_64.rpm::https://github.com/felicianotech/pocket-casts-desktop-app/releases/download/v0.12.0/pocket-casts-0.12.0-1.x86_64.rpm
+	sha256sums_x86_64 = 543935a281250bb1608594ac9c782d0028239d61b582fe59778d124373b787c0
 
 pkgname = pocket-casts-desktop-bin
