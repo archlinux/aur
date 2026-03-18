@@ -8,7 +8,7 @@ url=https://github.com/minosariane/Shellforge
 license=('GPL-3.0-only')
 depends=()
 makedepends=('rust' 'cargo')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/minosariane/Shellforge/archive/refs/tags/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/minosariane/Shellforge/archive/refs/tags/1.0.0.tar.gz")
 sha256sums=('SKIP')
 
 build() {
