@@ -1,0 +1,17 @@
+pkgbase = lattice-bin
+	pkgdesc = A modular terminal dashboard built with Go and Bubble Tea
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/floatpane/lattice
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lattice
+	conflicts = lattice
+	conflicts = lattice-bin
+	source_x86_64 = lattice-x86_64-0.1.0.tgz::https://github.com/floatpane/lattice/releases/download/v0.1.0/lattice_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = e9f0d9da898d15c6bb2182532b795c1f3ea45e9e4e85c8949aec27245d899455
+	source_aarch64 = lattice-aarch64-0.1.0.tgz::https://github.com/floatpane/lattice/releases/download/v0.1.0/lattice_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 816d6385185f8550329934a8e7ef1f6c59c3f73ebb78c36c30789546ad9ab4ad
+
+pkgname = lattice-bin

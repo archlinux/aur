@@ -1,0 +1,5 @@
+[lattice-bin]
+source = "github"
+github = "floatpane/lattice"
+use_latest_release = true
+prefix = "v"
