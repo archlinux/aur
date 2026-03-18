@@ -1,6 +1,6 @@
 pkgbase = subtui-bin
 	pkgdesc = Lightweight TUI music player for Subsonic-compatible servers
-	pkgver = 2.12.1
+	pkgver = 2.12.2
 	pkgrel = 1
 	url = https://github.com/MattiaPun/SubTUI
 	arch = x86_64
@@ -10,13 +10,13 @@ pkgbase = subtui-bin
 	provides = subtui
 	conflicts = subtui
 	conflicts = subtui-git
-	source_x86_64 = SubTUI_2.12.1_linux_amd64.deb::https://github.com/MattiaPun/SubTUI/releases/download/v2.12.1/SubTUI_2.12.1_linux_amd64.deb
-	source_x86_64 = LICENSE-2.12.1::https://raw.githubusercontent.com/MattiaPun/SubTUI/v2.12.1/LICENSE
-	sha256sums_x86_64 = d735b24ee7195e30b1ea713d2541ad97eb0b8837323a367490152b7b828a0e0b
+	source_x86_64 = SubTUI_2.12.2_linux_amd64.deb::https://github.com/MattiaPun/SubTUI/releases/download/v2.12.2/SubTUI_2.12.2_linux_amd64.deb
+	source_x86_64 = LICENSE-2.12.2::https://raw.githubusercontent.com/MattiaPun/SubTUI/v2.12.2/LICENSE
+	sha256sums_x86_64 = d0f804a3f2bfde5e16cf9b7d47a6efa26a410ceef11024eee4e95aaa0498e324
 	sha256sums_x86_64 = e05b298099458d6d08933e0c3c0bdd0eb530b837cbce10514ecaf4b601b044c2
-	source_aarch64 = SubTUI_2.12.1_linux_arm64.deb::https://github.com/MattiaPun/SubTUI/releases/download/v2.12.1/SubTUI_2.12.1_linux_arm64.deb
-	source_aarch64 = LICENSE-2.12.1::https://raw.githubusercontent.com/MattiaPun/SubTUI/v2.12.1/LICENSE
-	sha256sums_aarch64 = 5d91ca685c704861eb60be5452d1e692ea14f3fa4068273ae1f36bde77ee7f89
+	source_aarch64 = SubTUI_2.12.2_linux_arm64.deb::https://github.com/MattiaPun/SubTUI/releases/download/v2.12.2/SubTUI_2.12.2_linux_arm64.deb
+	source_aarch64 = LICENSE-2.12.2::https://raw.githubusercontent.com/MattiaPun/SubTUI/v2.12.2/LICENSE
+	sha256sums_aarch64 = 27085bbc76ef77661030a620f11fedfe764382ea69da62bed9378cbcc3fd2b59
 	sha256sums_aarch64 = e05b298099458d6d08933e0c3c0bdd0eb530b837cbce10514ecaf4b601b044c2
 
 pkgname = subtui-bin
