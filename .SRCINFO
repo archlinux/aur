@@ -1,6 +1,6 @@
 pkgbase = metabase-driver-duckdb
 	pkgdesc = DuckDB driver for Metabase
-	pkgver = 1.4.3.1
+	pkgver = 1.4.4.0
 	pkgrel = 1
 	url = https://github.com/motherduckdb/metabase_duckdb_driver
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = metabase-driver-duckdb
 	depends = metabase
 	noextract = duckdb.metabase-driver.jar
 	options = !strip
-	source = https://github.com/motherduckdb/metabase_duckdb_driver/releases/download/1.4.3.1/duckdb.metabase-driver.jar
+	source = https://github.com/motherduckdb/metabase_duckdb_driver/releases/download/1.4.4.0/duckdb.metabase-driver.jar
 	b2sums = 786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce
 
 pkgname = metabase-driver-duckdb
