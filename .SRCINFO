@@ -1,7 +1,7 @@
 pkgbase = cursor-ide-bin
 	pkgdesc = The AI Code Editor (uses bundled Electron)
-	pkgver = 2.6.19
-	pkgrel = 3
+	pkgver = 2.6.20
+	pkgrel = 1
 	url = https://www.cursor.com
 	arch = x86_64
 	license = LicenseRef-Cursor_EULA
@@ -21,13 +21,13 @@ pkgbase = cursor-ide-bin
 	optdepends = libdbusmenu-glib: KDE global menu support
 	provides = cursor
 	conflicts = cursor-bin
-	noextract = cursor_2.6.19_amd64.deb
+	noextract = cursor_2.6.20_amd64.deb
 	options = !strip
 	options = !debug
-	source = cursor_2.6.19_amd64.deb::https://downloads.cursor.com/production/224838f96445be37e3db643a163a817c15b3606c/linux/x64/deb/amd64/deb/cursor_2.6.19_amd64.deb
+	source = cursor_2.6.20_amd64.deb::https://downloads.cursor.com/production/b29eb4ee5f9f6d1cb2afbc09070198d3ea6ad76f/linux/x64/deb/amd64/deb/cursor_2.6.20_amd64.deb
 	source = cursor.desktop
 	source = cursor-launcher.sh
-	sha256sums = SKIP
+	sha256sums = 52e9aaf046cb875ef697c48c5b8e3ca55883465c788382c23ab54d5f3b51041f
 	sha256sums = SKIP
 	sha256sums = SKIP
 

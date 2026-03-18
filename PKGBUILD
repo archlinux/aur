@@ -1,8 +1,8 @@
 # Maintainer: lone-cloud <lonecloud604@pm.me>
 
 pkgname=cursor-ide-bin
-pkgver=2.6.19
-pkgrel=3
+pkgver=2.6.20
+pkgrel=1
 pkgdesc='The AI Code Editor (uses bundled Electron)'
 arch=('x86_64')
 url="https://www.cursor.com"
@@ -31,13 +31,13 @@ optdepends=(
 
 options=(!strip !debug)
 
-_commit=224838f96445be37e3db643a163a817c15b3606c
+_commit=b29eb4ee5f9f6d1cb2afbc09070198d3ea6ad76f
 source=(
   "cursor_${pkgver}_amd64.deb::https://downloads.cursor.com/production/${_commit}/linux/x64/deb/amd64/deb/cursor_${pkgver}_amd64.deb"
   "cursor.desktop"
   "cursor-launcher.sh"
 )
-sha256sums=('SKIP'
+sha256sums=('52e9aaf046cb875ef697c48c5b8e3ca55883465c788382c23ab54d5f3b51041f'
             'SKIP'
             'SKIP')
 noextract=("cursor_${pkgver}_amd64.deb")
