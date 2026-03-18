@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=biomformat
-_pkgver=1.38.0
+_pkgver=1.38.3
 pkgname=r-${_pkgname,,}
-pkgver=1.38.0
+pkgver=1.38.3
 pkgrel=1
 pkgdesc='An interface package for the BIOM file format'
 arch=('any')
@@ -22,7 +22,7 @@ optdepends=(
   r-testthat
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('cc87ee37ada8ec29953bc18e39a61f5e8c01c1e00fbc8e8f47e4bddc5c7cacf9')
+sha256sums=('a735989356bc93006d3e37f68912d9f6ee0a4a24cb0e451d821711d25d051c2c')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
