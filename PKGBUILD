@@ -1,7 +1,7 @@
 # Maintainer: CPT-Dawn <dawnsp0456@gmail.com>
 pkgname=nexus-nm
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful modern TUI WiFi manager for Arch Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/CPT-Dawn/Nexus"
