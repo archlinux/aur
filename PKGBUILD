@@ -1,6 +1,6 @@
 # Maintainer: qt-ami3
 pkgname=2048shell
-pkgver=1.3.22
+pkgver=1.3.23
 pkgrel=1
 pkgdesc="2048 game playable in the terminal"
 arch=('x86_64' 'aarch64')
@@ -23,6 +23,6 @@ build() {
 
 package() {
   cd "$pkgname"
-  install -Dm755 build/2048shell "$pkgdir/usr/bin/2048shell"
+  install -Dm755 build/2048 "$pkgdir/usr/bin/2048shell"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

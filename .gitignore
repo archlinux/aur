@@ -1,0 +1,5 @@
+src/
+pkg/
+2048shell/
+*.pkg.tar.zst
+*.pkg.tar.xz
