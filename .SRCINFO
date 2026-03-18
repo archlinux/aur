@@ -1,7 +1,7 @@
 pkgbase = aseprite
 	pkgdesc = Create animated sprites and pixel art
 	pkgver = 1.3.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.aseprite.org/
 	arch = x86_64
 	license = LicenseRef-Aseprite-EULA
@@ -12,7 +12,7 @@ pkgbase = aseprite
 	makedepends = libxi
 	makedepends = gn
 	makedepends = harfbuzz-icu
-	makedepends = clang
+	makedepends = clang>=22
 	depends = cmark
 	depends = libcurl.so
 	depends = libgif.so
@@ -36,11 +36,10 @@ pkgbase = aseprite
 	depends = libxrandr
 	noextract = Aseprite-v1.3.17-Source.zip
 	noextract = skia-m124.tar.gz
-	noextract = aseprite-skia-m124-flutter.tar.gz
 	source = https://github.com/aseprite/aseprite/releases/download/v1.3.17/Aseprite-v1.3.17-Source.zip
 	source = skia-m124.tar.gz::https://github.com/aseprite/skia/archive/refs/tags/m124-08a5439a6b.tar.gz
 	source = skia-m124-icu::git+https://chromium.googlesource.com/chromium/deps/icu.git#commit=a0718d4f121727e30b8d52c7a189ebf5ab52421f
-	source = aseprite-strings::git+https://github.com/aseprite/strings.git#commit=0f49265d7e7aea4b862b7d1e670ed969e8a469b8
+	source = aseprite-strings::git+https://github.com/aseprite/strings.git#commit=4478b7893f7d0ea228de1297ad4c3f8738fc14af
 	source = desktop.patch
 	source = shared-fmt.patch
 	source = shared-libarchive.patch
@@ -51,10 +50,11 @@ pkgbase = aseprite
 	source = shared-libwebp-found.patch
 	source = include_cstdint.patch
 	source = shared_libjpeg-turbo.patch
+	source = change_use_of_removed_intrinsic.patch
 	sha256sums = 887dd92c0d47988848f86405c05d73ba6af9e572a37fa63870350ac3d2ef3782
 	sha256sums = c2a567d6b8bb933a92615cbdee0de268d02c3a06863337ee8822eedab9ed66ba
 	sha256sums = b52f179a687ef2f91a52b696ab6581f4a37df5e88cb22040fa1ec6567cf0ebb1
-	sha256sums = c246ab3a2f1dad3b0244ea4e571404978c748777b8814670d2798e137e9e0d4f
+	sha256sums = 072fba43e412c03972e325c256d6673cc4472c02d5e373efacdd56798439afb9
 	sha256sums = 8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9
 	sha256sums = c3591d376180d99ff8001c3d549c0bd18ef5e4d95f1755ccaa8e2fd65dd5d2b3
 	sha256sums = 96d75ecc951712e80734f476511658fcc3c91fc1655fe9a01453c3fc8c2a9274
@@ -65,5 +65,6 @@ pkgbase = aseprite
 	sha256sums = 72605d6760c29eb98f2d8d8cf2cc9f9f7d7655bcf7cfc944f6a46b0957adbb14
 	sha256sums = 3381038fc5209600428801fa0b2b05ddee031b0926eaa75c114172e503916cd5
 	sha256sums = 0fa67d34f63cb4ed472b620ebad0656aeca646cb7f1069b7066ee91e6902fe6c
+	sha256sums = 1276dd96f9ba63ce942b7321f5f753b02119c99b2eaf652ea5998b90d5d5a1d2
 
 pkgname = aseprite

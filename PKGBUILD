@@ -13,7 +13,7 @@ pkgname=aseprite
 pkgver=1.3.17
 _skiaver=m124
 _skiahash=08a5439a6b
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -38,9 +38,8 @@ makedepends=(# "Meta" dependencies
              libxi
              # Skia
              gn harfbuzz-icu
-             # TODO: Benchmark clang v gcc
-             # Fuck it, compiling with GCC>=13 is broken and I'm not gonna write a patch to fix it
-             clang
+             # Upstream recommends using clang
+             'clang>=22'
              )
 source=("https://github.com/aseprite/aseprite/releases/download/v1.3.17/Aseprite-v1.3.17-Source.zip"
         # Which branch a given build of Aseprite requires is noted in its `INSTALL.md`
@@ -48,7 +47,7 @@ source=("https://github.com/aseprite/aseprite/releases/download/v1.3.17/Aseprite
         # forgive me, I couldn't figure out linker errors.
         # update commit with skia
         skia-$_skiaver-icu::git+https://chromium.googlesource.com/chromium/deps/icu.git#commit=a0718d4f121727e30b8d52c7a189ebf5ab52421f
-		aseprite-strings::git+https://github.com/aseprite/strings.git#commit=0f49265d7e7aea4b862b7d1e670ed969e8a469b8
+		aseprite-strings::git+https://github.com/aseprite/strings.git#commit=4478b7893f7d0ea228de1297ad4c3f8738fc14af
         desktop.patch
         shared-fmt.patch
         # Based on https://patch-diff.githubusercontent.com/raw/aseprite/aseprite/pull/2535.patch
@@ -60,14 +59,14 @@ source=("https://github.com/aseprite/aseprite/releases/download/v1.3.17/Aseprite
         fix-shared-tinyxml2.patch
         shared-libwebp-found.patch
         include_cstdint.patch
-        shared_libjpeg-turbo.patch)
+        shared_libjpeg-turbo.patch
+        change_use_of_removed_intrinsic.patch)
 noextract=("Aseprite-v$pkgver-Source.zip"
-           "skia-$_skiaver.tar.gz"
-           "aseprite-skia-$_skiaver-flutter.tar.gz") # Don't extract Aseprite or skia sources at the root
+           "skia-$_skiaver.tar.gz") # Don't extract Aseprite or skia sources at the root
 sha256sums=('887dd92c0d47988848f86405c05d73ba6af9e572a37fa63870350ac3d2ef3782'
             'c2a567d6b8bb933a92615cbdee0de268d02c3a06863337ee8822eedab9ed66ba'
             'b52f179a687ef2f91a52b696ab6581f4a37df5e88cb22040fa1ec6567cf0ebb1'
-            'c246ab3a2f1dad3b0244ea4e571404978c748777b8814670d2798e137e9e0d4f'
+            '072fba43e412c03972e325c256d6673cc4472c02d5e373efacdd56798439afb9'
             '8b14e36939e930de581e95abf0591645aa0fcfd47161cf88b062917dbaaef7f9'
             'c3591d376180d99ff8001c3d549c0bd18ef5e4d95f1755ccaa8e2fd65dd5d2b3'
             '96d75ecc951712e80734f476511658fcc3c91fc1655fe9a01453c3fc8c2a9274'
@@ -77,7 +76,8 @@ sha256sums=('887dd92c0d47988848f86405c05d73ba6af9e572a37fa63870350ac3d2ef3782'
             'ba02fc060dc930cfd66a8903a5d8a59f981753bdf416e91cc77a48c56c86aea3'
             '72605d6760c29eb98f2d8d8cf2cc9f9f7d7655bcf7cfc944f6a46b0957adbb14'
             '3381038fc5209600428801fa0b2b05ddee031b0926eaa75c114172e503916cd5'
-            '0fa67d34f63cb4ed472b620ebad0656aeca646cb7f1069b7066ee91e6902fe6c')
+            '0fa67d34f63cb4ed472b620ebad0656aeca646cb7f1069b7066ee91e6902fe6c'
+            '1276dd96f9ba63ce942b7321f5f753b02119c99b2eaf652ea5998b90d5d5a1d2')
 _debug="true"
 prepare() {
 	# Extract Aseprite's sources
@@ -114,6 +114,8 @@ prepare() {
 	env -C aseprite patch -tp1 <shared_libjpeg-turbo.patch
 	[[ -n $_debug ]] && echo include_cstdint.patch
 	patch -tp1 <include_cstdint.patch
+	[[ -n $_debug ]] && echo change_use_of_removed_intrinsic.patch
+	env -C skia/modules/skcms/ patch -tp1 <change_use_of_removed_intrinsic.patch
 }
 
 build() {
