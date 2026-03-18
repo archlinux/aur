@@ -1,0 +1,16 @@
+pkgbase = python-citifile
+	pkgdesc = To parse CITI format file to xarray.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/TitorX/CITIfile
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-xarray
+	source = https://files.pythonhosted.org/packages/75/b7/b369723e805e12b0ed921ada0d94589d13281f6e3052c279a6ceae788bde/citifile-0.1.6.tar.gz
+	sha256sums = e374a86a24dd4eaf81ee7707ee0c3bab08f910e45a896a4208d773776a0ec5c1
+
+pkgname = python-citifile
