@@ -1,0 +1,3 @@
+[perl-test-identity]
+source = "cpan"
+cpan = "Test-Identity"
