@@ -1,6 +1,6 @@
 pkgbase = mpdris
 	pkgdesc = A MPD client implementing the dbus MPRIS standard written in rust
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/jasger9000/mpdris
 	arch = x86_64

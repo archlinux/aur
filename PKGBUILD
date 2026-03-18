@@ -2,7 +2,7 @@
 # Author: J. Gerhards <g1.jasger@gmail.com>
 
 pkgname=mpdris
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A MPD client implementing the dbus MPRIS standard written in rust'
 url='https://github.com/jasger9000/mpdris'
@@ -13,9 +13,9 @@ conflicts=()
 depends=('glibc' 'libgcc')
 optdepends=('libsystemd: run mpdris as a service')
 makedepends=('cargo')
-_hash='6b0652d'
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('d78530965b10e448f9c25057ac49616a982ed8fa73501f3bb0b7db95a8ee6a88')
+_hash='18f8579'
 
 
 prepare() {
