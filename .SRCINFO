@@ -16,7 +16,7 @@ pkgbase = python-sgl-kernel
 	depends = python-pytorch-cuda
 	depends = cuda
 	options = !strip
-	source = sgl-kernel-0.3.21.tar.gz::https://github.com/sgl-project/sglang/archive/refs/tags/v0.3.21.tar.gz
+	source = sglang-0.5.9.tar.gz::https://github.com/sgl-project/sglang/archive/refs/tags/v0.5.9.tar.gz
 	sha256sums = 5905242df108f4b6be1784192e7a9d0504e6251872d497a61cfc1fac2410bbad
 
 pkgname = python-sgl-kernel
