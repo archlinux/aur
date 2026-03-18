@@ -1,0 +1,23 @@
+pkgbase = swaync-history-git
+	pkgdesc = Notification history logger and replayer for swaync
+	pkgver = r5.e7b3e2d
+	pkgrel = 1
+	url = https://github.com/adrianlzt/swaync-history
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python>=3.12
+	depends = python-notify2
+	depends = python-dbus
+	depends = python-gobject
+	depends = swaync
+	provides = swaync-history
+	conflicts = swaync-history
+	source = git+https://github.com/adrianlzt/swaync-history
+	sha256sums = SKIP
+
+pkgname = swaync-history-git
