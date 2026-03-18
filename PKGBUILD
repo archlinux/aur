@@ -19,8 +19,12 @@ conflicts=(
 )
 source=(
     "git+https://github.com/SteamClientHomebrew/${_Pkgname}.git#branch=main"
+    # Add patches after this line!
 )
-sha256sums=('SKIP')
+sha256sums=(
+    'SKIP'
+    # Add checksums for patches after this line!
+)
 options=(!debug)
 install="${_pkgname}.install"
 
@@ -44,7 +48,6 @@ pkgver() {
 
 build() {
     cd             "${srcdir}/${_Pkgname}"
-    export         NODE_NO_WARNINGS=1
 
     echo -e        "\e[1m\e[92m==>\e[0m \e[1mBuilding ${_Pkgname}...\e[0m"
 
