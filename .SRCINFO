@@ -1,5 +1,5 @@
 pkgbase = waydroid-biglinux
-	pkgdesc = Simplify waydroid usage
+	pkgdesc = Use Waydroid on X11
 	pkgver = r25.f84180a
 	pkgrel = 1
 	url = https://github.com/biglinux/waydroid-biglinux
