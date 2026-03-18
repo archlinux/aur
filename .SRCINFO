@@ -14,7 +14,6 @@ pkgbase = mpdris-git
 	optdepends = libsystemd: run mpdris as a service
 	provides = mpdris=1.2.0.r49.g2e32af1
 	conflicts = mpdris
-	options = !lto
 	source = mpdris::git+https://github.com/jasger9000/mpdris.git
 	sha256sums = SKIP
 

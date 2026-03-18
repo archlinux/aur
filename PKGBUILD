@@ -16,7 +16,6 @@ makedepends=('cargo' 'git')
 optdepends=('libsystemd: run mpdris as a service')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
-options=(!lto)
 
 prepare() {
   cd "$srcdir/$_pkgname"
