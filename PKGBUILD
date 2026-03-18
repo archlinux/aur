@@ -1,8 +1,9 @@
-# Maintainer: Pawel Mozdzonek <rockplayer.pl@gmail.com>
+# Maintainer: Achim Schumacher <aur@code.grisumedia.de>
+# Contributor: Pawel Mozdzonek <rockplayer.pl@gmail.com>
 
 pkgname=python-garth
 _name=${pkgname#python-}
-pkgver=0.5.7
+pkgver=0.7.9
 pkgrel=1
 pkgdesc="Python module for Garmin SSO auth + Connect client"
 arch=(any)
@@ -25,7 +26,7 @@ makedepends=(
 checkdepends=(python-oauthlib)
 
 source=("${pkgname}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('00c44400a1496c0078c1077c409f1f382628801c0fd76c0f8f56f7f98fe31303')
+sha256sums=('6a4ad202cfaffe7ab69bec60eca9e24d99deebaf660cc05f0b89c6fa60a99dc6')
 
 _archive="${_name}-${pkgver}"
 
