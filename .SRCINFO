@@ -1,0 +1,19 @@
+pkgbase = bebz-essentials
+	pkgdesc = Packages de base pour la Bebzerie sur Arch
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org
+	arch = any
+	license = MIT
+	depends = nvidia-dkms
+	depends = nvidia-utils
+	depends = steam
+	depends = discord
+	depends = networkmanager
+	depends = nm-connection-editor
+	depends = bluez
+	depends = bluez-utils
+	depends = git
+	depends = base-devel
+
+pkgname = bebz-essentials
