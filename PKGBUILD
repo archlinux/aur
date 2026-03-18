@@ -11,8 +11,14 @@ depends=(
   'python-aiohttp'
   'python-numpy'
   'python-pybase64'
+  'python-partial-json-parser'
   'python-pydantic'
   'python-requests'
+  'python-pytorch-cuda'
+  'python-safetensors'
+  'python-torchvision'
+  'python-transformers'
+  'python-triton'
   'python-setproctitle'
   'python-tqdm'
   'ipython'
@@ -50,11 +56,8 @@ optdepends=(
   'python-soundfile: Audio file support'
   'python-tiktoken: OpenAI tokenizer'
   'python-timm: Vision model library'
-  'python-transformers: Model loading and tokenization'
   'uvicorn: ASGI server'
   'python-uvloop: Fast event loop'
-  # GPU runtime
-  'python-pytorch: Model serving runtime'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('5905242df108f4b6be1784192e7a9d0504e6251872d497a61cfc1fac2410bbad')
