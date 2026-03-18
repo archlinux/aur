@@ -4,7 +4,7 @@
 # Contributor: Samuel Walladge <samuel at swalladge dot net>
 
 pkgname=tagspaces-bin
-pkgver=6.10.1
+pkgver=6.10.2
 pkgrel=1
 pkgdesc="An offline, open source, document manager with tagging support"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=("${pkgname%-bin}")
 
 source=("https://github.com/tagspaces/tagspaces/releases/download/v$pkgver/${pkgname%-bin}-linux-amd64-$pkgver.deb")
 
-sha256sums=('dc787f4365afb0f20238293d9fd74ea0d3e2762cc61fb350a87e525e73e8d5c7')
+sha256sums=('0ce8add97104b3307fdfba24df8655b8eb69206ce027a869d0cae9b17c55f75e')
 
 package() {
   bsdtar -xvf data.tar.xz -C "$pkgdir/"
