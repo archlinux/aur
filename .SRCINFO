@@ -1,0 +1,22 @@
+pkgbase = rmw-git
+	pkgdesc = trash/recycle bin utility for the command line
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = https://theimpossibleastronaut.com/rmw-website/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = glibc
+	depends = ncurses
+	optdepends = gettext
+	optdepends = canfigger
+	provides = rmw
+	conflicts = rmw
+	source = git+https://github.com/theimpossibleastronaut/rmw.git
+	sha256sums = SKIP
+
+pkgname = rmw-git
