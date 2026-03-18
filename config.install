@@ -1,0 +1,4 @@
+post_install() {
+  echo "==> To complete setup, copy the default config to your home directory:"
+  echo "==> cp /usr/share/itsa/config.json.tmpl ~/.config/itsa/config.json"
+}
