@@ -8,7 +8,7 @@
 #   python packaging/update_release.py <version>
 
 pkgname=azadi-bin
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="azadi — literate programming toolchain"
 url="https://github.com/giannifer7/azadi"
@@ -19,7 +19,7 @@ conflicts=('azadi' 'azadi-git')
 depends=('gcc-libs' 'glibc')
 options=('!debug')
 source=("azadi-x86_64-linux.tar.gz::https://github.com/giannifer7/azadi/releases/download/v${pkgver}/azadi-x86_64-linux.tar.gz")
-sha256sums=('2655d7236e6058ba90f3add60a633a782be590948c6cd40aa825373f597de011')
+sha256sums=('ea53246ff4671fc32376b74924bdd747d0e134e144dd969c5993e0859bc7d0ca')
 
 package() {
     install -Dm755 azadi -t "${pkgdir}/usr/bin"
