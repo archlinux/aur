@@ -30,7 +30,7 @@ package() {
 
 	install -Dm755 /dev/stdin "$pkgdir/usr/bin/shaweeltimer" << "EOF"
 #!/bin/sh
-export GSK_RENDERER=ngl
+export GSK_RENDERER=gl
 exec python3 /usr/lib/shaweelTimer/main.py "$@"
 EOF
 
