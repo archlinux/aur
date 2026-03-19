@@ -17,10 +17,12 @@ pkgbase = vatsim-crc
 	source = vatsim-crc.install
 	source = vatsim-crc.desktop
 	source = segmdl2.verb
+	source = webview2.verb
 	sha256sums = 68146125d78d14ea7efb54b0d19de41c759bdb59721ced7bdd454f237f8efcd8
-	sha256sums = f2d4af3120c08d865a0aa8bada569197c571a3cae75f5ad1a6aa30eb17b4982c
+	sha256sums = b17c8697b0cc7e593e992e80d8ecdc0d82c6aa83006f394e148c72bfc2afb43f
 	sha256sums = 3cf58dcb82541202679f2b07f4ac15ebb22076411ee8e5533970f2e7756815db
 	sha256sums = 1ebb426abfff168706256df00a93661e2a97f2ec095c87906934538ae25a9926
 	sha256sums = ea73951541c4f66e65c7ea6c7e2349f6e93ac4f6988516308b3a2522d4751c74
+	sha256sums = 4d70f0de1ce7105b21808ecb890993c05333f51a24b2b11bfa000b5abf2f129e
 
 pkgname = vatsim-crc

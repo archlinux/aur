@@ -19,7 +19,7 @@ if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
   rm "$WINEPREFIX/.installed*"
   wine wineboot -u
   notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
-  winetricks --unattended arial tahoma courier webview2 /usr/share/vatsim-crc/segmdl2.verb
+  winetricks --unattended arial tahoma courier /usr/share/vatsim-crc/segmdl2.verb /usr/share/vatsim-crc/webview2.verb
   wine reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
   ln -svf $HOME/.$progName $WINEPREFIX/drive_c/$progName
   for i in $(ls /usr/share/$progName); do
