@@ -1,6 +1,6 @@
 pkgbase = python-lameenc
 	pkgdesc = Python bindings for the LAME encoding library
-	pkgver = 1.8.1
+	pkgver = 1.8.2
 	pkgrel = 1
 	url = https://github.com/chrisstaite/lameenc
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = python-lameenc
 	depends = glibc
 	depends = lame
 	depends = python
-	source = lameenc-1.8.1.tar.gz::https://github.com/chrisstaite/lameenc/archive/v1.8.1.tar.gz
+	source = lameenc-1.8.2.tar.gz::https://github.com/chrisstaite/lameenc/archive/v1.8.2.tar.gz
 	source = use-system-lame.patch
-	sha512sums = 195fd9a7a1856a47d0b70101bfe0a4c8a1b81d7cde9d43e0981beb9cb5f1a46cea9c2a93702c9d9ce6f1817a1e60fe75e6fc574974f39774b40bff7423069b7c
+	sha512sums = 99a76548c7078ca26831d825f153329464f6e7e8d52dc49ce386a6a7b78a63073515c16e8386bda17794b4b90f0de19a285af1f579d9c873b2232104a93b125d
 	sha512sums = d9b262a333afe1a00415a4b76257b9d966a08ce618b5dd5daade9cdfef03d986343ecfbdf0e21d218f9f10b1bae52fb6af2697ee6ee338b4c599127f4e8b62a2
 
 pkgname = python-lameenc
