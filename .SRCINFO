@@ -1,6 +1,6 @@
 pkgbase = vsfetch-settings
 	pkgdesc = Graphical settings editor for vsFetch — GTK3 config manager with live preview and theme tools
-	pkgver = 1.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/victorsosaMx/vsFetch-Settings
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = vsfetch-settings
 	optdepends = vsfetch: for live preview
 	optdepends = matugen: palette generation from image or color
 	optdepends = ttf-jetbrains-mono-nerd: icons in labels
-	source = vsfetch-settings-1.0.tar.gz::https://github.com/victorsosaMx/vsFetch-Settings/archive/refs/tags/v1.0.tar.gz
-	sha256sums = be09138bc74250b9907b4d6a1ff438c43e2337205e77936583e54ed9bc42abaf
+	source = vsfetch-settings-1.0.1.tar.gz::https://github.com/victorsosaMx/vsFetch-Settings/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = bee5f138ec78a39ee941c65cafcf5d1a61bfea8c26f91d042dcc9c93f1883a9f
 
 pkgname = vsfetch-settings

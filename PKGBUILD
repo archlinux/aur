@@ -1,6 +1,6 @@
 # Maintainer: Víctor Hugo Sosa Esquivel <arch@victorsosa.com>
 pkgname=vsfetch-settings
-pkgver=1.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Graphical settings editor for vsFetch — GTK3 config manager with live preview and theme tools"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=(
     'ttf-jetbrains-mono-nerd: icons in labels'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/victorsosaMx/vsFetch-Settings/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('be09138bc74250b9907b4d6a1ff438c43e2337205e77936583e54ed9bc42abaf')
+sha256sums=('bee5f138ec78a39ee941c65cafcf5d1a61bfea8c26f91d042dcc9c93f1883a9f')
 
 package() {
     cd "vsFetch-Settings-${pkgver}"
