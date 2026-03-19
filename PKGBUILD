@@ -29,7 +29,6 @@ prepare() {
     cd "orbit-$pkgver"
     export CFLAGS="${CFLAGS/-O2/}"
     export CXXFLAGS="${CXXFLAGS/-O2/}"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
@@ -38,7 +37,7 @@ build() {
     unset CXXFLAGS
     unset LDFLAGS
     export AWS_LC_SYS_CMAKE_BUILDER=1
-    cargo build --frozen --release
+    cargo build --release
 }
 
 package() {
