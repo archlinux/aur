@@ -1,6 +1,6 @@
 pkgbase = helix-steel-git
 	pkgdesc = Helix fork with Steel event system support (git, replaces helix)
-	pkgver = 8eeddbf7
+	pkgver = r0.00000000
 	pkgrel = 1
 	url = https://github.com/mattwparas/helix
 	arch = x86_64
