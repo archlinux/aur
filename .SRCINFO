@@ -1,6 +1,6 @@
 pkgbase = voxtral.c-git
 	pkgdesc = Pure C inference engine for Mistral AI's Voxtral Realtime 4B speech-to-text model
-	pkgver = r45.134d366
+	pkgver = r0.0000000
 	pkgrel = 1
 	url = https://github.com/antirez/voxtral.c
 	arch = x86_64

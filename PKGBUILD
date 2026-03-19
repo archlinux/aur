@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=voxtral.c-git
-pkgver=r45.134d366
+pkgver=r0.0000000
 pkgrel=1
 pkgdesc="Pure C inference engine for Mistral AI's Voxtral Realtime 4B speech-to-text model"
 arch=('x86_64')
