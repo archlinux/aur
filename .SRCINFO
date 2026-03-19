@@ -1,6 +1,6 @@
 pkgbase = handy-bin
 	pkgdesc = A free, open source, and extensible speech-to-text application that works completely offline
-	pkgver = 0.7.11
+	pkgver = 0.7.12
 	pkgrel = 1
 	url = https://handy.computer/
 	arch = x86_64
@@ -20,9 +20,9 @@ pkgbase = handy-bin
 	depends = webkit2gtk-4.1
 	provides = handy
 	conflicts = handy
-	source = handy-bin-0.7.11.deb::https://github.com/cjpais/Handy/releases/download/v0.7.11/Handy_0.7.11_amd64.deb
+	source = handy-bin-0.7.12.deb::https://github.com/cjpais/Handy/releases/download/v0.7.12/Handy_0.7.12_amd64.deb
 	source = https://raw.githubusercontent.com/cjpais/Handy/refs/heads/main/LICENSE
-	b2sums = 57f340c4ae18e0757c4841d29419da376ee6a6a6143bea2c5d0bd36e02dbc46345c8cf46c5fcf48685c63eb9fbdd694ca00941ba5d5a43b103f2dc156c0bb9e2
+	b2sums = 102a653b651e18c16036dcc848fdae1b6f25f49dc3d54af7bfc06fd5e6842bb9ee13d0f62cab2e5953058b87fcf98f68c4ee70aa64c69942a208b1d3e51a552c
 	b2sums = 48678eca5b87a0b59038c8b343d84073207bca4390ad40ac81f2f96dc553cc66453f0f6331749d4686aa7153875bdaf2e08b2adf2bef023ee6044518955a7950
 
 pkgname = handy-bin
