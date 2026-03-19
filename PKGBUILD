@@ -1,4 +1,4 @@
-# Maintainer: tippfehlr <tippfehlr@tippfehlr.eu>
+# Maintainer: Jonathan Grotelüschen <tippfehlr@archlinux.org>
 
 pkgname="radicle-httpd-bin"
 epoch=2
@@ -22,10 +22,10 @@ provides=("radicle-httpd")
 conflicts=("radicle-httpd")
 
 package() {
-	pushd "radicle-httpd-$pkgver-$CARCH-unknown-linux-musl" >/dev/null
-	install -Dm755 "bin/radicle-httpd" "$pkgdir/usr/bin/radicle-httpd"
-	install -Dm644 "man/man1/radicle-httpd.1" "$pkgdir/usr/share/man/man1/radicle-httpd.1"
-	popd >/dev/null
 	install -Dm644 "radicle-httpd.service" "$pkgdir/usr/lib/systemd/user/radicle-httpd.service"
 	install -Dm644 "$pkgname-$pkgver-LICENSE-MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
+
+	cd "radicle-httpd-$pkgver-$CARCH-unknown-linux-musl"
+	install -Dm755 "bin/radicle-httpd" "$pkgdir/usr/bin/radicle-httpd"
+	install -Dm644 "man/man1/radicle-httpd.1" "$pkgdir/usr/share/man/man1/radicle-httpd.1"
 }

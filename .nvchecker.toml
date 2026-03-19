@@ -1,4 +1,4 @@
 [radicle-httpd-bin]
-source = "jq"
-url = "https://files.radicle.xyz/releases/radicle-httpd/latest/radicle-httpd.json"
-filter = ".version"
+source = "git"
+git = "https://seed.radicle.xyz/z4V1sjrXqjvFdnCUbxPFqd5p4DtH5.git"
+prefix = "releases/"
