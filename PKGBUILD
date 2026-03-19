@@ -1,12 +1,12 @@
 # Maintainer: badcast <lmecomposer@gmail.com> or <support@imister.kz>
 # Contributor: Artem Izmaylov <support@aimp.ru>
 
-_pkver=(6.00 3048)
+_pkver=(6.00 3051)
 pkgname=aimp
 pkgver=${_pkver[0]}.${_pkver[1]}
 pkgrel=1
 url="https://www.aimp.ru"
-pkgdesc="Powerful free audio player, converter and tag editor (v6 Alpha, Unstable)"
+pkgdesc="Powerful free audio player, converter and tag editor (v6 Beta, Unstable)"
 arch=('x86_64')
 conflicts=('aimp')
 provides=('aimp')
@@ -15,8 +15,11 @@ depends=('hicolor-icon-theme' 'gtk3' 'gdk-pixbuf2' 'cairo' 'pango' 'sqlite' 'lib
 optdepends=('libappindicator: extend app-menu support')
 source=(
    "https://imister.kz/linux/aimp-nightly-x86_64.pkg.tar.zst"
+   "changelog"
 )
-sha256sums=('b563df17665f9a4e1a67a0c53019706048f59f0d3cd31abe740cf907a5d5f54b')
+sha256sums=('bc2a2c881cff1132f930f40d60b0494eb52b4975846196c663ef3aa57011b851'
+            'a3af88eecc2669efac048d00cd66a33a74b8e9023b29607d96207132e67a138d')
+changelog=changelog
 
 package(){
    rm -fr "${srcdir}/usr/share/lintian"
