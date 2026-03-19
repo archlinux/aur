@@ -1,13 +1,12 @@
 pkgbase = amass
 	pkgdesc = In-depth Attack Surface Mapping and Asset Discovery
-	pkgver = 4.2.0
+	pkgver = 5.0.1
 	pkgrel = 1
 	url = https://github.com/OWASP/Amass
-	arch = any
+	arch = x86_64
 	license = Apache
 	makedepends = go
-	makedepends = git
-	source = Amass-4.2.0.tar.gz::https://github.com/OWASP/Amass/archive/v4.2.0.tar.gz
-	sha512sums = 35e6731e699cb81366b190b7ed4a20b730fd33350a3ee25f7467f3a73e4d84e1e8538c1bc5ab4687cd1f034376005d92956cb2687edb3532b547330a5123bf3d
+	source = Amass-5.0.1.tar.gz::https://github.com/OWASP/Amass/archive/v5.0.1.tar.gz
+	sha512sums = af39b7ea789dd54c06a0da029d6ddf7d0dbebdc9aa6fbb22c6217629d9d6817ef73ad6030e4aba68887da667a792718aed74f2167045a2a6fbd27a530d0af44f
 
 pkgname = amass

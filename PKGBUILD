@@ -1,43 +1,25 @@
-# Maintainer: CodingKoala <lesy.dimitri+aur@gmail.com>
+# Maintainer: shbernal <shbernal.01@gmail.com>
 # Contributor: architekton <architekton350@gmail.com>
 
 pkgname=amass
-pkgver=4.2.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="In-depth Attack Surface Mapping and Asset Discovery"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/OWASP/Amass"
 license=('Apache')
-makedepends=('go' 'git')
+makedepends=('go')
 source=(Amass-$pkgver.tar.gz::https://github.com/OWASP/Amass/archive/v${pkgver}.tar.gz)
-sha512sums=('35e6731e699cb81366b190b7ed4a20b730fd33350a3ee25f7467f3a73e4d84e1e8538c1bc5ab4687cd1f034376005d92956cb2687edb3532b547330a5123bf3d')
+sha512sums=('af39b7ea789dd54c06a0da029d6ddf7d0dbebdc9aa6fbb22c6217629d9d6817ef73ad6030e4aba68887da667a792718aed74f2167045a2a6fbd27a530d0af44f')
 
 build() {
   cd "amass-$pkgver"
-
-  mkdir bin
-  go build \
-    -trimpath \
-    -ldflags "-extldflags $LDFLAGS" \
-    -v -o bin/ ./cmd/...
-}
-
-check() {
-  cd "amass-$pkgver"
-
-  go test ./...
-
-  # Remove golang mod cache otherwise makepkg clean doesn't work due to perms
-  go clean -modcache
+  mkdir -p bin
+  CGO_ENABLED=0 go build -trimpath -o bin/amass ./cmd/amass
 }
 
 package() {
   cd "amass-$pkgver"
-
-  install -dm 755 "${pkgdir}/usr/share/${pkgname}"
-  install -Dm 755 "bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-
-  cp -a --no-preserve=ownership "examples/" "${pkgdir}/usr/share/${pkgname}"
-  find "${pkgdir}/usr/share/${pkgname}/examples" -type d -exec chmod 755 {} \;
-  find "${pkgdir}/usr/share/${pkgname}/examples" -type f -exec chmod 644 {} \;
+  install -Dm755 bin/amass "${pkgdir}/usr/bin/amass"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
