@@ -23,9 +23,10 @@ prepare() {
 
 build() {
   cd "relay/relay"
-  export RUSTUP_TOOLCHAIN=stable
   export RELAY_RELEASE=$pkgver
   export RUSTFLAGS="$RUSTFLAGS --cfg tokio_unstable"
+  unset CFLAGS
+  unset LDFLAGS
   cargo build --frozen --release
 }
 
