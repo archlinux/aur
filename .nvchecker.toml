@@ -1,0 +1,5 @@
+[nightingale]
+source = "github"
+github = "rzru/nightingale"
+prefix = "v"
+use_max_tag = true

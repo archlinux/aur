@@ -1,0 +1,16 @@
+pkgbase = nightingale
+	pkgdesc = Machine learning powered Karaoke app (with scores!)
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = https://github.com/rzru/nightingale
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	depends = glibc
+	depends = systemd-libs
+	depends = libgcc
+	depends = alsa-lib
+	source = https://github.com/rzru/nightingale/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = 9bf7e418a24b067090a9bf8e79aa89249ad9d5957eff29987aa0d043c8c6ee40
+
+pkgname = nightingale
