@@ -1,7 +1,7 @@
 pkgbase = lmstudio-bin
 	pkgdesc = LM Studio - A desktop app for exploring and running large language models locally
-	pkgver = 0.4.6
-	pkgrel = 1
+	pkgver = 0.4.7
+	pkgrel = 4
 	url = https://lmstudio.ai
 	install = lmstudio-bin.install
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = lmstudio-bin
 	provides = lmstudio
 	conflicts = lmstudio
 	options = !strip
-	source = https://installers.lmstudio.ai/linux/x64/0.4.6-1/LM-Studio-0.4.6-1-x64.AppImage
+	source = https://installers.lmstudio.ai/linux/x64/0.4.7-4/LM-Studio-0.4.7-4-x64.AppImage
 	source = lmstudio.png
 	source = lmstudio.desktop
-	sha256sums = 14767ae339a7a87ad0c97e227edfe5554cd6f878825645e95956b8864b2c5ff9
+	sha256sums = d9d4a006bd81f8f2148bf6020665c359741610421de90ca6875250b803c6ff15
 	sha256sums = 9f791789c959a11316328692807737a5f1bc1c170ae99ec04c56bfd8ee8263e5
 	sha256sums = d5ac11aae025cd1cc0f9aa0713ee427dc6f46e4d1adac2a5948f93d8bbca705f
 
