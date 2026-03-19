@@ -1,7 +1,7 @@
 pkgbase = poncho-wonky
 	pkgdesc = A decentralized messaging and sharing app built on top of Secure Scuttlebutt (SSB),fork of patchwork
 	pkgver = 4.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/soapdog/patchwork
 	arch = x86_64
 	license = AGPL3
@@ -23,6 +23,6 @@ pkgbase = poncho-wonky
 	source = poncho-wonky.desktop
 	sha256sums = 32df3f0fbbdcfa8ec05c6027408082d37f69cfb8c41518d315ec042b84a5399e
 	sha256sums = e1518685a1c37abd0a801d0a2872c4e05eb27434402bb9d304c5db8323f4c3a8
-	sha256sums = 26fab2036df5395992a44d92b59238bdda4a6bcebed9883db71c6ab026357f9c
+	sha256sums = b77ea37cce9723d1dbd97d1aa55450b6da1cb276338087382ce06baa7ea5510e
 
 pkgname = poncho-wonky
