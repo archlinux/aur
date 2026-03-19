@@ -1,6 +1,6 @@
 # Maintainer: n0va <n0va@krzak.org>
 pkgname=kewt-bin
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A minimalist, 100% POSIX, static site generator inspired by werc and kew"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('sh')
 provides=('kewt')
 conflicts=('kewt' 'kewt-git')
 source=("${pkgname}-${pkgver}.sh::${url}/releases/download/v${pkgver}/kewt")
-sha256sums=('ccdeb73c60eec1115738b7b54015796ff9f99d8af2df4b785725b6da9b5acb42')
+sha256sums=('b17acb583712c20d2e7c40cc9e6b1e23c46ce3861b9a3783b471371d88fca704')
 
 build() {
   chmod +x "${srcdir}/${pkgname}-${pkgver}.sh"
