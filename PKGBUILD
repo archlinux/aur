@@ -12,10 +12,10 @@ url='https://tetr.io/'
 depends=('libxss' 'unzip')
 conflicts=('tetrio-desktop')
 source=("TETR.IO.deb::https://tetr.io/about/desktop/builds/${pkgver%.*.*}/TETR.IO%20Setup.deb"
-        "tetrio-plus.asar.zip::https://gitlab.com/UniQMG/tetrio-plus/-/jobs/11675178434/artifacts/raw/tetrio-plus_v0.27.10_for_desktop_v10.asar.zip"
+        "tetrio-plus.asar.zip::https://gitlab.com/UniQMG/tetrio-plus/-/jobs/13212687768/artifacts/raw/tetrio-plus_v0.27.10_for_desktop_v10.asar.zip"
         LICENSE) # https://tetr.io/about/terms/
 sha256sums=('e3635a6f8d479bbf8dc56fdee7a65b2cf652e9633ef6e1acfc6c6f7055b4abdf'
-            '0beab9551673d1b32e510508a4b833b811ac9642fa552c8af0c1df399b1a9dd6'
+            'c99123a7a063527e673af3f56f6f806d727614047eb23f85b96592b94ea57012'
             '5e721783706e2018878ca127ec6ed5d6a1298ee9cc6a853329e25fafe45265f9')
 
 package() {
