@@ -5,7 +5,7 @@
 
 pkgname=postman-bin
 pkgver=12.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Build, test, and document your APIs faster"
 provides=('postman')
 conflicts=('postman')
@@ -30,7 +30,7 @@ package() {
   ln -s "/opt/postman/Postman" "${pkgdir}/usr/bin/postman"
 
   # Desktop file
-  install -D -m644 "postman.desktop" "${pkgdir}/usr/share/applications/postman.desktop}"
+  install -D -m644 "postman.desktop" "${pkgdir}/usr/share/applications/postman.desktop"
 
   # Icon
   install -d -m755 "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
