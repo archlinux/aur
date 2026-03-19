@@ -3,7 +3,7 @@
 
 pkgname=python-llm-gemini
 _gitpkgname=llm-gemini
-pkgver=0.28.2
+pkgver=0.29
 pkgrel=1
 pkgdesc="LLM plugin to access Google's Gemini family of models"
 arch=('any')
@@ -33,7 +33,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/simonw/llm-gemini/archive/${pkgver}.tar.gz"
 )
 
-sha512sums=('d0f2b6dc7bfbbf0572cebe95e6c689eb9cd57af3c68ce4ed1da499c87ab73a2ca665e7410bae1a0404da1ec93eebb623e6aebb50f7f281eb18c08fe0d35c01ba')
+sha512sums=('debfdf5f9a3250bea2c9676a8e35f7c4002f327de52dfa7cca91a7d83103b7794c0a89f2482ec322d64013f9febdfa2524fd9e626afcf7345d030f7994c3c5b9')
 
 build() {
   cd "${_gitpkgname}-${pkgver}"
