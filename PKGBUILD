@@ -1,6 +1,6 @@
 # Maintainer: zsh-ncursed <zsh.ncursed@gmail.com>
 pkgname=somafm_tui
-pkgver=0.6.9
+pkgver=0.6.10
 pkgrel=1
 pkgdesc="Terminal user interface for SomaFM internet radio"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('git')
 
 # Use explicit tag for source
 source=("git+https://github.com/zsh-ncursed/somafm_tui.git#tag=v${pkgver}")
-sha256sums=('f30fda292f7e4f37d15555ae126086829b2f8a40793f5f9048d92d48a3599a94')
+sha256sums=('fb097af861bca2b0e80fbce61682b658c3ce9a74da5500a804ae4d8ac648056d')
 
 # pkgver() is used in CI to override version from git tag
 pkgver() {
@@ -74,6 +74,7 @@ package() {
     install -Dm644 "$srcdir/$pkgname/somafm_tui/timer.py" "$pkgdir/usr/lib/somafm_tui/somafm_tui/timer.py"
     install -Dm644 "$srcdir/$pkgname/somafm_tui/cli.py" "$pkgdir/usr/lib/somafm_tui/somafm_tui/cli.py"
     install -Dm644 "$srcdir/$pkgname/somafm_tui/bitrate_utils.py" "$pkgdir/usr/lib/somafm_tui/somafm_tui/bitrate_utils.py"
+    install -Dm644 "$srcdir/$pkgname/somafm_tui/constants.py" "$pkgdir/usr/lib/somafm_tui/somafm_tui/constants.py"
 
     # Install core module files
     install -Dm644 "$srcdir/$pkgname/somafm_tui/core/__init__.py" "$pkgdir/usr/lib/somafm_tui/somafm_tui/core/__init__.py"
