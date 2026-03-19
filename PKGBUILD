@@ -75,7 +75,8 @@ build() {
   cd "${_pkgname}/python"
   cp pyproject_other.toml pyproject.toml
   rm -rf build dist *.egg-info
-  export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
+  # Use latest upstream tag for Python version (pkgver format isn't PEP 440)
+  export SETUPTOOLS_SCM_PRETEND_VERSION="$(git describe --tags --abbrev=0 | sed 's/^v//')"
   python -m build --wheel --no-isolation
 }
 
