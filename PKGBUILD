@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=8.2.r123522.gac4d50cb26
+pkgver=8.2.r123557.g106616f13d
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -28,6 +28,7 @@ depends=(
   harfbuzz
   jack
   lame
+  lcms2
   libass
   libavc1394
   libbluray
@@ -147,6 +148,7 @@ build() {
         --enable-gnutls \
         --enable-gpl \
         --enable-ladspa \
+        --enable-lcms2 \
         --enable-libaom \
         --enable-libass \
         --enable-libbluray \
