@@ -1,6 +1,6 @@
 pkgbase = fflogs-uploader-bin
 	pkgdesc = FFLogs Uploader - pre-built binary AppImage
-	pkgver = 9.0.24
+	pkgver = 9.0.33
 	pkgrel = 1
 	url = https://github.com/RPGLogs/Uploaders-fflogs
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = fflogs-uploader-bin
 	depends = fuse2
 	provides = fflogs-uploader
 	conflicts = fflogs-uploader-appimage
-	noextract = fflogs-v9.0.24.AppImage
+	noextract = fflogs-v9.0.33.AppImage
 	options = !strip
-	source_x86_64 = fflogs-v9.0.24.AppImage::https://github.com/RPGLogs/Uploaders-fflogs/releases/download/v9.0.24/fflogs-v9.0.24.AppImage
+	source_x86_64 = fflogs-v9.0.33.AppImage::https://github.com/RPGLogs/Uploaders-fflogs/releases/download/v9.0.33/fflogs-v9.0.33.AppImage
 	source_x86_64 = fflogs-uploader.desktop
-	sha256sums_x86_64 = f4bf5e3692b6308dcffa68540c20337e2dd80dd5a91c68e2512e4b8e4b148eaa
+	sha256sums_x86_64 = 8142044cc7342505ce341b74f8fc39db2dfb3f0e16879087a35b98e88061be47
 	sha256sums_x86_64 = a1ab59586d6577ec844caa3ac56239df0f257e779fb2fbfd5c2a39353750676c
 
 pkgname = fflogs-uploader-bin
