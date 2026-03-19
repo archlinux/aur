@@ -5,7 +5,7 @@ _pkgname=git-switcher
 pkgname=${_pkgname}-bin
 pkgdesc="Easily switch between your git profiles"
 
-pkgver=0.6
+pkgver=0.6.1
 pkgrel=1
 _pkgvername=${pkgver}
 
@@ -23,8 +23,8 @@ depends=('glibc' 'gcc-libs')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${arch[0]}-${_arch_suffix}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${arch[1]}-${_arch_suffix}.tar.gz")
-sha256sums_x86_64=('65f2ff27d1fff89f844324487645795c10c607baf3b0f3d4f6f5f53224e50114')
-sha256sums_aarch64=('889a13dcf6b62b6ec3f129f759eb1a30f0cc750d27e28a1291b0054311d14f37')
+sha256sums_x86_64=('63a589594ccf6a09cc1d5331deaacb093118a069d3f90a69f05c2a328875dbb7')
+sha256sums_aarch64=('d23326cf294adafe2ba008c337fd4cb5e6d3bbc593a3a7064936dd136b8fcb81')
 
 
 package() {
