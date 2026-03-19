@@ -2,7 +2,7 @@
 
 pkgbase=radicle
 pkgname=(radicle-{cli,node})
-pkgver=1.6.1
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="open source, peer-to-peer code collaboration stack built on Git"
 arch=('x86_64')
@@ -33,7 +33,7 @@ source=(
 	"radicle-node.user."{service,socket}
 	"radicle-node.dnssd"
 )
-b2sums=('cfc8550edaba9e752e639d54e6162a62e08c57969e769db219cac2a15baa4385f13540d8a6d3bbf380197bf58a08a6f4d3c7431185de3f195516f740a0019cb4'
+b2sums=('47c9771d76c868ab64539a9753ec6efc6dbe4a52d20cc10264a35ffcde3971f43071d7e4ecf40fcfce968f223e87a5958e89f6fe3b744705837876499c8fd612'
         'bd632d7337e8e5a8f8619c5ef872303b8c2b67bfb526e10b411776a7ffa16c92a0b9aad2f25c7d069133731d9b4520c66ec943ed4b6ba7b67167fc79722c2655'
         '7c6a23c1bda6c5d58dfd2e6bfc61885efcff6e1ca36ffe722c738498a441138d34b9322f6cbe60e0b78415ae34c5b735220162282d6f2275e84a7acf0bd82535'
         '11229e5efb343b33ea728c9688c13864bcc999d21c200551e550be2acfa0ddea234c16e016f06095d4fcd6d1115653ab9ba98c1670261230e0b05db18308c9fe'
