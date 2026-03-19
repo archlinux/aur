@@ -2,7 +2,7 @@
 
 pkgname=sonic-win
 _pkgname=kwin-x11
-pkgver=6.6.2.1
+pkgver=6.6.3
 _pkgtag=$pkgver
 _plasmaver=$(echo $pkgver | cut -f1-3 -d'.')
 pkgrel=1
@@ -78,7 +78,7 @@ conflicts=($_pkgname)
 source=("${url}/archive/refs/tags/${_pkgtag}.tar.gz")
 install="$pkgname.install"
 options=(!debug)
-sha256sums=('781e56db40ff06c204730cd4e67461a963457814e56e2a172fd1dfb12eef5c7a')
+sha256sums=('deb49415ebf2befb29927e367f5892c63dd7dbf9d50ca89a7864a169972653b5')
 
 build() {
   #cmake -B build -S $pkgname \
