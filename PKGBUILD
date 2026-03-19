@@ -5,7 +5,7 @@ pkgdesc="🎉 A simple third-party KuGou concept version music player"
 arch=('x86_64')
 url="https://github.com/hoowhoami/EchoMusic"
 license=('MIT')
-depends=('gtk3' 'libglvnd' 'nss' 'alsa-lib' 'libxkbcommon')
+depends=('gtk3' 'libglvnd' 'nss' 'alsa-lib' 'libxkbcommon' 'libkeybinder3')
 provides=('echomusic')
 conflicts=('echomusic')
 

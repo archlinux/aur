@@ -10,6 +10,7 @@ pkgbase = echomusic-bin
 	depends = nss
 	depends = alsa-lib
 	depends = libxkbcommon
+	depends = libkeybinder3
 	provides = echomusic
 	conflicts = echomusic
 	source = EchoMusic-1.1.4-Linux.deb::https://github.com/hoowhoami/EchoMusic/releases/download/v1.1.4/EchoMusic-1.1.4-Linux.deb
