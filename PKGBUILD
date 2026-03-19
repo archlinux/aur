@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=libpldm-git
-pkgver=0.10.0.r23.gd2f8a7e
+pkgver=0.15.0.r46.g969fe63
 pkgrel=1
 epoch=
 pkgdesc="This is a library which deals with the encoding and decoding of PLDM messages."
@@ -9,7 +9,11 @@ arch=($CARCH)
 url="https://github.com/openbmc/libpldm"
 license=('Apache-2.0')
 groups=()
-depends=(glibc)
+depends=(
+    glibc
+    libgcc
+    libstdc++
+)
 makedepends=(
     git
     gtest
