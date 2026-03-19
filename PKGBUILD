@@ -1,6 +1,6 @@
 # Maintainer: Mahmud Ridwan <m@hjr265.me>
 pkgname=gittop
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='A beautiful terminal UI for visualizing Git repository statistics'
 arch=('x86_64' 'aarch64')
