@@ -16,10 +16,10 @@ arch=("x86_64")
 url="https://github.com/dwmkerr/terminal-ai"
 license=("MIT")
 
-replaces=("nodejs-${_npmname}")
+provides=("${_npmname##terminal-}")
+
 depends=("glibc" "nodejs" "bash" "python" "libx11")
 makedepends=("npm" "jq")
-provides=("${_npmname}")
 
 options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
