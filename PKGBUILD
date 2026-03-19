@@ -3,10 +3,10 @@
 # shellcheck disable=SC2034
 _pkgname=waybar-lyric
 pkgname=${_pkgname}-git
-pkgver=0.14.1.r0.g0f6b7c1
+pkgver=0.15.0.r15.ge393682
 pkgrel=1
 pkgdesc="A waybar module for song lyric"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/Nadim147c/waybar-lyric"
 license=('AGPL-3.0-only')
 makedepends=('go' 'git')
