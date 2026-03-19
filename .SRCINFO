@@ -12,7 +12,7 @@ pkgbase = mbelib-neo-git
 	provides = mbelib-neo=1.2.7.r0.g612c9bc
 	conflicts = mbelib-neo
 	options = staticlibs
-	source = mbelib-neo-git::git+https://github.com/arancormonk/mbelib-neo.git
+	source = mbelib-neo-git::git+https://github.com/arancormonk/mbelib-neo.git#branch=main
 	sha256sums = SKIP
 
 pkgname = mbelib-neo-git
