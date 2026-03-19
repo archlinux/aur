@@ -7,18 +7,37 @@ _pkgname="${_basename}${pkgver%%.*}"
 pkgname="${_pkgname}-bin"
 pkgrel=1
 pkgdesc="A simple build configuration and project generation tool"
-arch=('i686' 'x86_64')
+arch=(
+  'i686'
+  'x86_64'
+)
 url="https://premake.github.io"
-license=('BSD-3-Clause')
-depends_i686=('glibc')
-depends_x86_64=("${depends_i686[@]/#/lib32-}")
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+license=(
+  'BSD-3-Clause'
+)
+depends_i686=(
+  'glibc'
+)
+depends_x86_64=(
+  "${depends_i686[@]/#/lib32-}"
+)
+provides=(
+  "${_pkgname}"
+)
+conflicts=(
+  "${_pkgname}"
+)
 _pkgsrc="${_basename}-${pkgver//beta/-beta}"
-source=("${_pkgsrc}.zip::https://downloads.sourceforge.net/project/${_basename}/${_Name}/${pkgver%%beta*}/${_pkgsrc}-src.zip"
-        "${_pkgname}_manpage.patch")
-source_i686=("${_pkgsrc}-i686.tar.gz::https://downloads.sourceforge.net/project/${_basename}/${_Name}/${pkgver%%beta*}/${_pkgsrc}-linux.tar.gz")
-source_x86_64=("${source_i686[@]}")
+source=(
+  "https://downloads.sourceforge.net/project/${_basename}/${_Name}/${pkgver%%beta*}/${_pkgsrc}-src.zip"
+  "${_pkgname}_manpage.patch"
+)
+source_i686=(
+  "https://downloads.sourceforge.net/project/${_basename}/${_Name}/${pkgver%%beta*}/${_pkgsrc}-linux.tar.gz"
+)
+source_x86_64=(
+  "${source_i686[@]}"
+)
 sha256sums=('0fa1ed02c5229d931e87995123cdb11d44fcc8bd99bba8e8bb1bbc0aaa798161'
             'f3c8b20fa231a496f41781ad449f75ec36555d216166cd77c2b709acf62693f6')
 sha256sums_i686=('34915548110e930012dbf3368d995f34509a1c46b3d8893def19613aae063693')
