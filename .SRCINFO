@@ -1,7 +1,7 @@
 pkgbase = python-vector
 	pkgdesc = A library for 2D, 3D, and Lorentz vectors, especially arrays of vectors, to solve common physics problems in a NumPy-like way.
-	pkgver = 1.5.2
-	pkgrel = 2
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://github.com/scikit-hep/vector
 	arch = any
 	license = MIT
@@ -9,6 +9,8 @@ pkgbase = python-vector
 	checkdepends = python-awkward
 	checkdepends = python-papermill
 	checkdepends = python-fsspec
+	checkdepends = python-ipykernel
+	checkdepends = python-sympy
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
@@ -19,7 +21,7 @@ pkgbase = python-vector
 	depends = python-numpy
 	depends = python-packaging
 	optdepends = python-awkward: Awkward array support
-	source = python-vector::git+https://github.com/scikit-hep/vector#tag=v1.5.2
-	sha256sums = 8482d3e7750ee86fc68a18cf6248d03cb5e5259ec64a0591813252ab22a8166a
+	source = python-vector::git+https://github.com/scikit-hep/vector#tag=v1.8.0
+	sha256sums = 53a0a81ed41bf6f5c270a9f5fe11b6fdbb62d1d12a19b4c107a4a8e8f095c3fb
 
 pkgname = python-vector
