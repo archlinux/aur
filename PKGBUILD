@@ -1,7 +1,7 @@
 # Maintainer: İsmail Yılmaz <iylmz.iylmz@gmail.com>
 pkgname=bobcat-terminal-git
 pkgver=r319.e4e5f19
-pkgrel=3
+pkgrel=4
 upprel=2025.1.1
 uppver=17810
 pkgdesc="A powerful yet user-friendy cross-platform terminal emulator"
@@ -41,7 +41,7 @@ build() {
     make -f ./umkMakefile -j$(nproc) 
  
     cd ..
-    mkdir build
+    mkdir -p build
     upp/umk upp/uppsrc,$pkgname Bobcat GCC -brh +GUI,SHARED ./build/bobcat
 }
 

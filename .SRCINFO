@@ -1,7 +1,7 @@
 pkgbase = bobcat-terminal-git
 	pkgdesc = A powerful yet user-friendy cross-platform terminal emulator
 	pkgver = r319.e4e5f19
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ismail-yilmaz/Bobcat
 	arch = x86_64
 	license = GPL3
