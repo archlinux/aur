@@ -2,22 +2,26 @@
 # Maintainer: NucleoFusion <lakshit.singh.mail@gmail.com>
 
 pkgname='cruise-bin'
-pkgver=1.1.0
+pkgver=1.2.0_rc3
 pkgrel=1
-pkgdesc='Cruise is a powerful, intuitive, and fully-featured TUI (Terminal User Interface) for interacting with Docker'
-url='https://nucleofusion.github.io/cruise/'
-arch=('aarch64' 'x86_64')
-license=('MIT')
+pkgdesc='Cruise is a powerful, intuitive, and fully-featured container management TUI '
+url='https://cruise-org.github.io'
+arch=('aarch64' 'armv7h' 'x86_64')
+license=('Apache-2.0')
 provides=('cruise')
 conflicts=('cruise')
 optdepends=('trivy' 'grype')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/NucleoFusion/cruise/releases/download/v1.1.0/cruise_Linux_arm64.tar.gz")
-sha256sums_aarch64=('99495cca9267a553a39342dc75ac12c07db3efae866463579e2f168241dd3f17')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/cruise-org/cruise/releases/download/v1.2.0-rc3/cruise_Linux_arm64.tar.gz")
+sha256sums_aarch64=('a8e27c977ccba86de97fafd921270f404fa35e62ab6aea76332a6c96a2ec29c8')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/NucleoFusion/cruise/releases/download/v1.1.0/cruise_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('2fb14b0ca550d27b46b35acb3dd6c397320307d284ff59c53703d1bece9a1c86')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/cruise-org/cruise/releases/download/v1.2.0-rc3/cruise_Linux_armv7.tar.gz")
+sha256sums_armv7h=('cb7644935bd056275d2121c8518b121a634573fbb713d8bb3c97080728a4f175')
+
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/cruise-org/cruise/releases/download/v1.2.0-rc3/cruise_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('341ad0be03a20dd26b6834641e475c57f9ced4bf5666c9fe7653fbd3fa948064')
 
 package() {
   install -Dm755 "./cruise" "${pkgdir}/usr/bin/cruise"
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/cruise/LICENSE"
 }
