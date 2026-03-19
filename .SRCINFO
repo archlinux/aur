@@ -1,0 +1,19 @@
+pkgbase = ctrdecrypt-git
+	pkgdesc = Decrypt module for cia-unix
+	pkgver = 1.1.0.r17.g025d440
+	pkgrel = 1
+	url = https://github.com/shijimasoft/ctrdecrypt
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	provides = ctrdecrypt
+	conflicts = ctrdecrypt
+	source = ctrdecrypt-git::git+https://github.com/shijimasoft/ctrdecrypt.git
+	sha256sums = SKIP
+
+pkgname = ctrdecrypt-git
