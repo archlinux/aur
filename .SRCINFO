@@ -1,7 +1,7 @@
 pkgbase = noctalia-shell-git
 	pkgdesc = A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell. (git version)
 	pkgver = 2.3.1.r16.g330eac0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/noctalia-dev/noctalia-shell
 	arch = any
 	license = MIT
@@ -15,7 +15,6 @@ pkgbase = noctalia-shell-git
 	depends = wlr-randr
 	optdepends = ddcutil: For external display brightness control
 	optdepends = cliphist: For clipboard history support
-	optdepends = cava: Audio visualizer component
 	optdepends = wlsunset: For supporting NightLight
 	provides = noctalia-shell
 	conflicts = noctalia-shell
