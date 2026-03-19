@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=FTE Quake
-Comment=FTE Quake
-Exec=/usr/bin/fteqw
-Icon=/usr/share/pixmaps/fteqw.png
-Terminal=false
-Type=Application
-Categories=Game;
