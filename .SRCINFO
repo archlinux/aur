@@ -1,6 +1,6 @@
 pkgbase = casa6-pipeline-bin
 	pkgdesc = NRAO's Common Astronomy Software Applications package
-	pkgver = 6.6.1
+	pkgver = 6.6.6
 	pkgrel = 2
 	url = https://casa.nrao.edu/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = casa6-pipeline-bin
 	depends = libxcrypt-compat
 	provides = casa
 	options = !strip
-	source = https://casa.nrao.edu/download/distro/casa-pipeline/release/linux/casa-6.6.1-17-pipeline-2024.1.0.8-py3.8.el8.tar.xz
-	md5sums = 470d42aa93c2b89ff2279ca481136657
+	source = https://casa.nrao.edu/download/distro/casa-pipeline/release/linux/casa-6.6.6-18-pipeline-2025.1.0.36-py3.10.el8.tar.xz
+	md5sums = 56e134ba6ffcf45bbaefafd25fb0d1de
 
 pkgname = casa6-pipeline-bin

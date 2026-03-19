@@ -1,8 +1,8 @@
 # Maintainer: Evgeniy Dombek <edombek@yandex.ru>
 pkgname=casa6-pipeline-bin
-pkgver=6.6.1
-ver_=17
-pipever=2024.1.0.8
+pkgver=6.6.6
+ver_=18
+pipever=2025.1.0.36
 pkgrel=2
 pkgdesc="NRAO's Common Astronomy Software Applications package"
 url="https://casa.nrao.edu/"
@@ -11,9 +11,9 @@ license=('GPL')
 depends=('lsb-release' 'libselinux' 'libxcrypt-compat') 
 conflict=("casa6-bin")
 provides=("casa")
-instname="casa-${pkgver}-${ver_}-pipeline-${pipever}"
-source=("https://casa.nrao.edu/download/distro/casa-pipeline/release/linux/${instname}-py3.8.el8.tar.xz")
-md5sums=("470d42aa93c2b89ff2279ca481136657")
+instname="casa-${pkgver}-${ver_}-pipeline-${pipever}-py3.10.el8"
+source=("https://casa.nrao.edu/download/distro/casa-pipeline/release/linux/${instname}.tar.xz")
+md5sums=("56e134ba6ffcf45bbaefafd25fb0d1de")
 instdir="/opt"
 options=("!strip")
 package() {
