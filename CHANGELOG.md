@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.14.8] - 2026-03-19
+
+- Fix missing BusName
+
 ## [2.14.7] - 2026-03-18
 
 - Fix preferences show summary
@@ -42,7 +46,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
--  Start option icon missing [Issue 41](https://github.com/plrigaux/sysd-manager/issues/41)
+- Start option icon missing [Issue 41](https://github.com/plrigaux/sysd-manager/issues/41)
 
 ## [2.14.3] - 2026-03-11
 
