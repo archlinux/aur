@@ -5,8 +5,8 @@
 
 pkgname=wlroots0.19
 _pkgname=wlroots
-pkgver=0.19.2
-pkgrel=2
+pkgver=0.19.3
+pkgrel=1
 pkgdesc="Modular Wayland compositor library"
 url="https://gitlab.freedesktop.org/wlroots/wlroots"
 license=('MIT')
@@ -21,7 +21,7 @@ provides=("libwlroots-${pkgver%.*}.so")
 source=("${pkgname}::git+${url}.git#tag=${pkgver}?signed"
         'Revert-layer-shell-error-on-0-dimension-without-anch.patch'
 		'0001-backend-output-send-commit-events-after-applying-all.patch')
-sha256sums=('9897455cb629059c11aebb2ddf4b0df97f7b8e071a07f83de9ad452ee7d8b5f4'
+sha256sums=('3312cbdb0b64c797bab75ebbc5b80c5b8e3a3aa2e7e13719a6232c2fdfb7bd0d'
             '75fef991c636b1f285c1020bd653dd7239c9c276aea56b4937db5d412a3a13dd'
             '592b61f80faaa3a8a1ed59cdce51fc1ca7b589f49d3cd39ce54111e2285eab42')
 validpgpkeys=('34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48'  # Simon Ser
