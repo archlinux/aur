@@ -1,0 +1,19 @@
+pkgbase = properdocs-theme-readthedocs
+	pkgdesc = 'readthedocs' theme for ProperDocs, originally made for MkDocs
+	pkgver = 1.6.5
+	pkgrel = 1
+	url = https://pypi.org/project/properdocs-theme-readthedocs
+	arch = any
+	license = BSD-2-Clause
+	checkdepends = python-nose
+	makedepends = python-hatchling
+	makedepends = python-babel
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/p/properdocs_theme_readthedocs/properdocs_theme_readthedocs-1.6.5.tar.gz
+	sha256sums = 35fb78708b4c6598cd5a958e3b0800446cf5e1fa5ed1adabb6b37c6e78c25b93
+
+pkgname = properdocs-theme-readthedocs
+	depends = properdocs
+	depends = python-babel
