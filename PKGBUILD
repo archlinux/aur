@@ -3,13 +3,16 @@
 
 pkgname=mangareader
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Manga Reader for local files'
 arch=('x86_64')
 url='https://github.com/g-fb/mangareader'
 license=('GPL-3.0-or-later')
+# KF6Archive is listed as optional in CMakeLists, but is in practice required
+# gettext is mentioned as required in cmake build output
 depends=('hicolor-icon-theme'
          'qt6-base'
+         'karchive'
          'kcolorscheme'
          'kconfig'
          'kconfigwidgets'
@@ -18,12 +21,12 @@ depends=('hicolor-icon-theme'
          'kio'
          'kxmlgui'
          'gettext')
-# 'kimageformats' is not listed as a dependency by the upstream,
+# 'kimageformats' is not listed as a dependency in CMakeLists,
 # but if present is loaded by KF automatically
-optdepdens=('kimageformats: extra image formats support (jxl, avif, heif, ...)'
-            'karchive: archive support (zip, 7zip, xz, bzip2, ...)'
-            'vulkan-headers: (unclear)')
-makedepends=('cmake' 'extra-cmake-modules' 'ninja')
+optdepends=('kimageformats: extra image formats support (jxl, avif, heif, ...)')
+# vulkan-headers is mentioned (as 'WrapVulkanHeaders') in cmake build
+# output as optional
+makedepends=('cmake' 'extra-cmake-modules' 'ninja' 'qt6-tools' 'vulkan-headers')
 source=("https://github.com/g-fb/mangareader/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('a15b1677ebb3f537bd069fd9ebf9c9011dc3e82a4a1071d501da231ea2fbc8a8')
 

@@ -1,15 +1,18 @@
 pkgbase = mangareader
 	pkgdesc = Manga Reader for local files
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/g-fb/mangareader
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cmake
 	makedepends = extra-cmake-modules
 	makedepends = ninja
+	makedepends = qt6-tools
+	makedepends = vulkan-headers
 	depends = hicolor-icon-theme
 	depends = qt6-base
+	depends = karchive
 	depends = kcolorscheme
 	depends = kconfig
 	depends = kconfigwidgets
@@ -18,6 +21,7 @@ pkgbase = mangareader
 	depends = kio
 	depends = kxmlgui
 	depends = gettext
+	optdepends = kimageformats: extra image formats support (jxl, avif, heif, ...)
 	source = https://github.com/g-fb/mangareader/archive/refs/tags/2.3.0.tar.gz
 	sha256sums = a15b1677ebb3f537bd069fd9ebf9c9011dc3e82a4a1071d501da231ea2fbc8a8
 
