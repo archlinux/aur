@@ -1,6 +1,6 @@
 # Maintainer: DissoWharf <your-email@example.com>
 pkgname=mindful-path
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A Buddhist-inspired daily habit tracker for students"
 arch=('any')
