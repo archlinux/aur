@@ -1,0 +1,11 @@
+pkgbase = lihanzhang
+	pkgdesc = A simple script
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://lihanzhang.cn
+	arch = any
+	license = MIT
+	source = lihanzhang.sh
+	md5sums = SKIP
+
+pkgname = lihanzhang
