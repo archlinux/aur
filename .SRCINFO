@@ -1,0 +1,16 @@
+pkgbase = plist-bin
+	pkgdesc = The missing CLI plist converter
+	pkgver = 1.1.11
+	pkgrel = 1
+	url = https://github.com/aurc/plist
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = plist
+	conflicts = plist
+	source_x86_64 = plist-x86_64-1.1.11.tgz::https://github.com/aurc/plist/releases/download/v1.1.11/plist_1.1.11_linux_amd64.tar.gz
+	sha256sums_x86_64 = 33027794139fbfb8205c859e7868e7538628ea1c0193f8b8e7e0ddff5e8a37c1
+	source_aarch64 = plist-aarch64-1.1.11.tgz::https://github.com/aurc/plist/releases/download/v1.1.11/plist_1.1.11_linux_arm64.tar.gz
+	sha256sums_aarch64 = 74abadda708fa58949e919abd8cd31771199ac04f3070df004481b3cd4aa9c88
+
+pkgname = plist-bin

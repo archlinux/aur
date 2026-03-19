@@ -1,0 +1,5 @@
+[plist-bin]
+source = "github"
+github = "aurc/plist"
+use_latest_release = true
+prefix = "v"
