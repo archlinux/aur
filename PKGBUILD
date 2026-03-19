@@ -1,6 +1,6 @@
 #Maintainer: minosariane
 pkgname=shellforge
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 arch=('x86_64')
 pkgdesc='Terminal tool for generating reverse shells for CTF challenges and educational purposes.'
