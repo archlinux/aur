@@ -2,7 +2,7 @@
 
 pkgname=trae-bin
 pkgver=1.107.1
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-powered IDE by ByteDance - The Real AI Engine for code development"
 arch=('x86_64' 'aarch64')
 url="https://trae.ai"
