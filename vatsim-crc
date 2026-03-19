@@ -33,7 +33,7 @@ if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
   for i in $(ls /usr/share/$progName); do
     ln -svf /usr/share/$progName/$i $WINEPREFIX/drive_c/$progName/
   done
-  if [ ! -f "/opt/rpc-bridge/bridge.exe" ] ; then
+  if [ -f "/opt/rpc-bridge/bridge.exe" ] ; then
     wine "/opt/rpc-bridge/bridge.exe" --install
   fi
   touch "$WINEPREFIX/.installed.$CURRVER"
