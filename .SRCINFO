@@ -1,6 +1,6 @@
 pkgbase = fcitx5-vinput-bin
 	pkgdesc = Offline voice input addon for Fcitx5 with optional OpenAI-compatible postprocess
-	pkgver = 1.1.2
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/xifan2333/fcitx5-vinput
 	install = fcitx5-vinput-bin.install
@@ -13,7 +13,7 @@ pkgbase = fcitx5-vinput-bin
 	provides = fcitx5-vinput
 	conflicts = fcitx5-vinput
 	options = !strip
-	source_x86_64 = fcitx5-vinput-1.1.2-1-archlinux-x86_64.pkg.tar.zst::https://github.com/xifan2333/fcitx5-vinput/releases/download/v1.1.2/fcitx5-vinput-1.1.2-1-archlinux-x86_64.pkg.tar.zst
-	sha256sums_x86_64 = 1b3f8594d24a206c74a1b3aa3cdcacc31c608cb500a3734bda7d67d9fb6cbb68
+	source_x86_64 = fcitx5-vinput-1.1.1-1-archlinux-x86_64.pkg.tar.zst::https://github.com/xifan2333/fcitx5-vinput/releases/download/v1.1.1/fcitx5-vinput-1.1.1-1-archlinux-x86_64.pkg.tar.zst
+	sha256sums_x86_64 = 0d284423c099745d65c53b189b7e8cff72ee6d2f0b6c6dda7d9209da5feac2b1
 
 pkgname = fcitx5-vinput-bin
