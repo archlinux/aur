@@ -5,7 +5,7 @@
 
 pkgname=python-sse-starlette
 _pkgname=${pkgname#python-}
-pkgver=3.3.2
+pkgver=3.3.3
 pkgrel=1
 pkgdesc="Server Sent Events (SSE) for Starlette and FastAPI"
 arch=(any)
@@ -34,7 +34,7 @@ checkdepends=(
   python-portend
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2b30a3c853cd62b3d811f46729fd56f9d618747cca018a0b6fc1da19d12d41b5')
+sha256sums=('a840280f688fc2102f4b37161c4c148b963f0e7a492637dbd192a0884263d578')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -42,11 +42,8 @@ build() {
 }
 
 check() {
-  #  rm -rf test-env
-  #  python -m venv --system-site-packages test-env
-  #  test-env/bin/python -m installer "$_pkgname-$pkgver"/dist/*.whl
-  #  test-env/bin/python -m pytest "$_pkgname-$pkgver"/tests -k "not test_sse_multiple_consumers" --ignore=tests/integration/test_multiple_consumers.py
-  echo "Skipping tests until they start to behave"
+  cd "$_pkgname-$pkgver"
+  python -m pytest tests/ --ignore=tests/experimentation --ignore=tests/integration
 }
 
 package() {
