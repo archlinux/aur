@@ -136,9 +136,8 @@ LAUNCHER
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/steam-grunge-editor.png"
 
     # ── License ───────────────────────────────────────────────────────────────
-    # Install LICENSE if present (not all release tarballs include it)
-    if [ -f LICENSE ]; then
-        install -Dm644 LICENSE \
+    if [ -f LICENSE ] ; then
+        install -DM644 LICENSE \
             "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }
