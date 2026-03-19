@@ -33,7 +33,7 @@ build() {
 package() {
   cd "relay"
   install -Dm0755 target/release/relay "$pkgdir/usr/bin/sentry-relay"
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/sentry-relay/LICENSE"
+  install -Dm0644 LICENSE.md "$pkgdir/usr/share/licenses/sentry-relay/LICENSE.md"
   install -Dm0644 "${srcdir}/sentry-relay.service" "${pkgdir}/usr/lib/systemd/system/sentry-relay.service"
   install -dm0755 "${pkgdir}/etc/sentry-relay"
 }
