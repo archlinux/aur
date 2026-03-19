@@ -4,7 +4,7 @@ pkgbase=mkdocs-literate-nav
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
 _pyname=("${pkgbase//-/_}")
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="MkDocs plugin to specify the navigation in Markdown instead of YAML"
 url="https://oprypin.github.io/mkdocs-literate-nav"
@@ -17,7 +17,7 @@ checkdepends=('python-pytest-golden'
               'mkdocs')
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('760e1708aa4be86af81a2b56e82c739d5a8388a0eab1517ecfd8e5aa40810a75')
+sha256sums=('edbaca22343f861fe4e34aac47d55a0c9955c640dbf02eea99fe631e914cf9ee')
 
 build() {
     cd "${_pyname}-${pkgver}"
@@ -28,13 +28,14 @@ build() {
 check() {
     cd "${_pyname}-${pkgver}"
 
-    mkdir -p dist/lib
-    bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
+#   mkdir -p dist/lib
+#   bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
+#   PYTHONPATH="dist/lib" pytest -vv -l -ra --color=yes -o console_output_style=count # || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
+    PYTHONPATH="." pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count #
 }
 
 package_mkdocs-literate-nav() {
-    depends=('python>=3.9' 'mkdocs>=1.4.1')
+    depends=('python>=3.9' 'mkdocs>=1.4.1' 'properdocs>=1.6.5')
     cd "${_pyname}-${pkgver}"
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.md
