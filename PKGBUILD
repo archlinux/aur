@@ -3,7 +3,7 @@
 _pkgauthor=thornoar
 _pkgname=pshash
 pkgname=${_pkgname}-bin
-pkgver=0.1.17.1
+pkgver=0.1.20.0
 pkgrel=1
 pkgdesc="A functional pseudo-hash password generator"
 arch=('x86_64')
@@ -20,8 +20,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${pkgver}::${_urlbin}/raw/refs/heads/master/${_pkgname}-static.${pkgver}.${arch[0]}-linux")
 sha256sums=('92e498dfdf4478c5d306c11af29b375797420464964efda7329d27a8025af6bb'
-            '11f408477212be5bb9569afbf7861d78554e3944151659e2b9316301847122f7')
-sha256sums_x86_64=('2bf9c93066eddd838f24521a47abe8318359ae4ba6c38e330103ee576f508f31')
+            'fa7621e72d610fb4a6d4b9dc33fa522c21cdf2f8351c5796b934860d3166cd25')
+sha256sums_x86_64=('e280fa6b225b1bc0114420b839182a18a4ccc882094dec0c1278ee8df231cc23')
 
 options=(!strip)
 
