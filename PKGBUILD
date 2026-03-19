@@ -2,7 +2,7 @@
 # Based on the PKGBUILD of oscgoesbrr by Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Comfy Chloe <https://github.com/ComfyChloe>
 
-pkgname='ARCOSC-Client'
+pkgname='arcosc-client'
 pkgdesc='The transparent, feature-rich desktop bridge for VRChat remote control'
 pkgver='0.90.2'
 pkgrel='2'

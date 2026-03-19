@@ -1,4 +1,4 @@
-pkgbase = ARCOSC-Client
+pkgbase = arcosc-client
 	pkgdesc = The transparent, feature-rich desktop bridge for VRChat remote control
 	pkgver = 0.90.2
 	pkgrel = 2
@@ -9,7 +9,7 @@ pkgbase = ARCOSC-Client
 	makedepends = npm
 	makedepends = asar
 	depends = electron39
-	source = ARCOSC-Client-v0.90.2.tar.gz::https://codeload.github.com/ComfyChloe/ARCOSC-Client/tar.gz/refs/tags/v0.90.2
+	source = ARCOSC-Client-v0.90.2.tar.gz::https://codeload.github.com/ComfyChloe/arcosc-client/tar.gz/refs/tags/v0.90.2
 	source = ARCOSC-Client
 	source = ARCOSC-Client.desktop
 	source = arcosc.png
@@ -18,4 +18,4 @@ pkgbase = ARCOSC-Client
 	sha256sums = 5dae1186e7a6ba1785455c294f4542880275dc5a4a8bca47fa5dedb01ed7c446
 	sha256sums = a315bea3d9ec1771340662c8e8cd9249d5fb69f4b3a0557bbe24c43a68560716
 
-pkgname = ARCOSC-Client
+pkgname = arcosc-client
