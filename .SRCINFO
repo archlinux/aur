@@ -1,0 +1,15 @@
+pkgbase = pdf-cli
+	pkgdesc = A terminal-based PDF, EPUB and DOCX viewer with fuzzy search and high-res image rendering
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/Yujonpradhananga/pdf-cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = mupdf
+	depends = libffi
+	source = pdf-cli-2.0.tar.gz::https://github.com/Yujonpradhananga/pdf-cli/archive/v.2.0.tar.gz
+	sha256sums = 325a6b46356311442f2843d2ab50410ea6a3ee9ad4a8ec6954f8158f90ecf89d
+
+pkgname = pdf-cli
