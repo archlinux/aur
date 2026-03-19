@@ -1,32 +1,32 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat
 _pkgname=GhostChat
-pkgver=3.6.3
-_electronversion=37
-_nodeversion=22
+pkgver=4.0.1
+_nodeversion=24
 pkgrel=1
-pkgdesc="A standalone, multi-platform Twitch.tv, Kick.com chat as an overlay on windowed/windowed full-screen applications.Use system-wide electron."
+pkgdesc="A Standalone chat overlay for Twitch, Kick, YouTube and other streaming platforms."
 arch=('any')
 url="https://github.com/Enubia/ghost-chat"
-license=('DBAD')
+license=('LicenseRef-DBAD')
 conflicts=("${pkgname}")
 depends=(
-    "electron${_electronversion}"
+    'webkit2gtk-4.1'
+    'gtk3'
 )
 makedepends=(
-    'yarn'
+    'pnpm'
     'gendesk'
-    'npm'
+    'go'
     'nvm'
     'curl'
     'git'
 )
 source=(
     "${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}"
-    "${pkgname}.sh"
+    "modifiers_linux.go"
 )
-sha256sums=('666a3c7ac38723d94bfa66f4a23b12e141815bc7b9ab7948d52924da09acc2d0'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+sha256sums=('d60af5ba97674aa4572285916fc0b0d33bbd1955465c82ddaf6c8a2443c759f9'
+            'b7f2400b0e956887b1e0d8cf4419c82726617503142b81b5c7ef3acbb1fc6798')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -35,13 +35,6 @@ _ensure_local_nvm() {
 }
 prepare() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " "${srcdir}/${pkgname}.sh"
     _ensure_local_nvm
     gendesk -f -n -q \
         --pkgname="${pkgname}" \
@@ -49,52 +42,48 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
-    mkdir -p "${srcdir}/.electron-gyp"
+    local HOME="${srcdir}/.electron-gyp"
+    {
+        export PNPM_LINK_WORKSPACE_PACKAGES=true
+        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_SHAMEFULLY_HOIST=true
+        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+        export PNPM_NODE_LINKER=hoisted
+        export PNPM_NETWORK_CONCURRENCY=32
+        export CGO_ENABLED=1
+        export GO111MODULE=on
+        export GOOS=linux
+        export GOCACHE="${srcdir}/go-build"
+        export GOMODCACHE="${srcdir}/go/pkg/mod"
+    }
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-            echo -e '\n'
-            echo 'registry "https://registry.npmmirror.com"'
-            echo 'electron_mirror "https://registry.npmmirror.com/-/binary/electron/"'
-            echo 'electron_builder_binaries_mirror "https://registry.npmmirror.com/-/binary/electron-builder-binaries/"'
-            echo "cacheFolder "${srcdir}"/.yarn/cache"
-            echo "pluginsFolder "${srcdir}"/.yarn/plugins"
-            echo "globalFolder "${srcdir}"/.yarn/global"
-            echo 'useHardlinks true'
-            #echo 'buildFromSource true'
-            echo 'linkWorkspacePackages true'
-            echo 'fetchRetries 3'
-            echo 'fetchRetryTimeout 10000'
-            echo 'networkConcurrency 10'
-        } >> .yarnrc
-        cp .yarnrc ./app
-        rm -rf .npmrc
-        find ./ -type f -name "yarn.lock" -exec sed -i "s/registry.yarnpkg.com/registry.npmmirror.com/g" {} +
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export GOPROXY=https://goproxy.cn,direct
+        }
     fi
-    sed -i "/packageManager/d" package.json
-    cd "${srcdir}/${pkgname}-${pkgver}/app"
-    sed -i "s/out\/release\/\${version}/release/g" configs/electron-builder.config.cjs
-    cp public/icons/icon-512x125.png public/icons/icon-512x512.png
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" package.json
-    NODE_ENV=development    yarn install --cache-folder "${srcdir}/.yarn_cache"
-    NODE_ENV=development    yarn add @iconify/json
+    cp "${srcdir}/modifiers_linux.go" internal/hotkey/modifiers_linux.go
+    go install github.com/wailsapp/wails/v3/cmd/wails3@latest
+    cd "${srcdir}/${pkgname}-${pkgver}/frontend"
+    NODE_ENV=development    pnpm install --frozen-lockfile
 }
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}/app"
-    local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     yarn run build:vue
-    NODE_ENV=production     yarn electron-builder --linux dir -c.electronDist="${electronDist}" --config configs/electron-builder.config.cjs
+    local HOME="${srcdir}/.electron-gyp"
+    export PATH="${HOME}/go/bin:$PATH"
+    cd "${srcdir}/${pkgname}-${pkgver}/build"
+    go mod tidy
+    wails3 generate bindings -f '-tags production -trimpath -buildvcs=false -ldflags="-w -s -X main.version=v4.0.1"' -clean=true -ts
+    cd "${srcdir}/${pkgname}-${pkgver}/frontend"
+    NODE_ENV=production     pnpm run build
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    go build -tags production -trimpath -buildvcs=false -ldflags="-w -s -X main.version=v4.0.1" -o bin/ghost-chat
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/app/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    _icon_sizes=(16x16 32x32 64x64 128x128 256x256 512x512)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname}-${pkgver}/app/public/icons/icon-${_icons}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname}.png"
-    done
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/bin/${pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/${pkgname}-${pkgver}/build/appicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/${pkgname}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
