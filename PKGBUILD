@@ -3,7 +3,7 @@
 # thanks to txtsd <aur.archlinux@ihavea.quest> for contributing some parts of the PKGBUILD code
 
 pkgname=openmw-git
-pkgver=0.50.0.r64.g23f843c552
+pkgver=0.50.0.r943.g663ae0fd77
 pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64' 'aarch64')
@@ -17,6 +17,7 @@ source=('git+https://gitlab.com/OpenMW/openmw.git'
 )
 sha1sums=('SKIP'
 )
+options=(debug strip)
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
