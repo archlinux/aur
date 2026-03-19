@@ -2,7 +2,7 @@
 
 pkgname=nanocoder
 pkgauthor=Mote-Software
-pkgver=1.24.0
+pkgver=1.24.1
 pkgrel=1
 
 _npmname=nanocoder
@@ -27,7 +27,7 @@ source=("https://registry.npmjs.org/${_npmauthor}/${_npmname}/-/${pkgname}-${pkg
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE.md")
 noextract=("${pkgname}-${pkgver}.tgz")
 
-b2sums=('35c82084016365a73bed59ab140b0d29029107df47988eada26074f9ddeb7a1a07544620dfc45073bceac7f6261c21f53d18e241382f1494d5e58d1be271c3e2'
+b2sums=('1b348498d1a3f77ac94d290b2d8cc89d34526102a55c4e9a040edfbe29ce5935a151a5a9d04939d10bf11a8bd99ec501bb1166117a550901aa87455d87ca40b4'
         'fdaff9ee8715190d0f68b017f8b935bf555d098e184b30c0582bc83c2c79b15f61a05c04dae9cf30ff149d5ab8d428696143bdd4dfc1807c92cf701500a6f8e9'
         'c5f376c25c2c829847e6cadc183170cfe60bafcebef471f809d52830a7de8e7a934bce753afc90039a1bee32fa11b2715fa4b29ece13cc37ad55a26178f58c4a')
 
