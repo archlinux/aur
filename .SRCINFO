@@ -1,0 +1,14 @@
+pkgbase = sculk-cli-bin
+	pkgdesc = Minecraft P2P multiplayer tunnel CLI
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/KercyDing/sculk
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = sculk-cli
+	provides = sckc
+	conflicts = sculk-cli-git
+	source = sckc-0.2.0::https://github.com/KercyDing/sculk/releases/download/v0.2.0/sckc-linux-amd64
+	sha256sums = 471fde64aea842fe1baad09bbc85f1051375d54f8159825a7a3e0bc4e68f8df1
+
+pkgname = sculk-cli-bin
