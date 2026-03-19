@@ -3,7 +3,7 @@
 _pkgauthor=sorairolake
 _pkgname=randgen
 pkgname=${_pkgname}-bin
-pkgver=0.1.6
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Generate pseudo-random bytes"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${pkgver}-${arch[0]}.tar.zst::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch[0]}-unknown-linux-musl.tar.zst")
 source_aarch64=("${_pkgname}-${pkgver}-${arch[1]}.tar.zst::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${arch[1]}-unknown-linux-musl.tar.zst")
-sha256sums_x86_64=('8e829cd5dcfddd288d61bd50fbf18e535ba8837e29e6fb6235be09f26e39a41d')
-sha256sums_aarch64=('05f64e126aa31a464b2ac9fdf4fc364bc33848723ff10b67bfd5d16f9a435e37')
+sha256sums_x86_64=('d41843140368694b5884abb5c68cca592b309e029982c2838a2d91d1fc843d5b')
+sha256sums_aarch64=('6a581e2e49a3840007d9bd3ff84797500aa5a93b47dcaadd34278fefdc79d638')
 
 
 package() {

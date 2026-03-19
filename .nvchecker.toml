@@ -1,0 +1,5 @@
+[randgen-bin]
+source = "github"
+github = "sorairolake/randgen"
+use_latest_release = true
+prefix = "v"
