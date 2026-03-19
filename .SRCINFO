@@ -11,7 +11,7 @@ pkgbase = steam-grunge-editor
 	depends = python>=3.10
 	depends = libgl
 	depends = libxcb
-	depends = libxcb-cursor
+	depends = xcb-util-cursor
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
 	depends = xcb-util-renderutil

@@ -52,7 +52,7 @@ depends=(
     # Qt6 / PySide6 platform plugin (xcb) hard requirements
     'libgl'
     'libxcb'
-    'libxcb-cursor'          # xcb-util-cursor on some mirrors
+    'xcb-util-cursor'
     'xcb-util-keysyms'
     'xcb-util-wm'
     'xcb-util-renderutil'
@@ -75,7 +75,7 @@ install="${pkgname}.install"
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Huzzama/Steam-Grunge/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('AAAAC3NzaC1lZDI1NTE5AAAAIE2n9fMg6OdxwjxLTKzSzqe+LNOC7a/Gj86rw4HLd8ff')
+sha256sums=('f3072a0bd50f286483b04b9e83de0d0127378b41c79f0d600c5b2c40da12d842')
 
 # ─────────────────────────────────────────────────────────────────────────────
 prepare() {
