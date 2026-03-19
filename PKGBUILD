@@ -5,7 +5,7 @@
 # shellcheck disable=SC2034
 
 pkgname=gam
-pkgver=7.36.01
+pkgver=7.37.00
 pkgrel=1
 pkgdesc="command line management for Google Workspace"
 arch=('any')
@@ -20,7 +20,7 @@ source=(
     "gam.sh"
 )
 
-sha256sums=('39998dd7dadf56552ef0f124f494e4cd8851cc1a9c6dac398c0c39a90284ede0'
+sha256sums=('75c3b6cfaad2a34562387d9458f567e679ce65a7743eae5dcf565145583b0b64'
             'f8613546b8d4a51f05342d3680553c20a2e0995c3be90e469f1da3bb83ca172e')
 
 prepare() {
