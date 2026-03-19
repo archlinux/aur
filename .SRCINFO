@@ -1,6 +1,6 @@
 pkgbase = nibble-bin
 	pkgdesc = A local network scanner tui tool
-	pkgver = 0.6.2
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/backendsystems/nibble
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = nibble-bin
 	depends = glibc
 	provides = nibble
 	conflicts = nibble
-	source_x86_64 = nibble-x86_64-0.6.2.tgz::https://github.com/backendsystems/nibble/releases/download/v0.6.2/nibble_linux_amd64.tar.gz
-	sha256sums_x86_64 = 30322d2efc1145c6efeb31b7460b98215430ea97a658035ac537d4a5dd5b0147
-	source_aarch64 = nibble-aarch64-0.6.2.tgz::https://github.com/backendsystems/nibble/releases/download/v0.6.2/nibble_linux_arm64.tar.gz
-	sha256sums_aarch64 = bbe85f8ea06f8d724b85c43d113e1de09957a6a964cf02ed956603781d7c736b
+	source_x86_64 = nibble-x86_64-0.6.3.tgz::https://github.com/backendsystems/nibble/releases/download/v0.6.3/nibble_linux_amd64.tar.gz
+	sha256sums_x86_64 = e96f0cd2fd6a9827193c24d7f256149b2922990130a16aca631e96678a449733
+	source_aarch64 = nibble-aarch64-0.6.3.tgz::https://github.com/backendsystems/nibble/releases/download/v0.6.3/nibble_linux_arm64.tar.gz
+	sha256sums_aarch64 = 9946e8a84e238213b77bf130c5981cd1c8901bde98c156ef25c4a9f5c9e86b3f
 
 pkgname = nibble-bin
