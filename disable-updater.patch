@@ -1,12 +1,41 @@
+From 465e67ca3fcee2acac36c3e187b93e91e11c2801 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Thu, 19 Mar 2026 19:45:10 +0100
+Subject: [PATCH] Replace built-in updater with message
+
+---
+ src/App.tsx           | 8 +-------
+ src/routes/__root.tsx | 8 +-------
+ 2 files changed, 2 insertions(+), 14 deletions(-)
+
+diff --git a/src/App.tsx b/src/App.tsx
+index ba378c51..724077fc 100644
+--- a/src/App.tsx
++++ b/src/App.tsx
+@@ -120,13 +120,7 @@ const checkForUpdates = async () => {
+   try {
+     const update = await check();
+     if (update) {
+-      const yes = await ask("Do you want to install the new version now?", {
+-        title: "New version available",
+-      });
+-      if (yes) {
+-        await update.downloadAndInstall();
+-        await relaunch();
+-      }
++      info("New version available. Check the AUR for updates.");
+     }
+   } catch (e) {
+     error(`Failed to check for updates: ${e}`);
 diff --git a/src/routes/__root.tsx b/src/routes/__root.tsx
-index 3013454..2c6fa94 100644
+index 741e645d..d8e77f37 100644
 --- a/src/routes/__root.tsx
 +++ b/src/routes/__root.tsx
 @@ -117,13 +117,7 @@ function RootLayout() {
    const checkForUpdates = useCallback(async () => {
      const update = await check();
      if (update) {
--      const yes = await ask("Do you want to install them now?", {
+-      const yes = await ask("Do you want to install the new version now?", {
 -        title: "New version available",
 -      });
 -      if (yes) {
@@ -17,3 +46,6 @@ index 3013454..2c6fa94 100644
      } else {
        await message("No updates available");
      }
+-- 
+2.53.0
+

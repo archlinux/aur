@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
 
 pkgname=en-croissant
-pkgver=0.13.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Modern chess GUI and analysis tool'
 arch=('x86_64')
@@ -10,7 +10,6 @@ license=('GPL-3.0-only')
 depends=(
   'bzip2'
   'cairo'
-  'gcc-libs'
   'gdk-pixbuf2'
   'glib2'
   'glibc'
@@ -21,9 +20,9 @@ depends=(
 
   'gtk3'
   'hicolor-icon-theme'
-  'libsoup'
+  'libgcc'
+  'libsoup3'
   'openssl'
-  'pango'
   'webkit2gtk-4.1'
 )
 makedepends=('cargo' 'nvm' 'pnpm')
@@ -45,8 +44,8 @@ source=(
   'en-croissant.desktop'
 )
 
-sha512sums=('7dcf6952b07b1f60a2168b9944181771e97ceed5db3a1581aa5634294ef5f8fe20ca2d8d595a7b81c2f605c6ee16cb0f050ab78e8ece2e6000ca0294ea31e043'
-            'bd9fccd3f4285e352bab841e4f09c683b63c12f86ffe7d6e2b62773578955218d56478f5b2ebee85aa5f08b3ac666a741143755ae9ae927d610fd1983a8913da'
+sha512sums=('ace5c341c7270ff1d266c5ae80ebf66ff86519b6bdcef6f58707e25ac0f05af8a2a44a015a6ef2ab6d56d9adbe10e8464e678a0075616602687f7cc6a4b577ae'
+            'c780d708a0065a47808a115c9f1106f8aa1eb3038496c3cc6cbe1ca3334d7c28bca496a0b309a4e3c5d4814cdaef2fe1950ee249fd10e7d3bb52e6c2330065cd'
             '0ca0416ec4941d0a9194048b7e099c433bdb7f309dd0746e272757f02e5d13bb899090ac390b9fbdd6f075070e5cf54996d63348f5f1cafdc8f5d7d798b92023')
 
 # https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
