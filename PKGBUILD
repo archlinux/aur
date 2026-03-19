@@ -1,3 +1,4 @@
+# Maintainer: hegyesur <urhegyes at gmail dot com>
 pkgname='prman'
 pkgver='1.0.2'
 pkgrel=1
