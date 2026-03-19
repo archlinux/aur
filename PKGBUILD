@@ -2,15 +2,17 @@
 
 pkgname='pepecoin'
 pkgver='1.1.0'
-pkgrel=4
+pkgrel=5
 pkgdesc="The world's first fully decentralized and secure blockchain for Pepe."
 arch=('x86_64')
 url='https://github.com/pepecoinppc/pepecoin'
 license=('MIT')
 makedepends=(
   'boost'
-  'git'
   'qt5-tools'
+)
+checkdepends=(
+  'python'
 )
 depends=(
   'abseil-cpp'
@@ -27,14 +29,14 @@ depends=(
   'qrencode'
   'qt5-base'
 )
-source=("${pkgname}-${pkgver}::git+https://github.com/pepecoinppc/pepecoin.git#tag=v${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/pepecoinppc/pepecoin/archive/refs/tags/v${pkgver}.tar.gz"
         'use-c++17.patch'
         'pepecoin.sysusers'
         'pepecoin.tmpfiles'
         'pepecoind.service'
         'pepecoin-qt.desktop'
         'pepecoin-qt.appdata.xml')
-b2sums=('7c0ce6b1e00bbe422fd4e2726b1bb079d570c7304f778a84e828eece9755c67a6bfe2fc05847352fd175ed4d81a2fcee1b1ccf148a35ca73e8c146d246132e92'
+b2sums=('4d62dcf6bb76a51a747b3f29f9c851068bc18bb834f7a1d690aebfb0b52ccbb1fac21e7897a541fc0cdd4096c603adf8431bd0c6b5478a75255f6e0daaa5c5d6'
         '9c1b5f7dc6bbbc3cc3cf983bbed61dd6aeb56f6b675688497b92e6c7aa6eb686b304c75a648111f6382a10663a2b13b8360e242fe83d8792a297ef40b272eea3'
         '920c4489e66cb84acecc6f76b13b866cf392bd27d634106257dc99195da8d9a301d65ddddfff964693fe31a7859b44762e9c0b2f5a0d026b39ae44df3b73c329'
         'a5354d82badf5abb7805375f579d9d85c9ae9a30a850b5cf73836c69362a34c5d044a5212e92951b20ae61df36af556f5ad8c7839a7923ea70d4247d2b5b8c1b'
