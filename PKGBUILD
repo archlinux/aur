@@ -1,7 +1,7 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=kiro-ide
-pkgver=0.11.34
+pkgver=0.11.63
 pkgrel=1
 epoch=1
 pkgdesc='An agentic AI IDE with spec-driven development from prototype to production'
@@ -13,12 +13,12 @@ url='https://kiro.dev/'
 #   Service Terms: https://aws.amazon.com/service-terms/
 #   Privacy Notice: https://aws.amazon.com/privacy/
 license=(LicenseRef-Kiro)
-makedepends=(openssl)
 depends=(
     alsa-lib
     at-spi2-core
     bash
     cairo
+    curl
     dbus
     expat
     glib2
@@ -26,6 +26,9 @@ depends=(
     gtk3
     libcups
     libgcc
+    libsecret
+    libsoup3
+    libstdc++
     libx11
     libxcb
     libxcomposite
@@ -38,8 +41,10 @@ depends=(
     mesa
     nspr
     nss
+    openssl
     pango
     systemd-libs
+    util-linux-libs
 )
 conflicts=(kiro)
 options=(!debug !strip)
@@ -48,8 +53,8 @@ source=("$pkgname-$pkgver.deb::$_baseurl/$pkgname-$pkgver-stable-linux-x64.deb"
         "$pkgname-$pkgver-deb-signature.bin::$_baseurl/signature.bin"
         "$pkgname-certificate.pem::$_baseurl/certificate.pem"
         "Kiro-LICENSE.txt")
-b2sums=('90a2760aac721b1a44fa749a7949a7bd6c04b174f0407aee475759b544cc03a71a7feb78f0fdb49de1fe848262710e712adb5f7fa6c910cceff3a5747af4a3b1'
-        'c282539a779fcd94d48171d4102399ccd744b1f8a6f8f799230b3c1cc560a9d56f2dfd0aef800e82515edd29b299292eb20b843f6fc2c488cab3132d49ea4cc7'
+b2sums=('31727ce6f28a2b27635bbe233e72f7eb5d4ebb789059efd6455082d656026ca1392466e09b9a1e6e34e5b59d59ad88b1d1139b5cab779435736b9174407ae9c4'
+        '4ab8dc28d9b038d7cbd0f02dba21a8d078bef095f74917835c1500b5f54272d6b938dbdeec9d0d127044ad1aeb973a0b4d50add6c29ac9854f7dd14dd7a498fa'
         '09676f21f9b2821f7fb789fde98f1825f53d1df64ab74932ec2117f6cf06985bc5795ea7a016d90e9318035b2dd7c2f9706dccf44eb4cd092e4268a5f4760a26'
         '4fee11387ffa92e8fba85ca53dcd51906efb5aa0d581002510a66e63916e439c836539de374db5e5b5a4470a1790b6dc0348e7ceb555a8de4dd5210b6c0f7a01')
 
