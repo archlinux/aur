@@ -10,11 +10,9 @@ license=('GPL-3.0-only')
 depends=(
   'fuse3' 'openssl' 'boost-libs' 'jemalloc' 'xxhash' 'fmt'
   'lz4' 'xz' 'zstd' 'brotli' 'libarchive' 'flac'
-  'libunwind'
 )
 makedepends=(
-  'cmake' 'ruby-ronn'
-  'python' 'python-mistletoe'
+  'cmake'
   'boost' 'libdwarf' 'chrono-date'
   'utf8cpp' 'range-v3' 'nlohmann-json'
   'gtest' 'parallel-hashmap'
