@@ -2,7 +2,7 @@
 # Contributor: Zaedus <thezaedus@proton.me>
 _pkgname="youtube-tui"
 pkgname="${_pkgname}-full-bin"
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="An aesthetically pleasing TUI frontend to browsing YouTube written in Rust. (Binary)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 pkgfull="${_pkgname}-full_arch-x86_64"
 source=("${_pkgname}-${pkgver}::https://github.com/Siriusmart/youtube-tui/releases/download/v${pkgver}/${pkgfull}")
-sha512sums=('ee8ebe19db7745b7635a206b074a2b3ba7bb70fe9fb199f1d37b0d7ee2b7b64ee5200918a34a63ed654af29b18d9c973a4064218e456b2f55d6cefc362f720fd')
+sha256sums=('c8898e6cbde585578dc809b9199ea77b3b8afb8217f884343c633e23341f2bc9')
 
 package() {
   cd "${srcdir}"
