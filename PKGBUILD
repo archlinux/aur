@@ -1,8 +1,9 @@
-# Maintainer: novik133 <your-email@example.com>
+# Maintainer: twa022 <twa022 at gmail dot com>
+# Maintainer: novik133
 
 pkgname=novadock
 _pkgname=NovaDock
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A macOS/GNOME-style dock and application launcher for XFCE4"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -11,7 +12,7 @@ license=('GPL3')
 depends=('gtk3' 'libwnck3' 'libkeybinder3' 'gtk-layer-shell')
 makedepends=('vala' 'meson' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/novik133/NovaDock/archive/v$pkgver.tar.gz")
-sha256sums=('eedb58db26c683695f24e622fad680543a03b17a760924c8ca6fe93cce72f4b7')
+sha256sums=('e604d7a2da77ccbd7cd67d49abf8cc82bff6e995d3a5e74d2c20ed4826fb434a')
 
 build() {
     cd "$srcdir/${_pkgname}-$pkgver"
@@ -22,4 +23,7 @@ build() {
 package() {
     cd "$srcdir/${_pkgname}-$pkgver"
     meson install -C build --destdir "$pkgdir"
+
+    # Remove autostart file
+    rm -fr "${pkgdir}"/etc/ #xdg/autostart/${pkgname}.desktop
 }

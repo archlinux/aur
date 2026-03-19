@@ -1,6 +1,6 @@
 pkgbase = novadock
 	pkgdesc = A macOS/GNOME-style dock and application launcher for XFCE4
-	pkgver = 0.1.3
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/novik133/NovaDock
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = novadock
 	depends = libwnck3
 	depends = libkeybinder3
 	depends = gtk-layer-shell
-	source = novadock-0.1.3.tar.gz::https://github.com/novik133/NovaDock/archive/v0.1.3.tar.gz
-	sha256sums = eedb58db26c683695f24e622fad680543a03b17a760924c8ca6fe93cce72f4b7
+	source = novadock-0.2.0.tar.gz::https://github.com/novik133/NovaDock/archive/v0.2.0.tar.gz
+	sha256sums = e604d7a2da77ccbd7cd67d49abf8cc82bff6e995d3a5e74d2c20ed4826fb434a
 
 pkgname = novadock
