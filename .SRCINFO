@@ -1,14 +1,20 @@
 pkgbase = cedilla
-	pkgdesc = A simple text printer that uses Unicode internally
-	pkgver = 0.7
+	pkgdesc = A markdown text editor for the COSMIC™ desktop
+	pkgver = 0.1.3
 	pkgrel = 1
-	url = http://www.pps.jussieu.fr/~jch/software/cedilla/
-	arch = any
-	license = GPL
-	depends = clisp
-	depends = texlive-core
-	source = http://www.pps.jussieu.fr/~jch/software/files/cedilla-0.7.tar.gz
-	md5sums = 57d2a80d3fd8fdc72827ada5e6257be2
+	url = https://github.com/mariinkys/cedilla
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	checkdepends = appstream
+	checkdepends = desktop-file-utils
+	makedepends = cargo
+	makedepends = setconf
+	makedepends = just
+	depends = fontconfig
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	source = cedilla-0.1.3.tar.gz::https://github.com/mariinkys/cedilla/archive/refs/tags/0.1.3.tar.gz
+	sha256sums = 71d437e39e88fee85ff2e012d43d329f3291b6432de629125bc4143964538357
 
 pkgname = cedilla
-

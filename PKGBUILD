@@ -1,32 +1,55 @@
-# Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
-
+# Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cedilla
-pkgver=0.7
+pkgver=0.1.3
 pkgrel=1
-pkgdesc="A simple text printer that uses Unicode internally"
-arch=(any)
-url="http://www.pps.jussieu.fr/~jch/software/cedilla/"
-license=('GPL')
-depends=(clisp texlive-core)
-makedepends=()
-source=(http://www.pps.jussieu.fr/~jch/software/files/$pkgname-$pkgver.tar.gz)
-md5sums=('57d2a80d3fd8fdc72827ada5e6257be2')
+pkgdesc="A markdown text editor for the COSMIC™ desktop"
+arch=('x86_64' 'aarch64')
+url="https://github.com/mariinkys/cedilla"
+license=('GPL-3.0-or-later')
+depends=(
+  'fontconfig'
+  'hicolor-icon-theme'
+  'libxkbcommon'
+)
+makedepends=(
+  'cargo'
+  'setconf'
+  'just'
+)
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('71d437e39e88fee85ff2e012d43d329f3291b6432de629125bc4143964538357')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
+
+  # Fix icon-svg-dst path in justfile
+  setconf justfile icon-svg-dst " := icons-dst / 'scalable' / 'apps' / icon-svg"
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
+  CFLAGS+=" -ffat-lto-objects"
+  export RUSTUP_TOOLCHAIN=stable
 
-  ./compile-cedilla
+  # https://github.com/aws/aws-lc-rs/issues/1008#issuecomment-3774105038
+  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
+
+  just build-release --frozen
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  appstreamcli validate --no-net resources/app.metainfo.xml
+  desktop-file-validate resources/app.desktop
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  # the install-cedilla script would not find the man path in fakeroot, so
-  # we need to create the dirs for it
-  source cedilla-config
-  mkdir -p $pkgdir/$MANDIR
-
-  TARGET=$pkgdir ./install-cedilla
-  sed -i -e 's/texmf-tetex/texmf-dist/g' $pkgdir/etc/cedilla-config.lisp
+  cd "$pkgname-$pkgver"
+  just rootdir="$pkgdir" install
 }
-

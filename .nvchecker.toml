@@ -1,0 +1,3 @@
+[cedilla]
+source = "git"
+git = "https://github.com/mariinkys/cedilla.git"
