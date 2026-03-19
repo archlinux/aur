@@ -1,0 +1,34 @@
+pkgbase = hosaka-studio
+	pkgdesc = Turn screen captures into professional videos
+	pkgver = 0.1.124
+	pkgrel = 1
+	url = https://github.com/byzantime/deskcam.studio
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	makedepends = python-setuptools
+	makedepends = python-pip
+	provides = python-pillow
+	conflicts = python-pillow
+	conflicts = python-pillow-simd
+	install = hosaka-studio.install
+	source = hosaka-studio-0.1.124.tar.gz::https://github.com/byzantime/deskcam.studio/archive/refs/tags/v0.1.124.tar.gz
+	sha256sums = SKIP
+	depends = python>=3.11
+	depends = pyside6
+	depends = python-numpy
+	depends = python-pyav
+	depends = python-xlib
+	depends = python-dbus-fast
+	depends = python-evdev
+	depends = python-pywayland
+	depends = python-lz4
+	depends = python-boto3
+	depends = ffmpeg
+	depends = libpulse
+	depends = libjpeg-turbo
+	depends = zlib
+
+pkgname = hosaka-studio
