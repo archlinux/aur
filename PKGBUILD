@@ -1,6 +1,6 @@
 # Maintainer: Gravus <gravusbit@proton.me>
 pkgname=ustb-wifi-tools
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Tool for querying USTB campus WiFi usage information"
 arch=('x86_64')
@@ -19,18 +19,16 @@ makedepends=(
   'rust'
   'nodejs'
   'pnpm'
+  'deno'
   'pkg-config'
 )
 
 options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/CakeAL/ustb-wifi-tools/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('dec9e6bc3682de1c2a424a17ca3211b5ac17485ddfc22fce485b470a8e13af34')
+sha256sums=('ae4f58526b4f831ad3500010ad5e357cac2fa53896b4432339787d1e20558151')
 
 prepare() {
   cd "${srcdir}/ustb-wifi-tools-${pkgver}"
-  # Fix Linux build: remove unused `update` import (upstream PR: https://github.com/CakeAL/ustb-wifi-tools/pull/19)
-  sed -i 's/utils::{complete_month_pay_data, get_session_id, get_store_path, update}/utils::{complete_month_pay_data, get_session_id, get_store_path}/' \
-    src-tauri/src/commands.rs
   cd src-tauri
   export CARGO_HOME="${srcdir}/.cargo"
   cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -71,4 +69,3 @@ Type=Application
 Categories=Network;Utility;
 EOF
 }
-
