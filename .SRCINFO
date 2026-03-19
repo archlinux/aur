@@ -1,0 +1,16 @@
+pkgbase = shaweeltimer-dev
+	pkgdesc = A highly customizable timer application written in Python with libadwaita
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/shaweel/shaweelTimer
+	arch = any
+	license = GPL-3.0-or-later
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	conflicts = shaweeltimer
+	source = shaweeltimer-dev-1.2.0.tar.gz::https://github.com/shaweel/shaweelTimer/archive/refs/heads/dev.tar.gz
+	sha256sums = SKIP
+
+pkgname = shaweeltimer-dev
