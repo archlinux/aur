@@ -5,8 +5,8 @@ pkgbase="${pkgname}"
 _upstreamname=OpenLinkHub
 _binlocation=/usr/bin/"${pkgname%-*}"
 _applocation=/var/lib/"${pkgname%-*}"
-_tag=0.7.5
-pkgver=0.7.5
+_tag=0.8.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Open source Linux interface for iCUE LINK Hub and other Corsair AIOs, Hubs. [Latest Release - source]"
 arch=('x86_64')
@@ -31,8 +31,8 @@ source=(
 	"${pkgname%-*}".tmpfiles
 )
 noextract=()			
-sha256sums=('0899b779883126df7d20eaf064ee0a6a52218032dcfb9d243ec743aeed1ac4e4'
-            '0820bcc60c77bd23178f4766f92f01dae2a75ae704ad6ac40ecf598a55002d36'
+sha256sums=('f959865a5639b02ef0a2848960b09bda99ced18cc7dd8424660ae887899eb038'
+            'a385eb9acb2f4f679556b4ef17fcc8fc6d1b712878725d4cb29f4b11719697c2'
             '8c9f747bc6484290cb97b40e5904dc02cce2672e59e0f6ad720a1cd6a7b9d900'
             '858fd197e13a6bc2756e090f622adcac0d02d20007c366d0dff93258898e256e'
             '70c1d136ed639a84c6aca077df51ff857c32df8db5d74cc7df48f463708bdd0b')
@@ -44,7 +44,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname%-*}"
-	go build .
+	CGO_CFLAGS_ALLOW='-fno-strict-overflow' go build .
 }
 
 package() {
