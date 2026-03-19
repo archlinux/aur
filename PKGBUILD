@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=data-peek
 _pkgname=Data-Peek
-pkgver=0.15.0
+pkgver=0.16.0
 _electronversion=38
 _nodeversion=24
 pkgrel=1
@@ -25,12 +25,8 @@ makedepends=(
 optdepends=(
     'ollama'
 )
-source=(
-    "${pkgname}-${pkgver}::git+${_ghurl}#tag=v${pkgver}"
-    "${pkgname}.sh"
-)
-sha256sums=('b92ed6e9c4012cde5e79786bb131bfe5f43846849aa136e97c4162e32e2c8b71'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+source=("${pkgname}.sh")
+sha256sums=('31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
@@ -43,6 +39,12 @@ _get_electron_version() {
     echo -e "The electron version is: \033[1;31m${_main_ver}\033[0m"
 }
 prepare() {
+    cd "${srcdir}"
+    git clone \
+        --depth 1 \
+        --branch "v${pkgver}" \
+        "${_ghurl}" \
+        "${pkgname}-${pkgver}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     _get_electron_version
     sed -i -e "
