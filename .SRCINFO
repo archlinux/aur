@@ -1,13 +1,13 @@
 pkgbase = superharness
 	pkgdesc = Autonomous multi-agent orchestrator for AI coding agents via tmux
-	pkgver = 0.3.2
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/backmeupplz/superharness
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = tmux
-	source = superharness-0.3.2.tar.gz::https://github.com/backmeupplz/superharness/archive/refs/tags/v0.3.2.tar.gz
-	sha256sums = 4b171a94c478c013522b4fea5bb7f8281772521467a52f811d76efcaf8f01f84
+	source = superharness-0.3.3.tar.gz::https://github.com/backmeupplz/superharness/archive/refs/tags/v0.3.3.tar.gz
+	sha256sums = 2cff004ce13f9a09ba075d9708487e63e4b3878e2cb34d467063d03ea57dd271
 
 pkgname = superharness

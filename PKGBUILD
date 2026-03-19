@@ -1,6 +1,6 @@
 # Maintainer: Nikita Kolmogorov <ubuntu@borodutch.com>
 pkgname=superharness
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Autonomous multi-agent orchestrator for AI coding agents via tmux'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('tmux')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/backmeupplz/superharness/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4b171a94c478c013522b4fea5bb7f8281772521467a52f811d76efcaf8f01f84')
+sha256sums=('2cff004ce13f9a09ba075d9708487e63e4b3878e2cb34d467063d03ea57dd271')
 
 prepare() {
   cd "$pkgname-$pkgver"
