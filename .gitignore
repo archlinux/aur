@@ -1,0 +1,6 @@
+*.log
+*.tar.zst
+*.gz
+*.zip
+aur_cache/
+aur_deps

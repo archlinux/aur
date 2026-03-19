@@ -1,0 +1,31 @@
+From 85e16d005de298691faeeeaccde685fe5bac4da1 Mon Sep 17 00:00:00 2001
+From: Peter R <peter.raback@csc.fi>
+Date: Thu, 26 Feb 2026 19:11:16 +0200
+Subject: [PATCH] fixes #782
+
+---
+ elmergrid/src/egmesh.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/elmergrid/src/egmesh.c b/elmergrid/src/egmesh.c
+index 900bb8cce3..a5add333f9 100644
+--- a/elmergrid/src/egmesh.c
++++ b/elmergrid/src/egmesh.c
+@@ -7332,8 +7332,15 @@ void ElementsToBoundaryConditions(struct FemType *data,
+ 		  sprintf(data->boundaryname[material],"body%d",material);
+ 	      }
+ 	    }
+-	    if(!strncmp(data->boundaryname[material],"body",4)) {
+-	      strncpy(data->boundaryname[material],"bnry",4);
++	    
++	    if(material < MAXBCS ) {
++	      if(!data->boundaryname[material]) data->boundaryname[material] = Cvector(0,MAXNAMESIZE);
++	      if(!strncmp(data->boundaryname[material],"body",4)) {
++		strncpy(data->boundaryname[material],"bnry",4);
++	      }
++	    }
++	    else {
++	      printf("Boundary index %d exceeds the maximum allocated space for names %d\n",material,MAXBCS);
+ 	    }
+ 	  }
+ 
