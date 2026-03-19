@@ -1,6 +1,6 @@
 # Maintainer: hamidfzm <https://github.com/hamidfzm>
 pkgname=glyph-md-bin
-pkgver=0.1.3
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A modern, cross-platform markdown viewer"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('glyph')
 conflicts=('glyph')
 source_x86_64=("${url}/releases/download/v${pkgver}/Glyph_${pkgver}_amd64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}/Glyph_${pkgver}_arm64.deb")
-sha256sums_x86_64=('d63271e69fedf51cad9d9490e3182eac64bbaf3262e400831cce0e6d36124413')
-sha256sums_aarch64=('88215f707446bbe3142eeeb502965b0c8cdef770f4ecf4e6ed84c43e863fb54e')
+sha256sums_x86_64=('1e2b1c75c2e36f74d8c5af2b39625e8fdd61872a1d9e6dc7bb69a49fd3e5f858')
+sha256sums_aarch64=('2ad8019964a5c0dc73ad3a3ce5677adf9d07fa1b2e2894e5e4d4448bf2ebf986')
 
 package() {
     bsdtar -xf data.tar.* -C "$pkgdir/"
