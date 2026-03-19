@@ -1,4 +1,5 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: Drew Nutter <dnut@users.noreply.github.com>
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
@@ -11,7 +12,7 @@ pkgdesc='Streaming audio over the Internet'
 arch=('x86_64')
 license=('GPL-2.0-only')
 url="https://www.icecast.org/"
-depends=('glibc' 'libxml2' 'libxslt' 'openssl' 'rhash' 'speex' 'libtheora')
+depends=('glibc' 'libxml2' 'libxslt' 'openssl' 'rhash' 'speex' 'libtheora' 'libigloo')
 makedepends=('autoconf' 'automake' 'curl' 'libogg' 'libtool' 'libvorbis')
 optdepends=('libmaxminddb: GeoIP support')
 backup=('etc/icecast.xml'
