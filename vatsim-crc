@@ -9,9 +9,9 @@ CURRVER=$(LC_ALL=C pacman -Qi vatsim-crc | grep Version | awk '{print $3}')
 
 mkdir -p $HOME/.$progName
 
-if [[ $1 == "clean" ]]; then
+if [[ $1 == "clean" ]] ; then
   rm -rf $WINEPREFIX
-endif
+fi
 
 mkdir -p $WINEPREFIX
 

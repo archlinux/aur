@@ -1,7 +1,7 @@
 pkgbase = vatsim-crc
 	pkgdesc = Consolidated Radar Client (CRC), a controller application connects to the VATSIM network through vNAS.
 	pkgver = 2.15.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://vnas.vatsim.net/crc
 	install = vatsim-crc.install
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = vatsim-crc
 	source = vatsim-crc.desktop
 	source = segmdl2.verb
 	sha256sums = 68146125d78d14ea7efb54b0d19de41c759bdb59721ced7bdd454f237f8efcd8
-	sha256sums = d6e63cc989ece6823a028dcda110139d7fc0c982004204474618be9fdfbfe8c4
+	sha256sums = b90b988f97fbe99a5e9ab7cae8c4e0d4f6477dfba5d580a978fa282ee465550f
 	sha256sums = 3cf58dcb82541202679f2b07f4ac15ebb22076411ee8e5533970f2e7756815db
 	sha256sums = 1ebb426abfff168706256df00a93661e2a97f2ec095c87906934538ae25a9926
 	sha256sums = ea73951541c4f66e65c7ea6c7e2349f6e93ac4f6988516308b3a2522d4751c74
