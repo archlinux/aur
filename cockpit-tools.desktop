@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Cockpit Tools
+Comment=Universal AI IDE account manager
+Exec=cockpit-tools %U
+Icon=cockpit-tools
+Terminal=false
+Categories=Development;Utility;
+StartupWMClass=Cockpit Tools
+MimeType=x-scheme-handler/cockpit-tools;
