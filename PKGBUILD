@@ -6,7 +6,7 @@ fetchMetadataValue() {
 }
 
 pkgname=shaweeltimer-dev
-pkgdesc=$(fetchMetadataValue "description")
+pkgdesc="dev branch of shaweeltimer (highly unstable)"
 url=$(fetchMetadataValue "url")
 pkgver=$(fetchMetadataValue "version")
 pkgrel=1

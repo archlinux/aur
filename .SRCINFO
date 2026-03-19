@@ -1,5 +1,5 @@
 pkgbase = shaweeltimer-dev
-	pkgdesc = A highly customizable timer application written in Python with libadwaita
+	pkgdesc = dev branch of shaweeltimer (highly unstable)
 	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/shaweel/shaweelTimer
