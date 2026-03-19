@@ -1,6 +1,7 @@
 # Contributor: envolution
 # Contributor: Carl Smedstad <carsme@archlinux.org>
 # Contributor: AngrySoft - Sebastian Zwierzchowski
+# Maintainer: Dawei Yang <yangdawei.home+archlinux.org@gmail.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname=python-sse-starlette
