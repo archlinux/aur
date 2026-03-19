@@ -1,10 +1,10 @@
 _basepgkname=llamafile
 pkgname="${_basepgkname}"
-pkgver=0.9.3
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Distribute and run LLMs with a single file."
 arch=('x86_64')
-url="https://github.com/Mozilla-Ocho/llamafile"
+url="https://github.com/mozilla-ai/llamafile"
 license=('Apache-2.0')
 optdepends=(
 	'hip-runtime-amd: AMD GPU-Offloading Support'
@@ -12,26 +12,15 @@ optdepends=(
   'rocminfo: Used for verifying existance of rocm'
 	'cuda: Nvidia GPU-Offloading Support'
 	)
-source=(    "${pkgname}::https://github.com/Mozilla-Ocho/llamafile/releases/download/${pkgver}/llamafile-${pkgver}.zip"
+source=(    "${pkgname}::https://github.com/mozilla-ai/llamafile/releases/download/${pkgver}/llamafile-${pkgver}.zip"
        )
 
 sha256sums=(
-            '26be2af485cc5676040b7108b5904c83d9ccb9b31013b1bf13fbd4ac782d7c41'
+            '0e0376bcf2efe76c74ed5dc27e4f5e29e31a14162ca9e04c4c9e34645c65f6f7'
            )
 
 provides=(  
             'llamafile'
-            'llamafile-bench'
-            'llamafile-convert'
-            'llamafile-imatrix'
-            'llamafile-perplexity'
-            'llamafile-quantize'
-            'llamafile-tokenize'
-            'llamafile-upgrade-engine'
-            'llamafiler'
-            'llava-quantize'
-            'localscore'
-            'sdfile'
             'whisperfile'
             'zipalign'
         )
