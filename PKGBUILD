@@ -4,7 +4,7 @@ pkgbase=mkdocs-gen-files
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
 _pyname=("${pkgbase//-/_}")
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="MkDocs plugin to programmatically generate documentation pages during the build"
 url="https://oprypin.github.io/mkdocs-gen-files"
@@ -18,7 +18,7 @@ checkdepends=('python-pytest-golden'
               'mkdocs')
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('52022dc14dcc0451e05e54a8f5d5e7760351b6701eff816d1e9739577ec5635e')
+sha256sums=('57d7ff2229e23d077e46d14a33db6d37c8823f6ce1a503c874c1764a71679763')
 
 build() {
     cd "${_pyname}-${pkgver}"
@@ -36,7 +36,7 @@ check() {
 }
 
 package_mkdocs-gen-files() {
-    depends=('python>=3.7' 'mkdocs>=1.4.1')
+    depends=('python>=3.9' 'mkdocs>=1.4.1' 'properdocs>=1.6.5')
     cd "${_pyname}-${pkgver}"
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.md
