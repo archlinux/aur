@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Srwm
+Comment=A fully statically linked dynamic X11 window manager
+Exec=/usr/bin/srwm start
+Type=Application
+DesktopNames=Srwm
+Keywords=x11;

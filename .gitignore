@@ -1,0 +1,6 @@
+*-linux-amd64
+*.sha256
+*.pkg.tar.zst
+src/
+pkg/
+LICENSE

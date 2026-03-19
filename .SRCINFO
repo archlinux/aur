@@ -1,0 +1,22 @@
+pkgbase = srwm-bin
+	pkgdesc = A fully statically linked dynamic X11 window manager written in Go, C and Lua
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/infraflakes/srwm
+	arch = x86_64
+	license = MIT
+	optdepends = iw: to show wifi info
+	optdepends = xorg-xset
+	optdepends = bc
+	conflicts = srwm
+	options = !strip
+	source = https://github.com/infraflakes/srwm/releases/download/v0.2.0/srwm-v0.2.0-linux-amd64
+	source = https://github.com/infraflakes/srwm/releases/download/v0.2.0/srwm-v0.2.0-linux-amd64.sha256
+	source = srwm.desktop
+	source = https://raw.githubusercontent.com/infraflakes/srwm/refs/heads/main/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = f3bf35d06e585093fd5413dc8e7e33754e301ee15ac4a31fc27c8af14d5c4e4a
+	sha256sums = 8bbe268a549563fb2895eefd3c43869ca436eda0ba826474334270ad84a7c98d
+
+pkgname = srwm-bin
