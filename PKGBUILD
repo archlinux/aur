@@ -40,7 +40,7 @@ prepare() {
 }
 
 build() {
-  # local matlabroot=matlabroot="$(matlab -nodisplay -nodesktop -nojvm -batch "disp(matlabroot)"
+  # local matlabroot="$(matlab -nodisplay -nodesktop -nojvm -batch "disp(matlabroot)"
   # export LD_LIBRARY_PATH="${matlabroot}/bin/glnxa64:${LD_LIBRARY_PATH}"
 
   cd "${srcdir}/${_pkgsrc}"
