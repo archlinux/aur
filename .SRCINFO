@@ -1,0 +1,34 @@
+pkgbase = python-flashinfer
+	pkgdesc = Kernel Library for LLM Serving
+	pkgver = 0.6.6
+	pkgrel = 1
+	url = https://github.com/flashinfer-ai/flashinfer
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools>=77
+	depends = python-pytorch
+	depends = cuda
+	depends = python-cuda
+	depends = python-tvm-ffi
+	depends = python-click
+	depends = python-einops
+	depends = python-ninja
+	depends = python-numpy
+	depends = python-nvidia-ml-py
+	depends = python-packaging
+	depends = python-requests
+	depends = python-tabulate
+	depends = python-tqdm
+	optdepends = python-cutlass: Blackwell GPU kernel support (SM100+)
+	optdepends = cudnn: cuDNN-accelerated attention paths (pip install nvidia-cudnn-frontend for Python bindings)
+	provides = python-flashinfer
+	conflicts = python-flashinfer-rocm
+	options = !strip
+	source = flashinfer-0.6.6.tar.gz::https://github.com/flashinfer-ai/flashinfer/archive/refs/tags/v0.6.6.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-flashinfer
