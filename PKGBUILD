@@ -6,26 +6,25 @@
 
 pkgname=sra-tools
 _dep=ncbi-vdb
-pkgver=3.3.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='A collection of tools and libraries for using data in the INSDC Sequence Read Archives'
 url="https://github.com/ncbi/sra-tools"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ncbi/sra-tools/archive/refs/tags/$pkgver.tar.gz"
         "$_dep-$pkgver.tar.gz::https://github.com/ncbi/ncbi-vdb/archive/refs/tags/$pkgver.tar.gz"
-        "fix_xml_attribute_unused.patch")
+        )
 license=('NCBI-PD')
 provides=('ncbi-vdb')
 arch=(x86_64)
 depends=('python' 'glibc' 'gcc-libs' 'java-runtime')
 optdepends=('python-ngs: python module for ncbi sra-tools')
-makedepends=('cmake'  'doxygen' 'hdf5' 'mbedtls' 'libxml2')
-sha256sums=('3bfa26c5499a94d3b2a98eb65113bbb902f51dadef767c7c7247fc0175885a9a'
-            '36b3467affd53bea794e3eeb5598619d820bc726dc68751a189181ac7973047d'
-            'b7bf289f0d52824d7871d35add266838524f7cea919c9e9424842f9291d3df2a')
+makedepends=('cmake'  'doxygen' 'hdf5' 'mbedtls' 'libxml2' 'java-environment')
+sha256sums=('6f60984a212d35b239244c23b9686e2a1131c76b92f0c41e8b56d3f5b6fff2d0'
+            'ff7f49994620d2453043ccfcff1eb7d376bb6ab5402eaae127497a94b4a210b2')
 options=(!lto)
 prepare(){
-  cd ${srcdir}/"$pkgname-$pkgver"
-  patch -p1 < ${srcdir}/fix_xml_attribute_unused.patch
+  cd "${srcdir}/$pkgname-$pkgver"
+  #patch -p1 < "${srcdir}/fix_xml_attribute_unused.patch"
   # fix permission denied in make install,
   # and we manually install them.
   sed -i 's|/etc/ncbi|${CMAKE_CURRENT_SOURCE_DIR}/etc/ncbi|g' build/env.cmake
@@ -69,7 +68,7 @@ build(){
         -DCMAKE_CXX_FLAGS="${CXXFLAGS} -fno-strict-aliasing -fno-aggressive-loop-optimizations"
   make
 
-  cd ${srcdir}/"$pkgname-$pkgver"
+  cd "${srcdir}/$pkgname-$pkgver"
   install -d  build1
   cd build1
   cmake .. -DCMAKE_BUILD_TYPE='None' \
@@ -84,18 +83,18 @@ build(){
 }
 
 package(){
-  install -d  $srcdir/$_dep-$pkgver/interfaces/kfg/ncbi/etc/profile.d/
+  install -d  "$srcdir/$_dep-$pkgver/interfaces/kfg/ncbi/etc/profile.d/"
 
   cd "$_dep-$pkgver"/build1
   make DESTDIR="$pkgdir" install
 
-  cd ${srcdir}/"$pkgname-$pkgver"/build1
+  cd "${srcdir}/$pkgname-$pkgver/build1"
   make DESTDIR="$pkgdir" install
-  cp -rf ${srcdir}/"$pkgname-$pkgver"/etc "$pkgdir"
-  cp -rf $srcdir/$_dep-$pkgver/interfaces/kfg/ncbi/etc "$pkgdir"
+  cp -rf "${srcdir}/$pkgname-$pkgver/etc" "$pkgdir"
+  cp -rf "$srcdir/$_dep-$pkgver/interfaces/kfg/ncbi/etc" "$pkgdir"
 
   # install LICENSE file
-  install -Dm644 ${srcdir}/"$pkgname-$pkgver"/LICENSE  -t "$pkgdir"/usr/share/licenses/sra-tools/
+  install -Dm644 "${srcdir}/$pkgname-$pkgver/LICENSE"  -t "$pkgdir"/usr/share/licenses/sra-tools/
 
   # remove empty folder
   rm -Rf "$pkgdir"/usr/include/kfg/ncbi/etc/
