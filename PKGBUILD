@@ -4,7 +4,7 @@
 # Contributor: Juan Francisco Miranda <jfmiranda at gmail dot com>
 
 pkgname=postman-bin
-pkgver=12.2.1
+pkgver=12.2.3
 pkgrel=1
 pkgdesc="Build, test, and document your APIs faster"
 provides=('postman')
@@ -20,8 +20,8 @@ source_x86_64=("postman-${pkgver}-linux-x64.tar.gz::https://dl.pstmn.io/download
 source_aarch64=("postman-${pkgver}-linux-arm64.tar.gz::https://dl.pstmn.io/download/version/${pkgver}/linux_arm64")
 
 sha256sums=('d87542ac18455ff341da7c5efd01db96a01f659b1bf546840aa4ac8bd085802d')
-sha256sums_x86_64=('02996e14f1d290d0ad805a9fc31eada9df69076f4037441c9d45583169539f80')
-sha256sums_aarch64=('ea2480c880d8053753f24d88a2278390c0052b5d29f19ba437ba0d07afd17a02')
+sha256sums_x86_64=('caf15c5869c9734c6b86bbbce3a2d25d42133461d70024ad047b1eac4cce619b')
+sha256sums_aarch64=('b335bda037d17bcca348104385c067325a78cf57875faa5722f35a21332b9dd5')
 
 package() {
   install -dm755 "${pkgdir}/opt/"
@@ -30,7 +30,7 @@ package() {
   ln -s "/opt/postman/Postman" "${pkgdir}/usr/bin/postman"
 
   # Desktop file
-  install -D -m644 "postman.desktop" "${pkgdir}/usr/share/applications/postman.desktop"
+  install -D -m644 "postman.desktop" "${pkgdir}/usr/share/applications/postman.desktop}"
 
   # Icon
   install -d -m755 "${pkgdir}/usr/share/icons/hicolor/128x128/apps"
