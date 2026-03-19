@@ -11,27 +11,24 @@ arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
 license=('Apache-2.0')
 makedepends=('cmake' 'ninja' 'git' 'cli11' 'nlohmann-json' 'openssl')
-depends=('zstd' 'curl')
+depends=('zstd' 'curl' 'libwebsockets')
 provides=('lemonade-server')
 conflicts=('lemonade-server')
 backup=('etc/lemonade/lemonade.conf' 'etc/lemonade/secrets.conf')
 
 _commit=b989f4d1d3664c8cf9dea58bad36acd93e509fdc
-_httplibver=0.34.0
-_ixwebsocketver=11.4.6
+_httplibver=0.37.1
 
 source=(
   "lemonade-${_commit}.tar.gz::https://github.com/lemonade-sdk/lemonade/archive/${_commit}.tar.gz"
   "httplib-${_httplibver}.tar.gz::https://github.com/yhirose/cpp-httplib/archive/refs/tags/v${_httplibver}.tar.gz"
-  "ixwebsocket-${_ixwebsocketver}.tar.gz::https://github.com/machinezone/IXWebSocket/archive/refs/tags/v${_ixwebsocketver}.tar.gz"
   sysusers.conf
   tmpfiles.conf
 )
 
 sha256sums=(
   '9b5983f226fc1a50953f934856f7d941aa9414ed2861acaa17f9d63ca44239a3'
-  'cb8e41c4b270f4fc520df71097089b71896c652927d61a94a11cd59689a0515b'
-  'c024334f8e45980836c67008979a884d6dcc5ef067dd2eb1fa7241f4c17ddc32'
+  '294776b99d51860881210624b187b64bae7c451c615ea0c6befb8d9d24a139a0'
   '069d5612d570e83128d7eed7ffe4525943d75d22b9c84537d861833157e74b26'
   'f7353d20f265fbdda9121e8587443cef95ba5fb89e1704a87920876ce966804b'
 )
@@ -51,7 +48,6 @@ build() {
     -W no-dev
     -D FETCHCONTENT_FULLY_DISCONNECTED=ON
     -D FETCHCONTENT_SOURCE_DIR_HTTPLIB="${srcdir}/cpp-httplib-${_httplibver}"
-    -D FETCHCONTENT_SOURCE_DIR_IXWEBSOCKET="${srcdir}/IXWebSocket-${_ixwebsocketver}"
     -D CMAKE_BUILD_TYPE=None
     -D CMAKE_INSTALL_PREFIX=/usr
   )
