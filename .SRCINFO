@@ -1,0 +1,15 @@
+pkgbase = haram-blocker
+	pkgdesc = System-wide content blocker for Linux — blocks adult, gambling, dating and drug sites via /etc/hosts
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/adnanisagoodboy/haram-blocker
+	arch = any
+	license = MIT
+	depends = python
+	depends = tk
+	optdepends = polkit: for GUI privilege elevation
+	optdepends = sudo: alternative privilege escalation
+	source = haram-blocker-1.0.tar.gz::https://github.com/adnanisagoodboy/haram-blocker/archive/refs/tags/v1.0.tar.gz
+	sha256sums = 27b3f7d39270a6607b812e77a5d949ae836b44f06b04b7b28e4c581005bc04b2
+
+pkgname = haram-blocker
