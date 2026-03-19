@@ -2,19 +2,19 @@
 
 pkgname='extract-otp-secrets'
 pkgver='2.13.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Extract one time password secrets from QR codes exported by two-factor authentication apps'
 arch=('x86_64')
 url='https://github.com/scito/extract_otp_secrets'
 license=('GPL-3.0-or-later')
 depends=('glibc' 'libglvnd' 'libice' 'libsm' 'mpdecimal' 'tk' 'zbar' 'zlib')
-makedepends=('git' 'python')
+makedepends=('python')
 
-source=("${pkgname}-${pkgver}::git+https://github.com/scito/extract_otp_secrets.git#tag=v${pkgver}")
-b2sums=('1e939d9bfc237e230ced84f426d74280e2465eb898264da9cb2cb143a01fc52d3bf9b1273940510ed7b22335c91bca4a6b79c5ffe33eeece1e03fad85265d831')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/scito/extract_otp_secrets/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('ffeb20a75ab062c698ed23de65ae82b4e135bf7e4abc85a1dad1265adf622f996c4ce75b622fa55fd53131ce2b605f4d3f4f6b06ae0f387e5c869203cba9e7fb')
 
 build() {
-    cd "${pkgname}-${pkgver}"
+    cd "extract_otp_secrets-${pkgver}"
 
     python -m venv venv
     source venv/bin/activate
@@ -33,7 +33,7 @@ build() {
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
+    cd "extract_otp_secrets-${pkgver}"
 
     install -Dm755 dist/extract_otp_secrets "${pkgdir}/usr/bin/extract-otp-secrets"
 }
