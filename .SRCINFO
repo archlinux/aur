@@ -1,6 +1,6 @@
 pkgbase = sqruff-bin
 	pkgdesc = Fast SQL formatter/linter
-	pkgver = 0.37.1
+	pkgver = 0.37.3
 	pkgrel = 1
 	url = https://github.com/quarylabs/sqruff
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = sqruff-bin
 	makedepends = curl
 	provides = sqruff
 	conflicts = sqruff
-	source = LICENSE-954c30259208c39cf74febfd8e7466e1a9bf6479c6aa7a7e85f1e39afce7bda7::https://raw.githubusercontent.com/quarylabs/sqruff/v0.37.1/LICENSE
+	source = LICENSE-954c30259208c39cf74febfd8e7466e1a9bf6479c6aa7a7e85f1e39afce7bda7::https://raw.githubusercontent.com/quarylabs/sqruff/v0.37.3/LICENSE
 	sha256sums = 954c30259208c39cf74febfd8e7466e1a9bf6479c6aa7a7e85f1e39afce7bda7
-	source_x86_64 = sqruff-linux-x86_64-66aae6632fc102dfe70ed1cf65e3a2deca8bd62e322f5cf175dafd8e5c8de1f2.tar.gz::https://github.com/quarylabs/sqruff/releases/download/v0.37.1/sqruff-linux-x86_64-musl.tar.gz
-	sha256sums_x86_64 = 66aae6632fc102dfe70ed1cf65e3a2deca8bd62e322f5cf175dafd8e5c8de1f2
-	source_aarch64 = sqruff-linux-aarch64-84706e2c7aaebca8f11572f756a5635ba6bed2a922aefef13d4fb88c9b9c7b60.tar.gz::https://github.com/quarylabs/sqruff/releases/download/v0.37.1/sqruff-linux-aarch64-musl.tar.gz
-	sha256sums_aarch64 = 84706e2c7aaebca8f11572f756a5635ba6bed2a922aefef13d4fb88c9b9c7b60
+	source_x86_64 = sqruff-linux-x86_64-fcc1a8a154cb29d33b1cc537b30c70f08e003a0a755164a84a71bf545485fffd.tar.gz::https://github.com/quarylabs/sqruff/releases/download/v0.37.3/sqruff-linux-x86_64-musl.tar.gz
+	sha256sums_x86_64 = fcc1a8a154cb29d33b1cc537b30c70f08e003a0a755164a84a71bf545485fffd
+	source_aarch64 = sqruff-linux-aarch64-9b941949e311743c8fa0f1786d755393da26c14638cf1907db4959c0043c5964.tar.gz::https://github.com/quarylabs/sqruff/releases/download/v0.37.3/sqruff-linux-aarch64-musl.tar.gz
+	sha256sums_aarch64 = 9b941949e311743c8fa0f1786d755393da26c14638cf1907db4959c0043c5964
 
 pkgname = sqruff-bin
