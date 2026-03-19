@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Eppie
+Comment=Cliente de correo electrónico descentralizado
+Exec=/usr/bin/eppie
+Icon=eppie
+Terminal=false
+Type=Application
+Categories=Network;Email;
+StartupWMClass=Eppie

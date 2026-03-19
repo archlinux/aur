@@ -1,0 +1,15 @@
+pkgbase = eppie-bin
+	pkgdesc = Decentralized P2P email client
+	pkgver = 1.2.0_preview
+	pkgrel = 1
+	url = https://github.com/Eppie-io/Eppie-App
+	arch = x86_64
+	license = Apache-2.0
+	provides = eppie
+	conflicts = eppie
+	source = https://github.com/Eppie-io/Eppie-App/releases/download/v1.2.0-preview/eppie.desktop-linux-x64.tar.gz
+	source = eppie.desktop
+	sha256sums = fc35a260855691f290af40e2d864e9b4f58f2c9cddb948f79abd55ef0c9540cf
+	sha256sums = 8a3652439cf925acb74b91952b83fb9169ded8d2e7369fde17e32c42e04e629f
+
+pkgname = eppie-bin
