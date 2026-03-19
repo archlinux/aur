@@ -1,6 +1,6 @@
 pkgbase = mx-tools
 	pkgdesc = MX Tools - Dashboard application launcher for various MX tools
-	pkgver = 26.03
+	pkgver = 26.03.1
 	pkgrel = 1
 	url = https://github.com/MX-Linux/mx-tools
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mx-tools
 	makedepends = ninja
 	makedepends = qt6-tools
 	depends = qt6-base
-	source = https://github.com/MX-Linux/mx-tools/archive/refs/tags/26.03.tar.gz
-	sha256sums = 1f02b2ffdfd783975bb9b8b321f4b687e5214410880889ce9b2cb11b7e46acd6
+	source = https://github.com/MX-Linux/mx-tools/archive/refs/tags/26.03.1.tar.gz
+	sha256sums = 333f1bd4ca439f4ff7f492a61f383cf2300ac1d5117cf0c41a8b28aa95e2e390
 
 pkgname = mx-tools
