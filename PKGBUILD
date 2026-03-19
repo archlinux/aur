@@ -1,6 +1,6 @@
 # Maintainer: jaslrobinson
 pkgname=lava-desktop
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="LAVA - Live Animated Visuals for Arch. Desktop live wallpaper engine with formula support, animations, and widget system."
 arch=('x86_64')
@@ -27,7 +27,7 @@ makedepends=(
 )
 provides=('lava')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jaslrobinson/lava/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('779baf0b5f2b94628d283052dc915e53bab23b75ad241f5e37ccf5d63c833950')
 
 build() {
     cd "$srcdir/lava-$pkgver"
