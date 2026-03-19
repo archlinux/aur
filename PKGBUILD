@@ -12,7 +12,7 @@ depends=(
     gdk-pixbuf2
     gtk3
     hicolor-icon-theme
-    libappindicator-gtk3
+    libappindicator
     libsoup3
     webkit2gtk-4.1
 )
