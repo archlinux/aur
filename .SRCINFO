@@ -1,6 +1,6 @@
 pkgbase = prman
 	pkgdesc = Terminal project repository manager.
-	pkgver = 1.0.2
+	pkgver = 1.0.7
 	pkgrel = 1
 	url = https://github.com/bencetotht/prm
 	arch = x86_64
@@ -8,12 +8,14 @@ pkgbase = prman
 	license = Apache-2.0
 	makedepends = cargo
 	makedepends = rust
+	makedepends = pkgconf
 	depends = git
+	depends = sqlite
 	optdepends = lazygit: open lazygit with the g shortcut
 	optdepends = tmux: popup and terminal-window integrations
 	conflicts = prman-bin
 	conflicts = prm
-	source = prman-1.0.2.tar.gz::https://github.com/bencetotht/prm/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = 1758b4f994ecfe96f44f3ccf725729195331efddcc8482b26900ae64307ee9cb
+	source = prman-1.0.7.tar.gz::https://github.com/bencetotht/prm/archive/refs/tags/v1.0.7.tar.gz
+	sha256sums = SKIP
 
 pkgname = prman
