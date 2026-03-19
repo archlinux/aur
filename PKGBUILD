@@ -10,7 +10,7 @@
 
 pkgname=ffmpeg-headless
 pkgver=8.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
@@ -31,6 +31,7 @@ depends=(
   gsm
   harfbuzz
   lame
+  lcms2
   libass
   libavc1394
   libbluray
@@ -146,6 +147,7 @@ build() {
     --enable-gnutls \
     --enable-gpl \
     --enable-ladspa \
+    --enable-lcms2 \
     --enable-libaom \
     --enable-libass \
     --enable-libbluray \
