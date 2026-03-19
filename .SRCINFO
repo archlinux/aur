@@ -1,4 +1,4 @@
-pkgbase = f2p-evo-git
+pkgbase = f2p-evo
 	pkgdesc = F2P Evo — unofficial Hytale launcher (Rust + Tauri 2 + Vue 3) with multiplayer, mods, chat, and auto-updates
 	pkgver = 0.3.27.r172.g0def849
 	pkgrel = 1
@@ -20,4 +20,4 @@ pkgbase = f2p-evo-git
 	sha256sums = SKIP
 	sha256sums = 1dbc9a72ea40f901584870540e18f309463d011c1bbbe362c19b85e4eff9b3d0
 
-pkgname = f2p-evo-git
+pkgname = f2p-evo
