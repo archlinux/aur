@@ -1,12 +1,12 @@
 pkgbase = burrow
 	pkgdesc = Portable, single-binary Go IDE built on Neovim
-	pkgver = 0.0.6
+	pkgver = 0.0.7
 	pkgrel = 1
 	url = https://github.com/meerkat-b/burrow
 	arch = x86_64
 	license = GPL-3.0-only
 	depends = go
-	source = https://github.com/meerkat-b/burrow/releases/download/v0.0.6/burrow_0.0.6_linux_amd64.tar.gz
-	sha256sums = 2d5158905df1a4af9633e57f4b9c4cd1dbc89feff8f2956233ac70ae95593f18
+	source = https://github.com/meerkat-b/burrow/releases/download/v0.0.7/burrow_0.0.7_linux_amd64.tar.gz
+	sha256sums = e60218fc487d7ec76f96f872cce993f8d7c4dc5ef25c7536d335cd6a30f8505d
 
 pkgname = burrow
