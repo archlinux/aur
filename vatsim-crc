@@ -1,30 +1,35 @@
 #!/bin/bash
 
-unset WINEPREFIX
-
 winepfxSaved=$WINEPREFIX
 pwdSaved=$PWD
-
 progName="vatsim-crc"
 export WINEPREFIX="$HOME/.local/share/wineprefixes/$progName"
 
-mkdir -p $WINEPREFIX
+CURRVER=$(LC_ALL=C pacman -Qi vatsim-crc | grep Version | awk '{print $3}')
+
 mkdir -p $HOME/.$progName
 
-if [ ! -f "$WINEPREFIX/.installed" ] ; then
+if [[ $1 == "clean" ]]; then
+  rm -rf $WINEPREFIX
+endif
+
+mkdir -p $WINEPREFIX
+
+if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
+  rm "$WINEPREFIX/.installed*"
   wine wineboot -u
   notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
-  winetricks --unattended tahoma /usr/share/vatsim-crc/segmdl2.verb
+  winetricks --unattended arial tahoma consolas segoe webview2 /usr/share/vatsim-crc/segmdl2.verb
   wine reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
   ln -svf $HOME/.$progName $WINEPREFIX/drive_c/$progName
   for i in $(ls /usr/share/$progName); do
     ln -svf /usr/share/$progName/$i $WINEPREFIX/drive_c/$progName/
   done
-  touch "$WINEPREFIX/.installed"
+  touch "$WINEPREFIX/.installed.$CURRVER"
 fi
 
 cd $HOME/.$progName && WINEDEBUG=-all wine "$WINEPREFIX/drive_c/$progName/Application/CRC.exe" "$@"
+
 unset WINEPREFIX
 export WINEPREFIX=$winepfxSaved
-
 cd $pwdSaved
