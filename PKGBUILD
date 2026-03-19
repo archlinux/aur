@@ -2,7 +2,7 @@
 
 pkgname=python-json-schema-to-pydantic
 _gitpkgname=json-schema-to-pydantic
-pkgver=0.4.9
+pkgver=0.4.11
 pkgrel=1
 pkgdesc='Automatically generate Pydantic v2 models from JSON Schema definitions'
 arch=('any')
@@ -27,9 +27,7 @@ source=(
   "${_gitpkgname}-${pkgver}.tar.gz::https://github.com/richard-gyiko/json-schema-to-pydantic/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  '2dc2b175129d7cdbcc1d6a1da6e65ee4be0bdd16d1f1dfeb3e452089f1d2b39548e2fedead3b2c06af18baac1b705044797a410e5a2efd3e0ae9cf452d061fe1'
-)
+sha512sums=('020d0b29cc5340513f41cd354be68c74b478ca8cac4c4a43cc5622f44b64204b0f47888f8bbc3797c274f8508c746e82a36a87565a55b30668c59beff4bc8f38')
 
 build() {
   cd "${_gitpkgname}-${pkgver}"
