@@ -1,6 +1,6 @@
 pkgbase = swaylock-plugin-git
 	pkgdesc = Screen locker for Wayland -- Fork with background plugin support
-	pkgver = 1.8.0.r21.g969b502
+	pkgver = 1.8.6.r0.gd329aac
 	pkgrel = 1
 	url = https://github.com/mstoeckl/swaylock-plugin
 	arch = i686
@@ -19,8 +19,10 @@ pkgbase = swaylock-plugin-git
 	depends = gdk-pixbuf2
 	depends = swaybg
 	depends = systemd
-	optdepends = mpvpaper
-	provides = swaylock-plugin=1.8.0
+	optdepends = mpvpaper: to implement video backgrounds
+	optdepends = windowtolayer: to use a terminal as background
+	provides = swaylock-plugin=1.8.6
+	backup = etc/pam.d/swaylock-plugin
 	source = swaylock-plugin::git+https://github.com/mstoeckl/swaylock-plugin
 	sha1sums = SKIP
 

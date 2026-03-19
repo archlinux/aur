@@ -2,7 +2,7 @@
 # Contributor: Stephen Gregoratto <dev@sgregoratto.me>
 # Contributor: gilbus <aur@tinkershell.eu>
 pkgname=swaylock-plugin-git
-pkgver=1.8.0.r21.g969b502
+pkgver=1.8.6.r0.gd329aac
 pkgrel=1
 pkgdesc='Screen locker for Wayland -- Fork with background plugin support '
 url='https://github.com/mstoeckl/swaylock-plugin'
@@ -10,7 +10,11 @@ license=('MIT')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('wayland' 'libxkbcommon' 'pam' 'cairo' 'gdk-pixbuf2' 'swaybg' 'systemd')
 makedepends=('meson' 'git' 'scdoc' 'wayland-protocols')
-optdepends=('mpvpaper')
+optdepends=(
+  'mpvpaper: to implement video backgrounds'
+  'windowtolayer: to use a terminal as background'
+)
+backup=(etc/pam.d/swaylock-plugin)
 source=("${pkgname%-git}::git+$url")
 sha1sums=('SKIP')
 provides=("${pkgname%-git}=${pkgver%%.r*}")
