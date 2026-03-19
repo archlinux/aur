@@ -1,5 +1,5 @@
 pkgbase = llamafile-bin
-	pkgdesc = Distribute and run LLMs with a single file.
+	pkgdesc = Distribute and run LLMs with a single file
 	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://github.com/mozilla-ai/llamafile
@@ -7,7 +7,7 @@ pkgbase = llamafile-bin
 	license = Apache-2.0
 	optdepends = hip-runtime-amd: AMD GPU-Offloading Support
 	optdepends = hipblas: Used for static compiling with rocm
-	optdepends = rocminfo: Used for verifying existance of rocm
+	optdepends = rocminfo: Used for verifying existence of rocm
 	optdepends = cuda: Nvidia GPU-Offloading Support
 	provides = llamafile
 	provides = whisperfile
