@@ -6,7 +6,7 @@ pkgbase = wifi-audio-streaming
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = java-runtime-common
+	depends = java-runtime
 	provides = wifi-audio-streaming
 	source = git+https://github.com/marcomorosi06/WiFiAudioStreaming-Desktop#tag=v0.2.0-beta
 	source = wifi-audio-streaming.desktop
