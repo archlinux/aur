@@ -1,0 +1,5 @@
+["python-statemachine"]
+source = "github"
+github = "fgmacedo/python-statemachine"
+use_latest_release = true
+prefix = "v"
