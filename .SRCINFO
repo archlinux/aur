@@ -1,0 +1,14 @@
+pkgbase = sculk-tui-bin
+	pkgdesc = Minecraft P2P multiplayer tunnel TUI client
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/KercyDing/sculk
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = sculk-tui
+	provides = sckt
+	conflicts = sculk-tui-git
+	source = sckt-0.2.0::https://github.com/KercyDing/sculk/releases/download/v0.2.0/sckt-linux-amd64
+	sha256sums = f2a6dce4d0d8cde91fb15822a6b048b3a1f4d0940f273b3b0b1b18f711ce2290
+
+pkgname = sculk-tui-bin
