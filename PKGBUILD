@@ -2,19 +2,19 @@
 # Contributor: Tom Wagner <tom dot a dot wagner at protonmail dot com>
 # Contributor: smcdougall <simon at sjmcdougall dot com>
 pkgname=gnome-shell-extension-multi-monitors-add-on-git
-_uuid=multi-monitors-add-on@spin83
-pkgver=r146.67af601
+_uuid=multi-monitors-add-on@eldarj
+pkgver=r130.25861d6
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc="Add multiple monitors overview and panel for gnome-shell."
 arch=('any')
-url="https://github.com/lazanet/multi-monitors-add-on"
+url="https://github.com/eldarj/multi-monitors-add-on"
 license=('GPL-2.0-or-later')
 depends=('gnome-shell')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/lazanet/multi-monitors-add-on.git')
+source=('git+https://github.com/eldarj/multi-monitors-add-on.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -27,15 +27,15 @@ package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions/"
   cp -a "${_uuid}/" "$pkgdir/usr/share/gnome-shell/extensions/"
 
-  install -Dm644 "${_uuid}/schemas/org.gnome.shell.extensions.multi-monitors-add-on.gschema.xml" -t \
+  install -Dvm644 "${_uuid}"/schemas/*.gschema.xml -t \
     "$pkgdir/usr/share/glib-2.0/schemas/"
 
   for lang in de es fr it pl pt_BR; do
-    install -Dm644 "${_uuid}/locale/${lang}/LC_MESSAGES/multi-monitors-add-on.mo" -t \
+    install -Dvm644 "${_uuid}/locale/${lang}/LC_MESSAGES/multi-monitors-add-on.mo" -t \
       "$pkgdir/usr/share/locale/${lang}/LC_MESSAGES/"
   done
 
-  rm -vr "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"/{locale,schemas}
+  rm -rv "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}"/{locale,schemas}
   rm -v "$pkgdir/usr/share/gnome-shell/extensions/${_uuid}/multi-monitors-add-on.pot"
 }
 
