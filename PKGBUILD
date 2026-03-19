@@ -2,8 +2,8 @@
 
 pkgname="qcsuper"
 _pkgname="QCSuper"
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="QCSuper is a tool communicating with Qualcomm-based phones and modems, allowing to capture raw 2G/3G/4G radio frames, among other things"
 arch=(
   'any'
@@ -23,7 +23,9 @@ depends=(
 makedepends=(
   'python-build'
   'python-installer'
+  'python-poetry>=2.0.0'
   'python-setuptools>=69'
+  'python-setuptools-scm>=8'
 )
 provides=(
   "python-${pkgname}=${pkgver}"
@@ -38,7 +40,7 @@ _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
 )
-sha256sums=('909aea94fa04542262c82857d7c3a99656ccfc74c080b4ccf7cec47a6bc5e36b')
+sha256sums=('ca23ecf2943baf61a1b1ce43a3818f80a507effc47e7c74d6380d419e6871022')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
