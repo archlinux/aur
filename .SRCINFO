@@ -1,6 +1,6 @@
 pkgbase = sley-bin
 	pkgdesc = CLI for semantic versioning using a simple .version file. Language-agnostic with plugins for git tagging, changelog generation, versioning policies and more...
-	pkgver = 0.12.0
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/indaco/sley
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = sley-bin
 	license = MIT
 	provides = sley
 	conflicts = sley
-	source_x86_64 = sley-x86_64-0.12.0.tgz::https://github.com/indaco/sley/releases/download/v0.12.0/sley_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = cb8faaa8edcfcbb44c596a261e7ba1c8c5c67197f38344113cfb90147de9e9bf
-	source_aarch64 = sley-aarch64-0.12.0.tgz::https://github.com/indaco/sley/releases/download/v0.12.0/sley_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 1e5d34a51ab2993df746fd364061713a91f39f9e09659f7782997c64babd0a8a
+	source_x86_64 = sley-x86_64-0.12.1.tgz::https://github.com/indaco/sley/releases/download/v0.12.1/sley_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 9999ae6d0a614e13284fc6022a11cbf438ff4a88e504f1d57b90d4df8c0917f8
+	source_aarch64 = sley-aarch64-0.12.1.tgz::https://github.com/indaco/sley/releases/download/v0.12.1/sley_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 9e23614b3664dbf9937584826e4d178b6924c16881509638ef38422de88c160f
 
 pkgname = sley-bin
