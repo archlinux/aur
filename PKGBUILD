@@ -1,39 +1,36 @@
-# Maintainer: brent s. <bts[at]square-r00t[dot]net>
-validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
-# Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
-# News updates for packages can be followed at https://devblog.square-r00t.net
-pkgname=('python-pyqrcode' 'python2-pyqrcode')
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+
+pkgname=python-pyqrcode
+_gitcommit=674a77b5eaf850d063f518bd90c243ee34ad6b5d
 pkgver=1.2.1
-pkgrel=4
-pkgdesc="A QR code generator written purely in Python with SVG, EPS, PNG and terminal output (fixed for python3)"
+pkgrel=5
+pkgdesc='QR code generator written purely in Python with SVG, EPS, PNG and terminal output'
+url='https://github.com/mnooner256/pyqrcode'
 arch=('any')
-url="https://pythonhosted.org/PyQRCode/"
-license=('CUSTOM')
-makedepends=('python-setuptools' 'python2-setuptools')
-_pkgname=PyQRCode
-source=("https://files.pythonhosted.org/packages/source/P/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
-	"LICENSE"
-        "${_pkgname}-${pkgver}.tar.gz.sig"
-	"LICENSE.sig")
-sha512sums=('784262cb15c10f3581b0caeac6bba046686b35b8c0709ee78684b805b6cba49f4250a004dc5f7d393cc25929cbf815c6c3a94e284a77d20ff7224a8dde3a036a'
-	    '829167e63453a7be5089a8d1318645a69896147d81cb9591a2569bbbbd8d726a8d565d2d6306c1edf706e2367cf2f9a1de0606a1fe362190effa9797b693e1cb'
-	    'SKIP'
-            'SKIP')
+license=('BSD')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-nose' 'python-pypng')
+optdepends=('python-pypng: PNG generation support')
+source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/mnooner256/pyqrcode/archive/${_gitcommit}.tar.gz")
+sha512sums=('87a307e57d470153b37cccd3e79c8e04fc8de63cc7ffce313a7cc7d7e7f53b2979125ac3680a4b261fe0eeffd476e7934fa189a679f9370d690113811cc750b8')
+b2sums=('b192c55f3e6fb5c6d2c5f245d34fc909fbaaa582586a2a60526a98fb83079136358a0012d98e0772fb73eecb5133fecb643525fae05de8eede10b6f7a6662f08')
 
-package_python-pyqrcode() {
-  depends=('python')
-  optdepends=('python-pypng: PNG generation support')
-
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1
-  install -D -m 0644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/${pkgname}
+build() {
+  cd "pyqrcode-${_gitcommit}"
+  python -m build --wheel --no-isolation
 }
 
-package_python2-pyqrcode() {
-  depends=('python2')
-  optdepends=('python2-pypng: PNG generation support')
-
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
-  install -D -m 0644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/${pkgname}
+check() {
+  cd "pyqrcode-${_gitcommit}"
+  nosetests -sv tests
 }
+
+package() {
+  cd "pyqrcode-${_gitcommit}"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 License -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
+
+# vim: ts=2 sw=2 et:
