@@ -7,12 +7,12 @@
 _pkgname=qpdf
 pkgname="${_pkgname}-zopfli"
 pkgver=12.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="QPDF: A Content-Preserving PDF Transformation System (with Zopfli support)"
 arch=('x86_64')
 url="https://github.com/qpdf/qpdf"
 license=('Apache-2.0' 'Artistic-2.0')
-depends=('gcc-libs' 'glibc' 'gnutls' 'libjpeg-turbo' 'openssl' 'zlib' 'zopfli')
+depends=('glibc' 'gnutls' 'libgcc' 'libjpeg-turbo' 'libstdc++' 'openssl' 'zlib' 'zopfli')
 makedepends=('cmake')
 provides=('qpdf')
 conflicts=('qpdf')
