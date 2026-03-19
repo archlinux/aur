@@ -1,0 +1,63 @@
+commit 7832a1cd0538d09f27cfa683f7e45ada681676cb
+Author: Roshless <me@roshless.com>
+Date:   Thu Mar 19 14:05:13 2026 +0100
+
+    fix build for arch
+    
+    cant be bothered to send this upstream
+
+diff --git a/include/the_Foundation/c11threads.h b/include/the_Foundation/c11threads.h
+index 8c762f6..70cbec3 100644
+--- a/include/the_Foundation/c11threads.h
++++ b/include/the_Foundation/c11threads.h
+@@ -31,7 +31,9 @@ typedef pthread_t thrd_t;
+ typedef pthread_mutex_t mtx_t;
+ typedef pthread_cond_t cnd_t;
+ typedef pthread_key_t tss_t;
++#ifndef ONCE_FLAG_INIT
+ typedef pthread_once_t once_flag;
++#endif
+ 
+ typedef int (*thrd_start_t)(void*);
+ typedef void (*tss_dtor_t)(void*);
+diff --git a/src/c11threads.c b/src/c11threads.c
+index af0183b..4003832 100644
+--- a/src/c11threads.c
++++ b/src/c11threads.c
+@@ -35,7 +35,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</small>
+ #endif
+ #include <time.h>
+ 
++#ifndef ONCE_FLAG_INIT
+ #define ONCE_FLAG_INIT PTHREAD_ONCE_INIT
++#endif
+ 
+ #ifdef C11THREADS_NO_TIMED_MUTEX
+ #  define PTHREAD_MUTEX_TIMED_NP PTHREAD_MUTEX_NORMAL
+@@ -184,6 +186,8 @@ int tss_set(tss_t key, void *val) {
+ 
+ void *tss_get(tss_t key) { return pthread_getspecific(key); }
+ 
++#ifndef ONCE_FLAG_INIT
+ void call_once(once_flag *flag, void (*func)(void)) {
+     pthread_once(flag, func);
+ }
++#endif
+diff --git a/src/string.c b/src/string.c
+index 65fdeed..441e454 100644
+--- a/src/string.c
++++ b/src/string.c
+@@ -1193,11 +1193,7 @@ static void bufKeyInit(void) {
+ }
+ 
+ static char *threadLocalCharBuffer_(void) {
+-#if defined(iHaveC11Threads)
+     static once_flag inited = ONCE_FLAG_INIT;
+-#else
+-    static once_flag inited = PTHREAD_ONCE_INIT;
+-#endif
+     call_once(&inited, &bufKeyInit);
+ 
+     char *buf = tss_get(tss_bufKey);
+
+
