@@ -5,7 +5,7 @@ _pkgname=orla
 pkgname=${_pkgname}-bin
 pkgdesc="A dead-simple unix tool for lightweight open-source local agents"
 
-pkgver=1.1.1
+pkgver=1.2.8
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,8 +22,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-linux-${_barch[1]}.tar.gz")
-sha256sums_x86_64=('6efe27f95f80d55bf936d627775148cbf1f15e0013251b60214d7a6b586add1c')
-sha256sums_aarch64=('37cb4a626eff423f997e04818c648712746d1b0e8d8b638ac1809df4644d65ae')
+sha256sums_x86_64=('97dfcd097bb19c53a97099bac829241e29c6a988032eff4fb9a1ac0357c0d881')
+sha256sums_aarch64=('b17df30df3bc9e7c7b742bdd30abb62e128b4fb0f8c0e42e108a3e487d03c312')
 
 
 package() {
