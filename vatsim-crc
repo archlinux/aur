@@ -11,6 +11,7 @@ mkdir -p $HOME/.$progName
 
 if [[ $1 == "clean" ]] ; then
   rm -rf $WINEPREFIX
+  shift
 fi
 
 mkdir -p $WINEPREFIX
@@ -19,8 +20,13 @@ if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
   rm "$WINEPREFIX/.installed*"
   wine wineboot -ru
   notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
-  winetricks --unattended arial tahoma courier /usr/share/vatsim-crc/segmdl2.verb /usr/share/vatsim-crc/webview2.verb
-  winetricks --unattended fontsmooth=rgb
+  if [[ $1 == "nicfonts" ]] ; then
+    winetricks -q /usr/share/vatsim-crc/nicfonts.verb
+  else
+    winetricks -q arial tahoma courier
+  fi
+  winetricks -q /usr/share/vatsim-crc/segmdl2.verb /usr/share/vatsim-crc/webview2.verb
+  winetricks -q fontsmooth=rgb
   wine reg add "HKCU\\SOFTWARE\\Microsoft\\Avalon.Graphics" /v DisableHWAcceleration /t REG_DWORD /d 1 /f
   ln -svf $HOME/.$progName $WINEPREFIX/drive_c/$progName
   for i in $(ls /usr/share/$progName); do

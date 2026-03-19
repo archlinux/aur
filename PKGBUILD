@@ -1,26 +1,27 @@
 # Maintainer: Nicholas Wang <me at nicho1as dot wang>
 pkgname=vatsim-crc
 pkgver=2.15.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Consolidated Radar Client (CRC), a controller application connects to the VATSIM network through vNAS."
 arch=("x86_64")
 url="https://vnas.vatsim.net/crc"
 license=('custom')
 makedepends=('p7zip')
 depends=('wine' 'wine-mono' 'winetricks')
-optdepends=('trackaudio: Audio For VATSIM support' 'rpc-bridge: Discord Rich Presence support')
+optdepends=('trackaudio: Audio For VATSIM support' 'rpc-bridge: Discord Rich Presence support' 'ttf-cascadia-code' 'noto-fonts-cjk')
 install=$pkgname.install
 options=(!debug)
 source=(crc-setup-${pkgver}.exe::"https://crc.virtualnas.net/Files/Installers/CRC-Setup-${pkgver}.exe"
         "vatsim-crc" "$pkgname.install"
-        "vatsim-crc.desktop" "segmdl2.verb" "webview2.verb")
+        "vatsim-crc.desktop" "segmdl2.verb" "webview2.verb" "nicfonts.verb")
 
 sha256sums=('68146125d78d14ea7efb54b0d19de41c759bdb59721ced7bdd454f237f8efcd8'
-            'bfb061ef7d92ce3283a28758ae79407736e533165dcd27e2befaa3c6efd12e07'
+            '5cd9b3d88f4a25f69135e926b71387755957e8522136128b270a25665bb09e0c'
             '3cf58dcb82541202679f2b07f4ac15ebb22076411ee8e5533970f2e7756815db'
             '1ebb426abfff168706256df00a93661e2a97f2ec095c87906934538ae25a9926'
             'ea73951541c4f66e65c7ea6c7e2349f6e93ac4f6988516308b3a2522d4751c74'
-            '4d70f0de1ce7105b21808ecb890993c05333f51a24b2b11bfa000b5abf2f129e')
+            '4d70f0de1ce7105b21808ecb890993c05333f51a24b2b11bfa000b5abf2f129e'
+            '0512e08df696a83b140be3f8b35b5dd60e351f6de51f29c525ea4695bf03ff77')
 
 
 build() {
@@ -39,6 +40,7 @@ package() {
     cp -rp "$srcdir/build" "$pkgdir/usr/share/vatsim-crc"
     install -Dm644 "$srcdir"/segmdl2.verb "$pkgdir/usr/share/vatsim-crc/segmdl2.verb"
     install -Dm644 "$srcdir"/webview2.verb "$pkgdir/usr/share/vatsim-crc/webview2.verb"
+    install -Dm644 "$srcdir"/nicfonts.verb "$pkgdir/usr/share/vatsim-crc/nicfonts.verb"
     install -Dm755 "$srcdir"/vatsim-crc "$pkgdir/usr/bin/vatsim-crc"
     install -Dm644 "$srcdir"/vatsim-crc.desktop "$pkgdir/usr/share/applications/vatsim-crc.desktop"
     printf "Version=$pkgver-$pkgrel" >> $pkgdir/usr/share/applications/vatsim-crc.desktop

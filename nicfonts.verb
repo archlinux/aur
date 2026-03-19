@@ -1,0 +1,7 @@
+w_metadata nicfonts fonts
+
+load_nicfonts() {
+  w_register_font_replacement "Tahoma" "Noto Sans CJK SC"
+  w_register_font_replacement "Arial" "Noto Sans CJK SC"
+  w_register_font_replacement "Courier New" "Cascadia Code"
+}
