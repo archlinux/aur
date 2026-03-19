@@ -1,17 +1,17 @@
 pkgbase = enseal-bin
 	pkgdesc = Secure, ephemeral secret sharing for developers
-	pkgver = 0.10.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/FlerAlex/enseal
 	arch = x86_64
 	license = MIT
 	provides = enseal
 	conflicts = enseal
-	source = README-0.10.0.md::https://raw.githubusercontent.com/FlerAlex/enseal/v0.10.0/README.md
-	source = LICENSE-0.10.0::https://raw.githubusercontent.com/FlerAlex/enseal/v0.10.0/LICENSE
-	sha256sums = 066fc0814a1fb197f3c0a0ddc7cdb04530e2a79cc602c4100bcd0a1436b818cb
+	source = README-0.17.1.md::https://raw.githubusercontent.com/FlerAlex/enseal/v0.17.1/README.md
+	source = LICENSE-0.17.1::https://raw.githubusercontent.com/FlerAlex/enseal/v0.17.1/LICENSE
+	sha256sums = 6fa8f8a6cb3f7213499822112fab74806917ca9d84c8daf588f3de21049d74bb
 	sha256sums = 04320b46c5ddec9c36bfb4450623ffd3041334930202272742bb52b58d67062a
-	source_x86_64 = enseal-x86_64-0.10.0.tgz::https://github.com/FlerAlex/enseal/releases/download/v0.10.0/enseal-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = ffaed731ff9649fb6e0b922e0f920e056fc3fa6f1122b6217e446ce3f80567df
+	source_x86_64 = enseal-x86_64-0.17.1.tgz::https://github.com/FlerAlex/enseal/releases/download/v0.17.1/enseal-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 76091f3b8c5217e9e2eaa9d2d78fa5f02219ebe7d7672086239495a233784e82
 
 pkgname = enseal-bin

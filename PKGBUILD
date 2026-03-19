@@ -5,7 +5,7 @@ _pkgname=enseal
 pkgname=${_pkgname}-bin
 pkgdesc="Secure, ephemeral secret sharing for developers"
 
-pkgver=0.10.0
+pkgver=0.17.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -22,9 +22,9 @@ conflicts=("${_pkgname}")
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${arch[0]}-unknown-linux-musl.tar.gz")
-sha256sums=('066fc0814a1fb197f3c0a0ddc7cdb04530e2a79cc602c4100bcd0a1436b818cb'
+sha256sums=('6fa8f8a6cb3f7213499822112fab74806917ca9d84c8daf588f3de21049d74bb'
             '04320b46c5ddec9c36bfb4450623ffd3041334930202272742bb52b58d67062a')
-sha256sums_x86_64=('ffaed731ff9649fb6e0b922e0f920e056fc3fa6f1122b6217e446ce3f80567df')
+sha256sums_x86_64=('76091f3b8c5217e9e2eaa9d2d78fa5f02219ebe7d7672086239495a233784e82')
 
 
 package() {
