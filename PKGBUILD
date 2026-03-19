@@ -14,7 +14,7 @@ provides=(namida)
 conflicts=(namida)
 makedepends=()
 source=("namida-v${pkgver}-beta.linux.tar.gz::https://github.com/namidaco/namida-snapshots/releases/download/${pkgver}-beta%2B${_buildnumber}/namida-v${pkgver}-beta.linux.tar.gz")
-sha256sums=('f18915a3354acaefd37358c4777d2c314cb066a11b6b03e04e855da66d68238a')
+sha256sums=('e5a0dabbe40c75c8a5b6ce0e40600071c0991d439d63df7eb533a4a9d89f65c6')
 
 package() {
   cd "${srcdir}"
