@@ -1,8 +1,8 @@
 # Maintainer: Yahya Toubali <your-email@example.com>
 
 pkgname=trae-bin
-pkgver=1.107.1
-pkgrel=2
+pkgver=2.3.13344
+pkgrel=1
 pkgdesc="AI-powered IDE by ByteDance - The Real AI Engine for code development"
 arch=('x86_64' 'aarch64')
 url="https://trae.ai"
