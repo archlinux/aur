@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="rayforge"
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A software for laser cutters and engravers"
 arch=(
@@ -68,7 +68,7 @@ _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=${pkgver}"
 )
-sha256sums=('98717d55b0ed4b727d5b60990bfd78638fbe34f6a3f42c9b7fc66d878cbe9a33')
+sha256sums=('c01ee752fe7470a274d68625c07025ac053ba00ef3d241e8a104b25b3d11faa6')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
@@ -86,7 +86,8 @@ package() {
   cd "${srcdir}/${_pkgsrc}"
   python -m installer --destdir="${pkgdir}" dist/"${pkgname}-${pkgver}"*.whl
 
-  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "CHANGELOG.md" "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md"
+  install -vDm644 "README.md"    "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
   install -vd "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -vsf "${site_packages}/${pkgname}-${pkgver}.dist-info/licenses/LICENSE" \
