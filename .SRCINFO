@@ -1,6 +1,6 @@
 pkgbase = nikode
 	pkgdesc = A modern API client for developers
-	pkgver = 4.3.3
+	pkgver = 4.3.4
 	pkgrel = 1
 	url = https://github.com/m1z23r/nikode
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = nikode
 	conflicts = nikode-git
 	options = !strip
 	options = !debug
-	source = nikode-4.3.3.tar.gz::https://github.com/m1z23r/nikode/archive/refs/tags/v4.3.3.tar.gz
+	source = nikode-4.3.4.tar.gz::https://github.com/m1z23r/nikode/archive/refs/tags/v4.3.4.tar.gz
 	sha256sums = SKIP
 
 pkgname = nikode
