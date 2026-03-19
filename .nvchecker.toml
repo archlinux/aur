@@ -3,6 +3,7 @@ source = "regex"
 url = "https://adlibtracker.net/files/revision.htm"
 regex = "\\(Windows/Linux\\) version ([^<]*)"
 ignored = "2.4.25"  # see https://adlibtracker.net/messageboard.php
+verify_cert = false  # Certificate expired on 2026-15-03
 
 # # Not using `htmlparser` as long as we have to ignore v2.4.25.
 # source = "htmlparser"
