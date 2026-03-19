@@ -2,7 +2,7 @@
 
 pkgbase="matlab-gcc-meta"
 pkgver=R2025b
-pkgrel=5
+pkgrel=6
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=(
   'any'
@@ -26,21 +26,21 @@ declare -Ag _gccs=(
   # ['R2009a']='4.2'
   # ['R2009b']='4.2'
   # ['R2010a']='4.2'
-  ['R2010b']='4.3'
-  ['R2011a']='4.3'
-  ['R2011b']='4.3'
-  ['R2012a']='4.4'
-  ['R2012b']='4.4'
-  ['R2013a']='4.4'
-  ['R2013b']='4.7'
-  ['R2014a']='4.7'
-  ['R2014b']='4.7'
-  ['R2015a']='4.7'
-  ['R2015b']='4.7'
-  ['R2016a']='4.7'
-  ['R2016b']='4.9'
-  ['R2017a']='4.9'
-  ['R2017b']='4.9'
+  # ['R2010b']='4.3'
+  # ['R2011a']='4.3'
+  # ['R2011b']='4.3'
+  # ['R2012a']='4.4'
+  # ['R2012b']='4.4'
+  # ['R2013a']='4.4'
+  # ['R2013b']='4.7'
+  # ['R2014a']='4.7'
+  # ['R2014b']='4.7'
+  # ['R2015a']='4.7'
+  # ['R2015b']='4.7'
+  # ['R2016a']='4.7'
+  # ['R2016b']='4.9'
+  # ['R2017a']='4.9'
+  # ['R2017b']='4.9'
   ['R2018a']='6' # 6.3 not 6.5
   ['R2018b']='6' # 6.3 not 6.5
   ['R2019a']='6' # 6.3 not 6.5
@@ -107,78 +107,157 @@ declare -Ag _gcc_fortrans=(
 )
 
 for _release in "${!_gccs[@]}"; do
-  local _flag_pkgname=0
-  if [[ "${_gccs[${_release}]}" == *" "* ]]; then
-    _flag_pkgname=1
-  fi
-
-  local _flag_provides=0
-  if [[ "${_release}" == "${pkgver}" ]]; then
-    _flag_provides=1
-  fi
-
   for _gcc in ${_gccs[${_release}]}; do
-    if (( _flag_pkgname )); then
-      _pkgname="matlab-${_release,,}-gcc${_gcc}-meta"
-    else
-      _pkgname="matlab-${_release,,}-gcc-meta"
+    local _flag_versioned=0 _flag_multi=0
+    local _pkgname="" _pkgdesc=""
+    local _provides=() _conflicts=()
+
+    if [[ "${_release}" != "${pkgver}" ]]; then
+      _flag_versioned=1
+    fi
+    if [[ "${_gccs[${_release}]}" == *" "* ]]; then
+      _flag_multi=1
     fi
 
-    pkgname+=("${_pkgname}")
+    case "${_flag_versioned}${_flag_multi}" in
+      00) # matlab-gcc-meta
+        _pkgname="matlab-gcc-meta"
+        _pkgdesc="${pkgdesc} (GCC, meta)"
+        _provides=(
+          "matlab-${_release,,}-gcc-meta=${pkgver}"
+        )
+        _conflicts=(
+          "matlab-${_release,,}-gcc-meta"
+        )
+        ;;
+      01) # matlab-gccN-meta
+        _pkgname="matlab-gcc${_gcc}-meta"
+        _pkgdesc="${pkgdesc} (GCC${_gcc}, meta)"
+        _provides=(
+          "matlab-${_release,,}-gcc-meta=${pkgver}"
+          "matlab-gcc-meta=${pkgver}"
+        )
+        _conflicts=(
+          "matlab-${_release,,}-gcc-meta"
+          "matlab-gcc-meta"
+        )
+        ;;
+      10) # matlab-r20XXy-gcc-meta
+        _pkgname="matlab-${_release,,}-gcc-meta"
+        _pkgdesc="${pkgdesc} (${_release}, GCC, meta)"
+        ;;
+      11) # matlab-r20XXy-gccN-meta
+        _pkgname="matlab-${_release,,}-gcc${_gcc}-meta"
+        _pkgdesc="${pkgdesc} (${_release}, GCC${_gcc}, meta)"
+        _provides=(
+          "matlab-${_release,,}-gcc-meta=${pkgver}"
+        )
+        _conflicts=(
+          "matlab-${_release,,}-gcc-meta"
+        )
+        ;;
+    esac
+
+    pkgname+=(
+      "${_pkgname}"
+    )
 
     eval "
 package_${_pkgname}() {
-  pkgdesc+=' (${_release}, GCC${_gcc}, meta)'
+  pkgdesc='${_pkgdesc}'
   depends=(
     'gcc${_gcc//.}'
   )
 
-  $( (( _flag_pkgname )) && echo "provides+=(matlab-${_release,,}-gcc-meta=${_gcc})" )
-  $( (( _flag_pkgname )) && echo "conflicts+=(matlab-${_release,,}-gcc-meta)" )
-
-  $( (( _flag_provides )) && echo "provides+=(matlab-gcc-meta=${_gcc})" )
+  $( (( ${#_provides[@]} ))  && echo "provides=( ${_provides[@]} )" )
+  $( (( ${#_conflicts[@]} )) && echo "conflicts=( ${_conflicts[@]} )" )
 
   install -vd \"\${pkgdir}/usr/bin\"
   ln -vsf 'gcc-${_gcc}' \"\${pkgdir}/usr/bin/gcc-matlab-${_release}\"
   ln -vsf 'g++-${_gcc}' \"\${pkgdir}/usr/bin/g++-matlab-${_release}\"
+
+  $( (( ! _flag_versioned )) && cat <<EOF
+  ln -vsf 'gcc-${_gcc}' "\${pkgdir}/usr/bin/gcc-matlab"
+  ln -vsf 'g++-${_gcc}' "\${pkgdir}/usr/bin/g++-matlab"
+EOF
+  )
 }"
   done
 done
 
 for _release in "${!_gcc_fortrans[@]}"; do
-  local _flag_pkgname=0
-  if [[ "${_gcc_fortrans[${_release}]}" == *" "* ]]; then
-    _flag_pkgname=1
-  fi
-
-  local _flag_provides=0
-  if [[ "${_release}" == "${pkgver}" ]]; then
-    _flag_provides=1
-  fi
-
   for _gcc_fortran in ${_gcc_fortrans[${_release}]}; do
-    if (( _flag_pkgname )); then
-      _pkgname="matlab-${_release,,}-gcc${_gcc_fortran}-fortran-meta"
-    else
-      _pkgname="matlab-${_release,,}-gcc-fortran-meta"
+    local _flag_versioned=0 _flag_multi=0
+    local _pkgname="" _pkgdesc=""
+    local _provides=() _conflicts=()
+
+    if [[ "${_release}" != "${pkgver}" ]]; then
+      _flag_versioned=1
+    fi
+    if [[ "${_gcc_fortrans[${_release}]}" == *" "* ]]; then
+      _flag_multi=1
     fi
 
-    pkgname+=("${_pkgname}")
+    case "${_flag_versioned}${_flag_multi}" in
+      00) # matlab-gcc-fortran-meta
+        _pkgname="matlab-gcc-fortran-meta"
+        _pkgdesc="${pkgdesc} (GCC Fortran, meta)"
+        _provides=(
+          "matlab-${_release,,}-gcc-fortran-meta=${pkgver}"
+        )
+        _conflicts=(
+          "matlab-${_release,,}-gcc-fortran-meta"
+        )
+        ;;
+      01) # matlab-gccN-fortran-meta
+        _pkgname="matlab-gcc${_gcc}-fortran-meta"
+        _pkgdesc="${pkgdesc} (GCC${_gcc} Fortran, meta)"
+        _provides=(
+          "matlab-${_release,,}-gcc-fortran-meta=${pkgver}"
+          "matlab-gcc-fortran-meta=${pkgver}"
+        )
+        _conflicts=(
+          "matlab-${_release,,}-gcc-fortran-meta"
+          "matlab-gcc-fortran-meta"
+        )
+        ;;
+      10) # matlab-r20XXy-gcc-fortran-meta
+        _pkgname="matlab-${_release,,}-gcc-fortran-meta"
+        _pkgdesc="${pkgdesc} (${_release}, GCC Fortran, meta)"
+        ;;
+      11) # matlab-r20XXy-gccN-fortran-meta
+        _pkgname="matlab-${_release,,}-gcc${_gcc}-fortran-meta"
+        _pkgdesc="${pkgdesc} (${_release}, GCC${_gcc} Fortran, meta)"
+        _provides=(
+          "matlab-${_release,,}-gcc-fortran-meta=${pkgver}"
+        )
+        _conflicts=(
+          "matlab-${_release,,}-gcc-fortran-meta"
+        )
+        ;;
+    esac
+
+    pkgname+=(
+      "${_pkgname}"
+    )
 
     eval "
 package_${_pkgname}() {
-  pkgdesc+=' (${_release}, GCC${_gcc_fortran} Fortran, meta)'
+  pkgdesc='${_pkgdesc}'
   depends=(
-    'gcc${_gcc_fortran//.}-fortran'
+    'gcc${_gcc//.}-fortran'
   )
 
-  $( (( _flag_pkgname )) && echo "provides+=(matlab-${_release,,}-gcc-fortran-meta=${_gcc_fortran})" )
-  $( (( _flag_pkgname )) && echo "conflicts+=(matlab-${_release,,}-gcc-fortran-meta)" )
-
-  $( (( _flag_provides )) && echo "provides+=(matlab-gcc-fortran-meta=${_gcc_fortran})" )
+  $( (( ${#_provides[@]} ))  && echo "provides=( ${_provides[@]} )" )
+  $( (( ${#_conflicts[@]} )) && echo "conflicts=( ${_conflicts[@]} )" )
 
   install -vd \"\${pkgdir}/usr/bin\"
-  ln -vsf 'gfortran-${_gcc_fortran}' \"\${pkgdir}/usr/bin/gfortran-matlab-${_release}\"
+  ln -vsf 'gfortran-${_gcc}' \"\${pkgdir}/usr/bin/gfortran-matlab-${_release}\"
+
+  $( (( ! _flag_versioned )) && cat <<EOF
+  ln -vsf 'gfortran-${_gcc}' "\${pkgdir}/usr/bin/gfortran-matlab"
+EOF
+  )
 }"
   done
 done
