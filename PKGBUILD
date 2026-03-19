@@ -13,14 +13,14 @@ options=(!strip)
 source_x86_64=(
   "${_pkgname}_${pkgver}_amd64.AppImage::https://github.com/jlcodes99/cockpit-tools/releases/download/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage"
   'cockpit-tools.desktop'
-  'LICENSE-CC-BY-NC-SA-4.0.txt::https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt'
-  'cockpit-tools.png::https://raw.githubusercontent.com/jlcodes99/cockpit-tools/main/src-tauri/icons/128x128.png'
+  'LICENSE-CC-BY-NC-SA-4.0.txt'
+  'cockpit-tools.png'
 )
 source_aarch64=(
   "${_pkgname}_${pkgver}_aarch64.AppImage::https://github.com/jlcodes99/cockpit-tools/releases/download/v${pkgver}/${_pkgname}_${pkgver}_aarch64.AppImage"
   'cockpit-tools.desktop'
-  'LICENSE-CC-BY-NC-SA-4.0.txt::https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.txt'
-  'cockpit-tools.png::https://raw.githubusercontent.com/jlcodes99/cockpit-tools/main/src-tauri/icons/128x128.png'
+  'LICENSE-CC-BY-NC-SA-4.0.txt'
+  'cockpit-tools.png'
 )
 sha256sums_x86_64=('aa0b47a8c884d61cc92c65a63035bedb100060946c4ec892caeb2255c41a0de8'
                    '3061937fe6ba4c054dab38c349db7f8b5359226ff8c6ed0e1d60d2ffc65bf510'
