@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=motrix-next-bin
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=(
     webkit2gtk-4.1
 )
 source=("MotrixNext_${pkgver}_amd64.deb::https://github.com/AnInsomniacy/motrix-next/releases/download/v${pkgver}/MotrixNext_${pkgver}_amd64.deb")
-sha256sums=('74c7ccd8703ec8a947013edfa9e94cfd5db1cb1cca0d514fe04d60e2d612017a')
+sha256sums=('SKIP')
 
 package() {
     # Extract deb payload
