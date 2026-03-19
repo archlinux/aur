@@ -13,7 +13,7 @@ pkgdesc="Share terminal output instantly via punt.sh - quick, colorful, ephemera
 pkgver=${_npmver}
 pkgrel=1
 arch=("x86_64")
-url="https://github.com/dwmkerr/terminal-ai"
+url="https://github.com/lance0/punt"
 license=("MIT")
 
 depends=("bun")
