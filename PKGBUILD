@@ -11,9 +11,9 @@ license=('custom:BSL')
 source=("spacetime-BSL-${pkgver}.txt::${url}/raw/refs/tags/v${pkgver}/LICENSE.txt"
         'spacetimedb.service'
         'spacetimedb.sysusers')
-_source=("spacetime-${CARCH}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/spacetime-${CARCH}-unknown-linux-gnu.tar.gz")
-source_x86_64=("${_source[@]}")
-source_aarch64=("${_source[@]}")
+_source() { echo "spacetime-${CARCH}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/spacetime-${CARCH}-unknown-linux-gnu.tar.gz"; }
+source_x86_64=("$(CARCH=x86_64 _source)")
+source_aarch64=("$(CARCH=aarch64 _source)")
 sha256sums=('c096ab7f54e9b0394f304c6b7598f37dc498d634f912db7a0e9e6038c5e7a7d9'
             'bc5673cdabd668504a1cee7bb6995a49eb4c2f7314fc18830d3d368a0c6bcc16'
             '2a31e8040c5177900122e8aeacb333742676b5e8f05046b53dc1f8f7ff62de60')

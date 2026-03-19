@@ -14,7 +14,7 @@ pkgbase = spacetimedb-bin
 	sha256sums = 2a31e8040c5177900122e8aeacb333742676b5e8f05046b53dc1f8f7ff62de60
 	source_x86_64 = spacetime-x86_64-2.0.5.tar.gz::https://github.com/clockworklabs/SpacetimeDB/releases/download/v2.0.5/spacetime-x86_64-unknown-linux-gnu.tar.gz
 	sha256sums_x86_64 = a8c85b999e6bd9bd212af4b7f7f57237e7252bf2719f323848f8698d407cfd91
-	source_aarch64 = spacetime-x86_64-2.0.5.tar.gz::https://github.com/clockworklabs/SpacetimeDB/releases/download/v2.0.5/spacetime-x86_64-unknown-linux-gnu.tar.gz
+	source_aarch64 = spacetime-aarch64-2.0.5.tar.gz::https://github.com/clockworklabs/SpacetimeDB/releases/download/v2.0.5/spacetime-aarch64-unknown-linux-gnu.tar.gz
 	sha256sums_aarch64 = 7a1501062d9f094d6d31dd49709d9a624a394dace3ff447a6cfc3e0a50855fc0
 
 pkgname = spacetimedb-bin
