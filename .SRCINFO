@@ -1,0 +1,19 @@
+pkgbase = python-xgrammar
+	pkgdesc = Efficient, Flexible and Portable Structured Generation
+	pkgver = 0.1.32
+	pkgrel = 1
+	url = https://xgrammar.mlc.ai/
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = python-installer
+	depends = python>=3.10
+	depends = python-pytorch
+	depends = python-transformers
+	depends = python-pydantic
+	depends = python-numpy
+	noextract = xgrammar-0.1.32-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+	options = !strip
+	source = xgrammar-0.1.32-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl::https://files.pythonhosted.org/packages/dc/bc/4ff87fbf59a4abd272325d3489ac5aa599bacd8b01ea09fec2ca84eece14/xgrammar-0.1.32-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl
+	sha256sums = 7f740ba83b69abb423167a5d5b13a9fcde89747220e191f6a004fae4a834311f
+
+pkgname = python-xgrammar
