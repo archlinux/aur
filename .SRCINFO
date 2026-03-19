@@ -1,0 +1,24 @@
+pkgbase = babeleo
+	pkgdesc = KDE Plasma 6 applet for quick lookups in translation services or other web services
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/tryptophane/babeleo-plasma
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = plasma-framework
+	depends = kf6-kcoreaddons
+	depends = kf6-ki18n
+	depends = kf6-kconfig
+	depends = kf6-kglobalaccel
+	depends = kf6-kio
+	depends = kf6-kwidgetsaddons
+	depends = kf6-kxmlgui
+	depends = kf6-kwindowsystem
+	depends = qt6-base
+	optdepends = wl-clipboard: Wayland primary selection (mouse-selected text without Ctrl+C)
+	source = babeleo-0.7.1.tar.gz::https://github.com/tryptophane/babeleo-plasma/archive/refs/tags/0.7.1.tar.gz
+	sha256sums = d5f66df926d9b9cafdfd6c6360e48d5fb3578294c8796264fbefc24346a14399
+
+pkgname = babeleo
