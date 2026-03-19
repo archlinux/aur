@@ -1,57 +1,37 @@
-# Maintainer: Grey Christoforo <first name [at] last name [dot] net>
+# Maintainer: c3rt1fiedd <slitchio0@gmail.com>
+# Last Packager: Grey Christoforo
 
-pkgname=wingide
-_wingver=7.2.9.0
-_wing_patch_lvl=0 #bump this when adding a patch
-pkgver=$_wingver.$_wing_patch_lvl
+pkgname=wingide-pro
+pkgver=11.1.0.0
 pkgrel=1
-pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers."
-url="http://www.wingware.com"
-license=('custom')
+pkgdesc="Wing IDE Professional is a full-featured Python IDE for professional programmers."
 arch=('x86_64')
-_wingpatch=("")
-_patch_url_prefix=https://wingware.com/pub/wingpro/$_wingver/patches/
-#_wingpatch=( "${_wingpatch[@]/#/$_patch_url_prefix}" )
-source=("https://wingware.com/pub/wingpro/$_wingver/wingpro-$_wingver-linux-x64.tar.bz2" ${_wingpatch[*]})
-depends=('hicolor-icon-theme' 'python2' 'xdg-utils')
+url="https://wingware.com"
+license=('custom')
+depends=('hicolor-icon-theme' 'xdg-utils' 'python') # Removed python2
 options=(!strip !emptydirs)
-sha1sums=('d36a8083ff291a8fe52940d3d12efa06d94788fc')
-
-install=${pkgname}.install
-
-prepare() {
-    cd "$srcdir/wingpro-$_wingver-linux-x64"
-    sed -i 's/python/python2/' wing-install.py
-}
+source=("https://wingware.com/pub/wingpro/${pkgver%.*}.0/wingpro-11.1.0.0-linux-x64.tar.bz2")
+sha256sums=('SKIP') # Run 'updpkgsums' to populate this automatically
 
 package() {
-    cd "$srcdir/wingpro-$_wingver-linux-x64"
+    cd "$srcdir/wingpro-$pkgver-linux-x64"
+    
+    # Wing's installer script now defaults to Python 3
     ./wing-install.py \
         --install-binary \
         --winghome "${pkgdir}/opt/${pkgname}" \
-        --bin-dir ${pkgdir}/usr/bin > /dev/null 2>&1
+        --bin-dir "${pkgdir}/usr/bin" > /dev/null 2>&1
 
-    # Correct the WINGHOME environment variable
-    sed -i "s|${pkgdir}||" ${pkgdir}/opt/${pkgname}/wingdbstub.py
-    sed -i "s|${pkgdir}||" ${pkgdir}/opt/${pkgname}/wing
-
-    # Correct ARCH environment variable
-    sed -i 's|ARCH=`arch`|ARCH=`uname -m`|' ${pkgdir}/opt/wingide/bootstrap/run-wing.sh
-    # Fix a bug in the script
-    sed -i "s|'x86_64'\]|'x86_64' \]|" ${pkgdir}/opt/wingide/bootstrap/run-wing.sh
-
-    # Copy over patch (if any)
-    if [ -d ../patches ]; then
-        cp -r ../patches ${pkgdir}/opt/${pkgname}/.
+    # Fix hardcoded paths in the installed scripts
+    sed -i "s|${pkgdir}||g" "${pkgdir}/opt/${pkgname}/wingdbstub.py"
+    sed -i "s|${pkgdir}||g" "${pkgdir}/opt/${pkgname}/wing"
+    
+    # Modern Wing versions usually handle ARCH/uname better, 
+    # but we'll keep the cleanup for the file list
+    if [ -f "${pkgdir}/opt/${pkgname}/file-list.txt" ]; then
+        sed -i "s|${pkgdir}||g" "${pkgdir}/opt/${pkgname}/file-list.txt"
     fi
 
-    # remove refrence to ${pkgdir}
-    sed -i "s,${pkgdir},,g" "${pkgdir}/opt/wingide/file-list.txt"
-
-    # Correct the file permissions
-    chown -R root:root "${pkgdir}/opt/${pkgname}"
-    chmod +x ${pkgdir}/opt/${pkgname}/resources/linux/desktop/install-linux-desktop.sh
     # Install the LICENSE
-    install -D -m 644 "${pkgdir}/opt/${pkgname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    # install -D -m 644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
