@@ -1,0 +1,27 @@
+pkgbase = walt-bin
+	pkgdesc = A fast terminal wallpaper picker for Hyprland with in-place previews, keyboard-first navigation, and auto-rotation
+	pkgver = 0.9.3
+	pkgrel = 1
+	url = https://github.com/gitfudge0/walt
+	install = walt-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gendesk
+	depends = hyprpaper
+	depends = xdg-desktop-portal
+	optdepends = xdg-desktop-portal-hyprland: file picker support on Hyprland
+	optdepends = xdg-desktop-portal-wlr: file picker support on wlroots compositors
+	optdepends = xdg-desktop-portal-kde: file picker support on KDE Plasma
+	optdepends = xdg-desktop-portal-gnome: file picker support on GNOME
+	optdepends = xdg-desktop-portal-gtk: file picker support (generic GTK fallback)
+	provides = walt
+	conflicts = walt
+	conflicts = walt-git
+	options = !debug
+	source_x86_64 = walt-v0.9.3-linux-x64.tar.gz::https://github.com/gitfudge0/walt/releases/download/v0.9.3/walt-v0.9.3-linux-x64.tar.gz
+	sha256sums_x86_64 = a02032fd4d9e51ca91eec165dfea15eddd2b0d18cc06176c6d9f90b0568bf2ca
+	source_aarch64 = walt-v0.9.3-linux-arm64.tar.gz::https://github.com/gitfudge0/walt/releases/download/v0.9.3/walt-v0.9.3-linux-arm64.tar.gz
+	sha256sums_aarch64 = db5459f2ff7b876b26a1954f10aaa27cf970ba32f9296f18864688302eeaed2b
+
+pkgname = walt-bin
