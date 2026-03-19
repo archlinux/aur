@@ -1,5 +1,5 @@
 pkgname=mbelib-neo-git
-pkgver=r60.9d8beab
+pkgver=1.2.7.r0.g612c9bc
 pkgrel=1
 pkgdesc="P25 Phase 1 and ProVoice IMBE and Half-rate AMBE vocoder library (modernized fork)"
 arch=('x86_64' 'aarch64')
@@ -7,7 +7,7 @@ url="https://github.com/arancormonk/mbelib-neo"
 license=('GPL-2.0-or-later')
 depends=('glibc')
 makedepends=('cmake' 'git')
-provides=('mbelib-neo')
+provides=("mbelib-neo=${pkgver}")
 conflicts=('mbelib-neo')
 options=('staticlibs')
 source=("$pkgname::git+https://github.com/arancormonk/mbelib-neo.git")
@@ -15,7 +15,12 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    (
+        set -o pipefail
+        git describe --long --tags --abbrev=7 2>/dev/null |
+            sed 's/^v//;s/-/.r/;s/-/./' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    )
 }
 
 build() {
