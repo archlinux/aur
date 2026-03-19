@@ -11,8 +11,8 @@ provides=('glyph')
 conflicts=('glyph')
 source_x86_64=("${url}/releases/download/v${pkgver}/Glyph_${pkgver}_amd64.deb")
 source_aarch64=("${url}/releases/download/v${pkgver}/Glyph_${pkgver}_arm64.deb")
-sha256sums_x86_64=('f4407ae51a6683dc6a8c02e3ebb82f5a0bdfdc68e629913653caf019fa50f89a')
-sha256sums_aarch64=('00a2d04e27ad99bb30f223e72c8dc8f8f4262cb68e62e1058f54bcdc043bf7d8')
+sha256sums_x86_64=('d63271e69fedf51cad9d9490e3182eac64bbaf3262e400831cce0e6d36124413')
+sha256sums_aarch64=('88215f707446bbe3142eeeb502965b0c8cdef770f4ecf4e6ed84c43e863fb54e')
 
 package() {
     bsdtar -xf data.tar.* -C "$pkgdir/"
