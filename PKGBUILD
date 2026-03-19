@@ -4,7 +4,7 @@
 
 pkgname=tetrio-plus-bin
 pkgver=10.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='TETR.IO Plus desktop client'
 arch=('x86_64')
 license=('custom')
