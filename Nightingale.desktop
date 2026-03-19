@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Nightingale
-Type=Application
-Comment=An open-source customizable music player - SVN version
-Exec=/opt/nightingale/nightingale
-Icon=nightingale
-Categories=AudioVideo;Player;
