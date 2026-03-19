@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=ARCOSC-Client
+Version=@PACKAGE_VERSION@
+Exec=ARCOSC-Client %u
+Terminal=false
+Icon=arcosc
+StartupWMClass=ARCOSC-Client
+Comment=The transparent, feature-rich desktop bridge for VRChat remote control
+Categories=Network;Game;
