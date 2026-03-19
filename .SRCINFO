@@ -1,7 +1,7 @@
 pkgbase = kewt-git
 	pkgdesc = A minimalist, 100% POSIX, static site generator inspired by werc and kew
 	pkgver = r0.0000000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kewt.krzak.org
 	arch = any
 	license = ISC
