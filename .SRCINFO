@@ -1,6 +1,6 @@
 pkgbase = haproxy-awslc
 	pkgdesc = Reliable, high performance TCP/HTTP load balancer. Built with aws-lc
-	pkgver = 3.3.5
+	pkgver = 3.3.6
 	pkgrel = 1
 	url = https://www.haproxy.org/
 	arch = x86_64
@@ -19,14 +19,14 @@ pkgbase = haproxy-awslc
 	provides = haproxy
 	conflicts = haproxy
 	backup = etc/haproxy/haproxy.cfg
-	source = git+https://git.haproxy.org/git/haproxy-3.3.git#tag=v3.3.5?signed
+	source = git+https://git.haproxy.org/git/haproxy-3.3.git#tag=v3.3.6?signed
 	source = haproxy.cfg
 	source = haproxy.sysusers
 	source = 0001-Use-CFLAGS-and-LDFLAGS-when-building-admin.patch
 	validpgpkeys = 0C9568FA554656551590C5E44E386D9C9C61702F
 	validpgpkeys = 07D5F18D201984D7D13FB7AAF5F936267AA4B280
 	validpgpkeys = 692A51FE968BDB627C8C4B0E12F8CCEE5C19FD8D
-	sha256sums = 71b98273dd434ed08c388a50a7909f9eb29baab99925a83d12a94d0de8198cd6
+	sha256sums = bbacd8569c44240f44c279018492a60e698b64d860cf6ef8d5554333fa05e764
 	sha256sums = bd6ebf57fa417d42fe48340664e3620f08d4b40312d4be41dba51ef34bc0223c
 	sha256sums = c6e716ea59272a8e871af53703726dd2a75b56c82dacf097d4bf08ac5e841a0d
 	sha256sums = a1e3a1c2923465081383eb431bae55ff9841d89909469311cdba4b394ec4a998
