@@ -18,7 +18,7 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 
 license=('MIT')
 
-provides=("${_pkgname}")
+provides=("${_appname}")
 conflicts=("${_pkgname}")
 depends=('glibc' 'libgcc')
 
@@ -33,7 +33,7 @@ sha256sums_x86_64=('91eb2a2fc50789e5e257bcde63edb08780af501fd9e5e022688525e3c9e7
 package() {
 	cd "${srcdir}/" || exit
 
-	install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm755 "${_appname}" "${pkgdir}/usr/bin/${_appname}"
 
 	install -Dm644 "README-${pkgver}.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
