@@ -1,7 +1,7 @@
 pkgname=archjh
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="Linux equivalent of HidHide - hide USB input devices from games using eBPF LSM"
+pkgdesc="Linux equivalent of HidHide - hide USB and Bluetooth input devices from games using eBPF LSM"
 arch=('x86_64')
 url="https://github.com/defconxt/ArchJoyHide"
 license=('GPL-2.0-only')
