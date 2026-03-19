@@ -18,7 +18,7 @@ sha512sums=('SKIP'
 prepare() {
   cd "relay"
   git submodule update --init
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
@@ -26,7 +26,6 @@ build() {
   export RELAY_RELEASE=$pkgver
   unset CFLAGS
   unset LDFLAGS
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
   cargo build --frozen --release
 }
 
