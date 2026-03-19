@@ -2,7 +2,7 @@
 pkgname='prman'
 pkgver='1.0.2'
 pkgrel=1
-pkgdesc='Terminal-first project repository manager.'
+pkgdesc='Terminal project repository manager.'
 arch=('x86_64')
 url='https://github.com/bencetotht/prm'
 license=('MIT' 'Apache-2.0')

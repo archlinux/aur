@@ -1,5 +1,5 @@
 pkgbase = prman
-	pkgdesc = Terminal-first project repository manager.
+	pkgdesc = Terminal project repository manager.
 	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/bencetotht/prm
