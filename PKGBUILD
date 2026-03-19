@@ -2,7 +2,7 @@
 
 _pkgbase=whisper.cpp
 pkgname="${_pkgbase}-cuda"
-pkgver=1.8.3 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
+pkgver=1.8.4 # renovate: datasource=github-tags depName=ggerganov/whisper.cpp
 pkgrel=1
 pkgdesc="Port of OpenAI's Whisper model in C/C++ (with NVIDIA CUDA optimizations)"
 arch=('armv7h' 'aarch64' 'x86_64')
@@ -48,5 +48,5 @@ package() {
     -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
-sha256sums=('870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a'
-  '5f880edae417c7083a9403260e5c381285e4c52ccc39f127c6510fdfa249c1ad')
+sha256sums=('b26f30e52c095ccb75da40b168437736605eb280de57381887bf9e2b65f31e66'
+            '5f880edae417c7083a9403260e5c381285e4c52ccc39f127c6510fdfa249c1ad')

@@ -1,6 +1,6 @@
 pkgbase = whisper.cpp-cuda
 	pkgdesc = Port of OpenAI's Whisper model in C/C++ (with NVIDIA CUDA optimizations)
-	pkgver = 1.8.3
+	pkgver = 1.8.4
 	pkgrel = 1
 	url = https://github.com/ggerganov/whisper.cpp
 	arch = armv7h
@@ -14,9 +14,9 @@ pkgbase = whisper.cpp-cuda
 	depends = sdl2-compat
 	provides = whisper.cpp
 	conflicts = whisper.cpp
-	source = whisper.cpp-1.8.3.tar.gz::https://github.com/ggerganov/whisper.cpp/archive/v1.8.3.tar.gz
+	source = whisper.cpp-1.8.4.tar.gz::https://github.com/ggerganov/whisper.cpp/archive/v1.8.4.tar.gz
 	source = disable-deprecated.patch
-	sha256sums = 870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a
+	sha256sums = b26f30e52c095ccb75da40b168437736605eb280de57381887bf9e2b65f31e66
 	sha256sums = 5f880edae417c7083a9403260e5c381285e4c52ccc39f127c6510fdfa249c1ad
 
 pkgname = whisper.cpp-cuda
