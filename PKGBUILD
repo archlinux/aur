@@ -3,7 +3,7 @@ pkgname=python-sgl-kernel-git
 _pkgname=sgl-kernel
 _reponame=sglang
 pkgver=r0
-pkgrel=1
+pkgrel=2
 pkgdesc='Compiled CUDA kernels for the SGLang serving framework'
 arch=('x86_64')
 url='https://github.com/sgl-project/sglang/tree/main/sgl-kernel'
@@ -27,8 +27,15 @@ makedepends=(
 provides=('python-sgl-kernel')
 conflicts=('python-sgl-kernel')
 options=('!strip')
-source=("${_reponame}::git+https://github.com/sgl-project/sglang.git")
-sha256sums=('SKIP')
+source=("${_reponame}::git+https://github.com/sgl-project/sglang.git"
+        'remove-thc-atomics.patch')
+sha256sums=('SKIP'
+            'SKIP')
+
+prepare() {
+  cd "${_reponame}"
+  patch -p1 < "${srcdir}/remove-thc-atomics.patch"
+}
 
 pkgver() {
   cd "${_reponame}"

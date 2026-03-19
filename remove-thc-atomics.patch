@@ -1,0 +1,10 @@
+--- a/sgl-kernel/csrc/moe/moe_align_kernel.cu
++++ b/sgl-kernel/csrc/moe/moe_align_kernel.cu
+@@ -17,8 +17,6 @@
+ #include <ATen/ATen.h>
+ #include <ATen/cuda/CUDAContext.h>
+ #include <c10/cuda/CUDAGuard.h>
+-
+-#include <THC/THCAtomics.cuh>
+
+ #include "utils.h"

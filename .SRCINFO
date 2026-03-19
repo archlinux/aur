@@ -1,7 +1,7 @@
 pkgbase = python-sgl-kernel-git
 	pkgdesc = Compiled CUDA kernels for the SGLang serving framework
 	pkgver = r0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sgl-project/sglang/tree/main/sgl-kernel
 	arch = x86_64
 	license = Apache-2.0
@@ -21,6 +21,8 @@ pkgbase = python-sgl-kernel-git
 	conflicts = python-sgl-kernel
 	options = !strip
 	source = sglang::git+https://github.com/sgl-project/sglang.git
+	source = remove-thc-atomics.patch
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = python-sgl-kernel-git
