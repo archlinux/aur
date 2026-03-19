@@ -1,6 +1,6 @@
 # Maintainer: bipin kumar <kbipinkumar@pm.me>
 pkgname=alevin-fry
-pkgver=0.11.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='A suite of tools for the rapid, accurate and memory-frugal processing single-cell and single-nucleus sequencing data'
 arch=(x86_64)
@@ -10,12 +10,12 @@ url='https://alevin-fry.readthedocs.io/en/latest/'
 license=('BSD-3-Clause')
 options=(!lto)
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/COMBINE-lab/alevin-fry/archive/refs/tags/v${pkgver}.tar.gz)
-sha256sums=('415106d13a39812ed0e671393480840477ff1a6073dcc794ffb52fa583460906')
+sha256sums=('bc77b729570c6613b14402820a517c188425a573d908ef9cb25d3a4b5bf91060')
 
 prepare() {
     cd ${pkgname}-${pkgver}
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch  --target "$CARCH-unknown-linux-gnu"
+    cargo fetch  --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
