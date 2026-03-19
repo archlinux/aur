@@ -1,25 +1,23 @@
 pkgbase = kernelsu-dkms
 	pkgdesc = A Kernel based root solution for Android. DKMS module for Container-based solutions such as Waydroid.
-	pkgver = 3.1.0
+	pkgver = 3.1.0+66+g7ae93e86
 	pkgrel = 1
-	url = https://github.com/tiann/KernelSU
+	url = https://github.com/shadichy/KernelSU_DKMS
 	arch = any
 	license = GPL-2.0-only
 	makedepends = git
 	depends = modloader
 	options = !strip
 	options = !emptydirs
-	source = kernelsu::shallowclone+https://github.com/tiann/KernelSU?tag=v3.1.0
-	source = 0001-Kbuild-for-DKMS.patch
+	source = kernelsu::git+https://github.com/shadichy/KernelSU_DKMS#branch=waydroid
 	source = Makefile
 	source = dkms.conf
 	source = 00-kernelsu.conf
 	source = load-kernelsu.in
 	sha256sums = SKIP
-	sha256sums = 6f4f51a8b76934402e01f557c947ea84f130075862b1de6ef9069032eb3483a2
-	sha256sums = 5a81e9d2fe45914338c0c3fa5ba7a6f17b461601556257bfa20b3a54bf891d74
-	sha256sums = bf64465ccbf900fdfc9154e149cde13abc3c5651e32328b8b4b5a53d73f65bb7
+	sha256sums = 1befcb3e24068509694683b67601f64f914dddb2e28bc42d6a73c73204ff5581
+	sha256sums = 3eaeaf5a2a5442204ae0cad3c4c25855a90e4e683da56579cc7eb2bada42ccb9
 	sha256sums = 05feaafbbac794a68c7eeea8c0a4c5616fc9f6ef7e4b7540baf3f5d43fad5fb0
-	sha256sums = ab4be9fc1db0291118b492f24d75bb0d88fa7e3822d9cfdf57e3c6bf126eacb2
+	sha256sums = 1dc9e40e3c42043ced20bc2a4d079911769602c1b28c574ddca0db43f26a2cd1
 
 pkgname = kernelsu-dkms

@@ -3,13 +3,14 @@
 
 _pkg=kernelsu
 pkgname=${_pkg}-dkms
-pkgver=3.1.0
+pkgver=3.1.0+66+g7ae93e86
+_ver=$pkgver
 pkgrel=1
-_ver=3.1.0
-_upstream_ver=v3.1.0
+_branch=waydroid
 pkgdesc="A Kernel based root solution for Android. DKMS module for Container-based solutions such as Waydroid."
 arch=('any')
-url="https://github.com/tiann/KernelSU"
+url="https://github.com/shadichy/KernelSU_DKMS"
+_upstream="https://github.com/tiann/$_pkg.git"
 license=('GPL-2.0-only')
 depends=('modloader')
 makedepends=('git')
@@ -118,59 +119,56 @@ chmod +x DLAGENTS
 export DLAGENTS="shallowclone::$(realpath "./DLAGENTS") %u %o"
 
 source=(
-  "${_pkg}::shallowclone+${url}?tag=${_upstream_ver}"
-  '0001-Kbuild-for-DKMS.patch'
+  "${_pkg}::git+${url}#branch=waydroid"
   'Makefile'
   'dkms.conf'
   '00-kernelsu.conf'
   'load-kernelsu.in'
 )
+
 sha256sums=(
   SKIP
-  6f4f51a8b76934402e01f557c947ea84f130075862b1de6ef9069032eb3483a2
-  5a81e9d2fe45914338c0c3fa5ba7a6f17b461601556257bfa20b3a54bf891d74
-  bf64465ccbf900fdfc9154e149cde13abc3c5651e32328b8b4b5a53d73f65bb7
+  1befcb3e24068509694683b67601f64f914dddb2e28bc42d6a73c73204ff5581
+  3eaeaf5a2a5442204ae0cad3c4c25855a90e4e683da56579cc7eb2bada42ccb9
   05feaafbbac794a68c7eeea8c0a4c5616fc9f6ef7e4b7540baf3f5d43fad5fb0
-  ab4be9fc1db0291118b492f24d75bb0d88fa7e3822d9cfdf57e3c6bf126eacb2
+  1dc9e40e3c42043ced20bc2a4d079911769602c1b28c574ddca0db43f26a2cd1
 )
 
-build() {
-  cd "$srcdir/../$_pkg"
+pkgver() {
+  cd "$srcdir/$_pkg"
+  
+  if ! git remote add upstream "${_upstream}" 2>/dev/null; then
+    git remote set-url upstream "${_upstream}"
+  fi
+  git fetch --tags upstream v${_ver%%'+'*}
 
-  git fetch --no-tags --unshallow
-
-  # Apply patches
-  git apply "$srcdir/0001-Kbuild-for-DKMS.patch"
+  git describe --long --tags | sed 's#v##;s#-RC#.rc#;s#-#+#g'
 }
 
 package() {
   local dest="$pkgdir/usr/src/kernelsu-${pkgver}"
   mkdir -p "$dest"
 
-  cd "$srcdir/.."
+  cd "$srcdir"
   cp -rpt "$dest" "${_pkg}/kernel/."
 
   cd "$_pkg"
 
-  local _major=${pkgver%%.*}
-  local _count=$(git rev-list --count HEAD 2>/dev/null)
-  local _realver=$((_major * 10000 + _count))
+  local _major _count _realver
+  _major=${pkgver%%.*}
+  _count=$(git rev-list --count HEAD 2>/dev/null)
+  _realver=$((_major * 10000 + _count))
 
   local buildfile=kernel/Kbuild
   if [ ! -f "$buildfile" ]; then
     buildfile=kernel/Makefile
   fi
 
-  local app_size app_hash
-  app_size=$(grep "KSU_EXPECTED_SIZE := " $buildfile | cut -d' ' -f3)
-  app_hash=$(grep "KSU_EXPECTED_HASH := " $buildfile | cut -d' ' -f3)
 
   cd "$srcdir"
 
   sed "s|@PKGVER@|${pkgver}|g;\
-    s|@KSU_GIT_VERSION@|${_count}|g;\
-    s|@KSU_EXPECTED_SIZE@|${app_size}|g;
-    s|@KSU_EXPECTED_HASH@|${app_hash}|g" "$(readlink -f dkms.conf)" > "$dest/dkms.conf"
+    s|@KSU_GIT_VERSION@|${_count}|g;" "$(readlink -f dkms.conf)" > "$dest/dkms.conf"
 
   install -Dm644 "$(readlink -f Makefile)" "$dest/Makefile"
 

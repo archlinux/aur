@@ -5,8 +5,20 @@
   exit 1
 }
 
+KVERSION=$(uname -r)
+
 KSU_MODULE=$(modinfo kernelsu | grep filename | awk '{print $2}')
-[ "$KSU_MODULE" ] || KSU_MODULE=$(find /usr/lib/modules/"$(uname -r)"/{extras,updates} -iname 'kernelsu.ko*' 2>/dev/null)
+[ "$KSU_MODULE" ] || KSU_MODULE=$(find /usr/lib/modules/"$KVERSION"/{extras,updates} -iname 'kernelsu.ko*' 2>/dev/null)
+
+[ "$KSU_MODULE" ] || {
+  echo "${0##*/}: Module kernelsu is not available for kernel '$KVERSION'!"
+  exit 1
+}
+
+# Ensure dependencies are installed
+if ! grep -wq ext4 /proc/modules; then
+  modprobe ext4
+fi
 
 case "$KSU_MODULE" in
   *.zst) GET_CMD="zstdcat" ;;
