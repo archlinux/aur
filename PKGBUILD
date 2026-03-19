@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='sway-easyshot-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='sway-easyshot - Sway Screenshot control'
 url='https://github.com/chmouel/sway-easyshot'
@@ -12,10 +12,10 @@ provides=('sway-easyshot')
 conflicts=('sway-easyshot')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/sway-easyshot/releases/download/v${pkgver}/sway-easyshot_${pkgver}_linux_aarch64.tar.gz")
-sha256sums_aarch64=('d667667e03c5f364b9b2ac6c39af84a38d683a279cc1b84c4cf1c9483d9e6a82')
+sha256sums_aarch64=('3b837623e5f6446b345c9d592983310445070aa67f3265e8765475516f970c9a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/sway-easyshot/releases/download/v${pkgver}/sway-easyshot_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('d48f2fd2377ae8226dadb72e24e7b75349b4d0a678ea35a698964ce23c8b9419')
+sha256sums_x86_64=('31537978aff021f68025a6b5d36dc6e9ae6e6417c5e5167f4f8b05b7260864a4')
 
 package() {
   install -Dm755 "./sway-easyshot" "${pkgdir}/usr/bin/sway-easyshot"
