@@ -1,0 +1,27 @@
+pkgbase = ustb-wifi-tools-git
+	pkgdesc = Tool for querying USTB campus WiFi usage information
+	pkgver = r189.c93c02c
+	pkgrel = 1
+	url = https://github.com/CakeAL/ustb-wifi-tools
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = deno
+	makedepends = pkg-config
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = appmenu-gtk-module
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = openssl
+	depends = curl
+	provides = ustb-wifi-tools
+	conflicts = ustb-wifi-tools
+	options = !lto
+	source = ustb-wifi-tools-git::git+https://github.com/CakeAL/ustb-wifi-tools.git#branch=main
+	sha256sums = SKIP
+
+pkgname = ustb-wifi-tools-git
