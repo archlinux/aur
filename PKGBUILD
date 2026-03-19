@@ -1,7 +1,7 @@
 # Maintainer: Didrole <Didrole@gmail.com>
 
 pkgname=bixolon-label-cups
-pkgver=1.2.7
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="CUPS drivers for Bixolon label printers"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ url="https://bixolon.com/support.php?kind=download#product-lilstlabel"
 license=('custom')
 depends=('glibc' 'libcups')
 source=("${pkgname}-${pkgver}.zip::https://www.bixolon.com/_lib/download_single.php?FILE_INFO=driver|driver_file|driver_idx|113|driver")
-sha256sums=('a140190a3ad5ea966f0dc2353dd835a34e634c3d5e4a27677afd35b4690c6fa4')
+sha256sums=('a7a6ebe26b72286f65649aebaa0a05ae0f0ae7b05ba61bd2dbafec1b747bf402')
 
 prepare() {
     cd "Software_Linux_Label_CUPS_Driver_V${pkgver}"
