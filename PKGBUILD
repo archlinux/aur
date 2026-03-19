@@ -3,7 +3,7 @@
 _pkgauthor=aurc
 _pkgname=loggo
 pkgname=${_pkgname}-bin
-pkgver=0.3.23
+pkgver=0.3.26
 pkgrel=1
 _pkgvername=v${pkgver}
 pkgdesc="A powerful terminal app for structured log streaming"
@@ -18,8 +18,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_linux_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('44d4427983438b866c8d4eb7fed69af497c323d0f7375385250a8bd5dab103d5')
-sha256sums_aarch64=('e19c8ab16215ad98c3b87123b89ef3f14fff4bc68fd3ea9603411997b6d63391')
+sha256sums_x86_64=('777ae3cb46fa08ac8ae9e5d76327c0aac5c927ade3d21f6e187de31a5c3dc1c7')
+sha256sums_aarch64=('3138b7332906b22868d3eb9aed2f43af3403e4099b299f29ce0a53ca5caa7e0e')
 
 
 package() {

@@ -1,6 +1,6 @@
 pkgbase = loggo-bin
 	pkgdesc = A powerful terminal app for structured log streaming
-	pkgver = 0.3.23
+	pkgver = 0.3.26
 	pkgrel = 1
 	url = https://github.com/aurc/loggo
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = loggo-bin
 	license = MIT
 	provides = loggo
 	conflicts = loggo
-	source_x86_64 = loggo-x86_64-0.3.23.tgz::https://github.com/aurc/loggo/releases/download/v0.3.23/loggo_0.3.23_linux_amd64.tar.gz
-	sha256sums_x86_64 = 44d4427983438b866c8d4eb7fed69af497c323d0f7375385250a8bd5dab103d5
-	source_aarch64 = loggo-aarch64-0.3.23.tgz::https://github.com/aurc/loggo/releases/download/v0.3.23/loggo_0.3.23_linux_arm64.tar.gz
-	sha256sums_aarch64 = e19c8ab16215ad98c3b87123b89ef3f14fff4bc68fd3ea9603411997b6d63391
+	source_x86_64 = loggo-x86_64-0.3.26.tgz::https://github.com/aurc/loggo/releases/download/v0.3.26/loggo_0.3.26_linux_amd64.tar.gz
+	sha256sums_x86_64 = 777ae3cb46fa08ac8ae9e5d76327c0aac5c927ade3d21f6e187de31a5c3dc1c7
+	source_aarch64 = loggo-aarch64-0.3.26.tgz::https://github.com/aurc/loggo/releases/download/v0.3.26/loggo_0.3.26_linux_arm64.tar.gz
+	sha256sums_aarch64 = 3138b7332906b22868d3eb9aed2f43af3403e4099b299f29ce0a53ca5caa7e0e
 
 pkgname = loggo-bin
