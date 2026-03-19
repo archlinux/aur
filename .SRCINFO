@@ -1,7 +1,7 @@
 pkgbase = trae-bin
 	pkgver = 1.107.1
 	pkgrel = 1
-	pkgdesc = TRAE - The Real AI Engine, an AI-powered IDE
+	pkgdesc = AI-powered IDE by ByteDance - The Real AI Engine for code development
 	url = https://trae.ai
 	arch = x86_64
 	arch = aarch64
