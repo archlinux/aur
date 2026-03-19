@@ -1,7 +1,7 @@
 pkgbase = prql
 	pkgdesc = a simple, powerful, pipelined SQL replacement
-	pkgver = 0.13.10
-	pkgrel = 2
+	pkgver = 0.13.11
+	pkgrel = 1
 	url = https://prql-lang.org
 	arch = x86_64
 	license = Apache-2.0
@@ -9,7 +9,7 @@ pkgbase = prql
 	makedepends = python
 	depends = glibc
 	depends = libgcc
-	source = https://github.com/PRQL/prql/archive/0.13.10/prql-0.13.10.tar.gz
-	sha256sums = ca618ce52bbec3de60b5bf8193c4c0f208b7681374575b809e4f1604867dba47
+	source = https://github.com/PRQL/prql/archive/0.13.11/prql-0.13.11.tar.gz
+	sha256sums = d4161413104291aa88c094863aacf2dd1c97cbb5325a56b8fc92e6448cd65a86
 
 pkgname = prql
