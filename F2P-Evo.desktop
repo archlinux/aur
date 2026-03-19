@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=F2P Evo
+Comment=Unofficial Hytale launcher with free-to-play multiplayer, mods, chat and auto-updates
+Exec=f2p-evo
+Icon=f2p-evo
+Terminal=false
+Type=Application
+Categories=Game;
+StartupWMClass=F2P Evo

@@ -1,0 +1,23 @@
+pkgbase = f2p-evo-git
+	pkgdesc = F2P Evo — unofficial Hytale launcher (Rust + Tauri 2 + Vue 3) with multiplayer, mods, chat, and auto-updates
+	pkgver = 0.3.27.r172.g0def849
+	pkgrel = 1
+	url = https://git.sanhost.net/sanasol/f2p-evo
+	arch = x86_64
+	license = custom
+	makedepends = rust
+	makedepends = nodejs
+	makedepends = git
+	makedepends = clang
+	makedepends = pkgconf
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	provides = f2p-evo-git
+	conflicts = f2p-evo
+	replaces = f2p-evo
+	source = git+https://git.sanhost.net/sanasol/f2p-evo.git
+	source = F2P-Evo.desktop
+	sha256sums = SKIP
+	sha256sums = 1dbc9a72ea40f901584870540e18f309463d011c1bbbe362c19b85e4eff9b3d0
+
+pkgname = f2p-evo-git
