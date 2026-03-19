@@ -1,7 +1,7 @@
 pkgbase = fflogs-uploader-bin
 	pkgdesc = FFLogs Uploader - pre-built binary AppImage
 	pkgver = 9.0.33
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RPGLogs/Uploaders-fflogs
 	arch = x86_64
 	license = LicenseRef-fflogs-uploader
