@@ -2,14 +2,15 @@
 
 pkgname=python-plotink
 _gitpkgname=plotink
-pkgver=1.14.0
-pkgrel=2
+pkgver=1.14.2
+pkgrel=1
 pkgdesc='Common files for Inkscape extensions to drive EggBot, WaterColorBot, and similar plotter-type machines'
 arch=('any')
 url='https://github.com/evil-mad/plotink'
 license=('MIT')
 depends=(
   'python'
+  'python-ink-extensions'
   'python-mpmath'
   'python-packaging'
   'python-pyserial'
@@ -26,11 +27,16 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/evil-mad/plotink/archive/refs/tags/v${pkgver}.tar.gz"
 )
 
-sha512sums=('870e02a75e5093a568050db86d955136c36463e2ece756c79ebad2cc09d4682521fab4c28496e9210e6f19be84de2aa30352f626836b649bcfe94974a35f498e')
+sha512sums=('7d86f8d8b59e6d62fbcddf7123d11d96420a7fcfeacc1daf83bc2c064b025c11a1c8d011ba715813f34da220a090569c0b1a67b4fa7daae8a2eb640503c04888')
 
 build() {
   cd "${srcdir}/${_gitpkgname}-${pkgver}"
   python -m build --wheel --no-isolation
+}
+
+check() {
+  cd "${srcdir}/${_gitpkgname}-${pkgver}"
+  python -m unittest discover -v
 }
 
 package() {
