@@ -1,6 +1,6 @@
 pkgbase = tsync
 	pkgdesc = Synchronize directory trees and subtrees using rsync
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/jayghoshrao/tsync
 	arch = any
@@ -18,7 +18,7 @@ pkgbase = tsync
 	provides = tsync
 	conflicts = python-tsync
 	replaces = python-tsync
-	source = tsync-0.1.0.tar.gz::https://github.com/jayghoshrao/tsync/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = a5d0eea39f1bc16af59d503dcfce2293de6d2931aac2e665980b193215b12fe6
+	source = tsync-0.1.1.tar.gz::https://github.com/jayghoshrao/tsync/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = 7372da1573741315e3f3fe1eba139fc9e07061c5ecea8d74215d78afa75ccf97
 
 pkgname = tsync

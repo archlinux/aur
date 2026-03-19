@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.1.0'
+_upstreamver='0.1.1'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='tsync'
@@ -26,7 +26,7 @@ depends=('rsync' 'python' 'python-deepdiff' 'python-magic' 'python-ruamel-yaml' 
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a5d0eea39f1bc16af59d503dcfce2293de6d2931aac2e665980b193215b12fe6')
+sha256sums=('7372da1573741315e3f3fe1eba139fc9e07061c5ecea8d74215d78afa75ccf97')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"
