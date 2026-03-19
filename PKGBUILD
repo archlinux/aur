@@ -1,33 +1,33 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=ghost-chat-git
 _pkgname=GhostChat
-pkgver=3.6.3.r0.g66f41be
-_electronversion=37
-_nodeversion=22
+pkgver=4.0.1.r0.g492767d
+_nodeversion=24
 pkgrel=1
-pkgdesc="A standalone, multiplatform Twitch.tv chat as overlay on windowed/windowed fullscreen applications.Use system-wide electron."
+pkgdesc="A Standalone chat overlay for Twitch, Kick, YouTube and other streaming platforms."
 arch=('any')
 url="https://github.com/Enubia/ghost-chat"
-license=('Zlib')
+license=('LicenseRef-DBAD')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver%.r*}")
 depends=(
-    "electron${_electronversion}"
+    'webkit2gtk-4.1'
+    'gtk3'
 )
 makedepends=(
     'pnpm'
     'gendesk'
-    'npm'
+    'go'
     'nvm'
     'curl'
     'git'
 )
 source=(
     "${pkgname%-git}.git::git+${url}.git"
-    "${pkgname%-git}.sh"
+    "modifiers_linux.go"
 )
 sha256sums=('SKIP'
-            '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
+            'b7f2400b0e956887b1e0d8cf4419c82726617503142b81b5c7ef3acbb1fc6798')
 pkgver() {
     cd "${srcdir}/${pkgname%-git}.git"
     set -o pipefail
@@ -42,13 +42,6 @@ _ensure_local_nvm() {
 }
 prepare() {
     cd "${srcdir}/${pkgname%-git}.git"
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-git}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " "${srcdir}/${pkgname%-git}.sh"
     _ensure_local_nvm
     gendesk -f -n -q \
         --pkgname="${pkgname%-git}" \
@@ -56,49 +49,48 @@ prepare() {
         --categories="Utility" \
         --name="${_pkgname}" \
         --exec="${pkgname%-git} %U"
-    export ELECTRON_SKIP_BINARY_DOWNLOAD=1
-    export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/v//g')"
-    HOME="${srcdir}/.electron-gyp"
+    local HOME="${srcdir}/.electron-gyp"
     {
-        echo -e '\n'
-        #echo 'build_from_source=true'
-        echo 'link-workspace-packages=true'
-        echo 'fetch-retry-maxtimeout=10000'
-        echo "cache-dir="${srcdir}"/.pnpm_cache"
-        echo "store-dir="${srcdir}"/.pnpm_store"
-        echo "shamefully-hoist=true"
-        echo "virtual-store-dir-max-length=80"
-        echo "node-linker=hoisted"
-    } >> .npmrc
+        export PNPM_LINK_WORKSPACE_PACKAGES=true
+        export PNPM_FETCH_RETRY_MAXTIMEOUT=10000
+        export PNPM_CACHE_DIR="${srcdir}/.pnpm_cache"
+        export PNPM_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_VIRTUAL_STORE_DIR="${srcdir}/.pnpm_store"
+        export PNPM_SHAMEFULLY_HOIST=true
+        export PNPM_VIRTUAL_STORE_DIR_MAX_LENGTH=80
+        export PNPM_NODE_LINKER=hoisted
+        export PNPM_NETWORK_CONCURRENCY=32
+        export CGO_ENABLED=1
+        export GO111MODULE=on
+        export GOOS=linux
+        export GOCACHE="${srcdir}/go-build"
+        export GOMODCACHE="${srcdir}/go/pkg/mod"
+    }
     if [[ "$(curl -s ipinfo.io/country)" == *"CN"* ]]; then
         {
-        echo 'registry=https://registry.npmmirror.com'
-        echo 'electron_mirror=https://cdn.npmmirror.com/binaries/electron/'
-        echo 'electron_builder_binaries_mirror=https://npmmirror.com/mirrors/electron-builder-binaries/'
-        } >> .npmrc
-        cp .npmrc app/.npmrc
+            export NPM_CONFIG_REGISTRY="https://registry.npmmirror.com"
+            export GOPROXY=https://goproxy.cn,direct
+        }
     fi
-    sed -i "s/out\/release\/\${version}/release/g" app/configs/electron-builder.config.cjs
-    cp app/public/icons/icon-512x125.png app/public/icons/icon-512x512.png
-    sed -i "s/\"electron\": \"[^\"]*\"/\"electron\": \"${SYSTEM_ELECTRON_VERSION}\"/g" app/package.json
+    cp "${srcdir}/modifiers_linux.go" internal/hotkey/modifiers_linux.go
+    go install github.com/wailsapp/wails/v3/cmd/wails3@latest
+    cd "${srcdir}/${pkgname%-git}.git/frontend"
     NODE_ENV=development    pnpm install --frozen-lockfile
-    cd "${srcdir}/${pkgname%-git}.git/app"
-    NODE_ENV=development    pnpm install
 }
 build() {
-    cd "${srcdir}/${pkgname%-git}.git/app"
-    local electronDist="/usr/lib/electron${_electronversion}"
-    NODE_ENV=production     pnpm run build:vue
-    NODE_ENV=production     pnpm -c exec "electron-builder --linux dir -c.electronDist=${electronDist} --config app/configs/electron-builder.config.cjs"
+    local HOME="${srcdir}/.electron-gyp"
+    export PATH="${HOME}/go/bin:$PATH"
+    cd "${srcdir}/${pkgname%-git}.git/build"
+    go mod tidy
+    wails3 generate bindings -f '-tags production -trimpath -buildvcs=false -ldflags="-w -s -X main.version=v4.0.1"' -clean=true -ts
+    cd "${srcdir}/${pkgname%-git}.git/frontend"
+    NODE_ENV=production     pnpm run build
+    cd "${srcdir}/${pkgname%-git}.git"
+    go build -tags production -trimpath -buildvcs=false -ldflags="-w -s -X main.version=v4.0.1" -o "bin/${pkgname%-git}"
 }
 package() {
-    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
-    install -Dm644 "${srcdir}/${pkgname%-git}.git/app/release/linux-"*/resources/app.asar -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    _icon_sizes=(16x16 32x32 64x64 128x128 256x256 512x512)
-    for _icons in "${_icon_sizes[@]}";do
-        install -Dm644 "${srcdir}/${pkgname%-git}.git/app/public/icons/icon-${_icons}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${_icons}/apps/${pkgname%-git}.png"
-    done
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/bin/${pkgname%-git}" -t "${pkgdir}/usr/bin"
+    install -Dm644 "${srcdir}/${pkgname%-git}.git/build/appicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-git}.png"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/${pkgname%-git}.git/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
