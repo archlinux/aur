@@ -1,7 +1,7 @@
 pkgbase = mc-dracula-theme
 	pkgdesc = A dark theme for midnight commander (mc)
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://draculatheme.com/midnight-commander
 	arch = any
 	license = MIT
