@@ -11,9 +11,11 @@ depends=(
   'hicolor-icon-theme'
   'qt5-base'
   'qt5-svg'
+  'zeromq'
 )
 makedepends=(
   'cmake'
+  'cppzmq'
   'git'
   'patchelf'
   'python'
@@ -26,9 +28,9 @@ optdepends=(
 # The git source is used (rather than a tarball) because several HopsanCore
 # dependencies (sundials, libnumhop, indexingcsvparser, DCPLib) are git
 # submodules whose content is absent from GitHub archive tarballs.
-# Bundled deps (qwt, zeromq, msgpack-c, discount, etc.) are downloaded and
-# built during prepare() via the upstream setup scripts — network access is
-# required at build time.
+# Bundled deps (qwt, msgpack-c, discount, etc.) are downloaded and built during
+# prepare() via the upstream setup scripts — network access is required at
+# build time. zeromq uses the system package instead of a bundled build.
 source=(
   "git+https://github.com/Hopsan/hopsan.git#tag=v${pkgver}"
 )
@@ -56,8 +58,10 @@ prepare() {
 
   cd dependencies
 
-  # Download and unpack all bundled dependency sources
-  python3 download-dependencies.py --all
+  # Download and unpack bundled dependency sources.
+  # zeromq/cppzmq are provided as system packages and skipped here.
+  python3 download-dependencies.py \
+    asio dcplib discount fmi4c katex libzip msgpack-c qwt tclap xerces
 
   # dcplib defines ipToString() in a header included by multiple TUs — add inline
   # to avoid a multiple-definition link error when LTO is active.
@@ -74,16 +78,13 @@ prepare() {
   # remove any stale build dirs so cmake always starts from a clean state.
   # cmake 4.x no longer accepts cmake_minimum_required < 3.5
   sed -i 's/cmake -Wno-dev/cmake -Wno-dev -DCMAKE_POLICY_VERSION_MINIMUM=3.5/g' setup*.sh
-  # zeromq passes cmake flags via a variable — patch the variable definition
-  # also disable tests which fail with GCC 15
-  sed -i 's/zmq_cmake_args="-Wno-dev/zmq_cmake_args="-Wno-dev -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DBUILD_TESTS=OFF/' setupZeroMQ.sh
   # msgpack-c 3.1.1 tests conflict with system gtest requiring C++17
   sed -i 's/\${codedir}/-DMSGPACK_BUILD_TESTS=OFF \${codedir}/' setupMsgpack.sh
   # xerces-c 3.2.2 is incompatible with ICU 78 — use gnuiconv transcoder
   sed -i 's/cmake -Wno-dev\(.*\) \${codedir}/cmake -Wno-dev\1 -Dtranscoder=gnuiconv \${codedir}/' setupXerces.sh
   # discount 2.2.x: GCC 15 made -Wincompatible-pointer-types a hard error
   sed -i 's|\./configure\.sh|CFLAGS="-Wno-incompatible-pointer-types" ./configure.sh|' setupDiscount.sh
-  for dep in asio discount fmi4c katex libzip msgpack-c qwt tclap xerces zeromq dcplib; do
+  for dep in asio dcplib discount fmi4c katex libzip msgpack-c qwt tclap xerces; do
     rm -rf "${dep}-build"
   done
 
@@ -97,8 +98,7 @@ prepare() {
       setupMsgpack \
       setupQwt \
       setupTclap \
-      setupXerces \
-      setupZeroMQ; do
+      setupXerces; do
     bash "${script}.sh"
   done
 }
