@@ -3,7 +3,7 @@
 _appname=nuclear
 pkgname="${_appname}-player"
 _pkgname='Nuclear Player'
-pkgver=1.23.2
+pkgver=1.23.3
 _nodeversion=24
 pkgrel=1
 pkgdesc="Streaming music player that finds free music for you."
@@ -23,7 +23,7 @@ makedepends=(
     'rustup'
 )
 source=("${pkgname}-${pkgver}::git+${_ghurl}#tag=player@${pkgver}")
-sha256sums=('c1e1d08db4c741e55bac22fea1a5ca74242ddcb93ae19ad4754981dd841e8388')
+sha256sums=('f37aa049da15f22d23ab38ddb396fb747475e645afc0da0992ea51f3a86bdc8d')
 _ensure_local_nvm() {
     local NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
