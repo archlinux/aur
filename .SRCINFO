@@ -1,12 +1,14 @@
 pkgbase = siomon
 	pkgdesc = Hardware information and real-time sensor monitoring tool
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/level1techs/siomon
-	arch = any
+	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = cargo
+	depends = glibc
 	optdepends = nvidia-utils: GPU name, VRAM, clocks, temp, power, utilization
 	optdepends = dmidecode: Per-DIMM memory details
 	optdepends = msr-tools: CPU TDP, turbo ratios, C-states, perf limiters

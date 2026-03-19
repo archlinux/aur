@@ -1,11 +1,13 @@
-# Maintainer: Ewout van Mansom <ewout@vanmansom.name>
+# Maintainer: Level1Techs Package Team <level1techspackageteam@gmail.com>
+# Contributor: Ewout van Mansom <ewout@vanmansom.name>
 pkgname=siomon
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Hardware information and real-time sensor monitoring tool"
-arch=(any)
+arch=(x86_64 aarch64)
 url="https://github.com/level1techs/siomon"
 license=('MIT')
+depends=('glibc')
 optdepends=('nvidia-utils: GPU name, VRAM, clocks, temp, power, utilization'
             'dmidecode: Per-DIMM memory details'
             'msr-tools: CPU TDP, turbo ratios, C-states, perf limiters'
@@ -37,6 +39,7 @@ check() {
 
 package() {
     cd "$srcdir/$pkgname"
-    export RUSTUP_TOOLCHAIN=stable 
+    export RUSTUP_TOOLCHAIN=stable
     cargo install --no-track --frozen --all-features --root "$pkgdir/usr/" --path .
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
