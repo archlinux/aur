@@ -1,13 +1,13 @@
 pkgbase = mindful-path
 	pkgdesc = A Buddhist-inspired daily habit tracker for students
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/DissoWharf/mindful-path
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-pyqt6
-	source = mindful-path-1.0.1.tar.gz::https://github.com/DissoWharf/mindful-path/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = d39a9ab1f95e49dca9ca38d54ba8903dec8a7f6e7d86f9eeb34db6e7d872b5c1
+	source = mindful-path-1.0.2.tar.gz::https://github.com/DissoWharf/mindful-path/archive/refs/tags/v1.0.2.tar.gz
+	sha256sums = 78fcfbdd462b64bc33ebd2447b23381830641efa3308fb0a14b135a2be0048c8
 
 pkgname = mindful-path

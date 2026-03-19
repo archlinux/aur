@@ -1,6 +1,6 @@
 # Maintainer: DissoWharf <your-email@example.com>
 pkgname=mindful-path
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A Buddhist-inspired daily habit tracker for students"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/DissoWharf/mindful-path"
 license=('MIT')
 depends=('python' 'python-pyqt6')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DissoWharf/mindful-path/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d39a9ab1f95e49dca9ca38d54ba8903dec8a7f6e7d86f9eeb34db6e7d872b5c1')
+sha256sums=('78fcfbdd462b64bc33ebd2447b23381830641efa3308fb0a14b135a2be0048c8')
 
 package() {
     cd "$srcdir/mindful-path-$pkgver"
