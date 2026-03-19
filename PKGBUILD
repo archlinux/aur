@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=mindwtr
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 _nodeversion=20
 pkgdesc="Mind Like Water: A complete Getting Things Done (GTD) productivity system"
@@ -27,7 +27,7 @@ makedepends=(
 source=("git+https://github.com/dongdongbh/Mindwtr.git#tag=v$pkgver"
         "$pkgname.desktop"
 )
-sha256sums=('bc874a92c9511da22985b0e081318add82fc307270bf496cc1245fa360561027'
+sha256sums=('0f75245abf0241e5811978a300618ac1c126f49b861beb4d3e600d49001dd9b6'
             'c283dc386b122df8db1157a2f74e7cfd780ab65133ab8fef6c74b2179f85161c')
 
 _ensure_local_nvm() {
@@ -97,8 +97,8 @@ check() {
   cd Mindwtr/apps/desktop
   export BUN_INSTALL_CACHE_DIR="$srcdir/bun-cache"
   
-  # Relax tests: 116 passed, 15 failed
-  bun test || :
+  # Run the desktop Vitest suite, but do not fail the package build on test failures.
+  bun run test || :
 }
 
 package() {
