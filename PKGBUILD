@@ -2,7 +2,7 @@
 # Contributor: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=gap
-_pkgver=1.6
+_pkgver=1.14
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -38,7 +38,6 @@ optdepends=(
   r-kinship2
   r-knitr
   r-magic
-  r-manhattanly
   r-matrixstats
   r-mcmcglmm
   r-meta
@@ -54,8 +53,8 @@ optdepends=(
   r-valr
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('47bc96f1e9ef81b400f407a2a4cfed47')
-b2sums=('ae722ee981c8a173037fd1121baf3c8cf3ab4c9be0c04eae7dfd064a297452fb67e11ed508a64173f466b22f0f94f0f85554f42b1bb784f931a533c3d4371c35')
+md5sums=('5a7bc860c8d757401c0fdc2cbd75d234')
+b2sums=('6f42280e1ef7484498a8702d66e9b6a140eb3eb3b1b48ef172d2174f339c5f8d4912660a5c71d797239c21bdff33d1ddce01129ed20423e18ed78397e2fa4022')
 
 build() {
   mkdir build
