@@ -2,7 +2,7 @@
 
 pkgbase="matlab-gcc-meta"
 pkgver=R2025b
-pkgrel=6
+pkgrel=7
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=(
   'any'
@@ -210,8 +210,8 @@ for _release in "${!_gcc_fortrans[@]}"; do
         )
         ;;
       01) # matlab-gccN-fortran-meta
-        _pkgname="matlab-gcc${_gcc}-fortran-meta"
-        _pkgdesc="${pkgdesc} (GCC${_gcc} Fortran, meta)"
+        _pkgname="matlab-gcc${_gcc_fortran}-fortran-meta"
+        _pkgdesc="${pkgdesc} (GCC${_gcc_fortran} Fortran, meta)"
         _provides=(
           "matlab-${_release,,}-gcc-fortran-meta=${pkgver}"
           "matlab-gcc-fortran-meta=${pkgver}"
@@ -226,8 +226,8 @@ for _release in "${!_gcc_fortrans[@]}"; do
         _pkgdesc="${pkgdesc} (${_release}, GCC Fortran, meta)"
         ;;
       11) # matlab-r20XXy-gccN-fortran-meta
-        _pkgname="matlab-${_release,,}-gcc${_gcc}-fortran-meta"
-        _pkgdesc="${pkgdesc} (${_release}, GCC${_gcc} Fortran, meta)"
+        _pkgname="matlab-${_release,,}-gcc${_gcc_fortran}-fortran-meta"
+        _pkgdesc="${pkgdesc} (${_release}, GCC${_gcc_fortran} Fortran, meta)"
         _provides=(
           "matlab-${_release,,}-gcc-fortran-meta=${pkgver}"
         )
@@ -245,17 +245,17 @@ for _release in "${!_gcc_fortrans[@]}"; do
 package_${_pkgname}() {
   pkgdesc='${_pkgdesc}'
   depends=(
-    'gcc${_gcc//.}-fortran'
+    'gcc${_gcc_fortran//.}-fortran'
   )
 
   $( (( ${#_provides[@]} ))  && echo "provides=( ${_provides[@]} )" )
   $( (( ${#_conflicts[@]} )) && echo "conflicts=( ${_conflicts[@]} )" )
 
   install -vd \"\${pkgdir}/usr/bin\"
-  ln -vsf 'gfortran-${_gcc}' \"\${pkgdir}/usr/bin/gfortran-matlab-${_release}\"
+  ln -vsf 'gfortran-${_gcc_fortran}' \"\${pkgdir}/usr/bin/gfortran-matlab-${_release}\"
 
   $( (( ! _flag_versioned )) && cat <<EOF
-  ln -vsf 'gfortran-${_gcc}' "\${pkgdir}/usr/bin/gfortran-matlab"
+  ln -vsf 'gfortran-${_gcc_fortran}' "\${pkgdir}/usr/bin/gfortran-matlab"
 EOF
   )
 }"
