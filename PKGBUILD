@@ -4,7 +4,7 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.1.7464
-pkgrel=1
+pkgrel=2
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -16,8 +16,8 @@ optdepends=('claude-code: Claude Code CLI for agentic coding features (npm i -g 
             'scrot: Computer Use screenshots (X11, fallback: imagemagick)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.7464/claude-desktop-1.1.7464-linux.tar.gz")
-sha256sums_x86_64=('f675c8451504b5f59a6c1a3975c728b8a42c7f3866120ed33c204a621c2d76e2')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.7464-2/claude-desktop-1.1.7464-linux.tar.gz")
+sha256sums_x86_64=('62c25ba479cebb01d7ac9d848494757a911df8f7a555e268bed436c924efdd0a')
 options=('!strip')
 
 package() {
@@ -27,13 +27,8 @@ package() {
     install -dm755 "$pkgdir/usr/lib/$pkgname"
     cp -r app/* "$pkgdir/usr/lib/$pkgname/"
 
-    # Install launcher script
-    install -dm755 "$pkgdir/usr/bin"
-    cat > "$pkgdir/usr/bin/claude-desktop" << 'EOF'
-#!/bin/bash
-exec electron /usr/lib/claude-desktop-bin/app.asar "$@"
-EOF
-    chmod +x "$pkgdir/usr/bin/claude-desktop"
+    # Install launcher script (Wayland/X11 detection, env setup, lock cleanup)
+    install -Dm755 "$srcdir/launcher/claude-desktop" "$pkgdir/usr/bin/claude-desktop"
 
     # Install desktop entry
     install -dm755 "$pkgdir/usr/share/applications"
