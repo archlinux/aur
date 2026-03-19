@@ -7,18 +7,18 @@
 pkgbase=wayland-chromium
 _pkgbase=wayland
 pkgname=($pkgbase $pkgbase-docs)
-pkgver=1.24.0
+pkgver=1.25.0
 pkgrel=1
 pkgdesc='A computer display server protocol (with Chromium patches)'
 arch=('x86_64')
 url='https://wayland.freedesktop.org/'
 license=('MIT')
 depends=('glibc' 'libffi' 'expat' 'libxml2' 'default-cursors')
-makedepends=('meson' 'libxslt' 'doxygen' 'xmlto' 'graphviz' 'docbook-xsl')
+makedepends=('meson' 'libxslt' 'doxygen' 'xmlto' 'graphviz' 'docbook-xsl' 'mdbook')
 validpgpkeys=('34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48') # emersion <contact@emersion.fr>
 source=("https://gitlab.freedesktop.org/wayland/wayland/-/releases/$pkgver/downloads/wayland-$pkgver.tar.xz"{,.sig}
         "0002-Set-the-default-max-buffer-size-to-unbounded.patch")
-sha256sums=('82892487a01ad67b334eca83b54317a7c86a03a89cfadacfef5211f11a5d0536'
+sha256sums=('c065f040afdff3177680600f249727e41a1afc22fccf27222f15f5306faa1f03'
             'SKIP'
             'ebca6ec1aff0a19692238e2f39a8f0af1e77ad4156c5429ef584a3198ac073db')
 
