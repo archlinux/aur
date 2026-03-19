@@ -1,8 +1,8 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang-git
 _pkgname=sglang
-pkgver=r0
-pkgrel=4
+pkgver=r10745.274581fb77
+pkgrel=1
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('any')
 url='https://github.com/sgl-project/sglang'
@@ -65,8 +65,10 @@ provides=('sglang')
 conflicts=('sglang')
 backup=('etc/sglang.conf')
 source=("${_pkgname}::git+${url}.git"
-        'sglang.service')
+        'sglang.service'
+        'sglang.conf')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -87,5 +89,5 @@ package() {
   cd "${_pkgname}/python"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 "${srcdir}/sglang.service" "${pkgdir}/usr/lib/systemd/system/sglang.service"
-  install -Dm644 "${srcdir}/../sglang.conf" "${pkgdir}/etc/sglang.conf"
+  install -Dm644 "${srcdir}/sglang.conf" "${pkgdir}/etc/sglang.conf"
 }

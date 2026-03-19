@@ -6,7 +6,10 @@ After=network.target
 Type=simple
 DynamicUser=yes
 StateDirectory=sglang
+CacheDirectory=sglang
 Environment=HF_HOME=/var/lib/sglang
+Environment=HOME=/var/lib/sglang
+Environment=CUDA_HOME=/opt/cuda
 EnvironmentFile=-/etc/sglang.conf
 ExecStart=/usr/bin/python -m sglang.launch_server --host 0.0.0.0 --port 8000 $SGLANG_ARGS
 Restart=on-failure

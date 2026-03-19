@@ -1,7 +1,7 @@
 pkgbase = sglang-git
 	pkgdesc = A fast serving framework for large language models and vision language models
-	pkgver = r0
-	pkgrel = 4
+	pkgver = r10745.274581fb77
+	pkgrel = 1
 	url = https://github.com/sgl-project/sglang
 	arch = any
 	license = Apache-2.0
@@ -58,6 +58,8 @@ pkgbase = sglang-git
 	backup = etc/sglang.conf
 	source = sglang::git+https://github.com/sgl-project/sglang.git
 	source = sglang.service
+	source = sglang.conf
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
