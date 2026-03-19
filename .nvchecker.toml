@@ -1,0 +1,5 @@
+[giff-bin]
+source = "github"
+github = "bahdotsh/giff"
+use_latest_release = true
+prefix = "v"

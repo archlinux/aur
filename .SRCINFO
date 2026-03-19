@@ -1,0 +1,22 @@
+pkgbase = giff-bin
+	pkgdesc = A terminal-based Git diff viewer with interactive rebase capabilities
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/bahdotsh/giff
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = giff
+	conflicts = giff
+	source = README-1.1.0.md::https://raw.githubusercontent.com/bahdotsh/giff/v1.1.0/README.md
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/bahdotsh/giff/v1.1.0/LICENSE
+	sha256sums = fff30f403044cf2be7945a09ffeccc8fa86a84a630c1d6058859b71804503666
+	sha256sums = c5966f54eec2cc795693dd46191496e9bae1c102f0322e2d21e203f4840fb528
+	source_x86_64 = giff-x86_64-1.1.0.tgz::https://github.com/bahdotsh/giff/releases/download/v1.1.0/giff-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = fc3c3a83b7368debcc1d8c931f1c344d521c9f340ed0353a689dfcbc79536f45
+	source_aarch64 = giff-aarch64-1.1.0.tgz::https://github.com/bahdotsh/giff/releases/download/v1.1.0/giff-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ea579e29171d126b2c22916da2c0ef841a4181a4211570f42fe5ed43ea90db46
+
+pkgname = giff-bin
