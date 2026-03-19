@@ -1,7 +1,7 @@
 # Maintainer: dawsers <dawser at gmx dot com>
 pkgname=sway-scroll
-pkgver=1.12.5
-pkgrel=2
+pkgver=1.12.6
+pkgrel=1
 pkgdesc='Fork of the sway Wayland compositor with a scrolling layout like PaperWM or niri'
 arch=('x86_64')
 url="https://github.com/dawsers/scroll"
