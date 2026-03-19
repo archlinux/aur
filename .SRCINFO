@@ -1,6 +1,6 @@
 pkgbase = purple
 	pkgdesc = TUI to search, connect and manage SSH servers. Visual file transfer, cloud sync (10 providers), password management. Edits ~/.ssh/config directly.
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/erickochen/purple
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = purple
 	conflicts = purple-git
 	conflicts = purple-bin
 	options = !lto
-	source = purple-2.7.0.tar.gz::https://github.com/erickochen/purple/archive/refs/tags/v2.7.0.tar.gz
-	sha256sums = ec0c5ef586286bf5f2d005508636d3b4ca649092f264cd89f901b508830e70b8
+	source = purple-2.7.1.tar.gz::https://github.com/erickochen/purple/archive/refs/tags/v2.7.1.tar.gz
+	sha256sums = 1c53b7c98bbe10825b1531accfe7c3f5682d3c0925710bac3bcd2742d9f93f56
 
 pkgname = purple
