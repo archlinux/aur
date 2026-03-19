@@ -1,0 +1,17 @@
+pkgbase = lazyjira-git
+	pkgdesc = Terminal UI for Jira (builds from git source)
+	pkgver = r0.0000000
+	pkgrel = 1
+	url = https://github.com/textfuel/lazyjira
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = lazyjira
+	conflicts = lazyjira
+	conflicts = lazyjira-bin
+	source = lazyjira-git::git+https://github.com/textfuel/lazyjira.git
+	sha256sums = SKIP
+
+pkgname = lazyjira-git
