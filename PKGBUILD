@@ -2,13 +2,13 @@
 
 pkgname=dmarc-report-converter
 pkgver='0.8.1'
-pkgrel=2
+pkgrel=3
 pkgdesc='Convert DMARC reports from XML to human-readable formats'
 arch=('x86_64')
 url='https://github.com/tierpod/dmarc-report-converter'
 license=('MIT')
 depends=('glibc')
-makedepends=('git' 'go')
+makedepends=('go')
 options=('!debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tierpod/dmarc-report-converter/archive/refs/tags/v${pkgver}.tar.gz"
         'config.yml'
