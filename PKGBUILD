@@ -5,7 +5,7 @@ _pkgname=fackr
 pkgname=${_pkgname}-bin
 pkgdesc="Terminal text editor written in Rust - facsimile reimplementation"
 
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -21,7 +21,7 @@ conflicts=("${_pkgname}")
 depends=('glibc' 'gcc-libs')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-linux-${arch[0]}.tar.gz")
-sha256sums_x86_64=('f4ba8f4f91c71b33675e853d32cb6fd5d340c9e9a8e71e5913741be3e662e9b0')
+sha256sums_x86_64=('8e70bef40c519da78ea948e8b41d2229d7ffb385deff926b55bf1f09d2874007')
 
 
 package() {
