@@ -12,7 +12,7 @@ pre_upgrade() {
 }
 
 post_upgrade() {
-	udevadm control --reload-rulea
+	udevadm control --reload-rules
 	systemctl daemon-reload
 	systemctl restart openlinkhub.service
 	echo -e "\e[1;7m[OpenLinkHub]\e[0m: \e[92mUpgrade Complete\e[0m"
