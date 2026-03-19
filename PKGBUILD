@@ -44,7 +44,7 @@ package() {
   cp -r usr/bin/* "$pkgdir/usr/bin/"
   cp -r usr/share/pmt2e/* "$pkgdir/usr/share/pmt2e/"
 
-  install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Permessi: eseguibili per i binari, lettura per il resto
   chmod 755 "$pkgdir"/usr/bin/*
