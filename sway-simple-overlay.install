@@ -1,0 +1,6 @@
+post_install() {
+    echo "==> Copy example config:"
+    echo "    mkdir -p ~/.config/sway-simple-overlay"
+    echo "    cp /usr/share/sway-simple-overlay/config.yaml.example ~/.config/sway-simple-overlay/config.yaml"
+    echo "    cp /usr/share/sway-simple-overlay/style.css.example ~/.config/sway-simple-overlay/style.css"
+}

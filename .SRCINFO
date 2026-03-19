@@ -1,0 +1,18 @@
+pkgbase = sway-simple-overlay
+	pkgdesc = Lightweight GTK-based overlay for Sway (Wayland) with multi-monitor support
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/paulequilibrio/sway-simple-overlay
+	install = sway-simple-overlay.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = gtk-layer-shell
+	depends = python-yaml
+	source = https://github.com/paulequilibrio/sway-simple-overlay/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 18cf31e145884869d3be7ac69d50917ed2f723cbdfae83daa5d9f6ffd342f6f3
+
+pkgname = sway-simple-overlay
