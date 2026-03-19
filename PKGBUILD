@@ -1,20 +1,21 @@
-# Then maintainer: Ruben De Smet <rdesmeta at etrovub dot be>
-# Current maintainer: Samarth Ramesh <samarthr1 at outlook dot com>
-# Based on wingide (pro) by: Grey Christoforo <first name [at] last name [dot] net>
+# Maintainer: c3rt1fiedd <slitchio0@gmail.com>
+# Contributor: rubdos
+# Last Packager: samarthr1
 
 pkgname=wingide-101
-pkgver=8.1.2.0
+pkgver=11.1.0.0
 pkgrel=1
 pkgdesc="Wing 101 is a very simple free Python IDE designed for teaching beginning programmers. It omits most features found in Wing Pro."
 arch=(x86_64)
 url="https://wingware.com/downloads/wingide-101"
 license=('custom')
 depends=('python')
+options=('!strip' 'staticlibs')
 install=${pkgname}.install
 
-source=(https://wingware.com/pub/wingide-101/$pkgver/wing-101-$pkgver-linux-x64.tar.bz2)
+source=(https://wingware.com/pub/wingide-101/${pkgver}/wing-101-${pkgver}-linux-x64.tar.bz2)
 
-sha1sums=('21a434052f8c1ef69434d5ac5f900a314af9c12d')
+sha256sums=('SKIP')
 
 # prepare() {
 # }
