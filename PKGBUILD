@@ -1,5 +1,5 @@
 pkgname=writers-suite
-pkgver=0.724
+pkgver=0.744
 pkgrel=1
 pkgdesc="Writer's Suite desktop shell + helper + WASM UI"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('gtk3' 'nss' 'alsa-lib' 'libxss' 'libxcomposite' 'libxdamage' 'libxfixe
 optdepends=('xdg-desktop-portal-gtk: GTK portal backend' 'xdg-desktop-portal-kde: KDE portal backend' 'xdg-desktop-portal-wlr: wlroots portal backend')
 makedepends=('dotnet-sdk')
 source=("WriterSuite-src.tar.gz::https://softenough.com/download/aur/src/WriterSuite-src.tar.gz")
-sha256sums=('4d7e4b2ed6fb608cb54d528cadaf145984cf409b69a5f826b0cc5d340ce038a7')
+sha256sums=('bff4c99e72e9d76903e3bd8d600c10ad308ea3b0295e60f3631f4c52bd62e186')
 
 build() {
   cd "$srcdir"
