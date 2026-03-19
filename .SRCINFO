@@ -1,0 +1,23 @@
+pkgbase = python-nvidia-cudnn-frontend
+	pkgdesc = Python frontend for NVIDIA cuDNN Graph API and open-source kernels
+	pkgver = 1.20.0
+	pkgrel = 1
+	url = https://github.com/NVIDIA/cudnn-frontend
+	arch = x86_64
+	license = LicenseRef-NVIDIA-Proprietary
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools>=64
+	makedepends = pybind11>=2.13
+	makedepends = python-ninja
+	makedepends = cmake>=3.18
+	makedepends = gcc
+	depends = python
+	depends = cudnn
+	depends = cuda
+	options = !strip
+	source = cudnn-frontend-1.20.0.tar.gz::https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v1.20.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-nvidia-cudnn-frontend
