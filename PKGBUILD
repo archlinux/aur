@@ -5,7 +5,7 @@ _pkgname=wifi-audio-streaming
 
 _pkgver=0.2.0-beta
 pkgver=${_pkgver//-/}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 
 pkgdesc="A desktop application for streaming audio over a local network."
@@ -23,7 +23,7 @@ source=(
   )
 sha256sums=('feb89d99108bace7daae9d84936e0024679b6ccf36e899aaf3a43500fc9e7ca7'
             'ed518ae2988de998d7cb4aeb476a25fddaed6990a65f5c0db78fa165fbf8f176'
-            'f2d72ebb1cdc5c018cac3cdd47ddd5b1c8ee42f6de24a3450dab1e779606da15')
+            'ca1de798c0b6ba482448d35bf92d7dc3cb2585d7ca9a5d442063e9397ade754d')
 
 build() {
   cd "WiFiAudioStreaming-Desktop"

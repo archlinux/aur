@@ -9,5 +9,5 @@ java_options=(
   "-Dskiko.library.path=$APPDIR"
 )
 
-java "${java_options[@]}" \
+exec java "${java_options[@]}" \
   -cp "$APPDIR"/WiFiAudioStreaming-*.jar:"$APPDIR/*" MainKt
