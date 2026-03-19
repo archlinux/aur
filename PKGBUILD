@@ -22,7 +22,7 @@ source=("$pkgname::git+https://github.com/shaweel/shaweelTimer.git#branch=dev")
 sha256sums=("SKIP")
 
 package() {
-	cd "$srcdir/shaweelTimer-dev"
+	cd "$srcdir/shaweeltimer-dev"
 
 	install -Dm755 main.py "$pkgdir/usr/lib/shaweelTimer/main.py"
 	install -Dm755 status.py "$pkgdir/usr/lib/shaweelTimer/status.py"
