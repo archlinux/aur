@@ -2,9 +2,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ggiraph
-_pkgver=0.9.1
+_pkgver=0.9.6
 pkgname=r-${_pkgname,,}
-pkgver=0.9.1
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="Make 'ggplot2' Graphics Interactive"
 arch=('x86_64')
@@ -16,6 +16,8 @@ depends=(
   ttf-dejavu
   # or it will fail to be built, see https://github.com/davidgohel/ggiraph/blob/master/R/fonts.R
   r
+  r-dplyr
+  r-gdtools
   r-ggplot2
   r-htmltools
   r-htmlwidgets
@@ -27,8 +29,6 @@ depends=(
   r-vctrs
 )
 optdepends=(
-  r-dplyr
-  r-gdtools
   r-ggrepel
   r-hexbin
   r-knitr
@@ -41,7 +41,7 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('0c3f98c3af009310f73b36c7cc837103611fee03f8502e373b0fae8e18bcf669')
+sha256sums=('715f1ef27f0e3ab7775c90684ce8932aa0739ba2a2103713eb0a20eac1b7b645')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
