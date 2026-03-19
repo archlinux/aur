@@ -1,7 +1,7 @@
 # Maintainer: Xerxes_2 <dspxue@gmail.com>
 pkgname=helix-steel-git
 _pkgname=helix
-pkgver=dc187882
+pkgver=8eeddbf7
 pkgrel=1
 pkgdesc="Helix fork with Steel event system support (git, replaces helix)"
 url="https://github.com/mattwparas/helix"
@@ -10,7 +10,7 @@ _git="https://github.com/mattwparas/${_pkgname}.git"
 _branch="steel-event-system"
 arch=(x86_64)
 makedepends=('git' 'cargo')
-depends=('steel')
+optdepends=('steel: package management and LSP support')
 provides=('helix' 'hx')
 conflicts=('helix')
 options=(!lto)
