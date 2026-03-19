@@ -1,6 +1,6 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=ntsc-rs
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Free, open-source VHS effect. Standalone application."
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=("${pkgname}-gui")
 conflicts=("${pkgname}-gui")
 source=("git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/AcademySoftwareFoundation/openfx.git")
-sha256sums=('b55d3b4fac6d5465d223a7f79227f9c49a651c0fc7c8719a9825e5b008c4e747'
+sha256sums=('48337ccbe5616d858c11431ac8fff85fce1bac7a9e5371f4fc1fbbec591615b2'
             'SKIP')
 
 prepare() {
