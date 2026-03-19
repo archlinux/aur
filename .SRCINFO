@@ -1,7 +1,7 @@
 pkgbase = claude-cowork-linux
 	pkgdesc = Anthropic Claude Desktop with Cowork (local agent) support for Linux
 	pkgver = 1.1.4010
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/johnzfitch/claude-cowork-linux
 	arch = x86_64
 	license = custom:proprietary
