@@ -1,2 +1,5 @@
 LICENSE
 dracula256.ini
+/pkg
+/src
+*.zst
