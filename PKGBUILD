@@ -1,66 +1,36 @@
-_basepgkname=llamafile
-pkgname="${_basepgkname}"
+_basepkgname=llamafile
+pkgname=llamafile
 pkgver=0.10.0
 pkgrel=1
-pkgdesc="Distribute and run LLMs with a single file."
+pkgdesc="Distribute and run LLMs with a single file"
 arch=('x86_64')
 url="https://github.com/mozilla-ai/llamafile"
 license=('Apache-2.0')
 optdepends=(
-	'hip-runtime-amd: AMD GPU-Offloading Support'
+  'hip-runtime-amd: AMD GPU-Offloading Support'
   'hipblas: Used for static compiling with rocm'
-  'rocminfo: Used for verifying existance of rocm'
-	'cuda: Nvidia GPU-Offloading Support'
-	)
-source=(    "${pkgname}::https://github.com/mozilla-ai/llamafile/releases/download/${pkgver}/llamafile-${pkgver}.zip"
-       )
-
-sha256sums=(
-            '0e0376bcf2efe76c74ed5dc27e4f5e29e31a14162ca9e04c4c9e34645c65f6f7'
-           )
-
-provides=(  
-            'llamafile'
-            'whisperfile'
-            'zipalign'
-        )
+  'rocminfo: Used for verifying existence of rocm'
+  'cuda: Nvidia GPU-Offloading Support'
+)
+provides=('llamafile' 'whisperfile' 'zipalign')
 conflicts=('llamafile-git' 'android-sdk-build-tools' 'zipalign')
-options=(!strip)
-
-
+options=('!strip')
+source=("${pkgname}::${url}/releases/download/${pkgver}/llamafile-${pkgver}.zip")
+sha256sums=('0e0376bcf2efe76c74ed5dc27e4f5e29e31a14162ca9e04c4c9e34645c65f6f7')
 
 package() {
+  cd "${_basepkgname}-${pkgver}"
 
-  cd "${srcdir}"
+  # Install binaries
+  install -Dm755 bin/whisperfile -t "${pkgdir}/usr/bin"
+  install -Dm755 bin/llamafile -t "${pkgdir}/usr/bin"
+  install -Dm755 bin/zipalign -t "${pkgdir}/usr/bin"
 
-  bin_dir="${_basepgkname}-${pkgver}/bin"
+  # Install man pages
+  install -Dm644 share/man/man1/zipalign.1 -t "${pkgdir}/usr/share/man/man1"
+  install -Dm644 share/man/man1/whisperfile.1 -t "${pkgdir}/usr/share/man/man1"
 
-  pushd $bin_dir
-
-  for binary in $(find . -type f); do
-    binary_name=$(basename "$binary")
-    install -Dm755 "$binary" "${pkgdir}/usr/bin/${binary_name}"
-  done
-
-  popd
-
-  man_dir="${_basepgkname}-${pkgver}/share/man"
-
-  pushd $man_dir
-  for man_page in $(find . -type f); do
-    man_page_name=$(basename "$man_page")
-    install -Dm600 "$man_page" "${pkgdir}/usr/share/man/man1/${man_page_name%.*}.1"
-  done
-  popd
-  
-  doc_dir="${_basepgkname}-${pkgver}/share/doc/llamafile"
-
-  mkdir -p "${pkgdir}/usr/share/doc/llamafile"
-
-  pushd $doc_dir
-  for doc in $(find . -type f); do
-      doc_file_name=$(basename "$doc")
-      install -Dm600 "$doc" "${pkgdir}/usr/share/doc/llamafile/${doc_file_name}"
-  done
-  popd
+  # Install documentation
+  install -Dm644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 README_0.10.0.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
