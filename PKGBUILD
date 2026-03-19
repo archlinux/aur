@@ -16,7 +16,7 @@ source=(crc-setup-${pkgver}.exe::"https://crc.virtualnas.net/Files/Installers/CR
         "vatsim-crc.desktop" "segmdl2.verb")
 
 sha256sums=('68146125d78d14ea7efb54b0d19de41c759bdb59721ced7bdd454f237f8efcd8'
-            'f2d4af3120c08d865a0aa8bada569197c571a3cae75f5ad1a6aa30eb17b4982c'
+            '2d29fa7961816f819bd5928de0ebc616d69b14625b9f6d0156812c24302c4001'
             '3cf58dcb82541202679f2b07f4ac15ebb22076411ee8e5533970f2e7756815db'
             '1ebb426abfff168706256df00a93661e2a97f2ec095c87906934538ae25a9926'
             'ea73951541c4f66e65c7ea6c7e2349f6e93ac4f6988516308b3a2522d4751c74')
