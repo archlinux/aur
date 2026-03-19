@@ -1,2 +1,2 @@
 #!/bin/bash
-echo 'hello lihanzhang'
+echo -e "\e[32mhello lihanzhang\e[0m"
