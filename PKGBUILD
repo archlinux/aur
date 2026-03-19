@@ -18,7 +18,6 @@ sha512sums=('SKIP'
 prepare() {
   cd "relay"
   git submodule update --init
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
@@ -27,6 +26,7 @@ build() {
   export RUSTFLAGS="$RUSTFLAGS --cfg tokio_unstable"
   unset CFLAGS
   unset LDFLAGS
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
   cargo build --frozen --release
 }
 
