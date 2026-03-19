@@ -1,6 +1,6 @@
 # Maintainer: Charles Jacquin <charles@jacquin.app>
 pkgname=loom
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="AI image generation desktop client for GNOME"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('gtk4' 'libadwaita' 'gettext' 'openssl')
 makedepends=('cargo' 'git' 'meson' 'desktop-file-utils')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d46962004da83cd73f52536624c4ae3beb202cf8325ec5d2938061104de1f49c')
+sha256sums=('50b605fdd596fba148ff3e744454cf533b524c97c44b0adf96393a7d67a13d13')
 
 prepare() {
   cd "$pkgname"
