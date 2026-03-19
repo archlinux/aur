@@ -1,13 +1,14 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Claudia Pellegrino <aur ät cpellegrino.de>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=python-pyqrcode
 _gitcommit=674a77b5eaf850d063f518bd90c243ee34ad6b5d
 pkgver=1.2.1
-pkgrel=9
+pkgrel=10
 pkgdesc='QR code generator written purely in Python with SVG, EPS, PNG and terminal output'
 url='https://github.com/mnooner256/pyqrcode'
 arch=('any')
-license=('BSD')
+license=('BSD-3-Clause')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-nose' 'python-pypng')
