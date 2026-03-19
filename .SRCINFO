@@ -1,0 +1,19 @@
+pkgbase = ms4x-flasher-bin
+	pkgdesc = Crossplatform ECU/TCU flash tool for E-series platforms
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://github.com/ms4x-net/ms4x_flasher
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-proprietary
+	depends = glibc
+	depends = gcc-libs
+	provides = ms4x-flasher
+	conflicts = ms4x-flasher
+	options = !strip
+	source_x86_64 = https://github.com/ms4x-net/ms4x_flasher/releases/download/v1.5.1/ms4x-flasher_1.5.1_amd64.deb
+	sha256sums_x86_64 = 4936ecc70ebc15001c7516e399faec3325a06c17062828ea909f208d8a38f85f
+	source_aarch64 = https://github.com/ms4x-net/ms4x_flasher/releases/download/v1.5.1/ms4x-flasher_1.5.1_arm64.deb
+	sha256sums_aarch64 = 1db589e54b9a1254554a177496ad7c2488b891fa844c8bfcb82898ceed00779a
+
+pkgname = ms4x-flasher-bin
