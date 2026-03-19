@@ -15,10 +15,24 @@ if [ -z "$PKGVER" ] || [ -z "$BUILDNUMBER" ]; then
   exit 1
 fi
 
-# Update version and build number in PKGBUILD
+
+# Read current values from PKGBUILD
+CURRENT_VER=$(grep "^pkgver=" PKGBUILD | cut -d'=' -f2)
+CURRENT_BUILD=$(grep "^_buildnumber=" PKGBUILD | cut -d'=' -f2)
+CURRENT_REL=$(grep "^pkgrel=" PKGBUILD | cut -d'=' -f2)
+
+# Increment pkgrel if same version+build, otherwise reset to 1
+if [ "$CURRENT_VER" = "$PKGVER" ] && [ "$CURRENT_BUILD" = "$BUILDNUMBER" ]; then
+  NEW_REL=$((CURRENT_REL + 1))
+  echo "Same version and build number — incrementing pkgrel: ${CURRENT_REL} → ${NEW_REL}"
+else
+  NEW_REL=1
+  echo "New version/build — resetting pkgrel to 1"
+fi
+
 sed -i "s/^pkgver=.*/pkgver=${PKGVER}/" PKGBUILD
 sed -i "s/^_buildnumber=.*/_buildnumber=${BUILDNUMBER}/" PKGBUILD
-sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
+sed -i "s/^pkgrel=.*/pkgrel=${NEW_REL}/" PKGBUILD
 
 # Build candidate list — explicit path first if provided
 CANDIDATES=()
