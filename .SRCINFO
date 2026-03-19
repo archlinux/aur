@@ -1,6 +1,6 @@
 pkgbase = spout2pw-bin
 	pkgdesc = Spout2 to PipeWire bridge
-	pkgver = 0.1.7
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/hoshinolina/spout2pw
 	install = instructions.install
@@ -10,7 +10,7 @@ pkgbase = spout2pw-bin
 	provides = spout2pw
 	conflicts = spout2pw
 	options = !strip
-	source = https://github.com/hoshinolina/spout2pw/releases/download/0.1.7/spout2pw-0.1.7-bin.tar.gz
-	sha256sums = c3457915ddb572910f577b053b8865ce80c48531d389004f9378810660ab8029
+	source = https://github.com/hoshinolina/spout2pw/releases/download/0.2.2/spout2pw-0.2.2-bin.tar.gz
+	sha256sums = b2c9716551a493f03c826fd01d124a95cb991f540c756d733fec191128663fe7
 
 pkgname = spout2pw-bin
