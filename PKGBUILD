@@ -1,6 +1,6 @@
 # Maintainer: zsh-ncursed <zsh.ncursed@gmail.com>
 pkgname=somafm_tui
-pkgver=0.6.10
+pkgver=0.6.11
 pkgrel=1
 pkgdesc="Terminal user interface for SomaFM internet radio"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('git')
 
 # Use explicit tag for source
 source=("git+https://github.com/zsh-ncursed/somafm_tui.git#tag=v${pkgver}")
-sha256sums=('fb097af861bca2b0e80fbce61682b658c3ce9a74da5500a804ae4d8ac648056d')
+sha256sums=('d030a669257c8080b4c9497e3052088573920ed073ec598c0c17ca4ea7983c1b')
 
 # pkgver() is used in CI to override version from git tag
 pkgver() {
