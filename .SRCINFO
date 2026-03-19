@@ -1,7 +1,7 @@
 pkgbase = jm-desktop-bin
 	pkgdesc = A jm comic desktop app by react + electron.(Prebuilt version).一个禁漫的第三方客户端
 	pkgver = 2.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Dedicatus546/jm-desktop
 	arch = x86_64
 	license = GPL-3.0-only

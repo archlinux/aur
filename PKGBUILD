@@ -2,7 +2,7 @@
 pkgname=jm-desktop-bin
 pkgver=2.1.2
 _electronversion=41
-pkgrel=1
+pkgrel=2
 pkgdesc="A jm comic desktop app by react + electron.(Prebuilt version).一个禁漫的第三方客户端"
 arch=('x86_64')
 url="https://github.com/Dedicatus546/jm-desktop"
@@ -46,6 +46,7 @@ prepare() {
     sed -i -e "
         s/pi.getPath(\"exe\")/\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\'/g
         s/ti.getPath(\"exe\")/\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\'/g
+        s/o.getPath(\"exe\")/\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\'/g
     " "${srcdir}/app.asar.unpacked/dist-electron/main.js"
     asar p  "${srcdir}/app.asar.unpacked"  "${srcdir}/resources/app.asar"
 }
