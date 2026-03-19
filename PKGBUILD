@@ -2,7 +2,7 @@
 pkgname=lagrange-bin
 _pkgname=Lagrange
 _appname="fi.skyjake.${_pkgname}"
-pkgver=1.19.4
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="A Beautiful Gemini Client.(Prebuilt version)"
 arch=(
@@ -32,8 +32,8 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.AppImage::${_ghurl}/releases/do
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x86_64.AppImage")
 sha256sums=('d8dd2acc4ba121ca7da3c899c8c443484ab54526ed5933e34fffae2cedb28fbe'
             '574c9abedf1d4ff7d577a1e180faffeab850eb2aa4eaff000946025787185895')
-sha256sums_armv7h=('ca5be79818a69e15addbe0803e7106301a133146ea1291a5de11ebe1df8613c2')
-sha256sums_x86_64=('5a3f544a64702ca76a842eaafbcad79da89a12ca1060080b9707678f913696d9')
+sha256sums_armv7h=('260fcac6fbbde2d083c2a08bffd203bcd909c247cd5b79f77fd60d8568e7afa2')
+sha256sums_x86_64=('ad997d9856199b5e097847851a9b7812c650d6a42e8f9bd82d86a74648c682ec')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
