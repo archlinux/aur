@@ -49,9 +49,9 @@ source=(
   'opencom.desktop'
   'opencom.png'
 )
-sha256sums=('2957a99d4adca0333111c3a8fd2d42306ce526f6b92a8ed439c9252b50829ed6'
-            'skip'
-            'skip')
+sha256sums=('78ffb2653a779208d1a5477af0c7af5be326d5cf7e5461b0599e0322504a7cbd'
+            'SKIP'
+            'SKIP')
 
 package() {
   install -dm755 "$pkgdir/opt/opencom"
