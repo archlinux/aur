@@ -1,7 +1,7 @@
 # Maintainer: Yuri Karamian <yuri@arkhost.com>
 pkgname=helixnotes-appimage-bin
 _pkgname=HelixNotes
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 pkgdesc="Local markdown note-taking app built with Rust, Tauri, and SvelteKit"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('fuse2' 'gtk3')
 options=('!strip')
 source=("${_pkgname}_${pkgver}_amd64.AppImage::https://download.helixnotes.com/releases/v${pkgver}/${_pkgname}_${pkgver}_amd64.AppImage"
         "helixnotes.desktop")
-sha256sums=('c76fadb97dcfb7e9eda4d5fa555e4bfc66967cebe5770b30264c7176231b98f0'
-            '20dd14203d5bedca52933bd60065d013418bcba00cea6dfcec78b292b82900ba')
+sha256sums=('da9643a6a1f4ae92a00b0afdfca7b5f294eb1a1cc40b4d1b084fe35a91630150'
+            '48f71a140951aa15b99defae687ee8e9462de44847fdf961dfafa1c2ef519856')
 noextract=("${_pkgname}_${pkgver}_amd64.AppImage")
 
 prepare() {
@@ -25,8 +25,8 @@ package() {
         "${pkgdir}/opt/${pkgname}/${_pkgname}.AppImage"
 
     # Extract icon from squashfs-root if available
-    if [ -f "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/"*.png ]; then
-        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/"*.png \
+    if [ -f "${srcdir}/squashfs-root/usr/share/icons/hicolor/128x128/apps/"*.png ]; then
+        install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/128x128/apps/"*.png \
             "${pkgdir}/usr/share/icons/hicolor/256x256/apps/helixnotes.png"
     elif [ -f "${srcdir}/squashfs-root/"*.png ]; then
         install -Dm644 "${srcdir}/squashfs-root/"*.png \
