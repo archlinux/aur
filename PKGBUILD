@@ -1,7 +1,7 @@
 # Maintainer: Nick Nizovtsev <nizovtsevnv@gmail.com>
 
 pkgname=termide
-pkgver=0.16.3
+pkgver=0.16.4
 pkgrel=1
 pkgdesc="Cross-platform terminal IDE, file manager and virtual terminal"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/termide/termide/archive/$pkgver.tar.gz")
-sha256sums=('26a6fb8f939197197fcc16d924a880021b6aa7c23ca9c887394788bbcf713f92')
+sha256sums=('9d461a76a13480ebdd50dea043d506ad42d565f48c557bcd9b56ff30b27a7c9c')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -39,8 +39,4 @@ package() {
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-    # Install help files
-    install -Dm644 help/en.txt "$pkgdir/usr/share/$pkgname/help/en.txt"
-    install -Dm644 help/ru.txt "$pkgdir/usr/share/$pkgname/help/ru.txt"
 }
