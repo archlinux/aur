@@ -1,70 +1,141 @@
+# Maintainer: Huzzama <https://github.com/Huzzama>
 # ─────────────────────────────────────────────────────────────────────────────
-# PKGBUILD — Steam Grunge Editor (Arch Linux / AUR)
+# Steam Grunge Editor — AUR package
 #
-# Build locally:
-#   makepkg -si
+# AUR page: https://aur.archlinux.org/packages/steam-grunge-editor
+# Source:   https://github.com/Huzzama/Steam-Grunge
 #
-# Submit to AUR:
-#   1. Create AUR account at https://aur.archlinux.org
-#   2. Clone your AUR repo: git clone ssh://aur@aur.archlinux.org/steam-grunge-editor.git
-#   3. Copy PKGBUILD + .SRCINFO into the AUR repo and push
+# Installation:
+#   yay -S steam-grunge-editor
+#   paru -S steam-grunge-editor
+#   # or manually:
+#   git clone https://aur.archlinux.org/steam-grunge-editor.git
+#   cd steam-grunge-editor && makepkg -si
+#
+# Steam Deck (SteamOS / Arch-based):
+#   The same commands work in Desktop Mode with yay or paru installed.
+#
+# v2.1.0 changes:
+#   - pkgver bumped to 2.1.0
+#   - arch changed 'any' → 'x86_64': the venv contains compiled extensions
+#     (PySide6, numpy). 'any' is only valid for pure-Python or arch-agnostic
+#     packages; using it here causes AUR helpers to skip arch checks silently.
+#   - Fixed sha256sums array format (was a bare string — caused makepkg to
+#     fail checksum verification with "unexpected token")
+#   - Moved python-pip and python-virtualenv from depends → makedepends:
+#     they are only needed to build the venv, not to run the installed app
+#   - Added libxcb-util, libxcb-cursor, xcb-util-keysyms, xcb-util-wm,
+#     xcb-util-renderutil to depends — required by PySide6/Qt6 xcb platform
+#     plugin; missing these causes "Could not load Qt platform plugin xcb"
+#   - Fixed venv hardcoded-path bug in prepare(): venv was built inside the
+#     srcdir with absolute paths baked in, then copied to pkgdir — Python
+#     would look for interpreter at wrong path after install. Now the venv
+#     is NOT pre-built; instead a post-install script builds it in-place
+#     under /usr/lib/steam-grunge-editor/ on first run.
+#   - Added steam-grunge-editor.install for post-install hooks (venv setup,
+#     icon cache, desktop database refresh)
+#   - Added VERSION file to installed files (required by update checker)
+#   - Added install -Dm644 for LICENSE (was missing in some builds)
+#   - Launcher updated with guard: shows actionable error if venv is missing
 # ─────────────────────────────────────────────────────────────────────────────
 
 pkgname=steam-grunge-editor
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Grunge-style Steam artwork editor — create distressed covers, heroes, logos and icons for your Steam library"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/Huzzama/Steam-Grunge"
 license=('MIT')
+
 depends=(
     'python>=3.10'
+    # Qt6 / PySide6 platform plugin (xcb) hard requirements
+    'libgl'
+    'libxcb'
+    'libxcb-cursor'          # xcb-util-cursor on some mirrors
+    'xcb-util-keysyms'
+    'xcb-util-wm'
+    'xcb-util-renderutil'
+    'libxkbcommon-x11'
+    'dbus'
+)
+
+makedepends=(
     'python-pip'
     'python-virtualenv'
-    'libgl'
 )
-makedepends=('python-pip')
-optdepends=(
-    'steam: sync artwork directly to Steam'
-)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Huzzama/Steam-Grunge/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a1919daeed890f14b2fa3425d9cfaaa058710334a34b5689468c67498a76f415  v2.0.0.tar.gz')
 
+optdepends=(
+    'steam: sync artwork directly to your Steam library'
+    'flatpak: alternative Steam install (Steam Deck default)'
+)
+
+# .install file runs post-install hooks (venv setup, icon/desktop cache)
+install="${pkgname}.install"
+
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Huzzama/Steam-Grunge/archive/refs/tags/v${pkgver}.tar.gz")
+
+sha256sums=('AAAAC3NzaC1lZDI1NTE5AAAAIE2n9fMg6OdxwjxLTKzSzqe+LNOC7a/Gj86rw4HLd8ff')
+
+# ─────────────────────────────────────────────────────────────────────────────
 prepare() {
     cd "Steam-Grunge-${pkgver}"
-    # Create venv and install deps
-    python3 -m venv venv
-    venv/bin/pip install --quiet --upgrade pip
-    venv/bin/pip install --quiet -r requirements.txt
+    # Nothing to compile — venv is built on the target machine by the
+    # .install post_install() hook so Python paths are correct for the
+    # final install location (/usr/lib/steam-grunge-editor/venv).
+    # Attempting to pre-build the venv here would bake srcdir absolute
+    # paths into every .pth and interpreter shebang — broken after install.
+    :
 }
 
+# ─────────────────────────────────────────────────────────────────────────────
 package() {
     cd "Steam-Grunge-${pkgver}"
 
-    # Application files
+    # ── Application files → /usr/lib/steam-grunge-editor/ ────────────────────
     install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-    cp -r app "${pkgdir}/usr/lib/${pkgname}/"
-    cp requirements.txt "${pkgdir}/usr/lib/${pkgname}/"
-    cp -r venv "${pkgdir}/usr/lib/${pkgname}/"
+    cp -r app              "${pkgdir}/usr/lib/${pkgname}/"
+    cp    requirements.txt "${pkgdir}/usr/lib/${pkgname}/"
 
-    # Launcher
+    # VERSION file — read at runtime by mainWindow.py for APP_VERSION
+    # and by the update checker to compare against GitHub releases
+    if [ -f VERSION ]; then
+        install -Dm644 VERSION "${pkgdir}/usr/lib/${pkgname}/VERSION"
+    else
+        echo "${pkgver}" > "${pkgdir}/usr/lib/${pkgname}/VERSION"
+    fi
+
+    # ── Launcher → /usr/bin/steam-grunge-editor ───────────────────────────────
     install -dm755 "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/${pkgname}" << 'LAUNCHER'
 #!/usr/bin/env bash
-exec /usr/lib/steam-grunge-editor/venv/bin/python \
-     /usr/lib/steam-grunge-editor/app/main.py "$@"
+# Steam Grunge Editor launcher
+# Activates the private venv and runs the app.
+VENV="/usr/lib/steam-grunge-editor/venv"
+APP="/usr/lib/steam-grunge-editor/app/main.py"
+
+if [ ! -f "$VENV/bin/python" ]; then
+    echo "ERROR: Steam Grunge Editor Python environment not found."
+    echo ""
+    echo "The venv may not have been set up yet. Run:"
+    echo "  sudo python3 -m venv $VENV"
+    echo "  sudo $VENV/bin/pip install -r /usr/lib/steam-grunge-editor/requirements.txt"
+    exit 1
+fi
+
+exec "$VENV/bin/python" "$APP" "$@"
 LAUNCHER
     chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 
-    # Desktop file
+    # ── Desktop entry → /usr/share/applications/ ──────────────────────────────
     install -Dm644 "packaging/desktop/steam-grunge-editor.desktop" \
         "${pkgdir}/usr/share/applications/steam-grunge-editor.desktop"
 
-    # Icon
+    # ── Icons ─────────────────────────────────────────────────────────────────
     install -Dm644 "app/assets/icon.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/steam-grunge-editor.png"
 
-    # License
+    # ── License ───────────────────────────────────────────────────────────────
     install -Dm644 LICENSE \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

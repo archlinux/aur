@@ -1,0 +1,91 @@
+# steam-grunge-editor.install
+# ─────────────────────────────────────────────────────────────────────────────
+# Pacman install scriptlet — runs on the TARGET machine after files are placed.
+#
+# Functions called by pacman:
+#   post_install $pkgver          — after first install
+#   post_upgrade $new $old        — after upgrade
+#   pre_remove   $pkgver          — before removal
+#   post_remove  $pkgver          — after removal
+#
+# Docs: https://wiki.archlinux.org/title/PKGBUILD#install
+# ─────────────────────────────────────────────────────────────────────────────
+
+APP_DIR="/usr/lib/steam-grunge-editor"
+VENV_DIR="$APP_DIR/venv"
+
+# ── Shared: build the Python venv in the final install location ───────────────
+_build_venv() {
+    local pkgver="$1"
+    echo "==> Steam Grunge Editor: setting up Python environment (v${pkgver})..."
+
+    if [ ! -f "$VENV_DIR/bin/python" ]; then
+        if ! python3 -m venv "$VENV_DIR"; then
+            echo "WARNING: Failed to create Python venv."
+            echo "         Install manually:"
+            echo "           sudo python3 -m venv $VENV_DIR"
+            echo "           sudo $VENV_DIR/bin/pip install -r $APP_DIR/requirements.txt"
+            return 0   # non-fatal — package still installed
+        fi
+    fi
+
+    # Always upgrade pip and reinstall deps on install/upgrade
+    "$VENV_DIR/bin/pip" install --quiet --upgrade pip
+    if ! "$VENV_DIR/bin/pip" install --quiet -r "$APP_DIR/requirements.txt"; then
+        echo "WARNING: pip install failed (no internet or PyPI issue)."
+        echo "         Retry manually:"
+        echo "           sudo $VENV_DIR/bin/pip install -r $APP_DIR/requirements.txt"
+    fi
+
+    echo "==> Steam Grunge Editor: Python environment ready."
+}
+
+# ── Shared: refresh system caches ─────────────────────────────────────────────
+_refresh_caches() {
+    gtk-update-icon-cache -f -t /usr/share/icons/hicolor 2>/dev/null || true
+    update-desktop-database /usr/share/applications 2>/dev/null || true
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+post_install() {
+    local pkgver="$1"
+    _build_venv "$pkgver"
+    _refresh_caches
+    echo ""
+    echo "==> Steam Grunge Editor installed."
+    echo "    Launch: steam-grunge-editor"
+    echo "    Or find it in your application menu."
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+post_upgrade() {
+    local new_pkgver="$1"
+    local old_pkgver="$2"
+    echo "==> Steam Grunge Editor: upgrading $old_pkgver → $new_pkgver"
+
+    # Remove old venv — rebuilt fresh so stale compiled extensions don't linger
+    # (PySide6 minor version bumps can leave incompatible .so files otherwise)
+    if [ -d "$VENV_DIR" ]; then
+        echo "==> Rebuilding Python environment..."
+        rm -rf "$VENV_DIR"
+    fi
+
+    _build_venv "$new_pkgver"
+    _refresh_caches
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+pre_remove() {
+    echo "==> Steam Grunge Editor: removing Python environment..."
+    rm -rf "$VENV_DIR"
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
+post_remove() {
+    _refresh_caches
+    echo ""
+    echo "==> Steam Grunge Editor removed."
+    echo "    User data (projects, logs, settings) kept at:"
+    echo "    ~/.config/steam-grunge-editor/"
+    echo "    Remove manually if no longer needed."
+}
