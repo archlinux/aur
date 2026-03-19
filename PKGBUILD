@@ -4,8 +4,8 @@
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio-space-age
-pkgver=2.0.73 # renovate: datasource=custom.factorio depName=stable.expansion
-pkgrel=2
+pkgver=2.0.76 # renovate: datasource=custom.factorio depName=stable.expansion
+pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories (stable branch w/ Space Age expansion)."
 arch=('x86_64')
 url="http://www.factorio.com/"
