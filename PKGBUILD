@@ -7,7 +7,7 @@ _pyname=${pkgbase#python-}
 #_pyname=${_pname//-/_}
 pkgname=("${_pyname}" "${_pyname}-doc")
 #pkgname=("${_pname}" "${_pname}-doc")
-pkgver=0.3.10
+pkgver=0.3.11
 pkgrel=1
 pkgdesc="MkDocs plugin to allow clickable sections that lead to an index page"
 arch=('any')
@@ -20,13 +20,12 @@ makedepends=('python-hatchling'
              'python-pymdown-extensions')
 checkdepends=('python-pytest-golden'
 #             'python-pytest-xdist'
-              'python-mechanicalsoup'
-              'python-testfixtures')    # 'mkdocs-material' satisfied in makedepends; jinja <- mkdocs
+              'python-mechanicalsoup')    # 'mkdocs-material' satisfied in makedepends; jinja <- mkdocs; testfixtures <- golden
 source=("https://github.com/oprypin/mkdocs-section-index/archive/refs/tags/v${pkgver}.tar.gz")
 #source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
 #        "${pkgver}-mkdocs.yml::https://github.com/oprypin/mkdocs-section-index/raw/v${pkgver}/example/mkdocs.yml"
 #)
-sha256sums=('48683894accdaad2e2d4da8fca122ec8261fb81946170f3cbdb63cccee0c46a3')
+sha256sums=('058a6066618946d0a2211f77a06c8b8388e8757f0b041e26b7a989dab703fbfd')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -52,7 +51,7 @@ check() {
 }
 
 package_mkdocs-section-index() {
-    depends=('python>=3.9' 'mkdocs>=1.2')
+    depends=('python>=3.9' 'mkdocs>=1.2' 'properdocs>=1.6.5')
     optdepends=('mkdocs-section-index-doc: Documentation for mkdocs-section-index')
     replaces=("python-${pkgname}")
     provides=("python-${pkgname}=${pkgver}")
