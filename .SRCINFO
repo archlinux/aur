@@ -1,6 +1,6 @@
 pkgbase = mixtapes-git
 	pkgdesc = A modern, Linux-first YouTube Music player
-	pkgver = r117.afd552f
+	pkgver = r118.221459d
 	pkgrel = 1
 	url = https://github.com/m-obeid/Mixtapes
 	arch = any
