@@ -1,7 +1,7 @@
 pkgbase = sglang-git
 	pkgdesc = A fast serving framework for large language models and vision language models
 	pkgver = r0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sgl-project/sglang
 	arch = any
 	license = Apache-2.0
@@ -20,7 +20,7 @@ pkgbase = sglang-git
 	depends = python-requests
 	depends = python-pytorch
 	depends = python-safetensors
-	depends = python-sgl-kernel
+	depends = python-sgl-kernel-git
 	depends = python-torchvision
 	depends = python-transformers
 	depends = python-triton

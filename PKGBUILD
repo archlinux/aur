@@ -2,7 +2,7 @@
 pkgname=sglang-git
 _pkgname=sglang
 pkgver=r0
-pkgrel=3
+pkgrel=4
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('any')
 url='https://github.com/sgl-project/sglang'
@@ -17,7 +17,7 @@ depends=(
   'python-requests'
   'python-pytorch'
   'python-safetensors'
-  'python-sgl-kernel'
+  'python-sgl-kernel-git'
   'python-torchvision'
   'python-transformers'
   'python-triton'
