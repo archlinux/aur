@@ -53,15 +53,17 @@ prepare() {
 
   # GCC 15 no longer implicitly provides stdint types in system headers
   sed -i '/#include <memory>/a #include <cstdint>' hopsandcp/include/dcpserver.h
-  # dcplib defines ipToString() in a header included by multiple TUs — add inline
-  # to avoid a multiple-definition link error when LTO is active
-  sed -i 's/^std::string ipToString(/inline std::string ipToString(/' \
-    dependencies/dcplib-code/include/core/dcp/model/pdu/IpToStr.hpp
 
   cd dependencies
 
   # Download and unpack all bundled dependency sources
   python3 download-dependencies.py --all
+
+  # dcplib defines ipToString() in a header included by multiple TUs — add inline
+  # to avoid a multiple-definition link error when LTO is active.
+  # Must run after download-dependencies.py since dcplib-code is downloaded, not a submodule.
+  sed -i 's/^std::string ipToString(/inline std::string ipToString(/' \
+    dcplib-code/include/core/dcp/model/pdu/IpToStr.hpp
 
   # Build and install each bundled dependency into its own directory so the
   # qmake .pri files can find headers and libs. setupAll.sh is not used
