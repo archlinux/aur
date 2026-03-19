@@ -1,6 +1,6 @@
 # Maintainer: futpib-bot <futpib-bot@proton.me>
 pkgname=attach-git
-pkgver=r11.g36a00c3
+pkgver=r19.g36a00c3
 pkgrel=1
 pkgdesc="A command-line tool for managing and attaching to terminals in Docker containers and tmux sessions"
 arch=('x86_64')

@@ -1,6 +1,6 @@
 pkgbase = attach-git
 	pkgdesc = A command-line tool for managing and attaching to terminals in Docker containers and tmux sessions
-	pkgver = r11.g36a00c3
+	pkgver = r19.g36a00c3
 	pkgrel = 1
 	url = https://github.com/futpib/attach
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = attach-git
 	depends = gcc-libs
 	optdepends = docker: for docker:// targets
 	optdepends = tmux: for tmux:// targets
-	provides = attach=r11.g36a00c3
+	provides = attach=r19.g36a00c3
 	conflicts = attach
 	source = attach-git::git+https://github.com/futpib/attach.git
 	sha256sums = SKIP
