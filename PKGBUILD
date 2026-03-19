@@ -3,7 +3,7 @@
 # Contributor: is1 <is1@sdf.org>
 
 pkgname=python-yappi
-pkgver=1.7.3
+pkgver=1.7.6
 pkgrel=1
 pkgdesc='A tracing profiler that is multithreading, asyncio and gevent aware.'
 url='https://github.com/sumerc/yappi'
@@ -15,9 +15,9 @@ optdepends=(python-greenlet)
 makedepends=(python-build python-installer python-wheel python-setuptools)
 checkdepends=(python-installer python-pytest python-gevent)
 
-source=("$pkgname-$pkgver.tar.gz"::"https://github.com/sumerc/yappi/archive/refs/tags/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz"::"https://github.com/sumerc/yappi/archive/refs/tags/v$pkgver.tar.gz"
         "pyproject.toml.add-console-script.patch")
-sha256sums=('46e2a82bbd0c60c6b4f3fe3a58c9983ec04e7fdb715c0937f7d5a52e6e111f7f'
+sha256sums=('3f9c586cf8f0293aa1574a2b58e69fe5c100969c04b6d30f5e76fed4cc0d441d'
             'afd256f3d0bf9651739e26fb5003572beea9b0029cd4d1cadf5cd0523440ae46')
 
 prepare() {
