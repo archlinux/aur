@@ -2,7 +2,7 @@
 pkgname=eppie-bin
 _realver=1.2.0-preview
 pkgver=1.2.0_preview
-pkgrel=1
+pkgrel=2
 pkgdesc="Decentralized P2P email client"
 arch=("x86_64")
 options=(!strip)

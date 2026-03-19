@@ -1,7 +1,7 @@
 pkgbase = eppie-bin
 	pkgdesc = Decentralized P2P email client
 	pkgver = 1.2.0_preview
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Eppie-io/Eppie-App
 	arch = x86_64
 	license = Apache-2.0
