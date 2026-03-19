@@ -9,8 +9,8 @@ url="https://git.sanhost.net/sanasol/f2p-evo"
 license=('custom')
 depends=('webkit2gtk-4.1' 'libayatana-appindicator')
 makedepends=('rust' 'nodejs' 'git' 'clang' 'pkgconf')
-provides=('f2p-evo-git')
-conflicts=('f2p-evo')
+provides=('f2p-evo')
+conflicts=('f2p-evo' 'hytale-f2p-git')
 replaces=('f2p-evo')
 source=("git+$url.git"
   "F2P-Evo.desktop")
