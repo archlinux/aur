@@ -3,7 +3,7 @@
 
 pkgname=cubew
 _version=4.9
-_patch=
+_patch=.1
 pkgver=${_version}${_patch}
 pkgrel=1
 pkgdesc="High-performance library for writing a multi-dimensional performance space."
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('zlib')
 options=('staticlibs')
 source=(http://apps.fz-juelich.de/scalasca/releases/cube/${_version}/dist/${pkgname}-${pkgver}.tar.gz)
-md5sums=('273120f68a47ff316a449298b0611697')
+md5sums=('f0b7ee73f57edd174c12bbc3fff92109')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
