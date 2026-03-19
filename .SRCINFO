@@ -55,7 +55,10 @@ pkgbase = sglang-git
 	optdepends = python-uvloop: Fast event loop
 	provides = sglang
 	conflicts = sglang
+	backup = etc/sglang.conf
 	source = sglang::git+https://github.com/sgl-project/sglang.git
+	source = sglang.service
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = sglang-git

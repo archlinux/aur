@@ -1,0 +1,15 @@
+[Unit]
+Description=SGLang LLM Server
+After=network.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+StateDirectory=sglang
+Environment=HF_HOME=/var/lib/sglang
+EnvironmentFile=-/etc/sglang.conf
+ExecStart=/usr/bin/python -m sglang.launch_server --host 0.0.0.0 --port 8000 $SGLANG_ARGS
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

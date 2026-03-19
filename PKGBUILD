@@ -63,8 +63,11 @@ optdepends=(
 )
 provides=('sglang')
 conflicts=('sglang')
-source=("${_pkgname}::git+${url}.git")
-sha256sums=('SKIP')
+backup=('etc/sglang.conf')
+source=("${_pkgname}::git+${url}.git"
+        'sglang.service')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
   cd "${_pkgname}"
@@ -83,4 +86,6 @@ build() {
 package() {
   cd "${_pkgname}/python"
   python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 "${srcdir}/sglang.service" "${pkgdir}/usr/lib/systemd/system/sglang.service"
+  install -Dm644 "${srcdir}/../sglang.conf" "${pkgdir}/etc/sglang.conf"
 }
