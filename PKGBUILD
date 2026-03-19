@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=cline
-_npmver=2.8.0
+_npmver=2.8.1
 
 pkgname=${_npmname}-cli
 pkgdesc="Autonomous coding agent CLI - capable of creating/editing files, running commands, using the browser, and more."
@@ -19,7 +19,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('53568714746907b7704e1444aa71a078d6e2df5256e50fc951118bec7aed26a00c6adcb04e1e67b7f7e7e27fc88724f1a0e95d8361c8212dc90e1c0be0b72f61')
+b2sums=('e8d5811ae16cc979e745fef69a15cf19c753c5e420280f694737c15a4665302a8de6a41b4cbd022719577f84c5783eef929848bfe58f0734b8d506948699cda9')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
