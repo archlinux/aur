@@ -20,10 +20,11 @@ if [ ! -f "$WINEPREFIX/.installed.$CURRVER" ] ; then
   rm "$WINEPREFIX/.installed*"
   wine wineboot -ru
   notify-send --app-name=$progName --icon=$progName "Installing Dependencies" "It may take some time."
+  winetricks -q arial tahoma
   if [[ $1 == "nicfonts" ]] ; then
     winetricks -q /usr/share/vatsim-crc/nicfonts.verb
   else
-    winetricks -q arial tahoma courier
+    winetricks -q courier
   fi
   winetricks -q /usr/share/vatsim-crc/segmdl2.verb /usr/share/vatsim-crc/webview2.verb
   winetricks -q fontsmooth=rgb
