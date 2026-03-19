@@ -1,0 +1,10 @@
+pkgbase = myscript
+	pkgdesc = Simple script example
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	source = myscript.sh
+	sha256sums = SKIP
+
+pkgname = myscript
