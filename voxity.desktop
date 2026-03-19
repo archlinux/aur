@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Voxity
+Comment=An opinionated, intuitive, lightweight local music player
+Exec=voxity %U
+Terminal=false
+Type=Application
+Icon=voxity
+Categories=Audio;AudioVideo;Player;
+MimeType=audio/mpeg;audio/mp3;audio/flac;audio/wav;audio/ogg;audio/aac;audio/x-m4a;
+StartupWMClass=voxity
+Keywords=music;player;audio;

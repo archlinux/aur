@@ -1,0 +1,25 @@
+pkgbase = voxity-bin
+	pkgdesc = An opinionated, intuitive, lightweight local music player
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://voxity.dev
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = libxss
+	depends = libxtst
+	depends = xdg-utils
+	depends = at-spi2-core
+	depends = util-linux-libs
+	depends = libsecret
+	optdepends = libappindicator-gtk3: for tray icon support
+	provides = voxity
+	conflicts = voxity
+	source = https://bin.i.exerinity.com/voxity/Voxity-1.3.0.AppImage
+	source = voxity.desktop
+	sha256sums = e2a205871d8a549a7cff79380565c8b8f848126cc31a0d935bac1f0805e4cd9a
+	sha256sums = 10a078198c360bfcc686c64c9410b33e887f2f07bd8a1eaa201647e2537712ec
+
+pkgname = voxity-bin
