@@ -1,0 +1,20 @@
+pkgbase = constrict
+	pkgdesc = Compress videos to target sizes
+	pkgver = 26.2
+	pkgrel = 1
+	url = https://gitlab.gnome.org/World/Constrict
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = meson
+	makedepends = blueprint-compiler
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = glycin-gtk4
+	depends = libadwaita
+	depends = ffmpeg
+	source = git+https://gitlab.gnome.org/World/Constrict.git#tag=26.2
+	sha256sums = SKIP
+
+pkgname = constrict
