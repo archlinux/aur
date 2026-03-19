@@ -1,4 +1,4 @@
-From 319ff2d2a7b3bf0415664b47b62684073da22a37 Mon Sep 17 00:00:00 2001
+From 0e3bbaa513085ab4b26242fc3de8c54202d51a30 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jerzy=20Ko=C5=82osowski?= <jerzy@kolosowscy.pl>
 Date: Sun, 22 Feb 2026 06:57:03 +0100
 Subject: [PATCH 1/2] plugins/screencast: Fix potential null dereference in
@@ -30,7 +30,7 @@ index 59708970ea..c565a337da 100644
 2.53.0
 
 
-From 6f2e4314886233897c2c00bfed40356f5dbb216d Mon Sep 17 00:00:00 2001
+From b9783d96bcf16bbd09e7dee7d3d259c6a32ebd28 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Jerzy=20Ko=C5=82osowski?= <jerzy@kolosowscy.pl>
 Date: Sun, 22 Feb 2026 06:57:23 +0100
 Subject: [PATCH 2/2] plugins/screencast: Add D-Bus API for stream
@@ -1817,7 +1817,7 @@ index 509c738ffb..1a05d4faa7 100644
  
  } // namespace KWin
 diff --git a/src/plugins/screencast/screencaststream.cpp b/src/plugins/screencast/screencaststream.cpp
-index 2fc20b8310..cdfdbbd54d 100644
+index 87584fc34f..ae5298aeef 100644
 --- a/src/plugins/screencast/screencaststream.cpp
 +++ b/src/plugins/screencast/screencaststream.cpp
 @@ -18,6 +18,7 @@
