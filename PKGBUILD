@@ -7,14 +7,16 @@ url="https://feynarts.de/cuba/"
 license=(LGPL-3.0-or-later)
 makedepends=('mingw-w64-configure')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("https://feynarts.de/cuba/Cuba-$pkgver.tar.gz")
-sha256sums=('8d9f532fd2b9561da2272c156ef7be5f3960953e4519c638759f1b52fe03ed52')
+#source=("https://feynarts.de/cuba/Cuba-$pkgver.tar.gz")
+#sha256sums=('8d9f532fd2b9561da2272c156ef7be5f3960953e4519c638759f1b52fe03ed52')
+source=(Cuba-$pkgver::git+https://github.com/jschueller/cuba.git)
+sha256sums=(SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "$srcdir/Cuba-$pkgver"
-  sed -i "/MasterExit/d" src/common/Fork.c
+  # sed -i "/MasterExit/d" src/common/Fork.c
 
   # gcc 15: false' is a keyword with '-std=c23' onwards
   sed -i "/typedef enum/d" src/common/stddecl.h

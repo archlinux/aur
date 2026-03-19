@@ -9,7 +9,7 @@ pkgbase = mingw-w64-libcuba
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://feynarts.de/cuba/Cuba-4.2.2.tar.gz
-	sha256sums = 8d9f532fd2b9561da2272c156ef7be5f3960953e4519c638759f1b52fe03ed52
+	source = Cuba-4.2.2::git+https://github.com/jschueller/cuba.git
+	sha256sums = SKIP
 
 pkgname = mingw-w64-libcuba
