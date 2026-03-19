@@ -5,6 +5,7 @@ pkgver=1.2.0_preview
 pkgrel=1
 pkgdesc="Decentralized P2P email client"
 arch=("x86_64")
+options=(!strip)
 url="https://github.com/Eppie-io/Eppie-App"
 license=("Apache-2.0")
 provides=("eppie")
