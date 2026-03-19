@@ -22,6 +22,12 @@ depends=(
   'python-triton'
   'python-setproctitle'
   'python-tqdm'
+  'python-orjson'
+  'python-compressed-tensors'
+  'python-gguf'
+  'python-msgspec'
+  'python-einops'
+  'python-xgrammar'
   'ipython'
 )
 makedepends=(
@@ -34,18 +40,13 @@ makedepends=(
 optdepends=(
   # runtime_common (serving stack)
   'python-anthropic: Anthropic API backend'
-  'python-compressed-tensors: Compressed tensor support'
   'python-datasets: Dataset loading'
-  'python-einops: Tensor operations'
   'python-fastapi: API server'
-  'python-gguf: GGUF model format support'
   'python-grpcio: gRPC support'
   'python-huggingface-hub: Model hub access'
   'python-modelscope: ModelScope model hub'
-  'python-msgspec: Fast serialization'
   'ninja: Build system for JIT compilation'
   'python-openai: OpenAI-compatible API'
-  'python-orjson: Fast JSON serialization'
   'python-outlines: Structured generation'
   'python-packaging: Version utilities'
   'python-pillow: Image processing'
@@ -60,8 +61,11 @@ optdepends=(
   'uvicorn: ASGI server'
   'python-uvloop: Fast event loop'
 )
-source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5905242df108f4b6be1784192e7a9d0504e6251872d497a61cfc1fac2410bbad')
+backup=('etc/sglang.conf')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
+        'sglang.service')
+sha256sums=('5905242df108f4b6be1784192e7a9d0504e6251872d497a61cfc1fac2410bbad'
+            'SKIP')
 
 build() {
   cd "${pkgname}-${pkgver}/python"
@@ -74,4 +78,6 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}/python"
   python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 "${srcdir}/sglang.service" "${pkgdir}/usr/lib/systemd/system/sglang.service"
+  install -Dm644 "${srcdir}/../sglang.conf" "${pkgdir}/etc/sglang.conf"
 }
