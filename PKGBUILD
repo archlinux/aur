@@ -2,7 +2,7 @@
 # Maintainer: Sheikh Limon <sheikhlimon404@gmail.com>
 
 pkgname=goose-desktop-bin
-pkgver=1.27.2
+pkgver=1.28.0
 pkgrel=1
 pkgdesc="Goose Desktop (prebuilt .deb repack) — an open source, extensible AI agent that goes beyond code suggestions - install, execute, edit, and test with any LLM"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('glibc')
 options=(!strip)
 # tip: replace SKIP with the real SHA256 (use updpkgsums)
 source=("goose_${pkgver}_amd64.deb::https://github.com/block/goose/releases/download/v${pkgver}/goose_${pkgver}_amd64.deb")
-sha256sums=('fc667df0961cc4f86ebf8cdffc5b0a9dd598e8b62d562be81c0a3c6bcd7cad2f')
+sha256sums=('07b2c4a4edd8be9a5703788a25fcb49463b93896a66d20a74661733bb8c8cbcf')
 
 build() { :; }
 
@@ -28,8 +28,7 @@ package() {
   # - ${pkgdir}/usr/bin/goose   (wrapper we must NOT install)
   # - ${pkgdir}/usr/share/applications/goose.desktop
   # - ${pkgdir}/usr/share/pixmaps/goose.png
-  #
-  # 1) Remove upstream CLI wrapper to avoid conflict with codename-goose-bin:
+
   rm -f "${pkgdir}/usr/bin/goose"
 
   # 2) Relocate the Electron bundle to a desktop-specific dir to avoid name ambiguity
