@@ -1,6 +1,6 @@
 pkgbase = kwybars-git
 	pkgdesc = Desktop audio visualizer for Wayland that renders real-time audio bars on screen (latest git)
-	pkgver = 0.1.3.r0.g0000000
+	pkgver = 0.1.4.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/naurissteins/Kwybars
 	arch = x86_64
