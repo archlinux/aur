@@ -1,28 +1,31 @@
 # Maintainer: Nicholas Wang <me at nicho1as dot wang>
 pkgname=vatsim-crc
-pkgver=2.15.0
-pkgrel=9
+pkgver=2.15.0.0
+pkgrel=1
 pkgdesc="Consolidated Radar Client (CRC), a controller application connects to the VATSIM network through vNAS."
 arch=("x86_64")
 url="https://vnas.vatsim.net/crc"
 license=('custom')
-makedepends=('p7zip')
+makedepends=('p7zip' 'jq')
 depends=('wine' 'wine-mono' 'winetricks')
 optdepends=('trackaudio: Audio For VATSIM support' 'rpc-bridge: Discord Rich Presence support' 'ttf-cascadia-code' 'noto-fonts-cjk')
 install=$pkgname.install
 options=(!debug)
-source=(crc-setup-${pkgver}.exe::"https://crc.virtualnas.net/Files/Installers/CRC-Setup-${pkgver}.exe"
-        "vatsim-crc" "$pkgname.install"
+
+source=(crc-setup-${pkgver}.exe::"$(curl -s https://crc.virtualnas.net/LatestVersion.json | jq -r '.installerUrl')"
+        "vatsim-crc"
         "vatsim-crc.desktop" "segmdl2.verb" "webview2.verb" "nicfonts.verb")
 
-sha256sums=('68146125d78d14ea7efb54b0d19de41c759bdb59721ced7bdd454f237f8efcd8'
+sha256sums=('SKIP'
             'c3a2f39391ab094f00f6bb8ad084ddd0ca18eddcb3ecae78e7e60c4d7c0fe1fb'
-            '3cf58dcb82541202679f2b07f4ac15ebb22076411ee8e5533970f2e7756815db'
             '1ebb426abfff168706256df00a93661e2a97f2ec095c87906934538ae25a9926'
             'ea73951541c4f66e65c7ea6c7e2349f6e93ac4f6988516308b3a2522d4751c74'
             '4d70f0de1ce7105b21808ecb890993c05333f51a24b2b11bfa000b5abf2f129e'
             'd5b5f4d43c19e605dc0b256e4b75b816beaaeba3c6cf5f406860d3920e4db294')
 
+pkgver() {
+  curl -s https://crc.virtualnas.net/LatestVersion.json | jq -r '.version'
+}
 
 build() {
     mkdir -p $srcdir/build
