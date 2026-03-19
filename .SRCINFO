@@ -1,6 +1,6 @@
 pkgbase = gopeed-bin
 	pkgdesc = High speed downloader that supports all platforms.(Prebuilt version)
-	pkgver = 1.9.2
+	pkgver = 1.9.3
 	pkgrel = 1
 	url = https://gopeed.com/
 	arch = aarch64
@@ -12,13 +12,13 @@ pkgbase = gopeed-bin
 	depends = libayatana-indicator
 	depends = ayatana-ido
 	depends = libkeybinder3
-	provides = gopeed-1.9.2
+	provides = gopeed-1.9.3
 	conflicts = gopeed
 	source = gopeed.sh
 	sha256sums = 3b8311438e88f47eb507322a43c7a4156bfebb8c0f6e7b7436ef70842fb4c745
-	source_aarch64 = gopeed-1.9.2-aarch64.rpm::https://github.com/GopeedLab/gopeed/releases/download/v1.9.2/Gopeed-v1.9.2-linux-arm64.rpm
-	sha256sums_aarch64 = 3ecb73c33a5bcd3ee1728fa47394ab6bcece5482683715d37a2165c10a0e53ae
-	source_x86_64 = gopeed-1.9.2-x86_64.rpm::https://github.com/GopeedLab/gopeed/releases/download/v1.9.2/Gopeed-v1.9.2-linux-amd64.rpm
-	sha256sums_x86_64 = 279d11bfac29a2ed99eb3d062c63be2a479e64f5a1a0628c84119cfaf43975a9
+	source_aarch64 = gopeed-1.9.3-aarch64.rpm::https://github.com/GopeedLab/gopeed/releases/download/v1.9.3/Gopeed-v1.9.3-linux-arm64.rpm
+	sha256sums_aarch64 = b638c7cb4994c4224ee3a8268860738157fca378308969aa76bf6682c59b362a
+	source_x86_64 = gopeed-1.9.3-x86_64.rpm::https://github.com/GopeedLab/gopeed/releases/download/v1.9.3/Gopeed-v1.9.3-linux-amd64.rpm
+	sha256sums_x86_64 = 19ffa755f3a52451bf6d21c01af08220b819c342d646d3be1d55da9c1cfb0b31
 
 pkgname = gopeed-bin
