@@ -1,0 +1,24 @@
+pkgbase = pisek
+	pkgdesc = Tool for developing tasks for programming competetions
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/piskoviste/pisek
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python>=3.11.0
+	depends = python-colorama
+	depends = python-argcomplete
+	depends = python-pydantic
+	depends = python-readchar
+	depends = diffutils
+	depends = gcc
+	provides = pisek
+	conflicts = pisek
+	source = pisek-2.3.1.tar.gz::https://github.com/piskoviste/pisek/archive/refs/tags/v2.3.1.tar.gz
+	sha256sums = 618af8c228026b3265c4b2e902507977458bf334f0dd8bc67336c77baaaffe7e
+
+pkgname = pisek
