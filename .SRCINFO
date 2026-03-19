@@ -1,6 +1,6 @@
 pkgbase = maitreya
 	pkgdesc = A free software for Vedic and western astrology
-	pkgver = 8.0.1b
+	pkgver = 8.2
 	pkgrel = 4
 	url = http://www.saravali.de/maitreya.html
 	arch = i686
