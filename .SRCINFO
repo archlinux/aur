@@ -1,0 +1,18 @@
+pkgbase = yahac-bin
+	pkgdesc = Yet Another Home Assistant Client - prebuilt desktop tray application
+	pkgver = 2026.03.16.beta5
+	pkgrel = 1
+	url = https://github.com/dseichter/yahac
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	optdepends = libnotify: Desktop notifications
+	options = !debug
+	source = yahac::https://github.com/dseichter/yahac/releases/download/v2026-03-16-beta5/yahac-ubuntu-24-04-v2026-03-16-beta5
+	source = io.github.dseichter.yahac.desktop::https://raw.githubusercontent.com/dseichter/yahac/v2026-03-16-beta5/packaging/debian/io.github.dseichter.yahac.desktop
+	source = io.github.dseichter.yahac.png::https://raw.githubusercontent.com/dseichter/yahac/v2026-03-16-beta5/icons/io.github.dseichter.yahac.png
+	sha256sums = 493b2c2d05db588d98b67dcb97d360421136e1245b3ee79ec6efb2851d0cc049
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = yahac-bin
