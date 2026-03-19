@@ -10,7 +10,7 @@ pkgbase = kewt-git
 	provides = kewt
 	conflicts = kewt
 	conflicts = kewt-bin
-	source = kewt-git::git+https://kewt.krzak.org.git
+	source = kewt-git::git+https://git.krzak.org/N0VA/kewt.git
 	sha256sums = SKIP
 
 pkgname = kewt-git

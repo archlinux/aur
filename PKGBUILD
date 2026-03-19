@@ -10,7 +10,7 @@ makedepends=('git')
 depends=('sh')
 provides=('kewt')
 conflicts=('kewt' 'kewt-bin')
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+https://git.krzak.org/N0VA/kewt.git")
 sha256sums=('SKIP')
 
 pkgver() {
