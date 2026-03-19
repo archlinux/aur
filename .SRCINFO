@@ -1,0 +1,24 @@
+pkgbase = simple-deadlock-mod-manager
+	pkgdesc = A simple mod manager for Deadlock
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Gabri3445/simple-deadlock-mod-manager
+	install = simple-deadlock-mod-manager.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = cairo
+	depends = desktop-file-utils
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libsoup3
+	depends = pango
+	depends = webkit2gtk-4.1
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://github.com/Gabri3445/simple-deadlock-mod-manager/releases/download/v0.3.0/simple-deadlock-mod-manager_0.3.0_amd64.deb
+	sha256sums_x86_64 = dd51c4ac26a6b58c268d84d01deaa59d8dd38698ce26c5df1c6f43c0da22560e
+
+pkgname = simple-deadlock-mod-manager
