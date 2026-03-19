@@ -1,17 +1,16 @@
 pkgbase = edgee
-	pkgdesc = The full-stack edge platform for your edge oriented applications
-	pkgver = 1.2.21
+	pkgdesc = AI gateway with token compression for Claude Code, Codex, and more
+	pkgver = 0.1.6
 	pkgrel = 1
-	url = https://www.edgee.cloud
+	epoch = 1
+	url = https://www.edgee.ai
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cargo
-	depends = openssl
-	depends = bzip2
-	depends = xz
+	depends = libgcc
 	options = !lto
-	source = edgee-1.2.21.tar.gz::https://github.com/edgee-cloud/edgee/archive/v1.2.21.tar.gz
-	sha256sums = a6b29b12f749024c70125dee83120b0e075989ad982d20eb76a777cf83e3aa78
-	b2sums = 14e410a711808b5b43a56abaf1d5f3f697a0017b3a3e56a58589b6151b509e25603aaa43dfe8d38433ad9db5c19c4bb93370fcd75fcb2ceee6189624c2101cbc
+	source = edgee-0.1.6.tar.gz::https://github.com/edgee-ai/edgee/archive/v0.1.6.tar.gz
+	sha256sums = 6323c9d067304fc2ffa6a2237806a01fc6fe50c0e25b17e15b4163d15340f17e
+	b2sums = bf9b9f9b0477e16b8a654b4117e3297403ab0a1765bd49482e19d649c1104d6460bbb3233154eed789924fd5867ced4c6b027289db436cb7f418682a8d8b156c
 
 pkgname = edgee
