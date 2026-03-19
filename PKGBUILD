@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="Sentry relay"
 arch=('x86_64')
 url="https://github.com/getsentry/relay"
-license=('MIT' 'custom')
+license=('Apache-2.0')
 depends=('zlib' 'gcc-libs')
 makedepends=('cargo' 'git' 'cmake')
 source=("git+https://github.com/getsentry/relay/#tag=$pkgver"
