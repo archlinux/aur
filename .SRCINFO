@@ -1,0 +1,23 @@
+pkgbase = mkdocs-click
+	pkgdesc = An MkDocs extension to generate documentation for Click command line applications
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://github.com/mkdocs/mkdocs-click
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-pytest
+	checkdepends = python-click
+	checkdepends = python-markdown
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/m/mkdocs_click/mkdocs_click-0.9.0.tar.gz
+	sha256sums = 6050917628d4740517541422b607404d044117bc31b770c4f9e9e1939a50c908
+
+pkgname = mkdocs-click
+	depends = python>=3.9
+	depends = python-click>=8.1
+	depends = python-markdown>=3.3
+	provides = python-mkdocs-click=0.9.0
+	conflicts = python-mkdocs-click
+	replaces = python-mkdocs-click
