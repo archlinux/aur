@@ -2,31 +2,35 @@
 # Contributor: Peter Jackson <pete@peteonrails.com>
 
 _cuda_arch=${CUDA_ARCH:-all-major}
-# CUDA compute architecture target. Defaults to all-major for broadest compatibility.
-# Highly recommended to override for smaller package size.
+# CUDA compute architecture. Set to your GPU's compute capability (drop the dot: 8.6 → 86).
+# Can be overridden without editing: _cuda_arch=86 makepkg -S
 #
-# Note this is possible without editing this file, e.g. CUDA_ARCH=86 makepkg -S ...
+# Special values:
+#   all-major — SASS for every major arch + embedded PTX for forward JIT compat (recommended)
+#   all       — SASS for every major and minor arch variant (larger binary, rarely needed)
 #
-# Special values
-#   all-major  -- SASS for every major arch + embedded PTX for forward JIT compat (recommended)
-#   all        -- SASS for every major AND minor arch variant (larger binary, rarely needed)
-#   native     -- detects local GPU at build time (CMake 3.24+ only; fails without a GPU present)
-#
-# Numeric values (no dot: 8.6 -> 86):
-#   Pascal  (CUDA 8+):   60 GTX 1080/1070/1060  |  61 GTX 1050/Titan Xp/Tesla P40
-#   Volta   (CUDA 9+):   70 Tesla V100/Titan V  |  72 Jetson AGX Xavier
-#   Turing  (CUDA 10+):  75 RTX 2060/2070/2080/GTX 1660 Ti/Tesla T4
-#   Ampere  (CUDA 11+):  80 A100  |  86 RTX 3060-3090/A2000-A6000  |  87 Jetson Orin
-#   Ada     (CUDA 12+):  89 RTX 4060-4090/L4/L40
-#   Hopper  (CUDA 12+):  90 H100
-#   Blackwell(CUDA 12+): 100 B100/B200  |  120 RTX 5080/5090
+# Numeric values:
+#    60 — Pascal:    GTX 1080/1070/1060
+#    61 — Pascal:    GTX 1050/Titan Xp/Tesla P40
+#    70 — Volta:     Tesla V100/Titan V
+#    72 — Volta:     Jetson AGX Xavier
+#    75 — Turing:    RTX 2060/2070/2080/GTX 1650 Ti/GTX 1660 Ti/Tesla T4/Titan RTX
+#    80 — Ampere:    A100
+#    86 — Ampere:    RTX 3050/3050 Ti/3060/3060 Ti/3070/3070 Ti/3080/3080 Ti/3090/3090 Ti/A2000-A6000
+#    87 — Ampere:    Jetson Orin
+#    89 — Ada:       RTX 4050/4060/4060 Ti/4070/4070 Ti/4080/4090/L4/L40/L40S
+#    90 — Hopper:    GH200/H100/H200
+#   100 — Blackwell: GB200/B200
+#   103 — Blackwell: GB300/B300
+#   120 — Blackwell: RTX 5050/5060/5060 Ti/5070/5070 Ti/5080/5090
+#   121 — Blackwell: GB10 (DGX Spark)
 #
 # Full reference: https://developer.nvidia.com/cuda-gpus
 
 pkgname=voxtype-cuda
 _pkgname=voxtype
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Push-to-talk voice-to-text for Linux. Nvidia/cuda backend version (not vulkan)"
 arch=(x86_64)
 url="https://voxtype.io"
@@ -42,7 +46,7 @@ depends=(
 )
 makedepends=(
     cargo
-    clang
+    clang21
     cmake
     cuda
     git
@@ -72,7 +76,8 @@ prepare() {
     export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
     export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
     export RUSTUP_TOOLCHAIN=stable
-    export CC=clang
+    export PATH="/usr/lib/llvm21/bin:$PATH"
+    export CC=clang-21
     export CXX=clang++
 
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
@@ -89,8 +94,8 @@ build() {
     cargo --version
     echo "rustc: $(which rustc)"
     rustc --version
-    echo "clang: $(which clang)"
-    clang --version | head -1
+    echo "clang: $(which clang-21)"
+    clang-21 --version | head -1
     echo "cmake: $(which cmake)"
     cmake --version | head -1
     echo "PATH=$PATH"
@@ -113,10 +118,18 @@ build() {
     unset CFLAGS
     unset CXXFLAGS
     unset LDFLAGS
-    export CC=clang
-    export CXX=clang++
 
-    export PATH="/opt/cuda/bin:$PATH"
+    # Remap build paths so binaries don't contain $srcdir references
+    local _src="$srcdir/$pkgname-$pkgver"
+    export RUSTFLAGS="--remap-path-prefix=$_src/= --remap-path-prefix=${CARGO_HOME}/registry/src/=cargo/"
+    export CFLAGS="-ffile-prefix-map=$_src/="
+    export CXXFLAGS="-ffile-prefix-map=$_src/="
+
+    export PATH="/usr/lib/llvm21/bin:/opt/cuda/bin:$PATH"
+    export CC=clang-21
+    export CXX=clang++
+    export LIBCLANG_PATH=/usr/lib/llvm21/lib
+
     export CUDAToolkit_ROOT=/opt/cuda
     echo "set(CMAKE_CUDA_ARCHITECTURES ${_cuda_arch})" > /tmp/voxtype-cuda-arch.cmake
     export CMAKE_TOOLCHAIN_FILE=/tmp/voxtype-cuda-arch.cmake
