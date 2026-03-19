@@ -1,7 +1,7 @@
 pkgbase = nosh
 	pkgdesc = a minimal POSIX C- shell for -OOL people.
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jstmaxlol/nosh
 	arch = any
 	license = MIT
