@@ -1,0 +1,18 @@
+pkgbase = wifi-audio-streaming
+	pkgdesc = A desktop application for streaming audio over a local network.
+	pkgver = 0.2.0beta
+	pkgrel = 1
+	url = https://github.com/marcomorosi06/WiFiAudioStreaming-Desktop
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = java-runtime-common
+	provides = wifi-audio-streaming
+	source = git+https://github.com/marcomorosi06/WiFiAudioStreaming-Desktop#tag=v0.2.0-beta
+	source = wifi-audio-streaming.desktop
+	source = wifi-audio-streaming.sh
+	sha256sums = feb89d99108bace7daae9d84936e0024679b6ccf36e899aaf3a43500fc9e7ca7
+	sha256sums = f3058f83842cfbdfa4d3a0838914ff4af327b9ad6942860dbf91ff67db1997e7
+	sha256sums = 07ce50a4bc60cf4469afbdd94ee7b5700f2be8df0d3f5ea66e64333954daa940
+
+pkgname = wifi-audio-streaming

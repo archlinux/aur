@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=WiFi Audio Streaming
+Exec=wifi-audio-streaming
+Type=Application
+Terminal=false
+Categories=Application;Utility;
+Icon=wifi-audio-streaming
+Comment=A desktop application for streaming audio over a local network.
+#StartupWMClass=
