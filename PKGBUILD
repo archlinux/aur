@@ -1,4 +1,4 @@
-# Maintainer: archie <archie@narayana.im>
+# Maintainer: pounceandmiss <pounceandmiss@proton.me>
 
 pkgname=anotherim-desktop-git
 pkgver=0.5.104.r0.g466dfcec
