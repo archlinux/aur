@@ -2,26 +2,26 @@
 
 pkgname=bat-cli
 pkgver='1.1'
-pkgrel=4
+pkgrel=5
 pkgdesc='Battery management utility for Linux laptops'
 arch=('x86_64')
 url='https://github.com/tshakalekholoane/bat'
 license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
-source=("${pkgname}-${pkgver}::git+https://github.com/tshakalekholoane/bat.git#tag=${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tshakalekholoane/bat/archive/refs/tags/${pkgver}.tar.gz"
         'rename-binary-to-bat-cli.patch')
-b2sums=('ebe66d991a83e6b9c4f0e0426088ce87a3ed8e155b5e3da7be4976c5ccb69898650aeac54ec70f02ea2d55e0dee69ef0ccc21c5c2617be6e529d8b11b4745926'
+b2sums=('b95fcebac70a6163b12daccc5c3132ce1355feda2b76463955f5d3c42093ffbc1c2f10f5d490fa344e8eb38ff7be9a1485802f98b4e5b8cb3e47bafc2ff906cb'
         '451a058d29b8b70311fc00659c45ad89081b70d51df3f64f75dc52ad63e0ad55b317c92b8e61e6ae01139d74c0dc0b9fad7ff7409024c476cc0af31f4099300c')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "bat-${pkgver}"
 
   patch -p1 -i ../rename-binary-to-bat-cli.patch
 }
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "bat-${pkgver}"
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -39,13 +39,13 @@ build() {
 }
 
 check() {
-  cd "${pkgname}-${pkgver}"
+  cd "bat-${pkgver}"
 
   go vet ./...
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "bat-${pkgver}"
 
   install -Dm755 ./dist/bat "${pkgdir}/usr/bin/${pkgname}"
 
