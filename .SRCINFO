@@ -1,6 +1,6 @@
 pkgbase = vibe-kanban-bin
 	pkgdesc = Vibe Kanban - AI-powered Kanban board (Binary)
-	pkgver = 0.1.31
+	pkgver = 0.1.33
 	pkgrel = 1
 	url = https://vibekanban.com
 	install = vibe-kanban-bin.install
