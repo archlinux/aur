@@ -107,7 +107,7 @@ package_matlab-${_release,,}-${_name}() {
   install -vd \"\${pkgdir}/usr/lib/${pkgbase}/${_release}\"
   ln -vsf '/usr/bin/matlab-${_release}' \"\${pkgdir}/usr/lib/${pkgbase}/${_release}/matlab\"
 
-  install -vDm755 '${pkgbase}.sh' \"\${pkgdir}/usr/bin/matlab-${_release}-${_name}\"
-  sed -i 's/@@RELEASE@@/${_release}/g' \"\${pkgdir}/usr/bin/matlab-${_release}-${_name}\"
+  install -vDm755 '${pkgbase}.sh' \"\${pkgdir}/usr/bin/${pkgbase}-${_release}\"
+  sed -i 's/@@RELEASE@@/${_release}/g' \"\${pkgdir}/usr/bin/${pkgbase}-${_release}\"
 }"
 done
