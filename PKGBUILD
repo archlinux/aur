@@ -1,5 +1,5 @@
 pkgname=suisave
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Simple, declarative backup tool"
 arch=('any')
@@ -20,7 +20,7 @@ makedepends=(
   'python-wheel'
 )
 
-source=("https://files.pythonhosted.org/packages/5e/5d/9d6d1e3f1c0aa3e524167e9ca3c7238d4d0cbff9a39a0addc213d9bd1666/suisave-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/8f/66/bcd30636644f446bcdd57da822e6d673f9670b65063cac60612896c7526c/suisave-$pkgver.tar.gz")
 
 sha256sums=('SKIP')
 
