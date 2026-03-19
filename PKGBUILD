@@ -2,15 +2,19 @@
 
 pkgname="aliyun-oss-cpp-sdk"
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Aliyun OSS SDK for C++"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://github.com/aliyun/${pkgname}"
-license=('Apache-2.0')
+license=(
+  'Apache-2.0'
+)
 depends=(
   'curl'
-  'gcc-libs'
   'glibc'
+  'libstdc++'
   'openssl'
 )
 makedepends=(
@@ -21,8 +25,10 @@ provides=(
   'libalibabacloud-oss-cpp-sdk.so'
 )
 _pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
-        "${pkgname}_cmake_build_static_libs.patch")
+source=(
+  "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
+  "${pkgname}_cmake_build_static_libs.patch"
+)
 b2sums=('6aa4d6fdc7d128bdd71624a115dfd894ea48e76665aaf992e0ead7f0a3cf48788dca66f48fdc24576a571fcc2b4689a5c3ebbaa8f02e73a7f9f170847fb06f76'
         '797a0e343893acb752821e5481813451fd6bec5afa6893926e9369240efeb1f01da82ecddf33eae4810bd1cbe833f4b4f8449a85a42f2a9806ee2654006d2879')
 
@@ -38,10 +44,8 @@ prepare() {
 }
 
 build() {
-  local cmake_options=(
+  local cmake_arguments=(
     -G 'Unix Makefiles'
-    -B "${_pkgsrc}/build"
-    -S "${_pkgsrc}"
     -W no-dev
     -D CMAKE_BUILD_TYPE:STRING='None'
     -D CMAKE_INSTALL_PREFIX:PATH='/usr'
@@ -56,21 +60,20 @@ build() {
   )
 
   cd "${srcdir}"
-  cmake "${cmake_options[@]}"
+  cmake -B "${_pkgsrc}/build" -S "${_pkgsrc}" "${cmake_arguments[@]}"
   cmake --build "${_pkgsrc}/build"
 }
 
 # check() {
-#   local excluded_tests=""
-#   local ctest_flags=(
-#     --test-dir "${_pkgsrc}/build"
+#   local ctest_exclude_regex=""
+#   local ctest_arguments=(
 #     --output-on-failure
 #     --parallel $(nproc)
-#     --exclude-regex "${excluded_tests}"
+#     --exclude-regex "${ctest_exclude_regex}"
 #   )
 # 
 #   cd "${srcdir}"
-#   ctest "${ctest_flags[@]}"
+#   ctest --test-dir "${_pkgsrc}/build" "${ctest_arguments[@]}"
 # }
 
 package() {

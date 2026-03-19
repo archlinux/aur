@@ -1,18 +1,18 @@
 pkgbase = aliyun-oss-cpp-sdk
 	pkgdesc = Aliyun OSS SDK for C++
 	pkgver = 1.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aliyun/aliyun-oss-cpp-sdk
 	arch = x86_64
 	license = Apache-2.0
 	makedepends = cmake>=3.1
 	makedepends = dos2unix
 	depends = curl
-	depends = gcc-libs
 	depends = glibc
+	depends = libstdc++
 	depends = openssl
 	provides = libalibabacloud-oss-cpp-sdk.so
-	source = aliyun-oss-cpp-sdk-1.10.1.tar.gz::https://github.com/aliyun/aliyun-oss-cpp-sdk/archive/refs/tags/1.10.1.tar.gz
+	source = https://github.com/aliyun/aliyun-oss-cpp-sdk/archive/refs/tags/1.10.1/aliyun-oss-cpp-sdk-1.10.1.tar.gz
 	source = aliyun-oss-cpp-sdk_cmake_build_static_libs.patch
 	b2sums = 6aa4d6fdc7d128bdd71624a115dfd894ea48e76665aaf992e0ead7f0a3cf48788dca66f48fdc24576a571fcc2b4689a5c3ebbaa8f02e73a7f9f170847fb06f76
 	b2sums = 797a0e343893acb752821e5481813451fd6bec5afa6893926e9369240efeb1f01da82ecddf33eae4810bd1cbe833f4b4f8449a85a42f2a9806ee2654006d2879
