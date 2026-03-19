@@ -1,0 +1,1122 @@
+From a3015026a051bff5d7aacf3ddf181b1c480c4502 Mon Sep 17 00:00:00 2001
+From: CJ Pais <cj@cjpais.com>
+Date: Thu, 19 Mar 2026 15:00:51 +0800
+Subject: [PATCH] whisper-rs 0.16.0 and ort.rc12 (#1041)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* test build for 0.16.0
+
+* macos 10.15?
+
+* format
+
+* shorter dir for build on windows?
+
+* Update build.yml
+
+* move
+
+* Update build.yml
+
+* long path support
+
+* clang
+
+* try
+
+* try
+
+* move to ort rc12
+
+* use ms prebuilt?
+
+* use lower version for 1.23.1
+
+* download my prebuilt
+
+* Update build.yml
+
+* Update build.yml
+
+* fix?
+
+* fix(nix): use dynamic linking for ort-sys 2.0.0-rc.12
+
+ort-sys rc.12 removed pkg-config support; without ORT_PREFER_DYNAMIC_LINK
+it defaults to static linking against ORT_LIB_LOCATION, which fails
+because nixpkgs only provides shared libraries (.so).
+
+* fix(nix): override onnxruntime to 1.24.2 for ort-sys rc.12 compatibility
+
+ort 2.0.0-rc.12 enables API v24 by default, but nixpkgs only ships
+onnxruntime 1.23.2 (API v23), causing a runtime panic on model load.
+
+Use Microsoft's prebuilt binaries for onnxruntime 1.24.2 via overlay,
+patched with autoPatchelfHook for NixOS compatibility.
+
+This overlay should be removed once nixpkgs merges onnxruntime ≥ 1.24:
+https://github.com/NixOS/nixpkgs/pull/499389
+
+* updated deps for whisper
+
+* fix(nix): sync devShell with packages for ort-sys rc.12 compatibility
+
+- Extract shared definitions (commonNativeDeps, gstPlugins, commonEnv,
+  onnxruntimeOverlay) to avoid duplication between packages and devShells
+- Add onnxruntime 1.24.2 overlay to devShell (was only in packages)
+- Add BINDGEN_EXTRA_CLANG_ARGS to devShell so bindgen can find stdio.h
+  and generate correct vulkan bindings for whisper-rs-sys
+- Add ORT_LIB_LOCATION and ORT_PREFER_DYNAMIC_LINK to devShell
+- Replace libappindicator with libayatana-appindicator in devShell
+- Add onnxruntime and vulkan-loader to devShell LD_LIBRARY_PATH
+
+* fix missing lib in the handy blob dl
+
+* scope lib verification
+
+* dont run bun2nix on windows
+
+---------
+
+Co-authored-by: Evgeny <evgeny.khudoba@yandex.ru>
+---
+ .github/workflows/build.yml             | 106 +++++++++++++++-
+ flake.nix                               | 161 +++++++++++++-----------
+ scripts/check-nix-deps.ts               |   3 +
+ src-tauri/Cargo.lock                    | 158 +++++++++--------------
+ src-tauri/Cargo.toml                    |   6 +-
+ src-tauri/src/managers/transcription.rs |  84 +++----------
+ src-tauri/tauri.conf.json               |   2 +-
+ 7 files changed, 280 insertions(+), 240 deletions(-)
+
+diff --git a/.github/workflows/build.yml b/.github/workflows/build.yml
+index 91cc076b2..a46165fad 100644
+--- a/.github/workflows/build.yml
++++ b/.github/workflows/build.yml
+@@ -53,6 +53,14 @@ jobs:
+       contents: write
+     runs-on: ${{ inputs.platform }}
+     steps:
++      - name: Enable long paths (Windows)
++        if: runner.os == 'Windows'
++        shell: pwsh
++        run: |
++          New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" `
++            -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
++          git config --system core.longpaths true
++
+       - name: Checkout repository
+         uses: actions/checkout@v4
+         with:
+@@ -265,6 +273,70 @@ jobs:
+           fi
+           echo "platform=${patched_platform}" >> $GITHUB_OUTPUT
+ 
++      # whisper-rs-sys cmake builds create paths that exceed Windows MAX_PATH
++      # (260 chars). Shorten the target dir to keep paths under the limit.
++      - name: Shorten build path (Windows)
++        if: runner.os == 'Windows'
++        shell: pwsh
++        run: |
++          $drive = Split-Path -Qualifier $env:GITHUB_WORKSPACE
++          $targetDir = "$drive\t"
++          New-Item -ItemType Directory -Force -Path $targetDir | Out-Null
++          echo "CARGO_TARGET_DIR=$targetDir" >> $env:GITHUB_ENV
++
++      # ggml requires clang for ARM. The VS generator determines the compiler
++      # via the toolset (-T flag) which can't be overridden from env vars.
++      # Use Ninja + clang-cl instead, which respects CMAKE_C_COMPILER.
++      - name: Configure cmake for ARM64 (Windows)
++        if: contains(inputs.platform, 'windows') && contains(inputs.target, 'aarch64')
++        shell: pwsh
++        run: |
++          echo "CMAKE_GENERATOR=Ninja" >> $env:GITHUB_ENV
++          echo "CMAKE_C_COMPILER=clang-cl" >> $env:GITHUB_ENV
++          echo "CMAKE_CXX_COMPILER=clang-cl" >> $env:GITHUB_ENV
++          echo "CMAKE_C_COMPILER_TARGET=aarch64-pc-windows-msvc" >> $env:GITHUB_ENV
++          echo "CMAKE_CXX_COMPILER_TARGET=aarch64-pc-windows-msvc" >> $env:GITHUB_ENV
++          echo "CL=/EHsc" >> $env:GITHUB_ENV
++
++      - name: Install ONNX Runtime (x86_64 macOS)
++        if: inputs.target == 'x86_64-apple-darwin'
++        shell: bash
++        run: |
++          ORT_VERSION="1.24.2"
++          curl -L -o ort.tgz "https://blob.handy.computer/onnxruntime-osx-x86_64-${ORT_VERSION}.tgz"
++          tar xzf ort.tgz
++          ORT_DIR="$(pwd)/onnxruntime-osx-x86_64-${ORT_VERSION}"
++          echo "ORT_LIB_LOCATION=$ORT_DIR/lib" >> $GITHUB_ENV
++          echo "ORT_PREFER_DYNAMIC_LINK=1" >> $GITHUB_ENV
++          # Bundle the versioned dylib (matches the install name @rpath/libonnxruntime.1.24.2.dylib)
++          jq --arg lib "$ORT_DIR/lib/libonnxruntime.${ORT_VERSION}.dylib" \
++            '.bundle.macOS.frameworks = [$lib]' \
++            src-tauri/tauri.conf.json > tmp.json && mv tmp.json src-tauri/tauri.conf.json
++
++      - name: Install ONNX Runtime (x86_64 Linux, Ubuntu 22.04)
++        if: contains(inputs.platform, 'ubuntu-22.04') && inputs.target == 'x86_64-unknown-linux-gnu'
++        shell: bash
++        run: |
++          ORT_VERSION="1.24.2"
++          curl -L -o ort.tgz "https://blob.handy.computer/onnxruntime-linux-x86_64-${ORT_VERSION}.tgz"
++          tar xzf ort.tgz
++          ORT_DIR="$(pwd)/onnxruntime-linux-x86_64-${ORT_VERSION}"
++          echo "ORT_LIB_LOCATION=$ORT_DIR/lib" >> $GITHUB_ENV
++          echo "ORT_PREFER_DYNAMIC_LINK=1" >> $GITHUB_ENV
++          # Resolve symlinks so the deb bundler gets real files (not broken symlinks)
++          for f in "$ORT_DIR"/lib/libonnxruntime.so*; do
++            if [ -L "$f" ]; then
++              cp -L "$f" "$f.real" && mv "$f.real" "$f"
++            fi
++          done
++          # Add the shared libs to the deb package under /usr/lib
++          # deb.files key = destination in package, value = source on disk
++          jq --arg so "$ORT_DIR/lib/libonnxruntime.so" \
++             --arg so1 "$ORT_DIR/lib/libonnxruntime.so.1" \
++             --arg sov "$ORT_DIR/lib/libonnxruntime.so.1.24.2" \
++            '.bundle.linux.deb.files["/usr/lib/libonnxruntime.so"] = $so | .bundle.linux.deb.files["/usr/lib/libonnxruntime.so.1"] = $so1 | .bundle.linux.deb.files["/usr/lib/libonnxruntime.so.1.24.2"] = $sov' \
++            src-tauri/tauri.conf.json > tmp.json && mv tmp.json src-tauri/tauri.conf.json
++
+       - name: Build with Tauri
+         uses: tauri-apps/tauri-action@v0
+         env:
+@@ -290,6 +362,27 @@ jobs:
+           assetNamePattern: ${{ steps.patch-release-name.outputs.platform }}
+           args: ${{ inputs.build-args }}
+ 
++      - name: Verify macOS dylib bundling
++        if: inputs.target == 'x86_64-apple-darwin'
++        shell: bash
++        run: |
++          APP=$(find src-tauri/target -name "*.app" -type d | head -1)
++          echo "=== Frameworks contents ==="
++          ls -la "$APP/Contents/Frameworks/" | grep onnx || true
++          echo "=== Binary linked libs ==="
++          otool -L "$APP/Contents/MacOS/handy" | grep onnx || true
++          echo "=== Checking all @rpath deps are satisfied ==="
++          # Extract every @rpath lib the binary needs
++          otool -L "$APP/Contents/MacOS/handy" | grep '@rpath/' | awk '{print $1}' | while read dep; do
++            libname=$(basename "$dep")
++            if [ ! -f "$APP/Contents/Frameworks/$libname" ]; then
++              echo "MISSING: $libname not found in Frameworks/"
++              exit 1
++            else
++              echo "OK: $libname"
++            fi
++          done
++
+       - name: Upload artifacts (macOS)
+         if: inputs.upload-artifacts && contains(inputs.platform, 'macos')
+         uses: actions/upload-artifact@v4
+@@ -368,13 +461,20 @@ jobs:
+             src-tauri/target/${{ steps.build-profile.outputs.profile }}/bundle/rpm/*.rpm
+           retention-days: 30
+ 
++      - name: Resolve Windows artifact path
++        if: inputs.upload-artifacts && contains(inputs.platform, 'windows')
++        id: win-artifact-path
++        shell: pwsh
++        run: |
++          $base = if ($env:CARGO_TARGET_DIR) { $env:CARGO_TARGET_DIR } else { "src-tauri/target" }
++          echo "base=$base" >> $env:GITHUB_OUTPUT
++
+       - name: Upload artifacts (Windows)
+         if: inputs.upload-artifacts && contains(inputs.platform, 'windows')
+         uses: actions/upload-artifact@v4
+         with:
+           name: ${{ inputs.asset-prefix }}-${{ inputs.target }}
+-          # Default Windows builds place bundles under release/, but cross-compiles (ARM64) nest under target/<triple>/release.
+           path: |
+-            src-tauri/target/${{ inputs.target != '' && inputs.target != 'x86_64-pc-windows-msvc' && format('{0}/{1}', inputs.target, steps.build-profile.outputs.profile) || steps.build-profile.outputs.profile }}/bundle/msi/*.msi
+-            src-tauri/target/${{ inputs.target != '' && inputs.target != 'x86_64-pc-windows-msvc' && format('{0}/{1}', inputs.target, steps.build-profile.outputs.profile) || steps.build-profile.outputs.profile }}/bundle/nsis/*.exe
++            ${{ steps.win-artifact-path.outputs.base }}/${{ inputs.target != '' && inputs.target != 'x86_64-pc-windows-msvc' && format('{0}/{1}', inputs.target, steps.build-profile.outputs.profile) || steps.build-profile.outputs.profile }}/bundle/msi/*.msi
++            ${{ steps.win-artifact-path.outputs.base }}/${{ inputs.target != '' && inputs.target != 'x86_64-pc-windows-msvc' && format('{0}/{1}', inputs.target, steps.build-profile.outputs.profile) || steps.build-profile.outputs.profile }}/bundle/nsis/*.exe
+           retention-days: 30
+diff --git a/flake.nix b/flake.nix
+index 0767215dc..45230454d 100644
+--- a/flake.nix
++++ b/flake.nix
+@@ -29,6 +29,77 @@
+       # Read version from Cargo.toml
+       cargoToml = fromTOML (builtins.readFile ./src-tauri/Cargo.toml);
+       version = cargoToml.package.version;
++
++      # Shared native library dependencies for both package build and dev shell.
++      # Keep in sync: if a native dep is needed for compilation, add it here.
++      commonNativeDeps = pkgs: with pkgs; [
++        webkitgtk_4_1
++        gtk3
++        glib
++        libsoup_3
++        alsa-lib
++        onnxruntime
++        libayatana-appindicator
++        libevdev
++        libxtst
++        gtk-layer-shell
++        openssl
++        vulkan-loader
++        vulkan-headers
++        shaderc
++      ];
++
++      # GStreamer plugins for WebKitGTK audio/video
++      gstPlugins = pkgs: with pkgs.gst_all_1; [
++        gstreamer
++        gst-plugins-base
++        gst-plugins-good
++        gst-plugins-bad
++        gst-plugins-ugly
++      ];
++
++      # Shared environment variables for Rust/native builds
++      commonEnv = pkgs: let lib = pkgs.lib; in {
++        LIBCLANG_PATH = "${pkgs.llvmPackages.libclang.lib}/lib";
++        BINDGEN_EXTRA_CLANG_ARGS = "-isystem ${pkgs.llvmPackages.libclang.lib}/lib/clang/${lib.getVersion pkgs.llvmPackages.libclang}/include -isystem ${pkgs.glibc.dev}/include";
++        ORT_LIB_LOCATION = "${pkgs.onnxruntime}/lib";
++        ORT_PREFER_DYNAMIC_LINK = "1";
++        GST_PLUGIN_SYSTEM_PATH_1_0 = "${lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (gstPlugins pkgs)}";
++      };
++
++      # TODO: Remove this overlay once nixpkgs ships onnxruntime ≥ 1.24.
++      # Tracking PR: https://github.com/NixOS/nixpkgs/pull/499389
++      # ort-sys 2.0.0-rc.12 requires ONNX Runtime 1.24 (API v24);
++      # nixpkgs only ships 1.23.2, so use MS prebuilt binaries.
++      onnxruntimeOverlay = (final: prev: {
++        onnxruntime = let
++          onnxVersion = "1.24.2";
++          platform = {
++            x86_64-linux = { name = "linux-x64"; hash = "sha256-Q3JUdLpWY2QuF2hHF5Rmk4UOIAXvvXJKxy2ieP6tJeY="; };
++            aarch64-linux = { name = "linux-aarch64"; hash = "sha256-spla8PQ3xOAi/YAcV/tcJf0f5mDNM9JutHGUSQpbRsQ="; };
++          }.${final.system};
++        in prev.stdenv.mkDerivation {
++          pname = "onnxruntime";
++          version = onnxVersion;
++          src = prev.fetchurl {
++            url = "https://github.com/microsoft/onnxruntime/releases/download/v${onnxVersion}/onnxruntime-${platform.name}-${onnxVersion}.tgz";
++            hash = platform.hash;
++          };
++          sourceRoot = "onnxruntime-${platform.name}-${onnxVersion}";
++          nativeBuildInputs = [ prev.autoPatchelfHook ];
++          buildInputs = [ prev.stdenv.cc.cc.lib ];
++          installPhase = ''
++            runHook preInstall
++            mkdir -p $out/lib $out/include
++            cp -r lib/* $out/lib/
++            cp -r include/* $out/include/
++            runHook postInstall
++          '';
++          meta = prev.onnxruntime.meta // {
++            description = "ONNX Runtime ${onnxVersion} (prebuilt by Microsoft)";
++          };
++        };
++      });
+     in
+     {
+       packages = forAllSystems (
+@@ -36,7 +107,10 @@
+         let
+           pkgs = import nixpkgs {
+             inherit system;
+-            overlays = [ bun2nix.overlays.default ];
++            overlays = [
++              bun2nix.overlays.default
++              onnxruntimeOverlay
++            ];
+           };
+           lib = pkgs.lib;
+         in
+@@ -126,49 +200,13 @@
+               runHook postInstall
+             '';
+ 
+-            buildInputs = with pkgs; [
+-              webkitgtk_4_1
+-              gtk3
+-              glib
++            buildInputs = commonNativeDeps pkgs ++ (with pkgs; [
+               glib-networking
+-              libsoup_3
+-              alsa-lib
+-              onnxruntime
+-              libayatana-appindicator
+-              libevdev
+               libx11
+-              libxtst
+-              gtk-layer-shell
+-              openssl
+-              vulkan-loader
+-              vulkan-headers
+-              shaderc
+-
+-              # Required for WebKitGTK audio/video
+-              gst_all_1.gstreamer
+-              gst_all_1.gst-plugins-base
+-              gst_all_1.gst-plugins-good
+-              gst_all_1.gst-plugins-bad
+-              gst_all_1.gst-plugins-ugly
+-            ];
++            ]) ++ gstPlugins pkgs;
+ 
+-            env = {
+-              LIBCLANG_PATH = "${pkgs.llvmPackages.libclang.lib}/lib";
+-              BINDGEN_EXTRA_CLANG_ARGS = "-isystem ${pkgs.llvmPackages.libclang.lib}/lib/clang/${lib.getVersion pkgs.llvmPackages.libclang}/include -isystem ${pkgs.glibc.dev}/include";
+-              ORT_LIB_LOCATION = "${pkgs.onnxruntime}/lib";
++            env = commonEnv pkgs // {
+               OPENSSL_NO_VENDOR = "1";
+-
+-              # Tell Gstreamer where to find plugins
+-              GST_PLUGIN_SYSTEM_PATH_1_0 = "${pkgs.lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (
+-                with pkgs.gst_all_1;
+-                [
+-                  gstreamer
+-                  gst-plugins-base
+-                  gst-plugins-good
+-                  gst-plugins-bad
+-                  gst-plugins-ugly
+-                ]
+-              )}";
+             };
+ 
+             preFixup = ''
+@@ -219,12 +257,13 @@
+         let
+           pkgs = import nixpkgs {
+             inherit system;
++            overlays = [ onnxruntimeOverlay ];
+           };
+         in
+         {
+           default = pkgs.mkShell {
+-            buildInputs = with pkgs; [
+-              # Rust
++            buildInputs = commonNativeDeps pkgs ++ (with pkgs; [
++              # Rust toolchain
+               rustc
+               cargo
+               rust-analyzer
+@@ -232,39 +271,21 @@
+               # Frontend
+               nodejs
+               bun
+-              # Tauri CLI
++              # Build tools
+               cargo-tauri
+-              # Native deps
+               pkg-config
+-              openssl
+-              alsa-lib
+-              libsoup_3
+-              webkitgtk_4_1
+-              gtk3
+-              gtk-layer-shell
+-              glib
+-              libxtst
+-              libevdev
+               llvmPackages.libclang
+               cmake
+-              vulkan-headers
+-              vulkan-loader
+-              shaderc
+-              libappindicator
+-            ];
++            ]);
++
++            inherit (commonEnv pkgs)
++              LIBCLANG_PATH
++              BINDGEN_EXTRA_CLANG_ARGS
++              ORT_LIB_LOCATION
++              ORT_PREFER_DYNAMIC_LINK
++              GST_PLUGIN_SYSTEM_PATH_1_0;
+ 
+-            LIBCLANG_PATH = "${pkgs.llvmPackages.libclang.lib}/lib";
+-            LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath [ pkgs.libappindicator ]}";
+-            GST_PLUGIN_SYSTEM_PATH_1_0 = "${pkgs.lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (
+-              with pkgs.gst_all_1;
+-              [
+-                gstreamer
+-                gst-plugins-base
+-                gst-plugins-good
+-                gst-plugins-bad
+-                gst-plugins-ugly
+-              ]
+-            )}";
++            LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath [ pkgs.libayatana-appindicator pkgs.onnxruntime pkgs.vulkan-loader ]}";
+ 
+             # Same as wrapGAppsHook4
+             XDG_DATA_DIRS = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}:${pkgs.hicolor-icon-theme}/share";
+diff --git a/scripts/check-nix-deps.ts b/scripts/check-nix-deps.ts
+index 8c6d9e34c..6a3ce15ab 100644
+--- a/scripts/check-nix-deps.ts
++++ b/scripts/check-nix-deps.ts
+@@ -30,6 +30,9 @@ const lockFile = join(root, "bun.lock");
+ const hashFile = join(nixDir, "bun-lock-hash");
+ const nixFile = join(nixDir, "bun.nix");
+ 
++// Skip on Windows — bun2nix is Nix-only and hangs on Windows CI
++if (process.platform === "win32") process.exit(0);
++
+ // No bun.lock — nothing to do
+ if (!existsSync(lockFile)) process.exit(0);
+ 
+diff --git a/src-tauri/Cargo.lock b/src-tauri/Cargo.lock
+index e38ac955c..1274c5774 100644
+--- a/src-tauri/Cargo.lock
++++ b/src-tauri/Cargo.lock
+@@ -240,7 +240,7 @@ dependencies = [
+  "futures-lite",
+  "parking",
+  "polling",
+- "rustix 1.1.3",
++ "rustix",
+  "slab",
+  "windows-sys 0.61.2",
+ ]
+@@ -271,7 +271,7 @@ dependencies = [
+  "cfg-if",
+  "event-listener",
+  "futures-lite",
+- "rustix 1.1.3",
++ "rustix",
+ ]
+ 
+ [[package]]
+@@ -297,7 +297,7 @@ dependencies = [
+  "cfg-if",
+  "futures-core",
+  "futures-io",
+- "rustix 1.1.3",
++ "rustix",
+  "signal-hook-registry",
+  "slab",
+  "windows-sys 0.61.2",
+@@ -406,16 +406,14 @@ dependencies = [
+ 
+ [[package]]
+ name = "bindgen"
+-version = "0.69.5"
++version = "0.72.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "271383c67ccabffb7381723dea0672a673f292304fcb45c01cc648c7a8d58088"
++checksum = "993776b509cfb49c750f11b8f07a46fa23e0a1386ffc01fb1e7d343efc387895"
+ dependencies = [
+  "bitflags 2.11.0",
+  "cexpr",
+  "clang-sys",
+  "itertools",
+- "lazy_static",
+- "lazycell",
+  "log",
+  "prettyplease",
+  "proc-macro2",
+@@ -424,7 +422,6 @@ dependencies = [
+  "rustc-hash",
+  "shlex",
+  "syn 2.0.117",
+- "which",
+ ]
+ 
+ [[package]]
+@@ -736,7 +733,7 @@ version = "0.15.8"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "d067ad48b8650848b989a59a86c6c36a995d02d2bf778d45c3c5d57bc2718f02"
+ dependencies = [
+- "smallvec 1.15.1",
++ "smallvec",
+  "target-lexicon 0.12.16",
+ ]
+ 
+@@ -746,7 +743,7 @@ version = "0.20.6"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "78cef5b5a1a6827c7322ae2a636368a573006b27cfa76c7ebd53e834daeaab6a"
+ dependencies = [
+- "smallvec 1.15.1",
++ "smallvec",
+  "target-lexicon 0.13.3",
+ ]
+ 
+@@ -1160,7 +1157,7 @@ dependencies = [
+  "phf 0.10.1",
+  "proc-macro2",
+  "quote",
+- "smallvec 1.15.1",
++ "smallvec",
+  "syn 1.0.109",
+ ]
+ 
+@@ -2139,7 +2136,7 @@ version = "1.1.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "1bd49230192a3797a9a4d6abe9b3eed6f7fa4c8a8a4947977c6f80025f92cbd8"
+ dependencies = [
+- "rustix 1.1.3",
++ "rustix",
+  "windows-link 0.2.1",
+ ]
+ 
+@@ -2205,7 +2202,7 @@ dependencies = [
+  "libc",
+  "once_cell",
+  "pin-project-lite",
+- "smallvec 1.15.1",
++ "smallvec",
+  "thiserror 1.0.69",
+ ]
+ 
+@@ -2241,7 +2238,7 @@ dependencies = [
+  "libc",
+  "memchr",
+  "once_cell",
+- "smallvec 1.15.1",
++ "smallvec",
+  "thiserror 1.0.69",
+ ]
+ 
+@@ -2551,13 +2548,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
+ 
+ [[package]]
+-name = "home"
+-version = "0.5.12"
++name = "hmac-sha256"
++version = "1.1.14"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "cc627f471c528ff0c4a49e1d5e60450c8f6461dd6d10ba9dcd3a61d3dff7728d"
+-dependencies = [
+- "windows-sys 0.61.2",
+-]
++checksum = "ec9d92d097f4749b64e8cc33d924d9f40a2d4eb91402b458014b781f5733d60f"
+ 
+ [[package]]
+ name = "hound"
+@@ -2645,7 +2639,7 @@ dependencies = [
+  "itoa",
+  "pin-project-lite",
+  "pin-utils",
+- "smallvec 1.15.1",
++ "smallvec",
+  "tokio",
+  "want",
+ ]
+@@ -2777,7 +2771,7 @@ dependencies = [
+  "icu_normalizer_data",
+  "icu_properties",
+  "icu_provider",
+- "smallvec 1.15.1",
++ "smallvec",
+  "zerovec",
+ ]
+ 
+@@ -2841,7 +2835,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "3b0875f23caa03898994f6ddc501886a45c7d3d62d04d2d90788d47be1b1e4de"
+ dependencies = [
+  "idna_adapter",
+- "smallvec 1.15.1",
++ "smallvec",
+  "utf8_iter",
+ ]
+ 
+@@ -3111,12 +3105,6 @@ version = "1.5.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe"
+ 
+-[[package]]
+-name = "lazycell"
+-version = "1.3.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "830d08ce1d1d941e6b30645f1a0eb5643013d835ce3779a5fc208261dbe10f55"
+-
+ [[package]]
+ name = "leb128fmt"
+ version = "0.1.0"
+@@ -3201,12 +3189,6 @@ dependencies = [
+  "vcpkg",
+ ]
+ 
+-[[package]]
+-name = "linux-raw-sys"
+-version = "0.4.15"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d26c52dbd32dccf2d10cac7725f8eae5296885fb5703b261f7d0a0739ec807ab"
+-
+ [[package]]
+ name = "linux-raw-sys"
+ version = "0.11.0"
+@@ -3237,6 +3219,12 @@ dependencies = [
+  "value-bag",
+ ]
+ 
++[[package]]
++name = "lzma-rust2"
++version = "0.15.7"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "1670343e58806300d87950e3401e820b519b9384281bbabfb15e3636689ffd69"
++
+ [[package]]
+ name = "mac"
+ version = "0.1.1"
+@@ -3456,9 +3444,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "ndarray"
+-version = "0.16.1"
++version = "0.17.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "882ed72dce9365842bf196bdeedf5055305f11fc8c03dee7bb0194a6cad34841"
++checksum = "520080814a7a6b4a6e9070823bb24b4531daac8c4627e08ba5de8c5ef2f2752d"
+ dependencies = [
+  "matrixmultiply",
+  "num-complex",
+@@ -4055,26 +4043,25 @@ dependencies = [
+ 
+ [[package]]
+ name = "ort"
+-version = "2.0.0-rc.10"
++version = "2.0.0-rc.12"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "1fa7e49bd669d32d7bc2a15ec540a527e7764aec722a45467814005725bcd721"
++checksum = "d7de3af33d24a745ffb8fab904b13478438d1cd52868e6f17735ef6e1f8bf133"
+ dependencies = [
+  "ndarray",
+  "ort-sys",
+- "smallvec 2.0.0-alpha.10",
++ "smallvec",
+  "tracing",
++ "ureq",
+ ]
+ 
+ [[package]]
+ name = "ort-sys"
+-version = "2.0.0-rc.10"
++version = "2.0.0-rc.12"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e2aba9f5c7c479925205799216e7e5d07cc1d4fa76ea8058c60a9a30f6a4e890"
++checksum = "d7b497d21a8b6fbb4b5a544f8fadb77e801a09ae0add9e411d31c6f89e3c1e90"
+ dependencies = [
+- "flate2",
+- "pkg-config",
+- "sha2",
+- "tar",
++ "hmac-sha256",
++ "lzma-rust2",
+  "ureq",
+ ]
+ 
+@@ -4168,7 +4155,7 @@ dependencies = [
+  "cfg-if",
+  "libc",
+  "redox_syscall 0.5.18",
+- "smallvec 1.15.1",
++ "smallvec",
+  "windows-link 0.2.1",
+ ]
+ 
+@@ -4428,7 +4415,7 @@ dependencies = [
+  "concurrent-queue",
+  "hermit-abi",
+  "pin-project-lite",
+- "rustix 1.1.3",
++ "rustix",
+  "windows-sys 0.61.2",
+ ]
+ 
+@@ -5061,7 +5048,7 @@ dependencies = [
+  "fallible-streaming-iterator",
+  "hashlink",
+  "libsqlite3-sys",
+- "smallvec 1.15.1",
++ "smallvec",
+ ]
+ 
+ [[package]]
+@@ -5102,9 +5089,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "rustc-hash"
+-version = "1.1.0"
++version = "2.1.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "08d43f7aa6b08d49f382cde6a7982047c3426db949b1424bc4b7ec9ae12c6ce2"
++checksum = "357703d41365b4b27c590e3ed91eabb1b663f07c4c084095e60cbed4362dff0d"
+ 
+ [[package]]
+ name = "rustc_version"
+@@ -5129,19 +5116,6 @@ dependencies = [
+  "transpose",
+ ]
+ 
+-[[package]]
+-name = "rustix"
+-version = "0.38.44"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fdb5bc1ae2baa591800df16c9ca78619bf65c0488b41b96ccec5d11220d8c154"
+-dependencies = [
+- "bitflags 2.11.0",
+- "errno",
+- "libc",
+- "linux-raw-sys 0.4.15",
+- "windows-sys 0.59.0",
+-]
+-
+ [[package]]
+ name = "rustix"
+ version = "1.1.3"
+@@ -5151,7 +5125,7 @@ dependencies = [
+  "bitflags 2.11.0",
+  "errno",
+  "libc",
+- "linux-raw-sys 0.11.0",
++ "linux-raw-sys",
+  "windows-sys 0.61.2",
+ ]
+ 
+@@ -5359,7 +5333,7 @@ dependencies = [
+  "phf_codegen 0.8.0",
+  "precomputed-hash",
+  "servo_arc",
+- "smallvec 1.15.1",
++ "smallvec",
+ ]
+ 
+ [[package]]
+@@ -5615,12 +5589,6 @@ version = "1.15.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03"
+ 
+-[[package]]
+-name = "smallvec"
+-version = "2.0.0-alpha.10"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "51d44cfb396c3caf6fbfd0ab422af02631b69ddd96d2eff0b0f0724f9024051b"
+-
+ [[package]]
+ name = "socket2"
+ version = "0.6.2"
+@@ -6654,7 +6622,7 @@ dependencies = [
+  "fastrand",
+  "getrandom 0.4.1",
+  "once_cell",
+- "rustix 1.1.3",
++ "rustix",
+  "windows-sys 0.61.2",
+ ]
+ 
+@@ -7023,9 +6991,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "transcribe-rs"
+-version = "0.3.1"
++version = "0.3.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "a74103eb9d8148a277bcf0a4f0e8fb8c08a624e7daf39d1b255af190927c3040"
++checksum = "d4e2b882795f8cee1a97e70bb8f4265bc159b786421ee525a372ccc6bf990fce"
+ dependencies = [
+  "base64 0.22.1",
+  "derive_builder",
+@@ -7279,8 +7247,8 @@ dependencies = [
+ 
+ [[package]]
+ name = "vad-rs"
+-version = "0.1.5"
+-source = "git+https://github.com/cjpais/vad-rs#88b3a01f72f83a5d80d0e7ea9bacfc0d897fd03f"
++version = "0.1.6"
++source = "git+https://github.com/cjpais/vad-rs#2a412ed858695b9251f3f5a1a20d95b59fa7c498"
+ dependencies = [
+  "eyre",
+  "ndarray",
+@@ -7553,8 +7521,8 @@ checksum = "fee64194ccd96bf648f42a65a7e589547096dfa702f7cadef84347b66ad164f9"
+ dependencies = [
+  "cc",
+  "downcast-rs",
+- "rustix 1.1.3",
+- "smallvec 1.15.1",
++ "rustix",
++ "smallvec",
+  "wayland-sys",
+ ]
+ 
+@@ -7565,7 +7533,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "b8e6faa537fbb6c186cb9f1d41f2f811a4120d1b57ec61f50da451a0c5122bec"
+ dependencies = [
+  "bitflags 2.11.0",
+- "rustix 1.1.3",
++ "rustix",
+  "wayland-backend",
+  "wayland-scanner",
+ ]
+@@ -7720,37 +7688,27 @@ version = "0.1.12"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "a28ac98ddc8b9274cb41bb4d9d4d5c425b6020c50c46f25559911905610b4a88"
+ 
+-[[package]]
+-name = "which"
+-version = "4.4.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "87ba24419a2078cd2b0f2ede2691b6c66d8e47836da3b6db8265ebad47afbfc7"
+-dependencies = [
+- "either",
+- "home",
+- "once_cell",
+- "rustix 0.38.44",
+-]
+-
+ [[package]]
+ name = "whisper-rs"
+-version = "0.13.2"
++version = "0.16.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "40b6fc553156b521663bfa8e713e7ad58c7ca262d46de9998cd7f2e4de5ba0d9"
++checksum = "2088172d00f936c348d6a72f488dc2660ab3f507263a195df308a3c2383229f6"
+ dependencies = [
++ "libc",
+  "whisper-rs-sys",
+ ]
+ 
+ [[package]]
+ name = "whisper-rs-sys"
+-version = "0.11.1"
++version = "0.15.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "76bab42b2c319e3a1e0280137c59368072348d3277873c7588b6466a127dca58"
++checksum = "6986c0fe081241d391f09b9a071fbcbb59720c3563628c3c829057cf69f2a56f"
+ dependencies = [
+  "bindgen",
+  "cfg-if",
+  "cmake",
+  "fs_extra",
++ "semver",
+ ]
+ 
+ [[package]]
+@@ -8484,7 +8442,7 @@ dependencies = [
+  "libc",
+  "log",
+  "os_pipe",
+- "rustix 1.1.3",
++ "rustix",
+  "thiserror 2.0.18",
+  "tree_magic_mini",
+  "wayland-backend",
+@@ -8581,7 +8539,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "9993aa5be5a26815fe2c3eacfc1fde061fc1a1f094bf1ad2a18bf9c495dd7414"
+ dependencies = [
+  "gethostname",
+- "rustix 1.1.3",
++ "rustix",
+  "x11rb-protocol",
+ ]
+ 
+@@ -8598,7 +8556,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "32e45ad4206f6d2479085147f02bc2ef834ac85886624a23575ae137c8aa8156"
+ dependencies = [
+  "libc",
+- "rustix 1.1.3",
++ "rustix",
+ ]
+ 
+ [[package]]
+@@ -8663,7 +8621,7 @@ dependencies = [
+  "hex",
+  "libc",
+  "ordered-stream",
+- "rustix 1.1.3",
++ "rustix",
+  "serde",
+  "serde_repr",
+  "tracing",
+diff --git a/src-tauri/Cargo.toml b/src-tauri/Cargo.toml
+index 98c2a0835..7577b7715 100644
+--- a/src-tauri/Cargo.toml
++++ b/src-tauri/Cargo.toml
+@@ -68,7 +68,7 @@ chrono = "0.4"
+ rusqlite = { version = "0.37", features = ["bundled"] }
+ tar = "0.4.44"
+ flate2 = "1.0"
+-transcribe-rs = { version = "0.3.1", features = ["whisper", "onnx"] }
++transcribe-rs = { version = "0.3.2", features = ["whisper-cpp", "onnx"] }
+ handy-keys = "0.2.4"
+ ferrous-opencc = "0.2.3"
+ clap = { version = "4", features = ["derive"] }
+@@ -87,7 +87,7 @@ tauri-plugin-single-instance = "2.3.2"
+ tauri-plugin-updater = "2.10.0"
+ 
+ [target.'cfg(windows)'.dependencies]
+-transcribe-rs = { version = "0.3.1", features = ["ort-directml"] }
++transcribe-rs = { version = "0.3.2", features = ["whisper-vulkan", "ort-directml"] }
+ windows = { version = "0.61.3", features = [
+   "Win32_Media_Audio_Endpoints",
+   "Win32_System_Com_StructuredStorage",
+@@ -99,10 +99,12 @@ winreg = "0.55"
+ 
+ [target.'cfg(target_os = "macos")'.dependencies]
+ tauri-nspanel = { git = "https://github.com/ahkohd/tauri-nspanel", branch = "v2.1" }
++transcribe-rs = { version = "0.3.2", features = ["whisper-metal"] }
+ 
+ [target.'cfg(target_os = "linux")'.dependencies]
+ gtk-layer-shell = { version = "0.8", features = ["v0_6"] }
+ gtk = "0.18"
++transcribe-rs = { version = "0.3.2", features = ["whisper-vulkan"] }
+ 
+ [patch.crates-io]
+ tauri-runtime = { git = "https://github.com/cjpais/tauri.git", branch = "handy-2.10.2" }
+diff --git a/src-tauri/src/managers/transcription.rs b/src-tauri/src/managers/transcription.rs
+index 928ef06e3..4273ed7cb 100644
+--- a/src-tauri/src/managers/transcription.rs
++++ b/src-tauri/src/managers/transcription.rs
+@@ -196,7 +196,7 @@ impl TranscriptionManager {
+ 
+         {
+             let mut engine = self.lock_engine();
+-            // v0.3.0: no explicit unload — dropping the engine frees all resources
++            // Dropping the engine frees all resources
+             *engine = None;
+         }
+         {
+@@ -285,19 +285,23 @@ impl TranscriptionManager {
+         let model_path = self.model_manager.get_model_path(model_id)?;
+ 
+         // Create appropriate engine based on model type
++        let emit_loading_failed = |error_msg: &str| {
++            let _ = self.app_handle.emit(
++                "model-state-changed",
++                ModelStateEvent {
++                    event_type: "loading_failed".to_string(),
++                    model_id: Some(model_id.to_string()),
++                    model_name: Some(model_info.name.clone()),
++                    error: Some(error_msg.to_string()),
++                },
++            );
++        };
++
+         let loaded_engine = match model_info.engine_type {
+             EngineType::Whisper => {
+                 let engine = WhisperEngine::load(&model_path).map_err(|e| {
+                     let error_msg = format!("Failed to load whisper model {}: {}", model_id, e);
+-                    let _ = self.app_handle.emit(
+-                        "model-state-changed",
+-                        ModelStateEvent {
+-                            event_type: "loading_failed".to_string(),
+-                            model_id: Some(model_id.to_string()),
+-                            model_name: Some(model_info.name.clone()),
+-                            error: Some(error_msg.clone()),
+-                        },
+-                    );
++                    emit_loading_failed(&error_msg);
+                     anyhow::anyhow!(error_msg)
+                 })?;
+                 LoadedEngine::Whisper(engine)
+@@ -307,15 +311,7 @@ impl TranscriptionManager {
+                     ParakeetModel::load(&model_path, &Quantization::Int8).map_err(|e| {
+                         let error_msg =
+                             format!("Failed to load parakeet model {}: {}", model_id, e);
+-                        let _ = self.app_handle.emit(
+-                            "model-state-changed",
+-                            ModelStateEvent {
+-                                event_type: "loading_failed".to_string(),
+-                                model_id: Some(model_id.to_string()),
+-                                model_name: Some(model_info.name.clone()),
+-                                error: Some(error_msg.clone()),
+-                            },
+-                        );
++                        emit_loading_failed(&error_msg);
+                         anyhow::anyhow!(error_msg)
+                     })?;
+                 LoadedEngine::Parakeet(engine)
+@@ -328,15 +324,7 @@ impl TranscriptionManager {
+                 )
+                 .map_err(|e| {
+                     let error_msg = format!("Failed to load moonshine model {}: {}", model_id, e);
+-                    let _ = self.app_handle.emit(
+-                        "model-state-changed",
+-                        ModelStateEvent {
+-                            event_type: "loading_failed".to_string(),
+-                            model_id: Some(model_id.to_string()),
+-                            model_name: Some(model_info.name.clone()),
+-                            error: Some(error_msg.clone()),
+-                        },
+-                    );
++                    emit_loading_failed(&error_msg);
+                     anyhow::anyhow!(error_msg)
+                 })?;
+                 LoadedEngine::Moonshine(engine)
+@@ -348,15 +336,7 @@ impl TranscriptionManager {
+                             "Failed to load moonshine streaming model {}: {}",
+                             model_id, e
+                         );
+-                        let _ = self.app_handle.emit(
+-                            "model-state-changed",
+-                            ModelStateEvent {
+-                                event_type: "loading_failed".to_string(),
+-                                model_id: Some(model_id.to_string()),
+-                                model_name: Some(model_info.name.clone()),
+-                                error: Some(error_msg.clone()),
+-                            },
+-                        );
++                        emit_loading_failed(&error_msg);
+                         anyhow::anyhow!(error_msg)
+                     })?;
+                 LoadedEngine::MoonshineStreaming(engine)
+@@ -366,15 +346,7 @@ impl TranscriptionManager {
+                     SenseVoiceModel::load(&model_path, &Quantization::Int8).map_err(|e| {
+                         let error_msg =
+                             format!("Failed to load SenseVoice model {}: {}", model_id, e);
+-                        let _ = self.app_handle.emit(
+-                            "model-state-changed",
+-                            ModelStateEvent {
+-                                event_type: "loading_failed".to_string(),
+-                                model_id: Some(model_id.to_string()),
+-                                model_name: Some(model_info.name.clone()),
+-                                error: Some(error_msg.clone()),
+-                            },
+-                        );
++                        emit_loading_failed(&error_msg);
+                         anyhow::anyhow!(error_msg)
+                     })?;
+                 LoadedEngine::SenseVoice(engine)
+@@ -382,15 +354,7 @@ impl TranscriptionManager {
+             EngineType::GigaAM => {
+                 let engine = GigaAMModel::load(&model_path, &Quantization::Int8).map_err(|e| {
+                     let error_msg = format!("Failed to load gigaam model {}: {}", model_id, e);
+-                    let _ = self.app_handle.emit(
+-                        "model-state-changed",
+-                        ModelStateEvent {
+-                            event_type: "loading_failed".to_string(),
+-                            model_id: Some(model_id.to_string()),
+-                            model_name: Some(model_info.name.clone()),
+-                            error: Some(error_msg.clone()),
+-                        },
+-                    );
++                    emit_loading_failed(&error_msg);
+                     anyhow::anyhow!(error_msg)
+                 })?;
+                 LoadedEngine::GigaAM(engine)
+@@ -398,15 +362,7 @@ impl TranscriptionManager {
+             EngineType::Canary => {
+                 let engine = CanaryModel::load(&model_path, &Quantization::Int8).map_err(|e| {
+                     let error_msg = format!("Failed to load canary model {}: {}", model_id, e);
+-                    let _ = self.app_handle.emit(
+-                        "model-state-changed",
+-                        ModelStateEvent {
+-                            event_type: "loading_failed".to_string(),
+-                            model_id: Some(model_id.to_string()),
+-                            model_name: Some(model_info.name.clone()),
+-                            error: Some(error_msg.clone()),
+-                        },
+-                    );
++                    emit_loading_failed(&error_msg);
+                     anyhow::anyhow!(error_msg)
+                 })?;
+                 LoadedEngine::Canary(engine)
+diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
+index 4bd3863e2..d021d6a2e 100644
+--- a/src-tauri/tauri.conf.json
++++ b/src-tauri/tauri.conf.json
+@@ -39,7 +39,7 @@
+     "macOS": {
+       "files": {},
+       "hardenedRuntime": true,
+-      "minimumSystemVersion": "10.13",
++      "minimumSystemVersion": "10.15",
+       "signingIdentity": "-",
+       "entitlements": "Entitlements.plist"
+     },

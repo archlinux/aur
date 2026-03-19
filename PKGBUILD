@@ -1,8 +1,8 @@
 # Maintainer: Julien Virey <julien.virey@gmail.com>
 pkgname=handy
-pkgver=0.7.11
+pkgver=0.7.12
 # git rev-parse "v$pkgver"
-_tag=d1da935479b57529eecdc04345414fe055d42d0a
+_tag=cb32d35b9ea4b087ee0e0531eac103b43979e9b3
 pkgrel=1
 pkgdesc="Open source and extensible speech-to-text application that works completely offline"
 arch=(x86_64 aarch64)
@@ -45,11 +45,18 @@ optdepends=(
 
 source=(
   "$pkgname-$pkgver::git+$url.git#tag=$_tag"
+  a3015026a051bff5d7aacf3ddf181b1c480c4502.patch
   Handy.desktop
 )
 conflicts=("$pkgname-bin")
-sha256sums=('1af56389ffd7f1402f225cb1a81f40b2c9acae40ce37be7f09e828f8f93b5d5f'
+sha256sums=('34c456ee2fb901fab9232839a80eae543232da2deff8721c12fab019b4621050'
+            '8486bccff203cb72f80b490e1a1140c5f33d674c439666ab3731664a37a3aa46'
             'a0b1b93e21d18adcb6d5f58e3c818bd797cae57b865ae0d6769298876e7103dc')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch -p1 < ../a3015026a051bff5d7aacf3ddf181b1c480c4502.patch
+}
 
 build() {
   cd "$pkgname-$pkgver"
