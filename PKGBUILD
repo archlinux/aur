@@ -26,7 +26,8 @@ build() {
   export RELAY_RELEASE=$pkgver
   unset CFLAGS
   unset LDFLAGS
-  cargo build --release --locked --features ssl,processing
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
+  cargo build --frozen --release
 }
 
 package() {
