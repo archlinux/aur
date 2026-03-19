@@ -1,7 +1,7 @@
 # Maintainer: purpleleaf <max@ganoia.eu>
 
 pkgname=pmt2e-git
-pkgver=1.0.r117.8f0d53b
+pkgver=1.0.r118.716e9c5
 pkgrel=1
 pkgdesc="PoorMan Tint2 Executor - bash scripts tools for panels (Update, Weather, Volume, etc.)"
 arch=('any')
@@ -38,10 +38,13 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/pmt2e"
 
+
   # Copiamo i file rispettando i percorsi del tuo GitHub
   # Puntiamo a usr/bin/ e usr/share/pmt2e/ che esistono nel tuo repo
   cp -r usr/bin/* "$pkgdir/usr/bin/"
   cp -r usr/share/pmt2e/* "$pkgdir/usr/share/pmt2e/"
+
+  install -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Permessi: eseguibili per i binari, lettura per il resto
   chmod 755 "$pkgdir"/usr/bin/*
