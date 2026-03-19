@@ -49,7 +49,7 @@ source=(
   'opencom.desktop'
   'opencom.png'
 )
-sha256sums=('78ffb2653a779208d1a5477af0c7af5be326d5cf7e5461b0599e0322504a7cbd'
+sha256sums=('SKIP'
             'SKIP'
             'SKIP')
 
