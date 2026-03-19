@@ -1,15 +1,20 @@
 post_install() {
 	udevadm control --reload-rules
+	systemctl daemon-reload
+	systemctl enable --now openlinkhub.service
 	echo -e "\e[1;7m[OpenLinkHub]\e[0m: \e[92mInstall Complete\e[0m "
 	echo -e "\e[1;7m[OpenLinkHub]\e[0m: WebUI-> \e[1;7mhttp://127.0.0.1:27003\e[0m"
 	echo -e "\e[1;7m[OpenLinkHub]\e[0m: Start Service: \e[92msudo systemctl enable --now openlinkhub\e[0m"
 }
 
 pre_upgrade() {
-	systemctl disable --now openlinkhub
+	systemctl disable --now openlinkhub.service
 }
 
 post_upgrade() {
+	udevadm control --reload-rules
+	systemctl daemon-reload
+	systemctl restart openlinkhub.service
 	echo -e "\e[1;7m[OpenLinkHub]\e[0m: \e[92mUpgrade Complete\e[0m"
 	echo -e "\e[1;7m[OpenLinkHub]\e[0m: WebUI-> \e[1;7mhttp://127.0.0.1:27003\e[0m"
 	echo -e "\e[1;7m[OpenLinkHub]\e[0m: Restart Service: \e[92msudo systemctl restart openlinkhub\e[0m"
