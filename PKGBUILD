@@ -2,7 +2,7 @@
 pkgname=sglang-git
 _pkgname=sglang
 pkgver=r0
-pkgrel=2
+pkgrel=3
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('any')
 url='https://github.com/sgl-project/sglang'
@@ -76,7 +76,7 @@ build() {
   cp pyproject_other.toml pyproject.toml
   rm -rf build dist *.egg-info
   # Use latest upstream tag for Python version (pkgver format isn't PEP 440)
-  export SETUPTOOLS_SCM_PRETEND_VERSION="$(git describe --tags --abbrev=0 | sed 's/^v//')"
+  export SETUPTOOLS_SCM_PRETEND_VERSION="$(git tag -l 'v[0-9]*' --sort=-v:refname | head -1 | sed 's/^v//')"
   python -m build --wheel --no-isolation
 }
 
