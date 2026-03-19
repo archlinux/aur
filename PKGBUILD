@@ -11,7 +11,7 @@ provides=("${_pkgname}=${pkgver}")
 makedepends=("gcc" "unzip")
 depends=("libx11")
 source=("http://www.ke5fx.com/heather/heatherx11.zip")
-md5sums=("c2994e5d375b907259a8668d6e39af45")
+md5sums=("7b16c8b83a1ca7b38be5fc8f1224e3a5")
 
 build() {
   unzip -n "${srcdir}/heatherx11.zip"
