@@ -1,4 +1,4 @@
-pkgbase = wingide-pro
+pkgbase = wingide
 	pkgdesc = Wing IDE Professional is a full-featured Python IDE for professional programmers.
 	pkgver = 11.1.0.0
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = wingide-pro
 	source = https://wingware.com/pub/wingpro/11.1.0.0/wingpro-11.1.0.0-linux-x64.tar.bz2
 	sha256sums = SKIP
 
-pkgname = wingide-pro
+pkgname = wingide

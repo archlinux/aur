@@ -1,7 +1,7 @@
 # Maintainer: c3rt1fiedd <slitchio0@gmail.com>
 # Last Packager: Grey Christoforo
 
-pkgname=wingide-pro
+pkgname=wingide
 pkgver=11.1.0.0
 pkgrel=1
 pkgdesc="Wing IDE Professional is a full-featured Python IDE for professional programmers."
