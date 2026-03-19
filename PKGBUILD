@@ -43,7 +43,7 @@ source=("${_reponame}-${pkgver}.tar.xz::https://github.com/godotengine/${_repona
 b2sums=('8cfc477472d224579b525a36df98f5cc7616b66e9ba4fc943753351cc6093bd0c7f542916cc26ddb625bbbbb8de850015b72610af05df443ec8c0a3c2e03ff3f')
 
 prepare() {
-    cd "${_reponame}-${pkgver}-stable"
+    cd "$_reponame-$pkgver-stable"
 
     # Patch for miniupnpc
     sed -i 's/addr, 16/addr, 16, nullptr, 0/g' modules/upnp/upnp.cpp
@@ -56,7 +56,7 @@ prepare() {
 }
 
 build() {
-    cd "${_reponame}-${pkgver}-stable"
+    cd "$_reponame-$pkgver-stable"
 
     export BUILD_NAME=arch_linux
 
@@ -70,10 +70,10 @@ build() {
 
     _args=(
         -j$(nproc --all)
-        cflags="${CFLAGS} -fPIC -Wl,-z,relro,-z,now -w"
-        cxxflags="${CXXFLAGS} -fPIC -Wl,-z,relro,-z,now -w"
-        linkflags="${LDFLAGS}"
-        arch=${_godot_arch}
+        cflags="$CFLAGS -fPIC -Wl,-z,relro,-z,now -w"
+        cxxflags="$CXXFLAGS -fPIC -Wl,-z,relro,-z,now -w"
+        linkflags="$LDFLAGS"
+        arch=$_godot_arch
         bits=32 # Ensure 32-bit binary.
         builtin_brotli=no
         builtin_certs=no
@@ -121,21 +121,21 @@ build() {
 }
 
 package() {
-    cd "${_reponame}-${pkgver}-stable"
+    cd "$_reponame-$pkgver-stable"
 
-    install -Dm755 bin/godot.linuxbsd.editor.${_godot_arch} "${pkgdir}/usr/bin/godot32"
+    install -Dm755 bin/godot.linuxbsd.editor.$_godot_arch "$pkgdir/usr/bin/godot32"
 
-    install -Dm644 icon.svg "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
-    install -Dm644 misc/dist/linux/org.godotengine.Godot.desktop "${pkgdir}/usr/share/applications/org.godotengine.Godot32.desktop"
-    install -Dm644 misc/dist/linux/org.godotengine.Godot.xml "${pkgdir}/usr/share/mime/packages/org.godotengine.Godot32.xml"
+    install -Dm644 icon.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+    install -Dm644 misc/dist/linux/org.godotengine.Godot.desktop "$pkgdir/usr/share/applications/org.godotengine.Godot32.desktop"
+    install -Dm644 misc/dist/linux/org.godotengine.Godot.xml "$pkgdir/usr/share/mime/packages/org.godotengine.Godot32.xml"
 
     # Patch upstream Godot.desktop
     sed -i \
         -e 's|Exec=godot|Exec=godot32|' \
         -e 's|Icon=godot|Icon=godot32|' \
         -e 's|Name=Godot Engine|Name=Godot Engine (32-bit)|' \
-        "${pkgdir}/usr/share/applications/org.godotengine.Godot32.desktop"
+        "$pkgdir/usr/share/applications/org.godotengine.Godot32.desktop"
 
-    install -Dm644 misc/dist/linux/godot.6 "${pkgdir}/usr/share/man/man6/${pkgname}.6"
-    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 misc/dist/linux/godot.6 "$pkgdir/usr/share/man/man6/$pkgname.6"
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
