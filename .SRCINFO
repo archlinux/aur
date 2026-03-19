@@ -1,0 +1,36 @@
+pkgbase = anotherim-desktop-git
+	pkgdesc = AnotherIM Desktop - a modern XMPP/Jabber client, fork of Dino+
+	pkgver = v0.5.104.r0.g466dfcec
+	pkgrel = 1
+	url = https://dev.narayana.im/anotherim/anotherim-desktop
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = vala
+	makedepends = ninja
+	depends = glib2
+	depends = glib-networking
+	depends = gtk4
+	depends = gpgme
+	depends = libgee
+	depends = libgcrypt
+	depends = libsoup
+	depends = sqlite
+	depends = qrencode
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugin-gtk
+	depends = libnice
+	depends = libsrtp
+	depends = libadwaita
+	depends = libcanberra
+	provides = anotherim-desktop
+	conflicts = dino
+	conflicts = dino-plus
+	conflicts = dino-plus-git
+	conflicts = dino-git
+	source = anotherim-desktop-git::git+https://dev.narayana.im/anotherim/anotherim-desktop.git#branch=dev
+	sha256sums = SKIP
+
+pkgname = anotherim-desktop-git
