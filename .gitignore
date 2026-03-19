@@ -1,7 +1,10 @@
-Cider/
-pkg/
-src/
-*.pkg.tar.zst
-*.tar.gz
-clean.sh
-.shellcheckrc
+*
+!PKGBUILD
+!.SRCINFO
+!*.install
+!.gitignore
+!LICENSE
+!LICENSES/
+!LICENSES/**
+!REUSE.toml
+!.nvchecker.toml

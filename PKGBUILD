@@ -3,7 +3,7 @@
 
 pkgname=cider
 pkgver=1.6.3.20250909032549
-pkgrel=2
+pkgrel=3
 pkgdesc='An abandoned Apple Music player using a fork of Cider v1 from taoky/Cider'
 arch=('x86_64')
 url='https://github.com/taoky/Cider'
@@ -39,14 +39,25 @@ build() {
   cd Cider
   pnpm run build
   pnpm exec electron-builder --linux deb --publish=never
+
+  # Extract the deb file
+  bsdtar -xf ./dist/cider*_amd64.deb --include='data.tar*' -O | bsdtar -xf - -C "$srcdir"
+
+  # Add TOKEN environment variable to .desktop file
+  sed -i 's|Exec=/opt/Cider/sh.cider.Cider|Exec=env TOKEN=none CIDER_PORT=9000 /usr/bin/cider|' "$srcdir/usr/share/applications/sh.cider.Cider.desktop"
+
+  # Modify apparmor-profile to include cider link
+  sed -i 's|"/opt/Cider/sh.cider.Cider"|("/opt/Cider/sh.cider.Cider" "/usr/bin/cider")|' "$srcdir/opt/Cider/resources/apparmor-profile"
 }
 
 package() {
-  bsdtar -xf "$srcdir"/Cider/dist/cider*_amd64.deb --include='data.tar*' -O | bsdtar -xf - -C "$pkgdir"
-
+  # 1. CREATE BINARY LINK
   install -d "$pkgdir/usr/bin/"
-  ln -sf "$pkgdir/opt/Cider/sh.cider.Cider" "$pkgdir/usr/bin/cider"
+  ln -sf /opt/Cider/sh.cider.Cider "$pkgdir/usr/bin/cider"
 
-  # Add TOKEN environment variable to .desktop file
-  sed -i 's|Exec=|Exec=env TOKEN=none CIDER_PORT=9000 |' "$pkgdir/usr/share/applications/sh.cider.Cider.desktop"
+  # 2. COPY DEB FILES
+  cp -dr --no-preserve=ownership ./{opt,usr} "$pkgdir"
+
+  # 3. COPY APPARMOR PROFILE
+  install -Dm644 ./opt/Cider/resources/apparmor-profile "$pkgdir/etc/apparmor.d/cider"
 }

@@ -1,7 +1,7 @@
 pkgbase = cider
 	pkgdesc = An abandoned Apple Music player using a fork of Cider v1 from taoky/Cider
 	pkgver = 1.6.3.20250909032549
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/taoky/Cider
 	install = cider.install
 	arch = x86_64

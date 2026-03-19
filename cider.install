@@ -33,7 +33,7 @@ print_instructions(){
 ##  Then in the Exec line add the TOKEN value.
 ##  For example, if your token is eyJhbGciOiJFUz, then Exec line will be:
 ##
-##    Exec=env TOKEN=eyJhbGciOiJFUz CIDER_PORT=9000 /opt/Cider/sh.cider.Cider %U
+##    Exec=env TOKEN=eyJhbGciOiJFUz CIDER_PORT=9000 /usr/bin/cider %U
 ##
 ##  Cider uses port 9000 by default. To change, edit CIDER_PORT variable.
 ##
