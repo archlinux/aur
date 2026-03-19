@@ -1,0 +1,17 @@
+# Build artifacts
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.xz
+
+# Build tools
+.rustup/
+.cargo/
+
+# Local editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
