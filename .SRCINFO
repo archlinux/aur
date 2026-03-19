@@ -1,7 +1,7 @@
 pkgbase = sentry-relay
 	pkgdesc = Sentry relay
 	pkgver = 23.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/getsentry/relay
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,8 @@ pkgbase = sentry-relay
 	depends = zlib
 	depends = gcc-libs
 	source = git+https://github.com/getsentry/relay/#tag=23.3.1
+	source = sentry-relay.service
 	sha512sums = SKIP
+	sha512sums = 849b2fd41dad7f89b47fdba2729e83d92a6bfa63e9bd5507607d7c4cf498e051a14f07597f2cc6f415297ecb94a8619d21f370d2f38d04c5fa993e5c5d691cb6
 
 pkgname = sentry-relay

@@ -1,3 +1,6 @@
+# Maintainer: Amin Vakil <info AT aminvakil DOT com>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+
 pkgname=sentry-relay
 pkgver=23.3.1
 pkgrel=2
