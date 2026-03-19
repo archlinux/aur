@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=jm-desktop-bin
-pkgver=2.1.1
-_electronversion=38
+pkgver=2.1.2
+_electronversion=41
 pkgrel=1
 pkgdesc="A jm comic desktop app by react + electron.(Prebuilt version).一个禁漫的第三方客户端"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
     "${pkgname%-bin}-${pkgver}.zip::${url}/releases/download/v${pkgver}/${pkgname%-bin}-Linux-${pkgver}.zip"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('44f6d252ff99a47fa8245a08bead8131295b7a6499fc8e401c4c45375d052f52'
+sha256sums=('d39dbdf863bdd4e1021fb0bc48a44d26e48c1b35ad38c2b8776e8b7b1fb9102e'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -42,16 +42,24 @@ prepare() {
         --name="${pkgname%-bin}" \
         --exec="${pkgname%-bin} %U"
     asar e "${srcdir}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${srcdir}/resources/app.asar"
     sed -i -e "
         s/pi.getPath(\"exe\")/\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\'/g
         s/ti.getPath(\"exe\")/\'\/usr\/lib\/${pkgname%-bin}\/${pkgname%-bin}\'/g
     " "${srcdir}/app.asar.unpacked/dist-electron/main.js"
-    asar p  "${srcdir}/app.asar.unpacked"  "${srcdir}/app.asar"
+    asar p  "${srcdir}/app.asar.unpacked"  "${srcdir}/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     _icon_sizes=(16x16 32x32 48x48 64x64 128x128 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/app.asar.unpacked/dist/png/${_icons}.png" \
