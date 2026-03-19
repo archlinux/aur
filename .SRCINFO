@@ -1,6 +1,6 @@
 pkgbase = surge-bin
 	pkgdesc = An open-source terminal (TUI) download manager
-	pkgver = 0.7.1
+	pkgver = 0.7.2
 	pkgrel = 1
 	url = https://github.com/surge-downloader/surge
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = surge-bin
 	depends = glibc
 	provides = surge
 	conflicts = surge
-	source_x86_64 = surge-x86_64-0.7.1.tgz::https://github.com/surge-downloader/surge/releases/download/v0.7.1/surge_0.7.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 2f83c125b254181956eac03a90999d4f2263e50d2e2e54b0941b189d6ce8abb8
-	source_i686 = surge-i686-0.7.1.tgz::https://github.com/surge-downloader/surge/releases/download/v0.7.1/surge_0.7.1_linux_386.tar.gz
-	sha256sums_i686 = 19db2b2bfe9a6d685dba3a5a3184178eb99f0693f9ca2e83c357ecda57bfed79
-	source_aarch64 = surge-aarch64-0.7.1.tgz::https://github.com/surge-downloader/surge/releases/download/v0.7.1/surge_0.7.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = a2cf42e0e68bce16e3d82967d51526f353c230bad770cf9e383d2dc5ba7d870e
+	source_x86_64 = surge-x86_64-0.7.2.tgz::https://github.com/surge-downloader/surge/releases/download/v0.7.2/surge_0.7.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 79a34bde7b652519771b6cfeacd302a3d478383b89f5bd37bde530dd593d9179
+	source_i686 = surge-i686-0.7.2.tgz::https://github.com/surge-downloader/surge/releases/download/v0.7.2/surge_0.7.2_linux_386.tar.gz
+	sha256sums_i686 = 3813f10942dce08f3600ceb02ece68565bae754e9b07bf0fd2b615188ab24b19
+	source_aarch64 = surge-aarch64-0.7.2.tgz::https://github.com/surge-downloader/surge/releases/download/v0.7.2/surge_0.7.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = feb6755087f0137febfeee908090f2bd7dcd03328dee319ccf1eb0016b60cc9e
 
 pkgname = surge-bin
