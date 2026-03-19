@@ -1,7 +1,7 @@
 pkgbase = wingide-personal
 	pkgdesc = A free Python IDE designed for students and hobbyists. It omits many features found in Wing Pro.
 	pkgver = 11.1.0.0
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.wingware.com/
 	install = wingide-personal.install
 	arch = x86_64
