@@ -4,7 +4,7 @@
 : ${_build_debug_enabled:=false}
 
 pkgname=cloud-sql-proxy
-pkgver=2.21.1
+pkgver=2.21.2
 pkgrel=1
 pkgdesc='Cloud SQL Auth Proxy'
 arch=(x86_64)
@@ -19,7 +19,7 @@ if [[ ${_build_debug_enabled} == false ]]; then
   options+=(!debug)
 fi
 source=(${pkgname}::git+${url}.git#tag=v${pkgver})
-b2sums=('8abcdc9264bc605951d65fde707d15ddc0eaa1a6a34f037159403e78c4a25a8babb43ce6c48279a66bf4b2a210c8d3644f289554e891f4a5b7b2542ab60424b7')
+b2sums=('1acd275d353c92f0c5ec1d4bb75de8a8ec4d0966c62192708ee622597f2928c6f9459bd31aeb5346c696d5033318cb15d1790585256dba706d4a04d5b0a3e650')
 
 prepare() {
   cd ${pkgname}
@@ -27,6 +27,7 @@ prepare() {
   export GOFLAGS='-mod=readonly'
 
   rm -rf out
+
   go clean \
     -modcache
   go mod tidy -v
@@ -37,7 +38,7 @@ prepare() {
 build() {
   cd ${pkgname}
 
-  local _ldflags
+  local -a _ldflags
   _ldflags=(
     -X=main.versionString=v${pkgver}
     -linkmode=external
