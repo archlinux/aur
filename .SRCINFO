@@ -1,0 +1,25 @@
+pkgbase = qk4-git
+	pkgdesc = Remote control software for Elecraft K4 radio.
+	pkgver = rv0.5.0.beta.6.0.g5d68e84
+	pkgrel = 1
+	url = https://github.com/mikeg-dal/QK4
+	arch = any
+	license = GPL V3
+	makedepends = git
+	depends = base-devel
+	depends = cmake
+	depends = file
+	depends = patchelf
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-shadertools
+	depends = qt6-serialport
+	depends = opus
+	depends = hidapi
+	depends = openssl
+	depends = alsa-lib
+	depends = libpulse
+	source = git+https://github.com/mikeg-dal/QK4.git
+	sha256sums = SKIP
+
+pkgname = qk4-git
