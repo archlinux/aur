@@ -1,7 +1,7 @@
 pkgbase = noshmore
 	pkgdesc = an extended version of nosh, a minimal POSIX C shell.
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jstmaxlol/noshmore
 	arch = any
 	license = MIT
