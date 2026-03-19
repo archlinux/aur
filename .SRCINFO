@@ -1,0 +1,12 @@
+pkgbase = trae-cn
+	pkgdesc = trae-cn
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.trae.cn/ide/download
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+    source = https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.13343/linux/Trae%20CN-linux-x64.rpm
+
+pkgname = trae-cn
