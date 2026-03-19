@@ -1,8 +1,8 @@
 # Maintainer: KUHTOXO https://aur.archlinux.org/account/kuhtoxo
 
 pkgname=max-bin
-pkgver=26.7.0.49753
-pkgrel=2
+pkgver=26.9.0.51916
+pkgrel=1
 
 pkgdesc="MAX messenger."
 arch=("x86_64")
@@ -22,7 +22,7 @@ conflicts=("${pkgname%-bin}")
 
 source_x86_64=("https://download.max.ru/linux/rpm/el/9/${arch}/${_filename}")
 
-sha256sums_x86_64=('75c22da51625d4eaba9259643c32bfb756008015159abd85817ca5b32cd27936')
+sha256sums_x86_64=('ab79cd130fea34b87bc369b2121806db6d28bc3aae24252bb91bd8ce507a7220')
 
 package() {
     cp -a "${srcdir}/usr/"  "${pkgdir}/usr/"
