@@ -1,7 +1,7 @@
 # Maintainer: GrishMahat <grishmahat@gmail.com>
 
 pkgname=skycrypt
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="A lightweight desktop wrapper for SkyCrypt built with Rust and Tauri."
 arch=('x86_64')
@@ -30,7 +30,7 @@ makedepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('484b05942b6c52025638057a8f135aef54017bb962ed1b1e59ea2b015b1a277c')
+sha256sums=('8d5e9418f7d5dd30b7fe6720ccee9369afbca03af39c879a9368321c772b9cc7')
 
 build() {
   cd "${srcdir}/SkyCrypt-desktop-${pkgver}"
