@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "Hello Amit!"
+echo "This is my 1st package"
