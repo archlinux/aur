@@ -1,0 +1,21 @@
+pkgbase = wait-port
+	pkgdesc = Simple binary to wait for a port to open. Useful for docker-compose and general server side activities.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/dwmkerr/wait-port
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = nodejs
+	provides = wait-port
+	noextract = wait-port-1.1.0.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = wait-port-1.1.0.tgz::https://registry.npmjs.org/wait-port/-/wait-port-1.1.0.tgz
+	b2sums = 7273e3b6de31e6cbd8342808ae53fcaf2029e2e1e14001bee4156bf97ff5c49d3a51e291fbf3b4767d9cacf4feb39bf80393641cc4eaa86f4648b1572d63c718
+
+pkgname = wait-port
