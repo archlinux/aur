@@ -2,11 +2,11 @@
 # https://github.com/axpnet/aeroftp
 
 pkgname=aeroftp-bin
-pkgver=3.0.1
+pkgver=3.0.3
 pkgrel=1
-pkgdesc="Modern multi-protocol file client with AI, encryption and cloud storage (FTP, SFTP, WebDAV, S3, 22 protocols)"
+pkgdesc="Modern multi-protocol file client with AI, encryption and cloud storage (FTP, SFTP, WebDAV, S3, 23 protocols)"
 arch=('x86_64')
-url="https://github.com/axpnet/aeroftp"
+url="https://aeroftp.app"
 license=('GPL-3.0-or-later')
 depends=(
     'webkit2gtk-4.1'
@@ -28,29 +28,35 @@ optdepends=(
 provides=('aeroftp')
 conflicts=('aeroftp' 'aeroftp-git')
 options=('!strip' '!debug')
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/axpnet/aeroftp/releases/download/v${pkgver}/AeroFTP_${pkgver}_amd64.AppImage"
+# Use .deb instead of AppImage to avoid EGL_BAD_PARAMETER on some GPU drivers
+source=("${pkgname}-${pkgver}.deb::https://github.com/axpnet/aeroftp/releases/download/v${pkgver}/AeroFTP_${pkgver}_amd64.deb"
         "aeroftp.desktop"
         "aeroftp.png::https://raw.githubusercontent.com/axpnet/aeroftp/main/src-tauri/icons/128x128.png")
-sha256sums=('aeab8de36d9d3a58aa6ea37f4ef36140cc77cac408872fbddd46752dec34cbec'
+sha256sums=('f01114b6e36d60111bc41abed874f46a02b692946a9212f2d05fdd8d28f977b4'
             'cb8a1a0ad00c587fba5ab64e3c8d50ea8391b7a170ae83172a9dddcc6dd829a0'
             '2ccf82e6bfdf22ec5a8d0735acf1e02bd00c44cb4ffab3895d46dc941c4a7cb6')
-noextract=("${pkgname}-${pkgver}.AppImage")
 
 package() {
-    # Install AppImage
-    install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/aeroftp/aeroftp.AppImage"
+    # Extract .deb package (contains native binaries, no AppImage wrapper)
+    cd "${srcdir}"
+    bsdtar -xf data.tar.* -C "${pkgdir}/"
 
-    # Create launcher script
+    # Create launcher script with WebKitGTK workarounds
     install -dm755 "${pkgdir}/usr/bin"
+    # The .deb installs the binary directly to /usr/bin/aeroftp
+    # Wrap it with WebKitGTK environment variables
+    if [ -f "${pkgdir}/usr/bin/aeroftp" ]; then
+        mv "${pkgdir}/usr/bin/aeroftp" "${pkgdir}/usr/bin/aeroftp.bin"
+    fi
     cat > "${pkgdir}/usr/bin/aeroftp" << 'EOF'
 #!/bin/bash
-# AeroFTP launcher — WebKitGTK DMA-BUF workaround for Wayland/NVIDIA
+# AeroFTP launcher — WebKitGTK workarounds
 export WEBKIT_DISABLE_DMABUF_RENDERER=1
-exec /opt/aeroftp/aeroftp.AppImage "$@"
+exec /usr/bin/aeroftp.bin "$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/aeroftp"
 
-    # Desktop entry
+    # Desktop entry (override deb's if present)
     install -Dm644 "${srcdir}/aeroftp.desktop" "${pkgdir}/usr/share/applications/com.aeroftp.AeroFTP.desktop"
 
     # Icon
