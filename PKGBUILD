@@ -1,7 +1,8 @@
-# Maintainer: Jonathon Korhonen <first initial last name [at] alumni [dot] nmu [dot] edu>
+# Maintainer: c3rt1fiedd
+# Contributor: Jonathan Korhonen
 
 pkgname=wingide-personal
-pkgver=11.0.3.0
+pkgver=11.1.0.0
 pkgrel=0
 pkgdesc="A free Python IDE designed for students and hobbyists. It omits many features found in Wing Pro."
 arch=('x86_64')
@@ -10,7 +11,7 @@ license=('Custom')
 depends=('python')
 options=(!strip !emptydirs)
 source=("https://wingware.com/pub/wing-personal/$pkgver/wing-personal-$pkgver-linux-x64.tar.bz2")
-sha1sums=('a4c0f91d7eb9c3417819a3c2b248b13767a5914a')
+sha256sums=('f5c3a9c0f9abfbe62156b00be7793bca97542c5112d46f347e2db030cdf0ad81')
 install=wingide-personal.install
 
 prepare() {
