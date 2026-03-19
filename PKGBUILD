@@ -4,7 +4,7 @@ pkgname=openlinkhub-git
 _upstreamname=OpenLinkHub
 _binlocation=/usr/bin/"${pkgname%-*}"
 _applocation=/var/lib/"${pkgname%-*}"
-pkgver=0.7.2.r22.gce40695
+pkgver=0.8.0.r29.gad7a2c3
 pkgrel=1
 pkgdesc="Open source Linux interface for iCUE LINK Hub and other Corsair AIOs, Hubs. [Latest Commit - source]"
 arch=('x86_64')
@@ -43,7 +43,7 @@ pkgver() {
 
 build() {
 	cd "${pkgname%-*}"
-	go build .
+	CGO_CFLAGS_ALLOW='-fno-strict-overflow' go build .
 }
 
 package() {
