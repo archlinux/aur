@@ -1,6 +1,6 @@
 pkgbase = pnana
 	pkgdesc = A modern terminal text editor built with FTXUI, inspired by Nano, Micro, and Sublime Text
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/Cyxuan0311/pnana
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = pnana
 	depends = gcc-libs
 	depends = ftxui
 	provides = pnana
-	source = pnana-0.0.4.tgz::https://github.com/Cyxuan0311/pnana/archive/refs/tags/v0.0.4.tar.gz
-	sha256sums = c26074ade81e515f949432e81d22753fed114efe70e0edd906c4d143d651a7af
+	source = pnana-0.0.5.tgz::https://github.com/Cyxuan0311/pnana/archive/refs/tags/v0.0.5.tar.gz
+	sha256sums = aa2c12922c73c6e1702015a7e6b404678951a9a2d4714c6dbe70df0fb486f484
 
 pkgname = pnana
