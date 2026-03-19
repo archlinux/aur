@@ -7,8 +7,10 @@ url="https://feynarts.de/cuba/"
 license=(LGPL-3.0-or-later)
 makedepends=('make' 'automake' 'gcc')
 options=('staticlibs' '!lto')
-source=("https://feynarts.de/cuba/Cuba-$pkgver.tar.gz")
-sha256sums=('8d9f532fd2b9561da2272c156ef7be5f3960953e4519c638759f1b52fe03ed52')
+#source=("https://feynarts.de/cuba/Cuba-$pkgver.tar.gz")
+#sha256sums=('8d9f532fd2b9561da2272c156ef7be5f3960953e4519c638759f1b52fe03ed52')
+source=(Cuba-$pkgver::git+https://github.com/jschueller/cuba.git)
+sha256sums=(SKIP)
 
 prepare() {
   cd "$srcdir/Cuba-$pkgver"
