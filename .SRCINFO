@@ -1,19 +1,20 @@
 pkgbase = scorep
 	pkgdesc = Highly scalable and easy-to-use tool suite for profiling, event tracing, and online analysis of HPC applications.
-	pkgver = 9.1
+	pkgver = 9.4
 	pkgrel = 1
 	url = http://www.vi-hps.org/projects/score-p/
 	arch = i686
 	arch = x86_64
 	license = BSD
-	depends = cubew>=4.9
-	depends = cubelib>=4.9
+	depends = cubew>=4.9.1
+	depends = cubelib>=4.9.1
 	depends = openmpi
 	depends = otf2>=3.1.1
 	depends = opari2>=2.0.9
 	depends = gotcha>=1.0.8
+	depends = papi
 	options = staticlibs
-	source = http://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/scorep-9.1/scorep-9.1.tar.gz
-	sha256sums = a6593716e62c751937f3be78782bf09b3737a68c46cdbeabec7cff80d2fdc7c8
+	source = http://perftools.pages.jsc.fz-juelich.de/cicd/scorep/tags/scorep-9.4/scorep-9.4.tar.gz
+	sha256sums = bea58d8c47a7512eca0a5858179377f3f0861f30eafb342a29aa97c05de8f623
 
 pkgname = scorep
