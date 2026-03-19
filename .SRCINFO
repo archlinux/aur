@@ -1,6 +1,6 @@
 pkgbase = fsel-bin
 	pkgdesc = Fast TUI app launcher and fuzzy finder for GNU/Linux and *BSD (prebuilt binary)
-	pkgver = 3.2.0
+	pkgver = 3.3.0
 	pkgrel = 1
 	url = https://github.com/Mjoyufull/fsel
 	arch = x86_64
@@ -8,12 +8,12 @@ pkgbase = fsel-bin
 	license = BSD-2-Clause
 	depends = glibc
 	depends = libgcc
-	provides = fsel=3.2.0
+	provides = fsel=3.3.0
 	conflicts = fsel
 	options = !strip
-	source_x86_64 = fsel-3.2.0-x86_64-unknown-linux-gnu.tar.xz::https://github.com/Mjoyufull/fsel/releases/download/3.2.0/fsel-x86_64-unknown-linux-gnu.tar.xz
-	sha256sums_x86_64 = de12adfc7117d5b93c41248eb2cf4a07d2a0474124d4727cc95bf6d79cdd7220
-	source_aarch64 = fsel-3.2.0-aarch64-unknown-linux-gnu.tar.xz::https://github.com/Mjoyufull/fsel/releases/download/3.2.0/fsel-aarch64-unknown-linux-gnu.tar.xz
-	sha256sums_aarch64 = 8c25fb40220e65570fb0b92d74b55f611d85451b83b1c1a88e977c00c60794fa
+	source_x86_64 = fsel-3.3.0-x86_64-unknown-linux-gnu.tar.xz::https://github.com/Mjoyufull/fsel/releases/download/3.3.0/fsel-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = d8c07ca128c908e3e7f5c91e48fb23cb79d52ec87bfde697517f9ff35595c776
+	source_aarch64 = fsel-3.3.0-aarch64-unknown-linux-gnu.tar.xz::https://github.com/Mjoyufull/fsel/releases/download/3.3.0/fsel-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = 22989d804ee0d37062af5a61a72e34b4d6d2ab1c6ce4335e26ba3a909d5d5b16
 
 pkgname = fsel-bin
