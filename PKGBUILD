@@ -1,6 +1,6 @@
 # Maintainer: Roland Rodriguez <roland@govcraft.ai>
 pkgname=bk-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Double-entry accounting on the command line — SQLCipher-encrypted, multi-tenant"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ conflicts=('bk')
 
 source_x86_64=("${url}/releases/download/beankeeper-cli-v${pkgver}/bk-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("${url}/releases/download/beankeeper-cli-v${pkgver}/bk-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
-sha256sums_x86_64=('892ec91df882f678c8ffb41b2cde03f6a253d347ec4703fad60c76f3a70d31a2')
-sha256sums_aarch64=('d055d96ed6cd862a2e1f5ee8db02e07b777d16b4df054e3e17e3010c00e16250')
+sha256sums_x86_64=('50fdeb7ff9776ef68b41e7267e0350f4f880955aadd6ec123c4d9f6cc1e993ff')
+sha256sums_aarch64=('64535e62990eaacfe50b6ebcba7c048dfa0059d88f5801ae53ff12d7e4af0112')
 
 package() {
     install -Dm755 "bk-${pkgver}-${CARCH}-unknown-linux-gnu/bk" "${pkgdir}/usr/bin/bk"
