@@ -1,0 +1,18 @@
+pkgbase = vsfetch-settings
+	pkgdesc = Graphical settings editor for vsFetch — GTK3 config manager with live preview and theme tools
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/victorsosaMx/vsFetch-Settings
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = gtk3
+	optdepends = vsfetch: for live preview
+	optdepends = matugen: palette generation from image or color
+	optdepends = ttf-jetbrains-mono-nerd: icons in labels
+	source = vsfetch-settings-1.0.tar.gz::https://github.com/victorsosaMx/vsFetch-Settings/archive/refs/tags/v1.0.tar.gz
+	sha256sums = be09138bc74250b9907b4d6a1ff438c43e2337205e77936583e54ed9bc42abaf
+
+pkgname = vsfetch-settings
