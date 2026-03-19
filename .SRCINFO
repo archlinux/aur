@@ -7,12 +7,13 @@ pkgbase = shaweeltimer-dev
 	license = GPL-3.0-or-later
 	makedepends = jq
 	makedepends = curl
+	makedepends = git
 	depends = python
 	depends = python-gobject
 	depends = gtk4
 	depends = libadwaita
 	conflicts = shaweeltimer
-	source = shaweeltimer-dev-1.2.0.tar.gz::https://github.com/shaweel/shaweelTimer/archive/refs/heads/dev.tar.gz
+	source = shaweeltimer-dev::git+https://github.com/shaweel/shaweelTimer.git#branch=dev
 	sha256sums = SKIP
 
 pkgname = shaweeltimer-dev

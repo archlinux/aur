@@ -15,9 +15,9 @@ license=("GPL-3.0-or-later")
 conflicts=("shaweeltimer")
 
 depends=("python" "python-gobject" "gtk4" "libadwaita")
-makedepends=("jq" "curl")
+makedepends=("jq" "curl" "git")
 
-source=("$pkgname-$pkgver.tar.gz::https://github.com/shaweel/shaweelTimer/archive/refs/heads/dev.tar.gz")
+source=("$pkgname::git+https://github.com/shaweel/shaweelTimer.git#branch=dev")
 
 sha256sums=("SKIP")
 
