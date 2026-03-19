@@ -1,6 +1,6 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 pkgname=ctx-bin
-pkgver=0.1.9
+pkgver=0.1.10
 pkgrel=1
 pkgdesc='Multi-environment context switcher for cloud, Kubernetes, VPN, and SSH tunnels'
 arch=('x86_64')
@@ -11,9 +11,9 @@ conflicts=('ctx')
 source=("ctx-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/ctx_${pkgver}_linux_amd64.tar.gz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/vlebo/ctx/v${pkgver}/LICENSE"
         "README.md-${pkgver}::https://raw.githubusercontent.com/vlebo/ctx/v${pkgver}/README.md")
-sha256sums=('0ca73408f773bc86a8235068243a37118f22cb346fc6796d825417e76163c246'
+sha256sums=('9d38ba1cc6dc2b76a8774e12dc1732d520cc1ae12386032406a8d32ff76d13a0'
             '57a693be29787ddb226a44c770fde19f9542433564b9cf4866b5a46aea996872'
-            'fc961636882ddf74bba3f9b559bbef67b06222a89a14e2f6aeacd4cb49e663f8')
+            '0e3595bb602ce451d59e5126bf9914685819630de8a96a79e53e129f3a889d88')
 
 package() {
   install -Dm755 ctx "${pkgdir}/usr/bin/ctx"
