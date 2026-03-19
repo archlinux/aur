@@ -4,7 +4,7 @@ _appname=SimpleArchiver
 _pkgauthor=Stephen-Seo
 _pkgname=${_appname,,}
 pkgname=${_pkgname}-bin
-pkgver=2.6.3
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="An alternative to tar"
 arch=('x86_64' 'aarch64')
@@ -21,9 +21,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/${pkgver}/${_pkgname}_debian_${arch[0]}")
 source_aarch64=("${url}/releases/download/${pkgver}/${_pkgname}_debian_${arch[1]}")
 sha256sums=('db7f7ce8121ec5084ef74e60e72d22f165f6d7d6664a1af5ccdbb956e1f38793'
-            '9049d2d4512b8ab5125baf266b4aae125151f5853e091664274e9d558c9b65ae')
-sha256sums_x86_64=('9008bae7b3c0a9e620d424b2c7b496b0ce8c253a532579a51b13f5e0228f82fc')
-sha256sums_aarch64=('4edccea7d5a2b8df892e089c0e1ab517340cad5c9cdba5576d64f96219dacb60')
+            'c6d5f9ad687edeff4ff412d5d4eb8a6bcb755ca7a923d32cf5ee5dbb6555ffcf')
+sha256sums_x86_64=('963d9cf3e17566ddc45d81d3bbbe3ac7f2167d27b835273330f1aec0ade376ec')
+sha256sums_aarch64=('5a8f461212bb21d127337db7b0249f2a0a1c4643e6cd909afab1d74df7324bc4')
 
 
 package() {
