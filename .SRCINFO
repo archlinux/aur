@@ -1,6 +1,6 @@
 pkgbase = wayland-pipewire-idle-inhibit
 	pkgdesc = Inhibit wayland idle when computer is playing sound
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://github.com/rafaelrc7/wayland-pipewire-idle-inhibit
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = wayland-pipewire-idle-inhibit
 	depends = gcc-libs
 	depends = glibc
 	depends = libpipewire
-	source = wayland-pipewire-idle-inhibit-0.7.0.tar.gz::https://github.com/rafaelrc7/wayland-pipewire-idle-inhibit/archive/refs/tags/v0.7.0.tar.gz
-	sha256sums = e028484c384f6132f0d9ff353799f1e3043e8fc748f11b7a7a2e17184d2ac5f6
+	source = wayland-pipewire-idle-inhibit-0.7.1.tar.gz::https://github.com/rafaelrc7/wayland-pipewire-idle-inhibit/archive/refs/tags/v0.7.1.tar.gz
+	sha256sums = 6644562aa9ac0210ae7203453f7d3d38fe9d74059e0864d60e13b45033dc2652
 
 pkgname = wayland-pipewire-idle-inhibit
