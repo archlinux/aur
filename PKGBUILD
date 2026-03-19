@@ -2,19 +2,19 @@
 
 pkgname=temporal-cli
 pkgver='1.6.1'
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for running Temporal Server and interacting with various parts of Temporal'
 arch=('x86_64')
 url='https://github.com/temporalio/cli'
 license=('MIT')
 depends=('glibc')
-makedepends=('git' 'go')
+makedepends=('go')
 options=('!debug')
-source=("${pkgname}-${pkgver}::git+https://github.com/temporalio/cli.git#tag=v${pkgver}")
-b2sums=('9f743e56266cc71d35370caab55fccd7cc67a6cb772452fff20a7674e74a9acb47cd3b39402c744af261dd0b3c6a51a229d6332e49968338037cc41b53477aab')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/temporalio/cli/archive/refs/tags/v${pkgver}.tar.gz")
+b2sums=('60c76d857a8710c93a6b47ec9a2e7ad39431ac262d1c214a43c7820ad97848fae79508de10c32b23ee089f900efa5e661f7a99f6ced852fd1512a57a8245fd80')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "cli-${pkgver}"
 
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "cli-${pkgver}"
 
   install -Dm755 ./dist/temporal -t "${pkgdir}/usr/bin"
 
