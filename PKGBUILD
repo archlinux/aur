@@ -2,7 +2,7 @@
 
 pkgname=frankenphp-bin
 pkgver=1.12.1
-pkgrel=2
+pkgrel=3
 pkgdesc='FrankenPHP is a modern application server for PHP built on top of the Caddy web server.'
 arch=('x86_64' 'aarch64')
 url='https://github.com/php/frankenphp'
@@ -16,8 +16,8 @@ source_x86_64=("frankenphp-$pkgver-x86_64::$source_prefix-x86_64")
 source_aarch64=("frankenphp-$pkgver-aarch64::$source_prefix-aarch64")
 
 sha256sums=('96e04afcae74c52f02e43e693c97b5ba0c64694ba44c1c642d7f242cfe21d18c')
-sha256sums_x86_64=('27f845efe24d7daae5ecf8f673e399da8e7ac9236706e8449d64b7b506090f2a')
-sha256sums_aarch64=('cbd5ae41815a6400f6447fbc52b993690dacecbd52899f2e3a166d55f02ed28e')
+sha256sums_x86_64=('6be78e2dd1a71f38a9bcb7b6bf45c2ad061d2d098f9f912d46d9d2b13627f577')
+sha256sums_aarch64=('784376b2f54a92c9e90078f5261caba813156f57cd5ec659ed1e7a035f47154b')
 
 package() {
 	cd "$srcdir"
