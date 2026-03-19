@@ -1,6 +1,6 @@
 # Maintainer: Kreuder <mk@singular.de>
 pkgname=stenmark
-pkgver=0.4.5
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='A lightweight GTK4 Markdown organizer and editor'
 arch=('any')
@@ -11,6 +11,7 @@ depends=(
   'python-gobject'
   'python-markdown'
   'python-pygments'
+  'python-yaml'
   'gtk4'
   'libadwaita'
   'webkitgtk-6.0'
@@ -21,7 +22,7 @@ makedepends=(
   'meson'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mkay/stenmark/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('c9190dd2bd2626e643337e72162ab766fb51128d13aebce297556924d28d31f3')
+sha256sums=('73c8c2ee66e51649a1d3ca30666da5d3c37c913897d884e3995b186e7106bf02')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
