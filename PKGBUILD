@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=imsprog-git
-pkgver=1.7.1.r1.g75a8809
+pkgver=1.8.2.r2.ga58ef3c
 pkgrel=1
 pkgdesc="MSProg - software for CH341A-based programmers to work with I2C, SPI and MicroWire EEPROM/Flash chips"
 arch=($CARCH)
@@ -11,8 +11,9 @@ provides=(${pkgname%-git})
 conflicts=(${pkgname%-git})
 depends=(
   sh
-  gcc-libs
   glibc
+  libgcc
+  libstdc++
   libusb
   qt5-base
 )
