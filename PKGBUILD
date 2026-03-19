@@ -1,6 +1,6 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=formatusb
-pkgver=26.01arch
+pkgver=26.03.1
 pkgrel=1
 pkgdesc="USB Device Formatting Utility"
 arch=('x86_64' 'i686')
@@ -12,9 +12,9 @@ depends=(
     'coreutils'
     'util-linux'
 )
-makedepends=('qt6-tools' 'cmake')
-source=("https://github.com/MX-Linux/formatusb/archive/refs/tags/26.01arch.tar.gz")
-sha256sums=('6e2b930e5a17ae404fb29a971e83a185fbbbdb1f3f12378f6b68a78537298a1c')
+makedepends=('qt6-tools' 'cmake' 'ninja')
+source=("https://github.com/MX-Linux/formatusb/archive/refs/tags/26.03.1.tar.gz")
+sha256sums=('9ccce5b20e6aa842a4a887dda37d1fe67bb192099090cff8abcf69085c8af9c1')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -24,8 +24,8 @@ build() {
     mkdir -p build
     cd build
 
-    cmake .. -DCMAKE_BUILD_TYPE=Release
-    make -j$(nproc)
+    cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release
+    cmake --build . -j$(nproc)
 }
 
 package() {
