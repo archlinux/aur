@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=gromit-mpx
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='On-screen annotation tool'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=(
     'glibc'
     'gtk3'
     'hicolor-icon-theme'
-    'libappindicator-gtk3'
+    'libayatana-appindicator'
     'libx11'
     'libxi'
     'lz4')
@@ -22,7 +22,7 @@ makedepends=(
     'git')
 backup=('etc/gromit-mpx/gromit-mpx.cfg')
 source=("git+https://github.com/bk138/gromit-mpx.git#tag=${pkgver}")
-sha256sums=('c4c6110f45568c7be455a6e6abd84813ef59f6acd04e722d5def415672dbbf59')
+sha256sums=('8e46c5ce9c1395e4bec303cdcf3a455cd4e32a9a0f8689c79202871b30561733')
 
 prepare() {
     git -C gromit-mpx submodule init
