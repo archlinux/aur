@@ -1,9 +1,9 @@
-# Maintainer: envolution
+# Maintainer: M0N7Y5
 # Contributor: Albert Latham <me@albertlatham.com>
 # shellcheck shell=bash disable=SC2034,SC2154
 
 pkgname="plasticity-bin"
-pkgver=25.3.9
+pkgver=25.3.10
 pkgrel=1
 pkgdesc="3D modeling software for concept artists"
 arch=("x86_64")
@@ -19,7 +19,7 @@ source=(
   "https://github.com/nkallen/plasticity/releases/download/v${pkgver}/plasticity_${pkgver}_amd64.deb"
   "https://raw.githubusercontent.com/nkallen/plasticity/refs/tags/v${pkgver}/LICENSE"
 )
-sha512sums=('bfdac3e2ee13754342f4b8d73962a30c5ef94e8e22eef581366c7c9e74c6e96f9ed9d36daaaba6d04bb8e305ad0c29fef5056caa6dc47232e18c73695a1064e2'
+sha512sums=('7acc732bb7c33b192d4cf61dce1cf068388813893d5efb601d16c2d0803e3d13278951b3f62bdf101dc180efb8679cbc4b4db386ee0d5a76b5af0b7ffe9d65ff'
             '1fbd6b24b4022331307ee3b8266fc6eee956238b5854633071848c145a044127f6d6eadc8c07c288c4dcd16c0de10e933ff21c5d8c715c273902cdeffded4bcd')
 options=(!strip)
 
