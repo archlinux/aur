@@ -1,0 +1,15 @@
+pkgbase = gpu-fryer
+	pkgdesc = GPU stress tester that detects thermal throttling and performance degradation
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/huggingface/gpu-fryer
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = git
+	makedepends = cuda
+	depends = nvidia-utils
+	source = gpu-fryer-1.1.0.tar.gz::https://github.com/huggingface/gpu-fryer/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = 6057e0cf0a01b1fc52ee4cd0eeedc8de96c35b118d1fcea557a0493a02c1044c
+
+pkgname = gpu-fryer
