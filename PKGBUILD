@@ -3,7 +3,7 @@
 _name=ApiArk
 _basename=${_name,,}
 pkgname=${_basename}-bin
-pkgver=0.2.28
+pkgver=0.2.29
 pkgrel=1
 pkgdesc="Privacy-first API platform built with Tauri v2. No login, no cloud, ~60 MB RAM. A lightweight Postman alternative."
 arch=('x86_64')
@@ -11,15 +11,21 @@ url="https://github.com/berbicanes/${_basename}"
 _urlraw="https://raw.githubusercontent.com/berbicanes/${_basename}/v${pkgver}"
 license=('MIT')
 conflicts=("${_basename}")
-provides=("${_basename}")
+provides=("${_basename}" "${_basename}-cli")
 makedepends=('tar')
 depends=('glibc' 'libgcc' 'gtk3' 'glib2' 'libsoup3' 'cairo' 'openssl' 'gdk-pixbuf2' 'hicolor-icon-theme' 'webkit2gtk-4.1')
 source=("README-${pkgver}.md::${_urlraw}/README.md")
-source_x86_64=("${url}/releases/download/v${pkgver}/${_basename}_${pkgver}_amd64.deb")
+source_x86_64=("${_basename}-${pkgver}-${arch[0]}.deb::${url}/releases/download/v${pkgver}/${_basename}_${pkgver}_amd64.deb"
+               "${_basename}-cli-${pkgver}-${arch[0]}::${url}/releases/download/v${pkgver}/${_basename}-cli-linux-x86_64")
 sha256sums=('6d7651f12d8e678e422bf9fe6ea8f0fd966ac1bc27fa1c58b226df5e1eaabd78')
-sha256sums_x86_64=('d1ea0874d96e171c6f4b7de855cf085ed0531ad1ad52243915ee57aeacaed38b')
+sha256sums_x86_64=('70104eb3b4db29d9cc010b7975a243787499802e82ee27f1575e193f2dc89fc2'
+                   'b7b59631750d7cd3c0e1cb24a684301a07990082577a606366a5fb2cecc408d9')
 
 package() {
+    cd "${srcdir}"
+
+    install -Dm755 "${_basename}-cli-${pkgver}-${CARCH}" "${pkgdir}/usr/bin/${_basename}-cli"
+
     cd "${pkgdir}"
 
     # this extracts all into the pkgdir
