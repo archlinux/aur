@@ -2,8 +2,8 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=sentry-relay
-pkgver=23.3.1
-pkgrel=2
+pkgver=26.3.1
+pkgrel=1
 pkgdesc="Sentry relay"
 arch=('x86_64')
 url="https://github.com/getsentry/relay"
