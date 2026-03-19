@@ -1,11 +1,12 @@
 # Maintainer: Briar Campbell <nex@nexusxe.com>
+_basename=fw-ec-utils
 _pkgname=fw-fanctrl-rs
 pkgname=${_pkgname}-git
-pkgver=r71.gcf1c0ae
+pkgver=r106.g20b84a6
 pkgrel=1
 pkgdesc="A lightweight daemon for custom fan control on Framework laptops"
 arch=('x86_64')
-url="https://github.com/NexusXe/fw-fanctrl-rs"
+url="https://github.com/NexusXe/fw-ec-utils"
 license=('AGPL-3.0-or-later')
 depends=('gcc-libs' 'glibc' 'systemd')
 backup=('etc/fw-fanctrl-rs/config.toml')
@@ -19,34 +20,39 @@ source=("git+${url}.git")
 b2sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd "${_basename}"
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${_pkgname}"
+  cd "${_basename}"
   export RUSTUP_TOOLCHAIN=nightly
   cargo fetch --locked --target "$(rustc -vV | sed -n 's|host: ||p')"
 }
 
 build() {
-  cd "${_pkgname}"
+  cd "${_basename}"
   export RUSTUP_TOOLCHAIN=nightly
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --all-features
+  cargo build --frozen --release --all-features -p "${_pkgname}"
 }
 
 check() {
-  cd "${_pkgname}"
+  cd "${_basename}"
   export RUSTUP_TOOLCHAIN=nightly
-  cargo test --frozen --all-features
+  cargo test --frozen --all-features -p "${_pkgname}"
 }
 
 package() {
-  cd "${_pkgname}"
+  cd "${_basename}"
 
   # install binary
   install -Dm755 "target/release/${_pkgname}" "$pkgdir/usr/bin/${_pkgname}"
+
+  # install license
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+
+  cd "${_pkgname}"
 
   # install systemd service
   install -Dm644 fw-fanctrl.service "$pkgdir/usr/lib/systemd/system/fw-fanctrl@.service"
@@ -66,7 +72,4 @@ package() {
   # install the examples
   install -d "$pkgdir/usr/share/doc/${_pkgname}/examples"
   install -Dm644 examples/* "$pkgdir/usr/share/doc/${_pkgname}/examples/"
-
-  # install license
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }

@@ -4,7 +4,7 @@
 
 src/
 pkg/
-fw-fanctrl-rs/
+fw-ec-utils/
 
 *.tar.gz
 *.zip
