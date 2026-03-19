@@ -1,0 +1,31 @@
+pkgbase = dtrace-utils-git
+	pkgdesc = DTrace for Linux - a dynamic tracing framework (development version from git)
+	pkgver = 2.0.6.r20.ga000357c
+	pkgrel = 1
+	url = https://github.com/oracle/dtrace-utils
+	arch = x86_64
+	arch = aarch64
+	license = UPL-1.0
+	makedepends = git
+	makedepends = bison
+	makedepends = flex
+	makedepends = gcc
+	makedepends = valgrind
+	makedepends = bpf-unknown-none-gcc
+	makedepends = bpf-unknown-none-binutils
+	makedepends = libpfm
+	makedepends = lib32-glibc
+	depends = wireshark-cli
+	depends = fuse3
+	depends = glibc
+	depends = libpcap
+	depends = libpfm
+	provides = dtrace-utils
+	conflicts = dtrace-utils
+	conflicts = bpf-dtrace-utils
+	conflicts = systemtap
+	options = !lto
+	source = git+https://github.com/oracle/dtrace-utils#branch=devel
+	sha256sums = SKIP
+
+pkgname = dtrace-utils-git
