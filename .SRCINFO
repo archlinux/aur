@@ -1,5 +1,5 @@
 pkgbase = dotnet-preview-bin
-	pkgver = 11.0.0.sdk100
+	pkgver = 11.0.0.sdk100+preview.2
 	pkgrel = 1
 	url = https://www.microsoft.com/net/core
 	arch = x86_64
@@ -9,12 +9,12 @@ pkgbase = dotnet-preview-bin
 	options = staticlibs
 	source = dotnet.sh
 	sha512sums = 768151c7179fb6a126b3de9cae01e363e8894f6fab384b1e2c5066c2adca4578638983b1b62aea10dd18045e6d6e8f8ea13280481134de94f004a118919b2c06
-	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.1.26104.118/dotnet-sdk-11.0.100-preview.1.26104.118-linux-x64.tar.gz
-	sha512sums_x86_64 = 6187f4a7e42479c4b2ce82eaf142220762ebf2456e4765721f951ff08d4c79b412dc93cb8d2522b09b7b62c9c6025aded201f16f0d53d3d5ef5b05c2eb90c448
-	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.1.26104.118/dotnet-sdk-11.0.100-preview.1.26104.118-linux-arm.tar.gz
-	sha512sums_armv7h = 29834fe199371ec6c601f1c7ac93d3cf9ff42968bb3d30b4bc03b8d8ee4fef9697bf4c2dcd3c22e5a875a949d7e3fc56044317abba1c9b66afd0920efb2694d2
-	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.1.26104.118/dotnet-sdk-11.0.100-preview.1.26104.118-linux-arm64.tar.gz
-	sha512sums_aarch64 = 6e799b43746af1e6f3b0b94e239147e8fe8809705e32d9023af87ba08f8ad64bb4b990da76bb012ccb56832c3e9b3f1c9b25a5d04913c1f67b818d753cfcb00d
+	source_x86_64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.2.26159.112/dotnet-sdk-11.0.100-preview.2.26159.112-linux-x64.tar.gz
+	sha512sums_x86_64 = 5418a43fe4f0bb15dcd4d97011f64b9ae473e190fdd46432ad0e7b91331a1628301a40f7e5bfb3e364f0a42e22729b0597b66fb45d46c9d4a17917cea09084cd
+	source_armv7h = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.2.26159.112/dotnet-sdk-11.0.100-preview.2.26159.112-linux-arm.tar.gz
+	sha512sums_armv7h = 8442c8d529d09d054c0001d7ad25bea8cc0b330c9dcdcf6617a935978022d1ffd2c2e1c239c6ed620a0be74fcc125b472ae74a8059fe1a9969486b97be3afed6
+	source_aarch64 = https://builds.dotnet.microsoft.com/dotnet/Sdk/11.0.100-preview.2.26159.112/dotnet-sdk-11.0.100-preview.2.26159.112-linux-arm64.tar.gz
+	sha512sums_aarch64 = 7235147a21979a969a5e9047d284a1ebf5d61e0949717d17f9ddc15905e5c7727adbbaf1440fda2c6c75679638e9800652cd3de6d3550bffc70e55f20571c084
 
 pkgname = dotnet-host-preview-bin
 	pkgdesc = A generic driver for the .NET Core Command Line Interface (preview, binary)
@@ -57,9 +57,9 @@ pkgname = dotnet-sdk-preview-bin
 	depends = aspnet-runtime-preview-bin
 	depends = aspnet-targeting-pack-preview-bin
 	provides = dotnet-sdk-preview-bin
-	provides = dotnet-sdk=11.0.0.sdk100
-	provides = dotnet-sdk-11.0=11.0.0.sdk100
-	conflicts = dotnet-sdk=11.0.0.sdk100
+	provides = dotnet-sdk=11.0.0.sdk100+preview.2
+	provides = dotnet-sdk-11.0=11.0.0.sdk100+preview.2
+	conflicts = dotnet-sdk=11.0.0.sdk100+preview.2
 	conflicts = dotnet-sdk-11.0
 
 pkgname = dotnet-targeting-pack-preview-bin
