@@ -1,0 +1,27 @@
+pkgbase = trae-bin
+	pkgver = 1.107.1
+	pkgrel = 1
+	pkgdesc = TRAE - The Real AI Engine, an AI-powered IDE
+	url = https://trae.ai
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	depends = alsa-lib
+	depends = libxtst
+	depends = libdrm
+	depends = libgbm
+	depends = libxkbcommon
+	depends = xcb-util-keysyms
+	depends = libxcrypt-compat
+	optdepends = libvulkan: Vulkan support
+	provides = trae
+	conflicts = trae
+	source_x86_64 = Trae-linux-x64.deb::https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.13344/linux/Trae-linux-x64.deb
+	sha256sums_x86_64 = 6af50c118c57acdae151419f02bf6090ab509489611803844b50731c93e9ecae
+	source_aarch64 = Trae-linux-arm64.deb::https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.13344/linux/Trae-linux-arm64.deb
+	sha256sums_aarch64 = 444d80d65ea01b7dde6c1bc92c377273fd9dc10ec84b2cf474096cdfc1873a64
+
+pkgname = trae-bin
