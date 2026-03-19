@@ -1,0 +1,5 @@
+[ctrdecrypt]
+source = "github"
+github = "shijimasoft/ctrdecrypt"
+prefix = "v"
+use_max_tag = true
