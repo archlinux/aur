@@ -1,6 +1,6 @@
 pkgbase = cubelib
 	pkgdesc = Library for reading and writing a multi-dimensional performance space.
-	pkgver = 4.9
+	pkgver = 4.9.1
 	pkgrel = 1
 	url = http://www.scalasca.org/software/cube-4.x/download.html
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = cubelib
 	depends = zlib
 	replaces = cube-perf
 	options = staticlibs
-	source = http://apps.fz-juelich.de/scalasca/releases/cube/4.9/dist/cubelib-4.9.tar.gz
-	md5sums = 345cf857bab43157d295a296773f93fe
+	source = http://apps.fz-juelich.de/scalasca/releases/cube/4.9/dist/cubelib-4.9.1.tar.gz
+	md5sums = 5453a63c4a625579f032f1d279ccc9ec
 
 pkgname = cubelib
