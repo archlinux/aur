@@ -2,7 +2,7 @@
 
 _gemname='dry-struct'
 pkgname="ruby-${_gemname}"
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Typed structs and value objects'
 arch=('any')
@@ -23,13 +23,14 @@ checkdepends=(
   ruby-dry-monads
   ruby-rake
   ruby-rspec
+  ruby-super_diff
   ruby-warning
   ruby-yard
 )
 options=('!emptydirs')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('da2cca1c540da9f8d29dd0a8a529a313a4f6552d4bd345b80e8b8f96d35c00d01928c2824927925582e4324a2efa0c1446a13087fa9acb94ddd38018b5f47420')
-b2sums=('23122044c88223724b284b4e692e4f8d4c49b376433a3c024fed13baad46ea507a9212d00c39545639b9385996b5a2a8403c47eb30f70d25f52c1f2b5c197853')
+sha512sums=('1dc53ceba690af6518e9e3699c6d263779b657e1d8e7c02f18e1ed8737dd97881abe5823b69a62e80ddc2554812a1f0979ca38ffde48e1c7e0c8ded3fac04b41')
+b2sums=('3697d6c957d58e9fb072edd9b10dbcf56834ac194c5b79f7f7cc10656f33e8c2be9e1249d4f06a94c5004ab6ef4bcbca29d9f33c59fda16a8b70cd7ececd5649')
 
 prepare() {
   cd "${_gemname}-${pkgver}"
