@@ -1,6 +1,6 @@
 pkgbase = steward
 	pkgdesc = AI Personal Assistant — single binary, multi-provider, voice-enabled
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/brooqs/steward
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = steward
 	makedepends = nodejs
 	makedepends = npm
 	depends = glibc
-	source = steward-1.2.0.tar.gz::https://github.com/brooqs/steward/archive/refs/tags/v1.2.0.tar.gz
+	source = steward-1.2.1.tar.gz::https://github.com/brooqs/steward/archive/refs/tags/v1.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = steward
