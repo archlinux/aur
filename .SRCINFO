@@ -1,7 +1,7 @@
 pkgbase = quickbib
 	pkgdesc = QuickBib: DOI/arXiv → BibTeX desktop utility
-	pkgver = 0.7.1
-	pkgrel = 3
+	pkgver = 0.7.2
+	pkgrel = 1
 	url = https://github.com/archisman-panigrahi/QuickBib
 	arch = any
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = quickbib
 	depends = python
 	depends = python-pyqt6
 	depends = python-doi2bib3
-	source = quickbib::git+https://github.com/archisman-panigrahi/QuickBib.git#tag=v0.7.1
+	source = quickbib::git+https://github.com/archisman-panigrahi/QuickBib.git#tag=v0.7.2
 	sha256sums = SKIP
 
 pkgname = quickbib
