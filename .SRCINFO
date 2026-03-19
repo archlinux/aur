@@ -1,0 +1,18 @@
+pkgbase = oniri-git
+	pkgdesc = A tool that automatically maximizes the only window of a niri workspace (git version)
+	pkgver = 1.0.0.r24.ddf5996
+	pkgrel = 1
+	url = https://github.com/Antiz96/oniri
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = scdoc
+	depends = glibc
+	depends = libgcc
+	provides = oniri
+	conflicts = oniri
+	source = git+https://github.com/Antiz96/oniri.git
+	sha256sums = SKIP
+
+pkgname = oniri-git
