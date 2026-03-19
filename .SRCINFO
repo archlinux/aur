@@ -1,13 +1,14 @@
 pkgbase = vmlinux-to-elf
 	pkgdesc = Recover a fully analyzable .ELF from a raw kernel, through extracting the kernel symbol table (kallsyms)
-	pkgver = 1.2.2
-	pkgrel = 3
+	pkgver = 1.2.3
+	pkgrel = 1
 	url = https://github.com/marin-m/vmlinux-to-elf
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools>=69
+	makedepends = python-setuptools-scm>=8
 	depends = python>=3.9
 	depends = python-lz4>=4.4.5
 	depends = python-minilzo>=1.2
@@ -15,10 +16,10 @@ pkgbase = vmlinux-to-elf
 	depends = python-zstandard>=0.25.0
 	optdepends = python-gobject: GUI
 	optdepends = libadwaita: GUI
-	provides = python-vmlinux-to-elf=1.2.2
+	provides = python-vmlinux-to-elf=1.2.3
 	conflicts = python-vmlinux-to-elf
 	options = !strip
-	source = https://github.com/marin-m/vmlinux-to-elf/archive/refs/tags/1.2.2/vmlinux-to-elf-1.2.2.tar.gz
-	sha256sums = 09df39ee1cf6694b4f29a1578c451588b7afc63b9435aaee35c2ebd93fd5e072
+	source = https://github.com/marin-m/vmlinux-to-elf/archive/refs/tags/1.2.3/vmlinux-to-elf-1.2.3.tar.gz
+	sha256sums = 41fa1e914dcad235e1ba451d555f1bef3a6f13db222979fd8a0155149b6c05be
 
 pkgname = vmlinux-to-elf
