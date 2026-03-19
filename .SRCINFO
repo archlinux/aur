@@ -8,6 +8,7 @@ pkgbase = steam-grunge-editor
 	license = MIT
 	makedepends = python-pip
 	makedepends = python-virtualenv
+	makedepends = imagemagick
 	depends = python>=3.10
 	depends = libgl
 	depends = libxcb

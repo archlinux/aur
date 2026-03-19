@@ -63,6 +63,7 @@ depends=(
 makedepends=(
     'python-pip'
     'python-virtualenv'
+    'imagemagick'
 )
 
 optdepends=(
@@ -131,13 +132,25 @@ LAUNCHER
     install -Dm644 "packaging/desktop/steam-grunge-editor.desktop" \
         "${pkgdir}/usr/share/applications/steam-grunge-editor.desktop"
 
-    # ── Icons ─────────────────────────────────────────────────────────────────
-    install -Dm644 "app/assets/icon.png" \
+    # ── Icons — resize to correct dimensions before installing ──────────────
+    # icon.png is the full canvas image (~4MB). GTK silently ignores oversized
+    # icons so we resize to 256x256 at install time using ImageMagick.
+    convert "app/assets/icon.png" -resize 256x256 /tmp/sge-icon-256.png
+    install -Dm644 /tmp/sge-icon-256.png \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/steam-grunge-editor.png"
+    rm -f /tmp/sge-icon-256.png
+
+    # Also install common additional sizes for better HiDPI / launcher support
+    for size in 48 128; do
+        mkdir -p "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps"
+        convert "app/assets/icon.png" -resize ${size}x${size} \
+            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/steam-grunge-editor.png"
+    done
 
     # ── License ───────────────────────────────────────────────────────────────
-    if [ -f LICENSE ] ; then
-        install -DM644 LICENSE \
+    # Install LICENSE if present (not all release tarballs include it)
+    if [ -f LICENSE ]; then
+        install -Dm644 LICENSE \
             "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }
