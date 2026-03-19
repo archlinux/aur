@@ -8,7 +8,7 @@ url="https://github.com/DissoWharf/mindful-path"
 license=('MIT')
 depends=('python' 'python-pyqt6')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/DissoWharf/mindful-path/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('57ef88037c834113e3836b0fe2a4d7bc31ee1df065a8b3ae7919baaf5e76e2ac')
+sha256sums=('d39a9ab1f95e49dca9ca38d54ba8903dec8a7f6e7d86f9eeb34db6e7d872b5c1')
 
 package() {
     cd "$srcdir/mindful-path-$pkgver"

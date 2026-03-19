@@ -8,6 +8,6 @@ pkgbase = mindful-path
 	depends = python
 	depends = python-pyqt6
 	source = mindful-path-1.0.1.tar.gz::https://github.com/DissoWharf/mindful-path/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = 57ef88037c834113e3836b0fe2a4d7bc31ee1df065a8b3ae7919baaf5e76e2ac
+	sha256sums = d39a9ab1f95e49dca9ca38d54ba8903dec8a7f6e7d86f9eeb34db6e7d872b5c1
 
 pkgname = mindful-path
