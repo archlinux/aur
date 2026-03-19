@@ -1,7 +1,7 @@
 pkgbase = sglang-git
 	pkgdesc = A fast serving framework for large language models and vision language models
 	pkgver = r0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sgl-project/sglang
 	arch = any
 	license = Apache-2.0

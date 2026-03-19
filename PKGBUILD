@@ -2,7 +2,7 @@
 pkgname=sglang-git
 _pkgname=sglang
 pkgver=r0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast serving framework for large language models and vision language models'
 arch=('any')
 url='https://github.com/sgl-project/sglang'
