@@ -1,0 +1,16 @@
+pkgbase = ctrdecrypt-bin
+	pkgdesc = Decrypt module for cia-unix
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/shijimasoft/ctrdecrypt
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	provides = ctrdecrypt
+	conflicts = ctrdecrypt
+	source = https://github.com/shijimasoft/ctrdecrypt/releases/download/v1.1.0/ctrdecrypt-linux-x86_64.zip
+	sha256sums = 8b698e6f40dfa05da8bad5ea986b3952fab796ffc8da8780a0552159fb68e623
+
+pkgname = ctrdecrypt-bin
