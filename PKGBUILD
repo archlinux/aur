@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=gromit-mpx-git
-pkgver=1.8.0.r0.g2ebc0cb
+pkgver=1.9.0.r1.gb69ad0e
 pkgrel=1
 pkgdesc='On-screen annotation tool (git version)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=(
     'glibc'
     'gtk3'
     'hicolor-icon-theme'
-    'libappindicator-gtk3'
+    'libayatana-appindicator'
     'libx11'
     'libxi'
     'lz4')

@@ -1,6 +1,6 @@
 pkgbase = gromit-mpx-git
 	pkgdesc = On-screen annotation tool (git version)
-	pkgver = 1.8.0.r0.g2ebc0cb
+	pkgver = 1.9.0.r1.gb69ad0e
 	pkgrel = 1
 	url = https://github.com/bk138/gromit-mpx/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gromit-mpx-git
 	depends = glibc
 	depends = gtk3
 	depends = hicolor-icon-theme
-	depends = libappindicator-gtk3
+	depends = libayatana-appindicator
 	depends = libx11
 	depends = libxi
 	depends = lz4
