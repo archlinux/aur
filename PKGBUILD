@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=tsne
-_pkgver=0.1-3.1
+_pkgver=0.2-0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=9
+pkgrel=1
 pkgdesc="T-Distributed Stochastic Neighbor Embedding for R (t-SNE)"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('fd73e9defb351ed1295523711a545a71')
-b2sums=('8c7189369409278086d222d8962a038a158e095a2eb037a048908da5c1d6996bd583e58fd2411ec938164389fc5bb31ada3af7e1928a98c42e2111c7aa3f2ff5')
+md5sums=('987353259ec738b8b64ccbd9a31a3b22')
+b2sums=('d1463f1910fb7072b9bdd98fbe51384414af1302036e1143aef92e283330e0ad7a45f81c7c89ff978f02c9350faaf977ceaf09ba77218a85621ed3ba83698f15')
 
 build() {
   mkdir build
