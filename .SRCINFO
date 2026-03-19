@@ -1,6 +1,6 @@
 pkgbase = mx-samba-config
-	pkgdesc = Samba configuration tool for MX Linux
-	pkgver = 26.02arch
+	pkgdesc = Samba configuration GUI tool
+	pkgver = 26.03
 	pkgrel = 1
 	url = https://github.com/MX-Linux/mx-samba-config
 	install = mx-samba-config.install
@@ -14,7 +14,7 @@ pkgbase = mx-samba-config
 	depends = qt6-base
 	depends = polkit
 	depends = xdg-utils
-	source = https://github.com/MX-Linux/mx-samba-config/archive/refs/tags/26.02arch.tar.gz
-	sha256sums = 3467783493b6364c30c0e103305318ff6e956658e33b16663d10af159b3a4b7b
+	source = https://github.com/MX-Linux/mx-samba-config/archive/refs/tags/26.03.tar.gz
+	sha256sums = 121afbfca026dd81bd22e522a934f18ada231e44787212577c215df012b1b4c6
 
 pkgname = mx-samba-config

@@ -1,16 +1,16 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=mx-samba-config
-pkgver=26.02arch
+pkgver=26.03
 pkgrel=1
-pkgdesc="Samba configuration tool for MX Linux"
+pkgdesc="Samba configuration GUI tool"
 arch=('x86_64' 'i686')
 url="https://github.com/MX-Linux/mx-samba-config"
 license=('GPL3')
 depends=('samba' 'qt6-base' 'polkit' 'xdg-utils')
 makedepends=('cmake' 'ninja' 'qt6-tools')
 install=mx-samba-config.install
-source=("https://github.com/MX-Linux/mx-samba-config/archive/refs/tags/26.02arch.tar.gz")
-sha256sums=('3467783493b6364c30c0e103305318ff6e956658e33b16663d10af159b3a4b7b')
+source=("https://github.com/MX-Linux/mx-samba-config/archive/refs/tags/26.03.tar.gz")
+sha256sums=('121afbfca026dd81bd22e522a934f18ada231e44787212577c215df012b1b4c6')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
