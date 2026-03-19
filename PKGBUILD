@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="The AI coding agent audit trail tool"
 
-pkgver=0.3.8
+pkgver=0.4.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,9 +24,9 @@ conflicts=("${_pkgname}")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[0]}.tar.gz")
 source_i686=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[2]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[2]}.tar.gz")
-sha256sums_x86_64=('0e2cab66205e7116ddfb69c782928abde8ccfaf6766e89ca62a4e6deecb1308f')
-sha256sums_i686=('29f37aad5d0b790cef1cf345a3d1a888793538ed544a14e82ab5cb471b1a7556')
-sha256sums_aarch64=('84f1e8e7134b244e78c1d486c3cffd537972bfebcee25824d45e9c50003a5042')
+sha256sums_x86_64=('63e3107dfd8231dd3af5b421ee45f90c8f31f8a471554c75fd8960ce52fbc5f8')
+sha256sums_i686=('21850842099daef1f7a130d6f5c4a45099c87ad501dc77da3b882c366cbfb2f9')
+sha256sums_aarch64=('0613cf4df15211c52fc4a744b423b8ea4cd4edc433f42d10f4959c04e831334d')
 
 
 case ${CARCH} in
