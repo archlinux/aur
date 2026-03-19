@@ -19,6 +19,8 @@ pkgbase = python-sgl-kernel
 	depends = cuda
 	options = !strip
 	source = sglang-0.5.9.tar.gz::https://github.com/sgl-project/sglang/archive/refs/tags/v0.5.9.tar.gz
+	source = remove-thc-atomics.patch
 	sha256sums = 5905242df108f4b6be1784192e7a9d0504e6251872d497a61cfc1fac2410bbad
+	sha256sums = SKIP
 
 pkgname = python-sgl-kernel
