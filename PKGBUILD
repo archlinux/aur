@@ -2,8 +2,9 @@
 
 pkgname=bloomeetunes-bin
 _pkgname=bloomeetunes
-pkgver=2.12.3
-_relver=${pkgver}+177
+pkgver=3.0.0
+_build_num=197
+_relver=${pkgver}+${_build_num}
 pkgrel=1
 pkgdesc='Bloomee is a cross-platform music app designed to bring you ad-free tunes from various sources.'
 arch=('x86_64')
@@ -15,10 +16,10 @@ conflicts=('bloomeetunes-git')
 options=(!debug)
 
 
-source=("https://github.com/HemantKArya/BloomeeTunes/releases/download/v${_relver}/bloomee_tunes_linux_v${_relver}.zip"
+source=("${url}/releases/download/v${_relver}/bloomee_tunes_linux_x64_v${_relver}.tar.gz"
         "${_pkgname}.desktop")
 
-sha512sums=('dd6549a51b72b74d60d98af1e9f2540d847e351126080cf46dec651adb92db343a277f48def3d6a4559ba91329be595927a52bc24f36b832f424a9e643daa431'
+sha512sums=('6733345f632aac84cf4a8c5b3d82cfa03af1b0dbf8404c7b8f8acac8517f039af5664c029c5b16e2f4a74b9f32850eaa7a3cae4a052166c77fde50808c4191fb'
             'bfd5f754fe1a87f23872520a1c15e4dea3482bbaa81d4edc408e9a474ebd28faaff6e70cc79e36e5ee0598f36bdf60a657ee8fe39b9b243832542f8e9532db7e')
 
 package() {
