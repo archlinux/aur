@@ -5,10 +5,6 @@ _cuda_arch=${CUDA_ARCH:-all-major}
 # CUDA compute architecture. Set to your GPU's compute capability (drop the dot: 8.6 → 86).
 # Can be overridden without editing: _cuda_arch=86 makepkg -S
 #
-# Special values:
-#   all-major — SASS for every major arch + embedded PTX for forward JIT compat (recommended)
-#   all       — SASS for every major and minor arch variant (larger binary, rarely needed)
-#
 # Numeric values:
 #    60 — Pascal:    GTX 1080/1070/1060
 #    61 — Pascal:    GTX 1050/Titan Xp/Tesla P40
@@ -25,12 +21,16 @@ _cuda_arch=${CUDA_ARCH:-all-major}
 #   120 — Blackwell: RTX 5050/5060/5060 Ti/5070/5070 Ti/5080/5090
 #   121 — Blackwell: GB10 (DGX Spark)
 #
+# Special values:
+#   all-major — SASS for every major arch + embedded PTX for forward JIT compat
+#   all       — SASS for every major and minor arch variant
+#
 # Full reference: https://developer.nvidia.com/cuda-gpus
 
 pkgname=voxtype-cuda
 _pkgname=voxtype
-pkgver=0.6.3
-pkgrel=2
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="Push-to-talk voice-to-text for Linux. Nvidia/cuda backend version (not vulkan)"
 arch=(x86_64)
 url="https://voxtype.io"
@@ -66,7 +66,7 @@ optdepends=(
 backup=(etc/voxtype/config.toml)
 install=$pkgname.install
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/peteonrails/voxtype/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1e163f59911b68683d769ba8869860c5ca6467122a7a95aeb4c4f2fe0d33303d')
+sha256sums=('c58dc7dbf17e23f16c3ea11fa5480d38f8d5e16a584c49c791c9bc1e14b4a33e')
 
 prepare() {
     cd "$_pkgname-$pkgver"
@@ -125,10 +125,12 @@ build() {
     export CFLAGS="-ffile-prefix-map=$_src/="
     export CXXFLAGS="-ffile-prefix-map=$_src/="
 
+    # Use clang for C/C++ - avoids whisper.cpp build failures with newer gcc
+    # (e.g. when [testing] repo is enabled)
     export PATH="/usr/lib/llvm21/bin:/opt/cuda/bin:$PATH"
+    export LIBCLANG_PATH=/usr/lib/llvm21/lib
     export CC=clang-21
     export CXX=clang++
-    export LIBCLANG_PATH=/usr/lib/llvm21/lib
 
     export CUDAToolkit_ROOT=/opt/cuda
     echo "set(CMAKE_CUDA_ARCHITECTURES ${_cuda_arch})" > /tmp/voxtype-cuda-arch.cmake
@@ -155,10 +157,8 @@ check() {
 package() {
     cd "$_pkgname-$pkgver"
 
-    # Install CUDA binary
     install -Dm755 "voxtype-cuda" "$pkgdir/usr/lib/voxtype/voxtype-cuda"
 
-    # Symlink voxtype -> voxtype-cuda
     install -d "$pkgdir/usr/bin"
     ln -sf /usr/lib/voxtype/voxtype-cuda "$pkgdir/usr/bin/voxtype"
 

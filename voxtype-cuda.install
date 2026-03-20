@@ -1,36 +1,17 @@
 post_install() {
-    echo ""
-    echo "==> Voxtype Post-installation Steps:"
-    echo ""
+    cat <<EOF
+==> Voxtype Post-installation Steps:
 
-    echo ""
-    echo "    1. Add your user to the 'input' group:"
-    echo "       sudo usermod -aG input \$USER"
-    echo ""
-    echo "    2. Log out and back in for group changes to take effect"
-    echo ""
-    echo "    3. Download a model (Whisper or Parakeet):"
-    echo "       voxtype setup model"
-    echo ""
-    echo "    4. Start voxtype:"
-    echo "       systemctl --user enable --now voxtype"
-    echo ""
-}
+    1. Add your user to the 'input' group:
+       sudo usermod -aG input \$USER
 
-post_upgrade() {
-    echo ""
-    echo "==> Voxtype upgraded to 0.6.3"
-    echo ""
+    2. Log out and back in for group changes to take effect
 
-    _detect_gpu
+    3. Download a model:
+       voxtype setup model
 
-    echo ""
-    echo "    v0.6.3: Clipboard restoration, full config override, NixOS improvements."
-    echo "    Paste mode can now restore your clipboard after output."
-    echo "    All config options are now available as CLI flags and VOXTYPE_* env vars."
-    echo ""
-}
+    4. Start voxtype:
+       systemctl --user enable --now voxtype
 
-post_remove() {
-    rm -f /usr/bin/voxtype
+EOF
 }
