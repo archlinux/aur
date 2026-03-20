@@ -4,7 +4,7 @@
 
 pkgname=phpsysinfo
 pkgver=3.4.5
-pkgrel=3
+pkgrel=1
 pkgdesc="PHP script that displays information about the host being accessed."
 arch=('any')
 license=('GPL2')

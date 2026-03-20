@@ -1,7 +1,7 @@
 pkgbase = phpsysinfo
 	pkgdesc = PHP script that displays information about the host being accessed.
 	pkgver = 3.4.5
-	pkgrel = 3
+	pkgrel = 1
 	url = http://rk4an.github.com/phpsysinfo/
 	arch = any
 	license = GPL2
