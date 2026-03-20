@@ -1,21 +1,16 @@
 pkgbase = gensystray-git
-	pkgdesc = Create your own system tray item to run your favorite commands.
-	pkgver = r25.fd5a9b7
-	pkgrel = 4
+	pkgdesc = Configurable system tray menu with live items, glob populate, watch events, and signal-slot IPC
+	pkgver = 2.6.0
+	pkgrel = 1
 	url = https://github.com/dardevelin/gensystray
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
-	makedepends = gcc
 	makedepends = git
-	makedepends = pkgconf
+	makedepends = gcc
+	makedepends = pkg-config
 	depends = gtk3
-	depends = sdl2
-	provides = gensystray
-	conflicts = gensystray
-	source = gensystray::git+https://github.com/dardevelin/gensystray.git
-	source = gensystray.sample.cfg
+	source = git+https://github.com/dardevelin/gensystray.git#tag=v2.6.0
 	sha256sums = SKIP
-	sha256sums = 5a53085fa539a3ca6159da6258d58c0637b0f20e0588f81ffab266d3f5637714
 
 pkgname = gensystray-git
-
