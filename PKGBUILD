@@ -1,6 +1,6 @@
 # Maintainer: Daniel Seichter <daniel.seichter@dseichter.de>
 pkgname=yahac
-pkgver=2026.03.16.beta20
+pkgver=2026.03.16.beta21
 pkgrel=1
 pkgdesc="Yet Another Home Assistant Client - Desktop tray application for Home Assistant"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('pyside6' 'python-urllib3' 'python-paho-mqtt')
 optdepends=('libnotify: Desktop notifications')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/dseichter/yahac/archive/v${pkgver//./-}.tar.gz")
-sha256sums=('10be31bbbbf7832b107ff35dc1cc87f3d1e78324a3775e12851d1fc8c72217b8')
+sha256sums=('0602ff871eac8e4b0e982f3b863841e4a94f07803797cd395d1f45c21bff8569')
 
 build() {
     cd "$pkgname-${pkgver//./-}"
