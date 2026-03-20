@@ -1,0 +1,19 @@
+pkgbase = hyperx-alpha-wireless-git
+	pkgdesc = Linux manager for the HyperX Cloud Alpha Wireless headset
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/WaffleThief123/HyerpxAlpha-Linux
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = pkgconf
+	makedepends = git
+	depends = wxwidgets-gtk3
+	depends = hidapi
+	depends = systemd-libs
+	provides = hyperx-alpha-wireless
+	conflicts = hyperx-alpha-wireless
+	source = hyperx-alpha-wireless-git::git+https://github.com/WaffleThief123/HyerpxAlpha-Linux.git
+	sha256sums = SKIP
+
+pkgname = hyperx-alpha-wireless-git
