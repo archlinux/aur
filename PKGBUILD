@@ -6,7 +6,7 @@
 pkgname='kohighlights'
 _pkgname='KoHighlights'
 pkgver=2.3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for viewing Koreader's highlights and/or export them to simple text, html, csv or markdown files."
 arch=(any)
 url='http://www.noembryo.com/apps.php?kohighlights'
