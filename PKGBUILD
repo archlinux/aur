@@ -1,9 +1,8 @@
 # Maintainer: Adrian <adrian@mxlinux.org>
 pkgname=uefi-manager
-pkgver=26.02
+pkgver=26.03
 pkgrel=1
 pkgdesc="A graphical tool for managing UEFI boot entries"
-pkgver=26.02
 arch=('x86_64' 'i686')
 url="https://mxlinux.org"
 license=('GPL3')
@@ -11,14 +10,11 @@ depends=('efibootmgr' 'qt6-base' 'polkit')
 provides=('uefi-manager')
 conflicts=('uefi-manager')
 makedepends=('cmake' 'ninja' 'qt6-tools')
-source=("https://github.com/MX-Linux/uefi-manager/archive/refs/tags/26.02.tar.gz")
-sha256sums=('999fe8f4ee214d8550e5343d5e31eed87cb3215f3b6edaa6e167c9608d2e5ef5')
+source=("https://github.com/MX-Linux/uefi-manager/archive/refs/tags/26.03.tar.gz")
+sha256sums=('95707baafb61001deb3f4a4d35dbfa07048358f8fa5663c5e6133731241828b3')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-
-    # Get version from pkgver (strip any extra pkgver info for CMake)
-    _version="${pkgver}"
 
     # Flag Arch packaging builds for CMake
     export UEFI_MANAGER_ARCH_BUILD=1
@@ -32,7 +28,7 @@ build() {
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
-        -DPROJECT_VERSION_OVERRIDE="$_version"
+        -DPROJECT_VERSION_OVERRIDE="${pkgver}"
 
     # Build
     cmake --build build --parallel
@@ -48,9 +44,9 @@ package() {
     install -dm755 "${pkgdir}/usr/share/uefi-manager/locale"
     install -Dm644 build/*.qm "${pkgdir}/usr/share/uefi-manager/locale/" 2>/dev/null || true
 
-    # Install helper scripts
+    # Install helper components
     install -dm755 "${pkgdir}/usr/lib/uefi-manager"
-    install -Dm755 scripts/helper "${pkgdir}/usr/lib/uefi-manager/helper"
+    install -Dm755 build/helper "${pkgdir}/usr/lib/uefi-manager/helper"
     install -Dm755 scripts/uefimanager-lib "${pkgdir}/usr/lib/uefi-manager/uefimanager-lib"
 
     # Install PolicyKit policy
