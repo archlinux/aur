@@ -3,7 +3,7 @@
 # Contributor: Aleks Clark <aleks dot clark at gmail dot com>
 
 pkgname='crush-extended-bin'
-pkgver=2026.03.20.1
+pkgver=2026.03.20.2
 pkgrel=1
 pkgdesc='Unofficial Crush build with community plugins (otlp, agent-status, periodic-prompts, subagents, tempotown, tavily)'
 url='https://github.com/aleksclark/crush-modules'
@@ -13,10 +13,10 @@ provides=('crush')
 conflicts=('crush')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/aleksclark/crush-modules/releases/download/${pkgver}/crush-extended_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('bebe9834f9705d4be12f0ae1b947c19fece06dd4183f355760bf5524a4dda4b6')
+sha256sums_aarch64=('c94c78b0e277479041fd7fee2c7152b70dd790e5991777481f02adda58cd7e2a')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/aleksclark/crush-modules/releases/download/${pkgver}/crush-extended_${pkgver}_linux_x86_64.tar.gz")
-sha256sums_x86_64=('36e79bb8789ead70da8e6a925686c253644bbbf6e3e79cfc7fcdc769adf7a8c8')
+sha256sums_x86_64=('c1b4627ba14e05da6abe7ab3210c4bc3cf65fe5821b875f7858460f3c4bc12a0')
 
 package() {
   # bin
