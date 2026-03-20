@@ -1,6 +1,7 @@
 *
 !.gitignore
 !PKGBUILD
+!cr16-elf-crossfile.txt
 !REUSE.toml
 !LICENSE
 !LICENSES

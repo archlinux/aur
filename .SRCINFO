@@ -1,13 +1,19 @@
 pkgbase = sc144xx-utils
 	pkgdesc = Tool for running software on sc144xx chips
-	pkgver = 0.1.0_20260129
+	pkgver = 0.1.0_20260321
 	pkgrel = 1
 	url = https://codeberg.org/CompactCall/sc144xx-utils
 	arch = any
 	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = git
+	makedepends = cr16-elf-gcc
 	depends = python3
 	depends = python-pyserial
-	source = sc144xx-utils-0.1.0_20260129.tar.gz::https://codeberg.org/CompactCall/sc144xx-utils/archive/5c4d8a9222e37d0396409eb00b75dcbf94a9a3f2.tar.gz
-	sha256sums = 39c61093cb8a978c93eadc79b5b36cfaddae4d1c6ad420838686d437f5f7c203
+	depends = python-argcomplete
+	source = sc144xx-utils-0.1.0_20260321.tar.gz::https://codeberg.org/CompactCall/sc144xx-utils/archive/82fb53b866788d7e918764a599012796f8ca81a3.tar.gz
+	source = cr16-elf-crossfile.txt
+	sha256sums = 0c378bb652077afc738da29ad1a01d55921cfd0b7d1dfb181f202d3096f0b064
+	sha256sums = SKIP
 
 pkgname = sc144xx-utils

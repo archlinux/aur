@@ -1,0 +1,15 @@
+[binaries]
+c = 'cr16-elf-gcc'
+cpp = 'cr16-elf-g++'
+ar = 'cr16-elf-ar'
+strip = 'cr16-elf-strip'
+objcopy = 'cr16-elf-objcopy'
+
+[host_machine]
+system = 'none'
+cpu_family = 'cr16'
+cpu = 'cr16'
+endian = 'little'
+
+[built-in options]
+b_staticpic = false
