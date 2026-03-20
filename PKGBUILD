@@ -1,18 +1,18 @@
 # Maintainer: Pando85 <pando855@gmail.com>
 _pkgname=promrail
 pkgname="${_pkgname}-bin"
-pkgver=0.0.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Git-native GitOps promotion tool"
-arch=('x86_64' 'aarch64')
-url="https://github.com/forkline/promrail"
+arch=('x86_64')
+url="https://github.com/forkline/prl"
 license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source=("https://github.com/forkline/promrail/releases/download/v${pkgver}/promrail-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
-sha256sums=('4db586c55d24a4e2106112fd97814838b4022312423c4d37745a7b7a78bf9c95')
+source=("https://github.com/forkline/promrail/releases/download/v${pkgver}/prl-${pkgver}-${CARCH}-unknown-linux-gnu.tar.gz")
+sha256sums=('c7305e6142ef2bd87cd66d52a9b7ada3aaa81083b809be0ccc45eb6755a1cb0c')
 
 package() {
-	install -Dm755 promrail "${pkgdir}/usr/bin/promrail"
+	install -Dm755 prl "${pkgdir}/usr/bin/prl"
 }
