@@ -3,7 +3,7 @@
 
 pkgname=lbdb
 pkgver=0.57
-pkgrel=1
+pkgrel=2
 pkgdesc="The little brother's database for the mutt mail reader"
 arch=('i686' 'x86_64')
 url="http://www.spinnaker.de/lbdb/"
@@ -21,7 +21,7 @@ sha256sums=('212fe2e40df5ed3e5496bc5e821e4b0683a6c9523b8885e7e87b634bcf923a88')
 build() {
   cd $srcdir/$pkgname-$pkgver
   ./configure --prefix=/usr --libexecdir=/usr/lib/$pkgname \
-  --mandir=/usr/share --sysconfdir=/etc
+  --mandir=/usr/share/man --sysconfdir=/etc
   make
 }
 
