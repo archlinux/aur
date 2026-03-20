@@ -1,36 +1,32 @@
 # Maintainer: graysky <therealgraysky AT proton DOT me>
 # Contributor: Peter Jackson <pete@peteonrails.com>
 
-_cuda_arch=${CUDA_ARCH:-all-major}
-# CUDA compute architecture. Set to your GPU's compute capability (drop the dot: 8.6 → 86).
-# Can be overridden without editing: _cuda_arch=86 makepkg -S
+# Export the variable matching your GPU, then run makepkg:
+#   CUDA_ARCH=120 makepkg -si
 #
-# Numeric values:
-#    60 — Pascal:    GTX 1080/1070/1060
-#    61 — Pascal:    GTX 1050/Titan Xp/Tesla P40
-#    70 — Volta:     Tesla V100/Titan V
-#    72 — Volta:     Jetson AGX Xavier
-#    75 — Turing:    RTX 2060/2070/2080/GTX 1650 Ti/GTX 1660 Ti/Tesla T4/Titan RTX
-#    80 — Ampere:    A100
-#    86 — Ampere:    RTX 3050/3050 Ti/3060/3060 Ti/3070/3070 Ti/3080/3080 Ti/3090/3090 Ti/A2000-A6000
-#    87 — Ampere:    Jetson Orin
-#    89 — Ada:       RTX 4050/4060/4060 Ti/4070/4070 Ti/4080/4090/L4/L40/L40S
-#    90 — Hopper:    GH200/H100/H200
-#   100 — Blackwell: GB200/B200
-#   103 — Blackwell: GB300/B300
-#   120 — Blackwell: RTX 5050/5060/5060 Ti/5070/5070 Ti/5080/5090
-#   121 — Blackwell: GB10 (DGX Spark)
+# Architecture      Compute Cap.  GPUs
+# ─────────────────────────────────────────────────────────────────────────────
+# 121            12.1          GB10 (DGX Spark)
+# 120            12.0          GeForce RTX 5090/5080/5070/5060/5050,
+#                                 RTX PRO 6000/5000/4500/4000/2000 Blackwell
+# 103            10.3          GB300, B300 (data center)
+# 100            10.0          GB200, B200 (data center)
+# 90             9.0           H100, H200, GH200 (data center)
+# 89             8.9           GeForce RTX 4090/4080/4070/4060/4050,
+#                                 RTX 6000/5000/4500/4000 Ada, L4, L40, L40S
+# 87             8.7           Jetson AGX Orin, Orin NX, Orin Nano
+# 86             8.6           GeForce RTX 3090/3080/3070/3060/3050,
+#                                 RTX A6000/A5000/A4000/A3000/A2000, A40, A10
+# 80             8.0           A100, A30 (data center)
+# 75             7.5           GeForce RTX 2080/2070/2060, GTX 1650 Ti, T4
 #
-# Special values:
-#   all-major — SASS for every major arch + embedded PTX for forward JIT compat
-#   all       — SASS for every major and minor arch variant
-#
-# Full reference: https://developer.nvidia.com/cuda-gpus
+# Reference: https://developer.nvidia.com/cuda-gpus
+_cuda_arch="${CUDA_ARCH:-}"
 
 pkgname=voxtype-cuda
 _pkgname=voxtype
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Push-to-talk voice-to-text for Linux. Nvidia/cuda backend version (not vulkan)"
 arch=(x86_64)
 url="https://voxtype.io"
@@ -46,7 +42,7 @@ depends=(
 )
 makedepends=(
     cargo
-    clang21
+    clang
     cmake
     cuda
     git
@@ -71,14 +67,36 @@ sha256sums=('c58dc7dbf17e23f16c3ea11fa5480d38f8d5e16a584c49c791c9bc1e14b4a33e')
 prepare() {
     cd "$_pkgname-$pkgver"
 
+    if [[ -z "$_cuda_arch" ]]; then
+      cat <<EOF
+
+ERROR: CUDA_ARCH is not set. You must specify your GPU architecture.
+       Set it before running makepkg, for example:
+
+       CUDA_ARCH=sm_120 makepkg -si
+
+  121  → GB10 (DGX Spark)
+  120  → GeForce RTX 5090/5080/5070/5060/5050, RTX PRO Blackwell
+  103  → GB300, B300 (data center)
+  100  → GB200, B200 (data center)
+  90   → H100, H200, GH200
+  89   → GeForce RTX 4090/4080/4070/4060/4050, Ada, L4, L40S
+  87   → Jetson AGX Orin, Orin NX, Orin Nano
+  86   → GeForce RTX 3090/3080/3070/3060/3050, RTX A-series, A40
+  80   → A100, A30 (data center)
+  75   → GeForce RTX 2080/2070/2060, GTX 1650 Ti, T4
+
+  See: https://developer.nvidia.com/cuda-gpus
+
+EOF
+      return 1
+    fi
+
     # Respect XDG Base Directory Specification
     # Use existing toolchain/cache, but allow override via environment
     export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
     export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
     export RUSTUP_TOOLCHAIN=stable
-    export PATH="/usr/lib/llvm21/bin:$PATH"
-    export CC=clang-21
-    export CXX=clang++
 
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
@@ -94,8 +112,8 @@ build() {
     cargo --version
     echo "rustc: $(which rustc)"
     rustc --version
-    echo "clang: $(which clang-21)"
-    clang-21 --version | head -1
+    echo "clang: $(which clang)"
+    clang --version | head -1
     echo "cmake: $(which cmake)"
     cmake --version | head -1
     echo "PATH=$PATH"
@@ -127,9 +145,8 @@ build() {
 
     # Use clang for C/C++ - avoids whisper.cpp build failures with newer gcc
     # (e.g. when [testing] repo is enabled)
-    export PATH="/usr/lib/llvm21/bin:/opt/cuda/bin:$PATH"
-    export LIBCLANG_PATH=/usr/lib/llvm21/lib
-    export CC=clang-21
+    export PATH="/opt/cuda/bin:$PATH"
+    export CC=clang
     export CXX=clang++
 
     export CUDAToolkit_ROOT=/opt/cuda
