@@ -1,0 +1,16 @@
+pkgbase = python-airportsdata
+	pkgdesc = Extensive database of location and timezone data for nearly every airport and landing strip in the world
+	pkgver = 20260315
+	pkgrel = 1
+	url = https://github.com/mborsetti/airportsdata
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/airportsdata/airportsdata-20260315.tar.gz
+	sha256sums = eb67de3b8167bfe810020095188ebba043ed16e934cc52ba3930e2cbd1c2dcb6
+
+pkgname = python-airportsdata
