@@ -20,6 +20,7 @@ pkgbase = task-maker-rust-git
 	optdepends = bash: for running Bash solutions
 	provides = task-maker-rust
 	conflicts = task-maker-rust
+	options = !lto
 	source = git+https://github.com/olimpiadi-informatica/task-maker-rust.git
 	sha384sums = SKIP
 

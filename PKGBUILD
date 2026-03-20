@@ -17,7 +17,7 @@ optdepends=('texlive-core: for compiling tex statements'
             'python: for running Python solutions'
             'cargo: for running Rust solutions'
             'bash: for running Bash solutions')
-options=()
+options=('!lto')
 provides=('task-maker-rust')
 conflicts=('task-maker-rust')
 source=("git+https://github.com/olimpiadi-informatica/task-maker-rust.git")
