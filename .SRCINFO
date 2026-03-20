@@ -1,0 +1,27 @@
+pkgbase = smartbrowser-bin
+	pkgdesc = HackerEarth Smart Browser for secure assessments
+	pkgver = 2.4.1
+	pkgrel = 1
+	url = https://www.hackerearth.com
+	arch = x86_64
+	license = custom
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = alsa-lib
+	depends = libxtst
+	depends = libxrandr
+	depends = libxdamage
+	depends = libxcomposite
+	depends = libxfixes
+	depends = at-spi2-core
+	depends = libdrm
+	depends = mesa
+	optdepends = pipewire: screen/audio capture
+	optdepends = pulseaudio: audio support
+	provides = smartbrowser
+	conflicts = smartbrowser
+	source = smartbrowser.deb::https://cdn.hackerearth.com/smart-browser/releases/linux/x64/smart-browser-2.4.1.deb
+	sha256sums = SKIP
+
+pkgname = smartbrowser-bin
