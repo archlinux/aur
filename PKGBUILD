@@ -1,16 +1,16 @@
 # Maintainer: Thorben Günther <admin@xenrox.net>
 
 pkgname=forgejo-cli
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc='CLI application for interacting with Forgejo'
 url='https://codeberg.org/forgejo-contrib/forgejo-cli'
 license=('Apache-2.0 OR MIT')
 makedepends=('cargo')
-depends=('openssl')
+depends=('openssl' 'libssh2')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://codeberg.org/forgejo-contrib/forgejo-cli/archive/v$pkgver.tar.gz")
-sha256sums=('3dd84c58c8c5d5fc22b8456d9a4f35323e0386547743c6b24295a3dbc6a56fb7')
+sha256sums=('8f6a93c5f97e45308aead0154d4ec53e672ca90ab0809db543cde6be8078729e')
 options=(!lto)
 
 prepare() {
@@ -23,6 +23,7 @@ build() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
+    export LIBSSH2_SYS_USE_PKG_CONFIG=1
     cargo build --frozen --release --all-features
 
     target/release/fj completion bash > fj.bash
@@ -33,6 +34,7 @@ build() {
 check() {
     cd "$pkgname"
     export RUSTUP_TOOLCHAIN=stable
+    export LIBSSH2_SYS_USE_PKG_CONFIG=1
     cargo test --frozen --all-features
 }
 
