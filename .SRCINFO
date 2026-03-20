@@ -1,0 +1,14 @@
+pkgbase = fastruct
+	pkgdesc = Fast directory structure viewer with colored output and depth control
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/GuitaristRin/fastruct
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = fastruct
+	source = fastruct-1.0.0-linux-x86_64.tar.gz::https://github.com/GuitaristRin/fastruct/releases/download/v1.0.0/fastruct-1.0.0-linux-x86_64.tar.gz
+	sha256sums = 05942065fd5d5570c486d372df5cd7153178913887b1b9bb8736a4fbc2479db2
+
+pkgname = fastruct
