@@ -21,6 +21,6 @@ package() {
 cd "snaptool-${pkgver}"
 
 # Install the binary
-install -Dm755 "out/snaptool" "$pkgdir/usr/bin/snaptool"
+install -Dm755 "out/Snaptool" "$pkgdir/usr/bin/snaptool"
 install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
