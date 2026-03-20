@@ -12,13 +12,13 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('b191b209836bd585210eb7295271abf60f21000032502fdbe4246e4a4d33a434')
 
 build() {
-cd "Snaptool-$pkgver"
+cd "snaptool-$pkgver"
 # We build a standard framework-dependent binary for maximum compatability
 dotnet publish -c Release -o out --no-self-contained
 }
 
 package() {
-cd "Snaptool-$pkgver"
+cd "snaptool-${pkgver}"
 
 # Install the binary
 install -Dm755 "out/Snaptool" "$pkgdir/usr/bin/snaptool"
