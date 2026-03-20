@@ -2,26 +2,27 @@
 # Maintainer: hypevhs <hackgammavision at gmail dot com>
 
 pkgname='oscgoesbrrr'
+pkgver=2.1.13
+pkgrel=1
 pkgdesc='Make haptics in real life go BRRR from VRChat'
-pkgver='1.44.0'
-pkgrel='2'
 arch=('x86_64')
 url='https://osc.toys/'
 license=('CC-BY-NC-SA-4.0')
-_electron_ver=38
+# waiting for electron40
+_electron_ver=39
 depends=("electron$_electron_ver")
-makedepends=('node-gyp' 'npm' 'asar')
-source=("https://github.com/OscToys/OscGoesBrrr/archive/refs/tags/release/$pkgver.tar.gz"
-        "LICENSE-v$pkgver::https://raw.githubusercontent.com/OscToys/OscGoesBrrr/refs/tags/release/$pkgver/LICENSE"
+makedepends=('node-gyp' 'pnpm' 'asar')
+source=("OscGoesBrrr-$pkgver.tar.gz::https://github.com/OscToys/OscGoesBrrr/archive/refs/tags/v$pkgver.tar.gz"
+        "LICENSE-v$pkgver::https://raw.githubusercontent.com/OscToys/OscGoesBrrr/refs/tags/v$pkgver/LICENSE"
         'oscgoesbrrr'
         'OscGoesBrrr.desktop')
-sha256sums=('2fb0c5a048444ba27313fc771cafbe9f046bee1973994dff3c1cc47471e4cf2d'
+sha256sums=('f0ea2ee8ef2386005c0176a559ae0d26c5b738ef1830d2f3e4a35d8486bc5c10'
             'fc17405da5786602c4667eb9b69e4bff644be78f5d96c489ae0fc7ddb9b5fd1d'
-            '17250df54b4cb3471f8b3baca68bd4686629a6e62f56c283ebd67036bae57cb9'
-            'a02770d23b90d39de35ddb45b4910444339712885c905318ee81444ff98bdd2b')
+            '1d4e12d6aa0e615a90ad025acbb83e61580276c5329e3109e6b0beae983a1178'
+            '4285dd7c558811c1f46c2313753490c8d35f0e83ee5c2ed898b191d440d98bb9')
 
 build() {
-    cd "OscGoesBrrr-release-$pkgver"
+    cd "OscGoesBrrr-$pkgver"
 
     export ELECTRON_SKIP_BINARY_DOWNLOAD=1
     export XDG_CACHE_HOME="$srcdir"
@@ -33,29 +34,31 @@ build() {
     rm -f .gitignore
     rm -f README.md
 
-    npm install --cpu="${!CARCH}" --omit dev --omit optional --omit peer --no-bin-links
-    npm audit fix || :
-    npm run build
+    pnpm install --frozen-lockfile --config.platform=linux --cpu="${!CARCH}"
+    # pnpm install --frozen-lockfile --config.platform=linux --cpu="${!CARCH}" --prod --no-optional
+    # pnpm audit --fix || :
+    # pnpm install --no-frozen-lockfile --config.platform=linux --cpu="${!CARCH}" --no-optional
+    pnpm run build
 
     local i686=ia32 x86_64=x64 armv7h=arm aarch64=arm64 riscv64=riscv64
     export NODE_ENV=production
     export NODE_OPTIONS='--openssl-legacy-provider'
-    npx electron-builder --linux --"${!CARCH}" --dir \
+    pnpm exec electron-builder --linux --"${!CARCH}" --dir \
         -c.electronDist="/usr/lib/electron$_electron_ver" \
-        -c.electronVersion="$_electron_ver"
+        -c.electronVersion="$_electron_ver" \
+        --config.extraMetadata.version="$pkgver"
 
     asar extract "dist/linux-unpacked/resources/app.asar" "dist/linux-unpacked/usr/lib/$pkgname/"
     rm -rf "dist/linux-unpacked/usr/lib/$pkgname/node_modules/native-reg"
     rm -rf "dist/linux-unpacked/usr/lib/$pkgname/node_modules/node-gyp-build"
     rmdir "dist/linux-unpacked/usr/lib/$pkgname/node_modules" 2>/dev/null || :
 
-    sed -i -e "s#/usr/bin/electron\b#/usr/bin/electron$_electron_ver#" \
-         -e "s#/usr/lib/oscgoesbrrr\b#/usr/lib/$pkgname#" ../oscgoesbrrr
-    sed -i -e "s/^Version=.*/Version=$pkgver/" ../OscGoesBrrr.desktop
+    sed -i -e "s#%ELECTRON_BINARY%#/usr/bin/electron$_electron_ver#" \
+           -e "s#%APP_PATH%#/usr/lib/$pkgname#" ../oscgoesbrrr
 }
 
 package() {
-    cd "OscGoesBrrr-release-$pkgver"
+    cd "OscGoesBrrr-$pkgver"
 
     install -d -Dm755 "$pkgdir/usr"
     install -d -Dm755 "$pkgdir/usr/lib"

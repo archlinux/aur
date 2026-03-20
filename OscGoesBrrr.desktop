@@ -1,7 +1,6 @@
 [Desktop Entry]
 Type=Application
 Name=OscGoesBrr
-Version=@PACKAGE_VERSION@
 Exec=oscgoesbrrr %u
 Terminal=false
 Icon=ogb-logo

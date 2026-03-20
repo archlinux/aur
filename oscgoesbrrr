@@ -1,2 +1,2 @@
 #!/bin/sh
-exec /usr/bin/electron /usr/lib/oscgoesbrrr --no-sandbox --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true "$@"
+exec %ELECTRON_BINARY% %APP_PATH% --no-sandbox --ozone-platform-hint=auto --enable-features=WaylandWindowDecorations --enable-wayland-ime=true "$@"

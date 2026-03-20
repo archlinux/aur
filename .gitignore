@@ -3,3 +3,6 @@
 /LICENSE
 /LICENSE-*
 /*.part
+/*-prepare.log
+/*-build.log
+/*-package.log
