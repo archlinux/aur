@@ -1,6 +1,6 @@
 # Maintainer: PIWI <ton-email@domain.com>
 pkgname=omarchy-exegol-vm
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Encrypted Exegol offensive-security VM for Omarchy (Ubuntu + Docker + Exegol, triple-layer LUKS)'
 arch=('any')
@@ -19,7 +19,7 @@ depends=(
 )
 makedepends=('git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fb54148619909ae634110dcac28b535eab0b5d06ae70f6555582ff9ec8a84d2a')
+sha256sums=('8b512333ab50178a1b3cd6c3eabfe71e6f41c1b62901ca98af7dc653cf9729d2')
 
 package() {
   cd "${pkgname}-${pkgver}"
