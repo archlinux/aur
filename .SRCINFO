@@ -1,11 +1,10 @@
 pkgbase = steel-bin
 	pkgdesc = An embedded scheme interpreter in Rust
 	pkgver = 0.8.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mattwparas/steel
 	arch = x86_64
 	license = Apache-2.0 OR MIT
-	makedepends = setconf
 	depends = glibc
 	provides = steel=0.8.2
 	conflicts = steel
@@ -16,6 +15,7 @@ pkgbase = steel-bin
 	source = https://github.com/mattwparas/steel/releases/download/v0.8.2/steel-source.tar.gz
 	source = https://raw.githubusercontent.com/mattwparas/steel/refs/tags/v0.8.2/LICENSE-APACHE
 	source = https://raw.githubusercontent.com/mattwparas/steel/refs/tags/v0.8.2/LICENSE-MIT
+	source = steel.sh
 	sha256sums = d0334d14168df4b88bb16bd4dbdfe03ab4bac147122f1be0c2ec5f083bf726fe
 	sha256sums = 11bafc23cf8a93655fbfc9a06d7cf0015173ad8b40abd999b26d496e27cadd70
 	sha256sums = d6cbc621cb76d132f91236acbba41868a0d84e95aaa412c0bd07e7ca0460810a
@@ -23,5 +23,6 @@ pkgbase = steel-bin
 	sha256sums = 3ba6a00631cf0dd32ff117003b57ee131c7ed423a8cc19438ea6d2806c1375b3
 	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 	sha256sums = 259767bca3402a6a2d576f97f7034adf26337f51920aa8887380ae4f552f33f2
+	sha256sums = a2fc879b0791ef9f3b24274aa8ec84f4877d6c220d1205c6e44691d80be63c36
 
 pkgname = steel-bin

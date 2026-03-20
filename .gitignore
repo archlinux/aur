@@ -3,5 +3,6 @@
 
 # except for
 !.gitignore
-!PKGBUILD
 !.SRCINFO
+!PKGBUILD
+!steel.sh
