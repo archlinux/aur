@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=IPTV Player
+Comment=Play IPTV streams from Xtream Codes and M3U_plus playlists
+Exec=xtream-m3u-plus-iptv-player
+Icon=xtream-m3u-plus-iptv-player
+Terminal=false
+Categories=AudioVideo;Player;Network;
+StartupNotify=true

@@ -1,0 +1,23 @@
+pkgbase = xtream-m3u-plus-iptv-player
+	pkgdesc = PyQt5 IPTV player for Xtream Codes API and M3U_plus playlists
+	pkgver = 1.04.00
+	pkgrel = 1
+	url = https://github.com/Youri666/Xtream-m3u_plus-IPTV-Player
+	arch = any
+	license = GPL3
+	depends = python
+	depends = python-pyqt5
+	depends = qt5-svg
+	depends = python-requests
+	depends = python-lxml
+	depends = python-dateutil
+	optdepends = vlc: recommended external player
+	optdepends = smplayer: optional external player
+	source = xtream-m3u-plus-iptv-player-1.04.00.tar.gz::https://github.com/Youri666/Xtream-m3u_plus-IPTV-Player/archive/refs/tags/V1.04.00.tar.gz
+	source = xtream-m3u-plus-iptv-player.desktop
+	source = xtream-m3u-plus-iptv-player.sh
+	sha256sums = b7effee283b45e0a7e3d0f9b133c644dc354d80b65167bcb9e28834a65149812
+	sha256sums = 7d2f7f1d70b52e838a4497f938928597def1cc630e2acfa5cabf653ec1f51400
+	sha256sums = 5c1d0a0a83f160a708d1981b88cab2437a8110c8f8db304f6a8d83ff48033e10
+
+pkgname = xtream-m3u-plus-iptv-player
