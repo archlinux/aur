@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="matlab-mcp-core-server"
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Run MATLAB® using AI applications with the official MATLAB MCP Server from MathWorks®"
 arch=(
@@ -25,7 +25,7 @@ source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}"
   "${pkgname}_disable_telemetry.patch"
 )
-sha256sums=('66d22dc4349acace7d905dc92ed05b4c28ebc52761b0b4c4ab2b421120d5a523'
+sha256sums=('a6077b735cce09c2fec8de5342c231865033122de22082ce97dec4fdd594dbd8'
             '7a56f149840e0f1cdc592c7de5f261c8a03d1ce48a1adcf4fc03c7f1b059ce18')
 
 prepare() {
