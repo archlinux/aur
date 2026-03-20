@@ -1,6 +1,6 @@
 pkgbase = forgejo-cli-git
 	pkgdesc = CLI application for interacting with Forgejo
-	pkgver = v0.3.0.r51.g3f25bed
+	pkgver = v0.4.0.r148.g488937f
 	pkgrel = 1
 	url = https://codeberg.org/forgejo-contrib/forgejo-cli
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = forgejo-cli-git
 	makedepends = cargo
 	makedepends = git
 	depends = openssl
+	depends = libssh2
 	provides = forgejo-cli
 	conflicts = forgejo-cli
 	options = !lto
