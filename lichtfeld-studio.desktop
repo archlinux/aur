@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=LichtFeld Studio
+Comment=Real-time 3D Gaussian Splatting studio
+Exec=LichtFeld-Studio %f
+Icon=lichtfeld-studio
+Terminal=false
+Type=Application
+Categories=Graphics;3DGraphics;Science;
+MimeType=application/x-ply;
