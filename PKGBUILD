@@ -6,7 +6,7 @@ _pkgname=libmodbus
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-libmodbus
-pkgver=3.1.11
+pkgver=3.1.12
 pkgrel=1
 pkgdesc="A Modbus library for Linux, Mac OS X, FreeBSD, QNX and Win32 (mingw-w64)"
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('mingw-w64-configure')
 options=(!strip !buildflags staticlibs)
 source=("https://github.com/stephane/libmodbus/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "dde16d5.diff")
-sha256sums=('15b4b2e0f68122c2da9b195de5c330489a9c97d40b4a95d2822378dc14d780e7'
+sha256sums=('2f4d4191cd196c1fba131daec03b621db75129d8255c832fc66b259d9fc46e7b'
             '527967d510ae84b222e950e0cb260c6f76447782beaaa8a2088ece64d46f4d72')
 
 prepare() {
