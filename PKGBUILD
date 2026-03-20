@@ -60,6 +60,7 @@ build() {
       -G Ninja \
       -D CMAKE_BUILD_TYPE=Release \
       -D CMAKE_INSTALL_PREFIX=/usr \
+      -D LLVM_EXTERNAL_LIT=/usr/bin/lit \
       -Wno-dev
     ninja $NINJAFLAGS -C _build
 
