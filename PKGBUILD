@@ -13,7 +13,7 @@ pkgname=aseprite
 pkgver=1.3.17
 _skiaver=m124
 _skiahash=08a5439a6b
-pkgrel=2
+pkgrel=3
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
 url="https://www.aseprite.org/"
@@ -88,7 +88,7 @@ prepare() {
 	bsdtar xf skia-$_skiaver.tar.gz  --strip-components=1 -C skia
 	# link to skia's icu
 	mkdir -p skia/third_party/externals/
-	ln -s $srcdir/skia-$_skiaver-icu skia/third_party/externals/icu
+	ln -fs $srcdir/skia-$_skiaver-icu skia/third_party/externals/icu
 	# Fix up Aseprite's desktop integration
 	[[ -n $_debug ]] && echo desktop.patch
 	env -C aseprite patch -tp1 <desktop.patch
