@@ -1,6 +1,6 @@
 pkgbase = aceplay-bin
 	pkgdesc = Modern CLI to play Ace Stream links - auto-starts acestream-engine (pre-built binary)
-	pkgver = 0.3.3
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/crstian19/aceplay
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = aceplay-bin
 	optdepends = mpv: recommended video player
 	optdepends = vlc: alternative video player
 	optdepends = ffplay: alternative video player
-	source = https://github.com/crstian19/aceplay/releases/download/v0.3.3/aceplay_0.3.3_linux_amd64.tar.gz
+	source = https://github.com/crstian19/aceplay/releases/download/v0.4.0/aceplay_0.4.0_linux_amd64.tar.gz
 	source = aceplay.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
