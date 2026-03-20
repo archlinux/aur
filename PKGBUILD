@@ -1,7 +1,7 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=craft-agents-bin
 pkgver=0.7.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop app for Craft Agents'
 url='https://github.com/lukilabs/craft-agents-oss'
 arch=(
@@ -59,7 +59,8 @@ package() {
 
     install -Dm755 /dev/stdin "$pkgdir/usr/bin/craft-agents" <<'EOF'
 #!/bin/sh
-exec /opt/craft-agents/AppRun --no-sandbox "$@"
+export APPDIR=/opt/craft-agents
+exec "$APPDIR/AppRun" --no-sandbox "$@"
 EOF
 
     sed \
