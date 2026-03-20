@@ -1,0 +1,17 @@
+diff -ura llvm-project/libclc/CMakeLists.txt llvm-project-new/libclc/CMakeLists.txt
+--- llvm-project/libclc/CMakeLists.txt	2026-03-15 15:17:11.878897970 +0100
++++ llvm-project-new/libclc/CMakeLists.txt	2026-03-15 15:19:28.863656046 +0100
+@@ -138,6 +138,12 @@
+ add_custom_target( libclc-opencl-builtins COMMENT "Build libclc OpenCL builtins" )
+ add_dependencies( libclc libclc-opencl-builtins )
+ 
++configure_file( libclc.pc.in libclc.pc @ONLY )
++install( FILES ${CMAKE_CURRENT_BINARY_DIR}/libclc.pc
++  DESTINATION "${CMAKE_INSTALL_DATADIR}/pkgconfig" )
++
++
++
+ foreach( t ${LIBCLC_TARGETS_TO_BUILD} )
+   message( STATUS "libclc target '${t}' is enabled" )
+   string( REPLACE "-" ";" TRIPLE  ${t} )
+
