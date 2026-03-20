@@ -1,6 +1,6 @@
 # Maintainer: Kaine Killian kainekillian@proton.me
 pkgname=desktopify-lite
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='CLI tool that generates Linux .desktop launchers for websites'
 arch=('x86_64' 'aarch64')
