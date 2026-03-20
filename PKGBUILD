@@ -8,7 +8,7 @@
 
 _pack=audio
 pkgname=octave-$_pack
-pkgver=2.0.9
+pkgver=2.0.11
 pkgrel=1
 pkgdesc="Audio recording, processing and playing tools."
 arch=(any)
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://github.com/gnu-octave/$pkgname/releases/download/release-$pkgver/$_archive")
 noextract=("$_archive")
-b2sums=('648f45f45ec7bacd16ab8aa2a7e5b347aad4ae4a76b31e71b121b619f488f6ef248ce67e5a004984ba900642bfbc1a7c22e198884b5c85160f7731be4715d3a7')
+b2sums=('c477cb13d0f6ba09e68e28e930ce272f9503034093385a0ea30f6e40b15c793173ac534b0d1e54fb792ff8c38732cfbea037fa0b85bb99c34ff0191c796300f5')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
