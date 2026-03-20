@@ -1,5 +1,5 @@
 pkgname=kotlin-lsp-bin
-pkgver=262.1817.0
+pkgver=262.2310.0
 pkgrel=2
 pkgdesc="Smart code completion, diagnostics and more for Kotlin using the Language Server Protocol"
 arch=(any)
@@ -9,7 +9,7 @@ conflicts=('kotlin-lsp-git')
 provides=('kotlin-lsp')
 depends=('java-runtime=17')
 source=("https://download-cdn.jetbrains.com/kotlin-lsp/${pkgver}/kotlin-lsp-${pkgver}-linux-x64.zip")
-sha256sums=('da6fca67b2f4056ccb65849c885f3d2752f992116e8ad8132dc028acc4845547')
+sha256sums=('c004242158f4b5e1d917ddd848e6f6a279484fa58a3e2bce8846b807d1ad16b1')
 
 package() {
     echo ${pkgdir}
