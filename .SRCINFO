@@ -1,6 +1,6 @@
 pkgbase = chimeraos-device-quirks-sk
 	pkgdesc = A collection of device specific configuration files
-	pkgver = 2.2.2
+	pkgver = 2.3.0
 	pkgrel = 1
 	url = https://github.com/ChimeraOS/device-quirks
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = chimeraos-device-quirks-sk
 	replaces = chimeraos-device-quirks-git
 	replaces = chimeraos-device-quirks-sk-git
 	backup = etc/device-quirks/device-quirks.conf
-	source = chimeraos-device-quirks::git+https://github.com/honjow/device-quirks.git#tag=v2.2.2
+	source = chimeraos-device-quirks::git+https://github.com/honjow/device-quirks.git#tag=v2.3.0
 	sha256sums = SKIP
 
 pkgname = chimeraos-device-quirks-sk
