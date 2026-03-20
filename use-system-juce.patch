@@ -1,0 +1,36 @@
+--- a/OB-Xd Linux.jucer	
++++ b/OB-Xd Linux.jucer	
+@@ -116,20 +116,20 @@
+     </LINUX_MAKE>
+   </EXPORTFORMATS>
+   <MODULES>
+-    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+-    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+-    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
++    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
++    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
++    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+     <MODULES id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+-             useGlobalPath="0"/>
+-    <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+-    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+-    <MODULES id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+-    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+-    <MODULES id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+-    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+-    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+-    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+-    <MODULES id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
++             useGlobalPath="1"/>
++    <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
++    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
++    <MODULES id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
++    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
++    <MODULES id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
++    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
++    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
++    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
++    <MODULES id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+   </MODULES>
+   <JUCEOPTIONS JUCE_QUICKTIME="disabled" JUCE_WEB_BROWSER="0" JUCE_ASIO="1"
+                JUCE_VST3_CAN_REPLACE_VST2="0" 

@@ -1,0 +1,4 @@
+[ob-xd]
+source = "git"
+git = "https://github.com/grawlinson/OB-Xd.git"
+prefix = "v"

@@ -1,0 +1,21 @@
+--- a/OB-Xd Linux.jucer	
++++ b/OB-Xd Linux.jucer	
+@@ -9,8 +9,8 @@
+               pluginAUExportPrefix="" pluginRTASCategory="2048" aaxIdentifier="com.discodsp.obxd"
+               companyName="discoDSP" companyWebsite="https://www.discodsp.com/"
+               pluginIsMidiEffectPlugin="0" pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
+-              pluginFormats="buildAU,buildLV2,buildStandalone,buildVST,buildVST3"
+-              buildVST="1" buildVST3="1" buildAU="1" buildAUv3="0" buildRTAS="0"
++              pluginFormats="buildAU,buildLV2,buildStandalone,buildVST3"
++              buildVST="0" buildVST3="1" buildAU="1" buildAUv3="0" buildRTAS="0"
+               buildAAX="0" buildStandalone="1" enableIAA="0" jucerFormatVersion="1"
+               companyCopyright="discoDSP" companyEmail="contactus@discodsp.com"
+               pluginAAXCategory="2048" pluginVSTCategory="kPlugCategSynth"
+@@ -132,6 +132,7 @@
+     <MODULES id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+   </MODULES>
+   <JUCEOPTIONS JUCE_QUICKTIME="disabled" JUCE_WEB_BROWSER="0" JUCE_ASIO="1"
++               JUCE_VST3_CAN_REPLACE_VST2="0" 
+                JUCE_JACK="1" JUCE_USE_CURL="0"/>
+   <LIVE_SETTINGS>
+     <OSX/>
