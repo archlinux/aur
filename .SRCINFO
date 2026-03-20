@@ -1,7 +1,7 @@
 pkgbase = blahaj-d
 	pkgdesc = Gay sharks at your local terminal - ported to D! lolcat-like CLI tool
 	pkgver = 1.0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://codeberg.org/sashaa/BLAHAJ-d
 	arch = x86_64
 	arch = i686
@@ -13,6 +13,6 @@ pkgbase = blahaj-d
 	conflicts = blahaj-rs-git
 	conflicts = blahaj-rs
 	source = git+https://codeberg.org/sashaa/BLAHAJ-d.git#tag=v1.0.2
-	sha256sums = ba7aed6cf912f1ffdf0f706a60c37fccd0ee73d127b5a165d007b0f1301e9f69
+	sha256sums = bb8e1d3e78671ecf892d5a9079a632108a2ca102b107b075d861bdb3c8b1ca90
 
 pkgname = blahaj-d
