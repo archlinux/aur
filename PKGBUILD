@@ -5,7 +5,7 @@
 # https://www.kernel.org/category/releases.html
 # 6.12 Greg Kroah-Hartman & Sasha Levin  2024-11-17  Dec, 2026
 _LLL_VER=6.12
-_LLL_SUBVER=63
+_LLL_SUBVER=74
 
 #PKGEXT='.pkg.tar'
 
@@ -84,7 +84,7 @@ _MORE_PATCH=(
 pkgbase=linux-shmilee
 pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 pkgver=${_LLL_VER}.${_LLL_SUBVER}
-pkgrel=3
+pkgrel=1
 pkgdesc="Linux-shmilee x64${_psABI_level}"
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -119,7 +119,7 @@ validpgpkeys=(
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('b1a2562be56e42afb3f8489d4c2a7ac472ac23098f1ef1c1e40da601f54625eb'
             'SKIP'
-            '9d469983e1811c884f4e964ad6c143c74d1082ff33507bbd812d039a9b1f5921'
+            '39e90ab586ada899d6e5c438cf48c22978a81ee52e20710a23762777baedefe6'
             'dd78d56eeddb61e152a31cd059148122963f423153f5274cb7b2bc026c6b74aa'
             'ab67a7d55b06dfa9a23dc20db8b34f58732c753dc62a480b984bbac5c5323cf4'
             '76e138ee23bd1e8ac47ad5998768e2aa62dc9d00a1088005c23918f68951e97d'
