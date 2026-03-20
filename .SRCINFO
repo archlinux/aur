@@ -1,17 +1,17 @@
 pkgbase = octave-interval
 	pkgdesc = The interval package for real-valued interval arithmetic allows one to evaluate functions over subsets of their domain. All results are verified, because interval computations automatically keep track of any errors. These concepts can be used to h [...]
-	pkgver = 3.2.1
+	pkgver = 3.2.2
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/interval/
 	install = octave-interval.install
 	arch = any
 	groups = octave-forge
-	license = GPL3
+	license = GPL-3.0-or-later
 	makedepends = mpfr>=3.1.0
-	depends = octave>=4.2.0
+	depends = octave>=4.4.0
 	depends = mpfr>=3.1.0
-	noextract = interval-3.2.1.tar.gz
-	source = https://downloads.sourceforge.net/octave/interval-3.2.1.tar.gz
-	sha256sums = 38e526427375713229ab3d86a5fe3f5a08550747d8420541706fdea9093fdce8
+	noextract = interval-3.2.2.tar.gz
+	source = https://downloads.sourceforge.net/octave/interval-3.2.2.tar.gz
+	sha256sums = c0131b7add14bdeaa907c168ebcc987b6440f67cb56069849b24bcad2c0ad176
 
 pkgname = octave-interval
