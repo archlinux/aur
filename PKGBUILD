@@ -34,7 +34,7 @@ optdepends=(
 provides=('screenix')
 conflicts=('screenix')
 options=('!strip' '!debug')
-source=("https://github.com/mathisdev7/screenix/releases/download/v${pkgver}/Screenix_${pkgver}_amd64.deb")
+source=("https://github.com/mathisdev7/screenix-releases/releases/download/v${pkgver}/Screenix_${pkgver}_amd64.deb")
 sha256sums=('SKIP')
 
 package() {
