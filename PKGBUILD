@@ -1,7 +1,7 @@
 # Maintainer: futpib <futpib@gmail.com>
 pkgname=whitenoise
 pkgver=2026.3.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure, private, decentralized chat app built on Nostr using the MLS protocol"
 arch=('x86_64')
 url="https://whitenoise.chat"
@@ -55,6 +55,19 @@ build() {
     # With system sqlcipher available and this flag set, both host and target builds
     # use dynamic libsqlcipher, resolving the undefined-symbol error.
     export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+
+    # Strip -flto from CFLAGS: the secp256k1-sys crate (and other Rust build.rs C
+    # compilations) use the cc crate to compile vendored C sources into static archives
+    # that are then statically linked by rustc into the cdylib.  When -flto=auto is
+    # present in CFLAGS the cc crate emits LTO bitcode objects (.a with IR), but rustc
+    # does not invoke the GCC LTO plugin during the final link, leaving many secp256k1
+    # symbols undefined in the resulting .so (the crash: "undefined symbol:
+    # rustsecp256k1_v0_10_0_context_no_precomp").  Removing -flto forces plain object
+    # files so rustc can resolve all symbols at link time.
+    export CFLAGS="${CFLAGS//-flto=auto/}"
+    export CFLAGS="${CFLAGS//-flto/}"
+    export CXXFLAGS="${CXXFLAGS//-flto=auto/}"
+    export CXXFLAGS="${CXXFLAGS//-flto/}"
 
     cd "whitenoise-${pkgver}"
 

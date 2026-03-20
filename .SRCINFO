@@ -1,7 +1,7 @@
 pkgbase = whitenoise
 	pkgdesc = Secure, private, decentralized chat app built on Nostr using the MLS protocol
 	pkgver = 2026.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://whitenoise.chat
 	arch = x86_64
 	license = AGPL-3.0-only
