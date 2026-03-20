@@ -1,8 +1,8 @@
 pkgbase = promrail
 	pkgdesc = Git-native GitOps promotion tool
-	pkgver = 0.0.0
+	pkgver = 0.1.1
 	pkgrel = 1
-	url = https://github.com/forkline/promrail
+	url = https://github.com/forkline/prl
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -14,7 +14,7 @@ pkgbase = promrail
 	makedepends = git
 	provides = promrail
 	conflicts = promrail
-	source = git+https://github.com/forkline/promrail.git#tag=v0.0.0
+	source = git+https://github.com/forkline/prl.git#tag=v0.1.1
 	sha512sums = SKIP
 
 pkgname = promrail
