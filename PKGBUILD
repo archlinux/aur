@@ -7,8 +7,8 @@
 
 
 pkgname=opentelemetry-cpp
-pkgver="1.25.0"
-_proto_version="1.9.0"
+pkgver="1.26.0"
+_proto_version="1.10.0"
 pkgrel=1
 pkgdesc="The C++ OpenTelemetry client."
 arch=("x86_64" "armv7h")
@@ -21,8 +21,8 @@ source=(
   "https://github.com/open-telemetry/opentelemetry-proto/archive/refs/tags/v${_proto_version}.tar.gz"
 )
 sha256sums=(
-  "a0c944a9de981fe1874b31d1fe44b830fc30ee030efa27ee23fc73012a3a13e9"
-  "2d2220db196bdfd0aec872b75a5e614458f8396557fc718b28017e1a08db49e4"
+  "8a878777a18a013e0ee6604629d1b5f29b162354c14489ad1dccd370f14ac372"
+  "52c85df79badc45da7e6a8735e8090b05a961b0208756187e1492a40db2d1f5f"
 )
 
 build() {
