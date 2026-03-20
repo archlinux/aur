@@ -1,0 +1,16 @@
+pkgbase = cedula-uruguay-pkcs11
+	pkgdesc = PKCS#11 middleware for the Uruguayan electronic ID card (cédula)
+	pkgver = 7.5.0
+	pkgrel = 1
+	url = https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/firma-digital/drivers-para-usar-cedula-digital
+	arch = x86_64
+	license = custom
+	makedepends = binutils
+	makedepends = tar
+	depends = pcsclite
+	depends = ccid
+	options = !debug
+	source = libclassicclient.deb::https://archivos.agesic.gub.uy/nextcloud/index.php/s/8kqSb9z4xKABM8T/download
+	sha256sums = b6fd0150fcea2b952b0d82027324cf3250dea6f42eaac430d6d08ea22eb840ed
+
+pkgname = cedula-uruguay-pkcs11
