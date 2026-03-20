@@ -3,6 +3,7 @@ pkgbase = massav1encoder
 	pkgver = 11.2.1
 	pkgrel = 1
 	url = https://github.com/UnDadFeated/Mass_AV1_Encoder
+	changelog = massav1encoder.changelog
 	arch = any
 	license = MIT
 	depends = pyside6

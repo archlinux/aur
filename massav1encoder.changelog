@@ -1,0 +1,15 @@
+v11.2.1 - 2026-03-20
+- Fixed job worker TypeError regression.
+- Corrected engine.encode_file call signature.
+
+v11.2.0 - 2026-03-20
+- HDR auto-detection and preservation.
+- Automated 10-bit pixel format selection for HDR sources.
+- Progress telemetry fix in engine.py.
+- Added NAS watchdog for stalled ffmpeg processes.
+
+v11.1.0 - 2026-03-20
+- NAS resilience and crash recovery.
+- Live queue.list sync for persistent progress tracking.
+- Source path accessibility pre-flight checks.
+- Session timer persistence across stops.

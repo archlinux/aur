@@ -3,6 +3,7 @@ pkgname=massav1encoder
 _pkgname=Mass_AV1_Encoder
 pkgver=11.2.1
 pkgrel=1
+changelog=massav1encoder.changelog
 pkgdesc="World-class, high-density AV1 encoding dashboard for high-efficiency archival."
 arch=('any')
 url="https://github.com/UnDadFeated/Mass_AV1_Encoder"
