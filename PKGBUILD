@@ -10,7 +10,7 @@ depends=('python' 'mpv' 'python-tidalapi')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/pynttvi/tidal-cli-client/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('d20b611ef7edf0d42e5d0f195b7da83017c3ab91cfaedf29a3389cf737f3052c')
+sha256sums=('5eb82ebbbbd76b02e28119a8c50d0795f2236322f62dc84db9e0457fad6b3564')
 
 package() {
   local srcroot="$srcdir/tidal-cli-client-${pkgver}"
