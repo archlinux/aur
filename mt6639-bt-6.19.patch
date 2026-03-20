@@ -45,7 +45,19 @@
  		err = btmtk_usb_uhw_reg_read(hdev, MTK_BT_RESET_REG_CONNV3, &val);
  		if (err < 0)
  			return err;
-@@ -1324,23 +1337,38 @@
+@@ -1310,6 +1323,11 @@
+ 		fw_flavor = (fw_flavor & 0x00000080) >> 7;
+ 	}
+ 
++	if (!dev_id) {
++		bt_dev_info(hdev, "MT6639: raw CHIPID=0x0000, forcing chip=0x6639");
++		dev_id = 0x6639;
++	}
++
+ 	btmtk_data->dev_id = dev_id;
+ 
+ 	err = btmtk_register_coredump(hdev, btmtk_data->drv_name, fw_version);
+@@ -1324,23 +1342,38 @@
  		fwname = FIRMWARE_MT7668;
  		break;
  	case 0x7922:
