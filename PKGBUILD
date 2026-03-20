@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=tunarr-bin
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='Create a classic TV experience using your own media - IPTV backed by Plex/Jellyfin/Emby'
 arch=('x86_64' 'aarch64')
