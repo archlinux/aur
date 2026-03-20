@@ -1,0 +1,3 @@
+[digital_rf]
+source = "git"
+git = "https://github.com/MITHaystack/digital_rf.git"

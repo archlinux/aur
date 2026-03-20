@@ -1,0 +1,42 @@
+pkgbase = digital_rf
+	pkgdesc = Read, write, and interact with data in the Digital RF and Digital Metadata formats
+	pkgver = 2.6.14
+	pkgrel = 1
+	url = https://github.com/MITHaystack/digital_rf
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = cmake>=3.20
+	makedepends = hdf5>=1.8
+	makedepends = python-build
+	makedepends = hdf5>=1.8
+	makedepends = python-mako
+	makedepends = python-numpy>=2.0
+	makedepends = python>=3.8
+	makedepends = python-scikit-build-core>=0.10
+	makedepends = python-setuptools-scm
+	source = https://github.com/MITHaystack/digital_rf/archive/refs/tags/2.6.14/digital_rf-2.6.14.tar.gz
+	b2sums = 09303a1f18ead06c3c0376f1a2c4710e6556d0850d024ee99cb5a98cb1d07182f481b83b53c6cdaef2ad1b60b77abcc59e0198614ba3798ab3e67279c94bac0a
+
+pkgname = digital_rf
+	depends = hdf5>=1.8
+	depends = glibc
+	provides = libdigital_rf.so
+
+pkgname = python-digital_rf
+	depends = python-h5py
+	depends = hdf5>=1.8
+	depends = python-numpy
+	depends = python-packaging
+	depends = python>=3.8
+	depends = python-dateutil
+	depends = python-six
+	depends = digital_rf>=2.6.14
+	depends = glibc
+	optdepends = gnuradio: gr_digital_rf, thorosmo, thorpluto, thor
+	optdepends = python-matplotlib: tools
+	optdepends = python-pandas: digital_metadata
+	optdepends = python-sounddevice: tools
+	optdepends = python-scipy: tools
+	optdepends = python-uhd: uhdtodrf
+	optdepends = python-watchdog: mirror, ringbuffer, watchdog
+	optdepends = python-gnuradio
