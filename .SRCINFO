@@ -1,0 +1,14 @@
+pkgbase = vigil-anticheat
+	pkgdesc = Linux-native anti-cheat for competitive gaming
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/TOSTcRa/vigil
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	backup = etc/vigil/config.toml
+	source = vigil-0.2.0.tar.gz::https://github.com/TOSTcRa/vigil/archive/v0.2.0.tar.gz
+	sha256sums = d3127cdf97ee7dc9847f41d329062ef070dc3123f48a8723cae92397485e6988
+
+pkgname = vigil-anticheat
