@@ -1,7 +1,7 @@
 # Maintainer: guglovich <https://github.com/guglovich>
 # Created with assistance from Claude (Anthropic).
 pkgname=transmission-remote-slint
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Lightweight Transmission BitTorrent GUI built with Slint (no GTK)"
 arch=('x86_64')
@@ -30,8 +30,9 @@ optdepends=(
 )
 provides=("$pkgname")
 conflicts=('transmission-remote-slint-bin')
+options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/guglovich/Transmission-Remote-Slint/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('8e328bdd16dcd66288d5f6466d036dccc8a0eb3a3aaee7e991813a68a91715e4')
+sha256sums=('ef15d6e1a9f2bd2f04afe09b7fd90a5c8346ae3c7ebce58a59765fbc77770c50')
 
 prepare() {
     cd "Transmission-Remote-Slint-${pkgver}"
