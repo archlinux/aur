@@ -1,0 +1,14 @@
+pkgbase = photogimp
+	pkgdesc = GIMP config overlay that mimics Adobe Photoshop layout and shortcuts
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/Diolinux/PhotoGIMP
+	arch = any
+	license = GPL-3.0-only
+	depends = gimp
+	source = photogimp-3.0.zip::https://github.com/Diolinux/PhotoGIMP/releases/download/3.0/PhotoGIMP-linux.zip
+	source = LICENSE-3.0::https://raw.githubusercontent.com/Diolinux/PhotoGIMP/3.0/LICENSE
+	sha256sums = 1af6e2a6308bbc0fb716a7dbbd68036adbcc091da16432869c7c6c6aef18e54e
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+pkgname = photogimp
