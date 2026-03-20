@@ -1,6 +1,6 @@
 # Maintainer: Daniel Seichter <https://github.com/dseichter>
 pkgname=workdir
-pkgver=2026.03.16.beta12
+pkgver=2026.03.16.beta13
 pkgrel=1
 pkgdesc="Work with multiple directories and run commands without navigating manually."
 arch=('any')
@@ -10,7 +10,7 @@ options=('!debug')
 depends=('python>=3.12' 'pyside6' 'python-urllib3' 'python-packaging')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver//./-}.tar.gz")
-sha256sums=('26bbb631da0ad96e3d89edcb9807d1197bedba8c85a9c03bcb8cdd8c4e9a5500')
+sha256sums=('0bd46226d528443009db51f414122a345103e1ddc8c73a6271214d1ea6fc53b3')
 
 build() {
     cd "Workdir-${pkgver//./-}"
