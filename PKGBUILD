@@ -1,7 +1,7 @@
 # Maintainer: Jussi Eloranta <eloranta@aa6kj.hopto.org>
 pkgname=qk4-git
 pkgver=rv0.5.0.beta.6.0.g5d68e84
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control software for Elecraft K4 radio."
 arch=('any')
 url="https://github.com/mikeg-dal/QK4"
@@ -43,7 +43,10 @@ Comment=Remote control software for Elecraft K4 radio
 Exec=/usr/bin/QK4
 Type=Application
 Categories=AudioVideo;Audio;HamRadio;
+Icon=qk4_icon
 Terminal=false
 EOF
     chmod 644 "$pkgdir/usr/share/applications/qk4.desktop"
+    install -Dm644 "$startdir/qk4.png" "$pkgdir/usr/share/pixmaps/qk4.png"
+    chmod 644 "$pkgdir/usr/share/pixmaps/qk4.png"
 }
