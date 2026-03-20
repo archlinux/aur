@@ -3,7 +3,7 @@
 pkgbase='fonts-arundina'
 pkgname=('ttf-arundina' 'otf-arundina')
 pkgver=0.4.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Thai fonts aiming at Bitstream Vera and Dejavu compatibility'
 arch=('any')
 license=('Bitstream-Vera')
@@ -23,12 +23,12 @@ build() {
 
 package_ttf-arundina() {
     cd fonts-arundina-$pkgver
-    install -Dm644 -t "$pkgdir/usr/share/$pkgname" arundina/*.ttf
+    install -Dm644 -t "$pkgdir/usr/share/fonts/TTF" arundina/*.ttf
     install -Dm644 <(awk '/2003 by Bitstream/,/sipa/ {print}' COPYING) "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_otf-arundina() {
     cd fonts-arundina-$pkgver
-    install -Dm644 -t "$pkgdir/usr/share/$pkgname" arundina/*.otf
+    install -Dm644 -t "$pkgdir/usr/share/fonts/OTF" arundina/*.otf
     install -Dm644 <(awk '/2003 by Bitstream/,/sipa/ {print}' COPYING) "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
