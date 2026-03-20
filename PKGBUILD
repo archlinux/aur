@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-git
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Feature rich Discord TUI client."
 arch=('any')
@@ -54,8 +54,10 @@ package() {
 	cd endcord
 	install -Dm755 ./dist/endcord "$pkgdir/usr/bin/endcord"
 	install -Dm644 ./README.md "$pkgdir/usr/share/doc/endcord/README.md"
-	install -Dm644 ./commands.md "$pkgdir/usr/share/doc/endcord/commands.md"
-	install -Dm644 ./configuration.md "$pkgdir/usr/share/doc/endcord/configuration.md"
+	install -Dm644 ./docs/commands.md "$pkgdir/usr/share/doc/endcord/commands.md"
+	install -Dm644 ./docs/configuration.md "$pkgdir/usr/share/doc/endcord/configuration.md"
+	install -Dm644 ./docs/extensions.md "$pkgdir/usr/share/doc/endcord/extensions.md"
+	install -Dm644 ./docs/keybindings.md "$pkgdir/usr/share/doc/endcord/keybindings.md"
 	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/endcord/LICENSE"
 	# install -Dm644 endcord.desktop "$pkgdir/usr/share/applications/endcord.desktop"
     # install -Dm644 endcord.svg "$pkgdir/usr/share/icons/hicolor/256x256/apps/endcord.svg"
