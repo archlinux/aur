@@ -6,7 +6,7 @@ pkgname=(cuda-pascal cuda-pascal-tools)
 pkgbase=cuda-pascal
 pkgver=12.9.1
 _driverver=575.57.08
-pkgrel=3
+pkgrel=4
 pkgdesc="NVIDIA CUDA toolkit for Pascal GPUs (latest CUDA version still supporting Pascal)"
 arch=('x86_64')
 url="https://developer.nvidia.com/cuda-zone"
@@ -134,6 +134,11 @@ build() {
   # for official requirements
   sed -i "/.*unsupported GNU version.*/d" "${_prepdir}"/opt/cuda/targets/x86_64-linux/include/crt/host_config.h
   sed -i "/.*unsupported clang version.*/d" "${_prepdir}"/opt/cuda/targets/x86_64-linux/include/crt/host_config.h
+
+  # Fix glibc 2.43+ C23 math function noexcept conflict (cospi, sinpi, rsqrt)
+  # glibc 2.43 declares these with noexcept(true), CUDA 12.9 headers don't
+  sed -i -E 's/(extern __DEVICE_FUNCTIONS_DECL__ __device_builtin__ (double|float)[[:space:]]+(cospi|cospif|sinpi|sinpif|rsqrt|rsqrtf)\((double|float) x\));/\1 noexcept(true);/' \
+    "${_prepdir}"/opt/cuda/targets/x86_64-linux/include/crt/math_functions.h
 
   # Fix Makefile paths to CUDA
   for f in $(find "$_prepdir"/opt/cuda -name Makefile); do
