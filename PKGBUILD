@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="vtm"
-pkgver=2026.03.07
+pkgver=2026.03.19
 pkgrel=1
 pkgdesc="Terminal multiplexer with window manager and session sharing"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake>=3.24' 'freetype2' 'harfbuzz')
 # backup=("etc/${pkgname}/settings.xml")
 _pkgsrc="${pkgname}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('16c5e7521d956f4c9d414d5fdb6dbbab8a132408d1c639cd21cf71d7f44ba2605e4f0d60f0c6d4e163b3767cfd13d7355222147f9bea1a763d4ab640a0aeb9f9')
+b2sums=('ddcd44912b66ea61aec297fbbe5c255c4c80012e7769eb062cf5c85ea9918f46946a553654181593d04d77655ae8284e9e4e719128653f5acc1f88d087d3bacb')
 
 build() {
   local cmake_options=(
