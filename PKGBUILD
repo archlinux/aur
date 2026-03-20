@@ -1,6 +1,6 @@
 # Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=hister-git
-pkgver=0.9.0.r12.gb62cbd8
+pkgver=0.10.0.r5.g65f3078
 pkgrel=1
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites (git)"
 arch=('x86_64' 'aarch64')
@@ -28,6 +28,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$pkgname"
     export GOPATH="$srcdir"
+    export GOFLAGS="-modcacherw"
     go mod download
     go generate
 }
