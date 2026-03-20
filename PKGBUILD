@@ -7,7 +7,7 @@
 pkgbase=immich
 pkgname=('immich-server' 'immich-cli')
 pkgrel=1
-pkgver=2.5.6
+pkgver=2.6.1
 pkgdesc='Self-hosted photos and videos backup tool'
 url='https://github.com/immich-app/immich'
 license=('AGPL-3.0-only')
@@ -73,7 +73,7 @@ source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/immich-app/immich/archi
 	'https://download.geonames.org/export/dump/admin1CodesASCII.txt'
 	'https://download.geonames.org/export/dump/admin2Codes.txt'
 	'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson')
-sha256sums=('01072d3125873ca1455ce0153f453017402308734fea9da45eb7ccd387d757ed'
+sha256sums=('e7a231ecdf701db49527a5fd8c6f98dc9522113d970499469a5e0e553f5a2a23'
             'cc061fc006d2e60ace2b3b4844c8e3d7ffda0164a0579dae2beb479d86dce7f0'
             'e56fe5f8abb55f93117cd8b5e1214d06a21a9f8e0458607040c5c5e364b0a164'
             '2ca8f6776aef27c455142edbe9120b7c38ee354dca5336ce89c16f71dd633a28'
@@ -101,7 +101,7 @@ prepare() {
 	pnpm patch-commit "$sharp_dir"  # Second, this runs the scripts
 
 	cd web
-	pnpm add 'three@^0.179.0'  # otherwise vite rollup fails to resolve this transitive dependency for photo-sphere-viewer
+	pnpm add 'three'  # otherwise vite rollup fails to resolve this transitive dependency for photo-sphere-viewer
 
 	cd ../server
 	rm ../mise.toml  # otherwise asks to trust in mise build steps, interrupting unattended builds
@@ -189,11 +189,9 @@ package_immich-server() {
 	install -Dm644 immich.conf "${pkgdir}/etc/immich.conf"
 	install -Dm644 nginx.immich.conf "${pkgdir}/usr/share/doc/immich/examples/nginx.conf"
 
-	# create empty lock file
-	# usually used to determine versions at server/src/repositories/server-info.repository.ts,
-	# but it will not reflect the arch installed versions, and if the file is empty
+	# we don't create a build-lock.json because if the file is empty
 	# it just detects the right versions from the environment
-	# echo '{}' > "${pkgdir}/usr/lib/immich/build/build-lock.json"
+	# see server/src/repositories/server-info.repository.ts
 
 	# install server management scripts; immich-admin doesn't work
 	install -Dm755 "${pkgdir}/usr/lib/immich/app/server/bin/immich-healthcheck" "${pkgdir}/usr/bin/immich-healthcheck"
