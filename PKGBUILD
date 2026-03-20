@@ -18,10 +18,9 @@ source=("${pkgname}-${pkgver}.AppImage::https://updates.voltagechat.app/desktop/
         "volt-desktop.png")
 noextract=("${pkgname}-${pkgver}.AppImage")
 
-# Update these sums after running: makepkg -g
-sha256sums=('SKIP'
-            'SKIP'
-            'SKIP')
+sha256sums=('013769c7626b1bd29285e8930b6de5abc5f2a71f75e965a7719ec5a153248fcd'
+            'ea0d46bddaafdedeaa7c57eb4ca4e69f1f51d917d8662a33398d35258bb301ec'
+            'f4e59ffb51c7ab41b9f3b1eacd9296801ad684eef88fa862bb44790c5714f56e')
 
 prepare() {
     chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"
