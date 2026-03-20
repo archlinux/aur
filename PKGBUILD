@@ -1,6 +1,6 @@
 # Maintainer: Kaine Killian kainekillian@proton.me
 pkgname=desktopify-lite
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc='CLI tool that generates Linux .desktop launchers for websites'
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ makedepends=('git' 'go')
 conflicts=('desktopify-lite-git')
 # Use variable for tag so it updates automatically
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha256sums=('42cf8c2c7e4f7a1759d4f98e88e07465b866ab86cb7bf4086cf72818b6b06c87')
+sha256sums=('e99d2b4ac4459b0ee0cbbcdbbf97c3a2a642550f500979f71aeefb9b65de7b80')
 
 build() {
   cd "$srcdir/$pkgname"
