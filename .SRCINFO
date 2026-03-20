@@ -1,0 +1,13 @@
+pkgbase = hid-chandbreak-dkms
+	pkgdesc = DKMS kernel driver for USB sim handbrake devices based on LeafLabs Maple (1eaf:0024)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AngryNui/hid-chandbreak
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	source = git+https://github.com/AngryNui/hid-chandbreak.git#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = hid-chandbreak-dkms
