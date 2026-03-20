@@ -1,4 +1,4 @@
-# Maintainer: Sankalp <sankalptharu50028@gmail.com>
+# Maintainer: Sankalp <contact@sankalptharu.com.np>
 
 pkgname=vbx-git
 pkgver=0.3.0.0.g373e64f
