@@ -1,11 +1,11 @@
 # Maintainer: ltdk <usr@ltdk.xyz>
 pkgname=plsnocompute
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Masks resource-draining user services so they don't run."
 arch=(any)
 url="https://codeberg.org/ltdk/plsnocompute"
-license=('CC0')
+license=(CC0-1.0)
 depends=(systemd)
 source=()
 sha256sums=()

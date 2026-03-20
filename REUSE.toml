@@ -1,0 +1,13 @@
+version = 1
+
+[[annotations]]
+path = [
+    ".editorconfig",
+    ".gitignore",
+    ".SRCINFO",
+    "PKGBUILD",
+    "README.md",
+    "CHANGELOG.md",
+]
+SPDX-FileCopyrightText = "NONE"
+SPDX-License-Identifier = "CC0-1.0"
