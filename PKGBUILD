@@ -1,10 +1,10 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang-git
 _pkgname=sglang
-pkgver=r10745.274581fb77
-pkgrel=1
+pkgver=r10750.2ee7f41e25
+pkgrel=3
 pkgdesc='A fast serving framework for large language models and vision language models'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/sgl-project/sglang'
 license=('Apache-2.0')
 depends=(
@@ -51,7 +51,7 @@ optdepends=(
   'python-packaging: Version utilities'
   'python-pillow: Image processing'
   'python-psutil: Process monitoring'
-  'python-python-multipart: Multipart form parsing'
+  'python-multipart: Multipart form parsing'
   'python-pyzmq: ZeroMQ messaging'
   'python-scipy: Scientific computing'
   'python-sentencepiece: Tokenization'
@@ -63,11 +63,17 @@ optdepends=(
 )
 provides=('sglang')
 conflicts=('sglang')
-backup=('etc/sglang.conf')
+backup=('etc/sglang/sglang.conf' 'etc/sglang/sglang.env')
 source=("${_pkgname}::git+${url}.git"
         'sglang.service'
-        'sglang.conf')
+        'sglang.conf'
+        'sglang.env'
+        'sglang.sysusers'
+        'sglang.tmpfiles')
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP')
 
@@ -89,5 +95,8 @@ package() {
   cd "${_pkgname}/python"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 "${srcdir}/sglang.service" "${pkgdir}/usr/lib/systemd/system/sglang.service"
-  install -Dm644 "${srcdir}/sglang.conf" "${pkgdir}/etc/sglang.conf"
+  install -Dm644 "${srcdir}/sglang.sysusers" "${pkgdir}/usr/lib/sysusers.d/sglang.conf"
+  install -Dm644 "${srcdir}/sglang.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/sglang.conf"
+  install -Dm644 "${srcdir}/sglang.conf" "${pkgdir}/etc/sglang/sglang.conf"
+  install -Dm600 "${srcdir}/sglang.env" "${pkgdir}/etc/sglang/sglang.env"
 }
