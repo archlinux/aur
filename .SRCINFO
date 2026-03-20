@@ -1,0 +1,14 @@
+pkgbase = bento-box
+	pkgdesc = A local project vault CLI — compress, stash, and restore project folders
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Aboud04/bento
+	arch = x86_64
+	license = MIT
+	provides = bento
+	provides = bt
+	conflicts = bento
+	source = https://github.com/Aboud04/bento/releases/download/v0.1.0/bento-linux-x86_64.tar.gz
+	sha256sums = 90552ff0addf22fc291fe1b54d6fa60a195587d8b66a48318d574a2d9ac94ad2
+
+pkgname = bento-box
