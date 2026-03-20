@@ -1,0 +1,22 @@
+pkgbase = lapctl-git
+	pkgdesc = Control Linux laptop hardware (Graphics, Battery, Power, Cooling, Display) with Rust
+	pkgver = 0.2.0.r0.g9390f35
+	pkgrel = 1
+	url = https://github.com/S4NKALP/lapctl
+	install = lapctl-git.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = systemd
+	optdepends = xrandr: for GPU switching on X11
+	optdepends = nvidia-settings: for NVIDIA GPU switching on X11
+	provides = lapctl
+	conflicts = lapctl
+	source = git+https://github.com/S4NKALP/lapctl.git
+	sha256sums = SKIP
+
+pkgname = lapctl-git

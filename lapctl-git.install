@@ -1,0 +1,10 @@
+post_install() {
+    echo ":: Triggering udev rules reload..."
+    udevadm control --reload-rules && udevadm trigger
+    echo ":: You can now use lapctl to manage your laptop hardware without sudo."
+    echo "   Note: If some permissions are not applied immediately, a reboot may be required."
+}
+
+post_upgrade() {
+    post_install
+}
