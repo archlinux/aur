@@ -7,14 +7,14 @@ Official GitHub Repo: https://github.com/db-toolkit/db-toolkit
 ## Install From Aur Repo
 
 ```bash
-yay -S db-toolkit
+yay -S db-toolkit-bin
 ```
 
 ## Manual AUR Installation
 
 ```bash
 sudo pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/db-toolkit.git
+git clone https://aur.archlinux.org/db-toolkit-bin.git
 cd db-toolkit
 makepkg -si
 ```
