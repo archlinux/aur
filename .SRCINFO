@@ -1,20 +1,18 @@
 pkgbase = git-review
 	pkgdesc = Tool to submit code to Gerrit
 	pkgver = 2.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://opendev.org/opendev/git-review
 	arch = any
 	license = Apache-2.0
-	makedepends = python-pbr
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-pbr
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = git
 	depends = python-requests
-	source = git+https://opendev.org/opendev/git-review.git#commit=a3be713b85919706dcf578736fd04e4ba21ca09d
-	source = https://gerrit-releases.storage.googleapis.com/gerrit-3.4.4.war
-	b2sums = SKIP
-	b2sums = 4473e5eef14e8b741a998470a193340c62eb09f239a9ca5bf7372b15638fb2914bbc605b92722221f19ded088bbf2237eb25055217ff1b79e7a0334e9a1feb0b
+	source = git+https://opendev.org/opendev/git-review.git#tag=2.5.0
+	sha256sums = 80dd10ea2f43036ac61a4618335e413d99dd6ea1af7bb424011c277218fc7e7b
 
 pkgname = git-review
