@@ -1,91 +1,47 @@
-# Maintainer: Carl Smedstad <carsme@archlinux.org>
+# Maintainer: Will Handley <wh260@cam.ac.uk>
+# Contributor: Carl Smedstad <carsme@archlinux.org>
 
 pkgname=python-outlines
-_pkgname=${pkgname#python-}
-pkgver=0.0.41
+_pkgname=outlines
+pkgver=0.1.11
 pkgrel=1
-pkgdesc="Guided text generation"
+pkgdesc="Probabilistic Generative Model Programming"
 arch=(any)
-url="https://github.com/outlines-dev/outlines"
+url="https://github.com/dottxt-ai/outlines"
 license=(Apache-2.0)
 depends=(
   python
+  python-airportsdata
   python-cloudpickle
-  python-datasets
   python-diskcache
   python-interegular
   python-jinja
   python-jsonschema
   python-lark
   python-nest-asyncio
-  python-numba
   python-numpy
-  python-openai
+  python-outlines-core
+  python-pycountry
   python-pydantic
   python-pytorch
   python-referencing
   python-requests
-  python-tiktoken
-  python-transformers
+  python-tqdm
+  python-typing_extensions
 )
 makedepends=(
-  git
-  python-build
   python-installer
-  python-setuptools-scm
-  python-wheel
-)
-checkdepends=(
-  python-accelerate
-  python-pytest
-  python-pytest-mock
-  python-responses
 )
 optdepends=(
-  # 'python-vllm: deploy as LLM service' # Not packaged yet
+  'python-transformers: transformers backend'
+  'python-openai: OpenAI backend'
   'python-fastapi: deploy as LLM service'
   'uvicorn: deploy as LLM service'
-  'python-llama-cpp: llama.cpp backend'
 )
-source=("git+$url.git#tag=$pkgver")
-sha256sums=('53d82a340edfaf0a066bfe74158dea1fab60a8124168ee4ba3e25ad22b73bee0')
-validpgpkeys=('968479A1AFF927E37D1A566BB5690EEEBB952194') # GitHub <noreply@github.com>
-
-_archive="$_pkgname"
-
-pkgver() {
-  cd "$_archive"
-
-  git describe --tags
-}
-
-build() {
-  cd "$_archive"
-
-  python -m build --wheel --no-isolation
-}
-
-check() {
-  cd "$_archive"
-
-  rm -rf tmp_install
-  python -m installer --destdir=tmp_install dist/*.whl
-
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  export PYTHONPATH="$PWD/tmp_install/$site_packages"
-  # Ignored test requires python-llama-cpp (which I'm currently unable to
-  # install) and vllm which is not yet packaged.
-  pytest \
-    --deselect tests/benchmark \
-    --deselect tests/models/test_openai.py::test_openai_call \
-    --ignore tests/generate/test_integration_llamacpp.py \
-    --ignore tests/generate/test_integration_vllm.py \
-    --ignore tests/models/test_llama_cpp.py \
-    --pythonwarnings ignore::FutureWarning
-}
+source=("https://files.pythonhosted.org/packages/13/b4/99ea4a122bef60e3fd6402d19665aff1f928e0daf8fac3044d0b73f72003/${_pkgname}-${pkgver}-py3-none-any.whl")
+noextract=("${_pkgname}-${pkgver}-py3-none-any.whl")
+sha256sums=('f5a5f2242ed9802d3aab7a92789bf4008d734c576be9258cc0a297f690124727')
 
 package() {
-  cd "$_archive"
-
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="${pkgdir}" "${_pkgname}-${pkgver}-py3-none-any.whl"
 }
