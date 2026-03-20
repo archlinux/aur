@@ -19,6 +19,7 @@ depends=(
 makedepends=('go' 'git' 'pkgconf')
 conflicts=('lokstt-vulkan' 'lokstt-cuda')
 provides=('lokstt')
+options=("!debug")
 install='lokstt.install'
 
 source=(
@@ -29,7 +30,12 @@ source=(
     "ggml-medium-q5_0.bin::https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-medium-q5_0.bin"
     "ggml-large-v3-turbo-q5_0.bin::https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-large-v3-turbo-q5_0.bin"
 )
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP'
+            'be07e048e1e599ad46341c8d2a135645097a538221678b7acdd1b1919c6e1b21'
+            '60ed5bc3dd14eea856493d334349b405782ddcaf0028d4b5df4088345fba2efe'
+            '1be3a9b2063867b937e64e2ec7483364a79917e157fa98c5d94b5c1fffea987b'
+            '19fea4b380c3a618ec4723c3eef2eb785ffba0d0538cf43f8f235e7b3b34220f'
+            '394221709cd5ad1f40c46e6031ca61bce88931e6e088c188294c6d5a55ffa7e2')
 
 build() {
     cd "lokstt"
