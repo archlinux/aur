@@ -1,12 +1,12 @@
 pkgbase = muzi
 	pkgdesc = Snappy MPD client written in Zig
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/TristanJet/muzi
 	arch = x86_64
 	license = GPLv3
 	makedepends = zig
-	source = https://github.com/TristanJet/muzi/archive/refs/tags/v1.1.1.tar.gz
-	sha256sums = 27020d69938c3615144a5d0a90d2a887c2750c0f164ac91c656deaf55fb97883
+	source = https://github.com/TristanJet/muzi/archive/refs/tags/v1.1.2.tar.gz
+	sha256sums = b2e0476e2eb36fbf9c08232275585c6668b7eeb6b16d8e47fcb290e4e9984658
 
 pkgname = muzi

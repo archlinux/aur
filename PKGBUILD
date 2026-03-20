@@ -1,7 +1,7 @@
 # Maintainer Tristan Lay <tristanjetlay1<at>gmail<dot>com>
 
 pkgname=muzi
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Snappy MPD client written in Zig"
 arch=("x86_64")
@@ -9,7 +9,7 @@ license=("GPLv3")
 makedepends=("zig")
 url="https://github.com/TristanJet/muzi"
 source=("https://github.com/TristanJet/muzi/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("27020d69938c3615144a5d0a90d2a887c2750c0f164ac91c656deaf55fb97883")
+sha256sums=("b2e0476e2eb36fbf9c08232275585c6668b7eeb6b16d8e47fcb290e4e9984658")
 
 build() {
   cd "${pkgname}-${pkgver}"
