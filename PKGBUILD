@@ -137,10 +137,13 @@ sha256sums=(
 pkgver() {
   cd "$srcdir/$_pkg"
   
-  if ! git remote add upstream "${_upstream}" 2>/dev/null; then
-    git remote set-url upstream "${_upstream}"
-  fi
-  git fetch --tags upstream v${_ver%%'+'*}
+  {
+    if ! git remote add upstream "${_upstream}" 2>/dev/null; then
+      git remote set-url upstream "${_upstream}"
+    fi
+    git fetch --tags upstream v${_ver%%'+'*}
+    git fetch --unshallow --no-tags origin "$_branch" || :
+  } >/dev/null 2>&1
 
   git describe --long --tags | sed 's#v##;s#-RC#.rc#;s#-#+#g'
 }
