@@ -3,7 +3,7 @@
 
 pkgname=wingide
 pkgver=11.1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wing IDE Professional is a full-featured Python IDE for professional programmers."
 arch=('x86_64')
 url="https://wingware.com"

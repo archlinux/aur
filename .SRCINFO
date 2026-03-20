@@ -1,7 +1,7 @@
 pkgbase = wingide
 	pkgdesc = Wing IDE Professional is a full-featured Python IDE for professional programmers.
 	pkgver = 11.1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wingware.com
 	arch = x86_64
 	license = custom
