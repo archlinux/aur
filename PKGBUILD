@@ -10,10 +10,10 @@ depends=('gtk3' 'glib2' 'libayatana-appindicator' 'libsoup3' 'webkit2gtk-4.1' 'o
 
 # Architecture-specific sources and checksums
 source_x86_64=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/openwork-desktop-linux-amd64.deb")
-sha256sums_x86_64=('0d7548374cfcf738a24e76a0a22cd8b2268175ce3a858b40b59220b1c7f0ba28')
+sha256sums_x86_64=('2a9c031244f91114fb8fd0520dd36a211b1768900bb4291fbe203b90f33c0700')
 
 source_aarch64=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/openwork-desktop-linux-arm64.deb")
-sha256sums_aarch64=('e60caea199cfaa170b499e95fe370ba89fd827722a0c65ac6292b8af5c4ae7c6')
+sha256sums_aarch64=('9264c7b6b59fb45d4c6b10cf9535f93f6274ef8efc77768b382199cac307ed5c')
 
 # Makes sure makepkg doesn't extract the .deb since it will break
 noextract=("${pkgname}-${pkgver}.deb")
