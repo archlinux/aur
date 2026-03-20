@@ -1,7 +1,7 @@
 # Maintainer: Ali Mahmoud <aur.c3rt@gmail.com>
 pkgname=geforcenow-native
 pkgver=1.0.0  # bump manually on major releases
-pkgrel=2
+pkgrel=3
 pkgdesc="NVIDIA GeForce NOW official beta Linux client (Flatpak)"
 install=gfn.install
 arch=('any')

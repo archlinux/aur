@@ -1,0 +1,12 @@
+pre_remove() {
+echo "Removing GeForceNOW Flatpak..."
+flatpak uninstall -y com.nvidia.geforcenow
+flatpak remote-delete --if-exists GeForceNOW
+echo "Done!"
+}
+
+post_install() {
+  flatpak remote-add --if-not-exists GeForceNOW \
+    /usr/share/flatpak/remotes/geforcenow.flatpakrepo
+  flatpak install -y GeForceNOW com.nvidia.geforcenow
+}
