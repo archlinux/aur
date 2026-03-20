@@ -9,7 +9,7 @@
 
 _pack=windows
 pkgname=octave-$_pack
-pkgver=1.6.5
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Provides COM interface and additional functionality on Windows"
 arch=(any)
@@ -23,9 +23,9 @@ backup=()
 options=()
 install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
-source=("https://downloads.sourceforge.net/octave/$_archive")
+source=("https://github.com/gnu-octave/octave-$_pack/releases/download/release-$pkgver//$_archive")
 noextract=("$_archive")
-sha256sums=('8ff82841ce7b8dc7f1942b1b7f7d4cc7ca0db9dd6f344d03fe135f5f2bd59937')
+sha256sums=('6d38455b464b9cb5a3c9e45f7adb63ecf10b8e8b74b72addb84e5ee90f8b8c80')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
