@@ -1,0 +1,4 @@
+[panache]
+source = "git"
+git = "https://github.com/jolars/panache.git"
+prefix = "v"
