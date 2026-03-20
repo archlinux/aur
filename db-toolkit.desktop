@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=DB Toolkit
+Exec=db-toolkit
+Icon=db-toolkit
+Type=Application
+Categories=Development;Database;
+Terminal=false
