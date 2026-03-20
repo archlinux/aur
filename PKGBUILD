@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-osd-git
-pkgver=1.0.4.r0.g5252e8e
+pkgver=1.0.8.r5.g08579ee
 pkgrel=1
 pkgdesc="COSMIC On-Screen Display"
 arch=('x86_64' 'aarch64')
@@ -58,5 +58,5 @@ package() {
   cd "${pkgname%-git}"
   just rootdir="$pkgdir" install
 
-  install -Dm4755 "$srcdir/suid-polkit-agent-helper" -t "$pkgdir/usr/lib/$pkgname/"
+  install -Dm4755 "$srcdir/suid-polkit-agent-helper" -t "$pkgdir/usr/lib/${pkgname%-git}/"
 }
