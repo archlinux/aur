@@ -1,7 +1,7 @@
 # Maintainer: Trey Blancher $(base64 -d <<< dHJleUBibGFuY2hlci5uZXQK)
 pkgname="newrelic-cli-bin"
 _pkg="${pkgname/-bin/}"
-pkgver=0.97.3
+pkgver=0.111.0
 pkgrel=1
 pkgdesc="New Relic:  All-in-One Observability Service - command line tool"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -17,13 +17,13 @@ source_armv7h=("https://github.com/newrelic/newrelic-cli/releases/download/v${pk
                "https://github.com/newrelic/newrelic-cli/releases/download/v${pkgver}/${_pkg}_${pkgver}_Linux_armv7.tar.gz.sig")
 source_x86_64=("https://github.com/newrelic/newrelic-cli/releases/download/v${pkgver}/${_pkg}_${pkgver}_Linux_x86_64.tar.gz"
                "https://github.com/newrelic/newrelic-cli/releases/download/v${pkgver}/${_pkg}_${pkgver}_Linux_x86_64.tar.gz.sig")
-sha256sums_aarch64=('50936334d31755a55aca7dbace143aed8879dd19c92aeccc97dc948e5c5c53e9'
+sha256sums_aarch64=('781e2d0e8b2783541ef687882098a571d1565b1b5c244bd09b84c5a417c78e9e'
                     'SKIP')
-sha256sums_armv7h=('ca76243f3db5477b38bf81ed796b471b50017a656b9cbcb32a292f1c41bc2843'
+sha256sums_armv7h=('2992a64ba3bd7339931747526fd4665c750effb86734aa8bfdf025905f2c2024'
                    'SKIP')
-sha256sums_x86_64=('df05129745997c2d913ea7df81a234948916c5d3b18ceb5b591b222ad5fef6df'
+sha256sums_x86_64=('5224afef3f70c687690b14982a8e47d4f1fa9b9a7de4cd9098c40b56f91bef2b'
                    'SKIP')
-validpgpkeys=("5961D131BB2C5C6B42B14D0F92ADA76A30A3F1FD")
+validpgpkeys=("D3EEEEE880A91DEE209A82CC4F9A9B5B96EC30B9")
 
 
 package() { 
