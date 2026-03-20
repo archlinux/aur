@@ -1,6 +1,26 @@
 --- a/IGC/CMakeLists.txt
 +++ b/IGC/CMakeLists.txt
-@@ -561,7 +561,7 @@ elseif(_igc_compiler_is_gnu)
+@@ -530,7 +530,7 @@ if(MSVC)
+       GROUP NAME Optimization       "/O[d12x]"
+       GROUP NAME RuntimeLibrary     "/M[TD]d?"
+       GROUP NAME Rtti               "/GR-?"
+-      GROUP NAME TreatWarnAsError   "/WX-?"
++      #GROUP NAME TreatWarnAsError   "/WX-?"
+ 
+       ALIAS AdditionalOptions          "/w14062" "/Wv:18"
+       ALIAS CallingConvCdecl           "/Gd"
+@@ -560,8 +560,8 @@ if(MSVC)
+       ALIAS RtMultiThreadedSharedDebug "/MDd"
+       ALIAS RttiDisabled               "/GR-"
+       ALIAS RttiEnabled                "/GR"
+-      ALIAS TreatWarnAsErrorDisabled   "/WX-"
+-      ALIAS TreatWarnAsErrorEnabled    "/WX"
++      #ALIAS TreatWarnAsErrorDisabled   "/WX-"
++      #ALIAS TreatWarnAsErrorEnabled    "/WX"
+       ALIAS UninitializedVarWarning    "/w14701"
+       ALIAS UnreferencedVariable       "/w14189"
+       ALIAS WholeProgramOptimization   "/GL"
+@@ -578,7 +578,7 @@ elseif(_igc_compiler_is_gnu)
        GROUP NAME Exceptions         "-f(no-)?exceptions"
        GROUP NAME Optimization       "-O[0-3sg]?"
        GROUP NAME Rtti               "-f(no-)?rtti"
@@ -9,7 +29,7 @@
  
        ALIAS AdditionalOptions
        ALIAS CallingConvCdecl
-@@ -589,8 +589,8 @@ elseif(_igc_compiler_is_gnu)
+@@ -608,8 +608,8 @@ elseif(_igc_compiler_is_gnu)
        ALIAS RtMultiThreadedSharedDebug
        ALIAS RttiDisabled               "-fno-rtti"
        ALIAS RttiEnabled                "-frtti"
@@ -20,30 +40,43 @@
        ALIAS UnreferencedVariable
        ALIAS UninitializedVarWarning
        ALIAS WholeProgramOptimization
-@@ -925,7 +925,7 @@ foreach(_compilerFlagName IN ITEMS "CMAKE_CXX_FLAGS" "CMAKE_C_FLAGS")
-             #-march=armv8.2-a+fp+simd+sve2
-             -march=armv8-a+fp+simd
-             -fms-extensions
--            -Werror
-+            #-Werror
-             -Wno-unused-parameter
-             -Wno-missing-field-initializers
-             -Wwrite-strings
-@@ -957,7 +957,7 @@ foreach(_compilerFlagName IN ITEMS "CMAKE_CXX_FLAGS" "CMAKE_C_FLAGS")
-             -fmessage-length=0
-             -march=rv64gc
-             -fms-extensions
--            -Werror
-+            #-Werror
-             -Wno-unused-parameter
-             -Wno-missing-field-initializers
-             -Wwrite-strings
-@@ -990,7 +990,7 @@ foreach(_compilerFlagName IN ITEMS "CMAKE_CXX_FLAGS" "CMAKE_C_FLAGS")
-             -march=corei7
-             -mstackrealign
-             -fms-extensions
--            -Werror
-+            #-Werror
-             -Wno-unused-parameter
-             -Wno-missing-field-initializers
-             -Wwrite-strings
+@@ -638,7 +638,7 @@ elseif(_igc_compiler_is_clang)
+       GROUP NAME Exceptions         "-f(no-)?exceptions"
+       GROUP NAME Optimization       "-O([0-3]?|fast|s|z)?"
+       GROUP NAME Rtti               "-f(no-)?rtti"
+-      GROUP NAME TreatWarnAsError   "-Werror"
++      #GROUP NAME TreatWarnAsError   "-Werror"
+ 
+       ALIAS AdditionalOptions
+       ALIAS CallingConvCdecl
+@@ -668,8 +668,8 @@ elseif(_igc_compiler_is_clang)
+       ALIAS RtMultiThreadedSharedDebug
+       ALIAS RttiDisabled               "-fno-rtti"
+       ALIAS RttiEnabled                Rtti REMOVE_GROUP
+-      ALIAS TreatWarnAsErrorDisabled   TreatWarnAsError REMOVE_GROUP
+-      ALIAS TreatWarnAsErrorEnabled    "-Werror"
++      #ALIAS TreatWarnAsErrorDisabled   TreatWarnAsError REMOVE_GROUP
++      #ALIAS TreatWarnAsErrorEnabled    "-Werror"
+       ALIAS UnreferencedVariable
+       ALIAS UninitializedVarWarning
+       ALIAS WholeProgramOptimization
+@@ -710,8 +710,8 @@ else()
+       ALIAS RtMultiThreadedSharedDebug
+       ALIAS RttiDisabled
+       ALIAS RttiEnabled
+-      ALIAS TreatWarnAsErrorDisabled
+-      ALIAS TreatWarnAsErrorEnabled
++      #ALIAS TreatWarnAsErrorDisabled
++      #ALIAS TreatWarnAsErrorEnabled
+       ALIAS UnreferencedVariable
+       ALIAS UninitializedVarWarning
+       ALIAS WholeProgramOptimization
+@@ -812,7 +812,7 @@ foreach(_compilerFlagName IN ITEMS "CMAKE_CXX_FLAGS" "CMAKE_C_FLAGS")
+         ExceptionsEnabled
+         MultiProcessorCompilation
+         DeadCodeEliminate
+-        TreatWarnAsErrorEnabled
++        #TreatWarnAsErrorEnabled
+   )
+ 
+   if(IGC_OPTION__UNIVERSAL_DRIVER)

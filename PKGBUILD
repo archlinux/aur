@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=intel-graphics-compiler-git
-pkgver=2.25.9.r72.g6162af69a
+pkgver=2.31.0.r51.gcea91bb38
 _llvmmaj=16
 _llvmver="${_llvmmaj}.0.6"
 pkgrel=1
@@ -11,8 +11,9 @@ arch=('x86_64')
 url='https://github.com/intel/intel-graphics-compiler/'
 license=('MIT' 'Apache-2.0 WITH LLVM-exception')
 depends=(
-    'gcc-libs'
     'glibc'
+    'libgcc'
+    'libstdc++'
     'zlib'
     'zstd')
 makedepends=(
@@ -23,6 +24,7 @@ makedepends=(
     'python-yaml')
 provides=('intel-graphics-compiler' "intel-opencl-clang=${_llvmmaj}")
 conflicts=('intel-graphics-compiler' 'intel-opencl-clang')
+# https://github.com/intel/intel-graphics-compiler/issues/362#issuecomment-4089628783
 options=('!emptydirs' '!lto')
 source=('git+https://github.com/intel/intel-graphics-compiler.git'
         'git+https://github.com/intel/vc-intrinsics.git'
@@ -39,7 +41,7 @@ sha256sums=('SKIP'
             'b47ada280614670a467f80e9f8c67542050983f238f2f4b3fa17682855faf9bf'
             'SKIP'
             'SKIP'
-            'd3333f2d71c602d8d424c86a93e3aa203b10ebc9492c5b7699804e470d5c5a0e')
+            '7e203588b0ff790a471c2113077b11477ddac0d12bbe60443d32e34170cb0bdb')
 
 prepare() {
     # rename to prevent SPIRV-LLVM-Translator from being included
@@ -48,12 +50,6 @@ prepare() {
 
     ln -s "${srcdir}/SPIRV-LLVM-Translator-IGC-LLVM"  "${srcdir}/llvm-project/llvm/projects/llvm-spirv"
     ln -s "${srcdir}/opencl-clang" "${srcdir}/llvm-project/llvm/projects/opencl-clang"
-    
-    # llvm: fix build with gcc 15
-    # https://github.com/llvm/llvm-project/commit/7e44305041d96b064c197216b931ae3917a34ac1
-    export GIT_COMMITTER_NAME='builduser'
-    export GIT_COMMITTER_EMAIL='builduser@archlinux.org'
-    git -C llvm-project cherry-pick 7e44305041d96b064c197216b931ae3917a34ac1
     
     patch -d intel-graphics-compiler -Np1 -i "${srcdir}/010-intel-graphics-compiler-disable-werror.patch"
 }
