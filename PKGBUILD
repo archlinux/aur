@@ -2,7 +2,7 @@
 # https://github.com/felipemorandini/smartlog
 
 pkgname=smartlog-bin
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="A high-performance TUI for log tailing with JSON auto-detection and real-time filtering"
 arch=('x86_64' 'aarch64')
@@ -16,8 +16,8 @@ source_x86_64=("${url}/releases/download/v${pkgver}/smartlog-x86_64-unknown-linu
 source_aarch64=("${url}/releases/download/v${pkgver}/smartlog-aarch64-unknown-linux-musl.tar.gz"
                 "${url}/raw/v${pkgver}/LICENSE")
 
-sha256sums_x86_64=('9e4908d9f50c922864a7ddcb103b60a67795863652d53874f1e31fb720703056' 'f6074ff849dc5ec6ac8e7b8cf8b9a5f92c3cf459bedb1927a0c29345e1831945')
-sha256sums_aarch64=('7acfc17a82eb4f5903cef69ef891c3b62267575d75a7a920d3f5f1a5dd25fdc1' 'f6074ff849dc5ec6ac8e7b8cf8b9a5f92c3cf459bedb1927a0c29345e1831945')
+sha256sums_x86_64=('68a0b43f53f1ef85f5bbfbef7d103f0db559a39d7f4c8f9a31fc4f3b21e29a82' 'f6074ff849dc5ec6ac8e7b8cf8b9a5f92c3cf459bedb1927a0c29345e1831945')
+sha256sums_aarch64=('09205304d62a3c3465255eb0552201a4c411656e32fb92ceb886773a52a51fb3' 'f6074ff849dc5ec6ac8e7b8cf8b9a5f92c3cf459bedb1927a0c29345e1831945')
 
 package() {
     install -Dm755 smartlog "${pkgdir}/usr/bin/smartlog"

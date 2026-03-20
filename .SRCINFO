@@ -1,6 +1,6 @@
 pkgbase = smartlog-bin
 	pkgdesc = A high-performance TUI for log tailing with JSON auto-detection and real-time filtering
-	pkgver = 0.6.3
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/felipemorandini/smartlog
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = smartlog-bin
 	license = MIT
 	provides = smartlog
 	conflicts = smartlog
-	source_x86_64 = https://github.com/felipemorandini/smartlog/releases/download/v0.6.3/smartlog-x86_64-unknown-linux-musl.tar.gz
-	source_x86_64 = https://github.com/felipemorandini/smartlog/raw/v0.6.3/LICENSE
-	sha256sums_x86_64 = 9e4908d9f50c922864a7ddcb103b60a67795863652d53874f1e31fb720703056
+	source_x86_64 = https://github.com/felipemorandini/smartlog/releases/download/v0.6.4/smartlog-x86_64-unknown-linux-musl.tar.gz
+	source_x86_64 = https://github.com/felipemorandini/smartlog/raw/v0.6.4/LICENSE
+	sha256sums_x86_64 = 68a0b43f53f1ef85f5bbfbef7d103f0db559a39d7f4c8f9a31fc4f3b21e29a82
 	sha256sums_x86_64 = f6074ff849dc5ec6ac8e7b8cf8b9a5f92c3cf459bedb1927a0c29345e1831945
-	source_aarch64 = https://github.com/felipemorandini/smartlog/releases/download/v0.6.3/smartlog-aarch64-unknown-linux-musl.tar.gz
-	source_aarch64 = https://github.com/felipemorandini/smartlog/raw/v0.6.3/LICENSE
-	sha256sums_aarch64 = 7acfc17a82eb4f5903cef69ef891c3b62267575d75a7a920d3f5f1a5dd25fdc1
+	source_aarch64 = https://github.com/felipemorandini/smartlog/releases/download/v0.6.4/smartlog-aarch64-unknown-linux-musl.tar.gz
+	source_aarch64 = https://github.com/felipemorandini/smartlog/raw/v0.6.4/LICENSE
+	sha256sums_aarch64 = 09205304d62a3c3465255eb0552201a4c411656e32fb92ceb886773a52a51fb3
 	sha256sums_aarch64 = f6074ff849dc5ec6ac8e7b8cf8b9a5f92c3cf459bedb1927a0c29345e1831945
 
 pkgname = smartlog-bin
