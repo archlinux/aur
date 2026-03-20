@@ -8,7 +8,7 @@ import re
 import warnings
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, 
                              QLabel, QPushButton, QStackedWidget, QFrame, QGraphicsDropShadowEffect,
-                             QLineEdit, QProgressBar, QFileDialog, QSpacerItem, QSizePolicy, QTextEdit, QComboBox)
+                             QLineEdit, QProgressBar, QFileDialog, QSpacerItem, QSizePolicy, QTextEdit, QComboBox, QMessageBox)
 from PyQt5.QtCore import Qt, QPropertyAnimation, QEasingCurve, QSize, pyqtSignal, QThread, QPoint, QTimer
 from PyQt5.QtGui import QColor, QPainter, QLinearGradient, QBrush, QIcon, QPen
 
@@ -106,7 +106,7 @@ class Worker(QThread):
         
         if mode == "docker":
             return {
-                "start": "docker-compose up -d --build",
+                "start": "docker-compose up -d --build && docker-compose logs -f",
                 "stop": "docker-compose down",
                 "reset": "docker-compose down -v",
                 "shell": "docker"
@@ -419,6 +419,13 @@ class CloneWorker(QThread):
             if not os.path.exists(os.path.join(self.target_dir, "bridge.js")):
                 self.finished.emit(False, "clone_incomplete")
                 return
+
+            # --- Fix: Create .env file immediately after clone finished as requested ---
+            env_proto = os.path.join(self.target_dir, ".env.example")
+            env_file = os.path.join(self.target_dir, ".env")
+            if os.path.exists(env_proto) and not os.path.exists(env_file):
+                import shutil
+                shutil.copy(env_proto, env_file)
 
             self.progress.emit(100, "task_finished")
             self.finished.emit(True, "Project ready.")
@@ -746,14 +753,13 @@ class BelindaSetup(QMainWindow):
             self.root_dir = os.path.expanduser("~/.local/share/belinda-ai")
             self.engine_dir = os.path.dirname(base_dir) if os.path.basename(base_dir) == "installer" else base_dir
         else:
-            # Local/Portable mode
-            if os.path.basename(base_dir) == "installer":
-                self.root_dir = os.path.dirname(base_dir)
-            else:
-                self.root_dir = base_dir
-            self.engine_dir = self.root_dir
+            # Portable mode: Target Belinda_AI subfolder for project files
+            self.root_dir = os.path.join(base_dir, "Belinda_AI")
+            self.engine_dir = base_dir
             
-        os.makedirs(self.root_dir, exist_ok=True)
+        os.makedirs(base_dir, exist_ok=True)
+        # Use base_dir for installer settings so they persist
+        # Fix: Use root_dir (Belinda_AI) for settings so .env stays inside project folder
         self.sm = SettingsManager(self.root_dir)
         
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -768,14 +774,15 @@ class BelindaSetup(QMainWindow):
         # Check if project exists, if not, show setup
         if not self.is_project_ready():
             self.content_area.setCurrentWidget(self.page_setup)
-            self.sidebar.setEnabled(False)
+            # Disable sidebar buttons during initial setup as requested
+            self.sidebar.setEnabled(False) 
         else:
             self.sidebar.setEnabled(True)
             self.content_area.setCurrentIndex(1) # Dashboard
             self.page_installer.check_dependencies(self.root_dir)
 
     def is_project_ready(self):
-        # Ready if bridge.js exists in our writable root
+        # Ready if bridge.js exists in the Belinda_AI subfolder
         return os.path.exists(os.path.join(self.root_dir, "bridge.js"))
 
     def check_docker(self):
@@ -785,9 +792,27 @@ class BelindaSetup(QMainWindow):
         except:
             return False
 
+    def closeEvent(self, event):
+        from PyQt5.QtWidgets import QMessageBox
+        reply = QMessageBox.question(self, 'Terminate', 'Are you sure you want to terminate?', 
+                                   QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            event.accept()
+        else:
+            event.ignore()
+
+    def confirm_terminate(self):
+        from PyQt5.QtWidgets import QMessageBox
+        reply = QMessageBox.question(self, 'Terminate', 'Are you sure you want to terminate?', 
+                                   QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            self.close()
+
     def start_setup_clone(self):
         self.page_setup.clone_btn.setEnabled(False)
         self.page_setup.progress_bar.setVisible(True)
+        # Disable Terminate button while cloning starts as requested
+        self.exit_btn.setEnabled(False)
         self.setup_worker = CloneWorker(self.root_dir)
         self.setup_worker.progress.connect(self.update_setup_progress)
         self.setup_worker.finished.connect(self.setup_finished)
@@ -798,18 +823,17 @@ class BelindaSetup(QMainWindow):
         self.page_setup.status_label.setText(self.get_text(msg_key))
 
     def setup_finished(self, success, msg_key):
+        # Re-enable exit button after processing
+        self.exit_btn.setEnabled(True)
         if success:
-            # Reload settings from the newly cloned folder
+            # Reload settings from newly created folder
             self.sm = SettingsManager(self.root_dir)
             self.sidebar.setEnabled(True)
-            # Switch to Dashboard (index 1 in QStackedWidget)
+            # Switch to Dashboard
             self.content_area.setCurrentIndex(1)
-            # Clear active buttons and set Dashboard as active
-            for btn in self.btns:
-                btn.setProperty("active", "false")
-                btn.setStyle(btn.style())
-            self.btns[0].setProperty("active", "true")
-            self.btns[0].setStyle(self.btns[0].style())
+            # Initial state: Start Bot disabled after clone until deployment finishes
+            self.page_installer.start_btn.setEnabled(False)
+            self.page_installer.check_dependencies(self.root_dir)
             self.retranslate_all()
         else:
             self.page_setup.status_label.setText(self.get_text(msg_key))
@@ -858,7 +882,7 @@ class BelindaSetup(QMainWindow):
         
         self.exit_btn = QPushButton("TERMINATE")
         self.exit_btn.setStyleSheet("QPushButton { color: #FF4B4B; border-color: rgba(255,75,75,0.2); font-weight: bold; }")
-        self.exit_btn.clicked.connect(self.close)
+        self.exit_btn.clicked.connect(self.confirm_terminate)
         self.sidebar_layout.addWidget(self.exit_btn)
 
         self.container_layout.addWidget(self.sidebar)
@@ -944,10 +968,16 @@ class BelindaSetup(QMainWindow):
         self.page_settings.save_btn.setText("SAVE & APPLY CHANGES")
 
     def start_worker_task(self, task):
+        if task == "session":
+            from PyQt5.QtWidgets import QMessageBox
+            reply = QMessageBox.question(self, 'Reset Session', 'Are you sure you want to reset factory settings? All data will be wiped.', 
+                                       QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            if reply != QMessageBox.Yes:
+                return
+
         api_key = None
         if task == "install":
-            # Always prompt for API key during Full Deployment/Reinstall
-            current_key = self.sm.get("GROQ_API_KEY", "")
+            # Pop up dialog for API key as requested
             from PyQt5.QtWidgets import QInputDialog, QLineEdit
             key, ok = QInputDialog.getText(
                     self, 
@@ -959,21 +989,19 @@ class BelindaSetup(QMainWindow):
             if not ok or not key.strip():
                 return
             api_key = key.strip()
-            # Save immediately so .env is created
+            # Save immediately so .env is created in the Belinda_AI folder
             self.sm.set("GROQ_API_KEY", api_key)
 
         self.worker = Worker(task, self.root_dir, self.sm, api_key)
         self.worker.engine_dir = getattr(self, 'engine_dir', self.root_dir)
         self.worker.progress.connect(self.update_progress)
         self.worker.finished.connect(self.task_finished)
-        # We don't connect log_output because page_logs already tails task.log
-        # if hasattr(self.worker, 'log_output'):
-        #     self.worker.log_output.connect(self.page_logs.append_log)
         self.worker.start()
         self.set_controls_enabled(False)
 
     def set_controls_enabled(self, enabled):
         self.page_installer.install_btn.setEnabled(enabled)
+        # start_btn logic is handled separately in task_finished
         self.page_installer.start_btn.setEnabled(enabled)
         self.page_installer.stop_btn.setEnabled(enabled)
         self.page_installer.reset_btn.setEnabled(enabled)
@@ -990,6 +1018,10 @@ class BelindaSetup(QMainWindow):
         self.page_installer.status_label.setText(msg)
         self.page_installer.progress_bar.setValue(100) 
         self.set_controls_enabled(True)
+        
+        # If full deployment successfully finished, enable Start Bot button
+        if self.worker.task == "install" and success:
+            self.page_installer.start_btn.setEnabled(True)
         
         if not self.is_project_ready():
             # If project was wiped, go back to setup

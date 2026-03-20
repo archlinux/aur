@@ -1,0 +1,105 @@
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.log
+task.log
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.env/
+venv/
+.venv/
+env/
+
+# ==========================
+# Node.js
+# ==========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm/
+
+# ==========================
+# Auth & Config
+# ==========================
+auth_info/
+auth_info_*/
+.env
+.env.*
+
+# ==========================
+# Media / Temp Downloads
+# ==========================
+music_*
+video_*
+test_debug*
+*.mp3
+*.mp4
+*.m4a
+*.webm
+*.opus
+*.ogg
+generated_*
+script_*
+model_*
+ai_gen_*
+temp_voice_*
+
+# ==========================
+# Chat History / Logs
+# ==========================
+chat_history.json
+
+# ==========================
+# VS Code / IDE
+# ==========================
+.vscode/
+.idea/
+*.code-workspace
+
+# ==========================
+# OS / Misc
+# ==========================
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Build & PyInstaller / Android
+# ==========================
+build/
+dist/
+.buildozer/
+bin/
+*.spec
+__pycache__/
+*.exe
+*.dmg
+*.apk
+*.aab
+
+# ==========================
+# Mobile App Specific
+# ==========================
+mobile_settings.json
+Belinda_AI/
+android_*.log
+crash.log
+final_crash.log
+
+# ==========================
+# Arch Linux / AUR
+# ==========================
+pkg/
+src/
+*.tar.zst
+*.tar.gz
+*.fakeroot
+belinda-ai-*.tar.gz
+/belinda-ai
