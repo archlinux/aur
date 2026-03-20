@@ -1,0 +1,23 @@
+# makepkg directories
+pkg/
+src/
+
+# Built packages
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.pkg.tar.gz
+*.pkg.tar.bz2
+
+# Downloaded sources
+*.tar.gz
+*.tar.xz
+*.tar.bz2
+*.tgz
+*.zip
+
+# Build logs
+makepkg-*.log
+*.log
+
+# Partial downloads
+*.part
