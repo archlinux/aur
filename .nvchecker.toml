@@ -1,0 +1,4 @@
+[eppie-bin]
+source = "git"
+git = "https://github.com/Eppie-io/Eppie-App.git"
+prefix = "v"

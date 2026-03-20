@@ -1,9 +1,9 @@
 [Desktop Entry]
+Type=Application
 Name=Eppie
-Comment=Cliente de correo electrónico descentralizado
-Exec=/usr/bin/eppie
+Comment=Eppie
+Exec=eppie %u
 Icon=eppie
 Terminal=false
-Type=Application
 Categories=Network;Email;
-StartupWMClass=Eppie
+MimeType=x-scheme-handler/mailto;
