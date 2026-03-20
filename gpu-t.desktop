@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=GPU-T
-Exec=GPU-T
-Icon=gpu-t
-Type=Application
-Categories=System;Monitor;
-Comment=Graphics card information and monitoring utility
-Terminal=false
-StartupNotify=true
