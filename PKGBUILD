@@ -1,7 +1,7 @@
 # Maintainer: AImixAE <AImixAE[at]outlook[dot]com>
 
 pkgname=openscreen-bin
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Create stunning screen recordings for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio."
 arch=('any')
@@ -20,7 +20,7 @@ source=(
     "openscreen.desktop"
     "openscreen"
 )
-sha256sums=('b238ebbc99d0120145ea9c9a44f21116bcdf902689e42bebfb0988f35f765b9c' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('ea95cd708c13b4ea2ff2ec8bf7edfca10f2f3f7d95f638d455fa2130db7f5744' 'SKIP' 'SKIP' 'SKIP')
 
 prepare() {
 	(
