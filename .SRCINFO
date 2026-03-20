@@ -1,0 +1,13 @@
+pkgbase = tidymyfiles
+	pkgdesc = A CLI tool that organizes files into folders based on their extension
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Usernames-are-useful/Tidymyfiles
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = tidymyfiles-0.1.0.tar.gz::https://github.com/Usernames-are-useful/Tidymyfiles/archive/refs/heads/main.tar.gz
+	sha256sums = SKIP
+
+pkgname = tidymyfiles
