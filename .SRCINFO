@@ -1,15 +1,15 @@
 pkgbase = octave-general
 	pkgdesc = General tools for Octave.
-	pkgver = 2.1.3
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/general/
 	install = octave-general.install
 	arch = any
 	groups = octave-forge
-	license = custom
+	license = GPL-3.0-or-later AND BSD-3-Clause AND public domain
 	depends = octave>=4.0.0
-	noextract = general-2.1.3.tar.gz
-	source = https://downloads.sourceforge.net/octave/general-2.1.3.tar.gz
-	sha256sums = 6a6b25266de16976807a1766ea3609c5c19997e82051c9c97378ba609dd09323
+	noextract = general-2.1.4.tar.gz
+	source = https://downloads.sourceforge.net/octave/general-2.1.4.tar.gz
+	sha256sums = b13777d4f5932e6891f2aac13da17f22b8c9b8b4ff8ed0179659ebd19124148f
 
 pkgname = octave-general
