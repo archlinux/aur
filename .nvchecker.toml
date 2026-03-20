@@ -1,0 +1,4 @@
+[capo-nodi-font]
+source = "git"
+git = "https://codeberg.org/m-casanova/CapoNodi.git"
+prefix = "v"

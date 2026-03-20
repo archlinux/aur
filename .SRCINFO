@@ -1,0 +1,15 @@
+pkgbase = capo-nodi-font
+	pkgdesc = Dropcaps derivative font — pg. 16 of 1880 Muster-Alphabete
+	pkgver = 1.102
+	pkgrel = 1
+	url = https://m-casanova.codeberg.page/CapoNodi/
+	arch = any
+	license = OFL
+	source = caponodi-defad8810782bd525fac413510e51d0f76b6f078-1.tar.gz::https://codeberg.org/m-casanova/CapoNodi/archive/defad8810782bd525fac413510e51d0f76b6f078.tar.gz
+	sha256sums = 50c17f04213aabc0e85cac44ad060624b4c432297f061617cd19295d51da1c93
+
+pkgname = otf-capo-nodi
+	provides = capo-nodi-font
+
+pkgname = ttf-capo-nodi
+	provides = capo-nodi-font
