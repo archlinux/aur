@@ -6,7 +6,7 @@
 #
 
 pkgname=flexbv-free-bin
-pkgver=5.1244
+pkgver=5.1372
 pkgrel=1
 pkgdesc="Visualize and interact with boardview (.brd) files."
 arch=("x86_64")
@@ -14,10 +14,10 @@ url="https://pldaniels.com/flexbv5/"
 license=("custom")
 makedepends=("gendesk")
 
-source=("https://pldaniels.com/flexbv5/free/FlexBVFree-${pkgver}-linux.tar.gz"
-	"https://pldaniels.com/flexbv5/assets/flexbv-free-icon.svg"
+source=("flexbv-free-${pkgver}.tar.gz::https://pldaniels.com/flexbv5/free/FlexBVFree-${pkgver}-linux.tar.gz"
+	"flexbv-free-icon.svg::https://pldaniels.com/flexbv5/assets/flexbv-free-icon.svg"
 	LICENSE.txt)
-sha256sums=('1a12d17e64f5bd260074e5db46901e628f9ac5555e0c2b5f1b7a5db8df510b7d'
+sha256sums=('80385a2b8afc54e05831ff411ada6c14603096f568e3a40022d3fa1b821d50dd'
             'e19c10e335eb9ba4278317c5f0f07f25e9051f0bcd3b6bb0fb85b3b2ee73124e'
             '12f5872b4bfed1620dd57e213ac2dd18b9fe02753ef70ebc89f10b6d72244e23')
 
