@@ -2,8 +2,8 @@
 
 _pkgname="ymir-emu"
 pkgname="$_pkgname-git"
-pkgver=0.2.1.r89.g673a1b8
-pkgrel=1
+pkgver=0.2.1.r201.gc38e906
+pkgrel=2
 pkgdesc="Sega Saturn emulator"
 url="https://github.com/StrikerX3/Ymir"
 license=('GPL-3.0-only')
@@ -45,8 +45,24 @@ prepare() {
   git rm -r vendor/lz4/lz4
   git submodule update --init --recursive --depth=1
 
-  # force xwayland to avoid scaling bug
-  sed -e '/int main/a setenv("SDL_VIDEODRIVER", "x11", 1);' -i apps/ymir-sdl3/src/main.cpp
+  # prevent wayland scaling bug
+  sed -e '/int main/r /dev/stdin' -i apps/ymir-sdl3/src/main.cpp << 'END'
+const char* disp = getenv("DISPLAY");
+bool x11_supported = false;
+
+int n = SDL_GetNumVideoDrivers();
+for (int i = 0; i < n; i++) {
+  const char* driver = SDL_GetVideoDriver(i);
+  if (driver && strcmp(driver, "x11") == 0) {
+    x11_supported = true;
+    break;
+  }
+}
+
+if (disp && *disp && x11_supported) {
+  setenv("SDL_VIDEODRIVER", "x11", 0);
+}
+END
 
   # allow find modules; config may not exist
   sed -E -e '/find_package/s&\bCONFIG\b&&g' \
