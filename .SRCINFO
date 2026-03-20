@@ -1,6 +1,6 @@
 pkgbase = music-assistant-desktop-git
 	pkgdesc = Music Assistant Desktop Companion App
-	pkgver = 0.3.4.r8.g7803e22
+	pkgver = 0.3.4.r12.g32166f8
 	pkgrel = 1
 	url = https://github.com/music-assistant/desktop-app
 	arch = x86_64
@@ -35,7 +35,6 @@ pkgbase = music-assistant-desktop-git
 	conflicts = music-assistant-companion-git
 	conflicts = music-assistant-app-git
 	conflicts = music-assistant-desktop-app-git
-	options = !lto
 	source = music-assistant-desktop-git::git+https://github.com/music-assistant/desktop-app.git
 	sha256sums = SKIP
 
