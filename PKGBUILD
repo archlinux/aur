@@ -1,26 +1,28 @@
 # Maintainer: Gianni Ferrarotti <gianni.ferrarotti@gmail.com>
 #
-# AUR package for azadi — literate programming toolchain.
-# Installs the azadi binary. The separate azadi-macros and azadi-noweb
-# binaries are available in the GitHub release for advanced pipeline use.
+# AUR package for weaveback — bidirectional literate programming toolchain.
+# Installs weaveback (combined), weaveback-macro, and weaveback-tangle from
+# the pre-built x86_64 tarball on the GitHub release.
 #
 # Regenerate after each release:
 #   python packaging/update_release.py <version>
 
-pkgname=azadi-bin
-pkgver=0.3.5
+pkgname=weaveback-bin
+pkgver=0.3.6
 pkgrel=1
-pkgdesc="azadi — literate programming toolchain"
-url="https://github.com/giannifer7/azadi"
-license=('MIT' 'Apache-2.0')
+pkgdesc="Bidirectional literate programming toolchain (noweb, macros, source tracing)"
+url="https://github.com/giannifer7/weaveback"
+license=('0BSD' 'MIT' 'Apache-2.0')
 arch=('x86_64')
-provides=('azadi')
-conflicts=('azadi' 'azadi-git')
+provides=('weaveback')
+conflicts=('weaveback' 'weaveback-git')
 depends=('gcc-libs' 'glibc')
 options=('!debug')
-source=("azadi-x86_64-linux.tar.gz::https://github.com/giannifer7/azadi/releases/download/v${pkgver}/azadi-x86_64-linux.tar.gz")
-sha256sums=('a627956c17e156e50c3d34474344acc8d89130ad5bbeb9f3f49a44378056ab70')
+source=("weaveback-x86_64-linux.tar.gz::https://github.com/giannifer7/weaveback/releases/download/v${pkgver}/weaveback-x86_64-linux.tar.gz")
+sha256sums=('430a3cb71ecb3cf57608e39063798380c5213b7427195e7f87f49ce9b75d81f8')
 
 package() {
-    install -Dm755 azadi -t "${pkgdir}/usr/bin"
+    install -Dm755 weaveback        -t "${pkgdir}/usr/bin"
+    install -Dm755 weaveback-macro  -t "${pkgdir}/usr/bin"
+    install -Dm755 weaveback-tangle -t "${pkgdir}/usr/bin"
 }
