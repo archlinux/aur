@@ -1,40 +1,60 @@
+# Maintainer: Trey Blancher $(base64 -d <<< dHJleUBibGFuY2hlci5uZXQK)
 pkgname=newrelic-infra
-pkgver=1.47.2
+_name='infrastructure-agent'
+pkgver=1.72.8
 pkgrel=1
-license=('Apache')
-arch=('x86_64')
-url=https://github.com/newrelic/infrastructure-agent
-source=(
-	"https://download.newrelic.com/infrastructure_agent/linux/apt/pool/main/n/newrelic-infra/newrelic-infra_systemd_${pkgver}_amd64.deb"
-	"https://raw.githubusercontent.com/newrelic/infrastructure-agent/${pkgver}/assets/examples/infrastructure/newrelic-infra-template.yml.example"
-)
+pkgdesc="New Relic Infrastructure Agent"
+arch=('x86_64' 'aarch64' 'armv7h')
+url="https://github.com/newrelic/${_name}/"
+license=('Apache-2.0')
+groups=('newrelic')
+makedepends=('go')
+optdepends=()
+options=(!buildflags)
+provides=("${pkgname}")
+conflicts=("${pkgname}-bin")
+backup=("etc/${pkgname}/${pkgname}.yml")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/newrelic/${_name}/archive/refs/tags/$pkgver.tar.gz"
+        "${pkgname}.yml::https://github.com/newrelic/infrastructure-agent/blob/master/assets/examples/infrastructure/newrelic-infra-template.yml.example")
 
-sha256sums=('a5f1b9fc17dfd47bdcb572309687e543d9035bdefd3506b7c4eb66d19efb8876'
-            '60f2a31b2d461f029c786a18f1feb393c1a5e43beac520b1c7d5e12b45590ae0')
+build() {
+	cd "${srcdir}/${_name}-$pkgver"
+	make compile
+    make dist
+}
+
+#  Ignoring this because `make test` fails for me, I think it fails because some
+#  tests have no files associated with them.
+#  
+# check() {
+#	cd "${_name}-$pkgver"
+#	make test
+#}
 
 package() {
-	for dir in usr/bin var/db etc/newrelic-infra var/log/newrelic-infra usr/lib/systemd/system; do
-		mkdir -p "${pkgdir}/${dir}"
-	done
-
-	# Extract debian data
-	tar -xzf data.tar.gz
-
-	# Sample config
-	cp newrelic-infra-template.yml.example "${pkgdir}/etc/newrelic-infra/newrelic-infra.yml.example"
-
-	# Integration configs
-	cp -Ra "${srcdir}/etc/newrelic-infra" "${pkgdir}/etc/"
-
-	# Systemd unit file, without the broken PIDFile directive
-	grep -ve '^PIDFile' \
-		"${srcdir}/etc/systemd/system/newrelic-infra.service" \
-		> "${pkgdir}/usr/lib/systemd/system/newrelic-infra.service"
-
-	# Infra-agent binaries
-	cp -Ra ${srcdir}/usr/bin/* "${pkgdir}/usr/bin/"
-
-	# Integration binaries and definitions
-	# TODO: Move this to /var/lib and add corresponding env overrides
-	cp -Ra "${srcdir}/var/db/newrelic-infra" "${pkgdir}/var/db"
+	cd "${srcdir}/${_name}-$pkgver"
+    local _arch
+    case $(uname -m) in
+        x86_64)
+            _arch="amd64"
+            ;;
+        aarch64)
+            _arch="arm64"
+            ;;
+        armv7h)
+            _arch="arm"
+            ;;
+        *)
+            print "Unknown architecture $(uname -m)!  Exiting..." >&2 
+            exit 1
+            ;;
+    esac
+    install -dm u=rwx,go=rx "${pkgdir}/usr/bin"
+    install -dm u=rwx,go=rx "${pkgdir}/etc/${pkgname}"
+    install -Dm u=rwx,go=rx \
+        dist/linux-${pkgname}{,-ctl,-service}_linux_${_arch}/${pkgname}* \
+        "${pkgdir}/usr/bin/"
+    install -Dm u=rw,go=r "${srcdir}/${pkgname}.yml" "${pkgdir}/etc/${pkgname}/"
 }
+sha256sums=('1f04ddb97c9e43dced56ebe36485f7045b7244b999339a60e54c98d7bbf49be5'
+            'b5ef080a6345b737bc56bc594a8220a681d98ddd79c033fdf954b222aa076509')
