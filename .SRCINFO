@@ -1,6 +1,6 @@
 pkgbase = libastal-wl-git
 	pkgdesc = Provides a central lib to manage wayland objects for other astal libs
-	pkgver = r859.8b39f46
+	pkgver = r862.41b5029
 	pkgrel = 2
 	url = https://github.com/Aylur/astal
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = libastal-wl-git
 	depends = glib2
 	depends = glibc
 	depends = wayland
+	depends = wayland-protocols
 	provides = libastal-wl
 	provides = libastal-wl.so=0-64
 	source = git+https://github.com/Aylur/astal.git

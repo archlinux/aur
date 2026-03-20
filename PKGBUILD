@@ -2,7 +2,7 @@
 
 pkgname=libastal-wl-git
 _pkgname=wl
-pkgver=r859.8b39f46
+pkgver=r862.41b5029
 pkgrel=2
 provides=(libastal-wl libastal-wl.so=0-64)
 pkgdesc="Provides a central lib to manage wayland objects for other astal libs"
@@ -13,6 +13,7 @@ depends=(
   glib2
   glibc
   wayland
+  wayland-protocols
 )
 makedepends=(
   meson
