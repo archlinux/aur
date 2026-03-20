@@ -1,9 +1,9 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
-pkgdecs='Typeface based loosely on early Grotesques with extensive OpenType features'
+pkgdesc='Typeface based loosely on early Grotesques with extensive OpenType features'
 pkgbase=ttf-work-sans
 pkgname=(ttf-work-sans ttf-work-sans-variable)
 pkgver=2.010
-pkgrel=2
+pkgrel=3
 replaces=(otf-work-sans-ibx otf-work-sans)
 arch=(any)
 license=(custom:OFL)

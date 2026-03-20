@@ -1,0 +1,5 @@
+[ttf-work-sans]
+source = 'github'
+github = 'weiweihuanghuang/Work-Sans'
+use_max_tag = true
+prefix = 'v'

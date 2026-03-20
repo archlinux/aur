@@ -1,6 +1,7 @@
 pkgbase = ttf-work-sans
+	pkgdesc = Typeface based loosely on early Grotesques with extensive OpenType features
 	pkgver = 2.010
-	pkgrel = 2
+	pkgrel = 3
 	url = http://weiweihuanghuang.github.io/Work-Sans/
 	arch = any
 	license = custom:OFL
@@ -13,4 +14,3 @@ pkgname = ttf-work-sans
 
 pkgname = ttf-work-sans-variable
 	provides = ttf-work-sans
-
