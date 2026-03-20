@@ -1,7 +1,7 @@
 # Maintainer: Ali Mahmoud <aur.c3rt@gmail.com>
 pkgname=snaptool
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A minimal CLI system health snapshotter"
 arch=('x86_64')
 url="https://github.com/c3rt1fiedd/snaptool"
