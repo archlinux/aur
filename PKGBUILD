@@ -4,8 +4,8 @@ _name=capo-nodi
 _repo=CapoNodi
 pkgbase=$_name-font
 pkgname=(otf-$_name ttf-$_name)
-pkgver=1.102
-pkgrel=2
+pkgver=1.103
+pkgrel=1
 pkgdesc='Dropcaps derivative font — pg. 16 of 1880 Muster-Alphabete'
 arch=(any)
 url="https://m-casanova.codeberg.page/${_repo}/"
@@ -13,7 +13,7 @@ _url="https://codeberg.org/m-casanova/${_repo}"
 license=(OFL)
 _archive="${_repo,,}-$pkgver"
 source=("$_archive-$pkgrel.tar.gz::$_url/archive/v$pkgver.tar.gz")
-sha256sums=('50c17f04213aabc0e85cac44ad060624b4c432297f061617cd19295d51da1c93')
+sha256sums=('0964261b0fc50c877f7a61746daf4af21b32fe012bd0562766e6ae13798f76da')
 
 package_otf-capo-nodi() {
 	cd "${_repo,,}"
