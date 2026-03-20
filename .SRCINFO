@@ -1,0 +1,20 @@
+pkgbase = logv
+	pkgdesc = Fast CLI/TUI log viewer for Linux terminals
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Ribengame/logv
+	arch = any
+	license = MIT
+	checkdepends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-rich
+	depends = python-textual
+	depends = python-typer
+	source = logv-0.1.0.tar.gz::https://github.com/Ribengame/logv/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = ec03f625269ae7a0acb0795ef144156587f4efe05c843cba7f2d3aa48fea9806
+
+pkgname = logv

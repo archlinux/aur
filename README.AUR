@@ -1,0 +1,12 @@
+Maintainer: Oskar Gerlicz Kowalczuk
+Email: oskar@gerlicz.space
+Upstream: https://github.com/Ribengame/logv
+
+This directory is a dedicated AUR repository, not the upstream source tree.
+
+Next steps:
+1. Review PKGBUILD.
+2. Run: makepkg --printsrcinfo > .SRCINFO
+3. Test: makepkg -si
+4. Commit PKGBUILD .SRCINFO README.AUR
+5. Push to AUR remote.
