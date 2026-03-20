@@ -9,7 +9,7 @@ url="https://github.com/SinTan1729/$_pkgname"
 license=("GPL3")
 provides=("immich-custom-memories")
 source=("$_pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/$_pkgname.tar.gz")
-sha256sums=('14446380283f990298bbef74af3260d4778365a3f81c590f5848d4bbb4cd7e9c')
+sha256sums=('56f5e1a5fc4e0aca89aabd9a0296c592ee7318d6374b21ac10325a6b6c13c542')
 package() {
 	# binary
 	install -Dm755 ./$_pkgname "$pkgdir/usr/bin/$_pkgname"
