@@ -2,7 +2,7 @@
 
 _pkgname="matlab-mcp-core-server"
 pkgname="${_pkgname}-bin"
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Run MATLAB® using AI applications with the official MATLAB MCP Server from MathWorks®"
 arch=(
@@ -30,9 +30,9 @@ source=(
 source_x86_64=(
   "${_pkgsrc}-x86_64::${_url}/releases/download/v${pkgver}/${_pkgname}-glnxa64"
 )
-sha256sums=('975c3f4ab21eaa0b38ded15773cf8c77268a2d2c0a7fbfd5d61ab1817a8c19c8'
-            '6527b9e7297ce7fadcba5ec4c73568eff9d2630890889bd36acac7f137cd28d0')
-sha256sums_x86_64=('df30dcfac83123e7c881d081b11a3fcdb3291148d47cf0dcb0091f8d8bd43d55')
+sha256sums=('2c180b967ff2657363fabf7134cde881b24e4957df21419aa11afa49a2bd3847'
+            'ad58146f20a6c31a5147a1e0f6a726ee039c9bb3dc89a4b4752c0b7416defcb7')
+sha256sums_x86_64=('486e5cd966c56779e6ef16aa6bdb92ece862170ed37ccf347c5e24068aeda480')
 
 package() {
   cd "${srcdir}"

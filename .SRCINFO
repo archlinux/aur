@@ -1,6 +1,6 @@
 pkgbase = matlab-mcp-core-server-bin
 	pkgdesc = Run MATLAB® using AI applications with the official MATLAB MCP Server from MathWorks®
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://www.mathworks.com/products/matlab-mcp-core-server.html
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = matlab-mcp-core-server-bin
 	depends = matlab-release>=R2020b
 	provides = matlab-mcp-core-server
 	conflicts = matlab-mcp-core-server
-	source = matlab-mcp-core-server-0.6.0-README.md::https://github.com/matlab/matlab-mcp-core-server/raw/refs/tags/v0.6.0/README.md
-	source = matlab-mcp-core-server-0.6.0-LICENSE.md::https://github.com/matlab/matlab-mcp-core-server/raw/refs/tags/v0.6.0/LICENSE.md
-	sha256sums = 975c3f4ab21eaa0b38ded15773cf8c77268a2d2c0a7fbfd5d61ab1817a8c19c8
-	sha256sums = 6527b9e7297ce7fadcba5ec4c73568eff9d2630890889bd36acac7f137cd28d0
-	source_x86_64 = matlab-mcp-core-server-0.6.0-x86_64::https://github.com/matlab/matlab-mcp-core-server/releases/download/v0.6.0/matlab-mcp-core-server-glnxa64
-	sha256sums_x86_64 = df30dcfac83123e7c881d081b11a3fcdb3291148d47cf0dcb0091f8d8bd43d55
+	source = matlab-mcp-core-server-0.6.1-README.md::https://github.com/matlab/matlab-mcp-core-server/raw/refs/tags/v0.6.1/README.md
+	source = matlab-mcp-core-server-0.6.1-LICENSE.md::https://github.com/matlab/matlab-mcp-core-server/raw/refs/tags/v0.6.1/LICENSE.md
+	sha256sums = 2c180b967ff2657363fabf7134cde881b24e4957df21419aa11afa49a2bd3847
+	sha256sums = ad58146f20a6c31a5147a1e0f6a726ee039c9bb3dc89a4b4752c0b7416defcb7
+	source_x86_64 = matlab-mcp-core-server-0.6.1-x86_64::https://github.com/matlab/matlab-mcp-core-server/releases/download/v0.6.1/matlab-mcp-core-server-glnxa64
+	sha256sums_x86_64 = 486e5cd966c56779e6ef16aa6bdb92ece862170ed37ccf347c5e24068aeda480
 
 pkgname = matlab-mcp-core-server-bin
