@@ -4,7 +4,7 @@
 pkgname=db-toolkit
 pkgver=0.1.0_beta7
 pkgrel=2
-pkgdesc="Database management desktop app"
+pkgdesc="Deprecated. Use db-toolkit-bin instead"
 arch=('x86_64')
 url="https://github.com/db-toolkit/db-toolkit"
 license=('MIT')

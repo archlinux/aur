@@ -1,5 +1,5 @@
 pkgbase = db-toolkit
-	pkgdesc = Database management desktop app
+	pkgdesc = Deprecated. Use db-toolkit-bin instead
 	pkgver = 0.1.0_beta7
 	pkgrel = 2
 	url = https://github.com/db-toolkit/db-toolkit
