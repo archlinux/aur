@@ -1,0 +1,5 @@
+[oscgoesbrrr]
+source = "github"
+github = "OscToys/OscGoesBrrr"
+use_latest_release = true
+prefix = "v"
