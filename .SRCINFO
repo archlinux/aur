@@ -1,0 +1,16 @@
+pkgbase = kefctl
+	pkgdesc = TUI controller for KEF LSX II speakers
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/douglas/kefctl
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = rust
+	depends = gcc-libs
+	depends = glibc
+	options = !lto
+	source = kefctl-0.2.0.tar.gz::https://github.com/douglas/kefctl/archive/v0.2.0.tar.gz
+	sha256sums = f66d57e4c135fee9f811e5413a2bcf79b070264262b515797d622d843fd8b816
+
+pkgname = kefctl
