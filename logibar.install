@@ -16,6 +16,7 @@ post_install() {
     echo "==> Setting up HID device permissions..."
     udevadm control --reload-rules 2>/dev/null || true
     udevadm trigger --action=change --subsystem-match=hidraw 2>/dev/null || true
+    sleep 1  # wait for uaccess ACLs to be applied by logind
 
     echo "==> Starting Logibar monitoring services..."
     if _run_as_user systemctl --user daemon-reload && \
@@ -34,6 +35,7 @@ post_upgrade() {
     echo "==> Updating HID device permissions..."
     udevadm control --reload-rules 2>/dev/null || true
     udevadm trigger --action=change --subsystem-match=hidraw 2>/dev/null || true
+    sleep 1  # wait for uaccess ACLs to be applied by logind
 
     echo "==> Restarting Logibar monitoring services..."
     if _run_as_user systemctl --user daemon-reload && \
