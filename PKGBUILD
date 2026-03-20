@@ -1,6 +1,6 @@
 # Maintainer: Aftershock9009 <cfsa9009 at gmail dot com>
 pkgname=itgmania
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A fork of stepmania 5.1, improved for the post-ITG community, release branch"
 provides=('itgmania')
