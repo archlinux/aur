@@ -1,4 +1,5 @@
 # Maintainer: Torge Matthies <openglfreak at googlemail dot com>
+# Maintainer: hypevhs <hackgammavision at gmail dot com>
 
 pkgname='oscgoesbrrr'
 pkgdesc='Make haptics in real life go BRRR from VRChat'
