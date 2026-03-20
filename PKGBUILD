@@ -4,7 +4,7 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.1.7714
-pkgrel=2
+pkgrel=3
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -13,11 +13,12 @@ depends=('electron' 'nodejs')
 optdepends=('claude-code: Claude Code CLI for agentic coding features (npm i -g @anthropic-ai/claude-code)'
             'claude-cowork-service: Enables Cowork VM features on Linux (experimental)'
             'xdotool: Accurate multi-monitor Quick Entry positioning (X11/XWayland) - highly recommended'
-            'scrot: Computer Use screenshots (X11, fallback: imagemagick)')
+            'hyprland: Quick Entry cursor positioning on Hyprland Wayland (hyprctl)'
+            'socat: Cowork socket health check in launcher (fallback: age-based check)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.7714-2/claude-desktop-1.1.7714-linux.tar.gz")
-sha256sums_x86_64=('07192d2c88f6a67f59849c384579d00aaeffa6d440a2d6a013bce66b079314f4')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.7714-3/claude-desktop-1.1.7714-linux.tar.gz")
+sha256sums_x86_64=('d27adb2b3294f59863042e480d8a44b88d1bfcc972e8073aeea0118c82b1d9db')
 options=('!strip')
 
 package() {
