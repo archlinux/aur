@@ -8,6 +8,7 @@ url="https://github.com/griffinmartin/opencode-claude-auth"
 license=('MIT')
 depends=('nodejs' 'opencode')
 makedepends=('npm')
+optdepends=('claude-code: This plugin reads credentials from official CLI')
 options=('!debug')
 conflicts=("${pkgname}-debug")
 install=$pkgname.install

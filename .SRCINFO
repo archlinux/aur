@@ -9,6 +9,7 @@ pkgbase = opencode-claude-auth
 	makedepends = npm
 	depends = nodejs
 	depends = opencode
+	optdepends = claude-code: This plugin reads credentials from official CLI
 	conflicts = opencode-claude-auth-debug
 	options = !debug
 	source = opencode-claude-auth-0.5.4.tar.gz::https://github.com/griffinmartin/opencode-claude-auth/archive/refs/tags/v0.5.4.tar.gz
