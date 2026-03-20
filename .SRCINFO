@@ -1,0 +1,17 @@
+pkgbase = canoe
+	pkgdesc = Stacking window manager for River with a classic look and feel written in Rust
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/roblillack/canoe
+	install = canoe.install
+	arch = x86_64
+	license = MIT
+	makedepends = cargo-nightly
+	depends = wayland
+	depends = river
+	source = LICENSE
+	source = https://github.com/roblillack/canoe/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 6033278424fe66af6e6397b4e1a2dfdd621693586a32a5320640a17dc459993d
+	sha256sums = e5d39d55f62644afafe3555b7b33884347ddb1f8a34195a3e5596a257a1bff3c
+
+pkgname = canoe
