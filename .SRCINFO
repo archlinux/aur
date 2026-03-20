@@ -1,8 +1,9 @@
 pkgbase = smartbrowser-bin
 	pkgdesc = HackerEarth Smart Browser for secure assessments
 	pkgver = 2.4.1
-	pkgrel = 1
-	url = https://www.hackerearth.com
+	pkgrel = 2
+	url = https://www.hackerearth.com/challenges/smart-browser/sap-9/
+	install = smartbrowser-bin.install
 	arch = x86_64
 	license = custom
 	depends = gtk3
@@ -21,6 +22,8 @@ pkgbase = smartbrowser-bin
 	optdepends = pulseaudio: audio support
 	provides = smartbrowser
 	conflicts = smartbrowser
+	options = !strip
+	options = !debug
 	source = smartbrowser.deb::https://cdn.hackerearth.com/smart-browser/releases/linux/x64/smart-browser-2.4.1.deb
 	sha256sums = SKIP
 

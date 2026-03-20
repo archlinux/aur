@@ -1,12 +1,12 @@
 # Maintainer: Daksh Choudhary <ch.daksh01@gmail.com>
-# Maintainer: Friend Name <s.viveksudan@gmail.com>
+# Maintainer: Vivek Sudan <s.viveksudan@gmail.com>
 
 pkgname=smartbrowser-bin
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="HackerEarth Smart Browser for secure assessments"
 arch=('x86_64')
-url="https://www.hackerearth.com"
+url="https://www.hackerearth.com/challenges/smart-browser/sap-9/"
 license=('custom')
 
 depends=(
@@ -29,6 +29,8 @@ optdepends=(
   'pulseaudio: audio support'
 )
 
+options=('!strip' '!debug')
+
 provides=('smartbrowser')
 conflicts=('smartbrowser')
 
@@ -44,20 +46,20 @@ package() {
   tar xf data.tar.* -C "$pkgdir"
 
   # Fix permissions
-  chmod -R 755 "$pkgdir/usr/bin" 2>/dev/null || true
-
+  chmod -R 755 "$pkgdir/usr" 
+  
   # Fix Debian-specific lib path
   if [ -d "$pkgdir/usr/lib/x86_64-linux-gnu" ]; then
     mkdir -p "$pkgdir/usr/lib"
-    cp -r "$pkgdir/usr/lib/x86_64-linux-gnu/"* "$pkgdir/usr/lib/"
-    rm -rf "$pkgdir/usr/lib/x86_64-linux-gnu"
+    mv "$pkgdir/usr/lib/x86_64-linux-gnu/"* "$pkgdir/usr/lib/"
+    rmdir "$pkgdir/usr/lib/x86_64-linux-gnu"
   fi
 
   # Install license if exists
-  install -Dm644 "$pkgdir/usr/share/doc/"*/copyright \
-    "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
+  if [ -f "$pkgdir/usr/share/doc/smart-browser/copyright" ]; then
+    install -Dm644 "$pkgdir/usr/share/doc/smart-browser/copyright" \
+      "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  fi
 }
 
-post_install() {
-  echo "Note: Smart Browser is officially supported on Ubuntu-based systems."
-}
+install=smartbrowser-bin.install

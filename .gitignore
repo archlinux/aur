@@ -1,0 +1,6 @@
+pkg/
+src/
+*.pkg.tar.zst
+*.deb
+*.tar.zst
+PKGBUILD.save

@@ -1,0 +1,3 @@
+post_install() {
+  echo "Note: Smart Browser is officially supported on Ubuntu-based systems."
+}
