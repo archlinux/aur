@@ -34,7 +34,7 @@ install='post.install'
 prepare() {
   unzip -qo "$srcdir/$pkgname-$pkgver.zip" -d "$srcdir/${pkgname}-${pkgver}"
   bash patch.sh "${pkgname}-${pkgver}"
-  cp "${srcdir}/pyproject.toml" "${srcdir}/${pkgname}-${pkgver}/pyproject.toml"
+  install -m 644 "${srcdir}/pyproject.toml" "${srcdir}/${pkgname}-${pkgver}/pyproject.toml"
 }
 
 package() {
