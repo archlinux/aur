@@ -1,0 +1,20 @@
+#!/usr/bin/openrc-run
+# Copyright (c) 2026 Zebra2711 <zebra2711t@gmail.com>
+# All rights reserved. Released under the 2-clause BSD license.
+
+name="filec"
+description="filec service, improves P2P stability and speed"
+
+command="/opt/filecentipede/lib/filec"
+command_args="__service__"
+command_background="yes"
+pidfile="/run/${RC_SVCNAME}.pid"
+supervisor="supervise-daemon"
+depend() {
+    need net
+    use dns
+}
+
+start_pre() {
+    checkpath --directory --mode 0755 /var/run/${RC_SVCNAME}
+}
