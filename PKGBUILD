@@ -4,7 +4,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154,SC2164
 
 pkgname=hibp
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Have I been pwned: High performance downloader, query tool, server and utilities"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ license=('Apache-2.0')
 depends=('curl' 'gcc-libs' 'glibc' 'libevent' 'onetbb')
 makedepends=('cmake' 'git' 'ninja' 'ruby' 'ruby-rake' 'wget' 'unzip')
 source=("git+${url}.git#tag=v${pkgver}")
-b2sums=('73965c00ebea3e7e4ee0fc32b8281770ada977418bdb680465caabc745b6cd2cb9b897fa401e4f0fc5356fd1b85d739e4511610e5e42c82f285d98697c5cafc1')
+b2sums=('3472e85d3092e992cdf9cf2ee96ce4165828f9574f80c49abdeb1e2c23796e4c2e50cc4330725dcde3274ae8b060c837954cb8ae5d3e9c1e3dde620d58a59bbb')
 
 prepare() {
 	cd "${srcdir}/${pkgname}"

@@ -1,6 +1,6 @@
 pkgbase = hibp
 	pkgdesc = Have I been pwned: High performance downloader, query tool, server and utilities
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	url = https://github.com/oschonrock/hibp
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = hibp
 	depends = glibc
 	depends = libevent
 	depends = onetbb
-	source = git+https://github.com/oschonrock/hibp.git#tag=v0.6.1
-	b2sums = 73965c00ebea3e7e4ee0fc32b8281770ada977418bdb680465caabc745b6cd2cb9b897fa401e4f0fc5356fd1b85d739e4511610e5e42c82f285d98697c5cafc1
+	source = git+https://github.com/oschonrock/hibp.git#tag=v0.6.2
+	b2sums = 3472e85d3092e992cdf9cf2ee96ce4165828f9574f80c49abdeb1e2c23796e4c2e50cc4330725dcde3274ae8b060c837954cb8ae5d3e9c1e3dde620d58a59bbb
 
 pkgname = hibp
