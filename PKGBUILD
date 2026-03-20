@@ -3,7 +3,7 @@
 _system_wasm_bindgen=false
 _version=0.2.0
 _channel=nightly
-_date=2026-03-13
+_date=2026-03-20
 
 pkgbase=ruffle-nightly
 pkgname=(ruffle-nightly
@@ -29,7 +29,7 @@ else
 fi
 source=("git+https://github.com/ruffle-rs/ruffle.git#tag=$_channel-$_date"
         "chromium-extension-ruffle.key")
-sha256sums=('032b74bbaaaff980841d26d0faa73e3a6aff60d49512c52aa04d37a2886913f6'
+sha256sums=('c05bc888c910c10341da90ba1e1551a349ea6b6dfb062c928a18fbf756d51ba4'
             'dac5c0e9661e41834b76d6d047dc94e41dd7a80d98e1c39cb4f2c95b1a7c7a46')
 options=("!lto")
 
@@ -44,7 +44,7 @@ prepare() {
         require_wasm_bindgen_version="$(tomlq -r '.package[] | select(.name == "wasm-bindgen") | .version' Cargo.lock)"
         cargo install wasm-bindgen-cli --version "$require_wasm_bindgen_version"
     fi
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target host-tuple
     cd web
     npm ci
     # TODO version_name=$version_number when not nightly
@@ -69,14 +69,13 @@ build() {
     fi
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features \
-        --package=ruffle_desktop
     # libtracy_client-sys seems missing some symbols, skip enabling all features.
+    # jpegxr is not compatible to rust 1.94.0
     cargo build --frozen --release \
+        --package=ruffle_desktop \
         --package=ruffle_scanner \
         --package=exporter
 
-    export CARGO_FEATURES=jpegxr
     # Script will read binary at hardcoded path
     # See web/packages/core/tools/build_wasm.ts for more info.
     unset CARGO_TARGET_DIR
@@ -89,7 +88,6 @@ build() {
 
     cd web
     npm run build:repro
-    unset CARGO_FEATURES
 
     echo "Signing chromium extension..."
     mkdir -p extension-chromium
@@ -117,9 +115,8 @@ build() {
 check() {
     cd "$srcdir/ruffle"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features \
-        --package=ruffle_desktop
     cargo test --frozen \
+        --package=ruffle_desktop \
         --package=ruffle_scanner \
         --package=exporter
 
