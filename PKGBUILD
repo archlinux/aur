@@ -1,4 +1,5 @@
-# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Maintainer: Max Harmathy <harmathy@alumni.tum.de>
+# Contributor: Aseem Athale <athaleaseem@gmail.com>
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Thomas Weißschuh <thomas t-8ch de>
