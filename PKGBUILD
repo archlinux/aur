@@ -1,7 +1,7 @@
 # Maintainer: Alexander Pohl <alex@ahpohl.com>
 
 pkgname=smartmeter-gateway
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc="Protocol gateway for domestic meter telemetry"
@@ -14,7 +14,7 @@ source=(
   "sysusers-meter.conf"
   "smartmeter-gateway.service"
 )
-sha256sums=('68f507095c55f23327cf18568eadb55b1014b40e016335643c992645155308c0'
+sha256sums=('3d8ae5e2f95fa6ac4f5d96337623b3cde4a54785e29be0d7c1ac1f33aeef68f3'
             'ceb25291231fff17ab14840233f700878897bd74d7749bed3345d6e46d4f4f24'
             'b6695bf8190bf81047908b85ae4950839f4e6eedd91fe58c7890c2b9eceae565')
 backup=('etc/smartmeter-gateway/config.yaml')
