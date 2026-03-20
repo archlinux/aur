@@ -1,0 +1,17 @@
+pkgbase = ta-designer
+	pkgdesc = Graphical UI design software for Technische Alternative devices
+	pkgver = 1.30.1
+	pkgrel = 1
+	url = https://www.ta.co.at
+	arch = x86_64
+	arch = i386
+	license = unknown
+	makedepends = rpm-tools
+	makedepends = cpio
+	options = !strip
+	source_x86_64 = ta-designer-1.30.1-x86_64.rpm::https://www.ta.co.at/fileadmin/Downloads/Software/TA-Designer/Linux/64bit/ta-designer-1.30.1-x86_64.rpm
+	sha256sums_x86_64 = 9c55e265272765a83f4f2ef7de4de075d22b03c02b7603cdf131ca7504692171
+	source_i386 = ta-designer-1.30.1-i386.rpm::https://www.ta.co.at/fileadmin/Downloads/Software/TA-Designer/Linux/32bit/ta-designer-1.30.1-i386.rpm
+	sha256sums_i386 = f40d124844e67aafac4bda58107d15e316ca6b40f1835b05765fb0023f400375
+
+pkgname = ta-designer

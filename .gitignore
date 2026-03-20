@@ -1,0 +1,11 @@
+# Binary package files
+*.pkg.tar.zst
+*.pkg.tar.xz
+
+# Source files and folders
+/src/
+/pkg/
+*.rpm
+
+# Log files
+*.log
