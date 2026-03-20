@@ -1,6 +1,6 @@
 pkgbase = dms-shell-git
 	pkgdesc = Desktop shell for wayland compositors built with Quickshell & GO
-	pkgver = 1.2.0.r149.g122fb16
+	pkgver = 1.4.0.r283.ga0c7ffd
 	pkgrel = 1
 	url = https://github.com/AvengeMedia/DankMaterialShell
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = dms-shell-git
 	optdepends = qt6ct: Qt6 application theming
 	optdepends = wtype: Paste from clipboard history and plugins
 	optdepends = cups-pk-helper: Printer Management
-	provides = dms-shell=1.2.0.r149.g122fb16
+	provides = dms-shell=1.4.0.r283.ga0c7ffd
 	conflicts = dms-shell
 	source = git+https://github.com/AvengeMedia/DankMaterialShell.git
 	source = dms.service
