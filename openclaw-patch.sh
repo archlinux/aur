@@ -41,13 +41,23 @@ patch_source() {
         sed -i 's/install pnpm, then retry/install bun or pnpm, then retry/' scripts/ui.js
     fi
 
-    # 4. src/discord/voice/manager.ts
-    echo "Patching src/discord/voice/manager.ts..."
-    if ! grep -q 'any' src/discord/voice/manager.ts | grep 'opus'; then
-        # Only patch if the specific type import is found
-        if grep -q 'typeof import("@discordjs/opus")' src/discord/voice/manager.ts; then
-            sed -i 's/typeof import("@discordjs\/opus")/any/g' src/discord/voice/manager.ts
+    # 4. src/discord/voice/manager.ts (moved to extensions/discord/src/voice/manager.ts)
+    VOICE_MANAGER=""
+    for f in src/discord/voice/manager.ts extensions/discord/src/voice/manager.ts; do
+        if [ -f "$f" ]; then
+            VOICE_MANAGER="$f"
+            break
         fi
+    done
+    if [ -n "$VOICE_MANAGER" ]; then
+        echo "Patching $VOICE_MANAGER..."
+        if ! grep -q 'any' "$VOICE_MANAGER" 2>/dev/null || ! grep -q 'opus' "$VOICE_MANAGER" 2>/dev/null; then
+            if grep -q 'typeof import("@discordjs/opus")' "$VOICE_MANAGER"; then
+                sed -i 's/typeof import("@discordjs\/opus")/any/g' "$VOICE_MANAGER"
+            fi
+        fi
+    else
+        echo "Skipping discord voice/manager.ts patch (file not found, upstream removed opus)"
     fi
 
     # 5. src/agents/skills-install.ts
@@ -166,19 +176,7 @@ function discoverNpmPlugins(params: {
 EOF
     fi
 
-    if ! grep -q 'discoverNpmPlugins' src/plugins/discovery.ts | grep -v 'function'; then
-        grep -q 'const bundledDir = resolveBundledPluginsDir();' src/plugins/discovery.ts
-        sed -i '/const bundledDir = resolveBundledPluginsDir();/i \
-  // Discover NPM package plugins in config dir (e.g. ~/.openclaw/node_modules)\
-  discoverNpmPlugins({\
-    dir: resolveConfigDir(),\
-    origin: "global",\
-    candidates,\
-    diagnostics,\
-    seen,\
-  });\
-' src/plugins/discovery.ts
-    fi
+    # discoverNpmPlugins function and call-site already upstream — skip
 
     # 6. src/plugins/install.ts
     echo "Patching src/plugins/install.ts..."
@@ -189,8 +187,8 @@ EOF
 
     if ! grep -q 'const configPkgJson = path.join(CONFIG_DIR, "package.json");' src/plugins/install.ts; then
         grep -q 'export async function installPluginFromArchive' src/plugins/install.ts
-        sed -i '/export async function installPluginFromArchive/,/}): Promise<InstallPluginResult> {/ {
-            /}): Promise<InstallPluginResult> {/ a \
+	sed -i '/export async function installPluginFromArchive/,/): Promise<InstallPluginResult> {/ {
+	/): Promise<InstallPluginResult> {/ a \
   // Force installation into user config directory if package.json exists there\
   const configPkgJson = path.join(CONFIG_DIR, "package.json");\
   if (await fileExists(configPkgJson)) {\

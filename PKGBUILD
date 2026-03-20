@@ -1,7 +1,7 @@
 # Maintainer: Emir-Eins <emir-eins@outlook.com>
 # Contributor: Wuxxin <wuxxin@gmail.com>
 pkgname=openclaw-git
-pkgver=2026.3.8.r5.gf6d0712f50
+pkgver=2026.3.13.1.r1649.g4c60956d8e5
 pkgrel=1
 pkgdesc="Personal AI assistant that runs on your own devices"
 arch=('x86_64')
@@ -28,7 +28,7 @@ sha256sums=('SKIP'
             '28568550c4674efc8b90a9b4ea5cf9dc024770275c089499a5cc5d7064d1bba8'
             '44b23035089628327dbb05b1aa7a6daf09f21b82c0172ca59ed4576d3aa7b9a5'
             '34fa95679d51f4d5be120e98714f8b580689e57bef6eb031dcf35c0b26948e7d'
-            '39760292f1346a7afcf778da947abb1d4ccf7ebea784e14772f5fe84a346c6f5'
+            'f2e2fc61027c8753c023debdd4f68a975d8740e8c5d2078bda2c5a0713885fa2'
             '72cf00f138984381e747bafe04d853d4f8dc3b6e2fa92f58e0739e881eda2799'
             'cdaf01acb58af62348c6f669f8b77675f66428a8ae41b4b4e371739492fb05c6'
             '817f2a15928521a5e3b9206ee227cbe0b699932fe8f54eaa6a4290c59608dff2')
@@ -73,6 +73,8 @@ package() {
     install -d "$pkgdir/usr/lib/openclaw"
     cp -r assets dist docs extensions git-hooks node_modules patches scripts skills "$pkgdir/usr/lib/openclaw/"
     cp openclaw.mjs package.json AGENTS.md "$pkgdir/usr/lib/openclaw/"
+
+    rm -f "$pkgdir/usr/lib/openclaw/node_modules/.pnpm-workspace-state-v1.json"
 
     # Install documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
