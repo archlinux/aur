@@ -12,7 +12,7 @@ provides=('jean')
 conflicts=('jean')
 options=('!strip' '!debug')
 source_x86_64=("${url}/releases/download/v${pkgver}/Jean_${pkgver}_amd64.deb")
-sha256sums_x86_64=('04f119386c87c28aee3fe72cf721107209289a08d074490cd9b2a856879fabcb')
+sha256sums_x86_64=('7780cbb249e5cd1f2539d563d505f9ed5d9bd67d2366f7ace8a4de971c54738a')
 
 package() {
     tar -xzf data.tar.gz -C "${pkgdir}"
