@@ -2,7 +2,7 @@
 
 _pkgname=roseate
 pkgname=roseate-bin
-_pkgver="0.1.0-alpha.19"
+_pkgver="0.1.0-alpha.20"
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="🌹 A fancy yet simple image viewer — highly configurable, cross-platform, GPU-accelerated and fast."
@@ -16,7 +16,7 @@ source=(
     "roseate.desktop::https://raw.githubusercontent.com/cloudy-org/roseate/refs/heads/main/app/assets/roseate.desktop"
 )
 sha256sums=(
-    "da44ae7e7cc09c1a46caa6548ede439d8c21916c8175cd19372bce476be50b04"
+    "d9ade122ab8eff0f3cef602cb7c7705a112b3c02e162f175ba3dc81d1e35a593"
     "168c0217ee4dd6c6d9ddea1c3c3452df99a0bae16c7d97e85a34977e09556e60"
     "d069ce62715dc57ee50542ceab83ebc25dac4f302f08c3c697be32c95df2d728"
 )
