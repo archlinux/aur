@@ -1,6 +1,6 @@
 # Maintainer: Daniel Seichter <https://github.com/dseichter>
 pkgname=workdir-bin
-pkgver=2026.03.10
+pkgver=2026.03.16.beta13
 pkgrel=1
 pkgdesc="Work with multiple directories and run commands without navigating manually (prebuilt binary)."
 arch=('x86_64')
@@ -9,13 +9,13 @@ license=('GPL-3.0-only')
 options=('!debug')
 depends=('glibc')
 source=(
-    "workdir::https://github.com/dseichter/Workdir/releases/download/v${pkgver//./-}/workdir-ubuntu-24-04-v${pkgver//./-}"
+    "workdir::https://github.com/dseichter/Workdir/releases/download/v${pkgver//./-}/workdir-archlinux-x86_64-v${pkgver//./-}"
     "io.github.dseichter.workdir.desktop::https://raw.githubusercontent.com/dseichter/Workdir/v${pkgver//./-}/data/io.github.dseichter.workdir.desktop"
     "io.github.dseichter.workdir.png::https://raw.githubusercontent.com/dseichter/Workdir/v${pkgver//./-}/data/io.github.dseichter.workdir.png"
 )
 
 # sha256sums is replaced by the CI workflow on each release.
-sha256sums=('SKIP' 'SKIP' 'SKIP')
+sha256sums=('f934c4ddaf8b45090f8b27e3bc15993947271517005419b43a524a2c651879d3' 'SKIP' 'SKIP')
 
 package() {
     install -Dm755 "workdir" "$pkgdir/usr/bin/workdir"
