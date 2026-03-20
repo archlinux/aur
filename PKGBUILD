@@ -2,7 +2,7 @@
 pkgname=rchess
 pkgver=0.7.3
 pkgrel=1
-pkgdesc="Terminal chess with AI, analysis, Lichess puzzles, PNG/PGN export"
+pkgdesc="Rust TUI chess with AI, analysis, Lichess puzzles, PNG/PGN export"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tonycth7/rchess"
 license=('MIT')
