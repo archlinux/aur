@@ -3,7 +3,7 @@
 # Contributor: Solomon Choina <shlomochoina@gmail.com>
 
 pkgname=libclc-minimal-git
-pkgver=22.0.0_r563976.16d6ecc19b5cc
+pkgver=23.0.0_r573751.66f06f54cb4d
 pkgrel=1
 pkgdesc="companion package to llvm-minimal-git,  Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -52,6 +52,8 @@ pkgver() {
 }
 
 build() {
+    export CC=clang
+    export CXX=clang++
     cmake \
       -B _build \
       -S "$srcdir"/llvm-project/libclc  \
