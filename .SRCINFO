@@ -1,7 +1,7 @@
 pkgbase = immich-machine-learning
 	pkgdesc = Machine learning server for the Immich photo management system
-	pkgver = 2.5.6
-	pkgrel = 2
+	pkgver = 2.6.1
+	pkgrel = 1
 	url = https://github.com/immich-app/immich/tree/main/machine-learning
 	arch = any
 	license = AGPL-3.0-only
@@ -10,34 +10,23 @@ pkgbase = immich-machine-learning
 	makedepends = python-wheel
 	makedepends = python-hatchling
 	depends = python>=3.11
-	depends = python-onnxruntime>=1.23.2
 	depends = python-onnxruntime<2
-	depends = python-aiocache>=0.12.1
 	depends = python-aiocache<1.0
-	depends = python-fastapi>=0.95.2
 	depends = python-fastapi<1.0
-	depends = python-ftfy>=6.1.1
-	depends = gunicorn>=21.1.0
-	depends = python-huggingface-hub>=0.20.1
-	depends = python-insightface>=0.7.3
+	depends = gunicorn
+	depends = python-huggingface-hub
 	depends = python-insightface<1.0
-	depends = python-numpy>=2.3.4
-	depends = python-opencv>=4.7.0.72
+	depends = python-numpy
 	depends = python-opencv<5.0
-	depends = python-orjson>=3.9.5
-	depends = python-pillow>=9.5.0
-	depends = python-pydantic>=2.0.0
+	depends = python-orjson
+	depends = python-pillow<12.2
 	depends = python-pydantic<3
-	depends = python-pydantic-settings>=2.5.2
 	depends = python-pydantic-settings<3
-	depends = python-python-multipart>=0.0.6
 	depends = python-python-multipart<1.0
-	depends = python-rich>=13.4.2
-	depends = python-tokenizers>=0.15.0
+	depends = python-rich
 	depends = python-tokenizers<1.0
-	depends = uvicorn>=0.22.0
 	depends = uvicorn<1.0
-	depends = python-rapidocr>=3.1.0
+	depends = python-rapidocr
 	depends = python-albumentationsx
 	optdepends = libva-mesa-driver: GPU acceleration
 	optdepends = mesa-utils: GPU acceleration
@@ -45,9 +34,9 @@ pkgbase = immich-machine-learning
 	optdepends = intel-compute-runtime: OpenCL support
 	optdepends = intel-media-driver: HW acceleration
 	optdepends = immich-server: Photo management system dependent on this
-	source = immich-2.5.6.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v2.5.6.tar.gz
+	source = immich-2.6.1.tar.gz::https://github.com/immich-app/immich/archive/refs/tags/v2.6.1.tar.gz
 	source = immich-machine-learning.service
-	sha256sums = 01072d3125873ca1455ce0153f453017402308734fea9da45eb7ccd387d757ed
+	sha256sums = e7a231ecdf701db49527a5fd8c6f98dc9522113d970499469a5e0e553f5a2a23
 	sha256sums = ff0042c8d8bac6f59b162abb40ddf4d816b194a2dc8817a0e4700884ae7ca7a9
 
 pkgname = immich-machine-learning
