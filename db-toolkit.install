@@ -1,0 +1,7 @@
+post_install() {
+  echo "DB Toolkit installed. Run with: db-toolkit"
+}
+
+post_upgrade() {
+  echo "DB Toolkit updated."
+}
