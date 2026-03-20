@@ -4,7 +4,7 @@
 
 pkgname=recordly-bin
 pkgver=1.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source screen recorder and editor with auto-zoom, cursor effects, and polished video export"
 arch=(x86_64)
 url="https://github.com/webadderall/Recordly"
