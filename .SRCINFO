@@ -1,6 +1,6 @@
 pkgbase = prman
 	pkgdesc = Terminal project repository manager.
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/bencetotht/prm
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = prman
 	optdepends = tmux: popup and terminal-window integrations
 	conflicts = prman-bin
 	conflicts = prm
-	source = prman-1.0.7.tar.gz::https://github.com/bencetotht/prm/archive/refs/tags/v1.0.7.tar.gz
+	source = prman-1.0.8.tar.gz::https://github.com/bencetotht/prm/archive/refs/tags/v1.0.8.tar.gz
 	sha256sums = SKIP
 
 pkgname = prman
