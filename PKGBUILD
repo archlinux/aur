@@ -2,18 +2,20 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=proxmark3-iceman-git
-pkgver=4.21128.r178.g4d13041
+pkgver=4.21128.r181.g55db4dc
 pkgrel=1
 pkgdesc='RRG / Iceman repo - Proxmark3 RDV4.0 and other Proxmark3 platforms.'
 arch=('x86_64')
 url='https://github.com/RfidResearchGroup/proxmark3'
 license=('GPL-3.0-or-later')
 _pydeps=(
+  colorama
   cryptography
   bitarray
   bitstring
   pyaudio
-  pycryptodome
+  pycryptodomex
+  pyscard
   pyserial
   requests
   numpy
