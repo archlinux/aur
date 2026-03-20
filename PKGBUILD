@@ -1,6 +1,6 @@
 # Maintainer: Your Name <you@example.com>
 pkgname=tidal-cli-client-python
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Keyboard-first TIDAL terminal client (Python curses)'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python' 'mpv' 'python-tidalapi')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/pynttvi/tidal-cli-client/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('905128c378465ae5478d5c15cd9a65f20e0d7a2a04f6870e23feb272f3987b45')
+sha256sums=('d20b611ef7edf0d42e5d0f195b7da83017c3ab91cfaedf29a3389cf737f3052c')
 
 package() {
   local srcroot="$srcdir/tidal-cli-client-${pkgver}"
