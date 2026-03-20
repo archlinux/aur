@@ -2,14 +2,14 @@
 
 pkgname=openscreen-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Create stunning screen recordings for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio."
 arch=('any')
 url="https://github.com/siddharthvaddem/openscreen"
 license=('MIT')
 groups=()
 depends=('fuse')
-makedepends=('nodejs' 'pnpm')
+makedepends=('nodejs' 'npm')
 optdepends=()
 provides=()
 conflicts=('openscreen-appimage')
@@ -25,7 +25,7 @@ sha256sums=('ea95cd708c13b4ea2ff2ec8bf7edfca10f2f3f7d95f638d455fa2130db7f5744' '
 prepare() {
 	(
         cd "openscreen-$pkgver"
-        pnpm i
+        npm i
 	)
 
 	if [[ -d "openscreen-$pkgver/release" ]]; then
@@ -37,7 +37,7 @@ prepare() {
 build() {
 	(
         cd "openscreen-$pkgver"
-        pnpm run build
+        npm run build
 	)
 
 	app=$(find $srcdir/openscreen-$pkgver/release -regex ".*\.AppImage")
