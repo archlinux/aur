@@ -1,6 +1,6 @@
 pkgbase = endcord-lite
 	pkgdesc = Feature rich Discord TUI client. Lite version without terminal media player.
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://github.com/sparklost/endcord
 	arch = any
@@ -10,10 +10,11 @@ pkgbase = endcord-lite
 	optdepends = aspell: spellchecking
 	optdepends = yt-dlp: youtube support
 	optdepends = mpv: youtube in native player
+	optdepends = imagemagick: make notification images round
 	provides = endcord-lite
 	conflicts = endcord-lite
 	options = !strip
-	source = endcord-lite-1.3.0.tar.gz::https://github.com/sparklost/endcord/releases/download/1.3.0/endcord-lite-1.3.0-linux.tar.gz
+	source = endcord-lite-1.4.0.tar.gz::https://github.com/sparklost/endcord/releases/download/1.4.0/endcord-lite-1.4.0-linux.tar.gz
 	sha256sums = SKIP
 
 pkgname = endcord-lite
