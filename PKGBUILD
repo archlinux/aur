@@ -9,7 +9,7 @@
 # Contributor: Andres Perera <aepd87@gmail.com>
 
 pkgname=pacman-fancy-git
-pkgver=7.0.0.r7.g1f38429b
+pkgver=7.1.0.r10.gcb7452f6
 pkgver_repo="$(pacman -Sp pacman | grep -Eo "pacman-.*-[0-9]+"| cut -d- -f2-)"
 pkgrel=1
 pkgdesc="pacman, but patched to selectively have FiraCode's progressbar on supported terminals"
