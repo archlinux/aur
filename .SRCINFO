@@ -1,0 +1,16 @@
+pkgbase = python-chibi-fstab
+	pkgdesc = small lib for read and write fstab files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/chibi_fstab/
+	arch = any
+	license = WTFPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-chibi
+	depends = python-chibi-atlas
+	depends = python-chibi-hybrid
+	source = https://files.pythonhosted.org/packages/source/c/chibi_fstab/chibi_fstab-1.0.0.tar.gz
+	sha256sums = 3a1013c5bdbe0495f936318c3bcc284b8113f4e7f3a59ed22efdcb2ae184f846
+
+pkgname = python-chibi-fstab
