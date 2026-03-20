@@ -3,7 +3,7 @@
 
 pkgname=wingide-personal
 pkgver=11.1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free Python IDE designed for students and hobbyists. It omits many features found in Wing Pro."
 arch=('x86_64')
 url="http://www.wingware.com/"
