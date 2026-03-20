@@ -1,6 +1,6 @@
 pkgbase = hyprresume
 	pkgdesc = Session persistence daemon for Hyprland
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/IraSkyx/hyprresume
 	install = hyprresume.install
@@ -10,7 +10,7 @@ pkgbase = hyprresume
 	makedepends = mold
 	depends = gcc-libs
 	options = !debug
-	source = hyprresume-0.4.0.tar.gz::https://github.com/IraSkyx/hyprresume/archive/v0.4.0.tar.gz
-	sha256sums = 7837dfae4fa08019d49e44a1a594d61a1b481887438652ae8515f8204fb7a6db
+	source = hyprresume-0.5.0.tar.gz::https://github.com/IraSkyx/hyprresume/archive/v0.5.0.tar.gz
+	sha256sums = efbfe4d1a75a0d78969332d163e9f40a18d3d0033b5d85d1a90f8ffdf1017935
 
 pkgname = hyprresume

@@ -1,6 +1,6 @@
 # Maintainer: Adrien Lenoir <adrien.lenoir42440@gmail.com>
 pkgname=hyprresume
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Session persistence daemon for Hyprland'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('cargo' 'mold')
 install=$pkgname.install
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('7837dfae4fa08019d49e44a1a594d61a1b481887438652ae8515f8204fb7a6db')
+sha256sums=('efbfe4d1a75a0d78969332d163e9f40a18d3d0033b5d85d1a90f8ffdf1017935')
 
 prepare() {
     cd "$pkgname-$pkgver"
