@@ -3,6 +3,7 @@ pkgbase = geforcenow-native
 	pkgver = 1.0.0
 	pkgrel = 2
 	url = https://www.nvidia.com/en-us/geforce-now/
+	install = gfn.install
 	arch = any
 	license = custom:NVIDIA
 	depends = flatpak

@@ -3,6 +3,7 @@ pkgname=geforcenow-native
 pkgver=1.0.0  # bump manually on major releases
 pkgrel=2
 pkgdesc="NVIDIA GeForce NOW official beta Linux client (Flatpak)"
+install=gfn.install
 arch=('any')
 url="https://www.nvidia.com/en-us/geforce-now/"
 license=('custom:NVIDIA')
@@ -14,17 +15,4 @@ package() {
   # No actual files to install; post-install script handles Flatpak setup
   install -Dm644 "${srcdir}/geforcenow.flatpakrepo" \
     "${pkgdir}/usr/share/flatpak/remotes/geforcenow.flatpakrepo"
-}
-
-post_install() {
-  flatpak remote-add --if-not-exists GeForceNOW \
-    /usr/share/flatpak/remotes/geforcenow.flatpakrepo
-  flatpak install -y GeForceNOW com.nvidia.geforcenow
-}
-
-pre_remove() {
-echo "Removing GeForceNOW Flatpak..."
-flatpak uninstall -y com.nvidia.geforcenow
-flatpak remote-delete --if-exists GeForceNOW
-echo "Done!"
 }
