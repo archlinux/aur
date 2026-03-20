@@ -1,3 +1,7 @@
+v11.2.3 - 2026-03-20
+- Fixed UI freeze by moving changelog fetch to background thread.
+- Standardized Qt enums for PySide6 compatibility.
+
 v11.2.2 - 2026-03-20
 - Added remote AUR changelog display to the startup update prompt.
 - Added safety checks for terminal launching on various desktop environments.
