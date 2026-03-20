@@ -1,6 +1,6 @@
 [Desktop Entry]
 Version=1.0
-Name=IRPF 2025
+Name=IRPF 2026
 Comment=Programa do Imposto de Renda Pessoa Física
 Path=/usr/bin
 Exec=irpf
