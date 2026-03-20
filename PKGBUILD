@@ -1,7 +1,7 @@
 # Maintainer: nizne nizne@outlook.com
 _pkgname=zeroclaw
 pkgname=${_pkgname}-bin
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Private AI Assistant that runs entirely on your machine (prebuilt binary)."
 arch=('x86_64' 'aarch64')
@@ -17,8 +17,8 @@ source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/zeroclaw
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/zeroclaw-labs/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('69ad6d0b3c96424e823dd77c3625682fefbf7cc2871a624fa38f5d762c4bcc94'
             '62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a')
-sha256sums_x86_64=('efbf182650e0a1069b61aee28e79805e326e4bf805ae31da1b97f51a4b3c0ef8')
-sha256sums_aarch64=('8ab323372ce004869f82e16ff7e651bfab03843da7c75c6dc2b168e68e5a281d')
+sha256sums_x86_64=('787b33ea8eba9104a7023229040d6092e29a6db5123f271c4bdd2a455d0e4d3b')
+sha256sums_aarch64=('84ab831db469eddc1f7e49a8e5ae56288c6199ebede9b53d5b58e019cbfe91d1')
 
 package() {
   # ZeroClaw upstream manages services at runtime via `zeroclaw service install`
