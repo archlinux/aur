@@ -1,24 +1,26 @@
 # Maintainer: Peter Jung <ptr1337@cachyos.org>
+# Maintainer: asyync1024 <asyync1024 at proton dot me>
 
-pkgname=mold-git
-pkgver=2.39.1.r4.g18c813a2
+_reponame=mold
+pkgname=${_reponame}-git
+pkgver=2.40.4.r76.gfc96c1b9
 pkgrel=1
 pkgdesc='A Modern Linker'
 arch=('x86_64')
-url='https://github.com/rui314/mold'
+url="https://github.com/rui314/$_reponame"
 license=('MIT')
-# xxhash is bundled
+# bundled: xxhash, mimalloc
 depends=(
   glibc
-  gcc-libs
   libblake3
-  mimalloc
+  libstdc++
   tbb
   zlib
   zstd
 )
 makedepends=(
   cmake
+  ninja
   git
   mold
   python
@@ -27,28 +29,32 @@ checkdepends=(
   clang
   libdwarf
 )
-source=("mold::git+https://github.com/rui314/mold")
+source=("git+${url}.git")
 b2sums=('SKIP')
-provides=("mold=$pkgver")
-conflicts=("mold")
-_reponame="mold"
+provides=("$_reponame=$pkgver")
+conflicts=("$_reponame")
 
 pkgver() {
-    cd "$_reponame"
-    git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  cd "$_reponame"
+  git describe --long --tags | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cmake \
-  -S "$_reponame" \
-  -B build \
-  -D CMAKE_BUILD_TYPE='None' \
-  -D CMAKE_INSTALL_PREFIX='/usr' \
-  -D CMAKE_INSTALL_LIBEXECDIR='lib' \
-  -D MOLD_USE_SYSTEM_MIMALLOC=ON \
-  -D MOLD_USE_SYSTEM_TBB=ON \
-  -D MOLD_LTO=ON \
-  -D MOLD_USE_MOLD=ON
+  local cmake_options=(
+    -S "$_reponame"
+    -B build
+    -G Ninja
+    -W no-dev
+    -D CMAKE_BUILD_TYPE='None'
+    -D CMAKE_INSTALL_PREFIX='/usr'
+    -D CMAKE_INSTALL_LIBEXECDIR='lib'
+    -D MOLD_USE_SYSTEM_MIMALLOC=OFF
+    -D MOLD_USE_SYSTEM_TBB=ON
+    -D MOLD_LTO=ON
+    -D MOLD_USE_MOLD=ON
+  )
+
+  cmake ${cmake_options[@]}
 
   cmake --build build
 }
@@ -58,6 +64,7 @@ check() {
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
-  install -Dm644 "${_reponame}"/LICENSE "${pkgdir}"/usr/share/licenses/mold/LICENSE
+  DESTDIR="$pkgdir" cmake --install build
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" "$_reponame/LICENSE"
 }
+# vim: ts=2 sw=2 et:
