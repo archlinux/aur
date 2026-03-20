@@ -1,15 +1,14 @@
 pkgbase = getnf
 	pkgdesc = Command-line tool for installing Nerd Fonts
-	pkgver = 0.2.0.r12.g1de70d9
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/getnf/getnf
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = curl
-	depends = fontconfig
 	optdepends = fzf: for "getnf -f" functionality
-	source = git+https://github.com/getnf/getnf.git
-	sha256sums = SKIP
+	source = getnf-0.3.0.tar.gz::https://github.com/getnf/getnf/archive/v0.3.0.tar.gz
+	sha256sums = 80ca53081804c19af7b80ed4b5da958cfae07d1d0ae96998a9341300d2e998e4
 
 pkgname = getnf
