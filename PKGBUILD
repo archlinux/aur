@@ -3,7 +3,7 @@
 pkgname=blahaj-d
 _pkgname=BLAHAJ-d
 binname=blahaj
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Gay sharks at your local terminal - ported to D! lolcat-like CLI tool"
 arch=('x86_64' 'i686' 'aarch64')
@@ -13,8 +13,8 @@ depends=()
 makedepends=('d-compiler' 'dub')
 conflicts=('blahaj' 'blahaj-rs-git' 'blahaj-rs')
 
-source=("git+https://codeberg.org/sashaa/BLAHAJ-d.git#tag=v1.0.1")
-sha256sums=('50e6e40bff5f93069372ffbd775728d393e1fb728486beb688c4b44397ecc8d1')
+source=("git+https://codeberg.org/sashaa/BLAHAJ-d.git#tag=v1.0.2")
+sha256sums=('23d43a300caaccadce2235af05fad8589b44184cd535ae0972f3b9d8db15fa63')
 
 build() {
     cd "$_pkgname"
