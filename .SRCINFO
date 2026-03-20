@@ -1,13 +1,13 @@
 pkgbase = promrail-bin
 	pkgdesc = Git-native GitOps promotion tool
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/forkline/prl
 	arch = x86_64
 	license = MIT
 	provides = promrail
 	conflicts = promrail
-	source = https://github.com/forkline/promrail/releases/download/v0.1.1/prl-0.1.1-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = c7305e6142ef2bd87cd66d52a9b7ada3aaa81083b809be0ccc45eb6755a1cb0c
+	source = https://github.com/forkline/promrail/releases/download/v0.2.0/prl-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 46647afe8ada59cb989265b5c1f4b8ea8bdf72081c59a8c18e6ba0c3d26466e9
 
 pkgname = promrail-bin
