@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=rustconn
 _app_id=io.github.totoshko88.RustConn
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Modern connection manager for Linux with GTK4/Wayland-native interface."
 arch=('x86_64')
@@ -50,7 +50,7 @@ optdepends=(
   'waypipe: Wayland application forwarding for SSH connections'
 )
 source=("RustConn-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('2d4ac9ab9b92dd7d7b6977e7450f0276dfa6e82fed1971aaedcc9330765c69c1')
+sha256sums=('a8496b86e648f6306f14c6b26fcb594e8e213502a97cf3bd03226662079f4063')
 
 prepare() {
   cd "RustConn-$pkgver"
@@ -63,9 +63,6 @@ build() {
   CFLAGS+=" -ffat-lto-objects"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-
-  # https://github.com/aws/aws-lc-rs/issues/1008#issuecomment-3774105038
-  export AWS_LC_SYS_NO_JITTER_ENTROPY=1
 
   cargo build --frozen --release \
     -p rustconn --features adw-1-8 \
