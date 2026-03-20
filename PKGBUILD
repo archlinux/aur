@@ -3,7 +3,7 @@
 # Contributor: nine
 
 pkgname='nctl-bin'
-pkgver=1.14.2
+pkgver=1.15.0
 pkgrel=1
 pkgdesc='A CLI tool to interact with Nine API resources.'
 url='https://github.com/ninech/nctl'
@@ -13,10 +13,10 @@ provides=('nctl')
 conflicts=('nctl')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ninech/nctl/releases/download/v${pkgver}/nctl_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('7d975040ff54a98a4256fa0866ed8cb7c414399a21d2543b505fe07c97c31e0a')
+sha256sums_aarch64=('5e672a0daf15a0a38f143a766cdb29b25c336a80890bf3d68c2b26a2f8698fe2')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ninech/nctl/releases/download/v${pkgver}/nctl_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('7ef737bc504b4b6254c5cc4c638a465414ad17ae92ca4bfef0f901daf831a7fd')
+sha256sums_x86_64=('7edb142551f4f87b5342167e312040f0847b6efa3d2de51aa693a912ac1d3eb3')
 
 package() {
   install -Dm 0755 "${srcdir}"/nctl "${pkgdir}"/usr/bin/nctl
