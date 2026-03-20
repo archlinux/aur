@@ -1,7 +1,7 @@
 # Maintainer: fedexmachina
 _pkgname=arubasign
 pkgname=${_pkgname}-rolling-bin
-pkgver=25.0.17
+pkgver=25.2.0
 pkgrel=1
 pkgdesc='Aruba Digital Signature Suite for signing and verifying documents'
 arch=('x86_64')
@@ -34,12 +34,16 @@ optdepends=('pcsc-tools: smartcard debugging tools')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=('!strip')
-source=("ArubaSign-${pkgver}.tar.bz2::https://updatesfirma.aruba.it/downloads/ArubaSign-latest-LINUX.tar.bz2"
+source=("${_pkgname}-latest.tar.bz2::https://updatesfirma.aruba.it/downloads/ArubaSign-latest-LINUX.tar.bz2"
   "${_pkgname}.sh"
   "${_pkgname}.desktop")
 sha256sums=('SKIP'
   '44d5a13f18d60851de6c71d4a336a54a90f9a1f2b82813e52e685c22e46ac6d2'
   '4faa020d89f19c5f9f5c3cc5301c8a6f00cf12a769f0e4a4cd1f0cec73c864f9')
+
+pkgver() {
+  python3 -c "import json, glob; print(json.load(open(glob.glob('.registry/ArubaSign-lin-x64-*-Manifest.json')[0]))['version'])"
+}
 
 package() {
   install -dm755 "${pkgdir}/opt/${_pkgname}"
