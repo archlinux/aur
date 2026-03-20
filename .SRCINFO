@@ -1,6 +1,6 @@
 pkgbase = ungoogled-chromium-xdg
 	pkgdesc = A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory
-	pkgver = 146.0.7680.80
+	pkgver = 146.0.7680.153
 	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
@@ -49,17 +49,16 @@ pkgbase = ungoogled-chromium-xdg
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = kdialog: support for native dialogs in Plasma
 	optdepends = gtk4: for --gtk-version=4 (GTK4 IME might work better on Wayland)
-	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
-	optdepends = kwallet: support for storing passwords in KWallet on Plasma
+	optdepends = org.freedesktop.secrets: password storage backend on GNOME, KDE and Xfce
 	optdepends = upower: Battery Status API support
 	optdepends = chromium-extension-web-store: Web Store Functionality
-	provides = chromium=146.0.7680.80
-	provides = chromedriver=146.0.7680.80
+	provides = chromium=146.0.7680.153
+	provides = chromedriver=146.0.7680.153
 	conflicts = chromium
 	conflicts = chromedriver
 	options = !lto
-	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-146.0.7680.80-lite.tar.xz
-	source = ungoogled-chromium-146.0.7680.80-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/146.0.7680.80-1.tar.gz
+	source = https://commondatastorage.googleapis.com/chromium-browser-official/chromium-146.0.7680.153-lite.tar.xz
+	source = ungoogled-chromium-146.0.7680.153-1.tar.gz::https://github.com/ungoogled-software/ungoogled-chromium/archive/146.0.7680.153-1.tar.gz
 	source = https://github.com/foutrelis/chromium-launcher/archive/v8/chromium-launcher-8.tar.gz
 	source = chromium-138-nodejs-version-check.patch
 	source = chromium-145-fix-SYS_SECCOMP.patch
@@ -71,8 +70,8 @@ pkgbase = ungoogled-chromium-xdg
 	source = use-oauth2-client-switches-as-default.patch
 	source = glibc-2.42-baud-rate-fix.patch
 	source = no-omnibox-suggestion-autocomplete.patch
-	sha256sums = 2344889e79e91438f5e6891aac1f00207ddb8ea86414dc2a6c9b6d8d083a3e4f
-	sha256sums = 00d3d8f6d01e082fc08399332dd5e966d89188ac316bca1010d20fdefb0cd240
+	sha256sums = c0185f8dd2cec0148358b8da249968bb6d81aeb4ac6e42f2dd8b6fad548d773d
+	sha256sums = 40a35cb7ba357a5928c082a7dc8d2b07b61068b8dc949e183ec40c76c55c4165
 	sha256sums = 213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a
 	sha256sums = 11a96ffa21448ec4c63dd5c8d6795a1998d8e5cd5a689d91aea4d2bdd13fb06e
 	sha256sums = 4fc040a0656a0a524dd8ad090cd129fc5b6cb21adcc66be82080165789e8c13e
