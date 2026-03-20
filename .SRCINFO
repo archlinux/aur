@@ -1,7 +1,7 @@
 pkgbase = libkompass-git
 	pkgdesc = a gtk4 wayland desktop shell
-	pkgver = r111.83e736f
-	pkgrel = 1
+	pkgver = r120.2fbab99
+	pkgrel = 2
 	url = https://github.com/kotontrion/kompass
 	arch = x86_64
 	license = GPL-3.0-only
@@ -26,7 +26,8 @@ pkgbase = libkompass-git
 
 pkgname = libkompass-git
 	pkgdesc = a library providing some useful widgets for building desktop shells
-	provides = libkompass.so
+	provides = libkompass
+	provides = libkompass.so=0-64
 
 pkgname = kompass-git
 	depends = gtk4

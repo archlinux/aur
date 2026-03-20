@@ -2,8 +2,8 @@
 
 pkgbase=libkompass-git
 pkgname=(libkompass-git kompass-git)
-pkgver=r111.83e736f
-pkgrel=1
+pkgver=r120.2fbab99
+pkgrel=2
 pkgdesc="a gtk4 wayland desktop shell"
 arch=(x86_64)
 license=(GPL-3.0-only)
@@ -54,7 +54,7 @@ _pick() {
 
 package_libkompass-git() {
 
-  provides+=(libkompass.so)
+  provides+=(libkompass libkompass.so=0-64)
   pkgdesc="a library providing some useful widgets for building desktop shells"
 
   cd "$pkgname"
