@@ -29,7 +29,9 @@ pkgbase = pencil-dev-bin
 	options = !debug
 	source = pencil-dev-bin-1.1.34.tar.gz::https://www.pencil.dev/download/Pencil-linux-x64.tar.gz
 	source = pencil-dev.desktop
+	source = pencil.png
 	sha256sums = 1d2aead2badf506216630d1a2cb3621c9c56ed2282c2bd03112d9bd9c94b8689
 	sha256sums = 73fda772f0429d82e5168ff8de68bfb9ed72ace660758354697f816ba0666a5f
+	sha256sums = 131ee5d9793ddaca67577727532493fb451a02e0903fc804b93d2142de16b331
 
 pkgname = pencil-dev-bin
