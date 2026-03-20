@@ -2,7 +2,7 @@
 
 pkgname=pmt2e-git
 pkgver=1.0.r118.716e9c5
-pkgrel=1
+pkgrel=2
 pkgdesc="PoorMan Tint2 Executor - bash scripts tools for panels (Update, Weather, Volume, etc.)"
 arch=('any')
 url="https://github.com/purpleleaf/pmt2e"
