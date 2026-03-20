@@ -1,15 +1,17 @@
 pkgbase = amiwm
 	pkgdesc = An X window manager that tries to mimic the Amiga Workbench screen.
-	pkgver = 0.22pl2
+	pkgver = 0.22pl2+github
 	pkgrel = 1
 	url = http://www.lysator.liu.se/~marcus/amiwm.html
 	arch = i686
 	arch = x86_64
 	license = amiwm
+	makedepends = git
+	makedepends = autoconf
 	depends = xorg-xinit
-	source = ftp://hina.lysator.liu.se/pub/X11/wm/amiwm/amiwm0.22pl2.tar.gz
-	source = destdir.patch
-	sha256sums = 7156412dc3efd1e7afc08c7f8d975d3cdfcdcecf1d90d49a360fe386390c5b74
-	sha256sums = e5fef99985f8ff955ddee52428d1d6e9da15043389fcafb25200b7dbf199206b
+	source = make_wm.patch
+	source = make_libami.patch
+	sha256sums = eba44a0091e9744da389739c07ba062f86b7a8df4c6cf9d6cd2020263c6bf544
+	sha256sums = 5e6701b05509344e7413980ed703ab2aecdb07d294177b32e340af2aa270e17b
 
 pkgname = amiwm
