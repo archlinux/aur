@@ -32,6 +32,6 @@ pkgbase = sk-chos-addon
 	options = !strip
 	backup = etc/sk-chos-tool/github_cdn.conf
 	source = sk-chos-addon-2.30.0.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v2.30.0.tar.gz
-	sha256sums = 47d4aa0c272deb718d8852baecf2b0b192c819d6c967421465a9e8719f230549
+	sha256sums = af63d9f9c683834d2291cf9ca75b3a1026f853bfb3045a417c475a26f4e2392e
 
 pkgname = sk-chos-addon
