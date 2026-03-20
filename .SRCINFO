@@ -1,0 +1,22 @@
+pkgbase = acestep.cpp-bin
+	pkgdesc = Portable C++17 music generation using GGML (ACE-Step 1.5). Text + lyrics in, stereo 48kHz audio out
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/ServeurpersoCom/acestep.cpp
+	arch = x86_64
+	license = MIT
+	makedepends = patchelf
+	depends = gcc-libs
+	depends = glibc
+	optdepends = cuda: NVIDIA GPU acceleration
+	optdepends = nvidia-utils: NVIDIA GPU acceleration
+	optdepends = vulkan-icd-loader: Vulkan GPU acceleration
+	provides = acestep.cpp
+	conflicts = acestep.cpp
+	options = !debug
+	source = acestep.cpp-bin-0.0.3.tar.gz::https://github.com/audiohacking/acestep.cpp/releases/download/v0.0.3/acestep-linux-x64.tar.gz
+	source = LICENSE-0.0.3::https://raw.githubusercontent.com/ServeurpersoCom/acestep.cpp/refs/heads/master/LICENSE
+	sha256sums = cdc26930604b259f300930a6264f2695aeab0412d516396945cbcdbe989666a5
+	sha256sums = 43e5610846745c687f675badd848d769c8af0a671604efe45cb1466517fd3ddb
+
+pkgname = acestep.cpp-bin
