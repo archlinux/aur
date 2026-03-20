@@ -1,6 +1,6 @@
 # Maintainer: miniguys
 pkgname=desktopify-lite
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='CLI tool that generates Linux .desktop launchers for websites'
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('git' 'go')
 conflicts=('desktopify-lite-git')
 source=("$pkgname::git+$url#tag=v1.0.0")
-sha256sums=('SKIP')
+sha256sums=('b62673e685e883f97bd82eeb4a80c936f3015ffa96de5b68e4736562fa83bee0')
 
 build() {
   cd "$srcdir/$pkgname"
