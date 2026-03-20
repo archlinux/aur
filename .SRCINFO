@@ -1,7 +1,7 @@
 pkgbase = snaptool
 	pkgdesc = A minimal CLI system health snapshotter
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/c3rt1fiedd/snaptool
 	arch = x86_64
 	license = GPL
