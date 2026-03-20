@@ -1,6 +1,6 @@
 pkgbase = pkgscan
 	pkgdesc = A lightweight AUR package security scanner that parses PKGBUILDs for malicious patterns before installation
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/davvrakoski/pkgscan
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pkgscan
 	depends = cjson
 	depends = git
 	depends = base-devel
-	source = pkgscan-0.1.1.tar.gz::https://github.com/davvrakoski/pkgscan/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = c35dba2660846c14423f6926ddff2712e434eff5a05ba939d68ef5d4f414c791
+	source = pkgscan-0.2.0.tar.gz::https://github.com/davvrakoski/pkgscan/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 5021f3a5bb10ee506ab3197d31c9799475780f4b28de42199a07c45f4af0ea72
 
 pkgname = pkgscan
