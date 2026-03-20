@@ -1,22 +1,22 @@
 # Old Maintainer: Dylan Ferris <dylan@psilly.com>
 # Old Maintainer: Michael Lojkovic <mikelojkovic@gmail.com>
-# Maintainer: Shatur95 <genaloner@gmail.com>
-# Co-Maintainer: Neko-san <nekoNexus at protonmail dot ch>
-# Co-Maintainer: Alexis Belmonte <alexbelm48@gmail.com>
-# Contributor: shawarden
+# Old Maintainer: Shatur95 <genaloner@gmail.com>
+# Old Maintainer: slx
+# Old Co-Maintainer: Neko-san <nekoNexus at protonmail dot ch>
+# Maintainer: Alexis Belmonte <alexbelm48@gmail.com>
 
 # The source is about 200 MiB, with an extra ~11 GiB of dependencies downloaded in Setup.sh, and may take several hours to compile.
 # If you want additional options, there are switches below.
 pkgname=unreal-engine
-pkgver=5.7.3
-pkgrel=0
+pkgver=5.7.4
+pkgrel=1
 ## Check unreal-engine/Engine/Config/Linux/Linux_SDK.json (MainVersion value) for what the below should be set to
-UE_SDK_VERSION="native-linux-v23_clang-18.1.0-rockylinux8"
+UE_SDK_VERSION="native-linux-v26_clang-20.1.8-rockylinux8"
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64' 'x86_64_v2' 'x86_64_v3' 'x86_64_v4' 'aarch64')
 url=https://www.unrealengine.com/
 makedepends=('git' 'openssh' 'sed' 'grep' 'glibc' 'wget' 'rsync')
-depends=('icu63' 'sdl2' 'python' 'dotnet-runtime' 'dotnet-sdk' 'vulkan-icd-loader' 'lld' 'xdg-user-dirs' 'dos2unix' 'openssl' 'steam' 'coreutils' 'findutils')
+depends=('sdl3' 'python' 'dotnet-runtime' 'dotnet-sdk' 'vulkan-icd-loader' 'lld' 'xdg-user-dirs' 'dos2unix' 'openssl' 'steam' 'coreutils' 'findutils')
 optdepends=('polly: for potentially increased performance'
             'qt5-base: qmake build system for projects'
             'cmake: build system for projects'
@@ -30,14 +30,14 @@ optdepends=('polly: for potentially increased performance'
 license=('custom:UnrealEngine' 'GPL3')
 source=("${UE_SDK_VERSION}.tar.gz::https://cdn.unrealengine.com/Toolchain_Linux/${UE_SDK_VERSION}.tar.gz"
         'unreal-engine'
-        'com.unrealengine.UE4Editor.desktop'
+        'com.unrealengine.UE5Editor.desktop'
         'use_system_clang.patch'
-        'allow_program_targets_installed_engine.patch'
+        'override_shared_target_build.patch'
         'unreal-engine-5-pacman-cache.hook'
         'ue5editor.svg')
-sha256sums=('048ad147d66e45b9dcfcbc986770f8df1ccbf94de11480877e72d2b3b1b48087'
+sha256sums=('6eef42679b744cdcb50276f2d7cff0a51f7ddd632960e06bfbc3f6b9508ef615'
             '55a8ad79c2e502bc5919249b9d1804ad405795b36630ab2f23aeb99dd218e5f4'
-            'c04c03b2c5c933b7eb1af283d607934ad95fd57f44d62b83719061b555a85dca'
+            'aa09746f9db93713f470ef19390a89b279fd5a335835ad95eab6cdaafa1b9e99'
             'b0a57db9a44d0001dc76ca8504d93e273af30093c6a993a5969d82b0ace54b98'
             'cd512e3fc08aaaa783e8df4a6dcb567a35502c32a6cedf8d4d71ebfa75272735'
             '9386160a91594abeeaf4fe02fea562e7a4ead4c6f9a258c2a37b2e5f10e7deca'
@@ -69,12 +69,6 @@ fi
 if [ "${USE_DEFAULT_UE_LOGO_AT_INSTALL}" != 1 ] && [ "${USE_DEFAULT_UE_LOGO_AT_INSTALL}" != 0 ]; then
   export USE_DEFAULT_UE_LOGO_AT_INSTALL=1
 fi
-
-## An attempt to fix the NuGet SSL issue during the build -- didn't seem to work; users had to do this manually, so we'll rollback to an alternative
-#ln -s /etc/ssl /usr/lib/ssl
-#ln -s /etc/ssl /usr/lib64/ssl
-## ---
-export DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
 
 ## This is for detecting your CPU architecture automatically; set to false if you want to enforce your own makepkg.conf file
 ## Disabled by default as a compromise for those bothered by having it force-enabled
@@ -142,7 +136,7 @@ then
     export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
     export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
   else
-    echo "Architecture '$(uname -m)' is not supported! Exiting."
+    msg "Architecture '$(uname -m)' is not supported! Exiting."
     return
   fi
 elif [[ "${arch_auto}" == native ]]; then
@@ -164,10 +158,12 @@ case "${arch_auto}" in
   ;;
 esac
 
+# Causes a SEGV during derived data cache build if not set
+export DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER=0
+
 prepare() {
   # Check access to the repository
-  if ! git ls-remote git@github.com:EpicGames/UnrealEngine &>/dev/null
-  then
+  if ! git ls-remote git@github.com:EpicGames/UnrealEngine &>/dev/null; then
     error 'You must register at unrealengine.com and link your github account to access this private repo. See the wiki for more info: https://wiki.archlinux.org/index.php/Unreal_Engine_4'
     exit 1
   fi
@@ -175,7 +171,6 @@ prepare() {
   # Download Unreal Engine source or update if the folder exists
   if [[ ! -d "${pkgname}" ]]
   then
-    #git clone --depth=1 --branch=ue5-main git@github.com:EpicGames/UnrealEngine "{$pkgname}"
     git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine "${pkgname}"
     cd "${pkgname}" || return
   else
@@ -200,7 +195,7 @@ prepare() {
 
   # Allow Program targets to build with an installed engine by respecting IsEngineInstalled()
   # in the BuildEnvironment getter, fixing the "unique build environment" error for project targets.
-  patch -p1 -i "${srcdir}/allow_program_targets_installed_engine.patch"
+  patch -p1 -i "${srcdir}/override_shared_target_build.patch"
 
   # Qt Creator source code access
   if [[ ! -d Engine/Plugins/Developer/QtCreatorSourceCodeAccess ]]
@@ -240,14 +235,19 @@ build() {
     -c Development \
     -o "Engine/Binaries/DotNET/UnrealBuildTool" \
     --no-self-contained \
-    -p:GenerateDocumentationFile=false || { echo 'Error: Failed to rebuild UnrealBuildTool.' >&2; return 1; }
+    -p:GenerateDocumentationFile=false
+
+  if [[ $? -ne 0 ]]; then
+    msg 'Error: Failed to rebuild UnrealBuildTool.'
+    exit $?
+  fi
 
   build='Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -nosign -set:WithDDC='"${_WithDDC}"' -set:WithLinux=true -set:WithWin64=true -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false -set:GameConfigurations="Development;Shipping"'
 
   if eval "${build}"; then
     :
   else
-    echo "Error: Build failed; try searching the output for suspicious messages." >&2
+    msg "Error: Build failed; try searching the output for suspicious messages." >&2
     return;
   fi
 }
@@ -260,18 +260,16 @@ package() {
   
   sed -i "7c\Exec=/usr/bin/unreal-engine %U" com.unrealengine.UE5Editor.desktop
   sed -i "14c\Path=/usr/bin/" com.unrealengine.UE5Editor.desktop
-  sed -i 's/Unreal Engine 4 Editor/Unreal Engine 5 Editor/g' com.unrealengine.UE5Editor.desktop
-  sed -i 's/Icon=ue4editor/Icon=ue5editor/g' com.unrealengine.UE5Editor.desktop
   install -Dm644 com.unrealengine.UE5Editor.desktop "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop"
   chmod +x "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop"
 
   ## Install a pacman hook to keep old builds from compounding cache by tens of GBs - 2 builds alone can reach at least 30 GBs in pacman's cache; having one only takes up about 15 GBs
   install -Dm775 unreal-engine-5-pacman-cache.hook "${pkgdir}/etc/pacman.d/hooks/unreal-engine-5-pacman-cache.hook"
   
-  
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/pixmaps/"
   install -dm755 "${pkgdir}/usr/share/applications/"
+
   # Icon for Desktop entry
   if [ "${USE_DEFAULT_UE_LOGO_AT_INSTALL}" == 1 ]; then
     install -Dm644 ue5editor.svg "${pkgdir}/usr/share/pixmaps/ue5editor.svg"
@@ -308,27 +306,12 @@ package() {
 
   # Copy the rest of it to pkg... Should we be overwriting LocalBuilds?
   rsync -a --exclude='Intermediate/' "${srcdir}/${pkgname}/" "${pkgdir}/${_ue5_install_dir}/"
-  if [ -f "${srcdir}"/"${pkgname}"/Engine/Binaries/Linux/UnrealEditor ]; then
-    rm -r "${srcdir}"/"${pkgname:?}"/*
-  fi
 
   # The BuildGraph staging copies the unpatched UBT DLL from CsTools into LocalBuilds,
   # which then overwrites our patched build. Re-stamp both locations with the patched DLL.
-  local UBT_SRC="${srcdir}/${pkgname}/Engine/Source/Programs/UnrealBuildTool"
-  local UBT_PKG="${pkgdir}/${_ue5_install_dir}/Engine/Binaries/DotNET/UnrealBuildTool"
-  dotnet build "${UBT_SRC}/UnrealBuildTool.csproj" \
-    -c Development \
-    -o "${UBT_PKG}" \
-    --no-self-contained \
-    -p:GenerateDocumentationFile=false || { echo 'Warning: Failed to rebuild UnrealBuildTool into pkg.' >&2; }
-  # Mirror into the CsTools location if it exists in the package
-  if [ -d "${pkgdir}/${_ue5_install_dir}/Engine/Saved/CsTools/Engine/Binaries/DotNET/UnrealBuildTool" ]; then
-    cp -f "${UBT_PKG}/UnrealBuildTool.dll" \
-      "${pkgdir}/${_ue5_install_dir}/Engine/Saved/CsTools/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.dll"
-  fi
-  
-  chmod -R 777 "${pkgdir}/${_ue5_install_dir}"
-  
+  local _ubtsrcdir="${srcdir}/${pkgname}/Engine/Source/Programs/UnrealBuildTool"
+  local _ubtpkgdir="${pkgdir}/${pkgname}/${_ue5_install_dir}/Engine/Binaries/DotNET/UnrealBuildTool"
+
   if [ -x "$(find "${pkgdir}/${_ue5_install_dir}" -type f -iname 'xbuild')" ]; then
     find "${pkgdir}/${_ue5_install_dir}" -type f -iname 'xbuild' -exec chmod +x "{}" \;
   fi
