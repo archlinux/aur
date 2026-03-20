@@ -1,6 +1,6 @@
 # Maintainer: Elwqnn
 pkgname=wfc-cli-git
-pkgver=0.2.0.r27.1890263
+pkgver=0.2.0.r28.f5dcc38
 pkgrel=1
 pkgdesc="Wave Function Collapse image generator CLI"
 arch=('x86_64')
