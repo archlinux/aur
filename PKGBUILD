@@ -1,6 +1,6 @@
 # Maintainer: Daniel Seichter <https://github.com/dseichter>
 pkgname=workdir
-pkgver=2026.03.16.beta5
+pkgver=2026.03.16.beta12
 pkgrel=1
 pkgdesc="Work with multiple directories and run commands without navigating manually."
 arch=('any')
@@ -10,9 +10,7 @@ options=('!debug')
 depends=('python>=3.12' 'pyside6' 'python-urllib3' 'python-packaging')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver//./-}.tar.gz")
-
-# sha256sums is replaced by the CI workflow on each release.
-sha256sums=('6b196445509f7bdf3400952148e362a4a7bc95f1db56f5d38bd0ed038ff22fc5')
+sha256sums=('26bbb631da0ad96e3d89edcb9807d1197bedba8c85a9c03bcb8cdd8c4e9a5500')
 
 build() {
     cd "Workdir-${pkgver//./-}"
@@ -24,4 +22,5 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 "data/io.github.dseichter.workdir.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/io.github.dseichter.workdir.png"
 }
