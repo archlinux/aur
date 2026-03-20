@@ -12,8 +12,6 @@ optdepends=(
   'ttf-jetbrains-mono-nerd: Recommended monospace font'
 )
 makedepends=('cargo' 'cmake' 'pkg-config')
-provides=("tmplayer")
-conflicts=("tmplayer")
 options=(!lto)
 source=("https://github.com/professor-lee/CNMPlayer/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
