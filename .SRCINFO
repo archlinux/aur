@@ -1,6 +1,6 @@
 pkgbase = roseate
 	pkgdesc = 🌹 A fancy yet simple image viewer — highly configurable, cross-platform, GPU-accelerated and fast.
-	pkgver = 0.1.0.alpha.19
+	pkgver = 0.1.0.alpha.20
 	pkgrel = 1
 	url = https://github.com/cloudy-org/roseate
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = roseate
 	provides = roseate
 	conflicts = roseate-bin
 	options = !lto
-	source = git+https://github.com/cloudy-org/roseate.git#tag=v0.1.0-alpha.19
+	source = git+https://github.com/cloudy-org/roseate.git#tag=v0.1.0-alpha.20
 	sha256sums = SKIP
 
 pkgname = roseate
