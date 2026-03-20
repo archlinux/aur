@@ -6,11 +6,11 @@
 
 pkgname=tramp
 pkgver=2.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="emacs extension that provides transparent remote file editing"
 arch=('any')
 url=https://www.gnu.org/software/tramp/
-license=('GPL')
+license=('GPL-3.0-or-later')
 makedepends=('emacs' 'texinfo')
 # add texlive-core to the makedepends and comment in the last two lines
 # of this PKGBUILD if you want the documentation in dvi-format
