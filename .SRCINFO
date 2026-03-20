@@ -1,0 +1,15 @@
+pkgbase = ttf-grenze-variable
+	pkgdesc = Hybrid typeface family between Roman and Blackletter styles from Omnibus-Type.
+	pkgver = 1.003
+	pkgrel = 1
+	url = https://www.omnibus-type.com/fonts/grenze/
+	arch = any
+	license = OFL
+	source = ttf-grenze-variable-1.003-1-OFL.txt::https://raw.githubusercontent.com/Omnibus-Type/Grenze/6ea8fdca83c9f9655da7e23bf5ec002a6acf0fcc/OFL.txt
+	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze/6ea8fdca83c9f9655da7e23bf5ec002a6acf0fcc/fonts/variable/Grenze-Italic[wght].ttf
+	source = https://raw.githubusercontent.com/Omnibus-Type/Grenze/6ea8fdca83c9f9655da7e23bf5ec002a6acf0fcc/fonts/variable/Grenze[wght].ttf
+	sha256sums = 55a21d1fcebfa5e02100db3ae4dcff2658e9ba63e0b64149203bf6a9d645db86
+	sha256sums = 69500ece8fb369db20a2e9b129f18079bfeada7a6ab17c7dbe296a493d8665a2
+	sha256sums = 0d0d869d66b56cb23bf1e803c9e75a250885bf2c614c1ce82e56bebc3db27cb5
+
+pkgname = ttf-grenze-variable
