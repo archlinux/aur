@@ -1,0 +1,15 @@
+pkgbase = niri-utils
+	pkgdesc = Utilities for niri compositor (idle daemon + lock setup)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/youngcoder45/niri-utils
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	depends = wayland
+	depends = gtklock
+	source = niri-utils::git+https://github.com/youngcoder45/niri-utils.git
+	sha256sums = SKIP
+
+pkgname = niri-utils
