@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _pkgname=tsibble
-_pkgver=1.1.6
+_pkgver=1.2.0
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -12,7 +12,6 @@ license=('GPL-3.0-only')
 depends=(
   r-anytime
   r-dplyr
-  r-ellipsis
   r-generics
   r-lifecycle
   r-lubridate
@@ -30,7 +29,6 @@ checkdepends=(
   r-timedate
 )
 optdepends=(
-  r-covr
   r-ggplot2
   r-hms
   r-knitr
@@ -44,15 +42,15 @@ optdepends=(
   r-timedate
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('3a722b9084c50c8ff372c3a16605409d')
-b2sums=('a8bea81c871768d5902a2056202c009619e1890a0d256ee85731d7295ad1d5ac34e2aff0baf4ab9a089dcde95baaea4f8847e096ce39c55d723e8a14dcc4eab9')
+md5sums=('d584b250bac8891c6791065e0550d231')
+b2sums=('448969d38ce1789e9d9cf92ca213fda558d52514cb90c2ce98cf0a549549ae5a52ff2ae79b66f0d804bfbd02a6532ba0cf37f04e9397aa49ac6729de739aa0fe')
 
 build() {
   mkdir build
   R CMD INSTALL -l build "$_pkgname"
 }
 
-check() {
+_check() {
   cd "$_pkgname/tests"
   R_LIBS="$srcdir/build" NOT_CRAN=true Rscript --vanilla testthat.R
 }

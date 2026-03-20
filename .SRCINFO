@@ -1,6 +1,6 @@
 pkgbase = r-tsibble
 	pkgdesc = Tidy Temporal Data Frames and Tools
-	pkgver = 1.1.6
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tsibble
 	arch = any
@@ -13,7 +13,6 @@ pkgbase = r-tsibble
 	checkdepends = r-timedate
 	depends = r-anytime
 	depends = r-dplyr
-	depends = r-ellipsis
 	depends = r-generics
 	depends = r-lifecycle
 	depends = r-lubridate
@@ -21,7 +20,6 @@ pkgbase = r-tsibble
 	depends = r-tibble
 	depends = r-tidyselect
 	depends = r-vctrs
-	optdepends = r-covr
 	optdepends = r-ggplot2
 	optdepends = r-hms
 	optdepends = r-knitr
@@ -33,8 +31,8 @@ pkgbase = r-tsibble
 	optdepends = r-testthat
 	optdepends = r-tidyr
 	optdepends = r-timedate
-	source = https://cran.r-project.org/src/contrib/tsibble_1.1.6.tar.gz
-	md5sums = 3a722b9084c50c8ff372c3a16605409d
-	b2sums = a8bea81c871768d5902a2056202c009619e1890a0d256ee85731d7295ad1d5ac34e2aff0baf4ab9a089dcde95baaea4f8847e096ce39c55d723e8a14dcc4eab9
+	source = https://cran.r-project.org/src/contrib/tsibble_1.2.0.tar.gz
+	md5sums = d584b250bac8891c6791065e0550d231
+	b2sums = 448969d38ce1789e9d9cf92ca213fda558d52514cb90c2ce98cf0a549549ae5a52ff2ae79b66f0d804bfbd02a6532ba0cf37f04e9397aa49ac6729de739aa0fe
 
 pkgname = r-tsibble
