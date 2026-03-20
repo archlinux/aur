@@ -1,9 +1,9 @@
 # Maintainer: Will Handley <wh260@cam.ac.uk>
 pkgname=sglang
 pkgver=0.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast serving framework for large language models and vision language models'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/sgl-project/sglang'
 license=('Apache-2.0')
 depends=(
@@ -38,7 +38,6 @@ makedepends=(
   'python-setuptools-scm'
 )
 optdepends=(
-  # runtime_common (serving stack)
   'python-anthropic: Anthropic API backend'
   'python-datasets: Dataset loading'
   'python-fastapi: API server'
@@ -51,7 +50,7 @@ optdepends=(
   'python-packaging: Version utilities'
   'python-pillow: Image processing'
   'python-psutil: Process monitoring'
-  'python-python-multipart: Multipart form parsing'
+  'python-multipart: Multipart form parsing'
   'python-pyzmq: ZeroMQ messaging'
   'python-scipy: Scientific computing'
   'python-sentencepiece: Tokenization'
@@ -61,10 +60,20 @@ optdepends=(
   'uvicorn: ASGI server'
   'python-uvloop: Fast event loop'
 )
-backup=('etc/sglang.conf')
+provides=('sglang')
+conflicts=('sglang-git')
+backup=('etc/sglang/sglang.conf' 'etc/sglang/sglang.env')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        'sglang.service')
+        'sglang.service'
+        'sglang.conf'
+        'sglang.env'
+        'sglang.sysusers'
+        'sglang.tmpfiles')
 sha256sums=('5905242df108f4b6be1784192e7a9d0504e6251872d497a61cfc1fac2410bbad'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP')
 
 build() {
@@ -79,5 +88,8 @@ package() {
   cd "${pkgname}-${pkgver}/python"
   python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 "${srcdir}/sglang.service" "${pkgdir}/usr/lib/systemd/system/sglang.service"
-  install -Dm644 "${srcdir}/../sglang.conf" "${pkgdir}/etc/sglang.conf"
+  install -Dm644 "${srcdir}/sglang.sysusers" "${pkgdir}/usr/lib/sysusers.d/sglang.conf"
+  install -Dm644 "${srcdir}/sglang.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/sglang.conf"
+  install -Dm644 "${srcdir}/sglang.conf" "${pkgdir}/etc/sglang/sglang.conf"
+  install -Dm600 "${srcdir}/sglang.env" "${pkgdir}/etc/sglang/sglang.env"
 }

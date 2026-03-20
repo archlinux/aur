@@ -1,15 +1,26 @@
 [Unit]
 Description=SGLang LLM Server
-After=network.target
+Wants=network-online.target
+After=network.target network-online.target
 
 [Service]
 Type=simple
-DynamicUser=yes
-StateDirectory=sglang
+User=sglang
+Group=sglang
+WorkingDirectory=/var/lib/sglang
+Environment=HOME=/var/lib/sglang
 Environment=HF_HOME=/var/lib/sglang
-EnvironmentFile=-/etc/sglang.conf
-ExecStart=/usr/bin/python -m sglang.launch_server --host 0.0.0.0 --port 8000 $SGLANG_ARGS
+Environment=CUDA_HOME=/opt/cuda
+EnvironmentFile=-/etc/sglang/sglang.conf
+EnvironmentFile=-/etc/sglang/sglang.env
+ExecStart=/usr/bin/python -m sglang.launch_server --host 127.0.0.1 --port 30000 $SGLANG_ARGS
+TimeoutStartSec=infinity
 Restart=on-failure
+RestartSec=3
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
 
 [Install]
 WantedBy=multi-user.target
