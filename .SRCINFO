@@ -1,16 +1,16 @@
 pkgbase = octave-signal
 	pkgdesc = Signal processing tools, including filtering, windowing and display functions.
-	pkgver = 1.4.6
+	pkgver = 1.4.7
 	pkgrel = 1
 	url = https://gnu-octave.github.io/packages/signal/
 	install = octave-signal.install
 	arch = any
 	groups = octave-forge
-	license = GPL-3.0-or-later and public domain
+	license = GPL-3.0-or-later AND public domain
 	depends = octave>=3.8.0
 	depends = octave-control>=2.4.0
-	noextract = signal-1.4.6.tar.gz
-	source = https://downloads.sourceforge.net/octave/signal-1.4.6.tar.gz
-	b2sums = 67b3a208195a89c561de6a176664c1284cf27d3e2a93015c407489904323436e26ccd4dafa1b1d789dc666390f1487ea4074fb233b68a90655db7e269241fc64
+	noextract = signal-1.4.7.tar.gz
+	source = https://github.com/gnu-octave/octave-signal/releases/download/1.4.7/signal-1.4.7.tar.gz
+	b2sums = 9c40e4eabe27337b0ef3d9b5666d6d4b7bde5e24e0a684e07f891f643b3b0b2f5e0eb4b9dcfd460392ae9bdbfd9a72f3b3a709997d7e8267034f762f504ec3af
 
 pkgname = octave-signal
