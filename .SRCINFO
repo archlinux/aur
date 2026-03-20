@@ -1,0 +1,9 @@
+pkgbase = desktopify
+	pkgdesc = Reserved name for the upcoming full version of Desktopify
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/miniguys/desktopify-lite
+	arch = any
+	license = MIT
+
+pkgname = desktopify
