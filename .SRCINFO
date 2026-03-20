@@ -1,6 +1,6 @@
 pkgbase = fet-timetabling
 	pkgdesc = A software for automatically scheduling the timetable of a school, high-school or university.
-	pkgver = 7.8.0
+	pkgver = 7.8.1
 	pkgrel = 1
 	url = https://lalescu.ro/liviu/fet/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = fet-timetabling
 	makedepends = cmake
 	depends = qt6-base
 	depends = hicolor-icon-theme
-	source = https://lalescu.ro/liviu/fet/download/fet-7.8.0.tar.xz
-	sha256sums = 92a7bf313a62f4ec414e093443daaf983212f9bb1f830079d158bcfc621b1906
+	source = https://lalescu.ro/liviu/fet/download/fet-7.8.1.tar.xz
+	sha256sums = d9b1454e7096f66e298b3847f1460a2067f3e106708765ee35fb72f52a100f2c
 
 pkgname = fet-timetabling
