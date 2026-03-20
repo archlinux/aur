@@ -1,6 +1,6 @@
 pkgbase = freedownloadmanager-bin
 	pkgdesc = Free Download Manager (FDM) - powerful modern download accelerator and organizer (binary release).
-	pkgver = 6.31.0.6549
+	pkgver = 6.33.1.6648
 	pkgrel = 1
 	url = https://www.freedownloadmanager.org/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = freedownloadmanager-bin
 	depends = ffmpeg
 	depends = libtorrent
 	depends = gst-plugins-base
-	source = freedownloadmanager-bin-6.31.0.6549-amd64.deb::https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb
+	source = freedownloadmanager-bin-6.33.1.6648-amd64.deb::https://files2.freedownloadmanager.org/6/latest/freedownloadmanager.deb
 	sha256sums = SKIP
 
 pkgname = freedownloadmanager-bin
