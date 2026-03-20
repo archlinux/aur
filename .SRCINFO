@@ -1,21 +1,21 @@
 pkgbase = sdkman-bin
 	pkgdesc = The Software Development Kit Manager Command Line Interface
-	pkgver = 5.20.0
-	pkgrel = 8
+	pkgver = 5.21.0
+	pkgrel = 1
 	url = https://sdkman.io/
 	arch = x86_64
 	arch = aarch64
 	license = Apache-2.0
 	depends = curl
-	provides = sdkman=5.20.0
+	provides = sdkman=5.21.0
 	conflicts = sdkman
-	source_x86_64 = sdkman-5.20.0.zip::https://github.com/sdkman/sdkman-cli//releases/download/5.20.0/sdkman-cli-5.20.0.zip
-	source_x86_64 = sdkman-native-0.7.21.zip::https://github.com/sdkman/sdkman-cli-native//releases/download/v0.7.21/sdkman-cli-native-0.7.21-x86_64-unknown-linux-gnu.zip
-	sha256sums_x86_64 = 09c57ad7b6de2fff2b2153d62ee44fbf4ac189257291ba12a173422717adc22a
-	sha256sums_x86_64 = 49b541701790e3747a7db9e76d8e4889b49dc2a5044f7680d38e4baf3693f690
-	source_aarch64 = sdkman-5.20.0.zip::https://github.com/sdkman/sdkman-cli//releases/download/5.20.0/sdkman-cli-5.20.0.zip
-	source_aarch64 = sdkman-native-0.7.21.zip::https://github.com/sdkman/sdkman-cli-native//releases/download/v0.7.21/sdkman-cli-native-0.7.21-x86_64-unknown-linux-gnu.zip
-	sha256sums_aarch64 = 09c57ad7b6de2fff2b2153d62ee44fbf4ac189257291ba12a173422717adc22a
-	sha256sums_aarch64 = e550fc43d687f7d96cc870c877d150b5b9b591a5c9073dabfc99f6bb6dfed161
+	source_x86_64 = sdkman-5.21.0.zip::https://github.com/sdkman/sdkman-cli//releases/download/5.21.0/sdkman-cli-5.21.0.zip
+	source_x86_64 = sdkman-native-0.7.22.zip::https://github.com/sdkman/sdkman-cli-native//releases/download/v0.7.22/sdkman-cli-native-0.7.22-x86_64-unknown-linux-gnu.zip
+	sha256sums_x86_64 = 0b2baa074f6d5b7ddd730a0cbaa2c0073b809d23e82c7cae79d2059e6214e9df
+	sha256sums_x86_64 = fe46b8feed6ff6ba00f26b443c478aba5143659c3591c6c2cfd4b04ba5711c1e
+	source_aarch64 = sdkman-5.21.0.zip::https://github.com/sdkman/sdkman-cli//releases/download/5.21.0/sdkman-cli-5.21.0.zip
+	source_aarch64 = sdkman-native-0.7.22.zip::https://github.com/sdkman/sdkman-cli-native//releases/download/v0.7.22/sdkman-cli-native-0.7.22-x86_64-unknown-linux-gnu.zip
+	sha256sums_aarch64 = 0b2baa074f6d5b7ddd730a0cbaa2c0073b809d23e82c7cae79d2059e6214e9df
+	sha256sums_aarch64 = 1388541d47b4632ce961f454021d1e2b6178e73b6f89eabec641cfe3cdd2a8fe
 
 pkgname = sdkman-bin
