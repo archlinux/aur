@@ -1,5 +1,5 @@
 pkgname=muon_decoder
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="Particle decoder"
 arch=('x86_64')
