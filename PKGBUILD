@@ -16,5 +16,6 @@ sha256sums_x86_64=('9c55e265272765a83f4f2ef7de4de075d22b03c02b7603cdf131ca750469
 sha256sums_i386=('f40d124844e67aafac4bda58107d15e316ca6b40f1835b05765fb0023f400375')
 
 package() {
+  export LC_ALL=C
   rpm2cpio "$pkgname-$pkgver-${CARCH}.rpm" | cpio -idmv -D "${pkgdir}/"
 }
