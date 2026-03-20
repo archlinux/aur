@@ -11,6 +11,6 @@ pkgbase = wingide
 	options = !strip
 	options = !emptydirs
 	source = https://wingware.com/pub/wingpro/11.1.0.0/wingpro-11.1.0.0-linux-x64.tar.bz2
-	sha256sums = SKIP
+	sha256sums = b92734dc55dae77f265c101342b94be265850dea2711c2b4d14fd98dc0ceb33b
 
 pkgname = wingide

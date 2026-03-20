@@ -10,8 +10,8 @@ url="https://wingware.com"
 license=('custom')
 depends=('hicolor-icon-theme' 'xdg-utils' 'python') # Removed python2
 options=(!strip !emptydirs)
-source=("https://wingware.com/pub/wingpro/${pkgver%.*}.0/wingpro-11.1.0.0-linux-x64.tar.bz2")
-sha256sums=('SKIP') # Run 'updpkgsums' to populate this automatically
+source=("https://wingware.com/pub/wingpro/${pkgver%.*}.0/wingpro-${pkgver}-linux-x64.tar.bz2")
+sha256sums=('b92734dc55dae77f265c101342b94be265850dea2711c2b4d14fd98dc0ceb33b')
 
 package() {
     cd "$srcdir/wingpro-$pkgver-linux-x64"
