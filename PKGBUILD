@@ -1,6 +1,6 @@
 # Maintainer: preclik02
 pkgname=scrap-game
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Small CLI game where you collect scrap and buy stars"
 arch=('x86_64')
