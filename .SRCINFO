@@ -1,15 +1,17 @@
 pkgbase = fusesmb
 	pkgdesc = SMB for FUSE is a Samba shares filesystem
 	pkgver = 0.8.7
-	pkgrel = 6
-	url = https://www.ricardis.tudelft.nl/~vincent/fusesmb
-	arch = i686
+	pkgrel = 7
+	url = https://web.archive.org/web/20130503133741/http://www.ricardis.tudelft.nl/~vincent/fusesmb/
 	arch = x86_64
 	license = GPL-2.0-only
 	depends = fuse
-	depends = smbclient>=4.0
 	depends = glibc
+	depends = smbclient>=4.0
+	optdepends = smbnetfs: Similar to fusesmb but faster and more secure
+	optdepends = smb4k: A KDE gui program that browses samba shares
 	source = https://pkgs.fedoraproject.org/repo/pkgs/fuse-smb/fusesmb-0.8.7.tar.gz/ff5adc291b18fd452fe4694cbe45dabd/fusesmb-0.8.7.tar.gz
 	md5sums = ff5adc291b18fd452fe4694cbe45dabd
+	b2sums = f03ffa83845dd30f219e5e0cf355650ca7244231dd690039d06e82394c74e7a6f931708203d7cc8eb4a58c97316c9ed52d3791957df8e568e569d61efd9a8e23
 
 pkgname = fusesmb
