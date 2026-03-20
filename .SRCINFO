@@ -8,10 +8,10 @@ pkgbase = lazylpsolverlibs-git
 	arch = arm
 	license = GPL
 	makedepends = gcc
+	makedepends = git
 	depends = glib2
 	conflicts = lazylpsolverlibs
 	source = lazylpsolverlibs-git::git+https://github.com/chmduquesne/lazylpsolverlibs.git
 	sha1sums = SKIP
 
 pkgname = lazylpsolverlibs-git
-

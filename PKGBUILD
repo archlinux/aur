@@ -1,4 +1,4 @@
-# Maintainer: Yunhui Fu <yhfudev@gmail.com>
+# Contributor: Yunhui Fu <yhfudev@gmail.com>
 
 pkgname=lazylpsolverlibs-git
 pkgver=7d32dc6
@@ -8,7 +8,7 @@ arch=(i686 x86_64 arm)
 url="https://github.com/chmduquesne/lazylpsolverlibs.git"
 license=(GPL)
 depends=(glib2)
-makedepends=(gcc)
+makedepends=(gcc git)
 source=("${pkgname}::git+https://github.com/chmduquesne/lazylpsolverlibs.git")
 sha1sums=(SKIP)
 conflicts=(lazylpsolverlibs)
