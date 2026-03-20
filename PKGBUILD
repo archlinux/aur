@@ -4,7 +4,7 @@
 # Contributor: Brian <brain@derelict.garden>
 
 pkgname=ladybird
-pkgver=20260105
+pkgver=20260320
 pkgrel=2
 pkgdesc='Truly independent web browser'
 arch=(x86_64)
@@ -14,8 +14,8 @@ depends=(curl ffmpeg libgl qt6-base qt6-multimedia qt6-tools qt6-wayland ttf-lib
 makedepends=(autoconf-archive automake cmake git libtool make nasm ninja patch pkg-config tar unzip zip)
 options=('!lto' '!debug' '!buildflags' '!staticlibs' '!emptydirs')
 source=(
-  "git+$url#commit=5336c5317188b003d6ec906bba34d5587769c976" # 2026-01-05
-  "git+https://github.com/microsoft/vcpkg.git#commit=4f95fba7a7d1101bb8acdeb51e4609686449701e" # 2025-12-19 (vcpkg.json:builtin-baseline)
+  "git+$url#commit=22e8e99d4c0d7224b310ad978455c468f060f907" # 2026-03-20
+  "git+https://github.com/microsoft/vcpkg.git#commit=48cfe1e0e928341709d97fc3d2eff10ad6262c96" # 2026-03-14 (vcpkg.json:builtin-baseline)
   "hb-fc-whole-archive.patch"
   "new-tab.patch"
 )
