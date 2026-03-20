@@ -1,5 +1,5 @@
 %global dkms_name    mediatek-mt7927
-%global version      2.6
+%global version      2.7
 
 Name:           mediatek-mt7927-dkms
 Version:        %{version}

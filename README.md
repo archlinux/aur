@@ -100,9 +100,9 @@ cd mediatek-mt7927-dkms
 make download
 make sources
 sudo make install
-sudo dkms add mediatek-mt7927/2.6
-sudo dkms build mediatek-mt7927/2.6
-sudo dkms install mediatek-mt7927/2.6
+sudo dkms add mediatek-mt7927/2.7
+sudo dkms build mediatek-mt7927/2.7
+sudo dkms install mediatek-mt7927/2.7
 sudo modprobe -r mt7925e mt7921e btusb
 sudo modprobe mt7925e btusb
 ```
@@ -181,7 +181,7 @@ least 10 seconds, then power back on. A CMOS reset also works but is more disrup
 **DKMS not built for current kernel:**
 
 ```bash
-sudo dkms install mediatek-mt7927/2.6
+sudo dkms install mediatek-mt7927/2.7
 ```
 
 ## Upstream tracking

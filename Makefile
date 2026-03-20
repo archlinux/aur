@@ -72,6 +72,10 @@ $(STAMP):
 	cp "$(TOPDIR)mt76.Kbuild"      "$(SRCDIR)/mt76/Kbuild"
 	cp "$(TOPDIR)mt7921.Kbuild"    "$(SRCDIR)/mt76/mt7921/Kbuild"
 	cp "$(TOPDIR)mt7925.Kbuild"    "$(SRCDIR)/mt76/mt7925/Kbuild"
+	@echo "==> Installing compat headers..."
+	mkdir -p "$(SRCDIR)/mt76/compat/include/linux/soc/airoha"
+	cp "$(TOPDIR)compat-airoha-offload.h" \
+		"$(SRCDIR)/mt76/compat/include/linux/soc/airoha/airoha_offload.h"
 	@echo "==> Sources ready in $(SRCDIR)/"
 	@touch "$(STAMP)"
 
@@ -96,6 +100,10 @@ install: sources
 	install -m644 $(SRCDIR)/mt76/*.c $(SRCDIR)/mt76/*.h \
 		"$(DESTDIR)$(DKMS_PREFIX)/mt76/"
 	install -m644 $(SRCDIR)/mt76/Kbuild "$(DESTDIR)$(DKMS_PREFIX)/mt76/"
+	# Compat headers for kernels < 6.19 (airoha_offload.h stub)
+	install -dm755 "$(DESTDIR)$(DKMS_PREFIX)/mt76/compat/include/linux/soc/airoha"
+	install -m644 $(SRCDIR)/mt76/compat/include/linux/soc/airoha/airoha_offload.h \
+		"$(DESTDIR)$(DKMS_PREFIX)/mt76/compat/include/linux/soc/airoha/"
 	install -m644 $(SRCDIR)/mt76/mt7921/*.c $(SRCDIR)/mt76/mt7921/*.h \
 		"$(DESTDIR)$(DKMS_PREFIX)/mt76/mt7921/"
 	install -m644 $(SRCDIR)/mt76/mt7921/Kbuild "$(DESTDIR)$(DKMS_PREFIX)/mt76/mt7921/"
