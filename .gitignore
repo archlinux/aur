@@ -8,5 +8,5 @@ FINDINGS.md
 openspec/
 linux-driver-mediatek-mt7927-bluetooth/
 __pycache__/
-linux-stable
-patches/
+patches/*.patch
+patches/*.eml

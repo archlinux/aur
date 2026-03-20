@@ -9,12 +9,12 @@ set -euo pipefail
 
 aur_url=$(git remote get-url aur 2>/dev/null || true)
 if [[ "$aur_url" != *"aur.archlinux.org"* ]]; then
-    echo >&2 "ERROR: 'aur' remote must point to AUR (got: ${aur_url:-<not set>})"
-    exit 1
+	echo >&2 "ERROR: 'aur' remote must point to AUR (got: ${aur_url:-<not set>})"
+	exit 1
 fi
 
-# Create tree without .github/
-aur_tree=$(git ls-tree HEAD | grep -v '.github' | git mktree)
+# Create tree without .github/, linux-stable symlink, and patches/
+aur_tree=$(git ls-tree HEAD | grep -vE '\.github|linux-stable|patches' | git mktree)
 aur_parent=$(git rev-parse aur/master)
 
 # Get short subject from HEAD commit
