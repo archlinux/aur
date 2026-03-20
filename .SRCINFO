@@ -1,6 +1,6 @@
 pkgbase = desktopify-lite
 	pkgdesc = CLI tool that generates Linux .desktop launchers for websites
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/miniguys/desktopify-lite
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = desktopify-lite
 	makedepends = git
 	makedepends = go
 	conflicts = desktopify-lite-git
-	source = desktopify-lite::git+https://github.com/miniguys/desktopify-lite#tag=v1.0.2
-	sha256sums = 10feaed375c1fca6c0836ed877d7f6f76dfc73f63afcd5c3cecfbf0712aa8f16
+	source = desktopify-lite::git+https://github.com/miniguys/desktopify-lite#tag=v1.0.3
+	sha256sums = 42cf8c2c7e4f7a1759d4f98e88e07465b866ab86cb7bf4086cf72818b6b06c87
 
 pkgname = desktopify-lite
