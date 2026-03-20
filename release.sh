@@ -136,12 +136,7 @@ echo ""
 echo "Pushing to origin and aur..."
 git push origin master
 
-# AUR rejects subdirectories (.github/). Create a filtered commit parented on
-# AUR's current master so the hook only sees clean commits.
-aur_tree=$(git ls-tree HEAD | grep -v '.github' | git mktree)
-aur_parent=$(git rev-parse aur/master)
-aur_commit=$(git commit-tree "${aur_tree}" -p "${aur_parent}" -m "Release ${new_tag}")
-git -c push.followTags=false push aur "${aur_commit}:refs/heads/master"
+"${DKMS_DIR}/push-aur.sh"
 
 # Push tag — triggers GitHub Actions workflow which creates the release,
 # generates changelog, builds RPM/DEB, and attaches artifacts.
