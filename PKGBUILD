@@ -1,6 +1,6 @@
 # Maintainer: Marko Zivic <marko.b.zivic@gmail.com>
 pkgname=endcord-lite-git
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Feature rich Discord TUI client. Lite version without terminal media player."
 arch=('any')
@@ -14,7 +14,8 @@ optdepends=('xclip: clipboard support on X11'
             'wl-clipboard: clipboard support on Wayland'
             'aspell: spellchecking'
             'yt-dlp: youtube support'
-            'mpv: youtube in native player')
+            'mpv: youtube in native player'
+            'imagemagick: make notification images round')
 source=("git+$url.git")
 sha256sums=('SKIP')
 options=(!strip)
@@ -53,8 +54,10 @@ package() {
 	cd "endcord"
 	install -Dm755 ./dist/endcord-lite "$pkgdir/usr/bin/endcord-lite"
 	install -Dm644 ./README.md "$pkgdir/usr/share/doc/endcord-lite/README.md"
-	install -Dm644 ./commands.md "$pkgdir/usr/share/doc/endcord-lite/commands.md"
-	install -Dm644 ./configuration.md "$pkgdir/usr/share/doc/endcord-lite/configuration.md"
+	install -Dm644 ./docs/commands.md "$pkgdir/usr/share/doc/endcord/commands.md"
+	install -Dm644 ./docs/configuration.md "$pkgdir/usr/share/doc/endcord/configuration.md"
+	install -Dm644 ./docs/extensions.md "$pkgdir/usr/share/doc/endcord/extensions.md"
+	install -Dm644 ./docs/keybindings.md "$pkgdir/usr/share/doc/endcord/keybindings.md"
 	install -Dm644 ./LICENSE "$pkgdir/usr/share/licenses/endcord-lite/LICENSE"
 	# install -Dm644 endcord.desktop "$pkgdir/usr/share/applications/endcord-lite.desktop"
     # install -Dm644 endcord.svg "$pkgdir/usr/share/icons/hicolor/256x256/apps/endcord-lite.svg"
