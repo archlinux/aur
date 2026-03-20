@@ -1,0 +1,20 @@
+post_install() {
+  echo "=========================================================================="
+  echo "  opencode-claude-auth Installed"
+  echo "=========================================================================="
+  echo ""
+  echo "Add this plugin path to your OpenCode configuration file"
+  echo "(for example ~/.config/opencode/opencode.json):"
+  echo ""
+  echo "  {"
+  echo "    \"plugin\": [\"file:///usr/lib/opencode/plugins/opencode-claude-auth\"]"
+  echo "  }"
+  echo ""
+  echo "Make sure Claude Code is already installed and authenticated"
+  echo "so the plugin can reuse your existing credentials."
+  echo "=========================================================================="
+}
+
+post_upgrade() {
+  post_install
+}

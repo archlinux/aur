@@ -1,0 +1,17 @@
+pkgbase = opencode-claude-auth
+	pkgdesc = Claude Code credential bridge plugin for opencode
+	pkgver = 0.5.4
+	pkgrel = 1
+	url = https://github.com/griffinmartin/opencode-claude-auth
+	install = opencode-claude-auth.install
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	depends = opencode
+	conflicts = opencode-claude-auth-debug
+	options = !debug
+	source = opencode-claude-auth-0.5.4.tar.gz::https://github.com/griffinmartin/opencode-claude-auth/archive/refs/tags/v0.5.4.tar.gz
+	sha256sums = 888ea2014b1461e3bfcf3444cd3e125b14568db06c6c77c3c78b446a414c7e71
+
+pkgname = opencode-claude-auth
