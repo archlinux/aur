@@ -1,0 +1,38 @@
+[Unit]
+Description=Suricata Prometheus Exporter
+Documentation=https://github.com/corelight/suricata_exporter
+After=suricata.service
+Wants=suricata.service
+
+[Service]
+Type=simple
+User=suricata
+Group=suricata
+
+# Socket path matches the AUR suricata package default:
+# /run/suricata is created by the suricata tmpfiles.d config,
+# and suricata.yaml is patched to place the command socket there.
+ExecStart=/usr/bin/suricata_exporter \
+  -suricata.socket-path /run/suricata/suricata-command.socket \
+  -web.listen-address :9917
+
+Restart=on-failure
+RestartSec=5s
+
+# Security hardening — minimal permissions.
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectHome=yes
+
+# Allow read access to the Suricata command socket.
+# /run/suricata is owned suricata:suricata 0750, so no extra path grants needed.
+ReadWritePaths=/run/suricata
+
+# Network: allow Unix sockets (Suricata command socket) and
+# TCP/UDP (serving Prometheus metrics on :9917). Block all other families.
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target
