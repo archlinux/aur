@@ -1,6 +1,6 @@
 pkgbase = weathery
 	pkgdesc = A terminal weather app with animated cityscapes
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/VG-dev1/weathery
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = weathery
 	depends = gcc-libs
 	depends = openssl
 	provides = weathery
-	source = weathery-0.1.1.tar.gz::https://github.com/VG-dev1/weathery/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 4ce129edcacd949d073cb435ceca49d2eaf301da79d98c5f70e409cb25de10f4
+	source = weathery-0.2.0.tar.gz::https://github.com/VG-dev1/weathery/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 7634b8291f6f24d50dffbc8c434aa15566c6f6a12f36394d8cf77be3d9926d10
 
 pkgname = weathery
