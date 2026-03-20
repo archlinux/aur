@@ -3,7 +3,7 @@
 # Maintainer: Ranjith Hegde <mayafluxcollective@proton.me>
 
 pkgname=mayaflux
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Modern C++23 framework for real-time graphics and audio with JIT live coding"
 arch=('x86_64')
@@ -47,7 +47,7 @@ optdepends=(
 provides=('mayaflux')
 conflicts=('mayaflux-bin' 'mayaflux-dev-bin')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MayaFlux/MayaFlux/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('43d22fdf46461fe2bceb0aebc9bb000370aae5dd3f82c46caa335ffc2d94d8c0')
+sha256sums=('3cfdb7ae14afe18141a3072a362159cb68fd717d2d7e4a02cab551f8c4707a02')
 
 build() {
     cd "MayaFlux-${pkgver}"

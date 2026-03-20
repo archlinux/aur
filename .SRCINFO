@@ -1,6 +1,6 @@
 pkgbase = mayaflux
 	pkgdesc = Modern C++23 framework for real-time graphics and audio with JIT live coding
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/MayaFlux/MayaFlux
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = mayaflux
 	provides = mayaflux
 	conflicts = mayaflux-bin
 	conflicts = mayaflux-dev-bin
-	source = mayaflux-0.2.0.tar.gz::https://github.com/MayaFlux/MayaFlux/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 43d22fdf46461fe2bceb0aebc9bb000370aae5dd3f82c46caa335ffc2d94d8c0
+	source = mayaflux-0.2.1.tar.gz::https://github.com/MayaFlux/MayaFlux/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = 3cfdb7ae14afe18141a3072a362159cb68fd717d2d7e4a02cab551f8c4707a02
 
 pkgname = mayaflux
