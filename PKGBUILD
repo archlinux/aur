@@ -1,7 +1,7 @@
 # Maintainer: TheFeelTrain <the@feeltra.in>
 
 pkgname=vsview
-pkgver=0.1.0b5
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='The next-generation VapourSynth previewer'
 arch=('x86_64')

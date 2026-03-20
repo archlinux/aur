@@ -1,6 +1,6 @@
 pkgbase = vsview
 	pkgdesc = The next-generation VapourSynth previewer
-	pkgver = 0.1.0b5
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-view
 	arch = x86_64
@@ -32,7 +32,7 @@ pkgbase = vsview
 	optdepends = vsview-nativeres: Analyze and determine native resolution
 	optdepends = vsview-plugins-all: Meta package for all plugins
 	optdepends = vsview-plugins-essential: Meta package for essential plugins
-	source = vsview::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=vsview/v0.1.0b5
+	source = vsview::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=vsview/v0.1.0
 	sha256sums = SKIP
 
 pkgname = vsview
