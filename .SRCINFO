@@ -9,7 +9,7 @@ pkgbase = desktopify-lite
 	makedepends = git
 	makedepends = go
 	conflicts = desktopify-lite-git
-	source = desktopify-lite::git+https://github.com/miniguys/desktopify-lite#tag=v1.0.0
-	sha256sums = b62673e685e883f97bd82eeb4a80c936f3015ffa96de5b68e4736562fa83bee0
+	source = desktopify-lite::git+https://github.com/miniguys/desktopify-lite#tag=v1.0.1
+	sha256sums = 10feaed375c1fca6c0836ed877d7f6f76dfc73f63afcd5c3cecfbf0712aa8f16
 
 pkgname = desktopify-lite

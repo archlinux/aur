@@ -1,4 +1,4 @@
-# Maintainer: miniguys
+# Maintainer: Kaine Killian kainekillian@proton.me
 pkgname=desktopify-lite
 pkgver=1.0.1
 pkgrel=1
@@ -8,20 +8,16 @@ url='https://github.com/miniguys/desktopify-lite'
 license=('MIT')
 makedepends=('git' 'go')
 conflicts=('desktopify-lite-git')
-source=("$pkgname::git+$url#tag=v1.0.0")
-sha256sums=('b62673e685e883f97bd82eeb4a80c936f3015ffa96de5b68e4736562fa83bee0')
+# Use variable for tag so it updates automatically
+source=("$pkgname::git+$url#tag=v$pkgver")
+sha256sums=('10feaed375c1fca6c0836ed877d7f6f76dfc73f63afcd5c3cecfbf0712aa8f16')
 
 build() {
   cd "$srcdir/$pkgname"
 
-  local commit build_date author pkgmod ldflags
-  commit="$(git rev-parse --short HEAD)"
-  build_date="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
-  author='miniguys'
-  pkgmod='github.com/miniguys/desktopify-lite/internal/app'
-  ldflags="-s -w -X ${pkgmod}.version=${pkgver} -X ${pkgmod}.commit=${commit} -X ${pkgmod}.buildDate=${build_date} -X ${pkgmod}.author=${author}"
-
-  CGO_ENABLED=0 go build -trimpath -ldflags "$ldflags" -o "$pkgname" .
+  # Use the existing Makefile and pass the version from PKGBUILD
+  # This ensures consistency between local builds and AUR
+  make build VERSION="$pkgver"
 }
 
 package() {
@@ -30,5 +26,4 @@ package() {
   install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-  install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.md"
 }
