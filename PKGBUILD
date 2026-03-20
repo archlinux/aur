@@ -2,11 +2,21 @@
 
 pkgname=playback-appimage
 pkgver=1.8.0
-pkgrel=2
-pkgdesc="Playback software for Epilogue's GB Operator"
+pkgrel=3
+pkgdesc="Playback software for Epilogue Operator devices"
 arch=('x86_64')
 url="https://www.epilogue.co"
-license=()
+license=('LicenseRef-proprietary')
+depends=(
+  'bash'
+  'fuse2'
+  'gcc-libs'
+  'glibc'
+  'hicolor-icon-theme'
+  'libglvnd'
+  'libusb'
+  'zlib'
+)
 options=(!strip)
 
 _filename="Playback.AppImage"
@@ -29,6 +39,7 @@ prepare () {
   chmod +x $_appimage
   ./$_appimage --appimage-extract "usr/share/icons/hicolor/*/apps/Playback.png" > /dev/null 2>&1
   ./$_appimage --appimage-extract "$_squashfs_desktop_file" > /dev/null 2>&1
+  ./$_appimage --appimage-extract "usr/share/licenses/playback/LICENSE" > /dev/null 2>&1
 }
 
 package() {
@@ -48,4 +59,7 @@ package() {
 
   # Install udev rules for GB Operator device access
   install -Dm644 "60-gb-operator.rules" "$pkgdir/usr/lib/udev/rules.d/60-gb-operator.rules"
+
+  # Install license
+  install -Dm644 "squashfs-root/usr/share/licenses/playback/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
