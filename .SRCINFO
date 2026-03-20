@@ -1,6 +1,6 @@
 pkgbase = marina
 	pkgdesc = A dataset manager for robotics to organize, share, and discover datasets and metadata across storage backends.
-	pkgver = 0.2.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://codeberg.org/stelzo/marina
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = marina
 	conflicts = marina
 	options = !lto
 	options = !debug
-	source = marina-0.2.1.tar.gz::https://codeberg.org/stelzo/marina/archive/v0.2.1.tar.gz
+	source = marina-0.2.2.tar.gz::https://codeberg.org/stelzo/marina/archive/v0.2.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = marina
