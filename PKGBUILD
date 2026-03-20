@@ -32,7 +32,7 @@ provides=("$pkgname")
 conflicts=('transmission-remote-slint-bin')
 options=(!debug)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/guglovich/Transmission-Remote-Slint/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ef15d6e1a9f2bd2f04afe09b7fd90a5c8346ae3c7ebce58a59765fbc77770c50')
+sha256sums=('4f4270dbea0ea86eaf50a0cf99bdd0c4f76eb12fa00a31fb6f6b78c402d92af8')
 
 prepare() {
     cd "Transmission-Remote-Slint-${pkgver}"
