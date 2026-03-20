@@ -1,7 +1,7 @@
 # Maintainer: Professor Lee <https://github.com/professor-lee>
 pkgname=cnmplayer
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal-based Netease cloud music player with spectrum visualizer, lyrics support."
 arch=('x86_64' 'aarch64')
 url="https://github.com/professor-lee/CNMPlayer"
