@@ -1,6 +1,6 @@
 pkgbase = prman-bin
 	pkgdesc = Terminal project repository manager. (prebuilt binary release)
-	pkgver = 1.0.7
+	pkgver = 1.0.8
 	pkgrel = 1
 	url = https://github.com/bencetotht/prm
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = prman-bin
 	provides = prman
 	conflicts = prman
 	conflicts = prm
-	source = prman-bin-1.0.7-x86_64.tar.gz::https://github.com/bencetotht/prm/releases/download/v1.0.7/prm-v1.0.7-x86_64-unknown-linux-gnu.tar.gz
+	source = prman-bin-1.0.8-x86_64.tar.gz::https://github.com/bencetotht/prm/releases/download/v1.0.8/prm-v1.0.8-linux-x86_64.tar.gz
 	sha256sums = SKIP
 
 pkgname = prman-bin
