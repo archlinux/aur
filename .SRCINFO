@@ -1,12 +1,12 @@
 pkgbase = choria-cm
 	pkgdesc = Choria Configuration Management
-	pkgver = 0.0.19
+	pkgver = 0.0.20
 	pkgrel = 1
 	url = https://github.com/choria-io/ccm
 	arch = any
 	license = Apache-2.0
 	makedepends = go
-	source = choria-cm-0.0.19.tar.gz::https://github.com/choria-io/ccm/archive/v0.0.19.tar.gz
-	sha256sums = 251ac9d05880317b53f78d893b300e282d1e44f3d489945a313255e1228b680c
+	source = choria-cm-0.0.20.tar.gz::https://github.com/choria-io/ccm/archive/v0.0.20.tar.gz
+	sha256sums = 1e5fc7ecb591e40c1c2d79a25d32d91a2f3a70bac1cd46a8ac69fcad74ed141c
 
 pkgname = choria-cm
