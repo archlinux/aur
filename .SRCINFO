@@ -1,0 +1,19 @@
+pkgbase = rchess
+	pkgdesc = Terminal chess with AI, analysis, Lichess puzzles, PNG/PGN export
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/tonycth7/rchess
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	depends = curl
+	optdepends = python-pillow: PNG board export (Shift+E in-game)
+	optdepends = stockfish: stronger move analysis (enable in Settings)
+	optdepends = ttf-freefont: Unicode chess symbols in PNG export
+	source = rchess-0.7.3.tar.gz::https://github.com/tonycth7/rchess/archive/v0.7.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = rchess
