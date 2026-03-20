@@ -1,6 +1,6 @@
 pkgname=gpt4all-chat
 pkgver=3.10.0
-pkgrel=3
+pkgrel=4
 pkgdesc="run open-source LLMs anywhere"
 arch=("x86_64")
 url="https://gpt4all.io"
@@ -22,7 +22,7 @@ declare -rAg _modules_name_map=(
     [gpt4all-backend/deps/llama.cpp-mainline/ggml/src/kompute]=https://github.com/nomic-ai/kompute/archive/7c20efa30bb53d08bf04f84e510275766ebe9923.tar.gz
     [gpt4all-chat/deps/usearch]=https://github.com/nomic-ai/usearch/archive/9e59f1036657303b29eaf709945f339e403e5f2f.tar.gz
     [gpt4all-chat/deps/usearch/fp16]=https://github.com/Maratyszcza/FP16/archive/0a92994d729ff76a58f692d3028ca1b64b145d91.tar.gz
-    [gpt4all-chat/deps/usearch/simsimd]=https://github.com/ashvardanian/SimSIMD/archive/18d17686124ddebd9fe55eee56b2e0273a613d4b.tar.gz
+    [gpt4all-chat/deps/usearch/simsimd]=https://github.com/ashvardanian/NumKong/archive/18d17686124ddebd9fe55eee56b2e0273a613d4b.tar.gz
     [gpt4all-chat/deps/usearch/stringzilla]=https://github.com/ashvardanian/StringZilla/archive/91d0a1a02faae90a41c60a30855d5935eb3eaef1.tar.gz
     [gpt4all-chat/deps/SingleApplication]=https://github.com/nomic-ai/SingleApplication/archive/21bdef01eddcbd78044eea1d50b9dee08d218ff2.tar.gz
     [gpt4all-chat/deps/fmt]=https://github.com/fmtlib/fmt/archive/0c9fce2ffefecfdce794e1859584e25877b7b592.tar.gz
@@ -93,7 +93,7 @@ sha256sums=('14cfcf13de40e1bfb4df1096aac9d410bfa29d7b0c30a297bb2b3474a554f44e'
             'b348d6b9228316e4611186df0558f032a25ffa20334e68a91a09e07ce84db77a'
             'a91f4770ff9c39f4d72e339c379f566b3bbb359fa66122d85fc0bae3dde7abc7'
             '5f151fe3d71bb7b719eb50ed4bdedfde9c92d9d21c7eea172eec177b9875eff5'
-            'b16fc2ee15a1df76e0459df32905285c94fb59135595ccbff2095167c3c865a1'
+            'fe9eca41677db9ec416fdae2fe7ba0bac82cecc692e6d9670e8e35baa461b528'
             'cf51f45eaabd9b1fccc2c871ccdd7be81730bb0172538c9375c1e33bf5ac131c'
             '78869fa23cec5faf7a6b157fbc6309202ad9c6b1f7c1392d3dc4894ffe93eb95'
             '51c6e723437ddf1ba9b4bf9951ca93e975e21b7513e268ee6e7dfc40d4aee691'
