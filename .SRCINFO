@@ -1,10 +1,11 @@
 pkgbase = db-toolkit
 	pkgdesc = Database management desktop app
 	pkgver = 0.1.0_beta7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/db-toolkit/db-toolkit
 	arch = x86_64
 	license = MIT
+	options = !strip
 	source = https://github.com/db-toolkit/db-toolkit/releases/download/v0.1.0-beta7/DB.Toolkit-linux.deb
 	sha256sums = 86b7c08a44ce5c1818b986a5dac651abfed9b73c234958697346839b1580da35
 

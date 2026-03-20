@@ -3,12 +3,13 @@
 # Build DB Toolkit from .deb release;
 pkgname=db-toolkit
 pkgver=0.1.0_beta7
-pkgrel=1
+pkgrel=2
 pkgdesc="Database management desktop app"
 arch=('x86_64')
 url="https://github.com/db-toolkit/db-toolkit"
 license=('MIT')
 depends=()
+options=('!strip') # Remove those debug warnings
 
 source=(
   "https://github.com/db-toolkit/db-toolkit/releases/download/v0.1.0-beta7/DB.Toolkit-linux.deb"
