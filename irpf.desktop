@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=IRPF 2025
+Comment=Programa do Imposto de Renda Pessoa Física (versão 2025)
+Path=/usr/bin
+Exec=irpf2025
+Icon=irpf2025
+StartupWMClass=serpro-ppgd-app-IRPFPGD
+Terminal=false
+StartupNotify=false
+Type=Application
+Categories=Application;
