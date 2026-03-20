@@ -1,0 +1,18 @@
+post_install() {
+    echo -e "\n==================================================="
+    echo "LokSTT has been installed and will start automatically"
+    echo "on your next login (graphical session)."
+    echo ""
+    echo "To start it RIGHT NOW without relogging, run:"
+    echo "  systemctl --user start lokstt.service"
+    echo -e "===================================================\n"
+}
+
+post_upgrade() {
+    echo -e "\n==================================================="
+    echo "LokSTT has been upgraded."
+    echo "To apply the update RIGHT NOW, run:"
+    echo "  systemctl --user daemon-reload"
+    echo "  systemctl --user restart lokstt.service"
+    echo -e "===================================================\n"
+}
