@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=MESS
-_pkgver=0.5.12
+_pkgver=0.6.0
 pkgname=r-${_pkgname,,}
-pkgver=0.5.12
-pkgrel=3
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='Miscellaneous Esoteric Statistical Scripts'
 arch=('x86_64')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -21,6 +21,7 @@ depends=(
   r-mvtnorm
   r-rcpp
   r-rcpparmadillo
+  r-rcppparallel
 )
 optdepends=(
   r-knitr
@@ -30,7 +31,7 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('41e07993e67a8aab52d9d4d07a06d654186ac8a8db9b740763ed5d481f01dcf7')
+sha256sums=('f907763a0ca67f3a59bc3d51ab1cbdde78a4599ab7612a61e2e50cda282eb1e4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
