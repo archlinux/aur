@@ -1,6 +1,6 @@
 # Maintainer: VoltChat Team <contact@voltagechat.app>
 pkgname=volt-desktop
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="VoltChat Desktop Application - Electron-based chat client"
 arch=('x86_64')
