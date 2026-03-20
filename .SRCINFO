@@ -1,6 +1,6 @@
 pkgbase = ai-robots-txt
 	pkgdesc = List of AI crawler user agents.
-	pkgver = 1.44
+	pkgver = 1.45
 	pkgrel = 1
 	url = https://github.com/ai-robots-txt/ai.robots.txt
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ai-robots-txt
 	optdepends = haproxy: haproxy blocker config
 	optdepends = apache: htaccess blocker config
 	optdepends = caddy: caddy blocker config
-	source = https://github.com/ai-robots-txt/ai.robots.txt/archive/refs/tags/v1.44.tar.gz
+	source = https://github.com/ai-robots-txt/ai.robots.txt/archive/refs/tags/v1.45.tar.gz
 	sha256sums = 67f14eef069e0fb261ce64215965b28331513512b94b2793bb09fd3e458a3b65
 
 pkgname = ai-robots-txt
