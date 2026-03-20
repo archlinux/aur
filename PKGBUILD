@@ -8,6 +8,7 @@ url="https://github.com/c3rt1fiedd/snaptool"
 license=('GPL')
 depends=('dotnet-runtime>=8.0')
 makedepends=('dotnet-sdk>=8.0')
+options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('b191b209836bd585210eb7295271abf60f21000032502fdbe4246e4a4d33a434')
 

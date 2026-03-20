@@ -7,6 +7,7 @@ pkgbase = snaptool
 	license = GPL
 	makedepends = dotnet-sdk>=8.0
 	depends = dotnet-runtime>=8.0
+	options = !strip
 	source = snaptool-1.0.0.tar.gz::https://github.com/c3rt1fiedd/snaptool/archive/refs/tags/1.0.0.tar.gz
 	sha256sums = b191b209836bd585210eb7295271abf60f21000032502fdbe4246e4a4d33a434
 
