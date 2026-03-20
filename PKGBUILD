@@ -1,6 +1,32 @@
 # Maintainer: z3n <z3nlabs at proton dot me>
 
-# Version 11.2.27
+# Version 11.3.0 - New Features & Improvements:
+# - MIDI Note Duplication (Ctrl+D) and MIDI Note Chase (play mid-sustained notes)
+# - Section/Arrangement markers usable as ranges for Audio/Stem exports
+# - Feedback detection: flags mix/master bus output loops back to track inputs
+# - Two mono audio files can be merged into stereo via drag-and-drop
+# - Pitchbend values now displayed as -8192..8191 instead of 0..16384
+# - Mix Tools now imports EQ, compressor, and gate types (with progress bar)
+# - Redesigned color picker and comment editor dialogs
+# - Faster bus deletion and ProTools import
+# - Enhanced pianoroll operations (improved handle grabbability, etc.)
+# - Support for note values as small as 1/128th notes
+# - New Lua Scripts:
+#   * mono_to_stereo_pan.lua
+#   * set_io_config.lua
+# - New MIDI Patch Files:
+#   * Roland Boss SE-70 Guitar/Standard
+# - Linux: Cleaned Pipewire JACK port name displays
+# - Control Surface Updates:
+#   * Novation Launchkey 4 corrected device name detection
+#   * OSC: /marker replaced with /goto_marker and /rename_marker
+#   * Mackie: iCON V1-M configuration corrected
+# - 60+ bug fixes including RTA crash, fade curve rendering, VCA solo handling
+# - Removed: mixbus11-copy-mixer utility (dropped upstream)
+#
+# Version 11.2.27 - Hotfix:
+# - Fixed 5 crash bugs (group treeview, plugin removal, empty subgroups,
+#   group menu, Windows license path)
 #
 # Version 11.1.71 - New Features:
 # - Enhanced Hardware Controller Support:
@@ -28,7 +54,7 @@
 # Linux users receive core DAW functionality but not all advertised premium features.
 
 pkgname=mixbus11
-pkgver=11.2.27
+pkgver=11.3.0
 pkgrel=1
 pkgdesc="Harrison Consoles Mixbus DAW (Version 11)"
 arch=('x86_64')
@@ -44,11 +70,11 @@ optdepends=('avldrums.lv2: AVLinux drumkits'
             'setbfree-lv2: Tonewheel organ'
             'x42-plugins-lv2: Set of plugins and utilities from the X42 Project')
 source=(
-    "Mixbus-${pkgver}-x86_64.tar::https://eu1.download.solidstatelogic.com/Mixbus%2011/Mixbus%2011.2/Mixbus-${pkgver}-x86_64.tar"
+    "Mixbus-${pkgver}-x86_64.tar::https://eu1.download.solidstatelogic.com/Mixbus%2011/Mixbus%2011.3/Mixbus-${pkgver}-x86_64.tar"
     "${pkgname}.install"
 )
 sha256sums=(
-    '26e1b09ca50260c33572a8922f9d3a064b805689aeb530efc42c4990eed8d87e'
+    'bb188d6192ae01b1d71da4c8215c998549a3fe980325f5470fb2b969202ce844'
     'b56e4663d14e856fd88ea1afb3b0bbe907bf0ebe67a6b584d17f9b1157b83abf'
 )
 options=('!strip')
