@@ -23,6 +23,7 @@ pkgname = digital_rf
 	provides = libdigital_rf.so
 
 pkgname = python-digital_rf
+	pkgdesc = Read, write, and interact with data in the Digital RF and Digital Metadata formats (Python bindings)
 	depends = python-h5py
 	depends = hdf5>=1.8
 	depends = python-numpy

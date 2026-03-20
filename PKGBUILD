@@ -83,6 +83,7 @@ package_digital_rf() {
 }
 
 package_python-digital_rf() {
+  pkgdesc+=" (Python bindings)"
   depends=(
     'python-h5py'
     'hdf5>=1.8'
