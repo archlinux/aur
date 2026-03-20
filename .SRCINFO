@@ -1,6 +1,6 @@
 pkgbase = ark-kernel
 	pkgdesc = An R kernel for Jupyter
-	pkgver = 0.1.222
+	pkgver = 0.1.245
 	pkgrel = 1
 	url = https://github.com/posit-dev/ark
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = ark-kernel
 	makedepends = curl
 	makedepends = jq
 	depends = glibc
-	provides = ark-kernel-git-bin=0.1.222
-	source = ark-kernel-git-bin-0.1.222.zip::https://github.com/posit-dev/ark/releases/download/0.1.222/ark-0.1.222-linux-x64.zip
+	provides = ark-kernel-git-bin=0.1.245
+	source = ark-kernel-git-bin-0.1.245.zip::https://github.com/posit-dev/ark/releases/download/0.1.245/ark-0.1.245-linux-x64.zip
 	sha256sums = SKIP
 
 pkgname = ark-kernel-git-bin
