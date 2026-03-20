@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgname=zeroclaw
-pkgver=0.5.0
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Fast, small, and fully autonomous AI assistant infrastructure — deploy anywhere, swap anything (Rust)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -16,10 +16,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/zeroclaw-labs/${pkgname}/ar
         "zeroclaw.service"
         "zeroclaw.sysusers"
         "zeroclaw.tmpfiles")
-sha256sums=('970c2fcbbc3fd0566420183df317cf0441acd0c6ca3147e55bbccbb8ab142980'
-            'de97ac176531d176ac627bd031e8a79f7adb5a440f321c9b9b0a492fda1154ee'
-            '5e22a9f53bab669beab7058c8b7d1c2b090eb7900fb8c9bd94fd3ad609e7afbf'
-            '07911d8ca762bc87daf58e7d72ad9067517baedaeccd65f2ae7609962af8216f')
+b2sums=('d48fd1b0cf886601c1f0afd29317ac3160682539948f8eefc04cf427cc025aa0611c2ba16b4c1cdf9536540c0906be3c028ff93b19a643593f1660b588c115a5'
+        'fe6c6be25e8917f359e169a1fb52efb69f745f8a336200a138d3dff47e28fd4ad2d87a36da7f2799c14ce43f8cef3091b85d2827bdd86e6ce988b71fa4bda20d'
+        '5a8b22eefdec54b475dec402b58a432894fa5696b50493a90569e1179d0a4242bc3efd2a514ee71cb6beb60b70789ebce65fc2c1815ae4144ae51814654015bf'
+        '9e6ccb731e2d61cc8d4bea3e3a287762090e46a5e3a05cab6fb80b89ee0ab04264173be95b19ad299148b3e894d1cf1070b6ba926eea1927ed60d6378d14d729')
 
 prepare() {
     cd "$pkgname-$pkgver"
@@ -34,18 +34,6 @@ prepare() {
     msdk_lib=$(find "$srcdir/.cargo-home/registry/src" -path '*/matrix-sdk-0.16.*/src/lib.rs' 2>/dev/null | head -1)
     if [[ -n "$msdk_lib" ]] && ! grep -q 'recursion_limit' "$msdk_lib"; then
         sed -i '1s/^/#![recursion_limit = "256"]\n/' "$msdk_lib"
-    fi
-
-    # Workaround for upstream bug (zeroclaw 0.4.3–0.5.0): OtelObserver::record_event match
-    # is missing CacheHit and CacheMiss arms added in this release (otel.rs line ~431).
-    # Fix: insert no-op arms before the closing brace of the match block.
-    local otel_rs="src/observability/otel.rs"
-    if grep -q 'ObserverEvent::HandFailed' "$otel_rs" && ! grep -q 'ObserverEvent::CacheHit' "$otel_rs"; then
-        # Find the line number of the match-closing `        }` that is immediately
-        # followed by `    }` (closes record_event) then a blank line then `fn record_metric`.
-        local match_close
-        match_close=$(awk '/^        \}$/{l=NR} /fn record_metric/{print l; exit}' "$otel_rs")
-        sed -i "${match_close}s/^        }/            ObserverEvent::CacheHit { .. } | ObserverEvent::CacheMiss { .. } => {}\n        }/" "$otel_rs"
     fi
 }
 
@@ -62,7 +50,7 @@ build() {
     cargo build \
         --release \
         --frozen \
-        --features channel-lark,channel-matrix,channel-nostr,memory-postgres,observability-otel,observability-prometheus,browser-native,sandbox-landlock,sandbox-bubblewrap,rag-pdf,whatsapp-web,plugins-wasm
+        --features channel-lark,channel-matrix,channel-nostr,memory-postgres,observability-otel,observability-prometheus,browser-native,sandbox-landlock,sandbox-bubblewrap,rag-pdf,whatsapp-web,plugins-wasm,skill-creation
 }
 
 package() {

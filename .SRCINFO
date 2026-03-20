@@ -1,6 +1,6 @@
 pkgbase = zeroclaw
 	pkgdesc = Fast, small, and fully autonomous AI assistant infrastructure — deploy anywhere, swap anything (Rust)
-	pkgver = 0.5.0
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/zeroclaw-labs/zeroclaw
 	arch = x86_64
@@ -16,13 +16,13 @@ pkgbase = zeroclaw
 	optdepends = bubblewrap: sandbox-bubblewrap isolation support
 	optdepends = chromium: browser-native feature
 	optdepends = postgresql: memory-postgres backend
-	source = zeroclaw-0.5.0.tar.gz::https://github.com/zeroclaw-labs/zeroclaw/archive/refs/tags/v0.5.0.tar.gz
+	source = zeroclaw-0.5.4.tar.gz::https://github.com/zeroclaw-labs/zeroclaw/archive/refs/tags/v0.5.4.tar.gz
 	source = zeroclaw.service
 	source = zeroclaw.sysusers
 	source = zeroclaw.tmpfiles
-	sha256sums = 970c2fcbbc3fd0566420183df317cf0441acd0c6ca3147e55bbccbb8ab142980
-	sha256sums = de97ac176531d176ac627bd031e8a79f7adb5a440f321c9b9b0a492fda1154ee
-	sha256sums = 5e22a9f53bab669beab7058c8b7d1c2b090eb7900fb8c9bd94fd3ad609e7afbf
-	sha256sums = 07911d8ca762bc87daf58e7d72ad9067517baedaeccd65f2ae7609962af8216f
+	b2sums = d48fd1b0cf886601c1f0afd29317ac3160682539948f8eefc04cf427cc025aa0611c2ba16b4c1cdf9536540c0906be3c028ff93b19a643593f1660b588c115a5
+	b2sums = fe6c6be25e8917f359e169a1fb52efb69f745f8a336200a138d3dff47e28fd4ad2d87a36da7f2799c14ce43f8cef3091b85d2827bdd86e6ce988b71fa4bda20d
+	b2sums = 5a8b22eefdec54b475dec402b58a432894fa5696b50493a90569e1179d0a4242bc3efd2a514ee71cb6beb60b70789ebce65fc2c1815ae4144ae51814654015bf
+	b2sums = 9e6ccb731e2d61cc8d4bea3e3a287762090e46a5e3a05cab6fb80b89ee0ab04264173be95b19ad299148b3e894d1cf1070b6ba926eea1927ed60d6378d14d729
 
 pkgname = zeroclaw
