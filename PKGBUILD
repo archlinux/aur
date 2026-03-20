@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # -*- mode: sh -*-
 
 #  Maintainer: Klaus Alexander Seiﬆrup <$(echo 0x1fd+d59decfa=40 | tr 0-9+a-f=x ka-i@p-u.l)>
@@ -8,33 +9,37 @@
 _pkgname=python-croniter
 pkgname="$_pkgname-git"
 _name="${_pkgname#python-}"
-pkgver=6.0.0.r83.gb2ab627
-pkgrel=1
 pkgdesc='Parses cron schedules to iterate over datetime objects (development version)'
-arch=('any')
+pkgver=6.2.2.r11.gc3f41f5
+pkgrel=1
 url='https://github.com/pallets-eco/croniter'
+arch=('any')
 license=('MIT')
+checkdepends=(
+  'python-pytest-cov'
+  'python-setuptools'
+)
+makedepends=(
+  'git'
+  'python-build'
+  'python-hatchling'
+  'python-installer'
+  'python-packaging'
+  'python-pathspec'
+  'python-pluggy'
+  'python-trove-classifiers'
+  'python-wheel'
+)
 depends=(
   'python'
   'python-dateutil'
   'python-pytz'
 )
-makedepends=(
-  'git'
-  'python-build'
-  'python-flit-core'
-  'python-installer'
-  'python-setuptools'
-  'python-wheel'
-)
-checkdepends=(
-  'python-pytest-cov'
-  'python-setuptools'
-)
-source=("git+$url.git")
-sha256sums=('SKIP')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
+options=('!strip')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 prepare() {
   cd "$_name"
@@ -71,8 +76,13 @@ package() {
   )
   rm -rf "$pkgdir/$_site_packages/$_name/tests"
 
-  install -vDm0644 -t "$pkgdir/usr/share/doc/$pkgname"      ./*.rst
-  install -vDm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname"      ./*.rst
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+
+  for _dir in doc licenses; do
+    cd "$pkgdir/usr/share/$_dir" || continue
+    ln -sr $pkgname "$_pkgname"
+  done
 }
 
 # eof
