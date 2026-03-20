@@ -25,12 +25,11 @@
 # sm_75             7.5           GeForce RTX 2080/2070/2060, GTX 1650 Ti, T4
 #
 # Reference: https://developer.nvidia.com/cuda-gpus
-# ==============================================================================
 _cuda_arch="${CUDA_ARCH:-}"
 
 pkgname=ffmpeg-whisper
 pkgver=8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video, with CUDA whipser'
 arch=(x86_64)
 url=https://ffmpeg.org
@@ -154,6 +153,31 @@ validpgpkeys=(DD1EC9E8DE085C629B3E1846B18E8928B3948D64) # Michael Niedermayer <m
 
 prepare() {
   cd ffmpeg
+
+  if [[ -z "$_cuda_arch" ]]; then
+    cat <<EOF
+
+ERROR: CUDA_ARCH is not set. You must specify your GPU architecture.
+       Set it before running makepkg, for example:
+
+       CUDA_ARCH=sm_120 makepkg -si
+
+  sm_121  → GB10 (DGX Spark)
+  sm_120  → GeForce RTX 5090/5080/5070/5060/5050, RTX PRO Blackwell
+  sm_103  → GB300, B300 (data center)
+  sm_100  → GB200, B200 (data center)
+  sm_90   → H100, H200, GH200
+  sm_89   → GeForce RTX 4090/4080/4070/4060/4050, Ada, L4, L40S
+  sm_87   → Jetson AGX Orin, Orin NX, Orin Nano
+  sm_86   → GeForce RTX 3090/3080/3070/3060/3050, RTX A-series, A40
+  sm_80   → A100, A30 (data center)
+  sm_75   → GeForce RTX 2080/2070/2060, GTX 1650 Ti, T4
+
+  See: https://developer.nvidia.com/cuda-gpus
+
+EOF
+    return 1
+  fi
 
   # https://crbug.com/1251779
   git apply -3 ../0001-Add-av_stream_get_first_dts-for-Chromium.patch
