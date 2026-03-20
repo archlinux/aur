@@ -1,6 +1,6 @@
 pkgbase = kak-fzf-git
 	pkgdesc = FZF for kakoune
-	pkgver = r357.092bcb8
+	pkgver = r363.8fcce0c
 	pkgrel = 1
 	url = https://github.com/andreyorst/fzf.kak
 	arch = any

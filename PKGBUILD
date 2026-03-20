@@ -1,6 +1,6 @@
 # Maintainer: ltdk <usr@ltdk.xyz>
 pkgname=kak-fzf-git
-pkgver=r357.092bcb8
+pkgver=r363.8fcce0c
 pkgrel=1
 pkgdesc='FZF for kakoune'
 arch=(any)
@@ -35,6 +35,7 @@ package() {
 	cd "$srcdir/fzf.kak"
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 	install -Dm644 -t "$pkgdir/usr/share/kak/rc/addons" rc/fzf.kak
+	install -Dm644 -t "$pkgdir/usr/share/licenses/kak-fzf-git/LICENSE" rc/LICENSE
 	for module in fzf-{buffer,cd,ctags,file,grep,project,search,vcs} VCS/fzf-{bzr,git,hg,svn}; do
 		install -Dm644 -t "$pkgdir/usr/share/kak/rc/addons" rc/modules/$module.kak
 	done
