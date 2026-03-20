@@ -1,7 +1,7 @@
 pkgbase = mpd_info_screen2
 	pkgdesc = Views graphical info on MPD, the successor to mpd_info_screen, in C++
 	pkgver = 1.19
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Stephen-Seo/mpd_info_screen2
 	arch = x86_64
 	license = ISC
@@ -10,8 +10,8 @@ pkgbase = mpd_info_screen2
 	depends = glfw
 	depends = fontconfig
 	source = mpd_info_screen2::git+https://github.com/Stephen-Seo/mpd_info_screen2.git#tag=1.19
-	source = raylib::git+https://github.com/raysan5/raylib.git#tag=5.5
+	source = raylib-5.5.tar.gz::https://github.com/raysan5/raylib/archive/refs/tags/5.5.tar.gz
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = aea98ecf5bc5c5e0b789a76de0083a21a70457050ea4cc2aec7566935f5e258e
 
 pkgname = mpd_info_screen2

@@ -1,7 +1,7 @@
 # Maintainer: Stephen Seo <seo.disparate@gmail.com>
 pkgname=mpd_info_screen2
 pkgver=1.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Views graphical info on MPD, the successor to mpd_info_screen, in C++"
 arch=(x86_64)
 url="https://github.com/Stephen-Seo/mpd_info_screen2"
@@ -14,19 +14,16 @@ changelog=
 _raylib_ver=5.5
 source=(
     "${pkgname}::git+https://github.com/Stephen-Seo/mpd_info_screen2.git#tag=${pkgver}"
-    "raylib::git+https://github.com/raysan5/raylib.git#tag=${_raylib_ver}"
+    "raylib-5.5.tar.gz::https://github.com/raysan5/raylib/archive/refs/tags/5.5.tar.gz"
 )
-sha256sums=(SKIP SKIP)
+sha256sums=(
+    SKIP
+    'aea98ecf5bc5c5e0b789a76de0083a21a70457050ea4cc2aec7566935f5e258e'
+)
 
 prepare() {
-    mkdir -p "${srcdir}/${pkgname}/third_party/"
-
-    # Use git provided "Raylib" to prevent re-downloading it when building.
-    cd "${srcdir}"
-    ln -s raylib "raylib-${_raylib_ver}"
-    tar -chf "${srcdir}/${pkgname}/third_party/raylib-${_raylib_ver}.tar.gz" --exclude='*.git*' "raylib-${_raylib_ver}"
-    cd "${srcdir}/${pkgname}"
-    sha256sum "third_party/raylib-${_raylib_ver}.tar.gz" > "third_party/raylib-5.5_SHA256SUMS.txt"
+    # Use source provided "Raylib" to prevent re-downloading it when building.
+    install -D -m644 "${srcdir}/raylib-5.5.tar.gz" "${srcdir}/${pkgname}/third_party/raylib-5.5.tar.gz"
 
     cd "${srcdir}/${pkgname}"
     cmake -S . -B BuildRel \
