@@ -1,0 +1,23 @@
+pkgbase = nono-ai-git
+	pkgdesc = Secure, kernel-enforced sandbox for AI agents, MCP servers and LLM workloads using Landlock
+	pkgver = 0.20.0.r1.g3edf1e1
+	pkgrel = 1
+	url = https://github.com/always-further/nono
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	optdepends = libsecret: keyring credential storage via Secret Service API
+	optdepends = gnome-keyring: GNOME-based credential storage
+	provides = nono
+	provides = nono-ai
+	conflicts = nono
+	conflicts = nono-ai
+	options = !lto
+	source = git+https://github.com/always-further/nono.git
+	sha256sums = SKIP
+
+pkgname = nono-ai-git
