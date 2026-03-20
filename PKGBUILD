@@ -1,7 +1,7 @@
 # Maintainer: CosmicHorror <CosmicHorrorDev@pm.me>
 
 pkgname=gimoji
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Easily add emojis to your git commit messages 🎉'
 arch=(x86_64)
@@ -9,8 +9,8 @@ url="https://github.com/zeenix/$pkgname"
 license=(MIT)
 depends=(gcc-libs)
 makedepends=(cargo)
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('3dac5d3334fd0a7aa922017279a546ec20ab1a83d896414b75e14ddca710bd4cc07da0216ef81b1207d875e85ad257f00e62c4937b271f5299ce69da6f643677')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+b2sums=('f6917441d8665e57ef69756c1a200a97d17d46592e76b794d75c848680002fc9ba70e36280b7d0009685ada892cc5a96d5cdf7ba4d1ddcd7541eae0230c35c81')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
