@@ -3,7 +3,7 @@
 pkgname=wirecontrol-git
 _pkgname=wirecontrol
 pkgver=r13.b9262ae
-pkgrel=1
+pkgrel=2
 provides=(wirecontrol)
 pkgdesc="An audio control center for pipewire"
 arch=(x86_64)
@@ -15,6 +15,7 @@ depends=(
   libastal-wireplumber
 )
 makedepends=(
+  blueprint-compiler
   meson
   git
   gobject-introspection
