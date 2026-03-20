@@ -2,7 +2,7 @@
 
 _pkgname=promrail
 pkgname="${_pkgname}"
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Git-native GitOps promotion tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -37,4 +37,14 @@ check() {
 package() {
     cd "$srcdir/prl"
     install -Dm0755 -t "$pkgdir/usr/bin/" "target/release/prl"
+
+    install -d "$pkgdir/usr/share/bash-completion/completions"
+    install -d "$pkgdir/usr/share/fish/vendor_completions.d"
+    install -d "$pkgdir/usr/share/zsh/site-functions"
+    install -d "$pkgdir/usr/share/elvish/lib"
+
+    target/release/prl completions bash > "$pkgdir/usr/share/bash-completion/completions/prl"
+    target/release/prl completions fish > "$pkgdir/usr/share/fish/vendor_completions.d/prl.fish"
+    target/release/prl completions zsh > "$pkgdir/usr/share/zsh/site-functions/_prl"
+    target/release/prl completions elvish > "$pkgdir/usr/share/elvish/lib/prl.elv"
 }
