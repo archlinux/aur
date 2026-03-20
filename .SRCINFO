@@ -1,0 +1,26 @@
+pkgbase = openixsuit-bin
+	pkgdesc = Tools to Flash Allwinner Firmware to Devices like PhoenixSuit and LiveSuit
+	pkgver = 0.3.12
+	pkgrel = 1
+	url = https://github.com/YuzukiTsuru/OpenixSuit
+	arch = x86_64
+	license = LicenseRef-scancode-commercial-license
+	makedepends = libarchive
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libsoup3
+	depends = libusb
+	depends = webkit2gtk-4.1
+	provides = openixsuit
+	conflicts = openixsuit
+	options = !strip
+	options = !debug
+	source = https://github.com/YuzukiTsuru/OpenixSuit/releases/download/v0.3.12/OpenixSuit_0.3.12_amd64.deb
+	sha256sums = 9c80ca2ee07c9a84aeadea8b59b1ec6871b45342f896cd558635d3c2f8852900
+
+pkgname = openixsuit-bin
