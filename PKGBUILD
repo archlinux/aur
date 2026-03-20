@@ -3,13 +3,13 @@
 
 _pkg=kernelsu
 pkgname=${_pkg}-dkms
-pkgver=3.1.0+66+g7ae93e86
+pkgver=3.1.0+80+g489cb029
 _ver=$pkgver
 pkgrel=1
 _branch=waydroid
 pkgdesc="A Kernel based root solution for Android. DKMS module for Container-based solutions such as Waydroid."
 arch=('any')
-url="https://github.com/shadichy/KernelSU_DKMS"
+url="https://github.com/supechicken/KernelSU"
 _upstream="https://github.com/tiann/$_pkg.git"
 license=('GPL-2.0-only')
 depends=('modloader')
@@ -128,7 +128,7 @@ source=(
 
 sha256sums=(
   SKIP
-  1befcb3e24068509694683b67601f64f914dddb2e28bc42d6a73c73204ff5581
+  2fcfe32b430eaef04dfe406ff89bec9580cf499d387d730b933f46195c68f28d
   3eaeaf5a2a5442204ae0cad3c4c25855a90e4e683da56579cc7eb2bada42ccb9
   05feaafbbac794a68c7eeea8c0a4c5616fc9f6ef7e4b7540baf3f5d43fad5fb0
   1dc9e40e3c42043ced20bc2a4d079911769602c1b28c574ddca0db43f26a2cd1
