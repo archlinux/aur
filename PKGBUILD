@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=bilibili-video-downloader
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="哔哩哔哩 bilibili B站 视频 下载器，图形界面 + nfo刮削 + 广告标记 + 字幕下载 + 弹幕下载，轻松将视频加入emby等媒体库"
 arch=($CARCH)
@@ -27,18 +27,19 @@ makedepends=(
     git
     cargo-tauri
     pnpm
+    # nodejs
     nodejs-lts
 )
 backup=()
 options=(!debug !strip !lto)
 #install=${pkgname}.install
 source=("${pkgname}::git+${url}#tag=v${pkgver}")
-sha256sums=('6ff5927c4aa1e137649d48fbf6ada08c15df0d7ee2a48d44d146d1edf34843d3')
+sha256sums=('1a5f07807557708809ec0c0f018146f423374ad4dfc50f8a06a24cf36ade1a31')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}/src-tauri"
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    cargo fetch --locked --target host-tuple
     cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
