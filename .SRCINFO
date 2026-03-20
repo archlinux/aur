@@ -1,0 +1,19 @@
+pkgbase = pkgit-git
+	pkgdesc = A simple package manager for installing tools directly from Git, written in Nim
+	pkgver = r84.g71a8f69
+	pkgrel = 1
+	url = https://github.com/dacctal/pkgit
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = nim
+	makedepends = nimble
+	depends = nim
+	depends = git
+	provides = pkgit
+	conflicts = pkgit
+	source = git+https://github.com/dacctal/pkgit.git
+	sha256sums = SKIP
+
+pkgname = pkgit-git
