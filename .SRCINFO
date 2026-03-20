@@ -21,7 +21,7 @@ pkgbase = fcitx5-lotus-git
 	depends = libgcc
 	depends = pyside6
 	depends = python-dbus
-	depends = libudev.so=1-64
+	depends = libudev.so
 	provides = fcitx5-lotus
 	conflicts = fcitx5-lotus
 	source = git+https://github.com/LotusInputMethod/fcitx5-lotus.git#branch=dev
