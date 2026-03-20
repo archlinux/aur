@@ -1,7 +1,7 @@
 # Maintainer: CosmicHorror <CosmicHorrorDev@pm.me>
 
 pkgname=cargo-pgo
-pkgver=0.2.9
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Cargo subcommand for optimizing Rust binaries with PGO and BOLT."
 url="https://github.com/kobzol/cargo-pgo"
@@ -9,8 +9,8 @@ depends=('gcc-libs')
 makedepends=('cargo')
 arch=('x86_64')
 license=(MIT)
-source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-b2sums=('ea28b30988d642ccb7baacd0fead57236d7355729b8699a3f4544617421c9cf022381ba2f55e0f4becbbd8c1e93c2fa1425a1dd1a61e7ab06a6dce3c4992143f')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+b2sums=('1926066db368caaff09d1756369aabbe53a97f26abf13ce6685c22c15963307ea874dada1883fa4ae8d6177eace5e7b2d3f877f9020f4c6db636bd4e71e35cfe')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
