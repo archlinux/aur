@@ -1,7 +1,7 @@
 pkgbase = dion-bin
 	pkgdesc = Desktop application for dion.vc
-	pkgver = 5.29.0
-	pkgrel = 3229
+	pkgver = 5.29.1
+	pkgrel = 3309
 	url = https://dion.vc
 	arch = x86_64
 	license = MIT
@@ -15,7 +15,7 @@ pkgbase = dion-bin
 	depends = util-linux-libs
 	depends = libappindicator-gtk3
 	depends = libsecret
-	source = https://static.dion.vc/desktop_app/dion_5.29.0_amd64.deb
-	sha256sums = 664596855bb525f7d7b42d6c797feb472c3e8c4cf689fe4b24c7bdf697149f3a
+	source = https://static.dion.vc/desktop_app/dion_5.29.1_amd64.deb
+	sha256sums = 0eb113b40468f342d931e027488e0cc27d6c32fe7f64c257a9f6e7d78a49548a
 
 pkgname = dion-bin
