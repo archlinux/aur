@@ -1,6 +1,6 @@
 pkgbase = pomo-cli
 	pkgdesc = Terminal-based pomodoro timer with TUI, session tracking, and statistics
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/lostf1sh/pomo
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = pomo-cli
 	depends = glibc
 	provides = pomo
 	conflicts = pomo
-	source = pomo-cli-1.1.0.tar.gz::https://github.com/lostf1sh/pomo/archive/v1.1.0.tar.gz
-	sha256sums = ec32a990dc6aeb6fb6da952daaa69ed98e082de8a92d3edcf5b2265ce06ab56b
+	source = pomo-cli-1.2.0.tar.gz::https://github.com/lostf1sh/pomo/archive/v1.2.0.tar.gz
+	sha256sums = 89edd6ded2e990238c828c3001dbd6ead4203670c29d8e1a66cdbf5744be25b8
 
 pkgname = pomo-cli
