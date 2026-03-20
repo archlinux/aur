@@ -1,6 +1,6 @@
 pkgbase = rootapp-bin
 	pkgdesc = Root App is a new Discord alternative, designed for gaming communities and large online groups
-	pkgver = 0.9.105
+	pkgver = 0.9.106
 	pkgrel = 1
 	url = https://www.rootapp.com
 	arch = x86_64
@@ -33,13 +33,13 @@ pkgbase = rootapp-bin
 	conflicts = rootchat
 	conflicts = root-app
 	conflicts = root-app-bin
-	noextract = Root-0.9.105-x86_64.AppImage
-	noextract = Root-0.9.105-aarch64.AppImage
+	noextract = Root-0.9.106-x86_64.AppImage
+	noextract = Root-0.9.106-aarch64.AppImage
 	options = !strip
 	options = !debug
-	source_x86_64 = Root-0.9.105-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage
-	sha256sums_x86_64 = 8fb8164ac1f59396a84b8bdf42bc7abb173bdcd625d894316a0314d8249139e9
-	source_aarch64 = Root-0.9.105-aarch64.AppImage::https://installer.rootapp.com/installer/Linux/Arm64/Root.AppImage
-	sha256sums_aarch64 = b59cbdd4f1ed92752afb30e354e2ad9e9cbe721bbf34fd9fb108d5cd11191d10
+	source_x86_64 = Root-0.9.106-x86_64.AppImage::https://installer.rootapp.com/installer/Linux/X64/Root.AppImage
+	sha256sums_x86_64 = b81d23935e1db25e5dc5f857944fe71e072e3895db1c0c8195bd178374737206
+	source_aarch64 = Root-0.9.106-aarch64.AppImage::https://installer.rootapp.com/installer/Linux/Arm64/Root.AppImage
+	sha256sums_aarch64 = a18f0e050a4c42f6e6eb77cfb7e54b531c9c13de37d7e64e353b8b10c8022fc8
 
 pkgname = rootapp-bin
