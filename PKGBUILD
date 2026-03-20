@@ -1,14 +1,14 @@
 # Maintainer: AImixAE <AImixAE[at]outlook[dot]com>
 
 pkgname=openscreen-git
-pkgver=r261.9540a8c
-pkgrel=2
+pkgver=r372.dd0b7d6
+pkgrel=1
 pkgdesc="Create stunning screen recordings for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio."
 arch=('x86_64')
 url="https://github.com/siddharthvaddem/openscreen"
 license=('MIT')
 depends=('fuse')
-makedepends=('git' 'nodejs' 'pnpm')
+makedepends=('git' 'nodejs' 'npm')
 provides=()
 conflicts=('openscreen-appimage' 'openscreen-bin')
 options=(!strip !debug)
@@ -23,7 +23,7 @@ pkgver() {
 
 prepare() {
     cd "$srcdir/openscreen-git"
-    pnpm i
+    npm i
 
     if [[ -d "openscreen-$pkgver/release" ]]; then
         rm -rv "openscreen-$pkgver/release"
@@ -32,7 +32,7 @@ prepare() {
 
 build() {
     cd "$srcdir/openscreen-git"
-    pnpm run build
+    npm run build
 
     app=$(find $srcdir/openscreen-git/release -regex ".*\.AppImage")
     appdir=$(dirname $app)
