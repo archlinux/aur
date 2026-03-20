@@ -1,7 +1,7 @@
 # Maintainer: Azur84 <Azur84@outlook.fr>
 pkgname=pandora-launcher-bin
 _pkgname=PandoraLauncher-Linux
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="A modern Minecraft launcher that balances ease-of-use with powerful instance management features."
 arch=('x86_64')
@@ -32,7 +32,7 @@ source=(
   "icon.svg::https://raw.githubusercontent.com/Moulberry/PandoraLauncher/refs/tags/v$pkgver/package/windows.svg"
   "$pkgname.desktop"
 )
-sha256sums=('d8778f4f6b75b4e82f69594ca30e89a0eb0d5f721d0184ac8e8f205f7f7a7a21'
+sha256sums=('4a95e93608aca487d2f59510e4db1dc84973002891943b05cdba205797328f7e'
             'a416ff7bf8fca263a47d8256c154c4405df3502506520613500bed0cb6eb86a8'
             '8c045dbd40e52ee10f439e90f368ef4a12c0f3f830f252b2fefd2e862bc76fc5'
             '8ae5fa2476e937d0fdc1e53bacb62d8a5ac333d98f17da987d13b25e1a1afe31')
