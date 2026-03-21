@@ -1,6 +1,6 @@
 pkgbase = hotshots-updated-git
 	pkgdesc = A HotShots fork improved - focused on using the annotations editor standalone too
-	pkgver = 2.2.4
+	pkgver = r0
 	pkgrel = 1
 	url = https://github.com/boussou/HotShots
 	arch = x86_64
@@ -9,9 +9,10 @@ pkgbase = hotshots-updated-git
 	makedepends = qt5-tools
 	depends = qt5-x11extras
 	depends = qt5-multimedia
-	provides = hotshots-updated
+	provides = hotshots
+	conflicts = hotshots
 	conflicts = hotshots-git
-	source = hotshots-updated::git+https://github.com/boussou/HotShots.git#tag=v2.2.4
-	sha256sums = 904a54d833e955004e61fc6e4051ff59ef6dde57bb2b255b8382e60331a5e77b
+	source = hotshots-updated::git+https://github.com/boussou/HotShots.git
+	sha256sums = SKIP
 
 pkgname = hotshots-updated-git
