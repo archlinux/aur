@@ -1,6 +1,6 @@
 # Maintainer: Andy Kelk <andy@andykelk.net>
 pkgname=yolobox
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1
 pkgdesc="Sandboxing tool for AI coding agents using containers"
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=(
     'podman: Alternative container runtime'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/finbarr/yolobox/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a9c31a61b216946adc60cf5d8720bc75436227067620ea4f192cb07e4a5f2c26')
+sha256sums=('efbdff315da68fc1030fb8f52e13cbd3c6e167c801e61e773d95cc58bd6affa5')
 
 build() {
     cd "$pkgname-$pkgver"
