@@ -1,6 +1,6 @@
 # Maintainers: SteamClientHomebrew <https://github.com/SteamClientHomebrew>
 
-pkgver=3.0.0_beta.9
+pkgver=3.0.0_beta.10
 pkgname="millennium"
 _pkgdir="Millennium"
 pkgrel=5
@@ -10,13 +10,13 @@ url="https://github.com/SteamClientHomebrew/Millennium"
 license=('MIT')
 depends=('git' 'steam')
 makedepends=('bun' 'curl' 'zip' 'unzip' 'tar' 'cmake' 'ninja' 'lib32-gcc-libs' 'lib32-openssl' 'lib32-libidn2' 'lib32-xz' 'lib32-zstd' 'lib32-brotli' 'lib32-libnghttp2' 'lib32-libpsl' 'libx11' 'libxtst')
-source=("git+$url.git#commit=5cf285d166d857a0588edf7b45f7bacf3c05caa0") # TODO: update to commit on main branch when we merge.
+source=("git+$url.git#commit=d7ac8620b46e9d0a41b140430fb06f68e1729532") # TODO: update to commit on main branch when we merge.
 sha256sums=('SKIP')
 options=(!debug)
 install=millennium.install
 
 build() {
-    cd             $srcdir/$_pkgdir
+    cd             "$srcdir/$_pkgdir"
 
     echo -e        "\e[1m\e[92m==>\e[0m \e[1mBuilding Millennium...\e[0m"
 
@@ -25,13 +25,13 @@ build() {
 }
 
 package() {
-    cd             $srcdir/$_pkgdir
+    cd             "$srcdir/$_pkgdir"
 
     echo -e        "\e[1m\e[92m==>\e[0m \e[1mPackaging Millennium...\e[0m"
 
     # Create final directory structure
-    mkdir -p       $pkgdir/usr/lib/millennium
-    mkdir -p       $pkgdir/usr/share/licenses/$pkgname
+    mkdir -p       "$pkgdir/usr/lib/millennium"
+    mkdir -p       "$pkgdir/usr/share/licenses/$pkgname"
 
     # Finally, install files to package location
     install -Dm755 build/libmillennium_x86.so              "$pkgdir/usr/lib/millennium/"
