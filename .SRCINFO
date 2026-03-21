@@ -1,0 +1,21 @@
+pkgbase = dolphin-taildrop-git
+	pkgdesc = Dolphin right-click menu entry to send files via tailscale taildrop
+	pkgver = r15.fbbebef
+	pkgrel = 1
+	url = https://github.com/idobaruch7/send-with-taildrop
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = dolphin
+	depends = tailscale
+	depends = kdialog
+	depends = python
+	depends = zip
+	depends = pv
+	depends = bash
+	provides = dolphin-taildrop=r15.fbbebef
+	conflicts = dolphin-taildrop
+	source = dolphin-taildrop::git+https://github.com/idobaruch7/send-with-taildrop
+	sha256sums = SKIP
+
+pkgname = dolphin-taildrop-git
