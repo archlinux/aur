@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=splitstackshape
-_pkgver=1.4.8
+_pkgver=1.4.8.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
-pkgrel=7
+pkgrel=1
 pkgdesc="Stack and Reshape Datasets After Splitting Concatenated Values"
 arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
@@ -17,8 +17,8 @@ optdepends=(
   r-testthat
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('ed807075f73276c1769a51cb3ec3ff28')
-b2sums=('615d8812d39ac27c5e7b393d7ed267408e6f3f7d3efc993e0ff92630df9e2ec7013bf3ddebab5c0621a73bcc3915f3d7efd5643c3cb6ed270ad566e468eba415')
+md5sums=('381b6593c72b38c503d1629e5ac4f81f')
+b2sums=('78cdd85ffd72b26291c1c82bb5ae2f9f4175d4fa0bb1155f8f76c31b587444378cff2fae6055673fc4104e8d53c9fd0f3d10f584cfdaf81083485f755ad27da8')
 
 build() {
   mkdir build
