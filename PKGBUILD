@@ -7,11 +7,11 @@ arch=('x86_64')
 url="https://github.com/LiquidityC/mon"
 license=('GPL-3.0-only')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('47701944f8825612b2e1b2852b05611a59d81b33cb0947c5b17f4a53645fce5b')
+sha256sums=('d9d6d00c32c4d8eadd65600006921bb52a17b6d15bbf3f532a13a6f06e0499ab')
 
 build() {
     cd "$pkgname-$pkgver"
-    make RELEASE_BUILD=1
+    make RELEASE_BUILD=1 GIT_TAG="$pkgver"
 }
 
 package() {
