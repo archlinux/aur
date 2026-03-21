@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium-widevine-bin
 	pkgdesc = A lightweight approach to removing Google web service dependency (with Widevine)
-	pkgver = 146.0.7680.80
-	pkgrel = 3
+	pkgver = 146.0.7680.153
+	pkgrel = 1
 	url = https://github.com/ungoogled-software/ungoogled-chromium
 	arch = x86_64
 	license = BSD
@@ -30,8 +30,8 @@ pkgbase = ungoogled-chromium-widevine-bin
 	depends = libwebp
 	depends = minizip
 	depends = opus
-	depends = libxslt
 	depends = harfbuzz
+	depends = libxslt
 	depends = libpng
 	depends = freetype2
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
@@ -40,14 +40,14 @@ pkgbase = ungoogled-chromium-widevine-bin
 	optdepends = org.freedesktop.secrets: password storage backend on GNOME / Xfce
 	optdepends = kwallet: support for storing passwords in KWallet on Plasma
 	optdepends = upower: Battery Status API support
-	provides = chromium=146.0.7680.80
-	provides = chromedriver=146.0.7680.80
+	provides = chromium=146.0.7680.153
+	provides = chromedriver=146.0.7680.153
 	conflicts = chromium
 	conflicts = chromedriver
-	noextract = google-chrome-stable_146.0.7680.80-1_amd64.deb
-	source = https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/146.0.7680.80-3/ungoogled-chromium-146.0.7680.80-3-x86_64.pkg.tar.zst
-	source = google-chrome-stable_146.0.7680.80-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_146.0.7680.80-1_amd64.deb
-	sha256sums = 35613af9c461d04d38f268885428ec344dbb68122cb2012f1ec1d47430eb2f55
-	sha256sums = 2da9bf57762d1f2a61e110e5cfebc66d711242e44d83ee77c2a819a1815cc315
+	noextract = google-chrome-stable_146.0.7680.153-1_amd64.deb
+	source = https://github.com/ungoogled-software/ungoogled-chromium-archlinux/releases/download/146.0.7680.153-1/ungoogled-chromium-146.0.7680.153-1-x86_64.pkg.tar.zst
+	source = google-chrome-stable_146.0.7680.153-1_amd64.deb::https://dl.google.com/linux/deb/pool/main/g/google-chrome-stable/google-chrome-stable_146.0.7680.153-1_amd64.deb
+	sha256sums = b4b3c4e523bffe2082d86e21141f25e33f0179d38c0543a84b2d6a41c38c672f
+	sha256sums = 6ff0cb5dbbc76e35161722535cba0bd08e9aff7af561a568c0daabde84348a60
 
 pkgname = ungoogled-chromium-widevine-bin
