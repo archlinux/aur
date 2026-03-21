@@ -1,6 +1,6 @@
 pkgbase = gpk-bin
 	pkgdesc = TUI dashboard that unifies 34 package managers into one searchable view
-	pkgver = 0.2.10
+	pkgver = 0.2.11
 	pkgrel = 1
 	url = https://github.com/neur0map/glazepkg
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = gpk-bin
 	license = GPL-3.0-or-later
 	provides = gpk
 	conflicts = gpk
-	source_x86_64 = https://github.com/neur0map/glazepkg/releases/download/v0.2.10/gpk-linux-amd64
-	sha256sums_x86_64 = fb4a1f21c89de8f1879ea42a75281197e0ba9ca907431472be614306c3852283
-	source_aarch64 = https://github.com/neur0map/glazepkg/releases/download/v0.2.10/gpk-linux-arm64
-	sha256sums_aarch64 = 2dfb9778a0ea23c4340bb4ebf3f8633a55d7b6dabd19d0a377347e9c2c783eeb
+	source_x86_64 = https://github.com/neur0map/glazepkg/releases/download/v0.2.11/gpk-linux-amd64
+	sha256sums_x86_64 = b976a4e91df8803ebc405541e9d747f5e9a1f3e8a48cf8b9eaab3bf0ec135762
+	source_aarch64 = https://github.com/neur0map/glazepkg/releases/download/v0.2.11/gpk-linux-arm64
+	sha256sums_aarch64 = 2d2c3908405b10ccd8dd712ba53cf0907853ef99dc814ec211110a33ccb046f5
 
 pkgname = gpk-bin
