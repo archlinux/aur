@@ -269,14 +269,4 @@ package() {
   fi
 
   DESTDIR="$pkgdir" cmake --install build
-
-  # cmake installs the binary as "Telegram" (capital T); rename to match
-  # the official telegram-desktop package name expected by the system.
-  mv "$pkgdir/usr/bin/Telegram" "$pkgdir/usr/bin/telegram-desktop"
-  sed -i \
-    's|TryExec=Telegram|TryExec=telegram-desktop|g;s|Exec=Telegram|Exec=telegram-desktop|g' \
-    "$pkgdir/usr/share/applications/org.telegram.desktop.desktop"
-  sed -i \
-    's|/usr/bin/Telegram$|/usr/bin/telegram-desktop|g' \
-    "$pkgdir/usr/share/dbus-1/services/org.telegram.desktop.service"
 }
