@@ -1,6 +1,6 @@
 # Maintainer: unicxrn
 pkgname=xerahs-git
-pkgver=r1682.8236ce9c
+pkgver=r2405.3cc83c40
 pkgrel=1
 pkgdesc="Cross-platform screen capture and file sharing tool (ShareX port) built with Avalonia UI"
 arch=('x86_64')
@@ -11,10 +11,13 @@ depends=(
     'libx11'
     'libxrandr'
     'dbus'
+    'webkit2gtk-4.1'
 )
 makedepends=(
     'dotnet-sdk-10.0'
     'git'
+    'nodejs'
+    'npm'
 )
 optdepends=(
     'wl-clipboard: Wayland clipboard support'
@@ -27,11 +30,13 @@ provides=('xerahs')
 conflicts=('xerahs')
 source=(
     "xerahs::git+https://github.com/ShareX/XerahS.git"
-    "xerahs-editor::git+https://github.com/ShareX/ImageEditor.git#branch=develop"
+    "xerahs-editor::git+https://github.com/ShareX/ShareX.ImageEditor.git#branch=develop"
+    "xerahs-videoeditor::git+https://github.com/ShareX/ShareX.VideoEditor.git#branch=main"
     "xerahs.desktop"
     "xerahs.sh"
 )
 sha256sums=(
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -44,10 +49,13 @@ pkgver() {
 }
 
 prepare() {
-    # ImageEditor is a submodule inside the XerahS tree; git clone creates an
-    # empty directory for it, so remove it first then symlink our separate clone
-    rm -rf "$srcdir/xerahs/ImageEditor"
-    ln -sfn "$srcdir/xerahs-editor" "$srcdir/xerahs/ImageEditor"
+    # ShareX.ImageEditor and ShareX.VideoEditor are submodules inside the XerahS tree;
+    # git clone creates empty directories for them, so remove them first then symlink our clones
+    rm -rf "$srcdir/xerahs/ShareX.ImageEditor"
+    ln -sfn "$srcdir/xerahs-editor" "$srcdir/xerahs/ShareX.ImageEditor"
+
+    rm -rf "$srcdir/xerahs/ShareX.VideoEditor"
+    ln -sfn "$srcdir/xerahs-videoeditor" "$srcdir/xerahs/ShareX.VideoEditor"
 }
 
 build() {
