@@ -23,6 +23,6 @@ sha256sums_aarch64=('b33d07c2f1d5dcf82b78fe623ad5ceb18176cde43116166e2fedda55281
 sha256sums_armv7h=('e1e7e9d51677c99730b95b836fe16fd42053cf74f41a60729e9ac74473b31398')
 
 package() {
-    install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
     install -Dm644 /dev/null "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
