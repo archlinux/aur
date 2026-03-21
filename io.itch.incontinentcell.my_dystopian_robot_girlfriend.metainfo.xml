@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.itch.incontinentcell.my_dystopian_robot_girlfriend</id>
+  
+  <name>My Dystopian Robot Girlfriend</name>
+  <summary>Headpat a sexbot in a dystopian world</summary>
+  
+  <!-- <metadata_license>MIT</metadata_license> TODO: Edit this based on assets, ITS INCORRECT!!! -->
+  <!-- <project_license>Beerware</project_license> TODO: Edit this based on Sheep answer, ITS INCORRECT!!! -->
+  
+  <recommends>
+    <display_length compare="ge">1234</display_length> <!-- TODO: Edit this -->
+  </recommends>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+    <control>tablet</control>
+  </supports>
+  
+  <description>
+    <p>
+      In the dystopian future year of 2027 the sexbot market boomed. Their numbers quickly surpassed the entire motor vehicle industry, and a golden age of peace seemed closer than ever before. Alas, a month later, an international scandal between the United States and China resulted in a world wide ban on sexbots. Life would never be the same.
+    </p>
+    <p>
+      Countrywide riots ensued, countless militias and terrorist groups formed, most notably the Benign Bionist Coalition and the Incontinent Cell, both fighting for control over what remains of the sexbots. Once a widely available item, the few remaining sexbots can now only be seen in the deepest corners of the dark web black market. These days it's technically impossible to get one in good shape as all the sexbot factories were burned to the ground following the ban. You are a young Anon living in a ghetto. Once again you are left penniless after losing a job. One night you see a military truck swerve and nearly crash in front of your apartment. Some of its cargo falls out and into a nearby ditch, and the truck drives off. You decide to investigate. As you get closer, the mystery cargo takes shape. It&apos;s a sexbot. Will anon sell the sexbot and live a long and happy life? Will he be able to pay his rent or will he die, freezing to death in the lonely streets of a megacity? Your actions will decide it all.
+    </p>
+  </description>
+  
+  <launchable type="desktop-id">io.itch.incontinentcell.my_dystopian_robot_girlfriend.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://img.itch.zone/aW1nLzEyNjY1MjgxLnBuZw==/original/yKfgiG.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://img.itch.zone/aW1hZ2UvNjY1NTU3LzE1NTI4NjM1LnBuZw==/347x500/BxCfdi.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://img.itch.zone/aW1hZ2UvNjY1NTU3LzE0ODkwNTM1LnBuZw==/347x500/LAzBqR.png</image>
+    </screenshot>
+  </screenshots>
+</component>

@@ -1,0 +1,25 @@
+pkgbase = my-dystopian-robot-girlfriend-bin
+	pkgdesc = 18+ game developed by IncontinentCell
+	pkgver = 0.95.16
+	pkgrel = 1
+	url = https://incontinentcell.itch.io/factorial-omega
+	arch = x86_64
+	license = unknown
+	makedepends = itchio-downloader
+	depends = gcc-libs
+	depends = glibc
+	depends = libgcc
+	depends = cairo
+	depends = pango
+	depends = glib2
+	depends = dbus
+	depends = wayland
+	depends = libdecor
+	depends = bash
+	source = io.itch.incontinentcell.my_dystopian_robot_girlfriend.desktop
+	source = io.itch.incontinentcell.my_dystopian_robot_girlfriend.metainfo.xml
+	validpgpkeys = 7EE33A206D00744E04E335E62C06E71FC9A95C07
+	sha256sums = 3cc2cbf2253ed3b3d3ef50f58b332551825e1c61ff46aab7973cbf42182c39f4
+	sha256sums = 717ccb378dbb7d5988a2c39774c620a279599f5bcd7f9ad4f9e466e665faec4a
+
+pkgname = my-dystopian-robot-girlfriend-bin

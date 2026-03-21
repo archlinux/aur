@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=My Dystopian Robot Girlfriend
+Comment=Headpat a sexbot in a dystopian world
+Categories=Game;Adult;
+
+Icon=my-dystopian-robot-girlfriend
+Exec=my-dystopian-robot-girlfriend
+Terminal=false
