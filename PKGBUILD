@@ -1,14 +1,14 @@
 # Maintainer: aliu <aaron! liu! 0130! at! gmail! dot! com! woohoo>
 pkgname=ipatool
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="Command-line tool that allows searching and downloading app packages (known as ipa files) from the iOS App Store"
-arch=('any')
+arch=('x86_64' 'aarch64')
 url="https://github.com/majd/ipatool"
-license=('x86_64')
+license=('MIT')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('676cd6bd039c25fe649a35ea86977706c0818442624da87c7f4285257cc7aa12')
+sha256sums=('36c589ad88cea989b3a5bc3cd35223e12907c609789802b59d3cfb07596a07e7')
 
 build() {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
