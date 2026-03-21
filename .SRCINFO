@@ -1,7 +1,7 @@
 pkgbase = swordfish-git
 	pkgdesc = A pkill-like CLI tool with more control over process management.
 	pkgver = r81.82279fb
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Foox-dev/swordfish
 	arch = x86_64
 	license = GLP2

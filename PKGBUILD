@@ -1,6 +1,6 @@
 pkgname=swordfish-git
 pkgver=r81.82279fb
-pkgrel=1
+pkgrel=2
 pkgdesc="A pkill-like CLI tool with more control over process management."
 arch=('x86_64')
 url="https://github.com/Foox-dev/swordfish"
