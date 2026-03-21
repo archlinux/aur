@@ -1,6 +1,6 @@
 pkgbase = mprisence-bin
 	pkgdesc = Discord Rich Presence for MPRIS media players
-	pkgver = v1.4.1
+	pkgver = v1.4.3
 	pkgrel = 1
 	url = https://github.com/lazykern/mprisence
 	install = mprisence-bin.install
@@ -8,7 +8,7 @@ pkgbase = mprisence-bin
 	license = MIT
 	depends = gcc-libs
 	provides = mprisence
-	source = https://github.com/lazykern/mprisence/releases/download/v1.4.1/mprisence-v1.4.1-x86_64-unknown-linux-gnu.tar.gz
+	source = https://github.com/lazykern/mprisence/releases/download/v1.4.3/mprisence-v1.4.3-x86_64-unknown-linux-gnu.tar.gz
 	source = mprisence-bin.install
 	source = mprisence.service
 	source = LICENSE

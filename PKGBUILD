@@ -2,7 +2,7 @@
 
 pkgname=mprisence-bin
 _pkgname=${pkgname%-bin}
-pkgver=v1.4.1
+pkgver=v1.4.3
 pkgrel=1
 pkgdesc="Discord Rich Presence for MPRIS media players"
 arch=("x86_64")
