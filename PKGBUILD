@@ -6,9 +6,9 @@ pkgname=(hledger-bin hledger-ui-bin hledger-web-bin)
 # patch release instead so as to avoid collisions in pacman's source cache.
 # However, I'm leaving the pkgver in place to avoid miscommunications with
 # upstream
-pkgver=1.51.2
+pkgver=1.52
 _pkgver="$pkgver".1
-pkgrel=2
+pkgrel=1
 pkgdesc='Easy-to-use command-line/curses/web plaintext accounting tool'
 arch=('x86_64')
 url='http://hledger.org'
@@ -18,7 +18,7 @@ _url=https://github.com/simonmichael/hledger
 source=(
     hledger-${_pkgver}.tar.gz::$_url/releases/download/${pkgver}/hledger-linux-x64.tar.gz
 )
-sha256sums=('2912ce944c96704c180e9b17c637050b7b3da1164a0b447c2429e8f676205d21')
+sha256sums=('153e1e69696d5e75b2a13bf23983a0355c35999db713910615c6a536a4cd0a41')
 
 _common_package() {
     _pkgname="$1"
