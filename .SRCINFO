@@ -1,10 +1,9 @@
 pkgbase = bili-live-hime
-	pkgdesc = bilibili官方直播姬的轻量化替代工具 (Tauri 版)
-	pkgver = 0.5.0
+	pkgdesc = bilibili官方直播姬的轻量化替代工具
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/Rsplwe/bili-live-hime
 	arch = x86_64
-	arch = aarch64
 	license = GPL-2.0-only
 	makedepends = nodejs
 	makedepends = npm
@@ -15,8 +14,8 @@ pkgbase = bili-live-hime
 	depends = libnm
 	depends = libayatana-appindicator
 	depends = openssl
-	options = !lto
-	source = bili-live-hime-0.5.0.tar.gz::https://github.com/Rsplwe/bili-live-hime/archive/refs/tags/LiveHime-v0.5.0.tar.gz
-	sha256sums = d96fd219b42910952f30769f944b1cfd8105655eebe8bde6dd4d5b8cb4b8d8b5
+	conflicts = bili-live-hime-git
+	source = bili-live-hime-LiveHime-v0.5.1.tar.gz::https://github.com/Rsplwe/bili-live-hime/archive/refs/tags/LiveHime-v0.5.1.tar.gz
+	sha256sums = 29764e777de2670fe1bf1d36111ff13ea5ee1e2d5ea2466d4158122e48730fae
 
 pkgname = bili-live-hime

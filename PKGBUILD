@@ -1,80 +1,83 @@
 # Maintainer: bianca <zhaoxiaokee@gmail.com>
 
 pkgname=bili-live-hime
-pkgver=0.5.0
+_upstream=bili-live-hime
+pkgver=0.5.1
+_tag="LiveHime-v${pkgver}"
 pkgrel=1
-pkgdesc="bilibili官方直播姬的轻量化替代工具 (Tauri 版)"
-arch=('x86_64' 'aarch64')
+pkgdesc="bilibili官方直播姬的轻量化替代工具"
+arch=('x86_64')
 url="https://github.com/Rsplwe/bili-live-hime"
 license=('GPL-2.0-only')
 depends=('webkit2gtk-4.1' 'gtk3' 'libnm' 'libayatana-appindicator' 'openssl')
 makedepends=('nodejs' 'npm' 'rust' 'cargo')
-
-options=('!lto')
-
-_tagname="LiveHime-v$pkgver"
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$_tagname.tar.gz")
-sha256sums=('d96fd219b42910952f30769f944b1cfd8105655eebe8bde6dd4d5b8cb4b8d8b5')
+conflicts=('bili-live-hime-git')
+source=("${_upstream}-${_tag}.tar.gz::https://github.com/Rsplwe/${_upstream}/archive/refs/tags/${_tag}.tar.gz")
+sha256sums=('29764e777de2670fe1bf1d36111ff13ea5ee1e2d5ea2466d4158122e48730fae')
 
 prepare() {
-  cd "bili-live-hime-$_tagname"
-  export CARGO_HOME="$srcdir/cargo-home"
+    cd "${srcdir}/${_upstream}-${_tag}"
 
-  # 使用 npm install 而不是 ci，以确保环境兼容性
-  npm install
+    export CARGO_HOME="${srcdir}/cargo-home"
+    export npm_config_cache="${srcdir}/npm-cache"
+
+    sed -i 's/^lto = true$/lto = false/' src-tauri/Cargo.toml
+
+    node <<'EOF_NODE'
+const fs = require('fs');
+const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+delete pkg.overrides;
+if (pkg.devDependencies) pkg.devDependencies.vite = '^6.0.0';
+fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+EOF_NODE
+
+    npm install
 }
 
 build() {
-  cd "bili-live-hime-$_tagname"
-  export CARGO_HOME="$srcdir/cargo-home"
-  export NODE_ENV=production
+    cd "${srcdir}/${_upstream}-${_tag}"
 
-  # 【关键修复】由于 makepkg 环境没有 .git，手动强制 Tailwind 4 扫描 src 目录
-  # 我们通过环境变量注入扫描路径，这是 Tailwind 4 处理非 Git 环境的标准方式
-  export TAILWIND_MODE=build
+    export CARGO_HOME="${srcdir}/cargo-home"
+    export npm_config_cache="${srcdir}/npm-cache"
+    export NODE_ENV=production
+    export CC=gcc
+    export CXX=g++
 
-  # 寻找主 CSS 文件并注入 @source 指令
-  # 这样即便没有 .git，Tailwind 也会乖乖去扫描源代码
-  local main_css=$(find src -name "*.css" | head -n 1)
-  if [ -n "$main_css" ]; then
-    echo "Fixing Tailwind scanning for non-git environment in $main_css"
-    # 注意：这里的路径是相对于 CSS 文件的
-    sed -i '1i @source "./**/*.{ts,tsx,html}";' "$main_css"
-  fi
+    unset CFLAGS CXXFLAGS CPPFLAGS LDFLAGS RUSTFLAGS
+    export RUSTFLAGS='-C linker=gcc'
 
-  # 执行构建，并强制 base 路径为相对路径以适配 Tauri
-  echo "Running build..."
-  npx vite build --base ./
+    local main_css
+    main_css=$(find src -name '*.css' | head -n 1)
+    if [[ -n "${main_css}" ]]; then
+      sed -i '1i @source "./**/*.{ts,tsx,html}";' "${main_css}"
+    fi
 
-  # 验证结果：如果这里显示 70kB 左右，那就成功了
-  echo "CSS size verification:"
-  ls -lh dist/assets/*.css
-
-  # 构建 Tauri 二进制，跳过 bundle 步骤（由我们手动完成安装）
-  npx tauri build --no-bundle --config '{"build": {"beforeBuildCommand": ""}}'
+    npx vite build --base ./
+    npx tauri build --no-bundle --config '{"build":{"beforeBuildCommand":""}}'
 }
 
 package() {
-  cd "bili-live-hime-$_tagname"
+    cd "${srcdir}/${_upstream}-${_tag}"
 
-  install -Dm755 "src-tauri/target/release/bili-live-hime" "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "src-tauri/target/release/${_upstream}" "${pkgdir}/usr/bin/${_upstream}"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  for size in 32 128; do
-    install -Dm644 "src-tauri/icons/${size}x${size}.png" \
-      "$pkgdir/usr/share/icons/hicolor/${size}x${size}/apps/$pkgname.png"
-  done
-  install -Dm644 "src-tauri/icons/128x128@2x.png" \
-    "$pkgdir/usr/share/icons/hicolor/256x256/apps/$pkgname.png"
+    for size in 32 128; do
+      install -Dm644 "src-tauri/icons/${size}x${size}.png" \
+        "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${_upstream}.png"
+    done
 
-  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$pkgname.desktop" <<EOF
+    install -Dm644 "src-tauri/icons/128x128@2x.png" \
+      "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_upstream}.png"
+
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_upstream}.desktop" <<EOF_DESKTOP
 [Desktop Entry]
 Name=Bili Live Hime
-Exec=$pkgname
-Icon=$pkgname
+Exec=${_upstream}
+Icon=${_upstream}
 Type=Application
-Categories=Video;AudioVideo;
-Comment=$pkgdesc
+Categories=AudioVideo;Video;
+Comment=${pkgdesc}
 Terminal=false
-EOF
+EOF_DESKTOP
 }

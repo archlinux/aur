@@ -1,5 +1,5 @@
-pkg/
-src/
-cargo-home/
-bili-live-hime-*.tar.gz
-bili-live-hime-*-x86_64.pkg.tar.zst
+  *.pkg.tar.*
+  *.pkg.tar.*.sig
+  *.src.tar.*
+  src/
+  pkg/
