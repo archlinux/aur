@@ -10,13 +10,13 @@ depends=('qt5-x11extras' 'qt5-multimedia')
 makedepends=('git' 'qt5-tools')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-source=("${pkgname}::git+https://github.com/boussou/HotShots.git#tag=v2.2.2")
+source=("${pkgname}::git+https://github.com/boussou/HotShots.git")
 sha256sums=('SKIP')
 
-#pkgver() {
-#    cd "${srcdir}/${pkgname%-git}"
-#    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-#}
+pkgver() {
+    cd "${srcdir}/${pkgname%-git}"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
     cd "${srcdir}/${pkgname%-git}"

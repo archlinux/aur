@@ -11,7 +11,7 @@ pkgbase = hotshots-updated-git
 	depends = qt5-multimedia
 	provides = hotshots-updated-git
 	conflicts = hotshots-updated-git
-	source = hotshots-updated-git::git+https://github.com/boussou/HotShots.git#tag=v2.2.2
+	source = hotshots-updated-git::git+https://github.com/boussou/HotShots.git
 	sha256sums = 2d1aac9ee17db2b068cfa263c8a106af20b434b7d5bf6af84083fe6a508d2676
 
 pkgname = hotshots-updated-git
