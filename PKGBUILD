@@ -1,9 +1,9 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=zen-c
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc='Write like a high-level language, run like C.'
-url='https://github.com/z-libs/Zen-C'
+url='https://github.com/zenc-lang/zenc'
 arch=('x86_64' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
 license=('MIT')
 optdepends=('gcc: gcc backend support'
@@ -13,15 +13,15 @@ makedepends=(gcc make)
 provides=(zc)
 conflicts=('zen-c-git' 'zen-c-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fd28bfd54bd6c0fe77e2bbdb289b2fe82b5eee1ae56b5a6838712e1b61c59ac8')
+sha256sums=('5798ddc9fbf97d962e45f26c87ff9e65340f5062c2a546643bbaa6dee1b525ee')
 
 build() {
-    cd "Zen-C-${pkgver}"
+    cd "zenc-${pkgver}"
     make CC=gcc -j
 }
 
 package() {
-    cd "Zen-C-${pkgver}"
+    cd "zenc-${pkgver}"
     install -Dm755 zc "$pkgdir/usr/bin/zc"
     install -d "$pkgdir/usr/local/share/zenc"
     cp -r std/ "$pkgdir/usr/local/share/zenc/std"
