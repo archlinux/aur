@@ -1,0 +1,5 @@
+# I allways forget how to tag properly 
+pushd .
+cd ../..
+git tag -a v2.2.4 -m "Release version 2.2.4"
+popd
