@@ -1,13 +1,13 @@
 pkgbase = kanash
 	pkgdesc = Learn Kana in the terminal
-	pkgver = 0.1.4
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/benoitlx/kanash
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = kanash-0.1.4.tar.gz::https://github.com/benoitlx/kanash/archive/v0.1.4.tar.gz
-	sha256sums = 02941c29c266b1cef99f932411067ac9e2f3a63abee55282b2a22ff01cf04564
+	source = kanash-0.1.6.tar.gz::https://github.com/benoitlx/kanash/archive/kanash-v0.1.6.tar.gz
+	sha256sums = 38dcd5c060c01189ab7f4158757cf16c643488a86b1724b72b3e96be4605e178
 
 pkgname = kanash

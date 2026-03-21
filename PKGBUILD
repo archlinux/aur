@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=kanash
-pkgver=0.1.4
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="Learn Kana in the terminal"
 arch=('x86_64')
@@ -10,22 +10,23 @@ url="https://github.com/benoitlx/kanash"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('02941c29c266b1cef99f932411067ac9e2f3a63abee55282b2a22ff01cf04564')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgname-v$pkgver.tar.gz")
+sha256sums=('38dcd5c060c01189ab7f4158757cf16c643488a86b1724b72b3e96be4605e178')
 
 prepare() {
+  mv "$pkgname-$pkgname-v$pkgver" "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')" # --locked
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --frozen
+  cargo build --release --frozen -p "$pkgname"
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --frozen
+  cargo test --frozen -p "$pkgname"
 }
 
 package() {
