@@ -1,4 +1,4 @@
-# Maintainer: Kaathe <archuserrepository.urology923 at pasinbox dot com>
+# Maintainer: Kaathe <archuserrepository.urology923 at passinbox dot com>
 
 _pkgname=tmux-continuum
 pkgname=tmux-continuum-git
@@ -16,16 +16,15 @@ source=("${pkgname}::git+https://github.com/tmux-plugins/tmux-continuum.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 package() {
-  cd "${pkgname}"
+  cd "$srcdir/$pkgname"
 
   local destdir="${pkgdir}/usr/share/${_pkgname}"
-  install -d "$_destdir"
-
+  install -d "$destdir"
   cp -r scripts *.tmux "$destdir/"
 
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
