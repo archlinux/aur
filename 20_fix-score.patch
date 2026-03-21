@@ -1,0 +1,18 @@
+Description: Fix scoring to account for unused fuel at the end of a level.
+Author: Matthew Roberts <debian@frugal.org>
+Bug-Debian: http://bugs.debian.org/347240
+Reviewed-by: Joe Nahmias <jello@debian.org>
+Last-Update: 2013-06-25
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- moon-lander-1.0.orig/moon_lander.c
++++ moon-lander-1.0/moon_lander.c
+@@ -1205,7 +1205,7 @@
+ 
+ void win (Game *game, int bonus) {
+   
+-  game->score += game->current_level.landing_score[game->landing_pad];
++  game->score += game->current_level.landing_score[game->landing_pad] + game->fuel;
+ 
+ #ifndef NOSOUND
+   Mix_HaltChannel(1); 

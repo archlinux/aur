@@ -1,0 +1,15 @@
+Description: Fix bonus ship calculation to account for remaining fuel.
+Author: Asher Gordon <AsDaGo@posteo.net>
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- moon-lander-1.0.orig/moon_lander.c
++++ moon-lander-1.0/moon_lander.c
+@@ -1686,7 +1686,7 @@ void gameloop(Game *game){
+ 
+ 	    // Bonus ship every 10000 points
+ 	    if( (game->score / 10000) < 
+-		((game->score + game->current_level.landing_score[count]) / 10000 ) ) {
++		((game->score + game->current_level.landing_score[count] + game->fuel) / 10000 ) ) {
+ 	      // (MLH) This would be a good place to play a sound
+ 	      
+ 	      game->landing_pad = count;

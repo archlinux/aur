@@ -1,0 +1,19 @@
+From: Artur Rona <ari-tczew@ubuntu.com>
+Description: Test that SDL_PollEvent(&event) returns 1 before using event (application closing at startup).
+Author: Adrien Cunin <adri2000@ubuntu.com>
+Bug-Ubuntu: https://launchpad.net/bugs/193756
+Last-Update: 2016-01-02
+
+--- moon-lander-1.0.orig/moon_lander.c
++++ moon-lander-1.0/moon_lander.c
+@@ -1446,9 +1446,7 @@ void gameloop(Game *game){
+ 
+       /* read keyboard */
+ 
+-    SDL_PollEvent(&event);
+-
+-    if (event.type == SDL_QUIT){
++    if (SDL_PollEvent(&event) && event.type == SDL_QUIT){
+       exit(0);
+     }
+ 

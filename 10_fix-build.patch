@@ -1,0 +1,33 @@
+Description: Fix building in Debian environment
+ adds proper CFLAGS handling and misc. other fixes
+Author: Joe Nahmias <jello@debian.org>
+Last-Update: 2013-06-25
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- moon-lander-1.0.orig/Makefile
++++ moon-lander-1.0/Makefile
+@@ -1,12 +1,12 @@
+ # Makefile for test program for game_libs - lunar lander
+-CFLAGS=-Wall `sdl-config --libs --cflags` 
++CFLAGS+=-Wall `sdl-config --cflags`
+ CC=gcc
+ 
+-LIBS=SDL_image
++LIBS=SDL_image `sdl-config --libs`
+ 
+ C_FILES=moon_lander.c game_lib.c DT_drawtext.c
+ OBJ_FILES=moon_lander.o game_lib.o DT_drawtext.o 
+-OUT_FILE=moon-lander.bin
++OUT_FILE=moon-lander
+ 
+ all: game_lib
+ 
+@@ -23,7 +23,7 @@
+ 	$(CC) $(CFLAGS) -c -o $@ $^
+ 
+ clean: 
+-	rm -f *.o core  
++	rm -f $(OUT_FILE) $(OBJ_FILES)
+ 
+ install: 
+ 	./install.sh

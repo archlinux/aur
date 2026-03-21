@@ -1,0 +1,19 @@
+Description: Explicitly link to standard C math library
+ This is required for use with the binutils-gold linker
+Author: Meike Reichle <meike@debian.org>
+Bug-Debian: http://bugs.debian.org/555753
+Reviewed-by: Joe Nahmias <jello@debian.org>
+Last-Update: 2013-06-25
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- moon-lander-1.0.orig/Makefile
++++ moon-lander-1.0/Makefile
+@@ -2,7 +2,7 @@
+ CFLAGS+=-Wall `sdl-config --cflags`
+ CC=gcc
+ 
+-LIBS=SDL_image `sdl-config --libs`
++LIBS=SDL_image `sdl-config --libs` -lm
+ 
+ C_FILES=moon_lander.c game_lib.c DT_drawtext.c
+ OBJ_FILES=moon_lander.o game_lib.o DT_drawtext.o 

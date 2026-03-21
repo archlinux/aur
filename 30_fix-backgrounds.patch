@@ -1,0 +1,139 @@
+Description: Fixes handling of game backgrounds
+ Prevents crashing when moving to a new level and loading a new background.
+Author: Joe Nahmias <jello@debian.org>
+Bug-Debian: http://bugs.debian.org/418019
+Last-Update: 2013-06-25
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- moon-lander-1.0.orig/moon_lander.c
++++ moon-lander-1.0/moon_lander.c
+@@ -22,8 +22,10 @@
+ #include <stdlib.h>
+ #include <math.h>
+ #include <sys/types.h>
++#include <sys/stat.h>
+ #include <unistd.h>
+ #include <dirent.h>
++#include <time.h>
+ 
+ #ifndef WIN32_BUILD
+ #include <pwd.h>
+@@ -37,7 +39,7 @@
+ #define YSIZE 480
+ #define TERRAIN_YSIZE (YSIZE / 2)
+ #define FPS (1000 / 35)
+-#define DATAPATH ""
++#define DATAPATH "/usr/share/games/moon-lander/"
+ 
+ #define FRESHRUN   0
+ #define GAMEOVER   1
+@@ -172,12 +174,15 @@
+ /************************************************/
+ 
+ void get_new_background(Game *game) {
++#define MAXFILES 100
+ 
+   char filename[1024];
+   DIR *dir;
+-  struct dirent *files[100];
+-  int done = 0;
+-  int count = 0;
++  struct dirent *pfile;
++  struct stat sbuf;
++  static char files[MAXFILES][NAME_MAX + 1];
++  static int done = 0;
++  static int count = 0;
+   
+   /* read images/backgrounds dir and choose a random image from there.
+    *  put it's filename in image_file 
+@@ -185,7 +190,7 @@
+ 
+ 
+ 
+-    sprintf(filename, "%simages/backgrounds",  DATAPATH);
++    snprintf(filename, 1023, "%simages/backgrounds",  DATAPATH);
+ 
+     if ( !(dir = opendir(filename)) ){
+       /* error */
+@@ -194,18 +199,28 @@
+     }
+   
+     while (!done){
+-      if ( files[count] = readdir(dir) ){
+-      
+-	//printf("I see - %d %s\n", count, files[count]->d_name);
+-	count++;
++      if ( (pfile = readdir(dir)) ){
++
++        // Check if it's a regular file, otherwise skip
++	// fprintf(stderr, "Examining file '%s' ... ", pfile->d_name);
++	snprintf(filename, 1023, "%simages/backgrounds/%s", DATAPATH, pfile->d_name);
++        if ( (-1 == stat(filename, &sbuf)) || !(S_ISREG(sbuf.st_mode)) )
++	{
++	  // fprintf(stderr, "skipping, mode = '%o'.\n", sbuf.st_mode);
++          continue;
++	}
++	// fprintf(stderr, "we'll keep it.\n");
++
++        // Save the filename
++        strncpy(files[count], filename, NAME_MAX + 1);
++
++        if (count++ >= MAXFILES)
++	  done = 1;
+       }
+       else{
+ 	done = 1;
+       }
+     
+-      if (count > 99) {
+-	done = 1;
+-      }
+     }
+     
+     closedir(dir);
+@@ -219,17 +234,8 @@
+ 
+   
+ 
+-  game->back_no++;
+-  
+-  if (game->back_no < 2){
+-    game->back_no = 2;
+-  }
+-
+-  if (game->back_no >= count){
+-    game->back_no = 2;
+-  }
++  game->back_no = ++game->back_no % count;
+   
+-
+   if (game->background.image != NULL){
+     //printf("about to free background\n");
+     SDL_FreeSurface(game->background.image);
+@@ -238,14 +244,9 @@
+     //printf("background was NULL\n");
+   }
+ 
+-  //printf("about to get new background: %d\n", game->back_no );
+-
+-  sprintf(filename, "%simages/backgrounds/%s", DATAPATH, files[game->back_no]->d_name);
+-  
+-  // printf("got %s\n", filename);
+-
+-  new_sprite(&(game->background), filename, 0, 0, 0, 0);
+-  //  printf("got new background\n");
++  // fprintf(stderr, "about to get new background: %d...", game->back_no );
++  new_sprite(&(game->background), files[game->back_no], 0, 0, 0, 0);
++  // fprintf(stderr, "got '%s'\n", files[game->back_no]);
+ 
+ 
+ }
+@@ -342,7 +343,7 @@
+ 
+ void options (Game *game) {
+   int done = 0;
+-  int *selected;
++  int *selected = &(game->opt_fancy_terrain);
+   int position = 0;
+   char options[5][100];
+   char display_string[150];

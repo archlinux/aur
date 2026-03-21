@@ -1,0 +1,18 @@
+Description: fix handling of LDFLAGS
+ Fix the handling of the LDFLAGS environment variable when building so
+ that various options can be passed to the linker (eg. -z relro).
+Author: Joe Nahmias <jello@debian.org>
+Last-Update: 2013-06-25
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- moon-lander-1.0.orig/Makefile
++++ moon-lander-1.0/Makefile
+@@ -2,7 +2,7 @@
+ CFLAGS+=-Wall `sdl-config --cflags`
+ CC=gcc
+ 
+-LIBS=SDL_image `sdl-config --libs` -lm
++LIBS=SDL_image `sdl-config --libs` -lm $(LDFLAGS)
+ 
+ C_FILES=moon_lander.c game_lib.c DT_drawtext.c
+ OBJ_FILES=moon_lander.o game_lib.o DT_drawtext.o 

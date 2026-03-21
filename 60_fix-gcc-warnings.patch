@@ -1,0 +1,46 @@
+Description: fix warnings emitted by gcc during compilation
+Author: Joe Nahmias <jello@debian.org>
+Bug-Debian: http://bugs.debian.org/688585
+Last-Update: 2013-06-25
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- moon-lander-1.0.orig/moon_lander.c
++++ moon-lander-1.0/moon_lander.c
+@@ -234,7 +234,7 @@
+ 
+   
+ 
+-  game->back_no = ++game->back_no % count;
++  game->back_no = (game->back_no+1) % count;
+   
+   if (game->background.image != NULL){
+     //printf("about to free background\n");
+--- moon-lander-1.0.orig/DT_drawtext.c
++++ moon-lander-1.0/DT_drawtext.c
+@@ -271,7 +271,7 @@
+ 		else
+ 		{
+ 			temp = CurrentFont;
+-			CurrentFont = CurrentFont->NextFont;
++			CurrentFont = temp->NextFont;
+ 		}
+ 	
+ 	return NULL;
+--- moon-lander-1.0.orig/game_lib.c
++++ moon-lander-1.0/game_lib.c
+@@ -361,12 +361,9 @@
+ 
+     if (event.type == SDL_KEYDOWN) {
+       quit = 1;
+-
+-      if (quit_key != NULL){
+-	if (event.key.keysym.sym == quit_key){
+-	  exit(0);
+-	}
+-      }	
++      if (event.key.keysym.sym == quit_key){
++  	exit(0);
++      }
+     } 
+ 
+   } /* end while */
