@@ -1,0 +1,19 @@
+pkgbase = crossref-cli
+	pkgdesc = Crossref REST API CLI for DOI and metadata workflows
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/decent-tools-for-thought/crossref-cli
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	provides = crossref-tool
+	conflicts = crossref-cli-git
+	conflicts = crossref-tool
+	source = crossref-cli-0.1.0.tar.gz::https://github.com/decent-tools-for-thought/crossref-cli/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = cafa0f5925bc1eb84aeb3c85e7089ba481aa37d5146cc62935834a3d801fa705
+
+pkgname = crossref-cli
