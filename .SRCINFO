@@ -1,14 +1,11 @@
 pkgbase = ttf-barlow
 	pkgdesc = Grotesk font based inspired by the California state car plates and road signs
 	pkgver = 1.422
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tribby.com/fonts/barlow/
 	arch = any
-	license = custom:OFL
-	source = https://tribby.com/fonts/barlow//download/barlow-1.422.zip
-	source = https://github.com/jpt/barlow/raw/master/OFL.txt
-	sha512sums = ecd9d3c66161e5043cf5ae7edf60863a27d51655b13ea01fabe83abcb4adf6a84366ad14f7c01cd0a7160dda357e81996dceae272fac65f97b3384bef9589df8
-	sha512sums = 94888ef1743b295f8cc9f5cff7351689bd57e096ede1c6df4dab101d3ca711f5e560b0c3da859540d49eb400e1a095db3a85c8887a9d79f8d73c15dece45360d
+	license = OFL
+	source = ttf-barlow-1.422.tar.gz::https://github.com/jpt/barlow/archive/refs/tags/1.422.tar.gz
+	sha512sums = 35584c7c9021e02d854770cfa1a89d5c5178bb39de39d98658f34c704b38e4a720ffe81d9bae0d4a9a6f9b0435bcfc5a22bdb0794d36938ae89c5af9af6847bf
 
 pkgname = ttf-barlow
-
