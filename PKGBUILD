@@ -1,7 +1,7 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=craft-agents-bin
-pkgver=0.7.10
-pkgrel=2
+pkgver=0.7.11
+pkgrel=1
 pkgdesc='Desktop app for Craft Agents'
 url='https://github.com/lukilabs/craft-agents-oss'
 arch=(
@@ -37,7 +37,7 @@ source=(
 noextract=(
     "$pkgname-$pkgver-x86_64.AppImage"
 )
-sha256sums=('a3c36f76a469c1a2304100cb9e2e4436eaa9726754e4e38872514435d93892ec'
+sha256sums=('727f734a6f4962d1c077f31136131d1453b1ce44163099c324fe6e597b177402'
             '9a75ace1224f0f880ddfdd8442d14d5a0d865152c61a2fd363d8e2c351f94d2c'
             'caa334b760b4c7835957c91ac24c3d52e7abc7ac770050445027766b4ce4ce7f')
 
