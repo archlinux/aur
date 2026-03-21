@@ -12,6 +12,6 @@ pkgbase = zotero-db-cli
 	depends = python
 	depends = sqlite
 	source = zotero_cli-0.1.0.tar.gz::https://github.com/decent-tools-for-thought/zotero-cli/releases/download/v0.1.0/zotero_cli-0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 75541763b2baeddd69c7b3ec5549475d8f851a1fd77576c4bb75f2ce38cb3382
 
 pkgname = zotero-db-cli

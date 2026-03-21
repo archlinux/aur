@@ -12,7 +12,7 @@ license=('0BSD')
 depends=('python' 'sqlite')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$_distname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_distname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('75541763b2baeddd69c7b3ec5549475d8f851a1fd77576c4bb75f2ce38cb3382')
 
 build() {
   cd "$srcdir/$_distname-$pkgver"
@@ -22,5 +22,6 @@ build() {
 package() {
   cd "$srcdir/$_distname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
