@@ -8,6 +8,7 @@
 pkgname=chrome-remote-desktop
 pkgver=147.0.7727.3
 146.0.7680.5
+146.0.7680.5
 pkgrel=1
 pkgdesc="Access other computers or allow another user to access your computer securely over the Internet"
 arch=("x86_64")
