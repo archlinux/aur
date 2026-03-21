@@ -1,16 +1,19 @@
 pkgbase = xerahs-git
 	pkgdesc = Cross-platform screen capture and file sharing tool (ShareX port) built with Avalonia UI
-	pkgver = r1682.8236ce9c
+	pkgver = r2405.3cc83c40
 	pkgrel = 1
 	url = https://github.com/ShareX/XerahS
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = dotnet-sdk-10.0
 	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
 	depends = dotnet-runtime-10.0
 	depends = libx11
 	depends = libxrandr
 	depends = dbus
+	depends = webkit2gtk-4.1
 	optdepends = wl-clipboard: Wayland clipboard support
 	optdepends = xclip: X11 clipboard support
 	optdepends = xdotool: X11 window management
@@ -19,9 +22,11 @@ pkgbase = xerahs-git
 	provides = xerahs
 	conflicts = xerahs
 	source = xerahs::git+https://github.com/ShareX/XerahS.git
-	source = xerahs-editor::git+https://github.com/ShareX/ImageEditor.git#branch=develop
+	source = xerahs-editor::git+https://github.com/ShareX/ShareX.ImageEditor.git#branch=develop
+	source = xerahs-videoeditor::git+https://github.com/ShareX/ShareX.VideoEditor.git#branch=main
 	source = xerahs.desktop
 	source = xerahs.sh
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
