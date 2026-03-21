@@ -1,7 +1,7 @@
 pkgbase = python-empack
 	pkgdesc = Tools to pack a conda / mamba environment into a JS & WASM bundle
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://emscripten-forge.org/
 	arch = any
 	license = unknown
