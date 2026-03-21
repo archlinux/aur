@@ -1,7 +1,7 @@
 diff -ru a/browser/components/preferences/main.js b/browser/components/preferences/main.js
 --- a/browser/components/preferences/main.js
 +++ b/browser/components/preferences/main.js
-@@ -589,7 +589,8 @@
+@@ -628,7 +628,8 @@
        document.getElementById("web-appearance-rfp-warning")?.remove();
        const chooser = document.getElementById("web-appearance-chooser");
        const container = document.getElementById("webAppearanceGroup");
@@ -11,7 +11,7 @@ diff -ru a/browser/components/preferences/main.js b/browser/components/preferenc
  
        if (chooser) {
          chooser.style.opacity = rfp ? "0.3" : "1";
-@@ -623,6 +624,7 @@
+@@ -662,6 +663,7 @@
        },
      };
      Services.prefs.addObserver("privacy.resistFingerprinting", prefObserver);
@@ -19,7 +19,7 @@ diff -ru a/browser/components/preferences/main.js b/browser/components/preferenc
  
      const ensurePaneReady = cb => {
        const id = "webAppearanceGroup";
-@@ -644,6 +646,7 @@
+@@ -683,6 +685,7 @@
      return () => {
        FORCED_COLORS_QUERY.removeEventListener("change", emitChange);
        Services.prefs.removeObserver("privacy.resistFingerprinting", prefObserver);
@@ -30,7 +30,7 @@ diff -ru a/browser/components/preferences/main.js b/browser/components/preferenc
 diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
 --- a/dom/base/Document.cpp
 +++ b/dom/base/Document.cpp
-@@ -20500,7 +20500,8 @@
+@@ -20783,7 +20783,8 @@
  
  ColorScheme Document::PreferredColorScheme(IgnoreRFP aIgnoreRFP) const {
    if (ShouldResistFingerprinting(RFPTarget::CSSPrefersColorScheme) &&
@@ -43,7 +43,7 @@ diff -ru a/dom/base/Document.cpp b/dom/base/Document.cpp
 diff -ru a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
 --- a/modules/libpref/init/StaticPrefList.yaml
 +++ b/modules/libpref/init/StaticPrefList.yaml
-@@ -16343,6 +16343,12 @@
+@@ -16402,6 +16402,12 @@
    value: false
    mirror: always
  
