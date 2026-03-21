@@ -1,22 +1,22 @@
 # Maintainer: Nadir Boussoukaia <nad4reg at gmail dot com>
 pkgname=hotshots-updated-git
-pkgver=r33.9a67f69
+pkgver=2.2.2
 pkgrel=1
-pkgdesc="A HotShots fork mainly focused on using the editor standalone"
+pkgdesc="A HotShots fork improved - mainly focused on using the annotations editor standalone"
 arch=('x86_64')
 url="https://github.com/boussou/HotShots"
 license=('GPL-2.0-or-later')
 depends=('qt5-x11extras' 'qt5-multimedia')
 makedepends=('git' 'qt5-tools')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
-source=("${pkgname%-git}::git+https://github.com/boussou/HotShots.git")
+provides=("${pkgname}")
+conflicts=("${pkgname}")
+source=("${pkgname}::git+https://github.com/boussou/HotShots.git#tag=v2.2.2")
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+#pkgver() {
+#    cd "${srcdir}/${pkgname%-git}"
+#    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#}
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
@@ -33,4 +33,6 @@ package() {
     install -Dm644 packaging/flatpak/HotShots.metainfo.xml -t \
         "$pkgdir/usr/share/metainfo/"
 }
-sha256sums=('SKIP')
+sha256sums=('2d1aac9ee17db2b068cfa263c8a106af20b434b7d5bf6af84083fe6a508d2676')
+sha256sums=('2d1aac9ee17db2b068cfa263c8a106af20b434b7d5bf6af84083fe6a508d2676')
+sha256sums=('2d1aac9ee17db2b068cfa263c8a106af20b434b7d5bf6af84083fe6a508d2676')
