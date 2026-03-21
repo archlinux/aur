@@ -2,7 +2,7 @@
 
 pkgname=ifrextractor-rs
 pkgver="1.6.1"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Rust utility to extract UEFI IFR data found in a binary file into human-readable text."
 arch=(
     "x86_64"
@@ -28,7 +28,7 @@ sha256sums=("5c03533c057194bd93ad9b3adb0076ba0ca584156102e12040e875999283403c")
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
     cd "${srcdir}/IFRExtractor-RS-${pkgver}"
-    cargo fetch --locked --target host-tuple
+    cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
 build() {
