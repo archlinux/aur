@@ -2,8 +2,8 @@
 
 _pkgbase=vk-gl-cts
 pkgname='opengl-cts'
-pkgver=4.6.7.0
-pkgrel=2
+pkgver=4.6.8.0
+pkgrel=1
 arch=('any')
 pkgdesc='Khronos OpenGL and OpenGL ES Conformance Tests.'
 url="https://github.com/KhronosGroup/VK-GL-CTS"
@@ -27,7 +27,8 @@ optdepends=(
 source=(
 	"${url}/archive/refs/tags/opengl-cts-${pkgver}.tar.gz"
 )
-sha256sums=('SKIP'
+sha256sums=(
+    'f680f9f6400d45612dbb129a313f07edb1af9b235fe9632eae59d2a8d25cbb82'
 )
 
 prepare() {
