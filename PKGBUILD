@@ -12,6 +12,7 @@ source=("${pkgname}-${pkgver}.deb::https://github.com/kaptensea/bookstory/releas
 sha256sums=('SKIP')
 
 package() {
-    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.deb" -C "${srcdir}"
-    cp -r "${srcdir}/usr" "${pkgdir}/"
+    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.deb"
+    bsdtar -xf data.tar.*
+    cp -r usr "${pkgdir}/"
 }
