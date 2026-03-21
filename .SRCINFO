@@ -1,6 +1,6 @@
 pkgbase = vswaybar-studio
 	pkgdesc = A visual configuration editor for Waybar — build, style and preview your bar in real time
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/victorsosaMx/vsWaybar-Studio
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = vswaybar-studio
 	optdepends = kitty: terminal emulator for the updates module
 	optdepends = pavucontrol: audio control (pulseaudio module on-click)
 	optdepends = network-manager-applet: network settings (network module on-click)
-	source = vswaybar-studio-1.0.0.tar.gz::https://github.com/victorsosaMx/vsWaybar-Studio/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 72c4c5a872b14ff727ff83ef7dd72db989a21d3f0e9ac07f9791ee345408c1b4
+	source = vswaybar-studio-1.0.1.tar.gz::https://github.com/victorsosaMx/vsWaybar-Studio/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = d5a1a0bf0a38510249bdb4bb187be0d7c3f3853035867ff216ba289836557320
 
 pkgname = vswaybar-studio
