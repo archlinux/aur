@@ -3,9 +3,8 @@
 
 pkgname=vscodium-insiders-bin
 pkgver=1.112.01895
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of Code Insiders without branding/telemetry/licensing (binary release)"
-# arch=('x86_64' 'aarch64' 'armv7h')
 arch=('x86_64' 'aarch64')
 url='https://github.com/VSCodium/vscodium.git'
 license=('MIT')
@@ -38,17 +37,13 @@ source=(
 source_x86_64=(
     "https://github.com/VSCodium/vscodium-insiders/releases/download/${pkgver}-insider/VSCodium-linux-x64-${pkgver}-insider.tar.gz"
 )
-# source_armv7h=(
-#     "https://github.com/VSCodium/vscodium-insiders/releases/download/${pkgver}-insider/VSCodium-linux-armhf-${pkgver}-insider.tar.gz"
-# )
 source_aarch64=(
     "https://github.com/VSCodium/vscodium-insiders/releases/download/${pkgver}-insider/VSCodium-linux-arm64-${pkgver}-insider.tar.gz"
 )
-sha256sums=('99dbc0d75aec1dbda70655fe3d9769aa2728116ae885e8be20c4b4f13ae1e80e'
-            'ccd83957fc14eaeeffc56762e864a8d313f99fa480c105eaecd832fb29d075ab')
+sha256sums=('04f365c0086594ad11cc3cc0b6b8e0f1dfdb63134845eb02433811d8ef21bc9f'
+            '21677ad972b2a2d3d6c8dab7c14877798d91f73957179ac19468625d658de129')
 sha256sums_x86_64=('a5a88c971a7a1fff80ffe39287a4a6997b6c42354152033154898e35b5e00487')
 sha256sums_aarch64=('7214f64ac694218deb62538f3c4258b98d7825099266c7d0cd642b36c8cc4065')
-# sha256sums_armv7h=('b6e80175290e6857196140ac33c08e0e67c14778b659703c828b120fc62ea056')
 
 shopt -s extglob
 
