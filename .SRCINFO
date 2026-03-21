@@ -1,14 +1,16 @@
 pkgbase = mpwall
-	pkgdesc = A terminal-native animated video wallpaper manager for Hyprland/Wayland
-	pkgver = 1.0.3
+	pkgdesc = A professional hybrid CLI/TUI live video wallpaper manager for Hyprland/Wayland
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/Lamess-UI/mpwall
 	arch = x86_64
 	license = MIT
-	makedepends = cargo
 	depends = mpvpaper
 	depends = gawk
-	source = mpwall-1.0.3.tar.gz::https://github.com/Lamess-UI/mpwall/archive/refs/tags/v1.0.3.tar.gz
-	sha256sums = dff6cc979d16062d1d19f5ccfadf98793b53c1cfbf91c7d9a0380a2b5c043fe1
+	provides = mpwall
+	source = mpwall-x86_64::https://github.com/Lamess-UI/mpwall/releases/download/v1.0.4/mpwall-x86_64
+	source = LICENSE::https://raw.githubusercontent.com/Lamess-UI/mpwall/v1.0.4/LICENSE
+	sha256sums = 5a3e23b28a7d75c28ee0edd06a9a7c4d2a533af630436f10c12449c2f1aee5d9
+	sha256sums = 4a9ab123aa0abfa1dcb6d65b38ceefd7b8bf119cd97c7b710afb48c67eda5f0b
 
 pkgname = mpwall

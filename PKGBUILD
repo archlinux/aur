@@ -1,38 +1,24 @@
 # Maintainer: insayd Cyan <insadamt@github>
 pkgname=mpwall
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
-pkgdesc="A terminal-native animated video wallpaper manager for Hyprland/Wayland"
+pkgdesc="A professional hybrid CLI/TUI live video wallpaper manager for Hyprland/Wayland"
 arch=('x86_64')
 url="https://github.com/Lamess-UI/mpwall"
 license=('MIT')
 depends=('mpvpaper' 'gawk')
-makedepends=('cargo')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('dff6cc979d16062d1d19f5ccfadf98793b53c1cfbf91c7d9a0380a2b5c043fe1')
-
-prepare() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed 's/host: //;t;d')"
-}
-
-build() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo build --frozen --release --all-features
-}
-
-check() {
-    cd "$pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
-}
+provides=('mpwall')
+source=(
+    "mpwall-x86_64::https://github.com/Lamess-UI/mpwall/releases/download/v$pkgver/mpwall-x86_64"
+    "LICENSE::https://raw.githubusercontent.com/Lamess-UI/mpwall/v$pkgver/LICENSE"
+)
+sha256sums=(
+    '5a3e23b28a7d75c28ee0edd06a9a7c4d2a533af630436f10c12449c2f1aee5d9'
+    '4a9ab123aa0abfa1dcb6d65b38ceefd7b8bf119cd97c7b710afb48c67eda5f0b'
+)
 
 package() {
-    cd "$pkgname-$pkgver"
-    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -Dm755 "$srcdir/mpwall-x86_64" "$pkgdir/usr/bin/mpwall"
+    install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
