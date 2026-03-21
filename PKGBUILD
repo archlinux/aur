@@ -3,9 +3,9 @@
 pkgname=hqplayer5
 pkgver=5.17.1
 _debpkgver=5.17.1-46
-pkgrel=1
+pkgrel=2
 pkgdesc="The high-end upsampling multichannel software HD-audio player"
-arch=('x86_64' 'x86_64_v3' 'x86_64_v4')
+arch=('x86_64')
 url="http://www.signalyst.com/consumer.html"
 license=('custom')
 depends=('glibc' 'gcc-libs' 'libx11' 'libusb-compat' 'openmp' 'qt6-base' 'qt6-charts' 'libmicrohttpd' 'alsa-lib' 'flac' 'wavpack' 'mpg123')
