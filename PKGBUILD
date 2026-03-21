@@ -19,5 +19,6 @@ package() {
     install -Dm644 LICENSE   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
     # Comando global hytalemm aponta pro setup.sh
+    install -d "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/setup.sh" "${pkgdir}/usr/bin/hytalemm"
 }
