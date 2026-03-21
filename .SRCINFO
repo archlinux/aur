@@ -1,16 +1,20 @@
 pkgbase = aether
 	pkgdesc = Desktop theming application - extract colors from wallpapers and apply cohesive themes
-	pkgver = 4.0.2
+	pkgver = 4.0.3
 	pkgrel = 1
 	url = https://github.com/bjarneo/aether
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = webkit2gtk-4.1
 	depends = gtk3
-	noextract = aether-linux-amd64-4.0.2
-	source = aether-linux-amd64-4.0.2::https://github.com/bjarneo/aether/releases/download/v4.0.2/aether-linux-amd64
-	source = aether-4.0.2.tar.gz::https://github.com/bjarneo/aether/archive/refs/tags/v4.0.2.tar.gz
-	sha256sums = 2b98a3c2567339252a467717902748d53739248c293981da7b22bd7cc182a160
-	sha256sums = b7bc03a4ab9e0177f582d5814989df2bc2a39d00956443a139c364351a747086
+	noextract = aether-linux-amd64-4.0.3
+	noextract = aether-linux-arm64-4.0.3
+	source = aether-4.0.3.tar.gz::https://github.com/bjarneo/aether/archive/refs/tags/v4.0.3.tar.gz
+	sha256sums = f17d3382a6443008a2ba6c2c2d20623ce1787dc16140dc7a8037fe167af54f19
+	source_x86_64 = aether-linux-amd64-4.0.3::https://github.com/bjarneo/aether/releases/download/v4.0.3/aether-linux-amd64
+	sha256sums_x86_64 = 2b98a3c2567339252a467717902748d53739248c293981da7b22bd7cc182a160
+	source_aarch64 = aether-linux-arm64-4.0.3::https://github.com/bjarneo/aether/releases/download/v4.0.3/aether-linux-arm64
+	sha256sums_aarch64 = 0484fb2f1d86b7e650648dd0a4a0c709ec13fd85740de0c4bc9f14c426d4fb5d
 
 pkgname = aether
