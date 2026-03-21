@@ -1,7 +1,7 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _npmname=uptimekit
-_npmver=1.2.28
+_npmver=1.3.1
 
 pkgname=${_npmname}
 pkgdesc="Production-ready uptime monitoring from your terminal"
@@ -20,7 +20,7 @@ options=(!strip emptydirs staticlibs zipman)
 noextract=("${pkgname}-${pkgver}.tgz")
 
 source=("${pkgname}-${pkgver}.tgz::https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
-b2sums=('50c335b2874170f2b25fcafd8244fd232e61df1c758bca6b329b1e93b6a576d207f5801221154e0d7731da7e9ee4bedcf469b7154bb0af3804d354df27b81373')
+b2sums=('a3285df21bc1523d3bad27e6695b61dcd4f695944f65144303d4471b0c8d06c79f0895937c1de4487ea1dbdd0efa5951fe50d12a235f7a1e71792ebc6b3df30d')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
 package() {
