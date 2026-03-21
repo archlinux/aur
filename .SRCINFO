@@ -1,6 +1,6 @@
 pkgbase = asmsx
 	pkgdesc = Z80 cross-assembler for MSX
-	pkgver = 1.1.1
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://www.msx.org/wiki/AsMSX
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = asmsx
 	makedepends = flex
 	makedepends = make
 	makedepends = gcc
-	source = asMSX-1.1.1.tar.gz::https://github.com/Fubukimaru/asMSX/archive/refs/tags/1.1.1.tar.gz
-	sha256sums = 46d2d2c0c5234be3e6f66aaa2768640c10ca3b3e5a7d148236cc3e28d773d8e7
+	source = asMSX-1.2.0.tar.gz::https://github.com/Fubukimaru/asMSX/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = 7480afd17816dd86c9eafebb3d71e4167d7c669563bc27074577fd33a5908ce4
 
 pkgname = asmsx
