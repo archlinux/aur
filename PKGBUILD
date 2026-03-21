@@ -1,8 +1,8 @@
-# Maintainer: minerharry <miner.harry567@gmail.com>
+#Maintainer: minerharry <miner.harry567@gmail.com>
 pkgname=dolphin-taildrop-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=r15.fbbebef
 pkgrel=1
-pkgdesc="Dolphin right-click menu entry to send files via tailscale taildrop"
+pkgdesc="Right-click menu entry for KDE's Dolphin file explorer to send files via tailscale's taildrop"
 arch=("x86_64")
 url="https://github.com/idobaruch7/send-with-taildrop"
 license=('GPL')
