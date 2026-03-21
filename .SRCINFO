@@ -12,6 +12,6 @@ pkgbase = hotshots-updated-git
 	provides = hotshots-updated
 	conflicts = hotshots-git
 	source = hotshots-updated::git+https://github.com/boussou/HotShots.git#tag=v2.2.4
-	sha256sums = SKIP
+	sha256sums = 904a54d833e955004e61fc6e4051ff59ef6dde57bb2b255b8382e60331a5e77b
 
 pkgname = hotshots-updated-git
