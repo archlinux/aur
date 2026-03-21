@@ -1,5 +1,5 @@
 pkgname=systats
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Simple ncurses-based system monitor"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('ncurses')
 makedepends=('gcc' 'make')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('cdc0ab03504253b089d94f69cc1de9997ff5c717a0424d58c0917fcf36f24461')
+sha256sums=('a562872f01d5a4f46a0f60686dfee0040648d90197c42548652ccc2fb91c1d41')
 
 build() {
     cd "$pkgname-$pkgver"
