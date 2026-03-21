@@ -11,11 +11,13 @@ depends=('python')
 install="${pkgname}.install"
 source=(
   "smokeinstaller-${pkgver}-${pkgrel}-any.tar.gz::https://git.nwaifu.su/neuro_llc/SmokeAPI-Installer/archive/v${pkgver}.tar.gz"
+  "https://git.nwaifu.su/neuro_llc/SmokeAPI-Installer/raw/branch/master/LICENSE.txt"
 )
-sha256sums=('bddf4bee86d5a78de9cad1f4c784340c1df242a2837b6f0d2277df576ca1734b')
+sha256sums=('bddf4bee86d5a78de9cad1f4c784340c1df242a2837b6f0d2277df576ca1734b'
+  'a65614fece440bd93dfdb2850ecb5ea6ef4ec34df7550907f9b0b05cf2c05aec')
 
 package() {
   install -Dm755 "$srcdir/${_pkgname}/installer.py" "$pkgdir/usr/bin/smokeinstaller"
-  install -Dm644 "$srcdir/${_pkgname}/LICENSE.txt" \
+  install -Dm644 "$srcdir/LICENSE.txt" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
