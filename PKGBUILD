@@ -1,6 +1,6 @@
 # Maintainer: Avenge Media LLC <avengemediallc at gmail dot com>
 pkgname=dms-shell-bin
-pkgver=1.4.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc='Desktop shell for wayland compositors built with Quickshell & GO'
 arch=(x86_64 aarch64)
@@ -41,14 +41,14 @@ sha256sums_x86_64=('bd57738a777d58ea38de7a887ec7b7bcc7809a9d104d7ec782c20d7bbaf4
                    '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
                    '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
                    '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
-                   '0bba5989f64a659225a8a0c6b3b8bd08e0838f48e5790d91f7b6f1362f784fce'
+                   'c20dbdcff2470031acf8abdde59a941f2d459cc05cab360a6fc7a405d0e3c023'
                    '540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab'
                    '16cb5af919380a95b50a2d6248128740e735e51967b3bd05e2b0a4fdb659ef2d')
 sha256sums_aarch64=('bd57738a777d58ea38de7a887ec7b7bcc7809a9d104d7ec782c20d7bbaf4821a'
                     '61e116dd2fe4cd87ab203f6a3d193404dd5f3c0c0f6dc262439a64411bcb30c4'
                     '8d5de8fb070817daa9104f92ca0104cfc54ac549068d575a0ced41c4e9c42667'
                     '41fa22da4d8d442583d1914315d82bad47e1e013a81f653d501fbbc4aa16eb2d'
-                    'b7618d8cb8d8c9b10a3dfc41d9ee219cc2fb0d75ce01c3bcdc97fd40b24bebea'
+                    '0d99a9180668de36edc38a6e11da9f11c287fda8fc92bf21278ade2674227979'
                     '540c27cacf8ac512b62f88c1613d6e3f42ba96e3dce47acbb8283471d1730bab'
                     '16cb5af919380a95b50a2d6248128740e735e51967b3bd05e2b0a4fdb659ef2d')
 
