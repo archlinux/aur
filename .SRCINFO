@@ -1,6 +1,6 @@
 pkgbase = tock-bin
 	pkgdesc = A powerful time tracking tool for the command line
-	pkgver = 1.7.14
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/kriuchkov/tock
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = tock-bin
 	license = GPL-3.0
 	provides = tock
 	conflicts = tock
-	source_x86_64 = tock-x86_64-1.7.14.tgz::https://github.com/kriuchkov/tock/releases/download/v1.7.14/tock_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = c497e5b1482b1cda03794240e9645cdf6218bf2795d38fd6d3610bdcc847e295
-	source_aarch64 = tock-aarch64-1.7.14.tgz::https://github.com/kriuchkov/tock/releases/download/v1.7.14/tock_Linux_arm64.tar.gz
-	sha256sums_aarch64 = c2d85736185d9fb707a7ad6d3c5b2efd972950b8e2cfd5fbefdd16ab00f3e744
+	source_x86_64 = tock-x86_64-1.8.0.tgz::https://github.com/kriuchkov/tock/releases/download/v1.8.0/tock_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 10ff75536d9e12e7a11ad5d4379865678413d47c5a6a35b95719f8f09fd6dc8a
+	source_aarch64 = tock-aarch64-1.8.0.tgz::https://github.com/kriuchkov/tock/releases/download/v1.8.0/tock_Linux_arm64.tar.gz
+	sha256sums_aarch64 = a04b609da7d27adcba5f379eb256ca85c31faf55ff11479cbf81d40cd9a17161
 
 pkgname = tock-bin
