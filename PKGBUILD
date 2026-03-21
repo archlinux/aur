@@ -1,6 +1,6 @@
 # Maintainer: Vrn <seu@email.com>
 pkgname=hytale-mod-manager
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Gerenciador de Mods CLI moderno, automático e estiloso para Hytale"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/jdkeditor/hytale-mod-manager"
 license=('MIT')
 depends=('bash' 'gum' 'inotify-tools' 'unzip' 'libnotify' 'p7zip')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5bb3e7e4b6a246631971e425dd3d1f0519f0fdfcbc9a2ef941f4bbd6e2369757')
+sha256sums=('153791037c9e0a490d1f192deca485491170c3af1aa5d565d35e3476c1ad0e49')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
