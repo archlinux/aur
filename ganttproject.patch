@@ -1,0 +1,16 @@
+diff '--color=auto' -ura ganttproject.orig/ganttproject ganttproject.new/ganttproject
+--- ganttproject.orig/ganttproject	2026-03-21 19:00:17.651786341 +1100
++++ ganttproject.new/ganttproject	2026-03-21 19:02:52.864778417 +1100
+@@ -216,7 +216,11 @@
+   --add-exports javafx.graphics/com.sun.javafx.util=ALL-UNNAMED\
+   --add-opens java.desktop/sun.swing=ALL-UNNAMED\
+   --add-opens java.desktop/sun.awt.X11=ALL-UNNAMED"
+-"$JAVA_COMMAND" -Dgpcloud=prod -Dorg.jooq.no-logo=true -Xmx2048m $JAVA_EXPORTS -Duser.dir="$(pwd)" $DEBUG_ARGS $BOOT_CLASS \
++
++source /usr/bin/java-openjfx-env
++JFX_ARGS="$OPENJFX_JAVA_OPTIONS --add-modules=ALL-MODULE-PATH"
++
++"$JAVA_COMMAND" -Dgpcloud=prod -Dorg.jooq.no-logo=true -Xmx2048m $JFX_ARGS $JAVA_EXPORTS -Duser.dir="$(pwd)" $DEBUG_ARGS $BOOT_CLASS \
+   --app net.sourceforge.ganttproject.GanttProject \
+   --version-dirs "$GP_HOME"/plugins:~/.ganttproject.d/updates \
+   -log true -log_file "$LOG_FILE" "${APP_ARGS[@]}"
