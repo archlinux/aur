@@ -1,14 +1,11 @@
 pkgbase = mon
-	pkgdesc = Simple single-process process monitoring program written in C
-	pkgver = 1.2.3
+	pkgdesc = Filesystem change monitor that triggers shell commands
+	pkgver = 2.0.5
 	pkgrel = 1
-	url = https://github.com/visionmedia/mon
-	arch = i686
+	url = https://github.com/LiquidityC/mon
 	arch = x86_64
-	license = MIT
-	depends = glibc
-	source = mon-1.2.3.tar.gz::https://github.com/visionmedia/mon/archive/1.2.3.tar.gz
-	sha256sums = 978711a1d37ede3fc5a05c778a2365ee234b196a44b6c0c69078a6c459e686ac
+	license = GPL-3.0-only
+	source = mon-2.0.5.tar.gz::https://github.com/LiquidityC/mon/archive/v2.0.5.tar.gz
+	sha256sums = 47701944f8825612b2e1b2852b05611a59d81b33cb0947c5b17f4a53645fce5b
 
 pkgname = mon
-

@@ -1,24 +1,21 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
-
+# Maintainer: Linus Probert <ekliptor@gmail.com>
 pkgname=mon
-pkgver=1.2.3
+pkgver=2.0.5
 pkgrel=1
-pkgdesc="Simple single-process process monitoring program written in C"
-arch=('i686' 'x86_64')
-url="https://github.com/visionmedia/mon"
-license=('MIT')
-depends=('glibc')
-source=($pkgname-$pkgver.tar.gz::"https://github.com/visionmedia/mon/archive/$pkgver.tar.gz")
-sha256sums=('978711a1d37ede3fc5a05c778a2365ee234b196a44b6c0c69078a6c459e686ac')
+pkgdesc="Filesystem change monitor that triggers shell commands"
+arch=('x86_64')
+url="https://github.com/LiquidityC/mon"
+license=('GPL-3.0-only')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('47701944f8825612b2e1b2852b05611a59d81b33cb0947c5b17f4a53645fce5b')
 
 build() {
-  make -C mon-$pkgver
+    cd "$pkgname-$pkgver"
+    make RELEASE_BUILD=1
 }
 
 package() {
-  cd mon-$pkgver
-
-  install -Dm755 mon "$pkgdir"/usr/bin/mon
-  install -d "$pkgdir"/usr/share/doc/mon
-  cp -r example *.md "$pkgdir"/usr/share/doc/mon
+    cd "$pkgname-$pkgver"
+    install -Dm755 mon "$pkgdir/usr/bin/mon"
+    install -Dm644 doc/man/mon.1 "$pkgdir/usr/share/man/man1/mon.1"
 }
