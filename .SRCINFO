@@ -7,6 +7,7 @@ pkgbase = kernelsu-dkms
 	license = GPL-2.0-only
 	makedepends = git
 	depends = modloader
+	depends = dkms
 	options = !strip
 	options = !emptydirs
 	source = kernelsu::git+https://github.com/supechicken/KernelSU#branch=waydroid

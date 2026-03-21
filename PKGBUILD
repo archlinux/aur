@@ -12,7 +12,7 @@ arch=('any')
 url="https://github.com/supechicken/KernelSU"
 _upstream="https://github.com/tiann/$_pkg.git"
 license=('GPL-2.0-only')
-depends=('modloader')
+depends=('modloader' 'dkms')
 makedepends=('git')
 options=('!strip' '!emptydirs')
 
