@@ -1,0 +1,17 @@
+pkgbase = semantic-scholar-cli
+	pkgdesc = Semantic Scholar CLI for Graph, Recommendations, and Datasets APIs
+	pkgver = 0.0.0.r5.g3cfdef6
+	pkgrel = 1
+	url = https://github.com/decent-tools-for-thought/semantic-scholar-cli
+	arch = any
+	license = custom:unknown
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = git+https://github.com/decent-tools-for-thought/semantic-scholar-cli.git#commit=3cfdef6d968df9bd926e72d1ea55a29f5eade643
+	sha256sums = SKIP
+
+pkgname = semantic-scholar-cli
