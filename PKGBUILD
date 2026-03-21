@@ -2,7 +2,7 @@
 # Contributor: Soukyuu <chrno-sphered at hotmail dot com>
 # Contributor: archtux <antonio dot arias99999 at gmail dot com>
 pkgname=deadbeef-git
-pkgver=r12067.13658dcfa
+pkgver=r12073.2ca653c82
 pkgrel=1
 pkgdesc="A GTK+ audio player for GNU/Linux (devel branch)"
 url="https://deadbeef.sourceforge.io/"
@@ -13,7 +13,7 @@ license=('GPL-2.0-or-later'
 depends=('hicolor-icon-theme' 'jansson' 'libblocksruntime' 'libdispatch')
 makedepends=('alsa-lib' 'curl' 'faad2' 'flac' 'git' 'intltool' 'imlib2' 'libcddb' 'libcdio' 'libmad' 'libpulse'
              'libsamplerate' 'libvorbis' 'libx11' 'libzip' 'wavpack' 'yasm'
-             'ffmpeg' 'gtk2' 'gtk3' 'clang' 'libpipewire')
+             'ffmpeg' 'gtk2' 'gtk3' 'clang' 'libpipewire' 'glib2')
 optdepends=('gtk2: for the GTK2 interface'
             'gtk3: for the GTK3 interface'
             'libsamplerate: for dsp_libsrc plugin (resampler)'
@@ -42,7 +42,8 @@ optdepends=('gtk2: for the GTK2 interface'
             'ffmpeg: for ffmpeg plugin'
             'opusfile: for opus plugin'
             'mpg123: for MP1/MP2/MP3 playback'
-            'libpipewire: for pipewire plugin')
+            'libpipewire: for pipewire plugin'
+            'glib2: for MPRIS plugin')
 options=('!libtool')
 conflicts=('deadbeef')
 provides=('deadbeef=1.10.2')
