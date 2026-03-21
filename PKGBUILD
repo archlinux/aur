@@ -1,6 +1,6 @@
 # Maintainer: stelle <stelle@psychotoxical.dev>
 pkgname=psysonic
-pkgver=1.7.2
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Desktop music player for Subsonic API-compatible servers (Navidrome, Gonic, etc.)"
 arch=('x86_64')
