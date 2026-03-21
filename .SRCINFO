@@ -1,0 +1,14 @@
+pkgbase = pvm-php
+	pkgdesc = Homebrew-backed PHP version manager with shim-based shell integration
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/AtefR/pvm
+	arch = any
+	license = MIT
+	depends = bash
+	depends = curl
+	depends = git
+	source = pvm-php-0.3.1.tar.gz::https://github.com/AtefR/pvm/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 7d221c3327628a2b4f87dd91e6bae80e8119044c4eba0367b6a84855aee93193
+
+pkgname = pvm-php
