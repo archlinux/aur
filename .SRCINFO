@@ -1,0 +1,21 @@
+pkgbase = vomacsd
+	pkgdesc = Hookable voice transcription daemon for KDE Wayland
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/decent-tools-for-thought/vomacs
+	install = vomacsd.install
+	arch = any
+	license = custom:unlicensed
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = ffmpeg
+	depends = python-websocket-client
+	depends = libnotify
+	optdepends = xclip: X11 clipboard fallback backend
+	source = vomacsd-0.1.4.tar.gz::https://github.com/decent-tools-for-thought/vomacs/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 59765c1fa355354f72ca2bb7638ed263c2f660a8a0a2df7a0bcdd39853dd5417
+
+pkgname = vomacsd
