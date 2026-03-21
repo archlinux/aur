@@ -1,0 +1,15 @@
+pkgbase = inkwell-bin
+	pkgdesc = Lightweight Markdown editor with split view, live preview, themes, focus mode, and diff viewer
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/4worlds4w-svg/inkwell
+	arch = x86_64
+	license = LicenseRef-Proprietary
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	provides = inkwell
+	conflicts = inkwell
+	source = inkwell-bin-1.2.0.tar.gz::https://github.com/4worlds4w-svg/inkwell/releases/download/v1.2.0/inkwell-v1.2.0-linux-x64.tar.gz
+	sha256sums = 827c75cab87ac241f1f4b9591c527b19e9c3c3d8a44b6f792b956cdcb4171333
+
+pkgname = inkwell-bin
