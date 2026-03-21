@@ -1,0 +1,17 @@
+pkgbase = durthang
+	pkgdesc = A modern, terminal-based MUD client with TLS, GMCP, automap, aliases, triggers, and a sidebar panel system
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Pommersche92/durthang
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = armv7h
+	license = GPL-3.0-only
+	makedepends = cargo
+	provides = durthang
+	conflicts = durthang-bin
+	source = durthang-0.1.0.tar.gz::https://static.crates.io/crates/durthang/durthang-0.1.0.crate
+	sha256sums = cef9f3afd704cd798e51e318c71b326c8d4fc866fe920833bff0d9f714f0998e
+
+pkgname = durthang
