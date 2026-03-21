@@ -2,8 +2,8 @@
 # Contributor: Core_UK <dev@coredev.uk>
 
 pkgname=cider
-pkgver=1.6.3.20250909032549
-pkgrel=3
+pkgver=1.6.3.20260321034536
+pkgrel=1
 pkgdesc='An abandoned Apple Music player using a fork of Cider v1 from taoky/Cider'
 arch=('x86_64')
 url='https://github.com/taoky/Cider'
@@ -14,11 +14,11 @@ depends=(
   'libxcrypt-compat'
   'nss'
 )
-makedepends=('git' 'nodejs' 'pnpm')
+makedepends=('git' 'nodejs' 'pnpm' 'python')
 optdepends=('libnotify: Playback notifications')
 options=(!buildflags !debug !makeflags !strip)
 source=("git+$url.git#tag=${pkgver##*.}")
-b2sums=('d41fb1fb07e86153baa74f213ff89ea3c327b5a6e9f276f11a3f729d76e4e8e420dec6f3a7777565eb45935dd49bea63f84d85dfc717acf7a79df559f54b0b17')
+b2sums=('6896547b5cfcc9de8c12d90c32ec4edd9086dab2910d65e7070671f535842b08b5a61b16303901a98d94d73bc7d6c4c68a5a800cb6af3f6a0785eb6d1a3265d5')
 install=cider.install
 
 prepare() {
@@ -28,9 +28,9 @@ prepare() {
   echo 'localStorage.setItem("lastToken", process.env.TOKEN);' >> ./src/preload/cider-preload.js
   sed -i "/var prompt = \`Cider is not responding/c\\var prompt = \`Your Apple Music TOKEN is expired or invalid. Edit /usr/share/applications/sh.cider.Cider.desktop and modify the TOKEN value in the Exec line then restart Cider. (Current value of TOKEN=\${lastToken}).\`;" ./src/renderer/main/events.js
 
-  # Temporary fix for missing thumbnail
-  # See https://github.com/taoky/Cider/pull/13
-  sed -i 's|forceDirectives: {},|forceDirectives: { lcdArtworkSize: { value: 256 } },|' ./src/renderer/main/vueapp.js
+  # Prevent weird "SyntaxError: Unexpected end of JSON input" as described here:
+  # https://github.com/electron-userland/electron-builder/issues/9020#issuecomment-2989607912
+  pnpm add -D electron-builder@26.0.0
 
   pnpm install
 }
@@ -58,6 +58,10 @@ package() {
   # 2. COPY DEB FILES
   cp -dr --no-preserve=ownership ./{opt,usr} "$pkgdir"
 
-  # 3. COPY APPARMOR PROFILE
+  # 3. COPY LICENSE AND DOCS
+  install -Dm644 -t "$pkgdir/usr/share/licenses/cider/" ./Cider/LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/cider/" ./Cider/{CODE_OF_CONDUCT.md,README.md}
+
+  # 4. COPY APPARMOR PROFILE
   install -Dm644 ./opt/Cider/resources/apparmor-profile "$pkgdir/etc/apparmor.d/cider"
 }

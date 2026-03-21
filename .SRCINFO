@@ -1,7 +1,7 @@
 pkgbase = cider
 	pkgdesc = An abandoned Apple Music player using a fork of Cider v1 from taoky/Cider
-	pkgver = 1.6.3.20250909032549
-	pkgrel = 3
+	pkgver = 1.6.3.20260321034536
+	pkgrel = 1
 	url = https://github.com/taoky/Cider
 	install = cider.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = cider
 	makedepends = git
 	makedepends = nodejs
 	makedepends = pnpm
+	makedepends = python
 	depends = alsa-lib
 	depends = gtk3
 	depends = libxcrypt-compat
@@ -18,7 +19,7 @@ pkgbase = cider
 	options = !debug
 	options = !makeflags
 	options = !strip
-	source = git+https://github.com/taoky/Cider.git#tag=20250909032549
-	b2sums = d41fb1fb07e86153baa74f213ff89ea3c327b5a6e9f276f11a3f729d76e4e8e420dec6f3a7777565eb45935dd49bea63f84d85dfc717acf7a79df559f54b0b17
+	source = git+https://github.com/taoky/Cider.git#tag=20260321034536
+	b2sums = 6896547b5cfcc9de8c12d90c32ec4edd9086dab2910d65e7070671f535842b08b5a61b16303901a98d94d73bc7d6c4c68a5a800cb6af3f6a0785eb6d1a3265d5
 
 pkgname = cider
