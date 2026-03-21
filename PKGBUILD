@@ -28,7 +28,7 @@ prepare() {
 
 build() {
 	cd $pkgname-$pkgver
-    # Prevent makepkg's CFLAGS from breaking ring and mlua native code compilation
+	# Prevent makepkg's CFLAGS from breaking ring and mlua native code compilation
 	unset CFLAGS CXXFLAGS
 	cargo build --release --locked --target-dir=target
 }
