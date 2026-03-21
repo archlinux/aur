@@ -1,7 +1,7 @@
 #Maintainer: Shadowbee <shadowbee.contact@proton.me>
 pkgname=hister-bin
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web history on steroids - blazing fast, content-based search for visited websites"
 arch=('x86_64' 'aarch64')
 conflicts=('hister' 'hister-git')
@@ -16,8 +16,8 @@ source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/hister_${pkgve
 source_aarch64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/hister_${pkgver}_linux_arm64"
   "hister.service"
   "LICENSE::https://raw.githubusercontent.com/asciimoo/hister/refs/heads/master/LICENSE")
-sha256sums_x86_64=('8ae2e2600ffa6f9061e71ccf525e2ebc10150577a010f82c046978fa0a5e2a84' 'eb784ed318737413345da3db8d033854f7873fb59554cd06bc45ec0fa8b6ff3a' '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6')
-sha256sums_aarch64=('fa6e5dc87dede4766106a3b657dba196184f37080b7903edc05a9fd70df0ebd7' 'eb784ed318737413345da3db8d033854f7873fb59554cd06bc45ec0fa8b6ff3a' '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6')
+sha256sums_x86_64=('4ee16f069665fdf6cb05e68b069e9fbe55c572fdd514c183f979505b5cabbf70' 'eb784ed318737413345da3db8d033854f7873fb59554cd06bc45ec0fa8b6ff3a' '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6')
+sha256sums_aarch64=('3a6ba61fffb82c168003671b08485e1d16d80d98e245eef991688e3bdabc0796' 'eb784ed318737413345da3db8d033854f7873fb59554cd06bc45ec0fa8b6ff3a' '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6')
 
 _ghrepo="asciimoo/hister"
 
