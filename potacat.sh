@@ -1,2 +1,2 @@
 #!/bin/sh
-exec electron /usr/lib/potacat/main.js "$@"
+exec electron39 /usr/lib/potacat/main.js "$@"
