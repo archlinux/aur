@@ -13,6 +13,7 @@ license=('MIT')
 depends=()
 provides=('cv4pve-diag')
 conflicts=('cv4pve-diag')
+options=('!strip' '!debug')
 
 source_x86_64=("${pkgname}-${pkgver}-x86_64.zip::https://github.com/Corsinvest/cv4pve-diag/releases/download/v${pkgver}/cv4pve-diag-linux-x64.zip")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.zip::https://github.com/Corsinvest/cv4pve-diag/releases/download/v${pkgver}/cv4pve-diag-linux-arm64.zip")
