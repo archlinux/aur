@@ -1,7 +1,7 @@
 # Maintainer: Carlos A. Planchón <carlosandresplanchonprestes@gmail.com>
 
 # This package is not affiliated with or endorsed by AGESIC.
-# It repackages AGESIC-distributed proprietary middleware for Arch Linux.
+# This package repackages proprietary middleware distributed by AGESIC for Arch Linux.
 
 pkgname=cedula-uruguay-pkcs11
 pkgver=7.5.0
@@ -43,7 +43,7 @@ package() {
 
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   cat > "$pkgdir/usr/share/licenses/$pkgname/LICENSE" <<'EOF'
-This package installs proprietary middleware downloaded from the official AGESIC site.
+This package installs proprietary middleware obtained from AGESIC distribution channels.
 The user is responsible for complying with the vendor's license and usage terms.
 EOF
 }
