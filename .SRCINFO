@@ -3,6 +3,7 @@ pkgbase = shure-mv6-mute-sync-git
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/cakenes/shure-mv6-mute-sync
+	install = shure-mv6-mute-sync-git.install
 	arch = x86_64
 	license = GPL2
 	makedepends = linux-headers
