@@ -1,0 +1,27 @@
+pkgbase = sailfish-patch-git
+	pkgdesc = helper tool for developing SailfishOS patches
+	pkgver = 2.7.0.1.r19.gd79d9a8
+	pkgrel = 1
+	url = https://github.com/ichthyosaurus/sailfish-patch
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = git
+	depends = openssh
+	depends = sed
+	depends = xclip
+	depends = rpm
+	depends = rpmextract
+	depends = cpio
+	depends = tar
+	depends = html-xml-utils
+	depends = html2text
+	depends = pngcrush
+	depends = pngquant
+	depends = imagemagick
+	provides = sailfish-patch=2.7.0.1.r19.gd79d9a8
+	conflicts = sailfish-patch
+	source = git+https://github.com/ichthyosaurus/sailfish-patch.git
+	sha256sums = SKIP
+
+pkgname = sailfish-patch-git
