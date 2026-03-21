@@ -2,7 +2,7 @@
 # CIPHER — AI Security Engineering Platform
 
 pkgname=cipher-security
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="AI-powered cybersecurity platform — 1,539 skills, 39 compliance frameworks, autonomous security engine"
 arch=('any')
