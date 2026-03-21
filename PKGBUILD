@@ -1,37 +1,34 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=keep-me-awake
 _app_id=de.swsnr.keepmeawake
-pkgver=1.0.7
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Inhibit screensaver and suspend in GNOME"
-arch=('x86_64' 'aarch64')
+arch=('any')
 url="https://codeberg.org/swsnr/keep-me-awake"
 license=('EUPL-1.2')
 depends=(
   'gtk4'
   'libadwaita'
+  'libportal'
+  'libportal-gtk4'
+  'python-gobject'
+  'python-packaging'
 )
 makedepends=(
   'blueprint-compiler'
-  'cargo'
   'git'
-  'just'
+  'python-build'
+  'python-hatchling'
+  'python-installer'
+  'python-wheel'
 )
 source=("git+https://codeberg.org/swsnr/keep-me-awake.git#tag=v$pkgver")
-sha256sums=('8be697b86afc9cc931d07f8d1383abb7bda4283c669dc9bae91b316bd8acf3b5')
-
-prepare() {
-  cd "$pkgname"
-  export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
-}
+sha256sums=('6a5e75f8d70f28420e29c41ebe97052401f02e0300eb0f30bb47b570ad91d967')
 
 build() {
   cd "$pkgname"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  just APPID="${_app_id}" compile
-  cargo build --frozen --release
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -42,16 +39,9 @@ check() {
 
 package() {
   cd "$pkgname"
-  install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
-  ln -s "/usr/bin/$pkgname" "$pkgdir/usr/bin/${_app_id}"
-  install -Dm644 "build/${_app_id}.desktop" -t "$pkgdir/usr/share/applications/"
-  install -Dm644 "build/${_app_id}.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
-  install -Dm644 "build/${_app_id}.service" -t "$pkgdir/usr/share/dbus-1/services/"
-  install -Dm644 resources/icons/scalable/actions/*.svg -t \
-    "$pkgdir/usr/share/icons/hicolor/scalable/actions/"
-  install -Dm644 "resources/icons/scalable/apps/${_app_id}.svg" -t \
-    "$pkgdir/usr/share/icons/hicolor/scalable/apps/"
-  install -Dm644 "resources/icons/symbolic/apps/${_app_id}-symbolic.svg" -t \
-    "$pkgdir/usr/share/icons/hicolor/symbolic/apps/"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+
+  ln -s "/usr/bin/${_app_id}" "$pkgdir/usr/bin/$pkgname"
+
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
