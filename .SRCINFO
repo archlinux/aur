@@ -19,6 +19,6 @@ pkgbase = kernelsu-dkms
 	sha256sums = 2fcfe32b430eaef04dfe406ff89bec9580cf499d387d730b933f46195c68f28d
 	sha256sums = 3eaeaf5a2a5442204ae0cad3c4c25855a90e4e683da56579cc7eb2bada42ccb9
 	sha256sums = 05feaafbbac794a68c7eeea8c0a4c5616fc9f6ef7e4b7540baf3f5d43fad5fb0
-	sha256sums = 1dc9e40e3c42043ced20bc2a4d079911769602c1b28c574ddca0db43f26a2cd1
+	sha256sums = f01d10fbcfba1b83134746ccfdc7ef4ceb61fa43593b94f039eac3469637429c
 
 pkgname = kernelsu-dkms
