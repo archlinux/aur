@@ -1,6 +1,6 @@
 pkgbase = tidymyfiles
 	pkgdesc = A CLI tool that organizes files into folders based on their extension
-	pkgver = 0.1.0
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Usernames-are-useful/Tidymyfiles
 	arch = x86_64
