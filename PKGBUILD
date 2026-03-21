@@ -3,7 +3,7 @@
 # Contributor: Sebastien Duthil <duthils at free dot fr>
 
 pkgname=factorio-demo
-pkgver=2.0.73
+pkgver=2.0.76
 pkgrel=1
 pkgdesc="A game in which you build and maintain factories"
 arch=(x86_64)
@@ -16,7 +16,7 @@ source=(factorio-demo_linux_${pkgver}.tar.xz::http://www.factorio.com/get-downlo
         factorio.desktop
         LICENSE
 )
-sha256sums=('1c04ab58fe5e47eb83ba984014e355e8edbc7f941f655bad0b1ff0c5e68bd0f2'
+sha256sums=('d5caee49636290b678d35adc59d2fc80ecbdbad8bf420731f1317971c89f941b'
             '61f62d75491147fbc6853cd7fa3a6f287227c3f5fc70dd9f4ec4083ebc31b743'
             'bc7f224b0fcc4cec82f5ca950b1c042251e27b0bcd0bf98f7945e09413a3c561')
 # no modifications needed, the executable looks for:
