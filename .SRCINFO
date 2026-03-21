@@ -1,0 +1,24 @@
+pkgbase = lody-bin
+	pkgdesc = A development platform built for parallel AI Agent workflows
+	pkgver = 0.40.0
+	pkgrel = 1
+	url = https://lody.ai
+	arch = x86_64
+	license = LicenseRef-proprietary
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = gtk3
+	depends = libnotify
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	provides = lody
+	conflicts = lody
+	options = !strip
+	options = !debug
+	source = lody-bin-0.40.0-amd64.deb::https://updates.lody.ai/production/Lody-0.40.0-amd64.deb
+	sha256sums = 4a2f63374dab24689007b6983539825cfe07c606efa0c3ebd7e847fb95c3227c
+
+pkgname = lody-bin

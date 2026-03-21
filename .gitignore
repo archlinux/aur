@@ -1,0 +1,8 @@
+# makepkg artifacts
+*.AppImage
+*.pkg.tar.*
+*.deb
+pkg/
+src/
+LICENSE
+NOTICE
