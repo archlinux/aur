@@ -50,4 +50,16 @@ post_remove() {
 
     # Disable Steam remote debugging
     rm -f "${USER_HOME}/.steam/steam/.cef-enable-remote-debugging"
+}d: -f6)
+    else
+        USER_HOME="$HOME"
+    fi
+
+    # Remove the symlinks created during post_install
+    rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_32/libXtst.so.6"
+    rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_64/libXtst.so.6"
+    rm -f "${USER_HOME}/.local/share/Steam/ubuntu12_64/libmillennium_hhx64.so"
+
+    # Clean up legacy marker if present
+    rm -f "${USER_HOME}/.steam/steam/.cef-enable-remote-debugging"
 }

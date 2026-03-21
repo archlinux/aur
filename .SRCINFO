@@ -31,7 +31,7 @@ pkgbase = millennium-git
 	source = git+https://github.com/SteamClientHomebrew/Millennium.git#branch=next
 	source = https://patch-diff.githubusercontent.com/raw/SteamClientHomebrew/Millennium/pull/688.patch
 	sha256sums = SKIP
-	sha256sums = 5213bae39a6718edee3966967eff836dc753e0cf7e94eff061967b70ab0b3a4a
+	sha256sums = 34e4f64b49a2a211f571a1f2c3a74d3e77a52416b8a5782471e1f097b16d74ec
 	depends_x86_64 = lib32-python311-bin
 
 pkgname = millennium-git

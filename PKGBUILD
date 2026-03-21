@@ -41,12 +41,10 @@ conflicts=(
 source=(
     "git+https://github.com/SteamClientHomebrew/${_Pkgname}.git#branch=next"
     "https://patch-diff.githubusercontent.com/raw/SteamClientHomebrew/Millennium/pull/688.patch"
-    # Add patches after this line!
 )
 sha256sums=(
     'SKIP'
-    '5213bae39a6718edee3966967eff836dc753e0cf7e94eff061967b70ab0b3a4a'
-    # Add checksum for patches after this line!
+    '34e4f64b49a2a211f571a1f2c3a74d3e77a52416b8a5782471e1f097b16d74ec'
 )
 options=(!debug)
 install="${_pkgname}.install"
