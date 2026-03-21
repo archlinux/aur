@@ -8,11 +8,13 @@ Wants=network-online.target
 Type=simple
 User=zeroclaw
 Group=zeroclaw
+WorkingDirectory=/var/lib/zeroclaw
 ExecStart=/usr/bin/zeroclaw daemon
 Restart=on-failure
 RestartSec=5s
 Environment=RUST_LOG=info
-Environment=ZEROCLAW_CONFIG_DIR=/var/lib/zeroclaw
+Environment=HOME=/var/lib/zeroclaw
+Environment=ZEROCLAW_WORKSPACE=/var/lib/zeroclaw/workspace
 
 # ── Logging ───────────────────────────────────────────────────────
 StandardOutput=journal
@@ -51,7 +53,8 @@ RestrictNamespaces=yes
 LockPersonality=yes
 
 # ── Memory Security ───────────────────────────────────────────────
-MemoryDenyWriteExecute=yes
+# MemoryDenyWriteExecute is intentionally omitted: zeroclaw uses wasmtime/cranelift
+# JIT compilation for WASM plugins, which requires write+execute memory mappings.
 
 # ── Syscall Filtering ─────────────────────────────────────────────
 SystemCallArchitectures=native
