@@ -1478,3 +1478,23 @@ package() {
   chmod 755 "$pkgdir/usr/bin/gitmastery"
 }
 
+# Maintainer: Jiahao, Woo <woojiahao1234@gmail.com>
+pkgname=gitmastery-bin
+pkgver="v7.8.2"
+pkgrel=1
+pkgdesc="Git-Mastery CLI for practicing Git"
+arch=('x86_64')
+url='https://github.com/git-mastery/app'
+license=('MIT')
+depends=(
+  'python'
+)
+changelog="gitmastery.changelog"
+source=("gitmastery-7.8.2-linux-amd64::https://github.com/git-mastery/app/releases/download/v7.8.2/gitmastery-7.8.2-arch-amd64")
+sha256sums=('SKIP')
+
+package() {
+  install -D -m 0755 "$srcdir/gitmastery-7.8.2-linux-amd64" "$pkgdir/usr/bin/gitmastery"
+  chmod 755 "$pkgdir/usr/bin/gitmastery"
+}
+
