@@ -4,7 +4,7 @@
 
 **Automated Media Organization & AI Cleanup Tool**
 
-[![Version](https://img.shields.io/badge/version-v3.0.9-blue.svg)](https://github.com/Undadfeated/Media_Archive_Organizer/releases)
+[![Version](https://img.shields.io/badge/version-v3.1.0-blue.svg)](https://github.com/Undadfeated/Media_Archive_Organizer/releases)
 [![Python](https://img.shields.io/badge/python-3.11_%E2%80%93_3.14_tested-brightgreen.svg)](https://www.python.org/)
 
 ---
