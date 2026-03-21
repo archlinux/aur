@@ -1,51 +1,42 @@
 # Maintainer: gogamlg3
 pkgname=tg-ws-proxy-git
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Local SOCKS5 proxy server for partial bypassing of Telegram loading"
-arch=('x86_64')
+arch=("x86_64")
 url="https://github.com/Flowseal/tg-ws-proxy"
-license=('MIT')
-depends=('python')
-makedepends=('python' 'python-pip')
+license=("MIT")
+depends=("python" "tk" "libappindicator" "libayatana-appindicator")
+optdepends=("wl-clipboard" "xclip" "xsel")
+makedepends=("python" "python-pip" "imagemagick")
+conflicts=("tg-ws-proxy-bin")
 
-source=("https://raw.githubusercontent.com/Flowseal/tg-ws-proxy/refs/heads/main/proxy/tg_ws_proxy.py")
-sha256sums=('SKIP')
+source=("git+https://github.com/Flowseal/tg-ws-proxy.git"
+        "tg-ws-proxy.desktop")
+sha256sums=("SKIP" "SKIP")
 
 _binname=tg-ws-proxy
 
 build() {
-  cd "$srcdir/"
+  cd "$srcdir/tg-ws-proxy"
 
-  python -m venv .venv
-  source .venv/bin/activate
-  python -m pip install pyinstaller cryptography cffi
+  python -m venv --system-site-packages .venv
+  .venv/bin/pip install --upgrade pip
+  .venv/bin/pip install ".[linux]"
+  .venv/bin/pip install "pyinstaller"
+  .venv/bin/pyinstaller --noconfirm packaging/linux.spec
 
-  .venv/bin/pyinstaller --clean --noconfirm --onefile  --name "$pkgname" "tg_ws_proxy.py"
-
-  deactivate || true
   rm -rf .venv
 }
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/tg-ws-proxy"
 
-  install -Dm755 "dist/$pkgname" "$pkgdir/usr/bin/$_binname"
+  install -Dm755 "dist/TgWsProxy" "$pkgdir/usr/bin/$_binname"
 
-  mkdir -p "$pkgdir/usr/lib/systemd/system"
-  cat > "$pkgdir/usr/lib/systemd/system/$_binname.service" <<EOF
-[Unit]
-Description=Local SOCKS5 proxy server for partial bypassing of Telegram loading
-After=network.target
+  install -d "$pkgdir/usr/share/icons/hicolor/64x64/apps"
+  magick "icon.ico[4]" -background none -alpha on "$pkgdir/usr/share/icons/hicolor/64x64/apps/tg-ws-proxy.png"
 
-[Service]
-Type=simple
-ExecStart=/usr/bin/$_binname --port 8888
-Restart=on-failure
-RestartSec=5s
-
-[Install]
-WantedBy=multi-user.target
-EOF
+  install -Dm644 ../tg-ws-proxy.desktop "$pkgdir/usr/share/applications/tg-ws-proxy.desktop"
 
 }
