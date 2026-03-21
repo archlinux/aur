@@ -1,7 +1,7 @@
 # Maintainer: GrishMahat <grishmahat@gmail.com>
 
 pkgname=skycrypt-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="A lightweight desktop wrapper for SkyCrypt built with Rust and Tauri (precompiled binary)."
 arch=('x86_64')
@@ -20,9 +20,9 @@ depends=(
   'hicolor-icon-theme'
 )
 
-_debname="SkyCrypt.Desktop_0.1.4_amd64.deb"
+_debname="SkyCrypt.Desktop_0.1.5_amd64.deb"
 source=("${pkgname%-bin}_${pkgver}_amd64.deb::${url}/releases/download/v${pkgver}/${_debname}")
-sha256sums=('bfd495199ee9018a45a37f3bee1f2f53d1ca0bcd31ad808c6aabe352d66dbf47')
+sha256sums=('dde9176a665dd0f9bc591051436ca9081682c739df1a8784c181eb7131922608')
 
 package() {
   cd "$srcdir"
