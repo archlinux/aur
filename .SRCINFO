@@ -1,6 +1,6 @@
 pkgbase = massav1encoder
 	pkgdesc = World-class, high-density AV1 encoding dashboard for high-efficiency archival.
-	pkgver = 11.2.3
+	pkgver = 12.0.0
 	pkgrel = 1
 	url = https://github.com/UnDadFeated/Mass_AV1_Encoder
 	changelog = massav1encoder.changelog
