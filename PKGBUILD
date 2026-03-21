@@ -3,11 +3,11 @@
 
 pkgname=cider
 pkgver=1.6.3.20260321034536
-pkgrel=1
+pkgrel=2
 pkgdesc='An abandoned Apple Music player using a fork of Cider v1 from taoky/Cider'
 arch=('x86_64')
 url='https://github.com/taoky/Cider'
-license=('AGPL-3')
+license=('AGPL-3.0-only')
 depends=(
   'alsa-lib'
   'gtk3'
@@ -15,7 +15,10 @@ depends=(
   'nss'
 )
 makedepends=('git' 'nodejs' 'pnpm' 'python')
-optdepends=('libnotify: Playback notifications')
+optdepends=(
+  'libnotify: Send playback notifications'
+  'gnome-shell-extension-appindicator: Show tray icon in GNOME'
+)
 options=(!buildflags !debug !makeflags !strip)
 source=("git+$url.git#tag=${pkgver##*.}")
 b2sums=('6896547b5cfcc9de8c12d90c32ec4edd9086dab2910d65e7070671f535842b08b5a61b16303901a98d94d73bc7d6c4c68a5a800cb6af3f6a0785eb6d1a3265d5')
