@@ -30,4 +30,4 @@ package() {
         "$pkgdir/usr/share/metainfo/"
 }
 
-sha256sums=('SKIP')
+sha256sums=('25e4bee470dd89d33b6336ea173ffe2cf7981e1e347dd9e87ed374675daa2ec0')
