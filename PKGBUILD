@@ -1,7 +1,7 @@
 # Maintainer: mfw <espadonne@outlook.com>
 
 pkgname=gump
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc='A smarter cd command - directory jumper using frecency'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 optdepends=('fzf: for interactive selection with gi')
 install=gump.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tenseleyFlow/gump/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('8ea772635de2eabd7ebdda3b3ad55dc719ba1d64544e2d604b0fcbf0721731cc')
 
 prepare() {
     cd "$pkgname-$pkgver"

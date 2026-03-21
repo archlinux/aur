@@ -1,6 +1,6 @@
 pkgbase = gump
 	pkgdesc = A smarter cd command - directory jumper using frecency
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/tenseleyFlow/gump
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = gump
 	depends = gcc-libs
 	optdepends = fzf: for interactive selection with gi
 	install = gump.install
-	source = gump-0.2.6.tar.gz::https://github.com/tenseleyFlow/gump/archive/refs/tags/v0.2.6.tar.gz
-	sha256sums = SKIP
+	source = gump-0.2.7.tar.gz::https://github.com/tenseleyFlow/gump/archive/refs/tags/v0.2.7.tar.gz
+	sha256sums = 8ea772635de2eabd7ebdda3b3ad55dc719ba1d64544e2d604b0fcbf0721731cc
 
 pkgname = gump
