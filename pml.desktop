@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=PolyModLoader
+Comment=PolyTrack Mod Loader
+Exec=/usr/share/polytrack/PolyTrack
+Icon=/usr/share/pml/icon.png
+Terminal=false
+Type=Application
+Categories=Game;
+StartupNotify=true
+
