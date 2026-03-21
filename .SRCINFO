@@ -1,12 +1,11 @@
 pkgbase = nufraw
 	pkgdesc = A new version of the popular raw digital images manipulator ufraw.
 	pkgver = 0.43_3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/nufraw
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = gimp
 	depends = gtkimageview
 	depends = exiv2
 	depends = lcms2

@@ -3,7 +3,7 @@
 pkgname=nufraw
 pkgver=0.43_3
 _pkgver=0.43-3
-pkgrel=1
+pkgrel=2
 pkgdesc='A new version of the popular raw digital images manipulator ufraw.'
 arch=('i686' 'x86_64')
 url='https://sourceforge.net/projects/nufraw'
@@ -11,7 +11,6 @@ license=('GPL')
 provides=('gimp-nufraw')
 conflicts=('gimp-nufraw')
 depends=('gtkimageview' 'exiv2' 'lcms2' 'desktop-file-utils' 'cfitsio' 'lensfun')
-makedepends=('gimp')
 optdepends=('gimp: to use the gimp import plugin for raw images')
 source=(
 https://downloads.sourceforge.net/project/$pkgname/$pkgname-$_pkgver.tar.gz
@@ -49,12 +48,12 @@ build(){
     --enable-extras
     --enable-dst-correction
     --enable-openmp
-    --with-gimp
+#    --with-gimp
 #     --with-cinepaint                          # WARNING: unrecognized options: --with-cinepaint
   )
   ./configure ${configure[*]}
   msg2 "Running make"
-  make
+  make CFLAGS="-std=gnu17"
 }
 package(){
   cd "$srcdir"/$pkgname-$_pkgver
