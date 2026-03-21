@@ -1,6 +1,6 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=dtree
-pkgver=0.2.12
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Command line program to draw trees"
 arch=('x86_64')
@@ -11,21 +11,14 @@ md5sums=('b82b2c7e4f629efd5caa947f92c7bfca')
 
 build() {
 	cd "${pkgname}-v$pkgver"
+	cp config.$(uname -s) config.mk
 	
-	# Some build environments insist on having those preset, which breaks
-	# the build; if you really want some of them, comment the 'unset' lines
-	# below, but note you are on your own wrt errors.
-	unset BINDIR CC CFLAGS CPPFLAGS DOCDIR HEADERS INSTALL LDFLAGS LIBS
-	unset MANPAGE MANPREFIX OBJS PROG SRC 
-
 	make FALLBACKVER=${pkgver}-$pkgrel DESTDIR="$pkgdir" PREFIX="/usr" all
 }
 
 package() {
 	cd "${pkgname}-v$pkgver"
-
-	unset BINDIR CC CFLAGS CPPFLAGS DOCDIR HEADERS INSTALL LDFLAGS LIBS
-	unset MANPAGE MANPREFIX OBJS PROG SRC 
+	cp config.$(uname -s) config.mk
 
 	make FALLBACKVER=${pkgver}-$pkgrel DESTDIR="$pkgdir" PREFIX="/usr" \
 		install
