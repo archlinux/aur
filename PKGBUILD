@@ -41,7 +41,7 @@ pkgver() {
 }
 
 _upstreamver() {
-	cd "${pkgname%-*}"
+	cd "${srcdir}/${pkgname%-*}"
 	if git describe --tags --abbrev=0 >/dev/null 2>&1; then
 		git describe --tags --abbrev=0 | sed 's/^v//'
 	else
