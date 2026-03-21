@@ -1,0 +1,23 @@
+pkgbase = ken-git
+	pkgdesc = A sharp AUR/Pacman helper written in Go. Git version.
+	pkgver = r1.0.1
+	pkgrel = 1
+	url = https://github.com/nespaset/ken
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = go
+	depends = pacman
+	depends = git
+	depends = binutils
+	provides = ken
+	provides = kn
+	provides = sk
+	conflicts = ken
+	conflicts = ken-bin
+	conflicts = sake-git
+	conflicts = sk
+	source = git+https://github.com/nespaset/ken.git
+	sha256sums = SKIP
+
+pkgname = ken-git
