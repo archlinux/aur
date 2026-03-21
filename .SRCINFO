@@ -1,6 +1,6 @@
 pkgbase = comty-desktop
 	pkgdesc = Official Comty Desktop application
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/ragestudio/comty
 	arch = x86_64
