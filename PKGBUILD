@@ -7,11 +7,11 @@
 ## build root via __FILE__ macro
 
 pkgname=arcan
-pkgver=0.7.0.1
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Game Engine meets a Display Server meets a Multimedia Framework"
 arch=(x86_64)
-url="https://github.com/letoram/arcan"
+url="https://arcan-fe.com"
 license=(GPL LGPL BSD)
 depends=(espeak-ng
          ffmpeg
@@ -34,37 +34,43 @@ depends=(espeak-ng
          xcb-util-wm
 
          # namcap implicit depends
-         libusb glibc libxcb gcc-libs file libglvnd libdrm
-         )
-makedepends=(cmake meson ruby wayland-protocols xcb-util)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/letoram/arcan/archive/${pkgver}.tar.gz")
-sha256sums=('63d925d100389e7a1074a8746a080a01d94739df487c2f8e311eb49adc006c6e')
+         file gcc-libs glibc libdrm libglvnd libusb libxcb)
+makedepends=(cmake git meson ruby wayland-protocols xcb-util)
+source=("https://codeberg.org/letoram/arcan/archive/$pkgver.tar.gz")
+b2sums=('7c721cb6f0eed3eba1844986a19eca6925651ae21c72dd635cef61bb1eda8b7efc91f1f5ece0a65c5f9a373630187c68a87a65e051ae6af9e85acc42e057e888')
+
+prepare() {
+  cd $pkgname/external/git
+
+  ./clone.sh
+}
 
 build() {
+  cd $pkgname
+
   export CFLAGS+=" -Wno-error=format-security"
   export CXXFLAGS+=" -Wno-error=format-security"
 
   ## Build docs, Needs to happen before cmake runs
-  ruby -C ${pkgname}-${pkgver}/doc -Ku docgen.rb mangen
+  ruby -C doc -Ku docgen.rb mangen
 
-  local _flags=(
-    -DDISABLE_JIT=ON
-    -DDISTR_TAG=arch
-    -DENGINE_BUILDTAG="${pkgver}-${pkgrel}"
-    -DLUA_INCLUDE_DIR=/usr/include/lua5.1
-    -DHYBRID_HEADLESS=ON
-    #-DHYBRID_SDL=ON
-  )
-
-  cmake -B build -S "${pkgname}-${pkgver}/src" -Wno-dev \
-    -DCMAKE_BUILD_TYPE=None \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    "${_flags[@]}"
+  cmake -B build -S src -Wno-dev           \
+    -DBUILD_PRESET="everything"            \
+    -DCMAKE_BUILD_TYPE=None                \
+    -DCMAKE_INSTALL_PREFIX=/usr            \
+    -DDISABLE_JIT=ON                       \
+    -DDISTR_TAG=arch                       \
+    -DENGINE_BUILDTAG="$pkgver-$pkgrel"    \
+    -DLUA_INCLUDE_DIR=/usr/include/lua5.1  \
+    -DHYBRID_HEADLESS=ON                   \
+    -DHYBRID_SDL=ON                        \
 
   cmake --build build
 }
 
 package() {
-  DESTDIR="${pkgdir}" cmake --install build
-  install -Dm644 "${pkgname}-${pkgver}/"COPYING -t "$pkgdir/usr/share/licenses/${pkgname}/"
+  cd $pkgname
+
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
