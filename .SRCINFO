@@ -1,10 +1,11 @@
 pkgbase = libigloo
 	pkgdesc = Common C framework by the Icecast project
 	pkgver = 0.9.5
-	pkgrel = 1
-	url = ftp.osuosl.org/pub/xiph/releases/igloo
+	pkgrel = 2
+	url = https://ftp.osuosl.org/pub/xiph/releases/igloo
 	arch = x86_64
-	license = GNU-GPL
+	license = LGPL-2.0-only
+	depends = rhash
 	source = libigloo-0.9.5.tar.gz::https://ftp.osuosl.org/pub/xiph/releases/igloo/libigloo-0.9.5.tar.gz
 	sha256sums = ea22e9119f7a2188810f99100c5155c6762d4595ae213b9ac29e69b4f0b87289
 
