@@ -1,11 +1,10 @@
 pkgbase = vapoursynth-plugin-fftspectrum-rs-git
 	pkgdesc = Plugin for Vapoursynth: fftspectrum-rs (GIT version)
-	pkgver = 1.0.11.23.g8f14f4d
-	pkgrel = 1
+	pkgver = 1.0.11.29.g48d96fe
+	pkgrel = 2
 	url = https://github.com/sgt0/vapoursynth-fftspectrum-rs
 	arch = x86_64
 	license = MIT
-	makedepends = git
 	makedepends = cargo
 	depends = vapoursynth
 	provides = vapoursynth-plugin-fftspectrum-rs
