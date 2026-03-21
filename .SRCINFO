@@ -1,0 +1,15 @@
+pkgbase = python-chibi-wpa-supplicant
+	pkgdesc = package for handling config file of wpa supplicant
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://pypi.org/project/chibi_wpa_supplicant/
+	arch = any
+	license = WTFPL
+	makedepends = python-setuptools
+	depends = python-chibi
+	depends = python-chibi-atlas
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/c/chibi_wpa_supplicant/chibi_wpa_supplicant-1.0.0.tar.gz
+	sha256sums = 1fcd441e24021268caaef2526b76552cc35013bb2e012b4ef236f93d2bfa5dab
+
+pkgname = python-chibi-wpa-supplicant
