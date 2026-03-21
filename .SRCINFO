@@ -1,6 +1,6 @@
 pkgbase = certificate-ripper-bin
 	pkgdesc = A CLI tool to extract server certificates
-	pkgver = 2.7.0
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://github.com/Hakky54/certificate-ripper
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = certificate-ripper-bin
 	depends = zlib
 	provides = certificate-ripper
 	conflicts = certificate-ripper
-	source_x86_64 = crip-2.7.0-amd64.tar.gz::https://github.com/Hakky54/certificate-ripper/releases/download/2.7.0/crip-linux-amd64.tar.gz
-	sha256sums_x86_64 = a2480e7ba47b3353a605196c69126b73489905b89dac3bbc9c8c8edfd23164b6
-	source_aarch64 = crip-2.7.0-aarch64.tar.gz::https://github.com/Hakky54/certificate-ripper/releases/download/2.7.0/crip-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 0a0778aace3f9f18d79b9f0a3603d04c9a0fe599364c16cf0add4b574120c9b6
+	source_x86_64 = crip-2.7.1-amd64.tar.gz::https://github.com/Hakky54/certificate-ripper/releases/download/2.7.1/crip-linux-amd64.tar.gz
+	sha256sums_x86_64 = fa1f26a890df2d1c8b079ae30b26ee40cd2beddbbe1bf332c415dc7793518ba8
+	source_aarch64 = crip-2.7.1-aarch64.tar.gz::https://github.com/Hakky54/certificate-ripper/releases/download/2.7.1/crip-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 4822cb408ca973bb0c0942796e01182287b828f3165404a67bdc9d1b9f25411d
 
 pkgname = certificate-ripper-bin
