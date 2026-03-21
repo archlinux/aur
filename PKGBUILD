@@ -1,7 +1,7 @@
 # Maintainer: terrorwolf <jan.jr03+aur@gmail.com>
 # Co-Maintainer: OmegaRogue <omegarogue@omegavoid.codes>
 pkgname=opendeck
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="A cross-platform desktop application that provides functionality for stream controller devices."
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
 	"${pkgname}::git+https://github.com/nekename/OpenDeck#tag=v${pkgver//_/-}"
 )
 
-sha256sums=('b97b82c6135095900eed37ef0129ae0fec28622bb8e5c522a69687106928ef38')
+sha256sums=('61c7fad36876bd9e9c55190135a9aed06fd84fcd595c24fb1aa846932df992d1')
 
 prepare() {
 	cd "$srcdir/${pkgname}/src-tauri"
