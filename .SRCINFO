@@ -1,7 +1,7 @@
 pkgbase = comty-desktop-bin
 	pkgdesc = Official Comty Desktop application bin
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ragestudio/comty
 	arch = x86_64
 	license = MIT

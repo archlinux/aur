@@ -4,7 +4,7 @@ pkgname=comty-desktop-bin
 _electronversion=39
 
 pkgver="0.8.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Comty Desktop application bin"
 arch=("x86_64")
 url="https://github.com/ragestudio/comty"
@@ -30,7 +30,7 @@ prepare() {
 }
 
 package() {
-    install -Dm644 data/opt/comty-desktop/resources/app.asar "$pkgdir/usr/lib/comty/app.asar"
+    install -Dm644 data/opt/Comty/resources/app.asar "$pkgdir/usr/lib/comty/app.asar"
 	install -Dm755 comty.sh "$pkgdir/usr/bin/comty"
 
     install -Dm644 data/usr/share/icons/hicolor/512x512/apps/comty-desktop.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/comty.png"
