@@ -1,7 +1,7 @@
 #Maintainer: Bhoppi Chaw <bhoppi#outlook,com>
 
 pkgname=ffxvid
-pkgver=1.8.16
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Small script to encode to Xvid video using FFmpeg'
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=(
   'gpac: for MP4 cover art'
 )
 source=("https://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('1f8713ca7cba920a32ed3130e2aa264cb4495a96c3113a518087c2e623b1be32')
+sha256sums=('3d4b4b8badef7a571cd82dc9d979273f21ac4479f56632b4ff63e0dd9f8d4db7')
 
 package() {
   cd $pkgname-$pkgver
