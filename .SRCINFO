@@ -1,6 +1,6 @@
 pkgbase = gitv
 	pkgdesc = a terminal-based viewer for GitHub issues
-	pkgver = 0.3.4
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/JayanAXHF/gitv
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = gitv
 	depends = libgcc
 	depends = libgcc_s.so
 	depends = glibc
-	source = https://github.com/JayanAXHF/gitv/archive/gitv-tui-v0.3.4/gitv-tui-v0.3.4.tar.gz
-	sha256sums = 9cdff28b648df73187adb1aec09fb87dbbcce1f590ffee85884b39f48366107f
+	source = https://github.com/JayanAXHF/gitv/archive/gitv-tui-v0.4.1/gitv-tui-v0.4.1.tar.gz
+	sha256sums = d3b25900bd3a81ae5d2fb62b85f848018c25362bde00e328094bbbfc09c5274a
 
 pkgname = gitv
