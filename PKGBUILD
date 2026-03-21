@@ -2,7 +2,7 @@
 _pkgname=delighter
 pkgname=agisoft-${_pkgname}
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free stand-alone tool designed to remove shadows from model textures"
 arch=('x86_64')
 url="https://www.agisoft.com/"
@@ -13,7 +13,7 @@ options=('!strip')
 install=${pkgname}.install
 source=("https://download.agisoft.com/${_pkgname}_${pkgver//./_}_amd64.tar.gz"
 	"agisoft-delighter-icon-encoded.txt")
-sha256sums=('0fd28dff84b926beaf5f70bd822b76e582204ed9cd6d646939772daa2d1ced21'
+sha256sums=('d21e0b254d4851a104a8be65190b4369d6be504f4a9d566e96004f6aa78a209a'
             '6cc74a4ac8ec776ebea5eff2383ddaf2520bb0a47f7d2135a62277dbd9206921')
 
 build() {
