@@ -1,0 +1,12 @@
+post_install() {
+    echo "=========================================================="
+    echo " Media Archive Organizer has been installed successfully!"
+    echo " "
+    echo " Launch it via your application menu or by running:"
+    echo " media-archive-organizer"
+    echo "=========================================================="
+}
+
+post_upgrade() {
+    post_install
+}

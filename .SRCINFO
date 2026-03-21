@@ -1,0 +1,17 @@
+pkgbase = mediaarchiveorganizer
+	pkgdesc = Automated Media Organization & AI Cleanup Tool
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/Undadfeated/Media_Archive_Organizer
+	install = media-archive-organizer.install
+	arch = any
+	license = MIT
+	depends = python-customtkinter
+	depends = python-opencv
+	depends = python-pillow
+	depends = python-pip
+	provides = mediaarchiveorganizer
+	source = git+https://github.com/Undadfeated/Media_Archive_Organizer.git#tag=v3.0.2
+	sha256sums = SKIP
+
+pkgname = mediaarchiveorganizer
