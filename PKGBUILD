@@ -1,11 +1,13 @@
 # Maintainer: Christian Möllmann (knoelliX) <moellix@knoellix.net>
 pkgname=nativmix
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
-pkgdesc="Hardware-based PipeWire volume & MIDI mixer for Wayland. Controls physical inputs, virtual sinks, and MIDI devices. (Modern deej alternative)"
+pkgdesc="Hardware-based PipeWire volume & MIDI mixer for Linux. Controls physical Arduino faders, virtual sinks, and MIDI devices."
 arch=('any')
 url="https://github.com/knoelliX/NativMix"
 license=('GPL-3.0-or-later')
+provides=('nativmix')
+conflicts=('nativmix-git')
 
 depends=(
     'python'
@@ -22,19 +24,18 @@ makedepends=(
     'python-installer'
     'python-setuptools'
     'python-wheel'
-    'git'
 )
 
 optdepends=(
     'kvantum: Plasma transparency and blur engine support'
+    'breeze: Breeze Qt style for native KDE appearance'
+    'qt6-wayland: Wayland compositor support'
 )
 
-# Removed auto-build logic
 install=nativmix.install
 
-# Hybride Source-Logik entfernt - Dies ist nun das offizielle PKGBUILD
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/knoelliX/NativMix/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5419007501178c27c70ae864ee50d9e254bd8990e36961350c93b0983f6745af')
+sha256sums=('b073507e787d956d4ad6fc987365adc79c03ef00befd35944dcf61d904f20bc3')
 
 prepare() {
     # Find extracted directory (GitHub tags prepends 'NativMix-' or 'nativmix-')
