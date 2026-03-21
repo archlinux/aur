@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+import curses
+import time
+
+# Controls:
+# Player 1 (left): W / S
+# Player 2 (right): Arrow Up / Arrow Down
+
+PADDLE_HEIGHT = 5
+BALL_SPEED = 0.06
+
+class Paddle:
+    def __init__(self, y, x, height):
+        self.y = y
+        self.x = x
+        self.height = height
+
+    def move_up(self):
+        if self.y > 1:
+            self.y -= 1
+
+    def move_down(self, max_y):
+        if self.y + self.height < max_y - 1:
+            self.y += 1
+
+class Ball:
+    def __init__(self, y, x):
+        self.y = y
+        self.x = x
+        self.vy = -1
+        self.vx = -1
+
+    def update(self):
+        self.y += self.vy
+        self.x += self.vx
+
+    def bounce_y(self):
+        self.vy *= -1
+
+    def bounce_x(self):
+        self.vx *= -1
+
+
+def draw_paddle(stdscr, paddle):
+    for i in range(paddle.height):
+        stdscr.addch(paddle.y + i, paddle.x, '|')
+
+
+def draw_ball(stdscr, ball):
+    stdscr.addch(int(ball.y), int(ball.x), 'O')
+
+
+def main(stdscr):
+    curses.curs_set(0)
+    stdscr.nodelay(1)
+    stdscr.timeout(0)
+
+    max_y, max_x = stdscr.getmaxyx()
+
+    p1 = Paddle(max_y // 2 - PADDLE_HEIGHT // 2, 2, PADDLE_HEIGHT)
+    p2 = Paddle(max_y // 2 - PADDLE_HEIGHT // 2, max_x - 3, PADDLE_HEIGHT)
+    ball = Ball(max_y // 2, max_x // 2)
+
+    score1 = 0
+    score2 = 0
+
+    while True:
+        stdscr.clear()
+
+        key = stdscr.getch()
+
+        # Player 1 controls
+        if key in [ord('w'), ord('W')]:
+            p1.move_up()
+        elif key in [ord('s'), ord('S')]:
+            p1.move_down(max_y)
+
+        # Player 2 controls
+        elif key == curses.KEY_UP:
+            p2.move_up()
+        elif key == curses.KEY_DOWN:
+            p2.move_down(max_y)
+
+        ball.update()
+
+        # Top/bottom collision
+        if ball.y <= 1 or ball.y >= max_y - 2:
+            ball.bounce_y()
+
+        # Paddle collision
+        if (ball.x == p1.x + 1 and p1.y <= ball.y <= p1.y + p1.height):
+            ball.bounce_x()
+        if (ball.x == p2.x - 1 and p2.y <= ball.y <= p2.y + p2.height):
+            ball.bounce_x()
+
+        # Score check
+        if ball.x <= 0:
+            score2 += 1
+            ball = Ball(max_y // 2, max_x // 2)
+        elif ball.x >= max_x - 1:
+            score1 += 1
+            ball = Ball(max_y // 2, max_x // 2)
+
+        # Draw middle line
+        for y in range(1, max_y - 1):
+            stdscr.addch(y, max_x // 2, ':')
+
+        draw_paddle(stdscr, p1)
+        draw_paddle(stdscr, p2)
+        draw_ball(stdscr, ball)
+
+        # Draw score
+        score_text = f"{score1} : {score2}"
+        stdscr.addstr(0, max_x // 2 - len(score_text) // 2, score_text)
+
+        stdscr.refresh()
+        time.sleep(BALL_SPEED)
+
+
+if __name__ == '__main__':
+    curses.wrapper(main)
