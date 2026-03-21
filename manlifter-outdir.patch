@@ -1,8 +1,6 @@
-Index: doclifter/manlifter
-===================================================================
---- doclifter.orig/manlifter
-+++ doclifter/manlifter
-@@ -837,6 +837,6 @@ if __name__ == "__main__":
+--- a/manlifter	2026-02-21 16:06:02.000000000 -0300
++++ b/manlifter	2026-03-21 01:51:18.564241050 -0300
+@@ -843,6 +843,6 @@
          sys.stderr.write("manlifter: can't find doclifter!\n")
          sys.exit(1)
      # Gather options

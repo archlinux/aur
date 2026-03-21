@@ -1,0 +1,11 @@
+--- a/Makefile	2026-02-21 16:06:02.000000000 -0300
++++ b/Makefile	2026-03-21 01:39:52.845988969 -0300
+@@ -28,7 +28,7 @@
+ 
+ # Build
+ 
+-all: doclifter.1 doclifter.html manlifter.1 manlifter.htm;
++all: doclifter.1 doclifter.html manlifter.1 manlifter.html;
+ 
+ clean:
+ 	rm -f doclifter.html manlifter.html doclifter.1 manlifter.1
