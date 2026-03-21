@@ -4,7 +4,7 @@
 
 _target=arm-linux-gnueabi
 pkgname=$_target-binutils
-pkgver=2.45.1
+pkgver=2.46.0
 pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM GNU EABI little-endian target'
 arch=('x86_64' 'i686' 'armv7h')
@@ -12,7 +12,7 @@ url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=(zlib)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
-sha512sums=('a5934bc5ec5d6fac45fe6f9ab863e7aa0f0608348e32dc2794f2a4aebba703992d5d30b5107afee0571aecfd4788a73a5bb3b0ee1028249547765b5787dd0274'
+sha512sums=('0706f565112981eea5f6f412a928f14ffcd7afec0e289259709c5d6a41fd54d0ebe675de0580684affe20ac71b7686e235555f8f3ca20537f99330ca46491ab9'
             'SKIP')
 validpgpkeys=('5EF3A41171BB77E6110ED2D01F3D03348DB1A3E2'  # Sam James <sam@gentoo.org>
               '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
@@ -34,6 +34,7 @@ build() {
               --with-sysroot=/usr/$_target \
               --prefix=/usr \
               --disable-multilib \
+              --disable-werror \
               --with-gnu-as \
               --with-gnu-ld \
               --disable-nls \
