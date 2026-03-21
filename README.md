@@ -18,11 +18,6 @@ Media Archive Organizer is a powerful application designed to help you organize 
 
 **Developer**: [Undadfeated](https://github.com/Undadfeated)
 
-## Screenshots
-
-![Application Interface](src/assets/screenshot.png)
-<!-- slide -->
-
 ## Key Features
 
 ### 📁 Smart Organization
