@@ -1,0 +1,40 @@
+post_install() {
+    echo ""
+    echo "==> Omarchy Delta Theme Sync installed!"
+    echo ""
+    echo "🚀 To complete setup, run:"
+    echo "   omarchy-delta-theme-sync setup"
+    echo ""
+    echo "   This will:"
+    echo "   • Install delta theme script to ~/.local/bin/"
+    echo "   • Add hook to Omarchy theme-set"
+    echo "   • Apply current theme to delta"
+    echo ""
+    echo "Then change your Omarchy theme and watch delta follow along!"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> Omarchy Delta Theme Sync updated!"
+    echo ""
+    echo "   To complete the update, run:"
+    echo "   omarchy-delta-theme-sync setup"
+    echo ""
+    echo "   This will:"
+    echo "   • Update the delta theme script"
+    echo "   • Ensure hook is properly configured"
+    echo "   • Re-apply current theme"
+    echo ""
+}
+
+post_remove() {
+    echo ""
+    echo "==> Omarchy Delta Theme Sync removed."
+    echo ""
+    echo "Note: Run 'omarchy-delta-theme-sync uninstall' before removing"
+    echo "      the package to clean up user files:"
+    echo "      • ~/.local/bin/omarchy-delta-theme-apply"
+    echo "      • Hook in ~/.config/omarchy/hooks/theme-set"
+    echo ""
+}

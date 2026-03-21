@@ -1,0 +1,15 @@
+pkgbase = omarchy-delta-theme-sync
+	pkgdesc = Automatic delta theme synchronization for Omarchy
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/prepin/omarchy-delta-theme-sync
+	install = omarchy-delta-theme-sync.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = git-delta
+	source = omarchy-delta-theme-sync-1.0.0.tar.gz::https://github.com/prepin/omarchy-delta-theme-sync/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = omarchy-delta-theme-sync
