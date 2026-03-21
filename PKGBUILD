@@ -3,7 +3,7 @@
 # Contributor: paterbrown <paterbrown at silberhelme dot de>
 
 pkgname=gst123
-pkgver=0.3.5
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A more flexible command line player in the spirit of ogg123 and mpg123, based on gstreamer"
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ optdepends=('gst-libav: more codecs support'
             'gst-plugins-good: more codecs support'
             'gst-plugins-bad: more codecs support'
             'gst-plugins-ugly: more codecs support')
-source=("http://space.twc.de/~stefan/$pkgname/$pkgname-$pkgver.tar.bz2")
-md5sums=('384538b35522baf539ca49d4fa5f71fd')
+source=("https://github.com/swesterfeld/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2")
+md5sums=('da6d91678803437886fe3187b2879ffa')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
