@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Annotator
+Icon=sticky
+Exec=/home/one/Application/sticky/annotator %f
+Comment=贴图和图片标注工具
+Categories=Graphics
+MimeType=image/jpeg;image/png;image/bmp;image/x-portable-bitmap;image/x-portable-pixmap;image/tiff;image/x-webp;image/webp;
+Terminal=false
+StartupWMClass=site.nullable.annotator
+StartupNotify=true

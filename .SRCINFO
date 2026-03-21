@@ -1,0 +1,17 @@
+pkgbase = image-annotator-git
+	pkgdesc = 使用Rust开发的贴图和图片标注工具，支持Linux wayland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/FengZhongShaoNian/annotator
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo-nightly
+	depends = wayland
+	depends = libxkbcommon
+	provides = annotator
+	conflicts = annotator
+	conflicts = annotator-git
+	source = git+https://github.com/FengZhongShaoNian/annotator
+	sha256sums = SKIP
+
+pkgname = image-annotator-git
