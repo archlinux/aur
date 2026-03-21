@@ -1,0 +1,15 @@
+post_install() {
+    echo ""
+    echo "==> Pencil MCP server installed at /opt/pencil-dev-appimage/mcp-server"
+    echo "==> To use a stable MCP path with Claude Code, add to ~/.claude.json mcpServers:"
+    echo '    "pencil": {'
+    echo '      "command": "/opt/pencil-dev-appimage/mcp-server",'
+    echo '      "args": ["--app", "desktop"],'
+    echo '      "type": "stdio"'
+    echo '    }'
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

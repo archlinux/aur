@@ -10,10 +10,13 @@ license=('custom')
 provides=('pencil-dev')
 conflicts=('pencil-dev' 'pencil-dev-bin')
 depends=('fuse2' 'zlib' 'hicolor-icon-theme')
+install="${pkgname}.install"
 options=('!strip' '!debug')
 source=("Pencil-linux-x86_64-${pkgver}.AppImage::https://www.pencil.dev/download/Pencil-linux-x86_64.AppImage"
-        "LICENSE")
-sha256sums=('77181ede2a3686ee1e5e941169e3b020b6e55998ed8bd7f198431de695b1c277'
+        "LICENSE"
+        "${pkgname}.install")
+sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 noextract=("Pencil-linux-x86_64-${pkgver}.AppImage")
 
@@ -80,8 +83,15 @@ EOF
         done
     fi
 
+    # Install MCP server to a stable path (AppImage mount point changes on each launch)
+    if [ -f "${srcdir}/squashfs-root/resources/app.asar.unpacked/out/mcp-server-linux-x64" ]; then
+        install -Dm755 "${srcdir}/squashfs-root/resources/app.asar.unpacked/out/mcp-server-linux-x64" \
+            "${pkgdir}/opt/${pkgname}/mcp-server"
+    fi
+
     # Install license
     if [ -f "${srcdir}/LICENSE" ]; then
         install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     fi
 }
+
