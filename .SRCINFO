@@ -1,6 +1,6 @@
 pkgbase = atmos-bin
 	pkgdesc = Automated Terraform Management & Orchestration Software (ATMOS)
-	pkgver = 1.208.0
+	pkgver = 1.210.1
 	pkgrel = 1
 	url = https://github.com/cloudposse/atmos
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = atmos-bin
 	license = Apache-2.0
 	optdepends = terraform
 	optdepends = opentofu
-	source_x86_64 = atmos_1.208.0_linux_bin::https://github.com/cloudposse/atmos/releases/download/v1.208.0/atmos_1.208.0_linux_amd64
-	sha512sums_x86_64 = edbb66c244462035067e738ddb49dad16cfab0b2170e9d35c946396651a200178c2e780a670eca82f9550fe3c7d38b8e8d80616f2864d43f96f2800e6f40fecd
-	b2sums_x86_64 = 1d7868494ead7d7e7794b6e110f3e92d4ef93374bff74ca2fe3a6d41eb120991646a9fcae2c15284aa94dc56a0d3ca1ba0435c1260289f1e78b2b6ed582f31c6
-	source_aarch64 = atmos_1.208.0_linux_bin::https://github.com/cloudposse/atmos/releases/download/v1.208.0/atmos_1.208.0_linux_arm64
-	sha512sums_aarch64 = 0fd290efa556e741fda67a1a0efe62cb6f87eb9177eb8b2c414c6f13b459ba86bdd8d4157552e86e5be1f5ed164d8b0184d46f08e0ff5c23809572e875cf90c1
-	b2sums_aarch64 = c25b42ed018a747c76e2371d69ac788ab1e281af262cd81f2faa976da875e011505066bd6547230788408da35c7866046a96aca55b759f2b268086ceb0d7ec51
+	source_x86_64 = atmos_1.210.1_linux_bin::https://github.com/cloudposse/atmos/releases/download/v1.210.1/atmos_1.210.1_linux_amd64
+	sha512sums_x86_64 = 8f7f20d0374c2d8e1644856cc9e11dcb8a1215fba40ce9765f89c626fa9be041a4145aef335b987b2b95acb86cb89d9e29a2b9db7200e58d2cc0673e3b5132c4
+	b2sums_x86_64 = 63530f7738405051f8e1951134060b2e5f054d37109118d4c97cd59e02c23bc79436b3700dd2b45f619eb8f7be87c21068940bef9a63cff27bdd1f7c7608029c
+	source_aarch64 = atmos_1.210.1_linux_bin::https://github.com/cloudposse/atmos/releases/download/v1.210.1/atmos_1.210.1_linux_arm64
+	sha512sums_aarch64 = a8cd6c52eff129d718342b3522d199712d95b9d576a36b84d324f005b4556b2f5707a719b6671ac7bbd58830f30717cf77f20eb4802f3c3885b90690b54bd06d
+	b2sums_aarch64 = 2375b6a977ed9c88ec8c832882abacee805c5de14c04b81d3f6f23f074b5591098836cb65d851878470d5bbd2fe2a9f1517768d8c0142a4a2be9e49d82e2ceba
 
 pkgname = atmos-bin
