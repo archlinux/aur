@@ -1,7 +1,7 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 pkgname=gram-editor-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A code editor for humanoid apes and grumpy toads"
 
 provides=(gram-editor gram)
@@ -44,6 +44,11 @@ package() {
 	install -Dm0755 bin/gram "$pkgdir/usr/bin/gram"
 	install -Dm0755 libexec/gram-editor "$pkgdir/usr/lib/gram/gram-editor"
 	install -Dm0644 share/applications/gram.desktop "$pkgdir/usr/share/applications/se.ziran.Gram.desktop"
-	install -Dm0644 share/icons/hicolor/512x512/apps/gram.png "$pkgdir/usr/share/icons/gram.png"
+
+	mkdir -p "$pkgdir/usr/share/icons/"
+
+	cp -r share/icons "$pkgdir/usr/share/icons/"
+
+	chmod -R 755 "$pkgdir/usr/share/icons/"
 }
 
