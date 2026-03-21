@@ -1,7 +1,7 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 
 pkgname=xmedcon
-pkgver=0.25.3
+pkgver=0.26.1
 pkgrel=1
 pkgdesc="open source toolkit for medical image conversion"
 url="http://xmedcon.sourceforge.net/"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 depends=('gtk3')
 source=("https://prdownloads.sourceforge.net/xmedcon/xmedcon-$pkgver.tar.bz2")
-sha256sums=('f55ad340feb5e2d22b999466f5b4a99a55ea09b30fceabe1bf6db678588a4b83')
+sha256sums=('99fe36e2a82dd45aaa9f00d053b6fc5cb40d26c7ac2d08b4ed3d0b74fd5c74f8')
 options=('!libtool')
 
 prepare() {
