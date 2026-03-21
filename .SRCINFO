@@ -1,0 +1,20 @@
+pkgbase = sake-git
+	pkgdesc = A new aur helper written in Go, created for people's convenience
+	pkgver = r1.0.1
+	pkgrel = 1
+	url = https://github.com/nespaset/sake
+	arch = x86_64
+	arch = aarch64
+	license = Apache
+	makedepends = go
+	depends = pacman
+	depends = git
+	depends = binutils
+	provides = sake
+	provides = sk
+	conflicts = sake
+	conflicts = sk
+	source = git+https://github.com/nespaset/sake.git
+	sha256sums = SKIP
+
+pkgname = sake-git
