@@ -1,5 +1,5 @@
 pkgname=ayais-bin
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Cross-platform desktop app for AI website integration"
 arch=('x86_64')
