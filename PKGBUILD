@@ -8,9 +8,9 @@ url="https://github.com/boussou/HotShots"
 license=('GPL-2.0-or-later')
 depends=('qt5-x11extras' 'qt5-multimedia')
 makedepends=('git' 'qt5-tools')
-provides=("${pkgname}")
+provides=("${pkgname%-git}")
 conflicts=("hotshots-git")
-source=("${pkgname}::git+https://github.com/boussou/HotShots.git#tag=v${pkgver}")
+source=("${pkgname%-git}::git+https://github.com/boussou/HotShots.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 
@@ -31,4 +31,3 @@ package() {
 }
 
 sha256sums=('SKIP')
-sha256sums=('769e18cf855b035f7397410b861de43e5c3725c5325536e23aafad4389134fac')
