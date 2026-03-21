@@ -6,7 +6,7 @@ _pyname=${_pname/-/_}
 #_pyname=${_pname}
 pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="ASDF serialization support for astropy"
 arch=('any')
@@ -20,6 +20,7 @@ makedepends=('python-setuptools-scm'
 #             'python-sphinx-asdf'
 ##            'python-matplotlib'
 #             'python-tomli'
+#             'python-asdf_transform_schemas'
 #             'python-asdf_coordinates_schemas'
 #             'graphviz'
 #            )    # avoid cascading dep of sphinx-asdf; wheel required by new setuptools
@@ -29,9 +30,10 @@ checkdepends=('python-pytest-astropy-header'
               'python-pytest-asdf-plugin'
               'python-astropy'
               'python-scipy'
+              'python-asdf_transform_schemas'
               'python-asdf_coordinates_schemas')   # 'python-asdf' 'python-astropy' by sphinx-asdf
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('1086c98663d8737c406079c36a419953')
+md5sums=('7422a69c37235bc9a4bab66f4be472ec')
 
 get_pyver() {
     python -c "import sys; print('$1'.join(map(str, sys.version_info[:2])))"
