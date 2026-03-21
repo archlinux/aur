@@ -1,7 +1,7 @@
 # Maintainer: Bartlomiej Dudek <dooodek at protonmail dot com>
 pkgname=ccd-nav
 _binname=ccd
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Recursive cd - find and jump into nested directories instantly'
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 provides=('ccd')
 conflicts=('ccd')
 source=("$_binname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('54ac4932ebb7c549fef340f0410dbd813acac83a4da4dc15f4dc9fdd6b6d88a0')
+sha256sums=('80a83ba8c283665d2351f096dbad8a88f9d71460e14a4a2abaee82b93b682fe0')
 
 prepare() {
   cd "$_binname-$pkgver"
