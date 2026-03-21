@@ -1,7 +1,7 @@
 # Maintainer: Catppuccin <releases@catppuccin.com>
 
 pkgname=catppuccin-whiskers-bin
-pkgver=2.5.1 # renovate: datasource=github-tags depName=catppuccin/whiskers
+pkgver=2.6.1 # renovate: datasource=github-tags depName=catppuccin/whiskers
 pkgrel=1
 pkgdesc="Soothing port creation tool for the high-spirited!"
 url="https://github.com/catppuccin/whiskers"
@@ -11,7 +11,7 @@ license=('MIT')
 arch=('x86_64')
 
 source=("${url}/releases/download/v${pkgver}/whiskers-${arch}-unknown-linux-gnu")
-sha256sums=('94d4c33cfb05286c23bb3b0b49217a109c8e12f5ec6e785fb4abb4bdb37b8086')
+sha256sums=('80ff608b0187d8726189b5e9bc5823ff9849136c73aef9ce300b06b498eb26aa')
 
 package() {
 	install -Dm755 whiskers-${arch}-unknown-linux-gnu "${pkgdir}/usr/bin/whiskers"
