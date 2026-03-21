@@ -3,7 +3,7 @@
 pkgbase=uotantoolboxnt
 pkgname=uotantoolboxnt
 _name=UotanToolboxNT
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 epoch=
 pkgdesc="现代化 Android & OpenHarmony 工具箱 | A Modern Toolbox for Android & OpenHarmony Devices"
@@ -34,7 +34,7 @@ source=(
     "${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
     "UotanToolboxNT.Binary::git+https://github.com/Uotan-Dev/UotanToolboxNT.Binary.git"
 )
-sha256sums=('742067f9ed357cab73304d5d7da59dc641609829c50e6776fcb95f929e43a9a7'
+sha256sums=('bbef3313a687293a7510dd3ad403a90e56ef4770db16872eaaf16afdc098d116'
             'SKIP')
 noextract=()
 
