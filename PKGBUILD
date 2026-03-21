@@ -1,14 +1,9 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Guidelines specific to Bazaar, Git, Mercurial and Subversion packages.
 # Other VCS sources are not natively supported by makepkg yet.
 
 # Maintainer: minerharry <miner.harry567@gmail.com>
 pkgname=keysharp-git
-pkgver=r1895.55b0ffa
+pkgver=r1921.38a1536
 pkgrel=1
 pkgdesc="Cross-platform rewrite of AutoHotkey in C#. Fork of now-defunct IronAHK. X11 version."
 arch=('x86_64')
@@ -70,4 +65,6 @@ package() {
   #make install/uninstall scripts executable
   chmod +x "${pkgdir}/usr/share/keysharp/install.sh"
   chmod +x "${pkgdir}/usr/share/keysharp/uninstall.sh"
+
+  #actual installation/uninstallation happens in keysharp.install
 }
