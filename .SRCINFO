@@ -1,0 +1,17 @@
+pkgbase = cipher-security
+	pkgdesc = AI-powered cybersecurity platform — 1,539 skills, 39 compliance frameworks, autonomous security engine
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/defconxt/CIPHER
+	arch = any
+	license = AGPL-3.0-only
+	makedepends = npm
+	makedepends = git
+	depends = nodejs>=18
+	optdepends = nuclei: vulnerability scanning
+	optdepends = katana: web crawling and attack surface discovery
+	optdepends = docker: benchmark sandbox and container security testing
+	source = git+https://github.com/defconxt/CIPHER.git#tag=v5.0.0
+	sha256sums = SKIP
+
+pkgname = cipher-security
