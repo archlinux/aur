@@ -1,7 +1,7 @@
 # Maintainer: Yamashiro <dev cosmicheron com>
 
 pkgname="yquake2remaster"
-pkgver="8.61RR14"
+pkgver="8.61RR15"
 pkgrel="1"
 pkgdesc='Experimental fork of Yamagi Quake II to add support for Quake II Enhanced/Remaster(ed)'
 url="https://github.com/yquake2/${pkgname}"
@@ -13,29 +13,27 @@ optdepends=('curl' 'openal' 'quake2-data' 'quake2-demo' 'vulkan-driver')
 source=(
 	"${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"
 	"${pkgname}.desktop"
-	"${pkgname}-ctf.desktop"
-	"${pkgname}-rogue.desktop"
-	"${pkgname}-xatrix.desktop"
 )
 b2sums=(
-	'c3a90dece686ed53aa8d50327a6feaacdbc838a9c5e96fd26324580a054606085e1df93a8fe14a64584c00b14df6c186c815e8aff314b65ce7035ad8df155dba'
+	'a544dfc10fc3dee0332a54b96113bc3ec97a7637c9beee69ff3eab5d7fb69b298e5625b2df33a398e304b3b1f9e8c61573d81240aeb47bc14d48a1fd416c68a3'
 	'3c3927d7687c65d0155ac1c327e4ef3cf0bea0b5eea771965a6acf126e59d1deb46517750737ca12eef5d4d3034a32b3ccd03d0535b5468a6fc5bef302fdec6a'
-	'f0760cd3e48ffc15dca55f0adea4a17a94bfc6127a01ae0d22379192907e4d6ec4870abf7e2d7664bdbf639802ad682c51718f1fc92fa11f6d2596c6cca6718e'
-	'1179bec70b7ef46a6b9f8dd9b642fda226e1b1d5a460f03e2475f07582800ca25bf9bf5710a7ff2aaebd9df2144eb9132b7dec596571c6eba9b16f39992d2f10'
-	'db424d4a59387fcbd04c9142b830eb6a50627102c036ff9b42ef883daefa07e75d0e848e928874f0cb752d0bbba322365eb98e619701ee42d4890fe975cbba9e'
 )
 
+prepare() {
+	cmake -S "${srcdir}/${pkgname}-${pkgver}" "${srcdir}/${pkgname}-${pkgver}/build"
+}
+
 build() {
-	make -C "${srcdir}/${pkgname}-${pkgver}" WITH_RPATH=no WITH_SYSTEMWIDE=yes WITH_SDL3=yes
+	make -C "${srcdir}/${pkgname}-${pkgver}/build" WITH_RPATH=no WITH_SYSTEMWIDE=yes WITH_SDL3=yes
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	# install game executables and libraries
-	install -Dm755 -t "${pkgdir}/usr/lib/${pkgname}" release/{quake2,q2ded}
-	install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" release/*.so
-	install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}/baseq2" 'release/baseq2/game.so'
+	install -Dm755 -t "${pkgdir}/usr/lib/${pkgname}" build/release/{quake2,q2ded}
+	install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" build/release/*.so
+	install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}/baseq2" 'build/release/baseq2/game.so'
 
 	# create symlinks
 	install -d "${pkgdir}/usr/bin"
@@ -54,7 +52,4 @@ package() {
 
 	# desktop entries
 	install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}.desktop"
-	install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}-ctf.desktop"
-	install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}-xatrix.desktop"
-	install -Dm644 -t "${pkgdir}/usr/share/applications" "${srcdir}/${pkgname}-rogue.desktop"
 }
