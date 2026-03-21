@@ -1,14 +1,14 @@
 pkgbase = configsmanager
 	pkgdesc = CLI tool for managing configs
-	pkgver = 1.1.6
+	pkgver = 1.1.7
 	pkgrel = 1
 	url = https://github.com/hurtki/configsManager
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = https://github.com/hurtki/configsManager/releases/download/v1.1.6/cm-linux-amd64
+	source_x86_64 = https://github.com/hurtki/configsManager/releases/download/v1.1.7/cm-linux-amd64
 	sha256sums_x86_64 = 27b4177ccbeabaa945b3fe7b21778f2b8a3ed9ee2f4a1f369ecbf6d243b0e8cc
-	source_aarch64 = https://github.com/hurtki/configsManager/releases/download/v1.1.6/cm-linux-arm64
+	source_aarch64 = https://github.com/hurtki/configsManager/releases/download/v1.1.7/cm-linux-arm64
 	sha256sums_aarch64 = 3dc22711427f09dddfa917a010ce83c786d37b1e7831c55d43dd4cfa2f7aaaa5
 
 pkgname = configsmanager
