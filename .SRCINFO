@@ -1,7 +1,7 @@
 pkgbase = python-jupyterlite-core
 	pkgdesc = Wasm powered Jupyter running in the browser
-	pkgver = 0.7.1
-	pkgrel = 3
+	pkgver = 0.7.4
+	pkgrel = 1
 	url = https://github.com/jupyterlite
 	arch = any
 	license = custom:BSD License
@@ -11,7 +11,7 @@ pkgbase = python-jupyterlite-core
 	makedepends = python-tornado
 	depends = python
 	optdepends = python-libarchive-c: for better performance when working with archives
-	source = https://files.pythonhosted.org/packages/c4/11/1e48ddaae568efc2d8354ff89e9e46425e32a033df600286521488d5656d/jupyterlite_core-0.7.1.tar.gz
-	sha256sums = e9c1068f875c2e75dca3771a035eb31826a41343e62bbb77c80ad2a3478b6986
+	source = https://github.com/jupyterlite/jupyterlite/releases/download/v0.7.4/jupyterlite_core-0.7.4.tar.gz
+	sha256sums = c8a74b4ca9792f611b657465f63a79543b381063ebebdc2b5b3b695704e14278
 
 pkgname = python-jupyterlite-core

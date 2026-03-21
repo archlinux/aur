@@ -3,10 +3,10 @@
 # modified by hand
 
 pkgname='python-jupyterlite-core'
+pkgver='0.7.4'
 _module='jupyterlite-core'
-_src_folder='jupyterlite_core-0.7.1'
-pkgver='0.7.1'
-pkgrel=3
+_src_folder="jupyterlite_core-${pkgver}"
+pkgrel=1
 pkgdesc="Wasm powered Jupyter running in the browser"
 url="https://github.com/jupyterlite"
 depends=('python')
@@ -14,8 +14,8 @@ makedepends=('python-build' 'python-installer' 'python-wheel' 'python-tornado')
 optdepends=('python-libarchive-c: for better performance when working with archives')
 license=('custom:BSD License')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/c4/11/1e48ddaae568efc2d8354ff89e9e46425e32a033df600286521488d5656d/jupyterlite_core-0.7.1.tar.gz")
-sha256sums=('e9c1068f875c2e75dca3771a035eb31826a41343e62bbb77c80ad2a3478b6986')
+source=("https://github.com/jupyterlite/jupyterlite/releases/download/v${pkgver}/jupyterlite_core-${pkgver}.tar.gz")
+sha256sums=('c8a74b4ca9792f611b657465f63a79543b381063ebebdc2b5b3b695704e14278')
 
 build() {
     cd "${srcdir}/${_src_folder}"
