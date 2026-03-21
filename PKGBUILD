@@ -24,8 +24,11 @@ pkgver() {
 
 prepare() {
     cd          "${srcdir}/${_pkgname}"
+
     autoreconf  -vi
-    ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin --sysconfdir=/etc --datarootdir=/usr/share --with-systemd
+    ./configure --prefix=/usr       --libdir=/usr/lib        --sbindir=/usr/bin \
+                --sysconfdir=/etc   --datarootdir=/usr/share --with-systemd \
+                --with-systemd-unit-dir=/usr/lib/systemd/system
 }
 
 build() {
@@ -36,5 +39,4 @@ build() {
 package() {
     cd          "${srcdir}/${_pkgname}"
     make        install DESTDIR="${pkgdir}" PREFIX="/usr"
-    mv          "${pkgdir}/lib" "${pkgdir}/usr/lib"
 }
