@@ -1,0 +1,12 @@
+post_install() {
+    mkdir /var/lib/booklore
+    echo -e "\033[1;34mINFO\033[0m\033[1m: Final steps to have a working grimmory instance:"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * initialise mariadb and create a database called 'booklore' (https://wiki.archlinux.org/title/MariaDB)\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * Update db info in /etc/booklore\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * To run, systemctl start booklore\033[0m"
+    echo -e "\033[1;34mINFO\033[0m\033[1m:     * To access, go to localhost:8095/\033[0m"
+}
+
+post_remove() {
+    userdel grimmory
+}

@@ -1,0 +1,3 @@
+Z /etc/grimmory 0700 grimmory grimmory
+Z /usr/share/webapps/grimmory/ 0755 grimmory http
+Z /var/lib/grimmory 0755 grimmory grimmory
