@@ -3,7 +3,7 @@ pkgname=yubico-authenticator
 _app_id=com.yubico.yubioath
 pkgdesc="Yubico Authenticator for Desktop"
 pkgver=7.3.2
-pkgrel=1
+pkgrel=2
 _flutter_ver=3.41.2  ## Check .github/workflows/env for version
 arch=('x86_64' 'aarch64')
 url="https://github.com/Yubico/yubioath-flutter"
@@ -50,7 +50,7 @@ prepare() {
   # Pull dependencies within prepare, allowing for offline builds later on
   fvm flutter pub get
 
-  desktop-file-edit --set-key=Exec --set-value="authenticator" --set-icon="${_app_id}" \
+  desktop-file-edit --set-key=Exec --set-value="$pkgname" --set-icon="${_app_id}" \
     "resources/linux/linux_support/${_app_id}.desktop"
 
   # Don't copy the Helper since we're not using Pyinstaller
@@ -94,7 +94,7 @@ package() {
   cp -r build/linux/${FLUTTER_ARCH}/release/bundle/{data,lib} "$pkgdir/opt/$pkgname"
 
   install -d "$pkgdir/usr/bin"
-  ln -s "/opt/$pkgname/authenticator" "$pkgdir/usr/bin/"
+  ln -s "/opt/$pkgname/authenticator" "$pkgdir/usr/bin/$pkgname"
 
   install -Dm644 "resources/icons/${_app_id}.png" -t \
     "$pkgdir/usr/share/icons/hicolor/128x128/apps/"
