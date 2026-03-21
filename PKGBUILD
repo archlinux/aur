@@ -1,6 +1,6 @@
 # Maintainer: insayd Cyan <insadamt@github>
 pkgname=mpwall
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="A terminal-native animated video wallpaper manager for Hyprland/Wayland"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('mpvpaper' 'gawk')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('73bcc64289bb1fea20a5b73a1140663eaf4a7340b68c666ba62cb8d1e503c9a2')
+sha256sums=('1d3fdba34da904ddf664bb7f4cddf34e2807be4ef22e14306726e99ba5e19a88')
 
 prepare() {
     cd "$pkgname-$pkgver"
