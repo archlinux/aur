@@ -217,3 +217,6 @@ Fix issue with progress directory not found in progress sync (#37)
 Bump version to 7.8.0 (#78)
 
 
+Fix winget-releaser action (#79)
+
+
