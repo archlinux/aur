@@ -1,6 +1,6 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=purple
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='TUI to search, connect and manage SSH servers. Visual file transfer, cloud sync (10 providers), password management. Edits ~/.ssh/config directly.'
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
@@ -12,7 +12,7 @@ options=(!lto)
 provides=('purple')
 conflicts=('purple-git' 'purple-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1c53b7c98bbe10825b1531accfe7c3f5682d3c0925710bac3bcd2742d9f93f56')
+sha256sums=('1fcb30e5ee8169dd433b643e1860a42af8dc3e49bb85b8ac372210b2b5bad0ef')
 
 prepare() {
     cd "$pkgname-$pkgver"
