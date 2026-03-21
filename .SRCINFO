@@ -1,6 +1,6 @@
 pkgbase = guff-bin
 	pkgdesc = A simple SASS/SCSS compiler and CSS parser/minifier
-	pkgver = 0.11.2
+	pkgver = 0.11.3
 	pkgrel = 1
 	url = https://github.com/Blobfolio/guff
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = guff-bin
 	depends = gcc-libs
 	provides = guff
 	conflicts = guff
-	source_x86_64 = https://github.com/Blobfolio/guff/releases/download/v0.11.2/guff_0.11.2-1_amd64.deb
-	sha256sums_x86_64 = 263e00fa747328a7ced72782764949b61c16626dac167877b1641880b79efd84
+	source_x86_64 = https://github.com/Blobfolio/guff/releases/download/v0.11.3/guff_0.11.3-1_amd64.deb
+	sha256sums_x86_64 = a15c114e18585233987fb3bb61d74cbfec65e884b68b8f33d61e3a459f431cf5
 
 pkgname = guff-bin
