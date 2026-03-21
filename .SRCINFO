@@ -4,6 +4,7 @@ pkgbase = csvi-bin
 	pkgrel = 1
 	url = https://github.com/hymkor/csvi
 	arch = x86_64
+	arch = i686
 	license = MIT
 	provides = csvi
 	conflicts = csvi
@@ -13,5 +14,7 @@ pkgbase = csvi-bin
 	sha256sums = bea0b3e19fecf54135eb852ad1f743b2fc358d821ed29fc85bcfd185e99b5860
 	source_x86_64 = csvi-x86_64-1.23.1.zip::https://github.com/hymkor/csvi/releases/download/v1.23.1/csvi-v1.23.1-linux-amd64.zip
 	sha256sums_x86_64 = b76394837323ec1a28404286e1c8c459cb639ac1d694f1c4c8a1125cf6024916
+	source_i686 = csvi-i686-1.23.1.zip::https://github.com/hymkor/csvi/releases/download/v1.23.1/csvi-v1.23.1-linux-386.zip
+	sha256sums_i686 = 6073c794d176ddfede5b279d8bd1a8ce508a44be0f0da29ee59ed1a295d2c0a4
 
 pkgname = csvi-bin
