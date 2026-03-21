@@ -1,7 +1,7 @@
 pkgbase = fluxer-world-bin
 	pkgdesc = Fluxer World desktop client — open-source chat, voice, and community platform
 	pkgver = 1.0.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fluxer.world
 	arch = x86_64
 	license = AGPL-3.0-or-later
