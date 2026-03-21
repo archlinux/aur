@@ -1,17 +1,18 @@
 # Maintainer: ramisotti13-eng
 pkgname=basecamp-linux
-pkgver=1.4.1
+pkgver=1.4.2beta
 pkgrel=1
 pkgdesc="Unofficial Linux companion app for the Mountain Everest Max keyboard"
 arch=('x86_64')
 url="https://github.com/ramisotti13-eng/BaseCamp-Linux"
 license=('GPL3')
 depends=('fuse2')
-source=("${pkgname}-${pkgver}.AppImage::https://github.com/ramisotti13-eng/BaseCamp-Linux/releases/download/v${pkgver}/BaseCamp-Linux-x86_64-fedora.AppImage"
-        "99-mountain-everest-max.rules::https://github.com/ramisotti13-eng/BaseCamp-Linux/releases/download/v${pkgver}/99-mountain-everest-max.rules"
+_tag="v1.4.2-beta"
+source=("${pkgname}-${pkgver}.AppImage::https://github.com/ramisotti13-eng/BaseCamp-Linux/releases/download/${_tag}/BaseCamp-Linux-x86_64-fedora.AppImage"
+        "99-mountain-everest-max.rules::https://github.com/ramisotti13-eng/BaseCamp-Linux/releases/download/${_tag}/99-mountain-everest-max.rules"
         "app_icon_256.png::https://raw.githubusercontent.com/ramisotti13-eng/BaseCamp-Linux/main/resources/app_icon_256.png"
         "basecamp-linux.desktop")
-sha256sums=('b1db58164612ee2eddd7309e88cdebde0e779eeb231247ea77215eca3075152c'
+sha256sums=('a654aaa92d242cc01a4d4771f326944058ddd71acc1d1ab6cc51d494c202ed6a'
             'SKIP'
             'SKIP'
             'SKIP')
