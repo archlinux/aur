@@ -1,6 +1,6 @@
 pkgbase = python-ffsubsync
 	pkgdesc = Language-agnostic automatic synchronization of subtitles with video.
-	pkgver = 0.4.29
+	pkgver = 0.4.31
 	pkgrel = 1
 	url = https://github.com/smacke/ffsubsync
 	arch = any
@@ -24,9 +24,9 @@ pkgbase = python-ffsubsync
 	depends = python-tqdm
 	depends = python-typing_extensions
 	depends = python-webrtcvad
-	source = https://files.pythonhosted.org/packages/source/f/ffsubsync/ffsubsync-0.4.29.tar.gz
-	source = requirements-0.4.29.txt::https://raw.githubusercontent.com/smacke/ffsubsync/0.4.29/requirements.txt
-	sha256sums = ca0d641e6dd20e6ac5a1d622f5877b0b9c2a489034de822ff168fd5af29edcd6
-	sha256sums = 69ae73f24b22ba99e4a542fccead2826f6c027c4c269cf19829875391a45dff4
+	source = https://files.pythonhosted.org/packages/source/f/ffsubsync/ffsubsync-0.4.31.tar.gz
+	source = requirements-0.4.31.txt::https://raw.githubusercontent.com/smacke/ffsubsync/0.4.31/requirements.txt
+	sha256sums = 9a01f79bc1243b8a55242dfb7832d0a93314e386f70062b99ca33ac6440f92c7
+	sha256sums = 51dee65f54e6cb5692f5a9c1cd962dc1ac1243fc03db0bd9305a0ee4eb8af06d
 
 pkgname = python-ffsubsync
