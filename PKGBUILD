@@ -2,7 +2,7 @@
 
 _pkgname=kubectl-ai
 pkgname=$_pkgname-bin
-pkgver=0.0.29 # renovate: datasource=github-releases depName=GoogleCloudPlatform/kubectl-ai
+pkgver=0.0.30 # renovate: datasource=github-releases depName=GoogleCloudPlatform/kubectl-ai
 pkgrel=1
 pkgdesc="AI powered Kubernetes Assistant"
 url="https://github.com/GoogleCloudPlatform/$_pkgname"
@@ -11,7 +11,7 @@ source=(
   "$_pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/${_pkgname}_Linux_x86_64.tar.gz"
 )
 arch=('x86_64')
-sha512sums=('48ecb874b1018d208d23fcf2a54bd34f2b0f3203996f749cefe9b966def009575d26650537eddce9e5fa2c4782ab7fcd17e2a3b4a27fd682b47930e18505c40d')
+sha512sums=('a0b953f3df7b25df1aad8875f746c5e1935ff506c6e667222e6617b69e037e7235782624109a3f7923609b5179f84515717bc2d280917a50162219f78c6db52f')
 conflicts=("$_pkgname" "${_pkgname}-git")
 
 package() {
