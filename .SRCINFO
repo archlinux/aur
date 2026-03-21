@@ -1,0 +1,20 @@
+pkgbase = sqlbless-bin
+	pkgdesc = Safety-Oriented Terminal SQL Client
+	pkgver = 0.27.4
+	pkgrel = 1
+	url = https://github.com/hymkor/sqlbless
+	arch = x86_64
+	arch = i686
+	license = MIT
+	provides = sqlbless
+	conflicts = sqlbless
+	source = LICENSE-0.27.4::https://raw.githubusercontent.com/hymkor/sqlbless/v0.27.4/LICENSE
+	source = README-0.27.4.md::https://raw.githubusercontent.com/hymkor/sqlbless/v0.27.4/README.md
+	sha256sums = 2c25ca6e12a856628da1ec430e0b6a0c2b17eb7b74939e116d7d96c2cee7e48c
+	sha256sums = c0a7dda62ccaf2167ec054626943f3e7b5b3372efb8f581332707c34265a0fe3
+	source_x86_64 = sqlbless-x86_64-0.27.4.zip::https://github.com/hymkor/sqlbless/releases/download/v0.27.4/sqlbless-v0.27.4-linux-amd64.zip
+	sha256sums_x86_64 = 2e67627ee6f6f8bb441efa39123a8a47e1e17b8dae0257bb32c9e85284d1bf6f
+	source_i686 = sqlbless-i686-0.27.4.zip::https://github.com/hymkor/sqlbless/releases/download/v0.27.4/sqlbless-v0.27.4-linux-386.zip
+	sha256sums_i686 = e8520a1ee2fc46435545178c16eb964f6296f919ed61ee067c9e46b9d5c57743
+
+pkgname = sqlbless-bin

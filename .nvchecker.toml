@@ -1,0 +1,5 @@
+[sqlbless-bin]
+source = "github"
+github = "hymkor/sqlbless"
+use_latest_release = true
+prefix = "v"
