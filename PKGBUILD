@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=opengnb
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="GNB is open source de-centralized VPN to achieve layer3 network via p2p with the ultimate capability of NAT Traversal."
 arch=($CARCH)
@@ -24,7 +24,7 @@ backup=()
 options=('!makeflags')
 install=
 source=("${pkgname}::git+${url}.git#tag=ver${pkgver}")
-sha256sums=('5619e3c577d1273d846b3d089e4f81063d887ddceeac027b53614f579c9bdd8d')
+sha256sums=('c158990d956b57e5d7196c84010a194b7eb7f9b73c003e37e828ded3c0325b88')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
