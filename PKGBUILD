@@ -2,7 +2,7 @@
 
 pkgname="yquake2remaster"
 pkgver="8.61RR15"
-pkgrel="1"
+pkgrel="2"
 pkgdesc='Experimental fork of Yamagi Quake II to add support for Quake II Enhanced/Remaster(ed)'
 url="https://github.com/yquake2/${pkgname}"
 arch=('i686' 'x86_64' 'aarch64')
