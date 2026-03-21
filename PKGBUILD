@@ -42,10 +42,8 @@ source=(
     "git+https://github.com/SteamClientHomebrew/${_Pkgname}.git#branch=next"
     "https://patch-diff.githubusercontent.com/raw/SteamClientHomebrew/Millennium/pull/688.patch"
 )
-sha256sums=(
-    'SKIP'
-    '34e4f64b49a2a211f571a1f2c3a74d3e77a52416b8a5782471e1f097b16d74ec'
-)
+sha256sums=('SKIP'
+            '34e4f64b49a2a211f571a1f2c3a74d3e77a52416b8a5782471e1f097b16d74ec')
 options=(!debug)
 install="${_pkgname}.install"
 
