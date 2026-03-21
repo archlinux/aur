@@ -1,8 +1,7 @@
-# Maintainer:  <keonfarrugia@gmail.com>
+# Maintainer: Keon Cachia <keonfarrugia@gmail.com>
 pkgname=rill
 pkgver=0.4.0
-pkgrel=1
-epoch=
+pkgrel=2
 pkgdesc="A minimalist scrolling window manager for River"
 arch=('x86_64')
 url="https://codeberg.org/lzj15/rill"
