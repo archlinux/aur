@@ -1,6 +1,6 @@
 pkgbase = mp3rgain-bin
 	pkgdesc = Lossless MP3 volume adjustment - A modern 'mp3gain' replacement
-	pkgver = 2.0.2
+	pkgver = 2.0.3
 	pkgrel = 1
 	url = https://github.com/M-Igashi/mp3rgain
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = mp3rgain-bin
 	depends = gcc-libs
 	provides = mp3rgain
 	conflicts = mp3rgain
-	source = LICENSE-2.0.2::https://raw.githubusercontent.com/M-Igashi/mp3rgain/v2.0.2/LICENSE
-	source = README-2.0.2.md::https://raw.githubusercontent.com/M-Igashi/mp3rgain/v2.0.2/README.md
-	source = mp3rgain-2.0.2.1::https://raw.githubusercontent.com/M-Igashi/mp3rgain/v2.0.2//docs/man/mp3rgain.1
+	source = LICENSE-2.0.3::https://raw.githubusercontent.com/M-Igashi/mp3rgain/v2.0.3/LICENSE
+	source = README-2.0.3.md::https://raw.githubusercontent.com/M-Igashi/mp3rgain/v2.0.3/README.md
+	source = mp3rgain-2.0.3.1::https://raw.githubusercontent.com/M-Igashi/mp3rgain/v2.0.3//docs/man/mp3rgain.1
 	sha256sums = 8e557208f0bd83f91b38dcc81ccf914c4c84060ab6dbc5072dbf369791ffc135
-	sha256sums = 92964624b4c2e1adc6b090401bff32db2b364e89b71e8d244aea0f1f09aa8fa1
+	sha256sums = 7f6f945bd0763b7ed1eaaa006581e7d7f64eb7e228fa8ac8eea27d75e26e6484
 	sha256sums = af454cef96a4a790f7c773c3e79546120a55791ca89fb1776263f124fd3df1c6
-	source_x86_64 = mp3rgain-x86_64-2.0.2.tgz::https://github.com/M-Igashi/mp3rgain/releases/download/v2.0.2/mp3rgain-v2.0.2-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 4d21cf5cdd9504d275970397b00c9d07dfaf920e2db0ca6760807a79827788fb
+	source_x86_64 = mp3rgain-x86_64-2.0.3.tgz::https://github.com/M-Igashi/mp3rgain/releases/download/v2.0.3/mp3rgain-v2.0.3-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 6fb3dea4e739154578a2cc6109eabbffab70e11afc29eeb549e186c4f639b026
 
 pkgname = mp3rgain-bin
