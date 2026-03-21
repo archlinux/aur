@@ -1,11 +1,11 @@
 pkgbase = table
 	pkgdesc = Command line utility to format and display CSV
-	pkgver = 0.8.2
+	pkgver = 0.8.4
 	pkgrel = 1
 	url = https://strahinja.srht.site/table
 	arch = x86_64
 	license = GPL3
-	source = table-0.8.2.tar.gz::https://git.sr.ht/~strahinja/table/archive/v0.8.2.tar.gz
-	md5sums = 026475b6decd4d755f3806518a1f6d52
+	source = table-0.8.4.tar.gz::https://git.sr.ht/~strahinja/table/archive/v0.8.4.tar.gz
+	md5sums = cffb344739e75b4aefe0a58d23c1b29b
 
 pkgname = table
