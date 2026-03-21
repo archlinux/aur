@@ -1,0 +1,20 @@
+pkgbase = anyrun-qalculate-git
+	pkgdesc = Anyrun plugin providing a qalculate-powered calculator via libqalculate C++ FFI
+	pkgver = r15.43631e0
+	pkgrel = 1
+	url = https://github.com/maxeonyx/anyrun-qalculate
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = git
+	depends = anyrun
+	depends = libqalculate
+	provides = anyrun-qalculate
+	conflicts = anyrun-qalculate
+	source = anyrun-qalculate::git+https://github.com/maxeonyx/anyrun-qalculate.git
+	sha256sums = SKIP
+
+pkgname = anyrun-qalculate-git
