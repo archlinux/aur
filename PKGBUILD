@@ -4,7 +4,7 @@ pkgname=coomer-bin
 pkgver=1.1.3
 pkgrel=1
 pkgdesc="Zoomer application for everyone on Linux (prebuilt binary)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/yuzujr/coomer"
 license=('MIT')
 
@@ -24,8 +24,10 @@ optdepends=(
 provides=('coomer')
 conflicts=('coomer')
 
-source=("coomer-v$pkgver-linux-x86_64.tar.gz::https://github.com/yuzujr/coomer/releases/download/v$pkgver/coomer-v$pkgver-linux-x86_64.tar.gz")
-sha256sums=('24ea813d0dca3d474c5c6550a330d2d3b1c3c09e415bb42b6c7b086a7068e515')
+source_x86_64=("coomer-v$pkgver-linux-x86_64.tar.gz::https://github.com/yuzujr/coomer/releases/download/v$pkgver/coomer-v$pkgver-linux-x86_64.tar.gz")
+sha256sums_x86_64=('24ea813d0dca3d474c5c6550a330d2d3b1c3c09e415bb42b6c7b086a7068e515')
+source_aarch64=("coomer-v$pkgver-linux-arm64.tar.gz::https://github.com/yuzujr/coomer/releases/download/v$pkgver/coomer-v$pkgver-linux-arm64.tar.gz")
+sha256sums_aarch64=('df3199df0f4ddb7846e036f7685cce122435a7479042fbe610e2e551c33fe8aa')
 
 package() {
   cd "$srcdir"
