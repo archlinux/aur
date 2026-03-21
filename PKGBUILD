@@ -1,0 +1,365 @@
+# Maintainer: <your name here>
+# Based on systemd-git by Thorsten Toepper <atsutane-aur at freethoughts dot de>
+# Contributor: Yurii Kolesnykov <root@yurikoles.com>
+# Based on core/systemd by Christian Hesse <mail@eworm.de>
+#
+# Liberated systemd -- systemd fork with surveillance enablement removed.
+# Upstream fork: https://github.com/Jeffrey-Sardina/systemd
+
+pkgbase=systemd-liberated-git
+pkgname=('systemd-liberated-git'
+         'systemd-liberated-libs-git'
+         'systemd-liberated-resolvconf-git'
+         'systemd-liberated-sysvcompat-git'
+         'systemd-liberated-tests-git'
+         'systemd-liberated-ukify-git')
+pkgdesc='systemd fork with surveillance enablement removed (git version)'
+pkgver=259.rc3.r85286.7524671f74c
+pkgrel=1
+arch=('x86_64')
+license=('LGPL-2.1-or-later')
+url='https://github.com/Jeffrey-Sardina/systemd'
+
+# Mirror fallback URLs — uncomment your preferred source if GitHub is unavailable
+_url="https://github.com/Jeffrey-Sardina/systemd"
+#_url="https://codeberg.org/Jeffrey-Sardina/systemd"
+#_url="https://gitea.com/Jeffrey-Sardina/systemd"
+
+# All known mirrors (used for automatic fallback cloning in prepare())
+_mirrors=(
+  "https://github.com/Jeffrey-Sardina/systemd"
+  "https://codeberg.org/Jeffrey-Sardina/systemd"
+  "https://gitea.com/Jeffrey-Sardina/systemd"
+)
+makedepends=('acl' 'apparmor' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
+             'intltool' 'iptables' 'kmod' 'libarchive' 'libcap' 'libidn2' 'libgcrypt'
+             'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
+             'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'git'
+             'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
+             'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
+             'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools'
+             'libpwquality' 'qrencode' 'lib32-gcc-libs' 'python-pefile' 'linux-headers')
+conflicts=("mkinitcpio<38-1")
+options=('!strip')
+source=("${pkgbase}::git+${_url}"
+        '0001-Use-Arch-Linux-device-access-groups.patch'
+        # bootloader files
+        'arch.conf'
+        'loader.conf'
+        'splash-arch.bmp'::'https://gitlab.archlinux.org/archlinux/packaging/packages/systemd/-/raw/main/splash-arch.bmp'
+        # pam configuration
+        'systemd-user.pam'
+        # pacman / libalpm hooks
+        'systemd-hook'
+        '20-systemd-sysusers.hook'
+        '30-systemd-binfmt.hook'
+        '30-systemd-catalog.hook'
+        '30-systemd-daemon-reload-system.hook'
+        '30-systemd-daemon-reload-user.hook'
+        '30-systemd-hwdb.hook'
+        '30-systemd-restart-marked.hook'
+        '30-systemd-sysctl.hook'
+        '30-systemd-tmpfiles.hook'
+        '30-systemd-udev-reload.hook'
+        '30-systemd-update.hook')
+sha512sums=('SKIP'
+            'ddb9401e47d0bf01874f255803a4b2167ec631484189d29d03694101fd9c77724e735f16d99c5f4ffd8061ae78839b2826ff0e0a925a6f0dbca25f2cfb271a82'
+            '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
+            '3194d1f8bff31b88a79657df83632b9224b66ca2cf8fd806a3ef35cf7a43f46c09c57f3dfd02256a99b6514a8f789b7d3bcfd7e17e00e34aa55ff0c6cedb5f01'
+            '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'
+            '32580b82e97573d3e499821e2ce415ff134c0ec52c9b44a3c0862c4007d347f55636d6afac3dfc6831a9b384c7448075bdf3a12f369b4d8b62b24dfdb9c8a76a'
+            '03269a4822e86142b30165f3c3f72d2dcb1bfa16949f6a0379a0ce7b354269862a5a2d2e053b1690bda9fabc0e93c64ec9796c65d3d4b1b51dfc9dfa561e12a1'
+            '299dcc7094ce53474521356647bdd2fb069731c08d14a872a425412fcd72da840727a23664b12d95465bf313e8e8297da31259508d1c62cc2dcea596160e21c5'
+            '6e49e597be5d38001a89187460a9c6585c86aaad0e33296e1f80e48bcba2b1b4c6d558927e9023c41340e5412f1a15935bd5eebe5998ccb553509556a7c1a102'
+            '6e49e597be5d38001a89187460a9c6585c86aaad0e33296e1f80e48bcba2b1b4c6d558927e9023c41340e5412f1a15935bd5eebe5998ccb553509556a7c1a102'
+            'a436d3f5126c6c0d6b58c6865e7bd38dbfbfb7babe017eeecb5e9d162c21902cbf4e0a68cf3ac2f99815106f9fa003b075bd2b4eb5d16333fa913df6e2f3e32a'
+            '190112e38d5a5c0ca91b89cd58f95595262a551530a16546e1d84700fc9644aa2ca677953ffff655261e8a7bff6e6af4e431424df5f13c00bc90b77c421bc32d'
+            '6e49e597be5d38001a89187460a9c6585c86aaad0e33296e1f80e48bcba2b1b4c6d558927e9023c41340e5412f1a15935bd5eebe5998ccb553509556a7c1a102'
+            '6e49e597be5d38001a89187460a9c6585c86aaad0e33296e1f80e48bcba2b1b4c6d558927e9023c41340e5412f1a15935bd5eebe5998ccb553509556a7c1a102'
+            '6e49e597be5d38001a89187460a9c6585c86aaad0e33296e1f80e48bcba2b1b4c6d558927e9023c41340e5412f1a15935bd5eebe5998ccb553509556a7c1a102'
+            '6e49e597be5d38001a89187460a9c6585c86aaad0e33296e1f80e48bcba2b1b4c6d558927e9023c41340e5412f1a15935bd5eebe5998ccb553509556a7c1a102'
+            '6e49e597be5d38001a89187460a9c6585c86aaad0e33296e1f80e48bcba2b1b4c6d558927e9023c41340e5412f1a15935bd5eebe5998ccb553509556a7c1a102'
+            '6e49e597be5d38001a89187460a9c6585c86aaad0e33296e1f80e48bcba2b1b4c6d558927e9023c41340e5412f1a15935bd5eebe5998ccb553509556a7c1a102')
+
+pkgver() {
+  cd "$pkgbase"
+  # Strip everything from ~ or . onwards (e.g. "261~devel" -> "261")
+  local _major=$(sed 's/[~.].*//g' meson.version)
+  printf "%s.r%s" "${_major}" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  # If the primary clone failed or is empty, try mirrors in order
+  if [[ ! -d "${pkgbase}/.git" ]]; then
+    echo "==> Primary source unavailable, trying mirrors..."
+    for _mirror in "${_mirrors[@]}"; do
+      echo "  -> Trying ${_mirror}..."
+      if git clone "$_mirror" "${pkgbase}"; then
+        echo "  -> Cloned from ${_mirror}"
+        break
+      fi
+    done
+  fi
+
+  cd "${pkgbase}"
+
+  # Replace cdrom/dialout/tape groups with optical/uucp/storage
+  patch -Np1 -i ../0001-Use-Arch-Linux-device-access-groups.patch
+}
+
+build() {
+  local _timeservers=({0..3}.arch.pool.ntp.org)
+  local _nameservers=(
+    # We use these public name services, ordered by their privacy policy (hopefully):
+    #  * Quad9 (https://quad9.net/privacy/policy/)
+    '9.9.9.9#dns.quad9.net'
+    '2620:fe::9#dns.quad9.net'
+    #  * Cloudflare (https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/)
+    '1.1.1.1#cloudflare-dns.com'
+    '2606:4700:4700::1111#cloudflare-dns.com'
+    #  * Google (https://developers.google.com/speed/public-dns/privacy)
+    '8.8.8.8#dns.google'
+    '2001:4860:4860::8888#dns.google'
+    # You do not agree? Fine, change it in your local configuration.
+  )
+
+  local _meson_options=(
+    -Dversion-tag="${pkgver}-${pkgrel}-arch"
+    -Dvcs-tag=true
+    -Dshared-lib-tag="${pkgver}-${pkgrel}"
+    -Dmode=developer
+
+    -Dapparmor=enabled
+    -Dbootloader=enabled
+    -Dxenctrl=disabled
+    -Dbpf-framework=enabled
+    -Dima=false
+    -Dinstall-tests=true
+    -Dlibidn2=enabled
+    -Dlz4=enabled
+    -Dman=enabled
+    -Dselinux=disabled
+    -Dsshdprivsepdir=/usr/share/empty.sshd
+    -Dvmlinux-h=provided
+    -Dvmlinux-h-path=/usr/src/linux/vmlinux.h
+
+    -Ddbuspolicydir=/usr/share/dbus-1/system.d
+    -Ddefault-dnssec=no
+    -Ddefault-kill-user-processes=false
+    -Ddefault-locale='C.UTF-8'
+    -Dlocalegen-path=/usr/bin/locale-gen
+    -Ddns-over-tls=openssl
+    -Dfallback-hostname='archlinux'
+    -Dnologin-path=/usr/bin/nologin
+    -Dntp-servers="${_timeservers[*]}"
+    -Ddns-servers="${_nameservers[*]}"
+    -Drpmmacrosdir=no
+    -Dsysvinit-path=
+    -Dsysvrcnd-path=
+
+    -Dsbat-distro='arch'
+    -Dsbat-distro-summary='Arch Linux AUR'
+    -Dsbat-distro-pkgname="${pkgname}"
+    -Dsbat-distro-version="${pkgver}"
+    -Dsbat-distro-url="https://aur.archlinux.org/pkgbase/systemd-liberated-git"
+  )
+
+  arch-meson "${pkgbase}" build "${_meson_options[@]}"
+
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
+}
+
+package_systemd-liberated-git() {
+  pkgdesc='system and service manager — liberated fork (no surveillance, git version)'
+  license+=(
+    'CC0-1.0' # siphash
+    'GPL-2.0-or-later' # udev
+    'MIT-0' # documentation and config files
+  )
+  depends=("systemd-liberated-libs-git=${pkgver}"
+           'acl' 'libacl.so' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
+           'dbus-units' 'kbd' 'kmod' 'hwdata' 'libcap' 'libcap.so'
+           'libgcrypt' 'libxcrypt' 'libcrypt.so' 'libidn2' 'lz4' 'pam'
+           'libelf' 'libseccomp' 'libseccomp.so' 'util-linux' 'libblkid.so'
+           'libmount.so' 'xz' 'pcre2' 'audit' 'libaudit.so'
+           'openssl' 'libcrypto.so' 'libssl.so')
+  provides=('nss-myhostname' "systemd-tools=${pkgver}" "udev=${pkgver}")
+  provides+=("systemd=${pkgver}" "systemd-git=${pkgver}")
+  replaces=('nss-myhostname' 'systemd-tools' 'udev')
+  conflicts=('nss-myhostname' 'systemd-tools' 'udev')
+  conflicts+=('systemd' 'systemd-git')
+  optdepends=('libmicrohttpd: systemd-journal-gatewayd and systemd-journal-remote'
+              'apparmor: additional security features'
+              'quota-tools: kernel-level quota management'
+              'systemd-liberated-sysvcompat-git: symlink package to provide sysvinit binaries'
+              "systemd-liberated-ukify-git=${pkgver}: combine kernel and initrd into a signed Unified Kernel Image"
+              'polkit: allow administration as unprivileged user'
+              'curl: systemd-journal-upload, machinectl pull-tar and pull-raw'
+              'gnutls: systemd-journal-gatewayd and systemd-journal-remote'
+              'qrencode: show QR codes'
+              'iptables: firewall features'
+              'libarchive: convert DDIs to tarballs'
+              'libbpf: support BPF programs'
+              'libpwquality: check password quality'
+              'libfido2: unlocking LUKS2 volumes with FIDO2 token'
+              'libp11-kit: support PKCS#11'
+              'tpm2-tss: unlocking LUKS2 volumes with TPM2')
+  backup=(etc/systemd/coredump.conf
+          etc/systemd/homed.conf
+          etc/systemd/journald.conf
+          etc/systemd/journal-remote.conf
+          etc/systemd/journal-upload.conf
+          etc/systemd/logind.conf
+          etc/systemd/networkd.conf
+          etc/systemd/oomd.conf
+          etc/systemd/pstore.conf
+          etc/systemd/resolved.conf
+          etc/systemd/sleep.conf
+          etc/systemd/system.conf
+          etc/systemd/timesyncd.conf
+          etc/systemd/user.conf
+          etc/udev/iocost.conf
+          etc/udev/udev.conf)
+  install=systemd.install
+
+  meson install -C build --no-rebuild --destdir "${pkgdir}"
+
+  # we'll create this on installation
+  rmdir "$pkgdir"/var/log/journal/remote
+
+  # runtime libraries shipped with systemd-liberated-libs-git
+  install -d -m0755 systemd-libs/lib/
+  mv "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so* systemd-libs/lib/
+  mv "$pkgdir"/usr/lib/pkgconfig systemd-libs/lib/pkgconfig
+  mv "$pkgdir"/usr/include systemd-libs/include
+  mv "$pkgdir"/usr/share/man/man3 systemd-libs/man3
+
+  # ukify shipped in separate package
+  install -d -m0755 systemd-ukify/{bin,systemd,man1,install.d}
+  mv "$pkgdir"/usr/bin/ukify systemd-ukify/bin/
+  mv "$pkgdir"/usr/lib/systemd/ukify systemd-ukify/systemd/
+  mv "$pkgdir"/usr/share/man/man1/ukify.1 systemd-ukify/man1/
+  mv "$pkgdir"/usr/lib/kernel/install.d/60-ukify.install systemd-ukify/install.d
+
+  # manpages shipped with systemd-liberated-sysvcompat-git
+  rm "$pkgdir"/usr/share/man/man8/{halt,poweroff,reboot,shutdown}.8
+
+  # executable (symlinks) shipped with systemd-liberated-sysvcompat-git
+  rm "$pkgdir"/usr/bin/{halt,init,poweroff,reboot,shutdown}
+
+  # files shipped with systemd-liberated-resolvconf-git
+  rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
+
+  # tests shipped with systemd-liberated-tests-git
+  install -d -m0755 systemd-tests/
+  mv "$pkgdir"/usr/lib/systemd/tests systemd-tests/
+
+  # avoid a potential conflict with [core]/filesystem
+  rm "$pkgdir"/usr/share/factory/etc/{issue,nsswitch.conf}
+  sed -i -e '/^C \/etc\/nsswitch\.conf/d' \
+    -e '/^C \/etc\/issue/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
+
+  # ship default policy to leave services disabled
+  echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
+
+  install -d -o root -g root -m 2755 "$pkgdir"/var/log/journal
+
+  # add example bootctl configuration
+  install -D -m0644 arch.conf "$pkgdir"/usr/share/systemd/bootctl/arch.conf
+  install -D -m0644 loader.conf "$pkgdir"/usr/share/systemd/bootctl/loader.conf
+  install -D -m0644 splash-arch.bmp "$pkgdir"/usr/share/systemd/bootctl/splash-arch.bmp
+
+  # pacman hooks
+  install -D -m0755 systemd-hook "$pkgdir"/usr/share/libalpm/scripts/systemd-hook
+  install -D -m0644 -t "$pkgdir"/usr/share/libalpm/hooks *.hook
+
+  # overwrite the systemd-user PAM configuration with our own
+  install -D -m0644 systemd-user.pam "$pkgdir"/usr/lib/pam.d/systemd-user
+
+  # create a directory for cryptsetup keys
+  install -d -m0700 "$pkgdir"/etc/cryptsetup-keys.d
+
+  # handle uncommon license
+  install -d -m0755 "$pkgdir/usr/share/licenses/$pkgbase"
+  ln -s -t "$_" /usr/share/doc/systemd/LICENSES/MIT-0.txt
+}
+
+package_systemd-liberated-libs-git() {
+  pkgdesc='systemd client libraries — liberated fork (git version)'
+  depends=('glibc' 'gcc-libs' 'libcap' 'libgcrypt' 'lz4' 'xz' 'zstd')
+  license+=(
+    'CC0-1.0' # siphash
+    'GPL-2.0-or-later WITH Linux-syscall-note' # src/basic/linux/*
+  )
+  provides=('libsystemd' 'libsystemd.so' 'libudev.so')
+  provides+=("systemd-libs=${pkgver}" "systemd-libs-git=${pkgver}")
+  conflicts=('libsystemd' 'systemd-libs' 'systemd-libs-git')
+  replaces=('libsystemd')
+
+  install -d -m0755 "$pkgdir"/usr/share/man
+  mv systemd-libs/lib "$pkgdir"/usr/lib
+  mv systemd-libs/include "$pkgdir"/usr/include
+  mv systemd-libs/man3 "$pkgdir"/usr/share/man/man3
+}
+
+package_systemd-liberated-resolvconf-git() {
+  pkgdesc='systemd resolvconf replacement — liberated fork (git version)'
+  depends=("systemd-liberated-git=${pkgver}")
+  provides=('openresolv' 'resolvconf')
+  provides+=("systemd-resolvconf=${pkgver}" "systemd-resolvconf-git=${pkgver}")
+  conflicts=('resolvconf' 'systemd-resolvconf' 'systemd-resolvconf-git')
+
+  install -d -m0755 "$pkgdir"/usr/bin
+  ln -s resolvectl "$pkgdir"/usr/bin/resolvconf
+
+  install -d -m0755 "$pkgdir"/usr/share/man/man1
+  ln -s resolvectl.1.gz "$pkgdir"/usr/share/man/man1/resolvconf.1.gz
+}
+
+package_systemd-liberated-sysvcompat-git() {
+  pkgdesc='sysvinit compat for systemd — liberated fork (git version)'
+  conflicts=('sysvinit' 'systemd-sysvcompat' 'systemd-sysvcompat-git')
+  depends=("systemd-liberated-git=${pkgver}")
+  provides=("systemd-sysvcompat=${pkgver}" "systemd-sysvcompat-git=${pkgver}")
+
+  install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
+    build/man/{halt,poweroff,reboot,shutdown}.8
+
+  install -d -m0755 "$pkgdir"/usr/bin
+  ln -s ../lib/systemd/systemd "$pkgdir"/usr/bin/init
+  for tool in halt poweroff reboot shutdown; do
+    ln -s systemctl "$pkgdir"/usr/bin/$tool
+  done
+}
+
+package_systemd-liberated-tests-git() {
+  pkgdesc='systemd tests — liberated fork (git version)'
+  conflicts=('systemd-tests' 'systemd-tests-git')
+  provides=("systemd-tests=${pkgver}" "systemd-tests-git=${pkgver}")
+  depends=("systemd=${pkgver}")
+
+  install -d -m0755 "$pkgdir"/usr/lib/systemd
+  mv systemd-tests/tests "$pkgdir"/usr/lib/systemd/tests
+}
+
+package_systemd-liberated-ukify-git() {
+  pkgdesc='Combine kernel and initrd into a signed UKI — liberated fork (git version)'
+  conflicts=('systemd-ukify' 'systemd-ukify-git')
+  provides=('ukify')
+  provides+=("systemd-ukify=${pkgver}" "systemd-ukify-git=${pkgver}")
+  depends=("systemd-liberated-git=${pkgver}" 'binutils' 'python-cryptography' 'python-pefile')
+  optdepends=('python-pillow: Show the size of splash image'
+              'sbsigntools: Sign the embedded kernel')
+
+  install -d -m0755 "$pkgdir"/usr/{lib/kernel,share/man}
+  mv systemd-ukify/bin "$pkgdir"/usr/bin
+  mv systemd-ukify/systemd "$pkgdir"/usr/lib/systemd
+  mv systemd-ukify/man1 "$pkgdir"/usr/share/man/man1
+  mv systemd-ukify/install.d "$pkgdir"/usr/lib/kernel/install.d
+}
+
+# vim:ft=sh syn=sh et sw=2:
