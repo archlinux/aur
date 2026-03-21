@@ -3,7 +3,7 @@ post_install() {
     echo " Media Archive Organizer has been installed successfully!"
     echo " "
     echo " Launch it via your application menu or by running:"
-    echo " media-archive-organizer"
+    echo " mediaarchiveorganizer"
     echo "=========================================================="
 }
 

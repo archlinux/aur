@@ -2,7 +2,7 @@
 Name=Media Archive Organizer
 Comment=Automated Media Organization & Privacy-First AI Cleanup Tool
 Exec=mediaarchiveorganizer
-Icon=media-archive-organizer
+Icon=mediaarchiveorganizer
 Terminal=false
 Type=Application
 Categories=Utility;FileTools;Graphics;Photography;
