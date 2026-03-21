@@ -1,6 +1,6 @@
 pkgbase = skillctl
-	pkgdesc = Simple tool for managing agent skills across AI coding harnesses. Uses symlinks to establish a single source of truth. Not a skill browser or search engine. Does what it says on the tin and no more.
-	pkgver = 0.1.0
+	pkgdesc = Manage agent skills across AI harnesses.
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/r3b1s/skillctl
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = skillctl
 	depends = bash
 	depends = git
 	depends = gum
-	source = skillctl-0.1.0.tar.gz::https://github.com/r3b1s/skillctl/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 9f673e8458835bebad9e27d2709530185a97396f196f4941186b7968b24a4a9f
+	source = https://github.com/r3b1s/skillctl/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = cbbd74a1ed02633e12b0d726f938dc4892461682759d756e91cf8ec641c8d413
 
 pkgname = skillctl
