@@ -1,0 +1,16 @@
+pkgbase = gamechanger
+	pkgdesc = Gaming Control Center - Battery Monitor with LED alerts and system updates
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Remo-afk/GameChanger
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk3
+	depends = libappindicator-gtk3
+	optdepends = cachyos-rate-mirrors: for system update optimization
+	source = gamechanger-1.0.tar.gz::https://github.com/Remo-afk/GameChanger/archive/refs/tags/v1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = gamechanger

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=GameChanger
+Comment=Gaming Control Center
+Exec=gamechanger
+Icon=battery-full
+Categories=System;Utility;
+Terminal=false
+StartupNotify=false
+X-GNOME-Autostart-enabled=true
