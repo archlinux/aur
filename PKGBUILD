@@ -1,10 +1,10 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=zen-c-git
 _pkgname=zen-c
-pkgver=0.4.1.r4.g27d9d4f
+pkgver=0.4.4.r5.ge210bc0
 pkgrel=1
 pkgdesc='Write like a high-level language, run like C.'
-url='https://github.com/z-libs/Zen-C'
+url='https://github.com/zenc-lang/zenc'
 arch=('x86_64' 'pentium4' 'aarch64' 'armv7h' 'riscv64')
 license=('MIT')
 optdepends=('gcc: gcc backend support'

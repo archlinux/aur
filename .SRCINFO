@@ -1,8 +1,8 @@
 pkgbase = zen-c-git
 	pkgdesc = Write like a high-level language, run like C.
-	pkgver = 0.4.1.r4.g27d9d4f
+	pkgver = 0.4.4.r5.ge210bc0
 	pkgrel = 1
-	url = https://github.com/z-libs/Zen-C
+	url = https://github.com/zenc-lang/zenc
 	arch = x86_64
 	arch = pentium4
 	arch = aarch64
@@ -19,7 +19,7 @@ pkgbase = zen-c-git
 	conflicts = zen-c
 	conflicts = zen-c-bin
 	replaces = zenc-git
-	source = zen-c::git+https://github.com/z-libs/Zen-C.git#branch=main
+	source = zen-c::git+https://github.com/zenc-lang/zenc.git#branch=main
 	sha256sums = SKIP
 
 pkgname = zen-c-git
