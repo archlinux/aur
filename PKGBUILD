@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 # Contributor: 
-pkgname=bookstory
+pkgname=bookstory-bin
 pkgver=1.2.0
 pkgrel=1
 pkgdesc="Bookstory – Audiobook and Podcast Manager"
