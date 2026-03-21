@@ -1,6 +1,6 @@
 pkgbase = quickshell-games-launchers-git
 	pkgdesc = Quickshell game launcher for Hyprland with pywal/wallust integration
-	pkgver = r70.c2de532
+	pkgver = r70.c2de533
 	pkgrel = 1
 	url = https://github.com/Eaquo/quickshell-games-launchers
 	arch = any
