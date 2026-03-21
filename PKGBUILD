@@ -1,6 +1,6 @@
 # Maintainer: hurtki <email@example.com>
 pkgname=configsmanager
-pkgver=1.1.7
+pkgver=1.1.8
 pkgrel=1
 pkgdesc="CLI tool for managing configs"
 arch=('x86_64' 'aarch64')
