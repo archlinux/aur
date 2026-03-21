@@ -2,7 +2,7 @@
 
 pkgname=etcd-bin
 _pkgname=etcd
-pkgver=3.6.8
+pkgver=3.6.9
 pkgrel=1
 pkgdesc='A highly-available key value store for shared configuration and service discovery - binary version'
 arch=('x86_64')
@@ -15,7 +15,7 @@ install="etcd.install"
 source=("https://github.com/etcd-io/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-amd64.tar.gz"
         "https://github.com/etcd-io/${_pkgname}/raw/v${pkgver}/contrib/systemd/${_pkgname}.service"
         "https://github.com/etcd-io/${_pkgname}/raw/v${pkgver}/${_pkgname}.conf.yml.sample")
-sha256sums=('cf9cfe91a4856cb90eed9c99e6aee4b708db2c7888b88a6f116281f04b0ea693'
+sha256sums=('633136f13fcadac52e5c0ddcb97912643af6fcb9cb362e75774d0f96f7666396'
             '6b2921568bd96f5bb48ba61d2b9673f42e49eb90fda35a7003fbac469a226a13'
             '8972ae92788d38db7a7947d4baf943e63385a894658e9b361027e8a7f8893790')
 
