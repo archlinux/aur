@@ -1,6 +1,6 @@
 pkgbase = rrwm-bin
 	pkgdesc = A window manager developed in Rust for River 0.4.0, using the cosmic/bspwm layout.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/cap153/rrwm
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rrwm-bin
 	options = !strip
 	source = rrwm.desktop
 	sha256sums = SKIP
-	source_x86_64 = rrwm-bin-0.1.0-x86_64.tar.gz::https://github.com/cap153/rrwm/releases/download/v0.1.0/rrwm-linux-amd64.tar.gz
+	source_x86_64 = rrwm-bin-0.1.1-x86_64.tar.gz::https://github.com/cap153/rrwm/releases/download/v0.1.1/rrwm-linux-amd64.tar.gz
 	sha256sums_x86_64 = SKIP
 
 pkgname = rrwm-bin
