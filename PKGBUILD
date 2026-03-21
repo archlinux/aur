@@ -5,7 +5,7 @@
 # Maintainer: Uffe Jakobsen <uffe@uffe.org>
 #
 pkgname=adflib
-pkgver=0.10.5
+pkgver=0.10.6
 pkgrel=1
 epoch=
 pkgdesc="A free, portable and open implementation of the Commodore Amiga filesystem - including the unadf tool"
@@ -28,26 +28,30 @@ install=
 changelog=
 source=(https://github.com/lclevy/${_pkgname}/archive/refs/tags/v${_pkgver}.tar.gz)
 noextract=()
-sha256sums=('e7e67970cf07f3dda08edce0b2f395eda82c2bf24c95b357ef295f1ec7ec48d3')
+sha256sums=('fa57c823aa9787315adda121d42965bfbfacf8cb6c10d4564c30a0ee02c8f22f')
 
 
-prepare() {
+prepare()
+{
   cd "$srcdir/${_pkgname}-${_pkgver}"
 }
 
-build() {
+build()
+{
   cd "${srcdir}/${_pkgname}-${_pkgver}"
   sh autogen.sh
   sh configure --prefix=/usr
   make
 }
 
-check() {
+check()
+{
   cd "${srcdir}/${_pkgname}-${_pkgver}"
   make -k check
 }
 
-package() {
+package()
+{
   cd "${srcdir}/${_pkgname}-${_pkgver}"
   make DESTDIR="${pkgdir}/" install
 }
