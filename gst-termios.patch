@@ -1,0 +1,11 @@
+diff -ura package.old/src/terminal.h package.new/src/terminal.h
+--- package.old/src/terminal.h	2011-01-03 13:12:33.000000000 +0200
++++ package.new/src/terminal.h	2026-03-21 16:51:10.208054772 +0200
+@@ -24,6 +24,7 @@
+ #include <vector>
+ #include <string>
+ #include <map>
++#include <termios.h>
+ #include "keyhandler.h"
+ 
+ class Terminal

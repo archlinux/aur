@@ -4,7 +4,7 @@
 
 pkgname=gst123
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A more flexible command line player in the spirit of ogg123 and mpg123, based on gstreamer"
 arch=('i686' 'x86_64')
 url="http://space.twc.de/~stefan/gst123.php"
@@ -17,8 +17,11 @@ optdepends=('gst-libav: more codecs support'
             'gst-plugins-good: more codecs support'
             'gst-plugins-bad: more codecs support'
             'gst-plugins-ugly: more codecs support')
-source=("https://github.com/swesterfeld/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2")
-md5sums=('da6d91678803437886fe3187b2879ffa')
+source=("https://github.com/swesterfeld/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2" gst-termios.patch)
+
+prepare() {
+	patch -d $pkgname-$pkgver -Np1 -i ../gst-termios.patch
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -37,3 +40,6 @@ package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
 }
+md5sums=('da6d91678803437886fe3187b2879ffa'
+         '649a73bad065116516c80b070e88d939')
+
