@@ -4,7 +4,7 @@
 
 pkgname=doclifter
 pkgver=2.22
-pkgrel=1
+pkgrel=2
 pkgdesc="Lift documents in {n,t}roff markups to XML-DocBook"
 arch=('any')
 url="http://www.catb.org/~esr/doclifter"
