@@ -10,12 +10,12 @@ depends=('qt5-x11extras' 'qt5-multimedia')
 makedepends=('git' 'qt5-tools')
 provides=("${pkgname%-git}")
 conflicts=("hotshots-git")
-source=("${pkgname%-git}::git+https://github.com/boussou/HotShots.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=("https://github.com/boussou/HotShots/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('8832ba12ecf2305972e1f35ba59d3be9acf466cc611090fc9a9f5d7ccf80bbf3')
 
 
 build() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/HotShots-${pkgver}"
     qmake-qt5 -recursive  HotShots.pro \
         INSTALL_PREFIX=/usr \
         INSTALL_LIBDIR=INSTALL_PREFIX/lib
@@ -23,11 +23,9 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname%-git}"
+    cd "${srcdir}/HotShots-${pkgver}"
     make INSTALL_ROOT="$pkgdir" install
 
     install -Dm644 packaging/flatpak/HotShots.metainfo.xml -t \
         "$pkgdir/usr/share/metainfo/"
 }
-
-sha256sums=('SKIP')
