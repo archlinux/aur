@@ -7,6 +7,7 @@ pkgbase = tdctl-git
 	license = MIT
 	makedepends = rustup
 	makedepends = git
+	depends = telegram-desktop-futpib-git
 	provides = tdctl
 	conflicts = tdctl
 	source = git+https://github.com/futpib/tdctl.git
