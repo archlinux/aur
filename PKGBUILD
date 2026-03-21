@@ -8,8 +8,9 @@
 
 pkgname=jellyfin-desktop-cef-libmpv-git
 _gitname=mpv
-pkgver=beb34bf90c
-pkgrel=2
+epoch=1
+pkgver=0.r54491.3e99d37
+pkgrel=1
 pkgdesc='libmpv for jellyfin-desktop-cef'
 arch=('x86_64')
 license=('GPL-2.0-or-later')
@@ -30,7 +31,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --always --tags --dirty | sed -e 's/^v//' -e 's/-/_/g'
+  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 
 build() {
