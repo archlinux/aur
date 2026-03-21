@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=shadps4
 pkgname=$_pkgname-git
-pkgver=0.14.0.r51.g19d2027
+pkgver=0.15.0.r19.g060703f
 pkgrel=1
 pkgdesc="Sony PlayStation 4 emulator (CLI)"
 arch=('aarch64' 'x86_64')
@@ -92,6 +92,7 @@ prepare() {
 
 build() {
 	local options=(
+		-B build
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
 		-D CMAKE_CXX_FLAGS_RELEASE="-DNDEBUG"
@@ -99,9 +100,9 @@ build() {
 		-D CMAKE_SKIP_INSTALL_RPATH=ON
 		-D ENABLE_UPDATER=OFF
 		-D SIRIT_USE_SYSTEM_SPIRV_HEADERS=ON
-		-Wno-dev
+		-W no-dev
 	)
-	cmake "${options[@]}" -B build -S $_pkgname
+	cmake "${options[@]}" $_pkgname
 	cmake --build build
 }
 
@@ -112,6 +113,7 @@ package() {
 		'libavutil.so'
 		'libfmt.so'
 		'libgcc_s.so'
+		'libopenal.so'
 		'libpng16.so'
 		'libstdc++.so'
 		'libswresample.so'
@@ -122,6 +124,7 @@ package() {
 		'libz.so'
 		# 'libZydis.so'
 	)
+
 	# shellcheck disable=SC2154
 	DESTDIR="$pkgdir" cmake --install build
 }
