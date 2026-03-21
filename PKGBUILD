@@ -6,7 +6,7 @@ pkgname=properdocs-theme-mkdocs
 _pyname=${pkgname//-/_}
 #pkgname=("python-${_pname}")
 #"python-${_pname}-doc")
-pkgver=1.6.5
+pkgver=1.6.7
 pkgrel=1
 pkgdesc="'mkdocs' theme for ProperDocs, originally made for MkDocs"
 arch=("any")
@@ -20,7 +20,7 @@ makedepends=('python-hatchling'
 checkdepends=('python-nose')
 #checkdepends=('python-pytest-import-check')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('fcc10d0e6b0d0cd01a4677d4252880f91ea39a227aab545a0fbd8530e57b8019')
+sha256sums=('2ed30991f096e4824ac3af24c13775e2120dd436038b264bb1396f2f3957c017')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}

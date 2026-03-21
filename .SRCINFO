@@ -1,6 +1,6 @@
 pkgbase = properdocs-theme-mkdocs
 	pkgdesc = 'mkdocs' theme for ProperDocs, originally made for MkDocs
-	pkgver = 1.6.5
+	pkgver = 1.6.7
 	pkgrel = 1
 	url = https://github.com/missinglinkelectronics/sphinxcontrib-globalsubs
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = properdocs-theme-mkdocs
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/p/properdocs_theme_mkdocs/properdocs_theme_mkdocs-1.6.5.tar.gz
-	sha256sums = fcc10d0e6b0d0cd01a4677d4252880f91ea39a227aab545a0fbd8530e57b8019
+	source = https://files.pythonhosted.org/packages/source/p/properdocs_theme_mkdocs/properdocs_theme_mkdocs-1.6.7.tar.gz
+	sha256sums = 2ed30991f096e4824ac3af24c13775e2120dd436038b264bb1396f2f3957c017
 
 pkgname = properdocs-theme-mkdocs
 	depends = properdocs
