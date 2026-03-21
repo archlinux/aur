@@ -1,6 +1,6 @@
 # Maintainer: w568w <w568w at outlook dot com>
 pkgname=opencode-claude-auth
-pkgver=0.5.7
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Claude Code credential bridge plugin for opencode"
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=("${pkgname}-debug")
 install=$pkgname.install
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('85e0180d186e59d9f38374f277557a5a710bbae4bb89835ca139f7f21cdcf497')
+sha256sums=('2ec1d6d29a8a99ab9c6491b3a36fbf58afd1037db68f1eef8491637a3c261bf3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
