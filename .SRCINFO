@@ -1,6 +1,6 @@
 pkgbase = eigenwallet-bin
 	pkgdesc = λ eigenwallet (previously UnstoppableSwap) is a GUI for trustless cross-chain XMR<>BTC Atomic Swaps.
-	pkgver = 4.0.2
+	pkgver = 4.0.4
 	pkgrel = 1
 	url = https://eigenwallet.org/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = eigenwallet-bin
 	provides = unstoppableswap-gui
 	provides = eigenwallet
 	conflicts = unstoppableswap-gui
-	source = https://github.com/EigenWallet/core/releases/download/4.0.2/eigenwallet_4.0.2_amd64.deb
-	sha256sums = 671cb9a88725b6b4cc86fe697d3717d514ad4b3a0f6b59fc3d8efda04a9254d4
+	source = https://github.com/EigenWallet/core/releases/download/4.0.4/eigenwallet_4.0.4_amd64.deb
+	sha256sums = 51aea4ab34ff32a8815dafcbc0b0ac241b33c1ec8ef6b44eb9899d11d70a535c
 
 pkgname = eigenwallet-bin

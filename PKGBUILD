@@ -1,7 +1,7 @@
 # Maintainer: Kainoa Kanter <kainoa@t1c.dev>
 
 pkgname=eigenwallet-bin
-_pkgver="4.0.2"
+_pkgver="4.0.4"
 pkgver=${_pkgver/-beta./.}
 pkgrel=1
 epoch=
@@ -19,7 +19,7 @@ optdepends=(
 	'eigenwallet-developertools-bin: developer & maker tools for eigenwallet'
 )
 source=("https://github.com/EigenWallet/core/releases/download/${_pkgver}/eigenwallet_${_pkgver}_amd64.deb")
-sha256sums=('671cb9a88725b6b4cc86fe697d3717d514ad4b3a0f6b59fc3d8efda04a9254d4')
+sha256sums=('51aea4ab34ff32a8815dafcbc0b0ac241b33c1ec8ef6b44eb9899d11d70a535c')
 validpgpkeys=()
 
 package() {
