@@ -9,6 +9,11 @@ ExecStart=/usr/bin/hqplayerd
 Restart=always
 RestartSec=2
 EnvironmentFile=-/etc/default/hqplayerd
+Nice=-10
+IOSchedulingClass=realtime
+LimitMEMLOCK=4G
+LimitNICE=-10
+LimitRTPRIO=98
 
 [Install]
 WantedBy=multi-user.target
