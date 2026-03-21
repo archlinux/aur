@@ -1,6 +1,6 @@
 pkgbase = properdocs
 	pkgdesc = Project documentation with Markdown.
-	pkgver = 1.6.6
+	pkgver = 1.6.7
 	pkgrel = 1
 	url = https://properdocs.org
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = properdocs
 	makedepends = python-hatchling
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/p/properdocs/properdocs-1.6.6.tar.gz
-	md5sums = bc0225ff2d7a9797130fded0a9c223b3
+	source = https://files.pythonhosted.org/packages/source/p/properdocs/properdocs-1.6.7.tar.gz
+	md5sums = 0793ce4694f7d74f6eb5c19285c7ee24
 
 pkgname = properdocs
 	depends = python>=3.9
@@ -22,7 +22,7 @@ pkgname = properdocs
 	depends = python-ghp-import>=1.0
 	depends = python-pyyaml-env-tag>=0.1
 	depends = python-packaging>=20.5
-	depends = python-mergedeep>=1.3.4
 	depends = python-pathspec>=0.11.1
 	depends = python-platformdirs>=2.2.0
+	optdepends = python-babel: i18n support
 	optdepends = python-properdocs-doc: Documentation for ProperDocs
