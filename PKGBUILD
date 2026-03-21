@@ -28,7 +28,7 @@ build() {
 	if [ "${CARCH}" == "aarch64" ]; then
 		cd "bun-linux-aarch64"
 	else
-		cd "bun-linux-x64${_baseline}"
+		cd "bun-linux-x64"
 	fi
 	install -dm755 "completions"
 	SHELL=zsh "./bun" completions >"completions/bun.zsh"
@@ -40,7 +40,7 @@ package() {
 		cd "bun-linux-aarch64"
 		install -Dm755 "./bun" "${pkgdir}/usr/bin/bun"
 	else
-		cd "bun-linux-x64${_baseline}"
+		cd "bun-linux-x64"
 		install -Dm755 "./bun" "${pkgdir}/usr/bin/bun"
 	fi
 	# simlink as bunx as in the official install.sh
