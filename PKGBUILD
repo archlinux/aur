@@ -3,11 +3,11 @@
 _plugin=comp
 pkgname=vsview-${_plugin}
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A vsview plugin to make comparison backed by Slowpoke Pics"
 arch=("x86_64")
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
-license=("MIT")
+license=("EUPL-1.2")
 depends=(
     "vsview"
     "python-httpx"
