@@ -5,7 +5,7 @@ _pkgname=mprocs
 pkgname=${_pkgname}-bin
 pkgdesc="Run multiple commands in parallel"
 
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,11 +26,11 @@ source=("CHANGELOG-${pkgver}.md::${_urlraw}/CHANGELOG.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENSE")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-linux-${_barch[0]}-musl.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${pkgver}-linux-${_barch[1]}-musl.tar.gz")
-sha256sums=('f34f197d509b686088c0fe01ce9f06f767fc320f1419e715e4677761b7f9427f'
+sha256sums=('f4a268c1ef48c5837aa3edeece461d78f86af8e3adb5038a4535335d848b8a48'
             '8d3d3141f0fc0f86a93b9c7faa71c5be63f7b41323bcabb5713d0980cbb9613b'
             'c343db79b3fcfe53edf567483cd2f47c63c104ccc6fa6c3dfbab1c8bc2c251ca')
-sha256sums_x86_64=('ab99d131f9ebeb66d99cd9c50bd1ade148bdb5fbd28a497520eb6d52ef5385db')
-sha256sums_aarch64=('2b89c75cfdad124967eed42f9fae26be3f133929f040f2d5951faf3bbb2997db')
+sha256sums_x86_64=('25677db6eb69a7d310367e354620d3114f45df4cb33d1a36195658781613f490')
+sha256sums_aarch64=('470d400fa3636653f33f39541c8357922e88bea88ae788b35be78e961e614522')
 
 
 build() {
