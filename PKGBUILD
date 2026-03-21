@@ -1,10 +1,10 @@
 # Maintainer: yuzujr <15568103056@163.com>
 
 pkgname=ani2xcursor
-pkgver=1.4.3
+pkgver=1.4.6
 pkgrel=1
 pkgdesc="Convert Windows animated cursor themes to Linux Xcursor format"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/yuzujr/ani2xcursor"
 license=('MIT')
 
@@ -17,7 +17,7 @@ makedepends=(
 )
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cd17401898e96f65001153b5f97a154f4d758bfad972aec70913556833ba4b0b')
+sha256sums=('b6ae6f2a9f08ae39e5ebf962e2ba0d4ae1080de502dacb73abb21c33bff1d12f')
 
 _xmake_env() {
   export XMAKE_GLOBALDIR="$srcdir/.xmake-global"
@@ -51,7 +51,14 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  install -Dm755 "build/linux/x86_64/release/ani2xcursor" \
+  local _bin
+  _bin="$(find build -type f -path '*/release/ani2xcursor' -print -quit)"
+  if [[ -z "${_bin}" ]]; then
+    echo 'ani2xcursor binary not found under build/*/release/' >&2
+    return 1
+  fi
+
+  install -Dm755 "${_bin}" \
     "${pkgdir}/usr/bin/ani2xcursor"
 
   install -Dm644 LICENSE \
@@ -69,7 +76,6 @@ package() {
   install -Dm644 completions/zsh/_ani2xcursor \
     "$pkgdir/usr/share/zsh/site-functions/_ani2xcursor"
 
-  # Install compiled translations
   for mo in build/locale/*/LC_MESSAGES/ani2xcursor.mo; do
     lang=$(echo "$mo" | cut -d/ -f3)
     install -Dm644 "$mo" \
