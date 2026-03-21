@@ -1,14 +1,15 @@
 # Maintainer: Renato de Oliveira <renatoi at github>
 pkgname=azeron-software
 pkgver=1.5.6
-pkgrel=5
+pkgrel=6
 pkgdesc='Configuration tool for Azeron keypads (unofficial Linux repackage)'
 arch=('x86_64')
 url='https://github.com/renatoi/azeron-linux'
 license=('custom:proprietary')
 depends=('hidapi' 'libusb' 'gtk3' 'nss' 'alsa-lib' 'python' 'usbutils')
 makedepends=('npm' 'nodejs' 'p7zip')
-optdepends=('dfu-util: firmware updates')
+optdepends=('dfu-util: firmware updates'
+            'python-pyusb: standalone XInput drain script (for use without the app)')
 options=('!strip')
 _electron_ver=30.0.9
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/renatoi/azeron-linux/archive/refs/tags/v${pkgver}.tar.gz"
