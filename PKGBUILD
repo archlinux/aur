@@ -17,7 +17,7 @@ depends=(
   pcre2
   libxcb
   xorg-xwayland
-  'libwlroots-0.21.so'
+  'libwlroots-0.20.so'
 )
 
 makedepends=(
