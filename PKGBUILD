@@ -1,38 +1,17 @@
-# Maintainer: KaptenSea <andreas@swetux.se>
-pkgname=bookstory-bin
-pkgver=1.1.3
+# Maintainer: Your Name <your.email@example.com>
+# Contributor: 
+pkgname=bookstory
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Native desktop client for Audiobookshelf"
+pkgdesc="Bookstory – Audiobook and Podcast Manager"
 arch=('x86_64')
 url="https://github.com/kaptensea/bookstory"
 license=('MIT')
-depends=('webkit2gtk-4.1' 'gtk3')
-provides=('bookstory')
-conflicts=('bookstory')
-source=("bookstory_${pkgver}_amd64.deb::https://github.com/kaptensea/bookstory/releases/download/v${pkgver}/bookstory_${pkgver}_amd64.deb")
-sha256sums=('53be805815a1a460cda03bbaf1cb6169ae7d82111a811c09b1a5f81dba58d2d5')
-
-prepare() {
-    cd "$srcdir"
-    ar x "bookstory_${pkgver}_amd64.deb"
-    tar xf data.tar.gz
-}
+depends=('libappindicator-gtk3' 'webkit2gtk' 'gtk3' 'libx11')
+source=("${pkgname}-${pkgver}.deb::https://github.com/kaptensea/bookstory/releases/download/v${pkgver}/bookstory_${pkgver}_amd64.deb")
+sha256sums=('SKIP')
 
 package() {
-    cd "$srcdir"
-
-    install -Dm755 usr/bin/bookstory \
-        "$pkgdir/usr/bin/bookstory"
-
-    install -Dm644 usr/share/applications/bookstory.desktop \
-        "$pkgdir/usr/share/applications/bookstory.desktop"
-
-    install -Dm644 usr/share/icons/hicolor/32x32/apps/bookstory.png \
-        "$pkgdir/usr/share/icons/hicolor/32x32/apps/bookstory.png"
-
-    install -Dm644 usr/share/icons/hicolor/128x128/apps/bookstory.png \
-        "$pkgdir/usr/share/icons/hicolor/128x128/apps/bookstory.png"
-
-    install -Dm644 "usr/share/icons/hicolor/256x256@2/apps/bookstory.png" \
-        "$pkgdir/usr/share/icons/hicolor/256x256@2/apps/bookstory.png"
+    bsdtar -xf "${srcdir}/${pkgname}-${pkgver}.deb" -C "${srcdir}"
+    cp -r "${srcdir}/usr" "${pkgdir}/"
 }
