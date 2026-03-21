@@ -1,0 +1,11 @@
+pkgbase = ass-shifter
+	pkgdesc = Shift ASS format Subtitle
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Nigh/subtitle-ass-shifter
+	arch = x86_64
+	license = GPL-3.0
+	source = ass-shifter_1.2.0-linux-amd64::https://github.com/Nigh/subtitle-ass-shifter/releases/download/v1.2.0/ass-shifter-linux-amd64
+	sha256sums = cb8679dd6693dd30d594b2cd7898ee02d8a69e35eabf0782e06044f06d4c71a6
+
+pkgname = ass-shifter
