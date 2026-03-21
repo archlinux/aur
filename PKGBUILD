@@ -1,7 +1,7 @@
 # Maintainer: Mattia Moffa <mattia@moffa.xyz>
 
 pkgname=virtualbricks-develop-git
-pkgver=r2176.e331a0b
+pkgver=r2184.eaa42bb
 pkgrel=1
 pkgdesc="Qemu/KVM and VDE frontend (git development branch)"
 arch=('any')
@@ -31,5 +31,6 @@ build() {
 }
 
 package() {
-  python -m installer --destdir="$pkgdir" virtualbricks/dist/*.whl
+  cd virtualbricks
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
