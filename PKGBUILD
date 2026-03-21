@@ -11,7 +11,6 @@ depends=(
     'systemd-ukify'
     'sbctl'
     'python'
-    'arch-install-scripts'
     'verify-lib'
 )
 optdepends=(

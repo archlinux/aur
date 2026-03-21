@@ -9,7 +9,6 @@ pkgbase = atomic-upgrade
 	depends = systemd-ukify
 	depends = sbctl
 	depends = python
-	depends = arch-install-scripts
 	depends = verify-lib
 	optdepends = cryptsetup: LUKS support
 	optdepends = lvm2: LVM support
