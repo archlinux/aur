@@ -10,7 +10,7 @@ license=("MIT")
 depends=()
 makedepends=("rust" "cargo")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/heads/main.tar.gz")
-sha256sums=("SKIP")
+sha256sums=('176ce1bbba7eb37a1405e21199c9480fc7be4ea7c9604c8683f4ac0cb5ab1696')
 
 build() {
     cd "Tidymyfiles-main"
@@ -19,5 +19,5 @@ build() {
 
 package() {
     cd "Tidymyfiles-main"
-    install -Dm755 "target/release/tidy" "$pkgdir/usr/bin/tidymyfiles"
+    install -Dm755 "target/release/tidymyfiles" "$pkgdir/usr/bin/tidymyfiles"
 }

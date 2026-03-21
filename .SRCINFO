@@ -8,6 +8,6 @@ pkgbase = tidymyfiles
 	makedepends = rust
 	makedepends = cargo
 	source = tidymyfiles-0.1.0.tar.gz::https://github.com/Usernames-are-useful/Tidymyfiles/archive/refs/heads/main.tar.gz
-	sha256sums = SKIP
+	sha256sums = 176ce1bbba7eb37a1405e21199c9480fc7be4ea7c9604c8683f4ac0cb5ab1696
 
 pkgname = tidymyfiles
