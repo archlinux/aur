@@ -1,0 +1,19 @@
+pkgbase = rill
+	pkgdesc = A minimalist scrolling window manager for River
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://codeberg.org/lzj15/rill
+	install = rill.install
+	arch = x86_64
+	license = MIT
+	makedepends = wayland-protocols
+	makedepends = zig
+	depends = wayland
+	depends = river
+	noextract = zig-wayland.zip::https://codeberg.org/ifreund/zig-wayland/archive/v0.5.0.zip
+	source = https://codeberg.org/lzj15/rill/archive/v0.4.0.tar.gz
+	source = zig-wayland.zip::https://codeberg.org/ifreund/zig-wayland/archive/v0.5.0.zip
+	sha256sums = 56ff76abb108943eb4da06bcdd31be2f1628eb2ad3896a616558958ab67be31e
+	sha256sums = 816d6d9fffeb596244e5467b60f5b21575ba779e441a27dcc63ce5f6a5a09841
+
+pkgname = rill
