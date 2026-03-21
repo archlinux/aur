@@ -1,5 +1,5 @@
 pkgname=hyprtime-bin
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="minimal screen time tracker for hyprland (prebuilt binaries)"
 arch=('x86_64')
@@ -9,13 +9,11 @@ provides=('hyprtime' 'hyprtimed')
 conflicts=('hyprtime' 'hyprtimed')
 
 source=(
-  "https://github.com/ayanrajpoot10/hyprtime/releases/download/v${pkgver}/hyprtime-linux-amd64.tar.gz"
-  "https://github.com/ayanrajpoot10/hyprtime/releases/download/v${pkgver}/hyprtimed-linux-amd64.tar.gz"
+  "https://github.com/ayanrajpoot10/hyprtime/releases/download/v${pkgver}/hyprtime.tar.xz"
   "hyprtime.desktop"
 )
 
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP')
 
 package() {

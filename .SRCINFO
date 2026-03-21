@@ -1,6 +1,6 @@
 pkgbase = hyprtime-bin
-	pkgdesc = minimal screen time for hyprland (prebuilt binaries)
-	pkgver = 0.0.1
+	pkgdesc = minimal screen time tracker for hyprland (prebuilt binaries)
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://github.com/ayanrajpoot10/hyprtime
 	arch = x86_64
@@ -9,10 +9,8 @@ pkgbase = hyprtime-bin
 	provides = hyprtimed
 	conflicts = hyprtime
 	conflicts = hyprtimed
-	source = https://github.com/ayanrajpoot10/hyprtime/releases/download/v0.0.1/hyprtime-linux-amd64.tar.gz
-	source = https://github.com/ayanrajpoot10/hyprtime/releases/download/v0.0.1/hyprtimed-linux-amd64.tar.gz
+	source = https://github.com/ayanrajpoot10/hyprtime/releases/download/v0.0.2/hyprtime.tar.xz
 	source = hyprtime.desktop
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
