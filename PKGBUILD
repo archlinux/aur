@@ -1,6 +1,6 @@
 # Maintainer: Nadir Boussoukaia <nad4reg at gmail dot com>
 pkgname=hotshots-updated-git
-pkgver=r.3fea099
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="A HotShots fork improved - focused on using the annotations editor standalone too"
 arch=('x86_64')
@@ -10,13 +10,9 @@ depends=('qt5-x11extras' 'qt5-multimedia')
 makedepends=('git' 'qt5-tools')
 provides=("${pkgname}")
 conflicts=("hotshots-git")
-source=("${pkgname}::git+https://github.com/boussou/HotShots.git")
+source=("${pkgname}::git+https://github.com/boussou/HotShots.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "${srcdir}/${pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
     cd "${srcdir}/${pkgname%-git}"
@@ -35,3 +31,4 @@ package() {
 }
 
 sha256sums=('SKIP')
+sha256sums=('769e18cf855b035f7397410b861de43e5c3725c5325536e23aafad4389134fac')
