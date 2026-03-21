@@ -1,0 +1,14 @@
+pkgbase = mvjpngn
+	pkgdesc = Prints Something
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/WallFacerer/mvjpngn
+	arch = any
+	license = MIT
+	depends = python
+	source = mvjpngn
+	source = pong
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mvjpngn
