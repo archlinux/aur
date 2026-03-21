@@ -1,0 +1,5 @@
+[saul-bin]
+source = "github"
+github = "DeprecatedLuar/better-curl-saul"
+use_latest_release = true
+prefix = "v"

@@ -1,0 +1,22 @@
+pkgbase = saul-bin
+	pkgdesc = Better Curl Saul is a homemade CLI 'http client' to make api reusability simple
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/DeprecatedLuar/better-curl-saul
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = saul
+	conflicts = better-curl-saul
+	source = README-0.3.4.md::https://raw.githubusercontent.com/DeprecatedLuar/better-curl-saul/v0.3.4/README.md
+	source = LICENSE-0.3.4::https://raw.githubusercontent.com/DeprecatedLuar/better-curl-saul/v0.3.4/LICENCE
+	sha256sums = 358c1d2c06c004b90753d525e101f3f67dfbba09c7a6d603edb54155f0e09941
+	sha256sums = ce37bb083947186acb712a9cb01d81357f3b303b35db4119519361ee198b4b3e
+	source_x86_64 = saul-x86_64-0.3.4::https://github.com/DeprecatedLuar/better-curl-saul/releases/download/v0.3.4/saul-linux-amd64
+	sha256sums_x86_64 = 7621d552cacc8bd6831dc8b81d8c56e4961c44d5d32831f15b8e19fa863445ef
+	source_aarch64 = saul-aarch64-0.3.4::https://github.com/DeprecatedLuar/better-curl-saul/releases/download/v0.3.4/saul-linux-arm64
+	sha256sums_aarch64 = 181790b1a0305d12808ae5479ed24573aa05a1f0f3747a8efae9eac470a7f491
+
+pkgname = saul-bin
