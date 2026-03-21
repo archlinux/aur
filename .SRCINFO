@@ -1,6 +1,6 @@
 pkgbase = glazepkg-bin
 	pkgdesc = See all your installed packages in one place
-	pkgver = 0.1.11
+	pkgver = 0.1.12
 	pkgrel = 1
 	url = https://github.com/neur0map/glazepkg
 	arch = x86_64
@@ -10,11 +10,11 @@ pkgbase = glazepkg-bin
 	depends = libgcc
 	provides = gpk
 	conflicts = glazepkg
-	source = README-0.1.11.md::https://raw.githubusercontent.com/neur0map/glazepkg/v0.1.11/README.md
+	source = README-0.1.12.md::https://raw.githubusercontent.com/neur0map/glazepkg/v0.1.12/README.md
 	sha256sums = ddad2ba020a56f2706504993d78e2596f7c77099a6fca6ac8d2811f842519d13
-	source_x86_64 = glazepkg-x86_64-0.1.11::https://github.com/neur0map/glazepkg/releases/download/v0.1.11/gpk-linux-amd64
-	sha256sums_x86_64 = 9a6f076ac9fb3922a05e3790d35d5b1de894cf9460bf49242e794d16fbe85541
-	source_aarch64 = glazepkg-aarch64-0.1.11::https://github.com/neur0map/glazepkg/releases/download/v0.1.11/gpk-linux-arm64
-	sha256sums_aarch64 = bde0ab7b92a4ed081bab67d35599d39ebbdc13ae207a7bca2498bff304253651
+	source_x86_64 = glazepkg-x86_64-0.1.12::https://github.com/neur0map/glazepkg/releases/download/v0.1.12/gpk-linux-amd64
+	sha256sums_x86_64 = 6b8cd358ca828d44ffc3d1054efc9bfb4cd21d219e95005138581ef8413a3fc3
+	source_aarch64 = glazepkg-aarch64-0.1.12::https://github.com/neur0map/glazepkg/releases/download/v0.1.12/gpk-linux-arm64
+	sha256sums_aarch64 = 8e29e2c8f5feac0fb0f818f577db341c27f2fd4b9644fc3b137527a045ae7d89
 
 pkgname = glazepkg-bin
