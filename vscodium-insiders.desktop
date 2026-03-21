@@ -14,6 +14,5 @@ Keywords=vscodium;codium;vscode;
 
 [Desktop Action new-empty-window]
 Name=New Empty Window
-Exec=/usr/bin/codium-insiders --no-sandbox --new-window %F
+Exec=/usr/bin/codium-insiders --new-window %F
 Icon=vscodium-insiders
-

@@ -3,12 +3,12 @@
 
 pkgname=vscodium-insiders
 pkgver=1.112.01895
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary releases of Code Insiders without branding/telemetry/licensing (git build from latest release)"
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://github.com/VSCodium/vscodium.git'
 license=('MIT')
-
+options=(!strip !debug)
 depends=(
     'fontconfig'
     'libxtst'
@@ -35,6 +35,7 @@ makedepends=(
     'git-lfs'
     'patch'
     'python'
+    'python-distutils-extra'
     'pkg-config'
     'rustup'
 )
@@ -48,7 +49,7 @@ source=(
     "${pkgname}-uri-handler.desktop"
     "https://github.com/VSCodium/vscodium-insiders/releases/download/${pkgver}-insider/VSCodium-${pkgver}-insider-src.tar.gz"
 )
-sha256sums=('e22f6ed12b5f0a2b8980eb18d702a2231e6a24d0d845268c5a6ec288c8004207'
+sha256sums=('c775a9e7733fe5497277f4fe9db3e6c214674bd8d8a9f996f2eb7eec19ae22e6'
             '2213e04254061ebdc4d56d12f58ed1f8ee2f40068d30f2657b93cb0b4714a880'
             '30870ba4f394bd90a5653b3027df182bf5a5dc9af60f3d7cf94729c79b1dabb6')
 
@@ -79,7 +80,7 @@ install_node() {
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 
     # Install the correct version of NodeJS (read from .nvmrc)
-	nvm install $(cat .nvmrc)
+    nvm install $(cat .nvmrc)
     nvm use
 
     # Check if the correct version of node is being used
@@ -119,7 +120,6 @@ build() {
     export VSCODE_ARCH="${_vscode_arch}"
     export VSCODE_QUALITY="insider"
     export RELEASE_VERSION="${pkgver}-insider"
-    export BUILD_SOURCEVERSION=$( cat /dev/urandom | env LC_ALL=C tr -dc 'a-z0-9' | fold -w 40 | head -n 1 )
     # the app will be updated with pacman
     export DISABLE_UPDATE="yes"
 
