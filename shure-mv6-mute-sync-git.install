@@ -1,0 +1,14 @@
+post_install() {
+    depmod -a
+    modprobe hid_shure_mv6 && echo ">>> hid_shure_mv6 loaded." || echo ">>> Warning: modprobe failed; reboot or run: modprobe hid_shure_mv6"
+    echo ">>> Module will also load automatically at boot via /etc/modules-load.d/hid-shure-mv6.conf"
+}
+
+post_upgrade() {
+    depmod -a
+    modprobe hid_shure_mv6 2>/dev/null || true
+}
+
+post_remove() {
+    depmod -a
+}

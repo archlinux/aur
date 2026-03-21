@@ -5,6 +5,7 @@ pkgdesc="Bidirectional mute-sync support for the Shure MV6 microphone on Linux"
 arch=('x86_64')
 url="https://github.com/cakenes/shure-mv6-mute-sync"
 license=('GPL2')
+install=shure-mv6-mute-sync-git.install
 depends=('libpulse')
 makedepends=('linux-headers' 'git')
 source=("$pkgname::git+https://github.com/cakenes/shure-mv6-mute-sync.git")
