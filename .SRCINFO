@@ -1,7 +1,7 @@
 pkgbase = psgplay-git
 	pkgdesc = Music player and emulator for the Atari ST Programmable Sound Generator (PSG) YM2149 and files in the SNDH archive.
 	pkgver = 0.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/frno7/psgplay
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = psgplay-git
 	license = LGPL-2.1
 	license = MIT
 	depends = alsa-lib
+	depends = tinyxxd
 	source = git+https://github.com/frno7/psgplay.git
 	source = git+https://github.com/frno7/toslibc
 	source = git+https://github.com/frno7/cf2149

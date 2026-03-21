@@ -3,13 +3,13 @@
 pkgname=psgplay-git
 _pkgname=psgplay
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Music player and emulator for the Atari ST Programmable Sound Generator (PSG) YM2149 and files in the SNDH archive."
 arch=('i686' 'x86_64' 'armv7h' 'aarch64' 'riscv32' 'riscv64' 'loong64' 'powerpc' 'powerpc64le' 'powerpc64')
 url="https://github.com/frno7/psgplay"
 license=('GPL-2.0' 'LGPL-2.1' 'MIT')
-depends=('alsa-lib')
-# looks like recent libapm changes broken submodul fetchs
+depends=('alsa-lib' 'tinyxxd')
+# looks like recent libapm changes broken submodule fetchs
 source=("git+https://github.com/frno7/${_pkgname}.git"
  	"git+https://github.com/frno7/toslibc"
         "git+https://github.com/frno7/cf2149"
