@@ -27,7 +27,7 @@ package() {
   mkdir -p build
   cd build
   export CFLAGS=-Wno-unused-result
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake -DBUILD_SIMD=off -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 
   mkdir -p "${pkgdir}/usr/include/"
