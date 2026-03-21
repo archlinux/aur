@@ -11,8 +11,8 @@ provides=('gpk')
 conflicts=('gpk')
 source_x86_64=("${url}/releases/download/v${pkgver}/gpk-linux-amd64")
 source_aarch64=("${url}/releases/download/v${pkgver}/gpk-linux-arm64")
-sha256sums_x86_64=('71ac2fd81b7e2d3811f49a7503b1bf73383bf7fa696b3daf91bf8a6099d8811b')
-sha256sums_aarch64=('b642280351610dda2c9470620631756fa28d477bbf7051292fc79815a3ee465f')
+sha256sums_x86_64=('b642280351610dda2c9470620631756fa28d477bbf7051292fc79815a3ee465f')
+sha256sums_aarch64=('71ac2fd81b7e2d3811f49a7503b1bf73383bf7fa696b3daf91bf8a6099d8811b')
 
 package() {
     if [[ "$CARCH" == "x86_64" ]]; then
