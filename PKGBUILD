@@ -9,7 +9,7 @@ license=('MIT')
 depends=('mpvpaper' 'gawk')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('YOUR_HASH_HERE')
+sha256sums=('73bcc64289bb1fea20a5b73a1140663eaf4a7340b68c666ba62cb8d1e503c9a2')
 
 prepare() {
     cd "$pkgname-$pkgver"

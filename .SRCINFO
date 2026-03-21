@@ -9,6 +9,6 @@ pkgbase = mpwall
 	depends = mpvpaper
 	depends = gawk
 	source = mpwall-1.0.0.tar.gz::https://github.com/Lamess-UI/mpwall/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = YOUR_HASH_HERE
+	sha256sums = 73bcc64289bb1fea20a5b73a1140663eaf4a7340b68c666ba62cb8d1e503c9a2
 
 pkgname = mpwall
