@@ -9,7 +9,7 @@ license=('GPL-2.0-or-later')
 depends=('qt5-x11extras' 'qt5-multimedia')
 makedepends=('git' 'qt5-tools')
 provides=("${pkgname}")
-conflicts=("${pkgname}")
+conflicts=("hotshots-git")
 source=("${pkgname}::git+https://github.com/boussou/HotShots.git")
 sha256sums=('SKIP')
 
