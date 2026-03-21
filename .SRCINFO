@@ -1,6 +1,6 @@
 pkgbase = opencode-quota
 	pkgdesc = OpenCode plugin for quota & token usage tracking with zero context window pollution
-	pkgver = 2.6.2
+	pkgver = 2.9.0
 	pkgrel = 1
 	url = https://github.com/slkiser/opencode-quota
 	install = opencode-quota.install
@@ -9,7 +9,7 @@ pkgbase = opencode-quota
 	makedepends = npm
 	depends = opencode
 	options = !debug
-	source = opencode-quota-2.6.2.tgz::https://registry.npmjs.org/@slkiser/opencode-quota/-/opencode-quota-2.6.2.tgz
-	sha256sums = 9ccfe40dc93174515ff2fec079863629a9c5c9e4e60ac41ed64c70c2cef7a1c3
+	source = opencode-quota-2.9.0.tgz::https://registry.npmjs.org/@slkiser/opencode-quota/-/opencode-quota-2.9.0.tgz
+	sha256sums = b093cd0e93dc7467e9a55783918d5d28a11d622a5a5cc93a5e3cb87b9f93346d
 
 pkgname = opencode-quota
