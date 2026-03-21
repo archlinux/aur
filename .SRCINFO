@@ -9,6 +9,6 @@ pkgbase = snaptool
 	depends = dotnet-runtime>=8.0
 	options = !strip
 	source = snaptool-1.3.0.tar.gz::https://github.com/c3rt1fiedd/snaptool/archive/refs/tags/1.3.0.tar.gz
-	sha256sums = 8e6e1ebeb7f3e2c8b8b6ff578b0186e6d81f712bc2b2278db3ba1cab91a1b09e
+	sha256sums = 309b82d0da9d7adc7e2267c90f980d2fd72db488ef5c9fe5ef349f3d5b4d49a0
 
 pkgname = snaptool
