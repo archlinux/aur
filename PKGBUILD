@@ -2,26 +2,25 @@
 # Contributor: OpenAI Codex
 
 pkgname=pmc-cli
-_pkgname=pmc-cli
-_commit=43e3a2a9cd90dcd450aaf8f6ba0cd3d73af1d0ea
-pkgver=0.0.0.r3.g43e3a2a
+_distname=pmc_tool
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Europe PMC CLI for literature and grants search"
 arch=('any')
 url="https://github.com/decent-tools-for-thought/pmc-cli"
 license=('custom:unknown')
 depends=('python')
-makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("git+$url.git#commit=$_commit")
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$_distname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_distname-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_distname-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/$_distname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
