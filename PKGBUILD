@@ -2,14 +2,14 @@
 
 pkgbase=libfronius
 pkgname=('libfronius' 'libfronius-docs')
-pkgver=1.0.18
+pkgver=1.1.0
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/ahpohl/libfronius"
 license=('MIT')
 makedepends=('cmake' 'git' 'doxygen' 'pkgconf' 'libmodbus')
 source=("$pkgname-$pkgver::git+https://github.com/ahpohl/libfronius.git#tag=v${pkgver}")
-sha256sums=('11a87b57b3de5c9d73e683755d344417cd904b301f19ec6eca71525c34bf6588')
+sha256sums=('4927934b96ea7bae579e014cfdf1479255b3a4c4da88d99cb4ffbada4b400c9a')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
@@ -23,7 +23,7 @@ build() {
 }
 
 package_libfronius() {
-  pkgdesc="Library to access Fronius inverters"
+  pkgdesc="Library to access Fronius inverters and meters"
   depends=('libmodbus')
   optdepends=('libfronius-docs: HTML documentation')
   options=('strip' 'debug' 'staticlibs')
