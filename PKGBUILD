@@ -4,7 +4,7 @@ pkgname=openlinkhub-git
 _upstreamname=OpenLinkHub
 _binlocation=/usr/bin/"${pkgname%-*}"
 _applocation=/var/lib/"${pkgname%-*}"
-pkgver=0.8.0.r33.gd3fef1b
+pkgver=0.8.0.r34.g648d776
 pkgrel=1
 pkgdesc="Open source Linux interface for iCUE LINK Hub and other Corsair AIOs, Hubs. [Latest Commit - source]"
 arch=('x86_64')
@@ -38,12 +38,25 @@ sha256sums=('SKIP'
 pkgver() {
 	cd "${pkgname%-*}"
 	printf "%s" "$(git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
-}	
+}
+
+_upstreamver() {
+	cd "${pkgname%-*}"
+	if git describe --tags --abbrev=0 >/dev/null 2>&1; then
+		git describe --tags --abbrev=0 | sed 's/^v//'
+	else
+		printf '0'
+	fi
+}
 
 
 build() {
 	cd "${pkgname%-*}"
-	CGO_CFLAGS_ALLOW='-fno-strict-overflow' go build .
+
+	local upstreamver
+	upstreamver="$(_upstreamver)"
+
+	CGO_CFLAGS_ALLOW='-fno-strict-overflow' go build -ldflags="-X OpenLinkHub/src/version.Version=${upstreamver}" .
 }
 
 package() {
