@@ -1,5 +1,6 @@
 # Maintainer: SanskritFritz (gmail)
 # Maintainer: Grigoris Pavlakis (aur.archlinux.org/account/lightspot21)
+# Maintainer: stickynotememo <samk26633@gmail.com>
 # Contributor: zertyz <zertyz@gmail.com>
 # Contributor: craeckie (aur.archlinux.org/account/craeckie)
 # Contributor: Oliver Kahrmann <oliver.kahrmann@gmail.com>
