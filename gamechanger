@@ -1,0 +1,6 @@
+#!/bin/bash
+if pgrep -f "gamechanger.py" > /dev/null; then
+    echo "🎮 GameChanger läuft bereits!"
+    exit 0
+fi
+nohup python3 /usr/share/gamechanger/gamechanger.py > /dev/null 2>&1 &
