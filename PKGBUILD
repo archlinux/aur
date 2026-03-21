@@ -1,12 +1,12 @@
 # Maintainer: Mattia Moffa <mattia@moffa.xyz>
 
 pkgname=vde-netemu-git
-pkgver=r3.df3d677
+pkgver=r6.f3deb66
 pkgrel=1
 pkgdesc="An alternative implementation of vde's wirefilter based on a different organization of components"
 arch=('x86_64')
 url="https://github.com/virtualsquare/vde-netemu"
-license=('GPL2')
+license=('GPL-2.0-only')
 depends=('vde2')
 makedepends=('git')
 provides=("${pkgname%-git}")
@@ -26,6 +26,5 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  mkdir -p "$pkgdir/usr/bin"
-  make PREFIX="$pkgdir/usr" install
+  make DESTDIR="$pkgdir" install
 }
