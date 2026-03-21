@@ -1,6 +1,6 @@
 pkgbase = zfetch-rs
 	pkgdesc = A fast & pretty system fetch tool written in rust
-	pkgver = 2.5.2
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://github.com/zodium-project/zfetch-rs
 	arch = x86_64

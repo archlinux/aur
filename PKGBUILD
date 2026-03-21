@@ -1,6 +1,6 @@
 # Maintainer: zodium-project
 pkgname=zfetch-rs
-pkgver=2.5.2
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="A fast & pretty system fetch tool written in rust"
 arch=('x86_64' 'aarch64')
