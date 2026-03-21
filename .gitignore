@@ -1,0 +1,4 @@
+linux-soundboard
+pkg/
+src/
+*.pkg.tar.*

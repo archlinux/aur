@@ -1,0 +1,23 @@
+pkgbase = linux-soundboard-git
+	pkgdesc = Native Linux soundboard with GTK4/libadwaita and virtual microphone support
+	pkgver = 1.0.0.r4.gf1d87b2
+	pkgrel = 1
+	url = https://github.com/germanua/Linux-SoundBoard
+	arch = x86_64
+	license = custom:PolyForm-Noncommercial-1.0.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = imagemagick
+	depends = gtk4
+	depends = libadwaita
+	depends = libpulse
+	depends = hicolor-icon-theme
+	optdepends = pipewire-pulse: PipeWire-backed PulseAudio server for virtual microphone routing
+	optdepends = pulseaudio: PulseAudio server for virtual microphone routing
+	optdepends = wireplumber: recommended PipeWire session manager
+	provides = linux-soundboard
+	conflicts = linux-soundboard
+	source = linux-soundboard::git+https://github.com/germanua/Linux-SoundBoard.git#branch=main
+	sha256sums = SKIP
+
+pkgname = linux-soundboard-git
