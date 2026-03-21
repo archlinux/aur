@@ -1,6 +1,6 @@
 # Maintainer: Gemini CLI Agent
 pkgname=cockpit-tools-bin
-pkgver=0.6.0
+pkgver=0.17.8
 pkgrel=1
 pkgdesc="A tool for managing Cockpit (Tauri-based)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'webkit2gtk-4.1' 'libnm' 'libayatana-appindicator')
 provides=('cockpit-tools')
 conflicts=('cockpit-tools')
 source=("${pkgname}-${pkgver}.deb::https://github.com/jlcodes99/cockpit-tools/releases/download/v${pkgver}/Cockpit.Tools_${pkgver}_amd64.deb")
-sha256sums=('5d04578934c531ba58a41f6389e960e5e82787f461049681eb670262187baa29')
+sha256sums=('a21302aceb4d34fd55d4d619a7503a79c8d6d8f6ee8884aa7b9cdcd612d79dbd')
 
 package() {
   # Extract data.tar.gz which contains the filesystem structure
