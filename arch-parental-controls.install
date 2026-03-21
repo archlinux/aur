@@ -1,0 +1,79 @@
+post_install() {
+    # Create supervised accounts group
+    groupadd -r supervised 2>/dev/null || true
+
+    # Enable the daemon (handles activity monitoring + time enforcement)
+    systemctl enable --now arch-parental-daemon.service 2>/dev/null || true
+
+    # Enable the DNS restore service (ensures web filtering works persistently)
+    systemctl enable --now arch-parental-dns-restore.service 2>/dev/null || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo ">>> Cleaning up parental control enforcement..."
+
+    # Remove all ACLs from state file
+    ACL_STATE="/var/lib/arch-parental-controls/acl-blocks.json"
+    if [[ -f "$ACL_STATE" ]]; then
+        python3 -c "
+import json, subprocess, os
+try:
+    with open('$ACL_STATE') as f:
+        state = json.load(f)
+    for user, paths in state.items():
+        for path in paths:
+            if os.path.exists(path):
+                subprocess.run(['setfacl', '-x', f'u:{user}', path], check=False)
+except Exception:
+    pass
+" 2>/dev/null || true
+    fi
+
+    # Disable and remove noexec mount units for supervised users
+    for unit in /etc/systemd/system/home-*.mount; do
+        [[ -f "$unit" ]] || continue
+        name=$(basename "$unit")
+        systemctl disable --now "$name" 2>/dev/null || true
+        rm -f "$unit"
+    done
+
+    # Disable time check timer (replaced by daemon enforcement)
+    systemctl disable --now arch-parental-time-check.timer 2>/dev/null || true
+    rm -f /etc/systemd/system/arch-parental-time-check.timer
+    rm -f /etc/systemd/system/arch-parental-time-check.service
+
+    # Disable daemon and DNS restore service
+    systemctl disable --now arch-parental-daemon.service 2>/dev/null || true
+    systemctl disable --now arch-parental-dns-restore.service 2>/dev/null || true
+
+    rm -rf /etc/systemd/system/tmp.mount.d/arch-parental-noexec.conf
+    rm -rf /etc/systemd/system/dev-shm.mount.d/arch-parental-noexec.conf
+    rmdir /etc/systemd/system/tmp.mount.d 2>/dev/null || true
+    rmdir /etc/systemd/system/dev-shm.mount.d 2>/dev/null || true
+
+    systemctl daemon-reload 2>/dev/null || true
+
+    # Remove pam_time entries for supervised users
+    if [[ -f /etc/security/time.conf ]]; then
+        # Remove lines matching our pattern: *;*;USERNAME;...
+        # Only remove entries for users in supervised group
+        if getent group supervised &>/dev/null; then
+            for user in $(getent group supervised | cut -d: -f4 | tr ',' ' '); do
+                sed -i "/^\\*;\\*;${user};/d" /etc/security/time.conf 2>/dev/null || true
+            done
+        fi
+    fi
+
+    # Remove polkit rules
+    rm -f /etc/polkit-1/rules.d/50-arch-parental-controls.rules
+
+    # Remove state directory
+    rm -rf /var/lib/arch-parental-controls
+
+    echo ">>> Note: The 'supervised' group and user configurations are preserved."
+    echo ">>> To fully remove, also run: groupdel supervised"
+}

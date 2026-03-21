@@ -1,0 +1,27 @@
+pkgbase = arch-parental-controls
+	pkgdesc = Arch Linux Parental Controls for supervised accounts
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jersobh/arch-parental-controls
+	install = arch-parental-controls.install
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = gettext
+	makedepends = git
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = polkit
+	depends = nftables
+	depends = systemd
+	depends = acl
+	depends = curl
+	source = arch-parental-controls::git+https://github.com/jersobh/arch-parental-controls.git#tag=v1.0.0
+	sha256sums = SKIP
+
+pkgname = arch-parental-controls
