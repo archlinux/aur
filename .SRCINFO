@@ -1,7 +1,7 @@
 pkgbase = weflow
 	pkgdesc = A local WeChat database decryption and analysis tool
 	pkgver = 4.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hicccc77/weflow
 	arch = x86_64
 	license = CC-BY-NC-SA-4.0
@@ -10,6 +10,8 @@ pkgbase = weflow
 	depends = nss
 	depends = glibc
 	noextract = WeFlow-4.1.2-Setup.tar.gz
+	options = !strip
+	options = !debug
 	source = WeFlow-4.1.2-Setup.tar.gz::https://github.com/hicccc77/weflow/releases/download/v4.1.2/WeFlow-4.1.2-Setup.tar.gz
 	source = weflow.desktop
 	source = icon.png
