@@ -1,0 +1,13 @@
+pkgbase = smokeinstaller
+	pkgdesc = CLI installer for SmokeAPI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/acidicoala/SmokeAPI
+	install = smokeinstaller.install
+	arch = any
+	license = MIT
+	depends = python
+	source = smokeinstaller-1.0.0-1-any.tar.gz::https://git.nwaifu.su/neuro_llc/SmokeAPI-Installer/archive/v1.0.0.tar.gz
+	sha256sums = bddf4bee86d5a78de9cad1f4c784340c1df242a2837b6f0d2277df576ca1734b
+
+pkgname = smokeinstaller

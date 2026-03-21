@@ -1,0 +1,16 @@
+post_remove() {
+  local cache_rel=".cache/smokeapi-installer"
+  local user_home=""
+  local cache_dir=""
+
+  # Remove cache for root (if smokeinstaller was run with sudo/root).
+  rm -rf "/root/${cache_rel}" 2>/dev/null || true
+
+  # Remove per-user cache created by smokeinstaller under /home.
+  for user_home in /home/*; do
+    [[ -d "$user_home" ]] || continue
+    cache_dir="${user_home}/${cache_rel}"
+    [[ -d "$cache_dir" ]] || continue
+    rm -rf "$cache_dir" 2>/dev/null || true
+  done
+}
