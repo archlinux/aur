@@ -1,12 +1,12 @@
 # Maintainer: jscheema <jscheema@gmail.com>
 pkgname=mediaarchiveorganizer
-pkgver=3.0.6
+pkgver=3.0.7
 pkgrel=1
 pkgdesc="Automated Media Organization & AI Cleanup Tool"
 arch=('any')
 url="https://github.com/UnDadFeated/Media_Archive_Organizer"
 license=('MIT')
-depends=('python-customtkinter' 'python-opencv' 'python-pillow' 'python-piexif' 'python-send2trash' 'python-numpy' 'python-protobuf' 'python-attrs' 'python-flatbuffers' 'python-absl-py')
+depends=('python-customtkinter' 'python-opencv' 'python-pillow' 'python-piexif' 'python-send2trash' 'python-numpy' 'python-protobuf' 'python-attrs' 'python-flatbuffers' 'python-absl' 'python-sounddevice')
 makedepends=()
 provides=("${pkgname}")
 source=("git+https://github.com/UnDadFeated/Media_Archive_Organizer.git#tag=v${pkgver}")
