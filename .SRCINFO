@@ -1,6 +1,6 @@
 pkgbase = r-ade4
 	pkgdesc = Analysis of Ecological Data: Exploratory and Euclidean Methods in Environmental Sciences
-	pkgver = 1.7.23
+	pkgver = 1.7.24
 	pkgrel = 1
 	url = https://cran.r-project.org/package=ade4
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = r-ade4
 	optdepends = r-spdep
 	optdepends = r-splancs
 	optdepends = r-waveslim
-	source = https://cran.r-project.org/src/contrib/ade4_1.7-23.tar.gz
-	sha256sums = 3092c5a68f68f24fc28387407f43b939862a460635250609f2409e359476677f
+	source = https://cran.r-project.org/src/contrib/ade4_1.7-24.tar.gz
+	sha256sums = 59509dcf781b2b69a97e225f53f2f76d0e0d5bfb04c5b6198007c035c4bd6d2a
 
 pkgname = r-ade4
