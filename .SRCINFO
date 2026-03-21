@@ -1,6 +1,6 @@
 pkgbase = python-pydna
 	pkgdesc = Representing double stranded DNA and functions for simulating cloning and homologous recombination between DNA molecules
-	pkgver = 5.5.7
+	pkgver = 5.5.8
 	pkgrel = 1
 	url = https://github.com/bjornfjohansson/pydna
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = python-pydna
 	optdepends = python-pyparsing: download
 	optdepends = python-requests: download
 	optdepends = python-cai2: express
-	source = git+https://github.com/bjornfjohansson/pydna.git?#tag=v5.5.7
-	sha512sums = 3843e58dc5d7c977c1bc5179003ac36870d8e68dc215d9852c611688ab295f9d29487159096f84ac2330263dd2fbd1486d288857af170fc4df6ff4c53d538fee
+	source = git+https://github.com/bjornfjohansson/pydna.git?#tag=v5.5.8
+	sha512sums = ef85d968b1d01ee28063dd9cef628f251a32b1ec089864e568681588e433a0b73b9b4d2b2d261acbf956891e70a57a86966fbea9cd735c75b53fa3c874e86b75
 
 pkgname = python-pydna
