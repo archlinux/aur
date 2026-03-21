@@ -1,12 +1,12 @@
 # Maintainer: jscheema <jscheema@gmail.com>
 pkgname=mediaarchiveorganizer
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="Automated Media Organization & AI Cleanup Tool"
 arch=('any')
 url="https://github.com/UnDadFeated/Media_Archive_Organizer"
 license=('MIT')
-depends=('python-customtkinter' 'python-opencv' 'python-pillow' 'python-piexif' 'python-send2trash' 'python-mediapipe')
+depends=('python-customtkinter' 'python-opencv' 'python-pillow' 'python-piexif' 'python-send2trash' 'python-numpy' 'python-protobuf' 'python-attrs' 'python-flatbuffers' 'python-absl-py')
 makedepends=()
 provides=("${pkgname}")
 source=("git+https://github.com/UnDadFeated/Media_Archive_Organizer.git#tag=v${pkgver}")
@@ -15,6 +15,9 @@ install="mediaarchiveorganizer.install"
 
 package() {
     cd "${srcdir}/Media_Archive_Organizer"
+
+    # Pragmatic fix for broken python-mediapipe AUR package
+    python -m pip install mediapipe --root="${pkgdir}" --prefix=/usr --no-deps --ignore-installed
 
     # Install application source
     install -d "${pkgdir}/usr/share/${pkgname}"
