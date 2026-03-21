@@ -1,13 +1,13 @@
 pkgbase = python-chibi-github
 	pkgdesc = lib to use github api
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://pypi.org/project/chibi-github/
 	arch = any
 	license = WTFPL
 	makedepends = python-setuptools
 	depends = python-chibi-api
-	source = https://files.pythonhosted.org/packages/source/c/chibi_github/chibi_github-0.2.0.tar.gz
-	sha256sums = 205323cd913760b8d057feec596b39b77665702c928962f3052d351d4cab4263
+	source = https://files.pythonhosted.org/packages/source/c/chibi_github/chibi_github-0.3.0.tar.gz
+	sha256sums = 042c3f21baba63622eb06af8463fa94ac2abf250f057c9f692c79321ace710c5
 
 pkgname = python-chibi-github
