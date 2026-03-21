@@ -1,7 +1,7 @@
 pkgbase = gram-editor-bin
 	pkgdesc = A code editor for humanoid apes and grumpy toads
-	pkgver = 1.0.0
-	pkgrel = 8
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://codeberg.org/GramEditor/gram
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -21,6 +21,7 @@ pkgbase = gram-editor-bin
 	depends = vulkan-tools
 	depends = wayland
 	depends = zlib
+	optdepends = rustup: permits installing rust-based extensions
 	optdepends = clang: improved C/C++ language support
 	optdepends = eslint: improved Javascript language support
 	optdepends = pyright: improved Python language support
@@ -29,7 +30,7 @@ pkgbase = gram-editor-bin
 	provides = gram
 	conflicts = gram-editor
 	conflicts = gram
-	source = gram-editor-bin-1.0.0.tar.gz::https://codeberg.org/GramEditor/gram/releases/download/1.0.0/gram-linux-x86_64-1.0.0.tar.gz
+	source = gram-editor-bin-1.1.0.tar.gz::https://codeberg.org/GramEditor/gram/releases/download/1.1.0/gram-linux-x86_64-1.1.0.tar.gz
 	sha256sums = 12b945739396312d9af27b1866d5b05ac6caf78415027798f5a68c1282bec331
 
 pkgname = gram-editor-bin
