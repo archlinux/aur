@@ -1,16 +1,22 @@
+# Maintainer: madyel
 pkgname=madypass
-pkgver=1.0
-pkgrel=3
-pkgdesc="Gestore di password sicure con GUI PyQt5 e cifratura Fernet"
+pkgver=1.1
+pkgrel=1
+pkgdesc="Secure password manager with a PyQt5 graphical interface and Fernet encryption"
 arch=('any')
-url="https://github.com/madyel/generate-password"
-license=('GPL3')
-depends=('python-pyqt5' 'python-cryptography')
-source=("madypass.py" "icon.png" "madypass.desktop")
-md5sums=('SKIP' 'SKIP' 'SKIP')
+url="https://github.com/madyel/madypass-aur"
+license=('GPL-3.0-only')
+depends=('python' 'python-pyqt5' 'python-cryptography')
+
+source=("$pkgname-$pkgver.tar.gz::https://github.com/madyel/madypass-aur/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 package() {
-    install -Dm755 "$srcdir/madypass.py" "$pkgdir/usr/bin/madypass"
-    install -Dm644 "$srcdir/icon.png" "$pkgdir/usr/share/pixmaps/madypass.png"
-    install -Dm644 "$srcdir/madypass.desktop" "$pkgdir/usr/share/applications/madypass.desktop"
+    install -Dm755 "$srcdir/madypass-aur-$pkgver/madypass.py" "$pkgdir/usr/bin/madypass"
+
+    install -Dm644 "$srcdir/madypass-aur-$pkgver/madypass.desktop" \
+        "$pkgdir/usr/share/applications/madypass.desktop"
+
+    install -Dm644 "$srcdir/madypass-aur-$pkgver/icon.png" \
+        "$pkgdir/usr/share/pixmaps/madypass.png"
 }
