@@ -4,8 +4,8 @@ _pkgauthor=blacknon
 _pkgname=lssh
 _pkgexec=(lssh lscp lsftp)
 pkgname=${_pkgname}-bin
-pkgver=0.6.13
-pkgrel=2
+pkgver=0.6.14
+pkgrel=1
 pkgdesc='A list-based SSH/SCP/SFTP client supporting single and parallel connections, local bashrc usage on remote machines, and advanced proxying'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/v${pkgver}"
@@ -20,8 +20,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 sha256sums=('afb11426e09da40a1ae4f8fa17ddcc6b6a52d14df04c29bc5bcd06eb8730624d'
-            '7c7ab43e3e6b097606808cf50e994ea5661e8a2dede16a9e7fb564d41989b08e')
-sha256sums_x86_64=('4cbcb49180fe903d76ce4f3b93e8cecbe8a92a0c3998edd9ca92b46f75dd0a55')
+            '530ee19e90816751f97e66a8d342065b87ba810fa6ffd210d7d211514166301f')
+sha256sums_x86_64=('1ab3539f13091cd66a4985ff9a83caff1c2b1c58add21cd83fd574cfe6330576')
 
 
 package() {
