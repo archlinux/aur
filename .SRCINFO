@@ -11,6 +11,6 @@ pkgbase = semantic-scholar-cli
 	makedepends = python-wheel
 	depends = python
 	source = semantic_scholar_tool-0.1.0.tar.gz::https://github.com/decent-tools-for-thought/semantic-scholar-cli/releases/download/v0.1.0/semantic_scholar_tool-0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = c688a2ab7e339417b7b49c8f75d79e506ac6f610d9a9bc5d720ddd568522d4b8
 
 pkgname = semantic-scholar-cli
