@@ -1,0 +1,42 @@
+post_install() {
+    echo ""
+    echo "==> Omarchy Lazygit Theme Sync installed!"
+    echo ""
+    echo "🚀 To complete setup, run:"
+    echo "   omarchy-lazygit-theme-sync setup"
+    echo ""
+    echo "   This will:"
+    echo "   • Install lazygit wrapper to ~/.local/bin/lazygit"
+    echo "   • Copy bundled themes to ~/.config/omarchy/lazygit-themes/"
+    echo "   • Add hook to Omarchy theme-set"
+    echo "   • Apply current theme"
+    echo ""
+    echo "Then change your Omarchy theme and watch lazygit follow along!"
+    echo ""
+}
+
+post_upgrade() {
+    echo ""
+    echo "==> Omarchy Lazygit Theme Sync updated!"
+    echo ""
+    echo "   To complete the update, run:"
+    echo "   omarchy-lazygit-theme-sync setup"
+    echo ""
+    echo "   This will:"
+    echo "   • Update the lazygit wrapper"
+    echo "   • Update bundled themes"
+    echo "   • Ensure hook is properly configured"
+    echo ""
+}
+
+post_remove() {
+    echo ""
+    echo "==> Omarchy Lazygit Theme Sync removed."
+    echo ""
+    echo "Note: Run 'omarchy-lazygit-theme-sync uninstall' before removing"
+    echo "      the package to clean up user files:"
+    echo "      • ~/.local/bin/lazygit"
+    echo "      • ~/.config/omarchy/lazygit-themes/"
+    echo "      • Hook in ~/.config/omarchy/hooks/theme-set"
+    echo ""
+}
