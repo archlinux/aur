@@ -4,7 +4,7 @@ pkgname=hqplayer-embedded-sse
 _debpkgname=hqplayer-embedded
 _debpkgver=5.17.1-47
 pkgver=5.17.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64')

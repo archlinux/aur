@@ -5,11 +5,15 @@ After=sound.target
 
 [Service]
 Type=simple
-# add the line below (with 30 or more) if hqplayerd cannot find remote NAA in time
-# ExecStartPre=/bin/sleep 30
 ExecStart=/usr/bin/hqplayerd
 Restart=always
 RestartSec=2
+EnvironmentFile=-/etc/default/hqplayerd
+Nice=-10
+IOSchedulingClass=realtime
+LimitMEMLOCK=4G
+LimitNICE=-10
+LimitRTPRIO=98
 
 [Install]
 WantedBy=default.target

@@ -1,11 +1,7 @@
 [Unit]
 Description=HQPlayer Embedded daemon
-# if your distro uses systemd-networkd you may want to replace
-# NetworkManager-wait-online.service
-# with
-# systemd-networkd-wait-online.service
-Requires=network-online.target sound.target systemd-udev-settle.service systemd-networkd-wait-online.service
-After=network-online.target sound.target systemd-udev-settle.service local-fs.target remote-fs.target
+Requires=network-online.target sound.target
+After=network-online.target sound.target local-fs.target remote-fs.target
 
 [Service]
 Type=simple
@@ -13,6 +9,11 @@ ExecStart=/usr/bin/hqplayerd
 Restart=always
 RestartSec=2
 EnvironmentFile=-/etc/default/hqplayerd
+Nice=-10
+IOSchedulingClass=realtime
+LimitMEMLOCK=4G
+LimitNICE=-10
+LimitRTPRIO=98
 
 [Install]
 WantedBy=multi-user.target
