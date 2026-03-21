@@ -1,6 +1,6 @@
 # Maintainer: jscheema <jscheema@gmail.com>
 pkgname=mediaarchiveorganizer
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Automated Media Organization & AI Cleanup Tool"
 arch=('any')
@@ -18,6 +18,9 @@ package() {
 
     # Pragmatic fix for broken python-mediapipe AUR package
     python -m pip install mediapipe --root="${pkgdir}" --prefix=/usr --no-deps --ignore-installed
+    
+    # Remove pyc files that capture $pkgdir paths to avoid Arch packaging warnings
+    find "${pkgdir}" -name "__pycache__" -type d -exec rm -rf {} +
 
     # Install application source
     install -d "${pkgdir}/usr/share/${pkgname}"
