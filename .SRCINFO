@@ -16,6 +16,8 @@ pkgbase = vomacsd
 	depends = libnotify
 	optdepends = xclip: X11 clipboard fallback backend
 	source = vomacsd-0.1.4.tar.gz::https://github.com/decent-tools-for-thought/vomacs/archive/refs/tags/v0.1.4.tar.gz
+	source = LICENSE
 	sha256sums = 59765c1fa355354f72ca2bb7638ed263c2f660a8a0a2df7a0bcdd39853dd5417
+	sha256sums = 3f97451fcb8acdb65efe77c1c14cd4c4bebee292b3d0688577b9be0560182f77
 
 pkgname = vomacsd
