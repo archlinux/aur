@@ -1,7 +1,7 @@
 pkgname=python-chibi-wpa-supplicant
-_pyname=chibi-wpa-supplicant
+_pyname=chibi_wpa_supplicant
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="package for handling config file of wpa supplicant"
 arch=('any')
 url="https://pypi.org/project/chibi_wpa_supplicant/"
