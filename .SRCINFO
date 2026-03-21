@@ -1,11 +1,11 @@
 pkgbase = ymp-bin
 	pkgdesc = YouTube Media Player and Explorer
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/trap251/ymp
 	arch = x86_64
 	license = MIT
-	source = https://github.com/trap251/ymp/releases/download/v0.2.0/ymp-0.2.0.tar.gz
-	sha256sums = 8a33fd345a84d28eda0d122dfc6762ea85c42e30e10b1a7f104506b36858f9c3
+	source = https://github.com/trap251/ymp/releases/download/v0.2.1/ymp-0.2.1.tar.gz
+	sha256sums = 8c04363b3006e76c89f9995a473b7d35081523cac85bcd3fc659d7fe67042b68
 
 pkgname = ymp-bin
