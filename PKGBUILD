@@ -1,40 +1,17 @@
 # Maintainer: Gurov <gurov@disroot.org>
 pkgname=viber-appimage
 pkgver=27.3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary cross-platform IM and VoIP software (appimage)"
 arch=('x86_64')
 url='https://www.viber.com'
 license=('LicenseRef-viber')
 depends=(
-  'alsa-lib'
-  'gst-libav'
-  'gst-plugins-bad'
-  'gst-plugins-base'
-  'gst-plugins-good'
-  'gst-plugins-ugly'
-  'libjpeg-turbo'
-  'libpulse'
-  'libxcomposite'
-  'libxcursor'
-  'libxdamage'
-  'libxml2-legacy'
-  'libxss'
-  'libxslt'
-  'nss'
-  'numactl'
-  'openssl'
-  'snappy'
-  'xcb-util-cursor'
-  'xcb-util-image'
-  'xcb-util-keysyms'
-  'xcb-util-renderutil'
-  'xcb-util-wm'
+  'glibc'
 )
 conflicts=('viber')
 provides=('viber')
 noextract=("$pkgname-$pkgver.AppImage")
-options=('!strip')
 source=("$pkgname-$pkgver.AppImage::https://download.cdn.viber.com/cdn/desktop/Linux/viber.AppImage")
 sha256sums=('72005fe438b45902c64845cdbfce9aa9ae689a07f220ed4c9706b06bae0daecf')
 
