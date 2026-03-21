@@ -1,6 +1,6 @@
 pkgbase = ocr4linux-git
 	pkgdesc = OCR CLI Tool for Extracting Text from Screenshots using bash and python for both x11 and wayland.
-	pkgver = 1.4.2.r57.e7e63f9
+	pkgver = 1.4.2.r61.0ef3354
 	pkgrel = 1
 	url = https://github.com/moheladwy/OCR4Linux
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = ocr4linux-git
 	depends = scrot
 	depends = rofi
 	provides = OCR4Linux
-	source = ocr4linux-git-1.4.2.r57.e7e63f9::git+https://github.com/moheladwy/OCR4Linux
+	source = ocr4linux-git::git+https://github.com/moheladwy/OCR4Linux
 	sha256sums = SKIP
 
 pkgname = ocr4linux-git
