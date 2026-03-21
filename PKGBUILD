@@ -2,7 +2,7 @@
 
 pkgname=cockpit-tools-appimage
 _pkgname=Cockpit.Tools
-pkgver=0.17.4
+pkgver=0.17.7
 pkgrel=1
 pkgdesc='Universal AI IDE account manager repackaged from the upstream AppImage release'
 arch=('x86_64' 'aarch64')
@@ -22,11 +22,11 @@ source_aarch64=(
   'LICENSE-CC-BY-NC-SA-4.0.txt'
   'cockpit-tools.png'
 )
-sha256sums_x86_64=('a4fe504c1a3af6bdb7d5cc1a0579c1f51d68d12c9c2c26d60dfba8b24a165f72'
+sha256sums_x86_64=('1e1586d6173f4fd0d7448eec4e7f0862216eb4699a46aa92f141fb03bf1efc8e'
                    '3061937fe6ba4c054dab38c349db7f8b5359226ff8c6ed0e1d60d2ffc65bf510'
                    'e66c269d4819aaab34b49ef5220c4ddab6756f21bb5180761a4eb8561f2b7bbd'
                    'adf31f26511a09fd60f76e099fd13e4761880138bb942153046c2ce261a9071c')
-sha256sums_aarch64=('f8538557ab7061fc53a2d1c84f0e1e727d373bb23e0bce371a2b95a51e612aee'
+sha256sums_aarch64=('27928bffa9903ef3dc07b73b39cff1689259b4b20344b46224e5790a7a9e5a33'
                     '3061937fe6ba4c054dab38c349db7f8b5359226ff8c6ed0e1d60d2ffc65bf510'
                     'e66c269d4819aaab34b49ef5220c4ddab6756f21bb5180761a4eb8561f2b7bbd'
                     'adf31f26511a09fd60f76e099fd13e4761880138bb942153046c2ce261a9071c')
