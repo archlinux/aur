@@ -1,7 +1,7 @@
 pkgbase = arch-parental-controls
 	pkgdesc = Arch Linux Parental Controls for supervised accounts
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jersobh/arch-parental-controls
 	install = arch-parental-controls.install
 	arch = x86_64
