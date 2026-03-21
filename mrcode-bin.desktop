@@ -2,11 +2,11 @@
 Name=MrCode
 Comment=An IDE based on VSCode / VSCodium
 GenericName=Text Editor
-Exec=/usr/share/mrcode/bin/mrcode --no-sandbox --unity-launch %F
-Icon=mrcode
+Exec=/usr/bin/mrcode %F
+Icon=mrcode-bin
 Type=Application
-StartupNotify=true
-StartupWMClass=MrCode
+StartupNotify=false
+StartupWMClass=mrcode
 Categories=Utility;Development;IDE;
 MimeType=text/plain;inode/directory;
 Actions=new-empty-window;
@@ -14,5 +14,5 @@ Keywords=mrcode;
 
 [Desktop Action new-empty-window]
 Name=New Empty Window
-Exec=/usr/share/mrcode/bin/mrcode --no-sandbox --new-window %F
-Icon=mrcode
+Exec=/usr/bin/mrcode --new-window %F
+Icon=mrcode-bin

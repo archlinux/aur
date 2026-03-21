@@ -2,10 +2,10 @@
 # Inspired from the PKGBUILD for vscodium-bin.
 
 pkgname=mrcode-bin
-pkgver=1.82.0.23253
+pkgver=1.110.11652
 pkgrel=1
 pkgdesc="A custom build of VSCodium / VSCode (binary release)"
-arch=('x86_64' 'aarch64' 'armv7h')
+arch=('x86_64' 'aarch64')
 url='https://github.com/zokugun/MrCode.git'
 license=('MIT')
 
@@ -16,7 +16,6 @@ depends=(
     'cairo'
     'alsa-lib'
     'nss'
-    'gcc-libs'
     'libnotify'
     'libxss'
     'glibc>=2.28-4'
@@ -32,33 +31,36 @@ conflicts=(
     'mrcode-git'
 )
 source=(
-    'mrcode.desktop'
+    'mrcode-bin.desktop'
 )
 source_x86_64=(
     "https://github.com/zokugun/MrCode/releases/download/${pkgver}/MrCode-linux-x64-${pkgver/+/.}.tar.gz"
 )
-source_armv7h=(
-    "https://github.com/zokugun/MrCode/releases/download/${pkgver}/MrCode-linux-armhf-${pkgver/+/.}.tar.gz"
-)
 source_aarch64=(
     "https://github.com/zokugun/MrCode/releases/download/${pkgver}/MrCode-linux-arm64-${pkgver/+/.}.tar.gz"
 )
-sha256sums=('362ef9b395929a66442f60be0e238ac69afbbda07728e4121c352fdea236af92')
-sha256sums_x86_64=('52b27f3a2115e3de5ebe53f358cb9e5ffdf734f16cce0d313f427871fc67c420')
-sha256sums_aarch64=('cf60fb1e6ea42304df525ac25a95be31868827bd4155b2bfb4d2bed993d8b926')
-sha256sums_armv7h=('d354bb476c57b2385d8939e2238d07ccc23bebb24f083cafe812d9c2353d5905')
+sha256sums=('c4e61f32766b29a14d6445a687287c12323c439e691e4c06bb56a573c18fab5a')
+sha256sums_x86_64=('039b308772e86ebf09b848ae5dba88d2a4197f0c60f1d382ce176fbc8799e081')
+sha256sums_aarch64=('5adfae9bc6a7d7b1238f99fe4a1fa48c75de3fe9db22e0d79ff0a6fc1303d6fe')
 
 shopt -s extglob
 
 package() {
     install -d -m755 ${pkgdir}/usr/bin
-    install -d -m755 ${pkgdir}/usr/share/{mrcode,applications,pixmaps}
-    install -d -m755 ${pkgdir}/usr/share/licenses/mrcode
+    install -d -m755 ${pkgdir}/usr/share/{${pkgname},applications,pixmaps}
+    install -d -m755 ${pkgdir}/usr/share/licenses/${pkgname}
+
+    cp -r ${srcdir}/!(${pkgname}*.desktop|MrCode-*-${pkgver}.tar.gz) ${pkgdir}/usr/share/${pkgname}
+    cp -r ${srcdir}/resources/app/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}
     
-    cp -r ${srcdir}/resources/app/LICENSE.txt ${pkgdir}/usr/share/licenses/mrcode
-    cp -r ${srcdir}/!(mrcode.desktop|MrCode-*-${pkgver/+/.}.tar.gz) ${pkgdir}/usr/share/mrcode
+    ln -s /usr/share/${pkgname}/bin/mrcode ${pkgdir}/usr/bin/mrcode
     
-    ln -s /usr/share/mrcode/bin/mrcode ${pkgdir}/usr/bin/mrcode
-    install -D -m644 mrcode.desktop ${pkgdir}/usr/share/applications/mrcode.desktop
-    install -D -m644 ${srcdir}/resources/app/resources/linux/code.png ${pkgdir}/usr/share/pixmaps/mrcode.png
+    install -D -m644 ${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
+    install -D -m644 ${srcdir}/resources/app/resources/linux/code.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+    
+    # Symlink shell completions
+    install -d -m755 ${pkgdir}/usr/share/zsh/site-functions
+    install -d -m755 ${pkgdir}/usr/share/bash-completion/completions
+    ln -s /usr/share/${pkgname}/resources/completions/zsh/_mrcode ${pkgdir}/usr/share/zsh/site-functions
+    ln -s /usr/share/${pkgname}/resources/completions/bash/mrcode ${pkgdir}/usr/share/bash-completion/completions
 }
