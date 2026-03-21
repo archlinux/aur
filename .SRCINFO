@@ -1,19 +1,15 @@
 pkgbase = hashbox
 	pkgdesc = A GUI tool for hashing and verifying passwords using PyQt5
-	pkgver = 1.0
-	pkgrel = 3
-	url = https://github.com/madyel/password-hasher
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/madyel/hashbox-aur
 	arch = any
 	license = MIT
 	depends = python
 	depends = python-pyqt5
 	depends = python-bcrypt
 	depends = python-argon2-cffi
-	source = hashbox.py
-	source = hashbox.desktop
-	source = icon.png
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	source = hashbox-1.1.tar.gz::https://github.com/madyel/hashbox-aur/archive/refs/tags/v1.1.tar.gz
+	sha256sums = SKIP
 
 pkgname = hashbox

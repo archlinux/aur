@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=HashBox
-Exec=hashbox
-Icon=hashbox
-Type=Application
-Categories=Utility;
-Comment=A tool to hash and verify passwords using various algorithms.
