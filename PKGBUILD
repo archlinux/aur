@@ -1,17 +1,17 @@
 pkgname=swordfish-git
-pkgver=r51.42acca7
+pkgver=r81.82279fb
 pkgrel=1
 pkgdesc="A pkill-like CLI tool with more control over process management."
 arch=('x86_64')
 url="https://github.com/Foox-dev/swordfish"
-license=('MIT')
-depends=()
+license=('GLP2')
+depends=('ncurses')
 makedepends=('git' 'gcc' 'make')
 provides=('swordfish')
 conflicts=('swordfish')
 source=("git+$url")
 md5sums=('SKIP')
-options=(!debug strip)
+options=('!debug')
 pkgver() {
     cd "$srcdir/swordfish"
     echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
