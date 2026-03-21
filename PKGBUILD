@@ -11,7 +11,7 @@ makedepends=('git' 'qt5-tools')
 provides=("${pkgname%-git}")
 conflicts=("hotshots-git")
 source=("${pkgname%-git}::git+https://github.com/boussou/HotShots.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+
 
 
 build() {
