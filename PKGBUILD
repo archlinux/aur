@@ -4,7 +4,7 @@ pkgname=coomer
 pkgver=1.1.3
 pkgrel=1
 pkgdesc="Zoomer application for everyone on Linux"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/yuzujr/coomer"
 license=('MIT')
 
@@ -51,7 +51,14 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  install -Dm755 "build/linux/x86_64/release/coomer" \
+  local binary_path
+  binary_path="$(find build -type f -path '*/release/coomer' -print -quit)"
+  [[ -n "$binary_path" ]] || {
+    echo "coomer binary not found under build/" >&2
+    return 1
+  }
+
+  install -Dm755 "$binary_path" \
     "$pkgdir/usr/bin/coomer"
 
   install -Dm644 LICENSE \
