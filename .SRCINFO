@@ -1,0 +1,22 @@
+pkgbase = mariadb-connector-odbc-git
+	pkgdesc = A standardized, LGPL licensed ODBC database driver for MariaDB (git version)
+	pkgver = 3.2.8.r4.g5c60284c
+	pkgrel = 1
+	url = https://mariadb.com/kb/en/mariadb/mariadb-connector-odbc/
+	install = mariadb-connector-odbc-git.install
+	arch = x86_64
+	arch = armv7h
+	license = LGPL
+	makedepends = git
+	makedepends = cmake
+	depends = unixodbc>=2.3
+	depends = openssl
+	depends = zlib
+	depends = mariadb-libs
+	provides = mariadb-connector-odbc
+	conflicts = mariadb-connector-odbc
+	conflicts = mariadb-connector-odbc-bin
+	source = mariadb-connector-odbc-git::git+https://github.com/mariadb-corporation/mariadb-connector-odbc.git
+	sha256sums = SKIP
+
+pkgname = mariadb-connector-odbc-git
