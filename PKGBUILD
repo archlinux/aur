@@ -1,17 +1,18 @@
 # Maintainer: TheFeelTrain <the@feeltra.in>
 
-pkgname=vsview-frameprops-extended
-_origpkgname=vsview_frameprops_extended
+_plugin=frameprops-extended
+pkgname=vsview-${_plugin}
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A vsview plugin adding more categories and formatters to the built-in vsview frameprops tool"
 arch=("x86_64")
-url='https://pypi.org/project/vsview-frameprops-extended/'
-license=("MIT")
+url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
+license=("EUPL-1.2")
 depends=(
     "vsview"
 )
 makedepends=(
+	"git"
 	"python-build"
 	"python-installer"
 	"python-wheel"
@@ -19,10 +20,11 @@ makedepends=(
 	"python-hatchling"
     "python-versioningit"
 )
-source=("https://files.pythonhosted.org/packages/34/82/19daf9ec41efe64467364eabc8609b34b8f6d38cc2c3885ba3bc6be98539/vsview_frameprops_extended-0.1.4.tar.gz")
-sha256sums=("23c78cc7c491077718485b116d86ef482e587d82a3565346bc90dfa73d35d5b8")
+source=("${pkgname}::git+${url}.git#tag=${_plugin}/v${pkgver}")
+sha256sums=('SKIP')
+
 package() {
-	cd "${_origpkgname}-${pkgver}" || exit
+	cd "${pkgname}/src/plugins/${_plugin}" || exit
 	python -m build --wheel --no-isolation
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

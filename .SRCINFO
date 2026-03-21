@@ -1,10 +1,11 @@
 pkgbase = vsview-frameprops-extended
 	pkgdesc = A vsview plugin adding more categories and formatters to the built-in vsview frameprops tool
 	pkgver = 0.1.4
-	pkgrel = 1
-	url = https://pypi.org/project/vsview-frameprops-extended/
+	pkgrel = 2
+	url = https://github.com/Jaded-Encoding-Thaumaturgy/vs-view
 	arch = x86_64
-	license = MIT
+	license = EUPL-1.2
+	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
@@ -12,7 +13,7 @@ pkgbase = vsview-frameprops-extended
 	makedepends = python-hatchling
 	makedepends = python-versioningit
 	depends = vsview
-	source = https://files.pythonhosted.org/packages/34/82/19daf9ec41efe64467364eabc8609b34b8f6d38cc2c3885ba3bc6be98539/vsview_frameprops_extended-0.1.4.tar.gz
-	sha256sums = 23c78cc7c491077718485b116d86ef482e587d82a3565346bc90dfa73d35d5b8
+	source = vsview-frameprops-extended::git+https://github.com/Jaded-Encoding-Thaumaturgy/vs-view.git#tag=frameprops-extended/v0.1.4
+	sha256sums = SKIP
 
 pkgname = vsview-frameprops-extended
