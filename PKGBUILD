@@ -7,8 +7,6 @@
 
 pkgname=chrome-remote-desktop
 pkgver=147.0.7727.3
-146.0.7680.5
-146.0.7680.5
 pkgrel=1
 pkgdesc="Access other computers or allow another user to access your computer securely over the Internet"
 arch=("x86_64")
@@ -29,7 +27,7 @@ sha256sums=('2bdf352bb764ed1915dd0102bde56adb1ea1f8b4b4bd252caae6b106623b406f'
             '90bcfab85a87cfa6d038a55c556206f74b22eb03644ea51f46732cfb27679963')
 
 latestver() {
-  curl -qs https://dl.google.com/linux/chrome-remote-desktop/deb/dists/stable/main/binary-amd64/Packages | awk '/^Version:/{print $2}'
+  curl -qs https://dl.google.com/linux/chrome-remote-desktop/deb/dists/stable/main/binary-amd64/Packages | awk '/^Version:/{print $2}' | sort -V | tail -1
 }
 
 prepare() {
