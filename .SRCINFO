@@ -1,7 +1,7 @@
 pkgbase = polymodloader-bin
 	pkgdesc = A Mod Loader for PolyTrack
 	pkgver = 0.6.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://codeberg.org/polytrackmods/PolyModLoader
 	arch = x86_64
 	license = unknown
