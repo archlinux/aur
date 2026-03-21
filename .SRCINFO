@@ -1,0 +1,20 @@
+pkgbase = ken-bin
+	pkgdesc = A sharp AUR/Pacman helper. Pre-compiled binary version.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/nespaset/ken
+	arch = x86_64
+	license = Apache
+	depends = pacman
+	depends = git
+	provides = ken
+	provides = kn
+	provides = sk
+	conflicts = ken
+	conflicts = ken-git
+	conflicts = sake-git
+	conflicts = sk
+	source = ken::https://github.com/nespaset/ken/releases/download/v1.0.1/ken
+	sha256sums = SKIP
+
+pkgname = ken-bin
