@@ -20,6 +20,12 @@ if ! grep -wq ext4 /proc/modules; then
   modprobe ext4
 fi
 
+case "$1" in
+-d|--unload-first) if lsmod | grep -q kernelsu; then
+  rmmod kernelsu
+fi ;;
+esac
+
 case "$KSU_MODULE" in
   *.zst) GET_CMD="zstdcat" ;;
   *.xz) GET_CMD="xzcat" ;;
