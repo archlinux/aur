@@ -29,4 +29,5 @@ package() {
     install -Dm644 packaging/flatpak/HotShots.metainfo.xml -t \
         "$pkgdir/usr/share/metainfo/"
 }
+
 sha256sums=('904a54d833e955004e61fc6e4051ff59ef6dde57bb2b255b8382e60331a5e77b')
