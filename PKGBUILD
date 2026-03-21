@@ -2,10 +2,10 @@
 
 pkgname=igv-web
 _pkgname=igv
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc='A web application for exploring genomic datasets using igv.js'
-arch=('x86_64' 'aarch64')
+arch=('any')
 
 url='https://igv.org/doc/webapp/'
 license=('MIT')
@@ -19,7 +19,7 @@ source=("https://igv.org/app-archive/igv-webapp.${pkgver}.zip"
     "igv-web.conf"
     "igvwebConfig.patch"
 )
-sha256sums=('31e4a9ac104879d372b96313587224f8b2fe89267e25015aa5cb23188d703fc5'
+sha256sums=('7b54efe1d918f8e5699e75cc3ca104a26e335da3c12c2fa29a9c2399ce08ce28'
             'b131c27b138880a92dd24fa4c4c1c99161ab2ff1ab268fa8f1637a585e7c40e2'
             '813c375ee0c763d38b66ea589dd9340b4f2c7ff8b969ab57ec13870cc0348a56'
             '6e5e066941bda8a18b7251837661c9e370a8166e72231a33f4480a3a94fed11a')
@@ -47,6 +47,9 @@ package() {
     install -dm755 ${pkgdir}/srv/http
     cp -r ${srcdir}/igv-webapp.${pkgver} ${pkgdir}/srv/http/${pkgname}
 
-    echo "you can customize igvwebConfig.js in /srv/http/${pkgname}"
     echo "you should include conf.d/ in /etc/nginx/nginx.conf"
+}
+
+post_install() {
+    echo "you can customize igvwebConfig.js in /srv/http/${pkgname}"
 }
