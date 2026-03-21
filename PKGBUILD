@@ -1,11 +1,13 @@
-# Maintainer: David Campbell <dcampbell24@gmail.com>
+# Maintainer:
+# SPDX-FileCopyrightText: 2025 David Campbell <david@hnefatafl.or>
+# SPDX-License-Identifier: 0BSD
 
 # Zero-Clause BSD
 # ===============
-
+#
 # Permission to use, copy, modify, and/or distribute this software for
 # any purpose with or without fee is hereby granted.
-
+#
 # THE SOFTWARE IS PROVIDED “AS IS” AND THE AUTHOR DISCLAIMS ALL
 # WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES
 # OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE
@@ -15,7 +17,7 @@
 # OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 pkgname=hnefatafl-copenhagen
-pkgver=5.3.1
+pkgver=5.4.0
 pkgrel=1
 real_pkgrel=1
 pkgdesc="Copenhagen Hnefatafl client. Discord: https://discord.gg/h56CAHEBXd"
@@ -27,7 +29,7 @@ conflicts=("hnefatafl-copenhagen")
 depends=("glibc" "gcc-libs" "hicolor-icon-theme" "alsa-lib" "openssl")
 makedepends=("base-devel" "clang" "llvm" "mold" "rustup")
 source=("https://github.com/dcampbell24/hnefatafl/archive/refs/tags/v$pkgver-$real_pkgrel.tar.gz")
-sha256sums=("fea5bbb6a6dddead0bccbbd4efd4f9579d0f775e3cbb01907290a308fcd14f7d")
+sha256sums=("4ff2d00d2f03df8ddb7d8e92a2679378fdaf3788131c739cffcff541e19bbcf0")
 build() {
     tar -xvzf v$pkgver-$real_pkgrel.tar.gz
     cd "hnefatafl-$pkgver-$real_pkgrel"
