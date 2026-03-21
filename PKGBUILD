@@ -4,17 +4,17 @@
 
 pkgname='python-sphinx-lua-ls'
 _module='sphinx-lua-ls'
-_src_folder='sphinx_lua_ls-3.8.1'
-pkgver='3.8.1'
+pkgver='3.10.0'
+_src_folder="sphinx_lua_ls-${pkgver}"
 pkgrel=1
 pkgdesc="Automatic documentation generation via EmmyLua/LuaLs, usable with sphinx"
-url="None"
+url="https://sphinx-lua-ls.readthedocs.io/en/"
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 license=('unknown')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/45/16/06ffa4589938698a8a50bee1397429282e7c61d000967cb85a867eea9416/sphinx_lua_ls-3.8.1.tar.gz")
-sha256sums=('d167beb28cfbb21681440f78edf64748aad3a571cfc9b5a9a9cbd148f7d614d0')
+source=("https://files.pythonhosted.org/packages/fc/a7/fd6cec6c5cfca98913ff0b581e037e1c635f6c07c163f04cbf21e934d96f/sphinx_lua_ls-3.10.0.tar.gz")
+sha256sums=('5ca27e5b41e3626a0c2a0efc79b99b54c44dd59b183afc098b8b6ebd7478860f')
 
 build() {
     cd "${srcdir}/${_src_folder}"
