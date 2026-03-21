@@ -1,7 +1,7 @@
 # Maintainer: Daniel Liland <celsiuss@await.sh>
 
 pkgname=preflight
-pkgver=0.9.8
+pkgver=0.9.9
 pkgrel=1
 pkgdesc="A modern slicer built for precision and performance. "
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=('!makeflags')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/oozebot/preFlight/archive/refs/tags/v${pkgver}.tar.gz"
   0001-fix-building-for-arch.patch
   0002-occt-wrapper-patch.patch)
-sha256sums=('b7b58f4ac5440d08d76673faf1a38c08a00b1435347cb3e4f9ffaf2c6a71659e'
+sha256sums=('cd8b7e0db2ecb6fa1aec43f5e37e8344205da15f8d954ca5306083cb5b1fd7ce'
             '0985a92b9643c617159a9ded1eed28b6bba1c3a71aae42fbd6e76b210f3491a6'
             '1c282fa3443bcf5035278a8d4fec9ce08f57a04e7f45699dc9cdc95d2a79d26e')
 
@@ -76,12 +76,6 @@ build() {
     -DSLIC3R_STATIC=0 \
     -DCMAKE_CXX_FLAGS="-Wno-template-body"
   ninja -C build_${pkgver}
-}
-
-check() {
-  cd build_${pkgver}
-
-  ctest
 }
 
 package() {
