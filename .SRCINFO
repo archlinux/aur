@@ -1,0 +1,19 @@
+pkgbase = mobvibe-cli-git
+	pkgdesc = CLI daemon for Mobvibe that connects ACP-compatible agents to the gateway
+	pkgver = 0.1.46.r3.g95262dc
+	pkgrel = 1
+	url = https://github.com/Eric-Song-Nop/mobvibe
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = bun
+	makedepends = git
+	makedepends = pnpm
+	depends = gcc-libs
+	depends = glibc
+	provides = mobvibe-cli
+	conflicts = mobvibe-cli
+	source = mobvibe-cli-git::git+https://github.com/Eric-Song-Nop/mobvibe.git
+	sha256sums = SKIP
+
+pkgname = mobvibe-cli-git
