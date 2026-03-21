@@ -1,7 +1,7 @@
-# Maintainer: Zack Fitch <zack@johnzfitch.com>
+# Maintainer: Zack Fitch <zack@internetuniverse.org>
 pkgname=claude-cowork-linux
 pkgver=1.1.4010
-pkgrel=9
+pkgrel=10
 pkgdesc="Anthropic Claude Desktop with Cowork (local agent) support for Linux"
 arch=('x86_64')
 url="https://github.com/johnzfitch/claude-cowork-linux"
@@ -162,6 +162,11 @@ package() {
     mkdir -p "${pkgdir}${_electron_resources}"
     install -m644 "${srcdir}/linux-app-extracted/resources/"*.json \
         "${pkgdir}${_electron_resources}/"
+
+    # Install plugin permission shim to electron resources dir.
+    # The asar copies this to <sessionStorageDir>/shim-lib/shim.sh at session start.
+    install -m755 "${srcdir}/linux-app-extracted/cowork/cowork-plugin-shim.sh" \
+        "${pkgdir}${_electron_resources}/cowork-plugin-shim.sh"
 
     # Install launcher script
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/claude-cowork" <<'EOF'
