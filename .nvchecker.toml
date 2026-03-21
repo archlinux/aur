@@ -1,0 +1,5 @@
+[bine-bin]
+source = "github"
+github = "hymkor/bine"
+use_latest_release = true
+prefix = "v"

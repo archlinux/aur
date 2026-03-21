@@ -1,0 +1,20 @@
+pkgbase = bine-bin
+	pkgdesc = Terminal Binary Editor
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/hymkor/bine
+	arch = x86_64
+	arch = i686
+	license = MIT
+	provides = bine
+	conflicts = bine
+	source = LICENSE-0.8.0::https://raw.githubusercontent.com/hymkor/bine/v0.8.0/LICENSE
+	source = README-0.8.0.md::https://raw.githubusercontent.com/hymkor/bine/v0.8.0/README.md
+	sha256sums = 975993bec9e15d5e59b80565a5a0b9ed798eb0fa6f46fa4eb0e6b41c432651ab
+	sha256sums = 76352ed2e1ca24578c1d60a20348cd7dcfba18c3a0262a96fa5b2e276d22cc76
+	source_x86_64 = bine-x86_64-0.8.0.zip::https://github.com/hymkor/bine/releases/download/v0.8.0/bine-v0.8.0-linux-amd64.zip
+	sha256sums_x86_64 = fa521fc856f935a1c95fce54750c6b28bd416577dfdacf4586e9977764ceca56
+	source_i686 = bine-i686-0.8.0.zip::https://github.com/hymkor/bine/releases/download/v0.8.0/bine-v0.8.0-linux-386.zip
+	sha256sums_i686 = d99e0de544b9a36f8326c66ef36a3ff9db4539d2bdd7641627a15c0d52af9515
+
+pkgname = bine-bin
