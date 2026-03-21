@@ -1,6 +1,6 @@
 # Maintainer: jscheema <jscheema@gmail.com>
 pkgname=mediaarchiveorganizer
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc="Automated Media Organization & AI Cleanup Tool"
 arch=('any')

@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Media Archive Organizer
 Comment=Automated Media Organization & Privacy-First AI Cleanup Tool
-Exec=media-archive-organizer
+Exec=mediaarchiveorganizer
 Icon=media-archive-organizer
 Terminal=false
 Type=Application
