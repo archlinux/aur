@@ -1,6 +1,6 @@
 # Maintainer: moheladwy <mohamed.h.eladwy@gmail.com>
 pkgname=ocr4linux-git
-pkgver=1.4.2.r56.4b6a174
+pkgver=1.4.2.r57.e7e63f9
 pkgrel=1
 pkgdesc="OCR CLI Tool for Extracting Text from Screenshots using bash and python for both x11 and wayland."
 arch=('any')
