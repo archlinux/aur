@@ -1,7 +1,7 @@
 # Maintainer: uwuclxdy <uwuclxdy@pm.me>
 
 pkgname=zluda-preview-bin
-pkgver=6.preview.62
+pkgver=6.preview.63
 pkgrel=1
 pkgdesc='CUDA on AMD GPUs (pre-release ZLUDA binary).'
 arch=('x86_64')
@@ -12,14 +12,14 @@ provides=('zluda')
 conflicts=('zluda' 'zluda-git' 'nvidia-utils')
 options=(!strip !debug)
 
-_tag=v6-preview.62
-_commit=dcc6bb8
+_tag=v6-preview.63
+_commit=e070320
 
 source=(
     "zluda-linux-${_commit}.tar.gz::https://github.com/vosen/ZLUDA/releases/download/${_tag}/zluda-linux-${_commit}.tar.gz"
     "LICENSE-MIT::https://raw.githubusercontent.com/vosen/ZLUDA/${_tag}/LICENSE-MIT"
 )
-sha256sums=('6ddc4d6bdbcb2dff39a4298278769e8137bbde56f466de3d8fba1452812d6c58'
+sha256sums=('1654ab2553b9e58451f5832041baa54d830ed62806dda12e3548e94726f8cd87'
             '23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3')
 
 package() {
