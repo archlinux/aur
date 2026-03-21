@@ -1,6 +1,6 @@
 # Maintainer: Christos Longros <chris.longros@gmail.com>
 pkgname=r-fsrs
-pkgver=0.1.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="R bindings for fsrs-rs spaced repetition algorithm (FSRS-6)"
 arch=('x86_64')
