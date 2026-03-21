@@ -1,0 +1,21 @@
+post_install() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl daemon-reload >/dev/null 2>&1 || true
+    systemctl enable --now arch-sense.service >/dev/null 2>&1 || true
+  fi
+}
+
+post_upgrade() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl daemon-reload >/dev/null 2>&1 || true
+    systemctl enable arch-sense.service >/dev/null 2>&1 || true
+    systemctl try-restart arch-sense.service >/dev/null 2>&1 || true
+  fi
+}
+
+post_remove() {
+  if command -v systemctl >/dev/null 2>&1; then
+    systemctl disable --now arch-sense.service >/dev/null 2>&1 || true
+    systemctl daemon-reload >/dev/null 2>&1 || true
+  fi
+}
