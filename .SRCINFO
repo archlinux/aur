@@ -1,6 +1,6 @@
 pkgbase = seemux-bin
 	pkgdesc = A GTK4 terminal multiplexer for Linux with Claude Code integration
-	pkgver = 0.20.3
+	pkgver = 0.21.1
 	pkgrel = 1
 	url = https://github.com/asermax/seemux
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = seemux-bin
 	conflicts = seemux
 	conflicts = seemux-git
 	source = seemux-0.10.0.tar.gz::https://github.com/asermax/seemux/archive/refs/tags/v0.10.0.tar.gz
-	sha256sums = 0ca327c9dff64ad08aad25b8890898aaf2de1b215ff66593803a206bf487d1ec
+	sha256sums = 54a211686f555fa88c7e124a196163a01f5c1339e8539f7a769512cfdbae863f
 	source_x86_64 = seemux-bin-0.10.0::https://github.com/asermax/seemux/releases/download/v0.10.0/seemux-linux-x86_64
 	source_x86_64 = seemux-tmux-shim-bin-0.10.0::https://github.com/asermax/seemux/releases/download/v0.10.0/seemux-tmux-shim-linux-x86_64
-	sha256sums_x86_64 = 6d48a09184a1066187f7a1f1a9fa22153cd5c890d03cd7f7b731272901e832a0
-	sha256sums_x86_64 = e9eccf6c6b5e0f5a39b4ae49832fb9a6ee881d7d90669e87b9145ab181ab95d7
+	sha256sums_x86_64 = fa9ff1abe82a24ee72fdb0035b26b16443cb84159018be4f66455ba9ab9684dc
+	sha256sums_x86_64 = 93d620ad9acc3f783c584ae41a3efd5583a0fb0612b86d788dbed6762b0f9a06
 
 pkgname = seemux-bin
