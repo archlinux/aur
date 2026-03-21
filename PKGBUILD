@@ -1,13 +1,13 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=poe
-pkgver=2.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc=".po file editor"
 arch=('x86_64')
 url="https://strahinja.srht.site/poe"
 license=('GPL3')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~strahinja/poe/archive/v$pkgver.tar.gz")
-md5sums=('86ad580b4c71c839bffc2f158725be5c')
+md5sums=('626c722c61442841456621875ef74929')
 
 build() {
 	cd "${pkgname}-v$pkgver"
