@@ -6,7 +6,7 @@
 # Contributor: jiornojiovanni <gianni00palmieri at gmail dot com>
 
 pkgname=libtcod
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="Roguelike graphics/utility library"
 arch=('x86_64')
@@ -20,8 +20,8 @@ source=(
   "https://github.com/libtcod/libtcod/archive/refs/tags/${pkgver}.tar.gz"
   '001-fix-install-config-pt1.patch'
 )
-sha256sums=('5eb8e30d937840986c11c7baa22ffa93252aa4ac1824fe2c5fa1d760b3496a8e'
-            'SKIP')
+sha256sums=('69f30fe65df1c84049a8f4f4b1ea0894191221da3a671be61832e33e75df898e'
+            '03535c88457c50fb8fc18193c7473a8bb91e9217d94792fd27ebe866bf242e3b')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
