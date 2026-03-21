@@ -1,0 +1,27 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 9e80fe0..abfcb98 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -2,10 +2,10 @@
+ name = "SigMF"
+ description = "Easily interact with Signal Metadata Format (SigMF) recordings."
+ keywords = ["gnuradio", "radio"]
+-license = { file = "COPYING-LGPL" }
++license = "LGPL-3.0-or-later"
++license-files = ["COPYING-LGPL"]
+ classifiers = [
+     "Development Status :: 5 - Production/Stable",
+-    "License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)",
+     "Operating System :: OS Independent",
+     "Programming Language :: Python :: 3",
+     "Programming Language :: Python :: 3.7",
+@@ -45,8 +45,7 @@ dependencies = [
+     ]
+ 
+ [tool.setuptools]
+-packages = ["sigmf"]
+-license-files = []
++packages = ["sigmf", "sigmf.convert"]
+     [tool.setuptools.dynamic]
+     version = {attr = "sigmf.__version__"}
+     readme = {file = ["README.md"], content-type = "text/markdown"}
