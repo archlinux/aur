@@ -1,0 +1,19 @@
+pkgbase = cv4pve-diag
+	pkgdesc = Diagnostic tool for Proxmox VE — checks nodes, VMs, LXC containers and storage for common issues
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/Corsinvest/cv4pve-diag
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	provides = cv4pve-diag
+	conflicts = cv4pve-diag
+	source_x86_64 = cv4pve-diag-2.0.1-x86_64.zip::https://github.com/Corsinvest/cv4pve-diag/releases/download/v2.0.1/cv4pve-diag-linux-x64.zip
+	sha256sums_x86_64 = 776dd664dbacbab1044e624f36c6d1f5c60eb79848d548e16d9620e8dae24005
+	source_aarch64 = cv4pve-diag-2.0.1-aarch64.zip::https://github.com/Corsinvest/cv4pve-diag/releases/download/v2.0.1/cv4pve-diag-linux-arm64.zip
+	sha256sums_aarch64 = b33d07c2f1d5dcf82b78fe623ad5ceb18176cde43116166e2fedda55281e36cc
+	source_armv7h = cv4pve-diag-2.0.1-armv7h.zip::https://github.com/Corsinvest/cv4pve-diag/releases/download/v2.0.1/cv4pve-diag-linux-arm.zip
+	sha256sums_armv7h = e1e7e9d51677c99730b95b836fe16fd42053cf74f41a60729e9ac74473b31398
+
+pkgname = cv4pve-diag
