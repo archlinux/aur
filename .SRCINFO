@@ -1,0 +1,17 @@
+pkgbase = tmux-continuum-git
+	pkgdesc = Continuous saving of tmux environment. Automatic restore when tmux is started. Automatic tmux start when computer is turned on.
+	pkgver = r119.0698e8f
+	pkgrel = 1
+	url = https://github.com/tmux-plugins/tmux-continuum
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = tmux
+	depends = bash
+	depends = tmux-resurrect
+	provides = tmux-continuum
+	conflicts = tmux-continuum
+	source = tmux-continuum-git::git+https://github.com/tmux-plugins/tmux-continuum.git
+	sha256sums = SKIP
+
+pkgname = tmux-continuum-git
