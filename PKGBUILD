@@ -12,7 +12,7 @@ license=('0BSD')
 depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$_distname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_distname-$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('966e077528213cd3a98ec5f16d6a772b1d12b3ed9b79adb34ffcfbf0bf24def7')
 
 build() {
   cd "$srcdir/$_distname-$pkgver"
@@ -22,5 +22,6 @@ build() {
 package() {
   cd "$srcdir/$_distname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }

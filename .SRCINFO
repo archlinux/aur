@@ -11,6 +11,6 @@ pkgbase = pmc-cli
 	makedepends = python-wheel
 	depends = python
 	source = pmc_tool-0.1.0.tar.gz::https://github.com/decent-tools-for-thought/pmc-cli/releases/download/v0.1.0/pmc_tool-0.1.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = 966e077528213cd3a98ec5f16d6a772b1d12b3ed9b79adb34ffcfbf0bf24def7
 
 pkgname = pmc-cli
