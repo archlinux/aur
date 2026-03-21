@@ -6,7 +6,7 @@ _appname=gpk
 pkgname=${_pkgname}-bin
 pkgdesc="See all your installed packages in one place"
 
-pkgver=0.1.12
+pkgver=0.2.11
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -25,9 +25,9 @@ depends=('glibc' 'libgcc')
 source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}")
-sha256sums=('ddad2ba020a56f2706504993d78e2596f7c77099a6fca6ac8d2811f842519d13')
-sha256sums_x86_64=('6b8cd358ca828d44ffc3d1054efc9bfb4cd21d219e95005138581ef8413a3fc3')
-sha256sums_aarch64=('8e29e2c8f5feac0fb0f818f577db341c27f2fd4b9644fc3b137527a045ae7d89')
+sha256sums=('9f1b9f60fb9ab0f4409d85512887ae42e206126e97a0335a59a6c986e0d110bb')
+sha256sums_x86_64=('b976a4e91df8803ebc405541e9d747f5e9a1f3e8a48cf8b9eaab3bf0ec135762')
+sha256sums_aarch64=('2d2c3908405b10ccd8dd712ba53cf0907853ef99dc814ec211110a33ccb046f5')
 
 
 package() {
