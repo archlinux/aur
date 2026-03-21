@@ -1,0 +1,14 @@
+pkgbase = zotero-db-cli
+	pkgdesc = Read-only CLI for querying Zotero client SQLite metadata and PDF annotation positions
+	pkgver = 0.0.0.r4.gf29df2d
+	pkgrel = 1
+	url = https://github.com/decent-tools-for-thought/zotero-cli
+	arch = any
+	license = custom:unknown
+	makedepends = git
+	depends = python
+	depends = sqlite
+	source = git+https://github.com/decent-tools-for-thought/zotero-cli.git#commit=f29df2dc52a06f07e3a8da4c6f3c47da1e138d46
+	sha256sums = SKIP
+
+pkgname = zotero-db-cli
