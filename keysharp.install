@@ -1,17 +1,5 @@
-# This is a default template for a post-install scriptlet.
-# Uncomment only required functions and remove any functions
-# you don't need (and this header).
-
-
-## arg 1:  the new package version
-#pre_install() {
-	# do something here
-#}
-
 ## arg 1:  the new package version
 post_install() {
-  touch /home/miner/keysharp_installed.flag
-
   # Run install script
   # Don't install deps, done through pacman deps instead
   sudo INSTALL_DEPS=0 "/usr/share/keysharp/install.sh"
@@ -21,8 +9,6 @@ post_install() {
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 pre_upgrade() {
-  touch /home/miner/keysharp_preupgrade_uninstalled.flag
-
   # Run uninstall script
   # Don't install deps, done through pacman deps instead
   sudo INSTALL_DEPS=0 "/usr/share/keysharp/uninstall.sh"
@@ -30,7 +16,6 @@ pre_upgrade() {
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-  touch /home/miner/keysharp_preupgrade_installed.flag
   # Run install script
   # Don't install deps, done through pacman deps instead
   sudo INSTALL_DEPS=0 "/usr/share/keysharp/install.sh"
@@ -38,14 +23,7 @@ post_upgrade() {
 
 ## arg 1:  the old package version
 pre_remove() {
-  touch /home/miner/keysharp_uninstalled.flag
-
   # Run uninstall script
   # Don't install deps, done through pacman deps instead
   sudo INSTALL_DEPS=0 "/usr/share/keysharp/uninstall.sh"
 }
-
-## arg 1:  the old package version
-#post_remove() {
-	# do something here
-#}
