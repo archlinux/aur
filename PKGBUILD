@@ -1,5 +1,6 @@
-# Maintainer: devome <evinedeng@hotmail.com>
-# Contributer: Chris Oelmueller <chris.oelmueller@gmail.com>
+# Contributor: Chris Oelmueller <chris.oelmueller@gmail.com>
+# Contributor: devome <evinedeng@hotmail.com>
+# Maintainer: Umar Alfarouk <medrivia@gmail.com>
 
 _pkgname=mmh3
 pkgname="python-${_pkgname}"
