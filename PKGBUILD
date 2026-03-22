@@ -1,5 +1,5 @@
 pkgname=ayais-bin
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="Cross-platform desktop app for AI website integration"
 arch=('x86_64')
@@ -7,7 +7,7 @@ url="https://github.com/marmotz/ayais"
 license=('MIT')
 depends=('gtk3' 'libappindicator-gtk3')
 source=("https://github.com/marmotz/ayais/releases/download/v${pkgver}/AyAIs-${pkgver}.AppImage")
-sha256sums=("f516db165b05c896cb41024e893ae4c75060c7bba212c409a35b686f707c1ea0")
+sha256sums=("d9681920aa64f4320221b3fc7d5cd107a1abad2b7dcdcd6778a32201a007a678")
 
 package() {
     cd "${srcdir}"
