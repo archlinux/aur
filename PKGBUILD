@@ -4,7 +4,7 @@
 
 pkgname=doclifter
 pkgver=2.22
-pkgrel=3
+pkgrel=4
 pkgdesc="Lift documents in {n,t}roff markups to XML-DocBook"
 arch=('any')
 url="http://www.catb.org/~esr/doclifter"
@@ -44,5 +44,5 @@ package() {
 
 check() {
   cd "${pkgname}-${pkgver}"
-  make check || true
+  make check
 }
