@@ -1,7 +1,7 @@
 pkgbase = lyricsfinder
 	pkgdesc = A cross-platform lyrics fetcher by Mediahuman
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mediahuman.com/lyrics-finder
 	arch = x86_64
 	license = custom
@@ -12,6 +12,6 @@ pkgbase = lyricsfinder
 	depends = qt5-base
 	options = !emptydirs
 	source = https://www.mediahuman.com/download/LyricsFinder.amd64.deb
-	sha512sums = 654c1f305716581f8882833f46658a5e29ca73b892c1275057a6357cc0475fb1f41d21d4c69e3c63af2ff59ba13b18036b36b47ccb67ffabf766f0bdd9434ede
+	sha512sums = SKIP
 
 pkgname = lyricsfinder
