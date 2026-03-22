@@ -1,7 +1,7 @@
 # Maintainer: Tsiry Sandratraina <tsiry.sndr@fluentci.io>
 
 pkgname=pocketenv
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="open, interoperable sandbox platform for agents and humans 📦 ✨"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip') # stripping breaks the binary
 
 build() {
     cd "$srcdir/$pkgname"
-    deno compile -A --no-check --unstable-kv -o pocketenv main.ts
+    deno compile --allow-all --output pocketenv npm:@pocketenv/cli
 }
 
 package() {
