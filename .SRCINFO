@@ -1,7 +1,7 @@
 pkgbase = shikiwatch-bin
 	pkgdesc = Unofficial Shikimori client for Linux desktop (prebuilt AppImage)
 	pkgver = 0.14.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/wheremyfiji/ShikiWatch
 	arch = x86_64
 	license = MIT

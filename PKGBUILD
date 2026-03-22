@@ -2,7 +2,7 @@
 
 pkgname=shikiwatch-bin
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Unofficial Shikimori client for Linux desktop (prebuilt AppImage)'
 arch=('x86_64')
 url='https://github.com/wheremyfiji/ShikiWatch'
@@ -43,15 +43,32 @@ export LD_LIBRARY_PATH="${appdir}/usr/bin/lib:${LD_LIBRARY_PATH}"
 exec "${appdir}/usr/bin/ShikiWatch" "$@"
 LAUNCHER
 
-  install -Dm644 "$pkgdir/opt/shikiwatch/usr/share/applications/ShikiWatch.desktop" \
-    "$pkgdir/usr/share/applications/shikiwatch.desktop"
+  local _desktop_src="$pkgdir/opt/shikiwatch/usr/share/applications/ShikiWatch.desktop"
+  local _desktop_dst="$pkgdir/usr/share/applications/dev.wheremyfiji.ShikiWatch.desktop"
+  local _icon_src="$pkgdir/opt/shikiwatch/usr/share/icons/hicolor/256x256/apps/ShikiWatch.png"
+
+  install -Dm644 "$_desktop_src" "$_desktop_dst"
   sed -i \
     -e 's|^Exec=.*|Exec=shikiwatch|' \
-    -e 's|^Icon=.*|Icon=shikiwatch|' \
+    -e 's|^Icon=.*|Icon=dev.wheremyfiji.ShikiWatch|' \
+    "$_desktop_dst"
+
+  cat >>"$_desktop_dst" <<'DESKTOP_EXTRA'
+StartupWMClass=ShikiWatch
+X-GNOME-WMClass=ShikiWatch
+DESKTOP_EXTRA
+
+  install -Dm644 "$_desktop_dst" \
     "$pkgdir/usr/share/applications/shikiwatch.desktop"
 
-  install -Dm644 "$pkgdir/opt/shikiwatch/usr/share/icons/hicolor/256x256/apps/ShikiWatch.png" \
+  install -Dm644 "$_icon_src" \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/dev.wheremyfiji.ShikiWatch.png"
+  install -Dm644 "$_icon_src" \
+    "$pkgdir/usr/share/icons/hicolor/256x256/apps/ShikiWatch.png"
+  install -Dm644 "$_icon_src" \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/shikiwatch.png"
+  install -Dm644 "$_icon_src" \
+    "$pkgdir/usr/share/pixmaps/shikiwatch.png"
 
   install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
