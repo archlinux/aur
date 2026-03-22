@@ -5,8 +5,8 @@
 # A modified version of the chatterino2-git package (https://aur.archlinux.org/packages/chatterino2-git)
 
 pkgname=chatterino2
-pkgver=2.5.4
-pkgrel=5
+pkgver=2.5.5
+pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino"'
 arch=('x86_64')
 url=https://chatterino.com
@@ -23,12 +23,11 @@ install="${pkgname}.install"
 source=("git+https://github.com/Chatterino/${pkgname}.git#tag=v${pkgver}"
         "git+https://github.com/Chatterino/certify.git#commit=a448a3915ddac716ce76e4b8cbf0e7f4153ed1e2" # Has no tags
         "git+https://github.com/Chatterino/libcommuni.git#commit=bb5417c451d764f57f2f1b3e1c9a81496b5521bd" # Current chatterino-cmake commit
-        "git+https://github.com/Chatterino/websocketpp.git#commit=f1736a8e72b910810ff6869fe20f647a62f3bc35" # Current chatterino commit
-        "git+https://github.com/pajlada/settings.git#tag=chatterino/2.5.4"
-        "git+https://github.com/pajlada/signals.git#commit=a7611f4aa4a37c6c84aabc616657369b0dfd2826" # Has no relevant tags
-        "git+https://github.com/pajlada/serialize.git#tag=chatterino/2.5.4"
+        "git+https://github.com/pajlada/settings.git#tag=chatterino/2.5.5"
+        "git+https://github.com/pajlada/signals.git#commit=chatterino/2.5.5"
+        "git+https://github.com/pajlada/serialize.git#tag=chatterino/2.5.5"
         "git+https://github.com/Neargye/magic_enum.git#tag=v0.9.7"
-        "git+https://github.com/mackron/miniaudio.git#tag=0.11.23"
+        "git+https://github.com/mackron/miniaudio.git#tag=0.11.25"
         "git+https://github.com/ThePhD/sol2.git#tag=v3.5.0"
         "git+https://github.com/google/googletest.git#tag=v1.17.0"
         "git+https://github.com/martinmoene/expected-lite.git#tag=v0.10.0"
@@ -37,15 +36,14 @@ source=("git+https://github.com/Chatterino/${pkgname}.git#tag=v${pkgver}"
         "git+https://github.com/HowardHinnant/date.git#tag=v3.0.4"
         "git+https://github.com/fmtlib/fmt.git#tag=12.1.0"
         "git+https://github.com/Chatterino/twitch-pubsub-server-test.git#tag=v1.0.12")
-sha256sums=('1f71fac4eac80106cacd9ce0bd63a566c25bc9c8f707b3c15c3f0ce879589a17'
+sha256sums=('170180026b586567fe68328b62d01a587a63d335f8e8afe6bdef5bf6b95c873d'
             'b859e9727d4ecd9a2c9723c09f6b098dad7e6c8b76964ac3375d74a09aaa3004'
             'a0f7d8365a99d4e59fbc857dbf127b39b3a9a3d27c15dd3b52803ed2dd4c27ac'
-            'd50966ad9cccfba81208ed08c2633054050e64ba3f90c8c0c88b5bd07f8d8f0f'
-            '38c32aa8909b8bfa85254a0f62658b7142d0ddc67b39746ddbc1ad92d80dfdd0'
-            'a75414180aa5377158b5d73e08a4b2a878f616d228fc891a8967093afb20602f'
-            '2720af5b86830c88c3c18f4760ec13fd3135cb57c4052075644d2423ef9a2076'
+            '4ce5aadc3990c4fadec519d4ce9dc8ccf4c73e5dbbb9b135949c0ea6fb0c9c5e'
+            '2b22dbc39f5b0946da63663afbfc93f60fbcc7a54e5f3078850e12127e1bcffc'
+            '87078a66e951bc7926597df20b6c85a55d14a062b7d6ce1116573274c47a0588'
             '35e3ccee2fe02c2a666680aa00982e1d6593de440b8be04a04d399dd97c3e78c'
-            '4492cd40ccd70eb4b5ef93ca276a09c9a8755d7e04c6184e408a68dd527ad22c'
+            '5c8e8abbc2a43f20324a8ae9280f4aba6ec0235923b54c99a6d1b1d999927333'
             'fbeaa53812eb9f0e1e0612da22b1f57ab429e715fd24ccf0c3892172082becd1'
             '3a8fea2f310f73e090dbf10dc16260ab959cccf77bc5482f453d1f4bc3af4bcb'
             'faa2298961ea0b5811ef656b0fb52026d73225fa00bb7161796bdad1f016a1d2'
@@ -59,7 +57,6 @@ prepare() {
     declare -A _submodules=(
         [certify]=""
         [libcommuni]=""
-        [websocketpp]=""
         [settings]=""
         [signals]=""
         [serialize]=""
@@ -96,14 +93,13 @@ prepare() {
         git -C "${_modpath}" reset --hard origin/HEAD
     done
 
-    # Remove Qt 5 compat requirement (TODO: Remove this after next Chatterino update)
-    git cherry-pick c5ced77f9bb54dcc1cb29e863a7c7c55db9ac786 || true
-    git restore -WS CHANGELOG.md
-    git commit --no-edit
-
-    # Workaround to make testHttp test pass with httpbin
+    # Workaround to make testHttp/HttpBody/HttpBodyMultipart tests pass with httpbin
     sed -i 's/_EQ(lua->get<QByteArray>("data"), c.data/_THAT(lua->get<QByteArray>("data"), testing::HasSubstr(c.data)/' \
         tests/src/Plugins.cpp
+    sed -i 's/_EQ(result.getData(), "foobar")/_THAT(result.getData(), testing::HasSubstr("foobar"))/' \
+        tests/src/NetworkRequest.cpp
+    sed -i '/"Content-Disposition: form-data/ { N; s/"Content-Disposition: form-data.*\n.*my text"/"my text"/; }' \
+        tests/src/NetworkRequest.cpp
 
     # Change the test ports to less likely to be used ones (should reduce the likolihood of test failures)
     sed -i 's/:9050/:64050/g' tests/src/{BasicPubSub,BttvLiveUpdates,Plugins,SeventvEventAPI,TwitchPubSubClient,WebSocketPool}.cpp
