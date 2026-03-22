@@ -1,0 +1,19 @@
+pkgbase = ttypr-bin
+	pkgdesc = Terminal Typing Practice
+	pkgver = 0.3.6
+	pkgrel = 1
+	url = https://github.com/tanciaku/ttypr
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = ttypr
+	conflicts = ttypr
+	source = README-0.3.6.md::https://raw.githubusercontent.com/tanciaku/ttypr/v0.3.6/README.md
+	source = LICENSE-0.3.6::https://raw.githubusercontent.com/tanciaku/ttypr/v0.3.6/LICENSE
+	sha256sums = 8f8afee246f792a7c8293d755e9ca750b6c4b8419cb5b4713c8a43dd939b66ef
+	sha256sums = fe9e6fc90b5abf60728ebc36e04f68b4092df09c52b2eb7f9ab5932d1409eca6
+	source_x86_64 = ttypr-x86_64-0.3.6.tgz::https://github.com/tanciaku/ttypr/releases/download/v0.3.6/ttypr-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 3231fc2f47fca92fe3bdc987554c6104352cf2c4bae216515f7e8a5a29ce64d2
+
+pkgname = ttypr-bin

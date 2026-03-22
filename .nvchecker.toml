@@ -1,0 +1,5 @@
+[ttypr-bin]
+source = "github"
+github = "tanciaku/ttypr"
+use_latest_release = true
+prefix = "v"
