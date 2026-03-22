@@ -1,6 +1,6 @@
 pkgbase = gup
 	pkgdesc = Update binaries installed by "go install" with goroutines
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/nao1215/gup
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = gup
 	license = Apache-2.0
 	makedepends = go
 	options = !lto
-	source = gup-1.1.3.tar.gz::https://github.com/nao1215/gup/archive/refs/tags/v1.1.3.tar.gz
-	sha512sums = 301fb06cd56a89180e447d7527af589f2155c56eb902d8f85e962133147bd28270c03f8d3d366c3295a0103488de8acfa8cd223a16331483c5d2b0f5b4ab29be
-	b2sums = 62fcfc7096e14d2a20232265c0b996c3d9094972bc15d0d0debe9f07a9cd869c03e0da5b48dde75b0e2e07362d6b440cb6c0c3fca98fc472717541f72a9aaa6d
+	source = gup-1.1.4.tar.gz::https://github.com/nao1215/gup/archive/refs/tags/v1.1.4.tar.gz
+	sha512sums = 57add327f1f60baf999e8f10f5f8cd3601f929e440ff49a7e3406982767d51645c60d7b76e38e24bb1a0068574d4d37c7264df2c1cd80179018661a1376fabda
+	b2sums = beb17beacaead9b132b5bbb8bc5e4991eab205d80ff56a61f2beedf342afda7919352d0626517246470fd1fd4021e62471338c0b7f0ff641e3a227bf8f1912d0
 
 pkgname = gup
