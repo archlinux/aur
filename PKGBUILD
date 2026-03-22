@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python' 'python-ttkbootstrap' 'python-pillow' 'python-psutil' 'stress-ng' 'p7zip' 'tk' 'fuse2')
 makedepends=('git')
 provides=('threadstepper')
-conflicts=('threadstepper')
+conflicts=('threadstepper') 
 source=("${pkgname}::git+https://github.com/gazpitchy92/threadstepper.git"
         "threadstepper.sh"
         "threadstepper.desktop"
