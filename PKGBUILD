@@ -5,19 +5,23 @@
 # Contributor: Geequlim <geequlim@gmail.com>
 # Contributor: Antti Juhani Oja <antti.oja@gmail.com>
 
+# grantlee was removed from [extra];
+# Install `grantlee` from the AUR before `makepkg -s`, or build with an AUR helper.
+
 pkgname=texturepacker
-pkgver=7.11.0
+pkgver=7.12.0
 pkgrel=1
 pkgdesc="Sprite sheet creator and image optimizer"
 arch=('x86_64')
 url="https://www.codeandweb.com/$pkgname"
 license=("custom:$pkgname")
 install="$pkgname.install"
-depends=('shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils' 'grantlee'
+depends=('shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils'
     'gcc-libs-multilib' 'qt5-svg' 'qt5-declarative' 'qt5-imageformats'
     'qt5-quickcontrols')
 source=("https://www.codeandweb.com/download/$pkgname/${pkgver}/TexturePacker-${pkgver}.deb")
-sha256sums=('b3477d91cb2f5b7afa924cf9a88c580ed20c0f62b3ab3fed0925afc317891671')
+sha256sums=('29ebc6ea6afa586bbdaca463b0fb43c1e25e37628cace862b31c5bfafa8d6b02')
+options=('!debug')
 
 build() {
     ar -x "TexturePacker-${pkgver}.deb"
