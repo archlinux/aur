@@ -2,41 +2,62 @@
 
 pkgname=ani2xcursor-bin
 _pkgname=ani2xcursor
-pkgver=1.4.7
+pkgver=1.4.8
 pkgrel=1
 pkgdesc="Convert Windows animated cursor themes to Linux Xcursor format (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/yuzujr/ani2xcursor"
 license=('MIT')
-depends=('glibc')
+depends=(
+  'glibc'
+)
+makedepends=('patchelf')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-source_x86_64=("${_pkgname}-v${pkgver}-linux-x86_64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x86_64.tar.gz")
-sha256sums_x86_64=('e0ed69379ff520d55c5c1e7947210b4d840b965ea3e730455df8bb16adf8b68e')
-source_aarch64=("${_pkgname}-v${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-arm64.tar.gz")
-sha256sums_aarch64=('8f4ebfd0d807f3f0b4b72c44e6fe5403c85d92533bd0e2d54d29f14a88d12960')
+source_x86_64=("${_pkgname}-v${pkgver}-linux-x86_64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-x86_64.AppImage")
+sha256sums_x86_64=('17fc7cbfa2ca17a2f32acd3bf58a4bf9c14e3bc4eb45a2f812464e70912a14f4')
+source_aarch64=("${_pkgname}-v${pkgver}-linux-aarch64.AppImage::${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-aarch64.AppImage")
+sha256sums_aarch64=('9911b6d5cd9e52fe5de6f227a613799feab6dad2bed2a185f4b3be7e801dcbd6')
+
+prepare() {
+  cd "$srcdir"
+  local appimage
+  appimage="$(printf '%s\n' "${_pkgname}-v${pkgver}-linux-"*.AppImage)"
+
+  chmod +x "$appimage"
+  "$appimage" --appimage-extract >/dev/null
+}
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/squashfs-root/usr"
 
-  install -Dm755 ani2xcursor \
-    "${pkgdir}/usr/bin/ani2xcursor"
+  install -Dm755 bin/ani2xcursor \
+    "${pkgdir}/usr/lib/${_pkgname}/ani2xcursor"
 
-  install -Dm644 LICENSE \
+  install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
+  install -m755 lib/*.so* "${pkgdir}/usr/lib/${_pkgname}/"
+  patchelf --set-rpath '$ORIGIN' "${pkgdir}/usr/lib/${_pkgname}/ani2xcursor"
+
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/ani2xcursor" <<'EOF'
+#!/bin/sh
+exec /usr/lib/ani2xcursor/ani2xcursor "$@"
+EOF
+
+  install -Dm644 share/licenses/ani2xcursor/LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -Dm644 README.md \
+  install -Dm644 share/doc/ani2xcursor/README.md \
     "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-  install -Dm644 completions/fish/ani2xcursor.fish \
+  install -Dm644 share/fish/vendor_completions.d/ani2xcursor.fish \
     "$pkgdir/usr/share/fish/vendor_completions.d/ani2xcursor.fish"
 
-  install -Dm644 completions/bash/ani2xcursor \
+  install -Dm644 share/bash-completion/completions/ani2xcursor \
     "$pkgdir/usr/share/bash-completion/completions/ani2xcursor"
 
-  install -Dm644 completions/zsh/_ani2xcursor \
+  install -Dm644 share/zsh/site-functions/_ani2xcursor \
     "$pkgdir/usr/share/zsh/site-functions/_ani2xcursor"
 
   for mo in share/locale/*/LC_MESSAGES/ani2xcursor.mo; do

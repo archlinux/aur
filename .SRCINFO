@@ -1,17 +1,18 @@
 pkgbase = ani2xcursor-bin
 	pkgdesc = Convert Windows animated cursor themes to Linux Xcursor format (prebuilt binary)
-	pkgver = 1.4.7
+	pkgver = 1.4.8
 	pkgrel = 1
 	url = https://github.com/yuzujr/ani2xcursor
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = glibc
+	makedepends = patchelf
 	provides = ani2xcursor
 	conflicts = ani2xcursor
-	source_x86_64 = ani2xcursor-v1.4.7-linux-x86_64.tar.gz::https://github.com/yuzujr/ani2xcursor/releases/download/v1.4.7/ani2xcursor-v1.4.7-linux-x86_64.tar.gz
-	sha256sums_x86_64 = e0ed69379ff520d55c5c1e7947210b4d840b965ea3e730455df8bb16adf8b68e
-	source_aarch64 = ani2xcursor-v1.4.7-linux-arm64.tar.gz::https://github.com/yuzujr/ani2xcursor/releases/download/v1.4.7/ani2xcursor-v1.4.7-linux-arm64.tar.gz
-	sha256sums_aarch64 = 8f4ebfd0d807f3f0b4b72c44e6fe5403c85d92533bd0e2d54d29f14a88d12960
+	source_x86_64 = ani2xcursor-v1.4.8-linux-x86_64.AppImage::https://github.com/yuzujr/ani2xcursor/releases/download/v1.4.8/ani2xcursor-v1.4.8-linux-x86_64.AppImage
+	sha256sums_x86_64 = 17fc7cbfa2ca17a2f32acd3bf58a4bf9c14e3bc4eb45a2f812464e70912a14f4
+	source_aarch64 = ani2xcursor-v1.4.8-linux-aarch64.AppImage::https://github.com/yuzujr/ani2xcursor/releases/download/v1.4.8/ani2xcursor-v1.4.8-linux-aarch64.AppImage
+	sha256sums_aarch64 = 9911b6d5cd9e52fe5de6f227a613799feab6dad2bed2a185f4b3be7e801dcbd6
 
 pkgname = ani2xcursor-bin
