@@ -1,0 +1,14 @@
+post_install() {
+    echo "Actualizando almacén de certificados del sistema..."
+    /usr/bin/trust extract-compat
+    echo "Certificados del DNIe y la FNMT instalados correctamente."
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "Actualizando almacén de certificados del sistema..."
+    /usr/bin/trust extract-compat
+}
