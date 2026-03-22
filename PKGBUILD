@@ -1,9 +1,10 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: carstene1ns <arch carsten-teibes de>
 
 _Name="touchHLE"
 pkgname="${_Name,,}"
-pkgver=0.2.2
-pkgrel=3
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="High-level emulator for iPhone OS apps"
 arch=('aarch64' 'x86_64')
 url="https://touchhle.org"
@@ -15,13 +16,11 @@ options=('!lto')
 backup=("etc/${pkgname}/options.txt")
 _pkgsrc="${_Name}-${pkgver}"
 source=("${_pkgsrc}.tar.gz::${_url}/archive/refs/tags/v${pkgver}.tar.gz"
-        # "rust-sdl2-touchHLE-2.tar.gz::https://github.com/hikari-no-yume/rust-sdl2/archive/refs/tags/touchHLE-2.tar.gz"
+        # "rust-sdl2-touchHLE-3.tar.gz::https://github.com/hikari-no-yume/rust-sdl2/archive/refs/tags/touchHLE-3.tar.gz"
         # "${pkgname}_cargo_no_git.patch"
-        "${pkgname}_cargo_system_sdl2.patch"
-        "${pkgname}_fhs_paths.patch")
-b2sums=('14e64acca91626e2f43f7e55b80083aa4ccdde290a9b8dfdb4fbaa1bc681c7a0c19a32cbd7aaea6e7427f64c48d7705f301bd0eb9a3aacbc32a6ef29849e053c'
-        '721bd0a10829dcd1e97f7e7b85900703ead4def040601d93ebf1c658c2853f9470eb6e3b3b7d9fdedca5ece503877af2e9760bd7a0fb3ed9281092f16e64812d'
-        '09f17ff91706fc1b4230ccd7cbbff17af2088cd2585f73802cd4e206ec1cb73252c252b29f1e873de4f866eff096529fb33525502675a2bbfaf5a96d86a10fb3'
+        "${pkgname}_cargo_system_sdl2.patch")
+b2sums=('b60428f59cd99aa7141f17e271e7a5a21e57c32e720e76d86c294eb8d0e294ad086e2e1861e65fa0b3c5996b49a6ffd1e22d7566edcb496111243e170308d1cb'
+        'd4185d5d59803d188d0fde8991be812e1db34b5b48979a72a9e2a39575971f2970fd725481bcfeec2cedc7669753853e49ae276064c73e503e342a31d07a4233'
         '49e590ce7851d915a7301e5d63928d8890fb3c2c04efcf99b4ce9a8de4fe3a950268a480880cb8419a5811750516149da7e47cdd8b92b8126a2df57b0f256fc6'
         '132774b7298d085c56f2b254b705dcc6a3b717b7a6435ffa1d2bff554a4f2fd49c9a773d1f24d02fc6303f611daf8f97c53e4cad73546971b213b9f7a7558bd2'
         'fc829158bf3e15e4cd36a16a75ad25331a8644cb002841485832d8dbe29bc630f7aebea8a3b8658a40034ecb41349261305f0f48fec27580c19696b30245a577')
@@ -33,9 +32,7 @@ declare -rAg _modules_name_map=(
   # [vendor/openal-soft]=https://github.com/kcat/openal-soft/archive/23c8a35505fe6ab7a5c87754911a133b23ac75cf.tar.gz
   [vendor/dr_libs]=https://github.com/mackron/dr_libs/archive/dd762b861ecadf5ddd5fb03e9ca1db6707b54fbb.tar.gz
   # [vendor/SDL]=https://github.com/libsdl-org/SDL/archive/07d0f51fa292895443f563f0cbde4cb3802d87fa.tar.gz
-
-  # rust-sdl2-touchHLE-2
-  # [rust-sdl2-touchHLE-2/sdl2-sys/SDL]=https://github.com/libsdl-org/SDL/archive/cb107bef58759468d715d919009bd2987954dade.tar.gz
+  # [rust-sdl2-touchHLE-3/sdl2-sys/SDL]=https://github.com/libsdl-org/SDL/archive/cb107bef58759468d715d919009bd2987954dade.tar.gz
 )
 declare -rg _ignore_modules=(
   # touchhle
@@ -117,7 +114,7 @@ unset _source_str _uri
 
 prepare() {
   cd "${srcdir}"
-  # find "rust-sdl2-touchHLE-2" -type f -exec \
+  # find "rust-sdl2-touchHLE-3" -type f -exec \
   #   install -D "{}" ./"${_pkgsrc}/{}" \;
 
   cd "${_pkgsrc}"
@@ -125,9 +122,14 @@ prepare() {
 
   # patch -Np1 -i "${srcdir}/${pkgname}_cargo_no_git.patch"
   patch -Np1 -i "${srcdir}/${pkgname}_cargo_system_sdl2.patch"
-  patch -Np1 -i "${srcdir}/${pkgname}_fhs_paths.patch"
 
-  sed -i "s|std::fs::write(out_dir.join(\"version.txt\"), version).unwrap();|std::fs::write(out_dir.join(\"version.txt\"), \"${pkgver}+AUR-${pkgrel}\").unwrap();|" 'build.rs'
+  # use FHS paths
+  sed -i -e "s|touchHLE_dylibs|/usr/share/touchhle/dylibs|" \
+    -e "s|touchHLE_fonts|/usr/share/touchhle/fonts|" \
+    -e "s|touchHLE_default_options.txt|/etc/touchhle/options.txt|" src/paths.rs
+
+  # add AUR version hint
+  sed -i "s/git rev. unknown/AUR-${pkgrel}/" src/version/build.rs
 
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
