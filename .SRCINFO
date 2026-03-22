@@ -1,0 +1,25 @@
+pkgbase = lintd-bin
+	pkgdesc = Cross-distro Linux desktop package auditor - know what is installed, remove what is not needed
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mfscpayload-690/lintd
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libappindicator-gtk3
+	depends = librsvg
+	depends = fuse2
+	depends = polkit
+	optdepends = flatpak: Flatpak package detection
+	optdepends = snapd: Snap package detection
+	optdepends = nvidia-utils: GPU metrics in dashboard
+	provides = lintd
+	conflicts = lintd
+	noextract = lintd-bin-1.0.0-x86_64.AppImage
+	source = lintd-bin-1.0.0-x86_64.AppImage::https://github.com/mfscpayload-690/lintd/releases/download/v1.0.0/Lintd-x86_64.AppImage
+	source = lintd.png::https://raw.githubusercontent.com/mfscpayload-690/lintd/main/src-tauri/icons/128x128.png
+	sha256sums = df1758d22da858630d2a119c2d5142d02c638f72fb52abaf21080c6336154b0b
+	sha256sums = SKIP
+
+pkgname = lintd-bin
