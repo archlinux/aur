@@ -1,7 +1,7 @@
 pkgbase = voxtype-cuda
 	pkgdesc = Push-to-talk voice-to-text for Linux. Nvidia/cuda backend version (not vulkan)
 	pkgver = 0.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://voxtype.io
 	install = voxtype-cuda.install
 	arch = x86_64

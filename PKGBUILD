@@ -26,7 +26,7 @@ _cuda_arch="${CUDA_ARCH:-}"
 pkgname=voxtype-cuda
 _pkgname=voxtype
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Push-to-talk voice-to-text for Linux. Nvidia/cuda backend version (not vulkan)"
 arch=(x86_64)
 url="https://voxtype.io"
@@ -73,7 +73,7 @@ prepare() {
 ERROR: CUDA_ARCH is not set. You must specify your GPU architecture.
        Set it before running makepkg, for example:
 
-       CUDA_ARCH=sm_120 makepkg -si
+       CUDA_ARCH=120 makepkg -si
 
   121  → GB10 (DGX Spark)
   120  → GeForce RTX 5090/5080/5070/5060/5050, RTX PRO Blackwell
