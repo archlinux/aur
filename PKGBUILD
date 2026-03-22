@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=uxplay
 _gitname=UxPlay
-pkgver=1.73.4
+pkgver=1.73.5
 epoch=1
 pkgrel=1
 pkgdesc="AirPlay Unix mirroring server"
@@ -12,7 +12,7 @@ depends=('openssl' 'libplist' 'avahi' 'gst-plugins-base' 'gst-plugins-good' 'gst
 optdepends=('gstreamer-vaapi: GStreamer plugin required for certain GPUs')
 makedepends=('cmake')
 source=("$_gitname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz" "uxplay.desktop")
-sha256sums=('7dca131e423b9231c52cb1295341ee82cd61a943aee92cf41f9e6851a8b05b4d'
+sha256sums=('e84b741b31f4db80f03086193f035c839e99fe8d7b60d553f0c76b446ea0957f'
             '6b43385942508d8c360e8360be52719cbf3899868f3560b245731d866fb245a3')
 
 build() {
@@ -43,9 +43,9 @@ package() {
 
   # install BlueToothLE beacon script
   install -Dm 755 "$srcdir/$_gitname-$pkgver/Bluetooth_LE_beacon/uxplay-beacon.py" "$pkgdir/usr/bin/uxplay-beacon.py"
-  install -Dm 644 "$srcdir/$_gitname-$pkgver/Bluetooth_LE_beacon/uxplay-beacon.py" "$pkgdir/usr/bin/uxplay_beacon_module_BlueZ.py"
-  install -Dm 644 "$srcdir/$_gitname-$pkgver/Bluetooth_LE_beacon/uxplay-beacon.py" "$pkgdir/usr/bin/uxplay_beacon_module_BleuIO.py"
-  install -Dm 644 "$srcdir/$_gitname-$pkgver/Bluetooth_LE_beacon/uxplay-beacon.py" "$pkgdir/usr/bin/uxplay_beacon_module_HCI.py"
+  install -Dm 644 "$srcdir/$_gitname-$pkgver/Bluetooth_LE_beacon/uxplay_beacon_module_BlueZ.py" "$pkgdir/usr/bin/uxplay_beacon_module_BlueZ.py"
+  install -Dm 644 "$srcdir/$_gitname-$pkgver/Bluetooth_LE_beacon/uxplay_beacon_module_BleuIO.py" "$pkgdir/usr/bin/uxplay_beacon_module_BleuIO.py"
+  install -Dm 644 "$srcdir/$_gitname-$pkgver/Bluetooth_LE_beacon/uxplay_beacon_module_HCI.py" "$pkgdir/usr/bin/uxplay_beacon_module_HCI.py"
   # install beacon script manpage
   install -Dm 644 "$srcdir/$_gitname-$pkgver/Bluetooth_LE_beacon/uxplay-beacon.1" "$pkgdir/usr/share/man/man1/uxplay-beacon.1"
 }
