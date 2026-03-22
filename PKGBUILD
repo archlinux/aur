@@ -2,7 +2,7 @@
 
 pkgname=vhdl-ls-bin
 pkgver=0.86.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Language server for VHDL Written in rust"
 arch=(x86_64)
 url="github.com/VHDL-LS/rust_hdl"
@@ -10,7 +10,7 @@ license=('MPL-2.0')
 depends=()
 makedepends=()
 provides=('vhdl-ls')
-conflicts=('rust_hdl')
+conflicts=('vhdl-ls' 'rust_hdl')
 source=("vhdl_ls-$pkgver.zip::https://github.com/VHDL-LS/rust_hdl/releases/download/v$pkgver/vhdl_ls-x86_64-unknown-linux-gnu.zip")
 sha256sums=('ab36f64af259ff55132ac4a892ee98ac726228801b6ed6b1c7abe75ff6ac0cfe')
 
