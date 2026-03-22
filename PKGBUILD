@@ -1,7 +1,7 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
 _pkgname=pipeweaver
 pkgname=${_pkgname}-git
-pkgver=r316.45d0579
+pkgver=r425.3b2ca33
 pkgrel=1
 pkgdesc="An audio management tool for Linux built on top of PipeWire, designed specifically with streaming and broadcasting in mind."
 arch=('x86_64')
@@ -29,8 +29,7 @@ package() {
 
   install -d "${pkgdir}/usr/bin"
   install -m755 "target/release/pipeweaver-daemon" "${pkgdir}/usr/bin/pipeweaver-daemon"
-  # install -m755 "target/release/pipeweaver-client" "${pkgdir}/usr/bin/pipeweaver-client"
-  # install -m755 "target/release/pipeweaver-app" "${pkgdir}/usr/bin/pipeweaver-app"
+  install -m755 "target/release/pipeweaver-client" "${pkgdir}/usr/bin/pipeweaver-client"
 
   install -d "${pkgdir}/usr/share/doc/${pkgname}"
   install -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
