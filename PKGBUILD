@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 # Contributor: SteamedFish <steamedfish@hotmail.com>
 pkgname=zeroclaw
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="Fast, small, and fully autonomous AI assistant infrastructure — deploy anywhere, swap anything (Rust)"
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/zeroclaw-labs/${pkgname}/ar
         "zeroclaw-user.service"
         "zeroclaw.sysusers"
         "zeroclaw.tmpfiles")
-b2sums=('7bc601e3f9aa313303b4d955d44b5be616705ac8c923e7ecdba8e2e35bd55b8dfdf1473efc6c9fb73fafda942f1e533bfdbbd0168c78b208b9b311d36416c2c3'
+b2sums=('e88a76ed1a7b6823d916e6095c6961d1f154f53fb61af69d251a27594f0ee2be851b08ba6413e34524b1d8b8c2a45ebc828f555216ca3cf5ea56946b430c2c95'
         'e5673f822e1b470538013147d88009e7b90bf9ec0a02a86d8c6fa5f72d0c73f78b403c583ba0a196099cebfacf78f865ade532c9c901dc5f1fd78362ed9c3dee'
         '461f5245dbb1abac54d4db8f8c1e31d8e8c98c61bf224b0c8d677f616ce83b1694a86db09ecf6ad9dd847d4000182f0afebcd41f6ac7baccc6ca58388cfb5498'
         'b673a54133c1c2feaf63a2e74c7f49d9190335afbae19d83c56395224dd201336d6c9895648f947fc4b449336b6c370811a1cca6d21526374b90fbeaff530d2e'
