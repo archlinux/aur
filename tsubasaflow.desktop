@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=TsubasaFlow
+Comment=Modern BitTorrent client with cloud debrid integration
+Exec=tsubasaflow
+Icon=tsubasaflow
+Categories=Network;FileTransfer;P2P;
+Terminal=false
+StartupWMClass=Tsubasa

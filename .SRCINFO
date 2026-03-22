@@ -1,0 +1,21 @@
+pkgbase = tsubasaflow-bin
+	pkgdesc = Modern desktop BitTorrent client with cloud debrid integration (binary release)
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/vinayydv3695/Tsubasa-
+	arch = x86_64
+	license = MIT
+	depends = fuse2
+	depends = gtk3
+	depends = webkit2gtk
+	depends = libayatana-appindicator
+	provides = tsubasaflow
+	conflicts = tsubasaflow
+	source = https://github.com/vinayydv3695/Tsubasa-/releases/download/v0.1.6/Tsubasa_0.1.6_amd64.AppImage
+	source = tsubasaflow.desktop
+	source = tsubasaflow.sh
+	sha256sums = b60983b6b007fcc72b7692ed9d6357bf633fbe1e67364bdb92791f6ab8ca82a4
+	sha256sums = 4de2b9cb5232a08400af1dc0de533a76eb6f26a5d5efe1667a5c137e12f2b2d4
+	sha256sums = 4deb4fad64e0164bb132bfb27997eddbbadb2d4252c1f8f581672a86fcbc8025
+
+pkgname = tsubasaflow-bin
