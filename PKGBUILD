@@ -1,4 +1,5 @@
 # Maintainer: Your Name <your.email@example.com>
+# This PKGBUILD was generated with the assistance of AI.
 pkgname=defuddle
 pkgver=0.14.0
 pkgrel=1
@@ -31,6 +32,9 @@ package() {
   # Prune development dependencies
   cd "$pkgdir/usr/lib/node_modules/$pkgname"
   npm prune --production
+
+  # Remove empty directories left by npm prune
+  find . -type d -empty -delete
 
   # Fix permissions
   find "$pkgdir/usr" -type d -exec chmod 755 {} +
