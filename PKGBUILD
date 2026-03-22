@@ -1,6 +1,6 @@
 # Maintainer: Dominik Chwirot dchwirot01@gmail.com
 pkgname=sealsay
-pkgver=1.1.3
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="CLI app that generates ASCII art of a seal saying a message"
 arch=(any)
@@ -9,10 +9,8 @@ license=('GPL-3.0-or-later')
 depends=(python)
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/phantypengy/sealsay/archive/v$pkgver.tar.gz")
-sha256sums=('e04bd9e943e70a606c2c05496cdc1afaca850f07a3acc0443a940e44fab6fa47')
+sha256sums=('ec9f86883202b6b11c5a94860e270a45266e667ff65e7d0b78edc847ae95f86b')
 
 package() {
     install -Dm755 "$srcdir/sealsay-$pkgver/sealsay" "$pkgdir/usr/bin/sealsay"
-    mkdir -p "$pkgdir/usr/share/sealsay/seals"
-    install -Dm644 "$srcdir/sealsay-$pkgver/seals/"* "$pkgdir/usr/share/sealsay/seals/"
 }
