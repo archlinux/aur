@@ -35,7 +35,7 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
 
   local version rev hash
-  version="$(sed -n 's/^version = "\(.*\)"$/\1/p' src-tauri/Cargo.toml | head -n 1)"
+  version="$(sed -n 's/^version = "\(.*\)"$/\1/p' src/Cargo.toml | head -n 1)"
   rev="$(git rev-list --count HEAD)"
   hash="$(git rev-parse --short=7 HEAD)"
 
@@ -47,7 +47,7 @@ prepare() {
 
   bash packaging/linux/generate-icons.sh icon.png
   export CARGO_HOME="${srcdir}/cargo-home"
-  cargo fetch --locked --manifest-path src-tauri/Cargo.toml
+  cargo fetch --locked --manifest-path src/Cargo.toml
 }
 
 build() {
@@ -56,7 +56,7 @@ build() {
   export CARGO_HOME="${srcdir}/cargo-home"
   export CARGO_TARGET_DIR="${srcdir}/target"
   export RUSTFLAGS="${RUSTFLAGS:+${RUSTFLAGS} }--remap-path-prefix=${srcdir}=."
-  cargo build --frozen --locked --release --manifest-path src-tauri/Cargo.toml
+  cargo build --frozen --locked --release --manifest-path src/Cargo.toml
 }
 
 package() {
@@ -65,7 +65,7 @@ package() {
   install -Dm755 "${srcdir}/target/release/linux-soundboard" "${pkgdir}/usr/bin/linux-soundboard"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  local icon_root="src-tauri/resources/icons"
+  local icon_root="src/resources/icons"
   local icon_name="com.linuxsoundboard.app.png"
   local size
   for size in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512; do
