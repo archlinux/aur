@@ -1,0 +1,12 @@
+pkgbase = rockbase
+	pkgdesc = Offline database updater for rockbox.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/iksteen/rockbase
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = rockbase-0.2.0.tar.gz::https://github.com/iksteen/rockbase/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = fed18955ad8805605f17f0db97ad7a5e3b6438681b553f73de0b1a0d016cf623
+
+pkgname = rockbase
