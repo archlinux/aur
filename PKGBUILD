@@ -1,12 +1,12 @@
 # Maintainer: Marco "MegaDrive" Matos <marco.ufs@gmail.com>
 # Contributor: Johan PONIN <johan.ponin.pro at gmail dot com>
-# Contributor : Yamashita Ren
+# Contributor: Yamashita Ren
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=libbpg
 pkgver=0.9.8
-pkgrel=2
+pkgrel=3
 pkgdesc='BPG Image Encoder and Decoder'
 arch=('x86_64' 'i686')
 url='http://bellard.org/bpg/'
