@@ -12,4 +12,5 @@ sha256sums=('99a7c6e0d69f0ac1833d205f6ef716fbf5dd11e6a0fe9805b6a4e66b07e9cd00')
 
 package() {
   bsdtar -xpf "$srcdir/gaze-gui-0.1.0-1-x86_64.pkg.tar.zst" -C "$pkgdir"
+  find "$pkgdir" -maxdepth 1 -type f -name '.*' -delete
 }
