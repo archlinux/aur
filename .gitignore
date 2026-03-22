@@ -1,0 +1,5 @@
+# Arch Linux build artifacts
+/pkg/
+/src/
+/defuddle-*.tar.gz
+/defuddle-*-any.pkg.tar.zst

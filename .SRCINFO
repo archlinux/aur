@@ -1,0 +1,17 @@
+pkgbase = defuddle
+	pkgdesc = Extract article content and metadata from web pages
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/kepano/defuddle
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	optdepends = linkedom: for node/cli support
+	optdepends = mathml-to-latex: for math conversion
+	optdepends = temml: for math conversion
+	optdepends = turndown: for markdown output
+	source = defuddle-0.14.0.tar.gz::https://github.com/kepano/defuddle/archive/0.14.0.tar.gz
+	sha256sums = 69dd7ef65a2c7cf2b99388f720cac39bfc258277c96ce5f17985ee19d545f241
+
+pkgname = defuddle
