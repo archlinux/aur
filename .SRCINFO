@@ -1,6 +1,6 @@
 pkgbase = basilisk-desktop-bin
 	pkgdesc = Open-source AI/LLM red teaming desktop app with 32 attack modules, 15 mutation operators, genetic prompt evolution (SPE-NL), multi-turn attack chains, OWASP LLM Top 10 coverage. Built by Regaan, independent security researcher at Rot Hackers.
-	pkgver = 1.0.8
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://basilisk.rothackers.com
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = basilisk-desktop-bin
 	conflicts = basilisk-desktop
 	options = !debug
 	options = !strip
-	source = basilisk-1.0.8.AppImage::https://github.com/regaan/basilisk/releases/download/v1.0.8/basilisk-1.0.8.AppImage
+	source = basilisk-1.1.0.AppImage::https://github.com/regaan/basilisk/releases/download/v1.1.0/basilisk-1.1.0.AppImage
 	sha256sums = SKIP
 
 pkgname = basilisk-desktop-bin
