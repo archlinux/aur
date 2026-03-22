@@ -1,88 +1,101 @@
-# Maintainer: txtsd <aur.archlinux@ihavea.quest>
+# Maintainer: kaolinite
+
+: ${aur_llamacpp_build_universal:=false}
 
 pkgname=llama.cpp-opencl
-_pkgname="${pkgname%-opencl}"
-pkgver=b4157
+pkgver=b8475
 pkgrel=1
-pkgdesc="Port of Facebook's LLaMA model in C/C++ (with OpenCL optimizations)"
+_build_number=8475
+_commit_id=49bfdde
+pkgdesc="Port of Facebook's LLaMA model in C/C++(with OpenCL Backend support)"
 arch=(x86_64 armv7h aarch64)
 url='https://github.com/ggerganov/llama.cpp'
 license=('MIT')
 depends=(
-  blas-openblas
-  blas64-openblas
   curl
   gcc-libs
   glibc
-  openmp
-  python
-  python-numpy
-  python-sentencepiece
+  ocl-icd
 )
 makedepends=(
-  clblast
   cmake
-  git
-  ocl-icd
-  opencl-clhpp
   opencl-headers
-  pkgconf
 )
-provides=(${_pkgname})
-conflicts=(${_pkgname})
-options=(lto)
+optdepends=(
+  'python-numpy: needed for convert_hf_to_gguf.py'
+  'python-safetensors: needed for convert_hf_to_gguf.py'
+  'python-sentencepiece: needed for convert_hf_to_gguf.py'
+  'python-pytorch: needed for convert_hf_to_gguf.py'
+  'python-transformers: needed for convert_hf_to_gguf.py'
+)
+conflicts=(libggml ggml llama.cpp llama.cpp-vulkan llama.cpp-cuda llama.cpp-clblast)
 source=(
-  "git+${url}#tag=${pkgver}"
-  "git+https://github.com/nomic-ai/kompute.git"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
   llama.cpp.conf
   llama.cpp.service
 )
-sha256sums=('fb29ddda4d220f9283360c4ba9233ebec475b755d286c31d5d27f207782c813f'
-            'SKIP'
+sha256sums=('SKIP'
             '53fa70cfe40cb8a3ca432590e4f76561df0f129a31b121c9b4b34af0da7c4d87'
-            '065f69ccd7ac40d189fae723b58d6de2a24966e9b526e0dbfa3035a4c46a7669')
+            '0377d08a07bda056785981d3352ccd2dbc0387c4836f91fb73e6b790d836620d')
 
 prepare() {
-  cd "${_pkgname}"
-
-  git submodule init
-  git config submodule.kompute.url "${srcdir}/kompute"
-  git -c protocol.file.allow=always submodule update
+  ln -sf "llama.cpp-${pkgver}" llama.cpp
 }
-
 build() {
+
   local _cmake_options=(
     -B build
-    -S "${_pkgname}"
-    -DCMAKE_BUILD_TYPE=None
+    -S "llama.cpp"
+    -DCMAKE_BUILD_TYPE=Release
     -DCMAKE_INSTALL_PREFIX='/usr'
-    -DGGML_NATIVE=OFF
-    -DGGML_AVX2=OFF
-    -DGGML_AVX=OFF
-    -DGGML_F16C=OFF
-    -DGGML_FMA=OFF
+    -DBUILD_SHARED_LIBS=ON
+    -DLLAMA_CURL=ON
+    -DLLAMA_BUILD_TESTS=OFF
+    -DLLAMA_USE_SYSTEM_GGML=OFF
     -DGGML_ALL_WARNINGS=OFF
     -DGGML_ALL_WARNINGS_3RD_PARTY=OFF
-    -DBUILD_SHARED_LIBS=OFF
-    -DGGML_STATIC=ON
+    -DGGML_BUILD_EXAMPLES=OFF
+    -DGGML_BUILD_TESTS=OFF
     -DGGML_LTO=ON
     -DGGML_RPC=ON
-    -DLLAMA_CURL=ON
-    -DGGML_BLAS=ON
-    -DGGML_CLBLAST=ON
+    -DGGML_OPENCL=OFF
+    -DGGML_OPENCL_EMBED_KERNELS=OFF
+    -DGGML_OPENCL_USE_ADRENO_KERNELS=OFF
+    -DGGML_BUILD_SERVER=ON
+    -DLLAMA_BUILD_NUMBER="${_build_number}"
+    -DLLAMA_BUILD_COMMIT="${_commit_id}"
     -Wno-dev
   )
+  if [[ ${aur_llamacpp_build_universal} == true ]]; then
+    echo "Building universal binary [aur_llamacpp_build_universal == true]"
+    _cmake_options+=(
+      -DGGML_BACKEND_DL=ON
+      -DGGML_NATIVE=OFF
+      -DGGML_CPU_ALL_VARIANTS=ON
+    )
+  else
+    # we lose GGML_NATIVE_DEFAULT due to how makepkg includes
+    # $SOURCE_DATE_EPOCH in ENV
+    _cmake_options+=(
+      -DGGML_NATIVE=ON
+    )
+  fi
+  # Allow user-specified additional flags
+  if [[ -n "${aur_llamacpp_cmakeopts:-}" ]]; then
+    echo "Applying custom CMake options: ${aur_llamacpp_cmakeopts}"
+    # shellcheck disable=SC2206 # intentional word splitting
+    _cmake_options+=(${aur_llamacpp_cmakeopts})
+  fi
   cmake "${_cmake_options[@]}"
   cmake --build build
 }
 
 package() {
   DESTDIR="${pkgdir}" cmake --install build
-  rm "${pkgdir}/usr/include/"ggml*
-  rm "${pkgdir}/usr/lib/"lib*.a
 
-  install -Dm644 "${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "llama.cpp/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   install -Dm644 "llama.cpp.conf" "${pkgdir}/etc/conf.d/llama.cpp"
   install -Dm644 "llama.cpp.service" "${pkgdir}/usr/lib/systemd/system/llama.cpp.service"
 }
+# vim:set ts=2 sw=2 et:
