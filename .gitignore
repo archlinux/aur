@@ -1,0 +1,5 @@
+*
+!/.gitignore
+!/kula.install
+!/PKGBUILD
+!/.SRCINFO

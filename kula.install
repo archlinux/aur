@@ -1,0 +1,37 @@
+post_install() {
+    # Create kula group if it doesn't exist
+    if ! getent group kula >/dev/null; then
+        groupadd --system kula
+    fi
+
+    # Create kula user if it doesn't exist
+    if ! getent passwd kula >/dev/null; then
+        useradd --system -g kula -d /var/lib/kula -s /bin/false -c "Kula monitoring tool" kula
+    fi
+
+    # Set ownership for directories the program will use
+    chown -R kula:kula /etc/kula
+    chown -R kula:kula /var/lib/kula
+
+    # Reload systemd
+    if command -v systemctl >/dev/null; then
+        systemctl daemon-reload || true
+    fi
+
+    echo "Kula installed successfully!"
+    echo "Default configuration is at /etc/kula/config.example.yaml"
+    echo "To get started:"
+    echo "  cp /etc/kula/config.example.yaml /etc/kula/config.yaml"
+    echo "  systemctl enable --now kula.service"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    if command -v systemctl >/dev/null; then
+        systemctl stop kula.service || true
+        systemctl disable kula.service || true
+    fi
+}
