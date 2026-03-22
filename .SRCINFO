@@ -1,6 +1,6 @@
 pkgbase = quicksnip-git
 	pkgdesc = Quickshell-based Google Lens and OCR utility for Hyprland
-	pkgver = r33.g7768491
+	pkgver = r51.g2bde8f0
 	pkgrel = 1
 	url = https://github.com/Ronin-CK/QuickSnip
 	arch = any

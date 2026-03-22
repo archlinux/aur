@@ -4,7 +4,7 @@
 # dependencies will cover those
 
 pkgname=quicksnip-git
-pkgver=r33.g7768491
+pkgver=r51.g2bde8f0
 pkgrel=1
 pkgdesc="Quickshell-based Google Lens and OCR utility for Hyprland"
 arch=('any')
@@ -51,16 +51,9 @@ package() {
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Install Quickshell config (system-wide XDG)
-    install -d "$pkgdir/etc/xdg/quickshell/QuickSnip"
-
-    install -m644 QuickSnip/dimming.frag.qsb \
-        "$pkgdir/etc/xdg/quickshell/QuickSnip/"
-
-    install -m644 \
-        QuickSnip/FreezeScreen.qml \
-        QuickSnip/RegionSelector.qml \
-        QuickSnip/shell.qml \
-        "$pkgdir/etc/xdg/quickshell/QuickSnip/"
+    install -d "$pkgdir/etc/xdg/quickshell"
+    cp -r QuickSnip "$pkgdir/etc/xdg/quickshell/QuickSnip"
+    rm -f "$pkgdir/etc/xdg/quickshell/QuickSnip"{README.md,LICENSE}
 
     # Install wrapper script
     install -Dm755 quicksnip \
