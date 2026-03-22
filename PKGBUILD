@@ -47,7 +47,7 @@ prepare() {
     --cflags="${CFLAGS} -fPIC -Wall -Wextra -D_GNU_SOURCE" \
     --ldflags="${LDFLAGS} -shared" --no-example-certs \
     --runwith=lua \
-    --lua-version=5.4 \
+    --lua-version=5.5 \
     --with-random=getrandom \
     --idn-library=icu
 
