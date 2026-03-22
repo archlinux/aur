@@ -2,7 +2,7 @@
 
 pkgname=arch-update-git
 _pkgname="${pkgname%-git}"
-pkgver=3.18.0.r645.2f09f5e
+pkgver=3.18.1.r662.c9f0121
 pkgrel=1
 pkgdesc="An interactive update notifier & applier that assists you with important pre / post update tasks (git version)"
 url="https://github.com/Antiz96/arch-update"
@@ -17,6 +17,7 @@ optdepends=('paru: AUR Packages support'
             'pikaur: AUR Packages support'
             'flatpak: Flatpak Packages support'
             'libnotify: Desktop notifications support on new available updates'
+            'alhp-utils: Check for ALHP build queue or outdated mirrors'
             'vim: Default diff program for pacdiff'
             'neovim: Default diff program for pacdiff if EDITOR=nvim'
             'sudo: Privilege elevation'
