@@ -1,7 +1,7 @@
 # Contributor: Matthias Fulz < mfulz [at] olznet [dot] de >
 
 pkgname=gsa
-pkgver=26.15.0
+pkgver=26.15.1
 pkgrel=1
 pkgdesc='Greenbone Security Assistant - OpenVAS web frontend'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('gsad' 'openvas-scanner')
 groups=('greenbone-vulnerability-manager')
 source=("${pkgname}-${pkgver}.tar.gz::$url/releases/download/v${pkgver}/${pkgname}-dist-${pkgver}.tar.gz"
         "${pkgname}-${pkgver}.tar.gz.asc::$url/releases/download/v${pkgver}/${pkgname}-dist-${pkgver}.tar.gz.asc")
-sha512sums=('737351ecedc59c2f9469814db3aee4b1f15073c745e3b25461625c56425950f1b52d1855b6ecb2a88b8c16328134e3994e8a41412468256f134b9eccd55a57b9'
+sha512sums=('d023984d52f7234c93d3a73fd3f42ee115f49c7d6fdac1c2e5a8da4b1b40ef4f03cd3d22fc89d7c1f77e230c425e4eed1ca6b1be3f1458039ea38fc9e3c7f64f'
             'SKIP')
 validpgpkeys=('8AE4BE429B60A59B311C2E739823FAA60ED1E580')
 
