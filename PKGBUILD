@@ -2,12 +2,12 @@
 
 pkgname=seqtui
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast terminal-based viewer and command-line toolkit for molecular sequences (DNA, AA)'
 arch=(x86_64)
 url='https://github.com/ranwez-search/SeqTUI'
 license=(MIT)
-depends=(gcc-libs glibc)
+depends=(glibc libgcc)
 makedepends=(cargo)
 options=(!lto)
 source=("$url/archive/v$pkgver/SeqTUI-$pkgver.tar.gz")
