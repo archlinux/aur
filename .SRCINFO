@@ -1,0 +1,22 @@
+pkgbase = dredge-bin
+	pkgdesc = Backed-up personal encrypted vault for the terminal
+	pkgver = 0.9.1
+	pkgrel = 1
+	url = https://github.com/DeprecatedLuar/dredge
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	provides = dredge
+	conflicts = dredge
+	conflicts = dredge
+	source = README-0.9.1.md::https://raw.githubusercontent.com/DeprecatedLuar/dredge/v0.9.1/README.md
+	source = LICENSE
+	sha256sums = 37b2b9187225db02ba5a74cd6b32eca591c8a29934edcf524ccdd75f745dad64
+	sha256sums = ce37bb083947186acb712a9cb01d81357f3b303b35db4119519361ee198b4b3e
+	source_x86_64 = dredge-x86_64-0.9.1::https://github.com/DeprecatedLuar/dredge/releases/download/v0.9.1/dredge_linux_amd64
+	sha256sums_x86_64 = ff5f3b76c51a9e1a26a80a7da942d39d30306bcdef3d55dad103b3c19569953e
+	source_aarch64 = dredge-aarch64-0.9.1::https://github.com/DeprecatedLuar/dredge/releases/download/v0.9.1/dredge_linux_arm64
+	sha256sums_aarch64 = f73e678d4d5038c911ad488b134c18fcd9023a18142f8414ba57e42bdfebd772
+
+pkgname = dredge-bin
