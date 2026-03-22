@@ -1,6 +1,6 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=code-features
-pkgver=1.109.5
+pkgver=1.112.0
 pkgrel=1
 pkgdesc='Unblock some features in Code OSS'
 arch=('any')
@@ -18,7 +18,7 @@ source=("${pkgname}.hook"
         'update.py')
 md5sums=('1d4002cba0560dd6da192ddd756f52e5'
          '9ed6f3972479ab6d3d053e7c47ead55a'
-         '43311a1a1b0da6eaccbc886402847179'
+         '6ab8261f7210560f711786d95518f82b'
          '3d508df1aaea8e1d6123d65fa9af2468')
 
 package() {
