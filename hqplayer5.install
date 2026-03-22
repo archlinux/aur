@@ -3,23 +3,8 @@ mkdir -p /var/lib/hqplayer/home
 chown -R root:root /var/lib/hqplayer
 chown -R root:root /etc/hqplayer
 cd /usr/lib
-if [ ! -f "libgupnp-1.2.so.0" ]; then
-ln -s libgupnp-1.2.so.1 libgupnp-1.2.so.0
-fi
-if [ ! -f "libgupnp-av-1.0.so.2" ]; then
-ln -s libgupnp-av-1.0.so.3 libgupnp-av-1.0.so.2
-fi
 if [ ! -f "libomp.so.5" ]; then
 ln -s libomp.so libomp.so.5
-fi
-if [ ! -f "libicui18n.so.72" ]; then
-ln -s libicui18n.so.73 libicui18n.so.72
-fi
-if [ ! -f "libicuuc.so.72" ]; then
-ln -s libicuuc.so.73 libicuuc.so.72
-fi
-if [ ! -f "libFLAC.so.8" ]; then
-ln -s libFLAC.so.12 libFLAC.so.8
 fi
 if [ ! -f "/etc/pki/tls/certs/ca-bundle.crt" ]; then
 mkdir -p /etc/pki/tls/certs
@@ -32,23 +17,8 @@ mkdir -p /var/lib/hqplayer/home
 chown -R root:root /var/lib/hqplayer
 chown -R root:root /etc/hqplayer
 cd /usr/lib
-if [ ! -f "libgupnp-1.2.so.0" ]; then
-ln -s libgupnp-1.2.so.1 libgupnp-1.2.so.0
-fi
-if [ ! -f "libgupnp-av-1.0.so.2" ]; then
-ln -s libgupnp-av-1.0.so.3 libgupnp-av-1.0.so.2
-fi
 if [ ! -f "libomp.so.5" ]; then
 ln -s libomp.so libomp.so.5
-fi
-if [ ! -f "libicui18n.so.72" ]; then
-ln -s libicui18n.so.73 libicui18n.so.72
-fi
-if [ ! -f "libicuuc.so.72" ]; then
-ln -s libicuuc.so.73 libicuuc.so.72
-fi
-if [ ! -f "libFLAC.so.8" ]; then
-ln -s libFLAC.so.12 libFLAC.so.8
 fi
 if [ ! -f "/etc/pki/tls/certs/ca-bundle.crt" ]; then
 mkdir -p /etc/pki/tls/certs
