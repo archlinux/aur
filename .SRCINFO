@@ -1,0 +1,18 @@
+pkgbase = lazyansible-bin
+	pkgdesc = A lazy TUI for Ansible — browse inventory, run playbooks, stream logs
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/kocierik/lazyansible
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = lazyansible
+	conflicts = lazyansible
+	conflicts = lazyansible-git
+	options = !strip
+	source_x86_64 = lazyansible-bin-1.0.2-x86_64.tar.gz::https://github.com/kocierik/lazyansible/releases/download/v1.0.2/lazyansible_1.0.2_linux_x86_64.tar.gz
+	sha256sums_x86_64 = a03dd5678ff4681fc46ec86a24c8ab81b7a181e16b917323b114112bac29b6c4
+	source_aarch64 = lazyansible-bin-1.0.2-aarch64.tar.gz::https://github.com/kocierik/lazyansible/releases/download/v1.0.2/lazyansible_1.0.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = c50385ef768f272b0c84523b13c754517861bd3287de3ed52e647eda0d11c02c
+
+pkgname = lazyansible-bin
