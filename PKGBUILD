@@ -1,6 +1,6 @@
 # Maintainer: Bjarne Øverli <bjarne@oever.li>
 pkgname=aether
-pkgver=4.3.0
+pkgver=4.3.1
 pkgrel=1
 pkgdesc='Desktop theming application - extract colors from wallpapers and apply cohesive themes'
 arch=('x86_64' 'aarch64')
@@ -12,9 +12,9 @@ source_x86_64=("aether-linux-amd64-${pkgver}::https://github.com/bjarneo/aether/
      "aether-wp-linux-amd64-${pkgver}::https://github.com/bjarneo/aether/releases/download/v${pkgver}/aether-wp-linux-amd64")
 source_aarch64=("aether-linux-arm64-${pkgver}::https://github.com/bjarneo/aether/releases/download/v${pkgver}/aether-linux-arm64"
       "aether-wp-linux-arm64-${pkgver}::https://github.com/bjarneo/aether/releases/download/v${pkgver}/aether-wp-linux-arm64")
-sha256sums=('ba1b535fdd5886e922009e76f9d8cc9aea1d70a70b851d66368dace59d37fd7b')
-sha256sums_x86_64=('09035bf4cba30e9cdd94ff7e84d816dcd60c279acd7039083e308858970a5df9' '339850123abebb4ff6be890de928b18ec68ee11477712542425cf97d9fef6db2')
-sha256sums_aarch64=('2fb51e70f221a0a9d33fc304c567b7c22d9ab075d3aef3e819eb4eefc4abe7ec' '63945175a5bcb6a29892f703ad60ed2998261b7f0a87c99043b16ff1dae6aa47')
+sha256sums=('a8753969a1adf08fea6be19e0f84356cade144361f1f901ac3903ae2baa823be')
+sha256sums_x86_64=('8e78e334a9990951eb20b58f1b80c9061537536765cdf4c96d9a3ee109e4be86' 'd48dc9686c1843084795fbe86d67967ea75e7bc254dacc46e38a7869361ba76a')
+sha256sums_aarch64=('440c86bc2fe1a4c98108e10093d8352c13516abdff3481059caf07049a7a086c' '7af19f3d66e5ec302887988709d82fef6d137f85afc0ecd331d70bbd71909507')
 noextract=("aether-linux-amd64-${pkgver}" "aether-linux-arm64-${pkgver}"
  "aether-wp-linux-amd64-${pkgver}" "aether-wp-linux-arm64-${pkgver}")
 
