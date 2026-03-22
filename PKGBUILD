@@ -3,7 +3,8 @@
 pkgname=docker-model-bin
 pkgver=1.1.18
 pkgrel=1
-pkgdesc="Docker CLI plugin for running AI models (prebuilt binary)"
+pkgdesc="Docker CLI plugin for running AI models (prebuilt binary; prefer docker-model for source build)"
+optdepends=('docker-model: source-built alternative (recommended)')
 arch=('x86_64')
 url="https://www.docker.com/"
 license=('Apache-2.0')
