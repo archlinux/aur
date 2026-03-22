@@ -1,0 +1,27 @@
+pkgbase = proton-launcher
+	pkgdesc = Shell-integrated launcher for running Windows applications via Proton on Linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/nihil5320/proton-launcher
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	depends = libglvnd
+	depends = libx11
+	depends = libxcursor
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxi
+	depends = libxxf86vm
+	optdepends = kdialog: KDE error dialogs
+	optdepends = zenity: GTK error dialogs
+	optdepends = nautilus: GNOME Files right-click integration
+	optdepends = mangohud: FPS overlay support
+	optdepends = gamemode: performance optimization
+	optdepends = gamescope: gaming compositor support
+	optdepends = umu-launcher: recommended Proton launcher backend (umu-run)
+	source = proton-launcher-0.1.0.tar.gz::https://github.com/nihil5320/proton-launcher/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = proton-launcher
