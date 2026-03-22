@@ -1,7 +1,7 @@
 # Maintainer: yuzujr <15568103056@163.com>
 
 pkgname=coomer
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Zoomer application for everyone on Linux"
 arch=('x86_64' 'aarch64')
@@ -25,7 +25,7 @@ makedepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('1f20997338d728108a9c391cc161a25e4bea0f0223bac7dcdb7cd2d179dce5fe')
+sha256sums=('286a8e223943beaaac8a93253ef4ff0422e3dfe6d192e27f31136f7b8e1ee743')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
