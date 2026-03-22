@@ -1,0 +1,5 @@
+[darya-bin]
+source = "github"
+github = "mrkatebzadeh/darya"
+use_latest_release = true
+prefix = "v"
