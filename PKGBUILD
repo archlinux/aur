@@ -1,7 +1,8 @@
 # Maintainer: Ismet Togay <ismet.togay@gmail.com>
+
 pkgname=threadstepper-git
 pkgver=r122.bb0f93a
-pkgrel=6
+pkgrel=7
 pkgdesc="A stability and stress tester for AMD Curve Optimizer and PBO on Linux"
 arch=('x86_64')
 url="https://github.com/gazpitchy92/threadstepper"
