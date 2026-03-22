@@ -1,21 +1,20 @@
 pkgbase = kddockwidgets-git
-	pkgdesc = KDAB's Dock Widget Framework for Qt
-	pkgver = 1.2.0.r142.g2e498f64
+	pkgdesc = Dock Widgets Library by KDAB for Qt6
+	pkgver = 2.4.0.r41.ga467f98
 	pkgrel = 1
-	url = https://www.kdab.com/kddockwidgets/
+	url = https://github.com/KDAB/KDDockWidgets
 	arch = x86_64
-	license = GPL2
-	license = custom:KDAB commercial license
+	license = GPL-2.0-only
+	license = GPL-3.0-only
 	makedepends = cmake
-	makedepends = ninja
 	makedepends = git
-	makedepends = qt5-tools
-	depends = qt5-base
-	depends = qt5-x11extras
+	makedepends = ninja
+	makedepends = qt6-tools
+	depends = qt6-base
+	depends = qt6-declarative
 	provides = kddockwidgets
 	conflicts = kddockwidgets
-	source = kddockwidgets-git::git+https://github.com/KDAB/KDDockWidgets.git
+	source = kddockwidgets::git+https://github.com/KDAB/KDDockWidgets.git
 	sha256sums = SKIP
 
 pkgname = kddockwidgets-git
-
