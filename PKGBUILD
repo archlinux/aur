@@ -25,7 +25,7 @@ source=(
   "lintd.png::https://raw.githubusercontent.com/mfscpayload-690/lintd/main/src-tauri/icons/128x128.png"
 )
 sha256sums=(
-  'df1758d22da858630d2a119c2d5142d02c638f72fb52abaf21080c6336154b0b'
+  '879f894416a4c1fd2e0689e555e2f5e268b68f25a9cd5f4d5781db4442708fff'
   'SKIP'
 )
 noextract=("lintd-bin-${pkgver}-x86_64.AppImage")

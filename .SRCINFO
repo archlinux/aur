@@ -19,7 +19,7 @@ pkgbase = lintd-bin
 	noextract = lintd-bin-1.0.0-x86_64.AppImage
 	source = lintd-bin-1.0.0-x86_64.AppImage::https://github.com/mfscpayload-690/lintd/releases/download/v1.0.0/Lintd-x86_64.AppImage
 	source = lintd.png::https://raw.githubusercontent.com/mfscpayload-690/lintd/main/src-tauri/icons/128x128.png
-	sha256sums = df1758d22da858630d2a119c2d5142d02c638f72fb52abaf21080c6336154b0b
+	sha256sums = 879f894416a4c1fd2e0689e555e2f5e268b68f25a9cd5f4d5781db4442708fff
 	sha256sums = SKIP
 
 pkgname = lintd-bin
