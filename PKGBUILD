@@ -1,15 +1,15 @@
+# Maintainer: Crusher <TheAnonymousCrusher>
 pkgname=yt-nerddl
-pkgver=4.4.3
+pkgver=2026.03.25
 pkgrel=1
 pkgdesc="Interactive YouTube downloader wrapper around yt-dlp with nice UI"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/TheAnonymousCrusher/yt-nerddl"
 license=('MIT')
 depends=('python' 'ffmpeg' 'yt-dlp')
-source=("https://github.com/TheAnonymousCrusher/yt-nerddl/archive/refs/heads/main.zip")
-sha256sums=('SKIP') # replace with actual sum if you want verification
+source=("yt-nerddl.py")
+sha256sums=('24052a9188fc3b44aa838e1f0c0aed84f2bc2956513529252b75856ceaf5388e')
 
 package() {
-  mkdir -p "$pkgdir/usr/bin"
-  install -Dm755 "yt-nerddl-main/yt-nerddl.py" "$pkgdir/usr/bin/yt-nerddl"
+  install -Dm755 "${srcdir}/yt-nerddl.py" "${pkgdir}/usr/bin/yt-nerddl"
 }
