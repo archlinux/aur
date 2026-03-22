@@ -4,13 +4,13 @@
 
 pkgname=doclifter
 pkgver=2.22
-pkgrel=2
+pkgrel=3
 pkgdesc="Lift documents in {n,t}roff markups to XML-DocBook"
 arch=('any')
 url="http://www.catb.org/~esr/doclifter"
 license=('BSD-2-Clause' 'MIT-0')
 depends=('python')
-makedepends=('python' 'xmlto' 'gzip' 'asciidoctor')
+makedepends=('python' 'xmlto' 'gzip' 'asciidoctor' 'plotutils')
 optdepends=('groff: troff level support' 'plotutils: plotting utilities')
 source=("${url}/${pkgname}-${pkgver}.tar.gz"
 "fix-makefile.patch"

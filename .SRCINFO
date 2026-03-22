@@ -1,7 +1,7 @@
 pkgbase = doclifter
 	pkgdesc = Lift documents in {n,t}roff markups to XML-DocBook
 	pkgver = 2.22
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.catb.org/~esr/doclifter
 	arch = any
 	license = BSD-2-Clause
@@ -10,6 +10,7 @@ pkgbase = doclifter
 	makedepends = xmlto
 	makedepends = gzip
 	makedepends = asciidoctor
+	makedepends = plotutils
 	depends = python
 	optdepends = groff: troff level support
 	optdepends = plotutils: plotting utilities
