@@ -1,0 +1,18 @@
+pkgbase = nekobox-bin
+	pkgdesc = Cross-platform GUI proxy utility (Empowered by sing-box)
+	pkgver = 5.10.27
+	pkgrel = 1
+	url = https://github.com/qr243vbi/nekobox
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = gcc-libs
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	provides = nekobox
+	conflicts = nekobox
+	source = https://github.com/qr243vbi/nekobox/releases/download/5.10.27/nekobox-5.10.27-linux-amd64.tar.gz
+	sha256sums = f93c4a4291e876426423d1582d90019e806b551e43e08f43513abfa0c523eaab
+
+pkgname = nekobox-bin
