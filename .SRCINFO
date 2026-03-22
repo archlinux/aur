@@ -1,0 +1,18 @@
+pkgbase = pipeweaver-app-git
+	pkgdesc = An application wrapper for the Pipeweaver UI
+	pkgver = r4.663dc3a
+	pkgrel = 1
+	url = https://github.com/pipeweaver/pipeweaver-app
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = pipeweaver-git
+	depends = qt6-webengine
+	conflicts = pipeweaver-app
+	options = !lto
+	source = git+https://github.com/pipeweaver/pipeweaver-app.git
+	sha256sums = SKIP
+
+pkgname = pipeweaver-app-git
