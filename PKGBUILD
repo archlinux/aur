@@ -1,9 +1,10 @@
 # Maintainer: Wolfspirit Magic <wolfspirit at wolfspirit dot eu>
 pkgname=firestorm-git
-_pkgver=7.2.3
-pkgver=7.2.3.80036
-pkgrel=2
-pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life  and OpenSim grids (git/os version)"
+_src=master
+_extension=dev
+pkgver=7.2.4.80358
+pkgrel=1
+pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life  and OpenSim grids ($_extension version)"
 arch=('x86_64')
 url=https://www.firestormviewer.org
 license=('LGPL')
@@ -25,9 +26,9 @@ optdepends=(
 )
 makedepends=('cmake' 'python-pip' 'git' 'boost' 'xz')
 conflicts=()
-provides=('firestorm-os')
+provides=("firestorm-$_extension")
 source=(
-  "$pkgname"::"git+https://github.com/FirestormViewer/phoenix-firestorm#branch=Firestorm_${_pkgver}"
+  "$pkgname"::"git+https://github.com/FirestormViewer/phoenix-firestorm#branch=${_src}"
   "fs-build-variables"::'git+https://github.com/FirestormViewer/fs-build-variables'
   'firestorm.desktop'
   'firestorm.launcher'
@@ -43,15 +44,15 @@ source=(
 )
 sha256sums=('SKIP'
             'SKIP'
-            'b8841839874bfd3ea930705bd7db7d256eee72ac35090a146a68c40da52dda0c'
-            '4746dca154b7c5a014205e359197b7fcd346ad1c27b99c6df52de10b9169ec28'
+            'db34a50f4b7fda4a465cd0536f17a0f6040ff6b2e40c32594b1f244ebe8e2d60'
+            '465f1611c17f90bba8bc7e7cc3e05ffe8cf20fb9c1b7df59053f54a6bceb8283'
             'cbef822d5ce2b1b9eb3bc88bfcaa59dfb2eec2cc698bdcb391b1c332a7ed93fb'
-            '1598eb07a64909d50f6235d28ec88d37bc1fd7240f8809811f5f4b7f86d87ccb')
+            '5eec78e0196e51d58e45078b84dc277353ef635ff160ff61ac58ab5966245011')
 # The binaries are already stripped in the build system.
 options=(!strip)
 
 pkgver() {
-	_pkgver=$(find "$srcdir/$pkgname/indra/newview/" -type f -iname viewer_version.txt -exec cat {} +)
+	_pkgver=$(cat "$srcdir/$pkgname/indra/newview/VIEWER_VERSION_FS.txt")
 	cd "$srcdir/$pkgname"
 	_revnum=$(git rev-list --count HEAD)
 	printf "%s.%s" $_pkgver $_revnum
@@ -61,6 +62,9 @@ prepare() {
   cd "$srcdir/$pkgname"
 
   for p in "$srcdir"/*.patch; do
+
+    # Replace [EXTENSION] with the actual extension in the patch file
+    sed -i "s/\[EXTENSION\]/$_extension/g" "$p"
     echo "Applying patch $(basename "$p")"
     patch -Np1 -i "$p" || exit 1
   done
@@ -85,15 +89,27 @@ build() {
   python -m pip install --upgrade pip
   pip install -r requirements.txt
 
+  case "$_extension" in
+    os)
+      channel="ReleaseOSArchx64"
+      ;;
+    beta)
+      channel="BetaOSArchx64"
+      ;;
+    *)
+      channel="DevOSArchx64"
+      ;;
+  esac
+
   # Build the project using Autobuild with the specified options:
-  # - Package the output for installation to /opt/firestorm-os
+  # - Package the output for installation to /opt/firestorm-$_extension
   # - Enable AVX2 optimizations
   # - Don't use Kakadu for JPEG2000 support. KDU Requires license. Falling back to OpenJPEG for JPEG2000 support.
   # - Don't use FMOD Studio for audio. FMOD Studio requires an account to download the API. Falling back to OpenAL for audio support.
   # - Don't use Havok for physics. Havok requires license. This only affects Mesh uploads.
   # - Enable OpenSim support
   # - Pass --fresh to cmake to ensure flags are up to date
-  autobuild build -A 64 -c ReleaseFS -- --chan ReleaseOSArchx64 \
+  autobuild build -A 64 -c ReleaseFS -- --chan "$channel" \
     --package \
     --avx2 \
     -DUSE_KDU:BOOL=OFF \
@@ -108,22 +124,28 @@ build() {
 
 package() {
   mkdir -p "$pkgdir/opt"
-	mkdir -p "$pkgdir/usr/share/applications"
-	mkdir -p "$pkgdir/usr/share/icons/hicolor/512x512/apps"
+  mkdir -p "$pkgdir/usr/share/applications"
+  mkdir -p "$pkgdir/usr/share/icons/hicolor/512x512/apps"
 
-  # Install the packaged output to /opt/firestorm-os
-  mv "$pkgname/build-linux-x86_64/newview/packaged" "$pkgdir/opt/firestorm-os"
+  # Install the packaged output to /opt/firestorm-$_extension
+  mv "$pkgname/build-linux-x86_64/newview/packaged" "$pkgdir/opt/firestorm-$_extension"
 
-	install -Dm755 "firestorm.launcher" "$pkgdir/usr/bin/firestorm-os"
-  install -Dm644 "firestorm.desktop" "$pkgdir/usr/share/applications/firestorm-os.desktop"
-	install -Dm644 "$pkgdir/opt/firestorm-os/firestorm_icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/firestorm-os.png"
+  install -Dm755 "firestorm.launcher" "$pkgdir/usr/bin/firestorm-$_extension"
+  install -Dm644 "firestorm.desktop" "$pkgdir/usr/share/applications/firestorm-$_extension.desktop"
 
-  # rename "do-not-directly-run-firestorm-bin" to "do-not-directly-run-firestorm-os" in the bin directory
+  # Replace [EXTENSION] with the actual extension in the launcher and desktop file
+  sed -i "s/\[EXTENSION\]/$_extension/g" "$pkgdir/usr/bin/firestorm-$_extension"
+  sed -i "s/\[EXTENSION\]/$_extension/g" "$pkgdir/usr/share/applications/firestorm-$_extension.desktop"
+
+  install -Dm644 "$pkgdir/opt/firestorm-$_extension/firestorm_icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/firestorm-$_extension.png"
+
+  # rename "do-not-directly-run-firestorm-bin" to "do-not-directly-run-firestorm-$_extension" in the bin directory
   # firestorm uses that as the class name.
   # This allows us to have both the OS version and the official version installed at the same time
   # The .desktop file needs to match this name in the StartupWMClass field to work properly with the window manager.
-  mv "$pkgdir/opt/firestorm-os/bin/do-not-directly-run-firestorm-bin" "$pkgdir/opt/firestorm-os/bin/do-not-directly-run-firestorm-os"
+  mv "$pkgdir/opt/firestorm-$_extension/bin/do-not-directly-run-firestorm-bin" "$pkgdir/opt/firestorm-$_extension/bin/do-not-directly-run-firestorm-$_extension"
 
-  # replace "do-not-directly-run-firestorm-bin" with "do-not-directly-run-firestorm-os" in the "firestorm" script
-  sed -i 's/do-not-directly-run-firestorm-bin/do-not-directly-run-firestorm-os/g' "$pkgdir/opt/firestorm-os/firestorm"
+  # replace "do-not-directly-run-firestorm-bin" with "do-not-directly-run-firestorm-$_extension" in the "firestorm" script
+  sed -i "s/do-not-directly-run-firestorm-bin/do-not-directly-run-firestorm-$_extension/g" "$pkgdir/opt/firestorm-$_extension/firestorm"
 }
+

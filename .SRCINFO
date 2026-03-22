@@ -1,7 +1,7 @@
 pkgbase = firestorm-git
-	pkgdesc = Firestorm is a feature-packed third-party viewer for Second Life and OpenSim grids (git/os version)
-	pkgver = 7.2.3.80036
-	pkgrel = 2
+	pkgdesc = Firestorm is a feature-packed third-party viewer for Second Life and OpenSim grids (dev version)
+	pkgver = 7.2.4.80358
+	pkgrel = 1
 	url = https://www.firestormviewer.org
 	install = firestorm.install
 	arch = x86_64
@@ -42,9 +42,9 @@ pkgbase = firestorm-git
 	optdepends = mesa-libgl: For Intel, Radeon, Nouveau support
 	optdepends = nvidia-libgl: for NVIDIA support
 	optdepends = nvidia-utils: for NVIDIA support
-	provides = firestorm-os
+	provides = firestorm-dev
 	options = !strip
-	source = firestorm-git::git+https://github.com/FirestormViewer/phoenix-firestorm#branch=Firestorm_7.2.3
+	source = firestorm-git::git+https://github.com/FirestormViewer/phoenix-firestorm#branch=master
 	source = fs-build-variables::git+https://github.com/FirestormViewer/fs-build-variables
 	source = firestorm.desktop
 	source = firestorm.launcher
@@ -52,9 +52,9 @@ pkgbase = firestorm-git
 	source = 002-set-different-config-dir.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = b8841839874bfd3ea930705bd7db7d256eee72ac35090a146a68c40da52dda0c
-	sha256sums = 4746dca154b7c5a014205e359197b7fcd346ad1c27b99c6df52de10b9169ec28
+	sha256sums = db34a50f4b7fda4a465cd0536f17a0f6040ff6b2e40c32594b1f244ebe8e2d60
+	sha256sums = 465f1611c17f90bba8bc7e7cc3e05ffe8cf20fb9c1b7df59053f54a6bceb8283
 	sha256sums = cbef822d5ce2b1b9eb3bc88bfcaa59dfb2eec2cc698bdcb391b1c332a7ed93fb
-	sha256sums = 1598eb07a64909d50f6235d28ec88d37bc1fd7240f8809811f5f4b7f86d87ccb
+	sha256sums = 5eec78e0196e51d58e45078b84dc277353ef635ff160ff61ac58ab5966245011
 
 pkgname = firestorm-git

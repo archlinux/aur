@@ -6,7 +6,7 @@ index c1fce8c9e2..9bdcd0e328 100644
          std::string lower_app_name(app_name);
          LLStringUtil::toLower(lower_app_name);
          mOSUserAppDir += lower_app_name;
-+        mOSUserAppDir += "-os";
++        mOSUserAppDir += "-[EXTENSION]";
      }
  
      // create any directories we expect to write to.

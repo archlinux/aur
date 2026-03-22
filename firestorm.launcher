@@ -1,4 +1,4 @@
 #!/bin/sh
 
-cd /opt/firestorm-os
+cd /opt/firestorm-[EXTENSION]
 exec ./firestorm $*
