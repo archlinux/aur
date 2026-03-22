@@ -13,7 +13,7 @@ _qodercli() {
         cword=$COMP_CWORD
     fi
 
-    local -r subcommands="jobs rm feedback help mcp status update"
+    local -r subcommands="commit jobs rm feedback help mcp status update"
     local -r mcp_subcommands="add auth get list remove"
 
     local -r model_choices="auto efficient gmodel kmodel lite mmodel performance q35model qmodel ultimate"
@@ -28,7 +28,7 @@ _qodercli() {
     local i
     for ((i = 1; i < cword; i++)); do
         case "${words[i]}" in
-            jobs|rm|feedback|help|mcp|status|update)
+            commit|jobs|rm|feedback|help|mcp|status|update)
                 subcmd="${words[i]}"
                 # Look for mcp subcommand
                 if [[ "$subcmd" == "mcp" ]]; then
@@ -103,7 +103,7 @@ _qodercli() {
         # These flags take a value but we can't autocomplete them
         --agents|--allowed-tools|--disallowed-tools|--branch|--max-turns|\
         -p|--print|-r|--resume|-c|--content|-s|--session|--namespace|\
-        -e|--env|-H|--header)
+        -e|--env|-H|--header|--summarize-tool)
             return
             ;;
     esac
@@ -115,11 +115,12 @@ _qodercli() {
                 COMPREPLY=($(compgen -W "
                     --agents --allowed-tools --attachment --branch
                     -c --continue --dangerously-skip-permissions
-                    --disallowed-tools -h --help --input-format
-                    --max-output-tokens --max-turns --model
-                    -f --output-format --path -p --print -q --quiet
-                    -r --resume -v --version --with-claude-config
-                    -w --workspace --worktree --yolo
+                    --disallowed-tools --experimental-mcp-load
+                    -h --help --input-format --max-output-tokens
+                    --max-turns --model -f --output-format --path
+                    -p --print -q --quiet -r --resume --summarize-tool
+                    -v --version --with-claude-config -w --workspace
+                    --worktree --yolo
                 " -- "$cur"))
             else
                 COMPREPLY=($(compgen -W "$subcommands" -- "$cur"))
@@ -133,6 +134,9 @@ _qodercli() {
             ;;
         feedback)
             COMPREPLY=($(compgen -W "-c --content -h --help -i --images -s --session --workdir -v --version -w --workspace" -- "$cur"))
+            ;;
+        commit)
+            COMPREPLY=($(compgen -W "-h --help -m --message -v --version -w --workspace" -- "$cur"))
             ;;
         help)
             COMPREPLY=($(compgen -W "$subcommands" -- "$cur"))

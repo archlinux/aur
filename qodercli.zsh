@@ -6,6 +6,7 @@ _qodercli() {
     local -a commands mcp_commands
 
     commands=(
+        'commit:Commit AI-generated code and record AI contribution statistics'
         'jobs:List concurrent job(s)'
         'rm:Remove concurrent job(s)'
         'feedback:Submit feedback with optional images'
@@ -38,6 +39,8 @@ _qodercli() {
         '--branch[Branch name (only works with --worktree)]:branch:' \
         '--dangerously-skip-permissions[Bypass all permission checks]' \
         '*--disallowed-tools[Disallowed tool names]:tools:' \
+        '--experimental-mcp-load[Enable dynamic discovery and loading of tools from MCP servers]' \
+        '*--summarize-tool[Tool patterns to auto-summarize outputs]:tools:' \
         '--input-format[Input format for non-interactive mode]:format:(text stream-json)' \
         '--max-output-tokens[Max tokens for model output]:tokens:(16k 32k)' \
         '--max-turns[Maximum agent loop cycles]:turns:' \
@@ -80,6 +83,13 @@ _qodercli() {
                         '--workdir[Working directory]:directory:_directories' \
                         {-v,--version}'[Show version]' \
                         {-w,--workspace}'[Current working directory]:directory:_directories'
+                    ;;
+                commit)
+                    _arguments \
+                        '(- *)'{-h,--help}'[Show help]' \
+                        {-m,--message}'[Commit message]:message:' \
+                        {-v,--version}'[Show version]' \
+                        {-w,--workspace}'[Working directory]:directory:_directories'
                     ;;
                 help)
                     _describe -t commands 'qodercli command' commands

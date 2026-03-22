@@ -9,7 +9,7 @@ function __qodercli_no_subcommand
     set -l cmd (commandline -opc)
     for word in $cmd[2..]
         switch $word
-            case jobs rm feedback help mcp status update
+            case commit jobs rm feedback help mcp status update
                 return 1
         end
     end
@@ -61,6 +61,7 @@ function __qodercli_mcp_no_subcommand
 end
 
 # === Top-level subcommands ===
+complete -c qodercli -n __qodercli_no_subcommand -a commit -d 'Commit AI-generated code and record AI contribution statistics'
 complete -c qodercli -n __qodercli_no_subcommand -a jobs -d 'List concurrent job(s)'
 complete -c qodercli -n __qodercli_no_subcommand -a rm -d 'Remove concurrent job(s)'
 complete -c qodercli -n __qodercli_no_subcommand -a feedback -d 'Submit feedback with optional images'
@@ -84,6 +85,8 @@ complete -c qodercli -n __qodercli_no_subcommand -l attachment -r -F -d 'Attachm
 complete -c qodercli -n __qodercli_no_subcommand -l branch -r -d 'Branch name (only works with --worktree)'
 complete -c qodercli -n __qodercli_no_subcommand -l dangerously-skip-permissions -d 'Bypass all permission checks'
 complete -c qodercli -n __qodercli_no_subcommand -l disallowed-tools -r -d 'Disallowed tool names'
+complete -c qodercli -n __qodercli_no_subcommand -l experimental-mcp-load -d 'Enable dynamic discovery and loading of tools from MCP servers'
+complete -c qodercli -n __qodercli_no_subcommand -l summarize-tool -r -d 'Tool patterns to auto-summarize outputs'
 complete -c qodercli -n __qodercli_no_subcommand -l input-format -r -a 'text stream-json' -d 'Input format for non-interactive mode'
 complete -c qodercli -n __qodercli_no_subcommand -l max-output-tokens -r -a '16k 32k' -d 'Max tokens for model output'
 complete -c qodercli -n __qodercli_no_subcommand -l max-turns -r -d 'Maximum agent loop cycles'
@@ -115,8 +118,14 @@ complete -c qodercli -n '__qodercli_using_subcommand feedback' -l workdir -r -F 
 complete -c qodercli -n '__qodercli_using_subcommand feedback' -s v -l version -d 'Show version'
 complete -c qodercli -n '__qodercli_using_subcommand feedback' -s w -l workspace -r -F -d 'Current working directory'
 
+# === commit ===
+complete -c qodercli -n '__qodercli_using_subcommand commit' -s h -l help -d 'Show help'
+complete -c qodercli -n '__qodercli_using_subcommand commit' -s m -l message -r -d 'Commit message'
+complete -c qodercli -n '__qodercli_using_subcommand commit' -s v -l version -d 'Show version'
+complete -c qodercli -n '__qodercli_using_subcommand commit' -s w -l workspace -r -F -d 'Working directory'
+
 # === help ===
-complete -c qodercli -n '__qodercli_using_subcommand help' -a 'jobs rm feedback help mcp status update' -d 'Command'
+complete -c qodercli -n '__qodercli_using_subcommand help' -a 'commit jobs rm feedback help mcp status update' -d 'Command'
 
 # === status ===
 complete -c qodercli -n '__qodercli_using_subcommand status' -s h -l help -d 'Show help'
