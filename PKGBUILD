@@ -1,14 +1,12 @@
-# Maintainer: tu-usuario <tu@email.com>
-#
 # rubrika — Firma digital de PDFs con DNIe
-# https://github.com/tu-usuario/rubrika
+# https://github.com/vrieraj/rubrika
 
 pkgname=rubrika
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Firma digital de PDFs con DNIe o certificado .p12 — interfaz nativa KDE"
 arch=('any')
-url='https://github.com/tu-usuario/rubrika'
+url='https://github.com/vrieraj/rubrika'
 license=('GPL3')
 depends=(
     # ── Sistema ──────────────────────────────────────────────────────────────
@@ -40,7 +38,7 @@ install=rubrika.install
 source=(
     "rubrika-${pkgver}.tar.gz::https://github.com/vrieraj/rubrika/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('1845873bb5418d939c58cf22788301caf8ff958052a9f784c2a0612abccfc3f2')   # actualizar con el hash real al publicar en el AUR
+sha256sums=('b9638d2f39806a9926bf7f1bf8ed0d46ed8aa8b7ad8ce2ac6f47280db97e88dc')
 
 package() {
     cd "rubrika-${pkgver}"
