@@ -1,7 +1,7 @@
 # Maintainer: Phusit Somboonyingsuk
 
 pkgname=mprisence-git
-pkgver=1.2.3
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Discord Rich Presence for MPRIS media players (git version)"
 arch=('x86_64')
@@ -13,8 +13,10 @@ provides=('mprisence')
 conflicts=('mprisence')
 install=mprisence-git.install
 source=("git+$url.git"
-        "mprisence-git.install")
+        "mprisence-git.install"
+        "mprisence.service")
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP')
 
 pkgver() {
@@ -43,6 +45,9 @@ check() {
 
 package() {
     cd "${srcdir}/${pkgname%-git}"
-    make DESTDIR="$pkgdir" pkg-prepare
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 "target/release/mprisence" "$pkgdir/usr/bin/mprisence"
+    install -dm755 "$pkgdir/etc/mprisence"
+    install -Dm644 "config/config.example.toml" "$pkgdir/etc/mprisence/config.example.toml"
+    install -Dm644 "../mprisence.service" "$pkgdir/usr/lib/systemd/user/mprisence.service"
+    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 } 
