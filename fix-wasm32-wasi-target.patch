@@ -1,0 +1,13 @@
+diff --git a/build/moz.configure/toolchain.configure b/build/moz.configure/toolchain.configure
+index c443705c26bf..bb7e98b65980 100644
+--- a/build/moz.configure/toolchain.configure
++++ b/build/moz.configure/toolchain.configure
+@@ -1112,7 +1112,7 @@ def compiler_wrapper(wrapper, ccache):
+ 
+ @dependable
+ def wasm():
+-    return split_triplet("wasm32-wasi", allow_wasi=True)
++    return split_triplet("wasm32-wasip1", allow_wasi=True)
+ 
+ 
+ @template
