@@ -16,7 +16,7 @@ pkgbase = license
 	optdepends = fzf: required for interactive scripts: set-license, copy-header
 	optdepends = xclip: required for interactive scripts: set-license, copy-header
 	optdepends = wl-clipboard: required for interactive scripts: set-license, copy-header
-	source = license-3.2.1::https://git.sr.ht/~zethra/license/archive/3.2.1.tar.gz
+	source = license-3.2.1.tar.gz::https://git.sr.ht/~zethra/license/archive/3.2.1.tar.gz
 	sha256sums = e7eca671edbe67bf983b5a12a86e8dd8a200db3ead61304ab9c4c198d366b84e
 
 pkgname = license

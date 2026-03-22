@@ -13,7 +13,7 @@ makedepends=(cargo scdoc)
 optdepends=('fzf: required for interactive scripts: set-license, copy-header'
             'xclip: required for interactive scripts: set-license, copy-header'
             'wl-clipboard: required for interactive scripts: set-license, copy-header')
-source=("$pkgname-$pkgver::https://git.sr.ht/~zethra/$pkgname/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~zethra/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('e7eca671edbe67bf983b5a12a86e8dd8a200db3ead61304ab9c4c198d366b84e')
 
 prepare() {
