@@ -35,12 +35,6 @@ prepare() {
     sed -i '/^#include <png.h>/a #include <string.h>\n#include <strings.h>' \
       "$pkgname-$pkgver/bpgdec.c"
   fi
-
-  sed -i 's/$(CMAKE_OPTS)/$(CMAKE_OPTS) -DENABLE_LIBNUMA=OFF/' \
-    "$pkgname-$pkgver/Makefile"
-
-  sed -i 's/^CFLAGS+=-I.$/CFLAGS+=-I. -fPIC/' \
-    "$pkgname-$pkgver/Makefile"
 }
 
 build() {
