@@ -9,10 +9,13 @@ pkgver=2.62.1
 _pkgvername=v${pkgver}
 pkgrel=1
 pkgdesc="Web File Manager which can be used as a middleware or standalone app."
+
 arch=('x86_64' 'aarch64')
 _barch=('amd64' 'arm64')
+
 url="https://github.com/${_pkgauthor}/${_pkgname}"
 _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgvername}"
+
 license=('Apache-2.0')
 
 depends=('glibc')
