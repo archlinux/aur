@@ -1,0 +1,7 @@
+post_remove() {
+    local rules="/usr/share/polkit-1/rules.d/49-mount-windows.rules"
+    if [ -f "$rules" ]; then
+        rm -f "$rules"
+        echo "✓ Removed Polkit rules for mount-windows"
+    fi
+}
