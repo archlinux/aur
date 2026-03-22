@@ -1,6 +1,6 @@
 # Maintainer: Zack <zack@internetuniverse.org>
 pkgname=llmx-bin
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Local-first codebase indexer with semantic search for LLM agents"
 arch=('x86_64' 'aarch64')
@@ -13,8 +13,8 @@ options=('!strip')
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/johnzfitch/llmx/releases/download/v${pkgver}/llmx-v${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/johnzfitch/llmx/releases/download/v${pkgver}/llmx-v${pkgver}-linux-aarch64.tar.gz")
 
-sha256sums_x86_64=('1ef5db475811075215d81c1d2b483be37f9c179373e39d14b6a87120290a96a3')
-sha256sums_aarch64=('354aac1264ffcdbe3145fac268ed074d11046da849bd580ae15f75111e8d22e0')
+sha256sums_x86_64=('3cfcf0e7abc9a84f6467e93127b2ea57ac56a98014759c4fa8f217058a92faf6')
+sha256sums_aarch64=('fcb5e33e45cf360295060c3df53a804ea4b4aed2cca70e71d6fd7328ce718096')
 
 package() {
     cd "${srcdir}/llmx-v${pkgver}-linux-${CARCH}"
