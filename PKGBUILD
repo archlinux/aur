@@ -3,7 +3,7 @@
 
 pkgname=(lc0 lc0-network-sm lc0-network-md lc0-network-lg lc0-network-xl)
 pkgver=0.32.1
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 
 url="https://lczero.org/"
@@ -41,13 +41,21 @@ sha256sums=('78b17e8e8d29da30492c86fdac69c519816f4a9d9c3b787dc41a6f9e8d20fde3'
             'e6ada9d6c4a769bfab3aa0848d82caeb809aa45f83e6c605fc58a31d21bdd618')
 
 prepare() {
+  local cudnn=false
+
   cp -r \
     "${srcdir}/lczero-common-${_lczero_common_sha}/." \
     "${srcdir}/lc0-${pkgver}/libs/lczero-common/"
 
+  if pacman -Q cudnn > /dev/null 2>&1; then
+    cudnn=true
+  fi
+
   meson setup \
     "${srcdir}/lc0-${pkgver}/build/release" \
     "${srcdir}/lc0-${pkgver}" \
+    --reconfigure \
+    -Dcudnn="${cudnn}" \
     -Dcpp_args=-I/usr/include/eigen3 \
     --buildtype release \
     --prefix /usr
