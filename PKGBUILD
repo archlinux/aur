@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   pnpm install
-  pnpm tauri build
+  pnpm tauri build --bundles=deb
 }
 
 package() {
