@@ -1,0 +1,18 @@
+pkgbase = vpn-gate-client
+	pkgdesc = A lightweight CLI and GUI for VPN Gate using NetworkManager with legacy OpenSSL support
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/Me3paw/VPN-gate-client
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-pyqt6
+	depends = networkmanager
+	depends = networkmanager-openvpn
+	depends = hicolor-icon-theme
+	source = vpn-gate-client::git+https://github.com/Me3paw/VPN-gate-client.git#tag=v1.1.0
+	sha256sums = SKIP
+
+pkgname = vpn-gate-client
