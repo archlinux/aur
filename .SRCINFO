@@ -1,7 +1,7 @@
 pkgbase = deltacp
-	pkgdesc = a copy tool designed to incremental/differential backup for block device or large file
+	pkgdesc = A copy tool designed for incremental and differential backups of block devices or large files by utilizing reflink (CoW)
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/sharow/deltacp
 	arch = x86_64
 	license = MIT
