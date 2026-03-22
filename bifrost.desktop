@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Utility;
+Comment=Samsung Firmware Downloader
+Encoding=UTF-8
+Exec=/usr/bin/bifrost
+GenericName=Bifrost
+Icon=bifrost
+Name=Bifrost
+StartupNotify=false
+Terminal=false
+Type=Application
