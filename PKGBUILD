@@ -1,6 +1,6 @@
 # Maintainer: Ali Mahmoud <aur.c3rt@gmail.com>
 pkgname=snaptool
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=2
 pkgdesc="A minimal CLI system health snapshotter"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('dotnet-runtime>=8.0')
 makedepends=('dotnet-sdk>=8.0')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('309b82d0da9d7adc7e2267c90f980d2fd72db488ef5c9fe5ef349f3d5b4d49a0')
+sha256sums=('c2e0a588d4faf99f2ffe7be94ad5df36791fd4e3558faec42ad6e33808d99c25')
 
 build() {
 cd "snaptool-$pkgver"
