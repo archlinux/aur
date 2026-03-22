@@ -1,7 +1,7 @@
 # Maintainer: Benigno Batista Jr <benignobjunior@gmail.com>
 
 pkgname=keifu-bin
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="A TUI tool to visualize Git commit graphs with branch genealogy."
 url="https://github.com/trasta298/keifu"
@@ -11,9 +11,9 @@ source_aarch64=("keifu-v$pkgver-aarch64.tar.gz::https://github.com/trasta298/kei
 source=("LICENSE-v$pkgver::https://raw.githubusercontent.com/trasta298/keifu/v${pkgver}/LICENSE"
         "README.md-v$pkgver::https://raw.githubusercontent.com/trasta298/keifu/v${pkgver}/README.md")
 sha256sums=('fff55e233457a73b20e6b2e9b37f9ecc18a4addc63ad8785e7d8fd97f0acdae7'
-            'e838903186895c136b60bdd78b74dbc440a84d170e78b9eb2e6cf820b558dce1')
-sha256sums_x86_64=('c6df0239734c140bb791c77c75bab034d37c0dd1438d3c772073f4097345a5d9')
-sha256sums_aarch64=('ebb9400332141cd23b2c5357d90417da6b16002240eb9023224e4cfe02f9078e')
+            '5c69f35203605189a7254bc9417329650ea0729f8133288545e88312033d7ed1')
+sha256sums_x86_64=('d3a454f5dfe64e1a637e1e9b8575b49fb44505e817e22d76c1079e69746bf953')
+sha256sums_aarch64=('dd4fcc0f76859b45b3a2ead6e96bb451468afb26b5c39d9166ed569fcc1a7c9b')
 arch=('x86_64' 'aarch64')
 depends=('git')
 provides=('keifu')
