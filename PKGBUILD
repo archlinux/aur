@@ -1,7 +1,7 @@
 # Maintainer: Tsiry Sandratraina <tsiry.sndr@fluentci.io>
 
 pkgname=pocketenv
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="open, interoperable sandbox platform for agents and humans 📦 ✨"
 arch=('x86_64')
