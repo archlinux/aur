@@ -1,13 +1,14 @@
-# Maintainer: Your Name <you@example.com>
-pkgname=cn.hexhub
+# Maintainer: mineleng <15119587808@163.com>
+pkgname=hexhub-deb
 pkgver=1.3.1
 pkgrel=1
 pkgdesc="HexHub"
 arch=('x86_64')
-url="https://hexhub.cn"                 # 请替换为实际项目主页
-license=('custom')                     # 请填写实际许可证（如 'custom', 'GPL3' 等）
-depends=()                              # 若有运行时依赖，请在此列出
-provides=('HexHub')                     # 对应原 Provides 字段
+url="https://hexhub.cn"
+license=('GPL')
+depends=()
+pkgdesc="database, docker, ssh, sftp. all in one"
+provides=('HexHub')
 source=("${pkgname}_${pkgver}_amd64.deb::https://oss.hexhub.cn/plugin/HexHub-amd64-deb-${pkgver}.deb")
 sha256sums=('a616a4e489feb7bea65e10feca1f0d569568de92442abfffcb1885a44190eb79')
 
