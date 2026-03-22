@@ -1,7 +1,7 @@
 pkgbase = nrf5x-command-line-tools
 	pkgdesc = Tools for programming Nordic nRF51, nRF52, nRF53 and nRF91 Series devices
 	pkgver = 10.24.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nordicsemi.com/Software-and-Tools/Development-Tools/nRF-Command-Line-Tools
 	arch = x86_64
 	license = custom
@@ -13,8 +13,14 @@ pkgbase = nrf5x-command-line-tools
 	provides = nrfjprog
 	provides = mergehex
 	provides = python-pynrfjprog
+	provides = nrf-command-line-tools=${pkgver}
+	provides = python-nrf-command-line-tools=${pkgver}
 	conflicts = python-pynrfjprog
 	conflicts = python-pynrfjprog-git
+	conflicts = nrf-command-line-tools
+	conflicts = python-nrf-command-line-tools
+	replaces = nrf-command-line-tools<=10.24.2
+	replaces = python-nrf-command-line-tools<=10.24.2
 	source_x86_64 = https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-command-line-tools/sw/versions-10-x-x/10-24-2/nrf-command-line-tools-10.24.2_linux-amd64.tar.gz
 	sha256sums_x86_64 = 9d65b0d80fccb567668fa41585c9261947b1740f52eba8d3a368cf6f8fd7b793
 
