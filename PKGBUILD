@@ -2,7 +2,7 @@
 # Contributor: Brett Cornwall <ainola@archlinux.org>
 
 pkgname=keyd-git
-pkgver=2.4.3.r46.5832c75
+pkgver=2.6.0.r0.7c0aecb
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc="A key remapping daemon for linux"
@@ -19,7 +19,7 @@ source=(
 	keyd.sysusers
 )
 sha256sums=('SKIP'
-            'b3fa546c31f61be824a84a33af5c723692e2cedd4e5f87ff655e90f33227395d')
+	'b3fa546c31f61be824a84a33af5c723692e2cedd4e5f87ff655e90f33227395d')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -37,7 +37,7 @@ build() {
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
-	make DESTDIR="$pkgdir" PREFIX='/usr' install
+	make DESTDIR="$pkgdir" PREFIX='/usr' FORCE_SYSTEMD=1 install
 	install -Dm644 ../keyd.sysusers "$pkgdir/usr/lib/sysusers.d/keyd.conf"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/keyd"
 	install -Dm644 keyd.service -t "$pkgdir/usr/lib/systemd/system/"
