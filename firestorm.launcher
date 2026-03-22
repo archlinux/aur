@@ -1,5 +1,4 @@
 #!/bin/sh
 
-cd /opt/firestorm
-./firestorm "$@"
-exit
+cd /opt/firestorm-[EXTENSION]
+exec ./firestorm $*

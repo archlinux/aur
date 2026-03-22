@@ -1,0 +1,18 @@
+post_install() {
+  cat <<EOF
+You must register an account on the official Second Life website in
+order to use Second Life: https://secondlife.com/
+
+Remember to log out and back in for the change to take effect.
+EOF
+}
+
+post_upgrade() {
+  if [ "$(vercmp $2 7.2.3.80036)" -lt 0 ]; then
+    echo "==> NOTE: Config location has changed!"
+    echo "==> Please run before starting Firestorm to copy over the old configuration:"
+    echo "==>   cp -anT \$HOME/.firestorm_x64 \$HOME/.firestorm_x64-os"
+    echo "==> (you can also manually rename or copy the folder)"
+    echo "==> If everything works and you're not using the binary version of Firestorm, you can remove the old configuration folder"
+  fi
+}

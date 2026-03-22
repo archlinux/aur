@@ -1,11 +1,10 @@
 [Desktop Entry]
-Name=Firestorm
-Comment=Client for accessing 3D virtual words
-Exec=/opt/firestorm/firestorm %U
-Icon=firestorm
+Name=Firestorm Viewer ([EXTENSION])
+Comment=Client for accessing 3D virtual worlds
+Exec=firestorm-[EXTENSION]
+Icon=firestorm-[EXTENSION]
 Terminal=false
 Type=Application
-Categories=Application;Internet;Network;
+Categories=Application;Internet;Network;Game
 StartupNotify=true
-X-Desktop-File-Install-Version=3.0
-StartupWMClass=do-not-directly-run-firestorm-bin
+StartupWMClass=do-not-directly-run-firestorm-[EXTENSION]

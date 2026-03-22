@@ -1,72 +1,146 @@
-# Maintainer: Jacqueline Fisher <weretiger95@gmail.com>
-# Maintainer: Justin Jagieniak <justin@jagieniak.net>
-# Contributor: Nicky D
-
+# Maintainer: Wolfspirit Magic <wolfspirit at wolfspirit dot eu>
 pkgname=firestorm
-_pkgver=7.1.13
-pkgver=7.1.13.78266
+pkgver=7.2.3.80036
+_src=Firestorm_Release_$pkgver
+_extension=os
 pkgrel=1
-pkgdesc="An open source 3D browser for Second Life & OpenSIM metaverse."
-arch=('i686' 'x86_64')
+pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life  and OpenSim grids ($_extension version)"
+arch=('x86_64')
 url=https://www.firestormviewer.org
 license=('LGPL')
-depends=(apr-util dbus-glib gconf glu gtk2 lib32-libidn lib32-libsndfile lib32-util-linux lib32-zlib libgl libidn libjpeg-turbo libpng libxss libxml2 mesa nss openal sdl vlc zlib 'libcrypt.so=1')
+install='firestorm.install'
+depends=(apr-util dbus-glib glu gtk2 lib32-libidn lib32-libsndfile
+         lib32-util-linux lib32-zlib libbsd libgl libidn libjpeg-turbo
+         libpng libxcrypt-compat libxss libxml2 mesa nss openal sdl
+         vlc zlib)
 optdepends=(
   'alsa-lib: for ALSA support'
   'pepper-flash: for inworld Flash support'
   'freealut: for OpenAL support'
+  'lib32-gst-plugins-good: for voice support'
   'lib32-libidn11: for voice support'
   'libpulse: for PulseAudio support'
   'mesa-libgl: For Intel, Radeon, Nouveau support'
   'nvidia-libgl: for NVIDIA support'
-  'nvidia-utils: for NVIDIA support')
-makedepends=('cmake' 'python-virtualenv' 'python-pip' 'git' 'boost' 'xz')
-conflicts=('firestorm-bin' 'firestorm-git')
-#options=(debug !strip)
+  'nvidia-utils: for NVIDIA support'
+)
+makedepends=('cmake' 'python-pip' 'git' 'boost' 'xz')
+conflicts=()
+provides=('firestorm-os')
+source=(
+  "$pkgname"::"git+https://github.com/FirestormViewer/phoenix-firestorm#tag=${_src}"
+  "fs-build-variables"::'git+https://github.com/FirestormViewer/fs-build-variables'
+  'firestorm.desktop'
+  'firestorm.launcher'
+# This patch fixes the fortify check. Arch defines _FORTIFY_SOURCE by default, 
+# These are in CMAKE_CXX_FLAGS and not in CMAKE_CXX_COMPILER_ARG1, 
+# so the check for _FORTIFY_SOURCE in CMAKE_CXX_COMPILER_ARG1 fails and the fortify check is not disabled, 
+# which causes build failures.
+  '001-fix-fortify-check.patch'
 
-source=("$pkgname"::"git+https://github.com/FirestormViewer/phoenix-firestorm#branch=Firestorm_${_pkgver}" "fs-build-variables"::'git+https://github.com/FirestormViewer/fs-build-variables' 'firestorm.desktop' 'firestorm.launcher')
-sha512sums=('SKIP'
+# We want to be able to use the OS version together with the official firestorm-bin version so we want a different config directory for the OS version.
+# This patch changes the default config directory to ~/.firestorm_x64-os instead of ~/.firestorm_x64
+  '002-set-different-config-dir.patch'
+)
+sha256sums=('bd531ea153457066b46a0d8c80bae77f43f7a886154ace8688a3519338747b16'
             'SKIP'
-            'b39127e496e69d39223529dbd2e2078e7e29e13fef8978dd4e5d77dd516a53268cea524e395302978df55a47a8fbcdb9544fa01f33b128fd2ed968ed077cc80b'
-            'b78572b906fdebb3043016bda0c88b62c56ef3fba190fd7ee6aeaaa6da1035d7630b06fd2e1039dea9808cdeb66d66035f4b3225e2aa38cfcd69e6dd2aeb0306')
-
-pkgver() {
-	_pkgver=$(find "$srcdir/$pkgname/indra/newview/" -type f -iname viewer_version.txt -exec cat {} +)
-	cd "$srcdir/$pkgname"
-	_revnum=$(git rev-list --count HEAD)
-	printf "%s.%s" $_pkgver $_revnum
-}
+            'db34a50f4b7fda4a465cd0536f17a0f6040ff6b2e40c32594b1f244ebe8e2d60'
+            '465f1611c17f90bba8bc7e7cc3e05ffe8cf20fb9c1b7df59053f54a6bceb8283'
+            'cbef822d5ce2b1b9eb3bc88bfcaa59dfb2eec2cc698bdcb391b1c332a7ed93fb'
+            '5eec78e0196e51d58e45078b84dc277353ef635ff160ff61ac58ab5966245011')
+# The binaries are already stripped in the build system.
+options=(!strip)
 
 prepare() {
-	export AUTOBUILD_VARIABLES_FILE="$srcdir/fs-build-variables/variables"
-	cd "$pkgname"
-	virtualenv ".venv" -p python3
-	source .venv/bin/activate
-	pip3 install -r "$srcdir/$pkgname/requirements.txt"
-# 	pip3 install git+https://github.com/FirestormViewer/autobuild-3.0
-# 	pip3 install llbase
-	export CXXFLAGS="$CXXFLAGS -Wno-error"
-	export CFLAGS="$CFLAGS -Wno-error"
-	autobuild configure -A 64 -c ReleaseFS_open -- -DLL_TESTS:BOOL=FALSE -DREVISION_FROM_VCS=ON -DPACKAGE:BOOL=Off --chan="ArchLinux"
+  cd "$srcdir/$pkgname"
+
+  for p in "$srcdir"/*.patch; do
+
+    # Replace [EXTENSION] with the actual extension in the patch file
+    sed -i "s/\[EXTENSION\]/$_extension/g" "$p"
+    echo "Applying patch $(basename "$p")"
+    patch -Np1 -i "$p" || exit 1
+  done
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-	source .venv/bin/activate
-	cd "$srcdir/$pkgname/build-linux-x86_64"
-	export CXXFLAGS="$CXXFLAGS -Wno-error"
-	export CFLAGS="$CFLAGS -Wno-error"
-	make
+  # Rename _GLIBCXX_ASSERTIONS to _NO_GLIBCXX_ASSERTION if defined
+  # The problem is that makepkg might define -D_GLIBCXX_ASSERTIONS.
+  # There is a bug in FS right now that causes the assertion to trigger a crash so we rename it to NO_GLIBCXX_ASSERTIONS to disable the assertions.
+  # This is not ideal but it is a workaround until the underlying issue in FS is fixed.
+  CPPFLAGS=${CPPFLAGS//_GLIBCXX_ASSERTIONS/_NO_GLIBCXX_ASSERTIONS}
+  CXXFLAGS=${CXXFLAGS//_GLIBCXX_ASSERTIONS/_NO_GLIBCXX_ASSERTIONS}
+  export CPPFLAGS CXXFLAGS
+
+
+  cd "$pkgname"
+  export AUTOBUILD_VARIABLES_FILE="$srcdir/fs-build-variables/variables"
+  
+  # Install Autobuild + python deps into an isolated venv
+  python -m venv .venv
+  source .venv/bin/activate
+  python -m pip install --upgrade pip
+  pip install -r requirements.txt
+
+  case "$_extension" in
+    os)
+      channel="ReleaseOSArchx64"
+      ;;
+    beta)
+      channel="BetaOSArchx64"
+      ;;
+    *)
+      channel="DevOSArchx64"
+      ;;
+  esac
+
+  # Build the project using Autobuild with the specified options:
+  # - Package the output for installation to /opt/firestorm-$_extension
+  # - Enable AVX2 optimizations
+  # - Don't use Kakadu for JPEG2000 support. KDU Requires license. Falling back to OpenJPEG for JPEG2000 support.
+  # - Don't use FMOD Studio for audio. FMOD Studio requires an account to download the API. Falling back to OpenAL for audio support.
+  # - Don't use Havok for physics. Havok requires license. This only affects Mesh uploads.
+  # - Enable OpenSim support
+  # - Pass --fresh to cmake to ensure flags are up to date
+
+  autobuild build -A 64 -c ReleaseFS -- --chan "$channel" \
+    --package \
+    --avx2 \
+    -DUSE_KDU:BOOL=OFF \
+    -DUSE_FMODSTUDIO:BOOL=OFF \
+    -DHAVOK_TPV:BOOL=OFF \
+    -DOPENSIM:BOOL=ON \
+    --fresh
+  
+  # Deactivate the virtual environment after the build is complete
+  deactivate
 }
+
 
 package() {
-	mkdir -p "$pkgdir/opt/firestorm"
-	mkdir -p "$pkgdir/usr/share/applications"
-	mkdir -p "$pkgdir/usr/share/icons/hicolor/512x512/apps"
-	
-	cp -rT "$pkgname/build-linux-x86_64/newview/packaged" "$pkgdir/opt/firestorm"
+  mkdir -p "$pkgdir/opt"
+  mkdir -p "$pkgdir/usr/share/applications"
+  mkdir -p "$pkgdir/usr/share/icons/hicolor/512x512/apps"
 
-	install -Dm644 "firestorm.desktop" "$pkgdir/usr/share/applications/firestorm.desktop"
-	install -Dm644 "$pkgname/build-linux-x86_64/newview/packaged/firestorm_icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/firestorm.png"
-	install -Dm755 "firestorm.launcher" "$pkgdir/usr/bin/firestorm"
+  # Install the packaged output to /opt/firestorm-$_extension
+  cp -a --reflink=auto "$pkgname/build-linux-x86_64/newview/packaged" "$pkgdir/opt/firestorm-$_extension"
+
+  install -Dm755 "firestorm.launcher" "$pkgdir/usr/bin/firestorm-$_extension"
+  install -Dm644 "firestorm.desktop" "$pkgdir/usr/share/applications/firestorm-$_extension.desktop"
+
+  # Replace [EXTENSION] with the actual extension in the launcher and desktop file
+  sed -i "s/\[EXTENSION\]/$_extension/g" "$pkgdir/usr/bin/firestorm-$_extension"
+  sed -i "s/\[EXTENSION\]/$_extension/g" "$pkgdir/usr/share/applications/firestorm-$_extension.desktop"
+
+  install -Dm644 "$pkgdir/opt/firestorm-$_extension/firestorm_icon.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/firestorm-$_extension.png"
+
+  # rename "do-not-directly-run-firestorm-bin" to "do-not-directly-run-firestorm-$_extension" in the bin directory
+  # firestorm uses that as the class name.
+  # This allows us to have both the OS version and the official version installed at the same time
+  # The .desktop file needs to match this name in the StartupWMClass field to work properly with the window manager.
+  mv "$pkgdir/opt/firestorm-$_extension/bin/do-not-directly-run-firestorm-bin" "$pkgdir/opt/firestorm-$_extension/bin/do-not-directly-run-firestorm-$_extension"
+
+  # replace "do-not-directly-run-firestorm-bin" with "do-not-directly-run-firestorm-$_extension" in the "firestorm" script
+  sed -i "s/do-not-directly-run-firestorm-bin/do-not-directly-run-firestorm-$_extension/g" "$pkgdir/opt/firestorm-$_extension/firestorm"
 }
+

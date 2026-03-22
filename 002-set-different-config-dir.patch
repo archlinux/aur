@@ -1,0 +1,12 @@
+diff --git a/indra/llfilesystem/lldir_linux.cpp b/indra/llfilesystem/lldir_linux.cpp
+index c1fce8c9e2..9bdcd0e328 100644
+--- a/indra/llfilesystem/lldir_linux.cpp
++++ b/indra/llfilesystem/lldir_linux.cpp
+@@ -175,6 +175,7 @@ void LLDir_Linux::initAppDirs(const std::string &app_name,
+         std::string lower_app_name(app_name);
+         LLStringUtil::toLower(lower_app_name);
+         mOSUserAppDir += lower_app_name;
++        mOSUserAppDir += "-[EXTENSION]";
+     }
+ 
+     // create any directories we expect to write to.
