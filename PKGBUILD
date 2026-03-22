@@ -6,7 +6,7 @@
 pkgname=wlroots0.20-hidpi-xprop
 pkgver=0.20.0.rc5
 _pkgtag=0.20.0-rc5
-pkgrel=1
+pkgrel=2
 license=(MIT)
 pkgdesc='Modular Wayland compositor library (stable, with patches)'
 url=https://gitlab.freedesktop.org/wlroots/wlroots
@@ -43,11 +43,13 @@ makedepends=(
 	wayland-protocols
 	xorgproto)
 source=("${pkgname}::git+${url}#tag=${_pkgtag}"
+	'https://gitlab.freedesktop.org/wlroots/wlroots/-/merge_requests/5307.patch'
         0001-Revert-compositor-send-WL_SURFACE_ERROR_INVALID_SIZE.patch
         0001-xwayland-support-HiDPI-scale.patch
         0002-Fix-configure_notify-event.patch
         0003-Fix-size-hints-under-Xwayland-scaling.patch)
 sha512sums=('95aa254f1f227184c4ac99227e14bde7a4d2bcf08462b5f40f3aaba6692d77d0ab025cfa16646dffbd35feb0c1d2b0a2f8ee9726040dda17de53c799ca346da1'
+            'fca7bab27306b8a19f67a4eeb02f6d789238735d0919073992f15ee9cb7c7698530361927fb37a37fa1a1610dfacc05cd75215b3818c1beea96a64f2451b6997'
             'b055e51be19d3921811871dd6cbeb75d697a3b806c92c422017d96c6de4a23c477caa3d82e500ff1f6f75dfa6f28a4a3b522eff10c956742c2a8e59d686bc0c9'
             '423784601afa4266faf3bce669a9cd98aec6ef726595a71611408b8f698942b1738e40639b7ade9bc918485ee53152c2665e7b3928984e454b3130aadd7f6623'
             '4c98b79ee474464cfa6fd03020d6b41464945ebb65e55ac06485876b6cbff19496af9acd7ac399578699c55052728fbad89f6491b6af58b4b7d05966adee6099'
@@ -55,6 +57,7 @@ sha512sums=('95aa254f1f227184c4ac99227e14bde7a4d2bcf08462b5f40f3aaba6692d77d0ab0
 
 prepare () {
   cd "${pkgname}"
+  patch -Np1 < ../5307.patch
   patch -Np1 < ../0001-Revert-compositor-send-WL_SURFACE_ERROR_INVALID_SIZE.patch
   patch -Np1 < ../0001-xwayland-support-HiDPI-scale.patch
   patch -Np1 < ../0002-Fix-configure_notify-event.patch
