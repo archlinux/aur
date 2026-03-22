@@ -4,7 +4,7 @@
 
 pkgname=zotero-git
 _pkgname="${pkgname%-git}"
-pkgver=8.0.2.r29.g2aaf0c2
+pkgver=8.0.2.r121.g8af91b0
 pkgrel=1
 pkgdesc="A free, easy-to-use tool to help you collect, organize, cite, and share your research sources, git version"
 arch=('x86_64' 'i686')
@@ -12,7 +12,6 @@ url="https://www.zotero.org"
 license=('AGPL-3.0-or-later')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-options=(!debug)
 depends=(
   'dbus-glib'
   'gtk3'
