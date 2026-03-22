@@ -5,7 +5,7 @@ _pkgname=puzzletea
 pkgname=${_pkgname}-bin
 pkgdesc="A collection of puzzle bubbles for BubbleTea"
 
-pkgver=1.8.0
+pkgver=1.9.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,8 +23,8 @@ conflicts=("${_pkgname}")
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
-sha256sums_x86_64=('933fbf9e2fe9da6cda8efa5d4b8dcac2cd3f52c0adf20d92b17556beac1c977e')
-sha256sums_aarch64=('839b9b0feae4d0e42ca916ba1f1243c6e90e196871465dcb429a660fa5462af2')
+sha256sums_x86_64=('63dc0b2e2e468be07cf7f22025099c514d186f76f8f6eb9c0e736d8d987f6f03')
+sha256sums_aarch64=('310292a061942499acec747b8e34000a46873b756decd435ec64513272d3bbae')
 
 
 package() {
