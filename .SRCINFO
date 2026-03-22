@@ -1,7 +1,7 @@
 pkgbase = libbpg
 	pkgdesc = BPG Image Encoder and Decoder
 	pkgver = 0.9.8
-	pkgrel = 1
+	pkgrel = 2
 	url = http://bellard.org/bpg/
 	arch = x86_64
 	arch = i686
