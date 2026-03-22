@@ -1,4 +1,5 @@
-# Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
+# Maintainer: stickynotememo <samk26633@gmail.com>
+# Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 
