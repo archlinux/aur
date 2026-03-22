@@ -34,7 +34,7 @@ optdepends=(
 )
 arch=('x86_64')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
-        "Patch01-tool-and-tool-opensll-bindir-cohabitant-headers.patch"
+        "Patch01-tool-and-tool-openssl-bindir-cohabitant-headers.patch"
 )
 b2sums=('d458951843c6c269fabc794e121ef97f97e90d98bab97282aa28252dad9f3278794d3625a11800d42ca44dacc122e633fcb8f1a9a2b5f6da270393e25d772625'
         '55c39b51d3dabba02ba6b3d423846c0bbfee85aeed4e8ea3691488a1d78b98a5d4cd71a034aaabe438f995a9a3c535ac1fabeb79dd0df1f3c34ccb74c6119f89')
