@@ -5,7 +5,7 @@
 
 pkgname=ltsa
 pkgver=3.0
-pkgrel=8
+pkgrel=9
 pkgdesc="Labelled Transition System Analyser, a verification tool for concurrent systems"
 arch=('any')
 url="http://www.doc.ic.ac.uk/ltsa/"
@@ -30,7 +30,7 @@ build() {
   cd "$srcdir"
   gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --categories "Education;Java"
   echo "Generating $pkgname.png..."
-  convert "${pkgname}tool/$pkgname.ico" "$pkgname.png"
+  magick "${pkgname}tool/$pkgname.ico" "$pkgname.png"
 }
 
 package() {
