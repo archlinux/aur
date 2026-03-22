@@ -9,8 +9,7 @@ declare -Ag _arch=(
 _Name="DiscordChatExporter"
 _pkgbase="discord-chat-exporter"
 _pkgname=(
-  "${_pkgbase}-core"
-  #"${_pkgbase}-cli"
+  "${_pkgbase}-cli"
   "${_pkgbase}-gui"
 )
 pkgbase="${_pkgbase}-bin"
@@ -18,7 +17,7 @@ pkgname=(
   "${_pkgname[@]/%/-bin}"
 )
 pkgver=2.47.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Exports Discord chat logs to a file"
 arch=(
   "${!_arch[@]}"
@@ -44,7 +43,7 @@ source=(
   "${_pkgsrc}-README.md::${url}/raw/refs/tags/${pkgver}/Readme.md"
   "${_pkgsrc}-LICENSE::${url}/raw/refs/tags/${pkgver}/License.txt"
   "${_pkgsrc}.png::${url}/raw/refs/tags/${pkgver}/favicon.png"
-  "${_pkgbase}-gui.sh"
+  "${_pkgbase}-gui-bin.sh"
 )
 for _carch in "${!_arch[@]}"; do
   eval "
@@ -59,7 +58,7 @@ done
 sha256sums=('cd90fa50aa68b24bd9c6dbadab2ddd68c1fd69a3faca51e433dacc92e40de459'
             '16effc795aac6a9ad3143bb679c5d93e41f99fc2a0796e91362d4e09b529da79'
             '36ea0d21cf80c7e15779b1db7a241dadfa45a1a21890242df1a18a9290d96d8a'
-            '61ae7c90c3727ea5010c00e605d7c1fa9da8203f93e656db3bb083c5ca0d2772')
+            'd35bb6279d4e9fedb2bbd307cf269fb0abfe1270f7225511e7f149b4ca0f5f29')
 sha256sums_aarch64=('13d2d03485d299ab8fa16272ee77be0911f533231f5ee9169dba6c53e602694e'
                     'bfca736449a8c2c6265219989a197aaecb93a864055cb690265f55cdafe41c1b')
 sha256sums_x86_64=('2ed48fbb23ae9836ecd3780857b57cf5c7a9b5e3b07c13c3c606e9147e76ce69'
@@ -67,60 +66,17 @@ sha256sums_x86_64=('2ed48fbb23ae9836ecd3780857b57cf5c7a9b5e3b07c13c3c606e9147e76
 sha256sums_armv7h=('257d53a3dbecb936ba191117d1a5f2399df40e5ae0b4c5751b068497f8faaf9c'
                    '60acb28e1ec21731a9778b479d4ceba8daee06c76588cc7264b600e08dc45a97')
 
-prepare() {
-  cd "${srcdir}"
-  # for _name in "${_pkgname[@]}"; do
-  #   mkdir -p "${_name}-${pkgver}-${_arch[${CARCH}]}"
-  # done
-  mkdir -p "${_pkgbase}-"{core,cli,gui}"-${pkgver}-${_arch[${CARCH}]}"
-
-  bsdtar -xf "${_Name}.Cli.${pkgver}-linux-${_arch[${CARCH}]}.zip" -C "${_pkgbase}-cli-${pkgver}-${_arch[${CARCH}]}"
-  bsdtar -xf "${_Name}.${pkgver}-linux-${_arch[${CARCH}]}.zip" -C "${_pkgbase}-gui-${pkgver}-${_arch[${CARCH}]}"
-
-  for f in "${_pkgbase}-cli-${pkgver}-${_arch[${CARCH}]}"/*; do
-    f="${f##*/}"
-    if [[ -e "${_pkgbase}-gui-${pkgver}-${_arch[${CARCH}]}/$f" ]]; then
-      mv "${_pkgbase}-gui-${pkgver}-${_arch[${CARCH}]}/$f" \
-         "${_pkgbase}-core-${pkgver}-${_arch[${CARCH}]}/"
-      rm -f "${_pkgbase}-cli-${pkgver}-${_arch[${CARCH}]}/$f"
-    fi
-  done
-}
-
 build() {
   cd "${srcdir}"
   gendesk -f -n \
     --pkgname "${_pkgbase}-gui" \
     --pkgdesc "${pkgdesc}" \
     --name "Discord Chat Exporter (GUI)" \
-    --exec "${_pkgbase}-gui" \
-    --icon "${_pkgbase}" \
     --categories "Utility"
-}
-
-package_discord-chat-exporter-core-bin() {
-  pkgdesc+=" - Core"
-  provides=(
-    "${pkgname%-bin}=${pkgver}"
-  )
-  conflicts=(
-    "${pkgname%-bin}"
-  )
-
-  cd "${srcdir}"
-  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${_pkgbase}/README.md"
-  install -vDm644 "${_pkgsrc}-LICENSE"   "${pkgdir}/usr/share/licenses/${_pkgbase}/LICENSE"
-  install -vDm644 "${_pkgsrc}.png"       "${pkgdir}/usr/share/pixmaps/${_pkgbase}.png"
-
-  install -vd "${pkgdir}/usr/lib/${_pkgbase}"
-  cp -vaT --no-preserve=ownership "${pkgname%-bin}-${pkgver}-${_arch[${CARCH}]}" "${pkgdir}/usr/lib/${_pkgbase}"
 }
 
 package_discord-chat-exporter-cli-bin() {
   pkgdesc+=" - CLI"
-  depends+=(
-    "${_pkgbase}-core-bin>=${pkgver}-${pkgrel}"
-  )
   provides=(
     "${pkgname%-bin}=${pkgver}"
   )
@@ -129,15 +85,17 @@ package_discord-chat-exporter-cli-bin() {
   )
 
   cd "${srcdir}"
-  install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/${_pkgbase}"
-  cp -vaT --no-preserve=ownership "${pkgname%-bin}-${pkgver}-${_arch[${CARCH}]}" "${pkgdir}/usr/lib/${_pkgbase}"
-  ln -vsf "/usr/lib/${_pkgbase}/${_Name}.Cli" "${pkgdir}/usr/bin/${pkgname%-bin}"
+  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${pkgname%-bin}/README.md"
+  install -vDm644 "${_pkgsrc}-LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
+
+  install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/${pkgname%-bin}"
+  bsdtar -xf "${_Name}.Cli.${pkgver}-linux-${_arch[${CARCH}]}.zip" -C "${pkgdir}/usr/lib/${pkgname%-bin}" --no-same-owner
+  ln -vsf "/usr/lib/${pkgname%-bin}/${_Name}.Cli" "${pkgdir}/usr/bin/${pkgname%-bin}"
 }
 
 package_discord-chat-exporter-gui-bin() {
   pkgdesc+=" - GUI"
   depends+=(
-    "${_pkgbase}-core-bin>=${pkgver}-${pkgrel}"
     'fontconfig'
     'sh'
   )
@@ -149,10 +107,14 @@ package_discord-chat-exporter-gui-bin() {
   )
 
   cd "${srcdir}"
-  install -vDm755 "${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
+  install -vDm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
   install -vDm644 "${pkgname%-bin}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-bin}.desktop"
 
-  install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/${_pkgbase}"
-  cp -vaT --no-preserve=ownership "${pkgname%-bin}-${pkgver}-${_arch[${CARCH}]}" "${pkgdir}/usr/lib/${_pkgbase}"
-  # ln -vsf "/usr/lib/${_pkgbase}/${_Name}" "${pkgdir}/usr/bin/${pkgname%-bin}"
+  install -vDm644 "${_pkgsrc}-README.md" "${pkgdir}/usr/share/doc/${pkgname%-bin}/README.md"
+  install -vDm644 "${_pkgsrc}-LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname%-bin}/LICENSE"
+  install -vDm644 "${_pkgsrc}.png"       "${pkgdir}/usr/share/pixmaps/${pkgname%-bin}.png"
+
+  install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/${pkgname%-bin}"
+  bsdtar -xf "${_Name}.${pkgver}-linux-${_arch[${CARCH}]}.zip" -C "${pkgdir}/usr/lib/${pkgname%-bin}" --no-same-owner
+  # ln -vsf "/usr/lib/${pkgname%-bin}/${_Name}" "${pkgdir}/usr/bin/${pkgname%-bin}"
 }

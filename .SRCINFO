@@ -1,7 +1,7 @@
 pkgbase = discord-chat-exporter-bin
 	pkgdesc = Exports Discord chat logs to a file
 	pkgver = 2.47.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Tyrrrz/DiscordChatExporter
 	arch = aarch64
 	arch = x86_64
@@ -22,11 +22,11 @@ pkgbase = discord-chat-exporter-bin
 	source = discord-chat-exporter-2.47.1-README.md::https://github.com/Tyrrrz/DiscordChatExporter/raw/refs/tags/2.47.1/Readme.md
 	source = discord-chat-exporter-2.47.1-LICENSE::https://github.com/Tyrrrz/DiscordChatExporter/raw/refs/tags/2.47.1/License.txt
 	source = discord-chat-exporter-2.47.1.png::https://github.com/Tyrrrz/DiscordChatExporter/raw/refs/tags/2.47.1/favicon.png
-	source = discord-chat-exporter-gui.sh
+	source = discord-chat-exporter-gui-bin.sh
 	sha256sums = cd90fa50aa68b24bd9c6dbadab2ddd68c1fd69a3faca51e433dacc92e40de459
 	sha256sums = 16effc795aac6a9ad3143bb679c5d93e41f99fc2a0796e91362d4e09b529da79
 	sha256sums = 36ea0d21cf80c7e15779b1db7a241dadfa45a1a21890242df1a18a9290d96d8a
-	sha256sums = 61ae7c90c3727ea5010c00e605d7c1fa9da8203f93e656db3bb083c5ca0d2772
+	sha256sums = d35bb6279d4e9fedb2bbd307cf269fb0abfe1270f7225511e7f149b4ca0f5f29
 	source_aarch64 = DiscordChatExporter.Cli.2.47.1-linux-arm64.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.47.1/DiscordChatExporter.Cli.linux-arm64.zip
 	source_aarch64 = DiscordChatExporter.2.47.1-linux-arm64.zip::https://github.com/Tyrrrz/DiscordChatExporter/releases/download/2.47.1/DiscordChatExporter.linux-arm64.zip
 	sha256sums_aarch64 = 13d2d03485d299ab8fa16272ee77be0911f533231f5ee9169dba6c53e602694e
@@ -40,17 +40,16 @@ pkgbase = discord-chat-exporter-bin
 	sha256sums_armv7h = 257d53a3dbecb936ba191117d1a5f2399df40e5ae0b4c5751b068497f8faaf9c
 	sha256sums_armv7h = 60acb28e1ec21731a9778b479d4ceba8daee06c76588cc7264b600e08dc45a97
 
-pkgname = discord-chat-exporter-core-bin
-	pkgdesc = Exports Discord chat logs to a file - Core
-	provides = discord-chat-exporter-core=2.47.1
-	conflicts = discord-chat-exporter-core
+pkgname = discord-chat-exporter-cli-bin
+	pkgdesc = Exports Discord chat logs to a file - CLI
+	provides = discord-chat-exporter-cli=2.47.1
+	conflicts = discord-chat-exporter-cli
 
 pkgname = discord-chat-exporter-gui-bin
 	pkgdesc = Exports Discord chat logs to a file - GUI
 	depends = glibc
 	depends = libgcc
 	depends = libstdc++
-	depends = discord-chat-exporter-core-bin>=2.47.1-1
 	depends = fontconfig
 	depends = sh
 	provides = discord-chat-exporter-gui=2.47.1
