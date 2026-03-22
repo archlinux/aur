@@ -9,7 +9,7 @@ pkgname=(
   "${pkgbase}-gui"
 )
 pkgver=2.47.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Exports Discord chat logs to a file"
 arch=(
   'aarch64'
@@ -132,6 +132,7 @@ package_discord-chat-exporter-gui() {
   pkgdesc+=" - GUI"
   depends+=(
     "${pkgbase}-core>=${pkgver}-${pkgrel}"
+    'sh'
   )
 
   cd "${srcdir}"
