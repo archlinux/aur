@@ -42,11 +42,6 @@ pkgver() {
 prepare() {
   cd ${pkgname}
 
-  # disable logging to output and activate syslog
-  sed -i s/"info = "/"-- info = "/g prosody.cfg.lua.dist
-  sed -i s/"error = "/"-- error = "/g prosody.cfg.lua.dist
-  sed -i s/"--\ \"\*syslog\"\;"/"\"*syslog\"\;"/g prosody.cfg.lua.dist
-
   ./configure --ostype=linux --prefix=/usr --sysconfdir=/etc/prosody \
     --datadir=/var/lib/prosody --with-lua-include=/usr/include \
     --cflags="${CFLAGS} -fPIC -Wall -Wextra -D_GNU_SOURCE" \
@@ -55,6 +50,9 @@ prepare() {
     --lua-version=5.4 \
     --with-random=getrandom \
     --idn-library=icu
+
+  # disable logging to output and activate syslog
+  sed '/\(info\|error\) = /s//-- \0/; s/-- \("\*syslog"\)/\1/' prosody.cfg.lua.dist > prosody.cfg.lua.install
 }
 
 build() {
