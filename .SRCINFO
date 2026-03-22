@@ -1,0 +1,15 @@
+pkgbase = watthog-git
+	pkgdesc = A TUI utility for monitoring system power consumption on Linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Jareda15/WattHog
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python
+	depends = python-textual
+	depends = python-psutil
+	source = git+https://github.com/Jareda15/WattHog.git
+	md5sums = SKIP
+
+pkgname = watthog-git
