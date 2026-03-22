@@ -25,23 +25,24 @@ prepare() {
 package() {
     cd "${srcdir}/squashfs-root"
     
-    install -Dm755 tsubasa "${pkgdir}/usr/lib/tsubasaflow/tsubasa"
+    # Install main binary
+    install -Dm755 usr/bin/tsubasa "${pkgdir}/usr/lib/tsubasaflow/tsubasa"
     
-    find . -type f -not -name tsubasa -not -path "./usr/*" -exec \
-        install -Dm644 {} "${pkgdir}/usr/lib/tsubasaflow/{}" \;
+    # Install all library dependencies and resources
+    cp -a usr/lib/* "${pkgdir}/usr/lib/tsubasaflow/" 2>/dev/null || true
     
+    # Install launcher wrapper
     install -Dm755 "${srcdir}/tsubasaflow.sh" "${pkgdir}/usr/bin/tsubasaflow"
     
-    if [ -f "usr/share/icons/hicolor/128x128/apps/"*.png ]; then
-        install -Dm644 usr/share/icons/hicolor/128x128/apps/*.png \
-            "${pkgdir}/usr/share/icons/hicolor/128x128/apps/tsubasaflow.png"
-    fi
+    # Install icons
+    for size in 32x32 128x128 256x256; do
+        if [ -f "usr/share/icons/hicolor/${size}/apps/"*.png ]; then
+            install -Dm644 usr/share/icons/hicolor/${size}/apps/*.png \
+                "${pkgdir}/usr/share/icons/hicolor/${size}/apps/tsubasaflow.png"
+        fi
+    done
     
-    if [ -f "usr/share/icons/hicolor/32x32/apps/"*.png ]; then
-        install -Dm644 usr/share/icons/hicolor/32x32/apps/*.png \
-            "${pkgdir}/usr/share/icons/hicolor/32x32/apps/tsubasaflow.png"
-    fi
-    
+    # Install desktop file
     install -Dm644 "${srcdir}/tsubasaflow.desktop" \
         "${pkgdir}/usr/share/applications/tsubasaflow.desktop"
 }
