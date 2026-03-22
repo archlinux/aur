@@ -33,7 +33,7 @@ prepare() {
 build() {
 	cd "$srcdir/${_bundlepkgname}-${_bundlepkgver}/$pkgname-${pkgver%.*}"
 
-	# Avoid build failures under GCC 16 due to -Wunused-but-set-variable detection
+	# Avoid build failures under GCC 16 due to -Wunused-but-set-variable errors
 	export CXXFLAGS="$CXXFLAGS -Wno-error=unused-but-set-variable"
 
 	# See https://hub.docker.com/r/bscpm/ompss/dockerfile
