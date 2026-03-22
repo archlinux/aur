@@ -1,12 +1,12 @@
 pkgbase = seqtui-bin
 	pkgdesc = A fast terminal-based viewer and command-line toolkit for molecular sequences (DNA, AA)
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ranwez-search/SeqTUI
 	arch = x86_64
 	license = MIT
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	options = !strip
 	options = !debug
 	source = SeqTUI-LICENSE::https://raw.githubusercontent.com/ranwez-search/SeqTUI/refs/tags/v0.1.1/LICENSE

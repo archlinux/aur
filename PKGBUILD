@@ -2,15 +2,15 @@
 
 pkgname=seqtui-bin
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast terminal-based viewer and command-line toolkit for molecular sequences (DNA, AA)'
 arch=(x86_64)
 url='https://github.com/ranwez-search/SeqTUI'
 license=(MIT)
-depends=(gcc-libs glibc)
+depends=(glibc libgcc)
 options=(!strip !debug)
-source=("SeqTUI-LICENSE::https://raw.githubusercontent.com/ranwez-search/SeqTUI/refs/tags/v$pkgver/LICENSE")
-source_x86_64=("$url/releases/download/v$pkgver/seqtui-v$pkgver-linux-x86_64.tar.gz")
+source=(SeqTUI-LICENSE::https://raw.githubusercontent.com/ranwez-search/SeqTUI/refs/tags/v$pkgver/LICENSE)
+source_x86_64=($url/releases/download/v$pkgver/seqtui-v$pkgver-linux-x86_64.tar.gz)
 sha256sums=('23b63f434f3efc22c45d74a21c4ed3e4b33a64e85c07457e3902e4dbb530d9cc')
 sha256sums_x86_64=('8bdb9d469de1a864c2f726223b2c8254d8af9aed479dc0c1a84af14c6778f071')
 b2sums=('4350f3fe32a75b1e282f8c7a80cc52f70f3d482e3d51bdbb1102cfa85bd83680133096e47b128ef0e16470dce130a37606e6c4eb27d3fd8d74fd046244606c11')
