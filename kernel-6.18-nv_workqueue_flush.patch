@@ -1,0 +1,44 @@
+diff --git a/kernel/common/inc/nv-linux.h b/kernel/common/inc/nv-linux.h
+index f68fcf2..37cb593 100644
+--- a/kernel/common/inc/nv-linux.h
++++ b/kernel/common/inc/nv-linux.h
+@@ -1129,7 +1129,22 @@ static inline void nv_kmem_ctor_dummy(void *arg)
+ {
+     (void)arg;
+ }
+-#define NV_KMEM_CACHE_DESTROY_FLUSH flush_scheduled_work
++
++/*
++ * On Linux, beginning with kernel 6.18 flushing system-wide workqueues was
++ * removed resulting in a stack dump on driver shutdown and removal. The
++ * following additions eliminate the system-wide workqueue flush on
++ * shutdown by making call to NV_KMEM_CACHE_DESTROY_FLUSH a noop for kernels
++ * 6.18 and later. (below and at line 1541 for NV_WORKQUEUE_FLUSH)
++ *
++ * See discussion: https://bbs.archlinux.org/viewtopic.php?id=312658
++ */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 18, 0)
++    #define NV_KMEM_CACHE_DESTROY_FLUSH ((void)0)
++#else
++    #define NV_KMEM_CACHE_DESTROY_FLUSH flush_scheduled_work
++#endif
++
+ #else
+ #define nv_kmem_ctor_dummy NULL
+ #define NV_KMEM_CACHE_DESTROY_FLUSH()
+@@ -1524,8 +1539,15 @@ typedef struct nv_work_s {
+ } nv_work_t;
+ 
+ #define NV_WORKQUEUE_SCHEDULE(work) schedule_work(work)
++
++/* system-wide workqueue flush removal, cont. from 1151 */
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 18, 0)
++#define NV_WORKQUEUE_FLUSH() do { } while (0)
++#else
+ #define NV_WORKQUEUE_FLUSH()                           \
+     flush_scheduled_work();
++#endif
++
+ #if (NV_INIT_WORK_ARGUMENT_COUNT == 2)
+ #define NV_WORKQUEUE_INIT(tq,handler,data)             \
+     {                                                  \
