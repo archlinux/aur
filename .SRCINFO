@@ -1,13 +1,14 @@
 pkgbase = kitsune
 	pkgdesc = AniLiberty player
 	pkgver = 0.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://altlinux.space/armatik/Kitsune
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = meson
 	makedepends = ninja
 	makedepends = git
+	makedepends = blueprint-compiler
 	depends = python
 	depends = python-gobject
 	depends = python-cairo

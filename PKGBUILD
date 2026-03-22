@@ -2,7 +2,7 @@
 
 pkgname=kitsune
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="AniLiberty player"
 arch=('any')
 url="https://altlinux.space/armatik/Kitsune"
@@ -19,7 +19,7 @@ depends=(
 'python-requests'
 )
 
-makedepends=('meson' 'ninja' 'git')
+makedepends=('meson' 'ninja' 'git' 'blueprint-compiler')
 
 source=("git+https://altlinux.space/armatik/Kitsune.git")
 sha256sums=('SKIP')
