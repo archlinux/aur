@@ -37,7 +37,7 @@ pkgbase = unshitted-systemd-git
 	makedepends = libxkbcommon
 	makedepends = bash-completion
 	makedepends = p11-kit
-	makedepends = systemd
+	makedepends = unshitted-systemd
 	makedepends = libfido2
 	makedepends = tpm2-tss
 	makedepends = rsync
@@ -91,14 +91,14 @@ pkgbase = unshitted-systemd-git
 	sha512sums = a50d202a9c2e91a4450b45c227b295e1840cc99a5e545715d69c8af789ea3dd95a03a30f050d52855cabdc9183d4688c1b534eaa755ebe93616f9d192a855ee3
 	sha512sums = 825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97
 
-pkgname = systemd
+pkgname = unshitted-systemd
 	pkgdesc = system and service manager
 	install = systemd.install
 	license = LGPL-2.1-or-later
 	license = CC0-1.0
 	license = GPL-2.0-or-later
 	license = MIT-0
-	depends = systemd-libs=260
+	depends = unshitted-systemd-libs=260
 	depends = acl
 	depends = bash
 	depends = cryptsetup
@@ -138,12 +138,15 @@ pkgname = systemd
 	optdepends = libfido2: unlocking LUKS2 volumes with FIDO2 token
 	optdepends = libp11-kit: support PKCS#11
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
+	provides = systemd
 	provides = nss-myhostname
 	provides = systemd-tools=260
 	provides = udev=260
+	conflicts = systemd
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
+	replaces = systemd
 	replaces = nss-myhostname
 	replaces = systemd-tools
 	replaces = udev
@@ -164,7 +167,7 @@ pkgname = systemd
 	backup = etc/udev/iocost.conf
 	backup = etc/udev/udev.conf
 
-pkgname = systemd-libs
+pkgname = unshitted-systemd-libs
 	pkgdesc = systemd client libraries
 	license = LGPL-2.1-or-later
 	license = CC0-1.0
@@ -176,31 +179,34 @@ pkgname = systemd-libs
 	depends = lz4
 	depends = xz
 	depends = zstd
+	provides = systemd-libs
 	provides = libsystemd
 	provides = libsystemd.so
 	provides = libudev.so
+	conflicts = systemd-libs
 	conflicts = libsystemd
+	replaces = systemd-libs
 	replaces = libsystemd
 
-pkgname = systemd-resolvconf
+pkgname = unshitted-systemd-resolvconf
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved)
-	depends = systemd=260
+	depends = unshitted-systemd=260
 	provides = openresolv
 	provides = resolvconf
 	conflicts = resolvconf
 
-pkgname = systemd-sysvcompat
+pkgname = unshitted-systemd-sysvcompat
 	pkgdesc = sysvinit compat for systemd
-	depends = systemd=260
+	depends = unshitted-systemd=260
 	conflicts = sysvinit
 
-pkgname = systemd-tests
+pkgname = unshitted-systemd-tests
 	pkgdesc = systemd tests
-	depends = systemd=260
+	depends = unshitted-systemd=260
 
-pkgname = systemd-ukify
+pkgname = unshitted-systemd-ukify
 	pkgdesc = Combine kernel and initrd into a signed Unified Kernel Image
-	depends = systemd=260
+	depends = unshitted-systemd=260
 	depends = binutils
 	depends = python-cryptography
 	depends = python-pefile

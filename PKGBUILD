@@ -9,12 +9,13 @@
 #     Server = https://pkgbuild.com/~eworm/$repo/$arch/
 
 pkgbase=unshitted-systemd-git
-pkgname=('systemd'
-         'systemd-libs'
-         'systemd-resolvconf'
-         'systemd-sysvcompat'
-         'systemd-tests'
-         'systemd-ukify')
+pkgname=('unshitted-systemd'
+         'unshitted-systemd-libs'
+         'unshitted-systemd-resolvconf'
+         'unshitted-systemd-sysvcompat'
+         'unshitted-systemd-tests'
+         'unshitted-systemd-ukify')
+         
 # Upstream versioning is incompatible with pacman's version comparisons, one
 # way or another. We use proper version for pacman here (no dash for rc
 # release!), and change in source array below.
@@ -28,7 +29,7 @@ makedepends=('acl' 'apparmor' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam
              'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
-             'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
+             'bash-completion' 'p11-kit' 'unshitted-systemd' 'libfido2' 'tpm2-tss' 'rsync'
              'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools'
              'libpwquality' 'qrencode' 'lib32-gcc-libs' 'python-pefile' 'linux-headers')
 conflicts=("mkinitcpio<38-1")
@@ -189,22 +190,24 @@ check() {
   #meson test -C build --print-errorlogs
 }
 
-package_systemd() {
+package_unshitted-systemd() {
   pkgdesc='system and service manager'
   license+=(
     'CC0-1.0' # siphash
     'GPL-2.0-or-later' # udev
     'MIT-0' # documentation and config files
   )
-  depends=("systemd-libs=${pkgver}"
+  
+  provides=('systemd' 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
+  replaces=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
+  conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
+
+  depends=("unshitted-systemd-libs=${pkgver}"
            'acl' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
            'dbus-units' 'kbd' 'kmod' 'hwdata'
            'libgcrypt' 'libxcrypt' 'libidn2' 'lz4' 'pam'
            'libelf' 'libseccomp' 'util-linux' 'xz' 'pcre2' 'audit'
            'openssl' 'libcrypto.so' 'libssl.so')
-  provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
-  replaces=('nss-myhostname' 'systemd-tools' 'udev')
-  conflicts=('nss-myhostname' 'systemd-tools' 'udev')
   optdepends=('libmicrohttpd: systemd-journal-gatewayd and systemd-journal-remote'
               'apparmor: additional security features'
               'quota-tools: kernel-level quota management'
@@ -221,6 +224,8 @@ package_systemd() {
               'libfido2: unlocking LUKS2 volumes with FIDO2 token'
               'libp11-kit: support PKCS#11'
               'tpm2-tss: unlocking LUKS2 volumes with TPM2')
+              
+
   backup=(etc/systemd/coredump.conf
           etc/systemd/homed.conf
           etc/systemd/journald.conf
@@ -310,26 +315,27 @@ package_systemd() {
   ln -s kernel-install.8.gz "$pkgdir"/usr/share/man/man8/installkernel.8.gz
 }
 
-package_systemd-libs() {
+package_unshitted-systemd-libs() {
   pkgdesc='systemd client libraries'
   depends=('glibc' 'libgcc' 'libgcc_s.so' 'libgcrypt' 'lz4' 'xz'  'zstd')
   license+=(
     'CC0-1.0' # siphash
     'GPL-2.0-or-later WITH Linux-syscall-note' # src/basic/linux/*
   )
-  provides=('libsystemd' 'libsystemd.so' 'libudev.so')
-  conflicts=('libsystemd')
-  replaces=('libsystemd')
-
+  
+  provides=('systemd-libs' 'libsystemd' 'libsystemd.so' 'libudev.so')
+  replaces=('systemd-libs' 'libsystemd')
+  conflicts=('systemd-libs' 'libsystemd')
+  
   install -d -m0755 "$pkgdir"/usr/share/man
   mv systemd-libs/lib "$pkgdir"/usr/lib
   mv systemd-libs/include "$pkgdir"/usr/include
   mv systemd-libs/man3 "$pkgdir"/usr/share/man/man3
 }
 
-package_systemd-resolvconf() {
+package_unshitted-systemd-resolvconf() {
   pkgdesc='systemd resolvconf replacement (for use with systemd-resolved)'
-  depends=("systemd=${pkgver}")
+  depends=("unshitted-systemd=${pkgver}")
   provides=('openresolv' 'resolvconf')
   conflicts=('resolvconf')
 
@@ -340,10 +346,10 @@ package_systemd-resolvconf() {
   ln -s resolvectl.1.gz "$pkgdir"/usr/share/man/man1/resolvconf.1.gz
 }
 
-package_systemd-sysvcompat() {
+package_unshitted-systemd-sysvcompat() {
   pkgdesc='sysvinit compat for systemd'
   conflicts=('sysvinit')
-  depends=("systemd=${pkgver}")
+  depends=("unshitted-systemd=${pkgver}")
 
   install -D -m0644 -t "$pkgdir"/usr/share/man/man8 \
     build/man/{halt,poweroff,reboot,shutdown}.8
@@ -355,18 +361,18 @@ package_systemd-sysvcompat() {
   done
 }
 
-package_systemd-tests() {
+package_unshitted-systemd-tests() {
   pkgdesc='systemd tests'
-  depends=("systemd=${pkgver}")
+  depends=("unshitted-systemd=${pkgver}")
 
   install -d -m0755 "$pkgdir"/usr/lib/systemd
   mv systemd-tests/tests "$pkgdir"/usr/lib/systemd/tests
 }
 
-package_systemd-ukify() {
+package_unshitted-systemd-ukify() {
   pkgdesc='Combine kernel and initrd into a signed Unified Kernel Image'
   provides=('ukify')
-  depends=("systemd=${pkgver}" 'binutils' 'python-cryptography' 'python-pefile')
+  depends=("unshitted-systemd=${pkgver}" 'binutils' 'python-cryptography' 'python-pefile')
   optdepends=('python-pillow: Show the size of splash image'
               'sbsigntools: Sign the embedded kernel')
 
