@@ -1,0 +1,12 @@
+pkgbase = iostem-git
+	pkgdesc = Header-only iostem C++ library
+	pkgver = 1.0.r0.g0000000
+	pkgrel = 1
+	url = https://github.com/Szerwigi1410/iostem
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/Szerwigi1410/iostem.git
+	md5sums = SKIP
+
+pkgname = iostem-git
