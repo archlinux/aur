@@ -6,6 +6,7 @@ pkgdesc="Anyrun plugin providing a qalculate-powered calculator via libqalculate
 arch=('x86_64')
 url="https://github.com/maxeonyx/anyrun-qalculate"
 license=('MIT')
+options=('!lto')
 depends=('anyrun' 'libqalculate')
 makedepends=('rust' 'cargo' 'gcc' 'pkgconf' 'git')
 provides=('anyrun-qalculate')
