@@ -1,7 +1,7 @@
 pkgbase = crrcsim
 	pkgdesc = RC airplane flight simulator
 	pkgver = 0.9.13
-	pkgrel = 3
+	pkgrel = 4
 	url = https://sourceforge.net/projects/crrcsim
 	arch = x86_64
 	license = GPL2
@@ -15,8 +15,10 @@ pkgbase = crrcsim
 	source = https://sourceforge.net/projects/crrcsim/files/crrcsim/crrcsim-0.9.13/crrcsim-0.9.13.tar.gz
 	source = crrcsim_animation.patch
 	source = crrcsim.desktop
+	source = crrcsim.png
 	sha256sums = abe59b35ebb4322f3c48e6aca57dbf27074282d4928d66c0caa40d7a97391698
 	sha256sums = 49cc3598b18cbfee8af2dd891dc4cbeb1550ff72de93185e83abf8b79288c099
-	sha256sums = 075cc9d39ba6215208f822802603b7e7c9a1d693cb401aaaadac65a81ff9c1cb
+	sha256sums = f72623b21bc7f0c9e8f389b4773749d7c4b2ec92b1a29bfac59fddf9ff424ceb
+	sha256sums = b5f623b5bc225faeef942d429edd1f075bce1d5bc9d67bbcacad92a9577f8fd3
 
 pkgname = crrcsim

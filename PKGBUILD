@@ -3,7 +3,7 @@
 pkgbase=crrcsim
 pkgname=$pkgbase
 pkgver=0.9.13
-pkgrel=3
+pkgrel=4
 pkgdesc="RC airplane flight simulator"
 arch=('x86_64')
 url="https://sourceforge.net/projects/crrcsim"
@@ -12,11 +12,13 @@ depends=('boost-libs' 'jack2' 'libjpeg-turbo' 'portaudio' 'sdl12-compat')
 makedepends=('cgal' 'plib')
 source=("https://sourceforge.net/projects/$pkgbase/files/$pkgbase/$pkgbase-$pkgver/$pkgbase-$pkgver.tar.gz"
         'crrcsim_animation.patch'
-        'crrcsim.desktop')
+        'crrcsim.desktop'
+        'crrcsim.png')
 sha256sums=('abe59b35ebb4322f3c48e6aca57dbf27074282d4928d66c0caa40d7a97391698'
             '49cc3598b18cbfee8af2dd891dc4cbeb1550ff72de93185e83abf8b79288c099'
-            '075cc9d39ba6215208f822802603b7e7c9a1d693cb401aaaadac65a81ff9c1cb')
-        
+            'f72623b21bc7f0c9e8f389b4773749d7c4b2ec92b1a29bfac59fddf9ff424ceb'
+            'b5f623b5bc225faeef942d429edd1f075bce1d5bc9d67bbcacad92a9577f8fd3')
+
 prepare() {
   cd "$srcdir/$pkgbase-$pkgver"
   patch -p1 < ../crrcsim_animation.patch
@@ -36,6 +38,7 @@ build() {
 
 package() {
   cd "$srcdir/$pkgbase-$pkgver"
-  install -Dm755 ../crrcsim.desktop "$pkgdir/usr/share/applications/crrcsim.desktop"
+  install -Dm644 ../crrcsim.desktop "$pkgdir/usr/share/applications/crrcsim.desktop"
+  install -Dm644 ../crrcsim.png "$pkgdir/usr/share/pixmaps/crrcsim.png"
   make DESTDIR="$pkgdir" install
 }
