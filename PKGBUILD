@@ -1,5 +1,5 @@
 pkgname=ken
-pkgver=1.0.1
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A sharp AUR/Pacman helper written in Go. Stable version."
 arch=('x86_64' 'aarch64')
@@ -7,10 +7,10 @@ url="https://github.com/nespaset/ken"
 license=('Apache')
 depends=('pacman' 'git' 'binutils')
 makedepends=('go')
-provides=('kn' 'sk')
+provides=('kn' 'ken')
 conflicts=('ken-git' 'ken-bin' 'sake-git' 'sk')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('dc35f983cb746c7d9737ad5ecf9b1d2d3345c75197cf9530154ffd3e749602d2')
 
 build() {
   cd "$pkgname-$pkgver"

@@ -1,6 +1,6 @@
 pkgbase = ken
 	pkgdesc = A sharp AUR/Pacman helper written in Go. Stable version.
-	pkgver = 1.0.1
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://github.com/nespaset/ken
 	arch = x86_64
@@ -11,12 +11,12 @@ pkgbase = ken
 	depends = git
 	depends = binutils
 	provides = kn
-	provides = sk
+	provides = ken
 	conflicts = ken-git
 	conflicts = ken-bin
 	conflicts = sake-git
 	conflicts = sk
-	source = https://github.com/nespaset/ken/archive/v1.0.1.tar.gz
-	sha256sums = SKIP
+	source = https://github.com/nespaset/ken/archive/v1.1.1.tar.gz
+	sha256sums = dc35f983cb746c7d9737ad5ecf9b1d2d3345c75197cf9530154ffd3e749602d2
 
 pkgname = ken
