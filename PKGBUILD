@@ -17,6 +17,10 @@ prepare() {
     npm install --no-fund --no-audit
 }
 
+build() {
+    : # No build step needed - using system electron
+}
+
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     mkdir -p "${pkgdir}/usr/share/notion-calendar-electron"
