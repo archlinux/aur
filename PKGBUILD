@@ -1,9 +1,9 @@
 pkgname=ssmt4-linux
-pkgver=0.0.10_beta
+pkgver=0.0.11_beta
 pkgrel=1
 pkgdesc="SSMT4 - Super Simple Linux Game Tools 4th"
 arch=('x86_64')
-url='https://github.com/peachycommit/ssmt4-linux'
+url='https://github.com/xiaobai01111/SSMT4-Linux'
 license=('GPL-3.0-or-later')
 makedepends=('git' 'nodejs' 'pnpm' 'cargo' 'rust')
 depends=('gtk3' 'webkit2gtk-4.1' 'libsoup3' 'xdg-utils')
@@ -27,7 +27,7 @@ optdepends=(
 provides=('ssmt4-linux')
 conflicts=('ssmt4-linux-git')
 
-_github_repo='https://github.com/peachycommit/ssmt4-linux.git'
+_github_repo='https://github.com/xiaobai01111/SSMT4-Linux.git'
 _source_repo="${_github_repo}"
 _source_tag="${pkgver//_/-}"
 _source_name="${pkgname}"
