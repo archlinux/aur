@@ -8,7 +8,7 @@
 #     SigLevel = Required
 #     Server = https://pkgbuild.com/~eworm/$repo/$arch/
 
-pkgbase=systemd
+pkgbase=unshitted-systemd-git
 pkgname=('systemd'
          'systemd-libs'
          'systemd-resolvconf'
@@ -76,7 +76,7 @@ sha512sums=('SKIP'
             '825b9dd0167c072ba62cabe0677e7cd20f2b4b850328022540f122689d8b25315005fa98ce867cf6e7460b2b26df16b88bb3b5c9ebf721746dce4e2271af7b97')
 
 _meson_version="${pkgver}-${pkgrel}"
-_systemd_src_dir="${pkgbase}"
+_systemd_src_dir="systemd"
 
 if ((_systemd_UPSTREAM)); then
   _meson_version="${pkgver}"
