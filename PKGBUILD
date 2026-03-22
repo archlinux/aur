@@ -8,7 +8,8 @@ pkgdesc='Suspend games and applications at any time and resume whenever you wish
 arch=('x86_64')
 url="https://github.com/Merrit/nyrna"
 license=('GPL3')
-depends=('glib2' 'gtk3' 'libkeybinder3' 'libappindicator-gtk3' 'util-linux' 'wmctrl' 'xdotool' 'xz')
+depends=('glib2' 'gtk3' 'libkeybinder3' 'libappindicator-gtk3' 'util-linux' 'wmctrl' 'xz')
+optdepends=('xdotool: X11 support')
 makedepends=('git' 'clang' 'cmake' 'ninja' 'unzip' 'fvm')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/Merrit/nyrna/archive/refs/tags/v$pkgver.tar.gz"
