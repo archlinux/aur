@@ -1,41 +1,47 @@
-# Maintainer: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
+# Maintainer:
+# Contributor: begin-theadventure <begin-thecontact.ncncb at dralias dot com>
 
-pkgname=flightcore
-pkgver=2.26.2
-pkgrel=2
-pkgdesc="Installer/Updater/Launcher for Northstar"
+_pkgname="flightcore"
+pkgname="$_pkgname"
+pkgver=3.2.1
+pkgrel=1
+pkgdesc="Northstar installer, updater, and launcher"
 url="https://github.com/R2NorthstarTools/FlightCore"
 license=('MIT')
 arch=('x86_64')
-depends=('bzip2' 'gcc-libs' 'hicolor-icon-theme' 'webkit2gtk')
-makedepends=('cargo' 'npm')
-options+=('!lto')
-source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('da695ebbc46bb5fbc71e0249e7668e1d0c644e6c2eff58f7726432b636319646')
+
+depends=(
+  'bzip2'
+  'hicolor-icon-theme'
+  'webkit2gtk-4.1'
+)
+makedepends=(
+  'cargo'
+  'npm'
+)
+
+options=('!lto')
+
+_pkgsrc="FlightCore-$pkgver"
+_pkgext="tar.gz"
+source=("$_pkgname-$pkgver.$_pkgext"::"$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('a25706a2dc23bfad1980b240d1a1e6864ce1b7cac1df1002d900adef2d31b293')
 
 prepare() {
-# Shortcut
-  echo -e '[Desktop Entry]
-Categories=Development;
-Exec=flightcore
-Icon=flightcore
-Name=FlightCore
-Terminal=false
-Type=Application' > $pkgname.desktop
+  # Only build the executable
+  sed -i '/"bundle": {/,/},/{/"active":/s/true/false/}' "$_pkgsrc/src-tauri/tauri.conf.json"
 
-# Only build the executable
-  cd FlightCore-$pkgver/src-tauri
-  sed -i '/"bundle": {/,/},/{/"active":/s/true/false/}' tauri.conf.json
-# Disable the updater
-  sed -i '/"updater": {/,/},/{/"active":/s/true/false/}' tauri.conf.json
-  cd ..
+  # Disable the updater
+  sed -i '/"updater": {/,/},/{/"active":/s/true/false/}' "$_pkgsrc/src-tauri/tauri.conf.json"
 
-# Prioritize IPv4 (some machines have a problem with IPv6)
+  # Prioritize IPv4 (some machines have a problem with IPv6)
   export NODE_OPTIONS=--dns-result-order=ipv4first
 
-# npm dependencies
-  export CARGO_HOME="$srcdir/CARGO_HOME"
+  # npm dependencies
+  export CARGO_HOME="$srcdir/cargo_home"
   export npm_config_cache="$srcdir/npm_cache"
+
+  cd "$_pkgsrc"
   npm install
   cd src-vue
   npm install
@@ -43,24 +49,30 @@ Type=Application' > $pkgname.desktop
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
-  export CARGO_HOME="$srcdir/CARGO_HOME"
+  export CARGO_HOME="$srcdir/cargo_home"
   export npm_config_cache="$srcdir/npm_cache"
-  cd FlightCore-$pkgver
+
+  cd "$_pkgsrc"
   npm run tauri build
 }
 
 package() {
-  install -Dm644 $pkgname.desktop -t "$pkgdir/usr/share/applications"
-  cd FlightCore-$pkgver
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  cd docs
-  install -Dm644 ../README.md DEV-TOOLS.md DEVELOPMENT.md FAQ.md TROUBLESHOOTING.md\
-  -t "$pkgdir/usr/share/doc/$pkgname"
-  cd ../src-tauri/icons
-  _icdr=usr/share/icons/hicolor
-  install -Dm644 32x32.png "$pkgdir/$_icdr/32x32/apps/$pkgname.png"
-  install -Dm644 128x128.png "$pkgdir/$_icdr/128x128/apps/$pkgname.png"
-  install -Dm644 128x128@2x.png "$pkgdir/$_icdr/256x256/apps/$pkgname.png"
-  install -Dm644 icon.png "$pkgdir/$_icdr/512x512/apps/$pkgname.png"
-  install -Dm755 ../target/release/flight-core "$pkgdir/usr/bin/$pkgname"
+  cd "$_pkgsrc"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+
+  cd "src-tauri"
+  install -Dm755 target/release/flightcore "$pkgdir/usr/bin/$_pkgname"
+
+  install -Dm644 icons/icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$_pkgname.png"
+
+  install -Dm644 /dev/stdin "$pkgdir/usr/share/applications/$_pkgname.desktop" << END
+[Desktop Entry]
+Type=Application
+Name=FlightCore
+Comment=$pkgdesc
+Exec=$_pkgname
+Icon=$_pkgname
+Terminal=false
+Categories=Development;
+END
 }
