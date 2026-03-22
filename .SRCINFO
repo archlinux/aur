@@ -10,7 +10,7 @@ pkgbase = python-toybox-calc
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = toybox-calc-0.0.2.tar.gz::https://github.com/frankenstein91/Comet-HFJ-350M-Toy-Box/archive/refs/tags/v0.0.2.tar.gz
+	source = Comet-HFJ-350M-Toy-Box-0.0.2.tar.gz::https://github.com/frankenstein91/Comet-HFJ-350M-Toy-Box/archive/refs/tags/v0.0.2.tar.gz
 	sha256sums = 2bb2fc103e0bd56ee5224d8aef1f8ae8d1be9fdbe5b761c9739a333cd5157a33
 
 pkgname = python-toybox-calc

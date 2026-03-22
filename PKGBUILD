@@ -1,6 +1,6 @@
 # Maintainer: DO3EET <do3eet@t-online.de>
 pkgname=python-toybox-calc
-_pkgname=toybox-calc
+_pkgname=Comet-HFJ-350M-Toy-Box
 pkgver=0.0.2
 pkgrel=1
 pkgdesc="Comet HFJ-350M Toy Box configuration calculator"
