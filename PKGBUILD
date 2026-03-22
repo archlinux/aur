@@ -2,8 +2,8 @@
 
 pkgname=cursor-ide
 pkgver=2.6.20
-pkgrel=1
-pkgdesc='The AI Code Editor, bundled Electron (upstream-compatible)'
+pkgrel=2
+pkgdesc='The AI Code Editor'
 arch=('x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor_EULA')
