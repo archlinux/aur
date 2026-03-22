@@ -1,6 +1,6 @@
 pkgbase = skycrypt
 	pkgdesc = A lightweight desktop wrapper for SkyCrypt built with Rust and Tauri.
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/GrishMahat/SkyCrypt-desktop
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = skycrypt
 	depends = libayatana-appindicator
 	depends = libsoup3
 	depends = hicolor-icon-theme
-	source = skycrypt-0.1.5.tar.gz::https://github.com/GrishMahat/SkyCrypt-desktop/archive/v0.1.5.tar.gz
-	sha256sums = b7678474e02c3b01731dcf29853c6582f16d09d794e7d02673693f864fcf1a60
+	source = skycrypt-0.1.6.tar.gz::https://github.com/GrishMahat/SkyCrypt-desktop/archive/v0.1.6.tar.gz
+	sha256sums = 54e6fc54a586f02de9dd5a096baa3c832ebbdf5c359741b43ade09db3a7afeec
 
 pkgname = skycrypt
