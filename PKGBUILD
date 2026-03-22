@@ -4,7 +4,7 @@ _bundlepkgname='ompss'
 pkgdesc='Nanos++ is a runtime designed to serve as runtime support in parallel environments. It is mainly used to support OmpSs, a extension to OpenMP developed at BSC.'
 pkgver='0.15.20190627'
 _bundlepkgver='19.06'
-pkgrel='6'
+pkgrel='7'
 arch=('x86_64')
 url='https://pm.bsc.es/ompss'
 license=('LGPL-3.0-or-later')
@@ -32,6 +32,9 @@ prepare() {
 
 build() {
 	cd "$srcdir/${_bundlepkgname}-${_bundlepkgver}/$pkgname-${pkgver%.*}"
+
+	# Avoid build failures under GCC 16 due to -Wunused-but-set-variable detection
+	export CXXFLAGS="$CXXFLAGS -Wno-error=unused-but-set-variable"
 
 	# See https://hub.docker.com/r/bscpm/ompss/dockerfile
 	./configure \
