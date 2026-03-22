@@ -1,37 +1,59 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=sabnzbd-git
-pkgver=r8854.de6c56002
+pkgver=r9899.14e00b366
 pkgrel=1
 pkgdesc='A web-interface based binary newsgrabber with NZB file support'
 url='http://www.sabnzbd.org'
 arch=('any')
 license=('GPL')
 depends=(
+  'apprise'
   'curl'
   'par2cmdline'
   'python'
-  'python-six'
-  'python-cryptography'
-  'python-feedparser'
-  'python-configobj'
+  'python-babelfish'
+  'python-cffi'
+  'python-chardet'
+  'python-cheetah3'
+  'python-cheroot'
   'python-cherrypy'
+  'python-configobj'
+  'python-cryptography'
+  'python-dateutil'
+  'python-feedparser'
+  'python-guessit'
+  'python-jaraco.classes'
+  'python-jaraco.collections'
+  'python-jaraco.context'
+  'python-jaraco.functools'
+  'python-jaraco.text'
+  'python-more-itertools'
+  'python-notify2'
+  'python-portend'
   'python-portend'
   'python-puremagic'
-  'python-chardet'
-  'python-notify2'
-  'python-cheetah3'
-  'python-sabyenc3'
+  'python-pycparser'
+  'python-pysocks'
+  'python-pytz'
+  'python-rarfile'
+  'python-rebulk'
+  'python-sabctools'
+  'python-sgmllib3k'
+  'python-six'
+  'python-tempora'
+  'python-zc.lockfile'
   'sqlite'
   'unrar'
   'unzip'
 )
 
-optdepends=('python-pygobject: tray icon'
-            'python-pyopenssl: ssl support'
-            'par2cmdline-tbb: par2 multi-threading'
-            'p7zip: for .7z support')
-
+optdepends=(
+  'p7zip: for .7z support'
+  'dbus-python: for system power management'
+  'python-orjson: ~2x faster than ujson, requires rust'
+  'par2cmdline-turbo: a faster par2cmdline fork'
+)
 provides=('sabnzbd')
 conflicts=('sabnzbd')
 
