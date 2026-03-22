@@ -37,7 +37,6 @@ pkgbase = unshitted-systemd-git
 	makedepends = libxkbcommon
 	makedepends = bash-completion
 	makedepends = p11-kit
-	makedepends = unshitted-systemd
 	makedepends = libfido2
 	makedepends = tpm2-tss
 	makedepends = rsync
