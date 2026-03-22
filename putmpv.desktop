@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=PutMPV
+Comment=Browse Put.io media and play with MPV
+Exec=putmpv
+Icon=putmpv
+Type=Application
+Categories=AudioVideo;Video;
+Keywords=putio;mpv;media;video;
