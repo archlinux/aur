@@ -3,22 +3,22 @@
 # Contributor: jul.cgn
 _pkgname='chatterino2'
 pkgname=${_pkgname}-bin
-pkgver=2.5.4
-_id=20260201T015703
-pkgrel=3
+pkgver=2.5.5
+_id=20260322T125047
+pkgrel=1
 pkgdesc='A chat client for Twitch.tv.'
 arch=('x86_64')
 url="https://github.com/chatterino/${_pkgname}"
 license=('MIT')
 depends=(gdk-pixbuf2 glib2 hicolor-icon-theme libnotify openssl
-	qt6-{base,5compat,imageformats,svg} qtkeychain-qt6)
+	qt6-{base,imageformats,svg} qtkeychain-qt6 hunspell)
 optdepends=('streamlink: For piping streams to video players'
 'qt6-wayland: Wayland support')
 provides=(chatterino)
 conflicts=(chatterino)
 options=(!strip) #done
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.zst::https://github.com/Chatterino/pkg/releases/download/stable-${_id}/chatterino-arch-linux-${arch}.tar.zst")
-sha256sums=('8bec52fcb7f6af75bf3819346d7789a1fd5839ad86f48c1dfbff70208a62e876')
+sha256sums=('e0c78cbc8180498ea8b67b11136a1294ee25f26e47e0915d2a9d63174933207e')
 
 package() {
     install -Dm755 usr/bin/chatterino "${pkgdir}"/usr/bin/chatterino
