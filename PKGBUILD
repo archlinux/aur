@@ -1,6 +1,6 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-sk
-_tag=3.16.ba147.1
+_tag=3.16.22.sk1
 pkgver="$_tag"
 pkgrel=1
 pkgdesc='SteamOS session compositing window manager'
@@ -91,7 +91,6 @@ install=gamescope.install
 
 prepare() {
     cd "$srcdir/$_pkgname"
-    meson subprojects download
 
     for submodule in src/reshade subprojects/{libdisplay-info,libliftoff,vkroots,wlroots} thirdparty/SPIRV-Headers ; do
         git submodule init ${submodule}
@@ -99,6 +98,8 @@ prepare() {
     done
 
     git -c protocol.file.allow=always submodule update
+
+    meson subprojects download
 
     # Fix wlroots dependency override issue
     # sed -i '/meson\.override_dependency(versioned_name, wlroots)/a meson.override_dependency('\''wlroots'\'', wlroots)' subprojects/wlroots/meson.build
