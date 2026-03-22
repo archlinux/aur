@@ -10,11 +10,11 @@ depends=(
     'quickshell'
     'python'
     'qt6-declarative'
+    'python-vdf'
+    'python-evdev'
 )
 optdepends=(
     'ttf-font-awesome-7: icônes de l interface (AUR)'
-    'python-vdf: détection jeux non-Steam via shortcuts.vdf'
-    'python-evdev: support navigation manette/gamepad'
 )
 makedepends=('git')
 provides=('quickshell-games-launchers')
