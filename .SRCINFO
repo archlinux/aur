@@ -1,0 +1,13 @@
+pkgbase = claude-usage-waybar
+	pkgdesc = Real-time Claude Code usage monitor for Waybar
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Janicklin/claude-usage-waybar
+	arch = any
+	license = MIT
+	depends = python>=3.8
+	depends = waybar
+	source = claude-usage-waybar-1.0.0.tar.gz::https://github.com/Janicklin/claude-usage-waybar/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = claude-usage-waybar
