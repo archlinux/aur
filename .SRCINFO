@@ -13,7 +13,8 @@ pkgbase = libbpg
 	depends = yasm
 	depends = cmake
 	source = http://bellard.org/bpg/libbpg-0.9.8.tar.gz
+	source = x265.zip::https://bitbucket.org/multicoreware/x265_git/get/8be7dbf.zip
 	md5sums = 1c8258bc6de26bbae7c688944a2023ac
+	md5sums = 76dabfa04fe3be1b0e1801dba9952589
 
 pkgname = libbpg
-
