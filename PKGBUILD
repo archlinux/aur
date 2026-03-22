@@ -1,13 +1,14 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=guile-reader
 _gitname=guile-reader
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="a simple framework for building readers for GNU Guile"
 url="http://www.nongnu.org/guile-reader"
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL-3.0-or-later')
 depends=('guile')
 makedepends=('gcc' 'gperf' 'git')
 source=("http://download.savannah.nongnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz")
