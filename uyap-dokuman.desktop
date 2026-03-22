@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=UYAP Document Editor
+Name[tr]=UYAP Doküman Editörü
+GenericName=Document Editor
+GenericName[tr]=Doküman Editörü
+Comment=Ministry of Justice UYAP Document Editor
+Comment[tr]=Adalet Bakanlığı UYAP Doküman Editörü
+Exec=uyapeditor %F
+Icon=uyap-editor
+MimeType=application/udf;
+Categories=Office;WordProcessor;Java;
+Type=Application
+Terminal=false
+StartupNotify=false
