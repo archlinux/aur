@@ -3,15 +3,15 @@
 pkgname=ani2xcursor-bin
 _pkgname=ani2xcursor
 pkgver=1.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert Windows animated cursor themes to Linux Xcursor format (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/yuzujr/ani2xcursor"
 license=('MIT')
 depends=(
   'glibc'
+  'fuse2'
 )
-makedepends=('patchelf')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -27,23 +27,23 @@ prepare() {
   appimage="$(printf '%s\n' "${_pkgname}-v${pkgver}-linux-"*.AppImage)"
 
   chmod +x "$appimage"
-  "$appimage" --appimage-extract >/dev/null
+  "$appimage" --appimage-extract usr/share >/dev/null
 }
 
 package() {
-  cd "$srcdir/squashfs-root/usr"
+  cd "$srcdir"
+  local appimage
+  appimage="$(printf '%s\n' "${_pkgname}-v${pkgver}-linux-"*.AppImage)"
 
-  install -Dm755 bin/ani2xcursor \
-    "${pkgdir}/usr/lib/${_pkgname}/ani2xcursor"
-
-  install -dm755 "${pkgdir}/usr/lib/${_pkgname}"
-  install -m755 lib/*.so* "${pkgdir}/usr/lib/${_pkgname}/"
-  patchelf --set-rpath '$ORIGIN' "${pkgdir}/usr/lib/${_pkgname}/ani2xcursor"
+  install -Dm755 "$appimage" \
+    "${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
 
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/ani2xcursor" <<'EOF'
 #!/bin/sh
-exec /usr/lib/ani2xcursor/ani2xcursor "$@"
+exec /opt/ani2xcursor/ani2xcursor.AppImage "$@"
 EOF
+
+  cd "$srcdir/squashfs-root/usr"
 
   install -Dm644 share/licenses/ani2xcursor/LICENSE \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
