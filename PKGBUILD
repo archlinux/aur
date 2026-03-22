@@ -1,7 +1,7 @@
 # Maintainer: Donald Webster <fryfrog@gmail.com>
 
 pkgname=sortarr
-pkgver=0.8.6
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
@@ -28,7 +28,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Jaredharper1/Sortarr/ar
         'sortarr.service'
         'sortarr.sysusers')
 
-sha256sums=('1e8c80da34789cf83aed53c502b78fcc3c9d8280f1397abf7b87b0de755bacb3'
+sha256sums=('8090932d04fa0dd15af9659f3da57af07550e70d3fa40eb9fb47618bb407fe62'
             'c75ef18ef031d6d022f2cd99fd2fbdfa845b037bee7fd261e53889da64c0b8a6'
             '9b0e3ef5f28883e037fd2ea3d96f6ef2de13f75b44a574bb0feb070ad19a72f2'
             'ba7dec1d29aa45936979bffbcfcd2e64d849ac911fd507f1aad0ca229df9725c')
