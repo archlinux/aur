@@ -1,0 +1,23 @@
+pkgbase = forgecode
+	pkgdesc = An AI-powered code assistant CLI tool
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/antinomyhq/forgecode
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = protobuf
+	makedepends = cmake
+	makedepends = clang
+	depends = fzf
+	depends = bat
+	depends = fd
+	optdepends = git: For git-related operations
+	provides = forge
+	conflicts = forge
+	options = !lto
+	source = forgecode-2.1.0.tar.gz::https://github.com/antinomyhq/forgecode/archive/refs/tags/v2.1.0.tar.gz
+	b2sums = 9637752e9cc1ccb6a1f707257038ef9d0704fd3249d0fd708c8da7c5f035f41a7d3abd80f068e6553365a2835b5583e5f27da50e084ec7d3e9134dc3e513b0c0
+
+pkgname = forgecode
