@@ -24,7 +24,7 @@ depends=(
     'python-pymupdf'            # renderizado de páginas PDF como imágenes
     'python-python-pkcs11'      # interfaz PKCS#11 para el DNIe
     'python-pillow'             # procesado de imagen para la rúbrica
-    'python-pyside6'            # interfaz gráfica nativa Qt/KDE
+    'pyside6'            # interfaz gráfica nativa Qt/KDE
     'python-asn1crypto'         # extracción del nombre del certificado X.509
     'python-numpy'              # conversión de pixels en la rúbrica
 
@@ -33,7 +33,7 @@ depends=(
     # python-pyhanko-certvalidator se instala como dependencia de python-pyhanko
 )
 optdepends=(
-    'qt6-style-breeze: tema Breeze nativo de KDE'
+    'breeze: tema Breeze nativo de KDE'
     'xdg-utils: abrir el PDF firmado desde la aplicación'
 )
 install=rubrika.install
