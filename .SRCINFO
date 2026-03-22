@@ -1,7 +1,7 @@
 pkgbase = llama.cpp-opencl
 	pkgdesc = Port of Facebook's LLaMA model in C/C++(with OpenCL Backend support)
 	pkgver = b8475
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ggerganov/llama.cpp
 	arch = x86_64
 	arch = armv7h

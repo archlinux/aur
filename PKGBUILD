@@ -4,7 +4,7 @@
 
 pkgname=llama.cpp-opencl
 pkgver=b8475
-pkgrel=1
+pkgrel=2
 _build_number=8475
 _commit_id=49bfdde
 pkgdesc="Port of Facebook's LLaMA model in C/C++(with OpenCL Backend support)"
@@ -58,7 +58,7 @@ build() {
     -DGGML_BUILD_TESTS=OFF
     -DGGML_LTO=ON
     -DGGML_RPC=ON
-    -DGGML_OPENCL=OFF
+    -DGGML_OPENCL=ON
     -DGGML_OPENCL_EMBED_KERNELS=OFF
     -DGGML_OPENCL_USE_ADRENO_KERNELS=OFF
     -DGGML_BUILD_SERVER=ON
