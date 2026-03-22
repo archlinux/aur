@@ -4,7 +4,7 @@
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
 pkgver=1.6.1
-pkgrel=2
+pkgrel=3
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL-1.0-or-later)
@@ -13,7 +13,7 @@ makedepends=(asciidoctor man-db python-pyfakefs)
 source=("$_pkgname-$pkgver.tar.gz::https://github.com/bit-team/$_pkgname/archive/refs/tags/v$pkgver.tar.gz"
 backintime-backup-job.{service,timer})
 sha256sums=('3d959a902403f11d87865982a38d65d82292af3d54a5c93a710a91175922cfc4'
-            '3b0f70a9046d5ee2a883dfcd8f74335935618a724f2847f2da7dee17a0a9f4f3'
+            'bd775a9e1e865323874ad737e61853df873c29c902bb988806fc3943645fb44d'
             '5f9346be71d16786cb547362fe35755c8af59095e985c27d28ac14dfe791b7c8')
 
 #prepare() {
