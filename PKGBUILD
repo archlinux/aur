@@ -1,16 +1,16 @@
 # Maintainer: Andrii Tantsiura <antostcr@gmail.com>
 pkgname=vigil-anticheat
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Linux-native anti-cheat for competitive gaming"
 arch=('x86_64')
 url="https://github.com/TOSTcRa/vigil"
 license=('AGPL-3.0-or-later')
-depends=()
-makedepends=('rust' 'cargo')
+depends=('sqlite')
+makedepends=('rust' 'cargo' 'openssl' 'clang')
 backup=('etc/vigil/config.toml')
 source=("vigil-$pkgver.tar.gz::https://github.com/TOSTcRa/vigil/archive/v$pkgver.tar.gz")
-sha256sums=('d3127cdf97ee7dc9847f41d329062ef070dc3123f48a8723cae92397485e6988')
+sha256sums=('d250457391eeeb8c7e69a382e69b7cb4d5c59dcd713243309e94d3c0043ffafd')
 
 build() {
     cd "vigil-$pkgver"
@@ -29,15 +29,15 @@ package() {
     install -Dm755 target/release/vigil "$pkgdir/usr/bin/vigil"
     install -Dm755 target/release/vigil-server "$pkgdir/usr/bin/vigil-server"
 
-    # ebpf bytecode if built
-    if [[ -f target/bpfel-unknown-none/release/vigil ]]; then
-        install -Dm644 target/bpfel-unknown-none/release/vigil \
-            "$pkgdir/usr/lib/vigil/vigil.ebpf"
+    # ebpf bytecode
+    make -C kernel/ebpf || true
+    if [[ -f kernel/ebpf/vigil.bpf.o ]]; then
+        install -Dm644 kernel/ebpf/vigil.bpf.o "$pkgdir/usr/lib/vigil/vigil.ebpf"
     fi
 
     # systemd services
-    install -Dm644 init/systemd/vigil.service "$pkgdir/usr/lib/systemd/system/vigil.service"
-    install -Dm644 init/systemd/vigil-server.service "$pkgdir/usr/lib/systemd/system/vigil-server.service"
+    install -Dm644 dist/init/systemd/vigil.service "$pkgdir/usr/lib/systemd/system/vigil.service"
+    install -Dm644 dist/init/systemd/vigil-server.service "$pkgdir/usr/lib/systemd/system/vigil-server.service"
 
     # directories
     install -dm755 "$pkgdir/etc/vigil"
