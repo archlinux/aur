@@ -1,0 +1,10 @@
+src/
+pkg/
+dwm/
+*.tar.gz
+*.tar.xz
+*.pkg.tar.zst
+*.log
+!PKGBUILD
+!.SRCINFO
+!.gitignore
