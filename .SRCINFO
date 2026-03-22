@@ -1,6 +1,6 @@
 pkgbase = backintime
 	pkgver = 1.6.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bit-team/backintime
 	arch = any
 	license = GPL-1.0-or-later

@@ -5,11 +5,3 @@ post_install() {
 EOF
 }
 
-post_upgrade() {
-  if [ "$(vercmp "$2" 1.6.1-2)" -lt 0 ]; then
-  cat <<EOF
->>> WARN: /usr/share/backintime/contrib/backintime-backup-job.service has changed!
-    Diff user unit against this or backups will not trigger!
-EOF
-  fi
-}

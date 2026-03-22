@@ -4,7 +4,7 @@
 pkgname=(backintime backintime-cli)
 _pkgname="backintime"
 pkgver=1.6.1
-pkgrel=3
+pkgrel=4
 arch=(any)
 url="https://github.com/bit-team/backintime"
 license=(GPL-1.0-or-later)
@@ -63,17 +63,9 @@ package_backintime() {
   python -m compileall -d /usr "$pkgdir"/usr
   python -O -m compileall -d /usr "$pkgdir"/usr
 
-  mkdir "$pkgdir/usr/share/$_pkgname/contrib"
-  install -m644 "$srcdir/$_pkgname-backup-job.service" "$pkgdir/usr/share/$_pkgname/contrib/$_pkgname-backup-job.service"
-  install -m644 "$srcdir/$_pkgname-backup-job.timer" "$pkgdir/usr/share/$_pkgname/contrib/$_pkgname-backup-job.timer"
-
-  cat <<EOF > "$pkgdir/usr/share/$_pkgname/contrib/README.txt"
-Example user systemd timer and service units are provided. To use,
-refer to https://wiki.archlinux.org/title/Systemd/User#How_it_works
-
-Optionally adjust the value for OnCalendar= with a valid setting.
-See man systemd.timer for options.
-EOF
+  mkdir -p "$pkgdir/usr/lib/systemd/user"
+  install -m644 "$srcdir/$_pkgname-backup-job.service" "$pkgdir/usr/lib/systemd/user/$_pkgname-backup-job.service"
+  install -m644 "$srcdir/$_pkgname-backup-job.timer" "$pkgdir/usr/lib/systemd/user/$_pkgname-backup-job.timer"
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
