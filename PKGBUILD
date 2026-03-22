@@ -2,7 +2,7 @@
 
 pkgname=libcava
 pkgver=0.10.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork to provide cava as a shared library, e.g. used by waybar. Cava is not provided as executable.'
 arch=('x86_64')
 url='https://github.com/LukashonakV/cava'
@@ -26,14 +26,14 @@ makedepends=(
     'autoconf-archive'
 )
 source=(
-    "$pkgname-$pkgver.tar.gz::https://github.com/LukashonakV/cava/archive/v$pkgver-beta.tar.gz"
+    "$pkgname-$pkgver.tar.gz::https://github.com/LukashonakV/cava/archive/$pkgver.tar.gz"
 )
-sha256sums=('8915d7214f2046554c158fe6f2ae518881dfb573e421ea848727be11a5dfa8c4'
+sha256sums=('50cc6413e9c96c503657f814744a2baf429a24ff9fed31a8343e0ed285269eff'
 )
 options=(!lto)
 
 build() {
-    cd "cava-${pkgver}-beta"
+    cd "cava-${pkgver}"
 
     meson setup \
           -Dcava_font=false \
@@ -46,7 +46,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/cava-${pkgver}-beta"
+    cd "${srcdir}/cava-${pkgver}"
 
     DESTDIR="$pkgdir" meson install \
           -C \

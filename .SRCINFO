@@ -1,7 +1,7 @@
 pkgbase = libcava
 	pkgdesc = Fork to provide cava as a shared library, e.g. used by waybar. Cava is not provided as executable.
 	pkgver = 0.10.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LukashonakV/cava
 	arch = x86_64
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = libcava
 	depends = libpulse
 	depends = libpipewire
 	options = !lto
-	source = libcava-0.10.7.tar.gz::https://github.com/LukashonakV/cava/archive/v0.10.7-beta.tar.gz
-	sha256sums = 8915d7214f2046554c158fe6f2ae518881dfb573e421ea848727be11a5dfa8c4
+	source = libcava-0.10.7.tar.gz::https://github.com/LukashonakV/cava/archive/0.10.7.tar.gz
+	sha256sums = 50cc6413e9c96c503657f814744a2baf429a24ff9fed31a8343e0ed285269eff
 
 pkgname = libcava
