@@ -1,6 +1,6 @@
 # Maintainer: Meza Chat <hello@meza.chat>
 pkgname=meza-desktop-bin
-pkgver=0.0.9
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='Meza desktop client - real-time encrypted chat'
 arch=('x86_64')
@@ -25,7 +25,7 @@ options=('!strip' '!debug')
 source=(
   "${pkgname}-${pkgver}.AppImage::https://github.com/mezalabs/meza/releases/download/desktop-v${pkgver}/Meza-${pkgver}-linux-x86_64.AppImage"
 )
-sha256sums=('2d585660cb1165469af09e2922c5ddac61a06bdefa12b73fa6e9c96cd2eb9f76')
+sha256sums=('310aee47f9d31739aa7dacd9a536014b599f600fe521d2f011837059388c1037')
 
 prepare() {
   chmod +x "${pkgname}-${pkgver}.AppImage"
