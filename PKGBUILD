@@ -7,7 +7,6 @@ pkgdesc="AniLiberty player"
 arch=('any')
 url="https://altlinux.space/armatik/Kitsune"
 license=('GPL-3.0-or-later')
-install=kitsune.install
 
 depends=(
 'python'
