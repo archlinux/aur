@@ -11,7 +11,7 @@
 
 pkgname=aws-lc
 pkgver=1.71.0
-pkgrel=2
+pkgrel=3
 pkgdesc='General-purpose cryptographic library maintained by the AWS Cryptography team for AWS'
 url='https://github.com/aws/aws-lc'
 license=('ISC' 'Apache-2.0')
@@ -49,7 +49,7 @@ options=('!lto' 'staticlibs')
 prepare() {
     cd "$srcdir/${pkgname}-${pkgver}"
     
-    patch -p1 -i ../Patch01-tool-and-tool-opensll-bindir-cohabitant-headers.patch
+    patch -p1 -i ../Patch01-tool-and-tool-openssl-bindir-cohabitant-headers.patch
 }
 
 build() {
