@@ -7,6 +7,7 @@ pkgbase = spex-bin
 	license = MIT
 	provides = spex
 	conflicts = spex
+	options = !debug
 	source = https://github.com/Grey-007/spex/releases/download/v1.0.0/spex-linux-x86_64.tar.gz
 	sha256sums = SKIP
 

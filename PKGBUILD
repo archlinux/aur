@@ -11,6 +11,8 @@ conflicts=('spex')
 source=("https://github.com/Grey-007/spex/releases/download/v${pkgver}/spex-linux-x86_64.tar.gz")
 sha256sums=('SKIP')
 
+options=('!debug')
+
 package() {
   install -Dm755 spex "$pkgdir/usr/bin/spex"
   install -Dm755 spex-convert "$pkgdir/usr/bin/spex-convert"
