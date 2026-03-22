@@ -1,0 +1,18 @@
+pkgbase = swaypwd-git
+	pkgdesc = Print the working directory of the foreground process in the focused Sway window
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://gitlab.com/bullbytes/swaypwd
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	optdepends = python: Chromium local-file support
+	provides = swaypwd
+	conflicts = swaypwd
+	conflicts = swaypwd-bin
+	source = swaypwd-git::git+https://gitlab.com/bullbytes/swaypwd.git
+	b2sums = SKIP
+
+pkgname = swaypwd-git
