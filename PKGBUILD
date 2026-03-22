@@ -6,7 +6,7 @@
 
 pkgname=libbpg
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc='BPG Image Encoder and Decoder'
 arch=('x86_64' 'i686')
 url='http://bellard.org/bpg/'
