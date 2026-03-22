@@ -1,6 +1,6 @@
 *.pkg.tar.*
 *.tar.gz
 *.log
-ketall/
+GitVersion-*/
 pkg/
 src/

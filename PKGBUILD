@@ -2,7 +2,7 @@
 _pkgname=GitVersion
 pkgname=gitversion
 # renovate: datasource=github-releases depName=GitTools/GitVersion
-pkgver=6.5.1
+pkgver=6.6.1
 pkgrel=4
 _dotnet_version=10.0
 pkgdesc='From git log to SemVer in no time'
@@ -10,24 +10,25 @@ arch=('x86_64')
 url="https://github.com/GitTools/GitVersion"
 source=(
   "${url}/archive/refs/tags/${pkgver}.tar.gz"
-  'dotnet-sdk-ver.patch'
 )
 options=('!strip' 'staticlibs')
 license=('MIT')
 depends=('glibc')
 makedepends=(
   "dotnet-sdk>=${_dotnet_version}"
+  "moreutils"
+  "jq"
 )
-sha512sums=('65fe0316017766d76fa5b203b26e4b5ec0c48156a3feeee63d2b7fcba30c9e7b48f1ceeb76241964f63f5c16674a81e93ed14b8ea0f6cadafc925a59fbfc3550'
-            'aa2f668c93555b3cfb27a611c5c2620992562d605d3b346b45bf71774d78eb4f5e5fc4ec7ecf1aa56a4a3adcb141f3669ae5c571bb45974ceeda88fedcec3dd4')
+sha512sums=('2c6210de5209f5269ced8907354b7b1a4d136c863118754a84c1ab4524c0598844fbf0d4f18e9d40f2c4760593341855353a43c3b36784f085cd052e7e7d27e8')
+
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch -p1 < "${srcdir}/dotnet-sdk-ver.patch"
+  jq -r 'del(.sdk)' < global.json | sponge global.json
 }
 
 build() {
-  mkdir "${srcdir}/build"
+  mkdir -p "${srcdir}/build"
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
   export NUGET_PACKAGES="$PWD/nuget"
