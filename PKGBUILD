@@ -2,7 +2,7 @@
 
 pkgname=axiom-axle
 _name=axiom_axle
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Lean evaluation and metaprogramming utilities for provers'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(python python-aiohttp python-requests python-tenacity)
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
   LICENSE)
-sha256sums=('d3974da9d6594f8f68ac49b23b2ad95f3e10a65557edfffbcea1c64eb7dfbcca'
+sha256sums=('186bee255da9c1759605739670842928c6c54362d41cb991ea34d0df520cee45'
             'c7ad081bf14c9ebc3a308177dfe877fb79fb319b64577cda8be1c15fedb97458')
 
 build() {
