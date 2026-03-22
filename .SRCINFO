@@ -24,7 +24,7 @@ pkgbase = emerald-legacy-launcher
 	depends = webkit2gtk-4.1
 	optdepends = discord: Discord RPC support
 	provides = emerald-legacy-launcher
-	source = emerald-legacy-launcher::git+https://github.com/Emerald-Legacy-Launcher/Emerald-Legacy-Launcher
+	source = emerald-legacy-launcher::git+https://github.com/Emerald-Legacy-Launcher/Emerald-Legacy-Launcher#branch=dev
 	sha256sums = SKIP
 
 pkgname = emerald-legacy-launcher

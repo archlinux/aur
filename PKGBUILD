@@ -11,7 +11,7 @@ depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'hicolor-icon
 optdepends=('discord: Discord RPC support')
 makedepends=('git' 'openssl' 'appmenu-gtk-module' 'libappindicator-gtk3' 'librsvg' 'cargo' 'pnpm' 'nodejs')
 provides=('emerald-legacy-launcher')
-source=("$pkgname::git+$url")
+source=("$pkgname::git+$url#branch=dev")
 sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -29,5 +29,5 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  cp -a src-tauri/target/release/bundle/deb/${pkgname}_${pkgver}_*/data/* "${pkgdir}"
+  cp -a src-tauri/target/release/bundle/deb/${pkgname}_*_*/data/* "${pkgdir}"
 }
