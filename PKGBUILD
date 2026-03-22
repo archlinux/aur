@@ -1,6 +1,6 @@
 # Maintainer: Nick Yeung <nickjyeung@gmail.com>
 pkgname=reels-bin
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Instagram reels in the terminal"
 arch=('x86_64')
@@ -11,7 +11,7 @@ optdepends=('chromium: browser backend' 'google-chrome: browser backend' 'brave-
 provides=('reels')
 conflicts=('reels')
 source=("https://github.com/njyeung/reels/releases/download/v${pkgver}/reels-linux-amd64")
-sha256sums=('3adfa1ee0d88332e0d817ee4ae31da5034db80c49f4828f90dae14994c6734a8')
+sha256sums=('1218db5422e5f023a0b2cce7b4bf3b3e416bd075bb01c10eff9abaffc0c26a8b')
 
 package() {
     install -Dm755 "$srcdir/reels-linux-amd64" "$pkgdir/usr/bin/reels"
