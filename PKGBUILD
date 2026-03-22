@@ -8,7 +8,7 @@ pkgname=(
   "${pkgbase}-cli"
   "${pkgbase}-gui"
 )
-pkgver=2.47
+pkgver=2.47.1
 pkgrel=1
 pkgdesc="Exports Discord chat logs to a file"
 arch=(
@@ -34,10 +34,10 @@ options=(
 _pkgsrc="${url##*/}-${pkgver}"
 source=(
   "${url}/archive/refs/tags/${pkgver}/${_pkgsrc}.tar.gz"
-  "${pkgbase}_xdg_settings.patch"
+  "${pkgbase}-gui.sh"
 )
-b2sums=('aedd44539bdbd92225f8ded056861fdfcca14f5a867452845e183195bc868333f79917d8b88cb54b97b76692d3f6ff5bc0170bdaac7e194aa2d8d0dee35439bb'
-        'ec3740a7c60b0f5fc2773e991e6cde9b4116d77d50094b237e118f456d9273c18a8e3bc2da2ff8a86eb35fa7df4f81c94759467b415f53e4794fb7a4e0929a91')
+b2sums=('4ddd4d88bbf17a4d3f1b634456696984d8b92d4cc4d82c3c0ee99cc3b10352cd46da3d4e816e185216ec446ab883caf5debc74ee58e71bef1e3385438216bd99'
+        'f8a33018574ef29bfe740a6852cabfc56b97e2004dae02bd9a24be89d75515b9540a4edbe8cf34a8a2770089145c2e6841a80f47f6844a6c0a82ce2e0223f0f6')
 
 if   [ "${CARCH}" = 'aarch64' ]; then _msarch=arm64;
 elif [ "${CARCH}" = 'armv7h'  ]; then _msarch=arm;
@@ -58,8 +58,6 @@ prepare() {
   )
 
   cd "${srcdir}/${_pkgsrc}"
-  patch -Np1 -i "${srcdir}/${pkgbase}_xdg_settings.patch"
-
   for dir in Core Cli Gui; do
     dotnet restore "${dotnet_restore_options[@]}" "${_Name}.${dir}"
   done
@@ -137,10 +135,11 @@ package_discord-chat-exporter-gui() {
   )
 
   cd "${srcdir}"
+  install -vDm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
   install -vDm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   cd "${_pkgsrc}"
   install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/${pkgbase}"
-  cp -vaT --no-preserve=ownership "build-gui" "${pkgdir}/usr/lib/${pkgbase}/"
-  ln -vsf "/usr/lib/${pkgbase}/${_Name}" "${pkgdir}/usr/bin/${pkgname}"
+  cp -vaT --no-preserve=ownership "build-gui" "${pkgdir}/usr/lib/${pkgbase}"
+  # ln -vsf "/usr/lib/${pkgbase}/${_Name}" "${pkgdir}/usr/bin/${pkgname}"
 }
