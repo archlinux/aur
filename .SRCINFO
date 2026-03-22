@@ -1,7 +1,7 @@
 pkgbase = proton-cachyos
 	pkgdesc = A compatibility tool for Steam Play based on Wine and additional components, experimental branch with extra CachyOS flavour
 	pkgver = 10.0.20260319
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/CachyOS/proton-cachyos
 	install = proton-cachyos.install
@@ -233,6 +233,7 @@ pkgbase = proton-cachyos
 	options = !debug
 	options = emptydirs
 	options = pestrip
+	backup = usr/share/steam/compatibilitytools.d/proton-cachyos/user_settings.py
 	source = proton-cachyos::git+https://github.com/CachyOS/proton-cachyos.git#tag=cachyos-10.0-20260319-native
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86.tar.xz
 	source = https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86_64.tar.xz

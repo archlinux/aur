@@ -8,7 +8,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.4
 _monover=10.4.1
 _xaliaver=0.4.8
-pkgrel=3
+pkgrel=4
 epoch=1
 
 source=(
@@ -171,6 +171,9 @@ optdepends+=(
   NTSYNC-MODULE
 )
 provides=('proton')
+backup=(
+  "usr/share/steam/compatibilitytools.d/${pkgname}/user_settings.py"
+)
 install=${pkgname}.install
 
 _make_wrappers () {
