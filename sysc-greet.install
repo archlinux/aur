@@ -24,6 +24,9 @@ post_install() {
 [terminal]
 vt = 1
 
+[general]
+source_profile = false
+
 [default_session]
 command = "niri -c /etc/greetd/niri-greeter-config.kdl"
 user = "greeter"
@@ -63,6 +66,9 @@ post_upgrade() {
 [terminal]
 vt = 1
 
+[general]
+source_profile = false
+
 [default_session]
 command = "niri -c /etc/greetd/niri-greeter-config.kdl"
 user = "greeter"
@@ -74,12 +80,12 @@ EOF
     echo "                       ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀     "
     echo "                      //  SEE YOU SPACE COWBOY //          "
     echo ""
-    echo "sysc-greet upgraded to v1.1.1"
+    echo "sysc-greet upgraded to v1.1.3"
     echo ""
     echo "What's new:"
+    echo "  v1.1.3: Fix login loop on systemd 260+ (source_profile workaround)"
     echo "  v1.1.1: NixOS dataDir improvements, license change to GPL-3.0"
     echo "  v1.1.0: Config.toml now auto-updates on install/upgrade"
-    echo "  v1.0.9: Custom themes, gSlapper wallpapers, theme-aware effects"
     echo ""
     echo "IMPORTANT: You must REBOOT to apply changes."
     echo "           Logging out is NOT sufficient when switching compositors."
