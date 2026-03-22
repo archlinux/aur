@@ -2,7 +2,7 @@
 
 _basename=wasmrun
 pkgname=${_basename}-bin
-pkgver=0.15.1
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="Run WebAssembly instantly in your browser with a single command"
 arch=('x86_64' 'aarch64')
@@ -19,8 +19,8 @@ makedepends=('tar')
 
 source_x86_64=("${_basename}-${arch[0]}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_basename}-v${pkgver}-${_barch[0]}.deb")
 source_aarch64=("${_basename}-${arch[1]}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_basename}-v${pkgver}-${_barch[1]}.deb")
-sha256sums_x86_64=('2b5b71bf3ff079271b2afe6c435a0407ab276b550c2bdadd1b1e40f3ab373f48')
-sha256sums_aarch64=('ddb2382cf392bc1d500cd56d97634edcf17ad4392fc2a31f6da73d3d3d88bb28')
+sha256sums_x86_64=('a2562e76a095859357fbabb97754f6df3ef88ccb0320c5cf255d81c2afe09323')
+sha256sums_aarch64=('451599f7e8d70702a156c9799a625613eddfcb1e88753ac0b2b31d475d77f4e8')
 
 package() {
     cd "${pkgdir}"

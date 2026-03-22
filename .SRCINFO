@@ -1,6 +1,6 @@
 pkgbase = wasmrun-bin
 	pkgdesc = Run WebAssembly instantly in your browser with a single command
-	pkgver = 0.15.1
+	pkgver = 0.15.2
 	pkgrel = 1
 	url = https://github.com/anistark/wasmrun
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = wasmrun-bin
 	optdepends = wasm-pack
 	provides = wasmrun
 	conflicts = wasmrun
-	source_x86_64 = wasmrun-x86_64-0.15.1.deb::https://github.com/anistark/wasmrun/releases/download/v0.15.1/wasmrun-v0.15.1-x86_64.deb
-	sha256sums_x86_64 = 2b5b71bf3ff079271b2afe6c435a0407ab276b550c2bdadd1b1e40f3ab373f48
-	source_aarch64 = wasmrun-aarch64-0.15.1.deb::https://github.com/anistark/wasmrun/releases/download/v0.15.1/wasmrun-v0.15.1-aarch64.deb
-	sha256sums_aarch64 = ddb2382cf392bc1d500cd56d97634edcf17ad4392fc2a31f6da73d3d3d88bb28
+	source_x86_64 = wasmrun-x86_64-0.15.2.deb::https://github.com/anistark/wasmrun/releases/download/v0.15.2/wasmrun-v0.15.2-x86_64.deb
+	sha256sums_x86_64 = a2562e76a095859357fbabb97754f6df3ef88ccb0320c5cf255d81c2afe09323
+	source_aarch64 = wasmrun-aarch64-0.15.2.deb::https://github.com/anistark/wasmrun/releases/download/v0.15.2/wasmrun-v0.15.2-aarch64.deb
+	sha256sums_aarch64 = 451599f7e8d70702a156c9799a625613eddfcb1e88753ac0b2b31d475d77f4e8
 
 pkgname = wasmrun-bin
