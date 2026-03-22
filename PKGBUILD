@@ -9,7 +9,7 @@ license=('MIT')
 provides=('ithil')
 conflicts=('ithil')
 source=("https://github.com/lvcasx1/ithil/releases/download/v${pkgver}/ithil-linux-x86_64.tar.gz")
-sha256sums=('f03c5243c2421bddbdab094380817ba1540f34ea011bb25c3016811da8a37a0f')
+sha256sums=('a0487d850e40474b12cdece24de1efa5ac7df5c836a667c4b42ca5b9013c22a6')
 
 package() {
   install -Dm755 "${srcdir}/ithil" "${pkgdir}/usr/bin/ithil"
