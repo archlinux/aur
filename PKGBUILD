@@ -6,12 +6,13 @@
 
 pkgname=libbpg
 pkgver=0.9.8
-pkgrel=3
+pkgrel=4
 pkgdesc='BPG Image Encoder and Decoder'
 arch=('x86_64' 'i686')
 url='http://bellard.org/bpg/'
 license=('BSD' 'LGPL')
-depends=('libpng' 'libjpeg-turbo' 'sdl_image' 'yasm' 'cmake')
+depends=('libpng' 'libjpeg-turbo' 'sdl_image')
+makedepends=('yasm' 'cmake')
 _x265url='https://bitbucket.org/multicoreware/x265_git/get/'
 _x265commit='8be7dbf'
 source=(
