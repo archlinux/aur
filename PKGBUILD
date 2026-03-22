@@ -12,4 +12,5 @@ sha256sums=('1ce11118dcf19d5e84f8858952a18cb00b0148415a92eec5a75ff22d28834900')
 
 package() {
   bsdtar -xpf "$srcdir/gaze-gnome-extension-0.1.0-1-x86_64.pkg.tar.zst" -C "$pkgdir"
+  find "$pkgdir" -maxdepth 1 -type f -name '.*' -delete
 }
