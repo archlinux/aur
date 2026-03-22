@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=HelixNotes
-Comment=Local-first markdown note-taking app
+Comment=Local markdown note-taking app
 Exec=helixnotes %U
 Icon=helixnotes
 Terminal=false
