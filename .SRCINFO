@@ -1,13 +1,11 @@
 pkgbase = aws-lc
 	pkgdesc = General-purpose cryptographic library maintained by the AWS Cryptography team for AWS
 	pkgver = 1.71.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aws/aws-lc
 	arch = x86_64
-	license = MIT
 	license = ISC
 	license = Apache-2.0
-	license = OpenSSL
 	makedepends = git
 	makedepends = cmake
 	makedepends = ninja
@@ -21,6 +19,8 @@ pkgbase = aws-lc
 	options = !lto
 	options = staticlibs
 	source = aws-lc-1.71.0.tar.gz::https://github.com/aws/aws-lc/archive/refs/tags/v1.71.0.tar.gz
+	source = Patch01-tool-and-tool-opensll-bindir-cohabitant-headers.patch
 	b2sums = d458951843c6c269fabc794e121ef97f97e90d98bab97282aa28252dad9f3278794d3625a11800d42ca44dacc122e633fcb8f1a9a2b5f6da270393e25d772625
+	b2sums = 55c39b51d3dabba02ba6b3d423846c0bbfee85aeed4e8ea3691488a1d78b98a5d4cd71a034aaabe438f995a9a3c535ac1fabeb79dd0df1f3c34ccb74c6119f89
 
 pkgname = aws-lc

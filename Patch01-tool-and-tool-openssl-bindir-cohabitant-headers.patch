@@ -1,0 +1,44 @@
+diff '--color=auto' -Naru aws-lc-1.71.0-orig/tool/CMakeLists.txt aws-lc-1.71.0/tool/CMakeLists.txt
+--- aws-lc-1.71.0-orig/tool/CMakeLists.txt	2026-03-22 20:11:16.981009805 +0200
++++ aws-lc-1.71.0/tool/CMakeLists.txt	2026-03-22 20:06:32.679329877 +0200
+@@ -41,9 +41,16 @@
+   endif()
+ endif()
+ 
++# Set the install binary directory based on whether a prefix subdirectory is desired
++if(COHABITANT_HEADERS)
++  set(AWSLC_INSTALL_BINDIR "${CMAKE_INSTALL_BINDIR}/aws-lc")
++else()
++  set(AWSLC_INSTALL_BINDIR "${CMAKE_INSTALL_BINDIR}")
++endif()
++
+ install(TARGETS bssl
+-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+-        BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR}
++  RUNTIME DESTINATION ${AWSLC_INSTALL_BINDIR}
++  BUNDLE DESTINATION ${AWSLC_INSTALL_BINDIR}
+ )
+ 
+ if(MSVC AND CMAKE_BUILD_TYPE_LOWER MATCHES "relwithdebinfo" AND FIPS)
+diff '--color=auto' -Naru aws-lc-1.71.0-orig/tool-openssl/CMakeLists.txt aws-lc-1.71.0/tool-openssl/CMakeLists.txt
+--- aws-lc-1.71.0-orig/tool-openssl/CMakeLists.txt	2026-03-22 20:11:16.980350439 +0200
++++ aws-lc-1.71.0/tool-openssl/CMakeLists.txt	2026-03-22 20:04:42.050105317 +0200
+@@ -58,9 +58,16 @@
+ 
+ target_add_awslc_include_paths(TARGET openssl SCOPE PRIVATE)
+ 
++# Set the install binary directory based on whether a prefix subdirectory is desired
++if(COHABITANT_HEADERS)
++    set(AWSLC_INSTALL_BINDIR "${CMAKE_INSTALL_BINDIR}/aws-lc")
++else()
++    set(AWSLC_INSTALL_BINDIR "${CMAKE_INSTALL_BINDIR}")
++endif()
++
+ install(TARGETS openssl
+-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+-        BUNDLE DESTINATION ${CMAKE_INSTALL_BINDIR}
++    RUNTIME DESTINATION ${AWSLC_INSTALL_BINDIR}
++    BUNDLE DESTINATION ${AWSLC_INSTALL_BINDIR}
+ )
+ 
+ file(INSTALL
