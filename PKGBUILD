@@ -4,12 +4,12 @@
 pkgname=namida-bin
 pkgver=5.8.5
 _buildnumber=260319033
-pkgrel=2
+pkgrel=3
 pkgdesc="A Beautiful and Feature-rich Music Player, With YouTube & Video Support Built in Flutter"
 arch=('x86_64')
 url="https://github.com/namidaco/namida-snapshots"
 license=('EULA')
-depends=('gtk3' 'glib2' 'pango' 'freetype2' 'bzip2' 'libpng' 'brotli' 'fontconfig' 'expat' 'fribidi' 'libepoxy' 'libxi' 'libxext' 'libx11' 'libxcb' 'libxau' 'libxdmcp' 'at-spi2-core' 'dbus' 'systemd-libs' 'libcloudproviders' 'tinysparql' 'json-glib' 'libxml2' 'icu' 'sqlite' 'libxfixes' 'wayland' 'libffi' 'libxcursor' 'libxrender' 'libxdamage' 'libxcomposite' 'libxrandr' 'libxinerama' 'zlib' 'cairo' 'gdk-pixbuf2' 'glycin' 'lcms2' 'libseccomp' 'atk' 'libthai' 'libdatrie' 'pixman' 'harfbuzz' 'graphite' 'util-linux-libs' 'pcre2' 'gcc-libs' 'glibc')
+depends=('mpv' 'wpewebkit' 'gtk3' 'glib2' 'pango' 'freetype2' 'bzip2' 'libpng' 'brotli' 'fontconfig' 'expat' 'fribidi' 'libepoxy' 'libxi' 'libxext' 'libx11' 'libxcb' 'libxau' 'libxdmcp' 'at-spi2-core' 'dbus' 'systemd-libs' 'libcloudproviders' 'tinysparql' 'json-glib' 'libxml2' 'icu' 'sqlite' 'libxfixes' 'wayland' 'libffi' 'libxcursor' 'libxrender' 'libxdamage' 'libxcomposite' 'libxrandr' 'libxinerama' 'zlib' 'cairo' 'gdk-pixbuf2' 'glycin' 'lcms2' 'libseccomp' 'atk' 'libthai' 'libdatrie' 'pixman' 'harfbuzz' 'graphite' 'util-linux-libs' 'pcre2' 'gcc-libs' 'glibc')
 provides=(namida)
 conflicts=(namida)
 makedepends=()
