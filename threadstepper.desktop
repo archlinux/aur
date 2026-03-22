@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Thread Stepper
+Comment=Stability and stress tester for AMD Curve Optimizer and PBO
+Exec=threadstepper
+Icon=threadstepper
+Terminal=false
+Type=Application
+Categories=System;Utility;
