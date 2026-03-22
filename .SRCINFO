@@ -36,7 +36,6 @@ pkgbase = sabnzbd
 	depends = python-pytz
 	depends = python-rarfile
 	depends = python-rebulk
-	depends = python-sabyenc3
 	depends = python-sabctools
 	depends = python-sgmllib3k
 	depends = python-six

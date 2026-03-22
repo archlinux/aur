@@ -38,7 +38,6 @@ depends=(
   'python-pytz'
   'python-rarfile'
   'python-rebulk'
-  'python-sabyenc3'
   'python-sabctools'
   'python-sgmllib3k'
   'python-six'
