@@ -50,14 +50,15 @@ package() {
     # ── Wrapper ejecutable ────────────────────────────────────────────────────
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/rubrika" << 'EOF'
 #!/bin/bash
-# Si pyhanko no está disponible en el sistema, instalarlo en vendor de usuario
 VENDOR_DIR="${HOME}/.local/share/rubrika/vendor"
+mkdir -p "${VENDOR_DIR}"
+export PYTHONPATH="${VENDOR_DIR}:${PYTHONPATH}"
+
 if ! python -c "import pyhanko" 2>/dev/null; then
-    echo "Instalando dependencias faltantes en ${VENDOR_DIR}..."
-    mkdir -p "${VENDOR_DIR}"
+    echo "Instalando pyhanko en ${VENDOR_DIR}..."
     pip install pyhanko --target="${VENDOR_DIR}" --quiet
 fi
-export PYTHONPATH=/usr/share/rubrika/vendor:$PYTHONPATH
+
 exec python /usr/share/rubrika/main.py "$@"
 EOF
 
