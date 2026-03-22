@@ -1,7 +1,7 @@
 # Maintainer: Jia Yin<yenfeng.shetiko at gmail dot com>
 
 pkgname=kixdns-git
-pkgver=r69.254b222
+pkgver=r74.32c04bd
 pkgrel=1
 pkgdesc='A DNS forwarder built using RUST.'
 arch=('x86_64')
