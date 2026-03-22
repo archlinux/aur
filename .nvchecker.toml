@@ -1,0 +1,5 @@
+[akeyshually-bin]
+source = "github"
+github = "DeprecatedLuar/akeyshually"
+use_latest_release = true
+prefix = "v"

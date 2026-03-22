@@ -1,0 +1,30 @@
+# To install this service:
+#
+#   systemctl --user link ~/.config/akeyshually/akeyshually.service
+#   systemctl --user enable --now akeyshually
+#
+# If using a keyboard remapper (kanata/keyd/kmonad), see [Unit] section below
+
+[Unit]
+Description=akeyshually - Minimal keyboard shortcut daemon
+After=graphical-session.target
+# If using a keyboard remapper, uncomment the one you use:
+# After=graphical-session.target kanata.service
+# After=graphical-session.target keyd.service
+# After=graphical-session.target kmonad.service
+# After=graphical-session.target xremap.service
+
+# PartOf=kanata.service # Optional: Stop akeyshually when remapper stops
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/sleep 5
+ExecStart=/usr/bin/akeyshually
+Restart=always
+RestartSec=3
+KillMode=process
+
+[Install]
+WantedBy=default.target
+
+# I made this thing  (Luar)
