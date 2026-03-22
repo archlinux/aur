@@ -1,4 +1,4 @@
-["filebrowser-bin"]
+[filebrowser-bin]
 source = "github"
 github = "filebrowser/filebrowser"
 use_latest_release = true
