@@ -1,0 +1,12 @@
+pkgbase = dinky
+	pkgdesc = A terminal text editor for those who just want to edit some text
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/sedwards2009/dinky
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.24
+	source = dinky-0.8.0.tar.gz::https://github.com/sedwards2009/dinky/archive/refs/tags/v0.8.0.tar.gz
+	sha256sums = 0cb51d24fd1ac0dfdd4861ba2f2ac3daf25439dde76343061b8df72cefe1e703
+
+pkgname = dinky
