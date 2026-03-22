@@ -7,10 +7,10 @@ pkgbase = jmeter
 	license = apache
 	depends = java-environment>=8
 	options = !strip
-	source = http://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.6.3.tgz
+	source = https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.6.3.tgz
 	source = jmeter.desktop
 	validpgpkeys = C4923F9ABFB2F1A06F08E88BAC214CAA0612B399
-	sha256sums = f68efc17fe060f698c48a6abe2599a933927486bda2924dbe14c74895318ddde
-	sha256sums = 5825c95e8aa3fd29bb0e67ae1f6f4640008f74bac756b62394c70b61a3f506ad
+	sha512sums = 5978a1a35edb5a7d428e270564ff49d2b1b257a65e17a759d259a9283fc17093e522fe46f474a043864aea6910683486340706d745fcdf3db1505fd71e689083
+	sha512sums = 47efb9cc96e567e23cefec4a65dd72475b97fef2f9512e6f79db48c6fdef6f94b5224622ebc4c11101f47777c940befe6326082781d98ba745d3fcd8912bc7f9
 
 pkgname = jmeter
