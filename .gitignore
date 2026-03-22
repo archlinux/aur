@@ -1,14 +1,12 @@
-*.tar
-*.tar.*
-*.jar
-*.exe
-*.msi
-*.zip
-*.tgz
-*.log
-*.log.*
-*.sig
+*
+!PKGBUILD
+!.SRCINFO
+!*.env
+!*.conf
+!*.install
+!*.service
+!*.sysusers
+!*.tmpfiles
+!.gitignore
+!.nvchecker.toml
 
-pkg/
-src/
-LICENSE

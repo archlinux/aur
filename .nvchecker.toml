@@ -1,0 +1,5 @@
+[microbin-bin]
+source = "github"
+github = "szabodanika/microbin"
+use_latest_release = true
+prefix = "v"

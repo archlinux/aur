@@ -1,0 +1,2 @@
+d /var/lib/microbin 0750 microbin microbin -
+d /etc/microbin 0755 microbin microbin -
