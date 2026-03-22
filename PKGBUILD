@@ -18,9 +18,9 @@ _urlraw="https://raw.githubusercontent.com/${_pkgauthor}/${_pkgname}/${_pkgverna
 
 license=('MIT')
 
+depends=('glibc')
 provides=("${_appname}")
-conflicts=("${_pkgname}")
-depends=('glibc' 'libgcc')
+conflicts=("${_appname}" "${_pkgname}")
 
 source=("README-${pkgver}.md::${_urlraw}/README.md"
 		"LICENSE-${pkgver}::${_urlraw}/LICENCE")
