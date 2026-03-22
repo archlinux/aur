@@ -29,7 +29,7 @@ makedepends=('acl' 'apparmor' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam
              'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
-             'bash-completion' 'p11-kit' 'unshitted-systemd' 'libfido2' 'tpm2-tss' 'rsync'
+             'bash-completion' 'p11-kit' 'libfido2' 'tpm2-tss' 'rsync'
              'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools'
              'libpwquality' 'qrencode' 'lib32-gcc-libs' 'python-pefile' 'linux-headers')
 conflicts=("mkinitcpio<38-1")
