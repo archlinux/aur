@@ -1,25 +1,36 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgname=sse-bin
-pkgver=15.0.8_1
+# Maintainer: Neo Sahadeo neosa+aur@atomicmail.io
+
+pkgname="systemd-nosurv-git"
+pkgdesc="Liberated systemd -- no surveillance. Ever."
+pkgver=261
 pkgrel=1
-pkgdesc="Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks"
-arch=('x86_64')
-url="https://paranoiaworks.mobi"
-license=('custom')
-source=(
-    "$url/download/files/pfte_${pkgver//_/-}_amd64.deb"
-    "license.txt"
-)
-sha256sums=(
-    '31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c'
-    'f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527'
+arch=("x86_64")
+license=("GPL-2.0")
+source=("git+https://github.com/Jeffrey-Sardina/systemd.git")
+
+sha512sums=("SKIP")
+makedepends=('acl' 'apparmor' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
+             'intltool' 'iptables' 'kmod' 'libarchive' 'libcap' 'libidn2' 'libgcrypt'
+             'libmicrohttpd' 'libxcrypt' 'libxslt' 'util-linux' 'linux-api-headers'
+             'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'git'
+             'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
+             'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync'
+             'bpf' 'libbpf' 'clang' 'llvm' 'curl' 'gnutls' 'python-pyelftools'
+             'libpwquality' 'qrencode' 'lib32-gcc-libs' 'python-pefile' 'linux-headers'
+             'ninja'
 )
 
-options=('!strip')
+build(){
+             echo "Building..."
+             cd "${srcdir}/systemd"
+             meson setup builddir --prefix=/usr \
+                          -Dmode=release \
+                          -Db_lto=true
+             ninja -C builddir
+}
 
-package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
-    echo "Installing license and desktop file..."
-    install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-    install -Dm644 "${pkgdir}/opt/pfte/lib/pfte-Paranoia_File_and_Text_Encryption.desktop" "${pkgdir}/usr/share/applications/pfte-Paranoia_File_and_Text_Encryption.desktop"
+package(){
+             echo "Installing..."
+             cd "${srcdir}/systemd"
+             sudo ninja -C builddir install
 }
