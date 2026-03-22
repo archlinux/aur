@@ -1,16 +1,16 @@
 # Maintainer: AlphaLynx <alphalynx at alphalynx dot dev>
 
 pkgname=seqtui-git
-pkgver=0.1.0.r5.ga8d06be
+pkgver=0.1.1.r11.gcf47ab2
 pkgrel=1
 pkgdesc='A fast terminal-based viewer and command-line toolkit for molecular sequences (DNA, AA)'
 arch=(x86_64)
 url='https://github.com/ranwez-search/SeqTUI'
 license=(MIT)
-depends=(gcc-libs glibc)
+depends=(glibc libgcc)
 makedepends=(cargo git)
 options=(!lto)
-source=("git+$url")
+source=(git+$url)
 sha256sums=('SKIP')
 
 pkgver() {
@@ -21,7 +21,7 @@ pkgver() {
 prepare() {
     cd SeqTUI
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target $(rustc --print host-tuple)
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
