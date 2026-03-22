@@ -3,7 +3,7 @@
 
 pkgname=cppdb
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="CppDB is an SQL connectivity library that is designed to provide platform and Database independent connectivity API."
 arch=('i486' 'i686' 'pentium4' 'x86_64')
 url="http://cppcms.com/sql/cppdb/"
@@ -21,7 +21,7 @@ build() {
   mkdir -p "$srcdir/cppdb-build"
   cd "$srcdir/cppdb-build"
 
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/cppdb-$pkgver"
+  cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/cppdb-$pkgver"
   make
 }
 

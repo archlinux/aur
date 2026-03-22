@@ -1,7 +1,7 @@
 pkgbase = cppdb
 	pkgdesc = CppDB is an SQL connectivity library that is designed to provide platform and Database independent connectivity API.
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cppcms.com/sql/cppdb/
 	arch = i486
 	arch = i686
@@ -24,4 +24,3 @@ pkgbase = cppdb
 	sha256sums = d60eef5a732d8f84ef5e4a2845a8cefc543a6c75bf3782589c2cf6aa150b992e
 
 pkgname = cppdb
-
