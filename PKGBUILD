@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=python-bioservices
 _name=${pkgname#python-}
-pkgver=1.14.0
+pkgver=1.15.0
 pkgrel=1
 pkgdesc="Access Bioinformatices Web Services and framework for WSDL/SOAP and REST wrappers"
 arch=('any')
@@ -26,7 +26,7 @@ depends=(
     'python-pandas'
 )
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
-sha256sums=('82208d6d8763f143b59790433b3b3661d57345a3fdbfeaee87c21ef3a422b3fa')
+sha256sums=('e38e888f6dcd9a158717f683143a297d070261cd19af6210627e53c3dbc7804b')
 
 build() {
   cd "$_name-$pkgver"
