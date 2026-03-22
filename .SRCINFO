@@ -1,7 +1,7 @@
 pkgbase = morphe-cli
-	pkgdesc = Command-line tool for patching Android apps using Morphe Patcher
+	pkgdesc = Tool for patching Android apps using Morphe Patcher (CLI & GUI)
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://morphe.software
 	arch = any
 	license = GPL-3.0-or-later
@@ -10,10 +10,10 @@ pkgbase = morphe-cli
 	noextract = morphe-cli-1.6.0.jar
 	options = !debug
 	source = morphe-cli-1.6.0.jar::https://github.com/MorpheApp/morphe-cli/releases/download/v1.6.0/morphe-cli-1.6.0-all.jar
-	source = https://raw.githubusercontent.com/MorpheApp/morphe-cli/v1.6.0/LICENSE
+	source = https://raw.githubusercontent.com/MorpheApp/morphe-cli/v1.6.0/src/main/resources/morphe_logo.png
 	source = https://raw.githubusercontent.com/MorpheApp/morphe-cli/v1.6.0/NOTICE
 	sha256sums = c95ed42ecfc2e5236c2a0c61734705bbe90f6ada80970f91e5af9a4d3b7a81bd
-	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	sha256sums = cbfcb7b7a8274e8da1b9fbb4ac9655f4322a720ca9efbe02f42a9ea53ffdb30d
 	sha256sums = bed1a8483e262dcfc648e22ac62fea352b6e0cb54d0fea794d2ccf1e93ccd961
 
 pkgname = morphe-cli
