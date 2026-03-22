@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Linuxblaster Control
+Comment=Control Creative Sound BlasterX G6 USB DAC/Amp with AutoEq integration
+Exec=linuxblaster_control
+Icon=audio-card
+Terminal=false
+Categories=AudioVideo;Audio;Settings;
+Keywords=audio;sound;blaster;dac;amp;equalizer;

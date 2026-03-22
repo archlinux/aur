@@ -1,0 +1,13 @@
+# Ignore everything
+*
+
+# But not itself ...
+!.gitignore
+
+# ... and not PKGBUILD files
+!PKGBUILD
+!.SRCINFO
+# ... and not UDEV rule
+!60-soundblasterx-g6.rules
+# ... and not Desktop Entry
+!linuxblaster-control.desktop
