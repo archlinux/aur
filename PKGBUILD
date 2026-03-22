@@ -10,6 +10,7 @@ depends=()
 optdepends=("python: Chromium local-file support")
 provides=(swaypwd)
 conflicts=(swaypwd swaypwd-git)
+options=('!strip' '!debug')
 source=(
     "swaypwd-x86_64::https://gitlab.com/api/v4/projects/80488692/packages/generic/swaypwd/${pkgver}/swaypwd-x86_64"
     "swaypwd.1::https://gitlab.com/api/v4/projects/80488692/packages/generic/swaypwd/${pkgver}/swaypwd.1"
