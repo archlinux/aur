@@ -4,7 +4,7 @@ A powerful, colorful CLI tool to list files and directories with intelligent siz
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**Latest Version: 0.4.1**
+**Latest Version: 1.4.2**
 
 ## Features
 
