@@ -1,7 +1,7 @@
 pkgbase = jid-bin
 	pkgdesc = Json incremental digger
-	pkgver = 0.7.6
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://github.com/simeji/jid
 	arch = i686
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = jid-bin
 	conflicts = jid
 	source = LICENSE
 	sha256sums = 3db4ceef736801baccfff1bc4d6ea64dc889dcc43cfc49151907ab98538f8c2d
-	source_i686 = jid-bin-0.7.6-i686.zip::https://github.com/simeji/jid/releases/download/v0.7.6/jid_linux_386.zip
-	sha256sums_i686 = e23f72e688d5808400d12d4050b6dfd2cf1ef31e8c53727cd05eb29e1313e033
-	source_x86_64 = jid-bin-0.7.6-x86_64.zip::https://github.com/simeji/jid/releases/download/v0.7.6/jid_linux_amd64.zip
-	sha256sums_x86_64 = b5706cda44bc76c5db8a1e7956d25ef2e25bf618a7b03e1d98e8f4fc2e2f393a
-	source_aarch64 = jid-bin-0.7.6-aarch64.zip::https://github.com/simeji/jid/releases/download/v0.7.6/jid_linux_arm64.zip
-	sha256sums_aarch64 = 071ee2a01982efd9e503d5fd3003a0e3a449df83b577aae4f25f56cebf7a76df
+	source_i686 = jid-bin-1.0.0-i686.zip::https://github.com/simeji/jid/releases/download/v1.0.0/jid_linux_386.zip
+	sha256sums_i686 = 3c4e1785c747760d23b52bace04ca23f18df77f2bc051f1fb520e494fb216071
+	source_x86_64 = jid-bin-1.0.0-x86_64.zip::https://github.com/simeji/jid/releases/download/v1.0.0/jid_linux_amd64.zip
+	sha256sums_x86_64 = 90dc218336712c130c6d2d572521a00a949aa6f662702ba5c807a5c168755ab7
+	source_aarch64 = jid-bin-1.0.0-aarch64.zip::https://github.com/simeji/jid/releases/download/v1.0.0/jid_linux_arm64.zip
+	sha256sums_aarch64 = aeae5c409ca77b248acba0b772d21a69078c7017c4cc9be3d4476bd49f685739
 
 pkgname = jid-bin
