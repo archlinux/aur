@@ -1,6 +1,6 @@
-# Maintainer: c0m4r <https://github.com/c0m4r
+# Maintainer: c0m4r <https://github.com/c0m4r>
 pkgname=kula
-pkgver=0.11.0
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Lightweight, self-contained monitoring tool"
 arch=('x86_64')
@@ -9,20 +9,20 @@ license=('AGPL-3.0')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/c0m4r/kula/archive/${pkgver}.tar.gz")
-sha256sums=('5cdb79b377a46c20e797b83198a8ded93a9f42b255b9ad659a6b6a08c8f85be5')
+sha256sums=('baff8ddde4452ea22643da6b91a153c42652d2108692121f355a99128ff22064')
 install='kula.install'
-
-build() {
-  cd "${pkgname}-${pkgver}"
-  export CGO_ENABLED=0
-  go build     -trimpath     -ldflags="-s -w"     -buildvcs=false     -o kula ./cmd/kula/
-}
 
 check() {
   cd "${pkgname}-${pkgver}"
   export CGO_ENABLED=1
   go vet ./...
   go test -v -race ./...
+}
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  export CGO_ENABLED=0
+  go build     -trimpath     -ldflags="-s -w"     -buildvcs=false     -o kula ./cmd/kula/
 }
 
 package() {
