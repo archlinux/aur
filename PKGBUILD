@@ -1,7 +1,7 @@
 # Maintainer: wingsummer <wing-summer@qq.com>
 
 pkgname=winghexexplorer2-git
-pkgver=2.3.4.r0.g7eab9ed
+pkgver=2.3.5.r0.g74667a1
 pkgrel=1
 pkgdesc='一个自由强大跨平台的十六进制编辑器（每日构建版） / A free, powerful, cross-platform hex editor (Nightly Builds)'
 url="https://github.com/Wing-summer/WingHexExplorer2"
@@ -11,7 +11,7 @@ license=(AGPL-3.0-only)
 conflicts=(winghexexplorer2)
 
 depends=('qt6-base')
-makedepends=('git' 'cmake' 'gcc' 'clang' 'qt6-tools' 'qt6-translations' 'nodejs')
+makedepends=('git' 'cmake' 'gcc' 'clang' 'qt6-tools' 'qt6-translations' 'nodejs' 'ninja')
 optdepends=('qt6-translations: translations')
 source=("git+$url.git#branch=main")
 sha256sums=('SKIP')
@@ -49,7 +49,7 @@ build() {
         -D WINGHEX_ANGEL_LSP=ON
         -D WINGHEX_OPTIMIZE_FOR_NATIVE=ON
     )
-    cmake -S . -B build "${_flags[@]}"
+    cmake -G Ninja -S . -B build "${_flags[@]}"
     cmake --build build -- -j"$(nproc)"
 }
 
