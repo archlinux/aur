@@ -1,6 +1,6 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgname=python-nemo-toolkit
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="NeMo - a toolkit for Conversational AI and Speech/NLP processing by NVIDIA"
 arch=('any')
@@ -55,8 +55,8 @@ makedepends=(
   'python-installer'
   'python-wheel'
 )
-source=("https://files.pythonhosted.org/packages/88/aa/3893b002ac6d0e4d6047b97c93760568bf345227009620b96a78acca9def/nemo_toolkit-${pkgver}.tar.gz")
-sha256sums=('057b3a58808995005ee820c8ea4802bb995625a3859f7ea90a32b5fc1d62913a')
+source=("https://files.pythonhosted.org/packages/00/f5/bf9f27a390a0fcfb7b3c932ca692ddeb22881962c846a9226d693f21dc02/nemo_toolkit-${pkgver}.tar.gz")
+sha256sums=('8c9a1a4ca4b8fbb0f03d1a3e5f577d6c68d7f424a35bc148cbe3feb7d8890dcd')
 
 build() {
   cd "nemo_toolkit-${pkgver}"
