@@ -1,4 +1,0 @@
-["llama.cpp-opencl"]
-source = "git"
-git = "https://github.com/ggerganov/llama.cpp.git"
-include_regex = "b\\d+"
