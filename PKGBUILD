@@ -2,7 +2,7 @@
 # Maintainer: lewta <77890109+lewta@users.noreply.github.com>
 
 pkgname='sendit-bin'
-pkgver=0.14.2
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Traffic generation tool for HTTP, DNS, WebSocket, and headless-browser targets.'
 url='https://github.com/lewta/sendit'
@@ -12,16 +12,16 @@ provides=('sendit')
 conflicts=('sendit')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/lewta/sendit/releases/download/v${pkgver}/sendit_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('c0813a26009ff52c67d98abe2818f9e20992168b0fa7ef2dcd2d581bdf1d5f7b')
+sha256sums_aarch64=('4516afa6923b488136ca0a795cf6efead20d03396ea48cb28c6798e40f95cd1f')
 
 source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/lewta/sendit/releases/download/v${pkgver}/sendit_${pkgver}_linux_armv7.tar.gz")
-sha256sums_armv7h=('1915651a16206ed4a3a57c596a9e6edab076bd8b692b30f4a7aa890113a5c0e2')
+sha256sums_armv7h=('fe5d8a26e4e596bacda83aea353055e7aae37a87c108c6a5d62bcf6968da036b')
 
 source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/lewta/sendit/releases/download/v${pkgver}/sendit_${pkgver}_linux_386.tar.gz")
-sha256sums_i686=('d1bd3603bc6b61a649f6184ccb793fb65ee46e51e3093487386641bcf61df479')
+sha256sums_i686=('56d5450b66a577ae40648d0d0e6b824dde58b2b4e897984471b4d0854e5f0b26')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/lewta/sendit/releases/download/v${pkgver}/sendit_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('df9ce8305dd38b517a9912317dbde418f957abb65b0e3974074d8e8bb879caca')
+sha256sums_x86_64=('5323de6e83a9aca4269845a2e62fa72ef06fdaa725bfe226b4d158dec25fd9ed')
 
 package() {
   install -Dm755 "./sendit" "${pkgdir}/usr/bin/sendit"
