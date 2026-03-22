@@ -2,37 +2,71 @@
 
 pkgname=cursor-early-access-bin
 pkgver=2.6.20
-pkgrel=1
-pkgdesc='AI-first coding environment (early access channel)'
+_upstream_pkgver=2.6.20
+pkgrel=3
+pkgdesc='AI-first coding environment (early access channel, bundled Electron)'
 arch=('x86_64')
 url="https://www.cursor.com"
 license=('LicenseRef-Cursor_EULA')
 provides=('cursor')
-conflicts=('cursor-bin' 'cursor-nightly-bin' 'cursor-early-access-bin')
-_electron=electron
-depends=(xdg-utils ripgrep $_electron nodejs
-  'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
-options=(!strip !debug) # Don't break ext of VSCode
+conflicts=('cursor-bin' 'cursor-nightly-bin' 'cursor-ide-bin')
+depends=(
+  'alsa-lib'
+  'dbus'
+  'gcc-libs'
+  'gtk3'
+  'libdrm'
+  'libsecret'
+  'libxkbfile'
+  'mesa'
+  'nss'
+  'xdg-utils'
+)
+optdepends=(
+  'libnotify: desktop notifications'
+  'org.freedesktop.secrets: credential storage via SecretService'
+  'libdbusmenu-glib: KDE global menu support'
+)
+options=(!strip !debug)
 _commit=b29eb4ee5f9f6d1cb2afbc09070198d3ea6ad76f
-source=("https://downloads.cursor.com/production/${_commit}/linux/x64/deb/amd64/deb/cursor_${pkgver}_amd64.deb"
-https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh rg.sh)
+source=(
+  "cursor_${_upstream_pkgver}_amd64.deb::https://downloads.cursor.com/production/${_commit}/linux/x64/deb/amd64/deb/cursor_${_upstream_pkgver}_amd64.deb"
+  cursor.desktop
+  cursor-launcher.sh
+)
 sha512sums=('SKIP'
-  '937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37'
-  'e79fe7659f59d1ae02fc68816399bfd31587315df6cdb6ccf1d0ca76f7cdc692c2a42b30591c0091147bd97ef14b1c7745dc26bd7cb3ea6bba45698e5044fa2a')
+  '008c71cc0c4afec88ebfb177a6f40e3d178db9b622bec520c73c548a94cb674a5bd1b9f2f2a4329775183ca7a7a3ca65cb37a28c5d4d2667b1d65ee9342c54f0'
+  'd506855a2fe848b9ed24c4d56ec75ce8cd4c5402127f78d31bde8e474fccfd1b5d85bfd4d5688eefdd16622ceaad6727f678c0239f6ac3c66244330cc27cc9a8')
 sha512sums[0]=7dece54f570954e6ab0ffab47ae7ddc4832bb58b8bf85baaf85705c5f8c1a9f8c4860353f005a446ef319ee8abdb153363c5ecbc5dfb99dd94a63e357919f967
-noextract=(cursor_${pkgver}_amd64.deb) # avoid double tarball
-_app=usr/share/cursor/resources/app
+noextract=("cursor_${_upstream_pkgver}_amd64.deb")
+
 package() {
-  # Exclude electron
-  bsdtar -xOf ${noextract[0]} data.tar.xz | tar -xJf - -C "$pkgdir" \
-    --exclude 'usr/share/cursor/[^r]*' --exclude 'usr/share/cursor/*.pak'
-  cd "$pkgdir"
-  mv usr/share/zsh/{vendor-completions,site-functions}
-  ln -sf /usr/bin/node ${_app}/resources/helpers/node
-  install -Dm755 "${srcdir}/rg.sh" ${_app}/node_modules/@vscode/ripgrep/bin/rg
-  ln -sf /usr/bin/xdg-open ${_app}/node_modules/open/xdg-open
-  sed -e "s|code-flags|cursor-flags|" -e "s|/usr/lib/code|/${_app}|" -e "s|/usr/lib/code/code.mjs|--app=/${_app}|" \
-    -e "s|name=electron|name=${_electron}|" "${srcdir}"/code.sh | install -Dm755 /dev/stdin "${pkgdir}"/usr/share/cursor/cursor
-  install -d "$pkgdir"/usr/bin
-  ln -sf /usr/share/cursor/cursor "$pkgdir"/usr/bin/cursor
+  # Extract full deb — keep bundled Electron intact.
+  bsdtar -xOf "cursor_${_upstream_pkgver}_amd64.deb" data.tar.xz |
+    tar -xJf - -C "$pkgdir"
+
+  # Fix zsh completion path for Arch
+  if [[ -d "$pkgdir/usr/share/zsh/vendor-completions" ]]; then
+    mv "$pkgdir/usr/share/zsh/vendor-completions" \
+       "$pkgdir/usr/share/zsh/site-functions"
+  fi
+
+  install -Dm644 "$srcdir/cursor.desktop" \
+    "$pkgdir/usr/share/applications/cursor.desktop"
+
+  install -Dm755 "$srcdir/cursor-launcher.sh" "$pkgdir/usr/bin/cursor"
+
+  _license="$pkgdir/usr/share/cursor/resources/app/LICENSE.txt"
+  if [[ ! -f "$_license" ]]; then
+    _license=$(find "$pkgdir/usr/share/cursor" -maxdepth 8 -type f \( -name 'LICENSE.txt' -o -name 'LICENSE' \) -print -quit 2>/dev/null)
+  fi
+  if [[ -f "$_license" ]]; then
+    install -Dm644 "$_license" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  else
+    echo "Warning: Cursor license file not found in .deb; skipping /usr/share/licenses install" >&2
+  fi
+
+  if [[ -f "$pkgdir/usr/share/cursor/chrome-sandbox" ]]; then
+    chmod 4755 "$pkgdir/usr/share/cursor/chrome-sandbox"
+  fi
 }
