@@ -24,6 +24,8 @@ optdepends=('polly: for potentially increased performance'
             'codelite: IDE for projects'
             'kdevelop: IDE for projects'
             'clion: IDE for projects'
+            'rider: IDE for projects'
+            'code: IDE for projects'
             'pacman-contrib: for the paccache cleaning hook'
             'fake-ms-fonts: Font support for "demo/free/sample/example/tutorial" projects'
             'ttf-ms-fonts: Font support for "demo/free/sample/example/tutorial" projects')
