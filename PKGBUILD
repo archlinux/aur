@@ -1,20 +1,20 @@
 # Maintainer: Timur Bagautdinov <mr.bagautdinov14 at gmail dot com>
 
 pkgname="voxelcore"
-pkgver=0.30.9
+pkgver=0.31.0
 pkgrel=1
 pkgdesc="Minecraft-like game engine in C++ with OpenGL"
 url="https://github.com/MihailRis/$pkgname"
 license=("custom")
 arch=('x86_64')
 options=("lto" "strip" "!debug")
-depends=("gcc-libs" "bash" "glibc" "hicolor-icon-theme" "libglvnd" "zlib" "glfw" "glew" "glm" "libpng" "libvorbis" "openal" "luajit" "curl")
+depends=("gcc-libs" "bash" "glibc" "hicolor-icon-theme" "libglvnd" "zlib" "glfw" "glew" "glm" "libpng" "libvorbis" "openal" "luajit" "curl" "freetype2")
 makedepends=("cmake" "sed" "entt")
 source=(
     "$url/archive/refs/tags/v$pkgver.zip"
     "voxelcore.sh"
 )
-sha256sums=("d650895ae35b3ef1b948505a75e3ad403f77652e2274f01eb6203994b460d015"
+sha256sums=("d6caaf177934d8355d1ff71d71ce839c3baf6d86e01149277778afb011ad4283"
             "9766b3fcdd35932709d9f8f7bd8c322d139f830440eb649bdff9a45cc14ef02e")
 
 prepare() {
