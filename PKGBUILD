@@ -2,8 +2,8 @@
 
 pkgname=deltacp
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="a copy tool designed to incremental/differential backup for block device or large file"
+pkgrel=2
+pkgdesc="A copy tool designed for incremental and differential backups of block devices or large files by utilizing reflink (CoW)"
 url="https://codeberg.org/sharow/deltacp"
 license=('MIT')
 depends=('xxhash')
