@@ -1,6 +1,6 @@
 pkgbase = greed
 	pkgdesc = A game of consumption. Eat as much as you can before munching yourself into a corner!
-	pkgver = 4.3
+	pkgver = 4.4
 	pkgrel = 1
 	url = http://www.catb.org/~esr/greed/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = greed
 	depends = glibc
 	depends = ncurses
 	backup = usr/share/greed/greed.hs
-	source = greed-4.3.tar.gz::https://gitlab.com/esr/greed/-/archive/edb1716c8ad8ffb108dd150a4b8ed2a46592e7cf/greed-edb1716c8ad8ffb108dd150a4b8ed2a46592e7cf.tar.gz
+	source = greed-4.4.tar.gz::https://gitlab.com/esr/greed/-/archive/ba2b0e0c1503aff795aba56ef182fe850233f743/greed-ba2b0e0c1503aff795aba56ef182fe850233f743.tar.gz
 	source = Arch_PKG.patch
-	sha256sums = dac9787951834ee2b02cff7ebf30399d2205f63747d1799cd92c843d91cf42f0
-	sha256sums = 35aa5787d3d415e4f173266dfacab865db88a600e8f82f98e56b725a175ba37c
+	sha256sums = 977159107376c589cabfbee38a24ad2d624280f09bac72dbacefead43b86a721
+	sha256sums = ce9de7f2abaf6306800840afafbcac2b2deda42353f857ec76ab0103c087feaf
 
 pkgname = greed
