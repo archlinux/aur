@@ -1,7 +1,7 @@
 pkgbase = winghexexplorer2
 	pkgdesc = 一个自由强大跨平台的十六进制编辑器 / A free, powerful, cross-platform hex editor
 	pkgver = 2.3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wing-summer/WingHexExplorer2
 	install = winghexexplorer2.install
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = winghexexplorer2
 	makedepends = qt6-tools
 	makedepends = qt6-translations
 	makedepends = nodejs
+	makedepends = ninja
 	depends = qt6-base
 	optdepends = qt6-translations: translations
 	conflicts = winghexexplorer2-git
