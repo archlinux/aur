@@ -1,7 +1,7 @@
 pkgbase = madypass
 	pkgdesc = Secure password manager with a PyQt5 graphical interface and Fernet encryption
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/madyel/madypass-aur
 	arch = any
 	license = GPL-3.0-only
