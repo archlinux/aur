@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Ismet Togay <ismet.togay@gmail.com>
 pkgname=threadstepper-git
 pkgver=r122.bb0f93a
 pkgrel=5
