@@ -1,0 +1,12 @@
+[Unit]
+Description=Local SOCKS5 proxy server for partial bypassing of Telegram loading
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/tg-ws-proxy-cli --port %i
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
