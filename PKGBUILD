@@ -1,6 +1,6 @@
 # Maintainer: Ishan Parihar <ishanparihar@gmail.com>
 pkgname='notion-calendar-electron-fixed'
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='A Electron-based Notion Calendar client (opens external links in default browser)'
 arch=('x86_64')
