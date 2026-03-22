@@ -1,7 +1,7 @@
 # Maintainer: Jason Scurtu <jscurtu@gmail.com>
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=plasma6-applets-appgrid
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="A modern fullscreen application launcher for KDE Plasma"
 arch=('x86_64')
@@ -32,7 +32,7 @@ makedepends=(
     'extra-cmake-modules'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/xarbit/plasma6-applet-appgrid/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('559c8b90af2efecfe2c8581de9d034ffadea7a940c22d7f4017d63c339d1b174')
+sha256sums=('517bf2ca7b31a189174d9d8aca3777742f420df715ef75c6d4277c398c2de96f')
 
 build() {
     cmake -B build -S "plasma6-applet-appgrid-${pkgver}" \
