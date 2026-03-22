@@ -1,0 +1,18 @@
+pkgbase = primer-bin
+	pkgdesc = Build real software step-by-step with Claude, Codex, OpenCode, Gemini, Cursor, and other agents
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/armgabrielyan/primer
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = primer
+	conflicts = primer
+	source_x86_64 = primer-x86_64-0.1.0.tgz::https://github.com/armgabrielyan/primer/releases/download/v0.1.0/primer-0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 9e8a3e0aae20b75525d80a4fbd7f2bc018a5220803f0ec09b555c834305f2631
+	source_aarch64 = primer-aarch64-0.1.0.tgz::https://github.com/armgabrielyan/primer/releases/download/v0.1.0/primer-0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 58886fbd719be53961da1f674371152ae4b1e3faab36038782dbd7e1b293ee5b
+
+pkgname = primer-bin

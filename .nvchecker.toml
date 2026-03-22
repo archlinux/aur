@@ -1,0 +1,5 @@
+[primer-bin]
+source = "github"
+github = "armgabrielyan/primer"
+use_latest_release = true
+prefix = "v"
