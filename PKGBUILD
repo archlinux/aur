@@ -2,7 +2,7 @@
 
 pkgname=ymir-emu
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sega Saturn Emulator"
 arch=("x86_64")
 url="https://github.com/StrikerX3/Ymir"
@@ -17,7 +17,7 @@ source=(
 )
 sha256sums=(
     "SKIP"
-    "35458feda17c3b8d7d8b66f87f6f8e01462b6146b1c85c7c9a7d048dbb5bd722"
+    "f5e56bef2d099a16ea07863e0d24e348d534f18927961090c16f82c953400acc"
 )
 
 prepare() {
