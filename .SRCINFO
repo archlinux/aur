@@ -1,6 +1,6 @@
 pkgbase = notion-calendar-electron-fixed
-	pkgdesc = A Electron-based Notion Calendar client (with popup fix)
-	pkgver = 1.0.5
+	pkgdesc = A Electron-based Notion Calendar client (opens external links in default browser)
+	pkgver = 1.0.6
 	pkgrel = 1
 	epoch = 0
 	url = https://www.notion.so/product/calendar
@@ -10,7 +10,7 @@ pkgbase = notion-calendar-electron-fixed
 	makedepends = git
 	depends = electron
 	provides = notion-calendar-electron
-	source = https://github.com/ishan-parihar/notion-calendar-electron/archive/refs/tags/v1.0.5.tar.gz
+	source = https://github.com/ishan-parihar/notion-calendar-electron/archive/refs/tags/v1.0.6.tar.gz
 	sha256sums = SKIP
 
 pkgname = notion-calendar-electron-fixed
