@@ -1,12 +1,12 @@
 pkgbase = tdocker
 	pkgdesc = A minimalistic terminal UI for everyday Docker operations
-	pkgver = 0.2.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/pivovarit/tdocker
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	source = https://github.com/pivovarit/tdocker/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = d9607eeeacf7051162c8d8d379ff931b12d7806d6ea888ea24f5cc1625f6530c
+	source = https://github.com/pivovarit/tdocker/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 7472cacf0bdd9b4addf1114034ce0271b099cbbc9e0373f2b420a7d54a2cbe2a
 
 pkgname = tdocker

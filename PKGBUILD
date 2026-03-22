@@ -2,7 +2,7 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=tdocker
-pkgver=0.2.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc='A minimalistic terminal UI for everyday Docker operations'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/pivovarit/tdocker"
 license=('MIT')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 makedepends=('go')
-sha256sums=('d9607eeeacf7051162c8d8d379ff931b12d7806d6ea888ea24f5cc1625f6530c')
+sha256sums=('7472cacf0bdd9b4addf1114034ce0271b099cbbc9e0373f2b420a7d54a2cbe2a')
 
 build() {
     cd "${srcdir}/$pkgname-$pkgver"
