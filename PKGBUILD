@@ -15,21 +15,21 @@ sha256sums=('abf055c2de72e181c1f8000b100a33fa5f340e53b69c4f2b0f0fa1126b1c2f7f')
 prepare() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
-  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  cargo fetch --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo build --frozen --release --package mcp-cli
+  cargo build --release --package mcp-cli
 }
 
 check() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
-  cargo test --frozen --package mcp-cli
+  cargo test --package mcp-cli
 }
 
 package() {
