@@ -1,7 +1,7 @@
 # Maintainer: Jasmin <theblazehen@gmail.com>
 pkgname=openchamber
 _npmname=@openchamber/web
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Desktop and web interface for OpenCode AI agent"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/@openchamber/web/-/web-${pkgver}.tgz")
 noextract=("web-${pkgver}.tgz")
-sha256sums=('9ffb58d24c4fd103efe5105c9a0d1f4d59d502b68d337e1ed158083214f6bb7e')
+sha256sums=('bfe74452cd9b32d982b683285ad369e8d067d7fc044bb1732bec845ea48338e9')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --prefix "${pkgdir}/usr" \
@@ -43,6 +43,15 @@ package() {
     done
 
     rm -f "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/bun-pty/rust-pty/target/release/librust_pty_arm64.so"
+    rm -f "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/node-pty/prebuilds/linux-arm64/pty.node"
+
+    if [ -f "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/node-pty/prebuilds/linux-x64/pty.node" ]; then
+        if file "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/node-pty/prebuilds/linux-x64/pty.node" | grep -qi 'x86-64'; then
+            strip --strip-unneeded "$pkgdir/usr/lib/node_modules/@openchamber/web/node_modules/node-pty/prebuilds/linux-x64/pty.node" || true
+        fi
+    fi
+
+    find "$pkgdir/usr/lib/node_modules" -type f \( -name '*.so' -o -name '*.node' \) -exec sh -c 'file "$1" | grep -qi x86-64 && strip --strip-unneeded "$1" || true' sh {} \;
 
     mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
     printf "%s\n" "MIT" > "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
