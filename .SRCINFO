@@ -1,0 +1,13 @@
+pkgbase = mcp-probe
+	pkgdesc = Interactive CLI debugger and TUI for MCP servers
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/conikeec/mcp-probe
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = mcp-probe-0.3.0.tar.gz::https://github.com/conikeec/mcp-probe/archive/v0.3.0.tar.gz
+	sha256sums = abf055c2de72e181c1f8000b100a33fa5f340e53b69c4f2b0f0fa1126b1c2f7f
+
+pkgname = mcp-probe
