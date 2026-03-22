@@ -2,40 +2,40 @@
 
 pkgname=proton-authenticator-git
 _name=${pkgname%-git}
-pkgver=r53403.5262a2e
+pkgver=1.1.4.r56647.gd607eb0
 pkgrel=1
 pkgdesc='2FA app from Proton to securely sync and backup 2FA codes'
-arch=('x86_64')
+arch=(x86_64)
 url='https://proton.me/authenticator'
-license=('GPL-3.0-or-later')
-depends=('cairo'
-         'dbus'
-         'gcc-libs'
-         'gdk-pixbuf2'
-         'glib2'
-         'glibc'
-         'gtk3'
-         'hicolor-icon-theme'
-         'libsoup3'
-         'webkit2gtk-4.1')
-makedepends=('cargo' 'git' 'nodejs-lts-jod' 'yarn')
-provides=("$_name")
-conflicts=("$_name")
-source=("ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git"
-        "$_name.desktop"
-        'add-missing-dnd-kit-sortable.patch')
+license=(GPL-3.0-or-later)
+depends=(cairo
+         dbus
+         gdk-pixbuf2
+         glib2
+         glibc
+         gtk3
+         hicolor-icon-theme
+         libgcc
+         libsoup3
+         webkit2gtk-4.1)
+makedepends=(cargo git jq nodejs-lts-jod yarn)
+provides=($_name)
+conflicts=($_name)
+source=(ProtonWebClients::git+https://github.com/ProtonMail/WebClients.git
+        $_name.desktop)
 b2sums=('SKIP'
-        '2d31d11d97e4a8163b199eed52d920d6ef68bb51e91aa6270e00350a3f9f8f4d265a1dfc995eb6a6e3a4a7ba4a52c49dfe66da32c146f36a5c2c44b68bcda531'
-        'a4671d5b0b6a52b2e03986465ac396de600d71cc3d613a425d41f528950dcfb6a825ea6bfa27d0289b38a1ad426a8ff156ed58071f77492a68b1ca58848d7195')
+        '2d31d11d97e4a8163b199eed52d920d6ef68bb51e91aa6270e00350a3f9f8f4d265a1dfc995eb6a6e3a4a7ba4a52c49dfe66da32c146f36a5c2c44b68bcda531')
 
 pkgver() {
     cd ProtonWebClients
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+    printf "%s.r%s.g%s" \
+        "$(cargo metadata --manifest-path applications/authenticator/src-tauri/Cargo.toml --no-deps --format-version 1 | jq -r '.packages[0].version')" \
+        "$(git rev-list --count HEAD)" \
+        "$(git rev-parse --short=7 HEAD)"
 }
 
 prepare() {
     cd ProtonWebClients
-    patch -Np1 -i "$srcdir/add-missing-dnd-kit-sortable.patch"
 
     # Configure Yarn workspaces to build only authenticator instead of all applications
     sed -i 's/"applications\/\*",/"applications\/authenticator",/' package.json
@@ -49,7 +49,11 @@ prepare() {
 
     cd applications/authenticator/src-tauri
     export RUSTUP_TOOLCHAIN=stable
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+    # Upstream Cargo.toml inconsistencies (remove each when fixed upstream):
+    # - specta/specta-typescript: tauri-specta 2.0.0-rc.21 requires specta =2.0.0-rc.22
+    # - rand: bumped to 0.10.0 but code not updated for breaking changes
+    cargo add specta@=2.0.0-rc.22 specta-typescript@=0.0.9 rand@=0.9.2
+    cargo fetch --locked --target host-tuple
 }
 
 build() {
