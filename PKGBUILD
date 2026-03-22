@@ -4,7 +4,7 @@ _pkgname=linuxblaster_control
 _basepkgname=linuxblaster-control
 pkgname=$_basepkgname
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A native Linux GUI application to control the Creative Sound BlasterX G6 USB DAC/Amp, with full AutoEq integration.'
 arch=(x86_64)
 url='https://github.com/RizeCrime/linuxblaster_control'
@@ -17,6 +17,7 @@ depends=(
 )
 makedepends=(
     cargo
+    git
 )
 provides=($pkgname)
 conflicts=($_basepkgname-git)
