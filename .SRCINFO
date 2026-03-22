@@ -1,0 +1,14 @@
+pkgbase = nexa-bin
+	pkgdesc = High-performance, Rust-based MPRIS controller and daemon
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Windblows2000/Nexa
+	install = nexa.install
+	arch = x86_64
+	license = GPL3-or-later
+	provides = nexa
+	conflicts = nexa
+	source = https://github.com/Windblows2000/Nexa/releases/download/v1.2.0/nexa-v1.2.0-x86_64-linux.tar.gz
+	sha256sums = 48a1a49442fbfd3ff40d8990a894f74bfbbb81788b7d4df0876e5a10a39bd49d
+
+pkgname = nexa-bin
