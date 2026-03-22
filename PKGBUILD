@@ -1,7 +1,7 @@
 # Maintainer: kezuwoo <kezu15@proton.me>
 
 pkgname=kitsune
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="AniLiberty player"
 arch=('any')
@@ -39,18 +39,4 @@ build() {
 package() {
     cd "$srcdir/Kitsune"
     DESTDIR="$pkgdir" meson install -C build
-
-    # Копируем схемы и иконки в $pkgdir
-    mkdir -p "$pkgdir/usr/share/glib-2.0/schemas"
-    cp -f data/net.armatik.Kitsune.gschema.xml "$pkgdir/usr/share/glib-2.0/schemas/"
-
-    mkdir -p "$pkgdir/usr/share/icons/hicolor"
-    mkdir -p "$pkgdir/usr/share/applications"
-    cat > "$pkgdir/usr/share/applications/net.armatik.Kitsune.desktop" <<EOF
-[Desktop Entry]
-Name=Kitsune
-Exec=/usr/bin/kitsune
-Type=Application
-Categories=AudioVideo;Player;
-EOF
 }
