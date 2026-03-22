@@ -3,7 +3,7 @@
 # Contributor: mock
 
 pkgname=ttf-nishiki-teki
-pkgver=3.99zie
+pkgver=3.99zif
 pkgrel=1
 pkgdesc='Unicode-based font inspired by a free shell of Ukagaka called “Nishiki”'
 arch=('any')
@@ -11,7 +11,7 @@ url='https://umihotaru.work'
 license=('custom')
 source=("$pkgname-$pkgver.zip::http://umihotaru.fool.jp/nishiki-teki.zip"
         'LICENSE')
-sha256sums=('225d5de4a404ee3205bc12e127db4955f6f4d0eca4fee555011a4665c81e290b'
+sha256sums=('b8c5b2948343e604f42eee0ab5d4aff0df32a594aaa21a372153408b33e8e060'
             'a60b2362ac0885bc4d7b013ccbbe38e2aeded839b3d88993add246d9076f72ad')
 
 package() {
