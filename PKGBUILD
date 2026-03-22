@@ -1,10 +1,10 @@
 # Maintainer: Voylin <voylinslife@gmail.com>
 
 _gitname="GoZen"
-_godot_version="4.5.1-stable"
+_godot_version="4.7.0-dev2"
 
 pkgname=gozen-git
-pkgver=20260113
+pkgver=20260222
 pkgrel=1
 pkgdesc="A minimalistic video editor (git)"
 arch=('x86_64')
@@ -49,7 +49,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_gitname}"
 	git submodule update --init --recursive
-	
+
 	# Set version in project.godot.
 	local commit_hash="$(git rev-parse --short HEAD)"
 	msg "Git build for hash: ${commit_hash}..."
@@ -66,7 +66,7 @@ prepare() {
     else
 		msg "Godot export templates found in cache."
 	fi
-	
+
 	msg "Extracting Godot editor..."
 	unzip -o "${srcdir}/godot-editor-${_godot_version}.zip" -d "${srcdir}"
 	chmod +x "${srcdir}/Godot_v${_godot_version}_linux.x86_64"
@@ -74,23 +74,23 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${_gitname}"
-	
+
 	# Compile GDE GoZen
 	msg "Compiling GDExtension GoZen..."
 	cd core
 	scons -j$(nproc) platform=linux arch=x86_64 target=template_debug use_system=yes
 	scons -j$(nproc) platform=linux arch=x86_64 target=template_release use_system=yes
 	cd ..
-	
+
 	msg "Exporting Godot project for Linux..."
 	mkdir -p "${srcdir}/export_output"
-	
+
 	"${srcdir}/Godot_v${_godot_version}_linux.x86_64" \
 		--import "src/godot.project" --headless
 	"${srcdir}/Godot_v${_godot_version}_linux.x86_64" \
 		--headless --path "src" --export-release "Linux_x86_64" \
 	  	"${srcdir}/export_output/GoZen.x86_64"
-	
+
 	if [ ! -f "${srcdir}/export_output/GoZen.x86_64" ]; then
 	  error "Godot export failed. Check export preset name and paths."
 	  return 1
@@ -104,19 +104,19 @@ build() {
 
 package() {
 	cd "${srcdir}/${_gitname}"
-	
+
 	# Install application to /opt.
 	install -d "${pkgdir}/opt/${pkgname}"
-	
+
 	# Copy all contents from the export_output directory.
 	cp -r "${srcdir}/export_output/"* "${pkgdir}/opt/${pkgname}/"
-	
+
 	# Ensure executable permissions.
 	chmod +x "${pkgdir}/opt/${pkgname}/GoZen.x86_64"
-	
+
 	# And any .so files if they were copied there.
 	find "${pkgdir}/opt/${pkgname}" -name '*.so' -exec chmod +x {} \;
-	
+
 	# Create a symlink.
 	install -d "${pkgdir}/usr/bin"
 	ln -s "/opt/${pkgname}/GoZen.x86_64" "${pkgdir}/usr/bin/${pkgname}"
