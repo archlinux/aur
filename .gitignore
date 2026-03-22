@@ -5,6 +5,7 @@ dwm/
 *.tar.xz
 *.pkg.tar.zst
 *.log
+AGENTS.md
 !PKGBUILD
 !.SRCINFO
 !.gitignore
