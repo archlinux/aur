@@ -1,0 +1,15 @@
+post_install() {
+    echo ""
+    echo "==> TOKENICODE installed successfully!"
+    echo "==> For fcitx5 input method support, install fcitx5-gtk:"
+    echo "    pacman -S fcitx5-gtk"
+    echo ""
+    echo "==> Note: On Wayland, the launcher defaults to X11 backend"
+    echo "    for better input method compatibility."
+    echo "    Set GDK_BACKEND=wayland to override."
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
