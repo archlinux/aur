@@ -1,12 +1,14 @@
+# Maintainer: tu-usuario <tu@email.com>
+#
 # rubrika — Firma digital de PDFs con DNIe
-# https://github.com/vrieraj/rubrika
+# https://github.com/tu-usuario/rubrika
 
 pkgname=rubrika
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="Firma digital de PDFs con DNIe o certificado .p12 — interfaz nativa KDE"
 arch=('any')
-url='https://github.com/vrieraj/rubrika'
+url='https://github.com/tu-usuario/rubrika'
 license=('GPL3')
 depends=(
     # ── Sistema ──────────────────────────────────────────────────────────────
@@ -22,7 +24,7 @@ depends=(
     'python-pymupdf'            # renderizado de páginas PDF como imágenes
     'python-python-pkcs11'      # interfaz PKCS#11 para el DNIe
     'python-pillow'             # procesado de imagen para la rúbrica
-    'pyside6'            # interfaz gráfica nativa Qt/KDE
+    'pyside6'                   # interfaz gráfica nativa Qt/KDE
     'python-asn1crypto'         # extracción del nombre del certificado X.509
     'python-numpy'              # conversión de pixels en la rúbrica
 
@@ -36,9 +38,9 @@ optdepends=(
 )
 install=rubrika.install
 source=(
-    "rubrika-${pkgver}.tar.gz::https://github.com/vrieraj/rubrika/archive/refs/tags/v${pkgver}.tar.gz"
+    "rubrika-${pkgver}.tar.gz::https://github.com/tu-usuario/rubrika/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=('b9638d2f39806a9926bf7f1bf8ed0d46ed8aa8b7ad8ce2ac6f47280db97e88dc')
+sha256sums=('b9638d2f39806a9926bf7f1bf8ed0d46ed8aa8b7ad8ce2ac6f47280db97e88dc')   # actualizar con el hash real al publicar en el AUR
 
 package() {
     cd "rubrika-${pkgver}"
@@ -50,6 +52,12 @@ package() {
     # ── Wrapper ejecutable ────────────────────────────────────────────────────
     install -Dm755 /dev/stdin "${pkgdir}/usr/bin/rubrika" << 'EOF'
 #!/bin/bash
+# Si pyhanko no está disponible en el sistema, instalarlo en vendor
+if ! python -c "import pyhanko" 2>/dev/null; then
+    echo "Instalando dependencias faltantes en /usr/share/rubrika/vendor..."
+    pip install pyhanko --target=/usr/share/rubrika/vendor --quiet
+fi
+export PYTHONPATH=/usr/share/rubrika/vendor:$PYTHONPATH
 exec python /usr/share/rubrika/main.py "$@"
 EOF
 

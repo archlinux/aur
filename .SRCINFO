@@ -2,7 +2,7 @@ pkgbase = rubrika
 	pkgdesc = Firma digital de PDFs con DNIe o certificado .p12 — interfaz nativa KDE
 	pkgver = 1.0.1
 	pkgrel = 1
-	url = https://github.com/vrieraj/rubrika
+	url = https://github.com/tu-usuario/rubrika
 	install = rubrika.install
 	arch = any
 	license = GPL3
@@ -20,7 +20,7 @@ pkgbase = rubrika
 	depends = python-pyhanko
 	optdepends = breeze: tema Breeze nativo de KDE
 	optdepends = xdg-utils: abrir el PDF firmado desde la aplicación
-	source = rubrika-1.0.1.tar.gz::https://github.com/vrieraj/rubrika/archive/refs/tags/v1.0.1.tar.gz
+	source = rubrika-1.0.1.tar.gz::https://github.com/tu-usuario/rubrika/archive/refs/tags/v1.0.1.tar.gz
 	sha256sums = b9638d2f39806a9926bf7f1bf8ed0d46ed8aa8b7ad8ce2ac6f47280db97e88dc
 
 pkgname = rubrika
