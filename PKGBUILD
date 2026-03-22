@@ -1,7 +1,7 @@
 # Maintainer: Rolv Apneseth <rolv.apneseth@gmail.com>
 
 pkgname=rgd
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Installed game detection utility for Linux"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ depends=(
 )
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('e35520fbbf2d66a9fe740f52867d52819cb524765544bb04a683347d01aac235f1166a00650abd37a365523949d7f7a7059d6c0a97ca2de9531512ddd3ed7f30')
+sha512sums=('5d157c3bdc835c3d48e4f5ab22b669a8eebd91e6a1bdaa7077c2be1253fcdfac6ad0487b540452445347120ac1323bf11f7599a64357ae0da58fd02fa60b9eda')
 options=(!debug !lto)
 
 prepare()
