@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=csdr-skimmer
-pkgver=1.10
+pkgver=1.12
 pkgrel=1
 pkgdesc="CSDR-based CW and RTTY skimmers"
 arch=('x86_64' 'aarch64')
