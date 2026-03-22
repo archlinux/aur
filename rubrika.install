@@ -1,0 +1,19 @@
+post_install() {
+    echo "Activando el demonio del lector de tarjetas..."
+    systemctl enable --now pcsclite 2>/dev/null || true
+    echo ""
+    echo "rubrika instalado correctamente."
+    echo "Ejecuta 'rubrika' o búscalo en el menú de aplicaciones."
+    echo ""
+    echo "Si el DNIe no se detecta, verifica que el servicio está activo:"
+    echo "  systemctl status pcsclite"
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    echo "Desactivando el demonio del lector de tarjetas..."
+    systemctl disable --now pcsclite 2>/dev/null || true
+}
