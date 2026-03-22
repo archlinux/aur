@@ -1,7 +1,7 @@
 # Maintainer: NEOAPPS <asd22.info@gmail.com>
 # Maintainer: Santiago Fisela <santyfisela@gmail.com>
 pkgname=emerald-legacy-launcher
-pkgver=1.0.0
+pkgver=r138.1963fb0
 pkgrel=1
 pkgdesc="FOSS, cross-platform launcher for Minecraft Legacy Console Edition"
 arch=('x86_64')
@@ -29,5 +29,5 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
-  cp -a src-tauri/target/release/bundle/deb/${pkgname}_*_*/data/* "${pkgdir}"
+  cp -a src-tauri/target/release/bundle/deb/Emerald*_*_*/data/* "${pkgdir}"
 }
