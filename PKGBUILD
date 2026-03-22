@@ -38,7 +38,7 @@ prepare() {
 }
 
 build() {
-  make USE_JCTVC=Y -C "$pkgname-$pkgver"
+  make -j"$(nproc)" USE_JCTVC=Y -C "$pkgname-$pkgver"
 }
 
 package() {
