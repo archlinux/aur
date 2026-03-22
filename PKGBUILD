@@ -1,5 +1,5 @@
 pkgname=ken-git
-pkgver=r1.0.1
+pkgver=r15.5582b6d.hahalol
 pkgrel=1
 pkgdesc="A sharp AUR/Pacman helper written in Go. Git version."
 arch=('x86_64' 'aarch64')
@@ -7,14 +7,15 @@ url="https://github.com/nespaset/ken"
 license=('Apache')
 depends=('pacman' 'git' 'binutils')
 makedepends=('go')
-provides=('ken' 'kn' 'sk')
+provides=('ken' 'kn')
 conflicts=('ken' 'ken-bin' 'sake-git' 'sk')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  # r[коммиты].[хеш].hahalol — теперь это будет в версии пакета)) хехе даров всем
+  printf "r%s.%s.hahalol" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
