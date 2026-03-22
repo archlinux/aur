@@ -1,6 +1,6 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=multiqc
-pkgver=1.32
+pkgver=1.33
 pkgrel=1
 pkgdesc="Aggregate results from bioinformatics analyses across many samples into a single report"
 arch=('any')
@@ -37,7 +37,7 @@ depends=(
 )
 makedepends=(python-build python-installer python-wheel)
 source=($pkgname-$pkgver.tar.gz::https://github.com/MultiQC/MultiQC/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=('b6a5622f284f7de883784caf08dacc4e634bd17cff45b4e9f336273abd9e24e4')
+sha256sums=('d7ff73deaeaa1b6ebf09c4ec37ea7ede9e06bbea0e13e57d83c3f0b447827b75')
 
 build() {
   cd MultiQC-$pkgver
