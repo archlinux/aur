@@ -1,0 +1,18 @@
+pkgbase = duck-git
+	pkgdesc = A simple C program that prints an ASCII duck with many flags and a sudo surprise
+	pkgver = 1.1
+	pkgrel = 2
+	url = https://github.com/levvg-gif/duck-git
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	depends = glibc
+	provides = duck
+	conflicts = duck
+	source = git+https://github.com/levvg-gif/duck-git.git
+	md5sums = SKIP
+
+pkgname = duck-git
