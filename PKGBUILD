@@ -1,35 +1,34 @@
 # Maintainer: Hamza Gbada <hamza.gbada@gmail.com>
 
-pkgname=docker-model
-pkgver=1.1.17
+pkgname=docker-model-bin
+pkgver=1.1.18
 pkgrel=1
-pkgdesc="Docker CLI plugin for running AI models (model-cli; upstream repo version 1.1.17, CLI version differs)"
+pkgdesc="Docker CLI plugin for running AI models (prebuilt binary)"
 arch=('x86_64')
-url="https://github.com/docker/model-runner"
+url="https://www.docker.com/"
 license=('Apache-2.0')
 depends=('docker')
-makedepends=('git' 'go')
+makedepends=('docker')
 provides=('docker-model')
-conflicts=('docker-model-bin')
+conflicts=('docker-model')
 
-source=("git+https://github.com/docker/model-runner.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+# no source — binary pulled from Docker image
+source=()
+sha256sums=()
 
 build() {
-    cd model-runner/cmd/cli
+    echo "Pulling docker-model image v${pkgver}..."
+    docker pull docker/docker-model-cli-desktop-module:v${pkgver}
 
-    export CGO_ENABLED=0
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-
-    go build -o docker-model .
+    echo "Extracting docker-model binary..."
+    cid=$(docker create docker/docker-model-cli-desktop-module:v${pkgver} nop)
+    docker export "$cid" | tar -xOf - cli-plugins/model/linux/docker-model > docker-model
+    docker rm "$cid"
 }
 
 package() {
-    cd model-runner
+    install -Dm755 "$srcdir/docker-model" "$pkgdir/usr/lib/docker/cli-plugins/docker-model"
 
-    install -Dm755 "cmd/cli/docker-model" \
-        "$pkgdir/usr/lib/docker/cli-plugins/docker-model"
-
-    install -Dm644 LICENSE \
-        "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    # Optional: include license
+    install -Dm644 "${srcdir%/src}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
