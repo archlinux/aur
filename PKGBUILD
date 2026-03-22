@@ -1,6 +1,6 @@
 # Maintainer: nihil5320 <https://github.com/nihil5320>
 pkgname=proton-launcher
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Shell-integrated launcher for running Windows applications via Proton on Linux'
 arch=('x86_64')

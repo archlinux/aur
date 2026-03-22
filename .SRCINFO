@@ -1,6 +1,6 @@
 pkgbase = proton-launcher
 	pkgdesc = Shell-integrated launcher for running Windows applications via Proton on Linux
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/nihil5320/proton-launcher
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = proton-launcher
 	optdepends = gamemode: performance optimization
 	optdepends = gamescope: gaming compositor support
 	optdepends = umu-launcher: recommended Proton launcher backend (umu-run)
-	source = proton-launcher-0.1.0.tar.gz::https://github.com/nihil5320/proton-launcher/archive/v0.1.0.tar.gz
+	source = proton-launcher-0.1.1.tar.gz::https://github.com/nihil5320/proton-launcher/archive/v0.1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = proton-launcher
