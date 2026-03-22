@@ -1,0 +1,17 @@
+pkgbase = sourcery
+	pkgdesc = Meta-programming for Swift, stop writing boilerplate code.
+	pkgver = 2.3.0
+	pkgrel = 2
+	url = https://github.com/krzysztofzablocki/Sourcery
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = swift-bin
+	options = !buildflags
+	options = !makeflags
+	options = !debug
+	options = !strip
+	source = git+https://github.com/krzysztofzablocki/Sourcery.git#tag=2.3.0
+	sha256sums = SKIP
+
+pkgname = sourcery
