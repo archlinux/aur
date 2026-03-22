@@ -1,3 +1,4 @@
+# Maintainer: Andreas Wendleder <gonsolo@gmail.com>
 pkgname=sourcery
 pkgver=2.3.0
 pkgrel=2
