@@ -1,12 +1,12 @@
 pkgbase = tmmpr-bin
-	pkgdesc = Terminal mind mapper
+	pkgdesc = Terminal Mind Mapper
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/tanciaku/tmmpr
 	arch = x86_64
 	license = MIT
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
 	provides = tmmpr
 	conflicts = tmmpr
 	source = README-0.1.1.md::https://raw.githubusercontent.com/tanciaku/tmmpr/v0.1.1/README.md
