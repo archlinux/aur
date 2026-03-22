@@ -9,7 +9,7 @@ pkgname=(
   "${pkgbase}-gui"
 )
 pkgver=2.47.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Exports Discord chat logs to a file"
 arch=(
   'aarch64'
@@ -84,8 +84,6 @@ build() {
     --pkgname "${pkgbase}-gui" \
     --pkgdesc "${pkgdesc}" \
     --name "Discord Chat Exporter (GUI)" \
-    --exec "${pkgbase}-gui" \
-    --icon "${pkgbase}" \
     --categories "Utility"
 
   cd "${_pkgsrc}"
@@ -113,7 +111,6 @@ package_discord-chat-exporter-core() {
 
   install -vDm644 "Readme.md"   "${pkgdir}/usr/share/doc/${pkgbase}/README.md"
   install -vDm644 "License.txt" "${pkgdir}/usr/share/licenses/${pkgbase}/LICENSE"
-  install -vDm644 "favicon.png" "${pkgdir}/usr/share/pixmaps/${pkgbase}.png"
 }
 
 package_discord-chat-exporter-cli() {
@@ -143,4 +140,6 @@ package_discord-chat-exporter-gui() {
   install -vd "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/${pkgbase}"
   cp -vaT --no-preserve=ownership "build-gui" "${pkgdir}/usr/lib/${pkgbase}"
   # ln -vsf "/usr/lib/${pkgbase}/${_Name}" "${pkgdir}/usr/bin/${pkgname}"
+
+  install -vDm644 "favicon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
