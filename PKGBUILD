@@ -1,7 +1,7 @@
 # Maintainer: madyel
 pkgname=madypass
-pkgver=1.1
-pkgrel=4
+pkgver=1.1.4
+pkgrel=1
 pkgdesc="Secure password manager with a PyQt5 graphical interface and Fernet encryption"
 arch=('any')
 url="https://github.com/madyel/madypass-aur"
