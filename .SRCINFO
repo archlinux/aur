@@ -1,17 +1,22 @@
 pkgbase = sendit-bin
-        pkgdesc = Traffic generation tool for HTTP, DNS, WebSocket, and headless-browser targets.
-        pkgver = 0.14.2
-        pkgrel = 1
-        url = https://github.com/lewta/sendit
-        arch = x86_64
-        arch = aarch64
-        license = MIT
-        provides = sendit
-        conflicts = sendit
-        source_x86_64 = https://github.com/lewta/sendit/releases/download/v0.14.2/sendit_0.14.2_linux_amd64.tar.gz
-        sha256sums_x86_64 = SKIP
-        source_aarch64 = https://github.com/lewta/sendit/releases/download/v0.14.2/sendit_0.14.2_linux_arm64.tar.gz
-        sha256sums_aarch64 = SKIP
-
-  pkgname = sendit-bin
-
+	pkgdesc = Traffic generation tool for HTTP, DNS, WebSocket, and headless-browser targets.
+	pkgver = 0.14.2
+	pkgrel = 1
+	url = https://github.com/lewta/sendit
+	license = MIT
+	conflicts = sendit
+	provides = sendit
+	arch = aarch64
+	source_aarch64 = https://github.com/lewta/sendit/releases/download/v0.14.2/sendit_0.14.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = c0813a26009ff52c67d98abe2818f9e20992168b0fa7ef2dcd2d581bdf1d5f7b
+	arch = armv7h
+	source_armv7h = https://github.com/lewta/sendit/releases/download/v0.14.2/sendit_0.14.2_linux_armv7.tar.gz
+	sha256sums_armv7h = 1915651a16206ed4a3a57c596a9e6edab076bd8b692b30f4a7aa890113a5c0e2
+	arch = i686
+	source_i686 = https://github.com/lewta/sendit/releases/download/v0.14.2/sendit_0.14.2_linux_386.tar.gz
+	sha256sums_i686 = d1bd3603bc6b61a649f6184ccb793fb65ee46e51e3093487386641bcf61df479
+	arch = x86_64
+	source_x86_64 = https://github.com/lewta/sendit/releases/download/v0.14.2/sendit_0.14.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = df9ce8305dd38b517a9912317dbde418f957abb65b0e3974074d8e8bb879caca
+	
+pkgname = sendit-bin
