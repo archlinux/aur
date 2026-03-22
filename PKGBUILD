@@ -4,12 +4,14 @@ _pkgname=idnits
 pkgname="ietf-${_pkgname}"
 pkgver='3.0.0'
 _alpharel=74
-pkgrel=1
+pkgrel=2
 pkgdesc='Check internet-drafts for submission nits'
 arch=('any')
 url='https://author-tools.ietf.org/idnits3/'
 license=('BSD-3-Clause')
-depends=()
+depends=(
+  'nodejs'
+)
 makedepends=(
   'npm'
   'jq'
