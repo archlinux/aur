@@ -13,15 +13,8 @@ source=("https://github.com/ishan-parihar/notion-calendar-electron/archive/refs/
 sha256sums=('SKIP')
 
 prepare() {
-    mkdir -p "${pkgname}-${pkgver}"
-    tar -xf "v${pkgver}.tar.gz" -C "${srcdir}/${pkgname}-${pkgver}"
     cd "${srcdir}/${pkgname}-${pkgver}"
     npm install --no-fund --no-audit
-}
-
-build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    npm run build
 }
 
 package() {
@@ -29,8 +22,16 @@ package() {
     mkdir -p "${pkgdir}/usr/share/notion-calendar-electron"
     mkdir -p "${pkgdir}/usr/bin"
     mkdir -p "${pkgdir}/usr/share/applications"
-    cp -r "dist/linux-unpacked"/* "${pkgdir}/usr/share/notion-calendar-electron"
-    cp -P "${srcdir}/${pkgname}-${pkgver}/notion-calendar-electron" "${pkgdir}/usr/bin/"
-    cp "${srcdir}/${pkgname}-${pkgver}/icon.png" "${pkgdir}/usr/share/notion-calendar-electron/"
-    cp "${srcdir}/${pkgname}-${pkgver}/notion-calendar-electron.desktop" "${pkgdir}/usr/share/applications/"   
+    mkdir -p "${pkgdir}/usr/share/pixmaps"
+    
+    # Copy app files
+    cp index.js "${pkgdir}/usr/share/notion-calendar-electron/"
+    cp -r node_modules "${pkgdir}/usr/share/notion-calendar-electron/"
+    cp icon.png "${pkgdir}/usr/share/notion-calendar-electron/"
+    cp notion-calendar-electron.desktop "${pkgdir}/usr/share/applications/"
+    
+    # Create launcher script
+    echo '#!/bin/sh' > "${pkgdir}/usr/bin/notion-calendar-electron"
+    echo 'exec electron /usr/share/notion-calendar-electron/index.js "$@"' >> "${pkgdir}/usr/bin/notion-calendar-electron"
+    chmod +x "${pkgdir}/usr/bin/notion-calendar-electron"
 }
