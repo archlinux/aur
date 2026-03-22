@@ -29,7 +29,7 @@ optdepends=('polly: for potentially increased performance'
             'ttf-ms-fonts: Font support for "demo/free/sample/example/tutorial" projects')
 license=('custom:UnrealEngine' 'GPL3')
 source=("${UE_SDK_VERSION}.tar.gz::https://cdn.unrealengine.com/Toolchain_Linux/${UE_SDK_VERSION}.tar.gz"
-        'unreal-engine'
+        'unreal-engine.sh'
         'com.unrealengine.UE5Editor.desktop'
         'use_system_clang.patch'
         'override_shared_target_build.patch'
@@ -324,7 +324,7 @@ package() {
   mkdir -p "${pkgdir}/${_ue5_install_dir}/Engine/Binaries/Android/"
   
   # Launch script to initialize missing user folders for Unreal Engine
-  install -Dm755 ../unreal-engine "${pkgdir}/usr/bin/"
+  install -Dm755 ../unreal-engine.sh "${pkgdir}/usr/bin/unreal-engine"
   chmod +x "${pkgdir}/usr/bin/unreal-engine"
   ln -s "${pkgdir}/usr/bin/unreal-engine" "${pkgdir}/usr/bin/ue5"
   ln -s "${pkgdir}/usr/bin/unreal-engine" "${pkgdir}/usr/bin/UE5"
