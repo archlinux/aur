@@ -1,0 +1,5 @@
+[audiobookshelf]
+source = "git"
+git = "https://github.com/advplyr/audiobookshelf.git"
+prefix = "v"
+exclude_regex = '.*(alpha|beta|rc).*'

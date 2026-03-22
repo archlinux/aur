@@ -4,7 +4,7 @@
 
 pkgname=audiobookshelf
 pkgver=2.33.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Self-hosted audiobook server for managing and playing audiobooks"
 arch=("x86_64" "aarch64")
