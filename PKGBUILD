@@ -6,7 +6,7 @@ pkgdesc='A minimalistic screen annotation tool for Wayland'
 arch=('x86_64' 'aarch64')
 url='https://github.com/dessaya/waydoodle'
 license=('MIT')
-depends=('gcc-libs' 'glibc')
+depends=('gcc-libs' 'wayland')
 makedepends=('git' 'cargo')
 source=("git+${url}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
