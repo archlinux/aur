@@ -1,6 +1,6 @@
 pkgbase = pd-bin
 	pkgdesc = Perfect Dark Reimplimentation engine bin package compiled from the official repository: https://github.com/fgsfdsfgs/perfect_dark
-	pkgver = 5084b4b
+	pkgver = b86cc88
 	pkgrel = 1
 	url = https://gitlab.com/linuxbombay/perfectdark
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = pd-bin
 	depends = alsa-lib
 	depends = alsa-plugins
 	depends = pipewire
-	source_x86_64 = https://gitlab.com/linuxbombay/perfectdark/binaries/5084b4b/-/raw/main/pd-x86_64-linux.tar.xz
-	sha256sums_x86_64 = 268568b4619a5281ef26ebc5cc30c9c4ab9733847ad03684cd6a9ec3d359bb25
-	source_i686 = https://gitlab.com/linuxbombay/perfectdark/binaries/5084b4b/-/raw/main/pd-i686-linux.tar.xz
-	sha256sums_i686 = 6a74c125b9afe332d7ff3f179abdbb1b42d26ed738c38c1614bcc778db4cc76f
-	source_aarch64 = https://gitlab.com/linuxbombay/perfectdark/binaries/5084b4b/-/raw/main/pd-arm64-linux.tar.xz
-	sha256sums_aarch64 = 4045c3091dc4b7593b315ef086bc21ea361d5f0a68b8bad2a9506966a7a13a77
+	source_x86_64 = https://gitlab.com/linuxbombay/perfectdark/binaries/b86cc88/-/raw/main/pd-x86_64-linux.zip
+	sha256sums_x86_64 = cef905aef80dfcb9f3637aaf3d5b44156fedf6b4f0528740c712348f60051e77
+	source_i686 = https://gitlab.com/linuxbombay/perfectdark/binaries/b86cc88/-/raw/main/pd-i686-linux.zip
+	sha256sums_i686 = a9c10a70d5e109544d1b37cb2c4e812640605b3339e735800e2d197ede91af32
+	source_aarch64 = https://gitlab.com/linuxbombay/perfectdark/binaries/b86cc88/-/raw/main/pd-arm64-linux.zip
+	sha256sums_aarch64 = 738cd6278c3736d6e0c9335f9ff7ebd8eaf8aa6f52d22998764e090035a42239
 
 pkgname = pd-bin
