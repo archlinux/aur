@@ -1,6 +1,22 @@
 *.pkg.zip
 *.pkg.tar.gz
 
+# makepkg working dirs
+src/
+pkg/
+
 # Logs
 *.log
 
+# Temporary files
+*.tmp
+*.bak
+*~
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# OS-specific
+.DS_Store
+Thumbs.db

@@ -1,6 +1,6 @@
 # Maintainer: Sankalp Tharu <contact@sankalptharu.com.np>
 pkgname=lapctl
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Control Linux laptop hardware (Graphics, Battery, Power, Cooling, Display) with Rust"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,9 @@ optdepends=(
     'xorg-xrandr: for GPU switching on X11'
     'nvidia-settings: for NVIDIA GPU management on X11'
 )
+install=lapctl.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('fda8c8dd9a170cbd54b549a57194dc36f1cdff7387cb85f70d1c1ae55c315259')
+sha256sums=('d17d6f751f9b2ee5d3c50c6988cae53a17a6dc3409dcaa1edb4dacae277ff16d')
 
 prepare() {
     cd "${pkgname}-${pkgver}"

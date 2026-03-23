@@ -1,0 +1,22 @@
+post_install() {
+    systemctl daemon-reload
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    if systemctl is-active lapctld.service >/dev/null; then
+        echo "Restarting lapctld service..."
+        systemctl restart lapctld.service
+    fi
+}
+
+pre_remove() {
+    if systemctl is-active lapctld.service >/dev/null; then
+        echo "Stopping lapctld service..."
+        systemctl stop lapctld.service
+    fi
+}
+
+post_remove() {
+    systemctl daemon-reload
+}
