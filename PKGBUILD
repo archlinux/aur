@@ -1,6 +1,6 @@
 pkgname=rorqual-venv
 _pkgname=rorqual
-pkgver=7
+pkgver=8
 pkgrel=1
 pkgdesc="A TUI Subsonic client"
 arch=(any)
@@ -9,11 +9,11 @@ makedepends=(git python-pip)
 depends=(python mpv)
 options=(!strip)
 
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/janbuchar/rorqual/archive/refs/tags/release-7.tar.gz"
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/janbuchar/rorqual/archive/refs/tags/release-8.tar.gz"
 	"requirements.txt"
 	"rorqual")
 
-sha256sums=("8ad4d1e2452d9db43dae95f8d4d47ebd2c9d193c4a1d50c47209bdcf3f6797d4"
+sha256sums=("393a53a58ba162bf7bc7edbf4e740677e9176b59feeef31480c4cda87cb3c9f0"
             "5250285c573a5b88300131ee3d955a426b5ca9b1617cab68fc3f592933aab046"
             "216924f61c4b550a85ccaead34a353ea828d5a5182495aec91e20d2c18dcafdf")
 
