@@ -2,18 +2,32 @@
 # Contributor: OpenAI Codex
 
 pkgname=openproject-cli
+_distname=openproject_cli
 pkgver=0.1.0
-pkgrel=1
+pkgrel=4
 pkgdesc="Command-line client for OpenProject API v3"
 arch=('any')
 url="https://github.com/decent-tools-for-thought/openproject-cli"
 license=('0BSD')
 depends=('python')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e13702746257695a6e4e2122474cdd489cdda8807dc1a94b7d64046798d46554')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=(
+  "$_distname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$_distname-$pkgver.tar.gz"
+)
+sha256sums=(
+  '489c0d4dbe085c8d27304eedcf5e71ac877e01ae0f5869846438c191be0f3967'
+)
+
+build() {
+  cd "$srcdir/$_distname-$pkgver"
+  /usr/bin/python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 openproject_cli.py "$pkgdir/usr/bin/openproject-cli"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  cd "$srcdir/$_distname-$pkgver"
+  /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 README.md \
+    "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
