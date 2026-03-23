@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=media-hoarder-bin
 _pkgname='Media Hoarder'
-pkgver=1.4.8
-_electronversion=13
+pkgver=1.5.0
+_electronversion=40
 pkgrel=1
 pkgdesc="The media frontend for data hoarders and movie lovers.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -12,6 +12,8 @@ provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
+    'mediainfo'
+    'vlc'
 )
 makedepends=(
     'asar'
@@ -21,7 +23,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/theMK2k/Media-Hoarder/v${pkgver}/LICENSE.md"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('04f27dff984e1c6dafb1149bf44afb9613f23451ac45bf03b6b35eaf60ff5495'
+sha256sums=('c0cfaf5a35a57e6a66b02ad05b4e4df4bdec999654cb14aecf8fff5542e43e85'
             '3c67fce0428a3d133bb589cd1db329789ec235049af1412511f89420c99ae9a6'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -41,9 +43,9 @@ prepare() {
     sed -i "s/\"\/opt\/${_pkgname}\/${pkgname%-bin}\"/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${pkgname%-bin}.desktop"
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
     rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar"
-    sed -i "s/data\/${pkgname%-bin}.db_initial/..\/..\/${pkgname%-bin}\/data\/${pkgname%-bin}.db_initial/g" \
-        "${srcdir}/app.asar.unpacked/js/app."*.js
+    find "${srcdir}/app.asar.unpacked/dist/" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/opt/${_pkgname}/resources/app.asar"
+    rm -rf "${srcdir}/opt/${_pkgname}/resources/bin"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
