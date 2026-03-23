@@ -10,7 +10,6 @@ pkgbase = rog-helper
 	depends = ruby
 	depends = asusctl
 	depends = supergfxctl
-	depends = asusd
 	source = rog-helper::git+https://github.com/itsameandrea/rog-helper.git
 	sha256sums = SKIP
 

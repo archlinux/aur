@@ -11,7 +11,6 @@ depends=(
   'ruby'
   'asusctl'
   'supergfxctl'
-  'asusd'
 )
 makedepends=(
   'ruby-bundler'
