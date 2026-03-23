@@ -1,13 +1,14 @@
 pkgbase = dream-nox
 	pkgdesc = A software radio for AM and Digital Radio Mondiale (DRM), w/o GUI
 	pkgver = 2.2.4
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/wwek/dream
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL-2.0-or-later
 	makedepends = git
+	makedepends = libpcap
 	depends = libfdk-aac
 	depends = faad2
 	depends = libpulse
@@ -22,6 +23,6 @@ pkgbase = dream-nox
 	provides = dream
 	conflicts = dream
 	source = dream::git+https://github.com/wwek/dream#tag=v2.2.4
-	sha256sums = SKIP
+	sha256sums = 5830ec297aa0c7e725e72b1b3ff49218acf0840dce756adc58246b122305ab6d
 
 pkgname = dream-nox
