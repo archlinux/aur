@@ -1,5 +1,5 @@
 pkgname=jverein
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="A club management plugin for jameica."
 arch=('any')
@@ -9,7 +9,7 @@ depends=('java-runtime>=1.5' 'jameica>=2.12' 'hibiscus>=2.12')
 makedepends=('unzip')
 install=$pkgname.install
 source=("${pkgname}-${pkgver}.zip::https://github.com/openjverein/jverein/releases/download/${pkgver}/jverein.${pkgver}.zip")
-sha256sums=('3dbadb3e29160535dfa3378f4b284a558b7383bc50bda0d46e47ec231c2e09dc')
+sha256sums=('e3f252b7e16a3ec127f1c8cf4d8bc4a37dd62691ac1a6df454eaa698da42ceb5')
 
 package() {
     mkdir -p "$pkgdir/opt/jameica/plugins"
