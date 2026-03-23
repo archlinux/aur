@@ -8,8 +8,8 @@ pkgname=(
   librsvg-noglycin
   librsvg-noglycin-docs
 )
-pkgver=2.61.3
-pkgrel=2
+pkgver=2.61.4
+pkgrel=1
 pkgdesc="SVG rendering library, compatible with gdk-pixbuf2-noglycin"
 url="https://wiki.gnome.org/Projects/LibRsvg"
 arch=(x86_64)
@@ -18,11 +18,11 @@ depends=(
   cairo
   dav1d
   freetype2
-  gcc-libs
   gdk-pixbuf2-noglycin
   glib2
   glibc
   harfbuzz
+  libgcc
   libxml2
   pango
 )
@@ -42,7 +42,7 @@ source=(
   # librsvg tags use SSH signatures which makepkg doesn't understand
   "git+https://gitlab.gnome.org/GNOME/librsvg.git#tag=$pkgver"
 )
-b2sums=('1595786064565bb00c14ff6a3d6555b0cef5eedb12f4c5dde47aa69d66caaeb3f5cd257c1004d7bb5830456545cfde02998104fb80317749bb7ca7cb886404b4')
+b2sums=('2e3839de21a227b1f548ee879fdf67eb60422a0632ba06ae6192997876504beead18248825d6b76336fb3435d7aadc291c788ad7fdc8d93058e140059edf8116')
 
 # Use debug
 export CARGO_PROFILE_RELEASE_DEBUG=2 CARGO_PROFILE_RELEASE_STRIP=false
@@ -52,7 +52,7 @@ export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 
 prepare() {
   cd librsvg
-  cargo fetch --locked --target "$(rustc --print host-tuple)"
+  cargo fetch --locked --target host-tuple
 }
 
 build() {
