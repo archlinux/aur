@@ -4,7 +4,7 @@
 
 pkgname=llama.cpp-opencl
 pkgver=b8475
-pkgrel=2
+pkgrel=3
 _build_number=8475
 _commit_id=49bfdde
 pkgdesc="Port of Facebook's LLaMA model in C/C++(with OpenCL Backend support)"
@@ -29,8 +29,9 @@ optdepends=(
   'python-transformers: needed for convert_hf_to_gguf.py'
 )
 conflicts=(libggml ggml llama.cpp llama.cpp-vulkan llama.cpp-cuda llama.cpp-clblast)
+provides=(llama.cpp)
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
+  "llama.cpp-${pkgver}.tar.gz::https://github.com/ggml-org/llama.cpp/archive/refs/tags/${pkgver}.tar.gz"
   llama.cpp.conf
   llama.cpp.service
 )
@@ -93,7 +94,7 @@ build() {
 package() {
   DESTDIR="${pkgdir}" cmake --install build
 
-  install -Dm644 "llama.cpp/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "llama.cpp/LICENSE" "${pkgdir}/usr/share/licenses/llama.cpp/LICENSE"
 
   install -Dm644 "llama.cpp.conf" "${pkgdir}/etc/conf.d/llama.cpp"
   install -Dm644 "llama.cpp.service" "${pkgdir}/usr/lib/systemd/system/llama.cpp.service"
