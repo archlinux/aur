@@ -7,7 +7,7 @@ _xkbver=0.3.0
 _mvzrver=0.3.7
 _fcftver=2.0.0
 _pixmanver=0.3.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/kewuaa/kwm"
 license=('GPL-3.0')
@@ -37,6 +37,20 @@ prepare() {
 
   # Get Zig Wayland
   zig fetch --global-cache-dir ./zig-global-cache "${_zigwl_source}"
+}
+
+check(){
+  cd "$srcdir/$pkgname-$pkgver"  
+  zig build test \
+      --summary all \
+      --prefix /usr \
+      --search-prefix /usr \
+      --global-cache-dir ../zig-global-cache \
+      --system ../zig-global-cache/p \
+      --build-id=sha1 \
+      -Dtarget=native-linux.6.6-gnu.2.40 \
+      -Dcpu=baseline \
+      -Doptimize=ReleaseSafe 
 }
 
 build() {
