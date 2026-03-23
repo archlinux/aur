@@ -6,11 +6,11 @@ pkgbase = rrun
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = go
+	makedepends = go>=1.22
 	depends = openssh
 	depends = rsync
 	depends = git
 	source = rrun-0.1.0.tar.gz::https://github.com/bstee615/rrun/archive/v0.1.0.tar.gz
-	sha256sums = a9d28b40341b50e1e287e2fa9437ed4408be40e9076c18f3a066f7523ac7958c
+	sha256sums = cc0deaa110a33ed5a777fdffb6763e1a3a87233bf697900a243a286db5301df4
 
 pkgname = rrun
