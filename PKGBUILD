@@ -1,7 +1,7 @@
 # Maintainer: Andrea <your-email@example.com>
 
 pkgname=rog-helper
-pkgver=0.1.0
+pkgver=r15.e731c03
 pkgrel=1
 pkgdesc="A TUI for managing ASUS ROG laptops"
 arch=('any')
