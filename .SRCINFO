@@ -1,13 +1,17 @@
 pkgbase = vet-bin
-	pkgdesc = Gerrit client using pull request workflow
-	pkgver = 3.19
+	pkgdesc = Protect against malicious open source packages
+	pkgver = 1.15.0
 	pkgrel = 1
-	url = https://github.com/Cosium/vet
+	url = https://github.com/safedep/vet
 	arch = x86_64
-	license = MIT
+	arch = aarch64
+	license = Apache-2.0
 	depends = glibc
-	source = https://github.com/Cosium/vet/releases/download/3.19/vet-linux_x64.deb.zip
-	sha256sums = f4e810b9d87679be235c6e8ddfd7b77a2cac6cb69bb991997f2cc5f213036e81
+	provides = vet
+	conflicts = vet
+	source_x86_64 = vet-x86_64-1.15.0.tgz::https://github.com/safedep/vet/releases/download/v1.15.0/vet_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = a0586816c26233617d15fdf495f90219b1a3c5f9d73f5ffea309bbcf809b84fb
+	source_aarch64 = vet-aarch64-1.15.0.tgz::https://github.com/safedep/vet/releases/download/v1.15.0/vet_Linux_arm64.tar.gz
+	sha256sums_aarch64 = f4edbdcbcd8a49524b73a24906d0378bdefc0beb98c1607da41d50467b868d37
 
 pkgname = vet-bin
-

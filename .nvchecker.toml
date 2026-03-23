@@ -1,0 +1,5 @@
+[vet-bin]
+source = "github"
+github = "safedep/vet"
+use_latest_release = true
+prefix = "v"
