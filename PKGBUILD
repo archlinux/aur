@@ -1,6 +1,6 @@
 # Maintainer: Michael Shaw <michaelsshaw44@gmail.com>
-# Maintainer: Peter Jung <admin@ptr1337.dev>
-# Maintainer: Diego Roux <diegoroux04 at protonmail dot com>
+# Contributor: Peter Jung <admin@ptr1337.dev>
+# Contributor: Diego Roux <diegoroux04 at protonmail dot com>
 # Contributor: grant0417 <grant0417@protonmail.com>
 # Contributor: Araragi Hokuto <kanseihonbucho@protonmail.com>
 # Contributor: Marc Boocha <marcboocha@gmail.com>
