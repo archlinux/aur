@@ -2,7 +2,7 @@
 # Contributor: sem.z <sem.z at protonmail dot com>
 
 pkgname="orca-slicer-unstable-bin"
-pkgver=2.3.2
+pkgver=2.3.2_stable
 _pkgver=2.3.2
 pkgrel=1
 pkgdesc="G-code generator for 3D printers (versions including beta, release candidates and stable versions)"
