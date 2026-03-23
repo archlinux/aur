@@ -2,8 +2,8 @@
 # Contributor: Stephanie Wilde-Hobbs <hi@stephanie.is>
 
 pkgname=megacmd
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 url="https://github.com/meganz/MEGAcmd"
 arch=('x86_64')
@@ -22,11 +22,11 @@ depends=(
   'fuse2'
 )
 makedepends=('cmake' 'git')
-_sdkhash=1c13b13cb90c77f61e38d228b73a4a6fa8df67ca
+_sdkhash=5ed7296be8a7cd5920095b928d6696aed41289c6
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/meganz/MEGAcmd/archive/${pkgver}_Linux.tar.gz"
         "mega-sdk-${_sdkhash}.tar.gz::https://github.com/meganz/sdk/archive/${_sdkhash}.tar.gz")
-sha512sums=('7bc4a46007f515d45334acb737cbdb5d7cfb36cc2c4f41c0738b6c58b3b27b22545a9ccf13eb55bf2da6200fe86b8e6b2a0b98f96f2ba2655acf13106b3de964'
-            'dafc1fdf993af320bd025242440228112f67a8cb5af8966eeb58548844e5924f729489e41b50fd2071c69a5046f97d6a14b8c24bcbe3bbe20bc891bf8744c83e')
+sha512sums=('e0474aefa00b9d03a5327089d08334f580287731959b9279c581a34c907db5cc36ce2e889921c4fc2b2f4b60cf4e3409e1eedabe52dd3b40fb3cb2a872cc5ccb'
+            '61df5b803c3f5e705eb07667934b35368c0eb66ba0dd08d62f459eac04cf9336e132b5bf58d9a86ab97ef2d44e46a12d86b921d94b9d6a4dd7f7b8887254de34')
 
 prepare() {
   # Remove existing directory if it exists
