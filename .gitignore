@@ -1,3 +1,2 @@
-*.tar.*
+qiskit-ibm-runtime
 *.log
-*.sh

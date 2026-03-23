@@ -1,0 +1,21 @@
+diff --git a/test/unit/test_data_serialization.py b/test/unit/test_data_serialization.py
+index 6b6b4a85..fc43b406 100644
+--- a/test/unit/test_data_serialization.py
++++ b/test/unit/test_data_serialization.py
+@@ -15,6 +15,7 @@
+ import json
+ import os
+ import subprocess
++import sys
+ import tempfile
+ import warnings
+ from datetime import datetime
+@@ -238,7 +239,7 @@ if __name__ == '__main__':
+             with self.subTest(operator=operator):
+                 encoded = json.dumps(operator, cls=RuntimeEncoder)
+                 self.assertIsInstance(encoded, str)
+-                cmd = ["python", temp_fp.name, encoded]
++                cmd = [sys.executable, temp_fp.name, encoded]
+                 proc = subprocess.run(
+                     cmd,
+                     capture_output=True,
