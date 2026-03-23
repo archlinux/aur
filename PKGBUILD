@@ -16,10 +16,8 @@ pkgname=('unshitted-systemd'
          'unshitted-systemd-tests'
          'unshitted-systemd-ukify')
          
-# Upstream versioning is incompatible with pacman's version comparisons, one
-# way or another. We use proper version for pacman here (no dash for rc
-# release!), and change in source array below.
-pkgver=260
+         
+pkgver=261
 pkgrel=1
 arch=('x86_64')
 license=('LGPL-2.1-or-later')
@@ -198,9 +196,9 @@ package_unshitted-systemd() {
     'MIT-0' # documentation and config files
   )
   
-  provides=('systemd' 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
-  replaces=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
+  provides=("systemd=$pkgver" "nss-myhostname=$pkgver" "systemd-tools=$pkgver" "udev=$pkgver")
   conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
+  replaces=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
 
   depends=("unshitted-systemd-libs=${pkgver}"
            'acl' 'bash' 'cryptsetup' 'libcryptsetup.so' 'dbus'
@@ -323,9 +321,9 @@ package_unshitted-systemd-libs() {
     'GPL-2.0-or-later WITH Linux-syscall-note' # src/basic/linux/*
   )
   
-  provides=('systemd-libs' 'libsystemd' 'libsystemd.so' 'libudev.so')
-  replaces=('systemd-libs' 'libsystemd')
+  provides=("systemd-libs=$pkgver" "libsystemd=$pkgver" "libudev=$pkgver" 'libsystemd.so' 'libudev.so')
   conflicts=('systemd-libs' 'libsystemd')
+  replaces=('systemd-libs' 'libsystemd')
   
   install -d -m0755 "$pkgdir"/usr/share/man
   mv systemd-libs/lib "$pkgdir"/usr/lib
