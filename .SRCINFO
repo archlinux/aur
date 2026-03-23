@@ -1,0 +1,19 @@
+pkgbase = ethos-forge
+	pkgdesc = The Ethos Package Manager
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/AmanCode22/forge
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-pip
+	depends = ethos-lang
+	depends = python
+	depends = python-zstandard
+	depends = gcc
+	depends = patchelf
+	source = git+https://github.com/AmanCode22/forge.git#tag=v0.3.0
+	sha256sums = SKIP
+
+pkgname = ethos-forge
