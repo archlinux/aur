@@ -1,6 +1,6 @@
 pkgbase = cloudcmd
 	pkgdesc = Cloud Commander file manager for the web with console and editor.
-	pkgver = 19.8.5
+	pkgver = 19.8.6
 	pkgrel = 1
 	url = https://github.com/coderaiser/cloudcmd
 	changelog = changelog.md
@@ -13,12 +13,12 @@ pkgbase = cloudcmd
 	depends = python
 	provides = cloudcmd
 	replaces = nodejs-cloudcmd
-	noextract = cloudcmd-19.8.5.tgz
+	noextract = cloudcmd-19.8.6.tgz
 	options = !strip
 	options = emptydirs
 	options = staticlibs
 	options = zipman
-	source = cloudcmd-19.8.5.tgz::https://registry.npmjs.org/cloudcmd/-/cloudcmd-19.8.5.tgz
-	b2sums = fa4e781ba109b149942590591940d3bd557519cd420c29ca5bc67c4f82b7e0403f8a6f15da1ccd2425d3b449ccb386065dd7eaf8446b451dbb06772fa57ab9ec
+	source = cloudcmd-19.8.6.tgz::https://registry.npmjs.org/cloudcmd/-/cloudcmd-19.8.6.tgz
+	b2sums = e1c70bb2f76d6abfc8c428fee250ee8cf58fd74d9eb5bdb88465270d24d655d02f0860aada796641c00cad431265b40b65bbbf9c99dee6850cc04e0936c13885
 
 pkgname = cloudcmd
