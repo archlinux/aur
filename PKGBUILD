@@ -1,8 +1,9 @@
 # Maintainer: HeyCitizen <HeyCitizen@HeyCitizen.xyz>
 
 pkgname=podping-alpha-gossip-listener-git
+_pkgname=podping.alpha
 pkgver=r112.7facd0b
-pkgrel=1
+pkgrel=2
 pkgdesc="Decentralized podcast feed notification listener"
 arch=("x86_64" "aarch64")
 url="https://github.com/Podcastindex-org/podping.alpha"
@@ -15,7 +16,7 @@ options=(!debug !lto)
 provides=("podping-alpha-gossip-listener")
 conflicts=("podping-alpha-gossip-listener")
 source=(
-    "git+https://github.com/Podcastindex-org/podping.alpha.git"
+    "git+${url}.git"
     "podping-alpha-gossip-listener.conf"
     "podping-alpha-gossip-listener.service"
     "podping-alpha-gossip-listener.sysusers"
@@ -28,13 +29,10 @@ sha256sums=(
 )
 
 pkgver() {
-    cd "${srcdir}/podping.alpha"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd "${srcdir}/podping.alpha/gossip-listener"
-    cargo generate-lockfile
+    cd "${srcdir}/${_pkgname}"
+    printf "r%s.%s" \
+        "$(git rev-list --count HEAD)" \
+        "$(git rev-parse --short=7 HEAD)"
 }
 
 _set_rust_linker() {
@@ -49,19 +47,19 @@ _set_rust_linker() {
 }
 
 build() {
-    cd "${srcdir}/podping.alpha/gossip-listener"
+    cd "${srcdir}/${_pkgname}/gossip-listener"
     _set_rust_linker
-    cargo build --release --locked
+    cargo build --release
 }
 
 check() {
-    cd "${srcdir}/podping.alpha/gossip-listener"
+    cd "${srcdir}/${_pkgname}/gossip-listener"
     _set_rust_linker
-    cargo check --release --locked
+    cargo check --release
 }
 
 package() {
-    cd "${srcdir}/podping.alpha"
+    cd "${srcdir}/${_pkgname}"
 
     install -Dm755 "gossip-listener/target/release/gossip-listener" \
         "${pkgdir}/usr/bin/gossip-listener"
