@@ -22,6 +22,7 @@ depends=(
   'libadwaita'
   'libdex'
   'libmalcontent'
+  'libproxy'
   'libsecret'
   'libsoup3'
   'libxmlb'

@@ -24,6 +24,7 @@ pkgbase = bazaar-git
 	depends = libadwaita
 	depends = libdex
 	depends = libmalcontent
+	depends = libproxy
 	depends = libsecret
 	depends = libsoup3
 	depends = libxmlb
