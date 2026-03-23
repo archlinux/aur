@@ -1,0 +1,17 @@
+pkgbase = wt-go
+	pkgdesc = Git worktree manager with organized directory structure (Go implementation)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/douglas/wt
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.26
+	depends = glibc
+	depends = git
+	provides = wt
+	conflicts = wt
+	conflicts = wt-zig
+	source = wt-go-0.2.0.tar.gz::https://github.com/douglas/wt/archive/v0.2.0.tar.gz
+	sha256sums = c38d3a6e0d5857bce51560a9b107e4a48b75348b71f5f8a4e80c8ce33a4f6e3e
+
+pkgname = wt-go
