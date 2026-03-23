@@ -30,7 +30,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('24c30b6494ba072967d1249666adc3051c1998039827d66f108e704f6f4de6bb')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/bento-$pkgver"
 
   # Build the Python package
   python -m build --wheel --no-isolation
@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/bento-$pkgver"
 
   # Install the Python package
   python -m installer --destdir="$pkgdir" dist/*.whl
