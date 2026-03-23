@@ -1,7 +1,7 @@
 pkgbase = noctalia-shell
 	pkgdesc = A sleek and minimal desktop shell thoughtfully crafted for Wayland, built with Quickshell.
-	pkgver = 4.7.0
-	pkgrel = 2
+	pkgver = 4.7.1
+	pkgrel = 1
 	url = https://github.com/noctalia-dev/noctalia-shell
 	arch = any
 	license = MIT
@@ -18,7 +18,7 @@ pkgbase = noctalia-shell
 	optdepends = power-profiles-daemon: For power profile management
 	optdepends = ddcutil: For external display brightness control
 	conflicts = noctalia-shell-git
-	source = git+https://github.com/noctalia-dev/noctalia-shell.git#tag=v4.7.0
-	sha256sums = 9b8e76e4bccb353af6b9f8017c9d46150589da76780b4cd22a1b12a42d4dd3ad
+	source = git+https://github.com/noctalia-dev/noctalia-shell.git#tag=v4.7.1
+	sha256sums = 777d4295feef9ecfa6e947f79d011ff169e10d25c8d1b62a0b83aa62a002466e
 
 pkgname = noctalia-shell
