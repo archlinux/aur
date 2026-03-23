@@ -19,6 +19,8 @@ pkgbase = python-certihound-git
 	depends = python-pydantic>=2.0
 	depends = python-click>=8.1.6
 	depends = python-rich>=13.0.0
+	provides = python-certihound
+	conflicts = python-certihound
 	source = git+https://github.com/0x0Trace/certihound
 	b2sums = SKIP
 
