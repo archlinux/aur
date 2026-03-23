@@ -13,7 +13,9 @@ sha256sums=('SKIP')
 
 build() {
   cd "${pkgname}"
+  # Install Nuitka locally for build
   python3 -m pip install --user --break-system-packages nuitka
+  # Compile Ethos using memory-safe flags
   python3 -m nuitka --assume-yes-for-downloads --jobs=1 --lto=no --low-memory --onefile main.py --output-filename=ethos
 }
 
