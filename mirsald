@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+import os
+import subprocess
+import sys
+
+sys.path.insert(0, "/usr/lib/noon-mirsal")
+import protocol
+
+msg = protocol.read()
+
+if msg.get("type") == "downloads.add":
+    p        = msg.get("payload", {})
+    url      = p.get("url", "")
+    filename = p.get("filename", "").split("/")[-1] or url.split("/")[-1] or "download"
+    mime     = p.get("mime", "") or "application/octet-stream"
+    size     = str(p.get("size", -1))
+    dest     = os.path.join(os.path.expanduser("~"), "Downloads", filename)
+    subprocess.run(["noon", "ipc", "call", "global", "download",
+                    url, dest, filename, mime, str(size)])
+
+protocol.write({"status": "ok"})

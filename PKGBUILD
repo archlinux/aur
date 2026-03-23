@@ -7,55 +7,23 @@ arch=('any')
 url="https://github.com/pharmaracist/mirsal"
 license=('MIT')
 depends=('python')
-source=()
-sha256sums=()
+source=(
+    "mirsald::https://raw.githubusercontent.com/pharmaracist/mirsal/main/daemon/mirsald"
+    "protocol.py::https://raw.githubusercontent.com/pharmaracist/mirsal/main/daemon/protocol.py"
+    "noon_mirsal.json::https://raw.githubusercontent.com/pharmaracist/mirsal/main/daemon/noon_mirsal.json"
+)
+sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 package() {
     install -dm755 "${pkgdir}/usr/lib/noon-mirsal"
     install -dm755 "${pkgdir}/usr/lib/mozilla/native-messaging-hosts"
+    install -dm755 "${pkgdir}/usr/lib/firefox/native-messaging-hosts"
 
-    cat > "${pkgdir}/usr/lib/noon-mirsal/mirsald" << 'SCRIPT'
-#!/usr/bin/env python3
-import sys
-import json
-import struct
-import subprocess
-import os
+    install -Dm755 "${srcdir}/mirsald"      "${pkgdir}/usr/lib/noon-mirsal/mirsald"
+    install -Dm644 "${srcdir}/protocol.py"  "${pkgdir}/usr/lib/noon-mirsal/protocol.py"
 
-def read_message():
-    raw = sys.stdin.buffer.read(4)
-    if not raw or len(raw) < 4:
-        sys.exit(1)
-    length = struct.unpack('<I', raw)[0]
-    return json.loads(sys.stdin.buffer.read(length))
-
-def write_message(obj):
-    data = json.dumps(obj).encode()
-    sys.stdout.buffer.write(struct.pack('<I', len(data)))
-    sys.stdout.buffer.write(data)
-    sys.stdout.buffer.flush()
-
-msg = read_message()
-
-if msg.get("type") == "downloads.add":
-    payload  = msg.get("payload", {})
-    url      = payload.get("url", "")
-    filename = payload.get("filename", "").split("/")[-1] or url.split("/")[-1]
-    dest     = os.path.join(os.path.expanduser("~"), "Downloads", filename)
-    subprocess.run(["noon", "ipc", "call", "global", "download", url, dest, filename])
-
-write_message({"status": "ok"})
-SCRIPT
-
-    chmod 755 "${pkgdir}/usr/lib/noon-mirsal/mirsald"
-
-    cat > "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/noon_mirsal.json" << 'MANIFEST'
-{
-    "name": "noon_mirsal",
-    "description": "مرسال — Noon native messaging host",
-    "path": "/usr/lib/noon-mirsal/mirsald",
-    "type": "stdio",
-    "allowed_extensions": ["mirsal@noon"]
-}
-MANIFEST
+    install -Dm644 "${srcdir}/noon_mirsal.json" \
+        "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/noon_mirsal.json"
+    install -Dm644 "${srcdir}/noon_mirsal.json" \
+        "${pkgdir}/usr/lib/firefox/native-messaging-hosts/noon_mirsal.json"
 }

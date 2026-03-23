@@ -6,5 +6,11 @@ pkgbase = noon-mirsald
 	arch = any
 	license = MIT
 	depends = python
+	source = mirsald::https://raw.githubusercontent.com/pharmaracist/mirsal/main/daemon/mirsald
+	source = protocol.py::https://raw.githubusercontent.com/pharmaracist/mirsal/main/daemon/protocol.py
+	source = noon_mirsal.json::https://raw.githubusercontent.com/pharmaracist/mirsal/main/daemon/noon_mirsal.json
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = noon-mirsald
