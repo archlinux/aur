@@ -1,7 +1,7 @@
 pkgbase = anime-games-launcher-bin
 	pkgdesc = A launcher for various anime games
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/an-anime-team/anime-games-launcher
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = anime-games-launcher-bin
 	depends = xdg-desktop-portal
 	depends = 7zip
 	depends = tar
-	depends = zip
+	depends = unzip
 	depends = git
 	depends = libnotify
 	depends = dbus

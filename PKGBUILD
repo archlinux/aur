@@ -2,7 +2,7 @@
 
 pkgname=anime-games-launcher-bin
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A launcher for various anime games"
 url="https://github.com/an-anime-team/anime-games-launcher"
 conflicts=("anime-games-launcher-git" "anime-games-launcher")
@@ -15,7 +15,7 @@ depends=(
     "xdg-desktop-portal"
     "7zip"
     "tar"
-    "zip"
+    "unzip"
     "git"
     "libnotify"
     "dbus"
