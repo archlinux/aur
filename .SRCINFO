@@ -1,0 +1,15 @@
+pkgbase = drop-xdnd
+	pkgdesc = terminal drag-and-drop into any X11 window
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/sillybanaja/drop
+	arch = x86_64
+	license = MIT
+	depends = libx11
+	depends = libxi
+	conflicts = drop
+	options = !debug
+	source = drop-xdnd-1.0.0.tar.gz::https://github.com/sillybanaja/drop/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = bfeb221f8098ba34bbb4bc0db82e7785b268c20d2801f3c436150acd9968b98d
+
+pkgname = drop-xdnd
