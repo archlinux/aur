@@ -1,7 +1,7 @@
 # Maintainer: lucial <bordiyan20035@gmail.com>
 pkgname=imagefinish
 pkgver=1.1.2
-pkgrel=4
+pkgrel=5
 pkgdesc="A PyQt6 image editor inspired by Photoshop"
 arch=('any')
 url="https://github.com/7Lucia7Lokidottir7/Linux-Photoshop"
@@ -24,9 +24,12 @@ package() {
     cd "$srcdir/$pkgname"
 
     # Файлы приложения
+    # Файлы приложения
     install -dm755 "$pkgdir/usr/share/$pkgname"
-    cp -r core locales tools ui utils brushes fonts patterns shapes \
+    cp -r core locales tools ui utils brushes shapes \
         "$pkgdir/usr/share/$pkgname/"
+    install -dm755 "$pkgdir/usr/share/$pkgname/fonts"
+    install -dm755 "$pkgdir/usr/share/$pkgname/patterns"
     install -m644 main.py         "$pkgdir/usr/share/$pkgname/"
     install -m644 settings.json   "$pkgdir/usr/share/$pkgname/"
 
