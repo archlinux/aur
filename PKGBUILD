@@ -2,7 +2,7 @@
 # Contributor: Igor Dyatlov <dyatlov.igor@protonmail.com>
 pkgname=gnome-shell-extension-wintile-git
 _uuid=wintile@nowsci.com
-pkgver=2024.11.25.1.r3.gfab1e42
+pkgver=2026.03.22.r0.gdd8994c
 pkgrel=1
 pkgdesc="Windows 10 window tiling for GNOME"
 arch=('any')
@@ -21,7 +21,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd wintile
-  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-1//;s/-/./g'
 }
 
 build() {
