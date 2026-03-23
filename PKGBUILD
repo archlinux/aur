@@ -1,6 +1,6 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgname=fcitx5-lotus-bin
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('fcitx5' 'libinput' 'hicolor-icon-theme' 'glibc' 'libstdc++' 'libgcc' '
 provides=('fcitx5-lotus')
 conflicts=('fcitx5-lotus')
 source=("https://github.com/LotusInputMethod/fcitx5-lotus/releases/download/v${pkgver}/fcitx5-lotus-v${pkgver}-x86_64-archlinux.tar.zst")
-sha256sums=('d2f15b6a3c09f2ebabf7a0de1825f5dd574e180720f8fd52d3604abba2b4e7fa')
+sha256sums=('fe584c9557044ee9a126c0a6ea955ef643d89709a9058b95211ff8530a1292be')
 install='fcitx5-lotus.install'
 
 package() {
