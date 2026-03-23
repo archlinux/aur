@@ -1,7 +1,7 @@
 # Maintainer: pharmaracist <pharmaracist@github>
 pkgname=noon-mirsald
 pkgdesc="مرسال — Noon native messaging host daemon for browser download interception"
-pkgver=r10.1eda45f
+pkgver=r12.6559df6
 pkgrel=1
 arch=("any")
 url="https://github.com/pharmaracist/mirsal"
@@ -20,10 +20,6 @@ pkgver() {
 package() {
   cd noon-mirsald/aur
 
-  printf '#!/usr/bin/env bash\nexec python3 /usr/lib/noon-mirsal/mirsald "$@"\n' \
-    > mirsal.sh
-
-  install -Dm755 mirsal.sh        "$pkgdir/usr/bin/mirsal"
   install -Dm755 mirsald          "$pkgdir/usr/lib/noon-mirsal/mirsald"
   install -Dm644 protocol.py      "$pkgdir/usr/lib/noon-mirsal/protocol.py"
   install -Dm644 noon_mirsal.json \
