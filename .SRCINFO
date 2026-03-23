@@ -1,5 +1,5 @@
 pkgbase = drop-xdnd
-	pkgdesc = terminal drag-and-drop into any X11 window
+	pkgdesc = cli drag-and-drop for x11 without the drag, pass files, click window
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/sillybanaja/drop

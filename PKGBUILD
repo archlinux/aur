@@ -2,7 +2,7 @@
 pkgname=drop-xdnd
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="terminal drag-and-drop into any X11 window"
+pkgdesc="cli drag-and-drop for x11 without the drag, pass files, click window"
 arch=('x86_64')
 url="https://github.com/sillybanaja/drop"
 license=('MIT')
