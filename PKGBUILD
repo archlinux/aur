@@ -1,6 +1,6 @@
 # Maintainer: Regaan <contact@rothackers.com>
 pkgname=wshawk
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc="Enterprise-grade WebSocket Security Scanner & Web Pentest Toolkit by Regaan"
 arch=('x86_64')

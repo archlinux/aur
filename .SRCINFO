@@ -1,6 +1,6 @@
 pkgbase = wshawk
 	pkgdesc = Enterprise-grade WebSocket Security Scanner & Web Pentest Toolkit by Regaan
-	pkgver = 3.0.4
+	pkgver = 3.0.5
 	pkgrel = 1
 	url = https://wshawk.rothackers.com
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wshawk
 	depends = libglvnd
 	provides = wshawk
 	conflicts = wshawk
-	source = wshawk-3.0.4.AppImage::https://github.com/regaan/wshawk/releases/download/v3.0.4/wshawk-3.0.4.AppImage
+	source = wshawk-3.0.5.AppImage::https://github.com/regaan/wshawk/releases/download/v3.0.5/wshawk-3.0.5.AppImage
 	sha256sums = SKIP
 
 pkgname = wshawk
