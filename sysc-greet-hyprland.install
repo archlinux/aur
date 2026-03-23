@@ -20,9 +20,6 @@ post_install() {
 [terminal]
 vt = 1
 
-[general]
-source_profile = false
-
 [default_session]
 command = "start-hyprland -- --config /etc/greetd/hyprland-greeter-config.conf"
 user = "greeter"
@@ -52,22 +49,13 @@ post_upgrade() {
     chown -R greeter:greeter /var/cache/sysc-greet 2>/dev/null || true
     chown -R greeter:greeter /var/lib/greeter 2>/dev/null || true
 
-    echo "==> Updating greetd config for Hyprland..."
-    if [ -f /etc/greetd/config.toml ]; then
+    # Remove source_profile=false if present (was added in v1.1.3, causes user session breakage)
+    if [ -f /etc/greetd/config.toml ] && grep -q 'source_profile' /etc/greetd/config.toml; then
+        echo "==> Removing source_profile setting from greetd config..."
         cp /etc/greetd/config.toml /etc/greetd/config.toml.bak
-        echo "    Backed up existing config to /etc/greetd/config.toml.bak"
+        sed -i '/^\[general\]/d; /^source_profile/d' /etc/greetd/config.toml
+        sed -i '/^$/N;/^\n$/d' /etc/greetd/config.toml
     fi
-    cat > /etc/greetd/config.toml <<'EOF'
-[terminal]
-vt = 1
-
-[general]
-source_profile = false
-
-[default_session]
-command = "start-hyprland -- --config /etc/greetd/hyprland-greeter-config.conf"
-user = "greeter"
-EOF
 
     echo ""
     echo "                       ▄▀▀▀▀ █   █ ▄▀▀▀▀ ▄▀▀▀▀    ▄▀    ▄▀ "
@@ -75,13 +63,13 @@ EOF
     echo "                       ▀▀▀▀  ▀▀▀▀▀ ▀▀▀▀   ▀▀▀▀ ▀     ▀     "
     echo "                      //  SEE YOU SPACE COWBOY //          "
     echo ""
-    echo "sysc-greet upgraded to v1.1.3"
+    echo "sysc-greet upgraded to v1.1.4"
     echo ""
     echo "What's new:"
+    echo "  v1.1.4: Fix wallpaper startup race condition, remove source_profile global override"
     echo "  v1.1.3: Fix login loop on systemd 260+ (source_profile workaround)"
     echo "  v1.1.1-3: Suppress Hyprland update/donation popups in greeter"
     echo "  v1.1.1-2: Fix greetd config to use start-hyprland wrapper (issue #49)"
-    echo "  v1.1.1: NixOS dataDir improvements, license change to GPL-3.0"
     echo ""
     echo "IMPORTANT: You must REBOOT to apply changes."
     echo "           Logging out is NOT sufficient when switching compositors."
