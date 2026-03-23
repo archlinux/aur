@@ -1,8 +1,10 @@
+# vim:cms=#\ %s
 # Maintainer: awh (https://aur.archlinux.org/account/awh)
 
 pkgname=babblecalibration-bin
+provides=(babblecalibration)
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Godot-based OpenVR/OpenXR eye tracking calibrator app"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Project-Babble/BabbleCalibration"
