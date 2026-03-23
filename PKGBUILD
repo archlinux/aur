@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=flyenv-bin
 _pkgname=FlyEnv
-pkgver=4.13.3
+pkgver=4.13.6
 _electronversion=35
 pkgrel=1
 pkgdesc="All-In-One Full-Stack Environment Management Tool.Help developers quickly set up a local development environment.(Prebuilt version.Use system-wide electron)"
@@ -59,8 +59,8 @@ source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/downl
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-x64.rpm")
 sha256sums=('01d77fe9ffb39b0a9507ca8d1cae189f56efd625078c3b13b59ce7aae42a4f7d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('d2101668e97f549455369b93d1672011a68b2ce944642ccc923c3b95df731d11')
-sha256sums_x86_64=('1339e61e13dc798240d5ad45ad512d13b965ea4303e4c977cf707b596a38291f')
+sha256sums_aarch64=('2007ca445ed28fe6172ee2d3945f524b23d97e168ca0d33e2fabe478604060e4')
+sha256sums_x86_64=('147638c011d259283c8124abe8b9d717d7ede71d942b4ddaf96a35943bce8e3c')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${_pkgname}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
