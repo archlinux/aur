@@ -5,7 +5,7 @@ _pkgname=tsm
 pkgname=${_pkgname}
 pkgdesc="Terminal Session Manager"
 
-pkgver=0.5.1
+pkgver=0.6.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,20 +26,19 @@ depends=('glibc' 'ghostty')
 options=(!strip)
 
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/${_pkgvername}.tar.gz")
-sha256sums=('8f71dcdf0f8f5e944e18b1422e8bd92236e49a831759e0931428410f0c34aba9')
+sha256sums=('ce42d2c8e84fd32dc525ad92f282100ca16ce6ff01c566536194614df0ec46a4')
 
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
 
-	sed -i -e 's/git init/git -c init.defaultBranch=main init/g' -e 's/-linkmode external/-linkmode auto/g' Makefile
-
-	make setup
+	sed -i -e 's/git init/git -c init.defaultBranch=main init/g' Makefile
 }
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
 
+	make setup
 	make build
 }
 
