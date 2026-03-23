@@ -1,0 +1,21 @@
+pkgbase = zmx-bin
+	pkgdesc = Session persistence for terminal processes
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/neurosnap/zmx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = zmx
+	conflicts = zmx
+	options = !strip
+	source = README-0.4.2.md::https://raw.githubusercontent.com/neurosnap/zmx/v0.4.2/README.md
+	source = LICENSE-0.4.2::https://raw.githubusercontent.com/neurosnap/zmx/v0.4.2/LICENSE
+	sha256sums = 7fba95e6d36c2d5eacc22b7f64f2a89d44476efb6539b4187b43edc3aed1147d
+	sha256sums = 56bab989df218f62a6deb746b43903340291dafbc7a811e3fa0c8ea889f8f5ea
+	source_x86_64 = zmx-x86_64-0.4.2.tgz::https://zmx.sh/a/zmx-0.4.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 2523d29006e8e0d768c80f403cad2944e90d58cba3f68a91277b0b80d0c1f237
+	source_aarch64 = zmx-aarch64-0.4.2.tgz::https://zmx.sh/a/zmx-0.4.2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 2e3fc2a6257408626634480e5a684cc24e72b34f813d08b008a359f950efca3b
+
+pkgname = zmx-bin

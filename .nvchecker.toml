@@ -1,0 +1,5 @@
+[zmx-bin]
+source = "github"
+github = "neurosnap/zmx"
+use_max_tag = true
+prefix = "v"
