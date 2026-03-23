@@ -16,7 +16,6 @@ pkgbase = postybirb
 	provides = postybirb
 	conflicts = postybirb
 	conflicts = postybirb-plus
-	source = postybirb-4.0.20::git+https://github.com/mvdicarlo/postybirb#tag=v4.0.20
 	source = postybirb.sh
 	sha256sums = 03584617ef5c8718146ca59e9701ea55ec56c0829ead85f17d39cf0178b1e411
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
