@@ -3,7 +3,7 @@
 
 pkgname=megacmd
 pkgver=2.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 url="https://github.com/meganz/MEGAcmd"
 arch=('x86_64')
@@ -88,6 +88,11 @@ package() {
     completion_cmd=$(basename "$completion_cmd")
     ln -s "${pkgname}" "${pkgdir}/usr/share/bash-completion/completions/$completion_cmd"
   done
+
+  # Documentation
+  install -Dm644 README.md UserGuide.md -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -Dm644 contrib/docs/*.md -t "${pkgdir}/usr/share/doc/${pkgname}/docs/"
+  install -Dm644 contrib/docs/commands/*.md -t "${pkgdir}/usr/share/doc/${pkgname}/docs/commands/"
 
   # License
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
