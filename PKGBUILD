@@ -4,8 +4,8 @@
 pkgname=baballonia
 pkgver=v1.1.1.0rc6
 _trainerver=1.3.8-linux-paths
-_calibrationver=v1.0.7rc1
-pkgrel=2
+_calibrationver=1.0.7
+pkgrel=3
 pkgdesc="A cross-platform, hardware-agnostic VR eye and face tracking application."
 arch=('x86_64')
 url="https://github.com/Project-Babble/Baballonia"
@@ -76,7 +76,7 @@ noextract=(
 )
 sha256sums=('SKIP'
             '5b3cd1a2a4be0021ee74ca3bb836dd8bc2e9fe23b2f16cf746da564d36362f2d'
-            '5ba6642d7500a23ec0783143a0072da0cbdb744795c9abbaa0f8238ecda40aff'
+            'e3eabae9efbb09c0471834a35e323dd886293fe890f2e3f846d851315c42b917'
             'f14601e1bca1b90fa4a83198fe7982cc4503efd83d2f5094fdfafc9abb66d760'
             '168707bdb44a6c76e2f430041689438216f431730c700e233909c6f96a5be0a3'
             'c79d564f433ef8786b125c58da586c2f40779d8978bf0d708ce68e02823ff450'
