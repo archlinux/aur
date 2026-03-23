@@ -1,4 +1,9 @@
 *.tar.gz
 *.tar.xz
+*.zip
+*.pkg.tar.*
+*.src.tar.*
+*.BUILDINFO
+*.MTREE
 pkg/
 src/
