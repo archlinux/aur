@@ -20,7 +20,12 @@ sha256sums=('SKIP')  # TODO: pin after release — run `makepkg -g` to generate
 
 package() {
   cd "${srcdir}/CIPHER/cli"
-  npm install --production
+
+  # Install production deps locally (--workspaces=false prevents hoisting to root)
+  npm install --production --workspaces=false
+
+  # Install globally into the package directory
   npm install -g --prefix="${pkgdir}/usr" .
+
   find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 }
