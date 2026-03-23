@@ -3,7 +3,7 @@
 _pkgname=xlibre-server
 _orgpkgname=xlibre-xserver
 pkgname=$_pkgname-bin
-pkgver=25.0.0.20
+pkgver=25.0.0.21
 pkgrel=1
 pkgdesc="XLibre Official Easy Install Drop in Replacement fork of X.Org X server (binary release)"
 arch=(x86_64)
@@ -25,7 +25,7 @@ license=('LicenseRef-Adobe-Display-PostScript'
          'X11-distribute-modifications-variant')
 groups=('xlibre')
 options=(!strip)
-source=(https://x11libre.net/repo/arch_based/x86_64/xlibre-xserver-25.0.0.20-1-x86_64.pkg.tar.zst)
+source=(https://x11libre.net/repo/arch_based/x86_64/xlibre-xserver-25.0.0.21-1-x86_64.pkg.tar.zst)
 noextract=("${_pkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst")
 depends=(xlibre-server-common-bin xlibre-input-libinput-bin libepoxy libxfont2 pixman libunwind
          dbus libgl nettle libxdmcp sh glibc libxau libtirpc libmd libbsd
@@ -37,7 +37,7 @@ conflicts=($_pkgname 'xorg-server' 'xorg-server-common<25.0.0.0' 'nvidia-utils<=
 replaces=('glamor-egl' 'xf86-video-modesetting')
 install=$pkgname.install
 
-sha256sums=('a8f0c8fad150b0fa567cfd6bd9e215d52c91ab9ae48f6de83f6770301215f768')
+sha256sums=('0b9f04f73f831035444de5b5c6317952bf067e886c371f36b615f1ca21831177')
 
 package() {
   tar -xf "${_orgpkgname}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst" -C "${pkgdir}" etc usr
