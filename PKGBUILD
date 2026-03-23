@@ -1,41 +1,42 @@
-# Maintainer luspi <luspi __at_ gmx (dot) de>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
 
 pkgname=oclgrind
-pkgver=18.3
+pkgver=26.03.1
 pkgrel=1
-
-pkgdesc="A SPIR interpreter and virtual OpenCL device simulator."
-arch=("any")
-url="https://github.com/jrprice/Oclgrind"
-makedepends=("cmake")
-depends=("clang" "llvm")
-license=("BSD")
-conflicts=("oclgrind-git")
-
-source=("https://github.com/jrprice/Oclgrind/archive/v${pkgver}.zip"
-        "llvm.patch")
-
-md5sums=('318c04961748fc2512f1a34d0db4e3a0'
-         '2a18b6acd4c31b967a9755be7d1c0b87')
-
-prepare() {
-    cd "${srcdir}/Oclgrind-${pkgver}/"
-    patch --forward --input="${srcdir}/llvm.patch"
-}
+pkgdesc='OpenCL device simulator and debugger'
+arch=('x86_64')
+url='https://github.com/jrprice/Oclgrind'
+license=('BSD-3-Clause')
+depends=('clang' 'llvm-libs' 'gcc-libs' 'readline')
+makedepends=('cmake' 'llvm')
+optdepends=('ocl-icd: OpenCL ICD loader support')
+conflicts=('oclgrind-git')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jrprice/Oclgrind/archive/v${pkgver}.tar.gz")
+sha256sums=('d21a705a2b71491b1505f34a50e14f9666516d1654c0e6745983408bb300e4c2')
 
 build() {
-    cd "${srcdir}/Oclgrind-${pkgver}"
-    mkdir -p build && cd build/
-    cmake .. -DCMAKE_BUILD_TYPE=Release \
-             -DCMAKE_INSTALL_PREFIX=/usr \
-             -DLIBDIR_SUFFIX=""
-    make
+    cmake -B build -S "Oclgrind-${pkgver}" \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DLIBDIR_SUFFIX=""
+    cmake --build build
+}
+
+check() {
+    ctest --test-dir build --output-on-failure
 }
 
 package() {
-    cd "${srcdir}/Oclgrind-${pkgver}/build"
-    VERBOSE=1 DESTDIR=${pkgdir} make install
-    install -m755 -d ${pkgdir}/etc/OpenCL/vendors
-    install -m644 oclgrind.icd ${pkgdir}/etc/OpenCL/vendors
+    DESTDIR="${pkgdir}" cmake --install build
+
+    install -Dm644 "Oclgrind-${pkgver}/LICENSE" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    install -Dm644 build/oclgrind.icd \
+        "${pkgdir}/etc/OpenCL/vendors/oclgrind.icd"
 }
 
+latestver() {
+    curl -s https://api.github.com/repos/jrprice/Oclgrind/releases/latest \
+        | sed -n 's/.*"tag_name": "v\(.*\)".*/\1/p'
+}
