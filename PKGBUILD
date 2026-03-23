@@ -1,7 +1,7 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.17.4
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
@@ -14,10 +14,10 @@ depends=('cmake' 'ninja' 'gperf' 'ccache' 'dfu-util' 'dtc'
 optdepends=('pyocd: programming and debugging ARM MCUs'
   'python-west: Zephyr RTOS Project meta-tool')
 makedepends=('patchelf' 'wget')
-source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}_linux-x86_64.tar.xz"
+source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}_linux-x86_64_gnu.tar.xz"
   "zephyrrc"
 )
-sha256sums=('83f2f327dba2d6cf2440f22f2f501041544d7f34ef8b878ecd83f4513d1116b6'
+sha256sums=('6cc9a7ad6b6cf65cbba567e011d8e77a785897fa2386fb18a17fb4ac57efcfa9'
             '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
 
 options=(!strip)
@@ -42,7 +42,7 @@ package() {
   sed -i 's#\(\./zephyr-sdk-\${HOSTTYPE}-hosttools-standalone-[0-9.]\+sh\)#\1 -R -S#' $pkgdir/$_installdir/$_setupsh
 
   # Disables sanboxing on systems where libseccomp is available
-  sed -i 's/xargs -n100 file/xargs -n100 file -S/' $pkgdir/$_installdir/zephyr-sdk-x86_64-hosttools-standalone-*.sh
+  sed -i 's/xargs -n100 file/xargs -n100 file -S/' $pkgdir/$_installdir/hosttools/zephyr-sdk-x86_64-hosttools-standalone-*.sh
 
   install -Dm644 zephyrrc $pkgdir/usr/share/zephyr-sdk/zephyrrc
 
@@ -62,11 +62,11 @@ package() {
   echo "/$_installdir" >"$_cmake_module_path/${_cmake_fname}"
 
   # Strip package build path from prefix path
-  sed -i "s@\(relocate_sdk.py\s\+\)${pkgdir}/${_installdir} ${pkgdir}/${_installdir}@\1 /${_installdir} /${_installdir}@g" relocate_sdk.sh
-  ./relocate_sdk.sh
+  sed -i "s@\(relocate_sdk.py\s\+\)${pkgdir}/${_installdir}/hosttools ${pkgdir}/${_installdir}/hosttools@\1 /${_installdir}/hosttools /${_installdir}/hosttools@g" hosttools/relocate_sdk.sh
+  hosttools/relocate_sdk.sh
 
-  rm zephyr-sdk-*-hosttools-standalone-*.sh
-  rm relocate_sdk.{py,sh}
+  rm hosttools/zephyr-sdk-*-hosttools-standalone-*.sh
+  rm hosttools/relocate_sdk.{py,sh}
   rm setup.sh
 }
 
