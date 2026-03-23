@@ -11,7 +11,7 @@ license=('GPL3')
 depends=()
 makedepends=('unzip')
 source=("${url}/releases/download/${pkgver}/${execname}-Linux.zip")
-sha256sums=('178ea90a64f9f7ea50d9117f5ec776b0a51f6d81592baea82f5f57a72dde5')
+sha256sums=('1ff00776353f6212381790546b0b79b0ed21e21a1472df77bc753eae1ab6f34a')
 
 prepare() {
   cd "${srcdir}"
