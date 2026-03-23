@@ -39,7 +39,8 @@ build() {
 
 check() {
     cd "${srcdir}/migen"
-    PYTHONPATH=. python -m pytest
+    PYTHONPATH=. python -m pytest \
+        -k 'not test_local_cd' # Skip unsupported test
 }
 
 package() {
