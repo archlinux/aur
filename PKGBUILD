@@ -6,7 +6,7 @@ pkgdesc="مرسال — Noon native messaging host daemon for browser download i
 arch=('any')
 url="https://github.com/pharmaracist/mirsal"
 license=('MIT')
-depends=('python' 'noon-main')
+depends=('python')
 source=()
 sha256sums=()
 

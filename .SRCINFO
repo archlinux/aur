@@ -6,6 +6,5 @@ pkgbase = noon-mirsald
 	arch = any
 	license = MIT
 	depends = python
-	depends = noon-main
 
 pkgname = noon-mirsald
