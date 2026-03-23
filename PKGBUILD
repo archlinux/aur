@@ -3,7 +3,7 @@ pkgname=r3playx-bin
 _pkgname=R3PLAYX
 pkgver=2.7.6
 _electronversion=28
-pkgrel=1
+pkgrel=2
 pkgdesc="A music player forked from YesPlayMusic.(Prebuilt version.Use system-wide electron)高颜值的第三方网易云播放器"
 arch=(
     'aarch64'
@@ -51,14 +51,21 @@ prepare() {
     " "${srcdir}/usr/share/applications/desktop.desktop"
     find "${srcdir}/opt/${_pkgname}/resources" -type d -exec chmod 755 {} +
     asar e "${srcdir}/opt/${_pkgname}/resources/app.asar" "${srcdir}/app.asar.unpacked"
+    rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar"
     sed -i "s/..\/resources\/bin\/better_sqlite3.node/\/usr\/lib\/${pkgname%-bin}\/bin\/better_sqlite3.node/g" "${srcdir}/app.asar.unpacked/main/index.js"
-    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/app.asar"
+    asar p "${srcdir}/app.asar.unpacked" "${srcdir}/opt/${_pkgname}/resources/app.asar"
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    install -Dm755 "${srcdir}/opt/${_pkgname}/resources/bin/better_sqlite3.node" -t "${pkgdir}/usr/lib/${pkgname%-bin}/bin"
-    cp -Pr --no-preserve=ownership "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/opt/${_pkgname}/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/opt/${_pkgname}/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/opt/${_pkgname}/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     _icon_sizes=(16x16 256x256 512x512)
     for _icons in "${_icon_sizes[@]}";do
         install -Dm644 "${srcdir}/usr/share/icons/hicolor/${_icons}/apps/desktop.png" \
