@@ -3,15 +3,16 @@
 
 pkgname=subsurface-git
 _pkgname=subsurface
-pkgver=20251101.65ea254f2
+pkgver=20260321.ffca89ee5
 pkgrel=1
 pkgdesc='Divelog program'
 url='https://subsurface-divelog.org/'
 license=('GPL2')
 arch=('i686' 'x86_64')
-makedepends=('git' 'cmake' 'asciidoc' 'qt5-tools')
+makedepends=('git' 'cmake' 'asciidoc' 'qt6-tools')
 depends=('libzip' 'libxml2' 'libxslt' 'sqlite' 'libusb' 'libgit2' 'googlemaps'
-         'subsurface-libdc-git' 'qt5-svg' 'qt5-location')
+         'subsurface-libdc-git' 'qt6-svg' 'qt6-location' 'qt6-connectivity'
+         'qt6-webengine' 'qt6-5compat')
 source=('git+https://github.com/subsurface/subsurface')
 sha256sums=('SKIP')
 
@@ -32,9 +33,8 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIBDIVECOMPUTER_INCLUDE_DIR=/usr/include/libdivecomputer \
 		-DLIBDIVECOMPUTER_LIBRARIES=/usr/lib/libdivecomputer.so \
-		-DBTSUPPORT=OFF \
+		-DBUILD_WITH_QT6=ON \
 		..
-	# Disable bluetooth as qt5-connectivity is no more
 	make
 }
 
