@@ -3,21 +3,33 @@
 
 pkgname=zerx-lab-fluxdown-bin
 pkgver=0.1.28
-pkgrel=1
+pkgrel=2
 pkgdesc="FluxDown - Rust 驱动的多协议下载管理器（HTTP/FTP/BitTorrent）"
 arch=('x86_64')
 url="https://fluxdown.zerx.dev"
 license=('LicenseRef-proprietary')
 depends=(
+    'at-spi2-core'
+    'cairo'
+    'fontconfig'
+    'gdk-pixbuf2'
+    'glib2'
+    'glibc'
     'gtk3'
+    'harfbuzz'
+    'hicolor-icon-theme'
+    'libayatana-appindicator'
+    'libepoxy'
+    'libgcc'
     'libnotify'
-    'nss'
+    'libsecret'
+    'libstdc++'
     'libxss'
     'libxtst'
+    'nss'
+    'openssl'
+    'pango'
     'xdg-utils'
-    'at-spi2-core'
-    'libsecret'
-    'libayatana-appindicator'
 )
 provides=('fluxdown')
 conflicts=('fluxdown')
