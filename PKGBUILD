@@ -12,7 +12,7 @@ _rid="rad:z3gqcJUoA1n9HaHKufZs5FCSGazv5"
 url="https://radicle.xyz"
 depends=(
 	'glibc'
-	'gcc-libs'
+	'libgcc'
 	'zlib'
 	'git'
 	'openssh'
