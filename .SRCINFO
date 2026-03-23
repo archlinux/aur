@@ -1,6 +1,6 @@
 pkgbase = python-chibi-sshd
 	pkgdesc = package for handling config files of ssh like sshd_config and authorized_keys
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://pypi.org/project/chibi-sshd/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-chibi-sshd
 	depends = python-chibi
 	depends = python-chibi-atlas
 	depends = python-chibi-hybrid
-	source = https://files.pythonhosted.org/packages/source/c/chibi_sshd/chibi_sshd-1.0.0.tar.gz
-	sha256sums = 51f6bf245e4eead20ab433e9857a06309ea11030ccd170bb5c65604ccae66f32
+	source = https://files.pythonhosted.org/packages/source/c/chibi_sshd/chibi_sshd-1.1.0.tar.gz
+	sha256sums = 424e5364163fdd1acb7319b1155b233fcd49fbf3929877b9deeb103830814419
 
 pkgname = python-chibi-sshd
