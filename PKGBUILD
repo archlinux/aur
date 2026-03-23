@@ -2,14 +2,14 @@
 # Contributor: Yumeoto_Zorin <zorin@zorin.icu>
 pkgbase="ttf-lxgw-bright"
 pkgname=("ttf-lxgw-bright" "ttf-lxgw-bright-gb" "ttf-lxgw-bright-tc")
-pkgver=5.527
+pkgver=5.528
 pkgrel=1
 pkgdesc="A merged font of Ysabeau and LXGW WenKai."
 arch=("any")
 url="https://github.com/lxgw/LxgwBright"
 license=("OFL-1.1")
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ae50b20e495c4e9b5e86f8ecc788ee97bd4c9d284c17ec2efe6906f1c151f144')
+sha256sums=('fd222c9f2a7fdea2057166cb5d862d8a8ae6cb9cb66f11e39569652e3f5fa856')
 
 package_ttf-lxgw-bright() {
   cd "LxgwBright-$pkgver"
