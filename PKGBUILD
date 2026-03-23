@@ -1,5 +1,5 @@
 pkgname=xeo-fabric
-pkgver=0.1.0.r1.g0000000
+pkgver=0.1.0.r6.g841331b
 pkgrel=1
 pkgdesc="Matrix-style terminal rain with live system metrics"
 arch=('x86_64')
