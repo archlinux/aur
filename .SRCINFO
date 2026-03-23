@@ -16,9 +16,15 @@ pkgbase = rtl8761usb-dkms
 	source = rtl8761usb.conf
 	source = dkms.conf
 	source = Makefile.patch
+	source = rtk_bt.patch
+	source = rtk_coex.patch
+	source = rtk_misc.patch
 	sha256sums = 74001cd412363485751a8e11dda7de54919de51a74d7f060ce489d0a9291040b
 	sha256sums = 49fd7d83509ce7ec6797b987719ddbbc9168656374a360a35fe8a1ef8b52cee5
 	sha256sums = 9ff12db0338709ac3b1f6c2c8e14a9e715f89283da716ff83e71012136820027
 	sha256sums = cce5da3c3c05ccac84bda25246200a80747da3f8ec5fb15be860b79c22a6414c
+	sha256sums = aaa1a9a2ebe89139457f667bb545667b5cba591fd3ae10b5ca5632fd7c84639e
+	sha256sums = 574683ca3961ef9be849d4b95c61cee2dbf8460a59bac1a62b4f7db3cf308d16
+	sha256sums = c433e32b6d5f00e3e70ffaffc0347b60d7ffd1926b0c9218a3567cf4a69839f6
 
 pkgname = rtl8761usb-dkms
