@@ -27,5 +27,16 @@ package() {
   # Install globally into the package directory
   npm install -g --prefix="${pkgdir}/usr" .
 
+  # Copy content directories into the installed package
+  local _instdir="${pkgdir}/usr/lib/node_modules/cipher-security"
+  for dir in skills knowledge commands agents mappings; do
+    if [ -d "${srcdir}/CIPHER/${dir}" ]; then
+      cp -r "${srcdir}/CIPHER/${dir}" "${_instdir}/${dir}"
+    fi
+  done
+
+  # Copy CLAUDE.md (system prompt)
+  cp "${srcdir}/CIPHER/CLAUDE.md" "${_instdir}/CLAUDE.md" 2>/dev/null || true
+
   find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 }
