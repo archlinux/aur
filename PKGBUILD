@@ -17,5 +17,5 @@ sha256sums=('d0746747460abcc7d1f74ddb1dd0cc88e154580249ae506c3e014f73bb465247')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 fastruct "$pkgdir/usr/bin/fastruct"
+    install -Dm755 fastruct "$pkgdir/usr/local/bin/fastruct"
 }
