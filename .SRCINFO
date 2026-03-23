@@ -1,0 +1,18 @@
+pkgbase = inputactions-ctl
+	pkgdesc = InputActions Control Tool
+	pkgver = 0.9.0.0
+	pkgrel = 1
+	url = https://github.com/InputActions/ctl
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = cli11
+	depends = libgcc
+	depends = libstdc++
+	depends = qt6-base
+	depends = glibc
+	source = inputactions-ctl-0.9.0.0.tar.gz::https://github.com/InputActions/ctl/archive/refs/tags/v0.9.0.0.tar.gz
+	sha256sums = becf203a9c0df3563bb6c8e5b4f36296c171b34debb7c560c6db8adac41e8110
+
+pkgname = inputactions-ctl
