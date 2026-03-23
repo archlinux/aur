@@ -1,6 +1,6 @@
 pkgbase = xlibre-server-xephyr-bin
 	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org nested X server that runs as an X application (binary release)
-	pkgver = 25.0.0.20
+	pkgver = 25.0.0.21
 	pkgrel = 1
 	url = https://x11libre.net/repo/arch_based/x86_64
 	arch = x86_64
@@ -45,9 +45,9 @@ pkgbase = xlibre-server-xephyr-bin
 	conflicts = xlibre-server-xephyr
 	conflicts = xorg-server-xephyr
 	conflicts = xlibre-server-xephyr
-	noextract = xlibre-server-xephyr-25.0.0.20-1-x86_64.pkg.tar.zst
+	noextract = xlibre-server-xephyr-25.0.0.21-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-xserver-xephyr-25.0.0.20-1-x86_64.pkg.tar.zst
-	sha256sums = 0b79a628c878f8847feea588f5d014500f4ba1b44a2954e599c65cda50256ad1
+	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-xserver-xephyr-25.0.0.21-1-x86_64.pkg.tar.zst
+	sha256sums = b00d3adba4c1035527ea4431aa84fefb34849b9aa4bae594582ff4b2b9100da3
 
 pkgname = xlibre-server-xephyr-bin
