@@ -1,7 +1,7 @@
 pkgbase = dumphfdl
 	pkgdesc = Multichannel HFDL decoder
 	pkgver = 1.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/szpajder/dumphfdl
 	arch = x86_64
 	arch = aarch64
@@ -20,6 +20,6 @@ pkgbase = dumphfdl
 	optdepends = libsdrplay: Proprietary API service for SDRplay devices.
 	optdepends = gperftools: for profiling
 	source = dumphfdl::git+https://github.com/szpajder/dumphfdl#tag=v1.7.0
-	sha256sums = SKIP
+	sha256sums = 80a3b53266e0efd177ba4134d966016cffae96a191eb465408e5d89c67e6395c
 
 pkgname = dumphfdl

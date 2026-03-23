@@ -2,7 +2,7 @@
 
 pkgname=dumphfdl
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Multichannel HFDL decoder"
 arch=('x86_64' 'aarch64')
 url="https://github.com/szpajder/dumphfdl"
@@ -16,9 +16,7 @@ optdepends=(
 source=(
     "$pkgname"::"git+https://github.com/szpajder/dumphfdl#tag=v${pkgver}"
 )
-sha256sums=(
-    'SKIP'
-)
+sha256sums=('80a3b53266e0efd177ba4134d966016cffae96a191eb465408e5d89c67e6395c')
 
 build() {
     cmake -B build \
