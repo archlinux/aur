@@ -1,6 +1,6 @@
 pkgbase = bento-git
 	pkgdesc = Popup control centre for KDE Plasma
-	pkgver = 0.0.0.r1.g7bccf98
+	pkgver = 0.1.0.r0.g0000000
 	pkgrel = 1
 	url = https://github.com/HabiRabbu/bento
 	arch = x86_64
@@ -21,7 +21,8 @@ pkgbase = bento-git
 	depends = python-pyte
 	depends = kglobalaccel
 	provides = bento
-	conflicts = bento
+	provides = bento-desktop
+	conflicts = bento-desktop
 	source = bento-git::git+https://github.com/HabiRabbu/bento.git
 	sha256sums = SKIP
 

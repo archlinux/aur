@@ -1,6 +1,6 @@
 # Maintainer: HabiRabbu <https://github.com/HabiRabbu>
 pkgname=bento-git
-pkgver=0.0.0.r1.g7bccf98
+pkgver=0.1.0.r0.g0000000
 pkgrel=1
 pkgdesc="Popup control centre for KDE Plasma"
 arch=('x86_64')
@@ -25,8 +25,8 @@ makedepends=(
   'qt6-base'
   'kglobalaccel'
 )
-provides=('bento')
-conflicts=('bento')
+provides=('bento' 'bento-desktop')
+conflicts=('bento-desktop')
 source=("$pkgname::git+https://github.com/HabiRabbu/bento.git")
 sha256sums=('SKIP')
 
