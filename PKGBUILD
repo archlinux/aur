@@ -1,7 +1,7 @@
 # Maintainer: yeggis <yeggis@users.noreply.github.com>
 pkgname=chevren
-pkgver=1.0.2
-pkgrel=1
+pkgver=1.0.3
+pkgrel=2
 pkgdesc="Turkish subtitle generator for YouTube videos and local files"
 arch=('x86_64')
 url="https://github.com/yeggis/chevren"
@@ -13,9 +13,9 @@ depends=(
   'yt-dlp'
   'mpv'
 )
-makedepends=('python-pip')
+makedepends=('python-pip' 'python-virtualenv')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yeggis/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bbd01faf270d3a4fb68b15e3986b6db37b0db64117ba2705b8f3009e5a52fdc0')
+sha256sums=('66d66b7de746eb672a2baaea1689eb6b747e2d8b748ce0ae86245238545b38aa')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -24,10 +24,10 @@ package() {
   install -dm755 "$pkgdir/usr/share/$pkgname"
   cp -r src "$pkgdir/usr/share/$pkgname/"
 
-  # Python bağımlılıkları
-  install -dm755 "$pkgdir/usr/share/$pkgname/lib"
-  pip install faster-whisper google-genai yt-dlp \
-    --target "$pkgdir/usr/share/$pkgname/lib" \
+  # venv oluştur ve bağımlılıkları kur
+  python -m venv "$pkgdir/usr/share/$pkgname/venv"
+  "$pkgdir/usr/share/$pkgname/venv/bin/pip" install \
+    faster-whisper google-genai \
     --no-compile \
     --quiet
 
