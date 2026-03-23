@@ -36,11 +36,10 @@ b2sums=('fa47cc0fd39dc7dbbf217206d780c593c6f83c1a30bbc9b6de7d2ed615a1b7123b81137
 prepare() {
 	cd radicle-explorer
 	pnpm import
-	cat >pnpm-workspace.yaml <<EOF
-onlyBuiltDependencies:
-  - esbuild
-EOF
-	pnpm install --shamefully-hoist
+	pnpm install \
+		--shamefully-hoist \
+		--dangerously-allow-all-builds \
+		# EOL
 
 	cd radicle-httpd
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
