@@ -1,17 +1,17 @@
 pkgbase = python-qh3-bin
 	pkgdesc = Lightweight QUIC and HTTP/3 implementation in Python (pre-compiled)
-	pkgver = 1.5.4
+	pkgver = 1.7.0
 	pkgrel = 1
 	url = https://github.com/jawah/qh3
 	arch = x86_64
 	license = BSD-3-Clause
 	makedepends = python-installer
-	depends = gcc-libs
 	depends = glibc
+	depends = libgcc
 	depends = python
 	provides = python-qh3
 	conflicts = python-qh3
-	source = https://github.com/jawah/qh3/releases/download/v1.5.4/qh3-1.5.4-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-	sha256sums = 38ed360f28ff92adb391eff081f5bedfc69c6a32ef2ae7d6632b43450fd2e22a
+	source = https://github.com/jawah/qh3/releases/download/v1.7.0/qh3-1.7.0-cp314-cp314t-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums = 2becde7b07051b26b33ecf019eb662d9a496a0b98300db26bee201bcbc41ed9e
 
 pkgname = python-qh3-bin
