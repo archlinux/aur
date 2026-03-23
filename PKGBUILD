@@ -1,15 +1,15 @@
 # Maintainer: MihaiStreames <72852703+MihaiStreames@users.noreply.github.com>
 pkgname=tokount
-pkgver=1.1.1
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Fast line counter for codebases, powered by tokei"
+pkgdesc="The fastest line counter for codebases"
 arch=(x86_64)
 url="https://github.com/MihaiStreames/tokount"
 license=(MIT)
 depends=(gcc-libs)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('f536a1eedd306cf0b5d5962acd47371614a4bf127e23bc87911610f7251c4d9b')
+sha256sums=('98ca7115946f94a89eb961819e5210364f08db18962472aad1fca53c4f44e4f0')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -27,7 +27,7 @@ build() {
 check() {
 	cd "$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-	cargo test --all-features
+	cargo test --all-features --test flags --test errors
 }
 
 package() {
