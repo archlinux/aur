@@ -2,7 +2,7 @@
 # Contributor: avi <4visekh@gmail.com>
 pkgname=python-materialyoucolor
 _name=materialyoucolor-python
-pkgver=2.0.10
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Material You color algorithms for Python!"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc' 'gcc-libs' 'python' 'python-pillow')
 makedepends=( 'python-build' 'python-setuptools' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz"::"$url/archive/v$pkgver.tar.gz")
-sha256sums=('12057b142b2282144fb00f18d588d46898a319df2b6af669f43f802b4b75800d')
+sha256sums=('aa013f0faea26b87b65f35d7b67f7850c7ed4b926cf1628617d088fe9ddaa9ec')
 
 build() {
     cd $_name-$pkgver
