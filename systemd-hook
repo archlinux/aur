@@ -69,9 +69,9 @@ case "$op" in
     ;;
 
   # marked with 'systemctl set-property ... Markers=needs-restart'
-  enqueue-marked)
+  restart-marked)
     systemd_live
-    /usr/bin/systemctl enqueue-marked
+    /usr/bin/systemctl reload-or-restart --marked
     ;;
 
   # For use by other packages
