@@ -1,6 +1,6 @@
 pkgbase = msi-ec-dkms-git
 	pkgdesc = Driver for MSI laptop EC (DKMS)
-	pkgver = r508.9721905
+	pkgver = r675.b2412c6
 	pkgrel = 1
 	url = https://github.com/BeardOverflow/msi-ec
 	arch = x86_64
