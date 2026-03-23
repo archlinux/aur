@@ -18,16 +18,16 @@ pkgver() {
 }
 
 package() {
-    install -dm755 "${pkgdir}/usr/lib/noon-mirsal"
-    install -dm755 "${pkgdir}/usr/lib/mozilla/native-messaging-hosts"
-    install -dm755 "${pkgdir}/usr/lib/firefox/native-messaging-hosts"
+  cd noon-mirsald/aur
 
-    install -Dm755 "${srcdir}/mirsal"      "${pkgdir}/usr/bin/mirsal"
-    install -Dm755 "${srcdir}/mirsald"      "${pkgdir}/usr/lib/noon-mirsal/mirsald"
-    install -Dm644 "${srcdir}/protocol.py"  "${pkgdir}/usr/lib/noon-mirsal/protocol.py"
+  printf '#!/usr/bin/env bash\nexec python3 /usr/lib/noon-mirsal/mirsald "$@"\n' \
+    > mirsal.sh
 
-    install -Dm644 "${srcdir}/noon_mirsal.json" \
-        "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/noon_mirsal.json"
-    install -Dm644 "${srcdir}/noon_mirsal.json" \
-        "${pkgdir}/usr/lib/firefox/native-messaging-hosts/noon_mirsal.json"
+  install -Dm755 mirsal.sh        "$pkgdir/usr/bin/mirsal"
+  install -Dm755 mirsald          "$pkgdir/usr/lib/noon-mirsal/mirsald"
+  install -Dm644 protocol.py      "$pkgdir/usr/lib/noon-mirsal/protocol.py"
+  install -Dm644 noon_mirsal.json \
+    "$pkgdir/usr/lib/mozilla/native-messaging-hosts/noon_mirsal.json"
+  install -Dm644 noon_mirsal.json \
+    "$pkgdir/usr/lib/firefox/native-messaging-hosts/noon_mirsal.json"
 }
