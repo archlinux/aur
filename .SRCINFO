@@ -31,6 +31,6 @@ pkgname = radicle-httpd
 	pkgdesc = open source, peer-to-peer code collaboration stack built on Git - explorer (backend)
 	license = Apache-2.0 OR MIT
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
 	depends = zlib
 	depends = radicle-node
