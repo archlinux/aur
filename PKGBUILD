@@ -1,7 +1,7 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=aniparser-bin
 _pkgname=AniParser
-pkgver=0.4.0
+pkgver=0.4.1
 _electronversion=35
 pkgrel=1
 pkgdesc="AniParser Electron application.(Prebuilt version.Use system-wide electron)"
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/Sinedka/aniparser/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('0f0d326a3feafcba07af8f7633f6b52c01aa09cce947505ec1582dd6d03e91fb'
+sha256sums=('ca180acec4618bdc9debe3ffaf812a816e1ae63938f6e8c0e1cb02bb352fde3d'
             '3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
