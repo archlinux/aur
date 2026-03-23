@@ -1,18 +1,16 @@
 pkgbase = rrun
-	pkgdesc = minimalistic command launcher in rust similar to gmrun
-	pkgver = 0.2.3
+	pkgdesc = Sync git-tracked files to a remote machine and run commands there
+	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/buster/rrun
-	arch = i686
+	url = https://github.com/bstee615/rrun
 	arch = x86_64
-	license = GPL
-	makedepends = rust
-	makedepends = cargo
-	depends = cairo
-	depends = gcc-libs
-	depends = gtk3
-	source = rrun-0.2.3.tar.gz::https://github.com/buster/rrun/archive/v0.2.3.tar.gz
-	sha256sums = cfb571d1242e6c20cb4babace6d73d9ecacb198665bf779bacf4c64f37d858f2
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = openssh
+	depends = rsync
+	depends = git
+	source = rrun-0.1.0.tar.gz::https://github.com/bstee615/rrun/archive/v0.1.0.tar.gz
+	sha256sums = a9d28b40341b50e1e287e2fa9437ed4408be40e9076c18f3a066f7523ac7958c
 
 pkgname = rrun
-
