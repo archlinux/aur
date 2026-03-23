@@ -1,0 +1,25 @@
+pkgbase = srcom-bin
+	pkgdesc = X compositor - fork by infraflakes
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/infraflakes/srcom
+	arch = x86_64
+	license = MIT
+	license = MPL-2.0
+	depends = glibc
+	depends = libepoxy
+	depends = libev
+	depends = libx11
+	depends = libxcb
+	depends = pcre2
+	depends = pixman
+	depends = xcb-util
+	depends = xcb-util-renderutil
+	provides = srcom
+	conflicts = srcom
+	source = https://github.com/infraflakes/srcom/releases/download/v0.0.1/srcom-v0.0.1-linux-amd64
+	source = https://raw.githubusercontent.com/infraflakes/srcom/refs/heads/main/LICENSES/MIT
+	sha256sums = 559c7d991a8c9857d203f74694ea9212aa53d7ba2f129ca698e3a7246b91c464
+	sha256sums = fd80a26fbb3f644af1fa994134446702932968519797227e07a1368dea80f0bc
+
+pkgname = srcom-bin
