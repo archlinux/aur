@@ -14,7 +14,7 @@ optdepends=(
 )
 install=lapctl.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b4846a42a38a4308f33c1620ae3fab7d728bcdc1894bfa635c55c6187fa04a2d')
+sha256sums=('1ba1057f9e1b4b716c8dca5939705e8af7f3930fc4b8d1573cd061ddc9e2faef')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
