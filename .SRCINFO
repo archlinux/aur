@@ -1,0 +1,20 @@
+pkgbase = whisper2tr-git
+	pkgdesc = İngilizce videolar için Türkçe altyazı oluşturucu — yerel Whisper + Gemini API
+	pkgver = r1.05d87c3
+	pkgrel = 1
+	url = https://github.com/yeggis/whisper2tr
+	arch = x86_64
+	license = MIT
+	depends = python
+	depends = ffmpeg
+	depends = yt-dlp
+	depends = python-pip
+	optdepends = mpv: varsayılan video oynatıcı
+	optdepends = vlc: alternatif video oynatıcı
+	optdepends = cuda: NVIDIA GPU hızlandırması
+	provides = whisper2tr
+	conflicts = whisper2tr
+	source = whisper2tr-git::git+https://github.com/yeggis/whisper2tr.git
+	sha256sums = SKIP
+
+pkgname = whisper2tr-git
