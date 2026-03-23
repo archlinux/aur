@@ -1,0 +1,19 @@
+pkgbase = cursorlens-bin
+	pkgdesc = Create stunning screen recordings for free. Open-source, no subscriptions, no watermarks, and free for commercial use. An alternative to Screen Studio.(Prebuilt version.Use system-wide electron)
+	pkgver = 1.2.9
+	pkgrel = 1
+	url = http://www.lelekawaii.com/CursorLens/
+	arch = x86_64
+	license = MIT
+	depends = electron39
+	depends = ffmpeg
+	provides = cursorlens=1.2.9
+	conflicts = cursorlens
+	source = cursorlens-1.2.9-x86_64.AppImage::https://github.com/blueberrycongee/CursorLens/releases/download/v1.2.9/CursorLens-Linux-1.2.9.AppImage
+	source = LICENSE-1.2.9::https://raw.githubusercontent.com/blueberrycongee/CursorLens/v1.2.9/LICENSE
+	source = cursorlens.sh
+	sha256sums = abef339223dbe7960c350efa542924bd4d03392c31f07809477ab097ceca35f4
+	sha256sums = d8824b8c038eba113227cc707ac22c7a497583ae6115b052729a1d104f692d82
+	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
+
+pkgname = cursorlens-bin
