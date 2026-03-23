@@ -1,6 +1,6 @@
 # Maintainer: Kemel Zaidan <kemelzaidan@gmail.com>
 pkgname=loggo
-pkgver=0.3.21
+pkgver=0.3.26
 pkgrel=1
 pkgdesc="A powerful terminal app for structured log streaming"
 arch=("i686" "x86_64" "aarch64")
@@ -10,7 +10,7 @@ makedepends=('go')
 options=("strip" "buildflags")
 depends=('glibc')
 source=("${url}/archive/refs/tags/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('86d3855a531a19c7725cf4400b06e24081c9a3889abb1ca4239b045917de8303')
+sha256sums=('02f02bd35f52b5d37279e7b4ec1840b7ef7dd4dec3addef9c7e06a22276ff02a')
     
 prepare(){
     cd "${pkgname}-${pkgver}"
