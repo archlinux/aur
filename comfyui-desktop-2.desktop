@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=ComfyUI Desktop
+Comment=Desktop app for ComfyUI
+Exec=comfyui-desktop-2 %U
+Icon=comfyui-desktop-2
+Type=Application
+Categories=Development;Graphics;
+StartupWMClass=comfyui-desktop-2
