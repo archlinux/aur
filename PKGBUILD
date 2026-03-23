@@ -5,7 +5,7 @@
 # Maintainer: snit <snit@cock.li>
 
 pkgname=katawa-shoujo-reengineered
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="A fan-made modernization of the classic visual novel"
 arch=('any')
@@ -37,10 +37,7 @@ package() {
     # license
     install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-sha512sums=(
-    'd448c1c850b9e2db0b44b8303dd644e8d5fe4108a8582b314aabb1fa2b7c385609a9244767b576f058c3f8064ad4f8f964a5f894e3f3c8daafbc2e0f905f9047'
-    '7077fd0d4c23ae5fd5e42acc2174dd7ec68d630a0842fb10aa1b97e8f5d48353e60d4a40ed6b02391de86d2ea2ee81e52acb0742ba411d17105d2d203bf75f2d'
-    'e4c4413fd9418adf91b97b5d23f3f30008fff909a7b0e3190be5d56b2b163d81cfefe78981dbad42562b749de0f5666596b582a0476c649d138f512068e1bbe6'
-    'a1e5d6f0662955fe5abd48b5d0e3f3d82faa3c6f6f845fefe5facad93a7ba42f2b682dd52845189432f4328ccef437d786ed942aaaee44d97df86acd47a9bc03'
-)
+sha256sums=('aa2525c22e9cd9dc0beb306f45e9c318e1c8b68012b6c5a4baf824bf71e66d5b'
+            '131ded86296ba9ca9f4a53f433ae0f46d7f90e3bd8c17fa12810114781252f25'
+            'd9f15f43f4e2475ca13c3fca9cc8a443fc9f5f5aaa52ff880cc0fb9641d5ccc6'
+            '1b1443d867cde1b437d8665fd3c68a9eded75064413fa2f76fbc09ca49d26954')
