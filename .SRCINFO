@@ -6,7 +6,6 @@ pkgbase = noon-services
 	arch = any
 	license = MIT
 	depends = ananicy-cpp
-	depends = auto-cpufreq
 	depends = gammastep
 	depends = geoclue
 	depends = gnome-keyring

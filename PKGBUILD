@@ -8,7 +8,6 @@ url="https://github.com/PharmaRacist/Noon"
 license=('MIT')
 depends=(
     'ananicy-cpp'
-    'auto-cpufreq'
     'gammastep'
     'geoclue'
     'gnome-keyring'
