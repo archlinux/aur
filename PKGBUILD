@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=anime-games-launcher
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Universal linux launcher for anime games"
 arch=('x86_64')
 url="https://github.com/an-anime-team/anime-games-launcher"
@@ -21,24 +21,15 @@ options=(!lto)
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
 	export RUSTUP_TOOLCHAIN=stable
-	# Keeping this here as it may be valuable in the future
-	#echo "lua-src = \"555.0.0\"" >> crates/agl-runtime/Cargo.toml
-	#sed -i "s/encoding_rs = \"0.8\"/encoding_rs = \"0.8\"\nlua-src = \"550.0.0\"/g;s/\"luau-jit\"/\"luau\",\n\"vendored\"/g" crates/agl-runtime/Cargo.toml
-	#sed -i "s/\"luau-jit\"/\"luau-jit\",\n\"vendored\"/g" crates/agl-runtime/Cargo.toml
     	cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-	# ToDo: Right now, there are issues with LTO and mlua. I disabled LTO for now,
-	# but ideally, I would like to use system LLD with everything
-	# export RUSTFLAGS+=" -C linker-plugin-lto -C linker=clang -C link-arg=-fuse-ld=lld -C linker-features=-lld"
-	# export CC=clang
-	# export CXX=clang++
 	cd "$srcdir/$pkgname-$pkgver"
     	export RUSTUP_TOOLCHAIN=stable
     	export CARGO_TARGET_DIR=target
-	#export RUSTFLAGS+=" -C linker-features=-lld -C link-args=-fuse-ld=lld -C lto=off"
-	export RUSTFLAGS+=" -C linker-features=-lld"
+	export CFLAGS+=" -ffat-lto-objects"
+	export CXXFLAGS+=" -ffat-lto-objects"
 	cargo build --frozen --release --all-features
 }
 
