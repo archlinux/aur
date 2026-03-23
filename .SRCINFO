@@ -1,6 +1,6 @@
 pkgbase = xlibre-server-devel-bin
 	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org development files (binary release)
-	pkgver = 25.0.0.20
+	pkgver = 25.0.0.21
 	pkgrel = 1
 	url = https://x11libre.net/repo/arch_based/x86_64
 	arch = x86_64
@@ -31,9 +31,9 @@ pkgbase = xlibre-server-devel-bin
 	conflicts = xlibre-server-devel
 	conflicts = xorg-server-devel
 	conflicts = xlibre-server-devel
-	noextract = xlibre-server-devel-25.0.0.20-1-x86_64.pkg.tar.zst
+	noextract = xlibre-server-devel-25.0.0.21-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-xserver-devel-25.0.0.20-1-x86_64.pkg.tar.zst
-	sha256sums = 8e14b35a5ecb33f041b3be49ab2e818a5ee083a64a1a8d8f5a4bc1e4de6f7016
+	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-xserver-devel-25.0.0.21-1-x86_64.pkg.tar.zst
+	sha256sums = a7421a96e54c020120842aa21d666a34a1616ab52a07ddbf2ba5e1ef47b25a59
 
 pkgname = xlibre-server-devel-bin
