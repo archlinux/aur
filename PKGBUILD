@@ -4,7 +4,7 @@
 pkgname=babbletrainer
 # real tag has hyphens not underscores, but makepkg doesn't allow so remap later
 pkgver=1.3.8_linux_paths
-pkgrel=2
+pkgrel=3
 pkgdesc="On-device B.A.B.A.L.L.S. trainer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Project-Babble/BabbleTrainer"
@@ -40,7 +40,7 @@ optdepends=(
     'python-pytorch-opt-rocm: with ROCm and AVX2 CPU optimizations for training'
 )
 source=(
-    "${pkgname}::git+${url}.git#branch=main"
+    "${pkgname}::git+${url}.git#tag=${pkgver//_/-}"
     "babbletrainer.sh"
     "LICENSE"
 )
