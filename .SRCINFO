@@ -1,6 +1,6 @@
 pkgbase = postybirb
 	pkgdesc = An application that helps artists post art and other multimedia to multiple websites more quickly.(Use system-wide electron)
-	pkgver = 4.0.20
+	pkgver = 4.0.21
 	pkgrel = 1
 	url = https://www.postybirb.com/
 	arch = any
@@ -17,7 +17,6 @@ pkgbase = postybirb
 	conflicts = postybirb
 	conflicts = postybirb-plus
 	source = postybirb.sh
-	sha256sums = 03584617ef5c8718146ca59e9701ea55ec56c0829ead85f17d39cf0178b1e411
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = postybirb
