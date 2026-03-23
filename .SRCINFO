@@ -1,13 +1,13 @@
 pkgbase = timr
 	pkgdesc = A TUI to organize your time: Pomodoro, Countdown, Timer
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/sectore/timr-tui
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = timr-1.7.1.tar.gz::https://github.com/sectore/timr-tui/archive/v1.7.1.tar.gz
-	sha256sums = 0b59bcc97415c7bfd93291ff5537626910a367b67eac057f4d88cc561ef835af
+	source = timr-1.8.0.tar.gz::https://github.com/sectore/timr-tui/archive/v1.8.0.tar.gz
+	sha256sums = 61afc4d1288a16e03c79cb874a3f2f1704b5859c1adb7afefe3b1aa77aedb709
 
 pkgname = timr
