@@ -1,11 +1,12 @@
 pkgbase = hp15c
 	pkgdesc = A simulator for the HP-15C programmable scientific RPN calculator
 	pkgver = 5.1.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://hp-15c-simulator.de
 	arch = any
 	license = GPL3
 	makedepends = unzip
+	makedepends = hidapi
 	depends = tcl
 	depends = tk
 	optdepends = hidapi
@@ -14,10 +15,12 @@ pkgbase = hp15c
 	source = hp15c.desktop
 	source = 71-hp15c-hid-hp-03f0-1341.rules
 	source = 71-hp15c-hid-dm-10c4-ea60.rules
+	source = hidtcl.tar.xz
 	md5sums = ca9e63e5b5de44eb7188d433d844a980
 	md5sums = 28b63da6ff5404acf6f305bdb35ca1b9
 	md5sums = bab776009feb1db971b92649c839ff1f
 	md5sums = edae6ef32712397cc6b353972e258f0b
 	md5sums = 18b23df6a6c4e3676f4cc6c54ef35bdf
+	md5sums = 6e29581bc271d95c35b88fad2e92ff07
 
 pkgname = hp15c

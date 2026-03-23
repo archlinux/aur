@@ -4,31 +4,43 @@
 
 pkgname=hp15c
 pkgver=5.1.00
-pkgrel=1
+pkgrel=2
 pkgdesc="A simulator for the HP-15C programmable scientific RPN calculator"
 url="https://hp-15c-simulator.de"
 arch=('any')
 license=('GPL3')
 depends=('tcl' 'tk')
 optdepends=('hidapi')
-makedepends=('unzip')
+makedepends=('unzip' 'hidapi')
 source=(
     "$pkgname-$pkgver.zip::https://hp-15c-simulator.de/versions/${pkgver}/HP-15C_${pkgver}_Source.zip"
     "hp15c_runner.sh"
     "hp15c.desktop"
     "71-hp15c-hid-hp-03f0-1341.rules"
     "71-hp15c-hid-dm-10c4-ea60.rules"
+    # # make in src/lib/hidtcl und dann makepkg -e -f
+    "hidtcl.tar.xz"
+    # # ToDo for 'graphic display instead of custom font'
+    #"https://www.tcl3d.org/bawt/download/InputLibs/tkpath-0.4.2.7z"
 )
 md5sums=('ca9e63e5b5de44eb7188d433d844a980'
          '28b63da6ff5404acf6f305bdb35ca1b9'
          'bab776009feb1db971b92649c839ff1f'
          'edae6ef32712397cc6b353972e258f0b'
-         '18b23df6a6c4e3676f4cc6c54ef35bdf')
+         '18b23df6a6c4e3676f4cc6c54ef35bdf'
+         '6e29581bc271d95c35b88fad2e92ff07')
 
 prepare() {
 
     # extract icons
     unzip icons/HP-15C-logo.zip -d $srcdir/icon_extract
+
+    # extract hidtcl lib
+    tar xf hidtcl.tar.xz
+}
+
+build() {
+    make -C lib/hidtcl
 }
 
 package() {
