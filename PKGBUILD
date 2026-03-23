@@ -3,7 +3,7 @@
 
 pkgname=megacmd
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 url="https://github.com/meganz/MEGAcmd"
 arch=('x86_64')
@@ -24,9 +24,11 @@ depends=(
 makedepends=('cmake' 'git')
 _sdkhash=5ed7296be8a7cd5920095b928d6696aed41289c6
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/meganz/MEGAcmd/archive/${pkgver}_Linux.tar.gz"
-        "mega-sdk-${_sdkhash}.tar.gz::https://github.com/meganz/sdk/archive/${_sdkhash}.tar.gz")
+        "mega-sdk-${_sdkhash}.tar.gz::https://github.com/meganz/sdk/archive/${_sdkhash}.tar.gz"
+        "fix-icu-linking.patch::https://github.com/meganz/sdk/pull/2768.patch")
 sha512sums=('e0474aefa00b9d03a5327089d08334f580287731959b9279c581a34c907db5cc36ce2e889921c4fc2b2f4b60cf4e3409e1eedabe52dd3b40fb3cb2a872cc5ccb'
-            '61df5b803c3f5e705eb07667934b35368c0eb66ba0dd08d62f459eac04cf9336e132b5bf58d9a86ab97ef2d44e46a12d86b921d94b9d6a4dd7f7b8887254de34')
+            '61df5b803c3f5e705eb07667934b35368c0eb66ba0dd08d62f459eac04cf9336e132b5bf58d9a86ab97ef2d44e46a12d86b921d94b9d6a4dd7f7b8887254de34'
+            '2d720030596a9721a2e6ad9d426d3de9a1f2a625438e2b7df0e7363ffb0178097c87d9ee7b4e36ef0277ced78b754564517fd73ca4502a8723fa8132a1b37810')
 
 prepare() {
   # Remove existing directory if it exists
@@ -42,6 +44,9 @@ prepare() {
 
   echo true > build/clone_vcpkg_from_baseline.sh # this script is executed by bash (not using shebang)
   sed -i '/IMPORTED_TARGET libcrypto++/s/++/pp/' sdk/cmake/modules/sdklib_libraries.cmake
+
+  # Fix ICU linking - https://github.com/meganz/sdk/pull/2768
+  patch -Np1 -d "${srcdir}/sdk-${_sdkhash}" -i "${srcdir}/fix-icu-linking.patch"
 
   # Remove hardcoded install paths that break build-time options
   sed -i \
