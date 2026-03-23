@@ -9,4 +9,4 @@ export QML_IMPORT_PATH="${_APPDIR}/qml:${QML_IMPORT_PATH:-}"
 export QML2_IMPORT_PATH="${_APPDIR}/qml:${QML2_IMPORT_PATH:-}"
 export QT_QPA_PLATFORMTHEME="gtk2"
 cd "${_APPDIR}" || { echo "Failed to change directory to ${_APPDIR}"; exit 1; }
-exec "${_RUNNAME}" "$@" || exit $?
+LD_PRELOAD=/usr/lib/libmpg123.so.0 exec "${_RUNNAME}" "$@" || exit $?

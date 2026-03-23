@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=openshot-bin
 _pkgname=OpenShot
-pkgver=3.4.0
-pkgrel=3
+pkgver=3.5.0
+pkgrel=1
 pkgdesc="An award-winning free and open-source video editor,is dedicated to delivering high quality video editing and animation solutions to the world.(Prebuilt version)"
 arch=('x86_64')
 url="http://www.openshot.org/"
@@ -20,8 +20,8 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-${CARCH}.AppImage"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('2ef8bc773b2ad8a6811cfdfd6d7187dc7e95a284a9f39033eac6675cf78eef2c'
-            'db1db4c15024a45337e7e7190046e6414184603321be058797422a54ed5fc85d')
+sha256sums=('4ab117270ee8dad8c9d12f57670430dd9fd62a44db5cedc1fa1b06d3aab54c63'
+            '7d7504c70b21dc426b9e5eaba5836a3f904dcf74459faea60355af86c9259714')
 prepare() {
     sed -i -e "
         s/@appname@/${pkgname%-bin}/g
