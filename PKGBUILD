@@ -13,7 +13,7 @@ provides=('fastruct')
 
 source=("$pkgname-$pkgver-linux-x86_64.tar.gz::https://github.com/GuitaristRin/fastruct/releases/download/v$pkgver/$pkgname-$pkgver-linux-x86_64.tar.gz")
 
-sha256sums=('d0746747460abcc7d1f74ddb1dd0cc88e154580249ae506c3e014f73bb465247')
+sha256sums=('6f3ece9e068f36fb05e123ccf53dbe215c3322e9549434ce7eae6d63a134c35f')
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
