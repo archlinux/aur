@@ -1,10 +1,9 @@
 pkgbase = ophis-git
 	pkgdesc = cross-assembler for the 6502 series of microprocessors
-	pkgver = v2.2.r0.g6a5e5a5
+	pkgver = v2.3.r0.g8873359
 	pkgrel = 1
 	url = http://michaelcmartin.github.io/Ophis/
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = python-pip
 	depends = python

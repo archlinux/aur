@@ -2,11 +2,11 @@
 
 pkgname=ophis-git
 _pkgname=Ophis
-pkgver=v2.2.r0.g6a5e5a5
+pkgver=v2.3.r0.g8873359
 pkgrel=1
 epoch=
 pkgdesc="cross-assembler for the 6502 series of microprocessors"
-arch=('i686' 'x86_64')
+arch=(any)
 url="http://michaelcmartin.github.io/Ophis/"
 license=('MIT')
 groups=()
