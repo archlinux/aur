@@ -1,3 +1,41 @@
+2026.03.23, v19.8.13
+
+feature:
+- 618a5615 docker: io: PS1
+
+2026.03.23, v19.8.12
+
+feature:
+- 556b0150 docker: io: PS1
+
+2026.03.23, v19.8.11
+
+fix:
+- 97672ef5 docker: io: apt-get install -> apt-get
+
+feature:
+- 67f27d84 docker: io: bun, deno
+
+2026.03.23, v19.8.10
+
+feature:
+- 025b005e docker: io: add PS1
+
+2026.03.23, v19.8.9
+
+fix:
+- b052cf22 cloudcmd: no time available: --.--.---- -> --:--:-- (#461)
+
+2026.03.23, v19.8.8
+
+feature:
+- 02dbe56d server: user-menu: when error send it
+
+2026.03.23, v19.8.7
+
+feature:
+- ecc76e8b docker: io: renamify-cli, runny, redfork
+
 2026.03.23, v19.8.6
 
 fix:
