@@ -3,13 +3,13 @@
 pkgname=elyprismlauncher
 pkgver=11.0.0_pre1
 _pkgver=11.0.0-pre1
-pkgrel=2
+pkgrel=3
 pkgdesc="Prism Launcher fork with integrated support for Ely.by accounts"
 arch=('x86_64')
 url="https://github.com/ElyPrismLauncher/Launcher"
 license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1')
-depends=(glibc mesa-utils gcc-libs java-runtime libarchive vulkan-headers libgl pciutils qrencode qt6-base qt6-imageformats qt6-networkauth qt6-svg zlib hicolor-icon-theme tomlplusplus cmark)
-makedepends=(cmake extra-cmake-modules git jdk17-openjdk ninja scdoc ghc-filesystem gamemode)
+depends=(glibc mesa-utils gcc-libs java-runtime libarchive libgl pciutils qrencode qt6-base qt6-imageformats qt6-networkauth qt6-svg zlib hicolor-icon-theme tomlplusplus cmark)
+makedepends=(cmake extra-cmake-modules git jdk17-openjdk ninja scdoc ghc-filesystem gamemode vulkan-headers)
 provides=('elyprismlauncher')
 conflicts=('elyprismlauncher')
 optdepends=('glfw: to use system GLFW libraries'
