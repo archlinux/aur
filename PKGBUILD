@@ -12,11 +12,12 @@ sha256sums=("bee0a6d589665101fbc7d68c448230dd18be8f0f0887ae91f88718f2dcc94041")
 
 build() {
     cd "$pkgname-$pkgver"
-    cargo build --release --locked --bin kanban
+    cargo build --release --locked --bin kanban --bin kanban-mcp
 }
 
 package() {
     cd "$pkgname-$pkgver"
     install -Dm755 "target/release/kanban" "$pkgdir/usr/bin/kanban"
+    install -Dm755 "target/release/kanban-mcp" "$pkgdir/usr/bin/kanban-mcp"
     install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
