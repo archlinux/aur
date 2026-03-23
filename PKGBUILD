@@ -48,7 +48,7 @@ package()
 {
   cd ${srcdir}/${_pkgname}
 
-  python -m pip install --root=${pkgdir} -I .
+  python -m pip install --root=${pkgdir} -I . --no-warn-script-location
 
   cd ${srcdir}/${_pkgname}
   install -Dm 644 "README" "${pkgdir}/usr/share/licenses/${pkgname}/README"
