@@ -89,8 +89,7 @@ package() {
     plain "Cleaning up 7zip binaries for $CARCH (keeping ${_keep_folder})..."
     find "${_7zip_dir}/linux" -mindepth 1 -maxdepth 1 -type d ! -name "$_keep_folder" -exec rm -rf {} +
   fi
-  # Install launch wrapper script
-
+  # Make binary link
   install -d "${pkgdir}/usr/bin"
   ln -s "/opt/comfyui-desktop-2/comfyui-desktop-2" "${pkgdir}/usr/bin/comfyui-desktop-2"
   # Install icons
