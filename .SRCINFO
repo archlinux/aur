@@ -1,6 +1,6 @@
 pkgbase = orla-bin
 	pkgdesc = A dead-simple unix tool for lightweight open-source local agents
-	pkgver = 1.2.8
+	pkgver = 1.2.9
 	pkgrel = 1
 	url = https://github.com/dorcha-inc/orla
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = orla-bin
 	license = MIT
 	provides = orla
 	conflicts = orla
-	source_x86_64 = orla-x86_64-1.2.8.tgz::https://github.com/dorcha-inc/orla/releases/download/v1.2.8/orla-linux-amd64.tar.gz
-	sha256sums_x86_64 = 97dfcd097bb19c53a97099bac829241e29c6a988032eff4fb9a1ac0357c0d881
-	source_aarch64 = orla-aarch64-1.2.8.tgz::https://github.com/dorcha-inc/orla/releases/download/v1.2.8/orla-linux-arm64.tar.gz
-	sha256sums_aarch64 = b17df30df3bc9e7c7b742bdd30abb62e128b4fb0f8c0e42e108a3e487d03c312
+	source_x86_64 = orla-x86_64-1.2.9.tgz::https://github.com/dorcha-inc/orla/releases/download/v1.2.9/orla-linux-amd64.tar.gz
+	sha256sums_x86_64 = 2311375e5d3d7571a7890f264396e404a90764ee511c7e887c06a4247606d83d
+	source_aarch64 = orla-aarch64-1.2.9.tgz::https://github.com/dorcha-inc/orla/releases/download/v1.2.9/orla-linux-arm64.tar.gz
+	sha256sums_aarch64 = ded995748d00dc38af43367686a9c2605567c7330b13185da9b0ccc1300f5bab
 
 pkgname = orla-bin
