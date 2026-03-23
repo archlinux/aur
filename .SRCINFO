@@ -1,6 +1,6 @@
 pkgbase = coni-bin
 	pkgdesc = A fast, standalone Clojure-like interpreter and language written in Go
-	pkgver = 2026.03.23.20.37.26
+	pkgver = 2026.03.23.20.42.22
 	pkgrel = 1
 	url = https://coni-lang.org
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = coni-bin
 	provides = coni
 	conflicts = coni
 	source_x86_64 = https://coni-lang.org/downloads/coni-linux-x64
-	sha256sums_x86_64 = 1c78e08ea9ba8b29927f47257fed292fb39de43ebef0ceab9c24df74009b9903
+	sha256sums_x86_64 = 1a326655fb806873ed99c213adb94d4dc060f497e0d6b41c2e65b36b1047649f
 	source_aarch64 = https://coni-lang.org/downloads/coni-linux-arm64
-	sha256sums_aarch64 = 1c130fc61311c118bd105832d0d02288ce25db20e8dff87d9ba76d49d83223fc
+	sha256sums_aarch64 = d612dfa529ac1474a0316ab870b6edcb6c8d602cd947b3a49872b9782d3645ba
 
 pkgname = coni-bin
