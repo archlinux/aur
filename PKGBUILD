@@ -3,7 +3,7 @@
 pkgname=rog-helper
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="btop-style TUI for ASUS ROG laptop management"
+pkgdesc="A TUI for managing ASUS ROG laptops"
 arch=('any')
 url="https://github.com/itsameandrea/rog-helper"
 license=('MIT')
