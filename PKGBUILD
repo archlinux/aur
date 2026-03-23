@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=qcalc-bin
 _pkgname=QCalc
-pkgver=0.11.6
-_electronversion=33
+pkgver=0.12.0
+_electronversion=41
 pkgrel=1
 pkgdesc="Quasar Calculator.(Prebuilt version.Use system-wide electron)"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/from104/qcalc/v${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('e3ef2980db5d4a3ae95defa28877833f9a5a9a8d977d5d8a35b6670f0ace5531'
+sha256sums=('2db9f9fdb38a94f85f7dee5fb85c2e9f9720b9db3dabcdea2debb3f9492ec0e2'
             '3987b48fb3c79907511fb74614201dbf40f9bff0cc691d4f2dbcad754cba519b'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
@@ -46,8 +46,15 @@ prepare() {
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
-    install -Dm644 "${srcdir}/squashfs-root/resources/app.asar" -t "${pkgdir}/usr/lib/${pkgname%-bin}"
-    cp -Pr --no-preserve=ownership "${srcdir}/squashfs-root/resources/app.asar.unpacked" "${pkgdir}/usr/lib/${pkgname%-bin}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-bin}"
+	find "${srcdir}/squashfs-root/resources" -maxdepth 1 -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/${pkgname%-bin}" {} +
+    if find "${srcdir}/squashfs-root/resources" -mindepth 1 -maxdepth 1 -type d | read; then
+        for _subdir in "${srcdir}/squashfs-root/resources/"*; do
+            if [ -d "${_subdir}" ]; then
+                cp -Pr --no-preserve=ownership "${_subdir}" "${pkgdir}/usr/lib/${pkgname%-bin}"
+            fi
+        done
+    fi
     install -Dm644 "${srcdir}/squashfs-root/usr/share/icons/hicolor/1024x1024/apps/${pkgname%-bin}.png" -t "${pkgdir}/usr/share/pixmaps"
     install -Dm644 "${srcdir}/squashfs-root/${pkgname%-bin}.desktop" -t "${pkgdir}/usr/share/applications"
     install -Dm644 "${srcdir}/LICENSE-${pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
