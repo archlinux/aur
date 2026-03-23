@@ -5,6 +5,7 @@ pkgbase = git-credential-keepassxc
 	url = https://github.com/Frederick888/git-credential-keepassxc
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = cargo
 	source = https://github.com/Frederick888/git-credential-keepassxc/archive/refs/tags/v0.14.2.tar.gz
