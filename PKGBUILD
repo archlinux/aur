@@ -4,7 +4,7 @@ _appauthor=ClementNerma
 _appname=ReShell
 _execname=${_appname,,}
 pkgname=${_execname}-bin
-pkgver=0.1.0_1536
+pkgver=0.1.0_1537
 pkgrel=1
 pkgdesc="A modern shell for the future"
 arch=('x86_64' 'aarch64')
@@ -24,16 +24,16 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE.md"
         "fibonacci-memoized-${pkgver}.rsh::${_urlraw}/examples/fibonacci-memoized.rsh"
         "fibonacci-${pkgver}.rsh::${_urlraw}/examples/fibonacci.rsh"
         "guess-${pkgver}.rsh::${_urlraw}/examples/guess.rsh")
-source_x86_64=("${pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver//_/-}/${_appname}-repl-${arch[0]}-unknown-linux-musl.tgz")
-source_aarch64=("${pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/v${pkgver//_/-}/${_appname}-repl-${arch[1]}-unknown-linux-musl.tgz")
+source_x86_64=("${pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/v${pkgver//_/-}/${_execname}-${arch[0]}-unknown-linux-musl.tgz")
+source_aarch64=("${pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/v${pkgver//_/-}/${_execname}-${arch[1]}-unknown-linux-musl.tgz")
 sha256sums=('efe25c1d429a558b4c784691119aa8c3dfee24910f4cb0e97b79bc0a79fd2cc1'
             '1e6ec244152059358872c9d1bfbb538d1a7a9da6fd269b7cda6e5d156150139d'
             'e9178feb32e578858b2894cc084831182e50b6b5def6c22ed53f78eebc3fca67'
             '4de35e1288bd083b3eb3dfa609c13d7f6b270c34d8bff7c8f2bd779591b7eac1'
             '343653a05fb09514b663de3828019ea0ab50df0898ac94789d0bdbff950f935d'
             '306c6c95be38ddc4eb30e1b28413ea3a7e13d1767ff7a85a4802f7b70fbfeba8')
-sha256sums_x86_64=('985f085e105a10e6801d4631e5d7a3da84856596a7c1f6cf7a91ff30b2284763')
-sha256sums_aarch64=('1065cbf1f01b460d86cdb6fdf4139b62c70b8171c804c61ef437b45e9de4e3a6')
+sha256sums_x86_64=('7f076cf9ebfbea2a6d92f8d5d50b8a92209ea8380c2485c0b2c1cd8e7c36bb68')
+sha256sums_aarch64=('6e51cd94599c0523663592f8f3541e5232f391fd554f44c297321c5211a3b03c')
 
 prepare() {
 	cd "${srcdir}/" || exit
