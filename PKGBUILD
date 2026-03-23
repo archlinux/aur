@@ -66,9 +66,16 @@ prepare() {
   cargo fetch --locked --target "$(rustc --print host-tuple)"
 
   # disable ad-hoc pre-build script (we do it by hand in build(), see below)
+  # inject version (transform $pkgver to be valid semver, as required by Tauri)
+  # FIXME: we're transforming post-releases to pre-releases, this is not exactly right
+  local semver="$pkgver"
+  semver="${semver/.r/-dev.}"
+  semver="${semver/.g/+}"
   jq -n '{}
     | (.build.beforeBuildCommand |= "")
+    | (.version |= $semver)
   ' \
+    --arg semver "$semver" \
     >tauri.conf.arch.json
 }
 
