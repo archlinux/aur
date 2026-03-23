@@ -1,0 +1,20 @@
+pkgbase = tsm
+	pkgdesc = Terminal Session Manager
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/adibhanna/tsm
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = pkgconf
+	makedepends = go
+	makedepends = zig
+	depends = glibc
+	depends = ghostty
+	provides = tsm
+	conflicts = tsm
+	options = !strip
+	source = tsm-0.5.1.tgz::https://github.com/adibhanna/tsm/archive/v0.5.1.tar.gz
+	sha256sums = 8f71dcdf0f8f5e944e18b1422e8bd92236e49a831759e0931428410f0c34aba9
+
+pkgname = tsm
