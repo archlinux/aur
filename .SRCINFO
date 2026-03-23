@@ -1,0 +1,11 @@
+pkgbase = noon-mirsald
+	pkgdesc = مرسال — Noon native messaging host daemon for browser download interception
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/pharmaracist/mirsal
+	arch = any
+	license = MIT
+	depends = python
+	depends = noon-main
+
+pkgname = noon-mirsald
