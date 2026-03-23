@@ -1,17 +1,17 @@
-# Maintainer: Javier Tia <javier dot tia at gmail dot com>
+# Maintainer: Javier Tia <floss@jetm.me>
 # Old Maintainer: Manuel Mendez <mmendez534@gmail.com>
 
 pkgname=include-what-you-use
-pkgver=0.25
+pkgver=0.26
 pkgrel=1
-_clang_major=21
+_clang_major=22
 _clang_minor=1
 _clang_ver="${_clang_major}.${_clang_minor}"
 pkgdesc="A tool for use with clang to analyze #includes in C and C++ source files"
 url="https://include-what-you-use.org"
 license=('LicenseRef-LLVM-Release-License')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('80bdde7edc7f9576eb7ddb36ce0f3dbdc918c46d2bb45362a8583353821275fa6e8058ff091b91c2417e749995d60d6cd1744fcb73b52cbe13829e4c1a0de637')
+sha512sums=('dc7cd155d69bf5604de9560bd38b755b4f3194dc7ed358f36d0cb71015489b50f4743a85e8590bf016351442841c7f0dc7707d3db45f5949f3ad83d3395256d7')
 arch=('x86_64')
 _min="${_clang_ver}"
 _max=$((_clang_major + 1)).0
