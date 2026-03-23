@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="fga"
-pkgver=0.7.8
+pkgver=0.7.11
 pkgrel=1
 pkgdesc="Cross-platform CLI to interact with an OpenFGA server"
 arch=(
@@ -11,7 +11,9 @@ arch=(
  )
 url="https://openfga.dev"
 _url="https://github.com/openfga/cli"
-license=('Apache-2.0')
+license=(
+  'Apache-2.0'
+)
 depends=(
   'glibc'
 )
@@ -23,9 +25,10 @@ _pkgsrc="${pkgname}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}?signed"
 )
-b2sums=('ed58df93748607036ff99df4e5693109758dd6b8c2c62d0ddb1ac1ab47885767e97f5c01bbd75d657c7d23d6ef30c05bc0b377c21b4b2c8dc79b2d743e8b411e')
+b2sums=('d3a53795a83974f57b7fe9645232fd1c60dd2e046d5dbe8b4762f5ed17c786ec42766b8bd2140283199bd7f7f7b057d6e929bda3ee1bc0598209bf3f8ea3bb9d')
 validpgpkeys=(
   '510C64A6CDC3F0965291ED872E31AD2F054526F0' # Raghd Hamzeh <raghd.hamzeh@openfga.dev> (https://github.com/rhamzeh.gpg)
+  '897A8242A34A6CD10A71EF68FE63E8B7C46439C8' # Anurag Bandyopadhyay <angbpy@gmail.com> (https://github.com/SoulPancake.gpg)
 )
 
 prepare() {
@@ -33,6 +36,7 @@ prepare() {
 
   cd "${srcdir}/${_pkgsrc}"
   go mod download -modcacherw -x
+  go mod verify
 
   mkdir -p "build" "completions" "manpages"
 }
