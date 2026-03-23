@@ -1,0 +1,21 @@
+pkgbase = cv4pve-vdi
+	pkgdesc = VDI client for Proxmox VE — SPICE and RDP remote console launcher
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Corsinvest/cv4pve-vdi
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	provides = cv4pve-vdi
+	conflicts = cv4pve-vdi
+	options = !strip
+	options = !debug
+	source_x86_64 = cv4pve-vdi-1.2.0-x86_64.zip::https://github.com/Corsinvest/cv4pve-vdi/releases/download/v1.2.0/cv4pve-vdi-linux-x64.zip
+	sha256sums_x86_64 = 6370520dd993cf380acdd741b7c19f6da4991e39e79a5d2f57961dc192f428a6
+	source_aarch64 = cv4pve-vdi-1.2.0-aarch64.zip::https://github.com/Corsinvest/cv4pve-vdi/releases/download/v1.2.0/cv4pve-vdi-linux-arm64.zip
+	sha256sums_aarch64 = 60f5d6423b0e519a380e1b4fc6c267f5e0948a17f0bda479b06e11e1243fc206
+	source_armv7h = cv4pve-vdi-1.2.0-armv7h.zip::https://github.com/Corsinvest/cv4pve-vdi/releases/download/v1.2.0/cv4pve-vdi-linux-arm.zip
+	sha256sums_armv7h = fb35734b97ee1b02015b417d363eafebcdb47e65abc988a85a42cccaf3c86711
+
+pkgname = cv4pve-vdi
