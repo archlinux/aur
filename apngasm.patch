@@ -1,0 +1,29 @@
+diff -ura apngasm.orig/cli/CMakeLists.txt apngasm.new/cli/CMakeLists.txt
+--- apngasm.orig/cli/CMakeLists.txt	2026-03-23 16:45:11.243393326 +0100
++++ apngasm.new/cli/CMakeLists.txt	2026-03-23 16:45:50.652494668 +0100
+@@ -34,7 +34,7 @@
+ if (APPLE OR WIN32)
+   set(Boost_USE_STATIC_LIBS ON)
+ endif ()
+-find_package(Boost REQUIRED COMPONENTS program_options regex system)
++find_package(Boost REQUIRED COMPONENTS program_options regex)
+ include_directories(${Boost_INCLUDE_DIRS})
+ 
+ # Generate executable
+diff -ura apngasm.orig/lib/CMakeLists.txt apngasm.new/lib/CMakeLists.txt
+--- apngasm.orig/lib/CMakeLists.txt	2026-03-23 16:45:11.249333432 +0100
++++ apngasm.new/lib/CMakeLists.txt	2026-03-23 16:46:23.490995183 +0100
+@@ -85,10 +85,9 @@
+ #endif ()
+ #set(Boost_USE_STATIC_LIBS OFF)
+ #SET(CMAKE_FIND_LIBRARY_SUFFIXES .dll.a .a .lib ${CMAKE_FIND_LIBRARY_SUFFIXES})
+-find_package(Boost REQUIRED COMPONENTS program_options regex system)
+-include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
+-target_link_libraries(${APNGASM_DYNAMIC_LIB_TARGET} Boost::program_options Boost::regex Boost::system)
+-target_link_libraries(${APNGASM_STATIC_LIB_TARGET} Boost::program_options Boost::regex Boost::system)
++find_package(Boost REQUIRED COMPONENTS program_options regex)
++target_link_libraries(${APNGASM_DYNAMIC_LIB_TARGET} Boost::program_options Boost::regex)
++target_link_libraries(${APNGASM_STATIC_LIB_TARGET} Boost::program_options Boost::regex)
+ 
+ get_target_property(APNGASM_DYNAMIC_LIB_TARGET_NAME ${APNGASM_DYNAMIC_LIB_TARGET} OUTPUT_NAME)
+ get_target_property(APNGASM_STATIC_LIB_TARGET_NAME ${APNGASM_STATIC_LIB_TARGET} OUTPUT_NAME)

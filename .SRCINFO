@@ -1,7 +1,7 @@
 pkgbase = apngasm
 	pkgdesc = tool for assembling apng files
 	pkgver = 3.1.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/apngasm/apngasm
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,15 @@ pkgbase = apngasm
 	makedepends = git
 	depends = libpng
 	depends = boost-libs
+	depends = glibc
+	depends = libstdc++
+	depends = libgcc
+	depends = zlib
 	conflicts = apng-utils
 	conflicts = apngasm-bin
 	source = https://github.com/apngasm/apngasm/archive/3.1.10.tar.gz
+	source = apngasm.patch
 	sha512sums = 670d75251ddc771f9b2b4a1f401066f2012a6814bec781b918f1d9e8960835654c66c3d19b4c8920d5186d85af12cdc4bba8b61c8f3d349b4fc70513d8ecb34e
+	sha512sums = 6e024de6837be964e005bf58d903e739d400b7b0696749890db2de141b8404a143e2b3af79a52e2a98249917e6e3dc9c4a621e0d0e53ce2e5b20d029246355a4
 
 pkgname = apngasm
