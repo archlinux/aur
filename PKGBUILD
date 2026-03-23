@@ -13,11 +13,11 @@ source=("https://files.pythonhosted.org/packages/source/s/smooth-py/smooth_py-${
 sha256sums=('389ee0e53f50544bfc3aee9fce5906466dfd9ff892f68ac9e03e2c4eca251d2f')
 
 build() {
-    cd "smooth_py-$pkgver"
+    cd "smooth-py-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "smooth_py-$pkgver"
+    cd "smooth-py-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
