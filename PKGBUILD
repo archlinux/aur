@@ -2,7 +2,7 @@
 pkgname=thoughts-bin
 _zhsname='思绪思维导图'
 _debname=io.github.wanglin2.mind-map
-pkgver=0.18.3
+pkgver=0.18.4
 _electronversion=23
 pkgrel=1
 pkgdesc="A relatively powerful web mind map.(Prebuilt version.Use system-wide electron)一个还算强大的Web思维导图."
@@ -19,9 +19,6 @@ conflicts=("${pkgname%-bin}")
 depends=(
     "electron${_electronversion}"
 )
-makedepends=(
-    'squashfs-tools'
-)
 source=(
     "LICENSE-${pkgver}::https://raw.githubusercontent.com/wanglin2/mind-map/${pkgver}/LICENSE"
     "${pkgname%-bin}.sh"
@@ -31,9 +28,9 @@ source_armv7h=("${pkgname%-bin}-${pkgver}-armv7h.deb::${_ghurl}/releases/downloa
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_amd64.deb")
 sha256sums=('8a19b651678a6a644640524d984ed89d0b9a78c662545715218a05130c7329c7'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
-sha256sums_aarch64=('d67e840b14edcadbd82d469f01239d7b4a217baf89ac880fed2dd2a38d65fea4')
-sha256sums_armv7h=('ebf501b53696075f652b333da278f472ba222e6dd15de969756935a83d94f2fa')
-sha256sums_x86_64=('b8ebf7255e659bf4257a721b336ccf718703742f4079abc2594d539a9461031b')
+sha256sums_aarch64=('8b169c6688c0c4af7fad50ee56d74d098ec35c3b8d1c719a508962060695a631')
+sha256sums_armv7h=('40debe9ec9982fd2b5458ad33f5e857f8b61989d554c670529a53263e20d5db0')
+sha256sums_x86_64=('8f0fb42efdefd101c472cd78ba5b93cf11106ad863c5aaeae2009761c5e00bcb')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_zhsname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
     echo -e "The electron version is: \033[1;31m${_elec_ver}\033[0m"
