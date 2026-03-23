@@ -1,7 +1,7 @@
 # Maintainer: xifan <xifan2333@gmail.com>
 pkgname=fcitx5-vinput-bin
 _pkgname=fcitx5-vinput
-pkgver=1.1.14
+pkgver=1.1.15
 pkgrel=1
 pkgdesc="Offline voice input addon for Fcitx5 with optional OpenAI-compatible postprocess"
 arch=('x86_64')
@@ -12,14 +12,14 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
 install="${pkgname}.install"
-source_x86_64=("${_pkgname}-${pkgver}-1-archlinux-x86_64.pkg.tar.zst::https://github.com/xifan2333/fcitx5-vinput/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1-archlinux-x86_64.pkg.tar.zst")
-sha256sums_x86_64=('42a118f62aa96285a822a49e71fb265e2d94adf5ac17ed829c86c8e402dd6e0c')
+source_x86_64=("${_pkgname}-${pkgver}-1-x86_64.pkg.tar.zst::https://github.com/xifan2333/fcitx5-vinput/releases/download/v${pkgver}/${_pkgname}-${pkgver}-1-x86_64.pkg.tar.zst")
+sha256sums_x86_64=('a50c400731b11c8b82051ed11367f3cca1b76d411b9e9cb38c6e4fb2043eff38')
 
 package() {
 	cd "${srcdir}"
 
 	# Extract the pre-built Arch package (skip metadata files)
-	tar -xf "${_pkgname}-${pkgver}-1-archlinux-x86_64.pkg.tar.zst" \
+	tar -xf "${_pkgname}-${pkgver}-1-x86_64.pkg.tar.zst" \
 		--exclude='.BUILDINFO' \
 		--exclude='.MTREE' \
 		--exclude='.PKGINFO' \
