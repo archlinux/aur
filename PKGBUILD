@@ -4,7 +4,7 @@
 # A modified version of the chatterino2-7tv-git package (https://aur.archlinux.org/packages/chatterino2-7tv-git)
 _pkgname=chatterino7
 pkgname=chatterino2-7tv
-pkgver=7.5.4
+pkgver=7.5.5
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino"'
 arch=('x86_64')
@@ -29,7 +29,7 @@ source=("git+https://github.com/SevenTV/${_pkgname}.git#tag=v${pkgver}"
         "git+https://github.com/ThePhD/sol2.git#tag=v3.3.1"
         "git+https://github.com/arsenm/sanitizers-cmake.git#commit=9689dd8f05e16deb3f3116916109edf2cce6f29a"
         "git+https://github.com/lua/lua.git#tag=v5.5.0")
-sha256sums=('533cfeceeff2718aa944a1894e12644a0d94d3be5762ee1412e2e1daf18bec61'
+sha256sums=('6732bb352999015c93de9a86dcddded3b845e93fde3ca5a7330d403242cb5fbe'
             'd9c6ad75a70f1d8463e8992fbc5ef0d45c78d33c37ede4d572499a607424e764'
             'd50966ad9cccfba81208ed08c2633054050e64ba3f90c8c0c88b5bd07f8d8f0f'
             '862a07e96dea7ab2a8484688add61156b6fb925992489be927b914b898e05204'
