@@ -4,12 +4,12 @@
 
 pkgname=lmod
 pkgver=9.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Environment modules system based on Lua that handles MODULEPATH hierarchical problem. Supports also legacy TCL modules"
 arch=('x86_64')
 url="https://github.com/TACC/Lmod"
 license=('custom')
-depends=('bash' 'lua-filesystem' 'lua-posix' 'procps-ng' 'tcl' 'bc')
+depends=('bash' 'lua54' 'lua54-filesystem' 'lua54-posix' 'procps-ng' 'tcl' 'bc')
 optdepends=('tcsh: supported shell'
             'zsh: supported shell')
 conflicts=('lmod-git' 'env-modules')
@@ -20,8 +20,9 @@ sha256sums=('b7277482677a22c3396b88a1290406ca20bb2564c59632403ca98373f132e65a')
 build() {
   cd "$srcdir"/Lmod-$pkgver || exit 1
 
-  ./configure \
-    --prefix=/usr/share
+  ./configure           \
+    --prefix=/usr/share \
+    --with-lua=/usr/bin/lua5.4
 
   make
 }
