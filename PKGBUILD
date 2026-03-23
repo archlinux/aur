@@ -2,7 +2,7 @@
 _pkgname=sioyek
 pkgname="${_pkgname}-supernote"
 pkgver=r2016.d2209ca6
-pkgrel=2
+pkgrel=3
 pkgdesc="A PDF viewer designed for reading research papers and technical books with Supernote .mark file support."
 arch=("x86_64" "i686" "aarch64" "armv7h" "armv6h")
 url="https://github.com/mil-ad/sioyek"
@@ -23,6 +23,7 @@ build() {
 
   # Use system mupdf headers to match the system library version,
   # preventing header/library version mismatch after mupdf updates.
+  mkdir -p "${srcdir}/${_pkgname}/mupdf/include"
   ln -sfn /usr/include/mupdf "${srcdir}/${_pkgname}/mupdf/include/mupdf"
 
   cmake -B build -S "${srcdir}/${_pkgname}" \
