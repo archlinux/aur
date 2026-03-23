@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgname=m17-cxx-demod-git
-pkgver=kalman.v1.0.r22.g5ff1187
-pkgrel=1
+pkgver=kalman.v1.0.r24.g9b8cec2
+pkgrel=2
 pkgdesc="M17 Demodulator in C++"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mobilinkd/m17-cxx-demod"
@@ -10,7 +10,8 @@ depends=('codec2' 'boost-libs' 'gcc-libs')
 provides=('m17-cxx-demod')
 makedepends=('cmake' 'git' 'patch' 'boost' 'blaze')
 source=("$pkgname"::"git+https://github.com/mobilinkd/m17-cxx-demod.git" add_cstdint.patch)
-sha256sums=('SKIP' 'b8d39aef0d6ea193cc71a9a137d55ad1bcdbeda812dfa4fb17cb467e60c1b919')
+sha256sums=('SKIP'
+            'b8d39aef0d6ea193cc71a9a137d55ad1bcdbeda812dfa4fb17cb467e60c1b919')
 
 pkgver() {
     cd "$srcdir/$pkgname"
