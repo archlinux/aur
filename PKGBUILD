@@ -2,10 +2,10 @@
 
 pkgname=anime-games-launcher-bin
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A launcher for various anime games"
 url="https://github.com/an-anime-team/anime-games-launcher"
-conflicts=("anime-games-launcher-git")
+conflicts=("anime-games-launcher-git" "anime-games-launcher")
 provides=("anime-games-launcher")
 arch=("x86_64")
 license=("GPL3")
@@ -13,12 +13,12 @@ license=("GPL3")
 depends=(
     "libadwaita"
     "xdg-desktop-portal"
-    "p7zip"
+    "7zip"
     "tar"
     "zip"
     "git"
     "libnotify"
-    "libdbus"
+    "dbus"
     "gtk4"
     "glibc"
 )
