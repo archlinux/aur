@@ -3,7 +3,7 @@
 
 pkgname=libkolabxml
 pkgver=1.3.1
-pkgrel=7
+pkgrel=8
 pkgdesc='Kolab XML Format Schema Definitions Library'
 url='https://www.kolab.org/'
 arch=('x86_64')
@@ -11,7 +11,8 @@ license=(LGPL-3.0-or-later)
 depends=(boost-libs
          curl
          glibc
-         gcc-libs
+         libgcc
+         libstdc++
          xerces-c)
 makedepends=(boost
              cmake
