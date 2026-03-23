@@ -10,7 +10,9 @@ pkgbase = limux-bin
 	depends = webkitgtk-6.0
 	provides = limux
 	conflicts = limux
+	options = !debug
+	options = !strip
 	source = limux-0.1.5.tar.gz::https://github.com/am-will/limux/releases/download/v0.1.5/limux-0.1.5-linux-x86_64.tar.gz
-	sha256sums = SKIP
+	sha256sums = c8bd53867ad2e25f87227e2ba4ac1fdea487bdae2fab75609514ddfdd7c75593
 
 pkgname = limux-bin

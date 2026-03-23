@@ -9,31 +9,24 @@ license=('MIT')
 depends=('gtk4' 'libadwaita' 'webkitgtk-6.0')
 provides=('limux')
 conflicts=('limux')
+options=(!debug !strip)
 source=("limux-${pkgver}.tar.gz::https://github.com/am-will/limux/releases/download/v${pkgver}/limux-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('c8bd53867ad2e25f87227e2ba4ac1fdea487bdae2fab75609514ddfdd7c75593')
 
 package() {
     cd "limux-${pkgver}-linux-x86_64"
 
-    # binary
     install -Dm755 limux "${pkgdir}/usr/bin/limux"
-
-    # shared library
     install -Dm755 lib/libghostty.so "${pkgdir}/usr/lib/libghostty.so"
-
-    # desktop entry
     install -Dm644 share/applications/limux.desktop "${pkgdir}/usr/share/applications/limux.desktop"
 
-    # icons
     for size in 16x16 32x32 128x128 256x256 512x512; do
         install -Dm644 "share/icons/hicolor/${size}/apps/limux.png" \
             "${pkgdir}/usr/share/icons/hicolor/${size}/apps/limux.png"
     done
 
-    # scalable icons
     find share/icons/hicolor/scalable -type f -name '*.svg' -exec \
         install -Dm644 {} "${pkgdir}/usr/{}" \;
 
-    # ghostty data (themes, shell integration, docs)
     cp -r share/limux "${pkgdir}/usr/share/limux"
 }
