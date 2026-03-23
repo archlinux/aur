@@ -1,0 +1,20 @@
+pkgbase = tp-fanctl-git
+	pkgdesc = Adaptive fan controller for ThinkPad laptops — auto-switches quiet/gaming profiles based on CPU load (git version)
+	pkgver = r3.4054632
+	pkgrel = 1
+	url = https://github.com/onyxdigitaldev/tp-fanctl
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python>=3.10
+	depends = thinkfan
+	optdepends = python-gobject: system tray applet
+	optdepends = libappindicator-gtk3: system tray applet
+	provides = tp-fanctl
+	conflicts = tp-fanctl
+	backup = etc/thinkfan.yaml
+	backup = etc/thinkfan-gaming.yaml
+	source = tp-fanctl-git::git+https://github.com/onyxdigitaldev/tp-fanctl.git
+	sha256sums = SKIP
+
+pkgname = tp-fanctl-git
