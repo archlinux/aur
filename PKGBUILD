@@ -1,9 +1,9 @@
 # Maintainer: Maxim Korotkov <maximkorotkov4@gmail.com>
 
 pkgname=anime-games-launcher-bin
-pkgver=1.0.2
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Unified launcher for all of your specific anime game needs."
+pkgdesc="A launcher for various anime games"
 url="https://github.com/an-anime-team/anime-games-launcher"
 conflicts=("anime-games-launcher-git")
 provides=("anime-games-launcher")
@@ -13,9 +13,12 @@ license=("GPL3")
 depends=(
     "libadwaita"
     "xdg-desktop-portal"
-    "xdelta3"
     "p7zip"
+    "tar"
+    "zip"
     "git"
+    "libnotify"
+    "libdbus"
     "gtk4"
     "glibc"
 )
@@ -33,9 +36,9 @@ source=(
 )
 
 md5sums=(
-    'a16570ba2d4a4b82f8c6177c8e36ed34'
-    '3813aa35084ab351d434ff96bc33dff9'
-    '04994726fb0254efef25fb2d3c182850'
+    'b651a591c66ff02e9ecf0e22db0539e9'
+    'b0ec5d3121b1b0766a9e53cdd0bc04ee'
+    '8b61154766b80f75afa4936ca110dfd1'
 )
 
 prepare() {
