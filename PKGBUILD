@@ -40,11 +40,10 @@ pkgver() {
 prepare() {
 	cd radicle-explorer
 	pnpm import
-	cat >pnpm-workspace.yaml <<EOF
-onlyBuiltDependencies:
-  - esbuild
-EOF
-	pnpm install --shamefully-hoist
+	pnpm install \
+		--shamefully-hoist \
+		--dangerously-allow-all-builds \
+		# EOL
 
 	cd radicle-httpd
 	cargo fetch --locked --target "$(rustc --print host-tuple)"
