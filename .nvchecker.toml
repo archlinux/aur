@@ -1,4 +1,4 @@
-[calamares-git]
+[calamares]
 source = "git"
-git = "https://github.com/calamares/calamares.git"
+git = "https://codeberg.org/Calamares/calamares.git"
 prefix = "v"

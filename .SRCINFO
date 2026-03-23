@@ -1,7 +1,7 @@
 pkgbase = calamares
 	pkgdesc = Distribution-independent installer framework
 	pkgver = 3.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://codeberg.org/Calamares/calamares
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = calamares
 	depends = qt6-declarative
 	depends = qt6-svg
 	depends = yaml-cpp
-	source = calamares-3.4.2.tar.gz::https://codeberg.org/Calamares/calamares/archive/v3.4.2.tar.gz
-	sha256sums = 7b8d0ee09645ad9d625baaebe0ba9ffd5baedbe92153347fd4d0a003a2d7639c
+	source = calamares-3.4.2.tar.gz::https://codeberg.org/Calamares/calamares/releases/download/v3.4.2/calamares-3.4.2.tar.gz
+	sha256sums = 733bbbb00dc9f84874bd5c22960952f317ea2537565431179fa2152b2fbfdccc
 
 pkgname = calamares
