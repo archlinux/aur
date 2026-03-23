@@ -19,7 +19,7 @@ makedepends=(
 )
 provides=('libclblast.so' 'clblast')
 conflicts=('clblast')
-source=(https://github.com/CNugteren/${pkgname}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz)
+source=(https://github.com/CNugteren/${pkgname/blas-/}/archive/${pkgver}/${pkgname/blas-/}-${pkgver}.tar.gz)
 sha256sums=('c05668c7461e8440fce48c9f7a8966a6f9e0923421acd7c0357ece9b1d83f20e')
 
 build() {
