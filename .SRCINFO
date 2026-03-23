@@ -1,6 +1,6 @@
 pkgbase = xlibre-server-xvfb-bin
 	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org virtual framebuffer X server (binary release)
-	pkgver = 25.0.0.20
+	pkgver = 25.0.0.21
 	pkgrel = 1
 	url = https://x11libre.net/repo/arch_based/x86_64
 	arch = x86_64
@@ -39,9 +39,9 @@ pkgbase = xlibre-server-xvfb-bin
 	conflicts = xlibre-server-xvfb
 	conflicts = xorg-server-xvfb
 	conflicts = xlibre-server-xvfb
-	noextract = xlibre-server-xvfb-25.0.0.20-1-x86_64.pkg.tar.zst
+	noextract = xlibre-server-xvfb-25.0.0.21-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-xserver-xvfb-25.0.0.20-1-x86_64.pkg.tar.zst
-	sha256sums = 4bc3a2a80506d289c507933e9c752acfe7b54ccda3011619524e4d4b2e4fc8b3
+	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-xserver-xvfb-25.0.0.21-1-x86_64.pkg.tar.zst
+	sha256sums = 247f36fc3fac9a079ed76afb9e41d09a7eee832945253c4b02ee545470f73e18
 
 pkgname = xlibre-server-xvfb-bin
