@@ -1,15 +1,15 @@
 pkgbase = markflowy-bin
 	pkgdesc = Modern markdown editor application, Build fast and efficient workflows.(Prebuilt version)
-	pkgver = 0.55.3
+	pkgver = 0.55.4
 	pkgrel = 1
 	url = https://markflowy.vercel.app/
 	arch = x86_64
 	license = AGPL-3.0-only
 	depends = gtk3
 	depends = webkit2gtk-4.1
-	provides = markflowy=0.55.3
+	provides = markflowy=0.55.4
 	conflicts = markflowy
-	source = markflowy-0.55.3.rpm::https://github.com/drl990114/MarkFlowy/releases/download/v0.55.3/MarkFlowy-0.55.3-1.x86_64.rpm
-	sha256sums = e9d2df2088f1b205fa958287b0b7ef13e2914d014b2f7f0d5e5ee238e2f108e5
+	source = markflowy-0.55.4.rpm::https://github.com/drl990114/MarkFlowy/releases/download/v0.55.4/MarkFlowy-0.55.4-1.x86_64.rpm
+	sha256sums = aa484814f77c5800c34b9e4af1a05341ec9efd569a5bad1c0a3e13f7535fbc69
 
 pkgname = markflowy-bin
