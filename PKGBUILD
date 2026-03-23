@@ -16,6 +16,7 @@ depends=(
 	'zlib'
 	'git'
 	'openssh'
+	'libgit2' 'libgit2.so'
 )
 makedepends=(
 	'git'
@@ -71,6 +72,8 @@ build() {
 	# a workaround to force generation of normal object code on C side:
 	CFLAGS+=" -ffat-lto-objects"
 	CXXFLAGS+=" -ffat-lto-objects"
+
+	export LIBGIT2_NO_VENDOR=1
 
 	export RADICLE_VERSION="$pkgver"
 	cargo build \
