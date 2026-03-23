@@ -1,7 +1,7 @@
 # Maintainer: Microck <contact@micr.dev>
 
 pkgname=kagi-cli
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Agent-native CLI for Kagi subscribers with JSON-first search output"
 arch=('x86_64' 'aarch64')
@@ -12,7 +12,7 @@ makedepends=('cargo')
 provides=('kagi')
 conflicts=('kagi')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('afb642611158a861be09ff1e610c69187e631a7ffc256ff0f9065504f3ff0e45')
+sha256sums=('98a572e83df9db2a267dd0070405e68b325e0b1f4d01965255c0f6e244d6e494')
 
 prepare() {
   cd "$pkgname-$pkgver"
