@@ -2,7 +2,7 @@
 # CIPHER — AI Security Engineering Platform
 
 pkgname=cipher-security
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="AI-powered cybersecurity platform — 1,539 skills, 39 compliance frameworks, autonomous security engine"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
 )
 makedepends=('npm' 'git')
 source=("git+https://github.com/defconxt/CIPHER.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+sha256sums=('SKIP')  # TODO: pin after release — run `makepkg -g` to generate
 
 package() {
   cd "${srcdir}/CIPHER/cli"
