@@ -1,6 +1,6 @@
 pkgbase = tmuxai-bin
 	pkgdesc = AI-Powered, Non-Intrusive Terminal Assistant for tmux (binary release)
-	pkgver = 2.1.0
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/alvinunreal/tmuxai
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = tmuxai-bin
 	provides = tmuxai
 	conflicts = tmuxai
 	conflicts = tmuxai-git
-	source = https://github.com/alvinunreal/tmuxai/releases/download/v2.0.2/tmuxai_Linux_amd64.tar.gz
-	sha256sums = 1eb0197500221e9e4411e875dd6a8ab43a20ae3fe641b2f33fee0c0ff6cf4854
+	source = https://github.com/alvinunreal/tmuxai/releases/download/v2.1.2/tmuxai_Linux_amd64.tar.gz
+	sha256sums = ac2d37ca16b97b286e1b6473e6ec509680a0a8f4d947d21e00b67efc53994551
 
 pkgname = tmuxai-bin
