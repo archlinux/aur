@@ -1,7 +1,7 @@
 pkgbase = ensembl-cli
 	pkgdesc = Self-documenting command line client for the Ensembl REST API
 	pkgver = 0.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/decent-tools-for-thought/ensembl-cli
 	arch = any
 	license = MIT

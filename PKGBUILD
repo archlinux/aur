@@ -2,7 +2,7 @@
 
 pkgname=ensembl-cli
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Self-documenting command line client for the Ensembl REST API"
 arch=('any')
 url="https://github.com/decent-tools-for-thought/ensembl-cli"
@@ -12,13 +12,18 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('868daec1bf99010230b3f9a4161ea1568ff495e3cd4e0a0666aaa9259e9b1fea')
 
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  sed -i 's/^license = {text = "MIT"}$/license = "MIT"/' pyproject.toml
+}
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  python -m build --wheel --no-isolation
+  /usr/bin/python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  /usr/bin/python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
