@@ -2,13 +2,19 @@
 
 _pkgname="fga"
 pkgname="${_pkgname}-bin"
-pkgver=0.7.8
+pkgver=0.7.11
 pkgrel=1
 pkgdesc="Cross-platform CLI to interact with an OpenFGA server"
-arch=('aarch64' 'i686' 'x86_64')
+arch=(
+  'aarch64'
+  'i686'
+  'x86_64'
+)
 url="https://openfga.dev"
 _url="https://github.com/openfga/cli"
-license=('Apache-2.0')
+license=(
+  'Apache-2.0'
+)
 makedepends=(
   'cosign'
   'gzip'
@@ -21,27 +27,36 @@ conflicts=(
   "${_pkgname}"
 )
 _pkgsrc="${_pkgname}-${pkgver}"
-source=("${_pkgsrc}-checksums.txt::${_url}/releases/download/v${pkgver}/checksums.txt"
-        "${_pkgsrc}-checksums.txt.pem::${_url}/releases/download/v${pkgver}/checksums.txt.pem"
-        "${_pkgsrc}-checksums.txt.cosig::${_url}/releases/download/v${pkgver}/checksums.txt.sig" # rename to not confuse OpenPGP
-        "${_pkgsrc}.intoto.jsonl::${_url}/releases/download/v${pkgver}/${_pkgname}.intoto.jsonl")
-source_aarch64=("${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_arm64.tar.gz")
-source_i686=("${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_386.tar.gz")
-source_x86_64=("${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_amd64.tar.gz")
-sha256sums=('9ce3fe1bfb8d47c51b4f6fb1b508d4d278d631bb2fd2b267e657d4e88244cbb6'
-            'ecd692fb9f57bd6822fb9ef29f1c4d820a623f999722e79397f639eec4e918ca'
-            '678e6b0d5df2c74996acfe35703e0a2ded6709e36851317917d638fcec38d1f3'
-            '6aed17d4cb7e1f473bb341be34857d99e9acbba864d35350cf6835e851a199e2')
-sha256sums_aarch64=('949e6b309d5cd71402d57134b351d325ca2de7ff701efb4e068ad2565cbc1fcf')
-sha256sums_i686=('91ddef244f259c54d6fa81597cd3746001abeed0c1e299a660ab0e030761dc1a')
-sha256sums_x86_64=('daa5a42d41ee4647df5474449cd53ebdeafb3d7cb7442e064f5733b32de91510')
+source=(
+  "${_pkgsrc}-checksums.txt::${_url}/releases/download/v${pkgver}/checksums.txt"
+  "${_pkgsrc}-checksums.txt.pem::${_url}/releases/download/v${pkgver}/checksums.txt.pem"
+  "${_pkgsrc}-checksums.txt.cosig::${_url}/releases/download/v${pkgver}/checksums.txt.sig" # rename to not confuse OpenPGP
+  "${_pkgsrc}.intoto.jsonl::${_url}/releases/download/v${pkgver}/${_pkgname}.intoto.jsonl"
+)
+source_aarch64=(
+  "${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_arm64.tar.gz"
+)
+source_i686=(
+  "${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_386.tar.gz"
+)
+source_x86_64=(
+  "${_url}/releases/download/v${pkgver}/${_pkgsrc//-/_}_linux_amd64.tar.gz"
+)
+sha256sums=('f3b033290770b0c647a19bc6c2d85c780e42fc342133871598e29d1c5f887586'
+            'ca358e7f99e2bde1f7aee8675bd6c153518cc0f5dce2401a7eb794be88842528'
+            '8d7580741d694b7cf04b7c51ebb4b5e9c2dfd6ee4530baf5e117a1fa69dd9012'
+            'fdfb7c4152c264419e60a3d3e03079837f6f4efd241ca2164306c6a2405b6f93')
+sha256sums_aarch64=('3589637c941d9d71163196688f069498ad292745756a567db89ba8ef30977bf5')
+sha256sums_i686=('a03a060cebc28e456aac06ecba17ac5fdcf8f69385110f63211cbdc776a56126')
+sha256sums_x86_64=('e771343ec744546b310cc4766fc3545ab9e30bfb07113068b635e09d2926e38f')
 
 verify() {
+  export COSIGN_EXPERIMENTAL=1
   local source_carch="source_${CARCH}[0]"
   local source_arch="${!source_carch}"
   local source_tarball="${source_arch##*/}"
 
-  COSIGN_EXPERIMENTAL=1 cosign verify-blob \
+  cosign verify-blob \
     --certificate "${_pkgsrc}-checksums.txt.pem" \
     --signature "${_pkgsrc}-checksums.txt.cosig" \
     --certificate-identity "${_url}/.github/workflows/main.yaml@refs/tags/v${pkgver}" \
