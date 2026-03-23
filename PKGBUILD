@@ -1,15 +1,15 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=quadrant-bin
 _pkgname=Quadrant
-pkgver=26.3.0
+pkgver=26.3.3
 pkgrel=1
 pkgdesc="An easy way to manage your Minecraft modpacks, written in React and Rust.(Prebuilt version)"
 arch=(
     'aarch64'
     'x86_64'
 )
-url="https://mrquantumoff.dev/projects/quadrant"
-_ghurl="https://github.com/mrquantumoff/quadrant"
+url="https://usequadrant.dev/"
+_ghurl="https://github.com/QuadrantMC/quadrant"
 license=('MPL-2.0')
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
@@ -20,8 +20,8 @@ depends=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.rpm::${_ghurl}/releases/download/v${pkgver}-stable/${_pkgname}-${pkgver}-stable-1.aarch64.rpm")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.rpm::${_ghurl}/releases/download/v${pkgver}-stable/${_pkgname}-${pkgver}-stable-1.x86_64.rpm")
-sha256sums_aarch64=('beb57b2c11c83b950d517f16bfcb0765c40f96c4855fa9f8958b5bb6c88b5d3e')
-sha256sums_x86_64=('07e96ae0dd564907d7345e4ce102547826290099f1c946dcc14a58cab54bb179')
+sha256sums_aarch64=('73d082e9d7348a5702d3eda8848d5dc050c284edac65cd1a48e3659b17e5d2db')
+sha256sums_x86_64=('4db26634e947e8faa715a5f8cd37353d836d64acc302d689661859794418b809')
 prepare() {
     sed -i "s/${pkgname%-bin}_next/${pkgname%-bin}/g" "${srcdir}/usr/share/applications/${_pkgname}.desktop"
 }
