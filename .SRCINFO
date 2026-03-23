@@ -1,14 +1,14 @@
 pkgbase = ttf-ioskeley-mono
 	pkgdesc = Iosevka configuration to mimic the look and feel of Berkeley Mono as closely as possible
-	pkgver = 2025.10.09_6
+	pkgver = 2026.03.19_7
 	pkgrel = 1
 	url = https://github.com/ahatem/IoskeleyMono
 	arch = any
 	license = GPL
 	options = !strip
-	source = ttf-ioskeley-mono-2025.10.09_6.zip::https://github.com/ahatem/IoskeleyMono/releases/download/2025.10.09-6/IoskeleyMono-TTF-Hinted.zip
-	source = LICENSE::https://raw.githubusercontent.com/ahatem/IoskeleyMono/refs/tags/2025.10.09-6/LICENSE
-	md5sums = 3739109789a2a926e066cfb171ef7c98
+	source = ttf-ioskeley-mono-2026.03.19_7.zip::https://github.com/ahatem/IoskeleyMono/releases/download/2026.03.19-7/IoskeleyMono-TTF-Hinted.zip
+	source = LICENSE::https://raw.githubusercontent.com/ahatem/IoskeleyMono/refs/tags/2026.03.19-7/LICENSE
+	md5sums = 79f3aef8a7eda5229379c43d603e4f9b
 	md5sums = e9a14cb5b1cec21c6577808443ed0c08
 
 pkgname = ttf-ioskeley-mono

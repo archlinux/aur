@@ -4,7 +4,7 @@
 
 declare srcdir pkgdir
 pkgname=ttf-ioskeley-mono
-_pkgver=2025.10.09-6
+_pkgver=2026.03.19-7
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc=" Iosevka configuration to mimic the look and feel of Berkeley Mono as closely as possible"
@@ -14,7 +14,7 @@ license=('GPL')
 options=(!strip)
 source=("$pkgname-$pkgver.zip::${url}/releases/download/${_pkgver}/IoskeleyMono-TTF-Hinted.zip"
     "LICENSE::https://raw.githubusercontent.com/ahatem/IoskeleyMono/refs/tags/${_pkgver}/LICENSE")
-md5sums=('3739109789a2a926e066cfb171ef7c98'
+md5sums=('79f3aef8a7eda5229379c43d603e4f9b'
     'e9a14cb5b1cec21c6577808443ed0c08')
 
 package() {
