@@ -7,6 +7,7 @@ pkgbase = ensembl-cli
 	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
 	source = ensembl-cli-0.1.3.tar.gz::https://github.com/decent-tools-for-thought/ensembl-cli/archive/refs/tags/v0.1.3.tar.gz

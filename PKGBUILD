@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/decent-tools-for-thought/ensembl-cli"
 license=('MIT')
 depends=('python')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('868daec1bf99010230b3f9a4161ea1568ff495e3cd4e0a0666aaa9259e9b1fea')
 
