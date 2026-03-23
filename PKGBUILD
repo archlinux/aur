@@ -10,7 +10,7 @@ makedepends=('git' 'go')
 conflicts=('desktopify-lite-git')
 # Use variable for tag so it updates automatically
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha256sums=('846a90383bd822d552bf9200e134bb9098bc0d75f7101a04618a9fcaa3c5dd58')
+sha256sums=('3bf1841772af2aec779a7530ce29b9c5584e8c624bacdebb53c306074270a6ef')
 
 build() {
   cd "$srcdir/$pkgname"
