@@ -1,0 +1,16 @@
+pkgbase = scrollshot-git
+	pkgdesc = Wayland scrolling screenshot tool for wlroots-based compositors
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jbonney/scrollshot
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = wayland
+	provides = scrollshot
+	conflicts = scrollshot
+	source = git+https://github.com/jbonney/scrollshot.git
+	sha256sums = SKIP
+
+pkgname = scrollshot-git
