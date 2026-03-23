@@ -36,7 +36,7 @@ prepare() {
 
 pkgver() {
   cd "$_name"
-  _tag="$(grep '^version' pyproject.toml | awk -F\" '{print $2}')"
+  _tag="$(grep '^version' pyproject.toml | awk -F\" '{print $2}')" # Repo has no tags
   printf "%s.r%s.%s" "$_tag" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
 

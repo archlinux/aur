@@ -1,0 +1,25 @@
+pkgbase = python-certihound-git
+	pkgdesc = Linux-native AD CS collector library for BloodHound CE
+	pkgver = 0.2.0.r12.deaf955
+	pkgrel = 1
+	url = https://github.com/0x0Trace/certihound
+	arch = any
+	license = MIT
+	checkdepends = python-pytest>=7.0.0
+	checkdepends = python-pytest-cov>=4.0.0
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools>=61.0
+	makedepends = git
+	depends = python>=3.10
+	depends = python-ldap3>=2.9.1
+	depends = impacket>=0.11.0
+	depends = python-cryptography>=41.0.0
+	depends = python-pydantic>=2.0
+	depends = python-click>=8.1.6
+	depends = python-rich>=13.0.0
+	source = git+https://github.com/0x0Trace/certihound
+	b2sums = SKIP
+
+pkgname = python-certihound-git
