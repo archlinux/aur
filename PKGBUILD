@@ -1,6 +1,6 @@
 # Maintainer: Douglas Soares de Andrade <contato@douglasandrade.com>
 pkgname=wt-zig
-pkgver=0.2.1
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Git worktree manager with organized directory structure'
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('zig')
 provides=('wt')
 conflicts=('wt')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d82b0d5079b4a0471e794c2bbc916a6fa20f5c6d85cf4d6c80b4bdd5c6af6986')
+sha256sums=('9a3422874b8c78147eb6d7c9983be422fad6c07ebbdd5e5e07cf56894ad84b92')
 
 build() {
     cd "$pkgname-$pkgver"
