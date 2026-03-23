@@ -1,6 +1,6 @@
 pkgbase = ophis
 	pkgdesc = An assembler for the 6502 microprocessor
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = http://michaelcmartin.github.io/Ophis/
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = ophis
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = python
-	source = https://github.com/michaelcmartin/ophis/archive/refs/tags/v2.2.tar.gz
-	sha1sums = ced176c3e237f4f774d04b2d8d59eefbd2c87ea9
+	source = https://github.com/michaelcmartin/ophis/archive/refs/tags/v2.3.tar.gz
+	sha1sums = 9ae5c90f141d1dfdffd1d7dcc30d9da2f79e7082
 
 pkgname = ophis

@@ -2,7 +2,7 @@
 
 pkgname=ophis
 _pkgname=Ophis
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 epoch=
 pkgdesc="An assembler for the 6502 microprocessor"
@@ -22,7 +22,7 @@ options=()
 install=
 changelog=
 source=(https://github.com/michaelcmartin/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz)
-sha1sums=('ced176c3e237f4f774d04b2d8d59eefbd2c87ea9')
+sha1sums=('9ae5c90f141d1dfdffd1d7dcc30d9da2f79e7082')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
