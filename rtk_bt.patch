@@ -1,0 +1,31 @@
+--- rtk_bt.c	2020-06-10 00:51:44.000000000 -0700
++++ rtk_bt.c.new	2026-03-23 13:48:32.345085929 -0700
+@@ -30,7 +30,7 @@
+ #include <linux/usb.h>
+ #include <linux/dcache.h>
+ #include <net/sock.h>
+-#include <asm/unaligned.h>
++#include <linux/unaligned.h>
+ 
+ #include "rtk_bt.h"
+ #include "rtk_misc.h"
+@@ -1430,8 +1430,8 @@
+ 
+ #if HCI_VERSION_CODE >= KERNEL_VERSION(3, 7, 1)
+ 	if (!reset)
+-		set_bit(HCI_QUIRK_RESET_ON_CLOSE, &hdev->quirks);
+-	RTKBT_DBG("set_bit(HCI_QUIRK_RESET_ON_CLOSE, &hdev->quirks);");
++		hci_set_quirk(hdev, HCI_QUIRK_RESET_ON_CLOSE);
++	RTKBT_DBG("hci_set_quirk(hdev, HCI_QUIRK_RESET_ON_CLOSE);");
+ #endif
+ 
+ 	/* Interface numbers are hardcoded in the specification */
+@@ -1448,7 +1448,7 @@
+ 	}
+ 
+ #if HCI_VERSION_CODE >= KERNEL_VERSION(4, 1, 0)
+-	set_bit(HCI_QUIRK_SIMULTANEOUS_DISCOVERY, &hdev->quirks);
++	hci_set_quirk(hdev, HCI_QUIRK_SIMULTANEOUS_DISCOVERY);
+ #endif
+ 
+ 	err = hci_register_dev(hdev);

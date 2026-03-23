@@ -15,6 +15,9 @@ source=("https://archive.org/download/mpow_mpbh456ab_driverforlinux/mpow_MPBH456
     "rtl8761usb.conf"
     "dkms.conf"
     "Makefile.patch"
+    "rtk_bt.patch"
+    "rtk_coex.patch"
+    "rtk_misc.patch"
     )
 
 package() {
@@ -40,10 +43,16 @@ package() {
   cd ${srcdir}/${pkgver}_LINUX_BT_DRIVER/usb/bluetooth_usb_driver
 #  sed -i 's/rtk_btusb/rtl8761usb/g'  Makefile
   patch --strip=0 < ${srcdir}/Makefile.patch
+  patch --strip=0 < ${srcdir}/rtk_bt.patch
+  patch --strip=0 < ${srcdir}/rtk_coex.patch
+  patch --strip=0 < ${srcdir}/rtk_misc.patch
   for d in $(find . -type d);do install -dm755 "${install_dir}/$d";done
   for f in $(find . -type f);do install -m644 "$f" "${install_dir}/$f";done
 }
 sha256sums=('74001cd412363485751a8e11dda7de54919de51a74d7f060ce489d0a9291040b'
             '49fd7d83509ce7ec6797b987719ddbbc9168656374a360a35fe8a1ef8b52cee5'
             '9ff12db0338709ac3b1f6c2c8e14a9e715f89283da716ff83e71012136820027'
-            'cce5da3c3c05ccac84bda25246200a80747da3f8ec5fb15be860b79c22a6414c')
+            'cce5da3c3c05ccac84bda25246200a80747da3f8ec5fb15be860b79c22a6414c'
+            'aaa1a9a2ebe89139457f667bb545667b5cba591fd3ae10b5ca5632fd7c84639e'
+            '574683ca3961ef9be849d4b95c61cee2dbf8460a59bac1a62b4f7db3cf308d16'
+            'c433e32b6d5f00e3e70ffaffc0347b60d7ffd1926b0c9218a3567cf4a69839f6')

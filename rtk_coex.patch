@@ -1,0 +1,47 @@
+--- rtk_coex.c	2026-03-23 13:03:21.440703407 -0700
++++ rtk_coex.c.new	2026-03-23 13:03:32.638510783 -0700
+@@ -318,22 +318,22 @@
+ {
+ 	if (profile_a2dp == profile_index) {
+ 		btrtl_coex.a2dp_packet_count = 0;
+-		del_timer_sync(&btrtl_coex.a2dp_count_timer);
++		timer_delete_sync(&btrtl_coex.a2dp_count_timer);
+ 	}
+ 	if (profile_pan == profile_index) {
+ 		btrtl_coex.pan_packet_count = 0;
+-		del_timer_sync(&btrtl_coex.pan_count_timer);
++		timer_delete_sync(&btrtl_coex.pan_count_timer);
+ 	}
+ 	if (profile_hogp == profile_index) {
+ 		btrtl_coex.hogp_packet_count = 0;
+ 		if (btrtl_coex.profile_refcount[profile_voice] == 0) {
+-			del_timer_sync(&btrtl_coex.hogp_count_timer);
++			timer_delete_sync(&btrtl_coex.hogp_count_timer);
+ 		}
+ 	}
+ 	if (profile_voice == profile_index) {
+ 		btrtl_coex.voice_packet_count = 0;
+ 		if (btrtl_coex.profile_refcount[profile_hogp] == 0) {
+-			del_timer_sync(&btrtl_coex.hogp_count_timer);
++			timer_delete_sync(&btrtl_coex.hogp_count_timer);
+ 		}
+ 	}
+ }
+@@ -2970,13 +2970,13 @@
+ 	/* Delete all timers */
+ 	if (btrtl_coex.polling_enable) {
+ 		btrtl_coex.polling_enable = 0;
+-		del_timer_sync(&(btrtl_coex.polling_timer));
++		timer_delete_sync(&(btrtl_coex.polling_timer));
+ 	}
+ #endif /* RTB_SOFTWARE_MAILBOX */
+ 
+-	del_timer_sync(&btrtl_coex.a2dp_count_timer);
+-	del_timer_sync(&btrtl_coex.pan_count_timer);
+-	del_timer_sync(&btrtl_coex.hogp_count_timer);
++	timer_delete_sync(&btrtl_coex.a2dp_count_timer);
++	timer_delete_sync(&btrtl_coex.pan_count_timer);
++	timer_delete_sync(&btrtl_coex.hogp_count_timer);
+ 
+ 	cancel_delayed_work_sync(&btrtl_coex.fw_work);
+ 	cancel_delayed_work_sync(&btrtl_coex.l2_work);

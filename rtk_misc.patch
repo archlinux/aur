@@ -1,0 +1,11 @@
+--- rtk_misc.c	2025-08-06 10:32:55.219484326 -0700
++++ rtk_misc.c.new	2025-08-06 10:33:00.616124440 -0700
+@@ -31,7 +31,7 @@
+ #include <linux/dcache.h>
+ #include <linux/in.h>
+ #include <net/sock.h>
+-#include <asm/unaligned.h>
++#include <linux/unaligned.h>
+ 
+ #include <linux/interrupt.h>
+ #include <linux/module.h>
