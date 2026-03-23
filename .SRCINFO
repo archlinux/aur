@@ -1,7 +1,7 @@
 pkgbase = devkitty
 	pkgdesc = Swiss army knife for developers.(Use system-wide electron)
-	pkgver = 4.0.8
-	pkgrel = 2
+	pkgver = 4.1.1
+	pkgrel = 1
 	url = https://devkitty.app/
 	arch = any
 	license = MIT
@@ -12,11 +12,9 @@ pkgbase = devkitty
 	makedepends = curl
 	makedepends = git
 	makedepends = jq
-	depends = electron40
+	depends = electron41
 	conflicts = devkitty
-	source = devkitty-4.0.8::git+https://github.com/egor-xyz/devkitty#tag=v4.0.8
 	source = devkitty.sh
-	sha256sums = cecc1049d8a65d8254cd0b0ff85416867b1a0b8f9b3ab055323f25e15f4e5258
 	sha256sums = 31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6
 
 pkgname = devkitty
