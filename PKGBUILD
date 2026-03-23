@@ -5,7 +5,8 @@
 # Based on https://aur.archlinux.org/packages/an-anime-game-launcher-git
 pkgname="anime-games-launcher-git"
 _pkgname="${pkgname%-git}"
-pkgver=2.0.0.r21.g882c473
+pkgver=2.0.0.r0.g78a8d57
+epoch=1
 pkgrel=1
 pkgdesc="Universal linux launcher for anime games"
 arch=("x86_64")
@@ -29,7 +30,7 @@ optdepends=(
   "gamemode: Game Optimizations"
   "gamescope: a tool from Valve that allows for games to run in an isolated Xwayland instance"
 )
-source=("git+https://github.com/an-anime-team/anime-games-launcher#branch=next")
+source=("git+https://github.com/an-anime-team/anime-games-launcher")
 md5sums=('SKIP')
 
 pkgver() {
