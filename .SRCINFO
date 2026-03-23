@@ -1,14 +1,18 @@
 pkgbase = obs-advanced-masks
 	pkgdesc = Advanced Masking Plugin for OBS
 	pkgver = 1.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/FiniteSingularity/obs-advanced-masks
 	arch = x86_64
 	license = GPL-2.0-or-later
 	makedepends = cmake
-	depends = gcc-libs
+	depends = curl
 	depends = glibc
+	depends = libgcc
+	depends = libstdc++
 	depends = obs-studio
+	depends = qt6-base
+	depends = qt6-svg
 	source = obs-advanced-masks-1.5.4.tar.gz::https://github.com/FiniteSingularity/obs-advanced-masks/archive/v1.5.4.tar.gz
 	b2sums = 78bfa36de4ca6867568661aea9c5e4b92dee86960b1b4b0bc045eb869f92219f779cbfd1a1b2ba39eb36f6995f9360b23287c3f6a7b812eebb04932a870af796
 
