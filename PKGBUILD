@@ -110,27 +110,6 @@ check() {
 	)
 }
 
-package_radicle-cli() {
-	pkgdesc+=" - cli"
-
-	cd heartwood
-
-	install -Dm755 \
-		target/dist/rad \
-		target/dist/git-remote-rad \
-		-t "$pkgdir/usr/bin"
-
-	install -Dm644 \
-		target/dist/man/rad.1 \
-		target/dist/man/rad-*.1 \
-		target/dist/man/git-remote-rad.1 \
-		-t "$pkgdir/usr/share/man/man1"
-
-	install -Dm644 \
-		LICENSE-MIT \
-		-t "$pkgdir/usr/share/licenses/$pkgname"
-}
-
 package_radicle-node() {
 	pkgdesc+=" - node"
 
@@ -158,5 +137,26 @@ package_radicle-node() {
 	install -Dm644 \
 		LICENSE-MIT \
 		LICENSE-APACHE \
+		-t "$pkgdir/usr/share/licenses/$pkgname"
+}
+
+package_radicle-cli() {
+	pkgdesc+=" - cli"
+
+	cd heartwood
+
+	install -Dm755 \
+		target/dist/rad \
+		target/dist/git-remote-rad \
+		-t "$pkgdir/usr/bin"
+
+	install -Dm644 \
+		target/dist/man/rad.1 \
+		target/dist/man/rad-*.1 \
+		target/dist/man/git-remote-rad.1 \
+		-t "$pkgdir/usr/share/man/man1"
+
+	install -Dm644 \
+		LICENSE-MIT \
 		-t "$pkgdir/usr/share/licenses/$pkgname"
 }
