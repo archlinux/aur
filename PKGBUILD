@@ -1,6 +1,6 @@
 # Maintainer: Rezyys
 pkgname=ccraw
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="crows in the terminal"
 arch=('x86_64' 'aarch64')

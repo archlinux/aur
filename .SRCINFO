@@ -1,6 +1,6 @@
 pkgbase = ccraw
 	pkgdesc = crows in the terminal
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Jenyyk/ccraw
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = ccraw
 	depends = glibc
 	depends = libgcc
 	options = !debug
-	source = ccraw-0.2.0.tar.gz::https://github.com/Jenyyk/ccraw/archive/refs/tags/v0.2.0.tar.gz
+	source = ccraw-0.2.1.tar.gz::https://github.com/Jenyyk/ccraw/archive/refs/tags/v0.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = ccraw
