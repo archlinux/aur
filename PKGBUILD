@@ -1,6 +1,6 @@
 # Maintainer: Professor Lee <https://github.com/professor-lee>
 pkgname=tmplayer
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A terminal-based music player with spectrum visualizer, lyrics support, and MPRIS integration."
 arch=('x86_64' 'aarch64')
