@@ -1,31 +1,49 @@
 # Maintainer: vitaliikuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="mayhem"
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A minimal TUI-based task tracker"
-arch=('any')
+arch=(
+  'aarch64'
+  'x86_64'
+)
 url="https://github.com/BOTbkcd/${pkgname}"
-license=('MIT')
-depends=('glibc' 'sqlite')
-makedepends=('go')
-_pkgsrc="${pkgname}-${pkgver}"
-source=("${_pkgsrc}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('84d3e1d15db0f917a91f676636e867515b0c8e847409b7387682c0badbbdabe7')
+license=(
+  'MIT'
+)
+depends=(
+  'glibc'
+  'sqlite'
+)
+makedepends=(
+  'go'
+)
+_pkgsrc="${url##*/}-${pkgver}"
+source=(
+  "${url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+)
+sha256sums=('3aff34291c7b45dfcbea79f40fef97b29d2eb4ad3c6f20a4944cb0bc78c82b12')
 
 prepare() {
+  export GOMODCACHE="${srcdir}/go-mod-cache"
+
   cd "${srcdir}/${_pkgsrc}"
-  [ -d "build" ] || mkdir "build"
+  go mod download -modcacherw -x
+  go mod verify
 }
 
 build() {
-  cd "${srcdir}/${_pkgsrc}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
+  export GOCACHE="${srcdir}/go-cache"
+  export GOMODCACHE="${srcdir}/go-mod-cache"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o "build/${pkgname}" .
+
+  cd "${srcdir}/${_pkgsrc}"
+  go build -v -o "build/${pkgname}" .
 }
 
 check() {
@@ -35,7 +53,7 @@ check() {
 
 package() {
   cd "${srcdir}/${_pkgsrc}"
-  install -Dm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -vDm755 "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -vDm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

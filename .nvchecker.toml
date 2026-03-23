@@ -1,0 +1,4 @@
+[mayhem]
+source = "git"
+git = "https://github.com/BOTbkcd/mayhem.git"
+prefix = "v"
