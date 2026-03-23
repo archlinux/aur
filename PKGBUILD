@@ -1,7 +1,7 @@
 # Maintainer: Lucas Mior <lucas.bmior@gmail.com>
 
 pkgname=cecup-git
-pkgver=r913.c799a44
+pkgver=r1634.d96e75c
 pkgrel=1
 pkgdesc="A rsync frontend for making backups"
 arch=('x86_64')

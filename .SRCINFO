@@ -1,6 +1,6 @@
 pkgbase = cecup-git
 	pkgdesc = A rsync frontend for making backups
-	pkgver = r913.c799a44
+	pkgver = r1634.d96e75c
 	pkgrel = 1
 	url = https://github.com/lucas-mior/cecup
 	arch = x86_64
