@@ -19,6 +19,8 @@ license=('MIT')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
+
+makedepends=('patchelf')
 depends=('glibc' 'ghostty')
 
 options=(!strip)
@@ -47,6 +49,12 @@ case ${CARCH} in
 		_CARCH="${_barch[1]}"
 		;;
 esac
+
+prepare() {
+	cd "${srcdir}/${_pkgname}_${_pkgvername}_${_CARCH}/" || exit
+
+	patchelf --set-rpath "/usr/lib/${_pkgname}" "./${_pkgname}"
+}
 
 package() {
 	cd "${srcdir}/${_pkgname}_${_pkgvername}_${_CARCH}/" || exit

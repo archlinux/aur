@@ -6,6 +6,7 @@ pkgbase = tsm-bin
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = patchelf
 	depends = glibc
 	depends = ghostty
 	provides = tsm
