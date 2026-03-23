@@ -4,7 +4,7 @@
 
 _pkgname=renpy
 pkgname=${_pkgname}-git
-pkgver=8.4.1.25072401.r390.gfd38803
+pkgver=8.5.2.26010301.r305.g0e52ab6
 pkgrel=1
 pkgdesc="Visual novel engine Ren'Py along with its platdeps libs (dev channel)"
 arch=('i686' 'x86_64')
@@ -16,7 +16,8 @@ depends=(
 	'sdl2_gfx' 'sdl2_ttf' 'python-ecdsa' 'assimp' 'python-legacy-cgi' 'ftgl')
 makedepends=(
 	'cython' 'python-setuptools-scm' 'python-sphinx_rtd_dark_mode'
-	'python-sphinx_rtd_theme' 'git' 'python-build' 'python-installer' 'python-wheel')
+	'python-sphinx_rtd_theme' 'git' 'python-build' 'python-installer' 'python-wheel'
+	'python-pkgconfig')
 provides=('renpy' 'python-renpy')
 conflicts=('renpy')
 replaces=('renpy64')
@@ -27,7 +28,7 @@ source=("git+https://github.com/${_pkgname}/${_pkgname}.git"
         "${_pkgname}-launcher.sh")
 sha256sums=('SKIP'
             'b58efcc42526c4de15e8963b02991e558b5e3d15d720b3777b791ac13fc815e6'
-            'a38112859bf659d48c30be5c7c20ed1a1c72271ffd74eb4b4e730afbd87d73dc')
+            '1fc31125ce1a6be454e2e5995da1ba4860db6da687dbfffbca80a06f64aba43c')
 
 pkgver() {
 	cd "${_pkgname}"
@@ -54,7 +55,9 @@ version_name = 'TBD'
 EOF
 	) 'renpy/vc_version.py'
 
-	python -m build --wheel --no-isolation
+	#python -m build --wheel --no-isolation
+	python setup.py build_ext --inplace
+
 	#rm -rf "$srcdir/tempinstall"
 	#python -m installer --destdir="$srcdir/tempinstall" dist/*.whl
 
@@ -77,15 +80,16 @@ package() {
 
 	install -D -m755 "${_pkgname}-launcher.sh" "$pkgdir/usr/bin/$_pkgname"
 	install -D -m644 "${_pkgname}.desktop" "$pkgdir/usr/share/applications/${_pkgname}.desktop"
+	install -d -m755 "$pkgdir/usr/lib/$_pkgname/lib/py3-linux-x86_64"
 
 	cd "$_pkgname"
-	cp -r 'sdk-fonts' 'launcher' 'renpy' 'renpy.py' 'the_question' 'tutorial' 'gui' "$pkgdir/usr/share/$_pkgname"
+	cp -a 'sdk-fonts' 'launcher' 'renpy.py' 'renpy' 'the_question' 'tutorial' 'gui' '_renpy.cpython-'* "$pkgdir/usr/lib/$_pkgname"
+	find "$pkgdir/usr/lib/$_pkgname" -name '*.pyx' -o -name '*.pyi' -delete
 	#cp -r doc/* "$pkgdir/usr/share/doc/$_pkgname"
 	install -D -m644 'launcher/game/images/logo.png' "$pkgdir/usr/share/pixmaps/${_pkgname}.png"
 	install -D -m644 'sphinx/source/license.rst' "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 
-	install -d -m755 "$pkgdir/usr/share/renpy/lib/py3-linux-x86_64"
-	ln -s '/usr/bin/renpy' "$pkgdir/usr/share/renpy/lib/py3-linux-x86_64"
+	ln -s '/usr/bin/renpy' "$pkgdir/usr/lib/$_pkgname/lib/py3-linux-x86_64"
 
-	python -m installer --destdir="$pkgdir" dist/*.whl
+	#python -m installer --destdir="$pkgdir" dist/*.whl
 }
