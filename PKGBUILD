@@ -2,19 +2,18 @@
 
 pkgname=python-eduvpn-client
 _name=linux-app
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="Linux client and Python client API for eduVPN"
 arch=('any')
 url="https://codeberg.org/eduVPN/linux-app"
 license=('GPL-3.0-or-later')
-depends=('python' 'gobject-introspection-runtime' 'glib2'
-         'python-gobject' 'hicolor-icon-theme' 'python-eduvpn_common>=4.0.0'
-         'libsecret' 'gdk-pixbuf2' 'libnotify' 'pango'
-         'gtk3' 'libnm' 'networkmanager-openvpn')
+depends=('python' 'glib2' 'python-gobject' 'hicolor-icon-theme'
+         'python-eduvpn_common>=5.0.0' 'libsecret' 'gdk-pixbuf2'
+         'libnotify' 'pango' 'gtk3' 'libnm' 'networkmanager-openvpn')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 source=("$url/releases/download/${pkgver}/${_name}-${pkgver}.tar".{xz,xz.asc})
-sha256sums=('d7d2690ab5fc6690679c0620dbbebea39a8f375dbc2d0e16fbe96f7b9bfba017'
+sha256sums=('b9d9fe3f07b2e97dbb9ae10930bbcadb35a4b70a11d547a8af1049547d110845'
             'SKIP')
 validpgpkeys=('227FF3F8F829D9A9314D9EBA02BB8048BBFF222C')
 
