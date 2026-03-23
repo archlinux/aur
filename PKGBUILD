@@ -2,7 +2,7 @@
 
 pkgname=procon2-driver-bin
 pkgver=0.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="An unofficial Nintendo Switch™ 2 Pro Controller driver."
 arch=('x86_64')
 url="https://github.com/dalmatheo/procon2-driver"
