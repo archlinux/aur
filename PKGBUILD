@@ -2,8 +2,8 @@
 # Contributor: Antoine POPINEAU <antoine at popineau dot eu>
 
 pkgname=greetd-tuigreet-fork-git
-pkgver=0.10.1.r0.g06a1bcb
-pkgrel=2
+pkgver=0.10.2.r0.g46830fa
+pkgrel=1
 
 pkgdesc='Stylish graphical console greeter for greetd, built with Ratatui'
 url='https://github.com/NotAShelf/tuigreet'
