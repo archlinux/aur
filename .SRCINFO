@@ -9,7 +9,7 @@ pkgbase = waydoodle
 	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs
-	depends = glibc
+	depends = wayland
 	source = git+https://github.com/dessaya/waydoodle.git#tag=v0.1.0
 	sha256sums = SKIP
 
