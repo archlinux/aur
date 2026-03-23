@@ -1,8 +1,8 @@
 # Maintainer: Regaan <contact@rothackers.com>
 pkgname=wshawk
-pkgver=3.0.1
+pkgver=3.0.4
 pkgrel=1
-pkgdesc="Enterprise-grade WebSocket Security Scanner & Web Pentest Toolkit by Rot Hackers"
+pkgdesc="Enterprise-grade WebSocket Security Scanner & Web Pentest Toolkit by Regaan"
 arch=('x86_64')
 url="https://wshawk.rothackers.com"
 license=('GPL3')
@@ -10,7 +10,7 @@ depends=('zlib' 'hicolor-icon-theme' 'libglvnd')
 provides=('wshawk')
 conflicts=('wshawk')
 source=("wshawk-${pkgver}.AppImage::https://github.com/regaan/wshawk/releases/download/v${pkgver}/wshawk-${pkgver}.AppImage")
-sha256sums=('cce4b6995fd760a795daf930f4e546ea0eed9ce703e62055d33413b809dfe141')
+sha256sums=('SKIP')
 
 package() {
     # Make AppImage executable
