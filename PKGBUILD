@@ -1,13 +1,13 @@
 # Maintainer: AltoXorg <atrl101 AT yahoo DOT com>
 
 _reponame=Shipwright
-_lus_commit=a8bdcab363571038bb71f195f21ec3e9033a220d
-_ZAPDTR_commit=684f21a475dcfeee89938ae1f4afc42768a3e7ef
+_lus_commit=956f1082122f219d536c20483df89469f4b807dc
+_ZAPDTR_commit=ee3397a365c5f350a60538c88f0643f155944836
 _OTRExporter_commit=32e088e28c8cdd055d4bb8f3f219d33ad37963f3
 
 pkgbase=soh
 pkgname=(soh soh-otr-exporter)
-pkgver=9.1.2
+pkgver=9.2.0
 pkgrel=1
 arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://shipofharkinian.com/"
@@ -21,9 +21,9 @@ source=("${_reponame}-${pkgver}.tar.gz::https://github.com/HarbourMasters/${_rep
         "ZAPDTR-${_ZAPDTR_commit:0:8}.tar.gz::https://github.com/HarbourMasters/ZAPDTR/archive/${_ZAPDTR_commit}.tar.gz"
         "OTRExporter-${_OTRExporter_commit:0:8}.tar.gz::https://github.com/HarbourMasters/OTRExporter/archive/${_OTRExporter_commit}.tar.gz"
         "soh.desktop")
-sha256sums=('c8ef222945595f3119dad127f3a0be41b7755a2df519b008f99a2abe5c1ee0bd'
-            '7361e5283faf39747e5eab010a4ae37dbc544bbd9e04d034179fca475f71cbe0'
-            '8016f735f9ef4e177384b0e51f243e374bf2f67ba66bdd5d21af8b185aed1635'
+sha256sums=('d5725c0d37070cdbb9b5ef3f30581ef988f25906218be5501f8e2a004fb7649a'
+            'bfc5bc7aeab3b73cecc17ee478d3658be6902936cd12f299cc1d6bd7e2fe0d6e'
+            '555cb887dcdf5b9c76fbd703a9928de8792bc3d816253696cd52c2d8f2826601'
             '91a863f8899f2ebfc7868ccad4b5982ae416799c76358ce5b2c0edc11e42a672'
             '25aebd34f6ad49073d8a5ce6915b6fa290470fc6d62a8143abe07a25707ff4a2')
 
