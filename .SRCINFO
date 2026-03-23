@@ -1,6 +1,6 @@
 pkgbase = bazaar-git
 	pkgdesc = A new app store for GNOME with focus on flatpaks, particularly Flathub. (git version)
-	pkgver = 0.7.10.r94.g01873ab
+	pkgver = 0.7.12.r69.gc7ebdb5
 	pkgrel = 1
 	url = https://github.com/kolunmi/bazaar
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = bazaar-git
 	makedepends = git
 	makedepends = glib2-devel
 	makedepends = meson
+	makedepends = python-babel
 	makedepends = ninja
 	depends = appstream
 	depends = cairo
@@ -34,8 +35,8 @@ pkgbase = bazaar-git
 	provides = bazaar
 	conflicts = bazaar
 	source = bazaar::git+https://github.com/kolunmi/bazaar.git
-	source = blueprint-compiler::git+https://gitlab.gnome.org/GNOME/blueprint-compiler.git#tag=v0.20.0
+	source = blueprint-compiler::git+https://gitlab.gnome.org/GNOME/blueprint-compiler.git#tag=v0.20.2
 	sha256sums = SKIP
-	sha256sums = a99a90cf5d39a97a0770038ecbd4edede2643a6ff116c6dd9308ae3e70573631
+	sha256sums = eadb585547af0decf2c7c1d0299cdc3cccf01209c297af4d26449213451c395b
 
 pkgname = bazaar-git
