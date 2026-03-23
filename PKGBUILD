@@ -3,15 +3,15 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=orca-git
-pkgver=49.beta.r12.gee7f8a2ce
-pkgrel=2
+pkgver=50.0.r67.g762cd3a8b
+pkgrel=1
 pkgdesc="Screen reader for individuals who are blind or visually impaired (development version)"
 url="https://wiki.gnome.org/Projects/Orca"
 arch=('any')
 license=('LGPL-2.1-or-later')
 depends=(
   at-spi2-core
-  brltty
+  python-brltty
   gsettings-desktop-schemas
   gst-plugins-base # playbin, audiotestsrc, basic decoders
   gst-plugins-good # pulsesink, more decoders
@@ -48,7 +48,7 @@ pkgver() {
 }
 
 build() {
-  arch-meson ${pkgname%-git} build
+  arch-meson -Dmathcat=false ${pkgname%-git} build
   meson compile -C build
 }
 
