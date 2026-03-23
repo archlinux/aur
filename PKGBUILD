@@ -1,7 +1,7 @@
 # Maintainer: nardholio <nardholio@gmail.com>
 
 pkgname=mount-windows
-pkgver=2
+pkgver=3
 pkgrel=1
 pkgdesc="Helper script to automagically detect and mount the Windows C: partition in Linux dual-boot systems. Supports BitLocker and WSL. Reliably exposes a symlink at /run/windows for use in other scripts."
 arch=('any')
@@ -10,7 +10,7 @@ license=('0BSD')
 depends=('chntpw' 'ntfs-3g' 'util-linux' 'udisks2' 'cryptsetup' 'polkit')
 install="${pkgname}.install"
 source=("${pkgname}.sh")
-sha256sums=('a7d283c7764630b8657cef2c6b46ddfd67807d7c1cb1b3574debf537596240bf')
+sha256sums=('9fb3c10e3c5230c3fc723a5d32b498fa94e694ea093d46e522132d6c12e5c7fd')
 options=(!strip !debug)
 
 package() {

@@ -9,11 +9,11 @@ TEMP_MNT="/mnt/temp_efi"
 BCD_COPY="/tmp/BCD"
 COMMON_ESP_MOUNTS=("/boot/efi" "/boot" "/efi")
 POLKIT_RULES="/usr/share/polkit-1/rules.d/49-mount-windows.rules"
-MAPPER_NAME="mount-windows-c"   # fixed mapper for BitLocker
+MAPPER_NAME="mount-windows-c" # fixed mapper for BitLocker
 
 # Elevation
 # NOTE: Direct root execution support (rare DE root user case)
-#       If the script is already running as root (EUID==0), we skip ALL elevation.
+# If the script is already running as root (EUID==0), we skip ALL elevation.
 needs_root() {
     case "${1:-}" in
         mount)
@@ -57,9 +57,20 @@ install_polkit() {
     [ "$EUID" -ne 0 ] && { echo "Error: install-polkit must be run as root" >&2; exit 1; }
 
     cat > "$POLKIT_RULES" <<'EOF'
+
 polkit.addRule(function(action, subject) {
-    if (action.id == "org.freedesktop.policykit.exec" &&
-        action.lookup("program") == "/usr/bin/mount-windows" &&
+    if (action.id === "org.freedesktop.policykit.exec" &&
+        action.lookup("program") === "/usr/bin/mount-windows" &&
+        subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+    }
+});
+
+polkit.addRule(function(action, subject) {
+    if ((action.id === "org.freedesktop.udisks2.filesystem-mount" ||
+         action.id === "org.freedesktop.udisks2.filesystem-mount-system" ||
+         action.id === "org.freedesktop.udisks2.filesystem-unmount" ||
+         action.id === "org.freedesktop.udisks2.filesystem-unmount-system") &&
         subject.isInGroup("wheel")) {
         return polkit.Result.YES;
     }
@@ -67,8 +78,8 @@ polkit.addRule(function(action, subject) {
 EOF
 
     chmod 644 "$POLKIT_RULES"
-    echo "✓ Polkit rules installed (/etc/polkit-1/rules.d/49-mount-windows.rules)"
-    echo "   Wheel group members can now run this script without a password."
+    echo "✓ Polkit rules installed at $POLKIT_RULES"
+    echo "   Wheel group members can now run the script passwordlessly."
 }
 
 uninstall_polkit() {
@@ -232,13 +243,13 @@ create_link() {
     local real="$1"
     [ -z "$real" ] || [ ! -d "$real" ] && { echo "Error: Could not find real Windows mount point" >&2; return 1; }
 
-    if [ -L "$CANONICAL_LINK" ] && [ "$(readlink -f "$CANONICAL_LINK")" = "$(readlink -f "$real")" ]; then
+    if [ "$(readlink -f "$CANONICAL_LINK" 2>/dev/null)" = "$(readlink -f "$real")" ]; then
         echo "Windows already available at $CANONICAL_LINK"
         return 0
     fi
 
     echo "Creating symlink: $CANONICAL_LINK → $real"
-    run_sudo rm -rf "$CANONICAL_LINK" 2>/dev/null || true
+    run_sudo unlink "$CANONICAL_LINK" 2>/dev/null || true
     run_sudo mkdir -p "$(dirname "$CANONICAL_LINK")"
     run_sudo ln -sfn "$real" "$CANONICAL_LINK"
 }
@@ -292,10 +303,16 @@ EOF
 
     local existing
     existing=$(find_existing_mount "$device")
+
     if [ -n "$existing" ]; then
-        echo "Windows partition already mounted at: $existing"
-        create_link "$existing"
-        exit 0
+        if [ "$use_gui" = true ] && [[ "$existing" != /run/media/* ]] && [[ "$existing" != /media/* ]]; then
+            echo "Existing direct mount detected — remounting via udisksctl for proper GUI/desktop integration..."
+            do_umount   # clean unmount first
+        else
+            echo "Windows partition already mounted at: $existing"
+            create_link "$existing"
+            exit 0
+        fi
     fi
 
     if [ "$use_gui" = true ] && [ "$is_bl" = false ]; then
@@ -315,7 +332,7 @@ EOF
 # Umount
 do_umount() {
     if is_wsl; then
-        run_sudo rm -f "$CANONICAL_LINK" 2>/dev/null || true
+        run_sudo unlink "$CANONICAL_LINK" 2>/dev/null || true
         exit 0
     fi
 
@@ -326,7 +343,7 @@ do_umount() {
 
     if [ -z "$existing" ]; then
         echo "Windows partition not mounted."
-        run_sudo rm -f "$CANONICAL_LINK" 2>/dev/null || true
+        run_sudo unlink "$CANONICAL_LINK" 2>/dev/null || true
         exit 0
     fi
 
@@ -345,7 +362,7 @@ do_umount() {
         run_sudo cryptsetup close "$MAPPER_NAME" || true
     fi
 
-    run_sudo rm -f "$CANONICAL_LINK" 2>/dev/null || true
+    run_sudo unlink "$CANONICAL_LINK" 2>/dev/null || true
     echo "Done. Windows fully unmounted."
 }
 
@@ -370,11 +387,11 @@ do_status() {
 
 # Main
 case "${1:-help}" in
-    mount)            do_mount "${2:-}" ;;
-    umount)           do_umount ;;
-    status)           do_status ;;
-    install-polkit)   install_polkit ;;
+    mount) do_mount "${2:-}" ;;
+    umount) do_umount ;;
+    status) do_status ;;
+    install-polkit) install_polkit ;;
     uninstall-polkit) uninstall_polkit ;;
-    help|--help|-h)   usage ;;
-    *)                echo "Unknown command: $1"; usage ;;
+    help|--help|-h) usage ;;
+    *) echo "Unknown command: $1"; usage ;;
 esac
