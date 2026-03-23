@@ -1,0 +1,44 @@
+pkgbase = ttf-ms-win11-auto-local
+	pkgver = 10.0.26200.8037
+	pkgrel = 1
+	url = http://www.microsoft.com/typography/fonts/product.aspx?PID=164
+	arch = any
+	license = custom
+	depends = mount-windows
+	provides = ttf-font
+	provides = ttf-ms-win11
+	conflicts = ttf-vista-fonts
+	source = license.rtf
+	sha256sums = 6b5d4b32236a921bacdefe19852ec0699ca2eacd72d4e57f50a2de06ede21c8e
+
+pkgname = ttf-ms-win11-auto-local
+	pkgdesc = Microsoft Windows 11 TrueType fonts. Copies from local dual boot.
+	provides = ttf-font
+	provides = ttf-ms-win11
+	provides = emoji-font
+	provides = ttf-tahoma
+	provides = ttf-ms-fonts
+	conflicts = ttf-vista-fonts
+	conflicts = ttf-tahoma
+	conflicts = ttf-ms-fonts
+
+pkgname = ttf-ms-win11-auto-local-japanese
+	pkgdesc = Microsoft Windows 11 Japanese TrueType fonts
+
+pkgname = ttf-ms-win11-auto-local-korean
+	pkgdesc = Microsoft Windows 11 Korean TrueType fonts
+
+pkgname = ttf-ms-win11-auto-local-sea
+	pkgdesc = Microsoft Windows 11 Southeast Asian TrueType fonts
+
+pkgname = ttf-ms-win11-auto-local-thai
+	pkgdesc = Microsoft Windows 11 Thai TrueType fonts
+
+pkgname = ttf-ms-win11-auto-local-zh_cn
+	pkgdesc = Microsoft Windows 11 Simplified Chinese TrueType fonts
+
+pkgname = ttf-ms-win11-auto-local-zh_tw
+	pkgdesc = Microsoft Windows 11 Traditional Chinese TrueType fonts
+
+pkgname = ttf-ms-win11-auto-local-other
+	pkgdesc = Microsoft Windows 11 Other TrueType fonts
