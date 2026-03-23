@@ -1,7 +1,7 @@
 pkgbase = procon2-driver-bin
 	pkgdesc = An unofficial Nintendo Switch™ 2 Pro Controller driver.
 	pkgver = 0.0.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/dalmatheo/procon2-driver
 	arch = x86_64
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = procon2-driver-bin
 	provides = procon2-driver
 	conflicts = procon2-driver
 	options = !debug
-	source = https://github.com/dalmatheo/procon2-driver/releases/download/v0.0.2/procon2-driver
+	source = https://github.com/dalmatheo/procon2-driver/releases/download/v0.0.2/procon2-driver-v0.0.2
 	source = https://raw.githubusercontent.com/dalmatheo/procon2-driver/main/LICENSE
 	source = https://raw.githubusercontent.com/dalmatheo/procon2-driver/main/procon2-driver.service
-	sha256sums = ca827cebb0dcfea06696915fdda5366b7cd4882f15c72d1965fcf57856edb87b
+	sha256sums = cf48fae30f4fa66ac1336c135ea64398185f553113a1d8cbd8199f48ee9cbe27
 	sha256sums = c97983a0117fee05fbc11415b4c04501a08e3b59150157d9cece33ddf8503a41
 	sha256sums = 849b35b260f48464191b251223854bd572b9fb774e7e83ead5e94b1c6114d3b3
 
