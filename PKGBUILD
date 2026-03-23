@@ -97,9 +97,7 @@ if [[ -z "${CODEX_CLI_PATH-}" ]] && command -v codex >/dev/null 2>&1; then
   export CODEX_CLI_PATH="$(command -v codex)"
 fi
 
-export PATH="$appdir:$appdir/usr/sbin:$PATH"
-export XDG_DATA_DIRS="$appdir/usr/share${XDG_DATA_DIRS:+:$XDG_DATA_DIRS}"
-export GSETTINGS_SCHEMA_DIR="$appdir/usr/share/glib-2.0/schemas${GSETTINGS_SCHEMA_DIR:+:$GSETTINGS_SCHEMA_DIR}"
+export PATH="$appdir:$PATH"
 
 extra_flags=()
 if [[ -n "${WAYLAND_DISPLAY-}" || "${XDG_SESSION_TYPE-}" == "wayland" ]]; then
