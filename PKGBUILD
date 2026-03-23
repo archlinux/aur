@@ -1,5 +1,4 @@
-# Maintainer: Morty
-# Contributor: OpenAI Codex
+# Maintainer: Schmoho
 
 pkgname=semantic-scholar-cli
 _distname=semantic_scholar_tool
