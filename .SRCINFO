@@ -1,17 +1,17 @@
 pkgbase = wofi-power-menu-bin
 	pkgdesc = Highly configurable power menu using the wofi launcher power-menu (prebuilt binary)
-	pkgver = 0.3.2
-	pkgrel = 2
+	pkgver = 0.3.3
+	pkgrel = 1
 	url = https://github.com/szaffarano/wofi-power-menu
 	arch = x86_64
 	license = MIT
 	depends = wofi
 	provides = wofi-powert-menu
 	conflicts = wofi-powert-menu
-	source = wofi-power-menu-bin-0.3.2::https://github.com/szaffarano/wofi-power-menu/releases/download/v0.3.2/wofi-power-menu-linux-x64
-	source = wofi-power-menu-bin-0.3.2.asc::https://github.com/szaffarano/wofi-power-menu/releases/download/v0.3.2/wofi-power-menu-linux-x64.asc
+	source = wofi-power-menu-bin-0.3.3::https://github.com/szaffarano/wofi-power-menu/releases/download/v0.3.3/wofi-power-menu-linux-x64
+	source = wofi-power-menu-bin-0.3.3.asc::https://github.com/szaffarano/wofi-power-menu/releases/download/v0.3.3/wofi-power-menu-linux-x64.asc
 	validpgpkeys = 42BE68F43D528467FC281E2E310FFE86A2E427BA
-	sha256sums = b55515184e2b684cc3b18e392112c0e0cd90ad4c7f26a41d50024bb82594823e
-	sha256sums = 34d2522130cefc5b4414f2427d8bffba3ea840ddffc97dd762789610af305ece
+	sha256sums = 86fc1b4d5be77c39a21f26eab49206d808367b67b3831f6ed130cbb1f9813ffb
+	sha256sums = 6e25c56d9145b637012d02c86e2a0f89ab43578f0e956c69f11f564912e0180b
 
 pkgname = wofi-power-menu-bin
