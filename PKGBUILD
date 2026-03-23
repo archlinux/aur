@@ -1,23 +1,24 @@
-# Maintainer: Hamza <everyoneexe001 at gmail dot com>
+# Maintainer: HLFH <gaspard@dhautefeuille.eu>
+
 pkgname=python-2captcha
-_name=2captcha-python
-pkgver=2.0.5
+_pkgname=2captcha-python
+pkgver=1.2.3
 pkgrel=1
-pkgdesc="Python client for 2captcha.com API"
-arch=('any')
+pkgdesc="Python 3 package for easy integration with the API of 2captcha captcha solving service"
+arch=('x86_64')
 url="https://github.com/2captcha/2captcha-python"
 license=('MIT')
-depends=('python' 'python-requests')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("https://files.pythonhosted.org/packages/0e/87/856448695f228d9608c8f1fa9a3fb2ab12d847bc4447b8fb30920324a8ac/2captcha_python-$pkgver.tar.gz")
-sha256sums=('fd72de2d0780284dc4adb45740164821c32dd10bb055698a83cce02419d8454b')
+depends=('python-requests')
+makedepends=('python-setuptools') 
+source=("https://github.com/2captcha/2captcha-python/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
+b2sums=('2b4e75b0b5f58a8ee9d575bc1782c39f06ef4c5b43532e0a47f84eeccfd1d664937362e002818a672a0d6f38a9668609b051b2eb36389a1dd9d4ce7090bca1cf')
 
 build() {
-    cd "2captcha_python-$pkgver"
-    python -m build --wheel --no-isolation
+  cd $_pkgname-$pkgver
+  python setup.py build
 }
 
 package() {
-    cd "2captcha_python-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+  cd $_pkgname-$pkgver
+  python setup.py install --skip-build -O1 --root="$pkgdir"
 }

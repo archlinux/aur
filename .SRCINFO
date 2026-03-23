@@ -1,17 +1,13 @@
 pkgbase = python-2captcha
-	pkgdesc = Python client for 2captcha.com API
-	pkgver = 2.0.5
+	pkgdesc = Python 3 package for easy integration with the API of 2captcha captcha solving service
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/2captcha/2captcha-python
-	arch = any
+	arch = x86_64
 	license = MIT
-	makedepends = python-build
-	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-wheel
-	depends = python
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/0e/87/856448695f228d9608c8f1fa9a3fb2ab12d847bc4447b8fb30920324a8ac/2captcha_python-2.0.5.tar.gz
-	sha256sums = fd72de2d0780284dc4adb45740164821c32dd10bb055698a83cce02419d8454b
+	source = https://github.com/2captcha/2captcha-python/archive/v1.2.3/python-2captcha-1.2.3.tar.gz
+	b2sums = 2b4e75b0b5f58a8ee9d575bc1782c39f06ef4c5b43532e0a47f84eeccfd1d664937362e002818a672a0d6f38a9668609b051b2eb36389a1dd9d4ce7090bca1cf
 
 pkgname = python-2captcha
