@@ -1,7 +1,7 @@
 # Maintainer: lucial <bordiyan20035@gmail.com>
 pkgname=imagefinish
 pkgver=1.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A PyQt6 image editor inspired by Photoshop"
 arch=('any')
 url="https://github.com/7Lucia7Lokidottir7/Linux-Photoshop"
@@ -14,7 +14,9 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
+    git describe --tags --long 2>/dev/null \
+        | sed 's/\([^-]*-g\)/r\1/;s/-/./g' \
+        | grep . \
         || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
