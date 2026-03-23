@@ -4,11 +4,11 @@
 _distname=CPAN-Uploader
 pkgname=perl-cpan-uploader
 pkgver=0.103019
-pkgrel=1
+pkgrel=2
 pkgdesc="upload things to the CPAN"
 arch=('any')
 url="https://metacpan.org/release/$_distname"
-license=('PerlArtistic' 'GPL')
+license=('Artistic-1.0-Perl OR GPL-1.0-or-later')
 depends=('perl-getopt-long-descriptive'
          'perl-http-message'
          'perl-lwp-protocol-https'
