@@ -1,18 +1,19 @@
 pkgbase = prjapicula
 	pkgdesc = Project Apicula bitstream documentation for Gowin FPGAs
-	pkgver = 0.28
+	pkgver = 0.31
 	pkgrel = 1
 	url = https://github.com/YosysHQ/apicula
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = python-setuptools
-	depends = python>=3.8
-	depends = python-crc
+	depends = python>=3.9
+	depends = python-msgspec
+	depends = python-fastcrc
 	provides = prjapicula
-	source = apicula-0.28.tar.gz::https://files.pythonhosted.org/packages/source/a/apycula/apycula-0.28.tar.gz
+	source = apicula-0.31.tar.gz::https://files.pythonhosted.org/packages/source/a/apycula/apycula-0.31.tar.gz
 	source = version.patch
-	sha256sums = 01f3631d0903ad9f6850bb849a05e1aabd3adcd583642a555b9a44e9c8679c52
+	sha256sums = efba6be076d2d9a7457842374372b37027c9322e14a263ad2a7b86031a1bc45d
 	sha256sums = 81f1d4b72a917636272a40a400aa01874ac98429d9a2fa601f0a4a0eafa020fa
 
 pkgname = prjapicula
