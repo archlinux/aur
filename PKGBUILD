@@ -2,7 +2,7 @@
 
 pkgname=wiki2book
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Wiki2book is a CLI tool to convert one or multiple Wikipedia articles into an eBook."
 arch=("any")
 url="https://github.com/hauke96/wiki2book"
@@ -27,8 +27,12 @@ build() {
   export GOPATH="$srcdir"/gopath
   export GOBIN="$GOPATH"/bin
 
-  # Go into repo folder
-  cd "wiki2book"
+  # Go into source code folder inside repo and download dependencies with read
+  # and write permissions in the cache (write permissions are important for
+  # cleanup after package creation).
+  cd "wiki2book/src"
+  go mod download -modcacherw
+  cd ..
   
   # Build wiki2book and place it into the current working dir.
   ./build.sh -o linux -a $CARCH -f wiki2book-bin
