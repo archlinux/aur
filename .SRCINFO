@@ -1,0 +1,18 @@
+pkgbase = ashwal
+	pkgdesc = Blazing-fast pywal-like color palette generator written in C, fork of cwal with extra features.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shadowash8/ashwal
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = imagemagick
+	depends = libimagequant
+	depends = lua
+	provides = ashwal
+	conflicts = ashwal
+	source = ashwal-1.0.0.tar.gz::https://github.com/shadowash8/ashwal/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ashwal
