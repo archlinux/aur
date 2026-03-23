@@ -1,6 +1,6 @@
 pkgbase = kioku
 	pkgdesc = Application time tracker — know where your hours go
-	pkgver = 0.10.3
+	pkgver = 0.10.4
 	pkgrel = 1
 	url = https://github.com/ItsAshn/Kioku
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = kioku
 	depends = snappy
 	depends = libnotify
 	depends = libappindicator-gtk3
-	source = kioku-0.10.3.pacman::https://github.com/ItsAshn/Kioku/releases/download/v0.10.3/kioku-0.10.3.pacman
-	sha256sums = c43ead9625ace1b5c616db2bf3683d0694487598aaf497dbc1c446cf086f2e11
+	source = kioku-0.10.4.pacman::https://github.com/ItsAshn/Kioku/releases/download/v0.10.4/kioku-0.10.4.pacman
+	sha256sums = 3d869d24d59959c67b79cd336e4b028119910f2ac27739fbebdd49d4a8d3a9a7
 
 pkgname = kioku
