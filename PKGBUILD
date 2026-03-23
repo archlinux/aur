@@ -1,5 +1,4 @@
-# Maintainer: Morty
-# Contributor: OpenAI Codex
+# Maintainer: Schmoho
 
 pkgname=pmc-cli
 _distname=pmc_tool
