@@ -1,6 +1,6 @@
 pkgname=perfectdark
 _pkgname=PerfectDark
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Perfect Dark powered by perfect_dark reimplimentation engine"
 arch=('x86_64' 'aarch64')
@@ -8,7 +8,7 @@ url="https://gitlab.com/linuxbombay/perfectdark"
 license=('GPL')
 depends=('pd-bin')
 makedepends=('unzip')
-sha256sums=('4b534f80627befa2085f2d0f36e74b2ac4f30f39392e2f7b9528fc1ececc8083')
+sha256sums=('61252ff3a17a9655cf912709339de317025f4cbc9b3cff4408d7bf7974f29fc8')
 source=("https://gitlab.com/linuxbombay/perfectdark/perfectdark/-/archive/$pkgver/perfectdark-$pkgver.tar.bz2")
 
 package() {
