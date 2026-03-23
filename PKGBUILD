@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=devkitty-git
 _pkgname=Devkitty
-pkgver=4.0.6.r0.ge17d394
-_electronversion=40
+pkgver=4.1.1.r0.g873fcd8
+_electronversion=41
 _nodeversion=25
 pkgrel=1
 pkgdesc="Swiss army knife for developers.(Use system-wide electron)"
