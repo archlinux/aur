@@ -2,7 +2,7 @@
 
 pkgname='rusty-path-of-building'
 pkgver=0.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc="An offline build planner for Path of Exile 1 and 2 using the cross-platform 'rusty-path-of-building' runtime"
 url='https://github.com/meehl/rusty-path-of-building'
 license=('MIT')
@@ -10,6 +10,8 @@ makedepends=('cargo' 'git' 'zlib')
 depends=('desktop-file-utils' 'luajit' 'lua51-curl' 'lua51-luautf8' 'lua51-socket')
 arch=('x86_64')
 provides=("rusty-path-of-building")
+# disable LTO to resolve build failure of `reqwest` dependency
+options=('!lto')
 source=(
     "${pkgname}-${pkgver}.tar.gz::https://github.com/meehl/rusty-path-of-building/archive/v${pkgver}.tar.gz"
     "rusty-path-of-building-1.desktop"
