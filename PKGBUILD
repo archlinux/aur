@@ -1,4 +1,7 @@
-# Maintainer: Yukina <thienphuc3230 at gmail dot com>
+# Maintainer: Omar Valdez <omarantoniovaldezf2@gmail.com>
+# Contributor: Yukina <thienphuc3230 at gmail dot com>
+#
+# shellcheck disable=SC2034,SC2164,SC2154
 
 _pkgname="Qogir-icon-theme"
 _pkgver=2025-02-15
@@ -16,10 +19,10 @@ sha256sums=("SKIP")
 package() {
   install -d "${pkgdir}/usr/share/icons/"
   cd "${srcdir}/${_pkgname}-${_pkgver}/src/cursors/"
-  cp -r dist/ ${pkgdir}/usr/share/icons/Qogir-cursors/
-  cp -r dist-Dark/ ${pkgdir}/usr/share/icons/Qogir-white-cursors/
-  cp -r dist-Ubuntu/ ${pkgdir}/usr/share/icons/Qogir-Ubuntu-cursors/
-  cp -r dist-Ubuntu-Dark/ ${pkgdir}/usr/share/icons/Qogir-Ubuntu-white-cursors/
-  cp -r dist-Manjaro/ ${pkgdir}/usr/share/icons/Qogir-Manjaro-cursors/
-  cp -r dist-Manjaro-Dark/ ${pkgdir}/usr/share/icons/Qogir-Manjaro-white-cursors/
+  cp -r dist/ "${pkgdir}/usr/share/icons/Qogir-cursors/"
+  cp -r dist-Dark/ "${pkgdir}/usr/share/icons/Qogir-white-cursors/"
+  cp -r dist-Ubuntu/ "${pkgdir}/usr/share/icons/Qogir-Ubuntu-cursors/"
+  cp -r dist-Ubuntu-Dark/ "${pkgdir}/usr/share/icons/Qogir-Ubuntu-white-cursors/"
+  cp -r dist-Manjaro/ "${pkgdir}/usr/share/icons/Qogir-Manjaro-cursors/"
+  cp -r dist-Manjaro-Dark/ "${pkgdir}/usr/share/icons/Qogir-Manjaro-white-cursors/"
 }
