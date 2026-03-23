@@ -6,7 +6,7 @@ pkgname=(
   dsp56300-emulator-lv2
   dsp56300-emulator-vst3
 )
-pkgver=2.1.2
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='Emulates musical devices that used the Motorola 56300 DSPs'
 arch=(x86_64)
@@ -49,7 +49,7 @@ source=(
   skip-cpack.patch
   skip-tests.patch
 )
-sha512sums=('26250ea7ed9a8e80c106f04376a806586e03374eefa65d33c712ca62b358b797006f03ac6dbe4827d6d3002d0a095b5af6b98b4674066009942c39f03c0307f3'
+sha512sums=('f42df7c2b748277fc68438a903450a82d255cc62bd2afed8f49de10f02bd0be05bbdc55e127cf750d73e36b0afb79149e3b4714da07810fdf591357e72f02ef3'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -61,7 +61,7 @@ sha512sums=('26250ea7ed9a8e80c106f04376a806586e03374eefa65d33c712ca62b358b797006
             'SKIP'
             'f4d862a6a46a1eec9be00fb6a48f80875e9ece1ff1a3deb6bb21c4a7a297dee1db178276f456eac21f1ffdea15b591b1bb8030731cebe081d3086aa12a2ffe37'
             '8107dbd04953146aac91f5cacae77837ec8e99bebde069e1672a18f171e71751fbfe3b8194620d7ba4926974fcc7fc36b6e0fd71544c7ee00dc103d1c06afedc')
-b2sums=('25197bc1525b1ebe86419d9006f8408fb803b7870ba676b008456515a805fd69df59a983dbb8ece5894d58b23f1a422f41d363fe359e524d924964b75013b687'
+b2sums=('c5e6a37ec3ea2d488ea2bfeba353b8b935c763b425b4094f0bb4949b286770027a3abcc5fecb4ea18123942ad63c4dc12c92f2da410d801386f08c22449906d7'
         'SKIP'
         'SKIP'
         'SKIP'
@@ -150,10 +150,10 @@ build() {
 
 package_dsp56300-emulator-clap() {
   pkgdesc+=' - CLAP plugins'
-  groups=('pro-audio' 'clap-plugins')
+  groups=(pro-audio clap-plugins)
   depends=(
     "${_common_depends[@]}"
-    'clap-host'
+    clap-host
   )
 
   # install required directory
@@ -164,10 +164,10 @@ package_dsp56300-emulator-clap() {
 
 package_dsp56300-emulator-lv2() {
   pkgdesc+=' - LV2 plugins'
-  groups=('pro-audio' 'lv2-plugins')
+  groups=(pro-audio lv2-plugins)
   depends=(
     "${_common_depends[@]}"
-    'lv2-host'
+    lv2-host
   )
 
   # install required directory
@@ -178,10 +178,10 @@ package_dsp56300-emulator-lv2() {
 
 package_dsp56300-emulator-vst3() {
   pkgdesc+=' - VST3 plugins'
-  groups=('pro-audio' 'vst3-plugins')
+  groups=(pro-audio vst3-plugins)
   depends=(
     "${_common_depends[@]}"
-    'vst3-host'
+    vst3-host
   )
 
   # install required directory
