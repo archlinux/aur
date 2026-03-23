@@ -1,8 +1,8 @@
 # Maintainer: lone-cloud <lonecloud604@pm.me>
 
 pkgname=cursor-ide
-pkgver=2.6.20
-pkgrel=2
+pkgver=2.6.21
+pkgrel=1
 pkgdesc='The AI Code Editor'
 arch=('x86_64')
 url="https://www.cursor.com"
@@ -30,13 +30,13 @@ optdepends=(
 
 options=(!strip !debug)
 
-_commit=b29eb4ee5f9f6d1cb2afbc09070198d3ea6ad76f
+_commit=fea2f546c979a0a4ad1deab23552a43568807592
 source=(
   "cursor_${pkgver}_amd64.deb::https://downloads.cursor.com/production/${_commit}/linux/x64/deb/amd64/deb/cursor_${pkgver}_amd64.deb"
   "cursor.desktop"
   "cursor-launcher.sh"
 )
-sha256sums=('52e9aaf046cb875ef697c48c5b8e3ca55883465c788382c23ab54d5f3b51041f'
+sha256sums=('ebc615d467ec2d7c327196492612c96cf78b79e2897d9f6e708aacc68aba6b18'
             'SKIP'
             'SKIP')
 noextract=("cursor_${pkgver}_amd64.deb")
