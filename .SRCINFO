@@ -1,6 +1,6 @@
 pkgbase = python-chibi-git
 	pkgdesc = wrapper to use git in python
-	pkgver = 0.2.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://pypi.org/project/chibi-git/
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = python-chibi-git
 	depends = python-chibi-atlas
 	depends = python-chibi-command
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/chibi_git/chibi_git-0.2.0.tar.gz
-	sha256sums = 443ceafd19dacb5dfef47af7ec2f64d89da702cbc9558bbb2ce2708f9ec57c62
+	source = https://files.pythonhosted.org/packages/source/c/chibi_git/chibi_git-0.9.1.tar.gz
+	sha256sums = b535ce38bef92a19a96e28864ced5c7cbbdf8e612ace04aca87906e39d72194e
 
 pkgname = python-chibi-git
