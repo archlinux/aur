@@ -4,9 +4,9 @@ _pkgname="meshcore"
 pkgname="${_pkgname}-bin"
 ## For up to date releases, see https://files.liamcottle.net/MeshCore/.
 ## Upstream versioning: e.g. `1.40.0+64-1abed0d` -- break down the individual elements to reference them later, too.
-_releasever=1.41.0
-_buildno=66
-_githash=3c66fd5
+_releasever=1.42.0
+_buildno=67
+_githash=5a3c5f1
 pkgver="${_releasever}${_buildno:++"${_buildno}"}.g${_githash}"
 pkgrel=1
 pkgdesc="Closed source reference companion app by Liam Cottle for MeshCore, a LoRa text messaging protocol."
@@ -18,7 +18,8 @@ url="https://meshcore.co.uk/"
 
 
 license=(
-  "LicenseRef-Proprietary"
+  "LicenseRef-Proprietary" # App itself.
+  "CC-BY-SA-4.0"           # MeshCore_Quick_Start_Guide.pdf
   # Licenses of included libraries. They are in `data/flutter_assets/NOTICES.Z`.
   "Apache-2.0"
   "BSD-2-Clause"
@@ -73,8 +74,8 @@ source=(
   "license-info.md"
 )
 sha256sums=(
-  '8d17343b9766bb972f03c90f3ae7a366ff70857762a14cdf9a43ba11c1a362bb'  # Binary software package.
-  'e51108aa709bf6c8452ba45ddad6e899e7f0067127e087bf865b27e56258d66c'  # MeshCore_Quick_Start_Guide.pdf
+  '8fe2a18d63041b804b39761f7449a4c2db58d1f50219d7e0a94a4807780d3c73'  # Binary software package.
+  '91a70e092c5bf36e0170cb2efba9218bbfdb414998bfa1fec7590618ffbf55b2'  # MeshCore_Quick_Start_Guide.pdf
   '3c212412360ca59e73a11af24b85db2d5414f2d5851f1a60267fca701077c921'  # meshcore.desktop
   '138cfaf059ef5c3fb860d3132291570179bf74cb77e1aaa7927fa766a93ad957'  # license-info.md
 )
