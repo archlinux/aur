@@ -1,11 +1,11 @@
-# Maintainer: yigitsalar <yigitsalar137 (at) gmail (dot) com>
+# Maintainer: Yiğit Salar <yigitsalar137 (at) gmail (dot) com>
 pkgname=mpf-check
 _pkgname=MPF.Check
 pkgdesc="Media Preservation Frontend for Aaru and Redumper in C# (MPF.Check only - Rolling Release)"
-pkgver=r2860.62a77c0
+pkgver=r2900.fbda917
 pkgrel=1
 url="https://github.com/SabreTools/MPF"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 arch=('x86_64')
 options=('!strip' '!debug')
 provides=('mpf-check')
