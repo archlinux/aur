@@ -8,7 +8,5 @@ pkgbase = noon-python
 	depends = python-click
 	depends = python-loguru
 	depends = python-psutil
-	depends = python-pywal16
-	depends = python-pywalfox
 
 pkgname = noon-python

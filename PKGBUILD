@@ -10,8 +10,6 @@ depends=(
     'python-click'
     'python-loguru'
     'python-psutil'
-    'python-pywal16'
-    'python-pywalfox'
 )
 
 package() {
