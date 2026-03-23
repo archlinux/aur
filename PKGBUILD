@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgname=wavelog
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Web-based amateur radio logging software - log your contacts from everywhere"
 arch=('any')
 url="https://www.wavelog.org/"

@@ -1,7 +1,7 @@
 pkgbase = wavelog
 	pkgdesc = Web-based amateur radio logging software - log your contacts from everywhere
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.wavelog.org/
 	install = wavelog.install
 	arch = any
