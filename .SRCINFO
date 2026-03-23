@@ -1,0 +1,21 @@
+pkgbase = showel
+	pkgdesc = Fast native desktop database client built with Rust and Dioxus
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/Fynth/showel
+	arch = x86_64
+	license = unknown
+	makedepends = cargo
+	makedepends = pkgconf
+	makedepends = rust
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = libayatana-appindicator
+	depends = xdotool
+	depends = librsvg
+	conflicts = showel-git
+	options = !lto
+	source = showel-0.1.4.tar.gz::https://github.com/Fynth/showel/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 1b45faf11f80302a31f798e9d556cbcfad8e66a3f4f56d7e1eadc625eab4361b
+
+pkgname = showel
