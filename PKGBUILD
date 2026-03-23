@@ -7,13 +7,13 @@ pkgrel=1
 pkgdesc="Python bindings for the csdr library."
 arch=('x86_64' 'aarch64')
 url="https://github.com/luarvique/pycsdr"
-license=('GPL-3.0-only')
+license=('GPL3')
 depends=('python' 'gcc-libs' "csdr-luarvique>=$pkgver")
 makedepends=('git' 'python-setuptools')
 conflicts=('python-csdr')
 provides=('python-csdr')
 source=("$pkgname"::"git+https://github.com/luarvique/pycsdr#tag=${pkgver}")
-md5sums=('SKIP')
+md5sums=('bfbd199d68fd2e16ce167a326e8e54b7')
 
 build() {
     cd "$srcdir/$pkgname"
