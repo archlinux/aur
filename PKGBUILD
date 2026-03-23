@@ -1,7 +1,7 @@
 # Maintainer: lucial <bordiyan20035@gmail.com>
 pkgname=imagefinish
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A PyQt6 image editor inspired by Photoshop"
 arch=('any')
 url="https://github.com/7Lucia7Lokidottir7/Linux-Photoshop"
