@@ -8,9 +8,12 @@ pkgdesc="Hookable voice transcription daemon for KDE Wayland"
 arch=('any')
 url="https://github.com/decent-tools-for-thought/vomacs"
 license=('0BSD')
-depends=('python' 'ffmpeg' 'python-websocket-client' 'libnotify')
+depends=('python' 'ffmpeg' 'python-websocket-client')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-optdepends=('xclip: X11 clipboard fallback backend')
+optdepends=(
+  'libnotify: provide notify-send desktop notifications'
+  'xclip: X11 clipboard fallback backend'
+)
 install="$pkgname.install"
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
