@@ -1,6 +1,6 @@
 pkgbase = alu81a-rgb
 	pkgdesc = CLI RGB controller for Dark Project Terra Nova/Nostra (ALU81A) keyboard via hidraw
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://github.com/IlyaKotomin/alu81a-rgb
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = alu81a-rgb
 	makedepends = gcc
 	makedepends = make
 	depends = glibc
-	source = alu81a-rgb-1.0.2.tar.gz::https://github.com/IlyaKotomin/alu81a-rgb/archive/refs/tags/v1.0.2.tar.gz
-	sha256sums = ba91eae4e86c7ef882f8a007ec10ef8dcdb67becfddead5ca19ce6ea87b97253
+	source = alu81a-rgb-1.0.3.tar.gz::https://github.com/IlyaKotomin/alu81a-rgb/archive/refs/tags/v1.0.3.tar.gz
+	sha256sums = 48f7b8b59cb8d69b9cd187a173aaac0de067759cc5be9cf6d59b251930925f0e
 
 pkgname = alu81a-rgb
