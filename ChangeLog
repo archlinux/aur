@@ -1,14 +1,51 @@
-## Version 6.2.0.0
+## Version 7.0.0.0
 
 Fixes:
 
-    Fixed an issue with the save command , when selector is not given along with the save command the command response was NULL.
-    Fixed an issue with appaccount command where the apptoken was getting deleted while product upgrade.
-    Fixed an issue with signing project for RPM products, to reflect new GPG key which is signed by SHA-256.
-    Fixed an issue with the get command & list command where NetworkAdapter property was returning missing data in response for Ids and displaying only settings data.
-    Fixed an issue with flashfwpkg command where warning was being thrown while NVMe and SATA drive components flashing.
-    Fixed an issue with the list command where Bios property was returning NULL in response for @odata.*
+    Fixed an issue with uploadcomp command where Broadcom firmware package upload to iLO repository failed.
+    Fixed an issue with flashfwpkg command where Seagate firmware package flash failed with "Flash unsupported by iLO Error" on Gen10/Gen10+ servers.
+    Fixed a critical issue with get command when using certificate-based authentication.
+    Fixed an issue where CHIF login failed with blob2overrideerror after retry attempts were exhausted.
 
+New Features:
+
+    Added multiconnect parameter to computeopsmanagement command for onboarding multiple or range of iLO's to COM. Supported only in Windows and Linux platforms.
+    Added new logconfig command to configure logging behavior including debug logging, log directory, and log rotation settings. This command provides persistent configuration across sessions.
+
+Enhancements:
+
+    Optimized login command to fetch iLO generation only once during the login process.
+    Updated firmwareupdate command to support the new "Backingup" firmware update state.
+    Added reactivate subcommand to appaccount command for reactivating expired application account.
+    Enhanced logging capabilities with configurable log file rotation and retention settings.
+    Improved logging configuration management with centralized control through the new logconfig command.
+
+
+## Version 6.3.0.0
+
+Fixes:
+
+    Fixed an issue with IscsiConfigcommand where response showed duplicate entries.
+    Fixed an issue with Serverlogscommand where --mpfile option did not load the configurations.
+    Fixed an issue with Uploadcompcommand where uploading a component which is connected behind the controller of the server was failing.
+
+Enhancements:
+
+    Enhanced rawgetcommand to provide the response in stderr if the option --response is given.
+    Enhanced appaccount command to give an exception if non-root user tries to perform appaccount functionalities.
+    New global iLOrest optional argument to omit the creation of an info log file (iLORest.log).
+
+## Version 6.2.0.0
+
+    Fixed an issue with IscsiConfigcommand where response showed duplicate entries.Fixes:
+    Fixed an issue with Serverlogscommand where --mpfile option did not load the configurations.
+    Fixed an issue with Uploadcompcommand where uploading a component which is connected behind the controller of the server was failing.    Fixed an issue with the save command , when selector is not given along with the save command the command response was NULL.
+    Fixed an issue with appaccount command where the apptoken was getting deleted while product upgrade.
+Enhancements:    Fixed an issue with signing project for RPM products, to reflect new GPG key which is signed by SHA-256.
+    Fixed an issue with the get command & list command where NetworkAdapter property was returning missing data in response for Ids and displaying only settings data.
+    Enhanced rawgetcommand to provide the response in stderr if the option --response is given.    Fixed an issue with flashfwpkg command where warning was being thrown while NVMe and SATA drive components flashing.
+    Enhanced appaccount command to give an exception if non-root user tries to perform appaccount functionalities.    Fixed an issue with the list command where Bios property was returning NULL in response for @odata.*
+    New global iLOrest optional argument to omit the creation of an info log file (iLORest.log).
 Enhancements:
 
     Enhanced flashfwpkg command to support NVMe DA drive components flashing.
