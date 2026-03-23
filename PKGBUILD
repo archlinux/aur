@@ -3,7 +3,7 @@
 # Contributor: Antoine POPINEAU <antoine at popineau dot eu>
 
 pkgname=greetd-tuigreet-fork-bin
-pkgver=0.10.1
+pkgver=0.10.2
 pkgrel=1
 
 pkgdesc='Stylish graphical console greeter for greetd, built with Ratatui'
@@ -18,10 +18,10 @@ source=("$url/releases/download/$pkgver/tuigreet-$pkgver-x86_64"
 	"$url/releases/download/$pkgver/tuigreet-$pkgver-armv7"
 	"$url/releases/download/$pkgver/tuigreet-$pkgver-aarch64"
         'tuigreet.conf')
-sha256sums=('6b2b5feb598d15caebb524cc4f2f8c5df9f023acdf69314d06beca10f8d7db8c'
-            '828d4d5ac1294a536c6afdfc77aebadc4dbe44c18c65e0f9fa8e241c7858ed44'
-            '90fb4a5706a10fdd706d14b86be872976f6291c718f4883f6880faf8b42c142d'
-            '1ef60b8c7cc8224f2910a08c9a7f6e92eb436bcc159c8f4fb098f8c4348b9a5d'
+sha256sums=('610bb9fad02778336521573743ddbaadf9f8279ea262c7dd8bca05b70eef8812'
+            '2122590fff71bad80dc334f59a430e07afb374864e223e13cb9ace8087bcde99'
+            '7fcc75e94cd2e1defa10792e74edf102395182c66add45b26822efcb14e90472'
+            '32723fcd603621ec301f98c743315e8461bfb0e67670d1373a76e5b54c322473'
             '8f83aee7874aab5d06981a1d1cd05df906368a79dbca90d157a33a2f023b67d3')
 
 package() {
