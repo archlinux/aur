@@ -1,7 +1,7 @@
 # Maintainer: Mattia Moffa <mattia [at] moffa [dot] xyz>
 # Previous maintainer: Wasabi <wasabithumbs@gmail.com>
 pkgname=open-goal-launcher-bin
-pkgver="2.8.12"
+pkgver="2.8.14"
 pkgrel=1
 pkgdesc="A launcher for the OpenGOAL Project to simplify usage and installation"
 arch=("x86_64")
@@ -10,8 +10,8 @@ license=('ISC')
 depends=('fuse')
 conflicts=('open-goal-launcher')
 _image="OpenGOAL-Launcher_${pkgver}_amd64.AppImage"
-source_x86_64=("https://github.com/open-goal/launcher/releases/download/v2.8.12/${_image}")
-md5sums_x86_64=("97278ce33cea9095209e6755a9e431b2")
+source_x86_64=("https://github.com/open-goal/launcher/releases/download/v2.8.14/${_image}")
+md5sums_x86_64=("57c7c7d3b2b8d85b54682f99f07c27b5")
 options=(!strip)
 
 prepare() {
@@ -38,8 +38,8 @@ package() {
 
 	install -Dm644 "${srcdir}/squashfs-root/OpenGOAL-Launcher.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-	install -dm755 "${pkgdir}/usr/share/"
-	cp -a "${srcdir}/squashfs-root/share/icons" "${pkgdir}/usr/share/"
+    install -Dm644 "${srcdir}/squashfs-root/OpenGOAL-Launcher.png" \
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/OpenGOAL-Launcher.png"
 
 	install -dm755 "${pkgdir}/usr/bin"
 	ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${pkgname}"
