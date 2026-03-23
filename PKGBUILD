@@ -1,6 +1,6 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgname=fcitx5-lotus-git
-pkgver=1.5.2.r490.gbebfc23
+pkgver=1.6.0.r509.gfcaee5d
 pkgrel=1
 pkgdesc="Vietnamese input method for fcitx5"
 arch=('x86_64')

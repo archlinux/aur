@@ -1,6 +1,6 @@
 pkgbase = fcitx5-lotus-git
 	pkgdesc = Vietnamese input method for fcitx5
-	pkgver = 1.5.2.r490.gbebfc23
+	pkgver = 1.6.0.r509.gfcaee5d
 	pkgrel = 1
 	url = https://github.com/LotusInputMethod/fcitx5-lotus
 	install = fcitx5-lotus.install
