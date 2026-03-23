@@ -16,7 +16,6 @@ optdepends=(
 	 'gamemode: CPU Scaling Control')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('9d50894a351b56be0e7eaaa2f1d76466edd2fa718d494276649145eb739e8f61')
-options=(!lto)
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
