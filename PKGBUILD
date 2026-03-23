@@ -15,6 +15,7 @@ makedepends=(
 	'cargo'
 	'asciidoctor'
 	'pnpm'
+	'libgit2'
 )
 _tag="releases/$pkgver"
 source=(
@@ -54,6 +55,8 @@ build() {
 	# a workaround to force generation of normal object code on C side:
 	CFLAGS+=" -ffat-lto-objects"
 	CXXFLAGS+=" -ffat-lto-objects"
+
+	export LIBGIT2_NO_VENDOR=1
 
 	cd radicle-httpd
 	export RADICLE_VERSION="$pkgver"
@@ -120,6 +123,7 @@ package_radicle-httpd() {
 	depends=(
 		'glibc'
 		'libgcc'
+		'libgit2' 'libgit2.so'
 		'zlib'
 		'radicle-node'
 	)
