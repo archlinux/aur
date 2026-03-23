@@ -7,13 +7,13 @@ pkgrel=1
 pkgdesc="A simple DSP library and command-line tool for Software Defined Radio."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/luarvique/csdr"
-license=('GPL-3.0-or-later')
+license=('GPL3')
 depends=('gcc-libs' 'libsamplerate' 'fftw')
 makedepends=('git' 'cmake')
 conflicts=('csdr')
 provides=('csdr')
 source=("$pkgname"::"git+https://github.com/luarvique/csdr.git#tag=${pkgver}")
-md5sums=('SKIP')
+md5sums=('8bc5b06ff5b590b8f42e4e1766c1d0ba')
 
 build() {
     cmake -B build -S "$srcdir/$pkgname" \

@@ -6,7 +6,7 @@ pkgbase = csdr-luarvique
 	arch = i686
 	arch = x86_64
 	arch = aarch64
-	license = GPL-3.0-or-later
+	license = GPL3
 	makedepends = git
 	makedepends = cmake
 	depends = gcc-libs
@@ -15,6 +15,6 @@ pkgbase = csdr-luarvique
 	provides = csdr
 	conflicts = csdr
 	source = csdr-luarvique::git+https://github.com/luarvique/csdr.git#tag=0.18.37
-	md5sums = SKIP
+	md5sums = 8bc5b06ff5b590b8f42e4e1766c1d0ba
 
 pkgname = csdr-luarvique
