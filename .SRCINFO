@@ -1,7 +1,7 @@
 pkgbase = spitter
 	pkgdesc = Self-documenting Cartesia speech CLI with websocket sessions
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/decent-tools-for-thought/spitter
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = spitter
 	depends = ffmpeg
 	depends = pipewire
 	depends = libpulse
-	source = spitter-0.1.1.tar.gz::https://github.com/decent-tools-for-thought/spitter/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 82f4087dbcce7460a73bdc7d00251cdd80eba98e2756dba313c10d940c33ab54
+	source = spitter-0.1.1.tar.gz::https://github.com/decent-tools-for-thought/spitter/releases/download/v0.1.1/spitter-0.1.1.tar.gz
+	sha256sums = c7bfc6ed68256f43e35c33f14c392aeca9e10da0cb18a735ba1c9af153b2aa18
 
 pkgname = spitter
