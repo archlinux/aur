@@ -1,13 +1,13 @@
 # Maintainer: Brian Gomes Bascoy <+@peramid.es>
 _pkgname=apicula
 pkgname=$_pkgname-git
-pkgver=0.14.r12.gf038d32
+pkgver=0.31.r12.g3da6c40
 pkgrel=1
 pkgdesc="Project Apicula bitstream documentation for Gowin FPGAs"
 arch=('i686' 'x86_64')
 url="https://github.com/YosysHQ/apicula"
 license=('MIT')
-depends=('python>=3.8' 'python-numpy' 'python-pandas' 'python-pillow' 'python-crc' 'python-openpyxl')
+depends=('python>=3.8' 'python-pip' 'python-numpy' 'python-pandas' 'python-pillow' 'python-openpyxl' 'python-msgspec' 'python-fastcrc')
 makedepends=('python-setuptools')
 conflicts=('prjapicula')
 provides=("$_pkgname=$pkgver")

@@ -1,6 +1,6 @@
 pkgbase = apicula-git
 	pkgdesc = Project Apicula bitstream documentation for Gowin FPGAs
-	pkgver = 0.14.r12.gf038d32
+	pkgver = 0.31.r12.g3da6c40
 	pkgrel = 1
 	url = https://github.com/YosysHQ/apicula
 	arch = i686
@@ -8,12 +8,14 @@ pkgbase = apicula-git
 	license = MIT
 	makedepends = python-setuptools
 	depends = python>=3.8
+	depends = python-pip
 	depends = python-numpy
 	depends = python-pandas
 	depends = python-pillow
-	depends = python-crc
 	depends = python-openpyxl
-	provides = apicula=0.14.r12.gf038d32
+	depends = python-msgspec
+	depends = python-fastcrc
+	provides = apicula=0.31.r12.g3da6c40
 	conflicts = prjapicula
 	source = apicula::git+https://github.com/YosysHQ/apicula.git
 	source = https://github.com/YosysHQ/apicula/releases/download/0.0.0.dev/linux-x64-gowin-data.tgz
