@@ -1,7 +1,7 @@
 pkgbase = crossref-cli
 	pkgdesc = Crossref REST API CLI for DOI and metadata workflows
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/decent-tools-for-thought/crossref-cli
 	arch = any
 	license = MIT
