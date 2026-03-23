@@ -1,6 +1,6 @@
 pkgbase = prjapicula-git
 	pkgdesc = Project Apicula bitstream documentation for Gowin FPGAs
-	pkgver = 0.21.r0.gfffb2a3
+	pkgver = 0.31.r12.g3da6c40
 	pkgrel = 1
 	url = https://github.com/YosysHQ/apicula
 	arch = x86_64
@@ -8,17 +8,18 @@ pkgbase = prjapicula-git
 	makedepends = git
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-openpyxl
+	makedepends = python-pandas
+	makedepends = python-pillow
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
 	makedepends = python-wheel
 	makedepends = apptainer
-	depends = python
-	depends = python-crc
+	depends = python>=3.9
 	depends = python-numpy
-	depends = python-openpyxl
-	depends = python-pandas
-	depends = python-pillow
-	provides = prjapicula=0.21
+	depends = python-msgspec
+	depends = python-fastcrc
+	provides = prjapicula=0.31
 	conflicts = prjapicula
 	source = apicula::git+https://github.com/YosysHQ/apicula.git
 	sha256sums = SKIP
