@@ -9,6 +9,13 @@ post_install() {
   fi
 
   systemctl enable --now com.vintagetechie.PowerCurve.service
+
+  echo ""
+  echo "powercurve is running. to enable desktop notifications for"
+  echo "thermal events and fan stalls, run as your regular user:"
+  echo ""
+  echo "  systemctl --user enable --now powercurve-monitor.service"
+  echo ""
 }
 
 post_upgrade() {
