@@ -1,0 +1,3 @@
+[fate]
+source = "pypi"
+pypi = "fate-casino"

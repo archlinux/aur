@@ -1,0 +1,27 @@
+# Maintainer: Evan Chen <evan@evanchen.cc>
+
+pkgname=fate
+_pkgname=fate_casino
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Pull makes happy!'
+arch=(any)
+url=https://github.com/vEnhance/fate-casino
+license=(MIT)
+depends=(python python-tomli python-gitpython python-tomli python-tomlkit)
+optdepends=(fd)
+makedepends=(python-hatchling)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz"
+  LICENSE)
+
+build() {
+  cd "$_pkgname-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "$_pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+}
+sha256sums=('f3656947707c43ffc06769ab5f614b19b98ecb56ff64be3d1859ca651bbae03c'
+  '82af9d0f8e6e2acd6c36b1426eb1d70bc3e9b16a126ae20fcd4f8d1101e64c47')
