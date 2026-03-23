@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=handbook-git
 _pkgname=Handbook
-pkgver=0.28.0.r0.gfe5db61
-_electronversion=40
+pkgver=0.32.2.r0.gedbac7a
+_electronversion=41
 _nodeversion=22
 pkgrel=1
 pkgdesc="Create small, movable, and easily concealable windows for quick use.(Use system-wide electron)"
