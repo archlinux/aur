@@ -2,10 +2,11 @@
 
 _pkgname=fht-compositor
 pkgname="$_pkgname-git"
-pkgver=25.10.1.r773.0547fa4
+pkgver=25.10.1.r775.8c588d9
 pkgrel=1
 pkgdesc='A dynamic tiling Wayland compositor (git development version)'
 arch=('x86_64')
+groups=('fht-desktop')
 url="https://github.com/nferhat/$_pkgname"
 license=('GPL-3.0-or-later')
 source=("git+${url}.git")
