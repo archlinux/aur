@@ -42,7 +42,7 @@ makedepends=(
 )
 optdepends=(
   'grim: Screenshot support for wlroots-based compositors'
-  'power-profiles-daemon: Required for Energy Pulse Pro Extensions'
+  'power-profiles-daemon: Required for Energy Pulse Pro Extension'
   'python-aiofiles: Improves upload performance with async file I/O'
   'python-pynput: Fallback for input control'
   'python-evdev: Input control on Wayland'
