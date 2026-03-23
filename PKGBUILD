@@ -93,9 +93,9 @@ check() {
         --output-on-failure
     )
 
-    if ! ctest "${ctest_opts[@]}" -j "$(nproc)"
+    if ! ctest "${ctest_opts[@]}"
     then
-        # Re-run failed tests in serial
+        # Re-run failed tests
         ctest "${ctest_opts[@]}" --rerun-failed
     fi
 }
