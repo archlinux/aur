@@ -1,53 +1,65 @@
 pkgbase = chatterino2-technorino-git
 	pkgdesc = Another fork of Chatterino2 with features (or fixes) that are not accepted into the upstream repo (7tv emotes included)
-	pkgver = r5181.b46cfef
+	pkgver = r6236.757f362
 	pkgrel = 1
 	url = https://github.com/2547techno/technorino
 	install = chatterino2-technorino-git.install
 	arch = any
 	license = MIT
-	makedepends = git
+	checkdepends = go
+	checkdepends = httpbin
+	checkdepends = pifpaf
 	makedepends = boost
 	makedepends = cmake
-	depends = qt6-base
-	depends = qt6-tools
-	depends = boost-libs
+	makedepends = git
+	makedepends = python3
+	makedepends = qt6-tools
+	makedepends = rapidjson
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = hicolor-icon-theme
+	depends = libnotify
 	depends = openssl
+	depends = qt6-base
 	depends = qt6-imageformats
-	depends = qtkeychain-qt6
-	depends = qt6-5compat
 	depends = qt6-svg
+	depends = qtkeychain-qt6
 	optdepends = streamlink: For piping streams to video players
 	optdepends = pipewire: For audio output
 	optdepends = qt6-wayland: For Wayland support
 	provides = chatterino
 	conflicts = chatterino
-	options = !lto
 	source = git+https://github.com/2547techno/technorino
-	source = git+https://github.com/arsenm/sanitizers-cmake
-	source = git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake
-	source = git+https://github.com/pajlada/settings
-	source = git+https://github.com/pajlada/signals
-	source = git+https://github.com/pajlada/serialize
-	source = git+https://github.com/Tencent/rapidjson
-	source = git+https://github.com/Chatterino/websocketpp
-	source = git+https://github.com/Neargye/magic_enum
-	source = git+https://github.com/mackron/miniaudio
-	source = git+https://github.com/lua/lua
-	source = git+https://github.com/martinmoene/expected-lite
-	source = git+https://github.com/Chatterino/crash-handler
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	source = git+https://github.com/Chatterino/certify.git#commit=a448a3915ddac716ce76e4b8cbf0e7f4153ed1e2
+	source = git+https://github.com/Chatterino/libcommuni.git#commit=bb5417c451d764f57f2f1b3e1c9a81496b5521bd
+	source = git+https://github.com/pajlada/settings.git#tag=chatterino/2.5.5
+	source = git+https://github.com/pajlada/signals.git#commit=chatterino/2.5.5
+	source = git+https://github.com/pajlada/serialize.git#tag=chatterino/2.5.5
+	source = git+https://github.com/Neargye/magic_enum.git#tag=v0.9.7
+	source = git+https://github.com/mackron/miniaudio.git#tag=0.11.25
+	source = git+https://github.com/ThePhD/sol2.git#tag=v3.5.0
+	source = git+https://github.com/google/googletest.git#tag=v1.17.0
+	source = git+https://github.com/martinmoene/expected-lite.git#tag=v0.10.0
+	source = git+https://github.com/arsenm/sanitizers-cmake.git#commit=bcb1fc68616e9645ca5acea2992412606373ab04
+	source = git+https://github.com/lua/lua.git#tag=v5.4.8
+	source = git+https://github.com/HowardHinnant/date.git#tag=v3.0.4
+	source = git+https://github.com/fmtlib/fmt.git#tag=12.1.0
+	source = git+https://github.com/Chatterino/twitch-pubsub-server-test.git#tag=v1.0.12
+	sha256sums = SKIP
+	sha256sums = b859e9727d4ecd9a2c9723c09f6b098dad7e6c8b76964ac3375d74a09aaa3004
+	sha256sums = a0f7d8365a99d4e59fbc857dbf127b39b3a9a3d27c15dd3b52803ed2dd4c27ac
+	sha256sums = 4ce5aadc3990c4fadec519d4ce9dc8ccf4c73e5dbbb9b135949c0ea6fb0c9c5e
+	sha256sums = 2b22dbc39f5b0946da63663afbfc93f60fbcc7a54e5f3078850e12127e1bcffc
+	sha256sums = 87078a66e951bc7926597df20b6c85a55d14a062b7d6ce1116573274c47a0588
+	sha256sums = 35e3ccee2fe02c2a666680aa00982e1d6593de440b8be04a04d399dd97c3e78c
+	sha256sums = 5c8e8abbc2a43f20324a8ae9280f4aba6ec0235923b54c99a6d1b1d999927333
+	sha256sums = fbeaa53812eb9f0e1e0612da22b1f57ab429e715fd24ccf0c3892172082becd1
+	sha256sums = 3a8fea2f310f73e090dbf10dc16260ab959cccf77bc5482f453d1f4bc3af4bcb
+	sha256sums = faa2298961ea0b5811ef656b0fb52026d73225fa00bb7161796bdad1f016a1d2
+	sha256sums = b1381cab9801476fc06ae66b99c036af15309d253560869142990179dadd8760
+	sha256sums = 0f72c1973ef31e1af2e302b6ab1335a8a7f08be0bf5100cb06ebbeeb8d0c7439
+	sha256sums = 0677c2cac20ae98936b87a7bcedf9970459c88f57196b71b7b6758361b145ce7
+	sha256sums = e15e95cc21dba4d62489a959b459c1aa51c483c2cf94d2810a3a1555b43e30ea
+	sha256sums = 8c45f050dca5c46d478b00989d9dec54bf5e12d89983d0f6166ba4f3e38fac0a
 
 pkgname = chatterino2-technorino-git
