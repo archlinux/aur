@@ -1,0 +1,21 @@
+pkgbase = cv4pve-cli
+	pkgdesc = Command-line interface for Proxmox VE — manage API calls, contexts and aliases
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/Corsinvest/cv4pve-cli
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	provides = cv4pve-cli
+	conflicts = cv4pve-cli
+	options = !strip
+	options = !debug
+	source_x86_64 = cv4pve-cli-2.1.0-x86_64.zip::https://github.com/Corsinvest/cv4pve-cli/releases/download/v2.1.0/cv4pve-cli-linux-x64.zip
+	sha256sums_x86_64 = 1ff059f5010d9c8323df0a2972bb70386e91c88d615d381e34545424a7319596
+	source_aarch64 = cv4pve-cli-2.1.0-aarch64.zip::https://github.com/Corsinvest/cv4pve-cli/releases/download/v2.1.0/cv4pve-cli-linux-arm64.zip
+	sha256sums_aarch64 = 4b2bedb3cc516dfb28f5fb74411f3cc190cd12f32e89aee7d1ceaf45db2cf255
+	source_armv7h = cv4pve-cli-2.1.0-armv7h.zip::https://github.com/Corsinvest/cv4pve-cli/releases/download/v2.1.0/cv4pve-cli-linux-arm.zip
+	sha256sums_armv7h = 48cc166a3d1d86a0ec7cf668cd733bad796e584a7a21dfd14618d5c94c1fa63b
+
+pkgname = cv4pve-cli
