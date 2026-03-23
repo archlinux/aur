@@ -1,5 +1,5 @@
 pkgbase = terlang
-	pkgdesc = A modern terminal text editor built with FTXUI, inspired by Nano, Micro, and Sublime Text
+	pkgdesc = Programming language for scripting with syntax similar to C++
 	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/terroo/terlang
