@@ -1,0 +1,120 @@
+STATE_DIR=/var/lib/agelessd-pkg
+USERDB_BACKUP_DIR="$STATE_DIR/userdb"
+
+backup_ageless_state() {
+    mkdir -p "$STATE_DIR"
+    mkdir -p "$USERDB_BACKUP_DIR"
+
+    # Backup core files if present
+    if [ -f /etc/os-release ] && [ ! -f "$STATE_DIR/os-release" ]; then
+        cp -a /etc/os-release "$STATE_DIR/os-release"
+    fi
+
+    if [ -f /etc/lsb-release ] && [ ! -f "$STATE_DIR/lsb-release" ]; then
+        cp -a /etc/lsb-release "$STATE_DIR/lsb-release"
+    fi
+
+    # Record whether /etc/ageless existed before install
+    if [ -d /etc/ageless ]; then
+        echo yes > "$STATE_DIR/had-ageless-dir"
+    else
+        echo no > "$STATE_DIR/had-ageless-dir"
+    fi
+
+    # Backup existing userdb files exactly as they were
+    : > "$STATE_DIR/userdb-existing.list"
+    if [ -d /etc/userdb ]; then
+        for f in /etc/userdb/*.user; do
+            [ -e "$f" ] || continue
+            base=$(basename "$f")
+            echo "$base" >> "$STATE_DIR/userdb-existing.list"
+            cp -a "$f" "$USERDB_BACKUP_DIR/$base"
+        done
+    fi
+}
+
+restore_ageless_state() {
+    # Restore os-release
+    if [ -f "$STATE_DIR/os-release" ]; then
+        cp -af "$STATE_DIR/os-release" /etc/os-release
+    elif [ -f /etc/os-release.pre-ageless ]; then
+        cp -af /etc/os-release.pre-ageless /etc/os-release
+    fi
+
+    # Restore lsb-release if we backed it up
+    if [ -f "$STATE_DIR/lsb-release" ]; then
+        cp -af "$STATE_DIR/lsb-release" /etc/lsb-release
+    elif [ -f /etc/lsb-release.pre-ageless ]; then
+        cp -af /etc/lsb-release.pre-ageless /etc/lsb-release
+    fi
+
+    # Restore original userdb files
+    if [ -f "$STATE_DIR/userdb-existing.list" ]; then
+        mkdir -p /etc/userdb
+        while IFS= read -r base; do
+            [ -n "$base" ] || continue
+            if [ -f "$USERDB_BACKUP_DIR/$base" ]; then
+                cp -af "$USERDB_BACKUP_DIR/$base" "/etc/userdb/$base"
+            fi
+        done < "$STATE_DIR/userdb-existing.list"
+    fi
+
+    # Remove any *.user files created by the script that did not exist before
+    if [ -d /etc/userdb ] && [ -f "$STATE_DIR/userdb-existing.list" ]; then
+        for f in /etc/userdb/*.user; do
+            [ -e "$f" ] || continue
+            base=$(basename "$f")
+            if ! grep -Fxq "$base" "$STATE_DIR/userdb-existing.list"; then
+                rm -f "$f"
+            fi
+        done
+    fi
+
+    # Stop/disable persistent timer/service if present
+    systemctl disable --now agelessd.timer 2>/dev/null || true
+
+    # Remove files the script may have created
+    rm -f /etc/ageless/ab1043-compliance.txt
+    rm -f /etc/ageless/REFUSAL
+    rm -f /etc/ageless/age-verification-api.sh
+    rm -f /etc/ageless/agelessd
+    rm -f /etc/systemd/system/agelessd.service
+    rm -f /etc/systemd/system/agelessd.timer
+
+    systemctl daemon-reload 2>/dev/null || true
+
+    # Remove script-created backups if present
+    rm -f /etc/os-release.pre-ageless
+    rm -f /etc/lsb-release.pre-ageless
+
+    # Remove /etc/ageless only if it did not exist before
+    if [ -f "$STATE_DIR/had-ageless-dir" ] && [ "$(cat "$STATE_DIR/had-ageless-dir")" = "no" ]; then
+        rmdir /etc/ageless 2>/dev/null || true
+    fi
+
+    rm -rf "$STATE_DIR"
+}
+
+pre_install() {
+    backup_ageless_state
+}
+
+pre_upgrade() {
+    backup_ageless_state
+}
+
+post_install() {
+    echo "[agelessd] post_install fired"
+    /usr/bin/become-ageless --accept --flagrant || true
+}
+
+post_upgrade() {
+    echo "[agelessd] post_upgrade fired"
+    /usr/bin/become-ageless --accept --flagrant || true
+}
+
+post_remove() {
+    echo "[agelessd] removing ageless modifications..."
+    restore_ageless_state
+    echo "[agelessd] cleanup complete"
+}
