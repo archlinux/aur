@@ -2,7 +2,7 @@ pkgbase = aws-vault-git
 	pkgdesc = A vault for securely storing and accessing AWS credentials in development environments
 	pkgver = 6.0.0.beta4.r10.g411919b
 	pkgrel = 1
-	url = https://github.com/99designs/aws-vault
+	url = https://github.com/ByteNess/aws-vault
 	arch = i686
 	arch = x86_64
 	license = MIT
@@ -12,8 +12,7 @@ pkgbase = aws-vault-git
 	optdepends = kdialog: graphical prompt
 	provides = aws-vault=6.0.0.beta4.r10.g411919b
 	conflicts = aws-vault
-	source = aws-vault-git::git+https://github.com/99designs/aws-vault
+	source = aws-vault-git::git+https://github.com/ByteNess/aws-vault
 	sha512sums = SKIP
 
 pkgname = aws-vault-git
-
