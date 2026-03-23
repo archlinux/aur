@@ -2,7 +2,7 @@
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('any')
 url="https://bytedz.com/products/pclink"
@@ -42,6 +42,7 @@ makedepends=(
 )
 optdepends=(
   'grim: Screenshot support for wlroots-based compositors'
+  'power-profiles-daemon: Required for Energy Pulse Pro Extensions'
   'python-aiofiles: Improves upload performance with async file I/O'
   'python-pynput: Fallback for input control'
   'python-evdev: Input control on Wayland'
