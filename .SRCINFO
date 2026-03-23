@@ -1,6 +1,6 @@
 pkgbase = python-spacy
 	pkgdesc = Free open-source library for Natural Language Processing in Python
-	pkgver = 3.8.11
+	pkgver = 3.8.12
 	pkgrel = 1
 	url = https://github.com/explosion/spacy
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = python-spacy
 	depends = python-typer
 	depends = python-wasabi
 	depends = python-weasel
-	source = python-spacy-3.8.11.tar.gz::https://files.pythonhosted.org/packages/source/s/spacy/spacy-3.8.11.tar.gz
-	sha256sums = 54e1e87b74a2f9ea807ffd606166bf29ac45e2bd81ff7f608eadc7b05787d90d
+	source = python-spacy-3.8.12.tar.gz::https://files.pythonhosted.org/packages/source/s/spacy/spacy-3.8.12.tar.gz
+	sha256sums = 6b787d39aafa1cce985e61bc8aaafbee058f2b6c2915e6b44b2db2d240db1077
 
 pkgname = python-spacy
