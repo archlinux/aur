@@ -1,6 +1,6 @@
 pkgname=python-chibi-git
 _pyname=chibi_git
-pkgver=0.9.1
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="wrapper to use git in python"
 arch=('any')
@@ -10,7 +10,7 @@ groups=()
 depends=( "python-chibi" "python-chibi-atlas" "python-chibi-command" "python" )
 makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname//-/_}/${_pyname//-/_}-$pkgver.tar.gz")
-sha256sums=('b535ce38bef92a19a96e28864ced5c7cbbdf8e612ace04aca87906e39d72194e')
+sha256sums=('e5282a274df1742db19fea635e6605ee02a9686ab9df382097bb5e3846bf2250')
 
 build() {
 	cd "$_pyname-$pkgver"
