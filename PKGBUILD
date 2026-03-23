@@ -1,17 +1,20 @@
 # Maintainer: Vladislav Minakov <v@minakov.pro>
 
 pkgname=mattermost-plugin-onlyoffice
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='The app which enables the users to edit office documents from Mattermost using ONLYOFFICE Document Server, allows multiple users to collaborate in real time and to save back those changes to Mattermost'
 arch=('x86_64')
 url="https://github.com/ONLYOFFICE/onlyoffice-mattermost"
 license=("Apache")
 makedepends=('nvm' 'go')
-source=("https://github.com/ONLYOFFICE/onlyoffice-mattermost/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('575f29f4531e510d5d10010e95ad184baa00b3423a19b17774249319389c20391bc4b960aed74e361c81dcfaa3d9d04be82540850958e6ee81f75669f15b7954')
+source=("https://github.com/ONLYOFFICE/onlyoffice-mattermost/archive/refs/tags/v${pkgver}.tar.gz"
+        "https://raw.githubusercontent.com/ONLYOFFICE/document-formats/refs/heads/master/onlyoffice-docs-formats.json")
+sha512sums=('94e1e723126f19e099aa15d619ef8c0e497af79a2881b92edd8cfb50aedf4477514e9358316c664d1fd63721abb82156373302c3cd888c62a26b7f41ac897477'
+            'bbea436f92a3ef785ef482f1014b27f049fbcbebf288d9fe1f96661014e7afdd48dfb6b955742adbdc20cc376eccce8793f9b0489338d7892ced94cf6b075a45')
 
 build() {
+  install -D onlyoffice-docs-formats.json "${srcdir}/onlyoffice-mattermost-${pkgver}/public/formats/onlyoffice-docs-formats.json"
   cd "${srcdir}/onlyoffice-mattermost-${pkgver}/webapp"
   source /usr/share/nvm/init-nvm.sh
   nvm install 20
@@ -19,6 +22,7 @@ build() {
 #  npm install --legacy-peer-deps --no-audit --no-fund --no-optional --force --ignore-scripts
   npm install --legacy-peer-deps
   cd "${srcdir}/onlyoffice-mattermost-${pkgver}"
+#  git submodule update --init --recursive
   make dist
 }
 
