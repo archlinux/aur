@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = systemd
+Target = xdg-desktop-portal
+
+[Action]
+Description = Running agelessd script after systemd or xdg-desktop-portal upgrade...
+When = PostTransaction
+Exec = /usr/bin/become-ageless --accept
