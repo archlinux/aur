@@ -1,7 +1,7 @@
 {
   "name": "noon_mirsal",
   "description": "مرسال — Noon native messaging host",
-  "path": "/usr/lib/noon-mirsal/mirsald",
+  "path": "/usr/bin/mirsal",
   "type": "stdio",
   "allowed_extensions": ["mirsal@noon"]
 }

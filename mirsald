@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import json
 import os
 import subprocess
 import sys
@@ -6,16 +7,66 @@ import sys
 sys.path.insert(0, "/usr/lib/noon-mirsal")
 import protocol
 
+if len(sys.argv) > 1:
+    arg = sys.argv[1]
+    if arg == "--help":
+        print("usage: mirsald [--help] [--pull-palette]")
+        print()
+        print("  --pull-palette    read firefox.json and print the palette")
+        print("  --help            show this message")
+        sys.exit(0)
+    elif arg == "--pull-palette":
+        cache = os.environ.get("XDG_CACHE_HOME", os.path.expanduser("~/.cache"))
+        path = os.path.join(
+            cache, "noon", "user", "generated", "colors", "firefox.json"
+        )
+        try:
+            with open(path) as f:
+                palette = json.load(f)
+            print(json.dumps(palette, indent=2))
+        except Exception as e:
+            print(f"error: {e}", file=sys.stderr)
+            sys.exit(1)
+        sys.exit(0)
+    else:
+        print(f"mirsald: unknown option '{arg}'", file=sys.stderr)
+        sys.exit(1)
+
 msg = protocol.read()
+t = msg.get("type")
 
-if msg.get("type") == "downloads.add":
-    p        = msg.get("payload", {})
-    url      = p.get("url", "")
+if t == "downloads.add":
+    p = msg.get("payload", {})
+    url = p.get("url", "")
     filename = p.get("filename", "").split("/")[-1] or url.split("/")[-1] or "download"
-    mime     = p.get("mime", "") or "application/octet-stream"
-    size     = str(p.get("size", -1))
-    dest     = os.path.join(os.path.expanduser("~"), "Downloads", filename)
-    subprocess.run(["noon", "ipc", "call", "global", "download",
-                    url, dest, filename, mime, str(size)])
+    mime = p.get("mime", "") or "application/octet-stream"
+    size = str(p.get("size", -1))
+    dest = os.path.join(os.path.expanduser("~"), "Downloads", filename)
+    subprocess.run(
+        [
+            "noon",
+            "ipc",
+            "call",
+            "global",
+            "download",
+            url,
+            dest,
+            filename,
+            mime,
+            str(size),
+        ]
+    )
+    protocol.write({"status": "ok"})
 
-protocol.write({"status": "ok"})
+elif t == "palette.get":
+    cache = os.environ.get("XDG_CACHE_HOME", os.path.expanduser("~/.cache"))
+    path = os.path.join(cache, "noon", "user", "generated", "colors", "firefox.json")
+    try:
+        with open(path) as f:
+            palette = json.load(f)
+        protocol.write({"type": "palette_colors", "payload": palette})
+    except Exception as e:
+        protocol.write({"type": "palette_colors", "error": str(e)})
+
+else:
+    protocol.write({"status": "ok"})
