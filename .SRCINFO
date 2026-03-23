@@ -1,18 +1,22 @@
 pkgbase = subsync
-	pkgdesc = İngilizce videolar için Türkçe altyazı oluşturucu — yerel Whisper + Gemini API
-	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://github.com/yeggis/subsync
+	pkgdesc = Subtitle Speech Synchronizer
+	pkgver = 0.17
+	pkgrel = 5
+	url = https://subsync.online
 	arch = x86_64
-	license = MIT
-	depends = python
-	depends = ffmpeg
-	depends = yt-dlp
-	depends = python-pip
-	optdepends = mpv: varsayılan video oynatıcı
-	optdepends = vlc: alternatif video oynatıcı
-	optdepends = cuda: NVIDIA GPU hızlandırması
-	source = subsync-1.0.0.tar.gz::https://github.com/yeggis/subsync/archive/refs/tags/v1.0.0.tar.gz
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = ffmpeg4.4
+	depends = pocketsphinx
+	depends = pybind11
+	depends = python-certifi
+	depends = python-cryptography
+	depends = python-pysubs2
+	depends = python-pyaml
+	depends = python-requests
+	depends = python-wxpython
+	source = git+https://github.com/sc0ty/subsync.git#commit=be5390d00ff475b6543eb0140c7e65b34317d95b
 	sha256sums = SKIP
 
 pkgname = subsync
