@@ -1,6 +1,6 @@
 pkgbase = omniget-bin
 	pkgdesc = Media downloader. Paste a link. Get your file. Udemy, Hotmart, Telegram and 1000+ Downloader.(Prebuilt version)
-	pkgver = 0.3.6
+	pkgver = 0.3.7
 	pkgrel = 1
 	url = https://discord.gg/TA8A8r2z
 	arch = aarch64
@@ -9,11 +9,11 @@ pkgbase = omniget-bin
 	depends = gtk3
 	depends = gdk-pixbuf2
 	depends = webkit2gtk-4.1
-	provides = omniget=0.3.6
+	provides = omniget=0.3.7
 	conflicts = omniget
-	source_aarch64 = omniget-0.3.6-aarch64.rpm::https://github.com/tonhowtf/omniget/releases/download/v0.3.6/omniget-0.3.6-1.aarch64.rpm
-	sha256sums_aarch64 = 251daf528f6b12d21fae22df098f7ca113a27af41a687158d3ded0af10747de8
-	source_x86_64 = omniget-0.3.6-x86_64.rpm::https://github.com/tonhowtf/omniget/releases/download/v0.3.6/omniget-0.3.6-1.x86_64.rpm
-	sha256sums_x86_64 = 1af489cf9be11f5d1bbf9a1ac863445102240bd08ee39c42915394ce88fd4cd6
+	source_aarch64 = omniget-0.3.7-aarch64.rpm::https://github.com/tonhowtf/omniget/releases/download/v0.3.7/omniget-0.3.7-1.aarch64.rpm
+	sha256sums_aarch64 = afea65dbd452c959fab913716388f1000fd0b41201526bb08e009aa0ee8fcc75
+	source_x86_64 = omniget-0.3.7-x86_64.rpm::https://github.com/tonhowtf/omniget/releases/download/v0.3.7/omniget-0.3.7-1.x86_64.rpm
+	sha256sums_x86_64 = d25194743f705f04e3fad386f93d63a27508c35acbcc2660ab14006f817ca8b9
 
 pkgname = omniget-bin
