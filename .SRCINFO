@@ -1,0 +1,18 @@
+pkgbase = ethos-lang
+	pkgdesc = The Ethos Programming Language Compiler
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/AmanCode22/ethos-lang
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-pip
+	depends = python
+	depends = python-zstandard
+	depends = gcc
+	depends = patchelf
+	source = git+https://github.com/AmanCode22/ethos-lang.git#tag=v0.3.0
+	sha256sums = SKIP
+
+pkgname = ethos-lang
