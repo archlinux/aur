@@ -3,8 +3,8 @@
 # Contributor: sem.z <sem.z at protonmail dot com>
 
 pkgname=orca-slicer-bin
-pkgver=2.3.1
-pkgrel=7
+pkgver=2.3.2
+pkgrel=1
 pkgdesc="G-code generator for 3D printers"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
@@ -15,7 +15,7 @@ conflicts=("orca-slicer")
 options=(!strip !zipman !debug)
 appimage="OrcaSlicer_Linux_AppImage_Ubuntu2404_V${pkgver}.AppImage"
 source=("https://github.com/SoftFever/OrcaSlicer/releases/download/v${pkgver}/${appimage}")
-sha512sums=('068059d73784a1e7bc2a72cc157a691bb61180a9045a59c6a61b42344cee0031731d29c140254a79433f18bd15e6b94d575a298f6cf0dda8d349c8b0591a65dc')
+sha512sums=('e4e6ae7d829e39747d0f00079c6af157eada0a0d35845d6087324b99af5ab913f350b6e7c4d5e4769a4303472a7bb305a80590374c2c49be08cc040f8b2a91da')
 
 prepare() {
   chmod +x ${appimage}
