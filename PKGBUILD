@@ -1,5 +1,4 @@
-# Maintainer: Morty
-# Contributor: OpenAI Codex
+# Maintainer: Schmoho
 
 pkgname=hca-cli
 pkgver=0.1.0
