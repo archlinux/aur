@@ -8,6 +8,7 @@ pkgbase = cuppajoe
 	depends = cmake
 	depends = ncurses
 	depends = tbb
+	depends = openmp
 	source = cuppajoe::git+https://github.com/Miroaja/cuppa.git
 	sha512sums = SKIP
 
