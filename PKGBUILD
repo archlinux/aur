@@ -1,69 +1,67 @@
-# Maintainer: jprjr <john@jrjrtech.com>
+# Maintainer: Aidan Epstein <aidan@jmad.org>
 
-pkgname=('lua-unbound' 'lua51-unbound' 'lua52-unbound' 'lua53-unbound')
-pkgbase='lua-unbound'
-pkgdesc="Lua bindings to unbound"
-_pkgbase='luaunbound'
-pkgver=1.0.0
+pkgname=(lua-unbound lua51-unbound lua52-unbound lua53-unbound lua54-unbound)
+pkgver=1.1.0
 pkgrel=1
-arch=('x86_64' 'i686')
+pkgdesc='drop-in replacement for Prosodys internal DNS library with a binding to libunbound'
+arch=('x86_64')
 url='https://www.zash.se/luaunbound.html'
 license=('MIT')
+makedepends=('lua' 'lua51' 'lua52' 'lua53' 'lua54')
 depends=('unbound')
-makedepends=('lua<5.5' 'lua51' 'lua52' 'lua53')
-source=("https://code.zash.se/dl/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz")
-
-sha256sums=('6de45aa64c21cf0ecbccb734b7c1eda8873a6135bbe142fbf353f772a90750d3')
+source=("https://code.zash.se/dl/luaunbound/luaunbound-1.1.0.tar.gz")
+sha256sums=('236159461ecc61d4cc7d3738a7adcf3680ba6f61ea6e1f8e18f2c9b5e3a90244')
 
 prepare() {
-    sed -i 's/(LD)/(CC)/g' "${_pkgbase}-${pkgver}/GNUmakefile"
-    for V in 5.1 5.2 5.3 5.4; do
-        cp -r "${_pkgbase}-${pkgver}" "build-${V}"
-    done
+  cd "$srcdir/luaunbound-$pkgver"
+  # use CC
+  sed -i 's/(LD)/(CC)/g' GNUmakefile
+
+  cp -r "$srcdir"/luaunbound-$pkgver "$srcdir"/luaunbound51-$pkgver
+  cp -r "$srcdir"/luaunbound-$pkgver "$srcdir"/luaunbound52-$pkgver
+  cp -r "$srcdir"/luaunbound-$pkgver "$srcdir"/luaunbound53-$pkgver
+  cp -r "$srcdir"/luaunbound-$pkgver "$srcdir"/luaunbound54-$pkgver
 }
 
 build() {
-    for V in 5.1 5.2 5.3 5.4; do
-        make -C "build-${V}" LUA_PC=lua${V}
-    done
+  cd "$srcdir/luaunbound51-$pkgver"
+  make all LUA_VERSION=5.1
+
+  cd "$srcdir/luaunbound52-$pkgver"
+  make all LUA_VERSION=5.2
+
+  cd "$srcdir/luaunbound53-$pkgver"
+  make all LUA_VERSION=5.3
+
+  cd "$srcdir/luaunbound-$pkgver"
+  make all LUA_VERSION=5.4
+
+  cd "$srcdir/luaunbound-$pkgver"
+  make all LUA_VERSION=5.5
 }
 
-package_lua-unbound() {
-    depends+=('lua<5.5')
-
-    make -C "build-5.4" LUA_PC=lua DESTDIR="${pkgdir}" install
-    cd "${_pkgbase}-${pkgver}"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 README.markdown "$pkgdir/usr/share/doc/$pkgname/README"
-}
 
 package_lua51-unbound() {
-    pkgdesc+=" - Lua 5.1 version"
-    depends+=('lua51')
-
-    make -C "build-5.1" LUA_PC=lua5.1 DESTDIR="${pkgdir}" install
-    cd "${_pkgbase}-${pkgver}"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 README.markdown "$pkgdir/usr/share/doc/$pkgname/README"
+  cd "$srcdir/luaunbound-$pkgver"
+  make install DESTDIR="$pkgdir" LUA_VERSION=5.1
 }
 
 package_lua52-unbound() {
-    pkgdesc+=" - Lua 5.2 version"
-    depends+=('lua52')
-
-    make -C "build-5.2" LUA_PC=lua5.2 DESTDIR="${pkgdir}" install
-    cd "${_pkgbase}-${pkgver}"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 README.markdown "$pkgdir/usr/share/doc/$pkgname/README"
+  cd "$srcdir/luaunbound-$pkgver"
+  make install DESTDIR="$pkgdir" LUA_VERSION=5.2
 }
 
 package_lua53-unbound() {
-    pkgdesc+=" - Lua 5.3 version"
-    depends+=('lua53')
-
-    make -C "build-5.3" LUA_PC=lua5.3 DESTDIR="${pkgdir}" install
-    cd "${_pkgbase}-${pkgver}"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    install -Dm644 README.markdown "$pkgdir/usr/share/doc/$pkgname/README"
+  cd "$srcdir/luaunbound-$pkgver"
+  make install DESTDIR="$pkgdir" LUA_VERSION=5.3
 }
 
+package_lua54-unbound() {
+  cd "$srcdir/luaunbound-$pkgver"
+  make install DESTDIR="$pkgdir" LUA_VERSION=5.4
+}
+
+package_lua-unbound() {
+  cd "$srcdir/luaunbound-$pkgver"
+  make install DESTDIR="$pkgdir" LUA_VERSION=5.5
+}
