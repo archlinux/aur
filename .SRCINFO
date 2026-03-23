@@ -1,6 +1,6 @@
 pkgbase = xlibre-server-common-bin
 	pkgdesc = XLibre Official Easy Install Drop in Replacement fork of X.Org Xorg server common files (binary release)
-	pkgver = 25.0.0.20
+	pkgver = 25.0.0.21
 	pkgrel = 1
 	url = https://x11libre.net/repo/arch_based/x86_64
 	arch = x86_64
@@ -27,9 +27,9 @@ pkgbase = xlibre-server-common-bin
 	provides = xorg-server-common
 	conflicts = xlibre-server-common
 	conflicts = xorg-server-common
-	noextract = xlibre-server-common-25.0.0.20-1-x86_64.pkg.tar.zst
+	noextract = xlibre-server-common-25.0.0.21-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-xserver-common-25.0.0.20-1-x86_64.pkg.tar.zst
-	sha256sums = 6cb888f84a10b9f148c93ed2f6125f03377b2540843031283696aa534c6e1d04
+	source = https://x11libre.net/repo/arch_based/x86_64/xlibre-xserver-common-25.0.0.21-1-x86_64.pkg.tar.zst
+	sha256sums = ab7b3dd752e5e00e9398316a96f98da9c958183e739522f2cf7f971d1a31cdf7
 
 pkgname = xlibre-server-common-bin
