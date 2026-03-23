@@ -2,7 +2,7 @@
 # Maintainer: ks1686 <ks1686@users.noreply.github.com>
 
 pkgname='gpm-bin'
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Track, sync, and reproduce your software environment across Linux, macOS, and WSL2.'
 url='https://github.com/ks1686/gpm'
@@ -12,10 +12,10 @@ provides=('gpm')
 conflicts=('gpm')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/ks1686/gpm/releases/download/v${pkgver}/gpm_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('4f022e01eac7a5797b9003c574fc9212b78b11f62b22e586984c09a70049708a')
+sha256sums_aarch64=('1c086b3dfd75fa1022f5e3597ea11d46abeed6d16e9c041b8ee4291a065b555b')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/ks1686/gpm/releases/download/v${pkgver}/gpm_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('309ef3174563d13613c7fe79f121b2dc029b471490650c092571402d11dddac9')
+sha256sums_x86_64=('a33d14477b42a87c6c4794a15a595c742adb5d985afaf5179ca7f27c9523e272')
 
 package() {
   install -Dm755 "./gpm" "${pkgdir}/usr/bin/gpm"
