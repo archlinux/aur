@@ -1,14 +1,14 @@
 # Maintainer: David Lishchyshen <microdaika1@gmail.com>
 pkgname=wofi-power-menu-bin
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Highly configurable power menu using the wofi launcher power-menu (prebuilt binary)"
 arch=('x86_64')
 url="https://github.com/szaffarano/wofi-power-menu"
 license=('MIT')
 depends=('wofi')
-provides=('wofi-powert-menu')
-conflicts=('wofi-powert-menu')
+provides=('wofi-power-menu')
+conflicts=('wofi-power-menu')
 source=(
     "${pkgname}-${pkgver}::$url/releases/download/v$pkgver/wofi-power-menu-linux-x64"
     "${pkgname}-${pkgver}.asc::$url/releases/download/v$pkgver/wofi-power-menu-linux-x64.asc"
