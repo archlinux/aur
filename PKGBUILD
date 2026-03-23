@@ -125,7 +125,7 @@ package_radicle-httpd-git() {
 	license=('Apache-2.0 OR MIT')
 	depends=(
 		'glibc'
-		'gcc-libs'
+		'libgcc'
 		'zlib'
 		'radicle-node'
 	)
