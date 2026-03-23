@@ -1,7 +1,7 @@
 pkgbase = hca-cli
 	pkgdesc = Self-documenting command line client for the Human Cell Atlas API
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/decent-tools-for-thought/hca-cli
 	arch = any
 	license = 0BSD
