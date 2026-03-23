@@ -5,7 +5,7 @@ _pkgname=tsm
 pkgname=${_pkgname}-bin
 pkgdesc="Terminal Session Manager"
 
-pkgver=0.5.1
+pkgver=0.6.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -33,12 +33,12 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_${_barch[0]}.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${_pkgvername}_${_barch[1]}.tar.gz")
 sha256sums=('2b87bf7de1f8d01aa9b6d406e29cf45a5c326657faccff7eaacd7a04399e1a64'
-            '0106ca5d76d2c99698fc0ebb3e5490f014d51a1486ae5dbe48a79c1f4e387b53'
-            'e37a30c9f284582ed5ac1bab5e1e02f76bbc27c93bbd632d02322e569a4d2d25'
-            '55410d1470810d3249e1f85a9a153ee83147f763f7d7e0328c050c043d53fb92'
-            '4dd10c794ada37058cffdb44e0f38f07bd028eea5ab6d51042780941a5bb9875')
-sha256sums_x86_64=('9d3abc7ddb06fb9f8c53ca840fe59e8fe4c9678b16c81b94345438fe1e19ff25')
-sha256sums_aarch64=('d6abe8addb2a7289b75fe727a921cefbcb603dad88ed2a9d27d85cdc64171860')
+            'c982541021bad6122eba6b084327f684b6c9029ede8b23418cdebfb96efc541d'
+            '4bf5b22c37c22a9cd4abdf62b587497ccfaa07d6bb81a6a5bae5aee49822a981'
+            'bcb89d7b1ac89a301e67d8037c6d9f85608ac0d4964750a1d38a9b2350eed1fd'
+            '7190508bd9b199df1d32751427986bcefa67f8800492fb4d6cff82cba9bca025')
+sha256sums_x86_64=('009c64963ef6a4602a155fe82516847999174414f560dbba5f61a90feb61de36')
+sha256sums_aarch64=('3f6b1a9d72a8276fa246c396e4d250457a05f447cbecc6e50e6e50dfbfb15c27')
 
 
 case ${CARCH} in
