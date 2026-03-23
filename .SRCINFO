@@ -1,7 +1,7 @@
 pkgbase = csdr-skimmer
 	pkgdesc = CSDR-based CW and RTTY skimmers
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/luarvique/csdr-skimmer
 	arch = x86_64
 	arch = aarch64
@@ -12,6 +12,6 @@ pkgbase = csdr-skimmer
 	conflicts = csdr-cwskimmer
 	replaces = csdr-cwskimmer
 	source = csdr-skimmer::git+https://github.com/luarvique/csdr-skimmer.git#tag=1.12
-	sha256sums = SKIP
+	sha256sums = ebbadf1279b54cbb4a0c246ba202a8399ed43bc411f5d33f586717fdb459f004
 
 pkgname = csdr-skimmer
