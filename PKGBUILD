@@ -1,31 +1,59 @@
-# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
+# Maintainer: Martin Rys <https://rys.rs/contact>
+# Contributor: The-Repo-Club <The-Repo-Club@github.com>
 # Contributor: lazant <a.l.i.c.e at outlook.com>
-# shellcheck disable=all
 
 pkgname=python-buildozer
 _pkgname=buildozer
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Generic Python packager for Android / iOS and Desktop"
 arch=('any')
-depends=('python' 'python-colorama' 'python-pexpect' 'python-virtualenv' 'python-sh')
-makedepends=('cmake' 'libusb' 'python-setuptools')
+depends=(
+	'python'
+	'python-colorama'
+	'python-pexpect'
+	'python-virtualenv'
+	'python-sh'
+)
+makedepends=(
+	'cmake'
+	'libusb'
+	'python-build'
+	'python-installer'
+	'python-setuptools'
+)
 optdepends=('python-paramiko: remote builds')
 url="https://github.com/kivy/buildozer"
 license=('MIT')
 options=(!emptydirs)
-source=("${_pkgname}-$pkgver.tar.gz::${url}/archive/$pkgver.tar.gz")
-sha256sums=('1f96680106a2750ba5b348df86bcbaba67c24b33b9cb7ca275066e7165ba36f7')
+source=(
+	"${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+	"buildozer-1.patch"
+	"buildozer-2.patch"
+)
+sha256sums=(
+	'229ae9fb8e519ee1a33e9a06a3e083f84646bb49b15cde91ac04ade79b44ef89'
+	'SKIP'
+	'SKIP'
+)
 provides=('buildozer' 'python-buildozer')
 conflicts=('buildozer')
 
+prepare() {
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+
+	# Get rid of deprecated&removed FancyURLopener
+	patch -p1 -i "${srcdir}/buildozer-1.patch"
+	patch -p1 -i "${srcdir}/buildozer-2.patch"
+}
+
 build() {
-  cd "$srcdir/${_pkgname}-$pkgver"
-  python setup.py build
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "${srcdir}/${_pkgname}-${pkgver}"
+	python -m installer --destdir="${pkgdir}" dist/*.whl
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

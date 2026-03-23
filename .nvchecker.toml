@@ -1,0 +1,4 @@
+[python-buildozer]
+source = "github"
+github = "kivy/buildozer"
+use_max_tag = true

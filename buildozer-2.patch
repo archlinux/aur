@@ -1,0 +1,307 @@
+From 236b22a2cd0a6352774ecbebafd378f527c8237e Mon Sep 17 00:00:00 2001
+From: Julian <github@somethinkodd.com>
+Date: Wed, 30 Aug 2023 02:39:26 +1000
+Subject: [PATCH] Move checkbin and download to use buildops. (#1671)
+
+* Move checkbin and download to Buildops.
+
+
+This is part of a larger refactoring to simplify the Buildozer class.
+
+* Remove checkbin() and download() methods (plus some definitions only used by download().
+* Migrates all references to use the Buildops equivalents.
+* Migrate shelling out to "curl"  to use download instead.
+
+Note: The Buildops versions have completely different implementations to the original Buildozer ones, but the semantics are the same. New versions are more platform-independent, expected to be faster and don't use deprecated  library calls.
+
+* Correct name of urllib base exception
+
+* Avoid string splitting
+---
+ buildozer/__init__.py         | 47 +----------------------------------
+ buildozer/targets/android.py  | 27 ++++++++++----------
+ buildozer/targets/ios.py      | 17 ++++++-------
+ buildozer/targets/osx.py      | 27 +++++++++++---------
+ tests/targets/test_android.py | 12 ++++-----
+ tests/targets/test_ios.py     |  4 +--
+ tests/targets/utils.py        |  4 +--
+ tests/test_buildozer.py       |  2 +-
+ 8 files changed, 49 insertions(+), 91 deletions(-)
+
+diff --git a/buildozer/__init__.py b/buildozer/__init__.py
+index 53e0afd8e..e3cdf49d5 100644
+--- a/buildozer/__init__.py
++++ b/buildozer/__init__.py
+@@ -29,7 +29,6 @@ from fnmatch import fnmatch
+ import shlex
+ import pexpect
+
+-from urllib.request import FancyURLopener
+ from configparser import ConfigParser
+ try:
+     import fcntl
+@@ -39,15 +38,6 @@ except ImportError:
+ SIMPLE_HTTP_SERVER_PORT = 8000
+
+
+-class ChromeDownloader(FancyURLopener):
+-    version = (
+-        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 '
+-        '(KHTML, like Gecko) Chrome/28.0.1500.71 Safari/537.36')
+-
+-
+-urlretrieve = ChromeDownloader().retrieve
+-
+-
+ class BuildozerException(Exception):
+     '''
+     Exception raised for general situations buildozer cannot process.
+index f668c2f5d..829d463bb 100644
+--- a/buildozer/targets/android.py
++++ b/buildozer/targets/android.py
+@@ -306,11 +306,10 @@ def check_requirements(self):
+         else:
+             path.append(os.environ['PATH'])
+         self.buildozer.environ['PATH'] = ':'.join(path)
+-        checkbin = self.buildozer.checkbin
+-        checkbin('Git (git)', 'git')
+-        checkbin('Cython (cython)', 'cython')
+-        checkbin('Java compiler (javac)', self.javac_cmd)
+-        checkbin('Java keytool (keytool)', self.keytool_cmd)
++        buildops.checkbin('Git (git)', 'git')
++        buildops.checkbin('Cython (cython)', 'cython')
++        buildops.checkbin('Java compiler (javac)', self.javac_cmd)
++        buildops.checkbin('Java keytool (keytool)', self.keytool_cmd)
+
+     def _p4a_have_aab_support(self):
+         returncode = self._p4a(["aab", "-h"], break_on_error=False)[2]
+@@ -354,9 +353,10 @@ def _install_apache_ant(self):
+         self.logger.info('Android ANT is missing, downloading')
+         archive = 'apache-ant-{0}-bin.tar.gz'.format(APACHE_ANT_VERSION)
+         url = 'https://archive.apache.org/dist/ant/binaries/'
+-        self.buildozer.download(url,
+-                                archive,
+-                                cwd=ant_dir)
++        buildops.download(
++            url,
++            archive,
++            cwd=ant_dir)
+         self.buildozer.file_extract(archive,
+                                     cwd=ant_dir)
+         self.logger.info('Apache ANT installation done.')
+@@ -382,9 +382,10 @@ def _install_android_sdk(self):
+             os.makedirs(sdk_dir)
+
+         url = 'https://dl.google.com/android/repository/'
+-        self.buildozer.download(url,
+-                                archive,
+-                                cwd=sdk_dir)
++        buildops.download(
++            url,
++            archive,
++            cwd=sdk_dir)
+
+         self.logger.info('Unpacking Android SDK')
+         self.buildozer.file_extract(archive,
+@@ -444,7 +445,7 @@ def _install_android_ndk(self):
+         else:
+             url = 'https://dl.google.com/android/ndk/'
+
+-        self.buildozer.download(url,
++        buildops.download(url,
+                                 archive,
+                                 cwd=self.buildozer.global_platform_dir)
+
+@@ -598,7 +599,7 @@ def _check_aidl(self, v_build_tools):
+                                                   'build-tools')
+         aidl_cmd = join(self.android_sdk_dir, 'build-tools',
+                         str(v_build_tools), 'aidl')
+-        self.buildozer.checkbin('Aidl', aidl_cmd)
++        buildops.checkbin('Aidl', aidl_cmd)
+         _, _, returncode = self.buildozer.cmd(aidl_cmd,
+                                               break_on_error=False,
+                                               show_output=False)
+diff --git a/buildozer/targets/ios.py b/buildozer/targets/ios.py
+index f6282f14d..ca5f2dc3b 100644
+--- a/buildozer/targets/ios.py
++++ b/buildozer/targets/ios.py
+@@ -75,17 +75,16 @@ def __init__(self, buildozer):
+     def check_requirements(self):
+         if sys.platform != "darwin":
+             raise NotImplementedError("Only macOS is supported for iOS target")
+-        checkbin = self.buildozer.checkbin
+         cmd = self.buildozer.cmd
+
+-        checkbin('Xcode xcodebuild', 'xcodebuild')
+-        checkbin('Xcode xcode-select', 'xcode-select')
+-        checkbin('Git git', 'git')
+-        checkbin('Cython cython', 'cython')
+-        checkbin('pkg-config', 'pkg-config')
+-        checkbin('autoconf', 'autoconf')
+-        checkbin('automake', 'automake')
+-        checkbin('libtool', 'libtool')
++        buildops.checkbin('Xcode xcodebuild', 'xcodebuild')
++        buildops.checkbin('Xcode xcode-select', 'xcode-select')
++        buildops.checkbin('Git git', 'git')
++        buildops.checkbin('Cython cython', 'cython')
++        buildops.checkbin('pkg-config', 'pkg-config')
++        buildops.checkbin('autoconf', 'autoconf')
++        buildops.checkbin('automake', 'automake')
++        buildops.checkbin('libtool', 'libtool')
+
+         self.logger.debug('Check availability of a iPhone SDK')
+         sdk = cmd('xcodebuild -showsdks | fgrep "iphoneos" |'
+diff --git a/buildozer/targets/osx.py b/buildozer/targets/osx.py
+index 6c7dd01ab..059f521e9 100644
+--- a/buildozer/targets/osx.py
++++ b/buildozer/targets/osx.py
+@@ -8,6 +8,7 @@
+
+ from os.path import exists, join, abspath, dirname
+ from subprocess import check_call, check_output
++import urllib.error
+
+ import buildozer.buildops as buildops
+ from buildozer.target import Target
+@@ -28,9 +29,9 @@ def ensure_sdk(self):
+
+         self.buildozer.info('kivy-sdk-packager does not exist, clone it')
+         platdir = self.buildozer.platform_dir
+-        check_call(
+-            ('curl', '-O', '-L',
+-            'https://github.com/kivy/kivy-sdk-packager/archive/master.zip'),
++        buildops.download(
++            'https://github.com/kivy/kivy-sdk-packager/archive/master.zip',
++            'master.zip',
+             cwd=platdir)
+         check_call(('unzip', 'master.zip'), cwd=platdir)
+         check_call(('rm', 'master.zip'), cwd=platdir)
+@@ -44,16 +45,18 @@ def download_kivy(self, cwd):
+         else:
+             if not exists(join(cwd, 'Kivy{}.dmg'.format(py_branch))):
+                 self.buildozer.info('Downloading kivy...')
+-                status_code = check_output(
+-                    ('curl', '-L', '--write-out', '%{http_code}', '-o', 'Kivy{}.dmg'.format(py_branch),
+-                    'https://kivy.org/downloads/{}/Kivy-{}-osx-python{}.dmg'
+-                    .format(current_kivy_vers, current_kivy_vers, py_branch)),
+-                    cwd=cwd)
+-
+-                if status_code == "404":
++                try:
++                    buildops.download(
++                        f'https://kivy.org/downloads/{current_kivy_vers}/Kivy.dmg',
++                        'Kivy.dmg',
++                        cwd=cwd
++                    )
++                except urllib.error.URLError:
+                     self.buildozer.error(
+-                        "Unable to download the Kivy App. Check osx.kivy_version in your buildozer.spec, and verify "
+-                        "Kivy servers are accessible. https://kivy.org/downloads/")
++                        "Unable to download the Kivy App. "
++                        "Check osx.kivy_version in your buildozer.spec, and "
++                        "verify Kivy servers are accessible. "
++                        "https://kivy.org/downloads/")
+                     check_call(("rm", "Kivy{}.dmg".format(py_branch)), cwd=cwd)
+                     sys.exit(1)
+
+diff --git a/tests/targets/test_android.py b/tests/targets/test_android.py
+index 093f115d1..7809a35d3 100644
+--- a/tests/targets/test_android.py
++++ b/tests/targets/test_android.py
+@@ -10,7 +10,7 @@
+ from tests.targets.utils import (
+     init_buildozer,
+     patch_buildozer,
+-    patch_buildozer_checkbin,
++    patch_buildops_checkbin,
+     patch_buildozer_cmd,
+     patch_buildops_file_exists,
+ )
+@@ -20,8 +20,8 @@ def patch_buildozer_cmd_expect():
+     return patch_buildozer("cmd_expect")
+
+
+-def patch_buildozer_download():
+-    return patch_buildozer("download")
++def patch_buildops_download():
++    return mock.patch("buildozer.buildops.download")
+
+
+ def patch_buildozer_file_extract():
+@@ -155,7 +155,7 @@ def test_check_requirements(self):
+         assert not hasattr(target_android, "adb_args")
+         assert not hasattr(target_android, "javac_cmd")
+         assert "PATH" not in buildozer.environ
+-        with patch_buildozer_checkbin() as m_checkbin:
++        with patch_buildops_checkbin() as m_checkbin:
+             target_android.check_requirements()
+         assert m_checkbin.call_args_list == [
+             mock.call("Git (git)", "git"),
+@@ -182,7 +182,7 @@ def test_check_configuration_tokens(self):
+     def test_install_android_sdk(self, platform):
+         """Basic tests for the _install_android_sdk() method."""
+         target_android = init_target(self.temp_dir)
+-        with patch_buildozer_file_exists() as m_file_exists, patch_buildozer_download() as m_download:
++        with patch_buildozer_file_exists() as m_file_exists, patch_buildops_download() as m_download:
+             m_file_exists.return_value = True
+             sdk_dir = target_android._install_android_sdk()
+         assert m_file_exists.call_args_list == [
+@@ -191,7 +191,7 @@ def test_install_android_sdk(self, platform):
+         assert m_download.call_args_list == []
+         assert sdk_dir.endswith(".buildozer/android/platform/android-sdk")
+         with patch_buildozer_file_exists() as m_file_exists, \
+-                patch_buildozer_download() as m_download, \
++                patch_buildops_download() as m_download, \
+                 patch_buildozer_file_extract() as m_file_extract, \
+                 patch_platform(platform):
+             m_file_exists.return_value = False
+diff --git a/tests/targets/test_ios.py b/tests/targets/test_ios.py
+index 0705addf7..071b72efe 100644
+--- a/tests/targets/test_ios.py
++++ b/tests/targets/test_ios.py
+@@ -9,7 +9,7 @@
+ from buildozer.targets.ios import TargetIos
+ from tests.targets.utils import (
+     init_buildozer,
+-    patch_buildozer_checkbin,
++    patch_buildops_checkbin,
+     patch_buildozer_cmd,
+     patch_buildops_file_exists,
+     patch_logger_error,
+@@ -56,7 +56,7 @@ def test_check_requirements(self):
+         buildozer = target.buildozer
+         assert not hasattr(target, "javac_cmd")
+         assert "PATH" not in buildozer.environ
+-        with patch_buildozer_checkbin() as m_checkbin:
++        with patch_buildops_checkbin() as m_checkbin:
+             target.check_requirements()
+         assert m_checkbin.call_args_list == [
+             mock.call("Xcode xcodebuild", "xcodebuild"),
+diff --git a/tests/targets/utils.py b/tests/targets/utils.py
+index 741fe3aee..e98940780 100644
+--- a/tests/targets/utils.py
++++ b/tests/targets/utils.py
+@@ -14,8 +14,8 @@ def patch_buildozer_cmd():
+     return patch_buildozer("cmd")
+
+
+-def patch_buildozer_checkbin():
+-    return patch_buildozer("checkbin")
++def patch_buildops_checkbin():
++    return mock.patch("buildozer.buildops.checkbin")
+
+
+ def patch_buildops_file_exists():
+diff --git a/tests/test_buildozer.py b/tests/test_buildozer.py
+index 2a163a2ca..38829f682 100644
+--- a/tests/test_buildozer.py
++++ b/tests/test_buildozer.py
+@@ -125,7 +125,7 @@ def test_android_ant_path(self):
+         target = TargetAndroid(buildozer=buildozer)
+
+         # Mock first run
+-        with mock.patch('buildozer.Buildozer.download') as download, \
++        with mock.patch('buildozer.buildops.download') as download, \
+                 mock.patch('buildozer.Buildozer.file_extract') as m_file_extract, \
+                 mock.patch('os.makedirs'):
+             ant_path = target._install_apache_ant()
