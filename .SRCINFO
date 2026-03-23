@@ -1,0 +1,17 @@
+pkgbase = rog-helper-git
+	pkgdesc = btop-style TUI for ASUS ROG laptop management
+	pkgver = r1.0
+	pkgrel = 1
+	url = https://github.com/itsameandrea/rog-helper
+	arch = any
+	license = MIT
+	makedepends = ruby-bundler
+	makedepends = git
+	depends = ruby
+	depends = asusctl
+	depends = supergfxctl
+	depends = asusd
+	source = rog-helper-git::git+https://github.com/itsameandrea/rog-helper.git
+	sha256sums = SKIP
+
+pkgname = rog-helper-git
