@@ -1,0 +1,17 @@
+pkgbase = dell-fanctl-git
+	pkgdesc = Adaptive fan controller for Dell laptops — auto-switches quiet/gaming profiles based on CPU load and temperature (git version)
+	pkgver = r2.d102f75
+	pkgrel = 1
+	url = https://github.com/onyxdigitaldev/dell-fanctl
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python>=3.10
+	optdepends = python-gobject: system tray applet
+	optdepends = libappindicator-gtk3: system tray applet
+	provides = dell-fanctl
+	conflicts = dell-fanctl
+	source = dell-fanctl-git::git+https://github.com/onyxdigitaldev/dell-fanctl.git
+	sha256sums = SKIP
+
+pkgname = dell-fanctl-git
