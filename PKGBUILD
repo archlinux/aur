@@ -1,35 +1,35 @@
-# Maintainer: Daniel Poellmann <aur@<lastname><firstname>.de>
+# Maintainer: Ravyar <ravyar.tahir@ravarage.xyz>
+# Contributor: Daniel Poellmann <aur@<lastname><firstname>.de>
 # Contributor: Dusan Saiko <dusan at saiko dot cz>
 
 _pkgname='kreya'
-_upkgname='Kreya'
 pkgname="${_pkgname}-bin"
-pkgver=1.15.0
+pkgver=1.19.1
 pkgrel=1
 pkgdesc='GUI client for gRPC and REST APIs'
 arch=('x86_64')
 url='https://kreya.app/'
-_url_source='https://github.com/riok/Kreya'
 license=('custom')
-depends=('hicolor-icon-theme' 'gtk3' 'webkit2gtk')
+depends=('hicolor-icon-theme' 'gtk3' 'webkit2gtk' 'libx11' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxi' 'libxrandr' 'libxrender' 'libxtst' 'alsa-lib' 'at-spi2-core' 'dbus' 'glib2' 'libcups' 'nss' 'pango')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("https://stable-downloads.kreya.app/Kreya-linux-x64.tar.gz"
-        "kreya_256x256.png"
-        "kreya.desktop")
-sha256sums=('41a608c1298a3988e94451ea0d0a870c998186ba0ecda461df18d83ed8555426'
-            '15877fa13b3f0c379c4a70131daebdc199e83a1ad18d5daa1c93309815adcd7c'
-            'SKIP')
+source=("https://stable-downloads.kreya.app/${pkgver}/Kreya-app-linux-x64.tar.gz")
+sha256sums=('0ccdf48abd9cc41d73054412fc63e40b32bd31468404519aef7f1ee083d0f805')
 options=("!strip")
 
 package() {
-    install -Dm0644 "kreya_256x256.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/kreya.png"
-    install -Dm0644 kreya.desktop -t "${pkgdir}"/usr/share/applications/
+    # Create necessary system directories in the package root
+    mkdir -p "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/usr/lib"
+    mkdir -p "${pkgdir}/usr/share"
 
-     # Move package contents to /opt/Kreya
-    mkdir -p "${pkgdir}/opt/kreya" "${pkgdir}"/usr/bin/
-    cp -r "${srcdir}/linux-x64/" "${pkgdir}/opt/kreya"
+    # Copy extracted folders (using . to copy contents into the usr/ folders)
+    # This assumes bin, lib, and share are in the root of src/
+    cp -r "${srcdir}/bin/." "${pkgdir}/usr/bin/"
+    cp -r "${srcdir}/lib/." "${pkgdir}/usr/lib/"
+    cp -r "${srcdir}/share/." "${pkgdir}/usr/share/"
 
-    # Symlink /usr/bin executable to opt
-    ln -s /opt/kreya/linux-x64/kreya "${pkgdir}"/usr/bin/kreya
+    # Install the license file specifically
+    install -Dm0644 "${srcdir}/share/licenses/app.kreya.Kreya/kreya.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
