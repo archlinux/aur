@@ -6,7 +6,7 @@ _pkgname=eden
 pkgname=$_pkgname-beta
 pkgver=0.2.0
 _pkgver=v0.2.0-rc2
-pkgrel=2
+pkgrel=3
 pkgdesc="Nintendo Switch emulator forked from yuzu - beta and test releases"
 arch=('x86_64' 'aarch64')
 url=https://eden-emulator.github.io/
@@ -17,8 +17,14 @@ depends=('libusb' 'libva' 'qt6-webengine' 'qt6-charts' 'brotli' 'hicolor-icon-th
 makedepends=('git' 'cmake' 'catch2' 'boost' 'cpp-httplib' 'spirv-headers' 'boost-libs' 'wireless_tools' 'vulkan-headers' 'vulkan-utility-libraries' 'nlohmann-json' 'ninja' 'enet' 'gamemode' 'renderdoc' 'qt6-multimedia' 'qt6-tools' 'nasm' 'opencl-headers' 'doxygen' 'cpp-jwt')
 optdepends=('gamemode: Gamemoded support')
 options=('!lto' '!debug')
-source=("git+https://git.eden-emu.dev/eden-emu/eden.git#tag=${_pkgver}")
-sha256sums=('52ccd4811fc4f273abb556f9f4493589f7370ec324d18727008098f0f8a1fd71')
+source=("eden-v${pkgver}.tar.gz::https://git.eden-emu.dev/eden-emu/eden/archive/${_pkgver}.tar.gz"
+		"3751.patch")
+sha256sums=('51366a6e3fddc65e6fcf77541fa5d4fd5d647616f8d9db6fc2de65ccf7278693'
+            '106a8f2053c6d52951a312b07a09050423362128a7d26344af0bb0f4495fb856')
+prepare() {
+	cd $srcdir/eden
+	patch -p1 < $srcdir/3751.patch
+}
 build() {
 	cd "$srcdir"
 	cmake -B build -S $_pkgname -GNinja \
