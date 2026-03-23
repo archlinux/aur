@@ -5,6 +5,7 @@ pkgbase = orca-slicer-unstable-bin
 	url = https://github.com/OrcaSlicer/OrcaSlicer
 	arch = x86_64
 	license = AGPL-3.0-only
+	depends = libmspack
 	depends = mesa
 	depends = glu
 	depends = cairo
