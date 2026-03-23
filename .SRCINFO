@@ -1,7 +1,7 @@
 pkgbase = fcitx5-lotus-bin
 	pkgdesc = Vietnamese input method for fcitx5
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/LotusInputMethod/fcitx5-lotus
 	install = fcitx5-lotus.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = fcitx5-lotus-bin
 	depends = glibc
 	depends = libstdc++
 	depends = libgcc
-	depends = systemd-libs
+	depends = libudev.so
 	depends = pyside6
 	depends = python-dbus
 	provides = fcitx5-lotus
