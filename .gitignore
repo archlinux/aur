@@ -1,4 +1,6 @@
 *.pkg.zip
+*.zip
+*.tar.gz
 *.pkg.tar.gz
 
 # makepkg working dirs
