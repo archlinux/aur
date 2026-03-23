@@ -1,4 +1,4 @@
-# Maintainer: benjis <bstee615 at gmail dot com>
+# Maintainer: bstee615 <benjaminjsteenhoek at gmail dot com>
 pkgname=rrun
 pkgver=0.1.0
 pkgrel=1
