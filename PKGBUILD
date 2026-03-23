@@ -2,7 +2,7 @@
 
 _pkgbase=msi-ec
 pkgname=msi-ec-dkms-git
-pkgver=r508.9721905
+pkgver=r675.b2412c6
 pkgrel=1
 pkgdesc="Driver for MSI laptop EC (DKMS)"
 arch=('x86_64')
@@ -27,7 +27,8 @@ package() {
     Makefile \
     msi-ec.c \
     ec_memory_configuration.h \
-    dkms.conf
+    dkms.conf \
+    Makefile.vars
 
   sed -e "s/@VERSION@/${pkgver}/" \
       -i "${pkgdir}"/usr/src/${_pkgbase}-${pkgver}/dkms.conf     
