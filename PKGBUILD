@@ -3,7 +3,7 @@
 # License: MIT
 
 pkgname=stasis-git
-pkgver=0.6.2.r23.ge247137
+pkgver=1.1.0.r9.g1375c3a
 pkgrel=1
 pkgdesc="A modern Wayland idle manager designed for simplicity and effectiveness (git version)"
 arch=('x86_64')
@@ -14,7 +14,6 @@ depends=('systemd' 'dbus' 'libinput' 'wayland')
 makedepends=('git' 'cargo' 'rust')
 optdepends=(
   'libnotify: desktop notifications'
-  'playerctl: enhanced media player detection'
   'pipewire-pulse: audio sink detection for media handling'
   'pulseaudio: audio sink detection for media handling (alternative to pipewire-pulse)'
 )

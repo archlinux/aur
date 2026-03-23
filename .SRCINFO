@@ -1,6 +1,6 @@
 pkgbase = stasis-git
 	pkgdesc = A modern Wayland idle manager designed for simplicity and effectiveness (git version)
-	pkgver = 0.6.2.r23.ge247137
+	pkgver = 1.1.0.r9.g1375c3a
 	pkgrel = 1
 	url = https://github.com/saltnpepper97/stasis
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = stasis-git
 	depends = libinput
 	depends = wayland
 	optdepends = libnotify: desktop notifications
-	optdepends = playerctl: enhanced media player detection
 	optdepends = pipewire-pulse: audio sink detection for media handling
 	optdepends = pulseaudio: audio sink detection for media handling (alternative to pipewire-pulse)
 	provides = stasis
