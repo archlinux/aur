@@ -11,8 +11,8 @@ pkgbase = spitter
 	makedepends = python-wheel
 	depends = python
 	depends = ffmpeg
-	depends = pipewire
-	depends = libpulse
+	optdepends = pipewire: provide wpctl for audio sink inspection
+	optdepends = libpulse: provide pactl for audio sink inspection fallback
 	source = spitter-0.1.1.tar.gz::https://github.com/decent-tools-for-thought/spitter/releases/download/v0.1.1/spitter-0.1.1.tar.gz
 	sha256sums = c7bfc6ed68256f43e35c33f14c392aeca9e10da0cb18a735ba1c9af153b2aa18
 

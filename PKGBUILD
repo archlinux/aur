@@ -8,8 +8,12 @@ pkgdesc="Self-documenting Cartesia speech CLI with websocket sessions"
 arch=('any')
 url="https://github.com/decent-tools-for-thought/spitter"
 license=('MIT')
-depends=('python' 'ffmpeg' 'pipewire' 'libpulse')
+depends=('python' 'ffmpeg')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+optdepends=(
+  'pipewire: provide wpctl for audio sink inspection'
+  'libpulse: provide pactl for audio sink inspection fallback'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('c7bfc6ed68256f43e35c33f14c392aeca9e10da0cb18a735ba1c9af153b2aa18')
 
