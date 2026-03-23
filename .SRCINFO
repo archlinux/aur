@@ -1,0 +1,18 @@
+pkgbase = vykar-gui-bin
+	pkgdesc = Desktop GUI for Vykar backup — Slint-based, with system tray and scheduled backups
+	pkgver = 0.12.10
+	pkgrel = 1
+	url = https://github.com/borgbase/vykar
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = fontconfig
+	depends = libxkbcommon
+	depends = libgl
+	depends = xdotool
+	provides = vykar-gui
+	conflicts = vykar-gui
+	options = !debug
+	source = vykar-v0.12.10-x86_64-unknown-linux-gnu.tar.gz::https://github.com/borgbase/vykar/releases/download/v0.12.10/vykar-v0.12.10-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = f40ead41ece6e9f88576f6064dd9c3d3ca8bfba39bbf46b3f9463967ef51aed7
+
+pkgname = vykar-gui-bin
