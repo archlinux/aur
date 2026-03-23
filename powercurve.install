@@ -1,0 +1,29 @@
+post_install() {
+  systemctl daemon-reload
+
+  # Generate a fan config tailored to this machine's hardware.
+  local config="/etc/powercurve/fan.toml"
+  if [ ! -f "$config" ]; then
+    mkdir -p /etc/powercurve
+    powercurve fan-detect --generate > "$config" 2>/dev/null || true
+  fi
+
+  systemctl enable --now com.vintagetechie.PowerCurve.service
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  systemctl enable com.vintagetechie.PowerCurve.service
+  systemctl try-restart com.vintagetechie.PowerCurve.service
+}
+
+pre_remove() {
+  systemctl stop com.vintagetechie.PowerCurve.service || true
+  systemctl disable com.vintagetechie.PowerCurve.service || true
+}
+
+post_remove() {
+  systemctl daemon-reload
+  rm -rf /etc/powercurve
+  rm -rf /var/lib/powercurve
+}
