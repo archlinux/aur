@@ -2,9 +2,13 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-// ===================== 配置项（确认路径正确）=====================
-const ASAR_FILE_PATH = '/home/zxp-endeavouros/.cache/paru/clone/onekey-wallet-bin/src/squashfs-root/resources/app.asar';
-const OUTPUT_DIR = '/home/zxp-endeavouros/.cache/paru/clone/onekey-wallet-bin/src/app.asar.unpacked'; // 解压输出目录
+// ===================== 配置项（从环境变量读取，适配AUR）=====================
+// 优先从PKGBUILD的环境变量读取srcdir，适配AUR打包
+const SRC_DIR = process.env.SRC_DIR || process.cwd();
+// 自动拼接asar文件路径（基于srcdir）
+const ASAR_FILE_PATH = path.join(SRC_DIR, 'squashfs-root/resources/app.asar');
+// 自动拼接输出目录（基于srcdir）
+const OUTPUT_DIR = path.join(SRC_DIR, 'app.asar.unpacked');
 // 排除所有导致报错的文件规则
 const EXCLUDE_PATTERNS = [
   /node_modules\/@serialport\/bindings-cpp\/prebuilds\/android-.*/,

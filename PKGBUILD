@@ -3,7 +3,7 @@ pkgname=onekey-wallet-bin
 _pkgname=OneKey-Wallet
 pkgver=6.1.0
 _electronversion=39
-pkgrel=1
+pkgrel=2
 pkgdesc="Secure, open source and community driven crypto wallet runs on all platforms and trusted by millions.(Prebuilt version.Use system-wide electron)"
 arch=(
     'aarch64'
@@ -31,7 +31,7 @@ source=(
 )
 source_aarch64=("${pkgname%-bin}-${pkgver}-aarch64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.AppImage")
 source_x86_64=("${pkgname%-bin}-${pkgver}-x86_64.AppImage::${_ghurl}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x86_64.AppImage")
-sha256sums=('179015a6c7e4fd971e3299ab39d778d55cab29db077dab77fb21e65fdf7aa271'
+sha256sums=('c6e3da82de1c1721f045c7dff41fb8f2e917e64e7af3ecf7d714a5deb888ded6'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 sha256sums_aarch64=('0346f099bd4830e092c60feb35f02c81c2996b877bf2d91f1d0e68cec06787a6')
 sha256sums_x86_64=('fab7e29e37261625bd63eda4834456b1cec03cb363afa5fc09cbf2f4b699c51f')
@@ -57,6 +57,7 @@ prepare() {
     _get_electron_version
     sed -i "s/AppRun --no-sandbox/${pkgname%-bin}/g" "${srcdir}/squashfs-root/${pkgname%-bin}.desktop"
     find "${srcdir}/squashfs-root/resources" -type d -exec chmod 755 {} +
+    export SRC_DIR="${srcdir}"
     node safe_extract_asar.js
     rm -rf "${srcdir}/squashfs-root/resources/app.asar"
     find "${srcdir}/app.asar.unpacked/dist/" -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-bin}\'/g" {} +
