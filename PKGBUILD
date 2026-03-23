@@ -1,7 +1,7 @@
 # Maintainer: Gunther Schulz <dev@guntherschulz.de>
 
 pkgname=cursor-bin
-pkgver=2.6.20
+pkgver=2.6.21
 pkgrel=1
 pkgdesc='AI-first coding environment'
 arch=('x86_64')
@@ -11,13 +11,13 @@ _electron=electron
 depends=(xdg-utils ripgrep $_electron nodejs
   'gcc-libs' 'hicolor-icon-theme' 'libxkbfile')
 options=(!strip !debug) # Don't break ext of VSCode
-_commit=b29eb4ee5f9f6d1cb2afbc09070198d3ea6ad76f
+_commit=fea2f546c979a0a4ad1deab23552a43568807592
 source=("https://downloads.cursor.com/production/${_commit}/linux/x64/deb/amd64/deb/cursor_${pkgver}_amd64.deb"
 https://gitlab.archlinux.org/archlinux/packaging/packages/code/-/raw/main/code.sh rg.sh)
 sha512sums=('SKIP'
   '937299c6cb6be2f8d25f7dbc95cf77423875c5f8353b8bd6cd7cc8e5603cbf8405b14dbf8bd615db2e3b36ed680fc8e1909410815f7f8587b7267a699e00ab37'
   'e79fe7659f59d1ae02fc68816399bfd31587315df6cdb6ccf1d0ca76f7cdc692c2a42b30591c0091147bd97ef14b1c7745dc26bd7cb3ea6bba45698e5044fa2a')
-sha512sums[0]=7dece54f570954e6ab0ffab47ae7ddc4832bb58b8bf85baaf85705c5f8c1a9f8c4860353f005a446ef319ee8abdb153363c5ecbc5dfb99dd94a63e357919f967
+sha512sums[0]=3d3845405e837066e2e1fe289e347fe2c7e997e8b06111bfee5aec5c5f424c2b0a22359b8579cb105841d26daddf6d2697b6471d4524cbaf657d9da511a0e2f5
 noextract=(cursor_${pkgver}_amd64.deb) # avoid double tarball
 _app=usr/share/cursor/resources/app
 package() {
