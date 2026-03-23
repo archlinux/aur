@@ -1,6 +1,6 @@
 pkgbase = wt-zig
 	pkgdesc = Git worktree manager with organized directory structure
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/douglas/wt-zig
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wt-zig
 	depends = git
 	provides = wt
 	conflicts = wt
-	source = wt-zig-0.2.0.tar.gz::https://github.com/douglas/wt-zig/archive/v0.2.0.tar.gz
-	sha256sums = a1bb3e3d944360ee122db98ff8f7cdf8e058db54d2ab6f608b5cc691148fd443
+	source = wt-zig-0.2.1.tar.gz::https://github.com/douglas/wt-zig/archive/v0.2.1.tar.gz
+	sha256sums = d82b0d5079b4a0471e794c2bbc916a6fa20f5c6d85cf4d6c80b4bdd5c6af6986
 
 pkgname = wt-zig
