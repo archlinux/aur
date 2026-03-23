@@ -1,0 +1,16 @@
+pkgbase = wkey
+	pkgdesc = Which key should I press? A CLI cheatsheet.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/greasycat/wkey
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	optdepends = fzf: use fzf for the initial search selector
+	source = https://github.com/greasycat/wkey/releases/download/v0.1.0/wkey-x86_64-unknown-linux-gnu.tar.xz
+	source = https://github.com/greasycat/wkey/releases/download/v0.1.0/wkey-x86_64-unknown-linux-gnu.tar.xz.sha256
+	sha256sums = 866749e9879cdb66d4d6d961178b3f60627d3e4b08b6f8986aa1b5bc49dc897d
+	sha256sums = 110ede6d25655a98ca493b1b15eb9d811a7fea9ac8ce09b773e98d4acacc821f
+
+pkgname = wkey
