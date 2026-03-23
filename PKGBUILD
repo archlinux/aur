@@ -1,7 +1,8 @@
+# Maintainer: pharmaracist <pharmaracist@github>
 pkgname=noon-mirsald
-pkgver=r9.c8c5e93
+pkgdesc="مرسال — Noon native messaging host daemon for browser download interception"
+pkgver=r10.1eda45f
 pkgrel=1
-pkgdesc="Noon native messaging host"
 arch=("any")
 url="https://github.com/pharmaracist/mirsal"
 license=("MIT")
@@ -17,10 +18,16 @@ pkgver() {
 }
 
 package() {
-  cd noon-mirsald
-  install -Dm755 aur/mirsald       "$pkgdir/usr/lib/noon-mirsal/mirsald"
-  install -Dm755 aur/mirsal-cli    "$pkgdir/usr/bin/mirsal"
-  install -Dm644 aur/protocol.py   "$pkgdir/usr/lib/noon-mirsal/protocol.py"
-  install -Dm644 aur/noon_mirsal.json \
-    "$pkgdir/usr/lib/mozilla/native-messaging-hosts/noon_mirsal.json"
+    install -dm755 "${pkgdir}/usr/lib/noon-mirsal"
+    install -dm755 "${pkgdir}/usr/lib/mozilla/native-messaging-hosts"
+    install -dm755 "${pkgdir}/usr/lib/firefox/native-messaging-hosts"
+
+    install -Dm755 "${srcdir}/mirsal"      "${pkgdir}/usr/bin/mirsal"
+    install -Dm755 "${srcdir}/mirsald"      "${pkgdir}/usr/lib/noon-mirsal/mirsald"
+    install -Dm644 "${srcdir}/protocol.py"  "${pkgdir}/usr/lib/noon-mirsal/protocol.py"
+
+    install -Dm644 "${srcdir}/noon_mirsal.json" \
+        "${pkgdir}/usr/lib/mozilla/native-messaging-hosts/noon_mirsal.json"
+    install -Dm644 "${srcdir}/noon_mirsal.json" \
+        "${pkgdir}/usr/lib/firefox/native-messaging-hosts/noon_mirsal.json"
 }
