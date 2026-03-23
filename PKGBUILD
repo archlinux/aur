@@ -1,6 +1,6 @@
 # Maintainer: Sankalp Tharu <contact@sankalptharu.com.np>
 pkgname=lapctl
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Control Linux laptop hardware (Graphics, Battery, Power, Cooling, Display) with Rust"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=(
 )
 install=lapctl.install
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('8157252974f61d94e104fca46b959cbdfcae911c654f9c281dbe915dae0ee041')
+sha256sums=('b4846a42a38a4308f33c1620ae3fab7d728bcdc1894bfa635c55c6187fa04a2d')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
