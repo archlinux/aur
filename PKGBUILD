@@ -43,14 +43,25 @@ build() {
 	make build
 }
 
+check() {
+	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
+
+	make test
+}
+
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
 
 	make install PREFIX="${pkgdir}/usr/"
 
-	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+	install -Dm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
+
+	install -Dm644 "docs/CLI.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -Dm644 "docs/ARCHITECTURE.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -Dm644 "docs/COMPATIBILITY.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
+	install -Dm644 "docs/KNOWN_LIMITATIONS.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
 
 	install -Dm644 "config/${_pkgname}/config.toml" "${pkgdir}/usr/share/doc/${pkgname}/config.example.toml"
 
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
