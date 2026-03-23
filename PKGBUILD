@@ -3,12 +3,12 @@
 pkgname=elyprismlauncher-bin
 pkgver=11.0.0_pre1
 _pkgver=11.0.0-pre1
-pkgrel=1
+pkgrel=2
 pkgdesc="Prism Launcher fork with integrated support for Ely.by accounts (binary version)"
 arch=('x86_64')
 url="https://github.com/ElyPrismLauncher/Launcher"
 license=('GPL-3.0-only AND LGPL-3.0-or-later AND LGPL-2.0-or-later AND Apache-2.0 AND MIT AND LicenseRef-Batch AND OFL-1.1')
-depends=(glibc mesa-utils gcc-libs java-runtime=17 libarchive libgl pciutils qrencode qt6-base qt6-imageformats qt6-networkauth qt6-svg zlib hicolor-icon-theme tomlplusplus cmark)
+depends=(glibc mesa-utils gcc-libs java-runtime=17 libarchive libgl vulkan-headers pciutils qrencode qt6-base qt6-imageformats qt6-networkauth qt6-svg zlib hicolor-icon-theme tomlplusplus cmark)
 provides=('elyprismlauncher')
 conflicts=('elyprismlauncher')
 optdepends=('glfw: to use system GLFW libraries'
@@ -37,7 +37,5 @@ package()
 	rm -rf "${pkgdir}"/usr/share/libthai
 	# NOTE: Qt6 is still statically linked unfortunately.
 	
-	#mv "${pkgdir}/usr/share/mime/packages/modrinth-mrpack-mime.xml" \
-	#	"${pkgdir}/usr/share/mime/packages/elyprismlauncher-modrinth-mrpack-mime.xml"
 	chown -R root:root "${pkgdir}/usr"  # files in tarball are not owned by root
 }
