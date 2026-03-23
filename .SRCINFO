@@ -1,5 +1,5 @@
 pkgbase = unshitted-systemd-git
-	pkgver = 260
+	pkgver = 261
 	pkgrel = 1
 	url = https://github.com/Codiak540/unshitted-systemd
 	arch = x86_64
@@ -97,7 +97,7 @@ pkgname = unshitted-systemd
 	license = CC0-1.0
 	license = GPL-2.0-or-later
 	license = MIT-0
-	depends = unshitted-systemd-libs=260
+	depends = unshitted-systemd-libs=261
 	depends = acl
 	depends = bash
 	depends = cryptsetup
@@ -137,10 +137,10 @@ pkgname = unshitted-systemd
 	optdepends = libfido2: unlocking LUKS2 volumes with FIDO2 token
 	optdepends = libp11-kit: support PKCS#11
 	optdepends = tpm2-tss: unlocking LUKS2 volumes with TPM2
-	provides = systemd
-	provides = nss-myhostname
-	provides = systemd-tools=260
-	provides = udev=260
+	provides = systemd=261
+	provides = nss-myhostname=261
+	provides = systemd-tools=261
+	provides = udev=261
 	conflicts = systemd
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
@@ -178,8 +178,9 @@ pkgname = unshitted-systemd-libs
 	depends = lz4
 	depends = xz
 	depends = zstd
-	provides = systemd-libs
-	provides = libsystemd
+	provides = systemd-libs=261
+	provides = libsystemd=261
+	provides = libudev=261
 	provides = libsystemd.so
 	provides = libudev.so
 	conflicts = systemd-libs
@@ -189,23 +190,23 @@ pkgname = unshitted-systemd-libs
 
 pkgname = unshitted-systemd-resolvconf
 	pkgdesc = systemd resolvconf replacement (for use with systemd-resolved)
-	depends = unshitted-systemd=260
+	depends = unshitted-systemd=261
 	provides = openresolv
 	provides = resolvconf
 	conflicts = resolvconf
 
 pkgname = unshitted-systemd-sysvcompat
 	pkgdesc = sysvinit compat for systemd
-	depends = unshitted-systemd=260
+	depends = unshitted-systemd=261
 	conflicts = sysvinit
 
 pkgname = unshitted-systemd-tests
 	pkgdesc = systemd tests
-	depends = unshitted-systemd=260
+	depends = unshitted-systemd=261
 
 pkgname = unshitted-systemd-ukify
 	pkgdesc = Combine kernel and initrd into a signed Unified Kernel Image
-	depends = unshitted-systemd=260
+	depends = unshitted-systemd=261
 	depends = binutils
 	depends = python-cryptography
 	depends = python-pefile
