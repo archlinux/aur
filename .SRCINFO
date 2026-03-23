@@ -9,6 +9,7 @@ pkgbase = tsm
 	makedepends = pkgconf
 	makedepends = go
 	makedepends = zig
+	makedepends = chrpath
 	depends = glibc
 	depends = ghostty
 	provides = tsm

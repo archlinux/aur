@@ -20,7 +20,7 @@ license=('MIT')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-makedepends=('pkgconf' 'go' 'zig')
+makedepends=('pkgconf' 'go' 'zig' 'patchelf')
 depends=('glibc' 'ghostty')
 
 options=(!strip)
@@ -32,7 +32,7 @@ sha256sums=('8f71dcdf0f8f5e944e18b1422e8bd92236e49a831759e0931428410f0c34aba9')
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
 
-	sed -i -e 's/git init/git -c init.defaultBranch=master init/g' Makefile
+	sed -i -e 's/git init/git -c init.defaultBranch=main init/g' -e 's/-linkmode external/-linkmode auto/g' Makefile
 
 	make setup
 }
@@ -53,6 +53,8 @@ package() {
 	cd "${srcdir}/${pkgname}-${pkgver}/" || exit
 
 	make install PREFIX="${pkgdir}/usr/"
+
+	patchelf --set-rpath "/usr/lib/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
 	install -Dm644 "README.md" -t "${pkgdir}/usr/share/doc/${pkgname}/"
 
