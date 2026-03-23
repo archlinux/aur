@@ -1,9 +1,9 @@
 # Maintainer: jprjr <john@jrjrtech.com>
 
-pkgname=('lua-pgmoon' 'lua51-pgmoon' 'lua52-pgmoon' 'lua53-pgmoon')
+pkgname=('lua-pgmoon' 'lua51-pgmoon' 'lua52-pgmoon' 'lua53-pgmoon' 'lua54-pgmoon')
 _pkgbase='pgmoon'
 pkgver=1.16.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/leafo/pgmoon'
 license=('MIT')
@@ -27,6 +27,10 @@ _package() {
 }
 
 package_lua-pgmoon() {
+    _package 5.5
+}
+
+package_lua54-pgmoon() {
     _package 5.4
 }
 

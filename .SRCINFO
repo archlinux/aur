@@ -1,7 +1,7 @@
 pkgbase = lua-pgmoon
 	pkgdesc = PostgreSQL driver written in pure Lua
 	pkgver = 1.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/leafo/pgmoon
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = lua-pgmoon
 	sha256sums = 9869728131338e518f4fb060814b53a20ed59c97f51f961fa1992291ff9e89a9
 
 pkgname = lua-pgmoon
-	pkgdesc = PostgreSQL driver written in pure Lua for Lua 5.4
+	pkgdesc = PostgreSQL driver written in pure Lua for Lua 5.5
 	depends = lua
 	depends = lua-lpeg
 	optdepends = lua-cqueues: asynchronous connectivity
@@ -36,3 +36,10 @@ pkgname = lua53-pgmoon
 	depends = lua53-lpeg
 	optdepends = lua53-cqueues: asynchronous connectivity
 	optdepends = lua53-socket: synchronous connectivity
+
+pkgname = lua54-pgmoon
+	pkgdesc = PostgreSQL driver written in pure Lua for Lua 5.4
+	depends = lua54
+	depends = lua54-lpeg
+	optdepends = lua54-cqueues: asynchronous connectivity
+	optdepends = lua54-socket: synchronous connectivity
