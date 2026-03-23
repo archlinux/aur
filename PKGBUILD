@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: dmitrysvd
 # This PKGBUILD was generated with the assistance of AI.
 pkgname=defuddle
 pkgver=0.14.0
