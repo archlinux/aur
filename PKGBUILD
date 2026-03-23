@@ -13,14 +13,14 @@
 
 pkgname=aircrack-ng-git
 _name=${pkgname%-git}
-pkgver=1.7.r4705.g3e1b99a0
+pkgver=1.7.r4706.gf333a6a7
 pkgrel=1
 pkgdesc='Key cracker for the 802.11 WEP and WPA-PSK protocols'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'pentium4')
 url='https://www.aircrack-ng.org'
 license=('GPL-2.0-only')
-depends=('glibc' 'gcc-libs' 'openssl' 'sqlite' 'iw' 'net-tools' 'wireless_tools' 'ethtool'
-         'pcre' 'libpcap' libpcap.so 'python' 'zlib' 'libnl' 'hwloc' 'usbutils')
+depends=('glibc' 'openssl' 'sqlite' 'iw' 'net-tools' 'wireless_tools' 'ethtool'
+         'pcre' 'libgcc' 'libstdc++' 'libpcap' libpcap.so 'python' 'zlib' 'libnl' 'hwloc' 'usbutils')
 optdepends=('pciutils: required for devices with populated PCI(e) bus'
             'gpsd: allows airodump-ng to log coordinates'
             'pcre2: SSID filtering with regular expressions in airodump-ng')
