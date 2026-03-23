@@ -1,6 +1,6 @@
 # Maintainer: lyk <lyk-boya@outlook.com>
 pkgname=ttf-lxgw-wenkai-mono-nerd
-pkgver=1.521
+pkgver=1.522
 pkgrel=1
 pkgdesc="LXGW WenKai Mono patched with Nerd Font glyphs"
 arch=('any')
@@ -8,10 +8,10 @@ url="https://github.com/Yikai-Liao/LxgwWenKaiNerdFont"
 license=('OFL')
 depends=()
 makedepends=('unzip')
-_tag='v1.521'
+_tag='v1.522'
 source=("https://github.com/Yikai-Liao/LxgwWenKaiNerdFont/releases/download/${_tag}/lxgw-wenkai-nerd.zip" \
         "OFL.txt::https://raw.githubusercontent.com/Yikai-Liao/LxgwWenKaiNerdFont/${_tag}/OFL.txt")
-sha256sums=('c0727ce68a6a8d6e8aff764c0c01900e618e9ee1ad8ae40408e8490a38f8676d'
+sha256sums=('892952fa2cf5597fabe8dbabbcfc31e49566a0c67c7b065a66825d7b4da9944b'
             'ef535bf1a3c546928f8e97570f2c72603185f88fa4d82a6df6708348ad4c7614')
 
 package() {
