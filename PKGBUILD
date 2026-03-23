@@ -17,16 +17,14 @@ package() {
     cd "limux-${pkgver}-linux-x86_64"
 
     install -Dm755 limux "${pkgdir}/usr/bin/limux"
-    install -Dm755 lib/libghostty.so "${pkgdir}/usr/lib/libghostty.so"
-    install -Dm644 share/applications/limux.desktop "${pkgdir}/usr/share/applications/limux.desktop"
+    install -Dm644 lib/libghostty.so "${pkgdir}/usr/lib/limux/libghostty.so"
 
-    for size in 16x16 32x32 128x128 256x256 512x512; do
-        install -Dm644 "share/icons/hicolor/${size}/apps/limux.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${size}/apps/limux.png"
-    done
+    install -Dm644 /dev/stdin "${pkgdir}/etc/ld.so.conf.d/limux.conf" <<< "/usr/lib/limux"
 
-    find share/icons/hicolor/scalable -type f -name '*.svg' -exec \
-        install -Dm644 {} "${pkgdir}/usr/{}" \;
+    install -Dm644 share/applications/*.desktop -t "${pkgdir}/usr/share/applications/"
+    install -Dm644 share/metainfo/*.xml -t "${pkgdir}/usr/share/metainfo/"
 
+    install -dm755 "${pkgdir}/usr/share/icons"
+    cp -r share/icons/hicolor "${pkgdir}/usr/share/icons/"
     cp -r share/limux "${pkgdir}/usr/share/limux"
 }
