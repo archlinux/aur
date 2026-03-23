@@ -1,3 +1,9 @@
+2026.03.23, v19.9.2
+
+feature:
+- 09a02074 docker: io: git config: add
+- c448eaa4 docker: io: buni
+
 2026.03.23, v19.9.1
 
 fix:
@@ -7435,7 +7441,7 @@ with clicks on files.
 - Removed allowed from cache property in config.
 
 - Added ability to hide "Upload To" menu item if
-no storage modules setted up in modules.json.
+no storage modules set up in modules.json.
 
 - From now any file minifying only if last modified
 time was changed.
@@ -7641,7 +7647,7 @@ in any position in anyLoadOnLoad function.
 - Added chainable to Cache object in DOM.
 
 - Changed default ip to null so IP would be geted from
-config.json only if it setted up.
+config.json only if it set up.
 
 - Fixed bug with starting node from other then projects dir.
 
@@ -7950,7 +7956,7 @@ time was possible.
 
 - Fixed bug with undefined size on root directory of Cloud Commander.
 Now Cloud Commander writes size 0, if can't get size, and besides will
-setted b char: "0b".
+set b char: "0b".
 
 - Added supporting of Russian language in directory names.
 
@@ -7986,4 +7992,3 @@ post-processing functions passed like this {'client.js': function(){}}
 
 - Changed the passing MoreProcessing agrument to jsScripts function Minify module, 
 no it passes with a file name, and js file name writing only once.
-
