@@ -1,7 +1,7 @@
 pkgbase = supersdr
 	pkgdesc = An advanced KiwiSDR client with CAT transceiver integration
 	pkgver = 3.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mcogoni/supersdr
 	arch = any
 	makedepends = imagemagick
