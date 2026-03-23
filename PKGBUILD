@@ -1,24 +1,61 @@
 # Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 
 pkgbase=brltty-git
-pkgname=(brltty-git brltty-udev-generic-git)
-pkgver=6.8.r268.gf3ff33da2
+pkgname=(
+  brltty-git
+  brltty-udev-generic-git
+  dracut-brltty-git
+  java-brltty-git
+  ocaml-brltty-git
+  python-brltty-git
+  tcl-brltty-git
+)
+pkgver=6.9.r81.g83dbe770e
 pkgrel=1
 pkgdesc="Braille display driver for Linux/Unix (development version)"
 arch=(x86_64)
 url="https://brltty.app"
-license=(LGPL2.1)
-makedepends=(alsa-lib at-spi2-core bluez-libs cython dbus dracut espeak-ng expat
-             festival gcc-libs git glibc glib2 gpm icu java-environment
-             liblouis libspeechd libxaw ncurses ocaml-ctypes ocaml-findlib pcre2
-             polkit python-setuptools speech-dispatcher strip-nondeterminism systemd-libs
-             tcl)
+license=(LGPL-2.1-or-later)
+makedepends=(
+  alsa-lib
+  at-spi2-atk
+  at-spi2-core
+  atk
+  bluez-libs
+  cython
+  dbus
+  dracut
+  espeak-ng
+  expat
+  festival
+  gcc-libs
+  git
+  glibc
+  glib2
+  gpm
+  icu
+  java-environment
+  libcap
+  liblouis
+  libspeechd
+  libxaw
+  ncurses
+  ocaml-ctypes
+  ocaml-findlib
+  pcre2
+  polkit
+  python-setuptools
+  speech-dispatcher
+  strip-nondeterminism
+  systemd-libs
+  tcl
+)
 options=(!emptydirs)
-source=(${pkgname%-git}::'git+https://github.com/brltty/brltty.git'
-        "${pkgname%-git}-6.2-systemd_sysusers_groups.patch"
-        "${pkgname%-git}-6.8-lock-brltty-user.patch"
-        "${pkgname%-git}-6.4-x11_autostart.patch"
-        "${pkgname%-git}-6.8-udev-tty-perms.rules"
+source=(${pkgbase%-git}::'git+https://github.com/brltty/brltty.git'
+        "${pkgbase%-git}-6.2-systemd_sysusers_groups.patch"
+        "${pkgbase%-git}-6.8-lock-brltty-user.patch"
+        "${pkgbase%-git}-6.4-x11_autostart.patch"
+        "${pkgbase%-git}-6.8-udev-tty-perms.rules"
 )
 sha512sums=('SKIP'
             '32ba91271e2247b4a330cd213ed75b591268cb99a79c2efd9ae675804faee027c6b2f782768cb2329a65fc914ca2400b2901f35ce1fc2522c6691b343799eb02'
@@ -39,56 +76,89 @@ pkgver() {
 
 prepare() {
 	cd "${pkgbase%-git}"
-	patch -Np1 -i ../"${pkgname%-git}-6.2-systemd_sysusers_groups.patch"
-	patch -Np1 -i ../"${pkgname%-git}-6.4-x11_autostart.patch"
-	patch -Np1 -i ../"${pkgname%-git}-6.8-lock-brltty-user.patch"
+	patch -Np1 -i ../"${pkgbase%-git}-6.2-systemd_sysusers_groups.patch"
+	patch -Np1 -i ../"${pkgbase%-git}-6.4-x11_autostart.patch"
+	patch -Np1 -i ../"${pkgbase%-git}-6.8-lock-brltty-user.patch"
 	./autogen
 }
 
 build() {
+	local configure_options=(
+		--prefix=/usr
+		--sysconfdir=/etc
+		--libexecdir=/usr/lib
+		--localstatedir=/var
+		--mandir=/usr/share/man
+		--with-scripts-directory=/usr/lib/brltty
+		--with-tables-directory=/usr/share/brltty
+		--with-writable-directory=/run/brltty
+		--enable-gpm
+		--disable-stripping
+	)
 	# fat-lto-objects is required for non-mangled static libs
 	CFLAGS+=" -ffat-lto-objects"
+
 	cd "${pkgbase%-git}"
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-	          --mandir=/usr/share/man --libexecdir=/usr/lib/brltty \
-	          --with-scripts-directory=/usr/lib/brltty \
-	          --with-tables-directory=/usr/share/brltty \
-	          --with-writable-directory=/run/brltty \
-	          --enable-gpm \
-	          --disable-stripping
+	./configure "${configure_options[@]}"
 	make
 	# make brlapi.jar deterministic
 	find . -type f -iname "*.jar" -exec strip-nondeterminism {} \;
 }
 
+_pick() {
+	local p="$1" f d; shift
+	for f; do
+		d="$srcdir/$p/${f#$pkgdir/}"
+		mkdir -p "$(dirname "$d")"
+		mv "$f" "$d"
+		rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+	done
+}
+
 package_brltty-git() {
-	depends=(bluez-libs gcc-libs glibc liblouis libspeechd libasound.so
-	         libdbus-1.so libexpat.so libgio-2.0.so libglib-2.0.so libgobject-2.0.so
-	         libicuuc.so libgpm.so libncursesw.so libsystemd.so pcre2 polkit)
+	depends=(
+		alsa-lib libasound.so
+		at-spi2-core
+		bash
+		bluez-libs
+		dbus libdbus-1.so
+		espeak-ng
+		expat libexpat.so
+		glib2 libgio-2.0.so libglib-2.0.so libgobject-2.0.so
+		glibc
+		gpm libgpm.so
+		icu libicuuc.so
+		libcap
+		liblouis
+		libspeechd
+		libxaw
+		libxt
+		libx11
+		libxfixes
+		libxtst
+		ncurses libncursesw.so
+		pcre2
+		polkit
+		systemd-libs libsystemd.so
+	)
 	optdepends=(
-	            'at-spi2-core: X11/GNOME Apps accessibility'
-	            'brltty-udev-generic: for initializing brltty with generic USB devices'
-	            'espeak-ng: espeak-ng driver'
-	            'java-runtime: Java support'
-	            'libxaw: X11 support'
-	            'libxt: X11 support'
-	            'libx11: for xbrlapi'
-	            'libxfixes: for xbrlapi'
-	            'libxtst: for xbrlapi'
-	            'ocaml: OCaml support'
-	            'python: Python support'
-	            'speech-dispatcher: speech-dispatcher driver'
-	            'tcl: tcl support'
+		'brltty-udev-generic-git: for initializing brltty with generic USB devices'
+		'dracut-brltty-git: for dracut modules'
+		'java-brltty-git: for Java bindings'
+		'ocaml-brltty-git: for OCaml bindings'
+		'python-brltty-git: for Python bindings'
+		'speech-dispatcher: speech-dispatcher driver'
+		'tcl-brltty-git: for TCL bindings'
 	)
 	provides=(brltty libbrlapi.so)
 	conflicts=(brltty)
 	backup=(
-	        etc/brltty.conf
-	        etc/X11/xinit/xinitrc.d/90xbrlapi
+		etc/brltty.conf
+		etc/X11/xinit/xinitrc.d/90xbrlapi
 	)
 	install=brltty-git.install
 
-	cd ${pkgbase%-git}
+	cd "${pkgbase%-git}"
 	make INSTALL_ROOT="$pkgdir" install
 	make INSTALL_ROOT="$pkgdir" install-systemd
 	make INSTALL_ROOT="$pkgdir" install-udev
@@ -99,16 +169,91 @@ package_brltty-git() {
 	# fix directory permission and ownership
 	install -vdm 755 -o root -g 102 "$pkgdir/usr/share/polkit-1/rules.d"
 
-	# move generic udev rule, as it applies too broadly
-	mv -v "$pkgdir/usr/lib/udev/rules.d/90-brltty-usb-generic.rules" ../
-	install -vDm 644 ../brltty-6.8-udev-tty-perms.rules "$pkgdir/usr/lib/udev/rules.d/90-brltty-tty-perms.rules"
+	install -vDm 644 ../${pkgbase%-git}-6.8-udev-tty-perms.rules "$pkgdir/usr/lib/udev/rules.d/90-brltty-tty-perms.rules"
+
+	cd "$pkgdir"
+
+	_pick brltty-udev-generic-git usr/lib/udev/rules.d/90-brltty-usb-generic.rules
+	_pick dracut-brltty-git usr/lib/dracut/modules.d/
+	_pick java-brltty-git usr/share/java/brlapi.jar
+	_pick ocaml-brltty-git usr/lib/ocaml/
+	_pick python-brltty-git usr/lib/python*/
+	_pick python-brltty-git usr/share/brltty/Contraction/latex-access.ctb
+	_pick tcl-brltty-git usr/bin/brltty-prologue.tcl
+	_pick tcl-brltty-git usr/lib/brlapi-*/libbrlapi_tcl.so
+	_pick tcl-brltty-git usr/lib/brlapi-*/pkgIndex.tcl
 }
 
 package_brltty-udev-generic-git() {
 	pkgdesc="Generic udev rules for brltty (development version)"
-	depends=(brltty)
+	depends=(brltty-git=$pkgver)
 	provides=(brltty-udev-generic)
 	conflicts=(brltty-udev-generic)
 
-	install -vDm 644 90-brltty-usb-generic.rules -t "$pkgdir/usr/lib/udev/rules.d/"
+	mv -v $pkgname/* "$pkgdir"
+}
+
+package_dracut-brltty-git() {
+	pkgdesc+=" - dracut modules"
+	depends=(
+		bash
+		brltty-git=$pkgver
+		dracut
+	)
+	provides=(dracut-brltty)
+	conflicts=(dracut-brltty)
+	groups=(dracut-modules)
+
+	mv -v $pkgname/* "$pkgdir"
+}
+
+package_java-brltty-git() {
+	pkgdesc+=" - java bindings"
+	depends=(
+		brltty-git=$pkgver
+		java-runtime
+	)
+	provides=(java-brltty)
+	conflicts=(java-brltty)
+
+	mv -v $pkgname/* "$pkgdir"
+}
+
+package_ocaml-brltty-git() {
+	pkgdesc+=" - OCaml bindings"
+	depends=(
+		brltty-git=$pkgver
+		glibc
+		ocaml
+	)
+	provides=(ocaml-brltty)
+	conflicts=(ocaml-brltty)
+
+	mv -v $pkgname/* "$pkgdir"
+}
+
+package_python-brltty-git() {
+	pkgdesc+=" - Python bindings"
+	depends=(
+		brltty-git=$pkgver
+		glibc
+		python
+	)
+	provides=(python-brltty)
+	conflicts=(python-brltty)
+
+	mv -v $pkgname/* "$pkgdir"
+}
+
+package_tcl-brltty-git() {
+	pkgdesc+=" - TCL integration"
+	depends=(
+		brltty-git=$pkgver
+		glibc
+		tcl
+	)
+	provides=(tcl-brltty)
+	conflicts=(tcl-brltty)
+
+	mv -v $pkgname/* "$pkgdir"
 }

@@ -1,12 +1,14 @@
 pkgbase = brltty-git
 	pkgdesc = Braille display driver for Linux/Unix (development version)
-	pkgver = 6.8.r268.gf3ff33da2
+	pkgver = 6.9.r81.g83dbe770e
 	pkgrel = 1
 	url = https://brltty.app
 	arch = x86_64
-	license = LGPL2.1
+	license = LGPL-2.1-or-later
 	makedepends = alsa-lib
+	makedepends = at-spi2-atk
 	makedepends = at-spi2-core
+	makedepends = atk
 	makedepends = bluez-libs
 	makedepends = cython
 	makedepends = dbus
@@ -21,6 +23,7 @@ pkgbase = brltty-git
 	makedepends = gpm
 	makedepends = icu
 	makedepends = java-environment
+	makedepends = libcap
 	makedepends = liblouis
 	makedepends = libspeechd
 	makedepends = libxaw
@@ -53,36 +56,46 @@ pkgbase = brltty-git
 
 pkgname = brltty-git
 	install = brltty-git.install
-	depends = bluez-libs
-	depends = gcc-libs
-	depends = glibc
-	depends = liblouis
-	depends = libspeechd
+	depends = alsa-lib
 	depends = libasound.so
+	depends = at-spi2-core
+	depends = bash
+	depends = bluez-libs
+	depends = dbus
 	depends = libdbus-1.so
+	depends = espeak-ng
+	depends = expat
 	depends = libexpat.so
+	depends = glib2
 	depends = libgio-2.0.so
 	depends = libglib-2.0.so
 	depends = libgobject-2.0.so
-	depends = libicuuc.so
+	depends = glibc
+	depends = gpm
 	depends = libgpm.so
+	depends = icu
+	depends = libicuuc.so
+	depends = libcap
+	depends = liblouis
+	depends = libspeechd
+	depends = libxaw
+	depends = libxt
+	depends = libx11
+	depends = libxfixes
+	depends = libxtst
+	depends = ncurses
 	depends = libncursesw.so
-	depends = libsystemd.so
 	depends = pcre2
 	depends = polkit
-	optdepends = at-spi2-core: X11/GNOME Apps accessibility
-	optdepends = brltty-udev-generic: for initializing brltty with generic USB devices
-	optdepends = espeak-ng: espeak-ng driver
-	optdepends = java-runtime: Java support
-	optdepends = libxaw: X11 support
-	optdepends = libxt: X11 support
-	optdepends = libx11: for xbrlapi
-	optdepends = libxfixes: for xbrlapi
-	optdepends = libxtst: for xbrlapi
-	optdepends = ocaml: OCaml support
-	optdepends = python: Python support
+	depends = systemd-libs
+	depends = libsystemd.so
+	optdepends = brltty-udev-generic-git: for initializing brltty with generic USB devices
+	optdepends = dracut-brltty-git: for dracut modules
+	optdepends = java-brltty-git: for Java bindings
+	optdepends = ocaml-brltty-git: for OCaml bindings
+	optdepends = python-brltty-git: for Python bindings
 	optdepends = speech-dispatcher: speech-dispatcher driver
-	optdepends = tcl: tcl support
+	optdepends = tcl-brltty-git: for TCL bindings
 	provides = brltty
 	provides = libbrlapi.so
 	conflicts = brltty
@@ -91,6 +104,46 @@ pkgname = brltty-git
 
 pkgname = brltty-udev-generic-git
 	pkgdesc = Generic udev rules for brltty (development version)
-	depends = brltty
+	depends = brltty-git=6.9.r81.g83dbe770e
 	provides = brltty-udev-generic
 	conflicts = brltty-udev-generic
+
+pkgname = dracut-brltty-git
+	pkgdesc = Braille display driver for Linux/Unix (development version) - dracut modules
+	groups = dracut-modules
+	depends = bash
+	depends = brltty-git=6.9.r81.g83dbe770e
+	depends = dracut
+	provides = dracut-brltty
+	conflicts = dracut-brltty
+
+pkgname = java-brltty-git
+	pkgdesc = Braille display driver for Linux/Unix (development version) - java bindings
+	depends = brltty-git=6.9.r81.g83dbe770e
+	depends = java-runtime
+	provides = java-brltty
+	conflicts = java-brltty
+
+pkgname = ocaml-brltty-git
+	pkgdesc = Braille display driver for Linux/Unix (development version) - OCaml bindings
+	depends = brltty-git=6.9.r81.g83dbe770e
+	depends = glibc
+	depends = ocaml
+	provides = ocaml-brltty
+	conflicts = ocaml-brltty
+
+pkgname = python-brltty-git
+	pkgdesc = Braille display driver for Linux/Unix (development version) - Python bindings
+	depends = brltty-git=6.9.r81.g83dbe770e
+	depends = glibc
+	depends = python
+	provides = python-brltty
+	conflicts = python-brltty
+
+pkgname = tcl-brltty-git
+	pkgdesc = Braille display driver for Linux/Unix (development version) - TCL integration
+	depends = brltty-git=6.9.r81.g83dbe770e
+	depends = glibc
+	depends = tcl
+	provides = tcl-brltty
+	conflicts = tcl-brltty
