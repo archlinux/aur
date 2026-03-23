@@ -1,7 +1,7 @@
 # Maintainer: Daniel Seichter <https://github.com/dseichter>
 pkgname=workdir-bin
 pkgver=2026.03.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Work with multiple directories and run commands without navigating manually (prebuilt binary)."
 arch=('x86_64')
 url="https://github.com/dseichter/Workdir"
