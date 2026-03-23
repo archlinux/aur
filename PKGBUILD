@@ -1,7 +1,7 @@
 # Maintainer: Samsagax <samsagax at gmail dot com>
 _pkgbase=chimeraos-device-quirks
 pkgname=${_pkgbase}-sk
-_srctag=v2.3.0
+_srctag=v2.3.1
 pkgver=${_srctag#v}
 pkgrel=1
 pkgdesc="A collection of device specific configuration files"
@@ -71,11 +71,15 @@ package() {
 	cp -rv usr/share/pipewire/hardware-profiles/* "${pkgdir}/usr/share/pipewire/hardware-profiles/."
 
 	# Install wireplumber hardware configs
-	mkdir -p "${pkgdir}/usr/share/wireplumber/hardware-profiles"
-	cp -rv usr/share/wireplumber/hardware-profiles/* "${pkgdir}/usr/share/wireplumber/hardware-profiles/."
+	# mkdir -p "${pkgdir}/usr/share/wireplumber/hardware-profiles"
+	# cp -rv usr/share/wireplumber/hardware-profiles/* "${pkgdir}/usr/share/wireplumber/hardware-profiles/."
 
-	install -dm755 "${pkgdir}/usr/share/wireplumber/wireplumber.conf.d"
-	install -v -m644 -D -t "${pkgdir}/usr/share/wireplumber/wireplumber.conf.d/" usr/share/wireplumber/wireplumber.conf.d/*
+	# install -dm755 "${pkgdir}/usr/share/wireplumber/wireplumber.conf.d"
+	# install -v -m644 -D -t "${pkgdir}/usr/share/wireplumber/wireplumber.conf.d/" usr/share/wireplumber/wireplumber.conf.d/*
+
+	# Install wireplumber configs
+	mkdir -p "${pkgdir}/usr/share/wireplumber"
+	cp -rv usr/share/wireplumber/* "${pkgdir}/usr/share/wireplumber/."
 
 	#Install device-quirks config
 	mkdir -p "${pkgdir}/etc/device-quirks"
