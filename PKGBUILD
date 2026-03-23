@@ -1,6 +1,6 @@
 # Maintainer: r3g1s <21206554+r3b1s [at] users [dot] noreply [dot] github [dot] com>
 pkgname=skillctl
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Manage agent skills across AI harnesses."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/r3b1s/skillctl"
 license=('MIT')
 depends=('bash' 'git' 'gum')
 source=("https://github.com/r3b1s/skillctl/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('cbbd74a1ed02633e12b0d726f938dc4892461682759d756e91cf8ec641c8d413')
+sha256sums=('05baabeb575b125bf43f7f837ee83793080de8785a3bbc9c1e97c72c9ad1b8db')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
