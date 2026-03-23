@@ -4,7 +4,7 @@
 pkgname=babbletrainer
 # real tag has hyphens not underscores, but makepkg doesn't allow so remap later
 pkgver=1.3.8_linux_paths
-pkgrel=1
+pkgrel=2
 pkgdesc="On-device B.A.B.A.L.L.S. trainer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/Project-Babble/BabbleTrainer"
@@ -31,6 +31,13 @@ depends=(
     python-onnx
     python-onnxscript
     python-tqdm
+)
+optdepends=(
+    'python-pytorch-opt: with AVX2 CPU optimizations for training'
+    'python-pytorch-cuda: with CUDA for training'
+    'python-pytorch-opt-cuda: with CUDA and AVX2 CPU optimizations for training'
+    'python-pytorch-rocm: with ROCm for training'
+    'python-pytorch-opt-rocm: with ROCm and AVX2 CPU optimizations for training'
 )
 source=(
     "${pkgname}::git+${url}.git#branch=main"

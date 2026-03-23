@@ -1,7 +1,7 @@
 pkgbase = babbletrainer
 	pkgdesc = On-device B.A.B.A.L.L.S. trainer
 	pkgver = 1.3.8_linux_paths
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Project-Babble/BabbleTrainer
 	arch = x86_64
 	arch = aarch64
@@ -19,6 +19,11 @@ pkgbase = babbletrainer
 	depends = python-onnx
 	depends = python-onnxscript
 	depends = python-tqdm
+	optdepends = python-pytorch-opt: with AVX2 CPU optimizations for training
+	optdepends = python-pytorch-cuda: with CUDA for training
+	optdepends = python-pytorch-opt-cuda: with CUDA and AVX2 CPU optimizations for training
+	optdepends = python-pytorch-rocm: with ROCm for training
+	optdepends = python-pytorch-opt-rocm: with ROCm and AVX2 CPU optimizations for training
 	source = babbletrainer::git+https://github.com/Project-Babble/BabbleTrainer.git#branch=main
 	source = babbletrainer.sh
 	source = LICENSE
