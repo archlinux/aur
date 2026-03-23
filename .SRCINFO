@@ -1,6 +1,6 @@
 pkgbase = xrizer
 	pkgdesc = Reimplementation of OpenVR, translating calls to OpenXR
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/Supreeeme/xrizer
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = xrizer
 	makedepends = clang
 	makedepends = shaderc
 	options = !lto
-	source = xrizer::git+https://github.com/Supreeeme/xrizer.git#commit=01ab72809f2bd5c6494fa77fb08e4229c886da7a
+	source = xrizer::git+https://github.com/Supreeeme/xrizer.git#commit=a99ba5b6812f65ef8ca0d93ac4729e1deeb25171
 	source = openvrpaths.vrpath
 	sha256sums = SKIP
 	sha256sums = SKIP

@@ -1,14 +1,14 @@
 # vim:ts=2:sw=2:expandtab
 # Maintainer: peelz <peelz.dev+arch@gmail.com>
 
-_commit="01ab72809f2bd5c6494fa77fb08e4229c886da7a"
+_commit="a99ba5b6812f65ef8ca0d93ac4729e1deeb25171"
 pkgbase="xrizer"
 pkgname=(
   "xrizer"
   "xrizer-common"
   "lib32-xrizer"
 )
-pkgver="0.4"
+pkgver="0.5"
 pkgrel="1"
 pkgdesc="Reimplementation of OpenVR, translating calls to OpenXR"
 arch=("x86_64")
