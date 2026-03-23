@@ -12,6 +12,7 @@ pkgbase = ethos-lang
 	depends = python-zstandard
 	depends = gcc
 	depends = patchelf
+	optdepends = ethos-forge: for managing Ethos packages and projects
 	source = git+https://github.com/AmanCode22/ethos-lang.git#tag=v0.3.0
 	sha256sums = SKIP
 
