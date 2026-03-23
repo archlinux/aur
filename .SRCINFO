@@ -1,0 +1,21 @@
+pkgbase = wt-go-bin
+	pkgdesc = Git worktree manager with organized directory structure (Go implementation)
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/douglas/wt
+	license = MIT
+	optdepends = github-cli: for wt pr command
+	optdepends = glab: for wt mr command
+	depends = glibc
+	depends = git
+	conflicts = wt
+	conflicts = wt-zig
+	provides = wt
+	arch = aarch64
+	source_aarch64 = https://github.com/douglas/wt/releases/download/v0.3.0/wt_0.3.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 35b9206389d81310ed423eccbd237f7fb3afe496f192a285806e07b3791a20d8
+	arch = x86_64
+	source_x86_64 = https://github.com/douglas/wt/releases/download/v0.3.0/wt_0.3.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 831ebf85f7e39dac760232e5cdd85700a297cd31c4fb137c5d04eeb3018eb495
+	
+pkgname = wt-go-bin
