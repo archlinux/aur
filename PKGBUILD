@@ -7,14 +7,14 @@ _pkgname="Qogir-icon-theme"
 _pkgver=2025-02-15
 pkgname="qogir-cursor-theme"
 pkgver=${_pkgver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="An x-cursor theme inspired by Qogir theme and based on capitaine-cursors"
 arch=("any")
 url="https://github.com/vinceliuice/${_pkgname}"
-license=("GPL3")
+license=("GPL-3.0-only")
 provides=("${pkgname}")
 source=("$_pkgname-$pkgver.tar.gz::${url}/archive/$_pkgver.tar.gz")
-sha256sums=("SKIP")
+sha256sums=('b0d07cad5601e0341a53a62df0ed111823b75fc38741d435486620a59fb239ee')
 
 package() {
   install -d "${pkgdir}/usr/share/icons/"
