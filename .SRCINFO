@@ -1,21 +1,27 @@
 pkgbase = lua-etf
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jprjr/lua-etf
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = MIT
 	makedepends = cmake
-	makedepends = lua<5.5
+	makedepends = lua>=5.5
+	makedepends = lua<5.6
 	makedepends = lua51
 	makedepends = lua52
 	makedepends = lua53
+	makedepends = lua54
 	source = https://github.com/jprjr/lua-etf/releases/download/v1.0.2/lua-etf-1.0.2.tar.gz
-	md5sums = e54e910e667a44a8004323452e499d39
+	source = update-cmake.patch
+	sha512sums = 994d977320cc11d73815a245d415b001d3ec4fe2b346f94a8eb302d761f1b2a5cbcf76508155b53a63bd2ecdf750ad4e10e2498cc37122ca9bbb4b4c911bbf9a
+	sha512sums = 888d58fee2a9d9e1ab1bf74a831785b2f2795f30c49495cdf2158722e37ecf81264bd64d77e601d09c9d7e47a8f3d91f72ed8d050dd5fa93a854b68db4eaceac
 
 pkgname = lua-etf
 	pkgdesc = Erlang External Term Format encoder and decoder for Lua
-	depends = lua
+	depends = lua>=5.5
+	depends = lua<5.6
 
 pkgname = lua51-etf
 	pkgdesc = Erlang External Term Format encoder and decoder for Lua 5.1
@@ -28,3 +34,7 @@ pkgname = lua52-etf
 pkgname = lua53-etf
 	pkgdesc = Erlang External Term Format encoder and decoder for Lua 5.3
 	depends = lua53
+
+pkgname = lua54-etf
+	pkgdesc = Erlang External Term Format encoder and decoder for Lua 5.4
+	depends = lua54
