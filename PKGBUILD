@@ -1,11 +1,11 @@
 # Maintainer: Voylin <voylinslife@gmail.com>
 
 _gitname="GoZen"
-_godot_version="4.7.0-dev2"
+_godot_version="4.6.1-stable"
 
 pkgname=gozen-git
-pkgver=20260222
-pkgrel=1
+pkgver=20260223
+pkgrel=2
 pkgdesc="A minimalistic video editor (git)"
 arch=('x86_64')
 url="https://github.com/VoylinsGamedevJourney/GoZen"
