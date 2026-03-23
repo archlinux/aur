@@ -1,7 +1,7 @@
 pkgbase = python-skops
 	pkgdesc = Tools for sharing scikit-learn based models and putting them in production
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/skops-dev/skops
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = python-skops
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-hatchling
 	depends = python
 	depends = python-numpy
 	depends = python-packaging
