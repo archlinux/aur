@@ -15,7 +15,7 @@
 pkgname=haproxy-awslc
 _pkgname=haproxy
 pkgver=3.3.6
-pkgrel=1
+pkgrel=2
 
 pkgdesc='Reliable, high performance TCP/HTTP load balancer. Built with aws-lc'
 url='https://www.haproxy.org/'
@@ -51,7 +51,8 @@ validpgpkeys=('0C9568FA554656551590C5E44E386D9C9C61702F'  # Willy Tarreau <w@1wt
 source=("git+https://git.haproxy.org/git/haproxy-${pkgver%.*}.git#tag=v${pkgver}?signed"
         'haproxy.cfg'
         'haproxy.sysusers'
-        '0001-Use-CFLAGS-and-LDFLAGS-when-building-admin.patch')
+        '0001-Use-CFLAGS-and-LDFLAGS-when-building-admin.patch'
+)
 
 # We don't really need to verify a signed git tag w/ checksum.
 # For source files within this repo: they are equally trustworthy
@@ -78,9 +79,9 @@ build() {
   make \
     CFLAGS="$CFLAGS" \
     LDFLAGS="$LDFLAGS" \
-    ADDLIB="-Wl,-rpath=/usr/lib/aws-lc/ -ljemalloc" \
+    ADDLIB="-ljemalloc" \
     SSL_INC=/usr/include/aws-lc/ \
-    SSL_LIB=/usr/lib/aws-lc/ \
+    SSL_LDFLAGS="-lssl-awslc -lcrypto-awslc" \
     TARGET=linux-glibc \
     USE_LUA=1 \
     USE_MEMORY_PROFILING=1 \
@@ -102,22 +103,6 @@ build() {
 
 check() {
   cd "haproxy-${pkgver%.*}"
-
-  # I'd like to make sure haproxy actually links to .so of aws-lc
-  # A misconfigured build could fallback to linking openssl because aws-lc
-  # doesn't change the soname.
-  #
-  # ldd ./haproxy | grep -Fq /usr/lib/aws-lc/
-  #
-  # However, aws-lc upstream doesn't promise ABI stability yet. The
-  # maintainer of AUR/aws-lc decides to go with staticlib for now.
-  # Good news for me: the build process of haproxy stays the same.
-  #
-  # Upstream issue: https://github.com/aws/aws-lc/issues/1098
-  if [ $? = 1 ]; then
-    echo "Executable \`haproxy' isn't linked to aws-lc libraries. Abort"
-    return 1
-  fi
 
   make \
     REGTESTS_TYPES=default,devel \
