@@ -2,7 +2,7 @@
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
 pkgver=4.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('any')
 url="https://bytedz.com/products/pclink"
@@ -39,6 +39,7 @@ makedepends=(
   'python-installer'
   'python-setuptools'
   'python-wheel'
+  'setconf'
 )
 optdepends=(
   'grim: Screenshot support for wlroots-based compositors'
@@ -53,6 +54,18 @@ optdepends=(
 )
 source=("PCLink-$pkgver.tar.gz::https://github.com/BYTEDz/PCLink/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('9d866829aa7a0a402cfa288f3d1d15048b1101b7f390094f7479244253549906')
+
+prepare() {
+  cd "PCLink-$pkgver"
+
+  # Replace placeholders in service file
+  setconf "scripts/linux/$pkgname.service.template" ExecStart "/usr/bin/$pkgname --startup"
+  setconf "scripts/linux/$pkgname.service.template" WorkingDirectory "%h"
+  setconf "scripts/linux/$pkgname.service.template" ProtectHome "false"
+
+  # Remove User/Group from user service as they are invalid
+  sed -i '/User/,/Group/d' "scripts/linux/$pkgname.service.template"
+}
 
 build() {
   cd "PCLink-$pkgver"

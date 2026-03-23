@@ -1,7 +1,7 @@
 pkgbase = pclink
 	pkgdesc = Desktop app for secure remote PC control and management
 	pkgver = 4.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://bytedz.com/products/pclink
 	arch = any
 	license = AGPL-3.0-or-later AND LicenseRef-custom
@@ -9,6 +9,7 @@ pkgbase = pclink
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = setconf
 	depends = gtk3
 	depends = libayatana-appindicator
 	depends = libnotify
