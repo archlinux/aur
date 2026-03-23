@@ -1,0 +1,22 @@
+pkgbase = ttf-ioskeley-mono-bin
+	pkgdesc = Custom Iosevka build tuned to mimic Berkeley Mono (Normal, SemiCondensed, Condensed widths)
+	pkgver = 2.0.0.beta.1
+	pkgrel = 1
+	url = https://github.com/ahatem/IoskeleyMono
+	arch = any
+	license = OFL-1.1
+	provides = ttf-ioskeley-mono
+	conflicts = ttf-ioskeley-mono
+	noextract = IoskeleyMono-Normal-2.0.0.beta.1.zip
+	noextract = IoskeleyMono-SemiCondensed-2.0.0.beta.1.zip
+	noextract = IoskeleyMono-Condensed-2.0.0.beta.1.zip
+	source = IoskeleyMono-Normal-2.0.0.beta.1.zip::https://github.com/ahatem/IoskeleyMono/releases/download/v2.0.0-beta.1/IoskeleyMono-Normal.zip
+	source = IoskeleyMono-SemiCondensed-2.0.0.beta.1.zip::https://github.com/ahatem/IoskeleyMono/releases/download/v2.0.0-beta.1/IoskeleyMono-SemiCondensed.zip
+	source = IoskeleyMono-Condensed-2.0.0.beta.1.zip::https://github.com/ahatem/IoskeleyMono/releases/download/v2.0.0-beta.1/IoskeleyMono-Condensed.zip
+	source = LICENSE::https://raw.githubusercontent.com/ahatem/IoskeleyMono/v2.0.0-beta.1/LICENSE
+	sha256sums = 00693cd2ce76e93fccc357b0357a92b5ec2e17fa3cd994e67355baafbe98f8b7
+	sha256sums = a4dc4d0801892922e7b3572e69bd8c6f0aa0364da436c64fdcb3e1c21b74bdbc
+	sha256sums = 264b5569844c12328b99f1dfb57cb527fe4be2650dd5c15a2333db64a322e6a7
+	sha256sums = SKIP
+
+pkgname = ttf-ioskeley-mono-bin
