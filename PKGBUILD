@@ -5,7 +5,7 @@
 pkgname=p4v
 _version=2025.4
 pkgver=2025.4.2886649
-pkgrel=1
+pkgrel=2
 pkgdesc="Perforce Helix Visual Client"
 arch=('x86_64')
 url="https://www.perforce.com"
@@ -45,6 +45,15 @@ package() {
   install -sm755 bin/{p4admin.bin,p4merge.bin,p4v.bin,QtWebEngineProcess} "${pkgdir}/usr/share/p4v/bin"
   install -m755 bin/{p4admin,p4merge,p4v,p4vc} "${pkgdir}/usr/share/p4v/bin"
   install -m644 bin/qt.conf "${pkgdir}/usr/share/p4v/bin"
+
+  # Install xdg-open wrapper to prevent p4v's bundled Qt from being
+  # loaded by system tools (kde-open, etc.) that require a newer Qt version.
+  cat > "${pkgdir}/usr/share/p4v/bin/xdg-open" << 'EOF'
+#!/bin/sh
+unset LD_LIBRARY_PATH
+exec /usr/bin/xdg-open "$@"
+EOF
+  chmod 755 "${pkgdir}/usr/share/p4v/bin/xdg-open"
 
   mkdir -p "${pkgdir}"/usr/bin
   # put a pointer in /usr/bin
