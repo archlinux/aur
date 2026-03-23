@@ -1,8 +1,8 @@
 pkgbase = ssh-manager
 	pkgdesc = Simple terminal password manager for SSH/RDP with GPG encryption
 	pkgver = 1.1
-	pkgrel = 1
-	url = https://github.com/madyel/sshManager
+	pkgrel = 2
+	url = https://github.com/madyel/ssh-manager-aur
 	arch = any
 	license = GPL-3.0-only
 	depends = python
@@ -11,7 +11,7 @@ pkgbase = ssh-manager
 	optdepends = fzf: terminal fuzzy selection
 	optdepends = rofi: terminal fuzzy selection
 	optdepends = rdesktop: RDP session support
-	source = ssh-manager-1.1.tar.gz::https://github.com/madyel/sshManager/archive/refs/tags/v1.1.tar.gz
+	source = ssh-manager-1.1.tar.gz::https://github.com/madyel/ssh-manager-aur/archive/refs/tags/v1.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = ssh-manager
