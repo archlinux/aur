@@ -8,7 +8,7 @@ pkgbase = ojcsh
 	makedepends = gcc
 	depends = glibc
 	depends = readline
-	source = OJCsh-2.2.0.tar.gz::https://github.com/gragero/OJC-shell/archive/refs/tags/V2.2.0.tar.gz
+	source = ojcsh-2.2.0.tar.gz::https://github.com/gragero/OJC-shell/archive/refs/tags/V2.2.0.tar.gz
 	sha256sums = faa7af3251df91e157b4526929397f74dcc7a16edc2da50436494853aeb688e5
 
 pkgname = ojcsh

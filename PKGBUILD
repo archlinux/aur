@@ -1,4 +1,4 @@
-pkgname=OJCsh
+pkgname=ojcsh
 pkgver=2.2.0
 pkgrel=1
 pkgdesc="A lightweight, minimal, and extensible Unix-like shell written in pure C — first building block of OJclicks OS"
