@@ -7,6 +7,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/AmanCode22/ethos-lang"
 license=('Apache-2.0')
 depends=('python' 'python-zstandard' 'gcc' 'patchelf')
+optdepends=('ethos-forge: for managing Ethos packages and projects')
 makedepends=('git' 'python-pip')
 source=("git+https://github.com/AmanCode22/ethos-lang.git#tag=v${pkgver}")
 sha256sums=('SKIP')
