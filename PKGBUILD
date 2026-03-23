@@ -4,7 +4,7 @@ pkgname=sk-chos-addon
 _basename=sk-chos-tool
 _reponame=sk-chos-config
 _pkgname=${pkgname}
-pkgver=2.30.1
+pkgver=2.30.2
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -38,7 +38,7 @@ provides=(sk-chos-addon)
 conflicts=(sk-chos-addon-git)
 replaces=(sk-chos-addon-git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('a4a346944c53aeb23e7db5f0000c0887c3bcab32c69347012134d4453b0b037b')
+sha256sums=('SKIP')
 options=(!strip)
 backup=('etc/sk-chos-tool/github_cdn.conf')
 install=sk-chos-addon.install
@@ -86,8 +86,8 @@ package() {
     install -dm755 "${pkgdir}/usr/lib/systemd/system"
     # install -m644 -t "${pkgdir}/usr/lib/systemd/system" "${source_dir}/systemd/system"/*.*
     find "${source_dir}/systemd/system" -maxdepth 1 -type f -exec install -m644 -D {} "${pkgdir}/usr/lib/systemd/system/" \;
-    install -dm755 "${pkgdir}/usr/lib/systemd/system/hhd@.service.d" || true
-    install -m644 -t "${pkgdir}/usr/lib/systemd/system/hhd@.service.d" "${source_dir}/systemd/system/hhd@.service.d"/* || true
+    # install -dm755 "${pkgdir}/usr/lib/systemd/system/hhd@.service.d"
+    # install -m644 -t "${pkgdir}/usr/lib/systemd/system/hhd@.service.d" "${source_dir}/systemd/system/hhd@.service.d"/*
     install -dm755 "${pkgdir}/usr/lib/systemd/system/hhd.service.d"
     install -m644 -t "${pkgdir}/usr/lib/systemd/system/hhd.service.d" "${source_dir}/systemd/system/hhd.service.d"/*
 
