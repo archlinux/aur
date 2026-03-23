@@ -1,6 +1,6 @@
 # Maintainer: Douglas Soares de Andrade <contato@douglasandrade.com>
 pkgname=cmux-gtk
-pkgver=0.62.0.alpha.2
+pkgver=0.62.0.alpha.3
 pkgrel=1
 pkgdesc='Terminal multiplexer for AI coding agents (GTK4/libadwaita)'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
     "ghostty::git+https://github.com/manaflow-ai/ghostty.git"
 )
 sha256sums=(
-    '0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5'
+    'ddc5bb7ce512663c3639e2b3fddfca0384c6421da73d68941579c8d5cd8baa71'
     'SKIP'
 )
 
