@@ -1,0 +1,15 @@
+pkgbase = lbs
+	pkgdesc = A powerful per-process CPU limiter for Linux with universal Wayland & X11 focus support.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Agzes/LBS
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = gtk4
+	source = lbs-0.1.0.tar.gz::https://github.com/Agzes/LBS/archive/v.0.1.0.tar.gz
+	sha256sums = 9d8053c1ae52456dbba9e3e46eb54a933dbb0ced16d8a13273905ab84c60e253
+
+pkgname = lbs
