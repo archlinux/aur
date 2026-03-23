@@ -1,25 +1,51 @@
 pkgbase = lua-readline
 	pkgdesc = Lua bindings to readline
 	pkgver = 3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://peterbillam.gitlab.io/pjb_lua/lua/readline.html
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = MIT
-	makedepends = lua<5.5
+	makedepends = lua<5.6
+	makedepends = lua>=5.5
 	makedepends = lua51
 	makedepends = lua52
 	makedepends = lua53
+	makedepends = lua54
 	depends = readline
 	source = readline-3.3.tar.gz
 	source = fix-version.patch
-	sha256sums = 1a3bd8e2229bbaada9b27d23cc3ac4cdf19418a3fc83dd7f4f176588d7520088
-	sha256sums = 0929d18ea10d9523e96eee2ef16cad84e6997898f864bf894e52a6ce9db96967
+	sha512sums = a64fb71302c18a8733ac3548da53616532834e07d557bdcd6926d9793ba615b074b74890b18626ac7f5fd75a90f4ad4155e0788daffd9f8f1bb3e5d3931347ce
+	sha512sums = 1221a5911e17cf428829068d20e42274f84b265cbc35d181c858c571543f917f5f375b5290e0f97e46285185593eda2238caf7bab638625f173fb6c1f6092e3d
 
 pkgname = lua-readline
+	pkgdesc = Lua bindings to readline for Lua 5.5
+	depends = readline
+	depends = lua<5.6
+	depends = lua>=5.5
+	optdepends = lua-posix: fallback methods for finding HOME
 
 pkgname = lua51-readline
+	pkgdesc = Lua bindings to readline for Lua 5.1
+	depends = readline
+	depends = lua51
+	optdepends = lua51-posix: fallback methods for finding HOME
 
 pkgname = lua52-readline
+	pkgdesc = Lua bindings to readline for Lua 5.2
+	depends = readline
+	depends = lua52
+	optdepends = lua52-posix: fallback methods for finding HOME
 
 pkgname = lua53-readline
+	pkgdesc = Lua bindings to readline for Lua 5.3
+	depends = readline
+	depends = lua53
+	optdepends = lua53-posix: fallback methods for finding HOME
+
+pkgname = lua54-readline
+	pkgdesc = Lua bindings to readline for Lua 5.4
+	depends = readline
+	depends = lua54
+	optdepends = lua54-posix: fallback methods for finding HOME

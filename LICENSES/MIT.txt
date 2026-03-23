@@ -1,0 +1,8 @@
+---------------------------------------------------------------------
+--     This Lua5 module is Copyright (c) 2011, Peter J Billam      --
+--                       www.pjb.com.au                            --
+--                                                                 --
+--  This module is free software; you can redistribute it and/or   --
+--         modify it under the same terms as Lua5 itself.          --
+---------------------------------------------------------------------
+
