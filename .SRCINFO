@@ -1,8 +1,8 @@
 pkgbase = zutui-git
 	pkgdesc = TUI for accessing edziekanat of ZUT university
 	pkgver = 1.0.0.r8.ceefa47
-	pkgrel = 4
-	url = https://github.com/shv187/zutui
+	pkgrel = 5
+	url = https://github.com/pxy1337/zutui
 	arch = any
 	license = MIT
 	makedepends = git
@@ -18,7 +18,7 @@ pkgbase = zutui-git
 	depends = python-requests
 	provides = zutui
 	conflicts = zutui
-	source = zutui::git+https://github.com/shv187/zutui.git
+	source = zutui::git+https://github.com/pxy1337/zutui.git
 	sha256sums = SKIP
 
 pkgname = zutui-git

@@ -1,11 +1,11 @@
 # Maintainer: <szymon_jozef@proton.me>
 _pkgname="zutui"
 pkgname="$_pkgname-git"
-pkgver="1.0.0.r8.ceefa47"
-pkgrel=4
+pkgver=1.0.0.r10.03b7d2d
+pkgrel=1
 pkgdesc="TUI for accessing edziekanat of ZUT university"
 arch=("any")
-url="https://github.com/shv187/zutui"
+url="https://github.com/pxy1337/zutui"
 license=("MIT")
 depends=("python" "python-keyring" "python-textual" "python-appdirs" "python-beautifulsoup4" "python-requests")
 makedepends=("git" "python-build" "python-installer" "python-wheel" "python-setuptools")
