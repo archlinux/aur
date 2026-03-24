@@ -1,7 +1,7 @@
 # Maintainer: David Hummel <hummeltech@sherpaguru.com>
 
 pkgname='openjkdf2-git'
-pkgver=0.9.6.r87.g1baa1e8
+pkgver=0.9.8.r1.ga6e3174
 pkgrel=1
 pkgdesc="A function-by-function reimplementation of DF2 (Dark Forces 2) in C."
 arch=('i686' 'x86_64')
