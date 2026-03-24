@@ -1,8 +1,8 @@
 # Maintainer: HanHan666666 <tar.zip@outlook.com>
 pkgname=linglong-store-nightly-bin
-pkgver=3.0.2_nightly.20260324.84ad2d9
+pkgver=3.0.2_nightly.20260325.d96bf51
 pkgrel=1
-pkgdesc="Community store for browsing and installing Linglong applications"
+pkgdesc="Community store for browsing and installing Linyaps applications"
 arch=('x86_64')
 url="https://github.com/HanHan666666/flutter-linglong-store"
 license=('MIT')
@@ -18,9 +18,7 @@ depends=(
   'hicolor-icon-theme'
   'libepoxy'
   'pango'
-)
-optdepends=(
-  'linglong: Linglong runtime environment for installing and launching apps'
+  'linyaps'
 )
 provides=('linglong-store')
 conflicts=('linglong-store' 'linglong-store-bin')
@@ -36,8 +34,8 @@ source=(
   'linglong-store.svg'
 )
 source_x86_64=(
-  "linglong-store-3.0.2-nightly.20260324+84ad2d9-linux-amd64.tar.gz::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260324/linglong-store-3.0.2-nightly.20260324+84ad2d9-linux-amd64.tar.gz"
-  "linglong-store-3.0.2-nightly.20260324+84ad2d9-linux-amd64.tar.gz.asc::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260324/linglong-store-3.0.2-nightly.20260324+84ad2d9-linux-amd64.tar.gz.asc"
+  "linglong-store-3.0.2-nightly.20260325+d96bf51-linux-amd64.tar.gz::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260325/linglong-store-3.0.2-nightly.20260325+d96bf51-linux-amd64.tar.gz"
+  "linglong-store-3.0.2-nightly.20260325+d96bf51-linux-amd64.tar.gz.asc::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260325/linglong-store-3.0.2-nightly.20260325+d96bf51-linux-amd64.tar.gz.asc"
 )
 
 
@@ -48,8 +46,8 @@ sha256sums=(
   'ca9c4e35c731cbf2fb4b1290e26af7fd0d2dc7bc8a89f6373e1334d27b19e60c'
 )
 sha256sums_x86_64=(
-  '48b7c9eba3e7785e0f570e178f5078f5963ab007827339911db43719f0746b84'
-  '5c2d55c44d96f536adde8ad0a14384e87b4068086b9fbeab58728065225294a7'
+  '3e91336aa789648f574d0f5c3a04bcfedfdd9515a0d53e7b70e69e9ada1d444e'
+  'b1f1e9f6642f795442dede735de3ddbaa23ade0be3b3caa0457d59122a72c973'
 )
 
 
