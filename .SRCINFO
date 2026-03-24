@@ -1,0 +1,16 @@
+pkgbase = tp-bin
+	pkgdesc = A terminal-based application that displays the result of commands at every keystroke.
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/minefuto/tp
+	license = MIT
+	conflicts = tp
+	provides = tp
+	arch = aarch64
+	source_aarch64 = https://github.com/minefuto/tp/releases/download/v2.0.0/tp_2.0.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 56af41f8ded64a14717fef20a7dd7d8116bd30639c3f7cb67be3e8cef8dca7cd
+	arch = x86_64
+	source_x86_64 = https://github.com/minefuto/tp/releases/download/v2.0.0/tp_2.0.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 58216ba3dc9a512068a11aa584b024f2c16dbbea1d8e28308d8c074f03fc7e73
+	
+pkgname = tp-bin
