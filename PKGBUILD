@@ -9,7 +9,7 @@ license=('MIT')
 provides=('sldr')
 conflicts=('sldr')
 source=("sldr-${pkgver}.tar.gz::https://github.com/byteowlz/sldr/releases/download/v${pkgver}/sldr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('d389ec9fabc818a2c4323f842b3cd11098af1cb833d515794e6ba77302ac66a0')
+sha256sums=('9ec7cac20634e4eea8bf8c31be34f3844aed2662891dcc4382b810e60652d66a')
 
 package() {
     install -Dm755 sldr "$pkgdir/usr/bin/sldr"
