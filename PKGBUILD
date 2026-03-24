@@ -3,7 +3,7 @@
 _electron_version=""
 _pkgname=stretchly
 pkgname=${_pkgname}-xeruf-git
-pkgver=1647.d66129c
+pkgver=1846.8c06205
 pkgrel=1
 pkgdesc="The break reminder app with more restrictive menus"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ depends=('gtk3' 'http-parser' 'libappindicator-gtk3' 'libnotify' 'libxcrypt-comp
 makedepends=('git' 'nvm' 'jq' 'python' 'python-setuptools')
 provides=("$_pkgname")
 source=("git+${url}.git")
-conflicts=("$_pkgname" "${_pkgname}-bin")
 sha256sums=('SKIP')
+conflicts=("$_pkgname" "${_pkgname}-bin")
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -34,15 +34,12 @@ _ensure_local_nvm() {
 prepare() {
     cd "${srcdir}/${_pkgname}"
     _ensure_local_nvm
-    _node_version=$(jq -r '.engines.node' package.json)
-    nvm ls "$_node_version" &>/dev/null ||
-        nvm install "$_node_version" || return
+    nvm install "$_node_version" || return
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
     _ensure_local_nvm
-    _node_version=$(jq -r '.engines.node' package.json)
     nvm use "$_node_version" || return
     # 'husky install' doesn't work outside of a git repository
     [[ -d .git ]] || git init

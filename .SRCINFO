@@ -1,6 +1,6 @@
 pkgbase = stretchly-xeruf-git
 	pkgdesc = The break reminder app with more restrictive menus
-	pkgver = 1647.d66129c
+	pkgver = 1846.8c06205
 	pkgrel = 1
 	url = https://github.com/xeruf/stretchly
 	arch = i686
