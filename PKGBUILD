@@ -27,6 +27,6 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/li-panel/li-panel/build/li_panel" "$pkgdir/usr/bin/li_panel"
+  install -Dm755 "$srcdir/li-panel/build/li_panel" "$pkgdir/usr/bin/li_panel"
   install -Dm644 "$srcdir/li-panel/LICENSE" "$pkgdir/usr/share/licenses/li-panel/LICENSE"
 }
