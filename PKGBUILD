@@ -1,22 +1,53 @@
-# Maintainer: Tomáš Mládek <t@mldk.cz>
+# Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
+# Contributor: Tomáš Mládek <t@mldk.cz>
 pkgname=graph2dot
-pkgver="4.3.1"
+pkgver=8.1
 pkgrel="1"
 pkgdesc="parse a filtergraph description and issue a corresponding textual representation in the dot language"
 arch=('i686' 'x86_64')
 url="https://ffmpeg.org"
-license=('LGPL 2.1')
+license=('GPL-3.0-only')
 source=("${url}/releases/ffmpeg-${pkgver}.tar.gz")
-makedepends=('yasm')
-optdepends=('graphviz')
-sha256sums=('45035f15d6f192772de2309c846e1d60472694f479679354a39c699719e53772')
+makedepends=('nasm' 'chromaprint' 'frei0r-plugins' 'ladspa' 'opencl-headers' 'vulkan-headers' 'avisynthplus' 'amf-headers')
+depends=('libdrm' 'libvdpau' 'libva' 'libmysofa' 'libass' 'vmaf' 'opencv' 'zimg' 'lilv' 'rubberband' 'tesseract' 'lcms2' 'libx11' 'harfbuzz' 'fribidi' 'zlib' 'freetype2' 'glibc' 'fontconfig')
+optdepends=('graphviz: dot utility needed to convert gv to png')
+sha256sums=('b13510e7a6a4ca28fa04307f2be54ef5a31e168eb2bbe055a7f4e4d2cadd51b1')
 
 build() {
 	cd "ffmpeg-$pkgver"
-	./configure
-	make -j 4 tools/graph2dot
+	./configure \
+	--prefix=/usr \
+	--disable-debug \
+	--disable-stripping \
+	--enable-gpl \
+	--enable-lto \
+	--enable-version3 \
+	--disable-all \
+	--enable-avfilter \
+	--enable-avutil \
+	--enable-filters \
+	--enable-swscale \
+	--enable-swresample \
+	--enable-chromaprint \
+	--enable-frei0r \
+	--enable-ladspa \
+	--enable-lcms2 \
+	--enable-libfontconfig \
+	--enable-libfreetype \
+	--enable-libfribidi \
+	--enable-libharfbuzz  \
+	--enable-libass \
+	--enable-libopencv \
+	--enable-librubberband \
+	--enable-libtesseract \
+	--enable-libvmaf \
+	--enable-libzimg \
+	--enable-lv2 \
+	--enable-libmysofa
+	make tools/graph2dot
 }
 
 package() {
-	install -D -v -t $pkgdir/usr/bin -s "ffmpeg-$pkgver/tools/graph2dot"
+	cd "$srcdir"
+	install -Dm755 ffmpeg-${pkgver}/tools/graph2dot -t "$pkgdir/usr/bin"
 }
