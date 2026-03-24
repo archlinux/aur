@@ -9,9 +9,10 @@ arch=('x86_64')
 url="https://github.com/${_pkgauthor}/${pkgname}"
 license=('MIT')
 
-depends=('glibc' 'gcc-libs')
 provides=("${pkgname}")
+
 makedepends=('cmake')
+depends=('glibc' 'libgcc')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('32e4e457dc69bc3c58ab1793dda3615dc015f46b37156e46d160a74e849acca4')
