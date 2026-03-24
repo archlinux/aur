@@ -1,0 +1,20 @@
+post_install() {
+  echo ""
+  echo ">>> Biopass PAM module has been installed to /usr/lib/security/libbiopass_pam.so"
+  echo ">>> To enable Biopass authentication, you need to MANUALLY edit /etc/pam.d/system-auth"
+  echo ">>> (or other relevant files like /etc/pam.d/sudo)."
+  echo ">>> "
+  echo ">>> WARNING: Keep a root terminal (sudo -s or tty) open while testing to avoid being locked out!"
+  echo ">>> "
+  echo ">>> Suggested configuration (insert before pam_unix.so):"
+  echo ">>>   auth [success=2 default=ignore] libbiopass_pam.so"
+  echo ">>>   auth [success=1 default=ignore] pam_unix.so nullok"
+  echo ">>>   auth requisite pam_deny.so"
+  echo ">>> "
+  echo ">>> For more details, see: https://github.com/TickLabVN/biopass/blob/main/docs/PAM.md"
+  echo ""
+}
+
+# post_upgrade() {
+#   post_install
+# }
