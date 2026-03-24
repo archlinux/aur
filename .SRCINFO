@@ -14,6 +14,8 @@ pkgbase = luajit-lgi-git
 	provides = luajit-lgi
 	conflicts = luajit-lgi
 	source = git+https://github.com/pavouk/lgi.git
+	source = https://patch-diff.githubusercontent.com/raw/lgi-devs/lgi/pull/352.patch
 	md5sums = SKIP
+	md5sums = f255965efb71236e3a144acac5d67b42
 
 pkgname = luajit-lgi-git

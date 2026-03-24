@@ -17,13 +17,20 @@ provides=('luajit-lgi')
 conflicts=('luajit-lgi')
 depends=('libffi' 'luajit' 'gobject-introspection-runtime')
 makedepends=('git' 'gobject-introspection')
-source=('git+https://github.com/pavouk/lgi.git')
-md5sums=('SKIP')
+source=('git+https://github.com/pavouk/lgi.git'
+  https://patch-diff.githubusercontent.com/raw/lgi-devs/lgi/pull/352.patch)
+md5sums=('SKIP'
+         'f255965efb71236e3a144acac5d67b42')
 
 pkgver() {
   cd $_gitname
 
   git describe --long | sed 's/-/.r/; s/-/./'
+}
+
+prepare() {
+  cd $_gitname
+  patch -Np1 -i "${srcdir}/../352.patch"
 }
 
 build() {
