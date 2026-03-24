@@ -1,6 +1,6 @@
 pkgbase = moonshine-git
 	pkgdesc = Streaming server for Moonlight clients, written in Rust.
-	pkgver = r374.878edb0
+	pkgver = r381.ae9c918
 	pkgrel = 1
 	url = https://github.com/hgaiser/moonshine
 	arch = x86_64
