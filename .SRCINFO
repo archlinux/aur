@@ -1,8 +1,8 @@
 pkgbase = aeroshell-smod-git
 	pkgdesc = KDecoration3 decoration engine for AeroShell-based desktops
-	pkgver = 6.6.2_26.r4ced8a6
+	pkgver = 6.6.3_27.rdef5938
 	pkgrel = 1
-	url = https://gitgud.io/aeroshell/smod
+	url = https://github.com/aeroshell-desktop/smod
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = git
@@ -29,7 +29,7 @@ pkgbase = aeroshell-smod-git
 	provides = aeroshell-smod
 	conflicts = aeroshell-smod
 	options = !debug
-	source = aeroshell-smod-git::git+https://gitgud.io/aeroshell/smod.git
+	source = aeroshell-smod-git::git+https://github.com/aeroshell-desktop/smod.git
 	sha256sums = SKIP
 
 pkgname = aeroshell-smod-git
