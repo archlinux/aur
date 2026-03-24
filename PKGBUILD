@@ -5,9 +5,9 @@
 _pkgname=fchat
 
 pkgname="${_pkgname}"-horizon-appimage
-pkgver=1.36.2
+pkgver=2.0.0
 pkgrel=1
-pkgdesc="Horizon is a modern, community-driven fork of the F-Chat 3.0 client with expanded customization. (Appimge release)"
+pkgdesc="The Best F-Chat 3.0 Client, No exceptions! (Appimge release)"
 arch=('x86_64')
 url="https://github.com/Fchat-Horizon/Horizon"
 license=('GPL-3')
@@ -15,11 +15,12 @@ provides=(fchat)
 conflicts=(fchat)
 options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::https://github.com/Fchat-Horizon/Horizon/releases/download/v${pkgver}/F-Chat.Horizon-linux-x86_64.AppImage"
-               "https://raw.githubusercontent.com/Fchat-Horizon/Horizon/v${pkgver}/LICENSE"
+source_x86_64=("${_appimage}::https://github.com/Fchat-Horizon/Horizon/releases/download/v${pkgver}/F-Chat.Horizon-${pkgver}-linux-x86_64.AppImage
+"
+               "https://raw.githubusercontent.com/Fchat-Horizon/Horizon/v${pkgver}/LICENSE.md"
               )
 noextract=("${_appimage}")
-sha256sums_x86_64=('e4e7698dd20437944ab88e2d0dc8a4e04d60c3f915d9a86b86c9401d21aa3831'
+sha256sums_x86_64=('054e3dc71470a852fccb743ad8156d2d63d629f1071df2d97c137d0b0b4d4c60'
                    'SKIP')
 
 prepare() {
@@ -41,15 +42,16 @@ build() {
 package() {
     # AppImage
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/opt/${pkgname}/LICENSE"
+    install -Dm644 "${srcdir}/LICENSE.md" "${pkgdir}/opt/${pkgname}/LICENSE.md"
 
     # Desktop file
     install -Dm644 "${srcdir}/squashfs-root/horizon-electron.desktop" \
         "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
     # Icon image
-    install -dm755 "${pkgdir}/usr/share/"
-    cp -a "${srcdir}/squashfs-root/horizon-electron.png" "${pkgdir}/usr/share/${_pkgname}.png"
+    install -Dm644 \
+        "${srcdir}/squashfs-root/usr/share/icons/hicolor/256x256/apps/horizon-electron.png" \
+        "${pkgdir}/usr/share/${_pkgname}.png"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
@@ -57,5 +59,5 @@ package() {
 
     # Symlink license
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}/"
-    ln -s "/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+    ln -s "/opt/$pkgname/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
