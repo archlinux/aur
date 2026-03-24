@@ -1,0 +1,17 @@
+pkgbase = easy-config
+	pkgdesc = Simple CLI tool to quickly open and edit configuration files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/keegang6705/EasyConfig
+	arch = any
+	license = MIT
+	optdepends = fzf: for interactive selection
+	optdepends = fd: for faster file searching
+	source = cf.sh
+	source = config.ini
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = easy-config
