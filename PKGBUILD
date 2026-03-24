@@ -1,6 +1,6 @@
 pkgname=chibi-cli-git
 _pkgname=chibi-cli
-pkgver=1.2.0.65.g95c0226
+pkgver=1.2.0.76.gdc8c969
 pkgrel=1
 pkgdesc="Chibi for AniList - A lightweight anime & manga tracker CLI app powered by AniList (Upstream GIT)."
 arch=('x86_64')
