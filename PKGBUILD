@@ -10,7 +10,7 @@ pkgname=(
   midori-multi-account-containers-lite
 )
 
-pkgver=8.3.5000
+pkgver=8.3.7000
 pkgrel=1
 pkgdesc="Lets you keep parts of your online life separated into color-coded tabs that preserve your privacy"
 arch=('any')
@@ -18,9 +18,9 @@ license=('MPL-2.0')
 groups=('firefox-addons')
 makedepends=('git' 'node-gyp' 'npm' 'pnpm' 'strip-nondeterminism' 'zip')
 url=https://codeberg.org/Konsortium/multi-account-containers-lite
-_commit=c5dfe3dd174c5492c977387c45e932442fca9a65
+_commit=0a81dbcc154c5c04f14a2e15225f9c047e750c3f
 source=("mac::git+${url}#commit=$_commit")
-sha512sums=('336aeabe3567cc4b2cc769299e5bae52e74fae4ead2fbbe627ca0de5df3891e0924f93f8c548aeda6e31862a596500931c85866ed395c125815e0d79f4e2393a')
+sha512sums=('fb1986480ae53533286c9f5c2f46b6e779c91705f004795a89b796d4dd96576adc2730d9c7fa8d9806cc66664c01e52376e8e7185e4e3fc481b03d82e619877b')
 
 prepare() {
   cd "mac"
