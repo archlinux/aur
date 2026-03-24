@@ -2,7 +2,7 @@ pkgname="n80-printer-driver"
 pkgver="1.0.5"
 pkgrel="1"
 pkgdesc="Installs the driver tarball for the N80 Thermal printer (sold by the company NDYIN)"
-arch=("x86_64" "i686" "aarch64" "armv7")
+arch=("x86_64" "i686" "aarch64" "armv7h")
 options=('!debug')
 url="https://ndyin.com"
 depends=("cups")
@@ -15,9 +15,20 @@ package() {
   mkdir -p "${pkgdir}/usr/share/cups/model/"
   mkdir -p "${pkgdir}/usr/lib/cups/filter/"
 
+  if [[ "$CARCH" == "x86_64" ]]; then
+    _archdir="x86_64"
+  elif [[ "$CARCH" == "aarch64" ]]; then
+    _archdir="aarch64"
+  elif [[ "$CARCH" == "armv7h" ]]; then
+    _archdir="armv7l"
+  elif [[ "$CARCH" == "i686" ]]; then
+    _archdir="i386"
+  else
+    echo "Unsupported architecture: $CARCH"
+    return 1
+  fi
 
-  # If x86-64
-  /usr/bin/install -m 755 "${srcdir}/Linux_ZHJY-N80_driver_v1.0.5/filter/x86_64/rastertoN80" "${pkgdir}/usr/lib/cups/filter/rastertoN80"
+  /usr/bin/install -m 755 "${srcdir}/Linux_ZHJY-N80_driver_v1.0.5/filter/$_archdir/rastertoN80" "${pkgdir}/usr/lib/cups/filter/rastertoN80"
 
   /usr/bin/install -m 755 -d "${pkgdir}/usr/share/cups/model/"
   /usr/bin/install -m 644 "${srcdir}/Linux_ZHJY-N80_driver_v1.0.5/ppd/ZHJY-N80.ppd" "${pkgdir}/usr/share/cups/model/"
