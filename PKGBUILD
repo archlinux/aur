@@ -15,11 +15,11 @@ sha256sums=('ed7eff0a31067b3a328f1874157a22c156d4ecb1d9f08ea2bc732f63daf19f61')
 _java_ver=17
 
 build() {
-  cd "$pkgname-$pkgver"
-  JAVA_HOME=/usr/lib/jvm/java-17-openjdk ./gradlew build
+    cd "$pkgname-$pkgver"
+    JAVA_HOME=/usr/lib/jvm/java-17-openjdk ./gradlew build
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  install -Dm644 codec/build/libs/jmbe-${pkgver}.jar "${pkgdir}/usr/lib/jvm/java-${_java_ver}-openjdk/lib/jmbe-${pkgver}.jar"
+    cd "${pkgname}-${pkgver}"
+    install -Dm644 codec/build/libs/jmbe-${pkgver}.jar "${pkgdir}/usr/lib/jvm/java-${_java_ver}-openjdk/lib/jmbe-${pkgver}.jar"
 }
