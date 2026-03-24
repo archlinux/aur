@@ -4,17 +4,29 @@
 
 pkgname=sfcgal
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wrapper around the CGAL library that intents to implement 2D and 3D operations on OGC standards models"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/Oslandia/SFCGAL"
-license=('GPL3')
+license=('GPLv2+')
 provides=('sfcgal')
 depends=('cgal' 'boost-libs' 'gmp' 'mpfr' 'openscenegraph')
 #replaces=('sfcgal')
 makedepends=('git' 'cmake' 'boost')
-source=("https://gitlab.com/Oslandia/sfcgal/-/archive/v${pkgver}/SFCGAL-v${pkgver}.tar.gz")
-sha256sums=('bb6bb77ddb58523d8c229764de23699f99c1a7011d873419afd2a67df85602a2')
+source=("https://gitlab.com/Oslandia/sfcgal/-/archive/v${pkgver}/SFCGAL-v${pkgver}.tar.gz"
+       "fix_boos189.patch::https://gitlab.com/sfcgal/SFCGAL/-/merge_requests/539.patch"
+)
+sha256sums=('bb6bb77ddb58523d8c229764de23699f99c1a7011d873419afd2a67df85602a2'
+            'c65259a0d4916083fa8b0a5ab57f6d7f781d5a9739b25a8c254f5ae4edd2cc98')
+
+
+prepare() {
+  cd "${srcdir}/SFCGAL-v${pkgver}"
+  # Fix build with Boost 1.89
+  # See https://gitlab.com/sfcgal/SFCGAL/-/merge_requests/539
+  patch -Np1 -i "$srcdir"/fix_boos189.patch
+
+}
 
 build() {
   cd "${srcdir}/SFCGAL-v${pkgver}"
@@ -26,8 +38,9 @@ build() {
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DGMP_INCLUDE_DIR=/usr/include \
     -DGMP_LIBRARIES=/usr/lib/libgmp.so \
+    -DSFCGAL_BUILD_VIEWER=1 \
     -DSFCGAL_BUILD_EXAMPLES=1 \
-    -DSFCGAL_BUILD_TESTS=0 \
+    -DSFCGAL_BUILD_TESTS=1 \
     ..
   make
 }
