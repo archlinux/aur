@@ -1,0 +1,23 @@
+pkgbase = openixcli-bin
+	pkgdesc = Open Source CLI Tools for Flash Allwinner Firmware to Devices
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/YuzukiTsuru/OpenixCLI
+	arch = x86_64
+	license = MIT
+	makedepends = libarchive
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libusb
+	optdepends = openixcard: Open Source Version of Allwinner PhoenixCard on Linux
+	optdepends = openiximg: A comprehensive toolset for handling Allwinner IMAGEWTY format firmware images
+	optdepends = openixsuit: Tools to Flash Allwinner Firmware to Devices like PhoenixSuit and LiveSuit
+	provides = openixcli
+	conflicts = openixcli
+	options = !strip
+	options = !debug
+	source = https://github.com/YuzukiTsuru/OpenixCLI/releases/download/v0.1.2/openixcli-v0.1.2-x86_64-unknown-linux-gnu.deb
+	sha256sums = 43beea053f813a157542bcb81cea40728f49129fceb1e6afc8290cb682ca2867
+
+pkgname = openixcli-bin
