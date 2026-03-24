@@ -1,6 +1,6 @@
 pkgbase = python-pynfsclient-pennyw0rth-git
 	pkgdesc = Python library to simulate an NFSv3 client, Pennyw0rth fork
-	pkgver = AAAAA
+	pkgver = 1.0.5.r0.g9b61e0a
 	pkgrel = 1
 	url = https://github.com/pennyw0rth/NfsClient
 	arch = any
