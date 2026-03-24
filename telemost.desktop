@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Yandex Telemost
+GenericName=Video Conferencing
+Comment=Yandex video conferencing client (Wine)
+Exec=telemost %u
+Icon=telemost
+Terminal=false
+Categories=Network;Chat;VideoConference;
+MimeType=x-scheme-handler/telemost;
+StartupNotify=true
