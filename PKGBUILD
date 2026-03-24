@@ -1,6 +1,6 @@
 # Maintainer: Martin Chang <marty188586@gmail.com>
 pkgname=sfpi-bin
-pkgver=7.33.0
+pkgver=7.33.1
 pkgrel=1
 pkgdesc="Tenstorrent SFPU programming interface"
 arch=('x86_64')
@@ -8,10 +8,10 @@ url="https://github.com/tenstorrent/sfpi"
 license=('Apache-2.0' 'GPLv2')
 depends=('glibc')
 makedepends=('tar' 'xz')
-provides=('sfpi=7.32.0')
+provides=('sfpi=7.33.0')
 conflicts=('sfpi')
 source=("https://github.com/tenstorrent/sfpi/releases/download/${pkgver}/sfpi_${pkgver}_x86_64_fedora.txz")
-b2sums=('cc376e5dd30e57dbd6473ebee5616d485eff7747ead3ae0b3510c07ab50084c241e8a9ab2c722546d36b5806c2a3935848ee5fd482f23353effdfdde970bd748')
+b2sums=('1e60f15d96da89483729f834b3cd562bc8d3b246b0ecc3acbaee9d913dcc92ac276c29714261f5456fca6272042593ab7c0cf032908ca3b0fe7c2ccb7114895f')
 options=('!strip')
 
 package() {
