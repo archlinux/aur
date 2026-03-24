@@ -1,0 +1,21 @@
+pkgbase = python-justx
+	pkgdesc = A TUI command launcher built on top of just. Define recipes once, run them anywhere.
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/fpgmaas/justx
+	arch = any
+	license = MIT
+	makedepends = python-hatchling
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-click
+	depends = python-pydantic
+	depends = python-questionary
+	depends = python-rich
+	depends = python-textual
+	source = https://files.pythonhosted.org/packages/source/j/justx/justx-0.5.3.tar.gz
+	sha256sums = eb7ae9d29b7b5e35deee54a7362618a88acd0d9ec653fdc4531da0ecabe3289d
+
+pkgname = python-justx
