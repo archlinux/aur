@@ -1,7 +1,7 @@
 # Maintainer: Jaiden Brooke <jaiden.lily.brooke@gmail.com>
 pkgname=language-toolkit
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A simple tool to document and create languages"
 url=https://git.gay/ika4422/language-toolkit
 arch=('x86_64' 'aarch64')
@@ -12,12 +12,12 @@ source=("$pkgname-$pkgver.tar.gz::https://git.gay/ika4422/language-toolkit/archi
 sha256sums=('3834f1d8f54d41faed41603a747a29fa28f76dd6a3ba96b2754d8aea7891e429')
 
 build() {
-  cd "$srcdir/../.."
+  cd "$srcdir/$pkgname"
   cargo build --release
 }
 
 package() {
-  cd "$srcdir/../.."
+  cd "$srcdir/$pkgname"
 
   install -Dm755 "target/release/language-toolkit" "$pkgdir/usr/bin/language-toolkit"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"

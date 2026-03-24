@@ -1,7 +1,7 @@
 pkgbase = language-toolkit
 	pkgdesc = A simple tool to document and create languages
 	pkgver = 0.1.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://git.gay/ika4422/language-toolkit
 	arch = x86_64
 	arch = aarch64
