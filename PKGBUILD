@@ -5,7 +5,7 @@
 
 _android_arch=x86-64
 pkgname=android-$_android_arch-qt6-svg
-_qtver=6.10.2
+_qtver=6.11.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -21,7 +21,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtsvg-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('f07ff80f38caf235187200345392ca7479445ddf49a36c3694cd52a735dad6e1')
+sha256sums=('dfa8d653be07087d9407ed4a4ebae847f8953e0b7abd829f089803ab652a30e6')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
