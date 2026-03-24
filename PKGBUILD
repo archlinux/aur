@@ -4,12 +4,12 @@
 
 pkgname=genimage
 pkgver=19
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to generate multiple filesystem and flash images from a tree"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url=https://github.com/pengutronix/$pkgname
 license=(GPL-2.0-only)
-depends=(confuse)
+depends=(confuse glibc)
 optdepends=(
 	'cramfs-tools: mkcramfs'
 	'genext2fs'
