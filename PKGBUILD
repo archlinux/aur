@@ -1,5 +1,5 @@
 # Maintainer: Diego Augusto <diegovsky.dev@gmail.com>
-
+_pkgname=lix
 pkgname=haxe-lix
 pkgver=16.0.2
 pkgrel=1
@@ -12,19 +12,18 @@ conflicts=(haxe neko)
 provides=(haxe neko)
 makedepends=('npm')
 source=(
-    "https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz"
+    "https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz"
 )
 sha256sums=(
     '02f513a86e07ed149d876459f2bc210dce136cf5b41b7e1f34eb99be120cc4e5'
 )
 
 package() {
-    set -x
     cd "$srcdir/package"
 
     # copy scripts to /usr/lib/node_modules/lix
-    install -dm755 "$pkgdir/usr/lib/node_modules/$pkgname"
-    cp -r . "$pkgdir/usr/lib/node_modules/$pkgname/"
+    install -dm755 "$pkgdir/usr/lib/node_modules/$_pkgname"
+    cp -r . "$pkgdir/usr/lib/node_modules/$_pkgname/"
 
     install -dm755 "$pkgdir/usr/bin"
 
@@ -38,7 +37,7 @@ package() {
         sources+=("$bin" "$script")
     done
 
-    prefix="/usr/lib/node_modules/$pkgname/bin"
+    prefix="/usr/lib/node_modules/$_pkgname/bin"
 
     echo ${sources[@]}
 
@@ -54,7 +53,7 @@ package() {
               
         fi
     done
-    chmod a+x "$pkgdir/usr/lib/node_modules/$pkgname/bin/"*
+    chmod a+x "$pkgdir/usr/lib/node_modules/$_pkgname/bin/"*
 
     set +x
 }
