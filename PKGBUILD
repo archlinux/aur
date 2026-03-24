@@ -1,11 +1,11 @@
 # Maintainer: WackyIdeas <wackyideas@disroot.org>
 
 pkgname=('aeroshell-workspace-git')
-pkgver=6.6.1_13.rc5f8339
+pkgver=6.6.1_14.r2dff129
 pkgrel=1
 pkgdesc="Various components required by AeroShell-based desktops"
 arch=(x86_64)
-url="https://gitgud.io/aeroshell/aeroshell-workspace"
+url="https://github.com/aeroshell-desktop/aeroshell-workspace"
 license=('AGPL-3.0-or-later')
 depends=(gcc-libs
          glibc

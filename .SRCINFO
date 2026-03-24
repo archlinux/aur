@@ -1,8 +1,8 @@
 pkgbase = aeroshell-workspace-git
 	pkgdesc = Various components required by AeroShell-based desktops
-	pkgver = 6.6.1_13.rc5f8339
+	pkgver = 6.6.1_14.r2dff129
 	pkgrel = 1
-	url = https://gitgud.io/aeroshell/aeroshell-workspace
+	url = https://github.com/aeroshell-desktop/aeroshell-workspace
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = git
@@ -27,7 +27,7 @@ pkgbase = aeroshell-workspace-git
 	provides = aeroshell-workspace
 	conflicts = aeroshell-workspace
 	options = !debug
-	source = aeroshell-workspace-git::git+https://gitgud.io/aeroshell/aeroshell-workspace.git
+	source = aeroshell-workspace-git::git+https://github.com/aeroshell-desktop/aeroshell-workspace.git
 	sha256sums = SKIP
 
 pkgname = aeroshell-workspace-git
