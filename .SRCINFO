@@ -1,6 +1,6 @@
 pkgbase = xpybar
 	pkgdesc = A highly extensible minimalistic dock panel configured in Python 3
-	pkgver = 1.20.3
+	pkgver = 1.21
 	pkgrel = 1
 	url = https://codeberg.org/maandree/xpybar
 	install = xpybar.install
@@ -34,7 +34,7 @@ pkgbase = xpybar
 	optdepends = python-pytz: for timezone support
 	optdepends = python-sysv-ipc: for ropty example
 	optdepends = solar-python: for solar data (>= 2.5)
-	source = xpybar-1.20.3.tar.gz::https://codeberg.org/maandree/xpybar/archive/1.20.3.tar.gz
-	sha256sums = e2dafbe8af82fade57c53acfc56fb09ca95a547f82d08e1300e8ae25aea93150
+	source = xpybar-1.21.tar.gz::https://codeberg.org/maandree/xpybar/archive/1.21.tar.gz
+	sha256sums = c49c8a6e86e515e0a5d39386b444224c43c149669376950d4496aaef771d623b
 
 pkgname = xpybar
