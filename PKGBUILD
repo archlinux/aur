@@ -2,7 +2,7 @@
 # Maintainer: ccmywish <ccmywish@qq.com>
 pkgname=chsrc-git
 pkgver=20260322.r1966.8c1efce
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli tool to change source for every software on every platform"
 arch=('x86_64') # TODO: add more archs
 url="https://github.com/RubyMetric/chsrc"
@@ -10,6 +10,8 @@ license=('GPL-3.0-or-later' 'MIT')
 groups=()
 depends=()
 makedepends=('git')
+checkdepends=('perl')
+optdepends=('bash-completion: Bash auto-completion')
 provides=('chsrc')
 conflicts=('chsrc')
 replaces=()
@@ -30,21 +32,22 @@ pkgver() {
 
 build() {
     cd "$srcdir"/"$pkgname"
-	make
+	make build-in-release-mode
 }
 
 check() {
     cd "$srcdir"/"$pkgname"
+    if [ ! -f "./chsrc" ]; then
+        cp ./chsrc-release ./chsrc
+    fi
     make fastcheck
 }
 
 package() {
     cd "$srcdir"/"$pkgname"
-	install -Dm 755 chsrc -t $pkgdir/usr/bin/
+	make DESTDIR="$pkgdir" install
 	# MIT License
 	install -Dm 644 LICENSE-MIT.txt -t $pkgdir/usr/share/licenses/$pkgname
-    # Man Page
-    install -Dm 644 doc/chsrc.1 -t $pkgdir/usr/share/man/man1/
     # Texinfo
     makeinfo doc/chsrc.texi --output=doc/chsrc.info
     install -Dm 644 doc/chsrc.info -t $pkgdir/usr/share/info/
