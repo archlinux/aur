@@ -1,10 +1,10 @@
 # Maintainer: fa5e4658010be730
-pkgname=subs2srs-git
+pkgname=subs2srs-mono-git
 pkgver=29.7.r29.52c07ba
 pkgrel=1
 pkgdesc="Create Anki import files from movies and TV shows for language learning"
 arch=('any')
-url="https://gitlab.com/fkzys/subs2srs"
+url="https://gitlab.com/fkzys/subs2srs-mono"
 license=('GPL-3.0-or-later')
 depends=('mono' 'ffmpeg' 'mp3gain' 'mkvtoolnix-cli')
 optdepends=(
