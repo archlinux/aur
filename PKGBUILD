@@ -1,7 +1,7 @@
 # Maintainer: Bink
 pkgname=memerist
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern meme editor built with GTK 4 and Libadwaita"
 arch=('x86_64' 'aarch64')
 url="https://github.com/vani-tty1/memerist"
@@ -18,6 +18,7 @@ makedepends=(
   'ninja'
   'gcc'
   'pkg-config'
+  'blueprint-compiler'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('29fc48a83c153dee3255bebf87225ccc3330166739677d5988a9e0d31b60a7de')
