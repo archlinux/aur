@@ -2,7 +2,7 @@
 
 pkgname=openvpn-connect-linux
 pkgver=3.8.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Community port of OpenVPN Connect to Linux"
 arch=('x86_64')
 url="https://github.com/dresden196/openvpn-connect-linux"
@@ -18,7 +18,7 @@ conflicts=('openvpn-connect')
 options=('!strip' '!debug')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dresden196/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e1668b320bc701fbfd9c2e28238cb976512c08041bc29556c14777e51a5834b3')
+sha256sums=('3d8344197c999ad8e8cb9bd4849a19426ff196b69b4743797168fb8c097b0a8a')
 
 build() {
     cd "${pkgname}-${pkgver}"
