@@ -2,7 +2,7 @@
 _pkgname=lix
 pkgname=haxe-lix
 pkgver=16.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Dependency manager for Haxe projects"
 arch=('any')
 url="https://github.com/lix-pm/lix"

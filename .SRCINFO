@@ -1,7 +1,7 @@
 pkgbase = haxe-lix
 	pkgdesc = Dependency manager for Haxe projects
 	pkgver = 16.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lix-pm/lix
 	arch = any
 	license = MIT
