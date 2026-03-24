@@ -10,10 +10,10 @@
 
 pkgbase=gdal-ecw
 _pkgbase=gdal
-provides=('gdal=3.11.1')
+provides=('gdal=3.12.3')
 conflicts=('gdal')
 pkgname=('gdal-ecw' 'python-gdal-ecw')
-pkgver=3.11.1
+pkgver=3.12.3
 pkgrel=1
 pkgdesc="A translator library for raster and vector geospatial data formats, with support to ECW format. Based on gdal-hdf4 AUR package."
 arch=(x86_64)
@@ -21,19 +21,24 @@ url="https://gdal.org/"
 license=(custom)
 depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf'
          'openjpeg2' 'poppler' 'cfitsio' 'sqlite' 'mariadb-libs' 'postgresql-libs' 'xerces-c' 'json-c' 'arrow' 'pcre2'
-         'libecwj2' 'sfcgal' 'libkml-git')
+         'libecwj2' 
+         'sfcgal'
+         'libkml-git'
+         )
 
 makedepends=(cmake opencl-headers python-setuptools python-numpy
              proj arrow blosc cfitsio curl crypto++ libdeflate expat libfreexl
              libgeotiff geos giflib libheif hdf5 libjpeg-turbo json-c libjxl xz
              libxml2 lz4 mariadb-libs netcdf unixodbc ocl-icd openexr openjpeg2
              openssl pcre2 libpng podofo poppler postgresql-libs qhull
-             libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd libaec sfcgal)
+             libspatialite sqlite swig libtiff libwebp xerces-c zlib zstd libaec 
+             sfcgal
+             )
              # armadillo basisu brunsli lerc qb3 rasterlite2 tiledb
              # ogdi
 changelog=$_pkgbase.changelog
 source=(https://download.osgeo.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz)
-b2sums=('b68aeeb3d56fdd6eb9633c23649ae0a43404ea0a62681e9302ba6ee24d6f81c8cea3f3388d97ffae4859080ed69a204de6a28c09874a38158b445b44053b0ed7')
+b2sums=('07b07fccc778d27a00b54961dc20d94a53a9ce4ff0b20b6e98c2f187ca1a7fbca7b0fa105d5b7b13fbd03a54e551dbd9dbd1ce0ca7fc57721405ae09ae5ab2f1')
 
 build() {
   opt_libs=""
@@ -41,7 +46,6 @@ build() {
 
   cmake -B build -S $_pkgbase-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_STANDARD=20 \
     -DENABLE_IPO=ON \
     -DBUILD_PYTHON_BINDINGS=ON \
     -DGDAL_ENABLE_PLUGINS=ON \
@@ -68,7 +72,6 @@ build() {
     -DGDAL_USE_MYSQL=ON \
     -DGDAL_USE_NETCDF=ON \
     -DGDAL_USE_ODBC=ON \
-    -DGDAL_USE_OPENCL=ON \
     -DGDAL_USE_OPENEXR=ON \
     -DGDAL_USE_OPENJPEG=ON \
     -DGDAL_USE_OPENSSL=ON \
@@ -96,7 +99,9 @@ package_gdal-ecw () {
            giflib libjpeg-turbo json-c xz libxml2 lz4 unixodbc ocl-icd openssl
            pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd libaec
            arrow cfitsio hdf5 libheif mariadb-libs netcdf openexr openjpeg2
-           podofo poppler postgresql-libs libwebp libecwj2 libkml-git)
+           podofo poppler postgresql-libs libwebp libecwj2 
+           #libkml-git
+           )
   optdepends=('arrow: Arrow/Parquet support'
               'cfitsio: FITS support'
               'hdf5: HDF5 support'
