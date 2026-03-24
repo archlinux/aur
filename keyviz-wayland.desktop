@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Keyviz Wayland
+Comment=Key visualization tool
+Exec=keyviz-wayland
+Icon=keyviz-wayland
+Terminal=false
+Type=Application
+Categories=Utility;
