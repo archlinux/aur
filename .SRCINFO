@@ -1,6 +1,6 @@
 pkgbase = cmux-gtk
 	pkgdesc = Terminal multiplexer for AI coding agents (GTK4/libadwaita)
-	pkgver = 0.62.0.alpha.5
+	pkgver = 0.62.0.alpha.6
 	pkgrel = 1
 	url = https://github.com/douglas/cmux-gtk
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = cmux-gtk
 	provides = cmux
 	conflicts = cmux
 	conflicts = cmux-git
-	source = cmux-gtk-0.62.0-alpha.5.tar.gz::https://github.com/douglas/cmux-gtk/archive/v0.62.0-alpha.5.tar.gz
-	sha256sums = 0b05b23694f6986ea5754b964ea1c1a1e4fa00c143b51e7289dff64d8a7f4a44
+	source = cmux-gtk-0.62.0-alpha.6.tar.gz::https://github.com/douglas/cmux-gtk/archive/v0.62.0-alpha.6.tar.gz
+	sha256sums = 7d03097434814d43e44b20936e190b4a482135e22c9cbc6cd69c780f3f07bb47
 
 pkgname = cmux-gtk
