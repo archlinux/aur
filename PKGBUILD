@@ -21,10 +21,8 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 sha256sums=('7c50564cfc539acccd8f51b217a515b221cfa52681d61cd86f18bf559e6b9320'
             '0adff0c8c7bab4573329aab012c1cbcca5b9445b2454444f279180fddcedf4b2')
 
-_reponame="rofi-webapps-manager"
-
 package() {
-    cd "$srcdir/$_reponame-$pkgver"
+    cd "$srcdir"/*-webapps-*
     install -Dm755 webapp-manager.sh "$pkgdir/usr/bin/webapp-manager"
     install -Dm644 webapp-manager.desktop "$pkgdir/usr/share/applications/webapp-manager.desktop"
     install -Dm644 icons/webapp-manager.png "$pkgdir/usr/share/icons/webapp-manager.png"
