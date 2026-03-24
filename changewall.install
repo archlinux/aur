@@ -2,20 +2,20 @@ post_install() {
   cat <<'EOF'
 ChangeWall instalado.
 
-Uso esperado:
-  1. Inicia sesion en KDE Plasma.
-  2. Ejecuta `changewall` una vez.
-  3. En el primer arranque, selecciona la carpeta donde guardas tus fondos.
-  4. Los atajos globales quedaran registrados:
+Uso:
+  1. Cierra sesion y vuelve a entrar en KDE Plasma (o reinicia).
+     ChangeWall se iniciara automaticamente gracias al autostart.
+  2. En el primer arranque aparecera un dialogo para elegir la carpeta
+     donde guardas tus fondos de pantalla.
+  3. Los atajos globales quedaran registrados:
      Meta+F11  -> siguiente fondo
      Meta+F12  -> fondo aleatorio
 
-Autostart:
-  Se instala un archivo en /etc/xdg/autostart para que ChangeWall se inicie
-  automaticamente al entrar en Plasma.
+Reconfigurar la carpeta:
+  Ejecuta: changewall --setup
 
 Config:
-  El archivo del usuario se guarda en ~/.config/changewall/config.json
+  ~/.config/changewall/config.json
 EOF
 }
 
