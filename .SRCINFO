@@ -1,0 +1,20 @@
+pkgbase = vokun
+	pkgdesc = Task-oriented package bundle manager for Arch Linux
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/blacktechwarrior/vokun
+	install = vokun.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = bash
+	depends = pacman
+	optdepends = paru: AUR support (preferred)
+	optdepends = yay: AUR support (alternative)
+	optdepends = fzf: interactive fuzzy picker
+	optdepends = jq: JSON state tracking
+	optdepends = pacman-contrib: cache management (paccache)
+	source = git+https://github.com/blacktechwarrior/vokun.git
+	sha256sums = SKIP
+
+pkgname = vokun
