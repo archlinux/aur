@@ -1,15 +1,15 @@
 # Maintainer: Uyanide <me@uyani.de>
 pkgname=wallreel
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Choose and set desktop wallpapers with customizable themes and actions"
 arch=('x86_64')
 url="https://git.uyani.de/Uyanide/WallReel"
 license=('MIT')
 depends=('qt6-base' 'qt6-declarative' 'gcc-libs' 'glibc')
 makedepends=('cmake' 'ninja')
-source=("${pkgname}-${pkgver}.tar.gz::https://git.uyani.de/Uyanide/WallReel/archive/v${pkgver}.tar.gz")
-sha256sums=('2a50722ba02ee0ace717ffc8ee88dec7bd64f94e7e98a204875f96f68ea1187a')
+source=("${pkgname}-${pkgver}.tar.gz::https://git.uyani.de/Uyanide/WallReel/archive/v2.0.0-2.tar.gz")
+sha256sums=('080d24c2e677194adab994bf107a7ac9ec77a598c0cc5be06743f076a9d2f0a8')
 
 build() {
     cd "wallreel"
