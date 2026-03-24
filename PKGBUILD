@@ -2,7 +2,7 @@
 # Maintainer: Shamz <cmshammaas@gmail.com>
 pkgname=hypryou
 _pkgname="hyprland-material-you"
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=4
 pkgdesc="Dynamic and elegant desktop setup inspired by Material You, featuring auto-generated colors, fluid animations, and customizable user experience."
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ url="https://github.com/koeqaife/hyprland-material-you"
 install=hypryou.install
 license=('GPL3')
 source=("$_pkgname::git+https://github.com/koeqaife/hyprland-material-you.git#tag=v$pkgver")
-sha256sums=('71ff3dac3e3db94ad6fc611c2ce5de93c3f683936de19af22a979e608d0d1213')
+sha256sums=('f2af699152af7d4d888133d7b70f1c987241353f2bc4b9247442a46831f158c8')
 
 depends=(
   'python'
@@ -42,7 +42,7 @@ depends=(
   'hyprshot'
 
   'gtk4-layer-shell'
-  'python-materialyoucolor'
+  'python-materialyoucolor>=3.0'
   'libastal-bluetooth-git'
   'libastal-wireplumber-git'
   'ttf-material-symbols-variable-git'
