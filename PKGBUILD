@@ -2,27 +2,32 @@
 
 _pkgname=haxe-language-server
 pkgname="${_pkgname}-git"
-pkgver=2e70877
+pkgver=0.r1685.g2e70877
 pkgrel=1
 pkgdesc="Language Server Protocol (LSP) implementation for the Haxe language."
 arch=('any')
 url="https://github.com/vshaxe/haxe-language-server"
 license=('MIT')
-privides=(haxe-language-server-git)
+provides=($_pkgname)
+conflicts=($_pkgname)
 depends=('haxe' 'nodejs')
-makedepends=('npm' 'lix')
+makedepends=('git' 'npm' 'lix')
+options=(!debug)
 source=("git+https://github.com/vshaxe/haxe-language-server.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --tags --long --always | sed 's/^v//;s/-/+/g'
+  printf "%s.r%s.g%s" \
+    "$(git describe --tags --abbrev=0 2>/dev/null || echo 0)" \
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "$srcdir/$_pkgname"
 
-  npm install
+  npm ci
   lix run vshaxe-build -t language-server
 }
 
@@ -32,11 +37,8 @@ package() {
   install -d "$pkgdir/usr/lib/$_pkgname"
   cp -r bin "$pkgdir/usr/lib/$_pkgname/"
 
-  install -d "$pkgdir/usr/bin"
-  cat > "$pkgdir/usr/bin/$_pkgname" << 'EOF'
+  install -Dm755 /dev/stdin "$pkgdir/usr/bin/$_pkgname" << 'EOF'
 #!/usr/bin/env bash
 exec node /usr/lib/haxe-language-server/bin/server.js "$@"
 EOF
-
-  chmod +x "$pkgdir/usr/bin/$_pkgname"
 }

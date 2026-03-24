@@ -1,14 +1,18 @@
 pkgbase = haxe-language-server-git
 	pkgdesc = Language Server Protocol (LSP) implementation for the Haxe language.
-	pkgver = 2e70877
+	pkgver = 0.r1685.g2e70877
 	pkgrel = 1
 	url = https://github.com/vshaxe/haxe-language-server
 	arch = any
 	license = MIT
+	makedepends = git
 	makedepends = npm
 	makedepends = lix
 	depends = haxe
 	depends = nodejs
+	provides = haxe-language-server
+	conflicts = haxe-language-server
+	options = !debug
 	source = git+https://github.com/vshaxe/haxe-language-server.git
 	sha256sums = SKIP
 
