@@ -1,6 +1,6 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgname=srcom-bin
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="X compositor - fork by infraflakes"
 arch=('x86_64')
@@ -14,8 +14,10 @@ source=(
     "https://github.com/infraflakes/srcom/releases/download/v$pkgver/srcom-v$pkgver-linux-amd64"
     "https://raw.githubusercontent.com/infraflakes/srcom/refs/heads/main/LICENSES/MIT"
 )
-sha256sums=('559c7d991a8c9857d203f74694ea9212aa53d7ba2f129ca698e3a7246b91c464'
-'fd80a26fbb3f644af1fa994134446702932968519797227e07a1368dea80f0bc')
+sha256sums=(
+    'c73672b4c29c4a1475fb5d5cc7aac56143cf34ed7c1b32099df0a73fb9e936a4'
+    'fd80a26fbb3f644af1fa994134446702932968519797227e07a1368dea80f0bc'
+)
 
 package() {
     install -Dm755 "srcom-v$pkgver-linux-amd64" "$pkgdir/usr/bin/srcom"
