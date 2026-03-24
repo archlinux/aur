@@ -1,14 +1,14 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgname=msk144decoder-git
-pkgver=r33.b4cfcfc
-pkgrel=2
+pkgver=r34.761d0b3
+pkgrel=1
 pkgdesc="MSK144, JT65, Q65 Console Stream Decoders"
 arch=('x86_64' 'aarch64')
 url="https://github.com/alexander-sholohov/msk144decoder"
 license=('GPL-3.0-only' 'MIT')
 depends=('fftw' 'curl' 'gcc-libs' 'boost-libs')
 provides=('msk144decoder')
-makedepends=('cmake' 'git' 'boost')
+makedepends=('cmake' 'git' 'boost' 'gcc-fortran')
 source=("$pkgname"::"git+https://github.com/alexander-sholohov/msk144decoder.git")
 sha256sums=('SKIP')
 
