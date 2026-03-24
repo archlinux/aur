@@ -1,6 +1,6 @@
 pkgbase = linux-fsync-nobara-bin
 	pkgdesc = The Linux kernel and modules of Nobara Project - Prebuilt version
-	pkgver = 6.19.8
+	pkgver = 6.19.9
 	pkgrel = 1
 	url = https://nobaraproject.org
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = linux-fsync-nobara-bin
 	provides = KSMBD-MODULE
 	provides = NTFS3-MODULE
 	options = !strip
-	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-43/fedora-43-x86_64/10223242-kernel/kernel-core-6.19.8-200.nobara.fc43.x86_64.rpm
-	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-43/fedora-43-x86_64/10223242-kernel/kernel-modules-6.19.8-200.nobara.fc43.x86_64.rpm
-	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-43/fedora-43-x86_64/10223242-kernel/kernel-devel-6.19.8-200.nobara.fc43.x86_64.rpm
+	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-43/fedora-43-x86_64/10255390-kernel/kernel-core-6.19.9-202.nobara.fc43.x86_64.rpm
+	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-43/fedora-43-x86_64/10255390-kernel/kernel-modules-6.19.9-202.nobara.fc43.x86_64.rpm
+	source = https://download.copr.fedorainfracloud.org/results/gloriouseggroll/nobara-43/fedora-43-x86_64/10255390-kernel/kernel-devel-6.19.9-202.nobara.fc43.x86_64.rpm
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
-	sha256sums = d6582d3f91113dd4ce0644e3afa68a6e08da82ffe9a6a90b567d901910ce8888
-	sha256sums = e8187fdbb1bf99117ad030496e11307cca822bfe10ae073a266290186ce62e0d
-	sha256sums = 304694b7d8637d9cea861082245b51d78ae38a2e0668de778ef1eaa0d00b4097
+	sha256sums = e511e6a343c4570f9cd144d16010a4317092958b59421d54c958f5f182cbfb96
+	sha256sums = 7e3bd0538690db0a6d9cb840458965ced6da0838817687914cbe2cceea725951
+	sha256sums = 6d9d0448f7d044b8c7ffcff2aece371aee760596d01ae5dd79bcc12326bbbfa9
 
 pkgname = linux-fsync-nobara-bin
