@@ -1,7 +1,7 @@
 pkgname=ww-manager
 pkgver=2.1.5
 pkgrel=1
-pkgdesc="鸣潮命令行管理器 (Wuthering Waves CLI Manager)"
+pkgdesc="ww-manager (A Wuthering Waves CLI Manager)"
 arch=('any')
 url="https://github.com/timetetng/wutheringwaves-cli-manager"
 license=('MIT')
