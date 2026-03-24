@@ -1,7 +1,7 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
 pkgname=fladder-git
 _pkgname=Fladder
-pkgver=r261.5b781cf
+pkgver=r914.2822a4a
 pkgrel=1
 pkgdesc="Fladder - A Simple Jellyfin Frontend"
 arch=('x86_64')
@@ -13,7 +13,7 @@ _branch="develop"
 source=("git+https://github.com/Fladder-App/Fladder.git#branch=${_branch}"
     "fladder.desktop")
 sha256sums=('SKIP'
-            '76f8c52297b4f423dd6767a37b56c30ea3398e16f2e0500911ba01df40635ce1')
+            '0511c6da677cf361abb8d997a9e8795b39ab083cdbe79b2d7bbb8896c4c5d733')
 conflicts=('fladder')
 provides=("fladder")
 

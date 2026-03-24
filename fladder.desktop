@@ -5,6 +5,6 @@ Comment=A Simple Jellyfin Frontend
 Exec=fladder
 Icon=fladder
 Terminal=false
-Categories=Video;AudioVideo;TV;Player;
+Categories=AudioVideo;Video;Player;
 StartupNotify=true
 StartupWMClass=Fladder
