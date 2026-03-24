@@ -1,0 +1,17 @@
+pkgbase = haxe-lix
+	pkgdesc = Dependency manager for Haxe projects
+	pkgver = 16.0.2
+	pkgrel = 1
+	url = https://github.com/lix-pm/lix
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	provides = haxe
+	provides = neko
+	conflicts = haxe
+	conflicts = neko
+	source = https://registry.npmjs.org/haxe-lix/-/haxe-lix-16.0.2.tgz
+	sha256sums = 02f513a86e07ed149d876459f2bc210dce136cf5b41b7e1f34eb99be120cc4e5
+
+pkgname = haxe-lix
