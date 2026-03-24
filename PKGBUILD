@@ -1,4 +1,4 @@
-# Maintainer: dresden196 <dwildey@hivelocity.net>
+# Maintainer: Dresden Wildey <dresden196@users.noreply.github.com>
 
 pkgname=openvpn-connect-linux
 pkgver=3.8.0
