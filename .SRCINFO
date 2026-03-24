@@ -1,0 +1,14 @@
+pkgbase = pulumi-mcp-server
+	pkgdesc = A server implementing the Model Context Protocol for Pulumi.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://www.pulumi.com/docs/iac/using-pulumi/mcp-server/
+	arch = any
+	license = Apache-2.0
+	depends = nodejs
+	provides = pulumi-mcp-server
+	noextract = @pulumi/mcp-server-0.2.0.tgz
+	source = https://registry.npmjs.org/@pulumi/mcp-server/-/mcp-server-0.2.0.tgz
+	sha256sums = 33d484e816a3b5198cfd957e4ae7fffaceeb5a9affd1c0ecf39a8893e7cd88ae
+
+pkgname = pulumi-mcp-server
