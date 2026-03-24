@@ -38,7 +38,7 @@ shopt -s extglob
 
 prepare() {
   rm ${_pkgname}-${pkgver}.tar.gz;
-  gendesk -f -n --pkgname "$_pkgname" --pkgdesc "$pkgdesc" --exec="'${outdir}/Blue_Division.x86_64'"
+  gendesk -f -n --pkgname "$_pkgname" --pkgdesc "$pkgdesc" --exec="'${outdir}/Blue Division.x86_64'"
 }
 
 package() {
