@@ -1,4 +1,4 @@
-pkgname=jasp-desktop-git
+pkgname=jasp-desktop
 pkgver=0.96.0.16.g9116257a9
 pkgrel=1
 pkgdesc="JASP Desktop (development branch) with private Boost 1.88 and librdata under /opt/jasp-desktop"
