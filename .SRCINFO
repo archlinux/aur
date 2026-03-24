@@ -1,6 +1,6 @@
 pkgbase = pipewire-screenaudio-git
 	pkgdesc = Extension to passthrough pipewire audio to WebRTC Screenshare
-	pkgver = 0.4.1.r5.gfbeaa4c
+	pkgver = 0.4.2.r1.ge65c521
 	pkgrel = 1
 	url = https://github.com/IceDBorn/pipewire-screenaudio
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = pipewire-screenaudio-git
 	makedepends = clang
 	makedepends = pkgconf
 	depends = pipewire
-	optdepends = pipewire-screenaudio-librewolf: Native Messaging for LibreWolf
 	provides = pipewire-screenaudio
 	options = !lto
 	source = git+https://github.com/IceDBorn/pipewire-screenaudio.git#branch=main

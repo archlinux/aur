@@ -1,6 +1,6 @@
 # Maintainer: jim3692 <jim3692 at gmail.com>
 pkgname="pipewire-screenaudio-git"
-pkgver=0.4.1.r5.gfbeaa4c
+pkgver=0.4.2.r1.ge65c521
 pkgver() {
   cd "pipewire-screenaudio"
   git describe --tags --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
@@ -17,9 +17,6 @@ makedepends=(
   )
 depends=(
   'pipewire'
-  )
-optdepends=(
-  'pipewire-screenaudio-librewolf: Native Messaging for LibreWolf'
   )
 options=(!lto)
 conflicts=()
@@ -45,7 +42,21 @@ build() {
 }
 
 package() {
-  install -Dm644 "$srcdir/pipewire-screenaudio/native/native-messaging-hosts/firefox.json" "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.icedborn.pipewirescreenaudioconnector.json"
-  sed -i 's|target/debug|target/release|g' "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.icedborn.pipewirescreenaudioconnector.json"
-  install -Dm755 "$srcdir/pipewire-screenaudio/native/connector-rs/target/release/connector-rs" "$pkgdir/usr/lib/pipewire-screenaudio/connector-rs/target/release/connector-rs"
+  cd $srcdir/pipewire-screenaudio/native
+
+  install -Dm755 'connector-rs/target/release/connector-rs' "$pkgdir/usr/lib/pipewire-screenaudio/connector/connector-rs"
+
+  # Firefox based browsers
+  install -Dm644 'native-messaging-hosts/com.icedborn.pipewirescreenaudioconnector.json' "$pkgdir/usr/lib/pipewire-screenaudio/messaging-hosts/firefox.json"
+  sed -i 's|CONNECTOR_BINARY_PATH|/usr/lib/pipewire-screenaudio/connector/connector-rs|g' "$pkgdir/usr/lib/pipewire-screenaudio/messaging-hosts/firefox.json"
+  sed -i 's|ALLOWED_FIELD|allowed_extensions|g'                                                             "$pkgdir/usr/lib/pipewire-screenaudio/messaging-hosts/firefox.json"
+  sed -i 's|ALLOWED_VALUE|pipewire-screenaudio@icenjim|g'                                                   "$pkgdir/usr/lib/pipewire-screenaudio/messaging-hosts/firefox.json"
+
+  # Firefox
+  mkdir -p "$pkgdir/usr/lib/mozilla/native-messaging-hosts"
+  ln -s "/usr/lib/pipewire-screenaudio/messaging-hosts/firefox.json" "$pkgdir/usr/lib/mozilla/native-messaging-hosts/com.icedborn.pipewirescreenaudioconnector.json"
+
+  # LibreWolf
+  mkdir -p "$pkgdir/usr/lib/librewolf/native-messaging-hosts"
+  ln -s "/usr/lib/pipewire-screenaudio/messaging-hosts/firefox.json" "$pkgdir/usr/lib/librewolf/native-messaging-hosts/com.icedborn.pipewirescreenaudioconnector.json"
 }
