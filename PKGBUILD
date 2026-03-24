@@ -1,12 +1,12 @@
 pkgname=bonsai
 pkgver=2.0.1
-pkgrel=7
+pkgrel=8
 pkgdesc="Terminal-based disk usage analyzer, TUI remake of GNOME Baobab"
 arch=('x86_64')
 url="https://github.com/orrnithogalum/bonsai.git#branch=main"
 license=('GPL-3.0-or-later')
 depends=('glibc' 'gcc-libs')
-makedepends=('cmake' 'gcc' 'git' 'xdd')
+makedepends=('cmake' 'gcc' 'git' 'xxd')
 source=(git+"$url")
 md5sums=('SKIP')
 
