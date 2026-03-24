@@ -1,7 +1,7 @@
 # Maintainer: Kimiblock Moe
 pkgname=portable-git
 epoch=1
-pkgver=15.0.beta.r12.g36603b7d
+pkgver=15.0.beta.r14.g723cf136
 pkgrel=1
 epoch=
 pkgdesc="Portable Sandboxing framework"
@@ -64,4 +64,6 @@ function package() {
 	export pkgdir
 	cd "${srcdir}/portable"
 	lib/package.sh
+
+	rm "${pkgdir}/usr/bin/portable-packer" || true
 }
