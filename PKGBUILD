@@ -2,13 +2,13 @@
 pkgname=python-pyshacl
 _name=${pkgname#python-}
 pkgver=0.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python SHACL Validator"
 arch=('x86_64')
 url="https://github.com/RDFLib/pySHACL"
 license=('APACHE')
 groups=()
-depends=('python-rdflib')
+depends=('python-rdflib' 'python-prettytable' 'python-owlrl' 'python-packaging' 'python-importlib-metadata')
 makedepends=(python-build python-installer python-wheel poetry)
 optdepends=()
 provides=('python-pyshacl')
