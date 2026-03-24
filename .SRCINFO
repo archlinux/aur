@@ -13,6 +13,7 @@ pkgbase = ethos-forge
 	depends = python-zstandard
 	depends = gcc
 	depends = patchelf
+	options = !strip
 	source = git+https://github.com/AmanCode22/forge.git#tag=v0.3.0
 	sha256sums = SKIP
 

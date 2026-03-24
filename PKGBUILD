@@ -10,6 +10,7 @@ depends=('ethos-lang' 'python' 'python-zstandard' 'gcc' 'patchelf')
 makedepends=('git' 'python-pip')
 source=("git+https://github.com/AmanCode22/forge.git#tag=v${pkgver}")
 sha256sums=('SKIP')
+options=('!strip')
 
 build() {
   cd "forge"
