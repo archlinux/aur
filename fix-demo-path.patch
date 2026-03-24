@@ -1,0 +1,31 @@
+ src/main.rs | 17 ++---------------
+ 1 file changed, 2 insertions(+), 15 deletions(-)
+
+diff --git a/src/main.rs b/src/main.rs
+index 788bda5..0d531ba 100644
+--- a/src/main.rs
++++ b/src/main.rs
+@@ -58,21 +58,8 @@ struct Cli {
+ }
+ 
+ fn find_luigi_ply() -> Option<PathBuf> {
+-    // 1. Check relative to cwd
+-    let cwd_candidate = PathBuf::from("scenes/luigi.ply");
+-    if cwd_candidate.exists() {
+-        return Some(cwd_candidate);
+-    }
+-    // 2. Check next to the executable
+-    if let Ok(exe_path) = std::env::current_exe() {
+-        if let Some(exe_dir) = exe_path.parent() {
+-            let exe_candidate = exe_dir.join("scenes/luigi.ply");
+-            if exe_candidate.exists() {
+-                return Some(exe_candidate);
+-            }
+-        }
+-    }
+-    None
++    let path = PathBuf::from("/usr/share/tortuise/scenes/luigi.ply");
++    Some(path)
+ }
+ 
+ fn load_splats_from_cli(cli: &Cli) -> AppResult<Vec<splat::Splat>> {
