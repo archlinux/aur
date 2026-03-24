@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="fga"
-pkgver=0.7.11
+pkgver=0.7.12
 pkgrel=1
 pkgdesc="Cross-platform CLI to interact with an OpenFGA server"
 arch=(
@@ -25,7 +25,7 @@ _pkgsrc="${pkgname}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=v${pkgver}?signed"
 )
-b2sums=('d3a53795a83974f57b7fe9645232fd1c60dd2e046d5dbe8b4762f5ed17c786ec42766b8bd2140283199bd7f7f7b057d6e929bda3ee1bc0598209bf3f8ea3bb9d')
+b2sums=('f81da8283d52722aca54a1760c6e0c432c2371ef9e74f184801c35e384a8a853a771c43e710be955f1c750803ef79f571faace7ea0811897689d8811835f570c')
 validpgpkeys=(
   '510C64A6CDC3F0965291ED872E31AD2F054526F0' # Raghd Hamzeh <raghd.hamzeh@openfga.dev> (https://github.com/rhamzeh.gpg)
   '897A8242A34A6CD10A71EF68FE63E8B7C46439C8' # Anurag Bandyopadhyay <angbpy@gmail.com> (https://github.com/SoulPancake.gpg)
