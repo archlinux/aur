@@ -15,7 +15,9 @@ pkgbase = subs2srs-mono-git
 	optdepends = anki: flashcard application
 	optdepends = noto-fonts-cjk: display japanese characters
 	provides = subs2srs-mono
+	provides = subs2srs
 	conflicts = subs2srs-mono
+	conflicts = subs2srs
 	source = subs2srs-mono-git::git+https://gitlab.com/fkzys/subs2srs-mono.git
 	sha256sums = SKIP
 

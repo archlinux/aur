@@ -12,8 +12,8 @@ optdepends=(
     'noto-fonts-cjk: display japanese characters'
 )
 makedepends=('git' 'p7zip' 'icoutils')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=('subs2srs-mono' 'subs2srs')
+conflicts=('subs2srs-mono' 'subs2srs')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
