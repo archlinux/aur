@@ -1,25 +1,26 @@
 # Maintainer: Manuel Wiesinger <m {you know what belongs here} mmap {and here} at>
 
 pkgname=dymo-bluetooth
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Use DYMO LetraTag LT-200B thermal label printer over Bluetooth in Python, without depending on its app"
 arch=('any')
 url="https://github.com/ysfchn/dymo-bluetooth"
 license=('MIT')
 depends=(
-    "python-barcode"
-    "python-bleak"
-    "python-pillow"
-    "python>=3.9"
+    'python-barcode'
+    'python-bleak'
+    'python-pillow'
+    'python-typing_extensions'
+    'python>=3.9'
 )
 makedepends=(
-  "python-build"
-  "python-installer"
+  'python-build'
+  'python-installer'
   "python-wheel"
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ysfchn/dymo-bluetooth/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('cfc10aec1169f4736b6ac444966c367fc4d2173e0c49e758c3bf8f937ea47f62e2cae09c38194063e831f61c95c3f2127ed947da18579dcf0fcaba185dbe53ec')
+b2sums=('ed69f534ce58247a610a3964768decbb4fef875dd68bc7b67bf859912e682c96df21ea71d8e30325f8726c378bb36b1df1b6b75673f08e58a91a75ceb065b7e3')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"

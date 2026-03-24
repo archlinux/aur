@@ -1,6 +1,6 @@
 pkgbase = dymo-bluetooth
 	pkgdesc = Use DYMO LetraTag LT-200B thermal label printer over Bluetooth in Python, without depending on its app
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/ysfchn/dymo-bluetooth
 	arch = any
@@ -11,8 +11,9 @@ pkgbase = dymo-bluetooth
 	depends = python-barcode
 	depends = python-bleak
 	depends = python-pillow
+	depends = python-typing_extensions
 	depends = python>=3.9
-	source = dymo-bluetooth-0.1.2.tar.gz::https://github.com/ysfchn/dymo-bluetooth/archive/refs/tags/0.1.2.tar.gz
-	b2sums = cfc10aec1169f4736b6ac444966c367fc4d2173e0c49e758c3bf8f937ea47f62e2cae09c38194063e831f61c95c3f2127ed947da18579dcf0fcaba185dbe53ec
+	source = dymo-bluetooth-0.1.3.tar.gz::https://github.com/ysfchn/dymo-bluetooth/archive/refs/tags/0.1.3.tar.gz
+	b2sums = ed69f534ce58247a610a3964768decbb4fef875dd68bc7b67bf859912e682c96df21ea71d8e30325f8726c378bb36b1df1b6b75673f08e58a91a75ceb065b7e3
 
 pkgname = dymo-bluetooth
