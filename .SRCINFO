@@ -1,0 +1,22 @@
+pkgbase = openvpn-connect-linux-appimage
+	pkgdesc = Community port of OpenVPN Connect to Linux
+	pkgver = 3.8.0
+	pkgrel = 1
+	url = https://github.com/dresden196/openvpn-connect-linux
+	arch = x86_64
+	license = MIT
+	depends = openvpn
+	depends = polkit
+	depends = libsecret
+	depends = fuse2
+	depends = hicolor-icon-theme
+	optdepends = networkmanager: network state detection
+	optdepends = libnotify: desktop notifications
+	provides = openvpn-connect
+	conflicts = openvpn-connect
+	noextract = openvpn-connect-linux-appimage-3.8.0.AppImage
+	options = !strip
+	source = openvpn-connect-linux-appimage-3.8.0.AppImage::https://github.com/dresden196/openvpn-connect-linux/releases/download/v3.8.0/openvpn-connect-linux-3.8.0-x86_64.AppImage
+	sha256sums = b204d0494474fdba1a5831eab413538051a16e2b8601b16b1b6a8629023f2df5
+
+pkgname = openvpn-connect-linux-appimage
