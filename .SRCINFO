@@ -18,7 +18,7 @@ pkgbase = figma-linux-next
 	source = figma-linux-next-0.13.1.tar.gz::https://github.com/arximus88/figma-linux-next/archive/refs/tags/v0.13.1.tar.gz
 	source = figma-linux-next.desktop
 	source = figma-linux-next-launcher.sh
-	sha256sums = SKIP
+	sha256sums = 04d2413927f823fb4b52d4f58832dffaada990bea642ebe56435605300d17054
 	sha256sums = SKIP
 	sha256sums = SKIP
 
