@@ -1,11 +1,10 @@
-diff '--color=auto' -rupN cosmic-settings-daemon.orig/Cargo.toml cosmic-settings-daemon/Cargo.toml
---- cosmic-settings-daemon.orig/Cargo.toml	2024-09-26 19:33:10.985621327 +0200
-+++ cosmic-settings-daemon/Cargo.toml	2024-09-26 19:33:29.449161455 +0200
-@@ -40,3 +40,7 @@ memoize = "0.4.2"
- # libcosmic = { path = "../libcosmic" }
- # cosmic-config = { path = "../libcosmic/cosmic-config" }
- # cosmic-theme = { path = "../libcosmic/cosmic-theme" }
+diff --unified --recursive --text a/Cargo.toml b/Cargo.toml
+--- a/Cargo.toml	2026-03-24 09:20:38.341371213 -0600
++++ b/Cargo.toml	2026-03-24 09:21:33.531670491 -0600
+@@ -55,3 +55,6 @@
+ # iced_futures = { git = "https://github.com/pop-os/libcosmic//" }
+ # cosmic-config = { git = "https://github.com/pop-os/libcosmic//" }
+ # cosmic-theme = { git = "https://github.com/pop-os/libcosmic//" }
 +
 +[profile.release]
 +lto = "thin"
-+
