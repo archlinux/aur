@@ -1,8 +1,8 @@
 # Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=chaterm-bin
 _pkgname=Chaterm
-pkgver=0.9.3
-_electronversion=40
+pkgver=0.9.4
+_electronversion=41
 pkgrel=1
 pkgdesc="A terminal tool with AI Agent, makes you no need to learn complicated regular expressions, Perl and Python, switches and Linux commands, SQL syntax can easily manage thousands of devices!(Prebuilt version,use system-wide electron)"
 arch=('x86_64')
@@ -22,7 +22,7 @@ source=(
     "${pkgname%-bin}-${pkgver}-x86_64.deb::${_ghurl}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64.deb"
     "${pkgname%-bin}.sh"
 )
-sha256sums=('229c7f89bd5e618f4b0d404df883d406acd326a973b7b3a6939a0ef17ca4193c'
+sha256sums=('96bd17d49ed3a06c21df93bd97a24fc72896a9197c710664a73d1b5aba7a235d'
             '31ad33b633744f5361abd964be306cea53ae1050e760c787115f7eca60045ae6')
 _get_electron_version() {
     _elec_ver="$(strings "${srcdir}/opt/${_pkgname}/${pkgname%-bin}" | grep '^Chrome/[0-9.]* Electron/[0-9]' | cut -d'/' -f3 | cut -d'.' -f1)"
@@ -45,10 +45,21 @@ prepare() {
     find "${srcdir}/app.asar.unpacked/node_modules" -type d \( -name "android-*" -o -name "darwin-*" -o -name "ios-*" -o -name "win32-*" -o -name "linux-arm64" \) \
         -exec rm -rf {} +
     asar p "${srcdir}/app.asar.unpacked" "${srcdir}/opt/${_pkgname}/resources/app.asar"
-    find "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/node_modules" -type d \
-        \( -name "android-*" -o -name "darwin-*" -o -name "ios-*" -o -name "win32-*" -o -name "linux-arm64" \) \
+    find "${srcdir}/opt/${_pkgname}/resources/" \
+        \( -type d -path "*/app.asar.unpacked/node_modules/*" \
+            \( -name "android-*" -o \
+                -name "darwin-*" -o \
+                -name "ios-*" -o \
+                -name "win32-*" -o \
+                -name "linux-arm64" \
+            \) \
+        \) -o \
+        \( -type f \
+            \( -name "apparmor-profile" -o \
+                -name "package-type" \
+            \) \
+        \) \
         -exec rm -rf {} +
-    rm -rf "${srcdir}/opt/${_pkgname}/resources/app.asar.unpacked/"{apparmor-profile,package-type}
 }
 package() {
     install -Dm755 "${srcdir}/${pkgname%-bin}.sh" "${pkgdir}/usr/bin/${pkgname%-bin}"
