@@ -4,10 +4,9 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full
-pkgver=8.0.1
-pkgrel=4
+pkgver=8.1
+pkgrel=1
 _svt_hevc_ver='4181c9ee0611baefb40b4c0ed10023cfd837d522'
-_svt_vp9_ver='290fb8c3662ed76a8887b587a9b8201878ba71ed'
 _whispercpp_ver='1.8.3'
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac for AMD)'
 arch=('x86_64')
@@ -30,7 +29,6 @@ depends=(
     'freetype2'
     'frei0r-plugins' # loaded on-demand by dlopen()
     'fribidi'
-    'gcc-libs'
     'glib2'
     'glibc'
     'glslang'
@@ -55,8 +53,10 @@ depends=(
     'libdvdnav'
     'libdvdread'
     'libfdk-aac'
+    'libgcc'
     'libgcrypt'
     'libgme'
+    'libgomp'
     'libiec61883'
     'libilbc'
     'libjxl'
@@ -73,6 +73,7 @@ depends=(
     'librsvg'
     'libsoxr'
     'libssh'
+    'libstdc++'
     'libtheora'
     'libva'
     'libvorbis'
@@ -85,9 +86,11 @@ depends=(
     'libxv'
     'libwebp'
     'lilv'
+    'mpeghdec'
     'ocl-icd'
     'openal'
     'openapv'
+    'opencolorio'
     'opencore-amr'
     'opencv'
     'openh264'
@@ -107,6 +110,7 @@ depends=(
     'srt'
     'svt-av1'
     'svt-hevc'
+    'svt-jpeg-xs-git'
     'svt-vp9'
     'tesseract'
     'twolame'
@@ -158,27 +162,19 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "https://github.com/ggml-org/whisper.cpp/archive/v${_whispercpp_ver}/whisper.cpp-${_whispercpp_ver}.tar.gz"
         '010-ffmpeg-add-svt-hevc.patch'
         "020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
+        '030-ffmpeg-add-svt-vp9.patch'
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '060-ffmpeg-whisper.cpp-fix-pkgconfig.patch'
-        '100-ffmpeg-add-opencv4-support.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/c4ce51ee62205c74604767f1b7dab6a036edac7f'
-        '110-ffmpeg-add-playback-support-to-decklink-sdk14.3-devices.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/0cd75dbfa0fc6c213cf9240b3c03c809070c5209'
-        '120-ffmpeg-add-decklink-sdk14.3-build-support.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/27e94281d1c880b4cae28738e35c0d6f9a58f06b'
-        '130-ffmpeg-svt-av1-4.0-fix.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/a5d4c398b411a00ac09d8fe3b66117222323844c'
         'LICENSE')
-sha256sums=('05ee0b03119b45c0bdb4df654b96802e909e0a752f72e4fe3794f487229e5a41'
+sha256sums=('b072aed6871998cce9b36e7774033105ca29e33632be5b6347f3206898e0756a'
             'SKIP'
             'SKIP'
             '870ba21409cdf66697dc4db15ebdb13bc67037d76c7cc63756c81471d8f1731a'
-            'ccdc1cab97d1fe5a454cd57fbd2bb865256092d715fd7f380c30cc3f42891b3c'
+            'ff6dabc3cbef98d22cc8f081343d5c66b2564b3a898c2dbcc88baa5017d80232'
             'a164ebdc4d281352bf7ad1b179aae4aeb33f1191c444bed96cb8ab333c046f81'
-            '1f06dfcb78e43a6c732cbc4f6ae583ae19fb111b56d33c8c860d5b6566c04f99'
-            '5cb2475de410f5696072687af88e91461cdacd1bb636ac14a3b348e3383934f1'
+            '73e516bd771024f100983d0b7a5d43b49fd1e992c83e6caec445b7338e79e8c2'
+            '95223dda645c15b3daf79cd4d55df5d4ac46207f749973396bb761b743586ed6'
             '98b3d28cbd13bb575c602785f6b8cb0b66ea3128ab5a3a82fc1645822320c136'
-            'f5b448f7e6e567273f74ed6e62ed25d8470f6bc9183c247993f1c03e78b57587'
-            'd1c4bdbcdd5a852f46639e0cb3dbf0b4a71884487c9fbcdb38139a1e5e96ddaf'
-            'ee89e0759f5233d390e3a23415e2664aae38bbe89e10d49ecda8a06c26bd21ee'
-            '1dbbc1a4cf9834b3902236abc27fefe982da03a14bcaa89fb90c7c8bd10a1664'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -186,13 +182,9 @@ prepare() {
     rm -f "ffmpeg-${pkgver}/libavcodec"/libsvt_{hevc,vp9}.c
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/010-ffmpeg-add-svt-hevc.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "whisper.cpp-${_whispercpp_ver}" -Np1 -i "${srcdir}/060-ffmpeg-whisper.cpp-fix-pkgconfig.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/100-ffmpeg-add-opencv4-support.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/110-ffmpeg-add-playback-support-to-decklink-sdk14.3-devices.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/120-ffmpeg-add-decklink-sdk14.3-build-support.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/130-ffmpeg-svt-av1-4.0-fix.patch"
 }
 
 build() {
@@ -253,6 +245,7 @@ build() {
         --enable-alsa \
         --enable-avisynth \
         --enable-bzlib \
+        --enable-cairo \
         --enable-chromaprint \
         --enable-frei0r \
         --enable-gcrypt \
@@ -296,7 +289,9 @@ build() {
         --enable-liblensfun \
         --enable-libmodplug \
         --enable-libmp3lame \
+        --enable-libmpeghdec \
         --enable-liboapv \
+        --enable-libopencolorio \
         --enable-libopencore-amrnb \
         --enable-libopencore-amrwb \
         --enable-libopencv \
@@ -325,6 +320,7 @@ build() {
         --enable-libssh \
         --enable-libsvtav1 \
         --enable-libsvthevc \
+        --enable-libsvtjpegxs \
         --enable-libsvtvp9 \
         --disable-libtensorflow \
         --enable-libtesseract \

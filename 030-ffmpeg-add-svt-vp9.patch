@@ -1,6 +1,6 @@
 --- a/configure
 +++ b/configure
-@@ -294,6 +294,7 @@ External library support:
+@@ -299,6 +299,7 @@ External library support:
    --enable-libvorbis       enable Vorbis en/decoding via libvorbis,
                             native implementation exists [no]
    --enable-libvpx          enable VP8 and VP9 de/encoding via libvpx [no]
@@ -8,7 +8,7 @@
    --enable-libvvenc        enable H.266/VVC encoding via vvenc [no]
    --enable-libwebp         enable WebP encoding via libwebp [no]
    --enable-libx264         enable H.264 encoding via x264 [no]
-@@ -1991,6 +1992,7 @@ EXTERNAL_LIBRARY_LIST="
+@@ -2103,6 +2104,7 @@ EXTERNAL_LIBRARY_LIST="
      libvmaf
      libvorbis
      libvpx
@@ -16,7 +16,7 @@
      libvvenc
      libwebp
      libxevd
-@@ -3660,6 +3662,7 @@ libvpx_vp8_decoder_deps="libvpx"
+@@ -3827,6 +3829,7 @@ libvpx_vp8_decoder_deps="libvpx"
  libvpx_vp8_encoder_deps="libvpx"
  libvpx_vp9_decoder_deps="libvpx"
  libvpx_vp9_encoder_deps="libvpx"
@@ -24,7 +24,7 @@
  libvvenc_encoder_deps="libvvenc"
  libwebp_encoder_deps="libwebp"
  libwebp_anim_encoder_deps="libwebp"
-@@ -7195,6 +7198,7 @@ enabled libvpx            && {
+@@ -7423,6 +7426,7 @@ enabled libvpx            && {
      fi
  }
  
@@ -34,7 +34,7 @@
      enabled libwebp_encoder      && require_pkg_config libwebp "libwebp >= 0.2.0" webp/encode.h WebPGetEncoderVersion
 --- a/libavcodec/Makefile
 +++ b/libavcodec/Makefile
-@@ -1195,6 +1195,7 @@ OBJS-$(CONFIG_LIBVPX_VP8_DECODER)         += libvpxdec.o
+@@ -1221,6 +1221,7 @@ OBJS-$(CONFIG_LIBVPX_VP8_DECODER)         += libvpxdec.o
  OBJS-$(CONFIG_LIBVPX_VP8_ENCODER)         += libvpxenc.o
  OBJS-$(CONFIG_LIBVPX_VP9_DECODER)         += libvpxdec.o
  OBJS-$(CONFIG_LIBVPX_VP9_ENCODER)         += libvpxenc.o
@@ -44,7 +44,7 @@
  OBJS-$(CONFIG_LIBWEBP_ANIM_ENCODER)       += libwebpenc_common.o libwebpenc_animencoder.o
 --- a/libavcodec/allcodecs.c
 +++ b/libavcodec/allcodecs.c
-@@ -813,6 +813,7 @@ extern const FFCodec ff_libvpx_vp8_encoder;
+@@ -830,6 +830,7 @@ extern const FFCodec ff_libvpx_vp8_encoder;
  extern const FFCodec ff_libvpx_vp8_decoder;
  extern FFCodec ff_libvpx_vp9_encoder;
  extern const FFCodec ff_libvpx_vp9_decoder;
@@ -54,7 +54,7 @@
  extern const FFCodec ff_libwebp_anim_encoder;
 --- /dev/null
 +++ b/libavcodec/libsvt_vp9.c
-@@ -0,0 +1,707 @@
+@@ -0,0 +1,701 @@
 +/*
 +* Scalable Video Technology for VP9 encoder library plugin
 +*
@@ -83,16 +83,13 @@
 +
 +#include "libavutil/common.h"
 +#include "libavutil/frame.h"
-+#include "libavutil/opt.h"
 +#include "libavutil/mem.h"
++#include "libavutil/opt.h"
 +#include "libavcodec/get_bits.h"
-+#include "libavcodec/version.h"
 +
 +#include "codec_internal.h"
-+#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(58, 93, 100)
++#include "internal.h"
 +#include "encode.h"
-+#endif
-+
 +#include "avcodec.h"
 +
 +#define SUPERFRAME_INDEX_MAX_SIZE 128
@@ -270,11 +267,11 @@
 +        param->intra_period  = avctx->gop_size - 1;
 +
 +    if (avctx->framerate.num > 0 && avctx->framerate.den > 0) {
-+        param->frame_rate_numerator     = avctx->framerate.num;
-+        param->frame_rate_denominator   = avctx->framerate.den;
++        param->frame_rate_numerator   = avctx->framerate.num;
++        param->frame_rate_denominator = avctx->framerate.den;
 +    } else {
-+        param->frame_rate_numerator     = avctx->time_base.den;
-+        param->frame_rate_denominator   = avctx->time_base.num;
++        param->frame_rate_numerator   = avctx->time_base.den;
++        param->frame_rate_denominator = avctx->time_base.num;
 +    }
 +
 +    if (param->rate_control_mode) {
@@ -600,7 +597,6 @@
 +        return AVERROR_EOF;
 +    }
 +
-+#if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(58, 93, 100)
 +    AVFrame *frame = svt_enc->frame;
 +    ret = ff_encode_get_frame(avctx, frame);
 +    if (ret < 0 && ret != AVERROR_EOF) {
@@ -609,10 +605,10 @@
 +    if (ret == AVERROR_EOF)
 +        frame = NULL;
 +
-+    eb_send_frame(avctx, frame);
++    ret = eb_send_frame(avctx, frame);
++    if (ret < 0)
++        return ret;
 +    av_frame_unref(svt_enc->frame);
-+#endif
-+
 +
 +    for (;;) {
 +        svt_ret = eb_vp9_svt_get_packet(svt_enc->svt_handle, &headerPtr, svt_enc->eos_flag);
@@ -744,21 +740,22 @@
 +
 +const FFCodec ff_libsvt_vp9_encoder = {
 +    .p.name           = "libsvt_vp9",
-+    CODEC_LONG_NAME("SVT-VP9(Scalable Video Technology for VP9) encoder"),
++    .p.long_name      = NULL_IF_CONFIG_SMALL("SVT-VP9(Scalable Video Technology for VP9) encoder"),
 +    .priv_data_size = sizeof(SvtContext),
 +    .p.type           = AVMEDIA_TYPE_VIDEO,
 +    .p.id             = AV_CODEC_ID_VP9,
 +    .init             = eb_enc_init,
-+#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(58, 93, 100)
-+    .send_frame       = eb_send_frame,
-+#endif
 +    FF_CODEC_RECEIVE_PACKET_CB(eb_receive_packet),
 +    .close            = eb_enc_close,
 +    .p.capabilities   = AV_CODEC_CAP_DELAY | AV_CODEC_CAP_OTHER_THREADS,
-+    CODEC_PIXFMTS(AV_PIX_FMT_YUV420P,
-+                  AV_PIX_FMT_NONE),
++    .caps_internal    = FF_CODEC_CAP_NOT_INIT_THREADSAFE |
++                        FF_CODEC_CAP_AUTO_THREADS | FF_CODEC_CAP_INIT_CLEANUP,
++    .p.pix_fmts       = (const enum AVPixelFormat[]){ AV_PIX_FMT_YUV420P,
++                                                    AV_PIX_FMT_NONE },
 +    .p.priv_class     = &class,
 +    .defaults         = eb_enc_defaults,
-+    .caps_internal    = FF_CODEC_CAP_INIT_CLEANUP,
 +    .p.wrapper_name   = "libsvt_vp9",
 +};
+-- 
+2.50.1
+
