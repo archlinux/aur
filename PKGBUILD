@@ -11,6 +11,7 @@ optdepends=('ethos-forge: for managing Ethos packages and projects')
 makedepends=('git' 'python-pip')
 source=("git+https://github.com/AmanCode22/ethos-lang.git#tag=v${pkgver}")
 sha256sums=('SKIP')
+options=('!strip')
 
 build() {
   cd "${pkgname}"
