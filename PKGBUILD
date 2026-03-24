@@ -1,6 +1,6 @@
 # Maintainer: yeggis <yeggis@users.noreply.github.com>
 pkgname=chevren
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Turkish subtitle generator for YouTube videos and local files"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(
 )
 makedepends=('python-pip' 'python-virtualenv')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yeggis/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4bb5623c9de1d2ad0e52ca8bb3b5bfe4ed5becfcdb6ca7cb1cf3f45445843c8c')
+sha256sums=('d71c33f21a37bc269f829f8d34c7aaede55ddd6bd9b7c988b47b4cbfc25b6328')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
