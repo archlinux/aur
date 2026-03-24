@@ -1,6 +1,6 @@
 pkgbase = waydoodle
 	pkgdesc = A minimalistic screen annotation tool for Wayland
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/dessaya/waydoodle
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = waydoodle
 	makedepends = cargo
 	depends = gcc-libs
 	depends = wayland
-	source = git+https://github.com/dessaya/waydoodle.git#tag=v0.1.0
+	source = git+https://github.com/dessaya/waydoodle.git#tag=v0.2.0
 	sha256sums = SKIP
 
 pkgname = waydoodle
