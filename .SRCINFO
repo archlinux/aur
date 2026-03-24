@@ -1,6 +1,6 @@
 pkgbase = kula
 	pkgdesc = Lightweight, self-contained monitoring tool
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://github.com/c0m4r/kula
 	install = kula.install
@@ -8,7 +8,7 @@ pkgbase = kula
 	license = AGPL-3.0
 	makedepends = go
 	depends = glibc
-	source = kula-0.12.1.tar.gz::https://github.com/c0m4r/kula/archive/0.12.1.tar.gz
-	sha256sums = 255de5051a917bf270f6c405c99d735329c590bdaaa9cafb1e4e89cd70118cc9
+	source = kula-0.13.0.tar.gz::https://github.com/c0m4r/kula/archive/0.13.0.tar.gz
+	sha256sums = df991523333fc768d9783ec9cce6b8256c31c0af052197cd8ab3e58146b0d6cf
 
 pkgname = kula
