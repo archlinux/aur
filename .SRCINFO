@@ -15,6 +15,7 @@ pkgbase = mediawriter
 	depends = qt6-5compat
 	depends = qt6-svg
 	depends = glibc
+	depends = hicolor-icon-theme
 	depends = libgcc
 	depends = libstdc++
 	optdepends = udisks2: Disk Management Service for disk installation
