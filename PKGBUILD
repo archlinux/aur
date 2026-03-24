@@ -17,6 +17,9 @@ options=('!debug' '!strip')
 
 _baseurl="https://github.com/DanielLavrushin/b4/releases/download/v${pkgver}"
 
+source=("b4.service")
+sha256sums=('a4a7663bc633b35cd9a885380a1c826c8ec11c311d521f3c04494f58ac7671f7')
+
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::${_baseurl}/b4-linux-amd64.tar.gz")
 source_i686=("${pkgname}-${pkgver}-i686.tar.gz::${_baseurl}/b4-linux-386.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::${_baseurl}/b4-linux-arm64.tar.gz")
@@ -34,6 +37,8 @@ sha256sums_loong64=('b471596d54dd4e698c12a6e4304f7ec8b6b379d21996f96a6b0deedfde2
 sha256sums_ppc64=('d21f22530c4c5f1165fd34361ecc05be7af6c7d112c8b0ff8f5d1cebdd0d58f4')
 sha256sums_ppc64le=('8327ccaca95d3b815e5c61cc3944c2c14b788709dd6f8451d2f20849407035cd')
 sha256sums_s390x=('641b4a719732878f6c83ce9ab563b303c0ed2d3e5c77b35c45875ab7de6bc1aa')
+
+backup=('etc/b4/b4.json')
 
 package() {
     case "$CARCH" in
@@ -53,4 +58,6 @@ package() {
 
     tar -xzf "${srcdir}/${_tarball}" -C "${srcdir}"
     install -Dm755 "${srcdir}/${_bin}" "${pkgdir}/usr/bin/b4"
+    install -Dm644 "${srcdir}/b4.service" "${pkgdir}/usr/lib/systemd/system/b4.service"
+    install -dm755 "${pkgdir}/etc/b4"
 }

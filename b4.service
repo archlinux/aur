@@ -1,0 +1,21 @@
+[Unit]
+Description=B4 - DPI bypass network packet processor
+Documentation=https://github.com/DanielLavrushin/b4
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/b4
+Restart=on-failure
+RestartSec=5
+
+# b4 требует доступа к netfilter — запускается от root
+User=root
+
+# необходимые capabilities для работы с netfilter/iptables
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_RAW CAP_SYS_MODULE
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW CAP_SYS_MODULE
+
+[Install]
+WantedBy=multi-user.target
