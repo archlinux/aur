@@ -1,6 +1,6 @@
 pkgbase = epic-asset-manager
 	pkgdesc = A frontend to Assets purchased on Epic Games Store
-	pkgver = 3.9.3
+	pkgver = 3.9.4
 	pkgrel = 1
 	url = https://github.com/AchetaGames/Epic-Asset-Manager
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = epic-asset-manager
 	depends = dconf
 	provides = eam
 	conflicts = eam
-	source = https://github.com/AchetaGames/Epic-Asset-Manager/archive/refs/tags/v3.9.3.tar.gz
-	sha256sums = 507396dd4a4c759548e4a55a606bcf691362129de30ad45d284848d395412a4b
+	source = https://github.com/AchetaGames/Epic-Asset-Manager/archive/refs/tags/v3.9.4.tar.gz
+	sha256sums = 7562dc38594c0348c539bfdcd185b0bbaf9a321cbc8a32fad3fdb38047b4b42b
 
 pkgname = epic-asset-manager
