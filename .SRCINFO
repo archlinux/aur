@@ -1,13 +1,12 @@
 pkgbase = zephyr-sdk-gnu-bin
 	pkgdesc = SDK for Zephyr real-time operating system
 	pkgver = 1.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.zephyrproject.org/
 	arch = x86_64
 	arch = aarch64
 	license = Apache
 	conflicts = zephyr-sdk
-	conflicts = zephyr-sdk-bin
 	options = !strip
 	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_aarch64-zephyr-elf.tar.xz
 	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_arc64-zephyr-elf.tar.xz
@@ -201,7 +200,6 @@ pkgname = zephyr-sdk-gnu-bin
 	optdepends = python-pyelftools
 	optdepends = pyocd: programming and debugging ARM MCUs
 	optdepends = python-west: Zephyr RTOS Project meta-tool
-	provides = zephyr-sdk
 	provides = zephyr-sdk-gnu
 	replaces = zephyr-sdk-bin
 
