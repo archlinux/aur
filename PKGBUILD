@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Your Name <valentin@barbaza.org>
 pkgname=olcli
 _npmname=@aloth/olcli
 pkgver=0.1.6
