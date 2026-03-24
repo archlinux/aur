@@ -1,5 +1,5 @@
 pkgbase = python-dsinternals
-	pkgdesc = DPAPI looting remotely in Python
+	pkgdesc = Python library containing necessary components to interact with Active Directory.
 	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/p0dalirius/pydsinternals
