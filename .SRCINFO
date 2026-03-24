@@ -1,6 +1,6 @@
 pkgbase = openssh-gui-nightly
 	pkgdesc = A GUI for OpenSSH configuration and management (Nightly build from develop)
-	pkgver = 3.0.0.20260324.349ff2b
+	pkgver = 3.0.0.20260324.bee5b03
 	pkgrel = 1
 	url = https://github.com/frequency403/OpenSSH-GUI
 	arch = x86_64
@@ -15,13 +15,13 @@ pkgbase = openssh-gui-nightly
 	conflicts = openssh-gui-bin
 	conflicts = openssh-gui-git
 	options = !strip
-	source = openssh-gui-nightly-3.0.0.20260324.349ff2b::https://github.com/frequency403/OpenSSH-GUI/releases/download/nightly/OpenSSH-GUI-nightly-linux-x64
-	source = openssh-gui-nightly-icon-3.0.0.20260324.349ff2b.png::https://github.com/frequency403/OpenSSH-GUI/raw/develop/OpenSSH_GUI/Assets/appicon.png
-	source = openssh-gui-nightly-desktop-3.0.0.20260324.349ff2b.desktop::https://github.com/frequency403/OpenSSH-GUI/raw/develop/openssh-gui.desktop
-	source = openssh-gui-nightly-license-3.0.0.20260324.349ff2b::https://github.com/frequency403/OpenSSH-GUI/raw/develop/LICENSE
-	sha256sums = 0975581f49f6664cf2b6bf006a9c45df0f95c400c7e542c3df0ad6866bd32229
+	source = openssh-gui-nightly-3.0.0.20260324.bee5b03::https://github.com/frequency403/OpenSSH-GUI/releases/download/nightly/OpenSSH-GUI-nightly-linux-x64
+	source = openssh-gui-nightly-icon-3.0.0.20260324.bee5b03.png::https://github.com/frequency403/OpenSSH-GUI/raw/develop/OpenSSH_GUI/Assets/appicon.png
+	source = openssh-gui-nightly-desktop-3.0.0.20260324.bee5b03.desktop::https://github.com/frequency403/OpenSSH-GUI/raw/develop/openssh-gui.desktop
+	source = openssh-gui-nightly-license-3.0.0.20260324.bee5b03::https://github.com/frequency403/OpenSSH-GUI/raw/develop/LICENSE
+	sha256sums = 7bc37f39f83094d3b77daeb7d55901718ebfe83ddbfec18916fbab17ba9d0fdf
 	sha256sums = de5104be112173655a8a5950a4b129e0f28d94e29b80239bf7c82360c524bf9c
-	sha256sums = 9d73c85e0e47fddf9e8930b42caf0f89b39df7f6088a9ca1a08d0c5d2ea5ff42
+	sha256sums = 96d9902c103bd057d0f6b5f571bb12bcfae4a457ed0022eaf34726fc0558c137
 	sha256sums = 04765b5ced4962532281a4c40754d25380df5e89e49bf3f0ea9054f05a6ee34a
 
 pkgname = openssh-gui-nightly
