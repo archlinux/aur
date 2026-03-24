@@ -1,0 +1,14 @@
+pkgbase = rbtr-gui-git
+	pkgdesc = A simple GUI interface for rbtr
+	pkgver = r1.0
+	pkgrel = 1
+	url = https://gitlab.com/vbarch/rbtr
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = rbtr-git
+	source = rbtr-gui-git::git+https://gitlab.com/vbarch/rbtr-gui.git
+	sha256sums = SKIP
+
+pkgname = rbtr-gui-git
