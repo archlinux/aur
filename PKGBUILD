@@ -1,13 +1,13 @@
 # Maintainer: dr00tb <adam at dr00tb dot com>
 
 pkgname=tkey-ssh-agent
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A ssh-agent for the Tillitis TKey"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/tillitis/${pkgname}"
 license=('GPL2')
-makedepends=('make' 'go')
+makedepends=('go')
 conflicts=("${pkgname}2")
 provides=("${pkgname}")
 install="${pkgname}.install"
