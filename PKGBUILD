@@ -3,8 +3,8 @@
 pkgbase=openixsuit-bin
 pkgname=openixsuit-bin
 _pkgname=OpenixSuit
-pkgver=0.3.14
-pkgrel=1
+pkgver=0.3.15
+pkgrel=5
 arch=('x86_64')
 _name=${_pkgname}_${pkgver}_amd64
 options=(!strip !debug)
@@ -22,17 +22,17 @@ depends=(
 )
 makedepends=(libarchive)
 optdepends=(
-    "openixcard: Open Source Version of Allwinner PhoenixCard on Linux"
     "openiximg: A comprehensive toolset for handling Allwinner IMAGEWTY format firmware images"
+    "openixcli: Open Source CLI Tools for Flash Allwinner Firmware to Devices"
 )
-provides=(${pkgname%-bin} openixcard)
-conflicts=(${pkgname%-bin})
-replaces=()
+provides=(${pkgname%-bin} openixcard sunxi-livesuite)
+conflicts=(${pkgname%-bin} openixcard sunxi-livesuite)
+replaces=(sunxi-livesuite)
 pkgdesc="Tools to Flash Allwinner Firmware to Devices like PhoenixSuit and LiveSuit"
 license=('LicenseRef-scancode-commercial-license')
 url="https://github.com/YuzukiTsuru/OpenixSuit"
 source=("${url}/releases/download/v${pkgver}/${_name}.deb")
-sha256sums=('be2775023b4c3e5728111c4c6a02e9f74ee7146cc02244a2cfb870ded09c6570')
+sha256sums=('327138ca4ed1883783e3f959114911f2997a06fc112981d4d1c02a66c19bfe9e')
 # noextract=()
 
 # prepare() {
