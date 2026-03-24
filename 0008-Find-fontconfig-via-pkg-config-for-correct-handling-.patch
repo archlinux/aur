@@ -1,7 +1,7 @@
-From b735fadf5c33568efdd6cf4fb440985bd3eecfee Mon Sep 17 00:00:00 2001
+From d9277566ee03d58ddcecd3675bfe9d9bbb11482f Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 24 Apr 2022 23:00:27 +0200
-Subject: [PATCH 08/24] Find fontconfig via pkg-config for correct handling of
+Subject: [PATCH 08/22] Find fontconfig via pkg-config for correct handling of
  its dependencies
 
 CMake's own find module unforunately does not consider fontconfig's deps so
@@ -33,10 +33,10 @@ index 00000000000..1a52327ae6f
 +    set(Fontconfig_FOUND 1)
 +endif()
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
-index 8c0f11924d1..a93e8d6b896 100644
+index 57991122a68..53413208160 100644
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
-@@ -797,7 +797,7 @@ qt_internal_extend_target(Gui CONDITION QT_FEATURE_fontconfig AND QT_FEATURE_fre
+@@ -802,7 +802,7 @@ qt_internal_extend_target(Gui CONDITION QT_FEATURE_fontconfig AND QT_FEATURE_fre
          text/unix/qfontconfigdatabase.cpp text/unix/qfontconfigdatabase_p.h
          text/unix/qfontenginemultifontconfig.cpp text/unix/qfontenginemultifontconfig_p.h
      LIBRARIES
@@ -46,18 +46,18 @@ index 8c0f11924d1..a93e8d6b896 100644
  
  qt_internal_extend_target(Gui CONDITION APPLE AND NOT MACOS
 diff --git a/src/gui/configure.cmake b/src/gui/configure.cmake
-index 0bda6ac09f2..7d395d92a0f 100644
+index e34f4d8b30a..a7ed36e3be4 100644
 --- a/src/gui/configure.cmake
 +++ b/src/gui/configure.cmake
-@@ -46,7 +46,7 @@ qt_find_package(WrapSystemFreetype 2.2.0 MODULE
+@@ -50,7 +50,7 @@ qt_find_package(WrapSystemFreetype 2.2.0 MODULE
  if(QT_FEATURE_system_zlib)
      qt_add_qmake_lib_dependency(freetype zlib)
  endif()
--qt_find_package(Fontconfig PROVIDED_TARGETS Fontconfig::Fontconfig MODULE_NAME gui QMAKE_LIB fontconfig)
-+qt_find_package(Fontconfig PROVIDED_TARGETS PkgConfig::Fontconfig MODULE_NAME gui QMAKE_LIB fontconfig)
- qt_add_qmake_lib_dependency(fontconfig freetype)
- qt_find_package(gbm MODULE PROVIDED_TARGETS gbm::gbm MODULE_NAME gui QMAKE_LIB gbm)
- qt_find_package(WrapSystemHarfbuzz 2.6.0 MODULE
+-qt_find_package(Fontconfig PROVIDED_TARGETS Fontconfig::Fontconfig MODULE_NAME gui
++qt_find_package(Fontconfig PROVIDED_TARGETS PkgConfig::Fontconfig MODULE_NAME gui
+     QMAKE_LIB fontconfig
+     VCPKG_PORT fontconfig
+     VCPKG_ADD_TO_FEATURE fontconfig
 -- 
-2.52.0
+2.53.0
 
