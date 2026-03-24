@@ -8,39 +8,33 @@ pkgname=(
 )
 
 _commitnumber=66020
-_commit=701f9cdf9170e1c14b5b753fed15e36604b25a44
+_commit=d5b1ab28fe6ba844beaa6a489021101b6c0622db
 
 # set this to anything to build with clang
 # recommend manually setting -DUSE_LTO=OFF to -DUSE_LTO=$(nproc) in build()
 _clangbuild=
 
 pkgver=21.3
-pkgrel=3
-arch=(aarch64)
+pkgrel=6
+arch=('aarch64' 'armv7h')
 url="https://github.com/graysky2/xbmc/tree/gs-gbm_omega"
 license=('GPL-2.0-or-later')
 makedepends=(
   'bluez-libs' 'cmake' 'curl' 'dav1d' 'doxygen' 'git' 'glew'
-  'gperf' 'hicolor-icon-theme' 'java-runtime<21' 'fmt' 'libass'
+  'gperf' 'hicolor-icon-theme' 'fmt' 'libass' 'java-environment<21'
   'libbluray' 'libcdio' 'libcec' 'libgl' 'mariadb-libs' 'libmicrohttpd'
   'libmodplug' 'libmpeg2' 'libnfs' 'libpulse'
   'libxrandr' 'libxslt' 'lirc' 'lzo' 'mesa' 'nasm'
   'pipewire' 'python-pycryptodomex' 'python-pillow' 'python-pybluez'
   'python-simplejson' 'smbclient' 'sndio' 'spdlog' 'taglib'
   'tinyxml' 'swig' 'upower' 'giflib' 'rapidjson' 'ghostscript' 'meson' 'gtest'
-  'graphviz' 'pcre' 'tinyxml2' 'libdisplay-info'
-  # cmake/scripts/linux/Install.cmake calls distutils
-  # python 3.12 does no longer come with distutils on board
-  'python-setuptools'
-  # gbm
-  'libinput'
-  'libxkbcommon' 'libdisplay-info'
+  'graphviz' 'libinput' 'libxkbcommon' 'pcre' 'libdisplay-info' 'tinyxml2' 'python-setuptools'
 )
 
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _codename=Omega
-_init_version=1.150
+_init_version=2.0
 _libdvdcss_version="1.4.3-Next-Nexus-Alpha2-2"
 _libdvdnav_version="6.1.1-Next-Nexus-Alpha2-2"
 _libdvdread_version="6.1.3-Next-Nexus-Alpha2-2"
@@ -74,7 +68,7 @@ noextract=(
   "flatbuffers-$_flatbuffers_version.tar.gz"
   "libudfread-$_libudfread_version.tar.gz"
 )
-sha256sums=('ecbb49ab80f096951f2dfd128763634341ef07382cf37a8265031500eeb5d487'
+sha256sums=('561edb25c047d604f7a67c1689fd47a101646a544426a690c32709c564dcbfde'
             'f38c4a4e7a4f4da6d8e83b8852489aa3bb6588a915dc41f5ee89d9aad305a06e'
             '584f62a3896794408d46368e2ecf2c6217ab9c676ce85921b2d68b8961f49dfc'
             '719130091e3adc9725ba72df808f24a14737a009dca5a4c38c601c0c76449b62'
@@ -83,7 +77,7 @@ sha256sums=('ecbb49ab80f096951f2dfd128763634341ef07382cf37a8265031500eeb5d487'
             'e4018e850f80700acee8da296e56e15b1eef711ab15157e542e7d7e1237c3476'
             '8aff985da30aaab37edf8e5b02fda33ed4cbdd962699a8e2af98fdef306f4e4d'
             '2bf16726ac98d093156195bb049a663e07d3323e079c26912546f4e05c77bac5'
-            '38392cea74ba011dde8d03c9526dd02731e991462e843513646880789673574b'
+            '995910eb228986cfb8b921a86d421e06130dfb629a97681eb8c0a2e7ede2d9cf'
             '5ac76e6ff16d8f0f60a414647bddb13b46402563dd02d69a05e90c0ddbb085f0'
             '5a2f1c5fa9189d56eaf7e05024071c57e11f92b4eeb68b4bb0555c1fdd66c890')
 
