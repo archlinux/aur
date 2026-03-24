@@ -1,15 +1,15 @@
 # Maintainer: Imperator Storm <ImperatorStorm11@protonmail.com>
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 pkgname=dh-autoreconf
-pkgver=21
-pkgrel=2
+pkgver=22
+pkgrel=1
 pkgdesc="debhelper add-on to call autoreconf and clean up after the build"
 arch=('any')
 url="https://packages.debian.org/sid/dh-autoreconf"
 license=('GPL')
 depends=('debhelper' 'perl' 'autoconf' 'automake' 'gettext' 'libtool')
 source=(https://deb.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.tar.xz)
-sha256sums=('5cbd797955824105a16eefcafc4a92eacc556372a69de744b504877723a7ab0e')
+sha256sums=('83e23a7a0ba6180e177bb7f8cbc5e0c849b0d3abef8562a06814f70492e07117')
 
 package() {
 #  cd "$srcdir/$pkgname-$pkgver"
