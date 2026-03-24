@@ -18,12 +18,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/timetetng/wutheringwaves-cl
 sha256sums=('1ef6291c77e8f9b8b82fc24664d9b04f453be2e53147fea9147d5005621b4e72')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${srcdir}/wutheringwaves-cli-manager-$pkgver"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${srcdir}/wutheringwaves-cli-manager-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
