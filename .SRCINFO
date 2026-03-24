@@ -1,0 +1,19 @@
+pkgbase = libhui-git
+	pkgdesc = Library aiming to deliver simple API for building apps with HTML+CSS+JS UI in C/C++/Python/Rust and thus make developing GUI app as easy as it can be.
+	pkgver = r44.ea2df2e
+	pkgrel = 1
+	url = https://github.com/mi4code/HUI
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	license = LGPL2.1
+	depends = gtk3
+	depends = webkit2gtk
+	depends = gtk-layer-shell
+	provides = libhui
+	conflicts = libhui
+	source = git+https://github.com/mi4code/HUI.git
+	sha256sums = SKIP
+
+pkgname = libhui-git
