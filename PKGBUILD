@@ -1,30 +1,25 @@
 # Maintainer: Christopher Ritsen <chris.ritsen@gmail.com>
-_name='netaudio'
+_name='netaudio-lib'
 pkgname='python-netaudio'
-pkgver=0.1.5
+pkgver=0.0.7
 pkgrel=1
-pkgdesc="CLI for controlling Audinate Dante network audio devices"
+pkgdesc="Python library for controlling Audinate Dante network audio devices"
 arch=(any)
 url='https://github.com/chris-ritsen/network-audio-controller'
 license=(Unlicense)
-depends=('python' 'python-netaudio-lib' 'python-typer' 'python-rich')
-optdepends=('python-redis: packet capture features'
-            'python-pyyaml: YAML output format'
-            'tshark: live network capture')
-makedepends=('python-build' 'python-installer' 'python-hatchling')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
-        "netaudio.service::https://raw.githubusercontent.com/chris-ritsen/network-audio-controller/master/systemd/netaudio.service")
-sha256sums=('a4d35200127c3d2a681918ce24934518be352cbad1dd2f09c0be45bef3d1adb1'
-            'SKIP')
+depends=('python' 'python-zeroconf' 'python-ifaddr' 'python-sqlitedict')
+optdepends=('python-pynacl: device lock/unlock')
+makedepends=('python-build' 'python-installer' 'python-wheel' 'python-hatchling')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name//-/_}/${_name//-/_}-${pkgver}.tar.gz")
+sha256sums=('eaa3e3d7688e0c44384b82334e3ff1cf7f463b100853654c3c6df1013013b3d6')
 
 build() {
-    cd "${_name}-${pkgver}"
+    cd "${_name//-/_}-${pkgver}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${_name}-${pkgver}"
+    cd "${_name//-/_}-${pkgver}"
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm644 "$srcdir/netaudio.service" "$pkgdir/usr/lib/systemd/user/netaudio.service"
 }
