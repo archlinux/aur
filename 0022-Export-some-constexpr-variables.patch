@@ -1,7 +1,7 @@
-From 5aefba3133f53c0d1806f74261d223144778f974 Mon Sep 17 00:00:00 2001
+From 49efe5594ae01c04a5f1317eab4b66f1120fd3a5 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 1 Dec 2025 11:31:42 +0100
-Subject: [PATCH 24/24] Export some constexpr variables
+Subject: [PATCH 22/22] Export some constexpr variables
 
 From MINGW-packages commit e5c4652cad95df5f6435b6c564c52a7ae7d8e5f7.
 
@@ -41,7 +41,7 @@ index 7b43aab22d1..19e7fdd5a22 100644
  using namespace Qt::StringLiterals;
  
 diff --git a/src/gui/rhi/qrhi.cpp b/src/gui/rhi/qrhi.cpp
-index 3cade9ec2cb..03cb8c82772 100644
+index de451e243eb..028bbe7691f 100644
 --- a/src/gui/rhi/qrhi.cpp
 +++ b/src/gui/rhi/qrhi.cpp
 @@ -25,6 +25,9 @@
@@ -55,7 +55,7 @@ index 3cade9ec2cb..03cb8c82772 100644
  // way to get graphics info printed from Qt Quick apps, and the Quick
  // scenegraph is our primary user.
 diff --git a/src/network/kernel/qhostaddress.cpp b/src/network/kernel/qhostaddress.cpp
-index 12522f28122..8637b288326 100644
+index 82632110d32..25ae9fb9396 100644
 --- a/src/network/kernel/qhostaddress.cpp
 +++ b/src/network/kernel/qhostaddress.cpp
 @@ -29,6 +29,11 @@
@@ -71,5 +71,5 @@ index 12522f28122..8637b288326 100644
  const QAbstractSocket::NetworkLayerProtocol QHostAddress::IPv4Protocol;
  const QAbstractSocket::NetworkLayerProtocol QHostAddress::IPv6Protocol;
 -- 
-2.52.0
+2.53.0
 
