@@ -4,7 +4,7 @@ _name=scoring-matrices
 _module=${_name/-/_}
 pkgname=python-${_name}
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Dependency free, Cython-compatible scoring matrices to use with biological sequences."
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/althonos/scoring-matrices"
@@ -20,10 +20,10 @@ build() {
 }
 
 check() {
-    local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    whl="${srcdir}/${_module}-${pkgver}/dist/${_module}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+    whl="${srcdir}/${_module}-${pkgver}/dist/${_module}-${pkgver}-cp311-abi3-linux_${machine}.whl"
 
+    rm -rf "${srcdir}/env"
     python -m venv --symlinks --system-site-packages "${srcdir}/env"
     source "${srcdir}/env/bin/activate"
     python -m installer "$whl"
@@ -32,9 +32,8 @@ check() {
 }
 
 package() {
-    local abitag=$(python -c 'import sys; print(*sys.version_info[:2], sep="")')
     local machine=$(python -c 'import platform; print(platform.machine())')
-    whl="${srcdir}/${_module}-${pkgver}/dist/${_module}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
+    whl="${srcdir}/${_module}-${pkgver}/dist/${_module}-${pkgver}-cp311-abi3-linux_${machine}.whl"
 
     python -m installer --prefix="${pkgdir}/usr" "$whl"
     install -Dm644  ${srcdir}/${_module}-${pkgver}/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"

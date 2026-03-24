@@ -1,7 +1,7 @@
 pkgbase = python-scoring-matrices
 	pkgdesc = Dependency free, Cython-compatible scoring matrices to use with biological sequences.
 	pkgver = 0.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/althonos/scoring-matrices
 	arch = i686
 	arch = pentium4
