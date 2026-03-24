@@ -9,8 +9,8 @@
 # Contributor: a32633 <brunofernandes@ua.pt>
 
 pkgname='omnetpp'
-pkgver=6.2.0
-_pkgver=6.2.0
+pkgver=6.3.0
+_pkgver=6.3.0
 pkgrel=1
 pkgdesc='Component-based simulation package designed for modeling communication networks'
 arch=('x86_64')
@@ -59,7 +59,7 @@ source=(
   OMNeT++.desktop
   omnetpp.sh)
 
-sha512sums=('6c8eeeeab0760084361220935c35da7423c99d18cd2b49a36c9cf82d27363e3b9522d6b60a9a679d2b3856bae6772e36d628ba76923cfc79ec30c577107df4e6'
+sha512sums=('0e2aec0447b1cf394966f0adb90c4e4571a9ba3c52777d49f7be0fbf4800aedfbb638617b2e35c28569c8b651a4da452cb37b871472b74d740d09b1f3c034300'
   '064bb4747e9985dab8480de69978e2258111a38a7d49bb24c36f1ac070058bb2149bb4d2b2fd15d5a35f0ce02bf47e1d212a74397afd07a40a68b5eab7decfd1'
   'facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1')
 
