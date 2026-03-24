@@ -16,7 +16,7 @@ license=('custom:MIT')
 provides=('luajit-lgi')
 conflicts=('luajit-lgi')
 depends=('libffi' 'luajit' 'gobject-introspection-runtime')
-makedepends=('gobject-introspection')
+makedepends=('git' 'gobject-introspection')
 source=('git+https://github.com/pavouk/lgi.git')
 md5sums=('SKIP')
 

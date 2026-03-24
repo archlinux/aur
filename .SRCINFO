@@ -6,6 +6,7 @@ pkgbase = luajit-lgi-git
 	arch = i686
 	arch = x86_64
 	license = custom:MIT
+	makedepends = git
 	makedepends = gobject-introspection
 	depends = libffi
 	depends = luajit
