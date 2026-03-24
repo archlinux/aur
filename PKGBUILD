@@ -1,8 +1,8 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname='radae-decoder-git'
-pkgver='r108.940d4e5'
-pkgrel='1'
+pkgver=r195.b61e613
+pkgrel=1
 pkgdesc='FreeDV RADEv1 decoder/encoder with GUI (RADAE_Gui) and CLI tools including webrx_rade_decode'
 arch=('x86_64' 'aarch64')
 url='https://github.com/peterbmarks/radae_decoder'
@@ -27,14 +27,21 @@ conflicts=('radae-decoder')
 # This is a known packaging wart and should be fixed properly in the future.
 source=(
     'radae_decoder::git+https://github.com/peterbmarks/radae_decoder.git'
+    'radae_nopy::git+https://github.com/peterbmarks/radae_nopy.git'
 )
-sha256sums=(
-    'SKIP'
-)
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
     cd radae_decoder
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+    cd radae_decoder
+    git submodule init
+    git config submodule.extern/radae_nopy.url "${srcdir}/radae_nopy"
+    git -c protocol.file.allow=always submodule update
 }
 
 build() {
