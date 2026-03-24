@@ -123,6 +123,7 @@ pkgname = gdal-ecw
 	depends = postgresql-libs
 	depends = libwebp
 	depends = libecwj2
+	depends = libkml-git
 	optdepends = arrow: Arrow/Parquet support
 	optdepends = cfitsio: FITS support
 	optdepends = hdf5: HDF5 support

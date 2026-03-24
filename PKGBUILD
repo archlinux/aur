@@ -100,7 +100,7 @@ package_gdal-ecw () {
            pcre2 libpng qhull libspatialite sqlite libtiff xerces-c zlib zstd libaec
            arrow cfitsio hdf5 libheif mariadb-libs netcdf openexr openjpeg2
            podofo poppler postgresql-libs libwebp libecwj2 
-           #libkml-git
+           libkml-git
            )
   optdepends=('arrow: Arrow/Parquet support'
               'cfitsio: FITS support'
