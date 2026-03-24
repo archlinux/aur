@@ -1,9 +1,9 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 
-# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v10.0.0
+# Release notes https://github.com/lemonade-sdk/lemonade/releases/tag/v10.0.1
 pkgname=lemonade-desktop
 pkgdesc="Lemonade: Local LLM Serving with GPU and NPU acceleration (GUI)"
-pkgver=10.0.0
+pkgver=10.0.1
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/lemonade-sdk/lemonade/'
@@ -20,7 +20,7 @@ source=(
 )
 
 sha256sums=(
-'c9e79a200dea7191de7a8d863714feba399a9a6a808d1d4548f0bf4508ca8889'
+'dadc23ec2615e22f36e925def3a276004ef2bf541e97f7450ed920d5f1de760d'
 'e232749150095212ea3b74b798a81a16eb409443a4b57dca670cd4f38caa9f2b'
 'd79018cd17fd8524f45f336d63ec86b39f3d3a8e75736cecec9f495ebdce20fa'
 )
