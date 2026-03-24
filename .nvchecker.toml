@@ -1,0 +1,3 @@
+[github-markdown-toc]
+source = "git"
+git = "https://github.com/ekalinin/github-markdown-toc.git"
