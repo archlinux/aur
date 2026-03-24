@@ -21,7 +21,5 @@ build() {
 
 package() {
   cd "${pkgname}-${pkgver}"
-  #install -d ${pkgdir}/opt/sdrtunk/bin
-  #install -Dm755 scripts/sdf-trunk ${pkgdir}/opt/sdrtunk/bin/sdr-trunk
   install -Dm644 codec/build/libs/jmbe-${pkgver}.jar "${pkgdir}/usr/lib/jvm/java-${_java_ver}-openjdk/lib/jmbe-${pkgver}.jar"
 }
