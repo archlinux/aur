@@ -1,16 +1,16 @@
-# Maintainer: Damglador <vse.stopchanskyi@gmail.com>
+# Maintainer: Damglador <damglador@gmail.com>
 # Contributor: dillard
 # Thanks krunner-vscodeprojects-git for the base for this PKGBUILD
 
 _pkgname=krunner-steam
 pkgname=$_pkgname-git
 pkgver=r17.b86af5d
-pkgrel=2
+pkgrel=3
 pkgdesc="Launch Steam games from Krunner"
 arch=("any")
 url="https://github.com/xTibor/krunner-steam.git"
 license=("LGPL-2.0-or-later")
-depends=("python-gobject" "krunner" "kservice")
+depends=("python-gobject" "python-dbus" "krunner" "kservice")
 makedepends=("git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")

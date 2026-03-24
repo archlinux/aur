@@ -1,13 +1,14 @@
 pkgbase = krunner-steam-git
 	pkgdesc = Launch Steam games from Krunner
 	pkgver = r17.b86af5d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/xTibor/krunner-steam.git
 	install = krunner-steam.install
 	arch = any
 	license = LGPL-2.0-or-later
 	makedepends = git
 	depends = python-gobject
+	depends = python-dbus
 	depends = krunner
 	depends = kservice
 	provides = krunner-steam
