@@ -5,7 +5,7 @@ pkgver=6.6.1_813.r30f6179
 pkgrel=1
 pkgdesc="Polkit authenticator with a User Account Control interface for AeroShell desktops"
 arch=(x86_64)
-url="https://gitgud.io/aeroshell/uac-polkit-agent"
+url="https://github.com/aeroshell-desktop/uac-polkit-agent"
 license=('GPL-3.0-or-later')
 depends=(gcc-libs
          glibc
