@@ -1,10 +1,12 @@
 pkgbase = openvpn-connect-linux
 	pkgdesc = Community port of OpenVPN Connect to Linux
 	pkgver = 3.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dresden196/openvpn-connect-linux
+	install = openvpn-connect-linux.install
 	arch = x86_64
 	license = MIT
+	license = LicenseRef-OpenVPN-Connect
 	makedepends = npm
 	makedepends = nodejs
 	makedepends = python
@@ -20,6 +22,6 @@ pkgbase = openvpn-connect-linux
 	provides = openvpn-connect
 	conflicts = openvpn-connect
 	source = openvpn-connect-linux-3.8.0.tar.gz::https://github.com/dresden196/openvpn-connect-linux/archive/refs/tags/v3.8.0.tar.gz
-	sha256sums = SKIP
+	sha256sums = d349d882681f097501987e92428884a8496d9a485466f6c8d17914bb6e9d5d6d
 
 pkgname = openvpn-connect-linux

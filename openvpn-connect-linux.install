@@ -1,0 +1,10 @@
+post_install() {
+    echo "==> OpenVPN Connect for Linux has been installed."
+    echo "==> Requires 'openvpn' package to be installed for VPN connections."
+    echo "==> Launch from your application menu or run: openvpn-connect"
+    echo "==> Privilege escalation for VPN connections is handled via polkit (pkexec)."
+}
+
+post_upgrade() {
+    echo "==> OpenVPN Connect for Linux has been upgraded."
+}

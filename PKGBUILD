@@ -2,11 +2,11 @@
 
 pkgname=openvpn-connect-linux
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Community port of OpenVPN Connect to Linux"
 arch=('x86_64')
 url="https://github.com/dresden196/openvpn-connect-linux"
-license=('MIT')
+license=('MIT' 'LicenseRef-OpenVPN-Connect')
 depends=('openvpn' 'polkit' 'libsecret' 'electron37' 'hicolor-icon-theme')
 makedepends=('npm' 'nodejs' 'python' 'gcc' 'make')
 optdepends=(
@@ -15,8 +15,9 @@ optdepends=(
 )
 provides=('openvpn-connect')
 conflicts=('openvpn-connect')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dresden196/openvpn-connect-linux/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+install="${pkgname}.install"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dresden196/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('d349d882681f097501987e92428884a8496d9a485466f6c8d17914bb6e9d5d6d')
 
 build() {
     cd "${pkgname}-${pkgver}"
@@ -26,18 +27,31 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
 
-    # Install app files
-    install -dm755 "${pkgdir}/opt/${pkgname}"
-    cp -a src/ resources/ assets/ package.json "${pkgdir}/opt/${pkgname}/"
-    cp -a node_modules/ "${pkgdir}/opt/${pkgname}/"
+    # Install application to /usr/lib
+    install -dm755 "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm644 package.json "${pkgdir}/usr/lib/${pkgname}/package.json"
+
+    # Source files
+    install -dm755 "${pkgdir}/usr/lib/${pkgname}/src/shims"
+    install -Dm644 src/main.js "${pkgdir}/usr/lib/${pkgname}/src/main.js"
+    install -Dm644 src/shims/napi-shim.js "${pkgdir}/usr/lib/${pkgname}/src/shims/napi-shim.js"
+    install -Dm644 src/shims/electron-shim.js "${pkgdir}/usr/lib/${pkgname}/src/shims/electron-shim.js"
+    install -Dm644 src/shims/keytar-shim.js "${pkgdir}/usr/lib/${pkgname}/src/shims/keytar-shim.js"
+    install -Dm644 src/shims/pkcs11-shim.js "${pkgdir}/usr/lib/${pkgname}/src/shims/pkcs11-shim.js"
+
+    # Resources (original app assets)
+    install -dm755 "${pkgdir}/usr/lib/${pkgname}/resources/app"
+    find resources/app -type f -exec install -Dm644 {} "${pkgdir}/usr/lib/${pkgname}/{}" \;
+
+    # Node modules
+    cp -a node_modules "${pkgdir}/usr/lib/${pkgname}/"
+    chmod -R u=rwX,go=rX "${pkgdir}/usr/lib/${pkgname}/node_modules"
 
     # Launcher script
-    install -dm755 "${pkgdir}/usr/bin"
-    cat > "${pkgdir}/usr/bin/openvpn-connect" << 'EOF'
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/openvpn-connect" << 'EOF'
 #!/bin/bash
-exec electron37 /opt/openvpn-connect-linux --no-sandbox "$@"
+exec electron37 /usr/lib/openvpn-connect-linux --no-sandbox "$@"
 EOF
-    chmod 755 "${pkgdir}/usr/bin/openvpn-connect"
 
     # Desktop entry
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/openvpn-connect.desktop" << EOF
@@ -56,16 +70,22 @@ EOF
 
     # Icons
     for size in 32 48 64 128 256; do
-        install -Dm644 "assets/icons/${size}x${size}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/openvpn-connect.png" 2>/dev/null || true
+        if [ -f "assets/icons/${size}x${size}.png" ]; then
+            install -Dm644 "assets/icons/${size}x${size}.png" \
+                "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/openvpn-connect.png"
+        fi
     done
     install -Dm644 "assets/icons/app-icon.png" \
         "${pkgdir}/usr/share/icons/hicolor/256x256/apps/openvpn-connect.png"
 
     # License
     install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" << EOF
+MIT License
+
 The shim layer (src/) is MIT licensed.
-The OpenVPN Connect app (resources/app/) is the property of OpenVPN Inc.
-See https://openvpn.net/terms/ for terms of service.
+
+The OpenVPN Connect application (resources/app/) is the property of
+OpenVPN Inc. and subject to their terms of service.
+See https://openvpn.net/terms/
 EOF
 }
