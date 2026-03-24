@@ -1,7 +1,7 @@
 pkgbase = java-openjdk-bin
 	pkgdesc = Java OpenJDK 26 Oracle Build.
 	pkgver = 26.u35
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jdk.java.net/26
 	arch = x86_64
 	arch = aarch64

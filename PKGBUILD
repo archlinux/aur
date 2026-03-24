@@ -8,7 +8,7 @@ _fullver="${_majorver}"
 _buildver='35'
 _hash='c3cc523845074aa0af4f5e1e1ed4151d'
 pkgver="${_fullver}.u${_buildver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJDK ${_fullver} Oracle Build."
 arch=('x86_64' 'aarch64')
 url="https://jdk.java.net/${_majorver}"
@@ -39,12 +39,12 @@ package() {
     rm -f "${pkgdir}/${_jvmdir}/lib/security/cacerts"
     ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}/${_jvmdir}/lib/security/cacerts"
     # Legal
-    install -d "${pkgdir}/usr/share/licenses/java${_majorver}-openjdk"
-    cp -a legal "${pkgdir}/usr/share/licenses/java${_majorver}-openjdk/"
-    ln -s /usr/share/licenses/java${_majorver}-openjdk "${pkgdir}/${_jvmdir}/legal"
+    install -d "${pkgdir}/usr/share/licenses/java-openjdk-bin"
+    cp -a legal "${pkgdir}/usr/share/licenses/java-openjdk-bin/"
+    ln -s /usr/share/licenses/java-openjdk-bin "${pkgdir}/${_jvmdir}/legal"
     # Conf
     install -d "${pkgdir}/etc"
-    cp -r conf "${pkgdir}/etc/java${_majorver}-openjdk"
-    ln -s /etc/java${_majorver}-openjdk "${pkgdir}/${_jvmdir}/conf"
+    cp -r conf "${pkgdir}/etc/java-openjdk-bin"
+    ln -s /etc/java-openjdk-bin "${pkgdir}/${_jvmdir}/conf"
 }
 # vim:set ts=4 sw=4 et:
