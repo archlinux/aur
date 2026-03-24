@@ -5,7 +5,7 @@ _pkgname=docker-tui
 pkgname=${_pkgname}-bin
 pkgdesc="Docker terminal UI"
 
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -23,9 +23,9 @@ conflicts=("${_pkgname}")
 source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[0]}")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}::${url}/releases/download/${_pkgvername}/${_pkgname}_${_barch[1]}")
-sha256sums=('dba2d2e39b213bdedf206d299ddf81de30f132fb0c43cd9d3a397c68c28e4d81')
-sha256sums_x86_64=('cba5278b5d810377f0018953fd1f37632e669d79ae0e75062158d7236202af7a')
-sha256sums_aarch64=('d4c77e74d3e969b21d7514b9d9773db767303d85d612fb3660f386f7590b5bc2')
+sha256sums=('11237f568a9fa92cd46957721fc6b84ab790d1b60e9163c0c2e9b49af11ea5aa')
+sha256sums_x86_64=('ea6c1bb22af0a21aba1a47f01720a71b980d953010128678d17358b37ba6fe48')
+sha256sums_aarch64=('eedc5ea0fb4cdd42e39358fda5e414e13c0eebd1be8bd923fb9544828afe7756')
 
 
 package() {
