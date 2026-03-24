@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ElmerGUI
+Comment=A finite element software for multiphysical problems
+Keywords=elmer;fem
+Icon=ElmerFEM
+Exec=/usr/bin/ElmerGUI
+Categories=Science
+Terminal=false
