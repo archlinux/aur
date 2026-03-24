@@ -1,6 +1,6 @@
 pkgbase = lapse-appimage
 	pkgdesc = A spaced repetition flashcard app built with Flutter
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/Pairadux/lapse
 	arch = x86_64
@@ -8,13 +8,13 @@ pkgbase = lapse-appimage
 	depends = fuse2
 	provides = lapse
 	conflicts = lapse
-	noextract = lapse-appimage-0.3.0.AppImage
+	noextract = lapse-appimage-0.4.0.AppImage
 	options = !strip
 	options = !debug
-	source = lapse-appimage-0.3.0.AppImage::https://github.com/Pairadux/lapse/releases/download/v0.3.0/lapse-0.3.0-linux-x86_64.AppImage
-	source = lapse.desktop::https://raw.githubusercontent.com/Pairadux/lapse/v0.3.0/.github/aur/lapse.desktop
-	source = lapse.png::https://raw.githubusercontent.com/Pairadux/lapse/v0.3.0/assets/icons/icon-other.png
-	sha256sums = b7408f455c45870ff4c3e4fb61835fc12188d21b75b9ffab983609550e498645
+	source = lapse-appimage-0.4.0.AppImage::https://github.com/Pairadux/lapse/releases/download/v0.4.0/lapse-0.4.0-linux-x86_64.AppImage
+	source = lapse.desktop::https://raw.githubusercontent.com/Pairadux/lapse/v0.4.0/.github/aur/lapse.desktop
+	source = lapse.png::https://raw.githubusercontent.com/Pairadux/lapse/v0.4.0/assets/icons/icon-other.png
+	sha256sums = ef7fc6787f49fe27788e397be25e803f5df2b8a412b10363158b19228c99f788
 	sha256sums = SKIP
 	sha256sums = SKIP
 
