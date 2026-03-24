@@ -1,0 +1,21 @@
+pkgbase = wayper
+	pkgdesc = Wayland-first wallpaper manager with Wallhaven integration and MCP server
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/yuukidach/wayper
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-click
+	depends = python-httpx
+	depends = python-pillow
+	depends = swww
+	optdepends = hyprland: focused monitor detection
+	optdepends = python-mcp: MCP server for AI assistant integration (pip install mcp)
+	source = wayper-0.1.0.tar.gz::https://github.com/yuukidach/wayper/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 13755f193b8b1d4a12d42921557a7cbd7e33683b05c612bf2c815de3b8be5646
+
+pkgname = wayper
