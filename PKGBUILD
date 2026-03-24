@@ -2,7 +2,7 @@
 pkgname=portable
 epoch=1
 pkgver=14.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Fast, private, efficient sandbox for Linux desktop."
 arch=('x86_64' 'aarch64' 'loongarch64')
@@ -26,12 +26,14 @@ depends=(
 	"xdg-desktop-portal-impl"
 	"grep"
 	"systemd-libs"
+	"portable-packer"
 )
 
 optdepends=(
 	'at-spi2-core: accessibility'
 	'orca: screen reader'
 	'netsock: Per-app firewall'
+	'stashpak: Install Portable packages with ease'
 )
 
 makedepends+=(
