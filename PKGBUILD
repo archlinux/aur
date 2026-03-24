@@ -3,15 +3,14 @@
 # Contributor: J0k3r <moebius282 at gmail dot com>
 
 pkgname=netradiant-git
-pkgver=r2618.04201ff5
+pkgver=r2623.f329f90c
 pkgrel=1
 epoch=1
 pkgdesc='The open source, cross platform level editor for idtech games (GtkRadiant fork)'
 url='https://netradiant.gitlab.io/'
 license=('Apache-2.0' 'BSD-3-Clause' 'GPL-2.0-or-later' 'LGPL-2.1-or-later' 'MIT' 'Zlib')
 arch=('i686' 'x86_64')
-depends=('bash' 'cairo' 'gdk-pixbuf2' 'gcc-libs' 'glibc' 'glib2' 'gtk2' 'gtkglext' 'libglvnd' 'libjpeg-turbo'
-         'libpng' 'libwebp' 'libxml2' 'libx11' 'minizip' 'pango' 'zlib')
+depends=('bash' 'cairo' 'gdk-pixbuf2' 'glibc' 'glib2' 'gtk2' 'libgcc' 'gtkglext' 'libglvnd' 'libjpeg-turbo' 'libpng' 'libstdc++' 'libwebp' 'libxml2' 'libx11' 'minizip' 'pango' 'zlib')
 makedepends=('cmake' 'git' 'make' 'svn' 'unzip' 'wget')
 optdepends=('gtk3: compile and run netradiant with gtk3, it works but with some drawbacks')
 provides=('netradiant' 'h2data' 'q2map' 'q3data' 'q3map2' 'qdata3')
@@ -31,6 +30,9 @@ prepare() {
     git submodule init
     git config submodule.libs/crunch.url "${srcdir}/crunch"
     git -c protocol.file.allow=always submodule update
+
+    # Fix the unzip include
+    sed -i 's|#include <unzip.h>|#include <minizip/unzip.h>|' tools/quake3/common/vfs.c
 }
 
 build() {
