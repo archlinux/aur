@@ -1,0 +1,19 @@
+pkgbase = li-panel-git
+	pkgdesc = Customizable HTML panel/desktop widget.
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/mi4code/li-panel
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	license = MIT
+	makedepends = wayland
+	makedepends = wlr-protocols
+	depends = libhui
+	provides = li-panel
+	conflicts = li-panel
+	source = git+https://github.com/mi4code/li-panel.git
+	sha256sums = SKIP
+
+pkgname = li-panel-git
