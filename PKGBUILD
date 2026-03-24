@@ -2,7 +2,7 @@
 
 pkgname=kicad-hq
 _name=${pkgname%-hq}
-pkgver=9.0.8
+pkgver=10.0.0
 pkgrel=1
 pkgdesc="Electronic schematic and printed circuit board (PCB) design tools"
 arch=($CARCH)
@@ -14,20 +14,25 @@ depends=(
   curl
   freetype2
   fontconfig
-  gcc-libs
   glib2
   glibc
+  glm
   glu
   gtk3
+  libgcc
   libglvnd
   libgit2
+  libspnav
   libsecret
+  libstdc++
   harfbuzz
   hicolor-icon-theme
+  ngspice
   nng
   opencascade
   openssl
   protobuf
+  poppler-glib
   python
   python-wxpython
   wayland
@@ -43,13 +48,10 @@ makedepends=(
   cmake
   doxygen
   glew
-  glm
   git
-  ngspice
   mesa
   boost
   swig
-  ngspice
   ninja
   pkgconf
 )
@@ -58,7 +60,7 @@ optdepends=('kicad-library: KiCad symbol, footprint and template libraries'
 conflicts=(${pkgname} 'kicad' 'kicad-bzr')
 provides=(${pkgname} 'kicad' 'kicad-bzr')
 source=("${pkgname}::git+https://gitlab.com/kicad-hq/kicad.git#tag=${pkgver}")
-sha256sums=('26e697d9d4f3b0b51dc96d6b14c07115c1f1bf0e8bdc6a51ba66858bed76de58')
+sha256sums=('da5d31702acdbdb4f65d64c730d6cc596f99d35ef34f00f4649e1b35ca2ee0ab')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
