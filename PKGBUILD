@@ -2,7 +2,7 @@
 
 pkgname=mediawarp-git
 _name=MediaWarp
-pkgver=0.2.0.r11.g9d49c95
+pkgver=0.2.3.r15.gf7cad16
 pkgrel=1
 pkgdesc="EmbyServer API Optimization: Optimize playback of Strm files, customize the front-end style, customize the allowed access to the client, embedded scripts, work with Alist to realize Emby playback of web resources, recommended to use with AutoFilm."
 arch=($CARCH)
@@ -58,7 +58,7 @@ pkgver() {
     cd "${srcdir}/${pkgname}"
     (
         set -o pipefail
-        git describe --long --tag --abbrev=7 2>/dev/null | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --long --tags --exclude='*-*' | sed 's/^v//g;s/\([^-]*-g\)/r\1/;s/-/./g' ||
             printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
