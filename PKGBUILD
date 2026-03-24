@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=purple-bin
 _pkgname=purple
-pkgver=2.8.0
+pkgver=2.9.0
 pkgrel=1
 pkgdesc='TUI to search, connect and manage SSH servers. Visual file transfer, cloud sync (10 providers), password management. Edits ~/.ssh/config directly.'
 arch=('x86_64' 'aarch64')
@@ -15,8 +15,8 @@ source=("LICENSE::https://raw.githubusercontent.com/erickochen/purple/refs/tags/
 source_x86_64=("$_pkgname-$pkgver-bin.tar.gz::$url/releases/download/v$pkgver/${_pkgname}-${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
 source_aarch64=("$_pkgname-$pkgver-bin.tar.gz::$url/releases/download/v$pkgver/${_pkgname}-${pkgver}-aarch64-unknown-linux-gnu.tar.gz")
 sha256sums=('7ffe3e49f530418a8e37f4546534f20ddbd1109a5a3e3b2ae7fde09d27dae1dc')
-sha256sums_x86_64=('88545ee9a395dcf8ca6ffcbb6288a8a711e6a2a1378de00cddbd470ff0e31758')
-sha256sums_aarch64=('8a5089a381f9184074cd33e4cfd02ce7e146e93a900892f478a8e09234cc81e0')
+sha256sums_x86_64=('2889eecc27f05eceeb1b7308c2c1bcef8e75af510ce23bca6c168a9d7c8b80fa')
+sha256sums_aarch64=('da5b9d9758a5bff7dd717fca8c4594bd73072b935545066f4993630b750d27d0')
 
 package() {
     install -Dm0755 -t ${pkgdir}/usr/bin 'purple'
