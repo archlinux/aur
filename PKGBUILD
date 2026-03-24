@@ -3,7 +3,7 @@
 _name=ApiArk
 _basename=${_name,,}
 pkgname=${_basename}-bin
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=1
 pkgdesc="Privacy-first API platform built with Tauri v2. No login, no cloud, ~60 MB RAM. A lightweight Postman alternative."
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${_basename}-${pkgver}-${arch[0]}.deb::${url}/releases/download/v${pkgver}/${_basename}_${pkgver}_amd64.deb"
                "${_basename}-cli-${pkgver}-${arch[0]}::${url}/releases/download/v${pkgver}/${_basename}-cli-linux-x86_64")
 sha256sums=('624cb7b4a42e1a7ba897d15e0af935a8389825b1f95b3f309ff8ccbb079e49e9')
-sha256sums_x86_64=('198677eca358c9da6be6a69a7331572d58212bfbf29fe188e7839655a761afa6'
+sha256sums_x86_64=('fed8a06dd967d9d9cf849b42bc1e5c7fdcef9d2fc700d62758e4f6d56ceaf68c'
                    '5d982e959f4f4d5c8d76fc47cbbaefae02d65254911e9d2232249abe0699099a')
 
 package() {
