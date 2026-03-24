@@ -5,7 +5,7 @@
 
 _android_arch=armv7a-eabi
 pkgname=android-$_android_arch-qt6-websockets
-_qtver=6.10.2
+_qtver=6.11.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -22,7 +22,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtwebsockets-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('eccc751bea509ef656d20029693987a0fc03c58e21c38f1351480f3c8eb42ebd')
+sha256sums=('569f10d1fb35195869576004f5b5ff09735d2f0319e2e8f0dd0f40c7ec31d032')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
