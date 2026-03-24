@@ -2,7 +2,7 @@
 # Maintainer: LycheeSlicer
 # Contributor: LycheeSlicer
 pkgname=lycheeslicer
-pkgver=7.6.2
+pkgver=7.6.3
 pkgrel=1
 pkgdesc="Lychee Slicer"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source_x86_64=(
 	"local://lycheeslicer.xml"
 )
 sha512sums_x86_64=(
-	'af0f153b4e3c1b7a1ebe21b3ae48db40c5af2b7d90cff01987f154a8be70ac2339ec5502a32f02c5bde3e1b189af44e6e2da201d13f697042317cf3353f1f270'
+	'4badbef727eb11f017aac1aaf6e30022873bf5b3a090964b70a2327ddc4faf6cefd770afc1455078dc252a00e34a89988cffda00677552c726ce33bb6b92c00c'
 	'aba52d9bd76619f66fac0688c1c04846e630f5b8acba6032c61f46a4bcf9ff9d5aa1eb11a3901e85bce33e179d4ccc1f574b06c9ad3f415a692ff4ad39c77f49'
 )
 package(){
