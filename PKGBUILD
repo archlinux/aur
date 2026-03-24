@@ -56,6 +56,7 @@ sha256sums=('SKIP'
             '8f25957ef5453f825e05a63a74e24843aad945af86ddffcc0a84084ca2cf9928')
 
 _LUAJIT_VERSION=2.1
+_BUILD_DOCS=${_BUILD_DOCS:-1}
 
 pkgver() {
   cd $pkgname
@@ -65,7 +66,11 @@ pkgver() {
 build() {
   mkdir -p build
   cd build
-
+  if [[ "$_BUILD_DOCS" -eq 1 ]] ; then
+    extra_args=()
+  else
+    extra_args=('-DGENERATE_DOC=OFF' '-DGENERATE_MANPAGES=OFF')
+  fi
   cmake ../$pkgname \
     -DCMAKE_BUILD_TYPE=RELEASE \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -73,7 +78,8 @@ build() {
     -DLUA_INCLUDE_DIR=/usr/include/luajit-$_LUAJIT_VERSION \
     -DLUA_LIBRARY=/usr/lib/libluajit-5.1.so \
     -DLUA_EXECUTABLE=/usr/bin/luajit \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+	"${extra_args[@]}"
   make
 }
 
