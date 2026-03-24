@@ -5,7 +5,7 @@ _pkgname=tsm
 pkgname=${_pkgname}-bin
 pkgdesc="Terminal Session Manager"
 
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -37,8 +37,8 @@ sha256sums=('2b87bf7de1f8d01aa9b6d406e29cf45a5c326657faccff7eaacd7a04399e1a64'
             '4bf5b22c37c22a9cd4abdf62b587497ccfaa07d6bb81a6a5bae5aee49822a981'
             'bcb89d7b1ac89a301e67d8037c6d9f85608ac0d4964750a1d38a9b2350eed1fd'
             '7190508bd9b199df1d32751427986bcefa67f8800492fb4d6cff82cba9bca025')
-sha256sums_x86_64=('009c64963ef6a4602a155fe82516847999174414f560dbba5f61a90feb61de36')
-sha256sums_aarch64=('3f6b1a9d72a8276fa246c396e4d250457a05f447cbecc6e50e6e50dfbfb15c27')
+sha256sums_x86_64=('853889fbebfc09b84fb606e755cb4028ec9917dd714fb51c9e657b8de3675425')
+sha256sums_aarch64=('3c5d72ebb780fdcb0f5655a2e3eeb4b6cdc2277d64e75d8a28e1906fb5e722e1')
 
 
 case ${CARCH} in
@@ -53,6 +53,7 @@ esac
 prepare() {
 	cd "${srcdir}/${_pkgname}_${_pkgvername}_${_CARCH}/" || exit
 
+	msg2 "Patching binary"
 	patchelf --set-rpath "/usr/lib/${_pkgname}" "./${_pkgname}"
 }
 
