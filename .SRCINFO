@@ -1,0 +1,21 @@
+pkgbase = termaid
+	pkgdesc = Render Mermaid diagrams in your terminal or Python app
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/fasouto/termaid
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-rich
+	depends = python-textual
+	provides = termaid
+	conflicts = python-termaid
+	replaces = python-termaid
+	source = termaid-0.2.0.tar.gz::https://github.com/fasouto/termaid/archive/refs/tags/v0.2.0.tar.gz
+	sha256sums = 1d1841f93c125237e72c60209f996cbcb0086504a7e5bd391352f2bd116fae45
+
+pkgname = termaid
