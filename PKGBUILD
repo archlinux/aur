@@ -2,7 +2,7 @@
 
 pkgbase=sftool-gui
 pkgname=sftool-gui
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 epoch=
 pkgdesc="A user-friendly graphical serial port operation tool for SIFLI series SoC chips."
@@ -49,9 +49,10 @@ checkdepends=()
 options=(!lto !debug)
 source=("${pkgname}::git+${url}.git#tag=v${pkgver}")
 noextract=()
-sha256sums=('992bcf96bf863733e3ad676181200685872d80713939c9335ac3187535d7a661')
+sha256sums=('43c6f775f1c54b6d76cd2395d916286cd766acbfcf48cfe217ba08ff9ad31504')
 
 prepare() {
+    git -C "${srcdir}/${pkgname}" clean -dfx
     cd "${srcdir}/${pkgname}/src-tauri"
     cargo fetch --locked --target host-tuple
     cargo fetch --target "$CARCH-unknown-linux-gnu"
@@ -64,8 +65,8 @@ build() {
         -e 's/"createUpdaterArtifacts": true/"createUpdaterArtifacts": false/' \
         -e '/"updater": {/,/}/ s/"active": true,/"active": false,/' \
         -e '/"updater": {/,/}/ s/"pubkey": ".*"/"pubkey": null/' \
-        -e '/"updater": {/,/}/ s/"endpoints": \[ "" \]/"endpoints": null/' \
         src-tauri/tauri.conf.json
+         # -e '/"updater": {/,/}/ s/"endpoints": \[ "" \]/"endpoints": null/' \
 
     export CARGO_HOME="${srcdir}/.cargo"
     {
