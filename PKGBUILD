@@ -20,9 +20,10 @@ sha256sums=('b7277482677a22c3396b88a1290406ca20bb2564c59632403ca98373f132e65a')
 build() {
   cd "$srcdir"/Lmod-$pkgver || exit 1
 
-  ./configure           \
-    --prefix=/usr/share \
-    --with-lua=/usr/bin/lua5.4
+  ./configure                  \
+    --prefix=/usr/share        \
+    --with-lua=/usr/bin/lua5.4 \
+    --with-luac=/usr/bin/luac5.4
 
   make
 }
