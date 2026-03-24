@@ -1,6 +1,6 @@
 # Maintainer: Brian McCallister <brianm@apache.org>
 pkgname=bdsh
-pkgver=0.2.16
+pkgver=0.2.17
 pkgrel=1
 pkgdesc="Better Distributed Shell - run commands on multiple hosts with consensus view"
 arch=('x86_64' 'aarch64')
