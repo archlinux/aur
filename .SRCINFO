@@ -1,0 +1,25 @@
+pkgbase = openvpn-connect-linux
+	pkgdesc = Community port of OpenVPN Connect to Linux
+	pkgver = 3.8.0
+	pkgrel = 1
+	url = https://github.com/dresden196/openvpn-connect-linux
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = nodejs
+	makedepends = python
+	makedepends = gcc
+	makedepends = make
+	depends = openvpn
+	depends = polkit
+	depends = libsecret
+	depends = electron37
+	depends = hicolor-icon-theme
+	optdepends = networkmanager: network state detection
+	optdepends = libnotify: desktop notifications
+	provides = openvpn-connect
+	conflicts = openvpn-connect
+	source = openvpn-connect-linux-3.8.0.tar.gz::https://github.com/dresden196/openvpn-connect-linux/archive/refs/tags/v3.8.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = openvpn-connect-linux
