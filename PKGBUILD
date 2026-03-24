@@ -2,7 +2,7 @@
 pkgname=pclink
 _app_id=xyz.bytedz.PCLink
 pkgver=4.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Desktop app for secure remote PC control and management"
 arch=('any')
 url="https://bytedz.com/products/pclink"
@@ -31,6 +31,8 @@ depends=(
   'python-websockets'
   'python-wsproto'
   'python-yaml'
+  'sudo'
+  'systemd'
   'uvicorn'
   'xdg-desktop-portal'
 )
@@ -45,7 +47,7 @@ optdepends=(
   'grim: Screenshot support for wlroots-based compositors'
   'power-profiles-daemon: Required for Energy Pulse Pro Extension'
   'python-aiofiles: Improves upload performance with async file I/O'
-  'python-pynput: Fallback for input control'
+  'python-pynput: Fallback for input control, required for Media Master Pro Extension'
   'python-evdev: Input control on Wayland'
   'python-pyperclip: Fallback for clipboard support'
   'python-pystray: Fallback for system tray'
@@ -59,11 +61,11 @@ prepare() {
   cd "PCLink-$pkgver"
 
   # Replace placeholders in service file
-  setconf "scripts/linux/$pkgname.service.template" ExecStart "/usr/bin/$pkgname --startup"
+  setconf "scripts/linux/$pkgname.service.template" ExecStart "/usr/bin/$pkgname"
   setconf "scripts/linux/$pkgname.service.template" WorkingDirectory "%h"
   setconf "scripts/linux/$pkgname.service.template" ProtectHome "false"
 
-  # Remove User/Group from user service as they are invalid
+  # Remove User/Group from service file as they are invalid
   sed -i '/User/,/Group/d' "scripts/linux/$pkgname.service.template"
 }
 
