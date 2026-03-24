@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=BaseCamp Linux
-Comment=Unofficial Linux companion app for the Mountain Everest Max keyboard
+Comment=Unofficial Linux companion app for Mountain peripherals (Keyboard, Mouse, DisplayPad)
 Exec=basecamp-linux
 Icon=basecamp-linux
 Type=Application
