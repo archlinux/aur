@@ -1,16 +1,16 @@
 pkgbase = snd-dante-pcie-dkms
 	pkgdesc = ALSA kernel driver for Digigram LX-DANTE / Audinate Dante PCIe cards
 	pkgver = 0.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/chris-ritsen/snd-dante-pcie
 	arch = x86_64
 	license = GPL
 	depends = dkms
-	optdepends = python-numpy: dante-live.py dashboard
+	optdepends = python-numpy: dante-live dashboard
 	provides = snd-dante-pcie
 	conflicts = dante-pcie-dkms
 	conflicts = snd-dante-pcie-dkms-git
-	source = snd-dante-pcie-dkms-0.0.1.tar.gz::https://github.com/chris-ritsen/snd-dante-pcie/archive/refs/tags/v0.0.1.tar.gz
+	source = snd-dante-pcie-0.0.1.tar.gz::https://github.com/chris-ritsen/snd-dante-pcie/archive/refs/tags/v0.0.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = snd-dante-pcie-dkms

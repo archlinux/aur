@@ -1,28 +1,31 @@
 # Maintainer: Christopher Ritsen <chris.ritsen@gmail.com>
-pkgname=snd-dante-pcie-dkms
+_pkgbase=snd-dante-pcie
+pkgname=${_pkgbase}-dkms
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ALSA kernel driver for Digigram LX-DANTE / Audinate Dante PCIe cards"
 arch=('x86_64')
 url="https://github.com/chris-ritsen/snd-dante-pcie"
 license=('GPL')
 depends=('dkms')
-optdepends=('python-numpy: dante-live.py dashboard')
-provides=('snd-dante-pcie')
-conflicts=('dante-pcie-dkms' 'snd-dante-pcie-dkms-git')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/chris-ritsen/snd-dante-pcie/archive/refs/tags/v$pkgver.tar.gz")
+optdepends=('python-numpy: dante-live dashboard')
+provides=("${_pkgbase}")
+conflicts=('dante-pcie-dkms' "${_pkgbase}-dkms-git")
+source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/chris-ritsen/snd-dante-pcie/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-    cd "snd-dante-pcie-$pkgver"
+    cd "${_pkgbase}-${pkgver}"
 
-    local dkms_dir="$pkgdir/usr/src/snd-dante-pcie-$pkgver"
-    install -Dm644 snd-dante-pcie.c "$dkms_dir/snd-dante-pcie.c"
-    install -Dm644 Makefile "$dkms_dir/Makefile"
-    install -Dm644 dkms.conf "$dkms_dir/dkms.conf"
+    install -Dm644 snd-dante-pcie.c "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/snd-dante-pcie.c"
+    install -Dm644 Makefile "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/Makefile"
+    install -Dm644 dkms.conf "${pkgdir}/usr/src/${_pkgbase}-${pkgver}/dkms.conf"
 
-    install -Dm755 dante-live.py "$pkgdir/usr/bin/dante-live"
-    install -Dm644 docs/observed_fpga_behavior.md "$pkgdir/usr/share/doc/$pkgname/observed_fpga_behavior.md"
-    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm755 dante-live.py "${pkgdir}/usr/bin/dante-live"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modprobe.d/${pkgname}.conf" <<EOF
+blacklist dante_pcie
+EOF
 }
