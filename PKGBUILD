@@ -10,7 +10,7 @@ pkgname=(
   midori-multi-account-containers-lite
 )
 
-pkgver=8.3.7000
+pkgver=8.3.7002
 pkgrel=1
 pkgdesc="Lets you keep parts of your online life separated into color-coded tabs that preserve your privacy"
 arch=('any')

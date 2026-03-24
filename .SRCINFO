@@ -1,6 +1,6 @@
 pkgbase = multi-account-containers-lite
 	pkgdesc = Lets you keep parts of your online life separated into color-coded tabs that preserve your privacy
-	pkgver = 8.3.7000
+	pkgver = 8.3.7002
 	pkgrel = 1
 	url = https://codeberg.org/Konsortium/multi-account-containers-lite
 	arch = any
