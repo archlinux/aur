@@ -1,0 +1,10 @@
+src/
+pkg/
+*.pkg.tar.*
+src/
+pkg/
+*.pkg.tar.*
+boost_1_88_0.tar.bz2
+jasp-desktop/
+librdata/
+instructions.txt
