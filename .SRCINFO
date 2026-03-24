@@ -1,6 +1,6 @@
 pkgbase = python-toml-sort
 	pkgdesc = Toml sorting library
-	pkgver = 0.24.3
+	pkgver = 0.24.4
 	pkgrel = 1
 	url = https://github.com/pappasam/toml-sort
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-toml-sort
 	depends = python
 	depends = python-tomlkit
 	depends = python-importlib-metadata
-	source = python-toml-sort-0.24.3.tar.gz::https://github.com/pappasam/toml-sort/archive/v0.24.3.tar.gz
-	sha256sums = 5a33ce66b1e666d850b0bf4acd065b97480001d20ac0c63f0e40d30071656a87
+	source = python-toml-sort-0.24.4.tar.gz::https://github.com/pappasam/toml-sort/archive/v0.24.4.tar.gz
+	sha256sums = 22840e96f145fba8aab83b64e16199e1dfff631f3843be6f4ab9d5f2ee65aa78
 
 pkgname = python-toml-sort
