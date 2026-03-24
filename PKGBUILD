@@ -1,6 +1,6 @@
 # Maintainer: Aaron Bockelie <aaronsb@gmail.com>
 pkgname=mmaid
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Terminal Mermaid diagram renderer - inline diagrams from Mermaid syntax in your terminal"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('go>=1.23')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/aaronsb/mmaid-go/archive/v$pkgver.tar.gz")
-sha256sums=('18321fb570d1f307f0a3ad45179c40fa477f0d2b1aa23b4a59b1e1ceda0faf4a')
+sha256sums=('c5deafad7c3c8a06c538a4969151d2267859f04671fec874615accbb4b44503c')
 
 build() {
     cd "$srcdir/mmaid-go-$pkgver"
