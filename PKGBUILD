@@ -8,9 +8,9 @@ url="https://github.com/byteowlz/tmpltr"
 license=('MIT')
 depends=('typst')
 provides=('tmpltr')
-conflicts=('tmpltr')
+conflicts=('tmpltr' 'byteowlz-tmpltr')
 source=("tmpltr-${pkgver}.tar.gz::https://github.com/byteowlz/tmpltr/releases/download/v${pkgver}/tmpltr-v${pkgver}-x86_64-unknown-linux-gnu.tar.gz")
-sha256sums=('95d5b5a380a942774895715f4cae584677abfd5a1bd211e1301fd01c9f33dce4')
+sha256sums=('a3d28b3428916257bf28e01431a5bcadeb7780941e58f49e7d60664bcf63ac47')
 
 package() {
     install -Dm755 tmpltr "$pkgdir/usr/bin/tmpltr"
