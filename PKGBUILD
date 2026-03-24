@@ -4,7 +4,7 @@
 
 _name=shaka-packager
 pkgname="$_name-git"
-pkgver=3.4.2.r7.g5776b0b
+pkgver=3.7.0.r1.g90a392e
 pkgrel=1
 pkgdesc='A tool and a media packaging SDK for DASH and HLS packaging and encryption.'
 arch=('x86_64')
@@ -22,6 +22,8 @@ source=("https://github.com/shaka-project/shaka-packager/raw/refs/heads/main/LIC
         "git+https://github.com/curl/curl"
         "git+https://github.com/nlohmann/json"
         "git+https://github.com/Mbed-TLS/mbedtls"
+        "git+https://github.com/Mbed-TLS/mbedtls-framework" # mbedtls submodule.
+        "git+https://github.com/Mbed-TLS/TF-PSA-Crypto.git" # mbedtls submodule.
         "git+https://github.com/madler/zlib"
         "git+https://github.com/glennrp/libpng"
         "git+https://github.com/webmproject/libwebm"
@@ -44,6 +46,8 @@ sha256sums=('0eea5a66a8505f758fdc8710637c5b4f5f1b18b29d0f248d6e95a3cdfc8fb599'
             SKIP
             SKIP
             SKIP
+            SKIP
+            SKIP
             SKIP)
 
 pkgver() {
@@ -52,6 +56,7 @@ pkgver() {
 }
 
 prepare() {
+    # First fix the parent's submodules.
     cd "$srcdir/$_name"
     git submodule init
     git config submodule.packager/third_party/googletest/source.url "$srcdir/googletest"
@@ -67,6 +72,13 @@ prepare() {
     git config submodule.packager/third_party/mongoose/source.url "$srcdir/mongoose"
     git config submodule.packager/third_party/c-ares/source.url "$srcdir/c-ares"
     git config submodule.packager/third_party/mimalloc/source.url "$srcdir/mimalloc"
+    git -c protocol.file.allow=always submodule update
+
+    # Then do the same to children's submodules recursively.
+    cd "$srcdir/$_name/packager/third_party/mbedtls/source"
+    git submodule init
+    git config submodule.framework.url "$srcdir/mbedtls-framework"
+    git config submodule.tf-psa-crypto.url "$srcdir/TF-PSA-Crypto"
     git -c protocol.file.allow=always submodule update
 }
 
