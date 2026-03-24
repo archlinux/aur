@@ -1,19 +1,19 @@
 # Maintainer: Uyanide <me@uyani.de>
 pkgname=wallreel
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="Choose and set desktop wallpapers with customizable themes and actions"
 arch=('x86_64')
 url="https://git.uyani.de/Uyanide/WallReel"
 license=('MIT')
 depends=('qt6-base' 'qt6-declarative' 'gcc-libs' 'glibc')
-makedepends=('cmake' 'ninja')
-source=("${pkgname}-${pkgver}.tar.gz::https://git.uyani.de/Uyanide/WallReel/archive/v2.0.0-2.tar.gz")
-sha256sums=('080d24c2e677194adab994bf107a7ac9ec77a598c0cc5be06743f076a9d2f0a8')
+makedepends=('cmake')
+source=("${pkgname}-${pkgver}.tar.gz::https://git.uyani.de/Uyanide/WallReel/archive/v${pkgver}.tar.gz")
+sha256sums=('3ba31e168f432e9055877836e02f085d4a3d6225c04843d5b9fa576220875be5')
 
 build() {
     cd "wallreel"
-    cmake -B build -S . -G Ninja \
+    cmake -B build -S . \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
