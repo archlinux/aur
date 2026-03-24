@@ -1,6 +1,6 @@
 pkgbase = manatan-bin
 	pkgdesc = Manatan Server. A robust manga server application.
-	pkgver = 3.4.6
+	pkgver = 3.4.7
 	pkgrel = 1
 	url = https://github.com/KolbyML/Manatan
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = manatan-bin
 	provides = manatan
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = Manatan-v3.4.6-Linux-amd64.deb::https://github.com/KolbyML/Manatan/releases/download/v3.4.6/Manatan-v3.4.6-Linux-amd64.deb
-	sha256sums_x86_64 = 874fd573ff1b391912f99505de8f9171ec9d419a6e2aac700103752c4fd1f78e
-	source_aarch64 = Manatan-v3.4.6-Linux-arm64.deb::https://github.com/KolbyML/Manatan/releases/download/v3.4.6/Manatan-v3.4.6-Linux-arm64.deb
-	sha256sums_aarch64 = 47b02f17f67717b4c733e94ac9088f601b946f893413d23a4aab7ad0a0ea6a29
+	source_x86_64 = Manatan-v3.4.7-Linux-amd64.deb::https://github.com/KolbyML/Manatan/releases/download/v3.4.7/Manatan-v3.4.7-Linux-amd64.deb
+	sha256sums_x86_64 = 8ade756437ceff131b6b93d563b80200f63f441cc39e23a458597e3db09b9e49
+	source_aarch64 = Manatan-v3.4.7-Linux-arm64.deb::https://github.com/KolbyML/Manatan/releases/download/v3.4.7/Manatan-v3.4.7-Linux-arm64.deb
+	sha256sums_aarch64 = 736ca06439bf999aa493ec302ffb38759ea20bb98f5d7a0aafb16987a1b772b1
 
 pkgname = manatan-bin
