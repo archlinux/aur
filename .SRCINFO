@@ -1,6 +1,6 @@
 pkgbase = python-dploot
 	pkgdesc = DPAPI looting remotely in Python
-	pkgver = 3.2.2
+	pkgver = 3.1.2
 	pkgrel = 1
 	url = https://github.com/zblurx/dploot
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-dploot
 	depends = python-cryptography>=40.0.1
 	depends = python-pyasn1>=0.4.8
 	depends = python-lxml>=5.0
-	source = dploot-3.2.2.tar.gz::https://github.com/zblurx/dploot/archive/refs/tags/3.2.2.tar.gz
+	source = dploot-3.1.2.tar.gz::https://github.com/zblurx/dploot/archive/refs/tags/3.1.2.tar.gz
 	b2sums = 0d9a5492e190536921195885f1b4a3343f96a52186bdbb17f2a6cbd54d895eb16d25524d3447525b318daa6ce35872264234e497086b075a3bade5d145c79356
 
 pkgname = python-dploot

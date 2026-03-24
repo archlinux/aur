@@ -1,7 +1,7 @@
 # Maintainer: Leonid Lednev <leonidledn at gmail dot com>
 _name=dploot
 pkgname="python-$_name"
-pkgver=3.2.2
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="DPAPI looting remotely in Python"
 arch=(any)
