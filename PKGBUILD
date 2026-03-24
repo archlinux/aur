@@ -1,5 +1,5 @@
 pkgname=wkey
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Which key should I press? A CLI cheatsheet.'
 arch=('x86_64')
@@ -15,8 +15,8 @@ source=(
   "https://github.com/greasycat/wkey/releases/download/v${pkgver}/wkey-${CARCH}-unknown-linux-gnu.tar.xz.sha256"
 )
 sha256sums=(
-  '866749e9879cdb66d4d6d961178b3f60627d3e4b08b6f8986aa1b5bc49dc897d'
-  '110ede6d25655a98ca493b1b15eb9d811a7fea9ac8ce09b773e98d4acacc821f'
+  '920a9198e310d0437c17079ac9a5548668d532aed7558563c6fa55d6ca9c927b'
+  '5dce36296b9632962e9675cf0820fb73535d72b30fdf2a60438eb8c23fe5f64d'
 )
 
 prepare() {
