@@ -1,25 +1,29 @@
---- a/woodland-2.0.5/Makefile.in
-+++ b/woodland-2.0.5/Makefile.in
-@@ -1,5 +1,5 @@
+--- a/woodland-2.1.0/Makefile.in
++++ b/woodland-2.1.0/Makefile.in
+@@ -1,15 +1,16 @@
  CC = gcc
 -CFLAGS = -Wall -flto -Wextra -Wpedantic -march=native -funroll-loops -export-dynamic -fomit-frame-pointer
+-CFLAGS += -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include
+-CFLAGS += -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
+-CFLAGS += -I/usr/include/librsvg-2.0 -I/usr/lib/x86_64-linux-gnu/librsvg-2.0/include
+-CFLAGS += -I/usr/include/cairo -I/usr/lib/x86_64-linux-gnu/cairo/include
+-CFLAGS += -I/usr/include/gdk-pixbuf-2.0 -I/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/include
+-CFLAGS += -I/usr/include/wlroots-0.18 -I/usr/lib/x86_64-linux-gnu/wlroots-0.18/include
 +CFLAGS = -Wall -flto -Wextra -Wpedantic -funroll-loops -export-dynamic -fomit-frame-pointer
- CFLAGS += -I/usr/include/dbus-1.0 -I/usr/lib/x86_64-linux-gnu/dbus-1.0/include
- CFLAGS += -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
- CFLAGS += -I/usr/include/librsvg-2.0 -I/usr/lib/x86_64-linux-gnu/librsvg-2.0/include
-@@ -7,10 +7,12 @@
- CFLAGS += -I/usr/include/gdk-pixbuf-2.0 -I/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/include
- CFLAGS += -I/usr/include/wlroots-0.18 -I/usr/lib/x86_64-linux-gnu/wlroots-0.18/include
++CFLAGS += $(shell pkg-config --cflags dbus-1)
++CFLAGS += $(shell pkg-config --cflags glib-2.0)
++CFLAGS += $(shell pkg-config --cflags librsvg-2.0)
++CFLAGS += $(shell pkg-config --cflags cairo)
++CFLAGS += $(shell pkg-config --cflags gdk-pixbuf-2.0)
++CFLAGS += $(shell pkg-config --cflags wlroots-0.18)
  CFLAGS += -I/usr/include/pixman-1
 +CFLAGS += -I/usr/include/stb
  LDFLAGS = -lm
 -LDFLAGS += $(shell pkg-config --libs stb cairo dbus-1 librsvg-2.0 wlroots-0.18 libinput pixman-1 xkbcommon wayland-server)
 -CFLAGS += $(shell pkg-config --cflags stb cairo dbus-1 librsvg-2.0 wlroots-0.18 libinput pixman-1 xkbcommon wayland-server)
 +LDFLAGS += $(shell pkg-config --libs cairo dbus-1 librsvg-2.0 wlroots-0.18 libinput pixman-1 xkbcommon wayland-server)
-+CFLAGS += $(shell pkg-config --cflags cairo dbus-1 librsvg-2.0 wlroots-0.18 libinput pixman-1 xkbcommon wayland-server)
- CFLAGS += -Isrc/
-+CFLAGS += -Iinclude/
++CFLAGS += $(shell pkg-config --cflags libinput pixman-1 xkbcommon wayland-server)
+ CFLAGS += -Isrc
+ CFLAGS += -Iinclude
  CFLAGS += -DWLR_USE_UNSTABLE
- SRCFILES = src/menu.c src/panel.c src/windowlist.c src/dbus-network-management.c src/getxkbkeyname.c src/getvaluefromconf.c src/runcmd.c src/woodland.c
- OBJFILES = $(patsubst src/%.c, %.o, $(SRCFILES))
 

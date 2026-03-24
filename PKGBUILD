@@ -1,8 +1,8 @@
 # Maintainer: Lex Black <autumn-wind@web.de>
 
 pkgname=woodland
-pkgver=2.0.5
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="minimal Wayland compositor based on wlroots"
 url="https://github.com/DiogenesN/woodland"
 arch=('x86_64')
@@ -25,8 +25,8 @@ depends=(
 makedepends=('stb')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/DiogenesN/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz
         0001_adj-makefile.patch)
-b2sums=('add9f118fd0c9244944e69109fccf2fbed3eeb59990659c91f2335f9c71c77bc1ea3f968930dfd371d228f63142d1a2b332e0a630349756cc6dfbb820c103816'
-        'e6bf257e56e6d8343a313566be072e116f3cf7f461125286c8cdcc64eb33703160eb39a0a84f78b4d12309f9246b9f95311227254437aac33e9916df93bfe665')
+b2sums=('c8fa7a3d2386691cbe237b4efb61d4d4639f431ce265de41ecef4a64284a2b36acb0f74c2050281976e2688db1c1156617dab9d61be2bbf615e7d5fe191164ac'
+        'b9b57fcabd0f28fb3620383deab94b15dd8a888a4ee8f4ddc7f700b284d689a54f66e7e790aafad4122da439d3e9274f76cb57e15dfa28f9856ef88fab89df01')
 
 
 prepare() {
