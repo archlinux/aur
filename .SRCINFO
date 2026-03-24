@@ -1,6 +1,6 @@
 pkgbase = gh-aw-bin
 	pkgdesc = GitHub Agentic Workflows
-	pkgver = 0.62.5
+	pkgver = 0.63.0
 	pkgrel = 1
 	url = https://github.com/github/gh-aw
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = gh-aw-bin
 	provides = gh-aw
 	conflicts = gh-aw
 	noextract = gh-aw
-	source = LICENSE::https://raw.githubusercontent.com/github/gh-aw/v0.62.5/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/github/gh-aw/v0.63.0/LICENSE
 	sha256sums = 2510b446bc1f0cf9702453075d20cd88631e20e5642658edb7325d9c1eb534f7
-	source_x86_64 = gh-aw::https://github.com/github/gh-aw/releases/download/v0.62.5/linux-amd64
-	sha256sums_x86_64 = e2553ed24a9185c4c759650c8778fea5ea3480c404bdbaae35948c0442df5b71
-	source_aarch64 = gh-aw::https://github.com/github/gh-aw/releases/download/v0.62.5/linux-arm64
-	sha256sums_aarch64 = e2553ed24a9185c4c759650c8778fea5ea3480c404bdbaae35948c0442df5b71
+	source_x86_64 = gh-aw::https://github.com/github/gh-aw/releases/download/v0.63.0/linux-amd64
+	sha256sums_x86_64 = cfa345b3cedaff1b37b789507d5643614b7747c0e69520b8ce877598dc6e2511
+	source_aarch64 = gh-aw::https://github.com/github/gh-aw/releases/download/v0.63.0/linux-arm64
+	sha256sums_aarch64 = cfa345b3cedaff1b37b789507d5643614b7747c0e69520b8ce877598dc6e2511
 
 pkgname = gh-aw-bin
