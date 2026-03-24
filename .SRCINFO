@@ -1,0 +1,18 @@
+pkgbase = tortuise
+	pkgdesc = Gaussian splats in your terminal.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/buildoak/tortuise
+	arch = x86_64
+	arch = aarch64
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	provides = tortuise
+	conflicts = tortuise-git
+	source = tortuise-0.1.1.tar.gz::https://github.com/buildoak/tortuise/archive/refs/tags/v0.1.1.tar.gz
+	source = fix-demo-path.patch
+	sha256sums = e48d388823512bdaad4801736e8b9966141dfb2cea353e43f6885e9267377d42
+	sha256sums = b76693d78f2cd87cdca87b0d8b06ac39d17eeb16f30110ccfb4a0576de56af9c
+
+pkgname = tortuise
