@@ -1,10 +1,11 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
+# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 # Contributor: Darius Niminenn <root at dnim dot dev>
 # Contributor: Sir-Photch <sir-photch@posteo.me>
-# Maintainer: Mohamed Amine Zghal (medaminezghal) <medaminezghal at outlook dot com>
 
 pkgname=litellm
-pkgver=1.82.5
+pkgver=1.82.6
 pkgrel=1
 pkgdesc='Library to easily interface with LLM API providers.'
 arch=(any)
@@ -31,8 +32,6 @@ optdepends=('gunicorn: proxy'
             'python-azure-identity: proxy'
             'python-azure-storage-blob: proxy'
             'python-mcp: proxy'
-            'litellm-proxy-extras: proxy'
-            'litellm-enterprise: proxy'
             'python-rich: proxy'
             'python-polars: proxy'
             'python-soundfile: proxy'
@@ -53,7 +52,7 @@ optdepends=('gunicorn: proxy'
             'python-google-cloud-aiplatform: google')
 provides=("python-$pkgname")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('7988a9b48c8ccd9e5ebced80a4dfce9ce87083b303c3f67082450a4ad6dd312f')
+sha256sums=('2aa1c2da21fe940c33613aa447119674a3ad4d2ad5eb064e4d5ce5ee42420136')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
