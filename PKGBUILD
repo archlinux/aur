@@ -1,6 +1,6 @@
 # Maintainer: Da Chen <dachen@connect.hku.hk>
 pkgname=wayper
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Wayland-first wallpaper manager with Wallhaven integration and MCP server"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=(
     'python-mcp: MCP server for AI assistant integration (pip install mcp)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yuukidach/wayper/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('13755f193b8b1d4a12d42921557a7cbd7e33683b05c612bf2c815de3b8be5646')
+sha256sums=('98f60ba402dc3185991e207fd29e9629da98a7ead81744871f11b3baeb44e722')
 
 build() {
     cd "$pkgname-$pkgver"
