@@ -9,6 +9,7 @@ pkgbase = snd-dante-pcie-dkms
 	optdepends = python-numpy: dante-live.py dashboard
 	provides = snd-dante-pcie
 	conflicts = dante-pcie-dkms
+	conflicts = snd-dante-pcie-dkms-git
 	source = snd-dante-pcie-dkms-0.0.1.tar.gz::https://github.com/chris-ritsen/snd-dante-pcie/archive/refs/tags/v0.0.1.tar.gz
 	sha256sums = SKIP
 

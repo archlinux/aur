@@ -9,7 +9,7 @@ license=('GPL')
 depends=('dkms')
 optdepends=('python-numpy: dante-live.py dashboard')
 provides=('snd-dante-pcie')
-conflicts=('dante-pcie-dkms')
+conflicts=('dante-pcie-dkms' 'snd-dante-pcie-dkms-git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/chris-ritsen/snd-dante-pcie/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
