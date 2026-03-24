@@ -1,0 +1,21 @@
+pkgbase = hashdir-bin
+	pkgdesc = A command-line utility to hash directories and files
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/ultimateanu/hashdir
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = zlib
+	provides = hashdir
+	conflicts = hashdir
+	options = !strip
+	source_x86_64 = hashdir-x86_64-1.5.0.tgz::https://github.com/ultimateanu/hashdir/releases/download/v1.5.0/hashdir_1.5.0_Linux_64bit.tar.gz
+	sha256sums_x86_64 = 7d0d7cf10272fb08b062c65919fd6f15bf2d7838ed690bb0c1bae4cd95418ff4
+	source_aarch64 = hashdir-aarch64-1.5.0.tgz::https://github.com/ultimateanu/hashdir/releases/download/v1.5.0/hashdir_1.5.0_Linux_ARM64.tar.gz
+	sha256sums_aarch64 = e60c9096cd07451354a7653151bb8cc1c74581a789e8f4e9740f4f19c0d08ad1
+
+pkgname = hashdir-bin

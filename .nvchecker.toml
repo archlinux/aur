@@ -1,0 +1,5 @@
+[hashdir-bin]
+source = "github"
+github = "ultimateanu/hashdir"
+use_latest_release = true
+prefix = "v"
