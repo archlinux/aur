@@ -1,3 +1,4 @@
+# Maintainer: Hauryn Lee <lihaoyuan0506@gmail.com>
 pkgname=meowcli-bin
 pkgver=0.3.1beta
 pkgrel=1
