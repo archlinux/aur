@@ -1,0 +1,24 @@
+pkgbase = sysforge
+	pkgdesc = All-in-one Arch Linux helper for system setup and package management with compiler-optimized builds
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/KeithRaghubar/sysforge
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-argparse-manpage
+	depends = python>=3.11
+	optdepends = uv: faster Python environment management
+	optdepends = ccache: compiler cache support
+	optdepends = sccache: Rust compiler cache support
+	optdepends = zsh: shell completions
+	provides = sysforge
+	conflicts = sysforge-git
+	source = sysforge-0.1.0.tar.gz::https://github.com/KeithRaghubar/sysforge/archive/v0.1.0.tar.gz
+	sha256sums = 6e331ad0937a0a1acca33565079c85239a9e4a60295bc355ec4fbcd430d39a7f
+
+pkgname = sysforge
