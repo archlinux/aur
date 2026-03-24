@@ -1,6 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=cosmic-camera
-pkgver=0.2.0
+_app_id=io.github.cosmic_utils.camera
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Camera application for the COSMIC™ desktop environment"
 arch=('x86_64' 'aarch64')
@@ -26,9 +27,13 @@ makedepends=(
   'just'
   'nasm'
 )
+checkdepends=(
+  'appstream'
+  'desktop-file-utils'
+)
 optdepends=('networkmanager: D-Bus access for WiFi connection from QR codes')
 source=("camera-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6a3f25193acc6ef22dad538bfaf6c62e3abc4f9c50dabd0a0060edce81a6f0f0')
+sha256sums=('0baf5d873cd6571b09a1df64dc0c2fbd72225e3b77fc8451ff7993b86185b84d')
 
 prepare() {
   cd "camera-$pkgver"
@@ -48,6 +53,9 @@ check() {
   cd "camera-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   just test --frozen
+
+  appstreamcli validate --no-net "resources/${_app_id}.metainfo.xml"
+  desktop-file-validate "resources/${_app_id}.desktop"
 }
 
 package() {
