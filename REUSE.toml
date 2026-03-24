@@ -19,12 +19,10 @@ path = [
     "*.desktop",
     "*.hook",
     "*.ini*",
-    "*.config"
+    "*.config",
+    "freenet.rules",
+    "java.security",
+    "nss.cfg"
 ]
 SPDX-FileCopyrightText = "Arch Linux contributors"
 SPDX-License-Identifier = "0BSD"
-
-[[annotations]]
-path = "hyphanet.sh"
-SPDX-FileCopyrightText = "Arch Linux contributors"
-SPDX-License-Identifier = "GPL-2.0-or-later"

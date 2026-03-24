@@ -7,7 +7,7 @@
 
 pkgname=hyphanet
 pkgver=0.7.5.1506
-pkgrel=1
+pkgrel=2
 pkgdesc='A peer-to-peer network for censorship-resistant and privacy-respecting publishing and communication, a.k.a The Original Freenet since 1999. This is NOT Locutus.'
 arch=('x86_64' 'aarch64')
 url='https://www.hyphanet.org/'
@@ -35,7 +35,7 @@ validpgpkeys=('B30C3D91069F81ECFEFED0B1B41A6047FD6C57F9')
 b2sums=('78993090e6b80593fc8bfa40ef8fe153b145cb824cc664693fe32be89ebc6604f5b86b8262aad26cd6bb9c5a35d4b74e4ff2b216df07cb33f62637ded3bfe003'
         '43426e241442310e5c9ba0abddb56081eddce1db26ac3e6c55baa6f49cc264d0692bdd0d4deba8a0dd8ded24936979e310143a58b9b99576f8a39d049dcfb547'
         '61776e06447cc41a1d95aff7727819775ac4e54fe311dc9d5bd065bf5a7e17fdb326aa5c1de2161d9c32d77f46d74eba0436e0142ca9638b8928fb80d6af5282'
-        'c8229814001a042482dfee13e93c48cf59303a762dd91b8df15b54f8ed41c72f0f3dc390f1bf4e473b4498cb3b3b57b2fd911c8238bc23919a84d34f74135e34'
+        '676dc9dd52f5427a60552572ad0a758725fb80d13926be03bdcef1640c5f568b3d3dc03ffc6fcb57d895aab0703105ffa020466334b32d6f9c07e4a3de712340'
         'c6b70019596072c4c856b252f3454e0e91c36bd8c3c78521ccb4f7fb98e2258fba48dd1752a8e5a31d935977b0fbb1015a9a36d76dccf1046ad691bb21439cbf'
         'dc3ff52d12de24071569870364af9945530f66faf7c3de9e2e7329b9b248e939c3334513ba8a0bb028bb2ca6f7e7c43a54359a3b6932eaad13825bd514958411'
         'fa985966cd067b13b64885da4524b306f81760542f188b3041ecb791222a5c20578ed490af8cc8a6ddfd992554b4767279e6406ace2c8332442deb12d1a18b82'
@@ -55,32 +55,33 @@ package() {
   # 1. COPY FILES
   ################
 
-  install -Dm644 -t "$pkgdir/usr/share/java/freenet"    "$srcdir/fred/build/output/"*.jar
-  install -Dm644    "$srcdir/fred/LICENSE"              "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname"    "$srcdir/fred/"{AUTHORS,CONTRIBUTING.md,NEWS.md,README.md,SECURITY.md}
+  install -Dm644 -t "$pkgdir/usr/share/java/freenet/"  ./fred/build/output/*.jar
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" ./fred/LICENSE
+  install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname/" ./fred/{AUTHORS,CONTRIBUTING.md,NEWS.md,README.md,SECURITY.md}
 
   # These files can be sourced to create another Freenet instance, like how AUR/hyphanet-userspace will do in the future
-  install -Dm644 -t "$pkgdir/usr/share/freenet"         "$srcdir/"{freenet.ini,java.security,nss.cfg,seednodes.fref}
+  install -Dm644 -t "$pkgdir/usr/share/freenet/" {freenet.ini,java.security,nss.cfg,seednodes.fref}
 
   # Initialize Freenet system instance
-  install -Dm644 -t "$pkgdir/var/lib/freenet"           "$srcdir/"{java.security,nss.cfg,seednodes.fref}
+  install -Dm644 -t "$pkgdir/var/lib/freenet/" {java.security,nss.cfg,seednodes.fref}
   # Note: /etc/freenet/freenet.ini will be installed via tmpfiles.d to ensure its presence and permission
 
   ############################
   # 2. INTEGRATE WITH SYSTEMD
   ############################
 
-  install -Dm644    "$srcdir/freenet.service"           "$pkgdir/usr/lib/systemd/system/freenet.service"
-  install -Dm644    "$srcdir/freenet.sysusers"          "$pkgdir/usr/lib/sysusers.d/freenet.conf"
-  install -Dm644    "$srcdir/freenet.tmpfiles"          "$pkgdir/usr/lib/tmpfiles.d/freenet.conf"
-  install -Dm644    "$srcdir/freenet.hook"              "$pkgdir/usr/share/libalpm/hooks/freenet.hook"
+  install -Dm644 freenet.service "$pkgdir/usr/lib/systemd/system/freenet.service"
+  install -Dm644 freenet.sysusers "$pkgdir/usr/lib/sysusers.d/freenet.conf"
+  install -Dm644 freenet.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/freenet.conf"
+  install -Dm644 freenet.hook "$pkgdir/usr/share/libalpm/hooks/freenet.hook"
 
   ############################
   # 3. TWEAKS
   ############################
 
   # Ananicy rule to allow Freenet to have NICE=10 as base
-  install -Dm644    "$srcdir/freenet.rules"             "$pkgdir/etc/ananicy.d/00-default/services/freenet.rules"
+  install -Dm644 -t "$pkgdir/etc/ananicy.d/00-default/services/" freenet.rules
+
   # Ananicy rule for CachyOS services reside at /etc/ananicy.d/00-default/Services/
-  install -Dm644    "$srcdir/freenet.rules"             "$pkgdir/etc/ananicy.d/00-default/Services/freenet.rules"
+  install -Dm644 -t "$pkgdir/etc/ananicy.d/00-default/Services/" freenet.rules
 }
