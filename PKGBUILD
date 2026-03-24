@@ -9,7 +9,7 @@ url='https://www.zash.se/luaunbound.html'
 license=('MIT')
 makedepends=('lua' 'lua51' 'lua52' 'lua53' 'lua54')
 depends=('unbound')
-source=("https://code.zash.se/dl/luaunbound/luaunbound-1.1.0.tar.gz")
+source=("https://code.zash.se/dl/luaunbound/luaunbound-$pkgver.tar.gz")
 sha256sums=('236159461ecc61d4cc7d3738a7adcf3680ba6f61ea6e1f8e18f2c9b5e3a90244')
 
 prepare() {
