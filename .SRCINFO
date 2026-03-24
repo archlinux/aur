@@ -1,17 +1,13 @@
 pkgbase = stardom-card
 	pkgdesc = CLI tool to scrape and display Stardom event cards
-	pkgver = 0.1.2
-	pkgrel = 12
-	url = https://github.com/dashy-jngl/stardom-card
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/dashy-jngl/StardomCardGo
 	arch = x86_64
 	license = MIT
-	makedepends = python-pip
-	makedepends = python-flit-core
-	depends = python-requests
-	depends = python-beautifulsoup4
-	depends = python-wcwidth
-	depends = python-deep-translator
-	source = https://github.com/dashy-jngl/stardom-card/archive/v0.1.2.tar.gz
-	sha512sums = da4cd2f0ab7ebdb01ed14f61ff971dc68645ee254012d1bb2b97b128e252688c918f38bce812da145dcae85e561ef877c0db8170b5068f6fe499018a0754f70c
+	makedepends = go
+	depends = glibc
+	source = stardom-card-1.0.0.tar.gz::https://github.com/dashy-jngl/StardomCardGo/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = stardom-card
