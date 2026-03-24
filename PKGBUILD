@@ -56,7 +56,7 @@ package() {
 
   # Application files
   install -d "$pkgdir/usr/lib/$pkgname"
-  cp -r dist "$pkgdir/usr/lib/$pkgname/"
+  cp -r dist/. "$pkgdir/usr/lib/$pkgname/"
   cp -r resources "$pkgdir/usr/lib/$pkgname/"
 
   # Launcher script → becomes the executable

@@ -28,7 +28,7 @@ else
     exit 1
 fi
 
-if [ -f "/usr/lib/figma-linux-next/dist/main/main.js" ]; then
+if [ -f "/usr/lib/figma-linux-next/main/main.js" ]; then
     APP_PATH="/usr/lib/figma-linux-next"
 elif [ -f "./dist/main/main.js" ]; then
     APP_PATH="."
