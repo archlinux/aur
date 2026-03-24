@@ -5,7 +5,7 @@ _pkgname=catwalk
 pkgname=${_pkgname}-bin
 pkgdesc="🐈 A collection of LLM inference providers and models"
 
-pkgver=0.31.0
+pkgver=0.31.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,8 +26,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}_${pkgver}_${_barch[1]}.tar.gz")
 sha256sums=('d482c99d082bfcf086071f5756340de605a204731a07a43cada07e8b953a32d6'
             '8a77c755a1d1fbdc932e86f0449549121820b6f4cc1234b12fcfc8d38013c1de')
-sha256sums_x86_64=('38ac8495f0b3c26b1fbd64421819965a0d7a4662cc176af70089ebf1df8bda05')
-sha256sums_aarch64=('5bfce5a369c27dbbdf90771a427e901364873d987fdb87cf7eb036771afa6d83')
+sha256sums_x86_64=('b444f338febe2a2dc4097d8d3617d4a6e173712fe1ec2a629c55a6b588ddcf0e')
+sha256sums_aarch64=('b5c6f9c954506df28c5a988e38511f3cdfa8056b6f815eccfa8adb6cae40624d')
 
 
 package() {
