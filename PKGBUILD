@@ -4,8 +4,8 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-freetype2-bootstrap
-pkgver=2.14.1
-pkgrel=1
+pkgver=2.14.3
+pkgrel=2
 pkgdesc='Font rasterization library (mingw-w64)'
 arch=('any')
 url='https://www.freetype.org/'
@@ -19,7 +19,7 @@ source=(
   0002-Enable-subpixel-rendering.patch
   0003-Enable-long-PCF-family-names.patch
 )
-b2sums=('1dc62d337a93ca94f93496e60bdf9cbabed5867d66bb2f07669f1b5f81ef16f6cc57c401f51bb62d919680316f73902fafb6a167c45183872faaf984840b5ec7'
+b2sums=('26db1946b099abc73d9d249dc48303e70886e0b1cb7180d5b9538b3934dc677a1572a32573af6adabeeb1c1a2eef81f24399038d3d8e640c29bba77f6c8a3596'
         'SKIP'
         'f45ec7d03193b446d8b46c8d981f330843a1ab2c83a91a5011cb328b26b4fc4c4b5729f32f3270018cf5ba8a162712bd0ebc2cd67f97b906e46ce293aeda466f'
         'b9481bfe770104b181a59be8cf30c90d329447d3ba04bd7dc641a54057cf2a9024c1a881d096b7ff940e9b467960ff3e08e611686d9a01136523fbb34299d057'
@@ -53,25 +53,32 @@ prepare() {
 build() {
   local harfbuzz_support=enabled
   [[ $pkgname = 'mingw-w64-freetype2-bootstrap' ]] && harfbuzz_support=disabled
+  cd "${srcdir}/freetype-${pkgver}"
   for _arch in ${_architectures}; do
-    mkdir -p "${srcdir}/freetype-${pkgver}/build-${_arch}"
-    cd "${srcdir}/freetype-${pkgver}/build-${_arch}"
-    ${_arch}-meson --default-library both \
-      -D zlib=enabled \
-      -D bzip2=enabled \
-      -D png=disabled \
-      -D harfbuzz="$harfbuzz_support" \
-      -D brotli=enabled \
-      -D b_lto=false \
-      -D freetype2:error_strings=true
-    ninja
+    # do static and shared build separately; otherwise DLL exports are missing with clang
+    for type in static shared; do
+      mkdir -p "build-${_arch}-${type}"
+      pushd "build-${_arch}-${type}"
+      ${_arch}-meson --default-library "$type" \
+        -D zlib=enabled \
+        -D bzip2=enabled \
+        -D png=disabled \
+        -D harfbuzz="$harfbuzz_support" \
+        -D brotli=enabled \
+        -D b_lto=false \
+        -D freetype2:error_strings=true
+      ninja
+      popd
+    done
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/freetype-${pkgver}/build-${_arch}"
-    DESTDIR="${pkgdir}" ninja install
+    for type in static shared; do
+      cd "${srcdir}/freetype-${pkgver}/build-${_arch}-${type}"
+      DESTDIR="${pkgdir}" ninja install
+    done
     rm -rf "${pkgdir}/usr/${_arch}/share/"
     ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*.a
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
