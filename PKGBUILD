@@ -7,7 +7,7 @@
 
 _gitname=lgi
 pkgname=luajit-lgi-git
-pkgver=0.9.2.r102.g700fcda
+pkgver=0.9.2.r124.ga858212
 pkgrel=1
 pkgdesc='Lua binadings for gobject using gobject-introspection library'
 arch=('i686' 'x86_64')
