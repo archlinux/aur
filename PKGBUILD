@@ -1,8 +1,8 @@
 # Maintainer: Douglas Soares de Andrade <contato@douglasandrade.com>
 pkgname=kefctl
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc='TUI controller for KEF LSX II speakers'
+pkgdesc='TUI controller for KEF W2 speakers (LSX II, LS50 Wireless II, LS60 Wireless)'
 arch=('x86_64')
 url='https://github.com/douglas/kefctl'
 license=('MIT')
@@ -10,7 +10,7 @@ depends=('gcc-libs' 'glibc')
 makedepends=('cargo' 'rust')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f66d57e4c135fee9f811e5413a2bcf79b070264262b515797d622d843fd8b816')
+sha256sums=('6de727b83ae6efbee3be61bd8d047e04c03f82d42621193abb0a5832a6c83d5e')
 
 prepare() {
     cd "$pkgname-$pkgver"
