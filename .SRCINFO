@@ -1,0 +1,18 @@
+pkgbase = docker-tui-bin
+	pkgdesc = Docker terminal UI
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/Bhavesh164/docker-tui
+	arch = x86_64
+	arch = aarch64
+	license = Unlicense
+	provides = docker-tui
+	conflicts = docker-tui
+	source = README-0.3.md::https://raw.githubusercontent.com/Bhavesh164/docker-tui/v0.3/README.md
+	sha256sums = dba2d2e39b213bdedf206d299ddf81de30f132fb0c43cd9d3a397c68c28e4d81
+	source_x86_64 = docker-tui-x86_64-0.3::https://github.com/Bhavesh164/docker-tui/releases/download/v0.3/docker-tui_linux_amd64
+	sha256sums_x86_64 = cba5278b5d810377f0018953fd1f37632e669d79ae0e75062158d7236202af7a
+	source_aarch64 = docker-tui-aarch64-0.3::https://github.com/Bhavesh164/docker-tui/releases/download/v0.3/docker-tui_linux_arm64
+	sha256sums_aarch64 = d4c77e74d3e969b21d7514b9d9773db767303d85d612fb3660f386f7590b5bc2
+
+pkgname = docker-tui-bin

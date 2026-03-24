@@ -1,0 +1,5 @@
+[docker-tui-bin]
+source = "github"
+github = "Bhavesh164/docker-tui"
+use_latest_release = true
+prefix = "v"
