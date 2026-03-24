@@ -1,0 +1,17 @@
+pkgbase = pacapply
+	pkgdesc = A tool to declare installed packages as configuration, simplifying package management and system reinstallation.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://framagit.org/traveling_salesman/pacapply
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL2
+	makedepends = git
+	makedepends = cargo
+	depends = sudo
+	source = pacapply::git+https://framagit.org/traveling_salesman/pacapply#tag=1.0.0
+	sha256sums = SKIP
+
+pkgname = pacapply
