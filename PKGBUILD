@@ -11,7 +11,7 @@ depends=('hicolor-icon-theme' 'gtk3' 'libnotify' 'libxss' 'libxtst')
 makedepends=('squashfs-tools')
 conflicts=('vrcft' 'vrcft-avalonia')
 provides=('vrcft' 'vrcft-avalonia')
-source=("https://github.com/dfgHiatus/VRCFaceTracking.Avalonia/releases/download/v$pkgver/VRCFaceTracking.Avalonia.$pkgver.AppImage"
+source=("https://github.com/dfgHiatus/VRCFaceTracking.Avalonia/releases/download/v$pkgver/VRCFaceTracking.Avalonia.$pkgver.x64.AppImage"
         'vrcft'
         'VRCFaceTracking.Avalonia.desktop')
 sha256sums=('a16f2db2b25f0bcc282f6ac257222d164e2847c3354a543f634bc0d4468e8464'
@@ -97,7 +97,7 @@ extract_appimage() (
 )
 
 build() {
-    extract_appimage "VRCFaceTracking.Avalonia.$pkgver.AppImage" appimage -no-xattrs
+    extract_appimage "VRCFaceTracking.Avalonia.$pkgver.x64.AppImage" appimage -no-xattrs
 
     rm -f appimage/AppRun
     rm -f appimage/.DirIcon
