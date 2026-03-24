@@ -39,7 +39,7 @@ _target_arch=(
 )
 pkgname=("zephyr-sdk-gnu-bin")
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
@@ -49,13 +49,11 @@ conflicts=("zephyr-sdk" "zephyr-sdk-bin")
 source_x86_64=()
 source_aarch64=()
 _depends=()
-_provides=()
 for _target in ${_target_arch[@]};do
   pkgname+=("zephyr-sdk-gnu-toolchain-${_target}-bin")
   pkgname+=("zephyr-sdk-gnu-${_target}-bin")
 
-  _depends+=("zephyr-sdk-gnu-toolchain-${_target}=${pkgver}")
-  _provides+=("zephyr-sdk-gnu-${_target}")
+  _depends+=("zephyr-sdk-gnu-toolchain-${_target}-bin=${pkgver}")
 
   source_x86_64+=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/toolchain_gnu_linux-x86_64_${_target}.tar.xz")
   source_aarch64+=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/toolchain_gnu_linux-aarch64_${_target}.tar.xz")
@@ -140,10 +138,10 @@ build() {
 
 package_zephyr-sdk-gnu-bin() {
   depends+=('cmake' 'gperf' 'dfu-util' 'dtc' 'tk' 'xz'
-    "zephyr-sdk-cmake-modules=${pkgver}" "zephyr-sdk-profile=${pkgver}" "zephyr-sdk-hosttools=${pkgver}"
+    "zephyr-sdk-cmake-modules=${pkgver}" "zephyr-sdk-profile=${pkgver}" "zephyr-sdk-hosttools-bin=${pkgver}"
     ${_depends[@]}
   )
-  provides=("zephyr-sdk" "zephyr-sdk-gnu" ${_provides[@]})
+  provides=("zephyr-sdk" "zephyr-sdk-gnu")
   replaces=("zephyr-sdk-bin")
   optdepends=('ninja' 'make' 'ccache' 'python-pyelftools'
             'pyocd: programming and debugging ARM MCUs'
@@ -161,11 +159,11 @@ _package_zephyr-sdk-gnu-toolchain-TARGET-bin() {
 }
 
 _package_zephyr-sdk-gnu-TARGET-bin() {
-  provides=('zephyr-sdk' 'zephyr-sdk-gnu' 'zephyr-sdk-gnu-TARGET')
+  provides=('zephyr-sdk-gnu-TARGET')
 
   depends=(
     'cmake' 'gperf' 'dfu-util' 'dtc' 'tk' 'xz'
-    "zephyr-sdk-cmake-modules=${pkgver}" "zephyr-sdk-profile=${pkgver}" "zephyr-sdk-hosttools=${pkgver}"
+    "zephyr-sdk-cmake-modules=${pkgver}" "zephyr-sdk-profile=${pkgver}" "zephyr-sdk-hosttools-bin=${pkgver}"
     "zephyr-sdk-gnu-toolchain-TARGET-bin=${pkgver}"
   )
   optdepends=('ninja' 'make' 'ccache' 'python-pyelftools'
