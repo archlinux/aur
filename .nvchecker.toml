@@ -1,0 +1,5 @@
+[promptcmd-bin]
+source = "github"
+github = "tgalal/promptcmd"
+use_latest_release = true
+prefix = "v"

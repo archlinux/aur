@@ -1,0 +1,16 @@
+pkgbase = promptcmd-bin
+	pkgdesc = GenAI prompts as runnable programs
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/tgalal/promptcmd
+	arch = x86_64
+	license = GPL-3.0
+	depends = glibc
+	depends = libgcc
+	provides = promptcmd
+	provides = promptctl
+	conflicts = promptcmd
+	source_x86_64 = promptcmd-x86_64-1.1.0.txz::https://github.com/tgalal/promptcmd/releases/download/v1.1.0/promptcmd-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 33c4f8f2b2d4cc0798832967b04324d7c0882daa346de28fac00071c6673dce2
+
+pkgname = promptcmd-bin
