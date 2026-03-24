@@ -1,7 +1,7 @@
 # Maintainer: Jaiden Brooke <jaiden.lily.brooke@gmail.com>
 pkgname=language-toolkit
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple tool to document and create languages"
 url=https://git.gay/ika4422/language-toolkit
 arch=('x86_64' 'aarch64')
