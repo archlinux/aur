@@ -1,10 +1,10 @@
-# Maintainer: Frederik Schwan <freswa at archlinux dot org>
+# Maintainer: Hauke Fath <h.fath at nt dot tu-darmstadt dot de>
 
 pkgname=latex-tuda-ci
 _pkgname=tuda_latex_templates
 pkgver=4.04
-pkgrel=1
-pkgdesc='TUDa-CI for LaTeX from Technische Universität Darmstadt'
+pkgrel=2
+pkgdesc='TUDa-CI for LaTeX from Technical University of Darmstadt'
 arch=('any')
 url='https://github.com/tudace/tuda_latex_templates'
 license=('custom')
@@ -16,8 +16,8 @@ makedepends=(
   'texlive-bin'
   'texlive-fontsextra'
   'texlive-langcyrillic'
-  'texlive-langenglish'
   'texlive-langgerman'
+  'texlive-langenglish'
   'texlive-latexextra'
   'texlive-luatex'
   'texlive-pictures'
@@ -36,5 +36,4 @@ build() {
 package() {
   cd ${_pkgname}-${pkgver}
   l3build install --full --texmfhome ${pkgdir}/usr/share/texmf
-  install -Dm644 "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
