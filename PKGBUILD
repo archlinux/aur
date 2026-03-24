@@ -5,7 +5,7 @@
 
 _android_arch=x86
 pkgname=android-$_android_arch-qt6-quicktimeline
-_qtver=6.10.2
+_qtver=6.11.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -21,7 +21,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtquicktimeline-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('7032d8b758d21fdf790dde0d070e1c82819abcf5ee7194dbf21589dbdfd36324')
+sha256sums=('06dbe1cc541431fa321023992ca4ccf83c76b25d07bbf516e0af887a38f32cd6')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
