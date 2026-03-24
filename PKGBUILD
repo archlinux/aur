@@ -2,7 +2,7 @@
 pkgname=itchio-downloader
 pkgver=1.1.0
 pkgrel=1
-pkgdesc="Download free games from itch.io programmatically — no API key, no Puppeteer, no GUI"
+pkgdesc="Download free games from itch.io programmatically - no API key, no Puppeteer, no GUI"
 arch=('any')
 url="https://github.com/Wal33D/itchio-downloader"
 license=('ISC')
