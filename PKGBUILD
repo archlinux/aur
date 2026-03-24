@@ -1,6 +1,6 @@
 # Maintainer: 3uzbcqje <3uzbcqje@addy.to>
 pkgname=aws-sso-cli-bin
-pkgver=2.1.0
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="A secure replacement for aws configure sso"
 arch=('x86_64' 'aarch64')
@@ -10,8 +10,8 @@ provides=('aws-sso')
 conflicts=('aws-sso')
 source_x86_64=("https://github.com/synfinatic/aws-sso-cli/releases/download/v${pkgver}/aws-sso-${pkgver}-linux-amd64")
 source_aarch64=("https://github.com/synfinatic/aws-sso-cli/releases/download/v${pkgver}/aws-sso-${pkgver}-linux-arm64")
-sha256sums_x86_64=('760ecc85c2e4fc5d13d5b035dfc32bb5161c5ff1887e0314176f8658e7d841ae')
-sha256sums_aarch64=('bd120d7711fbc90cc32539a6cbd0411e736b0cfe773285c53716fd0627498a9c')
+sha256sums_x86_64=('fff5c90171a477ade0835971edad7d7056512f559dbc402bdc5a72dad06b120d')
+sha256sums_aarch64=('93fd8ac609653883a98ecdde9322b8e523e81573e73c73366aa63398742433bc')
 
 package() {
     case "$CARCH" in
