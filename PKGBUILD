@@ -1,7 +1,7 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 pkgname=gram-editor-bin
 pkgver=1.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A code editor for humanoid apes and grumpy toads"
 
 provides=(gram-editor gram)
@@ -43,7 +43,10 @@ package() {
 	
 	install -Dm0755 bin/gram "$pkgdir/usr/bin/gram"
 	install -Dm0755 libexec/gram-editor "$pkgdir/usr/lib/gram/gram-editor"
-	install -Dm0644 share/applications/gram.desktop "$pkgdir/usr/share/applications/se.ziran.Gram.desktop"
-	install -Dm0644 share/icons/hicolor/scalable/apps/app.liten.Gram.svg "$pkgdir/usr/share/icons/app.liten.Gram.svg"
+	install -Dm0644 share/applications/gram.desktop "$pkgdir/usr/share/applications/app.liten.Gram.desktop"
+	install -Dm0644 share/icons/hicolor/scalable/apps/app.liten.Gram.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/app.liten.Gram.svg"
+	install -Dm0644 share/icons/hicolor/symbolic/apps/app.liten.Gram-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/app.liten.Gram-symbolic.svg"
+	install -Dm0644 share/icons/hicolor/1024x1024/apps/gram.png "$pkgdir/usr/share/icons/hicolor/1024x1024/apps/app.liten.Gram.png"
+	install -Dm0644 share/icons/hicolor/512x512/apps/gram.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/app.liten.Gram.png"
 }
 
