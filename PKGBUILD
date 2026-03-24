@@ -24,15 +24,15 @@
 : ${_build_limit_cores:=false}
 
 ## update
-_icver="140.8.0"
-_commit="e2809896cda6560800040c638982dba7945fe43a" # 140.8.0
-_ffsum="57a7f339ef68273f6597d8074a841fa053f63a21d1f609ab0074a26c063282e6"
+_icver="140.9.0"
+_commit="10a8be3fcf725ed01ffb7279ec27c2fba55dd2d2" # 140.9.0
+_ffsum="b972b2a4c17244d51c10123cbd6c936e2cf26ebc29eb724570d285c283e9e92c"
 
 ## package
 _pkgname="icecat"
 pkgname="$_pkgname"
 pkgver="$_icver"
-pkgrel=2
+pkgrel=1
 pkgdesc="GNU version of the Firefox ESR browser"
 url="https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git"
 license=('MPL-2.0')
