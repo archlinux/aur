@@ -1,0 +1,16 @@
+pkgbase = mdify-bin
+	pkgdesc = Scan a directory and get a deterministic Markdown snapshot with metadata, file tree, and full source contents.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/joarhal/mdify
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mdify
+	conflicts = mdify
+	source_x86_64 = mdify-x86_64-0.1.0.tgz::https://github.com/joarhal/mdify/releases/download/v0.1.0/mdify_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d68dae70fc239eeebe958955d55fa8aaedc24395bcc2e259986a4dfb4a9fb6d7
+	source_aarch64 = mdify-aarch64-0.1.0.tgz::https://github.com/joarhal/mdify/releases/download/v0.1.0/mdify_0.1.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7ddcf6f9b4afd03d27a24f4d783490a0bf989a1c7ec544a91c7e6699c588f594
+
+pkgname = mdify-bin

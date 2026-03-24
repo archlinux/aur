@@ -1,0 +1,5 @@
+[mdify-bin]
+source = "github"
+github = "joarhal/mdify"
+use_latest_release = true
+prefix = "v"
