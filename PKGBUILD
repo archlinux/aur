@@ -2,7 +2,7 @@
 # AUR package for hamr-bin - pre-built binaries
 
 pkgname=hamr-bin
-pkgver=1.0.19
+pkgver=1.0.20
 pkgrel=1
 pkgdesc="A fast, extensible desktop launcher for Linux (pre-built binaries)"
 arch=('x86_64')
@@ -20,6 +20,7 @@ depends=(
 optdepends=(
     'python-dbus: system dbus integration for plugins'
     'python-gobject: GObject introspection for plugins'
+    'libqalculate: calculator plugin backend (qalc)'
 
     # Desktop integration tools for plugins
     'wl-clipboard: clipboard operations in plugins'
