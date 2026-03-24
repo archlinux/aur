@@ -3,9 +3,9 @@
 pkgname=wifi-audio-streaming
 _pkgname=wifi-audio-streaming
 
-_pkgver=0.2.0-beta
+_pkgver=0.3.0-beta
 pkgver=${_pkgver//-/}
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 
 pkgdesc="A desktop application for streaming audio over a local network."
@@ -21,7 +21,7 @@ source=(
   "$_pkgname.desktop"
   "$_pkgname.sh"
   )
-sha256sums=('feb89d99108bace7daae9d84936e0024679b6ccf36e899aaf3a43500fc9e7ca7'
+sha256sums=('a85dc3a51973f3e7e98636a2f06ee649e00e915bbea2e10194259ece029b16d2'
             'ed518ae2988de998d7cb4aeb476a25fddaed6990a65f5c0db78fa165fbf8f176'
             'ca1de798c0b6ba482448d35bf92d7dc3cb2585d7ca9a5d442063e9397ade754d')
 
