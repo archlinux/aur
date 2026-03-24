@@ -1,7 +1,7 @@
 pkgbase = dotpeek
 	pkgdesc = Free .NET Decompiler and Assembly Browser (running in Wine)
 	pkgver = 2025.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jetbrains.com/decompiler/
 	arch = x86_64
 	license = custom
@@ -16,6 +16,6 @@ pkgbase = dotpeek
 	source = dotpeek.py
 	sha256sums = eb9f5c5f85d3ee252b8a6eb0a387fec759def88194c4bb056c6973d5a6e08cf6
 	sha256sums = 6c35ca1d9caeb98629270e05aaaecce42b937348d5434adad33eacfbf553092c
-	sha256sums = 76f1191547c63b61c8157b806d2cf20123c9165f6551a710c589196b8cfc7022
+	sha256sums = c3b1ad6a91100841a5d27fb49ebf64b3e99ddc2cf82f98c5b40845fc1b13eebe
 
 pkgname = dotpeek

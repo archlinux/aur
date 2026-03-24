@@ -4,7 +4,7 @@ import os
 import sys
 import signal
 from typing import override
-from subprocess import check_output, run
+from subprocess import run
 from PySide6.QtGui import QIcon
 from PySide6.QtCore import QThread, Signal
 from PySide6.QtWidgets import QApplication, QMessageBox, QProgressDialog
@@ -14,8 +14,13 @@ os.environ["WINEPREFIX"]      = os.environ.get('XDG_DATA_HOME', os.path.expandus
 os.environ["WINE_D3D_CONFIG"] = "renderer=gdi"
 PREFIX     = os.environ["WINEPREFIX"]
 # it's better to check if a file is there than run winetricks to check if deps are installed
-READY_FILE = PREFIX + "/.ready"
+WINETRICKS_LOG = PREFIX + "/winetricks.log"
 EXECUTABLE = "/opt/dotpeek/dotpeek.exe"
+DEPS = [
+  "dotnet472",
+  "d3dx9",
+  "corefonts"
+]
 
 # TODO: add a -f option to reinstall dependencies
 class Worker(QThread):
@@ -27,14 +32,9 @@ class Worker(QThread):
   def run(self):
     try:
       _ = run(["wine", "init"])
-      output = check_output(["winetricks", "list-installed"], text=True)
-      deps = [
-        "dotnet472",
-        "d3dx9",
-        "corefonts"
-      ]
-      for dep in deps:
-        if dep not in output:
+      installed = open(WINETRICKS_LOG).read() if os.path.isfile(WINETRICKS_LOG) else ""
+      for dep in DEPS:
+        if dep not in installed:
           if dep == "dotnet472":
             self.stage.emit(f"Installing {dep} (it's gonna take a while)...")
           else:
@@ -44,13 +44,11 @@ class Worker(QThread):
           if run(["winetricks", "-q", dep]).returncode != 0:
             app.exit(2)
 
-      # Touch $WINEPREFIX/.ready
-      open(READY_FILE, 'w').close()
       app.exit(0)
     except Exception:
-      return
+      app.exit(1)
 
-if not os.path.isfile(READY_FILE):
+if not os.path.isfile(WINETRICKS_LOG) or not all(dep in open(WINETRICKS_LOG).read() for dep in DEPS):
   _ = signal.signal(signal.SIGINT, signal.SIG_DFL) # Fix Ctrl+C
   app = QApplication(sys.argv)
   app.setWindowIcon(QIcon.fromTheme("dotpeek"))
@@ -58,8 +56,8 @@ if not os.path.isfile(READY_FILE):
   app.setApplicationDisplayName("dotPeek")
   dialog = QProgressDialog(labelText="Installing dependencies...", minimum=0, maximum=0)
   dialog.setWindowTitle("Setup")
-  _ = dialog.canceled.connect(lambda: app.exit(1))
-  _ = dialog.finished.connect(lambda: app.exit(1))
+  _ = dialog.canceled.connect(lambda: app.exit(3))
+  _ = dialog.finished.connect(lambda: app.exit(3))
   dialog.show()
 
   worker = Worker()
@@ -67,16 +65,15 @@ if not os.path.isfile(READY_FILE):
   worker.start()
 
   exit_code = app.exec()
-  if exit_code == 2:
+  worker.terminate() # winetricks is tricky to SIGSTOP, so gotta exterminate it
+  _ = worker.wait()
+  del worker
+  if exit_code != 0 and exit_code != 3:
     _ = QMessageBox.critical(
       None,
       "dotPeek Setup",
       f"Failed to install required dependencies in prefix {PREFIX}"
     )
-  worker.terminate() # winetricks is tricky to SIGSTOP, so gotta exterminate it
-  _ = worker.wait()
-  del worker
-  if exit_code != 0:
     sys.exit(exit_code)
 
 os.execvp("wine", ["wine", EXECUTABLE] + sys.argv[1:])
