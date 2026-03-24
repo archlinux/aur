@@ -1,6 +1,6 @@
 pkgbase = chevren
 	pkgdesc = Turkish subtitle generator for YouTube videos and local files
-	pkgver = 1.0.10
+	pkgver = 1.0.11
 	pkgrel = 1
 	url = https://github.com/yeggis/chevren
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = chevren
 	depends = ffmpeg
 	depends = yt-dlp
 	depends = mpv
-	source = chevren-1.0.10.tar.gz::https://github.com/yeggis/chevren/archive/refs/tags/v1.0.10.tar.gz
-	sha256sums = 00521bd4e33caac02a4d19fc2b0c046da9ba7597528083fd8520f43ba835aca0
+	source = chevren-1.0.11.tar.gz::https://github.com/yeggis/chevren/archive/refs/tags/v1.0.11.tar.gz
+	sha256sums = b259558006ad4d5c32076e4aaf0f18bf60d972b62550ab051ddee035078883c4
 
 pkgname = chevren
