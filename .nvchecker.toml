@@ -1,0 +1,4 @@
+[alpaca-ai]
+source = "github"
+github = "Jeffser/Alpaca"
+use_max_release = true
