@@ -13,7 +13,7 @@ pkgbase = shiori-ebook-bin
 	provides = shiori-ebook
 	conflicts = shiori-ebook
 	conflicts = shiori-ebook-git
-	source_x86_64 = https://github.com/vinayydv3695/Shiori/releases/download/v0.2.0/Shiori_0.2.0_amd64.deb
-	sha256sums_x86_64 = e29decc896986cdd6f7bc56c61c00d44c29ee2903bf7776f6d7ce6b13b230366
+	source = shiori-ebook-bin-0.2.0.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v0.2.0/shiori-0.2.0-linux-x86_64.tar.gz
+	sha256sums = 50bc6539058dd672aed196daaae8d5ffb483b55c1d8116618781c04ad26133a3
 
 pkgname = shiori-ebook-bin
