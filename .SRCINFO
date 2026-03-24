@@ -1,6 +1,6 @@
 pkgbase = alchemist
 	pkgdesc = An extensible simulator for pervasive computing
-	pkgver = 43.0.21
+	pkgver = 43.0.22
 	pkgrel = 1
 	url = https://alchemistsimulator.github.io
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = alchemist
 	depends = libxi
 	depends = libxrender
 	depends = libxtst
-	source = https://github.com/AlchemistSimulator/Alchemist/releases/download/43.0.21/alchemist-43.0.21-1.x86_64.rpm
-	md5sums = 694be19bae391a3f4f740995c7a16bca
+	source = https://github.com/AlchemistSimulator/Alchemist/releases/download/43.0.22/alchemist-43.0.22-1.x86_64.rpm
+	md5sums = 03b16be9ce9e3b1a2ee24acad732f8b2
 
 pkgname = alchemist
