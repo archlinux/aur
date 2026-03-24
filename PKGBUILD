@@ -1,6 +1,6 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
 _npmname=node-red
-pkgver=4.1.7
+pkgver=4.1.8
 pkgname=nodejs-${_npmname}
 pkgrel=1
 pkgdesc="A visual tool for wiring the Internet of Things."
@@ -15,7 +15,7 @@ source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 		"${pkgname}.service"
 		"${pkgname}.default")
 noextract=("${_npmname}-${pkgver}.tgz")
-sha256sums=('8b5873f70f67bb1f7baa7dcd40461c729786310b3e5c6b963d4c634a6363b72c'
+sha256sums=('b7e1cf516894553232ad0d4513909d0620a6d57211a485948237b4772db461fe'
             'cb3468c4f5c5883ed89aef13485c6c604d22f917cec714585dbadd4914fff3e8'
             'd08994475b06f270b2f1a2b3c99c22fd33f001dc2a10413460caded125f81f38')
 
