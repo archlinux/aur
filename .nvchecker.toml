@@ -1,0 +1,5 @@
+[genimage]
+source = 'github'
+github = 'pengutronix/genimage'
+use_max_tag = true
+prefix = 'v'
