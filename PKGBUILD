@@ -5,7 +5,7 @@ pkgver() {
   cd "pipewire-screenaudio"
   git describe --tags --long --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension to passthrough pipewire audio to WebRTC Screenshare"
 arch=('x86_64')
 url="https://github.com/IceDBorn/pipewire-screenaudio"
@@ -47,10 +47,10 @@ package() {
   install -Dm755 'connector-rs/target/release/connector-rs' "$pkgdir/usr/lib/pipewire-screenaudio/connector/connector-rs"
 
   # Firefox based browsers
-  install -Dm644 'native-messaging-hosts/com.icedborn.pipewirescreenaudioconnector.json' "$pkgdir/usr/lib/pipewire-screenaudio/messaging-hosts/firefox.json"
+  install -Dm644 'native-messaging-hosts/com.icedborn.pipewirescreenaudioconnector.json'  "$pkgdir/usr/lib/pipewire-screenaudio/messaging-hosts/firefox.json"
   sed -i 's|CONNECTOR_BINARY_PATH|/usr/lib/pipewire-screenaudio/connector/connector-rs|g' "$pkgdir/usr/lib/pipewire-screenaudio/messaging-hosts/firefox.json"
-  sed -i 's|ALLOWED_FIELD|allowed_extensions|g'                                                             "$pkgdir/usr/lib/pipewire-screenaudio/messaging-hosts/firefox.json"
-  sed -i 's|ALLOWED_VALUE|pipewire-screenaudio@icenjim|g'                                                   "$pkgdir/usr/lib/pipewire-screenaudio/messaging-hosts/firefox.json"
+  sed -i 's|ALLOWED_FIELD|allowed_extensions|g'                                           "$pkgdir/usr/lib/pipewire-screenaudio/messaging-hosts/firefox.json"
+  sed -i 's|ALLOWED_VALUE|pipewire-screenaudio@icenjim|g'                                 "$pkgdir/usr/lib/pipewire-screenaudio/messaging-hosts/firefox.json"
 
   # Firefox
   mkdir -p "$pkgdir/usr/lib/mozilla/native-messaging-hosts"
