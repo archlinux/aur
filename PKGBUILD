@@ -1,6 +1,6 @@
 # Maintainer: Douglas Soares de Andrade <contato@douglasandrade.com>
 pkgname=cmux-gtk
-pkgver=0.62.0.alpha.3
+pkgver=0.62.0.alpha.4
 pkgrel=1
 pkgdesc='Terminal multiplexer for AI coding agents (GTK4/libadwaita)'
 arch=('x86_64')
@@ -12,9 +12,9 @@ provides=('cmux')
 conflicts=('cmux' 'cmux-git')
 # AUR pkgver uses dots; _tagver holds the original tag version with hyphens
 _tagver="${pkgver//.alpha/-alpha}"
-_ghostty_commit=5dd1c26d6f882aaa5f5a356dfb004eef6c47ae08
+_ghostty_commit=332b2aefc6e72d363aa93ab6ecfc86eeeeb5ed28
 source=("$pkgname-$_tagver.tar.gz::$url/archive/v$_tagver.tar.gz")
-sha256sums=('ddc5bb7ce512663c3639e2b3fddfca0384c6421da73d68941579c8d5cd8baa71')
+sha256sums=('139306d106e818a58088760cdcca12bc4d1209da814cef9542e8568983a26178')
 
 prepare() {
     cd "$pkgname-$_tagver"
@@ -22,7 +22,7 @@ prepare() {
     # commit, then strip .git so zig build uses dev version detection instead
     # of panicking on mismatched git tags.
     if [[ ! -d "$srcdir/ghostty-src" ]]; then
-        git clone --filter=blob:none https://github.com/ghostty-org/ghostty.git "$srcdir/ghostty-src"
+        git clone --filter=blob:none https://github.com/douglas/ghostty.git "$srcdir/ghostty-src"
         git -C "$srcdir/ghostty-src" checkout "$_ghostty_commit"
     fi
     rm -rf ghostty
