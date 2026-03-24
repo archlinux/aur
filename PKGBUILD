@@ -5,7 +5,7 @@
 
 _android_arch=x86-64
 pkgname=android-$_android_arch-qt6-tools
-_qtver=6.10.2
+_qtver=6.11.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -21,9 +21,11 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qttools-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz"
-        '0001-Enable-only-SQL-plugins-which-are-known-to-work.patch')
-sha256sums=('1e3d2c07c1fd76d2425c6eaeeaa62ffaff5f79210c4e1a5bc2a6a9db668d5b24'
-            '0760b47c4b77b3e9eccf8873c7c7ea1c1c43cadcb71fe5e03285651a605f8e9b')
+        '0001-Enable-only-SQL-plugins-which-are-known-to-work.patch'
+        '0002-Allow-using-LLVM-22.patch')
+sha256sums=('cfb1993d7a10848965b01b9cf33a54b8a4ba4e5e3a6d28d59483e73f10d9fc76'
+            '2426657fb0a34e97956f3cdb4da253ea45bdf2cf66e5ee6035a41c300aa21dc9'
+            'a6cf2f2a16b4c27570ddfe80cd1242965ee66bd983015c6baedb240f3183d14b')
 
 prepare () {
   cd $_pkgfqn
