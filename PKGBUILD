@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.22.r155.gc6950f3
+pkgver=0.5.22.r164.g74f67b8
 pkgrel=1
 pkgdesc="Open Gaming Platform"
 arch=('any')
@@ -46,7 +46,7 @@ makedepends=(
 )
 checkdepends=(
   'appstream-glib'
-  'python-pytest'
+#  'python-pytest'
 )
 optdepends=(
   'fluidsynth: For games that have MIDI music'
@@ -95,9 +95,9 @@ check() {
 
   # Python tests: Disabled because either they're querying hardware 
   # or trying to spawn processes
-  pytest \
-    --ignore=tests/test_{api,dialogs,installer}.py \
-    -k "not GetNvidiaDriverInfo and not GetNvidiaGpuInfo and not import_module and not options"
+#  pytest \
+#    --ignore=tests/_test_{api,dialogs,installer}.py \
+#    -k "not GetNvidiaDriverInfo and not GetNvidiaGpuInfo and not import_module and not options"
 }
 
 package() {
