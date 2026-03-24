@@ -1,8 +1,8 @@
 # Maintainer: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=alhp-mirrorlist
-pkgver=20250825
-pkgrel=2
+pkgver=20260324
+pkgrel=1
 pkgdesc='ALHP mirror list for use by pacman'
 arch=(any)
 url='https://somegit.dev/ALHP/alhp-mirrorlist'
@@ -13,7 +13,7 @@ backup=(
 )
 makedepends=(git)
 source=("git+$url#tag=$pkgver")
-b2sums=('08b21778f2bbd704adf4c894e18ff34a69d26f2667454309205795540fb73383125b55e4f7adfb4f56a6e07696e34e65c5d2f9fa2da08ef4805f18f9c8882853')
+b2sums=('93a64d29e4c427850e172a6165ebdaace9c82a1e62bd7deb00f16a145c99c63cbb72fa57aa5bc4e404efb9585904db63a3be2cbaf96bf4f58aaff8a71d75d49a')
 
 package() {
   install -Dm644 alhp-mirrorlist/mirrorlist "$pkgdir"/etc/pacman.d/alhp-mirrorlist

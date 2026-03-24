@@ -1,14 +1,14 @@
 pkgbase = alhp-mirrorlist
 	pkgdesc = ALHP mirror list for use by pacman
-	pkgver = 20250825
-	pkgrel = 2
+	pkgver = 20260324
+	pkgrel = 1
 	url = https://somegit.dev/ALHP/alhp-mirrorlist
 	arch = any
 	license = GPL-2.0-or-later
 	makedepends = git
 	backup = etc/pacman.d/alhp-mirrorlist
 	backup = etc/pacman.d/alhp-mirrorlist.ipfs
-	source = git+https://somegit.dev/ALHP/alhp-mirrorlist#tag=20250825
-	b2sums = 08b21778f2bbd704adf4c894e18ff34a69d26f2667454309205795540fb73383125b55e4f7adfb4f56a6e07696e34e65c5d2f9fa2da08ef4805f18f9c8882853
+	source = git+https://somegit.dev/ALHP/alhp-mirrorlist#tag=20260324
+	b2sums = 93a64d29e4c427850e172a6165ebdaace9c82a1e62bd7deb00f16a145c99c63cbb72fa57aa5bc4e404efb9585904db63a3be2cbaf96bf4f58aaff8a71d75d49a
 
 pkgname = alhp-mirrorlist
