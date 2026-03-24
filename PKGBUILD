@@ -1,14 +1,14 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=('far2l' 'far2l-ttyx' 'far2l-gui' 'far2l-python')
-pkgver=2.7.0
-pkgrel=2
+pkgver=2.8.0
+pkgrel=1
 pkgdesc='Linux port of FAR v2'
 url='https://github.com/elfmz/far2l'
 arch=('x86_64' 'aarch64')
 license=('GPL2')
 source=("far2l-${pkgver}.tar.gz::https://github.com/elfmz/far2l/archive/refs/tags/v_${pkgver}.tar.gz")
-sha256sums=('712ab8e5b40482ddd68e33f870e4c3d7e8f8c44b90fb9fe91288a00cb27dff48')
+sha256sums=('b0fddad2e3985f245f9e691e23b90fb97f7d29d9a0b131fe686aa3cbb2e4ea01')
 depends=('libxml2' 'uchardet')
 makedepends=('cmake' 'wxwidgets-gtk3' 'python-cffi' 'python-markdown' 'libxi')
 optdepends=(
@@ -22,13 +22,17 @@ optdepends=(
 )
 
 build() {
-  cd "${srcdir}/far2l-v_${pkgver}"
-  cmake . -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr -DCMAKE_BUILD_TYPE=Release -DPYTHON=yes -Wno-dev
+  cmake                                    \
+    -S "${srcdir}/far2l-v_${pkgver}"       \
+    -B "${srcdir}/far2l-v_${pkgver}/build" \
+    -DCMAKE_INSTALL_PREFIX="${pkgdir}"/usr \
+    -DCMAKE_BUILD_TYPE=Release             \
+    -DPYTHON=yes                           \
+    -Wno-dev
 }
 
 package_far2l() {
-  cd "${srcdir}/far2l-v_${pkgver}"
-  cmake --build . --target install
+  cmake --build "${srcdir}/far2l-v_${pkgver}/build" --target install
 
   rm "${pkgdir}"/usr/lib/far2l/far2l_gui.so
   rm "${pkgdir}"/usr/lib/far2l/far2l_ttyx.broker
@@ -41,7 +45,7 @@ package_far2l-ttyx() {
   depends=('far2l' 'libxi') 
   optdepends=()
 
-  cd "${srcdir}/far2l-v_${pkgver}"
+  cd "${srcdir}/far2l-v_${pkgver}/build"
   install -Dm0755 "install/far2l_ttyx.broker" "${pkgdir}"/usr/lib/far2l/far2l_ttyx.broker
 }
 
@@ -50,7 +54,7 @@ package_far2l-gui() {
   depends=('far2l' 'wxwidgets-gtk3') 
   optdepends=()
 
-  cd "${srcdir}/far2l-v_${pkgver}"
+  cd "${srcdir}/far2l-v_${pkgver}/build"
   install -Dm0755 install/far2l_gui.so       "${pkgdir}"/usr/lib/far2l/far2l_gui.so
   install -Dm0644 far2l/DE/far2l.desktop     "${pkgdir}"/usr/share/applications/far2l.desktop
   install -Dm0644 far2l/DE/far2ledit.desktop "${pkgdir}"/usr/share/applications/far2ledit.desktop
@@ -61,7 +65,7 @@ package_far2l-python() {
   depends=('far2l' 'python-cffi') 
   optdepends=()
 
-  cd "${srcdir}/far2l-v_${pkgver}"
+  cd "${srcdir}/far2l-v_${pkgver}/build"
   install -Dm0755 install/Plugins/python/plug/python.far-plug-wide "${pkgdir}"/usr/lib/far2l/Plugins/python/plug/python.far-plug-wide
   install -Dm0644 install/Plugins/python/plug/pythonEng.hlf        "${pkgdir}"/usr/share/far2l/Plugins/python/plug/pythonEng.hlf
 
