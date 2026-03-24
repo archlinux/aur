@@ -1,5 +1,5 @@
 pkgname=showel
-pkgver=0.1.7
+pkgver=0.1.7.0
 pkgrel=1
 pkgdesc="Fast native desktop database client built with Rust and Dioxus"
 arch=('x86_64')
@@ -17,10 +17,10 @@ makedepends=(
 conflicts=('showel-git')
 options=('!debug' '!lto')
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/Fynth/showel/archive/refs/tags/v0.1.7.tar.gz"
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/Fynth/showel/archive/refs/tags/v0.1.7.0.tar.gz"
 )
 sha256sums=(
-  '6a90eae58ab8bf03975ceddb3b4e923ca8b38c0c3e931dc68d68d6f096e421b6'
+  '1d7e86e99c62d3b2aef015f47683be4c81724fb3c11f99d43576dc1d2ea2eb36'
 )
 
 prepare() {
