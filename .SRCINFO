@@ -1,0 +1,12 @@
+pkgbase = gemini-qt
+	pkgdesc = A simple Gemini Webview Client based on QT
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	license = GPLv3
+	depends = python-pyqt6-webengine
+	depends = python-dbus
+	source = Gemini-Qt.tar.gz
+	sha256sums = 2ec83f883ddfa114c4d2a2c0cfcffe47935a3a29497d4632618850888668e641
+
+pkgname = gemini-qt
