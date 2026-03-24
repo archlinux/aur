@@ -1,0 +1,9 @@
+version = 1
+SPDX-License-Identifier = "0BSD"
+SPDX-FileCopyrightText = 2026 3uzbcqje <3uzbcqje@addy.to>
+
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-License-Identifier = "0BSD"
+SPDX-FileCopyrightText = 2026 3uzbcqje <3uzbcqje@addy.to>
