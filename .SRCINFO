@@ -4,6 +4,7 @@ pkgbase = language-toolkit
 	pkgrel = 3
 	url = https://git.gay/ika4422/language-toolkit
 	arch = x86_64
+	arch = aarch64
 	license = GPL-3.0-or-later
 	makedepends = rust
 	makedepends = cargo
