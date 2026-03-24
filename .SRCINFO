@@ -1,0 +1,16 @@
+pkgbase = piperig-bin
+	pkgdesc = Declarative pipeline runner for shell scripts. Define steps, params, and loops in YAML — piperig expands and executes.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/joarhal/piperig
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = piperig
+	conflicts = piperig
+	source_x86_64 = piperig-x86_64-0.1.1.tgz::https://github.com/joarhal/piperig/releases/download/v0.1.1/piperig_0.1.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = b071113e1d3f9f8bc3c41774c6ee8eaf82ae67444c8858752646fbd686f74e9f
+	source_aarch64 = piperig-aarch64-0.1.1.tgz::https://github.com/joarhal/piperig/releases/download/v0.1.1/piperig_0.1.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 6af5f51b02759825100b7eaaf2e31cf03a1c23a96d7412fc06d0cb1d6cd2c4d3
+
+pkgname = piperig-bin

@@ -1,0 +1,5 @@
+[piperig-bin]
+source = "github"
+github = "joarhal/piperig"
+use_latest_release = true
+prefix = "v"
