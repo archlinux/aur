@@ -2,7 +2,7 @@
 
 pkgname=figma-linux-next
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Figma desktop app for Linux with native Wayland support and GPU acceleration"
 arch=('x86_64')
 url="https://github.com/arximus88/figma-linux-next"
