@@ -1,6 +1,6 @@
 pkgbase = netaudio-git
-	pkgdesc = CLI for controlling Audinate Dante network audio devices (git version)
-	pkgver = 0.1.6
+	pkgdesc = CLI for managing network audio devices (git version)
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/chris-ritsen/network-audio-controller
 	arch = any
@@ -21,9 +21,7 @@ pkgbase = netaudio-git
 	optdepends = python-redis: packet capture features
 	optdepends = wireshark-cli: live network capture
 	provides = netaudio
-	provides = python-netaudio
 	conflicts = netaudio
-	conflicts = python-netaudio
 	source = netaudio-git::git+https://github.com/chris-ritsen/network-audio-controller.git
 	sha256sums = SKIP
 
