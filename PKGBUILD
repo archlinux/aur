@@ -14,7 +14,7 @@ conflicts=('cmux' 'cmux-git')
 _tagver="${pkgver//.alpha/-alpha}"
 _ghostty_commit=c5028f99876a35188329f65742fddb45de3c5360
 source=("$pkgname-$_tagver.tar.gz::$url/archive/v$_tagver.tar.gz")
-sha256sums=('7d03097434814d43e44b20936e190b4a482135e22c9cbc6cd69c780f3f07bb47')
+sha256sums=('cd83f2f2db8ece23923be5aee445cc6f59f4ad2a9e820c2b835ff4aac4c33921')
 
 prepare() {
     cd "$pkgname-$_tagver"
