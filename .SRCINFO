@@ -1,0 +1,20 @@
+pkgbase = python-pynfsclient-pennyw0rth-git
+	pkgdesc = Python library to simulate an NFSv3 client, Pennyw0rth fork
+	pkgver = AAAAA
+	pkgrel = 1
+	url = https://github.com/pennyw0rth/NfsClient
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python>=2.7
+	provides = python-pynfsclient
+	provides = python-pynfsclient-pennyw0rth
+	conflicts = python-pynfsclient
+	conflicts = python-pynfsclient-pennyw0rth
+	source = pynfsclient::git+https://github.com/pennyw0rth/NfsClient
+	b2sums = SKIP
+
+pkgname = python-pynfsclient-pennyw0rth-git
