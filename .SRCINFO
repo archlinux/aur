@@ -1,0 +1,17 @@
+pkgbase = portable-packer
+	pkgdesc = Packaging utility for Portable
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Kimiblock/stashpak
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	depends = coreutils
+	depends = desktop-file-utils
+	depends = git
+	source = source::git+https://github.com/Kimiblock/portable-packer.git
+	sha256sums = SKIP
+
+pkgname = portable-packer
