@@ -1,6 +1,6 @@
 # Maintainer: Paul Mourer <paul.mourer at gmail dot com>
 pkgname=openchamber-desktop-git
-pkgver=r780.g9aadda2
+pkgver=1.9.1.r10.g9aadda2
 pkgrel=1
 pkgdesc="Desktop app for OpenChamber AI coding interface (Tauri)"
 arch=('x86_64')
@@ -20,6 +20,11 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "openchamber"
+
+    if git describe --long --tags --abbrev=7 >/dev/null 2>&1; then
+        git describe --long --tags --abbrev=7 | sed -E 's/^v//;s/(.+)-([0-9]+)-g([0-9a-f]+)/\1.r\2.g\3/'
+        return
+    fi
 
     local rev hash
     rev="$(git rev-list --count HEAD)"

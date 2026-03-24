@@ -1,6 +1,6 @@
 pkgbase = openchamber-desktop-git
 	pkgdesc = Desktop app for OpenChamber AI coding interface (Tauri)
-	pkgver = 0
+	pkgver = 1.9.1.r10.g9aadda2
 	pkgrel = 1
 	url = https://github.com/btriapitsyn/openchamber
 	arch = x86_64
