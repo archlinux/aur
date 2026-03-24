@@ -1,5 +1,5 @@
 pkgname=easy-config
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Simple CLI tool to quickly open and edit configuration files"
 arch=('any')

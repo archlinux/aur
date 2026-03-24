@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION="1.0.0"
+VERSION="1.0.1"
 
 # -------- CONFIG --------
 # Locate user config file (search multiple paths)
@@ -57,7 +57,7 @@ expand_tilde() {
 # -------- HELP --------
 show_help() {
     cat << EOF
-cf - Configuration File Editor
+EasyConfig $VERSION
 
 Usage: cf [OPTIONS] <name> [editor]
 
@@ -75,7 +75,9 @@ Options:
 
 Examples:
   cf nvim                 # Edit neovim config
+  cf cf                   # Edit cf config
   cf fish code            # Edit fish config with code
+  cf kitty cat            # Print kitty config with cat
   cf --list               # Show all targets
   cf --config restore     # Restore whole config
   cf --config restore settings
