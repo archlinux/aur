@@ -3,7 +3,7 @@
 _pkgname=haxe-language-server
 pkgname="${_pkgname}-git"
 pkgver=0.r1685.g2e70877
-pkgrel=1
+pkgrel=2
 pkgdesc="Language Server Protocol (LSP) implementation for the Haxe language."
 arch=('any')
 url="https://github.com/vshaxe/haxe-language-server"
@@ -11,7 +11,7 @@ license=('MIT')
 provides=($_pkgname)
 conflicts=($_pkgname)
 depends=('haxe' 'nodejs')
-makedepends=('git' 'npm' 'lix')
+makedepends=('git' 'npm' 'haxe-lix')
 options=(!debug)
 source=("git+https://github.com/vshaxe/haxe-language-server.git")
 sha256sums=('SKIP')
