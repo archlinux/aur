@@ -3,7 +3,7 @@
 # Codeberg-Profile: https://codeberg.org/MHIA
 
 pkgname=rofi-webapps-manager
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="A rofi-based web app manager for Chromium-based browsers"
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "webapp-manager.install")
-sha256sums=('7c50564cfc539acccd8f51b217a515b221cfa52681d61cd86f18bf559e6b9320'
+sha256sums=('7ddf6312bd4b0064fe9fd6f41eff39ada7985ad83367edbd64bbcb7f8639c5b4'
             '0adff0c8c7bab4573329aab012c1cbcca5b9445b2454444f279180fddcedf4b2')
 
 package() {
