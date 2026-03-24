@@ -1,4 +1,4 @@
-pkgbase = aws-sso-cli
+pkgbase = aws-sso-cli-git
 	pkgdesc = AWS SSO CLI - A secure replacement for aws configure sso
 	pkgver = 2.1.0
 	pkgrel = 1
@@ -13,6 +13,4 @@ pkgbase = aws-sso-cli
 	source_aarch64 = https://github.com/synfinatic/aws-sso-cli/releases/download/v2.1.0/aws-sso-2.1.0-linux-arm64
 	sha256sums_aarch64 = bd120d7711fbc90cc32539a6cbd0411e736b0cfe773285c53716fd0627498a9c
 
-pkgname = aws-sso-cli
-	provides = aws-sso
-	conflicts = aws-sso
+pkgname = aws-sso-cli-git

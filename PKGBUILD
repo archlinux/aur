@@ -2,10 +2,10 @@
 pkgname=aws-sso-cli
 pkgver=2.1.0
 pkgrel=1
-pkgdesc="AWS SSO CLI - A secure replacement for aws configure sso"
+pkgdesc="A secure replacement for aws configure sso"
 arch=('x86_64' 'aarch64')
 url="https://github.com/synfinatic/aws-sso-cli"
-license=('GPL3')
+license=('GPL-3.0-or-later')
 provides=('aws-sso')
 conflicts=('aws-sso')
 source_x86_64=("https://github.com/synfinatic/aws-sso-cli/releases/download/v${pkgver}/aws-sso-${pkgver}-linux-amd64")
