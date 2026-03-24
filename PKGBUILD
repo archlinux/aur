@@ -2,7 +2,7 @@
 
 pkgname=openvpn-connect-linux
 pkgver=3.8.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Community port of OpenVPN Connect to Linux"
 arch=('x86_64')
 url="https://github.com/dresden196/openvpn-connect-linux"
@@ -39,6 +39,10 @@ package() {
     install -Dm644 src/shims/electron-shim.js "${pkgdir}/usr/lib/${pkgname}/src/shims/electron-shim.js"
     install -Dm644 src/shims/keytar-shim.js "${pkgdir}/usr/lib/${pkgname}/src/shims/keytar-shim.js"
     install -Dm644 src/shims/pkcs11-shim.js "${pkgdir}/usr/lib/${pkgname}/src/shims/pkcs11-shim.js"
+
+    # App icons (needed by electron-shim.js for window/taskbar icon)
+    install -dm755 "${pkgdir}/usr/lib/${pkgname}/assets/icons"
+    find assets/icons -type f -name "*.png" -exec install -Dm644 {} "${pkgdir}/usr/lib/${pkgname}/{}" \;
 
     # Resources (original app assets)
     install -dm755 "${pkgdir}/usr/lib/${pkgname}/resources/app"
