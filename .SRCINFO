@@ -1,23 +1,22 @@
 pkgbase = intiface-central-bin
 	pkgdesc = Frontend application for the Buttplug Sex Toy Control Library
-	pkgver = 3.0.1
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/intiface/intiface-central
 	arch = x86_64
 	license = GPL3
 	makedepends = hicolor-icon-theme
 	depends = gtk3
-	depends = libayatana-appindicator
 	depends = bash
 	provides = intiface-central
 	conflicts = intiface-central
 	source = intiface_central.desktop
 	source = run_intiface_central
-	source = intiface-central-bin-3.0.1.zip::https://github.com/intiface/intiface-central/releases/download/v3.0.1+37/intiface-central_v3.0.1-linux-ubuntu-22.04-x64.zip
-	source = LICENSE.md::https://raw.githubusercontent.com/intiface/intiface-central/v3.0.1+36/LICENSE.md
+	source = intiface-central-bin-3.0.3.zip::https://github.com/intiface/intiface-central/releases/download/v3.0.3+39/intiface-central_v3.0.3-linux-ubuntu-24.04-x64.zip
+	source = LICENSE.md::https://raw.githubusercontent.com/intiface/intiface-central/v3.0.3+39/LICENSE.md
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 4f48c84319d7912f771ef2f024cd6524791d593b1f1e1a7437663b0c845388d5
+	sha256sums = abf0c8f4b8b2ce5d630373b5901650831ff4e443bbbf68e0a92018ae72dca415
 	sha256sums = SKIP
 
 pkgname = intiface-central-bin
