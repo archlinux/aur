@@ -1,6 +1,6 @@
 pkgbase = wallreel
 	pkgdesc = Choose and set desktop wallpapers with customizable themes and actions
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://git.uyani.de/Uyanide/WallReel
 	arch = x86_64
@@ -10,7 +10,8 @@ pkgbase = wallreel
 	depends = qt6-declarative
 	depends = gcc-libs
 	depends = glibc
-	source = wallreel-2.0.1.tar.gz::https://git.uyani.de/Uyanide/WallReel/archive/v2.0.1.tar.gz
-	sha256sums = 3ba31e168f432e9055877836e02f085d4a3d6225c04843d5b9fa576220875be5
+	options = !debug
+	source = wallreel-2.0.2.tar.gz::https://git.uyani.de/Uyanide/WallReel/archive/v2.0.2.tar.gz
+	sha256sums = f6194935364a0831ffd43543fff691ccaf9d0ca602f87d56695a6c6bd89b04a8
 
 pkgname = wallreel
