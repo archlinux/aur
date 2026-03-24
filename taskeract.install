@@ -3,6 +3,14 @@ post_install() {
   if command -v setcap >/dev/null 2>&1; then
     setcap cap_net_bind_service=+ep /usr/bin/taskeract || true
   fi
+
+  # Register taskeract:// URI scheme
+  if command -v xdg-mime >/dev/null 2>&1; then
+    xdg-mime default taskeract.desktop x-scheme-handler/taskeract || true
+  fi
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database /usr/share/applications || true
+  fi
 }
 
 post_upgrade() {

@@ -1,6 +1,6 @@
 # Maintainer: Richard Fleming <rfleming@acqusys.com>
 pkgname=taskeract
-pkgver=1.10.7
+pkgver=1.10.8
 pkgrel=1
 pkgdesc="Desktop app for orchestrating AI coding agents"
 arch=('x86_64')
@@ -17,7 +17,7 @@ options=('!strip')
 source=(
   "${pkgname}-${pkgver}.deb::${url}/v${pkgver}/Taskeract_${pkgver}_amd64.deb"
 )
-sha256sums=('3c04d052ba43f4d805dbb70a5d89df2d8b5d63a0f82bb1e7549cfea635d02d0f')
+sha256sums=('cdfe23fe7f50cffb318bbdbebfd01ba2c1c6270e4825443edf6ecd278c4e85e4')
 
 prepare() {
   cd "${srcdir}"
@@ -30,9 +30,12 @@ package() {
   install -Dm755 "${srcdir}/usr/bin/taskeract" \
     "${pkgdir}/usr/bin/taskeract"
 
-  # Desktop entry
-  install -Dm644 "${srcdir}/usr/share/applications/Taskeract.desktop" \
-    "${pkgdir}/usr/share/applications/taskeract.desktop"
+  # Desktop entry (add MimeType for taskeract:// URI scheme if not present)
+  local _desktop="${srcdir}/usr/share/applications/Taskeract.desktop"
+  if ! grep -q "MimeType=" "$_desktop"; then
+    echo "MimeType=x-scheme-handler/taskeract;" >> "$_desktop"
+  fi
+  install -Dm644 "$_desktop" "${pkgdir}/usr/share/applications/taskeract.desktop"
 
   # Icons
   for icon in "${srcdir}"/usr/share/icons/hicolor/*/apps/taskeract.png; do
