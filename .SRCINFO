@@ -1,10 +1,10 @@
 pkgbase = synfetch-git
-	pkgdesc = Universal blazingly fast system fetch for Linux distros and macOS
+	pkgdesc = Universal blazingly fast system fetch script written in bash with ASCII art for many Linux distros and macOS
 	pkgver = r1.0.0
 	pkgrel = 1
 	url = https://github.com/SXSLVT/synfetch
 	arch = any
-	license = custom
+	license = MIT
 	makedepends = git
 	depends = bash
 	provides = synfetch

@@ -1,12 +1,12 @@
-# Maintainer: Syn Carson ploscarusynxy@gmail.com
+# Maintainer: Syner ploscarusynxy@gmail.com
 
 pkgname=synfetch-git
 pkgver=r1.0.0
 pkgrel=1
-pkgdesc="Universal blazingly fast system fetch for Linux distros and macOS"
+pkgdesc="Universal blazingly fast system fetch script written in bash with ASCII art for many Linux distros and macOS"
 arch=('any')
 url="https://github.com/SXSLVT/synfetch"
-license=('custom')
+license=('MIT')
 depends=('bash')
 makedepends=('git')
 provides=('synfetch')
