@@ -1,16 +1,16 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vtf-thumbnailer-bin
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Adds previews for VTF files in your file explorer of choice on Windows and Linux."
 arch=('x86_64')
 url="https://github.com/craftablescience/vtf-thumbnailer"
 license=('MIT')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'libgcc' 'libstdc++')
 provides=(${pkgname::-4})
 conflicts=(${pkgname::-4})
 source=("$url/releases/download/v${pkgver}/VTF-Thumbnailer-${pkgver}-Linux.deb")
-sha256sums=('5f0d08f97c8fb37106f775e0273ebaf987d17d0f26fd399130f1fa01c0b3ca4b')
+sha256sums=('394166e782bcfb444c0088a650831e4169249528c3181bc464ce1c9c553f5596')
 validpgpkeys=()
 
 prepare() {
