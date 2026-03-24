@@ -1,6 +1,6 @@
 # Maintainer: Douglas Soares de Andrade <contato@douglasandrade.com>
 pkgname=cmux-gtk
-pkgver=0.62.0.alpha.6
+pkgver=0.62.0.alpha.7
 pkgrel=1
 pkgdesc='Terminal multiplexer for AI coding agents (GTK4/libadwaita)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ conflicts=('cmux' 'cmux-git')
 _tagver="${pkgver//.alpha/-alpha}"
 _ghostty_commit=c5028f99876a35188329f65742fddb45de3c5360
 source=("$pkgname-$_tagver.tar.gz::$url/archive/v$_tagver.tar.gz")
-sha256sums=('cd83f2f2db8ece23923be5aee445cc6f59f4ad2a9e820c2b835ff4aac4c33921')
+sha256sums=('09c99d8ff458f684d5c2e82c88aca014acab182883284b9b0118952023174ab6')
 
 prepare() {
     cd "$pkgname-$_tagver"
