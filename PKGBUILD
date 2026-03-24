@@ -1,150 +1,176 @@
-#Maintainer: sukanka <su975853527 AT gmail.com>
-
-_pkgname=jasp
-_pkgver=0.19.3
-pkgname=jasp-desktop
-pkgver=0.19.3
-_ColumnEncoder_ver=0.19.3
-pkgrel=3
-pkgdesc="A complete statistical package for both Bayesian and Frequentist statistical methods"
-arch=('x86_64' 'aarch64')
+pkgname=jasp-desktop-git
+pkgver=0.96.0.16.g9116257a9
+pkgrel=1
+pkgdesc="JASP Desktop (development branch) with private Boost 1.88 and librdata under /opt/jasp-desktop"
+arch=('x86_64')
 url="https://github.com/jasp-stats/jasp-desktop"
-license=('AGPL-3.0-or-later')
-makedepends=("cmake" 'boost' 'jsoncpp'
-    'openssl'
-    'autoconf'
-    'zlib'
-    'bison'
-    'flex'
-    'jags'
-    'gcc-fortran'
-    'qtcreator'
-    'git'
-    'patchelf'
-    'ninja'
-    'libfreexl'
-)
-depends=('r'
-    'qt6-5compat'
-    'readstat'
-    'libarchive'
-    'r-rinside'
-    'qt6-base'
-    'qt6-webengine'
-    'qt6-shadertools'
+license=('GPL3')
 
-    # jaspBase
-    "r-jaspbase"
-    "r-jaspgraphs"
-    "r-jasptools"
-
-    #jaspCommon
-    "r-jaspdescriptives"
-    "r-jaspttests"
-    "r-jaspanova"
-    "r-jaspmixedmodels"
-    "r-jaspregression"
-    "r-jaspfrequencies"
-    "r-jaspfactor"
-
-    #jaspExtra
-    "r-jaspaudit"
-    "r-jaspbain"
-    "r-jaspbsts"
-    "r-jaspcircular"
-    "r-jaspcochrane"
-    "r-jaspdistributions"
-    "r-jaspequivalencettests"
-    "r-jaspjags"
-    "r-jasplearnbayes"
-    "r-jasplearnstats"
-    "r-jaspmachinelearning"
-    "r-jaspmetaanalysis"
-    "r-jaspnetwork"
-    "r-jasppower"
-    "r-jaspprocess"
-    "r-jaspprophet"
-    "r-jasppredictiveanalytics"
-    "r-jaspreliability"
-    "r-jasprobustttests"
-    "r-jaspsem"
-    "r-jaspsummarystatistics"
-    "r-jaspsurvival"
-    "r-jasptimeseries"
-    "r-jaspvisualmodeling"
-    "r-jaspacceptancesampling"
-    "r-jaspqualitycontrol"
-    "r-jaspbff"
-    "r-jaspbfpack"
+depends=(
+  'qt6-base' 'qt6-declarative' 'qt6-svg' 'qt6-positioning' 'qt6-webchannel' 'qt6-webengine'
+  'r' 'glpk' 'jsoncpp' 'libarchive' 'openssl' 'curl' 'sqlite' 'zlib' 'libfreexl' 'readstat'
 )
-provides=($_pkgname)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/jasp-stats/jasp-desktop/archive/refs/tags/v${pkgver}.tar.gz"
-    'jasp.sh'
-    "jaspColumnEncoder-${pkgver}.tar.gz::https://github.com/jasp-stats/jaspColumnEncoder/archive/refs/tags/v${_ColumnEncoder_ver}.tar.gz"
-    "jaspBase-${pkgver}.tar.gz::https://github.com/jasp-stats/jaspBase/archive/refs/tags/v${pkgver}.tar.gz"
-    "jaspGraphs-${pkgver}.tar.gz::https://github.com/jasp-stats/jaspGraphs/archive/refs/tags/v${pkgver}.tar.gz"
-    "jaspModuleInstaller-${pkgver}.tar.gz::https://github.com/jasp-stats/jaspModuleInstaller/archive/refs/tags/v${pkgver}.tar.gz"
+makedepends=(
+  'git' 'cmake' 'ninja' 'gcc' 'gcc-fortran' 'make' 'pkgconf' 'patchelf' 'autoconf' 'automake'
+  'libtool' 'bison' 'flex' 'gettext' 'blas' 'lapack'
+  'ccache'
 )
-sha256sums=('9078459cc091ac722552058733ef64c5792092c5fe5615d968b515054bc7efe9'
-            'e0714d980e7549b4c7dcbae50370e95b6ad2e7f0cf21a534ceb3a5a83ee583fd'
-            '340de4aa4218fe6216b3a260b75c8256f3b6f501aadcf2c32253aa0e9a2f3c73'
-            '327bc22a5d0ab1a12935bf00327c7075df266a51a1097e502c0b89bc395ba6da'
-            '8db633010ac5ab56d12397dc391f515e7ee4b0faea38ddadac849b5be1d4e241'
-            '4abacceb643e9dcea4f1353ce200292bc395e21766b0998f0898d4cc70cd1ec8')
+
+source=(
+  "git+https://github.com/jasp-stats/jasp-desktop.git#branch=development"
+  "https://archives.boost.io/release/1.88.0/source/boost_1_88_0.tar.bz2"
+  "git+https://github.com/WizardMac/librdata.git"
+  "org.jaspstats.JASP.desktop"
+)
+sha256sums=(
+  'SKIP'
+  '46d9d2c06637b219270877c9e16155cbd015b6dc84349af064c088e9b5b12f7b'
+  'SKIP'
+  'SKIP'
+)
+
+_boostsrc="boost_1_88_0"
+_jasp_prefix="/opt/jasp-desktop"
+
+pkgver() {
+  cd "${srcdir}/jasp-desktop"
+  if git describe --long --tags >/dev/null 2>&1; then
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/./g'
+  else
+    printf 'r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  fi
+}
+
+check_env() {
+  if [[ -z "${GITHUB_PAT:-}" ]]; then
+    echo "==> ERROR: GITHUB_PAT is not set."
+    echo "==> ERROR: Please export GITHUB_PAT=\"REAL\" before running makepkg."
+    echo "Aborting due to missing required environment variable."
+    exit 1
+  fi
+
+  : "${GITHUB_PAT_DEV:=DUMMY}"
+  export GITHUB_PAT_DEV
+}
 
 prepare() {
-    for d in jaspBase jaspGraphs jaspModuleInstaller; do
-        cp -ar ${d}-${pkgver}/* ${pkgname}-${pkgver}/Engine/${d}
-    done
-    cp -ar jaspColumnEncoder-${_ColumnEncoder_ver}/* ${pkgname}-${pkgver}/Common/jaspColumnEncoder
-    cd $srcdir/${pkgname}-${pkgver}
+  check_env
 
-    find Tools/CMake -name *.cmake -print0 | xargs -0 sed -i "s|/usr/local|/usr|g"
-    sed -i "s|lib='\${R_LIBRARY_PATH}'|lib='${srcdir}/usr/lib/R'|g" Tools/CMake/R.cmake
-    sed -i 's|set(R_CPP_INCLUDES_LIBRARY.*|set(R_CPP_INCLUDES_LIBRARY /usr/lib/R/library)|g' Tools/CMake/R.cmake R-Interface/CMakeLists.txt
+  cd "${srcdir}/jasp-desktop"
+  git submodule sync --recursive
+  git submodule update --init --recursive --jobs "$(nproc)"
 
-    # Do NOT install modules here, they are listed in dependencies
-    find Modules/ -name '*.in' -print0 | xargs -0 sed -i '1,$d;1a print("I am OK!")'
+  cd "${srcdir}/${_boostsrc}"
+  ./bootstrap.sh \
+    --prefix="${srcdir}/boost-staging" \
+    --with-libraries=system,filesystem,thread,date_time,regex,program_options,container,container_hash \
+    --with-toolset=gcc
+
+  cd "${srcdir}/librdata"
+  export ACLOCAL_PATH="/usr/share/gettext/m4:/usr/share/aclocal"
+  ./autogen.sh
 }
 
 build() {
-    local cmake_args=(
-        -GNinja
-        -DCMAKE_BUILD_TYPE=None
-        -DCMAKE_INSTALL_PREFIX=/usr/lib/${pkgname}
-        -DCMAKE_INSTALL_LIBDIR=lib
-        # -DCUSTOM_R_PATH=/usr/lib/R
-        -DLINUX_LOCAL_BUILD=OFF
-        -DFLATPAK_USED=OFF
-        -DINSTALL_R_MODULES=OFF
-        -DBUILD_TESTS=OFF
-        -DGITHUB_PAT=None
+  export CC="ccache gcc"
+  export CXX="ccache g++"
+  export FC="ccache gfortran"
+  export F77="ccache gfortran"
+  export CMAKE_C_COMPILER_LAUNCHER=ccache
+  export CMAKE_CXX_COMPILER_LAUNCHER=ccache
+  export CMAKE_Fortran_COMPILER_LAUNCHER=ccache
 
-    )
-    # export GITHUB_PAT="None"
-    install -d build ${srcdir}/usr/lib/R
-    cmake -S ${pkgname}-${pkgver} -B build "${cmake_args[@]}"
-    ninja -C build
+  cd "${srcdir}/${_boostsrc}"
+  rm -rf "${srcdir}/build-boost"
+  ./b2 \
+    --prefix="${srcdir}/boost-staging" \
+    --build-dir="${srcdir}/build-boost" \
+    -j"$(nproc)" \
+    cxxflags="-fPIC" \
+    install
+
+  cd "${srcdir}/librdata"
+  ./configure --prefix="${srcdir}/librdata-staging"
+  make -j"$(nproc)"
+
+  export BOOST_ROOT="${srcdir}/boost-staging"
+  export Boost_ROOT="${srcdir}/boost-staging"
+  export BOOST_INCLUDEDIR="${srcdir}/boost-staging/include"
+  export BOOST_LIBRARYDIR="${srcdir}/boost-staging/lib"
+
+  export CMAKE_PREFIX_PATH="${srcdir}/boost-staging"
+  export PKG_CONFIG_PATH="${srcdir}/boost-staging/lib/pkgconfig"
+
+  export LIBRARY_PATH="${srcdir}/boost-staging/lib:${LIBRARY_PATH}"
+  export LD_LIBRARY_PATH="${srcdir}/boost-staging/lib:${LD_LIBRARY_PATH}"
+
+  cd "${srcdir}/jasp-desktop"
+  rm -rf "${srcdir}/build"
+  cmake -S . -B "${srcdir}/build" -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="${_jasp_prefix}" \
+    -DCMAKE_PREFIX_PATH="${srcdir}/boost-staging" \
+    -DBoost_ROOT="${srcdir}/boost-staging" \
+    -DBOOST_ROOT="${srcdir}/boost-staging" \
+    -DBoost_NO_SYSTEM_PATHS=ON \
+    -DBoost_NO_BOOST_CMAKE=ON \
+    -DBoost_ADDITIONAL_VERSIONS="1.88.0;1.88" \
+    -DLINUX_LOCAL_BUILD=ON \
+    -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+    -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+    -DCMAKE_Fortran_COMPILER_LAUNCHER=ccache \
+    -Wno-dev
+
+  ninja -C "${srcdir}/build"
+
+  # SIMPLest FIX: CMake only needs this directory to exist
+  mkdir -p "${srcdir}/build/Modules"/{binary_pkgs,manifests,module_libs,Tools}
+
+  cd "${srcdir}/jasp-desktop/Tools"
+  Rscript buildAllDefaultJaspModules.R
 }
 
 package() {
-    cd $srcdir/build
-    DESTDIR=${pkgdir} ninja install
-    install -Dm755 $srcdir/jasp.sh ${pkgdir}/usr/bin/jasp
+  cd "${srcdir}/${_boostsrc}"
+  ./b2 \
+    --prefix="${pkgdir}${_jasp_prefix}" \
+    --build-dir="${srcdir}/build-boost" \
+    --layout=system \
+    install
 
-    cd ${pkgdir}/usr/lib/${pkgname}
-    mv share ${pkgdir}/usr
-    mv Resources ${pkgdir}/usr/share/${pkgname}
-    ln -s /usr/share/${pkgname} ${pkgdir}/usr/lib/${pkgname}/Resources
+  cd "${srcdir}/librdata"
+  make DESTDIR="${pkgdir}" install
 
-    rm -rf lib64
-    rm -rf Modules/{renv-cache,*.log}
+  cd "${srcdir}"
+  DESTDIR="${pkgdir}" ninja -C build install
 
-    # fix RPATH
-    patchelf --add-rpath /usr/lib/R/library/RInside/lib/ \
-        ${pkgdir}/usr/lib/jasp-desktop/bin/JASPEngine
-    sed -i "s|^Exec.*|Exec=jasp %f|g" \
-        ${pkgdir}/usr/share/applications/org.jaspstats.JASP.desktop
+  install -d "${pkgdir}${_jasp_prefix}/Modules"
+  if [[ -d "${srcdir}/jasp-desktop/Tools/ModuleBundleBuildDir/Modules" ]]; then
+    cp -a "${srcdir}/jasp-desktop/Tools/ModuleBundleBuildDir/Modules/"* \
+      "${pkgdir}${_jasp_prefix}/Modules/" 2>/dev/null || true
+  fi
 
-    rm -rf ${pkgdir}/usr/lib/jasp-desktop/{renv-root,renv-cache,bin/org.jaspstats.JASP}
+  install -d "${pkgdir}${_jasp_prefix}/R/library"
+  if [[ -d "${srcdir}/build/R/library" ]]; then
+    shopt -s nullglob
+    local modules=( "${srcdir}/build/R/library/"* )
+    shopt -u nullglob
+    if (( ${#modules[@]} )); then
+      cp -a "${modules[@]}" "${pkgdir}${_jasp_prefix}/R/library/"
+    fi
+  fi
+
+  if [[ -d "${pkgdir}${_jasp_prefix}/share/icons/hicolor" ]]; then
+    install -d "${pkgdir}/usr/share/icons/hicolor"
+    cp -a "${pkgdir}${_jasp_prefix}/share/icons/hicolor/"* \
+      "${pkgdir}/usr/share/icons/hicolor/"
+  fi
+
+  install -Dm644 "${srcdir}/org.jaspstats.JASP.desktop" \
+    "${pkgdir}/usr/share/applications/org.jaspstats.JASP.desktop"
+
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "${srcdir}/jasp-desktop"
+  find . -name 'LICENSE*' -type f -exec install -m644 '{}' \
+    "${pkgdir}/usr/share/licenses/${pkgname}/" \;
 }
