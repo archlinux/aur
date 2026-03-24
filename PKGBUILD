@@ -1,19 +1,19 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=vtf-thumbnailer
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="Adds previews for VTF files in your file explorer of choice on Windows and Linux."
 arch=('x86_64')
 url="https://github.com/craftablescience/vtf-thumbnailer"
 license=('MIT')
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'libstdc++' 'libgcc')
 makedepends=('git' 'cmake' 'ninja')
 source=("git+$url.git#tag=v${pkgver}"
 	"git+${url::-16}/cmake-helpers.git"
 	"git+https://github.com/p-ranav/argparse.git"
 	"git+${url::-16}/sourcepp.git")
 noextract=()
-sha256sums=('0aad3bf10fbc3f11ddade1f03cd73a0b1c7e5f2348fb0f6bc92f6e63d2aa3059'
+sha256sums=('93e74d21e8da8d573dbb8e6e099eeec97849573758f4bfb5e186cb9814f56a88'
             'SKIP'
             'SKIP'
             'SKIP')
