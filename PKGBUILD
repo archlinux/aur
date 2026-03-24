@@ -2,7 +2,7 @@
 
 pkgname=openvpn-connect-linux
 pkgver=3.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Community port of OpenVPN Connect to Linux"
 arch=('x86_64')
 url="https://github.com/dresden196/openvpn-connect-linux"
@@ -15,13 +15,14 @@ optdepends=(
 )
 provides=('openvpn-connect')
 conflicts=('openvpn-connect')
+options=('!strip' '!debug')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/dresden196/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('d349d882681f097501987e92428884a8496d9a485466f6c8d17914bb6e9d5d6d')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    npm install --ignore-optional
+    npm install --omit=dev
 }
 
 package() {
@@ -43,8 +44,31 @@ package() {
     install -dm755 "${pkgdir}/usr/lib/${pkgname}/resources/app"
     find resources/app -type f -exec install -Dm644 {} "${pkgdir}/usr/lib/${pkgname}/{}" \;
 
-    # Node modules
+    # Node modules (runtime deps only, no electron/builder)
     cp -a node_modules "${pkgdir}/usr/lib/${pkgname}/"
+
+    # Remove dev/build artifacts that shouldn't be packaged
+    rm -rf "${pkgdir}/usr/lib/${pkgname}/node_modules/electron" \
+           "${pkgdir}/usr/lib/${pkgname}/node_modules/electron-builder" \
+           "${pkgdir}/usr/lib/${pkgname}/node_modules/@electron/rebuild" \
+           "${pkgdir}/usr/lib/${pkgname}/node_modules/app-builder-bin" \
+           "${pkgdir}/usr/lib/${pkgname}/node_modules/app-builder-lib" \
+           "${pkgdir}/usr/lib/${pkgname}/node_modules/7zip-bin" \
+           "${pkgdir}/usr/lib/${pkgname}/node_modules/dmg-builder" \
+           "${pkgdir}/usr/lib/${pkgname}/node_modules/electron-publish"
+
+    # Clean python bytecode caches (contain $srcdir references)
+    find "${pkgdir}" -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
+    find "${pkgdir}" -name "*.pyc" -delete 2>/dev/null || true
+
+    # Clean build artifacts
+    find "${pkgdir}" -name "*.o" -delete 2>/dev/null || true
+    find "${pkgdir}" -name "*.o.d" -delete 2>/dev/null || true
+    find "${pkgdir}" -path "*/build/config.gypi" -delete 2>/dev/null || true
+    find "${pkgdir}" -path "*/build/Makefile" -delete 2>/dev/null || true
+    find "${pkgdir}" -path "*/build/Release/.deps" -type d -exec rm -rf {} + 2>/dev/null || true
+
+    # Fix permissions
     chmod -R u=rwX,go=rX "${pkgdir}/usr/lib/${pkgname}/node_modules"
 
     # Launcher script
