@@ -1,8 +1,8 @@
 # Maintainer: Himalian <Himalian9227@proton.me>
 pkgname=biopass-bin
-pkgver=0.3.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc="Biometric Authentication System"
+pkgdesc="An alternative to Windows Hello/Howdy"
 arch=('x86_64')
 url="https://github.com/TickLabVN/biopass"
 license=('MIT')
@@ -10,7 +10,7 @@ depends=('opencv' 'yaml-cpp' 'fprintd' 'webkit2gtk-4.1' 'gtk3' 'hicolor-icon-the
 provides=('biopass')
 conflicts=('biopass')
 source=("biopass_${pkgver}_amd64.deb::https://github.com/TickLabVN/biopass/releases/download/${pkgver}/biopass_${pkgver}_amd64.deb")
-sha256sums=('62ec61518269e928019b12dcea64c36ab6a664c3672ff356b86170eade8051fc')
+sha256sums=('8e12a77aa5e472f69074053071dc3d75685445c501f9a583559ab721c3d2213d')
 options=(!strip !debug)
 
 prepare() {
