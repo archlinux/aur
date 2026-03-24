@@ -5,14 +5,14 @@ _pkgname=wifi-audio-streaming
 
 _pkgver=0.3.0-beta
 pkgver=${_pkgver//-/}
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 
 pkgdesc="A desktop application for streaming audio over a local network."
 url="https://github.com/marcomorosi06/WiFiAudioStreaming-Desktop"
 license=("MIT")
 
-depends=("java-runtime")
+depends=("java-runtime" "pipewire-alsa")
 makedepends=("git")
 provides=("$_pkgname")
 

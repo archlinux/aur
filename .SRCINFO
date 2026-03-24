@@ -1,12 +1,13 @@
 pkgbase = wifi-audio-streaming
 	pkgdesc = A desktop application for streaming audio over a local network.
 	pkgver = 0.3.0beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/marcomorosi06/WiFiAudioStreaming-Desktop
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = java-runtime
+	depends = pipewire-alsa
 	provides = wifi-audio-streaming
 	source = git+https://github.com/marcomorosi06/WiFiAudioStreaming-Desktop#tag=v0.3.0-beta
 	source = wifi-audio-streaming.desktop
