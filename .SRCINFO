@@ -1,13 +1,13 @@
 pkgbase = mmaid
 	pkgdesc = Terminal Mermaid diagram renderer - inline diagrams from Mermaid syntax in your terminal
-	pkgver = 0.2.1
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/aaronsb/mmaid-go
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go>=1.23
-	source = mmaid-0.2.1.tar.gz::https://github.com/aaronsb/mmaid-go/archive/v0.2.1.tar.gz
-	sha256sums = 7f24e847faea2e7bd6f20fa34e5e37847c5857fe7741ac739d9099bdcf7fccec
+	source = mmaid-0.3.0.tar.gz::https://github.com/aaronsb/mmaid-go/archive/v0.3.0.tar.gz
+	sha256sums = f3b55d078312c6650e6b9e46e2f7be3b46235938e7852ec478dd447edb2f0c00
 
 pkgname = mmaid
