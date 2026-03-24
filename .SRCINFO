@@ -1,6 +1,6 @@
 pkgbase = oxlint-bin
-	pkgdesc = A high-performance linter for JavaScript and TypeScript built on the Oxc compiler stack.
-	pkgver = 1.56.0
+	pkgdesc = A high-performance linter for JavaScript and TypeScript built on the Oxc compiler stack
+	pkgver = 1.57.0
 	pkgrel = 1
 	url = https://oxc.rs
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = oxlint-bin
 	license = MIT
 	provides = oxlint
 	conflicts = oxlint
-	source_x86_64 = oxlint-x86_64-unknown-linux-gnu-1.56.0.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.56.0/oxlint-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 487d00ac3c609c9020abbd879a91c183560dc382e15356be2a1bd6d860ed952f
-	source_aarch64 = oxlint-aarch64-unknown-linux-gnu-1.56.0.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.56.0/oxlint-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = f0c3f2895204c97d2aedeb62db6913e4ac186ab94c1dd4b9812a35223039d6f5
+	source_x86_64 = oxlint-x86_64-unknown-linux-gnu-1.57.0.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.57.0/oxlint-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = a24a21a3aecbe62d4163c5c8bfdd87fc258a175d920beec54d795ae28778024d
+	source_aarch64 = oxlint-aarch64-unknown-linux-gnu-1.57.0.tar.gz::https://github.com/oxc-project/oxc/releases/download/apps_v1.57.0/oxlint-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7b95070fa26fde371bfbb345507eec5bc0f931d68599f44d125649c80a7fbe73
 
 pkgname = oxlint-bin
