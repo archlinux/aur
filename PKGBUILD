@@ -1,7 +1,7 @@
 # Maintainer: tam1m <tbacc plus aur at pm dot me>
 pkgname=fladder-git
 _pkgname=Fladder
-pkgver=r914.2822a4a
+pkgver=r1445.4011b8c
 pkgrel=1
 pkgdesc="Fladder - A Simple Jellyfin Frontend"
 arch=('x86_64')
@@ -24,8 +24,7 @@ pkgver() {
     cd "$_pkgname"
     (
         set -o pipefail
-        git describe --long --abbrev=7 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-            printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
     )
 }
 
