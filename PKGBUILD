@@ -2,7 +2,7 @@
 
 pkgname=jan-live-bin
 _pkgname=Jan
-pkgver=0.7.8
+pkgver=0.7.9
 pkgrel=1
 pkgdesc="An open source alternative to ChatGPT that runs 100% offline on your computer. Multiple engine support (Live version)."
 arch=('x86_64')
