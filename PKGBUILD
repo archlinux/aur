@@ -15,6 +15,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd qwt-${pkgver}
+
   # Build release only
   sed -i 's|+= debug_and_release|+= release|' qwtbuild.pri
   sed -i '/+= build_all/d' qwtbuild.pri
