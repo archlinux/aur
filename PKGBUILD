@@ -6,7 +6,7 @@ _appname=${_pkgname}
 pkgname=${_pkgname}-bin
 pkgdesc="A semantic CLI tool for process management"
 
-pkgver=1.9.1
+pkgver=1.10.0
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -28,8 +28,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}.tar.gz")
 sha256sums=('c7f9eb97a593a88e42431614564bf73d3b2177ffbc959a63cfe62856b4a10d1e'
             '232799ff75a8aade4b22e21d7450fdbf56576c9cac74b4c456b836373ee42d57')
-sha256sums_x86_64=('bf2f78bf519b07207e8b1e5febecff62a140a759b751b75a9827429f8cda20ad')
-sha256sums_aarch64=('3a108bcaa520c6cd851c56a48f8271f501b41bf8ca47dc4d8712c8c37c6551b1')
+sha256sums_x86_64=('52994a033d7f5677cc8dd0da36f35eb4c2c9a6d4de5bb3ae264dc76745061cc3')
+sha256sums_aarch64=('6720ae312da6b9a8abf1f951360758ba70b1e23fb91f56162a24448a14ca216a')
 
 
 case ${CARCH} in
