@@ -3,7 +3,7 @@
 pkgname=ani2xcursor-bin
 _pkgname=ani2xcursor
 pkgver=1.4.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Convert Windows animated cursor themes to Linux Xcursor format (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/yuzujr/ani2xcursor"
@@ -23,17 +23,15 @@ sha256sums_aarch64=('9911b6d5cd9e52fe5de6f227a613799feab6dad2bed2a185f4b3be7e801
 
 prepare() {
   cd "$srcdir"
-  local appimage
-  appimage="$(printf '%s\n' "${_pkgname}-v${pkgver}-linux-"*.AppImage)"
+  local appimage="${_pkgname}-v${pkgver}-linux-${CARCH}.AppImage"
 
   chmod +x "$appimage"
-  "$appimage" --appimage-extract usr/share >/dev/null
+  "./$appimage" --appimage-extract usr/share >/dev/null
 }
 
 package() {
   cd "$srcdir"
-  local appimage
-  appimage="$(printf '%s\n' "${_pkgname}-v${pkgver}-linux-"*.AppImage)"
+  local appimage="${_pkgname}-v${pkgver}-linux-${CARCH}.AppImage"
 
   install -Dm755 "$appimage" \
     "${pkgdir}/opt/${_pkgname}/${_pkgname}.AppImage"
