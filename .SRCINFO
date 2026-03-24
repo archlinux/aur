@@ -22,6 +22,6 @@ pkgbase = clash-verge-rev-autobuild-bin
 	source = .install
 	sha256sums = 6d84ffbe405c9fee74af9e9147fce43aaad41de5ffaccff0a0d70ad7212fd91f
 	source_x86_64 = Clash.Verge_2.4.8+autobuild.0324.1f465e4_amd64.deb::https://github.com/clash-verge-rev/clash-verge-rev/releases/download/autobuild/Clash.Verge_2.4.8+autobuild.0324.1f465e4_amd64.deb
-	sha256sums_x86_64 = 283183244512149c9db020f7bee510162677a3efd9c0cf3994f2d81f79d345e0
+	sha256sums_x86_64 = 4fed767758a62f0e9946696ea0287b659ac2649f86aa197d6f175cbfa1d6978b
 
 pkgname = clash-verge-rev-autobuild-bin

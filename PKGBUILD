@@ -16,7 +16,7 @@ source_x86_64=("Clash.Verge_${pkgver}_amd64.deb::${url}/releases/download/autobu
 source=(".install")
 
 sha256sums=('6d84ffbe405c9fee74af9e9147fce43aaad41de5ffaccff0a0d70ad7212fd91f')
-sha256sums_x86_64=('283183244512149c9db020f7bee510162677a3efd9c0cf3994f2d81f79d345e0')
+sha256sums_x86_64=('4fed767758a62f0e9946696ea0287b659ac2649f86aa197d6f175cbfa1d6978b')
 
 package() {
     tar xpf data.tar.gz -C ${pkgdir}
