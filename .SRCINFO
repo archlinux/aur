@@ -1,0 +1,24 @@
+pkgbase = netaudio
+	pkgdesc = CLI for controlling Audinate Dante network audio devices
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/chris-ritsen/network-audio-controller
+	arch = any
+	license = Unlicense
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	depends = python
+	depends = python-netaudio
+	depends = python-typer
+	depends = python-rich
+	depends = python-pyyaml
+	optdepends = python-redis: packet capture features
+	optdepends = wireshark-cli: live network capture
+	source = https://files.pythonhosted.org/packages/source/n/netaudio/netaudio-0.1.6.tar.gz
+	source = netaudio.service::https://raw.githubusercontent.com/chris-ritsen/network-audio-controller/master/systemd/netaudio.service
+	sha256sums = cfc5fa35b94e3948525a44067e2584d9667117b35ac6e1ffb76b1f5f9e7a57bd
+	sha256sums = SKIP
+
+pkgname = netaudio
