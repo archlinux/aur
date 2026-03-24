@@ -1,0 +1,20 @@
+pkgbase = ww-manager
+	pkgdesc = 鸣潮命令行管理器 (Wuthering Waves CLI Manager)
+	pkgver = 2.1.5
+	pkgrel = 1
+	url = https://github.com/timetetng/wutheringwaves-cli-manager
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-hatchling
+	depends = python
+	depends = python-typer
+	depends = python-rich
+	depends = python-tqdm
+	depends = python-certifi
+	depends = python-typing-extensions
+	source = ww-manager-2.1.5.tar.gz::https://github.com/timetetng/wutheringwaves-cli-manager/archive/refs/tags/v2.1.5.tar.gz
+	sha256sums = 1ef6291c77e8f9b8b82fc24664d9b04f453be2e53147fea9147d5005621b4e72
+
+pkgname = ww-manager
