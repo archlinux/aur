@@ -39,7 +39,7 @@ _target_arch=(
 )
 pkgname=("zephyr-sdk-gnu-bin")
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
@@ -54,8 +54,8 @@ for _target in ${_target_arch[@]};do
   pkgname+=("zephyr-sdk-gnu-toolchain-${_target}-bin")
   pkgname+=("zephyr-sdk-gnu-${_target}-bin")
 
-  _depends["${_target}"]="zephyr-sdk-gnu-toolchain-${_target}=${pkgver}"
-  _provides["${_target}"]="zephyr-sdk-gnu-${_target}"
+  _depends+=("zephyr-sdk-gnu-toolchain-${_target}=${pkgver}")
+  _provides+=("zephyr-sdk-gnu-${_target}")
 
   source_x86_64+=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/toolchain_gnu_linux-x86_64_${_target}.tar.xz")
   source_aarch64+=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/toolchain_gnu_linux-aarch64_${_target}.tar.xz")
