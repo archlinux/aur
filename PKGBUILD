@@ -2,7 +2,7 @@
 pkgname=portable-unstable
 epoch=1
 pkgver=15.0.beta
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Fast, private, efficient sandbox for Linux desktop. Unstable beta versions."
 arch=('x86_64' 'aarch64' 'loongarch64')
@@ -26,12 +26,14 @@ depends=(
 	"xdg-desktop-portal-impl"
 	"grep"
 	"systemd-libs"
+	"portable-packer"
 )
 
 optdepends=(
 	'at-spi2-core: accessibility'
 	'orca: screen reader'
 	'netsock: Per-app firewall'
+	'stashpak: Install Portable packages with ease'
 )
 
 makedepends+=(
@@ -57,4 +59,6 @@ function package() {
 	export pkgdir
 	cd "${srcdir}/portable"
 	lib/package.sh
+
+	rm "${pkgdir}/usr/bin/portable-packer" || true
 }
