@@ -1,12 +1,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf
-pkgver=0.9.3
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
 url="https://github.com/craftablescience/MareTF"
 license=('MIT')
-depends=('glibc' 'gcc-libs' 'hicolor-icon-theme' 'qt6-base')
+depends=('glibc' 'hicolor-icon-theme' 'qt6-base' 'libstdc++' 'libgcc')
 makedepends=('ninja' 'cmake' 'git' 'vulkan-headers')
 source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/craftablescience/cmake-helpers.git"
@@ -17,7 +17,7 @@ source=("$pkgname::git+$url.git#tag=v${pkgver}"
 	"git+https://github.com/p-ranav/indicators.git"
 	"git+https://github.com/Tencent/rapidjson.git"
 	)
-sha256sums=('a0c1a360b0d2a0cde2bb6f72a2fb6b51c705ce522d258323f974987a18455ce7'
+sha256sums=('310d6253eb077342f8d8bf34ecf6f8737385e37abe0213b33c300d0a75992276'
             'SKIP'
             'SKIP'
             'SKIP'
