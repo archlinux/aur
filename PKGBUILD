@@ -32,11 +32,11 @@ b2sums=('c8fa7a3d2386691cbe237b4efb61d4d4639f431ce265de41ecef4a64284a2b36acb0f74
 prepare() {
   cd $pkgname-$pkgver
   patch -Np2 -i "${srcdir}"/0001_adj-makefile.patch
+  cp -v Makefile.in Makefile
 }
 
 build() {
   cd $pkgname-$pkgver
-  cp -v Makefile.in Makefile
   make PREFIX="/usr"
 }
 
