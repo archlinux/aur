@@ -1,19 +1,19 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=maretf-bin
-pkgver=0.9.3
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A work in progress command-line utility to work with VTF files."
 arch=('x86_64')
 url="https://github.com/craftablescience/MareTF"
 license=('MIT')
 makedepends=('patchelf')
-depends=('glibc' 'gcc-libs' 'qt6-base' 'hicolor-icon-theme' 'libglvnd')
+depends=('glibc' 'libstdc++' 'libgcc' 'qt6-base' 'hicolor-icon-theme' 'libglvnd')
 provides=("${pkgname::-4}")
 conflicts=("${pkgname::-4}")
 source=("MareTF-Linux-Standalone-gcc-release-${pkgver}.zip::$url/releases/download/v${pkgver}/MareTF-Linux-Standalone-gcc-release.zip"
 	"$url/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3b019e0a96b448076e484c6f40fbc4ebec9aa5262e71104a5ae04e9162b98882'
-            'f127c23b40dae436b5fb17c1d280a4aae6111100a2386730b462d5265d30684b')
+sha256sums=('d4ec9181b1cc757668163e7a8c167890db98b00b8759466fa9cbe0a97d2c8cf9'
+            '76931c73d767fefd91c6105c8a3c4b1f68398141dd1076377c1b4d9b852b31ea')
 
 package() {
 	cd "$srcdir"
