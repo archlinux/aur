@@ -7,7 +7,7 @@
 
 pkgname=postgis-sfcgal
 _pkgname=${pkgname%-sfcgal}
-pkgver=3.4.2
+pkgver=3.6.2
 pkgrel=1
 pkgdesc='A spatial database extender for PostgreSQL, with SFCGAL support'
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ optdepends=('perl: for contrib script postgis_restore.pl')
 provides=("${_pkgname}=${pkgver}")
 conflicts=(${_pkgname})
 source=("https://download.osgeo.org/postgis/source/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('30951950ae24ae0e0432658ef09ec95ffcf0ef377f79e45fb302f20b40d773c9d551d4ac2a07eab4f743ebeff2aae4730c8b7c2516c36a17f44a1410fbdc3069')
+b2sums=('66a998b1495bd4c03943fa718f08dee5abcd7ee9f16c3eec87574672f785359456f3d1913b1d26882968ce812bda8db86b5fc42c241ed82b1eb75a227034280c')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
