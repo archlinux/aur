@@ -1,8 +1,8 @@
 pkgbase = aeroshell-kwin-components-x11-git
 	pkgdesc = X11 KWin effects for AeroShell-based desktops
-	pkgver = 6.6.2_33.r9d6c567
+	pkgver = 6.6.3_36.r002e505
 	pkgrel = 1
-	url = https://gitgud.io/aeroshell/aeroshell-kwin-components
+	url = https://github.com/aeroshell-desktop/aeroshell-kwin-components
 	arch = x86_64
 	license = AGPL-3.0-or-later
 	makedepends = git
@@ -25,7 +25,7 @@ pkgbase = aeroshell-kwin-components-x11-git
 	provides = aeroshell-kwin-components-x11
 	conflicts = aeroshell-kwin-components-x11
 	options = !debug
-	source = aeroshell-kwin-components-x11-git::git+https://gitgud.io/aeroshell/aeroshell-kwin-components.git
+	source = aeroshell-kwin-components-x11-git::git+https://github.com/aeroshell-desktop/aeroshell-kwin-components.git
 	sha256sums = SKIP
 
 pkgname = aeroshell-kwin-components-x11-git

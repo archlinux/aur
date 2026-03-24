@@ -1,11 +1,11 @@
 # Maintainer: WackyIdeas <wackyideas@disroot.org>
 
 pkgname=('aeroshell-kwin-components-x11-git')
-pkgver=6.6.2_33.r9d6c567
+pkgver=6.6.3_36.r002e505
 pkgrel=1
 pkgdesc='X11 KWin effects for AeroShell-based desktops'
 arch=(x86_64)
-url="https://gitgud.io/aeroshell/aeroshell-kwin-components"
+url="https://github.com/aeroshell-desktop/aeroshell-kwin-components"
 license=('AGPL-3.0-or-later')
 depends=(gcc-libs
          glibc
