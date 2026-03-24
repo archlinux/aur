@@ -5,7 +5,7 @@ pkgver=6.6.2_17865.r6aa6d2f0b
 pkgrel=1
 pkgdesc="Plasma library and runtime components, with AeroShell patches"
 arch=(x86_64)
-url="https://gitgud.io/aeroshell/libplasma"
+url="https://github.com/aeroshell-desktop/libplasma"
 license=(LGPL-2.0-or-later)
 depends=(gcc-libs
          glibc
