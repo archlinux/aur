@@ -1,0 +1,16 @@
+pkgbase = language-toolkit
+	pkgdesc = A simple tool to document and create languages
+	pkgver = 0.1.0
+	pkgrel = 3
+	url = https://git.gay/ika4422/language-toolkit
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = hicolor-icon-theme
+	source = language-toolkit-0.1.0.tar.gz::https://git.gay/ika4422/language-toolkit/archive/v0.1.0.tar.gz
+	sha256sums = 3834f1d8f54d41faed41603a747a29fa28f76dd6a3ba96b2754d8aea7891e429
+
+pkgname = language-toolkit
