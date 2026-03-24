@@ -12,13 +12,16 @@ license=('custom:Claude')
 depends=('electron' 'nodejs')
 optdepends=('claude-code: Claude Code CLI for agentic coding features (npm i -g @anthropic-ai/claude-code)'
             'claude-cowork-service: Enables Cowork VM features on Linux (experimental)'
-            'xdotool: Accurate multi-monitor Quick Entry positioning (X11/XWayland) - highly recommended'
+            'xdotool: Computer Use input + Quick Entry positioning (X11/XWayland)'
+            'scrot: Computer Use screenshots (X11)'
+            'xclip: Computer Use clipboard access'
+            'wmctrl: Computer Use running app detection'
             'hyprland: Quick Entry cursor positioning on Hyprland Wayland (hyprctl)'
             'socat: Cowork socket health check in launcher (fallback: age-based check)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
 source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.8359/claude-desktop-1.1.8359-linux.tar.gz")
-sha256sums_x86_64=('1069707c5830576c1048029d11372566c3811fe299fcd6364f2a3a37021c0510')
+sha256sums_x86_64=('5224078ab2da5b84c91bfbe7833ffde70dd9102d692ff3bb5fb1a6d0a575f7ab')
 options=('!strip')
 
 package() {
