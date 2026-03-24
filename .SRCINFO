@@ -21,8 +21,6 @@ pkgbase = cmux-gtk
 	conflicts = cmux
 	conflicts = cmux-git
 	source = cmux-gtk-0.62.0-alpha.3.tar.gz::https://github.com/douglas/cmux-gtk/archive/v0.62.0-alpha.3.tar.gz
-	source = ghostty::git+https://github.com/manaflow-ai/ghostty.git
 	sha256sums = ddc5bb7ce512663c3639e2b3fddfca0384c6421da73d68941579c8d5cd8baa71
-	sha256sums = SKIP
 
 pkgname = cmux-gtk

@@ -11,21 +11,23 @@ makedepends=('rust' 'cargo' 'zig' 'ncurses' 'gcc' 'patchelf' 'git')
 provides=('cmux')
 conflicts=('cmux' 'cmux-git')
 # AUR pkgver uses dots; _tagver holds the original tag version with hyphens
-_tagver="${pkgver//.alpha/-alpha.}"
-source=(
-    "$pkgname-$_tagver.tar.gz::$url/archive/v$_tagver.tar.gz"
-    "ghostty::git+https://github.com/manaflow-ai/ghostty.git"
-)
-sha256sums=(
-    'ddc5bb7ce512663c3639e2b3fddfca0384c6421da73d68941579c8d5cd8baa71'
-    'SKIP'
-)
+_tagver="${pkgver//.alpha/-alpha}"
+_ghostty_commit=5dd1c26d6f882aaa5f5a356dfb004eef6c47ae08
+source=("$pkgname-$_tagver.tar.gz::$url/archive/v$_tagver.tar.gz")
+sha256sums=('ddc5bb7ce512663c3639e2b3fddfca0384c6421da73d68941579c8d5cd8baa71')
 
 prepare() {
     cd "$pkgname-$_tagver"
-    # GitHub tarballs don't include submodules — link the cloned ghostty
+    # GitHub tarballs don't include submodules. Clone ghostty at the pinned
+    # commit, then strip .git so zig build uses dev version detection instead
+    # of panicking on mismatched git tags.
+    if [[ ! -d "$srcdir/ghostty-src" ]]; then
+        git clone --filter=blob:none https://github.com/ghostty-org/ghostty.git "$srcdir/ghostty-src"
+        git -C "$srcdir/ghostty-src" checkout "$_ghostty_commit"
+    fi
     rm -rf ghostty
-    ln -s "$srcdir/ghostty" ghostty
+    cp -a "$srcdir/ghostty-src" ghostty
+    rm -rf ghostty/.git
 }
 
 build() {
@@ -68,7 +70,4 @@ package() {
     # Shell integration
     install -Dm644 cmux/shell-integration/cmux-zsh-integration.zsh \
         "$pkgdir/usr/share/cmux/shell-integration/cmux-zsh-integration.zsh"
-
-    # License
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
