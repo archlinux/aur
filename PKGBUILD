@@ -1,8 +1,8 @@
 # Maintainer: AnabasaSoft <anabasasoft@gmail.com>
 pkgname=kamaleon-git
 _pkgname=Kamaleon
-pkgver=2.6.2
-pkgrel=2
+pkgver=2.7
+pkgrel=1
 pkgdesc="Universal wrapper for: yay, paru, pacman, apt, dnf, zypper, apk (Alpine), flatpak and xbps (Void). Written in Go."
 arch=('x86_64' 'aarch64')
 url="https://github.com/AnabasaSoft/Kamaleon"
