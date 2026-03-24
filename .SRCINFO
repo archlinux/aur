@@ -1,0 +1,15 @@
+pkgbase = blocker
+	pkgdesc = A CLI website blocker written in Rust for Linux-OS to block out domains for a given amount of time and remain focused
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Lmpkessels/blocker
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	depends = glibc
+	depends = libgcc
+	provides = blocker
+	source = blocker-0.1.0.tgz::https://github.com/Lmpkessels/blocker/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = 035bab17143be88fc1b0125403ad739e549762b206da033b2583442122bed67d
+
+pkgname = blocker

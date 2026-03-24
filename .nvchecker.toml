@@ -1,0 +1,5 @@
+[blocker]
+source = "github"
+github = "Lmpkessels/blocker"
+use_latest_release = true
+prefix = "v"
