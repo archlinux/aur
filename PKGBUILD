@@ -1,7 +1,7 @@
 # Maintainer: Zoey Bauer <zoey.erin.bauer@gmail.com>
 # Maintainer: Caroline Snyder <hirpeng@gmail.com>
 pkgname=shelly-git
-pkgver=2.0.4
+pkgver=2.0.5
 pkgrel=1
 pkgdesc="Shelly: A Modern Arch Package Manager (git version)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ optdepends=(
     'flatpak: For supporting flatpak implementation.'
     'archlinux-appstream-data: package icons and metadata'
 )
-makedepends=('dotnet-sdk-10.0' 'git')
+makedepends=('dotnet-sdk-10.0' 'git' 'clang')
 
 source=("${pkgname}::git+https://github.com/ZoeyErinBauer/Shelly-ALPM.git")
 
