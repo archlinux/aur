@@ -6,7 +6,6 @@ pkgname=(
   firefox-multi-account-containers-lite
   floorp-multi-account-containers-lite
   icecat-multi-account-containers-lite
-  konform-multi-account-containers-lite
   librewolf-multi-account-containers-lite
   midori-multi-account-containers-lite
 )
@@ -67,13 +66,6 @@ package_icecat-multi-account-containers-lite() {
   export depends=('multi-account-containers-lite')
   mkdir -p "$pkgdir/usr/lib/icecat/browser/extensions/"
   ln -s /usr/lib/mozilla/browser/extensions/multi-account_containers.xpi "$pkgdir/usr/lib/icecat/browser/extensions/multi-account_containers.xpi"
-}
-
-package_konform-multi-account-containers-lite() {
-  export groups=('konform-addons')
-  export depends=('multi-account-containers-lite')
-  mkdir -p "$pkgdir/usr/lib/konform/browser/extensions/"
-  ln -s /usr/lib/mozilla/browser/extensions/multi-account_containers.xpi "$pkgdir/usr/lib/konform/browser/extensions/multi-account_containers.xpi"
 }
 
 package_librewolf-multi-account-containers-lite() {
