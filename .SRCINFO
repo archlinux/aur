@@ -1,0 +1,22 @@
+pkgbase = folia-major-bin
+	pkgdesc = Lyrics Reimagine desktop app packaged from prebuilt releases
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/chthollyphile/folia-major
+	arch = x86_64
+	license = AGPL
+	depends = alsa-lib
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	optdepends = xdg-utils: desktop integration helpers
+	provides = folia-major
+	conflicts = folia-major
+	source = https://github.com/chthollyphile/folia-major/releases/download/v0.1.4/folia-major-0.1.4-linux-x64.tar.gz
+	source = folia-major.desktop
+	source = folia-major.png
+	sha256sums = SKIP
+	sha256sums = 9dc6f7f25e6dc214cf8798e9df4d01829e2a832899313cc346e97c8db0e4c9ec
+	sha256sums = cffe4a4fe5608706e2522de3b4cd8cc174357a9310493f107553794831312054
+
+pkgname = folia-major-bin
