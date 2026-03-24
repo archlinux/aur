@@ -5,8 +5,8 @@
 
 _pkgname="retroshare"
 pkgname="$_pkgname-git"
-pkgver=0.6.7.2.r485.gfa9138076
-pkgrel=2
+pkgver=0.6.7.2.r851.g5d2024c2a
+pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail"
 url="https://github.com/retroshare/retroshare"
 license=('AGPL-3.0-only')
@@ -64,6 +64,9 @@ prepare() {
   sed -e '/VOIP \\/d' \
     -e '/FeedReader/d' \
     -i plugins/plugins.pro
+
+  # fix for strlen
+  sed -e '1i #include <cstring>' -i supportlibs/librnp/src/lib/crypto/mem.cpp
 }
 
 pkgver() {
