@@ -1,7 +1,7 @@
 # Maintainer: jim3692 <jim3692 at gmail.com>
 pkgname="pipewire-screenaudio"
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Extension to passthrough pipewire audio to WebRTC Screenshare"
 arch=('x86_64')
 url="https://github.com/IceDBorn/pipewire-screenaudio"
@@ -13,9 +13,6 @@ makedepends=(
   )
 depends=(
   'pipewire'
-  )
-optdepends=(
-  'pipewire-screenaudio-librewolf: Native Messaging for LibreWolf'
   )
 options=(!lto)
 conflicts=()
