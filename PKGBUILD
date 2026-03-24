@@ -9,13 +9,13 @@ provides=(konform-browser)
 conflicts=()
 _pkgname="${pkgname}"
 __pkgname=konform
-_ffsrcver=140.8.0
-_ffbuild=2
+_ffsrcver=140.9.0
+_ffbuild=1
 _l10n_commit=e4f894a4eef5c492c83a860a4ff16c8ed361445c
 _moz_build_id=20260106170501
-_lwrelver=110
+_lwrelver=100
 pkgver="${_ffsrcver}.${_lwrelver}"
-pkgrel=3
+pkgrel=1
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -143,8 +143,8 @@ source=(
   "0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch"
   "0002-Use-wasm32-wasip1-target.patch"
 )
-sha256sums=('f601465d7e078fe329f6baaeaff61205ddfb8f67dbf99a6baaa359d9711d6b9a'
-            '57a7f339ef68273f6597d8074a841fa053f63a21d1f609ab0074a26c063282e6'
+sha256sums=('eecdec0e09c70942b3adac1fd9a7200dd281f7adf1e198c1e9f5f0c717188356'
+            'b972b2a4c17244d51c10123cbd6c936e2cf26ebc29eb724570d285c283e9e92c'
             'SKIP'
             '52d638394dcc3254c70b550340bffb0ade63bd35f155eaee12e0000a51ef939b'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
