@@ -5,7 +5,7 @@
 
 _android_arch=x86-64
 pkgname=android-$_android_arch-qt6-networkauth
-_qtver=6.10.2
+_qtver=6.11.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -21,7 +21,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtnetworkauth-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('4f29fd9e4b505f5714fc42296b04c701f66ced185c49de4d520cb8de4b1981b3')
+sha256sums=('828c17d3b4a9e3a3415e597022c98e4e0206b214043e4f1b292e9da620f214d7')
 
 build() {
   export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
