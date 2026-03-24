@@ -1,32 +1,29 @@
-# Maintainer: Oliver Schantz <frequency403@gmail.com>
 pkgname=openssh-gui-git
-pkgver=2.2.0
+_pkgname=OpenSSH-GUI
+pkgver=3.0.0
 pkgrel=1
-pkgdesc="A graphical user interface for OpenSSH (Development Branch)"
+pkgdesc="A GUI for OpenSSH configuration and management (GIT version, built from develop)"
 arch=('x86_64')
-url="https://github.com/frequency403/OpenSSH-GUI" # Replace with your actual repo URL
+url="https://github.com/frequency403/OpenSSH-GUI"
 license=('MIT')
-depends=('icu' 'openssl' 'zlib' 'dotnet-runtime-9.0')
-options=('!strip')
-makedepends=('git' 'dotnet-sdk-9.0')
+depends=('dotnet-runtime-10.0')
+makedepends=('git' 'dotnet-sdk-10.0')
 provides=('openssh-gui')
-conflicts=('openssh-gui' 'openssh-gui-bin')
-source=("${pkgname}::git+${url}.git#branch=development")
+conflicts=('openssh-gui' 'openssh-gui-bin' 'openssh-gui-nightly')
+source=("git+${url}.git#branch=develop")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
-  # Generates a version based on latest tag + commit count + rc suffix
-  # Example output: 1.0.0.rc.r42.ga1b2c3d
-  printf "1.0.0.rc.r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${_pkgname}"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${_pkgname}"
   dotnet publish OpenSSH_GUI/OpenSSH_GUI.csproj \
     --configuration Release \
     --runtime linux-x64 \
-    --output "./publish" \
+    --output "publish" \
     -p:PublishSingleFile=true \
     -p:PublishReadyToRun=true \
     -p:IncludeNativeLibrariesForSelfExtract=true \
@@ -34,6 +31,9 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/publish"
-  install -Dm755 "OpenSSH_GUI" "${pkgdir}/usr/bin/openssh-gui"
+  cd "${_pkgname}"
+  install -Dm755 "publish/OpenSSH_GUI" "${pkgdir}/usr/bin/openssh-gui"
+  install -Dm644 "OpenSSH_GUI/Assets/appicon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/openssh-gui.png"
+  install -Dm644 "openssh-gui.desktop" "${pkgdir}/usr/share/applications/openssh-gui.desktop"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
