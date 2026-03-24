@@ -3,7 +3,7 @@
 
 pkgname=victoriametrics
 _name=VictoriaMetrics
-pkgver=1.132.0
+pkgver=1.138.0
 pkgrel=1
 pkgdesc='Fast, cost-effective and scalable time series database'
 arch=(x86_64)
@@ -15,9 +15,9 @@ backup=('etc/default/victoriametrics')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/VictoriaMetrics/VictoriaMetrics/archive/refs/tags/v$pkgver.tar.gz"
   'victoriametrics.service'
   'victoriametrics.default')
-b2sums=('eb6f9143f42c877b04f000ce8c3401cd73b4ba5a611cfcb6b83d9cc5220c857b6e31e88fd0356c298ed02bdc31cf367dde806241caef08322a8e54b24e9bf64d'
-  '82b1c2b55b3c9f3d4deee12753820247ba1f4ac28a94cf16dad31ce091306875d392f7a7a0a56029d88101d7e75f7fefec392ac50d2447276850476f773d147d'
-  '4405dc19795d2cbfa515e4750a2cad77c13611293176ff5aeec597f9905494902bd4496c1e90f1efe2d484e383adb39d034167673b9fe7de8b307b8cedf17b7f')
+b2sums=('f9d94266b1ac228f7b3d0a946d27893681508e1e5279f32d12f55291006c98fb4692949c9a83c52e0b2e625c2f043598e4dd31693a57ab79f23971fff53019da'
+        '82b1c2b55b3c9f3d4deee12753820247ba1f4ac28a94cf16dad31ce091306875d392f7a7a0a56029d88101d7e75f7fefec392ac50d2447276850476f773d147d'
+        '4405dc19795d2cbfa515e4750a2cad77c13611293176ff5aeec597f9905494902bd4496c1e90f1efe2d484e383adb39d034167673b9fe7de8b307b8cedf17b7f')
 
 _vmapps=(victoria-metrics vmagent vmalert vmalert-tool vmauth vmbackup vmctl vmrestore)
 
