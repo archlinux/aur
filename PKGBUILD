@@ -1,9 +1,9 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=arm
-_pkgver=1.15-1
+_pkgver=1.15-2
 pkgname=r-${_pkgname,,}
-pkgver=1.15.1
+pkgver=1.15.2
 pkgrel=1
 pkgdesc='Data Analysis Using Regression and Multilevel/Hierarchical Models'
 arch=('any')
@@ -16,7 +16,7 @@ depends=(
   r-lme4
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('3e34de91c018360a82c5bf963f19ee5f14bb6ce62354f59237ff9962047e28e2')
+sha256sums=('69ea9c19263084c303208b201e7bf086ec56e343e229b17b27b0e0ea73fb96f4')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
