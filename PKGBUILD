@@ -1,6 +1,6 @@
 # Maintainer: Maciej Kopeć <maciejkopec92@gmail.com>
 pkgname=vi-mongo
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Terminal User Interface for MongoDB"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=("Apache-2.0")
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('298b6553a576716086def2828588552cfd11c4ca783b53b5c35659c5e73fb06c')
+sha256sums=('f22fb09b6f5d8439663142dcc02039b788c59aa9ffdeb32a96c2e2dddc360ffe')
 options=('!debug')
 
 prepare() {
