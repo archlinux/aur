@@ -7,12 +7,12 @@ pkgdesc="Java Multi-Band Excitation library: Audio conversion library for decodi
 arch=('i686' 'x86_64')
 url="https://github.com/DSheirer/jmbe"
 license=('GPLv3')
-depends=('jre17-openjdk')
-makedepends=('jdk17-openjdk' 'gradle')
+depends=("jre${_java_ver}-openjdk")
+makedepends=("jdk${_java_ver}-openjdk" 'gradle')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/DSheirer/jmbe/archive/v${pkgver}.tar.gz")
 sha256sums=('ed7eff0a31067b3a328f1874157a22c156d4ecb1d9f08ea2bc732f63daf19f61')
 
-_openjdk_ver=$(pacman -Q jre-openjdk |cut -d " " -f2 |cut -d "." -f 1)
+_java_ver=17
 
 build() {
   cd "$pkgname-$pkgver"
@@ -23,5 +23,5 @@ package() {
   cd "${pkgname}-${pkgver}"
   #install -d ${pkgdir}/opt/sdrtunk/bin
   #install -Dm755 scripts/sdf-trunk ${pkgdir}/opt/sdrtunk/bin/sdr-trunk
-  install -Dm644 codec/build/libs/jmbe-${pkgver}.jar "${pkgdir}/usr/lib/jvm/java-${_openjdk_ver}-openjdk/lib/jmbe-${pkgver}.jar"
+  install -Dm644 codec/build/libs/jmbe-${pkgver}.jar "${pkgdir}/usr/lib/jvm/java-${_java_ver}-openjdk/lib/jmbe-${pkgver}.jar"
 }

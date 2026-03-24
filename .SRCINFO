@@ -6,9 +6,9 @@ pkgbase = jmbe
 	arch = i686
 	arch = x86_64
 	license = GPLv3
-	makedepends = jdk17-openjdk
+	makedepends = jdk-openjdk
 	makedepends = gradle
-	depends = jre17-openjdk
+	depends = jre-openjdk
 	source = jmbe-1.0.9.tar.gz::https://github.com/DSheirer/jmbe/archive/v1.0.9.tar.gz
 	sha256sums = ed7eff0a31067b3a328f1874157a22c156d4ecb1d9f08ea2bc732f63daf19f61
 
