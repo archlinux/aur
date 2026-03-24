@@ -3,16 +3,24 @@ post_install() {
 ChangeWall instalado.
 
 Uso:
-  1. Cierra sesion y vuelve a entrar en KDE Plasma (o reinicia).
-     ChangeWall se iniciara automaticamente gracias al autostart.
-  2. En el primer arranque aparecera un dialogo para elegir la carpeta
-     donde guardas tus fondos de pantalla.
-  3. Los atajos globales quedaran registrados:
+  1. Ejecuta una sola vez: changewall
+     En el primer arranque aparecera un dialogo para elegir la carpeta
+     donde guardas tus fondos de pantalla. ChangeWall quedara corriendo
+     en segundo plano y registrara los atajos globales.
+  2. Comandos disponibles cuando ya este corriendo:
+     changewall next
+     changewall random
+     changewall-next
+     changewall-random
+  3. Si prefieres autostart, el paquete ya instala el arranque automatico
+     para futuras sesiones de KDE Plasma.
+  4. Atajos por defecto:
      Meta+F11  -> siguiente fondo
      Meta+F12  -> fondo aleatorio
 
 Reconfigurar la carpeta:
-  Ejecuta: changewall --setup
+  Ejecuta: changewall setup
+           changewall-setup
 
 Config:
   ~/.config/changewall/config.json

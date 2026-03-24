@@ -1,6 +1,6 @@
 pkgbase = changewall
 	pkgdesc = Animated KDE Plasma wallpaper switcher
-	pkgver = 0.1.1
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/villawebcl/changewall
 	install = changewall.install
@@ -11,7 +11,7 @@ pkgbase = changewall
 	depends = qt6-declarative
 	depends = kglobalaccel
 	depends = plasma-workspace
-	source = changewall-0.1.1.tar.gz::https://github.com/villawebcl/changewall/archive/refs/tags/v0.1.1.tar.gz
-	sha256sums = 16ada82d0ac23a20ce0256c5540fc6f3bf83d2ac02b1093fcc9b47dcbc2e5487
+	source = changewall-0.1.4.tar.gz::https://github.com/villawebcl/changewall/releases/download/v0.1.4/changewall-0.1.4.tar.gz
+	sha256sums = 96bcedc27cd1a3eef279fcd9737ceee144ddfcb848e52f9224244cceaf1eb810
 
 pkgname = changewall
