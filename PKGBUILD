@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=liketaskmanager-git
 pkgver=2.4.r4.gf491ab2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool that mimics the permformance monitoring of Windows Task Manager"
 arch=('x86_64')
 url="https://github.com/rejuce/LikeTaskManager"
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=(
   'nethogs'
   'qt6-base'
-  'qwt-qt6'
+  'qwt'
 )
 makedepends=('git')
 provides=("${pkgname%-git}")
@@ -19,7 +19,7 @@ source=("git+https://github.com/rejuce/LikeTaskManager.git"
         'includepath.patch')
 sha256sums=('SKIP'
             'c1655277c90a158ceed2fe461297ccd148f7746c4f19320de4c375a4e49ada0b'
-            '60d39abcb40047801cabcbde144964fb0d28a0b1635b6cd41409af159656367f')
+            'ddf181e60d9f79079d824b0d1ed92b95d70f708223aa05e3f5e641fe0c06ab91')
 
 pkgver() {
   cd LikeTaskManager
