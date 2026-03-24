@@ -1,6 +1,6 @@
 pkgbase = bento-desktop
 	pkgdesc = Popup control centre for KDE Plasma
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/HabiRabbu/bento
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = bento-desktop
 	provides = bento
 	provides = bento-desktop
 	conflicts = bento-git
-	source = bento-desktop-0.1.0.tar.gz::https://github.com/HabiRabbu/bento/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = 24c30b6494ba072967d1249666adc3051c1998039827d66f108e704f6f4de6bb
+	source = bento-desktop-0.1.1.tar.gz::https://github.com/HabiRabbu/bento/archive/refs/tags/v0.1.1.tar.gz
+	sha256sums = d3b23880507b3a2bac1c3d0884922dacb11d7f1d993e7a25763e20c72b07ae46
 
 pkgname = bento-desktop
