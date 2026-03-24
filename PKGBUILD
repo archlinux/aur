@@ -6,7 +6,7 @@ pkgname=(
   libvlc-luajit
   vlc-plugin-luajit
 )
-_vlcver=3.0.21
+_vlcver=3.0.22
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=$_vlcver${_vlcfixupver//-/.r}
@@ -134,26 +134,21 @@ _name=vlc
 options=(!emptydirs !strip)
 source=(
   https://download.videolan.org/${_name}/${_vlcver}/${_name}-${_vlcver}${_vlcfixupver}.tar.xz
-  taglib-2.patch
-  libnfs6-mr-6527.patch
-  https://github.com/videolan/vlc/commit/8befcbfa.patch # Fix build with recent live-media
-  $_name-3.0.21.1-fix-opus-crash.patch::https://code.videolan.org/videolan/vlc/-/commit/a761e1c202b632e7865d18fcf11a2b9e285ea9ae.patch  # Fix crash with opus: https://gitlab.archlinux.org/archlinux/packaging/packages/vlc/-/issues/9
-  $_name-3.0.23-fix-gstreamer-includes.patch::https://code.videolan.org/videolan/vlc/-/commit/eea0bacf625d910e37630743c864f96704047936.patch
 )
-sha512sums=('cb1af76c8056648c331d7e6e0680d161ed1849eb635987504f45eae02531e9b432651034317fa7e02b0722905dfb9f0f5dad67b5924cc62edcaf0d173ac36aee'
-            'ea0d1e1dfed16dac8f9027eb55d987dee59630568b9744ceb42bfa134ea9295252d83574f3d793a76a5be3b02661c1731ed366003b6b55b2d7f02fde70586ff3'
-            'ea13dd8a1815af183064590d25eb9e652e81bd2d481d311bc4f841c32977205d1d3663d1c3e1c2fe642d546b5e6ab38d5fa6e3ea77808f76d138052900c19032'
-            'eae772959f3f48f6a8e0ccb27711cc3ce59314db49ad38ecb4e03f52782e6acabd1d5ab21a2a5c1b702d7e35218c305d2e8f3082c84000bd6d1c0e136d33178e'
-            '7359e40e537dfd9e1894d392e7759896d29a5179a0e6db051cafd26d7ea873837012c564f8adf3bbba43616deaf915fbc3254a0dcb08c3b47437dabfbfa5b9db'
-            '0ef7e60f6c7e7dd872d576cf24e1683f529728db1899bd215da41d8e571ac12896e74e88cb08672c77e2fa86b44ab7f58ee16b978c56023b996248cdddc93972')
+sha512sums=('f60926fae508cb5b3b99d32910ea0f83372dd46497c60aa0c601dfd3b5b467c9c6cc628ab0a3a8541559739f77fc8a00de909a2c9b92d700d5b48830e8b3e409')
 
 prepare() {
   cd $_name-$_vlcver
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed 's|whoami|echo builduser|g' -i configure
   sed 's|hostname -f|echo arch|g' -i configure
+
+  # Fix build with gstreamer 1.28
+  sed -i '/#include <gst\/gstbufferpool.h>/d; /#include <gst\/video\/gstvideopool.h>/d' modules/codec/gstreamer/gstvlcvideopool.h
+
   # Replace luac with luajit, credits to LG for the fix
   sed 's|\$(luac_verbose)\$(LUAC) -o \$@ \$<|\$(luac_verbose)\$(LUAC) -b $< $@|g' -i share/Makefile.am
+
   local src
   for src in "${source[@]}"; do
     src="${src%%::*}"
@@ -174,6 +169,7 @@ build() {
     --disable-opencv
     --disable-rpath
     --disable-schroedinger
+    --disable-sndio
     --disable-update-check
     --enable-a52
     --enable-aa
