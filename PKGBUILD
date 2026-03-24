@@ -11,7 +11,7 @@ provides=('lean-ctx')
 conflicts=('lean-ctx')
 source=("lean-ctx-$pkgver.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v$pkgver/lean-ctx-x86_64-unknown-linux-gnu.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/yvgude/lean-ctx/v$pkgver/rust/LICENSE")
-sha256sums=('SKIP'
+sha256sums=('9c59f17d340597b1212be25992975dd57ab2d147da31057827bcedcd65764a53'
             'SKIP')
 
 package() {
