@@ -15,7 +15,7 @@ _l10n_commit=e4f894a4eef5c492c83a860a4ff16c8ed361445c
 _moz_build_id=20260106170501
 _lwrelver=110
 pkgver="${_ffsrcver}.${_lwrelver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -63,7 +63,7 @@ depends=(
 makedepends=(
   binutils
   cbindgen
-  clang
+  'clang<22'
   diffutils
   git
   imake
@@ -71,7 +71,7 @@ makedepends=(
   jack
   jq
   lld
-  llvm
+  'llvm<22'
   mesa
   nasm
   nodejs
@@ -82,9 +82,9 @@ makedepends=(
   rust
   sccache
   unzip
-  'wasi-compiler-rt'
-  'wasi-libc++'
-  'wasi-libc++abi'
+  'wasi-compiler-rt<22'
+  'wasi-libc++<22'
+  'wasi-libc++abi<22'
   'wasi-libc'
   yasm
   zip
