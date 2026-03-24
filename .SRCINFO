@@ -1,4 +1,4 @@
-pkgbase = python-jwt
+pkgbase = python-jwt-gehirn
 	pkgdesc = JSON Web Token library for Python
 	pkgver = 1.4.0
 	pkgrel = 1
@@ -16,4 +16,4 @@ pkgbase = python-jwt
 	source = https://github.com/GehirnInc/python-jwt/archive/refs/tags/v1.4.0.tar.gz
 	b2sums = 49de9c87bce7ee35b2bd04ecdc54c25ece9f63ef98527d6ed126fa98de667e8e29f9cd8ca90e26a415b47569f3c1edcc7c05ae89a26e7f5fdf96282e6c080334
 
-pkgname = python-jwt
+pkgname = python-jwt-gehirn
