@@ -1,19 +1,100 @@
-pkgbase = zephyr-sdk-bin
+pkgbase = zephyr-sdk-gnu-bin
 	pkgdesc = SDK for Zephyr real-time operating system
-	pkgver = 0.17.4
-	pkgrel = 2
+	pkgver = 1.0.0
+	pkgrel = 1
 	url = https://www.zephyrproject.org/
 	arch = x86_64
 	arch = aarch64
 	license = Apache
-	makedepends = patchelf
-	makedepends = wget
+	conflicts = zephyr-sdk
+	conflicts = zephyr-sdk-bin
+	options = !strip
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_aarch64-zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_arc64-zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_arc-zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_arm-zephyr-eabi.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_microblazeel-zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_mips-zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_or1k-zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_riscv64-zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_rx-zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_sparc-zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_x86_64-zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-amd_acp_6_0_adsp_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-amd_acp_7_0_adsp_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-amd_acp_7_3_adsp_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-dc233c_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-espressif_esp32_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-espressif_esp32s2_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-espressif_esp32s3_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-intel_ace15_mtpm_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-intel_ace30_ptl_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-intel_ace40_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-intel_tgl_adsp_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-mtk_mt8195_adsp_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-mtk_mt818x_adsp_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-mtk_mt8196_adsp_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-mtk_mt8365_adsp_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-nxp_imx_adsp_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-nxp_imx8m_adsp_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-nxp_imx8ulp_adsp_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-nxp_rt500_adsp_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-nxp_rt600_adsp_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-nxp_rt700_hifi1_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-nxp_rt700_hifi4_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-sample_controller_zephyr-elf.tar.xz
+	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-sample_controller32_zephyr-elf.tar.xz
+	sha256sums_x86_64 = 4015c637d21348db36bb31e849a00bcbccc02304feef519b897d0b83ce759760
+	sha256sums_x86_64 = 4b467e2fb26307b464915d0c9a87e47ab4d94d560888f239a76eeb56b4d9011f
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_aarch64-zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_arc64-zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_arc-zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_arm-zephyr-eabi.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_microblazeel-zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_mips-zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_or1k-zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_riscv64-zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_rx-zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_sparc-zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_x86_64-zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-amd_acp_6_0_adsp_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-amd_acp_7_0_adsp_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-amd_acp_7_3_adsp_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-dc233c_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-espressif_esp32_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-espressif_esp32s2_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-espressif_esp32s3_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-intel_ace15_mtpm_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-intel_ace30_ptl_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-intel_ace40_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-intel_tgl_adsp_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-mtk_mt8195_adsp_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-mtk_mt818x_adsp_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-mtk_mt8196_adsp_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-mtk_mt8365_adsp_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-nxp_imx_adsp_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-nxp_imx8m_adsp_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-nxp_imx8ulp_adsp_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-nxp_rt500_adsp_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-nxp_rt600_adsp_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-nxp_rt700_hifi1_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-nxp_rt700_hifi4_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-sample_controller_zephyr-elf.tar.xz
+	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-aarch64_xtensa-sample_controller32_zephyr-elf.tar.xz
+	sha256sums_aarch64 = 7e8a147601d9141df70c19371fa40f75157ed21158723226b143034711f993fd
+	sha256sums_aarch64 = b6c86caea4bee012943217f3e6050e6e56c78000b6e87dbb9ded4a290dce3573
+
+pkgname = zephyr-sdk-gnu-bin
 	depends = cmake
 	depends = gperf
 	depends = dfu-util
 	depends = dtc
 	depends = tk
 	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-sample_controller32_zephyr-elf=1.0.0
 	optdepends = ninja
 	optdepends = make
 	optdepends = ccache
@@ -21,15 +102,846 @@ pkgbase = zephyr-sdk-bin
 	optdepends = pyocd: programming and debugging ARM MCUs
 	optdepends = python-west: Zephyr RTOS Project meta-tool
 	provides = zephyr-sdk
-	conflicts = zephyr-sdk
-	options = !strip
-	source = profile-zephyr-sdk.sh
-	source = profile-zephyr-sdk.ash
-	sha256sums = 10d0873b848df7dc30940a5642957763d48ab53b04ea828e1a404c6016d4b0de
-	sha256sums = 4f6058f9e3990143d4f7d5f2aed6053bb6b5eb8b6034538b02a06b70f807b4f8
-	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.17.4/zephyr-sdk-0.17.4_linux-x86_64.tar.xz
-	sha256sums_x86_64 = 83f2f327dba2d6cf2440f22f2f501041544d7f34ef8b878ecd83f4513d1116b6
-	source_aarch64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.17.4/zephyr-sdk-0.17.4_linux-aarch64.tar.xz
-	sha256sums_aarch64 = 14ed90e95a74316685c01d3ed7023646d99d69311e198a8e6930bc0ceacb8db9
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-sample_controller32_zephyr-elf
+	replaces = zephyr-sdk-bin
 
-pkgname = zephyr-sdk-bin
+pkgname = zephyr-sdk-gnu-toolchain-aarch64-zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-aarch64-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-aarch64-zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-aarch64-zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-aarch64-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-arc64-zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-arc64-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-arc64-zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-arc64-zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-arc64-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-arc-zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-arc-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-arc-zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-arc-zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-arc-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-arm-zephyr-eabi-bin
+	provides = zephyr-sdk-gnu-toolchain-arm-zephyr-eabi
+
+pkgname = zephyr-sdk-gnu-arm-zephyr-eabi-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-arm-zephyr-eabi-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-arm-zephyr-eabi
+
+pkgname = zephyr-sdk-gnu-toolchain-microblazeel-zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-microblazeel-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-microblazeel-zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-microblazeel-zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-microblazeel-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-mips-zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-mips-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-mips-zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-mips-zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-mips-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-or1k-zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-or1k-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-or1k-zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-or1k-zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-or1k-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-riscv64-zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-riscv64-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-riscv64-zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-riscv64-zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-riscv64-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-rx-zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-rx-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-rx-zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-rx-zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-rx-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-sparc-zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-sparc-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-sparc-zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-sparc-zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-sparc-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-x86_64-zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-x86_64-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-x86_64-zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-x86_64-zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-x86_64-zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-amd_acp_6_0_adsp_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-amd_acp_6_0_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-amd_acp_6_0_adsp_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-amd_acp_6_0_adsp_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-amd_acp_6_0_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-amd_acp_7_0_adsp_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-amd_acp_7_0_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-amd_acp_7_0_adsp_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-amd_acp_7_0_adsp_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-amd_acp_7_0_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-amd_acp_7_3_adsp_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-amd_acp_7_3_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-amd_acp_7_3_adsp_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-amd_acp_7_3_adsp_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-amd_acp_7_3_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-dc233c_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-dc233c_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-dc233c_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-dc233c_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-dc233c_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-espressif_esp32_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-espressif_esp32_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-espressif_esp32_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-espressif_esp32_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-espressif_esp32_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-espressif_esp32s2_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-espressif_esp32s2_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-espressif_esp32s2_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-espressif_esp32s2_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-espressif_esp32s2_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-espressif_esp32s3_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-espressif_esp32s3_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-espressif_esp32s3_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-espressif_esp32s3_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-espressif_esp32s3_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-intel_ace15_mtpm_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-intel_ace15_mtpm_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-intel_ace15_mtpm_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-intel_ace15_mtpm_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-intel_ace15_mtpm_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-intel_ace30_ptl_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-intel_ace30_ptl_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-intel_ace30_ptl_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-intel_ace30_ptl_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-intel_ace30_ptl_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-intel_ace40_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-intel_ace40_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-intel_ace40_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-intel_ace40_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-intel_ace40_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-intel_tgl_adsp_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-intel_tgl_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-intel_tgl_adsp_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-intel_tgl_adsp_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-intel_tgl_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-mtk_mt8195_adsp_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-mtk_mt8195_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-mtk_mt8195_adsp_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-mtk_mt8195_adsp_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-mtk_mt8195_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-mtk_mt818x_adsp_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-mtk_mt818x_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-mtk_mt818x_adsp_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-mtk_mt818x_adsp_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-mtk_mt818x_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-mtk_mt8196_adsp_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-mtk_mt8196_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-mtk_mt8196_adsp_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-mtk_mt8196_adsp_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-mtk_mt8196_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-mtk_mt8365_adsp_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-mtk_mt8365_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-mtk_mt8365_adsp_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-mtk_mt8365_adsp_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-mtk_mt8365_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-nxp_imx_adsp_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-nxp_imx_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-nxp_imx_adsp_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-nxp_imx_adsp_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-nxp_imx_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-nxp_imx8m_adsp_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-nxp_imx8m_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-nxp_imx8m_adsp_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-nxp_imx8m_adsp_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-nxp_imx8m_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-nxp_imx8ulp_adsp_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-nxp_imx8ulp_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-nxp_imx8ulp_adsp_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-nxp_imx8ulp_adsp_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-nxp_imx8ulp_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-nxp_rt500_adsp_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-nxp_rt500_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-nxp_rt500_adsp_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-nxp_rt500_adsp_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-nxp_rt500_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-nxp_rt600_adsp_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-nxp_rt600_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-nxp_rt600_adsp_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-nxp_rt600_adsp_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-nxp_rt600_adsp_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-nxp_rt700_hifi1_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-nxp_rt700_hifi1_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-nxp_rt700_hifi1_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-nxp_rt700_hifi1_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-nxp_rt700_hifi1_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-nxp_rt700_hifi4_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-nxp_rt700_hifi4_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-nxp_rt700_hifi4_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-nxp_rt700_hifi4_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-nxp_rt700_hifi4_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-sample_controller_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-sample_controller_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-sample_controller_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-sample_controller_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-sample_controller_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-toolchain-xtensa-sample_controller32_zephyr-elf-bin
+	provides = zephyr-sdk-gnu-toolchain-xtensa-sample_controller32_zephyr-elf
+
+pkgname = zephyr-sdk-gnu-xtensa-sample_controller32_zephyr-elf-bin
+	depends = cmake
+	depends = gperf
+	depends = dfu-util
+	depends = dtc
+	depends = tk
+	depends = xz
+	depends = zephyr-sdk-cmake-modules=1.0.0
+	depends = zephyr-sdk-profile=1.0.0
+	depends = zephyr-sdk-hosttools=1.0.0
+	depends = zephyr-sdk-gnu-toolchain-xtensa-sample_controller32_zephyr-elf-bin=1.0.0
+	optdepends = ninja
+	optdepends = make
+	optdepends = ccache
+	optdepends = python-pyelftools
+	optdepends = pyocd: programming and debugging ARM MCUs
+	optdepends = python-west: Zephyr RTOS Project meta-tool
+	provides = zephyr-sdk
+	provides = zephyr-sdk-gnu
+	provides = zephyr-sdk-gnu-xtensa-sample_controller32_zephyr-elf
