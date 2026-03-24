@@ -15,7 +15,7 @@ _l10n_commit=e4f894a4eef5c492c83a860a4ff16c8ed361445c
 _moz_build_id=20260106170501
 _lwrelver=110
 pkgver="${_ffsrcver}.${_lwrelver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
@@ -141,6 +141,7 @@ source=(
   "${__pkgname}.desktop"
   "default192x192.png"
   "0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch"
+  "0002-Use-wasm32-wasip1-target.patch"
 )
 sha256sums=('f601465d7e078fe329f6baaeaff61205ddfb8f67dbf99a6baaa359d9711d6b9a'
             '57a7f339ef68273f6597d8074a841fa053f63a21d1f609ab0074a26c063282e6'
@@ -148,7 +149,8 @@ sha256sums=('f601465d7e078fe329f6baaeaff61205ddfb8f67dbf99a6baaa359d9711d6b9a'
             '52d638394dcc3254c70b550340bffb0ade63bd35f155eaee12e0000a51ef939b'
             '68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4'
             'b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b'
-            '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852')
+            '157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852'
+            'baad79216200df4ea05a0e5ca26e0c56c4d4a3cd2149d32f15dc8b7c724376ba')
 
 validpgpkeys=(
   # Mozilla Software Releases <release@mozilla.com>
@@ -283,6 +285,7 @@ fi
   # Fix build with glibc 2.43
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1999625
   patch -Np1 -i ../../0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+  patch -Np1 -i ../../0002-Use-wasm32-wasip1-target.patch
 }
 
 

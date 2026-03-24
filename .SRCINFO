@@ -1,7 +1,7 @@
 pkgbase = konform-browser
 	pkgdesc = Firefox ESR fork with increased security, privacy, and customizability
 	pkgver = 140.8.0.110
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://codeberg.org/konform-browser/source
 	install = konform.install
@@ -97,6 +97,7 @@ pkgbase = konform-browser
 	source = konform.desktop
 	source = default192x192.png
 	source = 0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch
+	source = 0002-Use-wasm32-wasip1-target.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
 	sha256sums = f601465d7e078fe329f6baaeaff61205ddfb8f67dbf99a6baaa359d9711d6b9a
 	sha256sums = 57a7f339ef68273f6597d8074a841fa053f63a21d1f609ab0074a26c063282e6
@@ -105,5 +106,6 @@ pkgbase = konform-browser
 	sha256sums = 68fb47f178d5c3412162d3bb8f74abbfcf1977e0ea4dc69647580ff6f8a93fb4
 	sha256sums = b86ddfc0cec482f7900f296857cdd0f1b736ff5037e0a86712b258ae0092924b
 	sha256sums = 157976ec4be8d723cd6240988b310bc8e1779b2272a258d886bc08389ceba852
+	sha256sums = baad79216200df4ea05a0e5ca26e0c56c4d4a3cd2149d32f15dc8b7c724376ba
 
 pkgname = konform-browser
