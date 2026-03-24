@@ -1,0 +1,20 @@
+pkgbase = krokiet-git
+	pkgdesc = Multi functional app to find duplicates, empty folders, similar images etc. (Desktop App, Slint frontend)
+	pkgver = r714.7680c071
+	pkgrel = 1
+	url = https://github.com/qarmin/czkawka/tree/master/krokiet
+	arch = x86_64
+	license = LicenseRef-MIT AND GPL-3.0-only AND CC-BY-4.0
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	depends = libgcc
+	depends = glibc
+	depends = libheif
+	depends = hicolor-icon-theme
+	provides = krokiet
+	conflicts = krokiet
+	source = git+https://github.com/qarmin/czkawka.git
+	b2sums = SKIP
+
+pkgname = krokiet-git
