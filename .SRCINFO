@@ -1,13 +1,13 @@
 pkgbase = cmfy-bin
 	pkgdesc = A flexible ComfyUI CLI
-	pkgver = 0.2.4
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/byteowlz/cmfy
 	arch = x86_64
 	license = MIT
 	provides = cmfy
 	conflicts = cmfy
-	source = cmfy-0.2.4.tar.gz::https://github.com/byteowlz/cmfy/releases/download/v0.2.4/cmfy-v0.2.4-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums = c5ae0c079b59294319e78e7f03439d9eec1b9e1206e28cdc891f45f30219f3aa
+	source = cmfy-0.2.1.tar.gz::https://github.com/byteowlz/cmfy/releases/download/v0.2.1/cmfy-v0.2.1-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = eb7892bbe5b462fd1743cbc58a527f0e22219fc944dcdcad246e4af659e28ed8
 
 pkgname = cmfy-bin
