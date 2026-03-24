@@ -1,6 +1,6 @@
 # Maintainer: neur0map <90535780+neur0map@users.noreply.github.com>
 pkgname=gpk-bin
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="TUI dashboard that unifies 34 package managers into one searchable view"
 arch=('x86_64' 'aarch64')
@@ -11,8 +11,8 @@ provides=('gpk')
 conflicts=('gpk')
 source_x86_64=("${url}/releases/download/v${pkgver}/gpk-linux-amd64")
 source_aarch64=("${url}/releases/download/v${pkgver}/gpk-linux-arm64")
-sha256sums_x86_64=('d4e5bd578eb858abe8b8bedc52087fecd6fe5e7d0579ed56ab235402040ef587')
-sha256sums_aarch64=('cadab5735926b5320036ea9f55f579a6769844b0e3d180f022dcfe7e37221264')
+sha256sums_x86_64=('c2addf0312edb6a0d313f825f86b5075d8f8754fadeab3a3dee01e332840ab19')
+sha256sums_aarch64=('eb355e3fd6f76e4050f17a0e04230ac5579efc36270738f91bd1265e226670fb')
 
 package() {
     if [[ "$CARCH" == "x86_64" ]]; then
