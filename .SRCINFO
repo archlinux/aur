@@ -1,0 +1,21 @@
+pkgbase = keyviz-wayland-bin
+	pkgdesc = Key visualization tool for Wayland (Tauri) - prebuilt binary
+	pkgver = 0.1.3
+	pkgrel = 1
+	url = https://github.com/notlimdev/keyviz-wayland
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	provides = keyviz-wayland
+	conflicts = keyviz-wayland
+	source = keyviz-wayland-tauri::https://github.com/notlimdev/keyviz-wayland/releases/download/v0.1.3/keyviz-wayland-tauri
+	source = keyviz-wayland.desktop::https://raw.githubusercontent.com/notlimdev/keyviz-wayland/v0.1.3/keyviz-wayland.desktop
+	source = keyviz-wayland.png::https://raw.githubusercontent.com/notlimdev/keyviz-wayland/v0.1.3/keyviz-wayland.png
+	sha256sums = 636e3ae5e6f45da5a786d71fef3d6d72aef9f94c471b18baa0d19297c46fae08
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = keyviz-wayland-bin
