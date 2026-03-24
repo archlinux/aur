@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=OpenChamber
+Comment=Desktop interface for OpenChamber AI coding agent
+Exec=openchamber-desktop
+Icon=openchamber-desktop
+Terminal=false
+Type=Application
+Categories=Development;
+StartupWMClass=openchamber-desktop
+StartupNotify=true
