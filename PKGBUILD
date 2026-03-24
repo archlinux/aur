@@ -39,8 +39,8 @@ package() {
   install -d "$pkgdir/usr/bin"
   ln -s "/opt/${pkgname%-bin}/Eppie" "$pkgdir/usr/bin/${pkgname%-bin}"
 
+  install -d "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
   for i in 16 24 32 48 256; do
-    install -d "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps"
     ln -s "/opt/${pkgname%-bin}/Assets/Icons/iconLogo.targetsize-${i}.png" \
       "$pkgdir/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname%-bin}.png"
   done
