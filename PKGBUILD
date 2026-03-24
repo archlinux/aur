@@ -5,7 +5,7 @@
 
 pkgname=cpp-hocon
 pkgver=0.3.0
-pkgrel=22
+pkgrel=24
 pkgdesc="C++ port of the Typesafe Config library"
 arch=('x86_64')
 url="https://github.com/puppetlabs/cpp-hocon"
@@ -14,12 +14,14 @@ depends=('boost-libs' 'gcc-libs' 'glibc' 'leatherman' 'leatherman_util.so' 'leat
 makedepends=('boost' 'cmake' 'leatherman' 'rapidjson')
 checkdepends=('python')
 provides=('libcpp-hocon.so')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/puppetlabs/cpp-hocon/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/puppetlabs/cpp-hocon/archive/$pkgver.tar.gz"
+)
 sha512sums=('de997e6d90330f901863b7da0d6f6e069a31e052b6f31c1e3009a9559c863f08879ecf4e202c763ec32567dd3a1e436ff5d3bf0b3009a085ef3ee95e5ca6c7e5')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  :
+  # Boost.System is header-only since 1.89 and no longer provides a CMake component.
+  sed -i 's/ filesystem system program_options/ filesystem program_options/' CMakeLists.txt
 }
 
 build() {
