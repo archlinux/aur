@@ -1,0 +1,5 @@
+[roborev-bin]
+source = "github"
+github = "roborev-dev/roborev"
+use_latest_release = true
+prefix = "v"
