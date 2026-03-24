@@ -1,0 +1,19 @@
+pkgbase = ols-bin
+	pkgdesc = Open Linux Shell: CLI utilities toolkit
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/artemkolba321-spec/OLS
+	arch = x86_64
+	license = GPL
+	depends = bash
+	depends = wget
+	depends = tree
+	depends = curl
+	depends = lua
+	depends = jq
+	depends = make
+	depends = openssl
+	source = https://github.com/artemkolba321-spec/OLS/archive/refs/tags/v0.5.0-lts.tar.gz
+	sha256sums = SKIP
+
+pkgname = ols-bin
