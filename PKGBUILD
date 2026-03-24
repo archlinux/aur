@@ -18,9 +18,9 @@ license=('MPL-2.0')
 groups=('firefox-addons')
 makedepends=('git' 'node-gyp' 'npm' 'pnpm' 'strip-nondeterminism' 'zip')
 url=https://codeberg.org/Konsortium/multi-account-containers-lite
-_commit=0a81dbcc154c5c04f14a2e15225f9c047e750c3f
+_commit=3fd710bcfcb7ac0a07b51ff3b8a6239f75ce4b93
 source=("mac::git+${url}#commit=$_commit")
-sha512sums=('fb1986480ae53533286c9f5c2f46b6e779c91705f004795a89b796d4dd96576adc2730d9c7fa8d9806cc66664c01e52376e8e7185e4e3fc481b03d82e619877b')
+sha512sums=('efbcef23ebea0f1feab0fedf4e0172de6e39e0b3d99fb6a41b198b76690914c75fd6269010d4abc2e3c23d658fea642a64e3c636fa5e59766425886797963426')
 
 prepare() {
   cd "mac"
