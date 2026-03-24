@@ -1,7 +1,7 @@
 pkgbase = icecat
 	pkgdesc = GNU version of the Firefox ESR browser
 	pkgver = 140.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git
 	arch = x86_64
 	license = MPL-2.0

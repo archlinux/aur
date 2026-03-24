@@ -32,7 +32,7 @@ _ffsum="57a7f339ef68273f6597d8074a841fa053f63a21d1f609ab0074a26c063282e6"
 _pkgname="icecat"
 pkgname="$_pkgname"
 pkgver="$_icver"
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU version of the Firefox ESR browser"
 url="https://gitweb.git.savannah.gnu.org/gitweb/?p=gnuzilla.git"
 license=('MPL-2.0')
@@ -339,6 +339,9 @@ END
 mk_add_options MOZ_PARALLEL_BUILD=${_cores:-4}
 END
   fi
+
+  # fix wasm triplet
+  sed -E -e '/split_triplet/s&"wasm32-wasi"&"wasm32-wasip1"&' -i build/moz.configure/toolchain.configure
 )
 
 build() (
