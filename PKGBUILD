@@ -9,8 +9,9 @@ license=('MIT')
 depends=('wayland')
 provides=('scrollshot')
 conflicts=('scrollshot' 'scrollshot-git')
+options=(!debug)
 source=("${url}/releases/download/v${pkgver}/scrollshot-v${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('de2d243204e8c11f571ab16c96c0ce74793089cbcc8553a2d26d72f95f489394')
+sha256sums=('a76a70453ec147d66532c36a2722568ef600fe2766df0ba705c5125174dc67a0')
 
 package() {
     install -Dm755 "scrollshot" "${pkgdir}/usr/bin/scrollshot"

@@ -9,7 +9,8 @@ pkgbase = scrollshot-bin
 	provides = scrollshot
 	conflicts = scrollshot
 	conflicts = scrollshot-git
+	options = !debug
 	source = https://github.com/jbonney/scrollshot/releases/download/v0.1.0/scrollshot-v0.1.0-x86_64-linux.tar.gz
-	sha256sums = de2d243204e8c11f571ab16c96c0ce74793089cbcc8553a2d26d72f95f489394
+	sha256sums = a76a70453ec147d66532c36a2722568ef600fe2766df0ba705c5125174dc67a0
 
 pkgname = scrollshot-bin
