@@ -38,8 +38,9 @@ pkgname=(
 	# TODO: the qt theme should, eventually, optionally depend on the seperately packaged gtk irix themes I may package later
 )
 pkgdesc="Modern take on Indigo Magic for Plasma"
-pkgver=r184.ddbdc26
+pkgver=r195.2384fae
 pkgrel=2
+_pkgverrel="$pkgver-$pkgrel"
 arch=('any')
 url="https://www.opencode.net/phob1an/irixium"
 licence=('GPL-3.0-only')
@@ -98,17 +99,19 @@ package_plasma6-theme-irixium-git() {
 	pkgdesc="Modern take on Indigo Magic for Plasma (Global Theme)"
 	provides=('plasma6-theme-irixium')
 	url="https://www.pling.com/p/2142966"
+	# I've set this up to depend on the full version, since changes to sizing and
+	#  color can conflict otherwise.
 	depends=(
-		irixium-aurorae-theme-git
-		irixium-plasma-colorscheme-git
-		irixium-plasma-style-git
-		irixium-icons-git
-		irixium-backgrounds-git
-		sddm-irixium-theme-git
+		"irixium-aurorae-theme-git=$_pkgverrel"
+		"irixium-plasma-colorscheme-git=$_pkgverrel"
+		"irixium-plasma-style-git=$_pkgverrel"
+		"irixium-icons-git=$_pkgverrel"
+		"irixium-backgrounds-git=$_pkgverrel"
+		"sddm-irixium-theme-git=$_pkgverrel"
 	#)
 	#optdepends=(
 	#	'kvantum-theme-irixium-git: Kvantum support'
-		'kvantum-theme-irixium-git'
+		"kvantum-theme-irixium-git=$_pkgverrel"
 	)
 
 	cd "$srcdir/$_gitname"
