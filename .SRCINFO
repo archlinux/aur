@@ -1,0 +1,18 @@
+pkgbase = meowcli-bin
+	pkgdesc = High-performance API forwarding service for CLI tools
+	pkgver = 0.3.1beta
+	pkgrel = 1
+	url = https://github.com/nekohy/MeowCLI
+	install = meowcli-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = custom:unknown
+	provides = meowcli=0.3.1beta
+	options = !strip
+	options = !debug
+	source_x86_64 = meowcli-bin-0.3.1beta-x86_64::https://github.com/nekohy/MeowCLI/releases/download/v0.3.1beta/meowcli-linux-amd64
+	sha256sums_x86_64 = 437dcece02cb98a0c1c48095419be3e8e7fda549627fa65477118b61ecfb5034
+	source_aarch64 = meowcli-bin-0.3.1beta-aarch64::https://github.com/nekohy/MeowCLI/releases/download/v0.3.1beta/meowcli-linux-arm64
+	sha256sums_aarch64 = a4bb3f86833eab6bc37ab95c0ff6aaa935b06416b320e8960b6a13f0116fb226
+
+pkgname = meowcli-bin
