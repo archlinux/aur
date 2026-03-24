@@ -2,7 +2,7 @@
 
 _pkgauthor=microsoft
 pkgname=snmalloc
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Message passing based allocator"
 arch=('x86_64')
@@ -14,7 +14,7 @@ provides=("${pkgname}")
 makedepends=('cmake')
 
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${_pkgauthor}/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('a908b604a77213169b526ab96a64a79c222a03a41a87f13ac00adfeff379f0be')
+sha256sums=('32e4e457dc69bc3c58ab1793dda3615dc015f46b37156e46d160a74e849acca4')
 
 build() {
   cd "${pkgname}-${pkgver}" || exit 1
