@@ -60,7 +60,7 @@ build() {
 }
 
 check() {
-  ctest --test-dir build --output-on-failure
+  ctest --test-dir build --output-on-failure -j$(nproc)
 }
 
 package() {
