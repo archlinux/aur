@@ -1,0 +1,31 @@
+pkgbase = python-certipy-ad-git
+	pkgdesc = Tool for Active Directory Certificate Services enumeration and abuse
+	pkgver = 5.0.4.r3.g890dbf8
+	pkgrel = 1
+	url = https://github.com/ly4k/certipy
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools>=69.0
+	makedepends = git
+	depends = python>=3.12
+	depends = python-asn1crypto>=1.5.1
+	depends = python-cryptography>=42.0.8
+	depends = impacket>=0.13.0
+	depends = python-ldap3>=2.9.1
+	depends = python-pyasn1>=0.6.1
+	depends = python-dnspython>=2.7.0
+	depends = python-requests>=2.32.3
+	depends = python-pycryptodome>=3.22.0
+	depends = python-beautifulsoup4>=4.13.4
+	depends = python-httpx>=0.28.1
+	depends = python-argcomplete>=3.6.2
+	optdepends = python-neo4j: For BloodHound output
+	provides = python-certipy-ad
+	conflicts = python-certipy-ad
+	source = git+https://github.com/ly4k/certipy
+	b2sums = SKIP
+
+pkgname = python-certipy-ad-git
