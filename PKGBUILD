@@ -1,6 +1,6 @@
 # Maintainer: Paul Harvey <hed-phsuarnaba@smu.edu.ph>
 pkgname=hyprsettings-git
-pkgver=0.9.1.2
+pkgver=0.9.2.0
 pkgrel=1
 pkgdesc="Configurator for Hyprland (alpha, development version, git snapshot)"
 arch=('x86_64')
@@ -14,9 +14,25 @@ source=("$pkgname::git+https://github.com/acropolis914/hyprsettings.git")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  git fetch --tags
-  git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$srcdir/$pkgname"
+    git fetch --tags
+
+    # Get latest tag
+    local tag commit_count hash base
+    tag=$(git describe --tags --abbrev=0)
+    
+    # Replace unsafe characters for PKGBUILD (like &)
+    base=${tag//&/_}
+    base=${base// /_}
+    base=${base//\//_}
+
+    # Count commits since tag
+    commit_count=$(git rev-list "$tag"..HEAD --count)
+    # Get short hash
+    hash=$(git rev-parse --short HEAD)
+
+    # Compose version
+    echo "${base}.r${commit_count}.g${hash}"
 }
 
 package() {
