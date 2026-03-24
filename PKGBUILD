@@ -1,8 +1,8 @@
 #Maintainer: sukanka <su975853527 AT gmail.com>
 _pkgname=jaspCochrane
-_pkgver=0.95.3
+_pkgver=0.96.0
 pkgname=r-${_pkgname,,}
-pkgver=0.95.3
+pkgver=0.96.0
 pkgrel=1
 pkgdesc="Cochrane Module for JASP"
 arch=('any')
@@ -17,7 +17,7 @@ depends=(r
 groups=(r-jasp r-jaspextra)
 optdepends=('r-testthat')
 source=("${_pkgname}_${_pkgver}.tar.gz::${url}/archive/refs/tags/v${_pkgver}.tar.gz")
-sha256sums=('bbd4b57197f104889fa13e9d9f4d1b3b940f35914176a8a8f6e23775082d21fe')
+sha256sums=('cfae0b7d2f4491fecb6e920841d230414d544640835eea7a4cf37bb0498321b7')
 
 
 build() {
