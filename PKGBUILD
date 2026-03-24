@@ -6,7 +6,7 @@
 # Maintainer: z3475 <z3475@foxmail.com>
 pkgname=bluedivision-bin
 _pkgname=bluedivision
-pkgver=1.3
+pkgver=1.3.1
 pkgsuffix=
 pkgrel=1
 pkgdesc="A fanmade blue archive game heavily inspired by 'Tom Clancy's The Division'."
@@ -22,15 +22,15 @@ provides=()
 conflicts=()
 replaces=()
 backup=()
-options=()
+options=(!debug)
 install=
 changelog=
 source=(
-  "${_pkgname}-${pkgver}.tar.gz::https://github.com/WhatIsThisG/BlueDivision_Release/releases/download/v$pkgver$pkgsuffix/Blue.Division.v1.3_Linux.tar.gz"
+  "${_pkgname}-${pkgver}.tar.gz::https://github.com/WhatIsThisG/BlueDivision_Release/releases/download/v1.31/Blue.Division.v1.31.linux.tar.gz"
   "${_pkgname}.png"
 )
 sha256sums=(
-  '66dbf03606f975bc05ceb1d5531a604e1b087594c8149a9180d981825ff8301f'
+  '98b64f13a59ce982d23e20b556a6ca083b5950429feacd2fe2683e147612e06d'
   'd803a71e2d1e1e471968a1265c46e731d3c13dd50515dc939caab973415e72c6'
 )
 outdir="/opt/$_pkgname"
