@@ -1,31 +1,30 @@
 # Maintainer: Christopher Ritsen <chris.ritsen@gmail.com>
 _name='netaudio'
-pkgver=0.0.10
-
-_namever="${_name}-${pkgver}"
-arch=(any)
-depends=('python' 'python-cleo' 'python-netifaces' 'python-twisted' 'python-zeroconf')
-license=(Unlicense)
-makedepends=('python-setuptools')
-pkgdesc="List, configure, and control Audinate Dante network audio devices without Dante Controller"
-pkgname="python-${_name}"
+pkgname='python-netaudio'
+pkgver=0.1.5
 pkgrel=1
-sha256sums=('5fa66cb3f479dfa09a8881995978082a19510ae557c6303257802bd74f1ba657')
-source=('https://files.pythonhosted.org/packages/5a/53/2d6a3d5354480c1af0c1ca0cfcc7af1eac9e63083a7a8ab6df2041b6f633/netaudio-0.0.10.tar.gz')
+pkgdesc="CLI for controlling Audinate Dante network audio devices"
+arch=(any)
 url='https://github.com/chris-ritsen/network-audio-controller'
-
-prepare() {
-   rm -rf ${_namever}/*.egg-info
-}
+license=(Unlicense)
+depends=('python' 'python-netaudio-lib' 'python-typer' 'python-rich')
+optdepends=('python-redis: packet capture features'
+            'python-pyyaml: YAML output format'
+            'tshark: live network capture')
+makedepends=('python-build' 'python-installer' 'python-hatchling')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz"
+        "netaudio.service::https://raw.githubusercontent.com/chris-ritsen/network-audio-controller/master/systemd/netaudio.service")
+sha256sums=('a4d35200127c3d2a681918ce24934518be352cbad1dd2f09c0be45bef3d1adb1'
+            'SKIP')
 
 build() {
-   cd ${_namever}
-   python setup.py build
+    cd "${_name}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-   cd ${_namever}
-   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-   mkdir -p "$pkgdir"/usr/share/licenses/$pkgname/
-   install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname/
+    cd "${_name}-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 "$srcdir/netaudio.service" "$pkgdir/usr/lib/systemd/user/netaudio.service"
 }
