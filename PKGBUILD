@@ -1,15 +1,13 @@
 # Maintainer: JoveYu <yushijun110@126.com>
-# Contributor: Poscat
-# Contributor: sem.z <sem.z at protonmail dot com>
 
 pkgname=orca-slicer-bin
 pkgver=2.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="G-code generator for 3D printers"
 arch=('x86_64')
 url="https://github.com/SoftFever/OrcaSlicer"
-license=('AGPL3')
-depends=('mesa' 'glu' 'gst-libav' 'gst-plugins-base' 'cairo' 'gtk3' 'gstreamer' 'openvdb' 'wayland' 'wayland-protocols' 'libxkbcommon' 'webkit2gtk-4.1' 'mesa-utils' 'libmspack')
+license=('AGPL-3.0-only')
+depends=('glu' 'cairo' 'gtk3' 'gstreamer' 'wayland' 'webkit2gtk-4.1' 'mesa-utils' 'libmspack' 'libice' 'libsm')
 provides=("orca-slicer")
 conflicts=("orca-slicer")
 options=(!strip !zipman !debug)
