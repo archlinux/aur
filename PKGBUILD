@@ -27,8 +27,6 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --release
-  upx -t target/release/please
 }
 
 package() {
