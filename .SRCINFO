@@ -1,6 +1,6 @@
 pkgbase = openssh-gui-git
 	pkgdesc = A GUI for OpenSSH configuration and management (GIT version, built from develop)
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/frequency403/OpenSSH-GUI
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = openssh-gui-git
 	conflicts = openssh-gui
 	conflicts = openssh-gui-bin
 	conflicts = openssh-gui-nightly
-	source = git+https://github.com/frequency403/OpenSSH-GUI.git#branch=develop
+	source = git+https://github.com/frequency403/OpenSSH-GUI.git#branch=development
 	sha256sums = SKIP
 
 pkgname = openssh-gui-git

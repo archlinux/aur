@@ -1,6 +1,6 @@
 pkgname=openssh-gui-git
 _pkgname=OpenSSH-GUI
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A GUI for OpenSSH configuration and management (GIT version, built from develop)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('dotnet-runtime-10.0')
 makedepends=('git' 'dotnet-sdk-10.0')
 provides=('openssh-gui')
 conflicts=('openssh-gui' 'openssh-gui-bin' 'openssh-gui-nightly')
-source=("git+${url}.git#branch=develop")
+source=("git+${url}.git#branch=development")
 sha256sums=('SKIP')
 
 pkgver() {
