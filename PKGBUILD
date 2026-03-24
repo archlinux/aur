@@ -1,5 +1,5 @@
 pkgname=keyviz-wayland-bin
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Key visualization tool for Wayland (Tauri) - prebuilt binary"
 arch=('x86_64')
