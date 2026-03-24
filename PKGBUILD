@@ -6,8 +6,8 @@
 
 pkgbase=nvidia-utils
 pkgname=('nvidia-utils' 'opencl-nvidia' 'nvidia-open-dkms')
-pkgver=590.48.01
-pkgrel=4
+pkgver=595.58.03
+pkgrel=1
 arch=('aarch64' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -22,21 +22,17 @@ source=('nvidia-drm-outputclass.conf'
         'systemd-suspend-override.conf'
         'nvidia-sleep.conf'
         "https://download.nvidia.com/XFree86/NVIDIA-kernel-module-source/${_pkg_open}.tar.xz"
-        0001-Enable-atomic-kernel-modesetting-by-default.patch
-        0002-Add-IBT-support.patch
-        kernel-6.19.patch)
+        0002-Add-IBT-support.patch)
 sha512sums=('de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770'
             '1bcf2c6ee71686c0d32625e746ec8c0f7cf42fc63c76c3076ff2526b2661e8b9e9f76eaa2c4b213c7cc437a6f06006cc07672c4974d7f4515b2de2fd7c47a891'
             'f8f071f5a46c1a5ce5188e104b017808d752e61c0c20de1466feb5d693c0b55a5586314411e78cc2ab9c0e16e2c67afdd358da94c0c75df1f8233f54c280762c'
             'a0183adce78e40853edf7e6b73867e7a8ea5dabac8e8164e42781f64d5232fbe869f850ab0697c3718ebced5cde760d0e807c05da50a982071dfe1157c31d6b8'
             '55def6319f6abb1a4ccd28a89cd60f1933d155c10ba775b8dfa60a2dc5696b4b472c14b252dc0891f956e70264be87c3d5d4271e929a4fc4b1a68a6902814cee'
-            'c7fea39d11565f05a507d3aded4e9ea506ef9dbebf313e0fc8d6ebc526af3f9d6dec78af9d6c4456c056310f98911c638706bccdd9926d07f492615569430455'
-            '6fe32d5d1a84df0baeaaecd4a847ba73a89bcd1b51d5f9c7525efd2af891f6d5512c1ac97c8b766ba1d1103312c53e5406653589e22684df9260fd75977591a6'
-            '98ff06b32bac4297b4ca68e069750114ab5caf41d2a58f945488b52acf97c34dd3b64a6af609f8972e688bd646fe3ee598e699534001230d6f0154cebe6ff5d1'
-            '3c4d87686cc79f09feca29df1a8c1973412b48077870b0d3424d575500234e9522b93df53bb6ecd72afd8dc69ecb4a8e7bd3e206080348d30a48c00e62f42943'
-            '8d4633c804079e2cd26a4c6e147c7f212770a0ed5514d3c37a33d7453c209dec560fff141134590af56f44d139b87c0c29ddbcb7eb110e90d3c06a237285a5bc')
-sha512sums_aarch64=('ec81da1a11dd9609427e40434cba69d7c0426e4d60cb5c078c66ec992b6dd44483df2c9dfe02deb4db3a815a4c801b3c42f6ac2b08f0506327f1cdfe5446211d')
-sha512sums_x86_64=('31fd82af707dbe9a6d3848766925386f5e91c5fae0a605819450eb8e5a5a52eaab3ae5cff50b4dd36bc5c32fe1aabc29a6a79438d6614988c7b08f509ef0da6d')
+            '7656de9f7a6e63fdced00ac3a0d3286bf0c830654d3c934702a496fac5bfc4560eedd57271c8299f8fc3f7f1b3afc27c1e29c0b6abce6428806862fef8373835'
+            'def5aeba1c35cc4bef4f92b707cca73ae822d0d23aec55eb05d04f3591970d2c673a50bacd4e6b7ebd64f9326d24121bebe00d525f743e40d3a4244ebd17de85'
+            '3c4d87686cc79f09feca29df1a8c1973412b48077870b0d3424d575500234e9522b93df53bb6ecd72afd8dc69ecb4a8e7bd3e206080348d30a48c00e62f42943')
+sha512sums_aarch64=('4dd1544019df01bbb6e7640aeab32b32801e45f36604eee4143992c3b1710960927d55f05ee831058c4a8af861f698c450f7d2f93077fcb652b48f53743acd2b')
+sha512sums_x86_64=('d38e184805230ab1dc7065c49814d92c7033cf0e078e2cec919baef05d8ea297d061fb45a8fec608e7b2823f756568df3cbe1b08d75e8581c55a380413018499')
 
 _pkg=NVIDIA-Linux-${CARCH}-${pkgver}
 
@@ -55,16 +51,8 @@ prepare() {
     cd ${_pkg}
     bsdtar -xf nvidia-persistenced-init.tar.bz2
 
-    # Enable modeset by default
-    # This avoids various issue, when Simplefb is used
-    # https://gitlab.archlinux.org/archlinux/packaging/packages/nvidia-utils/-/issues/14
-    # https://github.com/rpmfusion/nvidia-kmod/blob/master/make_modeset_default.patch
-    patch -Np2 -i "${srcdir}/0001-Enable-atomic-kernel-modesetting-by-default.patch" -d "${srcdir}/${_pkg}/kernel"
-
     # Kernel-open
-    patch -Np1 -i "${srcdir}/0001-Enable-atomic-kernel-modesetting-by-default.patch" -d "${srcdir}/${_pkg_open}"
     patch -Np1 -i "${srcdir}/0002-Add-IBT-support.patch" -d "${srcdir}/${_pkg_open}"
-    patch -Np1 -i "${srcdir}/kernel-6.19.patch" -d "${srcdir}/${_pkg_open}"
 
     # Attempt to make builds reproducible
     sed -i "s/^  HOSTNAME.*/  HOSTNAME = echo archlinux/" "${srcdir}/${_pkg_open}/utils.mk"
@@ -303,8 +291,8 @@ blacklist nova_drm
 END
     echo "nvidia-uvm" | install -Dm644 /dev/stdin "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
 
-    # Enable PreserveVideoMemoryAllocations and TemporaryFilePath
-    # Fixes Wayland Sleep, when restoring the session
+    # Enable kernel suspend notifiers for open modules and override TemporaryFilePath
+    # from default /tmp to /var/tmp
     install -Dm644 "${srcdir}/nvidia-sleep.conf" "${pkgdir}/usr/lib/modprobe.d/nvidia-sleep.conf"
 
     # Lists NVIDIA driver files for container runtimes like nvidia-container-toolkit
