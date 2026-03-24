@@ -1,7 +1,7 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 
 pkgname="rayforge"
-pkgver=1.2.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="A software for laser cutters and engravers"
 arch=(
@@ -68,7 +68,7 @@ _pkgsrc="${_url##*/}"
 source=(
   "${_pkgsrc}::git+${_url}.git#tag=${pkgver}"
 )
-sha256sums=('c01ee752fe7470a274d68625c07025ac053ba00ef3d241e8a104b25b3d11faa6')
+sha256sums=('7e1f79802aceed81f4ffb2a83c2b22ab935edca1dff1d95c0681bed72f039212')
 
 build() {
   cd "${srcdir}/${_pkgsrc}"
