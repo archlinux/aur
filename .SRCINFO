@@ -1,0 +1,24 @@
+pkgbase = python-masky-git
+	pkgdesc = Python library with CLI allowing to remotely dump domain user credentials via an ADCS without dumping the LSASS process memory
+	pkgver = 0.2.1.r39.d0e16e9
+	pkgrel = 1
+	url = https://github.com/Z4kSec/masky
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-wheel
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python>=3.9
+	depends = python-colorama
+	depends = impacket
+	depends = python-cryptography>=3.5
+	depends = python-pyasn1
+	depends = python-asn1crypto
+	provides = python-masky
+	conflicts = python-masky
+	source = git+https://github.com/Z4kSec/masky
+	b2sums = SKIP
+
+pkgname = python-masky-git
