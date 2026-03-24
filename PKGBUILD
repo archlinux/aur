@@ -17,21 +17,18 @@ pkgver() {
     cd "$srcdir/$pkgname"
     git fetch --tags
 
-    # Get latest tag
     local tag commit_count hash base
     tag=$(git describe --tags --abbrev=0)
-    
-    # Replace unsafe characters for PKGBUILD (like &)
+
+    # Sanitize: replace &, space, /, - with _
     base=${tag//&/_}
     base=${base// /_}
     base=${base//\//_}
+    base=${base//-/_}   # <- replace hyphens
 
-    # Count commits since tag
     commit_count=$(git rev-list "$tag"..HEAD --count)
-    # Get short hash
     hash=$(git rev-parse --short HEAD)
 
-    # Compose version
     echo "${base}.r${commit_count}.g${hash}"
 }
 
