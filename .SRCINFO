@@ -1,4 +1,4 @@
-pkgbase = portable-packer
+pkgbase = portable-packer-git
 	pkgdesc = Packaging utility for Portable
 	pkgver = 0.1
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = portable-packer
 	source = source::git+https://github.com/Kimiblock/portable-packer.git
 	sha256sums = SKIP
 
-pkgname = portable-packer
+pkgname = portable-packer-git

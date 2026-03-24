@@ -1,6 +1,6 @@
 # Maintainer: Kimiblock Moe
 
-pkgname=portable-packer
+pkgname=portable-packer-git
 pkgver=0.1
 pkgrel=1
 pkgdesc="Packaging utility for Portable"
