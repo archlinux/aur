@@ -1,0 +1,16 @@
+pkgbase = lean-ctx-bin
+	pkgdesc = Hybrid Context Optimizer — reduces LLM token consumption by up to 99%. MCP Server + Shell Hook + 60+ CLI compression patterns + tree-sitter AST. (pre-built binary)
+	pkgver = 1.6.1
+	pkgrel = 1
+	url = https://leanctx.com
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	provides = lean-ctx
+	conflicts = lean-ctx
+	source = lean-ctx-1.6.1.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v1.6.1/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/yvgude/lean-ctx/v1.6.1/rust/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = lean-ctx-bin
