@@ -1,6 +1,6 @@
 pkgbase = papdieo
 	pkgdesc = Hyprland-compatible wallpaper management CLI
-	pkgver = 0.1.6
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/xiaotinglian/papdieo
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = papdieo
 	optdepends = nvidia-utils: better NVIDIA video decode path
 	optdepends = vulkan-icd-loader: better NVIDIA video decode path
 	optdepends = wayland-compositor
-	source = papdieo::git+https://github.com/xiaotinglian/papdieo#tag=v0.1.6
-	sha256sums = ef58f395af41dab9a8f4a6ebb3445204da57b5b76d9f4321e71c9be0b9803d86
+	source = papdieo::git+https://github.com/xiaotinglian/papdieo#tag=v0.2.1
+	sha256sums = 6e0c264a23921731af3697cbead73becd90b3efa79ffd355e25b3065afd8fdca
 
 pkgname = papdieo

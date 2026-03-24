@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=papdieo
-pkgver=0.1.6
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Hyprland-compatible wallpaper management CLI"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=(
     'wayland-compositor')
 makedepends=('git' 'cargo')
 source=("$pkgname::git+$url#tag=v$pkgver")
-sha256sums=('ef58f395af41dab9a8f4a6ebb3445204da57b5b76d9f4321e71c9be0b9803d86')
+sha256sums=('6e0c264a23921731af3697cbead73becd90b3efa79ffd355e25b3065afd8fdca')
 
 prepare() {
     export RUSTUP_TOOLCHAIN=stable
