@@ -1,6 +1,6 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 pkgname=mingw-w64-libvpx
-pkgver=1.15.2
+pkgver=1.16.0
 pkgrel=1
 pkgdesc="VP8 and VP9 codec (mingw-w64)"
 arch=('any')
@@ -9,12 +9,12 @@ license=('custom:BSD')
 depends=('mingw-w64-crt')
 options=(!strip !buildflags staticlibs !debug)
 makedepends=('mingw-w64-gcc' 'yasm' 'git')
-_tag=9aec918bf47611de2ffc7df61624c3d1b58be4ec
+_tag=04def0a07f8bfa95785e30e6db95036cda17f9b2
 source=(git+https://chromium.googlesource.com/webm/libvpx#tag=${_tag}
         # patches from MSYS2 (https://github.com/msys2/MINGW-packages/tree/master/mingw-w64-libvpx)
         '0001-enable-shared-on.mingw.patch'
         '0005-fix-exports.mingw.patch')
-b2sums=('7dac94f25867bf023b5d15662996f867e435533b038da881352730b88f8fc9ae657c45b17c135579c3e4bd4039f450cb4f7e5e3e3f2738c68e230f901f7c6456'
+b2sums=('aebe079b448e4c1e0bb084d380266dde054800d0fcff3286e6de09d35365aa99eeeb9068ba22a532184c90abb6e8fa6109719ea48463b5d28d9a57a35f83e0a4'
         '717394b571a5fa8325cd64092886e2f013facde7bea08aef4f8361e97e10fd2c9ffc93ab8d070ab2f16e994766206e9ba39e793b7852e5b70f426b50fb9e63f1'
         '89024d854bf3fd514b2c219f133f2fc82bdab22158b74da90053c3a3812c148f6b43e7061d179ab8dbc0e6c441a23f95499a00180fb52b20effb9ba2504f00a8')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
