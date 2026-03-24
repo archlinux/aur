@@ -1,0 +1,19 @@
+pkgbase = strung-bin
+	pkgdesc = A high-performance, intelligent string extraction tool designed as a modern and smart replacement for the classic Linux 'strings' utility
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/torxx666/strung
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = strung
+	conflicts = strung
+	source = README-0.1.0.md::https://raw.githubusercontent.com/torxx666/strung/v0.1.0/README.md
+	source = LICENSE-0.1.0::https://raw.githubusercontent.com/torxx666/strung/v0.1.0/LICENSE
+	sha256sums = 235988929f14c1203dc592745e190e548a45f82e47467da903ef392c2145fba2
+	sha256sums = 1126322e2cc8d165adc4c792eeb195717de2bcc7b39be1ce77959d78e87ef685
+	source_x86_64 = strung-x86_64-0.1.0.tgz::https://github.com/torxx666/strung/releases/download/v0.1.0/strung-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 3bdeb2b40f0b42fe075aeb4aff1e2208bad2bd6e1532302eaee06b42256520cc
+
+pkgname = strung-bin

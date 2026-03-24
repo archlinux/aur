@@ -1,0 +1,5 @@
+[strung-bin]
+source = "github"
+github = "torxx666/strung"
+use_latest_release = true
+prefix = "v"
