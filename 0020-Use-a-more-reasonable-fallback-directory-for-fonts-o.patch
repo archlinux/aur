@@ -1,7 +1,7 @@
-From 658b01dfac213f19a882bd48df10c08f065f3195 Mon Sep 17 00:00:00 2001
+From 0fd0e5256c5d3670f31aaac9a932b903a55e6472 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 1 Dec 2025 11:26:18 +0100
-Subject: [PATCH 22/24] Use a more reasonable fallback directory for fonts on
+Subject: [PATCH 20/22] Use a more reasonable fallback directory for fonts on
  Windows
 
 The existing fallback points to a directory that no longer exists by default
@@ -44,5 +44,5 @@ index 314df8152c6..9be468f5077 100644
      return fontpath;
  }
 -- 
-2.52.0
+2.53.0
 
