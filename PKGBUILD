@@ -1,5 +1,5 @@
 pkgname=showel
-pkgver=0.1.6
+pkgver=0.1.6.1
 pkgrel=1
 pkgdesc="Fast native desktop database client built with Rust and Dioxus"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/Fynth/showel/archive/refs/tags/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  '7bc62b5c67eb9fa7ed9f38522383d74c1839a955f24faf5598edea78e59c452f'
+  'f438f7a95f6a26ef60444f2c6f7a01f476df87af18df810c8a4d5a94878bcbeb'
 )
 
 prepare() {
@@ -43,6 +43,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -Dm755 "${srcdir}/target/release/app" "${pkgdir}/usr/bin/showel"
+  install -Dm644 "app/assets/app.css" "${pkgdir}/usr/lib/showel/assets/app.css"
   install -Dm644 "packaging/arch/showel.desktop" "${pkgdir}/usr/share/applications/showel.desktop"
   install -Dm644 "app/assets/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/showel.svg"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/showel/README.md"
