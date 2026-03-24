@@ -1,7 +1,7 @@
 # Maintainer: Cyril <cyrwae[at]hotmail[dot]com>
 pkgname=python-pyshacl
 _name=${pkgname#python-}
-pkgver=0.30.1
+pkgver=0.31.0
 pkgrel=1
 pkgdesc="Python SHACL Validator"
 arch=('x86_64')
@@ -20,7 +20,7 @@ install=
 changelog=
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
 noextract=()
-md5sums=('acc71b21ec292f64526cb323dc446786')
+sha512sums=('43cf9786485f02390b6b14d9bb1dd3750574c577367f5fddfa8308a39f675cb14e61978bce5c6c8e50c4536a7becfdd667e37cb4152ab7f10e7699cbdd4425c9')
 
 build() {
     cd "${_name}-${pkgver}"
