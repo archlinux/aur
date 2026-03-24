@@ -15,6 +15,7 @@ source=('https://download-center.epson.com/f/module/42a6470c-53bf-4993-abad-ba5b
 sha256sums=('655b9afc5ca7dcba939d67fac67edd0209fe94decd168b78c0503868fd94f7a1'
             '57c7a32b7deac873d7e31f043a047e5d65b8e0a47c0d0c07c76c3e3bbd60430a'
             '84692c469fb18832344b2c5a31b46f10dd7f87691d0c63a8f14adbc06ade114a')
+DLAGENTS=('https::/usr/bin/curl --user-agent Firefox -qgb "" -fLC - --retry 3 --retry-delay 3 -o %o %u')
 
 prepare() {
   tar xvf "$pkgname-$pkgver-$pkgrel.tar.gz"
