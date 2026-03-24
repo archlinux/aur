@@ -1,7 +1,7 @@
 pkgbase = zephyr-sdk-hosttools-bin
 	pkgdesc = SDK for Zephyr real-time operating system
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.zephyrproject.org/
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,6 @@ pkgbase = zephyr-sdk-hosttools-bin
 	makedepends = python
 	makedepends = patchelf
 	conflicts = zephyr-sdk
-	conflicts = zephyr-sdk-bin
 	options = !strip
 	source = profile-zephyr-sdk.sh
 	source = profile-zephyr-sdk.ash
