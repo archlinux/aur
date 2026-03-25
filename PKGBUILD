@@ -13,7 +13,7 @@ pkgname=('mythplugins-mytharchive'
          'mythplugins-mythnews'
          'mythplugins-mythweather'
          'mythplugins-mythzoneminder')
-pkgver=36.0.r0.g1385cbf
+pkgver=36.0.r13.gababe58
 pkgrel=1
 pkgdesc="Official plugins for MythTV (Stable '-fixes' branch)"
 arch=('x86_64')
@@ -21,8 +21,10 @@ url="https://www.mythtv.org/"
 license=('GPL')
 makedepends=('mythtv'
              'perl-datetime-format-iso8601' 'perl-date-manip' 'perl-image-size'
-             'perl-json' 'perl-soap-lite' 'perl-xml-simple' 'perl-xml-xpath'
-             'python-pycurl' 'python-lxml' 'python-mysqlclient' 'mariadb-libs'
+             'perl-json' 'perl-libwww' 'perl-soap-lite' 'perl-uri'
+             'perl-xml-simple' 'perl-xml-xpath'
+             'python-pycurl' 'python-lxml' 'python-mysqlclient' 'python-requests'
+             'mariadb-libs'
              'libzip' 'flac' 'libvorbis' 'lame' 'libcdio-paranoia'
              'libdiscid' 'libmusicbrainz5' 'libcoverart')
 source=("git+https://github.com/MythTV/mythtv#branch=fixes/36")
@@ -43,7 +45,7 @@ build() {
 
 package_mythplugins-mytharchive() {
   pkgdesc="Create DVDs or archive recorded shows in MythTV"
-  depends=('dvdauthor' 'dvd+rw-tools' 'mythtv' 'python-pillow')
+  depends=('dvdauthor' 'dvd+rw-tools' 'mythtv' 'python-lxml' 'python-mysqlclient' 'python-pillow')
 
   cd "$srcdir/mythtv/$pkgbase/mytharchive"
   make INSTALL_ROOT="$pkgdir" install
@@ -59,7 +61,7 @@ package_mythplugins-mythbrowser() {
 
 package_mythplugins-mythgame() {
   pkgdesc="Game emulator plugin for MythTV"
-  depends=('mythtv' 'libzip')
+  depends=('mythtv' 'libzip' 'python-lxml' 'python-requests')
 
   cd "$srcdir/mythtv/$pkgbase/mythgame"
   make INSTALL_ROOT="$pkgdir" install
@@ -92,8 +94,9 @@ package_mythplugins-mythnews() {
 
 package_mythplugins-mythweather() {
   pkgdesc="Weather checking plugin for MythTV"
-  depends=('mythtv' 'perl-date-manip' 'perl-json' 'perl-soap-lite'
-           'perl-xml-simple' 'perl-xml-xpath' 'perl-image-size'
+  depends=('mythtv' 'perl-date-manip' 'perl-image-size' 'perl-json'
+           'perl-libwww' 'perl-soap-lite' 'perl-uri'
+           'perl-xml-simple' 'perl-xml-xpath'
            'perl-datetime-format-iso8601')
 
   cd "$srcdir/mythtv/$pkgbase/mythweather"
