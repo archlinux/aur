@@ -1,43 +1,31 @@
-# Maintainer: envolution
+# Maintainer:
+# Contributor: envolution
 # Contributor: kdh8219 <kdh8219@monamo.dev>
-# shellcheck shell=bash disable=SC2034,SC2154
 
-pkgname=rapidraw-bin
-_pkgname=RapidRAW
-pkgdesc="GPU-accelerated RAW image editor built with performance in mind"
-pkgver=1.4.6
+_pkgname="rapidraw"
+pkgname="$_pkgname-bin"
+pkgver=1.5.2
 pkgrel=1
-arch=('x86_64' 'aarch64')
-url=https://github.com/CyberTimon/RapidRAW
+pkgdesc="GPU-accelerated RAW image editor"
+url="https://github.com/CyberTimon/RapidRAW"
 license=('AGPL-3.0-only')
-provides=(rapidraw)
-conflicts=(rapidraw)
-depends=(
-  webkit2gtk-4.1
-  gtk3
-  gcc-libs
-  cairo
-  glibc
-  glib2
-  gdk-pixbuf2
-  openssl
-  libsoup3
-)
-_ubuntuver=24.04
-_debfile="03_${_pkgname}_v${pkgver}_ubuntu-${_ubuntuver}"
-#https://github.com/CyberTimon/RapidRAW/releases/download/v1.2.7/03_RapidRAW_v1.2.7_ubuntu-24.04_amd64.deb
-#https://github.com/CyberTimon/RapidRAW/releases/download/v1.3.1/03_RapidRAW_v1.3.1_ubuntu-24.04-arm_arm64.deb
-source_x86_64=("https://github.com/CyberTimon/${_pkgname}/releases/download/v${pkgver}/${_debfile}_amd64.deb")
-sha256sums_x86_64=('29e20fdefa8fb1b28727c42b5d9558e139d76a0a51d81641ad5344c920f7316b')
-sha256sums_aarch64=('0c99f2ccc5d3b590a1819c6bd7466c3c49a0cd159e9b9422634917dd02d47f76')
-source_aarch64=("https://github.com/CyberTimon/${_pkgname}/releases/download/v${pkgver}/${_debfile}-arm_arm64.deb")
+arch=('x86_64' 'aarch64')
 
-prepare() {
-  bsdtar -xf data.tar.gz
-  rm -f data.tar.gz control.tar.gz
-}
+depends=(
+  'gtk3'
+  'webkit2gtk-4.1'
+)
+
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+
+_ubuntuver=24.04
+_debfile="03_RapidRAW_v${pkgver}_ubuntu-${_ubuntuver}"
+source_x86_64=("$_pkgname-$pkgver-x86_64.deb"::"$url/releases/download/v${pkgver}/${_debfile}_amd64.deb")
+source_aarch64=("$_pkgname-$pkgver-aarch64.deb"::"$url/releases/download/v${pkgver}/${_debfile}-arm_arm64.deb")
+sha256sums_x86_64=('42f2938ea261655a3e1c835889b9f55b4d3735559a0db8101b898e40e2f37af6')
+sha256sums_aarch64=('2e262ef0407ff594d3686db46f828191106f336931ddcf49e5f1663ad396da8c')
 
 package() {
-  cp -ar "${srcdir}"/usr/. "${pkgdir}"/usr/
+  bsdtar -xf data.tar.* -C "$pkgdir" usr
 }
-# vim:set ts=2 sw=2 et:

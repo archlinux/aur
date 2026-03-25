@@ -1,5 +1,4 @@
 [rapidraw-bin]
-source = 'github'
-github = 'CyberTimon/RapidRAW'
-use_latest_release = true
-prefix = 'v'
+source = "git"
+git = "https://github.com/CyberTimon/RapidRAW.git"
+prefix = "v"
