@@ -27,9 +27,11 @@ _build="${pkgver%%.r*}"
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+https://github.com/TinyLake/MindustryX.git"
+  "0001-gradlew9.0.patch"
 )
 sha256sums=(
   'SKIP'
+  'af1a24e0215b8c56a19c43ef6d2496f56631d770e816ace2062dc8a81fa07bb8'
 )
 
 pkgver() {
