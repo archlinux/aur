@@ -1,6 +1,6 @@
 # Maintainer: Mohamad Obeid <mobeid nine nine nine nine at gmail dot com>
 pkgname=mixtapes-git
-pkgver=r123.63f7690
+pkgver=r124.42e416e
 pkgrel=1
 pkgdesc="A modern, Linux-first YouTube Music player"
 arch=('any')
