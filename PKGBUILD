@@ -18,7 +18,7 @@ pkgname=anycubicslicernext-bin
 # I know I can use 'epoch'. But I’m sure they will release some patch version
 # with four digits at some point. So I padded the version with zeros.
 pkgver=1.3.9600
-pkgrel=1
+pkgrel=2
 pkgdesc="Anycubic Slicer is an open source slicer for FDM printers"
 arch=('x86_64')
 url="https://github.com/ANYCUBIC-3D/AnycubicSlicer"
@@ -42,21 +42,21 @@ sha256sums=('6a8bbac204a6dba69b02ec687079d961aaa3684085f020f2dfca7a83ea52ed64'
     '20a2e851c8914af6a4098f9718b7462f9f108430b498483f9c04eba81e695fc2')
 
 prepare() {
-    rm -r AnycubicSlicerNext
+    [ -d AnycubicSlicerNext ] && rm -r AnycubicSlicerNext
     mkdir AnycubicSlicerNext
     pushd AnycubicSlicerNext
     ar x ../develop_AnycubicSlicerNext-*
     bsdtar -xf data.tar.gz
     popd
 
-    rm -r libicu74
+    [ -d libicu74 ] && rm -r libicu74
     mkdir libicu74
     pushd libicu74
     ar x ../libicu74_*
     bsdtar -xf data.tar.zst
     popd
 
-    rm -r libselinux1
+    [ -d libselinux1 ] && rm -r libselinux1
     mkdir libselinux1
     pushd libselinux1
     ar x ../libselinux1_*
