@@ -1,4 +1,5 @@
-# Maintainer: David Phillips <dbphillipsnz@gmail.com>
+# Maintainer: Julien Virey <julien.virey+aur@gmail.com>
+# Contributor: David Phillips <dbphillipsnz@gmail.com>
 
 _sourcedir="AnnePro2-Tools"
 _pkgname="annepro2-tools"
@@ -8,7 +9,7 @@ pkgrel=1
 pkgdesc="Alternative firmware update tool for the Anne Pro 2 keyboard"
 arch=('x86_64')
 url="https://github.com/OpenAnnePro/AnnePro2-Tools"
-license=('GPL2')
+license=('GPL-2.0-or-later')
 depends=('gcc-libs')
 makedepends=('cargo' 'git')
 provides=("$_pkgname")
