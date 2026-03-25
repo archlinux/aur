@@ -1,10 +1,11 @@
 pkgname=hyprmoncfg
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal-first monitor configurator and auto-switching daemon for Hyprland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/hyprmoncfg"
 license=('MIT')
+install="${pkgname}.install"
 depends=('hyprland')
 optdepends=('systemd: user service for automatic profile switching')
 conflicts=('hyprmoncfg-git')
