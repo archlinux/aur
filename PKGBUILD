@@ -8,7 +8,7 @@ conflicts=("${_pkgname}")
 pkgver=140.9.0_100
 _konformver="${pkgver%_*}"
 _konformrel="${pkgver#*_}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 url="https://codeberg.org/konform-browser"
 arch=(x86_64 aarch64)
@@ -18,16 +18,17 @@ depends=(
   at-spi2-core
   fontconfig
   freetype2
-  gcc-libs
   gdk-pixbuf2
   glib2
   glibc
   gtk3
   hicolor-icon-theme
   libasound.so
+  libgcc_s.so=1
   libcairo.so
   libevent
   libpulse
+  libstdc++.so=6
   libx11
   libxcb
   libxcomposite
