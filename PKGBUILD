@@ -2,7 +2,7 @@
 
 pkgname=coomer-bin
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Zoomer application for everyone on Linux (prebuilt AppImage)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/yuzujr/coomer"
@@ -17,7 +17,7 @@ provides=('coomer')
 conflicts=('coomer')
 
 source=(
-  "LICENSE::https://raw.githubusercontent.com/yuzujr/coomer/v$pkgver/LICENSE"
+  "coomer.LICENSE::https://raw.githubusercontent.com/yuzujr/coomer/v$pkgver/LICENSE"
   "coomer.desktop::https://raw.githubusercontent.com/yuzujr/coomer/v$pkgver/packaging/linux/coomer.desktop"
   "coomer.svg::https://raw.githubusercontent.com/yuzujr/coomer/v$pkgver/packaging/linux/coomer.svg"
   "io.github.yuzujr.coomer.metainfo.xml::https://raw.githubusercontent.com/yuzujr/coomer/v$pkgver/packaging/linux/io.github.yuzujr.coomer.metainfo.xml"
@@ -44,7 +44,7 @@ package() {
   install -Dm755 "$_appimage" \
     "$pkgdir/opt/coomer/coomer.AppImage"
 
-  install -Dm644 LICENSE \
+  install -Dm644 coomer.LICENSE \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   install -Dm644 coomer.desktop \

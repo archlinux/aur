@@ -1,7 +1,7 @@
 pkgbase = coomer-bin
 	pkgdesc = Zoomer application for everyone on Linux (prebuilt AppImage)
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yuzujr/coomer
 	arch = x86_64
 	arch = aarch64
@@ -13,7 +13,7 @@ pkgbase = coomer-bin
 	conflicts = coomer
 	noextract = coomer-v1.2.1-linux-x86_64.AppImage
 	noextract = coomer-v1.2.1-linux-aarch64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/yuzujr/coomer/v1.2.1/LICENSE
+	source = coomer.LICENSE::https://raw.githubusercontent.com/yuzujr/coomer/v1.2.1/LICENSE
 	source = coomer.desktop::https://raw.githubusercontent.com/yuzujr/coomer/v1.2.1/packaging/linux/coomer.desktop
 	source = coomer.svg::https://raw.githubusercontent.com/yuzujr/coomer/v1.2.1/packaging/linux/coomer.svg
 	source = io.github.yuzujr.coomer.metainfo.xml::https://raw.githubusercontent.com/yuzujr/coomer/v1.2.1/packaging/linux/io.github.yuzujr.coomer.metainfo.xml
