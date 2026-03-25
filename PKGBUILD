@@ -4,7 +4,7 @@
 # Contributor: Robin Baumgartner <robin@baumgartners.ch>
 _base=relatorio
 pkgname=python-${_base}
-pkgver=0.11.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A templating library able to output odt and pdf files"
 arch=(any)
@@ -16,7 +16,7 @@ optdepends=('python-pycha: chart support'
   'python-yaml: char support'
   'python-magic: fodt support')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('40917cef20919f99af85f1c594fd406160cc6c64277cacfd32017d56f394ff0e3e35d97d15776a2b873987549ab02c181c3462abf40c81282144a2550496f2e7')
+sha512sums=('81b3432537047299196864afd5e690f8833c26b1337179d14d17c96f5652ab96bcee346a1f0577a10d57c0d0d82caef3abf88d39bfda450fd40051d33248c36b')
 
 build() {
   cd ${_base}-${pkgver}
