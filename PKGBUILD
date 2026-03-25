@@ -1,7 +1,7 @@
 # Maintainer: Felix Kauselmann <licorn@gmail.com>
 
 pkgname=libpdfium-nojs
-pkgver=7632.r1.004b476195
+pkgver=7680.r2.bccc616f83
 pkgrel=1
 pkgdesc="Open-source PDF rendering engine."
 arch=('x86_64')
@@ -15,12 +15,14 @@ makedepends=('git' 'python' 'gn' 'ninja' 'fast_float')
 source=("git+https://pdfium.googlesource.com/pdfium"
     "git+https://chromium.googlesource.com/chromium/src/build.git"
     "git+https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp"
+    "git+https://chromium.googlesource.com/chromium/src/third_party/simdutf"
     "libpdfium.pc"
     )
 
 md5sums=('SKIP'
          'SKIP'
          'SKIP'
+	 'SKIP'
          'feb270967925a0844b1b9a9e15288eb3')
 
 pkgver() {
@@ -40,6 +42,7 @@ prepare() {
 
   ln -sf $srcdir/build build
   ln -sf $srcdir/abseil-cpp third_party/abseil-cpp
+  ln -sf $srcdir/simdutf third_party/simdutf
   
   # Pdfium is developed alongside Chromium and does not provide releases
   # Upstream recommends using Chromium's dev channels instead
