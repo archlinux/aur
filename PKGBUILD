@@ -1,5 +1,5 @@
 # Maintainer: lautaro <tu-email>
-pkgname=silvermont-kernel-config
+pkgname=mi-paquete-especial
 pkgver=6.14
 pkgrel=1
 pkgdesc="Archivo de configuración para el kernel Silvermont (txt)"
