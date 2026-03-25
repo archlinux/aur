@@ -3,7 +3,7 @@
 pkgname=nugget-doom
 _pkgname=nugget-doom
 _tardir="Nugget-Doom-$_pkgname"
-pkgver=4.5.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Fork of Woof! with additional features"
 arch=('x86_64')
@@ -20,7 +20,7 @@ install=install.sh
 makedepends=(cmake python3)
 url="https://github.com/MrAlaux/Nugget-Doom"
 source=("$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/$pkgname-$pkgver.tar.gz")
-sha256sums=('f45d2dab4dd37134d33698b2fd172bf23d9ae00a55829fcbc04acd4b6793c60a')
+sha256sums=('202219dd6b1ca3ae21b49295c650afa53d5ff80bd42af117cb7fe697f7b788c1')
 
 build() {
     # Use `-ffile-prefix-map` to avoid 'WARNING: Package contains reference to $srcdir' due to assert(...)
