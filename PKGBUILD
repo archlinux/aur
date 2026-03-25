@@ -2,7 +2,7 @@
 
 pkgname=python-pyg-lib
 _pkgname=pyg-lib
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Low-Level Graph Neural Network Operators for PyG'
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("${url}/archive/refs/tags/${pkgver}.tar.gz"
         "cutlass.tar.gz::https://github.com/NVIDIA/cutlass/archive/$_cutlass_commit.tar.gz"
         "gklib.tar.gz::https://github.com/KarypisLab/GKlib/archive/$_gklib_commit.tar.gz"
         "cmake.patch")
-sha256sums=('7b1a88880bfd9bd59b5f9c1a16ff858923c26a7d6117cf0160159d163bc07b43'
+sha256sums=('6fbdcc4e1a47891abbe4a58ffaa38e3bc4ad340faba2ba9d9500bdaa88a78427'
             '11f42dd45abe08ad0c93d5509bfb24bc3877efdd11ce678e07b71b7d7fd74921'
             '437fc187540bd468cbbbebb034875b601c1160294bae58e0f01730da8f2ee071'
             'cbdce3a76f531fdb4c0b7c6669c9d744fb9377f96ee3876e105d6efea32a016e'
