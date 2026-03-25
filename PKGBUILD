@@ -1,7 +1,7 @@
 # Maintainer: Treadful <mail at treadful dot dev>
 _base_pkgname="mollysocket"
 pkgname="${_base_pkgname}-bin"
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="Service linking Signal notifications and UnifiedPush."
 arch=('x86_64' 'armv7h' 'arm64')
@@ -37,11 +37,11 @@ sha256sums=(
     '9e3bbafb068e0c16f8f6f3c6542e54b6180d6d6ff4937568a7b9eb7c9fefb33a'
     '4405930c9827de0806bf0c652c3413bc6457de50cd7b6870c1f44b587d5480ae')
 sha256sums_x86_64=(
-    '43549a4e3303b60a6cff1b8a9204fe6ffe195b66c70e5f8e0a08ec0f71011d0a')
+    '09fa591aa732aac1ad7a16f71107b7a8e7ba9b01abcee25e9c66203818bc7bfd')
 sha256sums_armv7h=(
-    'e2b51d5c615352ccc63dff093639a3a4b3cbca9d46e31e5e07a2c8ea543e4dad')
+    '6035cc9b0b07881c84a28dec61d8b7353aafdaef663eeeb8e9270d809e39e90c')
 sha256sums_arm64=(
-    'e8fa4b55993450ea292e12db8338cb54959818e65a80fbf43f374a8b0af893d0')
+    '2503185626d735c2482a71104510fae070f804cff2d4a8b0aaf4022b36047bbd')
 validpgpkeys=()
 
 package() {
