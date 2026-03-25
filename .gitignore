@@ -1,0 +1,4 @@
+pkg/
+src/
+hyprmoncfg-git/
+*.pkg.tar.*
