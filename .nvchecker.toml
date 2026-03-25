@@ -1,0 +1,5 @@
+[vulnx-bin]
+source = "github"
+github = "projectdiscovery/vulnx"
+use_latest_release = true
+prefix = "v"
