@@ -1,0 +1,4 @@
+pkg
+src
+plasma-applet-claude-usage-git-*
+*.pkg.tar.zst
