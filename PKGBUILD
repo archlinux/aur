@@ -2,13 +2,12 @@
 
 pkgname=("zephyr-sdk-hosttools-bin" "zephyr-sdk-cmake-modules" "zephyr-sdk-profile")
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
 license=('Apache')
 makedepends=('python' 'patchelf')
-conflicts=("zephyr-sdk")
 source=("profile-zephyr-sdk.sh" "profile-zephyr-sdk.ash")
 sha256sums=('1f7d3c7246a572964db24c0845f9534b41fcf6769688a3d1ebb46a1158d89a7e'
             '8d723658578f4cd3f8cc884f9b6d2789acd8692f3fd5de4f61c6c6a06e2a413e')
