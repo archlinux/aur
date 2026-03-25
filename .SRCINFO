@@ -8,7 +8,6 @@ pkgbase = openjkdf2-git
 	license = 0BSD
 	makedepends = at-spi2-core
 	makedepends = cairo
-	makedepends = clang
 	makedepends = gdk-pixbuf2
 	makedepends = git
 	makedepends = glew

@@ -10,7 +10,6 @@ license=('0BSD')
 makedepends=(
   'at-spi2-core'
   'cairo'
-  'clang'
   'gdk-pixbuf2'
   'git'
   'glew'
@@ -97,9 +96,7 @@ prepare() {
   export CMAKE_POLICY_VERSION_MINIMUM=3.5
   export LDFLAGS
   cmake -B ../"${pkgname}"-build -S . \
-    -DCMAKE_CXX_COMPILER:STRING=clang++ \
     -DCMAKE_CXX_FLAGS:STRING="${CXXFLAGS}" \
-    -DCMAKE_C_COMPILER:STRING=clang \
     -DCMAKE_C_FLAGS:STRING="${CFLAGS}" \
     -DCMAKE_SKIP_RPATH=ON \
     -Wno-dev
