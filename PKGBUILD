@@ -1,6 +1,6 @@
 # Maintainer: LucasionGS <ion@ionnet.dev>
 pkgname=ionix-shell
-pkgver=1.0.7
+pkgver=r0.000000
 pkgrel=1
 pkgdesc="GTK overlay shell for Hyprland — SSH, VPN, Docker, command palette, and automation panels"
 arch=('x86_64')
@@ -27,10 +27,10 @@ makedepends=('git' 'aylurs-gtk-shell-git')
 source=("$pkgname::git+https://github.com/LucasionGS/ionix-shell-ags.git")
 sha256sums=('SKIP')
 
-# pkgver() {
-#     cd "$srcdir/$pkgname"
-#     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-# }
+pkgver() {
+    cd "$srcdir/$pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
     cd "$srcdir/$pkgname"
