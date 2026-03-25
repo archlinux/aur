@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=opengnb
-pkgver=1.6.2
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="GNB is open source de-centralized VPN to achieve layer3 network via p2p with the ultimate capability of NAT Traversal."
 arch=($CARCH)
@@ -17,14 +17,15 @@ optdepends=()
 makedepends=(
     git
     sed
-    libnatpmp
-    miniupnpc
-    zlib)
+    # libnatpmp
+    # miniupnpc
+    # zlib
+)
 backup=()
 options=('!makeflags')
 install=
-source=("${pkgname}::git+${url}.git#tag=ver${pkgver}")
-sha256sums=('c158990d956b57e5d7196c84010a194b7eb7f9b73c003e37e828ded3c0325b88')
+source=("${pkgname}::git+${url}.git#tag=${pkgver}")
+sha256sums=('c99723b1daa4190540f7a32e41bc65a6d1a812a1a135faa8c5c21b252e9d0a2f')
 
 prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
@@ -52,4 +53,6 @@ package() {
     install -Dm0644 examples/node_config_example/*.conf -t "${pkgdir}/usr/share/${pkgname}/node_config_example/"
     install -Dm0644 examples/node_config_example/scripts/* -t "${pkgdir}/usr/share/${pkgname}/node_config_example/scripts/"
     install -Dm0644 docs/* -t "${pkgdir}/usr/share/doc/${pkgname}/docs/"
+    install -Dm0644 README* -t "${pkgdir}/usr/share/doc/${pkgname}/"
+    install -Dm0644 LICENSE -t ${pkgdir}/usr/share/licenses/${pkgname}/
 }
