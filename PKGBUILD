@@ -1,7 +1,7 @@
 # Maintainer: TheFeelTrain <the@feeltra.in>
 
 pkgname=vsview
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='The next-generation VapourSynth previewer'
 arch=('x86_64')
@@ -22,6 +22,7 @@ depends=(
     'pyside6'
 )
 makedepends=(
+    'git'
     'python-build'
     'python-hatchling'
     'python-installer'
