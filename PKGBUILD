@@ -106,7 +106,7 @@ package() {
 
     # Symlink executable into /usr/bin
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/usr/lib/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/usr/lib/${pkgname}/whitenoise" "${pkgdir}/usr/bin/${pkgname}"
 
     # Icons
     install -Dm644 "assets/svgs/whitenoise.svg" \
