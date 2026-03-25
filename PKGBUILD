@@ -1,6 +1,6 @@
 # Maintainer: @kjlsai <zhangjian@sipeed.com>
 pkgname=picoclaw
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Ultra-Efficient AI Assistant in Go"
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64' 'loong64')
@@ -8,21 +8,19 @@ url="https://github.com/sipeed/picoclaw"
 license=('MIT')
 options=('!debug')
 install=picoclaw.install
-depends=('glibc' 'ca-certificates')
+depends=('glibc' 'ca-certificates' 'libolm')
 makedepends=('go>=1.25' 'nodejs' 'pnpm')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/sipeed/picoclaw/archive/refs/tags/v${pkgver}.tar.gz"
     'picoclaw.service'
 )
-sha256sums=(
-    'bc77232bc11d385f5872114ed5807a080c7350998cfbffb0a44737a9a9e7c592'
-    '4a982c31b007b6c787b14d05f60b01aaf242d5dd73fa3e273df895c9115f0ec8'
-)
+sha256sums=('6bf882f514ca1e040203dc461f1f54f02ba39a511dee050043cf7866ee1faf0b'
+            '4a982c31b007b6c787b14d05f60b01aaf242d5dd73fa3e273df895c9115f0ec8')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    export CGO_ENABLED=0
+    export CGO_ENABLED=1
     local build_time
     local go_version
     local ldflags
