@@ -16,7 +16,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${
 sha256sums=('163856b6823342084a66ea41dc4c0fb72e1b26f1db150910a5913c54dcc551ac')
 
 build() {
-    cd "${_pkgname}-v${pkgver}"
+    cd "${_pkgname}"
     export DOTNET_CLI_HOME="$srcdir/.dotnet"
     export NUGET_SCRATCH="$srcdir/.nuget-scratch"
     export XDG_DATA_HOME="$srcdir/.local/share"
