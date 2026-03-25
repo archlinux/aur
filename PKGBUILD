@@ -1,29 +1,22 @@
 # Maintainer: qr243vbi
 
-pkgname=(nekobox-git nekobox-core-git)
+pkgname=(nekobox nekobox-core)
 pkgver=5.10.27
 pkgrel=1
 pkgdesc="Cross-platform GUI proxy utility (Empowered by sing-box)"
-arch=('x86_64' 'aarch64' 'riscv64')
+arch=('x86_64' 'aarch64' 'riscv64' 'pentium4' 'i686' 'armv7h')
 url="https://github.com/qr243vbi/nekobox"
 license=('GPL-3.0-or-later')
 makedepends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'thrift' 'boost')
 makedepends+=('cmake' 'gendesk' 'go' 'qt6-tools' 'vulkan-headers' 'cpio' 'upx' 'boost-libs')
-source=("https://github.com/qr243vbi/nekobox/releases/download/${pkgver}/nekobox-unified-source-${pkgver}.tar.xz")
-sha256sums=("0745a7a9a9d2aec243595d291beac75ddeac943b347b8056ba92a9d7359041fe")
+source=()
+sha256sums=()
 
-prepare() {
-    gendesk -f -n \
-        --pkgname "${pkgname}" \
-        --pkgdesc "${pkgdesc}" \
-        --name "${pkgname^}" \
-        --categories 'Network'
-}
-
+nekobox_source_directory="nekobox-unified-source-${pkgver}"
 
 build() {
     export DEST=$PWD/build
-    pushd "nekobox-unified-source-${pkgver}"
+    pushd "${nekobox_source_directory}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -45,8 +38,7 @@ build() {
     popd
 }
 
-
-package_nekobox-core() {
+packagecore() {
     depends=('gcc-libs' 'glibc')
     provides=('sing-box')
     conflicts=('sing-box')
@@ -54,10 +46,16 @@ package_nekobox-core() {
     upx "${pkgdir}/usr/lib/Iblis/nekobox_core"
 }
 
-package_nekobox() {
-    depends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' 'nekobox-core' 'thrift' 'boost-libs')
+packageapp() {
+    depends=('bash' 'gcc-libs' 'glibc' 'libx11' 'qt6-base' 'qt6-declarative' "$1" 'thrift' 'boost-libs')
     provides=('nekoray')
     conflicts=('nekoray')
+
+    gendesk -f -n \
+        --pkgname "${pkgname}" \
+        --pkgdesc "${pkgdesc}" \
+        --name "${pkgname^}" \
+        --categories 'Network'
 
     install -Dm755 "$DEST"/nekobox -t "${pkgdir}/usr/lib/Iblis"
     upx "${pkgdir}/usr/lib/Iblis/nekobox"
@@ -67,14 +65,63 @@ package_nekobox() {
 
     echo '#!/bin/bash -x' > "sing-box.sh"
     echo 'exec /usr/lib/Iblis/nekobox_core sing-box "$@"' >> "sing-box.sh"
-
     install -Dm755 "nekobox.sh" "${pkgdir}/usr/bin/nekobox"
     install -Dm755 "sing-box.sh" "${pkgdir}/usr/bin/sing-box"
     install -Dm644 "nekobox.desktop" -t "${pkgdir}/usr/share/applications"
 
-    cd "nekobox-unified-source-${pkgver}"
+    cd "${nekobox_source_directory}"
     install -Dm644 srslist.json -t "${pkgdir}/usr/lib/Iblis"
-    cp *.js "${pkgdir}/usr/lib/Iblis"
     cp -RfvT "res/public" "${pkgdir}/usr/lib/Iblis/public"
+    cp *.js "$DEST"/*.qm "res/languages.txt" "${pkgdir}/usr/lib/Iblis/public"
     install -Dm644 res/public/icon.png "${pkgdir}/usr/share/pixmaps/nekobox.png"
 }
+
+clearsources(){
+    unset source ||:
+    unset sha256sums ||:
+    typeset -a "source" ||:
+    typeset -a "sha256sums" ||:
+}
+
+if [[ "${#source[@]}" == "0" || "${#source[0]}" == "" || "${NEKOBOX_BRANCH}" != "" ]]
+then
+makedepends+=('jq' 'curl' 'coreutils' 'git')
+nekobox_source_directory="nekobox-git"
+pkgname=(nekobox-git nekobox-core-git)
+clearsources
+
+package_nekobox-core-git() {
+    packagecore
+}
+package_nekobox-git() {
+    packageapp 'nekobox-core-git'
+}
+prepare() {
+    if [[ -d nekobox ]]
+    then
+        pushd nekobox
+        git pull
+        popd
+    else
+        git clone --recurse-submodules --single-branch --branch "${NEKOBOX_BRANCH}" https://github.com/"${REPO}" "${nekobox_source_directory}"
+    fi
+}
+pkgver(){
+    local BRANCH="${NEKOBOX_BRANCH:-main}"
+    local REPO="qr243vbi/nekobox"
+    local LATEST_TAG=$(curl -s "https://api.github.com/repos/$REPO/releases/latest" | jq -r '.tag_name')
+    local COMMIT_TIMESTAMP=$(curl -s "https://api.github.com/repos/$REPO/commits/$BRANCH" | jq -r '.commit.committer.date' | xargs -I{} date -d "{}" +%s)
+    local SHORT_SHA=$(curl -s "https://api.github.com/repos/$REPO/commits/$BRANCH" | jq -r '.sha[0:7]')
+    local VERSION_STRING="${LATEST_TAG}.git${COMMIT_TIMESTAMP}.${SHORT_SHA}"
+    echo $VERSION_STRING
+}
+else
+package_nekobox-core() {
+    packagecore
+}
+
+package_nekobox() {
+    packageapp 'nekobox-core'
+}
+fi
+
