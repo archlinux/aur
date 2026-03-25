@@ -1,4 +1,4 @@
-pkgbase = rustify-git
+pkgbase = rustify
 	pkgdesc = A modern YouTube music player built with Tauri and Rust
 	pkgver = r130.e96912e
 	pkgrel = 1
@@ -26,4 +26,4 @@ pkgbase = rustify-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = rustify-git
+pkgname = rustify

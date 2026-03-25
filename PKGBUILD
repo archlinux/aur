@@ -1,5 +1,5 @@
 # Maintainer: huza(elza) <https://github.com/khuza08>
-pkgname=rustify-git
+pkgname=rustify
 pkgver=r130.e96912e
 pkgrel=1
 pkgdesc="A modern YouTube music player built with Tauri and Rust"
