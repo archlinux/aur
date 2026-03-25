@@ -1,0 +1,19 @@
+pkgbase = r2repo
+	pkgdesc = take package files from vcs releases and turn them into a repo that pacman can use
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/greyltc/releases2repo
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-hatchling
+	makedepends = python-hatch-vcs
+	makedepends = python-hatch
+	depends = python
+	source = git+https://github.com/greyltc/releases2repo.git#tag=v0.0.4
+	b2sums = 6d0563fcf1440b51f0cd6139fae93a9ec8d92e61b15df419fef071927e8e53c9ac3c4860756362f9ff767294fa9abae89c5cdbe92018b577d3c48d6ee97fcbf2
+
+pkgname = r2repo

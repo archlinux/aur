@@ -1,0 +1,5 @@
+src/
+pkg/
+releases2repo/
+*.pkg.tar.zst
+*.log
