@@ -1,0 +1,16 @@
+pkgbase = ghinst-bin
+	pkgdesc = Install binaries from GitHub releases to `~/.local/bin`.
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/tebeka/ghinst
+	license = MIT
+	conflicts = ghinst
+	provides = ghinst
+	arch = aarch64
+	source_aarch64 = https://github.com/tebeka/ghinst/releases/download/v0.5.0/ghinst_0.5.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4b2fd815e096d4e4aeb51dd266494119a0e61dd9d79b685c304ad4a2a9e3d200
+	arch = x86_64
+	source_x86_64 = https://github.com/tebeka/ghinst/releases/download/v0.5.0/ghinst_0.5.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 8982b608df509fbddbefef4308e9e03e4bf91f016bba1cc5aa602e201e674986
+	
+pkgname = ghinst-bin
