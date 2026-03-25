@@ -39,7 +39,7 @@ _target_arch=(
 )
 pkgname=("zephyr-sdk-gnu-bin")
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
@@ -49,7 +49,6 @@ depends+=('cmake' 'gperf' 'dfu-util' 'dtc' 'tk' 'xz'
   "zephyr-sdk-cmake-modules=${pkgver}" "zephyr-sdk-profile=${pkgver}" "zephyr-sdk-hosttools-bin=${pkgver}"
 )
 provides=("zephyr-sdk-gnu")
-replaces=("zephyr-sdk-bin")
 optdepends=('ninja' 'make' 'ccache' 'python-pyelftools'
           'pyocd: programming and debugging ARM MCUs'
           'python-west: Zephyr RTOS Project meta-tool')
@@ -64,7 +63,7 @@ build() {
   cd "$srcdir"
 }
 
-package_zephyr-sdk-gnu-bin() {
+package() {
   cd "$srcdir"
 }
 
