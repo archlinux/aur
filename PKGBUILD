@@ -7,10 +7,11 @@ pkgname=(
 )
 # [2025-07-23]: The version is actually 0.6.11 but the GitHub releases vs tags vs actual file version(==PyPI version) is all over the place
 #               Sent an email off to the maintainer about it
-pkgver=0.6.12
-pkgrel=2
+pkgver=0.6.15
+pkgrel=1
 pkgdesc="Convert PNG to SVG"
 arch=(x86_64)
+license=('MIT')
 url="https://github.com/visioncortex/vtracer"
 makedepends=(
 	'rust'
@@ -19,7 +20,7 @@ makedepends=(
 	'python-maturin'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/visioncortex/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('8f7b9c7bb7b3cf9f47ca3c36772f41cf45c23127f406b4c6b34b4e589a00ce42')
+sha256sums=('2ad16823ca897de2f3c12e104845ecdf2c018bdf871ebb7c07e63dbfd4a2ffa9')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
@@ -42,7 +43,6 @@ build() {
 }
 
 package_vtracer() {
-	license=('MIT')
 	depends=('libgcc')
 
 	cd "${pkgbase}-${pkgver}"
@@ -58,7 +58,6 @@ package_vtracer() {
 
 package_python-vtracer() {
 	pkgdesc="Python bindings for vtracer"
-	license=('Apache-2.0 OR MIT')
 	depends=('python')
 
 	cd "${pkgbase}-${pkgver}/cmdapp"
@@ -68,9 +67,6 @@ package_python-vtracer() {
 		dist/*.whl
 
 	install -Dm644 \
-		LICENSE-APACHE \
-		"${pkgdir}/usr/share/licenses/python-vtracer/LICENSE-APACHE"
-	install -Dm644 \
-		LICENSE-MIT \
-		"${pkgdir}/usr/share/licenses/python-vtracer/LICENSE-MIT"
+		LICENSE \
+		"${pkgdir}/usr/share/licenses/python-vtracer/LICENSE"
 }
