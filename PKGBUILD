@@ -6,12 +6,12 @@
 _pkgname=mopidy
 pkgname=mopidy4
 pkgver=4.0.0a3
-pkgrel=1
+pkgrel=2
 pkgdesc="An extensible music server written in Python"
 arch=('any')
 url="https://www.mopidy.com"
 license=('Apache-2.0')
-depends=('python' 'python-pykka' 'python-requests' 'gstreamer' 'python-setuptools'
+depends=('python' 'python-pydantic' 'python-pykka' 'python-requests' 'gstreamer' 'python-setuptools'
          'gst-python' 'gst-plugins-good' 'gst-plugins-ugly' 'python-tornado'
          'gst-plugins-base' 'python-dbus')
 checkdepends=('python-gobject' 'python-pytest' 'python-responses' 'python-pytest-mock')
