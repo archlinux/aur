@@ -9,7 +9,7 @@ license=('AGPL-3.0-only')
 depends=('gtk3' 'libsecret' 'libglvnd' 'sqlcipher' 'openssl')
 makedepends=('git' 'rust' 'cargo' 'cmake' 'ninja' 'clang' 'pkgconf' 'patchelf' 'fvm' 'jq')
 provides=('whitenoise')
-conflicts=('whitenoise')
+conflicts=('whitenoise' 'whitenoise-debug')
 source=("whitenoise::git+https://github.com/futpib-bot/whitenoise.git#branch=master"
         "whitenoise.desktop")
 sha256sums=('SKIP'

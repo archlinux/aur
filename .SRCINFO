@@ -22,6 +22,7 @@ pkgbase = whitenoise-git
 	depends = openssl
 	provides = whitenoise
 	conflicts = whitenoise
+	conflicts = whitenoise-debug
 	source = whitenoise::git+https://github.com/futpib-bot/whitenoise.git#branch=master
 	source = whitenoise.desktop
 	sha256sums = SKIP
