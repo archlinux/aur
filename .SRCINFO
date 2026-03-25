@@ -10,6 +10,8 @@ pkgbase = python-aiohttp-sse-git
 	makedepends = python-installer
 	makedepends = python-setuptools
 	depends = python-aiohttp
+	provides = python-aiohttp-sse
+	conflicts = python-aiohttp-sse
 	source = python-aiohttp-sse-git::git+https://github.com/aio-libs/aiohttp-sse.git
 	sha256sums = SKIP
 

@@ -10,6 +10,8 @@ url="https://github.com/aio-libs/aiohttp-sse"
 license=('Apache-2.0')
 depends=('python-aiohttp')
 makedepends=('git' 'python-build' 'python-installer' 'python-setuptools')
+conflicts=("python-aiohttp-sse")
+provides=("python-aiohttp-sse")
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
