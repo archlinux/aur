@@ -8,15 +8,16 @@
 # Contributor: dorphell <dorphell@archlinux.org>
 
 pkgname=mythtv-git
-pkgver=36.0.r0.g1385cbf
+pkgver=36.0.r13.gababe58
 pkgrel=1
 pkgdesc="A Homebrew PVR project (Stable '-fixes' branch)"
 arch=('x86_64')
 url="https://www.mythtv.org/"
 license=('GPL')
 depends=(
+    'aom'
+    'dav1d'
     'exiv2'
-    'fftw'
     'jack'
     'lame'
     'libass'
@@ -33,22 +34,19 @@ depends=(
     'libxml2'
     'libxrandr'
     'libzip'
-    'lzo'
-    'python-requests-cache'
     'qt5-script'
     'qt5-webengine'
     'soundtouch'
     'taglib'
     'x264'
     'x265'
+    'xvidcore'
 )
 makedepends=(
     'git'
-    'help2man'
     'libcdio'
     'libcec'
     'libmariadbclient'
-    'libxml2'
     'lirc'
     'nasm'
     'perl-dbd-mysql'
@@ -60,14 +58,11 @@ makedepends=(
     'python-lxml'
     'python-mysqlclient'
     'python-pip'
-    'python-pyqt5-webengine'
     'python-requests'
     'python-setuptools'
-    'python-simplejson'
-    'yasm'
+    'python-wheel'
 )
 optdepends=(
-    'glew: for GPU commercial flagging'
     'libcec: for consumer electronics control capabilities'
     'mariadb: Database-Backend for server deployment'
     'mariadb-clients: Database-Frontend for client deployment'
@@ -79,10 +74,8 @@ optdepends=(
     'perl-xml-xpath: Perl bindings'
     'python-lxml: Python bindings'
     'python-mysqlclient: Python bindings'
-    'python-pyqt5-webengine: Python bindings'
     'python-requests: Python bindings'
-    'python-requests-cache: Python bindings'
-    'python-simplejson: Python bindings'
+    'python-requests-cache: TV metadata caching (tvmaze/ttvdb scrapers)'
 )
 options=(!lto)
 provides=("${pkgname%-git}")
@@ -115,14 +108,11 @@ build() {
   ARCH="${CARCH/_/-}"
   ./configure --prefix=/usr \
               --cpu="$ARCH" \
-              --disable-altivec \
-              --enable-audio-jack \
-              --disable-distcc \
               --enable-libmp3lame \
               --enable-libvpx \
               --enable-libx264 \
               --enable-libx265 \
-              --enable-vaapi \
+              --enable-libxvid \
               --with-bindings=python \
               --with-bindings=perl \
               --perl-config-opts=INSTALLDIRS=vendor
