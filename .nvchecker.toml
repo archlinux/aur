@@ -1,0 +1,5 @@
+[msgvault-bin]
+source = "github"
+github = "wesm/msgvault"
+use_latest_release = true
+prefix = "v"
