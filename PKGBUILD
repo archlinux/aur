@@ -1,7 +1,7 @@
 # Maintainer: cap153 <1536989047@qq.com>
 
 pkgname=rrwm-bin
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A window manager developed in Rust for River 0.4.0, using the cosmic/bspwm layout."
 arch=("x86_64")
