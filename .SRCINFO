@@ -1,0 +1,23 @@
+pkgbase = issabel-framework
+	pkgdesc = Unified Communications PBX Framework (Issabel) - Arch Linux Port
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/IssabelFoundation/framework
+	install = issabel-framework.install
+	arch = any
+	license = GPL2
+	license = GPL3
+	depends = php-legacy
+	depends = php-legacy-gd
+	depends = apache
+	depends = mariadb
+	depends = sqlite
+	depends = sudo
+	depends = net-tools
+	optdepends = asterisk: PBX functionality
+	backup = etc/httpd/conf/extra/issabel.conf
+	backup = etc/httpd/conf/extra/issabel-htaccess.conf
+	backup = etc/php/conf.d/issabel.ini
+	backup = etc/sudoers.d/issabel
+
+pkgname = issabel-framework

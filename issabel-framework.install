@@ -1,0 +1,77 @@
+post_install() {
+  # 1. Create asterisk user/group
+  if ! getent group asterisk >/dev/null; then
+    groupadd -r asterisk
+  fi
+  if ! getent passwd asterisk >/dev/null; then
+    useradd -r -g asterisk -c "Asterisk PBX" -s /bin/bash -d /var/lib/asterisk asterisk
+  fi
+
+  # 2. Set permissions
+  echo ">>> Setting permissions..."
+  chown -R asterisk:asterisk /var/www/html
+  chown -R asterisk:asterisk /var/www/db
+  chown -R asterisk:asterisk /var/www/backup
+  chmod 755 /var/www/html
+  chmod 777 /var/www/html/db
+  chmod 777 /var/www/html/backup
+  chmod 777 /var/www/html/var/templates_c
+  chmod 777 /var/www/html/var/cache
+  chmod 777 /var/www/html/cache
+  chmod 755 /var/www/html/modules
+
+  # 3. Initialize SQLite databases
+  echo ">>> Initializing databases..."
+  if [ ! -f /var/www/html/db/acl.db ] || [ ! -s /var/www/html/db/acl.db ]; then
+    sqlite3 /var/www/html/db/acl.db < /var/www/html/framework/setup/db/install/acl/1_schema.sql
+  fi
+  if [ ! -f /var/www/html/db/menu.db ] || [ ! -s /var/www/html/db/menu.db ]; then
+    # Create menu without sysinfo/load_module/example (not in this port)
+    cat > /tmp/menu_init.sql << 'EOFMENU'
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE menu (id varchar(40), IdParent varchar(40), Link varchar(250), Name varchar(250), Type varchar(20));
+INSERT INTO "menu" VALUES('system','','','System','');
+INSERT INTO "menu" VALUES('usermgr','system','usermgr','User Management','module');
+INSERT INTO "menu" VALUES('grouplist','usermgr','','Group List','module');
+INSERT INTO "menu" VALUES('userlist','usermgr','','Users','module');
+INSERT INTO "menu" VALUES('group_permission','usermgr','','Group Permission','module');
+INSERT INTO "menu" VALUES('preferences','system','','Preferences','module');
+INSERT INTO "menu" VALUES('language','preferences','','Language','module');
+INSERT INTO "menu" VALUES('time_config','preferences','','Date/Time','module');
+INSERT INTO "menu" VALUES('themes_system','preferences','','Themes','module');
+COMMIT;
+EOFMENU
+    sqlite3 /var/www/html/db/menu.db < /tmp/menu_init.sql
+    rm -f /tmp/menu_init.sql
+  fi
+  if [ ! -f /var/www/html/db/settings.db ] || [ ! -s /var/www/html/db/settings.db ]; then
+    sqlite3 /var/www/html/db/settings.db < /var/www/html/framework/setup/db/install/settings/1_schema.sql
+  fi
+  if [ ! -f /var/www/html/db/samples.db ]; then
+    sqlite3 /var/www/html/db/samples.db "SELECT 1;" > /dev/null
+  fi
+
+  # Set DB permissions
+  chown asterisk:asterisk /var/www/html/db/*.db
+  chmod 666 /var/www/html/db/*.db
+
+  # 4. Enable services
+  systemctl enable mariadb
+  systemctl enable httpd
+
+  echo ""
+  echo "=========================================="
+  echo "  Issabel Framework installed successfully"
+  echo "=========================================="
+  echo ""
+  echo "Next steps:"
+  echo "  1. Start MariaDB: systemctl start mariadb"
+  echo "  2. Start Apache: systemctl start httpd"
+  echo "  3. Install issabel-pbx, issabel-system, issabelPBX packages"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
