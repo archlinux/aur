@@ -1,7 +1,7 @@
 # Maintainer: Terrasse <terrasse@qq.com>
 # Maintainer: ccmywish <ccmywish@qq.com>
 pkgname=chsrc-bin
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 pkgdesc="A cli tool to change source for every software on every platform"
 arch=('x86_64') # TODO: add more archs
@@ -26,10 +26,10 @@ source=(
 	"https://github.com/RubyMetric/chsrc/raw/v$pkgver/doc/chsrc.texi"
 )
 noextract=()
-sha256sums=('175a60327413665ef8923e03c4a375bd4907894af49b707c2c3ee61580629b5b'
-            '2efd2d4e273714f8ed1483342abb5e204291a7916dddf15f7049fd18f95b2528'
-            '2b913cbda4a79cfc626c0a8ec7c839434ee6220fdb904d3ef265a1048539f1b6'
-            '8e9a0e2f1058e854d57457f17bfb3667220dd43acbec9c0973aafd0ece2c01aa')
+sha256sums=('60d170f779adec36e31d33ebc931db92fa246b7730fbabeb5b6373530febf2cd'
+            '64fbbf5be547a2de5ff9f49591e0a57e6e1e15b989a5da8e786bc40b5dca0907'
+            '6fd6284b93b2dd4bccbc09cfb299babfbf5d67e99277104258ae27848458b5da'
+            '0c8fdceb05d1fe6cfcbc0ee47c1e1be38a68e52db7c43867c91f9210eb534221')
 validpgpkeys=()
 
 package() {
