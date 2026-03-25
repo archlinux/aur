@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=White Noise
+Comment=Secure, private, decentralized chat on Nostr
+Exec=whitenoise
+Icon=whitenoise
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;
+Keywords=nostr;chat;messaging;privacy;encryption;mls;
+StartupWMClass=whitenoise
