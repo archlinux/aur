@@ -1,6 +1,6 @@
 pkgbase = lean-ctx-bin
 	pkgdesc = Hybrid Context Optimizer — reduces LLM token consumption by up to 99%. MCP Server + Shell Hook + 75+ CLI compression patterns + tree-sitter AST (14 languages). (pre-built binary)
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://leanctx.com
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = lean-ctx-bin
 	depends = gcc-libs
 	provides = lean-ctx
 	conflicts = lean-ctx
-	source = lean-ctx-1.8.0.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v1.8.0/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/yvgude/lean-ctx/v1.8.0/rust/LICENSE
-	sha256sums = 5e5c1b3701a7f7b071f30c7c2e4acb6e5d6fe5898736a7c7c2cba3462f86d581
+	source = lean-ctx-1.8.1.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v1.8.1/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/yvgude/lean-ctx/v1.8.1/rust/LICENSE
+	sha256sums = 1c61e4257e2a891f868f0a27fbe380e0d853a10acc1feb943d2689a292adbacf
 	sha256sums = SKIP
 
 pkgname = lean-ctx-bin
