@@ -1,0 +1,16 @@
+post_install() {
+    echo ""
+    echo "riskie - Disk automounting daemon"
+    echo "================================="
+    echo ""
+    echo "To enable autostart, run:"
+    echo "  systemctl --user enable --now riskie.service"
+    echo ""
+    echo "For manual usage, run:"
+    echo "  riskie"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}

@@ -1,25 +1,31 @@
-# Maintainer: sineptic <sineptic0@gmail.com>
-pkgname=sse-bin
-pkgver=15.0.8_1
-pkgrel=1
-pkgdesc="Paranoia Secret Space Encryptor File and Text desktop utilities from Paranoiaworks"
-arch=('x86_64')
-url="https://paranoiaworks.mobi"
-license=('custom')
-source=(
-    "$url/download/files/pfte_${pkgver//_/-}_amd64.deb"
-    "license.txt"
-)
-sha256sums=(
-    '31b3fae30d3e26804f5ed77bbd66920e824042a239c94720023dded78c571e3c'
-    'f23431d1e94d187fe3e0254b8a530a875d8615bbe451e9d3f564627835e7d527'
-)
+# Maintainer: Ernesto Cruz Olivera <ecruzolivera@gmail.com>
 
-options=('!strip')
+pkgname=riskie-bin
+pkgver=0.1.1
+pkgrel=1
+pkgdesc="Disk automounting daemon for Linux with system tray support (pre-built binary)"
+arch=('x86_64')
+url="https://github.com/ecruzolivera/riskie"
+license=('MIT')
+depends=('udisks2' 'gtk3' 'gettext')
+provides=('riskie')
+conflicts=('riskie')
+install=riskie.install
+source=("https://github.com/ecruzolivera/riskie/releases/download/v$pkgver/riskie-$pkgver-linux-x86_64.tar.gz")
+sha256sums=('SKIP')
 
 package() {
-    bsdtar -xf "${srcdir}/data.tar.zst" -C "${pkgdir}"
-    echo "Installing license and desktop file..."
-    install -Dm644 license.txt "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-    install -Dm644 "${pkgdir}/opt/pfte/lib/pfte-Paranoia_File_and_Text_Encryption.desktop" "${pkgdir}/usr/share/applications/pfte-Paranoia_File_and_Text_Encryption.desktop"
+  cd "riskie-$pkgver"
+
+  install -Dm755 riskie "$pkgdir/usr/bin/riskie"
+
+  install -Dm644 systemd/riskie.service "$pkgdir/usr/lib/systemd/user/riskie.service"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/riskie/LICENSE"
+
+  for mo_file in locale/*/LC_MESSAGES/riskie.mo; do
+    install -Dm644 "$mo_file" "$pkgdir/usr/share/$mo_file"
+  done
+
+  install -Dm644 README.md "$pkgdir/usr/share/doc/riskie/README.md"
 }
