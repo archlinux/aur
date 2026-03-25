@@ -2,7 +2,7 @@
 # Contributor: Florian Hülsmann <fh@cbix.de>
 
 pkgname=rakarrack-plus
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc='Guitar Effects Processor'
 arch=(x86_64 aarch64)
@@ -15,18 +15,15 @@ optdepends=('lv2-host: for running LV2 plugins'
             'new-session-manager: for NSM support')
 groups=(lv2-plugins pro-audio)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Stazed/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a1b017988609df420ae97a1c1f3682d7058cf8638058edeea09931b7f2514466')
+sha256sums=('10ce3c4b86edcc36ca616580526f8dd12335c76671127ffda39caf364ca1e301')
 
 build() {
   cmake -B build-$pkgname-$pkgver -S $pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DBuildCarlaPresets=OFF \
-    -DBuildRakarrackPlusLV2=OFF \
-    -DEnableNTK=OFF \
-    -DEnablePFFFT=ON \
-    -DEnableSysex=ON \
-    -DEnableZITA=ON \
+    -DBUILD_RPLUS_LV2=OFF \
+    -DENABLE_NTK=OFF \
+    -DENABLE_PFFFT=ON \
     -Wno-dev
   cmake --build build-$pkgname-$pkgver
 }
