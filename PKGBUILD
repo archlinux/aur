@@ -5,8 +5,8 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-speechrecognition
-pkgver=3.15.1
-pkgrel=2
+pkgver=3.15.2
+pkgrel=1
 pkgdesc='Speech recognition module for Python, supporting several engines and APIs'
 arch=('any')
 url='https://github.com/Uberi/speech_recognition'
@@ -55,7 +55,7 @@ checkdepends=(
   'python-cryptography' # test_google_cloud.py
 )
 source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-b2sums=('eb77ea4994b29611b72e977dec0a14c4864daae93236caf7fb683d7aea3725c099f5895a0c2f83982bc522172b66e2b34efc00792ddb7913589f861da3c83583')
+b2sums=('ab2344dd43702481957244abd3eed8ee0b7bee149eb8ac04840ee83c2f5b3c5e9ee684ffa5e5bc26962b291b37ec737676d9a7650a44af38af42b79bde5d8d1f')
 
 build() {
   cd "${srcdir}/speech_recognition-${pkgver}"
