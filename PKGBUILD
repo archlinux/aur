@@ -1,7 +1,7 @@
 # Maintainer: John Peter <johnpetersa19@gmail.com>
 pkgname=cloudflare-warp-panel
 _pkgname=cloudflare_warp_panel
-pkgver=7.7.1
+pkgver=8.1.0
 pkgrel=1
 pkgdesc="A graphical control panel (GUI) for the Cloudflare WARP client for Linux."
 arch=('x86_64')
