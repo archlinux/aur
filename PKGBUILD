@@ -1,4 +1,4 @@
-# Maintainer: Your Name <lucyrandall@helltop.net>
+# Maintainer: Lucy Ada Randall <lucybrown@vivaldi.net>
 pkgname=are
 pkgver=1.0.0
 pkgrel=1
@@ -6,10 +6,10 @@ pkgdesc="Another Rust Editor - A port of the aee terminal-based text editor to R
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/anoraktrend/are"
 license=('custom:Artistic-2.0')
-depends=('rust')
+depends=('glibc' 'gcc-libs')
 makedepends=('cargo')
-provides=('aee')
-conflicts=('aee')
+provides=('are')
+conflicts=('are-git')
 source=("https://github.com/anoraktrend/are/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('5b01e20db53bf03837e67af55022ed4fdaa7b21bb7dbecc17b705ee64205605e')
 
