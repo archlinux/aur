@@ -1,0 +1,18 @@
+pkgbase = secure-keepass-fuse-bin
+	pkgdesc = Mounts attachments as fuse-filesystem (Binary)
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/Split174/secure-keepass-fuse
+	license = MIT
+	depends = fuse3
+	depends = zenity
+	conflicts = secure-keepass-fuse
+	provides = secure-keepass-fuse
+	arch = aarch64
+	source_aarch64 = https://github.com/Split174/secure-keepass-fuse/releases/download/v0.0.3/secure-keepass-fuse-arm64
+	sha256sums_aarch64 = 8e39ea0b42d368d57aa3c9bf26eb420487f912013e0427829bcebe45b8e8f387
+	arch = x86_64
+	source_x86_64 = https://github.com/Split174/secure-keepass-fuse/releases/download/v0.0.3/secure-keepass-fuse-amd64
+	sha256sums_x86_64 = 342dc4dbf501ddc6634ee8aeb92f1c635885e0b794906ec115acfe6d4eb92e23
+	
+pkgname = secure-keepass-fuse-bin
