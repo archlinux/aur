@@ -3,13 +3,13 @@
 
 pkgname='openwebrx-plus'
 _pkgname='openwebrx'
-pkgver='1.2.110'
-pkgrel='1'
+pkgver=1.2.110
+pkgrel=1
 pkgdesc='Open source, multi-user SDR receiver software with a web interface'
 arch=('any')
 url='https://luarvique.github.io/ppa/'
-license=('AGPL-3.0-only')
-depends=('python-csdr-luarvique>=0.18.37' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools' 'python-distutils-extra')
+license=('AGPL3')
+depends=('python-csdr-luarvique>=0.18.35' 'rtl-sdr' 'owrx_connector-luarvique' 'python-setuptools' 'python-distutils-extra')
 install="${pkgname}".install
 optdepends=(
     # decoding
@@ -17,8 +17,7 @@ optdepends=(
     'codecserver: decode audio data from digital voice modes using the AMBE codec, leagally trustworthy'
     'codecserver-softmbe: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec'
     'codecserver-mbelib-module: use LEGALLY DUBIOUS codecs to decode digital voice modes using the AMBE codec'
-    'codec2: demodulate classic FreeDV digital transmissions'
-    'radae-decoder-git: demodulate FreeDV RADEv1 digital voice transmissions'
+    'codec2: demodulate FreeDV digital transmissions'
     'm17-cxx-demod: demodulate M17 digital voice signals'
     'wsjtx: decode FT8, FST4, FST4, Q65 digital modes'
     'msk144decoder: decode the MSK144 digimode'
@@ -27,7 +26,6 @@ optdepends=(
     'js8call: decode JS8'
     'dream-nox: decode DRM broadcasts'
     'dump1090: decode Mode-S and ADS-B traffic'
-    'dump978: decoding UAT airplane communications'
     'rtl_433: decode various signals in the ISM bands'
     'dumphfdl: decoding HFDL airplane communications'
     'dumpvdl2-git: decoding VDL Mode 2 airplane communications'
@@ -39,8 +37,7 @@ optdepends=(
     'dablin: decode DAB broadcast signals'
     'satdump: receive weather satellite transmissions'
     'nrsc5: decode HDRadio broadcasts'
-    'csdr-skimmer: decode multiple CW signals at once'
-    'radiosonde_auto_rx: decode radiosonde data'
+    'csdr-cwskimmer: decode multiple CW signals at once'
     # tools
     'imagemagick: automatically convert received images to the PNG format'
     'sox: sound processing tools'
@@ -53,7 +50,6 @@ optdepends=(
     'soapyrtlsdr: provides additional support for rtl-sdr devices, such as the direct sampling mod'
     'soapysdrplay: interfacing with SDRPlay devices'
     'soapymiri-git: interfacing with Mirics-based hardware (MSi001 + MSi2500)'
-    'soapy-malahit-rr: interfacing with Malahit devices'
     'soapyhackrf: interfacing with HackRF devices'
     'libperseus-sdr: use the Microtelecom Perseus HF receiver'
     'soapyairspy: interfacing with Airspy devices (Airspy R2, Airspy Mini)'
@@ -77,9 +73,9 @@ source=(
     'openwebrx-plus.sysusers'
     'openwebrx-plus.tmpfiles'
 )
-b2sums=('b57d0fde521b00b00441a65834ea32550b8076f4a000713fc6381f4b1a2ae2315a786049187d92aa287c827106b9e57d376533b34349c71c7f2156410dc021bb'
-        'ded7e076c2fc8c28d4b25d965044854951711b1fc47dcf0db609ade15ac922368f512b9e7f95fd8df79c832180b21b00d66484fe4bb9e55f4facd5e7af59858d'
-        'aea0a30f35204d9f5d0c5900251889b8add451cc170d098a75f7058792c64e8e48531a90d86172dae116e3e78c4838f692a2ea23633372d92e93ee49e987e8c9')
+sha256sums=('8f8094c74c22be7ecc6c488d1d6d51b27b9422dbc32cd1170fbf52096f7c0e4b'
+            '4ec6dec1df40a1f3db62a2add760f97cf870d65a2c1d5b63cd9b22704754f997'
+            'eea488bd3f4c76b46bffbf3c88691818f93ad73db98c18659856d1690b0deade')
 provides=('openwebrx')
 conflicts=('openwebrx')
 
@@ -92,14 +88,16 @@ package() {
     cd "$srcdir/openwebrx-$pkgver"
     python setup.py install --prefix=/usr --root="$pkgdir" --skip-build --optimize=1
 
-    for config in bands.json bands-*.json openwebrx.conf; do
-        install -Dm 0644 ${config} ${pkgdir}/etc/openwebrx/${config}
+    for config in bands.json bands-*.json openwebrx.conf bookmarks.json bookmarks.txt; do
+        [ -f "${config}" ] && install -Dm 0644 ${config} ${pkgdir}/etc/openwebrx/${config}
     done
-
-    cp -rv bookmarks.d "${pkgdir}"/etc/openwebrx/
+    if [ -d bookmarks.d ]; then
+        cp -rv bookmarks.d "${pkgdir}"/etc/openwebrx/
+        find "${pkgdir}"/etc/openwebrx/bookmarks.d -type f -exec chmod 0644 {} +
+        find "${pkgdir}"/etc/openwebrx/bookmarks.d -type d -exec chmod 0755 {} +
+    fi
 
     install -Dm 0644 ${srcdir}/$pkgname.sysusers ${pkgdir}/usr/lib/sysusers.d/${_pkgname}.conf
     install -Dm 0644 ${srcdir}/$pkgname.tmpfiles ${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf
-    sed -i '/^Environment="HOME=/a Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/opt/radiosonde_auto_rx/auto_rx/"' systemd/openwebrx.service
     install -Dm 0644 systemd/openwebrx.service ${pkgdir}/usr/lib/systemd/system/openwebrx.service
 }
