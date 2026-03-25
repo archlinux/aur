@@ -6,7 +6,6 @@ pkgbase = mingw-w64-libwebp
 	arch = any
 	license = BSD-3-Clause
 	makedepends = mingw-w64-cmake
-	makedepends = git
 	makedepends = ninja
 	depends = mingw-w64-crt
 	options = staticlibs
