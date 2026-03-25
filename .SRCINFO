@@ -1,6 +1,6 @@
 pkgbase = lore-bin
 	pkgdesc = A terminal pager with search, filter, and selection.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/robinovitch61/lore
 	license = MIT
@@ -8,13 +8,13 @@ pkgbase = lore-bin
 	conflicts = lore
 	provides = lore
 	arch = aarch64
-	source_aarch64 = https://github.com/robinovitch61/lore/releases/download/v0.3.0/lore_0.3.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 6a6260cefe3b83450153fcb0e6af9145e0a9521772d04fcf248fea6dcfcb5c5b
+	source_aarch64 = https://github.com/robinovitch61/lore/releases/download/v0.3.1/lore_0.3.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 08d2b29d57bddd961ad52bf4bcf113919a9b10613191b80034e23acc0281c04e
 	arch = i686
-	source_i686 = https://github.com/robinovitch61/lore/releases/download/v0.3.0/lore_0.3.0_Linux_i386.tar.gz
-	sha256sums_i686 = a1b20b9b2a86561244ae165aeb7917906dfa3eae1b791cc172ca4fc99730c248
+	source_i686 = https://github.com/robinovitch61/lore/releases/download/v0.3.1/lore_0.3.1_Linux_i386.tar.gz
+	sha256sums_i686 = f0251e2b8b0db2a9f9ee5d540fb7b8cb5297d5e269052b083b79d0d4b2883f5f
 	arch = x86_64
-	source_x86_64 = https://github.com/robinovitch61/lore/releases/download/v0.3.0/lore_0.3.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = b786e00b76b7ccda4f6a91820f9a10883e7a879c9b0ddd4efa458fe50f520110
+	source_x86_64 = https://github.com/robinovitch61/lore/releases/download/v0.3.1/lore_0.3.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 4c4ec50a9ae5e99826808adcbc78dde2926d265c4bb13da79ed5f4c6807b3a84
 	
 pkgname = lore-bin
