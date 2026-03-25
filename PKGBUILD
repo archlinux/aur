@@ -3,7 +3,7 @@
 _pkgauthor=Systemcluster
 _pkgname=wrappe
 pkgname=${_pkgname}-bin
-pkgver=1.0.5
+pkgver=1.0.6
 pkgrel=1
 pkgdesc='Packer for creating self-contained single-binary applications from executables and directories'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -18,7 +18,7 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux")
 sha256sums=('d58ac9ac6ec1e81f7028f5dbce0fa252dae0ee540dd970c929b7dfd18d3589c3'
             'd9bd44920edaf85478c1b26bb9bb0dc1f4f2892ed09a38eb00845930fd5c1cff')
-sha256sums_x86_64=('e1ee0e1d909ff121e3c730f7068f23ae7f881aed3e244522749b26e55e0be34d')
+sha256sums_x86_64=('aa4f845f1e2cc91b3fb27b9bf4727463217a750866cc5f30f27b59b3dc88025e')
 
 
 package() {
