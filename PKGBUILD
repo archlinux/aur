@@ -1,12 +1,12 @@
 # Maintainer: Hauke Rehfeld <aur@haukerehfeld.de>
 pkgname=jj-fzf
-pkgver=0.37.0
+pkgver=0.38.0
 pkgrel=6
 pkgdesc=" Text UI for Jujutsu based on fzf, centering around the jj log with key bindings for common operations"
 arch=('any')
 url="https://github.com/tim-janik/jj-fzf"
 license=('MPL')
-depends=('bash' 'grep' 'jujutsu' 'fzf')
+depends=('bash' 'grep' "jujutsu>=${pkgver}" 'fzf>=0.67')
 makedepends=('make' 'shellcheck' 'pandoc')
 sha256sums=('SKIP')
 source=("git+$url.git#tag=v$pkgver")
