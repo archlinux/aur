@@ -2,8 +2,8 @@
 
 _plugin=comp
 pkgname=vsview-${_plugin}
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="A vsview plugin to make comparison backed by Slowpoke Pics"
 arch=("x86_64")
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
