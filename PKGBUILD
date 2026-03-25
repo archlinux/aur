@@ -4,13 +4,13 @@
 _pkgname=libwebp
 pkgname=mingw-w64-${_pkgname}
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WebP library and conversion tools (mingw-w64)"
 arch=(any)
 url="https://developers.google.com/speed/webp/"
 license=('BSD-3-Clause')
 makedepends=(mingw-w64-cmake git ninja)
-depends=(mingw-w64-libjpeg-turbo mingw-w64-libpng mingw-w64-libtiff mingw-w64-giflib)
+depends=(mingw-w64-crt)
 options=(staticlibs !strip !buildflags)
 source=("https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-$pkgver.tar.gz"{,.asc})
 sha256sums=('e4ab7009bf0629fd11982d4c2aa83964cf244cffba7347ecd39019a9e38c4564'
