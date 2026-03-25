@@ -1,6 +1,6 @@
 pkgbase = portable-packer
 	pkgdesc = Packaging utility for Portable
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/Kimiblock/stashpak
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = portable-packer
 	depends = coreutils
 	depends = desktop-file-utils
 	depends = git
-	source = source::git+https://github.com/Kimiblock/portable-packer.git#tag=0.1.1
-	sha256sums = 7cbd54bc7f73aa51311c8cc98365d0e5071f9c3bb0ddec9e5706d68e6f08e7dc
+	source = source::git+https://github.com/Kimiblock/portable-packer.git#tag=0.1.2
+	sha256sums = 9c59bd4e10a75179a545c950ed177898d57e83879bb6098edf71dd5b504d9a77
 
 pkgname = portable-packer
