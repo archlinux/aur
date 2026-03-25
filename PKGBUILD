@@ -1,24 +1,54 @@
 # Maintainer: Christopher Schnick <crschnick@xpipe.io>
-# Co-maintainer: Markus Hartung <mail@hartmark.se>
 
 pkgname="pdx-unlimiter"
-pkgver="3.3.4"
-pkgrel=1
+pkgver="3.5.0"
+pkgrel="1"
+epoch=1
 pkgdesc="A smart savegame manager, editor, and toolbox for all current major Paradox Grand Strategy games."
 arch=('x86_64')
 url="https://github.com/crschnick/pdx_unlimiter"
 license=('GPL3')
-provides=("$pkgname")
+groups=()
+# From https://aur.archlinux.org/packages/java-openjfx
+depends=(
+  cairo
+  freetype2
+  gdk-pixbuf2
+  glib2
+  gperf
+  gtk3
+  libgl
+  libx11
+  libxtst
+  pango
+  hicolor-icon-theme
+)
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
 options=(!debug !strip)
-source=("Pdx-Unlimiter.desktop" "https://github.com/crschnick/pdx_unlimiter/releases/download/${pkgver}/pdx-unlimiter-portable-linux-x86_64.tar.gz")
-sha512sums=('8fa6a3c33eb46817e028450be151ec7825a1de5f2bb1ec5239c96b3bd723e4614ec2fb66cc4e4f4a4fb17a87bbc9acd64361ef19b65fe22f829b61ea01cf323c'
-            '3920d2cc7651eff5805dc75de29fd78318dfe286af452533d9170c357ffe7c64a30a9166b2a9bf30d603200ac38d588c9032d73ac2b64b96138c592c911cf598')
+install=
+changelog=
+source=("Pdx-Unlimiter.desktop" "logo_16x16.png" "logo_32x32.png" "logo_48x48.png" "logo_64x64.png" "logo_128x128.png" "logo_256x256.png" "logo_512x512.png" "logo_1024x1024.png")
+source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/crschnick/pdx_unlimiter/releases/download/${pkgver}/pdx-unlimiter-portable-linux-x86_64.tar.gz")
+noextract=()
+sha256sums=("7C5AB673B6B1EEF35CB0CE02F8E377FC4F5EA4964CEE9B775D5760C9A378E4C6" "CA8454DEB9D840696E85C02AED2D2CFDFEC5299E5A59298D0234701EC5E0A4EB" "13CD1CFD95BEE112154811DACE295DEAF98E6AB1647E8E1A5CFD054407D8C99F" "B78A91AB05911F3C7E616B0E12A712F46A53398536E8728241B861BC640F9E74" "E7670619C6BCFA86659EE2D8BE743056CBCBDF849AF5656974CA68B9B7AD4F23" "7857436E87ABDA68BF70CFC32DF8AAE74AB8BC141739F531B878034FA8AE9C57" "6E9A5023E22BB9763829D9C0974B9650D68DD613E1A786C59888CA2FB4E8CEEB" "911EA17F6F399622D25C7E14D43B022C7232CC1A8931CD1EE384960323939D3D" "8ED96FF0EA5AA2C3E2254DC9C1F91E60B3F41E82A575571ABC626008FD8E4A34")
+sha256sums_x86_64=("5788b046e59e76e18f26dec6efa9eeb513c23d450c8f859633437719117964be")
 
 package() {
 	install -dm0755 "$pkgdir/opt"
 	cp -a "$srcdir/pdx-unlimiter-${pkgver}" "$pkgdir/opt/$pkgname"
 	install -Dm0644 -t "$pkgdir/usr/share/applications/" "$srcdir/Pdx-Unlimiter.desktop"
-	install -d "$pkgdir/usr/bin"
-	ln -s "/opt/$pkgname/bin/pdx-unlimiter" "$pkgdir/usr/bin/${pkgname}"
-}
 
+    for logoFile in $srcdir/*.png; do
+        res=$(basename "$logoFile" ".png" | cut -d "_" -f 2)
+        install -d "$pkgdir/usr/share/icons/hicolor/$res/apps"
+        cp -a "$logoFile" "$pkgdir/usr/share/icons/hicolor/$res/apps/${pkgname}.png"
+    done
+
+	touch "$pkgdir/opt/$pkgname/aur"
+}

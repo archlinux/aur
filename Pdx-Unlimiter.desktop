@@ -1,9 +1,11 @@
 [Desktop Entry]
+Type=Application
 Name=Pdx-Unlimiter
 Comment=A smart savegame manager, editor, and toolbox for all current major Paradox Grand Strategy games.
-Exec=/opt/pdx-unlimiter/bin/pdx-unlimiter %u
-Icon=/opt/pdx-unlimiter/logo.png
+TryExec=/opt/pdx-unlimiter/bin/__EXECUTABLE_NAME__
+Exec=/opt/pdx-unlimiter/bin/__EXECUTABLE_NAME__ %U
+Path=/opt/pdx-unlimiter
+Icon=pdx-unlimiter
 Terminal=false
-Type=Application
-Categories=Game;Utility;
-
+Categories=Utility;Development;
+StartupNotify=true
