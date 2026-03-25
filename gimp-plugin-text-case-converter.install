@@ -1,0 +1,32 @@
+post_install() {
+  echo ""
+  echo "  ╔══════════════════════════════════════════════════════╗"
+  echo "  ║     Text Case Converter — GIMP 3.x Plugin            ║"
+  echo "  ╚══════════════════════════════════════════════════════╝"
+  echo ""
+  echo "  El plugin se instaló en el directorio de sistema de GIMP:"
+  echo "  → /usr/lib/gimp/3.0/plug-ins/text-case-converter/"
+  echo ""
+  echo "  GIMP lo cargará automáticamente al iniciar."
+  echo "  Reinicia GIMP si ya estaba abierto."
+  echo ""
+  echo "  ────────────────────────────────────────────────────────"
+  echo "  ¿Prefieres instalarlo solo para tu usuario?"
+  echo "  Copia el plugin a tu config personal:"
+  echo ""
+  echo "    mkdir -p ~/.config/GIMP/3.0/plug-ins/text-case-converter"
+  echo "    cp /usr/lib/gimp/3.0/plug-ins/text-case-converter/text-case-converter.py \\"
+  echo "       ~/.config/GIMP/3.0/plug-ins/text-case-converter/"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  echo ""
+  echo "  Eliminando Text Case Converter de GIMP..."
+  echo "  Si instalaste una copia en ~/.config/GIMP/, elimínala manualmente."
+  echo ""
+}
