@@ -1,0 +1,132 @@
+#!/usr/bin/env bash
+# webcam-toggle — Bind or unbind a specific webcam's USB device.
+#
+# Reads the target device id from /var/lib/webcam-toggle/device (written by
+# webcam-toggle-setup).  If the file does not exist, falls back to auto-
+# detection — but when multiple webcams are present, it exits with an error
+# directing the user to run the setup command.
+#
+# Outputs the new state on stdout: "on" or "off"
+#
+# This script writes to /sys/bus/usb/drivers/usb/{bind,unbind} which requires
+# root.  It is meant to be called via:
+#     sudo webcam-toggle
+# A sudoers drop-in shipped with the package allows members of the "video"
+# group to run this without a password.
+#
+# State is stored in /var/lib/webcam-toggle.
+
+# --- Hardened PATH — only trusted system directories ----------------------
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+
+set -euo pipefail
+
+STATE_DIR="/var/lib/webcam-toggle"
+DEVICE_FILE="${STATE_DIR}/device"
+UNBOUND_MARKER="${STATE_DIR}/unbound"
+LOCKFILE="/run/webcam-toggle.lock"
+
+# State directory: world-readable so the indicator can stat the marker file.
+# The device file itself is restricted to root (0600).
+mkdir -p "$STATE_DIR"
+chmod 0755 "$STATE_DIR"
+
+# ---------------------------------------------------------------------------
+# Concurrency guard — prevent double-toggles from rapid key presses.
+# Uses an fd-based flock so the lock auto-releases on exit/crash.
+# ---------------------------------------------------------------------------
+exec 9>"$LOCKFILE"
+if ! flock -n 9; then
+    echo "error: another webcam-toggle instance is running" >&2
+    exit 1
+fi
+
+# ---------------------------------------------------------------------------
+# validate_dev_id — ensure a device id matches the expected USB bus-port
+# pattern (e.g. "1-5", "2-1.6", "1-1.3.2") before using it.
+# ---------------------------------------------------------------------------
+validate_dev_id() {
+    local id="$1"
+    if [[ ! "$id" =~ ^[0-9]+-[0-9]+(\.[0-9]+)*$ ]]; then
+        echo "error: invalid device id: '$id'" >&2
+        exit 1
+    fi
+}
+
+# ---------------------------------------------------------------------------
+# list_webcam_devices — enumerate all USB devices currently bound to the
+# uvcvideo driver.  Outputs unique bus-port ids, one per line.
+# ---------------------------------------------------------------------------
+list_webcam_devices() {
+    local seen="" intf intf_dir intf_name dev_id
+    for intf in /sys/bus/usb/drivers/uvcvideo/*/driver; do
+        [ -e "$intf" ] || continue
+        intf_dir="$(dirname "$intf")"
+        intf_name="$(basename "$intf_dir")"
+        dev_id="${intf_name%%:*}"
+        # Deduplicate (a single webcam exposes multiple interfaces)
+        case "$seen" in
+            *"|${dev_id}|"*) continue ;;
+        esac
+        seen="${seen}|${dev_id}|"
+        echo "$dev_id"
+    done
+}
+
+# ---------------------------------------------------------------------------
+# is_device_bound — check whether a given USB device is currently bound to
+# its driver.  This is the single source of truth for webcam state.
+# ---------------------------------------------------------------------------
+is_device_bound() {
+    [ -e "/sys/bus/usb/devices/$1/driver" ]
+}
+
+# ---------------------------------------------------------------------------
+# Resolve the target device id
+# ---------------------------------------------------------------------------
+if [ -f "$DEVICE_FILE" ]; then
+    # A device has been explicitly configured (by webcam-toggle-setup).
+    DEV_ID="$(cat "$DEVICE_FILE")"
+    validate_dev_id "$DEV_ID"
+else
+    # No config — try auto-detection.
+    mapfile -t CAMS < <(list_webcam_devices)
+
+    if [ "${#CAMS[@]}" -eq 0 ]; then
+        echo "error: no webcam detected — is a webcam connected?" >&2
+        exit 1
+    elif [ "${#CAMS[@]}" -eq 1 ]; then
+        DEV_ID="${CAMS[0]}"
+        validate_dev_id "$DEV_ID"
+        # Persist so future toggles (including re-bind after unbind) work.
+        echo "$DEV_ID" > "$DEVICE_FILE"
+        chmod 0600 "$DEVICE_FILE"
+    else
+        echo "error: multiple webcams detected — run 'sudo webcam-toggle-setup' to choose one" >&2
+        exit 1
+    fi
+fi
+
+# ---------------------------------------------------------------------------
+# Determine current state from sysfs (the only source of truth).
+# The unbound marker is kept in sync for the tray indicator and the boot
+# restore service, but never used to determine runtime state here.
+# ---------------------------------------------------------------------------
+if is_device_bound "$DEV_ID"; then
+    CURRENT_STATE="on"
+else
+    CURRENT_STATE="off"
+fi
+
+# ---------------------------------------------------------------------------
+# Toggle
+# ---------------------------------------------------------------------------
+if [ "$CURRENT_STATE" = "on" ]; then
+    echo "$DEV_ID" > /sys/bus/usb/drivers/usb/unbind
+    touch "$UNBOUND_MARKER"
+    echo "off"
+else
+    echo "$DEV_ID" > /sys/bus/usb/drivers/usb/bind
+    rm -f "$UNBOUND_MARKER"
+    echo "on"
+fi

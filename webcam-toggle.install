@@ -1,0 +1,35 @@
+post_install() {
+    systemctl daemon-reload
+    systemctl enable webcam-toggle-restore.service
+
+    echo ""
+    echo "  ┌──────────────────────────────────────────────────┐"
+    echo "  │            webcam-toggle: post-install           │"
+    echo "  ├──────────────────────────────────────────────────┤"
+    echo "  │                                                  │"
+    echo "  │  1. Add your user to the video group:            │"
+    echo "  │       sudo usermod -aG video \$USER               │"
+    echo "  │     Then log out and back in.                    │"
+    echo "  │                                                  │"
+    echo "  │  2. Run the setup to select your webcam:         │"
+    echo "  │       sudo webcam-toggle-setup                   │"
+    echo "  │                                                  │"
+    echo "  │  3. Bind a keyboard shortcut to:                 │"
+    echo "  │       webcam-toggle-shortcut                     │"
+    echo "  │                                                  │"
+    echo "  └──────────────────────────────────────────────────┘"
+    echo ""
+}
+
+post_upgrade() {
+    systemctl daemon-reload
+    echo ">>> webcam-toggle-restore.service reloaded."
+}
+
+pre_remove() {
+    systemctl disable webcam-toggle-restore.service 2>/dev/null || true
+}
+
+post_remove() {
+    systemctl daemon-reload
+}

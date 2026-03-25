@@ -1,0 +1,153 @@
+#!/usr/bin/env bash
+# webcam-toggle-setup — Interactive setup for webcam-toggle.
+# Lists all connected uvcvideo webcams and lets the user choose which one
+# to target.  Saves the selection to /var/lib/webcam-toggle/device.
+#
+# Must be run as root:  sudo webcam-toggle-setup
+#
+# Can also be run non-interactively:
+#   sudo webcam-toggle-setup --list          Print detected webcams
+#   sudo webcam-toggle-setup --device 1-5    Set the target device directly
+
+# --- Hardened PATH --------------------------------------------------------
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+
+set -euo pipefail
+
+STATE_DIR="/var/lib/webcam-toggle"
+DEVICE_FILE="${STATE_DIR}/device"
+
+mkdir -p "$STATE_DIR"
+chmod 0755 "$STATE_DIR"
+
+# ---------------------------------------------------------------------------
+# validate_dev_id
+# ---------------------------------------------------------------------------
+validate_dev_id() {
+    local id="$1"
+    if [[ ! "$id" =~ ^[0-9]+-[0-9]+(\.[0-9]+)*$ ]]; then
+        echo "error: invalid device id: '$id'" >&2
+        exit 1
+    fi
+}
+
+# ---------------------------------------------------------------------------
+# get_product_name — read the USB product string for a device.
+# ---------------------------------------------------------------------------
+get_product_name() {
+    local dev_id="$1"
+    local product_file="/sys/bus/usb/devices/${dev_id}/product"
+    if [ -r "$product_file" ]; then
+        cat "$product_file"
+    else
+        echo "(unknown)"
+    fi
+}
+
+# ---------------------------------------------------------------------------
+# list_webcam_devices — enumerate uvcvideo-bound USB devices (deduplicated).
+# ---------------------------------------------------------------------------
+list_webcam_devices() {
+    local seen="" intf intf_dir intf_name dev_id
+    for intf in /sys/bus/usb/drivers/uvcvideo/*/driver; do
+        [ -e "$intf" ] || continue
+        intf_dir="$(dirname "$intf")"
+        intf_name="$(basename "$intf_dir")"
+        dev_id="${intf_name%%:*}"
+        case "$seen" in
+            *"|${dev_id}|"*) continue ;;
+        esac
+        seen="${seen}|${dev_id}|"
+        echo "$dev_id"
+    done
+}
+
+# ---------------------------------------------------------------------------
+# save_device — persist the chosen device id.
+# ---------------------------------------------------------------------------
+save_device() {
+    local dev_id="$1"
+    validate_dev_id "$dev_id"
+    echo "$dev_id" > "$DEVICE_FILE"
+    chmod 0600 "$DEVICE_FILE"
+    # Clear stale state so the next toggle reads live status.
+    rm -f "${STATE_DIR}/unbound"
+    echo "Saved device $dev_id ($(get_product_name "$dev_id")) as the target webcam."
+}
+
+# ---------------------------------------------------------------------------
+# print_list — display a numbered list of webcams.
+# Expects the CAMS array to be populated by the caller.
+# ---------------------------------------------------------------------------
+print_list() {
+    local current=""
+    [ -f "$DEVICE_FILE" ] && current="$(cat "$DEVICE_FILE")"
+
+    local i
+    for i in "${!CAMS[@]}"; do
+        local dev_id="${CAMS[$i]}"
+        local name
+        name="$(get_product_name "$dev_id")"
+        local marker=""
+        [ "$dev_id" = "$current" ] && marker=" [current]"
+        printf "  %d) %-12s %s%s\n" $((i + 1)) "$dev_id" "$name" "$marker"
+    done
+}
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
+# Populate CAMS once — all subcommands and interactive mode use this snapshot.
+mapfile -t CAMS < <(list_webcam_devices)
+
+case "${1:-}" in
+    --list)
+        if [ "${#CAMS[@]}" -eq 0 ]; then
+            echo "No webcams detected."
+            exit 1
+        fi
+        print_list
+        exit
+        ;;
+    --device)
+        if [ -z "${2:-}" ]; then
+            echo "usage: webcam-toggle-setup --device <bus-port>" >&2
+            exit 1
+        fi
+        save_device "$2"
+        exit
+        ;;
+    "")
+        # Interactive mode — fall through
+        ;;
+    *)
+        echo "usage: webcam-toggle-setup [--list | --device <bus-port>]" >&2
+        exit 1
+        ;;
+esac
+
+# --- Interactive selection ------------------------------------------------
+if [ "${#CAMS[@]}" -eq 0 ]; then
+    echo "No webcams detected."
+    exit 1
+fi
+
+echo "Detected webcams:"
+print_list
+echo ""
+
+if [ "${#CAMS[@]}" -eq 1 ]; then
+    save_device "${CAMS[0]}"
+    exit
+fi
+
+while true; do
+    printf "Select the webcam to toggle [1-%d]: " "${#CAMS[@]}"
+    read -r choice
+    if [[ "$choice" =~ ^[0-9]+$ ]] && [ "$choice" -ge 1 ] && [ "$choice" -le "${#CAMS[@]}" ]; then
+        save_device "${CAMS[$((choice - 1))]}"
+        exit
+    fi
+    echo "Invalid selection."
+done

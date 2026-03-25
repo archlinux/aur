@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# webcam-toggle-shortcut — Intended to be bound to a keyboard shortcut.
+# 1. Toggles the webcam via sudo (passwordless for group "video")
+# 2. Sends a libnotify notification with the new state
+# 3. Signals the running indicator to refresh its icon
+
+set -euo pipefail
+
+# Capture stdout and stderr separately so an error message from the toggle
+# script does not pollute the state string.
+TOGGLE_STDERR="$(mktemp)"
+trap 'rm -f "$TOGGLE_STDERR"' EXIT
+
+NEW_STATE="$(sudo webcam-toggle 2>"$TOGGLE_STDERR")" || {
+    ERR="$(cat "$TOGGLE_STDERR")"
+    notify-send -i dialog-error "Webcam Toggle" "Failed to toggle webcam: ${ERR:-unknown error}"
+    exit 1
+}
+
+case "$NEW_STATE" in
+    on)
+        ICON="camera-on-symbolic"
+        SUMMARY="Webcam Enabled"
+        BODY="The webcam has been enabled."
+        ;;
+    off)
+        ICON="camera-off-symbolic"
+        SUMMARY="Webcam Disabled"
+        BODY="The webcam has been disabled."
+        ;;
+    *)
+        notify-send -i dialog-error "Webcam Toggle" "Unexpected state: $NEW_STATE"
+        exit 1
+        ;;
+esac
+
+# Notify the desktop
+notify-send -i "$ICON" "$SUMMARY" "$BODY"
+
+# Signal the indicator to refresh (SIGUSR1).
+INDICATOR_PID="$(pgrep -f '[w]ebcam-toggle-indicator' 2>/dev/null || true)"
+if [ -n "$INDICATOR_PID" ]; then
+    kill -USR1 "$INDICATOR_PID" 2>/dev/null || true
+fi

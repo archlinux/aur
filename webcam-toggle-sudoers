@@ -1,0 +1,3 @@
+# Allow members of the "video" group to toggle the webcam without a password.
+# The empty string after the path restricts this to exactly zero arguments.
+%video ALL=(root) NOPASSWD: /usr/bin/webcam-toggle ""

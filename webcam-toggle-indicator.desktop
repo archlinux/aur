@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Webcam Toggle Indicator
+Comment=Tray icon showing webcam status
+Exec=webcam-toggle-indicator
+TryExec=webcam-toggle-indicator
+Icon=camera-on-symbolic
+Terminal=false
+Categories=System;Monitor;
+StartupNotify=false
+X-GNOME-Autostart-enabled=true

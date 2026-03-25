@@ -1,0 +1,12 @@
+[Unit]
+Description=Restore webcam disabled state from previous session
+After=systemd-udev-settle.service
+Wants=systemd-udev-settle.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/webcam-toggle-restore
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target

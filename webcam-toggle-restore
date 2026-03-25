@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# webcam-toggle-restore — Re-apply the saved webcam state at boot.
+#
+# Called by webcam-toggle-restore.service after udev has settled.
+# If the unbound marker exists and the device is currently bound (kernel
+# re-bound it during boot), unbind it again to persist the "off" state.
+#
+# Exits silently if there is nothing to do.
+
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+
+set -euo pipefail
+
+STATE_DIR="/var/lib/webcam-toggle"
+DEVICE_FILE="${STATE_DIR}/device"
+UNBOUND_MARKER="${STATE_DIR}/unbound"
+
+# Nothing to restore if webcam was on before shutdown.
+[ -f "$UNBOUND_MARKER" ] || exit 0
+
+# Need a configured device to know what to unbind.
+[ -f "$DEVICE_FILE" ] || exit 0
+
+DEV_ID="$(cat "$DEVICE_FILE")"
+
+# Validate — same regex as webcam-toggle.
+if [[ ! "$DEV_ID" =~ ^[0-9]+-[0-9]+(\.[0-9]+)*$ ]]; then
+    echo "webcam-toggle-restore: invalid device id '$DEV_ID'" >&2
+    exit 1
+fi
+
+# Only unbind if the kernel re-bound the device during boot.
+if [ -e "/sys/bus/usb/devices/${DEV_ID}/driver" ]; then
+    echo "$DEV_ID" > /sys/bus/usb/drivers/usb/unbind
+fi

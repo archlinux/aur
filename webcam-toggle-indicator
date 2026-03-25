@@ -1,0 +1,193 @@
+#!/usr/bin/env python3
+"""
+webcam-toggle-indicator — XApp.StatusIcon tray icon (DE/WM agnostic)
+that reflects the current webcam state.
+
+Left-click:  toggles the webcam
+Right-click:  opens a context menu (Toggle Webcam, Quit)
+SIGUSR1:     refreshes the icon (sent by webcam-toggle-shortcut)
+
+Uses the freedesktop symbolic icons:
+  camera-on-symbolic   — webcam is enabled
+  camera-off-symbolic  — webcam is disabled
+"""
+
+import fcntl
+import os
+import signal
+import subprocess
+import sys
+import threading
+
+import gi
+
+gi.require_version("Gtk", "3.0")
+gi.require_version("XApp", "1.0")
+
+from gi.repository import GLib, Gtk, XApp
+
+
+APP_ID = "webcam-toggle-indicator"
+ICON_ON = "camera-on-symbolic"
+ICON_OFF = "camera-off-symbolic"
+
+STATE_DIR = "/var/lib/webcam-toggle"
+UNBOUND_MARKER = os.path.join(STATE_DIR, "unbound")
+
+LOCK_PATH = os.path.join(
+    os.environ.get("XDG_RUNTIME_DIR", f"/run/user/{os.getuid()}"),
+    "webcam-toggle-indicator.lock",
+)
+
+
+def _ensure_single_instance() -> None:
+    """Exit immediately if another indicator instance is already running.
+
+    Uses an exclusive flock on a per-user lock file in XDG_RUNTIME_DIR.
+    The lock is held for the lifetime of the process and released
+    automatically on exit (the fd is intentionally kept open via the
+    global reference).
+    """
+    try:
+        lock_fd = open(LOCK_PATH, "w")  # noqa: SIM115
+        fcntl.flock(lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        sys.exit(0)
+
+    # Keep the fd alive so the lock is held until process exit.
+    _ensure_single_instance.lock_fd = lock_fd  # type: ignore[attr-defined]
+
+
+def _notify(icon: str, summary: str, body: str) -> None:
+    """Send a libnotify desktop notification (fire-and-forget)."""
+    try:
+        subprocess.run(
+            ["notify-send", "-i", icon, summary, body],
+            timeout=5,
+            start_new_session=True,
+        )
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        pass
+
+
+class WebcamIndicator:
+    def __init__(self):
+        self.icon = XApp.StatusIcon.new_with_name(APP_ID)
+        self.icon.set_icon_name(self._current_icon())
+        self.icon.set_tooltip_text("Webcam Toggle")
+
+        # Left-click: toggle the webcam.
+        # primary-menu is left unset (None), so the "activate" signal
+        # fires on left-click instead of showing a menu.
+        self.icon.connect("activate", self._on_activate)
+
+        # Right-click: show context menu via the secondary-menu property.
+        self.icon.set_secondary_menu(self._build_menu())
+
+        # Handle SIGUSR1 — GLib.unix_signal_add is the safe way to bridge
+        # UNIX signals into the GTK main loop.
+        GLib.unix_signal_add(GLib.PRIORITY_HIGH, signal.SIGUSR1, self._on_refresh)
+
+    # ------------------------------------------------------------------
+    # State helpers
+    # ------------------------------------------------------------------
+    @staticmethod
+    def _webcam_is_off() -> bool:
+        return os.path.isfile(UNBOUND_MARKER)
+
+    def _current_icon(self) -> str:
+        return ICON_OFF if self._webcam_is_off() else ICON_ON
+
+    def _refresh_icon(self) -> None:
+        self.icon.set_icon_name(self._current_icon())
+
+    # ------------------------------------------------------------------
+    # Menu (shown on right-click via secondary-menu property)
+    # ------------------------------------------------------------------
+    def _build_menu(self) -> Gtk.Menu:
+        menu = Gtk.Menu()
+
+        item_toggle = Gtk.MenuItem(label="Toggle Webcam")
+        item_toggle.connect("activate", self._on_toggle)
+        menu.append(item_toggle)
+
+        menu.append(Gtk.SeparatorMenuItem())
+
+        item_quit = Gtk.MenuItem(label="Quit")
+        item_quit.connect("activate", self._on_quit)
+        menu.append(item_quit)
+
+        menu.show_all()
+        return menu
+
+    # ------------------------------------------------------------------
+    # Callbacks
+    # ------------------------------------------------------------------
+    def _on_activate(self, _icon, _button, _time):
+        """Left-click on the tray icon — start a toggle in a background thread."""
+        thread = threading.Thread(target=self._do_toggle, daemon=True)
+        thread.start()
+
+    def _on_toggle(self, _widget):
+        """Menu item "Toggle Webcam" — same action as left-click."""
+        thread = threading.Thread(target=self._do_toggle, daemon=True)
+        thread.start()
+
+    def _do_toggle(self):
+        """Execute the toggle and schedule UI updates back on the main thread."""
+        try:
+            result = subprocess.run(
+                ["sudo", "webcam-toggle"],
+                capture_output=True,
+                text=True,
+                timeout=10,
+            )
+        except Exception as exc:
+            GLib.idle_add(
+                _notify, "dialog-error", "Webcam Toggle", f"Failed: {exc}"
+            )
+            return
+
+        if result.returncode != 0:
+            msg = result.stderr.strip() or "Unknown error"
+            GLib.idle_add(
+                _notify, "dialog-error", "Webcam Toggle", f"Failed: {msg}"
+            )
+            return
+
+        new_state = result.stdout.strip()
+        if new_state == "on":
+            GLib.idle_add(
+                _notify, ICON_ON, "Webcam Enabled", "The webcam has been enabled."
+            )
+        elif new_state == "off":
+            GLib.idle_add(
+                _notify, ICON_OFF, "Webcam Disabled", "The webcam has been disabled."
+            )
+        else:
+            GLib.idle_add(
+                _notify, "dialog-error", "Webcam Toggle",
+                f"Unexpected: {new_state}",
+            )
+
+        GLib.idle_add(self._refresh_icon)
+
+    def _on_refresh(self, *_args):
+        """Called on SIGUSR1 — update the icon to match the current state."""
+        self._refresh_icon()
+        # Return True to keep the signal handler registered.
+        return True
+
+    @staticmethod
+    def _on_quit(_widget):
+        Gtk.main_quit()
+
+
+def main():
+    _ensure_single_instance()
+    WebcamIndicator()
+    Gtk.main()
+
+
+if __name__ == "__main__":
+    main()
