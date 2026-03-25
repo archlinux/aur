@@ -1,0 +1,24 @@
+pkgbase = qschematic
+	pkgdesc = A library that allows creating diagrams such as flowcharts or even proper engineering schematics within a Qt application
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://github.com/simulton/QSchematic
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = qt6-tools
+	makedepends = pkgconf
+	makedepends = vulkan-headers
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = qt6-base
+	depends = gpds
+	provides = qschematic
+	conflicts = qschematic
+	source = qschematic::git+https://github.com/simulton/QSchematic.git#tag=3.0.2
+	sha256sums = a9e8860b9c026d8e6715c4b127e334f4fe5404df17b45beece20140830b3699c
+
+pkgname = qschematic
