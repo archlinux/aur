@@ -4,7 +4,7 @@ pkgbase=mkdocstrings-python
 _pyname=("${pkgbase//-/_}")
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="A Python handler for mkdocstrings"
 url="https://mkdocstrings.github.io"
@@ -25,14 +25,14 @@ makedepends=('python-pdm-backend'
 #             'mkdocstrings'
 #             )
 checkdepends=('python-pytest'
-              'python-griffe'
+              'python-griffecli'
               'mkdocstrings'
               'python-beautifulsoup4'
               'python-inline-snapshot'
               'mkdocs-material')
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('4a32ccfc4b8d29639864698e81cfeb04137bce76bb9f3c251040f55d4b6e1ad8')
+sha256sums=('c518632751cc869439b31c9d3177678ad2bfa5c21b79b863956ad68fc92c13b8')
 
 #prepare() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
@@ -63,7 +63,7 @@ package_mkdocstrings-python() {
     depends=('python>=3.10'
              'mkdocs-autorefs>=1.4'
              'mkdocstrings>=0.30'
-             'python-griffe>=1.13')
+             'python-griffelib>=2.0')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
