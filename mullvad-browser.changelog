@@ -1,3 +1,17 @@
+Mullvad Browser 15.0.8 - March 24 2026
+ * All Platforms
+   * Updated Firefox to 140.9.0esr
+   * Updated NoScript to 13.6.12.1984
+   * Updated uBlock Origin to 1.70.0
+   * Bug 521: Rebase Mullvad Browser stable onto 140.9.0esr [mullvad-browser]
+   * Bug 44663: NoScript behavior on “Safer” security level prevents integrity checks for dynamically loaded javascript [tor-browser]
+   * Bug 44680: Properly handle subdocuments created by data: URLs [tor-browser]
+   * Bug 44761: Safer Level's worker patching filters out Worker constructor options [tor-browser]
+   * Bug 44784: Backport Security Fixes from Firefox 149 [tor-browser]
+   * Bug 41738: Allow to specify an unsupportedURL on update responses [tor-browser-build]
+ * Linux
+   * Bug 44657: Backport tor-browser#44394: Do not read default prefs from /etc/firefox [tor-browser]
+
 Mullvad Browser 15.0.7 - February 24 2026
  * All Platforms
    * Updated Firefox to 140.8.0esr

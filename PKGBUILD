@@ -1,15 +1,15 @@
 # Maintainer: tarball <bootctl@gmail.com>
 # Contributor: Mark Wagie <mark.wagie@proton.me>
 #
-# Please don't report bugs upstream! Use AUR comments.
-#
 # Fetching the signing key:
 #     https://mullvad.net/en/help/verifying-mullvad-browser-signature
 # If you can't open the page, here's the important line:
 #     gpg --auto-key-locate nodefault,wkd --locate-keys torbrowser@torproject.org
+#
+# Please discuss bugs in AUR comments before reporting them upstream!
 
 pkgname=mullvad-browser-bin
-pkgver=15.0.7
+pkgver=15.0.8
 pkgrel=1
 pkgdesc='Privacy-focused web browser developed by Mullvad VPN and the Tor Project'
 arch=(x86_64)
@@ -77,10 +77,10 @@ validpgpkeys=(
 )
 changelog='mullvad-browser.changelog'
 
-sha256sums=('523d87e8e355a67dc4b7330d97cc6a3807fa51e3ba14600ab721fd0ca87defa5'
+sha256sums=('12ec83c20368544084928ebac459e6b5e54d9cfb27d8f3a55d153d892f553e5a'
             'SKIP'
             '9e1a8b33705972bd372be3af3bdf3039297e6d568e53dcf2e3da03f6f2f2aadd'
-            '9bb24b8e210112b1222d028285c6d68ab599f8382b2b108ab69284948bb4ac70')
+            '6e218bdd9c442143088dec784d898f2668e36ae55f6cde45038408bc2bd59488')
 
 package() {
   local pkg=${pkgname%%-bin}
@@ -95,7 +95,10 @@ package() {
 
   # only owner has access to all files
   chmod --recursive --verbose a+r .
-  find . -executable -execdir chmod --verbose a+x '{}' +
+
+  # mark all files executable by the owner as executable by all users
+  # `-executable` finds nothing on `noexec` filesystems (thank you vesinum@aur)
+  find . -perm -u=x -execdir chmod --verbose a+x '{}' +
 
   # copy files from archive
   install -dvm755 "$pkgdir/opt/$pkg/"
