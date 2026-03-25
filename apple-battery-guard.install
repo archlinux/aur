@@ -1,0 +1,22 @@
+post_install() {
+    echo ""
+    echo "╔══════════════════════════════════════════════════════════════╗"
+    echo "║              apple-battery-guard instalado                   ║"
+    echo "╠══════════════════════════════════════════════════════════════╣"
+    echo "║                                                              ║"
+    echo "║  1. Ativar o serviço de threshold de bateria:               ║"
+    echo "║     sudo systemctl enable --now apple-battery-guard         ║"
+    echo "║                                                              ║"
+    echo "║  2. (Opcional) Setup completo de gestão de energia:         ║"
+    echo "║     Instala auto-cpufreq + mbpfan + tlp com configurações   ║"
+    echo "║     otimizadas para MacBook Intel.                          ║"
+    echo "║                                                              ║"
+    echo "║     sudo apple-battery-guard-setup-power                    ║"
+    echo "║                                                              ║"
+    echo "╚══════════════════════════════════════════════════════════════╝"
+    echo ""
+}
+
+post_upgrade() {
+    post_install
+}
