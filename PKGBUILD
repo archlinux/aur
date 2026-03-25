@@ -2,7 +2,7 @@
 
 pkgname=tkey-ssh-agent
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A ssh-agent for the Tillitis TKey"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/tillitis/${pkgname}"
@@ -32,11 +32,11 @@ package() {
   destunit="${pkgdir}/usr/lib/systemd/user"
   destrules="${pkgdir}/etc/udev/rules.d"
   cd "${srcdir}/${_archive}"
-	install -Dm755 "${pkgname}" "${destbin}/${pkgname}"
-	strip "${destbin}/${pkgname}"
-	install -Dm644 "system/${pkgname}.1" "${destman1}/${pkgname}.1"
-	gzip -n9f "${destman1}/${pkgname}.1"
-	install -Dm644 "system/${pkgname}.service.tmpl" "${destunit}/${pkgname}.service"
-	sed -i -e "s,##BINDIR##,/usr/bin," "${destunit}/${pkgname}.service"
-	install -Dm644 system/60-tkey.rules "${destrules}/60-tkey.rules"
+  install -Dm755 "${pkgname}" "${destbin}/${pkgname}"
+  strip "${destbin}/${pkgname}"
+  install -Dm644 "system/${pkgname}.1" "${destman1}/${pkgname}.1"
+  gzip -n9f "${destman1}/${pkgname}.1"
+  install -Dm644 "system/${pkgname}.service.tmpl" "${destunit}/${pkgname}.service"
+  sed -i -e "s,##BINDIR##,/usr/bin," "${destunit}/${pkgname}.service"
+  install -Dm644 system/60-tkey.rules "${destrules}/60-tkey.rules"
 }
