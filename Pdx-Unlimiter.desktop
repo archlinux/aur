@@ -2,8 +2,8 @@
 Type=Application
 Name=Pdx-Unlimiter
 Comment=A smart savegame manager, editor, and toolbox for all current major Paradox Grand Strategy games.
-TryExec=/opt/pdx-unlimiter/bin/__EXECUTABLE_NAME__
-Exec=/opt/pdx-unlimiter/bin/__EXECUTABLE_NAME__ %U
+TryExec=/opt/pdx-unlimiter/bin/pdx-unlimiter
+Exec=/opt/pdx-unlimiter/bin/pdx-unlimiter %U
 Path=/opt/pdx-unlimiter
 Icon=pdx-unlimiter
 Terminal=false
