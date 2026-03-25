@@ -14,9 +14,8 @@ download-ci-gcc = false
 [build]
 description = "%description%"
 target = [
-  "x86_64-unknown-linux-gnu",
-  "x86_64-unknown-linux-musl",
-  "i686-unknown-linux-gnu",
+  "riscv64gc-unknown-linux-gnu",
+  "riscv64gc-unknown-linux-musl",
   "aarch64-unknown-linux-gnu",
   "aarch64-unknown-linux-musl",
   "wasm32-unknown-unknown",
@@ -69,34 +68,25 @@ parallel-frontend-threads = 0
 compression-formats = ["gz"]
 compression-profile = "fast"
 
-[target.x86_64-unknown-linux-gnu]
+[target.riscv64gc-unknown-linux-gnu]
 llvm-config = "/usr/bin/llvm-config"
-cc = "x86_64-linux-gnu-gcc"
-cxx = "x86_64-linux-gnu-g++"
-ar = "x86_64-linux-gnu-gcc-ar"
-ranlib = "x86_64-linux-gnu-ranlib"
-linker = "x86_64-linux-gnu-gcc"
-default-linker = "x86_64-linux-gnu-gcc"
-optimized-compiler-builtins = "%clangdir%/lib/linux/libclang_rt.builtins-x86_64.a"
+cc = "riscv64-linux-gnu-gcc"
+cxx = "riscv64-linux-gnu-g++"
+ar = "riscv64-linux-gnu-gcc-ar"
+ranlib = "riscv64-linux-gnu-ranlib"
+linker = "riscv64-linux-gnu-gcc"
+default-linker = "riscv64-linux-gnu-gcc"
+optimized-compiler-builtins = "%clangdir%/lib/linux/libclang_rt.builtins-riscv64.a"
 
-[target.x86_64-unknown-linux-musl]
+[target.riscv64gc-unknown-linux-musl]
 musl-root = "/usr/lib/musl"
-cc = "x86_64-linux-musl-gcc"
-cxx = "x86_64-linux-gnu-g++"
-ar = "x86_64-linux-gnu-gcc-ar"
-ranlib = "x86_64-linux-gnu-ranlib"
-linker = "x86_64-linux-gnu-gcc"
-default-linker = "x86_64-linux-gnu-gcc"
+cc = "riscv64-linux-musl-gcc"
+cxx = "riscv64-linux-gnu-g++"
+ar = "riscv64-linux-gnu-gcc-ar"
+ranlib = "riscv64-linux-gnu-ranlib"
+linker = "riscv64-linux-gnu-gcc"
+default-linker = "riscv64-linux-gnu-gcc"
 sanitizers = false
-
-[target.i686-unknown-linux-gnu]
-cc = "x86_64-linux-gnu-gcc"
-cxx = "x86_64-linux-gnu-g++"
-ar = "x86_64-linux-gnu-gcc-ar"
-ranlib = "x86_64-linux-gnu-ranlib"
-linker = "x86_64-linux-gnu-gcc"
-default-linker = "x86_64-linux-gnu-gcc"
-optimized-compiler-builtins = "%clangdir%/lib/linux/libclang_rt.builtins-i386.a"
 
 [target.aarch64-unknown-linux-gnu]
 cc = "aarch64-linux-gnu-gcc"

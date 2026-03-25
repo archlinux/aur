@@ -1,0 +1,75 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <heftig@archlinux.org>
+Date: Sat, 4 Jan 2025 06:52:13 +0100
+Subject: [PATCH] compiler: Use target-specific GCC linkers
+
+Otherwise it defaults to 'cc', which is inappropriate when we're
+cross-compiling.
+---
+ .../rustc_target/src/spec/targets/aarch64_unknown_linux_gnu.rs   | 1 +
+ .../rustc_target/src/spec/targets/aarch64_unknown_linux_musl.rs  | 1 +
+ compiler/rustc_target/src/spec/targets/i686_unknown_linux_gnu.rs | 1 +
+ .../rustc_target/src/spec/targets/x86_64_unknown_linux_gnu.rs    | 1 +
+ .../rustc_target/src/spec/targets/x86_64_unknown_linux_musl.rs   | 1 +
+ 5 files changed, 5 insertions(+)
+
+diff --git a/compiler/rustc_target/src/spec/targets/aarch64_unknown_linux_gnu.rs b/compiler/rustc_target/src/spec/targets/aarch64_unknown_linux_gnu.rs
+index f7e1cbfac263..1e6defa84d96 100644
+--- a/compiler/rustc_target/src/spec/targets/aarch64_unknown_linux_gnu.rs
++++ b/compiler/rustc_target/src/spec/targets/aarch64_unknown_linux_gnu.rs
+@@ -33,6 +33,7 @@ pub(crate) fn target() -> Target {
+                 | SanitizerSet::HWADDRESS
+                 | SanitizerSet::REALTIME,
+             supports_xray: true,
++            linker: Some("aarch64-linux-gnu-gcc".into()),
+             ..base::linux_gnu::opts()
+         },
+     }
+diff --git a/compiler/rustc_target/src/spec/targets/aarch64_unknown_linux_musl.rs b/compiler/rustc_target/src/spec/targets/aarch64_unknown_linux_musl.rs
+index 6ba5112342c3..a2c034eee3b6 100644
+--- a/compiler/rustc_target/src/spec/targets/aarch64_unknown_linux_musl.rs
++++ b/compiler/rustc_target/src/spec/targets/aarch64_unknown_linux_musl.rs
+@@ -13,6 +13,7 @@ pub(crate) fn target() -> Target {
+         | SanitizerSet::LEAK
+         | SanitizerSet::MEMORY
+         | SanitizerSet::THREAD;
++    base.linker = Some("aarch64-linux-gnu-gcc".into());
+ 
+     // FIXME(compiler-team#422): musl targets should be dynamically linked by default.
+     base.crt_static_default = true;
+diff --git a/compiler/rustc_target/src/spec/targets/i686_unknown_linux_gnu.rs b/compiler/rustc_target/src/spec/targets/i686_unknown_linux_gnu.rs
+index 7137a3ac9de1..7818523c7cd0 100644
+--- a/compiler/rustc_target/src/spec/targets/i686_unknown_linux_gnu.rs
++++ b/compiler/rustc_target/src/spec/targets/i686_unknown_linux_gnu.rs
+@@ -22,6 +22,7 @@ pub(crate) fn target() -> Target {
+     base.supported_sanitizers = SanitizerSet::ADDRESS;
+     base.add_pre_link_args(LinkerFlavor::Gnu(Cc::Yes, Lld::No), &["-m32"]);
+     base.stack_probes = StackProbeType::Inline;
++    base.linker = Some("x86_64-linux-gnu-gcc".into());
+ 
+     Target {
+         llvm_target: "i686-pc-linux-gnu".into(),
+diff --git a/compiler/rustc_target/src/spec/targets/x86_64_unknown_linux_gnu.rs b/compiler/rustc_target/src/spec/targets/x86_64_unknown_linux_gnu.rs
+index dea63ac7d5b8..96c4df7d8c09 100644
+--- a/compiler/rustc_target/src/spec/targets/x86_64_unknown_linux_gnu.rs
++++ b/compiler/rustc_target/src/spec/targets/x86_64_unknown_linux_gnu.rs
+@@ -20,6 +20,7 @@ pub(crate) fn target() -> Target {
+         | SanitizerSet::THREAD
+         | SanitizerSet::REALTIME;
+     base.supports_xray = true;
++    base.linker = Some("x86_64-linux-gnu-gcc".into());
+ 
+     Target {
+         llvm_target: "x86_64-pc-linux-gnu".into(),
+diff --git a/compiler/rustc_target/src/spec/targets/x86_64_unknown_linux_musl.rs b/compiler/rustc_target/src/spec/targets/x86_64_unknown_linux_musl.rs
+index ee883532ad4a..48d93be61b66 100644
+--- a/compiler/rustc_target/src/spec/targets/x86_64_unknown_linux_musl.rs
++++ b/compiler/rustc_target/src/spec/targets/x86_64_unknown_linux_musl.rs
+@@ -18,6 +18,7 @@ pub(crate) fn target() -> Target {
+     base.supports_xray = true;
+     // FIXME(compiler-team#422): musl targets should be dynamically linked by default.
+     base.crt_static_default = true;
++    base.linker = Some("x86_64-linux-gnu-gcc".into());
+ 
+     Target {
+         llvm_target: "x86_64-unknown-linux-musl".into(),

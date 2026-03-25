@@ -2,11 +2,14 @@
 profile = "dist"
 
 # see src/bootstrap/src/utils/change_tracker.rs
-change-id = 147888
+change-id = 148671
 
 [llvm]
 download-ci-llvm = false
 link-shared = true
+
+[gcc]
+download-ci-gcc = false
 
 [build]
 description = "%description%"
@@ -64,70 +67,74 @@ compression-formats = ["gz"]
 compression-profile = "fast"
 
 [target.aarch64-unknown-linux-gnu]
-cc = "/usr/bin/gcc"
-cxx = "/usr/bin/g++"
-ar = "/usr/bin/gcc-ar"
-ranlib = "/usr/bin/gcc-ranlib"
 llvm-config = "/usr/bin/llvm-config"
+cc = "aarch64-linux-gnu-gcc"
+cxx = "aarch64-linux-gnu-g++"
+ar = "aarch64-linux-gnu-gcc-ar"
+ranlib = "aarch64-linux-gnu-gcc-ranlib"
+linker = "aarch64-linux-gnu-gcc"
+default-linker = "aarch64-linux-gnu-gcc"
 optimized-compiler-builtins = "%clangdir%/lib/linux/libclang_rt.builtins-aarch64.a"
 
 [target.aarch64-unknown-linux-musl]
-cc = "/usr/bin/musl-gcc"
-cxx = "/usr/bin/g++"
-ar = "/usr/bin/gcc-ar"
-ranlib = "/usr/bin/gcc-ranlib"
-sanitizers = false
 musl-root = "/usr/lib/musl"
+cc = "aarch64-linux-musl-gcc"
+cxx = "aarch64-linux-gnu-g++"
+ar = "aarch64-linux-gnu-gcc-ar"
+ranlib = "aarch64-linux-gnu-gcc-ranlib"
+linker = "aarch64-linux-gnu-gcc"
+default-linker = "aarch64-linux-gnu-gcc"
+sanitizers = false
 
 [target.wasm32-unknown-unknown]
-cc = "/usr/bin/clang"
-cxx = "/usr/bin/clang++"
-ar = "/usr/bin/llvm-ar"
-ranlib = "/usr/bin/llvm-ranlib"
-linker = "/usr/bin/wasm-ld"
+cc = "clang"
+cxx = "clang++"
+ar = "llvm-ar"
+ranlib = "llvm-ranlib"
+linker = "wasm-ld"
 default-linker = "wasm-ld"
 sanitizers = false
 profiler = false
 
 [target.wasm32v1-none]
-cc = "/usr/bin/clang"
-cxx = "/usr/bin/clang++"
-ar = "/usr/bin/llvm-ar"
-ranlib = "/usr/bin/llvm-ranlib"
-linker = "/usr/bin/wasm-ld"
+cc = "clang"
+cxx = "clang++"
+ar = "llvm-ar"
+ranlib = "llvm-ranlib"
+linker = "wasm-ld"
 default-linker = "wasm-ld"
 sanitizers = false
 profiler = false
 
 [target.wasm32-wasip1]
-cc = "/usr/bin/clang"
-cxx = "/usr/bin/clang++"
-ar = "/usr/bin/llvm-ar"
-ranlib = "/usr/bin/llvm-ranlib"
-linker = "/usr/bin/wasm-ld"
+wasi-root = "/usr/share/wasi-sysroot"
+cc = "clang"
+cxx = "clang++"
+ar = "llvm-ar"
+ranlib = "llvm-ranlib"
+linker = "wasm-ld"
 default-linker = "wasm-ld"
 sanitizers = false
 profiler = false
-wasi-root = "/usr/share/wasi-sysroot"
 
 [target.wasm32-wasip1-threads]
-cc = "/usr/bin/clang"
-cxx = "/usr/bin/clang++"
-ar = "/usr/bin/llvm-ar"
-ranlib = "/usr/bin/llvm-ranlib"
-linker = "/usr/bin/wasm-ld"
+wasi-root = "/usr/share/wasi-sysroot"
+cc = "clang"
+cxx = "clang++"
+ar = "llvm-ar"
+ranlib = "llvm-ranlib"
+linker = "wasm-ld"
 default-linker = "wasm-ld"
 sanitizers = false
 profiler = false
-wasi-root = "/usr/share/wasi-sysroot"
 
 [target.wasm32-wasip2]
-cc = "/usr/bin/clang"
-cxx = "/usr/bin/clang++"
-ar = "/usr/bin/llvm-ar"
-ranlib = "/usr/bin/llvm-ranlib"
-linker = "/usr/bin/wasm-ld"
+wasi-root = "/usr/share/wasi-sysroot"
+cc = "clang"
+cxx = "clang++"
+ar = "llvm-ar"
+ranlib = "llvm-ranlib"
+linker = "wasm-ld"
 default-linker = "wasm-ld"
 sanitizers = false
 profiler = false
-wasi-root = "/usr/share/wasi-sysroot"
