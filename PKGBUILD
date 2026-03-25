@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/nitinbhat972/cwal"
 license=('GPL3')
 depends=('imagemagick' 'libimagequant' 'lua')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'pkgconf')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+${url}.git#branch=main")
