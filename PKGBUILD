@@ -2,12 +2,12 @@
 
 _plugin=frameprops-extended
 pkgname=vsview-${_plugin}
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.1.5
+pkgrel=1
 pkgdesc="A vsview plugin adding more categories and formatters to the built-in vsview frameprops tool"
 arch=("x86_64")
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
-license=("EUPL-1.2")
+license=("MIT")
 depends=(
     "vsview"
 )
