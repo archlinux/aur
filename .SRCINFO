@@ -1,6 +1,6 @@
 pkgbase = metropolis
-	pkgdesc = A cinematic, retro-cyberpunk system monitor for the terminal powered by Rust.
-	pkgver = 0.1.0
+	pkgdesc = The cyberpunk system monitor for your terminal.
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/5c0/metropolis
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = metropolis
 	makedepends = cargo
 	depends = gcc-libs
 	options = !debug
-	source = metropolis-0.1.0.tar.gz::https://github.com/5c0/metropolis/archive/refs/tags/v0.1.0.tar.gz
-	sha256sums = SKIP
+	source = metropolis-0.1.2.tar.gz::https://github.com/5c0/metropolis/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = b6d624b769ad4bd7e5c672e0db4da3879f2da2b17ab5c788895e18e2cbbcd054
 
 pkgname = metropolis
