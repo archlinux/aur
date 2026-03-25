@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Rustify
+Comment=A modern YouTube music player built with Tauri and Rust
+Exec=rustify
+Icon=rustify
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;Music;Player;
+Keywords=YouTube;Music;Player;Tauri;
+MimeType=x-scheme-handler/rustify;
+StartupWMClass=rustify
