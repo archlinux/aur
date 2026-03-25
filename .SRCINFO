@@ -1,0 +1,16 @@
+pkgbase = larp-fetch-git
+	pkgdesc = Neofetch-adjacent Python CLI powered by fastfetch with selectable ASCII logos
+	pkgver = r1.0
+	pkgrel = 1
+	url = https://github.com/LARPMASTERR/LarpFetch
+	arch = any
+	license = custom
+	makedepends = git
+	depends = python
+	depends = fastfetch
+	provides = larp-fetch
+	conflicts = larp-fetch
+	source = git+https://github.com/LARPMASTERR/LarpFetch.git
+	sha256sums = SKIP
+
+pkgname = larp-fetch-git
