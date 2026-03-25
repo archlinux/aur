@@ -28,13 +28,15 @@ package() {
 	ln -s "/opt/${pkgname}/bin/nsys" "${pkgdir}/usr/bin/nsys"
 	ln -s "/opt/${pkgname}/bin/nsys-ui" "${pkgdir}/usr/bin/nsys-ui"
 
+	install -Dm644 host-linux-x64/nsys-ui.png "${pkgdir}/usr/share/pixmaps/nsight-systems.png"
+
 	install -dm755 "${pkgdir}/usr/share/applications"
 	cat > "${pkgdir}/usr/share/applications/nsight-systems.desktop" << 'EOF'
 [Desktop Entry]
 Name=NVIDIA Nsight Systems
 Comment=System-wide performance analysis tool
 Exec=/opt/nvidia-nsight-systems-bin/bin/nsys-ui
-Icon=/opt/nvidia-nsight-systems-bin/host-linux-x64/Plugins/platformThemes/libqxdgdesktopportal.so
+Icon=nsight-systems
 Terminal=false
 Type=Application
 Categories=Development;Profiling;
