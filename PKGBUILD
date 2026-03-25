@@ -5,7 +5,7 @@
 pkgname=ergochat
 _upstream_pkgname=ergo
 pkgver=2.18.0
-pkgrel=3
+pkgrel=4
 _pkgfeatures="i18n mysql postgresql sqlite"
 pkgdesc="A modern IRC server written in Go"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -14,6 +14,7 @@ license=('MIT')
 install=install
 depends=('glibc')
 optdepends=('ergochat-ldap: LDAP authentication support'
+            'ergochat-dnsbl: DNSBL filtering'
             'mariadb: MariaDB backend for history storage'
             'sqlite: SQLite backend for history storage'
             'postgresql: PostgreSQL backend for history storage'

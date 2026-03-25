@@ -1,7 +1,7 @@
 pkgbase = ergochat
 	pkgdesc = A modern IRC server written in Go
 	pkgver = 2.18.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ergochat/ergo
 	install = install
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = ergochat
 	makedepends = git
 	depends = glibc
 	optdepends = ergochat-ldap: LDAP authentication support
+	optdepends = ergochat-dnsbl: DNSBL filtering
 	optdepends = mariadb: MariaDB backend for history storage
 	optdepends = sqlite: SQLite backend for history storage
 	optdepends = postgresql: PostgreSQL backend for history storage
