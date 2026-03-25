@@ -3,16 +3,20 @@
 _name="ondk"
 _pkgname="android-${_name}"
 pkgname="${_pkgname}-bin"
-pkgver=r29.3
+pkgver=r29.6
 pkgrel=1
 pkgdesc="Oxidized NDK - NDK repackaged with Rust toolchain"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://github.com/topjohnwu/${_name}"
-license=('Apache-2.0')
+license=(
+  'Apache-2.0'
+)
 depends=(
   'bash'
-  'gcc-libs'
   'glibc'
+  'libgcc'
   'zlib'
 )
 optdepends=(
@@ -35,9 +39,11 @@ options=(
   '!strip'
   '!debug'
 )
-source_x86_64=("${_pkgname}-${pkgver}-x86_64.tar.xz::${url}/releases/download/${pkgver}/${_name}-${pkgver}-linux.tar.xz")
-sha256sums_x86_64=('8a31e125032e915c64fb764fb62d3086adcdc985570ea1ea91a010711e96f769')
-b2sums_x86_64=('a4e8f35e3c61adc6a7a4604f200631774edbe91c233fb111998aa6c03dba860800d5014e9e127b015277bcecd06660ab00a97b9a7173fcec16e9391a9b186a3d')
+source_x86_64=(
+  "${_pkgname}-${pkgver}-x86_64.tar.xz::${url}/releases/download/${pkgver}/${_name}-${pkgver}-linux.tar.xz"
+)
+sha256sums_x86_64=('4217061bf81da89681a557fcb93b49bcc36ae5ae5cc4a9d2944d54e4cadd2a1d')
+b2sums_x86_64=('5fa0f1148a70653bef33a90c2319fe19245cacaa09ea3c44efd4687cb5c321e4fa8e2ea272a39627f8a66e59f8bfd82340213b46ce1d298cb106db5d568d544e')
 
 package() {
   cd "${srcdir}"
