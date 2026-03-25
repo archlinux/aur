@@ -1,0 +1,16 @@
+pkgbase = mingw-w64-sdl3_ttf
+	pkgdesc = A library that allows you to use TrueType fonts in your SDL applications (Version 3) (mingw-w64)
+	pkgver = 3.2.2
+	pkgrel = 1
+	url = https://github.com/libsdl-org/SDL_ttf
+	arch = any
+	license = Zlib
+	makedepends = mingw-w64-cmake
+	depends = mingw-w64-sdl3
+	options = staticlibs
+	options = !strip
+	options = !buildflags
+	source = https://github.com/libsdl-org/SDL_ttf/releases/download/release-3.2.2/SDL3_ttf-3.2.2.tar.gz
+	sha256sums = 63547d58d0185c833213885b635a2c0548201cc8f301e6587c0be1a67e1e045d
+
+pkgname = mingw-w64-sdl3_ttf
