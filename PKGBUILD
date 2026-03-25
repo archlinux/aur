@@ -3,7 +3,7 @@
 
 pkgname=torrent-file-editor
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt based GUI tool designed to create and edit .torrent files'
 arch=('x86_64')
 url="https://${pkgname}.github.io/"
@@ -20,11 +20,11 @@ makedepends=('cmake')
 _buildflags=()
 
 if [[ -v 'QT5_BUILD' ]]; then
-    depends+=('qt5-base')
+    depends+=('qt5-base' 'qt5-svg')
     makedepends+=('qt5-tools')
     _buildflags+=('QT6_BUILD=OFF' 'QT5_BUILD=ON')
 else
-    depends+=('qt6-base' 'qt6-5compat')
+    depends+=('qt6-base' 'qt6-5compat' 'qt6-svg')
     makedepends+=('qt6-tools')
     _buildflags+=('QT6_BUILD=ON' 'QT5_BUILD=OFF')
 fi
