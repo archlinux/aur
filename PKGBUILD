@@ -5,7 +5,7 @@
 
 pkgname=doomrunner
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern preset-oriented graphical launcher of ZDoom and derivatives"
 arch=('x86_64')
 url="https://github.com/Youda008/DoomRunner"
