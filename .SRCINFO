@@ -1,0 +1,24 @@
+pkgbase = localwp
+	pkgdesc = The #1 local WordPress development tool. (Official .rpm repack)
+	pkgver = 10.0.0
+	pkgrel = 1
+	url = https://localwp.com/
+	arch = x86_64
+	license = custom:proprietary
+	depends = libxcrypt-compat
+	depends = numactl
+	depends = ncurses5-compat-libs
+	depends = libaio
+	depends = gtk3
+	depends = nss
+	depends = libjpeg-turbo
+	depends = libxss
+	depends = libxslt
+	provides = local-by-flywheel-bin
+	conflicts = local-by-flywheel-bin
+	options = !strip
+	options = emptydirs
+	source = local-10.0.0-linux.rpm::https://cdn.localwp.com/releases-stable/10.0.0+6907/local-10.0.0-linux.rpm
+	sha1sums = b0bd84bc8daca147a275ff659c783ba261299755
+
+pkgname = localwp
