@@ -1,9 +1,9 @@
 # Maintainer: Shirow MIURA <shirowmiura at gmail dot com>
 
 pkgname=deltacp
-pkgver=0.1.0
-pkgrel=3
-pkgdesc="A copy tool designed for incremental backup of block devices by utilizing reflink (CoW)"
+pkgver=0.1.1
+pkgrel=1
+pkgdesc="A copy tool designed for incremental backup of block device by utilizing reflink (CoW)"
 url="https://codeberg.org/sharow/deltacp"
 license=('MIT')
 depends=('xxhash')
@@ -14,11 +14,11 @@ optdepends=(
 )
 options=(zipman !debug)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('a42cfa92b9163c8c0d17343ba54a54af7c9202e50b94a6a3faae1aa6cb1b6cba')
+sha256sums=('a9cf8b8bbb5d3604bf0723f24a57e845a1b98812131627839d6abdbe2ec95af9')
 
 build() {
     cd "${srcdir}/${pkgname}"
-    make
+    make all
 }
 
 package() {
