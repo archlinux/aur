@@ -4,8 +4,8 @@
 # Contributor: Cassidy Wilson <cassidywilson at mailbox dot org>	
 
 pkgname=doomrunner
-pkgver=1.9.1
-pkgrel=2
+pkgver=1.9.2
+pkgrel=1
 pkgdesc="Modern preset-oriented graphical launcher of ZDoom and derivatives"
 arch=('x86_64')
 url="https://github.com/Youda008/DoomRunner"
@@ -14,7 +14,7 @@ depends=('qt6-base')
 makedepends=('git' 'gcc')
 backup=('opt/DoomRunner')
 source=("DoomRunner-${pkgver}.tar.gz::https://github.com/Youda008/DoomRunner/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('94184e01b174c95aba3a908a0069ec24')
+md5sums=('9e347c8ce7655a5d95c1be5a23533d5e')
 
 build() {
     mkdir -p "${srcdir}/DoomRunner-${pkgver}/build-dynamic"
