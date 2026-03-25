@@ -16,9 +16,9 @@ arch=('x86_64')
 url="" 
 license=('MIT')
 depends=('pam')
-sha256sums=('6dc94b6e9f7d9170737df7d0ba65ee0308a263ecb8150c949047428371'
-            '146e04aa05345680dd6c220630390432bf45009fcf94a347131d9c3118'
-            'dc17b21c82ef63f4351cb66b8f1a3324843eef82404790773796c1f1ac')
+sha256sums=('6dc94b6e9f7d9170737df7d0ba65ee0308a263ecb8150c949047428371dee8a8'
+            '146e04aa05345680dd6c220630390432bf45009fcf94a347131d9c311875027e'
+            'dc17b21c82ef63f4351cb66b8f1a3324843eef82404790773796c1f1ac6aefa3')
 source=("yt.c" "yt.cfg" "yt.pam")
 install=ekipyt.install
 
