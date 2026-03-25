@@ -1,0 +1,17 @@
+pkgbase = hue-cli-git
+	pkgdesc = A CLI tool for controlling Philips Hue lights from the terminal
+	pkgver = r8.b6a2eb4
+	pkgrel = 1
+	url = https://github.com/LucasionGS/hue-cli
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = go
+	makedepends = git
+	provides = hue-cli
+	conflicts = hue-cli
+	source = hue-cli-git::git+https://github.com/LucasionGS/hue-cli.git
+	sha256sums = SKIP
+
+pkgname = hue-cli-git
