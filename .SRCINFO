@@ -1,12 +1,11 @@
 pkgbase = zephyr-sdk-gnu-mips-zephyr-elf-bin
 	pkgdesc = SDK for Zephyr real-time operating system
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.zephyrproject.org/
 	arch = x86_64
 	arch = aarch64
 	license = Apache
-	conflicts = zephyr-sdk
 	options = !strip
 	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_mips-zephyr-elf.tar.xz
 	sha256sums_x86_64 = 711236aada9b153f4fc62d971206915a513913347b235062f24a6935e59419f3
