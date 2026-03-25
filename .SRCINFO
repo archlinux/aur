@@ -21,6 +21,6 @@ pkgbase = cmux-gtk
 	conflicts = cmux
 	conflicts = cmux-git
 	source = cmux-gtk-0.62.0-alpha.9.tar.gz::https://github.com/douglas/cmux-gtk/archive/v0.62.0-alpha.9.tar.gz
-	sha256sums = aedc3f1e49ab18cbe40c5bdcedf85e018d3ebf53dcf4433bed5f3b83e62b9341
+	sha256sums = 1c58dcf3fb80c3bf192996646809eb4a6adf4b555445fefbf16b17ade7b2e5ff
 
 pkgname = cmux-gtk
