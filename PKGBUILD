@@ -7,13 +7,19 @@ pkgdesc='Track, sync, and reproduce your software environment across Linux, macO
 arch=('x86_64' 'aarch64')
 url='https://github.com/ks1686/genv'
 license=('MIT')
-source_x86_64=("https://github.com/ks1686/genv/releases/download/v${pkgver}/genv_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('23eba219410f3d4408dff922f5af54d22c740eb749b228a134c6404a22b0f867')
-source_aarch64=("https://github.com/ks1686/genv/releases/download/v${pkgver}/genv_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('d4b0d016d84d5a0d7bc52c5c27d49109ccd00682f0b7f7d15b556bba305d4510')
+makedepends=('go')
+conflicts=('genv-bin')
+source=("genv-${pkgver}.tar.gz::https://github.com/ks1686/genv/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('f25d598c356f65f05171fcd6e6029e7066012df8b0edb8bec5dad7043f64a89d')
+
+build() {
+	cd "genv-${pkgver}"
+	go build -trimpath -ldflags "-s -w -X main.version=${pkgver}" -o genv .
+}
 
 package() {
-	install -Dm755 "./genv" "${pkgdir}/usr/bin/genv"
+	cd "genv-${pkgver}"
+	install -Dm755 genv "${pkgdir}/usr/bin/genv"
 	install -Dm644 "completions/genv.zsh"  "${pkgdir}/usr/share/zsh/site-functions/_genv"
 	install -Dm644 "completions/genv.bash" "${pkgdir}/usr/share/bash-completion/completions/genv"
 	install -Dm644 "completions/genv.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/genv.fish"

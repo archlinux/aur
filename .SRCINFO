@@ -6,9 +6,9 @@ pkgbase = genv
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	source_x86_64 = https://github.com/ks1686/genv/releases/download/v2.0.1/genv_2.0.1_linux_amd64.tar.gz
-	sha256sums_x86_64 = 23eba219410f3d4408dff922f5af54d22c740eb749b228a134c6404a22b0f867
-	source_aarch64 = https://github.com/ks1686/genv/releases/download/v2.0.1/genv_2.0.1_linux_arm64.tar.gz
-	sha256sums_aarch64 = d4b0d016d84d5a0d7bc52c5c27d49109ccd00682f0b7f7d15b556bba305d4510
+	makedepends = go
+	conflicts = genv-bin
+	source = genv-2.0.1.tar.gz::https://github.com/ks1686/genv/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = f25d598c356f65f05171fcd6e6029e7066012df8b0edb8bec5dad7043f64a89d
 
 pkgname = genv
