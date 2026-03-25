@@ -2,7 +2,7 @@
 # Maintainer: Split174 <no-reply@aur.archlinux.org>
 
 pkgname='secure-keepass-fuse-bin'
-pkgver=0.0.3
+pkgver=v0.0.3
 pkgrel=1
 pkgdesc='Mounts attachments as fuse-filesystem (Binary)'
 url='https://github.com/Split174/secure-keepass-fuse'
