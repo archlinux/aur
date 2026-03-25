@@ -1,7 +1,7 @@
 pkgbase = just-talk-bin
 	pkgdesc = Speech recognition app with global hotkey support
-	pkgver = 1.0.7
-	pkgrel = 2
+	pkgver = 1.0.8
+	pkgrel = 1
 	url = https://github.com/whoamihappyhacking/just-talk
 	arch = x86_64
 	license = GPL-3.0-or-later
@@ -11,10 +11,10 @@ pkgbase = just-talk-bin
 	conflicts = just-talk-git
 	options = !debug
 	options = !strip
-	source = just-talk-1.0.7-x86_64.AppImage::https://github.com/whoamihappyhacking/just-talk/releases/download/v1.0.7/just-talk-1.0.7-x86_64.AppImage
-	source = icon.png::https://raw.githubusercontent.com/whoamihappyhacking/just-talk/v1.0.7/icon.png
-	source = just-talk.desktop::https://raw.githubusercontent.com/whoamihappyhacking/just-talk/v1.0.7/just-talk.desktop
-	sha256sums = c643e5ea27eb5c017d0f7482105f682c472cae92d9214814b90e6aa4104db204
+	source = just-talk-1.0.8-x86_64.AppImage::https://github.com/whoamihappyhacking/just-talk/releases/download/v1.0.8/just-talk-1.0.8-x86_64.AppImage
+	source = icon.png::https://raw.githubusercontent.com/whoamihappyhacking/just-talk/v1.0.8/icon.png
+	source = just-talk.desktop::https://raw.githubusercontent.com/whoamihappyhacking/just-talk/v1.0.8/just-talk.desktop
+	sha256sums = 4c848de802df2793b48f700bae1ad44e64cf0e06f63962f7e3840deede5045e0
 	sha256sums = SKIP
 	sha256sums = SKIP
 

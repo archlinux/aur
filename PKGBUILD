@@ -1,6 +1,6 @@
 pkgname=just-talk-bin
-pkgver=1.0.7
-pkgrel=2
+pkgver=1.0.8
+pkgrel=1
 pkgdesc="Speech recognition app with global hotkey support"
 arch=('x86_64')
 url="https://github.com/whoamihappyhacking/just-talk"
@@ -16,7 +16,7 @@ source=(
   "just-talk.desktop::https://raw.githubusercontent.com/whoamihappyhacking/just-talk/v${pkgver}/just-talk.desktop"
 )
 sha256sums=(
-  'c643e5ea27eb5c017d0f7482105f682c472cae92d9214814b90e6aa4104db204'
+  '4c848de802df2793b48f700bae1ad44e64cf0e06f63962f7e3840deede5045e0'
   'SKIP'
   'SKIP'
 )
