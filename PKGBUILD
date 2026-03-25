@@ -2,7 +2,7 @@
 
 _name=lightmotif
 pkgname=python-${_name}
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="PyO3 bindings and Python interface to lightmotif, a library for platform-accelerated biological motif scanning using position weight matrices."
 url="https://github.com/althonos/lightmotif"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'cargo')
 depends=('python')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
 noextract=()
-sha256sums=(c4bd28f381fa64dfc84de0abfa690f5df2d9f7c50fd8f5d7bdf40ab702eaefc2)
+sha256sums=(21728515d4340bf3802d38e9a34c4352b2710ce64eb65f58052a60c826095b77)
 
 prepare() {
     cargo fetch --manifest-path "${srcdir}/${_name}-${pkgver}/lightmotif-py/Cargo.toml" --target "$CARCH-unknown-linux-gnu"
