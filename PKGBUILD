@@ -1,6 +1,6 @@
 # Maintainer: moreiramelo
 pkgname=apple-battery-guard
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Intelligent battery charge threshold manager for MacBooks on Linux"
 arch=('x86_64')
@@ -17,7 +17,7 @@ optdepends=(
 backup=('etc/apple-battery-guard/apple-battery-guard.toml')
 install=apple-battery-guard.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0f8320730e8075c524495e1a23e6c7dc7d0dde7eb251725072b7a3e21436a4db')
+sha256sums=('96b7e740b6b60a9c0696e52cbf1b326337416f37fd4bbbe67eaa13f9c7ba54db')
 
 build() {
     cd "$pkgname-$pkgver"
