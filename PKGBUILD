@@ -3,7 +3,7 @@
 pkgname=ani2xcursor-bin
 _pkgname=ani2xcursor
 pkgver=1.4.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Convert Windows animated cursor themes to Linux Xcursor format (prebuilt binary)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/yuzujr/ani2xcursor"
@@ -12,6 +12,7 @@ depends=(
   'glibc'
   'fuse2'
 )
+options=('!strip' '!debug')
 
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
