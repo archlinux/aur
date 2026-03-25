@@ -2,12 +2,12 @@
 
 pkgname=python-inspice
 _name=${pkgname#python-}
-pkgver=1.6.4.4
+pkgver=1.7.0.1
 pkgrel=1
 epoch=
 pkgdesc="Python interface to Ngspice and Xyce circuit simulators (forked from InSpice)"
 arch=('any')
-url="https://pypi.org/project/${_name}"
+url="https://github.com/insim-ai/InSpice"
 license=(AGPL-3.0-or-later)
 groups=()
 provides=(${pkgname})
@@ -29,6 +29,7 @@ depends=(
     python-diskcache
 )
 makedepends=(
+    git
     python-build
     python-installer
     python-wheel
@@ -36,17 +37,21 @@ makedepends=(
 )
 optdepends=()
 options=('!strip' '!debug')
-source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("${_name}::git+${url}.git#tag=v$pkgver")
 noextract=()
-sha256sums=('2201ef9b0a91e290cf46ad7be35999d2c82b75b46fd4f34a73c6dba559b1a01e')
+sha256sums=('ebdc9577298679fa7536a83b7adb88290d17c368b606e5c18849d3508afbd43c')
+
+prepare() {
+    git -C "${srcdir}/${_name}" clean -dfx
+}
 
 build() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}"
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd "${srcdir}/${_name}-${pkgver}"
+    cd "${srcdir}/${_name}"
     python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm0644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
