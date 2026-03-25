@@ -1,6 +1,6 @@
 pkgbase = piperig-bin
 	pkgdesc = Declarative pipeline runner for shell scripts. Define steps, params, and loops in YAML — piperig expands and executes.
-	pkgver = 0.3.0
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/joarhal/piperig
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = piperig-bin
 	license = MIT
 	provides = piperig
 	conflicts = piperig
-	source_x86_64 = piperig-x86_64-0.3.0.tgz::https://github.com/joarhal/piperig/releases/download/v0.3.0/piperig_0.3.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = 5c5502a580f4ccfbb91abcd782385145289c66c79e336a1b594c78e11d128595
-	source_aarch64 = piperig-aarch64-0.3.0.tgz::https://github.com/joarhal/piperig/releases/download/v0.3.0/piperig_0.3.0_linux_arm64.tar.gz
-	sha256sums_aarch64 = d58441eb12c39d9810634348a0ffe6e25bdc8e8f7d44695ce2e2c747a1eb5513
+	source_x86_64 = piperig-x86_64-0.3.1.tgz::https://github.com/joarhal/piperig/releases/download/v0.3.1/piperig_0.3.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = d1df6319032389867e7069fc138dbcbb8b83e703ad2c789c98e807727079388e
+	source_aarch64 = piperig-aarch64-0.3.1.tgz::https://github.com/joarhal/piperig/releases/download/v0.3.1/piperig_0.3.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = db6642decd61d2efc585a0b6b5b896da4597968a5fcbcff098d9e1150c851c8e
 
 pkgname = piperig-bin
