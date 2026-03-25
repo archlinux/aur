@@ -1,3 +1,6 @@
 [godot32]
 source = "git"
 git = "https://github.com/godotengine/godot.git"
+include_regex = '.*-stable'
+from_pattern = '(.*)-stable$'
+to_pattern = '\1'
