@@ -8,9 +8,9 @@ arch=('x86_64' 'aarch64')
 url='https://github.com/ks1686/genv'
 license=('MIT')
 source_x86_64=("https://github.com/ks1686/genv/releases/download/v${pkgver}/genv_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('6274deff0d96384861f671f3086d0804f4c03d64a59762d727e0474d96925a39')
+sha256sums_x86_64=('23eba219410f3d4408dff922f5af54d22c740eb749b228a134c6404a22b0f867')
 source_aarch64=("https://github.com/ks1686/genv/releases/download/v${pkgver}/genv_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('1a18c94e11f50d221cdb84a153cbf2b7058d8d0c9c1ed099137ce171d1167e56')
+sha256sums_aarch64=('d4b0d016d84d5a0d7bc52c5c27d49109ccd00682f0b7f7d15b556bba305d4510')
 
 package() {
 	install -Dm755 "./genv" "${pkgdir}/usr/bin/genv"
