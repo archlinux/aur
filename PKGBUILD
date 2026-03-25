@@ -4,8 +4,8 @@
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 
 pkgname=dump
-pkgver=0.4b47
-pkgrel=2
+pkgver=0.4b54
+pkgrel=1
 pkgdesc="Dump/Restore ext2/3/4 filesystem backup"
 arch=('i686' 'x86_64')
 url="http://dump.sourceforge.net"
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('util-linux-libs' 'zlib' 'bzip2' 'lzo' 'readline' 'ncurses' 'e2fsprogs')
 makedepends=('util-linux' 'sqlite' 'openssl')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('e9c567fe2ffad196b9657c551d83f7607758f3704cad6cb407514bbe2bc765c16968997dc3a5bc92b9eb5900fa5bd6e7cebc92c81afff53339fca92891a5259d')
+sha512sums=('89bc99f6f1589348065a0923f5e1e3d904ec06d04d54a557bdd3285e27fa3f470fbf1835d0b499e954b3e2dc1e85eb2576617b9d2fdd886d234adadad335f1ac')
 
 build() {
   cd "$pkgname-$pkgver"
