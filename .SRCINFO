@@ -1,4 +1,4 @@
-pkgbase = nekobox
+pkgbase = nekobox-git
 	pkgdesc = Cross-platform GUI proxy utility (Empowered by sing-box)
 	pkgver = 5.10.27
 	pkgrel = 1
