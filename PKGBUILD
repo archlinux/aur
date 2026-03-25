@@ -7,14 +7,14 @@ arch=('x86_64')
 url='https://github.com/douglas/cmux-gtk'
 license=('AGPL-3.0-or-later')
 depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'glib2' 'opengl-driver')
-makedepends=('rust' 'cargo' 'zig' 'ncurses' 'gcc' 'nasm' 'patchelf' 'git')
+makedepends=('rust' 'cargo' 'zig' 'ncurses' 'gcc' 'patchelf' 'git')
 provides=('cmux')
 conflicts=('cmux' 'cmux-git')
 # AUR pkgver uses dots; _tagver holds the original tag version with hyphens
 _tagver="${pkgver//.alpha/-alpha}"
 _ghostty_commit=c5028f99876a35188329f65742fddb45de3c5360
 source=("$pkgname-$_tagver.tar.gz::$url/archive/v$_tagver.tar.gz")
-sha256sums=('aedc3f1e49ab18cbe40c5bdcedf85e018d3ebf53dcf4433bed5f3b83e62b9341')
+sha256sums=('1c58dcf3fb80c3bf192996646809eb4a6adf4b555445fefbf16b17ade7b2e5ff')
 
 prepare() {
     cd "$pkgname-$_tagver"
