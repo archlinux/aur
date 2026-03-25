@@ -1,0 +1,19 @@
+pkgbase = python-griffecli
+	pkgdesc = Signatures for entire Python programs - cli
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/mkdocstrings/griffe
+	arch = any
+	license = ISC
+	makedepends = python-hatchling
+	makedepends = python-pdm-backend
+	makedepends = python-uv-dynamic-versioning>=0.7.0
+	makedepends = python-build
+	makedepends = python-installer
+	source = https://files.pythonhosted.org/packages/source/g/griffecli/griffecli-2.0.1.tar.gz
+	md5sums = cd5c90dd1477d40b00f3f7400b5ece7e
+
+pkgname = python-griffecli
+	depends = python>=3.10
+	depends = python-griffelib=2.0.1
+	depends = python-colorama>=0.4
