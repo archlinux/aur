@@ -1,6 +1,6 @@
 pkgbase = vokun
 	pkgdesc = Task-oriented package bundle manager for Arch Linux
-	pkgver = 0.3.0
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/blacktechwarrior/vokun
 	install = vokun.install

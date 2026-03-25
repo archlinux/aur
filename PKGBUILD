@@ -1,6 +1,6 @@
 # Maintainer: Vokun Contributors
 pkgname=vokun
-pkgver=0.3.0
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="Task-oriented package bundle manager for Arch Linux"
 arch=('any')
