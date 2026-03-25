@@ -1,6 +1,6 @@
 pkgbase = schemesh
 	pkgdesc = Fusion between a Unix shell and a Lisp REPL
-	pkgver = v0.9.2
+	pkgver = v1.0.0
 	pkgrel = 1
 	url = https://github.com/cosmos72/schemesh
 	arch = x86_64

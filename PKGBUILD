@@ -1,6 +1,6 @@
 # Maintainer: Ian Lester <aur.lester.snowy907silomails.com>
 pkgname=schemesh
-pkgver=v0.9.2
+pkgver=v1.0.0
 pkgrel=1
 pkgdesc="Fusion between a Unix shell and a Lisp REPL"
 arch=('x86_64')
