@@ -2,7 +2,7 @@
 
 pkgname=tkey-ssh-agent
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A ssh-agent for the Tillitis TKey"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/tillitis/${pkgname}"
@@ -40,4 +40,3 @@ package() {
 	sed -i -e "s,##BINDIR##,/usr/bin," "${destunit}/${pkgname}.service"
 	install -Dm644 system/60-tkey.rules "${destrules}/60-tkey.rules"
 }
-
