@@ -1,5 +1,5 @@
 pkgbase = issabel-system
-	pkgdesc = Issabel System Module - Network and System Management (Arch Linux Port)
+	pkgdesc = Issabel System Module - Network and System Management
 	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/IssabelFoundation/system
@@ -14,5 +14,7 @@ pkgbase = issabel-system
 	depends = tar
 	depends = mariadb
 	depends = sqlite
+	source = issabel-system-5.0.0.tar.gz::https://github.com/IssabelFoundation/system/archive/refs/tags/5.0.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = issabel-system
