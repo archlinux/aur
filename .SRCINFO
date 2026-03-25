@@ -1,6 +1,6 @@
 pkgbase = csdr-eti-git
 	pkgdesc = DAB ETI decoder as a csdr module
-	pkgver = r42.0aba1a3
+	pkgver = 0.0.11.r2.ga526513
 	pkgrel = 1
 	url = https://github.com/jketterl/csdr-eti
 	arch = i686
@@ -9,11 +9,12 @@ pkgbase = csdr-eti-git
 	license = GPL-3.0-only
 	makedepends = git
 	makedepends = cmake
+	makedepends = csdr-luarvique
 	depends = csdr
 	depends = fftw
 	provides = csdr-eti
 	conflicts = csdr-eti
-	source = csdr-eti-git::git+https://github.com/jketterl/csdr-eti.git
+	source = csdr-eti-git::git+https://github.com/luarvique/csdr-eti.git
 	md5sums = SKIP
 
 pkgname = csdr-eti-git

@@ -1,17 +1,17 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=csdr-eti-git
-pkgver=r42.0aba1a3
+pkgver=0.0.11.r2.ga526513
 pkgrel=1
 pkgdesc="DAB ETI decoder as a csdr module"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/jketterl/csdr-eti"
 license=('GPL-3.0-only')
 depends=('csdr' 'fftw')
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'csdr-luarvique')
 conflicts=('csdr-eti')
 provides=('csdr-eti')
-source=("$pkgname"::"git+https://github.com/jketterl/csdr-eti.git")
+source=("$pkgname"::"git+https://github.com/luarvique/csdr-eti.git")
 md5sums=('SKIP')
 
 pkgver() {
