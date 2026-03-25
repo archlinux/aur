@@ -1,27 +1,42 @@
-# vim: filetype=bash
-# Maintainer: amano.kenji <amano.kenji@proton.me>
+# Maintainer: Aren Moynihan <rn+aur@peacevolution.org
+# Contributor: amano.kenji <amano.kenji@proton.me>
+
 pkgname=janet-spork
-pkgver=0.r2022.07.20
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Various Janet utility modules - the official \"Contrib\" library."
 arch=("x86_64")
 url="https://github.com/janet-lang/spork"
 license=("MIT")
-depends=("janet-lang")
+depends=("glibc" "janet-lang")
+makedepends=("git")
 options=("staticlibs")
-_commit="7b51d6243c6bcbec97dbfb77a1bf21edea55c0de"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/janet-lang/spork/archive/${_commit}.tar.gz")
-sha256sums=('7a0e76fff96a2fa8a5a90e20cc09415068eeb223a7c1ad3b7c8b66c888cee9f3')
+_commit="3bdcf5831001d11dd12a6a311a4ede2b68f31cd2"
+source=("git+https://github.com/janet-lang/spork#tag=v${pkgver}")
+sha256sums=('9537483848cf9f2a7f60ddac46873a8256b56ea9b083c1d3206ea940b97fe971')
 
 build() {
-  cd spork-$_commit
-  jpm build
+	cd spork
+
+	# TODO: have jpm read the CFLAGS and LDFLAGS env variables
+	# they can't be passed at all because they typically contains commas, and jpm
+	# attempts to split these arguments on ","
+	jpm build
 }
 
 package() {
-  cd spork-$_commit
-  install -D -t "${pkgdir}/usr/share/doc/${pkgname}" README.md doc/*
-  modpath="$(janet -e '(print (dyn :syspath))')"
-  mkdir -p "${pkgdir}/${modpath}"
-  jpm --dest-dir="${pkgdir}" --modpath="${modpath}" --binpath="/usr/bin" install
+	cd spork
+
+	_modpath="$(janet -e '(print (dyn :syspath))')"
+	mkdir -p "${pkgdir}/usr/share/doc/${pkgname}" \
+		"${pkgdir}/${_modpath}" \
+		"${pkgdir}/usr/share/man/man1"
+
+	# Install documentatino
+	cp -r doc "${pkgdir}/usr/share/doc/${pkgname}"
+	install -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md 
+
+	jpm --dest-dir="${pkgdir}" \
+		--modpath="${_modpath}" \
+		--binpath="/usr/bin" install
 }

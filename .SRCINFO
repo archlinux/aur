@@ -1,13 +1,15 @@
 pkgbase = janet-spork
 	pkgdesc = Various Janet utility modules - the official "Contrib" library.
-	pkgver = 0.r2022.07.20
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/janet-lang/spork
 	arch = x86_64
 	license = MIT
+	makedepends = git
+	depends = glibc
 	depends = janet-lang
 	options = staticlibs
-	source = janet-spork-0.r2022.07.20.tar.gz::https://github.com/janet-lang/spork/archive/7b51d6243c6bcbec97dbfb77a1bf21edea55c0de.tar.gz
-	sha256sums = 7a0e76fff96a2fa8a5a90e20cc09415068eeb223a7c1ad3b7c8b66c888cee9f3
+	source = git+https://github.com/janet-lang/spork#tag=v1.2.0
+	sha256sums = 9537483848cf9f2a7f60ddac46873a8256b56ea9b083c1d3206ea940b97fe971
 
 pkgname = janet-spork
