@@ -8,8 +8,8 @@ license=('MIT')
 depends=('glibc')
 
 source=("https://github.com/Enzo415611/linux-tool/releases/download/v$pkgver/linux-tool"
-        "linux-tool.desktop"
-        "app-icon.png")
+        "https://raw.githubusercontent.com/Enzo415611/linux-tool/main/ui/assets/app-icon.png"
+        "linux-tool.desktop")
 
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
