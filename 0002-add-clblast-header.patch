@@ -1,0 +1,11 @@
+--- a/ggml/src/ggml-blas/ggml-blas.cpp	2026-03-22 22:33:52.000000000 +0500
++++ b/ggml/src/ggml-blas/ggml-blas.cpp	2026-03-25 18:51:39.173264481 +0500
+@@ -14,6 +14,8 @@
+ #   include <blis.h>
+ #elif defined(GGML_BLAS_USE_NVPL)
+ #   include <nvpl_blas.h>
++#elif defined(GGML_BLAS_USE_CLBLAST)
++#   include <clblast_netlib_c.h>
+ #else
+ #   include <cblas.h>
+ #endif

@@ -1,0 +1,28 @@
+--- a/ggml/src/ggml-blas/CMakeLists.txt	2026-03-22 22:33:52.000000000 +0500
++++ b/ggml/src/ggml-blas/CMakeLists.txt	2026-03-25 19:02:32.766312523 +0500
+@@ -6,7 +6,8 @@
+ #endif()
+ 
+ set(BLA_VENDOR ${GGML_BLAS_VENDOR})
+-find_package(BLAS)
++find_package(BLAS QUIET)
++find_package(CLBlast QUIET)
+ 
+ if (BLAS_FOUND)
+     message(STATUS "BLAS found, Libraries: ${BLAS_LIBRARIES}")
+@@ -94,6 +95,15 @@
+ 
+     target_link_libraries     (ggml-blas PRIVATE ${BLAS_LIBRARIES})
+     target_include_directories(ggml-blas SYSTEM PRIVATE ${BLAS_INCLUDE_DIRS})
++elseif(${GGML_BLAS_VENDOR} MATCHES "CLBlast" AND CLBlast_FOUND)
++    message(STATUS "CLBlast found.")
++
++    ggml_add_backend_library(ggml-blas
++                             ggml-blas.cpp
++                            )
++
++    add_compile_definitions(GGML_BLAS_USE_CLBLAST)
++    target_link_libraries(ggml-blas PRIVATE "-lclblast")
+ else()
+     message(FATAL_ERROR "BLAS not found, please refer to "
+                         "https://cmake.org/cmake/help/latest/module/FindBLAS.html#blas-lapack-vendors"
