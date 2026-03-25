@@ -8,7 +8,6 @@ url="https://github.com/Lauta-dev/linux-tkg"
 license=('GPL')
 depends=('coreutils' 'kmod' 'initramfs')
 options=('!strip' '!debug')
-
 source=(
   "kernel::https://github.com/Lauta-dev/linux-tkg/releases/download/kernel-6.14-silvermont-3/linux618-tkg-pds-llvm-6.18.20-273-x86_64.pkg.tar.zst"
   "header::https://github.com/Lauta-dev/linux-tkg/releases/download/kernel-6.14-silvermont-3/linux618-tkg-pds-llvm-headers-6.18.20-273-x86_64.pkg.tar.zst"
