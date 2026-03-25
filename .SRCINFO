@@ -1,6 +1,6 @@
 pkgbase = 8bitdo-kbd-mapper
 	pkgdesc = Key mapper for 8BitDo's Retro Mechanical Keyboard
-	pkgver = 0.2
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/goncalor/8bitdo-kbd-mapper
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = 8bitdo-kbd-mapper
 	depends = python-pyusb
 	provides = 8bitdo-kbd-mapper
 	conflicts = 8bitdo-kbd-mapper
-	source = 8bitdo-kbd-mapper::git+https://github.com/goncalor/8bitdo-kbd-mapper.git#tag=v0.2
-	sha256sums = f63f4a9f8407a54e71097eee7af62a7eabcae2e99a341d676e5782c8f3b03e82
+	source = 8bitdo-kbd-mapper::git+https://github.com/goncalor/8bitdo-kbd-mapper.git#tag=v0.2.3
+	sha256sums = 3f843eb63b59e8260059c213e47a389394f60cba3108afc8977b714f0b8264ec
 
 pkgname = 8bitdo-kbd-mapper

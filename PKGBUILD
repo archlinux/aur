@@ -2,7 +2,7 @@
 
 _pkgbase=8bitdo-kbd-mapper
 pkgname="$_pkgbase"
-pkgver=0.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Key mapper for 8BitDo's Retro Mechanical Keyboard"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=("$_pkgbase::git+https://github.com/goncalor/8bitdo-kbd-mapper.git#tag=v$pkgver")
-sha256sums=('f63f4a9f8407a54e71097eee7af62a7eabcae2e99a341d676e5782c8f3b03e82')
+sha256sums=('3f843eb63b59e8260059c213e47a389394f60cba3108afc8977b714f0b8264ec')
 
 prepare() {
 	cd "$_pkgbase"
