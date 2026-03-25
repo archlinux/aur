@@ -1,6 +1,6 @@
 pkgbase = feluda-bin
 	pkgdesc = Detect license usage restrictions in your project
-	pkgver = 1.11.1
+	pkgver = 1.12.0
 	pkgrel = 1
 	url = https://github.com/anistark/feluda
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = feluda-bin
 	depends = zlib
 	provides = feluda
 	conflicts = feluda
-	source_x86_64 = feluda-x86_64-1.11.1.deb::https://github.com/anistark/feluda/releases/download/v1.11.1/feluda-v1.11.1-x86_64.deb
-	sha256sums_x86_64 = 3e761e204c21c7a7aa4e30e543786aea3ed7a78b1c5a2023c3cbddb33bd376ce
-	source_aarch64 = feluda-aarch64-1.11.1.deb::https://github.com/anistark/feluda/releases/download/v1.11.1/feluda-v1.11.1-aarch64.deb
-	sha256sums_aarch64 = 5f89367312cbd67421866d61ba7d9bf751d4320ff2d7ed46bb0498aff8784847
+	source_x86_64 = feluda-x86_64-1.12.0.deb::https://github.com/anistark/feluda/releases/download/v1.12.0/feluda-v1.12.0-x86_64.deb
+	sha256sums_x86_64 = 148d3065209aab04d4b6d4554ebc0f2c5f3728c14592109a8f4344cdb5adc5bb
+	source_aarch64 = feluda-aarch64-1.12.0.deb::https://github.com/anistark/feluda/releases/download/v1.12.0/feluda-v1.12.0-aarch64.deb
+	sha256sums_aarch64 = 6dd23422e6b98d320985d8518b17698892cc9efa771c04d3575fe3c64ecaf83c
 
 pkgname = feluda-bin
