@@ -7,8 +7,8 @@
 
 pkgname=openarc-git
 _pkgname=openarc
-pkgver=1.2.2.r6.ga3273d4
-pkgrel=2
+pkgver=1.3.0.r3.g76f5615
+pkgrel=1
 pkgdesc="Open source implementation of the ARC email authentication system"
 arch=(x86_64)
 url="https://github.com/flowerysong/OpenARC"
@@ -23,6 +23,7 @@ optdepends=(
 	'perl-mail-dkim: for optional tests'
 )
 makedepends=('git' 'python-miltertest')
+checkdepends=('python-dirty-equals' 'python-inline-snapshot')
 provides=('openarc')
 conflicts=('openarc')
 source=(
