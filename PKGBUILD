@@ -1,6 +1,6 @@
 # Maintainer: Lian <yichengxin7@gmail.com>
 pkgname=lianwall-gui-bin
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="LianWall GUI - Qt6/QML graphical client for lianwalld wallpaper daemon"
 arch=('x86_64')
@@ -12,7 +12,7 @@ provides=('lianwall-gui')
 conflicts=('lianwall-gui')
 source=("lianwall-gui-${pkgver}::https://github.com/Yueosa/lianwall-gui/releases/download/v${pkgver}/lianwall-gui_${pkgver}_linux_x86_64"
         "lianwall.png::https://raw.githubusercontent.com/Yueosa/lianwall-gui/main/resources/icons/lianwall.png")
-sha256sums=('e287dd4a92eed6d2fec15916d17f5a1ad6d17d2d2f82816bb0cf38c21b76c551'
+sha256sums=('1dcb5af8473a1df891dcc663fa1826c522d68e04eaaf7fa5f3f22ef9d54c56d0'
             'a0328df19674629349b2ba601d7b66f2863414a215585f33d856341b535f2011')
 
 package() {
