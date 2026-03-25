@@ -1,6 +1,6 @@
 pkgname=python-chibi-command
 _pyname=chibi_command
-pkgver=2.4.2
+pkgver=2.4.3
 pkgrel=1
 pkgdesc="run terminal commands"
 arch=('any')
@@ -10,7 +10,7 @@ groups=()
 depends=("python-chibi" "python-chibi-hybrid" "python-chibi-atlas" "python-chibi-requests")
 makedepends=("python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/${_pyname//-/_}/${_pyname//-/_}-$pkgver.tar.gz")
-sha256sums=('df1a2c5a5bdbaf2d6446770256908acfed6db5178131468a32a6d9feb84a612e')
+sha256sums=('9d6409128f5273ee9ac65c11cd20447cdd4d7d02dde494635a20e52877582890')
 
 build() {
 	cd "$_pyname-$pkgver"
