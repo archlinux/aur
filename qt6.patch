@@ -1,12 +1,12 @@
-From eca3847210f2f1dec01af38f76e4e3034cc99d76 Mon Sep 17 00:00:00 2001
+From 7149bdb675d09af03eae0c207b0af484f1f5d4f6 Mon Sep 17 00:00:00 2001
 From: Michel Zou <xantares09@hotmail.com>
 Date: Wed, 30 Jun 2021 11:49:08 +0200
 Subject: [PATCH] CMake build system
 
 ---
- CMakeLists.txt                       |  32 +++
+ CMakeLists.txt                       |  33 +++
  classincludes/CMakeLists.txt         | 170 ++++++++++++++
- examples/CMakeLists.txt              |  26 +++
+ examples/CMakeLists.txt              |  22 ++
  examples/animation/CMakeLists.txt    |   2 +
  examples/barchart/CMakeLists.txt     |   1 +
  examples/bode/CMakeLists.txt         |   2 +
@@ -18,8 +18,8 @@ Subject: [PATCH] CMake build system
  examples/simpleplot/CMakeLists.txt   |   1 +
  examples/sinusplot/CMakeLists.txt    |   1 +
  examples/spectrogram/CMakeLists.txt  |   1 +
- src/CMakeLists.txt                   | 328 +++++++++++++++++++++++++++
- 15 files changed, 570 insertions(+)
+ src/CMakeLists.txt                   | 321 +++++++++++++++++++++++++++
+ 15 files changed, 560 insertions(+)
  create mode 100644 CMakeLists.txt
  create mode 100644 classincludes/CMakeLists.txt
  create mode 100644 examples/CMakeLists.txt
@@ -38,12 +38,12 @@ Subject: [PATCH] CMake build system
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
 new file mode 100644
-index 0000000..b15f952
+index 0000000..b5ef4b3
 --- /dev/null
 +++ b/CMakeLists.txt
-@@ -0,0 +1,32 @@
-+cmake_minimum_required (VERSION 3.1)
-+project (qwt VERSION 6.2.0 LANGUAGES CXX)
+@@ -0,0 +1,33 @@
++cmake_minimum_required (VERSION 3.18)
++project (qwt VERSION 6.3.0 LANGUAGES CXX)
 +
 +option (WITH_PLOT "Whether to build plot" ON)
 +option (WITH_SVG "Whether to build svg" ON)
@@ -54,20 +54,21 @@ index 0000000..b15f952
 +option (WITH_EXAMPLES "Whether to include examples" OFF)
 +
 +option (BUILD_SHARED_LIBS "Build shared/static libs" ON)
-+option (USE_QT6 "qt 6.x" OFF)
++set (QWT_QT_MAJOR_VERSION 6 CACHE STRING "Qt version")
 +
 +include (GNUInstallDirs)
 +
 +set (QWT_VER_MAJ 6)
-+set (QWT_VER_MIN 2)
++set (QWT_VER_MIN 3)
 +set (QWT_VER_PAT 0)
 +set (QWT_VERSION ${QWT_VER_MAJ}.${QWT_VER_MIN}.${QWT_VER_PAT})
 +
-+if (USE_QT6)
-+  find_package (Qt6 COMPONENTS Concurrent OpenGL OpenGLWidgets PrintSupport Svg Widgets REQUIRED CONFIG)
-+else ()
-+  find_package (Qt5 COMPONENTS Concurrent OpenGL PrintSupport Svg Widgets REQUIRED CONFIG)
++set(QWT_QT_COMPONENTS Concurrent OpenGL PrintSupport Svg Widgets)
++if (QWT_QT_MAJOR_VERSION VERSION_GREATER 5)
++  list (APPEND QWT_QT_COMPONENTS OpenGLWidgets)
 +endif ()
++
++find_package(Qt${QWT_QT_MAJOR_VERSION} COMPONENTS ${QWT_QT_COMPONENTS} REQUIRED CONFIG)
 +
 +add_subdirectory (src)
 +
@@ -252,22 +253,18 @@ index 0000000..978a255
 +install (FILES ${class_headers} DESTINATION include)
 diff --git a/examples/CMakeLists.txt b/examples/CMakeLists.txt
 new file mode 100644
-index 0000000..3559725
+index 0000000..f7ab53e
 --- /dev/null
 +++ b/examples/CMakeLists.txt
-@@ -0,0 +1,26 @@
+@@ -0,0 +1,22 @@
 +
 +
 +macro (qwt_add_example name)
 +  add_executable(qwt_example_${name} ${ARGN})
 +  target_link_libraries (qwt_example_${name} PRIVATE qwt)
 +  target_include_directories (qwt_example_${name} PRIVATE ${PROJECT_SOURCE_DIR}/classincludes)
-+  set_target_properties(qwt_example_${name} PROPERTIES AUTOMOC ON)
-+  if (USE_QT6)
-+    target_link_libraries (qwt_example_${name} PRIVATE Qt6::PrintSupport)
-+  else ()
-+    target_link_libraries (qwt_example_${name} PRIVATE Qt5::PrintSupport)
-+  endif ()
++  set_target_properties(qwt_example_${name} PROPERTIES AUTOMOC ON UNITY_BUILD OFF)
++  target_link_libraries (qwt_example_${name} PRIVATE Qt${QWT_QT_MAJOR_VERSION}::PrintSupport)
 +endmacro ()
 +
 +add_subdirectory(animation)
@@ -364,10 +361,10 @@ index 0000000..582bc75
 +qwt_add_example(spectrogram Plot.cpp Plot.h main.cpp)
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 new file mode 100644
-index 0000000..85d0bb3
+index 0000000..cc9e846
 --- /dev/null
 +++ b/src/CMakeLists.txt
-@@ -0,0 +1,328 @@
+@@ -0,0 +1,321 @@
 +
 +set (qwt_headers
 +  qwt.h
@@ -574,7 +571,7 @@ index 0000000..85d0bb3
 +if (WITH_OPENGL)
 +  list (APPEND qwt_headers qwt_plot_opengl_canvas.h)
 +  list (APPEND qwt_sources qwt_plot_opengl_canvas.cpp)
-+  if (NOT USE_QT6)
++  if (QWT_QT_MAJOR_VERSION VERSION_LESS 6)
 +    list (APPEND qwt_headers qwt_plot_glcanvas.h)
 +    list (APPEND qwt_sources qwt_plot_glcanvas.cpp)
 +  endif ()
@@ -617,6 +614,7 @@ index 0000000..85d0bb3
 +    qwt_polar_plot.cpp
 +    qwt_polar_renderer.cpp
 +    qwt_polar_spectrogram.cpp)
++    set_source_files_properties (qwt_polar_renderer.cpp PROPERTIES SKIP_UNITY_BUILD_INCLUSION ON)
 +endif ()
 +
 +if (WITH_WIDGETS)
@@ -650,49 +648,44 @@ index 0000000..85d0bb3
 +    qwt_wheel.cpp)
 +endif ()
 +
-+add_library (qwt-qt6 ${qwt_headers} ${qwt_sources})
++add_library (qwt ${qwt_headers} ${qwt_sources})
 +
-+target_compile_definitions(qwt-qt6
++target_compile_definitions(qwt
 +	PUBLIC
 +		$<$<BOOL:MSVC>:QWT_DLL>
 +	PRIVATE
 +		$<$<BOOL:MSVC>:QWT_MAKEDLL>
 +)
 +
-+target_include_directories(qwt-qt6
++target_include_directories(qwt
 +  PUBLIC
 +  $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/src>
 +  $<INSTALL_INTERFACE:include>)
 +
-+if (USE_QT6)
-+  target_link_libraries(qwt-qt6
-+    PUBLIC
-+      Qt6::Core
-+      Qt6::OpenGL
-+      Qt6::OpenGLWidgets
-+    PRIVATE
-+      Qt6::Concurrent
-+      Qt6::PrintSupport
-+      Qt6::Svg)
-+else ()
-+    target_link_libraries(qwt-qt6
-+    PUBLIC
-+      Qt5::Core
-+      Qt5::OpenGL
-+    PRIVATE
-+      Qt5::Concurrent
-+      Qt5::PrintSupport
-+      Qt5::Svg)
++target_link_libraries(qwt
++  PUBLIC
++    Qt${QWT_QT_MAJOR_VERSION}::Core
++    Qt${QWT_QT_MAJOR_VERSION}::OpenGL
++  PRIVATE
++    Qt${QWT_QT_MAJOR_VERSION}::Concurrent
++    Qt${QWT_QT_MAJOR_VERSION}::PrintSupport
++    Qt${QWT_QT_MAJOR_VERSION}::Svg)
++
++if (QWT_QT_MAJOR_VERSION VERSION_GREATER 5)
++  target_link_libraries(qwt PUBLIC Qt${QWT_QT_MAJOR_VERSION}::OpenGLWidgets)
 +endif ()
 +
-+set_target_properties(qwt-qt6 PROPERTIES
++set_target_properties(qwt PROPERTIES
 +  VERSION ${QWT_VERSION}
 +  SOVERSION ${QWT_VER_MAJ}
 +  AUTOMOC ON)
-+target_compile_definitions(qwt-qt6 PRIVATE QWT_MOC_INCLUDE)
++target_compile_definitions(qwt PRIVATE QWT_MOC_INCLUDE)
 +
-+install (FILES ${qwt_headers} DESTINATION include/qwt-qt6)
-+install (TARGETS qwt-qt6
++install (FILES ${qwt_headers} DESTINATION include/qwt)
++install (TARGETS qwt
 +          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 +          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 +          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+-- 
+2.53.0
+
