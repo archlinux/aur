@@ -36,7 +36,7 @@ fi
 cp "${SPEC}" "${TOPDIR}/SPECS/"
 
 # Build
-rpmbuild --define "_topdir ${TOPDIR}" --nodeps -bb "${TOPDIR}/SPECS/${SPEC}"
+rpmbuild --define "_topdir ${TOPDIR}" --define "_pkg_version ${VERSION}" --nodeps -bb "${TOPDIR}/SPECS/${SPEC}"
 
 echo "==> RPMs:"
 find "${TOPDIR}/RPMS" -name '*.rpm' -print
