@@ -6,7 +6,7 @@ pkgdesc="Hybrid Context Optimizer — reduces LLM token consumption by up to 99%
 arch=('x86_64')
 url="https://leanctx.com"
 license=('MIT')
-makedepends=('cargo')
+makedepends=('cargo' 'gcc')
 depends=('gcc-libs')
 source=("$pkgname-$pkgver.crate::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 sha256sums=('ae9c35607e50e15f61b196834928df46bad9493e4cf0e63d01ef32df16f01957')
@@ -21,6 +21,9 @@ build() {
   cd "$pkgname-$pkgver"
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
+  # Force GNU ld (bfd) instead of lld/mold. tree-sitter's C static library
+  # triggers undefined symbol errors with lld due to strict archive scanning.
+  export RUSTFLAGS="${RUSTFLAGS:+$RUSTFLAGS }-C link-arg=-fuse-ld=bfd"
   cargo build --frozen --release --all-features
 }
 
