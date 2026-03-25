@@ -1,0 +1,26 @@
+post_install() {
+    # Wire it up for Bash globally
+    if [ -f /etc/bash.bashrc ]; then
+        if ! grep -q "fahplay.sh" /etc/bash.bashrc; then
+            echo "[ -r /usr/share/fahplay/fahplay.sh ] && source /usr/share/fahplay/fahplay.sh" >> /etc/bash.bashrc
+        fi
+    fi
+
+    # Wire it up for Zsh globally
+    if [ -d /etc/zsh ]; then
+        touch /etc/zsh/zshrc
+        if ! grep -q "fahplay.sh" /etc/zsh/zshrc; then
+            echo "[ -r /usr/share/fahplay/fahplay.sh ] && source /usr/share/fahplay/fahplay.sh" >> /etc/zsh/zshrc
+        fi
+    fi
+}
+
+pre_remove() {
+    # Cleanly remove the lines if the package is uninstalled
+    if [ -f /etc/bash.bashrc ]; then
+        sed -i '/fahplay\.sh/d' /etc/bash.bashrc
+    fi
+    if [ -f /etc/zsh/zshrc ]; then
+        sed -i '/fahplay\.sh/d' /etc/zsh/zshrc
+    fi
+}

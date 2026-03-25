@@ -1,0 +1,13 @@
+pkgbase = fahplay
+	pkgdesc = Plays 'fahhhhh' when a shell command fails (Bash/Zsh)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/shashotoNur/fahplay
+	install = fahplay.install
+	arch = any
+	license = GPL3
+	depends = alsa-utils
+	source = fahplay-1.0.0.tar.gz::https://github.com/shashotoNur/fahplay/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 76e1a57e1f71caa466ac739e5f790507521aa0042c645b2c5da02a85e6af7e7c
+
+pkgname = fahplay
