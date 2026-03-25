@@ -34,6 +34,10 @@ pkgbase = gimp-develop-git
 	makedepends = libbacktrace
 	makedepends = gi-docgen
 	makedepends = cfitsio
+	makedepends = python-cairo
+	makedepends = xdg-utils
+	makedepends = bash-completion
+	makedepends = vala
 	depends = libxmu
 	depends = lcms2>=2.8
 	depends = libwmf>=0.2.8
@@ -73,6 +77,7 @@ pkgbase = gimp-develop-git
 	optdepends = luajit: LUA scripting support
 	optdepends = cfitsio: for FITS support
 	optdepends = gvfs: for HTTP/S support (and many other schemes)
+	optdepends = xdg-utils: xdg-email required for sending support email
 	source = git+https://gitlab.gnome.org/GNOME/gimp.git#branch=master
 	source = gimp-data::git+https://gitlab.gnome.org/GNOME/gimp-data
 	source = linux.gpl

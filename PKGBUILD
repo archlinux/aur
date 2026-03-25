@@ -49,6 +49,7 @@ makedepends+=('git' 'intltool>=0.40.1'
              'gjs' 'python-gobject' 'python-packaging' 'luajit' 'meson'
              'glib2-devel'
              'libbacktrace' 'gi-docgen' 'cfitsio'
+             'python-cairo' 'xdg-utils' 'bash-completion'
              )
 checkdepends=('xorg-server-xvfb')
 optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cups print support'
@@ -67,6 +68,7 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'luajit: LUA scripting support'
             'cfitsio: for FITS support'
             'gvfs: for HTTP/S support (and many other schemes)'
+            'xdg-utils: xdg-email required for sending support email'
             )
 source=("git+https://gitlab.gnome.org/GNOME/gimp.git${_fragment}"
         "gimp-data::git+https://gitlab.gnome.org/GNOME/gimp-data"
