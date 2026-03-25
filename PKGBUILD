@@ -1,7 +1,7 @@
 # Maintainer: Keith Raghubar <aur.archlinux.org.buckskin000@passmail.net>
 
 pkgname=sysforge
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="All-in-one Arch Linux helper for system setup and package management with compiler-optimized builds"
 arch=('any')
@@ -27,12 +27,12 @@ optdepends=(
 conflicts=('sysforge-git')
 provides=('sysforge')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6e331ad0937a0a1acca33565079c85239a9e4a60295bc355ec4fbcd430d39a7f')
+sha256sums=('eea4194a3734cdf6a438a2a44af27e1ada074140b5527ef1724c2d9ec4ea9906')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     python -m build --wheel --no-isolation
-    argparse-manpage \
+    PYTHONPATH=. argparse-manpage \
         --module sysforge.cli \
         --function _build_parser \
         --author "Keith Raghubar" \
