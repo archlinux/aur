@@ -2,7 +2,7 @@
 pkgname=cockpit-tools-bin
 pkgver=0.20.8
 pkgrel=1
-pkgdesc="A tool for managing Cockpit (Tauri-based)"
+pkgdesc="Universal AI IDE account manager for Antigravity / Codex / GitHub Copilot / Windsurf / Kiro / Cursor / Gemini-cli / CodeBuddy"
 arch=('x86_64')
 url="https://github.com/jlcodes99/cockpit-tools"
 license=('MIT')
