@@ -1,6 +1,6 @@
 pkgbase = python-termgraph
 	pkgdesc = A Python command-line and library that draws basic graphs in the terminal
-	pkgver = 0.7.5
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://github.com/mkaz/termgraph
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-termgraph
 	depends = python
 	depends = python-colorama
 	provides = termgraph
-	source = https://files.pythonhosted.org/packages/source/t/termgraph/termgraph-0.7.5.tar.gz
-	sha256sums = 9660f3ce04cd182d34c9fb0390a57bc2ab596d8159ed544459b29d3f6db9d1da
+	source = https://files.pythonhosted.org/packages/source/t/termgraph/termgraph-0.7.6.tar.gz
+	sha256sums = 0a86f6033cec461785ca4ffae19b394c788820fa9beab17f9d2eb83068e1fe60
 
 pkgname = python-termgraph

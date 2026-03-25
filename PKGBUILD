@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.7.5'
+_upstreamver='0.7.6'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='termgraph'
@@ -16,7 +16,7 @@ provides=(${_pypi_package})
 depends=('python' 'python-colorama')
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-hatchling')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
-sha256sums=('9660f3ce04cd182d34c9fb0390a57bc2ab596d8159ed544459b29d3f6db9d1da')
+sha256sums=('0a86f6033cec461785ca4ffae19b394c788820fa9beab17f9d2eb83068e1fe60')
 
 
 build() {
