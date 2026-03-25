@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """
-webcam-toggle-indicator — XApp.StatusIcon tray icon (DE/WM agnostic)
+webcam-toggle-indicator — AppIndicator / KStatusNotifierItem tray icon
 that reflects the current webcam state.
 
-Left-click:  toggles the webcam
-Right-click:  opens a context menu (Toggle Webcam, Quit)
-SIGUSR1:     refreshes the icon (sent by webcam-toggle-shortcut)
+Refreshes on:
+  • SIGUSR1 (sent by webcam-toggle-shortcut after a toggle)
+  • After a toggle triggered from the tray menu
+
+Provides a right-click menu with Toggle and Quit.
 
 Uses the freedesktop symbolic icons:
   camera-on-symbolic   — webcam is enabled
@@ -22,9 +24,9 @@ import threading
 import gi
 
 gi.require_version("Gtk", "3.0")
-gi.require_version("XApp", "1.0")
+gi.require_version("AppIndicator3", "0.1")
 
-from gi.repository import GLib, Gtk, XApp
+from gi.repository import AppIndicator3, GLib, Gtk
 
 
 APP_ID = "webcam-toggle-indicator"
@@ -72,17 +74,14 @@ def _notify(icon: str, summary: str, body: str) -> None:
 
 class WebcamIndicator:
     def __init__(self):
-        self.icon = XApp.StatusIcon.new_with_name(APP_ID)
-        self.icon.set_icon_name(self._current_icon())
-        self.icon.set_tooltip_text("Webcam Toggle")
-
-        # Left-click: toggle the webcam.
-        # primary-menu is left unset (None), so the "activate" signal
-        # fires on left-click instead of showing a menu.
-        self.icon.connect("activate", self._on_activate)
-
-        # Right-click: show context menu via the secondary-menu property.
-        self.icon.set_secondary_menu(self._build_menu())
+        self.indicator = AppIndicator3.Indicator.new(
+            APP_ID,
+            self._current_icon(),
+            AppIndicator3.IndicatorCategory.HARDWARE,
+        )
+        self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
+        self.indicator.set_title("Webcam Toggle")
+        self.indicator.set_menu(self._build_menu())
 
         # Handle SIGUSR1 — GLib.unix_signal_add is the safe way to bridge
         # UNIX signals into the GTK main loop.
@@ -99,10 +98,10 @@ class WebcamIndicator:
         return ICON_OFF if self._webcam_is_off() else ICON_ON
 
     def _refresh_icon(self) -> None:
-        self.icon.set_icon_name(self._current_icon())
+        self.indicator.set_icon_full(self._current_icon(), "Webcam status")
 
     # ------------------------------------------------------------------
-    # Menu (shown on right-click via secondary-menu property)
+    # Menu
     # ------------------------------------------------------------------
     def _build_menu(self) -> Gtk.Menu:
         menu = Gtk.Menu()
@@ -123,13 +122,8 @@ class WebcamIndicator:
     # ------------------------------------------------------------------
     # Callbacks
     # ------------------------------------------------------------------
-    def _on_activate(self, _icon, _button, _time):
-        """Left-click on the tray icon — start a toggle in a background thread."""
-        thread = threading.Thread(target=self._do_toggle, daemon=True)
-        thread.start()
-
     def _on_toggle(self, _widget):
-        """Menu item "Toggle Webcam" — same action as left-click."""
+        """Run sudo webcam-toggle in a background thread to avoid blocking GTK."""
         thread = threading.Thread(target=self._do_toggle, daemon=True)
         thread.start()
 

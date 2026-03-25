@@ -1,0 +1,5 @@
+# Allow members of the "video" group to bind/unbind USB devices.
+# This lets webcam-toggle run without root privileges.
+SUBSYSTEM=="usb", ATTR{bDeviceClass}=="00", TEST=="driver", \
+    RUN+="/bin/chmod g+w /sys/bus/usb/drivers/usb/bind /sys/bus/usb/drivers/usb/unbind", \
+    RUN+="/bin/chgrp video /sys/bus/usb/drivers/usb/bind /sys/bus/usb/drivers/usb/unbind"
