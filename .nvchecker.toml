@@ -2,4 +2,3 @@
 source = "github"
 github = "soveran/map"
 use_latest_release = true
-prefix = "v"
