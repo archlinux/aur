@@ -1,0 +1,22 @@
+pkgbase = issabel-gui
+	pkgdesc = IssabelPBX - Asterisk Configuration GUI (Arch Linux Port)
+	pkgver = 2.12.0
+	pkgrel = 1
+	url = https://github.com/IssabelFoundation/issabelPBX
+	install = issabel-gui.install
+	arch = any
+	license = GPL
+	depends = issabel-framework
+	depends = php-legacy
+	depends = mariadb
+	depends = asterisk
+	depends = gettext
+	depends = perl
+	depends = wget
+	depends = mpg123
+	depends = sox
+	optdepends = php-pear-db: Database abstraction (Pear DB)
+	backup = etc/issabelpbx.conf
+	backup = etc/amportal.conf
+
+pkgname = issabelpbx
