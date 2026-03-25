@@ -1,0 +1,6 @@
+[amber-bash-bin]
+source = "github"
+github = "amber-lang/Amber"
+use_latest_release = true
+from_pattern = '([0-9.]*)-alpha'
+to_pattern = '\1'
