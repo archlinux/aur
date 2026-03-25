@@ -4,7 +4,7 @@
 _pkgname="torii-sim-wasm"
 pkgname="python-${_pkgname}"
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A WASM based simulation backend for Torii"
 arch=("aarch64" "armv7" "ppc64le" "x86" "x86_64")
 url="https://github.com/shrine-maiden-heavy-industries/torii-sim-wasm"
@@ -13,7 +13,7 @@ provides=("${pkgname}=${pkgver}")
 conflicts=("${pkgname}-git" "${pkgname}-nightly")
 depends=(
 	"python>=3.11" "python<4.0"
-	"python-torii>=${pkgver}" "python-torii<1.0"
+	"python-torii>=0.8.1" "python-torii<1.0"
 	"python-pyvcd>=0.4.0" "python-pyvcd<0.5.0"
 )
 makedepends=(
@@ -24,7 +24,6 @@ makedepends=(
 	"python-maturin"
 	"python-build"
 	"python-installer"
-	"python-pip"
 	"python-setuptools-scm"
 	"python-setuptools>=66"
 	"python-wheel"
@@ -49,7 +48,6 @@ build() {
 package() {
 	cd "${_pkgname//-/_}-${pkgver}"
 
-	# Install the Torii boards wheel and License
 	python -m installer --destdir="${pkgdir}" dist/*.whl
 	install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
