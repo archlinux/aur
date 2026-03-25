@@ -10,7 +10,7 @@ depends=('libx11' 'libxi')
 conflicts=('drop')
 options=('!debug')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sillybanaja/drop/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('163fe9d3f3115025da432e22c7d2c598322fa14bbe534aa1566f435808c885e8')
+sha256sums=('5975c7f627ecec1862b4cafce0b92da646fa070ad00305bddb2a7add7d7b8675')
 
 package() {
     cd "drop-$pkgver"
