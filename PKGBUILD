@@ -27,5 +27,4 @@ package() {
     install -Dm644 "$mo_file" "$pkgdir/usr/share/$mo_file"
   done
 
-  install -Dm644 README.md "$pkgdir/usr/share/doc/riskie/README.md"
 }
