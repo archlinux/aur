@@ -1,0 +1,11 @@
+--- a/Src/loadelf.c
++++ b/Src/loadelf.c
+@@ -325,7 +325,7 @@
+
+ // ====================================================================================================
+
+-void  _dwarf_error( Dwarf_Error e, void *ptr )
++void  _orb_dwarf_error( Dwarf_Error e, void *ptr )
+ {
+     fprintf( stderr, "Reached error:%s\n", dwarf_errmsg( e ) );
+     exit( -1 );

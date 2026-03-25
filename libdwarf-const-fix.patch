@@ -1,0 +1,11 @@
+--- a/subprojects/libdwarf-0.7.0/src/bin/dwarfdump/dd_getopt.c
++++ b/subprojects/libdwarf-0.7.0/src/bin/dwarfdump/dd_getopt.c
+@@ -287,7 +287,7 @@
+ int
+ dwgetopt(int nargc, char * const nargv[], const char *ostr)
+ {
+-    char *oli;                      /* option letter list index */
++    const char *oli;                /* option letter list index */
+ 
+     if (dwoptreset || *place == 0) { /* update scanning pointer */
+         dwoptreset = 0;
