@@ -12,9 +12,7 @@ pkgbase = mythplugins
 	makedepends = perl-datetime-format-iso8601
 	makedepends = perl-date-manip
 	makedepends = perl-image-size
-	makedepends = perl-cgi
 	makedepends = perl-json
-	makedepends = perl-libwww
 	makedepends = perl-soap-lite
 	makedepends = perl-xml-simple
 	makedepends = perl-xml-xpath
@@ -28,9 +26,7 @@ pkgbase = mythplugins
 	makedepends = perl-xml-xpath
 	makedepends = python-urllib3
 	makedepends = libcdio-paranoia
-	source = git+https://github.com/MythTV/mythweb#branch=fixes/34
 	source = git+https://github.com/MythTV/mythtv#branch=fixes/34
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = mythplugins-mytharchive
@@ -73,15 +69,6 @@ pkgname = mythplugins-mythweather
 	depends = perl-xml-xpath
 	depends = perl-image-size
 	depends = perl-datetime-format-iso8601
-
-pkgname = mythplugins-mythweb
-	pkgdesc = Web interface for the MythTV scheduler
-	depends = mythtv
-	depends = perl-cgi
-	optdepends = lighttpd
-	optdepends = php-apache
-	optdepends = php-fpm
-	optdepends = nginx
 
 pkgname = mythplugins-mythzoneminder
 	pkgdesc = View CCTV footage from zoneminder in MythTV

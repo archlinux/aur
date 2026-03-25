@@ -1,4 +1,5 @@
-# Maintainer: pvdp <pvdp@email.com>
+# Maintainer: John Bergqvist <johnlbergqvist@gmail.com>
+# Contributor: pvdp <pvdp@email.com>
 # Contributor: Taijian <taijian@posteo.de>
 # Contributor: Jonathan Conder <jonno.conder@gmail.com>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
@@ -11,7 +12,6 @@ pkgname=('mythplugins-mytharchive'
          'mythplugins-mythnetvision'
          'mythplugins-mythnews'
          'mythplugins-mythweather'
-         'mythplugins-mythweb'
          'mythplugins-mythzoneminder')
 br=fixes/34
 t="${br#*/}+${br%/[0-9][0-9]}"
@@ -22,28 +22,17 @@ arch=('any')
 url="http://www.mythtv.org"
 license=('GPL')
 makedepends=('dvdauthor' 'dvd+rw-tools' 'mesa-libgl' "mythtv-git>=$pkgver"
-             'perl-datetime-format-iso8601' 'perl-date-manip' 'perl-image-size' 'perl-cgi'
-             'perl-json' 'perl-libwww' 'perl-soap-lite' 'perl-xml-simple' 'perl-xml-xpath' 'libhdhomerun'
+             'perl-datetime-format-iso8601' 'perl-date-manip' 'perl-image-size'
+             'perl-json' 'perl-soap-lite' 'perl-xml-simple' 'perl-xml-xpath' 'libhdhomerun'
              'python-pillow' 'python-pycurl' 'gdb' 'mariadb-libs' 'minizip'
              'python-lxml' 'perl-xml-xpath' 'python-urllib3' 'libcdio-paranoia')
-source=("git+https://github.com/MythTV/mythweb#branch=$br"
-        "git+https://github.com/MythTV/mythtv#branch=$br"
-)
+source=("git+https://github.com/MythTV/mythtv#branch=$br")
 
-sha256sums=('SKIP'
-            'SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/mythtv/$pkgbase"
   printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
-}
-
-prepare() {
-  cd "$srcdir/mythtv/$pkgbase"
-  
-  cd "$srcdir/mythweb"
-  
-  sed -re 's@/usr/local.*/usr/share@/usr/share@' -i 'mythweb.php'
 }
 
 build() {
@@ -111,22 +100,6 @@ package_mythplugins-mythweather() {
 
   cd "$srcdir/mythtv/$pkgbase/mythweather"
   make INSTALL_ROOT="$pkgdir" install
-}
-
-package_mythplugins-mythweb() {
-  pkgdesc="Web interface for the MythTV scheduler"
-  depends=('mythtv' 'perl-cgi')
-  optdepends=('lighttpd'
-              'php-apache'
-              'php-fpm'
-              'nginx')
-
-  sed -i 's/unix.*-fpm\.sock;/unix:\/var\/run\/php-fpm\/php-fpm\.sock;/' "$srcdir/mythweb/mythweb.conf.nginx"
-
-  mkdir -p "$pkgdir/var/lib/mythtv/mythweb"/{image_cache,php_sessions}
-  cp -R "$srcdir/mythweb"/* "$pkgdir/var/lib/mythtv/mythweb"
-  chown -R http:http "$pkgdir/var/lib/mythtv/mythweb"
-  chmod g+rw "$pkgdir/var/lib/mythtv/mythweb"/{image_cache,php_sessions}
 }
 
 package_mythplugins-mythzoneminder() {
