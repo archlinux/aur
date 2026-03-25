@@ -2,12 +2,12 @@
 
 pkgname=("zephyr-sdk-llvm-bin" "zephyr-sdk-llvm-toolchain-bin")
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64' 'aarch64')
 url="https://www.zephyrproject.org/"
 license=('Apache')
-conflicts=("zephyr-sdk")
+
 source_x86_64+=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/toolchain_llvm_linux-x86_64.tar.xz")
 source_aarch64+=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/toolchain_llvm_linux-aarch64.tar.xz")
 
@@ -25,7 +25,7 @@ build() {
 package_zephyr-sdk-llvm-bin() {
   depends+=('cmake' 'gperf' 'dfu-util' 'dtc' 'tk' 'xz'
     "zephyr-sdk-cmake-modules=${pkgver}" "zephyr-sdk-profile=${pkgver}" "zephyr-sdk-hosttools-bin=${pkgver}"
-    "zephyr-sdk-llvm-toolchain-bin"
+    "zephyr-sdk-llvm-toolchain-bin=${pkgver}"
   )
   provides=("zephyr-sdk-llvm")
   optdepends=('ninja' 'make' 'ccache' 'python-pyelftools'
@@ -37,9 +37,8 @@ package_zephyr-sdk-llvm-toolchain-bin() {
   provides=("zephyr-sdk-llvm-toolchain")
 
   cd "$srcdir"
-  for f in $(find llvm -type f -printf '%P\n'); do
-    install -D llvm/$f ${pkgdir}$_installdir/llvm/$f
-  done
+  mkdir -p ${pkgdir}$_installdir/
+  cp -a "${srcdir}/llvm" ${pkgdir}$_installdir/
 }
 
 # Manual test procedure: get Zephyr Kernel, build an example, and run in Qemu:
