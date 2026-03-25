@@ -12,8 +12,7 @@ makedepends=('dotnet-sdk>=10' 'git')
 optdepends=('noto-fonts-cjk: CJK font support')
 provides=('subs2srs')
 conflicts=('subs2srs' 'subs2srs-mono-git')
-_commit='ccd4f685c600efa240e9ba2f376b762ea30b3269'
-source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/${_commit}/${_pkgname}-${_commit}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
 sha256sums=('046f234fbd8008890eb49cfd6b67f20b52fe5e59db54cd75062eb500300db0f8')
 
 build() {
