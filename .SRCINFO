@@ -1,12 +1,11 @@
 pkgbase = zephyr-sdk-gnu-xtensa-mtk_mt8365_adsp_zephyr-elf-bin
 	pkgdesc = SDK for Zephyr real-time operating system
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.zephyrproject.org/
 	arch = x86_64
 	arch = aarch64
 	license = Apache
-	conflicts = zephyr-sdk
 	options = !strip
 	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_xtensa-mtk_mt8365_adsp_zephyr-elf.tar.xz
 	sha256sums_x86_64 = b335861b7a12ab559cd3d1faa8a69aef4269ccf8d3aada6632bf00aace84f04d
