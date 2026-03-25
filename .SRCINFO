@@ -1,6 +1,6 @@
 pkgbase = greetdeez-bin
 	pkgdesc = Minimal, hackable display manager greeter for greetd — Go + Svelte 5 + webkit2gtk
-	pkgver = 1.0.34
+	pkgver = 1.0.35
 	pkgrel = 1
 	url = https://github.com/nickheyer/greetdeez
 	license = MIT
@@ -10,10 +10,10 @@ pkgbase = greetdeez-bin
 	conflicts = greetdeez
 	provides = greetdeez
 	arch = aarch64
-	source_aarch64 = https://github.com/nickheyer/GreetDeez/releases/download/v${pkgver}/greetdeez_${pkgver}_linux_arm64.tar.gz
-	sha256sums_aarch64 = e48cb56775b7434abbbf97ea0853267ae742f6f3f7dff2a572ea0bd2b5045aae
+	source_aarch64 = https://github.com/nickheyer/GreetDeez/releases/download/v1.0.35/greetdeez_1.0.35_linux_arm64.tar.gz
+	sha256sums_aarch64 = 86d75c6e09042d39ed0764605dd58ad947a9e719c41349180a9a4da49fd4880e
 	arch = x86_64
-	source_x86_64 = https://github.com/nickheyer/GreetDeez/releases/download/v${pkgver}/greetdeez_${pkgver}_linux_amd64.tar.gz
-	sha256sums_x86_64 = 4b226ff72f60011aff35e877502fcf005bacc7071930e023ceb60ca1f22810eb
+	source_x86_64 = https://github.com/nickheyer/GreetDeez/releases/download/v1.0.35/greetdeez_1.0.35_linux_amd64.tar.gz
+	sha256sums_x86_64 = ea04a4e83bc7e95c6878db9b517227ad9fffe5fa9c583ed8f54267151cda6da6
 	
 pkgname = greetdeez-bin
