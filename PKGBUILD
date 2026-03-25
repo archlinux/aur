@@ -1,5 +1,5 @@
 pkgname=qobuz-player
-pkgver="0.7.4"
+pkgver="0.8.0"
 pkgrel=1
 pkgdesc="High resolution audio player backed by Qobuz"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=(alsa-lib)
 makedepends=(protobuf cargo nodejs npm)
 optdepends=('ttf-font-nerd: glyph support') 
 source=("qobuz-player-${pkgver}.tar.gz::https://github.com/SofusA/qobuz-player/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('db3a9e18eb49de93ae88e8be1eeab80c57aa398c602cb8cb2e34d0aa02860d78')
+sha256sums=('719867f6c9574476a04a0097fe87fb6336465bf959c8963dc2a4970578806b51')
 options=('!lto')
 
 prepare() {
