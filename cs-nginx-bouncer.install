@@ -1,16 +1,3 @@
-NGINX_LUA_MODULE_PATCH="$(cat <<-EOF
-	###########################################################
-	# @@@@@@@@@@@@@@ Added by cs-nginx-bouncer @@@@@@@@@@@@@@ #
-	load_module /usr/lib/nginx/modules/ndk_http_module.so;
-	load_module /usr/lib/nginx/modules/ngx_http_lua_module.so;
-	###########################################################
-EOF
-)"
-
-pre_install() {
-	mkdir -p /etc/nginx/modules
-}
-
 post_install() {
 	API_KEY=`cscli bouncers add crowdsec-nginx-bouncer -o raw`
 	export API_KEY
@@ -23,28 +10,9 @@ post_install() {
 	TMP=$(mktemp -p /tmp/)
 	install -m600 /etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf "$TMP"
 	envsubst < "$TMP" | tee /etc/crowdsec/bouncers/crowdsec-nginx-bouncer.conf >/dev/null
-	
-	echo installing lua-resty-http and lua-cjson using luarocks
-	luarocks --lua-version=5.1 install lua-resty-http 0.17.1-0
-	luarocks --lua-version=5.1 install lua-cjson 2.1.0.10-1
-}
-
-post_upgrade() {
-	if (( $(vercmp "$2" "1.0.5-6") < 0 )); then
-		TMP="$(mktemp)"
-		grep -Ev "^${NGINX_LUA_MODULE_PATCH}" /etc/nginx/nginx.conf > "$TMP"
-		mv "$TMP" /etc/nginx/nginx.conf
-
-		echo -e "\n**NEW: Please add the following line to your nginx conf file:"
-		echo -e "==> include /etc/nginx/modules/*.conf; <==\n"
-	fi
 }
 
 post_remove() {
-	echo 'removing lua-resty-http and lua-cjson' using luarocks
-	luarocks remove lua-resty-http
-	luarocks remove lua-cjson
-
 	if ! cscli bouncers remove crowdsec-nginx-bouncer --error; then
 		echo -e "\nDon't forget to uninstall the plugin!"
 		cscli bouncers list
