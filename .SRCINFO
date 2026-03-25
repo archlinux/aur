@@ -1,0 +1,16 @@
+pkgbase = python-aiohttp-sse-git
+	pkgdesc = Server-sent events support for aiohttp
+	pkgver = 2.2.0.r120.gc8c79a8
+	pkgrel = 1
+	url = https://github.com/aio-libs/aiohttp-sse
+	arch = any
+	license = Apache-2.0
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python-aiohttp
+	source = python-aiohttp-sse-git::git+https://github.com/aio-libs/aiohttp-sse.git
+	sha256sums = SKIP
+
+pkgname = python-aiohttp-sse-git
