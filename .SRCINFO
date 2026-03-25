@@ -1,0 +1,16 @@
+pkgbase = goal-git
+	pkgdesc = Hierarchical goal tracker CLI
+	pkgver = r23.c7fe54e
+	pkgrel = 1
+	url = https://github.com/futpib/goal
+	arch = x86_64
+	arch = aarch64
+	license = unknown
+	makedepends = rust
+	makedepends = cargo
+	provides = goal
+	conflicts = goal
+	source = goal-git::git+https://github.com/futpib/goal.git
+	sha256sums = SKIP
+
+pkgname = goal-git
