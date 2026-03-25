@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=SSSV Recompiled
+Comment=Space Station Silicon Valley: Recompiled
+Exec=SSSVRecompiled
+Terminal=false
+Icon=sssvrecompiled
+Type=Application
+Categories=Game;

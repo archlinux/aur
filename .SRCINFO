@@ -1,0 +1,27 @@
+pkgbase = sssvrecompiled-bin
+	pkgdesc = Space Station Silicon Valley: Recompiled (prebuilt binary)
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Cellenseres/SSSV_Recomp
+	arch = x86_64
+	license = none
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = vulkan-driver
+	depends = libx11
+	depends = libxrandr
+	depends = libxinerama
+	depends = libxcursor
+	depends = libxi
+	options = !strip
+	source = sssvrecompiled-bin-0.2.0.tar.gz::https://github.com/Cellenseres/SSSV_Recomp/releases/download/v0.2.0/SSSVRecompiled_v0.2.0_Linux.tar.gz
+	source = https://raw.githubusercontent.com/Cellenseres/SSSV_Recomp/main/icons/512.png
+	source = sssvrecompiled-wrapper
+	source = sssvrecompiled.desktop
+	sha256sums = fd1dc25d490e3861ea6279a7dd2c28aa03ac7c506775be3c4817a6fe08b8201c
+	sha256sums = 64de66d862803eafd690dc21a53e4ebc62750f8048e7be95aaa42b00fc888844
+	sha256sums = 8665a991f5f9ca4b24a4f73d97351e57385d893d05ec3857cf63126a64739003
+	sha256sums = d669b7c0071abfd3b5f5040ff10e7ebf7aae948e5db6484c69f2b88ace1d5a7b
+
+pkgname = sssvrecompiled-bin

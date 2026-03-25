@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /opt/SSSVRecompiled || exit 1
+exec /opt/SSSVRecompiled/SSSVRecompiled "$@"
