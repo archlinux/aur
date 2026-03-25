@@ -2,7 +2,7 @@
 # Automatically updated by GitHub Actions
 
 pkgname=zerx-lab-pencil-bin
-pkgver=1.1.38
+pkgver=1.1.40
 pkgrel=1
 pkgdesc="Pencil - Full canvas design tool with native performance"
 arch=('x86_64')
@@ -30,7 +30,7 @@ depends=(
     'xdg-utils'
 )
 optdepends=(
-    'libappindicator-gtk3: 系统托盘图标支持'
+    'libappindicator: 系统托盘图标支持'
     'libayatana-appindicator: 系统托盘图标支持（Ayatana）'
 )
 provides=('pencil')
@@ -38,7 +38,7 @@ conflicts=('pencil')
 options=('!strip')
 
 source_x86_64=("Pencil-${pkgver}-linux-x64.tar.gz::https://www.pencil.dev/download/Pencil-linux-x64.tar.gz")
-sha256sums_x86_64=('90f83815a7fe2bee41105f256cfa9912a23ef3ee15d7ce6948ccf3319416eb34')
+sha256sums_x86_64=('019cd5283161460c21ccffed5a47b9f33eeb47aa8c1452937a2afa8f97fa593d')
 
 package() {
     local _srcdir="Pencil-${pkgver}-linux-x64"
