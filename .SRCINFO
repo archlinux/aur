@@ -1,0 +1,21 @@
+pkgbase = efistub-libre
+	pkgdesc = Systemd's EFI stubs collections without systemd
+	pkgver = 260.1
+	pkgrel = 1
+	url = https://github.com/systemd/systemd
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = meson
+	makedepends = ninja
+	makedepends = clang
+	makedepends = lld
+	makedepends = python
+	makedepends = gperf
+	makedepends = git
+	provides = systemd-efi-stub
+	conflicts = systemd-efi-stub
+	source = git+https://github.com/systemd/systemd.git?shallow=1#tag=v260.1
+	sha256sums = SKIP
+
+pkgname = efistub-libre
+	install = efistub-libre.install

@@ -1,0 +1,24 @@
+README="$(cat << EOF
+
+===============================================================================
+
+To use the EFI stub provided by this package, update your mkinitcpio preset file:
+
+* Edit /etc/mkinitcpio.d/linux.preset (or use your own preset file name)
+* Add per preset. E.g.:
+  default_options="--uefistub /usr/lib/boot/efi/linuxx64.efi.stub"
+  fallback_options="-S autodetect --uefistub /usr/lib/boot/efi/linuxx64.efi.stub"
+
+===============================================================================
+ 
+EOF
+)"
+
+post_install() {
+	echo "${README}"
+}
+
+post_upgrade() {
+	echo "${README}"
+}
+
