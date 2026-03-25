@@ -1,0 +1,5 @@
+[playtorrio-bin]
+source = "github"
+github = "ayman708-UX/PlayTorrio"
+use_latest_release = true
+prefix = "v"

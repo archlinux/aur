@@ -9,4 +9,3 @@ Categories=AudioVideo;Video;Player;Network;
 MimeType=application/x-bittorrent;x-scheme-handler/magnet;
 StartupWMClass=PlayTorrio
 StartupNotify=true
-

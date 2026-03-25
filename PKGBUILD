@@ -1,6 +1,8 @@
-# Maintainer: Antariksh Singh <antarikshsingh212@gmail.com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
+# Contributor: Antariksh Singh <antarikshsingh212@gmail.com>
+
 pkgname=playtorrio-bin
-pkgver=2.5.0
+pkgver=2.8.6
 pkgrel=1
 pkgdesc="All-in-one media center for streaming and for downloading games"
 arch=('x86_64')
@@ -13,13 +15,14 @@ optdepends=('vlc: Alternative media player'
 provides=('playtorrio')
 conflicts=('playtorrio' 'playtorrio-git')
 source=("${pkgname}-${pkgver}.AppImage::https://github.com/ayman708-UX/PlayTorrio/releases/download/v${pkgver}/PlayTorrio.AppImage"
-  "playtorrio.desktop")
-sha256sums=('484c0b7e3efdf2189b6cdab10317790ad39f1d66aba9ed54ce8326c26da98681'
-            '75681351c5da62ada264bf23a2b1d89cf47d64b0739dc5286a8bd3464a079c28')
+        "playtorrio.desktop")
+sha256sums=('71f0a8e5e2f535a1dcb86b190f3f7f0c530d56dd6a17881a6db4797043604a89'
+            'c82764c8163308b0e76c17b341e2a93d395f83cb8c5bb299986344de719ff1a1')
 noextract=("${pkgname}-${pkgver}.AppImage")
 
 prepare() {
   chmod +x "${pkgname}-${pkgver}.AppImage"
+
   "./${pkgname}-${pkgver}.AppImage" --appimage-extract
 }
 
