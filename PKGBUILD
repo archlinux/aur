@@ -1,6 +1,6 @@
 pkgname=oranglauncher-bin
-pkgver=5.1
-pkgrel=5
+pkgver=5.2
+pkgrel=1
 pkgdesc="Orange Launcher for Arch Linux"
 arch=(x86_64)
 url="https://oranges.lt"
@@ -12,7 +12,7 @@ source=("https://github.com/Orang-Studio/OrangLaunch/releases/download/${pkgver}
         "oranglauncher.desktop"
         "orange.png"
         "LICENSE")
-sha256sums=('0474d65d3a12310aef63c367e4a41a1549ee66fbaf9cd0705f4b92d660e7cca1'
+sha256sums=('d2a9920d6ad2d182f7b45704633a99afab18be5109b987f94c1bbcf1463dcc6d'
             '8ce3b336dbf9739d9bd5fc0278b19f10c7539e23f05f399e288b2d267ec4e78a'
             'ddbe0ca155b67fcfc1fecdba1cbc6a3aac5a2011316bbb4a222e1f48f8987968'
             '3c8133c78d2e468f22643e465f8abcf4404742dc1b80c5eb64742039d70c5afa')
