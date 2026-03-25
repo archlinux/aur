@@ -1,7 +1,7 @@
 # Maintainer: Klod Cripta <KlodCripta@linux.it>
 
 pkgname=distrohelper
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Interactive Bash script to help choose a GNU/Linux distribution"
 arch=('any')
