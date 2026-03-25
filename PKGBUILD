@@ -5,7 +5,7 @@
 
 pkgname=visual-paradigm
 _pkgver_major=18.0
-_pkgver_minor=20260311
+_pkgver_minor=20260321
 pkgver=${_pkgver_major}.${_pkgver_minor}
 pkgrel=1
 pkgdesc="UML design application"
@@ -23,7 +23,7 @@ source=('https://www.visual-paradigm.com/downloads/vp/Visual_Paradigm_Linux64_In
   'LICENSE.txt'
   'x-visual-paradigm.xml')
 
-sha256sums=('3653aebba32bcfe6e31c0d3272c448b5d165637c25e00bf40e5198d00176b2cc'
+sha256sums=('63ea63e6252bda55e909727785fc8657560c42c47c6e0a0228c248399be5d966'
             'f59e20eeeae9f03c95edff2f0d0302db872221fb7a5493ca736077f1d7bab7df'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
             'd2201888fc79de759b34c2d4c16610151b9fb2eae00990fe729a8588ec1e1727'
