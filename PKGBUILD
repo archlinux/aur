@@ -1,6 +1,6 @@
 # Maintainer: Yves Gugger <yves@pounce.ch>
 pkgname=lean-ctx
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Hybrid Context Optimizer — reduces LLM token consumption by up to 99%. MCP Server + Shell Hook + 75+ CLI compression patterns + tree-sitter AST (14 languages)."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cargo')
 depends=('gcc-libs')
 source=("$pkgname-$pkgver.crate::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('790f0dd12aee79bbab7c5ef83d3d4b0b65548f10fe4f300b858066f35eede65c')
+sha256sums=('86c9949a98ef9014f873dadba0bd7eb5f23c2701ec0bf42262c801217b586776')
 
 prepare() {
   cd "$pkgname-$pkgver"

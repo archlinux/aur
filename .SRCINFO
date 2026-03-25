@@ -1,13 +1,13 @@
 pkgbase = lean-ctx
 	pkgdesc = Hybrid Context Optimizer — reduces LLM token consumption by up to 99%. MCP Server + Shell Hook + 75+ CLI compression patterns + tree-sitter AST (14 languages).
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://leanctx.com
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = lean-ctx-1.8.0.crate::https://static.crates.io/crates/lean-ctx/lean-ctx-1.8.0.crate
-	sha256sums = 790f0dd12aee79bbab7c5ef83d3d4b0b65548f10fe4f300b858066f35eede65c
+	source = lean-ctx-1.8.1.crate::https://static.crates.io/crates/lean-ctx/lean-ctx-1.8.1.crate
+	sha256sums = 86c9949a98ef9014f873dadba0bd7eb5f23c2701ec0bf42262c801217b586776
 
 pkgname = lean-ctx
