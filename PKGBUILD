@@ -5,7 +5,7 @@ _pkgname=tirith
 pkgname=${_pkgname}-bin
 pkgdesc='Terminal security - catches homograph attacks, pipe-to-shell, ANSI injection'
 
-pkgver=0.2.9
+pkgver=0.2.10
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -42,8 +42,8 @@ sha256sums=('e43d792fdcc292844fbddc3639304287ca83b51d4428fe59fce1a70b9eaa2d81'
             '2fa7836136f7415775146bc157d88c94d541c89bce825dfa9b6bbc521d85a42e'
             'c2309c73c4f26ef5338b8e734c565e75c9e7020e3c03e3df00ce920f5b9a6aae'
             'b52ecd0fb9eb0e88291ca0e00c68881f218991a3fb8e4752c897aedae11f8176')
-sha256sums_x86_64=('aa728b12421180c267f7859f38d2971fdea66d61d5c334b7e7c381c3edbb4f6a')
-sha256sums_aarch64=('da10a4585e2e44c9ca1ed3a0ddf910860ce3988eddbcff71508b361ee9a599b4')
+sha256sums_x86_64=('ed84c834340590958533c63b47df2ef1420985e6a96b6fd2c9dddbb37c6d8f5c')
+sha256sums_aarch64=('3d710fbc5832a33c2c1968c30de2ff261a86109cd3023cf0b970ffcec9bd1697')
 
 
 package() {
