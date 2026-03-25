@@ -15,10 +15,6 @@ conflicts=('subs2srs' 'subs2srs-mono-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${_pkgname}-v${pkgver}.tar.gz")
 sha256sums=('8bbef5785649dee749d3b6a678e4c7866f5319e273fe32df31bfd5355a701012')
 
-prepare() {
-    mv "${_pkgname}-v${pkgver}"* "${_pkgname}-v${pkgver}"
-}
-
 build() {
     cd "${_pkgname}-v${pkgver}"
     export DOTNET_CLI_HOME="$srcdir/.dotnet"
