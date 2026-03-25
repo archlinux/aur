@@ -1,0 +1,5 @@
+[wrappe-bin]
+source = "github"
+github = "Systemcluster/wrappe"
+use_latest_release = true
+prefix = "v"

@@ -1,9 +1,9 @@
-# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dor com>
+# Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
 _pkgauthor=Systemcluster
 _pkgname=wrappe
 pkgname=${_pkgname}-bin
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Packer for creating self-contained single-binary applications from executables and directories'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -17,8 +17,8 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
         "README-${pkgver}.md::${_urlraw}/README.md")
 source_x86_64=("${url}/releases/download/v${pkgver}/${_pkgname}-linux")
 sha256sums=('d58ac9ac6ec1e81f7028f5dbce0fa252dae0ee540dd970c929b7dfd18d3589c3'
-            '9175d3bfd3615591644fe79adec36c22eaa41322b5f282414cd74b6a16ee774f')
-sha256sums_x86_64=('280628ed3454a73e172bdd19b045e3797942786f8b676ac6fa45df836be2c0fe')
+            'd9bd44920edaf85478c1b26bb9bb0dc1f4f2892ed09a38eb00845930fd5c1cff')
+sha256sums_x86_64=('e1ee0e1d909ff121e3c730f7068f23ae7f881aed3e244522749b26e55e0be34d')
 
 
 package() {
