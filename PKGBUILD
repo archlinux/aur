@@ -5,7 +5,8 @@
 pkgname=ergochat
 _upstream_pkgname=ergo
 pkgver=2.18.0
-pkgrel=1
+pkgrel=2
+_pkgfeatures="i18n mysql postgresql sqlite"
 pkgdesc="A modern IRC server written in Go"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/ergochat/ergo"
@@ -57,6 +58,7 @@ build() {
         -buildmode=pie \
         -mod=vendor \
         -modcacherw \
+        -tags "${_pkgfeatures}" \
         -ldflags "-X main.commit=${GIT_COMMIT} -compressdwarf=false -linkmode external -extldflags \"${LDFLAGS}\"" \
         -v \
         .
