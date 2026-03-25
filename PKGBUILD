@@ -6,7 +6,7 @@ arch=('any')
 license=('MIT')
 url='https://github.com/Salamek/cron-descriptor'
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('e89864b45eafae7d587701d8373bc6b0aaf8d1111257937877f8fd37e9fbcb2a')
+sha256sums=('729544cb6b6d8a6b477206ba497072731cf1fccc6642782fb57fa427df4300e5')
 makedepends=('python-setuptools')
 depends=(
     'python'
