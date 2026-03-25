@@ -1,6 +1,6 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=otf-tiro-indigo-git
-pkgdesc="Tiro Indigo Indic Typefaces, based on the series of fonts for Harvard's Murty Classical Library of India. Includes Bangla (Bengali), Devanagiri (Hindi, Sanskrit and Marathi varients), Gurmukhi (Punjabi), Kannada, Tamil and Telugu (built from source)"
+pkgdesc="Tiro Indigo Indic Typefaces, based on the series of fonts for Harvard's Murty Classical Library of India. Includes Bangla (Bengali), Devanagari (Hindi, Sanskrit and Marathi variants), Gurmukhi (Punjabi), Kannada, Tamil and Telugu (built from source)"
 pkgver=1.65.r0.gbb6971b # This will be dynamically updated by pkgver()
 pkgrel=1
 arch=('any')
