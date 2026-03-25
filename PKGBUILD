@@ -1,6 +1,6 @@
 # Maintainer: agony <27015 at riseup dot net>
 pkgname=kio-s3
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="KIO worker for Amazon S3 and compatible storage"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('kio' 'ki18n' 'aws-sdk-cpp' 'kirigami-addons')
 makedepends=('extra-cmake-modules' 'cmake' 'kdoctools' 'kcmutils')
 conflicts=('kio-s3-git')
 source=("https://download.kde.org/stable/kio-s3/$pkgname-$pkgver.tar.xz")
-sha256sums=('1149f9a0677b2b626d716a369762542c831c0d6b512357f22d5a43ba3f325625')
+sha256sums=('81b181fa61a687c319303bf05debe09176ef64320ff7577e968d0fd46aa6e6ee')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
