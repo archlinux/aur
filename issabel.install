@@ -1,0 +1,24 @@
+post_install() {
+  echo ""
+  echo "=========================================="
+  echo "  Issabel PBX Installation Complete!"
+  echo "=========================================="
+  echo ""
+  echo "Services to start:"
+  echo "  sudo systemctl enable --now mariadb"
+  echo "  sudo systemctl enable --now httpd"
+  echo "  sudo systemctl enable --now asterisk"
+  echo ""
+  echo "Web interface: http://localhost:8080/index.php"
+  echo "Default login: admin / admin1234"
+  echo ""
+  echo "CHANGE PASSWORD IMMEDIATELY!"
+  echo ""
+  echo "Documentation:"
+  echo "  /usr/share/doc/issabel/"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
