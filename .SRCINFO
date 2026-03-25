@@ -1,5 +1,5 @@
 pkgbase = millennium
-	pkgver = 3.0.0_beta.14
+	pkgver = 3.0.0_beta.16
 	pkgrel = 1
 	url = https://github.com/SteamClientHomebrew/Millennium
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = millennium
 	makedepends = libx11
 	makedepends = libxtst
 	options = debug
-	source = git+https://github.com/SteamClientHomebrew/Millennium.git#commit=7b76c57a5bce56e33aa718bf0eb66c15049de379
+	source = git+https://github.com/SteamClientHomebrew/Millennium.git#commit=748269fcda3c7b28af0c653e84a9264762fdf9ed
 	sha256sums = SKIP
 
 pkgname = millennium
