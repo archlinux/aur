@@ -6,7 +6,7 @@ _projname=${_pkgname}-cli
 pkgname=${_projname}-bin
 pkgdesc="A terminal regex tester with real-time matching and multi-engine support"
 
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -24,8 +24,8 @@ depends=('glibc' 'libgcc' 'pcre2')
 
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_projname}-${_barch[0]}.tar.xz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.txz::${url}/releases/download/${_pkgvername}/${_projname}-${_barch[1]}.tar.xz")
-sha256sums_x86_64=('b15f6f99e331f126caf36ccb4c7757721c2cdbcc776a786acb5841d7a51675d1')
-sha256sums_aarch64=('c287cbed6808a4346eb5ee28707d7098a8e79bfde724f5f3d122b02440da9954')
+sha256sums_x86_64=('1e0df17231ce179900d50f2829e017cfcf336f05d44eee4b69209fb6c59e787b')
+sha256sums_aarch64=('1d1211e1b663f307e590b3d3a0f528869b82e9642922660e6dce2d8cd001cc7b')
 
 
 case ${CARCH} in
