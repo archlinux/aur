@@ -1,0 +1,20 @@
+pkgbase = gpds
+	pkgdesc = A general purpose data serializer
+	pkgver = 1.9.0
+	pkgrel = 1
+	url = https://github.com/simulton/gpds
+	arch = x86_64
+	license = LicenseRef-SimultonGmbH
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = tinyxml2
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = gpds
+	conflicts = gpds
+	source = gpds::git+https://github.com/simulton/gpds.git#tag=1.9.0
+	sha256sums = 51c5b20cff184bf9326acc3bff449fd8d60239d20f043eb32a5a594cfbdc1cda
+
+pkgname = gpds
