@@ -2,7 +2,7 @@
 
 _pkgbase=howdy
 pkgname="$_pkgbase-git"
-pkgver=r586.c4521c1
+pkgver=r592.d3ab993
 pkgrel=1
 pkgdesc="Windows Hello style facial authentication for Linux"
 arch=('x86_64')
@@ -19,13 +19,13 @@ source=(
 	"https://github.com/davisking/dlib-models/raw/master/dlib_face_recognition_resnet_model_v1.dat.bz2"
 	"https://github.com/davisking/dlib-models/raw/master/mmod_human_face_detector.dat.bz2"
 	"https://github.com/davisking/dlib-models/raw/master/shape_predictor_5_face_landmarks.dat.bz2"
+	"polkit-agent-helper-howdy.conf"
 )
-md5sums=(
-	'SKIP'
-	'1b31cc4419cc8f1018117249b64bd683'
-	'5edccec8ac713d743be4865ff6ead7f7'
-	'ef591cf713630226b35b11d0e1733118'
-)
+md5sums=('SKIP'
+         '1b31cc4419cc8f1018117249b64bd683'
+         '5edccec8ac713d743be4865ff6ead7f7'
+         'ef591cf713630226b35b11d0e1733118'
+         '4a3f094d3123029f67a7e6885fcc49bb')
 
 pkgver() {
 	cd $_pkgbase
@@ -54,4 +54,8 @@ package() {
 
 	cd "$srcdir"
 	install -Dm644 *.dat "$pkgdir/usr/share/dlib-data"
+
+	# Workaround for polkit 127+ breaking howdy (boltgolt/howdy#1077)
+	install -Dm644 polkit-agent-helper-howdy.conf \
+		"$pkgdir/usr/lib/systemd/system/polkit-agent-helper@.service.d/10-howdy.conf"
 }

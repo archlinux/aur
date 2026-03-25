@@ -22,9 +22,11 @@ pkgbase = howdy-git
 	source = https://github.com/davisking/dlib-models/raw/master/dlib_face_recognition_resnet_model_v1.dat.bz2
 	source = https://github.com/davisking/dlib-models/raw/master/mmod_human_face_detector.dat.bz2
 	source = https://github.com/davisking/dlib-models/raw/master/shape_predictor_5_face_landmarks.dat.bz2
+	source = polkit-agent-helper-howdy.conf
 	md5sums = SKIP
 	md5sums = 1b31cc4419cc8f1018117249b64bd683
 	md5sums = 5edccec8ac713d743be4865ff6ead7f7
 	md5sums = ef591cf713630226b35b11d0e1733118
+	md5sums = 4a3f094d3123029f67a7e6885fcc49bb
 
 pkgname = howdy-git
