@@ -1,7 +1,7 @@
 # Maintainer: Evan Chen <evan@evanchen.cc>
 
 pkgname=borse
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Practice braille, Morse, semaphore.'
 arch=(any)
@@ -21,5 +21,5 @@ package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
-sha256sums=('01b69941b92f4ebf0349142627d50535560656434bd33d3dcd717da23be7f9e1'
+sha256sums=('e86a206fd859f1fe8f4fe4fa35b77cddb3f266a3628a23d23eb337419f1c254d'
             '82af9d0f8e6e2acd6c36b1426eb1d70bc3e9b16a126ae20fcd4f8d1101e64c47')
