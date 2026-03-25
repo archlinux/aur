@@ -1,0 +1,16 @@
+pkgbase = unispec
+	pkgdesc = Spec Driven Development that doesn't suck. Build your own development workflows with it's modular system (built in Rust btw) ;)
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/uwzis/unispec
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = riscv64
+	license = MIT
+	makedepends = cargo
+	makedepends = make
+	source = unispec-0.0.3::git+https://github.com/uwzis/unispec.git
+	sha256sums = SKIP
+
+pkgname = unispec
