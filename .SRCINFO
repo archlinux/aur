@@ -1,13 +1,16 @@
 pkgbase = mopidy-local
 	pkgdesc = Mopidy extension for local media playback
-	pkgver = 3.3.0
+	pkgver = 4.0.0a1
 	pkgrel = 1
 	url = https://github.com/mopidy/mopidy-local
 	arch = any
 	license = APACHE
 	makedepends = python3
-	makedepends = python-setuptools
-	depends = mopidy>=3.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = mopidy>=4.0.0a3
 	depends = python-setuptools
 	depends = python-uritools
 	provides = mopidy-local-images
@@ -16,7 +19,7 @@ pkgbase = mopidy-local
 	conflicts = mopidy-local-sqlite
 	replaces = mopidy-local-images
 	replaces = mopidy-local-sqlite
-	source = mopidy-local-3.3.0.tar.gz::https://github.com/mopidy/mopidy-local/archive/v3.3.0.tar.gz
-	sha256sums = 135f682edfb5fef88de2e37971ecb08e25852ecf2a9a11073a34553deb1c222a
+	source = mopidy-local-4.0.0a1.tar.gz::https://github.com/mopidy/mopidy-local/archive/v4.0.0a1.tar.gz
+	sha256sums = 5b41e027cd2a4cecc901e89653cbaabd172efe8d6eca198e2a719ca0a350c454
 
 pkgname = mopidy-local
