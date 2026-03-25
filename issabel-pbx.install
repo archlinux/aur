@@ -1,0 +1,71 @@
+post_install() {
+  pathModule="/usr/share/issabel/module_installer/issabel-pbx-5.0.0-1"
+
+  echo ">>> Updating Asterisk includes for Issabel..."
+  if [ ! -f /etc/asterisk/extensions_override_issabelpbx.conf ]; then
+    echo "#include extensions_override_issabel.conf" > /etc/asterisk/extensions_override_issabelpbx.conf
+  fi
+
+  # Merging menus
+  issabel-menumerge "$pathModule/menu.xml"
+
+  # Database setup
+  issabel-dbprocess "install" "$pathModule/setup/db"
+
+  # AGI permissions
+  chown -R asterisk:asterisk /var/lib/asterisk/agi-bin
+  chown -R asterisk:asterisk /var/lib/asterisk/moh
+
+  # Apply PHP 8.x compatibility patches
+  echo ">>> Applying PHP 8.x compatibility fixes..."
+  
+  # Fix qr_batch IssabelQRConfig.class.php - count() on potentially false result
+  if [ -f /var/www/html/modules/qr_batch/libs/IssabelQRConfig.class.php ]; then
+    sed -i 's/if(count($result)>0)/if($result !== false \&\& count($result)>0)/' \
+      /var/www/html/modules/qr_batch/libs/IssabelQRConfig.class.php
+  fi
+
+  # Fix admin/views/menu.php - implode() requires separator in PHP 8
+  if [ -f /var/www/html/admin/views/menu.php ]; then
+    sed -i 's/\$mods\[\$t\] \.= implode(\$items);/$mods[$t] .= implode("", $items);/' \
+      /var/www/html/admin/views/menu.php
+    sed -i 's/\$out \.= implode(\$mods);/$out .= implode("", $mods);/' \
+      /var/www/html/admin/views/menu.php
+    # Add $mods array initialization
+    sed -i '91i\    $mods = array();' /var/www/html/admin/views/menu.php
+  fi
+
+  # Fix admin/libraries/gettextinc.php - syntax error
+  if [ -f /var/www/html/admin/libraries/gettextinc.php ]; then
+    # Fix malformed function definition
+    sed -i "s/if (!function_exists('__')) { function__(\$msgid) {); }/function __(\$msgid) {/" \
+      /var/www/html/admin/libraries/gettextinc.php 2>/dev/null || true
+  fi
+
+  # Clear template cache
+  rm -rf /var/www/html/var/templates_c/*
+
+  # Set permissions
+  chown -R asterisk:asterisk /var/www/html/modules
+  chmod 755 /var/www/html/modules
+  find /var/www/html/modules -type d -exec chmod 755 {} \;
+  find /var/www/html/modules -type f -exec chmod 644 {} \;
+
+  chown -R asterisk:asterisk /var/www/html/admin
+  chmod 755 /var/www/html/admin
+  chown -R asterisk:asterisk /var/www/html/admin/modules
+  chmod 755 /var/www/html/admin/modules
+
+  # Restart Apache
+  systemctl restart httpd 2>/dev/null || true
+
+  echo ""
+  echo ">>> Issabel PBX Module installed."
+  echo ">>> Access: http://localhost:8080/index.php"
+  echo ">>> Login: admin / admin1234"
+  echo ""
+}
+
+post_upgrade() {
+  post_install
+}
