@@ -45,7 +45,17 @@
  		err = btmtk_usb_uhw_reg_read(hdev, MTK_BT_RESET_REG_CONNV3, &val);
  		if (err < 0)
  			return err;
-@@ -1310,6 +1323,11 @@
+@@ -988,7 +1001,8 @@
+ 	if (!btmtk_data->isopkt_intf)
+ 		return -ENODEV;
+ 
+-	err = usb_set_interface(btmtk_data->udev, MTK_ISO_IFNUM, 1);
++	err = usb_set_interface(btmtk_data->udev, MTK_ISO_IFNUM,
++			       (intf->num_altsetting > 1) ? 1 : 0);
+ 	if (err < 0) {
+ 		bt_dev_err(hdev, "setting interface failed (%d)", -err);
+ 		return err;
+@@ -1310,6 +1324,11 @@
  		fw_flavor = (fw_flavor & 0x00000080) >> 7;
  	}
  
@@ -57,7 +67,7 @@
  	btmtk_data->dev_id = dev_id;
  
  	err = btmtk_register_coredump(hdev, btmtk_data->drv_name, fw_version);
-@@ -1324,23 +1342,38 @@
+@@ -1324,23 +1343,38 @@
  		fwname = FIRMWARE_MT7668;
  		break;
  	case 0x7922:

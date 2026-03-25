@@ -212,7 +212,7 @@ check_aspm() {
 # ---------------------------------------------------------------------------
 check_bt_usb() {
 	# Known MT6639 BT USB vendor:product pairs
-	local bt_ids=("0489:e13a" "0489:e0fa" "0489:e10f" "0489:e116" "13d3:3588" "0e8d:6639")
+	local bt_ids=("0489:e13a" "0489:e0fa" "0489:e10f" "0489:e110" "0489:e116" "13d3:3588" "0e8d:6639")
 	local lsusb_out
 	lsusb_out="$(lsusb 2>/dev/null || true)"
 
@@ -736,7 +736,8 @@ main() {
 
 	# Count failures from output (FAIL_COUNT doesn't propagate from subshells)
 	local report
-	report=$(cat <<EOF
+	report=$(
+		cat <<EOF
 ## Driver Validation Report
 - Package: mediatek-mt7927-dkms ${pkg_ver}
 - Kernel: ${kernel_ver}
@@ -758,7 +759,7 @@ main() {
 - Data path: ${data_result}
 - Errors: ${errors_result}
 EOF
-)
+	)
 	echo "$report"
 
 	local fail_count

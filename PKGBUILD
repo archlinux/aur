@@ -45,7 +45,7 @@
 # Place the ZIP in this directory before running makepkg.
 
 pkgname=mediatek-mt7927-dkms
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 # Keywords: MT7927 MT7925 MT6639 MT7902 Filogic 380 WiFi 7 Bluetooth btusb mt7925e mt7921e
 pkgdesc="DKMS Bluetooth (MT6639) and WiFi (MT7925e/MT7902) modules for MediaTek MT7927 Filogic 380"
@@ -75,7 +75,7 @@ source=(
 )
 sha256sums=('c16068a3af12e3943dee3b1eef57ca70229c069128bfa1184fb3f48b219d55bf'
             '5410e79d1c9170264769c7149a78bf588ec85245c1556833605fc1c4657ba37a'
-            'ae562ea08eceeca86ec7aab651da9c0b2138e0c5cb4b7f6e85141ff538e1447c')
+            'b1267e7f9a1eaa41e58e53353d0c0318d155fc3235a047368d299ea20414cc9b')
 
 # Auto-download via ASUS CDN token API
 _download_driver_zip() {

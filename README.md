@@ -216,9 +216,10 @@ for kernels that include MT7927 support.
 These are planned as follow-up patches once the base series lands:
 
 - **MLO (Multi-Link Operation)** ([#25](https://github.com/jetm/mediatek-mt7927-dkms/issues/25)) -
-  STR dual-link verified working (5GHz+2.4GHz) with three targeted fixes:
-  cfg80211 BSS flag relaxation, ROC timer extension, and 5GHz/6GHz band
-  exclusion. Needs more testing before upstream submission.
+  Not included in the current package. Three targeted fixes (cfg80211 BSS flag
+  relaxation, ROC timer extension, 5GHz/6GHz band exclusion) have been verified
+  in development (STR dual-link, 5GHz+2.4GHz) but need more testing before
+  shipping. If your router has MLO enabled, disable it to avoid disconnects.
 - **mac_reset recovery** ([#28](https://github.com/jetm/mediatek-mt7927-dkms/issues/28)) -
   full DMA reinitialization on firmware crash. Has unguarded paths on
   mt7925 standalone that need fixing first.

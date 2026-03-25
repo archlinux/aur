@@ -39,6 +39,7 @@ Register values derived from Loong0x00's reverse-engineered MT7927
 driver.
 
 Reported-by: 张旭涵 <Loong.0x00@gmail.com>
+Closes: https://github.com/openwrt/mt76/issues/927
 Tested-by: Marcin FM <marcin@lgic.pl>
 Tested-by: Cristian-Florin Radoi <radoi.chris@gmail.com>
 Tested-by: George Salukvadze <giosal90@gmail.com>
@@ -50,16 +51,17 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-152d568b18061b617b164ed55d71bd637ce373cc
+1f0c7853737a0d87e7a0604cdf8fd2302a2f61e8
 diff --git a/mt7925/init.c b/mt7925/init.c
-index 3ce5d6f..84af52a 100644
+index 3ce5d6f..c4c9938 100644
 --- a/mt7925/init.c
 +++ b/mt7925/init.c
-@@ -117,2 +117,14 @@ static int __mt7925_init_hardware(struct mt792x_dev *dev)
+@@ -117,2 +117,15 @@ static int __mt7925_init_hardware(struct mt792x_dev *dev)
  
 +	/* MT7927: Enable DBDC (dual-band) mode. Without this, firmware
 +	 * defaults to 2.4GHz only and ignores 5GHz scan requests.
-+	 * MT7925 firmware handles DBDC automatically. */
++	 * MT7925 firmware handles DBDC automatically.
++	 */
 +	if (is_mt7927(&dev->mt76)) {
 +		ret = mt7925_mcu_set_dbdc(&dev->mphy, true);
 +		if (ret) {
@@ -71,10 +73,10 @@ index 3ce5d6f..84af52a 100644
 +
  out:
 diff --git a/mt7925/pci.c b/mt7925/pci.c
-index e113a8e..c810569 100644
+index 415194a..393d9f4 100644
 --- a/mt7925/pci.c
 +++ b/mt7925/pci.c
-@@ -401,2 +401,60 @@ static const struct mt792x_irq_map mt7927_irq_map = {
+@@ -402,2 +402,60 @@ static const struct mt792x_irq_map mt7927_irq_map = {
  };
 +
 +static int mt7927_chip_init(struct mt792x_dev *dev)
@@ -135,12 +137,13 @@ index e113a8e..c810569 100644
 +	mt76_rr(dev, MT7927_CBINFRA_MISC0_REMAP_WF);
 +}
  static int mt7925_pci_probe(struct pci_dev *pdev,
-@@ -483,2 +541,12 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+@@ -484,2 +542,13 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
  
 +	/* MT7927 firmware lacks the connac2 feature trailer, so
 +	 * mt792x_get_mac80211_ops() can't detect CNM support and
 +	 * replaces chanctx/ROC/mgd_prepare_tx ops with stubs.
-+	 * Force CNM and restore the original mt7925 ops. */
++	 * Force CNM and restore the original mt7925 ops.
++	 */
 +	if ((pdev->device == 0x6639 || pdev->device == 0x7927) &&
 +	    !(features & MT792x_FW_CAP_CNM)) {
 +		features |= MT792x_FW_CAP_CNM;
@@ -148,11 +151,11 @@ index e113a8e..c810569 100644
 +	}
 +
  	mdev = mt76_alloc_device(&pdev->dev, sizeof(*dev), ops, &drv_ops);
-@@ -519,2 +587,3 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
- 
-+
+@@ -519,3 +588,2 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+ 		dev->aspm_supported = true;
+-
  	ret = __mt792x_mcu_fw_pmctrl(dev);
-@@ -523,5 +592,10 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+@@ -524,5 +592,10 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
  
 -	ret = __mt792xe_mcu_drv_pmctrl(dev);
 -	if (ret)
@@ -166,7 +169,7 @@ index e113a8e..c810569 100644
 +	if (is_mt7927_hw)
 +		mt7927_cbtop_remap(dev);
  
-@@ -532,7 +606,21 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+@@ -533,7 +606,21 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
  
 -	mt76_rmw_field(dev, MT_HW_EMI_CTL, MT_HW_EMI_CTL_SLPPROT_EN, 1);
 +	/* Force chip ID for MT7927 hardware if CHIPID read returns garbage */
@@ -193,14 +196,15 @@ index e113a8e..c810569 100644
 +	}
  
 diff --git a/mt7925/pci_mac.c b/mt7925/pci_mac.c
-index 1626a36..cf578a2 100644
+index 1626a36..9b3eeb1 100644
 --- a/mt7925/pci_mac.c
 +++ b/mt7925/pci_mac.c
-@@ -74,2 +74,10 @@ int mt7925e_mac_reset(struct mt792x_dev *dev)
+@@ -74,2 +74,11 @@ int mt7925e_mac_reset(struct mt792x_dev *dev)
  
 +	/* MT7927: CLR_OWN and WPDMA reset destroy DMA ring configuration.
 +	 * A full reset requires re-running mt7927_dma_init() which is not
-+	 * yet implemented in the recovery path. */
++	 * yet implemented in the recovery path.
++	 */
 +	if (is_mt7927(&dev->mt76)) {
 +		dev_warn(dev->mt76.dev, "MT7927 mac_reset not supported, reload module to recover\n");
 +		return -EOPNOTSUPP;
@@ -208,10 +212,10 @@ index 1626a36..cf578a2 100644
 +
  	mt792xe_mcu_drv_pmctrl(dev);
 diff --git a/mt7925/pci_mcu.c b/mt7925/pci_mcu.c
-index 6cceff8..206d525 100644
+index 6cceff8..1f50d1e 100644
 --- a/mt7925/pci_mcu.c
 +++ b/mt7925/pci_mcu.c
-@@ -37,9 +37,16 @@ int mt7925e_mcu_init(struct mt792x_dev *dev)
+@@ -37,9 +37,17 @@ int mt7925e_mcu_init(struct mt792x_dev *dev)
  
 -	err = mt792xe_mcu_fw_pmctrl(dev);
 -	if (err)
@@ -220,7 +224,8 @@ index 6cceff8..206d525 100644
 +		/* MT7927: CLR_OWN was already done in mt7927_dma_init().
 +		 * The ROM re-initializes WFDMA on every CLR_OWN, wiping
 +		 * ring and prefetch config. Skip SET_OWN/CLR_OWN here
-+		 * to preserve DMA state. */
++		 * to preserve DMA state.
++		 */
 +	} else {
 +		err = mt792xe_mcu_fw_pmctrl(dev);
 +		if (err)

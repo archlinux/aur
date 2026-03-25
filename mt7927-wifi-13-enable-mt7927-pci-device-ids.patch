@@ -20,9 +20,9 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-cd865372169db2ce32bb5d90032a6c66cb267276
+d7646b08c81b8b7213be177009d242886eba7155
 diff --git a/mt7925/pci.c b/mt7925/pci.c
-index 6ecc32a..112625a 100644
+index 693e08f..00c3601 100644
 --- a/mt7925/pci.c
 +++ b/mt7925/pci.c
 @@ -18,2 +18,8 @@ static const struct pci_device_id mt7925_pci_device_table[] = {
@@ -34,16 +34,32 @@ index 6ecc32a..112625a 100644
 +	{ PCI_DEVICE(PCI_VENDOR_ID_MEDIATEK, 0x0738),
 +		.driver_data = (kernel_ulong_t)MT7927_FIRMWARE_WM },
  	{ },
-@@ -531,3 +537,4 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+@@ -532,3 +538,4 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
  
 -	is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927);
 +	is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927 ||
 +			pdev->device == 0x0738);
  
-@@ -550,4 +557,4 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
- 	 * Force CNM and restore the original mt7925 ops. */
+@@ -548,12 +555,12 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+ 
+-	/* MT7927 firmware lacks the connac2 feature trailer, so
+-	 * mt792x_get_mac80211_ops() can't detect CNM support and
+-	 * replaces chanctx/ROC/mgd_prepare_tx ops with stubs.
+-	 * Force CNM and restore the original mt7925 ops.
+-	 */
 -	if ((pdev->device == 0x6639 || pdev->device == 0x7927) &&
 -	    !(features & MT792x_FW_CAP_CNM)) {
-+	if ((pdev->device == 0x6639 || pdev->device == 0x7927 ||
-+	     pdev->device == 0x0738) && !(features & MT792x_FW_CAP_CNM)) {
- 		features |= MT792x_FW_CAP_CNM;
+-		features |= MT792x_FW_CAP_CNM;
+-		memcpy(ops, &mt7925_ops, sizeof(*ops));
+-	}
++		/* MT7927 firmware lacks the connac2 feature trailer, so
++		 * mt792x_get_mac80211_ops() can't detect CNM support and
++		 * replaces chanctx/ROC/mgd_prepare_tx ops with stubs.
++		 * Force CNM and restore the original mt7925 ops.
++		 */
++		if ((pdev->device == 0x6639 || pdev->device == 0x7927 ||
++		     pdev->device == 0x0738) && !(features & MT792x_FW_CAP_CNM)) {
++			features |= MT792x_FW_CAP_CNM;
++			memcpy(ops, &mt7925_ops, sizeof(*ops));
++		}
+ 

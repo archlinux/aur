@@ -1,10 +1,14 @@
 _pkgname=mediatek-mt7927
-_pkgver=2.5
 
 # Install/upgrade: handled by pacman's built-in DKMS hooks (70-dkms-install.hook,
 # 70-dkms-upgrade.hook) which automatically add, build, and install modules for
 # all kernels with headers present - skipping kernels without headers.
 
 pre_remove() {
-  dkms remove "${_pkgname}/${_pkgver}" --all || true
+  # Query actual installed version instead of hardcoding (avoids drift)
+  local ver
+  ver=$(dkms status "$_pkgname" 2>/dev/null | grep -oP "${_pkgname}[,/]\s*\K[0-9.]+" | head -1 || true)
+  if [[ -n "$ver" ]]; then
+    dkms remove "${_pkgname}/${ver}" --all || true
+  fi
 }

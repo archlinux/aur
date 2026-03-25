@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Push to AUR with .github/ directory filtered out.
+# Push to AUR with only flat files (no subdirectories).
 # AUR rejects subdirectories, so we create a filtered commit
-# parented on AUR's current master.
+# containing only blobs (files) parented on AUR's current master.
 #
 # Usage: ./push-aur.sh
 
@@ -13,8 +13,8 @@ if [[ "$aur_url" != *"aur.archlinux.org"* ]]; then
 	exit 1
 fi
 
-# Create tree without .github/, linux-stable symlink, and patches/
-aur_tree=$(git ls-tree HEAD | grep -vE '\.github|linux-stable|patches' | git mktree)
+# Positive filter: only include blobs (files), exclude all trees (directories)
+aur_tree=$(git ls-tree HEAD | grep '^100' | git mktree)
 aur_parent=$(git rev-parse aur/master)
 
 # Get short subject from HEAD commit

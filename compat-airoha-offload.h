@@ -53,6 +53,24 @@ enum airoha_npu_wlan_get_cmd { __AIROHA_NPU_WLAN_GET_CMD_MAX };
 
 struct airoha_npu {};
 
+/* DMA descriptor types referenced by dma.c */
+struct airoha_npu_rx_dma_desc {
+	u32 ctrl;
+	u32 info;
+	u32 data;
+	u32 addr;
+	u64 rsv;
+} __packed;
+
+#define NPU_TXWI_LEN	192
+
+struct airoha_npu_tx_dma_desc {
+	u32 ctrl;
+	u32 addr;
+	u64 rsv;
+	u8 txwi[NPU_TXWI_LEN];
+} __packed;
+
 static inline struct airoha_npu *airoha_npu_get(struct device *dev)
 {
 	return NULL;

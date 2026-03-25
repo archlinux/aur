@@ -1,0 +1,48 @@
+wifi: mt76: mt7925: disable ASPM and runtime PM for MT7927
+
+Disable PCIe ASPM unconditionally for MT7927. The CONNINFRA power
+domain and WFDMA register access are unreliable with PCIe L1 active,
+causing throughput to drop from 1+ Gbps to ~200 Mbps.
+
+Disable runtime PM and deep sleep for MT7927. The combo chip shares
+a CONNINFRA power domain between WiFi (PCIe) and BT (USB).
+SET_OWN/CLR_OWN transitions on the LPCTL register crash the BT
+firmware, requiring a full power cycle to recover. PM enablement will
+be addressed in a follow-up once safe power state transitions are
+determined.
+
+Signed-off-by: Javier Tia <floss@jetm.me>
+
+ba78c9477f637f911543b34452554c87761d2702
+diff --git a/mt7925/init.c b/mt7925/init.c
+index c4c9938..89140fc 100644
+--- a/mt7925/init.c
++++ b/mt7925/init.c
+@@ -245,3 +245,7 @@ int mt7925_register_device(struct mt792x_dev *dev)
+ 	dev->pm.stats.last_doze_event = jiffies;
+-	if (!mt76_is_usb(&dev->mt76)) {
++	/* MT7927: runtime PM disabled. The combo chip shares a CONNINFRA
++	 * power domain between WiFi (PCIe) and BT (USB). SET_OWN/CLR_OWN
++	 * transitions on the LPCTL register crash BT firmware.
++	 */
++	if (!mt76_is_usb(&dev->mt76) && !is_mt7927(&dev->mt76)) {
+ 		dev->pm.enable_user = true;
+diff --git a/mt7925/pci.c b/mt7925/pci.c
+index 393d9f4..693e08f 100644
+--- a/mt7925/pci.c
++++ b/mt7925/pci.c
+@@ -532,3 +532,9 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+ 
+-	if (mt7925_disable_aspm)
++	is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927);
++
++	/* MT7927: CONNINFRA power domain and WFDMA register access are
++	 * unreliable with PCIe L1 active, causing throughput to drop
++	 * from 1+ Gbps to ~200 Mbps. Disable ASPM unconditionally.
++	 */
++	if (mt7925_disable_aspm || is_mt7927_hw)
+ 		mt76_pci_disable_aspm(pdev);
+@@ -564,3 +570,2 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+ 	dev->hif_ops = &mt7925_pcie_ops;
+-	is_mt7927_hw = (pdev->device == 0x6639 || pdev->device == 0x7927);
+ 	dev->irq_map = is_mt7927_hw ? &mt7927_irq_map : &irq_map;

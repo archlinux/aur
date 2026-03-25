@@ -17,7 +17,6 @@ cd "$DKMS_DIR"
 
 PKGBUILD="$DKMS_DIR/PKGBUILD"
 DKMS_CONF="$DKMS_DIR/dkms.conf"
-INSTALL="$DKMS_DIR/mediatek-mt7927-dkms.install"
 REPO="jetm/mediatek-mt7927-dkms"
 
 # Read current version
@@ -78,33 +77,29 @@ if [[ "$aur_url" != *"aur.archlinux.org"* ]]; then
 fi
 
 # Check working tree is clean (except the files we're about to modify)
-if ! git diff --quiet --exit-code -- ':!PKGBUILD' ':!dkms.conf' ':!mediatek-mt7927-dkms.install' ':!CHANGELOG.md' ':!.SRCINFO'; then
+if ! git diff --quiet --exit-code -- ':!PKGBUILD' ':!dkms.conf' ':!CHANGELOG.md' ':!.SRCINFO'; then
 	echo "ERROR: Working tree has uncommitted changes"
 	exit 1
 fi
 
-# Bump versions in all three files
+# Bump versions
 echo ""
 echo "Bumping versions..."
 
 sed -i "s/^pkgver=.*/pkgver=${new_pkgver}/" "$PKGBUILD"
 sed -i "s/^pkgrel=.*/pkgrel=${new_pkgrel}/" "$PKGBUILD"
 sed -i "s/^PACKAGE_VERSION=.*/PACKAGE_VERSION=\"${new_pkgver}\"/" "$DKMS_CONF"
-sed -i "s/^_pkgver=.*/_pkgver=${new_pkgver}/" "$INSTALL"
 
 echo "  PKGBUILD:  pkgver=${new_pkgver} pkgrel=${new_pkgrel}"
 echo "  dkms.conf: PACKAGE_VERSION=\"${new_pkgver}\""
-echo "  install:   _pkgver=${new_pkgver}"
 
-# Verify all three match
+# Verify match
 v1=$(grep '^pkgver=' "$PKGBUILD" | cut -d= -f2)
 v2=$(grep '^PACKAGE_VERSION=' "$DKMS_CONF" | cut -d'"' -f2)
-v3=$(grep '^_pkgver=' "$INSTALL" | cut -d= -f2)
-if [[ "$v1" != "$v2" ]] || [[ "$v1" != "$v3" ]]; then
-	echo "ERROR: Version mismatch: PKGBUILD=$v1 dkms.conf=$v2 install=$v3"
+if [[ "$v1" != "$v2" ]]; then
+	echo "ERROR: Version mismatch: PKGBUILD=$v1 dkms.conf=$v2"
 	exit 1
 fi
-
 # Build package
 echo ""
 echo "Building package..."
@@ -120,27 +115,27 @@ echo ""
 read -rp "Commit and release ${new_tag}? [y/N] " confirm
 if [[ "$confirm" != [yY] ]]; then
 	echo "Aborted. Reverting version changes..."
-	git checkout -- PKGBUILD dkms.conf mediatek-mt7927-dkms.install
+	git checkout -- PKGBUILD dkms.conf
 	exit 1
 fi
 
 # Commit
-git add PKGBUILD dkms.conf mediatek-mt7927-dkms.install .SRCINFO
+git add PKGBUILD dkms.conf .SRCINFO
 git commit -m "pkg: Release ${new_tag}"
 
 # Tag
 git tag "${new_tag}"
 
-# Push
+# Push to GitHub first (tag triggers GH Actions: release + RPM/DEB)
 echo ""
-echo "Pushing to origin and aur..."
+echo "Pushing to GitHub..."
 git push origin master
-
-"${DKMS_DIR}/push-aur.sh"
-
-# Push tag — triggers GitHub Actions workflow which creates the release,
-# generates changelog, builds RPM/DEB, and attaches artifacts.
 git push origin "${new_tag}"
+
+# Push to AUR last (so GitHub release exists when AUR users see the update)
+echo ""
+echo "Pushing to AUR..."
+"${DKMS_DIR}/push-aur.sh"
 
 echo ""
 echo "Released ${new_tag}"

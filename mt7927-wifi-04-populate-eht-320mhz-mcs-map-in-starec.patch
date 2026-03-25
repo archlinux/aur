@@ -20,7 +20,7 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-b9936709bfcbab5feb6c90ee54d9b665f96629e9
+f35a9da2a47cb2b032a69313196e5159fa18b73e
 diff --git a/mt7925/mcu.c b/mt7925/mcu.c
 index dd5ecb0..a7f27c5 100644
 --- a/mt7925/mcu.c

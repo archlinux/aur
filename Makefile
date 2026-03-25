@@ -1,6 +1,7 @@
 # Generic Makefile for MediaTek MT7927 DKMS package
 
 VERSION        ?= $(shell sed -n 's/^PACKAGE_VERSION="\(.*\)"/\1/p' $(dir $(abspath $(lastword $(MAKEFILE_LIST))))dkms.conf)
+PKGBUILD_VER   ?= $(shell sed -n "s/^pkgver=\(.*\)/\1/p" $(dir $(abspath $(lastword $(MAKEFILE_LIST))))PKGBUILD)
 MT76_KVER      ?= $(shell sed -n "s/^_mt76_kver='\(.*\)'/\1/p" $(dir $(abspath $(lastword $(MAKEFILE_LIST))))PKGBUILD)
 KERNEL_TARBALL ?= linux-$(MT76_KVER).tar.xz
 DRIVER_ZIP     ?= $(firstword $(wildcard DRV_WiFi_MTK_MT7925_MT7927*.zip))
@@ -13,7 +14,7 @@ PYTHON         ?= python3
 TOPDIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 STAMP  := $(SRCDIR)/.sources-done
 
-.PHONY: download sources install clean rpm deb
+.PHONY: download sources install clean rpm deb check-version
 
 # ── download ────────────────────────────────────────────────────────
 download:
@@ -26,10 +27,18 @@ download:
 	fi
 	@$(TOPDIR)download-driver.sh .
 
+# ── version check ────────────────────────────────────────────────────
+check-version:
+	@if [ "$(VERSION)" != "$(PKGBUILD_VER)" ]; then \
+		echo >&2 "ERROR: Version mismatch: dkms.conf=$(VERSION) PKGBUILD=$(PKGBUILD_VER)"; \
+		echo >&2 "Update PACKAGE_VERSION in dkms.conf or pkgver in PKGBUILD"; \
+		exit 1; \
+	fi
+
 # ── sources ─────────────────────────────────────────────────────────
 sources: $(STAMP)
 
-$(STAMP):
+$(STAMP): check-version
 	@if [ ! -f "$(KERNEL_TARBALL)" ]; then \
 		echo >&2 "ERROR: Kernel tarball not found: $(KERNEL_TARBALL)"; \
 		echo >&2 "Run 'make download' first or set KERNEL_TARBALL=path/to/linux-$(MT76_KVER).tar.xz"; \

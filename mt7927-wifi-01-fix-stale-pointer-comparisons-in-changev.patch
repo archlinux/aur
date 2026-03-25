@@ -8,7 +8,7 @@ current link_id being freed.
 Use array-indexed access (mconfs[link_id] / mlinks[link_id]) to compare
 against the correct per-link pointers.
 
-Fixes: 69acd6d910b0 ("wifi: mt76: mt7925: add MLO support")
+Fixes: 69acd6d910b0 ("wifi: mt76: mt7925: add mt7925_change_vif_links")
 Tested-by: Marcin FM <marcin@lgic.pl>
 Tested-by: Cristian-Florin Radoi <radoi.chris@gmail.com>
 Tested-by: George Salukvadze <giosal90@gmail.com>
@@ -20,7 +20,7 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-1845304727cf2ba1a51533e66c7926ca5ed63d8e
+cea97b5a804238af7979727f6458401ed3f48e7d
 diff --git a/mt7925/main.c b/mt7925/main.c
 index 2d358a9..f128a19 100644
 --- a/mt7925/main.c

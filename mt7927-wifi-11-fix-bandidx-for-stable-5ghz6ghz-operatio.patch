@@ -36,12 +36,12 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-afa9cd40227efccc04359ece4f6a9f7dc049e7ab
+f96e466934fd4d661738155bb2ad6073496251a6
 diff --git a/mt7925/main.c b/mt7925/main.c
-index cd043ac..25f8c5a 100644
+index cfce851..f36638b 100644
 --- a/mt7925/main.c
 +++ b/mt7925/main.c
-@@ -402,3 +402,15 @@ static int mt7925_mac_link_bss_add(struct mt792x_dev *dev,
+@@ -396,3 +396,15 @@ static int mt7925_mac_link_bss_add(struct mt792x_dev *dev,
  			       0 : mconf->mt76.idx;
 -	mconf->mt76.band_idx = 0xff;
 +
@@ -58,22 +58,22 @@ index cd043ac..25f8c5a 100644
 +	}
 +
  	mconf->mt76.wmm_idx = ieee80211_vif_is_mld(vif) ?
-@@ -419,3 +431,4 @@ static int mt7925_mac_link_bss_add(struct mt792x_dev *dev,
+@@ -413,3 +425,4 @@ static int mt7925_mac_link_bss_add(struct mt792x_dev *dev,
  	mlink->wcid.tx_info |= MT_WCID_TX_INFO_SET;
 -	mt76_wcid_init(&mlink->wcid, 0);
 +	mt76_wcid_init(&mlink->wcid,
 +		       mconf->mt76.band_idx == 0xff ? 0 : mconf->mt76.band_idx);
  
-@@ -2121,2 +2134,3 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
+@@ -2115,2 +2128,3 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
  	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
 +	struct mt792x_link_sta *mlink;
  	struct mt792x_dev *dev = mt792x_hw_dev(hw);
-@@ -2124,2 +2138,4 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
+@@ -2118,2 +2132,4 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
  	struct mt792x_bss_conf *mconf;
 +	u8 band_idx;
 +	u8 old_band;
  
-@@ -2139,2 +2155,17 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
+@@ -2133,2 +2149,17 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
  
 +	old_band = mconf->mt76.band_idx;
 +	if (ctx->def.chan) {

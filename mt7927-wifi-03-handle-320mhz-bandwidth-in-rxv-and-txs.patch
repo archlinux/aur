@@ -20,9 +20,9 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-64bd4a6d0d2703648bc95ad7d3cf5e08ca1f3ca6
+c0ada853641450f028e990e5b229201358d3373c
 diff --git a/mt7925/mac.c b/mt7925/mac.c
-index 871b671..106a26f 100644
+index 0d94359..4d272f0 100644
 --- a/mt7925/mac.c
 +++ b/mt7925/mac.c
 @@ -341,2 +341,7 @@ mt7925_mac_fill_rx_rate(struct mt792x_dev *dev,
@@ -33,7 +33,7 @@ index 871b671..106a26f 100644
 +		status->bw = RATE_INFO_BW_320;
 +		break;
  	default:
-@@ -993,2 +998,6 @@ mt7925_mac_add_txs_skb(struct mt792x_dev *dev, struct mt76_wcid *wcid,
+@@ -994,2 +999,6 @@ mt7925_mac_add_txs_skb(struct mt792x_dev *dev, struct mt76_wcid *wcid,
  	switch (FIELD_GET(MT_TXS0_BW, txs)) {
 +	case IEEE80211_STA_RX_BW_320:
 +		rate.bw = RATE_INFO_BW_320;

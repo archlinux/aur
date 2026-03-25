@@ -33,9 +33,9 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-5f761863159ebb79b2ca3453bfd6ea75124f8a74
+94d8392558b028ad7082cc88aa823aa8cf329bfa
 diff --git a/mt7925/pci.c b/mt7925/pci.c
-index b8f95c3..e113a8e 100644
+index 604c0e9..415194a 100644
 --- a/mt7925/pci.c
 +++ b/mt7925/pci.c
 @@ -212,4 +212,87 @@ static u32 mt7925_rmw(struct mt76_dev *mdev, u32 offset, u32 mask, u32 val)
@@ -126,7 +126,7 @@ index b8f95c3..e113a8e 100644
  {
 +	const struct mt792x_dma_config *cfg = dev->dma_config;
  	int ret;
-@@ -218,7 +301,33 @@ static int mt7925_dma_init(struct mt792x_dev *dev)
+@@ -218,7 +301,35 @@ static int mt7925_dma_init(struct mt792x_dev *dev)
  
 -	ret = mt792x_dma_disable(dev, true);
 -	if (ret)
@@ -144,6 +144,7 @@ index b8f95c3..e113a8e 100644
 +			   MT_WFDMA0_GLO_CFG_CSR_DISP_BASE_PTR_CHAIN_EN |
 +			   MT_WFDMA0_GLO_CFG_OMIT_TX_INFO |
 +			   MT_WFDMA0_GLO_CFG_OMIT_RX_INFO_PFET2);
++		/* Ensure all DMA writes complete before polling status. */
 +		wmb();
 +
 +		if (!mt76_poll_msec_tick(dev, MT_WFDMA0_GLO_CFG,
@@ -154,6 +155,7 @@ index b8f95c3..e113a8e 100644
 +
 +		mt76_wr(dev, MT_WFDMA0_RST_DTX_PTR, ~0);
 +		mt76_wr(dev, MT_WFDMA0_RST_DRX_PTR, ~0);
++		/* Ensure all DMA writes complete before polling status. */
 +		wmb();
 +		msleep(10);
 +	} else {
@@ -164,7 +166,7 @@ index b8f95c3..e113a8e 100644
 +
 +	/* init tx queue - ring 0 */
  	ret = mt76_connac_init_tx_queues(dev->phy.mt76, MT7925_TXQ_BAND0,
-@@ -243,5 +352,5 @@ static int mt7925_dma_init(struct mt792x_dev *dev)
+@@ -243,5 +354,5 @@ static int mt7925_dma_init(struct mt792x_dev *dev)
  
 -	/* rx event */
 +	/* rx MCU events */
@@ -172,12 +174,12 @@ index b8f95c3..e113a8e 100644
 -			       MT7925_RXQ_MCU_WM, MT7925_RX_MCU_RING_SIZE,
 +			       cfg->rxq_mcu_wm, MT7925_RX_MCU_RING_SIZE,
  			       MT_RX_BUF_SIZE, MT_RX_EVENT_RING_BASE);
-@@ -252,3 +361,3 @@ static int mt7925_dma_init(struct mt792x_dev *dev)
+@@ -252,3 +363,3 @@ static int mt7925_dma_init(struct mt792x_dev *dev)
  	ret = mt76_queue_alloc(dev, &dev->mt76.q_rx[MT_RXQ_MAIN],
 -			       MT7925_RXQ_BAND0, MT7925_RX_RING_SIZE,
 +			       cfg->rxq_band0, MT7925_RX_RING_SIZE,
  			       MT_RX_BUF_SIZE, MT_RX_DATA_RING_BASE);
-@@ -257,2 +366,13 @@ static int mt7925_dma_init(struct mt792x_dev *dev)
+@@ -257,2 +368,13 @@ static int mt7925_dma_init(struct mt792x_dev *dev)
  
 +	/* rx auxiliary data (MT7927: management frames on ring 7) */
 +	if (cfg->rxq_data2) {
@@ -191,7 +193,7 @@ index b8f95c3..e113a8e 100644
 +	}
 +
  	ret = mt76_init_queues(dev, mt792x_poll_rx);
-@@ -376,2 +496,3 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+@@ -375,2 +497,3 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
  	dev->irq_map = is_mt7927_hw ? &mt7927_irq_map : &irq_map;
 +	dev->dma_config = is_mt7927_hw ? &mt7927_dma_cfg : &mt7925_dma_cfg;
  	mt76_mmio_init(&dev->mt76, pcim_iomap_table(pdev)[0]);
@@ -227,7 +229,7 @@ index bb308f1..d456c57 100644
 +	const struct mt792x_dma_config *dma_config;
  
 diff --git a/mt792x_dma.c b/mt792x_dma.c
-index 002aece..b5274da 100644
+index 002aece..0d27ea3 100644
 --- a/mt792x_dma.c
 +++ b/mt792x_dma.c
 @@ -92,16 +92,9 @@ static void mt792x_dma_prefetch(struct mt792x_dev *dev)
@@ -254,18 +256,54 @@ index 002aece..b5274da 100644
 +
 +	if (is_mt7902(&dev->mt76)) {
  		/* rx ring */
-@@ -122,2 +115,3 @@ static void mt792x_dma_prefetch(struct mt792x_dev *dev)
- 	} else {
-+		/* mt7921/mt7922 legacy prefetch */
- 		/* rx ring */
-@@ -143,3 +137,5 @@ int mt792x_dma_enable(struct mt792x_dev *dev)
+@@ -121,20 +114,22 @@ static void mt792x_dma_prefetch(struct mt792x_dev *dev)
+ 		mt76_wr(dev, MT_WFDMA0_TX_RING16_EXT_CTRL, PREFETCH(0x0300, 0x4));
+-	} else {
+-		/* rx ring */
+-		mt76_wr(dev, MT_WFDMA0_RX_RING0_EXT_CTRL, PREFETCH(0x0, 0x4));
+-		mt76_wr(dev, MT_WFDMA0_RX_RING2_EXT_CTRL, PREFETCH(0x40, 0x4));
+-		mt76_wr(dev, MT_WFDMA0_RX_RING3_EXT_CTRL, PREFETCH(0x80, 0x4));
+-		mt76_wr(dev, MT_WFDMA0_RX_RING4_EXT_CTRL, PREFETCH(0xc0, 0x4));
+-		mt76_wr(dev, MT_WFDMA0_RX_RING5_EXT_CTRL, PREFETCH(0x100, 0x4));
+-		/* tx ring */
+-		mt76_wr(dev, MT_WFDMA0_TX_RING0_EXT_CTRL, PREFETCH(0x140, 0x4));
+-		mt76_wr(dev, MT_WFDMA0_TX_RING1_EXT_CTRL, PREFETCH(0x180, 0x4));
+-		mt76_wr(dev, MT_WFDMA0_TX_RING2_EXT_CTRL, PREFETCH(0x1c0, 0x4));
+-		mt76_wr(dev, MT_WFDMA0_TX_RING3_EXT_CTRL, PREFETCH(0x200, 0x4));
+-		mt76_wr(dev, MT_WFDMA0_TX_RING4_EXT_CTRL, PREFETCH(0x240, 0x4));
+-		mt76_wr(dev, MT_WFDMA0_TX_RING5_EXT_CTRL, PREFETCH(0x280, 0x4));
+-		mt76_wr(dev, MT_WFDMA0_TX_RING6_EXT_CTRL, PREFETCH(0x2c0, 0x4));
+-		mt76_wr(dev, MT_WFDMA0_TX_RING16_EXT_CTRL, PREFETCH(0x340, 0x4));
+-		mt76_wr(dev, MT_WFDMA0_TX_RING17_EXT_CTRL, PREFETCH(0x380, 0x4));
++		return;
+ 	}
++
++	/* mt7921/mt7922 legacy prefetch */
++	/* rx ring */
++	mt76_wr(dev, MT_WFDMA0_RX_RING0_EXT_CTRL, PREFETCH(0x0, 0x4));
++	mt76_wr(dev, MT_WFDMA0_RX_RING2_EXT_CTRL, PREFETCH(0x40, 0x4));
++	mt76_wr(dev, MT_WFDMA0_RX_RING3_EXT_CTRL, PREFETCH(0x80, 0x4));
++	mt76_wr(dev, MT_WFDMA0_RX_RING4_EXT_CTRL, PREFETCH(0xc0, 0x4));
++	mt76_wr(dev, MT_WFDMA0_RX_RING5_EXT_CTRL, PREFETCH(0x100, 0x4));
++	/* tx ring */
++	mt76_wr(dev, MT_WFDMA0_TX_RING0_EXT_CTRL, PREFETCH(0x140, 0x4));
++	mt76_wr(dev, MT_WFDMA0_TX_RING1_EXT_CTRL, PREFETCH(0x180, 0x4));
++	mt76_wr(dev, MT_WFDMA0_TX_RING2_EXT_CTRL, PREFETCH(0x1c0, 0x4));
++	mt76_wr(dev, MT_WFDMA0_TX_RING3_EXT_CTRL, PREFETCH(0x200, 0x4));
++	mt76_wr(dev, MT_WFDMA0_TX_RING4_EXT_CTRL, PREFETCH(0x240, 0x4));
++	mt76_wr(dev, MT_WFDMA0_TX_RING5_EXT_CTRL, PREFETCH(0x280, 0x4));
++	mt76_wr(dev, MT_WFDMA0_TX_RING6_EXT_CTRL, PREFETCH(0x2c0, 0x4));
++	mt76_wr(dev, MT_WFDMA0_TX_RING16_EXT_CTRL, PREFETCH(0x340, 0x4));
++	mt76_wr(dev, MT_WFDMA0_TX_RING17_EXT_CTRL, PREFETCH(0x380, 0x4));
+ }
+@@ -143,3 +138,5 @@ int mt792x_dma_enable(struct mt792x_dev *dev)
  {
 -	/* configure perfetch settings */
 +	const struct mt792x_dma_config *cfg = dev->dma_config;
 +
 +	/* configure prefetch settings */
  	mt792x_dma_prefetch(dev);
-@@ -168,4 +164,12 @@ int mt792x_dma_enable(struct mt792x_dev *dev)
+@@ -168,4 +165,12 @@ int mt792x_dma_enable(struct mt792x_dev *dev)
  
 -	if (is_mt7925(&dev->mt76)) {
 -		mt76_rmw(dev, MT_UWFDMA0_GLO_CFG_EXT1, BIT(28), BIT(28));
@@ -280,7 +318,7 @@ index 002aece..b5274da 100644
 +	if (cfg && cfg->glo_cfg_ext1) {
 +		mt76_rmw(dev, cfg->glo_cfg_ext1, BIT(28), BIT(28));
  		mt76_set(dev, MT_WFDMA0_INT_RX_PRI, 0x0F00);
-@@ -387,2 +391 @@ int mt792x_wfsys_reset(struct mt792x_dev *dev)
+@@ -387,2 +392 @@ int mt792x_wfsys_reset(struct mt792x_dev *dev)
  EXPORT_SYMBOL_GPL(mt792x_wfsys_reset);
 -
 diff --git a/mt792x_regs.h b/mt792x_regs.h

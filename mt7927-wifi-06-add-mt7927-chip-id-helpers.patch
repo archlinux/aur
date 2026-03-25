@@ -18,9 +18,9 @@ Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-7d27ed4183380763f0de0da9912d643eb822fafe
+2381456d4ecf353880918fbdaecf0aaaa27a13a9
 diff --git a/mt76_connac.h b/mt76_connac.h
-index f76d978..c575106 100644
+index 2deee83..bce95de 100644
 --- a/mt76_connac.h
 +++ b/mt76_connac.h
 @@ -176,3 +176,8 @@ static inline bool is_mt7925(struct mt76_dev *dev)

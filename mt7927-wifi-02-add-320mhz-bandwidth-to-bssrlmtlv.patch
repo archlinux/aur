@@ -14,6 +14,7 @@ Tested on ASUS RT-BE92U: 320MHz throughput goes from 0 Mbps to
 841 Mbps (iperf3 -t30 -P8), PHY 4803 Mbps EHT-MCS11.
 
 Reported-by: 张旭涵 <Loong.0x00@gmail.com>
+Closes: https://github.com/openwrt/mt76/issues/927
 Tested-by: 张旭涵 <Loong.0x00@gmail.com>
 Tested-by: Marcin FM <marcin@lgic.pl>
 Tested-by: Cristian-Florin Radoi <radoi.chris@gmail.com>
@@ -25,7 +26,7 @@ Tested-by: Chapuis Dario <chapuisdario4@gmail.com>
 Tested-by: Thibaut François <tibo@humeurlibre.fr>
 Signed-off-by: Javier Tia <floss@jetm.me>
 
-631ec43a80197a02444ccd68696a16c433566e3d
+c42291f18b23ad82fe8ff875b290ddd23e01cdf3
 diff --git a/mt7925/mcu.c b/mt7925/mcu.c
 index cf0fdea..dd5ecb0 100644
 --- a/mt7925/mcu.c
