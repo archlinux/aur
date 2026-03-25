@@ -1,7 +1,7 @@
 # Maintainer: ReneganRonin <renegan.ronin@gmail.co>
 
 pkgname=madgraph
-pkgver=3.5.7
+pkgver=3.7.0
 _major=${pkgver%%.*}
 _minor=${pkgver#2.}
 _minor=${_minor%%.*}
@@ -27,10 +27,8 @@ optdepends=(
     'madgraph-pythia8-interface'
 )
 source=("https://launchpad.net/mg5amcnlo/${_major}.0/${_major}.6.x/+download/MG5_aMC_v${pkgver}.tar.gz"
-"mg5_configuration.patch"
         )
-sha256sums=('ca3e027f078438318bd4143a102aebc2d51358f537b5d52bbc574fe49a6a901e'
-            '14d418c14b96492be021da194c2f211fcd91e82c4bb04f15c4d95b7dd65656bf')
+sha256sums=('b151dee0a46bfd625959ca0202aa5f3a26ed5492a0fb98e1f3c164c860947870')
 options=("!strip")
 
 prepare() {
@@ -61,7 +59,7 @@ build() {
     rm $tmpfile
 
     msg2 "Updating configuration file"
-    patch -p 1 -d $_dirname < mg5_configuration.patch
+    #patch -p 1 -d $_dirname < mg5_configuration.patch
 
 }
 
