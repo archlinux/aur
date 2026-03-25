@@ -1,8 +1,8 @@
 # Maintainer: axpdev <aeroftp@axpdev.it>
-# https://github.com/axpnet/aeroftp
+# https://github.com/axpdev-lab/aeroftp
 
 pkgname=aeroftp-bin
-pkgver=3.1.0
+pkgver=3.1.2
 pkgrel=1
 pkgdesc="Modern multi-protocol file client with AI, encryption and cloud storage (FTP, SFTP, WebDAV, S3, 23 protocols)"
 arch=('x86_64')
@@ -29,10 +29,10 @@ provides=('aeroftp')
 conflicts=('aeroftp' 'aeroftp-git')
 options=('!strip' '!debug')
 # Use .deb instead of AppImage to avoid EGL_BAD_PARAMETER on some GPU drivers
-source=("${pkgname}-${pkgver}.deb::https://github.com/axpnet/aeroftp/releases/download/v${pkgver}/AeroFTP_${pkgver}_amd64.deb"
+source=("${pkgname}-${pkgver}.deb::https://github.com/axpdev-lab/aeroftp/releases/download/v${pkgver}/AeroFTP_${pkgver}_amd64.deb"
         "aeroftp.desktop"
-        "aeroftp.png::https://raw.githubusercontent.com/axpnet/aeroftp/main/src-tauri/icons/128x128.png")
-sha256sums=('cdaa0a3726be68d3ce0227052e0e702a085a5f2b950690e4ebcc16821f1acee4'
+        "aeroftp.png::https://raw.githubusercontent.com/axpdev-lab/aeroftp/main/src-tauri/icons/128x128.png")
+sha256sums=('402d1a349301b8091decb17724008df3756589257f39f29c82ebeea51d22832a'
             'cb8a1a0ad00c587fba5ab64e3c8d50ea8391b7a170ae83172a9dddcc6dd829a0'
             '2ccf82e6bfdf22ec5a8d0735acf1e02bd00c44cb4ffab3895d46dc941c4a7cb6')
 
@@ -66,6 +66,6 @@ EOF
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
     cat > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" << 'EOF'
 AeroFTP is licensed under the GNU General Public License v3.0.
-See https://github.com/axpnet/aeroftp/blob/main/LICENSE for the full text.
+See https://github.com/axpdev-lab/aeroftp/blob/main/LICENSE for the full text.
 EOF
 }
