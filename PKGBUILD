@@ -1,6 +1,6 @@
 # Maintainer: Yves Gugger <yves@pounce.ch>
 pkgname=lean-ctx-bin
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Hybrid Context Optimizer — reduces LLM token consumption by up to 99%. MCP Server + Shell Hook + 75+ CLI compression patterns + tree-sitter AST (14 languages). (pre-built binary)"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('lean-ctx')
 conflicts=('lean-ctx')
 source=("lean-ctx-$pkgver.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v$pkgver/lean-ctx-x86_64-unknown-linux-gnu.tar.gz"
         "LICENSE::https://raw.githubusercontent.com/yvgude/lean-ctx/v$pkgver/rust/LICENSE")
-sha256sums=('4ea681cec17ad204c269731ee1e2b81e89034f878ea6e95a7c76d65e86cea957'
+sha256sums=('5e5c1b3701a7f7b071f30c7c2e4acb6e5d6fe5898736a7c7c2cba3462f86d581'
             'SKIP')
 
 package() {
