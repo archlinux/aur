@@ -11,7 +11,7 @@ provides=('scrollshot')
 conflicts=('scrollshot' 'scrollshot-git')
 options=(!debug)
 source=("${url}/releases/download/v${pkgver}/scrollshot-v${pkgver}-x86_64-linux.tar.gz")
-sha256sums=('1631bca74acc967e224f3edda7eb75f4ad02f1a5e8e055bd6f3d73978d7fbe9b')
+sha256sums=('5508ab86c5d6f4fac8b80fd98839bc4d0f3df76802d89437abbcb70385f17b73')
 
 package() {
     install -Dm755 "scrollshot" "${pkgdir}/usr/bin/scrollshot"
