@@ -1,12 +1,11 @@
 pkgbase = zephyr-sdk-gnu-arc-zephyr-elf-bin
 	pkgdesc = SDK for Zephyr real-time operating system
 	pkgver = 1.0.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.zephyrproject.org/
 	arch = x86_64
 	arch = aarch64
 	license = Apache
-	conflicts = zephyr-sdk
 	options = !strip
 	source_x86_64 = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v1.0.0/toolchain_gnu_linux-x86_64_arc-zephyr-elf.tar.xz
 	sha256sums_x86_64 = 2a97a5059e1e088f251bd15bfc1fd11760376b00e83b18803a4389538d63982e
