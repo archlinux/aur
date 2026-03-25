@@ -1,0 +1,17 @@
+[Unit]
+Description=KayZeer — keyboard-driven screen navigation
+Documentation=https://github.com/serjster/KayZeer
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/kayzeer
+Restart=on-failure
+RestartSec=3
+
+# Wayland environment
+Environment=XDG_SESSION_TYPE=wayland
+
+[Install]
+WantedBy=graphical-session.target

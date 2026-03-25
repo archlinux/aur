@@ -1,0 +1,23 @@
+pkgbase = kayzeer-bin
+	pkgdesc = Keyboard-driven screen navigation for Linux (Wayland)
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://github.com/serjster/KayZeer
+	install = kayzeer-bin.install
+	arch = x86_64
+	license = custom:proprietary
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = mesa
+	depends = dbus
+	depends = libxkbcommon
+	depends = wayland
+	optdepends = libappindicator-gtk3: system tray support on some DEs
+	provides = kayzeer
+	conflicts = kayzeer
+	source = kayzeer-bin-1.2.3.tar.gz::https://github.com/serjster/KayZeer/releases/download/v1.2.3/KayZeer-1.2.3-linux-x86_64.tar.gz
+	source = kayzeer.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kayzeer-bin
