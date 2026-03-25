@@ -2,7 +2,7 @@
 # shellcheck shell=bash disable=SC2034,SC2154
 pkgname=ente-auth-bin
 pkgver=4.4.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Ente two-factor authenticator."
 arch=('x86_64')
 url="https://ente.io/auth"
@@ -31,6 +31,4 @@ package() {
 	# that optional field should indicate a version of the desktop entry specification, not the app version. see: https://specifications.freedesktop.org/desktop-entry/latest/recognized-keys.html
 	# again it's optional and previous versions didn't have it, i'll just remove it for now
 	sed -i '/^Version=/d' "$pkgdir/usr/share/applications/enteauth.desktop"
-	# add StartupWMClass to desktop file
-	desktop-file-edit --set-key=StartupWMClass --set-value=io.ente.auth "$pkgdir/usr/share/applications/enteauth.desktop"
 }
