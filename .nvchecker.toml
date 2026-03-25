@@ -1,0 +1,5 @@
+[agentsview-bin]
+source = "github"
+github = "wesm/agentsview"
+use_latest_release = true
+prefix = "v"

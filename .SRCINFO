@@ -1,0 +1,23 @@
+pkgbase = agentsview-bin
+	pkgdesc = A local-first desktop and web application for browsing, searching, and analyzing AI agent coding sessions. Supports Claude Code, Codex, Gemini, OpenCode, Copilot and many other agents.
+	pkgver = 0.16.1
+	pkgrel = 1
+	url = https://github.com/wesm/agentsview
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = agentsview
+	conflicts = agentsview
+	source = README-0.16.1.md::https://raw.githubusercontent.com/wesm/agentsview/v0.16.1/README.md
+	source = LICENSE-0.16.1::https://raw.githubusercontent.com/wesm/agentsview/v0.16.1/LICENSE
+	sha256sums = 2735761a7fa104152865e40332f02a3674729dc41eaaf5ed58c93c326f566319
+	sha256sums = 2ed631eaa533f3ff8864e6deab7ae8a62afe0a386f5c7629e5e2a60d4d02e288
+	source_x86_64 = agentsview-x86_64-0.16.1.tgz::https://github.com/wesm/agentsview/releases/download/v0.16.1/agentsview_0.16.1_linux_amd64.tar.gz
+	sha256sums_x86_64 = 81750cb7ef11b52dd0c92bbd5786c266ada4c7c693d5e45db8ece519accadb5f
+	source_aarch64 = agentsview-aarch64-0.16.1.tgz::https://github.com/wesm/agentsview/releases/download/v0.16.1/agentsview_0.16.1_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2aabc2def03183a56d12de8375a278b90b8f523dc652fae4103f3fe0ba2ddc38
+
+pkgname = agentsview-bin
