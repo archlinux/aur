@@ -1,7 +1,7 @@
 # Maintainer: Tulpenkiste <tulpenkiste at the amogus email domain which is .cloud>
 pkgname=gram-editor-bin
-pkgver=1.1.0
-pkgrel=4
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A code editor for humanoid apes and grumpy toads"
 
 provides=(gram-editor gram)
@@ -36,7 +36,7 @@ optdepends=(
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/${pkgver}/gram-linux-x86_64-${pkgver}.tar.gz")
-sha256sums=('9c7044dcee65cca6fb7ceadd4dbfe779f8afb9731c8a8056d3a3600f76736aca')
+sha256sums=('2c1dd721dc8dbbc5ddee9714b3d58b965ed7eb465e0c2eeb83aca859ff8e9a10')
 
 package() {
 	cd "gram.app"
