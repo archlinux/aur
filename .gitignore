@@ -1,0 +1,10 @@
+.*.swp
+.*.swo
+
+pkg/
+src/
+
+*.tar.gz
+*.pkg.tar.xz
+*.pkg.tar.zst
+*.run
