@@ -1,6 +1,6 @@
 pkgbase = tic-tac-toe-c
 	pkgdesc = Terminal-based Tic Tac Toe game in C with WASD/arrow key controls
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://github.com/iaguinho1727/tic-tac-toe-c
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = tic-tac-toe-c
 	makedepends = gcc
 	makedepends = autoconf
 	depends = glibc
-	source = tic-tac-toe-c-0.0.2.tar.gz::https://github.com/iaguinho1727/tic-tac-toe-c/archive/v0.0.2.tar.gz
-	sha256sums = cbd4b3cb8fa3a26725129854960af4702848345b62228ecc1cb8216b9879572a
+	source = tic-tac-toe-c-0.0.3.tar.gz::https://github.com/iaguinho1727/tic-tac-toe-c/archive/v0.0.3.tar.gz
+	sha256sums = 7a8a28f9c0b5a7b5f59890bf2b96d47d7a9b0476fe047d0917a0855b44beeb01
 
 pkgname = tic-tac-toe-c
