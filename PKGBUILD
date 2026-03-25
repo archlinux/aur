@@ -13,35 +13,28 @@ pkgname=('mythplugins-mytharchive'
          'mythplugins-mythnews'
          'mythplugins-mythweather'
          'mythplugins-mythzoneminder')
-br=fixes/34
-t="${br#*/}+${br%/[0-9][0-9]}"
 pkgver=34.0.r16.g95fb10412c
 pkgrel=1
-epoch=0
-arch=('any')
-url="http://www.mythtv.org"
+pkgdesc="Official plugins for MythTV (Stable '-fixes' branch)"
+arch=('x86_64')
+url="https://www.mythtv.org/"
 license=('GPL')
 makedepends=('dvdauthor' 'dvd+rw-tools' 'mesa-libgl' "mythtv-git>=$pkgver"
              'perl-datetime-format-iso8601' 'perl-date-manip' 'perl-image-size'
-             'perl-json' 'perl-soap-lite' 'perl-xml-simple' 'perl-xml-xpath' 'libhdhomerun'
-             'python-pillow' 'python-pycurl' 'gdb' 'mariadb-libs' 'minizip'
-             'python-lxml' 'perl-xml-xpath' 'python-urllib3' 'libcdio-paranoia')
-source=("git+https://github.com/MythTV/mythtv#branch=$br")
-
+source=("git+https://github.com/MythTV/mythtv#branch=fixes/34")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/mythtv/$pkgbase"
-  printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+  cd "$srcdir/mythtv/$pkgbase"
+  printf "%s" "$(git describe --long --abbrev=7 | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 build() {
   cd "$srcdir/mythtv/$pkgbase"
 
-  ./configure --prefix=/usr \
-              --enable-all
+  ./configure --prefix=/usr --enable-all
   qmake-qt5 mythplugins.pro
-  make -s
+  make
 }
 
 package_mythplugins-mytharchive() {
