@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Linux Tool
+Exec=linux-tool
+Icon=linux-tool
+Type=Application
+Categories=Utility;
+StartupNotify=true

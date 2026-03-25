@@ -7,6 +7,10 @@ pkgbase = linux-tool-bin
 	license = MIT
 	depends = glibc
 	source = https://github.com/Enzo415611/linux-tool/releases/download/v0.2.2/linux-tool
+	source = app-icon.png
+	source = linux-tool.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = linux-tool-bin
