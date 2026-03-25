@@ -5,7 +5,7 @@
 
 pkgname=dump
 pkgver=0.4b47
-pkgrel=1
+pkgrel=2
 pkgdesc="Dump/Restore ext2/3/4 filesystem backup"
 arch=('i686' 'x86_64')
 url="http://dump.sourceforge.net"
@@ -30,6 +30,10 @@ package() {
   cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
   install -Dm644 COPYING -t "$pkgdir/usr/share/licenses/$pkgname/"
+  # Avoid conflict with tar
+  mv -v "$pkgdir"/usr/bin/restore{,.dump}
+  mv -v "$pkgdir"/usr/share/man/man8/restore{,.dump}.8
+  ln -vnsf restore.dump "$pkgdir"/usr/bin/rrestore
 }
 
 # vim:set ts=2 sw=2 et:
