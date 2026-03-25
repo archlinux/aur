@@ -13,7 +13,7 @@
 ## Contributor: Philip Abernethy <chais.z3r0@gmail.com>
 ## Contributor: sowieso <sowieso@dukun.de>
 
-_minecraft_ver="1.21.11"
+_minecraft_ver="26.1"
 _fabric_ver="1.1.1"
 _fabric_loader_ver="0.18.4"
 _mng_ver=1.0.4

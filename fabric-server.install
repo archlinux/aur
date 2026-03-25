@@ -18,7 +18,7 @@ post_install() {
 	echo "The world data is stored under ${_server_root} and the server runs as the fabric user to increase security."
 	echo "Use the ${_fabric_name}d script under /usr/bin/${_fabric_name}d to start, stop or backup the server."
 	echo "Adjust the configuration file under /etc/conf.d/${_fabric_name} to your liking."
-	echo -e "`tput setaf 3`To start the server you have to accept the EULA in ${_server_root}/eula.txt ${_fabric_name}d.service will fail to start otherwise!`tput sgr0`"
+	echo -e "$(tput setaf 3)To start the server you have to accept the EULA in ${_server_root}/eula.txt ${_fabric_name}d.service will fail to start otherwise!$(tput sgr0)"
 }
 
 post_upgrade() {
