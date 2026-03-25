@@ -1,13 +1,13 @@
 pkgbase = tokount
 	pkgdesc = The fastest line counter for codebases
-	pkgver = 2.1.4
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://github.com/MihaiStreames/tokount
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = tokount-2.1.4.tar.gz::https://github.com/MihaiStreames/tokount/archive/refs/tags/v2.1.4.tar.gz
-	sha256sums = 4abf63e75c46a4e243a3525cb1d5350aae1f99e4a72e62f8dcbec74525329e22
+	source = tokount-2.1.5.tar.gz::https://github.com/MihaiStreames/tokount/archive/refs/tags/v2.1.5.tar.gz
+	sha256sums = e08907364caf9a91b28d0459c2fa240ec3eed3199d4a93e529bb0844ca69e73d
 
 pkgname = tokount
