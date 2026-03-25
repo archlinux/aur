@@ -5,13 +5,12 @@ pkgbase = cloudflare-warp-panel
 	url = https://github.com/johnpetersa19/cloudflare_warp_panel
 	arch = x86_64
 	license = GPL3
-	makedepends = git
 	makedepends = flutter
 	makedepends = dart
 	depends = cloudflare-warp-bin
 	depends = gtk3
 	depends = libadwaita
-	source = cloudflare_warp_panel-8.1.0+2.tar.gz::https://github.com/johnpetersa19/cloudflare_warp_panel/archive/refs/tags/8.1.0+2.tar.gz
-	sha256sums = 66ca2ba9ef8a86ba329947154d4f6910feecc87500015461040ab8aa15f1aa97
+	source = cloudflare-warp-panel-8.1.0.tar.gz::https://github.com/johnpetersa19/cloudflare_warp_panel/archive/refs/tags/8.1.0.tar.gz
+	sha256sums = 5d485ce5e1b0216bbdcbf5c775ce3ea40f7257a59e675c851ebd87c6c403298f
 
 pkgname = cloudflare-warp-panel
