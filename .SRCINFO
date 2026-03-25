@@ -1,0 +1,42 @@
+pkgbase = collabora-office
+	pkgdesc = Collabora Office - Qt6 desktop document editor powered by LibreOffice core
+	pkgver = 25.04.9.2
+	pkgrel = 1
+	url = https://collaboraoffice.com
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = pkg-config
+	makedepends = qt6-tools
+	makedepends = cppunit
+	makedepends = python
+	makedepends = python-lxml
+	makedepends = python-polib
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = rsync
+	makedepends = openssl
+	makedepends = pcre2
+	makedepends = expat
+	depends = qt6-webengine
+	depends = qt6-declarative
+	depends = dbus
+	depends = libpng
+	depends = zlib
+	depends = zstd
+	depends = hicolor-icon-theme
+	options = !strip
+	options = !debug
+	source = git+https://github.com/CollaboraOnline/online.git#branch=distro/collabora/coda-25.04
+	source = git+https://github.com/pocoproject/poco.git#tag=poco-1.12.5-release
+	source = https://github.com/CollaboraOnline/online/releases/download/for-code-assets/core-co-25.04-assets.tar.gz
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = collabora-office
