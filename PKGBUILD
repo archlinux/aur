@@ -2,7 +2,7 @@
 # Maintainer: Split174 <no-reply@aur.archlinux.org>
 
 pkgname='secure-keepass-fuse-bin'
-pkgver=v0.0.3
+pkgver=0.0.4
 pkgrel=1
 pkgdesc='Mounts attachments as fuse-filesystem (Binary)'
 url='https://github.com/Split174/secure-keepass-fuse'
@@ -13,11 +13,11 @@ conflicts=('secure-keepass-fuse')
 depends=('fuse3' 'zenity')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.binary::https://github.com/Split174/secure-keepass-fuse/releases/download/v${pkgver}/secure-keepass-fuse-arm64")
-sha256sums_aarch64=('8e39ea0b42d368d57aa3c9bf26eb420487f912013e0427829bcebe45b8e8f387')
+sha256sums_aarch64=('1a41bc7b12f1e17b2ac4721bb327cfb8e40c70ec318c569960e0d94406e804b1')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.binary::https://github.com/Split174/secure-keepass-fuse/releases/download/v${pkgver}/secure-keepass-fuse-amd64")
-sha256sums_x86_64=('342dc4dbf501ddc6634ee8aeb92f1c635885e0b794906ec115acfe6d4eb92e23')
+sha256sums_x86_64=('d8caba789d158dcdde3fcc9f21a61c930e54aa43e1d8afe5fd774d740735bbb6')
 
 package() {
-  install -Dm755 "./secure-keepass-fuse-amd64" "${pkgdir}/usr/bin/secure-keepass-fuse"
+  install -Dm755 "${pkgname}_${pkgver}_${CARCH}.binary" "${pkgdir}/usr/bin/secure-keepass-fuse"
 }
