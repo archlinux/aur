@@ -1,0 +1,24 @@
+pkgbase = issabelpbx
+	pkgdesc = IssabelPBX - Asterisk Configuration GUI
+	pkgver = 2.12.0
+	pkgrel = 1
+	url = https://github.com/IssabelFoundation/issabelPBX
+	install = issabelPBX.install
+	arch = any
+	license = GPL
+	depends = issabel-framework
+	depends = php-legacy
+	depends = mariadb
+	depends = asterisk
+	depends = gettext
+	depends = perl
+	depends = wget
+	depends = mpg123
+	depends = sox
+	optdepends = php-pear-db: Database abstraction
+	backup = etc/issabelpbx.conf
+	backup = etc/amportal.conf
+	source = issabelpbx-2.12.0.tar.gz::https://github.com/IssabelFoundation/issabelPBX/archive/refs/tags/2.12.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = issabelpbx
