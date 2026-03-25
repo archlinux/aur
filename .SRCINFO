@@ -1,6 +1,6 @@
 pkgbase = fate
 	pkgdesc = Pull makes happy!
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/vEnhance/fate-casino
 	arch = any
@@ -12,9 +12,9 @@ pkgbase = fate
 	depends = python-tomli
 	depends = python-tomlkit
 	optdepends = fd
-	source = https://files.pythonhosted.org/packages/source/f/fate_casino/fate_casino-0.2.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/f/fate_casino/fate_casino-0.3.0.tar.gz
 	source = LICENSE
-	sha256sums = b8a39f755c6a8a24ec3cba16fdb53118594a612548239b523a22da226c6b32d9
+	sha256sums = 26ca893cb52e9ab6ffdc2ef805f2a89aa1244ec0fb28f883327b1fcd087439c3
 	sha256sums = 82af9d0f8e6e2acd6c36b1426eb1d70bc3e9b16a126ae20fcd4f8d1101e64c47
 
 pkgname = fate
