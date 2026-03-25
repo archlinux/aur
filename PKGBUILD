@@ -2,14 +2,14 @@
 
 _pkgbase=8bitdo-kbd-mapper
 pkgname="$_pkgbase-git"
-pkgver=0.2.r13.g996ed45
-pkgrel=2
+pkgver=0.2.3.r0.g3f25b5b
+pkgrel=1
 pkgdesc="Key mapper for 8BitDo's Retro Mechanical Keyboard"
 arch=('x86_64')
 url="https://github.com/goncalor/8bitdo-kbd-mapper"
 license=('GPL-3.0')
 depends=('python' 'python-pyusb')
-makedepends=('git' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
 provides=("$_pkgbase")
 conflicts=("$_pkgbase")
 source=("$_pkgbase::git+https://github.com/goncalor/8bitdo-kbd-mapper.git")
