@@ -1,7 +1,7 @@
 # Maintainer: sillybanaja <https://github.com/sillybanaja>
 pkgname=drop-xdnd
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="cli drag-and-drop for x11 without the drag, pass files, click window"
 arch=('x86_64')
 url="https://github.com/sillybanaja/drop"
