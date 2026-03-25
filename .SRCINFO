@@ -1,7 +1,7 @@
 pkgbase = frame
 	pkgdesc = Frame handles the buildup and synchronization of a set of simultaneous touches.
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/frame
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,7 @@ pkgbase = frame
 	conflicts = utouch-frame
 	replaces = utouch-frame
 	options = !libtool
-	source = http://launchpad.net/frame/trunk/v2.5.0/+download/frame-2.5.0.tar.gz
-	md5sums = 02baa941091c5d198cd1623b3ad36e68
+	source = https://deb.debian.org/debian/pool/main/f/frame/frame_2.5.0.orig.tar.xz
+	md5sums = f523283e80a1de613bd38e3b7f0c5f8e
 
 pkgname = frame
-
