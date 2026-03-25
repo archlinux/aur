@@ -1,0 +1,11 @@
+pkgbase = silvermont-kernel-config
+	pkgdesc = Archivo de configuración para el kernel Silvermont (txt)
+	pkgver = 6.14
+	pkgrel = 1
+	url = https://github.com/Lauta-dev/linux-tkg
+	arch = any
+	license = GPL
+	source = kernelconfig.arch.txt::https://github.com/Lauta-dev/linux-tkg/releases/download/kernel-6.14-silvermont-3/kernelconfig.arch.txt
+	sha256sums = a2f99d333e74b43ba5b52debfbfa4f1ce1f5aff02db28ded527cbf75d4b27f2b
+
+pkgname = silvermont-kernel-config

@@ -1,0 +1,18 @@
+# Archivos de construcción (Carpetas temporales)
+pkg/
+src/
+
+# El paquete final (el binario que NO se sube)
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# Archivos de descarga
+*.tar.gz
+*.tar.xz
+*.zip
+*.txt
+*.patch
+
+# Excepción: NO ignores archivos que tú creaste manualmente
+# (Si tienes un parche local o un .install, Git debe verlos)
