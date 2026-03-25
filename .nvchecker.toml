@@ -1,4 +1,4 @@
-[protoc-gen-js]
+[protoc-gen-js-bin]
 source = "git"
 git = "https://github.com/protocolbuffers/protobuf-javascript.git"
 prefix = "v"
