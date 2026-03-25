@@ -1,6 +1,6 @@
 # Maintainer: fa5e4658010be730
 pkgname=bwrap-common
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Reusable bubblewrap sandbox helpers for shell wrappers"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
     'verify-lib: library integrity verification before sourcing'
 )
 source=("${pkgname}-${pkgver}.tar.gz::${url}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('c0df144393255e84ee7d19294cb9389bdb28f9950f5346bbf0249ad6ec49602f')
+sha256sums=('e03ee705e5c090c5b47abbff0d62972b48fa7de21f9d35c2f2c6513e146b9f84')
 
 package() {
     cd "${pkgname}-v${pkgver}"
