@@ -1,6 +1,6 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=dpsprep
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1.314
 pkgdesc='A DjVu to PDF converter with a focus on small output size and the ability to preserve document outlines and text layers'
 url='https://github.com/kcroker/dpsprep'
@@ -16,7 +16,7 @@ optdepends=(
   'jbig2enc: Advanced compression of bitonal images'
 )
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e3fb20a5e1dff917bb7897ee18497aaa6f5b688d2583d872a1fa56387bd39964')
+sha256sums=('b30844e9d17042a4d990d6a4705a1ac2f744c30da9fc7dd021b05f866e233651')
 
 _fullsrcdir() {
     echo "$srcdir/$pkgname-$pkgver"
