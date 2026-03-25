@@ -3,10 +3,10 @@
 pkgname=shadps4-qtlauncher-bin
 _pkgname=shadPS4QtLauncher
 _pkgid=net.shadps4.shadps4-qtlauncher
-pkgver=2026.03.24.01daed2
+pkgver=2026.03.24.3e984f6
 _date=2026-03-24
-_commit=01daed27606d0d1ab4d3dbe53664429132535bab
-_shortcommit=01daed2
+_commit=3e984f6a5e49e3eb08b2044544cf7dda614c747f
+_shortcommit=3e984f6
 pkgrel=1
 pkgdesc="shadPS4 PlayStation 4 emulator Qt launcher"
 arch=('x86_64')
@@ -17,7 +17,7 @@ provides=('shadps4-qtlauncher')
 conflicts=('shadps4-qtlauncher')
 _appimage=shadPS4QtLauncher-qt.AppImage
 source=("shadPS4QtLauncher-linux-qt-${_date}-${_shortcommit}.zip::https://github.com/shadps4-emu/shadps4-qtlauncher/releases/download/shadPS4QtLauncher-${_date}-${_commit}/shadPS4QtLauncher-linux-qt-${_date}-${_shortcommit}.zip")
-sha256sums=('b52025a64f302492b52c5d56db873bc606aba5c4143014987dbfb6a7ba2e45d4')
+sha256sums=('d40b8f0ee06839fb1864eb1f2e665897dd7992dab07bb4a93a895e27e20275aa')
 
 prepare() {
     cd "${srcdir}"
