@@ -2,7 +2,7 @@
 # Contributor: Sven Karsten Greiner <sven@sammyshp.de>
 
 pkgname=lichtblick-bin
-pkgver=1.24.2
+pkgver=1.24.3
 pkgrel=1
 pkgdesc='Integrated visualization and diagnosis tool for robotics'
 arch=('x86_64' 'aarch64')
@@ -41,8 +41,8 @@ conflicts=('lichtblick')
 source_x86_64=("$pkgname-$pkgver-x86_64.deb::https://github.com/lichtblick-suite/lichtblick/releases/download/v$pkgver/lichtblick-$pkgver-linux-amd64.deb")
 source_aarch64=("$pkgname-$pkgver-aarch64.deb::https://github.com/lichtblick-suite/lichtblick/releases/download/v$pkgver/lichtblick-$pkgver-linux-arm64.deb")
 
-sha256sums_x86_64=('2baf2cf76d8d7307ede1cb7cfe29cbb8ccfb5835e06cfb6d5b0bd0068000c907')
-sha256sums_aarch64=('475ee75dcbbac1e81abb9d69adf15d70762f326ada698d80aa85eda4ee6ed9ad')
+sha256sums_x86_64=('c20aaa006fd48faaa304bd4b25c479a127cd30551621f6af080d5676f9386e3c')
+sha256sums_aarch64=('b608a694f1da24606dc6c8895a53923904db62cd879cbd8c54aae92cc91f6610')
 
 package() {
     tar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
