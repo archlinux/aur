@@ -67,7 +67,7 @@ optdepends=(
 
 conflicts=("forkgram-bin")
 
-options=('!debug' '!emptydirs')
+options=('!debug' '!emptydirs' '!lto')
 
 _pkgsrc="frk-v$pkgver-full"
 _pkgsrc_tdlib="telegram-tdlib"
@@ -92,6 +92,10 @@ prepare() {
       patch -d "$_pkgsrc" -Np1 -F100 -i "${srcdir:?}/$src"
     fi
   done
+
+  # force system minizip-ng
+  rm -rf "$_pkgsrc/Telegram/ThirdParty/minizip"
+  sed -E -e '/pkg_check_modules/s&\bminizip\b&minizip-ng&' -i "$_pkgsrc/cmake/external/minizip/CMakeLists.txt"
 }
 
 build() {

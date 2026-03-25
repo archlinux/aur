@@ -49,6 +49,7 @@ pkgbase = forkgram
 	conflicts = forkgram-bin
 	options = !debug
 	options = !emptydirs
+	options = !lto
 	source = forkgram-6.6.2.tar.gz::https://github.com/Forkgram/tdesktop/releases/download/v6.6.2/frk-v6.6.2-full.tar.gz
 	source = telegram-tdlib::git+https://github.com/tdlib/td.git
 	sha256sums = e16769d004529ce7e658b3cb80d925615db8c5eebfce03eba9b91eaa9d43dc0a
