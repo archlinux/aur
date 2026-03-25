@@ -1,0 +1,21 @@
+pkgbase = okular-session-git
+	pkgdesc = Session wrapper for Okular that restores previously opened PDFs
+	pkgver = r3.fa2ded8
+	pkgrel = 1
+	url = https://github.com/AkiraLyu/Okular-session
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = gawk
+	depends = grep
+	depends = okular
+	depends = procps-ng
+	depends = sed
+	provides = okular-session
+	conflicts = okular-session
+	source = git+https://github.com/AkiraLyu/Okular-session.git
+	sha256sums = SKIP
+
+pkgname = okular-session-git
