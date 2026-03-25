@@ -1,6 +1,6 @@
 pkgbase = gimp-develop-git
 	pkgdesc = GNU Image Manipulation Program (non-conflicting git version)
-	pkgver = 3.3.0.r44.fdda75deb8
+	pkgver = 3.3.0.r153.c3cbd5c21f
 	pkgrel = 1
 	epoch = 1
 	url = https://www.gimp.org
@@ -55,8 +55,8 @@ pkgbase = gimp-develop-git
 	depends = openexr>=1.6.1
 	depends = libmypaint>=1.5.0
 	depends = mypaint-brushes>=2.0
-	depends = babl>=0.1.116
-	depends = gegl>=0.4.64
+	depends = babl>=0.1.118
+	depends = gegl>=0.4.66
 	depends = cairo>=1.14.0
 	depends = appstream>=0.16.1
 	depends = gobject-introspection>=1.32.0
