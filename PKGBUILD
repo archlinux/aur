@@ -1,3 +1,5 @@
+# Maintainer: David Cohen <dacohen@pm.me>
+
 pkgname=localectl-libre
 pkgver=0.1.1
 pkgrel=1
