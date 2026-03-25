@@ -1,10 +1,10 @@
 pkgbase = playtorrio-bin
-	pkgdesc = All-in-one media center for streaming and for downloading games
+	pkgdesc = A powerful, cross-platform media center that streams movies, TV shows, anime, books, music, and games
 	pkgver = 2.8.6
 	pkgrel = 1
 	url = https://github.com/ayman708-UX/PlayTorrio
 	arch = x86_64
-	license = LicenseRef-custom
+	license = GPL-2.0
 	depends = fuse2
 	depends = mpv
 	depends = ffmpeg
