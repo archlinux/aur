@@ -1,5 +1,4 @@
 pkgbase = sable-bin
-pkgname = sable-bin
 pkgdesc = An almost stable Matrix client.
 pkgver = 1.0.0
 pkgrel = 1
@@ -44,5 +43,4 @@ options = !strip
 noextract = sable-bin-1.0.0.deb
 source = sable-bin-1.0.0.deb::https://github.com/7w1/sable/releases/download/1.0.0/sable-matrix-client-electron_0.0.1_amd64.deb
 sha256sums = 9be95e8771c2312b25a004bf5538db8c80774bc0ba99e11ed97bd3cd4bcfafac
-
-
+pkgname = sable-bin
