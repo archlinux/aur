@@ -16,7 +16,7 @@ pkgbase = subs2srs-gui
 	provides = subs2srs
 	conflicts = subs2srs
 	conflicts = subs2srs-mono-git
-	source = subs2srs-gui-0.2.3.tar.gz::https://gitlab.com/fkzys/subs2srs/-/archive/v0.2.3/subs2srs-v0.2.3.tar.gz
+	source = subs2srs-gui-0.2.3.tar.gz::https://gitlab.com/fkzys/subs2srs/-/archive/ccd4f685c600efa240e9ba2f376b762ea30b3269/subs2srs-ccd4f685c600efa240e9ba2f376b762ea30b3269.tar.gz
 	sha256sums = 046f234fbd8008890eb49cfd6b67f20b52fe5e59db54cd75062eb500300db0f8
 
 pkgname = subs2srs-gui
