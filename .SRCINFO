@@ -1,6 +1,6 @@
 pkgbase = apiark-bin
 	pkgdesc = Privacy-first API platform built with Tauri v2. No login, no cloud, ~60 MB RAM. A lightweight Postman alternative.
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://github.com/berbicanes/apiark
 	arch = x86_64
@@ -19,11 +19,11 @@ pkgbase = apiark-bin
 	provides = apiark
 	provides = apiark-cli
 	conflicts = apiark
-	source = README-0.4.4.md::https://raw.githubusercontent.com/berbicanes/apiark/v0.4.4/README.md
+	source = README-0.4.5.md::https://raw.githubusercontent.com/berbicanes/apiark/v0.4.5/README.md
 	sha256sums = 624cb7b4a42e1a7ba897d15e0af935a8389825b1f95b3f309ff8ccbb079e49e9
-	source_x86_64 = apiark-0.4.4-x86_64.deb::https://github.com/berbicanes/apiark/releases/download/v0.4.4/apiark_0.4.4_amd64.deb
-	source_x86_64 = apiark-cli-0.4.4-x86_64::https://github.com/berbicanes/apiark/releases/download/v0.4.4/apiark-cli-linux-x86_64
-	sha256sums_x86_64 = 5a2448af5dfb0caf37a69c42fdbb1a8d880ae271b5a520bd4d0bd70d5e65e966
+	source_x86_64 = apiark-0.4.5-x86_64.deb::https://github.com/berbicanes/apiark/releases/download/v0.4.5/apiark_0.4.5_amd64.deb
+	source_x86_64 = apiark-cli-0.4.5-x86_64::https://github.com/berbicanes/apiark/releases/download/v0.4.5/apiark-cli-linux-x86_64
+	sha256sums_x86_64 = ae92c06fbfd491c0dc342deb8ba7f34092b8dd09aef4d758135452e6afe24b4d
 	sha256sums_x86_64 = 5d982e959f4f4d5c8d76fc47cbbaefae02d65254911e9d2232249abe0699099a
 
 pkgname = apiark-bin
