@@ -11,8 +11,8 @@ options=('!strip' '!debug')
 
 # Usamos nombres descriptivos para las fuentes
 source=(
-  "kernel.tar.zst::https://github.com/Lauta-dev/linux-tkg/releases/download/kernel-6.14-silvermont-3/linux618-tkg-pds-llvm-6.18.20-273-x86_64.pkg.tar.zst"
-  "header.tar.zst::https://github.com/Lauta-dev/linux-tkg/releases/download/kernel-6.14-silvermont-3/linux618-tkg-pds-llvm-headers-6.18.20-273-x86_64.pkg.tar.zst"
+  "kernel::https://github.com/Lauta-dev/linux-tkg/releases/download/kernel-6.14-silvermont-3/linux618-tkg-pds-llvm-6.18.20-273-x86_64.pkg.tar.zst"
+  "header::https://github.com/Lauta-dev/linux-tkg/releases/download/kernel-6.14-silvermont-3/linux618-tkg-pds-llvm-headers-6.18.20-273-x86_64.pkg.tar.zst"
 )
 
 # Acordate de correr 'updpkgsums' para llenar esto
@@ -28,4 +28,7 @@ package() {
 
   msg2 "Instalando archivos de Headers..."
   cp -a "$srcdir/header/." "$pkgdir/"
+
+  # Limpiamos los metadatos de los paquetes originales para que no choquen
+  rm -f "$pkgdir"/.{PKGINFO,BUILDINFO,MTREE}
 }

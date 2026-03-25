@@ -8,14 +8,10 @@ pkgbase = linux-silvermont
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
-	provides = linux
-	provides = linux-headers
-	conflicts = linux
-	conflicts = linux-headers
 	options = !strip
 	options = !debug
-	source = kernel.tar.zst::https://github.com/Lauta-dev/linux-tkg/releases/download/kernel-6.14-silvermont-3/linux618-tkg-pds-llvm-6.18.20-273-x86_64.pkg.tar.zst
-	source = header.tar.zst::https://github.com/Lauta-dev/linux-tkg/releases/download/kernel-6.14-silvermont-3/linux618-tkg-pds-llvm-headers-6.18.20-273-x86_64.pkg.tar.zst
+	source = kernel::https://github.com/Lauta-dev/linux-tkg/releases/download/kernel-6.14-silvermont-3/linux618-tkg-pds-llvm-6.18.20-273-x86_64.pkg.tar.zst
+	source = header::https://github.com/Lauta-dev/linux-tkg/releases/download/kernel-6.14-silvermont-3/linux618-tkg-pds-llvm-headers-6.18.20-273-x86_64.pkg.tar.zst
 	sha256sums = 98f583503482b941244f7156281330f3158cee3bb17ef33c4a01cf33d4f94120
 	sha256sums = 3a06b01124b300146d2edb0c53857c772d01400ae80b0e0f65371a9094439748
 
