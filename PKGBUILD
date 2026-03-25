@@ -1,5 +1,6 @@
 # Maintainer: qr243vbi
 
+
 pkgname=(nekobox nekobox-core)
 pkgver=5.10.27
 pkgrel=1
