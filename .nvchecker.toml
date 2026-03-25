@@ -1,0 +1,3 @@
+[jit-cli]
+source = "cratesio"
+cratesio = "jit-cli"
