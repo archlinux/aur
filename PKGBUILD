@@ -1,5 +1,5 @@
 # Maintainer: Enzo Queiroz Costa <enzo415611@gmail.com>
-pkgname=linux-tool-bin
+pkgname=linux-tool
 pkgver=0.2.2
 pkgrel=1
 pkgdesc="AUR and Pacman package manager helper with Slint UI"

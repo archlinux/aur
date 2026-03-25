@@ -1,4 +1,4 @@
-pkgbase = linux-tool-bin
+pkgbase = linux-tool
 	pkgdesc = AUR and Pacman package manager helper with Slint UI
 	pkgver = 0.2.2
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = linux-tool-bin
 	source = https://github.com/Enzo415611/linux-tool/releases/download/v0.2.2/linux-tool-0.2.2-x86_64.tar.gz
 	sha256sums = c49c0631616770b08539c0d0a19c5a5f5cc878c4d8e4350f3b1690cae90b42b3
 
-pkgname = linux-tool-bin
+pkgname = linux-tool
