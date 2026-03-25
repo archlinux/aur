@@ -14,7 +14,7 @@ optdepends=(
 provides=('lianwalld')
 conflicts=('lianwalld')
 source=("https://github.com/Yueosa/lianwall/releases/download/v${pkgver}/lianwalld_${pkgver}_linux_x86_64")
-sha256sums=('61159b6b6d52968e35ed87e0ac1bb747c799314ab4549bf2ca2c78e36d684b69')
+sha256sums=('603639e565d2f242ffde3cf67986e1baec0e33aab621caec8648aa38eb7c1484')
 
 package() {
     install -Dm755 "lianwalld_${pkgver}_linux_x86_64" "$pkgdir/usr/bin/lianwalld"
