@@ -1,5 +1,5 @@
 pkgbase = issabel-pbx
-	pkgdesc = Issabel PBX Module - Core PBX Logic and AGI (Arch Linux Port)
+	pkgdesc = Issabel PBX Module - Core PBX Logic and AGI
 	pkgver = 5.0.0
 	pkgrel = 1
 	url = https://github.com/IssabelFoundation/pbx
@@ -11,5 +11,7 @@ pkgbase = issabel-pbx
 	depends = asterisk
 	depends = psmisc
 	depends = sqlite
+	source = issabel-pbx-5.0.0.tar.gz::https://github.com/IssabelFoundation/pbx/archive/refs/tags/5.0.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = issabel-pbx
