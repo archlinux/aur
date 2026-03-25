@@ -52,7 +52,7 @@ fi
 
 pkgname=ffmpeg-obs
 pkgver=8.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -67,7 +67,7 @@ _libjxlver=0.11.0
 _libplacebover=7.360
 _libristver=0.2.7
 _libtheoraver=1.2
-_libvpxver=1.15.2
+_libvpxver=1.16
 _libxml2ver=2.14
 _rav1ever=0.8.1
 _rubberbandver=4
@@ -97,6 +97,7 @@ depends=(
   harfbuzz
   jack
   lame
+  lcms2
   libass
   libavc1394
   libbluray
@@ -216,6 +217,7 @@ _args=(
   --enable-gnutls
   --enable-gpl
   --enable-ladspa
+  --enable-lcms2
   --enable-libaom
   --enable-libass
   --enable-libbluray
@@ -391,7 +393,6 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     'davs2'
     flite1
     kvazaar
-    lcms2
     'lensfun-git' # lensfun >= 0.3.95 seems to needed with ffmpeg so switch to lensfun-git
     'libaribcaption'
     libcaca
@@ -440,7 +441,6 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
     --enable-chromaprint
     --enable-gcrypt
     --enable-gray
-    --enable-lcms2
     --enable-libaribb24
     --enable-libaribcaption
     --enable-libcaca
