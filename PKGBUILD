@@ -4,10 +4,12 @@
 ## Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=paper-velocity
-# curl -X GET "https://api.papermc.io/v2/projects/velocity" -H  "accept: application/json"
-_pkgver=3.4.0-SNAPSHOT
-# curl -X GET "https://api.papermc.io/v2/projects/velocity/versions/${_pkgver}" -H  "accept: application/json"
-_build=558
+# curl -s "https://fill.papermc.io/v3/projects/velocity" | python3 -m json.tool
+_pkgver=3.5.0-SNAPSHOT
+# curl -s "https://fill.papermc.io/v3/projects/velocity/versions/${_pkgver}" | python3 -m json.tool
+_build=584
+# curl -s "https://fill.papermc.io/v3/projects/velocity/versions/${_pkgver}/builds/${_build}" | python3 -m json.tool
+_jar_sha256=4334a3577a4c6daac264d1ff3be73d27ec1f4f9b3339af683bdcf3099f66402b
 pkgver="${_pkgver//-/_}+b${_build}"
 pkgrel=1
 _mng_ver=1.0.0
@@ -20,10 +22,10 @@ optdepends=("netcat: required in order to suspend an idle server")
 conflicts=('paper-velocity-git')
 backup=('etc/conf.d/velocity')
 install="${pkgname}.install"
-source=("velocity.${pkgver}.jar"::"https://api.papermc.io/v2/projects/velocity/versions/${_pkgver}/builds/${_build}/downloads/velocity-${_pkgver}-${_build}.jar"
+source=("velocity.${pkgver}.jar"::"https://fill-data.papermc.io/v1/objects/${_jar_sha256}/velocity-${_pkgver}-${_build}.jar"
 	"velocity-proxy-mgmt-${_mng_ver}.tar.gz"::"https://github.com/yuna0x0/velocity-proxy-mgmt/archive/refs/tags/v${_mng_ver}.tar.gz")
 noextract=("velocity.${pkgver}.jar")
-sha256sums=('ef1a852bfae7397e84907837925e7ad21c6312066290edaae401b77f6f423ac3'
+sha256sums=("${_jar_sha256}"
             '5b22bc55f350382e5c6e2b88c4a51247316814eb73fe3e9b8a45a265d3619ac8')
 
 _game="velocity"
