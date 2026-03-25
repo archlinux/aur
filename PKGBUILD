@@ -7,7 +7,7 @@
 
 _pkgname="mindustryx"
 pkgbase="$_pkgname-git"
-pkgver=2026.02.X27.r7.gabde1c6
+pkgver=2026.03.24.B423
 pkgrel=1
 pkgdesc="Optimized mindustry server&client with more API"
 url="https://github.com/TinyLake/MindustryX"
@@ -34,9 +34,10 @@ sha256sums=(
 
 pkgver() {
   cd "$_pkgsrc"
-  git describe --long --tags --abbrev=7 --exclude='*[a-zA-Z][a-zA-Z]*' \
-    | sed -E 's/^[^0-9]*//;s/([^-]*-g)/r\1/;s/-/./g'
+  git describe --tags --abbrev=7 \
+    | sed -E 's/^[^0-9]*//; s/-([0-9]+)-g/.\1.g/; s/-/./g'
 }
+
 prepare()
 {
   cd "$_pkgsrc"
@@ -55,7 +56,9 @@ prepare()
   cd ..
 
   ./scripts/applyPatches.sh
-
+  cd work
+  git am --no-gpg-sign -3 "../../../0001-gradlew9.0.patch"
+  git commit --allow-empty --no-author --no-gpg-sign --no-date -m "gradlew9" --author="System <system@example.com>"
   # skip android subproject; see settings.gradle
   unset ANDROID_HOME JITPACK
 }
