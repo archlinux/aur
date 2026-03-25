@@ -2,7 +2,7 @@
 pkgname=collabora-office
 pkgver=25.04.9.2
 pkgrel=1
-pkgdesc='Collabora Office - Qt6 desktop document editor powered by LibreOffice core'
+pkgdesc='Collabora Office - Qt6 desktop document editor powered by Collabora Online'
 arch=('x86_64')
 url='https://collaboraoffice.com'
 license=('MPL-2.0')
