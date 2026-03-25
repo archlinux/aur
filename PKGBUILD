@@ -8,7 +8,7 @@
 
 _pkgname="telegram-desktop"
 pkgname="$_pkgname-git"
-pkgver=6.6.0.r5.g1705e5a
+pkgver=6.6.4.r2.gb4f7c0f
 pkgrel=1
 pkgdesc='Official Telegram Desktop client'
 url="https://github.com/telegramdesktop/tdesktop"
@@ -26,7 +26,7 @@ depends=(
   libjxl
   libvpx
   libxdamage
-  minizip
+  minizip-ng
   openal
   openh264
   opus
@@ -67,6 +67,8 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
+options=('!lto')
+
 _source_telegram() {
   _pkgsrc="$_pkgname"
   source=("$_pkgsrc"::"git+$url.git${_commit:+#commit=$_commit}")
@@ -93,9 +95,9 @@ _source_telegram() {
       fi
     done
 
-    # fix minizip headers
-    sed -E -e 's&#include <((un)?zip\.h)>&#include <minizip/\1>&g' \
-      -i Telegram/lib_base/base/zlib_help.h
+    # force system minizip-ng
+    rm -rf "Telegram/ThirdParty/minizip"
+    sed -E -e '/pkg_check_modules/s&\bminizip\b&minizip-ng&' -i "cmake/external/minizip/CMakeLists.txt"
   )
 
   _build_telegram() (
