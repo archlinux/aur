@@ -1,7 +1,7 @@
 # Maintainer: Jakub Klinkovský <lahwaacz at archlinux dot org>
 
 pkgname=kubectl-tree
-pkgver=0.4.6
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="kubectl plugin to browse Kubernetes object hierarchies as a tree"
 arch=(x86_64 aarch64)
@@ -13,7 +13,7 @@ groups=(kubectl-plugins)
 # we cannot use LTO as otherwise we do not get reproducible package with full RELRO
 options=('!lto')
 source=("$url/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-b2sums=('8e3e657578ccc23d88314acaac0760dd797e042d43b0b5b554f0289715d074a81c3094d846ad3b0485db3d801bddbacc319c5700221243fe093516fbb0337b5c')
+b2sums=('cabfb56c3c5fd4bd5aadb8d18faef5712f9352fa8d407e593d2ac2f5bc72157c007972657c3e0745007f128c84851c357ca84c11be1fcab138e5f4fc136c30df')
 
 build() {
   cd $pkgname-$pkgver
