@@ -1,6 +1,6 @@
 # Maintainer: wDona <donanferyt@gmail.com> 
 pkgname=burnt-out 
-pkgver=1.1.85
+pkgver=1.1.87
 pkgrel=1
 pkgdesc="To-do app focused on preventing Burnout Syndrome ;)" 
 arch=('x86_64') 
@@ -12,4 +12,11 @@ sha256sums_x86_64=('SKIP')
 package() { 
     bsdtar -xf "${srcdir}/burnt-out-${pkgver}-installer.deb" data.tar.*
     bsdtar -xf "${srcdir}/data.tar."* -C "${pkgdir}/"
+
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s /opt/burntoutapp/bin/BurntOutApp "${pkgdir}/usr/bin/burnt-out"
+
+    mkdir -p "${pkgdir}/usr/share/applications"
+    cp "${pkgdir}/opt/burntoutapp/lib/burntoutapp-BurntOutApp.desktop" \
+       "${pkgdir}/usr/share/applications/burnt-out.desktop"
 }
