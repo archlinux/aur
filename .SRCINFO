@@ -1,0 +1,23 @@
+pkgbase = systemrdl-toolkit
+	pkgdesc = A pure C++ toolkit for parsing and elaborating SystemRDL files
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/vowstar/systemrdl-toolkit
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = nlohmann-json
+	makedepends = inja
+	makedepends = pkgconf
+	depends = antlr4-runtime
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	provides = systemrdl-toolkit
+	conflicts = systemrdl-toolkit
+	source = systemrdl-toolkit::git+https://github.com/vowstar/systemrdl-toolkit.git#tag=v0.2.0
+	sha256sums = baf5dc6d7566750f3c05944f09ba281eb6d1ff43ae5262910878cfcf351da38b
+
+pkgname = systemrdl-toolkit
