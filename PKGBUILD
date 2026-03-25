@@ -1,12 +1,12 @@
 # Maintainer: jazztickets
 pkgname=mingw-w64-sdl3_ttf
 pkgver=3.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A library that allows you to use TrueType fonts in your SDL applications (Version 3) (mingw-w64)"
 arch=(any)
 url="https://github.com/libsdl-org/SDL_ttf"
 license=("Zlib")
-depends=(mingw-w64-sdl3)
+depends=(mingw-w64-sdl3 mingw-w64-freetype2)
 makedepends=(mingw-w64-cmake)
 options=(staticlibs !strip !buildflags)
 source=("https://github.com/libsdl-org/SDL_ttf/releases/download/release-${pkgver}/SDL3_ttf-${pkgver}.tar.gz")
