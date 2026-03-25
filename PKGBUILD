@@ -3,7 +3,7 @@
 
 pkgname="annepro2-tools-git"
 pkgver=r57.a13b82c
-pkgrel=1
+pkgrel=2
 pkgdesc="Alternative firmware update tool for the Anne Pro 2 keyboard"
 arch=('x86_64')
 url="https://github.com/OpenAnnePro/AnnePro2-Tools"
