@@ -2,7 +2,7 @@
 
 pkgname=coomer
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Zoomer application for everyone on Linux"
 arch=('x86_64' 'aarch64')
 url="https://github.com/yuzujr/coomer"
@@ -22,6 +22,8 @@ optdepends=(
 )
 makedepends=(
   'pkgconf'
+  'make'
+  'gcc'
 )
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")

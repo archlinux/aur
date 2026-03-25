@@ -1,12 +1,14 @@
 pkgbase = coomer
 	pkgdesc = Zoomer application for everyone on Linux
 	pkgver = 1.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yuzujr/coomer
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = pkgconf
+	makedepends = make
+	makedepends = gcc
 	depends = glibc
 	depends = libglvnd
 	depends = libx11
