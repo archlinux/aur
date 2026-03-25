@@ -2,12 +2,12 @@
 
 _plugin=comp
 pkgname=vsview-${_plugin}
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=2
 pkgdesc="A vsview plugin to make comparison backed by Slowpoke Pics"
 arch=("x86_64")
 url='https://github.com/Jaded-Encoding-Thaumaturgy/vs-view'
-license=("EUPL-1.2")
+license=("MIT")
 depends=(
     "vsview"
     "python-httpx"
@@ -27,7 +27,7 @@ source=("${pkgname}::git+${url}.git#tag=${_plugin}/v${pkgver}")
 sha256sums=('SKIP')
 
 package() {
-	cd "${pkgname}/src/plugins/${_plugin}"
+	cd "${pkgname}/src/plugins/${_plugin}" || exit
 	python -m build --wheel --no-isolation
 	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
