@@ -1,6 +1,6 @@
 # Maintainer: dashy9000
 pkgname=stardom-card
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="CLI tool to scrape and display Stardom event cards"
 arch=('x86_64')
