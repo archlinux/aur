@@ -13,15 +13,19 @@ pkgname=('mythplugins-mytharchive'
          'mythplugins-mythnews'
          'mythplugins-mythweather'
          'mythplugins-mythzoneminder')
-pkgver=34.0.r16.g95fb10412c
+pkgver=36.0.r0.g1385cbf
 pkgrel=1
 pkgdesc="Official plugins for MythTV (Stable '-fixes' branch)"
 arch=('x86_64')
 url="https://www.mythtv.org/"
 license=('GPL')
-makedepends=('dvdauthor' 'dvd+rw-tools' 'mesa-libgl' "mythtv-git>=$pkgver"
+makedepends=('mythtv'
              'perl-datetime-format-iso8601' 'perl-date-manip' 'perl-image-size'
-source=("git+https://github.com/MythTV/mythtv#branch=fixes/34")
+             'perl-json' 'perl-soap-lite' 'perl-xml-simple' 'perl-xml-xpath'
+             'python-pycurl' 'python-lxml' 'python-mysqlclient' 'mariadb-libs'
+             'libzip' 'flac' 'libvorbis' 'lame' 'libcdio-paranoia'
+             'libdiscid' 'libmusicbrainz5' 'libcoverart')
+source=("git+https://github.com/MythTV/mythtv#branch=fixes/36")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -55,7 +59,7 @@ package_mythplugins-mythbrowser() {
 
 package_mythplugins-mythgame() {
   pkgdesc="Game emulator plugin for MythTV"
-  depends=('mythtv' 'minizip')
+  depends=('mythtv' 'libzip')
 
   cd "$srcdir/mythtv/$pkgbase/mythgame"
   make INSTALL_ROOT="$pkgdir" install
@@ -63,7 +67,8 @@ package_mythplugins-mythgame() {
 
 package_mythplugins-mythmusic() {
   pkgdesc="Music playing plugin for MythTV"
-  depends=('mythtv' 'libcdio-paranoia')
+  depends=('mythtv' 'flac' 'libvorbis' 'lame' 'libcdio-paranoia'
+           'libdiscid' 'libmusicbrainz5' 'libcoverart')
 
   cd "$srcdir/mythtv/$pkgbase/mythmusic"
   make INSTALL_ROOT="$pkgdir" install
@@ -71,7 +76,7 @@ package_mythplugins-mythmusic() {
 
 package_mythplugins-mythnetvision() {
   pkgdesc="MythNetvision plugin for MythTV"
-  depends=('mythtv' 'python-urllib3')
+  depends=('mythtv' 'python-pycurl' 'python-lxml' 'python-mysqlclient')
 
   cd "$srcdir/mythtv/$pkgbase/mythnetvision"
   make INSTALL_ROOT="$pkgdir" install

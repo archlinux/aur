@@ -1,14 +1,11 @@
 pkgbase = mythplugins
 	pkgdesc = Official plugins for MythTV (Stable '-fixes' branch)
-	pkgver = 34.0.r16.g95fb10412c
+	pkgver = 36.0.r0.g1385cbf
 	pkgrel = 1
 	url = https://www.mythtv.org/
 	arch = x86_64
 	license = GPL
-	makedepends = dvdauthor
-	makedepends = dvd+rw-tools
-	makedepends = mesa-libgl
-	makedepends = mythtv-git>=34.0.r16.g95fb10412c
+	makedepends = mythtv
 	makedepends = perl-datetime-format-iso8601
 	makedepends = perl-date-manip
 	makedepends = perl-image-size
@@ -16,17 +13,19 @@ pkgbase = mythplugins
 	makedepends = perl-soap-lite
 	makedepends = perl-xml-simple
 	makedepends = perl-xml-xpath
-	makedepends = libhdhomerun
-	makedepends = python-pillow
 	makedepends = python-pycurl
-	makedepends = gdb
-	makedepends = mariadb-libs
-	makedepends = minizip
 	makedepends = python-lxml
-	makedepends = perl-xml-xpath
-	makedepends = python-urllib3
+	makedepends = python-mysqlclient
+	makedepends = mariadb-libs
+	makedepends = libzip
+	makedepends = flac
+	makedepends = libvorbis
+	makedepends = lame
 	makedepends = libcdio-paranoia
-	source = git+https://github.com/MythTV/mythtv#branch=fixes/34
+	makedepends = libdiscid
+	makedepends = libmusicbrainz5
+	makedepends = libcoverart
+	source = git+https://github.com/MythTV/mythtv#branch=fixes/36
 	sha256sums = SKIP
 
 pkgname = mythplugins-mytharchive
@@ -43,17 +42,25 @@ pkgname = mythplugins-mythbrowser
 pkgname = mythplugins-mythgame
 	pkgdesc = Game emulator plugin for MythTV
 	depends = mythtv
-	depends = minizip
+	depends = libzip
 
 pkgname = mythplugins-mythmusic
 	pkgdesc = Music playing plugin for MythTV
 	depends = mythtv
+	depends = flac
+	depends = libvorbis
+	depends = lame
 	depends = libcdio-paranoia
+	depends = libdiscid
+	depends = libmusicbrainz5
+	depends = libcoverart
 
 pkgname = mythplugins-mythnetvision
 	pkgdesc = MythNetvision plugin for MythTV
 	depends = mythtv
-	depends = python-urllib3
+	depends = python-pycurl
+	depends = python-lxml
+	depends = python-mysqlclient
 
 pkgname = mythplugins-mythnews
 	pkgdesc = News checking plugin for MythTV
