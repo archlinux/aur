@@ -2,7 +2,7 @@
 
 pkgname=ani2xcursor
 pkgver=1.4.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Convert Windows animated cursor themes to Linux Xcursor format"
 arch=('x86_64' 'aarch64')
 url="https://github.com/yuzujr/ani2xcursor"
@@ -31,6 +31,7 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  export XMAKE_ROOT=y
   xmake install -o "${pkgdir}/usr"
 
   install -Dm644 LICENSE \
