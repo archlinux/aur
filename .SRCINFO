@@ -1,10 +1,10 @@
 pkgbase = drop-xdnd
 	pkgdesc = cli drag-and-drop for x11 without the drag, pass files, click window
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sillybanaja/drop
 	arch = x86_64
-	license = MIT
+	license = GPL3
 	depends = libx11
 	depends = libxi
 	conflicts = drop
