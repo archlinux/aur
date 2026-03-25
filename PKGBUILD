@@ -7,16 +7,13 @@ arch=('x86_64')
 url="https://whitenoise.chat"
 license=('AGPL-3.0-only')
 depends=('gtk3' 'libsecret' 'libglvnd' 'sqlcipher' 'openssl')
-makedepends=('git' 'rust' 'cargo' 'cmake' 'ninja' 'clang' 'pkgconf' 'patchelf')
+makedepends=('git' 'rust' 'cargo' 'cmake' 'ninja' 'clang' 'pkgconf' 'patchelf' 'fvm' 'jq')
 provides=('whitenoise')
 conflicts=('whitenoise')
 source=("whitenoise::git+https://github.com/futpib-bot/whitenoise.git#branch=master"
-        "whitenoise.desktop"
-        "flutter-sdk-3.41.4.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.41.4-stable.tar.xz")
+        "whitenoise.desktop")
 sha256sums=('SKIP'
-            '80f0d4430f16214d9e7b5aaafdaa1541143c15e390ccff1c9a87bfe7d577a99a'
-            'c9c4e741ebcf83ee88303404176f7e22c3b6abfc8e9d60781098b6d4104327a9')
-noextract=('flutter-sdk-3.41.4.tar.xz')
+            '80f0d4430f16214d9e7b5aaafdaa1541143c15e390ccff1c9a87bfe7d577a99a')
 
 pkgver() {
     cd "whitenoise"
@@ -25,12 +22,13 @@ pkgver() {
 }
 
 prepare() {
-    # Extract flutter SDK into srcdir
-    if [ ! -d "${srcdir}/flutter" ]; then
-        bsdtar -xf "${srcdir}/flutter-sdk-3.41.4.tar.xz" -C "${srcdir}"
-    fi
+    local _flutter_ver
+    _flutter_ver=$(jq -r '.flutter' "whitenoise/.fvmrc")
 
-    export FLUTTER_ROOT="${srcdir}/flutter"
+    # Install the pinned Flutter version via fvm
+    fvm install "${_flutter_ver}"
+
+    export FLUTTER_ROOT="${HOME}/fvm/versions/${_flutter_ver}"
     export PATH="${FLUTTER_ROOT}/bin:${PATH}"
     export DART_ROOT="${FLUTTER_ROOT}/bin/cache/dart-sdk"
 
@@ -39,17 +37,16 @@ prepare() {
 
     cd "whitenoise"
 
-    # Remove fvm symlink/config - we use the bundled flutter version directly
-    rm -f .fvm .fvmrc
-
     # Fetch Flutter pub dependencies
     flutter --no-version-check pub get
 }
 
 build() {
-    export FLUTTER_ROOT="${srcdir}/flutter"
+    local _flutter_ver
+    _flutter_ver=$(jq -r '.flutter' "whitenoise/.fvmrc")
+
+    export FLUTTER_ROOT="${HOME}/fvm/versions/${_flutter_ver}"
     export PATH="${FLUTTER_ROOT}/bin:${PATH}"
-    # Ensure tool_backend.sh (called by cmake/ninja) finds the bundled dart
     export DART_ROOT="${FLUTTER_ROOT}/bin/cache/dart-sdk"
 
     # Use a cargo cache inside srcdir
@@ -106,7 +103,7 @@ package() {
 
     # Symlink executable into /usr/bin
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/usr/lib/${pkgname}/whitenoise" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/usr/lib/${pkgname}/whitenoise" "${pkgdir}/usr/bin/whitenoise"
 
     # Icons
     install -Dm644 "assets/svgs/whitenoise.svg" \
