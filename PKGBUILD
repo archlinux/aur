@@ -1,6 +1,6 @@
 # Maintainer: Nguyen Ky <nhktmdzhg at google mail>
 pkgname=srcom-bin
-pkgver=0.0.2
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="X compositor - fork by infraflakes"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
     "https://raw.githubusercontent.com/infraflakes/srcom/refs/heads/main/LICENSES/MIT"
 )
 sha256sums=(
-    'c73672b4c29c4a1475fb5d5cc7aac56143cf34ed7c1b32099df0a73fb9e936a4'
+    '6aac3f3d81d9e9143588b24cbe212107e642278d086e24d6173d28ccd8b10941'
     'fd80a26fbb3f644af1fa994134446702932968519797227e07a1368dea80f0bc'
 )
 
