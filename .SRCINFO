@@ -19,5 +19,7 @@ pkgbase = issabel-framework
 	backup = etc/httpd/conf/extra/issabel-htaccess.conf
 	backup = etc/php/conf.d/issabel.ini
 	backup = etc/sudoers.d/issabel
+	source = issabel-framework-5.0.0.tar.gz::https://github.com/IssabelFoundation/framework/archive/refs/tags/5.0.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = issabel-framework

@@ -17,13 +17,15 @@ backup=(
   'etc/php/conf.d/issabel.ini'
   'etc/sudoers.d/issabel'
 )
-source=()
-noextract=()
+source=("$pkgname-$pkgver.tar.gz::https://github.com/IssabelFoundation/framework/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('SKIP')
 
 package() {
+  cd "$srcdir/framework-$pkgver"
+  
   # 1. Web Interface
   install -d "${pkgdir}/var/www/html"
-  cp -r "${startdir}/framework/html/"* "${pkgdir}/var/www/html/"
+  cp -r "framework/html/"* "${pkgdir}/var/www/html/"
 
   # 2. Databases and Backups directories
   install -d "${pkgdir}/var/www/db"
@@ -31,35 +33,32 @@ package() {
 
   # 3. System Utilities
   install -d "${pkgdir}/usr/bin"
-  local bin_files=("issabel-menumerge" "issabel-menuremove" "issabel-dbprocess" "compareVersion" "search_ami_admin_pwd" "issabel-add-yum-exclude" "issabel-notification" "issabel-helper")
-  for f in "${bin_files[@]}"; do
-    if [ -f "${startdir}/additionals/usr/bin/$f" ]; then
-      install -m755 "${startdir}/additionals/usr/bin/$f" "${pkgdir}/usr/bin/$f"
-    fi
+  for f in issabel-menumerge issabel-menuremove issabel-dbprocess compareVersion search_ami_admin_pwd issabel-notification issabel-helper; do
+    [ -f "additionals/usr/bin/$f" ] && install -m755 "additionals/usr/bin/$f" "${pkgdir}/usr/bin/$f"
   done
 
   # 4. Privileged Scripts
   install -d "${pkgdir}/usr/share/issabel/privileged"
-  install -m755 "${startdir}/framework/setup/usr/share/issabel/privileged/"* "${pkgdir}/usr/share/issabel/privileged/"
+  [ -d "framework/setup/usr/share/issabel/privileged" ] && install -m755 framework/setup/usr/share/issabel/privileged/* "${pkgdir}/usr/share/issabel/privileged/"
 
   # 5. Apache Configuration
   install -d "${pkgdir}/etc/httpd/conf/extra"
-  install -m644 "${startdir}/additionals/etc/httpd/conf.d/issabel.conf" "${pkgdir}/etc/httpd/conf/extra/issabel.conf"
-  install -m644 "${startdir}/additionals/etc/httpd/conf.d/issabel-htaccess.conf" "${pkgdir}/etc/httpd/conf/extra/issabel-htaccess.conf"
+  [ -f "additionals/etc/httpd/conf.d/issabel.conf" ] && install -m644 "additionals/etc/httpd/conf.d/issabel.conf" "${pkgdir}/etc/httpd/conf/extra/issabel.conf"
+  [ -f "additionals/etc/httpd/conf.d/issabel-htaccess.conf" ] && install -m644 "additionals/etc/httpd/conf.d/issabel-htaccess.conf" "${pkgdir}/etc/httpd/conf/extra/issabel-htaccess.conf"
 
   # 6. PHP Configuration
   install -d "${pkgdir}/etc/php/conf.d"
-  install -m644 "${startdir}/additionals/etc/php.d/issabel.ini" "${pkgdir}/etc/php/conf.d/issabel.ini"
+  [ -f "additionals/etc/php.d/issabel.ini" ] && install -m644 "additionals/etc/php.d/issabel.ini" "${pkgdir}/etc/php/conf.d/issabel.ini"
 
   # 7. Sudoers
   install -d "${pkgdir}/etc/sudoers.d"
-  install -m440 "${startdir}/additionals/etc/sudoers" "${pkgdir}/etc/sudoers.d/issabel"
+  [ -f "additionals/etc/sudoers" ] && install -m440 "additionals/etc/sudoers" "${pkgdir}/etc/sudoers.d/issabel"
 
   # 8. Logrotate and Cron
   install -d "${pkgdir}/etc/logrotate.d"
-  install -m644 "${startdir}/additionals/etc/logrotate.d/"* "${pkgdir}/etc/logrotate.d/"
+  [ -d "additionals/etc/logrotate.d" ] && install -m644 additionals/etc/logrotate.d/* "${pkgdir}/etc/logrotate.d/"
   install -d "${pkgdir}/etc/cron.d"
-  install -m644 "${startdir}/additionals/etc/cron.d/issabel.cron" "${pkgdir}/etc/cron.d/issabel"
+  [ -f "additionals/etc/cron.d/issabel.cron" ] && install -m644 "additionals/etc/cron.d/issabel.cron" "${pkgdir}/etc/cron.d/issabel"
 
   # 9. Create directories for templates and cache
   install -d "${pkgdir}/var/www/html/var/templates_c"
