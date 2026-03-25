@@ -1,7 +1,7 @@
 pkgbase = hyprmoncfg-git
 	pkgdesc = Terminal-first monitor configurator and auto-switching daemon for Hyprland
-	pkgver = r9.2b75882
-	pkgrel = 2
+	pkgver = r12.cf55187
+	pkgrel = 1
 	url = https://github.com/crmne/hyprmoncfg
 	install = hyprmoncfg-git.install
 	arch = x86_64

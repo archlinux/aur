@@ -1,6 +1,6 @@
 pkgname=hyprmoncfg-git
-pkgver=r9.2b75882
-pkgrel=2
+pkgver=r12.cf55187
+pkgrel=1
 pkgdesc="Terminal-first monitor configurator and auto-switching daemon for Hyprland"
 arch=('x86_64' 'aarch64')
 url="https://github.com/crmne/hyprmoncfg"
@@ -46,5 +46,7 @@ package() {
   install -Dm755 "hyprmoncfgd" "${pkgdir}/usr/bin/hyprmoncfgd"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm644 "packaging/applications/hyprmoncfg.desktop" "${pkgdir}/usr/share/applications/hyprmoncfg.desktop"
+  install -Dm644 "packaging/icons/hyprmoncfg.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/hyprmoncfg.svg"
   install -Dm644 "packaging/systemd/hyprmoncfgd.service" "${pkgdir}/usr/lib/systemd/user/hyprmoncfgd.service"
 }
