@@ -2,14 +2,14 @@ pkgbase = gimp-plugin-text-case-converter
 	pkgdesc = GIMP 3.x plugin to convert text layer case (uppercase, lowercase, title case, etc.)
 	pkgver = 0.1
 	pkgrel = 1
-	url = https://github.com/CodigoCristo/gimp-plugin-text-case-converter
+	url = https://github.com/CodigoCristo/text-case-converter-Gimp
 	install = gimp-plugin-text-case-converter.install
 	arch = any
 	license = GPL-3.0-or-later
 	makedepends = git
 	depends = gimp>=3.0
 	depends = python
-	source = git+https://github.com/CodigoCristo/gimp-plugin-text-case-converter.git#branch=main
+	source = git+https://github.com/CodigoCristo/text-case-converter-Gimp.git#branch=main
 	sha512sums = SKIP
 
 pkgname = gimp-plugin-text-case-converter
