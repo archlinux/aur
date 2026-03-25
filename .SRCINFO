@@ -1,0 +1,13 @@
+pkgbase = codex-sessions
+	pkgdesc = Terminal UI for browsing and resuming Codex CLI sessions
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/Uri2001/codex-sessions
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	source = codex-sessions-0.2.2.tar.gz::https://github.com/Uri2001/codex-sessions/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = e41e98012615bfa4544aad8f9aabf9765155404f7a96414babfe9ef6707b4a94
+
+pkgname = codex-sessions
