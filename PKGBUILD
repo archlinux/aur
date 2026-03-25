@@ -8,8 +8,8 @@ url="https://github.com/LucasionGS/hue-cli"
 license=('MIT')
 depends=()
 makedepends=('go' 'git')
-provides=('hue-cli')
-conflicts=('hue-cli')
+provides=('hue')
+conflicts=('hue')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 

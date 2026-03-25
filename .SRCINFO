@@ -9,8 +9,8 @@ pkgbase = hue-cli-git
 	license = MIT
 	makedepends = go
 	makedepends = git
-	provides = hue-cli
-	conflicts = hue-cli
+	provides = hue
+	conflicts = hue
 	source = hue-cli-git::git+https://github.com/LucasionGS/hue-cli.git
 	sha256sums = SKIP
 
