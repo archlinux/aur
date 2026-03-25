@@ -1,6 +1,6 @@
 pkgbase = pdfium-binaries-v8-bin
 	pkgdesc = PDFium binaries built with scripts from pdfium-binaries
-	pkgver = 7428
+	pkgver = 7749
 	pkgrel = 1
 	url = https://github.com/bblanchon/pdfium-binaries
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = pdfium-binaries-v8-bin
 	conflicts = libpdfium-nojs
 	conflicts = pdfium-binaries-v8
 	conflicts = pdfium-binaries-bin
-	source = https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F7428/pdfium-v8-linux-x64.tgz
-	sha512sums = 86267e7c62f505e7c9df6c55a0bf1d9817ba4de4d0ecb5f2953084627a4aeeb1d78fae7fd5afe3f593504dd0c3b86a419786833a7b5cfcc8fd961a7717868b67
+	source = https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F7749/pdfium-v8-linux-x64.tgz
+	sha512sums = 7319cc5f9e4357502e3cab05261c94edad6abdde904cde33440750a2e9a67dae4800a470887aea427c7ed4bdcdf352ae85d31bff5a9e3a4278949c0e9d73c689
 
 pkgname = pdfium-binaries-v8-bin
