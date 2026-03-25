@@ -3,7 +3,7 @@
 pkgname=cwal-git
 _pkgname=cwal
 
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Blazing-fast pywal-like color palette generator written in C."
 arch=('any')
