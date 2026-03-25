@@ -7,7 +7,7 @@ arch=('x86_64')
 url='https://github.com/douglas/cmux-gtk'
 license=('AGPL-3.0-or-later')
 depends=('gtk4' 'libadwaita' 'webkitgtk-6.0' 'glib2' 'opengl-driver')
-makedepends=('rust' 'cargo' 'zig' 'ncurses' 'gcc' 'patchelf' 'git')
+makedepends=('rust' 'cargo' 'zig' 'ncurses' 'gcc' 'nasm' 'patchelf' 'git')
 provides=('cmux')
 conflicts=('cmux' 'cmux-git')
 # AUR pkgver uses dots; _tagver holds the original tag version with hyphens
