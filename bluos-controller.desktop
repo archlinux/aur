@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=BluOS Controller
 Comment=Control your BluOS-enabled music system.
-Exec=/usr/bin/bluos-controller
+Exec=/usr/bin/bluos-controller --ozone-platform=x11
 Icon=/opt/bluos-controller/bluos-controller.png
 Terminal=false
 Type=Application
