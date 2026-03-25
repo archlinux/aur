@@ -24,20 +24,25 @@ build() {
 package() {
   cd "${srcdir}/wutheringwaves-cli-manager-$pkgver"
 
-  # 1. 安装 Python 包
+  # 1. 安装 Python 包到临时打包目录
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   # 2. 安装 License
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # 3. 配置自动补全
-  # 创建 Zsh、Bash 和 Fish 的系统级补全脚本目录
+  # 3. 动态获取当前 Arch 系统的 Python 版本号 (例如 3.12 或 3.13)
+  local py_ver=$(python -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+  local site_pkgs="$pkgdir/usr/lib/python${py_ver}/site-packages"
+
+  # 4. 创建系统级补全脚本目录
   install -dm755 "$pkgdir/usr/share/zsh/site-functions"
   install -dm755 "$pkgdir/usr/share/bash-completion/completions"
   install -dm755 "$pkgdir/usr/share/fish/vendor_completions.d"
 
-  # 调用刚安装到 pkgdir 下的 ww 命令来生成补全脚本，并输出到对应系统目录
-  _WW_COMPLETE=zsh_source "$pkgdir/usr/bin/ww" > "$pkgdir/usr/share/zsh/site-functions/_ww"
-  _WW_COMPLETE=bash_source "$pkgdir/usr/bin/ww" > "$pkgdir/usr/share/bash-completion/completions/ww"
-  _WW_COMPLETE=fish_source "$pkgdir/usr/bin/ww" > "$pkgdir/usr/share/fish/vendor_completions.d/ww.fish"
+  # 5. 生成补全脚本
+  # 关键点：必须设定 PYTHONPATH 指向刚装好的  目录，否则 metadata.version() 会报错崩溃
+  # 关键点：使用 Typer 官方的 --show-completion 参数，不再使用底层环境变量
+  PYTHONPATH="$site_pkgs" "$pkgdir/usr/bin/ww" --show-completion zsh > "$pkgdir/usr/share/zsh/site-functions/_ww"
+  PYTHONPATH="$site_pkgs" "$pkgdir/usr/bin/ww" --show-completion bash > "$pkgdir/usr/share/bash-completion/completions/ww"
+  PYTHONPATH="$site_pkgs" "$pkgdir/usr/bin/ww" --show-completion fish > "$pkgdir/usr/share/fish/vendor_completions.d/ww.fish"
 }
