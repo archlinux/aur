@@ -9,5 +9,8 @@ pkgbase = ekipyt
 	source = yt.c
 	source = yt.cfg
 	source = yt.pam
+	sha256sums = 6dc94b6e9f7d9170737df7d0ba65ee0308a263ecb8150c949047428371
+	sha256sums = 146e04aa05345680dd6c220630390432bf45009fcf94a347131d9c3118
+	sha256sums = dc17b21c82ef63f4351cb66b8f1a3324843eef82404790773796c1f1ac
 
 pkgname = ekipyt
