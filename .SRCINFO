@@ -1,7 +1,7 @@
 pkgbase = cloudflare-warp-panel
 	pkgdesc = A graphical control panel (GUI) for the Cloudflare WARP client for Linux.
 	pkgver = 8.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/johnpetersa19/cloudflare_warp_panel
 	arch = x86_64
 	license = GPL3
@@ -11,7 +11,7 @@ pkgbase = cloudflare-warp-panel
 	depends = cloudflare-warp-bin
 	depends = gtk3
 	depends = libadwaita
-	source = cloudflare_warp_panel-8.1.0+1.tar.gz::https://github.com/johnpetersa19/cloudflare_warp_panel/archive/refs/tags/8.1.0+1.tar.gz
+	source = cloudflare_warp_panel-8.1.0+2.tar.gz::https://github.com/johnpetersa19/cloudflare_warp_panel/archive/refs/tags/8.1.0+2.tar.gz
 	sha256sums = 66ca2ba9ef8a86ba329947154d4f6910feecc87500015461040ab8aa15f1aa97
 
 pkgname = cloudflare-warp-panel
