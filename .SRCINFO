@@ -1,0 +1,15 @@
+pkgbase = localectl-libre
+	pkgdesc = Replacement for systemd localectl on systemd-free systems
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/osimarr/localectl-libre
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = dbus
+	source = git+https://github.com/osimarr/localectl-libre.git#tag=v0.1
+	sha256sums = SKIP
+
+pkgname = localectl-libre
