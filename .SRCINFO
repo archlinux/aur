@@ -1,0 +1,15 @@
+pkgbase = issabel-meta
+	pkgdesc = Issabel PBX - Unified Communications (meta package)
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://www.issabel.org
+	install = issabel-meta.install
+	arch = any
+	license = GPL2
+	license = GPL3
+	depends = issabel-framework
+	depends = issabel-system
+	depends = issabel-pbx
+	depends = issabel-gui
+
+pkgname = issabel
