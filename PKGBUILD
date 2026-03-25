@@ -2,13 +2,17 @@
 
 pkgname=coomer-bin
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Zoomer application for everyone on Linux (prebuilt AppImage)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/yuzujr/coomer"
 license=('MIT')
+depends=(
+  'glibc'
+  'fuse2'
+)
+options=('!strip' '!debug')
 
-depends=('glibc' 'fuse2')
 optdepends=(
   'xdg-desktop-portal: portal screenshot backend'
 )

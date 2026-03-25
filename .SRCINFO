@@ -1,13 +1,15 @@
 pkgbase = coomer-bin
 	pkgdesc = Zoomer application for everyone on Linux (prebuilt AppImage)
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yuzujr/coomer
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	depends = glibc
 	depends = fuse2
+    options = !strip
+    options = !debug
 	optdepends = xdg-desktop-portal: portal screenshot backend
 	provides = coomer
 	conflicts = coomer
