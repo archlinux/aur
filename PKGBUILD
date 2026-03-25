@@ -1,6 +1,6 @@
 # Maintainer: Ianis Vasilev <ianis@ivasilev.net>
 pkgname=searchtool-gtk
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1.314
 pkgdesc='A generic GTK search tool and launcher'
 url='https://github.com/v--/searchtool-gtk'
@@ -9,7 +9,7 @@ license=('Unlicense')
 makedepends=(git make gcc python-uv-build python-build python-installer python-wheel)
 depends=(gtk4 python python-gobject python-pydantic python-pyxdg python-pyicu)
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1fb140687b45b8a476c58402611a95d750c3e7e56dc1aa28ccd4f80839ad2bf4')
+sha256sums=('35e928aea6ed3884acbaad39d9f98c94d1fc53f84b13afc90581145dc243539f')
 
 _fullsrcdir() {
     echo "${srcdir}/${pkgname}-${pkgver}"
