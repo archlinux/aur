@@ -4,7 +4,7 @@
 _pkgname='dmitry'
 pkgname="${_pkgname}-git"
 _release_version_label='1.3a'
-pkgver=1.3a.r33.g1cdadb9
+pkgver=1.3a.r34.g32efb31
 pkgrel=1
 
 pkgdesc="Simple utility to perform host audition and extended whois queries using Google and ICANN (git version)"
@@ -13,10 +13,17 @@ url='http://mor-pah.net/software/dmitry-deepmagic-information-gathering-tool/'
 license=('GPL')
 depends=('glibc')
 
-_github_username='0zitro'
-_git_branch="feat/${_github_username}/renovate"
-source=("git+https://github.com/${_github_username}/${_pkgname}#branch=${_git_branch}")
+_github_username='jaygreig86'
+# _git_branch='master'
+# source=("${_pkgname}::git+https://github.com/${_github_username}/${_pkgname}#branch=${_git_branch}")
+source=("${_pkgname}::git+https://github.com/${_github_username}/${_pkgname}")
 md5sums=('SKIP')
+# Even though the latest master is signed, I believe it's for the best to not use signing,
+#   because many AUR helpers have some kind of `devel` feature, where if the PKGBUILD had not changed,
+#   only the source repo is updated, without loading the new PKGBUILD from the AUR.
+# Thus, I will leave the source without `?signed` so as to not pull the sig, lest breaking the feature
+#   by subsequently needing to change the PKGBUILD/.SRCINFO, except of course something truly needs
+#   to be changed, of course (as in this change, changing the PKGBUILD to use the upstream repo).
 
 
 pkgver() {
