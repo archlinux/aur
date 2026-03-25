@@ -1,0 +1,29 @@
+post_install() {
+  pathModule="/usr/share/issabel/module_installer/issabel-system-5.0.0-1"
+
+  echo ">>> Merging Issabel System menus..."
+  issabel-menumerge "$pathModule/menu.xml"
+
+  echo ">>> Running system module database setup..."
+  issabel-dbprocess "install" "$pathModule/setup/db"
+
+  # Run the PHP installer script
+  echo ">>> Finalizing system module installation..."
+  mkdir -p /tmp/new_module/system
+  cp -r $pathModule/* /tmp/new_module/system/
+  php /tmp/new_module/system/setup/installer.php || :
+  rm -rf /tmp/new_module
+
+  # Set permissions
+  chown -R asterisk:asterisk /var/www/html/modules
+  chmod 755 /var/www/html/modules
+
+  # Restart Apache
+  systemctl restart httpd 2>/dev/null || true
+
+  echo ">>> Issabel System Module installed."
+}
+
+post_upgrade() {
+  post_install
+}

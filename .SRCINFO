@@ -1,0 +1,18 @@
+pkgbase = issabel-system
+	pkgdesc = Issabel System Module - Network and System Management (Arch Linux Port)
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/IssabelFoundation/system
+	install = issabel-system.install
+	arch = any
+	license = GPL
+	depends = issabel-framework
+	depends = php-legacy
+	depends = iproute2
+	depends = net-tools
+	depends = postfix
+	depends = tar
+	depends = mariadb
+	depends = sqlite
+
+pkgname = issabel-system
