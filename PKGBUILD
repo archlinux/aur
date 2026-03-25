@@ -51,12 +51,8 @@ package() {
     # Shared library
     install -Dm755 target/release/libghostty.so "$pkgdir/usr/lib/libghostty.so"
 
-    # GLAD shared library — ghostty excludes GLAD from libghostty,
-    # expecting the host app to provide it.
-    local _glad_a
-    _glad_a=$(echo target/release/build/ghostty-sys-*/out/libglad.a)
-    gcc -shared -o "$pkgdir/usr/lib/libglad.so" \
-        -Wl,--whole-archive "$_glad_a" -Wl,--no-whole-archive
+    # GLAD shared library — built directly by ghostty-sys build script
+    install -Dm755 target/release/libglad.so "$pkgdir/usr/lib/libglad.so"
     patchelf --add-needed libglad.so "$pkgdir/usr/lib/libghostty.so"
 
     # Desktop entry
