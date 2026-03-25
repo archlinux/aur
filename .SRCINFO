@@ -47,7 +47,6 @@ pkgbase = icecat
 	depends = libxt
 	depends = mime-types
 	depends = nspr
-	depends = nss
 	depends = ttf-font
 	depends = zlib
 	optdepends = hunspell-dictionary: Spell checking

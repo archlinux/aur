@@ -51,7 +51,7 @@ depends=(
   libxt
   mime-types
   nspr
-  nss
+  #nss
   ttf-font
   zlib
 )
@@ -313,7 +313,7 @@ ac_add_options --with-system-jpeg
 ac_add_options --with-system-libevent
 ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
+#ac_add_options --with-system-nss
 ac_add_options --with-system-webp
 ac_add_options --with-system-zlib
 END
