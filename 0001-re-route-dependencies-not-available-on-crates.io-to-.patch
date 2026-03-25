@@ -21,7 +21,7 @@ index 4b1671ea..086de77a 100644
  
      "pxar-bin",
  ]
-@@ -116,7 +110,6 @@ pbs-tools = { path = "pbs-tools" }
+@@ -120,7 +114,6 @@ pbs-tools = { path = "pbs-tools" }
  # regular crates
  anyhow = "1.0"
  async-trait = "0.1.56"
@@ -29,7 +29,7 @@ index 4b1671ea..086de77a 100644
  bitflags = "2.4"
  bytes = "1.0"
  cidr = "0.3"
-@@ -129,7 +122,6 @@ flate2 = "1.0"
+@@ -133,7 +126,6 @@ flate2 = "1.0"
  foreign-types = "0.3"
  futures = "0.3"
  h2 = { version = "0.4", features = [ "stream" ] }
@@ -37,7 +37,7 @@ index 4b1671ea..086de77a 100644
  hex = "0.4.3"
  hickory-resolver = { version = "0.24.1", default-features = false, features = [ "system-config", "tokio-runtime" ] }
  http-body-util = "0.1"
-@@ -166,154 +166,60 @@ xdg = "2.2"
+@@ -172,161 +172,63 @@ xdg = "2.2"
  zstd = "0.13"
  zstd-safe = "7"
  
@@ -92,6 +92,7 @@ index 4b1671ea..086de77a 100644
 -proxmox-compression.workspace = true
 -proxmox-config-digest.workspace = true
 -proxmox-daemon.workspace = true
+-proxmox-docgen.workspace = true
 -proxmox-http = { workspace = true, features = [ "body", "client-trait", "proxmox-async", "rate-limited-stream" ] } # pbs-client doesn't use these
 -proxmox-human-byte.workspace = true
 -proxmox-io.workspace = true
@@ -100,6 +101,7 @@ index 4b1671ea..086de77a 100644
 -proxmox-ldap.workspace = true
 -proxmox-metrics.workspace = true
 -proxmox-network-api = { workspace = true, features = [ "impl" ] }
+-proxmox-network-types.workspace = true
 -proxmox-notify = { workspace = true, features = [ "pbs-context" ] }
 -proxmox-openid.workspace = true
 -proxmox-product-config.workspace = true
@@ -118,12 +120,14 @@ index 4b1671ea..086de77a 100644
 -proxmox-systemd.workspace = true
 -proxmox-tfa.workspace = true
 -proxmox-time.workspace = true
+-proxmox-upgrade-checks.workspace = true
 -proxmox-uuid.workspace = true
 -proxmox-worker-task.workspace = true
 -pbs-api-types.workspace = true
 -
 -# in their respective repo
 -proxmox-acme.workspace = true
+-proxmox-acme-api.workspace = true
 -pxar.workspace = true
 -
 -# proxmox-backup workspace/internal crates
@@ -143,6 +147,7 @@ index 4b1671ea..086de77a 100644
 -#pbs-api-types = { path = "../proxmox/pbs-api-types" }
 +pbs-api-types = { path = "../proxmox/pbs-api-types" }
  #proxmox-acme = { path = "../proxmox/proxmox-acme" }
+ #proxmox-acme-api = { path = "../proxmox/proxmox-acme-api" }
  #proxmox-api-macro = { path = "../proxmox/proxmox-api-macro" }
  #proxmox-apt = { path = "../proxmox/proxmox-apt" }
 -#proxmox-apt-api-types = { path = "../proxmox/proxmox-apt-api-types" }
@@ -160,6 +165,7 @@ index 4b1671ea..086de77a 100644
 +proxmox-compression = { path = "../proxmox/proxmox-compression" }
 +proxmox-config-digest = { path = "../proxmox/proxmox-config-digest" }
  #proxmox-daemon = { path = "../proxmox/proxmox-daemon" }
+ #proxmox-docgen = { path = "../proxmox/proxmox-docgen" }
 -#proxmox-http = { path = "../proxmox/proxmox-http" }
 -#proxmox-http-error = { path = "../proxmox/proxmox-http-error" }
 -#proxmox-human-byte = { path = "../proxmox/proxmox-human-byte" }
@@ -179,8 +185,7 @@ index 4b1671ea..086de77a 100644
 -#proxmox-notify = { path = "../proxmox/proxmox-notify" }
 +proxmox-notify = { path = "../proxmox/proxmox-notify" }
  #proxmox-openid = { path = "../proxmox/proxmox-openid" }
--#proxmox-product-config = { path = "../proxmox/proxmox-product-config" }
-+proxmox-product-config = { path = "../proxmox/proxmox-product-config" }
+ #proxmox-product-config = { path = "../proxmox/proxmox-product-config" }
 -#proxmox-rate-limiter = { path = "../proxmox/proxmox-rate-limiter" }
 +proxmox-rate-limiter = { path = "../proxmox/proxmox-rate-limiter" }
  #proxmox-rest-server = { path = "../proxmox/proxmox-rest-server" }
@@ -209,9 +214,10 @@ index 4b1671ea..086de77a 100644
 +proxmox-systemd = { path = "../proxmox/proxmox-systemd" }
  #proxmox-tfa = { path = "../proxmox/proxmox-tfa" }
 -#proxmox-time = { path = "../proxmox/proxmox-time" }
++proxmox-time = { path = "../proxmox/proxmox-time" }
+ #proxmox-upgrade-checks = { path = "../proxmox/proxmox-upgrade-checks" }
 -#proxmox-uuid = { path = "../proxmox/proxmox-uuid" }
 -#proxmox-worker-task = { path = "../proxmox/proxmox-worker-task" }
-+proxmox-time = { path = "../proxmox/proxmox-time" }
 +proxmox-uuid = { path = "../proxmox/proxmox-uuid" }
 +proxmox-worker-task = { path = "../proxmox/proxmox-worker-task" }
  

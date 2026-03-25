@@ -1,8 +1,8 @@
 # Maintainer: Dominik Csapak <dominik.csapak@gmail.com>
 # Maintainer: Thomas Lamprecht <thomas@lamprecht.org>
 pkgname=proxmox-backup-client
-pkgver=4.1.0
-pkgrel=3
+pkgver=4.1.6
+pkgrel=1
 pkgdesc="Client for Proxmox Backup Server"
 arch=('x86_64' 'aarch64')
 url="https://pbs.proxmox.com"
@@ -17,21 +17,17 @@ makedepends=('cargo' 'clang' 'git' 'llvm' 'patchelf' 'python-docutils' 'python-s
 options=(!lto)
 source=(
     "$pkgname-$pkgver::git://git.proxmox.com/git/proxmox-backup.git#tag=v$pkgver"
-    "proxmox::git://git.proxmox.com/git/proxmox.git#commit=a9b9cc30be00ab755dd6053b7d55e6a42f20bd06"
+    "proxmox::git://git.proxmox.com/git/proxmox.git#commit=02c2a5859201943c4cea451eeba5d91ac6816422"
     "proxmox-fuse::git://git.proxmox.com/git/proxmox-fuse.git"
     "pxar::git://git.proxmox.com/git/pxar.git"
     "pathpatterns::git://git.proxmox.com/git/pathpatterns.git"
     "0001-re-route-dependencies-not-available-on-crates.io-to-.patch"
     "0002-docs-drop-all-but-client-man-pages.patch"
-    "0003-client-fix-temp-value-dropped-while-borrowed.patch"
-    "0004-update-proxmox-fuse-rs-dependency-to-2.patch"
     "elf-strip-unused-dependencies.sh"
 )
 # either a git repo or tracked by this git repo, so not much gained by encoding
 # checksums here in this git repo
 sha512sums=(
-    'SKIP'
-    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -53,8 +49,6 @@ prepare() {
 
   _apply 0001-re-route-dependencies-not-available-on-crates.io-to-.patch
   _apply 0002-docs-drop-all-but-client-man-pages.patch
-  _apply 0003-client-fix-temp-value-dropped-while-borrowed.patch
-  _apply 0004-update-proxmox-fuse-rs-dependency-to-2.patch
 
   # fetch all in prepare to allow build() to be run offline
   cargo fetch --target "$CARCH-unknown-linux-gnu"
