@@ -7,14 +7,14 @@
 pkgbase=tomb
 pkgname=(tomb tomb-kdf)
 pkgver=2.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Crypto Undertaker, a simple tool to manage encrypted storage"
-arch=('any')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.dyne.org/software/tomb/"
 license=('GPL-3.0-or-later')
-source=("https://files.dyne.org/?file=tomb/releases/Tomb-$pkgver.tar.gz"
-        "https://files.dyne.org/?file=tomb/releases/Tomb-$pkgver.tar.gz.sha"
-        "https://files.dyne.org/?file=tomb/releases/Tomb-$pkgver.tar.gz.asc"
+source=("https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz"
+        "https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz.sha"
+        "https://files.dyne.org/tomb/releases/Tomb-$pkgver.tar.gz.asc"
         "_tomb")
 
 # The first hash comes from the .sha file
@@ -62,7 +62,7 @@ package_tomb() {
 
 package_tomb-kdf() {
   pkgdesc="Crypto Undertaker extensions to improve password security"
-  arch=('i686' 'x86_64')
+  arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
   depends=('libgcrypt')
 
   cd "$srcdir/Tomb-$pkgver/extras/kdf-keys"
