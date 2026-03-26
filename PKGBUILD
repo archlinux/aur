@@ -1,6 +1,6 @@
 pkgname=python-vllm-rocm
 _pkgname=vllm
-pkgver=0.17.1
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="high-throughput and memory-efficient inference and serving engine for LLMs (ROCm support)"
 arch=('x86_64')
@@ -72,19 +72,20 @@ optdepends=(
 )
 
 source=("git+https://github.com/vllm-project/vllm.git#tag=v${pkgver}" "0001-Fix-LTO-build-for-ROCm-when-default-compiler-is-GCC.patch")
-sha256sums=('42499b2db5b7e0a7fbba76fbcec2028d13230004c382501deb832d42b85bd84e'
+sha256sums=('cdb7872983f57d2cb773158e691bf356bade79029d5850dc14f0e7e5cf5d1ab6'
             'cbab00db18bf41a18d01b309606801d91bc2f292fd37b0037883db702691b649')
 
 _jobs=$(($(nproc) / 2))
 prepare() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
+  rm -f "dist"/*
+
   git apply ../0001-Fix-LTO-build-for-ROCm-when-default-compiler-is-GCC.patch
-  git cherry-pick --no-commit 5a5c43511ac98299856d0fee6c619fdd8bcdd2ef
   sed -i 's/\(PYTHON_SUPPORTED_VERSIONS\s*"3.10" "3.11" "3.12" "3.13"\)/\1 "3.14"/' "CMakeLists.txt"
 }
 
 build() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
 
   # Limit the number of parallel jobs to avoid OOM
   export MAX_JOBS=$_jobs
@@ -96,6 +97,6 @@ build() {
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$srcdir/$_pkgname"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 }
