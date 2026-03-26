@@ -5,7 +5,7 @@
 _pkgname=fchat
 
 pkgname="${_pkgname}"-horizon-appimage
-pkgver=2.0.0
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="The Best F-Chat 3.0 Client, No exceptions! (Appimge release)"
 arch=('x86_64')
@@ -20,7 +20,7 @@ source_x86_64=("${_appimage}::https://github.com/Fchat-Horizon/Horizon/releases/
                "https://raw.githubusercontent.com/Fchat-Horizon/Horizon/v${pkgver}/LICENSE.md"
               )
 noextract=("${_appimage}")
-sha256sums_x86_64=('054e3dc71470a852fccb743ad8156d2d63d629f1071df2d97c137d0b0b4d4c60'
+sha256sums_x86_64=('e3ab9d6db9bded84d3bc6391a6bdf74fe8600a97ccc864626831498c2f2ad0e8'
                    'SKIP')
 
 prepare() {
