@@ -7,30 +7,23 @@ pkgdesc="Bridge proprietary Attack Shark mouse battery reports into standard Lin
 arch=('x86_64')
 url="https://github.com/maxboeer/attackshark-battery-bridge"
 license=('MIT')
-depends=('glibc' 'systemd')
-makedepends=('python' 'python-pyinstaller')
+depends=('python' 'systemd')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 backup=('etc/attackshark-battery-bridge/config.toml')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0cdf8bc21064ba52bdbc85c8ac9a7165910e9aabb610c4133bdeb820205b0616')
+sha256sums=('ab62d2b32fcfd616337362234276cf6bb1eb399049ad08a64cb122ad5186d538')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  python -m PyInstaller \
-    --noconfirm \
-    --clean \
-    --onefile \
-    --name "${pkgname}" \
-    --paths "${srcdir}/${pkgname}-${pkgver}/src" \
-    --add-data "${srcdir}/${pkgname}-${pkgver}/src/attackshark_battery_bridge/profiles:attackshark_battery_bridge/profiles" \
-    "${srcdir}/${pkgname}-${pkgver}/src/attackshark_battery_bridge/__main__.py"
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  install -Dm755 "dist/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  python -m installer --destdir="${pkgdir}" dist/*.whl
   install -Dm644 "packaging/attackshark-battery-bridge.service.pkg" \
     "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "packaging/config.example.toml" \
