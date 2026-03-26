@@ -1,24 +1,24 @@
 pkgname=vigaphone-bin
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 options=('!strip' '!debug')
-groups=('pro-audio')
-pkgdesc="ViGAPhone Synth Lab is a MIDI Physical-Modeling Synthesizer, Sound and Timbre Analyzer, Instrument Tuner and more..."
+groups=('pro-audio','vst3-plugins')
+pkgdesc="ViGAPhone Synth Lab is a New Physical-Modeling Synthesizer MIDI-MPE application and VST3 plugin, Sound and Timbre Analyzer, Instrument Tuner and more..."
 arch=('x86_64')
 url="https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone"
 license=('custom')
 source=("https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R${pkgver}/ViGAPhoneR_linux_amd64.tar.gz")
-	     https://github.com/ViGAWorld-FR/ViGAWorld-ViGAPhone/releases/download/R1.1.0/ViGAPhoneR_linux_amd64.tar.gz
-sha256sums=('efedb7ff199e36306aa9fc58df0df34f12d8e2292d22a40100fe4c15b67dca99')
+sha256sums=('a59a68735656c813cf06e938e7c828c0b91433e08fc8347cec4b07d0e59eb1ef')
 
 depends=(
     'alsa-lib'
     'jack'
     'libx11'
-    'mesa'
+    'libglvnd'
     'freetype2'
     'fontconfig'
     'noto-fonts-emoji'
+    'rsync'
 )
 
 makedepends=('rsync')
@@ -33,10 +33,10 @@ package() {
     install -pDm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
     # Desktop entry
-    # Ajout de la ligne Exec= dans le .desktop
+    # Ajout de la ligne Exec= dans le .desktop, et du chemin complet vers l'icône
     install -pDm644 installOnLinuxUser/org.vigaworld.vigaphone.desktop "$pkgdir/usr/share/applications/org.vigaworld.vigaphone.desktop"
     sed -i '/^\[Desktop Entry\]/a Exec=sh -c "ViGAPhone %f"' "$pkgdir/usr/share/applications/org.vigaworld.vigaphone.desktop"
-
+	sed -i "s|^Icon=.*|Icon=/usr/share/icons/hicolor/256x256/apps/org.vigaworld.vigaphone.png|" "$pkgdir/usr/share/applications/org.vigaworld.vigaphone.desktop"
     # Icône
     install -pDm644 installOnLinuxUser/org.vigaworld.vigaphone.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/org.vigaworld.vigaphone.png"
     install -pDm644 installOnLinuxUser/org.vigaworld.vigaphone.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/vigaphone.png"
@@ -56,12 +56,11 @@ package() {
         install -pDm644 "$lang/LC_MESSAGES/ViGAPhone.mo" "$pkgdir/usr/share/locale/$langname/LC_MESSAGES/ViGAPhone.mo"
     done
 
-    # Données utilisateur
-    #- install -pD "$pkgdir/usr/share/vigaphone"
-    #- cp -r configuration Instrument midi wav wavCapture run.vigaphone.tsv "$pkgdir/usr/share/vigaphone/"
 	# Données utilisateur (tout sauf ce qui est déjà installé ailleurs)
 	# on garde installOnLinuxUser pour le script d'installation dans le $HOME
 	rsync -a --chmod=D755,F644 --exclude=ViGAPhone --exclude=locale * $pkgdir/usr/share/vigaphone/
-
+	# install global vst3
+	install -dm 755 "$pkgdir/usr/lib/vst3"
+	ln -rsf "$pkgdir/usr/share/vigaphone/VST3/ViGAPhone.vst3" "$pkgdir/usr/lib/vst3/"
 }
 
