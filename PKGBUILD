@@ -2,7 +2,7 @@
 pkgname=readany-bin
 pkgver=1.1.5
 pkgrel=1
-pkgdesc="AI-powered EPUB reader built with Tauri"
+pkgdesc="An AI-powered e-book reader with semantic search, intelligent chat, and knowledge management"
 arch=('x86_64')
 url="https://github.com/codedogQBY/ReadAny"
 license=('GPL-3.0-or-later')
