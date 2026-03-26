@@ -5,7 +5,7 @@
 # Contributor: Juan Francisco Miranda <aurarchlinux.sleek355 at passfwd dot com>
 
 pkgname=pycharm
-pkgver=2025.3.3
+pkgver=2025.3.4
 pkgrel=1
 provides=("pycharm")
 replaces=("pycharm-professional")
@@ -33,8 +33,8 @@ source_x86_64=("https://download-cf.jetbrains.com/python/${pkgname}-${pkgver}.ta
 source_aarch64=("https://download-cf.jetbrains.com/python/${pkgname}-${pkgver}-aarch64.tar.gz")
 sha256sums=('444611514a2e2e168d20ec866af0102fbdd0472af00925847471609578b187b7'
             '944d01526dcc0e6d4c321873bd42d2c7885973e929f3b363c31019f642af0101')
-sha256sums_x86_64=('347752040eb83eb79f5eb0458a556d2cb306ac0e1d973c3e73743f9cdb8a4a0a')
-sha256sums_aarch64=('08ce24e9800f0a9a390d22a62e7b3e6421947cdf7c8b85d6f5d0c1ae8a7a6a0c')
+sha256sums_x86_64=('0760876c322c9d7269e61c257bc8ce401ff834e48923fba67d559851b5ce4a52')
+sha256sums_aarch64=('c074bb187834ae3c29a0e997c824cf215f7e5a178ce85d727f89578c821ea19d')
 makedepends=('python-setuptools' 'cython')
 optdepends=(
     'ipython: For enhanced interactive Python shell inside Pycharm'
