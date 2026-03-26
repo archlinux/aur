@@ -4,7 +4,7 @@ pkgbase=mkdocs-jupyter
 pkgname=("${pkgbase}")
 #"${pkgbase}-doc")
 _pyname=("${pkgbase//-/_}")
-pkgver=0.25.1
+pkgver=0.26.1
 pkgrel=1
 pkgdesc="Use Jupyter in mkdocs websites"
 url="https://mkdocs-jupyter.danielfrg.com"
@@ -17,11 +17,12 @@ checkdepends=('python-pytest-cov'
 #             'python-pytest-xdist'
               'python-pymdown-extensions'
               'mkdocs-material'
+              'python-ipykernel'
               'python-jupytext'
               'jupyter-nbconvert')  # 'jupyter-nbclient' required by nbconvert
 #source=("https://github.com/mkdocstrings/mkdocstrings/archive/refs/tags/${pkgver}.tar.gz")
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('0e9272ff4947e0ec683c92423a4bfb42a26477c103ab1a6ab8277e2dcc8f7afe')
+sha256sums=('7c80c0d3953de91e5b40a0d3209233795c8f800243ab298e4ec38e0504eda630')
 
 build() {
     cd "${_pyname}-${pkgver}"
@@ -34,12 +35,12 @@ check() {
 
     mkdir -p dist/lib
     bsdtar -xpf dist/${_pyname/-/_}-${pkgver}-py3-none-any.whl -C dist/lib
-    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4
+    PYTHONPATH="dist/lib" pytest || warning "Tests failed" # -vv -l -ra --color=yes -o console_output_style=count -p xdist -n 4 #
 }
 
 package_mkdocs-jupyter() {
     depends=('python>=3.9'
-             'python-ipykernel>6.0.0'
+             'python-ipykernel>7.0.0'
              'python-jupytext>1.13.8'
              'python-pygments>2.12.0'
              'mkdocs>=1.4.0'
