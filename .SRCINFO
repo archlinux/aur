@@ -1,0 +1,15 @@
+pkgbase = recway
+	pkgdesc = Frontend for wf-recorder screen recorder
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/nabiko02/recway
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	depends = wf-recorder
+	depends = wlr-randr
+	source = recway-1.0.0.tar.gz::https://github.com/nabiko02/recway/archive/v1.0.0.tar.gz
+	sha256sums = b1e984155773f7c6ae24ee5bbc8fe92bf889fdc25d980ed5859bf8fe0d9d636e
+
+pkgname = recway
