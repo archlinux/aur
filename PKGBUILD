@@ -7,20 +7,21 @@ pkgver=0.3.0
 pkgrel=1
 pkgdesc="An interactive Tango client."
 groups=('tango-controls')
-arch=('x86_64' 'armv7h')
-url="https://github.com/tango-controls/itango"
-license=('GPL3')
-depends=('python-pytango>=9.2' 'ipython>=1.0' 'python-qtconsole')
+arch=('any')
+url="https://gitlab.com/tango-controls/itango"
+license=('LGPL-3.0-or-later')
+depends=('python' 'python-pytango>=9.3' 'ipython>=8.5' 'python-packaging' 'python-traitlets' 'python-ipykernel')
+optdepends=('python-qtconsole: for itango-qt GUI console')
 conflicts=('itango-git')
-source=("git+https://gitlab.com/tango-controls/itango.git#tag=${pkgver}")
-sha256sums=('SKIP')
+source=("https://pypi.io/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('1409cff2814f2945d2848c3c2777e5ed8ae5f45c6f16380abafcb9b5f3fed9d8')
 
 build() {
-  cd "$pkgname"
+  cd "${pkgname}-${pkgver}"
   python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}-${pkgver}"
   python -m installer --destdir="${pkgdir}" dist/*.whl
 }

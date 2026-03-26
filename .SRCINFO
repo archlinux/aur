@@ -2,16 +2,19 @@ pkgbase = itango
 	pkgdesc = An interactive Tango client.
 	pkgver = 0.3.0
 	pkgrel = 1
-	url = https://github.com/tango-controls/itango
-	arch = x86_64
-	arch = armv7h
+	url = https://gitlab.com/tango-controls/itango
+	arch = any
 	groups = tango-controls
-	license = GPL3
-	depends = python-pytango>=9.2
-	depends = ipython>=1.0
-	depends = python-qtconsole
+	license = LGPL-3.0-or-later
+	depends = python
+	depends = python-pytango>=9.3
+	depends = ipython>=8.5
+	depends = python-packaging
+	depends = python-traitlets
+	depends = python-ipykernel
+	optdepends = python-qtconsole: for itango-qt GUI console
 	conflicts = itango-git
-	source = git+https://gitlab.com/tango-controls/itango.git#tag=0.3.0
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/21/ad/ec74e105040deda99bd2931c11e6e9c05de79b976c0b2278550f92ab256e/itango-0.3.0.tar.gz
+	sha256sums = 1409cff2814f2945d2848c3c2777e5ed8ae5f45c6f16380abafcb9b5f3fed9d8
 
 pkgname = itango
