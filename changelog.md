@@ -1,3 +1,18 @@
+2026.03.26, v19.9.6
+
+feature:
+- 6450a2f8 docker: io: add UTF-8
+
+2026.03.26, v19.9.5
+
+fix:
+- e761cacb columns: name-size-date-time: 20% -> 19%
+
+2026.03.26, v19.9.4
+
+feature:
+- 69498ed6 docker: io: pull.rebase by default
+
 2026.03.24, v19.9.3
 
 feature:
