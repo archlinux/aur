@@ -14,7 +14,9 @@ pkgdesc='VRChat Chatbox Translator & Transcription (Git version)'
 arch=('x86_64')
 url='https://misyaguziya.github.io/VRCT-Docs/'
 license=('MIT')
-depends=('hicolor-icon-theme')
+_tauri_depends=('cairo' 'desktop-file-utils' 'gdk-pixbuf2' 'glib2' 'gtk3' 'libsoup' 'pango' 'webkit2gtk-4.1')
+_python_depends=('libsqlite3.so' 'libuuid.so' 'libbz2.so' 'libexpat.so' 'libffi.so' 'libnsl.so' 'libcrypt.so' 'libssl.so' 'libz.so' 'libzstd.so' 'tzdata' 'mpdecimal')
+depends=("${_tauri_depends[@]}" "${_python_depends[@]}" 'hicolor-icon-theme')
 makedepends=('npm' 'pyenv' 'cargo' 'git')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
@@ -68,11 +70,12 @@ b2sums=('SKIP'
         'ba6c3b3b03b860665f4db26609ca70ddf678acd79b85a62285d1b512431e7aca312118721fb808721fdadeced146443020808548adce825fb22a4f7e954a1816')
 
 if [ "${_vendored_portaudio:-}" = true ] && ! [ "${GENINTEG:-}" = 1 ]; then
+    depends+=('libasound.so' 'libsndio.so' 'libjack.so' 'libpulse.so')
     source+=("git+https://github.com/PortAudio/portaudio.git")
     : && sha256sums+=('SKIP')
     : && b2sums+=('SKIP')
 else
-    depends+=('portaudio')
+    depends+=('libportaudio.so')
 fi
 
 if check_option 'lto' 'y'; then
