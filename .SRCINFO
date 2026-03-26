@@ -1,0 +1,25 @@
+pkgbase = cvs-feature-bin
+	pkgdesc = Concurrent Versions System — a version control system; feature release binaries, extracted from Debian packages
+	pkgver = 1.12.13+real_31
+	pkgrel = 1
+	url = https://cvs.nongnu.org
+	arch = x86_64
+	license = GPL-2.0-or-later
+	optdepends = inetutils: for using cvs over rsh
+	optdepends = openssh: for using cvs over ssh
+	provides = cvs=1.12.13+real_31
+	conflicts = cvs
+	options = !debug
+	source = https://ftp.debian.org/debian/pool/main/c/cvs/cvs_1.12.13+real-31_amd64.deb
+	b2sums = f0afa0f6c18d021bfd38ae6101b1cb6113110bca6f564589457ee68abc677dfea8e876c9e61395f45c9d28c5f77ae16c4d5f08f980dbd940f32664419960d376
+
+pkgname = cvs-feature-bin
+	depends = libcrypt.so
+	depends = libgssapi_krb5.so
+	depends = libkrb5.so
+	depends = libz.so
+	depends = glibc
+	depends = libbsd
+	depends = mksh
+	depends = perl
+	depends = sh
