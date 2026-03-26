@@ -8,7 +8,7 @@ post_install() {
 
   cat <<EOF
 
-==> aperture-router v0.2.0 installed!
+==> aperture-router v0.2.1 installed!
 
 ╔══════════════════════════════════════════════════════════════╗
 ║                    QUICK START OPTIONS                       ║
@@ -46,7 +46,7 @@ post_upgrade() {
 
   cat <<EOF
 
-==> aperture-router upgraded to v0.2.0!
+==> aperture-router upgraded to v0.2.1!
 
 NEW FEATURES:
   • Environment-only mode (no config file needed)

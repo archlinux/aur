@@ -15,17 +15,17 @@ sha256sums=('cb29daaeefc3a38615055d2354498b36050b6d51b8991c0580bbcdc6d08b94e3')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --locked
+  cargo fetch
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --frozen --release
+  cargo build --release
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --frozen
+  cargo test
 }
 
 package() {
