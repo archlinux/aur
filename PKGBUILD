@@ -6,6 +6,7 @@ pkgdesc="Universal AI router for Tailscale Aperture with dynamic model discovery
 arch=('x86_64' 'aarch64')
 url="https://github.com/Wayazi/aperture-router"
 license=('MIT')
+options=(!lto)
 depends=('gcc-libs')
 makedepends=('cargo' 'nasm')
 install="$pkgname.install"
@@ -15,19 +16,17 @@ sha256sums=('19c6220a43fd3c3f011486de1a9503843ba038b96d5e194c74f952691706cafe')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  rm -rf target
   cargo fetch
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  # Clear problematic CFLAGS for ring crate build
-  CFLAGS="" CXXFLAGS="" cargo build --release
+  cargo build --release
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test
+  cargo test --release
 }
 
 package() {

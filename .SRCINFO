@@ -10,6 +10,7 @@ pkgbase = aperture-router
 	makedepends = cargo
 	makedepends = nasm
 	depends = gcc-libs
+	options = !lto
 	backup = etc/sysconfig/aperture-router
 	source = aperture-router-0.2.1.tar.gz::https://github.com/Wayazi/aperture-router/archive/refs/tags/v0.2.1.tar.gz
 	sha256sums = 19c6220a43fd3c3f011486de1a9503843ba038b96d5e194c74f952691706cafe
