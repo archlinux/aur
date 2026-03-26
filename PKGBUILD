@@ -1,6 +1,6 @@
 # Maintainer: HanHan666666 <tar.zip@outlook.com>
 pkgname=linglong-store-nightly-bin
-pkgver=3.0.2_nightly.20260325.d96bf51
+pkgver=3.0.2_nightly.20260326.22f68ee
 pkgrel=1
 pkgdesc="Community store for browsing and installing Linyaps applications"
 arch=('x86_64')
@@ -34,8 +34,8 @@ source=(
   'linglong-store.svg'
 )
 source_x86_64=(
-  "linglong-store-3.0.2-nightly.20260325+d96bf51-linux-amd64.tar.gz::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260325/linglong-store-3.0.2-nightly.20260325+d96bf51-linux-amd64.tar.gz"
-  "linglong-store-3.0.2-nightly.20260325+d96bf51-linux-amd64.tar.gz.asc::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260325/linglong-store-3.0.2-nightly.20260325+d96bf51-linux-amd64.tar.gz.asc"
+  "linglong-store-3.0.2-nightly.20260326+22f68ee-linux-amd64.tar.gz::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260326/linglong-store-3.0.2-nightly.20260326+22f68ee-linux-amd64.tar.gz"
+  "linglong-store-3.0.2-nightly.20260326+22f68ee-linux-amd64.tar.gz.asc::https://github.com/HanHan666666/flutter-linglong-store/releases/download/nightly-20260326/linglong-store-3.0.2-nightly.20260326+22f68ee-linux-amd64.tar.gz.asc"
 )
 
 
@@ -46,8 +46,8 @@ sha256sums=(
   'ca9c4e35c731cbf2fb4b1290e26af7fd0d2dc7bc8a89f6373e1334d27b19e60c'
 )
 sha256sums_x86_64=(
-  '3e91336aa789648f574d0f5c3a04bcfedfdd9515a0d53e7b70e69e9ada1d444e'
-  'b1f1e9f6642f795442dede735de3ddbaa23ade0be3b3caa0457d59122a72c973'
+  'ad10f57f236b08ada8f75876af7c9e067ae6d14a4f59845585d3b30216d0b088'
+  '116186113271abb03901c4325f8adcaad3bde4417c2916f5d76c981138b514ab'
 )
 
 
