@@ -19,7 +19,8 @@ pkgname=(
   java-openjfx-doc
   java-openjfx-src
 )
-_java_ver=25
+_java_build_ver=25
+_java_run_ver=25
 _tag='27+9'
 pkgver=${_tag//+/.}
 pkgrel=1
@@ -38,7 +39,7 @@ makedepends=(
   glib2
   gperf
   gtk3
-  java-environment-openjdk=$_java_ver
+  java-environment-openjdk=$_java_build_ver
   libgl
   libx11
   libxtst
@@ -95,8 +96,8 @@ prepare() {
 build() {
   cd $_jfxdir
 
-  # Build with openjdk $_java_ver
-  export PATH="/usr/lib/jvm/java-$_java_ver-openjdk/bin/:$PATH"
+  # Build with openjdk $_java_build_ver
+  export PATH="/usr/lib/jvm/java-$_java_build_ver-openjdk/bin/:$PATH"
 
   # Workaround for situation where the linker treats whitespace as arguments
   export LDFLAGS="${LDFLAGS//+([[:space:]]|[[:blank:]])/ }"
@@ -108,7 +109,7 @@ build() {
 
 package_java-openjfx() {
   depends=(
-    java-runtime-openjdk=$_java_ver
+    "java-runtime-openjdk>=$_java_run_ver"
     libgl
     libx11
     libxtst
@@ -141,8 +142,8 @@ package_java-openjfx-src() {
   arch=(any)
   cd $_jfxdir
 
-  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-$_java_ver-openjdk,share/licenses}
-  install -m 644 build/sdk/src.zip "${pkgdir}/usr/lib/jvm/java-$_java_ver-openjdk/javafx-src.zip"
+  install -dm 755  "${pkgdir}"/usr/{lib/jvm/java-$_java_build_ver-openjdk,share/licenses}
+  install -m 644 build/sdk/src.zip "${pkgdir}/usr/lib/jvm/java-$_java_build_ver-openjdk/javafx-src.zip"
   ln -s "$pkgbase" "${pkgdir}/usr/share/licenses/$pkgbase-src"
 }
 
