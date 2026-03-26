@@ -1,0 +1,25 @@
+From 80a507b32f0a0989ed0ebe63984afea4fa5b2072 Mon Sep 17 00:00:00 2001
+From: Build User <build@example.com>
+Date: Thu, 26 Mar 2026 10:05:46 +0800
+Subject: [PATCH] fixbuild
+
+---
+ tools/build.gradle | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/build.gradle b/tools/build.gradle
+index f40ab4c..b3830a1 100644
+--- a/tools/build.gradle
++++ b/tools/build.gradle
+@@ -136,7 +136,7 @@ interface InjectedExecOps {
+ }
+ tasks.register('doPack'){
+     outputs.cacheIf{ true }
+-    dependsOn(classes)
++    dependsOn = [classes, configurations.runtimeClasspath]
+     inputs.dir("../core/assets-raw/sprites/")
+     inputs.property("enableAA", enableAA)
+     inputs.property("gameVersion", project.property("upstreamBuild"))
+-- 
+2.53.0
+

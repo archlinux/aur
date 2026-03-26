@@ -1,6 +1,6 @@
 pkgbase = mindustryx-git
 	pkgdesc = Optimized mindustry server&client with more API
-	pkgver = 2026.03.24.B423
+	pkgver = 2026.03.25.B426
 	pkgrel = 1
 	url = https://github.com/TinyLake/MindustryX
 	arch = any
@@ -10,9 +10,9 @@ pkgbase = mindustryx-git
 	makedepends = libicns
 	depends = alsa-lib
 	source = mindustryx::git+https://github.com/TinyLake/MindustryX.git
-	source = 0001-gradlew9.0.patch
+	source = 0001-fixbuild.patch
 	sha256sums = SKIP
-	sha256sums = af1a24e0215b8c56a19c43ef6d2496f56631d770e816ace2062dc8a81fa07bb8
+	sha256sums = 16d18fb0a159f88b0d019341ef66ad7dbb963748b5bcdf45ca5d334f6c7fb8f6
 
 pkgname = mindustryx-git
 	depends = alsa-lib

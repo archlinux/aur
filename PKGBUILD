@@ -7,7 +7,7 @@
 
 _pkgname="mindustryx"
 pkgbase="$_pkgname-git"
-pkgver=2026.03.24.B423
+pkgver=2026.03.25.B426
 pkgrel=1
 pkgdesc="Optimized mindustry server&client with more API"
 url="https://github.com/TinyLake/MindustryX"
@@ -27,12 +27,10 @@ _build="${pkgver%%.r*}"
 _pkgsrc="$_pkgname"
 source=(
   "$_pkgsrc"::"git+https://github.com/TinyLake/MindustryX.git"
-  "0001-gradlew9.0.patch"
+  "0001-fixbuild.patch"
 )
-sha256sums=(
-  'SKIP'
-  'af1a24e0215b8c56a19c43ef6d2496f56631d770e816ace2062dc8a81fa07bb8'
-)
+sha256sums=('SKIP'
+            '16d18fb0a159f88b0d019341ef66ad7dbb963748b5bcdf45ca5d334f6c7fb8f6')
 
 pkgver() {
   cd "$_pkgsrc"
@@ -59,8 +57,8 @@ prepare()
 
   ./scripts/applyPatches.sh
   cd work
-  git am --no-gpg-sign -3 "../../../0001-gradlew9.0.patch"
-  git commit --allow-empty --no-author --no-gpg-sign --no-date -m "gradlew9" --author="System <system@example.com>"
+  git am --no-gpg-sign -3 "../../0001-fixbuild.patch"
+  git commit --allow-empty --no-author --no-gpg-sign --no-date -m "fixbuild" --author="System <system@example.com>"
   # skip android subproject; see settings.gradle
   unset ANDROID_HOME JITPACK
 }

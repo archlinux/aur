@@ -1,5 +1,5 @@
 *
-!0001-gradlew9.0.patch
+!0001-fixbuild.patch
 !.gitignore
 !PKGBUILD
 !.SRCINFO
