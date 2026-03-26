@@ -12,7 +12,7 @@ makedepends=('python' 'python-pyinstaller')
 backup=('etc/attackshark-battery-bridge/config.toml')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('0cdf8bc21064ba52bdbc85c8ac9a7165910e9aabb610c4133bdeb820205b0616')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
