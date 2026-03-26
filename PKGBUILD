@@ -8,7 +8,7 @@ license=('MIT')
 depends=(glibc webkit2gtk-4.1)
 provides=(oranglauncher)
 conflicts=(oranglauncher)
-source=("https://github.com/Orang-Studio/OrangLaunch/releases/download/${pkgver}-Both/launcher_x64_linux_${pkgver}.tar.gz"
+source=("https://github.com/Orang-Studio/OrangLaunch/releases/download/5.2-Linux/launcher_x64_linux_5.2.tar.gz"
         "oranglauncher.desktop"
         "orange.png"
         "LICENSE")
