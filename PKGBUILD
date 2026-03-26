@@ -1,6 +1,6 @@
 pkgname=datafetch
-pkgver=2.1
-pkgrel=3
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Live system information dashboard for Linux terminals"
 arch=('any')
 url="https://github.com/KlodCripta/Datafetch"
