@@ -20,7 +20,7 @@ optdepends=('dosfstools: for fat operations'
             'nilfs-utils: for nilfs2 operations'
             'cryptsetup: LUKS')
 source=(https://github.com/Kagamma/tparted/releases/download/2026-03-26_1/linux_x86-64_tparted_2026-03-26_1.tar.gz)
-sha256sums=(af42be5de619b82d67f724be768f154975bf60ffa8a2f99e64ca687a5015f621)
+sha256sums=(c93eac8155af6f5bb027d6f699811d0a4765d153eb3e96ae2db2a33220a838aa)
 
 pkgver() {
           printf "2026.03.26"
