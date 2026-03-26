@@ -1,6 +1,6 @@
 pkgbase = kuba-bin
 	pkgdesc = Get rid of .env files. Pass env directly from GCP, AWS, Azure, Bitwarden and OpenBao.
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://github.com/mistweaverco/kuba
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = kuba-bin
 	license = MIT
 	provides = kuba
 	conflicts = kuba
-	source_x86_64 = kuba-bin-1.8.2.tar.gz::https://github.com/mistweaverco/kuba/releases/download/v1.8.2/kuba-linux-amd64
-	sha256sums_x86_64 = b0247ed7ded2ecfff78d759b26f5efd4d76e9e25f719f6c2a4d668ec2dd05759
-	source_i686 = kuba-bin-1.8.2.tar.gz::https://github.com/mistweaverco/kuba/releases/download/v1.8.2/kuba-linux-386
-	sha256sums_i686 = b0247ed7ded2ecfff78d759b26f5efd4d76e9e25f719f6c2a4d668ec2dd05759
+	source_x86_64 = kuba-bin-1.8.3.tar.gz::https://github.com/mistweaverco/kuba/releases/download/v1.8.3/kuba-linux-amd64
+	sha256sums_x86_64 = 82d6b1dcd7c2fa9ce3a99bf67b3b26a1a9fab9591c40360025701376641a75f7
+	source_i686 = kuba-bin-1.8.3.tar.gz::https://github.com/mistweaverco/kuba/releases/download/v1.8.3/kuba-linux-386
+	sha256sums_i686 = 82d6b1dcd7c2fa9ce3a99bf67b3b26a1a9fab9591c40360025701376641a75f7
 
 pkgname = kuba-bin
