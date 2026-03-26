@@ -3,14 +3,14 @@ pkgname=goradion
 pkgdesc='Terminal based online radio player'
 arch=('x86_64' 'aarch64')
 url="https://github.com/agejevasv/goradion"
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 license=('Unlicense')
 makedepends=('go')
 depends=('mpv')
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('619121cbada75634619eea8d673aeb1a81476bbbf4cda3bfd9014808aa89c0f6b73d42499f3e6c5f886234c6b0527ac37a6a0312310e135fd7994feb3a435378')
+b2sums=('e9c6bb3f29283c99bc9afd40ca27973d7f16566654f799a28c14be500358808342619366cd0c3f0dd94835ba794aa5cbe3e3fa85ba112582ce67d4adc4bd827a')
 
 prepare() {
   cd "${pkgname}-${pkgver}" || exit

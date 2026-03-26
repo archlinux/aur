@@ -1,6 +1,6 @@
 pkgbase = goradion
 	pkgdesc = Terminal based online radio player
-	pkgver = 0.7.2
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/agejevasv/goradion
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = goradion
 	license = Unlicense
 	makedepends = go
 	depends = mpv
-	source = goradion-0.7.2.tar.gz::https://github.com/agejevasv/goradion/archive/refs/tags/v0.7.2.tar.gz
-	b2sums = 619121cbada75634619eea8d673aeb1a81476bbbf4cda3bfd9014808aa89c0f6b73d42499f3e6c5f886234c6b0527ac37a6a0312310e135fd7994feb3a435378
+	source = goradion-0.8.0.tar.gz::https://github.com/agejevasv/goradion/archive/refs/tags/v0.8.0.tar.gz
+	b2sums = e9c6bb3f29283c99bc9afd40ca27973d7f16566654f799a28c14be500358808342619366cd0c3f0dd94835ba794aa5cbe3e3fa85ba112582ce67d4adc4bd827a
 
 pkgname = goradion
