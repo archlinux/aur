@@ -1,6 +1,6 @@
 # Maintainer: Kevin Walters <87kevo@gmail.com>
 pkgname=chatty-twitch
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="A modern Twitch chat client for desktop — inspired by Chatterino"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-core' 
 options=('!strip')
 source=("Chatty-${pkgver}.AppImage::https://github.com/KevinEightSeven/Chatty/releases/download/v${pkgver}/Chatty.AppImage"
         "chatty-twitch.png::https://raw.githubusercontent.com/KevinEightSeven/Chatty/v${pkgver}/client/assets/icon.png")
-sha256sums=('da8a26afc843cac38f8dfa7ab5692700dcbd4b4b00e0db480c2e2c2f84c662e9'
+sha256sums=('462f36c48d969f1896289ffce1e1603d6edcc8d42c203b4a3c75488f6c88ef0b'
             'SKIP')
 noextract=("Chatty-${pkgver}.AppImage")
 
