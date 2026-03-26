@@ -1,0 +1,28 @@
+[Desktop Entry]
+Name=Trae CN
+Comment=AI-powered IDE by ByteDance (Chinese Edition)
+Comment[zh_CN]=字节跳动推出的AI编程IDE（中文版）
+GenericName=Text Editor
+GenericName[zh_CN]=文本编辑器
+
+Exec=/usr/bin/trae-cn %U
+TryExec=/usr/bin/trae-cn
+Icon=trae-cn
+
+Type=Application
+StartupNotify=true
+StartupWMClass=trae-cn
+
+Categories=Development;TextEditor;
+MimeType=text/plain;
+
+Keywords=editor;ide;code;programming;development;ai;trae;
+Keywords[zh_CN]=编辑器;IDE;编程;开发;AI;
+
+Actions=new-empty-window;
+
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Name[zh_CN]=新建空窗口
+Exec=/usr/bin/trae-cn --new-window
+Icon=trae-cn

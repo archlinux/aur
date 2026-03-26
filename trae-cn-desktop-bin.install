@@ -1,0 +1,22 @@
+# Colored makepkg-like functions
+# copy from https://aur.archlinux.org/cgit/aur.git/tree/visual-studio-code-bin.install?h=visual-studio-code-bin
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    note "需要自定义flag可以在 ~/.config/trae-cn-flags.conf 文件中进行编辑 "
+}
+
+post_upgrade() {
+    post_install
+}
