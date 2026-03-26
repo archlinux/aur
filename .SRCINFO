@@ -1,24 +1,22 @@
 pkgbase = mitk-bin
 	pkgdesc = Medical Imaging Interaction Toolkit (MITK) is a free open-source software system for development of interactive medical image processing software.
-	pkgver = 2018.04.2
-	pkgrel = 1
-	url = http://mitk.org
+	pkgver = 2025.12.2
+	pkgrel = 2
+	url = https://mitk.org
 	arch = x86_64
 	license = BSD
-	depends = libwrap
-	depends = qt5-svg
-	depends = qt5-tools
-	depends = qt5-webengine
 	provides = mitk
+	conflicts = mitk
 	options = !strip
-	source = http://www.mitk.org/download/releases/MITK-2018.04.2/Linux/MITK-v2018.04.2-linux-x86_64.tar.gz
+	source = https://github.com/MITK/MITK/releases/download/v2025.12.2/MITK-v2025.12.2-ubuntu-22.04-x86_64.tar.gz
 	source = LICENSE
 	source = mitk-workbench
 	source = mitk-workbench.desktop
-	md5sums = 5286a826822eae465a50e7f9b301d45e
-	md5sums = 7099df31ea5e0e2885aa2d12bff57e7f
-	md5sums = b273cb1fb77ce8d7a4c867a217d4422e
-	md5sums = 225b216d2e924488f10e6927a820a299
+	source = mitk.ico
+	sha256sums = 5e72c6478c45c54d59428c526ef660fad76a9213a509084a6115c86aa19e3462
+	sha256sums = e738b539907754ee44cf101687df6b9e31ed7176a11dea077eadfd2f280cbb68
+	sha256sums = 67ed9f62f45cf5c2bc416507502e6a5bb9f26ef199186a3c4e68cf8a2da86f6f
+	sha256sums = 853407ed4d3b6f09a01d1c3aef3d7741bfecef991cf956356dc4ca4e777a9faf
+	sha256sums = 5d43fd48ea00d1e50c2181e2f2d785b4cf4e290e96da639cb887c0b20f2cec81
 
 pkgname = mitk-bin
-
