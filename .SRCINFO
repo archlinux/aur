@@ -1,6 +1,6 @@
 pkgbase = wat-bin
 	pkgdesc = A minimal cross-platform tool for running commands whenever files change
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/GageHowe/wat
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = wat-bin
 	conflicts = wat
 	source = LICENSE
 	sha256sums = 803056220079a42fb0cc3800a022cdb7360067afa046962e2fa53dddbcfab1e5
-	source_x86_64 = wat-x86_64-0.1.4.tgz::https://github.com/GageHowe/wat/releases/download/v0.1.4/wat-x86_64-unknown-linux-musl.tar.gz
-	sha256sums_x86_64 = 1f33a1d54b392ab89ff0501e5f55433bf6dcd2985127636d7a24b994a51d0326
+	source_x86_64 = wat-x86_64-0.1.5.tgz::https://github.com/GageHowe/wat/releases/download/v0.1.5/wat-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = afaddeb6bfdcb3e90a46bba117eff55e0c298c833f4f1899e37cfe31be6c59fa
 
 pkgname = wat-bin
