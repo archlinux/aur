@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Gearlynx
+Comment=Atari Lynx emulator and debugger
+Exec=gearlynx
+Categories=Game;Emulator;
