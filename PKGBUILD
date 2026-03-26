@@ -2,7 +2,7 @@
 
 pkgname=dxfl
 _pkgname=dxfl
-pkgver=0.3.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="A CLI tool to manage your Deuxfleurs account."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz")
-sha512sums=('a4315aa014402ed3284252fa1801ba4597d5358785aad7b2c000f7e07036b9c6cff1be94c76079cd1cab659272c839cf2ae67ebf08d9a2e2f8568ea37fec0590')
+sha512sums=('a7c18400c3bea8b011c71f1389169a75759f86db4dc4ff29579281991e104881b9e848daa6f25616151b875100b567bdcb28f10c1154a7957e27ddd35b4eaae8')
 
 package() {
   npm install -g --prefix "${pkgdir}/usr" $_pkgname-$pkgver.tgz
