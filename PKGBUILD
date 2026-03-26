@@ -5,10 +5,10 @@
 
 pkgname=simulide-stable-git
 pkgver=1.1.0_r260326
-pkgrel=1
+pkgrel=2
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers). Stable v1.0 development branch"
 arch=("x86_64")
-url="https://launchpad.net/simulide"
+url="https://github.com/Arcachofo/SimuliDE-1"
 provides=('simulide')
 conflicts=('simulide')
 license=("AGPL-3.0-only")
