@@ -1,0 +1,4 @@
+[libretro-azahar-bin]
+source = "github"
+github = "azahar-emu/azahar"
+use_max_tag = true
