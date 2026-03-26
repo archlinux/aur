@@ -9,7 +9,7 @@ license=('MIT')
 depends=('glibc' 'readline')
 makedepends=('gcc')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/gragero/OJC-shell/archive/refs/tags/V2.5.0.tar.gz")
-sha256sums=('3e03e469ad6b8bed29aab15bf1adb66530f008b62bb48d30fe4342227514997f')
+sha256sums=('05bfbf2759949a65d87854838704e983105ccb95742073dd15adc791c460cf6e')
 
 build() {
     cd "$srcdir/OJC-shell-$pkgver"
