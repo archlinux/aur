@@ -1,0 +1,4 @@
+[typioca-bin]
+source = "github"
+github = "bloznelis/typioca"
+use_latest_release = true
