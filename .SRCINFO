@@ -1,6 +1,6 @@
 pkgbase = ionix-openconnect-tools
 	pkgdesc = CLI utility for managing and connecting to OpenConnect VPN servers
-	pkgver = 1.0.0
+	pkgver = r5.5c1b067
 	pkgrel = 1
 	url = https://github.com/LucasionGS/openconnect-tools
 	arch = any
