@@ -1,0 +1,20 @@
+pkgbase = shiori-rin-bin
+	pkgdesc = Modern offline-first eBook library manager built with Tauri, React, and Rust (binary)
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/vinayydv3695/Shiori
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = sqlite
+	provides = shiori-rin
+	conflicts = shiori-rin
+	conflicts = shiori-rin
+	conflicts = shiori-rin-bin
+	source = Shiori_0.2.7_linux_amd64.tar.gz::https://github.com/vinayydv3695/Shiori/releases/download/v0.2.7/Shiori_0.2.7_linux_amd64.tar.gz
+	sha256sums = 7ed29bc348300d8ea8e9fd43001e1e1964b8b746eaaa26959e13b92ff5eb54ec
+
+pkgname = shiori-rin-bin
