@@ -6,7 +6,6 @@ pkgbase = roomeqwizard-beta
 	arch = x86_64
 	arch = aarch64
 	license = custom
-	makedepends = java-runtime=11
 	makedepends = fontconfig
 	makedepends = freetype2
 	depends = xdg-utils
