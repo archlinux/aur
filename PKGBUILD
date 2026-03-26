@@ -1,9 +1,10 @@
-# Maintainer: Yuuki Rika <yvvki@kekkon.nexus>
+# Maintainer: nomisge <nomisge @ live . de>
+# Contributor: Yuuki Rika <yvvki@kekkon.nexus>
 
 _pkg=pygame-ce
 pkgbase=python-$_pkg
 pkgname=('python-pygame-ce' 'python-pygame-ce-sdl3')
-pkgver=2.5.6
+pkgver=2.5.7
 pkgrel=1
 pkgdesc="pygame - Community Edition"
 arch=('x86_64')
@@ -31,9 +32,8 @@ optdepends=(
 )
 
 source=("https://pypi.io/packages/source/p/$_pkg/${_pkg//-/_}-$pkgver.tar.gz")
-sha256sums=('d3d019309d1e76fd19978b01753e8576bd76c66411ac7a4885785f95e68dc261')
-b2sums=('d50dd1eb5299263603438c63928ca2ac7977ba468cfeb660ba21baab5fecbda85f886e655b87aea1ed9df0d4006f0330c2bb6a95fd319f82cc21b5c869aacc46')
-
+sha256sums=('86beb797cd73c141299a29b56f7df2b0543fbdc81d428022458329ff694aaa51')
+b2sums=('e5df4c7d29edd6dde0ffaf406247d47e32bea8632c91e3528eb4080c45bf48b3624fb28b03d580e0d9a9a09d860ffcce17f04dcaef07e81ca01f9be4a333851e')
 prepare() {
     cp -a ${_pkg//-/_}-$pkgver $srcdir/sdl2
     cp -a ${_pkg//-/_}-$pkgver $srcdir/sdl3
