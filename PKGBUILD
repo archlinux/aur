@@ -2,7 +2,7 @@
 
 pkgbase=angie
 pkgname=(angie angie-src)
-pkgver=1.11.3
+pkgver=1.11.4
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/webserver-llc/angie"
@@ -13,11 +13,11 @@ source=(https://download.angie.software/files/$pkgbase-$pkgver.tar.gz
         angie.service
         logrotate
         https://angie.software/keys/angie-signing.gpg)
-sha512sums=('06595c9d77e5b590a01b4d41b2365663b98a7063eb291486eab9a5b841408b3cb03819fbd7fd46be7249c76076645c2bd79c3eb3d0e8e1b19d300efad668f505'
+sha512sums=('e9fe023bdbbe21e3b43d000b51009f35527b64a69d18e442d4d1f32024c9fd7eb97f353f7b492333abbc927112adf3754d03c8b46298fa9d98b5df0922e98b64'
             '65e3ba379411c638db6ac506b08efc118c975b00f65ed43c8af9d45d564711d55520bf56524e787df31a9b7dc65af4c7454b3b9baf2f8f013a44d9087be53a51'
             '2f4dfcfa711b8bcbc5918ba635f5e430ef7132e66276261ade62bb1cba016967432c8dce7f84352cb8b07dc7c6b18f09177aa3eb92c8e358b2a106c8ca142fe9'
             'f3e2b68cfae760fd04ad4829834bf562bb65a9204e2c83798550b4e53a12f532c878148b2c675370f9fef069b58b68e5b99b3b6fe6fe4f4e046ad61bab538c74')
-b2sums=('9a7f7ce9928b885d2d20d563e2f494a1aa381ce877e3d91387ffe6793c4d925fa82c48b0c9eea2fa3455698e50daca607d0e72ce410559bb4d1d5fcc6b855aa7'
+b2sums=('fadd1b3fcf4bf52574ace395b3abddc047cdf0cd9f63cbedf1527c32b4493950b67a9031033472acb16b37a3a9a1ddea2d79ab9f34baa0ec6d17be207548d90f'
         '27619a4a3ca0c1b977c54c8ba99fa19abebef37e8eff7c211567e47a98b80ce038f7ec20b7ec936aa0f8945a16fe064cf1fe58d68db3d493f4f63d057d5bf007'
         'e1755f61b4eaece83c6c22e48f9e5e316851d1dc35f8d770f837c7d3c8bdc894af1b697c25f1788ac50cd597085c22fb9bf8096a55ecf7659d63185f68ba2d8a'
         '7957894d9973ddc8ca44a3ac1844eefbf71f2681ae57d51fcdd0ca570c0cafbb027d05fa2b288d695e7069eb26600d0099cc354fcc4b9061971243b384edd01a')
@@ -44,6 +44,7 @@ _common_flags=(
   --with-http_sub_module
   --with-http_v2_module
   --with-http_v3_module
+  --with-http_acme_module
   --with-mail
   --with-mail_ssl_module
   --with-pcre-jit
