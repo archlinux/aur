@@ -1,0 +1,13 @@
+post_install() {
+  grep -Fqx /bin/tlog-rec-session /etc/shells || echo /bin/tlog-rec-session >> /etc/shells
+  grep -Fqx /usr/bin/tlog-rec-session /etc/shells || echo /usr/bin/tlog-rec-session >> /etc/shells
+}
+
+post_upgrade() {
+  post_install
+}
+
+pre_remove() {
+  sed -i -r '/^(\/usr)?\/bin\/tlog-rec-session$/d' etc/shells
+}
+

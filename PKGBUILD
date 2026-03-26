@@ -2,10 +2,11 @@
 # Maintainer: Yuuta Liang <yuuta@yuuta.moe>
 pkgname=tlog
 pkgver=14
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal I/O logger"
 arch=(x86_64)
 url="http://scribery.github.io/tlog/"
+install="$pkgname.install"
 license=('GPL-2.0-or-later')
 depends=(curl json-c libutempter)
 backup=("etc/tlog/tlog-play.conf" "etc/tlog/tlog-rec.conf" "etc/tlog/tlog-rec-session.conf")
