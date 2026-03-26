@@ -3,12 +3,12 @@
 
 pkgname=netradiant-custom
 pkgver=20260114
-pkgrel=1
+pkgrel=2
 pkgdesc="The open-source, cross-platform level editor for id Tech based games (NetRadiant fork)"
 arch=('x86_64')
 url="https://garux.github.io/NRC/"
 license=('Apache-2.0' 'BSD-3-Clause' 'GPL-2.0-or-later' 'LGPL-2.1-or-later' 'Zlib' 'LicenseRef-custom')
-depends=('assimp' 'gcc-libs' 'glib2' 'glibc' 'libjpeg-turbo' 'libpng' 'libxml2' 'qt5-base' 'qt5-svg' 'zlib')
+depends=('assimp' 'glib2' 'glibc' 'libjpeg-turbo' 'libpng' 'libstdc++' 'libxml2' 'qt5-base' 'qt5-svg' 'zlib')
 makedepends=('git' 'unzip' 'wget')
 optdepends=('xorg-xwayland: required to use the application on a Wayland session'
             'subversion: optional makedepend to fetch some gamepacks when using alternative DOWNLOAD_GAMEPACKS values')
