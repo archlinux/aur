@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=PJe-Calc Cidadao
+Comment=Calculadora trabalhista do PJe-Calc Cidadao
+Exec=pjecalc-cidadao
+Icon=/usr/share/pixmaps/pjecalc-cidadao.ico
+Terminal=false
+Categories=Office;Utility;
+StartupNotify=true

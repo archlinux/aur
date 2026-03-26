@@ -1,0 +1,12 @@
+pkg/
+src/
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+*.tar.gz
+*.tar.gz.sig
+*.tar.xz
+*.tar.xz.sig
+*.tar
+*.zip
+*.exe
+*.log
