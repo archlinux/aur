@@ -1,6 +1,6 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiori-ebook-bin
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager (pre-compiled binary)"
 arch=('x86_64')
@@ -15,38 +15,14 @@ depends=(
 )
 provides=('shiori-ebook')
 conflicts=('shiori-ebook' 'shiori-ebook-git')
-source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/shiori-${pkgver}-linux-x86_64.tar.gz")
-sha256sums=('9e77405d6fd26701bdb2d981ecfc6fe336d42b8933af7411812f2fc70e2f5dbf')
+source=("Shiori_0.2.3_amd64.deb::${url}/releases/download/v${pkgver}/Shiori_0.2.3_amd64.deb")
+sha256sums=('357f3fb7ea4845cbe79e3f9d2b727a8ddc0b021ea5b7851f1aca859700b4d652')
 
 package() {
-    # Install the binary
-    install -Dm755 "${srcdir}/shiori-release-${pkgver}/shiori" "${pkgdir}/usr/bin/shiori"
-    
-    # Install icons
-    install -Dm644 "${srcdir}/shiori-release-${pkgver}/icons/128x128.png" \
-        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/shiori-ebook.png"
-    install -Dm644 "${srcdir}/shiori-release-${pkgver}/icons/32x32.png" \
-        "${pkgdir}/usr/share/icons/hicolor/32x32/apps/shiori-ebook.png"
-    
-    # Create desktop entry
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/shiori-ebook.desktop" <<EOF
-[Desktop Entry]
-Name=Shiori eBook Manager
-GenericName=eBook Library Manager
-Comment=Organize, read, and manage your eBook collection
-Exec=shiori
-Icon=shiori-ebook
-Type=Application
-Categories=Office;Viewer;Education;
-Keywords=ebook;reader;library;epub;pdf;mobi;
-Terminal=false
-StartupNotify=true
-MimeType=application/epub+zip;application/pdf;application/x-mobipocket-ebook;application/vnd.amazon.ebook;
-EOF
-    
-    # Install license
-    install -Dm644 "${srcdir}/shiori-release-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    
-    # Install documentation
-    install -Dm644 "${srcdir}/shiori-release-${pkgver}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    # Extract .deb package
+    bsdtar -xf "Shiori_${pkgver}_amd64.deb"
+    bsdtar -xf data.tar.* -C "${pkgdir}"
+
+    # Fix permissions
+    chmod -R u+rwX,go+rX,go-w "${pkgdir}"
 }
