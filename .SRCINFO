@@ -1,0 +1,22 @@
+pkgbase = rustify-bin
+	pkgdesc = A modern YouTube music player built with Tauri and Rust (Binary Version)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/khuza08/rustify
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsoup3
+	depends = libnm
+	depends = librsvg
+	depends = sqlite
+	depends = yt-dlp
+	depends = ffmpeg
+	provides = rustify
+	conflicts = rustify
+	conflicts = rustify-git
+	source = rustify-linux-x86_64.tar.gz::https://github.com/khuza08/rustify/releases/download/v0.1.0/rustify-linux-x86_64.tar.gz
+	sha256sums = f628cc95ba239b61bb1c697319649d4df4934333813978ca666fd9da5beb3935
+
+pkgname = rustify-bin
