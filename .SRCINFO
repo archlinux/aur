@@ -1,6 +1,6 @@
 pkgbase = rockpass
 	pkgdesc = A small and ultrasecure Lesspass database server written in Rust
-	pkgver = 0.12.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://gitlab.com/ogarcia/rockpass
 	arch = arm
@@ -13,9 +13,9 @@ pkgbase = rockpass
 	makedepends = rust
 	depends = sqlite
 	backup = etc/rockpass.toml
-	source = https://gitlab.com/ogarcia/rockpass/-/archive/0.12.1/rockpass-0.12.1.tar.bz2
+	source = https://gitlab.com/ogarcia/rockpass/-/archive/0.13.0/rockpass-0.13.0.tar.bz2
 	source = rockpass.service
-	b2sums = 5c45d7ed15f4e7a205f96e619c6af1143b981f942c04a90282985ace2cc745b41110185ea2fce34d57f3e36eb16c5017d7260fbbacd2154d9eda66d98764d6cb
+	b2sums = 707d6342b8d879c9c6bb0ee702cfac77b2d22dd5c206ccfaa3c5d125b0036a6871967763d8b90eb422fc4d13c4bd056615523e84f9f7f3005e67ab67bc2914e8
 	b2sums = 0fa53a8afb3e842cfce314cbc580c3e2a89441f8b1155307df164ca50028e88d30212a29d847c40026105fb4a735e19863ed07fca8aeb86f51d3a8f096d8860a
 
 pkgname = rockpass
