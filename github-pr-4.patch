@@ -1,0 +1,27 @@
+From ea8fe2bb9516bd5ad891ea9d7276119221cecfb6 Mon Sep 17 00:00:00 2001
+From: Claudia Pellegrino <claui@users.noreply.github.com>
+Date: Thu, 26 Mar 2026 17:16:18 +0100
+Subject: [PATCH] tests: Arrange path elements the other way around
+
+The `inner.py` needs to be appended to the archive path, not prepended.
+
+Fixes the failing CI in PR #3. [1]
+
+[1]: https://github.com/rushter/hexora/pull/3
+---
+ crates/hexora_io/src/lib.rs | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/crates/hexora_io/src/lib.rs b/crates/hexora_io/src/lib.rs
+index f0856cc..ceabdd3 100644
+--- a/crates/hexora_io/src/lib.rs
++++ b/crates/hexora_io/src/lib.rs
+@@ -184,7 +184,7 @@ mod tests {
+                 assert!(file.archive_path.as_ref().unwrap().ends_with("test.zip"));
+                 assert_eq!(
+                     file.full_path(),
+-                    format!("inner.py:{}", archive_path.display())
++                    format!("{}:inner.py", archive_path.display())
+                 );
+                 found_zip_py = true;
+             }

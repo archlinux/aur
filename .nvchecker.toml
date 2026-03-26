@@ -1,0 +1,5 @@
+[hexora]
+source = "github"
+github = "rushter/hexora"
+prefix = "v"
+use_latest_release = true
