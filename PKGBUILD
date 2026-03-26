@@ -1,7 +1,7 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-meta-full
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Complete Owlry installation with all official plugins and runtimes"
 arch=('any')
 url="https://somegit.dev/Owlibou/owlry"
@@ -12,6 +12,7 @@ depends=(
     # Essential plugins
     'owlry-plugin-bookmarks'
     'owlry-plugin-calculator'
+    'owlry-plugin-converter'
     'owlry-plugin-scripts'
     'owlry-plugin-ssh'
     'owlry-plugin-system'

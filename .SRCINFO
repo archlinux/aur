@@ -1,7 +1,7 @@
 pkgbase = owlry-meta-full
 	pkgdesc = Complete Owlry installation with all official plugins and runtimes
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://somegit.dev/Owlibou/owlry
 	arch = any
 	license = GPL-3.0-or-later
@@ -9,6 +9,7 @@ pkgbase = owlry-meta-full
 	depends = owlry-core
 	depends = owlry-plugin-bookmarks
 	depends = owlry-plugin-calculator
+	depends = owlry-plugin-converter
 	depends = owlry-plugin-scripts
 	depends = owlry-plugin-ssh
 	depends = owlry-plugin-system
