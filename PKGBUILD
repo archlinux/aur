@@ -1,7 +1,7 @@
 # Maintainer: Ernesto Cruz Olivera <ecruzolivera@gmail.com>
 
 pkgname=riskie-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Disk automounting daemon for Linux with system tray support (pre-built binary)"
 arch=('x86_64')
