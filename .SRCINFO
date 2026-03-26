@@ -1,7 +1,7 @@
 pkgbase = rsyslog
 	pkgdesc = An enhanced multi-threaded syslogd with a focus on security and reliability
 	pkgver = 8.2602.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.rsyslog.com/
 	arch = x86_64
 	arch = i686
@@ -37,9 +37,11 @@ pkgbase = rsyslog
 	source = rsyslog.logrotate
 	source = rsyslog.conf
 	source = rsyslog.service
+	source = rsyslog.tmpfiles
 	sha256sums = e4e8125c07bbb268f61b7a8616aa6e5ba9414fdce46dc3ac7c5e0a527e1f3c14
 	sha256sums = 0f5bea3fd4dff2c9f097bf95768b2e1f6e9cfd9a08eab98bc3b3b4d2ed44119a
 	sha256sums = bc7ea11a697c20cdaa6730cfa0b4465cef0fec0e3f6b39aeff8deae9756aafbb
 	sha256sums = 81b9f9b78395405b679849143a6709911d00e9317928fdb2a2540f52965847c2
+	sha256sums = b287a96834da6cbb0b539d50171ac27bcf677505145fb935da72f751987df686
 
 pkgname = rsyslog
