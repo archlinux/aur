@@ -1,16 +1,15 @@
 pkgname=datafetch
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Live system information dashboard for Linux terminals"
 arch=('any')
 url="https://github.com/KlodCripta/Datafetch"
 license=('MIT')
 depends=('bash')
 
-source=("datafetch.sh::https://raw.githubusercontent.com/KlodCripta/Datafetch/main/datafetch.sh")
-
+source=("$pkgname-$pkgver.tar.gz::https://github.com/KlodCripta/Datafetch/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-    install -Dm755 datafetch.sh "$pkgdir/usr/bin/datafetch"
+    install -Dm755 "$srcdir/Datafetch-$pkgver/datafetch.sh" "$pkgdir/usr/bin/datafetch"
 }
