@@ -8,14 +8,11 @@ pkgver=1.0.20260322
 pkgrel=1
 license=('GPLv2')
 provides=("AMNEZIAWG-MODULE=${pkgver}")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v${pkgver}.tar.gz"
-        "blake2s.patch")
-sha512sums=('bd409a36b4469b598cf4650f0e1f8efd8b8e6932f7924bfc64d8d3a2aae5d52fa4b3638c9039bc45f77e06af1103114cf249ca789f79c1b66553feb6d7a8eed6'
-            '9880a8643738d6aadd21672aa2aa1965028ec839d1edb30bcf417988776d5547789d0f7417e77732966c4f245b7803e7278fd6b8366e0c224dcb13741f63cd85')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/amnezia-vpn/amneziawg-linux-kernel-module/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('bd409a36b4469b598cf4650f0e1f8efd8b8e6932f7924bfc64d8d3a2aae5d52fa4b3638c9039bc45f77e06af1103114cf249ca789f79c1b66553feb6d7a8eed6')
 
 prepare() {
 cd "${srcdir}/amneziawg-linux-kernel-module-${pkgver}/src"
-patch -Np1 -i ../../blake2s.patch
 }
 
 package() {
