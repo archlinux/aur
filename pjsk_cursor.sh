@@ -25,6 +25,24 @@ declare -r -a ORIGIN_LINKS=(
     "https://colorfulstage.com/upload_images/media/Download/Tsukasa%20Cursor%20static.zip"
     "https://colorfulstage.com/upload_images/media/Download/Kanade%20Cursor%20animation.zip"
     "https://colorfulstage.com/upload_images/media/Download/Kanade%20Cursor%20static.zip"
+
+    # Updated on 2026-03-26, the following links are added.
+    https://colorfulstage.com/upload_images/media/Download/KAITO%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/KAITO%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/MEIKO%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/MEIKO%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Luka%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Luka%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Len%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Len%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Rin%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Rin%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Saki%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Saki%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Honami%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Honami%20Static%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Shiho%20Animated%20Cursor.zip
+    https://colorfulstage.com/upload_images/media/Download/Shiho%20Static%20Cursor.zip
 )
 
 # https://github.com/SystemRage/Metamorphosis/blob/master/Metamorphosis.py#L111-L205
@@ -68,16 +86,36 @@ declare -A PJSK_TO_X_MAP=(
 
 download_cursors() {
     mkdir -p source
-    cd source
+    cd source || exit 1
     for url in "${ORIGIN_LINKS[@]}"; do
         raw=$(basename "$url")
         fname=${raw//%20/-}
-        [ -f "$fname" ] || wget -q -O "$fname" "$url"
         dir=${fname%.zip}
-        mkdir -p "$dir"
-        unzip -o "$fname" -d "$dir" '*.ani' '*.cur'
+
+        local success=false
+        for attempt in {1..3}; do
+            if [ ! -f "$fname" ]; then
+                echo "Downloading $fname (Attempt $attempt)..."
+                wget -q --tries=1 --timeout=15 -O "$fname" "$url"
+            fi
+
+            if unzip -tq "$fname" >/dev/null 2>&1; then
+                success=true
+                break
+            else
+                echo "Warning: $fname is corrupted or download failed. Retrying..." >&2
+                rm -f "$fname"
+            fi
+        done
+
+        if [ "$success" = true ]; then
+            mkdir -p "$dir"
+            unzip -qo "$fname" -d "$dir" '*.ani' '*.cur'
+        else
+            echo "Error: Failed to download or verify $fname after 3 attempts. Skipping." >&2
+        fi
     done
-    cd - >/dev/null
+    cd - >/dev/null || exit 1
 }
 
 convert_cursors() {
@@ -86,9 +124,11 @@ convert_cursors() {
         theme=$(basename "$theme_dir")
         mkdir -p "output/$theme"
 
-        if [[ "$theme" == ani* || "$theme" == *animation ]]; then
+        lc_theme="${theme,,}"
+
+        if [[ "$lc_theme" == *ani* || "$lc_theme" == *animation* ]]; then
             files=("$theme_dir"/*.ani)
-        elif [[ "$theme" == cur* || "$theme" == *static ]]; then
+        elif [[ "$lc_theme" == *cur* || "$lc_theme" == *static* || "$lc_theme" == *cursor* ]]; then
             files=("$theme_dir"/*.cur)
         else
             echo "Unknown theme type: $theme" >&2
@@ -96,7 +136,6 @@ convert_cursors() {
         fi
 
         win2xcur "${files[@]}" -o "output/$theme/"
-
         for src in output/"$theme"/*; do
             [ -f "$src" ] || continue
             name=${src##*/}

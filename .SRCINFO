@@ -1,6 +1,6 @@
 pkgbase = pjsk-cursor-theme
 	pkgdesc = Project Sekai mouse cursors as X icon themes
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://colorfulstage.com/media/download/
 	arch = any
@@ -10,6 +10,6 @@ pkgbase = pjsk-cursor-theme
 	makedepends = unzip
 	makedepends = win2xcur
 	source = pjsk_cursor.sh
-	sha256sums = 4d454e02e53ce0eff0053f51a9d8e5aa39681e5d2a2b769cd9d2fa297742f2bf
+	sha256sums = 929dc91ee0d1159054640126fb7b35ebfb9ee8b113f1421b089c170092eadfa2
 
 pkgname = pjsk-cursor-theme
