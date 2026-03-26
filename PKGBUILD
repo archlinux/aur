@@ -1,7 +1,7 @@
 # Maintainer: Kyle Yasuda <suda@sudacode.com>
 
 pkgname=subminer-bin
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc='All-in-one sentence mining overlay with AnkiConnect and dictionary integration'
 arch=('x86_64')
@@ -36,9 +36,9 @@ source=(
 	"subminer-assets-${pkgver}.tar.gz::https://github.com/ksyasuda/SubMiner/releases/download/v${pkgver}/subminer-assets.tar.gz"
 )
 sha256sums=(
-'e195b1d5bad11833bef561d6986e40132fdc30d28817fdc869ab886a037ef6dd'
+'c1b6ed9f90ca6b13043c39e95b2d314aef12274bf504ac3b1446996e8f1045a6'
 '3606eceab85b688d36b7f841b32dfb5b7c83c882057aaff844f24e310864d891'
-'69f2e5154d5ea32b64876b62bbd48894e8b7625d398e470398997639a3ccea8b'
+'5b508b611b845fd47bcd800b251430d1f1e2cba69e8494971440c0ec9dabe154'
 )
 noextract=("SubMiner-${pkgver}.AppImage")
 
