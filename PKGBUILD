@@ -4,11 +4,11 @@
 # Contributor: franciscod <demartino.francisco@gmail.com>
 
 pkgname=simulide
-pkgver=1.1.0_SR1
+pkgver=1.1.0_SR2
 _version_branch=1.1.0
 _realver=${pkgver//_/-}
-_rev=2019
-pkgrel=4
+_commit=28965e3bd6dd118598db1f5639ce1cf2e3c56e36
+pkgrel=1
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)."
 arch=("x86_64")
 url="https://launchpad.net/simulide"
@@ -16,10 +16,10 @@ provides=('simulide')
 conflicts=('simulide')
 license=("AGPL-3.0-or-later")
 source=(
-  "${pkgname}::bzr+https://code.launchpad.net/~arcachofo/simulide/${_version_branch}#revision=revno:${_rev}"
+  "${pkgname}::git+https://github.com/Arcachofo/SimuliDE-1.git#commit=$_commit"
   "simulide.desktop")
 sha256sums=(
-  SKIP
+  'a792c15e0ef208001cb641b5b399d84112d34073c6636fbe5c683e87a7481969'
   'a5b1f6b19d3fc2e93baa98beb000488a0e1f0fd93935cc7d86e8f0b345c11f23')
 
 depends=(
@@ -29,11 +29,6 @@ depends=(
   "qt5-svg"
   "qt5-script"
   "qt5-tools"
-)
-
-makedepends=(
-  "python-dulwich"
-  "bzr"
 )
 
 
