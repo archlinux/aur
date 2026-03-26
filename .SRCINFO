@@ -1,0 +1,15 @@
+pkgbase = muzak
+	pkgdesc = Command-line suite for playing and compiling the bells of bezelea
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/The0x539/muzak
+	arch = x86_64
+	license = unknown
+	makedepends = cargo
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	source = https://github.com/The0x539/muzak/archive/v2.4.0/muzak-2.4.0.tar.gz
+	b2sums = d14ae89a6e3b5cda887f039a2e3373a80f6f2014cee650ad8d567c7219d9763b6132bdc106da4b4e9c110ec5097379fd31304e28de6d93fb0761222ba203304a
+
+pkgname = muzak

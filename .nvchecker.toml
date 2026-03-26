@@ -1,0 +1,4 @@
+[muzak]
+source = "git"
+git = "https://github.com/The0x539/muzak.git"
+prefix = "v"
