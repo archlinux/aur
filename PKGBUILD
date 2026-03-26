@@ -135,6 +135,8 @@ build() {
     mkdir -p "${srcdir}/linux-app-extracted/cowork"
     cp -f "${_repo}"/stubs/cowork/*.js \
           "${srcdir}/linux-app-extracted/cowork/"
+    cp -f "${_repo}"/stubs/cowork/*.sh \
+          "${srcdir}/linux-app-extracted/cowork/" 2>/dev/null || true
 
     # Apply cowork patch
     echo "Applying cowork patch..."
