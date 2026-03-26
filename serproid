@@ -1,8 +1,9 @@
 #!/bin/sh
 JAVA=java
-if [[ -x /usr/lib/jvm/java-23-openjdk/bin/java ]]; then
-    # Prefer Java 23 if installed (approved by java-openjfx)
-    JAVA=/usr/lib/jvm/java-23-openjdk/bin/java
+pref_ver=$(pacman -Qi java-openjfx 2>/dev/null | grep -Po 'java-runtime-openjdk=\K\d+')
+if [[ -x /usr/lib/jvm/java-${pref_ver}-openjdk/bin/java ]]; then
+    # Prefer Java version approved by java-openjfx, if installed
+    JAVA=/usr/lib/jvm/java-${pref_ver}-openjdk/bin/java
 fi
 
 OPENJFX_DIR="$(echo /usr/lib/jvm/java-*-openjfx/lib)"
