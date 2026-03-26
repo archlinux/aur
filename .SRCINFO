@@ -1,0 +1,16 @@
+pkgbase = zenscii
+	pkgdesc = Convert images and videos into ASCII art (CLI + GUI)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/Just-Utkarsh/Zenscii
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	depends = qt6-base
+	depends = ffmpeg
+	depends = imagemagick
+	source = git+https://github.com/Just-Utkarsh/Zenscii.git
+	sha256sums = SKIP
+
+pkgname = zenscii
