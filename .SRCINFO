@@ -1,6 +1,6 @@
 pkgbase = lattice-net-bin
 	pkgdesc = Peer-to-peer web protocol CLI and daemon (prebuilt release)
-	pkgver = 0.1.13
+	pkgver = 0.1.14
 	pkgrel = 1
 	url = https://github.com/fordz0/lattice
 	install = lattice-net-bin.install
@@ -13,7 +13,7 @@ pkgbase = lattice-net-bin
 	conflicts = lattice-net
 	conflicts = lattice-net-git
 	options = !debug
-	source = https://github.com/fordz0/lattice/releases/download/lattice-v0.1.13/lattice-linux-x86_64.tar.gz
-	sha256sums = e7b82087ecc4814caae41e0ceef4b5b8b89ed4fbdad65e783fbe235554c6300b
+	source = https://github.com/fordz0/lattice/releases/download/lattice-v0.1.14/lattice-linux-x86_64.tar.gz
+	sha256sums = 93758b52597045518d7422df8039438ddecb8fafc793cdba757ff1762bde1e2d
 
 pkgname = lattice-net-bin
