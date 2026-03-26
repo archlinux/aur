@@ -2,12 +2,13 @@
 pkgname=owlry-meta-full
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Complete Owlry installation with all plugins"
+pkgdesc="Complete Owlry installation with all official plugins and runtimes"
 arch=('any')
 url="https://somegit.dev/Owlibou/owlry"
 license=('GPL-3.0-or-later')
 depends=(
     'owlry'
+    'owlry-core'
     # Essential plugins
     'owlry-plugin-bookmarks'
     'owlry-plugin-calculator'
