@@ -1,7 +1,7 @@
 pkgbase = pake-gemini
 	pkgver = 3.10.0
 	pkgrel = 1
-	description = Gemini wrapped as an AppImage using Pake
+	pkgdesc = Google Gemini AI wrapped as an AppImage using Pake
 	url = https://github.com/tw93/Pake
 	arch = x86_64
 	license = MIT
