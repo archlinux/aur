@@ -1,7 +1,7 @@
 pkgbase = usql
 	pkgdesc = A universal command-line interface for SQL databases
 	pkgver = 0.21.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xo/usql
 	arch = i686
 	arch = x86_64
