@@ -1,4 +1,4 @@
-# Maintainer: Danilo F. S. <your-email@example.com>
+# Maintainer: Danilo Falcão <danilo@falcao.org>
 pkgname=bind-utils-standalone
 pkgver=9.20.21
 pkgrel=1
