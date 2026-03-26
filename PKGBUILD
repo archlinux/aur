@@ -1,6 +1,6 @@
 # Maintainer: Rafael Dominiquini <rafaeldominiquini at gmail dot com>
 
-_upstreamver='0.3.0'
+_upstreamver='0.4.0'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='pypi-releases'
 _pypi_package='termaid'
@@ -27,7 +27,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 
 # source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package//-/_}/${_pypi_package//-/_}-${pkgver}.tar.gz")
 source=("${_pypi_package}-${_upstreamver}.tar.gz::${_url_github}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('6863dd5f756446a36d927f1aad1587722b7d3bd2dbf59e00ad93386dd362f7cf')
+sha256sums=('1537c85628a0d410ab983d85882df77c5008205704bac9de703b7cf51c9cd020')
 
 build() {
     cd "${srcdir}/${_pypi_package}-${pkgver}/"

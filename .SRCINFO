@@ -1,6 +1,6 @@
 pkgbase = termaid
 	pkgdesc = Render Mermaid diagrams in your terminal or Python app
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/fasouto/termaid
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = termaid
 	provides = termaid
 	conflicts = python-termaid
 	replaces = python-termaid
-	source = termaid-0.3.0.tar.gz::https://github.com/fasouto/termaid/archive/refs/tags/v0.3.0.tar.gz
-	sha256sums = 6863dd5f756446a36d927f1aad1587722b7d3bd2dbf59e00ad93386dd362f7cf
+	source = termaid-0.4.0.tar.gz::https://github.com/fasouto/termaid/archive/refs/tags/v0.4.0.tar.gz
+	sha256sums = 1537c85628a0d410ab983d85882df77c5008205704bac9de703b7cf51c9cd020
 
 pkgname = termaid
