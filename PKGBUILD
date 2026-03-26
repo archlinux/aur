@@ -2,7 +2,7 @@
 
 pkgname=cleaner-advanced
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash script for system maintenance on Arch Linux and derivatives"
 arch=('any')
 url="https://github.com/KlodCripta/Cleaner-Advanced"
@@ -12,7 +12,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 package() {
-  install -Dm755 "$srcdir/Cleaner-Advanced-$pkgver/cleaner-advanced.sh" \
+  install -Dm755 "$srcdir/Cleaner-Advanced-$pkgver/cleaner_advanced.sh" \
     "$pkgdir/usr/bin/cleaner-advanced"
 
   install -Dm644 "$srcdir/Cleaner-Advanced-$pkgver/LICENSE" \
