@@ -1,7 +1,7 @@
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 # Maintainer: Marko Semet <marko10_000@mailbox.org>
 pkgname=buildstream
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="A powerful and flexible software integration toolset"
 arch=(x86_64)
@@ -33,7 +33,7 @@ optdepends=(
     "buildstream-plugins-experimental: Official experimental BuildStream plugins"
 )
 makedepends=(cython git python-packaging)
-source=("git+https://github.com/apache/buildstream.git#tag=${pkgver}&commit=4c68517662e17cd68f579db0b2d5c5e5d4451335")
+source=("git+https://github.com/apache/buildstream.git#tag=${pkgver}")
 sha256sums=('SKIP')
 
 build() {
