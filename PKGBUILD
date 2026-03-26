@@ -1,7 +1,7 @@
 # Maintainer: Digvijay Mahapatra <mahapatra.digvijay@gmail.com>
 
 pkgname=walt-bin
-pkgver=0.9.3
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A fast terminal wallpaper picker for Hyprland with in-place previews, keyboard-first navigation, and auto-rotation"
 arch=('x86_64' 'aarch64')
@@ -31,8 +31,8 @@ source_aarch64=(
   "walt-v${pkgver}-linux-arm64.tar.gz::https://github.com/gitfudge0/walt/releases/download/v${pkgver}/walt-v${pkgver}-linux-arm64.tar.gz"
 )
 
-sha256sums_x86_64=('a02032fd4d9e51ca91eec165dfea15eddd2b0d18cc06176c6d9f90b0568bf2ca')
-sha256sums_aarch64=('db5459f2ff7b876b26a1954f10aaa27cf970ba32f9296f18864688302eeaed2b')
+sha256sums_x86_64=('b8811946f0083e297fe45f58c67cd9337289c99f35168053b544e7b05a0b1c11')
+sha256sums_aarch64=('3f88e0564dc9c344211c94838c47a6ebef933229f22b8f55a80bbcb5fe75a600')
 
 prepare() {
   gendesk -f -n \
