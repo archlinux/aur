@@ -1,7 +1,7 @@
 # Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 
 pkgname=rustfs
-pkgver=1.0.0_alpha.86
+pkgver=1.0.0_alpha.87
 _console_ver=0.1.6
 pkgrel=1
 pkgdesc="High-performance distributed object storage for MinIO alternative."
@@ -23,7 +23,7 @@ source=(
 	"console-${_console_ver}.tar.gz::https://github.com/rustfs/console/archive/refs/tags/v${_console_ver}.tar.gz"
 )
 sha256sums=(
-	'68114101a066028c8f8af40853e6bc2b979629d4bb8289e2af343c27288f5dcb'
+	'b85b9d57919e1fcded7ec8c22225188ab2183f3a6849a79cf5bd54fa19c2df77'
 	'9016e08bd656e057e64a8deb43b11db6261b9dd0c0167418f57aad0d9f2653f4'
 )
 
@@ -44,6 +44,7 @@ build() {
 	# build rustfs
 	cd ${srcdir}/${pkgname}-${pkgver//_/-}
 
+	export AWS_LC_SYS_NO_JITTER_ENTROPY=1
 	RUSTC_BOOTSTRAP=1 cargo build --frozen --release
 }
 
