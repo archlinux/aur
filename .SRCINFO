@@ -1,6 +1,6 @@
 pkgbase = r-dbarts
 	pkgdesc = Discrete Bayesian additive regression trees sampler
-	pkgver = 0.9.32
+	pkgver = 0.9.33
 	pkgrel = 5
 	url = https://cran.r-project.org/package=dbarts
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = r-dbarts
 	optdepends = r-testthat
 	optdepends = r-knittr
 	optdepends = r-rmarkdown
-	source = https://cran.r-project.org/src/contrib/dbarts_0.9-32.tar.gz
-	md5sums = 806847d704aa65a85b5e95e84afb393a
-	b2sums = c592a890acb4827bb9b870cfdf318ac2ea58b594acdcaa2ae36a5f6b0be46cda1a1811b4505a97239034907651f2d7d304e1e5c175c3b0c36b570f70ec0ea6c2
+	source = https://cran.r-project.org/src/contrib/dbarts_0.9-33.tar.gz
+	md5sums = d097c09beb896fca53527eee85bc6b42
+	b2sums = f06b9393525716209c292c707f44a76463a692b3c450343392d539a8581d7518caa6a78489d53b69d167766514f6ff04fd7ec010f41fae3b4921bf99770bc573
 
 pkgname = r-dbarts
