@@ -2,7 +2,7 @@
 # Contributor: Andy Botting <andy@andybotting.com>
 _name=futurist
 pkgname=python-futurist
-pkgver=3.2.1
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='Code from the future, delivered to you in the now'
 arch=(any)
@@ -24,7 +24,7 @@ checkdepends=(
     python-testtools
 )
 source=($_name::git+https://github.com/openstack/futurist.git#tag=$pkgver)
-sha512sums=('f6507b3e3ce4517fd9c834dd54213eee4174cadfe6f7b46287f84aaf24940b884b8aa4dc05c0ba30084db249b40e1f74e3da703b8d23e4eb828cb3663987cb88')
+sha512sums=('b9318e914e009d903d81c693a73e7d8dd6e5468c70b91a89448be673aa238c64441d7ff7cc60f4f58eda8621c6a131eb81c02c2b16cbde33b22842e2178143f8')
 
 build() {
     cd $_name
@@ -34,11 +34,11 @@ build() {
 
 check() {
     cd $_name
-    local python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
-    python -m installer --destdir=../test_dir dist/*.whl
+    python -m venv --system-site-packages test-env
+    test-env/bin/python -m installer dist/*.whl
     mv $_name/tests .
     rm -rf $_name
-    PYTHONPATH="$PWD/../test_dir/usr/lib/python$python_version/site-packages" stestr --test-path tests run
+    test-env/bin/python -P -m stestr --test-path tests run
 }
 
 package() {
