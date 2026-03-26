@@ -1,6 +1,6 @@
 pkgbase = cipher-pi
 	pkgdesc = AI security engineering platform: 1,543 skills, 9 modes, 39 compliance frameworks, engagement engine
-	pkgver = 2.3.9
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://github.com/defconxt/CIPHER
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = cipher-pi
 	optdepends = katana: web crawling and attack surface discovery
 	optdepends = docker: benchmark sandbox and container security testing
 	optdepends = ollama: local LLM inference
-	source = git+https://github.com/defconxt/CIPHER.git#tag=v2.3.9
+	source = git+https://github.com/defconxt/CIPHER.git#tag=v2.4.0
 	sha256sums = SKIP
 
 pkgname = cipher-pi
