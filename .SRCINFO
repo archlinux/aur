@@ -1,6 +1,6 @@
 pkgbase = placeholder-pkg-git
 	pkgdesc = Disposable test package
-	pkgver = r1.0000000
+	pkgver = r5.461e0cc
 	pkgrel = 1
 	url = https://github.com/noctuum/placeholder-pkg
 	arch = any

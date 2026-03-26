@@ -1,6 +1,6 @@
 # Maintainer: disposable <noreply@noreply>
 pkgname=placeholder-pkg-git
-pkgver=r1.0000000
+pkgver=r5.461e0cc
 pkgrel=1
 pkgdesc="Disposable test package"
 arch=('any')
