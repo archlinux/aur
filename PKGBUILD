@@ -1,6 +1,6 @@
 # Maintainer: Nabiko02 <Lusty3418Charger1631Retold5412@proton.me>
 pkgname=recway
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Frontend for wf-recorder screen recorder"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('wf-recorder' 'wlr-randr')
 makedepends=('rust')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b1e984155773f7c6ae24ee5bbc8fe92bf889fdc25d980ed5859bf8fe0d9d636e')
+sha256sums=('46847a0723ea4c537147dd46926f070495f4610f0e24945b20d49c3f90bdbcfb')
 
 prepare() {
     cd "$pkgname-$pkgver"
