@@ -10,7 +10,7 @@
 _pkgname=tuxedo-drivers
 pkgname=kc57-drivers-dkms
 pkgver=$(curl https://raw.githubusercontent.com/tuxedocomputers/tuxedo-drivers/refs/heads/main/base_package.yml | sed -nE 's/.*version:\s"([0-9]+\.[0-9]+\.[0-9]+)"/\1/p' | head -n1)
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel NUC X15(LAPKC51E, LAPKC71E, LAPKC71F) kernel module drivers for general hardware I/O using the SysFS interface"
 url="https://github.com/tuxedocomputers/tuxedo-drivers"
 license=('GPL2' 'GPL3')
@@ -39,7 +39,7 @@ sha256sums=('SKIP'
             '1debb5fe0f454295746712286198399486fd3a08692916bf17846f9d93f4bdbb'
             '3e041d1838dc5fc83ac76c88a246e71e128fb4b3f26f963b46af4ac9f31d7a74'
             '0cc3d27d7d4fecb67528ba1bd0e1d46c4088f48214cf911d02a769591d7ddfb7'
-            'f76d5033dc2913d00ea1d394daa621bf42edcfdd31b4a7336a5cb195283dab92')
+            '2af35162da42cb4609f5af25c51554f0b63b5d19acdb2c5a1a93ae2abeb5a258')
 
 prepare() {
   # add initial support for NUC X15
