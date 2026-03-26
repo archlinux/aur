@@ -1,7 +1,7 @@
 pkgbase = tofuref
 	pkgdesc = TUI for the OpenTofu provider registry
-	pkgver = 1.7.0
-	pkgrel = 2
+	pkgver = 1.8.0
+	pkgrel = 1
 	url = https://github.com/djetelina/tofuref
 	arch = any
 	license = MIT
@@ -19,9 +19,10 @@ pkgbase = tofuref
 	depends = python-anyio
 	depends = python-rich
 	depends = python-linkify-it-py
+	depends = python-click
 	conflicts = tofuref-bin
 	replaces = tofuref-bin
-	source = tofuref-1.7.0.tar.gz::https://github.com/djetelina/tofuref/archive/refs/tags/v1.7.0.tar.gz
-	sha256sums = 937981672080906fb915d97365c40dfe60c438f55cb376a9d27371b394f4eef7
+	source = tofuref-1.8.0.tar.gz::https://github.com/djetelina/tofuref/archive/refs/tags/v1.8.0.tar.gz
+	sha256sums = 4d96533491a2092795e48d36195838338ff5f8fac39b2fd25ef338799eb1f237
 
 pkgname = tofuref

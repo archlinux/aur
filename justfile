@@ -10,17 +10,17 @@ build:
   paru -Bi .
 
 check:
-  namcap PKGBUILD 
-  @echo "→ Running namcap on PKGBUILD and built package..."
-  pkgfile=$(ls *.pkg.tar.* 2>/dev/null | head -n1); \
-  if [ -z "$pkgfile" ]; then \
-      echo "No built package found. Run 'paru -Bi .' first." >&2; \
-      exit 1; \
-  fi; \
-  echo "Checking $pkgfile"; \
-  namcap PKGBUILD "$pkgfile" \
-    grep -v "needed ('python-linkify" \
-    || true
+  #!/usr/bin/env bash
+  set -euo pipefail
+  namcap PKGBUILD
+  echo "→ Running namcap on built package..."
+  pkgfile=$(ls *.pkg.tar.* 2>/dev/null | head -n1)
+  if [ -z "$pkgfile" ]; then
+      echo "No built package found. Run 'paru -Bi .' first." >&2
+      exit 1
+  fi
+  echo "Checking $pkgfile"
+  namcap "$pkgfile" | grep -v "needed ('python-linkify" || true
 
 clean:
   paru -Rns --noconfirm tofuref || true
