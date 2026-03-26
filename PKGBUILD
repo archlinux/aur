@@ -6,7 +6,7 @@ _folder_gpg="FOLDER13988161M"
 _driver_id="2FGYM"
 pkgname=dell-idractools
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Dell iDRAC Tools (RACADM, VMCLI, IPMI Tool)"
 arch=('x86_64')
 url="https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=${_driver_id}"
@@ -31,8 +31,11 @@ package() {
     rpm2cpio ${srcdir}/iDRACTools/racadm/RHEL8/${arch}/srvadmin-idracadm7-${_pkgver}.el8.${arch}.rpm | bsdtar -xf - -C ${pkgdir}
 
     # cleanup
+    rm -rf ${pkgdir}/usr/lib/.build-id
+    
     # remove redundant service file
     rm -rf ${pkgdir}/etc/systemd/system/instsvcdrv.service
+
     # merge /usr/lib64 with /usr/lib
     mv ${pkgdir}/usr/lib64/* ${pkgdir}/usr/lib/
     rm -rf ${pkgdir}/usr/lib64
