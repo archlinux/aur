@@ -1,6 +1,6 @@
 pkgbase = r-modeltime
 	pkgdesc = The Tidymodels Extension for Time Series Modeling
-	pkgver = 1.3.2
+	pkgver = 1.3.5
 	pkgrel = 5
 	url = https://cran.r-project.org/package=modeltime
 	arch = any
@@ -18,8 +18,6 @@ pkgbase = r-modeltime
 	depends = r-hardhat
 	depends = r-janitor
 	depends = r-magrittr
-	depends = r-methods
-	depends = r-parallel
 	depends = r-parallelly
 	depends = r-parsnip
 	depends = r-plotly
@@ -31,6 +29,7 @@ pkgbase = r-modeltime
 	depends = r-stanheaders
 	depends = r-stringr
 	depends = r-tibble
+	depends = r-tidymodels
 	depends = r-tidyr
 	depends = r-timetk
 	depends = r-workflows
@@ -59,8 +58,8 @@ pkgbase = r-modeltime
 	optdepends = r-tune
 	optdepends = r-webshot
 	optdepends = r-workplowsets
-	source = https://cran.r-project.org/src/contrib/modeltime_1.3.2.tar.gz
-	md5sums = 08b08a57c1663ae1fc4c294412be781f
-	b2sums = 169a6ab1c68b926226a4971f3be45892e5bd58c5e621f0ab7a6fa6cd06e288b8114993e860ac2f202bcff58b1b0ee5eca0b6ae4b867ab43be9f5fab388627c93
+	source = https://cran.r-project.org/src/contrib/modeltime_1.3.5.tar.gz
+	md5sums = 26cd724a9f4320b999a298ba48ac7d0c
+	b2sums = 39f9137a224c170322948b061ac931c3845099f349fa2147b6f5f6d3d8fdb44411e96347567178f0b0e0e7b56a6e2627cc348631989a41383c91db5d4756516b
 
 pkgname = r-modeltime
