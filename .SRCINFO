@@ -1,0 +1,13 @@
+pkgbase = ganttdown-bin
+	pkgdesc = Gantt chart generator from markdown
+	pkgver = 20260212
+	pkgrel = 1.0
+	url = https://github.com/sev101/ganttdown
+	arch = x86_64
+	license = MIT
+	provides = ganttdown
+	conflicts = ganttdown
+	source = ganntdown-linux-amd64::https://github.com/sev101/ganttdown/releases/latest/download/ganttdown-linux-amd64
+	sha256sums = ca3446f4a9627e7d39dd952ad945288556377cb21b89333298e9f9a950080f4e
+
+pkgname = ganttdown-bin
