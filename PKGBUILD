@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 pkgname=plasmazones-bin
-pkgver=2.4.3
+pkgver=2.4.5
 pkgrel=1
 pkgdesc='Window tiling and autotiling for KDE Plasma (binary)'
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=(
     'qt6-base'
     'qt6-declarative'
     'qt6-shadertools'
+    'qt6-svg'
     'kconfig'
     'kconfigwidgets'
     'ki18n'
