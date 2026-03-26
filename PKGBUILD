@@ -1,7 +1,7 @@
 # Maintainer: Stefan Wimmer <info@stefanwimmer128.xyz>
 
 _pkgname=firedragon
-_pkgver=13.0.0-rc.1
+_pkgver=13.0.0-rc.2
 
 __pkgname=$_pkgname
 
@@ -88,7 +88,7 @@ source=(
   fix-wasm32-wasi-target.patch
   0023-bgo-969412-glibc-2.43.patch
 )
-sha256sums=('a119b9d67f0325f20cbcabfa62d5beed7e582791326844d8c50355a805e7da4d'
+sha256sums=('9ffb5110d6e3946e4cb96628ebc500a587fd9dd9a62ca56849e6195b2b5723e2'
             'f7ba345f2b82ce4eab315f15f388e907bed86e00a3011ccd79e732f4e8762124'
             '25e8f2e706aa837f5b6e3c003a6c7f42b07f0a7366d10f9e0d5ad38053767aae')
 
