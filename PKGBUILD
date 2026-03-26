@@ -1,13 +1,13 @@
 # Maintainer: Ian Lester <aur.lester.snowy907silomails.com>
 pkgname=schemesh
 pkgver=v1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fusion between a Unix shell and a Lisp REPL"
 arch=('x86_64')
 url="https://github.com/cosmos72/schemesh"
 license=('GPL-2.0-only')
 groups=()
-depends=('chez-scheme' 'lz4')
+depends=('chez-scheme' 'lz4' 'ncurses' 'zlib')
 makedepends=('git')
 provides=()
 conflicts=()
@@ -22,6 +22,10 @@ sha256sums=('SKIP')
 prepare() {
 	cd "$srcdir/${pkgname%}"
 	git checkout -f "${pkgver}"
+	# Remove 'dir' binary that conflicts with coreutil's /usr/bin/dir as
+	# schemesh has a 'dir' builtin anyway
+	sed -i 's/default: countdown dir/default: countdown/' Makefile
+	sed -i 's/install:     install_countdown   install_dir/install: install_countdown/' Makefile
 }
 
 build() {
