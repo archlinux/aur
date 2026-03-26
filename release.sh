@@ -119,9 +119,13 @@ if [[ "$confirm" != [yY] ]]; then
 	exit 1
 fi
 
-# Commit
+# Commit (skip if version was already set before script ran)
 git add PKGBUILD dkms.conf .SRCINFO
-git commit -m "pkg: Release ${new_tag}"
+if git diff --cached --quiet; then
+	echo "Version already set, no commit needed."
+else
+	git commit -m "pkg: Release ${new_tag}"
+fi
 
 # Tag
 git tag "${new_tag}"
