@@ -2,7 +2,7 @@
 # CIPHER: AI Security Engineering Platform
 
 pkgname=cipher-pi
-pkgver=2.41.5
+pkgver=2.41.6
 pkgrel=1
 pkgdesc="AI security engineering platform: 1,543 skills, 9 modes, 39 compliance frameworks, engagement engine"
 arch=('any')
