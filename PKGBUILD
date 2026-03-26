@@ -1,4 +1,4 @@
-# Maintainer: Meliodas8 <tu@email.com>
+# Maintainer: Meliodas8 <marticolelmolina@gmail.com>
 pkgname=gametracker
 pkgver=1.0.8
 pkgrel=1
