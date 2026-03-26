@@ -1,7 +1,7 @@
 # Maintainer: Carson Buttars <carsonbuttars13@gmail.com>
 
 _pkgname=keras3
-_pkgver=1.4.0
+_pkgver=1.5.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=5
@@ -41,8 +41,8 @@ optdepends=(
   r-jpeg
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0cc5172d7ce966709db50cb408d42dbe')
-b2sums=('3de2244a0f712a805e6d7d379ec135e7e32b40a0e9008536c93c7f05647fcec271d00c7bced986743622f5983718240ec5ec21e5787882c91bf85bb230af2855')
+md5sums=('641b89f3d78dd010d4d02617aa06eafd')
+b2sums=('2ca006977147b3d6e8418f2322b55c34b4131ba08f23e01b0913c99a738c73549b15fa1c43fca205f58fe2d6fe31c94e7db477d44c48c181e66b0f80638c38bf')
 
 build() {
   mkdir build
