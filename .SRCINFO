@@ -1,18 +1,19 @@
 pkgbase = tlog
 	pkgdesc = Terminal I/O logger
-	pkgver = 11
+	pkgver = 14
 	pkgrel = 1
 	url = http://scribery.github.io/tlog/
 	arch = x86_64
-	license = GPL
+	license = GPL-2.0-or-later
 	depends = curl
 	depends = json-c
 	depends = libutempter
 	backup = etc/tlog/tlog-play.conf
 	backup = etc/tlog/tlog-rec.conf
 	backup = etc/tlog/tlog-rec-session.conf
-	source = https://github.com/Scribery/tlog/releases/download/v11/tlog-11.tar.gz
-	md5sums = 050e924a605ec9bd2d5b911e1397c63f
+	source = https://github.com/Scribery/tlog/releases/download/v14/tlog-14.tar.gz
+	source = rec-pointer-type-fix.patch
+	sha512sums = 593d0d845b6b10de33094658160fb6d675d7f07493e5e3a84b20ea26154c56bb1f75a85805468bc061f0a14e305f6c2140e56e6cfa8e94d9849387d47f674ccd
+	sha512sums = 81b848816a98ae09ade89dc149fc02c79a21cf8dcc4a3f2d5009050e333ee06cd8ef6cf346c96546fe42cd5233b6e66a1769af137d20c6b6ee539a3c5cb64b40
 
 pkgname = tlog
-

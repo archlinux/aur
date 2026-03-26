@@ -1,0 +1,12 @@
+--- lib/tlog/rec.c      2023-01-06 21:00:32.000000000 +0100
++++ lib/tlog/rec-patched.c      2026-03-26 16:21:50.922764409 +0100
+@@ -78,8 +78,9 @@
+ }
+
+ static void
+-tlog_rec_sigchld_handler()
++tlog_rec_sigchld_handler(int signum)
+ {
++    (void)signum;
+     tlog_rec_child_exited = true;
+ }
