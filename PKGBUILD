@@ -1,7 +1,7 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=libretro-azahar
 pkgver=2125.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
@@ -67,6 +67,6 @@ build() {
 package() {
 	cd "$srcdir"
 	#DESTDIR="$pkgdir" cmake --install build
-	install -Dm755 build/bin/None/azahar_libretro.so -T "$pkgdir/usr/lib/libretro"
+	install -Dm755 build/bin/None/azahar_libretro.so -t "$pkgdir/usr/lib/libretro"
 	install -Dm644 "$srcdir/azahar-unified-source-$pkgver/license.txt" "$pkgdir/usr/share/licenses/$pkgname/licenses.txt"
 }
