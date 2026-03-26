@@ -1,6 +1,6 @@
 pkgbase = hyprchat
 	pkgdesc = Lightweight AI chat panel for Hyprland built with QuickShell
-	pkgver = 0.1.2
+	pkgver = 0.1.3
 	pkgrel = 1
 	url = https://github.com/AlexMacocian/hyprchat
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = hyprchat
 	depends = kitty
 	depends = curl
 	optdepends = github-cli: for GitHub Copilot device flow login
-	source = hyprchat-0.1.2.tar.gz::https://github.com/AlexMacocian/hyprchat/archive/v0.1.2.tar.gz
-	sha256sums = 9bbf10b4092842c83d0317db1cb5af86f95151e6b3a7ecbe8ed359a2aafa3de9
+	source = hyprchat-0.1.3.tar.gz::https://github.com/AlexMacocian/hyprchat/archive/v0.1.3.tar.gz
+	sha256sums = 552d1cc3fdb3478047e3c23492519a40e0fbab88954e3a08f406551eb02350cb
 
 pkgname = hyprchat
