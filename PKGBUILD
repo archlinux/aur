@@ -1,18 +1,22 @@
 pkgname=neuro-karaoke-wrapper-git
 _pkgname=neuro-karaoke-wrapper
 _execname=neuro-karaoke-player
-pkgver=1.4alpha.r6.3ff7041
+pkgver=1.5.0.r0.d55d244
 pkgrel=1
 pkgdesc='Desktop wrapper for neurokaraoke.com with media controls and tray support'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/AferilVT/$_pkgname"
 license=('MIT')
-depends=('libx11' 'alsa-lib')
-makedepends=('git' 'yarn' 'npm')
+depends=(
+  'libx11'
+  'alsa-lib'
+)
+makedepends=('git' 'yarn')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git")
 sha256sums=('SKIP')
+options=(!strip)
 
 pkgver() {
   cd "$_pkgname"
@@ -22,7 +26,12 @@ pkgver() {
 build() {
   cd "$_pkgname"
   npm_config_platform=linux yarn install --frozen-lockfile
-  yarn electron-builder --linux --dir --x64
+  case "$CARCH" in
+    x86_64) _arch=x64 ;;
+    aarch64) _arch=arm64 ;;
+  esac
+  
+  yarn electron-builder --linux --dir --$_arch
 }
 
 package() {
