@@ -1,18 +1,19 @@
-# Maintainer: Tzu-Yu Lee <leejuyuu at google dot com>
-# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Kirkaig <admin@elden-labs.com>
+# Contributer: Tzu-Yu Lee <leejuyuu at google dot com>
+# Contributer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=sqls
-pkgver=0.2.27
+pkgver=0.2.45
 pkgrel=1
 pkgdesc="Language Server Protocol implementation for SQL"
-arch=('x86_64')
+arch=("x86_64")
 url="https://github.com/sqls-server/sqls"
-license=('MIT')
-depends=('glibc')
-makedepends=('go')
-optdepends=('mysql' 'sqlite3' 'postgresql')
+license=("MIT")
+depends=("glibc")
+makedepends=("go")
+optdepends=("mysql" "sqlite3" "postgresql")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('f47aff522ce20eb4f87fb099d492c35503824b10d40cb3d4b755bc0a8d6ddf56')
+sha256sums=("7fb0914932176cbe875c53a8ebebf4561dd859a8068295c457d50c417f265602")
 
 prepare() {
 	cd "$pkgname-$pkgver"

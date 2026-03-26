@@ -1,6 +1,6 @@
 pkgbase = sqls
 	pkgdesc = Language Server Protocol implementation for SQL
-	pkgver = 0.2.27
+	pkgver = 0.2.45
 	pkgrel = 1
 	url = https://github.com/sqls-server/sqls
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = sqls
 	optdepends = mysql
 	optdepends = sqlite3
 	optdepends = postgresql
-	source = sqls-0.2.27.tar.gz::https://github.com/sqls-server/sqls/archive/v0.2.27.tar.gz
-	sha256sums = f47aff522ce20eb4f87fb099d492c35503824b10d40cb3d4b755bc0a8d6ddf56
+	source = sqls-0.2.45.tar.gz::https://github.com/sqls-server/sqls/archive/v0.2.45.tar.gz
+	sha256sums = 7fb0914932176cbe875c53a8ebebf4561dd859a8068295c457d50c417f265602
 
 pkgname = sqls
