@@ -1,0 +1,13 @@
+pkgbase = termcraft
+	pkgdesc = Terminal-only 2D sandbox survival
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/pagel-s/termcraft
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cargo
+	depends = gcc-libs
+	source = termcraft-0.1.0.tar.gz::https://github.com/pagel-s/termcraft/archive/v0.1.0.tar.gz
+	sha256sums = 812ec10ed46897fd29edd1822234e27769145dcd761293620126f1ec774fcd22
+
+pkgname = termcraft
