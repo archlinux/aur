@@ -1,6 +1,6 @@
 pkgbase = postman-live-bin
 	pkgdesc = Build, test, and document your APIs faster (Live version)
-	pkgver = 12.3.2
+	pkgver = 12.3.4
 	pkgrel = 1
 	url = https://www.getpostman.com
 	arch = x86_64
@@ -38,9 +38,9 @@ pkgbase = postman-live-bin
 	options = !strip
 	source = postman.desktop
 	sha256sums = b6db7367b16338b10c93e22304bb06724b844389136ee542e1f28366010a279c
-	source_x86_64 = postman-12.3.2-linux-x64.tar.gz::https://dl.pstmn.io/download/version/12.3.2/linux64
-	sha256sums_x86_64 = 5c912bfb014ff374418169f74bc8ef98f8fd4506ed80ffe9ab54ff834c70017c
-	source_aarch64 = postman-12.3.2-linux-arm64.tar.gz::https://dl.pstmn.io/download/version/12.3.2/linux_arm64
-	sha256sums_aarch64 = 334ca439383661cae2b2595080be3d662ae8930dc8fc1690328fb527af7e1b71
+	source_x86_64 = postman-12.3.4-linux-x64.tar.gz::https://dl.pstmn.io/download/version/12.3.4/linux64
+	sha256sums_x86_64 = d59acfe0e067f3551199660daa7422139a7a4b304f9d6b84acb75085c1d7dc2e
+	source_aarch64 = postman-12.3.4-linux-arm64.tar.gz::https://dl.pstmn.io/download/version/12.3.4/linux_arm64
+	sha256sums_aarch64 = f41f5d994715be7bf20b9814d6a67c8c1c3f60793ae258509f48b4254bb2cd55
 
 pkgname = postman-live-bin
