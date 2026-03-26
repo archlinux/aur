@@ -1,14 +1,14 @@
 pkgbase = owlry-plugin-websearch
-	pkgdesc = Web search plugin for Owlry (DuckDuckGo, Google, etc.)
-	pkgver = 0.4.10
+	pkgdesc = Web search plugin for Owlry — search DuckDuckGo, Google, and custom engines
+	pkgver = 1.0.0
 	pkgrel = 1
-	url = https://somegit.dev/Owlibou/owlry
+	url = https://somegit.dev/Owlibou/owlry-plugins
 	install = owlry-plugin-websearch.install
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
-	depends = owlry
-	source = owlry-0.4.10.tar.gz::https://somegit.dev/Owlibou/owlry/archive/v0.4.10.tar.gz
-	b2sums = 2d3761ee892d7f283a65fa58ca6206735b1b3b6e7f764f839e8a2cbd2fee2ce446c4b992e664790439393e6cb2f21fb21abacdeaf8de9eca4514da86c608216d
+	depends = owlry-core
+	source = owlry-plugin-websearch-1.0.0.tar.gz::https://somegit.dev/Owlibou/owlry-plugins/archive/owlry-plugin-websearch-v1.0.0.tar.gz
+	b2sums = SKIP
 
 pkgname = owlry-plugin-websearch
