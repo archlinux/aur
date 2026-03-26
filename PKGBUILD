@@ -11,16 +11,17 @@ makedepends=('cargo' 'nasm')
 install="$pkgname.install"
 backup=('etc/sysconfig/aperture-router')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('bc2bd2f9fac3e363305f2df9768c44336c93f2925d01d0626ee4d799a51ed95d')
+sha256sums=('19c6220a43fd3c3f011486de1a9503843ba038b96d5e194c74f952691706cafe')
 
 prepare() {
   cd "$pkgname-$pkgver"
+  rm -rf target
   cargo fetch
 }
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release
+  CFLAGS="${CFLAGS//-flto/}" CXXFLAGS="${CXXFLAGS//-flto/}" cargo build --release
 }
 
 check() {
