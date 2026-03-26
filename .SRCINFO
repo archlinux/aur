@@ -3,7 +3,6 @@ pkgbase = vrct-git
 	pkgver = 3.4.2
 	pkgrel = 1
 	url = https://misyaguziya.github.io/VRCT-Docs/
-	install = vrct-git.install
 	arch = x86_64
 	license = MIT
 	makedepends = npm

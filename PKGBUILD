@@ -18,7 +18,6 @@ depends=()
 makedepends=('npm' 'pyenv' 'cargo' 'git')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-install="$pkgname.install"
 source=("git+https://github.com/misyaguziya/VRCT.git"
         '0001-Fix-Make-spec-files-platform-agnostic.patch'
         '0002-Fix-Fix-logo-SVG-reference-on-case-sensitive-file-sy.patch'
