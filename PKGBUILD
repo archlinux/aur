@@ -1,7 +1,7 @@
 # Maintainer: Himalian <Himalian9227@proton.me>
 pkgname=biopass-bin
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="An alternative to Windows Hello/Howdy"
 arch=('x86_64')
 url="https://github.com/TickLabVN/biopass"
@@ -42,4 +42,9 @@ package() {
     cp -a etc "${pkgdir}/"
     find "${pkgdir}/etc" -type f -exec chmod 644 {} +
   fi
+
+  # biopass-helper is installed at /usr/bin/biopass-helper, but
+  # libbiopass_pam.so requires /usr/local/bin/biopass-helper
+  install -d "${pkgdir}/usr/local/bin"
+  ln -s /usr/bin/biopass-helper "${pkgdir}/usr/local/bin/biopass-helper"
 }
