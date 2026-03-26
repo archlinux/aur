@@ -4,7 +4,7 @@ _pkgexec=mpm
 _pkgauthor=kdeldycke
 _pkgname=meta-package-manager
 pkgname=${_pkgname}-bin
-pkgver=6.2.0
+pkgver=6.2.1
 pkgrel=1
 pkgdesc='A wrapper around all package managers'
 url="https://github.com/${_pkgauthor}/${_pkgname}"
@@ -22,9 +22,9 @@ source_x86_64=("${_pkgexec}-${pkgver}::${url}/releases/download/v${pkgver}/${_pk
 source_aarch64=("${_pkgexec}-${pkgver}::${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.bin")
 sha256sums=('8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643'
             'e7cddb01ffff449c50cfe531a34c8ddcbf141bc6d8850b589eb91f5c171065d2'
-            'a8b690856d14cc3fd6dbf0cc58ab59dffac3651c9baa0ae2d8c82972b5b474ec')
-sha256sums_x86_64=('a7e546ab2e6f874fa1fa9ada36781f01d71718bcd0ec9fefc211588d87a561e1')
-sha256sums_aarch64=('a7e546ab2e6f874fa1fa9ada36781f01d71718bcd0ec9fefc211588d87a561e1')
+            '50c666c9bdcc3cf6173b19b25241674350c11bcc4b920d6d2f11d83a95219b42')
+sha256sums_x86_64=('5c1a8a8afb3157859880dff4c44d6059578c1f04b246948b58fce4564ce7112e')
+sha256sums_aarch64=('5c1a8a8afb3157859880dff4c44d6059578c1f04b246948b58fce4564ce7112e')
 
 package() {
   cd "${srcdir}/" || exit
