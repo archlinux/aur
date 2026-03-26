@@ -1,6 +1,6 @@
 pkgbase = tigervnc-viewer
 	pkgdesc = TigerVNC (Viewer only), forked from the VNC 4 branch of TightVNC.
-	pkgver = 1.16.0
+	pkgver = 1.16.1
 	pkgrel = 1
 	url = http://www.tigervnc.org
 	arch = i686
@@ -17,9 +17,9 @@ pkgbase = tigervnc-viewer
 	conflicts = tigervnc
 	conflicts = tightvnc
 	options = strip
-	source = tigervnc-1.16.0.tar.gz::https://github.com/TigerVNC/tigervnc/archive/v1.16.0.tar.gz
+	source = tigervnc-1.16.1.tar.gz::https://github.com/TigerVNC/tigervnc/archive/v1.16.1.tar.gz
 	source = vncviewer.desktop
-	sha256sums = 10512fc0254ae3bde41c19d18c15f7ebd8cd476261afe0611c41965d635d46e8
+	sha256sums = d00fb52d9863e6bcbef9d6fb8a92170f6e1400114b13dd0efccc0ed0246f6d70
 	sha256sums = 5d825fee354ed7c37bd4aa0558850d3fd17b7e2423b6818afff43ba26ebfb606
 
 pkgname = tigervnc-viewer

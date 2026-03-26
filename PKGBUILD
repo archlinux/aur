@@ -1,7 +1,7 @@
 # Maintainer: Alex Potapenko <opotapenko at gmail com>
 
 pkgname=tigervnc-viewer
-pkgver=1.16.0
+pkgver=1.16.1
 pkgrel=1
 pkgdesc="TigerVNC (Viewer only), forked from the VNC 4 branch of TightVNC."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'libxext')
 conflicts=('tigervnc' 'tightvnc')
 source=(tigervnc-${pkgver}.tar.gz::https://github.com/TigerVNC/tigervnc/archive/v${pkgver}.tar.gz
         vncviewer.desktop)
-sha256sums=('10512fc0254ae3bde41c19d18c15f7ebd8cd476261afe0611c41965d635d46e8'
+sha256sums=('d00fb52d9863e6bcbef9d6fb8a92170f6e1400114b13dd0efccc0ed0246f6d70'
             '5d825fee354ed7c37bd4aa0558850d3fd17b7e2423b6818afff43ba26ebfb606')
 
 prepare() {
