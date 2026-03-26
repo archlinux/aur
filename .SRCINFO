@@ -1,6 +1,6 @@
 pkgbase = baba-is-you-hib
 	pkgdesc = Puzzle game where the rules are physical objects. Humble Bundle version.
-	pkgver = 478f.240224
+	pkgver = 481d.260102
 	pkgrel = 1
 	url = https://hempuli.com/baba/
 	arch = x86_64
@@ -9,11 +9,12 @@ pkgbase = baba-is-you-hib
 	depends = bash
 	depends = glibc
 	depends = libglvnd
+	depends = util-linux-libs
 	options = !strip
-	source = BIY_linux_240224.tar.gz::hib://BIY_linux_240224.tar.gz
+	source = BIY_linux_260102.tar.gz::hib://BIY_linux_260102.tar.gz
 	source = baba-is-you.bash
 	source = baba-is-you.desktop
-	sha512sums = 6de35d6c7e0ffc0034c1a86b4d100f5abdde9d1bfddec3f437e528cd3dc1964d13a3ba670eb432f1e2aba4bad016c1d0bf161a03ebe7cadfbb45cdf60f321853
+	sha512sums = 051517e47686228f32ec9eeb4636ad715799cb4ac934c72c0347cb780c21cbe760f78857b5aeceb7c09676b7e242ba923253fa82bb4b0398f008e2d12a10223a
 	sha512sums = 049b2a18b9fbe0088fea47acb1a2ddb6e6cfd78e88c600315f914120fc8d0fcc68fd1d21fb57cbaca0ff01db69f685b96984cd6c149c216ec90134aee7aaf5d8
 	sha512sums = 187d439f7126ddc3ce3220593b2d09725fa57a9d18c622220b3c6fabd1c136e1dafb889ffa058ddeca48ced6b727a5bedac2a481cb6fd5bb471beeb2f1687178
 
