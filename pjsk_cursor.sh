@@ -95,7 +95,7 @@ download_cursors() {
         local success=false
         for attempt in {1..3}; do
             if [ ! -f "$fname" ]; then
-                echo "Downloading $fname..."
+                echo "Downloading $fname ..."
                 wget -q --tries=1 --timeout=15 -O "$fname" "$url"
             fi
 
@@ -112,13 +112,16 @@ download_cursors() {
             mkdir -p "$dir"
             unzip -qo "$fname" -d "$dir" '*.ani' '*.cur' 2>/dev/null
         else
-            echo "Error: Failed to download or verify $fname after 3 attempts. Skipping." >&2
+            echo "Error: Failed to download or verify $fname after 3 attempts. Aborting installation." >&2
+            exit 1
         fi
     done
     cd - >/dev/null || exit 1
 }
 
 convert_cursors() {
+    echo "Converting ..."
+
     for theme_dir in source/*; do
         [ -d "$theme_dir" ] || continue
         theme=$(basename "$theme_dir")
@@ -150,14 +153,16 @@ convert_cursors() {
 }
 
 package_themes() {
+    echo "Packaging ..."
+
     mkdir -p packaged
     for theme_dir in output/*; do
         [ -d "$theme_dir" ] || continue
         dir=$(basename "$theme_dir")
 
-        lc_dir=$(printf '%s' "$dir" | tr '[:upper:]' '[:lower:]')
+        lc_dir="${dir,,}"
 
-        if [[ "$lc_dir" == *ani* || "$lc_dir" == *animation* ]]; then
+        if [[ "$lc_dir" == *ani* || "$lc_dir" == *animation* || "$lc_dir" == *animated* ]]; then
             suffix="Animated"
         elif [[ "$lc_dir" == *cur* || "$lc_dir" == *cursor* || "$lc_dir" == *static* ]]; then
             suffix="Static"
@@ -171,7 +176,7 @@ package_themes() {
                 out=""
                 for (i=1; i<=NF; i++) {
                     t=tolower($i)
-                    if (t=="cur" || t=="cursor" || t=="file" || t=="static" || t=="ani" || t=="animation") continue
+                    if (t=="cur" || t=="cursor" || t=="file" || t=="static" || t=="ani" || t=="animation" || t=="animated") continue
                     out = (out=="" ? $i : out "-" $i)
                 }
                 print out
