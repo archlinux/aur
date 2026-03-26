@@ -1,13 +1,14 @@
 pkgbase = pake-programmusic
-	pkgver = 3.10.0
-	pkgrel = 1
 	pkgdesc = ProgramMusic wrapped as an AppImage using Pake
+	pkgver = 3.10.0
+	pkgrel = 2
 	url = https://github.com/tw93/Pake
 	arch = x86_64
 	license = MIT
 	depends = fuse2
 	provides = pake-programmusic
 	conflicts = pake-programmusic
+	options = !strip
 	source = ProgramMusic.AppImage::https://github.com/tw93/Pake/releases/download/V3.10.0/ProgramMusic_x86_64.AppImage
 	sha256sums = SKIP
 
