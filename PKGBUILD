@@ -1,6 +1,6 @@
 # Maintainer: Colliery <hello@colliery.io>
 pkgname=crt-bin
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="GPU-accelerated terminal emulator with CSS theming and visual effects"
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ provides=('crt')
 conflicts=('crt' 'crt-git')
 source_x86_64=("crt-${pkgver}-linux-x86_64.tar.gz::https://github.com/colliery-io/crt/releases/download/v${pkgver}/crt-${pkgver}-linux-x86_64.tar.gz")
 source_aarch64=("crt-${pkgver}-linux-aarch64.tar.gz::https://github.com/colliery-io/crt/releases/download/v${pkgver}/crt-${pkgver}-linux-aarch64.tar.gz")
-sha256sums_x86_64=('58729a56f63c788fc1b065cb92ae96e7486aee5d51670f4b5e0b234e338a736f')
-sha256sums_aarch64=('5463b40e8c2235c3877738336c41bbc3542b79bcee2d4d2792d0d33d121840e5')
+sha256sums_x86_64=('20c1b223b04bbcbdd06be006497e7e2bc03a878215df74e014abc53afc398a2a')
+sha256sums_aarch64=('00a6ba7d761f69aa3eac85fecbc229962b28cd0401b1ef15c6100e608c32f5c4')
 
 package() {
     # Install binary
