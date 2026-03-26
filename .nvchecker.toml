@@ -1,0 +1,5 @@
+[markdown-lsp]
+source = 'github'
+github = 'harehare/mq-edit'
+use_max_tag = true
+prefix = 'v'
