@@ -1,0 +1,21 @@
+pkgbase = sidex-git
+	pkgdesc = Extract files from Steam .sim / .sid files (Old Steam games on DVD's).
+	pkgver = r30.876296e622
+	pkgrel = 1
+	url = https://codeberg.org/CYBERDEV/SIDEx
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = make
+	makedepends = gcc
+	makedepends = gzip
+	makedepends = cmake
+	makedepends = git
+	depends = openssl
+	depends = zlib
+	provides = sidex
+	conflicts = sidex
+	options = !strip
+	source = sidex::git+https://codeberg.org/CYBERDEV/SIDEx.git
+	sha512sums = SKIP
+
+pkgname = sidex-git
