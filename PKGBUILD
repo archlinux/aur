@@ -1,7 +1,7 @@
 # Maintainer: Carson Buttars <carsonbuttars13@gmail.com>
 
 _pkgname=modeltime
-_pkgver=1.3.2
+_pkgver=1.3.5
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=5
@@ -69,8 +69,8 @@ optdepends=(
   r-workplowsets
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('08b08a57c1663ae1fc4c294412be781f')
-b2sums=('169a6ab1c68b926226a4971f3be45892e5bd58c5e621f0ab7a6fa6cd06e288b8114993e860ac2f202bcff58b1b0ee5eca0b6ae4b867ab43be9f5fab388627c93')
+md5sums=('26cd724a9f4320b999a298ba48ac7d0c')
+b2sums=('39f9137a224c170322948b061ac931c3845099f349fa2147b6f5f6d3d8fdb44411e96347567178f0b0e0e7b56a6e2627cc348631989a41383c91db5d4756516b')
 
 build() {
   mkdir build
