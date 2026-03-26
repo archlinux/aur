@@ -1,4 +1,5 @@
-# Maintainer: Mathias Buhr <napcode@apparatus.de>
+# Maintainer: RubenKelevra <rubenkelevra@gmail.com>
+# Contributor: Mathias Buhr <napcode@apparatus.de>
 
 pkgname=tony
 pkgver=2.1.1
