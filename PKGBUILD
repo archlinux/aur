@@ -1,6 +1,6 @@
 # Maintainer: harrietobrien <harrietobrien@protonmail.com>
 pkgname=mantidworkbench-bin
-pkgver=6.13.1
+pkgver=6.15.0
 pkgrel=1
 pkgdesc="MantidWorkbench (GUI) prebuilt bundle from upstream .tar.xz"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 provides=('mantidworkbench')
 options=(!strip)
 source=("mantidworkbench-${pkgver}.tar.xz::https://github.com/mantidproject/mantid/releases/download/v${pkgver}/mantidworkbench-${pkgver}.tar.xz")
-sha256sums=('b1cf9c0836c54a356bbcea8541fe9ba05903002c81ab6560d3566e33056e63d4')
+sha256sums=('911512372578014ff9e21038630a93468d1f3567d1f733a0dd04515ace74dee4')
 
 prepare() {
   cd "$srcdir"
