@@ -1,13 +1,14 @@
 pkgbase = pake-gemini
+	pkgdesc = Gemini wrapped as an AppImage using Pake
 	pkgver = 3.10.0
-	pkgrel = 1
-	pkgdesc = Google Gemini AI wrapped as an AppImage using Pake
+	pkgrel = 2
 	url = https://github.com/tw93/Pake
 	arch = x86_64
 	license = MIT
 	depends = fuse2
 	provides = pake-gemini
 	conflicts = pake-gemini
+	options = !strip
 	source = Gemini.AppImage::https://github.com/tw93/Pake/releases/download/V3.10.0/Gemini_x86_64.AppImage
 	sha256sums = SKIP
 
