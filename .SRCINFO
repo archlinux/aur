@@ -1,0 +1,23 @@
+pkgbase = retibbs-client-git
+	pkgdesc = BBS over Reticulum TUI client
+	pkgver = r76.7c26d2c
+	pkgrel = 1
+	url = https://github.com/kc1awv/RetiBBS
+	arch = any
+	license = MIT
+	makedepends = nuitka
+	makedepends = git
+	makedepends = scons
+	depends = python-rns
+	depends = python-lxmf
+	depends = python-textual
+	depends = python-rich
+	depends = bash
+	provides = retibbs-client
+	conflicts = retibbs-client
+	source = retibbs-client-git::git+https://github.com/kc1awv/RetiBBS.git#branch=main
+	source = retibbs-client
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = retibbs-client-git

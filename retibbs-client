@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+cd /usr/share/retibbs/
+while read -r path; do
+  export PYTHONPATH="$PYTHONPATH:$path"
+done < <(find /usr/lib -maxdepth 2 -mindepth 2 -name 'site-packages')
+exec -a rettibbs-client ./retibbs_textual.bin "$@"
