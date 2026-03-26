@@ -74,8 +74,11 @@ $(STAMP): check-version
 		echo "  $$(basename "$$p")"; \
 		patch -d "$(SRCDIR)/mt76" -p1 < "$$p"; \
 	done
-	@echo "==> Applying MT6639 Bluetooth patch..."
-	patch -d "$(SRCDIR)/bluetooth" -p3 < "$(TOPDIR)mt6639-bt-6.19.patch"
+	@echo "==> Applying MT6639 Bluetooth patches..."
+	@for p in $(TOPDIR)mt6639-bt-[0-9]*.patch; do \
+		echo "  $$(basename "$$p")"; \
+		patch -d "$(SRCDIR)/bluetooth" -p1 < "$$p"; \
+	done
 	cp "$(TOPDIR)bluetooth.Makefile" "$(SRCDIR)/bluetooth/Makefile"
 	@echo "==> Installing Kbuild files..."
 	cp "$(TOPDIR)mt76.Kbuild"      "$(SRCDIR)/mt76/Kbuild"
@@ -121,7 +124,7 @@ install: sources
 	install -m644 $(SRCDIR)/mt76/mt7925/Kbuild "$(DESTDIR)$(DKMS_PREFIX)/mt76/mt7925/"
 	# BT firmware
 	install -Dm644 "$(SRCDIR)/firmware/BT_RAM_CODE_MT6639_2_1_hdr.bin" \
-		"$(DESTDIR)$(FIRMWARE_PREFIX)/mt6639/BT_RAM_CODE_MT6639_2_1_hdr.bin"
+		"$(DESTDIR)$(FIRMWARE_PREFIX)/mt7927/BT_RAM_CODE_MT6639_2_1_hdr.bin"
 	# WiFi firmware
 	install -Dm644 "$(SRCDIR)/firmware/WIFI_MT6639_PATCH_MCU_2_1_hdr.bin" \
 		"$(DESTDIR)$(FIRMWARE_PREFIX)/mt7927/WIFI_MT6639_PATCH_MCU_2_1_hdr.bin"
@@ -130,7 +133,7 @@ install: sources
 	# Patch files (reference copies)
 	install -dm755 "$(DESTDIR)$(DKMS_PREFIX)/patches/bt"
 	install -dm755 "$(DESTDIR)$(DKMS_PREFIX)/patches/wifi"
-	install -m644 "$(TOPDIR)mt6639-bt-6.19.patch" "$(DESTDIR)$(DKMS_PREFIX)/patches/bt/"
+	install -m644 $(TOPDIR)mt6639-bt-[0-9]*.patch "$(DESTDIR)$(DKMS_PREFIX)/patches/bt/"
 	install -m644 "$(TOPDIR)mt7902-wifi-6.19.patch" "$(DESTDIR)$(DKMS_PREFIX)/patches/wifi/"
 	install -m644 $(TOPDIR)mt7927-wifi-*.patch "$(DESTDIR)$(DKMS_PREFIX)/patches/wifi/"
 	@echo "==> Install complete."

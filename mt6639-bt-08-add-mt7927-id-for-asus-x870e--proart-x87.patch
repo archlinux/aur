@@ -1,0 +1,49 @@
+Bluetooth: btusb: Add MT7927 ID for ASUS X870E / ProArt X870E-Creator
+
+Add USB device ID 13d3:3588 (IMC Networks/Azurewave) for the MediaTek
+MT7927 (Filogic 380) Bluetooth interface found on the ASUS ROG STRIX
+X870E-E GAMING WIFI and ASUS ProArt X870E-Creator WiFi motherboards.
+
+Note: boards with this USB ID report only one ISO alternate setting
+(alt 0), causing a non-fatal "setting interface failed (22)" during
+setup. Bluetooth still functions but initialization takes ~19 seconds
+instead of ~2.6 seconds.
+
+The information in /sys/kernel/debug/usb/devices about the Bluetooth
+device is listed as the below.
+
+T:  Bus=01 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  5 Spd=480  MxCh= 0
+D:  Ver= 2.10 Cls=ef(misc ) Sub=02 Prot=01 MxPS=64 #Cfgs=  1
+P:  Vendor=13d3 ProdID=3588 Rev= 1.00
+S:  Manufacturer=MediaTek Inc.
+S:  Product=Wireless_Device
+S:  SerialNumber=000000000
+C:* #Ifs= 3 Cfg#= 1 Atr=e0 MxPwr=100mA
+A:  FirstIf#= 0 IfCount= 3 Cls=e0(wlcon) Sub=01 Prot=01
+I:* If#= 0 Alt= 0 #EPs= 3 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=81(I) Atr=03(Int.) MxPS=  16 Ivl=125us
+E:  Ad=82(I) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+E:  Ad=02(O) Atr=02(Bulk) MxPS= 512 Ivl=0ms
+I:* If#= 1 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=83(I) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+E:  Ad=03(O) Atr=01(Isoc) MxPS=   0 Ivl=1ms
+I:* If#= 2 Alt= 0 #EPs= 2 Cls=e0(wlcon) Sub=01 Prot=01 Driver=btusb
+E:  Ad=8a(I) Atr=03(Int.) MxPS= 512 Ivl=125us
+E:  Ad=0a(O) Atr=03(Int.) MxPS= 512 Ivl=125us
+
+Link: https://bugzilla.kernel.org/show_bug.cgi?id=221096
+Link: https://github.com/openwrt/mt76/issues/927
+Signed-off-by: Javier Tia <floss@jetm.me>
+Tested-by: Jose Tiburcio Ribeiro Netto <jnetto@mineiro.io>
+Tested-by: Ivan Lubnin <lubnin.ivan@gmail.com>
+
+6037e5bb844c21d5e9a9c33236a4b8a6d7031eec
+diff --git a/btusb.c b/btusb.c
+index de9c3bf..e15695f 100644
+--- a/btusb.c
++++ b/btusb.c
+@@ -751,2 +751,4 @@ static const struct usb_device_id quirks_table[] = {
+ 						     BTUSB_WIDEBAND_SPEECH },
++	{ USB_DEVICE(0x13d3, 0x3588), .driver_info = BTUSB_MEDIATEK |
++						     BTUSB_WIDEBAND_SPEECH },
+ 	{ USB_DEVICE(0x0489, 0xe14e), .driver_info = BTUSB_MEDIATEK |

@@ -68,7 +68,7 @@ get_pci_id() {
 # 4. Module loading
 # ---------------------------------------------------------------------------
 check_modules() {
-	local expected=(mt7925e mt76 mt76_connac_lib mt792x_lib)
+	local expected=(mt7925e mt7925_common mt76 mt76_connac_lib mt792x_lib btusb btmtk)
 	local loaded=()
 	local missing=()
 
@@ -108,10 +108,14 @@ check_dkms() {
 	fi
 
 	# Check for "installed" status for current kernel
-	if echo "$status" | has_match "installed"; then
+	local current_kernel
+	current_kernel="$(uname -r)"
+	if echo "$status" | has_match "${current_kernel}.*installed"; then
 		local ver
 		ver="$(echo "$status" | grep -oP 'mediatek-mt7927[,/]\s*\K[0-9.]+' | head -1 || true)"
-		ok "${ver:+v${ver}, }$(echo "$status" | grep -oP 'installed' | head -1)"
+		ok "${ver:+v${ver}, }installed"
+	elif echo "$status" | has_match "installed"; then
+		fail "installed for different kernel (not ${current_kernel})"
 	else
 		fail "$(echo "$status" | head -1)"
 	fi
@@ -121,20 +125,30 @@ check_dkms() {
 # 6. Module source (DKMS vs built-in)
 # ---------------------------------------------------------------------------
 check_module_source() {
-	local mod_path
-	mod_path="$(modinfo -n mt7925e 2>/dev/null)" || true
+	local mods=(mt7925e btusb)
+	local all_dkms=true
 
-	if [[ -z "$mod_path" ]]; then
-		skip "mt7925e not found"
-		return
-	fi
+	for mod in "${mods[@]}"; do
+		local mod_path
+		mod_path="$(modinfo -n "$mod" 2>/dev/null)" || true
 
-	if echo "$mod_path" | has_match "updates/dkms"; then
+		if [[ -z "$mod_path" ]]; then
+			continue
+		fi
+
+		if ! echo "$mod_path" | has_match "updates/dkms"; then
+			if echo "$mod_path" | has_match "kernel/"; then
+				fail "$mod is built-in (DKMS module not loaded)"
+				return
+			fi
+			all_dkms=false
+		fi
+	done
+
+	if $all_dkms; then
 		ok "DKMS"
-	elif echo "$mod_path" | has_match "kernel/"; then
-		fail "built-in (DKMS module not loaded)"
 	else
-		ok "$mod_path"
+		ok "mixed"
 	fi
 }
 
@@ -143,7 +157,7 @@ check_module_source() {
 # ---------------------------------------------------------------------------
 check_firmware() {
 	local dmesg_out=""
-	dmesg_out="$(dmesg 2>/dev/null || sudo dmesg 2>/dev/null || true)"
+dmesg_out="$(dmesg 2>/dev/null || true)"
 
 	if [[ -z "$dmesg_out" ]]; then
 		skip "dmesg not accessible (try with sudo)"
@@ -178,7 +192,7 @@ check_firmware() {
 # ---------------------------------------------------------------------------
 check_aspm() {
 	local dmesg_out=""
-	dmesg_out="$(dmesg 2>/dev/null || sudo dmesg 2>/dev/null || true)"
+dmesg_out="$(dmesg 2>/dev/null || true)"
 
 	if [[ -z "$dmesg_out" ]]; then
 		skip "dmesg not accessible"
@@ -236,7 +250,7 @@ check_bt_usb() {
 # ---------------------------------------------------------------------------
 check_bt_firmware() {
 	local dmesg_out=""
-	dmesg_out="$(dmesg 2>/dev/null || sudo dmesg 2>/dev/null || true)"
+dmesg_out="$(dmesg 2>/dev/null || true)"
 
 	if [[ -z "$dmesg_out" ]]; then
 		skip "dmesg not accessible"
@@ -244,7 +258,7 @@ check_bt_firmware() {
 	fi
 
 	local bt_dmesg
-	bt_dmesg="$(echo "$dmesg_out" | grep -iE 'btmtk|btusb|mt6639|BT_RAM_CODE' || true)"
+	bt_dmesg="$(echo "$dmesg_out" | grep -iE 'btmtk|btusb|mt6639|mt7927.*bluetooth|BT_RAM_CODE|hci[0-9].*MT' || true)"
 
 	if [[ -z "$bt_dmesg" ]]; then
 		na "no btmtk/btusb messages in dmesg"
@@ -266,8 +280,10 @@ check_bt_firmware() {
 		return
 	fi
 
-	# Check for successful HCI registration
-	if echo "$bt_dmesg" | has_match 'hci[0-9]'; then
+	# Check for successful HCI registration (MT6639-specific)
+	if echo "$bt_dmesg" | has_match 'hci[0-9].*Device setup\|hci[0-9].*AOSP extensions'; then
+		ok "loaded"
+	elif echo "$bt_dmesg" | has_match 'hci[0-9]'; then
 		ok "loaded"
 	else
 		na "no HCI device registered"
@@ -499,10 +515,10 @@ check_scan() {
 	fi
 
 	local scan_out=""
-	scan_out="$(iw dev "$iface" scan 2>/dev/null || sudo iw dev "$iface" scan 2>/dev/null || true)"
+	scan_out="$(iw dev "$iface" scan 2>&1 || true)"
 
-	if [[ -z "$scan_out" ]]; then
-		skip "scan failed (interface down or needs sudo)"
+	if [[ -z "$scan_out" ]] || echo "$scan_out" | has_match "Operation not permitted\|command failed"; then
+		skip "scan failed (interface down or driver busy)"
 		return
 	fi
 
@@ -647,7 +663,7 @@ check_data_path() {
 # ---------------------------------------------------------------------------
 check_errors() {
 	local dmesg_out=""
-	dmesg_out="$(dmesg 2>/dev/null || sudo dmesg 2>/dev/null || true)"
+dmesg_out="$(dmesg 2>/dev/null || true)"
 
 	if [[ -z "$dmesg_out" ]]; then
 		skip "dmesg not accessible"
@@ -698,15 +714,79 @@ check_errors() {
 }
 
 # ---------------------------------------------------------------------------
+# Module reload (ensures we test installed DKMS build, not boot-time modules)
+# ---------------------------------------------------------------------------
+reload_modules() {
+	local wifi_mods=(mt7925e mt7921e mt7925_common mt7921_common mt792x_lib mt76_connac_lib mt76)
+	local bt_mods=(btusb btmtk)
+
+	echo "Reloading modules..."
+	modprobe -r "${wifi_mods[@]}" 2>/dev/null || true
+	modprobe -r "${bt_mods[@]}" 2>/dev/null || true
+
+	modprobe mt7925e 2>/dev/null || true
+	modprobe mt7921e 2>/dev/null || true
+	modprobe btusb 2>/dev/null || true
+
+	echo "Waiting for firmware init..."
+	sleep 5
+
+	# Wait for WiFi interface to appear (up to 10s)
+	local iface="" waited=0
+	while ((waited < 10)); do
+		for dev_path in /sys/bus/pci/drivers/mt7925e/*/net/*; do
+			if [[ -d "$dev_path" ]]; then
+				iface="$(basename "$dev_path")"
+				break 2
+			fi
+		done
+		sleep 1
+		waited=$((waited + 1))
+	done
+
+	if [[ -z "$iface" ]]; then
+		echo "  WiFi interface not detected after ${waited}s"
+		return
+	fi
+
+	echo "  WiFi interface: $iface"
+
+	# Wait for NetworkManager to reconnect (up to 30s)
+	echo "Waiting for network reconnection..."
+	waited=0
+	while ((waited < 30)); do
+		if iw dev "$iface" link 2>/dev/null | grep -q "Connected"; then
+			echo "  Connected after ${waited}s"
+			return
+		fi
+		sleep 1
+		waited=$((waited + 1))
+	done
+	echo "  Not reconnected after ${waited}s (scan/connection checks may skip)"
+}
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 main() {
+	if ((EUID != 0)); then
+		echo "ERROR: this script must be run as root (sudo ./test-driver.sh)"
+		exit 1
+	fi
+
 	local iface="${1:-}"
+
+	# Reload WiFi and BT modules so we test the installed DKMS build,
+	# not stale modules from boot time.
+	reload_modules
 
 	# Auto-detect interface if not specified
 	if [[ -z "$iface" ]]; then
 		iface="$(detect_interface)"
 	fi
+
+	echo ""
+	echo "Running checks..."
 
 	local pkg_ver kernel_ver pci_id
 	local modules dkms_status mod_source firmware aspm_status
@@ -714,25 +794,39 @@ main() {
 	local eht_caps device_ready regulatory
 	local scan_result conn_result data_result errors_result
 
-	# Gather results
+	echo "  Package and kernel..."
 	pkg_ver="$(get_package_version)"
 	kernel_ver="$(get_kernel_version)"
 	pci_id="$(get_pci_id)"
+
+	echo "  Modules and DKMS..."
 	modules="$(check_modules)"
 	dkms_status="$(check_dkms)"
 	mod_source="$(check_module_source)"
+
+	echo "  WiFi firmware and ASPM..."
 	firmware="$(check_firmware)"
 	aspm_status="$(check_aspm)"
+
+	echo "  Bluetooth..."
 	bt_usb="$(check_bt_usb)"
 	bt_firmware="$(check_bt_firmware)"
 	bt_rfkill="$(check_bt_rfkill)"
+
+	echo "  WiFi capabilities..."
 	eht_caps="$(check_eht_caps "$iface")"
 	device_ready="$(check_device_ready "$iface")"
 	regulatory="$(check_regulatory "$iface")"
+
+	echo "  Scan, connection, data path..."
 	scan_result="$(check_scan "$iface")"
 	conn_result="$(check_connection "$iface")"
 	data_result="$(check_data_path "$iface")"
+
+	echo "  Checking dmesg for errors..."
 	errors_result="$(check_errors)"
+
+	echo ""
 
 	# Count failures from output (FAIL_COUNT doesn't propagate from subshells)
 	local report

@@ -1,0 +1,28 @@
+Bluetooth: btmtk: fix ISO interface setup for single alt setting
+
+Some MT6639 Bluetooth USB interfaces (e.g. IMC Networks 13d3:3588 on
+ASUS ROG STRIX X870E-E and ProArt X870E-Creator boards) expose only a
+single alternate setting (alt 0) on the ISO interface. The driver
+unconditionally requests alt setting 1, which fails with EINVAL on
+these devices, causing a ~20 second initialization delay and no LE
+audio support.
+
+Check the number of available alternate settings before selecting one.
+If only alt 0 exists, use it; otherwise request alt 1 as before.
+
+Link: https://github.com/jetm/mediatek-mt7927-dkms/pull/39
+Signed-off-by: Javier Tia <floss@jetm.me>
+Reported-by: Ryan Gilbert <xelnaga@gmail.com>
+Tested-by: Ryan Gilbert <xelnaga@gmail.com>
+
+5d7f0fce6c25f7a82ebf62528cb249dac874ffde
+diff --git a/btmtk.c b/btmtk.c
+index 4df28a2..32e0636 100644
+--- a/btmtk.c
++++ b/btmtk.c
+@@ -1019,3 +1019,4 @@ static int __set_mtk_intr_interface(struct hci_dev *hdev)
+ 
+-	err = usb_set_interface(btmtk_data->udev, MTK_ISO_IFNUM, 1);
++	err = usb_set_interface(btmtk_data->udev, MTK_ISO_IFNUM,
++			       (intf->num_altsetting > 1) ? 1 : 0);
+ 	if (err < 0) {
