@@ -21,7 +21,8 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  CFLAGS="${CFLAGS//-flto/}" CXXFLAGS="${CXXFLAGS//-flto/}" cargo build --release
+  # Clear problematic CFLAGS for ring crate build
+  CFLAGS="" CXXFLAGS="" cargo build --release
 }
 
 check() {
