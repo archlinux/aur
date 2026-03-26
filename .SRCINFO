@@ -1,0 +1,17 @@
+pkgbase = clippy-rs-bin
+	pkgdesc = Clipboard Manager built with Rust & Typescript
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/0-don/clippy
+	arch = x86_64
+	license = MIT
+	depends = libappindicator-gtk3
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = xdotool
+	provides = clippy-rs
+	conflicts = clippy-rs
+	source = clippy-rs-bin-1.5.0.deb::https://github.com/0-don/clippy/releases/download/v1.5.0/clippy_1.5.0_amd64.deb
+	sha256sums = c05a9065d3f71dbb7104642d40fc3a760f292358cd5e8e695c3f820657bc7e01
+
+pkgname = clippy-rs-bin
