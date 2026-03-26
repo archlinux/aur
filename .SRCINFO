@@ -1,7 +1,7 @@
 pkgbase = xeo-fabric
 	pkgdesc = Matrix-style terminal rain with live system metrics
 	pkgver = 0.1.0.r6.g841331b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xeoxaz/fabric
 	arch = x86_64
 	license = MIT
