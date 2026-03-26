@@ -1,14 +1,15 @@
 pkgbase = spacedrive-git
 	pkgdesc = Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.
-	pkgver = r3538.4693f31
+	pkgver = r4800.4d87617
 	pkgrel = 1
 	url = https://spacedrive.com/
 	arch = x86_64
 	license = AGPL3
-	makedepends = cargo-nightly
-	makedepends = pnpm>=9
+	makedepends = cargo
+	makedepends = bun
 	makedepends = git
 	makedepends = clang
+	makedepends = mold
 	depends = ffmpeg
 	depends = libheif
 	depends = gtk3
