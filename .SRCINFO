@@ -1,6 +1,6 @@
 pkgbase = r-party
 	pkgdesc = A Laboratory for Recursive Partytioning
-	pkgver = 1.3.19
+	pkgver = 1.3.20
 	pkgrel = 1
 	url = https://cran.r-project.org/package=party
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = r-party
 	optdepends = r-th.data
 	optdepends = r-varimp
 	optdepends = r-vcd
-	source = https://cran.r-project.org/src/contrib/party_1.3-19.tar.gz
-	sha256sums = 2aaa3af79961810948483b8fa551de513b54110df276447d8d6f77d24fccc5c8
+	source = https://cran.r-project.org/src/contrib/party_1.3-20.tar.gz
+	sha256sums = e933135db2fff13e5ae22a5272f9a624731a2e10d0efc05e9ecab18e5ea48457
 
 pkgname = r-party
