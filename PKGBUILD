@@ -1,7 +1,7 @@
 pkgname='codex-app-linux-beta-bin'
 pkgver='26.324.21641_beta.1227.launcher.2'
 pkgrel=1
-pkgdesc='Codex Beta Linux desktop app repackaged from official upstream releases.'
+pkgdesc='Unofficial Linux build of Codex Beta from OpenAI'\''s Codex beta appcast feed.'
 arch=('x86_64')
 url='https://github.com/better-slop/codex-app-linux'
 license=('custom')
@@ -12,7 +12,7 @@ source=(
   'codex-app-linux-26.324.21641-beta.1227.launcher.2-x64.png::https://github.com/better-slop/codex-app-linux/releases/download/v26.324.21641-beta.1227.launcher.2/codex-app-linux-26.324.21641-beta.1227.launcher.2-x64.png'
 )
 sha256sums=(
-  'f51a94629c8588b1a2bfc80e27b9338ed3d001ac007eca5a544649eabd3c0582'
+  '06ce2533f2fcf8465b4e6818abe7cb4c1d89559ef617dc07a19ef80e691f4753'
   '1c926e380bfe6a50f40648dd9bc5de88da7271546491adf99ec72172e17df6a0'
 )
 
