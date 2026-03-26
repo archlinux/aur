@@ -1,5 +1,5 @@
 pkgname=datafetch
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="Live system information dashboard for Linux terminals"
 arch=('any')
