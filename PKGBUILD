@@ -1,12 +1,12 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry
-pkgver=0.4.10
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="A lightweight, owl-themed application launcher for Wayland"
+pkgdesc="Lightweight Wayland application launcher with plugin support"
 arch=('x86_64')
 url="https://somegit.dev/Owlibou/owlry"
 license=('GPL-3.0-or-later')
-depends=('gcc-libs' 'glibc' 'gtk4' 'gtk4-layer-shell')
+depends=('owlry-core' 'gcc-libs' 'gtk4' 'gtk4-layer-shell')
 makedepends=('cargo')
 optdepends=(
     'cliphist: clipboard provider support'
@@ -28,17 +28,17 @@ optdepends=(
     'owlry-lua: Lua runtime for user plugins'
     'owlry-rune: Rune runtime for user plugins'
 )
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('2d3761ee892d7f283a65fa58ca6206735b1b3b6e7f764f839e8a2cbd2fee2ce446c4b992e664790439393e6cb2f21fb21abacdeaf8de9eca4514da86c608216d')
+source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-v$pkgver.tar.gz")
+b2sums=('173bc81da3f130204c3d4a75438cc0532f6783bd6bbfdab8f32f0521312389fb4ad24587e248201649fd837e1ddd06cfa15c4a3dced520b8db1354bb6ff39d4c')
 
 prepare() {
-    cd "$pkgname"
+    cd "owlry"
     export RUSTUP_TOOLCHAIN=stable
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd "$pkgname"
+    cd "owlry"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     # Build only the core binary without embedded Lua (Lua runtime is separate package)
@@ -46,21 +46,17 @@ build() {
 }
 
 check() {
-    cd "$pkgname"
+    cd "owlry"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     cargo test -p owlry --frozen --no-default-features
 }
 
 package() {
-    cd "$pkgname"
+    cd "owlry"
 
     # Core binary
     install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
-
-    # Create plugin directories (plugins install here)
-    install -d "$pkgdir/usr/lib/$pkgname/plugins"
-    install -d "$pkgdir/usr/lib/$pkgname/runtimes"
 
     # Documentation
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
