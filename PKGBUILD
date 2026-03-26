@@ -16,6 +16,8 @@ url='https://misyaguziya.github.io/VRCT-Docs/'
 license=('MIT')
 depends=()
 makedepends=('npm' 'pyenv' 'cargo' 'git')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
 install="$pkgname.install"
 source=("git+https://github.com/misyaguziya/VRCT.git"
         '0001-Fix-Make-spec-files-platform-agnostic.patch'
