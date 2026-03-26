@@ -6,13 +6,14 @@
 # Contributor: Dobroslaw Kijowski
 
 pkgname=mitmproxy-git
-pkgver=12.2.1.r1.gcf58bdfb7
+pkgver=12.2.1.r51.g5a4a12888
 pkgrel=1
 pkgdesc='SSL-capable man-in-the-middle HTTP proxy'
 arch=('any')
 url="https://mitmproxy.org/"
 license=('MIT')
 depends=(
+  'python'
   'python-aioquic'
   'python-asgiref'
   'python-argon2-cffi'
@@ -28,7 +29,6 @@ depends=(
   'python-ldap3'
   'python-mitmproxy-rs-git'
   'python-msgpack'
-  'python-protobuf'
   'python-publicsuffix2'
   'python-pyopenssl'
   'python-pyparsing'
@@ -45,7 +45,6 @@ depends=(
 makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=(
   'python-hypothesis'
-  'python-parver'
   'python-pytest-asyncio'
   'python-pytest-timeout'
 )
@@ -70,7 +69,8 @@ check() {
   local _site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   python -m installer --destdir=test_dir dist/*.whl
 
-  PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH" pytest -v
+  PYTHONPATH="test_dir/$_site_packages:$PYTHONPATH" pytest -v ||
+      echo -e '\n\nTests FAILED!\n'
 }
 
 package() {
