@@ -18,15 +18,9 @@ optdepends=('bat: syntax highlighting'
             'nano: editing config files'
             'wdiff: comparing config files')
 install=tkginstaller.install
-source=("${pkgname}::git+https://github.com/damachine/tkginstaller.git")
+source=("tkginstaller::https://raw.githubusercontent.com/damachine/tkginstaller/refs/heads/master/tkginstaller")
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "${srcdir}/${pkgname}"
-    printf "%s" "$(git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')" ||
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
-    install -Dm755 "$srcdir/${pkgname}/tkginstaller" "$pkgdir/usr/bin/tkginstaller"
+    install -Dm755 "$srcdir/tkginstaller" "$pkgdir/usr/bin/tkginstaller"
 }
