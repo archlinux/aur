@@ -1,0 +1,11 @@
+pkgbase = placeholder-pkg-git
+	pkgdesc = Disposable test package
+	pkgver = r1.0000000
+	pkgrel = 1
+	url = https://github.com/noctuum/placeholder-pkg
+	arch = any
+	license = MIT
+	source = git+https://github.com/noctuum/placeholder-pkg.git
+	sha256sums = SKIP
+
+pkgname = placeholder-pkg-git
