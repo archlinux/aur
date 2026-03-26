@@ -9,6 +9,7 @@ pkgbase = vrct-git
 	makedepends = pyenv
 	makedepends = cargo
 	makedepends = git
+	depends = hicolor-icon-theme
 	provides = vrct
 	conflicts = vrct
 	source = git+https://github.com/misyaguziya/VRCT.git
