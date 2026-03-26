@@ -1,7 +1,7 @@
 # Maintainer: darksoulxb <https://github.com/darksoulxb>
 
 pkgname=rv-cli
-pkgver=0.1.0
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="A fast, no-bs command-line shortcut manager for the terminal"
 arch=('any')
@@ -26,7 +26,7 @@ optdepends=(
     'fish: fish shell support'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/darksoulxb/rv-cli/archive/refs/tags/v$pkgver.tar.gz")
-b2sums=('e7f81f094c944dd0db89971ac662bc944aabdd826753ae8bfbe53b998ff9194894208c99a3a93a54a8fcc0262f4ec820ca2c612a8f38a22b4297543147a9ae79')
+b2sums=('2e28fbfff43062d6a3c6a15e3b6ce3061e19ca62bb5fd72a51040d71b338a96384a961c853ba959102980339dac897e9c9ce0e96ad459557ebbbc167826bdc86')
 
 build() {
     cd "rv-cli-$pkgver"
