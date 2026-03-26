@@ -1,0 +1,19 @@
+post_install() {
+    _restart_service
+}
+
+post_upgrade() {
+    _restart_service
+}
+
+_restart_service() {
+    local target_user="${SUDO_USER:-$USER}"
+    if [ -n "$target_user" ] && [ "$target_user" != "root" ]; then
+        echo "==> Restarting ionix-shell service for user: $target_user"
+        su -c "systemctl --user daemon-reload && systemctl --user restart ionix-shell" \
+            "$target_user" 2>/dev/null \
+            || echo "    Could not restart automatically. Run: systemctl --user restart ionix-shell"
+    else
+        echo "==> Run manually: systemctl --user restart ionix-shell"
+    fi
+}
