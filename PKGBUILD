@@ -1,9 +1,9 @@
 # Maintainer: DeepChirp <DeepChirp@outlook.com>
-# Contributor zxp19821005 <zxp19821005 at 163 dot com>
+# Contributor: zxp19821005 <zxp19821005 at 163 dot com>
 pkgname=upscayl
 _pkgname=Upscayl
 pkgver=2.15.0
-pkgrel=1
+pkgrel=2
 _electronversion=39
 _nodeversion=20
 pkgdesc="Free and Open Source AI Image Upscaler.(Use system-wide electron)"
