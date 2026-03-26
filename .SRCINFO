@@ -1,11 +1,12 @@
 pkgbase = owlry-meta-tools
-	pkgdesc = Tool plugins for Owlry (clipboard, emoji, websearch, filesearch, systemd)
+	pkgdesc = Tool plugin bundle for Owlry (clipboard, emoji, web search, file search, systemd)
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://somegit.dev/Owlibou/owlry
 	arch = any
 	license = GPL-3.0-or-later
 	depends = owlry
+	depends = owlry-core
 	depends = owlry-plugin-clipboard
 	depends = owlry-plugin-emoji
 	depends = owlry-plugin-filesearch
