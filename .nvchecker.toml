@@ -1,0 +1,5 @@
+[ctxgraph-bin]
+source = "github"
+github = "rohansx/ctxgraph"
+use_latest_release = true
+prefix = "v"
