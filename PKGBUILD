@@ -1,6 +1,6 @@
 # Maintainer: Ryan Sinn <pacselect@ryansinn.com>
 pkgname=pacselect
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Selective pacman updater — safely updates apps without touching system/core or KDE session packages"
 arch=('x86_64' 'aarch64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('pacman' 'sudo' 'pacman-contrib')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('9e7df96a7a39e2dfdea236968d0e89893d13a93bfea08ca7a78f66edb9985011')
+sha256sums=('9b2d00e5444eed70f9635b39b294a8f1ebca7c15b837ac4d5ea77045c672977f')
 
 # To build from a local checkout instead of a tarball, comment out
 # the source/sha256sums lines above and use:
