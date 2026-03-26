@@ -1,6 +1,6 @@
 pkgname=bfg-bin
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="precompiled binaries for bfg: a brainfuck interpterer"
 arch=('x86_64' 'aarch64')
 url="https://github.com/tjf1dev/bfg"
