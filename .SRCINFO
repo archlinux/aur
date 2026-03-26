@@ -12,6 +12,7 @@ pkgbase = squidservers-bin
 	depends = libnotify
 	provides = squidservers
 	conflicts = squidservers
+	options = !strip
 	source = https://cdn.squidservers.com/squidservers_0.6.2_amd64.deb
 	sha256sums = bf70db4e416e03449894037c88066f68e29193aaa52aeb49d085b346b81a0560
 

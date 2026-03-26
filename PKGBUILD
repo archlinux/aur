@@ -1,5 +1,6 @@
 # Maintainer: Your Name <your.email@example.com>
 pkgname=squidservers-bin
+_pkgname=squidservers
 pkgver=0.6.2
 pkgrel=4
 pkgdesc="A tool to easily self-host Minecraft servers without port forwarding"
@@ -7,53 +8,47 @@ arch=('x86_64')
 url="https://squidservers.com"
 license=('custom:All Rights Reserved')
 depends=('hicolor-icon-theme' 'nss' 'libxss' 'gtk3' 'libnotify')
-provides=('squidservers')
-conflicts=('squidservers')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+options=('!strip') # Critical for pre-compiled Electron apps
 
-source=("https://cdn.squidservers.com/squidservers_${pkgver}_amd64.deb")
+source=("https://cdn.squidservers.com/${_pkgname}_${pkgver}_amd64.deb")
 sha256sums=('bf70db4e416e03449894037c88066f68e29193aaa52aeb49d085b346b81a0560')
 
 package() {
     msg2 "Extracting data from .deb..."
-    tar -xf data.tar.* -C "${pkgdir}/"
+    # makepkg auto-extracts the .deb into $srcdir. We extract the resulting data tarball into $pkgdir.
+    bsdtar -xf data.tar.* -C "${pkgdir}/"
 
     msg2 "Creating executable symlink..."
     install -d "${pkgdir}/usr/bin"
-    ln -sf "/opt/SquidServers/squidservers" "${pkgdir}/usr/bin/squidservers"
+    ln -sf "/opt/SquidServers/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
     msg2 "Fixing permissions..."
-    chmod +x "${pkgdir}/opt/SquidServers/squidservers"
+    chmod +x "${pkgdir}/opt/SquidServers/${_pkgname}"
 
     msg2 "Installing Desktop Entry..."
-    install -d "${pkgdir}/usr/share/applications"
-    cat > "${pkgdir}/usr/share/applications/squidservers.desktop" << 'EOF'
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/${_pkgname}.desktop" << 'EOF'
 [Desktop Entry]
 Type=Application
 Name=SquidServers
 Comment=Easy Minecraft Server Hosting
-Exec=squidservers
+Exec=squidservers %U
 Icon=squidservers
 Terminal=false
 Categories=Network;Game;
+MimeType=x-scheme-handler/squidservers;
 EOF
 
     msg2 "Installing icon..."
-    install -d "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
-    install -d "${pkgdir}/usr/share/icons/hicolor/512x512/apps"
-    install -m644 "${pkgdir}/opt/SquidServers/resources/app.asar.unpacked/resources/icon.png" \
-        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/squidservers.png"
-    install -m644 "${pkgdir}/opt/SquidServers/resources/app.asar.unpacked/resources/icon.png" \
-        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/squidservers.png"
+    # 'install -D' automatically creates missing parent directories
+    install -Dm644 "${pkgdir}/opt/SquidServers/resources/app.asar.unpacked/resources/icon.png" \
+        "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_pkgname}.png"
+    install -Dm644 "${pkgdir}/opt/SquidServers/resources/app.asar.unpacked/resources/icon.png" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
 
-    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    echo "Proprietary license - see squidservers.com" > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-post_install() {
-    echo "Updating icon cache..."
-    gtk-update-icon-cache -f -t /usr/share/icons/hicolor
-}
-
-post_upgrade() {
-    post_install
+    msg2 "Installing License..."
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE" << 'EOF'
+Proprietary license - see squidservers.com
+EOF
 }
