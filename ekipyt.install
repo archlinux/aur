@@ -1,0 +1,9 @@
+post_install() {
+    echo "[yt] Initial setup is underway..."
+    /usr/lib/ekipyt/yt-setup.sh
+}
+
+post_upgrade() {
+    echo "[yt] Post-update check.."
+    /usr/lib/ekipyt/yt-setup.sh
+}
