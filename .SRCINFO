@@ -1,6 +1,6 @@
 pkgbase = limux-bin
 	pkgdesc = GPU-accelerated terminal workspace manager for Linux, powered by Ghostty's rendering engine (cmux port)
-	pkgver = 0.1.9
+	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://github.com/am-will/limux
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = limux-bin
 	conflicts = limux
 	options = !debug
 	options = !strip
-	source = limux-0.1.9.tar.gz::https://github.com/am-will/limux/releases/download/v0.1.9/limux-0.1.9-linux-x86_64.tar.gz
-	sha256sums = 130ea75a6046fbd337cd0559f35455c0e6628c254ebf0a014ba29713166d59a3
+	source = limux-0.1.10.tar.gz::https://github.com/am-will/limux/releases/download/v0.1.10/limux-0.1.10-linux-x86_64.tar.gz
+	sha256sums = a2155f830092e0d43c682cfb9bcf3f814c38c920feecfb3a9b3b63a35b7d7e00
 
 pkgname = limux-bin
