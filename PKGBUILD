@@ -1,5 +1,5 @@
 pkgname=particlemusic-bin
-pkgver=1.0.15
+pkgver=1.0.16
 pkgrel=1
 pkgdesc="A cross-platform local music player based on Flutter"
 arch=('x86_64')
