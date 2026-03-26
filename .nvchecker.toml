@@ -1,0 +1,5 @@
+[wat-bin]
+source = "github"
+github = "GageHowe/wat"
+use_latest_release = true
+prefix = "v"
