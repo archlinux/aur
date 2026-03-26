@@ -1,0 +1,5 @@
+[turtle-wow]
+source = "jq"
+url = "https://launcher.turtlecraft.gg/api/launcher/TurtleWoW.AppImage"
+filter = '.["tags"][0]'
+prefix = "v"
