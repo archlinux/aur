@@ -1,6 +1,6 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiori-ebook-bin
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager (pre-compiled binary)"
 arch=('x86_64')
@@ -15,8 +15,8 @@ depends=(
 )
 provides=('shiori-ebook')
 conflicts=('shiori-ebook' 'shiori-ebook-git')
-source=("Shiori_0.2.3_amd64.deb::${url}/releases/download/v${pkgver}/Shiori_0.2.3_amd64.deb")
-sha256sums=('357f3fb7ea4845cbe79e3f9d2b727a8ddc0b021ea5b7851f1aca859700b4d652')
+source=("Shiori_0.2.4_amd64.deb::${url}/releases/download/v${pkgver}/Shiori_0.2.4_amd64.deb")
+sha256sums=('5c24f84bfdcb296617e1d93c231a93fb32d1f92dff265dfa2f0746e4c77b3cc9')
 
 package() {
     # Extract .deb package
