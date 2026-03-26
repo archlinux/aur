@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=clue
-_pkgver=0.3-67
+_pkgver=0.3-68
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -19,8 +19,8 @@ optdepends=(
   r-relations
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('4048cf65bb2786167e28f7559d2e0c39')
-b2sums=('b7ad4b4ae9df08a7c63ab537536e0c7d5a5930340afd8f09498b117feb73b55a9eebf6b22dbb9b6a893df855a68c156cf425da13e3cda7964e63c3a7f8459d1f')
+md5sums=('cb7c5175d1d59bfebdbd4529724a099f')
+b2sums=('3870670c10c228db6293f169e69eebe9161a08cf1e9a18c0cf767b7080b88eaa2d54e8b2fe8e58462e266d54f1752e304f68930d3a90278998a6ec21c3ba80e3')
 
 build() {
   mkdir build
