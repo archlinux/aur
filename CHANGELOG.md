@@ -7,11 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Handle signals for better action response
+
+## [2.15.0] - 2026-03-26
+
+### Added
+
+- Case insensitive search option
+- For Socket Unit, add the Activated and Connected (if relevant) in the Unit Info panel
+- Proxy heart beat
+
+### Changed
+
+- Add a safe write location for unit files (/lib/systemd/system)
+
+### Fixed
+
+- Fix duplicate lines in Socket View
+
 ## [2.14.8] - 2026-03-19
+
+### Fixed
 
 - Fix missing BusName
 
 ## [2.14.7] - 2026-03-18
+
+### Fixed
 
 - Fix preferences show summary
 
