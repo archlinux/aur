@@ -1,0 +1,13 @@
+pkgbase = camus
+	pkgdesc = A scalable program for inferring level-1 phylogenetic networks
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/jsdoublel/camus
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.24
+	source = camus-1.0.1.tar.gz::https://github.com/jsdoublel/camus/archive/v1.0.1.tar.gz
+	sha256sums = 73a3c032a1f4f14c9cf555b0d5d19aae2e7006607e502a94c5fd15a3859b6d45
+
+pkgname = camus
