@@ -1,24 +1,35 @@
 # Maintainer: Xuanrui Qi <me@xuanruiqi.com>
+# Contributor: koraynilay <koray.fra@gmail.com>
 
 pkgname=compcert
 _dirname=CompCert
-pkgver=3.16
+_testscommit=081175df374260304a5cd78dd3dfaded93dceb41
+pkgver=3.17
 pkgrel=1
 pkgdesc="The formally verified C compiler"
 arch=('x86_64')
 url="https://compcert.org/"
 license=('custom:INRIA Non-Commercial License Agreement')
 depends=('gcc')
-makedepends=('coq>=8.15.0' 'ocaml>=4.05.0'
+makedepends=('rocq>=9.0.0' 'rocq-stdlib>=9.0.0' 'ocaml>=4.05.0'
              'ocaml-menhir>=20200624'
              'ocaml-findlib' # See: https://github.com/AbsInt/CompCert/issues/281
             )
 checkdepends=('parallel')
-source=("https://github.com/AbsInt/CompCert/archive/v$pkgver.tar.gz")
-sha256sums=('78ebd29e0c7d37cede785850100722f1de21464059c5eda14a992c828c4b7d59')
+source=("https://github.com/AbsInt/$_dirname/archive/v$pkgver.tar.gz"
+	"https://github.com/AbsInt/$_dirname-small-tests/archive/$_testscommit.tar.gz")
+sha256sums=('671425695c92d6c3a44d9f0833a803a9fa6b9199675a0b10dfdc131a0e2abffa'
+	    '20b1c6fd68d3bb3ad49465acba674d231bf0d38412eb69464178110fbb3c8b91')
 
 prepare() {
   cd ${srcdir}/${_dirname}-${pkgver}
+
+  # move tests to folder in main repo
+  rmdir --ignore-fail-on-non-empty ${srcdir}/${_dirname}-${pkgver}/test
+  mv -nT ${srcdir}/${_dirname}-small-tests-${_testscommit} ${srcdir}/${_dirname}-${pkgver}/test
+
+  # workaround until upstream updates flocq (https://github.com/AbsInt/CompCert/issues/580)
+  find flocq -type f -name "*.v" -exec sed -i 's/\bZmod\b/Z.modulo/g' {} +
 }
 
 build() {
