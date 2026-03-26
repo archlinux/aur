@@ -2,24 +2,17 @@
 # Contributor: Michal Wojdyla < micwoj9292 at gmail dot com >
 pkgbase='etherlab-ethercat'
 pkgname=('etherlab-ethercat' 'etherlab-ethercat-tools')
-pkgver=1.6.8
-pkgrel=3
+pkgver=1.6.9
+pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('linux-headers')
 url='https://etherlab.org'
 source=("ethercat-$pkgver.tar.bz2::https://gitlab.com/etherlab.org/ethercat/-/releases/$pkgver/downloads/dist-tarballs/ethercat.tar.bz2"
-        "183.patch"
         "ethercat.sysusers"
         "ethercat.udev")
-sha512sums=('3da61f7a2d50f01bc2907877cbd046861ad9fb3be0b38f0e8aa5ecbc3dece2c2802b5d56df8da5231467d3c80863fba855d56c4a1ad984442ddc611c1d40beb5'
-            '2a0dad0236b4e04f519aa31534bfadf42db2faddf00d50cfd396dd5957af57cffcfb0a95e4c6ee2bf3152887d881c7fb7cdd0acb78edb5d73de3e1c69fc7fc1c'
+sha512sums=('e7135b33d6a72d9d671ddae42cde7d30374c5279efdefd579d52f8a024a549901b854d8cddf14b49e40248aebeeff9e6670a826d36cdab4154f1257e76e3da50'
             'b029d47d10850569f180801fdc6bb2209dc9014649615123fe677416586df1c5a4f0901bcbd2da73b0e48ce752fe2a732272afdbf2445edf9ed4740be1ada7d8'
             '3e1fa42373476780109af67ff14ca0b3275a3499bd2bf97e5284e05cae911a38ce8eec3fb1e46c42862f3f7b7741514afeaea26f1a6c12d1ed89d20f6ad09ed4')
-
-prepare() {
-  cd "ethercat-$pkgver"
-  patch -Np1 -i ../183.patch
-}
 
 build() {
   cd "ethercat-$pkgver"
