@@ -1,7 +1,7 @@
 # Maintainer: Cole Leavitt <coleleavitt@protonmail.com>
 
 pkgname=sf
-pkgver=2.127.2
+pkgver=2.128.5
 pkgrel=1
 pkgdesc="A tool for creating and managing Salesforce DX projects from the command line"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('gnome-keyring: for saving default credentials')
 provides=('sf')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.xz::https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-linux-x64.tar.xz")
-sha256sums=('7e6e1cc9e32c6072377fe6656141bd146fb52682027bfb65b9ea1eb797cd3b69')
+sha256sums=('7780eda605d730f5bd43092cec88b10bcdaa5980f06a86a7f49342cad093cab9')
 changelog=CHANGELOG
 
 prepare() {
