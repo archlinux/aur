@@ -1,9 +1,14 @@
 post_install() {
-    echo "[yt] İlk kurulum yapılıyor..."
-    /usr/lib/ekipyt/yt-setup.sh
+    # yt ikili dosyasına SUID bitini ver (Root yetkisiyle çalışması için)
+    chmod 4755 /usr/bin/yt
+    
+    # Config dosyasını sadece root tarafından yazılabilir/okunabilir yap
+    chmod 600 /etc/yt.cfg
+    chown root:root /etc/yt.cfg
+
+    echo [yt] SUID biti ayarlandı"
 }
 
 post_upgrade() {
-    echo "[yt] Güncelleme sonrası kontrol..."
-    /usr/lib/ekipyt/yt-setup.sh
+    post_install
 }
