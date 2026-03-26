@@ -1,4 +1,5 @@
 # Maintainer: razingfire <j2r3nkf3j@mozmail.com>
+# Maintainer: Mrinmoy <mrinmoym@duck.com>
 pkgname=ulaa-browser
 _pkgname=Ulaa-Browser
 pkgver=2.41.3
@@ -19,24 +20,18 @@ backup=()
 options=(!debug)
 install=
 changelog=Changelog
-source_x86_64=(${_pkgname}-v${pkgver}-${pkgrel}.deb::https://downloads.zohocdn.com/ulaa-browser/release/linux/stable/${_pkgname}-v${pkgver}-amd64.deb)
+source_x86_64=(${pkgname}-${pkgver}-${pkgrel}.deb::https://ulaa.zoho.com/release/linux/stable/${_pkgname}-v${pkgver}-amd64.deb)
 noextract=()
-sha256sums_x86_64=('372feac1b63bd5efd0d5a0db6e9ef9e412135cb0e8017371b977d9d7cf645824')
+sha256sums_x86_64=('SKIP')
 validpgpkeys=()
 
 prepare() {
-  ar x "${srcdir}/${_pkgname}-v${pkgver}-${pkgrel}.deb"
   tar -xvf data.tar.xz
 }
 
 package() {
-  install -Dm755 ./opt/zoho.com/ulaa/product_logo_16.png "${pkgdir}/usr/share/icons/hicolor/16x16/apps/ulaa-browser.png"
-  install -Dm755 ./opt/zoho.com/ulaa/product_logo_24.png "${pkgdir}/usr/share/icons/hicolor/24x24/apps/ulaa-browser.png"
-  install -Dm755 ./opt/zoho.com/ulaa/product_logo_32.png "${pkgdir}/usr/share/icons/hicolor/32x32/apps/ulaa-browser.png"
-  install -Dm755 ./opt/zoho.com/ulaa/product_logo_48.png "${pkgdir}/usr/share/icons/hicolor/48x48/apps/ulaa-browser.png"
-  install -Dm755 ./opt/zoho.com/ulaa/product_logo_64.png "${pkgdir}/usr/share/icons/hicolor/64x64/apps/ulaa-browser.png"
-  install -Dm755 ./opt/zoho.com/ulaa/product_logo_128.png "${pkgdir}/usr/share/icons/hicolor/128x128/apps/ulaa-browser.png"
-  install -Dm755 ./opt/zoho.com/ulaa/product_logo_256.png "${pkgdir}/usr/share/icons/hicolor/256x256/apps/ulaa-browser.png"
+    install -dm755 "${pkgdir}/opt"
+    install -dm755 "${pkgdir}/usr"
 
-  cp -ra ./opt ./usr "${pkgdir}"
+    cp -ra ./opt ./usr "${pkgdir}"
 }
