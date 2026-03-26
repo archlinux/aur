@@ -8,7 +8,6 @@ pkgbase = gnome-radio
 	makedepends = intltool
 	makedepends = itstool
 	makedepends = python
-	makedepends = goocanvas2
 	depends = libchamplain
 	depends = geoclue
 	depends = gst-plugins-base
