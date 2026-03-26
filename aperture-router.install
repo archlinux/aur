@@ -1,0 +1,71 @@
+post_install() {
+  # Create config directory if not exists
+  mkdir -p /etc/aperture-router
+  chmod 755 /etc/aperture-router
+
+  # Create sysconfig directory
+  mkdir -p /etc/sysconfig
+
+  cat <<EOF
+
+==> aperture-router v0.2.0 installed!
+
+╔══════════════════════════════════════════════════════════════╗
+║                    QUICK START OPTIONS                       ║
+╚══════════════════════════════════════════════════════════════╝
+
+OPTION 1 - Environment Only (Fastest):
+  $ export APERTURE_BASE_URL=http://your-aperture-gateway:8080
+  $ aperture-router
+
+OPTION 2 - System Service:
+  $ echo "APERTURE_BASE_URL=http://your-aperture-gateway:8080" | sudo tee /etc/sysconfig/aperture-router
+  $ sudo systemctl enable --now aperture-router
+
+OPTION 3 - Interactive Wizard:
+  $ sudo aperture-router config wizard
+
+OPTION 4 - Generate Config:
+  $ sudo aperture-router config generate --url http://your-gateway:8080 --generate-key
+
+SECURITY NOTES:
+  • API keys must be at least 32 characters
+  • Use --generate-key to auto-generate a secure key
+  • Config files use 0o600 permissions (owner read/write only)
+  • Set APERTURE_ALLOW_NO_AUTH=1 to disable auth (development only)
+
+For more info: https://github.com/Wayazi/aperture-router
+
+EOF
+}
+
+post_upgrade() {
+  # Ensure directories exist
+  mkdir -p /etc/aperture-router
+  mkdir -p /etc/sysconfig
+
+  cat <<EOF
+
+==> aperture-router upgraded to v0.2.0!
+
+NEW FEATURES:
+  • Environment-only mode (no config file needed)
+  • config generate command for quick setup
+  • Dynamic model discovery with auto-refresh
+  • Graceful shutdown support
+
+Restart the service if running:
+  $ sudo systemctl restart aperture-router
+
+EOF
+}
+
+pre_remove() {
+  cat <<EOF
+
+==> Stopping aperture-router service...
+  $ sudo systemctl stop aperture-router
+  $ sudo systemctl disable aperture-router
+
+EOF
+}
