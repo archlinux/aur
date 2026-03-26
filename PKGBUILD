@@ -1,7 +1,7 @@
 # Maintainer: noctalia-dev <team@noctalia.dev>
 pkgname=noctalia-qs
 pkgver=0.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Custom fork of Quickshell powering Noctalia Shell'
 arch=(x86_64 aarch64)
 url="https://github.com/noctalia-dev/noctalia-qs"

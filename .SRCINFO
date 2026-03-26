@@ -1,7 +1,7 @@
 pkgbase = noctalia-qs
 	pkgdesc = Custom fork of Quickshell powering Noctalia Shell
 	pkgver = 0.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/noctalia-dev/noctalia-qs
 	arch = x86_64
 	arch = aarch64
