@@ -1,6 +1,6 @@
 pkgbase = rhythmgame-git
 	pkgdesc = A customizable BMS player for Windows and Linux – development git build
-	pkgver = 1.2.1.r7.gc58ab74a
+	pkgver = 1.2.8.r180.g59f42f37
 	pkgrel = 1
 	url = https://github.com/Bobini1/RhythmGame
 	arch = x86_64
@@ -22,6 +22,7 @@ pkgbase = rhythmgame-git
 	depends = sdl2
 	depends = libxml2
 	depends = libxkbcommon
+	depends = qtkeychain-qt6
 	depends = miniaudio
 	depends = magic_enum
 	depends = sqlitecpp

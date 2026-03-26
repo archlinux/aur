@@ -1,7 +1,7 @@
-# Maintainer: Your Name <you@example.com>
+# Maintainer: Tomasz Kalisiak <tomasz.kalisiak@rhythmgame.eu>
 pkgname=rhythmgame-git
 _pkgname=RhythmGame
-pkgver=1.2.1.r7.gc58ab74a
+pkgver=1.2.8.r180.g59f42f37
 pkgrel=1
 pkgdesc="A customizable BMS player for Windows and Linux – development git build"
 arch=(x86_64)
@@ -21,6 +21,7 @@ depends=(
   sdl2
   libxml2
   libxkbcommon
+  qtkeychain-qt6
   # aur
   miniaudio
   magic_enum
