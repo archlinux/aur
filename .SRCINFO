@@ -1,16 +1,16 @@
 pkgbase = teamcity-bin
 	pkgdesc = A command-line interface for TeamCity CI/CD server
-	pkgver = 0.7.2
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://github.com/JetBrains/teamcity-cli
-	arch = x86_64
-	arch = aarch64
 	license = Apache-2.0
-	provides = teamcity
 	conflicts = teamcity
-	source_x86_64 = https://github.com/JetBrains/teamcity-cli/releases/download/v0.7.2/teamcity_0.7.2_linux_x86_64.tar.gz
-	sha256sums_x86_64 = a9470aee1f35b835535eacd35850146dd0c2a5a1bb56d38ca0634f4159c12e0e
-	source_aarch64 = https://github.com/JetBrains/teamcity-cli/releases/download/v0.7.2/teamcity_0.7.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 09c92fe44432afa33864befb58f1c804ed8915a2fee29ee917087d6ae23835e0
-
+	provides = teamcity
+	arch = aarch64
+	source_aarch64 = https://github.com/JetBrains/teamcity-cli/releases/download/v0.8.0/teamcity_0.8.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a3beb4d59a01d386426f1a02d4046538ae5f7f1ce7ad995b441c45c570dd1e5d
+	arch = x86_64
+	source_x86_64 = https://github.com/JetBrains/teamcity-cli/releases/download/v0.8.0/teamcity_0.8.0_linux_x86_64.tar.gz
+	sha256sums_x86_64 = 689e328c5e1caf646fb8cd55fb6495bce86ee5f594d11d4dafd87e9f0bc2f0df
+	
 pkgname = teamcity-bin
