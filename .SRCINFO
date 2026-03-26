@@ -1,8 +1,8 @@
 pkgbase = wl-ime-type-git
 	pkgdesc = Type text via Wayland's input-method-unstable-v2 protocol
-	pkgver = r5.9b8eef023524
+	pkgver = r16.bff3775
 	pkgrel = 1
-	url = https://git.sr.ht/~emersion/wl-ime-type
+	url = https://gitlab.freedesktop.org/emersion/wl-ime-type
 	arch = x86_64
 	license = BSD
 	makedepends = scdoc
@@ -12,7 +12,7 @@ pkgbase = wl-ime-type-git
 	conflicts = wl-ime-type
 	options = debug
 	options = !strip
-	source = wl-ime-type::git+https://git.sr.ht/~emersion/wl-ime-type
+	source = wl-ime-type::git+https://gitlab.freedesktop.org/emersion/wl-ime-type.git
 	sha1sums = SKIP
 
 pkgname = wl-ime-type-git

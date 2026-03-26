@@ -2,15 +2,15 @@
 
 pkgname=wl-ime-type-git
 _pkgname=wl-ime-type
-pkgver=r5.9b8eef023524
+pkgver=r16.bff3775
 pkgrel=1
 license=('BSD')
 pkgdesc="Type text via Wayland's input-method-unstable-v2 protocol"
 makedepends=("scdoc" "git")
 depends=("wayland")
 arch=("x86_64")
-url='https://git.sr.ht/~emersion/wl-ime-type'
-source=("${pkgname%-*}::git+https://git.sr.ht/~emersion/wl-ime-type")
+url='https://gitlab.freedesktop.org/emersion/wl-ime-type'
+source=("${pkgname%-*}::git+https://gitlab.freedesktop.org/emersion/wl-ime-type.git")
 sha1sums=('SKIP')
 provides=('wl-ime-type')
 conflicts=('wl-ime-type')
