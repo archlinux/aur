@@ -1,6 +1,6 @@
 pkgbase = r-tseries
 	pkgdesc = Time Series Analysis and Computational Finance
-	pkgver = 0.10.60
+	pkgver = 0.10.61
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tseries
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = r-tseries
 	depends = r-quadprog
 	depends = r-quantmod
 	depends = r-zoo
-	source = https://cran.r-project.org/src/contrib/tseries_0.10-60.tar.gz
-	sha256sums = 2ef53af2314c89c472d196e36604379aee8a27645c13ea72aafd674991cf975c
+	source = https://cran.r-project.org/src/contrib/tseries_0.10-61.tar.gz
+	sha256sums = 75fa992381330040401ee3233b029e0a9cd0c2cabd0b0e60335645b0637bc8e4
 
 pkgname = r-tseries
