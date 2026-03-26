@@ -1,0 +1,6 @@
+src/
+pkg/
+output/
+*.pkg.tar.zst
+*.pkg.tar.xz
+Dockerfile

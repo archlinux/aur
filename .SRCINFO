@@ -1,0 +1,28 @@
+pkgbase = dnsutils
+	pkgdesc = DNS client utilities from BIND: dig, host, nslookup, nsupdate, delv, mdig
+	pkgver = 9.20.21
+	pkgrel = 1
+	url = https://www.isc.org/software/bind/
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = git
+	makedepends = python-sphinx
+	depends = glibc
+	depends = openssl
+	depends = libedit
+	depends = libidn2
+	depends = jemalloc
+	depends = zlib
+	depends = libnghttp2
+	depends = libuv
+	depends = libcap
+	depends = liburcu
+	optdepends = krb5: GSSAPI authentication for nsupdate
+	provides = bind-tools
+	conflicts = bind
+	conflicts = bind-tools
+	options = !emptydirs
+	source = git+https://gitlab.isc.org/isc-projects/bind9.git#tag=v9.20.21
+	sha256sums = 11bf077ff39b78c705f42b3c06bd140f3c2c4f4476639206ea996f508c2da9ca
+
+pkgname = dnsutils
