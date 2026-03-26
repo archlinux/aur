@@ -22,3 +22,6 @@ package() {
   install -Dm644 linux-tool.desktop \
     "$pkgdir/usr/share/applications/linux-tool.desktop"
 }
+sha256sums=('d20e3bc92785e82589811284b28b9c63f37d2509bda8003fee7257ad4237ce3b'
+            '332a561ec2a70ac62de122413ea169d8de2fd001ddac5f63420146409fa97374'
+            'f783a0898d89ce584e54916d7b6689127b38b6e492b92ff346a5f02c4c1e7211')
