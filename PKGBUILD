@@ -8,13 +8,13 @@ pkgver=1.1.0_SR2
 _version_branch=1.1.0
 _realver=${pkgver//_/-}
 _commit=28965e3bd6dd118598db1f5639ce1cf2e3c56e36
-pkgrel=1
+pkgrel=2
 pkgdesc="Real time electronic circuit simulator (supports PIC, AVR and Arduino microcontrollers)."
 arch=("x86_64")
-url="https://launchpad.net/simulide"
+url="https://github.com/Arcachofo/SimuliDE-1"
 provides=('simulide')
 conflicts=('simulide')
-license=("AGPL-3.0-or-later")
+license=("AGPL-3.0-only")
 source=(
   "${pkgname}::git+https://github.com/Arcachofo/SimuliDE-1.git#commit=$_commit"
   "simulide.desktop")
