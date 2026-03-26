@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=xbright
+Comment=GUI to change display(s) brightness(es). Supports presets.
+Keywords=brightness;screen;xrandr
+Exec=/usr/bin/xbright
+Terminal=false
+Type=Application
+Icon=xbright
+StartupWMClass=xbright
+Categories=Settings;HardwareSettings;
