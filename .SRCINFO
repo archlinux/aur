@@ -1,6 +1,6 @@
 pkgbase = python-echo
 	pkgdesc = Callback Properties in Python
-	pkgver = 0.12.1
+	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://echo.readthedocs.io
 	arch = any
@@ -15,16 +15,18 @@ pkgbase = python-echo
 	makedepends = python-sphinx-automodapi
 	makedepends = python-numpydoc
 	makedepends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/e/echo/echo-0.12.1.tar.gz
+	makedepends = python-traitlets
+	source = https://files.pythonhosted.org/packages/source/e/echo/echo-0.13.1.tar.gz
 	source = fix_sphinx-doc_link.patch
-	md5sums = 61d12341bd44fa76d239d18baf0d09d4
+	md5sums = 556aeaf36a17b289116f905a41758fd9
 	md5sums = b6441be6fa18db4f59a7784b1fcc67a6
 
 pkgname = python-echo
 	depends = python>=3.10
 	depends = python-numpy
-	optdepends = python-pyqt5>=5.14: Interfacing with Qt widgets¶
-	optdepends = python-qtpy: Interfacing with Qt widgets¶
+	optdepends = python-pyqt5>=5.14: Interfacing with Qt widgets
+	optdepends = python-qtpy: Interfacing with Qt widgets
+	optdepends = python-traitlets: Vue/ipywidgets helpers
 	optdepends = python-echo-doc: Documentation for python-echo
 
 pkgname = python-echo-doc
