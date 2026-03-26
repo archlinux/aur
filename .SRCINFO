@@ -1,7 +1,7 @@
 pkgbase = sealsay
 	pkgdesc = CLI app that generates ASCII art of a seal saying a message
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/phantypengy/sealsay
 	arch = any
 	license = GPL-3.0-or-later
