@@ -1,20 +1,20 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=azahar
-pkgver=2124.3
+pkgver=2125.0
 pkgrel=1
 epoch=1
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
 url="https://github.com/azahar-emu/azahar"
 license=('GPL-2.0-or-later')
-depends=('glibc' 'gcc-libs' 'qt6-base' 'crypto++' 'fmt' 'glslang' 'libusb' 'openal' 'openssl' 'sdl2' 'soundtouch'
-	 'qt6-multimedia' 'zydis' 'hicolor-icon-theme')
+depends=('glibc' 'libstdc++' 'qt6-base' 'crypto++' 'fmt' 'glslang' 'libusb' 'openal' 'openssl' 'sdl2' 'soundtouch'
+	 'qt6-multimedia' 'zydis' 'hicolor-icon-theme' 'enet' 'libgcc')
 makedepends=('cmake' 'ninja' 'vulkan-headers' 'rapidjson' 'doxygen' 'graphviz' 'nlohmann-json' 'clang' 'lld' 'spirv-headers'
 	     'catch2' 'libinih' 'ffmpeg4.4' 'qt6-tools')
 options=(!lto)
 source=("$url/releases/download/${pkgver}/$pkgname-unified-source-$pkgver.tar.xz")
 install=${pkgname}.install
-sha256sums=('b43191b613ed67072af037f9c8d89c1460d5532cc8381757a875f656bb6a10b1')
+sha256sums=('ba4a984c0ed5a157940c3bfa388b0c899038a24cabb5dfae4b79a96ffd1bfaf8')
 
 prepare() {
 	cd "$srcdir/$pkgname-unified-source-$pkgver"
@@ -40,6 +40,7 @@ build() {
 	-DUSE_SYSTEM_BOOST=OFF \
 	-DUSE_SYSTEM_CATCH2=ON \
 	-DUSE_SYSTEM_CRYPTOPP=ON \
+	-DUSE_SYSTEM_ENET=ON \
 	-DUSE_SYSTEM_FFMPEG_HEADERS=ON \
 	-DUSE_SYSTEM_FMT=ON \
 	-DUSE_SYSTEM_GLSLANG=ON \
