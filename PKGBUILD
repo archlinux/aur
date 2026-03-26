@@ -1,7 +1,7 @@
 # Maintainer: SocketByte <business@socketbyte.pl>
 pkgname=upscale-git
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AI-powered image and video upscaling tool (RealESRGAN, SwinIR, Anime4K)"
 arch=('x86_64')
 url="https://github.com/SocketByte/upscale"
