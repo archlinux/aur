@@ -1,0 +1,42 @@
+From d92f41567ccb4eb0d1a8a0012324c86cac4d08bf Mon Sep 17 00:00:00 2001
+From: Reyka Matthies <openglfreak@googlemail.com>
+Date: Thu, 26 Mar 2026 01:39:02 +0100
+Subject: [PATCH 03/12] [Fix] Fix requirements.txt on systems without
+ PyAudioWPatch support
+
+---
+ requirements.txt      | 3 ++-
+ requirements_cuda.txt | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/requirements.txt b/requirements.txt
+index 1630397f..cbdc87c4 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -3,7 +3,8 @@ faster-whisper==1.1.1
+ ctranslate2==4.6.0
+ transformers==4.40.2
+ pillow == 10.0.0
+-PyAudioWPatch == 0.2.12.6
++PyAudioWPatch == 0.2.12.6; sys_platform == 'win32'
++PyAudio == 0.2.14; sys_platform != 'win32'
+ python-osc == 1.9.0
+ PyYAML==6.0.2
+ deepl == 1.22.0
+diff --git a/requirements_cuda.txt b/requirements_cuda.txt
+index 1bb366e5..9e961f22 100644
+--- a/requirements_cuda.txt
++++ b/requirements_cuda.txt
+@@ -4,7 +4,8 @@ faster-whisper==1.1.1
+ ctranslate2==4.6.0
+ transformers==4.40.2
+ pillow == 10.0.0
+-PyAudioWPatch == 0.2.12.6
++PyAudioWPatch == 0.2.12.6; sys_platform == 'win32'
++PyAudio == 0.2.14; sys_platform != 'win32'
+ python-osc == 1.9.0
+ PyYAML==6.0.2
+ deepl == 1.22.0
+-- 
+2.53.0
+

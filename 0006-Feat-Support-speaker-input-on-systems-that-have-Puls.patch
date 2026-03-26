@@ -1,0 +1,186 @@
+From 6f7d41411680c8ddbf73d411269a9d30bbc7d036 Mon Sep 17 00:00:00 2001
+From: Reyka Matthies <openglfreak@googlemail.com>
+Date: Thu, 26 Mar 2026 01:49:42 +0100
+Subject: [PATCH 06/12] [Feat] Support speaker input on systems that have
+ PulseAudio support in PortAudio
+
+PulseAudio support is not yet in a full release of PortAudio, but will likely be in the next release.
+---
+ src-python/device_manager.py | 136 ++++++++++++++++++++++++++---------
+ 1 file changed, 102 insertions(+), 34 deletions(-)
+
+diff --git a/src-python/device_manager.py b/src-python/device_manager.py
+index d7346460..6cac889b 100644
+--- a/src-python/device_manager.py
++++ b/src-python/device_manager.py
+@@ -27,6 +27,77 @@ except Exception:  # pragma: no cover - optional runtime
+ 
+ from utils import errorLogging
+ 
++def is_microphone(p, device):
++    if device.get("maxInputChannels", 0) <= 0:
++        return False
++    if paWASAPI is not None and device.get("isLoopbackDevice", True):
++        return False
++    return True
++
++def is_wasapi_speaker(p, device):
++    # Check that device is a loopback device
++    if not device.get("isLoopbackDevice", True):
++        return False
++
++    host_info = p.get_host_api_info_by_type(device.get("hostApi"))
++
++    # Check that device is a WASAPI device
++    if host_info.get("name") != "Windows WASAPI":
++        return False
++
++    host_index = host_info.get("index")
++
++    # Check that there exists an output device with the same name
++    for device_index in range(host_info.get('deviceCount', 0)):
++        other_device = p.get_device_info_by_host_api_device_index(host_index, device_index)
++        if other_device.get("name", "") in device.get("name", ""):
++            break
++    else:
++        return False
++
++    # Device is a WASAPI speaker loopback device
++    return True
++
++def is_pulseaudio_speaker(p, device):
++    # Check that device is an input and not an output
++    if device.get("maxInputChannels", 0) <= 0:
++        return False
++    if device.get("maxOutputChannels", 0) > 0:
++        return False
++
++    # Check that device name ends in ".monitor"
++    device_name = device.get("name", "")
++    if not device_name.endswith(".monitor"):
++        return False
++
++    host_info = p.get_host_api_info_by_index(device.get("hostApi"))
++
++    # Check that device is a PulseAudio device
++    if host_info.get("name") != "PulseAudio":
++        return False
++
++    host_index = host_info.get("index")
++    output_name = device_name[:-8]
++
++    # Check that there exists an output device with the same name
++    for device_index in range(host_info.get('deviceCount', 0)):
++        other_device = p.get_device_info_by_host_api_device_index(host_index, device_index)
++        if other_device.get("name", "") == output_name:
++            break
++    else:
++        return False
++
++    # Device is a PulseAudio speaker loopback device
++    return True
++
++def is_speaker(p, device):
++    # WASAPI
++    if paWASAPI is not None:
++        return is_wasapi_speaker(p, device)
++
++    # PulseAudio
++    return is_pulseaudio_speaker(p, device)
++
+ class Client(MMNotificationClient):
+     """Callback client used by pycaw to detect device changes.
+ 
+@@ -169,7 +240,7 @@ class DeviceManager:
+                     device_count = host.get('deviceCount', 0)
+                     for device_index in range(device_count):
+                         device = p.get_device_info_by_host_api_device_index(host_index, device_index)
+-                        if device.get("maxInputChannels", 0) > 0 and not device.get("isLoopbackDevice", paWASAPI is not None):
++                        if is_microphone(p, device):
+                             buffer_mic_devices.setdefault(host["name"], []).append(device)
+                 if not buffer_mic_devices:
+                     buffer_mic_devices = {"NoHost": [{"index": -1, "name": "NoDevice"}]}
+@@ -191,24 +262,13 @@ class DeviceManager:
+ 
+                 # collect speaker loopback devices (requires WASAPI)
+                 speaker_devices: List[Dict[str, Any]] = []
+-                if paWASAPI is not None:
+-                    try:
+-                        wasapi_info = p.get_host_api_info_by_type(paWASAPI)
+-                        wasapi_name = wasapi_info.get("name")
+-                        for host_index in range(p.get_host_api_count()):
+-                            host = p.get_host_api_info_by_index(host_index)
+-                            if host.get("name") == wasapi_name:
+-                                device_count = host.get('deviceCount', 0)
+-                                for device_index in range(device_count):
+-                                    device = p.get_device_info_by_host_api_device_index(host_index, device_index)
+-                                    if not device.get("isLoopbackDevice", True):
+-                                        for loopback in p.get_loopback_device_info_generator():
+-                                            # match by name inclusion
+-                                            if device.get("name") in loopback.get("name", ""):
+-                                                speaker_devices.append(loopback)
+-                    except Exception:
+-                        # WASAPI not available or failed; ignore and continue
+-                        pass
++                for host_index in range(p.get_host_api_count()):
++                    host = p.get_host_api_info_by_index(host_index)
++                    device_count = host.get('deviceCount', 0)
++                    for device_index in range(device_count):
++                        device = p.get_device_info_by_host_api_device_index(host_index, device_index)
++                        if is_speaker(p, device):
++                            speaker_devices.append(device)
+ 
+                 # deduplicate and sort
+                 speaker_devices = [dict(t) for t in {tuple(d.items()) for d in speaker_devices}] or [{"index": -1, "name": "NoDevice"}]
+@@ -219,25 +279,33 @@ class DeviceManager:
+                     try:
+                         wasapi_info = p.get_host_api_info_by_type(paWASAPI)
+                         default_speaker_device_index = wasapi_info.get("defaultOutputDevice", -1)
+-                        for host_index in range(p.get_host_api_count()):
+-                            host_info = p.get_host_api_info_by_index(host_index)
+-                            device_count = host_info.get('deviceCount', 0)
+-                            for device_index in range(0, device_count):
+-                                device = p.get_device_info_by_host_api_device_index(host_index, device_index)
+-                                if device.get("index") == default_speaker_device_index:
+-                                    default_speakers = device
+-                                    if not default_speakers.get("isLoopbackDevice", True):
+-                                        for loopback in p.get_loopback_device_info_generator():
+-                                            if default_speakers.get("name") in loopback.get("name", ""):
+-                                                buffer_default_speaker_device = {"device": loopback}
+-                                                break
++                        device = p.get_device_info_by_index(default_speaker_device_index)
++                        if not device.get("isLoopbackDevice", True):
++                            device_name = device.get("name")
++                            for loopback in p.get_loopback_device_info_generator():
++                                if device_name in loopback.get("name", ""):
++                                    buffer_default_speaker_device = {"device": loopback}
+                                     break
+-
+-                            if buffer_default_speaker_device["device"].get("name") != "NoDevice":
+-                                break
+                     except Exception:
+                         # best-effort; ignore failures
+                         pass
++                else:
++                    pulseaudio_info = None
++                    for host_index in range(p.get_host_api_count()):
++                        host = p.get_host_api_info_by_index(host_index)
++                        if host.get("name", "") == "PulseAudio":
++                            pulseaudio_info = host
++                            break
++                    if pulseaudio_info:
++                        device_count = pulseaudio_info.get('deviceCount', 0)
++                        default_speaker_device_index = pulseaudio_info.get("defaultOutputDevice", -1)
++                        device = p.get_device_info_by_index(default_speaker_device_index)
++                        device_name = device.get("name")
++                        for device_index in range(device_count):
++                            loopback = p.get_device_info_by_host_api_device_index(host_index, device_index)
++                            if device_name in loopback.get("name", "") and is_speaker(p, loopback):
++                                buffer_default_speaker_device = {"device": loopback}
++                                break
+ 
+         except Exception:
+             errorLogging()
+-- 
+2.53.0
+

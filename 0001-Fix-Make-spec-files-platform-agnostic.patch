@@ -1,0 +1,87 @@
+From 09398f85b9910055935a362341a374126cf02005 Mon Sep 17 00:00:00 2001
+From: Reyka Matthies <openglfreak@googlemail.com>
+Date: Thu, 26 Mar 2026 01:30:42 +0100
+Subject: [PATCH 01/12] [Fix] Make spec files platform-agnostic
+
+---
+ spec/backend.spec      | 13 +++++++++++--
+ spec/backend_cuda.spec | 13 +++++++++++--
+ 2 files changed, 22 insertions(+), 4 deletions(-)
+
+diff --git a/spec/backend.spec b/spec/backend.spec
+index 786d7233..e53f29ce 100644
+--- a/spec/backend.spec
++++ b/spec/backend.spec
+@@ -1,8 +1,10 @@
+ # -*- mode: python ; coding: utf-8 -*-
+ 
++import subprocess
++
+ 
+ a = Analysis(
+-    ['..\\src-python\\mainloop.py'],
++    ['../src-python/mainloop.py'],
+     pathex=[],
+     binaries=[],
+     datas=[
+@@ -24,12 +26,19 @@ a = Analysis(
+ )
+ pyz = PYZ(a.pure)
+ 
++try:
++    cargo = subprocess.run(['cargo', '--verbose', '--version'], capture_output=True, universal_newlines=True)
++    cargo_output = cargo.stdout.split('\n')
++    rust_triple = next(x[6:].strip() for x in cargo_output if x.startswith('host: '))
++except Exception:
++    rust_triple = 'pc-windows-msvc'
++
+ exe = EXE(
+     pyz,
+     a.scripts,
+     [],
+     exclude_binaries=True,
+-    name='VRCT-sidecar-x86_64-pc-windows-msvc',
++    name=('VRCT-sidecar-' + rust_triple),
+     debug=False,
+     bootloader_ignore_signals=False,
+     strip=False,
+diff --git a/spec/backend_cuda.spec b/spec/backend_cuda.spec
+index e32776ed..9d16e80c 100644
+--- a/spec/backend_cuda.spec
++++ b/spec/backend_cuda.spec
+@@ -1,8 +1,10 @@
+ # -*- mode: python ; coding: utf-8 -*-
+ 
++import subprocess
++
+ 
+ a = Analysis(
+-    ['..\\src-python\\mainloop.py'],
++    ['../src-python/mainloop.py'],
+     pathex=[],
+     binaries=[],
+     datas=[
+@@ -24,12 +26,19 @@ a = Analysis(
+ )
+ pyz = PYZ(a.pure)
+ 
++try:
++    cargo = subprocess.run(['cargo', '--verbose', '--version'], capture_output=True, universal_newlines=True)
++    cargo_output = cargo.stdout.split('\n')
++    rust_triple = next(x[6:].strip() for x in cargo_output if x.startswith('host: '))
++except Exception:
++    rust_triple = 'pc-windows-msvc'
++
+ exe = EXE(
+     pyz,
+     a.scripts,
+     [],
+     exclude_binaries=True,
+-    name='VRCT-sidecar-x86_64-pc-windows-msvc',
++    name=('VRCT-sidecar-' + rust_triple),
+     debug=False,
+     bootloader_ignore_signals=False,
+     strip=False,
+-- 
+2.53.0
+

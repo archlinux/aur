@@ -1,0 +1,61 @@
+From 70956344f134287b7b9dcea752b91d26a14ff75a Mon Sep 17 00:00:00 2001
+From: Reyka Matthies <openglfreak@googlemail.com>
+Date: Thu, 26 Mar 2026 01:46:24 +0100
+Subject: [PATCH 05/12] [Fix] Support microphone input on systems without
+ PyAudioWPatch support
+
+---
+ src-python/device_manager.py | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
+
+diff --git a/src-python/device_manager.py b/src-python/device_manager.py
+index 6c4096a7..d7346460 100644
+--- a/src-python/device_manager.py
++++ b/src-python/device_manager.py
+@@ -1,6 +1,7 @@
+ from typing import Callable, Dict, List, Optional, Any
+ from time import sleep
+ from threading import Thread
++from contextlib import nullcontext
+ 
+ # Optional, Windows-specific dependencies. Guard imports so module can be imported on non-Windows systems.
+ try:
+@@ -11,8 +12,11 @@ except Exception:  # pragma: no cover - optional runtime
+ try:
+     from pyaudiowpatch import PyAudio, paWASAPI
+ except Exception:  # pragma: no cover - optional runtime
+-    PyAudio = None  # type: ignore
+     paWASAPI = None  # type: ignore
++    try:
++        from pyaudio import PyAudio
++    except Exception:  # pragma: no cover - optional runtime
++        PyAudio = None  # type: ignore
+ 
+ try:
+     from pycaw.callbacks import MMNotificationClient
+@@ -152,14 +156,20 @@ class DeviceManager:
+             return
+ 
+         try:
+-            with PyAudio() as p:
++            p = PyAudio()
++            if hasattr(p, "__enter__"):
++                p_ctx = p
++            else:
++                p_ctx = nullcontext()
++
++            with p_ctx:
+                 # gather input devices grouped by host
+                 for host_index in range(p.get_host_api_count()):
+                     host = p.get_host_api_info_by_index(host_index)
+                     device_count = host.get('deviceCount', 0)
+                     for device_index in range(device_count):
+                         device = p.get_device_info_by_host_api_device_index(host_index, device_index)
+-                        if device.get("maxInputChannels", 0) > 0 and not device.get("isLoopbackDevice", True):
++                        if device.get("maxInputChannels", 0) > 0 and not device.get("isLoopbackDevice", paWASAPI is not None):
+                             buffer_mic_devices.setdefault(host["name"], []).append(device)
+                 if not buffer_mic_devices:
+                     buffer_mic_devices = {"NoHost": [{"index": -1, "name": "NoDevice"}]}
+-- 
+2.53.0
+

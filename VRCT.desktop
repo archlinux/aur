@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=VRCT
+Exec=vrct %U
+Terminal=false
+Icon=vrct
+StartupWMClass=VRCT
+Comment=VRChat Chatbox Translator & Transcription
+Categories=Network;Utility;Game;

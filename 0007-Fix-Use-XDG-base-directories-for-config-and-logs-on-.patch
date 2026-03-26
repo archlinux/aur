@@ -1,0 +1,108 @@
+From 13819b5333c6477f46c0c7769b9aebfeecfd44a7 Mon Sep 17 00:00:00 2001
+From: Reyka Matthies <openglfreak@googlemail.com>
+Date: Thu, 26 Mar 2026 04:55:04 +0100
+Subject: [PATCH 07/12] [Fix] Use XDG base directories for config and logs on
+ posix systems
+
+---
+ src-python/config.py     | 40 +++++++++++++++++++++++++++++++++++++---
+ src-python/controller.py |  3 ++-
+ 2 files changed, 39 insertions(+), 4 deletions(-)
+
+diff --git a/src-python/config.py b/src-python/config.py
+index 1b81e2cb..9ee1b78d 100644
+--- a/src-python/config.py
++++ b/src-python/config.py
+@@ -1,6 +1,6 @@
+ import sys
+ import copy
+-from os import path as os_path, makedirs as os_makedirs
++from os import name as os_name, environ as os_environ, path as os_path, makedirs as os_makedirs
+ from json import load as json_load
+ from json import dump as json_dump
+ import threading
+@@ -38,6 +38,24 @@ except Exception:  # pragma: no cover - optional runtime
+ 
+ from utils import errorLogging, validateDictStructure, getComputeDeviceList
+ 
++def get_xdg_data_home():
++    data_home = os_environ.get('XDG_DATA_HOME')
++    if data_home:
++        return data_home
++    home = os_environ.get('HOME')
++    if home:
++        return os_path.join(home, '.local', 'share')
++    return None
++
++def get_xdg_state_home():
++    state_home = os_environ.get('XDG_STATE_HOME')
++    if state_home:
++        return state_home
++    home = os_environ.get('HOME')
++    if home:
++        return os_path.join(home, '.local', 'state')
++    return None
++
+ json_serializable_vars = {}
+ def json_serializable(var_name):
+     def decorator(func):
+@@ -598,6 +616,8 @@ class Config:
+     # Read Only
+     VERSION = ManagedProperty('VERSION', readonly=True, serialize=False)
+     PATH_LOCAL = ManagedProperty('PATH_LOCAL', readonly=True, serialize=False)
++    PATH_DATA = ManagedProperty('PATH_DATA', readonly=True, serialize=False)
++    PATH_STATE = ManagedProperty('PATH_STATE', readonly=True, serialize=False)
+     PATH_CONFIG = ManagedProperty('PATH_CONFIG', readonly=True, serialize=False)
+     PATH_LOGS = ManagedProperty('PATH_LOGS', readonly=True, serialize=False)
+     GITHUB_URL = ManagedProperty('GITHUB_URL', readonly=True, serialize=False)
+@@ -767,10 +787,24 @@ class Config:
+         self._VERSION = "3.4.2"
+         if getattr(sys, 'frozen', False):
+             self._PATH_LOCAL = os_path.dirname(sys.executable)
++            if os_name == 'posix':
++                data_home = get_xdg_data_home()
++                if not data_home:
++                    raise RuntimeError('Could not find XDG data home!')
++                self._PATH_DATA = os_path.join(data_home, 'VRCT')
++                state_home = get_xdg_state_home()
++                if not state_home:
++                    state_home = data_home
++                self._PATH_STATE = os_path.join(state_home, 'VRCT')
++            else:
++                self._PATH_DATA = self._PATH_LOCAL
++                self._PATH_STATE = self._PATH_LOCAL
+         else:
+             self._PATH_LOCAL = os_path.dirname(os_path.abspath(__file__))
+-        self._PATH_CONFIG = os_path.join(self._PATH_LOCAL, "config.json")
+-        self._PATH_LOGS = os_path.join(self._PATH_LOCAL, "logs")
++            self._PATH_DATA = self._PATH_LOCAL
++            self._PATH_STATE = self._PATH_LOCAL
++        self._PATH_CONFIG = os_path.join(self._PATH_DATA, "config.json")
++        self._PATH_LOGS = os_path.join(self._PATH_STATE, "logs")
+         os_makedirs(self._PATH_LOGS, exist_ok=True)
+         self._GITHUB_URL = "https://api.github.com/repos/misyaguziya/VRCT/releases/latest"
+         self._UPDATER_URL = "https://api.github.com/repos/misyaguziya/VRCT_updater/releases/latest"
+diff --git a/src-python/controller.py b/src-python/controller.py
+index fc2d1cf0..23c59ddf 100644
+--- a/src-python/controller.py
++++ b/src-python/controller.py
+@@ -9,6 +9,7 @@ from config import config
+ from model import model
+ from utils import removeLog, printLog, errorLogging, isConnectedNetwork, isValidIpAddress, isAvailableWebSocketServer
+ from errors import ErrorCode, VRCTError
++from os.path import abspath, dirname
+ 
+ class Controller:
+     def __init__(self) -> None:
+@@ -2540,7 +2541,7 @@ class Controller:
+ 
+     @staticmethod
+     def openFilepathConfigFile(*args, **kwargs) -> dict:
+-        Popen(['explorer', config.PATH_LOCAL.replace('/', '\\')], shell=True)
++        Popen(['explorer', dirname(abspath(config.PATH_CONFIG)).replace('/', '\\')], shell=True)
+         return {"status":200, "result":True}
+ 
+     def setEnableTranscriptionSend(self, *args, **kwargs) -> dict:
+-- 
+2.53.0
+

@@ -1,0 +1,145 @@
+From 3a9de5c0882290dc45c6fa6caa1da3a7d698bc11 Mon Sep 17 00:00:00 2001
+From: Reyka Matthies <openglfreak@googlemail.com>
+Date: Thu, 26 Mar 2026 06:07:59 +0100
+Subject: [PATCH 08/12] [Fix] Download models to data dir instead of local dir
+
+---
+ src-python/model.py | 42 ++++++++++++++++++++++++------------------
+ 1 file changed, 24 insertions(+), 18 deletions(-)
+
+diff --git a/src-python/model.py b/src-python/model.py
+index 904c9012..18b99b50 100644
+--- a/src-python/model.py
++++ b/src-python/model.py
+@@ -160,14 +160,19 @@ class Model:
+ 
+     def backwardCompatibleTranslatorCTranslate2ModelRenameWeightsDir(self):
+         return backwardCompatibleRenameWeightsDir(config.PATH_LOCAL)
+-        
++
+     def checkTranslatorCTranslate2ModelWeight(self, weight_type:str):
+-        return checkCTranslate2Weight(config.PATH_LOCAL, weight_type)
++        return (checkCTranslate2Weight(config.PATH_LOCAL, weight_type) or
++                checkCTranslate2Weight(config.PATH_DATA, weight_type))
+ 
+     def changeTranslatorCTranslate2Model(self):
+         self.ensure_initialized()
++        if checkCTranslate2Weight(config.PATH_LOCAL, config.CTRANSLATE2_WEIGHT_TYPE):
++            path = config.PATH_LOCAL
++        else:
++            path = config.PATH_DATA
+         self.translator.changeCTranslate2Model(
+-            path=config.PATH_LOCAL,
++            path=path,
+             model_type=config.CTRANSLATE2_WEIGHT_TYPE,
+             device=config.SELECTED_TRANSLATION_COMPUTE_DEVICE["device"],
+             device_index=config.SELECTED_TRANSLATION_COMPUTE_DEVICE["device_index"],
+@@ -175,10 +180,10 @@ class Model:
+             )
+ 
+     def downloadCTranslate2ModelWeight(self, weight_type, callback=None, end_callback=None):
+-        return downloadCTranslate2Weight(config.PATH_LOCAL, weight_type, callback, end_callback)
++        return downloadCTranslate2Weight(config.PATH_DATA, weight_type, callback, end_callback)
+ 
+     def downloadCTranslate2ModelTokenizer(self, weight_type):
+-        return downloadCTranslate2Tokenizer(config.PATH_LOCAL, weight_type)
++        return downloadCTranslate2Tokenizer(config.PATH_DATA, weight_type)
+ 
+     def isLoadedCTranslate2Model(self):
+         self.ensure_initialized()
+@@ -193,10 +198,11 @@ class Model:
+         self.translator.setChangedTranslatorParameters(is_changed)
+ 
+     def checkTranscriptionWhisperModelWeight(self, weight_type:str):
+-        return checkWhisperWeight(config.PATH_LOCAL, weight_type)
++        return (checkWhisperWeight(config.PATH_LOCAL, weight_type) or
++                checkWhisperWeight(config.PATH_DATA, weight_type))
+ 
+     def downloadWhisperModelWeight(self, weight_type, callback=None, end_callback=None):
+-        return downloadWhisperWeight(config.PATH_LOCAL, weight_type, callback, end_callback)
++        return downloadWhisperWeight(config.PATH_DATA, weight_type, callback, end_callback)
+ 
+     def resetKeywordProcessor(self):
+         self.ensure_initialized()
+@@ -390,7 +396,7 @@ class Model:
+ 
+     def addTranslationHistory(self, source: str, text: str) -> None:
+         """Add a message to translation context history.
+-        
++
+         Args:
+             source: "chat" | "mic" | "speaker"
+             text: message content
+@@ -398,24 +404,24 @@ class Model:
+         self.ensure_initialized()
+         if not text or not text.strip():
+             return
+-        
++
+         history_item = {
+             "source": source,
+             "text": text.strip(),
+             "timestamp": datetime.now().isoformat(),
+         }
+         self.translation_history.append(history_item)
+-        
++
+         # 最大件数を超えた場合は古いものを削除
+         if len(self.translation_history) > self.translation_history_max_items:
+             self.translation_history = self.translation_history[-self.translation_history_max_items:]
+-    
++
+     def getTranslationHistory(self, max_items: int = None) -> list[dict]:
+         """Get recent translation context history.
+-        
++
+         Args:
+             max_items: Maximum number of items to return (newest first)
+-        
++
+         Returns:
+             List of history items
+         """
+@@ -423,7 +429,7 @@ class Model:
+         if max_items is None or max_items <= 0:
+             return self.translation_history
+         return self.translation_history[-max_items:]
+-    
++
+     def clearTranslationHistory(self) -> None:
+         """Clear all translation context history."""
+         self.ensure_initialized()
+@@ -432,10 +438,10 @@ class Model:
+     def getTranslate(self, translator_name, source_language, target_language, target_country, message):
+         self.ensure_initialized()
+         success_flag = False
+-        
++
+         # Get context history for LLM-based translators
+         history = self.getTranslationHistory()
+-        
++
+         translation = self.translator.translate(
+                         translator_name=translator_name,
+                         weight_type=config.CTRANSLATE2_WEIGHT_TYPE,
+@@ -745,7 +751,7 @@ class Model:
+                 phrase_timeout=phrase_timeout,
+                 max_phrases=config.MIC_MAX_PHRASES,
+                 transcription_engine=config.SELECTED_TRANSCRIPTION_ENGINE,
+-                root=config.PATH_LOCAL,
++                root=config.PATH_DATA,
+                 whisper_weight_type=config.WHISPER_WEIGHT_TYPE,
+                 device=config.SELECTED_TRANSCRIPTION_COMPUTE_DEVICE["device"],
+                 device_index=config.SELECTED_TRANSCRIPTION_COMPUTE_DEVICE["device_index"],
+@@ -940,7 +946,7 @@ class Model:
+                 phrase_timeout=phrase_timeout,
+                 max_phrases=config.SPEAKER_MAX_PHRASES,
+                 transcription_engine=config.SELECTED_TRANSCRIPTION_ENGINE,
+-                root=config.PATH_LOCAL,
++                root=config.PATH_DATA,
+                 whisper_weight_type=config.WHISPER_WEIGHT_TYPE,
+                 device=config.SELECTED_TRANSCRIPTION_COMPUTE_DEVICE["device"],
+                 device_index=config.SELECTED_TRANSCRIPTION_COMPUTE_DEVICE["device_index"],
+-- 
+2.53.0
+

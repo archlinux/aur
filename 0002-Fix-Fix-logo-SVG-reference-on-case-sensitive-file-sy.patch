@@ -1,0 +1,26 @@
+From ad2f5c4e7b8f7498cbaff95aea5001f1abd354e3 Mon Sep 17 00:00:00 2001
+From: Reyka Matthies <openglfreak@googlemail.com>
+Date: Thu, 26 Mar 2026 01:35:33 +0100
+Subject: [PATCH 02/12] [Fix] Fix logo SVG reference on case-sensitive file
+ systems
+
+---
+ src-ui/views/app/others/window_title_bar/WindowTitleBar.jsx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src-ui/views/app/others/window_title_bar/WindowTitleBar.jsx b/src-ui/views/app/others/window_title_bar/WindowTitleBar.jsx
+index a8848b3e..31326d30 100644
+--- a/src-ui/views/app/others/window_title_bar/WindowTitleBar.jsx
++++ b/src-ui/views/app/others/window_title_bar/WindowTitleBar.jsx
+@@ -4,7 +4,7 @@ import styles from "./WindowTitleBar.module.scss";
+ import XMarkSvg from "@images/cancel.svg?react";
+ import SquareSvg from "@images/square.svg?react";
+ import LineSvg from "@images/line.svg?react";
+-import VrctSvg from "@images/vrct.svg?react";
++import VrctSvg from "@images/VRCT.svg?react";
+ 
+ export const WindowTitleBar = () => {
+     const { asyncCloseApp, asyncToggleMaximizeApp, asyncMinimizeApp} = useWindow();
+-- 
+2.53.0
+

@@ -1,0 +1,67 @@
+From 655d95bcb3e2506d3a2199b7a035c217811001f3 Mon Sep 17 00:00:00 2001
+From: Reyka Matthies <openglfreak@googlemail.com>
+Date: Thu, 26 Mar 2026 01:42:46 +0100
+Subject: [PATCH 04/12] [Fix] Do not crash in recorder or transcriber if
+ PyAudioWPatch is unavailable
+
+---
+ .../models/transcription/transcription_recorder.py  | 13 ++++++++++++-
+ .../transcription/transcription_transcriber.py      |  9 ++++++++-
+ 2 files changed, 20 insertions(+), 2 deletions(-)
+
+diff --git a/src-python/models/transcription/transcription_recorder.py b/src-python/models/transcription/transcription_recorder.py
+index 30eb946e..6efe9e23 100644
+--- a/src-python/models/transcription/transcription_recorder.py
++++ b/src-python/models/transcription/transcription_recorder.py
+@@ -7,9 +7,20 @@ in tests.
+ 
+ from typing import Any
+ from speech_recognition import Recognizer, Microphone
+-from pyaudiowpatch import get_sample_size, paInt16
+ from datetime import datetime
+ 
++try:
++    import pyaudiowpatch as pyaudio
++except ImportError:
++    import pyaudio
++    @staticmethod
++    def get_pyaudio():
++        return pyaudio
++    Microphone.get_pyaudio = get_pyaudio
++
++get_sample_size = pyaudio.get_sample_size
++paInt16 = pyaudio.paInt16
++
+ 
+ class BaseRecorder:
+     def __init__(self, source: Any, energy_threshold: int, dynamic_energy_threshold: bool, record_timeout: int) -> None:
+diff --git a/src-python/models/transcription/transcription_transcriber.py b/src-python/models/transcription/transcription_transcriber.py
+index 6ea3ad8f..a6f5b578 100644
+--- a/src-python/models/transcription/transcription_transcriber.py
++++ b/src-python/models/transcription/transcription_transcriber.py
+@@ -12,7 +12,6 @@ from typing import Any, Dict, List, Optional, Union
+ from speech_recognition import Recognizer, AudioData, AudioFile
+ from speech_recognition.exceptions import UnknownValueError
+ from datetime import timedelta
+-from pyaudiowpatch import get_sample_size, paInt16
+ from .transcription_languages import transcription_lang
+ from .transcription_whisper import getWhisperModel, checkWhisperWeight
+ 
+@@ -21,6 +20,14 @@ import numpy as np
+ from pydub import AudioSegment
+ from utils import errorLogging
+ 
++try:
++    import pyaudiowpatch as pyaudio
++except ImportError:
++    import pyaudio
++
++get_sample_size = pyaudio.get_sample_size
++paInt16 = pyaudio.paInt16
++
+ import warnings
+ warnings.simplefilter('ignore', RuntimeWarning)
+ 
+-- 
+2.53.0
+

@@ -1,0 +1,45 @@
+From a418c55e031b083bf413211b21c03534fcffaff7 Mon Sep 17 00:00:00 2001
+From: Reyka Matthies <openglfreak@googlemail.com>
+Date: Thu, 26 Mar 2026 06:58:40 +0100
+Subject: [PATCH 09/12] [Fix] Use correct program to open folder on each
+ operating system
+
+---
+ src-python/controller.py | 15 +++++++++++++--
+ 1 file changed, 13 insertions(+), 2 deletions(-)
+
+diff --git a/src-python/controller.py b/src-python/controller.py
+index 23c59ddf..7a10bc9d 100644
+--- a/src-python/controller.py
++++ b/src-python/controller.py
+@@ -2534,14 +2534,25 @@ class Controller:
+             config.ENABLE_CHECK_ENERGY_SEND = False
+         return {"status":200, "result":config.ENABLE_CHECK_ENERGY_SEND}
+ 
++    @staticmethod
++    def open_directory(path):
++        system_type = system()
++        if system_type == 'Windows':
++            return Popen(['explorer', path.replace('/', '\\')], shell=True)
++        elif system_type == 'Darwin':
++            return Popen(['open', abspath(path)])
++        elif system_type == 'Linux':
++            return Popen(['xdg-open', abspath(path)])
++        return None
++
+     @staticmethod
+     def openFilepathLogs(*args, **kwargs) -> dict:
+-        Popen(['explorer', config.PATH_LOGS.replace('/', '\\')], shell=True)
++        Controller.open_directory(config.PATH_LOGS)
+         return {"status":200, "result":True}
+ 
+     @staticmethod
+     def openFilepathConfigFile(*args, **kwargs) -> dict:
+-        Popen(['explorer', dirname(abspath(config.PATH_CONFIG)).replace('/', '\\')], shell=True)
++        Controller.open_directory(dirname(abspath(config.PATH_CONFIG)))
+         return {"status":200, "result":True}
+ 
+     def setEnableTranscriptionSend(self, *args, **kwargs) -> dict:
+-- 
+2.53.0
+

@@ -1,0 +1,35 @@
+From f08154909d0d80ca2840113b5cd0a8e5188587a3 Mon Sep 17 00:00:00 2001
+From: Reyka Matthies <openglfreak@googlemail.com>
+Date: Thu, 26 Mar 2026 07:26:02 +0100
+Subject: [PATCH 11/12] [Fix] Fix error when running PyInstaller
+
+---
+ spec/backend.spec      | 2 +-
+ spec/backend_cuda.spec | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/spec/backend.spec b/spec/backend.spec
+index e53f29ce..84f7b84d 100644
+--- a/spec/backend.spec
++++ b/spec/backend.spec
+@@ -58,5 +58,5 @@ coll = COLLECT(
+     strip=False,
+     upx=True,
+     upx_exclude=[],
+-    name='.',
++    name='',
+ )
+diff --git a/spec/backend_cuda.spec b/spec/backend_cuda.spec
+index 9d16e80c..29a0cdd9 100644
+--- a/spec/backend_cuda.spec
++++ b/spec/backend_cuda.spec
+@@ -58,5 +58,5 @@ coll = COLLECT(
+     strip=False,
+     upx=True,
+     upx_exclude=[],
+-    name='.',
++    name='',
+ )
+-- 
+2.53.0
+
