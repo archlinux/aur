@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="GPU-accelerated terminal multiplexer"
 arch=('x86_64')
 url="https://github.com/patcito/prettymux"
-license=('MIT')
+license=('GPL-3.0-only')
 depends=('qt6-base' 'qt6-webengine' 'libgl')
 makedepends=('cmake' 'gcc' 'zig' 'git')
 source=(
@@ -46,4 +46,8 @@ package() {
   # Desktop entry
   install -Dm644 "$srcdir/prettymux/packaging/prettymux.desktop" \
     "$pkgdir/usr/share/applications/prettymux.desktop"
+
+  # License
+  install -Dm644 "$srcdir/prettymux/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
