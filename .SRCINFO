@@ -1,6 +1,6 @@
 pkgbase = zerx-lab-pencil-bin
 	pkgdesc = Pencil - Full canvas design tool with native performance
-	pkgver = 1.1.40
+	pkgver = 1.1.42
 	pkgrel = 1
 	url = https://www.pencil.dev
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = zerx-lab-pencil-bin
 	depends = cairo
 	depends = dbus
 	depends = expat
+	depends = hicolor-icon-theme
 	depends = libcups
 	depends = libdrm
 	depends = libsecret
@@ -29,7 +30,7 @@ pkgbase = zerx-lab-pencil-bin
 	provides = pencil
 	conflicts = pencil
 	options = !strip
-	source_x86_64 = Pencil-1.1.40-linux-x64.tar.gz::https://www.pencil.dev/download/Pencil-linux-x64.tar.gz
-	sha256sums_x86_64 = 019cd5283161460c21ccffed5a47b9f33eeb47aa8c1452937a2afa8f97fa593d
+	source_x86_64 = Pencil-1.1.42-linux-x64.tar.gz::https://www.pencil.dev/download/Pencil-linux-x64.tar.gz
+	sha256sums_x86_64 = d1b1a594bc921b8ad1efae58e53653e3289e54af428360654cb0042ccca87d39
 
 pkgname = zerx-lab-pencil-bin
