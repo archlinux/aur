@@ -1,0 +1,17 @@
+pkgbase = attackshark-battery-bridge
+	pkgdesc = Bridge proprietary Attack Shark mouse battery reports into standard Linux battery interfaces
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/maxboeer/attackshark-battery-bridge
+	install = attackshark-battery-bridge.install
+	arch = x86_64
+	license = MIT
+	makedepends = python
+	makedepends = python-pyinstaller
+	depends = glibc
+	depends = systemd
+	backup = etc/attackshark-battery-bridge/config.toml
+	source = attackshark-battery-bridge-1.1.0.tar.gz::https://github.com/maxboeer/attackshark-battery-bridge/archive/refs/tags/v1.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = attackshark-battery-bridge
