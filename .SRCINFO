@@ -1,0 +1,14 @@
+pkgbase = telegramtui
+	pkgdesc = Telegram TUI client for the terminal, inspired by lazygit
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/k4dy/telegramtui
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = java-runtime>=21
+	depends = tdlib
+	source = telegramtui-1.0.0.jar::https://github.com/k4dy/telegramtui/releases/download/v1.0.0/telegramtui-1.0.0.jar
+	sha256sums = 8129a3b9a2948df90a5a87c7cfc43a447d7c0f61e41e3bdfe2754c8f62777820
+
+pkgname = telegramtui
