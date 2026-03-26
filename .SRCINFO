@@ -1,20 +1,30 @@
 pkgbase = lua-ansicolors
 	pkgdesc = ANSI terminal color manipulation for Lua
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kikito/ansicolors.lua
 	arch = any
 	license = MIT
-	makedepends = luarocks
 	source = lua-ansicolors-1.0.2.tar.gz::https://github.com/kikito/ansicolors.lua/archive/v1.0.2.tar.gz
 	sha256sums = fa76a465c2e0d342f6d5a1d44c63bd398053f206f41c7b5356b551694f899d64
 
 pkgname = lua-ansicolors
-	pkgdesc = ANSI terminal color manipulation module for Lua 5.3
+	pkgdesc = ANSI terminal color manipulation module for Lua 5.5
+	depends = lua>=5.5
+	depends = lua<5.6
 
 pkgname = lua51-ansicolors
 	pkgdesc = ANSI terminal color manipulation module for Lua 5.1
+	depends = lua51
 
 pkgname = lua52-ansicolors
 	pkgdesc = ANSI terminal color manipulation module for Lua 5.2
+	depends = lua52
 
+pkgname = lua53-ansicolors
+	pkgdesc = ANSI terminal color manipulation module for Lua 5.3
+	depends = lua53
+
+pkgname = lua54-ansicolors
+	pkgdesc = ANSI terminal color manipulation module for Lua 5.4
+	depends = lua54
