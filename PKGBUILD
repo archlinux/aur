@@ -1,46 +1,49 @@
 # Maintainer: huza(elza) <https://github.com/khuza08>
 pkgname=rustify
-pkgver=r130.e96912e
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="A modern YouTube music player built with Tauri and Rust"
 arch=('x86_64')
 url="https://github.com/khuza08/rustify"
 license=('MIT')
 depends=('webkit2gtk-4.1' 'gtk3' 'libsoup3' 'libnm' 'librsvg' 'sqlite' 'yt-dlp' 'ffmpeg')
-makedepends=('git' 'nodejs' 'npm' 'rust' 'cargo' 'pkgconf')
+makedepends=('nodejs' 'npm' 'rust' 'cargo' 'pkgconf')
 provides=('rustify')
-conflicts=('rustify')
-source=('rustify::git+https://github.com/khuza08/rustify.git#branch=devel'
-        'rustify.desktop')
-sha256sums=('SKIP'
-            'SKIP')
-
-pkgver() {
-  cd "$srcdir/rustify"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+conflicts=('rustify-git')
+source=("rustify-$pkgver.tar.gz::https://github.com/khuza08/rustify/archive/v$pkgver.tar.gz"
+        "rustify.desktop")
+sha256sums=('c4d672046e79a8d4f2e7e6d23c234ee70b599e5cfc1ca6e4fa07079d69d4c585'
+            '419d082c7952f458874793432d3703fdb57a5366dd4ae80c5276f5ea7ab4a765')
 
 prepare() {
-  cd "$srcdir/rustify"
+  # Check for unmanaged files that might conflict
+  if [ -f "/usr/bin/rustify" ] || [ -f "/usr/share/applications/rustify.desktop" ]; then
+    echo ":: Found existing manual rustify files in /usr/bin or /usr/share/applications."
+    read -p ":: Do you want to remove them now? (requires sudo) [y/N] " _cleanup
+    if [[ "$_cleanup" =~ ^[Yy]$ ]]; then
+      sudo rm -f "/usr/bin/rustify" "/usr/share/applications/rustify.desktop"
+      sudo rm -f /usr/share/icons/hicolor/*/apps/rustify.png
+    fi
+  fi
+
+  cd "$srcdir/rustify-$pkgver"
   # Remove externalBin from tauri.conf.json — AUR uses system yt-dlp/ffmpeg/deno
   sed -i '/"externalBin"/,/\]/d' src-tauri/tauri.conf.json
-  # Use system SQLite instead of bundled (bundled fails with lld on Arch)
+  # Use system SQLite instead of bundled
   sed -i 's/rusqlite = { version = "0.31", features = \["bundled"\] }/rusqlite = { version = "0.31" }/' src-tauri/Cargo.toml
 }
 
 build() {
-  cd "$srcdir/rustify"
-  # Install frontend dependencies (use npm ci for reproducible, lockfile-based installs)
+  cd "$srcdir/rustify-$pkgver"
   npm ci
-  # Build the Tauri application — --no-bundle produces just the binary
   npm run tauri build -- --no-bundle
 }
 
 package() {
-  cd "$srcdir/rustify"
+  cd "$srcdir/rustify-$pkgver"
   
-  # Install the main binary (built as rustify-app, installed as rustify)
-  install -Dm755 "src-tauri/target/release/rustify-app" "$pkgdir/usr/bin/rustify"
+  # Install the main binary
+  install -Dm755 "src-tauri/target/release/rustify" "$pkgdir/usr/bin/rustify"
   
   # Install the desktop entry
   install -Dm644 "$srcdir/rustify.desktop" "$pkgdir/usr/share/applications/rustify.desktop"
