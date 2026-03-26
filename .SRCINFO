@@ -13,8 +13,8 @@ pkgbase = basecamp-cli
 	optdepends = zsh: for zsh shell completions
 	optdepends = fish: for fish shell completions
 	source_x86_64 = https://github.com/basecamp/basecamp-cli/releases/download/v0.7.2/basecamp_0.7.2_linux_amd64.tar.gz
-	sha256sums_x86_64 = 4e208fca647c1dd275c354bb1ded87826b56eb583d20be783049a3fdec593e75
+	sha256sums_x86_64 = 9561c6a18180975d934e9e48265dbde9a53ebc8dc3528dea1f13759de8a6c1f4
 	source_aarch64 = https://github.com/basecamp/basecamp-cli/releases/download/v0.7.2/basecamp_0.7.2_linux_arm64.tar.gz
-	sha256sums_aarch64 = 5a76e4b9e50ba6e85c2dc6ff2fd50b02bb64614035d06e08cbf15fe1546efd18
+	sha256sums_aarch64 = 40643be90e0a1a81c1c9f15183596abc21f8e0fc2e04cbb60991e7919b77c15d
 
 pkgname = basecamp-cli
