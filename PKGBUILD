@@ -90,7 +90,19 @@ build() {
   # Limit the number of parallel jobs to avoid OOM
   export MAX_JOBS=$_jobs
   export VLLM_TARGET_DEVICE=rocm
-  export PYTORCH_ROCM_ARCH="gfx906;gfx908;gfx90a;gfx942;gfx1100;gfx1101;gfx1200;gfx1201"
+  if [[ -z "$PYTORCH_ROCM_ARCH" ]]; then
+    PYTORCH_ROCM_ARCH="gfx906;gfx908;gfx90a;gfx942;gfx950;gfx1030;gfx1100;gfx1101;gfx1150;gfx1151;gfx1152;gfx1153;gfx1200;gfx1201"
+    if [[ -n "$ROCM_ARCH" ]]; then
+      PYTORCH_ROCM_ARCH="$ROCM_ARCH"
+    elif [[ ! -v ROCM_ARCH && $(command -v rocminfo 2>/dev/null) ]]; then
+      _detected_archs=$(rocminfo | grep -oP 'Name:\s+\Kgfx\d+' | sort -u | tr '\n' ';' | sed 's/;$//')
+      if [[ -n "$_detected_archs" ]]; then
+        PYTORCH_ROCM_ARCH="$_detected_archs"
+      fi
+    fi
+    export PYTORCH_ROCM_ARCH
+  fi
+  echo "Building for ROCM=$PYTORCH_ROCM_ARCH"
   # Build
   python setup.py bdist_wheel --dist-dir=dist
   #python -m build --wheel --no-isolation # this does not work currently
