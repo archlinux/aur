@@ -1,6 +1,6 @@
 pkgbase = codimux
 	pkgdesc = ffmpeg GUI for encoding video to different platforms
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/codismodiss/CoDiMux
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = codimux
 	depends = python
 	depends = python-gobject
 	depends = libadwaita
-	source = codimux-0.1.0.tar.gz::https://github.com/codismodiss/CoDiMux/archive/refs/tags/v0.1.0.tar.gz
+	source = codimux-0.2.0.tar.gz::https://github.com/codismodiss/CoDiMux/archive/refs/tags/v0.2.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = codimux
