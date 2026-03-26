@@ -48,7 +48,7 @@ install_build_deps() {
             ;;
         arch|manjaro|endeavouros)
             echo -e "\033[1;33m[INFO]\033[0m Installing build dependencies for Arch Linux..."
-            if ! pacman -Syu --noconfirm base-devel pkg-config openssl; then
+            if ! pacman -S --noconfirm base-devel pkg-config openssl; then
                 echo -e "\033[0;31m[ERROR]\033[0m Failed to install build dependencies."
                 exit 1
             fi
