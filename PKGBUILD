@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _pkgname=tkrplot
-_pkgver=0.0-30
+_pkgver=0.0-32
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -17,8 +17,8 @@ depends=(
   tk
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('25a79b39195d9523671e3eeac18ea597')
-b2sums=('2ff5b667101a638b4eeeb1cb66a79798ccb44bdefe5c012d7bacf0a46a309b57f610cc8a160cc4936d8c47bdafda314284b52111323305c493cbe20b11611be9')
+md5sums=('6fa364a3294d1ab10180bd95cdd6d388')
+b2sums=('cdb718db6a4fa35b3363103af476b2e967811b48ec392e4e6d8c5c1c350e8f52765e27a1627fbbdc8ff144322d5c83b76049955a1abd100392fc1885b62c68dc')
 
 build() {
   mkdir build
