@@ -1,7 +1,7 @@
 pkgbase = dinky
 	pkgdesc = A terminal text editor for those who just want to edit some text
 	pkgver = 0.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sedwards2009/dinky
 	arch = x86_64
 	license = MIT
