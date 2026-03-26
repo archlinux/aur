@@ -172,6 +172,9 @@ build() {
     cd src-tauri
     cargo tauri build --no-bundle
     cd ..
+
+    find src-tauri/target/release/_internal -type f -name '*.so' -exec chrpath --replace "\$ORIGIN:/opt/$_pkgname/_internal" \{\} \;
+    find src-tauri/target/release/_internal -type f -name '*.so.*' -exec chrpath --replace "\$ORIGIN:/opt/$_pkgname/_internal" \{\} \;
 }
 
 package() {
