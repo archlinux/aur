@@ -7,8 +7,8 @@ pkgbase = bfg-bin
 	arch = aarch64
 	license = Apache License 2.0
 	source_x86_64 = bfg::https://github.com/tjf1dev/bfg/releases/download/v1.3/bfg-linux-x64-v1.3
-	sha256sums_x86_64 = e134cd214dd45df486e5d7204632818019f49393ae3448f4624ae33b7fdea493
+	sha256sums_x86_64 = 66ab9f393ebeeeded6d64eed9079df7b6ba04ec6b944aa621fc4526ffd047e51
 	source_aarch64 = bfg::https://github.com/tjf1dev/bfg/releases/download/v1.3/bfg-linux-arm64-v1.3
-	sha256sums_aarch64 = 6165cf1d982d5e967db28243d8cf27a573aaf95713d400ebf93d8de639dd6ac9
+	sha256sums_aarch64 = 6e6a31db0657641cdc69827a666c837a620b603a1a667cbef18e983138d06986
 
 pkgname = bfg-bin
