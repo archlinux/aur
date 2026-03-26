@@ -30,4 +30,4 @@ path = [
     "ElmerGrid_unv_convert.patch",
 ]
 SPDX-FileCopyrightText = "CSC - IT Center for Science Ltd."
-SPDX-License-Identifier = "GPL-2.0-or-later"
+SPDX-License-Identifier = "GPL-2.0-only"

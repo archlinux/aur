@@ -12,7 +12,7 @@ pkgrel=1
 pkgdesc="A finite element software for multiphysical problems (without GUI and Ice)"
 arch=('x86_64')
 url="https://www.elmerfem.org"
-license=('GPL-2.0-or-later AND LGPL-2.1-or-later AND LicenseRef-Elmer')
+license=('GPL-2.0-only AND LGPL-2.1-only AND LicenseRef-Elmer')
 conflicts=('elmerfem-git' 'elemerfem')
 options=(!debug)
 
