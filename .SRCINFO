@@ -1,7 +1,7 @@
 pkgbase = autocolor
 	pkgdesc = Switch themes on colour scheme change
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kimiblock/autoColor
 	arch = x86_64
 	license = GPL-3.0-or-later
