@@ -4,7 +4,7 @@
 _pkgauthor=bitrise-io
 _pkgname=envman
 pkgname="${_pkgname}-bin"
-pkgver=2.5.5
+pkgver=2.5.6
 pkgrel=1
 pkgdesc="Manage Environment Variable collections"
 arch=('x86_64' 'aarch64')
@@ -23,8 +23,8 @@ source_aarch64=("${_pkgsrc}-${arch[1]}::${url}/releases/download/v${pkgver}/${_p
 
 sha256sums=('3006e07e1922e1714966fdb0846a327cc17ff0eac152edb5df4a3a45e2d60aca'
             'a0379118157469b6a466bf070c8986ffbca0874d10bb4950e0c6018544914414')
-sha256sums_x86_64=('4dac4bb581bca5e8cb1637844013b78d66218ef3229b0a17404bfa900829b111')
-sha256sums_aarch64=('6043dd7017c5bb4dc0b3de57d0ad4760a0464aacfe88b38a755f1a28577312a5')
+sha256sums_x86_64=('57b85dd1bf81d0491545f760adeaf910ff0dc2890a08b013024842042f93581f')
+sha256sums_aarch64=('47e5c9227f378879cf0bfff2dc538166ee102184f70fb9523f134caafd569da5')
 
 package() {
   cd "${srcdir}" || exit
