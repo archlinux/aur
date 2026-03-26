@@ -16,29 +16,29 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/upscale"
     git describe --long --tags --always | sed 's/^v//;s/-/+/g'
 }
 
 build() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/upscale"
     export CGO_ENABLED=0
     export GOFLAGS="-buildvcs=false"
     go build -trimpath -ldflags "-s -w" -o upscale .
 }
 
 package() {
-    cd "$srcdir/$pkgname"
+    cd "$srcdir/upscale"
 
     install -Dm755 upscale "$pkgdir/usr/bin/upscale"
 
-    install -Dm755 install.sh "$pkgdir/usr/share/$pkgname/install.sh"
+    install -Dm755 install.sh "$pkgdir/usr/share/upscale/install.sh"
 
-    install -dm755 "$pkgdir/usr/share/$pkgname/tools/anime4k"
+    install -dm755 "$pkgdir/usr/share/upscale/tools/anime4k"
     for glsl in tools/anime4k/*.glsl; do
         install -Dm644 "$glsl" \
-            "$pkgdir/usr/share/$pkgname/tools/anime4k/$(basename "$glsl")"
+            "$pkgdir/usr/share/upscale/tools/anime4k/$(basename "$glsl")"
     done
 
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/upscale/LICENSE"
 }
