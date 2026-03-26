@@ -35,11 +35,11 @@ makedepends=(
 build() {
     set -e
     cd "$srcdir"/"$pkgname"/client
+    sed -i 's|"app\.tcss"|"/usr/share/retibbs/app.tcss"|' retibbs_textual.py
     nuitka --mode=accelerated \
         --include-module=modals \
         --include-module=announce_handler \
         retibbs_textual.py
-
 }
 package() {
     set -e
