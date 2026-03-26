@@ -1,0 +1,6 @@
+rinertia-git/
+src/
+pkg/
+*.pkg.tar.*
+*.log
+*.src.tar.*
