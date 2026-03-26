@@ -2,7 +2,7 @@
 # Maintainer: Miki Tebeka <miki@353solutions.com>
 
 pkgname='ghinst-bin'
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Install binaries from GitHub releases to `~/.local/bin`.'
 url='https://github.com/tebeka/ghinst'
@@ -12,10 +12,10 @@ provides=('ghinst')
 conflicts=('ghinst')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/tebeka/ghinst/releases/download/v${pkgver}/ghinst_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('4b2fd815e096d4e4aeb51dd266494119a0e61dd9d79b685c304ad4a2a9e3d200')
+sha256sums_aarch64=('25bf2b3ca9759d3302a4815d2190f75eed58f1e19b8bceab26a199f560654099')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/tebeka/ghinst/releases/download/v${pkgver}/ghinst_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('8982b608df509fbddbefef4308e9e03e4bf91f016bba1cc5aa602e201e674986')
+sha256sums_x86_64=('0ff71c736e3ca68bbb0f4f19d85b3590998059f388ae3e2b0d829d69c5d2f2e8')
 
 package() {
   install -Dm755 "./ghinst" "${pkgdir}/usr/bin/ghinst"
