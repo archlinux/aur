@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="Graphical user interface for the Elmer software suit"
 arch=('x86_64')
 url="https://www.elmerfem.org"
-license=('GPL-2.0-or-later AND LicenseRef-ElmerGUI-exception')
+license=('GPL-2.0-only AND LicenseRef-ElmerGUI-exception')
 conflicts=('elmerfem-git' 'elemerfem')
 options=(!debug)
 
