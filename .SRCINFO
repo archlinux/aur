@@ -1,6 +1,6 @@
 pkgbase = obs-pwvideo
 	pkgdesc = OBS Plugin for generic PipeWire video sources
-	pkgver = 0.1.1
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/hoshinolina/obs-pwvideo
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = obs-pwvideo
 	depends = libpipewire
 	depends = obs-studio
 	depends = glibc
-	source = obs-pwvideo::https://github.com/hoshinolina/obs-pwvideo/archive/refs/tags/0.1.1.tar.gz
-	sha256sums = f68a570f6c60964e1d2b4cd9757190f858abded3d0ef51c837c7ce57da2c53cd
+	source = obs-pwvideo::https://github.com/hoshinolina/obs-pwvideo/archive/refs/tags/0.2.3.tar.gz
+	sha256sums = 27b81ade7dd3ec74ae7aca4b22e0c9f552eba663ff54f91f2dada57a371f37f4
 
 pkgname = obs-pwvideo
