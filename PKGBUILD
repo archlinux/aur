@@ -5,7 +5,7 @@ pkgver() {
     cd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
 }
-pkgrel=1
+pkgrel=2
 url=https://github.com/kc1awv/RetiBBS
 pkgdesc="BBS over Reticulum TUI client"
 arch=(any)
@@ -36,6 +36,7 @@ build() {
     set -e
     cd "$srcdir"/"$pkgname"/client
     sed -i 's|"app\.tcss"|"/usr/share/retibbs/app.tcss"|' retibbs_textual.py
+    sed -i 's|"address_book\.json"|os.path.expanduser("~/.config/retibbs_address_book.json")|' retibbs_textual.py
     nuitka --mode=accelerated \
         --include-module=modals \
         --include-module=announce_handler \

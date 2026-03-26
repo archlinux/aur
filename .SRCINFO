@@ -1,7 +1,7 @@
 pkgbase = retibbs-client-git
 	pkgdesc = BBS over Reticulum TUI client
 	pkgver = r76.7c26d2c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kc1awv/RetiBBS
 	arch = any
 	license = MIT
