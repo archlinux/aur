@@ -1,6 +1,6 @@
 # Maintainer: Codiak 540<Codiak540@bbs.4d2.org>
 pkgname=task-manager
-pkgver=3.0.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="A simple, lightweight, and powerful task manager for Linux. Inspired by the original taskmgr.exe, Aims to have as much information (and control) relating to your system as possible."
 arch=('x86_64' 'i686' 'aarch64')
