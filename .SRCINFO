@@ -1,4 +1,4 @@
-pkgbase = dnsutils
+pkgbase = bind-utils-standalone
 	pkgdesc = DNS client utilities from BIND: dig, host, nslookup, nsupdate, delv, mdig
 	pkgver = 9.20.21
 	pkgrel = 1
@@ -25,4 +25,4 @@ pkgbase = dnsutils
 	source = git+https://gitlab.isc.org/isc-projects/bind9.git#tag=v9.20.21
 	sha256sums = 11bf077ff39b78c705f42b3c06bd140f3c2c4f4476639206ea996f508c2da9ca
 
-pkgname = dnsutils
+pkgname = bind-utils-standalone
