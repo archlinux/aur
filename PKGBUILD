@@ -10,6 +10,7 @@ groups=('tango-controls')
 arch=('any')
 url="https://gitlab.com/tango-controls/itango"
 license=('LGPL-3.0-or-later')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm')
 depends=('python' 'python-pytango>=9.3' 'ipython>=8.5' 'python-packaging' 'python-traitlets' 'python-ipykernel')
 optdepends=('python-qtconsole: for itango-qt GUI console')
 conflicts=('itango-git')

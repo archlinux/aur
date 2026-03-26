@@ -6,6 +6,10 @@ pkgbase = itango
 	arch = any
 	groups = tango-controls
 	license = LGPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
 	depends = python
 	depends = python-pytango>=9.3
 	depends = ipython>=8.5
@@ -14,7 +18,7 @@ pkgbase = itango
 	depends = python-ipykernel
 	optdepends = python-qtconsole: for itango-qt GUI console
 	conflicts = itango-git
-	source = https://files.pythonhosted.org/packages/21/ad/ec74e105040deda99bd2931c11e6e9c05de79b976c0b2278550f92ab256e/itango-0.3.0.tar.gz
+	source = https://pypi.io/packages/source/i/itango/itango-0.3.0.tar.gz
 	sha256sums = 1409cff2814f2945d2848c3c2777e5ed8ae5f45c6f16380abafcb9b5f3fed9d8
 
 pkgname = itango
