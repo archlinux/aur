@@ -3,6 +3,7 @@
 #_torch_platform=cu130
 #_torch_platform=rocm7.2
 _torch_platform=cpu
+_vendored_portaudio=true
 
 _name='VRCT'
 _pkgname='vrct'
@@ -13,7 +14,7 @@ pkgdesc='VRChat Chatbox Translator & Transcription (Git version)'
 arch=('x86_64')
 url='https://misyaguziya.github.io/VRCT-Docs/'
 license=('MIT')
-depends=('portaudio')
+depends=()
 makedepends=('npm' 'pyenv' 'cargo' 'git')
 install="$pkgname.install"
 source=("git+https://github.com/misyaguziya/VRCT.git"
@@ -65,6 +66,14 @@ b2sums=('SKIP'
         'cc661ecd970724a77af1278ab20d7d3eafc22119fb94ff7e310ee3eeb68af67d8c88d9e1e38c49117b8a45fbaedef4a506798cbc63214370a76105877b24763d'
         'ba6c3b3b03b860665f4db26609ca70ddf678acd79b85a62285d1b512431e7aca312118721fb808721fdadeced146443020808548adce825fb22a4f7e954a1816')
 
+if [ "${_vendored_portaudio:-}" = true ]; then
+    source+=("git+https://github.com/PortAudio/portaudio.git")
+    sha256sums+=('SKIP')
+    b2sums+=('SKIP')
+else
+    depends+=('portaudio')
+fi
+
 if check_option 'lto' 'y'; then
     export CARGO_PROFILE_RELEASE_LTO=true CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1
 fi
@@ -83,6 +92,16 @@ with_pyenv() (
 )
 
 prepare() {
+    if [ "${_vendored_portaudio:-}" = true ]; then
+        cd "$srcdir/portaudio"
+
+        (
+            cd bindings/cpp
+            autoreconf -fiv
+        )
+        autoreconf -fiv
+    fi
+
     cd "$srcdir/$_name"
 
     for patch in ../*.patch; do
@@ -122,6 +141,20 @@ EOF
 }
 
 build() {
+    if [ "${_vendored_portaudio:-}" = true ]; then
+        cd "$srcdir/portaudio"
+
+        local configure_options=(
+            --prefix="/opt/$_pkgname/_internal"
+            --libdir="/opt/$_pkgname/_internal"
+            --includedir="/portaudio_include"
+            --enable-cxx
+        )
+
+        ./configure "${configure_options[@]}"
+        make -j1
+    fi
+
     cd "$srcdir/$_name"
 
     npm run vite build
@@ -140,6 +173,11 @@ build() {
 package() {
     install -d -Dm755 "$pkgdir/opt"
     install -d -Dm755 "$pkgdir/opt/$_pkgname"
+    if [ "${_vendored_portaudio:-}" = true ]; then
+        make -C "$srcdir/portaudio" DESTDIR="$pkgdir" install
+        rm -r "$pkgdir/opt/vrct/_internal/pkgconfig"
+        rm -r "$pkgdir/portaudio_include"
+    fi
     install -Dm755 "$srcdir/$_name/src-tauri/target/release/VRCT" -t "$pkgdir/opt/$_pkgname"
     install -Dm755 "$srcdir/$_name/src-tauri/target/release/VRCT-sidecar" -t "$pkgdir/opt/$_pkgname"
     cp -a "$srcdir/$_name/src-tauri/target/release/_internal" -t "$pkgdir/opt/$_pkgname"
