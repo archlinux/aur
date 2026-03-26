@@ -1,6 +1,6 @@
 pkgbase = aperture-router
 	pkgdesc = Universal AI router for Tailscale Aperture with dynamic model discovery
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Wayazi/aperture-router
 	install = aperture-router.install
@@ -10,7 +10,7 @@ pkgbase = aperture-router
 	makedepends = cargo
 	depends = gcc-libs
 	backup = etc/sysconfig/aperture-router
-	source = aperture-router-0.2.0.tar.gz::https://github.com/Wayazi/aperture-router/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = 385c40791c000505e0a8419e1eaa890a176f0a02621fa816c4c4210715da3b99
+	source = aperture-router-0.2.1.tar.gz::https://github.com/Wayazi/aperture-router/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = cb29daaeefc3a38615055d2354498b36050b6d51b8991c0580bbcdc6d08b94e3
 
 pkgname = aperture-router
