@@ -1,10 +1,11 @@
+# Maintainer: Kenneth Shaw <kenshaw at gmail dot com>
 # Contributor: Jan Was <janek.jan at gmail dot com>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
-# Maintainer: tee < teeaur at duck dot com >
+# Contributor: tee < teeaur at duck dot com >
 
 pkgname=usql-bin
 pkgver=0.21.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A universal command-line interface for SQL databases'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/xo/usql"
@@ -28,4 +29,13 @@ package() {
     install -Dm755 usql -t "$pkgdir/usr/bin"
     install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+
+    # Generate and install shell completions
+    install -dm755 "${pkgdir}/usr/share/bash-completion/completions"
+    install -dm755 "${pkgdir}/usr/share/zsh/site-functions"
+    install -dm755 "${pkgdir}/usr/share/fish/vendor_completions.d"
+
+    "${pkgdir}/usr/bin/usql" --completion-script-bash > "${pkgdir}/usr/share/bash-completion/completions/usql"
+    "${pkgdir}/usr/bin/usql" --completion-script-zsh > "${pkgdir}/usr/share/zsh/site-functions/_usql"
+    "${pkgdir}/usr/bin/usql" --completion-script-fish > "${pkgdir}/usr/share/fish/vendor_completions.d/usql.fish"
 }

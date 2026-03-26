@@ -1,5 +1,7 @@
 /LICENSE
+/README.md
 /pkg/
 /src/
-/usql-bin-*.pkg.tar.zst
-/usql-bin-*.tar.bz2
+/*.tar.zst
+/*.tar.bz2
+/*.log
