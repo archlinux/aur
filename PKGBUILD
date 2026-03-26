@@ -8,7 +8,7 @@ url="https://github.com/k4dy/telegramtui"
 license=('MIT')
 depends=('java-runtime>=21' 'tdlib')
 source=("$pkgname-$pkgver.jar::https://github.com/k4dy/telegramtui/releases/download/v$pkgver/$pkgname-$pkgver.jar")
-sha256sums=('763b643e3348c46555c1d6f63fc30080321ee558f60664ac0a442161bf44df3d')
+sha256sums=('b6326747bcbe8ab76e5580da098a1392df43d96abca6522ffa1721e731ac7dde')
 
 package() {
     install -Dm644 "$pkgname-$pkgver.jar" "$pkgdir/usr/share/$pkgname/$pkgname.jar"
