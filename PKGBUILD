@@ -2,7 +2,7 @@
 pkgname=squidservers-bin
 _pkgname=squidservers
 pkgver=0.6.2
-pkgrel=4
+pkgrel=6
 pkgdesc="A tool to easily self-host Minecraft servers without port forwarding"
 arch=('x86_64')
 url="https://squidservers.com"
