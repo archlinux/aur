@@ -1,15 +1,15 @@
 pkgbase = jplag
 	pkgdesc = JPlag - Detecting Software Plagiarism
-	pkgver = 5.1.0
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = http://www.jplag.de
 	arch = any
 	license = GPL3
-	depends = java-runtime>=21
-	noextract = jplag-5.1.0-jar-with-dependencies.jar
-	source = https://github.com/jplag/JPlag/releases/download/v5.1.0/jplag-5.1.0-jar-with-dependencies.jar
+	depends = java-runtime>=25
+	noextract = jplag-6.3.0-jar-with-dependencies.jar
+	source = https://github.com/jplag/JPlag/releases/download/v6.3.0/jplag-6.3.0-jar-with-dependencies.jar
 	source = jplag
-	sha256sums = 58f85cea96bb42612bcdabdf0f7bd6174c80d47baae54ce33d2c8d46d5b33ad3
+	sha256sums = 5f2c21e8b88ed77134effcb3a5a3ab13d188f6a3e16d401387f7479e92db9aa2
 	sha256sums = c90ef8f84b16e29e64ec25d3861da4420b43862fc2fab1fd08e9e6c27f9928eb
 
 pkgname = jplag
