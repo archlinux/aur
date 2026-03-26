@@ -1,7 +1,7 @@
 # Maintainer: Klod Cripta <klodcripta@linux.it>
 
 pkgname=cleaner-advanced
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Bash script for system maintenance on Arch Linux and derivatives"
 arch=('any')
