@@ -4,6 +4,7 @@ _pkgauthor=cesarferreira
 _pkgname=stax
 _cratename=${_pkgname}
 _appname=stax
+_slinkname=st
 pkgname=${_cratename}
 pkgdesc="The fastest stacked-branch workflow for Git"
 
@@ -21,7 +22,7 @@ license=('MIT')
 makedepends=('rust' 'pkgconf' 'openssl')
 depends=('glibc' 'gcc-libs' 'libgit2')
 
-provides=("${_appname}")
+provides=("${_appname}" "${_slinkname}")
 conflicts=("${_appname}")
 
 source=("${_pkgname}-${_pkgvername}.crate::https://crates.io/api/v1/crates/${_cratename}/${_pkgvername}/download")
@@ -38,8 +39,9 @@ package() {
 	cd ${srcdir}/${_cratename}-${_pkgvername} || exit 1
 
 	install -Dm755 "target/release/${_appname}" "${pkgdir}/usr/bin/${_appname}"
+	ln -sf "/usr/bin/${_appname}" "${pkgdir}/usr/bin/${_slinkname}"
 
 	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-	# install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
