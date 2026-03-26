@@ -1,6 +1,6 @@
 pkgbase = bab-bin
 	pkgdesc = Task runner for defining project commands in YAML
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/bab-sh/bab
 	license = MIT
@@ -10,13 +10,13 @@ pkgbase = bab-bin
 	conflicts = bab
 	provides = bab
 	arch = aarch64
-	source_aarch64 = https://github.com/bab-sh/bab/releases/download/v0.8.0/bab_0.8.0_Linux_arm64.tar.gz
-	sha256sums_aarch64 = bc8dd6333e33f3e4c7b3d16da8b2e6809b5e39efa6ccc23ee19c1c1ce37ce35c
+	source_aarch64 = https://github.com/bab-sh/bab/releases/download/v0.8.1/bab_0.8.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 64d1c195fe95def6b742a104fec97f89e676d6466504e6a99db2495454aaa710
 	arch = armv7h
-	source_armv7h = https://github.com/bab-sh/bab/releases/download/v0.8.0/bab_0.8.0_Linux_armv7.tar.gz
-	sha256sums_armv7h = ec9f635b9a55ab4dfdeafd340bece8230371675b3dfe6f950f2ab4e6f727a0ce
+	source_armv7h = https://github.com/bab-sh/bab/releases/download/v0.8.1/bab_0.8.1_Linux_armv7.tar.gz
+	sha256sums_armv7h = cf49b6729798d2209c07918f5b5eade2659e90c8c0f5f7f0acd2766098a10f50
 	arch = x86_64
-	source_x86_64 = https://github.com/bab-sh/bab/releases/download/v0.8.0/bab_0.8.0_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 8f103d000a71860423ce9ddfd20e2871ad534d2e984ba71a501327418c763b0f
+	source_x86_64 = https://github.com/bab-sh/bab/releases/download/v0.8.1/bab_0.8.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 6b0343144751d2bbde68c5e3da2a131dfbcce75741dd04a4809c3194a9e60a6a
 	
 pkgname = bab-bin
