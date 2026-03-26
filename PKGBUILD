@@ -9,7 +9,7 @@ license=('custom')
 arch=('any')
 makedepends=('bash' 'wget' 'unzip' 'win2xcur')
 source=('pjsk_cursor.sh')
-sha256sums=('929dc91ee0d1159054640126fb7b35ebfb9ee8b113f1421b089c170092eadfa2')
+sha256sums=('20e696f922263ee40148f11b94f13425f07e9f81569f264041476078c387940f')
 
 prepare() {
   chmod +x "$srcdir"/pjsk_cursor.sh

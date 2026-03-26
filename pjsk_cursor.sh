@@ -95,7 +95,7 @@ download_cursors() {
         local success=false
         for attempt in {1..3}; do
             if [ ! -f "$fname" ]; then
-                echo "Downloading $fname (Attempt $attempt)..."
+                echo "Downloading $fname..."
                 wget -q --tries=1 --timeout=15 -O "$fname" "$url"
             fi
 
@@ -110,7 +110,7 @@ download_cursors() {
 
         if [ "$success" = true ]; then
             mkdir -p "$dir"
-            unzip -qo "$fname" -d "$dir" '*.ani' '*.cur'
+            unzip -qo "$fname" -d "$dir" '*.ani' '*.cur' 2>/dev/null
         else
             echo "Error: Failed to download or verify $fname after 3 attempts. Skipping." >&2
         fi
