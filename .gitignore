@@ -3,4 +3,5 @@ src/
 *.zst
 *.tar.gz
 *.log
+omni-*
 omnictl-*
