@@ -5,3 +5,5 @@ Icon=linux-tool
 Type=Application
 Categories=Utility;
 StartupNotify=true
+Comment=A Modern Package Manager
+
