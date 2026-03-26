@@ -12,7 +12,7 @@ depends=('iio-sensor-proxy')
 source=('git+https://github.com/Gaugeforever/iio-sensor-proxy-openrc.git')
 
 package_iio-sensor-proxy-openrc() {
-  pkgdesc="OpenRC init script for 'iio-sensory-proxy'."
+  pkgdesc="OpenRC init script for iio-sensor-proxy."
   depends=('iio-sensor-proxy')
 
   install -D -v -m755 "${srcdir}/iio-sensor-proxy-openrc/iio-sensor-proxy" "${pkgdir}/etc/init.d/iio-sensor-proxy"
