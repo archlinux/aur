@@ -2,7 +2,7 @@
 
 _appname=openide
 pkgname="$_appname-bin"
-pkgver=253.28294.334.7
+pkgver=253.28294.334.8
 pkgrel=1
 pkgdesc="OpenID is an open source software development tool for Java, Python, and other programming languages. It was created by the Astra Group, Haulmont, and Axiom JDK companies. It is fork of pycharm"
 arch=(x86_64)
@@ -23,7 +23,7 @@ source_x86_64=("https://download.openide.ru/${pkgver}/openIDE-${pkgver}.tar.gz")
 options=(!strip)
 sha256sums=('aa3e4f48f311c7b9368c878c05ff6b93672ab6da56bd60aba1109c118e7cbed5'
             '5df2ba94996f8e7bdcde97c9b60aef128c65f5308775b02ea7df41395523c88f')
-sha256sums_x86_64=('1b7d152b06a0b6094f29c16fe801152487f88c4c02a6cce5cc0f6addbe34c849')
+sha256sums_x86_64=('198ec42d1912f1ee0687a4030140d640ebddbe2f006edbb4d5390f67b528e7ff')
 
 package() {
   cd ""openIDE-${pkgver}""
