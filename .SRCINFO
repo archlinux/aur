@@ -1,6 +1,6 @@
 pkgbase = ojcsh
 	pkgdesc = A lightweight, minimal, and extensible Unix-like shell written in pure C — first building block of OJclicks OS
-	pkgver = 2.4.0
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://github.com/gragero/OJC-shell
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = ojcsh
 	makedepends = gcc
 	depends = glibc
 	depends = readline
-	source = ojcsh-2.4.0.tar.gz::https://github.com/gragero/OJC-shell/archive/refs/tags/V2.4.0.tar.gz
+	source = ojcsh-2.5.0.tar.gz::https://github.com/gragero/OJC-shell/archive/refs/tags/V2.5.0.tar.gz
 	sha256sums = 3e03e469ad6b8bed29aab15bf1adb66530f008b62bb48d30fe4342227514997f
 
 pkgname = ojcsh
