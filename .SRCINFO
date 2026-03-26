@@ -1,6 +1,6 @@
 pkgbase = secfetch
 	pkgdesc = Lightweight security state inspector for Linux
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/ake13-art/secfetch
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = secfetch
 	makedepends = python-pip
 	depends = python
 	provides = secfetch
-	source = secfetch-1.4.tgz::https://github.com/ake13-art/secfetch/archive/v1.4.tar.gz
-	sha256sums = 7e300f851f3b6046712a7886f7faa7487a296072b46322cf8cb80c748cfdaf7c
+	source = secfetch-1.5.tgz::https://github.com/ake13-art/secfetch/archive/v1.5.tar.gz
+	sha256sums = 6b2a248bb23de9d7a19f7bdb39f01a75bc6a48200dc406fc9d2e09c64d2c475a
 
 pkgname = secfetch
