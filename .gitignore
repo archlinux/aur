@@ -1,2 +1,11 @@
-*/
-*.pkg.tar.zst
+# SPDX-FileCopyrightText: Arch Linux contributors
+# SPDX-License-Identifier: 0BSD
+
+/.vscode/
+/edl/
+/Loaders/
+/src/
+/pkg/
+*.log
+*.pkg.*
+*.tar.*
