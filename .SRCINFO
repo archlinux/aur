@@ -1,6 +1,6 @@
 pkgbase = owlry-plugin-bookmarks
 	pkgdesc = Bookmarks plugin for Owlry — search and launch browser bookmarks (Firefox, Chrome, Chromium)
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://somegit.dev/Owlibou/owlry-plugins
 	install = owlry-plugin-bookmarks.install
@@ -11,7 +11,7 @@ pkgbase = owlry-plugin-bookmarks
 	optdepends = firefox: Firefox bookmarks support
 	optdepends = chromium: Chromium bookmarks support
 	optdepends = google-chrome: Chrome bookmarks support
-	source = owlry-plugin-bookmarks-1.0.0.tar.gz::https://somegit.dev/Owlibou/owlry-plugins/archive/owlry-plugin-bookmarks-v1.0.0.tar.gz
-	b2sums = SKIP
+	source = owlry-plugin-bookmarks-1.0.1.tar.gz::https://somegit.dev/Owlibou/owlry-plugins/archive/owlry-plugin-bookmarks-v1.0.1.tar.gz
+	b2sums = 1ae495d6dc9dce479f9676b4bfddc410bfc9be0f3f6b99f0626f007e15de55a52c4630a3facdb9671d0aaef61d30ab1fc27401476c6934371d68da6000e7e1a9
 
 pkgname = owlry-plugin-bookmarks
