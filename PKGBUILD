@@ -5,14 +5,15 @@
 
 pkgname=build2
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='build2 build system'
 arch=(x86_64)
 url='https://build2.org/'
 license=(MIT)
 makedepends=(chrpath)
-depends=(gcc-libs
-         glibc
+depends=(glibc
+         libgcc
+         libstdc++
          sqlite)
 source=(https://download.build2.org/$pkgver/build2-toolchain-$pkgver.tar.xz)
 sha256sums=('3722a89ea86df742539d0f91bb4429fd46bbf668553a350780a63411b648bf5d')
