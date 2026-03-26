@@ -1,9 +1,9 @@
 # Maintainer: David Gonzalez <neko.eth0 AT gmail DOT com>
 # Contributor: Ricardo Band <email AT ricardo DOT band>
-_pkgver="11.3.0.0-795"
-_folder_num="FOLDER12638439M"
-_folder_gpg="FOLDER12638420M"
-_driver_id="mfv7t"
+_pkgver="11.4.0.0-1435"
+_folder_num="FOLDER13988164M"
+_folder_gpg="FOLDER13988161M"
+_driver_id="2FGYM"
 pkgname=dell-idractools
 pkgver=${_pkgver/-/.}
 pkgrel=1
@@ -18,7 +18,7 @@ source=("https://dl.dell.com/${_folder_gpg}/1/Dell-iDRACTools-Web-LX-${_pkgver}_
         "https://dl.dell.com/${_folder_num}/1/Dell-iDRACTools-Web-LX-${_pkgver}_A00.tar.gz"
         LICENSE)
 sha256sums=('SKIP'
-            'cfbeb964a158ae2000c93e856acf91ac595ec9324008df6a6b7fa6d31e8ee3f5'
+            'b706d0ac3f09e74a32a9e6dfa883641e1edb0a8d2cbdd85908766f502417c3ca'
             '9bc2344836f09db9c0a9b7d1faa06ee59b6b77b5fff75ea2e607f71bd1a29f4e')
 validpgpkeys=("42550ABD1E80D7C1BC0BAD851285491434D8786F")
 
