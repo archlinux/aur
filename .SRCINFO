@@ -1,0 +1,22 @@
+pkgbase = wardn-bin
+	pkgdesc = Credential isolation for AI agents (agents never see real API keys - structural guarantee, not policy)
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/rohansx/wardn
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = wardn
+	conflicts = wardn
+	source = README-0.4.1.md::https://raw.githubusercontent.com/rohansx/wardn/v0.4.1/README.md
+	source = LICENSE-0.4.1::https://raw.githubusercontent.com/rohansx/wardn/v0.4.1/LICENSE
+	sha256sums = 753c056385053c15940a0e5d29a3a7cba0520a4f19aa7d82b50b16508434e7f2
+	sha256sums = 7f6af1b49f6b14bbc5d462025fcf48eecce61ec01366aef8dc506d2c9dc115f2
+	source_x86_64 = wardn-x86_64-0.4.1.tgz::https://github.com/rohansx/wardn/releases/download/v0.4.1/wardn-linux-amd64.tar.gz
+	sha256sums_x86_64 = 3359653abcc8461e7cbe33c7e45f7590d1d4b609a516cd94ba7694359351a3cc
+	source_aarch64 = wardn-aarch64-0.4.1.tgz::https://github.com/rohansx/wardn/releases/download/v0.4.1/wardn-linux-arm64.tar.gz
+	sha256sums_aarch64 = f498087a5ce0aee4f1b1a931d66dbf8672ebfac749a95e2c7b375459fa45678d
+
+pkgname = wardn-bin

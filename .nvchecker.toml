@@ -1,0 +1,5 @@
+[wardn-bin]
+source = "github"
+github = "rohansx/wardn"
+use_latest_release = true
+prefix = "v"
