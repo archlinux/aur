@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Kalisiak <tomasz.kalisiak3@gmail.com>
 
 pkgname=qt6-interfaceframework
-_pkgver=6.10.2
+_pkgver=6.11.0
 pkgver=${_pkgver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -22,7 +22,7 @@ makedepends=(cmake
 groups=(qt6)
 _pkgfn=${pkgname/6-/}
 source=(git+https://code.qt.io/qt/$_pkgfn#tag=v$_pkgver)
-sha256sums=('517931508c3b2f878455a625fa0d0295f75f925fb2a61209b1ac77a1dbeff965')
+sha256sums=('b8d8f470e477339137fc95314fbfc3ce7efadc74919d6b73f45c053b9b19787d')
 
 build() {
   cmake -B build -S $_pkgfn -G Ninja \
