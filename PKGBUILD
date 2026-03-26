@@ -1,12 +1,11 @@
 # based on https://gitlab.archlinux.org/archlinux/packaging/packages/linux-zen/-/raw/main/PKGBUILD
 
 # Maintainer: nuvole <mitltlatltl@gmail.com>
-# EOL: Apr, 2025 (Unlikely to continue maintenance, you cna adopt it if necessary)
 
 _variant=gaokun3
 pkgbase=linux-$_variant
 pkgver=6.19.y
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux for HUAWEI MateBook E Go (sc8280xp)'
 url='https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
 arch=('any')
@@ -72,7 +71,8 @@ prepare() {
     cd $_srcname
     # Not using git am to avoid setting git identity
     git apply $srcdir/linux-gaokun/patch\ sets/recommended/*
-    rm -rf .git # to avoid getting our kernel name polluted with the hash tag or dirty or +
+    # I just don't like scm version string
+    sed -i 's/\${scm_version}//' scripts/setlocalversion
     cp $srcdir/linux-gaokun/dts/sc8280xp-huawei-gaokun3*.dts* arch/arm64/boot/dts/qcom/
     cd ..
   fi
@@ -108,9 +108,7 @@ _package() {
     kmod
   )
   optdepends=(
-    'linux-firmware: firmware images needed for some devices'
     'linux-firmware-gaokun3: Firmware files for HUAWEI MateBook E Go (sc8280xp)'
-    'linux-firmware-qcom: Firmware files for Qualcomm SoCs'
     'wireless-regdb: to set the correct wireless channels of your country'
   )
   provides=(
