@@ -15,8 +15,8 @@ provides=("${pkgname}")
 makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-pip')
 depends=('python')
 
-source=("${pkgname}-${pkgver}.tgz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('6b2a248bb23de9d7a19f7bdb39f01a75bc6a48200dc406fc9d2e09c64d2c475a')
+source=("${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('08a075f5b7900e5ae5f770f039f9b387368f2aaf696717341dfb6034356dd845')
 
 
 package() {

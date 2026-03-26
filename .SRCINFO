@@ -12,7 +12,7 @@ pkgbase = secfetch
 	makedepends = python-pip
 	depends = python
 	provides = secfetch
-	source = secfetch-1.5.tgz::https://github.com/ake13-art/secfetch/archive/v1.5.tar.gz
-	sha256sums = 6b2a248bb23de9d7a19f7bdb39f01a75bc6a48200dc406fc9d2e09c64d2c475a
+	source = secfetch-1.5.tgz::https://github.com/ake13-art/secfetch/archive/refs/tags/v1.5.tar.gz
+	sha256sums = 08a075f5b7900e5ae5f770f039f9b387368f2aaf696717341dfb6034356dd845
 
 pkgname = secfetch
