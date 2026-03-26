@@ -11,6 +11,7 @@ url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
   r-dials
+  r-parsnip
   r-rlang
   r-stats
   r-tibble
