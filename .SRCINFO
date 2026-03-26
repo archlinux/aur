@@ -1,0 +1,20 @@
+pkgbase = prettymux
+	pkgdesc = GPU-accelerated terminal multiplexer
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/patcito/prettymux
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = zig
+	makedepends = git
+	depends = qt6-base
+	depends = qt6-webengine
+	depends = libgl
+	source = prettymux::git+https://github.com/patcito/prettymux.git
+	source = ghostty::git+https://github.com/patcito/ghostty.git#branch=linux-embedded-platform
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = prettymux
