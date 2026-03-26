@@ -1,6 +1,6 @@
 pkgbase = purple-bin
 	pkgdesc = TUI to search, connect and manage SSH servers. Visual file transfer, cloud sync (10 providers), password management. Edits ~/.ssh/config directly.
-	pkgver = 2.9.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://github.com/erickochen/purple
 	arch = x86_64
@@ -11,11 +11,11 @@ pkgbase = purple-bin
 	conflicts = purple-git
 	conflicts = purple
 	options = !debug
-	source = LICENSE::https://raw.githubusercontent.com/erickochen/purple/refs/tags/v2.9.0/LICENSE
+	source = LICENSE::https://raw.githubusercontent.com/erickochen/purple/refs/tags/v2.12.0/LICENSE
 	sha256sums = 7ffe3e49f530418a8e37f4546534f20ddbd1109a5a3e3b2ae7fde09d27dae1dc
-	source_x86_64 = purple-2.9.0-bin.tar.gz::https://github.com/erickochen/purple/releases/download/v2.9.0/purple-2.9.0-x86_64-unknown-linux-gnu.tar.gz
-	sha256sums_x86_64 = 2889eecc27f05eceeb1b7308c2c1bcef8e75af510ce23bca6c168a9d7c8b80fa
-	source_aarch64 = purple-2.9.0-bin.tar.gz::https://github.com/erickochen/purple/releases/download/v2.9.0/purple-2.9.0-aarch64-unknown-linux-gnu.tar.gz
-	sha256sums_aarch64 = da5b9d9758a5bff7dd717fca8c4594bd73072b935545066f4993630b750d27d0
+	source_x86_64 = purple-2.12.0-bin.tar.gz::https://github.com/erickochen/purple/releases/download/v2.12.0/purple-2.12.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = d55b567d343eb9689ce5a5b288f45b405847ce8fd6e62a8ab42ab410ce9d58dd
+	source_aarch64 = purple-2.12.0-bin.tar.gz::https://github.com/erickochen/purple/releases/download/v2.12.0/purple-2.12.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = bda218c12bea962d53e66df2b620e1e33ced5b6a6a95b40f81722c14396e92f8
 
 pkgname = purple-bin
