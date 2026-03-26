@@ -1,22 +1,21 @@
-# Maintainer: Andreas Bilke <abilke at cosy dot sbg dot ac dot at>
-
 pkgname=python-powerlaw
 _pkgname=powerlaw
+pkgver=2.0.0
 pkgrel=1
-pkgver=1.4.3
-pkgdesc='A Python Package for Analysis of Heavy-Tailed Distributions'
+pkgdesc='Toolbox for testing if a probability distribution fits a power law'
 arch=('any')
-url='https://github.com/jeffalstott/powerlaw'
-depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib')
-optdepends=('python-mpmath: support for gamma function fitting')
-makedepends=('git' 'awk' 'sed')
+url='https://github.com/powerlaw-devs/powerlaw'
 license=('MIT')
-md5sums=('2ea92f975361594767b652d863909d2e')
-sha256sums=('4e8a9f603738c9115fb057ced3039653114f70bbb2ffb42b49228e0366d61950')
+depends=('python' 'python-setuptools' 'python-numpy' 'python-mpmath' 'python-matplotlib' 'python-scipy' 'python-tqdm')
+source=("https://github.com/powerlaw-devs/powerlaw/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('d1afa228c47e7d5177514f3dfe0e2b9160610b5a20c1386d07be703a5492f99c')
 
-source=('https://pypi.python.org/packages/83/7e/12756bfd0a98fda04e35b25353a6870dbcd53680faca3b77ff044cc65fec/powerlaw-1.4.3.tar.gz')
+build() {
+  cd "$_pkgname-$pkgver"
+  SETUPTOOLS_SCM_PRETEND_VERSION_FOR_POWERLAW="$pkgver" python -m build --wheel --no-isolation
+}
 
 package() {
   cd "$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/"
+  python -m installer --destdir="$pkgdir" dist/*.whl 
 }
