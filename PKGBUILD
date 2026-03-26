@@ -1,8 +1,8 @@
 # Maintainer: Woofson <https://github.com/Woofson>
 pkgname=dotmatrix-git
-pkgver=0.5.1.r0.ga6c067a
+pkgver=2.0.0.r0.gee54c7b
 pkgrel=1
-pkgdesc="Dotfile management and versioning tool with TUI and GUI"
+pkgdesc="Project compositor with git versioning - CLI, TUI, and GUI"
 arch=('x86_64')
 url="https://github.com/Woofson/dotmatrix"
 license=('MIT')
@@ -38,12 +38,13 @@ build() {
 check() {
     cd "$srcdir/dotmatrix"
     export RUSTUP_TOOLCHAIN=stable
-    cargo test
+    cargo test --release
 }
 
 package() {
     cd "$srcdir/dotmatrix"
     install -Dm755 "target/release/dotmatrix" "$pkgdir/usr/bin/dotmatrix"
-    install -Dm755 "target/release/dmgui" "$pkgdir/usr/bin/dmgui"
+    install -Dm755 "target/release/dotmatrix-tui" "$pkgdir/usr/bin/dotmatrix-tui"
+    install -Dm755 "target/release/dotmatrix-gui" "$pkgdir/usr/bin/dotmatrix-gui"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
