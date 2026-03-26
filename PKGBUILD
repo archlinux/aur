@@ -68,10 +68,10 @@ b2sums=('SKIP'
         'cc661ecd970724a77af1278ab20d7d3eafc22119fb94ff7e310ee3eeb68af67d8c88d9e1e38c49117b8a45fbaedef4a506798cbc63214370a76105877b24763d'
         'ba6c3b3b03b860665f4db26609ca70ddf678acd79b85a62285d1b512431e7aca312118721fb808721fdadeced146443020808548adce825fb22a4f7e954a1816')
 
-if [ "${_vendored_portaudio:-}" = true ]; then
+if [ "${_vendored_portaudio:-}" = true ] && ! [ "${GENINTEG:-}" = 1 ]; then
     source+=("git+https://github.com/PortAudio/portaudio.git")
-    sha256sums+=('SKIP')
-    b2sums+=('SKIP')
+    : && sha256sums+=('SKIP')
+    : && b2sums+=('SKIP')
 else
     depends+=('portaudio')
 fi
