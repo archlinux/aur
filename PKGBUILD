@@ -1,12 +1,12 @@
 # Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=libretro-azahar-bin
 pkgver=2125.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source 3DS emulator project based on Citra."
 arch=('x86_64')
 url="https://github.com/azahar-emu/azahar"
 license=('GPL-3.0-or-later')
-depends=('libgcc' 'libstdc++' 'glibc')
+depends=('libgcc' 'libstdc++' 'glibc' 'libretro-core-info')
 provides=("${pkgname::-4}")
 conflicts=("${pkgname::-4}")
 source=("$url/releases/download/${pkgver}/azahar-libretro-linux-${arch}-${pkgver}.zip")
