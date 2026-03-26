@@ -1,7 +1,7 @@
 pkgbase = qsoc-git
 	pkgdesc = QSoC - Quick System on Chip Studio
 	pkgver = r772.2eb7c33
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/vowstar/qsoc
 	arch = x86_64
 	license = Apache-2.0
@@ -26,7 +26,7 @@ pkgbase = qsoc-git
 	depends = qt6-base
 	depends = yaml-cpp
 	depends = gpds
-	depends = qschemati
+	depends = qschematic
 	depends = replxx
 	depends = sv-lang
 	depends = systemrdl-toolkit

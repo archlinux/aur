@@ -2,7 +2,7 @@
 
 pkgname=qsoc-git
 pkgver=r772.2eb7c33
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="QSoC - Quick System on Chip Studio"
 arch=($CARCH)
@@ -18,7 +18,7 @@ depends=(
     yaml-cpp
     # AUR
     gpds
-    qschemati
+    qschematic
     replxx
     sv-lang
     systemrdl-toolkit
