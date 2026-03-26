@@ -2,7 +2,7 @@
 
 pkgname=ruby-just-the-docs
 _name=just-the-docs
-pkgver=0.10.1
+pkgver=0.12.0
 pkgrel=1
 pkgdesc='Jekyll theme for documentation with built-in search'
 arch=('any')
@@ -24,9 +24,7 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/just-the-docs/just-the-docs/archive/v${pkgver}.tar.gz"
 )
 
-sha512sums=(
-  'b69ebcf8c34e3f9982140a61849ae1753e9daf605338d38822542bd3fc3c39b54aa4d0edcb45bc4ecaf00b5cfab4b2f67a35e01030762dadafa979f27aa564d2'
-)
+sha512sums=('90fb8921c8189b4c5ce0e31a629cc8bf1e25d5c1a10b1650089822f9177043ca5631c1501b2294c6109fb05458202df7fe8fc62c1de24a32b39f2e89750f88ce')
 
 prepare() {
   cd "${_name}-${pkgver}"
