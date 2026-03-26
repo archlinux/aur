@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-lrps2
 pkgname=$_pkgname-git
-pkgver=r19151.416291a
+pkgver=r19152.2b19f7f
 pkgrel=1
 pkgdesc="Sony PlayStation 2 core (fork of PCSX2)"
 arch=('x86_64')
@@ -12,9 +12,8 @@ depends=('glibc' 'libretro-core-info')
 makedepends=(
 	'cmake'
 	'fast_float'
-	'fmt9'
+	'fmt'
 	'git'
-	'libgcc'
 	'libgl'
 	'libstdc++'
 	'libzip'
@@ -48,7 +47,8 @@ prepare() {
 	git config submodule.3rdparty/vulkan-headers.url "$srcdir"/vulkan-headers
 	git config submodule.pcsx2/GS/parallel-gs.url "$srcdir"/parallel-gs
 	git -c protocol.file.allow=always submodule update
-	sed -i '/fmt/s/7\.1\.3/&...<10/' cmake/SearchForStuff.cmake
+	sed -i '/fmt/s/7\.1\.3//' cmake/SearchForStuff.cmake
+	sed -i '/fmt\/format\.h/a #include <fmt/ranges.h>' pcsx2/GameDatabase.cpp
 	sed -i '/USE_SYSTEM_LIBS/d' cmake/BuildParameters.cmake
 	sed -i 's|\.\./3rdparty/rapidyaml/rapidyaml/ext/c4core/src/c4/ext/fast_float/include/||' common/StringUtil.h
 	sed -i 's|\.\./3rdparty/rapidyaml/rapidyaml/src/||' pcsx2/GameDatabase.cpp
@@ -63,6 +63,7 @@ prepare() {
 
 build() {
 	local options=(
+		-B build
 		-D CCACHE_FOUND=OFF
 		-D CMAKE_BUILD_TYPE=Release
 		-D CMAKE_C_FLAGS_RELEASE="-DNDEBUG"
@@ -71,16 +72,15 @@ build() {
 		# -D DISABLE_ADVANCE_SIMD=ON
 		-D LTO_PCSX2_CORE=ON
 		-D USE_SYSTEM_LIBS=ON
-		-Wno-dev
+		-W no-dev
 	)
-	cmake "${options[@]}" -B build -S $_pkgname
+	cmake "${options[@]}" $_pkgname
 	cmake --build build
 }
 
 package() {
 	depends+=(
 		'libfmt.so'
-		'libgcc_s.so'
 		'libryml.so'
 		'libstdc++.so'
 		'libzip.so'
