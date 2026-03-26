@@ -1,7 +1,7 @@
 # Maintainer: Carson Buttars <carsonbuttars13@gmail.com>
 
 _pkgname=tune
-_pkgver=2.0.0
+_pkgver=2.0.1
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=5
@@ -50,8 +50,8 @@ optdepends=(
   r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('152b86d78f4fb0aee2ba727e34d11157')
-b2sums=('332afd311837cceeb01e2bbcf17c32ea7c5a6f17bccaf5b4401ee01cd2de0533885ba6369a60503a133d962fa60c14541a6fdc95e44a620b84eccc4bc4a2768d')
+md5sums=('4af270b28b348f89d24c9c8f5fa2c724')
+b2sums=('cb2f5f5298a86f1fea01dac671ba04386e3a16b8d86d8de9a9eee4658739a765e3f26bbdd5c3ca29be0a6d3f1ef19dbd08447562d2b6de346f4d6c49c9e4604a')
 
 build() {
   mkdir build
