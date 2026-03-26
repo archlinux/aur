@@ -27,5 +27,5 @@ path = [
     "qt6-base-cflags.patch",
     "qt6-base-nostrip.patch",
 ]
-SPDX-FileCopyrightText = "qt6-base-headless contributors"
+SPDX-FileCopyrightText = "qt6-base contributors"
 SPDX-License-Identifier = "0BSD"
