@@ -1,12 +1,12 @@
 pkgbase = qlot
 	pkgdesc = Common Lisp library manager
-	pkgver = 1.6.1
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://github.com/fukamachi/qlot
 	arch = any
 	license = MIT
 	depends = sbcl
-	source = https://github.com/fukamachi/qlot/releases/download/1.6.1/qlot-1.6.1.tar.gz
-	sha256sums = 474e654a7de3dbe97e1a4845cbb6360c6dd2b607a66cb6687d35994dd22f99a3
+	source = https://github.com/fukamachi/qlot/releases/download/1.8.3/qlot-1.8.3.tar.gz
+	sha256sums = e7be45d5cd9e1a013910cec272fe8a3c1078ee31f0c3cbfce00c3bc8c6c688d6
 
 pkgname = qlot
