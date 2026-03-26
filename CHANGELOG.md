@@ -5,117 +5,147 @@ All notable changes to the MediaTek MT7927 DKMS package are documented here.
 Format: `v<pkgver>-<pkgrel>` where pkgver bumps for driver/patch changes
 and pkgrel bumps for PKGBUILD packaging changes.
 
+## [2.9-1] - 2026-03-26
+
+### Driver
+
+- Split BT monolithic patch into 8 per-commit patches (matching upstream series)
+- Scope CHIPID workaround to VID/PID table (per Sean Wang's review)
+- Rename BT firmware path from mt6639/ to mt7927/ (per upstream convention)
+- Add MODULE_FIRMWARE declaration for initramfs discovery
+- Add Nitin Gurram's Tested-by for MSI X870E Ace Max (0489:e110)
+- Bump kernel source to 6.19.10
+
+### Scripts
+
+- Add build-check.sh: verify each commit in a series builds independently
+- test-driver: require root, add BT module checks, improve reload robustness
+- test-driver: wait for firmware init and NetworkManager reconnection after reload
+- release.sh: handle pre-set version without failing on empty commit
+
+### Packaging
+
+- Fix RPM spec: BT firmware path mt6639 -> mt7927
+
+## [2.8-1] - 2026-03-25
+
+### Driver
+
+- Add CHIPID=0x0000 workaround for MT6639 BT firmware
+- Update BT patch with ISO interface fix and hunk corrections
+- Refine MT7927 WiFi patch series for upstream submission correctness
+- Extend airoha_offload.h compat stub with DMA descriptor types
+
+### Scripts
+
+- Add gen-dkms-patches.sh --rebase flag for automated DKMS branch updates
+- Add verify-patches.sh: per-file polarity-aware cross-check with staleness detection
+- Add version consistency check (make check-version)
+- gen-dkms-patches.sh: auto-detect upstream branch via git for-each-ref
+- push-aur.sh: filter by blob type instead of named exclusions
+- release.sh: remove install file dependency, reorder push sequence
+- test-driver: add missing BT USB ID 0489:e110
+
+### Packaging
+
+- Avoid hardcoded version in dkms pre_remove hook
+- RPM: derive version from dkms.conf instead of hardcoding in spec
+
+### Documentation
+
+- Clarify MLO status and add router configuration advice
+
+## [2.7-1] - 2026-03-20
+
+### Driver
+
+- Add airoha_offload.h compat stub for kernels 6.17-6.18
+
+### Packaging
+
+- Bump to v2.7 with compat header fix
+
+### Other
+
+- Add push-aur.sh for filtered AUR pushes
+- Update README for v2.6 release
+
+## [2.6-1] - 2026-03-20
+
+### Driver
+
+- Fix false PASSED result in test-driver.sh when checks actually fail
+
+### Packaging
+
+- Add RPM and DEB packaging (make rpm, make deb)
+- Add GitHub Actions release workflow for automated builds on tag push
+- Bump to v2.6 (kernel 6.19.9)
+
+### Documentation
+
+- Add AI attribution note
+- Add Gigabyte Z790 Elite X WiFi7 and MSI X870E ACE MAX to supported hardware
+- Add distro-agnostic install instructions and community ports
+
 ## [2.5-1] - 2026-03-19
 
 ### Driver
 
-- mediatek-mt7927-dkms: Bump to version 2.5 and refactor patch series
+- Refactor patch series for upstream submission
 
 ### Other
+
 - release: Validate remote URLs before push
 
 ## [2.4-1]
 
-### Documentation
-
-- docs: Update README with known issues, fixes, and upstream status
-- docs: Update upstream submission status in README
-
 ### Driver
 
-- dkms: Add USB ID 0489:e110 to MT7927 Bluetooth device table
-
-### Other
-
-- scripts: Add automated release script for DKMS package
-- .gitignore: Add linux-stable to ignored paths
+- Add USB ID 0489:e110 for MSI X870E Ace Max
 
 ### Packaging
 
-- pkg: Distro-agnostic build system and bump to v2.4-1
+- Distro-agnostic Makefile-based build system (make download, make sources, make install)
+
+### Other
+
+- Add automated release script
+- Update README with known issues, fixes, and upstream status
+
 ## [2.3-1] - 2026-03-06
 
 ### Driver
 
-- mt7927-wifi: Remove GitHub reporter/tester attribution from ASPM patch
-- dkms/mt7927: Rebase patch series onto updated kernel tree
-- mediatek-mt7927-dkms: Bump version to 2.3
+- Remove GitHub reporter/tester attribution from ASPM patch
+- Rebase patch series onto updated kernel tree
 
 ### Other
 
-- gitignore: Exclude .github/ (GitHub-only, AUR rejects subdirectories)
-- CHANGELOG: Reorganize entries into reverse-chronological order
+- Exclude .github/ from AUR pushes (server-side hook rejects subdirectories)
+
 ## [2.2-1] - 2026-03-06
-
-### Documentation
-
-- doc: Add udev rule for Bluetooth rfkill auto-unblock
-- README: Remove MT6639 Bluetooth udev auto-unblock instructions
-- README: Document project roadmap and known limitations
-- README: Update status to reflect fixed WPA, AP mode, and MLO issues
-- README: Add Bazzite packaging reference and fix patch sign-off
-- docs: ASUS ProArt X870E BT USB ID
-- docs: Add Gigabyte X870E Aorus Master X3D to supported hardware
-- README: Update upstream tracking and recently fixed sections
-- README: Update supported hardware table and detection commands
-- docs: Add CHANGELOG for MediaTek MT7927 DKMS package
 
 ### Driver
 
-- mediatek-mt7927-dkms: Add WiFi modules and auto-download support
-- dkms: Reformat patchmodule script indentation
-- wifi: Add MT6639/MT7927 WiFi support via mt7925e driver patches
-- wifi/mt6639: Refine DMA initialization and power state handling
-- drivers/net/wireless/mediatek/mt76: Add MT6639 combo chip support
-- mediatek-mt7927-dkms: Bump pkgrel to 2
-- mediatek-mt7927-dkms: Update device support list and patch checksums
-- mediatek-mt7927-dkms: Bump package release and update checksums
-- mediatek-mt7927-dkms: Bump package release to 5
-- mt6639-bt: Add USB ID 13d3:3588 for ASUS X870E-E
-- drivers/bluetooth: Add MT7927 USB ID for TP-Link TBE550E
-- mediatek/bt: Bump pkgrel for MT6639 firmware persistence optimization
-- mediatek-mt7927-dkms: Add WiFi 7 320MHz bandwidth support
-- mediatek-mt7927-dkms: Replace EAPOL patch with connection state fix
-- mediatek-mt7927-dkms: Remove upstream-merged WiFi connection patch
-- mediatek-mt7927-dkms: Fix EAPOL frame handling during authentication
-- drivers: Add MediaTek MT7927 WiFi 7/BT 5.4 DKMS package README
-- mediatek-mt7927-dkms: Remove EAPOL RX header translation patch
-- drivers/net: Fix stale pointer comparisons in MLO link teardown
-- mediatek-mt7927-dkms: Refactor patch stack for upstream submission
-- mt7927: Clarify authorship attribution in band-idx fix patch
-- dkms: Add Tested-by tags from Marcin FM across all patches
-- mt7927-dkms: Add three new Tested-by tags to all WiFi patches
-- mt7927: Add 320MHz BSS RLM patch for mt7925 MCU
-
-### Internal
-
-- style: Convert indentation from spaces to tabs
-
-### Other
-
-- Initial release: DKMS bluetooth module for MediaTek MT7927 (MT6639)
-- btusb-mt7927-dkms: Improve driver ZIP detection and toolchain handling
-- fix is_mt6639_hw probe bug, enable PM, add 320MHz wiphy caps
-- cliff.toml: Add git-cliff changelog configuration
+- Add WiFi modules and auto-download support
+- Add MT6639/MT7927 WiFi support via mt7925e driver patches
+- Add 320MHz EHT bandwidth support
+- Fix stale pointer comparisons in MLO link teardown
+- Add USB IDs: 13d3:3588 (ASUS X870E-E), 0489:e116 (TP-Link TBE550E)
+- Add Tested-by tags from community testers
 
 ### Packaging
 
-- pkg: Generalize MT7927/MT6639 support to multiple OEM devices
-- pkgbuild: Bump pkgrel to 2 for SRCDEST support
-- pkgbuild: Add EAPOL frame patch to fix WiFi 6E authentication
-- pkg: Switch to kernel tarball for source and remove download logic
-- PKGBUILD: Split WiFi patches into numbered series, add MLO and mac_reset
-- PKGBUILD: Bump pkgrel to 17 with MLO and MAC reset patch updates
-- PKGBUILD: Bump pkgrel to 18 with patch commit headers
-- pkg: Rename mt6639 to mt7927 in patches, PKGBUILD, and scripts
-- pkg: Bump release to 2.1-20 with MT6639 BT patch fixes
-- pkg: Drop EAPOL patch and renumber WiFi patch series
-- PKGBUILD: Bump version to 2.2 and reset pkgrel to 1
-- pkg: Bump version to 2.2-1 with new patches and test improvements
+- Switch to kernel tarball for source (avoid kernel.org CGI rate limits)
+- Rename mt6639 to mt7927 in patches, PKGBUILD, and scripts
 
 ### Testing
 
-- test-driver: Improve data path check robustness
-- test-driver: Add failure tracking and improve error detection
-- test-driver.sh: Expand diagnostic coverage for MT7927 hardware
-- test-driver: Add EHT/WiFi 7 capability and channel width checks
+- Add EHT/WiFi 7 capability and channel width checks
+- Improve data path check robustness and failure tracking
+
+### Documentation
+
+- Add CHANGELOG, roadmap, and supported hardware table
+- Add Gigabyte X870E Aorus Master X3D to supported hardware
