@@ -9,7 +9,7 @@ url='https://github.com/Notify-ctrl/FreeKill'
 license=('GPL3')
 pkgdesc='A Bang-like card game'
 depends=('qt6-declarative' 'qt6-multimedia' 'qt6-5compat'
-  'qt6-shadertools' 'libgit2' 'lua' 'sqlite' 'openssl'
+  'qt6-shadertools' 'libgit2' 'lua54' 'sqlite' 'openssl'
   'readline' )
 makedepends=('cmake' 'qt6-tools' 'swig' 'clang')
 source=("${url}/releases/download/v${pkgver}/FreeKill-${pkgver}-source.tar.gz")
