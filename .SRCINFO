@@ -1,11 +1,12 @@
 pkgbase = r-embed
 	pkgdesc = Extra Recipes for Encoding Predictors
-	pkgver = 1.2.0
+	pkgver = 1.2.2
 	pkgrel = 5
 	url = https://cran.r-project.org/package=embed
 	arch = any
 	license = MIT
 	checkdepends = r-testthat
+	depends = r-cli
 	depends = r-glue
 	depends = r-dplyr
 	depends = r-generics
@@ -18,8 +19,8 @@ pkgbase = r-embed
 	depends = r-tidyr
 	depends = r-utils
 	depends = r-uwot
-	depends = r-withr
 	depends = r-vctrs
+	depends = r-withr
 	optdepends = r-covr
 	optdepends = r-dials
 	optdepends = r-ggplot2
@@ -37,8 +38,8 @@ pkgbase = r-embed
 	optdepends = r-testthat
 	optdepends = r-VBsparsePCA
 	optdepends = r-xgboost
-	source = https://cran.r-project.org/src/contrib/embed_1.2.0.tar.gz
-	md5sums = 07bb64a22a8462aa91f85c45f275fdd0
-	b2sums = ffc1ab0ce9b8bb94c5ae9573d9c6b63c2e6148451a34f437634bf9866232a8b4819f2b9a5c329821b3f759885b1b16f19f2aba435154efe692df295a9b4e4d3c
+	source = https://cran.r-project.org/src/contrib/embed_1.2.2.tar.gz
+	md5sums = 5b43124ade10a4334b70e6bb856ac3ae
+	b2sums = 124227d72028bd85e81f5cfef65281b0b9780d4cad061e38e031270aef8629e07303024a2fdbca0ea1d3181f3d0b372472a21664d03e4a0477255bbc6b7b7a25
 
 pkgname = r-embed

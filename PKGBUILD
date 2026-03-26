@@ -1,7 +1,7 @@
 # Maintainer: Carson Buttars <carsonbuttars13@gmail.com>
 
 _pkgname=embed
-_pkgver=1.2.0
+_pkgver=1.2.2
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=5
@@ -10,6 +10,7 @@ arch=(any)
 url="https://cran.r-project.org/package=$_pkgname"
 license=('MIT')
 depends=(
+  r-cli
   r-glue
   r-dplyr
   r-generics
@@ -22,8 +23,8 @@ depends=(
   r-tidyr
   r-utils
   r-uwot
-  r-withr
   r-vctrs
+  r-withr
 )
 checkdepends=(
   r-testthat
@@ -48,8 +49,8 @@ optdepends=(
   r-xgboost
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('07bb64a22a8462aa91f85c45f275fdd0')
-b2sums=('ffc1ab0ce9b8bb94c5ae9573d9c6b63c2e6148451a34f437634bf9866232a8b4819f2b9a5c329821b3f759885b1b16f19f2aba435154efe692df295a9b4e4d3c')
+md5sums=('5b43124ade10a4334b70e6bb856ac3ae')
+b2sums=('124227d72028bd85e81f5cfef65281b0b9780d4cad061e38e031270aef8629e07303024a2fdbca0ea1d3181f3d0b372472a21664d03e4a0477255bbc6b7b7a25')
 
 build() {
   mkdir build
