@@ -1,10 +1,10 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=isva
-_pkgver=1.9
+_pkgver=1.10
 pkgname=r-${_pkgname,,}
-pkgver=1.9
-pkgrel=4
+pkgver=1.10
+pkgrel=1
 pkgdesc='Independent Surrogate Variable Analysis'
 arch=('any')
 url="https://cran.r-project.org/package=${_pkgname}"
@@ -16,7 +16,7 @@ depends=(
   r-qvalue
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('9fd016e0b34034d271d45f8a0d0db62780bf0187112e45f610aa9237014e1d17')
+sha256sums=('f44aaf11e38088a20d607c6137f41189ef85baf82073ce17a90851e3165fa1c6')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"
