@@ -1,0 +1,31 @@
+From fbe9dd9382697fa5e18dacf4a34bfb1ef00163eb Mon Sep 17 00:00:00 2001
+From: Reyka Matthies <openglfreak@googlemail.com>
+Date: Thu, 26 Mar 2026 08:26:43 +0100
+Subject: [PATCH 12/12] [Fix] Ignore stderr output from alsa-lib
+
+---
+ .../views/app/_app_controllers/StartPythonController.jsx  | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src-ui/views/app/_app_controllers/StartPythonController.jsx b/src-ui/views/app/_app_controllers/StartPythonController.jsx
+index d2781abf..aecfe314 100644
+--- a/src-ui/views/app/_app_controllers/StartPythonController.jsx
++++ b/src-ui/views/app/_app_controllers/StartPythonController.jsx
+@@ -48,9 +48,11 @@ const useStartPython = () => {
+             }
+         });
+         command.stderr.on("data", line => {
+-            showNotification_Error(
+-                `An error occurred. Please restart VRCT or contact the developers. The last line:${JSON.stringify(line)}`, { hide_duration: null }
+-            );
++            if (!line.startsWith("ALSA lib ")) {
++                showNotification_Error(
++                    `An error occurred. Please restart VRCT or contact the developers. The last line:${JSON.stringify(line)}`, { hide_duration: null }
++                );
++            }
+             console.error("stderr", line);
+         });
+         const backend_subprocess = await command.spawn();
+-- 
+2.53.0
+

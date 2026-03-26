@@ -1,0 +1,42 @@
+diff --git a/src-python/model.py b/src-python/model.py
+index 18b99b50..c7b062bf 100644
+--- a/src-python/model.py
++++ b/src-python/model.py
+@@ -642,7 +642,7 @@ class Model:
+         # try to update at most 5 times
+         for _ in range(5):
+             try:
+-                program_name = "update.exe"
++                program_name = "update"
+                 current_directory = config.PATH_LOCAL
+                 res = requests_get(config.UPDATER_URL)
+                 assets = res.json()['assets']
+@@ -662,7 +662,7 @@ class Model:
+         # try to update at most 5 times
+         for _ in range(5):
+             try:
+-                program_name = "update.exe"
++                program_name = "update"
+                 current_directory = config.PATH_LOCAL
+                 res = requests_get(config.UPDATER_URL)
+                 assets = res.json()['assets']
+diff --git a/src-ui/views/app/others/modal_controller/update_modal/UpdateModal.jsx b/src-ui/views/app/others/modal_controller/update_modal/UpdateModal.jsx
+index 11198da7..45f98467 100644
+--- a/src-ui/views/app/others/modal_controller/update_modal/UpdateModal.jsx
++++ b/src-ui/views/app/others/modal_controller/update_modal/UpdateModal.jsx
+@@ -50,7 +50,6 @@ export const UpdateModal = () => {
+                     <div className={styles.update_section}>
+                         <div className={styles.cpu_section}>
+                             <div className={styles.button_wrapper}>
+-                                <button className={cpu_accept_button_class_name} onClick={onClickUpdateSoftware}>CPU</button>
+                                 {is_cpu_version ? <CurrentVersionLabel is_latest_version_already={is_latest_version_already} /> : null}
+                             </div>
+                             <div className={styles.version_desc_container}>
+@@ -59,7 +58,6 @@ export const UpdateModal = () => {
+                         </div>
+                         <div className={styles.cuda_section}>
+                             <div className={styles.button_wrapper}>
+-                                <button className={cuda_accept_button_class_name} onClick={onClickUpdateSoftware_CUDA}>CUDA (CPU/GPU)</button>
+                                 {!is_cpu_version ? <CurrentVersionLabel is_latest_version_already={is_latest_version_already} is_cuda={true}/> : null}
+                             </div>
+                             <div className={styles.version_desc_container}>

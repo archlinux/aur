@@ -1,0 +1,6 @@
+/VRCT-*.tar.gz
+/portaudio-*.tar.gz
+/src/
+/pkg/
+/*.pkg.tar.*
+

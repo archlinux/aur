@@ -1,0 +1,26 @@
+From 394e5ac2922bb8b324a4f24cd4b66c3405a06eac Mon Sep 17 00:00:00 2001
+From: Reyka Matthies <openglfreak@googlemail.com>
+Date: Thu, 26 Mar 2026 01:52:07 +0100
+Subject: [PATCH 10/12] [Feat] Allow building Tauri App/AppImage
+
+Allows building the application on Linux.
+---
+ src-tauri/tauri.conf.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src-tauri/tauri.conf.json b/src-tauri/tauri.conf.json
+index d8a35658..11a5dee3 100644
+--- a/src-tauri/tauri.conf.json
++++ b/src-tauri/tauri.conf.json
+@@ -34,7 +34,7 @@
+     },
+     "bundle": {
+         "active": true,
+-        "targets": "nsis",
++        "targets": ["nsis", "app", "appimage"],
+         "publisher": "m's software",
+         "copyright": "Copyright m's software",
+         "licenseFile": "../LICENSE",
+-- 
+2.53.0
+
