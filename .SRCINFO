@@ -1,6 +1,6 @@
 pkgbase = waypaper-git
 	pkgdesc = GUI wallpaper setter for Wayland and Xorg window managers. It works as a frontend for popular wallpaper backends like swaybg, swww, wallutils, hyprpaper and feh.
-	pkgver = 2.5.r0.g3ce8658
+	pkgver = 2.7.r61.ge8f63ef
 	pkgrel = 1
 	url = https://github.com/anufrievroman/waypaper
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = waypaper-git
 	optdepends = hyprpaper: the wayland backend with IPC controls
 	optdepends = mpvpaper: support for videos
 	optdepends = swaybg: the wayland backend that supports only static images
-	optdepends = swww: the wayland backend that supports animated GIFs
+	optdepends = awww: the wayland backend that supports animated GIFs
 	optdepends = wallutils: another x11 backend
 	provides = waypaper
 	conflicts = waypaper
