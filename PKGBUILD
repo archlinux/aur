@@ -1,6 +1,6 @@
 # Maintainer: Da Chen <dachen@connect.hku.hk>
 pkgname=wayper
-pkgver=0.7.4
+pkgver=0.7.5
 pkgrel=1
 pkgdesc="Wayland-first wallpaper manager with Wallhaven integration and MCP server"
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
     'gtk4: GTK4 GUI app (wayper-gui)'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yuukidach/wayper/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ca9733ac6c765d2921e60ce01070e29ab2fc4d9ffead60c68e05b0c733861dc4')
+sha256sums=('5691cbe395a1bbd80984eba62e90f86ff583e17c3edcd1c2be69a44b7949e775')
 
 build() {
     cd "$pkgname-$pkgver"
