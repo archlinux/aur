@@ -1,0 +1,8 @@
+post_install() {
+    echo "==> Setting up the environment..."
+    bash /usr/share/upscale/install.sh
+}
+
+post_upgrade() {
+    post_install
+}
