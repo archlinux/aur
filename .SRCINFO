@@ -1,7 +1,7 @@
 pkgbase = trice
 	pkgdesc = 🟢 super fast 🚀 tiny 🐥 𝘾 printf-look-and-feel ✍ trace code, in ⚡ interrupts ⚡ too ‼️, and real-time PC 💻 logging 👀
-	pkgver = 1.1.1
-	pkgrel = 3
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/rokath/trice
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = trice
 	makedepends = go
 	makedepends = git
 	depends = glibc
-	source = git+https://github.com/rokath/trice.git#tag=v1.1.1
+	source = git+https://github.com/rokath/trice.git#tag=v1.2.0
 	sha256sums = SKIP
 
 pkgname = trice
