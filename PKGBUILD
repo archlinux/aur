@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=qschematic
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
 epoch=
 pkgdesc="A library that allows creating diagrams such as flowcharts or even proper engineering schematics within a Qt application"
@@ -40,7 +40,7 @@ install=
 changelog=
 source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 noextract=()
-sha256sums=('a9e8860b9c026d8e6715c4b127e334f4fe5404df17b45beece20140830b3699c')
+sha256sums=('dae99032872ebdf69adf67485303c3b521fc9f4d4a743d2a00e059d698df3fa3')
 validpgpkeys=()
 
 prepare() {
@@ -66,4 +66,18 @@ package() {
     cd "${srcdir}/${pkgname}"
     DESTDIR="${pkgdir}" ninja -C "${srcdir}"/${pkgname}/build install
     install -Dm644 license.txt -t ${pkgdir}/usr/share/licenses/${pkgname}/
+    install -Dm644 /dev/stdin "${pkgdir}/usr/lib/pkgconfig/qschematic.pc" << EOF
+prefix=/usr
+exec_prefix=\${prefix}
+includedir=\${prefix}/include
+libdir=\${prefix}/lib
+
+Name: qschematic
+Description: ${pkgdesc}
+Version: ${pkgver}
+Requires: ${_qt_modules} gpds
+Cflags: -I\${includedir} -I\${includedir}/qschematic
+Libs: -L\${libdir} -lqschematic
+Libs.private: -lQt6Core -lQt6Gui -lQt6Widgets -lQt6Svg
+EOF
 }

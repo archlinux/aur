@@ -1,6 +1,6 @@
 pkgbase = qschematic
 	pkgdesc = A library that allows creating diagrams such as flowcharts or even proper engineering schematics within a Qt application
-	pkgver = 3.0.2
+	pkgver = 3.0.3
 	pkgrel = 1
 	url = https://github.com/simulton/QSchematic
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = qschematic
 	depends = gpds
 	provides = qschematic
 	conflicts = qschematic
-	source = qschematic::git+https://github.com/simulton/QSchematic.git#tag=3.0.2
-	sha256sums = a9e8860b9c026d8e6715c4b127e334f4fe5404df17b45beece20140830b3699c
+	source = qschematic::git+https://github.com/simulton/QSchematic.git#tag=3.0.3
+	sha256sums = dae99032872ebdf69adf67485303c3b521fc9f4d4a743d2a00e059d698df3fa3
 
 pkgname = qschematic
