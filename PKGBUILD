@@ -1,7 +1,7 @@
 # Maintainer: tinyopsec <anon@proton.me>
 
 pkgname=nwm
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Nano Window Manager - minimalistic X11 tiling window manager"
 arch=('x86_64')
