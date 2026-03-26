@@ -1,6 +1,6 @@
 # Maintainer: westpoint.io <https://github.com/westpoint-io>
 pkgname=dustoff
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Find and remove JS/TS build artifacts wasting disk space'
 arch=(any)
@@ -10,7 +10,7 @@ depends=('nodejs>=18.18.0')
 makedepends=('npm')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('8cc42c03f1925bb44cde7b981a9f37e09a1a32a9cbf2630217479dd6342355d3')
+sha256sums=('a7aef3427a09a11ede327c456387f59a7fb1cdcfb3b269d2688eaf1542340be2')
 
 package() {
     npm install -g --cache "${srcdir}/npm-cache" --prefix "$pkgdir/usr" \
