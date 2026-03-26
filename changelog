@@ -1,6 +1,2 @@
-## What's new in V3.0.0
-
-- Added a "system" tab with all sorts of information on your CPU, GPU, BIOS, Memory, and much more
-- Fixed alphabetical sorting by A-Z and then a-z
-- Fixed sorting not showing an arrow in processes menu
-- Fixed sorting on services and startup tab
+## What's new in V4.0.0
+- Made the GPU readings actually show what the GPU% is, instead of 0 constantly.
