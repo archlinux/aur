@@ -1,6 +1,6 @@
 # Maintainer: LucasionGS <ion@ionnet.dev>
 pkgname=ionix-shell
-pkgver=r29.874aefa
+pkgver=r30.f7c6ef5
 pkgrel=1
 pkgdesc="GTK overlay shell for Hyprland — SSH, VPN, Docker, command palette, and automation panels"
 arch=('x86_64')
