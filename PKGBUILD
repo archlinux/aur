@@ -1,12 +1,13 @@
 pkgname=eim-cli-bin
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="ESP-IDF installation manager (CLI)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/espressif/idf-im-ui"
 license=('Apache-2.0')
 provides=('eim')
 conflicts=('eim')
+depends=('ccache' 'dfu-util')
 makedepends=('unzip')
 options=('!strip')
 
