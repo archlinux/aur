@@ -10,7 +10,7 @@ depends=('owlry-core')
 makedepends=('cargo')
 install=owlry-plugin-converter.install
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry-plugins/archive/$pkgname-v$pkgver.tar.gz")
-b2sums=('29fc423aa2da96fab88de0d5f4048f6a4571931f411d634b37b829bf8fcd7f32bc23b0b8f634f40a129f44d8077b2f3e33c98f4fad7838a48aa39d4b1acfa2f6')
+b2sums=('65e4284ab4c5b450bbb1a83cd66a3e0b426de53f0320e1819dd42a1c414e04fc29c4c55513f704a54461b472a82aa62425d2cb4e143337920678bd34caa6fb50')
 
 _cratename=owlry-plugin-converter
 
