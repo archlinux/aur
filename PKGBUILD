@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=ethercat
-pkgver=1.6.8
+pkgver=1.6.9
 pkgrel=1
 pkgdesc="IgH EtherCAT Master for Linux"
 arch=($CARCH)
@@ -16,18 +16,22 @@ depends=(
     glibc
 )
 makedepends=(
+    git
     systemd-libs
 )
 backup=()
 options=()
 #install=${pkgname}.install
-source=(
-    "${pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("${pkgname}::git+${url}.git#tag=${pkgver}")
 
-sha256sums=('c6d800ff1a9756b7c19078ac2c480a83d67934e0ed0cc8bde3a3f8770f7b88f4')
+sha256sums=('678f46b26426e69cea9de5e5af75ce4d822de274be0af183ecd914fdccaead85')
+
+prepare() {
+  git -C "${srcdir}/${pkgname}" clean -dfx
+}
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
+    cd "${srcdir}/${pkgname}"
     sed -i 's|sbindir|bindir|g' script/ethercat.service.in
     sed -i 's|sbin|bin|g' script/ethercatctl.in
     sed -i 's|sbin|bin|g' script/ifup-eoe.sh
@@ -44,7 +48,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-${pkgver}/"
+    cd "${srcdir}/${pkgname}/"
     make DESTDIR="$pkgdir/" install
     mv ${pkgdir}/usr/etc ${pkgdir}/etc
 
