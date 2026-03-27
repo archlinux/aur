@@ -1,6 +1,6 @@
 pkgbase = gram-bin
 	pkgdesc = The Gram Code Editor
-	pkgver = 1.0.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://codeberg.org/GramEditor/gram
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = gram-bin
 	optdepends = rust-analyzer: improved Rust language support
 	provides = gram
 	conflicts = gram
-	source = gram-bin-1.0.0.tar.gz::https://codeberg.org/GramEditor/gram/releases/download/1.0.0/gram-linux-x86_64-1.0.0.tar.gz
+	source = gram-bin-1.2.1.tar.gz::https://codeberg.org/GramEditor/gram/releases/download/1.2.1/gram-linux-x86_64-1.2.1.tar.gz
 	source = gram.sh
-	sha256sums = 12b945739396312d9af27b1866d5b05ac6caf78415027798f5a68c1282bec331
+	sha256sums = 28d1623a32c8d99fe494754eb1aa7b34d66904e79bc19a7fa2ec772c3abaf45f
 	sha256sums = 65844d78ba9e000a63f39f9f4f2c3d20a2383c6e802d2ae37555db1a10562fd7
 
 pkgname = gram-bin

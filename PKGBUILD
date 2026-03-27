@@ -1,7 +1,7 @@
 # Maintainer: Ananas <ananas[at]ananas.moe>
 
 pkgname=gram-bin
-pkgver="1.0.0"
+pkgver="1.2.1"
 pkgrel=1
 pkgdesc="The Gram Code Editor"
 url="https://codeberg.org/GramEditor/gram"
@@ -18,7 +18,7 @@ source=(
     "gram.sh"
 )
 
-sha256sums=('12b945739396312d9af27b1866d5b05ac6caf78415027798f5a68c1282bec331'
+sha256sums=('28d1623a32c8d99fe494754eb1aa7b34d66904e79bc19a7fa2ec772c3abaf45f'
             '65844d78ba9e000a63f39f9f4f2c3d20a2383c6e802d2ae37555db1a10562fd7')
 
 _pkgname=gram
@@ -28,11 +28,13 @@ package() {
 
     cd $srcdir/gram.app
 
-    mv bin lib libexec $pkgdir/opt/$_pkgname
+    mv lib libexec bin "$pkgdir/opt/$_pkgname"
 
     install -Dm755 ../$_pkgname.sh "$pkgdir/usr/bin/$_pkgname"
 
     install -Dm644 licenses.md "$pkgdir/usr/share/licenses/$pkgname/licenses.md"
     install -Dm644 share/applications/$_pkgname.desktop "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    install -Dm644 share/icons/hicolor/512x512/apps/$_pkgname.png "$pkgdir/usr/share/icons/$_pkgname.png"
+
+    install -Dm644 share/icons/hicolor/scalable/apps/app.liten.Gram.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/app.liten.Gram.svg"
+    install -Dm644 share/icons/hicolor/symbolic/apps/app.liten.Gram-symbolic.svg "$pkgdir/usr/share/icons/hicolor/symbolic/apps/app.liten.Gram-symbolic.svg"
 }
