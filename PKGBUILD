@@ -1,9 +1,9 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 
-# Release notes https://rocm.docs.amd.com/en/7.10.0-preview/about/release-notes.html
+# Release notes https://rocm.docs.amd.com/en/7.12.0-preview/about/release-notes.html
 pkgname=rocm-gfx120x-bin
 pkgdesc="ROCm Core SDK and TheRock Build System - RDNA4"
-pkgver=7.11.0pre
+pkgver=7.12.0pre
 pkgrel=1
 epoch=0
 arch=('x86_64')
@@ -22,17 +22,17 @@ optdepends=('clinfo')
 options=('!strip')
 
 source=(
-"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx120X-all-7.11.0.tar.gz"
+"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx120X-all-7.12.0.tar.gz"
 )
 
 sha256sums=(
-"fea83f36c33389c6c069ddfdfcbe413c1336ad561d99015d33969c291746b6a1"
+"568cbd36ae5f49632ac9308ba0fe5c95fb3175631777298068cfe948ac047842"
 )
 
 package() {
 
     mkdir -p "${srcdir}/opt/rocm"
-    tar xf therock-dist-linux-gfx120X-all-7.11.0.tar.gz -C ${srcdir}/opt/rocm
+    tar xf therock-dist-linux-gfx120X-all-7.12.0.tar.gz -C ${srcdir}/opt/rocm
 
     mv "${srcdir}/opt/" "${pkgdir}/"
 
