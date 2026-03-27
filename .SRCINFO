@@ -1,0 +1,19 @@
+pkgbase = arksigner-pub
+	pkgdesc = ArkSigner e-Imza ve AKİS Akıllı Kart Uygulaması
+	pkgver = 2.3.13
+	pkgrel = 1
+	url = https://www.arksigner.com
+	arch = x86_64
+	license = custom
+	depends = pcsclite
+	depends = ccid
+	depends = openssl-1.0
+	depends = qt5-base
+	depends = qt5-websockets
+	depends = nss
+	source = https://downloads.arksigner.com/files/arksigner-pub-2.3.13.deb
+	source = arksigner.service
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = arksigner-pub

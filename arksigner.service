@@ -1,0 +1,13 @@
+[Unit]
+Description=ArkSigner e-Imza Arka Plan Servisi
+Requires=pcscd.service
+After=pcscd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/arksigner-service
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
