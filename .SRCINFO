@@ -1,6 +1,6 @@
 pkgbase = elephant-archlinuxpkgs
 	pkgdesc = archlinuxpkgs provider for elephant
-	pkgver = 2.20.2
+	pkgver = 2.20.3
 	pkgrel = 1
 	url = https://github.com/abenz1267/elephant
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = elephant-archlinuxpkgs
 	makedepends = go
 	provides = elephant-archlinuxpkgs
 	conflicts = elephant-archlinuxpkgs
-	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.20.2.tar.gz
-	sha256sums = f801cfdbdccf014a8237effc4ab90fe4f1d603bc507428cf80287e77e008dc52
+	source = https://github.com/abenz1267/elephant/archive/refs/tags/v2.20.3.tar.gz
+	sha256sums = abf48f9fd3601e56dd211028f59b9ced9d6979aeb46c1d8b7d8bbd073f8e5a20
 
 pkgname = elephant-archlinuxpkgs
