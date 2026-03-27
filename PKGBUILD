@@ -1,12 +1,12 @@
 pkgbase=lua-cjson
-pkgname=(lua-cjson lua53-cjson lua52-cjson lua51-cjson)
+pkgname=(lua-cjson lua54-cjson lua53-cjson lua52-cjson lua51-cjson)
 pkgver=2.1.0.16
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast JSON parsing and encoding support for Lua.'
 arch=('x86_64')
 url='https://github.com/openresty/lua-cjson'
 license=('MIT')
-makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
+makedepends=('lua' 'lua54' 'lua53' 'lua52' 'lua51' 'luarocks')
 source=("https://github.com/openresty/$pkgbase/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('4b7e96801ee9596216d52d09cc4d21657cfd575971b6bbe9e317a698ae376a8a')
 
@@ -22,6 +22,7 @@ _build() {
 build() {
 	cd $pkgbase-$pkgver
 
+	_build 5.5
 	_build 5.4
 	_build 5.3
 	_build 5.2
@@ -54,7 +55,8 @@ _package() {
 
 	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
-package_lua-cjson()   { _package 5.4; }
+package_lua-cjson()   { _package 5.5; }
+package_lua54-cjson() { _package 5.4; }
 package_lua53-cjson() { _package 5.3; }
 package_lua52-cjson() { _package 5.2; }
 package_lua51-cjson() { _package 5.1; }

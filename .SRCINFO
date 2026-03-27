@@ -1,11 +1,12 @@
 pkgbase = lua-cjson
 	pkgdesc = A fast JSON parsing and encoding support for Lua.
 	pkgver = 2.1.0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openresty/lua-cjson
 	arch = x86_64
 	license = MIT
 	makedepends = lua
+	makedepends = lua54
 	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
@@ -14,6 +15,8 @@ pkgbase = lua-cjson
 	sha256sums = 4b7e96801ee9596216d52d09cc4d21657cfd575971b6bbe9e317a698ae376a8a
 
 pkgname = lua-cjson
+
+pkgname = lua54-cjson
 
 pkgname = lua53-cjson
 
