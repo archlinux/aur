@@ -1,6 +1,6 @@
 # Maintainer: nerdyslacker <karyan40024@gmail.com>
 pkgname=gram
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='A code editor for humanoid apes and grumpy toads'
 arch=(x86_64)
@@ -43,7 +43,7 @@ optdepends=('clang: improved C/C++ language support'
             'org.freedesktop.secrets: to keep you logged into your Zed account')
 replaces=(gram-editor)
 source=("https://codeberg.org/GramEditor/gram/archive/$pkgver.tar.gz")
-sha256sums=('cfd509517d1e0cfe3fd61f2c3b3cca056d85548802472617c4144fdad25ac336')
+sha256sums=('a7197aa1803f0301c6826507a10c671349e9349851b2efbd52ae0200139bf748')
 
 _binname=gram
 _appid=se.ziran.Gram

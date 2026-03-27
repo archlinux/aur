@@ -1,6 +1,6 @@
 pkgbase = gram
 	pkgdesc = A code editor for humanoid apes and grumpy toads
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://gram.liten.app
 	arch = x86_64
@@ -48,7 +48,7 @@ pkgbase = gram
 	optdepends = rust-analyzer: improved Rust language support
 	optdepends = org.freedesktop.secrets: to keep you logged into your Zed account
 	replaces = gram-editor
-	source = https://codeberg.org/GramEditor/gram/archive/1.2.0.tar.gz
-	sha256sums = cfd509517d1e0cfe3fd61f2c3b3cca056d85548802472617c4144fdad25ac336
+	source = https://codeberg.org/GramEditor/gram/archive/1.2.1.tar.gz
+	sha256sums = a7197aa1803f0301c6826507a10c671349e9349851b2efbd52ae0200139bf748
 
 pkgname = gram
