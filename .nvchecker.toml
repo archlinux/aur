@@ -1,6 +1,6 @@
 [zeroclaw-bin]
-source = "git"
-git = "https://github.com/zeroclaw-labs/zeroclaw.git"
+source = "github"
+github = "zeroclaw-labs/zeroclaw"
+use_max_release = true
 prefix = "v"
-include_regex = "v\\d+(\\.\\d+)*"
 sort_version_key = "vercmp"
