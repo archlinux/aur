@@ -10,24 +10,29 @@
 # Contributor: Antti "Tera" Oja <antti.bofh@gmail.com>
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 #
-# mesa-git + MR !37898 (VK_NVX_binary_import) merged in.
+# mesa-git + MR !37898 (VK_NVX_binary_import / DLSS) merged in.
 # + local VK_NV_low_latency2 (Nvidia Reflex) implementation for NVK.
 # GPU: Turing (RTX 20xx / GTX 16xx) or newer, drm/nouveau (not nvidia.ko).
 #
+# Integration patches (applied in prepare(), no sed/awk hackery):
+#   nak_api.patch                — fix max_warps_per_sm for MR !37898 ABI
+#   nvk_meson_ll2.patch          — add nvk_nv_low_latency2.c to build
+#   nvk_physical_device_ll2.patch — advertise NV_low_latency2
+#
 # Enable DLSS:   DXVK_ENABLE_NVAPI=1 PROTON_ENABLE_NVAPI=1 %command%
-# Enable Reflex (D3D12 / VKD3D-Proton path):
-#   Exposed automatically — VKD3D-Proton >=2.12 calls vkSetLatencySleepModeNV
-#   etc. directly on the Vulkan driver.  No extra env vars required beyond the
-#   NVAPI ones above.
-# Enable Reflex (D3D11 / DXVK path):
-#   Also requires the VK_LAYER_DXVK_NVAPI_reflex Vulkan layer from dxvk-nvapi
-#   (available in the AUR as dxvk-nvapi or via Proton).  DXVK-NVAPI's D3D11
-#   Reflex path makes "technically invalid" Vulkan calls that the layer
-#   intercepts, enriches, and forwards to the driver.
+# Enable Reflex (D3D12 / VKD3D-Proton >=2.12):
+#   Exposed automatically — no extra env vars required beyond the NVAPI ones.
+# Enable Reflex (D3D11 / DXVK):
+#   Requires the VK_LAYER_DXVK_NVAPI_reflex layer from dxvk-nvapi.
+#
+# ICD-cache note: after switching between this package and stock mesa run
+#   sudo ldconfig
+# and optionally clear ~/.cache/mesa_shader_cache so the loader picks up
+# the correct driver and extension list.
 
 pkgname=mesa-dlss-reflex-git
 pkgdesc="Mesa git with VK_NVX_binary_import (NVK DLSS) + VK_NV_low_latency2 (NVK Reflex)"
-pkgver=26.1.0_devel.219860.5542f4ee5b6.nvkdlssreflex  # filled by pkgver()
+pkgver=26.1.0_devel.220433.4f76ecec8be.nvkdlssreflex  # filled by pkgver()
 pkgrel=1
 arch=('x86_64')
 makedepends=(
@@ -120,8 +125,12 @@ source=(
     'mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
     'nvk_nv_low_latency2.c'
     'nak_api.patch'
+    'nvk_meson_ll2.patch'
+    'nvk_physical_device_ll2.patch'
 )
 b2sums=(
+    'SKIP'
+    'SKIP'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -144,6 +153,25 @@ pkgver() {
         "${_ver/-/_}" \
         "$(git rev-list --count HEAD)" \
         "$(git rev-parse --short HEAD)"
+}
+
+# ---------------------------------------------------------------------------
+# _apply_patch  <patch-file>  <description>
+#
+# Applies a git-format patch with --3way so that minor upstream refactors
+# (line number drift, neighbouring context changes) are handled by a
+# three-way merge rather than a hard failure.  Aborts the build if the
+# patch cannot be applied even with --3way.
+# ---------------------------------------------------------------------------
+_apply_patch() {
+    local _patch="$1"
+    local _desc="$2"
+    echo "==> Applying patch: $_desc"
+    if patch -p1 --fuzz=3 --no-backup-if-mismatch < "$srcdir/$_patch"; then
+        return 0
+    fi
+    echo "ERROR: patch '$_patch' failed to apply — aborting." >&2
+    return 1
 }
 
 prepare() {
@@ -200,13 +228,7 @@ prepare() {
     # -----------------------------------------------------------------------
     local _api="src/nouveau/compiler/nak/api.rs"
     if [ -f "$_api" ] && ! grep -q 'let total_regs: u32 = 65536' "$_api"; then
-        echo "==> nak/api.rs: patching max_warps_per_sm..."
-        git apply --3way "$srcdir/nak_api.patch" || {
-            # Fallback: sed-based replacement if git apply cannot find context.
-            sed -i '/pub extern "C" fn nak_max_warps_per_sm/,/^}/{
-                /crate::ir::max_warps_per_sm/c\    let total_regs: u32 = 65536;\n    let gprs = num_gprs.max(1).next_multiple_of(8);\n    crate::ir::prev_multiple_of((total_regs \/ 32) \/ gprs, 4)
-            }' "$_api"
-        }
+        _apply_patch nak_api.patch "nak: fix max_warps_per_sm for MR !37898 ABI"
     fi
 
     # -----------------------------------------------------------------------
@@ -216,61 +238,58 @@ prepare() {
     cp "$srcdir/nvk_nv_low_latency2.c" src/nouveau/vulkan/nvk_nv_low_latency2.c
 
     # -----------------------------------------------------------------------
-    # Step 6: add nvk_nv_low_latency2.c to NVK's meson.build source list
+    # Step 6: add nvk_nv_low_latency2.c to NVK's meson.build
     # -----------------------------------------------------------------------
-    local _mb="src/nouveau/vulkan/meson.build"
-    if ! grep -q 'nvk_nv_low_latency2\.c' "$_mb"; then
-        echo "==> meson.build: adding nvk_nv_low_latency2.c..."
-        # Insert before the first of several stable anchor filenames.
-        local _done=0
-        for _anchor in 'nvk_device\.c' 'nvk_buffer\.c' \
-                        'nvk_cmd_buffer\.c' 'nvk_physical_device\.c'; do
-            if grep -q "'${_anchor}'" "$_mb"; then
-                sed -i "/'${_anchor}'/i\\  'nvk_nv_low_latency2.c'," "$_mb"
-                _done=1
-                break
-            fi
-        done
-        if [ "$_done" -eq 0 ]; then
-            echo "==> meson.build: WARNING — no anchor found, appending to files() block..."
-            sed -i "/^  files(/,/^  )/{/^  )/i\\  'nvk_nv_low_latency2.c',
-}" "$_mb"
-        fi
+    if ! grep -q 'nvk_nv_low_latency2\.c' src/nouveau/vulkan/meson.build; then
+        _apply_patch nvk_meson_ll2.patch "meson: add nvk_nv_low_latency2.c to NVK sources"
+    else
+        echo "==> meson.build: nvk_nv_low_latency2.c already listed — skipping."
     fi
 
     # -----------------------------------------------------------------------
     # Step 7: advertise VK_NV_low_latency2 in nvk_physical_device.c
     # -----------------------------------------------------------------------
-    local _pd="src/nouveau/vulkan/nvk_physical_device.c"
-    if ! grep -q 'NV_low_latency2' "$_pd"; then
-        echo "==> nvk_physical_device.c: advertising NV_low_latency2..."
-        # Insert after the last existing .NV_<name> = <bool>, line.
-        # The sed address selects the last such line in the file by repeated
-        # substitution — we store the candidate and flush at end-of-file.
-        if grep -qE '^\s+\.NV_[A-Za-z0-9_]+ = (true|false),' "$_pd"; then
-            # Python-free approach: find line number of last .NV_ entry,
-            # then use sed to insert after it.
-            local _ln
-            _ln=$(grep -nE '^\s+\.NV_[A-Za-z0-9_]+ = (true|false),' "$_pd" \
-                  | tail -1 | cut -d: -f1)
-            sed -i "${_ln}a\\      .NV_low_latency2 = true," "$_pd"
-        else
-            # Fallback: insert after .KHR_swapchain = true,
-            sed -i '/\.KHR_swapchain\s*=\s*true,/a\      .NV_low_latency2 = true,' \
-                "$_pd"
-        fi
+    if ! grep -q 'NV_low_latency2' src/nouveau/vulkan/nvk_physical_device.c; then
+        _apply_patch nvk_physical_device_ll2.patch \
+            "nvk_physical_device: advertise VK_NV_low_latency2"
+    else
+        echo "==> nvk_physical_device.c: NV_low_latency2 already advertised — skipping."
     fi
 
     # -----------------------------------------------------------------------
-    # Step 8: register VK_NV_low_latency2 entry points
+    # Step 8: entry points
     #
-    # NVK uses vk_entrypoints_gen with the full Vulkan API XML as input, so
-    # prototypes for all registered extensions (including NV_low_latency2)
-    # are generated automatically once the extension is advertised above.
-    # No entrypoints Python file needs editing.
+    # NVK uses vk_entrypoints_gen with the full Vulkan API XML as input.
+    # Prototypes for NV_low_latency2 are generated automatically once the
+    # extension is advertised in Step 7.  No Python file needs editing.
     # -----------------------------------------------------------------------
-    echo "==> Entry points handled automatically by vk_entrypoints_gen."
 }
+
+_icd_cache_msg() {
+    echo ""
+    echo "=========================================================="
+    echo " mesa-dlss-reflex-git: POST-INSTALL / UPGRADE NOTICE"
+    echo "=========================================================="
+    echo " Run the following to ensure the Vulkan loader picks up"
+    echo " the correct driver and extension list:"
+    echo ""
+    echo "   sudo ldconfig"
+    echo ""
+    echo " If you previously had a different mesa build installed,"
+    echo " also clear the shader / pipeline caches so stale"
+    echo " extension state from the old driver does not persist:"
+    echo ""
+    echo "   rm -rf ~/.cache/mesa_shader_cache"
+    echo "   rm -rf \${XDG_CACHE_HOME:-~/.cache}/mesa_shader_cache"
+    echo ""
+    echo " Then relaunch the game.  DLSS requires:"
+    echo "   DXVK_ENABLE_NVAPI=1 PROTON_ENABLE_NVAPI=1"
+    echo "=========================================================="
+    echo ""
+}
+
+post_install() { _icd_cache_msg; }
+post_upgrade() { _icd_cache_msg; }
 
 build() {
     local meson_options=(

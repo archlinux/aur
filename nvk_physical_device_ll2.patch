@@ -1,0 +1,19 @@
+From: Mesa packaging <makepkg@localhost>
+Subject: [PATCH 2/3] nvk: advertise VK_NV_low_latency2
+
+Expose the extension in the device extension table.  The entry points
+are implemented in nvk_nv_low_latency2.c and wired up automatically by
+vk_entrypoints_gen from the Vulkan API XML once the extension is listed
+here.
+
+Note: place this alongside other .NV_* entries so the table stays
+grouped by vendor prefix, matching the convention used throughout
+nvk_physical_device.c.
+
+diff --git a/src/nouveau/vulkan/nvk_physical_device.c b/src/nouveau/vulkan/nvk_physical_device.c
+--- a/src/nouveau/vulkan/nvk_physical_device.c
++++ b/src/nouveau/vulkan/nvk_physical_device.c
+@@ -1,2 +1,3 @@
+       .NV_mesh_shader                               = true,
++      .NV_low_latency2                              = true,
+       .NV_shader_sm_builtins                        = true,

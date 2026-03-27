@@ -1,6 +1,6 @@
 pkgbase = mesa-dlss-reflex-git
 	pkgdesc = Mesa git with VK_NVX_binary_import (NVK DLSS) + VK_NV_low_latency2 (NVK Reflex)
-	pkgver = 26.1.0_devel.219860.5542f4ee5b6.nvkdlssreflex
+	pkgver = 26.1.0_devel.220433.4f76ecec8be.nvkdlssreflex
 	pkgrel = 1
 	url = https://www.mesa3d.org
 	arch = x86_64
@@ -86,6 +86,10 @@ pkgbase = mesa-dlss-reflex-git
 	source = mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main
 	source = nvk_nv_low_latency2.c
 	source = nak_api.patch
+	source = nvk_meson_ll2.patch
+	source = nvk_physical_device_ll2.patch
+	b2sums = SKIP
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP

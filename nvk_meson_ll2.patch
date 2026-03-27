@@ -1,0 +1,15 @@
+From: Mesa packaging <makepkg@localhost>
+Subject: [PATCH 1/3] nouveau/vulkan/meson: add nvk_nv_low_latency2.c
+
+Add the VK_NV_low_latency2 (Nvidia Reflex) source file to the NVK
+build.  Placed alongside other nvk_*.c extension files.
+
+diff --git a/src/nouveau/vulkan/meson.build b/src/nouveau/vulkan/meson.build
+--- a/src/nouveau/vulkan/meson.build
++++ b/src/nouveau/vulkan/meson.build
+@@ -1,6 +1,7 @@
+   files(
+     'nvk_device.c',
+     'nvk_buffer.c',
++    'nvk_nv_low_latency2.c',
+     'nvk_cmd_buffer.c',
