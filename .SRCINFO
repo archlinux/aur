@@ -1,11 +1,12 @@
 pkgbase = pake-lizhi
 	pkgdesc = LiZhi wrapped as an AppImage using Pake
 	pkgver = 3.10.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tw93/Pake
 	arch = x86_64
 	license = MIT
 	depends = fuse2
+	depends = webkit2gtk
 	provides = pake-lizhi
 	conflicts = pake-lizhi
 	options = !strip
