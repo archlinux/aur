@@ -1,16 +1,17 @@
 pkgbase = pake-lizhi
-	pkgdesc = LiZhi wrapped as an AppImage using Pake
+	pkgdesc = LiZhi wrapped as a desktop app using Pake
 	pkgver = 3.10.0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/tw93/Pake
 	arch = x86_64
 	license = MIT
-	depends = fuse2
+	depends = gtk3
 	depends = webkit2gtk
-	provides = pake-lizhi
-	conflicts = pake-lizhi
 	options = !strip
-	source = LiZhi.AppImage::https://github.com/tw93/Pake/releases/download/V3.10.0/LiZhi_x86_64.AppImage
+	options = !debug
+	source = LiZhi-3.10.0.deb::https://github.com/tw93/Pake/releases/download/V3.10.0/LiZhi_x86_64.deb
+	source = LICENSE-3.10.0::https://raw.githubusercontent.com/tw93/Pake/V3.10.0/LICENSE
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = pake-lizhi
