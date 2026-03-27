@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=modbustools-git
-pkgver=0.4.0.r24.ge57abdb
+pkgver=0.5.0.r1.g4d0a740
 pkgrel=1
 pkgdesc="ModbusTools are cross-platform Modbus simulator tools with GUI to work with Modbus protocol (TCP,RTU,ASCII)"
 arch=($CARCH)
@@ -68,32 +68,32 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}/"
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
-    install -Dm644 src/server/gui/icons/server.ico "${pkgdir}/usr/share/pixmaps/${pkgname%-git}-server.ico"
-    install -Dm644 src/client/gui/icons/client.ico "${pkgdir}/usr/share/pixmaps/${pkgname%-git}-client.ico"
+    install -Dm644 src/server/gui/icons/mbserver.ico "${pkgdir}/usr/share/pixmaps/mbserver.ico"
+    install -Dm644 src/client/gui/icons/mbclient.ico "${pkgdir}/usr/share/pixmaps/mbclient.ico"
 
     cd build
     install -dm755 "${pkgdir}/usr/lib/"
-    cp -rv libcore.so* "${pkgdir}/usr/lib/"
+    cp -rv libmbcore.so* "${pkgdir}/usr/lib/"
 
-    install -Dm755 $(ls client-*) "${pkgdir}/usr/bin/${pkgname%-git}-client"
-    install -Dm755 $(ls server-*) "${pkgdir}/usr/bin/${pkgname%-git}-server"
+    install -Dm755 $(ls mbclient-*) "${pkgdir}/usr/bin/mbclient"
+    install -Dm755 $(ls mbserver-*) "${pkgdir}/usr/bin/mbserver"
 
-    install -Dm644 /dev/stdin ${pkgdir}/usr/share/applications/io.github.serhmarch.${pkgname%-git}-client.desktop <<EOF
+    install -Dm644 /dev/stdin ${pkgdir}/usr/share/applications/io.github.serhmarch.mbclient.desktop <<EOF
 [Desktop Entry]
-Name=${pkgname%-git}-client
+Name=mbclient
 Comment=${pkgdesc} -- client
-Exec=${pkgname%-git}-client
-Icon=${pkgname%-git}-client
+Exec=mbclient
+Icon=mbclient
 Categories=Development;
 Terminal=false
 Type=Application
 EOF
-    install -Dm644 /dev/stdin ${pkgdir}/usr/share/applications/io.github.serhmarch.${pkgname%-git}-server.desktop <<EOF
+    install -Dm644 /dev/stdin ${pkgdir}/usr/share/applications/io.github.serhmarch.mbserver.desktop <<EOF
 [Desktop Entry]
-Name=${pkgname%-git}-server
+Name=mbserver
 Comment=${pkgdesc} -- server
-Exec=${pkgname%-git}-server
-Icon=${pkgname%-git}-server
+Exec=mbserver
+Icon=mbserver
 Categories=Development;
 Terminal=false
 Type=Application
