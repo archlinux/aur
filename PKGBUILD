@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jared Casper <jaredcasper@gmail.com>
 pkgname=magic
-pkgver=8.3.628
+pkgver=8.3.629
 pkgrel=1
 pkgdesc="A VLSI layout system"
 _git_url="https://github.com/RTimothyEdwards/magic"
@@ -32,24 +32,12 @@ optdepends=(
    'blt: to create a tree diagram of the cell hierarchy in a design'
 )
 
-source=(
-   "${pkgname}::git+${_git_url}#tag=${pkgver}"
-   "0001-fixup-magsgtty.patch"
-)
+source=("${pkgname}::git+${_git_url}#tag=${pkgver}")
 
-b2sums=('9c1480bf63932831b5118f71e8df0ed0a877374537e61516a652a0ed63cfef04b11917d7c662234da64d66f638312f66bbee130bdf72ecb148fe38da12651285'
-        '72d1a9742c72041204c05aca45639251ab49768c43b1829bc40e6f0857fd93c0a7e32e433a0090996e17af1fc588e26677c24487bf04d5a14a86c8f5e4a2402c')
+b2sums=('5343b28aa8abe0137c4a90de8025eeab20b36d8434cd835973beb28f2df2bfb1a5afb769ef1d27ecc0b9b28e0bec99c69e3470a5d0145993675255a891bc23d1')
 
 
 options=()
-
-prepare() {
-   cd "${pkgname}"
-
-   # To compile with Glibc v2.42 we need to patch magsgtty
-   # See: https://github.com/RTimothyEdwards/magic/issues/434
-   patch -Np1 < "../0001-fixup-magsgtty.patch"
-}
 
 build() {
    cd "${pkgname}"
