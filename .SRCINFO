@@ -1,0 +1,21 @@
+pkgbase = python-velocirag
+	pkgdesc = Lightning-fast RAG for AI agents. ONNX-powered, 4-layer fusion, MCP server. No PyTorch.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/HaseebKhalid1507/VelociRAG
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = python-click
+	depends = python-yaml
+	depends = python-networkx
+	depends = python-scikit-learn
+	source = https://github.com/HaseebKhalid1507/VelociRAG/archive/refs/tags/v0.6.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-velocirag
