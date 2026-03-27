@@ -1,0 +1,4 @@
+[matlab-mpm-input]
+source = "jq"
+url = "https://api.github.com/repos/mathworks-ref-arch/matlab-dockerfile/contents/mpm-input-files"
+filter = 'map(.name) | sort | "\(.[-1])+\(.[0])"'
