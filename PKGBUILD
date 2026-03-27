@@ -1,5 +1,5 @@
 # Maintainer: zepyx zepyxunderscore@gmail.com
-pkgname=nucleus-cli
+pkgname=nucleus-shell
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="A blazingly fast cli/ctl for nucleus-shell"
