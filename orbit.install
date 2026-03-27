@@ -8,6 +8,8 @@ post_install() {
     echo ""
     echo "Usage:"
     echo "  orbit           - Launch GUI"
+    echo "  orbit show      - Show the window"
+    echo "  orbit hide      - Hide the window"
     echo "  orbit daemon    - Run as background daemon"
     echo "  orbit toggle    - Toggle daemon visibility"
     echo "  orbit toggle --tab [wifi|bluetooth|vpn]"
