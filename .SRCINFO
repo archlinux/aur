@@ -48,7 +48,8 @@ pkgbase = emacs-lucid-lite
 	optdepends = lldb: For debugging with LLDB instead of GDB
 	provides = emacs=30
 	conflicts = emacs
-	replaces = emacs-lucid emacs-lucid-nativecomp
+	replaces = emacs-lucid
+	replaces = emacs-lucid-nativecomp
 	options = !strip
 	source = ftp://ftp.gnu.org/gnu/emacs/emacs-30.2.tar.xz
 	source = ftp://ftp.gnu.org/gnu/emacs/emacs-30.2.tar.xz.sig
