@@ -26,7 +26,7 @@ depends=(
 options=(!strip)
 
 source=(
-  "plotune-linux-x86_64.tar.gz::https://github.com/baksi-org/plotune-dl/releases/download/v${pkgver}/plotune-linux-x86_64.tar.gz"
+  "plotune-linux-x86_64.tar.gz::https://github.com/plotune/plotune-dl/releases/download/v${pkgver}/plotune-linux-x86_64.tar.gz"
   "plotune.desktop"
   "plotune-mime.xml"
 )
