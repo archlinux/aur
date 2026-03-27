@@ -18,6 +18,7 @@ _srcdir="pVPN-${pkgver}"
 prepare() {
   cd "${_srcdir}"
   export GOPATH="${srcdir}/gopath"
+  export GOFLAGS="-modcacherw"
   go mod download
 }
 
