@@ -4,12 +4,12 @@
 
 pkgname=megacmd-bin
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="MEGA Command Line Interactive and Scriptable Application"
 arch=('x86_64')
 url="http://mega.nz/cmd"
 license=('custom:LicenseRef-megacmd')
-depends=('glibc' 'gcc-libs' 'openssl' 'sqlite' 'zlib' 'libpsl' 'icu' 'pcre' 'bzip2' 'xz')
+depends=('glibc' 'gcc-libs' 'openssl' 'sqlite' 'zlib' 'libpsl' 'icu' 'pcre' 'bzip2' 'xz' 'fuse2')
 optdepends=('freeimage: For image preview/thumbnail support')
 provides=('megacmd' 'ffmpeg-mega')
 conflicts=('megacmd' 'ffmpeg-mega')
