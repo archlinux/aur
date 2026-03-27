@@ -1,5 +1,51 @@
 # Release Notes
 
+## 2.91.5
+
+This release fixes Pex PEX scie behavior to match Pex.
+
+* Make ephemeral exec, venv repl and scie compatible (#3129)
+
+## 2.91.4
+
+This release brings 2 performance fixes from @tobni:
+1. An extremely inefficient algorithm used when resolving requirements with many extras from a PEX
+   was replaced with a simpler, faster and easier to understand algorithm.
+2. Cold-cache `--venv` PEX layout times are nearly halved for large PEXes.
+
+* Fix exponential memory from powerset of requirement extras. (#3123)
+* Hoist realpath calls out of per-file loop in `install_wheel`. (#3124)
+
+## 2.91.3
+
+This release fixes extraction of wheels containing entries with bad permissions. Instead of
+preserving zip entry permissions, just the executable bit is preserved for file entries.
+
+* Extract zip files with current default fs permission. (#3119)
+
+## 2.91.2
+
+This release fixes hermeticity of the Pex boot code against the Python stdlib itself. In some corner
+cases stdlib modules could be loaded from the PYTHONPATH and lead to failure of the Pex boot code
+before reaching its `sys.path` scrubbing code.
+
+* Harden `__main__.py` against non-hermetic stdlib. (#3117)
+
+## 2.91.1
+
+This release partially fixes an interpreter caching bug for CPython interpreters that have the same
+binary contents across patch versions with variance confined to `libpython`, other shared libraries
+and stdlib code.
+
+* Fix identification of venv interpreters. (#3114)
+
+## 2.91.0
+
+This release improves editable support by honoring editable requests when creating venvs from
+resolves.
+
+* Honor `-e ...` when creating venvs from resolves. (#3112)
+
 ## 2.90.3
 
 This release follows up on #3109 in 2.90.2 and extends better isolation to `--venv` script shebangs
