@@ -12,10 +12,10 @@ provides=('gbr')
 conflicts=('gbr')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Kadrian/gbr/releases/download/v${pkgver}/gbr_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('d028d7f06f9aae56a56c56ddc8e312d0eb2c3e52fd4b6474f7770115bd34e4e4')
+sha256sums_aarch64=('6c319b609cc022cb6e096c1842f659549be8b1a6134d4f5dc9039b266f276a12')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Kadrian/gbr/releases/download/v${pkgver}/gbr_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('6caaebc89eb154feab499b8faf4471d2363c6038712ae2e723965703275a3efc')
+sha256sums_x86_64=('254bf09c9af943673234c3b12e8cb4c74c56b4b13df9a85b919bcc8abbfd1af6')
 
 package() {
   install -Dm755 gbr "${pkgdir}/usr/bin/gbr"
