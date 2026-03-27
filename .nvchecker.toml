@@ -1,0 +1,5 @@
+[zar-bin]
+source = "github"
+github = "hymkor/zar"
+use_latest_release = true
+prefix = "v"

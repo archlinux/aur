@@ -1,0 +1,20 @@
+pkgbase = zar-bin
+	pkgdesc = A zip clone with a tar-like interface
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/hymkor/zar
+	arch = x86_64
+	arch = i686
+	license = MIT
+	provides = zar
+	conflicts = zar
+	source = LICENSE-0.2.3::https://raw.githubusercontent.com/hymkor/zar/v0.2.3/LICENSE
+	source = README-0.2.3.md::https://raw.githubusercontent.com/hymkor/zar/v0.2.3/readme.md
+	sha256sums = 97c0112e922df5ba609f0e1e703d9fa6cd4fb344421ea2fd518af703cc0459db
+	sha256sums = 4b7f6833a9824a5e519aa5fa0914ac1eeb4e35071c3f2651e1ae47da28f88e13
+	source_x86_64 = zar-x86_64-0.2.3.zip::https://github.com/hymkor/zar/releases/download/v0.2.3/zar-v0.2.3-linux-amd64.zip
+	sha256sums_x86_64 = d1e635eb3f107c0327a30a6e32bdc9fa23da8700b7a921123145887b7815e86f
+	source_i686 = zar-i686-0.2.3.zip::https://github.com/hymkor/zar/releases/download/v0.2.3/zar-v0.2.3-linux-386.zip
+	sha256sums_i686 = 4bc09400c11810ccde961176794b937b3afde43de1b34f3480a5c0cab1b44fdd
+
+pkgname = zar-bin
