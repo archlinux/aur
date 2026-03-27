@@ -1,27 +1,31 @@
 pkgbase = lua-luatrace-git
 	pkgver = r143.d9d8918
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/geoffleyland/luatrace
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = MIT
 	makedepends = git
-	makedepends = lua
+	makedepends = lua>=5.5
+	makedepends = lua<5.6
 	makedepends = lua51
 	makedepends = lua52
 	makedepends = lua53
+	makedepends = lua54
 	source = git+https://github.com/geoffleyland/luatrace.git
 	source = luatrace-compat.patch
 	source = luatrace-updates.patch
 	source = luatrace.profile
-	md5sums = SKIP
-	md5sums = aa58cc5542f67dac04f842f8145dea22
-	md5sums = 9f619a644c5b669d9d0af7b337cc69f8
-	md5sums = f826cbac6c3ec8d6465f5b6ddcd5712d
+	sha512sums = SKIP
+	sha512sums = 542109a331137031fb23c026c61fed7b0681e17a3603f1675186d0a0fda11219816f434220ec0b57101c6dfa7afe505874ca936b3cab3d18cde00ec0b5bf2f43
+	sha512sums = 9a4c66f7fa50bea009b323b288c736aa9e48a7773b71127dee25a10bd1f3f2baf54dac328e0ed637d6939475fffad3529612dae4ded62b97cc5f6e8906192b99
+	sha512sums = 80cba4a69e8a242d13977af58e6e7a859af29ee9b12ea25fe77153be5b64c256bdabec899c1a9b418214f9c31c3d27ac5d2a0c7fbc11a14f2c2fb2db851372d5
 
 pkgname = lua-luatrace-git
-	pkgdesc = luatrace for Lua 5.4
-	depends = lua
+	pkgdesc = luatrace for Lua 5.5
+	depends = lua>=5.5
+	depends = lua<5.6
 	provides = lua-luatrace
 	conflicts = lua-luatrace
 
@@ -43,3 +47,8 @@ pkgname = lua53-luatrace-git
 	provides = lua53-luatrace
 	conflicts = lua53-luatrace
 
+pkgname = lua54-luatrace-git
+	pkgdesc = luatrace for Lua 5.4
+	depends = lua54
+	provides = lua54-luatrace
+	conflicts = lua54-luatrace
