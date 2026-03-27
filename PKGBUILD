@@ -1,15 +1,19 @@
 # Maintainer: zepyx zepyxunderscore@gmail.com
-pkgname=nucleus-shell
-pkgver=0.1.0
+pkgname=nucleus-cli
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="A official cli built for nucleus-shell"
+pkgdesc="A blazingly fast cli/ctl for nucleus-shell"
 arch=('x86_64')
-url="https://github.com/xZepyx/nucleus-cli"
-license=('MIT')
+url="https://github.com/nucleus-hq/nucleus-shell"
+license=('MIT' 'GPL3')
 depends=('nlohmann-json' 'curl' 'unzip')
 makedepends=('cmake' 'gcc' 'make' 'git')
-source=("git+https://github.com/xZepyx/nucleus-cli.git")
-sha256sums=('SKIP')  # git sources
+
+source=(
+  "git+https://github.com/nucleus-hq/nucleus-cli.git"
+)
+
+sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/nucleus-cli"

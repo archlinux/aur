@@ -1,10 +1,11 @@
-pkgbase = nucleus-shell
-	pkgdesc = A official cli built for nucleus-shell
-	pkgver = 0.1.0
+pkgbase = nucleus-cli
+	pkgdesc = A blazingly fast cli/ctl for nucleus-shell
+	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/xZepyx/nucleus-cli
+	url = https://github.com/nucleus-hq/nucleus-shell
 	arch = x86_64
 	license = MIT
+	license = GPL3
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = make
@@ -12,7 +13,7 @@ pkgbase = nucleus-shell
 	depends = nlohmann-json
 	depends = curl
 	depends = unzip
-	source = git+https://github.com/xZepyx/nucleus-cli.git
+	source = git+https://github.com/nucleus-hq/nucleus-cli.git
 	sha256sums = SKIP
 
-pkgname = nucleus-shell
+pkgname = nucleus-cli
