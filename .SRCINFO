@@ -1,6 +1,6 @@
 pkgbase = ecubus-pro
 	pkgdesc = A powerful automotive ECU development tool Easy of use, Cross platform, Multi dongle, Powerful script ability, CLI support
-	pkgver = 0.8.61
+	pkgver = 0.8.62
 	pkgrel = 1
 	url = https://github.com/ecubus/EcuBus-Pro
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = ecubus-pro
 	conflicts = ecubus-pro
 	options = !debug
 	options = !strip
-	source = ecubus-pro::git+https://github.com/ecubus/EcuBus-Pro.git#tag=v0.8.61
-	sha256sums = d4f4b5db03d7e2312b4127c79931a33c8125ecaa451883632e38bd3346afe605
+	source = ecubus-pro::git+https://github.com/ecubus/EcuBus-Pro.git#tag=v0.8.62
+	sha256sums = 1355d81e06497b9c43383c8641c590551c7755b631e90188151f60194a947026
 
 pkgname = ecubus-pro
