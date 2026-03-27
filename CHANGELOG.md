@@ -7,6 +7,15 @@ Certification Authorities (CA) certificates.
 The format is based on Keep a Changelog (see https://keepachangelog.com),
 and this project versioning is YYYYMMDD.
 
+## 20260325
+
+### Added
+
+- AC_CERTISIGN-JUS_G7.crt
+- AC_SAFEWEB_CD_V12.crt
+- Autoridade_Certificadora_ZAPSIGN.crt
+- Autoridade_Certificadora_do_SERPRO_Final_v6.crt
+
 ## 20260302
 
 ### Added
