@@ -1,19 +1,30 @@
 post_install() {
-  echo ":: Configure the daemon for your user:"
-  echo "   sudo systemctl edit pvpnd --force"
-  echo "   Add: Environment=SUDO_USER=your_username"
-  echo ""
-  echo ":: Or use the quick setup:"
-  echo "   echo -e '[Service]\nEnvironment=SUDO_USER='$(whoami) | sudo tee /etc/systemd/system/pvpnd.service.d/user.conf"
-  echo "   sudo systemctl daemon-reload"
-  echo "   sudo systemctl enable --now pvpnd"
-  echo ""
-  echo ":: Then run 'pvpn' for TUI or 'pvpnctl' for CLI."
+  # Auto-detect the real user (yay/paru set SUDO_USER)
+  local _user="${SUDO_USER:-}"
+  if [ -z "$_user" ]; then
+    _user=$(logname 2>/dev/null || echo "")
+  fi
+
+  if [ -n "$_user" ] && [ "$_user" != "root" ]; then
+    mkdir -p /etc/systemd/system/pvpnd.service.d
+    printf '[Service]\nEnvironment=SUDO_USER=%s\n' "$_user" \
+      > /etc/systemd/system/pvpnd.service.d/user.conf
+    systemctl daemon-reload
+    systemctl enable --now pvpnd
+    echo ":: pVPN daemon enabled for user '$_user'"
+    echo ":: Run 'pvpn' to start the TUI"
+  else
+    echo ":: Could not detect your username."
+    echo ":: Run this to finish setup:"
+    echo "   echo -e '[Service]\nEnvironment=SUDO_USER=YOUR_USERNAME' | sudo tee /etc/systemd/system/pvpnd.service.d/user.conf"
+    echo "   sudo systemctl daemon-reload && sudo systemctl enable --now pvpnd"
+  fi
 }
 
 post_upgrade() {
-  echo ":: Restart the pVPN daemon to apply updates:"
-  echo "   sudo systemctl restart pvpnd"
+  systemctl daemon-reload
+  systemctl restart pvpnd 2>/dev/null || true
+  echo ":: pVPN daemon restarted"
 }
 
 pre_remove() {
@@ -21,6 +32,7 @@ pre_remove() {
 }
 
 post_remove() {
+  rm -rf /etc/systemd/system/pvpnd.service.d
   echo ":: Config in ~/.config/pvpn/ and session data in ~/.local/share/pvpn/"
   echo "   were NOT removed. Delete manually if desired."
 }
