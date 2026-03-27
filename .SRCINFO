@@ -1,5 +1,5 @@
 pkgbase = bb_launcher
-	pkgdesc = Simple launcher for Bloodborne shadPS4
+	pkgdesc = Dedicated launcher/mod manager combo app for Bloodborne on shadPS4
 	pkgver = 13.06
 	pkgrel = 1
 	url = https://github.com/rainmakerv3/BB_Launcher
