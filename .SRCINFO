@@ -1,7 +1,7 @@
 pkgbase = open-supaplex
 	pkgdesc = Supaplex is a game released in the early nineties. OpenSupaplex is a 1:1 reimplementation of the original game in C and SDL
-	pkgver = 7.1.2
-	pkgrel = 2
+	pkgver = 7.2
+	pkgrel = 1
 	url = https://www.github.com/sergiou87/open-supaplex
 	arch = x86_64
 	license = GPL3
@@ -9,8 +9,9 @@ pkgbase = open-supaplex
 	depends = sdl2_gfx
 	depends = sdl2_mixer
 	noextract = v7.1.2.zip
-	source = https://github.com/sergiou87/open-supaplex/archive/v7.1.2.zip
-	sha1sums = 4817eaebfb50452763466dfec8d14898aa2095db
+	source = https://github.com/sergiou87/open-supaplex/archive/v7.2.zip
+	sha1sums = 9540d4cc0889ea644ce7ac6c3f4d5c81dfa059a4
+
 
 pkgname = open-supaplex
 
