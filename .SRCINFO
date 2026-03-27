@@ -1,16 +1,17 @@
 pkgbase = pake-deepseek
-	pkgdesc = DeepSeek wrapped as an AppImage using Pake
+	pkgdesc = DeepSeek wrapped as a desktop app using Pake
 	pkgver = 3.10.0
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/tw93/Pake
 	arch = x86_64
 	license = MIT
-	depends = fuse2
+	depends = gtk3
 	depends = webkit2gtk
-	provides = pake-deepseek
-	conflicts = pake-deepseek
 	options = !strip
-	source = DeepSeek.AppImage::https://github.com/tw93/Pake/releases/download/V3.10.0/DeepSeek_x86_64.AppImage
+	options = !debug
+	source = DeepSeek-3.10.0.deb::https://github.com/tw93/Pake/releases/download/V3.10.0/DeepSeek_x86_64.deb
+	source = LICENSE-3.10.0::https://raw.githubusercontent.com/tw93/Pake/V3.10.0/LICENSE
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = pake-deepseek
