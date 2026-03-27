@@ -3,11 +3,11 @@
 
 _pkgname=ananicy-cpp
 pkgname=ananicy-cpp-git
-pkgver=1.1.1.r17.g7fb9ed8
+pkgver=1.2.0.r1.ga42a187
 pkgrel=1
 pkgdesc="Ananicy Cpp is a full rewrite of Ananicy in C++, featuring lower CPU and RAM usage."
-arch=(x86_64 i386 armv7h)
-url="https://gitlab.com/ananicy-cpp/ananicy-cpp.git"
+arch=(x86_64)
+url="https://gitlab.com/ananicy-cpp/ananicy-cpp"
 license=('GPL-3.0-or-later')
 depends=(
   gcc-libs
@@ -29,8 +29,8 @@ makedepends=(
   ninja
   nlohmann-json
 )
-optdepends=("ananicy-rules-git: community rules"
-            "ananicy-rules: Rules based for ananicy-cpp")
+optdepends=("cachyos-ananicy-rules-git: community rules"
+            "cachyos-ananicy-rules: Rules based for ananicy-cpp")
 source=("${_pkgname}::git+https://gitlab.com/ananicy-cpp/ananicy-cpp.git")
 sha512sums=('SKIP')
 provides=('ananicy-cpp')
@@ -54,6 +54,7 @@ build() {
         -DUSE_EXTERNAL_FMTLIB=ON \
         -DENABLE_SYSTEMD=ON \
         -DUSE_BPF_PROC_IMPL=ON \
+        -DBPF_BUILD_LIBBPF=OFF \
         -DENABLE_REGEX_SUPPORT=ON
 
   cmake --build build --target ananicy-cpp
