@@ -1,0 +1,13 @@
+Index: xbrzscale/libxbrzscale.cpp
+===================================================================
+--- a/libxbrzscale.cpp
++++ b/libxbrzscale.cpp
+@@ -191,7 +191,7 @@ SDL_Surface* libxbrzscale::scale(SDL_Sur
+   if(bEnableOutput)printf("Scaling image...\n");
+   uint32_t* dest = new uint32_t[dst_width * dst_height];
+ 
+-  xbrz::scale(scale, in_data, dest, src_width, src_height, xbrz::ColorFormat::ARGB);
++  xbrz::scale(scale, in_data, dest, src_width, src_height, xbrz::ColorFormat::argb);
+   delete [] in_data;
+ 
+   if(bEnableOutput)printf("Saving image...\n");
