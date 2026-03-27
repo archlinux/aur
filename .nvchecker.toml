@@ -1,4 +1,4 @@
 [wasm-pack-bin]
 source = "github"
-github = "drager/wasm-pack"
+github = "wasm-bindgen/wasm-pack"
 use_latest_release = true

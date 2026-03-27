@@ -6,10 +6,10 @@
 pkgname="wasm-pack-bin"
 pkgdesc="Your favorite Rust -> Wasm workflow tool"
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 arch=("x86_64" "aarch64")
-url="https://github.com/drager/wasm-pack"
-_ghurl="https://github.com/drager/wasm-pack"
+url="https://github.com/wasm-bindgen/wasm-pack"
+_ghurl="https://github.com/wasm-bindgen/wasm-pack"
 license=("MIT" "Apache-2.0")
 provides=("${pkgname%-bin}=${pkgver}")
 conflicts=("${pkgname%-bin}")
