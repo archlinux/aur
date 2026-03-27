@@ -15,27 +15,35 @@ depends=(
 )
 makedepends=('python-pip' 'python-virtualenv')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yeggis/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('d8173478e76698ee61e19a12c1c8432d8647673b997b404e29b1a6cc490e0d63')
+sha256sums=('ca3b09318419a18cb9af362bc4273de0aab0eabe5eed7a308d0f308ada068520')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
-  # Ana dizin
-  install -dm755 "$pkgdir/usr/share/$pkgname"
-  cp -r src "$pkgdir/usr/share/$pkgname/"
-
-  # venv oluştur ve bağımlılıkları kur
-  python -m venv "$pkgdir/usr/share/$pkgname/venv"
-  "$pkgdir/usr/share/$pkgname/venv/bin/pip" install \
+  # venv'i srcdir'de oluştur
+  python -m venv "$srcdir/venv"
+  "$srcdir/venv/bin/pip" install \
     faster-whisper google-genai \
     "urllib3>=2.0" \
     "charset-normalizer>=3.0" \
     --no-compile \
     --quiet
 
-  # venv shebang'ini düzelt
-  find "$pkgdir/usr/share/$pkgname/venv/bin" -type f \
-    -exec sed -i "s|$pkgdir||g" {} \; 2>/dev/null || true
+  # shebang'i düzelt (srcdir → gerçek path)
+  find "$srcdir/venv/bin" -type f \
+    -exec sed -i "s|$srcdir/venv|/usr/share/$pkgname/venv|g" {} \; 2>/dev/null || true
+
+  # makepkg uyarılarını (srcdir referansları ve 𝜋thon aliası) temizle
+  rm -f "$srcdir/venv/bin/𝜋thon" 2>/dev/null || true
+  sed -i "s|$srcdir/venv|/usr/share/$pkgname/venv|g" "$srcdir/venv/pyvenv.cfg" 2>/dev/null || true
+  rm -f "$srcdir/venv"/lib/python*/site-packages/pip-*.dist-info/RECORD 2>/dev/null || true
+
+  # Ana dizin
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp -r src "$pkgdir/usr/share/$pkgname/"
+
+  # venv'i kopyala
+  cp -r "$srcdir/venv" "$pkgdir/usr/share/$pkgname/"
 
   # Çalıştırılabilir script
   install -Dm755 chevren "$pkgdir/usr/share/$pkgname/chevren"

@@ -13,6 +13,6 @@ pkgbase = chevren
 	depends = yt-dlp
 	depends = mpv
 	source = chevren-1.0.13.tar.gz::https://github.com/yeggis/chevren/archive/refs/tags/v1.0.13.tar.gz
-	sha256sums = d8173478e76698ee61e19a12c1c8432d8647673b997b404e29b1a6cc490e0d63
+	sha256sums = ca3b09318419a18cb9af362bc4273de0aab0eabe5eed7a308d0f308ada068520
 
 pkgname = chevren
