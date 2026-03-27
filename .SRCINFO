@@ -1,0 +1,18 @@
+pkgbase = hermes-cli
+	pkgdesc = Native speech-to-text CLI daemon
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/adityamiskin/hermes
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = wl-clipboard
+	options = !lto
+	source = git+https://github.com/adityamiskin/hermes.git#commit=418773c128790db07c5a900bfb6283918ed87e3f
+	sha256sums = SKIP
+
+pkgname = hermes-cli
