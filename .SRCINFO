@@ -1,7 +1,7 @@
 pkgbase = matlab-jre-meta
 	pkgdesc = A high-level language for numerical computation and visualization
 	pkgver = R2025b
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mathworks.com/support/requirements/openjdk.html
 	arch = any
 	license = 0BSD
@@ -9,43 +9,71 @@ pkgbase = matlab-jre-meta
 pkgname = matlab-jre8-meta
 	pkgdesc = A high-level language for numerical computation and visualization (JRE8, meta)
 	depends = java-environment=8
+	provides = matlab-r2020a-jre-meta=R2025b
 	provides = matlab-r2020a-jre=R2025b
+	provides = matlab-r2020b-jre-meta=R2025b
 	provides = matlab-r2020b-jre=R2025b
+	provides = matlab-r2021a-jre-meta=R2025b
 	provides = matlab-r2021a-jre=R2025b
+	provides = matlab-r2021b-jre-meta=R2025b
 	provides = matlab-r2021b-jre=R2025b
+	provides = matlab-r2022a-jre-meta=R2025b
 	provides = matlab-r2022a-jre=R2025b
+	provides = matlab-r2022b-jre-meta=R2025b
 	provides = matlab-r2022b-jre=R2025b
+	provides = matlab-r2023a-jre-meta=R2025b
 	provides = matlab-r2023a-jre=R2025b
+	provides = matlab-r2023b-jre-meta=R2025b
 	provides = matlab-r2023b-jre=R2025b
+	provides = matlab-r2024a-jre-meta=R2025b
 	provides = matlab-r2024a-jre=R2025b
+	provides = matlab-r2024b-jre-meta=R2025b
 	provides = matlab-r2024b-jre=R2025b
+	provides = matlab-r2025a-jre-meta=R2025b
 	provides = matlab-r2025a-jre=R2025b
+	provides = matlab-r2025b-jre-meta=R2025b
 	provides = matlab-r2025b-jre=R2025b
+	provides = matlab-jre-meta=R2025b
 	provides = matlab-jre=R2025b
 
 pkgname = matlab-jre21-meta
 	pkgdesc = A high-level language for numerical computation and visualization (JRE21, meta)
 	depends = java-environment=21
+	provides = matlab-r2025a-jre-meta=R2025b
 	provides = matlab-r2025a-jre=R2025b
+	provides = matlab-r2025b-jre-meta=R2025b
 	provides = matlab-r2025b-jre=R2025b
+	provides = matlab-jre-meta=R2025b
 	provides = matlab-jre=R2025b
 
 pkgname = matlab-jre11-meta
 	pkgdesc = A high-level language for numerical computation and visualization (JRE11, meta)
 	depends = java-environment=11
+	provides = matlab-r2023a-jre-meta=R2025b
 	provides = matlab-r2023a-jre=R2025b
+	provides = matlab-r2023b-jre-meta=R2025b
 	provides = matlab-r2023b-jre=R2025b
+	provides = matlab-r2024a-jre-meta=R2025b
 	provides = matlab-r2024a-jre=R2025b
+	provides = matlab-r2024b-jre-meta=R2025b
 	provides = matlab-r2024b-jre=R2025b
+	provides = matlab-r2025a-jre-meta=R2025b
 	provides = matlab-r2025a-jre=R2025b
+	provides = matlab-r2025b-jre-meta=R2025b
 	provides = matlab-r2025b-jre=R2025b
+	provides = matlab-jre-meta=R2025b
 	provides = matlab-jre=R2025b
 
 pkgname = matlab-jre17-meta
 	pkgdesc = A high-level language for numerical computation and visualization (JRE17, meta)
 	depends = java-environment=17
+	provides = matlab-r2024a-jre-meta=R2025b
 	provides = matlab-r2024a-jre=R2025b
+	provides = matlab-r2024b-jre-meta=R2025b
 	provides = matlab-r2024b-jre=R2025b
+	provides = matlab-r2025a-jre-meta=R2025b
 	provides = matlab-r2025a-jre=R2025b
+	provides = matlab-r2025b-jre-meta=R2025b
 	provides = matlab-r2025b-jre=R2025b
+	provides = matlab-jre-meta=R2025b
 	provides = matlab-jre=R2025b

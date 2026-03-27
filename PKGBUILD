@@ -2,7 +2,7 @@
 
 pkgbase="matlab-jre-meta"
 pkgver=R2025b
-pkgrel=1
+pkgrel=2
 pkgdesc="A high-level language for numerical computation and visualization"
 arch=(
   'any'
@@ -27,11 +27,13 @@ for _jre in "${!_jres[@]}"; do
   local _provides=()
   for _release in ${_jres[${_jre}]}; do
     _provides+=(
+      "matlab-${_release,,}-jre-meta=${pkgver}"
       "matlab-${_release,,}-jre=${pkgver}"
     )
 
     if [[ "${_release}" == "${pkgver}" ]]; then
       _provides+=(
+        "matlab-jre-meta=${pkgver}"
         "matlab-jre=${pkgver}"
       )
     fi
