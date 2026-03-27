@@ -1,6 +1,6 @@
 # Maintainer: jakeb-grant
 pkgname=pane-fm-git
-pkgver=0.1.0.r6.gd72e245
+pkgver=0.1.0.r7.g862bfd6
 pkgrel=1
 pkgdesc="A themeable file manager built with Tauri and Svelte"
 arch=('x86_64')
@@ -29,16 +29,10 @@ pkgver() {
         || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd pane-fm
-    export RUSTUP_TOOLCHAIN=stable
-    bun install --frozen-lockfile
-    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')" --manifest-path src-tauri/Cargo.toml
-}
-
 build() {
     cd pane-fm
     export RUSTUP_TOOLCHAIN=stable
+    bun install --frozen-lockfile
     bun run sync-icons
     cargo build --release --manifest-path src-tauri/Cargo.toml
 }
