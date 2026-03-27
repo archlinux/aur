@@ -1,5 +1,5 @@
 pkgname=hyperhdr-git
-pkgver=v22.0.0.0beta1.r7.112ece98
+pkgver=v22.0.0.0beta1.r16.7a4ed2a1
 pkgrel=1
 pkgdesc="Highly optimized open source ambient lighting implementation based on modern digital video and audio stream analysis"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -41,6 +41,8 @@ build() {
     -DQT_DIR=/usr/lib/cmake/Qt6 \
     -DPROTOBUF_PROTOC_EXECUTABLE=/usr/bin/protoc \
     -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DLIBCXX_ENABLE_STATIC_ABI_LIBRARY=ON \
+    -DCMAKE_SKIP_INSTALL_RPATH=ON \
     -DBUILD_ARCHIVES=OFF \
     \
     -DENABLE_SPIDEV=OFF \
@@ -48,7 +50,6 @@ build() {
     -DENABLE_WS281XPWM=OFF \
     \
     -DENABLE_DX=OFF \
-    -DENABLE_FRAMEBUFFERE=ON \
     -DENABLE_MAC_SYSTEM=OFF \
     -DENABLE_PIPEWIRE_EGL=ON \
     -DENABLE_PIPEWIRE=ON \
@@ -67,9 +68,8 @@ build() {
     -DENABLE_POWER_MANAGEMENT=ON \
     -DENABLE_PROTOBUF=ON \
     -DENABLE_SYSTRAY=ON \
-    -DENABLE_XZ=ON \
     \
-    -DUSE_SHARED_LIBS=ON \
+    -DUSE_SHARED_LIBS=OFF \
     -DUSE_EMBEDDED_WEB_RESOURCES=ON \
     -DUSE_PRECOMPILED_HEADERS=OFF \
     -DUSE_CCACHE_CACHING=OFF \
@@ -92,8 +92,9 @@ package() {
 
   install -Dm 644 ${srcdir}/hyperhdr.systemd-user "${pkgdir}/usr/lib/systemd/user/hyperhdr.service"
   install -Dm 644 ${srcdir}/hyperhdr-x11.systemd-user "${pkgdir}/usr/lib/systemd/user/hyperhdr-x11.service"
+}
 
-
+post_install() {
   echo
   echo
   echo -------------------------------------------------------------
