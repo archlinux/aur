@@ -1,42 +1,38 @@
 #!/usr/bin/env python3
 import subprocess
-import os
-import glob
+import sys
 
 def normalize_url(url: str) -> str:
     """Convert music.youtube.com URLs to regular youtube.com URLs."""
     return url.replace("music.youtube.com", "www.youtube.com")
 
 def download_music():
-    url = normalize_url(input("Paste the YouTube URL: ").strip())
+    # Check if playlist flag -p is provided in the command line arguments
+    use_playlist = "-p" in sys.argv
 
-    # Using your exact working flags for cropping and metadata
+    url_input = input("Paste the YouTube URL: ").strip()
+    url = normalize_url(url_input)
+
+    # The -o flag now handles the '1. ' prefix for every file downloaded
     cmd = [
         "yt-dlp", "-x",
-        "--no-playlist",
         "--audio-format", "flac",
         "--audio-quality", "0",
         "--embed-thumbnail",
         "--embed-metadata",
         "--parse-metadata", "title:%(artist)s - %(title)s",
-        "--replace-in-metadata", "title", r"\[MV\] ", "",
-        "--replace-in-metadata", "title", r" feat\. asmi", "",
         "--ppa", "ThumbnailsConvertor:-vf crop='ih:ih'",
-        "-o", "%(artist)s - %(title)s.%(ext)s",
+        "-o", "1. %(artist)s - %(title)s.%(ext)s",
         url
     ]
 
-    subprocess.run(cmd)
+    # Toggle playlist support based on the -p flag
+    if use_playlist:
+        cmd.insert(2, "--yes-playlist")
+    else:
+        cmd.insert(2, "--no-playlist")
 
-    # Find the flac file and add the '1.' prefix
-    flac_files = glob.glob("*.flac")
-    if flac_files:
-        # Get the most recently created flac file
-        latest_file = max(flac_files, key=os.path.getctime)
-        if not latest_file.startswith("1. "):
-            new_name = f"1. {latest_file}"
-            os.rename(latest_file, new_name)
-            print(f"File ready: {new_name}")
+    subprocess.run(cmd)
 
 if __name__ == "__main__":
     download_music()
