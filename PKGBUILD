@@ -2,34 +2,62 @@
 pkgname=dev-type-bin
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Master touch typing while coding (AppImage)"
+pkgdesc="Master touch typing while coding"
 arch=('x86_64')
 url="https://github.com/mehad605/dev_type"
 license=('CC-BY-NC-SA-4.0')
-depends=('fuse2' 'zlib' 'glibc')
+
+# Extract the AppImage so FUSE is not required at runtime.
+# The AppImage bundles everything; no extra runtime deps needed beyond glibc.
+depends=('glibc' 'gcc-libs')
+provides=('dev-type')
+conflicts=('dev-type' 'dev-type-git')
+options=('!strip')
 
 source=(
-  "https://github.com/mehad605/dev_type/releases/download/v1.0.0/dev_type-1.0.0-x86_64.AppImage"
-  "dev_type.png::https://raw.githubusercontent.com/mehad605/dev_type/v1.0.0/assets/icon.png"
+  "${pkgname}-${pkgver}.AppImage::https://github.com/mehad605/dev_type/releases/download/v${pkgver}/dev_type-${pkgver}-x86_64.AppImage"
+  "dev_type.png::https://raw.githubusercontent.com/mehad605/dev_type/v${pkgver}/assets/icon.png"
+  "dev_type.desktop::https://raw.githubusercontent.com/mehad605/dev_type/v${pkgver}/packaging/dev_type.desktop"
 )
 sha256sums=(
-  '598e49fc82733ed7571b32a7fff7b1c3f289d7955852206a758e2f28c14f97c5'
-  'a326e6355f522857545036ac88825042ba1f22e750c2638029856fc7347b3188'
+  'SKIP'
+  'SKIP'
+  'SKIP'
 )
 
+prepare() {
+  # Make the AppImage executable so it can be extracted
+  chmod +x "${srcdir}/${pkgname}-${pkgver}.AppImage"
+
+  # Extract the AppImage contents into a squashfs-root directory.
+  # --appimage-extract avoids needing FUSE and unpacks the SquashFS payload.
+  cd "${srcdir}"
+  "./${pkgname}-${pkgver}.AppImage" --appimage-extract
+}
+
 package() {
-  install -Dm755 "dev_type-${pkgver}-x86_64.AppImage" "${pkgdir}/usr/bin/dev_type"
+  local _squash="${srcdir}/squashfs-root"
 
-  install -Dm644 "${srcdir}/dev_type.png"     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/dev_type.png"
+  # --- Main executable ---
+  # The onedir layout places the real binary at usr/bin/dev_type with all
+  # bundled .so files in usr/bin/_internal/ alongside it.
+  install -d "${pkgdir}/usr/lib/dev_type"
+  cp -a "${_squash}/usr/bin/." "${pkgdir}/usr/lib/dev_type/"
 
-  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/dev_type.desktop" <<'EOF2'
-[Desktop Entry]
-Name=Dev Type
-Exec=dev_type
-Icon=dev_type
-Type=Application
-Categories=Education;
-Comment=Master touch typing while coding
-Terminal=false
-EOF2
+  # Make the main binary executable
+  chmod 755 "${pkgdir}/usr/lib/dev_type/dev_type"
+
+  # Create a launcher wrapper in /usr/bin that sets the working dir correctly
+  install -Dm755 /dev/stdin "${pkgdir}/usr/bin/dev_type" << 'EOF'
+#!/bin/sh
+exec /usr/lib/dev_type/dev_type "$@"
+EOF
+
+  # --- Icon ---
+  install -Dm644 "${srcdir}/dev_type.png" \
+    "${pkgdir}/usr/share/icons/hicolor/256x256/apps/dev_type.png"
+
+  # --- Desktop entry ---
+  install -Dm644 "${srcdir}/dev_type.desktop" \
+    "${pkgdir}/usr/share/applications/dev_type.desktop"
 }
