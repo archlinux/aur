@@ -5,8 +5,8 @@
 pkgname=trae-cn-desktop-bin
 _pkgname=trae-cn
 pkgver=2.3.16535
-pkgrel=1
-pkgdesc="字节跳动推出的AI编程IDE（中文版）"
+pkgrel=2
+pkgdesc="字节跳动推出的AI编程IDE（Trae CN）"
 arch=('x86_64' 'aarch64')
 url="https://www.trae.cn/"
 license=('custom')
@@ -31,29 +31,29 @@ provides=("trae-cn=${pkgver}")
 conflicts=('trae-cn' 'trae-cn-bin')
 
 source_x86_64=(
-    "${_pkgname}-${pkgver}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/Trae%20CN-linux-x64.tar.gz"
+    "${_pkgname}-${pkgver}-${CARCH}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/Trae%20CN-linux-x64.tar.gz"
     "${_pkgname}.desktop"
     "${_pkgname}-startup.sh"
 )
 
 source_aarch64=(
-    "${_pkgname}-${pkgver}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/Trae%20CN-linux-arm64.tar.gz"
+    "${_pkgname}-${pkgver}-${CARCH}.tar.gz::https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/${pkgver}/linux/Trae%20CN-linux-arm64.tar.gz"
     "${_pkgname}.desktop"
     "${_pkgname}-startup.sh"
 )
 
 sha256sums_x86_64=('84103daae8f51edceedb0680f787315b286204606b318fb768df682bc14ad497'
-                   '17dec69f928f4b57ed39c5ae1663223271a4d41268a31c51476d2df053f044fc'
+                   'bb29c808c432f05d1611a4064fa958560f91c64e55aebc03e3dd9d08f9659de6'
                    'cd3a00a606b14d2ab494ad98b1c3926ceaf0c46f226b258f7e79c55b61dbd395')
 sha256sums_aarch64=('84103daae8f51edceedb0680f787315b286204606b318fb768df682bc14ad497'
-                    '17dec69f928f4b57ed39c5ae1663223271a4d41268a31c51476d2df053f044fc'
+                    'bb29c808c432f05d1611a4064fa958560f91c64e55aebc03e3dd9d08f9659de6'
                     'cd3a00a606b14d2ab494ad98b1c3926ceaf0c46f226b258f7e79c55b61dbd395')
 
 package() {
     install -d "${pkgdir}/opt/${_pkgname}"
     install -d "${pkgdir}/usr/bin"
     install -d "${pkgdir}/usr/share/"{applications,pixmaps,mime/packages,licenses/${_pkgname}}
-    bsdtar -xf "${_pkgname}-${pkgver}.tar.gz" -C "${pkgdir}/opt/${_pkgname}"
+    bsdtar -xf "${_pkgname}-${pkgver}-${CARCH}.tar.gz" -C "${pkgdir}/opt/${_pkgname}"
     chmod 4755 "${pkgdir}/opt/${_pkgname}/chrome-sandbox"
     install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     install -Dm644 "${srcdir}/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
