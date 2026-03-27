@@ -1,0 +1,20 @@
+pkgbase = openwork-bin
+	pkgdesc = Open source alternative to Claude Cowork desktop app
+	pkgver = 0.11.194
+	pkgrel = 1
+	url = https://github.com/different-ai/openwork
+	arch = x86_64
+	license = MIT
+	depends = dbus
+	depends = glib2
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = librsvg
+	depends = libsoup3
+	depends = openssl
+	depends = webkit2gtk-4.1
+	noextract = openwork-bin-0.11.194.deb
+	source = openwork-bin-0.11.194.deb::https://github.com/different-ai/openwork/releases/download/v0.11.194/openwork-desktop-linux-amd64.deb
+	sha256sums = ecf931d3919f3ac02aa5a802e42892a2c0892c1264904bdbec2bfccd901fa7f8
+
+pkgname = openwork-bin
