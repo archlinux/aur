@@ -5,11 +5,11 @@
 # Contributor: Renchi Raju <renchi@green.tam.uiuc.edu>
 # Based on emacs from [extra] and emacs-bzr, emacs-git from the AUR
 
-pkgname=emacs-lucid
+pkgname=emacs-lucid-lite
 pkgver=30.2
 _pkgver_major=${pkgver/.*}
 pkgrel=1
-pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version)"
+pkgdesc="The extensible, customizable, self-documenting real-time display editor (Lucid toolkit version, more lite)"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
 license=('GPL3')
@@ -17,7 +17,6 @@ depends=(
   acl
   alsa-lib
   cairo
-  dbus
   fontconfig
   freetype2
   gdk-pixbuf2
@@ -27,11 +26,9 @@ depends=(
   gnutls
   gpm
   harfbuzz
-  hicolor-icon-theme
   lcms2
   libice
   libjpeg-turbo
-  libgccjit
   libotf
   libpng
   librsvg
@@ -53,8 +50,6 @@ depends=(
   libxt
   m17n-lib
   ncurses
-  sqlite
-  systemd-libs
   tree-sitter
   xaw3d
   xcb-util
@@ -65,7 +60,7 @@ optdepends=(
 )
 conflicts=(emacs)
 provides=("emacs=$_pkgver_major")
-replaces=(emacs-lucid-nativecomp)
+replaces=(emacs-lucid emacs-lucid-nativecomp)
 options=(!strip)
 validpgpkeys=('17E90D521672C04631B1183EE78DAE0F3115E06B'  # Eli Zaretskii <eliz@gnu.org>
               'CEA1DE21AB108493CC9C65742E82323B8F4353EE') # Stefan Kangas <stefankangas@gmail.com>
@@ -84,13 +79,17 @@ build() {
     --libexecdir=/usr/lib
     --localstatedir=/var
     --disable-build-details
+    --without-all
+    --with-x-toolkit=lucid
+    --with-modules
+    --with-tree-sitter
+    --with-xft
+    --with-libotf
+    --with-xim
+    --with-file-notification=yes
     --with-cairo
     --with-harfbuzz
-    --with-libsystemd
-    --with-modules
-    --with-native-compilation=aot
-    --with-tree-sitter
-    --with-x-toolkit=lucid
+    --with-cairo
     --without-gconf
     --without-gsettings
     --program-transform-name='s/^ctags$/ctags.emacs/'
