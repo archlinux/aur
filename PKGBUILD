@@ -1,5 +1,5 @@
 pkgname="cuppajoe"
-pkgver="0.9.2"
+pkgver="0.9.2.1"
 pkgrel="1"
 pkgdesc="A hot cuppa joe"
 url=https://github.com/Miroaja/cuppa
