@@ -1,6 +1,6 @@
 pkgbase = cx-search
 	pkgdesc = Fast trigram-indexed code search engine designed for use as a Claude subagent
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/valletrg/cx
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = cx-search
 	makedepends = ninja
 	makedepends = git
 	depends = gcc-libs
-	source = cx-search-0.1.0.tar.gz::https://github.com/valletrg/cx/archive/v0.1.0.tar.gz
-	sha256sums = 5917aa7459aa812745382e2ce869cd98daf089a66af7692978eed3fbc75554e2
+	source = cx-search-0.1.1.tar.gz::https://github.com/valletrg/cx/archive/v0.1.1.tar.gz
+	sha256sums = 1d40347e1f04d64970e6160b1c2ce0eae7844bc175ed655dcf2c1847811a69e2
 
 pkgname = cx-search
