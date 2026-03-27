@@ -17,8 +17,8 @@ depends=(
   'libxkbcommon-x11'
   'mesa'
   'hicolor-icon-theme'
-  'uv'
   'python'
+  'uv'
   'qt6-base'
   'qt6-svg'
 )
