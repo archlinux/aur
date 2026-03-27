@@ -36,8 +36,6 @@ package() {
   # makepkg uyarılarını (srcdir referansları ve 𝜋thon aliası) temizle
   rm -f "$srcdir/venv/bin/𝜋thon" 2>/dev/null || true
   sed -i "s|$srcdir/venv|/usr/share/$pkgname/venv|g" "$srcdir/venv/pyvenv.cfg" 2>/dev/null || true
-  rm -f "$srcdir/venv"/lib/python*/site-packages/pip-*.dist-info/RECORD 2>/dev/null || true
-
   # Ana dizin
   install -dm755 "$pkgdir/usr/share/$pkgname"
   cp -r src "$pkgdir/usr/share/$pkgname/"
