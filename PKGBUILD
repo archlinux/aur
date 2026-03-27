@@ -1,9 +1,9 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 
-# Release notes https://rocm.docs.amd.com/en/7.11.0-preview/about/release-notes.html
+# Release notes https://rocm.docs.amd.com/en/7.12.0-preview/about/release-notes.html
 pkgname=rocm-gfx1151-bin
-pkgdesc="ROCm Core SDK and TheRock Build System - Ryzen AI Max"
-pkgver=7.11.0pre
+pkgdesc="ROCm Core SDK and TheRock Build System - Ryzen AI Max 300 - Strix Halo"
+pkgver=7.12.0pre
 pkgrel=1
 epoch=0
 arch=('x86_64')
@@ -22,17 +22,17 @@ optdepends=('clinfo')
 options=('!strip')
 
 source=(
-"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx1151-7.11.0.tar.gz"
+"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx1151-7.12.0.tar.gz"
 )
 
 sha256sums=(
-"cd8d75cba0531adf05138635400c5429e21e09e43a5b6ccdd0671c65285563c6"
+"4628e28d1660269f506d1f2d821d7b84536a01bf56a090c56a84b8cfcf9e3966"
 )
 
 package() {
 
     mkdir -p "${srcdir}/opt/rocm"
-    tar xf therock-dist-linux-gfx1151-7.11.0.tar.gz -C ${srcdir}/opt/rocm
+    tar xf therock-dist-linux-gfx1151-7.12.0.tar.gz -C ${srcdir}/opt/rocm
 
     mv "${srcdir}/opt/" "${pkgdir}/"
 
