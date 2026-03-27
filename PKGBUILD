@@ -1,8 +1,8 @@
 # Maintainer: Simone Camito <zibo.camito@gmail.com>
 
 pkgname=ashell
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="A ready to go Wayland status bar for Hyprland and Niri"
 url="https://github.com/MalpenZibo/${pkgname}"
 license=("MIT")
@@ -22,8 +22,9 @@ depends=(
   "libpulse"
 )
 arch=("x86_64")
+options=(!lto)
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz")
-sha512sums=('600cd7b783cd628c890aae0689bbdd2562bfd24d57af2a7c2d60dbc2b30315708dae9bfa22639f516511e9880eafd7f8b117b2c73944d9f19f7e067a8e28b9be')
+sha512sums=('26a8c01964d56bc402152e9b47905bc1e44bd973d6db5d4509c0004e91479b0294e7b0ee2cdca2ec6a163db03b7c8de5eef11ba548c657dc6b829fb777a2f389')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
