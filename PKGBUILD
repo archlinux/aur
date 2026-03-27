@@ -1,4 +1,4 @@
-# Maintainer: Mehad <mehad605@example.com>
+# Maintainer: Mehad <mehad605@gmail.com>
 pkgname=dev-type-bin
 pkgver=1.0.0
 pkgrel=1
