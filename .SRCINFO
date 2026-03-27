@@ -1,0 +1,20 @@
+pkgbase = lpx-bin
+	pkgdesc = Terminal Animated GIF Viewer (Pre built binary)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lusingander/lpx
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	provides = lpx
+	conflicts = lpx
+	conflicts = lpx-git
+	source = LICENSE::https://raw.githubusercontent.com/lusingander/lpx/refs/tags/v0.1.0/LICENSE
+	sha256sums = 3b607b61bbba8e9b3bd2528080993dc454268b7b3c185ae98d02057ac5ddcc3f
+	source_x86_64 = lpx-0.1.0-x86_64-bin.tar.gz::https://github.com/lusingander/lpx/releases/download/v0.1.0/lpx-0.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f7a55797d573cb7854f0bc4d80a699b468ac95452235a94597b2bc4f325e2a74
+	source_aarch64 = lpx-0.1.0-aarch64-bin.tar.gz::https://github.com/lusingander/lpx/releases/download/v0.1.0/lpx-0.1.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 7c2e6f4c64eb0d6f2ec663fd4ec7ecc2a13f7d8dcaa660cadabd6dfce1d31fb9
+
+pkgname = lpx-bin
