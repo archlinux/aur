@@ -35,7 +35,9 @@ check() {
     cd "${pkgname}-v${pkgver}"
     export GOPATH="${srcdir}/gopath"
     export HOME="${srcdir}/testhome"
-    go test ./...
+    # pkg/keyring tests require a running user keyring daemon and will
+    # prompt to create a new keystore interactively — skip during build
+    go test $(go list ./... | grep -v '/pkg/keyring')
 }
 
 package() {
