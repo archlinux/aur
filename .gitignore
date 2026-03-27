@@ -1,0 +1,20 @@
+# Downloaded sources
+*.deb
+*.tar.gz
+*.tar.xz
+*.zip
+
+# Built packages
+*.pkg.tar.zst
+*.pkg.tar.xz
+*.pkg.tar.gz
+
+# Build directories
+pkg/
+src/
+
+# Makepkg logs
+*.log
+
+# SRCINFO backup
+.SRCINFO.bak
