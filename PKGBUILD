@@ -9,7 +9,7 @@ depends=('glibc' 'gcc-libs' 'wl-clipboard')
 source_x86_64=(
   "hermes-cli-linux-x86_64-${pkgver}.tar.gz::https://github.com/adityamiskin/hermes/releases/download/v${pkgver}/hermes-cli-linux-x86_64.tar.gz"
 )
-sha256sums_x86_64=('9bd247d387b4aed04e52011de7485aeae5dc4fdf19506e5fc3a377728fdad72e')
+sha256sums_x86_64=('fdf5c9289890a322d443308b61ef6a4605255ed4cf9a2f7c493c15998601f890')
 
 package() {
   install -d "${pkgdir}/usr"
