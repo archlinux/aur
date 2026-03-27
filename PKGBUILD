@@ -1,25 +1,28 @@
 # Maintainer: robertfoster
 
 pkgname=whatsie
-pkgver=4.16.3
+pkgver=5.0.0 # renovate: datasource=github-tags depName=keshavbhatt/whatsie
 pkgrel=1
 pkgdesc="Fast Light weight WhatsApp Client based on Qt's WebEngine, With lots of settings and packed goodies"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/keshavbhatt/whatsie"
 license=('MIT')
-depends=('qt5-base' 'qt5-declarative' 'qt5-location' 'qt5-webchannel' 'qt5-webengine')
-makedepends=('qt5-base')
+depends=('qt6-base' 'qt6-declarative' 'qt6-location' 'qt6-webchannel' 'qt6-webengine')
+makedepends=('qt6-base')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
 build() {
-  cd "${pkgname}-${pkgver}"
-  qmake src
-  make
+  cmake -S "${pkgbase}-${pkgver}" \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -Bbuild
+
+  cmake --build build
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
-  make INSTALL_ROOT="${pkgdir}" install
+  DESTDIR="${pkgdir}" \
+    cmake --install build
 }
 
-sha256sums=('6149c05e30d87e61ee480d7ead082224cf9f32fea61a3820c0f7225ae8a8a616')
+sha256sums=('bee4dc055b0ce3f04ce68181c86f2b4d6234f5bcf1b276d545b830fe877fc22c')
