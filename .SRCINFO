@@ -1,5 +1,5 @@
 pkgbase = paper-desktop-bin
-	pkgdesc = Paper Desktop - a local-first, markdown-based note-taking app
+	pkgdesc = The connected canvas for teams shipping with agents - a design tool that connects your visual work with apps, agents, and repos
 	pkgver = 0.1.10
 	pkgrel = 1
 	url = https://paper.design

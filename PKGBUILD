@@ -2,7 +2,7 @@
 pkgname=paper-desktop-bin
 pkgver=0.1.10
 pkgrel=1
-pkgdesc="Paper Desktop - a local-first, markdown-based note-taking app"
+pkgdesc="The connected canvas for teams shipping with agents - a design tool that connects your visual work with apps, agents, and repos"
 arch=('x86_64')
 url="https://paper.design"
 license=('custom')
