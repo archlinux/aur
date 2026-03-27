@@ -9,7 +9,7 @@ depends=('rutoken-pkcs11')
 makedepends=('coreutils')
 options=(!strip)
 source_x86_64=("https://download.rutoken.ru/Rutoken_Connect/${pkgver}/Linux/x64/rtconnect-${pkgver}-1.${arch}.rpm")
-sha256sums_x86_64=('821bd9f3f478f44408639f59805aeb5553232b1cf08b1a6b5175d8fedc91a80c')
+sha256sums_x86_64=('1a530b12e97caf0fc2cd3a04c8dfd9c749ed9a34d18c7f64aad8aceccb715de3')
 
 package() {
 
