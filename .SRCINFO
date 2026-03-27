@@ -1,11 +1,11 @@
 pkgbase = ttf-lxgw-wenkai-tc-mono
 	pkgdesc = The traditional chinese mono version of LXGW WenKai.
-	pkgver = 1.521
+	pkgver = 1.522
 	pkgrel = 1
 	url = https://github.com/lxgw/LxgwWenkaiTC
 	arch = any
 	license = OFL-1.1
-	source = https://github.com/lxgw/LxgwWenkaiTC/releases/download/v1.521/lxgw-wenkai-tc-v1.521.tar.gz
-	sha256sums = b1e71497dd6c47a0201c3d5a73dea46b806d68c8dd41850f9f354cee382fe67e
+	source = https://github.com/lxgw/LxgwWenkaiTC/releases/download/v1.522/lxgw-wenkai-tc-v1.522.tar.gz
+	sha256sums = 136675dc839a5b076c00f9c716c610d81fddddd8573f876ebdd6983bfe0f09f8
 
 pkgname = ttf-lxgw-wenkai-tc-mono
