@@ -4,8 +4,9 @@
 # Maintainer: Ľubomír 'the-k' Kučera <lubomir.kucera.jr at gmail.com>
 
 pkgname=cronet
-pkgver=145.0.7632.216
+pkgver=144.0.7559.247
 pkgrel=1
+epoch=1
 _manual_clone=1
 # The following error occures on Abseil 20250512.0:
 # Protoc has returned non-zero status: -4
@@ -58,11 +59,11 @@ sha256sums=('653ac5ddbbb09d22fafe133c81eab28b89570c934d9f01bada892a135cdad2f7'
             'ec8e49b7114e2fa2d359155c9ef722ff1ba5fe2c518fa48e30863d71d3b82863'
             'd634d2ce1fc63da7ac41f432b1e84c59b7cceabf19d510848a7cff40c8025342'
             'f7888650e5bea3dd5aad6f6b57453e5b38db5dccb9d8f870b208bd94be625495'
-            '99c911a9d33c2a5408990b3232a76fe1016dc4725839b5affa8fe2522c9508d4'
+            'ec6b7a8c7ed4eeb30195e9b83b65cf8d17c7289f02eeb5149bb674cb7561495b'
             'b11ff1f8364c51c7d18fbb65fc76e25ca8a2095cece50c32452c0f25f03e270e'
             '2c5ecc12109ce41f9799dcac5c270684a433f8806816971b41cbae8b55adc586'
             'c88d778c462503b9cdd903668d977d1e9bbddd691d8207c98211882f57ab435d'
-            '321af0e8be9901f8ac39481cadfc0e5c2aaef0d8d6cb210947071e272651d2d1')
+            '062919e45df0154b9f198f3686fd58c4598b229549f7ad1bc20d3f53798749f1')
 
 if (( _manual_clone )); then
   source[0]=fetch-chromium-release
