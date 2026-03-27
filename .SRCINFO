@@ -1,0 +1,16 @@
+pkgbase = darya
+	pkgdesc = Disk usage explorer with a TUI and live treemap
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/mrkatebzadeh/darya
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	provides = darya
+	conflicts = darya-git
+	conflicts = darya-bin
+	source = darya-0.1.5.tar.gz::https://github.com/mrkatebzadeh/darya/archive/refs/tags/v0.1.5.tar.gz
+	sha256sums = dea36d2b7cc41e7ae7b9c9bff19e34d3043f540832f8b2e61950cb4c6e17f9dc
+
+pkgname = darya
