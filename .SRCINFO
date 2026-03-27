@@ -1,0 +1,18 @@
+pkgbase = mpv-manager-bin
+	pkgdesc = MPV media player installer and manager with Web UI, TUI, and CLI modes (precompiled binary)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://gitgud.io/mike/mpv-manager
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = mpv-manager
+	conflicts = mpv-manager
+	source = LICENSE::https://gitgud.io/mike/mpv-manager/-/raw/v1.1.0/LICENSE
+	sha256sums = fd564cfbdcfd3279f4881d6c29233193cb6cf59ae42c5c91d649ea2da56eeae7
+	source_x86_64 = mpv-manager-1.1.0-x86_64::https://gitgud.io/api/v4/projects/45219/packages/generic/mpv-manager/v1.1.0/mpv-manager-linux-amd64
+	sha256sums_x86_64 = f634bf7afae840317a58000b7fa9e0fa1efc6bac7b0b30e1e82a295ee6cfb828
+	source_aarch64 = mpv-manager-1.1.0-aarch64::https://gitgud.io/api/v4/projects/45219/packages/generic/mpv-manager/v1.1.0/mpv-manager-linux-arm64
+	sha256sums_aarch64 = cc487dd193133e7b7968545778ea8f4ec88d6631c1a4cb71e97b461efc53e46c
+
+pkgname = mpv-manager-bin
