@@ -2,7 +2,7 @@
 
 _pkgname=google_cloud_translate
 pkgname=python-google-cloud-translate
-pkgver=3.24.0
+pkgver=3.25.0
 pkgrel=1
 pkgdesc="Google Cloud Translation API client library"
 url="https://pypi.org/project/google-cloud-translate/"
@@ -18,7 +18,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 license=('Apache-2.0')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('2f3b8b90f8cdaf63a435d18e63b21c3650de31fc4f858623f2d0d69be0cd3e9a')
+sha256sums=('a3401e20e3d18eeab68e15b80faf4f985c6ca21934affea4038b961cd19310de')
 
 build() {
     cd "${_pkgname}-${pkgver}"
