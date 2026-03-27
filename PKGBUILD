@@ -5,11 +5,11 @@ pkgname=(
     'tensorrt'
     'tensorrt-cross-builder-libs'
     'python-tensorrt')
-pkgver=10.15.1.29
-_cudaver=13.1
+pkgver=10.16.0.72
+_cudaver=13.2
 _protobuf_ver=3.20.1
 _pybind11_ver=2.9.2
-#_onnx_graphsurgeon_ver=0.5.9
+_onnx_graphsurgeon_ver=0.6.1
 _polygraphy_ver=0.49.27
 _tensorflow_quantization_ver=0.2.0
 pkgrel=1
@@ -22,12 +22,12 @@ makedepends=(
     'cuda'
     'cudnn'
     'git'
-    'nvidia-utils' # for satisfying pkgcheck
+    'nvidia-utils' # for satisfying namcap
     'python'
     'python-build'
     'python-installer'
-    #'python-ml-dtypes'
-    #'python-onnx'
+    'python-ml-dtypes'
+    'python-onnx'
     'python-setuptools'
     'python-typing_extensions'
     'python-wheel')
@@ -43,8 +43,8 @@ source=("https://developer.nvidia.com/downloads/compute/machine-learning/tensorr
         '020-tensorrt-fix-python.patch'
         'TensorRT-LICENSE-AGREEMENT.txt')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('2e2d6e800221e840e1fc7eba7a5e4b13390cf14856b4b21af429694e21602222'
-            'f20344cde14f624baab91e9c5a7a6180a1201180816a7e41b9a0fee33f23b329'
+sha256sums=('956a28dcee7b408b1897108288e010c61c0b2d9bedb6cf00e3fbc8f9c6b07042'
+            'abf48dfd7c9429c33f29d2c09386b93d8b0da92c4522e3cda52089c11c87770c'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -52,7 +52,7 @@ sha256sums=('2e2d6e800221e840e1fc7eba7a5e4b13390cf14856b4b21af429694e21602222'
             'SKIP'
             'dddd73664306d7d895a95e1cf18925b31b52785e468727e4635b45edae5166f9'
             'ba94c0685216fe9566f7989df98b372e72a8da04b66d64380024107f2f7f4a8f'
-            'c9bb60e8e0cbb4fb54fe24a8ce47b3d0491d7cde1ec6b42aaaa659031d26f4e7'
+            'b251457baf02f9806923ed2f8f5a6ec75aca78fc8125f26e5c93b2cae77c0dc5'
             '64907f271b91655a28f3c9f3555a3c645b23d878f41063192a9d2a67f752205a')
 
 prepare() {
@@ -74,6 +74,8 @@ prepare() {
     git -C TensorRT/parsers/onnx/third_party/onnx -c protocol.file.allow='always' submodule update
     
     git -C pybind11 config --local advice.detachedHead false
+    
+    git -C TensorRT restore --source='v10.15' python/packaging/bindings_wheel/setup.{cfg,py}
     
     # protobuf
     mkdir -p build/third_party.protobuf/src
@@ -118,18 +120,18 @@ build() {
     local -x TRT_LIBPATH="${srcdir}/TensorRT-${pkgver}/lib"
     git -C pybind11 checkout "v${_pybind11_ver}"
     cd TensorRT/python
-    ./build.sh
+    ../scripts/build_python_wheel.sh
     mv build build_tensorrt
     TENSORRT_MODULE='tensorrt_dispatch'
-    ./build.sh
+    ../scripts/build_python_wheel.sh
     mv build build_tensorrt_dispatch
     TENSORRT_MODULE='tensorrt_lean'
-    ./build.sh
+    ../scripts/build_python_wheel.sh
     mv build build_tensorrt_lean
     
     # python tools
     local _dir
-    for _dir in Polygraphy tensorflow-quantization #onnx-graphsurgeon
+    for _dir in Polygraphy tensorflow-quantization onnx-graphsurgeon
     do
         cd "${srcdir}/TensorRT/tools/${_dir}"
         python -m build --wheel --no-isolation
@@ -146,8 +148,9 @@ package_tensorrt() {
     depends=(
         'cuda'
         'cudnn'
-        'gcc-libs'
         'glibc'
+        'libgcc'
+        'libstdc++'
         'nvidia-utils')
     optdepends=(
         'tensorrt-cross-builder-libs: for cross building engine files')
@@ -174,12 +177,13 @@ package_tensorrt-cross-builder-libs() {
     pkgdesc='Additional TensorRT libraries for cross building engine files'
     license=('LicenseRef-TensorRT-LICENSE-AGREEMENT')
     depends=(
-        'gcc-libs'
-        'glibc')
+        'glibc'
+        'libgcc'
+        'libstdc++')
     options=('!strip')
     
     local _arch
-    for _arch in ptx sm{75,80,86,89,90,120}
+    for _arch in ptx sm{75,80,86,89,90,100,120}
     do
         install -D -m644 "TensorRT-${pkgver}/lib/libnvinfer_builder_resource_win_${_arch}.so.${pkgver%.*}" -t "${pkgdir}/usr/lib"
         ln -s "libnvinfer_builder_resource_win_${_arch}.so.${pkgver%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource_win_${_arch}.so.${pkgver%%.*}"
@@ -193,22 +197,22 @@ package_python-tensorrt() {
     pkgdesc+=' (python bindings and tools)'
     license=("${license[0]} AND LicenseRef-Python-TensorRT-LICENSE-AGREEMENT")
     depends=(
-        'gcc-libs'
         'glibc'
+        'libgcc'
+        'libstdc++'
         'python'
         'python-numpy'
         'tensorrt')
     optdepends=(
-        ##'python-colored: for onnx_graphsurgeon and polygraphy python modules'
-        'python-colored: for polygraphy python module'
-        #'python-ml-dtypes: for onnx_graphsurgeon python module'
-        #'python-onnx: for onnx_graphsurgeon python module'
-        #'python-onnxruntime: for onnx_graphsurgeon python module'
+        'python-colored: for onnx_graphsurgeon and polygraphy python modules'
+        'python-ml-dtypes: for onnx_graphsurgeon python module'
+        'python-onnx: for onnx_graphsurgeon python module'
+        'python-onnxruntime: for onnx_graphsurgeon python module'
         'python-protobuf: for polygraphy python modules'
         'python-tensorflow-cuda: for polygraphy and tensorflow-quantization python modules'
         'python-tf2onnx: for tensorflow-quantization python module')
     provides=(
-        #"python-onnx-graphsurgeon=${_onnx_graphsurgeon_ver}"
+        "python-onnx-graphsurgeon=${_onnx_graphsurgeon_ver}"
         "python-polygraphy=${_polygraphy_ver}"
         "python-tensorflow-quantization=${_tensorflow_quantization_ver}")
     
@@ -218,7 +222,7 @@ package_python-tensorrt() {
         python -m installer --destdir="$pkgdir" "TensorRT/python/build_${_dir}/bindings_wheel/dist"/*.whl
     done
     
-    for _dir in Polygraphy tensorflow-quantization #onnx-graphsurgeon
+    for _dir in Polygraphy tensorflow-quantization onnx-graphsurgeon
     do
         python -m installer --destdir="$pkgdir" "TensorRT/tools/${_dir}/dist"/*.whl
     done
