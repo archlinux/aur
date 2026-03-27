@@ -1,6 +1,6 @@
 # Maintainer: lemonxah <lemonxah@gmail.com>
 pkgname=zestbay-git
-pkgver=r3.5d6234a
+pkgver=r0.0000000
 pkgrel=1
 pkgdesc="A PipeWire patchbay and audio routing manager with LV2 plugin hosting (git version)"
 arch=('x86_64')
@@ -12,6 +12,7 @@ depends=(
     'qt6-declarative'
     'lilv'
     'lv2'
+    'suil'
     'dbus'
 )
 makedepends=(
@@ -22,6 +23,10 @@ makedepends=(
     'pkg-config'
     'qt6-base'
     'qt6-declarative'
+    'pipewire'
+    'lilv'
+    'lv2'
+    'suil'
     'git'
 )
 provides=('zestbay')
