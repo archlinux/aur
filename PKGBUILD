@@ -11,7 +11,7 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=waterfox
-pkgver=6.6.9
+pkgver=6.6.10
 pkgrel=1
 pkgdesc='Fork of Mozilla Firefox featuring some privacy, usability, and speed enhancements.'
 arch=(x86_64)
@@ -65,7 +65,7 @@ optdepends=(
 options=(!emptydirs !makeflags !strip)
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/WaterfoxCo/Waterfox/archive/refs/tags/$pkgver.tar.gz"
-	"locales.tar.gz::https://github.com/BrowserWorks/l10n/archive/3f87384c38a77e2cf90ee565e71203e3552465fb.tar.gz"
+	"locales.tar.gz::https://github.com/BrowserWorks/l10n/archive/ccc73e24437ba276a1645d14f6d09334f901f917.tar.gz"
 	"$pkgname.desktop"
 	"0001-Patch-glsl-optimizer-to-build-with-glibc-2.43.patch"
 	"0002-Fix-sandbox-to-build-with-glibc-2.43.patch"
@@ -73,7 +73,7 @@ source=(
 
 prepare () {
 	rm -rf "$pkgname-$pkgver/waterfox/browser/locales/"*
-	mv "l10n-3f87384c38a77e2cf90ee565e71203e3552465fb/"* "$pkgname-$pkgver/waterfox/browser/locales/"
+	mv "l10n-ccc73e24437ba276a1645d14f6d09334f901f917/"* "$pkgname-$pkgver/waterfox/browser/locales/"
 
 	mkdir -p mozbuild
 	cd "waterfox-$pkgver"
@@ -283,8 +283,8 @@ EOT
 }
 
 #first browser package, second icon file
-sha256sums=('fc1c4010cbc2c73cace825d27692c205348b3e3b869ee762263262ae0e93bd10'
-            '3f7a9beb6305b92cb023206727a69151daa70db5c72bd4b1ba5d84d2de75933c'
+sha256sums=('4bb4b75508ec16537c0d867843fbc70eb3aad7927dd7562bbaced4303d1a362b'
+            '4f1a87b2e1766c085442bc063cd223d91c6cbea38d8ce2b725215dfc6cbafa71'
             '9345cdf0e1a537d8ff23b5db0eadaaec5868f7588de86a260da27f5015c2d286'
             'c99234aaf9de77b963b21c63fa2ffece130ccf653556357361520d25f928b1a9'
             'fc5a0e323d784a64a4f7b03561bfc169e4b859c2b6f6b79940301c4d0fd11b4c')
