@@ -2,7 +2,7 @@
 pkgname=paper-desktop-bin
 pkgver=0.1.10
 pkgrel=1
-pkgdesc="The connected canvas for teams shipping with agents - a design tool that connects your visual work with apps, agents, and repos"
+pkgdesc="Paper is a modern and powerful design tool that helps you create, share, and ship your best work."
 arch=('x86_64')
 url="https://paper.design"
 license=('custom')
