@@ -1,12 +1,20 @@
 pkgbase = plasma-weather-plus
-	pkgdesc = plasma天气插件
-	pkgver = 4.4.3
+	pkgdesc = Weather widget for KDE Plasma with meteogram and extensive customization
+	pkgver = 4.6
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/tully-t/weather-widget-plus
 	arch = any
-	license = custom
-	source = git+https://github.com/tully-t/weather-widget-plus.git
-	sha512sums = SKIP
+	license = GPL-2.0-or-later
+	makedepends = gettext
+	depends = plasma-workspace
+	depends = plasma5support
+	depends = libplasma
+	depends = kirigami
+	depends = kcmutils
+	depends = qt6-declarative
+	depends = qt6-5compat
+	source = plasma-weather-plus-4.6.tar.gz::https://github.com/tully-t/weather-widget-plus/archive/refs/tags/v4.6.tar.gz
+	sha256sums = db36d1c8b16d69dd689d5ade8465872c2226bd6b72c61edc0592ce2732c40fcf
 
 pkgname = plasma-weather-plus
