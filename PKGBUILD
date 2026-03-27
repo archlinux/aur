@@ -2,7 +2,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=(gambit python-pygambit)
-pkgver=16.5.0
+pkgver=16.6.0
 pkgrel=1
 pkgdesc="Tools for doing computation in game theory"
 arch=('i686' 'x86_64')
@@ -16,9 +16,11 @@ checkdepends=(
     'jupyter-nbclient'
     'jupyter-nbformat'
     'python-ipykernel'
-    'python-pytest')
+    'python-pytest'
+    'python-pandas'
+    'python-pytest-subtests')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('19693666276aa6defdcb32be7eb4e2fcd965dcb1acefbe7fad96053ee3a46ada')
+sha256sums=('5d0ac6809841b02347b31accfb6ee31d6ae0593f33dcf58b71b9ca543b465fd9')
 
 build() {
     cd "$pkgname-$pkgver"
@@ -46,7 +48,7 @@ package_gambit() {
 }
 
 package_python-pygambit() {
-    depends+=('python-numpy' 'python-scipy')
+    depends+=('python-numpy' 'python-scipy' 'python-pandas')
     cd "$pkgbase-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
