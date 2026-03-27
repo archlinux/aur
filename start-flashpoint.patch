@@ -34,6 +34,4 @@ index 1eff7b3..86ce30f 100755
  
  [ $# -eq 0 ] && FP_FLAGS="--js-flags=--lite_mode --ozone-platform-hint=auto" || FP_FLAGS="$@"
  cd Launcher
--./flashpoint-launcher $FP_FLAGS &
 \ No newline at end of file
-+#./flashpoint-launcher $FP_FLAGS &
