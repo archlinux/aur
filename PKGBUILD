@@ -9,12 +9,24 @@
 pkgname=openwhispr-appimage
 _appname=OpenWhispr
 pkgver=1.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Voice-to-text dictation app with local Whisper/Parakeet and cloud models (AppImage)"
 arch=('x86_64')
 url="https://github.com/${_appname}/${pkgname%-appimage}"
 license=('MIT')
 depends=('fuse2')
+optdepends=('ydotool: Input automation tool for Wayland paste'
+            'ydotoold: Daemon for ydotool (auto-paste support, on Ubuntu/Pop!_OS: sudo apt install ydotoold)'
+            'xclip: Clipboard tool for KDE Wayland paste'
+            'xsel: Alternative clipboard tool for Wayland paste'
+            'wl-clipboard: Wayland clipboard utilities (wl-copy)'
+            'xdotool: X11 automation for paste simulation'
+            'wtype: Wayland input tool for wlroots compositors (Sway, etc.)'
+            'procps-ng: For pidof utility (process detection)'
+            'libpulse: For pactl (audio detection in meetings)'
+            'hyprland: For hyprctl (Hyprland shortcuts)'
+            'qt6-tools: For qdbus/qdbus6 (KDE shortcuts)'
+            'systemd: For journalctl (KDE integration)')
 provides=('openwhispr')
 conflicts=('openwhispr')
 options=('!strip')
