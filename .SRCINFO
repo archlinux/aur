@@ -10,7 +10,7 @@ pkgbase = paper-desktop-bin
 	depends = libappindicator-gtk3
 	options = !debug
 	options = !strip
-	source = paper-desktop-0.1.10.deb::https://download.paper.design/linux/deb
+	source = paper-desktop.deb::https://download.paper.design/linux/deb
 	sha256sums = SKIP
 
 pkgname = paper-desktop-bin

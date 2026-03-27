@@ -8,12 +8,20 @@ url="https://paper.design"
 license=('custom')
 options=('!debug' '!strip')
 depends=('gtk3' 'webkit2gtk' 'libappindicator-gtk3')
-source=("${pkgname%-bin}-$pkgver.deb::https://download.paper.design/linux/deb")
+source=("${pkgname%-bin}.deb::https://download.paper.design/linux/deb")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir"
+  # Extract control info from deb to get version
+  bsdtar -xf "${pkgname%-bin}.deb" control.tar.xz
+  bsdtar -xf control.tar.xz ./control
+  grep -E '^Version:' control | sed 's/Version: //' | cut -d'-' -f1
+}
 
 package() {
   # Extract the deb package
-  bsdtar -xf "$srcdir/${pkgname%-bin}-$pkgver.deb" -C "$srcdir"
+  bsdtar -xf "$srcdir/${pkgname%-bin}.deb" -C "$srcdir"
   bsdtar -xf "$srcdir/data.tar.xz" -C "$pkgdir"
   
   # Fix permissions
