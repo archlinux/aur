@@ -1,6 +1,6 @@
 pkgbase = plotune-bin
 	pkgdesc = Plotune – Modular data operations and signal orchestration platform
-	pkgver = 1.0.58
+	pkgver = 1.0.581
 	pkgrel = 1
 	url = https://www.plotune.net
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = plotune-bin
 	provides = plotune
 	conflicts = plotune
 	options = !strip
-	source = plotune-linux-x86_64.tar.gz::https://github.com/plotune/plotune-dl/releases/download/v1.0.58/plotune-linux-x86_64.tar.gz
+	source = plotune-linux-x86_64.tar.gz::https://github.com/plotune/plotune-dl/releases/download/v1.0.581/plotune-linux-x86_64.tar.gz
 	source = plotune.desktop
 	source = plotune-mime.xml
 	sha256sums = SKIP
