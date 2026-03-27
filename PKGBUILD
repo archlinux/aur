@@ -7,7 +7,7 @@
 # Contributor: Hexchain Tong <i at hexchain dot org>
 
 pkgname=megasync
-pkgver=6.2.0.5
+pkgver=6.2.1.0
 pkgrel=1
 pkgdesc='Official MEGA desktop application for syncing with MEGA Cloud Drive'
 arch=('x86_64')
@@ -40,13 +40,13 @@ makedepends=(
     'cmake'
     'git'
     'qt5-tools')
-source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_OSX"
+source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}_Linux"
         'meganz-sdk'::'git+https://github.com/meganz/sdk.git'
         '010-megasync-sdk-fix-cmake-dependencies-detection.patch'
         '020-megasync-app-fix-cmake-dependencies-detection.patch'
         '030-megasync-app-disable-isolated-gfx-for-disabling-freeimage-in-sdk.patch'
         '040-megasync-sdk-add-missing-icu-link-library.patch')
-sha256sums=('e00d65853daea700d7da59582b4ded9eca46a848a6aa10dbef06a837dfe77fe6'
+sha256sums=('e0d24ec1e6b67380db38e7bf9b8538d7e3a5fee12ed7d01f13c880a82745058b'
             'SKIP'
             'ceedf9b236b3f65f796e389b2c6ef33d71348d8be3c517cc59c423f1f354d092'
             'a5883be2d00dbacaacf78231bfeeac27f4e8a471c3256370e94fec3e55b1d171'
@@ -60,11 +60,11 @@ prepare() {
     #git -C MEGAsync submodule init
     #git -C MEGAsync config --local submodule.src/MEGASync/mega.url "${srcdir}/meganz-sdk"
     #git -C MEGAsync -c protocol.file.allow='always' submodule update
-    # sdk is set to be at commit 613e7a03f76127b5bcb586eb690536a67d5729e9 (v10.6.1) but it does not exist, using sdk v10.6.0
+    # sdk is set to be at commit 663549152ccf05866ffe059d9b6f4be54dc10cce (v10.6.2) but it does not exist, using sdk v10.6.1
     # https://github.com/meganz/MEGAsync/commit/41bdbcb6612db10e46f352d89dfd099e32ce5256
-    # https://github.com/meganz/sdk/commit/052c6fae502f8fcb6e35343537da6143c688604d
+    # https://github.com/meganz/sdk/commits/v10.6.1/
     git -C meganz-sdk config --local advice.detachedHead false
-    git -C meganz-sdk checkout 052c6fae502f8fcb6e35343537da6143c688604d
+    git -C meganz-sdk checkout 613e7a03f76127b5bcb586eb690536a67d5729e9
     rm -r MEGAsync/src/MEGASync/mega
     ln -sf ../../../meganz-sdk MEGAsync/src/MEGASync/mega
     
