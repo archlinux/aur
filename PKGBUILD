@@ -1,7 +1,7 @@
 # Maintainer: Michal Lurie <Michal.Lurie@gmail.com>
 
 pkgname=incplot
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='CLI tool for drawing great looking plots in the terminal and in HTML focused on user ergonomics and simplicity'
 arch=(x86_64)
