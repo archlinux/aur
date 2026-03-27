@@ -3,7 +3,7 @@
 # Contributor: Chris Chapman (cman) <chris.chapman@aggiemail.usu.edu>
 
 # Build Options
-_build_stubdom=${build_stubdom:-false}
+_build_stubdom=${build_stubdom:-true}
 _boot_dir=${boot_dir:-/boot}
 _efi_dir=${efi_dir:-/boot}
 _efi_mountpoint=${efi_mountpoint:-/boot}
@@ -27,9 +27,9 @@ _common_make_flags=(
 
 pkgbase=xen
 pkgname=("xen" "xen-docs")
-pkgver=4.21.1pre
+pkgver=4.21.1
 _branch="stable-4.21"
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source type-1 or baremetal hypervisor - stable branch'
 arch=('x86_64')
 url='https://xenproject.org/'
@@ -69,7 +69,6 @@ _source=(
 # as we follow the stable git branch and only syncing and rebuilding
 # should be required.   If used, patch order will be important.
 _patches=(
-	"xen_strchr_cast.patch" # Not a security patch, needed to compile in recent Arch
 )
 
 
@@ -98,7 +97,6 @@ _sha512sums=(
 )
 
 _patch_sums=(
-	"fb6db4678af5c3bf828f109f7714436f42dc295499e91a7035b786f2f7d015fb4c6a78e790da9c25c001397ffec1aa88da0578d2ae307414856beeb5273ebda7" # xen_strchr_cast.patch
 )
 
 _stub_sums=(
