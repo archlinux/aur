@@ -1,0 +1,15 @@
+pkgbase = omnara-bin
+	pkgdesc = Claude Code & Codex AI coding agent — control AI agents from desktop or phone
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://www.omnara.com/
+	arch = x86_64
+	license = custom
+	provides = omnara
+	conflicts = omnara
+	options = !strip
+	options = !emptydirs
+	source_x86_64 = https://releases.omnara.com/0.23.0/omnara-linux-x64
+	sha256sums_x86_64 = ec4f1622bf8cc81719af3721881508debebc77621cef891821ddeafb241e505f
+
+pkgname = omnara-bin
