@@ -1,12 +1,17 @@
 pkgbase = mpv-manager
 	pkgdesc = MPV media player installer and manager with Web UI, TUI, and CLI modes
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitgud.io/mike/mpv-manager
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	makedepends = go
+	optdepends = mpv: media player managed and configured by this tool
+	optdepends = celluloid: GTK-based mpv frontend
+	optdepends = mpc-qt: Qt-based mpv frontend
+	optdepends = ffmpeg: additional media processing support
+	optdepends = flatpak: manage Flatpak versions of mpv and Celluloid
 	source = mpv-manager-1.1.0.tar.gz::https://gitgud.io/mike/mpv-manager/-/archive/v1.1.0/mpv-manager-v1.1.0.tar.gz
 	sha256sums = eb584b2fb148e6d2247cc09efae71d78aacee59e4f1b96b9fe97ccd2a633e888
 
