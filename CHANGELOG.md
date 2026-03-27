@@ -1,4 +1,9 @@
 # Changelog
+## [1:595.58.03-1] - 2026-03-27
+
+### Changed
+- Updated base to NVIDIA open kernel modules 595.58.03
+- Refreshed Thunderbolt eGPU hotplug patchset for 595.58.03 to be compatible
 
 ## [1:580.119.02-1] - 2025-12-16
 

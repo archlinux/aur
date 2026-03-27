@@ -1,8 +1,8 @@
 diff --git a/kernel-open/common/inc/nvkms-kapi.h b/kernel-open/common/inc/nvkms-kapi.h
-index 4a659770..4f9c421b 100644
+index 34ed6c8e..ec0abd55 100644
 --- a/kernel-open/common/inc/nvkms-kapi.h
 +++ b/kernel-open/common/inc/nvkms-kapi.h
-@@ -656,6 +656,17 @@ struct NvKmsKapiFunctionsTable {
+@@ -671,6 +671,17 @@ struct NvKmsKapiFunctionsTable {
       */
      void (*freeDevice)(struct NvKmsKapiDevice *device);
  
@@ -20,66 +20,11 @@ index 4a659770..4f9c421b 100644
      /*!
       * Grab ownership of device, ownership is required to do modeset.
       *
-diff --git a/kernel-open/conftest.sh b/kernel-open/conftest.sh
-index 59f3624d..fda89c18 100755
---- a/kernel-open/conftest.sh
-+++ b/kernel-open/conftest.sh
-@@ -1307,6 +1307,21 @@ compile_test() {
-             compile_check_conftest "$CODE" "NV_GET_DEV_PAGEMAP_HAS_PGMAP_ARG" "" "types"
-         ;;
- 
-+        dev_pagemap_ops_have_folio_free)
-+            #
-+            # Determine if struct dev_pagemap_ops has a folio_free() callback.
-+            #
-+            CODE="
-+            #include <linux/memremap.h>
-+
-+            static const struct dev_pagemap_ops conftest_dev_pagemap_ops = {
-+                .folio_free = NULL,
-+            };
-+            "
-+
-+            compile_check_conftest "$CODE" "NV_DEV_PAGEMAP_OPS_HAVE_FOLIO_FREE" "" "types"
-+        ;;
-+
-         drm_sysfs_connector_property_event)
-             #
-             # Determine if drm_sysfs_connector_property_event() is present.
-@@ -3341,6 +3356,28 @@ compile_test() {
-             fi
-         ;;
- 
-+        zone_device_page_init)
-+            #
-+            # Determine how many arguments zone_device_page_init() takes.
-+            #
-+
-+            echo "$CONFTEST_PREAMBLE
-+            #include <linux/memremap.h>
-+            void conftest_zone_device_page_init(void) {
-+                zone_device_page_init(NULL, NULL, 0);
-+            }" > conftest$$.c
-+
-+            $CC $CFLAGS -c conftest$$.c > /dev/null 2>&1
-+            rm -f conftest$$.c
-+
-+            if [ -f conftest$$.o ]; then
-+                rm -f conftest$$.o
-+                echo "#define NV_ZONE_DEVICE_PAGE_INIT_ARGUMENT_COUNT 3" | append_conftest "functions"
-+            else
-+                echo "#define NV_ZONE_DEVICE_PAGE_INIT_ARGUMENT_COUNT 1" | append_conftest "functions"
-+            fi
-+        ;;
-+
-         icc_get)
-             #
-             # Determine if icc_get() function is present
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-drv.c b/kernel-open/nvidia-drm/nvidia-drm-drv.c
-index e9ef77c9..3b3e39fe 100644
+index e4ae38a0..a120ab75 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-drv.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-drv.c
-@@ -852,6 +852,46 @@ static void nv_drm_dev_unload(struct drm_device *dev)
+@@ -858,6 +858,46 @@ static void nv_drm_dev_unload(struct drm_device *dev)
          return;
      }
  
@@ -126,7 +71,7 @@ index e9ef77c9..3b3e39fe 100644
      /* Release modeset ownership if fbdev is enabled */
  
  #if defined(NV_DRM_FBDEV_AVAILABLE)
-@@ -2167,6 +2207,28 @@ static void nv_drm_dev_destroy(struct nv_drm_device *nv_dev)
+@@ -2181,6 +2221,28 @@ static void nv_drm_dev_destroy(struct nv_drm_device *nv_dev)
      nv_drm_free(nv_dev);
  }
  
@@ -155,7 +100,7 @@ index e9ef77c9..3b3e39fe 100644
  /*
   * Unregister a single NVIDIA DRM device.
   */
-@@ -2175,7 +2237,29 @@ void nv_drm_remove(NvU32 gpuId)
+@@ -2189,7 +2251,29 @@ void nv_drm_remove(NvU32 gpuId)
      struct nv_drm_device *nv_dev = nv_drm_find_and_remove_device(gpuId);
  
      if (nv_dev) {
@@ -186,28 +131,24 @@ index e9ef77c9..3b3e39fe 100644
          nv_drm_dev_destroy(nv_dev);
      }
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-fb.c b/kernel-open/nvidia-drm/nvidia-drm-fb.c
-index 8c0a4575..353fc702 100644
+index 95fd4f0c..6d1d5e3f 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-fb.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-fb.c
-@@ -61,9 +61,15 @@ static void nv_drm_framebuffer_destroy(struct drm_framebuffer *fb)
+@@ -63,7 +63,13 @@ static void nv_drm_framebuffer_destroy(struct drm_framebuffer *fb)
  
-     drm_framebuffer_cleanup(fb);
+     /* Free NvKmsKapiSurface associated with this framebuffer object */
  
--    /* Free NvKmsKapiSurface associated with this framebuffer object */
--
--    nvKms->destroySurface(nv_dev->pDevice, nv_fb->pSurface);
+-    if (nv_fb->pSurface != NULL) {
 +    /*
 +     * Only call nvKms->destroySurface if pDevice is valid and device is not
 +     * in surprise removal. During hot-unplug, nvidia_modeset internal state
 +     * may be corrupted before this destructor runs from delayed_fput.
 +     */
-+    if (nv_dev->pDevice != NULL && !nv_dev->inSurpriseRemoval) {
-+        /* Free NvKmsKapiSurface associated with this framebuffer object */
-+        nvKms->destroySurface(nv_dev->pDevice, nv_fb->pSurface);
-+    }
++
++    if (nv_dev->pDevice != NULL && !nv_dev->inSurpriseRemoval && nv_fb->pSurface != NULL) {
+         nvKms->destroySurface(nv_dev->pDevice, nv_fb->pSurface);
+     }
  
-     __nv_drm_framebuffer_free(nv_fb);
- }
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-fence.c b/kernel-open/nvidia-drm/nvidia-drm-fence.c
 index 7af1ed7f..d8fcf6ed 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-fence.c
@@ -252,7 +193,7 @@ index 163a8ecf..fdddfd98 100644
          nvKms->freeMemory(nv_dev->pDevice, nv_dma_buf->base.pMemory);
      }
 diff --git a/kernel-open/nvidia-drm/nvidia-drm-gem-nvkms-memory.c b/kernel-open/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
-index 6b92c753..da2e8cbe 100644
+index 8268ee08..ca584589 100644
 --- a/kernel-open/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
 +++ b/kernel-open/nvidia-drm/nvidia-drm-gem-nvkms-memory.c
 @@ -42,6 +42,17 @@ static void __nv_drm_gem_nvkms_memory_free(struct nv_drm_gem_object *nv_gem)
@@ -300,10 +241,10 @@ index 88c74a06..7b44e326 100644
      struct drm_property *nv_input_colorspace_property;
  
 diff --git a/kernel-open/nvidia-modeset/nvidia-modeset-linux.c b/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
-index e81ac023..88b6be31 100644
+index 48e0dc47..37f6b2ad 100644
 --- a/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
 +++ b/kernel-open/nvidia-modeset/nvidia-modeset-linux.c
-@@ -1208,6 +1208,27 @@ void nvkms_close_gpu(NvU32 gpuId)
+@@ -1200,6 +1200,27 @@ void nvkms_close_gpu(NvU32 gpuId, NvBool reset_aware)
      __rm_ops.free_stack(stack);
  }
  
@@ -332,12 +273,12 @@ index e81ac023..88b6be31 100644
  {
      return __rm_ops.enumerate_gpus(gpu_info);
 diff --git a/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h b/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h
-index d4d656e7..8c7294e6 100644
+index fc74317a..58468be1 100644
 --- a/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h
 +++ b/kernel-open/nvidia-modeset/nvidia-modeset-os-interface.h
-@@ -310,6 +310,12 @@ void* nvkms_get_per_open_data(int fd);
- NvBool nvkms_open_gpu(NvU32 gpuId);
- void nvkms_close_gpu(NvU32 gpuId);
+@@ -309,6 +309,12 @@ void* nvkms_get_per_open_data(int fd);
+ NvBool nvkms_open_gpu(NvU32 gpuId, NvBool reset_aware);
+ void nvkms_close_gpu(NvU32 gpuId, NvBool reset_aware);
  
 +/*!
 + * Mark a GPU as lost (surprise removal, e.g., Thunderbolt eGPU unplug).
@@ -361,27 +302,8 @@ index d350ef75..668fa8c2 100644
  void nvKmsGetProcFiles(const nvkms_procfs_file_t **ppProcFiles);
  
  NvBool nvKmsReadConf(const char *buff, size_t size,
-diff --git a/kernel-open/nvidia-uvm/nvidia-uvm.Kbuild b/kernel-open/nvidia-uvm/nvidia-uvm.Kbuild
-index c33f5c2f..d5c7fba2 100644
---- a/kernel-open/nvidia-uvm/nvidia-uvm.Kbuild
-+++ b/kernel-open/nvidia-uvm/nvidia-uvm.Kbuild
-@@ -56,12 +56,14 @@ NV_CONFTEST_FUNCTION_COMPILE_TESTS += iommu_is_dma_domain
- NV_CONFTEST_FUNCTION_COMPILE_TESTS += for_each_sgtable_dma_page
- NV_CONFTEST_FUNCTION_COMPILE_TESTS += folio_test_swapcache
- NV_CONFTEST_FUNCTION_COMPILE_TESTS += page_pgmap
-+NV_CONFTEST_FUNCTION_COMPILE_TESTS += zone_device_page_init
- 
- NV_CONFTEST_TYPE_COMPILE_TESTS += mmu_notifier_ops_arch_invalidate_secondary_tlbs
- NV_CONFTEST_TYPE_COMPILE_TESTS += migrate_vma_added_flags
- NV_CONFTEST_TYPE_COMPILE_TESTS += migrate_device_range
- NV_CONFTEST_TYPE_COMPILE_TESTS += handle_mm_fault_has_pt_regs_arg
- NV_CONFTEST_TYPE_COMPILE_TESTS += get_dev_pagemap_has_pgmap_arg
-+NV_CONFTEST_TYPE_COMPILE_TESTS += dev_pagemap_ops_have_folio_free
- NV_CONFTEST_TYPE_COMPILE_TESTS += mempolicy_has_unified_nodes
- NV_CONFTEST_TYPE_COMPILE_TESTS += mempolicy_has_home_node
- NV_CONFTEST_TYPE_COMPILE_TESTS += mpol_preferred_many_present
 diff --git a/kernel-open/nvidia-uvm/uvm_channel.c b/kernel-open/nvidia-uvm/uvm_channel.c
-index 93eed89f..e7e71e05 100644
+index 96a184e6..a322d481 100644
 --- a/kernel-open/nvidia-uvm/uvm_channel.c
 +++ b/kernel-open/nvidia-uvm/uvm_channel.c
 @@ -27,6 +27,8 @@
@@ -426,7 +348,7 @@ index 93eed89f..e7e71e05 100644
  }
  
 diff --git a/kernel-open/nvidia-uvm/uvm_gpu.c b/kernel-open/nvidia-uvm/uvm_gpu.c
-index 265a2c46..6f6a5ffe 100644
+index 4dedd4e3..5b635a84 100644
 --- a/kernel-open/nvidia-uvm/uvm_gpu.c
 +++ b/kernel-open/nvidia-uvm/uvm_gpu.c
 @@ -45,6 +45,7 @@
@@ -437,7 +359,7 @@ index 265a2c46..6f6a5ffe 100644
  
  #define UVM_PROC_GPUS_PEER_DIR_NAME "peers"
  
-@@ -1362,7 +1363,8 @@ static NV_STATUS configure_address_space(uvm_gpu_t *gpu)
+@@ -1365,7 +1366,8 @@ static NV_STATUS configure_address_space(uvm_gpu_t *gpu)
  
  static void deconfigure_address_space(uvm_gpu_t *gpu)
  {
@@ -447,7 +369,7 @@ index 265a2c46..6f6a5ffe 100644
          uvm_rm_locked_call_void(nvUvmInterfaceUnsetPageDirectory(gpu->rm_address_space));
  
      if (gpu->address_space_tree.root)
-@@ -1780,6 +1782,10 @@ static void remove_gpu_from_parent_gpu(uvm_gpu_t *gpu)
+@@ -1786,6 +1788,10 @@ static void remove_gpu_from_parent_gpu(uvm_gpu_t *gpu)
  
  static void deinit_parent_gpu(uvm_parent_gpu_t *parent_gpu)
  {
@@ -458,7 +380,7 @@ index 265a2c46..6f6a5ffe 100644
      // All channels should have been removed before the retained count went to 0
      UVM_ASSERT(uvm_rb_tree_empty(&parent_gpu->instance_ptr_table));
      UVM_ASSERT(uvm_rb_tree_empty(&parent_gpu->tsg_table));
-@@ -1805,7 +1811,9 @@ static void deinit_parent_gpu(uvm_parent_gpu_t *parent_gpu)
+@@ -1811,7 +1817,9 @@ static void deinit_parent_gpu(uvm_parent_gpu_t *parent_gpu)
      if (parent_gpu->rm_info.isSimulated)
          --g_uvm_global.num_simulated_devices;
  
@@ -469,7 +391,7 @@ index 265a2c46..6f6a5ffe 100644
          uvm_rm_locked_call_void(nvUvmInterfaceDeviceDestroy(parent_gpu->rm_device));
  
      uvm_parent_gpu_kref_put(parent_gpu);
-@@ -1848,16 +1856,20 @@ static void deinit_gpu(uvm_gpu_t *gpu)
+@@ -1854,16 +1862,20 @@ static void deinit_gpu(uvm_gpu_t *gpu)
  
      uvm_pmm_gpu_deinit(&gpu->pmm);
  
@@ -498,7 +420,7 @@ index 265a2c46..6f6a5ffe 100644
  }
  
 diff --git a/kernel-open/nvidia-uvm/uvm_gpu_access_counters.c b/kernel-open/nvidia-uvm/uvm_gpu_access_counters.c
-index a906cb8c..f4469cee 100644
+index 65ce9942..5ca225d1 100644
 --- a/kernel-open/nvidia-uvm/uvm_gpu_access_counters.c
 +++ b/kernel-open/nvidia-uvm/uvm_gpu_access_counters.c
 @@ -25,6 +25,7 @@
@@ -557,7 +479,7 @@ index a906cb8c..f4469cee 100644
      batch_context = &access_counters->batch_service_context;
  
 diff --git a/kernel-open/nvidia-uvm/uvm_gpu_isr.c b/kernel-open/nvidia-uvm/uvm_gpu_isr.c
-index b2834b58..dc4e31cb 100644
+index 9f4304d2..fbf97f56 100644
 --- a/kernel-open/nvidia-uvm/uvm_gpu_isr.c
 +++ b/kernel-open/nvidia-uvm/uvm_gpu_isr.c
 @@ -29,6 +29,7 @@
@@ -590,7 +512,7 @@ index b2834b58..dc4e31cb 100644
  // Increments the reference count tracking whether replayable page fault
  // interrupts should be disabled. The caller is guaranteed that replayable page
  // faults are disabled upon return. Interrupts might already be disabled prior
-@@ -881,7 +897,9 @@ static void uvm_parent_gpu_replayable_faults_intr_disable(uvm_parent_gpu_t *pare
+@@ -871,7 +887,9 @@ static void uvm_parent_gpu_replayable_faults_intr_disable(uvm_parent_gpu_t *pare
  {
      uvm_assert_spinlock_locked(&parent_gpu->isr.interrupts_lock);
  
@@ -601,7 +523,7 @@ index b2834b58..dc4e31cb 100644
          parent_gpu->fault_buffer_hal->disable_replayable_faults(parent_gpu);
  
      ++parent_gpu->isr.replayable_faults.disable_intr_ref_count;
-@@ -893,7 +911,9 @@ static void uvm_parent_gpu_replayable_faults_intr_enable(uvm_parent_gpu_t *paren
+@@ -883,7 +901,9 @@ static void uvm_parent_gpu_replayable_faults_intr_enable(uvm_parent_gpu_t *paren
      UVM_ASSERT(parent_gpu->isr.replayable_faults.disable_intr_ref_count > 0);
  
      --parent_gpu->isr.replayable_faults.disable_intr_ref_count;
@@ -612,7 +534,7 @@ index b2834b58..dc4e31cb 100644
          parent_gpu->fault_buffer_hal->enable_replayable_faults(parent_gpu);
  }
  
-@@ -910,7 +930,8 @@ void uvm_access_counters_intr_disable(uvm_access_counter_buffer_t *access_counte
+@@ -900,7 +920,8 @@ void uvm_access_counters_intr_disable(uvm_access_counter_buffer_t *access_counte
      // (disable_intr_ref_count > 0), so the check always returns false when the
      // race occurs
      if (parent_gpu->isr.access_counters[notif_buf_index].handling_ref_count > 0 &&
@@ -622,7 +544,7 @@ index b2834b58..dc4e31cb 100644
          parent_gpu->access_counter_buffer_hal->disable_access_counter_notifications(access_counters);
      }
  
-@@ -929,7 +950,8 @@ void uvm_access_counters_intr_enable(uvm_access_counter_buffer_t *access_counter
+@@ -919,7 +940,8 @@ void uvm_access_counters_intr_enable(uvm_access_counter_buffer_t *access_counter
      --parent_gpu->isr.access_counters[notif_buf_index].disable_intr_ref_count;
  
      if (parent_gpu->isr.access_counters[notif_buf_index].handling_ref_count > 0 &&
@@ -633,10 +555,10 @@ index b2834b58..dc4e31cb 100644
      }
  }
 diff --git a/kernel-open/nvidia-uvm/uvm_gpu_isr.h b/kernel-open/nvidia-uvm/uvm_gpu_isr.h
-index 2a5f22bb..a17884d3 100644
+index 99fb1ad3..b793bbf4 100644
 --- a/kernel-open/nvidia-uvm/uvm_gpu_isr.h
 +++ b/kernel-open/nvidia-uvm/uvm_gpu_isr.h
-@@ -198,4 +198,9 @@ void uvm_access_counters_intr_enable(uvm_access_counter_buffer_t *access_counter
+@@ -198,6 +198,11 @@ void uvm_access_counters_intr_enable(uvm_access_counter_buffer_t *access_counter
  // g_uvm_global.global_lock is held so that the returned pointer remains valid.
  uvm_gpu_t *uvm_parent_gpu_find_first_valid_gpu(uvm_parent_gpu_t *parent_gpu);
  
@@ -645,9 +567,11 @@ index 2a5f22bb..a17884d3 100644
 +// Returns false if pci_dev is NULL or PCI channel is offline.
 +bool uvm_parent_gpu_is_accessible(uvm_parent_gpu_t *parent_gpu);
 +
- #endif // __UVM_GPU_ISR_H__
+ // Check if any non-replayable faults are pending, and if so schedule a bottom
+ // half to service them.
+ //
 diff --git a/kernel-open/nvidia-uvm/uvm_gpu_non_replayable_faults.c b/kernel-open/nvidia-uvm/uvm_gpu_non_replayable_faults.c
-index ddb32aa8..f0867689 100644
+index 1e48d205..0cd9ccc0 100644
 --- a/kernel-open/nvidia-uvm/uvm_gpu_non_replayable_faults.c
 +++ b/kernel-open/nvidia-uvm/uvm_gpu_non_replayable_faults.c
 @@ -24,6 +24,7 @@
@@ -658,7 +582,7 @@ index ddb32aa8..f0867689 100644
  #include "uvm_gpu.h"
  #include "uvm_hal.h"
  #include "uvm_lock.h"
-@@ -778,6 +779,11 @@ void uvm_parent_gpu_service_non_replayable_fault_buffer(uvm_parent_gpu_t *parent
+@@ -803,6 +804,11 @@ void uvm_parent_gpu_service_non_replayable_fault_buffer(uvm_parent_gpu_t *parent
  {
      NvU32 cached_faults;
  
@@ -671,7 +595,7 @@ index ddb32aa8..f0867689 100644
      // faults, then special handling will need to be added to uvm_suspend()
      // to guarantee that fault processing has completed before control is
 diff --git a/kernel-open/nvidia-uvm/uvm_gpu_replayable_faults.c b/kernel-open/nvidia-uvm/uvm_gpu_replayable_faults.c
-index 1c557cab..8efadc6a 100644
+index c82809f3..0f21e1aa 100644
 --- a/kernel-open/nvidia-uvm/uvm_gpu_replayable_faults.c
 +++ b/kernel-open/nvidia-uvm/uvm_gpu_replayable_faults.c
 @@ -27,6 +27,7 @@
@@ -682,7 +606,7 @@ index 1c557cab..8efadc6a 100644
  #include "uvm_hal.h"
  #include "uvm_kvmalloc.h"
  #include "uvm_tools.h"
-@@ -305,11 +306,15 @@ void uvm_parent_gpu_fault_buffer_deinit(uvm_parent_gpu_t *parent_gpu)
+@@ -299,11 +300,15 @@ void uvm_parent_gpu_fault_buffer_deinit(uvm_parent_gpu_t *parent_gpu)
      fault_buffer_deinit_replayable_faults(parent_gpu);
  
      if (parent_gpu->fault_buffer.rm_info.faultBufferHandle) {
@@ -703,9 +627,9 @@ index 1c557cab..8efadc6a 100644
  
          parent_gpu->fault_buffer.rm_info.faultBufferHandle = 0;
      }
-@@ -677,9 +682,21 @@ NV_STATUS uvm_gpu_fault_buffer_flush(uvm_gpu_t *gpu)
- 
-     UVM_ASSERT(gpu->parent->replayable_faults_supported);
+@@ -665,9 +670,21 @@ NV_STATUS uvm_gpu_replayable_buffer_flush(uvm_gpu_t *gpu)
+ {
+     NV_STATUS status = NV_OK;
  
 +    // Check if GPU hardware is still accessible before attempting to flush.
 +    // After hot-unplug, the GPU registers are no longer mapped and accessing
@@ -725,9 +649,9 @@ index 1c557cab..8efadc6a 100644
      status = fault_buffer_flush_locked(gpu->parent,
                                         gpu,
                                         UVM_GPU_BUFFER_FLUSH_MODE_WAIT_UPDATE_PUT,
-@@ -2914,6 +2931,11 @@ void uvm_parent_gpu_service_replayable_faults(uvm_parent_gpu_t *parent_gpu)
- 
-     UVM_ASSERT(parent_gpu->replayable_faults_supported);
+@@ -2877,6 +2894,11 @@ void uvm_parent_gpu_service_replayable_faults(uvm_parent_gpu_t *parent_gpu)
+     uvm_replayable_fault_buffer_t *replayable_faults = &parent_gpu->fault_buffer.replayable;
+     uvm_fault_service_batch_context_t *batch_context = &replayable_faults->batch_service_context;
  
 +    // Check if GPU is still accessible before servicing faults.
 +    // After hot-unplug, accessing GPU registers would cause a crash.
@@ -785,44 +709,8 @@ index 478c1aaf..dae09f31 100644
      if (completed >= value) {
          // atomic64_read() doesn't imply any memory barriers and we need all
          // subsequent memory accesses in this thread to be ordered after the
-diff --git a/kernel-open/nvidia-uvm/uvm_hmm.c b/kernel-open/nvidia-uvm/uvm_hmm.c
-index 9b676f97..a63991d1 100644
---- a/kernel-open/nvidia-uvm/uvm_hmm.c
-+++ b/kernel-open/nvidia-uvm/uvm_hmm.c
-@@ -2140,7 +2140,7 @@ static void fill_dst_pfn(uvm_va_block_t *va_block,
- 
-         UVM_ASSERT(!page_count(dpage));
-         UVM_ASSERT(!dpage->zone_device_data);
--        zone_device_page_init(dpage);
-+        uvm_zone_device_page_init(dpage, page_pgmap(dpage));
-         dpage->zone_device_data = gpu_chunk;
-         atomic64_inc(&va_block->hmm.va_space->hmm.allocated_page_count);
-     }
-diff --git a/kernel-open/nvidia-uvm/uvm_linux.h b/kernel-open/nvidia-uvm/uvm_linux.h
-index a841b91e..729a34fd 100644
---- a/kernel-open/nvidia-uvm/uvm_linux.h
-+++ b/kernel-open/nvidia-uvm/uvm_linux.h
-@@ -121,6 +121,18 @@
-     #define NV_GET_DEV_PAGEMAP get_dev_pagemap
- #endif
- 
-+#if NV_ZONE_DEVICE_PAGE_INIT_ARGUMENT_COUNT > 1
-+static inline void uvm_zone_device_page_init(struct page *page, struct dev_pagemap *pgmap)
-+{
-+    zone_device_page_init(page, pgmap, 0);
-+}
-+#else
-+static inline void uvm_zone_device_page_init(struct page *page, struct dev_pagemap *pgmap)
-+{
-+    zone_device_page_init(page);
-+}
-+#endif
-+
- /* Return a nanosecond-precise value */
- static inline NvU64 NV_GETTIME(void)
- {
 diff --git a/kernel-open/nvidia-uvm/uvm_pmm_gpu.c b/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
-index 97ff13dc..2f6a968e 100644
+index 373eca94..0f0acbf6 100644
 --- a/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
 +++ b/kernel-open/nvidia-uvm/uvm_pmm_gpu.c
 @@ -166,6 +166,7 @@
@@ -833,7 +721,7 @@ index 97ff13dc..2f6a968e 100644
  #include "uvm_pmm_gpu.h"
  #include "uvm_mem.h"
  #include "uvm_mmu.h"
-@@ -2066,6 +2067,14 @@ void free_root_chunk(uvm_pmm_gpu_t *pmm, uvm_gpu_root_chunk_t *root_chunk, free_
+@@ -2084,6 +2085,14 @@ void free_root_chunk(uvm_pmm_gpu_t *pmm, uvm_gpu_root_chunk_t *root_chunk, free_
      if (chunk->is_zero)
          flags |= UVM_PMA_FREE_IS_ZERO;
  
@@ -848,91 +736,7 @@ index 97ff13dc..2f6a968e 100644
      nvUvmInterfacePmaFreePages(pmm->pma, &chunk->address, 1, UVM_CHUNK_SIZE_MAX, flags);
  
      uvm_up_read(&pmm->pma_lock);
-@@ -3042,6 +3051,13 @@ static void devmem_page_free(struct page *page)
-                                  &gpu->pmm.root_chunks.va_block_lazy_free_q_item);
- }
- 
-+#if defined(NV_DEV_PAGEMAP_OPS_HAVE_FOLIO_FREE)
-+static void devmem_folio_free(struct folio *folio)
-+{
-+    devmem_page_free(&folio->page);
-+}
-+#endif
-+
- // This is called by HMM when the CPU faults on a ZONE_DEVICE private entry.
- static vm_fault_t devmem_fault(struct vm_fault *vmf)
- {
-@@ -3060,7 +3076,11 @@ static vm_fault_t devmem_fault_entry(struct vm_fault *vmf)
- 
- static const struct dev_pagemap_ops uvm_pmm_devmem_ops =
- {
-+#if defined(NV_DEV_PAGEMAP_OPS_HAVE_FOLIO_FREE)
-+    .folio_free = devmem_folio_free,
-+#else
-     .page_free = devmem_page_free,
-+#endif
-     .migrate_to_ram = devmem_fault_entry,
- };
- 
-@@ -3155,6 +3175,13 @@ static void device_p2p_page_free(struct page *page)
-     page->zone_device_data = NULL;
-     nv_kref_put(&p2p_mem->refcount, device_p2p_page_free_wake);
- }
-+
-+#if defined(NV_DEV_PAGEMAP_OPS_HAVE_FOLIO_FREE)
-+static void device_p2p_folio_free(struct folio *folio)
-+{
-+    device_p2p_page_free(&folio->page);
-+}
-+#endif
- #endif
- 
- #if UVM_CDMM_PAGES_SUPPORTED()
-@@ -3163,9 +3190,20 @@ static void device_coherent_page_free(struct page *page)
-     device_p2p_page_free(page);
- }
- 
-+#if defined(NV_DEV_PAGEMAP_OPS_HAVE_FOLIO_FREE)
-+static void device_coherent_folio_free(struct folio *folio)
-+{
-+    device_coherent_page_free(&folio->page);
-+}
-+#endif
-+
- static const struct dev_pagemap_ops uvm_device_coherent_pgmap_ops =
- {
-+#if defined(NV_DEV_PAGEMAP_OPS_HAVE_FOLIO_FREE)
-+    .folio_free = device_coherent_folio_free,
-+#else
-     .page_free = device_coherent_page_free,
-+#endif
- };
- 
- static NV_STATUS uvm_pmm_cdmm_init(uvm_parent_gpu_t *parent_gpu)
-@@ -3302,7 +3340,11 @@ static bool uvm_pmm_gpu_check_orphan_pages(uvm_pmm_gpu_t *pmm)
- 
- static const struct dev_pagemap_ops uvm_device_p2p_pgmap_ops =
- {
-+#if defined(NV_DEV_PAGEMAP_OPS_HAVE_FOLIO_FREE)
-+    .folio_free = device_p2p_folio_free,
-+#else
-     .page_free = device_p2p_page_free,
-+#endif
- };
- 
- void uvm_pmm_gpu_device_p2p_init(uvm_parent_gpu_t *parent_gpu)
-@@ -3360,7 +3402,9 @@ void uvm_pmm_gpu_device_p2p_init(uvm_parent_gpu_t *parent_gpu)
- 
- void uvm_pmm_gpu_device_p2p_deinit(uvm_parent_gpu_t *parent_gpu)
- {
--    if (parent_gpu->device_p2p_initialised && !uvm_parent_gpu_is_coherent(parent_gpu)) {
-+        // Check device_p2p_initialised first before accessing pci_dev.
-+    // During partial GPU init/deinit, pci_dev may be NULL or P2P was never initialized.
-+    if (parent_gpu->device_p2p_initialised && !uvm_parent_gpu_is_coherent(parent_gpu) && parent_gpu->pci_dev != NULL) {
-         struct page *p2p_page = pfn_to_page(pci_resource_start(parent_gpu->pci_dev,
-                                             uvm_device_p2p_static_bar(parent_gpu)) >> PAGE_SHIFT);
- 
-@@ -3565,7 +3609,10 @@ void uvm_pmm_gpu_deinit(uvm_pmm_gpu_t *pmm)
+@@ -3713,7 +3722,10 @@ void uvm_pmm_gpu_deinit(uvm_pmm_gpu_t *pmm)
      UVM_ASSERT(uvm_pmm_gpu_check_orphan_pages(pmm));
      release_free_root_chunks(pmm);
  
@@ -985,7 +789,7 @@ index 756080fb..767f9e8d 100644
  }
  
 diff --git a/kernel-open/nvidia-uvm/uvm_user_channel.c b/kernel-open/nvidia-uvm/uvm_user_channel.c
-index a85a6450..634c245a 100644
+index dbad0414..0f54d0f7 100644
 --- a/kernel-open/nvidia-uvm/uvm_user_channel.c
 +++ b/kernel-open/nvidia-uvm/uvm_user_channel.c
 @@ -32,6 +32,7 @@
@@ -1011,7 +815,7 @@ index a85a6450..634c245a 100644
      // TODO: Bug 1737765. This doesn't stop the user from putting the
      //       channel back on the runlist, which could put stale instance
      //       pointers back in the fault buffer.
-@@ -854,7 +863,9 @@ void uvm_user_channel_destroy_detached(uvm_user_channel_t *user_channel)
+@@ -886,7 +895,9 @@ void uvm_user_channel_destroy_detached(uvm_user_channel_t *user_channel)
          uvm_kvfree(user_channel->resources);
      }
  
@@ -1023,7 +827,7 @@ index a85a6450..634c245a 100644
  
      uvm_user_channel_release(user_channel);
 diff --git a/kernel-open/nvidia-uvm/uvm_va_space.c b/kernel-open/nvidia-uvm/uvm_va_space.c
-index f5ff7b46..6abd2af9 100644
+index ca00bd2d..722d8a78 100644
 --- a/kernel-open/nvidia-uvm/uvm_va_space.c
 +++ b/kernel-open/nvidia-uvm/uvm_va_space.c
 @@ -32,6 +32,7 @@
@@ -1033,8 +837,8 @@ index f5ff7b46..6abd2af9 100644
 +#include "uvm_gpu_isr.h"
  #include "uvm_map_external.h"
  #include "uvm_ats.h"
- #include "uvm_gpu_access_counters.h"
-@@ -1436,6 +1437,13 @@ void uvm_gpu_va_space_unset_page_dir(uvm_gpu_va_space_t *gpu_va_space)
+ #include "uvm_gpu_replayable_faults.h"
+@@ -1386,6 +1387,13 @@ void uvm_gpu_va_space_unset_page_dir(uvm_gpu_va_space_t *gpu_va_space)
      if (gpu_va_space->did_set_page_directory) {
          NV_STATUS status;
  
@@ -1048,7 +852,7 @@ index f5ff7b46..6abd2af9 100644
          status = uvm_rm_locked_call(nvUvmInterfaceUnsetPageDirectory(gpu_va_space->duped_gpu_va_space));
          UVM_ASSERT_MSG(status == NV_OK,
                         "nvUvmInterfaceUnsetPageDirectory() failed: %s, GPU %s\n",
-@@ -1487,7 +1495,9 @@ static void destroy_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
+@@ -1437,7 +1445,9 @@ static void destroy_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
      if (gpu_va_space->page_tables.root)
          uvm_page_tree_deinit(&gpu_va_space->page_tables);
  
@@ -1146,7 +950,7 @@ index a0f61ed2..4da6bfca 100644
      {
          return 0;
 diff --git a/kernel-open/nvidia/nv-pci.c b/kernel-open/nvidia/nv-pci.c
-index 2767134e..1d54b2b9 100644
+index 996d5c0e..3a81694c 100644
 --- a/kernel-open/nvidia/nv-pci.c
 +++ b/kernel-open/nvidia/nv-pci.c
 @@ -27,6 +27,7 @@
@@ -1157,7 +961,7 @@ index 2767134e..1d54b2b9 100644
  
  #if defined(NV_VGPU_KVM_BUILD)
  #include "nv-vgpu-vfio-interface.h"
-@@ -2179,22 +2180,34 @@ nv_pci_remove(struct pci_dev *pci_dev)
+@@ -2319,20 +2320,33 @@ static void nv_pci_remove_helper(struct pci_dev *pci_dev, bool block_if_gpu_in_u
      /*
       * Sanity check: A removed device shouldn't have a non-zero usage_count.
       * For eGPU, fall off the bus along with clients active is a valid scenario.
@@ -1195,11 +999,9 @@ index 2767134e..1d54b2b9 100644
 +        while ((atomic64_read(&nvl->usage_count) != 0) &&
 +               (wait_iterations < max_wait_iterations))
          {
--
              /*
               * While waiting, release the locks so that other threads can make
-              * forward progress.
-@@ -2203,6 +2216,7 @@ nv_pci_remove(struct pci_dev *pci_dev)
+@@ -2342,6 +2356,7 @@ static void nv_pci_remove_helper(struct pci_dev *pci_dev, bool block_if_gpu_in_u
              UNLOCK_NV_LINUX_DEVICES();
  
              os_delay(500);
@@ -1207,7 +1009,7 @@ index 2767134e..1d54b2b9 100644
  
              /* Re-acquire the locks before checking again */
              LOCK_NV_LINUX_DEVICES();
-@@ -2221,10 +2235,32 @@ nv_pci_remove(struct pci_dev *pci_dev)
+@@ -2360,10 +2375,32 @@ static void nv_pci_remove_helper(struct pci_dev *pci_dev, bool block_if_gpu_in_u
              down(&nvl->ldata_lock);
          }
  
@@ -1317,10 +1119,10 @@ index cc0e1a2e..c1cadefb 100644
                          int (*get_relaxed_ordering_mode)(int *mode, void *data),
                          void (*put_relaxed_ordering_mode)(int mode, void *data),
 diff --git a/kernel-open/nvidia/nv.c b/kernel-open/nvidia/nv.c
-index 9ad14f1d..3abef3c9 100644
+index c199fd9e..faec6aa6 100644
 --- a/kernel-open/nvidia/nv.c
 +++ b/kernel-open/nvidia/nv.c
-@@ -2191,14 +2191,49 @@ nvidia_close_callback(
+@@ -2227,14 +2227,49 @@ nvidia_close_callback(
  static void nvidia_close_deferred(void *data)
  {
      nv_linux_file_private_t *nvlfp = data;
@@ -1372,7 +1174,7 @@ index 9ad14f1d..3abef3c9 100644
  }
  
  int
-@@ -2209,6 +2244,9 @@ nvidia_close(
+@@ -2245,6 +2280,9 @@ nvidia_close(
  {
      int rc;
      nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(file);
@@ -1382,7 +1184,7 @@ index 9ad14f1d..3abef3c9 100644
  
      nv_printf(NV_DBG_INFO,
                "NVRM: nvidia_close on GPU with minor number %d\n",
-@@ -2221,10 +2259,44 @@ nvidia_close(
+@@ -2257,10 +2295,44 @@ nvidia_close(
  
      NV_SET_FILE_PRIVATE(file, NULL);
  
@@ -1428,8 +1230,8 @@ index 9ad14f1d..3abef3c9 100644
      }
  
      if (rc == 0)
-@@ -5202,15 +5274,25 @@ int nvidia_dev_get(NvU32 gpu_id, nvidia_stack_t *sp)
- void nvidia_dev_put(NvU32 gpu_id, nvidia_stack_t *sp)
+@@ -5356,6 +5428,8 @@ int nvidia_dev_get(NvU32 gpu_id, nvidia_stack_t *sp, NvBool reset_aware)
+ void nvidia_dev_put(NvU32 gpu_id, nvidia_stack_t *sp, NvBool reset_aware)
  {
      nv_linux_state_t *nvl;
 +    nv_state_t *nv;
@@ -1437,25 +1239,6 @@ index 9ad14f1d..3abef3c9 100644
  
      /* Takes nvl->ldata_lock */
      nvl = find_gpu_id(gpu_id);
-     if (!nvl)
-         return;
- 
--    nv_close_device(NV_STATE_PTR(nvl), sp);
-+    nv = NV_STATE_PTR(nvl);
- 
--    WARN_ON(rm_set_external_kernel_client_count(sp, NV_STATE_PTR(nvl), NV_FALSE) != NV_OK);
-+    nv_close_device(nv, sp);
-+
-+    /*
-+     * During surprise removal (e.g., Thunderbolt eGPU hot-unplug),
-+     * this may fail because the GPU is already gone. Don't warn in
-+     * that case - it's expected.
-+     */
-+    status = rm_set_external_kernel_client_count(sp, nv, NV_FALSE);
-+    WARN_ON((status != NV_OK) && !NV_IS_DEVICE_IN_SURPRISE_REMOVAL(nv));
- 
-     up(&nvl->ldata_lock);
- }
 diff --git a/src/nvidia-modeset/include/nvkms-private.h b/src/nvidia-modeset/include/nvkms-private.h
 index 31c76081..df468bc9 100644
 --- a/src/nvidia-modeset/include/nvkms-private.h
@@ -1472,12 +1255,12 @@ index 31c76081..df468bc9 100644
                        struct NvKmsPerOpenDev *pOpenDev);
  
 diff --git a/src/nvidia-modeset/include/nvkms-types.h b/src/nvidia-modeset/include/nvkms-types.h
-index 1bc0d328..c6d55422 100644
+index 8a22ec95..d8d111bd 100644
 --- a/src/nvidia-modeset/include/nvkms-types.h
 +++ b/src/nvidia-modeset/include/nvkms-types.h
-@@ -1156,6 +1156,13 @@ typedef struct _NVEvoDevRec {
+@@ -1167,6 +1167,13 @@ typedef struct _NVEvoDevRec {
       */
-     NvBool              supportsVblankSemControl : 1;
+     NvBool              isHeadSurfaceSupported : 1;
  
 +    /*
 +     * Indicates the GPU has been lost (e.g., Thunderbolt/eGPU hot-unplug).
@@ -1490,10 +1273,10 @@ index 1bc0d328..c6d55422 100644
      nvkms_timer_handle_t *consoleRestoreTimer;
  
 diff --git a/src/nvidia-modeset/kapi/interface/nvkms-kapi.h b/src/nvidia-modeset/kapi/interface/nvkms-kapi.h
-index 4a659770..4f9c421b 100644
+index 34ed6c8e..ec0abd55 100644
 --- a/src/nvidia-modeset/kapi/interface/nvkms-kapi.h
 +++ b/src/nvidia-modeset/kapi/interface/nvkms-kapi.h
-@@ -656,6 +656,17 @@ struct NvKmsKapiFunctionsTable {
+@@ -671,6 +671,17 @@ struct NvKmsKapiFunctionsTable {
       */
      void (*freeDevice)(struct NvKmsKapiDevice *device);
  
@@ -1512,10 +1295,10 @@ index 4a659770..4f9c421b 100644
       * Grab ownership of device, ownership is required to do modeset.
       *
 diff --git a/src/nvidia-modeset/kapi/src/nvkms-kapi.c b/src/nvidia-modeset/kapi/src/nvkms-kapi.c
-index fdf921f1..bf7258ba 100644
+index a607f17b..9e73840b 100644
 --- a/src/nvidia-modeset/kapi/src/nvkms-kapi.c
 +++ b/src/nvidia-modeset/kapi/src/nvkms-kapi.c
-@@ -635,6 +635,78 @@ static void FreeDevice(struct NvKmsKapiDevice *device)
+@@ -641,6 +641,78 @@ static void FreeDevice(struct NvKmsKapiDevice *device)
      nvKmsKapiFree(device);
  }
  
@@ -1580,7 +1363,7 @@ index fdf921f1..bf7258ba 100644
 +    device->pKmsOpen = NULL;
 +
 +    /* Lower the reference count of gpu - this is safe, no hardware access */
-+    nvkms_close_gpu(device->gpuId);
++    nvkms_close_gpu(device->gpuId, NV_TRUE /* reset_aware */);
 +
 +    /* Free kernel memory resources */
 +    if (device->pSema != NULL) {
@@ -1594,7 +1377,7 @@ index fdf921f1..bf7258ba 100644
  NvBool nvKmsKapiAllocateSystemMemory(struct NvKmsKapiDevice *device,
                                       NvU32 hRmHandle,
                                       enum NvKmsSurfaceMemoryLayout layout,
-@@ -4013,6 +4085,7 @@ NvBool nvKmsKapiGetFunctionsTableInternal
+@@ -4014,6 +4086,7 @@ NvBool nvKmsKapiGetFunctionsTableInternal
  
      funcsTable->allocateDevice = AllocateDevice;
      funcsTable->freeDevice     = FreeDevice;
@@ -1603,12 +1386,12 @@ index fdf921f1..bf7258ba 100644
      funcsTable->grabOwnership    = GrabOwnership;
      funcsTable->releaseOwnership = ReleaseOwnership;
 diff --git a/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h b/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h
-index d4d656e7..8c7294e6 100644
+index fc74317a..58468be1 100644
 --- a/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h
 +++ b/src/nvidia-modeset/os-interface/include/nvidia-modeset-os-interface.h
-@@ -310,6 +310,12 @@ void* nvkms_get_per_open_data(int fd);
- NvBool nvkms_open_gpu(NvU32 gpuId);
- void nvkms_close_gpu(NvU32 gpuId);
+@@ -309,6 +309,12 @@ void* nvkms_get_per_open_data(int fd);
+ NvBool nvkms_open_gpu(NvU32 gpuId, NvBool reset_aware);
+ void nvkms_close_gpu(NvU32 gpuId, NvBool reset_aware);
  
 +/*!
 + * Mark a GPU as lost (surprise removal, e.g., Thunderbolt eGPU unplug).
@@ -1908,10 +1691,10 @@ index a6c0b57b..ef9e2919 100644
  
          nvkms_yield();
 diff --git a/src/nvidia-modeset/src/nvkms-event.c b/src/nvidia-modeset/src/nvkms-event.c
-index 7b15bab8..414a2e10 100644
+index 51876b25..953c6cf0 100644
 --- a/src/nvidia-modeset/src/nvkms-event.c
 +++ b/src/nvidia-modeset/src/nvkms-event.c
-@@ -61,6 +61,11 @@ nvHandleHotplugEventDeferredWork(void *dataPtr, NvU32 dataU32)
+@@ -63,6 +63,11 @@ nvHandleHotplugEventDeferredWork(void *dataPtr, NvU32 dataU32)
      NVDpyEvoPtr pDpyEvo;
      NVDevEvoPtr pDevEvo = pDispEvo->pDevEvo;
  
@@ -1920,14 +1703,14 @@ index 7b15bab8..414a2e10 100644
 +        return;
 +    }
 +
-     // Get the hotplug state.
-     hotplugParams.subDeviceInstance = pDispEvo->displayOwner;
- 
+     if (!pDevEvo->displaylessHw) {
+         // Get the hotplug state.
+         hotplugParams.subDeviceInstance = pDispEvo->displayOwner;
 diff --git a/src/nvidia-modeset/src/nvkms-evo.c b/src/nvidia-modeset/src/nvkms-evo.c
-index fdd1df7c..0d1f54d2 100644
+index 9c14aada..dde1e18d 100644
 --- a/src/nvidia-modeset/src/nvkms-evo.c
 +++ b/src/nvidia-modeset/src/nvkms-evo.c
-@@ -8835,6 +8835,28 @@ NvBool nvFreeDevEvo(NVDevEvoPtr pDevEvo)
+@@ -8841,6 +8841,28 @@ NvBool nvFreeDevEvo(NVDevEvoPtr pDevEvo)
          return FALSE;
      }
  
@@ -1956,7 +1739,7 @@ index fdd1df7c..0d1f54d2 100644
      if (pDevEvo->pDifrState) {
          nvRmUnregisterDIFREventHandler(pDevEvo);
          nvDIFRFree(pDevEvo->pDifrState);
-@@ -8874,19 +8896,43 @@ NvBool nvFreeDevEvo(NVDevEvoPtr pDevEvo)
+@@ -8880,19 +8902,41 @@ NvBool nvFreeDevEvo(NVDevEvoPtr pDevEvo)
  
      nvRmDestroyDisplays(pDevEvo);
  
@@ -1964,8 +1747,6 @@ index fdd1df7c..0d1f54d2 100644
 -    pDevEvo->consoleRestoreTimer = NULL;
 +free_software_resources:
 +    {
-+        NvBool wasGpuLost = pDevEvo->gpuLost;
-+
 +        nvkms_free_timer(pDevEvo->consoleRestoreTimer);
 +        pDevEvo->consoleRestoreTimer = NULL;
  
@@ -2009,523 +1790,22 @@ index fdd1df7c..0d1f54d2 100644
  
  static void AssignNumberOfApiHeads(NVDevEvoRec *pDevEvo)
 diff --git a/src/nvidia-modeset/src/nvkms-evo1.c b/src/nvidia-modeset/src/nvkms-evo1.c
-index cf2bbac6..13479569 100644
+index cf2bbac6..ab0410b3 100644
 --- a/src/nvidia-modeset/src/nvkms-evo1.c
 +++ b/src/nvidia-modeset/src/nvkms-evo1.c
-@@ -32,9 +32,416 @@
+@@ -30,7 +30,6 @@
+ #include "nvkms-rm.h"
+ #include "nvkms-rmapi.h"
  #include "nvkms-evo1.h"
- #include "nvkms-prealloc.h"
+-#include "nvkms-prealloc.h"
  #include "nvkms-utils.h"
-+#include "nvos.h"
  
  #include "hdmi_spec.h"
- 
-+#include <ctrl/ctrl5070/ctrl5070chnc.h> // NV5070_CTRL_CMD_IS_MODE_POSSIBLE_PARAMS
-+
-+/*!
-+ * Initialize head-independent IMP param fields.
-+ *
-+ * Initializes an NV5070_CTRL_CMD_IS_MODE_POSSIBLE_PARAMS structure.
-+ * IMP users should call this once, followed by per-head calls to
-+ * AssignPerHeadImpParams().
-+ *
-+ * \param pImp[in]  A pointer to a param structure.
-+ */
-+static void InitImpParams(NV5070_CTRL_CMD_IS_MODE_POSSIBLE_PARAMS *pImp)
-+{
-+    int i;
-+
-+    nvkms_memset(pImp, 0, sizeof(*pImp));
-+
-+    /* Initialize to not possible. */
-+    pImp->IsPossible = NV5070_CTRL_CMD_IS_MODE_POSSIBLE_IS_POSSIBLE_NO;
-+
-+    /* Set all heads to inactive. */
-+    for (i = 0; i < NV5070_CTRL_CMD_MAX_HEADS; i++) {
-+        pImp->Head[i].HeadActive =
-+            NV5070_CTRL_CMD_IS_MODE_POSSIBLE_HEAD_ACTIVE_NO;
-+    }
-+
-+    /* Set all ORs to no owner. */
-+    for (i = 0; i < NV5070_CTRL_CMD_MAX_DACS; i++) {
-+        pImp->Dac[i].owner = NV5070_CTRL_CMD_OR_OWNER_NONE;
-+    }
-+
-+    pImp->bUseSorOwnerMask = TRUE;
-+    for (i = 0; i < NV5070_CTRL_CMD_MAX_SORS; i++) {
-+        pImp->Sor[i].ownerMask = NV5070_CTRL_CMD_SOR_OWNER_MASK_NONE;
-+    }
-+
-+    for (i = 0; i < NV5070_CTRL_CMD_MAX_PIORS; i++) {
-+        pImp->Pior[i].owner = NV5070_CTRL_CMD_OR_OWNER_NONE;
-+    }
-+}
-+
-+/*!
-+ * Initialize head-specific IMP param fields.
-+ *
-+ * Initialize the portion of the NV5070_CTRL_CMD_IS_MODE_POSSIBLE_PARAMS
-+ * structure that applies to a specific head, and the OR driven by
-+ * that head.
-+ *
-+ * The param structure should be initialized by InitImpParams()
-+ * before calling this per-head function.
-+ *
-+ * \param[out]  pImp       The param structure to initialize.
-+ * \param[in]   pTimings   The rastering timings and viewport configuration.
-+ * \param[in]   pUsage     The usage bounds that will be used for this head.
-+ * \param[in]   head       The number of the head that will be driven.
-+ * \param[in]   orNumber   The number of the OR driven by the head.
-+ * \param[in]   orType     The type of the OR driven by the head.
-+ */
-+static void AssignPerHeadImpParams(const NVDevEvoRec *pDevEvo,
-+                                   NV5070_CTRL_CMD_IS_MODE_POSSIBLE_PARAMS *pImp,
-+                                   const NVHwModeTimingsEvo *pTimings,
-+                                   const enum nvKmsPixelDepth pixelDepth,
-+                                   const struct NvKmsUsageBounds *pUsage,
-+                                   const int head,
-+                                   const int orNumber,
-+                                   const int orType)
-+{
-+    const NVHwModeViewPortEvo *pViewPort = &pTimings->viewPort;
-+    NvU64 overlayFormats = 0;
-+    NvU32 protocol;
-+
-+    nvkms_memset(&pImp->Head[head], 0, sizeof(pImp->Head[head]));
-+
-+    nvAssert(head < NV5070_CTRL_CMD_MAX_HEADS);
-+    pImp->Head[head].HeadActive = TRUE;
-+
-+    nvAssert(orType == NV0073_CTRL_SPECIFIC_OR_TYPE_NONE ||
-+             orNumber != NV_INVALID_OR);
-+
-+    /* raster timings */
-+
-+    pImp->Head[head].PixelClock.Frequency = pTimings->pixelClock;
-+
-+    pImp->Head[head].PixelClock.Adj1000Div1001 =
-+        NV5070_CTRL_CMD_IS_MODE_POSSIBLE_PIXEL_CLOCK_ADJ1000DIV1001_NO;
-+
-+    pImp->Head[head].RasterSize.Width           = pTimings->rasterSize.x;
-+    pImp->Head[head].RasterSize.Height          = pTimings->rasterSize.y;
-+    pImp->Head[head].RasterBlankStart.X         = pTimings->rasterBlankStart.x;
-+    pImp->Head[head].RasterBlankStart.Y         = pTimings->rasterBlankStart.y;
-+    pImp->Head[head].RasterBlankEnd.X           = pTimings->rasterBlankEnd.x;
-+    pImp->Head[head].RasterBlankEnd.Y           = pTimings->rasterBlankEnd.y;
-+    pImp->Head[head].RasterVertBlank2.YStart    = pTimings->rasterVertBlank2Start;
-+    pImp->Head[head].RasterVertBlank2.YEnd      = pTimings->rasterVertBlank2End;
-+    pImp->Head[head].Control.Structure =
-+        pTimings->interlaced ?
-+        NV5070_CTRL_CMD_IS_MODE_POSSIBLE_CONTROL_STRUCTURE_INTERLACED :
-+        NV5070_CTRL_CMD_IS_MODE_POSSIBLE_CONTROL_STRUCTURE_PROGRESSIVE;
-+
-+    if (orType == NV0073_CTRL_SPECIFIC_OR_TYPE_DAC) {
-+        nvAssert(orNumber < ARRAY_LEN(pImp->Dac));
-+        nvAssert(pImp->Dac[orNumber].owner == NV5070_CTRL_CMD_OR_OWNER_NONE);
-+        pImp->Dac[orNumber].owner = NV5070_CTRL_CMD_OR_OWNER_HEAD(head);
-+        nvAssert(pTimings->protocol == NVKMS_PROTOCOL_DAC_RGB);
-+        pImp->Dac[orNumber].protocol = NV5070_CTRL_CMD_DAC_PROTOCOL_RGB_CRT;
-+    } else if (orType == NV0073_CTRL_SPECIFIC_OR_TYPE_SOR) {
-+        nvAssert(orNumber < ARRAY_LEN(pImp->Sor));
-+        pImp->Sor[orNumber].ownerMask |= NV5070_CTRL_CMD_SOR_OWNER_MASK_HEAD(head);
-+        switch (pTimings->protocol) {
-+            default:
-+                nvAssert(!"Unknown protocol");
-+                /* fall through */
-+            case NVKMS_PROTOCOL_SOR_LVDS_CUSTOM:
-+                protocol = NV5070_CTRL_CMD_SOR_PROTOCOL_LVDS_CUSTOM;
-+                break;
-+            case NVKMS_PROTOCOL_SOR_SINGLE_TMDS_A:
-+                protocol = NV5070_CTRL_CMD_SOR_PROTOCOL_SINGLE_TMDS_A;
-+                break;
-+            case NVKMS_PROTOCOL_SOR_SINGLE_TMDS_B:
-+                protocol = NV5070_CTRL_CMD_SOR_PROTOCOL_SINGLE_TMDS_B;
-+                break;
-+            case NVKMS_PROTOCOL_SOR_DUAL_TMDS:
-+                protocol = NV5070_CTRL_CMD_SOR_PROTOCOL_DUAL_TMDS;
-+                break;
-+            case NVKMS_PROTOCOL_SOR_DP_A:
-+                protocol = NV5070_CTRL_CMD_SOR_PROTOCOL_DP_A;
-+                break;
-+            case NVKMS_PROTOCOL_SOR_DP_B:
-+                protocol = NV5070_CTRL_CMD_SOR_PROTOCOL_DP_B;
-+                break;
-+        }
-+        pImp->Sor[orNumber].protocol = protocol;
-+        pImp->Sor[orNumber].pixelReplicateMode =
-+            NV5070_CTRL_IS_MODE_POSSIBLE_PIXEL_REPLICATE_MODE_OFF;
-+    } else if (orType == NV0073_CTRL_SPECIFIC_OR_TYPE_PIOR) {
-+        nvAssert(orNumber < ARRAY_LEN(pImp->Pior));
-+        nvAssert(pImp->Pior[orNumber].owner == NV5070_CTRL_CMD_OR_OWNER_NONE);
-+        pImp->Pior[orNumber].owner = NV5070_CTRL_CMD_OR_OWNER_HEAD(head);
-+        switch (pTimings->protocol) {
-+            default:
-+                nvAssert(!"Unknown protocol");
-+                /* fall through */
-+            case NVKMS_PROTOCOL_PIOR_EXT_TMDS_ENC:
-+                protocol = NV5070_CTRL_CMD_PIOR_PROTOCOL_EXT_TMDS_ENC;
-+                break;
-+        }
-+        pImp->Pior[orNumber].protocol = protocol;
-+    } else {
-+        nvAssert(orType == NV0073_CTRL_SPECIFIC_OR_TYPE_NONE);
-+    }
-+
-+    /* viewport out */
-+
-+    pImp->Head[head].OutputScaler.VerticalTaps =
-+        NVEvoScalerTapsToNum(pViewPort->vTaps);
-+
-+    pImp->Head[head].OutputScaler.HorizontalTaps =
-+        NVEvoScalerTapsToNum(pViewPort->hTaps);
-+
-+    pImp->Head[head].ViewportSizeOut.Width = pViewPort->out.width;
-+    pImp->Head[head].ViewportSizeOut.Height = pViewPort->out.height;
-+
-+    pImp->Head[head].ViewportSizeOutMin.Width =
-+        pImp->Head[head].ViewportSizeOut.Width;
-+
-+    pImp->Head[head].ViewportSizeOutMin.Height =
-+        pImp->Head[head].ViewportSizeOut.Height;
-+
-+    pImp->Head[head].ViewportSizeOutMax.Width =
-+        pImp->Head[head].ViewportSizeOut.Width;
-+
-+    pImp->Head[head].ViewportSizeOutMax.Height =
-+        pImp->Head[head].ViewportSizeOut.Height;
-+
-+    /* viewport in */
-+
-+    pImp->Head[head].ViewportSizeIn.Width = pViewPort->in.width;
-+    pImp->Head[head].ViewportSizeIn.Height = pViewPort->in.height;
-+
-+    /*
-+     * The actual format doesn't really matter, since RM just
-+     * converts it back to bits per pixel for its IMP calculation anyway.  The
-+     * hardware doesn't have a "usage bound" for core -- changing the format
-+     * of the core surface will always incur a supervisor interrupt and rerun
-+     * IMP (XXX if we change the core surface as part of a flip to one of a
-+     * different depth, should we force the pre/post IMP update path?).
-+     *
-+     * EVO2 hal uses surfaces of the same format in the core and base channels,
-+     * see needToReprogramCoreSurface() in nvkms-evo2.c.
-+     */
-+    if (pUsage->layer[NVKMS_MAIN_LAYER].usable) {
-+        if (pUsage->layer[NVKMS_MAIN_LAYER].supportedSurfaceMemoryFormats &
-+            NVKMS_SURFACE_MEMORY_FORMATS_RGB_PACKED8BPP) {
-+            pImp->Head[head].Params.Format =
-+                NV5070_CTRL_CMD_IS_MODE_POSSIBLE_PARAMS_FORMAT_RF16_GF16_BF16_AF16;
-+        } else if (pUsage->layer[NVKMS_MAIN_LAYER].supportedSurfaceMemoryFormats &
-+            NVKMS_SURFACE_MEMORY_FORMATS_RGB_PACKED4BPP) {
-+            pImp->Head[head].Params.Format =
-+                NV5070_CTRL_CMD_IS_MODE_POSSIBLE_PARAMS_FORMAT_A8R8G8B8;
-+        } else if (pUsage->layer[NVKMS_MAIN_LAYER].supportedSurfaceMemoryFormats &
-+            NVKMS_SURFACE_MEMORY_FORMATS_RGB_PACKED2BPP) {
-+            pImp->Head[head].Params.Format =
-+                NV5070_CTRL_CMD_IS_MODE_POSSIBLE_PARAMS_FORMAT_R5G6B5;
-+        } else if (pUsage->layer[NVKMS_MAIN_LAYER].supportedSurfaceMemoryFormats &
-+            NVKMS_SURFACE_MEMORY_FORMATS_RGB_PACKED1BPP) {
-+            pImp->Head[head].Params.Format =
-+                NV5070_CTRL_CMD_IS_MODE_POSSIBLE_PARAMS_FORMAT_I8;
-+        } else { /* default to RGB 4BPP */
-+            nvAssert(!"Unknown core format");
-+            pImp->Head[head].Params.Format =
-+                NV5070_CTRL_CMD_IS_MODE_POSSIBLE_PARAMS_FORMAT_A8R8G8B8;
-+        }
-+    } else {
-+        pImp->Head[head].Params.Format =
-+            NV5070_CTRL_CMD_IS_MODE_POSSIBLE_PARAMS_FORMAT_A8R8G8B8;
-+    }
-+
-+    pImp->Head[head].Params.SuperSample =
-+        NV5070_CTRL_CMD_IS_MODE_POSSIBLE_PARAMS_SUPER_SAMPLE_X1AA;
-+
-+    /* base usage bounds */
-+
-+    if (pUsage->layer[NVKMS_MAIN_LAYER].usable) {
-+        pImp->Head[head].BaseUsageBounds.Usable =
-+            NV5070_CTRL_CMD_IS_MODE_POSSIBLE_BASE_USAGE_BOUNDS_USABLE_YES;
-+
-+        if (pUsage->layer[NVKMS_MAIN_LAYER].supportedSurfaceMemoryFormats &
-+            NVKMS_SURFACE_MEMORY_FORMATS_RGB_PACKED8BPP) {
-+            pImp->Head[head].BaseUsageBounds.PixelDepth =
-+                NV5070_CTRL_CMD_IS_MODE_POSSIBLE_BASE_USAGE_BOUNDS_PIXEL_DEPTH_64;
-+        } else if (pUsage->layer[NVKMS_MAIN_LAYER].supportedSurfaceMemoryFormats &
-+            NVKMS_SURFACE_MEMORY_FORMATS_RGB_PACKED4BPP) {
-+            pImp->Head[head].BaseUsageBounds.PixelDepth =
-+                NV5070_CTRL_CMD_IS_MODE_POSSIBLE_BASE_USAGE_BOUNDS_PIXEL_DEPTH_32;
-+        } else if (pUsage->layer[NVKMS_MAIN_LAYER].supportedSurfaceMemoryFormats &
-+            NVKMS_SURFACE_MEMORY_FORMATS_RGB_PACKED2BPP) {
-+            pImp->Head[head].BaseUsageBounds.PixelDepth =
-+                NV5070_CTRL_CMD_IS_MODE_POSSIBLE_BASE_USAGE_BOUNDS_PIXEL_DEPTH_16;
-+        } else if (pUsage->layer[NVKMS_MAIN_LAYER].supportedSurfaceMemoryFormats &
-+            NVKMS_SURFACE_MEMORY_FORMATS_RGB_PACKED1BPP) {
-+            pImp->Head[head].BaseUsageBounds.PixelDepth =
-+                NV5070_CTRL_CMD_IS_MODE_POSSIBLE_BASE_USAGE_BOUNDS_PIXEL_DEPTH_8;
-+        } else { /* default to RGB 8BPP */
-+            nvAssert(!"Unknown base channel usage bound format");
-+            pImp->Head[head].BaseUsageBounds.PixelDepth =
-+                NV5070_CTRL_CMD_IS_MODE_POSSIBLE_BASE_USAGE_BOUNDS_PIXEL_DEPTH_64;
-+        }
-+
-+        pImp->Head[head].BaseUsageBounds.SuperSample =
-+            NV5070_CTRL_CMD_IS_MODE_POSSIBLE_BASE_USAGE_BOUNDS_SUPER_SAMPLE_X1AA;
-+    } else {
-+        pImp->Head[head].BaseUsageBounds.Usable =
-+            NV5070_CTRL_CMD_IS_MODE_POSSIBLE_BASE_USAGE_BOUNDS_USABLE_NO;
-+    }
-+
-+    /* overlay usage bounds */
-+
-+    pImp->Head[head].OverlayUsageBounds.Usable =
-+        pUsage->layer[NVKMS_OVERLAY_LAYER].usable
-+        ? NV5070_CTRL_CMD_IS_MODE_POSSIBLE_OVERLAY_USAGE_BOUNDS_USABLE_YES
-+        : NV5070_CTRL_CMD_IS_MODE_POSSIBLE_OVERLAY_USAGE_BOUNDS_USABLE_NO;
-+
-+    overlayFormats = pUsage->layer[NVKMS_OVERLAY_LAYER].usable ?
-+        pUsage->layer[NVKMS_OVERLAY_LAYER].supportedSurfaceMemoryFormats :
-+        NVKMS_SURFACE_MEMORY_FORMATS_RGB_PACKED2BPP;
-+
-+    if (overlayFormats & NVKMS_SURFACE_MEMORY_FORMATS_RGB_PACKED4BPP) {
-+        pImp->Head[head].OverlayUsageBounds.PixelDepth =
-+        NV5070_CTRL_CMD_IS_MODE_POSSIBLE_OVERLAY_USAGE_BOUNDS_PIXEL_DEPTH_32;
-+    } else if (overlayFormats & NVKMS_SURFACE_MEMORY_FORMATS_RGB_PACKED2BPP) {
-+        pImp->Head[head].OverlayUsageBounds.PixelDepth =
-+        NV5070_CTRL_CMD_IS_MODE_POSSIBLE_OVERLAY_USAGE_BOUNDS_PIXEL_DEPTH_16;
-+    } else {
-+        nvAssert(!"Unknown overlay channel usage bound format");
-+        pImp->Head[head].OverlayUsageBounds.PixelDepth =
-+        NV5070_CTRL_CMD_IS_MODE_POSSIBLE_OVERLAY_USAGE_BOUNDS_PIXEL_DEPTH_32;
-+    }
-+
-+    /* pixel depth */
-+
-+    switch (pixelDepth) {
-+    case NVKMS_PIXEL_DEPTH_18_444:
-+        pImp->Head[head].outputResourcePixelDepthBPP =
-+            NV5070_CTRL_IS_MODE_POSSIBLE_OUTPUT_RESOURCE_PIXEL_DEPTH_BPP_18_444;
-+        break;
-+    case NVKMS_PIXEL_DEPTH_24_444:
-+        pImp->Head[head].outputResourcePixelDepthBPP =
-+            NV5070_CTRL_IS_MODE_POSSIBLE_OUTPUT_RESOURCE_PIXEL_DEPTH_BPP_24_444;
-+        break;
-+    case NVKMS_PIXEL_DEPTH_30_444:
-+        pImp->Head[head].outputResourcePixelDepthBPP =
-+            NV5070_CTRL_IS_MODE_POSSIBLE_OUTPUT_RESOURCE_PIXEL_DEPTH_BPP_30_444;
-+        break;
-+    case NVKMS_PIXEL_DEPTH_16_422:
-+        pImp->Head[head].outputResourcePixelDepthBPP =
-+            NV5070_CTRL_IS_MODE_POSSIBLE_OUTPUT_RESOURCE_PIXEL_DEPTH_BPP_16_422;
-+        break;
-+    case NVKMS_PIXEL_DEPTH_20_422:
-+        pImp->Head[head].outputResourcePixelDepthBPP =
-+            NV5070_CTRL_IS_MODE_POSSIBLE_OUTPUT_RESOURCE_PIXEL_DEPTH_BPP_20_422;
-+        break;
-+    }
-+}
-+
-+void nvEvo1IsModePossible(NVDispEvoPtr pDispEvo,
-+                          const NVEvoIsModePossibleDispInput *pInput,
-+                          NVEvoIsModePossibleDispOutput *pOutput)
-+{
-+    NVDevEvoPtr pDevEvo = pDispEvo->pDevEvo;
-+    NV5070_CTRL_CMD_IS_MODE_POSSIBLE_PARAMS *pImp =
-+        nvPreallocGet(pDevEvo, PREALLOC_TYPE_IMP_PARAMS, sizeof(*pImp));
-+    NvBool result = FALSE;
-+    NvU32 head;
-+    NvU32 ret;
-+
-+    InitImpParams(pImp);
-+
-+    pImp->RequestedOperation =
-+        NV5070_CTRL_CMD_IS_MODE_POSSIBLE_REQUESTED_OPERATION_QUERY;
-+
-+    for (head = 0; head < NVKMS_MAX_HEADS_PER_DISP; head++) {
-+        if (pInput->head[head].pTimings == NULL) {
-+            continue;
-+        }
-+
-+        AssignPerHeadImpParams(pDevEvo, pImp,
-+                               pInput->head[head].pTimings,
-+                               pInput->head[head].pixelDepth,
-+                               pInput->head[head].pUsage,
-+                               head,
-+                               pInput->head[head].orIndex,
-+                               pInput->head[head].orType);
-+    }
-+
-+    pImp->base.subdeviceIndex = pDispEvo->displayOwner;
-+
-+    if (pInput->requireBootClocks) {
-+        // XXX TODO: IMP requires lock pin information if pstate information is
-+        // requested. For now, just assume no locking.
-+        pImp->MinPState = NV5070_CTRL_IS_MODE_POSSIBLE_NEED_MIN_PSTATE;
-+    }
-+
-+    for (head = 0; head < NVKMS_MAX_HEADS_PER_DISP; head++) {
-+        pImp->Head[head].displayId[0] = pInput->head[head].displayId;
-+    }
-+
-+    ret = nvRmApiControl(nvEvoGlobal.clientHandle,
-+                         pDevEvo->displayHandle,
-+                         NV5070_CTRL_CMD_IS_MODE_POSSIBLE,
-+                         pImp, sizeof(*pImp));
-+
-+    if (ret != NV_OK || !pImp->IsPossible ||
-+        (pInput->requireBootClocks &&
-+         // P8 = "boot clocks"
-+         (pImp->MinPState < NV5070_CTRL_IS_MODE_POSSIBLE_PSTATES_P8 &&
-+          // XXX TODO: With PStates 3.0, only a "v-pstate" is returned in
-+          // impParams.minPerfLevel. We need to correlate that with "boot
-+          // clocks" somehow.
-+          pImp->MinPState != NV5070_CTRL_IS_MODE_POSSIBLE_PSTATES_UNDEFINED))) {
-+        goto done;
-+    }
-+
-+    result = TRUE;
-+
-+done:
-+    nvPreallocRelease(pDevEvo, PREALLOC_TYPE_IMP_PARAMS);
-+    pOutput->possible = result;
-+}
-+
-+void nvEvo1PrePostIMP(NVDispEvoPtr pDispEvo, NvBool isPre)
-+{
-+    NVDevEvoPtr pDevEvo = pDispEvo->pDevEvo;
-+    NV5070_CTRL_CMD_IS_MODE_POSSIBLE_PARAMS *pImp =
-+        nvPreallocGet(pDevEvo, PREALLOC_TYPE_IMP_PARAMS, sizeof(*pImp));
-+    NvU32 ret;
-+
-+    if (isPre) {
-+        /*
-+         * Sync the core channel for pre-modeset IMP to ensure that the state
-+         * cache reflects all of the methods we've pushed
-+         */
-+        ret = nvRMSyncEvoChannel(pDevEvo, pDevEvo->core, __LINE__);
-+        if (!ret) {
-+            nvAssert(!"nvRMSyncEvoChannel failed during PreModesetIMP");
-+        }
-+    }
-+
-+    nvkms_memset(pImp, 0, sizeof(*pImp));
-+
-+    pImp->RequestedOperation = isPre ?
-+        NV5070_CTRL_CMD_IS_MODE_POSSIBLE_REQUESTED_OPERATION_PRE_MODESET_USE_SC :
-+        NV5070_CTRL_CMD_IS_MODE_POSSIBLE_REQUESTED_OPERATION_POST_MODESET_USE_SC;
-+
-+    pImp->base.subdeviceIndex = pDispEvo->displayOwner;
-+
-+    ret = nvRmApiControl(nvEvoGlobal.clientHandle,
-+                         pDevEvo->displayHandle,
-+                         NV5070_CTRL_CMD_IS_MODE_POSSIBLE,
-+                         pImp, sizeof(*pImp));
-+    if ((ret != NVOS_STATUS_SUCCESS) || !pImp->IsPossible) {
-+        nvAssert(!"NV5070_CTRL_CMD_IS_MODE_POSSIBLE failed");
-+    }
-+
-+    nvPreallocRelease(pDevEvo, PREALLOC_TYPE_IMP_PARAMS);
-+}
-+
- /*!
-  * Return the value to use for HEAD_SET_STORAGE_PITCH.
-  *
-@@ -67,6 +474,91 @@ NvU32 nvEvoGetHeadSetStoragePitchValue(const NVDevEvoRec *pDevEvo,
-     return pitch;
- }
- 
-+static NvBool GetChannelState(NVDevEvoPtr pDevEvo,
-+                              NVEvoChannelPtr pChan,
-+                              NvU32 sd,
-+                              NvU32 *result)
-+{
-+    NV5070_CTRL_CMD_GET_CHANNEL_INFO_PARAMS info = { };
-+    NvU32 ret;
-+
-+    info.base.subdeviceIndex = sd;
-+    info.channelClass = pChan->hwclass;
-+    info.channelInstance = pChan->instance;
-+
-+    ret = nvRmApiControl(nvEvoGlobal.clientHandle,
-+                         pDevEvo->displayHandle,
-+                         NV5070_CTRL_CMD_GET_CHANNEL_INFO,
-+                         &info, sizeof(info));
-+    if (ret != NVOS_STATUS_SUCCESS) {
-+        /*
-+         * When the GPU is lost (e.g., Thunderbolt/eGPU hot-unplug),
-+         * suppress the error log to avoid flooding dmesg. The callers
-+         * will handle the failure appropriately.
-+         */
-+        if (ret != NVOS_STATUS_ERROR_GPU_IS_LOST) {
-+            nvEvoLogDev(pDevEvo, EVO_LOG_ERROR,
-+                        "Failed to query display engine channel state: 0x%08x:%d:%d:0x%08x",
-+                        pChan->hwclass, pChan->instance, sd, ret);
-+        }
-+        return FALSE;
-+    }
-+
-+    *result = info.channelState;
-+
-+    return TRUE;
-+}
-+
-+NvBool nvEvo1IsChannelIdle(NVDevEvoPtr pDevEvo,
-+                           NVEvoChannelPtr pChan,
-+                           NvU32 sd,
-+                           NvBool *result)
-+{
-+    NvU32 channelState;
-+
-+    if (!GetChannelState(pDevEvo, pChan, sd, &channelState)) {
-+        return FALSE;
-+    }
-+
-+    *result = (channelState == NV5070_CTRL_GET_CHANNEL_INFO_STATE_IDLE);
-+
-+    return TRUE;
-+}
-+
-+/*
-+ * Result is false if an EVO channel is either one of NO_METHOD_PENDING or
-+ * UNCONNECTED, true o.w.
-+ *
-+ * NO_METHOD_PENDING is a mask for EMPTY | WRTIDLE | IDLE.
-+ *
-+ * If NVKMS hasn't grabbed the channel, it can be seen as UNCONNECTED.
-+ */
-+NvBool nvEvo1IsChannelMethodPending(NVDevEvoPtr pDevEvo,
-+                                    NVEvoChannelPtr pChan,
-+                                    NvU32 sd,
-+                                    NvBool *result)
-+{
-+    NvU32 channelState;
-+
-+    if (!GetChannelState(pDevEvo, pChan, sd, &channelState)) {
-+        return FALSE;
-+    }
-+
-+    *result = !(channelState &
-+              (NV5070_CTRL_GET_CHANNEL_INFO_STATE_NO_METHOD_PENDING |
-+               NV5070_CTRL_GET_CHANNEL_INFO_STATE_UNCONNECTED));
-+
-+    return TRUE;
-+}
-+
-+void nvEvo1SetDscParams(const NVDispEvoRec *pDispEvo,
-+                        const NvU32 head,
-+                        const NVDscInfoEvoRec *pDscInfo,
-+                        const enum nvKmsPixelDepth pixelDepth)
-+{
-+    nvAssert(pDscInfo->type == NV_DSC_INFO_EVO_TYPE_DISABLED);
-+}
-+
- /*
-  * The 'type' the timing library writes into the NVT_INFOFRAME_HEADER
-  * structure is not the same as the protocol values that hardware
 diff --git a/src/nvidia-modeset/src/nvkms-evo3.c b/src/nvidia-modeset/src/nvkms-evo3.c
-index a82a2bdf..e3826e27 100644
+index 13c5b1f0..653669cf 100644
 --- a/src/nvidia-modeset/src/nvkms-evo3.c
 +++ b/src/nvidia-modeset/src/nvkms-evo3.c
-@@ -6391,9 +6391,16 @@ static NvBool GetChannelState(NVDevEvoPtr pDevEvo,
+@@ -6399,9 +6399,16 @@ static NvBool GetChannelState(NVDevEvoPtr pDevEvo,
                           NVC370_CTRL_CMD_GET_CHANNEL_INFO,
                           &info, sizeof(info));
      if (ret != NVOS_STATUS_SUCCESS) {
@@ -2546,10 +1826,10 @@ index a82a2bdf..e3826e27 100644
      }
  
 diff --git a/src/nvidia-modeset/src/nvkms-hw-flip.c b/src/nvidia-modeset/src/nvkms-hw-flip.c
-index 8163d67c..d433bf1b 100644
+index 6c301479..eaacd34d 100644
 --- a/src/nvidia-modeset/src/nvkms-hw-flip.c
 +++ b/src/nvidia-modeset/src/nvkms-hw-flip.c
-@@ -2561,6 +2561,11 @@ static void LowerDispBandwidth(void *dataPtr, NvU32 dataU32)
+@@ -2562,6 +2562,11 @@ static void LowerDispBandwidth(void *dataPtr, NvU32 dataU32)
      NvU32 head;
      NvBool ret;
  
@@ -2561,7 +1841,7 @@ index 8163d67c..d433bf1b 100644
      guaranteedAndCurrent =
          nvCalloc(1, sizeof(*guaranteedAndCurrent) * NVKMS_MAX_HEADS_PER_DISP);
      if (guaranteedAndCurrent == NULL) {
-@@ -2748,6 +2753,11 @@ TryToDoPostFlipIMP(void *dataPtr, NvU32 dataU32)
+@@ -2749,6 +2754,11 @@ TryToDoPostFlipIMP(void *dataPtr, NvU32 dataU32)
  
      pDevEvo->postFlipIMPTimer = NULL;
  
@@ -2574,10 +1854,10 @@ index 8163d67c..d433bf1b 100644
          NVEvoUpdateState updateState = { };
          NvBool update = FALSE;
 diff --git a/src/nvidia-modeset/src/nvkms-rm.c b/src/nvidia-modeset/src/nvkms-rm.c
-index 3f1297bd..d257cbfb 100644
+index d2e10816..836e9033 100644
 --- a/src/nvidia-modeset/src/nvkms-rm.c
 +++ b/src/nvidia-modeset/src/nvkms-rm.c
-@@ -2207,6 +2207,11 @@ NVDpyIdList nvRmGetConnectedDpys(const NVDispEvoRec *pDispEvo,
+@@ -2438,6 +2438,11 @@ NVDpyIdList nvRmGetConnectedDpys(const NVDispEvoRec *pDispEvo,
      NVDevEvoPtr pDevEvo = pDispEvo->pDevEvo;
      NvU32 ret;
  
@@ -2586,10 +1866,10 @@ index 3f1297bd..d257cbfb 100644
 +        return nvEmptyDpyIdList();
 +    }
 +
-     params.subDeviceInstance = pDispEvo->displayOwner;
-     params.displayMask = nvDpyIdListToNvU32(dpyIdList);
-     params.flags =
-@@ -3215,6 +3220,15 @@ NvBool nvRMSyncEvoChannel(
+     if (pDevEvo->displaylessHw) {
+         return DisplaylessRmGetConnectedDpys(pDispEvo, dpyIdList);
+     }
+@@ -3476,6 +3481,15 @@ NvBool nvRMSyncEvoChannel(
  {
      NvBool ret = TRUE;
  
@@ -2606,10 +1886,10 @@ index 3f1297bd..d257cbfb 100644
          NvU32 sd;
  
 diff --git a/src/nvidia-modeset/src/nvkms.c b/src/nvidia-modeset/src/nvkms.c
-index ddb5eb14..3613acfb 100644
+index 865fbf05..3fe3ea8b 100644
 --- a/src/nvidia-modeset/src/nvkms.c
 +++ b/src/nvidia-modeset/src/nvkms.c
-@@ -1386,6 +1386,34 @@ static NvBool AllocDevice(struct NvKmsPerOpen *pOpen,
+@@ -1380,6 +1380,34 @@ static NvBool AllocDevice(struct NvKmsPerOpen *pOpen,
  
      pDevEvo = nvFindDevEvoByDeviceId(pParams->request.deviceId);
  
@@ -2644,7 +1924,7 @@ index ddb5eb14..3613acfb 100644
      if (pDevEvo == NULL) {
          pDevEvo = nvAllocDevEvo(&pParams->request, &pParams->reply.status);
          if (pDevEvo == NULL) {
-@@ -1604,6 +1632,24 @@ static void DisableRemainingVblankSemControls(
+@@ -1588,6 +1616,24 @@ static void DisableRemainingVblankSemControls(
  static void FreeDeviceReference(struct NvKmsPerOpen *pOpen,
                                  struct NvKmsPerOpenDev *pOpenDev)
  {
@@ -2669,7 +1949,7 @@ index ddb5eb14..3613acfb 100644
      /* Disable all client-owned vblank sync objects that still exist. */
      DisableRemainingVblankSyncObjects(pOpen, pOpenDev);
  
-@@ -5260,6 +5306,31 @@ void nvRevokeDevice(NVDevEvoPtr pDevEvo)
+@@ -5229,6 +5275,31 @@ void nvRevokeDevice(NVDevEvoPtr pDevEvo)
      }
  }
  
@@ -2701,7 +1981,7 @@ index ddb5eb14..3613acfb 100644
  /*!
   * Open callback.
   *
-@@ -6248,6 +6319,40 @@ static void FreeGlobalState(void)
+@@ -6241,6 +6312,40 @@ static void FreeGlobalState(void)
      nvClearDpyOverrides();
  }
  
@@ -2742,7 +2022,7 @@ index ddb5eb14..3613acfb 100644
  /*
   * Wrappers to help SMG access NvKmsKAPI's RM context.
   */
-@@ -6343,6 +6448,11 @@ static void ConsoleRestoreTimerFired(void *dataPtr, NvU32 dataU32)
+@@ -6336,6 +6441,11 @@ static void ConsoleRestoreTimerFired(void *dataPtr, NvU32 dataU32)
  {
      NVDevEvoPtr pDevEvo = dataPtr;
  
@@ -2754,7 +2034,7 @@ index ddb5eb14..3613acfb 100644
      if (pDevEvo->modesetOwner == NULL && pDevEvo->handleConsoleHotplugs) {
          pDevEvo->skipConsoleRestore = FALSE;
          nvEvoRestoreConsole(pDevEvo, TRUE /* allowMST */);
-@@ -6836,6 +6946,43 @@ void nvKmsResume(NvU32 gpuId)
+@@ -6828,6 +6938,43 @@ void nvKmsResume(NvU32 gpuId)
      }
  }
  
@@ -2799,10 +2079,10 @@ index ddb5eb14..3613acfb 100644
      NVDevEvoPtr pDevEvo,
      NVDeferredRequestFifoRec *pDeferredRequestFifo)
 diff --git a/src/nvidia/arch/nvalloc/unix/src/osapi.c b/src/nvidia/arch/nvalloc/unix/src/osapi.c
-index f5db7a0e..1da6be2e 100644
+index 4b61bd5d..0f228e36 100644
 --- a/src/nvidia/arch/nvalloc/unix/src/osapi.c
 +++ b/src/nvidia/arch/nvalloc/unix/src/osapi.c
-@@ -308,6 +308,17 @@ void
+@@ -400,6 +400,17 @@ void
  RmLogGpuCrash(OBJGPU *pGpu)
  {
      NvBool bGpuIsLost, bGpuIsConnected;
@@ -2820,7 +2100,7 @@ index f5db7a0e..1da6be2e 100644
  
      //
      // Re-evaluate whether or not the GPU is accessible. This could be called
-@@ -4277,7 +4288,30 @@ void NV_API_CALL rm_power_source_change_event(
+@@ -4484,7 +4495,30 @@ void NV_API_CALL rm_power_source_change_event(
          OBJGPU *pGpu = gpumgrGetGpu(0);
          if (pGpu != NULL)
          {
@@ -2851,7 +2131,7 @@ index f5db7a0e..1da6be2e 100644
              if ((rmStatus = os_ref_dynamic_power(nv, NV_DYNAMIC_PM_FINE)) ==
                                                                           NV_OK)
              {
-@@ -4297,6 +4331,7 @@ void NV_API_CALL rm_power_source_change_event(
+@@ -4504,6 +4538,7 @@ void NV_API_CALL rm_power_source_change_event(
          }
      }
  
@@ -2859,7 +2139,7 @@ index f5db7a0e..1da6be2e 100644
      if (rmStatus != NV_OK)
      {
          NV_PRINTF(LEVEL_ERROR,
-@@ -5858,7 +5893,30 @@ void NV_API_CALL rm_acpi_nvpcf_notify(
+@@ -6034,7 +6069,30 @@ void NV_API_CALL rm_acpi_nvpcf_notify(
          OBJGPU *pGpu = gpumgrGetGpu(0);
          if (pGpu != NULL)
          {
@@ -2890,7 +2170,7 @@ index f5db7a0e..1da6be2e 100644
              if ((rmStatus = os_ref_dynamic_power(nv, NV_DYNAMIC_PM_FINE)) ==
                                                                           NV_OK)
              {
-@@ -5870,6 +5928,7 @@ void NV_API_CALL rm_acpi_nvpcf_notify(
+@@ -6046,6 +6104,7 @@ void NV_API_CALL rm_acpi_nvpcf_notify(
          rmapiLockRelease();
      }
  
@@ -2899,10 +2179,10 @@ index f5db7a0e..1da6be2e 100644
      NV_EXIT_RM_RUNTIME(sp,fp);
  }
 diff --git a/src/nvidia/arch/nvalloc/unix/src/osinit.c b/src/nvidia/arch/nvalloc/unix/src/osinit.c
-index 44185ad7..09e12451 100644
+index 25a7b6c3..8f50ba6a 100644
 --- a/src/nvidia/arch/nvalloc/unix/src/osinit.c
 +++ b/src/nvidia/arch/nvalloc/unix/src/osinit.c
-@@ -356,18 +356,33 @@ osHandleGpuLost
+@@ -357,12 +357,14 @@ osHandleGpuLost
      pmc_boot_0 = NV_PRIV_REG_RD32(nv->regs->map_u, NV_PMC_BOOT_0);
      if (pmc_boot_0 != nvp->pmc_boot_0)
      {
@@ -2913,17 +2193,12 @@ index 44185ad7..09e12451 100644
          // This will help to prevent accessing registers of a GPU
          // which has fallen off the bus.
          //
--        nvErrorLog_va((void *)pGpu, ROBUST_CHANNEL_GPU_HAS_FALLEN_OFF_THE_BUS,
--                      "GPU has fallen off the bus.");
-+        // For external GPUs (eGPUs), this is an expected condition during
-+        // hot-unplug, so we keep logging minimal to avoid noise.
-+        //
-+        if (!bIsExternalGpu)
-+        {
-+            nvErrorLog_va((void *)pGpu, ROBUST_CHANNEL_GPU_HAS_FALLEN_OFF_THE_BUS,
-+                          "GPU has fallen off the bus.");
-+        }
- 
+-        if (bEmitXid)
++        if (bEmitXid && !bIsExternalGpu)
+         {
+             nvErrorLog_va((void *)pGpu, ROBUST_CHANNEL_GPU_HAS_FALLEN_OFF_THE_BUS,
+                           "GPU has fallen off the bus.");
+@@ -371,7 +373,14 @@ osHandleGpuLost
          gpuNotifySubDeviceEvent(pGpu, NV2080_NOTIFIERS_GPU_UNAVAILABLE, NULL,
                                  0, ROBUST_CHANNEL_GPU_HAS_FALLEN_OFF_THE_BUS, 0);
  
@@ -2939,7 +2214,7 @@ index 44185ad7..09e12451 100644
  
          if (pGpu->boardInfo != NULL && pGpu->boardInfo->serialNumber[0] != '\0')
          {
-@@ -2479,13 +2494,28 @@ void RmShutdownAdapter(
+@@ -2492,13 +2501,28 @@ void RmShutdownAdapter(
                  if (nvp->flags & NV_INIT_FLAG_GPU_STATE_LOAD)
                  {
                      rmStatus = gpuStateUnload(pGpu, GPU_STATE_DEFAULT);
@@ -2970,7 +2245,7 @@ index 44185ad7..09e12451 100644
                  }
  
                  if (IS_DCE_CLIENT(pGpu))
-@@ -2639,7 +2669,14 @@ void RmDisableAdapter(
+@@ -2650,7 +2674,14 @@ void RmDisableAdapter(
              if (nvp->flags & NV_INIT_FLAG_GPU_STATE_LOAD)
              {
                  rmStatus = gpuStateUnload(pGpu, GPU_STATE_DEFAULT);
@@ -2987,7 +2262,7 @@ index 44185ad7..09e12451 100644
              }
  
 diff --git a/src/nvidia/src/kernel/core/thread_state.c b/src/nvidia/src/kernel/core/thread_state.c
-index 10f73e3e..e1fdabf2 100644
+index 07ec7aef..07ed1728 100644
 --- a/src/nvidia/src/kernel/core/thread_state.c
 +++ b/src/nvidia/src/kernel/core/thread_state.c
 @@ -407,7 +407,10 @@ static NV_STATUS _threadNodeCheckTimeout(OBJGPU *pGpu, THREAD_STATE_NODE *pThrea
@@ -3043,10 +2318,10 @@ index d76f255a..7d028da9 100644
          prbEncNestedStart(pPrbEnc, NVDEBUG_NVDUMP_GPU_INFO));
  
 diff --git a/src/nvidia/src/kernel/gpu/disp/kern_disp.c b/src/nvidia/src/kernel/gpu/disp/kern_disp.c
-index d061de8a..d52293b9 100644
+index 7626fd49..3bfc1194 100644
 --- a/src/nvidia/src/kernel/gpu/disp/kern_disp.c
 +++ b/src/nvidia/src/kernel/gpu/disp/kern_disp.c
-@@ -308,7 +308,7 @@ kdispDestroyCommonHandle_IMPL
+@@ -295,7 +295,7 @@ kdispDestroyCommonHandle_IMPL
      rmStatus = pRmApi->FreeWithSecInfo(pRmApi, pKernelDisplay->hInternalClient,
                                          pKernelDisplay->hDispCommonHandle,
                                          RMAPI_ALLOC_FLAGS_NONE, &pRmApi->defaultSecInfo);
@@ -3076,10 +2351,10 @@ index 8b828fc6..4cf70bef 100644
      kflcnSwitchToFalcon_HAL(pGpu, pKernelFlcn);
      kflcnRegWrite_HAL(pGpu, pKernelFlcn, NV_PFALCON_FALCON_RM,
 diff --git a/src/nvidia/src/kernel/gpu/gpu.c b/src/nvidia/src/kernel/gpu/gpu.c
-index 51a48bad..2329e5f3 100644
+index a1aca412..37aba876 100644
 --- a/src/nvidia/src/kernel/gpu/gpu.c
 +++ b/src/nvidia/src/kernel/gpu/gpu.c
-@@ -5180,6 +5180,17 @@ gpuSetDisconnectedProperties_IMPL
+@@ -5269,6 +5269,17 @@ gpuSetDisconnectedProperties_IMPL
      OBJGPU *pGpu
  )
  {
@@ -3098,10 +2373,10 @@ index 51a48bad..2329e5f3 100644
      pGpu->setProperty(pGpu, PDB_PROP_GPU_IS_CONNECTED, NV_FALSE);
      pGpu->setProperty(pGpu, PDB_PROP_GPU_IN_PM_CODEPATH, NV_FALSE);
 diff --git a/src/nvidia/src/kernel/gpu/gpu_user_shared_data.c b/src/nvidia/src/kernel/gpu/gpu_user_shared_data.c
-index e5284448..f35f81e4 100644
+index d8ac9c59..a5116b84 100644
 --- a/src/nvidia/src/kernel/gpu/gpu_user_shared_data.c
 +++ b/src/nvidia/src/kernel/gpu/gpu_user_shared_data.c
-@@ -242,12 +242,15 @@ _gpushareddataDestroyGsp
+@@ -244,12 +244,15 @@ _gpushareddataDestroyGsp
  
      params.bInit = NV_FALSE;
  
@@ -3122,8 +2397,8 @@ index e5284448..f35f81e4 100644
 +    }
  }
  
- static NV_STATUS
-@@ -460,9 +463,9 @@ _gpushareddataSendDataPollRpc
+ NV_STATUS
+@@ -501,9 +504,9 @@ _gpushareddataSendDataPollRpc
                               NV2080_CTRL_CMD_INTERNAL_USER_SHARED_DATA_SET_DATA_POLL,
                               &params, sizeof(params));
      NV_CHECK_OR_RETURN(LEVEL_ERROR,
@@ -3136,7 +2411,7 @@ index e5284448..f35f81e4 100644
      pGpu->userSharedData.lastPolledDataMask = polledDataMask;
      pGpu->userSharedData.pollingIntervalMs = pollingIntervalMs;
 diff --git a/src/nvidia/src/kernel/gpu/gr/fecs_event_list.c b/src/nvidia/src/kernel/gpu/gr/fecs_event_list.c
-index 566a656c..5aacfdca 100644
+index 0755fa37..06b1aad1 100644
 --- a/src/nvidia/src/kernel/gpu/gr/fecs_event_list.c
 +++ b/src/nvidia/src/kernel/gpu/gr/fecs_event_list.c
 @@ -1620,8 +1620,8 @@ fecsBufferDisableHw
@@ -3160,10 +2435,10 @@ index 566a656c..5aacfdca 100644
  }
  
 diff --git a/src/nvidia/src/kernel/gpu/gr/kernel_graphics.c b/src/nvidia/src/kernel/gpu/gr/kernel_graphics.c
-index ceaae2c9..81e4271a 100644
+index 18accf8c..b4097969 100644
 --- a/src/nvidia/src/kernel/gpu/gr/kernel_graphics.c
 +++ b/src/nvidia/src/kernel/gpu/gr/kernel_graphics.c
-@@ -2613,7 +2613,7 @@ void kgraphicsFreeGlobalCtxBuffers_IMPL
+@@ -2605,7 +2605,7 @@ void kgraphicsFreeGlobalCtxBuffers_IMPL
      {
          NV_STATUS status;
          status = kmemsysCacheOp_HAL(pGpu, pKernelMemorySystem, NULL, FB_CACHE_VIDEO_MEMORY, FB_CACHE_EVICT);
@@ -3173,10 +2448,10 @@ index ceaae2c9..81e4271a 100644
  }
  
 diff --git a/src/nvidia/src/kernel/gpu/gsp/arch/ampere/kernel_gsp_falcon_ga102.c b/src/nvidia/src/kernel/gpu/gsp/arch/ampere/kernel_gsp_falcon_ga102.c
-index 19d415a7..e1b8d9d0 100644
+index b03e04df..3c418928 100644
 --- a/src/nvidia/src/kernel/gpu/gsp/arch/ampere/kernel_gsp_falcon_ga102.c
 +++ b/src/nvidia/src/kernel/gpu/gsp/arch/ampere/kernel_gsp_falcon_ga102.c
-@@ -179,6 +179,10 @@ kgspExecuteHsFalcon_GA102
+@@ -197,6 +197,10 @@ kgspExecuteHsFalcon_GA102
      NvU32 data = 0;
      NvU32 dmaCmd;
  
@@ -3188,10 +2463,10 @@ index 19d415a7..e1b8d9d0 100644
      NV_ASSERT_OR_RETURN(pKernelFlcn != NULL, NV_ERR_INVALID_STATE);
  
 diff --git a/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_booter_tu102.c b/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_booter_tu102.c
-index 20f84418..d1ddf818 100644
+index 208d551c..8fca083b 100644
 --- a/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_booter_tu102.c
 +++ b/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_booter_tu102.c
-@@ -145,6 +145,10 @@ kgspExecuteBooterUnloadIfNeeded_TU102
+@@ -141,6 +141,10 @@ kgspExecuteBooterUnloadIfNeeded_TU102
      if (API_GPU_IN_RESET_SANITY_CHECK(pGpu))
          return NV_ERR_GPU_IN_FULLCHIP_RESET;
  
@@ -3202,7 +2477,7 @@ index 20f84418..d1ddf818 100644
      // skip actually executing Booter Unload if WPR2 is not up
      if (!kgspIsWpr2Up_HAL(pGpu, pKernelGsp))
      {
-@@ -155,7 +159,16 @@ kgspExecuteBooterUnloadIfNeeded_TU102
+@@ -151,7 +155,16 @@ kgspExecuteBooterUnloadIfNeeded_TU102
      NV_PRINTF(LEVEL_INFO, "executing Booter Unload\n");
      NV_ASSERT_OR_RETURN(pKernelGsp->pBooterUnloadUcode != NULL, NV_ERR_INVALID_STATE);
  
@@ -3221,10 +2496,10 @@ index 20f84418..d1ddf818 100644
      // SR code
      if (sysmemAddrOfSuspendResumeData != 0)
 diff --git a/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_tu102.c b/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_tu102.c
-index 71d1de4e..fccfae7d 100644
+index 17b3a189..4d231560 100644
 --- a/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_tu102.c
 +++ b/src/nvidia/src/kernel/gpu/gsp/arch/turing/kernel_gsp_tu102.c
-@@ -636,7 +636,18 @@ kgspTeardown_TU102
+@@ -633,7 +633,18 @@ kgspTeardown_TU102
  
          // Reset GSP so we can load FWSEC-SB
          status = kflcnReset_HAL(pGpu, staticCast(pKernelGsp, KernelFalcon));
@@ -3244,7 +2519,7 @@ index 71d1de4e..fccfae7d 100644
  
          // Invoke FWSEC-SB to put back PreOsApps during driver unload
          status = kgspPrepareForFwsecSb_HAL(pGpu, pKernelGsp, pKernelGsp->pFwsecUcode, &preparedCmd);
-@@ -648,7 +659,7 @@ kgspTeardown_TU102
+@@ -645,7 +656,7 @@ kgspTeardown_TU102
          else
          {
              status = kgspExecuteFwsec_HAL(pGpu, pKernelGsp, &preparedCmd);
@@ -3253,7 +2528,7 @@ index 71d1de4e..fccfae7d 100644
              {
                  NV_PRINTF(LEVEL_ERROR, "failed to execute FWSEC-SB for PreOsApps during driver unload: 0x%x\n", status);
                  NV_ASSERT_FAILED("FWSEC-SB failed");
-@@ -656,6 +667,8 @@ kgspTeardown_TU102
+@@ -653,6 +664,8 @@ kgspTeardown_TU102
          }
      }
  
@@ -3263,10 +2538,10 @@ index 71d1de4e..fccfae7d 100644
      status = kgspExecuteBooterUnloadIfNeeded_HAL(pGpu, pKernelGsp,
                                                   _kgspGetBooterUnloadArgs(pKernelGsp, unloadMode));
 diff --git a/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c b/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c
-index be52b513..fc337d44 100644
+index 2f60474f..4703054e 100644
 --- a/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c
 +++ b/src/nvidia/src/kernel/gpu/gsp/kernel_gsp.c
-@@ -149,6 +149,8 @@ static NV_STATUS _kgspRpcRecvPoll(OBJGPU *, OBJRPC *, NvU32, NvU32);
+@@ -154,6 +154,8 @@ static NV_STATUS _kgspRpcRecvPoll(OBJGPU *, OBJRPC *, NvU32, NvU32);
  static NV_STATUS _kgspRpcDrainEvents(OBJGPU *, KernelGsp *, NvU32, NvU32, KernelGspRpcEventHandlerContext);
  static void      _kgspRpcIncrementTimeoutCountAndRateLimitPrints(OBJGPU *, OBJRPC *);
  
@@ -3275,7 +2550,7 @@ index be52b513..fc337d44 100644
  static NV_STATUS _kgspAllocSimAccessBuffer(OBJGPU *pGpu, KernelGsp *pKernelGsp);
  static void _kgspFreeSimAccessBuffer(OBJGPU *pGpu, KernelGsp *pKernelGsp);
  
-@@ -306,11 +308,13 @@ _kgspRpcSanityCheck(OBJGPU *pGpu, KernelGsp *pKernelGsp, OBJRPC *pRpc)
+@@ -313,11 +315,13 @@ _kgspRpcSanityCheck(OBJGPU *pGpu, KernelGsp *pKernelGsp, OBJRPC *pRpc)
          pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_LOST))
      {
          NV_PRINTF(LEVEL_INFO, "GPU lost, skipping RPC\n");
@@ -3289,7 +2564,7 @@ index be52b513..fc337d44 100644
          return NV_ERR_GPU_IS_LOST;
      }
      if (!gpuIsGpuFullPowerForPmResume(pGpu))
-@@ -2029,6 +2033,20 @@ kgspLogRpcDebugInfoToProtobuf
+@@ -2102,6 +2106,20 @@ kgspLogRpcDebugInfoToProtobuf
      prbEncNestedEnd(pProtobufData);
  }
  
@@ -3310,7 +2585,7 @@ index be52b513..fc337d44 100644
  void
  kgspLogRpcDebugInfo
  (
-@@ -2044,6 +2062,15 @@ kgspLogRpcDebugInfo
+@@ -2117,6 +2135,15 @@ kgspLogRpcDebugInfo
      NvU64  activeData[2];
      const NvU32 rpcEntriesToLog = (RPC_HISTORY_DEPTH > 8) ? 8 : RPC_HISTORY_DEPTH;
  
@@ -3326,7 +2601,7 @@ index be52b513..fc337d44 100644
      _kgspGetActiveRpcDebugData(pRpc, pMsgHdr->function,
                                 &activeData[0], &activeData[1]);
      NV_ERROR_LOG_DATA(pGpu, errorNum,
-@@ -2096,6 +2123,15 @@ _kgspCheckSlowRpc
+@@ -2200,6 +2227,15 @@ _kgspCheckSlowRpc
  
      NV_ASSERT_OR_RETURN_VOID(tsFreqUs > 0);
  
@@ -3342,12 +2617,10 @@ index be52b513..fc337d44 100644
      duration = (pHistoryEntry->ts_end - pHistoryEntry->ts_start) / tsFreqUs;
  
      if (duration > SLOW_RPC_THRESHOLD_US)
-@@ -2145,7 +2181,15 @@ _kgspLogXid119
-     KernelGsp *pKernelGsp = GPU_GET_KERNEL_GSP(pGpu);
+@@ -2366,6 +2402,14 @@ _kgspLogRpcTimeout
      KernelFalcon *pKernelFlcn = staticCast(pKernelGsp, KernelFalcon);
+     NvBool bFullReport = bIsFatalTimeout || pRpc->timeoutCount == 1;
  
--    if (pRpc->timeoutCount == 1)
-+    //
 +    // Suppress Xid 119 logging for expected external GPU surprise removal.
 +    // During normal Thunderbolt eGPU hot-unplug, RPC timeouts are expected.
 +    //
@@ -3356,14 +2629,14 @@ index be52b513..fc337d44 100644
 +        return;
 +    }
 +
-     {
-         NV_PRINTF(LEVEL_ERROR,
-                   "********************************* GSP Timeout **********************************\n");
+     // Report any GSP-FMC errors if needed
+     kgspFmcReportErrorCode_HAL(pGpu, pKernelGsp);
+ 
 diff --git a/src/nvidia/src/kernel/gpu/intr/intr.c b/src/nvidia/src/kernel/gpu/intr/intr.c
-index 86e19918..c7a2f89b 100644
+index 6132ff35..a2ea4554 100644
 --- a/src/nvidia/src/kernel/gpu/intr/intr.c
 +++ b/src/nvidia/src/kernel/gpu/intr/intr.c
-@@ -119,6 +119,18 @@ intrServiceStall_IMPL(OBJGPU *pGpu, Intr *pIntr)
+@@ -122,6 +122,18 @@ intrServiceStall_IMPL(OBJGPU *pGpu, Intr *pIntr)
  
      if (!RMCFG_FEATURE_PLATFORM_GSP)
      {
@@ -3382,7 +2655,7 @@ index 86e19918..c7a2f89b 100644
          //
          // If the GPU is off the BUS or surprise removed during servicing DPC for ISRs
          // we wont know about GPU state until after we start processing DPCs for every
-@@ -134,18 +146,17 @@ intrServiceStall_IMPL(OBJGPU *pGpu, Intr *pIntr)
+@@ -137,18 +149,17 @@ intrServiceStall_IMPL(OBJGPU *pGpu, Intr *pIntr)
  
          if (regReadValue == GPU_REG_VALUE_INVALID)
          {
@@ -3412,7 +2685,7 @@ index 86e19918..c7a2f89b 100644
              goto exit;
          }
      }
-@@ -1555,6 +1566,18 @@ _intrServiceStallCommonCheckBegin
+@@ -1570,6 +1581,18 @@ _intrServiceStallCommonCheckBegin
  
      if (!RMCFG_FEATURE_PLATFORM_GSP)
      {
@@ -3431,7 +2704,7 @@ index 86e19918..c7a2f89b 100644
          //
          // If the GPU is off the BUS or surprise removed during servicing DPC for ISRs
          // we wont know about GPU state until after we start processing DPCs for every
-@@ -1570,14 +1593,17 @@ _intrServiceStallCommonCheckBegin
+@@ -1585,14 +1608,17 @@ _intrServiceStallCommonCheckBegin
  
          if (regReadValue == GPU_REG_VALUE_INVALID)
          {
@@ -3457,7 +2730,7 @@ index 86e19918..c7a2f89b 100644
              return NV_ERR_GPU_IS_LOST;
          }
      }
-@@ -1635,7 +1661,16 @@ intrServiceStallList_IMPL
+@@ -1650,7 +1676,16 @@ intrServiceStallList_IMPL
      NvBool              bPending;
      CALL_CONTEXT       *pOldContext = NULL;
  
@@ -3475,7 +2748,7 @@ index 86e19918..c7a2f89b 100644
  
      do
      {
-@@ -1688,7 +1723,16 @@ intrServiceStallSingle_IMPL
+@@ -1703,7 +1738,16 @@ intrServiceStallSingle_IMPL
      bitVectorClrAll(&engines);
      bitVectorSet(&engines, engIdx);
  
@@ -3494,10 +2767,10 @@ index 86e19918..c7a2f89b 100644
      do
      {
 diff --git a/src/nvidia/src/kernel/gpu/mem_mgr/ce_utils.c b/src/nvidia/src/kernel/gpu/mem_mgr/ce_utils.c
-index 6f25f6bf..20a8d62f 100644
+index a3902c5b..0e7f4edb 100644
 --- a/src/nvidia/src/kernel/gpu/mem_mgr/ce_utils.c
 +++ b/src/nvidia/src/kernel/gpu/mem_mgr/ce_utils.c
-@@ -343,10 +343,17 @@ ceutilsDestruct_IMPL
+@@ -344,10 +344,17 @@ ceutilsDestruct_IMPL
      // process all callbacks while CeUtils is fully functional
      _ceutilsProcessCompletionCallbacks(pCeUtils);
      portSyncSpinlockAcquire(pCeUtils->pCallbackLock);
@@ -3531,7 +2804,7 @@ index 86b62f1b..32c96523 100644
  
      NV_PRINTF(LEVEL_INFO,
 diff --git a/src/nvidia/src/kernel/mem_mgr/mem.c b/src/nvidia/src/kernel/mem_mgr/mem.c
-index 706faa90..e0dc4801 100644
+index 9bfe6250..5db10366 100644
 --- a/src/nvidia/src/kernel/mem_mgr/mem.c
 +++ b/src/nvidia/src/kernel/mem_mgr/mem.c
 @@ -175,7 +175,7 @@ memDestruct_IMPL
@@ -3544,7 +2817,7 @@ index 706faa90..e0dc4801 100644
  }
  
 diff --git a/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c b/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c
-index 6a155fd5..23a594b9 100644
+index 2e2fbd54..2c2af3e5 100644
 --- a/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c
 +++ b/src/nvidia/src/kernel/rmapi/nv_gpu_ops.c
 @@ -809,10 +809,19 @@ NV_STATUS nvGpuOpsDestroySession(struct gpuSession *session)
@@ -3572,10 +2845,10 @@ index 6a155fd5..23a594b9 100644
      // freeing session will free everything under it
      pRmApi->Free(pRmApi, session->handle, session->handle);
 diff --git a/src/nvidia/src/kernel/vgpu/rpc.c b/src/nvidia/src/kernel/vgpu/rpc.c
-index 35673a0e..3ca3ab71 100644
+index 77954e1b..16cc0cf6 100644
 --- a/src/nvidia/src/kernel/vgpu/rpc.c
 +++ b/src/nvidia/src/kernel/vgpu/rpc.c
-@@ -1872,6 +1872,16 @@ static NV_STATUS _issueRpcAndWait(OBJGPU *pGpu, OBJRPC *pRpc)
+@@ -1883,6 +1883,16 @@ static NV_STATUS _issueRpcAndWait(OBJGPU *pGpu, OBJRPC *pRpc)
      NvU32 expectedFunc = vgpu_rpc_message_header_v->function;
      NvU32 expectedSequence = 0;
  
@@ -3593,7 +2866,7 @@ index 35673a0e..3ca3ab71 100644
      if (status != NV_OK)
      {
 diff --git a/src/nvidia/src/libraries/resserv/src/rs_client.c b/src/nvidia/src/libraries/resserv/src/rs_client.c
-index 62d9738e..f18afa0d 100644
+index 0fa885c9..8a475c9b 100644
 --- a/src/nvidia/src/libraries/resserv/src/rs_client.c
 +++ b/src/nvidia/src/libraries/resserv/src/rs_client.c
 @@ -841,7 +841,7 @@ clientFreeResource_IMPL
@@ -3606,7 +2879,7 @@ index 62d9738e..f18afa0d 100644
      // NV_PRINTF(LEVEL_INFO, "hClient %x: Freeing hResource: %x\n",
      //          pClient->hClient, pResourceRef->hResource);
 diff --git a/src/nvidia/src/libraries/resserv/src/rs_server.c b/src/nvidia/src/libraries/resserv/src/rs_server.c
-index fee31554..fbd3d0bb 100644
+index b0f56fd4..472bf232 100644
 --- a/src/nvidia/src/libraries/resserv/src/rs_server.c
 +++ b/src/nvidia/src/libraries/resserv/src/rs_server.c
 @@ -256,7 +256,7 @@ NV_STATUS serverFreeResourceTreeUnderLock(RsServer *pServer, RS_RES_FREE_PARAMS
