@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Hermes
+Comment=Native speech-to-text desktop app
+Exec=hermes-desktop
+Icon=hermes
+Terminal=false
+Categories=Utility;AudioVideo;Productivity;
