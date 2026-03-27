@@ -2,7 +2,7 @@
 
 _pkgname=promrail
 pkgname="${_pkgname}"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Git-native GitOps promotion tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
