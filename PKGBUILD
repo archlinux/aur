@@ -1,8 +1,8 @@
 # Maintainer: lucial <bordiyan20035@gmail.com>
 pkgname=imagefinish
-pkgver=1.1.2
-pkgrel=6
-pkgdesc="Image Finish - A PyQt6 image editor inspired by Photoshop"
+pkgver=v1.2.1
+pkgrel=1
+pkgdesc="A PyQt6 image editor inspired by Photoshop"
 arch=('any')
 url="https://github.com/7Lucia7Lokidottir7/Linux-Photoshop"
 license=('MIT')
@@ -24,10 +24,10 @@ package() {
     cd "$srcdir/$pkgname"
 
     # Файлы приложения
-    # Файлы приложения
     install -dm755 "$pkgdir/usr/share/$pkgname"
     cp -r core locales tools ui utils brushes shapes \
         "$pkgdir/usr/share/$pkgname/"
+    # fonts и patterns пустые — создаём директории для пользовательского контента
     install -dm755 "$pkgdir/usr/share/$pkgname/fonts"
     install -dm755 "$pkgdir/usr/share/$pkgname/patterns"
     install -m644 main.py         "$pkgdir/usr/share/$pkgname/"
