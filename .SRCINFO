@@ -1,6 +1,6 @@
 pkgbase = pane-fm-git
 	pkgdesc = A themeable file manager built with Tauri and Svelte
-	pkgver = 0.1.4.r1.g179aab9
+	pkgver = 0.1.4.r2.g9218ce9
 	pkgrel = 1
 	url = https://github.com/jakeb-grant/pane-fm
 	arch = x86_64
