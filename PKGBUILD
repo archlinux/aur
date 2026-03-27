@@ -1,6 +1,6 @@
 # Maintainer: Insidious Fiddler <aur[at]codycody31[dot]dev>
 pkgname=dyad-bin
-pkgver=0.40.0
+pkgver=0.41.0
 pkgrel=1
 pkgdesc="Free, local, open-source AI app builder"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('gtk3' 'libsecret' 'webkit2gtk' 'xdg-utils' 'hicolor-icon-theme')
 makedepends=('libarchive')
 optdepends=('desktop-file-utils: for updating desktop database')
 source=("https://github.com/dyad-sh/dyad/releases/download/v${pkgver}/dyad_${pkgver}_amd64.deb")
-sha256sums=('da73cb4bde8031c777f1d6002dc27343d0651b8dda30b7d6fb52795c56b13e40')
+sha256sums=('017b34a2d1264ee3497db69fb130da180ff220aae7a87a2e5dd5026fadc0bfaf')
 
 # ci/cd flag: gh repo for auto updates
 _ghrepo="dyad-sh/dyad"
