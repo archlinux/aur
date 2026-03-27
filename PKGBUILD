@@ -1,6 +1,6 @@
 # Maintainer: croaky-fx <217624563+croaky-fx@users.noreply.github.com>
 pkgname=oxiclean
-pkgver=1.0.0
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Fast Cross-Distribution Linux System Cleaner written in Rust"
 arch=('x86_64')
