@@ -4,8 +4,8 @@
 _dotnet_sdk_version=10.0
 _dotnet_runtime_version=$_dotnet_sdk_version
 pkgname=roslyn-ls
-pkgver=2.120.3
-pkgrel=2
+pkgver=2.130.5
+pkgrel=1
 pkgdesc="Language server behind C# Dev Kit for Visual Studio Code"
 arch=(x86_64)
 url=https://github.com/dotnet/roslyn/tree/main/src/LanguageServer
@@ -19,7 +19,7 @@ source=("roslyn-VSCode-CSharp-$pkgver.tar.gz::https://github.com/dotnet/roslyn/a
         # We move it to ${XDG_CACHE_HOME:-$HOME/.cache}/Microsoft/CodeAnalysis/LanguageServer.
         # See also: https://github.com/dotnet/roslyn/issues/76892
         "0001-move-cache-directory.diff")
-sha256sums=('094632a98fe9a1464238120b43ff6777b2da340b2859454f448cfdf1e89e3a71'
+sha256sums=('938264f7913a2da256665a808499192ec8fbce69fa53828b3985fe39be45ad59'
             '66ef609bcee14f41754820a9dd4aeda578c338867e93da04ce15b48f9f93026b'
             '39817ac608d5eb5d36ab350faa00afde8fdd89e0e6f229a48bfa6374736a4217')
 
@@ -58,8 +58,8 @@ package() {
     cd "$srcdir/roslyn-VSCode-CSharp-$pkgver"
     cp -a --no-preserve=ownership \
         "artifacts/LanguageServer/Release/net$_dotnet_runtime_version/$_rid" \
-        "$pkgdir/usr/lib/$pkgname"
-    ln -srf "$pkgdir/usr/lib/$pkgname/Microsoft.CodeAnalysis.LanguageServer" \
+        "$pkgdir/usr/lib/Microsoft.CodeAnalysis.LanguageServer"
+    ln -srf "$pkgdir/usr/lib/Microsoft.CodeAnalysis.LanguageServer/Microsoft.CodeAnalysis.LanguageServer" \
             "$pkgdir/usr/bin/Microsoft.CodeAnalysis.LanguageServer"
     install -Dm644 License.txt "$pkgdir/usr/share/licenses/$pkgname/Licenses.txt"
 }
