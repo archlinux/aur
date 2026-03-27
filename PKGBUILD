@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="sqlite-web"
-pkgver=0.6.3
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Web-based SQLite database browser"
 url="https://github.com/coleifer/sqlite-web"
@@ -16,8 +16,8 @@ makedepends=("python-build"
              "python-installer"
              "python-wheel"
              "python-setuptools")
-source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('bf7185a555b14444844f9031a88aa23271beebd27dfd7787b38fcd32e9e2a8c8aa76170f07d263e95cb7c4b1e857be7bea00c1d55b2f21b5e594ed5a14cdd6f0')
+source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('1ba0370fc599701f4c02318be4e390b16b003f5bfc454f33fbcc82f469ffe456')
 
 build(){
  cd "$pkgname-$pkgver"
