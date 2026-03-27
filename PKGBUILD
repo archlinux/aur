@@ -19,7 +19,7 @@ depends=(
 source_x86_64=(
   "hermes-desktop-linux-x86_64-${pkgver}.tar.gz::https://github.com/adityamiskin/hermes/releases/download/v${pkgver}/hermes-desktop-linux-x86_64.tar.gz"
 )
-sha256sums_x86_64=('0c04a0b3a8d7c36a8adf656f367871bae0ea027f378ead53070ef657bcbff57d')
+sha256sums_x86_64=('cd5c76a25bfffc606c5550dd7d12778ed8d056e748c7c09f3823da69499a04b3')
 
 package() {
   install -d "${pkgdir}/usr"
