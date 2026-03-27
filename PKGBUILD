@@ -6,7 +6,7 @@ pkgver=14.0.3_20251201
 _launcherver=${pkgver%_*}
 _timestamp=${pkgver#*_}
 
-pkgrel=1
+pkgrel=2
 pkgdesc="An archive for games and animations from the web."
 arch=('x86_64')
 url="https://flashpointarchive.org/"
