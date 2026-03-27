@@ -11,10 +11,14 @@ post_install() {
   systemctl enable --now com.vintagetechie.PowerCurve.service
 
   echo ""
-  echo "powercurve is running. to enable desktop notifications for"
-  echo "thermal events and fan stalls, run as your regular user:"
+  echo "powercurve is running. optional user services:"
   echo ""
-  echo "  systemctl --user enable --now powercurve-monitor.service"
+  echo "  desktop notifications for thermal events and fan stalls:"
+  echo "    systemctl --user enable --now powercurve-monitor.service"
+  echo ""
+  echo "  auto-switch profiles based on running processes:"
+  echo "    systemctl --user enable --now powercurve-watcher.service"
+  echo "    (configure at ~/.config/powercurve/watcher.toml)"
   echo ""
 }
 
