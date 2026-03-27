@@ -1,6 +1,6 @@
 pkgbase = penpot
 	pkgdesc = The open-source design tool for design and code collaboration
-	pkgver = 2.13.3
+	pkgver = 2.14.0
 	pkgrel = 1
 	url = https://penpot.app
 	arch = x86_64
@@ -9,38 +9,40 @@ pkgbase = penpot
 	makedepends = git
 	makedepends = curl
 	makedepends = npm
-	makedepends = yarn
+	makedepends = pnpm
 	makedepends = rsync
 	makedepends = babashka
 	makedepends = rustup
 	makedepends = emscripten
 	makedepends = emsdk
 	makedepends = jq
-	makedepends = java-environment>=25
-	makedepends = java-environment<=25
-	noextract = penpot-2.13.3.tgz
-	source = https://github.com/penpot/penpot/archive/refs/tags/2.13.3.tar.gz
+	makedepends = java-environment>=26
+	makedepends = java-environment<=26
+	noextract = penpot-2.14.0.tgz
+	source = https://github.com/penpot/penpot/archive/refs/tags/2.14.0.tar.gz
 	source = sysusers.conf
 	source = penpot.conf.d
 	source = penpot-exporter.conf.d
 	source = penpot.service
 	source = penpot-exporter.service
+	source = penpot-mcp.service
 	source = penpot.tmpfiles.d
 	source = penpot-update-flags.sh
 	source = nginx.conf
-	sha256sums = afc6909da7a12f4467abf9e6ebc66f5e7315a68800f80a0d537547e4a5efc007
+	sha256sums = 4caf66ca434b5e59fad022fef45c9fe26614e6a8785409c7ad5e110ff2718ac5
 	sha256sums = 4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c
 	sha256sums = bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523
 	sha256sums = 828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb
 	sha256sums = a95f1029cec7cf408cf19cb97cf235c48f671aa93424c138759ee77e239d1c6a
 	sha256sums = d386ff5cd3e614526ab400c218402f46025ad7db26a963d2f08220e79723c170
+	sha256sums = 2543f8a61141295eae21ba7872c80a31845fcad037b3b44cef273a40cdfb02a8
 	sha256sums = f3208349de006fc26119cd9b034958bbfa3c161bfb76a752d43d5b563df6e33d
 	sha256sums = b759994786bcbba553ba50837c8f222760b344319e81655f32ea6e68097ec02a
 	sha256sums = 29f5cde4d5ba6d73b14d6fd88a0be930c6bcf5eff3512332cba50a30316c6621
 
 pkgname = penpot
-	depends = java-environment>=25
-	depends = java-environment<=25
+	depends = java-environment>=26
+	depends = java-environment<=26
 	depends = nodejs
 	depends = redis
 	depends = postgresql
@@ -79,3 +81,6 @@ pkgname = penpot-exporter
 	backup = etc/conf.d/penpot-exporter
 
 pkgname = penpot-frontend
+
+pkgname = penpot-mcp
+	depends = nodejs

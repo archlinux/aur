@@ -1,8 +1,8 @@
 # Maintainer: Georg Nagel <g.schlmm at gmail dot com>
 
 _pkgbase=penpot
-pkgname=(penpot penpot-exporter penpot-frontend)
-pkgver=2.13.3
+pkgname=(penpot penpot-exporter penpot-frontend penpot-mcp)
+pkgver=2.14.0
 pkgrel=1
 pkgdesc="The open-source design tool for design and code collaboration "
 arch=('x86_64')
@@ -10,8 +10,8 @@ url="https://penpot.app"
 license=('MPL-2.0')
 # penpot is using 19, but archlinux only has 17 and 21. 17 and > 21 doesnt work
 # also jdk is needed and not only jre
-_jdkver="25"
-makedepends=('clojure' 'git' 'curl' 'npm' 'yarn' 'rsync' 'babashka' 'rustup' 'emscripten' 'emsdk' 'jq' "java-environment>=${_jdkver}" "java-environment<=${_jdkver}")
+_jdkver="26"
+makedepends=('clojure' 'git' 'curl' 'npm' 'pnpm' 'rsync' 'babashka' 'rustup' 'emscripten' 'emsdk' 'jq' "java-environment>=${_jdkver}" "java-environment<=${_jdkver}")
 source=(
   https://github.com/penpot/penpot/archive/refs/tags/$pkgver.tar.gz
   sysusers.conf
@@ -19,43 +19,24 @@ source=(
   penpot-exporter.conf.d
   penpot.service
   penpot-exporter.service
+  penpot-mcp.service
   penpot.tmpfiles.d
   penpot-update-flags.sh
   nginx.conf
 )
 noextract=($pkgname-$pkgver.tgz)
 sha256sums=(
-  'afc6909da7a12f4467abf9e6ebc66f5e7315a68800f80a0d537547e4a5efc007'
+  '4caf66ca434b5e59fad022fef45c9fe26614e6a8785409c7ad5e110ff2718ac5'
   '4b82b8a79d8a143fd8a6e4473447f8946c095e2617ba5fcba4cb5b1fdd840c2c'
   'bc133ba7409921978655c488293ef83f77250fd65cb7d574c3cba9f34ff42523'
   '828087c8fab14fb481b4bd01d92f47e9ecc9c07551a7a873bcfbafd1e3644afb'
   'a95f1029cec7cf408cf19cb97cf235c48f671aa93424c138759ee77e239d1c6a'
   'd386ff5cd3e614526ab400c218402f46025ad7db26a963d2f08220e79723c170'
+  '2543f8a61141295eae21ba7872c80a31845fcad037b3b44cef273a40cdfb02a8'
   'f3208349de006fc26119cd9b034958bbfa3c161bfb76a752d43d5b563df6e33d'
   'b759994786bcbba553ba50837c8f222760b344319e81655f32ea6e68097ec02a'
   '29f5cde4d5ba6d73b14d6fd88a0be930c6bcf5eff3512332cba50a30316c6621'
 )
-
-_install-yarn-berry() {
-  cwd=$(pwd)
-  yarntmp=$(mktemp -d)
-  yarn_version=$(test -e package.json && jq -r .packageManager package.json | cut -d @ -f 2 | cut -d + -f 1)
-  pushd $yarntmp
-  yarn set version ${yarn_version:-stable}
-  mkdir -p $cwd/.yarn/cache
-  cp -r .yarn/releases $cwd/.yarn
-  if [ -e $cwd/.yarnrc.yml ]; then
-    sed -i '/^yarnPath/d' $cwd/.yarnrc.yml
-    sed -i '/^cacheFolder/d' $cwd/.yarnrc.yml
-    sed -i '/^enableGlobalCache/d' $cwd/.yarnrc.yml
-  fi
-  cat .yarnrc.yml >>$cwd/.yarnrc.yml
-  echo "cacheFolder: $cwd/.yarn/cache" >>$cwd/.yarnrc.yml
-  echo "enableGlobalCache: false" >>$cwd/.yarnrc.yml
-  popd
-  mkdir -p $cwd/.yarn/cache
-  rm -r $yarntmp
-}
 
 build() {
   export RUSTUP_HOME=${srcdir}/.rustup
@@ -64,13 +45,23 @@ build() {
   export JAVA_HOME=/usr/lib/jvm/$(archlinux-java status | grep -o "[^ ]*-$_jdkver-[^ ]*" | head -n 1 | tr -d '[:space:]')/
   export PATH="$JAVA_HOME/bin/:$PATH"
 
+  echo "==== BUILDING MCP SERVER"
+  cd "${srcdir}/${_pkgbase}-${pkgver}/mcp/packages/server"
+  pnpm --config.node-linker=hoisted install
+  rm -rf node_modules dist/node_modules
+  pnpm build
+  cp -r ../../node_modules package.json dist
+  sed -i 's#"main": "dist/index.js"#"main": "./index.js"#' dist/package.json
+  cd dist
+  sed -i 's~process.cwd()~import.meta.dirname~g' index.js
+  sed -i 's~process.argv\[1\].endsWith("index.js")~process.argv[1].endsWith("index.js") || process.argv[1].includes("/bin/penpot-mcp")~' index.js
+
   echo "==== BULDING FRONTEND"
   cd "${srcdir}/${_pkgbase}-${pkgver}/frontend"
-  _install-yarn-berry
   sed -i '/^corepack/d' ./scripts/build
+  sed -i '/^corepack/d' ../mcp/scripts/setup
 
   pushd ../render-wasm
-  _install-yarn-berry
   sed -i '/corepack/d' ./_build_env
   sed -i 's#/opt/emsdk/emsdk_env.sh#/usr/lib/emsdk/emsdk_env.sh#' ./build
   popd
@@ -85,20 +76,21 @@ build() {
 
   echo "==== BUILDING EXPORTER"
   cd "${srcdir}/${_pkgbase}-${pkgver}/exporter"
-  _install-yarn-berry
   # patch playwright to use chromium from archlinux
   # so we don't have to install the playwright binaries
   sed -i 's|:args #js|:executablePath "/usr/bin/chromium", :args #js|' src/app/browser.cljs
   sed -i 's#^{#{\n  "bin": "./app.js",#' package.json
   sed -i '/^corepack/d' ./scripts/build
+  sed -i 's/pnpm install/pnpm --config.node-linker=hoisted install/g' ./scripts/build
+  sed -i '/install chromium/d' ./scripts/build
   ./scripts/build "${pkgver}"
   cd target
   sed -i 's#"name": "exporter",#"name": "penpot-exporter",#' package.json
-  tar cvf penpot-exporter.tgz .
+  mv ../node_modules .
+  rm -f node_modules/.pnpm-workspace*
 
   echo "==== BUILDING BACKEND"
   cd "${srcdir}/${_pkgbase}-${pkgver}/backend"
-  _install-yarn-berry
   ./scripts/build "${pkgver}"
   sed -i "2 i JAVA_HOME='$JAVA_HOME'" target/dist/run.sh
   sed -i s#penpot.jar#/usr/share/java/penpot/backend.jar# target/dist/run.sh
@@ -107,7 +99,8 @@ build() {
 package_penpot-frontend() {
   install -dm 755 "${pkgdir}/usr/share/webapps/penpot"
   install -Dm755 penpot-update-flags.sh "${pkgdir}/usr/bin/penpot-update-flags.sh"
-  cp -r "${srcdir}/${_pkgbase}-${pkgver}/frontend/target/dist/"* \
+  cp --no-preserve=ownership -r \
+    "${srcdir}/${_pkgbase}-${pkgver}/frontend/target/dist/"* \
     "${pkgdir}/usr/share/webapps/penpot/"
 }
 
@@ -170,10 +163,30 @@ package_penpot-exporter() {
     "chromium"
   )
 
-  npm install -g \
-    --cache "${srcdir}/.npm-cache" \
-    --prefix "${pkgdir}/usr" \
-    "${srcdir}/${_pkgbase}-${pkgver}/exporter/target/penpot-exporter.tgz"
+  install -dm 755 "${pkgdir}/usr/lib/node_modules/penpot-exporter"
+  install -dm 755 "${pkgdir}/usr/bin"
+  cp --no-preserve=ownership -r \
+    "${srcdir}/${_pkgbase}-${pkgver}/exporter/target/." \
+    "${pkgdir}/usr/lib/node_modules/penpot-exporter"
+  pushd "${pkgdir}/usr/bin"
+  ln -s ../lib/node_modules/penpot-exporter/app.js penpot-exporter
+  popd
   install -Dm644 penpot-exporter.service "${pkgdir}/usr/lib/systemd/system/penpot-exporter.service"
   install -Dm644 penpot-exporter.conf.d "${pkgdir}/etc/conf.d/penpot-exporter"
+}
+
+package_penpot-mcp() {
+  depends=(
+    'nodejs'
+  )
+
+  install -dm 755 "${pkgdir}/usr/lib/node_modules/penpot-mcp"
+  install -dm 755 "${pkgdir}/usr/bin"
+  cp --no-preserve=ownership -r \
+    "${srcdir}/${_pkgbase}-${pkgver}/mcp/packages/server/dist/." \
+    "${pkgdir}/usr/lib/node_modules/penpot-mcp/"
+  pushd "${pkgdir}/usr/bin"
+  ln -s ../lib/node_modules/penpot-mcp/index.js penpot-mcp
+  popd
+  install -Dm644 penpot-mcp.service "${pkgdir}/usr/lib/systemd/system/penpot-mcp.service"
 }
