@@ -1,0 +1,13 @@
+post_install() {
+  echo "	==> Open WebUI OpenRC service installed"
+  echo "	==> Add it to startup with: rc-update add open-webui default"
+  echo "	==> Start it now with:      rc-service open-webui start"
+}
+
+post_upgrade() {
+  post_install "$1"
+}
+
+pre_remove() {
+  echo "	==> If enabled, remove it from startup with: rc-update del open-webui default"
+}

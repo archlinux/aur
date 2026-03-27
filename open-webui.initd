@@ -1,0 +1,23 @@
+#!/usr/bin/openrc-run
+
+name=$RC_SVCNAME
+description="User-friendly AI Interface"
+
+supervisor="supervise-daemon"
+pidfile="/run/open-webui/open-webui.pid"
+
+command="/usr/bin/bash"
+command_args='-c "set -a; . /etc/open-webui.conf; set +a; export PYTHONUNBUFFERED=1; cd /opt/open-webui/backend && . ./venv/bin/activate && exec bash ./start.sh"'
+command_user="open-webui:open-webui"
+
+output_log="/var/log/open-webui/open-webui.log"
+error_log="/var/log/open-webui/open-webui.log"
+
+start_pre() {
+    checkpath --directory --owner open-webui:open-webui --mode 0755 /run/open-webui
+    checkpath --directory --owner open-webui:open-webui --mode 0755 /var/log/open-webui
+}
+
+depend() {
+    need net
+}
