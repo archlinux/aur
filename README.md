@@ -2,7 +2,7 @@
 [![Release](https://img.shields.io/github/v/release/creptic/qbtctl)](https://github.com/creptic/qbtctl/releases)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/paypalme/crepticdev)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-
+[![AUR Version](https://img.shields.io/aur/version/qbtctl?label=AUR)](https://aur.archlinux.org/packages/qbtctl)
 ---
 
 **qbittorrent torrent control** is a minimal, ultra-fast command-line interface for controlling a torrent in qBittorrent via its Web API.
@@ -26,17 +26,9 @@ wget https://github.com/creptic/qbtctl/releases/latest/download/qbtctl
 chmod +x qbtctl
 ```
 https://github.com/creptic/qbtctl/releases/latest/download/qbtctl
+
 Install from [AUR](https://aur.archlinux.org/packages/qbtctl/) with: ``yay -S qbtctl``
 
-## Example 
-
-Pause all torrents, set sequential download to 1 (ON), and ratio to 2.0 
-```bash
-qbtctl=/path/qbtctl
-for h in $(qbtctl -ghl); do
-    qbtctl -h $h --pause --set-seqdl 1 -srl 2.0
-done
-```
 ---
 
 ## 💡 **Quick Reference**
@@ -79,7 +71,6 @@ cd qbtctl
 make
 ./qbtctl --setup
 ```
-
 ---
 
 # Authentication Setup
@@ -96,16 +87,12 @@ Auth file search order:
 1. `~/.qbtctl/auth.txt`
 2. `./auth.txt` (inside the qbtctl directory)
 3. Custom path using `-c <path>` (overrride)
----
-
-# Interactive Setup
 
 Run:
 
 ```bash
 ./qbtctl --setup
 ```
-
 You will be prompted for:
 
 - qBittorrent URL (default: `http://localhost`)
@@ -117,33 +104,25 @@ Note: To save to program directory just type ```auth.txt``` or alternate filenam
 
 - Use full filename when saving, it will not create if pointed to a directory only.
       
-By default credentials are saved to:
-```text
-~/.qbtctl/auth.txt
-```
----
-
-# Command-Line Overrides
-
-You may override credentials when running commands:
-
-```bash
-./qbtctl --url http://host:8080 --user admin --pass mypass [command]
-```
+By default credentials are saved to: ``~/.qbtctl/auth.txt``
 
 ---
 # 💡 Usage Examples
 These examples assume you have already set up credentials with `./qbtctl --setup`.
 
-## 1. Add a torrent file, set category to iso and show name)
-- Note: magnet link works same as file use "magnet:?xt=****"
+## 1. Adding a torrent/magnet 
+Add a torrent file, set sequential download on, and return name.
 ```bash
-./qbtctl --add torrent.file --set-category "ISO" -gn
+./qbtctl --add torrent.file --set-seqdl 1 -gn
+```
+Add a magnet link, set ratio 2.0, set seedtime to 4 days
+```bash
+./qbtctl --add "magnet:?xt=urn:btih:0123456..." -srl 2.0 -sst 04:00:00
 ```
 
 ## 2. Watch all torrents 
 Requires a tty, (may scroll spam in some terminals); 
-Tested and working with Konsole in Plasma.
+Tested and working with Linux TTY and Konsole in Plasma.
 ```bash
 ./qbtctl -w
 ```
@@ -345,8 +324,8 @@ If you want to run commands directly with credentials:
 -as, --start               Start torrent
 -af, --force-start         Force start torrent
 -ap, --pause               Pause or stop torrent
--ar, --remove              Stop and remove torrent (keeps data)
--del, --delete             Stop, remove, and delete torrent and data
+-ar, --remove              Remove torrent (keeps data)
+-del, --delete             Remove, and delete torrent and data
 -add <file/magnet>, --add <file/magnet> Add torrent via file or magnet link
 ```
 
@@ -418,10 +397,6 @@ fi
 Notes:
 
 These codes are returned by the CLI when commands fail.
-
-Useful for scripting and automated workflows.
-
-Always check $? immediately after a command for accurate results.
 
 ---
 

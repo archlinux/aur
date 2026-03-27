@@ -6,23 +6,31 @@ pkgdesc="Minimal, ultra-fast command-line interface for controlling a torrent in
 arch=('x86_64')
 url="https://github.com/creptic/qbtctl"
 license=('GPL3')
-depends=('curl' 'zlib' 'libsodium')
-makedepends=('gcc' 'make')
-source=("https://github.com/creptic/qbtctl/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('16b23fd444fd532ebfd55439aac1fb0e6c03eee097a51c5a0877b33a843c4d39')
+depends=('curl' 'zlib' 'libsodium')       # runtime deps for dynamic binary
+makedepends=('gcc' 'make' 'git')          # needed for building
+source=("https://github.com/creptic/qbtctl/archive/refs/tags/1.5.0.tar.gz")
+sha256sums=('cb738f3def48d4f4220447288b21ca2ec21ef00e15da08a8aeedf02c0f3cd1d5')
 options=('!debug')
-
 build() {
     cd "$srcdir/$pkgname-$pkgver"
+
+    # Clean previous builds
     make clean
+
+    # Build dynamic qbtctl
     make
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
+    # Install dynamic binary
     install -Dm755 qbtctl "$pkgdir/usr/bin/qbtctl"
+
+    # Install license
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+    # Install documentation
     install -Dm644 INSTALL.txt "$pkgdir/usr/share/doc/$pkgname/INSTALL.txt"
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
