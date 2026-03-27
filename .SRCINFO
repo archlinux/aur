@@ -1,7 +1,7 @@
 pkgbase = python-misaki
 	pkgdesc = G2P engine for TTS
 	pkgver = 0.9.4
-	pkgrel = 6
+	pkgrel = 10
 	url = https://pypi.org/project/misaki
 	arch = any
 	license = MIT
@@ -36,6 +36,7 @@ pkgname = python-misaki-en
 	depends = python-num2words
 	depends = python-spacy
 	depends = python-spacy-curated-transformers
+	depends = python-phonemizer-fork
 	depends = python-transformers
 	provides = python-misaki-en
 	conflicts = python-misaki-en

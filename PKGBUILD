@@ -4,7 +4,7 @@ pkgbase=python-misaki
 pkgname=(python-misaki{,-{en,ja,ko,zh,vi,he}})
 _name=misaki
 pkgver=0.9.4
-pkgrel=6
+pkgrel=10
 epoch=
 pkgdesc="G2P engine for TTS"
 arch=('any')
@@ -57,6 +57,7 @@ package_python-misaki-en() {
         python-num2words
         python-spacy
         python-spacy-curated-transformers
+        python-phonemizer-fork
         python-transformers
     )
 }
