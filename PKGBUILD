@@ -34,6 +34,7 @@ build() {
 check() {
     cd "${pkgname}-v${pkgver}"
     export GOPATH="${srcdir}/gopath"
+    export HOME="${srcdir}/testhome"
     go test ./...
 }
 
