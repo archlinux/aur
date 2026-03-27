@@ -3,7 +3,7 @@
 
 pkgname='emulicious-bin'
 _genericname='Emulator'
-pkgver=2024.08.31
+pkgver=2026.03.27
 pkgrel=1
 pkgdesc='Game Boy, Game Boy Color, Master System, Game Gear and MSX emulator'
 # sms is backwards compatible to sg1000
@@ -13,9 +13,9 @@ license=('custom' 'BSD')
 provides=('emulicious')
 arch=('any')
 depends=('java-environment' 'sh' 'hicolor-icon-theme')
-makedepends=('java-environment-common' 'gendesk' 'dos2unix' 'imagemagick')
-source=("$pkgname-$pkgver-$pkgrel.zip::https://emulicious.net/download/emulicious/?wpdmdl=205" 'emulicious.sh')
-sha256sums=('53c9b3104b6938044d230b4f4e422e56cae687ceff1bb0bf9fc794fe62fb272e'
+makedepends=('java-environment-common' 'gendesk' 'dos2unix' 'imagemagick' 'unzip')
+source=("$pkgname-$pkgver-$pkgrel.zip::https://emulicious.net/emulicious/downloads/emulicious-2026-03-27.zip" 'emulicious.sh')
+sha256sums=('6e1c6d511014033bbc2668360a0194389a5bad2bf6c5ffd0fe093b84da33c0fc'
             '3f9442376a7a8ba93ff5490826bcd5b5b81c5c62b3a6ec48bcd586a0e42fca66')
 
 prepare() {
@@ -23,9 +23,9 @@ prepare() {
   cd "${srcdir}/"
   # was zipped on windows
   dos2unix ./*.txt
-  jar xf Emulicious.jar Emulicious.png
+  unzip -o Emulicious.jar Emulicious.png
   # resize to a quadratic shape
-  magick convert Emulicious.png -background transparent -resize 256x256 -gravity center -extent 256x256 "${pkgname}_256x256.png"
+  magick Emulicious.png -background transparent -resize 256x256 -gravity center -extent 256x256 "${pkgname}_256x256.png"
 }
 
 # emulicious does not communicate any version numbers
@@ -46,6 +46,6 @@ package() {
   # generate all other icon sizes
   for i in 16 24 32 48 64 72 96 128;do
     install -d "${pkgdir}/usr/share//icons/hicolor/${i}x${i}/apps/"
-    magick convert "${srcdir}/${pkgname}_256x256.png" -resize ${i}x${i} "${pkgdir}/usr/share//icons/hicolor/${i}x${i}/apps/${provides[0]}.png"
+    magick "${srcdir}/${pkgname}_256x256.png" -resize ${i}x${i} "${pkgdir}/usr/share//icons/hicolor/${i}x${i}/apps/${provides[0]}.png"
   done
 }
