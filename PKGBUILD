@@ -3,7 +3,7 @@
 _name=garamontio
 pkgbase=$_name-font
 pkgname=(otf-$_name ttf-$_name ttf-$_name-variable)
-pkgver=1.100
+pkgver=1.101
 pkgrel=1
 pkgdesc='a fork of EB Garamond'
 arch=(any)
@@ -15,10 +15,10 @@ source=("$_archive-otf.zip::$_url/releases/download/v$pkgver/${_name}_otf.zip"
         "$_archive-ttf.zip::$_url/releases/download/v$pkgver/${_name}_ttf.zip"
         "$_archive-var.zip::$_url/releases/download/v$pkgver/${_name}_var.zip"
         "$_archive.tar.gz::$_url/archive/v$pkgver.tar.gz")
-sha256sums=('069a706ce32ca64b85903a816bfa183b1e94211808e75c37af4c986af4acc3cb'
-            '32e1e8a3b7b6128c7f3b742da01deab0cc3f7dec8aa3f9c4b280d7ba8ab755dd'
-            'cb40a4bc83ff72b0c5b24e68037c133521f6c2f68c27e28dad3d256890e9e311'
-            '8266eb4555fb8b6a0d36f0235c92a01c0c6c7138b8191ddfb02f1de1aa7e2f62')
+sha256sums=('5e20e737103b8a7fc01f19583e45fccccffe1860b92c8117fad4f67d4465f4a3'
+            '23818d1a96cfdb10f25ae3dca5a047805a77e13630409455dae206306cdc59f2'
+            '31a6ed905846f836ad313fdf4d884ecdada3a64bc5aebc6656b4cd5e7b73de1a'
+            '7183c5a15e7057db447e4be22fa221f783141784c7998ca37f7abc96c660d165')
 
 package_otf-garamontio() {
 	provides=("$pkgbase")
