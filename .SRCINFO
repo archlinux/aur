@@ -1,0 +1,14 @@
+pkgbase = goose-agent-bin
+	pkgdesc = Codename Goose AI agent CLI from Block (binary release)
+	pkgver = 1.28.0
+	pkgrel = 1
+	url = https://github.com/block/goose
+	arch = x86_64
+	license = custom
+	depends = glibc
+	provides = goose-agent
+	options = !strip
+	source_x86_64 = https://github.com/block/goose/releases/download/v1.28.0/goose-x86_64-unknown-linux-gnu.tar.bz2
+	sha256sums_x86_64 = 41049f6f7b1f460f3807c5b91bded5869ff0f1b098d7c06772e359064d65074b
+
+pkgname = goose-agent-bin
