@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101 at gmail dot com>
 
 pkgname=natapp
-pkgver=2.5.1
+pkgver=3.0.1
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="High speed intranet penetration tools in Chinese based on ngrok."
@@ -19,10 +19,10 @@ source_armv7h=(
     "${pkgname}_${_pkgver}_${arch[2]}::https://download.natapp.cn/assets/downloads/clients/${_pkgver}/${pkgname}_linux_arm/${pkgname}"
 )
 
-md5sums=('SKIP')
-md5sums_x86_64=('99bbada7f2203e673a63905bc3f54c70')
-md5sums_aarch64=('9abe519322664d5ecbd2abced168eee6')
-md5sums_armv7h=('3f4c0f1a287cedfe900d9b94ee8efc4f')
+md5sums=('83d16137b2412bcab8072d252ffadc8d')
+md5sums_x86_64=('212d2ca35359a5c0f450c12214e67f74')
+md5sums_aarch64=('6bd88c1ed5cc94f279f746f78cca001a')
+md5sums_armv7h=('0cca182a873162bde8e686f3f46ea2c9')
 
 package() {
   cd ${srcdir}
