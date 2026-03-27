@@ -1,0 +1,21 @@
+pkgbase = celq-bin
+	pkgdesc = Query and transform JSON, YAML, TOML, XML, and JSON5 data with CEL expressions
+	pkgver = 0.3.4
+	pkgrel = 1
+	url = https://github.com/IvanIsCoding/celq
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	depends = glibc
+	provides = celq
+	conflicts = celq
+	options = !debug
+	source = celq-bin-0.3.4-LICENSE-MIT::https://raw.githubusercontent.com/IvanIsCoding/celq/v0.3.4/LICENSE-MIT
+	sha256sums = c73e3f239b267fb3f998a0535e250920e1e520ec3b5b567894798f76f56b9bb9
+	source_x86_64 = celq-bin-0.3.4-x86_64.tar.gz::https://github.com/IvanIsCoding/celq/releases/download/v0.3.4/celq-linux-x86_64-gnu.tar.gz
+	sha256sums_x86_64 = d45753f8917dd99e8de51ae6c105ddb5fce115edfc191d50ba27d8aff069efe4
+	source_aarch64 = celq-bin-0.3.4-aarch64.tar.gz::https://github.com/IvanIsCoding/celq/releases/download/v0.3.4/celq-linux-aarch64-gnu.tar.gz
+	sha256sums_aarch64 = ced6703e4caf21ab74b5fd8177ea833754a887cc42b02cf3adacd6461cfa67c1
+
+pkgname = celq-bin
