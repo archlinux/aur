@@ -28,7 +28,7 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
 provides=('claude-desktop')
 conflicts=('claude-desktop')
 source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.9310/claude-desktop-1.1.9310-linux.tar.gz")
-sha256sums_x86_64=('abcad472c1c220500c4e838b5bc3cb4cafdc9d3165c6cfa4e86a45d7bc8f9c57')
+sha256sums_x86_64=('a55ce54e20113b4805d162b1d8fd95305809a494e3418b430cb15689b3993671')
 options=('!strip')
 
 package() {
