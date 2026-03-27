@@ -1,0 +1,4 @@
+open-supaplex-*-x86_64.pkg.tar.*
+pkg/
+src/
+v*.*.*.zip
