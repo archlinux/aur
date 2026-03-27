@@ -13,8 +13,6 @@ pkgbase = dev-type-bin
 	options = !strip
 	source = dev-type-bin-1.0.0.AppImage::https://github.com/mehad605/dev_type/releases/download/v1.0.0/dev_type-1.0.0-x86_64.AppImage
 	source = dev_type.png::https://raw.githubusercontent.com/mehad605/dev_type/v1.0.0/assets/icon.png
-	source = dev_type.desktop::https://raw.githubusercontent.com/mehad605/dev_type/v1.0.0/packaging/dev_type.desktop
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 

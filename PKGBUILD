@@ -17,10 +17,8 @@ options=('!strip')
 source=(
   "${pkgname}-${pkgver}.AppImage::https://github.com/mehad605/dev_type/releases/download/v${pkgver}/dev_type-${pkgver}-x86_64.AppImage"
   "dev_type.png::https://raw.githubusercontent.com/mehad605/dev_type/v${pkgver}/assets/icon.png"
-  "dev_type.desktop::https://raw.githubusercontent.com/mehad605/dev_type/v${pkgver}/packaging/dev_type.desktop"
 )
 sha256sums=(
-  'SKIP'
   'SKIP'
   'SKIP'
 )
@@ -47,7 +45,7 @@ package() {
   # Make the main binary executable
   chmod 755 "${pkgdir}/usr/lib/dev_type/dev_type"
 
-  # Create a launcher wrapper in /usr/bin that sets the working dir correctly
+  # Create a launcher wrapper in /usr/bin
   install -Dm755 /dev/stdin "${pkgdir}/usr/bin/dev_type" << 'EOF'
 #!/bin/sh
 exec /usr/lib/dev_type/dev_type "$@"
@@ -57,7 +55,15 @@ EOF
   install -Dm644 "${srcdir}/dev_type.png" \
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/dev_type.png"
 
-  # --- Desktop entry ---
-  install -Dm644 "${srcdir}/dev_type.desktop" \
-    "${pkgdir}/usr/share/applications/dev_type.desktop"
+  # --- Desktop entry (inlined — avoids fetching from a URL that may not exist) ---
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/dev_type.desktop" << 'EOF'
+[Desktop Entry]
+Name=Dev Type
+Exec=dev_type
+Icon=dev_type
+Type=Application
+Categories=Education;
+Comment=Master touch typing while coding
+Terminal=false
+EOF
 }
