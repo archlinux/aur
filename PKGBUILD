@@ -2,24 +2,32 @@
 
 pkgname=kwm
 pkgdesc="Kewuaa's window manager for the River compositor"
-pkgver=0.2.0
+pkgver=0.2.1
 _xkbver=0.3.0
 _mvzrver=0.3.7
 _fcftver=2.0.0
 _pixmanver=0.3.0
-pkgrel=2
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/kewuaa/kwm"
 license=('GPL-3.0')
-depends=('wayland' 'river' 'pixman' 'fcft' 'libxkbcommon' )
-makedepends=('zig' 'wayland-protocols')
+depends=('wayland'
+	 'river'
+	 'pixman'
+	 'fcft'
+	 'libxkbcommon')
+optdepends=('swaybg: Default wallpaper manager'
+	    'foot: Default terminal emulator'
+	    'wmenu: Default launcher')
+makedepends=('zig'
+	     'wayland-protocols')
 install=kwm.install
-source=(https://github.com/kewuaa/kwm/archive/refs/tags/v$pkgver.tar.gz
+source=("$url"/archive/refs/tags/v$pkgver.tar.gz
 	xkb-$_xkbver.tar.gz::https://codeberg.org/ifreund/zig-xkbcommon/archive/v$_xkbver.tar.gz
 	mvzr-$_mvzrver.tar.gz::https://github.com/mnemnion/mvzr/archive/refs/tags/v$_mzvrver.tar.gz
         fcft-$_fcftver.tar.gz::https://git.sr.ht/~novakane/zig-fcft/archive/v$_fcftver.tar.gz
 	pixman-$_pixmanver.tar.gz::https://codeberg.org/ifreund/zig-pixman/archive/v$_pixmanver.tar.gz)
-sha256sums=('b7d23e062abfb0c7aa5ee421baf695302118527fe0f5ccfe59352dacfcbc7144'
+sha256sums=('72ba72eef4a6dd776bd05b4ccd61ce8606ce5ee0ee184ffdc199befa8737b71a'
             '1e185423e6b23ed9729614e66751ab7522db4487df4e0dcc7a2b06375aacda23'
             '9f9a28b2f6af44b004cd968fc639dbe6dc088355950a24614622f2ec462c851b'
             'bff418e0a888b9a4299d212769e31631f0f8d7cfd9daeded021ec1699ef0af5b'
