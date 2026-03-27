@@ -1,9 +1,9 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 
-# Release notes https://rocm.docs.amd.com/en/7.11.0-preview/about/release-notes.html
+# Release notes https://rocm.docs.amd.com/en/7.12.0-preview/about/release-notes.html
 pkgname=rocm-gfx110x-bin
 pkgdesc="ROCm Core SDK and TheRock Build System - RDNA3"
-pkgver=7.11.0pre
+pkgver=7.12.0pre
 pkgrel=1
 epoch=0
 arch=('x86_64')
@@ -22,17 +22,17 @@ optdepends=('clinfo')
 options=('!strip')
 
 source=(
-"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx110X-all-7.11.0.tar.gz"
+"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx110X-all-7.12.0.tar.gz"
 )
 
 sha256sums=(
-"c038c1248e6cbdde11a7e56a54c0e3f893f1c2b4e14e7b3f8eaff5561a3e46e1"
+"bf652924ee221a867ce0ca39ff0a24e6dfa891db3467f51fdfa6a9ce57e351c8"
 )
 
 package() {
 
     mkdir -p "${srcdir}/opt/rocm"
-    tar xf therock-dist-linux-gfx110X-all-7.11.0.tar.gz -C ${srcdir}/opt/rocm
+    tar xf therock-dist-linux-gfx110X-all-7.12.0.tar.gz -C ${srcdir}/opt/rocm
 
     mv "${srcdir}/opt/" "${pkgdir}/"
 
