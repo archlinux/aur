@@ -48,13 +48,11 @@ prepare() {
 }
 
 build() {
-    # HYPRFM_SOURCE_DIR is baked in at compile time; point it to the installed
-    # data directory so the binary finds themes and QML after installation.
     cmake -B build -S "${pkgname}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_TESTS=OFF \
-        -DCMAKE_CXX_FLAGS="-DHYPRFM_SOURCE_DIR=\\\"/usr/share/hyprfm\\\""
+        -DHYPRFM_DATA_DIR=/usr/share/hyprfm
     cmake --build build
 }
 
