@@ -180,7 +180,7 @@ build() {
 
   arch-meson "${_systemd_src_dir}" build "${_meson_options[@]}" $MESON_EXTRA_CONFIGURE_OPTIONS
 
-  meson compile -C build
+  meson compile -C build -j$(nproc)
 }
 
 check() {
