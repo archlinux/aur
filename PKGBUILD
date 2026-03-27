@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=kfr
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, modern C++ DSP framework, FFT, Sample Rate Conversion,
 FIR/IIR/Biquad Filters (SSE, AVX, AVX-512, ARM NEON)"
 url="https://www.kfrlib.com/"
@@ -23,6 +23,7 @@ build() {
   		-DCMAKE_BUILD_TYPE=Release \
         -DKFR_ENABLE_DFT=ON \
         -DKFR_ENABLE_MULTIARCH=ON \
+        -DKFR_ENABLE_CAPI_BUILD=ON \
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON \
         ..
   make
