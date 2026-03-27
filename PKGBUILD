@@ -1,6 +1,6 @@
 # Maintainer: Vinay Kumar <vinayydv343@gmail.com>
 pkgname=shiori-rin-bin
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc="Modern offline-first eBook library manager built with Tauri, React, and Rust (binary)"
 arch=('x86_64')
@@ -19,8 +19,8 @@ conflicts=(
     'shiori-rin'
     'shiori-rin-bin'
 )
-source=("Shiori_0.2.7_linux_amd64.tar.gz::${url}/releases/download/v${pkgver}/Shiori_0.2.7_linux_amd64.tar.gz")
-sha256sums=('7ed29bc348300d8ea8e9fd43001e1e1964b8b746eaaa26959e13b92ff5eb54ec')
+source=("Shiori_0.2.8_linux_amd64.tar.gz::${url}/releases/download/v${pkgver}/Shiori_0.2.8_linux_amd64.tar.gz")
+sha256sums=('f3913e3d78551c431b2cc55c07d710979f1059226b4d22ddece617bf7ba853a2')
 
 package() {
     # Extract release payload
