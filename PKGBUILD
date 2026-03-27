@@ -1,15 +1,15 @@
 # Maintainer: MihaiStreames <72852703+MihaiStreames@users.noreply.github.com>
 pkgname=tokount
-pkgver=2.1.5
+pkgver=2.1.6
 pkgrel=1
 pkgdesc="The fastest line counter for codebases"
 arch=(x86_64)
-url="https://github.com/MihaiStreames/tokount"
+url="https://github.com/velox-sh/tokount"
 license=(MIT)
 depends=(gcc-libs)
 makedepends=(cargo)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e08907364caf9a91b28d0459c2fa240ec3eed3199d4a93e529bb0844ca69e73d')
+sha256sums=('8626b02b7ded170b04dab716fbac3c40610ba46cfe4b7a976fc5bca8faa39ad1')
 
 prepare() {
 	cd "$pkgname-$pkgver"
