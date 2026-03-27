@@ -1,12 +1,13 @@
-# Maintainer: fossdd <fossdd@pwned.life
+# Maintainer: vyzu <vyzu@vyzu.net>
+# Contributor: fossdd <fossdd@pwned.life
 # Contributor: Arkadiusz Dzięgielewski <arek.dzski@gmail.com>
 pkgname=invidious
-pkgver=2.20250314.0
+pkgver=2.20260207.0
 pkgrel=1
 pkgdesc="Alternative front-end to YouTube"
 arch=('x86_64' 'aarch64')
 url="https://github.com/iv-org/invidious"
-license=('AGPL')
+license=('AGPL-3.0-only')
 # Not all deps are explicitly listed on invidious website,
 # but resulting binary is somehow linked against them
 depends=('gc' 'gcc-libs' 'glibc' 'icu' 'libevent' 'libxml2' 'libyaml' 'openssl' 'pcre' 'sqlite' 'xz' 'zlib' 'librsvg' 'tzdata')
@@ -16,7 +17,7 @@ conflicts=('invidious-git')
 backup=('etc/invidious.yml')
 source=("git+https://github.com/iv-org/invidious.git#tag=v$pkgver"
 	"invidious.sysusers")
-md5sums=('6b110b30a10a3ab9afb25a3257ab36ea'
+md5sums=('c88c23a92e442257ab830c1f1dc93077'
          '8f516eaa2a60660fb65a1de3412ad785')
 
 prepare() {
