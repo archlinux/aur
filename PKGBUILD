@@ -69,6 +69,7 @@ package() {
 
     # Install QML sources — the binary adds HYPRFM_SOURCE_DIR/src/qml to the
     # QML import path at runtime for the HyprFM and Quill modules.
+    install -dm755 "${pkgdir}/usr/share/hyprfm/src"
     cp -r "${pkgname}/src/qml" "${pkgdir}/usr/share/hyprfm/src/qml"
 
     # Install license
