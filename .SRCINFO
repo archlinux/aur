@@ -1,0 +1,22 @@
+pkgbase = solvespace-qt
+	pkgdesc = A parametric 3d CAD program
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://solvespace.com/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	makedepends = eigen
+	depends = json-c
+	depends = glew
+	depends = qt6-base
+	depends = libspnav
+	depends = openmp
+	provides = solvespace
+	conflicts = solvespace
+	source = solvespace::git+https://github.com/solvespace/solvespace.git#tag=v3.2
+	sha256sums = SKIP
+
+pkgname = solvespace-qt
