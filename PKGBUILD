@@ -1,13 +1,14 @@
 # Maintainer: Level1Techs Package Team <level1techspackageteam@gmail.com>
 # Contributor: Ewout van Mansom <ewout@vanmansom.name>
 pkgname=siomon
-pkgver=0.2.2
-pkgrel=2
+pkgver=0.2.3
+pkgrel=1
 pkgdesc="Hardware information and real-time sensor monitoring tool"
 arch=(x86_64 aarch64)
 url="https://github.com/level1techs/siomon"
 license=('MIT')
-depends=('glibc')
+depends=('glibc'
+         'libgcc')
 optdepends=('nvidia-utils: GPU name, VRAM, clocks, temp, power, utilization'
             'dmidecode: Per-DIMM memory details'
             'msr-tools: CPU TDP, turbo ratios, C-states, perf limiters'
@@ -16,9 +17,9 @@ optdepends=('nvidia-utils: GPU name, VRAM, clocks, temp, power, utilization'
 makedepends=('git'
              'cargo')
 options=()
-_tag=2f0b399085de511ff14d8a8a2b69c71f7a40558c # git rev-parse "v$pkgver"
+_tag=5b345e9e1c0ae3676eab98d8da66238fa0fdd63f # git rev-parse "v$pkgver"
 source=("siomon::git+https://github.com/level1techs/siomon.git#tag=$_tag")
-b2sums=('745141ab3c7a789c271ffa4ed55fab1555ed312c3c2067b32be6b38cf03e0166bbb8aaebcff9957f9eff53dd2fccb91806df53a483752fcd66ce973af72d85a9')
+b2sums=('fc28304202ed8f84d38f84ff3e3b62bfa500fa8601a7b25736802bcdd2020478f5468db26892e3c724781e76834c4a675068f758d7e8ac8d7a4a077c7846f5e0')
 
 prepare() {
     cd "$srcdir/$pkgname"
