@@ -1,21 +1,25 @@
 pkgbase = lua-miniflac
 	pkgdesc = Lua library for decoding FLAC files
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jprjr/luaminiflac
 	arch = x86_64
 	arch = i686
+	arch = aarch64
 	license = MIT
 	makedepends = cmake
-	makedepends = lua<5.5
+	makedepends = lua>=5.5
+	makedepends = lua<5.6
 	makedepends = lua51
 	makedepends = lua52
 	makedepends = lua53
+	makedepends = lua54
 	source = https://github.com/jprjr/luaminiflac/releases/download/v1.1.1/luaminiflac-1.1.1.tar.gz
-	md5sums = b23d473490b2b562bcb3c99a96d75808
+	sha512sums = 37dbef1aa45b41e81b5a01ec415c6e2238ad4abf8c1e1137eac679df697cbf0cb978d8b403aec35665c726f69fa0c818f416416e5014fa5c6aa0d7b0ee3878af
 
 pkgname = lua-miniflac
-	depends = lua
+	depends = lua>=5.5
+	depends = lua<5.6
 
 pkgname = lua51-miniflac
 	pkgdesc = Lua library for decoding FLAC files - for Lua 5.1
@@ -28,3 +32,7 @@ pkgname = lua52-miniflac
 pkgname = lua53-miniflac
 	pkgdesc = Lua library for decoding FLAC files - for Lua 5.3
 	depends = lua53
+
+pkgname = lua54-miniflac
+	pkgdesc = Lua library for decoding FLAC files - for Lua 5.4
+	depends = lua54

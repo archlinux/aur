@@ -1,60 +1,75 @@
 # Maintainer: jprjr <john@jrjrtech.com>
 
-pkgname=('lua-miniflac' 'lua51-miniflac' 'lua52-miniflac' 'lua53-miniflac')
+pkgname=('lua-miniflac' 'lua51-miniflac' 'lua52-miniflac' 'lua53-miniflac' 'lua54-miniflac')
 _pkgbase='luaminiflac'
 pkgdesc="Lua library for decoding FLAC files"
 pkgver=1.1.1
-pkgrel=1
-arch=('x86_64' 'i686')
+pkgrel=2
+arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/jprjr/luaminiflac'
 license=('MIT')
-makedepends=('cmake' 'lua<5.5' 'lua51' 'lua52' 'lua53')
-source=("https://github.com/jprjr/luaminiflac/releases/download/v${pkgver}/luaminiflac-${pkgver}.tar.gz")
+_lua_cur=5.5
+_lua_next=5.6
+makedepends=('cmake' "lua>=${_lua_cur}" "lua<${_lua_next}" 'lua51' 'lua52' 'lua53' 'lua54')
+source=("$url/releases/download/v${pkgver}/luaminiflac-${pkgver}.tar.gz")
 
-md5sums=('b23d473490b2b562bcb3c99a96d75808')
+_build() {
+    LUA_V=$1
+    V=${LUA_V//./}
+
+    cmake -B build-lua$V-${pkgver}-${pkgrel} -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DLUA_VERSION=$LUA_V -DCMAKE_BUILD_TYPE=None -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
+    make -C build-lua$V-${pkgver}-${pkgrel}
+}
 
 build() {
+    for v in 5.1 5.2 5.3 5.4 5.5 ; do
+        _build $v
+    done
+}
 
-    cmake -B build-lua-${pkgver}-${pkgrel}                     -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
-    cmake -B build-lua51-${pkgver}-${pkgrel} -DLUA_VERSION=5.1 -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
-    cmake -B build-lua52-${pkgver}-${pkgrel} -DLUA_VERSION=5.2 -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
-    cmake -B build-lua53-${pkgver}-${pkgrel} -DLUA_VERSION=5.3 -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
+_package() {
+    LUA_V=$1
+    V=${LUA_V//./}
 
-    make -C build-lua-${pkgver}-${pkgrel}
-    make -C build-lua51-${pkgver}-${pkgrel}
-    make -C build-lua52-${pkgver}-${pkgrel}
-    make -C build-lua53-${pkgver}-${pkgrel}
-
+    make -C build-lua$V-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
+    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_lua-miniflac() {
-    depends+=('lua')
+    depends+=("lua>=${_lua_cur}" "lua<${_lua_next}")
 
-    make -C build-lua-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    _package $_lua_cur
 
 }
 
-package_lua51-miniflac() {
-    pkgdesc+=" - for Lua 5.1"
-    depends+=('lua51')
+package_lua54-miniflac() {
+    pkgdesc+=" - for Lua 5.4"
+    depends+=('lua54')
 
-    make -C build-lua51-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_lua52-miniflac() {
-    pkgdesc+=" - for Lua 5.2"
-    depends+=('lua52')
-
-    make -C build-lua52-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    _package 5.4
 }
 
 package_lua53-miniflac() {
     pkgdesc+=" - for Lua 5.3"
     depends+=('lua53')
 
-    make -C build-lua53-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    _package 5.3
 }
+
+package_lua52-miniflac() {
+    pkgdesc+=" - for Lua 5.2"
+    depends+=('lua52')
+
+    _package 5.2
+}
+
+package_lua51-miniflac() {
+    pkgdesc+=" - for Lua 5.1"
+    depends+=('lua51')
+
+    _package 5.2
+}
+
+sha512sums=(
+'37dbef1aa45b41e81b5a01ec415c6e2238ad4abf8c1e1137eac679df697cbf0cb978d8b403aec35665c726f69fa0c818f416416e5014fa5c6aa0d7b0ee3878af'
+)
