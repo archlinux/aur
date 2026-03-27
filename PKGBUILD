@@ -3,25 +3,32 @@
 # AUR Package Repository: https://github.com/patrickjaja/claude-desktop-bin
 
 pkgname=claude-desktop-bin
-pkgver=1.1.8629
-pkgrel=2
+pkgver=1.1.9134
+pkgrel=1
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
 license=('custom:Claude')
-depends=('electron' 'nodejs')
-optdepends=('claude-code: Claude Code CLI for agentic coding features (npm i -g @anthropic-ai/claude-code)'
+depends=('electron')
+optdepends=('nodejs: System Node.js for MCP extensions that require specific versions (Electron bundles Node.js as fallback)'
+            'claude-code: Claude Code CLI for agentic coding features (npm i -g @anthropic-ai/claude-code)'
             'claude-cowork-service: Enables Cowork VM features on Linux (experimental)'
             'xdotool: Computer Use input + Quick Entry positioning (X11/XWayland)'
             'scrot: Computer Use screenshots (X11)'
-            'xclip: Computer Use clipboard access'
-            'wmctrl: Computer Use running app detection'
+            'xclip: Computer Use clipboard access (X11)'
+            'wmctrl: Computer Use running app detection (X11)'
+            'xorg-xrandr: Computer Use display enumeration (X11)'
+            'ydotool: Computer Use input automation (Wayland)'
+            'grim: Computer Use screenshots (Wayland/wlroots)'
+            'slurp: Computer Use region selection (Wayland/wlroots)'
+            'wl-clipboard: Computer Use clipboard access (Wayland)'
+            'wlr-randr: Computer Use display enumeration (Wayland/wlroots)'
             'hyprland: Quick Entry cursor positioning on Hyprland Wayland (hyprctl)'
             'socat: Cowork socket health check in launcher (fallback: age-based check)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.8629-2/claude-desktop-1.1.8629-linux.tar.gz")
-sha256sums_x86_64=('80db5a9770cd414547d64301837e5eddcdc0e18ef542f9dedea79af8f6a4f163')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.9134/claude-desktop-1.1.9134-linux.tar.gz")
+sha256sums_x86_64=('06f18093f6f20a371fa9d4a15ea1e5d1a13d9a9d2fd5fe0e0d2ba303740ca45e')
 options=('!strip')
 
 package() {
