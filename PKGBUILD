@@ -1,5 +1,5 @@
 pkgname=hermes-cli-bin
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Native speech-to-text CLI daemon (prebuilt binary)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ depends=('glibc' 'gcc-libs' 'wl-clipboard')
 source_x86_64=(
   "hermes-cli-linux-x86_64-${pkgver}.tar.gz::https://github.com/adityamiskin/hermes/releases/download/v${pkgver}/hermes-cli-linux-x86_64.tar.gz"
 )
-sha256sums_x86_64=('fdf5c9289890a322d443308b61ef6a4605255ed4cf9a2f7c493c15998601f890')
+sha256sums_x86_64=('48ae81b974471fb3792b8ad1b4fe419831c6ed94128baad28b3d0d97b2c23bd4')
 
 package() {
   install -d "${pkgdir}/usr"
