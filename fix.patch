@@ -1,0 +1,12 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index d716d673..dea4b2a4 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -29,6 +29,7 @@ set(FILES_MAIN
+ 	stats.cpp
+ 	stats.h
+ 	value.h
++	version.cpp
+ 	version.h
+ )
+ target_sources(${CMAKE_PROJECT_NAME} PRIVATE ${FILES_MAIN})
