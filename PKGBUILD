@@ -2,7 +2,7 @@
 
 pkgname=tkey-ssh-agent
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A ssh-agent for the Tillitis TKey"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/tillitis/${pkgname}"

@@ -1,4 +1,4 @@
-npost_install() {
+post_install() {
   udevadm control --reload
   udevadm trigger
 }
@@ -7,4 +7,3 @@ post_upgrade() {
   echo -e "\033[1;33mThis release may change the TKey identity (CDI) compared to version 1.0.0, i.e., you may not have the same Ed25519 keypair derived."
   echo -e "For more details see: https://github.com/tillitis/tkeyclient/security/advisories/GHSA-4w7r-3222-8h6v\033[0m"
 }
-

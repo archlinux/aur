@@ -1,7 +1,7 @@
 pkgbase = tkey-ssh-agent
 	pkgdesc = A ssh-agent for the Tillitis TKey
 	pkgver = 1.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tillitis/tkey-ssh-agent
 	install = tkey-ssh-agent.install
 	arch = i686
