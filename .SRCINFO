@@ -1,0 +1,16 @@
+pkgbase = zfs-recompress.py
+	pkgdesc = Python rewrite of zfs-recompress for better performance
+	pkgver = r6.c77584d
+	pkgrel = 1
+	url = https://github.com/iBug/zfs-recompress.py
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	provides = zfs-recompress.py
+	conflicts = zfs-recompress.py
+	source = git+https://github.com/iBug/zfs-recompress.py.git#branch=master
+	md5sums = SKIP
+	b2sums = SKIP
+
+pkgname = zfs-recompress.py
