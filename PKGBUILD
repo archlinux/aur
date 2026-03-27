@@ -1,7 +1,7 @@
 # Maintainer: Qingxu <me@linioi.com>
 
 pkgname=yamlresume
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Resumes as code in YAML"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz")
-sha256sums=('a0a03a6bfef866868752658042c5b771320119f1589383a729e3547227f52e29')
+sha256sums=('07a9b6abf57021925f883239901167d87af8c26910245f6ad6b67db8a1b0018b')
 noextract=("${pkgname}-${pkgver}.tgz")
 
 package() {
