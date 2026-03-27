@@ -2,14 +2,15 @@
 
 pkgname=pake-lizhi
 _appname=LiZhi
+_appname_lower=lizhi
 _pkgver=3.10.0
 pkgver=${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="${_appname} wrapped as a desktop app using Pake"
 arch=('x86_64')
 url="https://github.com/tw93/Pake"
 license=('MIT')
-depends=('gtk3' 'webkit2gtk')
+depends=('gtk3' 'webkit2gtk' 'libayatana-appindicator')
 options=('!strip' '!debug')
 
 source=(
@@ -19,23 +20,25 @@ source=(
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
-    # Extract deb package
     bsdtar -xf "${_appname}-${_pkgver}.deb" -C "${srcdir}"
     bsdtar -xf "${srcdir}/data.tar.gz" -C "${srcdir}"
 }
 
 package() {
-    # Install binary - Pake uses 'pake-${_appname,,}' format
-    install -Dm755 "${srcdir}/usr/bin/pake-${_appname,,}" "${pkgdir}/usr/bin/${pkgname}"
+    # Install binary
+    install -Dm755 "${srcdir}/usr/bin/pake-${_appname_lower}" "${pkgdir}/usr/bin/${pkgname}"
     
-    # Install desktop file - use com.pake.${_appname,,}.desktop
-    install -Dm644 "${srcdir}/usr/share/applications/com.pake.${_appname,,}.desktop" \
+    # Install desktop file
+    install -Dm644 "${srcdir}/usr/share/applications/com.pake.${_appname_lower}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     
-    # Install icon
-    if [[ -f "${srcdir}/usr/share/icons/hicolor/512x512/apps/pake-${_appname,,}.png" ]]; then
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/pake-${_appname,,}.png" \
-            "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    # Install icon - desktop file expects ${_appname_lower}_512
+    if [[ -f "${srcdir}/usr/lib/${_appname_lower}/png/${_appname_lower}_512.png" ]]; then
+        install -Dm644 "${srcdir}/usr/lib/${_appname_lower}/png/${_appname_lower}_512.png" \
+            "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_appname_lower}_512.png"
+    elif [[ -f "${srcdir}/usr/share/icons/hicolor/512x512/apps/pake-${_appname_lower}.png" ]]; then
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/pake-${_appname_lower}.png" \
+            "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${_appname_lower}_512.png"
     fi
     
     # Install license
