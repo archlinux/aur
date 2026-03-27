@@ -18,11 +18,11 @@ sha256sums=(
 )
 
 package() {
-  install -Dm755 "    ${APPIMAGE_NAME}" "    ${pkgdir}/usr/bin/dev_type"
+  install -Dm755 "dev_type-${pkgver}-x86_64.AppImage" "${pkgdir}/usr/bin/dev_type"
 
-  install -Dm644 "    ${srcdir}/dev_type.png"     "    ${pkgdir}/usr/share/icons/hicolor/256x256/apps/dev_type.png"
+  install -Dm644 "${srcdir}/dev_type.png"     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/dev_type.png"
 
-  install -Dm644 /dev/stdin "    ${pkgdir}/usr/share/applications/dev_type.desktop" <<'EOF2'
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/dev_type.desktop" <<'EOF2'
 [Desktop Entry]
 Name=Dev Type
 Exec=dev_type
