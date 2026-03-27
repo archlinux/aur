@@ -28,9 +28,9 @@ makedepends=(
   unordered_dense-git
 )
 source=(
-  "git+https://github.com/InCom-0/incplot.git#tag=5d673e8c5624a8e08c691dbb0064bb7122dac275"
+  "git+https://github.com/InCom-0/incplot.git#tag=06e773c585621247792397c618f0530dcf9919b6"
 
-  "git+https://github.com/InCom-0/incplot-lib.git#tag=31c11b3e85d3720c03691b7737d9f75cee303815"
+  "git+https://github.com/InCom-0/incplot-lib.git#tag=9c5a812d44fbf490b5b9603ae00ccf3ebe856bf5"
   "git+https://github.com/InCom-0/incstd.git#tag=815a2a38d23441f9de1015b79b5e3c05bafbb157"
   "git+https://github.com/MiSo1289/more_concepts.git#tag=ea5b6815f5929cdb086f76d43f3e9b122bbcaaeb"
   "git+https://github.com/InCom-0/incerr.git#tag=e58ddf602e1f475e6da86c3795d194c1e47abfdf"
@@ -51,7 +51,7 @@ sha512sums=('462be32ec2867eb925f8b441e30b53d8be139017f0824a8be36aab017f2464a806d
             '79b4a4e55bce1ac0c6cc8a7f793b440d22d430740a7ededb9c325a70d5391de1e0015d932eee72d89dc7a20bb1b76de57f2c4bd480fd5dfe10a73cbf850890b8'
             '45491f4fef8bcb97bfca4bb6611051546952df7cdb6c4163daeaf52078a3f60e16644e75598d1845bf87af39ca91d620519f336cad0bdacf42c6c645f100ec5f'
             '50caa7d55c44ce94c3518a5184d58ebbfa7d6ce798aa2db3187855e742f46419c2d9b07da89f3ed80022527c5814b0f153c4054dce420c25d06cc99ae989ff17'
-            'cc82e2965896f0b6ffb7d0acdcfc7c1382648a8318a11f3eab3314e9c4c964508af09edcb22bfcdd38c633531b5b272d67bd455482e7128c431fee63a469340e'
+            'cc82e2965896f0b6ffb7d0acdcfc7c1382648a8318a11f3eab3314e9c4c964508af09edcb22bfcdd38c633531b5b272d67bd455482e7128c431fee63a469340e'         
 )
 
 build() {
