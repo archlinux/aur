@@ -1,0 +1,12 @@
+pkgbase = jai
+	pkgdesc = Light-weight sandbox for AI agents
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://jai.scs.stanford.edu/
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	source = https://github.com/stanford-scs/jai/releases/download/v0.2/jai-0.2.tar.gz
+	b2sums = 975bdf0416b40a715b65e2f615d6b4a3cc4fecd9b0af3423958bde224205353428deffc434fc5f406587bb14895ab7ecbc197184c9430ded6fe00cc7e81214f2
+
+pkgname = jai
