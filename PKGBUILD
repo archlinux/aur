@@ -1,6 +1,6 @@
 # Maintainer: jakeb-grant
 pkgname=pane-fm-git
-pkgver=0.1.2.r0.g97591b4
+pkgver=0.1.3.r0.gf353ff0
 pkgrel=1
 pkgdesc="A themeable file manager built with Tauri and Svelte"
 arch=('x86_64')
@@ -12,12 +12,13 @@ depends=(
     'libsoup3'
 )
 optdepends=(
+    'zstd: .tar.zst archive support'
     'udisks2: drive mounting from sidebar'
     'poppler: PDF preview (pdftoppm)'
     'nerd-fonts: file/folder icons'
     'inter-font: UI font'
 )
-makedepends=('cargo' 'bun' 'git' 'pkgconf' 'zstd' 'xz' 'bzip2')
+makedepends=('cargo' 'bun' 'git')
 provides=('pane-fm')
 conflicts=('pane-fm')
 source=("git+https://github.com/jakeb-grant/pane-fm.git")
