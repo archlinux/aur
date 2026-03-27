@@ -1,7 +1,7 @@
 # Maintainer: Pater Kleomenis <paterkleomenis@protonmail.com>
 pkgname=connected-desktop-bin
 _pkgname=connected-desktop
-pkgver=2.7.0
+pkgver=2.7.1
 pkgrel=1
 pkgdesc="High-speed, offline, cross-platform ecosystem bridging devices (Binary)"
 arch=('x86_64')
@@ -10,13 +10,13 @@ license=('MIT' 'Apache-2.0')
 depends=('gtk3' 'webkit2gtk-4.1' 'libappindicator-gtk3' 'openssl' 'dbus')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-git")
-source=("connected-desktop-${pkgver}::https://github.com/paterkleomenis/connected/releases/download/${pkgver}/connected-desktop"
+source=("connected-desktop-${pkgver}::https://github.com/paterkleomenis/connected/releases/download/v${pkgver}/connected-desktop"
         "https://raw.githubusercontent.com/paterkleomenis/connected/main/packaging/connected-desktop.desktop"
         "https://raw.githubusercontent.com/paterkleomenis/connected/main/android/app/src/main/ic_launcher-playstore.png"
         "https://raw.githubusercontent.com/paterkleomenis/connected/main/LICENSE-MIT"
         "https://raw.githubusercontent.com/paterkleomenis/connected/main/LICENSE-APACHE")
 
-sha256sums=('ba3b1039a43da304a51d15144ad88c0dd2e53ea7e9cd3028602aefd5dceacaf2'
+sha256sums=('caa391edc48fc905deef5b72b5a6bdaa1c74ab8623ef2f8b59f97c0a688ecb24'
             'baf3b2e0d55d9fcb23630a7a6c0eff68eb9b708f8f0ce8e698dcf8ea611666ad'
             '9e0b561ca05d47281fe703e6d85cb2086781b3815b267c50e4f82b2186f59a90'
             'fdc5b45803bf8f5d4435509da25399414072b3d95badd6b09b2e84c2f1f198d5'
