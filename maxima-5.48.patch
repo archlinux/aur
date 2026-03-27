@@ -29,6 +29,16 @@ index b6243b64dbc..fb7339ba0b1 100644
      sage: integrate(1/x^2, x, 1, infinity)
      1
  
+@@ -257,8 +257,7 @@ is one way to compute LT's and
+     (s, t)
+     sage: f = t^5*exp(t)*sin(t)
+     sage: L = laplace(f, t, s); L
+-    3840*(s - 1)^5/(s^2 - 2*s + 2)^6 - 3840*(s - 1)^3/(s^2 - 2*s + 2)^5 +
+-    720*(s - 1)/(s^2 - 2*s + 2)^4
++    240*(3*s^5 - 15*s^4 + 20*s^3 - 12*s + 4)/(s^12 - 12*s^11 + 72*s^10 - 280*s^9 + 780*s^8 - 1632*s^7 + 2624*s^6 - 3264*s^5 + 3120*s^4 - 2240*s^3 + 1152*s^2 - 384*s + 64)
+ 
+ is another way.
+ 
 diff --git a/src/doc/zh/constructions/calculus.rst b/src/doc/zh/constructions/calculus.rst
 index 9f896a4658b..2b83dc19b45 100644
 --- a/src/doc/zh/constructions/calculus.rst
@@ -42,8 +52,18 @@ index 9f896a4658b..2b83dc19b45 100644
      sage: integrate(1/x^2, x, 1, infinity)
      1
  
+@@ -241,8 +241,7 @@ Sage 还可以计算涉及极限的符号定积分。
+     (s, t)
+     sage: f = t^5*exp(t)*sin(t)
+     sage: L = laplace(f, t, s); L
+-    3840*(s - 1)^5/(s^2 - 2*s + 2)^6 - 3840*(s - 1)^3/(s^2 - 2*s + 2)^5 +
+-    720*(s - 1)/(s^2 - 2*s + 2)^4
++    240*(3*s^5 - 15*s^4 + 20*s^3 - 12*s + 4)/(s^12 - 12*s^11 + 72*s^10 - 280*s^9 + 780*s^8 - 1632*s^7 + 2624*s^6 - 3264*s^5 + 3120*s^4 - 2240*s^3 + 1152*s^2 - 384*s + 64)
+ 
+ 上面是另一种方法。
+ 
 diff --git a/src/sage/calculus/calculus.py b/src/sage/calculus/calculus.py
-index 980d2569e03..03f7b6d2d88 100644
+index 1d01c0d34cf..9a2db563ace 100644
 --- a/src/sage/calculus/calculus.py
 +++ b/src/sage/calculus/calculus.py
 @@ -133,8 +133,8 @@ including exponentiation::
@@ -80,7 +100,7 @@ index aa084799a10..e081e9674d9 100644
      2*cos(2*x)
      sage: diff(sin(2*x), x, 2)
 diff --git a/src/sage/calculus/tests.py b/src/sage/calculus/tests.py
-index 2879dda115d..abdbbad932e 100644
+index 905a0e5782f..59e43bb46d6 100644
 --- a/src/sage/calculus/tests.py
 +++ b/src/sage/calculus/tests.py
 @@ -119,7 +119,7 @@ No problems here::
@@ -120,7 +140,7 @@ index db32eebe381..056bceaf49c 100644
          0.0217627632692163 + 0.0224001906110906*I
          sage: integrate(spherical_hankel2(3, x), x)
 diff --git a/src/sage/interfaces/maxima.py b/src/sage/interfaces/maxima.py
-index 154a2cc34e0..1eebc46e03a 100644
+index 9df024abf39..b045031563c 100644
 --- a/src/sage/interfaces/maxima.py
 +++ b/src/sage/interfaces/maxima.py
 @@ -194,7 +194,7 @@ Here is an example of solving an algebraic equation::
@@ -282,10 +302,10 @@ index 5866b955bb0..e7c1da2a277 100644
          return self.partfrac(var)
  
 diff --git a/src/sage/interfaces/maxima_lib.py b/src/sage/interfaces/maxima_lib.py
-index 1b1172f0afc..b406fd1ba89 100644
+index 3d27bd834b5..7701fe3d958 100644
 --- a/src/sage/interfaces/maxima_lib.py
 +++ b/src/sage/interfaces/maxima_lib.py
-@@ -164,7 +164,7 @@ ecl_eval("(initialize-runtime-globals)")
+@@ -168,7 +168,7 @@ ecl_eval("(initialize-runtime-globals)")
  ecl_eval("(setq $nolabels t))")
  ecl_eval("(defun add-lineinfo (x) x)")
  ecl_eval(r"(defun tex-derivative (x l r) (tex (if $derivabbrev (tex-dabbrev x) (tex-d x '\\partial)) l r lop rop ))")
@@ -294,7 +314,7 @@ index 1b1172f0afc..b406fd1ba89 100644
  ecl_eval("(remprop 'mfactorial 'grind)")  # don't use ! for factorials (#11539)
  ecl_eval("(setf $errormsg nil)")
  
-@@ -1224,6 +1224,8 @@ sage_op_dict = {
+@@ -1228,6 +1228,8 @@ sage_op_dict = {
      sage.functions.error.erf: "%ERF",
      sage.functions.gamma.gamma_inc: "%GAMMA_INCOMPLETE",
      sage.functions.other.conjugate: "$CONJUGATE",
@@ -446,10 +466,10 @@ index 57dc1c99862..e7c7aaebeea 100644
                y == y  *passed*
              NB: a failed report can reflect a mere lack of simplification.
 diff --git a/src/sage/manifolds/utilities.py b/src/sage/manifolds/utilities.py
-index b1eed3b8b2e..57b35bef6cc 100644
+index 8adfe33b991..693d01736b8 100644
 --- a/src/sage/manifolds/utilities.py
 +++ b/src/sage/manifolds/utilities.py
-@@ -225,10 +225,10 @@ class SimplifyAbsTrig(ExpressionTreeWalker):
+@@ -226,10 +226,10 @@ class SimplifyAbsTrig(ExpressionTreeWalker):
          sage: a = abs(cos(x)) + abs(sin(x))
  
      The method :meth:`~sage.symbolic.expression.Expression.simplify_full()`
@@ -462,7 +482,7 @@ index b1eed3b8b2e..57b35bef6cc 100644
  
      We construct a :class:`SimplifyAbsTrig` object ``s`` from the symbolic
      expression ``a``::
-@@ -436,9 +436,9 @@ def simplify_abs_trig(expr):
+@@ -437,9 +437,9 @@ def simplify_abs_trig(expr):
  
          sage: s = abs(sin(x)) + abs(sin(y)) + abs(sin(3*z))
          sage: s.simplify_trig()
@@ -474,7 +494,7 @@ index b1eed3b8b2e..57b35bef6cc 100644
  
      despite the following assumptions hold::
  
-@@ -571,10 +571,10 @@ def simplify_chain_real(expr):
+@@ -572,10 +572,10 @@ def simplify_chain_real(expr):
          sage: s = abs(sin(pi*x))
          sage: simplify_chain_real(s)  # correct output since x in (0,1)
          sin(pi*x)
@@ -490,11 +510,11 @@ index b1eed3b8b2e..57b35bef6cc 100644
      ::
  
 diff --git a/src/sage/matrix/matrix2.pyx b/src/sage/matrix/matrix2.pyx
-index 63102fb380b..e922b2d57f3 100644
+index e5afd226aee..5cb158c18e7 100644
 --- a/src/sage/matrix/matrix2.pyx
 +++ b/src/sage/matrix/matrix2.pyx
-@@ -16669,8 +16669,8 @@ cdef class Matrix(Matrix1):
-             sage: # needs sage.symbolic
+@@ -16531,8 +16531,8 @@ cdef class Matrix(Matrix1):
+ 
              sage: a = matrix([[1,2], [3,4]])
              sage: a.exp()
 -            [-1/22*((sqrt(33) - 11)*e^sqrt(33) - sqrt(33) - 11)*e^(-1/2*sqrt(33) + 5/2)              2/33*(sqrt(33)*e^sqrt(33) - sqrt(33))*e^(-1/2*sqrt(33) + 5/2)]
@@ -505,7 +525,7 @@ index 63102fb380b..e922b2d57f3 100644
              sage: type(a.exp())                                                         # needs sage.symbolic
              <class 'sage.matrix.matrix_symbolic_dense.Matrix_symbolic_dense'>
 diff --git a/src/sage/misc/functional.py b/src/sage/misc/functional.py
-index 07170cde870..9ac3a8b6658 100644
+index 65a35b45a53..74ecc2198a6 100644
 --- a/src/sage/misc/functional.py
 +++ b/src/sage/misc/functional.py
 @@ -721,9 +721,7 @@ def integral(x, *args, **kwds):
@@ -529,10 +549,10 @@ index 07170cde870..9ac3a8b6658 100644
          sage: U.<x,y,z> = PolynomialRing(ZZ, 3); U
          Multivariate Polynomial Ring in x, y, z over Integer Ring
 diff --git a/src/sage/symbolic/expression.pyx b/src/sage/symbolic/expression.pyx
-index 90fa44941c3..f82fea0e280 100644
+index 103cd40eed5..07d1b8dbb80 100644
 --- a/src/sage/symbolic/expression.pyx
 +++ b/src/sage/symbolic/expression.pyx
-@@ -13016,21 +13016,21 @@ cdef class Expression(Expression_abc):
+@@ -13019,21 +13019,21 @@ cdef class Expression(Expression_abc):
          Check that the sum in :issue:`10682` is done right::
  
              sage: sum(binomial(n,k)*k^2, k, 2, n)
@@ -557,7 +577,7 @@ index 90fa44941c3..f82fea0e280 100644
              sage: forget()
              sage: assume(j==-1)
              sage: sum(binomial(n,k)*binomial(k-1,j)*(-1)**(k-1-j),k,j+1,n)
-@@ -13038,7 +13038,7 @@ cdef class Expression(Expression_abc):
+@@ -13041,7 +13041,7 @@ cdef class Expression(Expression_abc):
              sage: forget()
              sage: assume(j<-1)
              sage: sum(binomial(n,k)*binomial(k-1,j)*(-1)**(k-1-j),k,j+1,n)
@@ -585,10 +605,10 @@ index c99676c0b88..105e8e3bbbd 100644
      from sage.calculus.calculus import maxima
      if not isinstance(expression, Expression):
 diff --git a/src/sage/symbolic/integration/integral.py b/src/sage/symbolic/integration/integral.py
-index b3d1dd1c2bf..1002343e884 100644
+index 8afaa967ef7..9641db1d030 100644
 --- a/src/sage/symbolic/integration/integral.py
 +++ b/src/sage/symbolic/integration/integral.py
-@@ -614,10 +614,7 @@ def integrate(expression, v=None, a=None, b=None, algorithm=None, hold=False):
+@@ -615,10 +615,7 @@ def integrate(expression, v=None, a=None, b=None, algorithm=None, hold=False):
                   x y  + Sqrt[--] FresnelS[Sqrt[--] x]
                               2                 Pi
          sage: print(f.integral(x))
@@ -600,7 +620,7 @@ index b3d1dd1c2bf..1002343e884 100644
  
      Alternatively, just use algorithm='mathematica_free' to integrate via Mathematica
      over the internet (does NOT require a Mathematica license!)::
-@@ -1011,8 +1008,8 @@ def integrate(expression, v=None, a=None, b=None, algorithm=None, hold=False):
+@@ -1014,8 +1011,8 @@ def integrate(expression, v=None, a=None, b=None, algorithm=None, hold=False):
          sage: f = log(sin(x))*sin(x)^2
          sage: g = integrate(f, x) ; g
          1/4*I*x^2
@@ -610,7 +630,7 @@ index b3d1dd1c2bf..1002343e884 100644
          - 1/4*x*log(cos(x)^2 + sin(x)^2 + 2*cos(x) + 1)
          - 1/4*x*log(cos(x)^2 + sin(x)^2 - 2*cos(x) + 1)
          + 1/4*(2*x - sin(2*x))*log(sin(x))
-@@ -1036,7 +1033,7 @@ def integrate(expression, v=None, a=None, b=None, algorithm=None, hold=False):
+@@ -1039,7 +1036,7 @@ def integrate(expression, v=None, a=None, b=None, algorithm=None, hold=False):
          sage: assume(a > 0)
          sage: assume(a < 1)
          sage: integrate(x*log(1/(a*x+(1-x)^2)), x, 0, 1, algorithm='maxima')
@@ -620,10 +640,10 @@ index b3d1dd1c2bf..1002343e884 100644
      Check that :issue:`25905` is fixed::
  
 diff --git a/src/sage/symbolic/relation.py b/src/sage/symbolic/relation.py
-index 38e0abd9f18..b5eb89fb8e2 100644
+index 8fada2b4e9b..02cfc43f282 100644
 --- a/src/sage/symbolic/relation.py
 +++ b/src/sage/symbolic/relation.py
-@@ -1300,20 +1300,6 @@ def _solve_expression(f, x, explicit_solutions, multiplicities,
+@@ -1338,20 +1338,6 @@ def _solve_expression(f, x, explicit_solutions, multiplicities,
          sage: (x^2>1).solve(x)
          [[x < -1], [x > 1]]
  
@@ -644,10 +664,10 @@ index 38e0abd9f18..b5eb89fb8e2 100644
      :issue:`7491` fixed::
  
          sage: y = var('y')
-diff --git a/src/sage/tests/books/computational-mathematics-with-sagemath/calculus_doctest.py b/src/sage/tests/books/computational-mathematics-with-sagemath/calculus_doctest.py
+diff --git a/src/sage/tests/books/computational_mathematics_with_sagemath/calculus_doctest.py b/src/sage/tests/books/computational_mathematics_with_sagemath/calculus_doctest.py
 index b5531b112b4..15f74fe5779 100644
---- a/src/sage/tests/books/computational-mathematics-with-sagemath/calculus_doctest.py
-+++ b/src/sage/tests/books/computational-mathematics-with-sagemath/calculus_doctest.py
+--- a/src/sage/tests/books/computational_mathematics_with_sagemath/calculus_doctest.py
++++ b/src/sage/tests/books/computational_mathematics_with_sagemath/calculus_doctest.py
 @@ -256,7 +256,7 @@ Sage example in ./calculus.tex, line 1062::
  Sage example in ./calculus.tex, line 1086::
  

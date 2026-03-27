@@ -1,8 +1,8 @@
 diff --git a/src/sage/features/latte.py b/src/sage/features/latte.py
-index 9370d5e1ecc..6fb8273a509 100644
+index 8f7dc23fee8..a6c13260d80 100644
 --- a/src/sage/features/latte.py
 +++ b/src/sage/features/latte.py
-@@ -35,7 +35,7 @@ class Latte_count(Executable):
+@@ -34,7 +34,7 @@ class Latte_count(Executable):
              sage: isinstance(Latte_count(), Latte_count)
              True
          """
