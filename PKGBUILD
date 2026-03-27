@@ -3,8 +3,8 @@
 pkgbase='zl-splitter'
 pkgname=('zl-splitter-vst3' 'zl-splitter-lv2' 'zl-splitter')
 groups=('zl-audio' 'pro-audio')
-pkgver=0.2.1
-pkgrel=3
+pkgver=0.3.0
+pkgrel=1
 options=()
 pkgdesc="Sidechain and oversample capable splitter plugin by ZL Audio"
 arch=('x86_64')
@@ -14,9 +14,9 @@ depends=('alsa-lib' 'libx11' 'libxinerama' 'libxext' 'freetype2' 'fontconfig' 'w
 makedepends=('git' 'cmake')
 
 source=("git+https://github.com/ZL-Audio/ZLSplitter#tag=${pkgver}"
-		"git+https://github.com/ZL-Audio/JUCE#tag=6bd3353")
-sha256sums=('b098ba5c365a9318eed3f07f8b02b4b8235703ec521bd22a2a2280d3d5756e6c'
-            '2adccbf0b7e52a90a16956955dbbef14924af56086157cfbef7607ac83faf4e5')
+		"git+https://github.com/ZL-Audio/JUCE#tag=682426c")
+sha256sums=('04031f27982ab58b341a5beb496b52a4f905cb9cf8349904af18192256a795a9'
+            '945b8ce25a0c515d3f143156a9b40e76af4ab092627b94547369fb813ba03558')
 
 prepare() {
 	cd ZLSplitter
