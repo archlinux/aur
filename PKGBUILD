@@ -1,6 +1,6 @@
 pkgname=plotune-bin
-pkgver=1.0.52
-pkgrel=2
+pkgver=1.0.58
+pkgrel=1
 pkgdesc="Plotune – Modular data operations and signal orchestration platform"
 arch=('x86_64')
 url="https://www.plotune.net"
@@ -17,6 +17,10 @@ depends=(
   'libxkbcommon-x11'
   'mesa'
   'hicolor-icon-theme'
+  'uv'
+  'python'
+  'qt6-base'
+  'qt6-svg'
 )
 
 options=(!strip)
@@ -32,21 +36,23 @@ sha256sums=('SKIP' 'SKIP' 'SKIP')
 package() {
   cd "$srcdir/plotune-linux-x86_64"
 
-  # Binary
-  install -Dm755 plotune "$pkgdir/usr/bin/plotune"
+  install -d "$pkgdir/usr/lib/plotune"
 
-  # Assets
-  install -d "$pkgdir/usr/share/plotune"
-  cp -r assets "$pkgdir/usr/share/plotune/"
+  install -Dm755 plotune "$pkgdir/usr/lib/plotune/plotune"
 
-  # Desktop entry
+  cp -r core    "$pkgdir/usr/lib/plotune/core"
+  cp -r futures "$pkgdir/usr/lib/plotune/futures"
+  cp -r assets  "$pkgdir/usr/lib/plotune/assets"
+
+  install -d "$pkgdir/usr/bin"
+  ln -s /usr/lib/plotune/plotune "$pkgdir/usr/bin/plotune"
+
   install -Dm644 "$srcdir/plotune.desktop" \
     "$pkgdir/usr/share/applications/plotune.desktop"
 
   install -Dm644 "$srcdir/plotune-mime.xml" \
     "$pkgdir/usr/share/mime/packages/plotune.xml"
 
-  # Icon (standard freedesktop path)
   install -Dm644 assets/logo.png \
     "$pkgdir/usr/share/icons/hicolor/256x256/apps/plotune.png"
 }
