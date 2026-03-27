@@ -1,7 +1,7 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=purple-git
 _pkgname=purple
-pkgver=2.3.0
+pkgver=v2.13.0.r2.g7d01f4e
 pkgrel=1
 pkgdesc='TUI to search, connect and manage SSH servers. Visual file transfer, cloud sync (10 providers), password management. Edits ~/.ssh/config directly.'
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')

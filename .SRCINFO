@@ -1,6 +1,6 @@
 pkgbase = purple-git
 	pkgdesc = TUI to search, connect and manage SSH servers. Visual file transfer, cloud sync (10 providers), password management. Edits ~/.ssh/config directly.
-	pkgver = 2.3.0
+	pkgver = v2.13.0.r2.g7d01f4e
 	pkgrel = 1
 	url = https://github.com/erickochen/purple
 	arch = x86_64
