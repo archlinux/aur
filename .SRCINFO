@@ -1,6 +1,6 @@
 pkgbase = cursor-ide
 	pkgdesc = The AI Code Editor
-	pkgver = 2.6.21
+	pkgver = 2.6.22
 	pkgrel = 1
 	url = https://www.cursor.com
 	arch = x86_64
@@ -20,13 +20,13 @@ pkgbase = cursor-ide
 	optdepends = org.freedesktop.secrets: credential storage via SecretService
 	optdepends = libdbusmenu-glib: KDE global menu support
 	provides = cursor
-	noextract = cursor_2.6.21_amd64.deb
+	noextract = cursor_2.6.22_amd64.deb
 	options = !strip
 	options = !debug
-	source = cursor_2.6.21_amd64.deb::https://downloads.cursor.com/production/fea2f546c979a0a4ad1deab23552a43568807592/linux/x64/deb/amd64/deb/cursor_2.6.21_amd64.deb
+	source = cursor_2.6.22_amd64.deb::https://downloads.cursor.com/production/c6285feaba0ad62603f7c22e72f0a170dc8415a5/linux/x64/deb/amd64/deb/cursor_2.6.22_amd64.deb
 	source = cursor.desktop
 	source = cursor-launcher.sh
-	sha256sums = ebc615d467ec2d7c327196492612c96cf78b79e2897d9f6e708aacc68aba6b18
+	sha256sums = 2af873096282e927702c11575c960bdef5a104a931952e5c97e29d501e03f617
 	sha256sums = SKIP
 	sha256sums = SKIP
 
