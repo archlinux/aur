@@ -1,6 +1,6 @@
 # Maintainer: Yves Gugger <yves@pounce.ch>
 pkgname=lean-ctx
-pkgver=2.5.3
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Context Intelligence Engine with CEP + CCP — 21 MCP tools, 90+ shell patterns, Cognitive Efficiency Protocol, cross-session memory, LITM-aware positioning, tree-sitter AST (14 languages). Reduces LLM token consumption by up to 99%."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 makedepends=('cargo' 'gcc')
 depends=('gcc-libs')
 source=("$pkgname-$pkgver.crate::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha256sums=('97a89c145fd2c4705a371ebc0f0858068dd74e0370cad627e57b2f0d17bf5e61')
+sha256sums=('99213c02d9fecc0ff78ad0dfa30035e0ecd9ca0ec9fb416c19a1d6d0a1619da8')
 
 prepare() {
   cd "$pkgname-$pkgver"
