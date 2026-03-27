@@ -1,7 +1,6 @@
 pkgname=hermes-desktop
 pkgver=0.1.2
 pkgrel=1
-_commit=418773c128790db07c5a900bfb6283918ed87e3f
 pkgdesc="Native speech-to-text desktop app"
 arch=('x86_64' 'aarch64')
 url="https://github.com/adityamiskin/hermes"
@@ -20,7 +19,7 @@ depends=(
 )
 makedepends=('bun' 'cargo' 'git')
 source=(
-  "git+https://github.com/adityamiskin/hermes.git#commit=${_commit}"
+  "git+https://github.com/adityamiskin/hermes.git#tag=v${pkgver}"
   "hermes-desktop.desktop"
 )
 sha256sums=('SKIP' 'SKIP')

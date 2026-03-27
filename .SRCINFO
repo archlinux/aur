@@ -19,7 +19,7 @@ pkgbase = hermes-desktop
 	depends = alsa-lib
 	depends = wl-clipboard
 	options = !lto
-	source = git+https://github.com/adityamiskin/hermes.git#commit=418773c128790db07c5a900bfb6283918ed87e3f
+	source = git+https://github.com/adityamiskin/hermes.git#tag=v0.1.2
 	source = hermes-desktop.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
