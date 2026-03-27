@@ -1,0 +1,17 @@
+pkgbase = librdata-git
+	pkgdesc = RData file parser library
+	pkgver = r125.33bd276
+	pkgrel = 1
+	url = https://github.com/WizardMac/librdata
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = gettext
+	depends = gcc-libs
+	source = git+https://github.com/WizardMac/librdata.git
+	sha256sums = SKIP
+
+pkgname = librdata-git
