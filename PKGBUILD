@@ -4,11 +4,11 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=librsvg-git
-pkgver=2.62.0
+pkgver=2.62.0.r14.gcd744e2c8
 pkgrel=1
 epoch=2
 pkgdesc="SVG rendering library"
-url="https://wiki.gnome.org/Projects/LibRsvg"
+url="https://gitlab.gnome.org/GNOME/librsvg"
 arch=(x86_64)
 license=(LGPL-2.1-or-later)
 depends=(
