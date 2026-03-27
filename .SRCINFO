@@ -1,6 +1,6 @@
 pkgbase = qt6-wasm
 	pkgdesc = A cross-platform application and UI framework for WebAssembly
-	pkgver = 6.10.2
+	pkgver = 6.11.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -12,22 +12,23 @@ pkgbase = qt6-wasm
 	license = custom
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = qt6-base=6.10.2
-	makedepends = qt6-shadertools=6.10.2
-	makedepends = qt6-declarative=6.10.2
-	makedepends = qt6-quick3d=6.10.2
-	makedepends = qt6-tools=6.10.2
-	makedepends = qt6-remoteobjects=6.10.2
-	makedepends = qt6-scxml=6.10.2
+	makedepends = qt6-base=6.11.0
+	makedepends = qt6-shadertools=6.11.0
+	makedepends = qt6-declarative=6.11.0
+	makedepends = qt6-quick3d=6.11.0
+	makedepends = qt6-tools=6.11.0
+	makedepends = qt6-remoteobjects=6.11.0
+	makedepends = qt6-scxml=6.11.0
+	makedepends = qt6-canvaspainter=6.11.0
 	depends = python
 	options = !strip
 	options = staticlibs
 	options = !buildflags
 	options = !makeflags
-	source = https://download.qt.io/official_releases/qt/6.10/6.10.2/single/qt-everywhere-src-6.10.2.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.11/6.11.0/single/qt-everywhere-src-6.11.0.tar.xz
 	source = https://github.com/emscripten-core/emsdk/archive/refs/tags/4.0.7.tar.gz
 	source = qtwasm_env.sh
-	sha256sums = c3df0f0e421130cc52ed81cb712358804471ce9bd2a41d97828f9f5b1bf7fed2
+	sha256sums = acf3b3db04c9e5d0820e8324b097320388954c297cee83d2bd698789234f68a4
 	sha256sums = b7262c64f4b5f0692f3bab063cafb09682495f98355677a3f1373d0520457bad
 	sha256sums = 9dba88f1628175272c2509a7d823155ae35021a45532240c19941fa681ebb865
 
