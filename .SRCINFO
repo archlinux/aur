@@ -1,8 +1,8 @@
-pkgbase = nucleus-cli
+pkgbase = nucleus-shell
 	pkgdesc = A blazingly fast cli/ctl for nucleus-shell
 	pkgver = 0.2.0
 	pkgrel = 1
-	url = https://github.com/nucleus-hq/nucleus-shell
+	url = https://github.com/nucleus-hq/nucleus-cli
 	arch = x86_64
 	license = MIT
 	license = GPL3
@@ -16,4 +16,4 @@ pkgbase = nucleus-cli
 	source = git+https://github.com/nucleus-hq/nucleus-cli.git
 	sha256sums = SKIP
 
-pkgname = nucleus-cli
+pkgname = nucleus-shell
