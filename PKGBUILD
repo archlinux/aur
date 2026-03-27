@@ -2,7 +2,7 @@
 
 pkgname=tparted-bin
 pkgver=2026.03.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Text-based user interface (TUI) frontend for parted, based on Free Vision application framework."
 arch=(x86_64)
 url="https://github.com/Kagamma/tparted"
@@ -19,6 +19,7 @@ optdepends=('dosfstools: for fat operations'
             'f2fs-tools: for f2fs operations'
             'nilfs-utils: for nilfs2 operations'
             'cryptsetup: LUKS')
+conflicts=(tparted-git tparted-git-debug)
 source=(https://github.com/Kagamma/tparted/releases/download/2026-03-26_1/linux_x86-64_tparted_2026-03-26_1.tar.gz)
 sha256sums=(c93eac8155af6f5bb027d6f699811d0a4765d153eb3e96ae2db2a33220a838aa)
 
