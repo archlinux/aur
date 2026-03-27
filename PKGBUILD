@@ -1,7 +1,7 @@
 # Maintainer: Trey Blancher $(base64 -d <<< dHJleUBibGFuY2hlci5uZXQK)
 pkgname=newrelic-infra-bin
 _pkg=${pkgname//-bin/}
-pkgver=1.72.8
+pkgver=1.72.9
 pkgrel=1
 pkgdesc="New Relic - All-in-On Observability - infrastructure agent"
 arch=('aarch64' 'armv7h' 'x86_64')
@@ -17,11 +17,11 @@ source_aarch64=("https://github.com/newrelic/infrastructure-agent/releases/downl
 source_armv7h=("https://github.com/newrelic/infrastructure-agent/releases/download/${pkgver}/${_pkg}_linux_${pkgver}_arm.tar.gz"{,.asc})
 source_x86_64=("https://github.com/newrelic/infrastructure-agent/releases/download/${pkgver}/${_pkg}_linux_${pkgver}_amd64.tar.gz"{,.asc})
 sha256sums=('60f2a31b2d461f029c786a18f1feb393c1a5e43beac520b1c7d5e12b45590ae0')
-sha256sums_aarch64=('c796d14029680e1b5f17e313dc304e541df21a05c8fc5858ad97292be34a6b76'
+sha256sums_aarch64=('402daa03f864f04387e079730822a1f7d53ce0cde23eb31053dbb067867e0cb8'
                     'SKIP')
-sha256sums_armv7h=('205d6fd7fcba5c5da95c98719cc64b0346f69f68d5ca6ab71fb4068b413ec464'
+sha256sums_armv7h=('229ddb18f9af6c92065430278be9b284000343a224de9cf47b6e2bc630ad3430'
                    'SKIP')
-sha256sums_x86_64=('991bb220831be2ec81b1580b58deb51b0d43e0067397fb9b4b6189ac9af16f3b'
+sha256sums_x86_64=('2a3c1a9a861bc46dc0d501671d966d2237eb67f4882796d1f5245e37fa28f421'
                    'SKIP')
 validpgpkeys=('A758B3FBCD43BE8D123A3476BB29EE038ECCE87C'
               'D3EEEEE880A91DEE209A82CC4F9A9B5B96EC30B9')
