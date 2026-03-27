@@ -1,6 +1,6 @@
 pkgbase = winegui
 	pkgdesc = A user-friendly WINE graphical interface (build from source)
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://gitlab.melroy.org/melroy/winegui
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = winegui
 	depends = zenity
 	optdepends = ccache: Speeds up rebuilds
 	optdepends = graphviz
-	source = https://winegui.melroy.org/downloads/WineGUI-Source-v3.0.0.tar.gz
-	sha256sums = 2956c9248363711912346540dd432627b377cd62749679f1616a073c12bd7c8c
+	source = https://winegui.melroy.org/downloads/WineGUI-Source-v3.1.0.tar.gz
+	sha256sums = 46990401a895410d123206681e0af3da6c489c2f6fce13a251c08e3ed6adf7e2
 
 pkgname = winegui
