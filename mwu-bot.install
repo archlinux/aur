@@ -8,7 +8,7 @@ ALPACA_KEY_ID=CHANGE_ME
 ALPACA_SECRET_KEY=CHANGE_ME
 ALPACA_PAPER=true
 EOF
-        chmod 600 /opt/mwu-bot/.env
+        chmod 644 /opt/mwu-bot/.env
     fi
 
     echo "==> mwu-bot installed."
