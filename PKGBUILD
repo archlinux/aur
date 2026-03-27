@@ -1,9 +1,9 @@
 # Maintainer: sukanka <su975853527@gmail.com>
 
 _pkgname=bootnet
-_pkgver=1.7.1
+_pkgver=1.8
 pkgname=r-${_pkgname,,}
-pkgver=1.7.1
+pkgver=1.8
 pkgrel=1
 pkgdesc='Bootstrap Methods for Various Network Estimation Routines'
 arch=('any')
@@ -30,6 +30,7 @@ depends=(
   r-tibble
   r-tidyr
   r-tidyselect
+  r-mantar
 )
 optdepends=(
   r-bdgraph
@@ -42,7 +43,7 @@ optdepends=(
   r-relaimpo
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-sha256sums=('e496988fc446ba6d148447334d862e5d4d761452eb50c607ab128bad5b6cb16f')
+sha256sums=('267265d74ad04ab2c913b401fa8b13bdae244bff965e1fc60f822952973db41f')
 
 build() {
   R CMD INSTALL ${_pkgname}_${_pkgver}.tar.gz -l "${srcdir}"

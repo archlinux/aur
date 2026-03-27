@@ -1,6 +1,6 @@
 pkgbase = r-bootnet
 	pkgdesc = Bootstrap Methods for Various Network Estimation Routines
-	pkgver = 1.7.1
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://cran.r-project.org/package=bootnet
 	arch = any
@@ -25,6 +25,7 @@ pkgbase = r-bootnet
 	depends = r-tibble
 	depends = r-tidyr
 	depends = r-tidyselect
+	depends = r-mantar
 	optdepends = r-bdgraph
 	optdepends = r-ggmncv
 	optdepends = r-glasso
@@ -33,7 +34,7 @@ pkgbase = r-bootnet
 	optdepends = r-lavaan
 	optdepends = r-psychtools
 	optdepends = r-relaimpo
-	source = https://cran.r-project.org/src/contrib/bootnet_1.7.1.tar.gz
-	sha256sums = e496988fc446ba6d148447334d862e5d4d761452eb50c607ab128bad5b6cb16f
+	source = https://cran.r-project.org/src/contrib/bootnet_1.8.tar.gz
+	sha256sums = 267265d74ad04ab2c913b401fa8b13bdae244bff965e1fc60f822952973db41f
 
 pkgname = r-bootnet
