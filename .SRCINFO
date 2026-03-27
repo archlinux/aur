@@ -1,6 +1,6 @@
 pkgbase = oxfuse-ldc2
 	pkgdesc = High-level binding to libfuse3 for the D programming language
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 0
 	url = https://gitlab.com/os-18/oxfuse
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = oxfuse-ldc2
 	makedepends = ldc
 	depends = fuse3
 	depends = ldc
-	source = oxfuse-ldc2-0.8.0.tar.gz::https://gitlab.com/os-18/oxfuse/-/archive/v0.8.0/oxfuse-v0.8.0.tar.gz
-	sha256sums = b4ecceb99fde8da5d6be493508786d9f39027dd7efa1bd0f47476f0687787e53
+	source = oxfuse-ldc2-0.8.1.tar.gz::https://gitlab.com/os-18/oxfuse/-/archive/v0.8.1/oxfuse-v0.8.1.tar.gz
+	sha256sums = 14c67d769bb0de109e7570a22ed460632ea3f1e9cea3856e2243776e767e51f6
 
 pkgname = oxfuse-ldc2
