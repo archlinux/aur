@@ -2,9 +2,10 @@
 
 _pkgname="matlab-mpm-input"
 pkgname="${_pkgname}-git"
-pkgver=R2025b+r138.gb89b33e
-_release="${pkgver%%+*}"
-_version="${pkgver#*+}"
+pkgver=R2025b+r140.g202d7af+R2017b
+_latest="${pkgver%%+*}"
+_oldest="${pkgver##*+}"
+_pkgver="${_latest}+${_oldest}"
 pkgrel=1
 pkgdesc="MATLAB Package Manager (input files)"
 arch=(
@@ -22,9 +23,7 @@ makedepends=(
   'git'
 )
 provides=(
-  "${_pkgname}"
-  "${_pkgname}-release=${_release}"
-  "${_pkgname}-version=${_version}"
+  "${_pkgname}=${_pkgver}"
 )
 conflicts=(
   "${_pkgname}"
@@ -35,20 +34,41 @@ source=(
 )
 sha256sums=('SKIP')
 
+_releases=()
+for ((_year="${_oldest:1:4}"; _year<="${_latest:1:4}"; _year++)); do
+  for _suffix in a b; do
+    local _release="R${_year}${_suffix}"
+
+    # skip versions before oldest
+    [[ "${_release}" < "${_oldest}" ]] && continue
+    # stop after latest
+    [[ "${_release}" > "${_latest}" ]] && break 2
+
+    _releases+=(
+      "${_release}"
+    )
+    provides+=(
+      "matlab-${_release,,}-mpm-input=${_pkgver}"
+      "matlab-mpm-input-release=${_release}"
+    )
+  done
+done
+
 pkgver() {
   cd "${srcdir}/${_pkgsrc}"
-  local release="$(ls mpm-input-files | sort -V | tail -n1)"
+  local latest="$(ls mpm-input-files | sort -V | tail -n1)"
   local commmit="$(git rev-list --count HEAD)"
   local hash="$(git rev-parse --short HEAD)"
-  printf '%s+r%s.g%s' "${release}" "${commmit}" "${hash}"
+  local oldest="$(ls mpm-input-files | sort -V | head -n1)"
+  printf '%s+r%s.g%s+%s' "${latest}" "${commmit}" "${hash}" "${oldest}"
 }
 
 package() {
   cd "${srcdir}/${_pkgsrc}/mpm-input-files"
-  for rel in *; do
-    install -vDm644 "${rel}/mpm_input_${rel,,}.txt" \
-      "${pkgdir}/usr/share/matlab-mpm/input/${rel}.txt"
+  for _release in "${_releases[@]}"; do
+    install -vDm644 "${_release}/mpm_input_${_release,,}.txt" \
+      "${pkgdir}/usr/share/matlab-mpm/input/${_release}.txt"
   done
 
-  ln -vsf "${_release}.txt" "${pkgdir}/usr/share/matlab-mpm/input/latest.txt"
+  ln -vsf "${_latest}.txt" "${pkgdir}/usr/share/matlab-mpm/input/latest.txt"
 }

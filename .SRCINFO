@@ -1,15 +1,47 @@
 pkgbase = matlab-mpm-input-git
 	pkgdesc = MATLAB Package Manager (input files)
-	pkgver = R2025b+r138.gb89b33e
+	pkgver = R2025b+r140.g202d7af+R2017b
 	pkgrel = 1
 	url = https://www.mathworks.com/products/mpm.html
 	arch = any
 	license = custom:MATHWORKS CLOUD REFERENCE ARCHITECTURE LICENSE
 	makedepends = git
 	depends = matlab-mpm
-	provides = matlab-mpm-input
+	provides = matlab-mpm-input=R2025b+R2017b
+	provides = matlab-r2017b-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2017b
+	provides = matlab-r2018a-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2018a
+	provides = matlab-r2018b-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2018b
+	provides = matlab-r2019a-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2019a
+	provides = matlab-r2019b-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2019b
+	provides = matlab-r2020a-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2020a
+	provides = matlab-r2020b-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2020b
+	provides = matlab-r2021a-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2021a
+	provides = matlab-r2021b-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2021b
+	provides = matlab-r2022a-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2022a
+	provides = matlab-r2022b-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2022b
+	provides = matlab-r2023a-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2023a
+	provides = matlab-r2023b-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2023b
+	provides = matlab-r2024a-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2024a
+	provides = matlab-r2024b-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2024b
+	provides = matlab-r2025a-mpm-input=R2025b+R2017b
+	provides = matlab-mpm-input-release=R2025a
+	provides = matlab-r2025b-mpm-input=R2025b+R2017b
 	provides = matlab-mpm-input-release=R2025b
-	provides = matlab-mpm-input-version=r138.gb89b33e
 	conflicts = matlab-mpm-input
 	source = matlab-dockerfile::git+https://github.com/mathworks-ref-arch/matlab-dockerfile.git
 	sha256sums = SKIP
