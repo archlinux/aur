@@ -1,6 +1,6 @@
 pkgbase = flutter-bin
 	pkgdesc = Cross platform widget toolkit for Dart (monolithic)
-	pkgver = 3.41.5
+	pkgver = 3.41.6
 	pkgrel = 1
 	url = https://github.com/flutter/flutter
 	install = flutter.install
@@ -39,12 +39,12 @@ pkgbase = flutter-bin
 	conflicts = flutter-material-fonts
 	conflicts = flutter-sky-engine
 	conflicts = flutter-tool-developer
-	noextract = flutter-3.41.5.tar.xz
+	noextract = flutter-3.41.6.tar.xz
 	options = !emptydirs
 	options = !strip
 	options = !debug
-	source = flutter-3.41.5.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.41.5-stable.tar.xz
-	md5sums = 5d9e1f7ae732837f01d32ba1ade15b34
+	source = flutter-3.41.6.tar.xz::https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.41.6-stable.tar.xz
+	md5sums = 09fab6931f4da97c7eb20724189918b6
 
 pkgname = flutter-bin
 	depends = clang
