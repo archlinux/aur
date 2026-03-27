@@ -1,8 +1,8 @@
 pkgbase = pane-fm-git
 	pkgdesc = A themeable file manager built with Tauri and Svelte
-	pkgver = 0.1.0
+	pkgver = 0.1.0.r0.g8e61903
 	pkgrel = 1
-	url = https://github.com/jakeb-grant/hyprfiles
+	url = https://github.com/jakeb-grant/pane-fm
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
@@ -18,7 +18,7 @@ pkgbase = pane-fm-git
 	optdepends = inter-font: UI font
 	provides = pane-fm
 	conflicts = pane-fm
-	source = git+https://github.com/jakeb-grant/hyprfiles.git
+	source = git+https://github.com/jakeb-grant/pane-fm.git
 	sha256sums = SKIP
 
 pkgname = pane-fm-git

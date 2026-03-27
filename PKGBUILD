@@ -1,10 +1,10 @@
 # Maintainer: jakeb-grant
 pkgname=pane-fm-git
-pkgver=0.1.0
+pkgver=0.1.0.r0.g8e61903
 pkgrel=1
 pkgdesc="A themeable file manager built with Tauri and Svelte"
 arch=('x86_64')
-url="https://github.com/jakeb-grant/hyprfiles"
+url="https://github.com/jakeb-grant/pane-fm"
 license=('MIT')
 depends=(
     'webkit2gtk-4.1'
@@ -20,24 +20,24 @@ optdepends=(
 makedepends=('cargo' 'bun' 'git' 'pkgconf')
 provides=('pane-fm')
 conflicts=('pane-fm')
-source=("git+https://github.com/jakeb-grant/hyprfiles.git")
+source=("git+https://github.com/jakeb-grant/pane-fm.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd hyprfiles
+    cd pane-fm
     git describe --long --tags 2>/dev/null | sed 's/^v//;s/-/.r/;s/-/./' \
         || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-    cd hyprfiles
+    cd pane-fm
     export RUSTUP_TOOLCHAIN=stable
     bun install --frozen-lockfile
     cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
 build() {
-    cd hyprfiles
+    cd pane-fm
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
     bun run sync-icons
@@ -45,7 +45,7 @@ build() {
 }
 
 package() {
-    cd hyprfiles
+    cd pane-fm
     install -Dm755 "src-tauri/target/release/pane-fm" "$pkgdir/usr/bin/pane-fm"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 2>/dev/null || true
     install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
