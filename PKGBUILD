@@ -13,7 +13,7 @@ sha256sums=('7d71a326d441415548d111164f5d21cac70bed884868a0c0ba2952cb67284a57')
 
 build() {
     cd "$srcdir/OJC-shell-$pkgver"
-    gcc -o ojcsh main.c -lreadline 
+    make 
 }
 
 package() {

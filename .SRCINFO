@@ -9,6 +9,6 @@ pkgbase = ojcsh
 	depends = glibc
 	depends = readline
 	source = ojcsh-2.6.5.tar.gz::https://github.com/gragero/OJC-shell/archive/refs/tags/V2.6.5.tar.gz
-	sha256sums = 05bfbf2759949a65d87854838704e983105ccb95742073dd15adc791c460cf6e
+	sha256sums = 7d71a326d441415548d111164f5d21cac70bed884868a0c0ba2952cb67284a57
 
 pkgname = ojcsh
