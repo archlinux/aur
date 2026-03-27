@@ -2,41 +2,42 @@
 
 pkgname=pake-programmusic
 _appname=ProgramMusic
-pkgver=3.10.0
-pkgrel=3
-pkgdesc="ProgramMusic wrapped as an AppImage using Pake"
+_pkgver=3.10.0
+pkgver=${_pkgver}
+pkgrel=1
+pkgdesc="${_appname} wrapped as a desktop app using Pake"
 arch=('x86_64')
 url="https://github.com/tw93/Pake"
 license=('MIT')
-depends=('fuse2' 'webkit2gtk')
-provides=('pake-programmusic')
-conflicts=('pake-programmusic')
-options=('!strip')
+depends=('gtk3' 'webkit2gtk')
+options=('!strip' '!debug')
 
-source=("${_appname}.AppImage::https://github.com/tw93/Pake/releases/download/V${pkgver}/${_appname}_x86_64.AppImage")
-sha256sums=('SKIP')
+source=(
+    "${_appname}-${_pkgver}.deb::https://github.com/tw93/Pake/releases/download/V${_pkgver}/${_appname}_${CARCH}.deb"
+    "LICENSE-${_pkgver}::https://raw.githubusercontent.com/tw93/Pake/V${_pkgver}/LICENSE"
+)
+sha256sums=('SKIP' 'SKIP')
+
+prepare() {
+    # Extract deb package
+    bsdtar -xf "${_appname}-${_pkgver}.deb" -C "${srcdir}"
+    bsdtar -xf "${srcdir}/data.tar.gz" -C "${srcdir}"
+}
 
 package() {
-    install -Dm755 "${_appname}.AppImage" \
-        "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
-
-    install -dm755 "${pkgdir}/usr/bin"
-    cat > "${pkgdir}/usr/bin/${pkgname}" <<'SCRIPT'
-#!/bin/sh
-# Workaround for WebKitWebProcess crash in sandboxed environments
-export WEBKIT_DISABLE_COMPOSITING_MODE=1
-export WEBKIT_DISABLE_GPU=1
-exec /opt/pake-programmusic/pake-programmusic.AppImage --no-sandbox "$@"
-SCRIPT
-    chmod 755 "${pkgdir}/usr/bin/${pkgname}"
-
-    install -dm755 "${pkgdir}/usr/share/applications"
-    echo "[Desktop Entry]" > "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    echo "Name=${_appname} (Pake)" >> "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    echo "Exec=/usr/bin/pake-programmusic %U" >> "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    echo "Type=Application" >> "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    echo "Icon=pake-programmusic" >> "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    echo "Comment=${_appname} wrapped as an AppImage using Pake" >> "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    echo "Categories=Network;WebBrowser;" >> "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    echo "Terminal=false" >> "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    # Install binary - Pake uses 'pake-${_appname,,}' format
+    install -Dm755 "${srcdir}/usr/bin/pake-${_appname,,}" "${pkgdir}/usr/bin/${pkgname}"
+    
+    # Install desktop file - use com.pake.${_appname,,}.desktop
+    install -Dm644 "${srcdir}/usr/share/applications/com.pake.${_appname,,}.desktop" \
+        "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    
+    # Install icon
+    if [[ -f "${srcdir}/usr/share/icons/hicolor/512x512/apps/pake-${_appname,,}.png" ]]; then
+        install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/pake-${_appname,,}.png" \
+            "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    fi
+    
+    # Install license
+    install -Dm644 "${srcdir}/LICENSE-${_pkgver}" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
