@@ -1,19 +1,25 @@
 post_install() {
-  echo "==> mwu-bot installed."
-  echo "    - Create a virtualenv at /opt/mwu-bot/.venv:"
-  echo "        cd /opt/mwu-bot"
-  echo "        sudo python -m venv .venv"
-  echo "        sudo .venv/bin/pip install -r requirements.txt"
-  echo "    - Create and edit /opt/mwu-bot/.env with your API keys."
-  echo "    - Enable and start the service with:"
-  echo "        sudo systemctl enable --now mwu-bot.service"
+    # Create placeholder .env if it doesn't exist
+    if [[ ! -f /opt/mwu-bot/.env ]]; then
+        cat > /opt/mwu-bot/.env << 'EOF'
+# Add your real API keys here
+POLYGON_API_KEY=CHANGE_ME
+ALPACA_KEY_ID=CHANGE_ME
+ALPACA_SECRET_KEY=CHANGE_ME
+ALPACA_PAPER=true
+EOF
+        chmod 600 /opt/mwu-bot/.env
+    fi
+
+    echo "==> mwu-bot installed."
+    echo "    - Edit /opt/mwu-bot/.env with your API keys."
+    echo "    - Enable and start the service with:"
+    echo "        sudo systemctl enable --now mwu-bot.service"
 }
 
 pre_remove() {
-  echo "==> Stopping and disabling mwu-bot.service (if enabled)..."
-  if systemctl list-unit-files | grep -q '^mwu-bot.service'; then
+    echo "==> Stopping and disabling mwu-bot.service..."
+    # Stop and disable without checking; systemctl will not fail if unit doesn't exist
     systemctl stop mwu-bot.service 2>/dev/null || true
     systemctl disable mwu-bot.service 2>/dev/null || true
-  fi
 }
-
