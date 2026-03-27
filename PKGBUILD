@@ -65,8 +65,13 @@ package() {
     install -Dm644 "${pkgname}/themes/"*.toml \
         -t "${pkgdir}/usr/share/hyprfm/themes/"
 
-    # Install QML sources — the binary adds HYPRFM_SOURCE_DIR/src/qml to the
-    # QML import path at runtime for the HyprFM and Quill modules.
+    # Install QML module metadata (needed for loadFromModule to find HyprFM)
+    install -Dm644 "build/src/HyprFM/qmldir" \
+        "${pkgdir}/usr/share/hyprfm/HyprFM/qmldir"
+    install -Dm644 "build/src/HyprFM/hyprfm.qmltypes" \
+        "${pkgdir}/usr/share/hyprfm/HyprFM/hyprfm.qmltypes" 2>/dev/null || true
+
+    # Install QML sources for Quill module
     install -dm755 "${pkgdir}/usr/share/hyprfm/src"
     cp -r "${pkgname}/src/qml" "${pkgdir}/usr/share/hyprfm/src/qml"
 
