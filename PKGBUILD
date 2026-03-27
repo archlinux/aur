@@ -1,30 +1,41 @@
 # Maintainer: Regaan <contact@rothackers.com>
 pkgname=wshawk
-pkgver=3.0.5
+pkgver=4.0.0
 pkgrel=1
-pkgdesc="Enterprise-grade WebSocket Security Scanner & Web Pentest Toolkit by Regaan"
+pkgdesc="Enterprise-grade WebSocket Security Scanner & Web Pentest Toolkit"
 arch=('x86_64')
 url="https://wshawk.rothackers.com"
-license=('GPL3')
-depends=('zlib' 'hicolor-icon-theme' 'libglvnd')
+license=('AGPL3')
+depends=('hicolor-icon-theme')
 provides=('wshawk')
-conflicts=('wshawk')
+
 source=("wshawk-${pkgver}.AppImage::https://github.com/regaan/wshawk/releases/download/v${pkgver}/wshawk-${pkgver}.AppImage")
 sha256sums=('SKIP')
 
 package() {
-    # Make AppImage executable
     chmod +x "${srcdir}/wshawk-${pkgver}.AppImage"
 
-    # Extract AppImage into /opt/wshawk
+    # Extract AppImage
     "${srcdir}/wshawk-${pkgver}.AppImage" --appimage-extract
+
+    install -d "${pkgdir}/opt"
     mv squashfs-root "${pkgdir}/opt/wshawk"
 
-    # Symlink AppRun to /usr/bin/wshawk
+    # Binary symlink
     install -d "${pkgdir}/usr/bin"
-    ln -s "/opt/wshawk/AppRun" "${pkgdir}/usr/bin/wshawk"
+    ln -sf "/opt/wshawk/AppRun" "${pkgdir}/usr/bin/wshawk"
 
-    # Optional: Install desktop entry or icons if you have them
-    # mkdir -p "${pkgdir}/usr/share/applications"
-    # install -Dm644 "wshawk.desktop" "${pkgdir}/usr/share/applications/wshawk.desktop"
+    # Desktop entry
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/wshawk.desktop" <<EOF
+[Desktop Entry]
+Name=WSHawk
+Exec=/usr/bin/wshawk
+Icon=wshawk
+Type=Application
+Categories=Development;Security;
+EOF
+
+    # Icon (optional)
+    install -Dm644 "${pkgdir}/opt/wshawk/wshawk.png" \
+      "${pkgdir}/usr/share/icons/hicolor/256x256/apps/wshawk.png" || true
 }
