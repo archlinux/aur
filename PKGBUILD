@@ -1,40 +1,41 @@
 # Maintainer: Alex Macocian <amacocian@yahoo.com>
 pkgname=hyprchat
-pkgver=0.1.5
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Lightweight AI chat panel for Hyprland built with QuickShell"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/AlexMacocian/hyprchat"
 license=('MIT')
 depends=(
     'quickshell'
-    'nodejs'
     'gnome-keyring'
     'libsecret'
     'openssl'
     'inotify-tools'
     'kitty'
-    'curl'
 )
-makedepends=('npm')
+makedepends=('dotnet-sdk>=10')
 optdepends=(
     'github-cli: for GitHub Copilot device flow login'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/AlexMacocian/hyprchat/archive/v${pkgver}.tar.gz")
-sha256sums=('72ad8418e2f4846bf3709255c31bad5edfbfeab36f67013ae92444199d0a80fd')
+sha256sums=('c0c8ef64372dd327112f9c96b5eecb82c94167ad7e7ad235203d4ae646f0b323')
+
+build() {
+    cd "${srcdir}/${pkgname}-${pkgver}/src/hyprchat-backend"
+    dotnet publish -c Release --no-self-contained=false
+}
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
 
-    # Install scraper dependencies
-    cd src/scraper
-    npm install --production
-    cd ../..
+    # Install NativeAOT backend binary
+    install -Dm755 src/hyprchat-backend/Publish/HyprChat.Backend \
+        "${pkgdir}/usr/lib/${pkgname}/HyprChat.Backend"
 
     # Install QuickShell config files
     install -dm755 "${pkgdir}/usr/share/quickshell/${pkgname}"
-    cp -r src/*.qml src/qmldir "${pkgdir}/usr/share/quickshell/${pkgname}/"
-    cp -r src/scraper "${pkgdir}/usr/share/quickshell/${pkgname}/"
+    cp -r src/hyprchat-ui/*.qml src/hyprchat-ui/qmldir "${pkgdir}/usr/share/quickshell/${pkgname}/"
 
     # Install docs
     install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
@@ -47,7 +48,7 @@ package() {
     install -dm755 "${pkgdir}/usr/bin"
     cat > "${pkgdir}/usr/bin/hyprchat" << 'EOF'
 #!/bin/bash
-exec quickshell -p /usr/share/quickshell/hyprchat "$@"
+exec quickshell -p /usr/share/quickshell/hyprchat/shell.qml "$@"
 EOF
     chmod 755 "${pkgdir}/usr/bin/hyprchat"
 }
