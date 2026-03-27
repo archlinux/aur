@@ -1,6 +1,6 @@
 pkgbase = zlaunch-bin
 	pkgdesc = A fast application launcher for Linux wayland desktops built with GPUI
-	pkgver = 0.5.0
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/zortax/zlaunch
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = zlaunch-bin
 	provides = zlaunch
 	conflicts = zlaunch
 	conflicts = zlaunch-git
-	source_x86_64 = https://github.com/zortax/zlaunch/releases/download/0.5.0/zlaunch-0.5.0-x86_64-linux.tar.gz
-	sha256sums_x86_64 = fff443e7bee5b6d7d1f8c63be4e2d3144b6500e3ab00d3dfa89a34f02cec94e2
-	source_aarch64 = https://github.com/zortax/zlaunch/releases/download/0.5.0/zlaunch-0.5.0-aarch64-linux.tar.gz
-	sha256sums_aarch64 = d021bf41667b064290c308fb6c426ca8f7345afcee9bf98b4815ff14f97ca2fd
+	source_x86_64 = https://github.com/zortax/zlaunch/releases/download/0.5.1/zlaunch-0.5.1-x86_64-linux.tar.gz
+	sha256sums_x86_64 = 936b582702b802e7ee7c7ef9261b2c7b57e1b0cc485d872bba98e4ad059487e6
+	source_aarch64 = https://github.com/zortax/zlaunch/releases/download/0.5.1/zlaunch-0.5.1-aarch64-linux.tar.gz
+	sha256sums_aarch64 = dc0a1c95ad396521c651b39694b7d2ead1c8738677d9aa881e3691fbe95376f4
 
 pkgname = zlaunch-bin
