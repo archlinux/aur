@@ -9,6 +9,6 @@ pkgbase = rutoken-connect
 	depends = rutoken-pkcs11
 	options = !strip
 	source_x86_64 = https://download.rutoken.ru/Rutoken_Connect/6.2.2/Linux/x64/rtconnect-6.2.2-1.x86_64.rpm
-	sha256sums_x86_64 = 821bd9f3f478f44408639f59805aeb5553232b1cf08b1a6b5175d8fedc91a80c
+	sha256sums_x86_64 = 1a530b12e97caf0fc2cd3a04c8dfd9c749ed9a34d18c7f64aad8aceccb715de3
 
 pkgname = rutoken-connect
