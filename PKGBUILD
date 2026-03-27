@@ -1,4 +1,4 @@
-# Maintainer: Your Name <your.email@example.com>
+# Maintainer: Wei Zhu <yesmeck@gmail.com>
 pkgname=paper-desktop-bin
 pkgver=0.1.10
 pkgrel=1
