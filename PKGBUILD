@@ -3,7 +3,7 @@
 
 pkgname=lunar-client
 _pkgname=lunarclient
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 pkgdesc='PvP modpack for all modern versions of Minecraft'
 url=https://lunarclient.com
@@ -14,7 +14,7 @@ options=(!strip !debug)
 # For some reason lunar added "ow" to the filename, may or may not change, check on the next update.
 _appimage="Lunar%20Client-${pkgver}-ow.AppImage"
 source=("https://launcherupdates.lunarclientcdn.com/${_appimage}")
-sha256sums=('02a2e774ffc601fee7fdadd7180bcdc1a3e5b01629b4f01fc74e26f6a1adfce3')
+sha256sums=('b4043c0f4a7499b23a96c6d92790f96b087df330396c623856da2ff1b0ed341a')
 
 prepare() {
 	chmod +x "${_appimage}"
