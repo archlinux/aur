@@ -1,5 +1,5 @@
 pkgname=hermes-desktop
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Native speech-to-text desktop app"
 arch=('x86_64' 'aarch64')
