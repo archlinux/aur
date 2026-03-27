@@ -1,6 +1,6 @@
 pkgbase = zestbay
 	pkgdesc = A PipeWire patchbay and audio routing manager with LV2 plugin hosting
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/lemonxah/zestbay
 	arch = x86_64
@@ -12,13 +12,18 @@ pkgbase = zestbay
 	makedepends = pkg-config
 	makedepends = qt6-base
 	makedepends = qt6-declarative
+	makedepends = pipewire
+	makedepends = lilv
+	makedepends = lv2
+	makedepends = suil
 	depends = pipewire
 	depends = qt6-base
 	depends = qt6-declarative
 	depends = lilv
 	depends = lv2
+	depends = suil
 	depends = dbus
-	source = zestbay-0.4.0.tar.gz::https://github.com/lemonxah/zestbay/archive/refs/tags/v0.4.0.tar.gz
+	source = zestbay-0.4.1.tar.gz::https://github.com/lemonxah/zestbay/archive/refs/tags/v0.4.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = zestbay
