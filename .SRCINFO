@@ -1,0 +1,21 @@
+pkgbase = animestan-bin
+	pkgdesc = Terminal weapon to search, watch, and keep track of animes
+	pkgver = 0.1.5
+	pkgrel = 4
+	url = https://github.com/mrkatebzadeh/animestan
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = animestan
+	provides = animestan-cli
+	conflicts = animestan
+	source = README-0.1.5.md::https://raw.githubusercontent.com/mrkatebzadeh/animestan/v0.1.5-rc.4/README.md
+	sha256sums = bb99bc9b8073190d8ec5d1800dae7eff2456d0a451c91ae3416b5f91be2541cd
+	source_x86_64 = animestan-x86_64-0.1.5.tgz::https://github.com/mrkatebzadeh/animestan/releases/download/v0.1.5-rc.4/animestan-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 0ceb19e401f42fb8a5c73cda0446315146d0d4801b866481092fcd9690acb514
+	source_aarch64 = animestan-aarch64-0.1.5.tgz::https://github.com/mrkatebzadeh/animestan/releases/download/v0.1.5-rc.4/animestan-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 142d3448281ed3ca05a4f201fe4926dd1a862475d41fd98c8f7a42ae40be1d44
+
+pkgname = animestan-bin
