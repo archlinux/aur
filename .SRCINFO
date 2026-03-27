@@ -1,8 +1,8 @@
 pkgbase = nhentai-git
 	pkgdesc = CLI tool for downloading doujinshi from nhentai.net
-	pkgver = r442
+	pkgver = r3.f2abc7b
 	pkgrel = 1
-	url = https://github.com/RicterZ/nhentai
+	url = https://github.com/RicterZ/doujinshi-dl
 	arch = any
 	license = MIT
 	makedepends = git
@@ -14,8 +14,10 @@ pkgbase = nhentai-git
 	depends = python-soupsieve
 	depends = python-beautifulsoup4
 	depends = python-tabulate
-	depends = python-httpx
 	depends = python-iso8601
+	depends = python-httpx
+	depends = python-pip
+	depends = python-chardet
 	provides = nhentai
 	provides = python-nhentai
 	conflicts = nhentai
@@ -25,4 +27,3 @@ pkgbase = nhentai-git
 	md5sums = SKIP
 
 pkgname = nhentai-git
-
