@@ -1,0 +1,23 @@
+--- CMakeLists.txt	2025-04-12 16:51:32.000000000 +0200
++++ CMakeLists-patched.txt	2026-03-26 22:26:44.229293527 +0100
+@@ -135,7 +135,7 @@
+ FetchContent_Declare(
+     Hiredis
+     GIT_REPOSITORY https://github.com/redis/hiredis
+-    GIT_TAG c14775b4e48334e0262c9f168887578f4a368b5d
++    GIT_TAG ccad7ebaf99310957004661d1c5f82d2a33ebd10
+ )
+ 
+ FetchContent_Declare(
+@@ -146,9 +146,9 @@
+ 
+ FetchContent_Declare(
+     sqlite3
+-    URL https://sqlite.org/2023/sqlite-amalgamation-3410200.zip
++    URL https://sqlite.org/2026/sqlite-amalgamation-3510300.zip
+     URL_HASH
+-        SHA3_256=c51ca72411b8453c64e0980be23bc9b9530bdc3ec1513e06fbf022ed0fd02463
++        SHA3_256=ced02ff9738970f338c9c8e269897b554bcda73f6cf1029d49459e1324dbeaea
+ )
+ 
+ FetchContent_Declare(
