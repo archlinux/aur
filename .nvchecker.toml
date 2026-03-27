@@ -1,10 +1,17 @@
 [matlab-gcc-meta]
-source = "regex"
-url = "https://raw.githubusercontent.com/mathworks-ref-arch/container-images/refs/heads/main/matlab-deps/README.md"
-regex = "r20\\d{2}[ab]"
-from_pattern = "r20(\\d{2}[ab])"
-to_pattern = "R20\\1"
+source = 'jq'
+url = 'https://api.github.com/repos/mathworks-ref-arch/container-images/contents/matlab-deps'
+filter = '.[].name'
+include_regex = 'r20\d{2}[ab]'
+from_pattern = 'r'
+to_pattern = 'R'
 
-# url = "https://www.mathworks.com/support/requirements/supported-compilers-linux.html"
-# regex = "R20\\d{2}[ab]"
+# source = 'regex'
+# url = 'https://raw.githubusercontent.com/mathworks-ref-arch/container-images/refs/heads/main/matlab-deps/README.md'
+# regex = 'r20\\d{2}[ab]'
+# from_pattern = 'r20(\\d{2}[ab])'
+# to_pattern = 'R20\\1'
+
+# url = 'https://www.mathworks.com/support/requirements/supported-compilers-linux.html'
+# regex = 'R20\\d{2}[ab]'
 # user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36'
