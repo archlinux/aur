@@ -1,6 +1,6 @@
 pkgbase = hermes-desktop-bin
 	pkgdesc = Native speech-to-text desktop app (prebuilt binary)
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/adityamiskin/hermes
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = hermes-desktop-bin
 	depends = librsvg
 	depends = alsa-lib
 	depends = wl-clipboard
-	source_x86_64 = hermes-desktop-linux-x86_64-0.1.4.tar.gz::https://github.com/adityamiskin/hermes/releases/download/v0.1.4/hermes-desktop-linux-x86_64.tar.gz
-	sha256sums_x86_64 = cd5c76a25bfffc606c5550dd7d12778ed8d056e748c7c09f3823da69499a04b3
+	source_x86_64 = hermes-desktop-linux-x86_64-0.1.5.tar.gz::https://github.com/adityamiskin/hermes/releases/download/v0.1.5/hermes-desktop-linux-x86_64.tar.gz
+	sha256sums_x86_64 = e3ac5e654cb7f076c421f9db7bb940c1f970acb3c9c44312f3406036b68c1a1d
 
 pkgname = hermes-desktop-bin
