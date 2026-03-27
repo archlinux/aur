@@ -4,14 +4,14 @@
 # Contributor: oslik
 pkgname=solvespace
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A parametric 3d CAD program"
 arch=('i686' 'x86_64')
 url='http://solvespace.com/'
 license=('GPL3')
 depends=('json-c' 'glew' 'gtkmm3' 'libspnav')
 makedepends=('git' 'cmake' 'eigen')
-source=("${pkgname}::git+https://github.com/${pkgname}/${pkgname}.git#tag=v${pkgver}-rc1")
+source=("${pkgname}::git+https://github.com/${pkgname}/${pkgname}.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
 prepare() {
