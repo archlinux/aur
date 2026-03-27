@@ -95,13 +95,17 @@ EOF
   install -Dm644 assets/icon.png \
     "${pkgdir}/usr/share/icons/hicolor/256x256/apps/dev_type.png"
 
-  # Desktop entry
-  install -Dm644 packaging/dev_type.desktop \
-    "${pkgdir}/usr/share/applications/dev_type.desktop"
-
-  # AppStream metadata
-  install -Dm644 "packaging/com.github.mehad605.dev_type.metainfo.xml" \
-    "${pkgdir}/usr/share/metainfo/com.github.mehad605.dev_type.metainfo.xml"
+  # Desktop entry (inlined — packaging/ files may not exist in older tags)
+  install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/dev_type.desktop" << 'EOF'
+[Desktop Entry]
+Name=Dev Type
+Exec=dev_type
+Icon=dev_type
+Type=Application
+Categories=Education;
+Comment=Master touch typing while coding
+Terminal=false
+EOF
 
   # License
   install -Dm644 LICENSE \
