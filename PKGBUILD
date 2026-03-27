@@ -138,7 +138,7 @@ build() {
   )
 
   local _meson_options=(
-    -Dversion-tag="${_meson_version}-arch"
+	-Dversion-tag="${pkgver}"
     -Dvcs-tag=false
     -Dshared-lib-tag="${_meson_version}"
     -Dmode=release
