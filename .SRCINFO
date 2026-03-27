@@ -7,9 +7,11 @@ pkgbase = iio-sensor-proxy-openrc
 	arch = any
 	license = GPL-3.0-or-later
 	depends = iio-sensor-proxy
+	depends = openrc
 	source = git+https://github.com/Gaugeforever/iio-sensor-proxy-openrc.git
 	sha256sums = SKIP
 
 pkgname = iio-sensor-proxy-openrc
 	pkgdesc = OpenRC init script for iio-sensor-proxy.
 	depends = iio-sensor-proxy
+	depends = openrc
