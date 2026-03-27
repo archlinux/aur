@@ -1,6 +1,6 @@
 pkgbase = lean-ctx-bin
 	pkgdesc = Context Intelligence Engine with CEP + CCP — 21 MCP tools, 90+ shell patterns, Cognitive Efficiency Protocol, cross-session memory, LITM-aware positioning, tree-sitter AST (14 languages). Reduces LLM token consumption by up to 99%. (pre-built binary)
-	pkgver = 2.5.3
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = https://leanctx.com
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = lean-ctx-bin
 	depends = gcc-libs
 	provides = lean-ctx
 	conflicts = lean-ctx
-	source = lean-ctx-2.5.3.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v2.5.3/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/yvgude/lean-ctx/v2.5.3/LICENSE
+	source = lean-ctx-2.6.0.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v2.6.0/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/yvgude/lean-ctx/v2.6.0/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 
