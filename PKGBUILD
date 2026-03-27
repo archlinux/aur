@@ -6,7 +6,7 @@
 #
 
 pkgname=flexbv-free-bin
-pkgver=5.1379
+pkgver=5.1383
 pkgrel=1
 pkgdesc="Visualize and interact with boardview (.brd) files."
 arch=("x86_64")
@@ -17,17 +17,17 @@ makedepends=("gendesk")
 source=("flexbv-free-${pkgver}.tar.gz::https://pldaniels.com/flexbv5/free/FlexBVFree-${pkgver}-linux.tar.gz"
 	"flexbv-free-icon.svg::https://pldaniels.com/flexbv5/assets/flexbv-free-icon.svg"
 	LICENSE.txt)
-sha256sums=('f144dfc70810b6248d0f1a5eddeccdc325a5747e68f38e41225f8de387695968'
+sha256sums=('5a101dc0fb6047c5e5167d96458cec47b2c39d10b0a122b6f8b4459d67a3d17e'
             'e19c10e335eb9ba4278317c5f0f07f25e9051f0bcd3b6bb0fb85b3b2ee73124e'
             '12f5872b4bfed1620dd57e213ac2dd18b9fe02753ef70ebc89f10b6d72244e23')
 
 prepare() {
-	gendesk -n --pkgname "flexbv" --pkgdesc "${pkgdesc}" --exec="flexbv" --name "FlexBV Free" --icon "${pkgname}.svg" --categories "Science"
+	gendesk -n --pkgname "flexbv" --pkgdesc "${pkgdesc}" --exec="flexbv" --name "FlexBV Free" --icon "${pkgname}.svg" --categories "Science" --terminal=false --custom="Keywords=Boardview;"
 }
 
 package() {
-	install -Dm644 "flexbv.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm644 "flexbv-free-icon.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
 	install -Dm755 "FlexBVFree-${pkgver}-linux/flexbv" "${pkgdir}/usr/bin/flexbv"
 	install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "flexbv.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+	install -Dm644 "flexbv-free-icon.svg" "${pkgdir}/usr/share/pixmaps/${pkgname}.svg"
 }

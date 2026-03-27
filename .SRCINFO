@@ -1,15 +1,15 @@
 pkgbase = flexbv-free-bin
 	pkgdesc = Visualize and interact with boardview (.brd) files.
-	pkgver = 5.1379
+	pkgver = 5.1383
 	pkgrel = 1
 	url = https://pldaniels.com/flexbv5/
 	arch = x86_64
 	license = custom
 	makedepends = gendesk
-	source = flexbv-free-5.1379.tar.gz::https://pldaniels.com/flexbv5/free/FlexBVFree-5.1379-linux.tar.gz
+	source = flexbv-free-5.1383.tar.gz::https://pldaniels.com/flexbv5/free/FlexBVFree-5.1383-linux.tar.gz
 	source = flexbv-free-icon.svg::https://pldaniels.com/flexbv5/assets/flexbv-free-icon.svg
 	source = LICENSE.txt
-	sha256sums = f144dfc70810b6248d0f1a5eddeccdc325a5747e68f38e41225f8de387695968
+	sha256sums = 5a101dc0fb6047c5e5167d96458cec47b2c39d10b0a122b6f8b4459d67a3d17e
 	sha256sums = e19c10e335eb9ba4278317c5f0f07f25e9051f0bcd3b6bb0fb85b3b2ee73124e
 	sha256sums = 12f5872b4bfed1620dd57e213ac2dd18b9fe02753ef70ebc89f10b6d72244e23
 
