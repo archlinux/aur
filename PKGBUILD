@@ -20,7 +20,7 @@ optdepends=(
   'python-numpy: for numerical operations'
   'python-tqdm: for progress bars'
   'python-mkl: for convert_hf_to_gguf.py')
-provides=("${pkgname}=${pkgver}")
+provides=('python-gguf')
 conflicts=('python-gguf')
 
 # Source from llama.cpp repository's gguf-py directory

@@ -16,7 +16,7 @@ pkgbase = python-gguf-git
 	optdepends = python-numpy: for numerical operations
 	optdepends = python-tqdm: for progress bars
 	optdepends = python-mkl: for convert_hf_to_gguf.py
-	provides = python-gguf-git=b8118.r1.ba3b9c8844
+	provides = python-gguf
 	conflicts = python-gguf
 	source = python-gguf-git::git+https://github.com/ggml-org/llama.cpp.git#branch=master
 	sha256sums = SKIP
