@@ -72,6 +72,12 @@ package() {
     install -dm755 "${pkgdir}/usr/share/hyprfm/src"
     cp -r "${pkgname}/src/qml" "${pkgdir}/usr/share/hyprfm/src/qml"
 
+    # Install desktop entry and icon
+    install -Dm644 "${pkgname}/dist/hyprfm.desktop" \
+        "${pkgdir}/usr/share/applications/hyprfm.desktop"
+    install -Dm644 "${pkgname}/dist/hyprfm.svg" \
+        "${pkgdir}/usr/share/icons/hicolor/scalable/apps/hyprfm.svg"
+
     # Install license
     install -Dm644 "${pkgname}/LICENSE" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
