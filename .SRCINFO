@@ -1,0 +1,16 @@
+pkgbase = dev-type-bin
+	pkgdesc = Master touch typing while coding (AppImage)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mehad605/dev_type
+	arch = x86_64
+	license = CC-BY-NC-SA-4.0
+	depends = fuse2
+	depends = zlib
+	depends = glibc
+	source = https://github.com/mehad605/dev_type/releases/download/v1.0.0/dev_type-1.0.0-x86_64.AppImage
+	source = dev_type.png::https://raw.githubusercontent.com/mehad605/dev_type/v1.0.0/assets/icon.png
+	sha256sums = 598e49fc82733ed7571b32a7fff7b1c3f289d7955852206a758e2f28c14f97c5
+	sha256sums = a326e6355f522857545036ac88825042ba1f22e750c2638029856fc7347b3188
+
+pkgname = dev-type-bin
