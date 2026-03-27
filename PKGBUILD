@@ -1,5 +1,5 @@
 pkgname=hermes-cli
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Native speech-to-text CLI daemon"
 arch=('x86_64' 'aarch64')
