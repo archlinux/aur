@@ -1,10 +1,11 @@
 pkgname=openwork-bin
 pkgver=0.11.194
-pkgrel=1
-pkgdesc="Open source alternative to Claude Cowork desktop app"
+pkgdesc="Unofficial OpenWork binary package with Arch-specific launcher fixes"
 arch=('x86_64')
 url="https://github.com/different-ai/openwork"
 license=('MIT')
+pkgrel=2
+options=('!strip')
 depends=(
   'dbus'
   'glib2'
@@ -20,10 +21,43 @@ sha256sums=('ecf931d3919f3ac02aa5a802e42892a2c0892c1264904bdbec2bfccd901fa7f8')
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
-  cd "${srcdir}"
+  local sidecars=(
+    'OpenWork-Dev'
+    'chrome-devtools-mcp'
+    'opencode'
+    'opencode-router'
+    'openwork-orchestrator'
+    'openwork-server'
+    'versions.json'
+  )
+  local exposed_bins=(
+    'chrome-devtools-mcp'
+    'opencode-router'
+    'openwork-orchestrator'
+    'openwork-server'
+  )
 
-  bsdtar -O -xf "${pkgname}-${pkgver}.deb" 'data.tar*' | bsdtar -C "${pkgdir}" -xf -
+  bsdtar -O -xf "${srcdir}/${pkgname}-${pkgver}.deb" 'data.tar*' | bsdtar -C "${pkgdir}" -xf -
 
-  # Keep the standalone opencode package as the owner of /usr/bin/opencode.
-  rm -f "${pkgdir}/usr/bin/opencode"
+  install -dm755 "${pkgdir}/opt/openwork-bin"
+
+  local file
+  for file in "${sidecars[@]}"; do
+    mv "${pkgdir}/usr/bin/${file}" "${pkgdir}/opt/openwork-bin/"
+  done
+
+  cat > "${pkgdir}/usr/bin/OpenWork-Dev" <<'EOF'
+#!/usr/bin/env bash
+export PATH="/opt/openwork-bin:${PATH}"
+export OPENCODE_BIN_PATH="/opt/openwork-bin/opencode"
+export OPENCODE_INSTALL_DIR="/opt/openwork-bin"
+cd /opt/openwork-bin
+exec ./OpenWork-Dev "$@"
+EOF
+  chmod 755 "${pkgdir}/usr/bin/OpenWork-Dev"
+
+  local bin
+  for bin in "${exposed_bins[@]}"; do
+    ln -s "../../opt/openwork-bin/${bin}" "${pkgdir}/usr/bin/${bin}"
+  done
 }
