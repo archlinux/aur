@@ -1,0 +1,20 @@
+pkgbase = cure-bin
+	pkgdesc = Color-Unicoded moRE
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/hymkor/cure
+	arch = x86_64
+	arch = i686
+	license = MIT
+	provides = cure
+	conflicts = cure
+	source = LICENSE-0.3.1::https://raw.githubusercontent.com/hymkor/cure/v0.3.1/LICENSE
+	source = README-0.3.1.md::https://raw.githubusercontent.com/hymkor/cure/v0.3.1/readme.md
+	sha256sums = d5cfae9b0b96305185d2656b86d33a6fc3c05e29d67917bf4854c64867debfb3
+	sha256sums = 343ea0833babb8750cd80b80e433cbcbd64f807313642b047952841b4817c2ed
+	source_x86_64 = cure-x86_64-0.3.1.zip::https://github.com/hymkor/cure/releases/download/v0.3.1/cure-v0.3.1-linux-amd64.zip
+	sha256sums_x86_64 = 6d15bf00235bac7abe1e750a9479faf03d704650ffdb1812fa1a964c88f5c33d
+	source_i686 = cure-i686-0.3.1.zip::https://github.com/hymkor/cure/releases/download/v0.3.1/cure-v0.3.1-linux-386.zip
+	sha256sums_i686 = 952d149f6e6df2e4c7c5051e9e3970195027f1824613af5b8ff1e1b0d2356fd5
+
+pkgname = cure-bin

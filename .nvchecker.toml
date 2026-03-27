@@ -1,0 +1,5 @@
+[cure-bin]
+source = "github"
+github = "hymkor/cure"
+use_latest_release = true
+prefix = "v"
