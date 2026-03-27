@@ -2,7 +2,7 @@
 # Maintainer: Kai Rollmann
 
 pkgname='gbr-bin'
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Switch git branch interactively using arrow keys'
 url='https://github.com/Kadrian/gbr'
@@ -12,10 +12,10 @@ provides=('gbr')
 conflicts=('gbr')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/Kadrian/gbr/releases/download/v${pkgver}/gbr_${pkgver}_linux_arm64.tar.gz")
-sha256sums_aarch64=('ff8b7b6fd209bf0d0812cb03533fae6b70d39716261b16a69d1ffec609577177')
+sha256sums_aarch64=('d028d7f06f9aae56a56c56ddc8e312d0eb2c3e52fd4b6474f7770115bd34e4e4')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/Kadrian/gbr/releases/download/v${pkgver}/gbr_${pkgver}_linux_amd64.tar.gz")
-sha256sums_x86_64=('34b9d976af9967c9eed3dc2b98bc2473b0ca9c7d721a4b1cea33e7737c2ef9c0')
+sha256sums_x86_64=('6caaebc89eb154feab499b8faf4471d2363c6038712ae2e723965703275a3efc')
 
 package() {
   install -Dm755 gbr "${pkgdir}/usr/bin/gbr"
