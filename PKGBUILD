@@ -7,8 +7,8 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=4.9.0.r549.g0f5bd178e3
-pkgrel=2
+pkgver=5.5.0.r805.gab1fee449f
+pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
 url=http://www.darktable.org/
@@ -16,7 +16,7 @@ license=('GPL3')
 depends=(
   pugixml libjpeg-turbo colord-gtk libgphoto2 openexr lensfun iso-codes zlib
   exiv2 openjpeg2 graphicsmagick lua osm-gps-map libsecret openmp gmic libavif
-  jasper libjxl
+  jasper libjxl potrace
 )
 optdepends=(
   'dcraw: base curve script'
@@ -73,24 +73,24 @@ build() {
   cd $_gitname
   [[ ! -d build ]] && mkdir -p build
   cmake -B build \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-        -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DBINARY_PACKAGE_BUILD=1 \
-        -DBUILD_USERMANUAL=False \
-        -DUSE_LIBSECRET=ON \
-        -DUSE_LUA=ON \
-        -DUSE_COLORD=ON \
-        -DBUILD_CURVE_TOOLS=ON \
-        -DBUILD_NOISE_TOOLS=ON \
-        -DRAWSPEED_ENABLE_LTO=ON
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DCMAKE_INSTALL_LIBEXECDIR=/usr/lib \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBINARY_PACKAGE_BUILD=1 \
+    -DBUILD_USERMANUAL=False \
+    -DUSE_LIBSECRET=ON \
+    -DUSE_LUA=ON \
+    -DUSE_COLORD=ON \
+    -DBUILD_CURVE_TOOLS=ON \
+    -DBUILD_NOISE_TOOLS=ON \
+    -DRAWSPEED_ENABLE_LTO=ON
   make -C build
 
 }
 
 package() {
   cd $_gitname
-  make -C build DESTDIR=$pkgdir install
+  make -C build DESTDIR="$pkgdir" install
   ln -s darktable/libdarktable.so "${pkgdir}"/usr/lib/libdarktable.so
 }

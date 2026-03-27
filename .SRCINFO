@@ -1,7 +1,7 @@
 pkgbase = darktable-git
 	pkgdesc = A virtual lighttable and darkroom for photographers
-	pkgver = 4.9.0.r549.g0f5bd178e3
-	pkgrel = 2
+	pkgver = 5.5.0.r805.gab1fee449f
+	pkgrel = 1
 	url = http://www.darktable.org/
 	install = darktable.install
 	arch = i686
@@ -37,6 +37,7 @@ pkgbase = darktable-git
 	depends = libavif
 	depends = jasper
 	depends = libjxl
+	depends = potrace
 	optdepends = dcraw: base curve script
 	optdepends = perl-image-exiftool: base curve script
 	optdepends = imagemagick: base curve and noise profile scripts
