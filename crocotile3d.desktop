@@ -2,9 +2,12 @@
 Version=1.0
 Type=Application
 Name=Crocotile 3D
-Comment=Tile-based
+Name[en_US]=Crocotile 3D
+Comment=Tile-based 3D modeling application
+Comment[en_US]=Tile-based 3D modeling application
 Exec=crocotile3d
 Icon=crocotile3d
 Terminal=false
 StartupNotify=false
-Categories=Application;
+StartupWMClass=crocotile3d
+Categories=Application;Graphics;
