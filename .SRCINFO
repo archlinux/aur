@@ -1,6 +1,6 @@
 pkgbase = coreboot-utils
 	pkgdesc = Tools and utilities to work with coreboot firmware
-	pkgver = 25.12
+	pkgver = 26.03
 	pkgrel = 1
 	url = https://www.coreboot.org
 	arch = x86_64
@@ -12,10 +12,10 @@ pkgbase = coreboot-utils
 	depends = pciutils
 	depends = python
 	depends = zlib
-	source = https://coreboot.org/releases/coreboot-25.12.tar.xz
-	source = https://coreboot.org/releases/coreboot-25.12.tar.xz.sig
+	source = https://coreboot.org/releases/coreboot-26.03.tar.xz
+	source = https://coreboot.org/releases/coreboot-26.03.tar.xz.sig
 	validpgpkeys = C75AAA4E5C9DB017C1DC6EDBDB1B0EC29202D874
-	sha256sums = 486a737f089f28e16a9dd73566763ff879149784a2cc0ce8cdf6927af8786c94
+	sha256sums = ee6e13c454175c5e1d8615877467d25171ee8958a2e6a4ffe87d91e7c78b20d4
 	sha256sums = SKIP
 
 pkgname = acpidump-all
