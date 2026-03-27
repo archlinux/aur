@@ -1,0 +1,20 @@
+pkgbase = seek-bin
+	pkgdesc = Color-Grep for ANSI/UTF8
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/hymkor/seek
+	arch = x86_64
+	arch = i686
+	license = BSD-3-Clause
+	provides = seek
+	conflicts = seek
+	source = LICENSE-0.2.0::https://raw.githubusercontent.com/hymkor/seek/v0.2.0/LICENSE
+	source = README-0.2.0.md::https://raw.githubusercontent.com/hymkor/seek/v0.2.0/readme.md
+	sha256sums = 06bed19d0d6b2cbc75b88eab7443c8c6bc1a6e653598a16697d18732eacecdc6
+	sha256sums = ae3f6dfc57269e5b9d206c4f1a63494042d75ab42beb37ebbcdc3ce53e687b1a
+	source_x86_64 = seek-x86_64-0.2.0.zip::https://github.com/hymkor/seek/releases/download/v0.2.0/seek-v0.2.0-linux-amd64.zip
+	sha256sums_x86_64 = 81dedee344ae3625b6ade28559a667bcbbc37069481ad7362567aa5d36205b01
+	source_i686 = seek-i686-0.2.0.zip::https://github.com/hymkor/seek/releases/download/v0.2.0/seek-v0.2.0-linux-386.zip
+	sha256sums_i686 = 7feb4e4eefbf9d788bb85cc7f7f034065ac064fcf1753b03c40b0e56a84e6cbf
+
+pkgname = seek-bin

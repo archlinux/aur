@@ -1,0 +1,5 @@
+[seek-bin]
+source = "github"
+github = "hymkor/seek"
+use_latest_release = true
+prefix = "v"
