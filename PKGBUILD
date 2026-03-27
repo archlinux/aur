@@ -1,6 +1,6 @@
 # Maintainer: Akira Fukushima <h3.poteto@gmail.com>
 pkgname=rauncher-x11
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Application launcher for Linux X11 desktop"
 arch=("x86_64")
@@ -11,7 +11,7 @@ makedepends=("rust" "make")
 provides=("rauncher-x11")
 conflicts=("rauncher-wayland")
 source=("https://github.com/h3poteto/rauncher/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=("1340bc8263151b616f18bb42d11785fa")
+md5sums=("2b1f5a9a9d26b4b9f7f984b03ca80f57")
 
 prepare() {
   cd "rauncher-${pkgver}"
