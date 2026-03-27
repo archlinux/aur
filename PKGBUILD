@@ -1,8 +1,8 @@
 # Maintainer: kezuwoo <kezu15@proton.me>
 
 pkgname=kitsune
-pkgver=0.8.4
-pkgrel=2
+pkgver=0.8.5
+pkgrel=1
 pkgdesc="AniLiberty player"
 arch=('any')
 url="https://altlinux.space/armatik/Kitsune"
@@ -16,6 +16,7 @@ depends=(
 'gtk4'
 'gstreamer'
 'gst-plugins-base'
+'gst-plugin-gtk4'
 'python-requests'
 )
 
