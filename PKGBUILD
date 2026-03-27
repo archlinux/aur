@@ -2,7 +2,7 @@
 pkgname=jameica
 pkgver=2.12.0
 _pkgver=2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="free runtime environment for java applications"
 #arch=('i686' 'x86_64' 'aarch64')
 arch=('x86_64' 'aarch64')
@@ -15,10 +15,10 @@ makedepends=('unzip')
 #   "htTps://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux-${pkgver}.zip.asc")
 source_x86_64=("https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux64-${pkgver}.zip"
     "https://www.willuhn.de/products/jameica/releases/current/jameica/jameica-linux64-${pkgver}.zip.asc"
-    "swt-4.36-x86_64.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.36-202505281830/swt-4.36-gtk-linux-x86_64.zip")
+    "swt-4.36-x86_64.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.39-202602260420/swt-4.39-gtk-linux-x86_64.zip")
 source_aarch64=("https://willuhn.de/products/jameica/releases/current/jameica/jameica-linuxarm64-${pkgver}.zip"
     "https://willuhn.de/products/jameica/releases/current/jameica/jameica-linuxarm64-${pkgver}.zip.asc"
-    "swt-4.36-aarch64.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.36-202505281830/swt-4.36-gtk-linux-aarch64.zip")
+    "swt-4.36-aarch64.zip::https://ftp.fau.de/eclipse/eclipse/downloads/drops4/R-4.39-202602260420/swt-4.39-win32-win32-aarch64.zip")
 validpgpkeys=("7314FBDE7D38EE5610D291B65A8ED9CFC0DB6C70") # Olaf Willuhn <info@willuhn.de>
 source=("jameica-start-script.patch" "jameicaserver-start-script.patch"
         "jameica.desktop")
@@ -27,10 +27,10 @@ sha1sums=('a7b8b39822ac22d830aae03f292fda623977e526'
           'a7769ea23e837bd6e7f2ca73a1fe76f9b90a43b3')
 sha1sums_x86_64=('c5759973677a019c2ef4fbca9c60dde585a59e48'
                  'SKIP'
-                 'fcdac6b73564535571f9fd555d252560393ca32b')
+                 '06aa4c69104c211956a3358eb77fd5be6acb6c72')
 sha1sums_aarch64=('d89cbe72520d6ef7bd064ce4303066dd5d45ad80'
                   'SKIP'
-                  '558fac4952b2ae424010baf793fe0bbcbd92bfae')
+                  '2b9b4a66239a655b280fefb583d2b648cc2ec271')
 #sha1sums_i686=('7afbc5bb10e43479e100536559d174fb4259b1c7'
 #               'SKIP')
 
