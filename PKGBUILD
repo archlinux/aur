@@ -1,9 +1,9 @@
 # Maintainer: George Sofianos <george at sofianos dot dev>
 
-# Release notes https://rocm.docs.amd.com/en/7.11.0-preview/about/release-notes.html
+# Release notes https://rocm.docs.amd.com/en/7.12.0-preview/about/release-notes.html
 pkgname=rocm-gfx1150-bin
-pkgdesc="ROCm Core SDK and TheRock Build System - Ryzen AI"
-pkgver=7.11.0pre
+pkgdesc="ROCm Core SDK and TheRock Build System - Ryzen AI 300 - Strix Point"
+pkgver=7.12.0pre
 pkgrel=1
 epoch=0
 arch=('x86_64')
@@ -22,17 +22,17 @@ optdepends=('clinfo')
 options=('!strip')
 
 source=(
-"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx1150-7.11.0.tar.gz"
+"https://repo.amd.com/rocm/tarball/therock-dist-linux-gfx1150-7.12.0.tar.gz"
 )
 
 sha256sums=(
-"80151ac1efee383d2b63697aeea713eef6c02f5557a884784a2cb48862261feb"
+"9540dc387595385c0378994f63810e8d6dd241e346d3144b9cd55c466467f3dc"
 )
 
 package() {
 
     mkdir -p "${srcdir}/opt/rocm"
-    tar xf therock-dist-linux-gfx1150-7.11.0.tar.gz -C ${srcdir}/opt/rocm
+    tar xf therock-dist-linux-gfx1150-7.12.0.tar.gz -C ${srcdir}/opt/rocm
 
     mv "${srcdir}/opt/" "${pkgdir}/"    
 
