@@ -12,11 +12,11 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gragero/OJC-shell/archive/r
 sha256sums=('c4cdc6d812aa43159ced1a4847c57297b6687087b21f36e7959c1ab450bd5876')
 
 build() {
-    cd "$srcdir/OJC-shell-$pkgver"
+    cd "$srcdir/OJC-shell-$pkgver/src"
     make 
 }
 
 package() {
-    cd "$srcdir/OJC-shell-$pkgver"
+    cd "$srcdir/OJC-shell-$pkgver/src"
     install -Dm755 ojcsh "$pkgdir/usr/bin/ojcsh"
 }
