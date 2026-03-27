@@ -14,7 +14,7 @@ source=(
   "https://github.com/fordz0/lattice/releases/download/lattice-v${pkgver}/lattice-linux-x86_64.tar.gz"
 )
 sha256sums=(
-  'cd9baf765c1e27a16f8f527285f7b83e59574adc6ab2e18f54154105539299b3'
+  '89251414ce5b0aa4fe43cccd13ab0993b562aff5fc610100474990d79a7891de'
 )
 
 package() {
