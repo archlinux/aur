@@ -1,0 +1,45 @@
+qbtctl 1.5.0 - Installation Instructions
+-----------------------------------------
+
+Requirements:
+- curl
+- libsodium 
+- gcc + make (for building)
+- mbedtls (static build only)
+
+Build Instructions:
+
+1. Download and extract the source code:
+
+   $ wget https://github.com/creptic/qbtctl/archive/refs/tags/v1.5.0.tar.gz
+   $ tar xvf v1.5.0.tar.gz
+   $ cd qbtctl-1.5.0
+
+2. Build dynamic binary:
+
+   $ make
+
+   Optional: Build a static binary:
+
+   $ make static
+
+3. Install:
+
+   $ sudo make install
+
+   By default, qbtctl installs to /usr/bin. Ensure you have write permissions.
+   If installing without sudo, make sure the target directory is writable.
+
+Usage:
+
+   $ qbtctl -h       # Show help and available commands
+   $ qbtctl -l       # List torrents
+   $ qbtctl -w       # Watch/live monitor torrents
+   $ qbtctl -sst 03:02:01 <hash>  # Set seeding time limit (DD:HH:MM)
+
+Notes:
+- Can also be built with makepkg -i
+- Available in aur at https://aur.archlinux.org/packages/qbtctl/
+- Live monitoring will auto-refresh if terminal supports ANSI.
+- Completed torrents or infinite seeding display as "∞".
+- ETA and seeding times are displayed in DD:HH:MM format.
