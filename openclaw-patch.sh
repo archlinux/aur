@@ -100,125 +100,6 @@ patch_source() {
 \
   return withWarnings(await executeInstallCommand({ argv, timeoutMs, env, cwd }), warnings);/' src/agents/skills-install.ts
     fi
-
-    # 5. src/plugins/discovery.ts
-    echo "Patching src/plugins/discovery.ts..."
-    if ! grep -q 'function discoverNpmPlugins' src/plugins/discovery.ts; then
-        cat <<'EOF' >>src/plugins/discovery.ts
-
-function discoverNpmPlugins(params: {
-  dir: string;
-  origin: PluginOrigin;
-  workspaceDir?: string;
-  candidates: PluginCandidate[];
-  diagnostics: PluginDiagnostic[];
-  seen: Set<string>;
-}) {
-  const nodeModules = path.join(params.dir, "node_modules");
-  if (!fs.existsSync(nodeModules)) {
-    return;
-  }
-
-  let entries: fs.Dirent[] = [];
-  try {
-    entries = fs.readdirSync(nodeModules, { withFileTypes: true });
-  } catch {
-    return;
-  }
-
-  for (const entry of entries) {
-    if (!entry.isDirectory()) continue;
-
-    // Handle scoped packages
-    if (entry.name.startsWith("@")) {
-      const scopeDir = path.join(nodeModules, entry.name);
-      let scopeEntries: fs.Dirent[] = [];
-      try {
-        scopeEntries = fs.readdirSync(scopeDir, { withFileTypes: true });
-      } catch {
-        continue;
-      }
-      for (const scopeEntry of scopeEntries) {
-        if (!scopeEntry.isDirectory()) continue;
-        const fullPath = path.join(scopeDir, scopeEntry.name);
-        const manifest = readPackageManifest(fullPath);
-        if (!manifest || !getPackageManifestMetadata(manifest)) continue;
-
-        // Use generic discovery but only because we confirmed manifest metadata exists
-        discoverInDirectory({
-          dir: fullPath,
-          origin: params.origin,
-          workspaceDir: params.workspaceDir,
-          candidates: params.candidates,
-          diagnostics: params.diagnostics,
-          seen: params.seen,
-        });
-      }
-      continue;
-    }
-
-    if (entry.name.startsWith(".")) continue;
-
-    const fullPath = path.join(nodeModules, entry.name);
-    const manifest = readPackageManifest(fullPath);
-    if (!manifest || !getPackageManifestMetadata(manifest)) continue;
-
-    discoverInDirectory({
-      dir: fullPath,
-      origin: params.origin,
-      workspaceDir: params.workspaceDir,
-      candidates: params.candidates,
-      diagnostics: params.diagnostics,
-      seen: params.seen,
-    });
-  }
-}
-EOF
-    fi
-
-    # discoverNpmPlugins function and call-site already upstream — skip
-
-    # 6. src/plugins/install.ts
-    echo "Patching src/plugins/install.ts..."
-    if ! grep -q 'import { runCommandWithTimeout }' src/plugins/install.ts; then
-        grep -q 'import \* as skillScanner from "../security/skill-scanner.js";' src/plugins/install.ts
-        sed -i 's/import \* as skillScanner from "..\/security\/skill-scanner.js";/import * as skillScanner from "..\/security\/skill-scanner.js";\nimport { runCommandWithTimeout } from "..\/process\/exec.js";/' src/plugins/install.ts
-    fi
-
-    if ! grep -q 'const configPkgJson = path.join(CONFIG_DIR, "package.json");' src/plugins/install.ts; then
-        grep -q 'export async function installPluginFromArchive' src/plugins/install.ts
-	sed -i '/export async function installPluginFromArchive/,/): Promise<InstallPluginResult> {/ {
-	/): Promise<InstallPluginResult> {/ a \
-  // Force installation into user config directory if package.json exists there\
-  const configPkgJson = path.join(CONFIG_DIR, "package.json");\
-  if (await fileExists(configPkgJson)) {\
-    const logger = params.logger ?? defaultLogger;\
-    logger.info?.(`Installing ${params.archivePath} to ${CONFIG_DIR} using system package manager...`);\
-\
-    const hasPnpmLock = await fileExists(path.join(CONFIG_DIR, "pnpm-lock.yaml"));\
-    const hasBunLock = await fileExists(path.join(CONFIG_DIR, "bun.lockb"));\
-    const pm = hasBunLock ? "bun" : (hasPnpmLock ? "pnpm" : "npm");\
-\
-    await fs.mkdir(path.join(CONFIG_DIR, "node_modules"), { recursive: true });\
-\
-    const res = await runCommandWithTimeout([pm, "install", params.archivePath], {\
-      cwd: CONFIG_DIR,\
-      timeoutMs: params.timeoutMs ?? 300_000,\
-    });\
-\
-    if (res.code !== 0) {\
-      return { ok: false, error: `${pm} install failed: ${res.stderr || res.stdout}` };\
-    }\
-\
-    return {\
-      ok: true,\
-      pluginId: params.archivePath,\
-      targetDir: path.join(CONFIG_DIR, "node_modules", params.archivePath),\
-      extensions: [],\
-    };\
-  }
-        }' src/plugins/install.ts
-    fi
 }
 
 show_help() {
@@ -246,8 +127,6 @@ case "${1:-}" in
     cp scripts/ui.js scripts/ui.js.orig
     cp src/discord/voice/manager.ts src/discord/voice/manager.ts.orig
     cp src/agents/skills-install.ts src/agents/skills-install.ts.orig
-    cp src/plugins/discovery.ts src/plugins/discovery.ts.orig
-    cp src/plugins/install.ts src/plugins/install.ts.orig
 
     patch_source
 
@@ -258,8 +137,6 @@ case "${1:-}" in
         diff -u scripts/ui.js.orig scripts/ui.js || true
         diff -u src/discord/voice/manager.ts.orig src/discord/voice/manager.ts || true
         diff -u src/agents/skills-install.ts.orig src/agents/skills-install.ts || true
-        diff -u src/plugins/discovery.ts.orig src/plugins/discovery.ts || true
-        diff -u src/plugins/install.ts.orig src/plugins/install.ts || true
     } >"../../$PATCH_FILE"
 
     cd ../..
