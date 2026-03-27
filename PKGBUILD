@@ -1,7 +1,7 @@
 # Maintainer: Simen Fritsvold <sifra002@gmail.com>
 
 pkgname=mwu-bot-git
-pkgver=539b896
+pkgver=a289460
 pkgrel=1
 pkgdesc="Multiplicative Weights Update trading bot (Polygon + Alpaca)"
 arch=('any')
@@ -44,10 +44,16 @@ package() {
 
   # Install application files
   install -dm755 "$pkgdir/opt/mwu-bot"
-  cp -r bot scripts README.md LICENSE "$pkgdir/opt/mwu-bot"
+  cp -r bot scripts README.md "$pkgdir/opt/mwu-bot"
 
   # Install license (Arch standard location)
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Install .env example
+  install -Dm644 .env.example "$pkgdir/etc/mwu-bot.env"
+
+  # Make database
+  install -Dm600 /dev/null "$pkgdir/var/lib/mwu-bot.db"
 
   # CLI wrapper
   install -dm755 "$pkgdir/usr/bin"

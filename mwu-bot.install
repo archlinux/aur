@@ -1,18 +1,6 @@
 post_install() {
-    # Create placeholder .env if it doesn't exist
-    if [[ ! -f /opt/mwu-bot/.env ]]; then
-        cat > /opt/mwu-bot/.env << 'EOF'
-# Add your real API keys here
-POLYGON_API_KEY=CHANGE_ME
-ALPACA_KEY_ID=CHANGE_ME
-ALPACA_SECRET_KEY=CHANGE_ME
-ALPACA_PAPER=true
-EOF
-        chmod 644 /opt/mwu-bot/.env
-    fi
-
     echo "==> mwu-bot installed."
-    echo "    - Edit /opt/mwu-bot/.env with your API keys."
+    echo "    - Edit /etc/.env with your API keys."
     echo "    - Enable and start the service with:"
     echo "        sudo systemctl enable --now mwu-bot.service"
 }

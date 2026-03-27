@@ -1,6 +1,6 @@
 pkgbase = mwu-bot-git
 	pkgdesc = Multiplicative Weights Update trading bot (Polygon + Alpaca)
-	pkgver = f7fb20e
+	pkgver = 60e08a8
 	pkgrel = 1
 	url = https://github.com/Simenf05/mwu-bot
 	install = mwu-bot.install
