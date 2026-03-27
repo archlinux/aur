@@ -2,8 +2,8 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 pkgname=php-pear
 epoch=1
-pkgver=1.10.24
-pkgrel=2
+pkgver=1.10.26
+pkgrel=1
 arch=('any')
 pkgdesc='PHP Extension and Application Repository'
 url='https://pear.php.net/package/pearweb_phars/'
@@ -12,7 +12,7 @@ license=('PHP')
 source=("install-pear-nozlib-${pkgver}.phar::https://github.com/pear/pearweb_phars/raw/v${pkgver}/install-pear-nozlib.phar"
         "install-pear-nozlib-${pkgver}.phar.sig::https://github.com/pear/pearweb_phars/raw/v${pkgver}/install-pear-nozlib.sig")
 backup=('etc/php/pear.conf')
-sha256sums=('7226dfc7aedaf1018039445958583789ec7144fe22ed17a2ba6850eceaf8ab55'
+sha256sums=('a71349da29f1a6e3f0792695b167e582375a93c70c0e9d35e7c4675697c5f039'
             'SKIP')
 validpgpkeys=('10F68CF73F8AA426F617752972A321BAC245F175')
 
