@@ -2,9 +2,9 @@
 pkgname=lpx-git
 _pkgname=lpx
 pkgver=0.1.0.r2.g0bf2888
-pkgrel=1
+pkgrel=2
 pkgdesc='Terminal Animated GIF Viewer'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/lusingander/lpx'
 license=('MIT')
 makedepends=('cargo' 'git')
