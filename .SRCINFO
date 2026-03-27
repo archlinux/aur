@@ -5,6 +5,7 @@ pkgbase = python313
 	url = https://www.python.org/
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = PSF-2.0
 	makedepends = bluez-libs
 	makedepends = mpdecimal
