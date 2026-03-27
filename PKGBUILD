@@ -3,13 +3,14 @@
 pkgname=onscripter-yuri
 _gitname=OnscripterYuri
 pkgdesc="An enhancement ONScripter project porting to many platforms, especially web."
-pkgver=0.7.5
+pkgver=0.7.6
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/YuriSizuku/OnscripterYuri"
 license=('GPL-2.0-only')
 depends=('glibc'
-         'gcc-libs'
+         'libstdc++'
+         'libgcc'
          'sdl2'
          'sdl2_mixer'
          'sdl2_ttf'
@@ -23,7 +24,7 @@ makedepends=("cmake")
 provides=("onsyuri")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
         "ld-all-dynamic.patch")
-sha256sums=('64691cb456892868b0ecb7667b297f82db5d260b3070b41c57a7934be05eb3ef'
+sha256sums=('f277365769beda5d84423aca9ed2c2bc401dbcc73acf5f805ad3eef3ebb87849'
             '63792b3d3b945960831379e7259a7403b0d29107506c49bcd406fd1012766965')
 
 prepare() {
