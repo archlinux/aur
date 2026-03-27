@@ -1,6 +1,6 @@
 pkgbase = incplot
 	pkgdesc = CLI tool for drawing great looking plots in the terminal and in HTML focused on user ergonomics and simplicity
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/InCom-0/incplot
 	arch = x86_64
@@ -21,8 +21,8 @@ pkgbase = incplot
 	depends = xxhash
 	depends = zlib
 	depends = cpr
-	source = git+https://github.com/InCom-0/incplot.git#tag=5d673e8c5624a8e08c691dbb0064bb7122dac275
-	source = git+https://github.com/InCom-0/incplot-lib.git#tag=31c11b3e85d3720c03691b7737d9f75cee303815
+	source = git+https://github.com/InCom-0/incplot.git#tag=06e773c585621247792397c618f0530dcf9919b6
+	source = git+https://github.com/InCom-0/incplot-lib.git#tag=9c5a812d44fbf490b5b9603ae00ccf3ebe856bf5
 	source = git+https://github.com/InCom-0/incstd.git#tag=815a2a38d23441f9de1015b79b5e3c05bafbb157
 	source = git+https://github.com/MiSo1289/more_concepts.git#tag=ea5b6815f5929cdb086f76d43f3e9b122bbcaaeb
 	source = git+https://github.com/InCom-0/incerr.git#tag=e58ddf602e1f475e6da86c3795d194c1e47abfdf
