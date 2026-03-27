@@ -1,7 +1,7 @@
 # Maintainer: Agustin Ciocchini <agustin.ciocchini@gmail.com>
 
 pkgname=hermes-agent-git
-pkgver=r1251.d502952
+pkgver=r2754.6f11ff53
 pkgrel=1
 pkgdesc="The self-improving AI agent — creates skills from experience, improves them during use, and runs anywhere"
 arch=('any')
