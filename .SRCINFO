@@ -1,6 +1,6 @@
 pkgbase = ftb-app-bin
 	pkgdesc = A new Modpack launcher for FTB and Curse modpacks.
-	pkgver = 1.29.4
+	pkgver = 1.29.5
 	pkgrel = 1
 	url = https://feed-the-beast.com/ftb-app
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = ftb-app-bin
 	optdepends = java-runtime: Playing Minecraft with system Java.
 	provides = ftb-app
 	conflicts = ftb-app
-	source_x86_64 = https://piston.feed-the-beast.com/app/ftb-app-linux-1.29.4-amd64.deb
-	sha256sums_x86_64 = 53fe74fd11cf83a051541766e3f7aafc154b67eda88f98583fd6564e2f00667f
-	source_aarch64 = https://piston.feed-the-beast.com/app/ftb-app-linux-1.29.4-arm64.deb
-	sha256sums_aarch64 = 1877360370f53fdaf31936c51c1aabdb65c9bbdfb39b3d3e33514fc80c0f9816
+	source_x86_64 = https://piston.feed-the-beast.com/app/ftb-app-linux-1.29.5-amd64.deb
+	sha256sums_x86_64 = a73d7475c2b9f866c355e16020fa0ed81be67bc053eee3fa9dff37efc77cde1f
+	source_aarch64 = https://piston.feed-the-beast.com/app/ftb-app-linux-1.29.5-arm64.deb
+	sha256sums_aarch64 = 49b7e7240103b274fd1b6aa063c122b19b5d3610e4b83adca08f88ffbdbed392
 
 pkgname = ftb-app-bin
