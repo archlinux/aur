@@ -31,7 +31,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib/${_pkgname} \
         -DCMAKE_BUILD_TYPE=Release \
-	-DUSE_QT_GUI=ON \
+        -DUSE_QT_GUI=ON \
         -DENABLE_OPENMP=ON
     make
 }
