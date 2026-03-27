@@ -1,7 +1,7 @@
 # Maintainer: acedmicabhishek <acedmicabhishek@gmail.com>
 pkgname=kerneldrive
-pkgver=0.1.2.1
-pkgrel=5
+pkgver=0.1.2.2
+pkgrel=1
 pkgdesc="Modular Linux system control application (Ghub, Armoury Crate, Ryzen Controller)"
 arch=('x86_64')
 url="https://github.com/acedmicabhishek/KernelDrive"
