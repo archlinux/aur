@@ -1,6 +1,6 @@
 # Maintainer: jakeb-grant
 pkgname=pane-fm-git
-pkgver=0.1.0.r7.g862bfd6
+pkgver=0.1.1.r0.g1b35514
 pkgrel=1
 pkgdesc="A themeable file manager built with Tauri and Svelte"
 arch=('x86_64')
@@ -34,7 +34,7 @@ build() {
     export RUSTUP_TOOLCHAIN=stable
     bun install --frozen-lockfile
     bun run sync-icons
-    cargo build --release --manifest-path src-tauri/Cargo.toml
+    bun run tauri build
 }
 
 package() {
