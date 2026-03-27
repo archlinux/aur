@@ -10,7 +10,7 @@ _channel=dev
 _pkgname=microsoft-edge-dev
 pkgname=microsoft-edge-dev-bin
 _pkgshortname=msedge-dev
-pkgver=146.0.3844.0
+pkgver=148.0.3928.0
 pkgrel=1
 _uprel=1
 pkgdesc="A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier"
@@ -33,7 +33,7 @@ options=(!strip !zipman)
 source=("https://packages.microsoft.com/repos/edge/pool/main/m/$_pkgname/${_pkgname}_$pkgver-${_uprel}_amd64.deb"
         "$_pkgname.sh"
         "Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf")
-sha256sums=('106ed681a705a5e445ec4a3b7f1cafc0bd3164228f7d7f786d224d081cb181f0'
+sha256sums=('a1187f5cb74eff24756b974a2c68cd4d55f2995d2a6437f284f05550035986fd'
             '285afe53b2cd617ae7f4930a1d0befe12a97ae31c30cfad74e97bf695c6f6a8a'
             'edf2ed596eb068f168287fc76aa713ad5e0afb59f0a0a47a4f29c0c124ade15e')
 
@@ -45,19 +45,19 @@ package() {
 
 	# 256 and 24 are proper colored icons
 	for res in 128 64 48 32; do
-		magick "$pkgdir/opt/microsoft/$_pkgshortname/product_logo_256.png" \
+		magick "$pkgdir/opt/microsoft/$_pkgshortname/product_logo_256_dev.png" \
 			-resize "${res}x${res}" \
-			"$pkgdir/opt/microsoft/$_pkgshortname/product_logo_${res}.png"
+			"$pkgdir/opt/microsoft/$_pkgshortname/product_logo_${res}_dev.png"
 	done
 	for res in 22 16; do
-		magick "$pkgdir/opt/microsoft/$_pkgshortname/product_logo_24.png" \
+		magick "$pkgdir/opt/microsoft/$_pkgshortname/product_logo_24_dev.png" \
 			-resize "${res}x${res}" \
-			"$pkgdir/opt/microsoft/$_pkgshortname/product_logo_${res}.png"
+			"$pkgdir/opt/microsoft/$_pkgshortname/product_logo_${res}_dev.png"
 	done
 
 	# copy icons where FHS expects them
 	for res in 16 22 24 32 48 64 128 256; do
-		install -Dm644 "$pkgdir/opt/microsoft/$_pkgshortname/product_logo_${res}.png" \
+		install -Dm644 "$pkgdir/opt/microsoft/$_pkgshortname/product_logo_${res}_dev.png" \
 			"$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/$_pkgname.png"
 	done
 
