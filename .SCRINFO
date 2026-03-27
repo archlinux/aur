@@ -1,0 +1,15 @@
+pkgbase = cuppajoe
+	pkgdesc = A hot cuppa joe
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = https://github.com/Miroaja/cuppa
+	arch = x86_64
+	arch = arm
+	depends = cmake
+	depends = ncurses
+	depends = tbb
+	depends = openmp
+	source = cuppajoe::git+https://github.com/Miroaja/cuppa.git
+	sha512sums = SKIP
+
+pkgname = cuppajoe
