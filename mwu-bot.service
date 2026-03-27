@@ -1,0 +1,18 @@
+[Unit]
+Description=MWU trading bot scheduler
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/mwu-bot
+EnvironmentFile=/opt/mwu-bot/.env
+ExecStart=/opt/mwu-bot/.venv/bin/python -m bot.scheduler
+Restart=on-failure
+RestartSec=10
+User=mwu
+Group=mwu
+
+[Install]
+WantedBy=multi-user.target
+
