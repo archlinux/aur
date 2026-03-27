@@ -5,7 +5,7 @@
 pkgname=microsoft-edge-beta-bin
 _pkgname=microsoft-edge-beta
 _pkgshortname=msedge-beta
-pkgver=145.0.3800.53
+pkgver=147.0.3912.26
 pkgrel=1
 pkgdesc="A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier"
 arch=('x86_64')
@@ -27,7 +27,7 @@ _channel=beta
 source=("https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-beta/${_pkgname}_${pkgver}-1_amd64.deb"
         "microsoft-edge-beta.sh"
         "Microsoft Standard Application License Terms - Standalone (free) Use Terms.pdf")
-sha256sums=('13ff2b36d10ab40f91be673cc4471e2d8cf71155243a7d725145dda37199891c'
+sha256sums=('aff1e26b78fd24ed3f1f32b6ae81beaa1634f5f4bba483c8ca57cdbc62f360a2'
             'ccb0d8939af2f129da97f75ef063b6ff2d9484e94c090aef82570001eba8dd71'
             'edf2ed596eb068f168287fc76aa713ad5e0afb59f0a0a47a4f29c0c124ade15e')
 
@@ -39,19 +39,19 @@ package() {
 
 	# 256 and 24 are proper colored icons
 	for res in 128 64 48 32; do
-		magick "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_256.png" \
+		magick "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_256_beta.png" \
 			-resize ${res}x${res} \
-			"${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}.png"
+			"${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}_beta.png"
 	done
 	for res in 22 16; do
-		magick "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_24.png" \
+		magick "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_24_beta.png" \
 			-resize ${res}x${res} \
-			"${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}.png"
+			"${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}_beta.png"
 	done
 
 	# install icons
 	for res in 16 22 24 32 48 64 128 256; do
-		install -Dm644 "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}.png" \
+		install -Dm644 "${pkgdir}/opt/microsoft/${_pkgshortname}/product_logo_${res}_beta.png" \
 			"${pkgdir}/usr/share/icons/hicolor/${res}x${res}/apps/${_pkgname}.png"
 	done
        # User flag aware launcher
