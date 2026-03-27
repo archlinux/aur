@@ -1,6 +1,6 @@
 # Maintainer: jprjr <john@jrjrtech.com>
 
-pkgname=('lapis' 'lua-lapis' 'lua51-lapis' 'lua52-lapis' 'lua53-lapis' 'lua54-lapis')
+pkgname=('lua-lapis' 'lua51-lapis' 'lua52-lapis' 'lua53-lapis' 'lua54-lapis')
 _pkgbase='lapis'
 pkgver=1.17.0
 pkgrel=1
@@ -24,16 +24,6 @@ _package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-package_lapis() {
-    pkgdesc='A web framework for MoonScript & Lua'
-    depends=("lua-lapis")
-
-    cd "$_pkgbase-$pkgver"
-
-    install -Dm755 bin/lapis "$pkgdir/usr/bin/lapis"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
 package_lua-lapis() {
     pkgdesc='A web framework for MoonScript & Lua 5.5'
     depends=("lua>=${_lua_current}" "lua<${_lua_next}")
@@ -49,6 +39,7 @@ package_lua-lapis() {
     depends+=('lua-socket')
 
     _package ${_lua_current}
+    install -Dm755 bin/lapis "$pkgdir/usr/bin/lapis"
 }
 
 package_lua51-lapis() {
