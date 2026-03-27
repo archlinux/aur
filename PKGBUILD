@@ -7,7 +7,7 @@ _xkbver=0.3.0
 _mvzrver=0.3.7
 _fcftver=2.0.0
 _pixmanver=0.3.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/kewuaa/kwm"
 license=('GPL-3.0')
@@ -24,7 +24,7 @@ makedepends=('zig'
 install=kwm.install
 source=("$url"/archive/refs/tags/v$pkgver.tar.gz
 	xkb-$_xkbver.tar.gz::https://codeberg.org/ifreund/zig-xkbcommon/archive/v$_xkbver.tar.gz
-	mvzr-$_mvzrver.tar.gz::https://github.com/mnemnion/mvzr/archive/refs/tags/v$_mzvrver.tar.gz
+	mvzr-$_mvzrver.tar.gz::https://github.com/mnemnion/mvzr/archive/refs/tags/v$_mvzrver.tar.gz
         fcft-$_fcftver.tar.gz::https://git.sr.ht/~novakane/zig-fcft/archive/v$_fcftver.tar.gz
 	pixman-$_pixmanver.tar.gz::https://codeberg.org/ifreund/zig-pixman/archive/v$_pixmanver.tar.gz)
 sha256sums=('72ba72eef4a6dd776bd05b4ccd61ce8606ce5ee0ee184ffdc199befa8737b71a'
