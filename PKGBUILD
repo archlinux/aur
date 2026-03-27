@@ -1,6 +1,6 @@
 _pkgname="sidex"
 pkgname="${_pkgname}-git"
-pkgver=r30.876296e622
+pkgver=r30.876296e
 pkgrel=1
 pkgdesc="Extract files from Steam .sim / .sid files (Old Steam games on DVD's)."
 arch=(x86_64)
@@ -14,6 +14,16 @@ conflicts=("${_pkgname}")
 
 source=("${_pkgname}"::"git+$url.git")
 sha512sums=('SKIP')
+
+pkgver() {
+	cd "${_pkgname}"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+
+prepare() {
+	cd "${_pkgname}"
+	sed -i "s/define SIDEX_VERSION_EXTRA \"\"/define SIDEX_VERSION_EXTRA \"-git-${pkgver}\"/g" src/version.h
+}
 
 build() {
 	cd "${_pkgname}"
