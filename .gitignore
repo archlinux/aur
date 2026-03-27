@@ -2,3 +2,4 @@ src
 pkg
 sdrconnect-*
 SDRconnect_linux-*
+*.tar.gz
