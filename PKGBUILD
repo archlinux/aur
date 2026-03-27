@@ -1,7 +1,7 @@
 # Maintainer: Luis Bocanegra <luisbocanegra17b at gmail dot com>
 _gitname=plasma-panel-spacer-extended
 pkgname=plasma6-applets-panel-spacer-extended
-pkgver=1.13.0
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Mouse gestures for the KDE Plasma Panel, drag window, run any shortcut, command, application with configurable mouse actions!"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('plasma-workspace' 'kdeplasma-addons')
 makedepends=('extra-cmake-modules')
 source=("${_gitname}-${pkgver}.tar.gz::$url/archive/v${pkgver}/${_gitname}-${pkgver}.tar.gz")
-sha256sums=('2ac6dc31c4d5a6cb7032ad13275ae9c4357dc112c68ef3109b468520290d1e82')
+sha256sums=('584e26ede98afdb257b7f02fca1e8e6a14bd77b20e762053c82d740034509546')
 
 build() {
   cd "${srcdir}/${_gitname}-$pkgver"
