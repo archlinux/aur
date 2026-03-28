@@ -3,7 +3,7 @@
 pkgname=hemtt-bin
 _pkgname=hemtt
 pkgver=1.18.2
-pkgrel=2
+pkgrel=3
 pkgdesc="powerful, opinionated and modern build system for Arma 3 mod development"
 url="https://github.com/brettmayson/HEMTT"
 arch=('x86_64')
@@ -18,14 +18,14 @@ package() {
 
   # Shell completions
   install -dm755 "${pkgdir}/usr/share/bash-completion/completions"
-  "${srcdir}/${_pkgname}-${pkgver}" manage completions bash \
+  "${pkgdir}/usr/bin/hemtt" manage completions bash \
     > "${pkgdir}/usr/share/bash-completion/completions/hemtt"
 
   install -dm755 "${pkgdir}/usr/share/zsh/site-functions"
-  "${srcdir}/${_pkgname}-${pkgver}" manage completions zsh \
+  "${pkgdir}/usr/bin/hemtt" manage completions zsh \
     > "${pkgdir}/usr/share/zsh/site-functions/_hemtt"
 
   install -dm755 "${pkgdir}/usr/share/fish/vendor_completions.d"
-  "${srcdir}/${_pkgname}-${pkgver}" manage completions fish \
+  "${pkgdir}/usr/bin/hemtt" manage completions fish \
     > "${pkgdir}/usr/share/fish/vendor_completions.d/hemtt.fish"
 }

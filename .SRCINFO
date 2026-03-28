@@ -1,7 +1,7 @@
 pkgbase = hemtt-bin
 	pkgdesc = powerful, opinionated and modern build system for Arma 3 mod development
 	pkgver = 1.18.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/brettmayson/HEMTT
 	arch = x86_64
 	license = GPL2
