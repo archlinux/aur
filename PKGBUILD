@@ -1,6 +1,6 @@
 # Maintainer: Yast <yastcher@gmail.com>
 pkgname=tapeback
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="Local meeting recorder with transcription and speaker diarization for Obsidian"
 arch=('any')
@@ -9,14 +9,14 @@ license=('Apache-2.0')
 depends=(
     'python'
     'ffmpeg'
-    'pipewire-pulse'
+    'pulse-native-provider'
 )
 optdepends=(
     'cuda: GPU-accelerated transcription and diarization'
 )
 makedepends=('python-pip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yastcher/tapeback/archive/v$pkgver.tar.gz")
-sha256sums=('1c1230fcc7946cf59ee263a5359583a1ca4fd9fa58c618e71d38179b74bfa91e')
+sha256sums=('564a180194ecdc8ac06367e0a0b76b57eda9144f9db0687bc9bedc33a0b28275')
 
 build() {
     cd "$pkgname-$pkgver"
