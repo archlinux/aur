@@ -1,13 +1,13 @@
 pkgbase = owlry-rune
 	pkgdesc = Rune scripting runtime for Owlry — enables user-created Rune plugins
-	pkgver = 1.1.0
+	pkgver = 1.1.1
 	pkgrel = 1
 	url = https://somegit.dev/Owlibou/owlry
 	arch = x86_64
 	license = GPL-3.0-or-later
 	makedepends = cargo
 	depends = owlry-core
-	source = owlry-rune-1.1.0.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-rune-v1.1.0.tar.gz
-	b2sums = d4b200446a31301b1240fd8eede6e10764d7bbc551f2e5549bfdbdcc0fa4a717677c3c2c69778d2dfa336711ac5b74d4987e46082ea589fed961c9d2ff95af76
+	source = owlry-rune-1.1.1.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-rune-v1.1.1.tar.gz
+	b2sums = a0e1fa032db8dda8e6bc24457f3c04948129d3f14c1d3e61b8e080340b24f560d43294beb133ad4b1c6eb7942d401108ea91c367b074eaeeefa284e9b2a9dbc8
 
 pkgname = owlry-rune
