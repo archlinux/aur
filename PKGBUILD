@@ -1,8 +1,8 @@
 pkgname=qtjambi
 pkgver=6.11.0
-pkgrel=1
+pkgrel=2
 qtver=6.11.0
-qtjambiver=6.10.2
+qtjambiver=6.11.0
 pkgdesc="QtJambi is Qt bindings for the Java programming language originally developed by Trolltech"
 arch=(x86_64)
 url="https://github.com/OmixVisualization/qtjambi"
@@ -65,7 +65,6 @@ prepare() {
   patch -p1 < ../../build_release_only.patch
   patch -p1 < ../../warn_off.patch
   patch -p1 < ../../rm_warn_dollar.patch
-  patch -p1 < ../../qt6_11_0.patch
 }
 
 build() {
