@@ -7,6 +7,7 @@ pkgbase = xremap-niri-bin
 	arch = aarch64
 	license = MIT
 	provides = xremap
+	options = !debug
 	source = LICENSE-0.14.18::https://raw.githubusercontent.com/xremap/xremap/v0.14.18/LICENSE
 	sha256sums = 60365594c733128ba50f05de00c4a6f07fed0a6e8bbd93817f39ded3980f7343
 	source_x86_64 = xremap-niri-bin-0.14.18-x86_64.zip::https://github.com/xremap/xremap/releases/download/v0.14.18/xremap-linux-x86_64-niri.zip

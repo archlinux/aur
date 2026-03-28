@@ -14,6 +14,9 @@ license=(
 provides=(
     'xremap'
 )
+options=(
+    '!debug'
+)
 source=(
     "LICENSE-$pkgver::https://raw.githubusercontent.com/xremap/xremap/v$pkgver/LICENSE"
 )
