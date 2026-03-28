@@ -1,7 +1,7 @@
 adsklic_ver=$(pacman -Qi adsklicensing | grep -Po '^Version\s*: \K.+(?=-)' 2>/dev/null)
-prod_key="657R1"
-prod_ver="2026.0.0.F"
-maya_cfg="/var/opt/Autodesk/Adlm/Maya2026/MayaConfig.pit"
+prod_key="657S1"
+prod_ver="2027.0.0.F"
+maya_cfg="/var/opt/Autodesk/Adlm/Maya2027/MayaConfig.pit"
 
 post_install() {
 	if [ ! -f "$maya_cfg" ]; then

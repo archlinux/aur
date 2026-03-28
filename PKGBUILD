@@ -5,7 +5,7 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 
 pkgname=maya
-pkgver=2026.3
+pkgver=2027.0
 _majorver="${pkgver%%.*}"
 pkgrel=1
 pkgdesc='Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software'
@@ -13,7 +13,8 @@ arch=('x86_64')
 url='http://www.autodesk.com/products/maya/overview'
 license=('custom')
 depends=(
-         'adsklicensing>=15.1.0.12339'
+         'adp-desktop-sdk'
+         'adsklicensing>=16.0.3.14414'
          'alsa-lib'
          'at-spi2-core'
          'attr'
@@ -85,9 +86,9 @@ depends=(
 optdepends=('opencl-driver: OpenCL support')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
-source=("manual://Maya${_majorver}_64-${pkgver}-3308.x86_64.rpm"
+source=("manual://Maya${_majorver}_64-${pkgver}-16083.x86_64.rpm"
         'application-home-workaround.patch')
-b2sums=('6341c5226ab1f2227d47a038d691d39ae5af825b0f9eef8554707c6b980cb732e540eed72129f331af76a844483767ed99fe9098e6e4fb3eedeb622f00884299'
+b2sums=('40ee8ff59cd54787977ea56d90cdb037ddce0d18b71a5020116b865a2850add2d2bf17d09d18a03a260104f7e628a6292c3ecf9c425ea21d50a3bdb270e81285'
         'b4f09a64402e54e0067ca381efbc921a7f3cd595aef10135d423fc4a405b105b7cbd4d6907851cf9563cf02be3ec514d48d0a555a976f5daa7d4a66edee594ee')
 
 options=(!strip)
@@ -95,7 +96,7 @@ install="${pkgname}.install"
 
 prepare() {
     # Patch launch script
-    patch usr/autodesk/maya2026/bin/maya2026 application-home-workaround.patch
+    patch usr/autodesk/${pkgname}${_majorver}/bin/${pkgname}${_majorver} application-home-workaround.patch
 
     # Fix tmp directory
     ln -sf /tmp usr/tmp
