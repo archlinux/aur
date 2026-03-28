@@ -1,6 +1,6 @@
 # Maintainer: moheladwy <mohamed.h.eladwy@gmail.com>
 pkgname=ocr4linux-git
-pkgver=1.4.2.r61.0ef3354
+pkgver=1.5.0.r63.a551094
 pkgrel=1
 pkgdesc="OCR CLI Tool for Extracting Text from Screenshots using bash and python for both x11 and wayland."
 arch=('any')
@@ -9,6 +9,7 @@ license=('MIT')
 depends=(
   'python'
   'bash'
+  'libnotify'
   'tesseract'
   'gawk'
   'tesseract-data-eng'
@@ -31,11 +32,11 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname" || exit 1
-  printf "1.4.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "1.5.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/$pkgname" || exit 1 
+  cd "$srcdir/$pkgname" || exit 1
 
   install -Dm755 OCR4Linux.py "${pkgdir}/usr/bin/OCR4Linux.py"
   install -Dm755 OCR4Linux.sh "${pkgdir}/usr/bin/OCR4Linux"
