@@ -1,0 +1,34 @@
+pkgbase = chessament-git
+	pkgdesc = Chess tournament manager for Swiss-system tournaments
+	pkgver = r457.6ae9db1
+	pkgrel = 1
+	url = https://apps.kde.org/chessament/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = karchive
+	depends = kconfig
+	depends = kcoreaddons
+	depends = ki18n
+	depends = kiconthemes
+	depends = kio
+	depends = kirigami
+	depends = kirigami-addons
+	depends = kitemmodels
+	depends = qcoro
+	depends = qqc2-desktop-style
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-networkauth
+	depends = qt6-svg
+	depends = qtkeychain-qt6
+	provides = chessament=r457.6ae9db1
+	conflicts = chessament
+	source = chessament::git+https://invent.kde.org/games/chessament.git
+	sha256sums = SKIP
+
+pkgname = chessament-git
