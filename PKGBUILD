@@ -6,7 +6,7 @@
 pkgname=web-ext
 # https://github.com/mozilla/web-ext/releases
 pkgver=10.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
 url='https://developer.mozilla.org/en-US/Add-ons/WebExtensions'
@@ -15,9 +15,9 @@ license=('MPL-2.0')
 # See "engines" in https://github.com/mozilla/web-ext/blob/master/package.json
 # XXX: somehow nodejs 20 breaks tests
 # Per https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/, web-ext requires the current LTS (long-term support) versions of NodeJS.
-depends=('python' 'nodejs-lts')
+# Running namcap on the produced package reported python as a missing dependency.
+depends=('nodejs-lts' 'python')
 makedepends=('npm' 'node-gyp')
-checkdepends=('python-nose')
 replaces=('nodejs-web-ext')
 provides=('nodejs-web-ext')
 conflicts=('nodejs-web-ext')
@@ -37,24 +37,19 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname-$pkgver-build"
 
-  npm install
+  # Mozilla recommends running npm ci instead of npm install.
+  # Thanks to Manuel Reimer for suggesting this.
+  npm ci
   NODE_ENV=production npm run build
   cp -r lib "$srcdir/$pkgname-$pkgver"
 
   cd "$srcdir/$pkgname-$pkgver"
-  npm install --production
+  npm ci --omit=dev
 }
 
 check() {
-  # cd "$srcdir/$pkgname-$pkgver-build"
-
-  # web-ext uses flow-bin, which does not support some architectures (e.g., RISC-V)
-  # Some tests match error messages and fail if messages are translated
-  # LANG=C.UTF-8 CI_SKIP_FLOWCHECK=y MOCHA_TIMEOUT=100000 npm test
-
-  # Test is disabled, as it appears to not be intented to be run on user environment
-  # Relevant comment: https://aur.archlinux.org/packages/web-ext#comment-1021975
-  nosetests || warning "Test failed"
+  cd "$srcdir/$pkgname-$pkgver-build"
+  npm test
 }
 
 package() {
