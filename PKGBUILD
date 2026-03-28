@@ -1,18 +1,20 @@
-# Maintainer: Alexander Fasching <fasching.a91@gmail.com>
-pkgname=direwolf-git
+# Maintainer: Hannele Ruiz <justlemoncl [at] gmail [dot] com>
+# Contributor: Alexander Fasching <fasching.a91 [at] gmail [dot] com>
+
 _pkgname=direwolf
-pkgver=1.7.dev.A.r140.g46f31d4
+pkgname=$_pkgname-git
+pkgver=1.8.beta1.r41.g78d6559
 pkgrel=1
 pkgdesc="Software modem/TNC and APRS encoder/decoder"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/wb2osz/direwolf"
 license=('GPL')
-depends=('alsa-lib')
-optdepends=('gpsd' 'hamlib')
-makedepends=('git' 'cmake')
+depends=('alsa-lib' 'gpsd' 'hamlib')
+optdepends=()
+makedepends=('cmake')
 provides=('direwolf')
 conflicts=('direwolf')
-source=('git+https://github.com/wb2osz/direwolf.git#branch=dev'
+source=("$_pkgname::git+$url.git#branch=dev"
         'direwolf.service'
         'direwolf-kiss.service')
 sha1sums=('SKIP'
