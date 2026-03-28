@@ -2,7 +2,7 @@
 
 pkgname=modbustools
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="ModbusTools are cross-platform Modbus simulator tools with GUI to work with Modbus protocol (TCP,RTU,ASCII)"
 arch=($CARCH)
 url="https://github.com/serhmarch/ModbusTools"
@@ -43,6 +43,7 @@ prepare() {
     git -C "${srcdir}/${pkgname}" clean -dfx
 
     cd "${srcdir}/${pkgname}"
+    git cherry-pick -n 4d0a7408e12d28930d4aedb9356f8a42bb47685a
     git submodule init
     git config submodule.modbus.url "$srcdir/modbus"
     git -c protocol.file.allow=always submodule update
