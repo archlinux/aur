@@ -22,7 +22,7 @@ prepare() {
     cd "${srcdir}/${_reponame}"
 
     for src in "${source[@]}"; do
-[1;129A    # Add custom patches if needed
+    # Add custom patches if needed
             src="${src%%::*}"
             src="${src##*/}"
             [[ $src = *.patch ]] || continue
