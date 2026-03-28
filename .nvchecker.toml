@@ -1,0 +1,5 @@
+[ssh-dashboard-bin]
+source = "github"
+github = "AlpinDale/ssh-dashboard"
+use_latest_release = true
+prefix = "v"
