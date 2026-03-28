@@ -1,6 +1,6 @@
 pkgname=aocl-blis
-pkgver=5.2
-pkgrel=3
+pkgver=5.2.2
+pkgrel=1
 pkgdesc="BLAS-like Library Instantiation Software Framework, AOCL branding"
 arch=('x86_64')
 url="https://github.com/amd/blis"
@@ -12,7 +12,7 @@ _blasver=3
 makedepends=('python' 'cmake' 'ninja' 'gcc-fortran')
 _tag_str="$pkgver"
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/$_tag_str.tar.gz")
-sha256sums=('c553bd543eedc87920df9b82634ae4c02662145ed737f51fdf4c9bca5e588028')
+sha256sums=('79f85665b2cdb10cd69d2418cc2dccaf8833adf20cf39d28b7fad544c58d3d80')
 
 
 # Overriding -march with generic causes build issues
