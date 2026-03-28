@@ -2,10 +2,10 @@
 pkgname=atlantik-git
 _pkgname=atlantik
 pkgver=3.80.3.r753.gf4e092c
-pkgrel=1
+pkgrel=2
 pkgdesc='KDE client for playing Monopoly-like board games on the monopd network'
 arch=('x86_64')
-url='https://invent.kde.org/games/atlantik'
+url='https://apps.kde.org/atlantik/'
 license=('GPL-2.0-only' 'LGPL-2.1-only')
 depends=(
     'libstdc++'
