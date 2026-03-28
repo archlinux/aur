@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://github.com/dnasdw/$pkgname"
 license=('MIT')
 depends=('glibc' 'curl' 'openssl')
-makedepends=('cmake' 'git')
+makedepends=('cmake')
 source=(
   "$pkgname-$pkgver::${url}/archive/refs/tags/v${pkgver}.tar.gz"
   "$pkgname-paths.patch"

@@ -6,7 +6,6 @@ pkgbase = 3dstool
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
-	makedepends = git
 	depends = glibc
 	depends = curl
 	depends = openssl
