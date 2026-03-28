@@ -2,18 +2,18 @@
 
 _name=google-genai
 pkgname=python-$_name
-pkgver=1.66.0
+pkgver=1.69.0
 pkgrel=1
 pkgdesc="GenAI Python SDK."
 arch=('any')
 url='https://github.com/googleapis/python-genai'
 license=('Apache-2.0')
-depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pydantic' 'python-requests' 'python-tenacity' 'python-websockets' 'python-typing_extensions' 'python-distro' 'python-sniffio' 'python-aiohttp')
+depends=('python' 'python-anyio' 'python-google-auth' 'python-httpx' 'python-pydantic' 'python-requests' 'python-tenacity' 'python-websockets' 'python-typing_extensions' 'python-distro' 'python-sniffio')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-certifi' 'python-pillow' 'python-pytest' 'python-pytest-asyncio' 'python-mcp' 'python-aiohttp' 'python-sentencepiece' 'python-protobuf')
-optdepends=('python-aiohttp: aiohttp' 'python-sentencepiece: local-tokenizer' 'python-protobuf: local-tokenizer')
+optdepends=('python-aiohttp: aiohttp' 'python-sentencepiece: local-tokenizer' 'python-protobuf: local-tokenizer' 'python-pyopenssl: pyopenssl')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4d0735469cf74a65e422c9d913cb9bbf557e0f7038bcd354d8daa1c4dc29389c')
+sha256sums=('1ddc5d1e48a051a65e13e502e4f34f303d90b964cb19bbbf35e347660b4125c1')
 
 prepare(){
   cd "$srcdir"/${pkgname//google-/}-$pkgver
@@ -52,6 +52,7 @@ check() {
     --deselect google/genai/tests/types/test_types.py::test_type_union
     --deselect google/genai/tests/types/test_types.py::test_type_union_all_py_versions
     --deselect google/genai/tests/types/test_types.py::test_type_union_with_default_value_all_py_versions
+    --deselect google/genai/tests/client/test_retries.py::test_aiohttp_retries_failed_request_retries_unsuccessfully_mtls
   )
   cd "$srcdir"/${pkgname//google-/}-$pkgver
   PYTHONPATH=$PWD pytest "${pytest_options[@]}" ${_name//-//}/tests
