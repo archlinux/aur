@@ -1,6 +1,7 @@
 # Maintainer: kobe-koto <k [at] koto [dot] cc>
+_versioncode=26
 pkgname=fluent-lyrics-bin
-pkgver=0.0.23
+pkgver="0.0.$_versioncode"
 pkgrel=1
 pkgdesc="Fluent Lyrics, a lyrics viewer supports various sources, written in Flutter. (prebuilt binary)"
 arch=('x86_64')
@@ -16,12 +17,12 @@ depends=(
 provides=('fluent-lyrics')
 conflicts=('fluent-lyrics')
 source=(
-  "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/fluent_lyrics-${pkgver}-linux.zip"
+  "${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}+$_versioncode/fluent_lyrics-${pkgver}-linux.zip"
   "cc.koto.fluent_lyrics.desktop"
   "fluent-lyrics.sh"
-  "fluent-lyrics.png::${url}/raw/main/assets/logo-rounded.png"
+  "fluent-lyrics.png::${url}/raw/main/assets/icons/logo-rounded.png"
   )
-sha256sums=('6116609fb895e6cd2ec0fa09b78b7a25ef824d8445fd629711571045600bd1ef'
+sha256sums=('8e568722e3ff2da38a623e2c83d9d75f6f7aeeb890b6c8b3dd9a49a6c20d8880'
             '29a9f40ec748ba132cd776862f99f84442f8018e1d4b6996691ee9ddf7ad917d'
             '22bda8e153e0a8b97c2657a1fb49c9d0907b93e0b83e2a15664019d14ae97f3e'
             '8e331b6e8925e78030fdc86417e7f8fbf987a30261d1cf09432e5baaff027282')
