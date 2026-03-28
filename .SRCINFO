@@ -1,0 +1,16 @@
+pkgbase = half-beat-bin
+	pkgdesc = 实现 b 站电脑端听视频的桌面音乐播放器
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/Sheyiyuan/Half-Beat-Player
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	provides = half-beat
+	conflicts = half-beat
+	source = https://github.com/Sheyiyuan/Half-Beat-Player/releases/download/v1.2.0/half-beat_1.2.0_amd64.deb
+	sha256sums = a07bb5cbb4d4d555b76ac0f5664bb5aa115aa9c2519df895882c728dee7c1df3
+
+pkgname = half-beat-bin
