@@ -1,15 +1,11 @@
 pkgbase = owlry-plugin-system
-	pkgdesc = System actions plugin for Owlry — shutdown, reboot, logout, lock, and suspend
+	pkgdesc = Transitional package — system actions is now built into owlry-core
 	pkgver = 1.0.0
-	pkgrel = 1
-	url = https://somegit.dev/Owlibou/owlry-plugins
-	install = owlry-plugin-system.install
-	arch = x86_64
+	pkgrel = 99
+	url = https://somegit.dev/Owlibou/owlry
+	arch = any
 	license = GPL-3.0-or-later
-	makedepends = cargo
-	depends = owlry-core
-	depends = systemd
-	source = owlry-plugin-system-1.0.0.tar.gz::https://somegit.dev/Owlibou/owlry-plugins/archive/owlry-plugin-system-v1.0.0.tar.gz
-	b2sums = 3d9a096485d5dea487a69fd48019eb5cddf2781bda5acce0503ecc5f19412f274b3a6f60a1922c35bd7855e4f72eaacb131d8affd0ee21d00e213345134a1b98
+	depends = owlry-core>=1.2.0
+	replaces = owlry-plugin-system
 
 pkgname = owlry-plugin-system
