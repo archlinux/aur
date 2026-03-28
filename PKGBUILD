@@ -1,8 +1,8 @@
 # Maintainer: dalmatheo <aur@dalmatheo.dev>
 
 pkgname=creamlinux-installer-bin
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="DLC Fetcher and installer for Steam games on Linux"
 arch=('x86_64')
 url="https://github.com/Novattz/creamlinux-installer"
@@ -28,7 +28,7 @@ conflicts=("creamlinux")
 # !debug is used because this is a pre-compiled binary; we cannot generate debug symbols.
 options=('!debug')
 
-sha256sums=('a1ac7253229b1c6665d4ff9592a799fdf65a1697f19c3feb683cff4fc70d071c'
+sha256sums=('4dd2f893d49c79cc9d5aa29acbbe6a3b93ebdb614d0866cebb288127776d546b'
             '3acdaff189f797ae7b160a1e1d32081ba141599afc5a4210eba78ff182003977')
 
 source=(
