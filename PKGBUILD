@@ -1,7 +1,7 @@
 # Maintainer: Qingxu <me@linioi.com>
 pkgname=xremap-niri-bin
 pkgver=0.14.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Dynamic key remapper for X11 and Wayland'
 url='https://github.com/xremap/xremap'
 arch=(
@@ -14,17 +14,20 @@ license=(
 provides=(
     'xremap'
 )
+source=(
+    "LICENSE-$pkgver::https://raw.githubusercontent.com/xremap/xremap/v$pkgver/LICENSE"
+)
 source_x86_64=(
     "$pkgname-$pkgver-x86_64.zip::https://github.com/xremap/xremap/releases/download/v$pkgver/xremap-linux-x86_64-niri.zip"
 )
 source_aarch64=(
     "$pkgname-$pkgver-aarch64.zip::https://github.com/xremap/xremap/releases/download/v$pkgver/xremap-linux-aarch64-niri.zip"
 )
+sha256sums=('60365594c733128ba50f05de00c4a6f07fed0a6e8bbd93817f39ded3980f7343')
 sha256sums_x86_64=('060d5225411f44fdbfaf34be1912b3284655a6fa28fcb09b5fa11a79ceb565e2')
 sha256sums_aarch64=('7cd9b0926d0443fc115936b37321c7ffd16c60b1f8172f5f164908f40d9ca4ae')
 
 package() {
-    cd "$srcdir/"
-
-    install -Dm755 xremap "${pkgdir}/usr/bin/xremap"
+    install -Dm755 xremap "$pkgdir/usr/bin/xremap"
+    install -Dm644 "LICENSE-$pkgver" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

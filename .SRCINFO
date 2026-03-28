@@ -1,12 +1,14 @@
 pkgbase = xremap-niri-bin
 	pkgdesc = Dynamic key remapper for X11 and Wayland
 	pkgver = 0.14.18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xremap/xremap
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	provides = xremap
+	source = LICENSE-0.14.18::https://raw.githubusercontent.com/xremap/xremap/v0.14.18/LICENSE
+	sha256sums = 60365594c733128ba50f05de00c4a6f07fed0a6e8bbd93817f39ded3980f7343
 	source_x86_64 = xremap-niri-bin-0.14.18-x86_64.zip::https://github.com/xremap/xremap/releases/download/v0.14.18/xremap-linux-x86_64-niri.zip
 	sha256sums_x86_64 = 060d5225411f44fdbfaf34be1912b3284655a6fa28fcb09b5fa11a79ceb565e2
 	source_aarch64 = xremap-niri-bin-0.14.18-aarch64.zip::https://github.com/xremap/xremap/releases/download/v0.14.18/xremap-linux-aarch64-niri.zip
