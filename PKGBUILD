@@ -41,7 +41,7 @@ depends=(
   hicolor-icon-theme
   libpulse
   libevent
-  libvpx
+  libvpx.so
   libx11
   libxcb
   libxcomposite
@@ -51,7 +51,7 @@ depends=(
   libxrandr
   libxss
   libxt
-  libwebp
+  libwebp.so
   mime-types
   nspr
   nss
