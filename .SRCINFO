@@ -1,7 +1,7 @@
 pkgbase = opennow-appimage
 	pkgdesc = Custom GeForce Now Client Named OpenNOW
 	pkgver = 0.2.4.60030b626b57914e9e4d538aba1d4ed954a82653
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenCloudGaming/OpenNOW
 	arch = x86_64
 	arch = aarch64
