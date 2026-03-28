@@ -1,8 +1,8 @@
 # Maintainer: Anas Elgarhy <anas.elgarhy.dev@gmail.com>
 pkgname=purple
-pkgver=2.13.0
+pkgver=2.14.2
 pkgrel=1
-pkgdesc='TUI to search, connect and manage SSH servers. Visual file transfer, cloud sync (10 providers), password management. Edits ~/.ssh/config directly.'
+pkgdesc='TUI to search, connect and manage SSH servers. Visual file transfer, cloud sync (12 providers), password management. Edits ~/.ssh/config directly.'
 arch=('x86_64' 'aarch64' 'armv7h' 'riscv64')
 url='https://github.com/erickochen/purple'
 license=('MIT')
@@ -12,7 +12,7 @@ options=(!lto)
 provides=('purple')
 conflicts=('purple-git' 'purple-bin')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('ccdcd43b6f9508ce72a876bf10530d6f1e50870583e21773d4474a54658884ce')
+sha256sums=('2c86942d3d43ec142f7bc185dc7cb52a08ce6f8afa23bffbbefe9971dc694189')
 
 prepare() {
     cd "$pkgname-$pkgver"
