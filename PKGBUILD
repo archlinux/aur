@@ -6,13 +6,13 @@
 
 pkgname=chatterino2
 pkgver=2.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Second installment of the Twitch chat client series "Chatterino"'
 arch=('x86_64')
 url=https://chatterino.com
 license=('MIT')
-depends=('gdk-pixbuf2' 'glib2' 'hicolor-icon-theme' 'libnotify' 'openssl'
-         'qt6-base' 'qt6-imageformats' 'qt6-svg' 'qtkeychain-qt6')
+depends=('gdk-pixbuf2' 'glib2' 'hicolor-icon-theme' 'hunspell' 'libnotify'
+         'openssl' 'qt6-base' 'qt6-imageformats' 'qt6-svg' 'qtkeychain-qt6')
 makedepends=('boost' 'cmake' 'git' 'python3' 'qt6-tools' 'rapidjson')
 optdepends=('streamlink: For piping streams to video players'
             'pulseaudio: For audio output')
@@ -118,6 +118,7 @@ build() {
         -DBUILD_TESTS=ON \
         -DCHATTERINO_UPDATER=OFF \
         -DCHATTERINO_PLUGINS=ON \
+        -DCHATTERINO_SPELLCHECK=ON \
         -DINSTALL_GTEST=OFF
     cmake --build build
 }
