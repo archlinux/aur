@@ -1,6 +1,6 @@
 # Maintainer: Pysio <qq593277393@outlook.com>
 pkgname=lolia-cli
-pkgver=0.67.0
+pkgver=0.67.4
 pkgrel=1
 pkgdesc="Fast, simple, and elegant one-click launch for LoliaFRP"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -8,7 +8,7 @@ url="https://github.com/Lolia-FRP/lolia-frp"
 license=('Apache')
 makedepends=('go>=1.24.0' 'git' 'npm')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('f1d95e0f38827bcac45e98ed614b0d2868d00c1718a20557e3f55470ecdd5fbb')
+sha256sums=('a9b587d9da6a84b3a6ec66f5fe6a73167b52d1ff547f3cc197d6c184cc22f92a')
 
 build() {
     cd "${srcdir}/lolia-frp-${pkgver}"
