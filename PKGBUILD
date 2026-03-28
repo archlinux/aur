@@ -11,8 +11,7 @@ options=('!strip' '!debug')
 provides=("tagselecta=${pkgver}")
 conflicts=('tagselecta')
 source=("${pkgname}-${pkgver}.zip::https://github.com/cantti/tagselecta/releases/download/v${pkgver}/tagselecta-linux-x64.zip")
-sha256sums=('553dcd1f302ec33e387939adf40762ec2c2e689727ff7e7dac4142ae7c5f9abf')
-
+sha256sums=('18848d092b7634af120b8362c6825590bf1f6b1133b88d405ed3ca1ab54fa894')
 package() {
   install -Dm755 "${srcdir}/tagselecta" "${pkgdir}/usr/bin/tagselecta"
 }
