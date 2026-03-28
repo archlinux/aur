@@ -5,7 +5,7 @@ _pkgname=termirs
 pkgname=${_pkgname}-bin
 pkgdesc="A modern, async SSH terminal client"
 
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -26,8 +26,8 @@ source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/$
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_pkgname}-${_pkgvername}-${_barch[1]}-unknown-linux-musl.tar.gz")
 sha256sums=('c2ebfd5271fc48667a40415fc0b01daf0e1d812a0fd33b36f6f9bc2bd7e052c3'
             '0cc181e3a9c232b28d48d3a591f9bba1eebbdbdbdcc06cde58a27222fdc9b00f')
-sha256sums_x86_64=('2569e842b5681c789ae5961de0faea0fabfac27adcecaaccf154d6388c530e98')
-sha256sums_aarch64=('99fd84d48079ce4584ebe79224f3512bf7dfc22992b97f1cc912060657cb56c7')
+sha256sums_x86_64=('9f6549170de3f0b014e645d6457319b64821515ce9a0c7e86800dbd16b576fce')
+sha256sums_aarch64=('56a5d422cdc1a5d9105982c2f229c516f0bb511e9a01195ff1948bd962c323a9')
 
 
 package() {
