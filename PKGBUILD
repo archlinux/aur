@@ -1,21 +1,35 @@
-# Maintainer: Jon Wiersma (archaur at jonw dot org)
-pkgname='matlab-segymat'
-pkgdesc='Set of m files for loading SEG-Y files from Matlab and Octave'
-pkgver='1.6'
-pkgrel='3'
-arch=('any')
-url='https://cultpenguin.gitbooks.io/segymat/content/'
-license=('lgpl')
-optdepends=(
-  'matlab: support for matlab',
-  'octave: support for octave'
+# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Contributor: Jon Wiersma (archaur at jonw dot org)
+
+_name="segymat"
+pkgname="matlab-${_name}"
+pkgver=1.8
+pkgrel=1
+pkgdesc="Read and write SEGY formatted files using Matlab/Octave"
+arch=(
+  'any'
 )
-source=("http://downloads.sourceforge.net/sourceforge/segymat/segymat-$pkgver.zip")
+url="https://segymat.readthedocs.io/"
+_url="https://github.com/AUProbGeo/${_name}"
+license=(
+  'GPL-2.0-or-later' # per .m file headers
+  'LGPL-2.1-only'    # per LICENSE file
+)
+optdepends=(
+  'matlab: support for MATLAB'
+  'octave: support for Octave'
+)
+_pkgsrc="${_url##*/}-${pkgver}"
+source=(
+  "${_url}/archive/refs/tags/v${pkgver}/${_pkgsrc}.tar.gz"
+)
+sha256sums=('52b5bc6bf4fefa3169be5789a1240ac5fd914c1cb712180b8b5a2d45f1d5a450')
 
 package() {
-  cd "segymat-$pkgver"
-  install -d "$pkgdir/usr/share/matlab/SegyMAT"
-  find * -type f -exec install -Dm 644 "{}" "$pkgdir/usr/share/matlab/SegyMAT/{}" \;
-}
+  cd "${srcdir}/${_pkgsrc}"
+  find . -type f \( -name '*.m' -o -name '*.fig' -o -name '*.segy' \) -exec \
+    install -vDm644 "{}" "${pkgdir}/usr/share/matlab/SegyMAT/{}" \;
 
-md5sums=('412018363da6df2bbe7a041b8b2f9b91')
+  install -vDm644 "Readme.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -vDm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

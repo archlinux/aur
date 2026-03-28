@@ -1,14 +1,14 @@
 pkgbase = matlab-segymat
-	pkgdesc = Set of m files for loading SEG-Y files from Matlab and Octave
-	pkgver = 1.6
-	pkgrel = 3
-	url = https://cultpenguin.gitbooks.io/segymat/content/
+	pkgdesc = Read and write SEGY formatted files using Matlab/Octave
+	pkgver = 1.8
+	pkgrel = 1
+	url = https://segymat.readthedocs.io/
 	arch = any
-	license = lgpl
-	optdepends = matlab: support for matlab,
-	optdepends = octave: support for octave
-	source = http://downloads.sourceforge.net/sourceforge/segymat/segymat-1.6.zip
-	md5sums = 412018363da6df2bbe7a041b8b2f9b91
+	license = GPL-2.0-or-later
+	license = LGPL-2.1-only
+	optdepends = matlab: support for MATLAB
+	optdepends = octave: support for Octave
+	source = https://github.com/AUProbGeo/segymat/archive/refs/tags/v1.8/segymat-1.8.tar.gz
+	sha256sums = 52b5bc6bf4fefa3169be5789a1240ac5fd914c1cb712180b8b5a2d45f1d5a450
 
 pkgname = matlab-segymat
-

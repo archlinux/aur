@@ -1,0 +1,4 @@
+[matlab-segymat]
+source = "git"
+git = "https://github.com/AUProbGeo/segymat.git"
+prefix = "v"
