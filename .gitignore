@@ -1,4 +1,5 @@
 pkg
 src
 direwolf
-direwolf-*.pkg.tar.zst
+direwolf*.tar.gz
+direwolf*.pkg.tar.zst
