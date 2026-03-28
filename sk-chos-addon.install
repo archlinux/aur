@@ -8,6 +8,8 @@ rc_files=(
 start_line="# sk-chos user-motd"
 end_line="# sk-chos user-motd end"
 
+mkdir -p /etc/zsh
+
 read -rd '' motd_command <<EOF
 $start_line
 if test -d "\$HOME"; then

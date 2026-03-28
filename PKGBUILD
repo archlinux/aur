@@ -3,7 +3,7 @@ pkgname=sk-chos-addon-git
 _basename=sk-chos-tool
 _pkgname=sk-chos-addon
 _reponame=sk-chos-config
-pkgver=1.9.1.r4.gc5655b2
+pkgver=2.31.1.r0.g008c216
 pkgrel=1
 pkgdesc="Addon for sk-chimeros"
 arch=('any')
@@ -11,8 +11,6 @@ url="https://github.com/honjow/sk-chos-config.git"
 license=('MIT')
 makedepends=('git')
 depends=(
-    amdgpu-test-scripts-common-git
-    amd-s2idle-analysis-script-git
     cage
     expect
     efibootmgr
@@ -24,16 +22,22 @@ depends=(
     just
     libcec
     man-db
+    patch
     python-systemd
-    refind
+    refind-r
     wlr-randr
     zram-generator
+)
+optdepends=(
+    plymouth
 )
 provides=(sk-chos-addon)
 conflicts=(sk-chos-addon)
 replaces=(sk-chos-addon)
-source=("git+$url")
-sha256sums=('SKIP')
+source=("git+$url"
+        "amd_s2idle.py::https://web.git.kernel.org/pub/scm/linux/kernel/git/superm1/amd-debug-tools.git/plain/amd_s2idle.py")
+sha256sums=('SKIP'
+            'SKIP')
 options=(!strip)
 backup=('etc/sk-chos-tool/github_cdn.conf')
 install=sk-chos-addon.install
@@ -56,6 +60,12 @@ package() {
     # bin
     install -dm755 "${pkgdir}/usr/bin/"
     install -m755 -t "${pkgdir}/usr/bin/" "${source_dir}/bin"/*
+    # 复制软链接 覆盖
+    find "${source_dir}/bin" -maxdepth 1 -type l -exec cp -P -f {} "${pkgdir}/usr/bin/" \;
+
+    # amd_s2idle.py to amd_s2idle-analysis
+    install -dm755 "${pkgdir}/usr/bin"
+    install -m755 "${srcdir}/amd_s2idle.py" "${pkgdir}/usr/bin/amd_s2idle-analysis"
 
     # conf
     install -dm755 "${pkgdir}/etc/${_basename}"
@@ -83,11 +93,25 @@ package() {
 
     # lib service
     install -dm755 "${pkgdir}/usr/lib/systemd/system"
-    install -m644 -t "${pkgdir}/usr/lib/systemd/system" "${source_dir}/systemd/system"/*.*
+    # install -m644 -t "${pkgdir}/usr/lib/systemd/system" "${source_dir}/systemd/system"/*.*
+    find "${source_dir}/systemd/system" -maxdepth 1 -type f -exec install -m644 -D {} "${pkgdir}/usr/lib/systemd/system/" \;
+    install -dm755 "${pkgdir}/usr/lib/systemd/system/hhd@.service.d" || true
+    install -m644 -t "${pkgdir}/usr/lib/systemd/system/hhd@.service.d" "${source_dir}/systemd/system/hhd@.service.d"/* || true
+    install -dm755 "${pkgdir}/usr/lib/systemd/system/hhd.service.d"
+    install -m644 -t "${pkgdir}/usr/lib/systemd/system/hhd.service.d" "${source_dir}/systemd/system/hhd.service.d"/*
+
+    # system-sleep
+    install -dm755 "${pkgdir}/usr/lib/systemd/system-sleep"
+    install -m755 -t "${pkgdir}/usr/lib/systemd/system-sleep" "${source_dir}/systemd/system-sleep"/*
 
     # user service
     install -dm755 "${pkgdir}/usr/lib/systemd/user"
-    install -m644 -t "${pkgdir}/usr/lib/systemd/user" "${source_dir}/systemd/user"/*
+    find "${source_dir}/systemd/user" -maxdepth 1 -type f -exec install -m644 -D {} "${pkgdir}/usr/lib/systemd/user/" \;
+    # user service drop-in: gamescope-session-plus
+    if [ -d "${source_dir}/systemd/user/gamescope-session-plus@.service.d" ]; then
+        install -dm755 "${pkgdir}/usr/lib/systemd/user/gamescope-session-plus@.service.d"
+        install -m644 -t "${pkgdir}/usr/lib/systemd/user/gamescope-session-plus@.service.d" "${source_dir}/systemd/user/gamescope-session-plus@.service.d"/*
+    fi
 
     # /usr/libexec/*
     install -dm755 "${pkgdir}/usr/libexec"
@@ -100,6 +124,10 @@ package() {
     # etc profile.d
     install -dm755 "${pkgdir}/etc/profile.d"
     install -m644 -t "${pkgdir}/etc/profile.d" "${source_dir}/etc/profile.d"/*
+
+    # plymouthd.conf
+    install -dm755 "${pkgdir}/etc/plymouth"
+    cp -r "${source_dir}/etc/plymouth"/* "${pkgdir}/etc/plymouth"
 
     # /usr/share/sk-chos/just/*
     install -dm755 "${pkgdir}/usr/share/sk-chos/just"
@@ -125,6 +153,10 @@ package() {
     install -dm755 "${pkgdir}/usr/lib/cjust"
     install -m755 -t "${pkgdir}/usr/lib/cjust" "${source_dir}/lib/cjust"/*.sh
 
+    # /usr/lib/os-*
+    install -dm755 "${pkgdir}/usr/lib"
+    install -m755 -t "${pkgdir}/usr/lib" "${source_dir}/lib/os-"*
+
     # polkit actions
     install -dm755 "${pkgdir}/usr/share/polkit-1/actions"
     install -m644 -t "${pkgdir}/usr/share/polkit-1/actions" "${source_dir}/share/polkit-1/actions"/*
@@ -137,9 +169,9 @@ package() {
     install -dm755 "${pkgdir}/usr/lib/udev/rules.d"
     install -m644 -t "${pkgdir}/usr/lib/udev/rules.d" "${source_dir}/lib/udev/rules.d"/*
 
-    # /usr/share/plymouth/themes/steamos/*
-    install -dm755 "${pkgdir}/usr/share/plymouth/themes/steamos"
-    install -m644 -t "${pkgdir}/usr/share/plymouth/themes/steamos" "${source_dir}/share/plymouth/themes/steamos"/*
+    # /usr/share/plymouth/themes
+    install -dm755 "${pkgdir}/usr/share/plymouth/themes"
+    cp -r "${source_dir}/share/plymouth/themes"/* "${pkgdir}/usr/share/plymouth/themes/"
 
     # 创建软链接解决重命名兼容
     # bin
