@@ -1,7 +1,7 @@
 pkgbase = gsdb
 	pkgdesc = A database management tool for PostgreSQL, MySQL, and SQLite
 	pkgver = 0.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ginkcode/gsdb
 	arch = x86_64
 	license = MIT

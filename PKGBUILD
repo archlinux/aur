@@ -1,7 +1,7 @@
 # Maintainer: Gink <ginkcode@gmail.com>
 pkgname=gsdb
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A database management tool for PostgreSQL, MySQL, and SQLite"
 arch=('x86_64')
 url="https://github.com/ginkcode/gsdb"
@@ -14,6 +14,7 @@ sha256sums=('SKIP')
 build() {
     cd "$pkgname-$pkgver"
     npm ci
+    unset CARGO_TARGET_DIR
     npm run tauri -- build --config '{"bundle":{"active":false}}'
 }
 
