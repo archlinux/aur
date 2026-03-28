@@ -142,5 +142,5 @@ while True:
         print("...")
         time.sleep(random.uniform(1.0, 3.0))
         print("[OK]")
-    if random.random() < 0.05:
+    if random.random() < 0.04:
         animate_bar()
