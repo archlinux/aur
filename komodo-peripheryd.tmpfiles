@@ -1,3 +1,5 @@
-z /srv/komodo-periphery 2775 komodo komodo - -
-d /srv/komodo-periphery/ssl 2775 komodo komodo -
+z /srv/komodo-periphery 0775 komodo komodo - -
+d /srv/komodo-periphery/ssl 0775 komodo komodo -
 z /srv/komodo-periphery/ssl - komodo komodo - -
+d /srv/komodo-periphery/keys 0755 komodo komodo -
+z /srv/komodo-periphery/keys - komodo komodo - -

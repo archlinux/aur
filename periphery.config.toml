@@ -13,19 +13,27 @@
 ## file will be located either in `/etc/komodo/periphery.config.toml`,
 ## or for user installs, `$HOME/.config/komodo/periphery.config.toml`.
 
-## Optional. The port the server runs on.
-## Env: PERIPHERY_PORT
-## Default: 8120
-port = 8120
+## Most fields can also be configured using environment variables.
+## Environment variables will override values set in this file.
 
-## The IP address the periphery server will bind to.
-## The default will allow it to accept external IPv4 and IPv6 connections.
-## Env: PERIPHERY_BIND_IP
-## Default: [::]
-bind_ip = "[::]"
+## You can also use JSON or YAML if preferred. You can convert here:
+##   - YAML: https://it-tools.tech/toml-to-yaml
+##   - JSON: https://it-tools.tech/toml-to-json
 
-## The directory periphery will use as the default base for the directories it uses.
-## The periphery user must have write access to this directory.
+###########
+# GENERAL #
+###########
+
+## Specify the root directory used by Periphery agent.
+## All your compose files and repos need to be inside this directory
+## for Periphery to interact with them.
+## - ROOT_DIRECTORY (/etc/komodo)
+## --- ./stacks
+## ------ ./my_stack_1
+## ------ ./my_stack_2
+## --- ./repos
+## ------ ./my_repo_1
+## Each specific sub-directory (like ./stacks) can be overridden below.
 ## Env: PERIPHERY_ROOT_DIRECTORY
 ## Default: /etc/komodo
 root_directory = "/srv/komodo-periphery"
@@ -48,18 +56,35 @@ root_directory = "/srv/komodo-periphery"
 ## Default: ${root_directory}/builds
 # build_dir = "/etc/komodo/builds"
 
+## Set the default terminal command used to init the shell.
+## For example, `bash` or `zsh`.
+## Env: PERIPHERY_DEFAULT_TERMINAL_COMMAND
+## Default: bash
+default_terminal_command = "bash"
+
 ## Disable the terminal APIs and disallow remote shell access through Periphery.
 ## Env: PERIPHERY_DISABLE_TERMINALS
 ## Default: false
 disable_terminals = false
 
-## How often Periphery polls the host for system stats,
-## like CPU / memory usage. To effectively disable polling,
-## set this to something like 1-hr.
+## Disable the container exec / attach APIs and disallow remote container shell access through Periphery.
+## This can be left enabled while general terminal access is disabled.
+## Env: PERIPHERY_DISABLE_CONTAINER_TERMINALS
+## Default: false
+disable_container_terminals = false
+
+## How often Periphery polls the host for system stats, like CPU / memory usage.
+## To effectively disable polling, set this to something like 1-hr.
 ## Env: PERIPHERY_STATS_POLLING_RATE
-## Options: 1-sec, 5-sec, 10-sec, 30-sec, 1-min, 5-min, 30-min, 1-hr
+## Options: https://docs.rs/komodo_client/latest/komodo_client/entities/enum.Timelength.html
 ## Default: 5-sec
 stats_polling_rate = "5-sec"
+
+## How often Periphery polls the host for container stats,
+## Env: PERIPHERY_CONTAINER_STATS_POLLING_RATE
+## Options: https://docs.rs/komodo_client/latest/komodo_client/entities/enum.Timelength.html
+## Default: 30-sec
+container_stats_polling_rate = "30-sec"
 
 ## Whether stack actions should use `docker-compose ...`
 ## instead of `docker compose ...`.
@@ -68,11 +93,13 @@ stats_polling_rate = "5-sec"
 legacy_compose_cli = false
 
 ## Optional. Only include mounts at specific paths in the disk report.
+## Example: include_disk_mounts = ["/mnt/include/1", "/mnt/include/2"]
 ## Env: PERIPHERY_INCLUDE_DISK_MOUNTS
 ## Default: empty, which won't filter down the disks.
 include_disk_mounts = []
 
 ## Optional. Don't include these mounts in the disk report.
+## Example: exclude_disk_mounts = ["/mnt/exclude/1", "/mnt/exclude/2"]
 ## Env: PERIPHERY_EXCLUDE_DISK_MOUNTS
 ## Default: empty, which won't exclude any disks.
 exclude_disk_mounts = []
@@ -81,36 +108,92 @@ exclude_disk_mounts = []
 # AUTH #
 ########
 
-## Optional. Limit the ip addresses which can call the periphery api.
+## The private key used with the Noise handshake.
+## If using `file:/path/to/file` and the file doesn't exist yet,
+## Periphery will generate and write new key to the path.
+## Env: PERIPHERY_PRIVATE_KEY or PERIPHERY_PRIVATE_KEY_FILE
+## Default: "file:${root_directory}/keys/periphery.key"
+## Image Default: "file:/config/keys/periphery.key" (matching Core image)
+# private_key = "file:/path/to/file"
+
+## Accepted public keys to allow Core(s) to connect.
+## Periphery gains knowledge of the Core public key through the noise handshake.
+## If neither these nor passkeys provided, inbound connections will not be authenticated.
+## Accepts Spki base64 DER directly and PEM file. Use `file:/path/to/core.pub` to load from file.
+## Env: PERIPHERY_CORE_PUBLIC_KEYS
+## Optional, no default.
+# core_public_keys = "MCowBQYDK2VuAyEATZgrjGHeF0KJUe0+n77+qAWOg3YzEzXOmQWaRgO3OGQ=, file:/path/to/key2.pub"
+
+## Deprecated. Legacy v1 compatibility.
+## Users should upgrade to private / public key authentication.
+## Env: PERIPHERY_PASSKEYS
+# passkeys = ["default-passkey"]
+
+#################
+# OUTBOUND MODE #
+#################
+
+## The address of Komodo Core. Must be reachable from this host.
+## If provided, Periphery will operate in outbound mode.
+## Env: PERIPHERY_CORE_ADDRESS
+## Default: None
+# core_address = "demo.komo.do"
+
+## The Server this Periphery agent should connect as.
+## Must match an existing Server name or id.
+## Env: PERIPHERY_CONNECT_AS
+## Default: None
+# connect_as = "server-name"
+
+## Make Onboarding Keys in Server settings.
+## Not needed if connecting as Server that already exists.
+## Env: PERIPHERY_ONBOARDING_KEY
+# onboarding_key = "MC4CAQAwBQYDK2VuBCIEIHPHNA/0M9ejFviE2y4dpyczAvnAwPWDQtGGGhEJ2G6K"
+
+################
+# INBOUND MODE #
+################
+
+## Enable the inbound connection server for
+## Core -> Periphery connection.
+## Env: PERIHERY_SERVER_ENABLED
+## Default: If 'core_addresses' are defined, false, otherwise true.
+# server_enabled = true
+
+## Optional. The port the server runs on.
+## Env: PERIPHERY_PORT
+## Default: 8120
+port = 8120
+
+## The IP address the periphery server will bind to.
+## The default will allow it to accept external IPv4 and IPv6 connections.
+## Env: PERIPHERY_BIND_IP
+## Default: [::]
+bind_ip = "[::]"
+
+## Optional. Limit the ip addresses which can connect to Periphery.
+## Supports Ipv4 / Ipv6 addresses and subnets.
+## Examples: allowed_ips = ["::ffff:12.34.56.78", "10.0.10.0/24"]
 ## Env: PERIPHERY_ALLOWED_IPS
 ## Default: empty, which will not block any request by ip.
 allowed_ips = []
-
-## Optional. Require callers to provide on of the provided passkeys to access the periphery api.
-## Env: PERIPHERY_PASSKEYS or PERIPHERY_PASSKEYS_FILE
-## Default: empty, which will not require any passkey to be passed by core.
-passkeys = []
-
-############
-# Security #
-############
 
 ## Enable HTTPS server using the given key and cert.
 ## If true and a key / cert at the given paths are not found, 
 ## self signed keys will be generated using openssl.
 ## Env: PERIPHERY_SSL_ENABLED
-## Default: false (will change to `true` in later release)
+## Default: true
 ssl_enabled = true
 
 ## Path to the ssl key.
 ## Env: PERIPHERY_SSL_KEY_FILE
-## Default: /etc/komodo/ssl/key.pem
-ssl_key_file = "/srv/komodo-periphery/ssl/key.pem"
+## Default: ${root_directory}/ssl/key.pem
+# ssl_key_file = "/etc/komodo/ssl/key.pem"
 
 ## Path to the ssl cert.
 ## Env: PERIPHERY_SSL_CERT_FILE
-## Default: /etc/komodo/ssl/cert.pem
-ssl_cert_file = "/srv/komodo-periphery/ssl/cert.pem"
+## Default: ${root_directory}/ssl/cert.pem
+# ssl_cert_file = "/etc/komodo/ssl/cert.pem"
 
 ###########
 # LOGGING #
@@ -128,12 +211,6 @@ logging.level = "info"
 ## Default: standard
 logging.stdio = "standard"
 
-## Specify whether logging is more human readable.
-## Note. Single logs will span multiple lines.
-## Env: PERIPHERY_LOGGING_PRETTY
-## Default: false
-logging.pretty = false
-
 ## Specify a opentelemetry otlp endpoint to send traces to.
 ## Example: http://localhost:4317.
 ## Env: PERIPHERY_LOGGING_OTLP_ENDPOINT
@@ -144,6 +221,24 @@ logging.otlp_endpoint = ""
 ## Env: PERIPHERY_LOGGING_OPENTELEMETRY_SERVICE_NAME
 ## Default: "Komodo"
 logging.opentelemetry_service_name = "Periphery"
+
+## Set the opentelemetry scope name.
+## This will be attached to the telemetry Komodo will send.
+## Env: PERIPHERY_LOGGING_OPENTELEMETRY_SCOPE_NAME
+## Default: "Komodo"
+logging.opentelemetry_scope_name = "Komodo"
+
+## Specify whether logging is more human readable.
+## Note. Single logs will span multiple lines.
+## Env: PERIPHERY_LOGGING_PRETTY
+## Default: false
+logging.pretty = false
+
+## Specify whether startup config log
+## is more human readable (multi-line)
+## Env: PERIPHERY_PRETTY_STARTUP_CONFIG
+## Default: false
+pretty_startup_config = false
 
 #################
 # GIT PROVIDERS #
