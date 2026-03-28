@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-epgsync
 pkgver=1.0.2
-_vdrapi=11
-pkgrel=11
+_vdrapi=12
+pkgrel=12
 pkgdesc="Import the EPG of a remote VDR"
 url="https://github.com/vdr-projects/vdr-plugin-epgsync"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
