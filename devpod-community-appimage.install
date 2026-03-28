@@ -1,0 +1,25 @@
+post_install() {
+  cat << EOF
+
+>>> DevPod Desktop AppImage (Community Fork) Note:
+>>>
+>>> A workaround for the WebKit2GTK "black window" issue has been applied
+>>> to the desktop entry (/usr/share/applications/DevPod.desktop).
+>>>
+>>> This sets WEBKIT_DISABLE_DMABUF_RENDERER=1 to ensure the application
+>>> renders correctly on systems where modern DMA-BUF rendering fails
+>>> (common on NVIDIA and some Wayland setups).
+>>>
+>>> If you prefer the modern rendering path or encounter performance issues,
+>>> you can:
+>>> 1. Edit /usr/share/applications/DevPod.desktop and remove the 'env ...' prefix.
+>>> 2. Launch the application from the terminal: /usr/bin/devpod-desktop
+>>>
+>>> Note: This fix only applies to the Desktop GUI and does not affect the CLI.
+
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
