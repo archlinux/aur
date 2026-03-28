@@ -9,7 +9,7 @@ license=('GPL')
 depends=('libelectron-electron-meta' 'libelectron>=2025.1' 'nss' 'gtk3' 'libxss' 'git')
 makedepends=('unzip')
 source=("$url/application/-/archive/$pkgver/application-$pkgver.tar.bz2")
-sha256sums=('04e4f0990a14fe8676221a7c1c239085ba1d32056290fc9b82654055a5b2d6f2')
+sha256sums=('1774107b78a0f2a6b54b5867c4bea0219950a698f86e7aa3f072ecb2c5deac5f')
 
 package() {
     install -dm755 "$pkgdir/opt/$_pkgname"
