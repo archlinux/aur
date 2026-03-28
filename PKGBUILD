@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-plugin-converter
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Unit and currency conversion plugin for Owlry — convert temperature, weight, length, currency, and more"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('owlry-core')
 makedepends=('cargo')
 install=owlry-plugin-converter.install
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry-plugins/archive/$pkgname-v$pkgver.tar.gz")
-b2sums=('1ae495d6dc9dce479f9676b4bfddc410bfc9be0f3f6b99f0626f007e15de55a52c4630a3facdb9671d0aaef61d30ab1fc27401476c6934371d68da6000e7e1a9')
+b2sums=('a89bff286559b1e9984545bf8655c0d7230f0cd139134498041fad71ac90e144c52b550b5d9540a8458c96f1fb05b23aa28e557d1bb0d6a08ee46563ae6da188')
 
 _cratename=owlry-plugin-converter
 
