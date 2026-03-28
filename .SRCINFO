@@ -1,0 +1,16 @@
+pkgbase = qbtctl-bin
+	pkgdesc = qbtctl - prebuilt static binary
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/creptic/qbtctl
+	arch = x86_64
+	license = MIT
+	provides = qbtctl
+	conflicts = qbtctl
+	conflicts = qbtctl-git
+	noextract = qbtctl
+	options = !debug
+	source = https://github.com/creptic/qbtctl/releases/download/1.5.0/qbtctl
+	sha256sums = 12fb2a51db92f4afb359b9ce030c52b79da08b47b5b8d329c6226fe5f473139b
+
+pkgname = qbtctl-bin
