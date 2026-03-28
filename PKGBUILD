@@ -5,9 +5,9 @@
 pkgbase=qt6-base-hifps
 pkgname=(qt6-base-hifps
          qt6-xcb-private-headers-hifps)
-_pkgver=6.10.2
+_pkgver=6.11.0
 pkgver=${_pkgver/-/}
-pkgrel=3
+pkgrel=1
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL-3.0-only
@@ -159,9 +159,7 @@ package_qt6-xcb-private-headers-hifps() {
   conflicts=(qt6-xcb-private-headers)
   provides=(qt6-xcb-private-headers)
 
-  cd $_pkgfn
-  install -d -m755 "$pkgdir"/usr/include/qt6xcb-private/{gl_integrations,nativepainting}
-  cp -r src/plugins/platforms/xcb/*.h "$pkgdir"/usr/include/qt6xcb-private/
-  cp -r src/plugins/platforms/xcb/gl_integrations/*.h "$pkgdir"/usr/include/qt6xcb-private/gl_integrations/
-  cp -r src/plugins/platforms/xcb/nativepainting/*.h "$pkgdir"/usr/include/qt6xcb-private/nativepainting/
+  install -d -m755 "$pkgdir"/usr/include/qt6xcb-private/gl_integrations
+  cp -r "$srcdir"/"$_pkgfn"/src/plugins/platforms/xcb/*.h "$pkgdir"/usr/include/qt6xcb-private/
+  cp -r "$srcdir"/"$_pkgfn"/src/plugins/platforms/xcb/gl_integrations/*.h "$pkgdir"/usr/include/qt6xcb-private/gl_integrations/
 }

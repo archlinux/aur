@@ -1,7 +1,7 @@
 pkgbase = qt6-base-hifps
 	pkgdesc = A cross-platform application and UI framework
-	pkgver = 6.10.2
-	pkgrel = 3
+	pkgver = 6.11.0
+	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
 	groups = qt6
@@ -78,7 +78,7 @@ pkgbase = qt6-base-hifps
 	optdepends = perl: for syncqt
 	optdepends = postgresql-libs: PostgreSQL driver
 	optdepends = unixodbc: ODBC driver
-	source = git+https://code.qt.io/qt/qtbase#tag=v6.10.2
+	source = git+https://code.qt.io/qt/qtbase#tag=v6.11.0
 	source = qt6-base-cflags.patch
 	source = qt6-base-nostrip.patch
 	source = 0005-low-timer.patch
@@ -139,7 +139,7 @@ pkgname = qt6-base-hifps
 pkgname = qt6-xcb-private-headers-hifps
 	pkgdesc = Private headers for Qt6 Xcb
 	groups = 
-	depends = qt6-base-hifps=6.10.2
+	depends = qt6-base-hifps=6.11.0
 	optdepends = 
 	provides = qt6-xcb-private-headers
 	conflicts = qt6-xcb-private-headers
