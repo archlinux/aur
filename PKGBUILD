@@ -3,8 +3,8 @@
 # Maintainer: Christopher Reimer <mail+vdr4arch[at]c-reimer[dot]de>
 pkgname=vdr-vnsiserver
 pkgver=1.8.4
-pkgrel=1
-_vdrapi=11
+pkgrel=2
+_vdrapi=12
 epoch=2
 url="https://github.com/vdr-projects/vdr-plugin-vnsiserver"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
