@@ -11,6 +11,7 @@ pkgbase = brother-dcpl2627dwe
 	depends = perl
 	optdepends = brscan5: scanner support.
 	optdepends = brscan-skey: scanner key tool.
+	options = !debug
 	source = https://download.brother.com/welcome/dlf106019/dcpl2627dwepdrv-4.1.0-1.i386.rpm
 	sha512sums = 6e820461a0730beaecd3d18d063ac4369d7464b8c510aef1b0c1b7e8f0801d5c8f8c7cebcda9c0fc3d07c2fe00df14abf17bb12fa981c56ac9fd108aeccb8da6
 

@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc="Brother DCP-L2627DWE lpr driver and CUPS wrapper"
 arch=('i686' 'x86_64')
 url="https://www.brother.nl/ondersteuning/dcp-l2627dwe/downloads"
+options=('!debug')
 
 license=('GPL-2.0-only' 'LicenseRef-custom:brother')
 depends=('cups' 'perl')
