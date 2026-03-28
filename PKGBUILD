@@ -2,7 +2,7 @@
 
 _pkgname="vulnx"
 pkgname="${_pkgname}-bin"
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Modern CLI for exploring vulnerability data with powerful search, filtering, and analysis capabilities"
 
@@ -18,10 +18,10 @@ source_armv7h=("${_pkgname}-${pkgver}-armv7h.zip::${url}/releases/download/v${pk
 source_i686=("${_pkgname}-${pkgver}-i686.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_386.zip")
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.zip::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.zip")
 
-sha256sums_aarch64=('307e28dec497fcf500fb129d99d85fe6dba4a5045814c75e92c2f804fda89b3d')
-sha256sums_armv7h=('4ac8806ac84a5ff0d0a56024e1814893508a711cd3d1be393f4a4882133ae367')
-sha256sums_i686=('3e628b52bdac2249c59f53edc19aa92e75832349657de183a119f4105a57b539')
-sha256sums_x86_64=('35c79881f5db04b7d50a66b6543bd80df5c7cd527daed56a432d8c8d3a107488')
+sha256sums_aarch64=('29d0fbb4842869601953e4e459e6a991b9c0a07dad82cbf7b50defbb7d315193')
+sha256sums_armv7h=('d846351f787276dcf76b316048953348f302fb831c75470a1ea0febfe4f5213c')
+sha256sums_i686=('3e4ab1fb373cf6fc033c15fe2cf670e9ab36291251dbabb4c4a185eaab7055d4')
+sha256sums_x86_64=('e016eb3302c53d699a3af78e983ecec3695d6aed49ea21e36d4f6283de40567e')
 
 package() {
   cd "${srcdir}"
