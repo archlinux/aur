@@ -1,0 +1,24 @@
+pkgbase = intellij-idea-open-eap-bin
+	pkgdesc = Early access version of the upcoming version of Intellij Idea IDE (community version)
+	pkgver = 2026.1.261.22158.277
+	pkgrel = 1
+	url = http://www.jetbrains.com/idea/nextversion
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = giflib
+	depends = libxtst
+	depends = libxrender
+	optdepends = libdbusmenu-glib: For global menu support
+	provides = intellij-idea-open-eap
+	conflicts = intellij-idea-open-eap
+	options = !strip
+	options = !debug
+	source = intellij-idea-open-eap.desktop
+	sha256sums = f3b7e72b21ad2ff5b6db0d43fd1c1fb2a1bc315b733bb33de4bf518351244b65
+	source_x86_64 = https://github.com/JetBrains/intellij-community/releases/download/idea%2F2026.1/idea-2026.1.tar.gz
+	sha256sums_x86_64 = 264f1e44c85de2b49f4b6b462d39d19c92cd5d4aabe23447d9716fd1b5d9f1a1
+	source_aarch64 = https://github.com/JetBrains/intellij-community/releases/download/idea%2F2026.1/idea-2026.1-aarch64.tar.gz
+	sha256sums_aarch64 = 284fa334ff17c8e559a708f4c13b33ecba110d9c01e8dc1bc8edb9820857e5b9
+
+pkgname = intellij-idea-open-eap-bin
