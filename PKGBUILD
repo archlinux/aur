@@ -1,11 +1,11 @@
 # Maintainer: Andrew Rabert <ar@nullsum.net>
-pkgname=jellyfin-desktop-cef-libcef-bin
+pkgname=jellyfin-desktop-libcef-bin
 pkgver=146.0.6
 _cef_version='146.0.6+g68649e2+chromium-146.0.7680.154'
 pkgrel=1
-provides=('jellyfin-desktop-cef-libcef')
+provides=('jellyfin-desktop-libcef')
 license=('BSD-3-Clause')
-pkgdesc="CEF SDK for jellyfin-desktop-cef"
+pkgdesc="CEF SDK for jellyfin-desktop"
 arch=('x86_64')
 url="https://bitbucket.org/chromiumembedded/cef"
 depends=(
@@ -44,21 +44,21 @@ build() {
 package() {
     cd "cef_binary_${_cef_version}_linux64_minimal"
 
-    install -dm755 "$pkgdir/opt/jellyfin-desktop-cef/libcef/"{include,lib}
+    install -dm755 "$pkgdir/opt/jellyfin-desktop/libcef/"{include,lib}
 
     # Headers
-    cp -r include/* "$pkgdir/opt/jellyfin-desktop-cef/libcef/include/"
+    cp -r include/* "$pkgdir/opt/jellyfin-desktop/libcef/include/"
 
     # Libraries and resources under lib/
-    cp -r Release/* "$pkgdir/opt/jellyfin-desktop-cef/libcef/lib/"
-    cp -r Resources/* "$pkgdir/opt/jellyfin-desktop-cef/libcef/lib/"
-    install -m644 build/libcef_dll_wrapper/libcef_dll_wrapper.a "$pkgdir/opt/jellyfin-desktop-cef/libcef/lib/"
+    cp -r Release/* "$pkgdir/opt/jellyfin-desktop/libcef/lib/"
+    cp -r Resources/* "$pkgdir/opt/jellyfin-desktop/libcef/lib/"
+    install -m644 build/libcef_dll_wrapper/libcef_dll_wrapper.a "$pkgdir/opt/jellyfin-desktop/libcef/lib/"
 
     # Fix permissions
-    find "$pkgdir/opt/jellyfin-desktop-cef/libcef" -type d -exec chmod 755 {} \;
-    find "$pkgdir/opt/jellyfin-desktop-cef/libcef" -type f -exec chmod 644 {} \;
-    chmod 755 "$pkgdir/opt/jellyfin-desktop-cef/libcef/lib"/*.so*
-    chmod 755 "$pkgdir/opt/jellyfin-desktop-cef/libcef/lib/chrome-sandbox"
+    find "$pkgdir/opt/jellyfin-desktop/libcef" -type d -exec chmod 755 {} \;
+    find "$pkgdir/opt/jellyfin-desktop/libcef" -type f -exec chmod 644 {} \;
+    chmod 755 "$pkgdir/opt/jellyfin-desktop/libcef/lib"/*.so*
+    chmod 755 "$pkgdir/opt/jellyfin-desktop/libcef/lib/chrome-sandbox"
 
     # License
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
