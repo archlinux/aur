@@ -1,9 +1,7 @@
-# private key to sign chromium extension is generated with `openssl genrsa 2048 | openssl pkcs8 -topk8 -nocrypt -traditional`
-
 _system_wasm_bindgen=false
 _version=0.2.0
 _channel=nightly
-_date=2026-03-26
+_date=2026-03-28
 
 pkgbase=ruffle-nightly
 pkgname=(ruffle-nightly
@@ -19,8 +17,7 @@ url="https://ruffle.rs/"
 license=("MIT OR Apache-2.0")
 makedepends=("cargo" "cmake" "java-environment" "npm" "nodejs-lts-jod"
              "binaryen" "gtk3" "alsa-lib" "libxcb" "systemd-libs"
-             "clang" "jq" "git" "chromium" "openssl" "rust-wasm"
-             "rust-src")
+             "clang" "jq" "git" "openssl" "rust-wasm" "rust-src")
 if "$_system_wasm_bindgen"
 then
     makedepends+=("wasm-bindgen")
@@ -29,8 +26,8 @@ else
 fi
 source=("git+https://github.com/ruffle-rs/ruffle.git#tag=$_channel-$_date"
         "chromium-extension-ruffle.key")
-sha256sums=('004f8cf7f14024753fc000af2d785f4dc1d87476d5ef38f87c1daff141710f9e'
-            'dac5c0e9661e41834b76d6d047dc94e41dd7a80d98e1c39cb4f2c95b1a7c7a46')
+source=("git+https://github.com/ruffle-rs/ruffle.git#tag=$_channel-$_date")
+sha256sums=('da83ecc9dd1e429c1cfd0ed57fdb0905afc576b492c125447a07b502a68faca0')
 options=("!lto")
 
 _FIREFOX_EXTENSION_ID="ruffle@ruffle.rs"
@@ -45,6 +42,7 @@ prepare() {
         cargo install wasm-bindgen-cli --version "$require_wasm_bindgen_version"
     fi
     cargo fetch --locked --target host-tuple
+    cargo fetch --locked --target wasm32-unknown-unknown
     cd web
     npm ci
     # TODO version_name=$version_number when not nightly
@@ -88,28 +86,6 @@ build() {
 
     cd web
     npm run build:repro
-
-    echo "Signing chromium extension..."
-    mkdir -p extension-chromium
-    bsdtar -x -C extension-chromium -f packages/extension/dist/ruffle_extension.zip
-    local extension_version pubkey extension_id userdatadir
-    extension_version="$(jq -r .version extension-chromium/manifest.json)"
-    pubkey="$(openssl rsa -in "$srcdir/chromium-extension-ruffle.key" -pubout -outform DER | base64 -w0)"
-    extension_id="$(echo "$pubkey" | base64 -d | sha256sum | head -c32 | tr '0-9a-f' 'a-p')"
-    echo "Chromium extension id is $extension_id"
-    echo "$extension_id" > .chromium_extension_id
-    jq --null-input \
-        --arg external_crx "/usr/lib/chromium-extension-ruffle/$extension_id.crx" \
-        --arg external_version "$extension_version" \
-    '$ARGS.named' > "$extension_id.json"
-    jq --ascii-output \
-        --arg key "$pubkey" \
-    '. + {"key": $key}' extension-chromium/manifest.json > manifest.json
-    mv manifest.json extension-chromium/manifest.json
-
-    userdatadir="$(mktemp -d chromium-pack-XXXXXX)"
-    chromium --user-data-dir="$userdatadir" --pack-extension="extension-chromium" \
-        --pack-extension-key="$srcdir/chromium-extension-ruffle.key"
 }
 
 check() {
@@ -221,19 +197,19 @@ package_firefox-extension-ruffle-nightly() {
 
 package_chromium-extension-ruffle-nightly() {
     optdepends=("chromium: Load extension in browser.")
-    pkgdesc+=" (Self-signed Chromium extension)"
+    pkgdesc+=" (Chromium extension)"
     arch=("any")
     provides=("chromium-extension-ruffle")
     conflicts=("chromium-extension-ruffle")
 
     cd "$srcdir/ruffle"
-    local extension_id
-    extension_id=$(<web/.chromium_extension_id)
+    local extension_id=donbcfbmhbcapadipfkeojnmajbakjdc # https://chromewebstore.google.com/detail/ruffle-flash-emulator/donbcfbmhbcapadipfkeojnmajbakjdc
     echo  "Installing chromium extension $extension_id..."
-    install -Dm644 "web/$extension_id.json" \
-        "$pkgdir/usr/share/chromium/extensions/$extension_id.json"
-    install -Dm644 web/extension-chromium.crx \
-        "$pkgdir/usr/lib/$pkgname/$extension_id.crx"
+    jq --null-input --raw-output \
+        --arg external_update_url https://clients2.google.com/service/update2/crx \
+        '$ARGS.named' | \
+    install -Dm644 "/dev/stdin" \
+            "$pkgdir/usr/share/chromium/extensions/$extension_id.json"
     install -Dm644 web/packages/extension/LICENSE_APACHE \
         "$pkgdir/usr/share/licenses/$pkgname/LICENSE_APACHE"
     install -Dm644 web/packages/extension/LICENSE_MIT \
