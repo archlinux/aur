@@ -35,6 +35,7 @@ depends=('abseil-cpp'
          'rnnoise'
          'xxhash')
 makedepends=('boost'
+             'boost-libs'
              'cmake'
              'glib2-devel'
              'gobject-introspection'
