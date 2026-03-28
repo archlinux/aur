@@ -1,7 +1,7 @@
 pkgbase = filestash-git
 	pkgdesc = Universal file management platform / storage-agnostic Dropbox alternative
-	pkgver = r2200.e8b4d062
-	pkgrel = 1
+	pkgver = r2240.e7d9911f
+	pkgrel = 5
 	url = https://github.com/mickael-kerjean/filestash
 	install = filestash.install
 	arch = x86_64

@@ -1,8 +1,8 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 
 pkgname=filestash-git
-pkgver=r2200.e8b4d062
-pkgrel=1
+pkgver=r2240.e7d9911f
+pkgrel=5
 pkgdesc="Universal file management platform / storage-agnostic Dropbox alternative"
 arch=('x86_64' 'aarch64')
 url="https://github.com/mickael-kerjean/filestash"
@@ -18,10 +18,10 @@ source=("filestash::git+${url}.git"
     'filestash.sysusers'
     'filestash.tmpfiles')
 sha256sums=('SKIP'
-    'c2ea7d9e607705436e69f4316085c4fca65f3eb6d9deccd28733ff9803a87c35'
-    '82f43ff56e53648e837ed1e41d13978f9542ef5f407ad2ca9eaa0413c125f8ee'
-    '5ada147680c5bcd4890117a6a2ea2cf3d3949917f845b65cf6adcc8148bbc8e7'
-    '597a2eabf7f0465734400e38c69f4ebed1af2930246b673e3bfc90437b9fd6a2')
+            'c2ea7d9e607705436e69f4316085c4fca65f3eb6d9deccd28733ff9803a87c35'
+            '82f43ff56e53648e837ed1e41d13978f9542ef5f407ad2ca9eaa0413c125f8ee'
+            '5ada147680c5bcd4890117a6a2ea2cf3d3949917f845b65cf6adcc8148bbc8e7'
+            '597a2eabf7f0465734400e38c69f4ebed1af2930246b673e3bfc90437b9fd6a2')
 
 pkgver() {
     cd "${srcdir}/filestash"
@@ -45,7 +45,7 @@ prepare() {
     # Add path/filepath import
     sed -i '/^import (/,/^)/{
     /^)/ i\
-\	"path/filepath"
+\t"path/filepath"
   }' server/plugin/plg_video_transcoder/index.go
 
     # Add var declaration and init function after the const block
@@ -55,11 +55,11 @@ prepare() {
 var VideoCachePath string\
 \
 func init() {\
-\	cachePath := os.Getenv("FILESTASH_CACHE_PATH")\
-\	if cachePath == "" {\
-\		cachePath = "/var/cache/filestash"\
-\	}\
-\	VideoCachePath = filepath.Join(cachePath, "video") + "/"\
+\tcachePath := os.Getenv("FILESTASH_CACHE_PATH")\
+\tif cachePath == "" {\
+\t\tcachePath = "/var/cache/filestash"\
+\t}\
+\tVideoCachePath = filepath.Join(cachePath, "video") + "/"\
 }
   }' server/plugin/plg_video_transcoder/index.go
 
@@ -69,7 +69,7 @@ func init() {\
     # Add path/filepath import
     sed -i '/^import (/,/^)/{
     /^)/ i\
-\	"path/filepath"
+\t"path/filepath"
   }' server/plugin/plg_video_thumbnail/index.go
 
     # Add var declaration and init function after the const block
@@ -79,11 +79,11 @@ func init() {\
 var VideoCachePath string\
 \
 func init() {\
-\	cachePath := os.Getenv("FILESTASH_CACHE_PATH")\
-\	if cachePath == "" {\
-\		cachePath = "/var/cache/filestash"\
-\	}\
-\	VideoCachePath = filepath.Join(cachePath, "video-thumbnail") + "/"\
+\tcachePath := os.Getenv("FILESTASH_CACHE_PATH")\
+\tif cachePath == "" {\
+\t\tcachePath = "/var/cache/filestash"\
+\t}\
+\tVideoCachePath = filepath.Join(cachePath, "video-thumbnail") + "/"\
 }
   }' server/plugin/plg_video_thumbnail/index.go
 
@@ -91,25 +91,27 @@ func init() {\
     # This allows separating /var/log/filestash and /var/cache/filestash from /var/lib/filestash
     sed -i '/^func init() {$/,/^}$/ {
     /rootPath := "data\/"/ a\
-\	// Support FHS-compliant paths\
-\	logPath := os.Getenv("FILESTASH_LOG_PATH")\
-\	tmpPath := os.Getenv("FILESTASH_CACHE_PATH")
+\t// Support FHS-compliant paths\
+\tlogPath := os.Getenv("FILESTASH_LOG_PATH")\
+\ttmpPath := os.Getenv("FILESTASH_CACHE_PATH")
     /LOG_PATH = filepath.Join(rootPath, LOG_PATH)/ c\
-\	if logPath != "" {\
-\		LOG_PATH = logPath\
-\	} else {\
-\		LOG_PATH = filepath.Join(rootPath, LOG_PATH)\
-\	}
+\tif logPath != "" {\
+\t\tLOG_PATH = logPath\
+\t} else {\
+\t\tLOG_PATH = filepath.Join(rootPath, LOG_PATH)\
+\t}
     /TMP_PATH = filepath.Join(rootPath, TMP_PATH)/ c\
-\	if tmpPath != "" {\
-\		TMP_PATH = tmpPath\
-\	} else {\
-\		TMP_PATH = filepath.Join(rootPath, TMP_PATH)\
-\	}
+\tif tmpPath != "" {\
+\t\tTMP_PATH = tmpPath\
+\t} else {\
+\t\tTMP_PATH = filepath.Join(rootPath, TMP_PATH)\
+\t}
   }' server/common/constants.go
 
     # Generate Go code - must run from repository root where go.mod is
+    export GOPROXY="https://mirrors.aliyun.com/goproxy,https://proxy.golang.org,direct"
     export GOPATH="${srcdir}/go"
+    export GODEBUG=netdns=cgo
     go generate -x ./server/...
 }
 
@@ -121,8 +123,10 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+    export GOPROXY="https://mirrors.aliyun.com/goproxy,https://proxy.golang.org,direct"
 
     # Build with fts5 tag for SQLite full-text search
+    export GODEBUG=netdns=cgo
     go build \
         -buildmode=pie \
         -trimpath \
