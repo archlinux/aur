@@ -3,7 +3,7 @@
 
 pkgname=brother-dcpl2627dwe
 pkgver=4.1.0_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Brother DCP-L2627DWE lpr driver and CUPS wrapper"
 arch=('i686' 'x86_64')
 url="https://www.brother.nl/ondersteuning/dcp-l2627dwe/downloads"

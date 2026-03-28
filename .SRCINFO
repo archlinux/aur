@@ -1,7 +1,7 @@
 pkgbase = brother-dcpl2627dwe
 	pkgdesc = Brother DCP-L2627DWE lpr driver and CUPS wrapper
 	pkgver = 4.1.0_1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brother.nl/ondersteuning/dcp-l2627dwe/downloads
 	arch = i686
 	arch = x86_64
