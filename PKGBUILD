@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=devtoolbox
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Development tools at your fingertips"
 arch=('any')
 url="https://github.com/aleiepure/devtoolbox"
@@ -61,6 +61,9 @@ prepare() {
 
   # Restore Markdown Previewer, was only disabled due to Flatpak runtime issues on Fedora
   patch -Np1 -i ../restore-markdown-preview.patch
+
+  # Don't install Flatpak run-script
+  sed -i '/devtoolbox-run-script/d' meson.build
 }
 
 build() {
