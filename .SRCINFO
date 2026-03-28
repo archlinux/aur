@@ -1,0 +1,20 @@
+pkgbase = jai-git
+	pkgdesc = An ultra lightweight jail for AI CLIs on modern Linux
+	pkgver = 0.2.r1.g46f507a
+	pkgrel = 1
+	url = https://github.com/stanford-scs/jai
+	arch = x86_64
+	arch = loong64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = pandoc
+	depends = acl
+	depends = gcc-libs
+	depends = glibc
+	depends = util-linux-libs
+	provides = jai
+	conflicts = jai
+	source = jai::git+https://github.com/stanford-scs/jai.git
+	sha256sums = SKIP
+
+pkgname = jai-git
