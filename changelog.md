@@ -1,3 +1,16 @@
+2026.03.29, v19.9.10
+
+feature:
+- f0deb323 docker: io: add ja_JP.UTF-8
+
+2026.03.29, v19.9.9
+
+fix:
+- f671f798 docker: io: PS1 environment variable in Dockerfile
+
+feature:
+- cc7f9dc7 docker: io: use ubuntu
+
 2026.03.28, v19.9.8
 
 feature:
