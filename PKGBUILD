@@ -1,21 +1,22 @@
 # Maintainer: Da Chen <dachen@connect.hku.hk>
 pkgname=wayper
-pkgver=0.7.5
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Wayland-first wallpaper manager with Wallhaven integration and MCP server"
 arch=('any')
 url="https://github.com/yuukidach/wayper"
 license=('MIT')
-depends=('python' 'python-click' 'python-httpx' 'python-pillow' 'awww')
+depends=('python' 'python-click' 'python-httpx' 'python-pillow' 'awww'
+         'python-fastapi' 'uvicorn' 'python-multipart' 'python-send2trash')
 makedepends=('python-build' 'python-installer' 'python-hatchling')
 optdepends=(
     'hyprland: focused monitor detection'
     'python-mcp: MCP server for AI assistant integration'
-    'python-gobject: GTK4 GUI app (wayper-gui)'
-    'gtk4: GTK4 GUI app (wayper-gui)'
+    'electron: Electron GUI app (wayper-gui)'
+    'npm: install Electron dependencies'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yuukidach/wayper/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5691cbe395a1bbd80984eba62e90f86ff583e17c3edcd1c2be69a44b7949e775')
+sha256sums=('21302f56742758bdcc52cced0bdff989c71c591e3039fa834d6dc450592de6c5')
 
 build() {
     cd "$pkgname-$pkgver"
