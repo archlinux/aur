@@ -1,7 +1,6 @@
-*/*.tar
-*/*.gz
-*/*.part
-*/pkg
-*/src
-*/*.pkg.*
+# makepkg artifacts
 *.zip
+*.pkg.tar.*
+pkg/
+src/
+LICENSE-*
