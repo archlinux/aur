@@ -6,7 +6,7 @@ StartLimitBurst=30
 [Service]
 Environment=DISPLAY=:0
 ExecStartPre=xrandr --listactivemonitors
-ExecStart=/usr/bin/hyperhdr
+ExecStart=/bin/sh -c 'LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/hyperhdr /usr/bin/hyperhdr'
 WorkingDirectory=/usr/share/hyperhdr
 TimeoutStopSec=5
 KillMode=control-group

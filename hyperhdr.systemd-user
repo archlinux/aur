@@ -5,7 +5,7 @@ StartLimitBurst=30
 
 [Service]
 ExecStartPre=/bin/sh -c 'systemctl --user show-environment | grep WAYLAND_DISPLAY'
-ExecStart=/usr/bin/hyperhdr
+ExecStart=/bin/sh -c 'LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/hyperhdr /usr/bin/hyperhdr'
 WorkingDirectory=/usr/share/hyperhdr
 TimeoutStopSec=5
 KillMode=mixed

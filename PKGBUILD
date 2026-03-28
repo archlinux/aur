@@ -1,5 +1,5 @@
 pkgname=hyperhdr-git
-pkgver=v22.0.0.0beta1.r16.7a4ed2a1
+pkgver=v22.0.0.0beta1.r17.4e755f6d
 pkgrel=1
 pkgdesc="Highly optimized open source ambient lighting implementation based on modern digital video and audio stream analysis"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -15,8 +15,8 @@ source=("git+https://github.com/awawa-dev/${pkgname%-git}"
         "hyperhdr-x11.systemd-user"
         "fix-build.patch")
 sha512sums=('SKIP'
-            'a6d5dfe3d47fef991c4a5d5d8b357811deb1114ea2ec550f0fd1664ab04b31309c8abdf91949d7d0790cb3ce0bec459b3630f72cca5eedc6a5ad18f6c3830b12'
-            'f942a84ce9d82a0e44cb72ab15cfd8ffc9530bea590922be5844b9b34231ef21a50d8f93b4f06b68b2eeda42099c33c9f3cd08af189aa0b324434036417fe014'
+            'fdfcf998d1f41a061976f76bcc51da8c70c8b3e23bc959bc0267e86a348a0cda3e24f8cbb82e8938b81df8165697b624cc77df86118d64557aaf3128d9ec5ef7'
+            '54594711d4c13476eb4278195f91c03aa6ee308a72a969e03a98539681becb1d0b0d0a3a1a23c8b055ccf8732b7aa8a4853ad7dda6e4390a2a38af3b63365008'
             '6d91b7e97a6c81dad593fcd26d6bd935ade97c151eb0bf7890ecd4aa518d7a5d536b151f78769dd9e6ffbed7877087fd12028ea663fb86659f2da0e8a8301378')
 
 pkgver() {
@@ -88,13 +88,18 @@ package() {
   rm -rf $pkgdir/usr/bin/flatc
   rm -rf $pkgdir/usr/cmake
   rm -rf $pkgdir/usr/include
+  mv $pkgdir/usr/lib/hyperhdr $pkgdir/usr/
   rm -rf $pkgdir/usr/lib
+  mkdir -p $pkgdir/usr/lib
+  mv $pkgdir/usr/hyperhdr $pkgdir/usr/lib/
 
   install -Dm 644 ${srcdir}/hyperhdr.systemd-user "${pkgdir}/usr/lib/systemd/user/hyperhdr.service"
   install -Dm 644 ${srcdir}/hyperhdr-x11.systemd-user "${pkgdir}/usr/lib/systemd/user/hyperhdr-x11.service"
+
+  start_hint
 }
 
-post_install() {
+start_hint() {
   echo
   echo
   echo -------------------------------------------------------------
@@ -105,4 +110,12 @@ post_install() {
   echo -------------------------------------------------------------
   echo
   echo
+}
+
+post_upgrade() {
+  start_hint
+}
+
+post_install() {
+  start_hint
 }
