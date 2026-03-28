@@ -1,6 +1,6 @@
 pkgname=youtube
 _pkgname=Youtube
-pkgver=1.1.7
+pkgver=1.1.7.3aur
 pkgrel=1
 pkgdesc="Unnofficial Youtube desktop application"
 arch=('x86_64' 'aarch64')
