@@ -1,6 +1,6 @@
 # Maintainer: vikingowl <christian@nachtigall.dev>
 pkgname=owlry-core
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='Core daemon for the Owlry application launcher — manages plugins, providers, and search'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-core-v$pkgver.tar.gz")
-b2sums=('5e23b41ad12e3e0577213059e2509a9b42e3081b17944e300831e4cfa216628d5190e64d9fd72edc3aa34aebb387d3821ae1d9edd157acf1abf2e5b81f778fd7')
+b2sums=('8967562bda33820b282350eaad17e8194699926b721eabe978fb0b70af2a75e399866c6bfa7abb449141701bad618df56079c7e81358708b1852b1070b0b7c05')
 
 prepare() {
     cd "owlry"
@@ -33,9 +33,9 @@ check() {
 
 package() {
     cd "owlry"
-    install -Dm755 "target/release/owlry-core" "$pkgdir/usr/bin/owlry-core"
-    install -Dm644 "systemd/owlry-core.service" "$pkgdir/usr/lib/systemd/user/owlry-core.service"
-    install -Dm644 "systemd/owlry-core.socket" "$pkgdir/usr/lib/systemd/user/owlry-core.socket"
+    install -Dm755 "target/release/owlryd" "$pkgdir/usr/bin/owlryd"
+    install -Dm644 "systemd/owlryd.service" "$pkgdir/usr/lib/systemd/user/owlryd.service"
+    install -Dm644 "systemd/owlryd.socket" "$pkgdir/usr/lib/systemd/user/owlryd.socket"
     install -dm755 "$pkgdir/usr/lib/owlry/plugins"
     install -dm755 "$pkgdir/usr/lib/owlry/runtimes"
 }
