@@ -7,7 +7,7 @@ _appname=pixelterm
 pkgname=${_appname}-c-bin
 pkgdesc="A high-performance terminal image/video/book browser written in C, based on the Chafa library"
 
-pkgver=1.7.15
+pkgver=1.7.16
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -29,9 +29,9 @@ source=("LICENSE-${pkgver}::${_urlraw}/LICENSE"
 source_x86_64=("${_pkgname}-${arch[0]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[0]}-linux.tar.gz")
 source_aarch64=("${_pkgname}-${arch[1]}-${pkgver}.tgz::${url}/releases/download/${_pkgvername}/${_appname}-${_barch[1]}-linux.tar.gz")
 sha256sums=('a30b218bb0c27aa7264ea96b9bdbff18fb52702ad35d44212bcf019c391f83e5'
-            '2cae2761f13fabd93facd2524e294a6d26406ff2a97069b1904f67ef165043b7')
-sha256sums_x86_64=('642bb89bc732fa28653d2521617f3aa1733bf9cccdbf0e490073c81ce3ae22b6')
-sha256sums_aarch64=('03b65c029c8dab123b218db2e314f3a1eab04072360c6f34428c87498e060fe1')
+            'a2c3b9aaa1b24fd027cf493b58c3e715045fd73656acae46f644f0a3bf4a4ae9')
+sha256sums_x86_64=('0e66a8ab42da25dcabd042980f0e88c224f6a597415f11fafd2445715ec4a884')
+sha256sums_aarch64=('c9b50432d1b2151e8ae931f1fe0339232890672e5e84f48eb596b1920955df46')
 
 case ${CARCH} in
   ${arch[0]})
