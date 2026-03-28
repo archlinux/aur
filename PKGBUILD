@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc="A solarized SDDM theme"
 arch=('any')
 url="https://github.com/hcartiaux/solarized_sddm_theme"
-license=('GPL-3.0')
+license=('MIT AND GPL-3.0-only')
 
 depends=('sddm>=0.21.0')
 optdepends=('otf-raleway: raleway font support'

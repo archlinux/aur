@@ -5,7 +5,7 @@ pkgbase = solarized-sddm-theme
 	url = https://github.com/hcartiaux/solarized_sddm_theme
 	install = solarized-sddm-theme.install
 	arch = any
-	license = GPL-3.0
+	license = MIT AND GPL-3.0-only
 	depends = sddm>=0.21.0
 	optdepends = otf-raleway: raleway font support
 	optdepends = ttf-impallari-raleway-family: raleway font support
