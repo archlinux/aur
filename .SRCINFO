@@ -1,7 +1,7 @@
 pkgbase = python-matlabengine
 	pkgdesc = A high-level language for numerical computation and visualization (Python bindings)
 	pkgver = 25.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.mathworks.com/help/matlab/matlab-engine-for-python.html
 	arch = any
 	license = MIT
@@ -9,8 +9,11 @@ pkgbase = python-matlabengine
 	makedepends = python-installer
 	makedepends = python-setuptools>=42
 	makedepends = python-wheel
-	depends = matlab-version>=25.2
+	depends = matlab-release>=R2025b
 	depends = python>=3.9
+	provides = python-matlabengine-release=R2025b
+	provides = python-matlabengine-r2025b=25.2.2
+	conflicts = python-matlabengine-r2025b
 	source = https://github.com/mathworks/matlab-engine-for-python/archive/refs/tags/25.2.2/matlab-engine-for-python-25.2.2.tar.gz
 	b2sums = e6e849e822ce75e2720647db8b7d903fb532cf1cfb010ff61e91006aae25d915bbe0ec495ed0c56951064befd65c5c5b396362edb70fd36703eda1f0f530258a
 

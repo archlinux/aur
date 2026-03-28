@@ -1,10 +1,17 @@
 # Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: Marco Rubin <marco.rubin@protonmail.com>
 
+: "${MAKEPKG_MATLAB_PREFIX:=/opt}"
+
 _name="matlabengine"
 pkgname="python-${_name}"
 pkgver=25.2.2
-pkgrel=2
+pkgrel=3
+declare -A _releases=(
+  ["${pkgver%%.*}.1"]="R20${pkgver%%.*}a"
+  ["${pkgver%%.*}.2"]="R20${pkgver%%.*}b"
+)
+_release="${_releases["${pkgver%.*}"]}"
 pkgdesc="A high-level language for numerical computation and visualization (Python bindings)"
 arch=(
   'any'
@@ -15,7 +22,7 @@ license=(
   'MIT'
 )
 depends=(
-  "matlab-version>=${pkgver%.*}"
+  "matlab-release>=${_release}"
   'python>=3.9'
 )
 makedepends=(
@@ -23,6 +30,13 @@ makedepends=(
   'python-installer'
   'python-setuptools>=42'
   'python-wheel'
+)
+provides=(
+  "${pkgname}-release=${_release}"
+  "${pkgname}-${_release,,}=${pkgver}"
+)
+conflicts=(
+  "${pkgname}-${_release,,}"
 )
 _pkgsrc="${_url##*/}-${pkgver}"
 source=(
@@ -35,7 +49,7 @@ prepare() {
 
   cd "${srcdir}/${_pkgsrc}"
   sed -e "s/3.12/${python_version}/g" \
-      -e 's|/usr/local|/opt|g' \
+      -e "s|/usr/local|${MAKEPKG_MATLAB_PREFIX}|g" \
       -i 'setup.py'
 }
 
