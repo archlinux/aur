@@ -1,5 +1,5 @@
 pkgbase = qbtctl-bin
-	pkgdesc = qbtctl - A Command-line interface for controlling a torrent in qBittorrent - prebuilt static binary
+	pkgdesc = Minimal CLI for qBittorrent (prebuilt static binary)
 	pkgver = 1.5.0
 	pkgrel = 1
 	url = https://github.com/creptic/qbtctl
