@@ -33,21 +33,16 @@ b2sums_armv7h=('2b9e008a1faceaab039ba0a858dc8eddd1e9a1ae41a21701d62f1904c5f2163e
 b2sums_aarch64=('ec6552f08f9add34a40642e86cbd42ce7f620d78fee3c04c43adbeec6d1c09c52df8b141e1cc3f0cd996e11ac1e49fc46b60a65f2bd7ac2b80f6774a9b65dfad')
 
 latestver() {
-    local candidates ver listing
-
-    mapfile -t candidates < <(curl -fsSL 'https://beta.rclone.org/' |
-        sed -nE 's#.*href="\./v([0-9]+\.[0-9]+\.[0-9]+-beta\.[0-9]+\.[0-9a-f]+)/".*#\1#p' |
-        sort -rV | head -5)
-    [[ ${#candidates[@]} -gt 0 ]] || return 1
-
-    for ver in "${candidates[@]}"; do
-        listing=$(curl -fsSL "https://beta.rclone.org/v${ver}/" 2>/dev/null) || continue
-        grep -q "rclone-v${ver}-linux-amd64.zip" <<<"${listing}" || continue
-        grep -q "rclone-v${ver}-linux-arm64.zip" <<<"${listing}" || continue
-        printf '%s\n' "${ver}" | tr '-' '_'
-        return 0
-    done
-    return 1
+    local size ver
+    size=$(curl -fsSI "https://beta.rclone.org/rclone-beta-latest-linux-amd64.zip" |
+           sed -nE 's/^content-length: *([0-9]+).*/\1/Ip') || return 1
+    [[ -n $size ]] || return 1
+    ver=$(curl -fsS -r "$((size - 4096))-${size}" \
+          "https://beta.rclone.org/rclone-beta-latest-linux-amd64.zip" |
+          strings | grep -oP 'rclone-v\K[0-9]+\.[0-9]+\.[0-9]+-beta\.[0-9]+\.[0-9a-f]+' |
+          head -1) || return 1
+    [[ -n $ver ]] || return 1
+    printf '%s\n' "$ver" | tr '-' '_'
 }
 
 
