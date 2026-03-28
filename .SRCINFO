@@ -1,0 +1,24 @@
+pkgbase = perry-bin
+	pkgdesc = Compiles TypeScript directly to executables using SWC and Cranelift
+	pkgver = 0.4.24
+	pkgrel = 1
+	url = https://github.com/PerryTS/perry
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = xz
+	provides = perry
+	conflicts = perry
+	options = !strip
+	source = README-0.4.24.md::https://raw.githubusercontent.com/PerryTS/perry/v0.4.24/README.md
+	source = LICENSE-0.4.24::https://raw.githubusercontent.com/PerryTS/perry/v0.4.24/LICENSE
+	sha256sums = 73931a493e79dcba85d16afbed7665f6c2642ce8c103d6bd8d333de3e44111e7
+	sha256sums = c871483477d7105432645affac5be5edbd92b41a6faedb4c692e0681e46ada09
+	source_x86_64 = perry-x86_64-0.4.24.tgz::https://github.com/PerryTS/perry/releases/download/v0.4.24/perry-linux-x86_64.tar.gz
+	sha256sums_x86_64 = f3e254a285fbf4a6b1c44005547e51e2c0116c67854b40d44109be8b032cff77
+	source_aarch64 = perry-aarch64-0.4.24.tgz::https://github.com/PerryTS/perry/releases/download/v0.4.24/perry-linux-aarch64.tar.gz
+	sha256sums_aarch64 = c556dae8dbc2a9d90c54cf9e2e096e2903dd6ce879b48ff7604fc5fd776ffe95
+
+pkgname = perry-bin

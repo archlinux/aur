@@ -1,0 +1,5 @@
+[perry-bin]
+source = "github"
+github = "PerryTS/perry"
+use_latest_release = true
+prefix = "v"
