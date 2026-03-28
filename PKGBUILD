@@ -4,7 +4,7 @@ _pkgname=lalalai
 pkgname=${_pkgname}
 pkgdesc="Vocal remover and instrumental AI splitter"
 pkgver=2.13.0
-pkgrel=1
+pkgrel=2
 arch=("x86_64")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -20,7 +20,7 @@ sha1sums=('d0b4f43868ca59a2843889e4e8b89d74517883e3'
 options=(!strip)
 
 prepare() {
-  tar -xf data.tar.xz
+  tar -xf data.tar.zst
 }
 
 package() {
