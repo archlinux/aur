@@ -1,61 +1,78 @@
 # Maintainer: jprjr <john@jrjrtech.com>
 
-pkgname=('lua-lualame' 'lua51-lualame' 'lua52-lualame' 'lua53-lualame')
+pkgname=('lua-lualame' 'lua51-lualame' 'lua52-lualame' 'lua53-lualame' 'lua54-lualame')
 _pkgbase='lualame'
 pkgver=1.0.0
-pkgrel=1
-arch=('x86_64' 'i686')
+pkgrel=2
+arch=('x86_64' 'i686' 'aarch64')
 url='https://github.com/jprjr/lualame'
 license=('MIT')
 depends=('lame')
-makedepends=('cmake' 'lua' 'lua51' 'lua52' 'lua53')
-source=("https://github.com/jprjr/lualame/releases/download/v${pkgver}/lualame-${pkgver}.tar.gz")
+_lua_cur=5.5
+_lua_next=5.6
+makedepends=('cmake' "lua>=${_lua_cur}" "lua<${_lua_next}" 'lua51' 'lua52' 'lua53' 'lua54')
+source=("$url/releases/download/v${pkgver}/lualame-${pkgver}.tar.gz")
 
-md5sums=('0fdf2299b71fcacd31580abca8943f90')
+_build() {
+    LUA_V=$1
+    V=${LUA_V//./}
+    cmake -B build-lua$V-${pkgver}-${pkgrel} -DCMAKE_POLICY_VERSION_MINIMUM=3.10 -DLUA_VERSION=$LUA_V -DCMAKE_BUILD_TYPE=None -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
+    make -C build-lua$V-${pkgver}-${pkgrel}
+}
 
 build() {
+    for v in 5.1 5.2 5.3 5.4 5.5 ; do
+        _build $v
+    done
+}
 
-    cmake -B build-lua-${pkgver}-${pkgrel}                     -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
-    cmake -B build-lua51-${pkgver}-${pkgrel} -DLUA_VERSION=5.1 -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
-    cmake -B build-lua52-${pkgver}-${pkgrel} -DLUA_VERSION=5.2 -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
-    cmake -B build-lua53-${pkgver}-${pkgrel} -DLUA_VERSION=5.3 -DCMAKE_BUILD_TYPE=Release -DCMAKE_SKIP_INSTALL_RPATH=YES -DCMAKE_INSTALL_PREFIX=/usr -S "${_pkgbase}-${pkgver}"
+_package() {
+    LUA_V=$1
+    V=${LUA_V//./}
 
-    make -C build-lua-${pkgver}-${pkgrel}
-    make -C build-lua51-${pkgver}-${pkgrel}
-    make -C build-lua52-${pkgver}-${pkgrel}
-    make -C build-lua53-${pkgver}-${pkgrel}
-
+    make -C build-lua${V}-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
+    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_lua-lualame() {
-    pkgdesc="Lua bindings for libmp3lame"
-    depends+=('lua')
+    pkgdesc="Lua 5.5 bindings for libmp3lame"
+    depends+=("lua>=${_lua_cur}" "lua<${_lua_next}")
 
-    make -C build-lua-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    _package ${_lua_cur}
+}
+
+package_lua54-lualame() {
+    pkgdesc="Lua 5.4 bindings for libmp4lame"
+    depends+=('lua54')
+
+    _package 5.4
+
+}
+
+package_lua53-lualame() {
+    pkgdesc="Lua 5.3 bindings for libmp3lame"
+    depends+=('lua53')
+
+    _package 5.3
+
+}
+
+package_lua52-lualame() {
+    pkgdesc="Lua 5.2 bindings for libmp3lame"
+    depends+=('lua52')
+
+    _package 5.2
 
 }
 
 package_lua51-lualame() {
-    pkgdesc="Lua bindings for libmp3lame for Lua 5.1"
+    pkgdesc="Lua 5.1 bindings for libmp3lame"
     depends+=('lua51')
 
-    make -C build-lua51-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    _package 5.1
+
 }
 
-package_lua52-lualame() {
-    pkgdesc="Lua bindings for libmp3lame for Lua 5.2"
-    depends+=('lua52')
-
-    make -C build-lua52-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_lua53-lualame() {
-    pkgdesc="Lua bindings for libmp3lame for Lua 5.3"
-    depends+=('lua53')
-
-    make -C build-lua53-${pkgver}-${pkgrel} DESTDIR="$pkgdir" install
-    install -Dm644 "${_pkgbase}-${pkgver}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
+sha512sums=(
+'85bae98c8c87f4bcb21694df377bd82610927eb75fe1b96f97c277f88cdc47a6b016cce96c530bcf9dcb6f6b982c156ef04e18652b3c1824141a6831de65233f'
+)
