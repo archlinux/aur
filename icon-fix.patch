@@ -1,0 +1,58 @@
+From ea68a191d0ea8d4b2e318cb023a6dea2b9473ce5 Mon Sep 17 00:00:00 2001
+From: classabbyamp <dev@placeviolette.net>
+Date: Mon, 16 May 2022 02:07:53 -0400
+Subject: [PATCH] direwolf.desktop: remove xterm hard-coding, fix icon
+
+fixes #308
+
+Per the [desktop entry specification](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#recognized-keys),
+all that should be needed to run direwolf in the default terminal of a
+user's system should be setting `Terminal=true`.
+
+Per the [xdg icon theme specification](https://specifications.freedesktop.org/icon-theme-spec/icon-theme-spec-latest.html#icon_lookup),
+the `Icon` key in a desktop file should only include the basename of the
+icon's filename, not include the extension.
+---
+ CMakeLists.txt                  | 9 ---------
+ cmake/cpack/direwolf.desktop.in | 6 +++---
+ 2 files changed, 3 insertions(+), 12 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 61ffc4b4..0b6402e0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -32,15 +32,6 @@ set(COPYRIGHT "Copyright (c) 2019 John Langner, WB2OSZ. All rights reserved.")
+ add_definitions("-DCOPYRIGHT=\"${COPYRIGHT}\"")
+ set(IDENTIFIER "com.${COMPANY}.${APPLICATION_NAME}")
+ add_definitions("-DIDENTIFIER=\"${IDENTIFIER}\"")
+-# raspberry as only lxterminal not xterm
+-if(NOT (WIN32 OR CYGWIN))
+-  find_program(BINARY_TERMINAL_BIN lxterminal)
+-  if(BINARY_TERMINAL_BIN)
+-    set(APPLICATION_DESKTOP_EXEC "${BINARY_TERMINAL_BIN} -e ${CMAKE_PROJECT_NAME}")
+-  else()
+-    set(APPLICATION_DESKTOP_EXEC "xterm -e ${CMAKE_PROJECT_NAME}")
+-  endif()
+-endif()
+ 
+ find_package(Git)
+ if(GIT_FOUND AND EXISTS "${CMAKE_SOURCE_DIR}/.git/")
+diff --git a/cmake/cpack/direwolf.desktop.in b/cmake/cpack/direwolf.desktop.in
+index 79c63aa6..0e64ff9e 100644
+--- a/cmake/cpack/direwolf.desktop.in
++++ b/cmake/cpack/direwolf.desktop.in
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+ Name=@APPLICATION_NAME@
+ Comment=APRS Soundcard TNC
+-Exec=@APPLICATION_DESKTOP_EXEC@
+-Icon=@CMAKE_PROJECT_NAME@_icon.png
++Exec=@CMAKE_PROJECT_NAME@
++Icon=@CMAKE_PROJECT_NAME@_icon
+ StartupNotify=true
+-Terminal=false
++Terminal=true
+ Type=Application
+ Categories=HamRadio
+ Keywords=Ham Radio;APRS;Soundcard TNC;KISS;AGWPE;AX.25
+\ No newline at end of file
