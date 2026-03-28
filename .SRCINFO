@@ -1,6 +1,6 @@
 pkgbase = minecraft-technic-launcher
 	pkgdesc = Choose from thousands of community-made Minecraft modpacks
-	pkgver = 4.1033
+	pkgver = 4.1065
 	pkgrel = 1
 	url = https://www.technicpack.net/
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = minecraft-technic-launcher
 	depends = xorg-xrandr
 	depends = hicolor-icon-theme
 	noextract = TechnicLauncher.jar
-	source = minecraft-technic-launcher-4.1033.jar::https://launcher.technicpack.net/launcher4/1033/TechnicLauncher.jar
+	source = minecraft-technic-launcher-4.1065.jar::https://launcher.technicpack.net/launcher4/1065/TechnicLauncher.jar
 	source = technic-launcher
 	source = technic-launcher.desktop
-	sha256sums = 979c09780e033fda7614dde55de7166372a543fba91b35e23f9b5140c19657c7
+	sha256sums = ed895f899c042dda517bf4c8f7d64d62e43d34cbf6300593083f5c3a6b987f1a
 	sha256sums = 11e5cbc3ae9888865c34bec90ce725532a039aa751aefa61cd4703c9f0460397
 	sha256sums = 221da85f9fb535951e490a3feda052c60839883ae0806d7d587b0c64337f3513
 
