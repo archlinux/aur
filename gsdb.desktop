@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=GSDB
+Comment=Database management tool for PostgreSQL, MySQL, and SQLite
+Exec=gsdb
+Icon=gsdb
+Terminal=false
+Type=Application
+Categories=Development;Database;Utility;
+StartupWMClass=gsdb
+Keywords=database;sql;postgresql;mysql;sqlite;
