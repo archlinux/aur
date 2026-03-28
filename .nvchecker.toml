@@ -1,0 +1,5 @@
+[dragit-bin]
+source = "github"
+github = "sireliah/dragit"
+use_latest_release = true
+prefix = "v"
