@@ -1,6 +1,6 @@
 # Maintainer: Gink <ginkcode@gmail.com>
 pkgname=gsdb-bin
-pkgver=0.2.12
+pkgver=0.2.13
 pkgrel=1
 pkgdesc="A database management tool for PostgreSQL, MySQL, and SQLite (pre-built binary)"
 arch=('x86_64')
