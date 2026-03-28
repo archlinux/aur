@@ -1,10 +1,10 @@
 pkgbase = python-pyamdgpuinfo
 	pkgdesc = AMD GPU stats
-	pkgver = 2.1.7
+	pkgver = 2.1.8
 	pkgrel = 1
 	url = https://github.com/mark9064/pyamdgpuinfo
 	arch = x86_64
-	license = GPL-3.0-or-later
+	license = GPL-3.0-only
 	makedepends = cython
 	makedepends = python-build
 	makedepends = python-installer
@@ -12,7 +12,7 @@ pkgbase = python-pyamdgpuinfo
 	makedepends = python-wheel
 	depends = libdrm
 	depends = python
-	source = pyamdgpuinfo-2.1.7.tar.gz::https://github.com/mark9064/pyamdgpuinfo/archive/refs/tags/v2.1.7.tar.gz
-	sha256sums = 97ce7e82547b46d16f3e118ecb54c93e07c8f73d9054fcb9690d5fa58c799b6d
+	source = pyamdgpuinfo-2.1.8.tar.gz::https://github.com/mark9064/pyamdgpuinfo/archive/refs/tags/v2.1.8.tar.gz
+	sha256sums = 06d756c8cde6c5b5392fb2f8ed5d648c914c1e51b94daea164b20a5b129bd2a2
 
 pkgname = python-pyamdgpuinfo
