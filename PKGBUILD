@@ -2,7 +2,7 @@
 
 _name=pytr
 pkgname="python-${_name}"
-pkgver=0.4.2
+pkgver=0.4.7
 pkgrel=1
 pkgdesc='This is a library for the private API of the Trade Republic online brokerage.'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   )
 source=("${_name}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=(
-  dd7027dea404e7a994d74f916eea34348c2e65fa1d5eb36a8ee22edebe3cf621
+  a1ec824e7e38e7598d0970a8b51d25b4f24b026f594c3a7b0fbd01e951b8fe22
 )
 
 build() {
