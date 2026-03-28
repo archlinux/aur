@@ -6,7 +6,7 @@ _image_url="https://github.com/skevetter/devpod/releases/download/v${_pkgver}/De
 
 pkgname="${_pkgname}-community-appimage"
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Codespaces but open-source, client-only, and unopinionated - community fork (AppImage version)"
 arch=('x86_64')
 url="https://github.com/skevetter/devpod"
@@ -25,30 +25,32 @@ sha256sums_x86_64=('747bd7fae5699b04bb4bdb7ab2bc44e5030add300d4296626791a07b269f
 _appimage="${_pkgname}-${pkgver}-${CARCH}.AppImage"
 noextract=("${_appimage}")
 
-# Naming convention as according to devpod-bin on the AUR: dev-pod-desktop
 prepare() {
     chmod +x "${_appimage}"
-    # Extract the WHOLE AppImage so symlinks resolve correctly.
+    # Extract the AppImage to access the bundled CLI binary and desktop files.
     ./"${_appimage}" --appimage-extract > /dev/null
 }
 
 build() {
     sed -i \
-        -e "s|Exec=AppRun|Exec=/usr/bin/dev-pod-desktop|" \
-        -e "s|Icon=.*|Icon=dev-pod-desktop|" \
+        -e "s|Exec=AppRun|Exec=/usr/bin/devpod-desktop|" \
+        -e "s|Icon=.*|Icon=devpod-desktop|" \
         "squashfs-root/DevPod.desktop"
 }
 
 package() {
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${_pkgname}.AppImage"
+    
+    # Extract the ACTUAL CLI binary bundled inside the AppImage
+    install -Dm755 "${srcdir}/squashfs-root/usr/bin/devpod" "${pkgdir}/usr/bin/devpod"
 
     install -Dm644 "${srcdir}/squashfs-root/DevPod.desktop" \
         "${pkgdir}/usr/share/applications/DevPod.desktop"
 
     install -Dm644 "${srcdir}/squashfs-root/DevPod.png" \
-        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/dev-pod-desktop.png"
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/devpod-desktop.png"
 
     install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/dev-pod-desktop"
-    ln -s "/opt/${pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/devpod-cli"
+    ln -s "/opt/${pkgname}/${_pkgname}.AppImage" "${pkgdir}/usr/bin/devpod-desktop"
+    ln -s "/usr/bin/devpod" "${pkgdir}/usr/bin/devpod-cli"
 }
