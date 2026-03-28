@@ -1,0 +1,20 @@
+pkgbase = snekstudio-git
+	pkgdesc = Open-source VTuber software using Godot Engine!
+	pkgver = 369.ed4f624
+	pkgrel = 1
+	url = https://snekstudio.com/
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = curl
+	makedepends = godot
+	makedepends = unzip
+	makedepends = git
+	makedepends = godot-export-templates-linux
+	provides = snekstudio
+	conflicts = snekstudio-bin
+	source = snekstudio::git+https://github.com/ExpiredPopsicle/SnekStudio.git
+	source = git+https://github.com/ExpiredPopsicle/TwitchGD4.git
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = snekstudio-git
