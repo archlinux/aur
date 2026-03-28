@@ -1,5 +1,5 @@
 pkgname=mingw-w64-boost
-pkgver=1.89.0
+pkgver=1.90.0
 _boostver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Free peer-reviewed portable C++ source libraries (mingw-w64)"
@@ -10,7 +10,7 @@ depends=('mingw-w64-zstd' 'mingw-w64-bzip2' 'mingw-w64-dlfcn')
 makedepends=('mingw-w64-gcc' 'mingw-w64-wine' 'mingw-w64-environment')
 options=('!strip' '!buildflags' 'staticlibs')
 source=("https://archives.boost.io/release/${pkgver}/source/boost_${_boostver}.tar.bz2")
-sha256sums=('85a33fa22621b4f314f8e85e1a5e2a9363d22e4f4992925d4bb3bc631b5a0c7a')
+sha256sums=('49551aff3b22cbc5c5a9ed3dbc92f0e23ea50a0f7325b0d198b705e8ee3fc305')
 
 _architectures="32:i686-w64-mingw32 64:x86_64-w64-mingw32"
 
