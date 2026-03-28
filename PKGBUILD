@@ -8,23 +8,27 @@ pkgname=(
 )
 _commit="f9d9357169ce4b497a677faa9ce85e901e77275d" # 3.1.3
 pkgver=3.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight C++ library of numerical optimization methods for nonlinear functions"
-arch=('x86_64')
+arch=(
+  'x86_64'
+)
 url="https://optimlib.readthedocs.io/"
 _url="https://github.com/kthohr/${pkgbase}"
-license=('Apache-2.0')
+license=(
+  'Apache-2.0'
+)
 makedepends=(
   'armadillo'
   'basematrixops'
   'blas'
   'eigen>=3.4.0'
-  'gcc-libs'
-  'glibc'
   'lapack'
 )
 _pkgsrc="${_url##*/}-${_commit}"
-source=("${_pkgsrc}.tar.gz::${_url}/archive/${_commit}.tar.gz")
+source=(
+  "${_url}/archive/${_commit}/${_pkgsrc}.tar.gz"
+)
 sha256sums=('3809f753fc75c007c55ee995264c72487415a22dacc0846ba8ac0c1d1c24b91a')
 
 prepare() {
@@ -63,7 +67,9 @@ _package_common() {
 
 package_optim-common() {
   pkgdesc+=" (common files)"
-  arch=('any')
+  arch=(
+    'any'
+  )
 
   _package_common "armadillo"
   rm -rf "${pkgdir}/usr/lib"
@@ -78,9 +84,11 @@ package_optim-armadillo() {
     "${pkgbase}-common>=${pkgver}-${pkgrel}"
     'armadillo'
     'blas'
-    'gcc-libs'
     'glibc'
     'lapack'
+    'libgcc'
+    'libgomp'
+    'libstdc++'
   )
   provides=(
     "${pkgbase}"
@@ -98,8 +106,10 @@ package_optim-eigen() {
   depends=(
     "${pkgbase}-common>=${pkgver}-${pkgrel}"
     'eigen>=3.4.0'
-    'gcc-libs'
     'glibc'
+    'libgcc'
+    'libgomp'
+    'libstdc++'
   )
   provides=(
     "${pkgbase}"
