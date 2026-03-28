@@ -3,7 +3,7 @@
 pkgname=cecup-git
 pkgver=r2340.58fe1e4
 pkgrel=1
-pkgdesc="A rsync frontend for making backups"
+pkgdesc="A backup tool inspired by FreeFileSync and rsync"
 arch=('x86_64')
 url="https://github.com/lucas-mior/cecup"
 license=('MIT')
