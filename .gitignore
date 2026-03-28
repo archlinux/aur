@@ -1,0 +1,10 @@
+# Keep this AUR repo minimal.
+# If you add new tracked source files later, list them here.
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!fontdata.sh
+!remote_udf.py
+!remote_wim_core.py
+!remote_wim.py

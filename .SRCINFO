@@ -1,0 +1,29 @@
+pkgbase = ttf-ms-win11-base
+	pkgdesc = Microsoft Windows 11 base image TrueType fonts
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.microsoft.com/typography/fonts/product.aspx?PID=164
+	arch = any
+	license = custom
+	makedepends = python
+	makedepends = wimlib
+	provides = ttf-font
+	provides = ttf-ms-win11
+	provides = emoji-font
+	provides = ttf-tahoma
+	provides = ttf-ms-fonts
+	conflicts = ttf-vista-fonts
+	conflicts = ttf-ms-win11
+	conflicts = ttf-ms-win11-auto
+	conflicts = ttf-tahoma
+	conflicts = ttf-ms-fonts
+	source = fontdata.sh
+	source = remote_udf.py
+	source = remote_wim_core.py
+	source = remote_wim.py
+	sha256sums = b1e60444e1efd00428820fa11b5d20a112f6d211369103c5b8d87275b028956f
+	sha256sums = 37fe786f08d00a86381b999f1c80f80d39e2188eed92c33bea89e1ed9e8d26ce
+	sha256sums = 15c2b5cdd0f424704fd7cf056cc86a3a677f23f104f12fa329515c6604ea27b8
+	sha256sums = bb406509d1500d6a322509be676f5bd7d161e4994d1e3ac0b62ca76f6adb8334
+
+pkgname = ttf-ms-win11-base
