@@ -44,31 +44,80 @@ sha256sums=('6eef42679b744cdcb50276f2d7cff0a51f7ddd632960e06bfbc3f6b9508ef615'
             'b00c398b63f15084c46f3963f62a45284ecd8dae9ba6f38a2c4af370bbfdab8d')
 # Not sure if compiling Unreal with LTO is legal? Lot's of different proprietary software goes into Unreal
 options=('!strip' 'staticlibs') # Package is smaller with "strip" but it takes a long time and generates many warnings
-
 # Change this to true or 1 for a potentially smaller package size
 ## Note: We can't guarantee that enabling this won't affect cross-distro compatibility given that Epic provides their own toolchain specifically
 ## based on the claim that it helps with compatibility...
 ## Though, you could just distribute your game as an AppImage if you decide to publish on a game store... :p
-_use_system_clang=false
+if [[ "${UE_USE_SYSTEM_CLANG}" != "true" && "${UE_USE_SYSTEM_CLANG}" != "false" ]]; then
+  export UE_USE_SYSTEM_CLANG=false
+fi
 
 # Default engine installation directory. Can be useful if you do not have a lot of space on the default storage drive
 # DON'T put a "/" at the start of the path
 ## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
-if [ "${_ue5_install_dir}" == "" ]; then
-  export _ue5_install_dir="opt/${pkgname}"
+if [ "${UE_INSTALL_DIR}" == "" ]; then
+  export UE_INSTALL_DIR="opt/${pkgname}"
 fi
 
 # Change this to true if you have a modern system and don't mind the extra packaging time (and size) to avoid compiling shaders on UE startup later; set to false by default for those with less robust systems
 ## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
-if [ "${_WithDDC}" != true ] && [ "${_WithDDC}" != false ]; then
-  export _WithDDC=true
+if [[ "${UE_WITH_DDC}" != "true" && "${UE_WITH_DDC}" != "false" ]]; then
+  export UE_WITH_DDC=true
+fi
+
+# Enable Win64 toolchain/components in BuildGraph for cross-compilation targets
+## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
+if [[ "${UE_WITH_WIN64}" != "true" && "${UE_WITH_WIN64}" != "false" ]]; then
+  export UE_WITH_WIN64=true
+fi
+
+# Keep full debug info in produced binaries
+## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
+if [[ "${UE_WITH_FULL_DEBUG_INFO}" != "true" && "${UE_WITH_FULL_DEBUG_INFO}" != "false" ]]; then
+  export UE_WITH_FULL_DEBUG_INFO=false
+fi
+
+# BuildGraph platform toggles
+## Set these as environment variables in /etc/makepkg.conf if you want predefined behavior
+if [[ "${UE_WITH_LINUX}" != "true" && "${UE_WITH_LINUX}" != "false" ]]; then
+  export UE_WITH_LINUX=true
+fi
+
+if [[ "${UE_WITH_MAC}" != "true" && "${UE_WITH_MAC}" != "false" ]]; then
+  export UE_WITH_MAC=false
+fi
+
+if [[ "${UE_WITH_ANDROID}" != "true" && "${UE_WITH_ANDROID}" != "false" ]]; then
+  export UE_WITH_ANDROID=false
+fi
+
+if [[ "${UE_WITH_IOS}" != "true" && "${UE_WITH_IOS}" != "false" ]]; then
+  export UE_WITH_IOS=false
+fi
+
+if [[ "${UE_WITH_TVOS}" != "true" && "${UE_WITH_TVOS}" != "false" ]]; then
+  export UE_WITH_TVOS=false
+fi
+
+# BuildGraph game configurations string (semicolon-separated)
+## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
+if [[ -z "${UE_GAME_CONFIGURATIONS}" ]]; then
+  export UE_GAME_CONFIGURATIONS="Development;Shipping"
+fi
+
+# Optional BuildGraph architecture override: x64 or arm64
+## Leave unset to auto-detect from host architecture
+if [[ -n "${UE_BUILD_ARCH_OVERRIDE}" && "${UE_BUILD_ARCH_OVERRIDE}" != "x64" && "${UE_BUILD_ARCH_OVERRIDE}" != "arm64" ]]; then
+  msg "Invalid UE_BUILD_ARCH_OVERRIDE='${UE_BUILD_ARCH_OVERRIDE}'. Expected 'x64' or 'arm64'. Ignoring override."
+  unset UE_BUILD_ARCH_OVERRIDE
 fi
 
 # Change this if you want an alternative non-default logo for UE5's desktop icon; the default logo is enabled by default
 ## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
-if [ "${USE_DEFAULT_UE_LOGO_AT_INSTALL}" != 1 ] && [ "${USE_DEFAULT_UE_LOGO_AT_INSTALL}" != 0 ]; then
-  export USE_DEFAULT_UE_LOGO_AT_INSTALL=1
+if [[ "${UE_USE_DEFAULT_LOGO_AT_INSTALL}" != "1" && "${UE_USE_DEFAULT_LOGO_AT_INSTALL}" != "0" ]]; then
+  export UE_USE_DEFAULT_LOGO_AT_INSTALL=1
 fi
+
 
 ## This is for detecting your CPU architecture automatically; set to false if you want to enforce your own makepkg.conf file
 ## Disabled by default as a compromise for those bothered by having it force-enabled
@@ -79,20 +128,20 @@ fi
 
 # Valid values are false / disabled / default, auto, and native
 
-# arch_auto=""
+# UE_ARCH_AUTO=""
 
 if [[ -n "$(command -v tr)" ]]; then
   # shellcheck disable=SC2006
-  arch_auto="$(echo "${arch_auto}" | tr '[:upper:]' '[:lower:]')"
+  UE_ARCH_AUTO="$(echo "${UE_ARCH_AUTO}" | tr '[:upper:]' '[:lower:]')"
 fi
 
-case "${arch_auto}" in
+case "${UE_ARCH_AUTO}" in
   "auto"|"true"|"enable"|"enabled"|"1"|"native"|"false"|"disable"|"disabled"|"2")
     :
   ;;
 
   *)
-    arch_auto=false
+    UE_ARCH_AUTO=false
   ;;
 esac
 
@@ -148,7 +197,23 @@ _ue_detect_x86_64_march() {
   fi
 }
 
-if _ue_is_arch_auto_enabled "${arch_auto}"; then
+_ue_map_build_arch() {
+  local _ue_source_arch="$1"
+
+  case "${_ue_source_arch}" in
+    x86_64) echo "x64" ;;
+    aarch64) echo "arm64" ;;
+    *) echo "" ;;
+  esac
+}
+
+if [[ -n "${UE_BUILD_ARCH_OVERRIDE}" ]]; then
+  _ue_build_arch="${UE_BUILD_ARCH_OVERRIDE}"
+else
+  _ue_build_arch="$(_ue_map_build_arch "${_ue_arch}")"
+fi
+
+if _ue_is_arch_auto_enabled "${UE_ARCH_AUTO}"; then
 
   if [[ "${_ue_arch}" == "x86_64" ]]; then
     _ue_detected_march="$(_ue_detect_x86_64_march)"
@@ -165,11 +230,11 @@ if _ue_is_arch_auto_enabled "${arch_auto}"; then
     msg "Architecture '${_ue_arch}' is not supported! Exiting."
     return 1
   fi
-elif [[ "${arch_auto}" == "native" ]]; then
+elif [[ "${UE_ARCH_AUTO}" == "native" ]]; then
   _ue_set_arch_flags "native" "-mtune=native"
 fi
 
-case "${arch_auto}" in
+case "${UE_ARCH_AUTO}" in
   "auto"|"true"|"enable"|"enabled"|"native"|"1")
     :
   ;;
@@ -200,7 +265,7 @@ prepare() {
   else
     cd "${pkgname}" || return
     CURRENT_CLONED_VERSION="$(git describe --tags)"
-    if [ "${CURRENT_CLONED_VERSION}" != "${pkgver}-release" ]; then
+    if [[ "${CURRENT_CLONED_VERSION}" != "${pkgver}-release" ]]; then
       cd ..
       rm -rf "${pkgname}"
       git clone --depth=1 --branch=${pkgver}-release git@github.com:EpicGames/UnrealEngine "${pkgname}"
@@ -262,18 +327,26 @@ build() {
     exit $?
   fi
 
+  local _ue_buildgraph_arch_arg=()
+
+  if [[ -n "${_ue_build_arch}" ]]; then
+    _ue_buildgraph_arch_arg=(-set:BuildArchitecture="${_ue_build_arch}")
+  fi
+
   "Engine/Build/BatchFiles/RunUAT.sh" BuildGraph \
     -target="Make Installed Build Linux" \
     -script=Engine/Build/InstalledEngineBuild.xml \
     -nosign \
-    -set:WithDDC=${_WithDDC} \
-    -set:WithLinux=true \
-    -set:WithWin64=true \
-    -set:WithMac=false \
-    -set:WithAndroid=false \
-    -set:WithIOS=false \
-    -set:WithTVOS=false \
-    -set:GameConfigurations="Debug-Editor;Debug;Development;Shipping"
+    "${_ue_buildgraph_arch_arg[@]}" \
+    -set:WithDDC="${UE_WITH_DDC}" \
+    -set:WithLinux="${UE_WITH_LINUX}" \
+    -set:WithWin64="${UE_WITH_WIN64}" \
+    -set:WithMac="${UE_WITH_MAC}" \
+    -set:WithAndroid="${UE_WITH_ANDROID}" \
+    -set:WithIOS="${UE_WITH_IOS}" \
+    -set:WithTVOS="${UE_WITH_TVOS}" \
+    -set:GameConfigurations="${UE_GAME_CONFIGURATIONS}" \
+    -set:WithFullDebugInfo="${UE_WITH_FULL_DEBUG_INFO}"
 
   if [[ $? -ne 0 ]]; then
     msg "Error: Build failed; try searching the output for suspicious messages." >&2
@@ -283,8 +356,8 @@ build() {
 
 package() {
   # Desktop entry
-  if [ ! -f com.unrealengine.UE5Editor.desktop ] && [ -f com.unrealengine.UE4Editor.desktop ]; then
-    cp com.unrealengine.UE4Editor.desktop com.unrealengine.UE5Editor.desktop
+  if [[ ! -f com.unrealengine.UE5Editor.desktop ]]; then
+    cp com.unrealengine.UE5Editor.desktop
   fi
   
   sed -i "7c\Exec=/usr/bin/unreal-engine %U" com.unrealengine.UE5Editor.desktop
@@ -300,7 +373,7 @@ package() {
   install -dm755 "${pkgdir}/usr/share/applications/"
 
   # Icon for Desktop entry
-  if [ "${USE_DEFAULT_UE_LOGO_AT_INSTALL}" == 1 ]; then
+  if [[ "${UE_USE_DEFAULT_LOGO_AT_INSTALL}" == "1" ]]; then
     install -Dm644 ue5editor.svg "${pkgdir}/usr/share/pixmaps/ue5editor.svg"
   else
     mv ue5editor.svg ue5editor.svg.bak
@@ -320,10 +393,10 @@ package() {
   # Engine
   ## Set to all permissions to prevent the engine from breaking itself; more elegant solutions might exist - suggest them if they can be automated here
   ## Also, correct me if I package this improperly; I added Win64 support for the build in hopes of supporting cross-compilation
-  install -dm777 "${pkgdir}/${_ue5_install_dir}/Engine"
+  install -dm777 "${pkgdir}/${UE_INSTALL_DIR}/Engine"
   
   # Copy LocalBuilds to pkg...
-  rsync -a "${srcdir}/${pkgname}/LocalBuilds/Engine/Linux/" "${pkgdir}/${_ue5_install_dir}/"
+  rsync -a "${srcdir}/${pkgname}/LocalBuilds/Engine/Linux/" "${pkgdir}/${UE_INSTALL_DIR}/"
   if [ -f "${srcdir}/${pkgname}/LocalBuilds/Engine/Linux/Engine/Binaries/Linux/UnrealEditor" ]; then
     # Can never be too careful with recursive rm...
     rm -r "${srcdir}/${pkgname}/LocalBuilds"
@@ -331,26 +404,26 @@ package() {
 
   # Ensure InstalledBuild.txt is present so UBT treats this as an installed engine,
   # preventing the "unique build environment" error when building projects.
-  printf '%s' "${pkgver}" | install -Dm644 /dev/stdin "${pkgdir}/${_ue5_install_dir}/Engine/Build/InstalledBuild.txt"
+  printf '%s' "${pkgver}" | install -Dm644 /dev/stdin "${pkgdir}/${UE_INSTALL_DIR}/Engine/Build/InstalledBuild.txt"
 
   # Copy the rest of it to pkg... Should we be overwriting LocalBuilds?
-  rsync -a --exclude='Intermediate/' "${srcdir}/${pkgname}/" "${pkgdir}/${_ue5_install_dir}/"
+  rsync -a --exclude='Intermediate/' "${srcdir}/${pkgname}/" "${pkgdir}/${UE_INSTALL_DIR}/"
 
   # The BuildGraph staging copies the unpatched UBT DLL from CsTools into LocalBuilds,
   # which then overwrites our patched build. Re-stamp both locations with the patched DLL.
   local _ubtsrcdir="${srcdir}/${pkgname}/Engine/Source/Programs/UnrealBuildTool"
-  local _ubtpkgdir="${pkgdir}/${pkgname}/${_ue5_install_dir}/Engine/Binaries/DotNET/UnrealBuildTool"
+  local _ubtpkgdir="${pkgdir}/${pkgname}/${UE_INSTALL_DIR}/Engine/Binaries/DotNET/UnrealBuildTool"
 
-  if [ -x "$(find "${pkgdir}/${_ue5_install_dir}" -type f -iname 'xbuild')" ]; then
-    find "${pkgdir}/${_ue5_install_dir}" -type f -iname 'xbuild' -exec chmod +x "{}" \;
+  if [ -x "$(find "${pkgdir}/${UE_INSTALL_DIR}" -type f -iname 'xbuild')" ]; then
+    find "${pkgdir}/${UE_INSTALL_DIR}" -type f -iname 'xbuild' -exec chmod +x "{}" \;
   fi
   
-  if [ -x "$(find "${pkgdir}/${_ue5_install_dir}" -type f -iname 'mcs')" ]; then
-    find "${pkgdir}/${_ue5_install_dir}" -type f -iname 'mcs' -exec chmod +x "{}" \;
+  if [ -x "$(find "${pkgdir}/${UE_INSTALL_DIR}" -type f -iname 'mcs')" ]; then
+    find "${pkgdir}/${UE_INSTALL_DIR}" -type f -iname 'mcs' -exec chmod +x "{}" \;
   fi
   
   ## Do this, in case the path doesn't exist for some reason
-  mkdir -p "${pkgdir}/${_ue5_install_dir}/Engine/Binaries/Android/"
+  mkdir -p "${pkgdir}/${UE_INSTALL_DIR}/Engine/Binaries/Android/"
   
   # Launch script to initialize missing user folders for Unreal Engine
   install -Dm755 ../unreal-engine.sh "${pkgdir}/usr/bin/unreal-engine"
@@ -364,5 +437,5 @@ package() {
   # Note: Requires that there isn't already a UE5 desktop entry in "${HOME}/local/share/applications/" - delete yours if you have one there before installing this
   DesktopFileChecksum=$(sha256sum "${pkgdir}/usr/share/applications/com.unrealengine.UE5Editor.desktop" | cut -f 1 -d ' ')
   sed -i "s|ChecksumPlaceholder|${DesktopFileChecksum}|" "${pkgdir}/usr/bin/unreal-engine"
-  sed -i "s|InstalledLocationPlaceholder|/${_ue5_install_dir}/Engine/Binaries|" "${pkgdir}/usr/bin/unreal-engine"
+  sed -i "s|InstalledLocationPlaceholder|/${UE_INSTALL_DIR}/Engine/Binaries|" "${pkgdir}/usr/bin/unreal-engine"
 }
