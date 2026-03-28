@@ -1,7 +1,7 @@
 #Maintainer: XanatosX <wk9mtc0ar@mozmail.com>
 name=samory
 pkgname=$name-bin
-pkgver=0.19.7
+pkgver=0.19.8
 pkgrel=1
 pkgdesc="A Memory like game, written in Godot. Does allow custom card decks to be side loaded."
 arch=("x86_64")
@@ -12,7 +12,7 @@ depends=()
 source=("https://github.com/D-Generation-S/${name}/releases/download/${pkgver}/${name}_${pkgver}-linux.zip" 
 		"samory.desktop" 
 		"https://github.com/D-Generation-S/${name}/raw/refs/tags/${pkgver}/assets/sprites/Axuree/samory-icon.png")
-md5sums=('c0b8e391b1bc7079d9249225a60ccd00'
+md5sums=('3120ce202ff2852362e81a7e3a11468d'
          'c1a3c96fb0da1dcc184599b043e040ff'
          '43b9124387dac78647878f6137ed4542')
 
