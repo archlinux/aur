@@ -2,7 +2,7 @@
 
 pkgname=obs-studio-liberty
 pkgver=32.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source software for live streaming and recording. With Browser Source support. Without the need to install ffmpeg-obs, etc."
 arch=('x86_64')
 url="https://github.com/obsproject/obs-studio"
@@ -99,8 +99,7 @@ source=(
 sha512sums=('33ec913903114d361cfdc81e9b91da90d193e49f3cd58e3d2f1fbb8d449eb3b31f6a9a6d63aaab5bdb41512c0109491149da06e89cc14fa1f2791411b8fd817d'
             'SKIP'
             'SKIP'
-            '790da9bf3a2495eb6d4d155ae89adea88a45f496b5996278d72df47a1dea662241b2b73d93be7fc56f83186805c591dcd718266575a74d1b25b6b93379ce74b3'
-            )
+            '790da9bf3a2495eb6d4d155ae89adea88a45f496b5996278d72df47a1dea662241b2b73d93be7fc56f83186805c591dcd718266575a74d1b25b6b93379ce74b3')
 
 prepare() {
   cd "$srcdir/obs-studio"
