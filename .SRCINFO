@@ -1,0 +1,21 @@
+pkgbase = zulu-26-fx-bin
+	pkgdesc = Azul Zulu builds of OpenJDK are open source, TCK-tested and certified builds of OpenJDK.
+	pkgver = 26.0.0
+	pkgrel = 1
+	url = https://www.azul.com/downloads/
+	install = zulu-26-fx-bin.install
+	arch = x86_64
+	license = custom
+	depends = java-environment-common>=3
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	provides = java-environment=26
+	provides = java-environment-openjdk=26
+	provides = java-runtime-headless=26
+	provides = java-runtime-headless-openjdk=26
+	provides = java-runtime=26
+	provides = java-runtime-openjdk=26
+	source_x86_64 = https://cdn.azul.com/zulu/bin/zulu26.28.63-ca-fx-jdk26.0.0-linux_x64.tar.gz
+	sha256sums_x86_64 = 1bd70c1f0ccd2c5e01fa4b4791b1b4b42a9fd8f0a9a307c67f7ba0c9200f873b
+
+pkgname = zulu-26-fx-bin
