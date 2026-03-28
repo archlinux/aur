@@ -1,12 +1,15 @@
 pkgbase = holyc
-	pkgdesc = An aur package for HolyC Compiler by nrootconauto
-	pkgver = 1.0.0
+	pkgdesc = HolyC compiler written in Go - compiles HolyC source code to x64 machine code
+	pkgver = 0.1.0
 	pkgrel = 1
-	url = https://github.com/nrootconauto/HolyCC2
+	url = https://github.com/Sh1n4r4/holyc-compiler
 	arch = x86_64
-	license = custom
-	depends = make
-	depends = cmake
-	depends = git
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = go
+	depends = glibc
+	options = !emptydirs
+	source = holyc-0.1.0.tar.gz::https://github.com/Sh1n4r4/holyc-compiler/archive/v0.1.0.tar.gz
+	sha256sums = SKIP
 
 pkgname = holyc
