@@ -1,30 +1,38 @@
 # Maintainer: Thermi <noel [at] familie-kuntze dot de>
 
+_pkgname=ndppd
 pkgname=ndppd
-pkgver=0.2.5
+pkgver=0.2.6
 pkgrel=1
 pkgdesc="IPv6 NDP proxy daemon"
+arch=('x86_64')
 url='https://github.com/DanielAdolfsson/ndppd'
-license=("GPL3")
-arch=('i686' 'x86_64')
+license=('GPL-3.0-or-later')
+depends=('glibc' 'libgcc' 'libstdc++')
 backup=('etc/ndppd.conf')
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/DanielAdolfsson/ndppd/archive/${pkgver}.tar.gz")
+sha256sums=('969d438462e0c65a8c9060d8d263c5c47ba8145fb9aaa663864bbad11ad7eb7a')
 
-source=("https://github.com/DanielAdolfsson/ndppd/archive/${pkgver}.tar.gz"
-	"ndppd.service")
+prepare() {
+  cd "${_pkgname}-${pkgver}"
 
-sha256sums=('ee934167f8357f0bd0015e201a77fbe4d028c59e89dc98113805c6855e1c3992'
-            'b8c1e3ab37cebc2aeb83873cba719fdc919fd5d2832170011ff8da471972e061')
+  sed -r \
+    -e 's|/var/run|/run|g' \
+    -e 's|/usr/sbin|/usr/bin|g' \
+    -i ndppd.service
+}
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${_pkgname}-${pkgver}"
 
   make PREFIX=/usr all
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make PREFIX=/usr SBINDIR=/${pkgdir}/usr/bin DESTDIR=${pkgdir} install
-  install -D -m 644 "${srcdir}/ndppd.service" "${pkgdir}/usr/lib/systemd/system/ndppd.service"
+  cd "${_pkgname}-${pkgver}"
+
+  make PREFIX=/usr SBINDIR="${pkgdir}/usr/bin" DESTDIR="${pkgdir}" install
+  install -D -m 644 "ndppd.service" -t "${pkgdir}/usr/lib/systemd/system"
   install -D -m 644 ndppd.conf-dist "${pkgdir}/etc/ndppd.conf"
 }
 
