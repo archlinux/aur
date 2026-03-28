@@ -8,9 +8,9 @@ pkgbase = stubidp-bin
 	provides = stubidp
 	arch = aarch64
 	source_aarch64 = https://github.com/cerberauth/stubidp/releases/download/v0.0.5/stubidp_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 2854250ce637983648b33c61a484672f9df103a7fc84467e1babe62097e1ead1
+	sha256sums_aarch64 = 2a43f863602f8b66922339567a44082429f9b4b9ee3c002327d0b36bb9a2b28b
 	arch = x86_64
 	source_x86_64 = https://github.com/cerberauth/stubidp/releases/download/v0.0.5/stubidp_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = d9c7a706d84d31bf27442c46676722e4879a8857497793f5bc11e1555882e09e
+	sha256sums_x86_64 = d558681bd15626b92370c4948cf57b020546dd94ed1405b2442885d42e28ea6b
 	
 pkgname = stubidp-bin
