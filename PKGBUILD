@@ -5,7 +5,7 @@ _pkgname=youtube-music-cli
 pkgname=${_pkgname}-bin
 pkgdesc="A powerful Terminal User Interface (TUI) music player for YouTube Music"
 
-pkgver=0.0.62
+pkgver=0.0.63
 pkgrel=1
 _pkgvername=v${pkgver}
 
@@ -29,7 +29,7 @@ sha256sums=('a250e755ce6352f5dd688ba960feddfd432215043ce7e3ce8bfa6f9f82c380af'
             '7ca06bafb061dbc8e3df2c820f8da9adafbc66b1f6a77b7b8bd132eb0d90c8d3'
             '334063151c2f20a4898d7d9b9b2dc535927c239f5b124013013908fe5981f5d0'
             '8e0fa698e1e37adc44d567345a8db5e099f99c78e13123d631416a3813c6832e')
-sha256sums_x86_64=('1f40dd136a40bbbd058734bbc0bb1f2ddeffbb1d917f6db833b3db85b7ce7592')
+sha256sums_x86_64=('68c6cad4bfb8e5da68fb38016b61b61342b241c69a5d90f78972d025cbde1eea')
 
 
 package() {
