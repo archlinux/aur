@@ -38,7 +38,7 @@ provides=(sk-chos-addon)
 conflicts=(sk-chos-addon-git)
 replaces=(sk-chos-addon-git)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/honjow/sk-chos-config/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0c9a3d8a658fbde5eea30f70be2c1b2f2a3824fbf7a59f58d0b55cac49478ae0')
+sha256sums=('SKIP')
 options=(!strip)
 backup=('etc/sk-chos-tool/github_cdn.conf')
 install=sk-chos-addon.install
@@ -86,8 +86,8 @@ package() {
     install -dm755 "${pkgdir}/usr/lib/systemd/system"
     # install -m644 -t "${pkgdir}/usr/lib/systemd/system" "${source_dir}/systemd/system"/*.*
     find "${source_dir}/systemd/system" -maxdepth 1 -type f -exec install -m644 -D {} "${pkgdir}/usr/lib/systemd/system/" \;
-    install -dm755 "${pkgdir}/usr/lib/systemd/system/hhd@.service.d" || true
-    install -m644 -t "${pkgdir}/usr/lib/systemd/system/hhd@.service.d" "${source_dir}/systemd/system/hhd@.service.d"/* || true
+    # install -dm755 "${pkgdir}/usr/lib/systemd/system/hhd@.service.d"
+    # install -m644 -t "${pkgdir}/usr/lib/systemd/system/hhd@.service.d" "${source_dir}/systemd/system/hhd@.service.d"/*
     install -dm755 "${pkgdir}/usr/lib/systemd/system/hhd.service.d"
     install -m644 -t "${pkgdir}/usr/lib/systemd/system/hhd.service.d" "${source_dir}/systemd/system/hhd.service.d"/*
 
@@ -97,7 +97,12 @@ package() {
 
     # user service
     install -dm755 "${pkgdir}/usr/lib/systemd/user"
-    install -m644 -t "${pkgdir}/usr/lib/systemd/user" "${source_dir}/systemd/user"/*
+    find "${source_dir}/systemd/user" -maxdepth 1 -type f -exec install -m644 -D {} "${pkgdir}/usr/lib/systemd/user/" \;
+    # user service drop-in: gamescope-session-plus
+    if [ -d "${source_dir}/systemd/user/gamescope-session-plus@.service.d" ]; then
+        install -dm755 "${pkgdir}/usr/lib/systemd/user/gamescope-session-plus@.service.d"
+        install -m644 -t "${pkgdir}/usr/lib/systemd/user/gamescope-session-plus@.service.d" "${source_dir}/systemd/user/gamescope-session-plus@.service.d"/*
+    fi
 
     # /usr/libexec/*
     install -dm755 "${pkgdir}/usr/libexec"
