@@ -1,7 +1,7 @@
 pkgbase = tuack-ng-git
 	pkgdesc = 重构后的 tuack 项目，旨在提供更加高效和轻量的出题体验。
-	pkgver = 0.3.0.r8.gad60264
-	pkgrel = 2
+	pkgver = 0.4.0
+	pkgrel = 1
 	url = https://github.com/tuack-ng/tuack-ng
 	arch = x86_64
 	license = AGPL-3.0-or-later

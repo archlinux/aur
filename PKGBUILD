@@ -1,8 +1,8 @@
 # Maintainer: Pulsar <Pulsar33550336@163.com>
 
 pkgname=tuack-ng-git
-pkgver=0.3.0.r8.gad60264
-pkgrel=2
+pkgver=0.4.0.r0.g835dd86
+pkgrel=1
 pkgdesc="重构后的 tuack 项目，旨在提供更加高效和轻量的出题体验。"
 url="https://github.com/tuack-ng/tuack-ng"
 license=("AGPL-3.0-or-later")
@@ -15,11 +15,9 @@ source=(
     "git+https://github.com/tuack-ng/templates.git"
     "git+https://github.com/MikeMirzayanov/testlib.git"
 )
-sha256sums=(
-    'SKIP'
-    'SKIP'
-    'SKIP'
-)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 makedepends=(
     'cargo'
     'git'
