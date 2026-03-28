@@ -9,11 +9,10 @@ pkgdesc="Custom scripts made to help in the creation of custom SuperTuxKart kart
 arch=('any')
 url="https://github.com/supertuxkart/stk-blender"
 license=('MIT')
-depends=('blender'
-         'supertuxkart')
+depends=('blender')
 makedepends=('git')
 checkdepends=()
-optdepends=()
+optdepends=('supertuxkart')
 provides=("${pkgname%-git}"
           'stk-blender')
 conflicts=()

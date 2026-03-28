@@ -8,7 +8,7 @@ pkgbase = blender-plugin-supertuxkart-git
 	license = MIT
 	makedepends = git
 	depends = blender
-	depends = supertuxkart
+	optdepends = supertuxkart
 	provides = blender-plugin-supertuxkart
 	provides = stk-blender
 	source = blender-plugin-supertuxkart-git::git+https://github.com/supertuxkart/stk-blender.git#commit=2dedf36
