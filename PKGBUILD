@@ -13,7 +13,7 @@ conflicts=('volt-desktop-bin')
 options=('!strip')
 
 # Source: AppImage from the official update server
-source=("${pkgname}-${pkgver}.AppImage::https://updates.voltagechat.app/desktop/linux/Volt-${pkgver}.AppImage"
+source=("${pkgname}-${pkgver}.AppImage::https://updates.voltagechat.app/desktop/linux/Volt-desktop-${pkgver}.AppImage"
         "volt-desktop.desktop"
         "volt-desktop.png")
 noextract=("${pkgname}-${pkgver}.AppImage")
