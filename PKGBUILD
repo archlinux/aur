@@ -1,13 +1,14 @@
+# Maintainer: Michal Wojdyla < micwoj9292 at gmail dot com >
 # Contributor: Raf Gemmail <rafiq+aur@dreamthought.com>
 
 pkgname=matrixbrandy
 pkgver=1.23.6
-pkgrel=1
+pkgrel=2
 pkgdesc='BBC BASIC VI interpreter with optional SDL graphics support.'
 arch=('any')
 url="https://brandy.matrixnetwork.co.uk/"
 license=('GPL2')
-depends=('sdl')
+depends=('glibc' 'libx11' 'sdl')
 source=("https://github.com/stardot/MatrixBrandy/archive/refs/tags/V$pkgver.tar.gz")
 sha512sums=('d235383ef15e8aaef9e5839504a0023d94bb5fe4c98aa13a9f9a9c467eb7772d7f5eec26633dcbdb5992ffbd5f38634635bf79d19f73a12e71732316fc6e06ac')
 
