@@ -69,7 +69,6 @@ pkgbase = konform-browser
 	depends = libwebp
 	depends = mime-types
 	depends = nspr
-	depends = nss
 	depends = pango
 	depends = pixman
 	depends = sh

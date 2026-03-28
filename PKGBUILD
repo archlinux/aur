@@ -54,7 +54,6 @@ depends=(
   libwebp.so
   mime-types
   nspr
-  nss
   pango
   pixman
   sh
@@ -231,7 +230,6 @@ export MOZ_APP_REMOTINGNAME=${__pkgname}
 
 # System libraries
 ac_add_options --with-system-nspr
-ac_add_options --with-system-nss
 
 ## Kon moar system libs
 ac_add_options --with-system-zlib
@@ -470,9 +468,4 @@ END
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -srfv "${pkgdir}/usr/bin/${__pkgname}" "${pkgdir}/usr/lib/${__pkgname}/${__pkgname}-bin"
   ln -s "${__pkgname}" "${pkgdir}/usr/bin/${_pkgname}" || true
-  # Use system certificates
-  local nssckbi="$pkgdir/usr/lib/$__pkgname/libnssckbi.so"
-  if [[ -e $nssckbi ]]; then
-    ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
-  fi
 }
