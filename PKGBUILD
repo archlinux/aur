@@ -2,7 +2,7 @@
 # Contributor: Your Name <your.email@example.com>
 
 pkgname=automaker-git
-pkgver=0.15.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="An autonomous AI development studio that helps you build software faster using AI-powered agents"
 arch=('x86_64')
