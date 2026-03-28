@@ -1,0 +1,4 @@
+[python-pedalboard]
+source = "git"
+git = "https://github.com/spotify/pedalboard.git"
+prefix = "v"
