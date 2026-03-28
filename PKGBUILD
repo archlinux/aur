@@ -4,12 +4,12 @@
 
 pkgbase=etlegacy-git
 pkgname=('etlegacy-git' 'etlegacy-mod-git')
-pkgver=2.81.1.379.g7f88ffef6
+pkgver=2.83.2.614.gc60d70aa6
 pkgrel=1
 arch=('x86_64')
 url="http://etlegacy.com/"
 license=('GPL3')
-makedepends=('libpng' 'git' 'cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'minizip' 'openal' 'sdl2' 'sqlite' 'cjson')
+makedepends=('libpng' 'git' 'cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua54' 'minizip' 'openal' 'sdl2' 'sqlite' 'cjson')
 options=(!strip)
 source=('git+https://github.com/etlegacy/etlegacy.git')
 sha512sums=('SKIP')
@@ -59,7 +59,7 @@ build() {
 
 package_etlegacy-git() {
     pkgdesc="Wolfenstein: Enemy Territory 2.60b compatible client/server (etlegacy engine)"
-    depends=('etlegacy-mod-git' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua' 'minizip' 'openal' 'sdl2' 'sqlite' 'cjson')
+    depends=('etlegacy-mod-git' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libtheora' 'libvorbis' 'lua54' 'minizip' 'openal' 'sdl2' 'sqlite' 'cjson')
     provides=('etlegacy')
     conflicts=('etlegacy')
     backup=('etc/xdg/etlegacy/etmain/etl_server.cfg'
