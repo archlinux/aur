@@ -3,7 +3,7 @@
 # Contributor: Jonathan Bangert <jonathan@bangert.dk>
 pkgname=music-assistant-desktop
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
 url="https://github.com/music-assistant/desktop-app"
@@ -20,6 +20,7 @@ depends=(
     'libgcc'
     'libpulse'
     'libsoup3'
+    'libayatana-appindicator'
     'webkit2gtk-4.1'
 )
 makedepends=(
@@ -27,15 +28,12 @@ makedepends=(
     'cargo-tauri'
     'curl'
     'file'
-    'libappindicator-gtk3'
+    'libayatana-appindicator'
     'librsvg'
     'nodejs'
     'rust'
     'wget'
     'yarn'
-)
-optdepends=(
-    'libappindicator-gtk3: system tray support'
 )
 conflicts=('music-assistant-desktop-git' 'music-assistant-desktop-bin' 'music-assistant-companion-git' 'music-assistant-app-git' 'music-assistant-desktop-app-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
