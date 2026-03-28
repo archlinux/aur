@@ -1,6 +1,6 @@
 pkgbase = python-chibi-argsparser
 	pkgdesc = wrapper for argsparser to make more human the definition of the parser
-	pkgver = 1.0.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://pypi.org/project/chibi-argsparser/
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-chibi-argsparser
 	makedepends = python-setuptools
 	depends = python-chibi-atlas
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/c/chibi_argsparser/chibi_argsparser-1.0.1.tar.gz
-	sha256sums = 595cfe3dbc943e192dbf8a38979cccba0a6fd7e6c2fbd8bd6a263a0633cd1b25
+	source = https://files.pythonhosted.org/packages/source/c/chibi_argsparser/chibi_argsparser-1.1.0.tar.gz
+	sha256sums = 4edae8bae0c5056534c83af9a2bc5c569ca622e9a656a0a6f5673c6deb608593
 
 pkgname = python-chibi-argsparser
