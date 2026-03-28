@@ -29,7 +29,7 @@ optdepends=(
     'owlry-rune: Rune runtime for user plugins'
 )
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-v$pkgver.tar.gz")
-b2sums=('9ff490e275f86573e6ade45c97fe27140bdd48a0049485d786b5084a536225be11c7b253222d95f88f316da5505ea025dd9aae581451665950fc62a116ee2ffd')
+b2sums=('2924468a55fa62979b324c0c48cff2fa13e348f1d21a6ca5e19596bfbeb88fc932b285586275b219bcd75cacc72c1d1d9fecfe13c90dcbc4b258a193bcda1047')
 
 prepare() {
     cd "owlry"
