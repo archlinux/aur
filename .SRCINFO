@@ -1,0 +1,29 @@
+pkgbase = modbustools
+	pkgdesc = ModbusTools are cross-platform Modbus simulator tools with GUI to work with Modbus protocol (TCP,RTU,ASCII)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/serhmarch/ModbusTools
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = imagemagick
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	depends = qt5-tools
+	depends = python
+	depends = python-pyqt5
+	provides = modbustools
+	conflicts = modbustools
+	source = modbustools::git+https://github.com/serhmarch/ModbusTools.git#tag=v0.5.0
+	source = modbus::git+https://github.com/serhmarch/ModbusLib.git
+	sha256sums = cbb2e7c250e7e90ae0de650d33906f4340ad5d8d47ee1a56bb9eceaf63c69155
+	sha256sums = SKIP
+
+pkgname = modbustools
