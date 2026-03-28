@@ -1,0 +1,6 @@
+*.pkg.tar.zst
+firefox-*.source.tar.xz
+firefox-*.source.tar.xz.asc
+firefox-l10n-*.tar.gz
+pkg/
+src/
