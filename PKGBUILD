@@ -213,9 +213,6 @@ ac_add_options --disable-updater
 ac_add_options --enable-system-pixman
 ac_add_options --with-ccache=sccache
 
-# fix missing <string.h> in optimized mach build (missing llvm library?) and speed up build in any case
-ac_add_options --without-wasm-sandboxed-libraries
-
 ##### /Kon
 
 ac_add_options --enable-linker=lld
@@ -249,7 +246,7 @@ ac_add_options --enable-jack
 ac_add_options --enable-pulseaudio
 
 # wasi
-#ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 
 # options for ci / weaker build systems
 mk_add_options MOZ_PARALLEL_BUILD=1
