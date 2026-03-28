@@ -1,0 +1,14 @@
+pkgbase = xauwatch
+	pkgdesc = Terminal-based live XAU/USD monitor written in Bash
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/KlodCripta/xauwatch
+	arch = any
+	license = MIT
+	depends = bash
+	depends = curl
+	depends = python
+	source = xauwatch-1.0.0.tar.gz::https://github.com/KlodCripta/xauwatch/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = xauwatch
