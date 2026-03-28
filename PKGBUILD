@@ -10,7 +10,7 @@ depends=('owlry-core')
 makedepends=('cargo')
 install=owlry-plugin-weather.install
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry-plugins/archive/$pkgname-v$pkgver.tar.gz")
-b2sums=('SKIP')
+b2sums=('3d9a096485d5dea487a69fd48019eb5cddf2781bda5acce0503ecc5f19412f274b3a6f60a1922c35bd7855e4f72eaacb131d8affd0ee21d00e213345134a1b98')
 
 _cratename=owlry-plugin-weather
 
