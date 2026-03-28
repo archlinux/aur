@@ -1,0 +1,73 @@
+readonly ADDONS_PATH="/usr/share/blender/common/scripts/addons"
+readonly ADDONS_SPM_NAME="io_spm_format"
+readonly ADDONS_STK_NAME="io_STK_exporter_tools"
+
+_get_blender_version() {
+    blender -v | head -1 | cut -d " " -f 2 | cut -d "." -f 1-2
+}
+
+_create_link(){
+    local _blenderver
+    _blenderver=$(_get_blender_version)
+
+    local _current_blender_addons_path="/usr/share/blender/${_blenderver}/scripts/addons_core"
+
+    # remove link if exist
+    [ -L "${_current_blender_addons_path}/${ADDONS_SPM_NAME}" ] && \
+        rm "{$_current_blender_addons_path:?}/${ADDONS_SPM_NAME:?}"
+    [ -L "${_current_blender_addons_path}/${ADDONS_STK_NAME}" ] && \
+        rm "${_current_blender_addons_path:?}/${ADDONS_STK_NAME:?}"
+
+    echo "Link \"$ADDONS_PATH/$ADDONS_SPM_NAME\" to \"$_current_blender_addons_path/$ADDONS_SPM_NAME\""
+    ln -s "${ADDONS_PATH:?}/$ADDONS_SPM_NAME" "$_current_blender_addons_path/"
+
+    echo "Link \"$ADDONS_PATH/$ADDONS_STK_NAME\" to \"$_current_blender_addons_path/$ADDONS_STK_NAME\""
+    ln -s "${ADDONS_PATH:?}/$ADDONS_STK_NAME" "$_current_blender_addons_path/"
+}
+
+_remove_link(){
+    local _blenderver
+    _blenderver=$(_get_blender_version)
+
+    local _current_blender_addons_path="/usr/share/blender/${_blenderver}/scripts/addons_core"
+
+    echo "Remove \"$_current_blender_addons_path/$ADDONS_SPM_NAME\""
+    rm -rf "${_current_blender_addons_path:?}/${ADDONS_SPM_NAME:?}"
+
+    echo "Remove \"$_current_blender_addons_path/$ADDONS_STK_NAME\""
+    rm -rf "${_current_blender_addons_path:?}/${ADDONS_STK_NAME:?}"
+}
+
+_print_tips(){
+    cat << EOF
+╔══════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                  ║
+║ To activate addon in blender :                                                   ║
+║  - Open the preferences window by "Edit -> Preferences -> Add-ons".              ║
+║  - Enable the add-ons "SPM (Space paritioned mesh) format" and                   ║
+║ "SuperTuxKart Exporter Tools" by clicking the checkbox next to each add-on name. ║
+║                                                                                  ║
+║ more details on github                                                           ║
+║   https://github.com/supertuxkart/stk-blender/#installation                      ║
+║                                                                                  ║
+╚══════════════════════════════════════════════════════════════════════════════════╝
+EOF
+}
+
+post_install() {
+    _create_link
+    _print_tips
+}
+
+pre_upgrae() {
+    _remove_link
+}
+
+post_upgrade() {
+    _create_link
+    _print_tips
+}
+
+pre_remove() {
+    _remove_link
+}
