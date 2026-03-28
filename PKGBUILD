@@ -12,8 +12,8 @@ arch=(
 url="https://segymat.readthedocs.io/"
 _url="https://github.com/AUProbGeo/${_name}"
 license=(
-  'GPL-2.0-or-later' # per .m file headers
-  'LGPL-2.1-only'    # per LICENSE file
+  'GPL-2.0-or-later'  # per .m file headers
+  'LGPL-2.1-or-later' # per LICENSE file
 )
 optdepends=(
   'matlab: support for MATLAB'
