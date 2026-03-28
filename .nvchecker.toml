@@ -2,5 +2,5 @@
 source = "github"
 github = "mrkatebzadeh/animestan"
 use_latest_release = true
-from_pattern = 'v([0-9.]*)-rc.([0-9]*)'
+from_pattern = 'v([0-9.]*)'
 to_pattern = '\1'
