@@ -1,0 +1,15 @@
+pkgbase = bangla-typer-bin
+	pkgdesc = Master Bangla Typing with Real-World Content & YouTube Integration (binary release)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mehad605/Bangla_Typer
+	arch = x86_64
+	license = custom:CC-BY-NC-SA-4.0
+	depends = gtk3
+	depends = webkit2gtk
+	provides = bangla-typer
+	conflicts = bangla-typer
+	source = bangla-typer-1.0.0.tar.gz::https://github.com/mehad605/Bangla_Typer/releases/download/v1.0.0/bangla-typer-1.0.0.tar.gz
+	sha256sums = a43270d111703a2f99ce62555d5446007a461e1007779e02e2abea5d11317fce
+
+pkgname = bangla-typer-bin
