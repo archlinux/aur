@@ -2,7 +2,7 @@
 
 pkgname=mprisence-bin
 _pkgname=${pkgname%-bin}
-pkgver=v1.4.5
+pkgver=v1.5.1
 pkgrel=1
 pkgdesc="Discord Rich Presence for MPRIS media players"
 arch=("x86_64")
@@ -16,7 +16,7 @@ source=("$url/releases/download/$pkgver/$_filename"
   "mprisence-bin.install"
   "mprisence.service"
   "LICENSE")
-sha256sums=('784884f8520cb44dea69ff7d9eb80605127e28fb33b9a2982d86dbff642713cf'
+sha256sums=('0915dbf3ba99ed9d149f7c43d949f959c3be40f4a1a74edce4ca768dd79021e5'
             '651fcb388d7c8cd410ecf3298b015f3b0ed858bbeac86938121ac222df8ad814'
             '636da738dc9ee5769fdf24a7ded3e196338ca7819d1e2c69571b79151b5446ee'
             'd7fa7468ebf10e9bf9938159b17e603a264cc948c339995cfcb47dd34cad5162')
