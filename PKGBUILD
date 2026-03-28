@@ -1,7 +1,7 @@
 # Maintainer: Jesse R Codling <codling at umich dot edu>
 
 pkgname=aocl-libflame
-pkgver=5.2
+pkgver=5.2.2
 pkgrel=1
 pkgdesc="High-performance object-based library for DLA computations, AOCL branding"
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('lapack' 'lapacke')
 conflicts=('lapack' 'lapacke')
 _lapackver=3
 source=("$pkgname-$pkgver.tar.gz::https://github.com/amd/libflame/archive/$pkgver.tar.gz")
-sha256sums=('fb5fe5128f718050c9911443fcf7ed91b60538a40d57084ed0124bb91afabb9b')
+sha256sums=('f0200411c2ee0b2490810a837347bd706c878c8ca2c6511e572235be24ef64df')
 
 # specified generic -march causes build issues
 export CFLAGS="${CFLAGS/-march=x86-64/}"
