@@ -1,0 +1,32 @@
+diff --unified --recursive --text a/src/tools.py b/src/tools.py
+--- a/src/tools.py	2026-03-28 10:00:44.707397433 -0600
++++ b/src/tools.py	2026-03-28 10:23:26.288104845 -0600
+@@ -472,17 +472,17 @@
+             C_("search keyword", "document"),
+         ]
+     },
+-    # "markdown-preview": {
+-    #     "title": _("Markdown Previewer"),
+-    #     "category": _("Text"),
+-    #     "icon-name": "markdown-symbolic",
+-    #     "tooltip": _("Preview markdown code as you type"),
+-    #     "keywords": [
+-    #         C_("search keyword", "render"),
+-    #         C_("search keyword", "markup"),
+-    #         C_("search keyword", "md"),
+-    #     ]
+-    # },
++    "markdown-preview": {
++        "title": _("Markdown Previewer"),
++        "category": _("Text"),
++        "icon-name": "markdown-symbolic",
++        "tooltip": _("Preview markdown code as you type"),
++        "keywords": [
++            C_("search keyword", "render"),
++            C_("search keyword", "markup"),
++            C_("search keyword", "md"),
++        ]
++    },
+ 
+     # Graphics
+     "color-converter": {

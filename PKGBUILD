@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=devtoolbox
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Development tools at your fingertips"
 arch=('any')
 url="https://github.com/aleiepure/devtoolbox"
@@ -51,8 +51,17 @@ makedepends=(
   'git'
   'meson'
 )
-source=("git+https://github.com/aleiepure/devtoolbox#tag=v$pkgver")
-sha256sums=('75b7e07e6272dde3dfae7a47f03dd5b5ded9d7f146eb45ff3dabf857fae7dc6b')
+source=("git+https://github.com/aleiepure/devtoolbox#tag=v$pkgver"
+        'restore-markdown-preview.patch')
+sha256sums=('75b7e07e6272dde3dfae7a47f03dd5b5ded9d7f146eb45ff3dabf857fae7dc6b'
+            '9538b339d78b7282a15d40d02222747bc66f40f553a4b15cbebc7718d88b453d')
+
+prepare() {
+  cd "$pkgname"
+
+  # Restore Markdown Previewer, was only disabled due to Flatpak runtime issues on Fedora
+  patch -Np1 -i ../restore-markdown-preview.patch
+}
 
 build() {
   arch-meson "$pkgname" build
