@@ -1,4 +1,5 @@
-# Maintainer: boydaihungst <boydaihungst@gmail.com>
+# Maintainer: agony <27015 at riseup dot net>
+# Contributor: boydaihungst <boydaihungst@gmail.com>
 # Contributor: Kevin Del Castillo <quebin31@gmail.com>
 # Contributor: Huy Hoang <boydaihungst@gmail.com>
 # Contributor: éclairevoyant <hidden>
