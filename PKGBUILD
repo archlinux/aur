@@ -3,9 +3,10 @@
 pkgname=sdrconnect
 pkgver=1.0.8
 # got from https://www.sdrplay.com/software/install.sh
-build=de38254b9
+# or https://www.sdrplay.com/sdrconnect-linux/
+build=a4b8da76b
 build_rigcontrol=4a50e06
-pkgrel=1
+pkgrel=2
 pkgdesc="SDR receiver for SDRplay devices"
 arch=('aarch64' 'x86_64')
 url="http://www.sdrplay.com/sdrconnect/"
@@ -27,9 +28,9 @@ sha256sums=('8324e5e61e08e8fead2d0b5bf9f1926d3013c34f9f550ee41b182c4dcf0dd5a0'
             '212ed5b5f82c722aa9e4b86cb4248de9f29fdbdd3853dce9dbbd34d8d0486819'
             'b39086ca99ef4b2242ff9edef93258c99d478fd37a8ba64319843928e316c61b'
             '0ac0db2d91ebfe442a80e0f5fb153ec0f93864abf5ae15c6163d9c3abc103498')
-sha256sums_aarch64=('375c9272925eba22e626ad3209628abf54c15819d469329d10cfcb0ea87375ee'
+sha256sums_aarch64=('cfc14b05a932ddd143e6c959ff1bdf4b99f87823fce7a0b8dd11d418c582025b'
                     '351fbaa5ddb8a410992297c9f22faeeece1b8a6e1c43ad90870641faded06787')
-sha256sums_x86_64=('9a516460b3b358dbc4282fd34d921e37c97b6000b44b30e34af60a43ad97343e'
+sha256sums_x86_64=('0cb010929a2dd0ad5e604c3dcb9de63cfe3deac15f6faa3da3ec62a0eaf6b4db'
                    '7ef40446bac23559ed4346132ce098bee6bfd4541a38101f3538833b42b8378b')
 
 package() {
