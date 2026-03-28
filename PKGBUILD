@@ -27,43 +27,12 @@ conflicts=(
     'shiori-ebook'
     'shiori-ebook-bin'
 )
-source=("Shiori_${pkgver}_amd64.AppImage::${url}/releases/download/v${pkgver}/Shiori_${pkgver}_amd64.AppImage")
-sha256sums=('95dd0abea8d1ef15bb7ac269c2c0808a758ceab33190288ccc907abed37aef05')
+source=("Shiori_${pkgver}_linux_amd64.tar.gz::${url}/releases/download/v${pkgver}/Shiori_${pkgver}_linux_amd64.tar.gz")
+sha256sums=('8ef98e0ec50b92cbb2f8b5bd05d44d99034b8a7ebb26f38887c5956d3584b098')
 
 package() {
-    cd "${srcdir}"
+ bsdtar -xpf "${srcdir}/Shiori_${pkgver}_linux_amd64.tar.gz" -C "${pkgdir}"
 
-    install -Dm755 "Shiori_${pkgver}_amd64.AppImage" "${pkgdir}/opt/shiori/shiori.AppImage"
-
-    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/shiori" <<'EOF'
-#!/usr/bin/env bash
-exec /opt/shiori/shiori.AppImage "$@"
-EOF
-
-    APPIMAGE_EXTRACT_AND_RUN=1 ./"Shiori_${pkgver}_amd64.AppImage" --appimage-extract >/dev/null
-
-    if [[ -f squashfs-root/usr/share/icons/hicolor/128x128/apps/shiori.png ]]; then
-        install -Dm644 squashfs-root/usr/share/icons/hicolor/128x128/apps/shiori.png \
-            "${pkgdir}/usr/share/icons/hicolor/128x128/apps/shiori.png"
-    fi
-
-    if [[ -f squashfs-root/usr/share/icons/hicolor/32x32/apps/shiori.png ]]; then
-        install -Dm644 squashfs-root/usr/share/icons/hicolor/32x32/apps/shiori.png \
-            "${pkgdir}/usr/share/icons/hicolor/32x32/apps/shiori.png"
-    fi
-
-    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/shiori.desktop" <<'EOF'
-[Desktop Entry]
-Name=Shiori
-GenericName=eBook Library Manager
-Comment=Organize, read, and manage your eBook collection
-Exec=shiori
-Icon=shiori
-Type=Application
-Categories=Office;Viewer;Education;
-Keywords=ebook;reader;library;epub;pdf;mobi;
-Terminal=false
-StartupNotify=true
-MimeType=application/epub+zip;application/pdf;application/x-mobipocket-ebook;application/vnd.amazon.ebook;
-EOF
-}
+ chmod -R u=rwX,go=rX "${pkgdir}/usr"
+ [[ -f "${pkgdir}/usr/bin/shiori" ]] && chmod 755 "${pkgdir}/usr/bin/shiori"
+ }
