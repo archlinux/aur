@@ -4,8 +4,8 @@
 # Contributor: Yarema aka Knedlyk <yupadmin at gmail dot com>
 pkgname=vdr-channelscan
 pkgver=1.3.1
-_vdrapi=11
-pkgrel=9
+_vdrapi=12
+pkgrel=10
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="Channel scanner for VDR"
 url='https://github.com/ua0lnj/vdr-plugin-channelscan'
