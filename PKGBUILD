@@ -1,6 +1,6 @@
 # Maintainer: Your Name <your@email.com>
 pkgname=baywatch
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Lazy-loading reverse proxy daemon that spins up services on demand based on Host header"
 arch=('x86_64' 'aarch64')
@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 install=baywatch.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('ce52f4cf0e4b2686690215c827ef5a4a7138000f1491d8126bc34e85fe01ce4a')
+sha256sums=('7e4e2a6e4d438e0fad5be3eb9b70a05af9be6e494d2285b1d8d43b50a9fc6474')
 
 prepare() {
   cd "$pkgname-$pkgver"

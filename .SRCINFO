@@ -1,6 +1,6 @@
 pkgbase = baywatch
 	pkgdesc = Lazy-loading reverse proxy daemon that spins up services on demand based on Host header
-	pkgver = 0.1.1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/bjesus/baywatch
 	install = baywatch.install
@@ -9,7 +9,7 @@ pkgbase = baywatch
 	license = MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = baywatch-0.1.1.tar.gz::https://github.com/bjesus/baywatch/archive/v0.1.1.tar.gz
-	sha256sums = ce52f4cf0e4b2686690215c827ef5a4a7138000f1491d8126bc34e85fe01ce4a
+	source = baywatch-0.2.0.tar.gz::https://github.com/bjesus/baywatch/archive/v0.2.0.tar.gz
+	sha256sums = 7e4e2a6e4d438e0fad5be3eb9b70a05af9be6e494d2285b1d8d43b50a9fc6474
 
 pkgname = baywatch
