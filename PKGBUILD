@@ -44,18 +44,11 @@ sha256sums=('6eef42679b744cdcb50276f2d7cff0a51f7ddd632960e06bfbc3f6b9508ef615'
             'b00c398b63f15084c46f3963f62a45284ecd8dae9ba6f38a2c4af370bbfdab8d')
 # Not sure if compiling Unreal with LTO is legal? Lot's of different proprietary software goes into Unreal
 options=('!strip' 'staticlibs') # Package is smaller with "strip" but it takes a long time and generates many warnings
-# Change this to true or 1 for a potentially smaller package size
-## Note: We can't guarantee that enabling this won't affect cross-distro compatibility given that Epic provides their own toolchain specifically
-## based on the claim that it helps with compatibility...
-## Though, you could just distribute your game as an AppImage if you decide to publish on a game store... :p
-if [[ "${UE_USE_SYSTEM_CLANG}" != "true" && "${UE_USE_SYSTEM_CLANG}" != "false" ]]; then
-  export UE_USE_SYSTEM_CLANG=false
-fi
 
 # Default engine installation directory. Can be useful if you do not have a lot of space on the default storage drive
 # DON'T put a "/" at the start of the path
 ## Set this as an environment variable in /etc/makepkg.conf if you want predefined behavior
-if [ "${UE_INSTALL_DIR}" == "" ]; then
+if [[ "${UE_INSTALL_DIR}" == "" ]]; then
   export UE_INSTALL_DIR="opt/${pkgname}"
 fi
 
@@ -257,6 +250,64 @@ prepare() {
     exit 1
   fi
 
+  local _ue_commit="not-cloned"
+  local _ue_install_path="/${UE_INSTALL_DIR#/}"
+  local _ue_arch_label="${_ue_build_arch:-unknown}"
+  local _ue_arch_detail=""
+  local _ue_ddc_text="no"
+  local _ue_debug_text="no"
+  local _ue_default_logo_text="yes"
+  local _ue_target_platforms=()
+  local _ue_platforms_csv="none"
+
+  if [[ -d "${pkgname}/.git" ]]; then
+    _ue_commit="$(git -C "${pkgname}" rev-parse --short HEAD 2>/dev/null || echo unknown)"
+  fi
+
+  if [[ "${_ue_arch_label}" == "x64" ]]; then
+    if [[ -n "${_ue_detected_march}" ]]; then
+      _ue_arch_detail=" (${_ue_detected_march})"
+    elif [[ ${CFLAGS} =~ -march=([^[:space:]]+) ]]; then
+      _ue_arch_detail=" (${BASH_REMATCH[1]})"
+    else
+      _ue_arch_detail=" (x86_64)"
+    fi
+  elif [[ "${_ue_arch_label}" == "arm64" ]]; then
+    if [[ ${CFLAGS} =~ -march=([^[:space:]]+) ]]; then
+      _ue_arch_detail=" (${BASH_REMATCH[1]})"
+    else
+      _ue_arch_detail=" (aarch64)"
+    fi
+  fi
+
+  [[ "${UE_WITH_DDC}" == "true" ]]                  && _ue_ddc_text="yes"
+  [[ "${UE_WITH_FULL_DEBUG_INFO}" == "true" ]]      && _ue_debug_text="yes"
+  [[ "${UE_USE_DEFAULT_LOGO_AT_INSTALL}" == "0" ]]  && _ue_default_logo_text="no"
+
+  [[ "${UE_WITH_WIN64}" == "true" ]]    && _ue_target_platforms+=("Windows")
+  [[ "${UE_WITH_LINUX}" == "true" ]]    && _ue_target_platforms+=("Linux")
+  [[ "${UE_WITH_MAC}" == "true" ]]      && _ue_target_platforms+=("macOS")
+  [[ "${UE_WITH_TVOS}" == "true" ]]     && _ue_target_platforms+=("tvOS")
+  [[ "${UE_WITH_ANDROID}" == "true" ]]  && _ue_target_platforms+=("Android")
+  [[ "${UE_WITH_IOS}" == "true" ]]      && _ue_target_platforms+=("iOS")
+
+  if (( ${#_ue_target_platforms[@]} > 0 )); then
+    local IFS=", "
+    _ue_platforms_csv="${_ue_target_platforms[*]}"
+  fi
+
+  msg ''
+  msg "Unreal Engine ${pkgver} (commit ${_ue_commit}) build options summary:"
+  msg ''
+  msg "- End package installation path:            ${_ue_install_path}"
+  msg "- Target architecture build:                ${_ue_arch_label}${_ue_arch_detail}"
+  msg "- Integrate prebuilt shader cache:          ${_ue_ddc_text}"
+  msg "- Target platforms supported for export:    ${_ue_platforms_csv}"
+  msg "- Game configurations:                      ${UE_GAME_CONFIGURATIONS}"
+  msg "- Include full debug info:                  ${_ue_debug_text}"
+  msg "- Use default logo at install:              ${_ue_default_logo_text}"
+  msg ''
+
   # Download Unreal Engine source or update if the folder exists
   if [[ ! -d "${pkgname}" ]]
   then
@@ -297,6 +348,11 @@ prepare() {
     sed -i "1c\This file must have no extension so that GitDeps considers it a binary dependency - it will only be pulled by the Setup script if Linux is enabled. Please do not remove this file." "${srcdir}/${pkgname}/Engine/Source/ThirdParty/Linux/HaveLinuxDependencies"
   fi
   
+  # Ensure UVS registration is non-interactive during package builds.
+  if [[ -f Setup.sh ]]; then
+    sed -i 's#UnrealVersionSelector-Linux-Shipping -register > /dev/null &#UnrealVersionSelector-Linux-Shipping -register -unattended > /dev/null \&#' Setup.sh
+  fi
+
   ./Setup.sh
   cd "${srcdir}/${pkgname}/Engine/Build/BatchFiles/Linux/" || return
 
@@ -356,8 +412,8 @@ build() {
 
 package() {
   # Desktop entry
-  if [[ ! -f com.unrealengine.UE5Editor.desktop ]]; then
-    cp com.unrealengine.UE5Editor.desktop
+  if [[ ! -f com.unrealengine.UE5Editor.desktop && -f com.unrealengine.UE4Editor.desktop ]]; then
+    cp com.unrealengine.UE4Editor.desktop com.unrealengine.UE5Editor.desktop
   fi
   
   sed -i "7c\Exec=/usr/bin/unreal-engine %U" com.unrealengine.UE5Editor.desktop
@@ -397,7 +453,7 @@ package() {
   
   # Copy LocalBuilds to pkg...
   rsync -a "${srcdir}/${pkgname}/LocalBuilds/Engine/Linux/" "${pkgdir}/${UE_INSTALL_DIR}/"
-  if [ -f "${srcdir}/${pkgname}/LocalBuilds/Engine/Linux/Engine/Binaries/Linux/UnrealEditor" ]; then
+  if [[ -f "${srcdir}/${pkgname}/LocalBuilds/Engine/Linux/Engine/Binaries/Linux/UnrealEditor" ]]; then
     # Can never be too careful with recursive rm...
     rm -r "${srcdir}/${pkgname}/LocalBuilds"
   fi
@@ -414,11 +470,11 @@ package() {
   local _ubtsrcdir="${srcdir}/${pkgname}/Engine/Source/Programs/UnrealBuildTool"
   local _ubtpkgdir="${pkgdir}/${pkgname}/${UE_INSTALL_DIR}/Engine/Binaries/DotNET/UnrealBuildTool"
 
-  if [ -x "$(find "${pkgdir}/${UE_INSTALL_DIR}" -type f -iname 'xbuild')" ]; then
+  if [[ -x "$(find "${pkgdir}/${UE_INSTALL_DIR}" -type f -iname 'xbuild')" ]]; then
     find "${pkgdir}/${UE_INSTALL_DIR}" -type f -iname 'xbuild' -exec chmod +x "{}" \;
   fi
   
-  if [ -x "$(find "${pkgdir}/${UE_INSTALL_DIR}" -type f -iname 'mcs')" ]; then
+  if [[ -x "$(find "${pkgdir}/${UE_INSTALL_DIR}" -type f -iname 'mcs')" ]]; then
     find "${pkgdir}/${UE_INSTALL_DIR}" -type f -iname 'mcs' -exec chmod +x "{}" \;
   fi
   
