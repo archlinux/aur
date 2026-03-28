@@ -1,0 +1,4 @@
+[kiro-generator]
+source = "github"
+github = "kiro-generator/kiro-generator"
+use_latest_release = true

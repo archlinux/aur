@@ -1,0 +1,13 @@
+post_install() {
+  echo "Reloading systemd user daemon..."
+  systemctl --user daemon-reload 2>/dev/null || true
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo "Reloading systemd user daemon..."
+  systemctl --user daemon-reload 2>/dev/null || true
+}
