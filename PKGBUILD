@@ -4,7 +4,7 @@ pkgbase=python-griffecli
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Signatures for entire Python programs - cli"
 arch=('any')
@@ -19,7 +19,7 @@ makedepends=('python-hatchling'
 #              'python-colorama'
 #             )
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('cd5c90dd1477d40b00f3f7400b5ece7e')
+md5sums=('d3080101c6778aa89be54bd917c54197')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
