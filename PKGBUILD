@@ -1,6 +1,6 @@
 pkgname=hath-rust
 pkgdesc="The unofficial Hentai@Home client written in Rust"
-pkgver=1.14.2
+pkgver=1.15.0
 pkgrel=1
 arch=("x86_64")
 url="https://github.com/james58899/hath-rust"
@@ -10,7 +10,7 @@ depends=("libgcc" "glibc" "jemalloc")
 makedepends=("cargo" "git")
 source=("git+$url.git#tag=v$pkgver"
         "hath-rust.service")
-sha256sums=('337033aba41e9a47cac81fc8ed79fb568295b1a592b5985d5450540d37405be7'
+sha256sums=('bbf78b03c602e8d75cd270a49cddb184613a16f53ffc12cda1896fe309ed2f38'
             '8e918cb227da548a9c4b184c487f4cf416b7d6fe5e191e7fc34985acb8044275')
 
 prepare() {
