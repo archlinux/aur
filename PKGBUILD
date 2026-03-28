@@ -33,7 +33,7 @@
 
 pkgname=ttf-ms-win11-fod-wu
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 # Current Windows source build used for Windows Update metadata resolution.
 _win_build=10.0.26100.1
 _win_branch=ge_release
@@ -46,6 +46,11 @@ conflicts=(ttf-ms-win11-fod ttf-ms-win11-fod-auto)
 makedepends=(p7zip python)
 
 . ./fontdata.sh
+
+# These FoD fonts are already shipped by ttf-ms-win11-base.
+_base_package_overlaps=(
+  msgothic.ttc
+)
 
 source=(resolver.py wu.py fonts.py fontdata.sh)
 sha256sums=(
@@ -185,10 +190,19 @@ prepare() {
 package() {
   local _font_dir
   local _font
+  local _overlap_font
+  local -A _base_package_overlap_lookup=()
 
   _font_dir="$(_font_dir_path)"
 
+  for _overlap_font in "${_base_package_overlaps[@]}"; do
+    _base_package_overlap_lookup["$_overlap_font"]=1
+  done
+
   for _font in "${_fod_all_fonts[@]}"; do
+    if [[ -n ${_base_package_overlap_lookup[$_font]:-} ]]; then
+      continue
+    fi
     install -Dm644 "$_font_dir/$_font" -t "$pkgdir/usr/share/fonts/TTF"
   done
 }

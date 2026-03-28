@@ -1,7 +1,7 @@
 pkgbase = ttf-ms-win11-fod-wu
 	pkgdesc = Microsoft Windows 11 Feature on Demand TrueType fonts
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://learn.microsoft.com/en-us/typography/fonts/windows_11_font_list#fonts-included-in-feature-on-demand-fod-packages
 	arch = any
 	license = custom
