@@ -6,7 +6,6 @@ pkgbase = ron-mod-manager-bin
 	arch = x86_64
 	license = MIT
 	depends = cairo
-	depends = desktop-file-utils
 	depends = gdk-pixbuf2
 	depends = glib2
 	depends = gtk3
@@ -17,6 +16,8 @@ pkgbase = ron-mod-manager-bin
 	provides = ron-mod-manager
 	conflicts = ron-mod-manager
 	source = ron-mod-manager-bin-0.2.0.deb::https://github.com/EvilNick2/ron-mod-manager/releases/download/v0.2.0/RoN.Mod.Manager_0.2.0_amd64.deb
-	sha256sums = SKIP
+	source = LICENSE::https://raw.githubusercontent.com/EvilNick2/ron-mod-manager/main/LICENSE
+	sha256sums = 817c3f7a4cd9dc2b87064d1adc42a20b1491adf1a93e27ac01979794f9dddd13
+	sha256sums = 3f808d84507dec57b4fc8f9dafeb9f9af97f9d1d9b33ffaa517134791999ead6
 
 pkgname = ron-mod-manager-bin
