@@ -1,7 +1,7 @@
-pkgbase = xairedit
+pkgbase = xairedit-bin
 	pkgdesc = Remote control program for Behringer X-AIR mixers
 	pkgver = 1.8.1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://www.behringer.com/series.html?category=R-BEHRINGER-XAIRSERIES
 	arch = x86_64
 	arch = armv7h
@@ -26,4 +26,4 @@ pkgbase = xairedit
 	sha512sums_armv7h = cd5f2b3a6bb25416724a4a2418d0407ce7914115ebcf10c218e66bc7560f584d3e467d1bf1214a4fb5ac2fb301f8cf3ce7db638fde4a675255266d73798f508e
 	b2sums_armv7h = 0065d4a6306fde3a854bb213ce427eae035dd89b23cb065ba0e1f801feaf8fc952c048cc0b4823e4604787a59381fe9d5d4b7f89404f7bd2599e92975fd9a138
 
-pkgname = xairedit
+pkgname = xairedit-bin

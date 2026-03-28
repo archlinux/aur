@@ -1,11 +1,12 @@
+# Maintainer: Sokoloft <sokoloft nospamat protonmail nospamdot com>
 # Maintainer: olivierlm <mail nospamat olivierlemoal nospamdot fr>
 # Maintainer: redtide <redtid3 nospamat gmail nospamdot com>
-# Maintainer: Sokoloft <sokoloft nospamat protonmail nospamdot com>
 # Contributor Anders Thomsen <mail nospamat andersthomsen nospamdot dk>
 
-pkgname=xairedit
+pkgname=xairedit-bin
+_pkgname="${pkgname%-bin}" # Removes trailing "-bin"
 pkgver=1.8.1
-pkgrel=3
+pkgrel=1
 pkgdesc="Remote control program for Behringer X-AIR mixers"
 arch=("x86_64" "armv7h")
 url="https://www.behringer.com/series.html?category=R-BEHRINGER-XAIRSERIES"
@@ -14,7 +15,7 @@ makedepends=("gendesk")
 depends=("alsa-lib" "freetype2" "curl" "libglvnd" "gcc-libs" "glibc")
 
 source=('EULA_2012-09-12.pdf'
-        'xairedit.png::https://raw.githubusercontent.com/flathub/com.behringer.XAirEdit/refs/heads/master/com.behringer.XAirEdit.png')
+        "$_pkgname.png::https://raw.githubusercontent.com/flathub/com.behringer.XAirEdit/refs/heads/master/com.behringer.XAirEdit.png")
 source_x86_64=("X-AIR-Edit_LINUX_$pkgver.tar.gz::https://cdn.mediavalet.com/aunsw/musictribe/VX4UkGFjQ0a1DH2Q8zg3sg/_KJ6tGIG7kGVqPxP-OsnLQ/Original/X-AIR-Edit_LINUX_$pkgver.tar.gz")
 source_armv7h=("X-AIR-Edit_RASPI_$pkgver.tar.gz::https://cdn.mediavalet.com/aunsw/musictribe/VX4UkGFjQ0a1DH2Q8zg3sg/_KJ6tGIG7kGVqPxP-OsnLQ/Original/X-AIR-Edit_RASPI_$pkgver.tar.gz")
 
@@ -29,12 +30,12 @@ b2sums_armv7h=('0065d4a6306fde3a854bb213ce427eae035dd89b23cb065ba0e1f801feaf8fc9
 
 
 prepare() {
-	gendesk -n --pkgname "xairedit" --pkgdesc "${pkgdesc}" --exec="xairedit" --name "X-AIR Edit" --icon "${pkgname}.png" --categories "Audio;Mixer;AudioVideo;" --terminal=false --custom="Keywords=Mixer;"
+	gendesk -n --pkgname "$_pkgname" --pkgdesc "$pkgdesc" --exec="$_pkgname" --name "X-AIR Edit" --icon "$_pkgname.png" --categories "AudioVideo;Audio" --terminal=false --custom="Keywords=Mixer;Behringer;"
 }
 
 package() {
-    install -Dm755 "X-AIR-Edit" "$pkgdir/usr/bin/xairedit"
-    install -Dm644 "EULA_2012-09-12.pdf" "$pkgdir/usr/share/licenses/$pkgname/license.pdf"
-    install -Dm644 "xairedit.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "xairedit.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm755 "X-AIR-Edit" "$pkgdir/usr/bin/$_pkgname"
+    install -Dm644 "EULA_2012-09-12.pdf" "$pkgdir/usr/share/licenses/$_pkgname/license.pdf"
+    install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+    install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 }
