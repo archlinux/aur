@@ -1,6 +1,6 @@
 pkgbase = ocrs
 	pkgdesc = a modern OCR engine written in Rust
-	pkgver = 0.12.1
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/robertknight/ocrs
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = ocrs
 	makedepends = cargo
 	depends = gcc-libs
 	depends = glibc
-	source = https://github.com/robertknight/ocrs/archive/ocrs-cli-v0.12.1/ocrs-ocrs-cli-v0.12.1.tar.gz
-	sha256sums = 6bcc16057067056d6c91ce2733bef0c9d8725d0424c6e154709909e677a71ec1
+	source = https://github.com/robertknight/ocrs/archive/ocrs-cli-v0.12.2/ocrs-ocrs-cli-v0.12.2.tar.gz
+	sha256sums = 6c78eb060c4aeaf71cd5c71421d2940f74fa374e379d3061553639be5ca250fc
 
 pkgname = ocrs
