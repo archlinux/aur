@@ -3,16 +3,29 @@
 _pkgname=docling-ibm-models
 _pipname="${_pkgname//-/_}"
 pkgname="python-${_pkgname}"
-pkgver=3.11.0
+pkgver=3.13.0
 pkgrel=1
 pkgdesc="A python library to define and validate data types in Docling."
 arch=('any')
 url="https://github.com/docling-project/docling-ibm-models"
 license=('MIT')
-depends=(python-pytorch python-torchvision python-jsonlines python-pillow python-tqdm python-pydantic python-huggingface-hub python-safetensors python-docling-core python-transformers python-numpy python-rtree python-accelerate)
+depends=(python-torchvision
+         python-jsonlines
+         python-docling-core
+         python-transformers
+         python-rtree
+         python-accelerate
+         # python-pytorch # already required by python-torchvision/python-accelerate
+         # python-pillow # already required by python-torchvision/python-docling-core
+         # python-tqdm # already required by python-transformers
+         # python-pydantic # already required by python-docling-core
+         # python-huggingface-hub # already required by python-transformers/python-accelerate
+         # python-safetensors # already required by python-transformers/python-accelerate
+         # python-numpy # already required by python-transformers/python-torchvision/python-accelerate
+)
 makedepends=('python-build' 'python-installer' 'python-pdm-backend' 'python-wheel' 'python-hatchling')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/docling-project/docling-ibm-models/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4450e69017a0829048bef1dd569e06d8a7a194abdfc1d46b4f3ab4ee92e76d02')
+sha256sums=('2c6cd63aed8175e4c1cd616069742b523e813228c8c050ab870e58b4d177ce8f')
 
 build() {
     cd "${_pkgname}-${pkgver}"
@@ -21,5 +34,5 @@ build() {
 
 package() {
     cd "${_pkgname}-${pkgver}"
-    python -m installer --destdir="${pkgdir}" dist/*.whl
+    python -m installer --destdir="${pkgdir}" --compile-bytecode 2 dist/*.whl
 }
