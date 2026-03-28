@@ -1,6 +1,6 @@
 pkgbase = python-sphinx-togglebutton
 	pkgdesc = Toggle page content and collapse admonitions in Sphinx
-	pkgver = 0.4.4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = https://sphinx-togglebutton.readthedocs.io
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-sphinx-togglebutton
 	checkdepends = python-nose
 	checkdepends = python-sphinx
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/s/sphinx_togglebutton/sphinx_togglebutton-0.4.4.tar.gz
-	md5sums = 86fe9ac8d8ff13b9a5dfdc6b5a58630f
+	source = https://files.pythonhosted.org/packages/source/s/sphinx_togglebutton/sphinx_togglebutton-0.4.5.tar.gz
+	md5sums = 9f2ebd99cc8c2d71f5cc7918ddb75b20
 
 pkgname = python-sphinx-togglebutton
 	depends = python-sphinx
