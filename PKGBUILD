@@ -5,8 +5,8 @@ reponame="BStyle"
 pkgname="bstyle-qml-theme"
 pkgdesc="Style for QML applications"
 license=("GPL-3.0-only")
-pkgver="0.0.2"
-pkgrel=2
+pkgver="0.0.3"
+pkgrel=1
 arch=("any")
 depends=("qt6-declarative")
 makedepends=("cmake" "ninja")
@@ -24,9 +24,9 @@ build() {
 
 package() {
     cd "$reponame-$pkgver" || exit
+
     install -d "$pkgdir/usr/lib/qt6/qml/BStyle"
     cp -r "./cmake-build-release/qml/BStyle" "$pkgdir/usr/lib/qt6/qml"
     install -Dm644 "./cmake-build-release/libbstyle.so" "$pkgdir/usr/lib/libbstyle.so"
-
     install -Dm644 "./LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
