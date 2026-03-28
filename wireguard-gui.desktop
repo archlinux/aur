@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=WireGuard GUI
+GenericName=VPN Client
+Comment=Graphical interface for managing WireGuard VPN connections
+Exec=wireguard-gui
+Icon=wireguard-gui
+Terminal=false
+Categories=Network;
+Keywords=wireguard;vpn;tunnel;network;
+StartupWMClass=wireguard-gui
