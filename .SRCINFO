@@ -11,6 +11,6 @@ pkgbase = clippy-rs-bin
 	provides = clippy-rs
 	conflicts = clippy-rs
 	source = clippy-rs-bin-1.5.11.deb::https://github.com/0-don/clippy/releases/download/v1.5.11/clippy_1.5.11_amd64.deb
-	sha256sums = ea76ad147d5cff0bf61b1342e90e2fe7b29892e4e0f2644ea6ad48593ae80116
+	sha256sums = 30592a45c0ca5cad3c19e5e045c8462c4c7b2eae002432787192539dc18d0bf3
 
 pkgname = clippy-rs-bin
