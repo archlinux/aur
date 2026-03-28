@@ -15,7 +15,7 @@ _l10n_commit=e4f894a4eef5c492c83a860a4ff16c8ed361445c
 _moz_build_id=20260106170501
 _lwrelver=100
 pkgver="${_ffsrcver}.${_lwrelver}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Firefox ESR fork with increased security, privacy, and customizability"
 url="https://codeberg.org/konform-browser/source"
 if [[ "$_ffbuild" == "0" ]]; then
