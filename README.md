@@ -1,3 +1,15 @@
+# Javier Tia
+
+Senior Systems Engineer - Linux Kernel · Security · Yocto · CI/CD
+
+🌍 Costa Rica - Remote
+📬 javier@jetm.me
+🔗 [LinkedIn](https://cr.linkedin.com/in/javiertia) · [Blog](https://jetm.github.io/blog)
+
+**Currently available for new opportunities** — freelance or full-time, fully remote.
+
+---
+
 # mediatek-mt7927-dkms
 
 DKMS driver for MediaTek MT7927 (Filogic 380) - WiFi 7 + Bluetooth 5.4 on Linux.
