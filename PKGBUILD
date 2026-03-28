@@ -1,4 +1,4 @@
-# Maintainer: aurrrrr
+# Maintainer: aurrrrrr <no email>
 
 # somewhat lazily created, the dependencies might need some more checking
 
