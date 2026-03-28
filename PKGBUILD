@@ -2,7 +2,7 @@
 
 pkgname=suricata-exporter
 pkgver=0.5.0
-pkgrel=1
+pkgrel=4
 pkgdesc="A Prometheus Exporter for Suricata using the unix socket"
 arch=('x86_64' 'aarch64')
 url="https://github.com/corelight/suricata_exporter"
@@ -18,7 +18,10 @@ sha256sums=('acb43e6cc199efd937527b5bfb701e1470bde576ea92c98d7ee203a0b94ca158'
 build() {
   cd "${srcdir}/suricata_exporter-${pkgver}"
   export CGO_ENABLED=0
+  export GOPROXY="https://mirrors.aliyun.com/goproxy,https://proxy.golang.org,direct"
+  export GOSUMDB="sum.golang.org"
   export GOFLAGS="-trimpath -mod=readonly -modcacherw"
+  export GODEBUG=netdns=cgo
   go build \
     -ldflags "-s -w -X main.version=v${pkgver}" \
     -o suricata_exporter \

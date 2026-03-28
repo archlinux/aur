@@ -1,7 +1,7 @@
 pkgbase = suricata-exporter
 	pkgdesc = A Prometheus Exporter for Suricata using the unix socket
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 4
 	url = https://github.com/corelight/suricata_exporter
 	arch = x86_64
 	arch = aarch64
