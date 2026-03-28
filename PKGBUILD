@@ -1,6 +1,6 @@
 # Maintainer: Ben <your-email@example.com>
 pkgname=squid-music-git
-pkgver=0.1.0
+pkgver=r6.b6aa0ff
 pkgrel=1
 pkgdesc="A CMUS-inspired terminal frontend for YouTube Music"
 arch=('any')
@@ -17,6 +17,7 @@ depends=(
     'python-ytmusicapi'  # AUR
     'python-mpv'         # AUR
     'yt-dlp'
+    'deno'
     'mpv'
 )
 makedepends=(
@@ -31,8 +32,7 @@ source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' || \
+    cd "$srcdir/$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
