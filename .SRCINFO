@@ -1,12 +1,12 @@
 pkgbase = elan-lean
 	pkgdesc = A Lean version manager
-	pkgver = 4.1.2
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://github.com/leanprover/elan
 	install = post.install
 	arch = x86_64
 	license = MIT
-	license = Apache
+	license = Apache-2.0
 	makedepends = cargo
 	depends = curl
 	depends = xz
@@ -17,7 +17,7 @@ pkgbase = elan-lean
 	conflicts = lean4
 	conflicts = lean-community
 	options = !lto
-	source = elan-4.1.2.tar.gz::https://github.com/leanprover/elan/archive/v4.1.2.tar.gz
-	sha512sums = 4e0433539be2600db0fc075364db72fed717a6c9d0773613c0102eb00cdf0441a2f16db902765f825b2f58a565a69be7dcef74d7bb75018c046063d9724e8bf8
+	source = elan-4.2.1.tar.gz::https://github.com/leanprover/elan/archive/v4.2.1.tar.gz
+	sha512sums = 14180a84d3775518cc3e8e4205363d5207f15ea02bcfc6c51f5724bfa95f7c86d1f2fd8187cd24006012c9421e68556257b0a540238186228ae49e19d5812d9c
 
 pkgname = elan-lean
