@@ -16,7 +16,7 @@ _arch=i686
 license=('MPL' 'GPL' 'LGPL')
 provides=('bin32-filezilla')
 conflicts=('bin32-filezilla')
-url="https://www.mozilla.org/en-US/firefox/"
+url="https://filezilla-project.org/"
 depends=('bash' 'lib32-cairo' 'lib32-fontconfig' 'lib32-freetype2'
 	 'lib32-gdk-pixbuf2' 'lib32-glib2' 'lib32-glibc' 'lib32-gtk3' 'lib32-libx11' 'lib32-libxcb'
 	'lib32-libxcomposite' 'lib32-libxcursor' 'lib32-libxdamage' 'lib32-libxext' 'lib32-libxfixes' 'lib32-libxi'
