@@ -1,0 +1,16 @@
+pkgbase = python-nbtlib
+	pkgdesc = A python library to read and edit nbt data
+	pkgver = 2.0.4
+	pkgrel = 1
+	url = https://github.com/vberlier/nbtlib
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
+	depends = python
+	depends = python-numpy
+	source = python-nbtlib-2.0.4.tar.gz::https://github.com/vberlier/nbtlib/archive/refs/tags/v2.0.4.tar.gz
+	sha256sums = eca23db8f63a3b5cf0d65a3eeaa2d516c5ceb4f44549ea8433b436c4c05e2a01
+
+pkgname = python-nbtlib
