@@ -1,6 +1,6 @@
 pkgbase = gryph-bin
 	pkgdesc = The AI coding agent audit trail tool
-	pkgver = 0.4.0
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/safedep/gryph
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = gryph-bin
 	license = Apache-2.0
 	provides = gryph
 	conflicts = gryph
-	source_x86_64 = gryph-x86_64-0.4.0.tgz::https://github.com/safedep/gryph/releases/download/v0.4.0/gryph_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 63e3107dfd8231dd3af5b421ee45f90c8f31f8a471554c75fd8960ce52fbc5f8
-	source_i686 = gryph-i686-0.4.0.tgz::https://github.com/safedep/gryph/releases/download/v0.4.0/gryph_Linux_i386.tar.gz
-	sha256sums_i686 = 21850842099daef1f7a130d6f5c4a45099c87ad501dc77da3b882c366cbfb2f9
-	source_aarch64 = gryph-aarch64-0.4.0.tgz::https://github.com/safedep/gryph/releases/download/v0.4.0/gryph_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 0613cf4df15211c52fc4a744b423b8ea4cd4edc433f42d10f4959c04e831334d
+	source_x86_64 = gryph-x86_64-0.5.0.tgz::https://github.com/safedep/gryph/releases/download/v0.5.0/gryph_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 3001d72000ba275324063953b2e57f90efba99531b857ad57a15b418fa82000e
+	source_i686 = gryph-i686-0.5.0.tgz::https://github.com/safedep/gryph/releases/download/v0.5.0/gryph_Linux_i386.tar.gz
+	sha256sums_i686 = 45db9b9b45998781bd52a861ca630fa48b95811ed060406b52ce6db6f19517a0
+	source_aarch64 = gryph-aarch64-0.5.0.tgz::https://github.com/safedep/gryph/releases/download/v0.5.0/gryph_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 1f0815caadd2cdb1f0f7ff4448b461eac6014558ad0f85158efbeb267bdbb398
 
 pkgname = gryph-bin
