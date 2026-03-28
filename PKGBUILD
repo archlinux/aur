@@ -1,17 +1,19 @@
 # Maintainer:  shinka <shinnkka1@gmail.com>
-# Contributor:  Rinne <aur@rinne.in>
+# Contributor:  Rinne <aur@rinne.in> PaloMiku <palomiku@outlook.com>
 
 pkgname=animeko-appimage-beta
 _pkgname=animeko
-pkgver="5.2.0"
-_pkgver=$(sed -E 's/(alpha|beta)/-\1/' <<<"$pkgver")
+pkgver="5.4.0beta05"
+# normalize alpha/beta into dash-separated style for upstream URL path
+# 5.4.0beta05 -> 5.4.0-beta05, 5.4.0-beta05 -> 5.4.0-beta05
+_pkgver=$(sed -E 's/(alpha|beta)/-\1/g; s/-{2,}/-/g' <<<"$pkgver")
 pkgrel=1
 pkgdesc='集找番、追番、看番的一站式弹幕追番平台'
 arch=('x86_64')
 url='https://github.com/open-ani/animeko/'
 license=('AGPL-3.0-or-later')
-source_x86_64=("https://d.myani.org/v${_pkgver}/ani-${_pkgver}-linux-${CARCH}.appimage")
-sha512sums_x86_64=('9c57221d60ae524e7db87f0c84fc8bd069d0de0f7b7cc6a140806f017e96f7ff0fe820be756fea3bdd788fbfe19c10e32e853c7afdeab35132c8bbf80b607910')
+source_x86_64=("https://github.com/open-ani/animeko/releases/download/v5.4.0-beta05/ani-5.4.0-beta05-linux-x86_64.appimage")
+sha512sums_x86_64=('864717ea1dd08176657dd3dec8d2c72aa130aaf550e09de55c38574db9d94e2208cdf859b73876a860e2513449e3de069cb93915a0bd61f7bdd0b527382d64db')
 depends=('vlc-plugin-ffmpeg' 'vlc-plugin-dvb' 'vlc-plugin-pulse' 'gvfs')
 conflicts=('animeko')
 provides=('animeko')
