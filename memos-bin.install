@@ -1,0 +1,4 @@
+post_remove() {
+  echo "Note: system user 'memos' and /var/lib/memos were not removed."
+  echo "Remove manually if no longer needed: userdel memos && rm -rf /var/lib/memos"
+}
