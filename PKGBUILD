@@ -7,7 +7,7 @@ _name="matlabengine"
 pkgname="python-${_name}"
 pkgver=25.2.2
 pkgrel=3
-declare -A _releases=(
+declare -Ag _releases=(
   ["${pkgver%%.*}.1"]="R20${pkgver%%.*}a"
   ["${pkgver%%.*}.2"]="R20${pkgver%%.*}b"
 )
@@ -48,14 +48,13 @@ prepare() {
   local python_version="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
 
   cd "${srcdir}/${_pkgsrc}"
-  sed -e "s/3.12/${python_version}/g" \
+  sed -e "s|3.12|${python_version}|g" \
       -e "s|/usr/local|${MAKEPKG_MATLAB_PREFIX}|g" \
       -i 'setup.py'
 }
 
 build() {
-  # local matlabroot="$(matlab -nodisplay -nodesktop -nojvm -batch "disp(matlabroot)"
-  # export LD_LIBRARY_PATH="${matlabroot}/bin/glnxa64:${LD_LIBRARY_PATH}"
+  # export LD_LIBRARY_PATH="${MAKEPKG_MATLAB_PREFIX}/MATLAB/${_release}/bin/glnxa64:${LD_LIBRARY_PATH}"
 
   cd "${srcdir}/${_pkgsrc}"
   python -m build --wheel --no-isolation
