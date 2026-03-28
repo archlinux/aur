@@ -4,7 +4,7 @@
 _reponame=refpolicy
 _policyname=${_reponame}-arch-git
 pkgname=selinux-${_policyname}
-pkgver=20250923
+pkgver=RELEASE_2_20260312.r2.g3e316c1c5
 pkgrel=1
 pkgdesc="Modular SELinux reference policy including headers and docs with Arch Linux patches (latest commit)"
 arch=('any')
@@ -19,9 +19,10 @@ source=("git+https://github.com/SELinuxProject/${_reponame}"
         'config')
 
 prepare() {
-    cd ${_reponame}
-    # Add custom patches if needed
+    cd "${srcdir}/${_reponame}"
+
     for src in "${source[@]}"; do
+[1;129A    # Add custom patches if needed
             src="${src%%::*}"
             src="${src##*/}"
             [[ $src = *.patch ]] || continue
@@ -31,12 +32,13 @@ prepare() {
 }
 
 pkgver() {
-    cd ${_reponame}
+    cd "${srcdir}/${_reponame}"
+
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd ${_reponame}
+    cd "${srcdir}/${_reponame}"
 
     # Ensure the environment is clean
     make bare
@@ -51,7 +53,7 @@ build() {
 
 package() {
     cd "${srcdir}/${_reponame}"
-    cd ${_reponame}
+
     make all \
         DESTDIR="${pkgdir}" NAME="${_policyname}" DISTRO=arch SYSTEMD=y UBAC=n
     make install \
