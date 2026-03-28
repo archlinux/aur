@@ -1,7 +1,7 @@
 # Maintainer: SteamedFish <steamedfish@hotmail.com>
 pkgname=tmuxai
 pkgver=2.1.2
-pkgrel=1
+pkgrel=7
 pkgdesc='AI-powered, non-intrusive terminal assistant for tmux'
 arch=('x86_64' 'aarch64')
 url='https://tmuxai.dev/'
@@ -18,11 +18,15 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+    export GODEBUG=netdns=cgo
+    # Use Aliyun mirror primarily to avoid IPv6 timeout
+    export GOPROXY="https://mirrors.aliyun.com/goproxy,https://proxy.golang.org,direct"
     go build -o "$pkgname" .
 }
 
 check() {
     cd "$pkgname-$pkgver"
+    export GOPROXY="https://mirrors.aliyun.com/goproxy,https://proxy.golang.org,direct"
     go test ./...
 }
 
