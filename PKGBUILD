@@ -4,7 +4,7 @@
 # Contributor: sparklespdx <josh.farwell@gmail.com>
 pkgname=gpu-burn-git
 pkgver=r90.671f4be
-pkgrel=1
+pkgrel=2
 pkgdesc="Multi-GPU CUDA stress test"
 arch=('x86_64')
 url="https://github.com/wilicc/gpu-burn"
@@ -33,7 +33,7 @@ prepare () {
 
 build () {
   cd "${pkgname%-git}"
-  CUDAPATH=/opt/cuda make
+  CUDAPATH=/opt/cuda make HOST_COMPILER="$NVCC_CCBIN"
 }
 
 package() {
