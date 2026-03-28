@@ -1,7 +1,7 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 
 pkgname=chessx
-pkgver=1.6.8
+pkgver=1.6.10
 pkgrel=1
 pkgdesc="Cross-platform chess database and PGN viewer"
 arch=(x86_64)
@@ -11,7 +11,7 @@ depends=(qt5-multimedia)
 makedepends=(qt5-tools qt5-svg qt5-speech)
 conflicts=($pkgname-git)
 source=("https://sourceforge.net/projects/$pkgname/files/$pkgname/$pkgver/$pkgname-$pkgver.tgz")
-sha256sums=('14e498bbe0e5cbc12efa38920c6b978c79110e6a216a1708cac678788292df67')
+sha256sums=('77c6ef3f89d8c3ea137a5f4bb0dcd83b261046facbde06eaee223437ad1c732f')
 
 build() {
   cd $pkgname-master
