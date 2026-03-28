@@ -4,6 +4,7 @@ pkgver=146.0.6
 _cef_version='146.0.6+g68649e2+chromium-146.0.7680.154'
 pkgrel=1
 provides=('jellyfin-desktop-libcef')
+replaces=('jellyfin-desktop-cef-libcef-bin')
 license=('BSD-3-Clause')
 pkgdesc="CEF SDK for jellyfin-desktop"
 arch=('x86_64')

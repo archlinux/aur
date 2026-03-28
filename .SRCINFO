@@ -19,6 +19,7 @@ pkgbase = jellyfin-desktop-libcef-bin
 	depends = nspr
 	depends = pango
 	provides = jellyfin-desktop-libcef
+	replaces = jellyfin-desktop-cef-libcef-bin
 	options = !debug
 	options = !strip
 	source = https://cef-builds.spotifycdn.com/cef_binary_146.0.6+g68649e2+chromium-146.0.7680.154_linux64_minimal.tar.bz2
