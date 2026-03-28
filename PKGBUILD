@@ -4,7 +4,7 @@
 
 pkgname=claude-desktop-bin
 pkgver=1.1.9310
-pkgrel=1
+pkgrel=3
 pkgdesc="Claude Desktop - Linux (unofficial, from official binary)"
 arch=('x86_64')
 url="https://github.com/patrickjaja/claude-desktop-bin"
@@ -27,8 +27,8 @@ optdepends=('nodejs: System Node.js for MCP extensions that require specific ver
             'socat: Cowork socket health check in launcher (fallback: age-based check)')
 provides=('claude-desktop')
 conflicts=('claude-desktop')
-source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.9310/claude-desktop-1.1.9310-linux.tar.gz")
-sha256sums_x86_64=('88009a461b23be9750a0a712ded2c8dec506b5d656a21c5e68da3784b21f20d2')
+source_x86_64=("claude-desktop-${pkgver}-${pkgrel}-linux.tar.gz::https://github.com/patrickjaja/claude-desktop-bin/releases/download/v1.1.9310-3/claude-desktop-1.1.9310-linux.tar.gz")
+sha256sums_x86_64=('61714d7907b4f77c6c51ffeae0b9b6843121efa7855839fb3778f53b3c5b719c')
 options=('!strip')
 
 package() {
