@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at proton dot me>
 pkgname=devtoolbox
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Development tools at your fingertips"
 arch=('any')
@@ -41,6 +41,7 @@ depends=(
   'python-ruamel-yaml'
   'python-sqlparse'
   'python-textstat'
+  'python-tomli-w'
   'python-tzlocal'
   'python-uuid6'
   'webkitgtk-6.0'
@@ -51,7 +52,7 @@ makedepends=(
   'meson'
 )
 source=("git+https://github.com/aleiepure/devtoolbox#tag=v$pkgver")
-sha256sums=('4d9c6ae3a54aaa26279491841db11e9f4e38a80c51ff28981812fe64b52e541f')
+sha256sums=('75b7e07e6272dde3dfae7a47f03dd5b5ded9d7f146eb45ff3dabf857fae7dc6b')
 
 build() {
   arch-meson "$pkgname" build
@@ -59,7 +60,7 @@ build() {
 }
 
 check() {
-  meson test -C build --no-rebuild --print-errorlogs || :
+  meson test -C build --no-rebuild --print-errorlogs
 }
 
 package() {
