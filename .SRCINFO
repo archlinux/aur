@@ -1,0 +1,19 @@
+pkgbase = astrojumps-git
+	pkgdesc = A keyboard-driven space platformer built with C and raylib
+	pkgver = r1.0
+	pkgrel = 1
+	url = https://github.com/braniik/astrojumps
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = raylib
+	provides = astrojumps
+	conflicts = astrojumps
+	source = astrojumps-git::git+https://github.com/braniik/astrojumps.git
+	source = astrojumps.sh
+	source = astrojumps.desktop
+	sha256sums = SKIP
+	sha256sums = bc7fbc3ea19f92bd5cd172dd46353802fab11716597583177efccc9409090fd3
+	sha256sums = 603cf1f274b12f1a6cf476a7396a630bbce35c74d1a8f393e5b8e2539a8efc22
+
+pkgname = astrojumps-git

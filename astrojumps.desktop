@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Astrojumps
+Comment=A keyboard-driven space platformer
+Exec=astrojumps
+Icon=astrojumps
+Terminal=false
+Type=Application
+Categories=Game;ArcadeGame;
+Keywords=platformer;space;arcade;
