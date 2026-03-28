@@ -1,4 +1,4 @@
-# Contributor: Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
+# Maintainer:  Vitalii Kuzhdin <vitaliikuzhdin@gmail.com>
 # Contributor: Jon Wiersma (archaur at jonw dot org)
 
 _name="segymat"
