@@ -1,7 +1,7 @@
 # Maintainer: Guoyi Zhang <guoyizhang at malacology dot net>
 
 _pkgname=ISOcodes
-_pkgver=2025.05.18
+_pkgver=2026.03.28
 pkgname=r-${_pkgname,,}
 pkgver=${_pkgver//-/.}
 pkgrel=1
@@ -13,8 +13,8 @@ depends=(
   r
 )
 source=("https://cran.r-project.org/src/contrib/${_pkgname}_${_pkgver}.tar.gz")
-md5sums=('0065ef91837c8da6aaec96d363becf6b')
-b2sums=('4efb547286fece74b89587221d27a364ec2e5ec45df8a2c2781a1889f60eff7dd6917dbd5c6329ef154c55dec9120c0b28562396feb83b0a592f153b363622cc')
+md5sums=('56755f122c49f4b08937996662875dff')
+b2sums=('01ded0aa6830a7ee76be71f080f250fbadd1c8b42df566b0822423fb40bea402aa21c7bf2b6b9eac352c25cb65df6da680bedfce935a3b7ccf29c266e02efe50')
 
 build() {
   mkdir build
