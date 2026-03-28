@@ -4,7 +4,7 @@
 _mayaver=2027
 
 pkgname=maya-bifrost
-pkgver=3.0.0.0
+pkgver=3.0.0.1
 pkgrel=2
 pkgdesc='Autodesk Maya Bifrost Plugin'
 arch=('x86_64')
@@ -13,13 +13,17 @@ license=('custom')
 depends=("maya>=${_mayaver}" 'maya<2028.0')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
-source=("manual://Bifrost${_mayaver}-${pkgver}-${pkgver}-1.x86_64.rpm")
-b2sums=('4f3833af25ebb483892a301096708e93657a3d250acbe7aeef18585d1f1e4d67d2c1674e06400fdf5fb631fbda8e09f4101a1948d10712c768ef145acbf8f93a')
+source=("manual://Bifrost_${pkgver}_Maya${_mayaver}_Linux.run")
+b2sums=('6b13e1ee4cc166df562c0d7d6f0ea593926758318785a093f009a133433d33d3006794100a0c48d771aca667c75c5056e945e5ab8cda9755eed665b4890605fa')
 
 options=(!strip)
 
 prepare() {
     rm --force ./*.rpm
+    chmod +x ./Bifrost_${pkgver}_Maya${_mayaver}_Linux.run
+    ./Bifrost_${pkgver}_Maya${_mayaver}_Linux.run --tar xvf
+    echo 'Extracting rpm...'
+    bsdtar -xf *.rpm
     sed -i "s|<BIFROST_DIR>|/usr/autodesk/maya$_mayaver/plug-ins/bifrost|g" usr/autodesk/modules/maya/$_mayaver/bifrost.mod
     sed -i "s|<PLUGIN_DIR>|/usr/autodesk/maya$_mayaver/plug-ins/vnn|g" usr/autodesk/modules/maya/$_mayaver/vnn.mod
 }
