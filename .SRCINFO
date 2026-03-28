@@ -1,0 +1,44 @@
+pkgbase = python-docling
+	pkgdesc = SDK and CLI for parsing PDF, DOCX, HTML, and more into a unified document representation
+	pkgver = 2.82.0
+	pkgrel = 1
+	url = https://github.com/docling-project/docling
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python>=3.10
+	depends = python-beautifulsoup4
+	depends = python-certifi
+	depends = python-defusedxml
+	depends = python-docling-core>=2.70.0
+	depends = python-docling-ibm-models>=3.12.0
+	depends = python-docling-parse>=5.3.2
+	depends = python-filetype
+	depends = python-lxml
+	depends = python-marko
+	depends = python-openpyxl
+	depends = python-pluggy
+	depends = python-polyfactory
+	depends = python-pydantic-settings
+	depends = python-pypdfium2
+	depends = python-pylatexenc
+	depends = python-docx
+	depends = python-pptx
+	depends = python-rapidocr
+	depends = python-requests
+	depends = python-scipy
+	optdepends = python-easyocr: enable EasyOCR OCR engine
+	optdepends = python-tesserocr: enable Tesseract OCR engine
+	optdepends = python-playwright: enable HTML rendering for dynamic pages (htmlrender extra)
+	optdepends = python-transformers: enable VLM-based pipelines (vlm extra)
+	optdepends = python-onnxruntime-cpu: enable RapidOCR ONNX backend on CPU (rapidocr extra)
+	optdepends = python-onnxruntime-cuda: enable RapidOCR ONNX backend with CUDA (rapidocr extra)
+	optdepends = python-openai-whisper: enable ASR pipeline (asr extra)
+	optdepends = python-numba: improve ASR runtime performance (asr extra)
+	source = https://files.pythonhosted.org/packages/source/d/docling/docling-2.82.0.tar.gz
+	b2sums = b4d8a56d9fdad045c938ea9f9e49de905c1d28956ad277d73921cc191bce86a604aa099b54ec043d0daddd5045c77b5d109455e3d40deb387dac2736e0bbd28e
+
+pkgname = python-docling
