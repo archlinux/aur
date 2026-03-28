@@ -1,15 +1,15 @@
 pkgbase = r-sourcetools
 	pkgdesc = Tools for Reading, Tokenizing and Parsing R Code
-	pkgver = 0.1.7.1
-	pkgrel = 4
+	pkgver = 0.1.7.2
+	pkgrel = 1
 	url = https://cran.r-project.org/package=sourcetools
 	arch = x86_64
 	license = MIT
 	checkdepends = r-testthat
 	depends = r
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/sourcetools_0.1.7-1.tar.gz
-	md5sums = dd4a9af00de6e874802f6e6622b774fb
-	b2sums = c74d603d6878aae3915cb90a28f08e8930bf64c72b46d0d139489aea561f40cd09cb56fe40bec31a147856cde6e54f49d493dc436448e14b544b6dc92b40b7c2
+	source = https://cran.r-project.org/src/contrib/sourcetools_0.1.7-2.tar.gz
+	md5sums = b30ed63295fc9659f7526914d6687e0e
+	b2sums = a3fdd57a199e3763e457aee2ea1c3f0ea75b32b4fe745a6804f6512421a89ab43f0ddbf16f828118b85eb088286e868a543d37356b68bf9da043df5d4170835a
 
 pkgname = r-sourcetools
