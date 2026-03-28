@@ -1,6 +1,6 @@
 pkgbase = llmx-bin
 	pkgdesc = Local-first codebase indexer with semantic search for LLM agents
-	pkgver = 2.1.1
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/johnzfitch/llmx
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = llmx-bin
 	provides = llmx-mcp
 	conflicts = llmx
 	options = !strip
-	source_x86_64 = llmx-bin-2.1.1-x86_64.tar.gz::https://github.com/johnzfitch/llmx/releases/download/v2.1.1/llmx-v2.1.1-linux-x86_64.tar.gz
-	sha256sums_x86_64 = c61718a965ea8f1dd9cbea34263738dbcfc462a212c44e0c74ac5bcec33cddda
-	source_aarch64 = llmx-bin-2.1.1-aarch64.tar.gz::https://github.com/johnzfitch/llmx/releases/download/v2.1.1/llmx-v2.1.1-linux-aarch64.tar.gz
-	sha256sums_aarch64 = 0c716c9f1ccf99be32ff99a4816ad87c881c5b07015601c95058cde2bd85d60b
+	source_x86_64 = llmx-bin-2.2.1-x86_64.tar.gz::https://github.com/johnzfitch/llmx/releases/download/v2.2.1/llmx-v2.2.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = b2a6c0b5e454dda2113441363a6934fc5640c2cbc7559926493f70dc1f9642d0
+	source_aarch64 = llmx-bin-2.2.1-aarch64.tar.gz::https://github.com/johnzfitch/llmx/releases/download/v2.2.1/llmx-v2.2.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = e4609626ab98462cdbac1f66852c80cbacb865e0f7dbc02c40485091ed3e2b01
 
 pkgname = llmx-bin
