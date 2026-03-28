@@ -1,22 +1,55 @@
-# Maintainer: TTsdzb <ttsdzb at outlook dot com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
 pkgname=scrcpy-mask-bin
-pkgver=0.6.0
+pkgver=0.7.3
 pkgrel=1
-pkgdesc="A Scrcpy client in Rust & Tarui aimed at providing mouse and key mapping to control Android device, similar to a game emulator."
+pkgdesc='Control Android devices via customizable mouse/keyboard mappings using scrcpy protocol'
 arch=('x86_64')
-url="https://github.com/AkiChase/scrcpy-mask"
+url='https://github.com/AkiChase/scrcpy-mask'
+# Apache-2.0 was present through v0.6.0; dropped during v0.7.0 rewrite (reported upstream #117)
 license=('Apache-2.0')
-depends=('webkit2gtk-4.1' 'scrcpy')
-provides=('scrcpy-mask')
-source=("${pkgname}-${pkgver}.deb::https://github.com/AkiChase/scrcpy-mask/releases/download/v${pkgver}/scrcpy-mask_${pkgver}_amd64.deb")
-sha256sums=('18706f994cd49e92b5ef0cf23b25043448e82dcdde6fe8e091b19234b42942b9')
+depends=('android-tools' 'alsa-lib' 'gcc-libs' 'glibc' 'hicolor-icon-theme'
+         'libdrm' 'libva' 'libvdpau' 'libx11' 'libxcb' 'libxext' 'libxfixes'
+         'systemd-libs')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
+options=('!debug')
 
-prepare() {
-	rm -rf data
-	mkdir data
-	bsdtar -x -f data.tar.gz -C data
+source=("${pkgname}-${pkgver}.zip::${url}/releases/download/v${pkgver}/scrcpy-mask-linux-x64.zip"
+        "${pkgname}-${pkgver}-icon.png::https://raw.githubusercontent.com/AkiChase/scrcpy-mask/v${pkgver}/icons/128x128.png")
+sha256sums=('6d4159605389368967ccdabdaac220a2dd271ba1594312499c00529b81f16920'
+            'cf45e9c198648bea6eb041e696f468a985b5b6401cc5e1f2706ada5c5993ab03')
+
+latestver() {
+    curl -fsSL 'https://api.github.com/repos/AkiChase/scrcpy-mask/releases/latest' |
+    jq -r '.tag_name // empty' | sed 's/^v//'
 }
 
 package() {
-	cp -a ${srcdir}/data/* ${pkgdir}/
+    # Binary and assets to /opt (Bevy expects assets/ adjacent to binary)
+    install -d "${pkgdir}/opt/${pkgname%-bin}"
+    install -Dm755 scrcpy-mask "${pkgdir}/opt/${pkgname%-bin}/scrcpy-mask"
+    cp -r assets "${pkgdir}/opt/${pkgname%-bin}/"
+
+    # Wrapper script (Bevy resolves assets/ relative to CWD)
+    install -Dm755 /dev/stdin "${pkgdir}/usr/bin/scrcpy-mask" <<'WRAPPER'
+#!/bin/sh
+cd /opt/scrcpy-mask || exit 1
+exec ./scrcpy-mask "$@"
+WRAPPER
+
+    # Desktop entry
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/applications/scrcpy-mask.desktop" <<'DESKTOP'
+[Desktop Entry]
+Name=Scrcpy Mask
+Comment=Control Android devices via customizable mouse/keyboard mappings
+Exec=scrcpy-mask
+Icon=scrcpy-mask
+Terminal=false
+Type=Application
+Categories=Utility;
+DESKTOP
+
+    # Icon
+    install -Dm644 "${pkgname}-${pkgver}-icon.png" \
+        "${pkgdir}/usr/share/icons/hicolor/128x128/apps/scrcpy-mask.png"
 }
