@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Maintainer: Tokenicrat <hi@bytoken.link>
+# Maintainer: agony <27015 at riseup dot net>
+# Contributor: Tokenicrat <hi@bytoken.link>
 
 pkgname=marp-cli-bin
 pkgver=4.2.3
