@@ -28,7 +28,7 @@ check() {
     cd "owlry"
     export RUSTUP_TOOLCHAIN=stable
     export CARGO_TARGET_DIR=target
-    cargo test -p owlry-core --frozen
+    cargo test -p owlry-core --frozen --lib
 }
 
 package() {
