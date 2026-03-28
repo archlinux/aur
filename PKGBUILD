@@ -2,7 +2,7 @@
 pkgname=codenomad-bin
 _pkgname=CodeNomad
 _binname='@neuralnomadscodenomad-electron-app'
-pkgver=0.12.3 # renovate: datasource=github-releases depName=NeuralNomadsAI/CodeNomad
+pkgver=0.13.1 # renovate: datasource=github-releases depName=NeuralNomadsAI/CodeNomad
 pkgrel=1
 pkgdesc="A fast, multi-instance workspace for running OpenCode sessions"
 arch=('x86_64' 'aarch64')
@@ -74,5 +74,5 @@ source=("codenomad.desktop")
 source_x86_64=("${pkgname}-${pkgver}.zip::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-x64.zip")
 source_aarch64=("${pkgname}-${pkgver}.zip::https://github.com/NeuralNomadsAI/CodeNomad/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-arm64.zip")
 sha256sums=('099ff5f301ceebffbf8d386820bc8f4a9ab678d0f518fe5ef40aba32bf1f459f')
-sha256sums_x86_64=('7152e3b273456605b7486a5e9921cbb9cc6b57f708b009a80ae8d0e9f01998bf')
-sha256sums_aarch64=('7152e3b273456605b7486a5e9921cbb9cc6b57f708b009a80ae8d0e9f01998bf')
+sha256sums_x86_64=('70335add4c6543d02574ee03b1852877fb3d6ed405d1f8a8d1164fa859398057')
+sha256sums_aarch64=('70335add4c6543d02574ee03b1852877fb3d6ed405d1f8a8d1164fa859398057')
