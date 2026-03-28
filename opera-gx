@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Allow users to override command-line options.
+if [[ -f /etc/%pkgname%/default ]]; then
+    . /etc/%pkgname%/default
+fi
+
+# Prefer user-defined OPERA_USER_FLAGS over system-wide OPERA_FLAGS.
+OPERA_FLAGS=${OPERA_USER_FLAGS:-$OPERA_FLAGS}
+
+exec /usr/lib/%operabin% $OPERA_FLAGS "$@"
