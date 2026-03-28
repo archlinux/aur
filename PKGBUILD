@@ -1,7 +1,7 @@
 # Maintainer: Luke Taylor <luket@pm.me>
 
 pkgname=fooyin-git
-pkgver=0.9.2.r6.g460c4c3
+pkgver=0.10.1.r0.gb5a336e
 pkgrel=1
 pkgdesc="A customisable music player"
 url="https://github.com/fooyin/fooyin"
@@ -32,6 +32,8 @@ makedepends=(
     'libsndfile'
     'libarchive'
     'libebur128'
+    'soundtouch'
+    'libsoxr'
 )
 optdepends=(
     'sdl2: For the SDL2 audio output plugin'
@@ -41,6 +43,8 @@ optdepends=(
     'libsndfile: For the GME audio input plugin'
     'libarchive: For the libarchive archive plugin'
     'libebur128: For the ReplayGain scanner plugin'
+    'soundtouch: For the SoundTouch DSP plugin'
+    'libsoxr: For the SoX resampler DSP plugin'
 )
 provides=('fooyin')
 conflicts=('fooyin')
