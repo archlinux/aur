@@ -1,26 +1,43 @@
-# Maintainer: Gokberk Yaltirakli <aur at gkbrk dot com>
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+# Contributor: Gokberk Yaltirakli <aur at gkbrk dot com>
 # Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
 
+_rdnn=io.github.ellie_commons.reminduck
 pkgname=reminduck
-pkgver=1.6.2
+pkgver=2.3.1.5
 pkgrel=1
-pkgdesc='A simple reminder app made for elementaryOS with Vala and GTK'
-arch=('i686' 'x86_64')
-url='https://github.com/matfantinel/reminduck'
-license=('GPL3')
-depends=('granite')
-makedepends=('ninja' 'libgee' 'granite' 'meson' 'vala')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/matfantinel/reminduck/archive/v${pkgver}.tar.gz")
-sha256sums=('14b6df32d56d4b1c6973b8380bbe1bd7de68752211c0f9d0ba6d877687e02130')
+pkgdesc='Simple reminder app with notifications, built with GTK4 and Granite'
+arch=('x86_64')
+url='https://github.com/elly-code/reminduck'
+license=('GPL-3.0-or-later')
+depends=('gtk4' 'granite7' 'libgee' 'sqlite' 'libportal')
+makedepends=('meson' 'vala')
 
-build () {
-  cd "${pkgname}-${pkgver}"
-  meson . build --prefix=/usr
-  ninja -C build
+# Upstream tags use X.Y.Z-N (iteration suffix); Arch pkgver uses X.Y.Z.N
+_vertag=${pkgver}
+[[ ${pkgver} =~ ^([0-9]+\.[0-9]+\.[0-9]+)\.([0-9]+)$ ]] && _vertag="${BASH_REMATCH[1]}-${BASH_REMATCH[2]}"
+
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/${_vertag}.tar.gz")
+sha256sums=('3adfd1a89c4d665a0271e2aa4c72a83c42d9912c7c00d64bf784e585b75f6fc2')
+
+latestver() {
+    curl -fsSL 'https://api.github.com/repos/elly-code/reminduck/releases/latest' |
+    jq -r '.tag_name // empty' | sed 's/-/./g'
 }
 
-package () {
-  cd "${pkgname}-${pkgver}"
-  DESTDIR="${pkgdir}" ninja -C build install
-  cp "${pkgdir}/usr/bin/com.github.matfantinel.reminduck" "${pkgdir}/usr/bin/reminduck"
+prepare() {
+    # Normalize extracted directory name (upstream tag may use hyphen)
+    [[ -d "${pkgname}-${_vertag}" ]] && mv "${pkgname}-${_vertag}" "${pkgname}-${pkgver}"
+}
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    meson setup build --prefix=/usr --buildtype=release
+    ninja -C build
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    DESTDIR="${pkgdir}" ninja -C build install
+    ln -s "${_rdnn}" "${pkgdir}/usr/bin/${pkgname}"
 }
