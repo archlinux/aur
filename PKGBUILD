@@ -1,9 +1,7 @@
-#
-# Thank you Anders Thomsen for initial submission!
-#
-# Maintainer: redtide <redtid3@gmail.com>
-# Maintainer: Sokoloft <sokoloft@protonmail.com>
-#
+# Maintainer: olivierlm <mail nospamat olivierlemoal nospamdot fr>
+# Maintainer: redtide <redtid3 nospamat gmail nospamdot com>
+# Maintainer: Sokoloft <sokoloft nospamat protonmail nospamdot com>
+# Contributor Anders Thomsen <mail nospamat andersthomsen nospamdot dk>
 
 pkgname=xairedit
 pkgver=1.8.1
