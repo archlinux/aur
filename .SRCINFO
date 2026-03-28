@@ -32,7 +32,7 @@ pkgbase = claude-desktop-hardened-bin
 	conflicts = claude-desktop
 	conflicts = claude-desktop-bin
 	options = !strip
-	source = claude-desktop-hardened-1.1.9310.tar.gz::https://github.com/techtoboggan/claude-desktop-hardened-linux/archive/refs/tags/v1.1.9310-1.tar.gz
+	source = claude-desktop-hardened-1.1.9310.tar.gz::https://github.com/techtoboggan/claude-desktop-hardened-linux/archive/refs/tags/v1.1.9310-9.tar.gz
 	sha256sums = SKIP
 
 pkgname = claude-desktop-hardened-bin
