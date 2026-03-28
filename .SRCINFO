@@ -1,7 +1,7 @@
 pkgbase = larpmodeactive
 	pkgdesc = Fake terminal process simulator
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	depends = python
 	source = larpmodeactive
