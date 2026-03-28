@@ -26,6 +26,8 @@ pkgbase = zestbay-git
 	depends = dbus
 	provides = zestbay
 	conflicts = zestbay
+	options = !lto
+	options = !debug
 	source = zestbay-git::git+https://github.com/lemonxah/zestbay.git
 	sha256sums = SKIP
 
