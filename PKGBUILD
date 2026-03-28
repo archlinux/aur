@@ -8,7 +8,7 @@ pkgname=(
 )
 _commit="f9d9357169ce4b497a677faa9ce85e901e77275d" # 3.1.3
 pkgver=3.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Lightweight C++ library of numerical optimization methods for nonlinear functions"
 arch=(
   'x86_64'
@@ -91,7 +91,7 @@ package_optim-armadillo() {
     'libstdc++'
   )
   provides=(
-    "${pkgbase}"
+    "${pkgbase}=${pkgver}"
   )
   conflicts=(
     "${pkgbase}"
@@ -112,7 +112,7 @@ package_optim-eigen() {
     'libstdc++'
   )
   provides=(
-    "${pkgbase}"
+    "${pkgbase}=${pkgver}"
   )
   conflicts=(
     "${pkgbase}"
