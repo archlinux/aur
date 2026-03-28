@@ -1,5 +1,5 @@
 diff --git a/src/protocols/org-kde-plasma-virtual-desktop.xml b/src/protocols/org-kde-plasma-virtual-desktop.xml
-index 5d9f825..3072ec4 100644
+index 5d9f825..0e686a9 100644
 --- a/src/protocols/org-kde-plasma-virtual-desktop.xml
 +++ b/src/protocols/org-kde-plasma-virtual-desktop.xml
 @@ -6,7 +6,7 @@
@@ -21,7 +21,7 @@ index 5d9f825..3072ec4 100644
      <request name="request_activate">
          <description summary="Requests this desktop to be activated">
              Request the server to set the status of this desktop to active: The server is free to consent or deny the request. This will be the new "current" virtual desktop of the system.
-@@ -122,6 +121,32 @@
+@@ -122,6 +121,24 @@
          </description>
          <arg name="index" type="uint" summary="virtual desktop position"/>
      </event>
@@ -29,15 +29,7 @@ index 5d9f825..3072ec4 100644
 +    <event name="output_entered" since="4">
 +        <description summary="This desktop became active on an output">
 +            This event is sent when the desktop becomes active on an output. The desktop can be active on multiple
-+            outputs simultaneously. Each output has exactly one active desktop at a time.
-+        </description>
-+        <arg name="output_name" type="string" summary="name of the output" />
-+    </event>
-+
-+    <event name="output_left" since="4">
-+        <description summary="This desktop stopped being active on an output">
-+            This event is sent when the desktop stops being active on an output.
-+            Each output has exactly one active desktop at a time.
++            outputs simultaneously. Each output has exactly one active desktop at a time (the one that entered it last).
 +        </description>
 +        <arg name="output_name" type="string" summary="name of the output" />
 +    </event>
