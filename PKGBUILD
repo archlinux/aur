@@ -12,7 +12,7 @@ _appname=ZaiChatDesktop
 _binaryname=zaichatdesktop
 _github=delta-whiplash
 pkgver=3.11.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Z.ai Desktop - AI Chatbot & Agent powered by GLM-5 & GLM-4.7"
 arch=('x86_64')
 url="https://chat.z.ai"
@@ -32,6 +32,12 @@ sha256sums=('SKIP' 'SKIP')
 prepare() {
     bsdtar -xf "${pkgname}-V${pkgver}.deb" -C "${srcdir}"
     bsdtar -xf "${srcdir}/data.tar.gz" -C "${srcdir}"
+
+    # Patch desktop file to use correct binary and icon names
+    sed -i "s|Exec=pake-${_binaryname}|Exec=${pkgname}|g" "${srcdir}/usr/share/applications/${_binaryname}.desktop"
+    sed -i "s|StartupWMClass=pake-${_binaryname}|StartupWMClass=${pkgname}|g" "${srcdir}/usr/share/applications/${_binaryname}.desktop"
+    sed -i "s|Icon=pake-${_binaryname}|Icon=${pkgname}|g" "${srcdir}/usr/share/applications/${_binaryname}.desktop"
+    sed -i "s|Name=${_binaryname}|Name=Z.ai Desktop|g" "${srcdir}/usr/share/applications/${_binaryname}.desktop"
 }
 
 package() {

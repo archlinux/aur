@@ -1,7 +1,7 @@
 pkgbase = zai-chat-desktop
 	pkgdesc = Z.ai Desktop - AI Chatbot & Agent powered by GLM-5 & GLM-4.7
 	pkgver = 3.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://chat.z.ai
 	arch = x86_64
 	license = MIT
