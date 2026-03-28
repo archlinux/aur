@@ -3,7 +3,7 @@
 # Contributor: PandaDEV <contact@pandadev.net>
 pkgname=wireguard-gui-bin
 pkgver=0.1.8
-pkgrel=4
+pkgrel=5
 pkgdesc="A WireGuard client GUI for Linux built with Tauri"
 arch=('x86_64' 'aarch64')
 url="https://github.com/0xle0ne/wireguard-gui"
