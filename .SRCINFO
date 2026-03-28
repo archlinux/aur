@@ -1,6 +1,6 @@
 pkgbase = omarchy-lazygit-theme-sync
 	pkgdesc = Automatic lazygit theme synchronization for Omarchy
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/prepin/omarchy-lazygit-theme-sync
 	install = omarchy-lazygit-theme-sync.install
@@ -9,7 +9,7 @@ pkgbase = omarchy-lazygit-theme-sync
 	makedepends = git
 	depends = bash
 	depends = lazygit
-	source = omarchy-lazygit-theme-sync-1.0.0.tar.gz::https://github.com/prepin/omarchy-lazygit-theme-sync/archive/refs/tags/v1.0.0.tar.gz
+	source = omarchy-lazygit-theme-sync-1.1.0.tar.gz::https://github.com/prepin/omarchy-lazygit-theme-sync/archive/refs/tags/v1.1.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = omarchy-lazygit-theme-sync

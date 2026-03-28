@@ -1,5 +1,5 @@
 pkgname=omarchy-lazygit-theme-sync
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Automatic lazygit theme synchronization for Omarchy"
 arch=('any')
