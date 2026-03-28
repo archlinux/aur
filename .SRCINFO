@@ -1,0 +1,23 @@
+pkgbase = ttf-ms-win11-fod-wu
+	pkgdesc = Microsoft Windows 11 Feature on Demand TrueType fonts
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://learn.microsoft.com/en-us/typography/fonts/windows_11_font_list#fonts-included-in-feature-on-demand-fod-packages
+	arch = any
+	license = custom
+	makedepends = p7zip
+	makedepends = python
+	provides = ttf-font
+	provides = ttf-ms-win11-fod
+	conflicts = ttf-ms-win11-fod
+	conflicts = ttf-ms-win11-fod-auto
+	source = resolver.py
+	source = wu.py
+	source = fonts.py
+	source = fontdata.sh
+	sha256sums = 442ab8e6db3599601d2d2f2d72de11126af54f196f5c41c067d82b13a2e9e5ca
+	sha256sums = fa4fb06029f799ea584b131701802c18adc37ff0e377cdf1fc4482f19883d0f1
+	sha256sums = 76f7fd322d10cb5fe31772b972e866739add86955eae4391effe4f2d55219eac
+	sha256sums = bd23d028533c64eab81a8346bb9bf8cc6dbce83c4a0d5981c77d8679794cc129
+
+pkgname = ttf-ms-win11-fod-wu

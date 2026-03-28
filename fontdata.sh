@@ -1,0 +1,309 @@
+_fod_groups=(
+  hans guru gujr ethi deva cher cans beng arab thai telu taml
+  syrc sinh paneuropean orya mlym laoo kore knda khmr jpan hebr hant
+)
+
+declare -gA _fod_cab_stems=(
+  [arab]=Arab
+  [beng]=Beng
+  [cans]=Cans
+  [cher]=Cher
+  [deva]=Deva
+  [ethi]=Ethi
+  [gujr]=Gujr
+  [guru]=Guru
+  [hans]=Hans
+  [hant]=Hant
+  [hebr]=Hebr
+  [jpan]=Jpan
+  [khmr]=Khmr
+  [knda]=Knda
+  [kore]=Kore
+  [laoo]=Laoo
+  [mlym]=Mlym
+  [orya]=Orya
+  [paneuropean]=PanEuropeanSupplementalFonts
+  [sinh]=Sinh
+  [syrc]=Syrc
+  [taml]=Taml
+  [telu]=Telu
+  [thai]=Thai
+)
+
+_fod_group_specs=()
+for _fod_group in "${_fod_groups[@]}"; do
+  _fod_group_specs+=("${_fod_group}=${_fod_cab_stems[$_fod_group]}")
+done
+unset _fod_group
+
+arab=(
+  arabtype.ttf
+  tradbdo.ttf
+  trado.ttf
+  majalla.ttf
+  majallab.ttf
+  simpbdo.ttf
+  simpfxo.ttf
+  simpo.ttf
+  msuighub.ttf
+  msuighur.ttf
+  UrdType.ttf
+  UrdTypeb.ttf
+  aldhabi.ttf
+  andlso.ttf
+)
+beng=(
+  Shonar.ttf
+  Shonarb.ttf
+  vrinda.ttf
+  vrindab.ttf
+)
+cans=(
+  euphemia.ttf
+)
+cher=(
+  plantc.ttf
+)
+deva=(
+  aparaj.ttf
+  aparajb.ttf
+  aparajbi.ttf
+  aparaji.ttf
+  Sanskr.ttf
+  kokila.ttf
+  kokilab.ttf
+  kokilabi.ttf
+  kokilai.ttf
+  mangal.ttf
+  mangalb.ttf
+  utsaah.ttf
+  utsaahb.ttf
+  utsaahbi.ttf
+  utsaahi.ttf
+)
+ethi=(
+  nyala.ttf
+)
+gujr=(
+  shruti.ttf
+  shrutib.ttf
+)
+guru=(
+  raavi.ttf
+  raavib.ttf
+)
+hans=(
+  Deng.ttf
+  Dengb.ttf
+  Dengl.ttf
+  simfang.ttf
+  simhei.ttf
+  simkai.ttf
+)
+hant=(
+  kaiu.ttf
+  mingliu.ttc
+)
+hebr=(
+  lvnm.ttf
+  lvnmbd.ttf
+  ahronbd.ttf
+  frank.ttf
+  david.ttf
+  davidbd.ttf
+  gisha.ttf
+  gishabd.ttf
+  mriam.ttf
+  mriamc.ttf
+  nrkis.ttf
+  rod.ttf
+)
+jpan=(
+  BIZ-UDMinchoM.ttc
+  UDDigiKyokashoN-B.ttc
+  UDDigiKyokashoN-R.ttc
+  BIZ-UDGothicB.ttc
+  BIZ-UDGothicR.ttc
+  meiryo.ttc
+  meiryob.ttc
+  msgothic.ttc
+  msmincho.ttc
+  yumin.ttf
+  yumindb.ttf
+  yuminl.ttf
+)
+khmr=(
+  moolbor.ttf
+  daunpenh.ttf
+  KhmerUI.ttf
+  KhmerUIb.ttf
+)
+knda=(
+  tunga.ttf
+  tungab.ttf
+)
+kore=(
+  batang.ttc
+  gulim.ttc
+)
+laoo=(
+  dokchamp.ttf
+  LaoUI.ttf
+  LaoUIb.ttf
+)
+mlym=(
+  kartika.ttf
+  kartikab.ttf
+)
+orya=(
+  kalinga.ttf
+  kalingab.ttf
+)
+paneuropean=(
+  NHaasGroteskTXPro-It.ttf
+  NHaasGroteskTXPro-Rg.ttf
+  RockwellNova-Bold.ttf
+  RockwellNova-BoldItalic.ttf
+  RockwellNova-ExtraBold.ttf
+  RockwellNova-ExtraBoldItalic.ttf
+  RockwellNova-Italic.ttf
+  RockwellNova-Light.ttf
+  RockwellNova-LightItalic.ttf
+  RockwellNova.ttf
+  RockwellNovaCond-Bold.ttf
+  RockwellNovaCond-BoldItalic.ttf
+  RockwellNovaCond-Italic.ttf
+  RockwellNovaCond-Light.ttf
+  RockwellNovaCond-LightItalic.ttf
+  RockwellNovaCond.ttf
+  GeorgiaPro-Black.ttf
+  GeorgiaPro-BlackItalic.ttf
+  GeorgiaPro-Bold.ttf
+  GeorgiaPro-BoldItalic.ttf
+  GeorgiaPro-CondBlack.ttf
+  GeorgiaPro-CondBlackItalic.ttf
+  GeorgiaPro-CondBold.ttf
+  GeorgiaPro-CondBoldItalic.ttf
+  GeorgiaPro-CondItalic.ttf
+  GeorgiaPro-CondLight.ttf
+  GeorgiaPro-CondLightItalic.ttf
+  GeorgiaPro-CondRegular.ttf
+  GeorgiaPro-CondSemiBold.ttf
+  GeorgiaPro-CondSemiBoldItalic.ttf
+  GeorgiaPro-Italic.ttf
+  GeorgiaPro-Light.ttf
+  GeorgiaPro-LightItalic.ttf
+  GeorgiaPro-Regular.ttf
+  GeorgiaPro-SemiBold.ttf
+  GeorgiaPro-SemiBoldItalic.ttf
+  VerdanaPro-Black.ttf
+  VerdanaPro-BlackItalic.ttf
+  VerdanaPro-Bold.ttf
+  VerdanaPro-BoldItalic.ttf
+  VerdanaPro-CondBlack.ttf
+  VerdanaPro-CondBlackItalic.ttf
+  VerdanaPro-CondBold.ttf
+  VerdanaPro-CondBoldItalic.ttf
+  VerdanaPro-CondItalic.ttf
+  VerdanaPro-CondLight.ttf
+  VerdanaPro-CondLightItalic.ttf
+  VerdanaPro-CondRegular.ttf
+  VerdanaPro-CondSemiBold.ttf
+  VerdanaPro-CondSemiBoldItalic.ttf
+  VerdanaPro-Italic.ttf
+  VerdanaPro-Light.ttf
+  VerdanaPro-LightItalic.ttf
+  VerdanaPro-Regular.ttf
+  VerdanaPro-SemiBold.ttf
+  VerdanaPro-SemiBoldItalic.ttf
+  ArialNova-Bold.ttf
+  ArialNova-BoldItalic.ttf
+  ArialNova-Italic.ttf
+  ArialNova-Light.ttf
+  ArialNova-LightItalic.ttf
+  ArialNova.ttf
+  ArialNovaCond-Bold.ttf
+  ArialNovaCond-BoldItalic.ttf
+  ArialNovaCond-Italic.ttf
+  ArialNovaCond-Light.ttf
+  ArialNovaCond-LightItalic.ttf
+  ArialNovaCond.ttf
+  GillSansBoItNova.ttf
+  GillSansBoNova.ttf
+  GillSansCondBoItNova.ttf
+  GillSansCondBoNova.ttf
+  GillSansCondExtraItNova.ttf
+  GillSansCondExtraNova.ttf
+  GillSansCondItNova.ttf
+  GillSansCondLightItNova.ttf
+  GillSansCondLightNova.ttf
+  GillSansCondNova.ttf
+  GillSansCondUltraBoNova.ttf
+  GillSansItNova.ttf
+  GillSansLightItNova.ttf
+  GillSansLightNova.ttf
+  GillSansNova.ttf
+  GillSansUltraBoNova.ttf
+)
+sinh=(
+  iskpota.ttf
+  iskpotab.ttf
+)
+syrc=(
+  estre.ttf
+)
+taml=(
+  latha.ttf
+  lathab.ttf
+  vijaya.ttf
+  vijayab.ttf
+)
+telu=(
+  gautami.ttf
+  gautamib.ttf
+  Vani.ttf
+  Vanib.ttf
+)
+thai=(
+  browalia.ttc
+  upcdb.ttf
+  upcdbi.ttf
+  upcdi.ttf
+  upcdl.ttf
+  upceb.ttf
+  upcebi.ttf
+  upcei.ttf
+  upcel.ttf
+  upcfb.ttf
+  upcfbi.ttf
+  upcfi.ttf
+  upcfl.ttf
+  upcjb.ttf
+  upcjbi.ttf
+  upcji.ttf
+  upcjl.ttf
+  leelawad.ttf
+  leelawdb.ttf
+  upckb.ttf
+  upckbi.ttf
+  upcki.ttf
+  upckl.ttf
+  angsana.ttc
+  cordia.ttc
+  upcib.ttf
+  upcibi.ttf
+  upcii.ttf
+  upcil.ttf
+  upclb.ttf
+  upclbi.ttf
+  upcli.ttf
+  upcll.ttf
+)
+
+_fod_all_fonts=()
+for _fod_group in "${_fod_groups[@]}"; do
+  declare -n _fod_group_fonts="$_fod_group"
+  _fod_all_fonts+=("${_fod_group_fonts[@]}")
+  unset -n _fod_group_fonts
+done
+unset _fod_group

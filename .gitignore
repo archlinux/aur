@@ -1,0 +1,10 @@
+# Keep this AUR repo minimal.
+# If you add new tracked source files later, list them here.
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!fontdata.sh
+!fonts.py
+!resolver.py
+!wu.py
