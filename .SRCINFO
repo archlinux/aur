@@ -1,0 +1,26 @@
+pkgbase = pardf
+	pkgdesc = Word-Sys's PDF Editor
+	pkgver = 1.8.2
+	pkgrel = 1
+	url = https://github.com/word-sys/pardf
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = hicolor-icon-theme
+	depends = python-gobject
+	depends = python-pymupdf
+	depends = python-numpy
+	optdepends = libreoffice-fresh: export document to format .docx
+	source = pardf-1.8.2.tar.gz::https://github.com/word-sys/pardf/archive/1.8.2.tar.gz
+	source = pyproject.toml
+	source = setup.cfg
+	source = pardf.desktop
+	sha256sums = 5abc6837250e0f65f58a36d840e691201af3c33454de5731e305ac51898b882e
+	sha256sums = 8ac8a3cc7e24bc7c4a5a3e763c2fce23087c6a33a3457e68978703523eca366d
+	sha256sums = ea1e68078968c7b293e4bb0e3c7ad345fafbec70f927c85680f9137bb5582dd0
+	sha256sums = 2423b64045e1ec217b9f9b942874a325422f3c927807d907e2bbd07ffbff3e29
+
+pkgname = pardf

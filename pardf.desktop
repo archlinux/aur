@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ParDF
+GenericName=ParDF
+Comment=Word-Sys's PDF Editor
+Exec=pardf
+Terminal=false
+Type=Application
+Icon=pardf
+Categories=Office
+
