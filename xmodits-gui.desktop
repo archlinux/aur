@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=XMODITS
+Icon=xmodits-gui
+Comment=A tool to bulk extract samples from various tracker modules with ease.
+GenericName=Tracker Module Insector
+Exec=/usr/bin/xmodits-gui
+NoDisplay=false
+Terminal=false
+Categories=Multimedia;
+MimeType=
+Keywords=

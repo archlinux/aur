@@ -1,0 +1,23 @@
+pkgbase = xmodits-gui-bin
+	pkgdesc = A tool to bulk extract samples from various tracker modules with ease.
+	pkgver = 0.12.3
+	pkgrel = 1
+	url = https://github.com/B0ney/xmodits/
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = hicolor-icon-theme
+	depends = glibc
+	depends = alsa-lib
+	depends = libgcc
+	provides = xmodits
+	provides = xmodits-gui
+	conflicts = xmodits-gui
+	options = !strip
+	source = xmodits-gui-bin-0.12.3.tar.gz::https://github.com/B0ney/xmodits/releases/download/v0.12.3/xmodits-gui-v0.12.3-linux-x86_64.tar.gz
+	source = xmodits-gui.png
+	source = xmodits-gui.desktop
+	sha256sums = cb6cf750eae791d5a0c8dc2a38f68202fc5b2848c0bcf1a04cae92db4f5aa3f3
+	sha256sums = 5be1308fdac60700c8a0690464dab8bdcc03778899e19bde378b53637eca38f0
+	sha256sums = 871d475cd0336c73aac32131ac2e752539c1573c2d565d987df7fd228782c0b6
+
+pkgname = xmodits-gui-bin
