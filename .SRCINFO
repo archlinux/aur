@@ -1,9 +1,10 @@
 pkgbase = reels-bin
 	pkgdesc = Instagram reels in the terminal
-	pkgver = 1.2.4
+	pkgver = 1.2.5
 	pkgrel = 1
 	url = https://github.com/njyeung/reels
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = ffmpeg
 	depends = alsa-lib
@@ -12,7 +13,9 @@ pkgbase = reels-bin
 	optdepends = brave-bin: browser backend
 	provides = reels
 	conflicts = reels
-	source = https://github.com/njyeung/reels/releases/download/v1.2.4/reels-linux-amd64
-	sha256sums = 1218db5422e5f023a0b2cce7b4bf3b3e416bd075bb01c10eff9abaffc0c26a8b
+	source_x86_64 = https://github.com/njyeung/reels/releases/download/v1.2.5/reels-linux-amd64
+	sha256sums_x86_64 = e564676f3d6bbf62101a51523b254815f1dae4c919df3c0881493cd073818c03
+	source_aarch64 = https://github.com/njyeung/reels/releases/download/v1.2.5/reels-linux-arm64
+	sha256sums_aarch64 = 3fd87dc110ad436a0eb93ad6224a1f17ff7fc99f008190515b60a9e96753a178
 
 pkgname = reels-bin
