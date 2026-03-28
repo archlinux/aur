@@ -1,6 +1,6 @@
 pkgbase = lean-ctx-bin
-	pkgdesc = Context Intelligence Engine with CEP + CCP — 23 MCP tools, 90+ shell patterns, persistent AI memory, multi-agent sharing, tree-sitter AST (14 languages). Reduces LLM token consumption by up to 99%. (pre-built binary)
-	pkgver = 2.7.0
+	pkgdesc = Context Intelligence Engine with CEP + CCP — 24 MCP tools, 90+ shell patterns, persistent AI memory, multi-agent sharing, tree-sitter AST (14 languages). Reduces LLM token consumption by up to 99%. (pre-built binary)
+	pkgver = 2.7.1
 	pkgrel = 1
 	url = https://leanctx.com
 	arch = x86_64
@@ -8,8 +8,8 @@ pkgbase = lean-ctx-bin
 	depends = gcc-libs
 	provides = lean-ctx
 	conflicts = lean-ctx
-	source = lean-ctx-2.7.0.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v2.7.0/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
-	source = LICENSE::https://raw.githubusercontent.com/yvgude/lean-ctx/v2.7.0/LICENSE
+	source = lean-ctx-2.7.1.tar.gz::https://github.com/yvgude/lean-ctx/releases/download/v2.7.1/lean-ctx-x86_64-unknown-linux-gnu.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/yvgude/lean-ctx/v2.7.1/LICENSE
 	sha256sums = SKIP
 	sha256sums = SKIP
 
