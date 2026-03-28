@@ -3,7 +3,7 @@
 # Contributor: TheCyberArcher <TheCyberArcher@protonmail.ch>
 pkgname=music-assistant-desktop-bin
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Music Assistant Desktop Companion App"
 arch=('x86_64')
 url="https://github.com/music-assistant/desktop-app"
@@ -20,10 +20,8 @@ depends=(
     'libgcc'
     'libpulse'
     'libsoup3'
+    'libayatana-appindicator'
     'webkit2gtk-4.1'
-)
-optdepends=(
-    'libappindicator-gtk3: system tray support'
 )
 conflicts=('music-assistant-desktop' 'music-assistant-desktop-git' 'music-assistant-companion-git' 'music-assistant-app-git' 'music-assistant-desktop-app-git')
 source=("$pkgname-$pkgver.deb::$url/releases/download/$pkgver/Music.Assistant_${pkgver}_amd64.deb")
