@@ -1,4 +1,9 @@
 [python-matlabengine]
-source = "git"
-git = "https://github.com/mathworks/matlab-engine-for-python.git"
+source = "github"
+github = "mathworks/matlab-engine-for-python"
+use_latest_release = true
 prefix = "v"
+
+# source = "git"
+# git = "https://github.com/mathworks/matlab-engine-for-python.git"
+# prefix = "v"
