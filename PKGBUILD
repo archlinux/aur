@@ -8,6 +8,24 @@ pkgdesc='ADP Desktop SDK'
 arch=('x86_64')
 url="https://www.autodesk.com/"
 license=('custom')
+depends=(
+         'at-spi2-core'
+         'attr'
+         'cairo'
+         'curl'
+         'gcc-libs'
+         'gdk-pixbuf2'
+         'glib2'
+         'glibc'
+         'gtk3'
+         'libcap'
+         'libsoup'
+         'libx11'
+         'libxrandr'
+         'pango'
+         'util-linux-libs'
+         'webkit2gtk'
+         )
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
 source=("manual://adp-desktop-sdk.zip")
@@ -18,4 +36,5 @@ options=(!strip)
 package() {
   install -d "${pkgdir}/opt/Autodesk/AdpDesktopSDK/bin"
   cp -ra "${srcdir}/." "${pkgdir}/opt/Autodesk/AdpDesktopSDK/bin/"
+  rm "${pkgdir}/opt/Autodesk/AdpDesktopSDK/bin/adp-desktop-sdk.zip"
 }
