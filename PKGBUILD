@@ -33,14 +33,12 @@ license=('custom:UnrealEngine' 'GPL3')
 source=("${UE_SDK_VERSION}.tar.gz::https://cdn.unrealengine.com/Toolchain_Linux/${UE_SDK_VERSION}.tar.gz"
         'unreal-engine.sh'
         'com.unrealengine.UE5Editor.desktop'
-        'use_system_clang.patch'
-        'override_shared_target_build.patch'
+        '0001-override-shared-target-build.patch'
         'unreal-engine-5-pacman-cache.hook'
         'ue5editor.svg')
 sha256sums=('6eef42679b744cdcb50276f2d7cff0a51f7ddd632960e06bfbc3f6b9508ef615'
             '55a8ad79c2e502bc5919249b9d1804ad405795b36630ab2f23aeb99dd218e5f4'
             'aa09746f9db93713f470ef19390a89b279fd5a335835ad95eab6cdaafa1b9e99'
-            'b0a57db9a44d0001dc76ca8504d93e273af30093c6a993a5969d82b0ace54b98'
             'cd512e3fc08aaaa783e8df4a6dcb567a35502c32a6cedf8d4d71ebfa75272735'
             '9386160a91594abeeaf4fe02fea562e7a4ead4c6f9a258c2a37b2e5f10e7deca'
             'b00c398b63f15084c46f3963f62a45284ecd8dae9ba6f38a2c4af370bbfdab8d')
@@ -83,9 +81,7 @@ fi
 
 # arch_auto=""
 
-if [ ! "$(command -v tr)" ]; then
-  :
-else
+if [[ -n "$(command -v tr)" ]]; then
   # shellcheck disable=SC2006
   arch_auto="$(echo "${arch_auto}" | tr '[:upper:]' '[:lower:]')"
 fi
@@ -100,51 +96,77 @@ case "${arch_auto}" in
   ;;
 esac
 
-opt_level=""
-  
 if [[ ${CFLAGS} =~ -O([0-9]+) ]]; then
-  opt_level="-O${BASH_REMATCH[1]}"
+  _ue_opt_level="-O${BASH_REMATCH[1]}"
 else
-  opt_level="-O3"
+  _ue_opt_level="-O3"
 fi
 
-if [ -f "$(find /usr/lib -name 'LLVMPolly.so')" ] || [ -f "$(find /usr/lib64 -name 'LLVMPolly.so')" ]; then
+_ue_polly_path="$(find /usr/lib /usr/lib64 -name 'LLVMPolly.so' -print -quit 2>/dev/null)"
+
+if [[ -n "${_ue_polly_path}" ]]; then
   export CFLAGS="${CFLAGS} -fplugin=LLVMPolly.so -mllvm=-polly -mllvm=-polly-ast-use-context -mllvm=-polly-vectorizer=stripmine -mllvm=-polly-invariant-load-hoisting -mllvm=-polly-run-inliner -mllvm=-polly-run-dce"
 fi
 
-if [ "${arch_auto}" = "auto" ] || [ "${arch_auto}" = "true" ] || [ "${arch_auto}" = "enable" ] || [ "${arch_auto}" = "enabled" ] || [ "${arch_auto}" = "1" ]
-then
-  ## Architecture checks and compile flag adjustments - shellcheck throws a fit about the build function but it looks fine to me; checks for the highest available x64 support level and falls back to "native" if either not available
-  if [ "$(uname -m)" == "x86_64" ]; then
-    if [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v4' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v4 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v4 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fPIC -fpie -Wp,-D_FORTIFY_SOURCE=2"
-      export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-      export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
-    elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v3' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v3 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v3 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fPIC -fpie -Wp,-D_FORTIFY_SOURCE=2"
-      export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-      export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
-    elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep -w 'x86-64-v2' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /')" == 'x86-64-v2 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64-v2 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fPIC -fpie -Wp,-D_FORTIFY_SOURCE=2"
-      export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-      export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
-    elif [ "$(/lib/ld-linux-x86-64.so.2 --help | grep 'x86_64' | grep 'supported' | cut -d ',' -f 1 | sed 's/^  //' | sed 's/ (/ - /' | grep -w '^x86_64 - supported')" == 'x86_64 - supported' ]; then
-      export CFLAGS="${CFLAGS} -march=x86-64 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fPIC -fpie -Wp,-D_FORTIFY_SOURCE=2"
-      export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-      export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
-    fi
-  elif [ "$(uname -m)" == "aarch64" ]; then
-    export CFLAGS="${CFLAGS} -march=aarch64 ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fPIC -fPIE -Wp,-D_FORTIFY_SOURCE=2"
-    export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-    export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+_ue_arch="$(uname -m)"
+
+_ue_common_cflags="${_ue_opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fPIC -fPIE -Wp,-D_FORTIFY_SOURCE=2"
+_ue_common_ldflags="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+
+_ue_is_arch_auto_enabled() {
+  case "$1" in
+    auto|true|enable|enabled|1) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+_ue_set_arch_flags() {
+  local _ue_march="$1"
+  local _ue_tune="$2"
+
+  export CFLAGS="${CFLAGS} -march=${_ue_march} ${_ue_tune} ${_ue_common_cflags}"
+  export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
+  export LDFLAGS="${_ue_common_ldflags}"
+}
+
+_ue_detect_x86_64_march() {
+  local _ue_ldso="/lib/ld-linux-x86-64.so.2"
+  local _ue_ld_help
+
+  _ue_ld_help="$("${_ue_ldso}" --help 2>/dev/null || true)"
+
+  if grep -qw "x86-64-v4 (supported" <<< "${_ue_ld_help}"; then
+    echo "x86-64-v4"
+  elif grep -qw "x86-64-v3 (supported" <<< "${_ue_ld_help}"; then
+    echo "x86-64-v3"
+  elif grep -qw "x86-64-v2 (supported" <<< "${_ue_ld_help}"; then
+    echo "x86-64-v2"
+  elif grep -Ewq "x86_64.*supported" <<< "${_ue_ld_help}"; then
+    echo "x86-64"
   else
-    msg "Architecture '$(uname -m)' is not supported! Exiting."
-    return
+    echo ""
   fi
-elif [[ "${arch_auto}" == native ]]; then
-    export CFLAGS="${CFLAGS} -march=native -mtune=native ${opt_level} -pipe -fno-plt -fstack-clash-protection -fstack-protector-strong -fcf-protection -Wl,-z,relro,-z,now -Wformat -Werror=format-security -fPIC -fPIE -Wp,-D_FORTIFY_SOURCE=2"
-    export CXXFLAGS="${CFLAGS} -Wp,-D_GLIBCXX_ASSERTIONS"
-    export LDFLAGS="-pie -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now"
+}
+
+if _ue_is_arch_auto_enabled "${arch_auto}"; then
+
+  if [[ "${_ue_arch}" == "x86_64" ]]; then
+    _ue_detected_march="$(_ue_detect_x86_64_march)"
+
+    if [[ -n "${_ue_detected_march}" ]]; then
+      _ue_set_arch_flags "${_ue_detected_march}" ""
+    else
+      msg "Could not detect a supported x86_64 micro-architecture level. Exiting."
+      return 1
+    fi
+  elif [[ "${_ue_arch}" == "aarch64" ]]; then
+    _ue_set_arch_flags "aarch64" ""
+  else
+    msg "Architecture '${_ue_arch}' is not supported! Exiting."
+    return 1
+  fi
+elif [[ "${arch_auto}" == "native" ]]; then
+  _ue_set_arch_flags "native" "-mtune=native"
 fi
 
 case "${arch_auto}" in
@@ -153,7 +175,7 @@ case "${arch_auto}" in
   ;;
 
   *)
-    if [ -f "$(find /usr/lib -name 'LLVMPolly.so')" ] || [ -f "$(find /usr/lib64 -name 'LLVMPolly.so')" ]; then
+    if [[ -n "${_ue_polly_path}" ]]; then
       ## Make sure that if polly is installed and the auto-flags above are not used, to add the polly flags to CXXFLAGS for consistency with having them set as CFLAGS
       CXXFLAGS="${CXXFLAGS} -fplugin=LLVMPolly.so -mllvm=-polly -mllvm=-polly-ast-use-context -mllvm=-polly-vectorizer=stripmine -mllvm=-polly-invariant-load-hoisting -mllvm=-polly-run-inliner -mllvm=-polly-run-dce"
     fi
@@ -189,15 +211,11 @@ prepare() {
       git reset --hard ${pkgver}-release
     fi
   fi
-  
-  ## Apply custom patches if enabled
-  if [ "${_use_system_clang}" == true ]; then
-    patch -p1 -i "${srcdir}/use_system_clang.patch"
-  fi
 
-  # Allow Program targets to build with an installed engine by respecting IsEngineInstalled()
-  # in the BuildEnvironment getter, fixing the "unique build environment" error for project targets.
-  patch -p1 -i "${srcdir}/override_shared_target_build.patch"
+  for patch_file in ../*.patch; do
+    msg "Applying ${patch_file}" 
+    patch -p1 -i "${patch_file}"
+  done
 
   # Qt Creator source code access
   if [[ ! -d Engine/Plugins/Developer/QtCreatorSourceCodeAccess ]]
@@ -244,11 +262,20 @@ build() {
     exit $?
   fi
 
-  build='Engine/Build/BatchFiles/RunUAT.sh BuildGraph -target="Make Installed Build Linux" -script=Engine/Build/InstalledEngineBuild.xml -nosign -set:WithDDC='"${_WithDDC}"' -set:WithLinux=true -set:WithWin64=true -set:WithMac=false -set:WithAndroid=false -set:WithIOS=false -set:WithTVOS=false -set:GameConfigurations="Development;Shipping"'
+  "Engine/Build/BatchFiles/RunUAT.sh" BuildGraph \
+    -target="Make Installed Build Linux" \
+    -script=Engine/Build/InstalledEngineBuild.xml \
+    -nosign \
+    -set:WithDDC=${_WithDDC} \
+    -set:WithLinux=true \
+    -set:WithWin64=true \
+    -set:WithMac=false \
+    -set:WithAndroid=false \
+    -set:WithIOS=false \
+    -set:WithTVOS=false \
+    -set:GameConfigurations="Debug-Editor;Debug;Development;Shipping"
 
-  if eval "${build}"; then
-    :
-  else
+  if [[ $? -ne 0 ]]; then
     msg "Error: Build failed; try searching the output for suspicious messages." >&2
     return;
   fi
