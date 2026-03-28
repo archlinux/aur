@@ -12,8 +12,9 @@
 ## pkginfo
 pkgdesc='A fancy custom distribution of Valves Proton with various patches'
 pkgname=proton-ge-custom-rtsp-bin
-pkgver=GE_Proton10_26_rtsp20
-pkgrel=3
+pkgver=GE_Proton10_33_rtsp22
+pkgrel=4
+epoch=1
 arch=('x86_64')
 license=('BSD' 'LGPL' 'zlib' 'MIT' 'MPL' 'custom')
 changelog=changelog.md
@@ -27,7 +28,6 @@ depends=('python'
   'lib32-vkd3d'
   # libav support #
   'lib32-libva'
-  'ffmpeg4.4'
   'lib32-speex'
   'lib32-libtheora'
   'lib32-libvdpau'
@@ -60,7 +60,7 @@ install=pleasenote.install
 ## fix naming conventions, matching upstream
 _pkgname=${pkgname//-bin/}
 _pkgver=${pkgver//_/-}
-_srcdir=${_pkgver}
+_srcdir=${_pkgver}-${pkgrel}
 
 ## paths and files
 _protondir=usr/share/steam/compatibilitytools.d/${_pkgname}
@@ -69,17 +69,19 @@ _execfile=usr/bin/proton-rtsp
 _protoncfg=${_protondir}/user_settings.py
 
 ## user edited files to backup
-backup=("${_protoncfg}")
+backup=("$_protoncfg")
 
 ## sources
 url='https://github.com/SpookySkeletons/proton-ge-rtsp'
 source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
   'user_settings.py'
   'launcher.sh'
+  'proton-ge-custom-rtsp-bin.conf'
   'pam_limits.conf')
-sha512sums=('1db47ba64eec2e7d724fda3460d728893457b0be999db3865d2411789967d1c74c3574c969eddb74fa1564224840150e5fd8a6819ac2773cc98776129ab5e6da'
+sha512sums=('5f0d7bfbb2e83b4591fcb5a0d2f49d57f152fc179e9f040f8c419e6a5e5a3d6d1490f2f4f51df2268c6f0028c23313a401686ea48118a3248a8585be0e022b17'
             'babe2a461118bef6a777656a10bb89abeee2c8c3ed4285eb1b99f5ba517b779f18372d1d93ed2cce63b0d8111cf0b08e14a0c92435680239f6936783c3e4cbc5'
             '78ede6d50f9c43407da511c8b37dcf60aae2ddbd461c0081f0d0ce3de08ace3a84dee86e9253acbac829b47c5818ef4e1a354ccb05feaa9853ce279dc3f903fd'
+            'ac2bd634838ffe6b90f2637e229013f0993fc1013271dbeefd216dc262a8bb79e4a5ce15a75cbfcb0c3b521d32f4ebe1ed25a6b066b99cc327b60bd6d7212e6f'
             'c64898bd41801470925fb0efdcf7d247e5cb476fb4745f83ceeccf12041474e5c309fb1c2ac1483b419d12b4ade7668c046bebded4e3bf4708737ee505b080a1')
 
 build() {
@@ -94,8 +96,9 @@ package() {
   ## create paths
   install -d "${pkgdir}/${_protondir}/"
   install -d "${pkgdir}/${_licensedir}/"
-  install -d "${pkgdir}/$(dirname ${_execfile})/"
+  install -d "${pkgdir}/$(dirname "${_execfile}")/"
   install -d "${pkgdir}/etc/security/limits.d/"
+  install -d "${pkgdir}/usr/lib/modules-load.d"
   ## licenses
   mv "${_srcdir}/LICENSE" "${pkgdir}/${_licensedir}/license"
   mv "${_srcdir}/LICENSE.OFL" "${pkgdir}/${_licensedir}/license_OFL"
@@ -103,7 +106,9 @@ package() {
   ## config files
   install --mode=0775 --group=50 "${srcdir}"/user_settings.py "${pkgdir}/${_protoncfg}"
   install --mode=0644 "${srcdir}"/pam_limits.conf "${pkgdir}"/etc/security/limits.d/11-games.conf
+  install --mode=0644 "${srcdir}"/${pkgname}.conf "${pkgdir}"/usr/lib/modules-load.d/${pkgname}.conf
   ## executables
   mv "${_srcdir}"/* "${pkgdir}/${_protondir}"
   install --mode=0755 "${srcdir}"/launcher.sh "${pkgdir}/${_execfile}"
 }
+
