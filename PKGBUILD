@@ -1,6 +1,6 @@
 # Maintainer: Sokoloft <sokoloft nospamat protonmail nospamdot com>
 # Maintainer: olivierlm <mail nospamat olivierlemoal nospamdot fr>
-# Maintainer: redtide <redtid3 nospamat gmail nospamdot com>
+# Contributor redtide <redtid3 nospamat gmail nospamdot com>
 # Contributor Anders Thomsen <mail nospamat andersthomsen nospamdot dk>
 
 pkgname=xairedit-bin
@@ -15,9 +15,9 @@ makedepends=("gendesk")
 depends=("alsa-lib" "freetype2" "curl" "libglvnd" "gcc-libs" "glibc")
 
 source=('EULA_2012-09-12.pdf'
-        "$_pkgname.png::https://raw.githubusercontent.com/flathub/com.behringer.XAirEdit/refs/heads/master/com.behringer.XAirEdit.png")
-source_x86_64=("X-AIR-Edit_LINUX_$pkgver.tar.gz::https://cdn.mediavalet.com/aunsw/musictribe/VX4UkGFjQ0a1DH2Q8zg3sg/_KJ6tGIG7kGVqPxP-OsnLQ/Original/X-AIR-Edit_LINUX_$pkgver.tar.gz")
-source_armv7h=("X-AIR-Edit_RASPI_$pkgver.tar.gz::https://cdn.mediavalet.com/aunsw/musictribe/VX4UkGFjQ0a1DH2Q8zg3sg/_KJ6tGIG7kGVqPxP-OsnLQ/Original/X-AIR-Edit_RASPI_$pkgver.tar.gz")
+        "${_pkgname}.png::https://raw.githubusercontent.com/flathub/com.behringer.XAirEdit/refs/heads/master/com.behringer.XAirEdit.png")
+source_x86_64=("X-AIR-Edit_LINUX_${pkgver}.tar.gz::https://cdn.mediavalet.com/aunsw/musictribe/VX4UkGFjQ0a1DH2Q8zg3sg/_KJ6tGIG7kGVqPxP-OsnLQ/Original/X-AIR-Edit_LINUX_${pkgver}.tar.gz")
+source_armv7h=("X-AIR-Edit_RASPI_${pkgver}.tar.gz::https://cdn.mediavalet.com/aunsw/musictribe/VX4UkGFjQ0a1DH2Q8zg3sg/_KJ6tGIG7kGVqPxP-OsnLQ/Original/X-AIR-Edit_RASPI_${pkgver}.tar.gz")
 
 sha512sums=('fe39285768937d82f31844b789d1075de8196495727653595e59f4f1b282f6dbe18a8a8bc51b837f284601dc37c52211d3d494a8636512f5398da31ff3d30284'
             '6b4f55ec1867bc16280483e3672ce15c2bcc3a27bfb79d346945618ecbf9e6d757a3fc2dd6752e7f37a6c5cf6d039cd81d63c178ba077575c1850d92e8039438')
@@ -30,12 +30,12 @@ b2sums_armv7h=('0065d4a6306fde3a854bb213ce427eae035dd89b23cb065ba0e1f801feaf8fc9
 
 
 prepare() {
-	gendesk -n --pkgname "$_pkgname" --pkgdesc "$pkgdesc" --exec="$_pkgname" --name "X-AIR Edit" --icon "$_pkgname.png" --categories "AudioVideo;Audio" --terminal=false --custom="Keywords=Mixer;Behringer;"
+	gendesk -n --pkgname "${_pkgname}" --pkgdesc "${pkgdesc}" --exec="${_pkgname}" --name "X-AIR Edit" --icon "${_pkgname}.png" --categories "AudioVideo;Audio" --terminal=false --custom="Keywords=Mixer;Behringer;"
 }
 
 package() {
-    install -Dm755 "X-AIR-Edit" "$pkgdir/usr/bin/$_pkgname"
-    install -Dm644 "EULA_2012-09-12.pdf" "$pkgdir/usr/share/licenses/$_pkgname/license.pdf"
-    install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-    install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+    install -Dm755 "X-AIR-Edit" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 "EULA_2012-09-12.pdf" "${pkgdir}/usr/share/licenses/${_pkgname}/license.pdf"
+    install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 }
