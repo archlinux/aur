@@ -2,7 +2,7 @@
 pkgname=qbtctl
 pkgver=1.5.0
 pkgrel=1
-pkgdesc="Minimal, ultra-fast command-line interface for controlling a torrent in qBittorrent via its Web API."
+pkgdesc="Minimal CLI for qBittorrent (build from source)"
 arch=('x86_64')
 url="https://github.com/creptic/qbtctl"
 license=('MIT')
