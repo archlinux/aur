@@ -1,0 +1,19 @@
+pkgbase = soapytezuka-git
+	pkgdesc = Soapy SDR plugin for Tezuka FW
+	pkgver = 0.2.2.r0.2.2.r105
+	pkgrel = 1
+	url = https://github.com/F5OEO/SoapyPlutoPAPR
+	arch = x86_64
+	license = LGPL-2.1-only
+	makedepends = cmake
+	makedepends = git
+	depends = gcc-libs
+	depends = glibc
+	depends = libad9361
+	depends = libiio.so
+	depends = libusb
+	depends = soapysdr
+	source = soapytezuka-git::git+https://github.com/F5OEO/SoapyPlutoPAPR.git
+	sha512sums = SKIP
+
+pkgname = soapytezuka-git
