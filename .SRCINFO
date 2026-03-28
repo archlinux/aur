@@ -1,0 +1,10 @@
+pkgbase = larpmodeactive
+	pkgdesc = Fake terminal process simulator
+	pkgver = 1.0
+	pkgrel = 1
+	arch = any
+	depends = python
+	source = larpmodeactive
+	sha256sums = SKIP
+
+pkgname = larpmodeactive

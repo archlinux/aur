@@ -1,0 +1,146 @@
+#!/usr/bin/env python3
+import time
+import random
+import os
+
+def get_width():
+    return os.get_terminal_size().columns
+
+def fake_line():
+    pid = random.randint(100, 9999)
+    addr = hex(random.randint(0x1000, 0xFFFFFF))
+    addr2 = hex(random.randint(0x1000, 0xFFFFFF))
+    fd = random.randint(3, 10)
+    size = random.randint(0, 4096)
+    port = random.randint(1024, 65535)
+    core = random.randint(0, 3)
+    irq = random.randint(0, 255)
+    ms = random.randint(1, 9999)
+    us = random.randint(1, 999)
+    service = random.choice(['NetworkManager', 'systemd', 'UPower', 'polkit', 'bluetooth', 'avahi-daemon', 'cups', 'sshd', 'crond', 'dbus'])
+    device = random.choice(['/dev/sda', '/dev/nvme0n1', '/dev/mem', '/dev/null', '/dev/urandom', '/dev/tty0', '/dev/input/event0'])
+    path = random.choice(['/proc/self/maps', '/sys/kernel/debug', '/var/log/journal', '/etc/ld.so.cache', '/run/systemd/private', '/sys/bus/pci/devices', '/etc/passwd', '/var/cache/pacman'])
+    flags = random.choice(['O_RDONLY|O_CLOEXEC', 'O_RDWR|O_NONBLOCK', 'O_WRONLY|O_CREAT|O_TRUNC', 'O_RDONLY|O_NOFOLLOW'])
+    prot = random.choice(['PROT_READ|PROT_WRITE', 'PROT_READ|PROT_EXEC', 'PROT_NONE', 'PROT_READ'])
+    sig = random.choice(['SIGTERM', 'SIGKILL', 'SIGHUP', 'SIGUSR1', 'SIGCHLD'])
+    state = random.choice(['authenticating', 'associating', 'associated', '4way_handshake', 'completed'])
+    op = random.choice(['add', 'remove', 'change', 'bind'])
+    subsystem = random.choice(['block', 'usb', 'pci', 'net'])
+    t = random.uniform(100, 9999)
+
+    short = [
+        f"[{pid}] exit(0)",
+        f"[{pid}] getpid() = {pid}",
+        f"[{pid}] getuid() = {random.randint(0,1000)}",
+        f"[{pid}] close({fd}) = 0",
+        f"[{pid}] sync()",
+        f"ok",
+        f"[OK]",
+        f"done.",
+        f"loaded.",
+        f"ready.",
+        f"[{pid}] pause()",
+        f"[{pid}] alarm({random.randint(1,60)}) = 0",
+        f"[{pid}] getgid() = {random.randint(0,1000)}",
+        f"kernel: [{t:.3f}] done.",
+        f"kernel: [{t:.3f}] ok",
+        f"...",
+        f"retry {random.randint(1,5)}/5",
+        f"skipped.",
+        f"cached.",
+        f"hit.",
+        f"miss.",
+        f"timeout.",
+        f"resolved.",
+        f"flushed.",
+        f"[{pid}] nanosleep({{0, {random.randint(1,999999999)}}}) = 0",
+        f"cpu{core}: ok",
+        f"irq/{irq}: ok",
+        f"[{pid}] umask(0{random.randint(0,7)}{random.randint(0,7)}{random.randint(0,7)}) = 0{random.randint(0,7)}{random.randint(0,7)}{random.randint(0,7)}",
+    ]
+
+    medium = [
+        f"[{pid}] read({fd}, {addr}, {size}) = {size}",
+        f"[{pid}] write({fd}, {addr}, {size}) = {size}",
+        f"[{pid}] open({path}, {flags}) = {fd}",
+        f"[{pid}] lseek({fd}, {random.randint(0,99999)}, SEEK_SET) = {random.randint(0,99999)}",
+        f"[{pid}] brk({addr}) = {addr2}",
+        f"[{pid}] kill({random.randint(1,9999)}, {sig}) = 0",
+        f"[{pid}] dup2({fd}, {random.randint(0,2)}) = 0",
+        f"[{pid}] pipe([{fd}, {fd+1}]) = 0",
+        f"kernel: [{t:.6f}] IRQ {irq}: handler registered at {addr}",
+        f"kernel: [{t:.6f}] CPU{core}: frequency set to {random.randint(400,3600)}MHz",
+        f"kernel: [{t:.6f}] {device}: sector {random.randint(0,999999)} read in {us}us",
+        f"systemd[1]: Started {service}.service in {ms}ms",
+        f"systemd[1]: Stopped {service}.service (code=exited, status=0)",
+        f"udev[{pid}]: seq {random.randint(1000,9999)} '{device}' {op} {subsystem}",
+        f"journal: flushed {random.randint(1,500)} entries to disk in {ms}ms",
+        f"Scanning {path}... found {random.randint(1,999)} entries [{ms}ms]",
+        f"Verifying {device}: SHA256 check passed [{us}us]",
+        f"Cache hit ratio: {random.uniform(60,99):.1f}% ({random.randint(1,9999)} hits / {random.randint(1,9999)} total)",
+        f"Entropy pool: {random.randint(100,4096)} bits, reseed in {random.randint(1,9999)}s",
+        f"Page fault at {addr} resolved [{random.choice(['minor','major'])}] in {us}us",
+        f"Socket {random.randint(3,99)} bound to 0.0.0.0:{port} [{ms}ms]",
+        f"DMA channel {random.randint(0,15)}: {random.randint(1000,9999)} bytes transferred in {us}us",
+        f"CPU{core} temp: {random.randint(30,95)}°C, throttle: {random.choice(['no','yes'])}",
+        f"IRQ {irq} affinity mask: {hex(random.randint(0,0xFF))}, balance: {random.choice(['ok','skipped'])}",
+    ]
+
+    long = [
+        f"[{pid}] mmap({addr}, {random.randint(4096,65536)}, {prot}, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = {addr2} <{random.uniform(0.0001,0.002):.6f}>",
+        f"[{pid}] openat(AT_FDCWD, {path}, {flags}, 0666) = {fd} <{random.uniform(0.0001,0.002):.6f}>",
+        f"[{pid}] clock_gettime(CLOCK_MONOTONIC, {{tv_sec={random.randint(0,9999)}, tv_nsec={random.randint(0,999999999)}}}) = 0",
+        f"[{pid}] poll([{{fd={fd}, events=POLLIN|POLLOUT}}], 1, {random.randint(0,5000)}) = {random.randint(0,1)} <{random.uniform(0.0001,0.05):.6f}>",
+        f"[{pid}] sendto({fd}, {addr}, {size}, MSG_NOSIGNAL, {{sa_family=AF_INET, sin_port=htons({port}), sin_addr=inet_addr(\"127.0.0.1\")}}, 16) = {size}",
+        f"[{pid}] clone(child_stack={addr}, flags=CLONE_VM|CLONE_FS|CLONE_FILES|CLONE_SIGHAND|CLONE_THREAD, tls={addr2}) = {random.randint(1000,9999)}",
+        f"[{pid}] stat({path}, {{st_mode=S_IFREG|0644, st_size={random.randint(0,999999)}, st_blocks={random.randint(0,9999)}, st_ino={random.randint(0,999999)}}}) = 0",
+        f"kernel: [{t:.6f}] audit: type=1400 audit({random.randint(0,9999)}.{random.randint(0,999)}:{random.randint(0,999)}): apparmor=ALLOWED operation=open profile=unconfined name={path}",
+        f"kernel: [{t:.6f}] {device}: {random.randint(512,65536)} sectors at {random.randint(0,999999)} LBA, flags={hex(random.randint(0,0xFFFF))}, transfer error, retrying... attempt {random.randint(1,5)}/5",
+        f"kernel: [{t:.6f}] CPU{core}: Core temperature above threshold ({random.randint(80,105)}°C), cpu clock throttled (total events = {random.randint(1,999)})",
+        f"systemd[1]: Starting {service}.service - {service} daemon (version {random.randint(1,9)}.{random.randint(0,99)}.{random.randint(0,99)}, PID {pid})...",
+        f"systemd[1]: {service}.service: Main process exited, code=exited, status={random.randint(0,1)}/SUCCESS, consumed {ms}ms CPU time, {random.randint(1,999)}MB peak memory",
+        f"dbus-daemon[{pid}]: [system] Activating via systemd: service name='{service}' unit='{service}.service' requested by :{random.randint(1,99)}.{random.randint(1,99)} (uid={random.randint(0,1000)})",
+        f"NetworkManager[{pid}]: <info>  [{random.randint(0,9999)}.{random.randint(0,9999)}] device (wlan0): supplicant interface state: {state} (BSSID={':'.join([f'{random.randint(0,255):02X}' for _ in range(6)])})",
+        f"Mounting virtual filesystems: tmpfs on /run type tmpfs (rw,nosuid,nodev,mode=755,inode64,size={random.randint(1,999)}MB) [{ms}ms]",
+        f"Spawning worker threads [{random.randint(1,8)}/{random.randint(8,16)}]: affinity mask {hex(random.randint(0,0xFF))}, stack={random.randint(4,64)}KB, priority={random.randint(0,99)}, sched={random.choice(['FIFO','RR','OTHER'])}",
+        f"Loading kernel parameters from /proc/cmdline: root=UUID={random.randint(0,9999)} rw quiet splash loglevel={random.randint(0,7)} systemd.unit=graphical.target iommu={random.choice(['on','off','pt'])}",
+        f"Resolving dependencies for libsystemd.so.{random.randint(0,9)}: found {random.randint(1,99)} shared objects across {random.randint(1,9)} search paths in {ms}ms",
+        f"Syncing filesystem buffers for {device}: {random.randint(1,999)} dirty pages, {random.randint(1,999)} writeback, {random.randint(1,999)} unstable, {random.randint(1,999)} towrite [{ms}ms OK]",
+        f"Entropy pool reseeded: {random.randint(256,4096)} bits collected from {random.randint(1,9)} sources (jitter={random.randint(1,999)}ns, hwrng={random.choice(['ok','unavailable'])})",
+    ]
+
+    pool = random.choice(['short', 'short', 'medium', 'medium', 'medium', 'long', 'long'])
+    if pool == 'short':
+        return random.choice(short)
+    elif pool == 'medium':
+        return random.choice(medium)
+    else:
+        return random.choice(long)
+
+def animate_bar():
+    width = get_width()
+    label = random.choice([
+        "Loading modules", "Syncing buffers", "Verifying blocks",
+        "Resolving deps", "Mounting fs", "Initializing", "Rebuilding cache",
+        "Scanning devices", "Flushing journal", "Checking integrity"
+    ])
+    bar_width = width - len(label) - 12
+    filled = 0
+    while filled <= bar_width:
+        bar = "#" * filled + "-" * (bar_width - filled)
+        percent = int((filled / bar_width) * 100)
+        print(f"\r{label}: [{bar}] {percent:3}%", end="", flush=True)
+        filled += random.randint(1, 3)
+        time.sleep(random.uniform(0.05, 0.15))
+    full_bar = "#" * bar_width
+    print(f"\r{label}: [{full_bar}] 100%")
+
+while True:
+    print(fake_line())
+    time.sleep(random.uniform(0.1, 0.4))
+    if random.random() < 0.08:
+        print("...")
+        time.sleep(random.uniform(1.0, 3.0))
+        print("[OK]")
+    if random.random() < 0.1:
+        animate_bar()
