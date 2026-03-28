@@ -1,5 +1,5 @@
 pkgname=plotune-bin
-pkgver=1.0.58.2
+pkgver=1.0.58.3
 pkgrel=1
 pkgdesc="Plotune – Modular data operations and signal orchestration platform"
 arch=('x86_64')
