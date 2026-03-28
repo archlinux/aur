@@ -1,6 +1,6 @@
 # Maintainer: Nick <evilnick002 at gmail dot com>
 pkgname=ron-mod-manager-bin
-pkgver=0.2.0
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="A mod manager for Ready or Not"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=(
     "$pkgname-$pkgver.deb::https://github.com/EvilNick2/ron-mod-manager/releases/download/v$pkgver/RoN.Mod.Manager_${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/EvilNick2/ron-mod-manager/main/LICENSE"
 )
-sha256sums=('817c3f7a4cd9dc2b87064d1adc42a20b1491adf1a93e27ac01979794f9dddd13'
+sha256sums=('aa6d6bdf2d48f0a47edc3d643ab2bf9cb3b3b94ab6b9475fe7d0dc30675c93fb'
             '3f808d84507dec57b4fc8f9dafeb9f9af97f9d1d9b33ffaa517134791999ead6')
 
 prepare() {

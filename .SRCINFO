@@ -1,6 +1,6 @@
 pkgbase = ron-mod-manager-bin
 	pkgdesc = A mod manager for Ready or Not
-	pkgver = 0.2.0
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/EvilNick2/ron-mod-manager
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = ron-mod-manager-bin
 	depends = webkit2gtk-4.1
 	provides = ron-mod-manager
 	conflicts = ron-mod-manager
-	source = ron-mod-manager-bin-0.2.0.deb::https://github.com/EvilNick2/ron-mod-manager/releases/download/v0.2.0/RoN.Mod.Manager_0.2.0_amd64.deb
+	source = ron-mod-manager-bin-0.2.2.deb::https://github.com/EvilNick2/ron-mod-manager/releases/download/v0.2.2/RoN.Mod.Manager_0.2.2_amd64.deb
 	source = LICENSE::https://raw.githubusercontent.com/EvilNick2/ron-mod-manager/main/LICENSE
-	sha256sums = 817c3f7a4cd9dc2b87064d1adc42a20b1491adf1a93e27ac01979794f9dddd13
+	sha256sums = aa6d6bdf2d48f0a47edc3d643ab2bf9cb3b3b94ab6b9475fe7d0dc30675c93fb
 	sha256sums = 3f808d84507dec57b4fc8f9dafeb9f9af97f9d1d9b33ffaa517134791999ead6
 
 pkgname = ron-mod-manager-bin
