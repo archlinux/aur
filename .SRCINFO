@@ -1,6 +1,6 @@
 pkgbase = animeko-appimage-beta
 	pkgdesc = 集找番、追番、看番的一站式弹幕追番平台（Beta ）
-	pkgver = 5.4.0.beta05
+	pkgver = 5.4.0beta05
 	pkgrel = 1
 	url = https://github.com/open-ani/animeko/
 	arch = x86_64
