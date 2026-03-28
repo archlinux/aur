@@ -1,0 +1,11 @@
+pkgbase = tapeback-llm
+	pkgdesc = LLM summarization support for tapeback (Anthropic, OpenAI, Gemini, etc.)
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://github.com/yastcher/tapeback
+	install = tapeback-llm.install
+	arch = any
+	license = Apache-2.0
+	depends = tapeback
+
+pkgname = tapeback-llm
