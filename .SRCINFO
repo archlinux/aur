@@ -1,7 +1,7 @@
 pkgbase = vdr-iptv
 	pkgdesc = Integrates multicast IPTV transport streams seamlessly into VDR
 	pkgver = 2.6.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Zabrimus/vdr-plugin-iptv
 	arch = x86_64
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = vdr-iptv
 	arch = aarch64
 	license = GPL2
 	depends = curl
-	depends = vdr-api=11
+	depends = vdr-api=12
 	optdepends = vlc: Needed for vlc2iptv
 	backup = etc/vdr/conf.avail/50-iptv.conf
 	backup = etc/vdr/plugins/iptv/vlcinput/3Sat.conf
