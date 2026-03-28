@@ -1,24 +1,16 @@
 diff --git a/applets/pager/pagermodel.cpp b/applets/pager/pagermodel.cpp
-index 5685b38d21..a88bbfe6b7 100644
+index 5685b38d21..1bcbef86ea 100644
 --- a/applets/pager/pagermodel.cpp
 +++ b/applets/pager/pagermodel.cpp
-@@ -20,6 +20,7 @@
- #include <QDBusPendingCall>
- #include <QGuiApplication>
- #include <QMetaEnum>
-+#include <QPointer>
- #include <QScreen>
- #include <QUuid>
- 
-@@ -47,6 +48,7 @@ public:
+@@ -47,6 +47,7 @@ public:
  
      bool showOnlyCurrentScreen = false;
      QRect screenGeometry;
-+    QPointer<QScreen> screen;
++    QString screenName;
      QRect virtualGeometry;
  
      WindowTasksModel *tasksModel = nullptr;
-@@ -59,6 +61,7 @@ public:
+@@ -59,6 +60,7 @@ public:
      QMetaObject::Connection virtualDesktopNumberConn;
      QMetaObject::Connection virtualDesktopNamesConn;
      QMetaObject::Connection virtualDesktopPositionsConn;
@@ -26,7 +18,7 @@ index 5685b38d21..a88bbfe6b7 100644
  
      QList<WindowModel *> windowModels;
  
-@@ -138,7 +141,12 @@ void PagerModel::Private::refreshDataSource()
+@@ -138,7 +140,12 @@ void PagerModel::Private::refreshDataSource()
          QObject::disconnect(activityNamesConn);
  
          QObject::disconnect(activityInfo, &ActivityInfo::currentActivityChanged, q, &PagerModel::currentPageChanged);
@@ -40,7 +32,7 @@ index 5685b38d21..a88bbfe6b7 100644
      } else {
          QObject::disconnect(activityNumberConn);
          activityNumberConn = QObject::connect(activityInfo, &ActivityInfo::numberOfRunningActivitiesChanged, q, [this]() {
-@@ -153,8 +161,8 @@ void PagerModel::Private::refreshDataSource()
+@@ -153,8 +160,8 @@ void PagerModel::Private::refreshDataSource()
          QObject::disconnect(virtualDesktopNumberConn);
          QObject::disconnect(virtualDesktopNamesConn);
          QObject::disconnect(virtualDesktopPositionsConn);
@@ -50,17 +42,7 @@ index 5685b38d21..a88bbfe6b7 100644
          QObject::connect(activityInfo, &ActivityInfo::currentActivityChanged, q, &PagerModel::currentPageChanged, Qt::UniqueConnection);
      }
  
-@@ -250,7 +258,9 @@ bool PagerModel::enabled() const
- void PagerModel::setEnabled(bool enabled)
- {
-     if (enabled && !d->enabled) {
-+        refreshScreen();
-         refresh();
-+
-         d->enabled = true;
-         Q_EMIT enabledChanged();
-     } else if (!enabled && d->enabled) {
-@@ -261,6 +271,7 @@ void PagerModel::setEnabled(bool enabled)
+@@ -261,6 +268,7 @@ void PagerModel::setEnabled(bool enabled)
          disconnect(d->virtualDesktopNumberConn);
          disconnect(d->virtualDesktopNamesConn);
          disconnect(d->virtualDesktopPositionsConn);
@@ -68,84 +50,124 @@ index 5685b38d21..a88bbfe6b7 100644
  
          qDeleteAll(d->windowModels);
          d->windowModels.clear();
-@@ -322,11 +333,11 @@ void PagerModel::setScreenGeometry(const QRect &geometry)
+@@ -322,11 +330,29 @@ void PagerModel::setScreenGeometry(const QRect &geometry)
  {
      if (d->screenGeometry != geometry) {
          d->screenGeometry = geometry;
-+        refreshScreen();
 +        refresh();
  
          if (d->showOnlyCurrentScreen) {
              Q_EMIT pagerItemSizeChanged();
--
++        }
+ 
 -            refresh();
++        Q_EMIT showOnlyCurrentScreenChanged();
++    }
++}
++
++QString PagerModel::screenName() const
++{
++    return d->screenName;
++}
++
++void PagerModel::setScreenName(const QString &screenName)
++{
++    if (d->screenName != screenName) {
++        d->screenName = screenName;
++        refresh();
++
++        if (d->showOnlyCurrentScreen) {
++            Q_EMIT pagerItemSizeChanged();
          }
  
          Q_EMIT showOnlyCurrentScreenChanged();
-@@ -336,7 +347,8 @@ void PagerModel::setScreenGeometry(const QRect &geometry)
+@@ -336,7 +362,9 @@ void PagerModel::setScreenGeometry(const QRect &geometry)
  int PagerModel::currentPage() const
  {
      if (d->pagerType == VirtualDesktops) {
 -        return d->virtualDesktopInfo->desktopIds().indexOf(d->virtualDesktopInfo->currentDesktop());
-+        QVariant desktopId = d->screen ? d->virtualDesktopInfo->currentDesktopByScreenName(d->screen->name()) : d->virtualDesktopInfo->currentDesktop();
++        QVariant desktopId =
++            !d->screenName.isEmpty() ? d->virtualDesktopInfo->currentDesktopByScreenName(d->screenName) : d->virtualDesktopInfo->currentDesktop();
 +        return d->virtualDesktopInfo->desktopIds().indexOf(desktopId);
      } else {
          return d->activityInfo->runningActivities().indexOf(d->activityInfo->currentActivity());
      }
-@@ -493,7 +505,13 @@ void PagerModel::changePage(int page)
+@@ -493,7 +521,13 @@ void PagerModel::changePage(int page)
          }
      } else {
          if (d->pagerType == VirtualDesktops) {
 -            d->virtualDesktopInfo->requestActivate(d->virtualDesktopInfo->desktopIds().at(page));
 +            QVariant desktopId = d->virtualDesktopInfo->desktopIds().at(page);
 +
-+            if (d->screen) {
-+                d->virtualDesktopInfo->requestActivateOnScreen(desktopId, d->screen->name());
++            if (!d->screenName.isEmpty()) {
++                d->virtualDesktopInfo->requestActivateOnScreen(desktopId, d->screenName);
 +            } else {
 +                d->virtualDesktopInfo->requestActivate(desktopId);
 +            }
          } else {
              const QStringList &runningActivities = d->activityInfo->runningActivities();
              if (page < runningActivities.length()) {
-@@ -613,4 +631,25 @@ void PagerModel::computePagerItemSize()
+@@ -613,4 +647,11 @@ void PagerModel::computePagerItemSize()
      }
  }
  
 +void PagerModel::slotCurrentDesktopForScreenChanged(const QString &screenName)
 +{
-+    if (!d->screen || d->screen->name() == screenName) {
++    if (d->screenName.isEmpty() || d->screenName == screenName) {
 +        Q_EMIT currentPageChanged();
-+    }
-+}
-+
-+void PagerModel::refreshScreen()
-+{
-+    d->screen = nullptr;
-+
-+    for (const auto screens = qGuiApp->screens(); auto screen : screens) {
-+        const QRect screenGeometry = screen->geometry();
-+
-+        if (screenGeometry == d->screenGeometry) {
-+            d->screen = screen;
-+            break;
-+        }
 +    }
 +}
 +
  #include "moc_pagermodel.cpp"
 diff --git a/applets/pager/pagermodel.h b/applets/pager/pagermodel.h
-index 7fee46aa8d..8f70a20cf4 100644
+index 7fee46aa8d..535fa95697 100644
 --- a/applets/pager/pagermodel.h
 +++ b/applets/pager/pagermodel.h
-@@ -106,6 +106,8 @@ Q_SIGNALS:
+@@ -25,6 +25,7 @@ class PagerModel : public QAbstractListModel, public QQmlParserStatus
+     Q_PROPERTY(bool shouldShowPager READ shouldShowPager NOTIFY shouldShowPagerChanged)
+     Q_PROPERTY(bool showDesktop READ showDesktop WRITE setShowDesktop NOTIFY showDesktopChanged)
+     Q_PROPERTY(bool showOnlyCurrentScreen READ showOnlyCurrentScreen WRITE setShowOnlyCurrentScreen NOTIFY showOnlyCurrentScreenChanged)
++    Q_PROPERTY(QString screenName READ screenName WRITE setScreenName NOTIFY screenNameChanged)
+     Q_PROPERTY(QRect screenGeometry READ screenGeometry WRITE setScreenGeometry NOTIFY screenGeometryChanged)
+     Q_PROPERTY(int currentPage READ currentPage NOTIFY currentPageChanged)
+     Q_PROPERTY(int layoutRows READ layoutRows NOTIFY layoutRowsChanged)
+@@ -68,6 +69,9 @@ public:
+     QRect screenGeometry() const;
+     void setScreenGeometry(const QRect &geometry);
+ 
++    QString screenName() const;
++    void setScreenName(const QString &screenName);
++
+     int currentPage() const;
+ 
+     int layoutRows() const;
+@@ -100,12 +104,14 @@ Q_SIGNALS:
+     void showDesktopChanged() const;
+     void showOnlyCurrentScreenChanged() const;
+     void screenGeometryChanged() const;
++    void screenNameChanged() const;
+     void currentPageChanged() const;
+     void layoutRowsChanged() const;
+     void pagerItemSizeChanged() const;
  
  private Q_SLOTS:
      void computePagerItemSize();
 +    void slotCurrentDesktopForScreenChanged(const QString &screenName);
-+    void refreshScreen();
  
  private:
      class Private;
+diff --git a/applets/pager/qml/main.qml b/applets/pager/qml/main.qml
+index 26b073aa06..846a190def 100644
+--- a/applets/pager/qml/main.qml
++++ b/applets/pager/qml/main.qml
+@@ -141,6 +141,7 @@ PlasmoidItem {
+         showDesktop: (Plasmoid.configuration.currentDesktopSelected === 1)
+ 
+         showOnlyCurrentScreen: Plasmoid.configuration.showOnlyCurrentScreen
++        screenName: root.Screen.name
+         screenGeometry: Plasmoid.containment.screenGeometry
+ 
+         pagerType: root.isActivityPager ? PagerModel.Activities : PagerModel.VirtualDesktops
 diff --git a/applets/taskmanager/qml/ContextMenu.qml b/applets/taskmanager/qml/ContextMenu.qml
 index a848876f4c..0ed3423c32 100644
 --- a/applets/taskmanager/qml/ContextMenu.qml

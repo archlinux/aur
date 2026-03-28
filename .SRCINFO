@@ -1,7 +1,7 @@
 pkgbase = plasma-desktop-povd
 	pkgdesc = KDE Plasma Desktop (patched for per-output virtual desktops)
 	pkgver = 6.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
 	groups = plasma
@@ -103,6 +103,6 @@ pkgbase = plasma-desktop-povd
 	validpgpkeys = 1FA881591C26B276D7A5518EEAAF29B42A678C20
 	sha256sums = c5c026bb5a4a29aaf79a9bc07e77873c851f625ef5ba94ce0b717da6f18b1a18
 	sha256sums = SKIP
-	sha256sums = 592e39f85cd20a3ac85e44a3b42a5f4d2ab20e0c335674d580ed9b5ab34391df
+	sha256sums = c9d981e089bf59fb62c73a15c5e1cec8e9233407357c12b798f463b40b568ed2
 
 pkgname = plasma-desktop-povd
