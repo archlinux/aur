@@ -10,6 +10,6 @@ pkgbase = bangla-typer-bin
 	provides = bangla-typer
 	conflicts = bangla-typer
 	source = bangla-typer-1.0.0.tar.gz::https://github.com/mehad605/Bangla_Typer/releases/download/v1.0.0/bangla-typer-1.0.0.tar.gz
-	sha256sums = a43270d111703a2f99ce62555d5446007a461e1007779e02e2abea5d11317fce
+	sha256sums = 0d6030f763d04f9cd8af625ea6d75f12f25717fd75b6ebfd857e463b9ce71198
 
 pkgname = bangla-typer-bin
