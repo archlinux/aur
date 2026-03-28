@@ -2,7 +2,7 @@
 # Contributor: Nayrosk
 
 pkgname=claude-cowork-service
-pkgver=1.0.21
+pkgver=1.0.22
 pkgrel=1
 pkgdesc="Native Linux backend for Claude Desktop Cowork"
 arch=('x86_64' 'aarch64')
@@ -17,7 +17,7 @@ makedepends=('go')
 install="${pkgname}.install"
 
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('80656da3574d33f184e3ca92ba5a55fc1d88028680d4d3c5d913b3319c3f3312')
+sha256sums=('2bd44ef4c935604459a26887badee38bd0a3766a1d2fffeafd8ce76046cffb17')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
