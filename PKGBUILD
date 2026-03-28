@@ -4,7 +4,7 @@ pkgver=0.1.0
 pkgrel=1
 pkgdesc='Proton VPN client with TUI for Linux (WireGuard + Stealth)'
 arch=('x86_64')
-url='https://github.com/grennboy527/pVPN'
+url='https://github.com/YourDoritos/pVPN'
 license=('GPL-3.0-or-later')
 depends=('glibc')
 makedepends=('go>=1.22' 'git')
