@@ -9,7 +9,7 @@ pkgbase = arctis-sound-manager
 	makedepends = python-installer
 	makedepends = uv
 	depends = python>=3.10
-	depends = python-pyside6
+	depends = pyside6
 	depends = python-dbus-next
 	depends = python-pulsectl
 	depends = python-pyudev

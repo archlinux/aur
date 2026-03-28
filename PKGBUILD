@@ -8,7 +8,7 @@ url="https://github.com/loteran/Arctis-Sound-Manager"
 license=('GPL-3.0-or-later')
 depends=(
     'python>=3.10'
-    'python-pyside6'
+    'pyside6'
     'python-dbus-next'
     'python-pulsectl'
     'python-pyudev'
@@ -26,7 +26,7 @@ optdepends=(
 makedepends=('python-installer' 'uv')
 install=arctis-sound-manager.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/loteran/Arctis-Sound-Manager/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('50a6880441cf2b41c4b56a3a576204b7629b905cad02baa2d423eec0d4428eb3')
+sha256sums=('ad0bb22256ff47e0c42c9418c25cd5a83640e2d20bcebae29a82f09ce54c9f30')
 
 build() {
     cd "Arctis-Sound-Manager-$pkgver"
