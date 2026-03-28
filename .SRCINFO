@@ -1,0 +1,12 @@
+pkgbase = crystal-liger
+	pkgdesc = Comprehensive, cross-platform Crystal Lang LSP implementation
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/navid-m/liger
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = shards
+	source = liger-0.1.2.tar.gz::https://github.com/navid-m/liger/archive/v0.1.2.tar.gz
+	b2sums = b786a7a3782528ad89fcf48d112fd3bdbcb8b14afe31990264c813a68a4ac4b5e343d9c27d3eea04fcccec405e6c1e3397cbde34dda55807ef427e0bff0ffeac
+
+pkgname = crystal-liger
