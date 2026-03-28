@@ -1,18 +1,16 @@
 # Maintainer: aliu <aaronliu0130 @gmail.com>
-pkgname='ttf-monaspice-huhanme-nerd-font-bin'
-pkgver=1.000_3.1.1
-pkgrel=3
-pkgdesc="GitHub's Monaspace, with the Humanist, Handwriting and Mechanical variants for the normal, italic (& bold italic), and bold variants, patched with nerd font glyphs on top"
+pkgname='otf-monaspice-huhanme-nerd-font-bin'
+pkgver=1.400
+pkgrel=1
+pkgdesc="GitHub's Monaspace with different subfamilies for the normal, italic, and bold (& bold italic) variants"
 arch=('any')
 url='https://github.com/aaronliu0130/monaspice'
 license=('OFL-1.1-RFN')
-provides=('ttf-monaspice' 'ttf-font-nerd')
-# remove the -2 when the next version comes out
-source=("monaspice-${pkgver}-2.tar.gz::https://github.com/aaronliu0130/monaspice/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('96a05bc7882246c588d39a3ddbbcc52e8c4608ca82305cc67b5c9c56e49778af')
+provides=('ttf-font-nerd')
+replaces=('ttf-monaspice-huhanme-nerd-font-bin')
+source=("https://github.com/aaronliu0130/monaspice/releases/download/v1.400/otf-monaspice-huhanme-nerd-font-1.400-1-any.pkg.tar.zst")
+sha256sums=('cacce183f186c74d03b531d7d40d121ee9edce8647072f3f3654fe4b3aa8563f')
 
 package() {
-	cd "monaspice-${pkgver}"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/monaspice"
-	install -Dm644 MonaspiceHuHanMeNF* -t "${pkgdir}/usr/share/fonts/TTF"
+	mv "$srcdir/usr" "$pkgdir/usr"
 }
