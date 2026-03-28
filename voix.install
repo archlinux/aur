@@ -1,9 +1,10 @@
 post_install() {
-    echo ">>> Voix has been installed."
-    echo ">>> Please review the configuration file at /etc/voix.conf"
-    echo ">>> and the PAM configuration at /etc/pam.d/voix"
+    echo ">>> Voix has ascended to your system."
+    echo ">>> The runes of ordination are found at /etc/voix.conf"
+    echo ">>> The Ritual of Proof (PAM) is handled at /etc/pam.d/voix"
 }
 
 post_upgrade() {
+    echo ">>> The artifact has been reforged. Rites remain preserved."
     post_install
 }

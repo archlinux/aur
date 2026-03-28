@@ -1,31 +1,26 @@
-# Voix - A Secure Privilege Management Tool
+# Voix - The Keeper of Realms (Arch User Repository)
 
-## Overview
+## Prophecy
 
-Voix is a secure, modern, and easy-to-use privilege escalation tool designed to replace traditional solutions like `sudo` and `doas`. It provides a flexible, rule-based system for granting permissions and uses the Pluggable Authentication Modules (PAM) framework for authentication.
+Born from the ancient runes of OpenDoas, Voix is a secure, mystical invocation designed to govern the ascension of privileges across your systems. Through the pact of Pluggable Authentication Modules (PAM) and immutable rules, only the worthy are granted the power to traverse higher planes of execution.
 
-**Built from scratch but inspired by OpenDoas**, Voix provides a secure alternative to sudo with PAM authentication support built-in.
+"Where `sudo` scatters trust, Voix binds it."
 
-## Features
+## Arch Linux Ascension (AUR)
 
-- **Controlled Privilege Escalation**: Execute commands with elevated privileges only when explicitly configured.
-- **PAM Authentication**: Secure authentication using Pluggable Authentication Modules.
-- **Simple, Intuitive Configuration**: Uses a clear, easy-to-understand syntax in `voix.conf`.
-- **Shell Integration**: Properly executes commands within the user's shell environment.
-- **Security First**: Designed with security as a top priority.
-- **Timestamp Support**: Optional persist authentication (similar to sudo).
+This repository contains the sacred PKGBUILD for the Arch Linux planes.
 
-## Installation
+### Installation via AUR Helper
 
-### Arch Linux (AUR)
-
-For Arch Linux users, Voix is available in the Arch User Repository (AUR). You can install it using your favorite AUR helper (e.g., `yay`, `paru`):
+The easiest path to ascension is through your favorite AUR helper:
 
 ```bash
 yay -S voix
 ```
 
-Alternatively, you can build and install it manually:
+### Manual Forge
+
+For those who prefer to build by hand:
 
 ```bash
 git clone https://aur.archlinux.org/voix.git
@@ -33,120 +28,45 @@ cd voix
 makepkg -si
 ```
 
-### From Source
+## The Arcane Arts (Features)
 
-This is the recommended method for all other Linux distributions.
+- **Ascension by Design**: Execute incantations with elevated privileges only when explicitly ordained by the Elders.
+- **The PAM Pact**: Cryptographically secure authentication tied into your realm’s deep foundations.
+- **Runes of Clarity**: Configuration is ordained in unmistakable syntax within the `/etc/voix.conf` sanctuary.
+- **Seamless Transmutation**: Properly spawns the user's shell environment upon successful ascent.
+- **Sanctified Tokens**: Optional time-gated persistence of power, mimicking familiar boons.
 
-#### Prerequisites
+## The Runes of Law (Configuration)
 
-To build Voix, you will need the following dependencies:
+The heart of Voix is defined in `/etc/voix.conf`.
 
-- A C++20 compliant compiler (e.g. Clang 21+)
-- CMake (version 3.18 or higher)
-- Ninja (recommended) or Make
-- PAM development libraries (e.g., `libpam-dev` on Debian/Ubuntu, `pam-devel` on Fedora/CentOS)
-- `pkg-config`
+`[ordain|shun] [trust] <ident> [mask <target>] [rite <incantation> [args ...]]`
 
-#### Build Steps
-
-1. **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/Veridian-Zenith/Voix.git
-    cd Voix
-    ```
-
-2. **Configure the project with CMake:** This will generate the build files in a `build` directory.
-
-    ```bash
-    cmake -B build
-    ```
-
-3. **Build the project:** This will compile the source code and create the `voix` executable.
-
-    ```bash
-    cmake --build build
-    ```
-
-#### Final Steps
-
-To install Voix on your system, run the following command. This will copy the binary, configuration files, and documentation to their appropriate locations and set the necessary permissions.
-
-```bash
-sudo cmake --install build
-```
-
-## Configuration
-
-Voix is configured via a simple configuration file at `/etc/voix.conf`.
-
-### Main Configuration (`/etc/voix.conf`)
-
-The syntax is as follows:
-`(permit|deny) [nopass] <ident> [as <target>] [cmd <command> [args ...]]`
-
-**Example:**
+**An Offering to the Config:**
 
 ```conf
-# Allow members of the wheel group to run any command
-permit :wheel
+# The High Circle may invoke anything with ritual trust
+ordain trust :wheel
 
-# Allow user "admin" to run /usr/bin/systemctl as root without a password
-permit nopass admin as root cmd /usr/bin/systemctl
+# The Initiate may gaze into the system state without a token of proof
+ordain trust initiate mask root rite /usr/bin/systemctl
 
-# Deny user "guest" from running any commands
-deny guest
+# Exiled souls shall remain shunned
+shun exiled
 ```
 
-### PAM Configuration (`/etc/pam.d/voix`)
+## Invoking the Power
 
-Voix uses PAM for authentication. The default configuration is usually sufficient, but can be modified for advanced use cases like LDAP or multi-factor authentication.
-
-**Default PAM configuration:**
-
-```text
-#%PAM-1.0
-auth       include    system-auth
-account    include    system-auth
-session    include    system-auth
-```
-
-## Usage
-
-To run a command with elevated privileges:
+To cast a command beyond your station:
 
 ```bash
-voix <command> [args...]
+voix <incantation> [args...]
 ```
 
-### Command Line Options
+- `-u USER, --user USER`: Invoke as a specific entity.
+- `-n, --non-interactive`: Fail the cast immediately if blood (password) is required.
+- `-C, --clear`: Forsake any lingering tokens of power instantly.
 
-- `-u USER, --user USER`: Execute command as specified user (default: root).
-- `-n, --non-interactive`: Fail if a password is required, rather than prompting.
-- `-C, --clear`: Clear any persisted authentications for the current user.
+## The Final Vow (License)
 
-## For Developers
-
-### Static Analysis with clang-tidy
-
-We use `clang-tidy` to ensure a high level of code quality. To run the static analysis checks, you will first need to generate a compile commands database.
-
-1. **Configure CMake to generate compile commands:**
-
-    ```shell
-    cmake -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-    ```
-
-2. **Run clang-tidy:**
-
-    ```fish
-    clang-tidy -p build src/*.cpp --checks='-*,bugprone-*,performance-*,readability-identifier-naming'
-    ```
-
-## License
-
-Voix is licensed under the Open Software License v3.0. See the LICENSE file for full details.
-
-## Contributing
-
-We welcome contributions! Please fork the repository, create a feature branch, make your changes, and submit a pull request.
+Voix is sealed and distributed under the Open Software License v3.0 (OSL-3.0). See the core `LICENSE` scroll for eternal details.
