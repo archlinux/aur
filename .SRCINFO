@@ -1,7 +1,7 @@
 pkgbase = vibe_player
 	pkgdesc = A music player for the Lyrion music server
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/GeoffClements/Vibe
 	arch = x86_64
 	arch = aarch64
