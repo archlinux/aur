@@ -1,7 +1,7 @@
 pkgbase = python-torchaudio-rocm
 	pkgdesc = Data manipulation and transformation for audio signal processing, powered by PyTorch (with ROCm/HIP support)
-	pkgver = 2.10.0
-	pkgrel = 3
+	pkgver = 2.11.0
+	pkgrel = 1
 	url = https://github.com/pytorch/audio
 	arch = x86_64
 	license = BSD
@@ -25,10 +25,10 @@ pkgbase = python-torchaudio-rocm
 	depends = zlib
 	optdepends = python-kaldi-io
 	provides = python-torchaudio
-	provides = python-torchaudio=2.10.0
+	provides = python-torchaudio=2.11.0
 	conflicts = python-torchaudio-git
 	conflicts = python-torchaudio
-	source = https://github.com/pytorch/audio/archive/refs/tags/v2.10.0.tar.gz
-	sha256sums = d0d0d9575025eb85150356a0b0de75b553484838006af17a62470b52d59845d1
+	source = https://github.com/pytorch/audio/archive/refs/tags/v2.11.0.tar.gz
+	sha256sums = 599ec24e7e1eef476ef21f0178e33da00e2434f930ba42e9cc20bf4002220486
 
 pkgname = python-torchaudio-rocm
