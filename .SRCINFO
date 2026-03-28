@@ -1,6 +1,6 @@
 pkgbase = lttng-modules-dkms-git
 	pkgdesc = Kernel Modules for LTTng (DKMS)
-	pkgver = 2.13.0.rc1.311.g9f2d2694
+	pkgver = 2.15.0.pre.42.g862e4b50
 	pkgrel = 1
 	url = https://lttng.org/
 	arch = i686
@@ -13,9 +13,9 @@ pkgbase = lttng-modules-dkms-git
 	depends = dkms
 	provides = lttng-modules
 	conflicts = lttng-modules
-	source = git://git.lttng.org/lttng-modules.git
+	source = git+https://github.com/lttng/lttng-modules.git
 	source = dkms.conf
 	md5sums = SKIP
-	md5sums = 7da5840fbe926018b05faea01b7df698
+	md5sums = 384c66c3a1183176f171de210c4ca6fa
 
 pkgname = lttng-modules-dkms-git
