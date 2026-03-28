@@ -1,6 +1,6 @@
 pkgbase = weaveback-bin
 	pkgdesc = Bidirectional literate programming toolchain (noweb, macros, source tracing)
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/giannifer7/weaveback
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = weaveback-bin
 	conflicts = weaveback
 	conflicts = weaveback-git
 	options = !debug
-	source = weaveback-x86_64-linux.tar.gz::https://github.com/giannifer7/weaveback/releases/download/v0.4.0/weaveback-x86_64-linux.tar.gz
-	sha256sums = 7b2139c5ae4c5e22c73984c05c3be76314b1dcfb7273e979e55c7e64e1059329
+	source = weaveback-x86_64-linux.tar.gz::https://github.com/giannifer7/weaveback/releases/download/v0.4.1/weaveback-x86_64-linux.tar.gz
+	sha256sums = a4651a2f7d41cb8cb2eeba31bff76952522687e04df8ebcffe87301455a8bd86
 
 pkgname = weaveback-bin
