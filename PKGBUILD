@@ -5,11 +5,11 @@
 pkgname=fcitx5-skin-material
 pkgver=0.5
 _commit=be0d0de4fc744fec83276cd67268aef3d81a6fc0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Material Design-like skin for Fcitx5, from fcitx-skin-material."
 arch=('any')
 url="https://github.com/hrko99/fcitx-skin-material"
-license=('Apache')
+license=('Apache-2.0')
 depends=('fcitx5')
 source=("$url/archive/$_commit/v${pkgver}.tar.gz")
 md5sums=('b04ba017ebe5ded7d3644c33b31a504b')
