@@ -1,6 +1,6 @@
 # Maintainer: Jonas Gunz <arch@jonasgunz.de>
 pkgname=xcsoar
-pkgver=7.43
+pkgver=7.44
 pkgrel=1
 pkgdesc="... the open-source glide computer"
 arch=( x86_64 )
@@ -20,20 +20,11 @@ makedepends=(
 options=( !lto !buildflags )
 source=(
 	"${url}/archive/refs/tags/v${pkgver}.tar.gz"
-	"libboost.mk.patch"
-	"PathFormatter.patch"
 )
 _srcname="XCSoar-$pkgver"
 b2sums=(
-	"96b30560681672aaa3605dc8c02de3a0a08b4225ec99ae3535214f1bba836cf5e87c5813d8121627db9d044064ca9eec04342a962095c15c86f4d3fb4fd5904e"
-	"67ba1dd93a377f65dcf201e0e5bbeab20ca7361d66830f4848040d0159e2bf045134dc1b23fb129d9a5921585fea4219b96962c4b1ac38b4a33d84a211b09982"
-	"add62c977bdc8ad4d6732f74cb1a6940a5f8835626f7357ac906cc656278bdda1acbd215c0949560199a39e31afbcefb142c91b2738272c1c84c490d20d90fe9"
+	'87659558bf298da4ba591fdac217f905542bd59a3655fe6f26de405f94481df7de5fe6103474f058b3d388c7bf8b5f76bf69acf8da26428aa0b0cb7f2f12e09b'
 )
-
-prepare() {
-	patch "$srcdir/$_srcname/build/libboost.mk" "$srcdir/libboost.mk.patch"
-	patch "$srcdir/$_srcname/src/lib/fmt/PathFormatter.hpp" "$srcdir/PathFormatter.patch"
-}
 
 build() {
 	cd "$srcdir/$_srcname"
