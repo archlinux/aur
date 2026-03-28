@@ -2,7 +2,7 @@
 # Contributor: nemanjan00 <nemanjan00@gmail.com>
 
 pkgname=dsd-fme
-pkgver=2026
+pkgver=20251214
 pkgrel=1
 pkgdesc="Digital Speech Decoder - Florida Man Edition"
 arch=('i686' 'x86_64' 'aarch64')
@@ -44,7 +44,7 @@ depends=(
 optdepends=('pulseaudio: use pulse as audio input device')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lwvmobile/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('701692949f5da054c66b043a5de590ee8bdf6893e00fc5a217792633680222aa')
+sha256sums=('99392238734464728021c68507ec959013828eeec294c240ba39c4fd9d91a019')
 
 build() {
     cmake -B build -S "$srcdir/$pkgname-$pkgver" \
