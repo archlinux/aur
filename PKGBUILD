@@ -4,7 +4,7 @@ pkgbase=python-griffelib
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="Signatures for entire Python programs - lib"
 arch=('any')
@@ -16,9 +16,10 @@ makedepends=('python-hatchling'
              'python-build'
              'python-installer')
 #checkdepends=('python-pytest-import-check'
-#              'python-griffecli')
+#              'python-griffecli'
+#          )
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('ad10d79bf461537aa60a83b0ff15bad6')
+md5sums=('3bc9d1c18ee8fa272183e49e6463bb37')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
