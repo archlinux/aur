@@ -3,7 +3,7 @@
 
 pkgname=heroic-games-launcher-electron-git
 _pkgname=HeroicGamesLauncher
-pkgver=2.18.1.r57.g645fae05a
+pkgver=2.20.1.r22.g46edb4836
 pkgrel=1
 _electron=electron
 pkgdesc="Native GOG, Epic Games and Amazon games launcher. Development version (Git) using system Electron."
