@@ -1,0 +1,12 @@
+pkgbase = burnt-out-server
+	pkgdesc = Server for Burn't Out, a to-do app focused on preventing Burnout Syndrome
+	pkgver = 1.2.06
+	pkgrel = 1
+	url = https://github.com/wDona/Burnt-out
+	arch = any
+	license = MIT
+	depends = java-runtime
+	source = https://github.com/wDona/Burnt-out/releases/download/v1.2.06/burnt-out-server-1.2.06.jar
+	sha256sums = SKIP
+
+pkgname = burnt-out-server
