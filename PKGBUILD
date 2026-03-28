@@ -1,6 +1,6 @@
 # Maintainer: Da Chen <dachen@connect.hku.hk>
 pkgname=wayper
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Wayland-first wallpaper manager with Wallhaven integration and MCP server"
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=(
     'npm: install Electron dependencies'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yuukidach/wayper/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('996503524e11a5ae1667b8e080b137d83650206611aac1bd1b9f49c48c3d4334')
+sha256sums=('0b1e4ac9b53a1b41bedb341e35dfd7a5ee6ba10e1ba4a9eb327cafa42323610f')
 
 build() {
     cd "$pkgname-$pkgver"
