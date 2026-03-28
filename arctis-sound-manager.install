@@ -1,0 +1,42 @@
+post_install() {
+    echo "==> Arctis Sound Manager installed!"
+    echo ""
+    echo "  Run the setup script to deploy PipeWire configs and download"
+    echo "  the virtual surround HRIR file:"
+    echo ""
+    echo "    asm-setup"
+    echo ""
+    echo "  Then enable the services:"
+    echo ""
+    echo "    systemctl --user daemon-reload"
+    echo "    systemctl --user enable --now arctis-manager.service"
+    echo "    systemctl --user enable --now arctis-video-router.service"
+    echo "    systemctl --user enable --now filter-chain.service"
+    echo ""
+    echo "  Launch the GUI:"
+    echo ""
+    echo "    asm-gui"
+    echo ""
+
+    # Reload udev rules
+    udevadm control --reload-rules 2>/dev/null || true
+    udevadm trigger 2>/dev/null || true
+}
+
+post_upgrade() {
+    post_install
+}
+
+post_remove() {
+    echo "==> To clean up user configs:"
+    echo ""
+    echo "    systemctl --user disable --now arctis-manager.service"
+    echo "    systemctl --user disable --now arctis-video-router.service"
+    echo "    rm -rf ~/.config/arctis_manager"
+    echo "    rm -f ~/.config/pipewire/pipewire.conf.d/10-arctis-virtual-sinks.conf"
+    echo "    rm -f ~/.config/pipewire/pipewire.conf.d/sink-virtual-surround-7.1-hesuvi.conf"
+    echo "    rm -rf ~/.config/pipewire/filter-chain.conf.d/sonar-*.conf"
+    echo ""
+
+    udevadm control --reload-rules 2>/dev/null || true
+}
