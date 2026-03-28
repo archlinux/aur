@@ -14,8 +14,8 @@
 _pkgname='vision'
 pkgbase='python-torchvision-rocm'
 pkgname=('torchvision-rocm' 'python-torchvision-rocm')
-pkgver=0.25.0
-pkgrel=3
+pkgver=0.26.0
+pkgrel=1
 pkgdesc='Datasets, transforms, and models specific to computer vision (with ROCm/HIP support)'
 arch=('x86_64')
 url='https://github.com/pytorch/vision'
@@ -27,7 +27,8 @@ depends=(
     python-requests
     python-scipy
     python-sympy
-    python-pytorch-rocm
+    'python-pytorch-rocm>=2.11.0'
+    'python-pytorch-rocm<2.12.0'
     ffmpeg
     libjpeg-turbo
     libpng
@@ -43,20 +44,15 @@ makedepends=(
 )
 source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/pytorch/vision/archive/v${pkgver}.tar.gz"
-    "torchvision-0_17_1-fix-build.patch"
-    "ffmpeg-8.patch"
+    "glog_use_glog_export_none.patch"
 )
-sha256sums=(
-    'a7ac1b3ab489d71f6e27edfad1e27616e4b8a9b1517e60fce4a950600d3510e8'
-    'ed715ca202d2b010c50414e370ebc0492f0f42b298a8e6e03f9fe80b7ce60331'
-    '1c466d4ae0874a8ab6518cb3b0c7747f43060fb6803352ac9e13f2b5ecae1931'
-)
+sha256sums=('fb95b6b78b3801c4d4d6332f7a5a0b6c624588e1b39e0d6fa145227b0c749403'
+    'a611dadf2e125a7b73a026bac05c8327e776c24d4876f1b0bdfc9249c6f4fe37')
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
 
-    # https://github.com/pytorch/vision/issues/8307
-    patch -N -i "${srcdir}"/torchvision-0_17_1-fix-build.patch
-    patch -p1 -i "${srcdir}"/ffmpeg-8.patch
+    patch -N -i "${srcdir}/glog_use_glog_export_none.patch"
+    # patch -p1 -i "${srcdir}"/ffmpeg-8.patch
 }
 
 build() {
@@ -82,9 +78,6 @@ build() {
     # -fcf-protection is not supported by HIP/clang
     # https://rocm.docs.amd.com/projects/llvm-project/en/latest/reference/rocmcc.html#support-status-of-other-clang-options
     CXXFLAGS+=" -fcf-protection=none"
-
-    # exclude torchvision/csrc/vision.cpp in favor of the hipified source to avoid duplicate definition
-    # rm "${srcdir}/${_pkgname}-${pkgver}/torchvision/csrc/vision.cpp"
 
     cmake \
         -G Ninja \
