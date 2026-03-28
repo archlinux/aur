@@ -2,7 +2,7 @@
 pkgname=positron-ide-bin
 pkgver=2026.03.0.212
 _upstream_pkgver=${pkgver%.*}-${pkgver##*.}
-pkgrel=1
+pkgrel=2
 pkgdesc='A next-generation data science IDE from Posit'
 arch=(
     'x86_64'
@@ -21,6 +21,7 @@ depends=(
     'glib2'
     'gtk3'
     'libcups'
+    'libsecret'
     'libx11'
     'libxcb'
     'libxcomposite'
@@ -28,6 +29,7 @@ depends=(
     'libxext'
     'libxfixes'
     'libxkbcommon'
+    'libxkbfile'
     'libxrandr'
     'mesa'
     'nspr'
@@ -44,6 +46,7 @@ optdepends=(
     'vulkan-intel: Intel Vulkan driver'
     'vulkan-radeon: Radeon Vulkan driver'
     'vulkan-icd-loader: Vulkan ICD loader'
+    'webkit2gtk-4.1: Microsoft account authentication'
 )
 provides=(
     'positron-ide'
@@ -52,6 +55,7 @@ conflicts=(
     'positron-ide-devel-bin'
 )
 options=(
+    '!strip'
     '!debug'
 )
 source_x86_64=(
@@ -97,6 +101,9 @@ package() {
         "$pkgdir/usr/share/applications/positron-url-handler.desktop"
 
     chmod 4755 "$pkgdir/usr/share/positron/chrome-sandbox"
+
+    # Fix world-writable files from upstream .deb
+    find "$pkgdir" -type f -perm /0002 -exec chmod o-w {} +
 
     install -Dm644 \
         "$pkgdir/usr/share/positron/resources/app/LICENSE.txt" \
