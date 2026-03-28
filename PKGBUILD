@@ -7,7 +7,7 @@ url="https://test.com"
 license=('MIT')
 depends=("bash")
 source=("https://github.com/shadowfreddy25551/testpackage/archive/refs/heads/main.zip")
-sha256sums=('SKIP') # replace 'SKIP' with real checksum
+sha256sums=('d47e1e987d742266ed9c9985304854d527efce9eb3d25eaeb5796d1a4ef5e808')
 
 build() {
   return 0
