@@ -1,6 +1,6 @@
 pkgbase = heapusage
 	pkgdesc = Find memory leaks in Linux applications
-	pkgver = 2.17
+	pkgver = 2.33
 	pkgrel = 1
 	url = https://github.com/d99kris/heapusage
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = heapusage
 	depends = libelf
 	provides = heapusage
 	conflicts = heapusage
-	source = https://github.com/d99kris/heapusage/archive/refs/tags/v2.17.tar.gz
-	sha256sums = 8e24876b4ef3c5fb3aa53ba712b7506a74d91d2b34da37b62a0f49d15ff6ce05
+	source = https://github.com/d99kris/heapusage/archive/refs/tags/v2.33.tar.gz
+	sha256sums = 81e8611bbaa7ad34ff5a03b99fd4aa492786e8dbc9ff0592d8e481b51a0ccc98
 
 pkgname = heapusage
