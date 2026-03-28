@@ -2,20 +2,20 @@
 
 pkgname=cachyos-ananicy-rules-git
 _gitname=ananicy-rules
-pkgver=20230613.r319.gf139cf4
+pkgver=20260326.r1990.g40e7b0d
 pkgrel=1
 groups=('cachyos')
 arch=('any')
-license=('GPL')
+license=('GPL-3.0-only')
 pkgdesc='CachyOS - ananicy-rules'
 url='https://github.com/CachyOS/ananicy-rules'
 depends=('ananicy-cpp')
 makedepends=('git')
-source=("git+https://github.com/CachyOS/$_gitname")
+source=("git+$url")
 sha256sums=('SKIP')
-replaces=('ananicy-rules-git' 'cachyos-ananicy-rules')
-provides=('ananicy-rules-git' 'cachyos-ananicy-rules')
-conflicts=('ananicy-rules-git' 'cachyos-ananicy-rules' 'ananicy-git')
+replaces=('ananicy-rules-git')
+provides=("${pkgname%-bin}")
+conflicts=("${pkgname%-bin}")
 backup=(etc/ananicy.d/ananicy.conf)
 
 pkgver() {
@@ -31,5 +31,8 @@ prepare() {
 package() {
   cd $_gitname
   install -d "$pkgdir/etc/ananicy.d"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
   cp -rf $srcdir/$_gitname/* "$pkgdir/etc/ananicy.d"
 }
+
+# vim: sw=2 ts=2 et:
