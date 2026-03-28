@@ -1,6 +1,6 @@
 pkgbase = claudebar
 	pkgdesc = Waybar widget displaying Claude AI subscription usage with colored progress bars
-	pkgver = 0.1.16
+	pkgver = 0.1.17
 	pkgrel = 1
 	url = https://github.com/mryll/claudebar
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = claudebar
 	optdepends = otf-font-awesome: Claude brand icon (Font Awesome >= 7.2.0)
 	provides = waybar-claude-usage
 	conflicts = waybar-claude-usage
-	source = claudebar-0.1.16.tar.gz::https://github.com/mryll/claudebar/archive/refs/tags/v0.1.16.tar.gz
-	sha256sums = 28f95ec27a519a3a188f71cd6ea3d1f23239e9ed4e6dfc5ccf313f41a8b43549
+	source = claudebar-0.1.17.tar.gz::https://github.com/mryll/claudebar/archive/refs/tags/v0.1.17.tar.gz
+	sha256sums = 0067ad8b4eeba96ae304dd60d1d3f3effef5b0cb5eba074c1ccb69fea8f7817b
 
 pkgname = claudebar
