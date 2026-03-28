@@ -16,6 +16,7 @@ source=("Pencil-linux-x86_64-${pkgver}.AppImage::https://www.pencil.dev/download
         "LICENSE"
         "${pkgname}.install")
 sha256sums=('0feb36935952d235c64608af4bf5472d183664d53e819c7e96bece50f705a895'
+            'SKIP'
             'SKIP')
 noextract=("Pencil-linux-x86_64-${pkgver}.AppImage")
 

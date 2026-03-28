@@ -20,5 +20,6 @@ pkgbase = pencil-dev-appimage
 	source = pencil-dev-appimage.install
 	sha256sums = 0feb36935952d235c64608af4bf5472d183664d53e819c7e96bece50f705a895
 	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = pencil-dev-appimage
