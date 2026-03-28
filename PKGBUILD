@@ -2,7 +2,7 @@
 
 pkgname=tnl-git
 _pkgname=tnl
-pkgver=0.2.0.r0.g27de3be
+pkgver=0.2.0.r5.g6ec9413
 pkgrel=1
 pkgdesc="An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters"
 arch=(x86_64)
@@ -12,6 +12,7 @@ depends=(
   blas-openblas
   glibc
   libgcc
+  libgomp
   libstdc++
   metis
   onetbb
