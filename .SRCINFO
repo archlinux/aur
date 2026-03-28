@@ -1,17 +1,19 @@
 pkgbase = komodo-periphery
 	pkgdesc = Periphery server for the komodo monitor
 	pkgver = 2.0.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = https://komo.do/
 	arch = x86_64
-	license = GPL-1.0-or-later
+	license = GPL-3.0-only
 	makedepends = cargo
 	makedepends = git
 	depends = docker
+	depends = openssl
 	depends = glibc
-	depends = gcc-libs
+	depends = libgcc
 	conflicts = komodo-periphery-bin
+	options = !debug
 	backup = etc/komodo-periphery.toml
 	source = komodo::git+https://github.com/moghtech/komodo.git#tag=v2.0.0
 	source = komodo-peripheryd.service
@@ -21,7 +23,7 @@ pkgbase = komodo-periphery
 	sha256sums = e13b4146fbdc3e4263806f3e9c31efa6100220ed5187078a7253c0677451e60f
 	sha256sums = b03c59288a25abdb3e84a58c30bb4996ef3b046b7aa60133a7ebe3fdea81475a
 	sha256sums = 08aa0be0c76bcfb0ea6e73a08db5d619eb7f3dd76fa1ff74888ed9a13eb36d4d
-	sha256sums = f4b549451a3d22de81dd8ed933c290777581ef92f2276160e91092739c867aee
-	sha256sums = baae0d9e1c5d1cbf6594ff538c1a2daaacd6a1da7eca0f7996102a3c0e1ef11e
+	sha256sums = 51976440fb2005c6f05b6fff2b0498d6a37f7b968396db23fd91527af82f699a
+	sha256sums = a6d0a79175dd67d193e999a391d99c1ed0785e67773f3fd24d07deead4060c31
 
 pkgname = komodo-periphery
