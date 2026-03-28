@@ -1,6 +1,6 @@
 pkgbase = direwolf-git
 	pkgdesc = Software modem/TNC and APRS encoder/decoder
-	pkgver = 1.7.dev.A.r140.g46f31d4
+	pkgver = 1.8.beta1.r41.g78d6559
 	pkgrel = 1
 	url = https://github.com/wb2osz/direwolf
 	arch = i686
@@ -8,15 +8,14 @@ pkgbase = direwolf-git
 	arch = armv6h
 	arch = armv7h
 	arch = aarch64
-	license = GPL
-	makedepends = git
+	license = GPL-2.0-only
 	makedepends = cmake
 	depends = alsa-lib
-	optdepends = gpsd
-	optdepends = hamlib
+	depends = gpsd
+	depends = hamlib
 	provides = direwolf
 	conflicts = direwolf
-	source = git+https://github.com/wb2osz/direwolf.git#branch=dev
+	source = direwolf::git+https://github.com/wb2osz/direwolf.git#branch=dev
 	source = direwolf.service
 	source = direwolf-kiss.service
 	sha1sums = SKIP
