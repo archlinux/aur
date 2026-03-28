@@ -1,0 +1,13 @@
+post_install() {
+  echo ":: Miniflux requires PostgreSQL."
+  echo "   1. Create database: createdb -O miniflux miniflux"
+  echo "   2. Edit /etc/miniflux.conf with your DATABASE_URL"
+  echo "   3. Run initial migration: miniflux -migrate"
+  echo "   4. Create admin: miniflux -create-admin"
+  echo "   5. Start service: systemctl enable --now miniflux"
+}
+
+post_remove() {
+  echo "Note: system user 'miniflux' and /var/lib/miniflux were not removed."
+  echo "Remove manually if no longer needed: userdel miniflux && rm -rf /var/lib/miniflux"
+}
