@@ -16,7 +16,7 @@ source=(
 noextract=(systemrescue-"${pkgver}"-amd64.iso)
 
 sha256sums=('47d2348bbcbbaede14e4c93395b8a36585f6180384a9cbe973bb753a44ca40a0'
-            '920ab29211cda7710d4219efdbc3f9089eb8444aee16d602cf72d0023b3401cb')
+            '3069828b2396c65e2ba23d0639ddf6eb50d543f30c57ac019d5a07135c0f93f3')
 
 prepare() {
   cd "${srcdir}"
