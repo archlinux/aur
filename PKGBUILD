@@ -3,7 +3,7 @@
 
 _pkgbase=indicator-sysmonitor
 pkgbase="${_pkgbase}-git"
-pkgname=("${_pkgbase}-budgie-git" "${_pkgbase}-appindicator-git")
+pkgname=("${_pkgbase}-budgie-git")
 pkgver=r140.cc5d095
 pkgrel=2
 epoch=
@@ -49,27 +49,6 @@ package_indicator-sysmonitor-budgie-git() {
   cd ..
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/indicator-sysmonitor-budgie-git/LICENSE"
-
-  python -m compileall -d '/' "${pkgdir}/"
-  python -O -m compileall -d '/' "${pkgdir}/"
-}
-
-package_indicator-sysmonitor-appindicator-git() {
-  pkgdesc+="; appindicator version"
-  depends+=('libappindicator-gtk3')
-  conflicts+=('indicator-sysmonitor-appindicator')
-  provides+=('indicator-sysmonitor-appindicator')
-
-  cd "${_pkgbase}"
-
-  rm -rf build
-  mkdir build
-  cd build
-  meson --prefix=/usr
-  meson install --destdir "${pkgdir}"
-  cd ..
-
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/indicator-sysmonitor-appindicator-git/LICENSE"
 
   python -m compileall -d '/' "${pkgdir}/"
   python -O -m compileall -d '/' "${pkgdir}/"

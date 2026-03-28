@@ -26,14 +26,3 @@ pkgname = indicator-sysmonitor-budgie-git
 	provides = indicator-sysmonitor-budgie
 	conflicts = indicator-sysmonitor
 	conflicts = indicator-sysmonitor-budgie
-
-pkgname = indicator-sysmonitor-appindicator-git
-	pkgdesc = An Application Indicator showing various system parameters; appindicator version
-	depends = curl
-	depends = python-gobject
-	depends = python-psutil
-	depends = libappindicator-gtk3
-	provides = indicator-sysmonitor
-	provides = indicator-sysmonitor-appindicator
-	conflicts = indicator-sysmonitor
-	conflicts = indicator-sysmonitor-appindicator
