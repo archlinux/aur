@@ -1,5 +1,5 @@
 pkgname=jivexdv-bin
-pkgver=5.7_RC07
+pkgver=5.8_RC04
 pkgrel=1
 pkgdesc="JiveX DICOM Viewer"
 arch=(any)
@@ -8,7 +8,7 @@ depends=(java-runtime bash)
 makedepends=(7zip unzip)
 options=(!strip)
 source=(https://www.visus.com/fileadmin/content/pictures/Downloads/JiveX_DICOME_Viewer/SETUP_JiveXdv.exe)
-sha256sums=('f2fe71052d25bb5a9bda8c2cc92b471e6ccebe5571aee0097c837e6a81637569')
+sha256sums=('706606a7b12f76f3a969f02e82805dbd3054bf6071f2f33049dd852f972a50c1')
 
 package() {
 	cd "$srcdir"
