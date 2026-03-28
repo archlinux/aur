@@ -1,4 +1,5 @@
 *.run
+*.tgz
 *.zip
 *.zst
 src/
