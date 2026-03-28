@@ -1,6 +1,6 @@
 pkgbase = runa
 	pkgdesc = A fast and lightweight terminal file manager written in Rust
-	pkgver = 0.9.0
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/alexm-dev/runa
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = runa
 	license = Apache-2.0
 	makedepends = cargo
 	depends = gcc-libs
-	source = runa-0.9.0.tar.gz::https://github.com/alexm-dev/runa/archive/v0.9.0.tar.gz
-	sha256sums = c3041205b532266b028eba4031bf7b5be31653d65d2cdabc619a637aa3e53871
+	source = runa-0.9.1.tar.gz::https://github.com/alexm-dev/runa/archive/v0.9.1.tar.gz
+	sha256sums = 9a5da1a54f8a0cb64e6e54ab8496b66af613eaf45e5b17e63cc8a5cc390a5da7
 
 pkgname = runa
