@@ -1,6 +1,6 @@
 # Maintainer: Bruno Miguel <bruno@privacyrequired.com>
 pkgname=kdotool-git
-pkgver=0.2.1.1ad61ac
+pkgver=v0.2.1.r51.gc0fff47
 pkgrel=2
 pkgdesc="xdotool-like for KDE Wayland"
 arch=("x86_64")
@@ -18,7 +18,8 @@ md5sums=("SKIP")
 
 pkgver() {
     cd "$provides"
-    git describe --long --abbrev=7 | sed "s/^v//;s/\([^-]*-g\)//;s/-/./g"
+    #git describe --long --abbrev=7 | sed "s/^v//;s/\([^-]*-g\)//;s/-/./g"
+    git describe --long --abbrev=7 | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {

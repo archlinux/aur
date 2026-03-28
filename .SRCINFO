@@ -1,6 +1,6 @@
 pkgbase = kdotool-git
 	pkgdesc = xdotool-like for KDE Wayland
-	pkgver = 0.2.1.1ad61ac
+	pkgver = v0.2.1.r51.gc0fff47
 	pkgrel = 2
 	url = https://github.com/jinliu/kdotool
 	arch = x86_64
