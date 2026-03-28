@@ -1,0 +1,16 @@
+pkgbase = certamen
+	pkgdesc = TUI quiz game engine with SSH multiplayer support written in CPP with FTXUI
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/trintlermint/certamen
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = git
+	depends = yaml-cpp
+	depends = libssh
+	source = certamen-1.0.0.tar.gz::https://github.com/trintlermint/certamen/archive/v1.0.0.tar.gz
+	sha256sums = 1af143132ba44c25a1992206e6832358dbbf48b151396a3a9a27f7a67678c7dd
+
+pkgname = certamen
