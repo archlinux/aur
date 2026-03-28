@@ -1,6 +1,6 @@
 # Maintainer: odpay <https://github.com/odpay>
 pkgname=odzip
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Minimal file compression using LZ77 hash-chain matching and Huffman coding'
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc')
 provides=('odz')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/odpay/odzip/archive/v$pkgver.tar.gz")
-sha256sums=('acce695d331c1ce1358cbf081b0702e3b5b87c2055a5608c52b1def42f7a18aa')
+sha256sums=('90db0c1415344807efa18a4192bf2069f7a16c2d59ead70188ea2232dac811ed')
 
 build() {
     cmake -B build -S "$pkgname-$pkgver" \
