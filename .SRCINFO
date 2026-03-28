@@ -1,0 +1,16 @@
+pkgbase = termcraft-git
+	pkgdesc = Terminal-only 2D sandbox survival in Rust.
+	pkgver = 0.1.0.r4.g2d6531e
+	pkgrel = 1
+	url = https://github.com/pagel-s/termcraft
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0
+	makedepends = cargo
+	makedepends = git
+	provides = termcraft
+	conflicts = termcraft
+	source = termcraft::git+https://github.com/pagel-s/termcraft.git#branch=main
+	sha256sums = SKIP
+
+pkgname = termcraft-git
