@@ -6,12 +6,12 @@
 # against something you have installed, you'll have to disable it in the
 # configure below.
 
-pkgname=jellyfin-desktop-cef-libmpv-git
+pkgname=jellyfin-desktop-libmpv-git
 _gitname=mpv
 epoch=1
-pkgver=0.r54491.3e99d37
+pkgver=0.r54492.410d8ae
 pkgrel=1
-pkgdesc='libmpv for jellyfin-desktop-cef'
+pkgdesc='libmpv for jellyfin-desktop'
 arch=('x86_64')
 license=('GPL-2.0-or-later')
 url='https://mpv.io'
@@ -22,7 +22,7 @@ makedepends=('git'
              'pacman-contrib' # for pactree, used in find-deps.py
              'vulkan-headers'
              'wayland-protocols')
-provides=('jellyfin-desktop-cef-libmpv')
+provides=('jellyfin-desktop-libmpv')
 options=('!emptydirs')
 source=('git+https://github.com/andrewrabert/mpv#branch=libmpv-vulkan-gpu-next'
         'find-deps.py')
@@ -67,19 +67,19 @@ build() {
 package() {
   cd "$srcdir/$_gitname"
 
-  # Install libmpv to /opt/jellyfin-desktop-cef/libmpv/
-  install -Dm755 build/libmpv.so.2 "$pkgdir/opt/jellyfin-desktop-cef/libmpv/lib/libmpv.so.2"
-  ln -s libmpv.so.2 "$pkgdir/opt/jellyfin-desktop-cef/libmpv/lib/libmpv.so"
+  # Install libmpv to /opt/jellyfin-desktop/libmpv/
+  install -Dm755 build/libmpv.so.2 "$pkgdir/opt/jellyfin-desktop/libmpv/lib/libmpv.so.2"
+  ln -s libmpv.so.2 "$pkgdir/opt/jellyfin-desktop/libmpv/lib/libmpv.so"
 
   # Install headers
-  install -Dm644 "$srcdir/$_gitname/include/mpv/client.h" "$pkgdir/opt/jellyfin-desktop-cef/libmpv/include/mpv/client.h"
-  install -Dm644 "$srcdir/$_gitname/include/mpv/render.h" "$pkgdir/opt/jellyfin-desktop-cef/libmpv/include/mpv/render.h"
-  install -Dm644 "$srcdir/$_gitname/include/mpv/render_gl.h" "$pkgdir/opt/jellyfin-desktop-cef/libmpv/include/mpv/render_gl.h"
-  install -Dm644 "$srcdir/$_gitname/include/mpv/render_vk.h" "$pkgdir/opt/jellyfin-desktop-cef/libmpv/include/mpv/render_vk.h"
-  install -Dm644 "$srcdir/$_gitname/include/mpv/stream_cb.h" "$pkgdir/opt/jellyfin-desktop-cef/libmpv/include/mpv/stream_cb.h"
+  install -Dm644 "$srcdir/$_gitname/include/mpv/client.h" "$pkgdir/opt/jellyfin-desktop/libmpv/include/mpv/client.h"
+  install -Dm644 "$srcdir/$_gitname/include/mpv/render.h" "$pkgdir/opt/jellyfin-desktop/libmpv/include/mpv/render.h"
+  install -Dm644 "$srcdir/$_gitname/include/mpv/render_gl.h" "$pkgdir/opt/jellyfin-desktop/libmpv/include/mpv/render_gl.h"
+  install -Dm644 "$srcdir/$_gitname/include/mpv/render_vk.h" "$pkgdir/opt/jellyfin-desktop/libmpv/include/mpv/render_vk.h"
+  install -Dm644 "$srcdir/$_gitname/include/mpv/stream_cb.h" "$pkgdir/opt/jellyfin-desktop/libmpv/include/mpv/stream_cb.h"
 
   # Update dependencies automatically based on dynamic libraries
-  _detected_depends=($(python3 "$srcdir"/find-deps.py "$pkgdir"/opt/jellyfin-desktop-cef/libmpv/lib/libmpv.so.2))
+  _detected_depends=($(python3 "$srcdir"/find-deps.py "$pkgdir"/opt/jellyfin-desktop/libmpv/lib/libmpv.so.2))
   echo 'Auto-detected dependencies:'
   echo "${_detected_depends[@]}" | fold -s -w 79 | sed 's/^/ /'
   depends=("${_detected_depends[@]}")

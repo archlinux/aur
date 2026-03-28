@@ -1,5 +1,5 @@
-pkgbase = jellyfin-desktop-cef-libmpv-git
-	pkgdesc = libmpv for jellyfin-desktop-cef
+pkgbase = jellyfin-desktop-libmpv-git
+	pkgdesc = libmpv for jellyfin-desktop
 	pkgver = 0.r54491.3e99d37
 	pkgrel = 1
 	epoch = 1
@@ -19,12 +19,12 @@ pkgbase = jellyfin-desktop-cef-libmpv-git
 	depends = libxpresent
 	depends = libxss
 	depends = wayland
-	provides = jellyfin-desktop-cef-libmpv
+	provides = jellyfin-desktop-libmpv
 	options = !emptydirs
 	source = git+https://github.com/andrewrabert/mpv#branch=libmpv-vulkan-gpu-next
 	source = find-deps.py
 	sha256sums = SKIP
 	sha256sums = 1ba780ede4a28b68ae5b7ab839958ff91ed01d3c6c1d24cce8a5dd24492f8d2b
 
-pkgname = jellyfin-desktop-cef-libmpv-git
+pkgname = jellyfin-desktop-libmpv-git
 	depends = 
