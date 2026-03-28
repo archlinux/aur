@@ -5,7 +5,7 @@ pkgname="opennow-appimage"
 _pkgver=0.2.4
 _nightly=60030b626b57914e9e4d538aba1d4ed954a82653
 pkgver="${_pkgver}.${_nightly}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Custom GeForce Now Client Named OpenNOW"
 arch=('x86_64' 'aarch64')
 url="https://github.com/OpenCloudGaming/OpenNOW"
@@ -27,7 +27,7 @@ prepare() {
 }
 
 build() {
-    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/$binary}|"\
+    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${_binary}|"\
         "squashfs-root/${_binary}.desktop"
     chmod -R a-x+rX squashfs-root/usr
 }
