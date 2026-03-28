@@ -20,14 +20,15 @@ options=('!strip' '!debug')
 
 # The .deb is built by the zai-chat-desktop repo via GitHub Actions
 # Version matches Pake releases (e.g., 3.11.0)
+# Note: filename uses lowercase with hyphens: zai-chat-desktop_V3.11.0_amd64.deb
 source=(
-    "${_appname}-V${pkgver}.deb::https://github.com/${_github}/zai-chat-desktop/releases/download/V${pkgver}/${_appname}_V${pkgver}_amd64.deb"
+    "${pkgname}-V${pkgver}.deb::https://github.com/${_github}/${pkgname}/releases/download/V${pkgver}/${pkgname}_V${pkgver}_amd64.deb"
     "LICENSE::https://raw.githubusercontent.com/tw93/Pake/V${pkgver}/LICENSE"
 )
 sha256sums=('SKIP' 'SKIP')
 
 prepare() {
-    bsdtar -xf "${_appname}-V${pkgver}.deb" -C "${srcdir}"
+    bsdtar -xf "${pkgname}-V${pkgver}.deb" -C "${srcdir}"
     bsdtar -xf "${srcdir}/data.tar.gz" -C "${srcdir}"
 }
 
