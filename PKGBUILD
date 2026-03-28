@@ -2,7 +2,7 @@
 pkgname=qbtctl-bin
 pkgver=1.5.0
 pkgrel=1
-pkgdesc="qbtctl - prebuilt static binary"
+pkgdesc="qbtctl - A Command-line interface for controlling a torrent in qBittorrent - prebuilt static binary"
 arch=('x86_64')
 url="https://github.com/creptic/qbtctl"
 license=('MIT')
