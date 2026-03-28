@@ -5,14 +5,14 @@ pkgbase = python-pssh
 	url = https://github.com/lilydjwg/pssh
 	changelog = python-pssh.changelog
 	arch = any
-	license = BSD
+	license = BSD-3-Clause
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
 	depends = openssh
 	depends = python
-	source = https://github.com/lilydjwg/pssh/archive/refs/tags/v2.3.6.tar.gz
+	source = pssh-2.3.6.tar.gz::https://github.com/lilydjwg/pssh/archive/refs/tags/v2.3.6.tar.gz
 	sha256sums = dfe1b898e483377213b44b8316a81fd6e1bbe427e1607e76be18366071c04c85
 
 pkgname = python-pssh
