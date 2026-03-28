@@ -1,6 +1,6 @@
 pkgbase = python-oct2py
 	pkgdesc = Python to GNU Octave bridge --> run m-files from python
-	pkgver = 6.0.0
+	pkgver = 6.0.1
 	pkgrel = 1
 	url = http://github.com/blink1073/oct2py
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-oct2py
 	depends = jupyter-octave_kernel
 	depends = gnuplot
 	optdepends = python-pandas: for Pandas DataFrames and Series support
-	source = oct2py-6.0.0.tar.gz::http://github.com/blink1073/oct2py/archive/v6.0.0.tar.gz
-	b2sums = 2ae5a1677afa23b66e5b9831bc20402e28181b9839f7943951884af4d0d1589e29bb77a92bd2a4dd5b5e59dea519d4469a523218f4fc962ec66df402b1adc787
+	source = oct2py-6.0.1.tar.gz::http://github.com/blink1073/oct2py/archive/v6.0.1.tar.gz
+	b2sums = 3c6fa794cd8d4f5bd89cdc2dbd90dabc3cee4bb6d27129d6c01711c44fecea6e29ee15e93c993a8d63b88a7890cce906a5ad47b9d9d71b8c5b146a7164dfb4b5
 
 pkgname = python-oct2py

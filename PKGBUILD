@@ -3,7 +3,7 @@
 # Contributor: Ishan Arora <ishanarora@gmail.com>
 _base=oct2py
 pkgname=python-${_base}
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="Python to GNU Octave bridge --> run m-files from python"
 arch=(any)
@@ -14,7 +14,7 @@ makedepends=(python-build python-installer python-setuptools python-hatchling py
 checkdepends=(python-pytest-timeout octave-signal python-pandas) # jupyter-nbconvert
 optdepends=('python-pandas: for Pandas DataFrames and Series support')
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-b2sums=('2ae5a1677afa23b66e5b9831bc20402e28181b9839f7943951884af4d0d1589e29bb77a92bd2a4dd5b5e59dea519d4469a523218f4fc962ec66df402b1adc787')
+b2sums=('3c6fa794cd8d4f5bd89cdc2dbd90dabc3cee4bb6d27129d6c01711c44fecea6e29ee15e93c993a8d63b88a7890cce906a5ad47b9d9d71b8c5b146a7164dfb4b5')
 
 build() {
   cd ${_base}-${pkgver}
