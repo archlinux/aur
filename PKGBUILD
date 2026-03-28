@@ -1,6 +1,6 @@
 # Maintainer: lucial <bordiyan20035@gmail.com>
 pkgname=imagefinish
-pkgver=1.2.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A PyQt6 image editor inspired by Photoshop"
 arch=('any')
@@ -31,8 +31,10 @@ package() {
     install -dm755 "$pkgdir/usr/share/$pkgname/patterns"
     install -m644 main.py         "$pkgdir/usr/share/$pkgname/"
     install -m644 settings.json   "$pkgdir/usr/share/$pkgname/"
+    install -m644 icon.png        "$pkgdir/usr/share/$pkgname/$pkgname.png"
 
     # Иконка
+    install -Dm644 icon.png "$pkgdir/usr/share/icons/hicolor/512x512/apps/$pkgname.png"
     install -Dm644 icon.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
 
     # .desktop
