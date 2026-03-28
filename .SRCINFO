@@ -1,6 +1,6 @@
 pkgbase = tidal-hifi-tidaluna
 	pkgdesc = The web version of Tidal running in electron with hifi support thanks to widevine (with TidaLuna client mod).
-	pkgver = 6.2.0
+	pkgver = 6.3.1
 	pkgrel = 1
 	url = https://github.com/Mastermindzh/tidal-hifi
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = tidal-hifi-tidaluna
 	depends = nss
 	depends = gtk3
 	conflicts = tidal-hifi
-	noextract = luna-1.12.5-beta.zip
-	source = tidal-hifi-6.2.0.tar.gz::https://github.com/Mastermindzh/tidal-hifi/archive/refs/tags/6.2.0.tar.gz
-	source = luna-1.12.5-beta.zip::https://github.com/Inrixia/TidaLuna/releases/download/1.12.5-beta/luna.zip
+	noextract = luna-1.13.0-beta.zip
+	source = tidal-hifi-6.3.1.tar.gz::https://github.com/Mastermindzh/tidal-hifi/archive/refs/tags/6.3.1-Mavy.tar.gz
+	source = luna-1.13.0-beta.zip::https://github.com/Inrixia/TidaLuna/releases/download/1.13.0-beta/luna.zip
 	source = tidal-hifi-tidaluna.desktop
-	sha256sums = 295a56705ed093a163e6c63fba89c572237601164e63d8df8d6704c4a6772958
-	sha256sums = 13a385e263fa1758b5de07448ff737ec15f4b22d8f6cecc400bbf77c7b721b8b
+	sha256sums = 4d8ce96576f6fc71edb4621ab233f85c1f2b8b5a947c2fe8ec6e2c539a61f336
+	sha256sums = 2c5c41033f9332cdf3ef90395c82b36e9e50e710332c9e88486563c2640ea488
 	sha256sums = 8fe1352dae97c301bf63be9419e56c9775683e124b0218e118f020588d95565b
 
 pkgname = tidal-hifi-tidaluna

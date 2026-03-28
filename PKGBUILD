@@ -2,8 +2,8 @@
 # Contributor: Ain Ruiz Dorado <maxain201 at gmail dot com>
 
 pkgname=tidal-hifi-tidaluna
-pkgver=6.2.0
-_tidalunaver=1.12.5-beta
+pkgver=6.3.1
+_tidalunaver=1.13.0-beta
 pkgrel=1
 pkgdesc="The web version of Tidal running in electron with hifi support thanks to widevine (with TidaLuna client mod)."
 conflicts=("tidal-hifi")
@@ -12,16 +12,16 @@ url="https://github.com/Mastermindzh/tidal-hifi"
 license=("custom:MIT")
 depends=(libxss nss gtk3)
 makedepends=(nodejs npm libxcrypt-compat python unzip git)
-source=("tidal-hifi-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi/archive/refs/tags/${pkgver}.tar.gz"
+source=("tidal-hifi-${pkgver}.tar.gz::https://github.com/Mastermindzh/tidal-hifi/archive/refs/tags/${pkgver}-Mavy.tar.gz"
         "luna-${_tidalunaver}.zip::https://github.com/Inrixia/TidaLuna/releases/download/${_tidalunaver}/luna.zip"
         "tidal-hifi-tidaluna.desktop")
 noextract=("luna-${_tidalunaver}.zip")
-sha256sums=('295a56705ed093a163e6c63fba89c572237601164e63d8df8d6704c4a6772958'
-            '13a385e263fa1758b5de07448ff737ec15f4b22d8f6cecc400bbf77c7b721b8b'
+sha256sums=('4d8ce96576f6fc71edb4621ab233f85c1f2b8b5a947c2fe8ec6e2c539a61f336'
+            '2c5c41033f9332cdf3ef90395c82b36e9e50e710332c9e88486563c2640ea488'
             '8fe1352dae97c301bf63be9419e56c9775683e124b0218e118f020588d95565b')
 
 build() {
-    cd "tidal-hifi-${pkgver}"
+    cd "tidal-hifi-${pkgver}-Mavy"
 
     npm install
     npm run build-unpacked
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-    cd "tidal-hifi-${pkgver}"
+    cd "tidal-hifi-${pkgver}-Mavy"
 
     install -d "${pkgdir}/opt/tidal-hifi/" "${pkgdir}/usr/bin"
 
