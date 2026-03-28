@@ -1,6 +1,6 @@
 pkgbase = tg-config
 	pkgdesc = Declarative Telegram Desktop configuration via TOML config files - perfect for dotfiles and ricing
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/meowrch/tg-config
 	install = tg-config.install
@@ -12,7 +12,7 @@ pkgbase = tg-config
 	depends = python
 	depends = python-cryptography
 	optdepends = telegram-desktop: Telegram messenger (will be automatically wrapped)
-	source = https://github.com/meowrch/tg-config/archive/refs/tags/v1.0.0.tar.gz
-	sha256sums = 080f8402bc219a5824f2e21ba523fc765750ae1d70e3416f9030d4c3e888c540
+	source = https://github.com/meowrch/tg-config/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 8ed96fae488157222b65ed7ef4c6c921d5cf1b95bc0e20e0ac33e0990482f7e7
 
 pkgname = tg-config

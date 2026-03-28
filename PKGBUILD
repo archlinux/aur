@@ -1,6 +1,6 @@
 # Maintainer: dimflix <dimflix.official@gmail.com>
 pkgname=tg-config
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Declarative Telegram Desktop configuration via TOML config files - perfect for dotfiles and ricing"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-build' 'python-installer' 'python-hatchling')
 optdepends=('telegram-desktop: Telegram messenger (will be automatically wrapped)')
 install=tg-config.install
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('080f8402bc219a5824f2e21ba523fc765750ae1d70e3416f9030d4c3e888c540')
+sha256sums=('8ed96fae488157222b65ed7ef4c6c921d5cf1b95bc0e20e0ac33e0990482f7e7')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
