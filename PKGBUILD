@@ -2,15 +2,17 @@
 
 # -------------------------------------------------------------------
 # Naming convention:
-#   pkgname  = zai-chat-desktop      (AUR / pacman convention: lowercase)
-#   _appname = ZaiChatDesktop        (Pake app name: PascalCase)
-#   _github  = delta-whiplash        (GitHub username - UPDATE THIS)
+#   pkgname    = zai-chat-desktop      (AUR / pacman convention: lowercase)
+#   _appname   = ZaiChatDesktop        (Pake app name: PascalCase)
+#   _binaryname= zaichatdesktop        (Pake converts to lowercase, no hyphens)
+#   _github    = delta-whiplash        (GitHub username)
 # -------------------------------------------------------------------
 pkgname=zai-chat-desktop
 _appname=ZaiChatDesktop
+_binaryname=zaichatdesktop
 _github=delta-whiplash
 pkgver=3.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Z.ai Desktop - AI Chatbot & Agent powered by GLM-5 & GLM-4.7"
 arch=('x86_64')
 url="https://chat.z.ai"
@@ -33,21 +35,16 @@ prepare() {
 }
 
 package() {
-    # Install binary
-    install -Dm755 "${srcdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    # Install binary (Pake names it pake-zaichatdesktop)
+    install -Dm755 "${srcdir}/usr/bin/pake-${_binaryname}" "${pkgdir}/usr/bin/${pkgname}"
 
-    # Install desktop file
-    install -Dm644 "${srcdir}/usr/share/applications/${pkgname}.desktop" \
+    # Install desktop file (Pake names it zaichatdesktop.desktop)
+    install -Dm644 "${srcdir}/usr/share/applications/${_binaryname}.desktop" \
         "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-    # Install icon
-    if [[ -f "${srcdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png" ]]; then
-        install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png" \
-            "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
-    elif [[ -f "${srcdir}/usr/lib/${pkgname}/png/${pkgname}_512.png" ]]; then
-        install -Dm644 "${srcdir}/usr/lib/${pkgname}/png/${pkgname}_512.png" \
-            "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
-    fi
+    # Install icon (Pake names it pake-zaichatdesktop.png)
+    install -Dm644 "${srcdir}/usr/share/icons/hicolor/512x512/apps/pake-${_binaryname}.png" \
+        "${pkgdir}/usr/share/icons/hicolor/512x512/apps/${pkgname}.png"
 
     # Install license
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
