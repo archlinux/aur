@@ -1,0 +1,20 @@
+pkgbase = quasar-mips-ide-bin
+	pkgdesc = A modern, high-performance IDE for MIPS32 R2000 assembly (Pre-built binary)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/rmia46/quasar
+	arch = x86_64
+	license = custom:QUASAR NON-COMMERCIAL LICENSE
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libappindicator-gtk3
+	depends = librsvg
+	provides = quasar-mips-ide
+	conflicts = quasar-mips-ide
+	conflicts = quasar-mips-ide-git
+	source = https://github.com/rmia46/quasar/releases/download/v1.0.0/quasar_1.0.0_amd64.deb
+	source = https://raw.githubusercontent.com/rmia46/quasar/main/LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = quasar-mips-ide-bin
