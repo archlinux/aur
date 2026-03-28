@@ -3,8 +3,8 @@
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=vdr-extrecmenung
 pkgver=2.0.15
-pkgrel=1
-_vdrapi=11
+pkgrel=2
+_vdrapi=12
 epoch=1
 pkgdesc="provides additional functions to VDR's recordings menu"
 url="https://gitlab.com/kamel5/extrecmenung"
