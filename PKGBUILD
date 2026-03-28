@@ -9,7 +9,7 @@ license=('GPL-3.0-or-later')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://somegit.dev/Owlibou/owlry/archive/owlry-core-v$pkgver.tar.gz")
-b2sums=('e4ee9b099610b88ccec53a0a17765a12383f22c6cd4a49762369088e7c659db93eabb030a48fe72368cc66661db1872e2c14bf9d1bc1a242efa229ce9ad473ab')
+b2sums=('2924468a55fa62979b324c0c48cff2fa13e348f1d21a6ca5e19596bfbeb88fc932b285586275b219bcd75cacc72c1d1d9fecfe13c90dcbc4b258a193bcda1047')
 
 prepare() {
     cd "owlry"
