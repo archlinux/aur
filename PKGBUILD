@@ -4,32 +4,25 @@
 
 declare srcdir pkgdir
 pkgname=ttf-ioskeley-mono
-_pkgver=2026.03.19-7
+_pkgver=2.0.0-beta.1
 pkgver=${_pkgver//-/_}
 pkgrel=1
 pkgdesc=" Iosevka configuration to mimic the look and feel of Berkeley Mono as closely as possible"
 arch=(any)
 url="https://github.com/ahatem/IoskeleyMono"
-license=('GPL')
+license=('OFL-1.1')
 options=(!strip)
-source=("$pkgname-$pkgver.zip::${url}/releases/download/${_pkgver}/IoskeleyMono-TTF-Hinted.zip"
-    "LICENSE::https://raw.githubusercontent.com/ahatem/IoskeleyMono/refs/tags/${_pkgver}/LICENSE")
-md5sums=('79f3aef8a7eda5229379c43d603e4f9b'
-    'e9a14cb5b1cec21c6577808443ed0c08')
+source=("$pkgname-$pkgver-normal.zip::${url}/releases/download/v${_pkgver}/IoskeleyMono-Normal.zip"
+    "$pkgname-$pkgver-condensed.zip::${url}/releases/download/v${_pkgver}/IoskeleyMono-Condensed.zip"
+    "$pkgname-$pkgver-semicondensed.zip::${url}/releases/download/v${_pkgver}/IoskeleyMono-SemiCondensed.zip"
+    "LICENSE::https://raw.githubusercontent.com/ahatem/IoskeleyMono/refs/tags/v${_pkgver}/LICENSE")
+sha256sums=('00693cd2ce76e93fccc357b0357a92b5ec2e17fa3cd994e67355baafbe98f8b7'
+    '264b5569844c12328b99f1dfb57cb527fe4be2650dd5c15a2333db64a322e6a7'
+    'a4dc4d0801892922e7b3572e69bd8c6f0aa0364da436c64fdcb3e1c21b74bdbc'
+    '1084285bd2bddf706d566e11a92fcbae2706da4a8eafac49ed34c871d01fb7fe')
 
 package() {
-    install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" 'TTF/IoskeleyMono-Regular.ttf'
-    install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" 'TTF/IoskeleyMono-ExtraBoldItalic.ttf'
-    install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" 'TTF/IoskeleyMono-Italic.ttf'
-    install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" 'TTF/IoskeleyMono-Light.ttf'
-    install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" 'TTF/IoskeleyMono-Medium.ttf'
-    install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" 'TTF/IoskeleyMono-SemiBold.ttf'
-    install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" 'TTF/IoskeleyMono-MediumItalic.ttf'
-    install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" 'TTF/IoskeleyMono-ExtraBold.ttf'
-    install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" 'TTF/IoskeleyMono-BoldItalic.ttf'
-    install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" 'TTF/IoskeleyMono-Bold.ttf'
-    install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" 'TTF/IoskeleyMono-LightItalic.ttf'
-    install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" 'TTF/IoskeleyMono-SemiBoldItalic.ttf'
+    install -vDm644 -t "$pkgdir/usr/share/fonts/TTF" Hinted/*.ttf
     install -vDm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
