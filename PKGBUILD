@@ -4,7 +4,7 @@
 # Contributor: Tokenicrat <hi@bytoken.link>
 
 pkgname=marp-cli-bin
-pkgver=4.2.3
+pkgver=4.3.1
 pkgrel=1
 pkgdesc='A CLI interface for Marp and Marpit based converters'
 url='https://github.com/marp-team/marp-cli'
