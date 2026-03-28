@@ -1,12 +1,16 @@
 pkgbase = test
-	pkgdesc = this is a test package.
-	pkgver = 1.2
-	pkgrel = 1.2
-	url = https://test.com
+	pkgdesc = Kernel TKG-PDS y Headers optimizados para Silvermont. Compilado usando Clang y Thin
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/
 	arch = x86_64
-	license = MIT
-	depends = bash
-	source = https://github.com/shadowfreddy25551/testpackage/archive/refs/heads/main.zip
-	sha256sums = d47e1e987d742266ed9c9985304854d527efce9eb3d25eaeb5796d1a4ef5e808
+	license = GPL
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	options = !strip
+	options = !debug
+	source = test.txt::https://github.com/Lauta-dev/test-aur-in-actions/releases/download/test-aur-11/test.txt
+	sha256sums = cb895c484cc7c6d81d3eb526bbc3177d9aa2ed043b7169044452d6f472197e93
 
 pkgname = test

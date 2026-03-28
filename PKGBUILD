@@ -1,19 +1,20 @@
+# Maintainer: lautaro <tu-email>
 pkgname=test
-pkgver=1.2
-pkgrel=1.2
-pkgdesc="this is a test package."
+pkgver=1
+pkgrel=1
+pkgdesc="Kernel TKG-PDS y Headers optimizados para Silvermont. Compilado usando Clang y Thin"
 arch=('x86_64')
-url="https://test.com"
-license=('MIT')
-depends=("bash")
-source=("https://github.com/shadowfreddy25551/testpackage/archive/refs/heads/main.zip")
-sha256sums=('d47e1e987d742266ed9c9985304854d527efce9eb3d25eaeb5796d1a4ef5e808')
+url="https://github.com/"
+license=('GPL')
+depends=('coreutils' 'kmod' 'initramfs')
+options=('!strip' '!debug')
+source=(
+  "test.txt::https://github.com/Lauta-dev/test-aur-in-actions/releases/download/test-aur-11/test.txt"
+)
 
-build() {
-  return 0
-}
+sha256sums=('cb895c484cc7c6d81d3eb526bbc3177d9aa2ed043b7169044452d6f472197e93')
 
 package() {
-  mkdir -p "$pkgdir/usr/share/package"
-  cp "$srcdir/testpackage-main/test.txt" "$pkgdir/usr/share/package/"
+  install -Dm644 "$srcdir/test.txt" "$pkgdir/usr/share/doc/$pkgname/test.txt"
 }
+
