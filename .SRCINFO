@@ -1,6 +1,6 @@
 pkgbase = python-pytr-git
 	pkgdesc = This is a library for the private API of the Trade Republic online brokerage.
-	pkgver = 0.4.6.r1.gaa6cc25
+	pkgver = 0.4.7.r3.g540e6aa
 	pkgrel = 1
 	url = https://github.com/pytr-org/pytr
 	arch = any

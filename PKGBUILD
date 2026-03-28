@@ -2,7 +2,7 @@
 
 _name=pytr
 pkgname="python-$_name-git"
-pkgver=0.4.6.r1.gaa6cc25
+pkgver=0.4.7.r3.g540e6aa
 pkgrel=1
 pkgdesc='This is a library for the private API of the Trade Republic online brokerage.'
 arch=('any')
