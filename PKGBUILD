@@ -2,18 +2,14 @@
 # Contributor: Giovanni Bottaro <aur@mybotti.eu>
 
 pkgname=('ocis')
-pkgver=8.0.0
+pkgver=8.0.1
 pkgrel=1
 pkgdesc="A file sync & share platform designed to scale"
 arch=('aarch64' 'x86_64')
 url="https://github.com/owncloud/ocis"
 license=('APACHE')
 depends=('glibc')
-
-# ATM there is an issue building OCIS with go >= 1.25
-# See https://github.com/owncloud/ocis/issues/11634
 makedepends=('go' 'pnpm')
-
 backup=('etc/ocis.env')
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/owncloud/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
@@ -24,7 +20,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/owncloud/$pkgname/archive/r
         "ocis.sysusers"
         "ocis.tmpfiles")
 
-sha512sums=('f9f0891cbb5080bc654d23b0fcfe16a22e967fcc48f4c9f79b07de69c77b756e33624a8275ec2e6decdb72de9b071da9914bff97a5063664e5a3c3a11c3b8c2d'
+sha512sums=('3489f665654520f00b2bdf0440e2bef80d2da5eb0d46da196911fb4a25b989bc77bf38356753af8f3aef6ec18eb126f73d8cd525c1eba19517ad99227eaed9e2'
             'da70b77bf25c87d75f1a662d00a339f9b8756e6f8e33e17dcc0663d2dcd7d4981720a93fe1ba6c788d8a5e7f484f8e292e59273793106d496955c5a670862318'
             '4323568df0101385a068ff867df58b178a8ead63ac6fd7fe601027809b07786da996f95477de6b8ce0d5f635fcc930fde34b948d86e40026e7130e0f19d3b0c9'
             'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
