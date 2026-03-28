@@ -1,5 +1,5 @@
 pkgname=omarchy-delta-theme-sync
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Automatic delta theme synchronization for Omarchy"
 arch=('any')
