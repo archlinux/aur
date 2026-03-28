@@ -1,0 +1,5 @@
+[hmon-bin]
+source = "github"
+github = "sdk445/hmon"
+use_latest_release = true
+prefix = "v"
