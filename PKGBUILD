@@ -6,7 +6,7 @@
 pkgname=web-ext
 # https://github.com/mozilla/web-ext/releases
 pkgver=10.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A command line tool to help build, run, and test web extensions'
 arch=(any)
 url='https://developer.mozilla.org/en-US/Add-ons/WebExtensions'
@@ -16,7 +16,7 @@ license=('MPL-2.0')
 # XXX: somehow nodejs 20 breaks tests
 # Per https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/, web-ext requires the current LTS (long-term support) versions of NodeJS.
 # Running namcap on the produced package reported python as a missing dependency.
-depends=('nodejs-lts' 'python')
+depends=('nodejs' 'python')
 makedepends=('npm' 'node-gyp')
 replaces=('nodejs-web-ext')
 provides=('nodejs-web-ext')
