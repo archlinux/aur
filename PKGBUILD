@@ -10,7 +10,7 @@
 pkgname=bin32-filezilla-bin
 pkgver=3.69.6
 pkgrel=1
-pkgdesc="Standalone web browser from mozilla.org - 32bit version for 64bit systems"
+pkgdesc="Fast and reliable FTP, FTPS and SFTP client - 32bit version for 64bit systems"
 arch=('x86_64')
 _arch=i686
 license=('MPL' 'GPL' 'LGPL')
