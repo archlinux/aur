@@ -166,4 +166,4 @@ pam_fail:
     fprintf(stderr, "\n[yt] Error: %s\n", pam_strerror(pamh, retval));
     if (pamh != NULL) pam_end(pamh, retval);
     return 1;
-}
+
