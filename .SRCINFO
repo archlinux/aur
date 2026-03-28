@@ -1,0 +1,21 @@
+pkgbase = rufus-linux
+	pkgdesc = A Linux-native replica of the Rufus USB flashing utility
+	pkgver = 3.20.1929
+	pkgrel = 1
+	url = https://github.com/kajano-source/rufus-linux
+	arch = x86_64
+	license = GPL3
+	makedepends = npm
+	makedepends = nodejs
+	depends = electron33
+	depends = util-linux
+	depends = parted
+	depends = dosfstools
+	depends = ntfs-3g
+	depends = exfatprogs
+	depends = e2fsprogs
+	depends = polkit
+	source = rufus-linux-3.20.1929.tar.gz::https://github.com/kajano-source/rufus-linux/archive/refs/tags/v3.20.1929.tar.gz
+	sha256sums = SKIP
+
+pkgname = rufus-linux
